@@ -6,13 +6,13 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** The category of the budget. - 'Cost' defines a Budget. - 'ReservationUtilization' defines a Reservation Utilization Alert Rule. */
 export type CategoryType = "Cost" | "ReservationUtilization";
+const CategoryType = S.String;
+
 /** The time covered by a budget. Tracking of the amount will be reset based on the time grain. Supported for CategoryType(s): Cost, ReservationUtilization. Supported timeGrainTypes for **CategoryType: Cost** - Monthly - Quarterly - Annually - BillingMonth* - BillingQuarter* - BillingAnnual* *only supported for Web Direct customers. Supported timeGrainTypes for **CategoryType: ReservationUtilization** - Last7Days - Last30Days Required for CategoryType(s): Cost, ReservationUtilization. */
 export type TimeGrainType =
   | "Monthly"
@@ -23,6 +23,8 @@ export type TimeGrainType =
   | "BillingAnnual"
   | "Last7Days"
   | "Last30Days";
+const TimeGrainType = S.String;
+
 /** The time period that defines the active period of the budget. The budget will evaluate data on or after the startDate and will expire on the endDate. Supported for CategoryType(s): Cost, ReservationUtilization. Required for CategoryType(s): Cost, ReservationUtilization. */
 export interface BudgetTimePeriod {
   /** The start date for the budget. - Constraints for **CategoryType: Cost** - Must be first of the month and should be less than the end date. Budget start date must be on or after June 1, 2017. Future start date should not be more than twelve months. Past start date should be selected within the timegrain period. - Constraints for **CategoryType: ReservationUtilization** - Must be on or after the current date and less than the end date. */
@@ -30,10 +32,19 @@ export interface BudgetTimePeriod {
   /** The end date for the budget. - Constraints for **CategoryType: Cost** - No constraints. If not provided, we default this to 10 years from the start date. - Constraints for **CategoryType: ReservationUtilization** - End date cannot be more than 3 years after the start date. */
   endDate?: string;
 }
+const BudgetTimePeriod = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<BudgetTimePeriod>;
+
 /** The operator to use for comparison. */
 export type BudgetOperatorType = "In";
+const BudgetOperatorType = S.String;
+
 /** Array of values to use for comparison */
 export type BudgetComparisonExpressionValuesList = Array<string>;
+const BudgetComparisonExpressionValuesList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BudgetComparisonExpressionValuesList>;
+
 /** The comparison expression to be used in the budgets. */
 export interface BudgetComparisonExpression {
   /** The name of the column to use in comparison. */
@@ -43,6 +54,11 @@ export interface BudgetComparisonExpression {
   /** Array of values to use for comparison */
   values: BudgetComparisonExpressionValuesList;
 }
+const BudgetComparisonExpression = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<BudgetComparisonExpression>;
+
 /** The Dimensions or Tags to filter a budget by. Supported for CategoryType(s): Cost, ReservationUtilization. */
 export interface BudgetFilterProperties {
   /** Has comparison expression for a dimension. Supported for CategoryType(s): Cost, ReservationUtilization. Supported dimension names for **CategoryType: ReservationUtilization** - ReservationId - ReservedResourceType */
@@ -50,8 +66,15 @@ export interface BudgetFilterProperties {
   /** Has comparison expression for a tag. Supported for CategoryType(s): Cost. */
   tags?: BudgetComparisonExpression;
 }
+const BudgetFilterProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<BudgetFilterProperties>;
+
 /** The logical "AND" expression. Must have at least 2 items. Supported for CategoryType(s): Cost. */
 export type BudgetFilterAndList = Array<BudgetFilterProperties>;
+const BudgetFilterAndList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<BudgetFilterAndList>;
+
 /** May be used to filter budgets by user-specified dimensions and/or tags. Supported for CategoryType(s): Cost, ReservationUtilization. */
 export interface BudgetFilter {
   /** The logical "AND" expression. Must have at least 2 items. Supported for CategoryType(s): Cost. */
@@ -61,22 +84,39 @@ export interface BudgetFilter {
   /** Has comparison expression for a tag. Supported for CategoryType(s): Cost. */
   tags?: BudgetComparisonExpression;
 }
+const BudgetFilter = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<BudgetFilter>;
+
 /** The comparison operator. Supported for CategoryType(s): Cost, ReservationUtilization. Supported operators for **CategoryType: Cost** - GreaterThan - GreaterThanOrEqualTo Supported operators for **CategoryType: ReservationUtilization** - LessThan */
 export type BudgetNotificationOperatorType =
   | "EqualTo"
   | "GreaterThan"
   | "GreaterThanOrEqualTo"
   | "LessThan";
+const BudgetNotificationOperatorType = S.String;
+
 /** Frequency of a notification. Represents how long the notification will be silent after triggering an alert for a threshold breach. If not specified, the frequency will be set by default based on the timeGrain (Weekly when timeGrain: Last7Days, Monthly when timeGrain: Last30Days). Supported for CategoryType(s): ReservationUtilization. */
 export type Frequency = "Daily" | "Weekly" | "Monthly";
+const Frequency = S.String;
+
 /** Email addresses to send the notification to when the threshold is breached. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified. Supported for CategoryType(s): Cost, ReservationUtilization. */
 export type NotificationContactEmailsList = Array<string>;
+const NotificationContactEmailsList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<NotificationContactEmailsList>;
+
 /** Subscription or Resource Group scopes only. Contact roles to send the notification to when the threshold is breached. Supported for CategoryType(s): Cost. */
 export type NotificationContactRolesList = Array<string>;
+const NotificationContactRolesList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<NotificationContactRolesList>;
+
 /** Subscription or Resource Group scopes only. Action groups to send the notification to when the threshold is exceeded. Must be provided as a fully qualified Azure resource id. Supported for CategoryType(s): Cost. */
 export type NotificationContactGroupsList = Array<string>;
+const NotificationContactGroupsList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<NotificationContactGroupsList>;
+
 /** The type of threshold. Supported for CategoryType(s): Cost. */
 export type NotificationThresholdType = "Actual" | "Forecasted";
+const NotificationThresholdType = S.String;
+
 /** Language in which the recipient will receive the notification, Supported for CategoryType(s): Cost, ReservationUtilization. */
 export type CultureCode =
   | "en-us"
@@ -100,6 +140,8 @@ export type CultureCode =
   | "nl-nl"
   | "pt-pt"
   | "sv-se";
+const CultureCode = S.String;
+
 /** The notification associated with a budget. Supported for CategoryType(s): Cost, ReservationUtilization. */
 export interface Notification {
   /** The notification is enabled or not. Supported for CategoryType(s): Cost, ReservationUtilization. */
@@ -121,8 +163,15 @@ export interface Notification {
   /** Language in which the recipient will receive the notification, Supported for CategoryType(s): Cost, ReservationUtilization. */
   locale?: CultureCode | (string & {});
 }
+const Notification = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Notification>;
+
 /** Dictionary of notifications associated with the budget. Supported for CategoryType(s): Cost, ReservationUtilization. - Constraints for **CategoryType: Cost** - Budget can have up to 5 notifications with thresholdType: Actual and 5 notifications with thresholdType: Forecasted. - Constraints for **CategoryType: ReservationUtilization** - Only one notification allowed. thresholdType is not applicable. */
 export type BudgetPropertiesInputNotificationsMap = { [key: string]: Notification | undefined };
+const BudgetPropertiesInputNotificationsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<BudgetPropertiesInputNotificationsMap>;
+
 /** The properties of the budget. */
 export interface BudgetPropertiesInput {
   /** The category of the budget. - 'Cost' defines a Budget. - 'ReservationUtilization' defines a Reservation Utilization Alert Rule. */
@@ -138,6 +187,11 @@ export interface BudgetPropertiesInput {
   /** Dictionary of notifications associated with the budget. Supported for CategoryType(s): Cost, ReservationUtilization. - Constraints for **CategoryType: Cost** - Budget can have up to 5 notifications with thresholdType: Actual and 5 notifications with thresholdType: Forecasted. - Constraints for **CategoryType: ReservationUtilization** - Only one notification allowed. thresholdType is not applicable. */
   notifications?: BudgetPropertiesInputNotificationsMap;
 }
+const BudgetPropertiesInput = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<BudgetPropertiesInput>;
+
 export interface BudgetsCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
@@ -148,10 +202,19 @@ export interface BudgetsCreateOrUpdateRequest {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
+const BudgetsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<BudgetsCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -167,6 +230,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SystemData>;
+
 /** The current amount of cost which is being tracked for a budget. Supported for CategoryType(s): Cost. */
 export interface CurrentSpend {
   /** The total amount of cost which is being tracked by the budget. */
@@ -174,8 +239,13 @@ export interface CurrentSpend {
   /** The unit of measure for the budget amount. */
   unit?: string;
 }
+const CurrentSpend = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CurrentSpend>;
+
 /** Dictionary of notifications associated with the budget. Supported for CategoryType(s): Cost, ReservationUtilization. - Constraints for **CategoryType: Cost** - Budget can have up to 5 notifications with thresholdType: Actual and 5 notifications with thresholdType: Forecasted. - Constraints for **CategoryType: ReservationUtilization** - Only one notification allowed. thresholdType is not applicable. */
 export type BudgetPropertiesNotificationsMap = { [key: string]: Notification | undefined };
+const BudgetPropertiesNotificationsMap =
+  BudgetPropertiesInputNotificationsMap as any as S.Schema<BudgetPropertiesNotificationsMap>;
+
 /** The forecasted cost which is being tracked for a budget. Supported for CategoryType(s): Cost. */
 export interface ForecastSpend {
   /** The forecasted cost for the total time period which is being tracked by the budget. This value is only provided if the budget contains a forecast alert type. */
@@ -183,6 +253,8 @@ export interface ForecastSpend {
   /** The unit of measure for the budget amount. */
   unit?: string;
 }
+const ForecastSpend = CurrentSpend as any as S.Schema<ForecastSpend>;
+
 /** The properties of the budget. */
 export interface BudgetProperties {
   /** The category of the budget. - 'Cost' defines a Budget. - 'ReservationUtilization' defines a Reservation Utilization Alert Rule. */
@@ -202,6 +274,8 @@ export interface BudgetProperties {
   /** The forecasted cost which is being tracked for a budget. Supported for CategoryType(s): Cost. */
   forecastSpend?: ForecastSpend;
 }
+const BudgetProperties = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<BudgetProperties>;
+
 export interface BudgetsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -216,6 +290,11 @@ export interface BudgetsCreateOrUpdateResponse {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
+const BudgetsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<BudgetsCreateOrUpdateResponse>;
+
 export interface CheckCostAllocationRuleNameAvailabilityRequest {
   /** BillingAccount ID */
   billingAccountId: string;
@@ -224,8 +303,15 @@ export interface CheckCostAllocationRuleNameAvailabilityRequest {
   /** Resource type. This is expected to be Microsoft.CostManagement/costAllocationRules */
   type?: string;
 }
+const CheckCostAllocationRuleNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CheckCostAllocationRuleNameAvailabilityRequest>;
+
 /** The reason this name is not available. */
 export type Reason = "Invalid" | "AlreadyExists" | "Valid";
+const Reason = S.String;
+
 /** The cost allocation rule check name availability response */
 export interface CostAllocationRuleCheckNameAvailabilityResponse {
   /** Whether this rule name is available */
@@ -235,12 +321,22 @@ export interface CostAllocationRuleCheckNameAvailabilityResponse {
   /** Error message if the name is not available */
   message?: string;
 }
+const CostAllocationRuleCheckNameAvailabilityResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CostAllocationRuleCheckNameAvailabilityResponse>;
+
 export interface CheckScheduledActionNameAvailabilityRequest {
   /** The name of the resource for which availability needs to be checked. */
   name?: string;
   /** The resource type. */
   type?: string;
 }
+const CheckScheduledActionNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CheckScheduledActionNameAvailabilityRequest>;
+
 /** The reason why the given name is not available. */
 export type CheckScheduledActionNameAvailabilityResponseReason = "Invalid" | "AlreadyExists";
 export interface CheckScheduledActionNameAvailabilityResponse {
@@ -251,6 +347,9 @@ export interface CheckScheduledActionNameAvailabilityResponse {
   /** Detailed reason why the given name is available. */
   message?: string;
 }
+const CheckScheduledActionNameAvailabilityResponse =
+  CostAllocationRuleCheckNameAvailabilityResponse as any as S.Schema<CheckScheduledActionNameAvailabilityResponse>;
+
 export interface CheckScheduledActionNameAvailabilityByScopeRequest {
   /** The scope associated with scheduled action operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope. Note: Insight Alerts are only available on subscription scope. */
   scope: string;
@@ -259,6 +358,11 @@ export interface CheckScheduledActionNameAvailabilityByScopeRequest {
   /** The resource type. */
   type?: string;
 }
+const CheckScheduledActionNameAvailabilityByScopeRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CheckScheduledActionNameAvailabilityByScopeRequest>;
+
 /** The reason why the given name is not available. */
 export type CheckScheduledActionNameAvailabilityByScopeResponseReason = "Invalid" | "AlreadyExists";
 export interface CheckScheduledActionNameAvailabilityByScopeResponse {
@@ -269,10 +373,18 @@ export interface CheckScheduledActionNameAvailabilityByScopeResponse {
   /** Detailed reason why the given name is available. */
   message?: string;
 }
+const CheckScheduledActionNameAvailabilityByScopeResponse =
+  CostAllocationRuleCheckNameAvailabilityResponse as any as S.Schema<CheckScheduledActionNameAvailabilityByScopeResponse>;
+
 /** Category of resource to use for allocation. */
 export type CostAllocationResourceType = "Dimension" | "Tag";
+const CostAllocationResourceType = S.String;
+
 /** Source Resources for cost allocation. This list cannot contain more than 25 values. */
 export type SourceCostAllocationResourceValuesList = Array<string>;
+const SourceCostAllocationResourceValuesList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<SourceCostAllocationResourceValuesList>;
+
 /** Source resources for cost allocation */
 export interface SourceCostAllocationResource {
   /** Type of resources contained in this cost allocation rule */
@@ -282,8 +394,18 @@ export interface SourceCostAllocationResource {
   /** Source Resources for cost allocation. This list cannot contain more than 25 values. */
   values: SourceCostAllocationResourceValuesList;
 }
+const SourceCostAllocationResource = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<SourceCostAllocationResource>;
+
 /** Source resources for cost allocation. At this time, this list can contain no more than one element. */
 export type CostAllocationRuleDetailsSourceResourcesList = Array<SourceCostAllocationResource>;
+const CostAllocationRuleDetailsSourceResourcesList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CostAllocationRuleDetailsSourceResourcesList>;
+
 /** Target resources and allocation */
 export interface CostAllocationProportion {
   /** Target resource for cost allocation */
@@ -291,10 +413,22 @@ export interface CostAllocationProportion {
   /** Percentage of source cost to allocate to this resource. This value can be specified to two decimal places and the total percentage of all resources in this rule must sum to 100.00. */
   percentage: number;
 }
+const CostAllocationProportion = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CostAllocationProportion>;
+
 /** Target resources for cost allocation. This list cannot contain more than 25 values. */
 export type TargetCostAllocationResourceValuesList = Array<CostAllocationProportion>;
+const TargetCostAllocationResourceValuesList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<TargetCostAllocationResourceValuesList>;
+
 /** Method to use for allocating cost. FixedProportion indicates that cost will be split based on specified percentage values. */
 export type CostAllocationPolicyType = "FixedProportion";
+const CostAllocationPolicyType = S.String;
+
 /** Target resources for cost allocation. */
 export interface TargetCostAllocationResource {
   /** Type of resources contained in this cost allocation rule */
@@ -306,8 +440,18 @@ export interface TargetCostAllocationResource {
   /** Method of cost allocation for the rule */
   policyType: CostAllocationPolicyType | (string & {});
 }
+const TargetCostAllocationResource = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<TargetCostAllocationResource>;
+
 /** Target resources for cost allocation. At this time, this list can contain no more than one element. */
 export type CostAllocationRuleDetailsTargetResourcesList = Array<TargetCostAllocationResource>;
+const CostAllocationRuleDetailsTargetResourcesList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CostAllocationRuleDetailsTargetResourcesList>;
+
 /** Resource details of the cost allocation rule */
 export interface CostAllocationRuleDetails {
   /** Source resources for cost allocation. At this time, this list can contain no more than one element. */
@@ -315,8 +459,15 @@ export interface CostAllocationRuleDetails {
   /** Target resources for cost allocation. At this time, this list can contain no more than one element. */
   targetResources?: CostAllocationRuleDetailsTargetResourcesList;
 }
+const CostAllocationRuleDetails = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CostAllocationRuleDetails>;
+
 /** Current status of the rule. */
 export type RuleStatus = "NotActive" | "Active" | "Processing";
+const RuleStatus = S.String;
+
 /** The properties of a cost allocation rule */
 export interface CostAllocationRulePropertiesInput {
   /** Description of a cost allocation rule. */
@@ -326,6 +477,11 @@ export interface CostAllocationRulePropertiesInput {
   /** Status of the rule */
   status: RuleStatus | (string & {});
 }
+const CostAllocationRulePropertiesInput = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CostAllocationRulePropertiesInput>;
+
 export interface CostAllocationRulesCreateOrUpdateRequest {
   /** BillingAccount ID */
   billingAccountId: string;
@@ -334,6 +490,11 @@ export interface CostAllocationRulesCreateOrUpdateRequest {
   /** Cost allocation rule properties */
   properties?: CostAllocationRulePropertiesInput;
 }
+const CostAllocationRulesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CostAllocationRulesCreateOrUpdateRequest>;
+
 /** The properties of a cost allocation rule */
 export interface CostAllocationRuleProperties {
   /** Description of a cost allocation rule. */
@@ -347,6 +508,11 @@ export interface CostAllocationRuleProperties {
   /** Time at which the rule was last updated. */
   updatedDate?: string;
 }
+const CostAllocationRuleProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CostAllocationRuleProperties>;
+
 export interface CostAllocationRulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -359,8 +525,15 @@ export interface CostAllocationRulesCreateOrUpdateResponse {
   /** Cost allocation rule properties */
   properties?: CostAllocationRuleProperties;
 }
+const CostAllocationRulesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CostAllocationRulesCreateOrUpdateResponse>;
+
 /** The type of the detailed report. By default ActualCost is provided */
 export type CostDetailsMetricType = "ActualCost" | "AmortizedCost";
+const CostDetailsMetricType = S.String;
+
 /** The start and end date for pulling data for the cost detailed report. API only allows data to be pulled for 1 month or less and no older than 13 months. */
 export interface CostDetailsTimePeriod {
   /** The start date to pull data from. example format 2020-03-15 */
@@ -368,6 +541,11 @@ export interface CostDetailsTimePeriod {
   /** The end date to pull data to. example format 2020-03-15 */
   end: string;
 }
+const CostDetailsTimePeriod = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CostDetailsTimePeriod>;
+
 export interface CreateGenerateCostDetailsReportOperationRequest {
   /** The ARM Resource ID for subscription, billing account, or other billing scopes.Currently Resource Group and Management Group are not supported. For details, see https://aka.ms/costmgmt/scopes. */
   scope: string;
@@ -380,10 +558,19 @@ export interface CreateGenerateCostDetailsReportOperationRequest {
   /** This parameter can only be used by Microsoft Customer Agreement customers. Additionally, it can only be used at the Billing Profile or Customer scope. This parameter cannot be used alongside either the billingPeriod or timePeriod parameters. If a timePeriod, invoiceId or billingPeriod parameter is not provided in the request body the API will return the current month's cost. */
   invoiceId?: string;
 }
+const CreateGenerateCostDetailsReportOperationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateGenerateCostDetailsReportOperationRequest>;
+
 /** The status of the cost details operation */
 export type CostDetailsStatusType = "Completed" | "NoDataFound" | "Failed";
+const CostDetailsStatusType = S.String;
+
 /** The data format of the report */
 export type CostDetailsDataFormat = "Csv";
+const CostDetailsDataFormat = S.String;
+
 /** The definition of a cost detailed report. */
 export interface GenerateCostDetailsReportRequestDefinition {
   /** The type of the detailed report. By default ActualCost is provided */
@@ -395,6 +582,11 @@ export interface GenerateCostDetailsReportRequestDefinition {
   /** This parameter can only be used by Microsoft Customer Agreement customers. Additionally, it can only be used at the Billing Profile or Customer scope. This parameter cannot be used alongside either the billingPeriod or timePeriod parameters. If a timePeriod, invoiceId or billingPeriod parameter is not provided in the request body the API will return the current month's cost. */
   invoiceId?: string;
 }
+const GenerateCostDetailsReportRequestDefinition = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GenerateCostDetailsReportRequestDefinition>;
+
 /** The context of the Cost Details request. */
 export interface RequestContext {
   /** The request scope of the request. */
@@ -402,6 +594,8 @@ export interface RequestContext {
   /** The request payload body provided in Cost Details call */
   requestBody?: GenerateCostDetailsReportRequestDefinition;
 }
+const RequestContext = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<RequestContext>;
+
 /** The blob information generated by this operation. */
 export interface BlobInfo {
   /** Link to the blob to download file. */
@@ -409,8 +603,15 @@ export interface BlobInfo {
   /** Bytes in the blob. */
   byteCount?: number;
 }
+const BlobInfo = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<BlobInfo>;
+
 /** List of blob information generated by this operation. */
 export type ReportManifestBlobsList = Array<BlobInfo>;
+const ReportManifestBlobsList = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ReportManifestBlobsList>;
+
 /** The manifest of the report generated by the operation. */
 export interface ReportManifest {
   /** The Manifest version. */
@@ -428,6 +629,8 @@ export interface ReportManifest {
   /** List of blob information generated by this operation. */
   blobs?: ReportManifestBlobsList;
 }
+const ReportManifest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<ReportManifest>;
+
 /** The details of the error. */
 export interface ErrorDetails {
   /** Error code. */
@@ -435,6 +638,8 @@ export interface ErrorDetails {
   /** Error message indicating why the operation failed. */
   message?: string;
 }
+const ErrorDetails = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ErrorDetails>;
+
 /** The result of the long running operation for cost details Api. */
 export interface CostDetailsOperationResults {
   /** The id of the long running operation. */
@@ -452,8 +657,15 @@ export interface CostDetailsOperationResults {
   /** The details of the error. */
   error?: ErrorDetails;
 }
+const CostDetailsOperationResults = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CostDetailsOperationResults>;
+
 /** The type of the detailed report. By default ActualCost is provided */
 export type GenerateDetailedCostReportMetricType = "ActualCost" | "AmortizedCost";
+const GenerateDetailedCostReportMetricType = S.String;
+
 /** The start and end date for pulling data for the cost detailed report. */
 export type GenerateDetailedCostReportTimePeriod = CostDetailsTimePeriod;
 export interface CreateGenerateDetailedCostReportOperationRequest {
@@ -470,6 +682,11 @@ export interface CreateGenerateDetailedCostReportOperationRequest {
   /** Customer ID for Microsoft Customer Agreement scopes (Invoice Id is also required for this). */
   customerId?: string;
 }
+const CreateGenerateDetailedCostReportOperationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateGenerateDetailedCostReportOperationRequest>;
+
 /** The URL to download the generated report. */
 export interface DownloadURL {
   /** The time at which report URL becomes invalid/expires in UTC e.g. 2020-12-08T05:55:59.4394737Z. */
@@ -479,6 +696,8 @@ export interface DownloadURL {
   /** The URL to download the generated report. */
   downloadUrl?: string;
 }
+const DownloadURL = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<DownloadURL>;
+
 export interface CreateGenerateDetailedCostReportOperationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -491,27 +710,50 @@ export interface CreateGenerateDetailedCostReportOperationResponse {
   /** The properties of the resource generated. */
   properties?: DownloadURL;
 }
+const CreateGenerateDetailedCostReportOperationResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<CreateGenerateDetailedCostReportOperationResponse>;
+
 export interface DeleteBudgetRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
   /** Budget Name. */
   budgetName: string;
 }
+const DeleteBudgetRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<DeleteBudgetRequest>;
+
 export interface DeleteBudgetResponse {}
+const DeleteBudgetResponse = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<DeleteBudgetResponse>;
+
 export interface DeleteCostAllocationRuleRequest {
   /** BillingAccount ID */
   billingAccountId: string;
   /** Cost allocation rule name. The name cannot include spaces or any non alphanumeric characters other than '_' and '-'. The max length is 260 characters. */
   ruleName: string;
 }
+const DeleteCostAllocationRuleRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DeleteCostAllocationRuleRequest>;
+
 export interface DeleteCostAllocationRuleResponse {}
+const DeleteCostAllocationRuleResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<DeleteCostAllocationRuleResponse>;
+
 export interface DeleteExportRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
   /** Export Name. */
   exportName: string;
 }
+const DeleteExportRequest = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<DeleteExportRequest>;
+
 export interface DeleteExportResponse {}
+const DeleteExportResponse = DeleteBudgetResponse as any as S.Schema<DeleteExportResponse>;
+
 export interface DeleteMarkupRuleRequest {
   /** BillingAccount ID */
   billingAccountId: string;
@@ -520,42 +762,89 @@ export interface DeleteMarkupRuleRequest {
   /** Markup rule name. */
   ruleName: string;
 }
+const DeleteMarkupRuleRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DeleteMarkupRuleRequest>;
+
 export interface DeleteMarkupRuleResponse {}
+const DeleteMarkupRuleResponse = DeleteBudgetResponse as any as S.Schema<DeleteMarkupRuleResponse>;
+
 export interface DeleteScheduledActionRequest {
   /** Scheduled action name. */
   name: string;
 }
+const DeleteScheduledActionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DeleteScheduledActionRequest>;
+
 export interface DeleteScheduledActionResponse {}
+const DeleteScheduledActionResponse =
+  DeleteBudgetResponse as any as S.Schema<DeleteScheduledActionResponse>;
+
 export interface DeleteScheduledActionByScopeRequest {
   /** undefined */
   scope: string;
   /** Scheduled action name. */
   name: string;
 }
+const DeleteScheduledActionByScopeRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DeleteScheduledActionByScopeRequest>;
+
 export interface DeleteScheduledActionByScopeResponse {}
+const DeleteScheduledActionByScopeResponse =
+  DeleteCostAllocationRuleResponse as any as S.Schema<DeleteScheduledActionByScopeResponse>;
+
 export type DeleteSettingsByScopeRequestType = "taginheritance";
+const DeleteSettingsByScopeRequestType = S.String;
+
 export interface DeleteSettingsByScopeRequest {
   /** undefined */
   scope: string;
   /** Setting type. */
   type: DeleteSettingsByScopeRequestType | (string & {});
 }
+const DeleteSettingsByScopeRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<DeleteSettingsByScopeRequest>;
+
 export interface DeleteSettingsByScopeResponse {}
+const DeleteSettingsByScopeResponse =
+  DeleteBudgetResponse as any as S.Schema<DeleteSettingsByScopeResponse>;
+
 export interface DeleteViewRequest {
   /** View name */
   viewName: string;
 }
+const DeleteViewRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<DeleteViewRequest>;
+
 export interface DeleteViewResponse {}
+const DeleteViewResponse = DeleteBudgetResponse as any as S.Schema<DeleteViewResponse>;
+
 export interface DeleteViewByScopeRequest {
   /** undefined */
   scope: string;
   /** View name */
   viewName: string;
 }
+const DeleteViewByScopeRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DeleteViewByScopeRequest>;
+
 export interface DeleteViewByScopeResponse {}
+const DeleteViewByScopeResponse =
+  DeleteBudgetResponse as any as S.Schema<DeleteViewByScopeResponse>;
+
 export type DimensionsByExternalCloudProviderTypeRequestExternalCloudProviderType =
   | "externalSubscriptions"
   | "externalBillingAccounts";
+const DimensionsByExternalCloudProviderTypeRequestExternalCloudProviderType = S.String;
+
 export interface DimensionsByExternalCloudProviderTypeRequest {
   /** The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account. */
   externalCloudProviderType:
@@ -572,10 +861,20 @@ export interface DimensionsByExternalCloudProviderTypeRequest {
   /** May be used to limit the number of results to the most recent N dimension data. */
   _top?: number;
 }
+const DimensionsByExternalCloudProviderTypeRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DimensionsByExternalCloudProviderTypeRequest>;
+
 /** Resource tags. */
 export type DimensionTagsMap = { [key: string]: string | undefined };
+const DimensionTagsMap = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<DimensionTagsMap>;
+
 /** Dimension data. */
 export type DimensionPropertiesDataList = Array<string>;
+const DimensionPropertiesDataList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<DimensionPropertiesDataList>;
+
 /** Dimension properties. */
 export interface DimensionProperties {
   /** Dimension description. */
@@ -597,6 +896,8 @@ export interface DimensionProperties {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
+const DimensionProperties = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<DimensionProperties>;
+
 /** List of Dimension. */
 export interface Dimension {
   /** Resource Id. */
@@ -616,8 +917,15 @@ export interface Dimension {
   /** Dimension properties. */
   properties?: DimensionProperties;
 }
+const Dimension = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<Dimension>;
+
 /** The list of dimensions. */
 export type DimensionsListResultValueList = Array<Dimension>;
+const DimensionsListResultValueList = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DimensionsListResultValueList>;
+
 /** Result of listing dimensions. It contains a list of available dimensions. */
 export interface DimensionsListResult {
   /** The list of dimensions. */
@@ -625,6 +933,8 @@ export interface DimensionsListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
+const DimensionsListResult = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<DimensionsListResult>;
+
 /** type of alert */
 export type AlertType =
   | "Budget"
@@ -634,8 +944,12 @@ export type AlertType =
   | "General"
   | "xCloud"
   | "BudgetForecast";
+const AlertType = S.String;
+
 /** Alert category */
 export type AlertCategory = "Cost" | "Usage" | "Billing" | "System";
+const AlertCategory = S.String;
+
 /** Criteria that triggered alert */
 export type AlertCriteria =
   | "CostThresholdExceeded"
@@ -652,6 +966,8 @@ export type AlertCriteria =
   | "CrossCloudNewDataAvailable"
   | "CrossCloudCollectionError"
   | "GeneralThresholdError";
+const AlertCriteria = S.String;
+
 /** defines the type of alert */
 export interface AlertPropertiesDefinition {
   /** type of alert */
@@ -661,8 +977,15 @@ export interface AlertPropertiesDefinition {
   /** Criteria that triggered alert */
   criteria?: AlertCriteria | (string & {});
 }
+const AlertPropertiesDefinition = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<AlertPropertiesDefinition>;
+
 /** Source of alert */
 export type AlertSource = "Preset" | "User";
+const AlertSource = S.String;
+
 /** Type of timegrain cadence */
 export type AlertTimeGrainType =
   | "None"
@@ -672,12 +995,25 @@ export type AlertTimeGrainType =
   | "BillingMonth"
   | "BillingQuarter"
   | "BillingAnnual";
+const AlertTimeGrainType = S.String;
+
 /** array of resourceGroups to filter by */
 export type AlertPropertiesDetailsResourceGroupFilterList = Array<unknown>;
+const AlertPropertiesDetailsResourceGroupFilterList = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<AlertPropertiesDetailsResourceGroupFilterList>;
+
 /** array of resources to filter by */
 export type AlertPropertiesDetailsResourceFilterList = Array<unknown>;
+const AlertPropertiesDetailsResourceFilterList =
+  AlertPropertiesDetailsResourceGroupFilterList as any as S.Schema<AlertPropertiesDetailsResourceFilterList>;
+
 /** array of meters to filter by */
 export type AlertPropertiesDetailsMeterFilterList = Array<unknown>;
+const AlertPropertiesDetailsMeterFilterList =
+  AlertPropertiesDetailsResourceGroupFilterList as any as S.Schema<AlertPropertiesDetailsMeterFilterList>;
+
 /** operator used to compare currentSpend with amount */
 export type AlertOperator =
   | "None"
@@ -686,12 +1022,23 @@ export type AlertOperator =
   | "GreaterThanOrEqualTo"
   | "LessThan"
   | "LessThanOrEqualTo";
+const AlertOperator = S.String;
+
 /** list of emails to contact */
 export type AlertPropertiesDetailsContactEmailsList = Array<string>;
+const AlertPropertiesDetailsContactEmailsList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<AlertPropertiesDetailsContactEmailsList>;
+
 /** list of action groups to broadcast to */
 export type AlertPropertiesDetailsContactGroupsList = Array<string>;
+const AlertPropertiesDetailsContactGroupsList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<AlertPropertiesDetailsContactGroupsList>;
+
 /** list of contact roles */
 export type AlertPropertiesDetailsContactRolesList = Array<string>;
+const AlertPropertiesDetailsContactRolesList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<AlertPropertiesDetailsContactRolesList>;
+
 /** Alert details */
 export interface AlertPropertiesDetails {
   /** Type of timegrain cadence */
@@ -739,8 +1086,15 @@ export interface AlertPropertiesDetails {
   /** invoicing threshold */
   invoicingThreshold?: number;
 }
+const AlertPropertiesDetails = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<AlertPropertiesDetails>;
+
 /** alert status */
 export type AlertStatus = "None" | "Active" | "Overridden" | "Resolved" | "Dismissed";
+const AlertStatus = S.String;
+
 /** Alert properties. */
 export interface AlertProperties {
   /** defines the type of alert */
@@ -766,6 +1120,8 @@ export interface AlertProperties {
   /** dateTime in which the alert status was last modified */
   statusModificationTime?: string;
 }
+const AlertProperties = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<AlertProperties>;
+
 export interface DismissAlertRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
@@ -774,6 +1130,8 @@ export interface DismissAlertRequest {
   /** Alert properties. */
   properties?: AlertProperties;
 }
+const DismissAlertRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<DismissAlertRequest>;
+
 export interface DismissAlertResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -788,14 +1146,23 @@ export interface DismissAlertResponse {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
+const DismissAlertResponse = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<DismissAlertResponse>;
+
 export interface DownloadPriceSheetByBillingAccountRequest {
   /** BillingAccount ID */
   billingAccountId: string;
   /** Billing Period Name. */
   billingPeriodName: string;
 }
+const DownloadPriceSheetByBillingAccountRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DownloadPriceSheetByBillingAccountRequest>;
+
 /** Enum representing the status of an async operation. */
 export type OperationStatusType = "Running" | "Completed" | "Failed";
+const OperationStatusType = S.String;
+
 /** The CSV file from the reportUrl blob link consists of reservation usage data with the following schema at daily granularity */
 export type ReservationReportSchema =
   | "InstanceFlexibilityGroup"
@@ -809,6 +1176,8 @@ export type ReservationReportSchema =
   | "TotalReservedQuantity"
   | "UsageDate"
   | "UsedHours";
+const ReservationReportSchema = S.String;
+
 /** The URL to download the generated report. */
 export interface ReportURL {
   /** The CSV file from the reportUrl blob link consists of reservation usage data with the following schema at daily granularity */
@@ -816,6 +1185,8 @@ export interface ReportURL {
   /** The time at which report URL becomes invalid. */
   validUntil?: string;
 }
+const ReportURL = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<ReportURL>;
+
 /** The status of the long running operation. */
 export interface OperationStatus {
   /** The status of the long running operation. */
@@ -823,12 +1194,19 @@ export interface OperationStatus {
   /** The properties of the resource generated. */
   properties?: ReportURL;
 }
+const OperationStatus = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<OperationStatus>;
+
 export interface DownloadPriceSheetByBillingProfileRequest {
   /** BillingAccount ID */
   billingAccountName: string;
   /** Billing Profile Name. */
   billingProfileName: string;
 }
+const DownloadPriceSheetByBillingProfileRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DownloadPriceSheetByBillingProfileRequest>;
+
 /** The properties of the price sheet. */
 export interface MCAPriceSheetProperties {
   /** Unique identifier for the billing account. */
@@ -884,6 +1262,11 @@ export interface MCAPriceSheetProperties {
   /** Price type for a product. For example, an Azure resource with a pay-as-you-go rate with priceType as Consumption. Other price types include ReservedInstance and Savings Plan. */
   priceType?: string;
 }
+const MCAPriceSheetProperties = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<MCAPriceSheetProperties>;
+
 /** The URL to download the generated report. */
 export interface PricesheetDownloadProperties {
   /** The time at which report URL becomes invalid/expires in UTC e.g. 2020-12-08T05:55:59.4394737Z. */
@@ -893,6 +1276,11 @@ export interface PricesheetDownloadProperties {
   /** The properties in downloaded file */
   downloadFileProperties?: MCAPriceSheetProperties;
 }
+const PricesheetDownloadProperties = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<PricesheetDownloadProperties>;
+
 export interface DownloadPriceSheetByInvoiceRequest {
   /** BillingAccount ID */
   billingAccountName: string;
@@ -901,6 +1289,11 @@ export interface DownloadPriceSheetByInvoiceRequest {
   /** The ID that uniquely identifies an invoice. */
   invoiceName: string;
 }
+const DownloadPriceSheetByInvoiceRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DownloadPriceSheetByInvoiceRequest>;
+
 /** The date range for data in the export. This should only be specified with timeFrame set to 'Custom'. The maximum date range is 1 calendar month. */
 export interface ExportTimePeriod {
   /** The start date for export data. */
@@ -908,6 +1301,8 @@ export interface ExportTimePeriod {
   /** The end date for export data. */
   to: string;
 }
+const ExportTimePeriod = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<ExportTimePeriod>;
+
 export interface ExecuteExportRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
@@ -916,11 +1311,19 @@ export interface ExecuteExportRequest {
   /** Has time period for pulling data for the export. */
   timePeriod?: ExportTimePeriod;
 }
+const ExecuteExportRequest = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ExecuteExportRequest>;
+
 export interface ExecuteExportResponse {}
+const ExecuteExportResponse = DeleteBudgetResponse as any as S.Schema<ExecuteExportResponse>;
+
 /** The format of the export being delivered. */
 export type FormatType = "Csv" | "Parquet";
+const FormatType = S.String;
+
 /** The export delivery destination type. Currently only 'AzureBlob' is supported. */
 export type DestinationType = "AzureBlob";
+const DestinationType = S.String;
+
 /** This represents the blob storage account location where exports of costs will be delivered. There are two ways to configure the destination. The approach recommended for most customers is to specify the resourceId of the storage account. This requires a one-time registration of the account's subscription with the Microsoft.CostManagementExports resource provider in order to give Cost Management services access to the storage. When creating an export in the Azure portal this registration is performed automatically but API users may need to register the subscription explicitly (for more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services ). Another way to configure the destination is available ONLY to Partners with a Microsoft Partner Agreement plan who are global admins of their billing account. These Partners, instead of specifying the resourceId of a storage account, can specify the storage account name along with a SAS token for the account. This allows exports of costs to a storage account in any tenant. The SAS token should be created for the blob service with Service/Container/Object resource types and with Read/Write/Delete/List/Add/Create permissions (for more information see https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/export-cost-data-storage-account-sas-key ). */
 export interface ExportDeliveryDestination {
   /** The export delivery destination type. Currently only 'AzureBlob' is supported. */
@@ -936,11 +1339,18 @@ export interface ExportDeliveryDestination {
   /** The storage account where exports will be uploaded. For a restricted set of Azure customers this together with sasToken can be specified instead of resourceId. */
   storageAccount?: string;
 }
+const ExportDeliveryDestination = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ExportDeliveryDestination>;
+
 /** The delivery information associated with a export. */
 export interface ExportDeliveryInfo {
   /** Has destination for the export being delivered. */
   destination: ExportDeliveryDestination;
 }
+const ExportDeliveryInfo = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ExportDeliveryInfo>;
+
 /** The type of the export. Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations. */
 export type ExportType =
   | "Usage"
@@ -951,6 +1361,8 @@ export type ExportType =
   | "ReservationTransactions"
   | "ReservationRecommendations"
   | "ReservationDetails";
+const ExportType = S.String;
+
 /** The time frame for pulling data for the export. If custom, then a specific time period must be provided. */
 export type TimeframeType =
   | "MonthToDate"
@@ -960,12 +1372,21 @@ export type TimeframeType =
   | "WeekToDate"
   | "Custom"
   | "TheCurrentMonth";
+const TimeframeType = S.String;
+
 /** The granularity of rows in the export. Currently 'Daily' is supported for most cases. */
 export type GranularityType = "Daily" | "Monthly";
+const GranularityType = S.String;
+
 /** Array of column names to be included in the export. If not provided then the export will include all available columns. The available columns can vary by customer channel (see examples). */
 export type ExportDatasetConfigurationColumnsList = Array<string>;
+const ExportDatasetConfigurationColumnsList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<ExportDatasetConfigurationColumnsList>;
+
 /** The name of the filter. This is currently only supported for Export Definition type of ReservationRecommendations. Supported names are ['ReservationScope', 'LookBackPeriod', 'ResourceType'] */
 export type FilterItemNames = "ReservationScope" | "ResourceType" | "LookBackPeriod";
+const FilterItemNames = S.String;
+
 /** Will contain the filter name and value to operate on. This is currently only supported for Export Definition type of ReservationRecommendations. */
 export interface FilterItems {
   /** The name of the filter. This is currently only supported for Export Definition type of ReservationRecommendations. Supported names are ['ReservationScope', 'LookBackPeriod', 'ResourceType'] */
@@ -973,8 +1394,15 @@ export interface FilterItems {
   /** Value to filter by. Currently values supported per name are, for 'ReservationScope' supported values are ['Single', 'Shared'], for 'LookBackPeriod' supported values are ['Last7Days', 'Last30Days', 'Last60Days'] and for 'ResourceType' supported values are ['VirtualMachines', 'SQLDatabases', 'PostgreSQL', 'ManagedDisk', 'MySQL', 'RedHat', 'MariaDB', 'RedisCache', 'CosmosDB', 'SqlDataWarehouse', 'SUSELinux', 'AppService', 'BlockBlob', 'AzureDataExplorer', 'VMwareCloudSimple']. */
   value?: string;
 }
+const FilterItems = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<FilterItems>;
+
 /** Filters associated with the data sets. */
 export type ExportDatasetConfigurationFiltersList = Array<FilterItems>;
+const ExportDatasetConfigurationFiltersList = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ExportDatasetConfigurationFiltersList>;
+
 /** This is on path to deprecation and will not be supported going forward. */
 export interface ExportDatasetConfiguration {
   /** Array of column names to be included in the export. If not provided then the export will include all available columns. The available columns can vary by customer channel (see examples). */
@@ -984,6 +1412,11 @@ export interface ExportDatasetConfiguration {
   /** Filters associated with the data sets. */
   filters?: ExportDatasetConfigurationFiltersList;
 }
+const ExportDatasetConfiguration = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ExportDatasetConfiguration>;
+
 /** The definition for data in the export. */
 export interface ExportDataset {
   /** The granularity of rows in the export. Currently 'Daily' is supported for most cases. */
@@ -991,6 +1424,8 @@ export interface ExportDataset {
   /** The export dataset configuration. */
   configuration?: ExportDatasetConfiguration;
 }
+const ExportDataset = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<ExportDataset>;
+
 /** The definition of an export. */
 export interface ExportDefinition {
   /** The type of the export. Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations. */
@@ -1002,16 +1437,29 @@ export interface ExportDefinition {
   /** The definition for data in the export. */
   dataSet?: ExportDataset;
 }
+const ExportDefinition = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ExportDefinition>;
+
 /** Result of listing the run history of an export. */
 export interface ExportExecutionListResultInput {}
+const ExportExecutionListResultInput =
+  DeleteBudgetResponse as any as S.Schema<ExportExecutionListResultInput>;
+
 /** Allow customers to select overwrite data(OverwritePreviousReport) for exports. This setting will enable overwrite data for the same month in customer storage account. By default set to CreateNewReport. */
 export type DataOverwriteBehaviorType = "OverwritePreviousReport" | "CreateNewReport";
+const DataOverwriteBehaviorType = S.String;
+
 /** Allow customers to select compress data for exports. This setting will enable destination file compression scheme at runtime. By default set to None. Gzip is for csv and snappy for parquet. */
 export type CompressionModeType = "gzip" | "snappy" | "none";
+const CompressionModeType = S.String;
+
 /** The status of the export's schedule. If 'Inactive', the export's schedule is paused. To enable export set the status to be Active and then make a PUT request. */
 export type StatusType = "Active" | "Inactive";
+const StatusType = S.String;
+
 /** The schedule recurrence. */
 export type RecurrenceType = "Daily" | "Weekly" | "Monthly" | "Annually";
+const RecurrenceType = S.String;
+
 /** The start and end date for recurrence schedule. */
 export interface ExportRecurrencePeriod {
   /** The start date of recurrence. */
@@ -1019,6 +1467,11 @@ export interface ExportRecurrencePeriod {
   /** The end date of recurrence. */
   to?: string;
 }
+const ExportRecurrencePeriod = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ExportRecurrencePeriod>;
+
 /** The schedule associated with the export. */
 export interface ExportSchedule {
   /** The status of the export's schedule. If 'Inactive', the export's schedule is paused. To enable export set the status to be Active and then make a PUT request. */
@@ -1028,6 +1481,8 @@ export interface ExportSchedule {
   /** Has start and end date of the recurrence. The start date must be in future. If present, the end date must be greater than start date. */
   recurrencePeriod?: ExportRecurrencePeriod;
 }
+const ExportSchedule = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<ExportSchedule>;
+
 /** The properties of the export. */
 export interface ExportPropertiesInput {
   /** The format of the export being delivered. */
@@ -1049,12 +1504,24 @@ export interface ExportPropertiesInput {
   /** Has schedule information for the export. */
   schedule?: ExportSchedule;
 }
+const ExportPropertiesInput = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ExportPropertiesInput>;
+
 /** Type of managed service identity (either system assigned, or none). */
 export type SystemAssignedServiceIdentityType = "None" | "SystemAssigned";
+const SystemAssignedServiceIdentityType = S.String;
+
 /** Managed service identity (either system assigned, or none) */
 export interface ExportsCreateOrUpdateRequestIdentity {
   type: SystemAssignedServiceIdentityType | (string & {});
 }
+const ExportsCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ExportsCreateOrUpdateRequestIdentity>;
+
 export interface ExportsCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
@@ -1069,8 +1536,15 @@ export interface ExportsCreateOrUpdateRequest {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
+const ExportsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ExportsCreateOrUpdateRequest>;
+
 /** The type of the export run. */
 export type ExecutionType = "OnDemand" | "Scheduled";
+const ExecutionType = S.String;
+
 /** The last known status of the export run. */
 export type ExecutionStatus =
   | "Queued"
@@ -1080,6 +1554,8 @@ export type ExecutionStatus =
   | "Timeout"
   | "NewDataNotAvailable"
   | "DataNotAvailable";
+const ExecutionStatus = S.String;
+
 /** The properties of the export run. This is not populated currently. */
 export interface ExportSuspensionContext {
   /** The code for export suspension. */
@@ -1089,6 +1565,11 @@ export interface ExportSuspensionContext {
   /** The time when the export was suspended. */
   suspensionTime?: string;
 }
+const ExportSuspensionContext = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ExportSuspensionContext>;
+
 /** The common properties of the export. */
 export interface CommonExportProperties {
   /** The format of the export being delivered. */
@@ -1112,6 +1593,11 @@ export interface CommonExportProperties {
   /** The export suspension reason if export is in SystemSuspended state. This is not populated currently. */
   systemSuspensionContext?: ExportSuspensionContext;
 }
+const CommonExportProperties = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<CommonExportProperties>;
+
 /** The properties of the export run. */
 export interface ExportRunProperties {
   /** The type of the export run. */
@@ -1139,6 +1625,8 @@ export interface ExportRunProperties {
   /** The details of any error. */
   error?: ErrorDetails;
 }
+const ExportRunProperties = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<ExportRunProperties>;
+
 /** An export run. */
 export interface ExportRun {
   /** Resource Id. */
@@ -1152,13 +1640,25 @@ export interface ExportRun {
   /** The properties of the export run. */
   properties?: ExportRunProperties;
 }
+const ExportRun = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<ExportRun>;
+
 /** A list of export runs. */
 export type ExportExecutionListResultValueList = Array<ExportRun>;
+const ExportExecutionListResultValueList = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ExportExecutionListResultValueList>;
+
 /** Result of listing the run history of an export. */
 export interface ExportExecutionListResult {
   /** A list of export runs. */
   value?: ExportExecutionListResultValueList;
 }
+const ExportExecutionListResult = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ExportExecutionListResult>;
+
 /** The properties of the export. */
 export interface ExportProperties {
   /** The format of the export being delivered. */
@@ -1184,6 +1684,8 @@ export interface ExportProperties {
   /** Has schedule information for the export. */
   schedule?: ExportSchedule;
 }
+const ExportProperties = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<ExportProperties>;
+
 /** Managed service identity (either system assigned, or none) */
 export interface ExportsCreateOrUpdateResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -1192,6 +1694,11 @@ export interface ExportsCreateOrUpdateResponseIdentity {
   tenantId?: string;
   type: SystemAssignedServiceIdentityType;
 }
+const ExportsCreateOrUpdateResponseIdentity = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ExportsCreateOrUpdateResponseIdentity>;
+
 export interface ExportsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1210,13 +1717,24 @@ export interface ExportsCreateOrUpdateResponse {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
+const ExportsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ExportsCreateOrUpdateResponse>;
+
 export type ForecastExternalCloudProviderUsageRequestExternalCloudProviderType =
   | "externalSubscriptions"
   | "externalBillingAccounts";
+const ForecastExternalCloudProviderUsageRequestExternalCloudProviderType = S.String;
+
 /** The type of the forecast. */
 export type ForecastType = "Usage" | "ActualCost" | "AmortizedCost";
+const ForecastType = S.String;
+
 /** The time frame for pulling data for the forecast. */
 export type ForecastTimeframe = "Custom";
+const ForecastTimeframe = S.String;
+
 /** Has time period for pulling data for the forecast. */
 export interface ForecastTimePeriod {
   /** The start date to pull data from. */
@@ -1224,17 +1742,31 @@ export interface ForecastTimePeriod {
   /** The end date to pull data to. */
   to: string;
 }
+const ForecastTimePeriod = ExportTimePeriod as any as S.Schema<ForecastTimePeriod>;
+
 /** Array of column names to be included in the forecast. Any valid forecast column name is allowed. If not provided, then forecast includes all columns. */
 export type ForecastDatasetConfigurationColumnsList = Array<string>;
+const ForecastDatasetConfigurationColumnsList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<ForecastDatasetConfigurationColumnsList>;
+
 /** The configuration of dataset in the forecast. */
 export interface ForecastDatasetConfiguration {
   /** Array of column names to be included in the forecast. Any valid forecast column name is allowed. If not provided, then forecast includes all columns. */
   columns?: ForecastDatasetConfigurationColumnsList;
 }
+const ForecastDatasetConfiguration = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ForecastDatasetConfiguration>;
+
 /** The name of the column to aggregate. */
 export type FunctionName = "PreTaxCostUSD" | "Cost" | "CostUSD" | "PreTaxCost";
+const FunctionName = S.String;
+
 /** The name of the aggregation function to use. */
 export type FunctionType = "Sum";
+const FunctionType = S.String;
+
 /** The aggregation expression to be used in the forecast. */
 export interface ForecastAggregation {
   /** The name of the column to aggregate. */
@@ -1242,16 +1774,35 @@ export interface ForecastAggregation {
   /** The name of the aggregation function to use. */
   function: FunctionType | (string & {});
 }
+const ForecastAggregation = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<ForecastAggregation>;
+
 /** Dictionary of aggregation expression to use in the forecast. The key of each item in the dictionary is the alias for the aggregated column. forecast can have up to 2 aggregation clauses. */
 export type ForecastDatasetAggregationMap = { [key: string]: ForecastAggregation | undefined };
+const ForecastDatasetAggregationMap = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ForecastDatasetAggregationMap>;
+
 /** The logical "AND" expression. Must have at least 2 items. */
 export type ForecastFilterAndList = Array<ForecastFilter>;
+const ForecastFilterAndList = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ForecastFilterAndList>;
+
 /** The logical "OR" expression. Must have at least 2 items. */
 export type ForecastFilterOrList = Array<ForecastFilter>;
+const ForecastFilterOrList = ForecastFilterAndList as any as S.Schema<ForecastFilterOrList>;
+
 /** The operator to use for comparison. */
 export type ForecastOperatorType = "In";
+const ForecastOperatorType = S.String;
+
 /** Array of values to use for comparison */
 export type ForecastComparisonExpressionValuesList = Array<string>;
+const ForecastComparisonExpressionValuesList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<ForecastComparisonExpressionValuesList>;
+
 /** The comparison expression to be used in the forecast. */
 export interface ForecastComparisonExpression {
   /** The name of the column to use in comparison. */
@@ -1261,6 +1812,11 @@ export interface ForecastComparisonExpression {
   /** Array of values to use for comparison */
   values: ForecastComparisonExpressionValuesList;
 }
+const ForecastComparisonExpression = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ForecastComparisonExpression>;
+
 /** The filter expression to be used in the export. */
 export interface ForecastFilter {
   /** The logical "AND" expression. Must have at least 2 items. */
@@ -1272,6 +1828,8 @@ export interface ForecastFilter {
   /** Has comparison expression for a tag */
   tags?: ForecastComparisonExpression;
 }
+const ForecastFilter = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<ForecastFilter>;
+
 /** The definition of data present in the forecast. */
 export interface ForecastDataset {
   /** The granularity of rows in the forecast. */
@@ -1283,6 +1841,8 @@ export interface ForecastDataset {
   /** Has filter expression to use in the forecast. */
   filter?: ForecastFilter;
 }
+const ForecastDataset = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<ForecastDataset>;
+
 export interface ForecastExternalCloudProviderUsageRequest {
   /** The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account. */
   externalCloudProviderType:
@@ -1305,10 +1865,18 @@ export interface ForecastExternalCloudProviderUsageRequest {
   /** A boolean determining if FreshPartialCost will be included. */
   includeFreshPartialCost?: boolean;
 }
+const ForecastExternalCloudProviderUsageRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ForecastExternalCloudProviderUsageRequest>;
+
 /** Resource tags. */
 export type ForecastExternalCloudProviderUsageResponseTagsMap = {
   [key: string]: string | undefined;
 };
+const ForecastExternalCloudProviderUsageResponseTagsMap =
+  DimensionTagsMap as any as S.Schema<ForecastExternalCloudProviderUsageResponseTagsMap>;
+
 /** Forecast column properties */
 export interface ForecastColumn {
   /** The name of column. */
@@ -1316,11 +1884,26 @@ export interface ForecastColumn {
   /** The type of column. */
   type?: string;
 }
+const ForecastColumn = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<ForecastColumn>;
+
 /** Array of columns */
 export type ForecastPropertiesColumnsList = Array<ForecastColumn>;
+const ForecastPropertiesColumnsList = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ForecastPropertiesColumnsList>;
+
 export type ForecastPropertiesRowsItemList = Array<unknown>;
+const ForecastPropertiesRowsItemList =
+  AlertPropertiesDetailsResourceGroupFilterList as any as S.Schema<ForecastPropertiesRowsItemList>;
+
 /** Array of rows */
 export type ForecastPropertiesRowsList = Array<ForecastPropertiesRowsItemList>;
+const ForecastPropertiesRowsList = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ForecastPropertiesRowsList>;
+
 /** Forecast properties */
 export interface ForecastProperties {
   /** The link (url) to the next page of results. */
@@ -1330,6 +1913,8 @@ export interface ForecastProperties {
   /** Array of rows */
   rows?: ForecastPropertiesRowsList;
 }
+const ForecastProperties = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<ForecastProperties>;
+
 export interface ForecastExternalCloudProviderUsageResponse {
   /** Resource Id. */
   id?: string;
@@ -1348,6 +1933,11 @@ export interface ForecastExternalCloudProviderUsageResponse {
   /** Forecast properties */
   properties?: ForecastProperties;
 }
+const ForecastExternalCloudProviderUsageResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ForecastExternalCloudProviderUsageResponse>;
+
 export interface ForecastUsageRequest {
   /** The scope associated with forecast operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners. */
   scope: string;
@@ -1366,8 +1956,16 @@ export interface ForecastUsageRequest {
   /** A boolean determining if FreshPartialCost will be included. */
   includeFreshPartialCost?: boolean;
 }
+const ForecastUsageRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ForecastUsageRequest>;
+
 /** Resource tags. */
 export type ForecastUsageResponseTagsMap = { [key: string]: string | undefined };
+const ForecastUsageResponseTagsMap =
+  DimensionTagsMap as any as S.Schema<ForecastUsageResponseTagsMap>;
+
 export interface ForecastUsageResponse {
   /** Resource Id. */
   id?: string;
@@ -1386,10 +1984,19 @@ export interface ForecastUsageResponse {
   /** Forecast properties */
   properties?: ForecastProperties;
 }
+const ForecastUsageResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ForecastUsageResponse>;
+
 /** Grain which corresponds to value. */
 export type Grain = "Hourly" | "Daily" | "Monthly";
+const Grain = S.String;
+
 /** Kind/type of the benefit. */
 export type BenefitKind = "IncludedQuantity" | "Reservation" | "SavingsPlan";
+const BenefitKind = S.String;
+
 export interface GenerateGenerateBenefitUtilizationSummariesReportByBillingAccountRequest {
   /** BillingAccount ID */
   billingAccountId: string;
@@ -1408,6 +2015,12 @@ export interface GenerateGenerateBenefitUtilizationSummariesReportByBillingAccou
   /** The type of benefit data requested. Required for billing account and billing profile scopes. Implied and not to be passed at benefit scopes. Supported values are Reservation and SavingsPlan */
   kind?: BenefitKind | (string & {});
 }
+const GenerateGenerateBenefitUtilizationSummariesReportByBillingAccountRequest =
+  /*@__PURE__*/ __L.at(
+    __c13,
+    5,
+  ) as any as S.Schema<GenerateGenerateBenefitUtilizationSummariesReportByBillingAccountRequest>;
+
 /** Properties of an async benefit utilization summaries request. */
 export interface BenefitUtilizationSummariesRequest {
   /** Billing account the benefit utilization summaries report is for. Required for billing account and billing profile scopes. Not supported for any benefit scopes. */
@@ -1427,6 +2040,11 @@ export interface BenefitUtilizationSummariesRequest {
   /** The type of benefit data requested. Required for billing account and billing profile scopes. Implied and not to be passed at benefit scopes. Supported values are Reservation and SavingsPlan */
   kind?: BenefitKind;
 }
+const BenefitUtilizationSummariesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<BenefitUtilizationSummariesRequest>;
+
 /** The CSV file from the reportUrl and secondaryReportUrl blob link will consist of the following columns of benefit utilization data. UtilizedPercentage will be 0 for savings plans reports and non data bricks reservations. Utilization percentages will be 0 for data bricks reservations. */
 export type BenefitUtilizationSummaryReportSchema =
   | "Kind"
@@ -1438,6 +2056,8 @@ export type BenefitUtilizationSummaryReportSchema =
   | "MinUtilizationPercentage"
   | "UsageDate"
   | "UtilizedPercentage";
+const BenefitUtilizationSummaryReportSchema = S.String;
+
 /** Object representing the report url and valid until date of the async report generated. */
 export interface AsyncOperationStatusProperties {
   /** Sas url to the async benefit utilization summaries report. Will be empty if the report is in Running or Failed state. */
@@ -1447,6 +2067,11 @@ export interface AsyncOperationStatusProperties {
   /** The date that the sas url provided in reportUrl expires. */
   validUntil?: string;
 }
+const AsyncOperationStatusProperties = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<AsyncOperationStatusProperties>;
+
 /** Status of a benefit utilization summaries report. Provides Async Benefit Utilization Summaries Request input, status, and report sas url. */
 export interface BenefitUtilizationSummariesOperationStatus {
   /** Input given to create the benefit utilization summaries report. */
@@ -1456,6 +2081,11 @@ export interface BenefitUtilizationSummariesOperationStatus {
   /** Contains sas url to the async benefit utilization summaries report and a date that the url is valid until. These values will be empty if the report is in a Running or Failed state */
   properties?: AsyncOperationStatusProperties;
 }
+const BenefitUtilizationSummariesOperationStatus = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<BenefitUtilizationSummariesOperationStatus>;
+
 export interface GenerateGenerateBenefitUtilizationSummariesReportByBillingProfileRequest {
   /** BillingAccount ID */
   billingAccountId: string;
@@ -1474,6 +2104,12 @@ export interface GenerateGenerateBenefitUtilizationSummariesReportByBillingProfi
   /** The type of benefit data requested. Required for billing account and billing profile scopes. Implied and not to be passed at benefit scopes. Supported values are Reservation and SavingsPlan */
   kind?: BenefitKind | (string & {});
 }
+const GenerateGenerateBenefitUtilizationSummariesReportByBillingProfileRequest =
+  /*@__PURE__*/ __L.at(
+    __c14,
+    1,
+  ) as any as S.Schema<GenerateGenerateBenefitUtilizationSummariesReportByBillingProfileRequest>;
+
 export interface GenerateGenerateBenefitUtilizationSummariesReportByReservationIdRequest {
   /** Reservation Order ID */
   reservationOrderId: string;
@@ -1496,6 +2132,12 @@ export interface GenerateGenerateBenefitUtilizationSummariesReportByReservationI
   /** The type of benefit data requested. Required for billing account and billing profile scopes. Implied and not to be passed at benefit scopes. Supported values are Reservation and SavingsPlan */
   kind?: BenefitKind | (string & {});
 }
+const GenerateGenerateBenefitUtilizationSummariesReportByReservationIdRequest =
+  /*@__PURE__*/ __L.at(
+    __c14,
+    2,
+  ) as any as S.Schema<GenerateGenerateBenefitUtilizationSummariesReportByReservationIdRequest>;
+
 export interface GenerateGenerateBenefitUtilizationSummariesReportByReservationOrderIdRequest {
   /** Reservation Order ID */
   reservationOrderId: string;
@@ -1516,6 +2158,12 @@ export interface GenerateGenerateBenefitUtilizationSummariesReportByReservationO
   /** The type of benefit data requested. Required for billing account and billing profile scopes. Implied and not to be passed at benefit scopes. Supported values are Reservation and SavingsPlan */
   kind?: BenefitKind | (string & {});
 }
+const GenerateGenerateBenefitUtilizationSummariesReportByReservationOrderIdRequest =
+  /*@__PURE__*/ __L.at(
+    __c14,
+    3,
+  ) as any as S.Schema<GenerateGenerateBenefitUtilizationSummariesReportByReservationOrderIdRequest>;
+
 export interface GenerateGenerateBenefitUtilizationSummariesReportBySavingsPlanIdRequest {
   /** Savings plan order ID. */
   savingsPlanOrderId: string;
@@ -1538,6 +2186,12 @@ export interface GenerateGenerateBenefitUtilizationSummariesReportBySavingsPlanI
   /** The type of benefit data requested. Required for billing account and billing profile scopes. Implied and not to be passed at benefit scopes. Supported values are Reservation and SavingsPlan */
   kind?: BenefitKind | (string & {});
 }
+const GenerateGenerateBenefitUtilizationSummariesReportBySavingsPlanIdRequest =
+  /*@__PURE__*/ __L.at(
+    __c14,
+    4,
+  ) as any as S.Schema<GenerateGenerateBenefitUtilizationSummariesReportBySavingsPlanIdRequest>;
+
 export interface GenerateGenerateBenefitUtilizationSummariesReportBySavingsPlanOrderIdRequest {
   /** Savings plan order ID. */
   savingsPlanOrderId: string;
@@ -1558,6 +2212,12 @@ export interface GenerateGenerateBenefitUtilizationSummariesReportBySavingsPlanO
   /** The type of benefit data requested. Required for billing account and billing profile scopes. Implied and not to be passed at benefit scopes. Supported values are Reservation and SavingsPlan */
   kind?: BenefitKind | (string & {});
 }
+const GenerateGenerateBenefitUtilizationSummariesReportBySavingsPlanOrderIdRequest =
+  /*@__PURE__*/ __L.at(
+    __c14,
+    5,
+  ) as any as S.Schema<GenerateGenerateBenefitUtilizationSummariesReportBySavingsPlanOrderIdRequest>;
+
 export interface GenerateReservationDetailsReportByBillingAccountIdRequest {
   /** BillingAccount ID */
   billingAccountId: string;
@@ -1566,6 +2226,11 @@ export interface GenerateReservationDetailsReportByBillingAccountIdRequest {
   /** End Date */
   endDate: string;
 }
+const GenerateReservationDetailsReportByBillingAccountIdRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GenerateReservationDetailsReportByBillingAccountIdRequest>;
+
 export interface GenerateReservationDetailsReportByBillingProfileIdRequest {
   /** BillingAccount ID */
   billingAccountId: string;
@@ -1576,12 +2241,19 @@ export interface GenerateReservationDetailsReportByBillingProfileIdRequest {
   /** End Date */
   endDate: string;
 }
+const GenerateReservationDetailsReportByBillingProfileIdRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<GenerateReservationDetailsReportByBillingProfileIdRequest>;
+
 export interface GetAlertRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
   /** Alert ID */
   alertId: string;
 }
+const GetAlertRequest = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<GetAlertRequest>;
+
 export interface GetAlertResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1596,12 +2268,16 @@ export interface GetAlertResponse {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
+const GetAlertResponse = DismissAlertResponse as any as S.Schema<GetAlertResponse>;
+
 export interface GetBudgetRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
   /** Budget Name. */
   budgetName: string;
 }
+const GetBudgetRequest = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<GetBudgetRequest>;
+
 export interface GetBudgetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1616,12 +2292,19 @@ export interface GetBudgetResponse {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
+const GetBudgetResponse = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<GetBudgetResponse>;
+
 export interface GetCostAllocationRuleRequest {
   /** BillingAccount ID */
   billingAccountId: string;
   /** Cost allocation rule name. The name cannot include spaces or any non alphanumeric characters other than '_' and '-'. The max length is 260 characters. */
   ruleName: string;
 }
+const GetCostAllocationRuleRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<GetCostAllocationRuleRequest>;
+
 export interface GetCostAllocationRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1634,6 +2317,9 @@ export interface GetCostAllocationRuleResponse {
   /** Cost allocation rule properties */
   properties?: CostAllocationRuleProperties;
 }
+const GetCostAllocationRuleResponse =
+  CostAllocationRulesCreateOrUpdateResponse as any as S.Schema<GetCostAllocationRuleResponse>;
+
 export interface GetExportRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
@@ -1642,6 +2328,8 @@ export interface GetExportRequest {
   /** May be used to expand the properties within an export. Currently only 'runHistory' is supported and will return information for the last 10 runs of the export. */
   _expand?: string;
 }
+const GetExportRequest = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<GetExportRequest>;
+
 /** Managed service identity (either system assigned, or none) */
 export type GetExportResponseIdentity = ExportsCreateOrUpdateResponseIdentity;
 export interface GetExportResponse {
@@ -1662,24 +2350,41 @@ export interface GetExportResponse {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
+const GetExportResponse = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<GetExportResponse>;
+
 export interface GetExportExecutionHistoryRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
   /** Export Name. */
   exportName: string;
 }
+const GetExportExecutionHistoryRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<GetExportExecutionHistoryRequest>;
+
 export interface GetGenerateCostDetailsReportOperationResultsRequest {
   /** The ARM Resource ID for subscription, billing account, or other billing scopes.Currently Resource Group and Management Group are not supported. For details, see https://aka.ms/costmgmt/scopes. */
   scope: string;
   /** The target operation Id. */
   operationId: string;
 }
+const GetGenerateCostDetailsReportOperationResultsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<GetGenerateCostDetailsReportOperationResultsRequest>;
+
 export interface GetGenerateDetailedCostReportOperationResultRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
   /** The target operation Id. */
   operationId: string;
 }
+const GetGenerateDetailedCostReportOperationResultRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<GetGenerateDetailedCostReportOperationResultRequest>;
+
 export interface GetGenerateDetailedCostReportOperationResultResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1692,12 +2397,20 @@ export interface GetGenerateDetailedCostReportOperationResultResponse {
   /** The properties of the resource generated. */
   properties?: DownloadURL;
 }
+const GetGenerateDetailedCostReportOperationResultResponse =
+  CreateGenerateDetailedCostReportOperationResponse as any as S.Schema<GetGenerateDetailedCostReportOperationResultResponse>;
+
 export interface GetGenerateDetailedCostReportOperationStatusRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
   /** The target operation Id. */
   operationId: string;
 }
+const GetGenerateDetailedCostReportOperationStatusRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<GetGenerateDetailedCostReportOperationStatusRequest>;
+
 /** The status of the long running operation. */
 export type ReportOperationStatusType =
   | "InProgress"
@@ -1707,11 +2420,15 @@ export type ReportOperationStatusType =
   | "NoDataFound"
   | "ReadyToDownload"
   | "TimedOut";
+const ReportOperationStatusType = S.String;
+
 /** The status of the long running operation. */
 export interface Status {
   /** The status of the long running operation. */
   status?: ReportOperationStatusType;
 }
+const Status = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<Status>;
+
 export interface GetGenerateDetailedCostReportOperationStatusResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1732,6 +2449,11 @@ export interface GetGenerateDetailedCostReportOperationStatusResponse {
   /** The details of the error. */
   error?: ErrorDetails;
 }
+const GetGenerateDetailedCostReportOperationStatusResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<GetGenerateDetailedCostReportOperationStatusResponse>;
+
 export interface GetMarkupRuleRequest {
   /** BillingAccount ID */
   billingAccountId: string;
@@ -1740,6 +2462,11 @@ export interface GetMarkupRuleRequest {
   /** Markup rule name. */
   ruleName: string;
 }
+const GetMarkupRuleRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<GetMarkupRuleRequest>;
+
 /** The customer billing metadata */
 export interface CustomerMetadata {
   /** Customer billing account id */
@@ -1747,6 +2474,8 @@ export interface CustomerMetadata {
   /** Customer billing profile id */
   billingProfileId: string;
 }
+const CustomerMetadata = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<CustomerMetadata>;
+
 /** The properties of the markup rule. */
 export interface MarkupRuleProperties {
   /** The description of the markup rule. */
@@ -1760,6 +2489,11 @@ export interface MarkupRuleProperties {
   /** Customer information for the markup rule. */
   customerDetails: CustomerMetadata;
 }
+const MarkupRuleProperties = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<MarkupRuleProperties>;
+
 export interface GetMarkupRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1772,21 +2506,43 @@ export interface GetMarkupRuleResponse {
   /** Markup rule properties */
   properties?: MarkupRuleProperties;
 }
+const GetMarkupRuleResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<GetMarkupRuleResponse>;
+
 export interface GetScheduledActionRequest {
   /** Scheduled action name. */
   name: string;
 }
+const GetScheduledActionRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<GetScheduledActionRequest>;
+
 /** Destination of the view data. Currently only CSV format is supported. */
 export type FileFormat = "Csv";
+const FileFormat = S.String;
+
 /** Destination of the view data. Currently only CSV format is supported. */
 export type FileDestinationFileFormatsList = Array<FileFormat | (string & {})>;
+const FileDestinationFileFormatsList = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<FileDestinationFileFormatsList>;
+
 /** Destination of the view data. This is optional. Currently only CSV format is supported. */
 export interface FileDestination {
   /** Destination of the view data. Currently only CSV format is supported. */
   fileFormats?: FileDestinationFileFormatsList;
 }
+const FileDestination = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<FileDestination>;
+
 /** Array of email addresses. */
 export type NotificationPropertiesToList = Array<string>;
+const NotificationPropertiesToList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<NotificationPropertiesToList>;
+
 /** The properties of the scheduled action notification. */
 export interface NotificationProperties {
   /** Array of email addresses. */
@@ -1800,8 +2556,15 @@ export interface NotificationProperties {
   /** Subject of the email. Length is limited to 70 characters. */
   subject: string;
 }
+const NotificationProperties = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<NotificationProperties>;
+
 /** Frequency of the schedule. */
 export type ScheduleFrequency = "Daily" | "Weekly" | "Monthly";
+const ScheduleFrequency = S.String;
+
 /** Days of Week. */
 export type DaysOfWeek =
   | "Monday"
@@ -1813,10 +2576,16 @@ export type DaysOfWeek =
   | "Sunday";
 /** Day names in english on which cost analysis data will be emailed. This property is applicable when frequency is Weekly or Monthly. */
 export type SchedulePropertiesDaysOfWeekList = Array<DaysOfWeek | (string & {})>;
+const SchedulePropertiesDaysOfWeekList =
+  FileDestinationFileFormatsList as any as S.Schema<SchedulePropertiesDaysOfWeekList>;
+
 /** Weeks of month. */
 export type WeeksOfMonth = "First" | "Second" | "Third" | "Fourth" | "Last";
 /** Weeks in which cost analysis data will be emailed. This property is applicable when frequency is Monthly and used in combination with daysOfWeek. */
 export type SchedulePropertiesWeeksOfMonthList = Array<WeeksOfMonth | (string & {})>;
+const SchedulePropertiesWeeksOfMonthList =
+  FileDestinationFileFormatsList as any as S.Schema<SchedulePropertiesWeeksOfMonthList>;
+
 /** The properties of the schedule. */
 export interface ScheduleProperties {
   /** Frequency of the schedule. */
@@ -1834,8 +2603,12 @@ export interface ScheduleProperties {
   /** The end date and time of the scheduled action (UTC). */
   endDate: string;
 }
+const ScheduleProperties = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<ScheduleProperties>;
+
 /** Status of the scheduled action. */
 export type ScheduledActionStatus = "Enabled" | "Expired" | "Disabled";
+const ScheduledActionStatus = S.String;
+
 /** The properties of the scheduled action. */
 export interface ScheduledActionProperties {
   /** Scheduled action name. */
@@ -1855,8 +2628,15 @@ export interface ScheduledActionProperties {
   /** Cost analysis viewId used for scheduled action. For example, '/providers/Microsoft.CostManagement/views/swaggerExample' */
   viewId: string;
 }
+const ScheduledActionProperties = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ScheduledActionProperties>;
+
 /** Kind of the scheduled action. */
 export type ScheduledActionKind = "Email" | "InsightAlert";
+const ScheduledActionKind = S.String;
+
 export interface GetScheduledActionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1873,12 +2653,22 @@ export interface GetScheduledActionResponse {
   /** Kind of the scheduled action. */
   kind?: ScheduledActionKind;
 }
+const GetScheduledActionResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<GetScheduledActionResponse>;
+
 export interface GetScheduledActionByScopeRequest {
   /** undefined */
   scope: string;
   /** Scheduled action name. */
   name: string;
 }
+const GetScheduledActionByScopeRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<GetScheduledActionByScopeRequest>;
+
 export interface GetScheduledActionByScopeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1895,15 +2685,27 @@ export interface GetScheduledActionByScopeResponse {
   /** Kind of the scheduled action. */
   kind?: ScheduledActionKind;
 }
+const GetScheduledActionByScopeResponse =
+  GetScheduledActionResponse as any as S.Schema<GetScheduledActionByScopeResponse>;
+
 export type GetSettingsByScopeRequestType = "taginheritance";
+const GetSettingsByScopeRequestType = S.String;
+
 export interface GetSettingsByScopeRequest {
   /** undefined */
   scope: string;
   /** Setting type. */
   type: GetSettingsByScopeRequestType | (string & {});
 }
+const GetSettingsByScopeRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<GetSettingsByScopeRequest>;
+
 /** Specifies the kind of settings. */
 export type SettingsKind = "taginheritance";
+const SettingsKind = S.String;
+
 export interface GetSettingsByScopeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1916,18 +2718,31 @@ export interface GetSettingsByScopeResponse {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind: SettingsKind;
 }
+const GetSettingsByScopeResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<GetSettingsByScopeResponse>;
+
 export interface GetViewRequest {
   /** View name */
   viewName: string;
 }
+const GetViewRequest = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<GetViewRequest>;
+
 /** The type of the report. Usage represents actual usage, forecast represents forecasted data and UsageAndForecast represents both usage and forecasted data. Actual usage and forecasted data can be differentiated based on dates. */
 export type ReportType = "Usage";
+const ReportType = S.String;
+
 /** The time frame for pulling data for the report. If custom, then a specific time period must be provided. */
 export type ReportTimeframeType = "WeekToDate" | "MonthToDate" | "YearToDate" | "Custom";
+const ReportTimeframeType = S.String;
+
 /** The start and end date for pulling data for the report. */
 export type ReportConfigTimePeriod = ForecastTimePeriod;
 /** The granularity of rows in the report. */
 export type ReportGranularityType = "Daily" | "Monthly";
+const ReportGranularityType = S.String;
+
 /** Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns. */
 export type ReportConfigDatasetConfigurationColumnsList = Array<string>;
 /** The configuration of dataset in the report. */
@@ -1935,6 +2750,9 @@ export interface ReportConfigDatasetConfiguration {
   /** Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns. */
   columns?: ReportConfigDatasetConfigurationColumnsList;
 }
+const ReportConfigDatasetConfiguration =
+  ForecastDatasetConfiguration as any as S.Schema<ReportConfigDatasetConfiguration>;
+
 /** The aggregation expression to be used in the report. */
 export interface ReportConfigAggregation {
   /** The name of the column to aggregate. */
@@ -1942,12 +2760,24 @@ export interface ReportConfigAggregation {
   /** The name of the aggregation function to use. */
   function: FunctionType | (string & {});
 }
+const ReportConfigAggregation = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<ReportConfigAggregation>;
+
 /** Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses. */
 export type ReportConfigDatasetAggregationMap = {
   [key: string]: ReportConfigAggregation | undefined;
 };
+const ReportConfigDatasetAggregationMap = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<ReportConfigDatasetAggregationMap>;
+
 /** The type of the column in the report. */
 export type QueryColumnType = "TagKey" | "Dimension";
+const QueryColumnType = S.String;
+
 /** The group by expression to be used in the report. */
 export interface ReportConfigGrouping {
   /** Has type of the column to group. */
@@ -1955,10 +2785,22 @@ export interface ReportConfigGrouping {
   /** The name of the column to group. This version supports subscription lowest possible grain. */
   name: string;
 }
+const ReportConfigGrouping = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<ReportConfigGrouping>;
+
 /** Array of group by expression to use in the report. Report can have up to 2 group by clauses. */
 export type ReportConfigDatasetGroupingList = Array<ReportConfigGrouping>;
+const ReportConfigDatasetGroupingList = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<ReportConfigDatasetGroupingList>;
+
 /** Direction of sort. */
 export type ReportConfigSortingType = "Ascending" | "Descending";
+const ReportConfigSortingType = S.String;
+
 /** The order by expression to be used in the report. */
 export interface ReportConfigSorting {
   /** Direction of sort. */
@@ -1966,16 +2808,36 @@ export interface ReportConfigSorting {
   /** The name of the column to sort. */
   name: string;
 }
+const ReportConfigSorting = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<ReportConfigSorting>;
+
 /** Array of order by expression to use in the report. */
 export type ReportConfigDatasetSortingList = Array<ReportConfigSorting>;
+const ReportConfigDatasetSortingList = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ReportConfigDatasetSortingList>;
+
 /** The logical "AND" expression. Must have at least 2 items. */
 export type ReportConfigFilterAndList = Array<ReportConfigFilter>;
+const ReportConfigFilterAndList = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ReportConfigFilterAndList>;
+
 /** The logical "OR" expression. Must have at least 2 items. */
 export type ReportConfigFilterOrList = Array<ReportConfigFilter>;
+const ReportConfigFilterOrList =
+  ReportConfigFilterAndList as any as S.Schema<ReportConfigFilterOrList>;
+
 /** The operator to use for comparison. */
 export type OperatorType = "In" | "Contains";
+const OperatorType = S.String;
+
 /** Array of values to use for comparison */
 export type ReportConfigComparisonExpressionValuesList = Array<string>;
+const ReportConfigComparisonExpressionValuesList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<ReportConfigComparisonExpressionValuesList>;
+
 /** The comparison expression to be used in the report. */
 export interface ReportConfigComparisonExpression {
   /** The name of the column to use in comparison. */
@@ -1985,6 +2847,11 @@ export interface ReportConfigComparisonExpression {
   /** Array of values to use for comparison */
   values: ReportConfigComparisonExpressionValuesList;
 }
+const ReportConfigComparisonExpression = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ReportConfigComparisonExpression>;
+
 /** The filter expression to be used in the report. */
 export interface ReportConfigFilter {
   /** The logical "AND" expression. Must have at least 2 items. */
@@ -1996,6 +2863,8 @@ export interface ReportConfigFilter {
   /** Has comparison expression for a tag */
   tags?: ReportConfigComparisonExpression;
 }
+const ReportConfigFilter = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<ReportConfigFilter>;
+
 /** The definition of data present in the report. */
 export interface ReportConfigDataset {
   /** The granularity of rows in the report. */
@@ -2011,6 +2880,8 @@ export interface ReportConfigDataset {
   /** Has filter expression to use in the report. */
   filter?: ReportConfigFilter;
 }
+const ReportConfigDataset = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<ReportConfigDataset>;
+
 /** The definition of a report config. */
 export interface ReportConfigDefinition {
   /** The type of the report. Usage represents actual usage, forecast represents forecasted data and UsageAndForecast represents both usage and forecasted data. Actual usage and forecasted data can be differentiated based on dates. */
@@ -2024,14 +2895,27 @@ export interface ReportConfigDefinition {
   /** If true, report includes monetary commitment. */
   includeMonetaryCommitment?: boolean;
 }
+const ReportConfigDefinition = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ReportConfigDefinition>;
+
 /** Chart type of the main view in Cost Analysis. Required. */
 export type ChartType = "Area" | "Line" | "StackedColumn" | "GroupedColumn" | "Table";
+const ChartType = S.String;
+
 /** Show costs accumulated over time. */
 export type AccumulatedType = "true" | "false";
+const AccumulatedType = S.String;
+
 /** Metric to use when displaying costs. */
 export type MetricType = "ActualCost" | "AmortizedCost" | "AHUB";
+const MetricType = S.String;
+
 /** KPI type (Forecast, Budget). */
 export type KpiTypeType = "Forecast" | "Budget";
+const KpiTypeType = S.String;
+
 /** Each KPI must contain a 'type' and 'enabled' key. */
 export interface KpiProperties {
   /** KPI type (Forecast, Budget). */
@@ -2041,10 +2925,19 @@ export interface KpiProperties {
   /** show the KPI in the UI? */
   enabled?: boolean;
 }
+const KpiProperties = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<KpiProperties>;
+
 /** List of KPIs to show in Cost Analysis UI. */
 export type ViewPropertiesKpisList = Array<KpiProperties>;
+const ViewPropertiesKpisList = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<ViewPropertiesKpisList>;
+
 /** Data type to show in view. */
 export type PivotTypeType = "Dimension" | "TagKey";
+const PivotTypeType = S.String;
+
 /** Each pivot must contain a 'type' and 'name'. */
 export interface PivotProperties {
   /** Data type to show in view. */
@@ -2052,8 +2945,15 @@ export interface PivotProperties {
   /** Data field to show in view. */
   name?: string;
 }
+const PivotProperties = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<PivotProperties>;
+
 /** Configuration of 3 sub-views in the Cost Analysis UI. */
 export type ViewPropertiesPivotsList = Array<PivotProperties>;
+const ViewPropertiesPivotsList = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<ViewPropertiesPivotsList>;
+
 /** The properties of the view. */
 export interface ViewProperties {
   /** User input name of the view. Required. */
@@ -2081,6 +2981,8 @@ export interface ViewProperties {
   /** Configuration of 3 sub-views in the Cost Analysis UI. */
   pivots?: ViewPropertiesPivotsList;
 }
+const ViewProperties = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<ViewProperties>;
+
 export interface GetViewResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2095,12 +2997,19 @@ export interface GetViewResponse {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
+const GetViewResponse = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<GetViewResponse>;
+
 export interface GetViewByScopeRequest {
   /** undefined */
   scope: string;
   /** View name */
   viewName: string;
 }
+const GetViewByScopeRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<GetViewByScopeRequest>;
+
 export interface GetViewByScopeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2115,15 +3024,24 @@ export interface GetViewByScopeResponse {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
+const GetViewByScopeResponse = GetViewResponse as any as S.Schema<GetViewByScopeResponse>;
+
 export type ListAlertExternalRequestExternalCloudProviderType =
   | "externalSubscriptions"
   | "externalBillingAccounts";
+const ListAlertExternalRequestExternalCloudProviderType = S.String;
+
 export interface ListAlertExternalRequest {
   /** The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account. */
   externalCloudProviderType: ListAlertExternalRequestExternalCloudProviderType | (string & {});
   /** This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations. */
   externalCloudProviderId: string;
 }
+const ListAlertExternalRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ListAlertExternalRequest>;
+
 /** An individual alert. */
 export interface Alert {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2139,8 +3057,15 @@ export interface Alert {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
+const Alert = DismissAlertResponse as any as S.Schema<Alert>;
+
 /** List of alerts. */
 export type AlertsResultValueList = Array<Alert>;
+const AlertsResultValueList = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<AlertsResultValueList>;
+
 /** Result of alerts. */
 export interface AlertsResult {
   /** List of alerts. */
@@ -2148,10 +3073,14 @@ export interface AlertsResult {
   /** URL to get the next set of alerts results if there are any. */
   nextLink?: string;
 }
+const AlertsResult = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<AlertsResult>;
+
 export interface ListAlertsRequest {
   /** The scope associated with alerts operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners. */
   scope: string;
 }
+const ListAlertsRequest = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<ListAlertsRequest>;
+
 export interface ListBenefitRecommendationsRequest {
   /** The scope associated with benefit recommendation operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resource group scope, /providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for enterprise agreement scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope */
   billingScope: string;
@@ -2162,10 +3091,22 @@ export interface ListBenefitRecommendationsRequest {
   /** May be used to expand the properties by: properties/usage, properties/allRecommendationDetails */
   _expand?: string;
 }
+const ListBenefitRecommendationsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<ListBenefitRecommendationsRequest>;
+
 /** The number of days used to look back. */
 export type LookBackPeriod = "Last7Days" | "Last30Days" | "Last60Days";
+const LookBackPeriod = S.String;
+
 /** On-demand charges for each hour between firstConsumptionDate and lastConsumptionDate that were used for computing benefit recommendations. */
 export type RecommendationUsageDetailsChargesList = Array<number>;
+const RecommendationUsageDetailsChargesList = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<RecommendationUsageDetailsChargesList>;
+
 /** On-demand charges between firstConsumptionDate and lastConsumptionDate that were used for computing benefit recommendations. */
 export interface RecommendationUsageDetails {
   /** The grain of the usage. Supported values: 'Hourly' */
@@ -2173,8 +3114,15 @@ export interface RecommendationUsageDetails {
   /** On-demand charges for each hour between firstConsumptionDate and lastConsumptionDate that were used for computing benefit recommendations. */
   charges?: RecommendationUsageDetailsChargesList;
 }
+const RecommendationUsageDetails = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<RecommendationUsageDetails>;
+
 /** Grain which corresponds to value. */
 export type Term = "P1Y" | "P3Y";
+const Term = S.String;
+
 /** Benefit recommendation details. */
 export interface AllSavingsBenefitDetails {
   /** The difference between total cost and benefit cost for the 'totalHours' in the look-back period. */
@@ -2196,8 +3144,18 @@ export interface AllSavingsBenefitDetails {
   /** Estimated unused portion of the 'benefitCost'. */
   wastageCost?: number;
 }
+const AllSavingsBenefitDetails = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<AllSavingsBenefitDetails>;
+
 /** The list of benefit recommendations with the recommendation details.. */
 export type AllSavingsListValueList = Array<AllSavingsBenefitDetails>;
+const AllSavingsListValueList = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<AllSavingsListValueList>;
+
 /** The list of all benefit recommendations with the recommendation details. */
 export interface AllSavingsList {
   /** The list of benefit recommendations with the recommendation details.. */
@@ -2205,8 +3163,12 @@ export interface AllSavingsList {
   /** The link (URL) to the next page of results. */
   nextLink?: string;
 }
+const AllSavingsList = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<AllSavingsList>;
+
 /** Kind of the recommendation scope. */
 export type Scope = "Single" | "Shared" | "ManagementGroup";
+const Scope = S.String;
+
 /** The properties of the benefit recommendations. */
 export interface BenefitRecommendationProperties {
   /** The first usage date used for looking back for computing the recommendations. */
@@ -2236,6 +3198,11 @@ export interface BenefitRecommendationProperties {
   /** Benefit scope. For example, Single or Shared. */
   scope: Scope;
 }
+const BenefitRecommendationProperties = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<BenefitRecommendationProperties>;
+
 /** benefit plan recommendation details. */
 export interface BenefitRecommendationModel {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2251,8 +3218,18 @@ export interface BenefitRecommendationModel {
   /** The properties of the benefit recommendations. */
   properties?: BenefitRecommendationProperties;
 }
+const BenefitRecommendationModel = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<BenefitRecommendationModel>;
+
 /** The list of benefit recommendations. */
 export type BenefitRecommendationsListResultValueList = Array<BenefitRecommendationModel>;
+const BenefitRecommendationsListResultValueList = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<BenefitRecommendationsListResultValueList>;
+
 /** Result of listing benefit recommendations. */
 export interface BenefitRecommendationsListResult {
   /** The list of benefit recommendations. */
@@ -2260,10 +3237,17 @@ export interface BenefitRecommendationsListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
+const BenefitRecommendationsListResult = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<BenefitRecommendationsListResult>;
+
 export type ListBenefitUtilizationSummaryByBillingAccountIdRequestGrainParameter =
   | "Hourly"
   | "Daily"
   | "Monthly";
+const ListBenefitUtilizationSummaryByBillingAccountIdRequestGrainParameter = S.String;
+
 export interface ListBenefitUtilizationSummaryByBillingAccountIdRequest {
   /** BillingAccount ID */
   billingAccountId: string;
@@ -2274,6 +3258,11 @@ export interface ListBenefitUtilizationSummaryByBillingAccountIdRequest {
   /** Supports filtering by properties/benefitId, properties/benefitOrderId and properties/usageDate. */
   filter?: string;
 }
+const ListBenefitUtilizationSummaryByBillingAccountIdRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<ListBenefitUtilizationSummaryByBillingAccountIdRequest>;
+
 /** Benefit utilization summary resource. */
 export interface BenefitUtilizationSummary {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2287,8 +3276,16 @@ export interface BenefitUtilizationSummary {
   /** Supported values: 'SavingsPlan'. */
   kind: BenefitKind;
 }
+const BenefitUtilizationSummary =
+  GetSettingsByScopeResponse as any as S.Schema<BenefitUtilizationSummary>;
+
 /** The list of benefit utilization summaries. */
 export type BenefitUtilizationSummariesListResultValueList = Array<BenefitUtilizationSummary>;
+const BenefitUtilizationSummariesListResultValueList = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<BenefitUtilizationSummariesListResultValueList>;
+
 /** List of benefit utilization summaries. */
 export interface BenefitUtilizationSummariesListResult {
   /** The list of benefit utilization summaries. */
@@ -2296,10 +3293,17 @@ export interface BenefitUtilizationSummariesListResult {
   /** The link (URL) to the next page of results. */
   nextLink?: string;
 }
+const BenefitUtilizationSummariesListResult = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<BenefitUtilizationSummariesListResult>;
+
 export type ListBenefitUtilizationSummaryByBillingProfileIdRequestGrainParameter =
   | "Hourly"
   | "Daily"
   | "Monthly";
+const ListBenefitUtilizationSummaryByBillingProfileIdRequestGrainParameter = S.String;
+
 export interface ListBenefitUtilizationSummaryByBillingProfileIdRequest {
   /** BillingAccount ID */
   billingAccountId: string;
@@ -2312,10 +3316,17 @@ export interface ListBenefitUtilizationSummaryByBillingProfileIdRequest {
   /** Supports filtering by properties/benefitId, properties/benefitOrderId and properties/usageDate. */
   filter?: string;
 }
+const ListBenefitUtilizationSummaryByBillingProfileIdRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<ListBenefitUtilizationSummaryByBillingProfileIdRequest>;
+
 export type ListBenefitUtilizationSummaryBySavingsPlanIdRequestGrainParameter =
   | "Hourly"
   | "Daily"
   | "Monthly";
+const ListBenefitUtilizationSummaryBySavingsPlanIdRequestGrainParameter = S.String;
+
 export interface ListBenefitUtilizationSummaryBySavingsPlanIdRequest {
   /** Savings plan order ID. */
   savingsPlanOrderId: string;
@@ -2328,10 +3339,17 @@ export interface ListBenefitUtilizationSummaryBySavingsPlanIdRequest {
     | ListBenefitUtilizationSummaryBySavingsPlanIdRequestGrainParameter
     | (string & {});
 }
+const ListBenefitUtilizationSummaryBySavingsPlanIdRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<ListBenefitUtilizationSummaryBySavingsPlanIdRequest>;
+
 export type ListBenefitUtilizationSummaryBySavingsPlanOrderRequestGrainParameter =
   | "Hourly"
   | "Daily"
   | "Monthly";
+const ListBenefitUtilizationSummaryBySavingsPlanOrderRequestGrainParameter = S.String;
+
 export interface ListBenefitUtilizationSummaryBySavingsPlanOrderRequest {
   /** Savings plan order ID. */
   savingsPlanOrderId: string;
@@ -2342,12 +3360,19 @@ export interface ListBenefitUtilizationSummaryBySavingsPlanOrderRequest {
     | ListBenefitUtilizationSummaryBySavingsPlanOrderRequestGrainParameter
     | (string & {});
 }
+const ListBenefitUtilizationSummaryBySavingsPlanOrderRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<ListBenefitUtilizationSummaryBySavingsPlanOrderRequest>;
+
 export interface ListBudgetsRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
   /** OData filter option. May be used to filter budgets by properties/category. The filter supports 'eq' only. */
   _filter?: string;
 }
+const ListBudgetsRequest = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<ListBudgetsRequest>;
+
 /** A budget resource. */
 export interface Budget {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2363,8 +3388,15 @@ export interface Budget {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
+const Budget = GetBudgetResponse as any as S.Schema<Budget>;
+
 /** The list of budgets. */
 export type BudgetsListResultValueList = Array<Budget>;
+const BudgetsListResultValueList = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<BudgetsListResultValueList>;
+
 /** Result of listing budgets. It contains a list of available budgets in the scope provided. */
 export interface BudgetsListResult {
   /** The list of budgets. */
@@ -2372,10 +3404,17 @@ export interface BudgetsListResult {
   /** The link (url) to the next page of results.\r\nIt's null for now, added for future use. */
   nextLink?: string;
 }
+const BudgetsListResult = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<BudgetsListResult>;
+
 export interface ListCostAllocationRulesRequest {
   /** BillingAccount ID */
   billingAccountId: string;
 }
+const ListCostAllocationRulesRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<ListCostAllocationRulesRequest>;
+
 /** The cost allocation rule model definition */
 export interface CostAllocationRuleDefinition {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2389,8 +3428,16 @@ export interface CostAllocationRuleDefinition {
   /** Cost allocation rule properties */
   properties?: CostAllocationRuleProperties;
 }
+const CostAllocationRuleDefinition =
+  CostAllocationRulesCreateOrUpdateResponse as any as S.Schema<CostAllocationRuleDefinition>;
+
 /** The list of cost allocation rules. */
 export type CostAllocationRuleListValueList = Array<CostAllocationRuleDefinition>;
+const CostAllocationRuleListValueList = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<CostAllocationRuleListValueList>;
+
 /** Result of listing cost allocation rules. It contains a list of available rules in the billing account or enterprise enrollment provided. */
 export interface CostAllocationRuleList {
   /** The list of cost allocation rules. */
@@ -2398,6 +3445,11 @@ export interface CostAllocationRuleList {
   /** URL to get the next set of rule list results if there are any. */
   nextLink?: string;
 }
+const CostAllocationRuleList = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<CostAllocationRuleList>;
+
 export interface ListDimensionsRequest {
   /** The scope associated with dimension operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners. */
   scope: string;
@@ -2410,12 +3462,19 @@ export interface ListDimensionsRequest {
   /** May be used to limit the number of results to the most recent N dimension data. */
   _top?: number;
 }
+const ListDimensionsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<ListDimensionsRequest>;
+
 export interface ListExportsRequest {
   /** The scope associated with alerts operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners. */
   scope: string;
   /** May be used to expand the properties within an export. Currently only 'runHistory' is supported and will return information for the last run of each export. */
   _expand?: string;
 }
+const ListExportsRequest = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<ListExportsRequest>;
+
 /** Managed service identity (either system assigned, or none) */
 export type ExportIdentity = ExportsCreateOrUpdateResponseIdentity;
 /** An export resource. */
@@ -2437,19 +3496,33 @@ export interface Export {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
+const Export = GetExportResponse as any as S.Schema<Export>;
+
 /** The list of exports. */
 export type ExportListResultValueList = Array<Export>;
+const ExportListResultValueList = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<ExportListResultValueList>;
+
 /** Result of listing exports. It contains a list of available exports in the scope provided. */
 export interface ExportListResult {
   /** The list of exports. */
   value?: ExportListResultValueList;
 }
+const ExportListResult = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<ExportListResult>;
+
 export interface ListMarkupRulesRequest {
   /** BillingAccount ID */
   billingAccountId: string;
   /** BillingProfile ID */
   billingProfileId: string;
 }
+const ListMarkupRulesRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<ListMarkupRulesRequest>;
+
 /** Markup rule */
 export interface MarkupRule {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2463,8 +3536,15 @@ export interface MarkupRule {
   /** Markup rule properties */
   properties?: MarkupRuleProperties;
 }
+const MarkupRule = GetMarkupRuleResponse as any as S.Schema<MarkupRule>;
+
 /** The list of markup rules. */
 export type MarkupRulePagedResponseValueList = Array<MarkupRule>;
+const MarkupRulePagedResponseValueList = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<MarkupRulePagedResponseValueList>;
+
 /** Markup rule list result. It contains a list of Markup rules. */
 export interface MarkupRulePagedResponse {
   /** The list of markup rules. */
@@ -2472,7 +3552,17 @@ export interface MarkupRulePagedResponse {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
+const MarkupRulePagedResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<MarkupRulePagedResponse>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface CostManagementOperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -2484,10 +3574,19 @@ export interface CostManagementOperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const CostManagementOperationDisplay = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<CostManagementOperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type CostManagementOperationOrigin = "user" | "system" | "user,system";
+const CostManagementOperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type CostManagementOperationActionType = "Internal";
+const CostManagementOperationActionType = S.String;
+
 /** A Cost management REST API operation. */
 export interface CostManagementOperation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -2503,8 +3602,18 @@ export interface CostManagementOperation {
   /** Operation id: {provider}/{resource}/{operation}. */
   id?: string;
 }
+const CostManagementOperation = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<CostManagementOperation>;
+
 /** List of cost management operations supported by the Microsoft.CostManagement resource provider. */
 export type OperationListResultValueList = Array<CostManagementOperation>;
+const OperationListResultValueList = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<OperationListResultValueList>;
+
 /** Result of listing cost management operations. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationListResult {
   /** List of cost management operations supported by the Microsoft.CostManagement resource provider. */
@@ -2512,12 +3621,19 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
+const OperationListResult = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<OperationListResult>;
+
 export interface ListScheduledActionByScopeRequest {
   /** undefined */
   scope: string;
   /** May be used to filter scheduled actions by properties/viewId. Supported operator is 'eq'. */
   _filter?: string;
 }
+const ListScheduledActionByScopeRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<ListScheduledActionByScopeRequest>;
+
 /** Scheduled action definition. */
 export interface ScheduledAction {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2535,8 +3651,15 @@ export interface ScheduledAction {
   /** Kind of the scheduled action. */
   kind?: ScheduledActionKind;
 }
+const ScheduledAction = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<ScheduledAction>;
+
 /** The list of scheduled actions. */
 export type ScheduledActionListResultValueList = Array<ScheduledAction>;
+const ScheduledActionListResultValueList = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<ScheduledActionListResultValueList>;
+
 /** Scheduled actions list result. It contains a list of scheduled actions. */
 export interface ScheduledActionListResult {
   /** The list of scheduled actions. */
@@ -2544,14 +3667,26 @@ export interface ScheduledActionListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
+const ScheduledActionListResult = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<ScheduledActionListResult>;
+
 export interface ListScheduledActionsRequest {
   /** May be used to filter scheduled actions by properties/viewId. Supported operator is 'eq'. */
   _filter?: string;
 }
+const ListScheduledActionsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<ListScheduledActionsRequest>;
+
 export interface ListSettingsRequest {
   /** undefined */
   scope: string;
 }
+const ListSettingsRequest = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<ListSettingsRequest>;
+
 /** Setting definition. */
 export interface Setting {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2565,17 +3700,31 @@ export interface Setting {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind: SettingsKind;
 }
+const Setting = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<Setting>;
+
 /** The list of settings. */
 export type SettingsListResultValueList = Array<Setting>;
+const SettingsListResultValueList = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<SettingsListResultValueList>;
+
 /** Setting list result. It contains a list of settings. */
 export interface SettingsListResult {
   /** The list of settings. */
   value?: SettingsListResultValueList;
 }
+const SettingsListResult = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<SettingsListResult>;
+
 export interface ListViewByScopeRequest {
   /** undefined */
   scope: string;
 }
+const ListViewByScopeRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<ListViewByScopeRequest>;
+
 /** States and configurations of Cost Analysis. */
 export interface View {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2591,8 +3740,15 @@ export interface View {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
+const View = GetViewResponse as any as S.Schema<View>;
+
 /** The list of views. */
 export type ViewListResultValueList = Array<View>;
+const ViewListResultValueList = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<ViewListResultValueList>;
+
 /** Result of listing views. It contains a list of available views. */
 export interface ViewListResult {
   /** The list of views. */
@@ -2600,7 +3756,11 @@ export interface ViewListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
+const ViewListResult = /*@__PURE__*/ __L.at(__c26, 6) as any as S.Schema<ViewListResult>;
+
 export interface ListViewsRequest {}
+const ListViewsRequest = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<ListViewsRequest>;
+
 export interface MarkupRulesCreateOrUpdateRequest {
   /** BillingAccount ID */
   billingAccountId: string;
@@ -2611,6 +3771,11 @@ export interface MarkupRulesCreateOrUpdateRequest {
   /** Markup rule properties */
   properties?: MarkupRuleProperties;
 }
+const MarkupRulesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<MarkupRulesCreateOrUpdateRequest>;
+
 export interface MarkupRulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2623,6 +3788,11 @@ export interface MarkupRulesCreateOrUpdateResponse {
   /** Markup rule properties */
   properties?: MarkupRuleProperties;
 }
+const MarkupRulesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<MarkupRulesCreateOrUpdateResponse>;
+
 /** The start and end date for pulling data for the query. */
 export type QueryTimePeriod = ForecastTimePeriod;
 /** Array of column names to be included in the query. Any valid query column name is allowed. If not provided, then query includes all columns. */
@@ -2632,10 +3802,16 @@ export interface QueryDatasetConfiguration {
   /** Array of column names to be included in the query. Any valid query column name is allowed. If not provided, then query includes all columns. */
   columns?: QueryDatasetConfigurationColumnsList;
 }
+const QueryDatasetConfiguration =
+  ForecastDatasetConfiguration as any as S.Schema<QueryDatasetConfiguration>;
+
 /** The aggregation expression to be used in the query. */
 export type QueryAggregation = ReportConfigAggregation;
 /** Dictionary of aggregation expression to use in the query. The key of each item in the dictionary is the alias for the aggregated column. Query can have up to 2 aggregation clauses. */
 export type QueryDatasetAggregationMap = { [key: string]: ReportConfigAggregation | undefined };
+const QueryDatasetAggregationMap =
+  ReportConfigDatasetAggregationMap as any as S.Schema<QueryDatasetAggregationMap>;
+
 /** The group by expression to be used in the query. */
 export interface QueryGrouping {
   /** Has type of the column to group. */
@@ -2645,14 +3821,26 @@ export interface QueryGrouping {
 }
 /** Array of group by expression to use in the query. Query can have up to 2 group by clauses. */
 export type QueryDatasetGroupingList = Array<QueryGrouping>;
+const QueryDatasetGroupingList =
+  ReportConfigDatasetGroupingList as any as S.Schema<QueryDatasetGroupingList>;
+
 /** The logical "AND" expression. Must have at least 2 items. */
 export type QueryFilterAndList = Array<QueryFilter>;
+const QueryFilterAndList = /*@__PURE__*/ __L.at(__c27, 2) as any as S.Schema<QueryFilterAndList>;
+
 /** The logical "OR" expression. Must have at least 2 items. */
 export type QueryFilterOrList = Array<QueryFilter>;
+const QueryFilterOrList = QueryFilterAndList as any as S.Schema<QueryFilterOrList>;
+
 /** The operator to use for comparison. */
 export type QueryOperatorType = "In";
+const QueryOperatorType = S.String;
+
 /** Array of values to use for comparison */
 export type QueryComparisonExpressionValuesList = Array<string>;
+const QueryComparisonExpressionValuesList =
+  BudgetComparisonExpressionValuesList as any as S.Schema<QueryComparisonExpressionValuesList>;
+
 /** The comparison expression to be used in the query. */
 export interface QueryComparisonExpression {
   /** The name of the column to use in comparison. */
@@ -2662,6 +3850,11 @@ export interface QueryComparisonExpression {
   /** Array of values to use for comparison */
   values: QueryComparisonExpressionValuesList;
 }
+const QueryComparisonExpression = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<QueryComparisonExpression>;
+
 /** The filter expression to be used in the export. */
 export interface QueryFilter {
   /** The logical "AND" expression. Must have at least 2 items. */
@@ -2673,6 +3866,8 @@ export interface QueryFilter {
   /** Has comparison expression for a tag */
   tags?: QueryComparisonExpression;
 }
+const QueryFilter = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<QueryFilter>;
+
 /** The definition of data present in the query. */
 export interface QueryDataset {
   /** The granularity of rows in the query. */
@@ -2686,6 +3881,8 @@ export interface QueryDataset {
   /** The filter expression to use in the query. Please reference our Query API REST documentation for how to properly format the filter. */
   filter?: QueryFilter;
 }
+const QueryDataset = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<QueryDataset>;
+
 export interface QueryUsageRequest {
   /** The scope associated with query and export operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners. */
   scope: string;
@@ -2698,6 +3895,8 @@ export interface QueryUsageRequest {
   /** Has definition for data in this query. */
   dataset: QueryDataset;
 }
+const QueryUsageRequest = /*@__PURE__*/ __L.at(__c27, 6) as any as S.Schema<QueryUsageRequest>;
+
 /** Resource tags. */
 export type QueryUsageResponseTagsMap = { [key: string]: string | undefined };
 /** QueryColumn properties */
@@ -2734,9 +3933,13 @@ export interface QueryUsageResponse {
   /** Query properties */
   properties?: QueryProperties;
 }
+const QueryUsageResponse = ForecastUsageResponse as any as S.Schema<QueryUsageResponse>;
+
 export type QueryUsageByExternalCloudProviderTypeRequestExternalCloudProviderType =
   | "externalSubscriptions"
   | "externalBillingAccounts";
+const QueryUsageByExternalCloudProviderTypeRequestExternalCloudProviderType = S.String;
+
 export interface QueryUsageByExternalCloudProviderTypeRequest {
   /** The external cloud provider type associated with dimension/query operations. This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account. */
   externalCloudProviderType:
@@ -2753,6 +3956,11 @@ export interface QueryUsageByExternalCloudProviderTypeRequest {
   /** Has definition for data in this query. */
   dataset: QueryDataset;
 }
+const QueryUsageByExternalCloudProviderTypeRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<QueryUsageByExternalCloudProviderTypeRequest>;
+
 /** Resource tags. */
 export type QueryUsageByExternalCloudProviderTypeResponseTagsMap = {
   [key: string]: string | undefined;
@@ -2775,18 +3983,37 @@ export interface QueryUsageByExternalCloudProviderTypeResponse {
   /** Query properties */
   properties?: QueryProperties;
 }
+const QueryUsageByExternalCloudProviderTypeResponse =
+  ForecastExternalCloudProviderUsageResponse as any as S.Schema<QueryUsageByExternalCloudProviderTypeResponse>;
+
 export interface RunScheduledActionRequest {
   /** Scheduled action name. */
   name: string;
 }
+const RunScheduledActionRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<RunScheduledActionRequest>;
+
 export interface RunScheduledActionResponse {}
+const RunScheduledActionResponse =
+  DeleteBudgetResponse as any as S.Schema<RunScheduledActionResponse>;
+
 export interface RunScheduledActionByScopeRequest {
   /** undefined */
   scope: string;
   /** Scheduled action name. */
   name: string;
 }
+const RunScheduledActionByScopeRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<RunScheduledActionByScopeRequest>;
+
 export interface RunScheduledActionByScopeResponse {}
+const RunScheduledActionByScopeResponse =
+  DeleteCostAllocationRuleResponse as any as S.Schema<RunScheduledActionByScopeResponse>;
+
 export interface ScheduledActionsCreateOrUpdateRequest {
   /** Scheduled action name. */
   name: string;
@@ -2797,6 +4024,11 @@ export interface ScheduledActionsCreateOrUpdateRequest {
   /** Kind of the scheduled action. */
   kind?: ScheduledActionKind | (string & {});
 }
+const ScheduledActionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<ScheduledActionsCreateOrUpdateRequest>;
+
 export interface ScheduledActionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2813,6 +4045,9 @@ export interface ScheduledActionsCreateOrUpdateResponse {
   /** Kind of the scheduled action. */
   kind?: ScheduledActionKind;
 }
+const ScheduledActionsCreateOrUpdateResponse =
+  GetScheduledActionResponse as any as S.Schema<ScheduledActionsCreateOrUpdateResponse>;
+
 export interface ScheduledActionsCreateOrUpdateByScopeRequest {
   /** undefined */
   scope: string;
@@ -2825,6 +4060,11 @@ export interface ScheduledActionsCreateOrUpdateByScopeRequest {
   /** Kind of the scheduled action. */
   kind?: ScheduledActionKind | (string & {});
 }
+const ScheduledActionsCreateOrUpdateByScopeRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<ScheduledActionsCreateOrUpdateByScopeRequest>;
+
 export interface ScheduledActionsCreateOrUpdateByScopeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2841,7 +4081,12 @@ export interface ScheduledActionsCreateOrUpdateByScopeResponse {
   /** Kind of the scheduled action. */
   kind?: ScheduledActionKind;
 }
+const ScheduledActionsCreateOrUpdateByScopeResponse =
+  GetScheduledActionResponse as any as S.Schema<ScheduledActionsCreateOrUpdateByScopeResponse>;
+
 export type SettingsCreateOrUpdateByScopeRequestType = "taginheritance";
+const SettingsCreateOrUpdateByScopeRequestType = S.String;
+
 export interface SettingsCreateOrUpdateByScopeRequest {
   /** undefined */
   scope: string;
@@ -2850,6 +4095,11 @@ export interface SettingsCreateOrUpdateByScopeRequest {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind: SettingsKind | (string & {});
 }
+const SettingsCreateOrUpdateByScopeRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<SettingsCreateOrUpdateByScopeRequest>;
+
 export interface SettingsCreateOrUpdateByScopeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2862,10 +4112,19 @@ export interface SettingsCreateOrUpdateByScopeResponse {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind: SettingsKind;
 }
+const SettingsCreateOrUpdateByScopeResponse =
+  GetSettingsByScopeResponse as any as S.Schema<SettingsCreateOrUpdateByScopeResponse>;
+
 /** List of KPIs to show in Cost Analysis UI. */
 export type ViewPropertiesInputKpisList = Array<KpiProperties>;
+const ViewPropertiesInputKpisList =
+  ViewPropertiesKpisList as any as S.Schema<ViewPropertiesInputKpisList>;
+
 /** Configuration of 3 sub-views in the Cost Analysis UI. */
 export type ViewPropertiesInputPivotsList = Array<PivotProperties>;
+const ViewPropertiesInputPivotsList =
+  ViewPropertiesPivotsList as any as S.Schema<ViewPropertiesInputPivotsList>;
+
 /** The properties of the view. */
 export interface ViewPropertiesInput {
   /** User input name of the view. Required. */
@@ -2889,6 +4148,8 @@ export interface ViewPropertiesInput {
   /** Configuration of 3 sub-views in the Cost Analysis UI. */
   pivots?: ViewPropertiesInputPivotsList;
 }
+const ViewPropertiesInput = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<ViewPropertiesInput>;
+
 export interface ViewsCreateOrUpdateRequest {
   /** View name */
   viewName: string;
@@ -2897,6 +4158,11 @@ export interface ViewsCreateOrUpdateRequest {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
+const ViewsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<ViewsCreateOrUpdateRequest>;
+
 export interface ViewsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2911,6 +4177,11 @@ export interface ViewsCreateOrUpdateResponse {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
+const ViewsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<ViewsCreateOrUpdateResponse>;
+
 export interface ViewsCreateOrUpdateByScopeRequest {
   /** undefined */
   scope: string;
@@ -2921,6 +4192,11 @@ export interface ViewsCreateOrUpdateByScopeRequest {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
+const ViewsCreateOrUpdateByScopeRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<ViewsCreateOrUpdateByScopeRequest>;
+
 export interface ViewsCreateOrUpdateByScopeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2935,6 +4211,9 @@ export interface ViewsCreateOrUpdateByScopeResponse {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
+const ViewsCreateOrUpdateByScopeResponse =
+  ViewsCreateOrUpdateResponse as any as S.Schema<ViewsCreateOrUpdateByScopeResponse>;
+
 export type BudgetsCreateOrUpdateError = AzureOpError;
 /** The operation to create or update a budget. You can optionally provide an eTag if desired as a form of concurrency control. To obtain the latest eTag for a given budget, perform a get operation prior to your put operation. */
 export const BudgetsCreateOrUpdate: API.OperationMethod<
@@ -2943,8 +4222,8 @@ export const BudgetsCreateOrUpdate: API.OperationMethod<
   BudgetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<BudgetsCreateOrUpdateRequest>,
-  output: __S(13) as any as S.Schema<BudgetsCreateOrUpdateResponse>,
+  input: BudgetsCreateOrUpdateRequest,
+  output: BudgetsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2958,8 +4237,8 @@ export const CheckCostAllocationRuleNameAvailability: API.OperationMethod<
   CheckCostAllocationRuleNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<CheckCostAllocationRuleNameAvailabilityRequest>,
-  output: __S(15) as any as S.Schema<CostAllocationRuleCheckNameAvailabilityResponse>,
+  input: CheckCostAllocationRuleNameAvailabilityRequest,
+  output: CostAllocationRuleCheckNameAvailabilityResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2973,8 +4252,8 @@ export const CheckScheduledActionNameAvailability: API.OperationMethod<
   CheckScheduledActionNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CheckScheduledActionNameAvailabilityRequest>,
-  output: __S(15) as any as S.Schema<CheckScheduledActionNameAvailabilityResponse>,
+  input: CheckScheduledActionNameAvailabilityRequest,
+  output: CheckScheduledActionNameAvailabilityResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2988,8 +4267,8 @@ export const CheckScheduledActionNameAvailabilityByScope: API.OperationMethod<
   CheckScheduledActionNameAvailabilityByScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<CheckScheduledActionNameAvailabilityByScopeRequest>,
-  output: __S(15) as any as S.Schema<CheckScheduledActionNameAvailabilityByScopeResponse>,
+  input: CheckScheduledActionNameAvailabilityByScopeRequest,
+  output: CheckScheduledActionNameAvailabilityByScopeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3003,8 +4282,8 @@ export const CostAllocationRulesCreateOrUpdate: API.OperationMethod<
   CostAllocationRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<CostAllocationRulesCreateOrUpdateRequest>,
-  output: __S(28) as any as S.Schema<CostAllocationRulesCreateOrUpdateResponse>,
+  input: CostAllocationRulesCreateOrUpdateRequest,
+  output: CostAllocationRulesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3018,8 +4297,8 @@ export const CreateGenerateCostDetailsReportOperation: API.OperationMethod<
   CreateGenerateCostDetailsReportOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<CreateGenerateCostDetailsReportOperationRequest>,
-  output: __S(37) as any as S.Schema<CostDetailsOperationResults>,
+  input: CreateGenerateCostDetailsReportOperationRequest,
+  output: CostDetailsOperationResults,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3033,8 +4312,8 @@ export const CreateGenerateDetailedCostReportOperation: API.OperationMethod<
   CreateGenerateDetailedCostReportOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<CreateGenerateDetailedCostReportOperationRequest>,
-  output: __S(40) as any as S.Schema<CreateGenerateDetailedCostReportOperationResponse>,
+  input: CreateGenerateDetailedCostReportOperationRequest,
+  output: CreateGenerateDetailedCostReportOperationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3048,8 +4327,8 @@ export const DeleteBudget: API.OperationMethod<
   DeleteBudgetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<DeleteBudgetRequest>,
-  output: __S(42) as any as S.Schema<DeleteBudgetResponse>,
+  input: DeleteBudgetRequest,
+  output: DeleteBudgetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3063,8 +4342,8 @@ export const DeleteCostAllocationRule: API.OperationMethod<
   DeleteCostAllocationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<DeleteCostAllocationRuleRequest>,
-  output: __S(44) as any as S.Schema<DeleteCostAllocationRuleResponse>,
+  input: DeleteCostAllocationRuleRequest,
+  output: DeleteCostAllocationRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3078,8 +4357,8 @@ export const DeleteExport: API.OperationMethod<
   DeleteExportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<DeleteExportRequest>,
-  output: __S(42) as any as S.Schema<DeleteExportResponse>,
+  input: DeleteExportRequest,
+  output: DeleteExportResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3093,8 +4372,8 @@ export const DeleteMarkupRule: API.OperationMethod<
   DeleteMarkupRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<DeleteMarkupRuleRequest>,
-  output: __S(42) as any as S.Schema<DeleteMarkupRuleResponse>,
+  input: DeleteMarkupRuleRequest,
+  output: DeleteMarkupRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3108,8 +4387,8 @@ export const DeleteScheduledAction: API.OperationMethod<
   DeleteScheduledActionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<DeleteScheduledActionRequest>,
-  output: __S(42) as any as S.Schema<DeleteScheduledActionResponse>,
+  input: DeleteScheduledActionRequest,
+  output: DeleteScheduledActionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3123,8 +4402,8 @@ export const DeleteScheduledActionByScope: API.OperationMethod<
   DeleteScheduledActionByScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<DeleteScheduledActionByScopeRequest>,
-  output: __S(44) as any as S.Schema<DeleteScheduledActionByScopeResponse>,
+  input: DeleteScheduledActionByScopeRequest,
+  output: DeleteScheduledActionByScopeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3138,8 +4417,8 @@ export const DeleteSettingsByScope: API.OperationMethod<
   DeleteSettingsByScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<DeleteSettingsByScopeRequest>,
-  output: __S(42) as any as S.Schema<DeleteSettingsByScopeResponse>,
+  input: DeleteSettingsByScopeRequest,
+  output: DeleteSettingsByScopeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3153,8 +4432,8 @@ export const DeleteView: API.OperationMethod<
   DeleteViewError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<DeleteViewRequest>,
-  output: __S(42) as any as S.Schema<DeleteViewResponse>,
+  input: DeleteViewRequest,
+  output: DeleteViewResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3168,8 +4447,8 @@ export const DeleteViewByScope: API.OperationMethod<
   DeleteViewByScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<DeleteViewByScopeRequest>,
-  output: __S(42) as any as S.Schema<DeleteViewByScopeResponse>,
+  input: DeleteViewByScopeRequest,
+  output: DeleteViewByScopeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3183,8 +4462,8 @@ export const DimensionsByExternalCloudProviderType: API.OperationMethod<
   DimensionsByExternalCloudProviderTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<DimensionsByExternalCloudProviderTypeRequest>,
-  output: __S(57) as any as S.Schema<DimensionsListResult>,
+  input: DimensionsByExternalCloudProviderTypeRequest,
+  output: DimensionsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3198,8 +4477,8 @@ export const DismissAlert: API.OperationMethod<
   DismissAlertError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<DismissAlertRequest>,
-  output: __S(63) as any as S.Schema<DismissAlertResponse>,
+  input: DismissAlertRequest,
+  output: DismissAlertResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3213,8 +4492,8 @@ export const DownloadPriceSheetByBillingAccount: API.OperationMethod<
   DownloadPriceSheetByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<DownloadPriceSheetByBillingAccountRequest>,
-  output: __S(66) as any as S.Schema<OperationStatus>,
+  input: DownloadPriceSheetByBillingAccountRequest,
+  output: OperationStatus,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3228,8 +4507,8 @@ export const DownloadPriceSheetByBillingProfile: API.OperationMethod<
   DownloadPriceSheetByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<DownloadPriceSheetByBillingProfileRequest>,
-  output: __S(69) as any as S.Schema<PricesheetDownloadProperties>,
+  input: DownloadPriceSheetByBillingProfileRequest,
+  output: PricesheetDownloadProperties,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3243,8 +4522,8 @@ export const DownloadPriceSheetByInvoice: API.OperationMethod<
   DownloadPriceSheetByInvoiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<DownloadPriceSheetByInvoiceRequest>,
-  output: __S(39) as any as S.Schema<DownloadURL>,
+  input: DownloadPriceSheetByInvoiceRequest,
+  output: DownloadURL,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3258,8 +4537,8 @@ export const ExecuteExport: API.OperationMethod<
   ExecuteExportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<ExecuteExportRequest>,
-  output: __S(42) as any as S.Schema<ExecuteExportResponse>,
+  input: ExecuteExportRequest,
+  output: ExecuteExportResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3273,8 +4552,8 @@ export const ExportsCreateOrUpdate: API.OperationMethod<
   ExportsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<ExportsCreateOrUpdateRequest>,
-  output: __S(93) as any as S.Schema<ExportsCreateOrUpdateResponse>,
+  input: ExportsCreateOrUpdateRequest,
+  output: ExportsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3288,8 +4567,8 @@ export const ForecastExternalCloudProviderUsage: API.OperationMethod<
   ForecastExternalCloudProviderUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<ForecastExternalCloudProviderUsageRequest>,
-  output: __S(106) as any as S.Schema<ForecastExternalCloudProviderUsageResponse>,
+  input: ForecastExternalCloudProviderUsageRequest,
+  output: ForecastExternalCloudProviderUsageResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3303,8 +4582,8 @@ export const ForecastUsage: API.OperationMethod<
   ForecastUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<ForecastUsageRequest>,
-  output: __S(108) as any as S.Schema<ForecastUsageResponse>,
+  input: ForecastUsageRequest,
+  output: ForecastUsageResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3318,10 +4597,8 @@ export const GenerateGenerateBenefitUtilizationSummariesReportByBillingAccount: 
   GenerateGenerateBenefitUtilizationSummariesReportByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    109,
-  ) as any as S.Schema<GenerateGenerateBenefitUtilizationSummariesReportByBillingAccountRequest>,
-  output: __S(112) as any as S.Schema<BenefitUtilizationSummariesOperationStatus>,
+  input: GenerateGenerateBenefitUtilizationSummariesReportByBillingAccountRequest,
+  output: BenefitUtilizationSummariesOperationStatus,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3335,10 +4612,8 @@ export const GenerateGenerateBenefitUtilizationSummariesReportByBillingProfile: 
   GenerateGenerateBenefitUtilizationSummariesReportByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    113,
-  ) as any as S.Schema<GenerateGenerateBenefitUtilizationSummariesReportByBillingProfileRequest>,
-  output: __S(112) as any as S.Schema<BenefitUtilizationSummariesOperationStatus>,
+  input: GenerateGenerateBenefitUtilizationSummariesReportByBillingProfileRequest,
+  output: BenefitUtilizationSummariesOperationStatus,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3352,10 +4627,8 @@ export const GenerateGenerateBenefitUtilizationSummariesReportByReservationId: A
   GenerateGenerateBenefitUtilizationSummariesReportByReservationIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    114,
-  ) as any as S.Schema<GenerateGenerateBenefitUtilizationSummariesReportByReservationIdRequest>,
-  output: __S(112) as any as S.Schema<BenefitUtilizationSummariesOperationStatus>,
+  input: GenerateGenerateBenefitUtilizationSummariesReportByReservationIdRequest,
+  output: BenefitUtilizationSummariesOperationStatus,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3370,10 +4643,8 @@ export const GenerateGenerateBenefitUtilizationSummariesReportByReservationOrder
   GenerateGenerateBenefitUtilizationSummariesReportByReservationOrderIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    115,
-  ) as any as S.Schema<GenerateGenerateBenefitUtilizationSummariesReportByReservationOrderIdRequest>,
-  output: __S(112) as any as S.Schema<BenefitUtilizationSummariesOperationStatus>,
+  input: GenerateGenerateBenefitUtilizationSummariesReportByReservationOrderIdRequest,
+  output: BenefitUtilizationSummariesOperationStatus,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3387,10 +4658,8 @@ export const GenerateGenerateBenefitUtilizationSummariesReportBySavingsPlanId: A
   GenerateGenerateBenefitUtilizationSummariesReportBySavingsPlanIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    116,
-  ) as any as S.Schema<GenerateGenerateBenefitUtilizationSummariesReportBySavingsPlanIdRequest>,
-  output: __S(112) as any as S.Schema<BenefitUtilizationSummariesOperationStatus>,
+  input: GenerateGenerateBenefitUtilizationSummariesReportBySavingsPlanIdRequest,
+  output: BenefitUtilizationSummariesOperationStatus,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3405,10 +4674,8 @@ export const GenerateGenerateBenefitUtilizationSummariesReportBySavingsPlanOrder
   GenerateGenerateBenefitUtilizationSummariesReportBySavingsPlanOrderIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    117,
-  ) as any as S.Schema<GenerateGenerateBenefitUtilizationSummariesReportBySavingsPlanOrderIdRequest>,
-  output: __S(112) as any as S.Schema<BenefitUtilizationSummariesOperationStatus>,
+  input: GenerateGenerateBenefitUtilizationSummariesReportBySavingsPlanOrderIdRequest,
+  output: BenefitUtilizationSummariesOperationStatus,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3422,8 +4689,8 @@ export const GenerateReservationDetailsReportByBillingAccountId: API.OperationMe
   GenerateReservationDetailsReportByBillingAccountIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<GenerateReservationDetailsReportByBillingAccountIdRequest>,
-  output: __S(66) as any as S.Schema<OperationStatus>,
+  input: GenerateReservationDetailsReportByBillingAccountIdRequest,
+  output: OperationStatus,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3437,8 +4704,8 @@ export const GenerateReservationDetailsReportByBillingProfileId: API.OperationMe
   GenerateReservationDetailsReportByBillingProfileIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<GenerateReservationDetailsReportByBillingProfileIdRequest>,
-  output: __S(66) as any as S.Schema<OperationStatus>,
+  input: GenerateReservationDetailsReportByBillingProfileIdRequest,
+  output: OperationStatus,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3452,8 +4719,8 @@ export const GetAlert: API.OperationMethod<
   GetAlertError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<GetAlertRequest>,
-  output: __S(63) as any as S.Schema<GetAlertResponse>,
+  input: GetAlertRequest,
+  output: GetAlertResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3467,8 +4734,8 @@ export const GetBudget: API.OperationMethod<
   GetBudgetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<GetBudgetRequest>,
-  output: __S(122) as any as S.Schema<GetBudgetResponse>,
+  input: GetBudgetRequest,
+  output: GetBudgetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3482,8 +4749,8 @@ export const GetCostAllocationRule: API.OperationMethod<
   GetCostAllocationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<GetCostAllocationRuleRequest>,
-  output: __S(28) as any as S.Schema<GetCostAllocationRuleResponse>,
+  input: GetCostAllocationRuleRequest,
+  output: GetCostAllocationRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3497,8 +4764,8 @@ export const GetExport: API.OperationMethod<
   GetExportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<GetExportRequest>,
-  output: __S(125) as any as S.Schema<GetExportResponse>,
+  input: GetExportRequest,
+  output: GetExportResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3512,8 +4779,8 @@ export const GetExportExecutionHistory: API.OperationMethod<
   GetExportExecutionHistoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<GetExportExecutionHistoryRequest>,
-  output: __S(90) as any as S.Schema<ExportExecutionListResult>,
+  input: GetExportExecutionHistoryRequest,
+  output: ExportExecutionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3527,8 +4794,8 @@ export const GetGenerateCostDetailsReportOperationResults: API.OperationMethod<
   GetGenerateCostDetailsReportOperationResultsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<GetGenerateCostDetailsReportOperationResultsRequest>,
-  output: __S(37) as any as S.Schema<CostDetailsOperationResults>,
+  input: GetGenerateCostDetailsReportOperationResultsRequest,
+  output: CostDetailsOperationResults,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3542,8 +4809,8 @@ export const GetGenerateDetailedCostReportOperationResult: API.OperationMethod<
   GetGenerateDetailedCostReportOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128) as any as S.Schema<GetGenerateDetailedCostReportOperationResultRequest>,
-  output: __S(40) as any as S.Schema<GetGenerateDetailedCostReportOperationResultResponse>,
+  input: GetGenerateDetailedCostReportOperationResultRequest,
+  output: GetGenerateDetailedCostReportOperationResultResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3557,8 +4824,8 @@ export const GetGenerateDetailedCostReportOperationStatus: API.OperationMethod<
   GetGenerateDetailedCostReportOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<GetGenerateDetailedCostReportOperationStatusRequest>,
-  output: __S(131) as any as S.Schema<GetGenerateDetailedCostReportOperationStatusResponse>,
+  input: GetGenerateDetailedCostReportOperationStatusRequest,
+  output: GetGenerateDetailedCostReportOperationStatusResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3572,8 +4839,8 @@ export const GetMarkupRule: API.OperationMethod<
   GetMarkupRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<GetMarkupRuleRequest>,
-  output: __S(135) as any as S.Schema<GetMarkupRuleResponse>,
+  input: GetMarkupRuleRequest,
+  output: GetMarkupRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3587,8 +4854,8 @@ export const GetScheduledAction: API.OperationMethod<
   GetScheduledActionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<GetScheduledActionRequest>,
-  output: __S(142) as any as S.Schema<GetScheduledActionResponse>,
+  input: GetScheduledActionRequest,
+  output: GetScheduledActionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3602,8 +4869,8 @@ export const GetScheduledActionByScope: API.OperationMethod<
   GetScheduledActionByScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143) as any as S.Schema<GetScheduledActionByScopeRequest>,
-  output: __S(142) as any as S.Schema<GetScheduledActionByScopeResponse>,
+  input: GetScheduledActionByScopeRequest,
+  output: GetScheduledActionByScopeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3617,8 +4884,8 @@ export const GetSettingsByScope: API.OperationMethod<
   GetSettingsByScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144) as any as S.Schema<GetSettingsByScopeRequest>,
-  output: __S(145) as any as S.Schema<GetSettingsByScopeResponse>,
+  input: GetSettingsByScopeRequest,
+  output: GetSettingsByScopeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3632,8 +4899,8 @@ export const GetView: API.OperationMethod<
   GetViewError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<GetViewRequest>,
-  output: __S(163) as any as S.Schema<GetViewResponse>,
+  input: GetViewRequest,
+  output: GetViewResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3647,8 +4914,8 @@ export const GetViewByScope: API.OperationMethod<
   GetViewByScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164) as any as S.Schema<GetViewByScopeRequest>,
-  output: __S(163) as any as S.Schema<GetViewByScopeResponse>,
+  input: GetViewByScopeRequest,
+  output: GetViewByScopeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3662,8 +4929,8 @@ export const ListAlertExternal: API.OperationMethod<
   ListAlertExternalError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165) as any as S.Schema<ListAlertExternalRequest>,
-  output: __S(167) as any as S.Schema<AlertsResult>,
+  input: ListAlertExternalRequest,
+  output: AlertsResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3677,8 +4944,8 @@ export const ListAlerts: API.OperationMethod<
   ListAlertsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<ListAlertsRequest>,
-  output: __S(167) as any as S.Schema<AlertsResult>,
+  input: ListAlertsRequest,
+  output: AlertsResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3692,8 +4959,8 @@ export const ListBenefitRecommendations: API.OperationMethod<
   ListBenefitRecommendationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<ListBenefitRecommendationsRequest>,
-  output: __S(178) as any as S.Schema<BenefitRecommendationsListResult>,
+  input: ListBenefitRecommendationsRequest,
+  output: BenefitRecommendationsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3707,8 +4974,8 @@ export const ListBenefitUtilizationSummaryByBillingAccountId: API.OperationMetho
   ListBenefitUtilizationSummaryByBillingAccountIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<ListBenefitUtilizationSummaryByBillingAccountIdRequest>,
-  output: __S(181) as any as S.Schema<BenefitUtilizationSummariesListResult>,
+  input: ListBenefitUtilizationSummaryByBillingAccountIdRequest,
+  output: BenefitUtilizationSummariesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3722,8 +4989,8 @@ export const ListBenefitUtilizationSummaryByBillingProfileId: API.OperationMetho
   ListBenefitUtilizationSummaryByBillingProfileIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<ListBenefitUtilizationSummaryByBillingProfileIdRequest>,
-  output: __S(181) as any as S.Schema<BenefitUtilizationSummariesListResult>,
+  input: ListBenefitUtilizationSummaryByBillingProfileIdRequest,
+  output: BenefitUtilizationSummariesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3737,8 +5004,8 @@ export const ListBenefitUtilizationSummaryBySavingsPlanId: API.OperationMethod<
   ListBenefitUtilizationSummaryBySavingsPlanIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183) as any as S.Schema<ListBenefitUtilizationSummaryBySavingsPlanIdRequest>,
-  output: __S(181) as any as S.Schema<BenefitUtilizationSummariesListResult>,
+  input: ListBenefitUtilizationSummaryBySavingsPlanIdRequest,
+  output: BenefitUtilizationSummariesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3752,8 +5019,8 @@ export const ListBenefitUtilizationSummaryBySavingsPlanOrder: API.OperationMetho
   ListBenefitUtilizationSummaryBySavingsPlanOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184) as any as S.Schema<ListBenefitUtilizationSummaryBySavingsPlanOrderRequest>,
-  output: __S(181) as any as S.Schema<BenefitUtilizationSummariesListResult>,
+  input: ListBenefitUtilizationSummaryBySavingsPlanOrderRequest,
+  output: BenefitUtilizationSummariesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3767,8 +5034,8 @@ export const ListBudgets: API.OperationMethod<
   ListBudgetsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<ListBudgetsRequest>,
-  output: __S(187) as any as S.Schema<BudgetsListResult>,
+  input: ListBudgetsRequest,
+  output: BudgetsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3782,8 +5049,8 @@ export const ListCostAllocationRules: API.OperationMethod<
   ListCostAllocationRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188) as any as S.Schema<ListCostAllocationRulesRequest>,
-  output: __S(190) as any as S.Schema<CostAllocationRuleList>,
+  input: ListCostAllocationRulesRequest,
+  output: CostAllocationRuleList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3797,8 +5064,8 @@ export const ListDimensions: API.OperationMethod<
   ListDimensionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191) as any as S.Schema<ListDimensionsRequest>,
-  output: __S(57) as any as S.Schema<DimensionsListResult>,
+  input: ListDimensionsRequest,
+  output: DimensionsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3812,8 +5079,8 @@ export const ListExports: API.OperationMethod<
   ListExportsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192) as any as S.Schema<ListExportsRequest>,
-  output: __S(194) as any as S.Schema<ExportListResult>,
+  input: ListExportsRequest,
+  output: ExportListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3827,8 +5094,8 @@ export const ListMarkupRules: API.OperationMethod<
   ListMarkupRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195) as any as S.Schema<ListMarkupRulesRequest>,
-  output: __S(197) as any as S.Schema<MarkupRulePagedResponse>,
+  input: ListMarkupRulesRequest,
+  output: MarkupRulePagedResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3842,8 +5109,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198) as any as S.Schema<ListOperationsRequest>,
-  output: __S(202) as any as S.Schema<OperationListResult>,
+  input: ListOperationsRequest,
+  output: OperationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3857,8 +5124,8 @@ export const ListScheduledActionByScope: API.OperationMethod<
   ListScheduledActionByScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203) as any as S.Schema<ListScheduledActionByScopeRequest>,
-  output: __S(206) as any as S.Schema<ScheduledActionListResult>,
+  input: ListScheduledActionByScopeRequest,
+  output: ScheduledActionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3872,8 +5139,8 @@ export const ListScheduledActions: API.OperationMethod<
   ListScheduledActionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207) as any as S.Schema<ListScheduledActionsRequest>,
-  output: __S(206) as any as S.Schema<ScheduledActionListResult>,
+  input: ListScheduledActionsRequest,
+  output: ScheduledActionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3887,8 +5154,8 @@ export const ListSettings: API.OperationMethod<
   ListSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208) as any as S.Schema<ListSettingsRequest>,
-  output: __S(211) as any as S.Schema<SettingsListResult>,
+  input: ListSettingsRequest,
+  output: SettingsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3902,8 +5169,8 @@ export const ListViewByScope: API.OperationMethod<
   ListViewByScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212) as any as S.Schema<ListViewByScopeRequest>,
-  output: __S(214) as any as S.Schema<ViewListResult>,
+  input: ListViewByScopeRequest,
+  output: ViewListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3917,8 +5184,8 @@ export const ListViews: API.OperationMethod<
   ListViewsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215) as any as S.Schema<ListViewsRequest>,
-  output: __S(214) as any as S.Schema<ViewListResult>,
+  input: ListViewsRequest,
+  output: ViewListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3932,8 +5199,8 @@ export const MarkupRulesCreateOrUpdate: API.OperationMethod<
   MarkupRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216) as any as S.Schema<MarkupRulesCreateOrUpdateRequest>,
-  output: __S(217) as any as S.Schema<MarkupRulesCreateOrUpdateResponse>,
+  input: MarkupRulesCreateOrUpdateRequest,
+  output: MarkupRulesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3947,8 +5214,8 @@ export const QueryUsage: API.OperationMethod<
   QueryUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222) as any as S.Schema<QueryUsageRequest>,
-  output: __S(108) as any as S.Schema<QueryUsageResponse>,
+  input: QueryUsageRequest,
+  output: QueryUsageResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3962,8 +5229,8 @@ export const QueryUsageByExternalCloudProviderType: API.OperationMethod<
   QueryUsageByExternalCloudProviderTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223) as any as S.Schema<QueryUsageByExternalCloudProviderTypeRequest>,
-  output: __S(106) as any as S.Schema<QueryUsageByExternalCloudProviderTypeResponse>,
+  input: QueryUsageByExternalCloudProviderTypeRequest,
+  output: QueryUsageByExternalCloudProviderTypeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3977,8 +5244,8 @@ export const RunScheduledAction: API.OperationMethod<
   RunScheduledActionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224) as any as S.Schema<RunScheduledActionRequest>,
-  output: __S(42) as any as S.Schema<RunScheduledActionResponse>,
+  input: RunScheduledActionRequest,
+  output: RunScheduledActionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3992,8 +5259,8 @@ export const RunScheduledActionByScope: API.OperationMethod<
   RunScheduledActionByScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225) as any as S.Schema<RunScheduledActionByScopeRequest>,
-  output: __S(44) as any as S.Schema<RunScheduledActionByScopeResponse>,
+  input: RunScheduledActionByScopeRequest,
+  output: RunScheduledActionByScopeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4007,8 +5274,8 @@ export const ScheduledActionsCreateOrUpdate: API.OperationMethod<
   ScheduledActionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226) as any as S.Schema<ScheduledActionsCreateOrUpdateRequest>,
-  output: __S(142) as any as S.Schema<ScheduledActionsCreateOrUpdateResponse>,
+  input: ScheduledActionsCreateOrUpdateRequest,
+  output: ScheduledActionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4022,8 +5289,8 @@ export const ScheduledActionsCreateOrUpdateByScope: API.OperationMethod<
   ScheduledActionsCreateOrUpdateByScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227) as any as S.Schema<ScheduledActionsCreateOrUpdateByScopeRequest>,
-  output: __S(142) as any as S.Schema<ScheduledActionsCreateOrUpdateByScopeResponse>,
+  input: ScheduledActionsCreateOrUpdateByScopeRequest,
+  output: ScheduledActionsCreateOrUpdateByScopeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4037,8 +5304,8 @@ export const SettingsCreateOrUpdateByScope: API.OperationMethod<
   SettingsCreateOrUpdateByScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228) as any as S.Schema<SettingsCreateOrUpdateByScopeRequest>,
-  output: __S(145) as any as S.Schema<SettingsCreateOrUpdateByScopeResponse>,
+  input: SettingsCreateOrUpdateByScopeRequest,
+  output: SettingsCreateOrUpdateByScopeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4052,8 +5319,8 @@ export const ViewsCreateOrUpdate: API.OperationMethod<
   ViewsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230) as any as S.Schema<ViewsCreateOrUpdateRequest>,
-  output: __S(231) as any as S.Schema<ViewsCreateOrUpdateResponse>,
+  input: ViewsCreateOrUpdateRequest,
+  output: ViewsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4067,8 +5334,8 @@ export const ViewsCreateOrUpdateByScope: API.OperationMethod<
   ViewsCreateOrUpdateByScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232) as any as S.Schema<ViewsCreateOrUpdateByScopeRequest>,
-  output: __S(231) as any as S.Schema<ViewsCreateOrUpdateByScopeResponse>,
+  input: ViewsCreateOrUpdateByScopeRequest,
+  output: ViewsCreateOrUpdateByScopeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4090,8 +5357,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          operator: S.String,
-          values: __S(1),
+          operator: BudgetOperatorType,
+          values: BudgetComparisonExpressionValuesList,
         }),
       ).annotate({
         identifier: "BudgetComparisonExpression",
@@ -4099,36 +5366,36 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(__S(2)),
-          tags: S.optional(__S(2)),
+          dimensions: S.optional(BudgetComparisonExpression),
+          tags: S.optional(BudgetComparisonExpression),
         }),
       ).annotate({ identifier: "BudgetFilterProperties" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(BudgetFilterProperties);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          and: S.optional(__S(4)),
-          dimensions: S.optional(__S(2)),
-          tags: S.optional(__S(2)),
+          and: S.optional(BudgetFilterAndList),
+          dimensions: S.optional(BudgetComparisonExpression),
+          tags: S.optional(BudgetComparisonExpression),
         }),
       ).annotate({ identifier: "BudgetFilter" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          operator: S.String,
+          operator: BudgetNotificationOperatorType,
           threshold: S.Number,
-          frequency: S.optional(S.String),
-          contactEmails: __S(1),
-          contactRoles: S.optional(__S(1)),
-          contactGroups: S.optional(__S(1)),
-          thresholdType: S.optional(S.String),
-          locale: S.optional(S.String),
+          frequency: S.optional(Frequency),
+          contactEmails: NotificationContactEmailsList,
+          contactRoles: S.optional(NotificationContactRolesList),
+          contactGroups: S.optional(NotificationContactGroupsList),
+          thresholdType: S.optional(NotificationThresholdType),
+          locale: S.optional(CultureCode),
         }),
       ).annotate({ identifier: "Notification" });
     case 7:
-      return S.Record(S.String, __S(6));
+      return S.Record(S.String, Notification);
   }
 }
 function __c1(j: number): any {
@@ -4136,12 +5403,12 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          category: S.String,
+          category: CategoryType,
           amount: S.optional(S.Number),
-          timeGrain: S.String,
-          timePeriod: __S(0),
-          filter: S.optional(__S(5)),
-          notifications: S.optional(__S(7)),
+          timeGrain: TimeGrainType,
+          timePeriod: BudgetTimePeriod,
+          filter: S.optional(BudgetFilter),
+          notifications: S.optional(BudgetPropertiesInputNotificationsMap),
         }),
       ).annotate({ identifier: "BudgetPropertiesInput" });
     case 1:
@@ -4149,7 +5416,7 @@ function __c1(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           budgetName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(8)),
+          properties: S.optional(BudgetPropertiesInput),
           eTag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -4166,10 +5433,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -4183,14 +5450,14 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          category: S.String,
+          category: CategoryType,
           amount: S.optional(S.Number),
-          timeGrain: S.String,
-          timePeriod: __S(0),
-          filter: S.optional(__S(5)),
-          currentSpend: S.optional(__S(11)),
-          notifications: S.optional(__S(7)),
-          forecastSpend: S.optional(__S(11)),
+          timeGrain: TimeGrainType,
+          timePeriod: BudgetTimePeriod,
+          filter: S.optional(BudgetFilter),
+          currentSpend: S.optional(CurrentSpend),
+          notifications: S.optional(BudgetPropertiesNotificationsMap),
+          forecastSpend: S.optional(ForecastSpend),
         }),
       ).annotate({ identifier: "BudgetProperties" });
     case 5:
@@ -4199,8 +5466,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10)),
-          properties: S.optional(__S(12)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BudgetProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -4227,7 +5494,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.optional(S.Boolean),
-          reason: S.optional(S.String),
+          reason: S.optional(Reason),
           message: S.optional(S.String),
         }),
       ).annotate({
@@ -4273,15 +5540,15 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resourceType: S.String,
+          resourceType: CostAllocationResourceType,
           name: S.String,
-          values: __S(1),
+          values: SourceCostAllocationResourceValuesList,
         }),
       ).annotate({
         identifier: "SourceCostAllocationResource",
       });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(SourceCostAllocationResource);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4290,20 +5557,20 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "CostAllocationProportion" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(CostAllocationProportion);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resourceType: S.String,
+          resourceType: CostAllocationResourceType,
           name: S.String,
-          values: __S(21),
-          policyType: S.String,
+          values: TargetCostAllocationResourceValuesList,
+          policyType: CostAllocationPolicyType,
         }),
       ).annotate({
         identifier: "TargetCostAllocationResource",
       });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(TargetCostAllocationResource);
   }
 }
 function __c3(j: number): any {
@@ -4311,8 +5578,8 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sourceResources: S.optional(__S(19)),
-          targetResources: S.optional(__S(23)),
+          sourceResources: S.optional(CostAllocationRuleDetailsSourceResourcesList),
+          targetResources: S.optional(CostAllocationRuleDetailsTargetResourcesList),
         }),
       ).annotate({
         identifier: "CostAllocationRuleDetails",
@@ -4321,8 +5588,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          details: __S(24),
-          status: S.String,
+          details: CostAllocationRuleDetails,
+          status: RuleStatus,
         }),
       ).annotate({
         identifier: "CostAllocationRulePropertiesInput",
@@ -4332,7 +5599,7 @@ function __c3(j: number): any {
         S.Struct({
           billingAccountId: S.String.pipe(T.Label()),
           ruleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(25)),
+          properties: S.optional(CostAllocationRulePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4348,8 +5615,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          details: __S(24),
-          status: S.String,
+          details: CostAllocationRuleDetails,
+          status: RuleStatus,
           createdDate: S.optional(S.String),
           updatedDate: S.optional(S.String),
         }),
@@ -4362,8 +5629,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10)),
-          properties: S.optional(__S(27)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CostAllocationRuleProperties),
         }),
       ).annotate({
         identifier: "CostAllocationRulesCreateOrUpdateResponse",
@@ -4379,8 +5646,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
-          metric: S.optional(S.String),
-          timePeriod: S.optional(__S(29)),
+          metric: S.optional(CostDetailsMetricType),
+          timePeriod: S.optional(CostDetailsTimePeriod),
           billingPeriod: S.optional(S.String),
           invoiceId: S.optional(S.String),
         }).pipe(
@@ -4397,8 +5664,8 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metric: S.optional(S.String),
-          timePeriod: S.optional(__S(29)),
+          metric: S.optional(CostDetailsMetricType),
+          timePeriod: S.optional(CostDetailsTimePeriod),
           billingPeriod: S.optional(S.String),
           invoiceId: S.optional(S.String),
         }),
@@ -4413,7 +5680,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           requestScope: S.optional(S.String),
-          requestBody: S.optional(__S(31)),
+          requestBody: S.optional(GenerateCostDetailsReportRequestDefinition),
         }),
       ).annotate({ identifier: "RequestContext" });
     case 1:
@@ -4424,17 +5691,17 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "BlobInfo" });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(BlobInfo);
     case 3:
       return S.suspend(() =>
         S.Struct({
           manifestVersion: S.optional(S.String),
-          dataFormat: S.optional(S.String),
+          dataFormat: S.optional(CostDetailsDataFormat),
           byteCount: S.optional(S.Number),
           blobCount: S.optional(S.Number),
           compressData: S.optional(S.Boolean),
-          requestContext: S.optional(__S(32)),
-          blobs: S.optional(__S(34)),
+          requestContext: S.optional(RequestContext),
+          blobs: S.optional(ReportManifestBlobsList),
         }),
       ).annotate({ identifier: "ReportManifest" });
     case 4:
@@ -4450,10 +5717,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          status: S.optional(S.String),
-          manifest: S.optional(__S(35)),
+          status: S.optional(CostDetailsStatusType),
+          manifest: S.optional(ReportManifest),
           validTill: S.optional(S.String),
-          error: S.optional(__S(36)),
+          error: S.optional(ErrorDetails),
         }),
       ).annotate({
         identifier: "CostDetailsOperationResults",
@@ -4462,8 +5729,8 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
-          metric: S.optional(S.String),
-          timePeriod: S.optional(__S(29)),
+          metric: S.optional(GenerateDetailedCostReportMetricType),
+          timePeriod: S.optional(CostDetailsTimePeriod),
           billingPeriod: S.optional(S.String),
           invoiceId: S.optional(S.String),
           customerId: S.optional(S.String),
@@ -4496,8 +5763,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10)),
-          properties: S.optional(__S(39)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DownloadURL),
         }),
       ).annotate({
         identifier: "CreateGenerateDetailedCostReportOperationResponse",
@@ -4608,7 +5875,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
-          type: S.String.pipe(T.Label()),
+          type: DeleteSettingsByScopeRequestType.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4650,7 +5917,8 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          externalCloudProviderType: S.String.pipe(T.Label()),
+          externalCloudProviderType:
+            DimensionsByExternalCloudProviderTypeRequestExternalCloudProviderType.pipe(T.Label()),
           externalCloudProviderId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
@@ -4675,7 +5943,7 @@ function __c6(j: number): any {
           description: S.optional(S.String),
           filterEnabled: S.optional(S.Boolean),
           groupingEnabled: S.optional(S.Boolean),
-          data: S.optional(__S(1)),
+          data: S.optional(DimensionPropertiesDataList),
           total: S.optional(S.Number),
           category: S.optional(S.String),
           usageStart: S.optional(S.String),
@@ -4692,8 +5960,8 @@ function __c6(j: number): any {
           location: S.optional(S.String),
           sku: S.optional(S.String),
           eTag: S.optional(S.String),
-          tags: S.optional(__S(53)),
-          properties: S.optional(__S(54)),
+          tags: S.optional(DimensionTagsMap),
+          properties: S.optional(DimensionProperties),
         }),
       ).annotate({ identifier: "Dimension" });
   }
@@ -4701,20 +5969,20 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55));
+      return S.Array(Dimension);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(56)),
+          value: S.optional(DimensionsListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DimensionsListResult" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          category: S.optional(S.String),
-          criteria: S.optional(S.String),
+          type: S.optional(AlertType),
+          category: S.optional(AlertCategory),
+          criteria: S.optional(AlertCriteria),
         }),
       ).annotate({
         identifier: "AlertPropertiesDefinition",
@@ -4724,21 +5992,21 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          timeGrainType: S.optional(S.String),
+          timeGrainType: S.optional(AlertTimeGrainType),
           periodStartDate: S.optional(S.String),
           triggeredBy: S.optional(S.String),
-          resourceGroupFilter: S.optional(__S(59)),
-          resourceFilter: S.optional(__S(59)),
-          meterFilter: S.optional(__S(59)),
+          resourceGroupFilter: S.optional(AlertPropertiesDetailsResourceGroupFilterList),
+          resourceFilter: S.optional(AlertPropertiesDetailsResourceFilterList),
+          meterFilter: S.optional(AlertPropertiesDetailsMeterFilterList),
           tagFilter: S.optional(S.Unknown),
           threshold: S.optional(S.Number),
-          operator: S.optional(S.String),
+          operator: S.optional(AlertOperator),
           amount: S.optional(S.Number),
           unit: S.optional(S.String),
           currentSpend: S.optional(S.Number),
-          contactEmails: S.optional(__S(1)),
-          contactGroups: S.optional(__S(1)),
-          contactRoles: S.optional(__S(1)),
+          contactEmails: S.optional(AlertPropertiesDetailsContactEmailsList),
+          contactGroups: S.optional(AlertPropertiesDetailsContactGroupsList),
+          contactRoles: S.optional(AlertPropertiesDetailsContactRolesList),
           overridingAlert: S.optional(S.String),
           departmentName: S.optional(S.String),
           companyName: S.optional(S.String),
@@ -4751,12 +6019,12 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          definition: S.optional(__S(58)),
+          definition: S.optional(AlertPropertiesDefinition),
           description: S.optional(S.String),
-          source: S.optional(S.String),
-          details: S.optional(__S(60)),
+          source: S.optional(AlertSource),
+          details: S.optional(AlertPropertiesDetails),
           costEntityId: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(AlertStatus),
           creationTime: S.optional(S.String),
           closeTime: S.optional(S.String),
           modificationTime: S.optional(S.String),
@@ -4769,7 +6037,7 @@ function __c7(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           alertId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(61)),
+          properties: S.optional(AlertProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4785,8 +6053,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10)),
-          properties: S.optional(__S(61)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AlertProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "DismissAlertResponse" });
@@ -4813,15 +6081,15 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          reportUrl: S.optional(S.String),
+          reportUrl: S.optional(ReservationReportSchema),
           validUntil: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportURL" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
-          properties: S.optional(__S(65)),
+          status: S.optional(OperationStatusType),
+          properties: S.optional(ReportURL),
         }),
       ).annotate({ identifier: "OperationStatus" });
     case 3:
@@ -4876,7 +6144,7 @@ function __c8(j: number): any {
         S.Struct({
           expiryTime: S.optional(S.String),
           downloadUrl: S.optional(S.String),
-          downloadFileProperties: S.optional(__S(68)),
+          downloadFileProperties: S.optional(MCAPriceSheetProperties),
         }),
       ).annotate({
         identifier: "PricesheetDownloadProperties",
@@ -4914,7 +6182,7 @@ function __c9(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           exportName: S.String.pipe(T.Label()),
-          timePeriod: S.optional(__S(71)),
+          timePeriod: S.optional(ExportTimePeriod),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4927,7 +6195,7 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(DestinationType),
           resourceId: S.optional(S.String),
           container: S.String,
           rootFolderPath: S.optional(S.String),
@@ -4940,24 +6208,24 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          destination: __S(73),
+          destination: ExportDeliveryDestination,
         }),
       ).annotate({ identifier: "ExportDeliveryInfo" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
+          name: S.optional(FilterItemNames),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "FilterItems" });
     case 4:
-      return S.Array(__S(75));
+      return S.Array(FilterItems);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(__S(1)),
+          columns: S.optional(ExportDatasetConfigurationColumnsList),
           dataVersion: S.optional(S.String),
-          filters: S.optional(__S(76)),
+          filters: S.optional(ExportDatasetConfigurationFiltersList),
         }),
       ).annotate({
         identifier: "ExportDatasetConfiguration",
@@ -4965,17 +6233,17 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          granularity: S.optional(S.String),
-          configuration: S.optional(__S(77)),
+          granularity: S.optional(GranularityType),
+          configuration: S.optional(ExportDatasetConfiguration),
         }),
       ).annotate({ identifier: "ExportDataset" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          timeframe: S.String,
-          timePeriod: S.optional(__S(71)),
-          dataSet: S.optional(__S(78)),
+          type: ExportType,
+          timeframe: TimeframeType,
+          timePeriod: S.optional(ExportTimePeriod),
+          dataSet: S.optional(ExportDataset),
         }),
       ).annotate({ identifier: "ExportDefinition" });
   }
@@ -4992,29 +6260,29 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
-          recurrence: S.optional(S.String),
-          recurrencePeriod: S.optional(__S(80)),
+          status: S.optional(StatusType),
+          recurrence: S.optional(RecurrenceType),
+          recurrencePeriod: S.optional(ExportRecurrencePeriod),
         }),
       ).annotate({ identifier: "ExportSchedule" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          format: S.optional(S.String),
-          deliveryInfo: __S(74),
-          definition: __S(79),
-          runHistory: S.optional(__S(42)),
+          format: S.optional(FormatType),
+          deliveryInfo: ExportDeliveryInfo,
+          definition: ExportDefinition,
+          runHistory: S.optional(ExportExecutionListResultInput),
           partitionData: S.optional(S.Boolean),
-          dataOverwriteBehavior: S.optional(S.String),
-          compressionMode: S.optional(S.String),
+          dataOverwriteBehavior: S.optional(DataOverwriteBehaviorType),
+          compressionMode: S.optional(CompressionModeType),
           exportDescription: S.optional(S.String),
-          schedule: S.optional(__S(81)),
+          schedule: S.optional(ExportSchedule),
         }),
       ).annotate({ identifier: "ExportPropertiesInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: SystemAssignedServiceIdentityType,
         }),
       ).annotate({
         identifier: "ExportsCreateOrUpdateRequestIdentity",
@@ -5024,8 +6292,8 @@ function __c10(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           exportName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(82)),
-          identity: S.optional(__S(83)),
+          properties: S.optional(ExportPropertiesInput),
+          identity: S.optional(ExportsCreateOrUpdateRequestIdentity),
           location: S.optional(S.String),
           eTag: S.optional(S.String),
         }).pipe(
@@ -5050,23 +6318,23 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          format: S.optional(S.String),
-          deliveryInfo: __S(74),
-          definition: __S(79),
-          runHistory: S.optional(S.suspend(() => __S(90))),
+          format: S.optional(FormatType),
+          deliveryInfo: ExportDeliveryInfo,
+          definition: ExportDefinition,
+          runHistory: S.optional(S.suspend(() => ExportExecutionListResult)),
           partitionData: S.optional(S.Boolean),
-          dataOverwriteBehavior: S.optional(S.String),
-          compressionMode: S.optional(S.String),
+          dataOverwriteBehavior: S.optional(DataOverwriteBehaviorType),
+          compressionMode: S.optional(CompressionModeType),
           exportDescription: S.optional(S.String),
           nextRunTimeEstimate: S.optional(S.String),
-          systemSuspensionContext: S.optional(__S(85)),
+          systemSuspensionContext: S.optional(ExportSuspensionContext),
         }),
       ).annotate({ identifier: "CommonExportProperties" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          executionType: S.optional(S.String),
-          status: S.optional(S.String),
+          executionType: S.optional(ExecutionType),
+          status: S.optional(ExecutionStatus),
           submittedBy: S.optional(S.String),
           submittedTime: S.optional(S.String),
           processingStartTime: S.optional(S.String),
@@ -5075,8 +6343,8 @@ function __c10(j: number): any {
           endDate: S.optional(S.String),
           fileName: S.optional(S.String),
           manifestFile: S.optional(S.String),
-          runSettings: S.optional(__S(86)),
-          error: S.optional(__S(36)),
+          runSettings: S.optional(CommonExportProperties),
+          error: S.optional(ErrorDetails),
         }),
       ).annotate({ identifier: "ExportRunProperties" });
   }
@@ -5090,15 +6358,15 @@ function __c11(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           eTag: S.optional(S.String),
-          properties: S.optional(__S(87)),
+          properties: S.optional(ExportRunProperties),
         }),
       ).annotate({ identifier: "ExportRun" });
     case 1:
-      return S.Array(__S(88));
+      return S.Array(ExportRun);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(89)),
+          value: S.optional(ExportExecutionListResultValueList),
         }),
       ).annotate({
         identifier: "ExportExecutionListResult",
@@ -5106,17 +6374,17 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          format: S.optional(S.String),
-          deliveryInfo: __S(74),
-          definition: __S(79),
-          runHistory: S.optional(__S(90)),
+          format: S.optional(FormatType),
+          deliveryInfo: ExportDeliveryInfo,
+          definition: ExportDefinition,
+          runHistory: S.optional(ExportExecutionListResult),
           partitionData: S.optional(S.Boolean),
-          dataOverwriteBehavior: S.optional(S.String),
-          compressionMode: S.optional(S.String),
+          dataOverwriteBehavior: S.optional(DataOverwriteBehaviorType),
+          compressionMode: S.optional(CompressionModeType),
           exportDescription: S.optional(S.String),
           nextRunTimeEstimate: S.optional(S.String),
-          systemSuspensionContext: S.optional(__S(85)),
-          schedule: S.optional(__S(81)),
+          systemSuspensionContext: S.optional(ExportSuspensionContext),
+          schedule: S.optional(ExportSchedule),
         }),
       ).annotate({ identifier: "ExportProperties" });
     case 4:
@@ -5124,7 +6392,7 @@ function __c11(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
+          type: SystemAssignedServiceIdentityType,
         }),
       ).annotate({
         identifier: "ExportsCreateOrUpdateResponseIdentity",
@@ -5135,9 +6403,9 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10)),
-          properties: S.optional(__S(91)),
-          identity: S.optional(__S(92)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ExportProperties),
+          identity: S.optional(ExportsCreateOrUpdateResponseIdentity),
           location: S.optional(S.String),
           eTag: S.optional(S.String),
         }),
@@ -5147,7 +6415,7 @@ function __c11(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(__S(1)),
+          columns: S.optional(ForecastDatasetConfigurationColumnsList),
         }),
       ).annotate({
         identifier: "ForecastDatasetConfiguration",
@@ -5155,8 +6423,8 @@ function __c11(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
-          function: S.String,
+          name: FunctionName,
+          function: FunctionType,
         }),
       ).annotate({ identifier: "ForecastAggregation" });
   }
@@ -5164,15 +6432,15 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(95));
+      return S.Record(S.String, ForecastAggregation);
     case 1:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(99)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => ForecastFilter));
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          operator: S.String,
-          values: __S(1),
+          operator: ForecastOperatorType,
+          values: ForecastComparisonExpressionValuesList,
         }),
       ).annotate({
         identifier: "ForecastComparisonExpression",
@@ -5180,31 +6448,32 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          and: S.optional(__S(97)),
-          or: S.optional(__S(97)),
-          dimensions: S.optional(__S(98)),
-          tags: S.optional(__S(98)),
+          and: S.optional(ForecastFilterAndList),
+          or: S.optional(ForecastFilterOrList),
+          dimensions: S.optional(ForecastComparisonExpression),
+          tags: S.optional(ForecastComparisonExpression),
         }),
       ).annotate({ identifier: "ForecastFilter" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          granularity: S.optional(S.String),
-          configuration: S.optional(__S(94)),
-          aggregation: __S(96),
-          filter: S.optional(__S(99)),
+          granularity: S.optional(GranularityType),
+          configuration: S.optional(ForecastDatasetConfiguration),
+          aggregation: ForecastDatasetAggregationMap,
+          filter: S.optional(ForecastFilter),
         }),
       ).annotate({ identifier: "ForecastDataset" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          externalCloudProviderType: S.String.pipe(T.Label()),
+          externalCloudProviderType:
+            ForecastExternalCloudProviderUsageRequestExternalCloudProviderType.pipe(T.Label()),
           externalCloudProviderId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          type: S.String,
-          timeframe: S.String,
-          timePeriod: S.optional(__S(71)),
-          dataset: __S(100),
+          type: ForecastType,
+          timeframe: ForecastTimeframe,
+          timePeriod: S.optional(ForecastTimePeriod),
+          dataset: ForecastDataset,
           includeActualCost: S.optional(S.Boolean),
           includeFreshPartialCost: S.optional(S.Boolean),
         }).pipe(
@@ -5226,19 +6495,19 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "ForecastColumn" });
     case 7:
-      return S.Array(__S(102));
+      return S.Array(ForecastColumn);
   }
 }
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(59));
+      return S.Array(ForecastPropertiesRowsItemList);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          columns: S.optional(__S(103)),
-          rows: S.optional(__S(104)),
+          columns: S.optional(ForecastPropertiesColumnsList),
+          rows: S.optional(ForecastPropertiesRowsList),
         }),
       ).annotate({ identifier: "ForecastProperties" });
     case 2:
@@ -5250,8 +6519,8 @@ function __c13(j: number): any {
           location: S.optional(S.String),
           sku: S.optional(S.String),
           eTag: S.optional(S.String),
-          tags: S.optional(__S(53)),
-          properties: S.optional(__S(105)),
+          tags: S.optional(ForecastExternalCloudProviderUsageResponseTagsMap),
+          properties: S.optional(ForecastProperties),
         }),
       ).annotate({
         identifier: "ForecastExternalCloudProviderUsageResponse",
@@ -5261,10 +6530,10 @@ function __c13(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          type: S.String,
-          timeframe: S.String,
-          timePeriod: S.optional(__S(71)),
-          dataset: __S(100),
+          type: ForecastType,
+          timeframe: ForecastTimeframe,
+          timePeriod: S.optional(ForecastTimePeriod),
+          dataset: ForecastDataset,
           includeActualCost: S.optional(S.Boolean),
           includeFreshPartialCost: S.optional(S.Boolean),
         }).pipe(
@@ -5285,8 +6554,8 @@ function __c13(j: number): any {
           location: S.optional(S.String),
           sku: S.optional(S.String),
           eTag: S.optional(S.String),
-          tags: S.optional(__S(53)),
-          properties: S.optional(__S(105)),
+          tags: S.optional(ForecastUsageResponseTagsMap),
+          properties: S.optional(ForecastProperties),
         }),
       ).annotate({ identifier: "ForecastUsageResponse" });
     case 5:
@@ -5296,10 +6565,10 @@ function __c13(j: number): any {
           billingProfileId: S.optional(S.String),
           benefitOrderId: S.optional(S.String),
           benefitId: S.optional(S.String),
-          grain: S.String,
+          grain: Grain,
           startDate: S.String,
           endDate: S.String,
-          kind: S.optional(S.String),
+          kind: S.optional(BenefitKind),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5318,10 +6587,10 @@ function __c13(j: number): any {
           billingProfileId: S.optional(S.String),
           benefitOrderId: S.optional(S.String),
           benefitId: S.optional(S.String),
-          grain: S.String,
+          grain: Grain,
           startDate: S.String,
           endDate: S.String,
-          kind: S.optional(S.String),
+          kind: S.optional(BenefitKind),
         }),
       ).annotate({
         identifier: "BenefitUtilizationSummariesRequest",
@@ -5329,8 +6598,8 @@ function __c13(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          reportUrl: S.optional(S.String),
-          secondaryReportUrl: S.optional(S.String),
+          reportUrl: S.optional(BenefitUtilizationSummaryReportSchema),
+          secondaryReportUrl: S.optional(BenefitUtilizationSummaryReportSchema),
           validUntil: S.optional(S.String),
         }),
       ).annotate({
@@ -5343,9 +6612,9 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          input: S.optional(__S(110)),
-          status: S.optional(S.String),
-          properties: S.optional(__S(111)),
+          input: S.optional(BenefitUtilizationSummariesRequest),
+          status: S.optional(OperationStatusType),
+          properties: S.optional(AsyncOperationStatusProperties),
         }),
       ).annotate({
         identifier: "BenefitUtilizationSummariesOperationStatus",
@@ -5357,10 +6626,10 @@ function __c14(j: number): any {
           billingProfileId: S.String.pipe(T.Label()),
           benefitOrderId: S.optional(S.String),
           benefitId: S.optional(S.String),
-          grain: S.String,
+          grain: Grain,
           startDate: S.String,
           endDate: S.String,
-          kind: S.optional(S.String),
+          kind: S.optional(BenefitKind),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5381,10 +6650,10 @@ function __c14(j: number): any {
           billingProfileId: S.optional(S.String),
           benefitOrderId: S.optional(S.String),
           benefitId: S.optional(S.String),
-          grain: S.String,
+          grain: Grain,
           startDate: S.String,
           endDate: S.String,
-          kind: S.optional(S.String),
+          kind: S.optional(BenefitKind),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5404,10 +6673,10 @@ function __c14(j: number): any {
           billingProfileId: S.optional(S.String),
           benefitOrderId: S.optional(S.String),
           benefitId: S.optional(S.String),
-          grain: S.String,
+          grain: Grain,
           startDate: S.String,
           endDate: S.String,
-          kind: S.optional(S.String),
+          kind: S.optional(BenefitKind),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5428,10 +6697,10 @@ function __c14(j: number): any {
           billingProfileId: S.optional(S.String),
           benefitOrderId: S.optional(S.String),
           benefitId: S.optional(S.String),
-          grain: S.String,
+          grain: Grain,
           startDate: S.String,
           endDate: S.String,
-          kind: S.optional(S.String),
+          kind: S.optional(BenefitKind),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5451,10 +6720,10 @@ function __c14(j: number): any {
           billingProfileId: S.optional(S.String),
           benefitOrderId: S.optional(S.String),
           benefitId: S.optional(S.String),
-          grain: S.String,
+          grain: Grain,
           startDate: S.String,
           endDate: S.String,
-          kind: S.optional(S.String),
+          kind: S.optional(BenefitKind),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5539,8 +6808,8 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10)),
-          properties: S.optional(__S(12)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BudgetProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetBudgetResponse" });
@@ -5581,9 +6850,9 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10)),
-          properties: S.optional(__S(91)),
-          identity: S.optional(__S(92)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ExportProperties),
+          identity: S.optional(ExportsCreateOrUpdateResponseIdentity),
           location: S.optional(S.String),
           eTag: S.optional(S.String),
         }),
@@ -5659,7 +6928,7 @@ function __c16(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(ReportOperationStatusType),
         }),
       ).annotate({ identifier: "Status" });
     case 3:
@@ -5668,12 +6937,12 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10)),
-          properties: S.optional(__S(39)),
-          status: S.optional(__S(130)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DownloadURL),
+          status: S.optional(Status),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          error: S.optional(__S(36)),
+          error: S.optional(ErrorDetails),
         }),
       ).annotate({
         identifier: "GetGenerateDetailedCostReportOperationStatusResponse",
@@ -5707,7 +6976,7 @@ function __c16(j: number): any {
           percentage: S.Number,
           startDate: S.String,
           endDate: S.optional(S.String),
-          customerDetails: __S(133),
+          customerDetails: CustomerMetadata,
         }),
       ).annotate({ identifier: "MarkupRuleProperties" });
     case 7:
@@ -5716,8 +6985,8 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10)),
-          properties: S.optional(__S(134)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(MarkupRuleProperties),
         }),
       ).annotate({ identifier: "GetMarkupRuleResponse" });
   }
@@ -5740,17 +7009,17 @@ function __c17(j: number): any {
         identifier: "GetScheduledActionRequest",
       });
     case 1:
-      return S.Array(S.String);
+      return S.Array(FileFormat);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          fileFormats: S.optional(__S(137)),
+          fileFormats: S.optional(FileDestinationFileFormatsList),
         }),
       ).annotate({ identifier: "FileDestination" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          to: __S(1),
+          to: NotificationPropertiesToList,
           language: S.optional(S.String),
           message: S.optional(S.String),
           regionalFormat: S.optional(S.String),
@@ -5760,10 +7029,10 @@ function __c17(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          frequency: S.String,
+          frequency: ScheduleFrequency,
           hourOfDay: S.optional(S.Number),
-          daysOfWeek: S.optional(__S(137)),
-          weeksOfMonth: S.optional(__S(137)),
+          daysOfWeek: S.optional(SchedulePropertiesDaysOfWeekList),
+          weeksOfMonth: S.optional(SchedulePropertiesWeeksOfMonthList),
           dayOfMonth: S.optional(S.Number),
           startDate: S.String,
           endDate: S.String,
@@ -5773,12 +7042,12 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.String,
-          fileDestination: S.optional(__S(138)),
-          notification: __S(139),
+          fileDestination: S.optional(FileDestination),
+          notification: NotificationProperties,
           notificationEmail: S.optional(S.String),
-          schedule: __S(140),
+          schedule: ScheduleProperties,
           scope: S.optional(S.String),
-          status: S.String,
+          status: ScheduledActionStatus,
           viewId: S.String,
         }),
       ).annotate({
@@ -5790,10 +7059,10 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10)),
-          properties: S.optional(__S(141)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ScheduledActionProperties),
           eTag: S.optional(S.String),
-          kind: S.optional(S.String),
+          kind: S.optional(ScheduledActionKind),
         }),
       ).annotate({
         identifier: "GetScheduledActionResponse",
@@ -5822,7 +7091,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
-          type: S.String.pipe(T.Label()),
+          type: GetSettingsByScopeRequestType.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -5840,8 +7109,8 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10)),
-          kind: S.String,
+          systemData: S.optional(SystemData),
+          kind: SettingsKind,
         }),
       ).annotate({
         identifier: "GetSettingsByScopeResponse",
@@ -5863,24 +7132,24 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          function: S.String,
+          function: FunctionType,
         }),
       ).annotate({ identifier: "ReportConfigAggregation" });
     case 4:
-      return S.Record(S.String, __S(147));
+      return S.Record(S.String, ReportConfigAggregation);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: QueryColumnType,
           name: S.String,
         }),
       ).annotate({ identifier: "ReportConfigGrouping" });
     case 6:
-      return S.Array(__S(149));
+      return S.Array(ReportConfigGrouping);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          direction: S.optional(S.String),
+          direction: S.optional(ReportConfigSortingType),
           name: S.String,
         }),
       ).annotate({ identifier: "ReportConfigSorting" });
@@ -5889,15 +7158,15 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(151));
+      return S.Array(ReportConfigSorting);
     case 1:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(155)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => ReportConfigFilter));
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          operator: S.String,
-          values: __S(1),
+          operator: OperatorType,
+          values: ReportConfigComparisonExpressionValuesList,
         }),
       ).annotate({
         identifier: "ReportConfigComparisonExpression",
@@ -5905,43 +7174,43 @@ function __c19(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          and: S.optional(__S(153)),
-          or: S.optional(__S(153)),
-          dimensions: S.optional(__S(154)),
-          tags: S.optional(__S(154)),
+          and: S.optional(ReportConfigFilterAndList),
+          or: S.optional(ReportConfigFilterOrList),
+          dimensions: S.optional(ReportConfigComparisonExpression),
+          tags: S.optional(ReportConfigComparisonExpression),
         }),
       ).annotate({ identifier: "ReportConfigFilter" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          granularity: S.optional(S.String),
-          configuration: S.optional(__S(94)),
-          aggregation: S.optional(__S(148)),
-          grouping: S.optional(__S(150)),
-          sorting: S.optional(__S(152)),
-          filter: S.optional(__S(155)),
+          granularity: S.optional(ReportGranularityType),
+          configuration: S.optional(ReportConfigDatasetConfiguration),
+          aggregation: S.optional(ReportConfigDatasetAggregationMap),
+          grouping: S.optional(ReportConfigDatasetGroupingList),
+          sorting: S.optional(ReportConfigDatasetSortingList),
+          filter: S.optional(ReportConfigFilter),
         }),
       ).annotate({ identifier: "ReportConfigDataset" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          timeframe: S.String,
-          timePeriod: S.optional(__S(71)),
-          dataSet: S.optional(__S(156)),
+          type: ReportType,
+          timeframe: ReportTimeframeType,
+          timePeriod: S.optional(ForecastTimePeriod),
+          dataSet: S.optional(ReportConfigDataset),
           includeMonetaryCommitment: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ReportConfigDefinition" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(KpiTypeType),
           id: S.optional(S.String),
           enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "KpiProperties" });
     case 7:
-      return S.Array(__S(158));
+      return S.Array(KpiProperties);
   }
 }
 function __c20(j: number): any {
@@ -5949,12 +7218,12 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(PivotTypeType),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "PivotProperties" });
     case 1:
-      return S.Array(__S(160));
+      return S.Array(PivotProperties);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5964,12 +7233,12 @@ function __c20(j: number): any {
           modifiedOn: S.optional(S.String),
           dateRange: S.optional(S.String),
           currency: S.optional(S.String),
-          query: S.optional(__S(157)),
-          chart: S.optional(S.String),
-          accumulated: S.optional(S.String),
-          metric: S.optional(S.String),
-          kpis: S.optional(__S(159)),
-          pivots: S.optional(__S(161)),
+          query: S.optional(ReportConfigDefinition),
+          chart: S.optional(ChartType),
+          accumulated: S.optional(AccumulatedType),
+          metric: S.optional(MetricType),
+          kpis: S.optional(ViewPropertiesKpisList),
+          pivots: S.optional(ViewPropertiesPivotsList),
         }),
       ).annotate({ identifier: "ViewProperties" });
     case 3:
@@ -5978,8 +7247,8 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10)),
-          properties: S.optional(__S(162)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ViewProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetViewResponse" });
@@ -6000,7 +7269,9 @@ function __c20(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          externalCloudProviderType: S.String.pipe(T.Label()),
+          externalCloudProviderType: ListAlertExternalRequestExternalCloudProviderType.pipe(
+            T.Label(),
+          ),
           externalCloudProviderId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -6012,11 +7283,11 @@ function __c20(j: number): any {
         ),
       ).annotate({ identifier: "ListAlertExternalRequest" });
     case 6:
-      return S.Array(__S(63));
+      return S.Array(Alert);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(166)),
+          value: S.optional(AlertsResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlertsResult" });
@@ -6060,8 +7331,8 @@ function __c21(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          usageGrain: S.optional(S.String),
-          charges: S.optional(__S(170)),
+          usageGrain: S.optional(Grain),
+          charges: S.optional(RecommendationUsageDetailsChargesList),
         }),
       ).annotate({
         identifier: "RecommendationUsageDetails",
@@ -6081,11 +7352,11 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "AllSavingsBenefitDetails" });
     case 5:
-      return S.Array(__S(172));
+      return S.Array(AllSavingsBenefitDetails);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(173)),
+          value: S.optional(AllSavingsListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AllSavingsList" });
@@ -6094,17 +7365,17 @@ function __c21(j: number): any {
         S.Struct({
           firstConsumptionDate: S.optional(S.String),
           lastConsumptionDate: S.optional(S.String),
-          lookBackPeriod: S.optional(S.String),
+          lookBackPeriod: S.optional(LookBackPeriod),
           totalHours: S.optional(S.Number),
-          usage: S.optional(__S(171)),
+          usage: S.optional(RecommendationUsageDetails),
           armSkuName: S.optional(S.String),
-          term: S.optional(S.String),
-          commitmentGranularity: S.optional(S.String),
+          term: S.optional(Term),
+          commitmentGranularity: S.optional(Grain),
           currencyCode: S.optional(S.String),
           costWithoutBenefit: S.optional(S.Number),
-          recommendationDetails: S.optional(__S(172)),
-          allRecommendationDetails: S.optional(__S(174)),
-          scope: S.String,
+          recommendationDetails: S.optional(AllSavingsBenefitDetails),
+          allRecommendationDetails: S.optional(AllSavingsList),
+          scope: Scope,
         }),
       ).annotate({
         identifier: "BenefitRecommendationProperties",
@@ -6119,19 +7390,19 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10)),
-          kind: S.optional(S.String),
-          properties: S.optional(__S(175)),
+          systemData: S.optional(SystemData),
+          kind: S.optional(BenefitKind),
+          properties: S.optional(BenefitRecommendationProperties),
         }),
       ).annotate({
         identifier: "BenefitRecommendationModel",
       });
     case 1:
-      return S.Array(__S(176));
+      return S.Array(BenefitRecommendationModel);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(177)),
+          value: S.optional(BenefitRecommendationsListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6141,7 +7412,9 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           billingAccountId: S.String.pipe(T.Label()),
-          grainParameter: S.optional(S.String.pipe(T.Query())),
+          grainParameter: S.optional(
+            ListBenefitUtilizationSummaryByBillingAccountIdRequestGrainParameter.pipe(T.Query()),
+          ),
           filter: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -6155,11 +7428,11 @@ function __c22(j: number): any {
         identifier: "ListBenefitUtilizationSummaryByBillingAccountIdRequest",
       });
     case 4:
-      return S.Array(__S(145));
+      return S.Array(BenefitUtilizationSummary);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(180)),
+          value: S.optional(BenefitUtilizationSummariesListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6170,7 +7443,9 @@ function __c22(j: number): any {
         S.Struct({
           billingAccountId: S.String.pipe(T.Label()),
           billingProfileId: S.String.pipe(T.Label()),
-          grainParameter: S.optional(S.String.pipe(T.Query())),
+          grainParameter: S.optional(
+            ListBenefitUtilizationSummaryByBillingProfileIdRequestGrainParameter.pipe(T.Query()),
+          ),
           filter: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -6189,7 +7464,9 @@ function __c22(j: number): any {
           savingsPlanOrderId: S.String.pipe(T.Label()),
           savingsPlanId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          grainParameter: S.optional(S.String.pipe(T.Query())),
+          grainParameter: S.optional(
+            ListBenefitUtilizationSummaryBySavingsPlanIdRequestGrainParameter.pipe(T.Query()),
+          ),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6210,7 +7487,9 @@ function __c23(j: number): any {
         S.Struct({
           savingsPlanOrderId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          grainParameter: S.optional(S.String.pipe(T.Query())),
+          grainParameter: S.optional(
+            ListBenefitUtilizationSummaryBySavingsPlanOrderRequestGrainParameter.pipe(T.Query()),
+          ),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6237,11 +7516,11 @@ function __c23(j: number): any {
         ),
       ).annotate({ identifier: "ListBudgetsRequest" });
     case 2:
-      return S.Array(__S(122));
+      return S.Array(Budget);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(186)),
+          value: S.optional(BudgetsListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BudgetsListResult" });
@@ -6261,11 +7540,11 @@ function __c23(j: number): any {
         identifier: "ListCostAllocationRulesRequest",
       });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(CostAllocationRuleDefinition);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(189)),
+          value: S.optional(CostAllocationRuleListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CostAllocationRuleList" });
@@ -6305,11 +7584,11 @@ function __c24(j: number): any {
         ),
       ).annotate({ identifier: "ListExportsRequest" });
     case 1:
-      return S.Array(__S(125));
+      return S.Array(Export);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(193)),
+          value: S.optional(ExportListResultValueList),
         }),
       ).annotate({ identifier: "ExportListResult" });
     case 3:
@@ -6327,11 +7606,11 @@ function __c24(j: number): any {
         ),
       ).annotate({ identifier: "ListMarkupRulesRequest" });
     case 4:
-      return S.Array(__S(135));
+      return S.Array(MarkupRule);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(196)),
+          value: S.optional(MarkupRulePagedResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MarkupRulePagedResponse" });
@@ -6366,18 +7645,18 @@ function __c25(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(199)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(CostManagementOperationDisplay),
+          origin: S.optional(CostManagementOperationOrigin),
+          actionType: S.optional(CostManagementOperationActionType),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "CostManagementOperation" });
     case 1:
-      return S.Array(__S(200));
+      return S.Array(CostManagementOperation);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(201)),
+          value: S.optional(OperationListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -6403,18 +7682,18 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10)),
-          properties: S.optional(__S(141)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ScheduledActionProperties),
           eTag: S.optional(S.String),
-          kind: S.optional(S.String),
+          kind: S.optional(ScheduledActionKind),
         }),
       ).annotate({ identifier: "ScheduledAction" });
     case 5:
-      return S.Array(__S(204));
+      return S.Array(ScheduledAction);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(205)),
+          value: S.optional(ScheduledActionListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6458,16 +7737,16 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10)),
-          kind: S.String,
+          systemData: S.optional(SystemData),
+          kind: SettingsKind,
         }),
       ).annotate({ identifier: "Setting" });
     case 2:
-      return S.Array(__S(209));
+      return S.Array(Setting);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(210)),
+          value: S.optional(SettingsListResultValueList),
         }),
       ).annotate({ identifier: "SettingsListResult" });
     case 4:
@@ -6484,11 +7763,11 @@ function __c26(j: number): any {
         ),
       ).annotate({ identifier: "ListViewByScopeRequest" });
     case 5:
-      return S.Array(__S(163));
+      return S.Array(View);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(213)),
+          value: S.optional(ViewListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ViewListResult" });
@@ -6513,7 +7792,7 @@ function __c27(j: number): any {
           billingAccountId: S.String.pipe(T.Label()),
           billingProfileId: S.String.pipe(T.Label()),
           ruleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(134)),
+          properties: S.optional(MarkupRuleProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6531,20 +7810,20 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10)),
-          properties: S.optional(__S(134)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(MarkupRuleProperties),
         }),
       ).annotate({
         identifier: "MarkupRulesCreateOrUpdateResponse",
       });
     case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(220)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => QueryFilter));
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          operator: S.String,
-          values: __S(1),
+          operator: QueryOperatorType,
+          values: QueryComparisonExpressionValuesList,
         }),
       ).annotate({
         identifier: "QueryComparisonExpression",
@@ -6552,30 +7831,30 @@ function __c27(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          and: S.optional(__S(218)),
-          or: S.optional(__S(218)),
-          dimensions: S.optional(__S(219)),
-          tags: S.optional(__S(219)),
+          and: S.optional(QueryFilterAndList),
+          or: S.optional(QueryFilterOrList),
+          dimensions: S.optional(QueryComparisonExpression),
+          tags: S.optional(QueryComparisonExpression),
         }),
       ).annotate({ identifier: "QueryFilter" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          granularity: S.optional(S.String),
-          configuration: S.optional(__S(94)),
-          aggregation: S.optional(__S(148)),
-          grouping: S.optional(__S(150)),
-          filter: S.optional(__S(220)),
+          granularity: S.optional(GranularityType),
+          configuration: S.optional(QueryDatasetConfiguration),
+          aggregation: S.optional(QueryDatasetAggregationMap),
+          grouping: S.optional(QueryDatasetGroupingList),
+          filter: S.optional(QueryFilter),
         }),
       ).annotate({ identifier: "QueryDataset" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
-          type: S.String,
-          timeframe: S.String,
-          timePeriod: S.optional(__S(71)),
-          dataset: __S(221),
+          type: ExportType,
+          timeframe: TimeframeType,
+          timePeriod: S.optional(ForecastTimePeriod),
+          dataset: QueryDataset,
         }).pipe(
           T.Http({
             method: "POST",
@@ -6588,12 +7867,13 @@ function __c27(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          externalCloudProviderType: S.String.pipe(T.Label()),
+          externalCloudProviderType:
+            QueryUsageByExternalCloudProviderTypeRequestExternalCloudProviderType.pipe(T.Label()),
           externalCloudProviderId: S.String.pipe(T.Label()),
-          type: S.String,
-          timeframe: S.String,
-          timePeriod: S.optional(__S(71)),
-          dataset: __S(221),
+          type: ExportType,
+          timeframe: TimeframeType,
+          timePeriod: S.optional(ForecastTimePeriod),
+          dataset: QueryDataset,
         }).pipe(
           T.Http({
             method: "POST",
@@ -6644,9 +7924,9 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          properties: S.optional(__S(141)),
+          properties: S.optional(ScheduledActionProperties),
           eTag: S.optional(S.String),
-          kind: S.optional(S.String),
+          kind: S.optional(ScheduledActionKind),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6663,9 +7943,9 @@ function __c28(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: S.optional(__S(141)),
+          properties: S.optional(ScheduledActionProperties),
           eTag: S.optional(S.String),
-          kind: S.optional(S.String),
+          kind: S.optional(ScheduledActionKind),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6681,8 +7961,8 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
-          type: S.String.pipe(T.Label()),
-          kind: S.String,
+          type: SettingsCreateOrUpdateByScopeRequestType.pipe(T.Label()),
+          kind: SettingsKind,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6701,19 +7981,19 @@ function __c28(j: number): any {
           scope: S.optional(S.String),
           modifiedOn: S.optional(S.String),
           dateRange: S.optional(S.String),
-          query: S.optional(__S(157)),
-          chart: S.optional(S.String),
+          query: S.optional(ReportConfigDefinition),
+          chart: S.optional(ChartType),
           accumulated: S.optional(S.Boolean.pipe(T.StringEncoded())),
-          metric: S.optional(S.String),
-          kpis: S.optional(__S(159)),
-          pivots: S.optional(__S(161)),
+          metric: S.optional(MetricType),
+          kpis: S.optional(ViewPropertiesInputKpisList),
+          pivots: S.optional(ViewPropertiesInputPivotsList),
         }),
       ).annotate({ identifier: "ViewPropertiesInput" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           viewName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(229)),
+          properties: S.optional(ViewPropertiesInput),
           eTag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -6732,8 +8012,8 @@ function __c28(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10)),
-          properties: S.optional(__S(162)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ViewProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -6748,7 +8028,7 @@ function __c29(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           viewName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(229)),
+          properties: S.optional(ViewPropertiesInput),
           eTag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -6761,74 +8041,5 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ViewsCreateOrUpdateByScopeRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
   }
 }

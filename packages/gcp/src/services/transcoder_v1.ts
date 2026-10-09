@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -69,6 +67,8 @@ export interface Fmp4Config {
   /** Optional. Specify the codec tag string that will be used in the media bitstream. When not specified, the codec appropriate value is used. Supported H265 codec tags: - `hvc1` (default) - `hev1` */
   codecTag?: string;
 }
+const Fmp4Config = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Fmp4Config>;
+
 /** Segment settings for `ts`, `fmp4` and `vtt`. */
 export interface SegmentSettings {
   /** Required. Create an individual segment file. The default is `false`. */
@@ -76,7 +76,11 @@ export interface SegmentSettings {
   /** Duration of the segments in seconds. The default is `6.0s`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream). */
   segmentDuration?: string;
 }
+const SegmentSettings = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SegmentSettings>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StringList>;
+
 /** Multiplexing settings for output stream. */
 export interface MuxStream {
   /** The container format. The default is `mp4` Supported streaming formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` Supported standalone file formats: - `mp4` - `mp3` - `ogg` - `vtt` See also: [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats) */
@@ -94,14 +98,22 @@ export interface MuxStream {
   /** The name of the generated file. The default is MuxStream.key with the extension suffix corresponding to the MuxStream.container. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`. */
   fileName?: string;
 }
+const MuxStream = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<MuxStream>;
+
 export type MuxStreamList = Array<MuxStream>;
+const MuxStreamList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<MuxStreamList>;
+
 /** Configuration for secrets stored in Google Secret Manager. */
 export interface SecretManagerSource {
   /** Required. The name of the Secret Version containing the encryption key in the following format: `projects/{project}/secrets/{secret_id}/versions/{version_number}` Note that only numbered versions are supported. Aliases like "latest" are not supported. */
   secretVersion?: string;
 }
+const SecretManagerSource = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<SecretManagerSource>;
+
 /** Playready configuration. */
 export interface Playready {}
+const Playready = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Playready>;
+
 /** Widevine configuration. */
 export type Widevine = Playready;
 /** Fairplay configuration. */
@@ -119,6 +131,8 @@ export interface DrmSystems {
   /** Clearkey configuration. */
   clearkey?: Playready;
 }
+const DrmSystems = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DrmSystems>;
+
 /** Configuration for AES-128 encryption. */
 export type Aes128Encryption = Playready;
 /** Configuration for MPEG Common Encryption (MPEG-CENC). */
@@ -126,6 +140,8 @@ export interface MpegCommonEncryption {
   /** Required. Specify the encryption scheme. Supported encryption schemes: - `cenc` - `cbcs` */
   scheme?: string;
 }
+const MpegCommonEncryption = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<MpegCommonEncryption>;
+
 /** Configuration for SAMPLE-AES encryption. */
 export type SampleAesEncryption = Playready;
 /** Encryption settings. */
@@ -143,7 +159,11 @@ export interface Encryption {
   /** Required. Identifier for this set of encryption options. */
   id?: string;
 }
+const Encryption = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Encryption>;
+
 export type EncryptionList = Array<Encryption>;
+const EncryptionList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<EncryptionList>;
+
 /** Edit atom. */
 export interface EditAtom {
   /** List of Input.key values identifying files that should be used in this atom. The listed `inputs` must have the same timeline. */
@@ -155,7 +175,11 @@ export interface EditAtom {
   /** A unique key for this atom. Must be specified when using advanced mapping. */
   key?: string;
 }
+const EditAtom = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<EditAtom>;
+
 export type EditAtomList = Array<EditAtom>;
+const EditAtomList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<EditAtomList>;
+
 /** Track definition for the input asset. */
 export interface TrackDefinition {
   /** The input track. */
@@ -167,12 +191,18 @@ export interface TrackDefinition {
   /** Output only. A list of languages detected in the input asset, represented by a BCP 47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. This field is only populated if the detect_languages field is set to true. */
   detectedLanguages?: StringList;
 }
+const TrackDefinition = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<TrackDefinition>;
+
 export type TrackDefinitionList = Array<TrackDefinition>;
+const TrackDefinitionList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<TrackDefinitionList>;
+
 /** Input attributes that provide additional information about the input asset. */
 export interface InputAttributes {
   /** Optional. A list of track definitions for the input asset. */
   trackDefinitions?: TrackDefinitionList;
 }
+const InputAttributes = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<InputAttributes>;
+
 /** Denoise preprocessing configuration. **Note:** This configuration is not supported. */
 export interface Denoise {
   /** Set the denoiser mode. The default is `standard`. Supported denoiser modes: - `standard` - `grain` */
@@ -180,6 +210,8 @@ export interface Denoise {
   /** Set strength of the denoise. Enter a value between 0 and 1. The higher the value, the smoother the image. 0 is no denoising. The default is 0. */
   strength?: number;
 }
+const Denoise = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Denoise>;
+
 /** Video cropping configuration for the input video. The cropped input video is scaled to match the output resolution. */
 export interface Crop {
   /** The number of pixels to crop from the right. The default is 0. */
@@ -191,6 +223,8 @@ export interface Crop {
   /** The number of pixels to crop from the left. The default is 0. */
   leftPixels?: number;
 }
+const Crop = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Crop>;
+
 /** Pad filter configuration for the input video. The padded input video is scaled after padding with black to match the output resolution. */
 export interface Pad {
   /** The number of pixels to add to the left. The default is 0. */
@@ -202,6 +236,8 @@ export interface Pad {
   /** The number of pixels to add to the bottom. The default is 0. */
   bottomPixels?: number;
 }
+const Pad = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Pad>;
+
 /** Bob Weaver Deinterlacing Filter Configuration. */
 export interface BwdifConfig {
   /** Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field */
@@ -211,6 +247,8 @@ export interface BwdifConfig {
   /** The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity */
   parity?: string;
 }
+const BwdifConfig = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<BwdifConfig>;
+
 /** Yet Another Deinterlacing Filter Configuration. */
 export interface YadifConfig {
   /** Disable spacial interlacing. The default is `false`. */
@@ -222,6 +260,8 @@ export interface YadifConfig {
   /** The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity */
   parity?: string;
 }
+const YadifConfig = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<YadifConfig>;
+
 /** Deinterlace configuration for input video. */
 export interface Deinterlace {
   /** Specifies the Bob Weaver Deinterlacing Filter Configuration. */
@@ -229,6 +269,8 @@ export interface Deinterlace {
   /** Specifies the Yet Another Deinterlacing Filter Configuration. */
   yadif?: YadifConfig;
 }
+const Deinterlace = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Deinterlace>;
+
 /** Color preprocessing configuration. **Note:** This configuration is not supported. */
 export interface Color {
   /** Control brightness of the video. Enter a value between -1 and 1, where -1 is minimum brightness and 1 is maximum brightness. 0 is no change. The default is 0. */
@@ -238,6 +280,8 @@ export interface Color {
   /** Control color saturation of the video. Enter a value between -1 and 1, where -1 is fully desaturated and 1 is maximum saturation. 0 is no change. The default is 0. */
   saturation?: number;
 }
+const Color = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Color>;
+
 /** Deblock preprocessing configuration. **Note:** This configuration is not supported. */
 export interface Deblock {
   /** Set strength of the deblocker. Enter a value between 0 and 1. The higher the value, the stronger the block removal. 0 is no deblocking. The default is 0. */
@@ -245,6 +289,8 @@ export interface Deblock {
   /** Enable deblocker. The default is `false`. */
   enabled?: boolean;
 }
+const Deblock = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Deblock>;
+
 /** Audio preprocessing configuration. */
 export interface Audio {
   /** Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo * 0 disables normalization */
@@ -254,6 +300,8 @@ export interface Audio {
   /** Enable boosting high frequency components. The default is `false`. **Note:** This field is not supported. */
   highBoost?: boolean;
 }
+const Audio = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Audio>;
+
 /** Preprocessing configurations. */
 export interface PreprocessingConfig {
   /** Denoise preprocessing configuration. */
@@ -271,6 +319,8 @@ export interface PreprocessingConfig {
   /** Audio preprocessing configuration. */
   audio?: Audio;
 }
+const PreprocessingConfig = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<PreprocessingConfig>;
+
 /** Input asset. */
 export interface Input {
   /** A unique key for this input. Must be specified when using advanced mapping and edit lists. */
@@ -282,12 +332,18 @@ export interface Input {
   /** Preprocessing configurations. */
   preprocessingConfig?: PreprocessingConfig;
 }
+const Input = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Input>;
+
 export type InputList = Array<Input>;
+const InputList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<InputList>;
+
 /** Location of output file(s) in a Cloud Storage bucket. */
 export interface Output {
   /** URI for the output file(s). For example, `gs://my-bucket/outputs/`. Must be a directory and not a top-level bucket. If empty, the value is populated from Job.output_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats). */
   uri?: string;
 }
+const Output = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<Output>;
+
 /** Sprite sheet configuration. */
 export interface SpriteSheet {
   /** The maximum number of sprites per row in a sprite sheet. The default is 0, which indicates no maximum limit. */
@@ -313,13 +369,19 @@ export interface SpriteSheet {
   /** End time in seconds, relative to the output file timeline. When `end_time_offset` is not specified, the sprites are generated until the end of the output file. */
   endTimeOffset?: string;
 }
+const SpriteSheet = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<SpriteSheet>;
+
 export type SpriteSheetList = Array<SpriteSheet>;
+const SpriteSheetList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<SpriteSheetList>;
+
 /** Convert the input video to a Hybrid Log Gamma (HLG) video. */
 export type H264ColorFormatHLG = Playready;
 export type H264CodecSettingsFrameRateConversionStrategyEnum =
   | "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED"
   | "DOWNSAMPLE"
   | "DROP_DUPLICATE";
+const H264CodecSettingsFrameRateConversionStrategyEnum = S.String;
+
 /** Convert the input video to a Standard Dynamic Range (SDR) video. */
 export type H264ColorFormatSDR = Playready;
 /** H264 codec settings. */
@@ -371,12 +433,16 @@ export interface H264CodecSettings {
   /** Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`. */
   bPyramid?: boolean;
 }
+const H264CodecSettings = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<H264CodecSettings>;
+
 /** Convert the input video to a Hybrid Log Gamma (HLG) video. */
 export type Vp9ColorFormatHLG = Playready;
 export type Vp9CodecSettingsFrameRateConversionStrategyEnum =
   | "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED"
   | "DOWNSAMPLE"
   | "DROP_DUPLICATE";
+const Vp9CodecSettingsFrameRateConversionStrategyEnum = S.String;
+
 /** Convert the input video to a Standard Dynamic Range (SDR) video. */
 export type Vp9ColorFormatSDR = Playready;
 /** VP9 codec settings. */
@@ -408,12 +474,16 @@ export interface Vp9CodecSettings {
   /** Optional. SDR color format setting for VP9. */
   sdr?: Playready;
 }
+const Vp9CodecSettings = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Vp9CodecSettings>;
+
 /** Convert the input video to a Hybrid Log Gamma (HLG) video. */
 export type H265ColorFormatHLG = Playready;
 export type H265CodecSettingsFrameRateConversionStrategyEnum =
   | "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED"
   | "DOWNSAMPLE"
   | "DROP_DUPLICATE";
+const H265CodecSettingsFrameRateConversionStrategyEnum = S.String;
+
 /** Convert the input video to a High Dynamic Range 10 (HDR10) video. */
 export type H265ColorFormatHDR10 = Playready;
 /** Convert the input video to a Standard Dynamic Range (SDR) video. */
@@ -467,6 +537,8 @@ export interface H265CodecSettings {
   /** Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. */
   frameRate?: number;
 }
+const H265CodecSettings = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<H265CodecSettings>;
+
 /** Video stream resource. */
 export interface VideoStream {
   /** H264 codec settings. */
@@ -476,6 +548,8 @@ export interface VideoStream {
   /** H265 codec settings. */
   h265?: H265CodecSettings;
 }
+const VideoStream = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<VideoStream>;
+
 /** The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs. */
 export interface TextMapping {
   /** Required. The Input.key that identifies the input file. */
@@ -485,7 +559,11 @@ export interface TextMapping {
   /** Required. The zero-based index of the track in the input file. */
   inputTrack?: number;
 }
+const TextMapping = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<TextMapping>;
+
 export type TextMappingList = Array<TextMapping>;
+const TextMappingList = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<TextMappingList>;
+
 /** Encoding of a text stream. For example, closed captions or subtitles. */
 export interface TextStream {
   /** The name for this particular text stream that will be added to the HLS/DASH manifest. Not supported in MP4 files. */
@@ -497,6 +575,8 @@ export interface TextStream {
   /** The codec for this text stream. The default is `webvtt`. Supported text codecs: - `srt` - `ttml` - `cea608` - `cea708` - `webvtt` */
   codec?: string;
 }
+const TextStream = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<TextStream>;
+
 /** The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs. */
 export interface AudioMapping {
   /** Required. The zero-based index of the channel in the input audio stream. */
@@ -512,7 +592,11 @@ export interface AudioMapping {
   /** Required. The EditAtom.key that references the atom with audio inputs in the JobConfig.edit_list. */
   atomKey?: string;
 }
+const AudioMapping = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<AudioMapping>;
+
 export type AudioMappingList = Array<AudioMapping>;
+const AudioMappingList = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<AudioMappingList>;
+
 /** Audio stream resource. */
 export interface AudioStream {
   /** The name for this particular audio stream that will be added to the HLS/DASH manifest. Not supported in MP4 files. */
@@ -532,6 +616,8 @@ export interface AudioStream {
   /** A list of channel names specifying layout of the audio channels. This only affects the metadata embedded in the container headers, if supported by the specified format. The default is `["fl", "fr"]`. Supported channel names: - `fl` - Front left channel - `fr` - Front right channel - `sl` - Side left channel - `sr` - Side right channel - `fc` - Front center channel - `lfe` - Low frequency */
   channelLayout?: StringList;
 }
+const AudioStream = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<AudioStream>;
+
 /** Encoding of an input file such as an audio, video, or text track. Elementary streams must be packaged before mapping and sharing between different output formats. */
 export interface ElementaryStream {
   /** Encoding of a video stream. */
@@ -543,13 +629,21 @@ export interface ElementaryStream {
   /** Encoding of an audio stream. */
   audioStream?: AudioStream;
 }
+const ElementaryStream = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ElementaryStream>;
+
 export type ElementaryStreamList = Array<ElementaryStream>;
+const ElementaryStreamList = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ElementaryStreamList>;
+
 /** Ad break. */
 export interface AdBreak {
   /** Start time in seconds for the ad break, relative to the output file timeline. The default is `0s`. */
   startTimeOffset?: string;
 }
+const AdBreak = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<AdBreak>;
+
 export type AdBreakList = Array<AdBreak>;
+const AdBreakList = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<AdBreakList>;
+
 /** 2D normalized coordinates. Default: `{0.0, 0.0}` */
 export interface NormalizedCoordinate {
   /** Normalized y coordinate. */
@@ -557,6 +651,8 @@ export interface NormalizedCoordinate {
   /** Normalized x coordinate. */
   x?: number;
 }
+const NormalizedCoordinate = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<NormalizedCoordinate>;
+
 /** Overlaid image. */
 export interface Image {
   /** Required. URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.png`. Only PNG and JPEG images are supported. */
@@ -566,7 +662,11 @@ export interface Image {
   /** Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`. */
   alpha?: number;
 }
+const Image = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Image>;
+
 export type AnimationFadeFadeTypeEnum = "FADE_TYPE_UNSPECIFIED" | "FADE_IN" | "FADE_OUT";
+const AnimationFadeFadeTypeEnum = S.String;
+
 /** Display overlay object with fade animation. */
 export interface AnimationFade {
   /** Normalized coordinates based on output video resolution. Valid values: `0.0`-`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video. */
@@ -578,6 +678,8 @@ export interface AnimationFade {
   /** The time to start the fade animation, in seconds. Default: 0 */
   startTimeOffset?: string;
 }
+const AnimationFade = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<AnimationFade>;
+
 /** Display static overlay object. */
 export interface AnimationStatic {
   /** The time to start displaying the overlay object, in seconds. Default: 0 */
@@ -585,11 +687,15 @@ export interface AnimationStatic {
   /** Normalized coordinates based on output video resolution. Valid values: `0.0`-`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video. */
   xy?: NormalizedCoordinate;
 }
+const AnimationStatic = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<AnimationStatic>;
+
 /** End previous overlay animation from the video. Without `AnimationEnd`, the overlay object will keep the state of previous animation until the end of the video. */
 export interface AnimationEnd {
   /** The time to end overlay object, in seconds. Default: 0 */
   startTimeOffset?: string;
 }
+const AnimationEnd = AdBreak as any as S.Schema<AnimationEnd>;
+
 /** Animation types. */
 export interface Animation {
   /** Display overlay object with fade animation. */
@@ -599,7 +705,11 @@ export interface Animation {
   /** End previous animation. */
   animationEnd?: AnimationEnd;
 }
+const Animation = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<Animation>;
+
 export type AnimationList = Array<Animation>;
+const AnimationList = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<AnimationList>;
+
 /** Overlay configuration. */
 export interface Overlay {
   /** Image overlay. */
@@ -607,17 +717,27 @@ export interface Overlay {
   /** List of animations. The list should be chronological, without any time overlap. */
   animations?: AnimationList;
 }
+const Overlay = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<Overlay>;
+
 export type OverlayList = Array<Overlay>;
+const OverlayList = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<OverlayList>;
+
 export type ManifestTypeEnum = "MANIFEST_TYPE_UNSPECIFIED" | "HLS" | "DASH";
+const ManifestTypeEnum = S.String;
+
 export type DashConfigSegmentReferenceSchemeEnum =
   | "SEGMENT_REFERENCE_SCHEME_UNSPECIFIED"
   | "SEGMENT_LIST"
   | "SEGMENT_TEMPLATE_NUMBER";
+const DashConfigSegmentReferenceSchemeEnum = S.String;
+
 /** `DASH` manifest configuration. */
 export interface DashConfig {
   /** The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`. */
   segmentReferenceScheme?: DashConfigSegmentReferenceSchemeEnum | (string & {});
 }
+const DashConfig = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<DashConfig>;
+
 /** Manifest configuration. */
 export interface Manifest {
   /** Required. List of user supplied MuxStream.key values that should appear in this manifest. When Manifest.type is `HLS`, a media manifest with name MuxStream.key and `.m3u8` extension is generated for each element in this list. */
@@ -629,12 +749,18 @@ export interface Manifest {
   /** `DASH` manifest configuration. */
   dash?: DashConfig;
 }
+const Manifest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<Manifest>;
+
 export type ManifestList = Array<Manifest>;
+const ManifestList = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ManifestList>;
+
 /** A Pub/Sub destination. */
 export interface PubsubDestination {
   /** The name of the Pub/Sub topic to publish job completion notification to. For example: `projects/{project}/topics/{topic}`. */
   topic?: string;
 }
+const PubsubDestination = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<PubsubDestination>;
+
 /** Job configuration */
 export interface JobConfig {
   /** List of multiplexing settings for output streams. */
@@ -660,20 +786,34 @@ export interface JobConfig {
   /** Destination on Pub/Sub. */
   pubsubDestination?: PubsubDestination;
 }
+const JobConfig = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<JobConfig>;
+
 export type JobStateEnum =
   | "PROCESSING_STATE_UNSPECIFIED"
   | "PENDING"
   | "RUNNING"
   | "SUCCEEDED"
   | "FAILED";
+const JobStateEnum = S.String;
+
 export type JobOptimizationEnum = "OPTIMIZATION_STRATEGY_UNSPECIFIED" | "AUTODETECT" | "DISABLED";
+const JobOptimizationEnum = S.String;
+
 export type JobModeEnum =
   | "PROCESSING_MODE_UNSPECIFIED"
   | "PROCESSING_MODE_INTERACTIVE"
   | "PROCESSING_MODE_BATCH";
+const JobModeEnum = S.String;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<StringMap>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -683,6 +823,8 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
+const Status = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<Status>;
+
 /** Transcoding job resource. */
 export interface Job {
   /** Output only. The time the transcoding finished. */
@@ -718,12 +860,19 @@ export interface Job {
   /** Output only. The time the job was created. */
   createTime?: string;
 }
+const Job = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<Job>;
+
 export interface CreateProjectsLocationsJobsRequest {
   /** Required. The parent location to create and process this job. Format: `projects/{project}/locations/{location}` */
   parent: string;
   /** Request body */
   body?: Job;
 }
+const CreateProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<CreateProjectsLocationsJobsRequest>;
+
 /** Transcoding job template resource. */
 export interface JobTemplate {
   /** The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}` */
@@ -733,6 +882,8 @@ export interface JobTemplate {
   /** The labels associated with this job template. You can use these to organize and group your job templates. */
   labels?: StringMap;
 }
+const JobTemplate = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<JobTemplate>;
+
 export interface CreateProjectsLocationsJobTemplatesRequest {
   /** Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`. */
   jobTemplateId?: string;
@@ -741,28 +892,55 @@ export interface CreateProjectsLocationsJobTemplatesRequest {
   /** Request body */
   body?: JobTemplate;
 }
+const CreateProjectsLocationsJobTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<CreateProjectsLocationsJobTemplatesRequest>;
+
 export interface DeleteProjectsLocationsJobsRequest {
   /** Required. The name of the job to delete. Format: `projects/{project}/locations/{location}/jobs/{job}` */
   name: string;
   /** If set to true, and the job is not found, the request will succeed but no action will be taken on the server. */
   allowMissing?: boolean;
 }
+const DeleteProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<DeleteProjectsLocationsJobsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = Playready as any as S.Schema<Empty>;
+
 export interface DeleteProjectsLocationsJobTemplatesRequest {
   /** If set to true, and the job template is not found, the request will succeed but no action will be taken on the server. */
   allowMissing?: boolean;
   /** Required. The name of the job template to delete. `projects/{project}/locations/{location}/jobTemplates/{job_template}` */
   name: string;
 }
+const DeleteProjectsLocationsJobTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DeleteProjectsLocationsJobTemplatesRequest>;
+
 export interface GetProjectsLocationsJobsRequest {
   /** Required. The name of the job to retrieve. Format: `projects/{project}/locations/{location}/jobs/{job}` */
   name: string;
 }
+const GetProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<GetProjectsLocationsJobsRequest>;
+
 export interface GetProjectsLocationsJobTemplatesRequest {
   /** Required. The name of the job template to retrieve. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}` */
   name: string;
 }
+const GetProjectsLocationsJobTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetProjectsLocationsJobTemplatesRequest>;
+
 export interface ListProjectsLocationsJobsRequest {
   /** Required. Format: `projects/{project}/locations/{location}` */
   parent: string;
@@ -775,7 +953,14 @@ export interface ListProjectsLocationsJobsRequest {
   /** The `next_page_token` value returned from a previous List request, if any. */
   pageToken?: string;
 }
+const ListProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListProjectsLocationsJobsRequest>;
+
 export type JobList = Array<Job>;
+const JobList = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<JobList>;
+
 /** Response message for `TranscoderService.ListJobs`. */
 export interface ListJobsResponse {
   /** The pagination token. */
@@ -785,6 +970,8 @@ export interface ListJobsResponse {
   /** List of regions that could not be reached. */
   unreachable?: StringList;
 }
+const ListJobsResponse = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ListJobsResponse>;
+
 export interface ListProjectsLocationsJobTemplatesRequest {
   /** One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering. */
   orderBy?: string;
@@ -797,7 +984,14 @@ export interface ListProjectsLocationsJobTemplatesRequest {
   /** The filter expression, following the syntax outlined in https://google.aip.dev/160. */
   filter?: string;
 }
+const ListProjectsLocationsJobTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListProjectsLocationsJobTemplatesRequest>;
+
 export type JobTemplateList = Array<JobTemplate>;
+const JobTemplateList = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<JobTemplateList>;
+
 /** Response message for `TranscoderService.ListJobTemplates`. */
 export interface ListJobTemplatesResponse {
   /** List of regions that could not be reached. */
@@ -807,6 +1001,11 @@ export interface ListJobTemplatesResponse {
   /** List of job templates in the specified region. */
   jobTemplates?: JobTemplateList;
 }
+const ListJobTemplatesResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ListJobTemplatesResponse>;
+
 export type CreateProjectsLocationsJobsError =
   | NotFound
   | Forbidden
@@ -820,8 +1019,8 @@ export const createProjectsLocationsJobs: API.OperationMethod<
   CreateProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<CreateProjectsLocationsJobsRequest>,
-  output: __S(62) as any as S.Schema<Job>,
+  input: CreateProjectsLocationsJobsRequest,
+  output: Job,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -840,8 +1039,8 @@ export const createProjectsLocationsJobTemplates: API.OperationMethod<
   CreateProjectsLocationsJobTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<CreateProjectsLocationsJobTemplatesRequest>,
-  output: __S(64) as any as S.Schema<JobTemplate>,
+  input: CreateProjectsLocationsJobTemplatesRequest,
+  output: JobTemplate,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -860,8 +1059,8 @@ export const deleteProjectsLocationsJobs: API.OperationMethod<
   DeleteProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<DeleteProjectsLocationsJobsRequest>,
-  output: __S(6) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsJobsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -880,8 +1079,8 @@ export const deleteProjectsLocationsJobTemplates: API.OperationMethod<
   DeleteProjectsLocationsJobTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<DeleteProjectsLocationsJobTemplatesRequest>,
-  output: __S(6) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsJobTemplatesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -895,8 +1094,8 @@ export const getProjectsLocationsJobs: API.OperationMethod<
   GetProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<GetProjectsLocationsJobsRequest>,
-  output: __S(62) as any as S.Schema<Job>,
+  input: GetProjectsLocationsJobsRequest,
+  output: Job,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -910,8 +1109,8 @@ export const getProjectsLocationsJobTemplates: API.OperationMethod<
   GetProjectsLocationsJobTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<GetProjectsLocationsJobTemplatesRequest>,
-  output: __S(64) as any as S.Schema<JobTemplate>,
+  input: GetProjectsLocationsJobTemplatesRequest,
+  output: JobTemplate,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -926,8 +1125,8 @@ export const listProjectsLocationsJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(70) as any as S.Schema<ListProjectsLocationsJobsRequest>,
-  output: __S(72) as any as S.Schema<ListJobsResponse>,
+  input: ListProjectsLocationsJobsRequest,
+  output: ListJobsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -943,8 +1142,8 @@ export const listProjectsLocationsJobTemplates: API.PaginatedOperationMethod<
   GcpOpContext,
   ListJobTemplatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(73) as any as S.Schema<ListProjectsLocationsJobTemplatesRequest>,
-  output: __S(75) as any as S.Schema<ListJobTemplatesResponse>,
+  input: ListProjectsLocationsJobTemplatesRequest,
+  output: ListJobTemplatesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -973,16 +1172,16 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           container: S.optional(S.String),
-          fmp4: S.optional(__S(0)),
+          fmp4: S.optional(Fmp4Config),
           key: S.optional(S.String),
           encryptionId: S.optional(S.String),
-          segmentSettings: S.optional(__S(1)),
-          elementaryStreams: S.optional(__S(2)),
+          segmentSettings: S.optional(SegmentSettings),
+          elementaryStreams: S.optional(StringList),
           fileName: S.optional(S.String),
         }),
       ).annotate({ identifier: "MuxStream" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(MuxStream);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -996,10 +1195,10 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          playready: S.optional(__S(6)),
-          widevine: S.optional(__S(6)),
-          fairplay: S.optional(__S(6)),
-          clearkey: S.optional(__S(6)),
+          playready: S.optional(Playready),
+          widevine: S.optional(Playready),
+          fairplay: S.optional(Playready),
+          clearkey: S.optional(Playready),
         }),
       ).annotate({ identifier: "DrmSystems" });
   }
@@ -1015,42 +1214,42 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          secretManagerKeySource: S.optional(__S(5)),
-          drmSystems: S.optional(__S(7)),
-          aes128: S.optional(__S(6)),
-          mpegCenc: S.optional(__S(8)),
-          sampleAes: S.optional(__S(6)),
+          secretManagerKeySource: S.optional(SecretManagerSource),
+          drmSystems: S.optional(DrmSystems),
+          aes128: S.optional(Playready),
+          mpegCenc: S.optional(MpegCommonEncryption),
+          sampleAes: S.optional(Playready),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "Encryption" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(Encryption);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          inputs: S.optional(__S(2)),
+          inputs: S.optional(StringList),
           endTimeOffset: S.optional(S.String),
           startTimeOffset: S.optional(S.String),
           key: S.optional(S.String),
         }),
       ).annotate({ identifier: "EditAtom" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(EditAtom);
     case 5:
       return S.suspend(() =>
         S.Struct({
           inputTrack: S.optional(S.Number),
           detectLanguages: S.optional(S.Boolean),
-          languages: S.optional(__S(2)),
-          detectedLanguages: S.optional(__S(2)),
+          languages: S.optional(StringList),
+          detectedLanguages: S.optional(StringList),
         }),
       ).annotate({ identifier: "TrackDefinition" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(TrackDefinition);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          trackDefinitions: S.optional(__S(14)),
+          trackDefinitions: S.optional(TrackDefinitionList),
         }),
       ).annotate({ identifier: "InputAttributes" });
   }
@@ -1102,8 +1301,8 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          bwdif: S.optional(__S(19)),
-          yadif: S.optional(__S(20)),
+          bwdif: S.optional(BwdifConfig),
+          yadif: S.optional(YadifConfig),
         }),
       ).annotate({ identifier: "Deinterlace" });
     case 6:
@@ -1136,26 +1335,26 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          denoise: S.optional(__S(16)),
-          crop: S.optional(__S(17)),
-          pad: S.optional(__S(18)),
-          deinterlace: S.optional(__S(21)),
-          color: S.optional(__S(22)),
-          deblock: S.optional(__S(23)),
-          audio: S.optional(__S(24)),
+          denoise: S.optional(Denoise),
+          crop: S.optional(Crop),
+          pad: S.optional(Pad),
+          deinterlace: S.optional(Deinterlace),
+          color: S.optional(Color),
+          deblock: S.optional(Deblock),
+          audio: S.optional(Audio),
         }),
       ).annotate({ identifier: "PreprocessingConfig" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          attributes: S.optional(__S(15)),
+          attributes: S.optional(InputAttributes),
           uri: S.optional(S.String),
-          preprocessingConfig: S.optional(__S(25)),
+          preprocessingConfig: S.optional(PreprocessingConfig),
         }),
       ).annotate({ identifier: "Input" });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(Input);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1179,7 +1378,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "SpriteSheet" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(SpriteSheet);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1192,14 +1391,14 @@ function __c3(j: number): any {
           allowOpenGop: S.optional(S.Boolean),
           widthPixels: S.optional(S.Number),
           gopDuration: S.optional(S.String),
-          hlg: S.optional(__S(6)),
+          hlg: S.optional(Playready),
           crfLevel: S.optional(S.Number),
           bitrateBps: S.optional(S.Number),
-          frameRateConversionStrategy: S.optional(S.String),
+          frameRateConversionStrategy: S.optional(H264CodecSettingsFrameRateConversionStrategyEnum),
           heightPixels: S.optional(S.Number),
           bFrameCount: S.optional(S.Number),
           enableTwoPass: S.optional(S.Boolean),
-          sdr: S.optional(__S(6)),
+          sdr: S.optional(Playready),
           pixelFormat: S.optional(S.String),
           profile: S.optional(S.String),
           frameRate: S.optional(S.Number),
@@ -1216,7 +1415,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pixelFormat: S.optional(S.String),
-          hlg: S.optional(__S(6)),
+          hlg: S.optional(Playready),
           profile: S.optional(S.String),
           crfLevel: S.optional(S.Number),
           widthPixels: S.optional(S.Number),
@@ -1225,15 +1424,15 @@ function __c4(j: number): any {
           heightPixels: S.optional(S.Number),
           gopFrameCount: S.optional(S.Number),
           frameRate: S.optional(S.Number),
-          frameRateConversionStrategy: S.optional(S.String),
+          frameRateConversionStrategy: S.optional(Vp9CodecSettingsFrameRateConversionStrategyEnum),
           bitrateBps: S.optional(S.Number),
-          sdr: S.optional(__S(6)),
+          sdr: S.optional(Playready),
         }),
       ).annotate({ identifier: "Vp9CodecSettings" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          hlg: S.optional(__S(6)),
+          hlg: S.optional(Playready),
           enableTwoPass: S.optional(S.Boolean),
           profile: S.optional(S.String),
           rateControlMode: S.optional(S.String),
@@ -1246,14 +1445,14 @@ function __c4(j: number): any {
           bFrameCount: S.optional(S.Number),
           gopFrameCount: S.optional(S.Number),
           vbvFullnessBits: S.optional(S.Number),
-          frameRateConversionStrategy: S.optional(S.String),
-          hdr10: S.optional(__S(6)),
+          frameRateConversionStrategy: S.optional(H265CodecSettingsFrameRateConversionStrategyEnum),
+          hdr10: S.optional(Playready),
           allowOpenGop: S.optional(S.Boolean),
           aqStrength: S.optional(S.Number),
           vbvSizeBits: S.optional(S.Number),
           widthPixels: S.optional(S.Number),
           gopDuration: S.optional(S.String),
-          sdr: S.optional(__S(6)),
+          sdr: S.optional(Playready),
           crfLevel: S.optional(S.Number),
           frameRate: S.optional(S.Number),
         }),
@@ -1261,9 +1460,9 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          h264: S.optional(__S(31)),
-          vp9: S.optional(__S(32)),
-          h265: S.optional(__S(33)),
+          h264: S.optional(H264CodecSettings),
+          vp9: S.optional(Vp9CodecSettings),
+          h265: S.optional(H265CodecSettings),
         }),
       ).annotate({ identifier: "VideoStream" });
     case 3:
@@ -1275,12 +1474,12 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "TextMapping" });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(TextMapping);
     case 5:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          mapping: S.optional(__S(36)),
+          mapping: S.optional(TextMappingList),
           languageCode: S.optional(S.String),
           codec: S.optional(S.String),
         }),
@@ -1297,7 +1496,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "AudioMapping" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(AudioMapping);
   }
 }
 function __c5(j: number): any {
@@ -1307,25 +1506,25 @@ function __c5(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           sampleRateHertz: S.optional(S.Number),
-          mapping: S.optional(__S(39)),
+          mapping: S.optional(AudioMappingList),
           codec: S.optional(S.String),
           languageCode: S.optional(S.String),
           bitrateBps: S.optional(S.Number),
           channelCount: S.optional(S.Number),
-          channelLayout: S.optional(__S(2)),
+          channelLayout: S.optional(StringList),
         }),
       ).annotate({ identifier: "AudioStream" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          videoStream: S.optional(__S(34)),
-          textStream: S.optional(__S(37)),
+          videoStream: S.optional(VideoStream),
+          textStream: S.optional(TextStream),
           key: S.optional(S.String),
-          audioStream: S.optional(__S(40)),
+          audioStream: S.optional(AudioStream),
         }),
       ).annotate({ identifier: "ElementaryStream" });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(ElementaryStream);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1333,7 +1532,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "AdBreak" });
     case 4:
-      return S.Array(__S(43));
+      return S.Array(AdBreak);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1345,15 +1544,15 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           uri: S.optional(S.String),
-          resolution: S.optional(__S(45)),
+          resolution: S.optional(NormalizedCoordinate),
           alpha: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Image" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          xy: S.optional(__S(45)),
-          fadeType: S.optional(S.String),
+          xy: S.optional(NormalizedCoordinate),
+          fadeType: S.optional(AnimationFadeFadeTypeEnum),
           endTimeOffset: S.optional(S.String),
           startTimeOffset: S.optional(S.String),
         }),
@@ -1366,45 +1565,45 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           startTimeOffset: S.optional(S.String),
-          xy: S.optional(__S(45)),
+          xy: S.optional(NormalizedCoordinate),
         }),
       ).annotate({ identifier: "AnimationStatic" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          animationFade: S.optional(__S(47)),
-          animationStatic: S.optional(__S(48)),
-          animationEnd: S.optional(__S(43)),
+          animationFade: S.optional(AnimationFade),
+          animationStatic: S.optional(AnimationStatic),
+          animationEnd: S.optional(AnimationEnd),
         }),
       ).annotate({ identifier: "Animation" });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(Animation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          image: S.optional(__S(46)),
-          animations: S.optional(__S(50)),
+          image: S.optional(Image),
+          animations: S.optional(AnimationList),
         }),
       ).annotate({ identifier: "Overlay" });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(Overlay);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          segmentReferenceScheme: S.optional(S.String),
+          segmentReferenceScheme: S.optional(DashConfigSegmentReferenceSchemeEnum),
         }),
       ).annotate({ identifier: "DashConfig" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          muxStreams: S.optional(__S(2)),
-          type: S.optional(S.String),
+          muxStreams: S.optional(StringList),
+          type: S.optional(ManifestTypeEnum),
           fileName: S.optional(S.String),
-          dash: S.optional(__S(53)),
+          dash: S.optional(DashConfig),
         }),
       ).annotate({ identifier: "Manifest" });
     case 7:
-      return S.Array(__S(54));
+      return S.Array(Manifest);
   }
 }
 function __c7(j: number): any {
@@ -1418,17 +1617,17 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          muxStreams: S.optional(__S(4)),
-          encryptions: S.optional(__S(10)),
-          editList: S.optional(__S(12)),
-          inputs: S.optional(__S(27)),
-          output: S.optional(__S(28)),
-          spriteSheets: S.optional(__S(30)),
-          elementaryStreams: S.optional(__S(42)),
-          adBreaks: S.optional(__S(44)),
-          overlays: S.optional(__S(52)),
-          manifests: S.optional(__S(55)),
-          pubsubDestination: S.optional(__S(56)),
+          muxStreams: S.optional(MuxStreamList),
+          encryptions: S.optional(EncryptionList),
+          editList: S.optional(EditAtomList),
+          inputs: S.optional(InputList),
+          output: S.optional(Output),
+          spriteSheets: S.optional(SpriteSheetList),
+          elementaryStreams: S.optional(ElementaryStreamList),
+          adBreaks: S.optional(AdBreakList),
+          overlays: S.optional(OverlayList),
+          manifests: S.optional(ManifestList),
+          pubsubDestination: S.optional(PubsubDestination),
         }),
       ).annotate({ identifier: "JobConfig" });
     case 2:
@@ -1436,13 +1635,13 @@ function __c7(j: number): any {
     case 3:
       return S.Record(S.String, S.Unknown);
     case 4:
-      return S.Array(__S(59));
+      return S.Array(DocumentMap);
     case 5:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
           message: S.optional(S.String),
-          details: S.optional(__S(60)),
+          details: S.optional(DocumentMapList),
         }),
       ).annotate({ identifier: "Status" });
     case 6:
@@ -1451,17 +1650,17 @@ function __c7(j: number): any {
           endTime: S.optional(S.String),
           outputUri: S.optional(S.String),
           ttlAfterCompletionDays: S.optional(S.Number),
-          config: S.optional(__S(57)),
-          state: S.optional(S.String),
+          config: S.optional(JobConfig),
+          state: S.optional(JobStateEnum),
           inputUri: S.optional(S.String),
           batchModePriority: S.optional(S.Number),
-          optimization: S.optional(S.String),
+          optimization: S.optional(JobOptimizationEnum),
           fillContentGaps: S.optional(S.Boolean),
-          mode: S.optional(S.String),
-          labels: S.optional(__S(58)),
+          mode: S.optional(JobModeEnum),
+          labels: S.optional(StringMap),
           name: S.optional(S.String),
           startTime: S.optional(S.String),
-          error: S.optional(__S(61)),
+          error: S.optional(Status),
           templateId: S.optional(S.String),
           createTime: S.optional(S.String),
         }),
@@ -1470,7 +1669,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(62).pipe(T.HttpBody())),
+          body: S.optional(Job.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1489,8 +1688,8 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          config: S.optional(__S(57)),
-          labels: S.optional(__S(58)),
+          config: S.optional(JobConfig),
+          labels: S.optional(StringMap),
         }),
       ).annotate({ identifier: "JobTemplate" });
     case 1:
@@ -1498,7 +1697,7 @@ function __c8(j: number): any {
         S.Struct({
           jobTemplateId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(64).pipe(T.HttpBody())),
+          body: S.optional(JobTemplate.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1586,7 +1785,7 @@ function __c8(j: number): any {
         identifier: "ListProjectsLocationsJobsRequest",
       });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(Job);
   }
 }
 function __c9(j: number): any {
@@ -1595,8 +1794,8 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          jobs: S.optional(__S(71)),
-          unreachable: S.optional(__S(2)),
+          jobs: S.optional(JobList),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({ identifier: "ListJobsResponse" });
     case 1:
@@ -1618,43 +1817,14 @@ function __c9(j: number): any {
         identifier: "ListProjectsLocationsJobTemplatesRequest",
       });
     case 2:
-      return S.Array(__S(64));
+      return S.Array(JobTemplate);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(2)),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
-          jobTemplates: S.optional(__S(74)),
+          jobTemplates: S.optional(JobTemplateList),
         }),
       ).annotate({ identifier: "ListJobTemplatesResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
   }
 }

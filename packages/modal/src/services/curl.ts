@@ -6,17 +6,25 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
 export interface CurlGetAuthTokenRequest {
   url?: string;
 }
+const CurlGetAuthTokenRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CurlGetAuthTokenRequest>;
+
 export interface CurlGetAuthTokenResponse {
   token?: string;
 }
+const CurlGetAuthTokenResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CurlGetAuthTokenResponse>;
+
 export type CurlGetAuthTokenError = ModalOpError;
 /** Curl */
 export const curlGetAuthToken: API.OperationMethod<
@@ -25,8 +33,8 @@ export const curlGetAuthToken: API.OperationMethod<
   CurlGetAuthTokenError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CurlGetAuthTokenRequest>,
-  output: __S(1) as any as S.Schema<CurlGetAuthTokenResponse>,
+  input: CurlGetAuthTokenRequest,
+  output: CurlGetAuthTokenResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -49,16 +57,5 @@ function __c0(j: number): any {
           token: S.optional(S.String),
         }),
       ).annotate({ identifier: "CurlGetAuthTokenResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 1) {
-    case 0:
-      return __c0(i & 1);
   }
 }

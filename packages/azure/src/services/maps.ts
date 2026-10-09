@@ -6,37 +6,63 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type AccountsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const AccountsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AccountsCreateOrUpdateRequestTagsMap>;
+
 /** The name of the SKU, in standard format (such as S0). */
 export type SkuInputName = "S0" | "S1" | "G2";
+const SkuInputName = S.String;
+
 /** The SKU of the Maps Account. */
 export interface SkuInput {
   /** The name of the SKU, in standard format (such as S0). */
   name: SkuInputName | (string & {});
 }
+const SkuInput = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SkuInput>;
+
 /** The Kind of the Maps Account. */
 export type Kind = "Gen1" | "Gen2";
+const Kind = S.String;
+
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned";
+const ManagedServiceIdentityType = S.String;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
+const UserAssignedIdentityInput = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<UserAssignedIdentityInput>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = { [key: string]: UserAssignedIdentityInput | undefined };
+const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface AccountsCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
+const AccountsCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AccountsCreateOrUpdateRequestIdentity>;
+
 /** Linked resource is reference to a resource deployed in an Azure subscription, add the linked resource `uniqueName` value as an optional parameter for operations on Azure Maps Geospatial REST APIs. */
 export interface LinkedResource {
   /** A provided name which uniquely identifies the linked resource. */
@@ -44,29 +70,51 @@ export interface LinkedResource {
   /** ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/accounts/{storageName}'. */
   id: string;
 }
+const LinkedResource = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<LinkedResource>;
+
 /** The array of associated resources to the Map account. Linked resource in the array cannot individually update, you must update all linked resources in the array together. These resources may be used on operations on the Azure Maps REST API. Access is controlled by the Map Account Managed Identity(s) permissions to those resource(s). */
 export type LinkedResources = Array<LinkedResource>;
+const LinkedResources = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<LinkedResources>;
+
 /** Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains */
 export type CorsRuleAllowedOriginsList = Array<string>;
+const CorsRuleAllowedOriginsList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CorsRuleAllowedOriginsList>;
+
 /** Specifies a CORS rule for the Map Account. */
 export interface CorsRule {
   /** Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains */
   allowedOrigins: CorsRuleAllowedOriginsList;
 }
+const CorsRule = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CorsRule>;
+
 /** The list of CORS rules. You can include up to five CorsRule elements in the request. */
 export type CorsRulesCorsRulesList = Array<CorsRule>;
+const CorsRulesCorsRulesList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CorsRulesCorsRulesList>;
+
 /** Sets the CORS rules. You can include up to five CorsRule elements in the request. */
 export interface CorsRules {
   /** The list of CORS rules. You can include up to five CorsRule elements in the request. */
   corsRules?: CorsRulesCorsRulesList;
 }
+const CorsRules = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CorsRules>;
+
 /** Values are enabled and disabled. */
 export type MapsAccountPropertiesInputEncryptionInfrastructureEncryption = "enabled" | "disabled";
+const MapsAccountPropertiesInputEncryptionInfrastructureEncryption = S.String;
+
 /** Values can be systemAssignedIdentity or userAssignedIdentity */
 export type CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
   | "systemAssignedIdentity"
   | "userAssignedIdentity"
   | "delegatedResourceIdentity";
+const CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType = S.String;
+
 /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
 export interface CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity {
   /** Values can be systemAssignedIdentity or userAssignedIdentity */
@@ -76,6 +124,11 @@ export interface CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity {
   /** delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only. */
   delegatedIdentityClientId?: string;
 }
+const CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity>;
+
 /** All Customer-managed key encryption properties for the resource. */
 export interface CustomerManagedKeyEncryption {
   /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
@@ -83,6 +136,11 @@ export interface CustomerManagedKeyEncryption {
   /** key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek. */
   keyEncryptionKeyUrl?: string;
 }
+const CustomerManagedKeyEncryption = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CustomerManagedKeyEncryption>;
+
 /** (Optional) Discouraged to include in resource definition. Only needed where it is possible to disable platform (AKA infrastructure) encryption. Azure SQL TDE is an example of this. Values are enabled and disabled. */
 export interface MapsAccountPropertiesInputEncryption {
   /** Values are enabled and disabled. */
@@ -92,6 +150,11 @@ export interface MapsAccountPropertiesInputEncryption {
   /** All Customer-managed key encryption properties for the resource. */
   customerManagedKeyEncryption?: CustomerManagedKeyEncryption;
 }
+const MapsAccountPropertiesInputEncryption = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<MapsAccountPropertiesInputEncryption>;
+
 /** Additional Map account properties */
 export interface MapsAccountPropertiesInput {
   /** Allows toggle functionality on Azure Policy to disable Azure Maps local authentication support. This will disable Shared Keys and Shared Access Signature Token authentication from any usage. */
@@ -102,6 +165,11 @@ export interface MapsAccountPropertiesInput {
   /** (Optional) Discouraged to include in resource definition. Only needed where it is possible to disable platform (AKA infrastructure) encryption. Azure SQL TDE is an example of this. Values are enabled and disabled. */
   encryption?: MapsAccountPropertiesInputEncryption;
 }
+const MapsAccountPropertiesInput = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<MapsAccountPropertiesInput>;
+
 export interface AccountsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -122,10 +190,20 @@ export interface AccountsCreateOrUpdateRequest {
   /** The map account properties. */
   properties?: MapsAccountPropertiesInput;
 }
+const AccountsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<AccountsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type AccountsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const AccountsCreateOrUpdateResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<AccountsCreateOrUpdateResponseTagsMap>;
+
 /** The name of the SKU, in standard format (such as S0). */
 export type SkuName = "S0" | "S1" | "G2";
+const SkuName = S.String;
+
 /** The SKU of the Maps Account. */
 export interface Sku {
   /** The name of the SKU, in standard format (such as S0). */
@@ -133,18 +211,24 @@ export interface Sku {
   /** Gets the sku tier. This is based on the SKU name. */
   tier?: string;
 }
+const Sku = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Sku>;
+
 /** The type of identity that created the resource. */
 export type AccountsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const AccountsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type AccountsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const AccountsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface AccountsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -160,6 +244,11 @@ export interface AccountsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const AccountsCreateOrUpdateResponseSystemData = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<AccountsCreateOrUpdateResponseSystemData>;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -167,8 +256,15 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
+const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<UserAssignedIdentity>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | undefined };
+const UserAssignedIdentities = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<UserAssignedIdentities>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface AccountsCreateOrUpdateResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -178,8 +274,15 @@ export interface AccountsCreateOrUpdateResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
+const AccountsCreateOrUpdateResponseIdentity = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<AccountsCreateOrUpdateResponseIdentity>;
+
 /** Values are enabled and disabled. */
 export type MapsAccountPropertiesEncryptionInfrastructureEncryption = "enabled" | "disabled";
+const MapsAccountPropertiesEncryptionInfrastructureEncryption = S.String;
+
 /** (Optional) Discouraged to include in resource definition. Only needed where it is possible to disable platform (AKA infrastructure) encryption. Azure SQL TDE is an example of this. Values are enabled and disabled. */
 export interface MapsAccountPropertiesEncryption {
   /** Values are enabled and disabled. */
@@ -187,6 +290,11 @@ export interface MapsAccountPropertiesEncryption {
   /** All Customer-managed key encryption properties for the resource. */
   customerManagedKeyEncryption?: CustomerManagedKeyEncryption;
 }
+const MapsAccountPropertiesEncryption = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<MapsAccountPropertiesEncryption>;
+
 /** Additional Map account properties */
 export interface MapsAccountProperties {
   /** A unique identifier for the maps account */
@@ -201,6 +309,11 @@ export interface MapsAccountProperties {
   /** (Optional) Discouraged to include in resource definition. Only needed where it is possible to disable platform (AKA infrastructure) encryption. Azure SQL TDE is an example of this. Values are enabled and disabled. */
   encryption?: MapsAccountPropertiesEncryption;
 }
+const MapsAccountProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<MapsAccountProperties>;
+
 export interface AccountsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -223,13 +336,26 @@ export interface AccountsCreateOrUpdateResponse {
   /** The map account properties. */
   properties?: MapsAccountProperties;
 }
+const AccountsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<AccountsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type CreatorsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const CreatorsCreateOrUpdateRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CreatorsCreateOrUpdateRequestTagsMap>;
+
 /** Creator resource properties */
 export interface CreatorPropertiesInput {
   /** The storage units to be allocated. Integer values from 1 to 100, inclusive. */
   storageUnits: number;
 }
+const CreatorPropertiesInput = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreatorPropertiesInput>;
+
 export interface CreatorsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -246,8 +372,16 @@ export interface CreatorsCreateOrUpdateRequest {
   /** The Creator resource properties. */
   properties: CreatorPropertiesInput;
 }
+const CreatorsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreatorsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type CreatorsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const CreatorsCreateOrUpdateResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CreatorsCreateOrUpdateResponseTagsMap>;
+
 /** Creator resource properties */
 export interface CreatorProperties {
   /** The state of the resource provisioning, terminal states: Succeeded, Failed, Canceled */
@@ -255,6 +389,8 @@ export interface CreatorProperties {
   /** The storage units to be allocated. Integer values from 1 to 100, inclusive. */
   storageUnits: number;
 }
+const CreatorProperties = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<CreatorProperties>;
+
 /** The type of identity that created the resource. */
 export type CreatorsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -282,6 +418,9 @@ export interface CreatorsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const CreatorsCreateOrUpdateResponseSystemData =
+  AccountsCreateOrUpdateResponseSystemData as any as S.Schema<CreatorsCreateOrUpdateResponseSystemData>;
+
 export interface CreatorsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -298,6 +437,11 @@ export interface CreatorsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: CreatorsCreateOrUpdateResponseSystemData;
 }
+const CreatorsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreatorsCreateOrUpdateResponse>;
+
 export interface DeleteAccountRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -306,7 +450,11 @@ export interface DeleteAccountRequest {
   /** The name of the Maps Account. */
   accountName: string;
 }
+const DeleteAccountRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DeleteAccountRequest>;
+
 export interface DeleteAccountResponse {}
+const DeleteAccountResponse = UserAssignedIdentityInput as any as S.Schema<DeleteAccountResponse>;
+
 export interface DeleteCreatorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -317,7 +465,11 @@ export interface DeleteCreatorRequest {
   /** The name of the Maps Creator instance. */
   creatorName: string;
 }
+const DeleteCreatorRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<DeleteCreatorRequest>;
+
 export interface DeleteCreatorResponse {}
+const DeleteCreatorResponse = UserAssignedIdentityInput as any as S.Schema<DeleteCreatorResponse>;
+
 export interface GetAccountRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -326,8 +478,13 @@ export interface GetAccountRequest {
   /** The name of the Maps Account. */
   accountName: string;
 }
+const GetAccountRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GetAccountRequest>;
+
 /** Resource tags. */
 export type GetAccountResponseTagsMap = { [key: string]: string | undefined };
+const GetAccountResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetAccountResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type GetAccountResponseSystemDataCreatedByType =
   | "User"
@@ -355,6 +512,9 @@ export interface GetAccountResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetAccountResponseSystemData =
+  AccountsCreateOrUpdateResponseSystemData as any as S.Schema<GetAccountResponseSystemData>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetAccountResponseIdentity = AccountsCreateOrUpdateResponseIdentity;
 export interface GetAccountResponse {
@@ -379,6 +539,8 @@ export interface GetAccountResponse {
   /** The map account properties. */
   properties?: MapsAccountProperties;
 }
+const GetAccountResponse = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GetAccountResponse>;
+
 export interface GetCreatorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -389,8 +551,13 @@ export interface GetCreatorRequest {
   /** The name of the Maps Creator instance. */
   creatorName: string;
 }
+const GetCreatorRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GetCreatorRequest>;
+
 /** Resource tags. */
 export type GetCreatorResponseTagsMap = { [key: string]: string | undefined };
+const GetCreatorResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetCreatorResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type GetCreatorResponseSystemDataCreatedByType =
   | "User"
@@ -418,6 +585,9 @@ export interface GetCreatorResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetCreatorResponseSystemData =
+  AccountsCreateOrUpdateResponseSystemData as any as S.Schema<GetCreatorResponseSystemData>;
+
 export interface GetCreatorResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -434,22 +604,36 @@ export interface GetCreatorResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetCreatorResponseSystemData;
 }
+const GetCreatorResponse = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<GetCreatorResponse>;
+
 export interface ListAccountByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListAccountByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListAccountByResourceGroupRequest>;
+
 /** Resource tags. */
 export type MapsAccountTagsMap = { [key: string]: string | undefined };
+const MapsAccountTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<MapsAccountTagsMap>;
+
 /** The type of identity that created the resource. */
 export type MapsAccountSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const MapsAccountSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type MapsAccountSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const MapsAccountSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface MapsAccountSystemData {
   /** The identity that created the resource. */
@@ -465,6 +649,11 @@ export interface MapsAccountSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const MapsAccountSystemData = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<MapsAccountSystemData>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type MapsAccountIdentity = AccountsCreateOrUpdateResponseIdentity;
 /** An Azure resource which represents access to a suite of Maps REST APIs. */
@@ -490,8 +679,15 @@ export interface MapsAccount {
   /** The map account properties. */
   properties?: MapsAccountProperties;
 }
+const MapsAccount = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<MapsAccount>;
+
 /** a Maps Account. */
 export type MapsAccountsValueList = Array<MapsAccount>;
+const MapsAccountsValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<MapsAccountsValueList>;
+
 /** A list of Maps Accounts. */
 export interface MapsAccounts {
   /** a Maps Account. */
@@ -499,10 +695,17 @@ export interface MapsAccounts {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const MapsAccounts = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<MapsAccounts>;
+
 export interface ListAccountBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListAccountBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListAccountBySubscriptionRequest>;
+
 export interface ListAccountKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -511,6 +714,11 @@ export interface ListAccountKeysRequest {
   /** The name of the Maps Account. */
   accountName: string;
 }
+const ListAccountKeysRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListAccountKeysRequest>;
+
 /** The set of keys which can be used to access the Maps REST APIs. Two keys are provided for key rotation without interruption. */
 export interface MapsAccountKeys {
   /** The last updated date and time of the primary key. */
@@ -522,10 +730,17 @@ export interface MapsAccountKeys {
   /** The last updated date and time of the secondary key. */
   secondaryKeyLastUpdated?: string;
 }
+const MapsAccountKeys = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<MapsAccountKeys>;
+
 /** The Map account key to use for signing. Picking `primaryKey` or `secondaryKey` will use the Map account Shared Keys, and using `managedIdentity` will use the auto-renewed private key to sign the SAS. */
 export type ListAccountSasRequestSigningKey = "primaryKey" | "secondaryKey" | "managedIdentity";
+const ListAccountSasRequestSigningKey = S.String;
+
 /** Optional, allows control of which region locations are permitted access to Azure Maps REST APIs with the SAS token. Example: "eastus", "westus2". Omitting this parameter will allow all region locations to be accessible. */
 export type ListAccountSasRequestRegionsList = Array<string>;
+const ListAccountSasRequestRegionsList =
+  CorsRuleAllowedOriginsList as any as S.Schema<ListAccountSasRequestRegionsList>;
+
 export interface ListAccountSasRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -546,11 +761,18 @@ export interface ListAccountSasRequest {
   /** The date time offset of when the token validity expires. For example "2017-05-24T10:42:03.1567373Z". Maximum duration allowed is 24 hours between `start` and `expiry`. */
   expiry: string;
 }
+const ListAccountSasRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListAccountSasRequest>;
+
 /** A new Sas token which can be used to access the Maps REST APIs and is controlled by the specified Managed identity permissions on Azure (IAM) Role Based Access Control. */
 export interface MapsAccountSasToken {
   /** The shared access signature access token. */
   accountSasToken?: string;
 }
+const MapsAccountSasToken = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<MapsAccountSasToken>;
+
 export interface ListCreatorByAccountRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -559,8 +781,15 @@ export interface ListCreatorByAccountRequest {
   /** The name of the Maps Account. */
   accountName: string;
 }
+const ListCreatorByAccountRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListCreatorByAccountRequest>;
+
 /** Resource tags. */
 export type CreatorTagsMap = { [key: string]: string | undefined };
+const CreatorTagsMap = AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CreatorTagsMap>;
+
 /** The type of identity that created the resource. */
 export type CreatorSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
 /** The type of identity that last modified the resource. */
@@ -584,6 +813,8 @@ export interface CreatorSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const CreatorSystemData = MapsAccountSystemData as any as S.Schema<CreatorSystemData>;
+
 /** An Azure resource which represents Maps Creator product and provides ability to manage private location data. */
 export interface Creator {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -601,8 +832,12 @@ export interface Creator {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: CreatorSystemData;
 }
+const Creator = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<Creator>;
+
 /** a Creator account. */
 export type CreatorListValueList = Array<Creator>;
+const CreatorListValueList = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<CreatorListValueList>;
+
 /** A list of Creator resources. */
 export interface CreatorList {
   /** a Creator account. */
@@ -610,7 +845,14 @@ export interface CreatorList {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const CreatorList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<CreatorList>;
+
 export interface ListMapOperationsRequest {}
+const ListMapOperationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListMapOperationsRequest>;
+
 /** Operation display payload */
 export interface OperationDisplay {
   /** Resource provider of the operation */
@@ -622,6 +864,8 @@ export interface OperationDisplay {
   /** Localized friendly description for the operation */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<OperationDisplay>;
+
 /** Dimension of map account, for example API Category, Api Name, Result Type, and Response Code. */
 export interface Dimension {
   /** Display name of dimension. */
@@ -637,8 +881,15 @@ export interface Dimension {
   /** Flag to indicate exporting to Azure Monitor. */
   toBeExportedToShoebox?: boolean;
 }
+const Dimension = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<Dimension>;
+
 /** Dimensions of map account. */
 export type MetricSpecificationDimensionsList = Array<Dimension>;
+const MetricSpecificationDimensionsList = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<MetricSpecificationDimensionsList>;
+
 /** Metric specification of operation. */
 export interface MetricSpecification {
   /** Name of metric specification. */
@@ -670,18 +921,29 @@ export interface MetricSpecification {
   /** Allowed aggregation types for metrics. */
   supportedAggregationTypes?: string;
 }
+const MetricSpecification = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<MetricSpecification>;
+
 /** Metric specifications of operation. */
 export type ServiceSpecificationMetricSpecificationsList = Array<MetricSpecification>;
+const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
+
 /** One property of operation, include metric specifications. */
 export interface ServiceSpecification {
   /** Metric specifications of operation. */
   metricSpecifications?: ServiceSpecificationMetricSpecificationsList;
 }
+const ServiceSpecification = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ServiceSpecification>;
+
 /** Properties of operation, include metric specifications. */
 export interface OperationProperties {
   /** One property of operation, include metric specifications. */
   serviceSpecification?: ServiceSpecification;
 }
+const OperationProperties = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<OperationProperties>;
+
 /** Operation detail payload */
 export interface OperationDetail {
   /** Name of the operation */
@@ -695,8 +957,15 @@ export interface OperationDetail {
   /** Properties of the operation */
   properties?: OperationProperties;
 }
+const OperationDetail = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<OperationDetail>;
+
 /** An operation available for Maps. */
 export type MapsOperationsValueList = Array<OperationDetail>;
+const MapsOperationsValueList = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<MapsOperationsValueList>;
+
 /** The set of operations available for Maps. */
 export interface MapsOperations {
   /** An operation available for Maps. */
@@ -704,12 +973,21 @@ export interface MapsOperations {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const MapsOperations = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<MapsOperations>;
+
 export interface ListMapSubscriptionOperationsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListMapSubscriptionOperationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListMapSubscriptionOperationsRequest>;
+
 /** Whether the operation refers to the primary or secondary key. */
 export type RegenerateAccountKeysRequestKeyType = "primary" | "secondary";
+const RegenerateAccountKeysRequestKeyType = S.String;
+
 export interface RegenerateAccountKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -720,8 +998,16 @@ export interface RegenerateAccountKeysRequest {
   /** Whether the operation refers to the primary or secondary key. */
   keyType: RegenerateAccountKeysRequestKeyType | (string & {});
 }
+const RegenerateAccountKeysRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<RegenerateAccountKeysRequest>;
+
 /** Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. */
 export type UpdateAccountRequestTagsMap = { [key: string]: string | undefined };
+const UpdateAccountRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccountRequestTagsMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateAccountRequestIdentity = AccountsCreateOrUpdateRequestIdentity;
 export interface UpdateAccountRequest {
@@ -742,8 +1028,13 @@ export interface UpdateAccountRequest {
   /** The map account properties. */
   properties?: MapsAccountPropertiesInput;
 }
+const UpdateAccountRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<UpdateAccountRequest>;
+
 /** Resource tags. */
 export type UpdateAccountResponseTagsMap = { [key: string]: string | undefined };
+const UpdateAccountResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccountResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type UpdateAccountResponseSystemDataCreatedByType =
   | "User"
@@ -771,6 +1062,9 @@ export interface UpdateAccountResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const UpdateAccountResponseSystemData =
+  AccountsCreateOrUpdateResponseSystemData as any as S.Schema<UpdateAccountResponseSystemData>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateAccountResponseIdentity = AccountsCreateOrUpdateResponseIdentity;
 export interface UpdateAccountResponse {
@@ -795,8 +1089,16 @@ export interface UpdateAccountResponse {
   /** The map account properties. */
   properties?: MapsAccountProperties;
 }
+const UpdateAccountResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<UpdateAccountResponse>;
+
 /** Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. */
 export type UpdateCreatorRequestTagsMap = { [key: string]: string | undefined };
+const UpdateCreatorRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCreatorRequestTagsMap>;
+
 export interface UpdateCreatorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -811,8 +1113,13 @@ export interface UpdateCreatorRequest {
   /** Creator resource properties. */
   properties?: CreatorPropertiesInput;
 }
+const UpdateCreatorRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<UpdateCreatorRequest>;
+
 /** Resource tags. */
 export type UpdateCreatorResponseTagsMap = { [key: string]: string | undefined };
+const UpdateCreatorResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCreatorResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type UpdateCreatorResponseSystemDataCreatedByType =
   | "User"
@@ -840,6 +1147,9 @@ export interface UpdateCreatorResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const UpdateCreatorResponseSystemData =
+  AccountsCreateOrUpdateResponseSystemData as any as S.Schema<UpdateCreatorResponseSystemData>;
+
 export interface UpdateCreatorResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -856,6 +1166,11 @@ export interface UpdateCreatorResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateCreatorResponseSystemData;
 }
+const UpdateCreatorResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<UpdateCreatorResponse>;
+
 export type AccountsCreateOrUpdateError = AzureOpError;
 /** Create or update a Maps Account. A Maps Account holds the keys which allow access to the Maps REST APIs. */
 export const AccountsCreateOrUpdate: API.OperationMethod<
@@ -864,8 +1179,8 @@ export const AccountsCreateOrUpdate: API.OperationMethod<
   AccountsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<AccountsCreateOrUpdateRequest>,
-  output: __S(23) as any as S.Schema<AccountsCreateOrUpdateResponse>,
+  input: AccountsCreateOrUpdateRequest,
+  output: AccountsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -879,8 +1194,8 @@ export const CreatorsCreateOrUpdate: API.OperationMethod<
   CreatorsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<CreatorsCreateOrUpdateRequest>,
-  output: __S(27) as any as S.Schema<CreatorsCreateOrUpdateResponse>,
+  input: CreatorsCreateOrUpdateRequest,
+  output: CreatorsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -894,8 +1209,8 @@ export const DeleteAccount: API.OperationMethod<
   DeleteAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<DeleteAccountRequest>,
-  output: __S(2) as any as S.Schema<DeleteAccountResponse>,
+  input: DeleteAccountRequest,
+  output: DeleteAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -909,8 +1224,8 @@ export const DeleteCreator: API.OperationMethod<
   DeleteCreatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<DeleteCreatorRequest>,
-  output: __S(2) as any as S.Schema<DeleteCreatorResponse>,
+  input: DeleteCreatorRequest,
+  output: DeleteCreatorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -924,8 +1239,8 @@ export const GetAccount: API.OperationMethod<
   GetAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<GetAccountRequest>,
-  output: __S(31) as any as S.Schema<GetAccountResponse>,
+  input: GetAccountRequest,
+  output: GetAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -939,8 +1254,8 @@ export const GetCreator: API.OperationMethod<
   GetCreatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<GetCreatorRequest>,
-  output: __S(33) as any as S.Schema<GetCreatorResponse>,
+  input: GetCreatorRequest,
+  output: GetCreatorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -954,8 +1269,8 @@ export const ListAccountByResourceGroup: API.OperationMethod<
   ListAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<ListAccountByResourceGroupRequest>,
-  output: __S(38) as any as S.Schema<MapsAccounts>,
+  input: ListAccountByResourceGroupRequest,
+  output: MapsAccounts,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -969,8 +1284,8 @@ export const ListAccountBySubscription: API.OperationMethod<
   ListAccountBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<ListAccountBySubscriptionRequest>,
-  output: __S(38) as any as S.Schema<MapsAccounts>,
+  input: ListAccountBySubscriptionRequest,
+  output: MapsAccounts,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -984,8 +1299,8 @@ export const ListAccountKeys: API.OperationMethod<
   ListAccountKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<ListAccountKeysRequest>,
-  output: __S(41) as any as S.Schema<MapsAccountKeys>,
+  input: ListAccountKeysRequest,
+  output: MapsAccountKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -999,8 +1314,8 @@ export const ListAccountSas: API.OperationMethod<
   ListAccountSasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<ListAccountSasRequest>,
-  output: __S(43) as any as S.Schema<MapsAccountSasToken>,
+  input: ListAccountSasRequest,
+  output: MapsAccountSasToken,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1014,8 +1329,8 @@ export const ListCreatorByAccount: API.OperationMethod<
   ListCreatorByAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<ListCreatorByAccountRequest>,
-  output: __S(47) as any as S.Schema<CreatorList>,
+  input: ListCreatorByAccountRequest,
+  output: CreatorList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1029,8 +1344,8 @@ export const ListMapOperations: API.OperationMethod<
   ListMapOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<ListMapOperationsRequest>,
-  output: __S(58) as any as S.Schema<MapsOperations>,
+  input: ListMapOperationsRequest,
+  output: MapsOperations,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1044,8 +1359,8 @@ export const ListMapSubscriptionOperations: API.OperationMethod<
   ListMapSubscriptionOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<ListMapSubscriptionOperationsRequest>,
-  output: __S(58) as any as S.Schema<MapsOperations>,
+  input: ListMapSubscriptionOperationsRequest,
+  output: MapsOperations,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1059,8 +1374,8 @@ export const RegenerateAccountKeys: API.OperationMethod<
   RegenerateAccountKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<RegenerateAccountKeysRequest>,
-  output: __S(41) as any as S.Schema<MapsAccountKeys>,
+  input: RegenerateAccountKeysRequest,
+  output: MapsAccountKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1074,8 +1389,8 @@ export const UpdateAccount: API.OperationMethod<
   UpdateAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<UpdateAccountRequest>,
-  output: __S(62) as any as S.Schema<UpdateAccountResponse>,
+  input: UpdateAccountRequest,
+  output: UpdateAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1089,8 +1404,8 @@ export const UpdateCreator: API.OperationMethod<
   UpdateCreatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<UpdateCreatorRequest>,
-  output: __S(64) as any as S.Schema<UpdateCreatorResponse>,
+  input: UpdateCreatorRequest,
+  output: UpdateCreatorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1104,7 +1419,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
+          name: SkuInputName,
         }),
       ).annotate({ identifier: "SkuInput" });
     case 2:
@@ -1112,12 +1427,12 @@ function __c0(j: number): any {
         identifier: "UserAssignedIdentityInput",
       });
     case 3:
-      return S.Record(S.String, __S(2));
+      return S.Record(S.String, UserAssignedIdentityInput);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(3)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
         }),
       ).annotate({
         identifier: "AccountsCreateOrUpdateRequestIdentity",
@@ -1130,7 +1445,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "LinkedResource" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(LinkedResource);
     case 7:
       return S.Array(S.String);
   }
@@ -1140,21 +1455,23 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          allowedOrigins: __S(7),
+          allowedOrigins: CorsRuleAllowedOriginsList,
         }),
       ).annotate({ identifier: "CorsRule" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(CorsRule);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          corsRules: S.optional(__S(9)),
+          corsRules: S.optional(CorsRulesCorsRulesList),
         }),
       ).annotate({ identifier: "CorsRules" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          identityType: S.optional(S.String),
+          identityType: S.optional(
+            CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType,
+          ),
           userAssignedIdentityResourceId: S.optional(S.String),
           delegatedIdentityClientId: S.optional(S.String),
         }),
@@ -1164,7 +1481,9 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          keyEncryptionKeyIdentity: S.optional(__S(11)),
+          keyEncryptionKeyIdentity: S.optional(
+            CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity,
+          ),
           keyEncryptionKeyUrl: S.optional(S.String),
         }),
       ).annotate({
@@ -1173,8 +1492,10 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          infrastructureEncryption: S.optional(S.String),
-          customerManagedKeyEncryption: S.optional(__S(12)),
+          infrastructureEncryption: S.optional(
+            MapsAccountPropertiesInputEncryptionInfrastructureEncryption,
+          ),
+          customerManagedKeyEncryption: S.optional(CustomerManagedKeyEncryption),
         }),
       ).annotate({
         identifier: "MapsAccountPropertiesInputEncryption",
@@ -1183,9 +1504,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           disableLocalAuth: S.optional(S.Boolean),
-          linkedResources: S.optional(__S(6)),
-          cors: S.optional(__S(10)),
-          encryption: S.optional(__S(13)),
+          linkedResources: S.optional(LinkedResources),
+          cors: S.optional(CorsRules),
+          encryption: S.optional(MapsAccountPropertiesInputEncryption),
         }),
       ).annotate({
         identifier: "MapsAccountPropertiesInput",
@@ -1196,12 +1517,12 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(AccountsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          sku: __S(1),
-          kind: S.optional(S.String),
-          identity: S.optional(__S(4)),
-          properties: S.optional(__S(14)),
+          sku: SkuInput,
+          kind: S.optional(Kind),
+          identity: S.optional(AccountsCreateOrUpdateRequestIdentity),
+          properties: S.optional(MapsAccountPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1220,7 +1541,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
+          name: SkuName,
           tier: S.optional(S.String),
         }),
       ).annotate({ identifier: "Sku" });
@@ -1228,10 +1549,12 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(AccountsCreateOrUpdateResponseSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(
+            AccountsCreateOrUpdateResponseSystemDataLastModifiedByType,
+          ),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -1245,14 +1568,14 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 3:
-      return S.Record(S.String, __S(18));
+      return S.Record(S.String, UserAssignedIdentity);
     case 4:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(19)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(UserAssignedIdentities),
         }),
       ).annotate({
         identifier: "AccountsCreateOrUpdateResponseIdentity",
@@ -1260,8 +1583,10 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          infrastructureEncryption: S.optional(S.String),
-          customerManagedKeyEncryption: S.optional(__S(12)),
+          infrastructureEncryption: S.optional(
+            MapsAccountPropertiesEncryptionInfrastructureEncryption,
+          ),
+          customerManagedKeyEncryption: S.optional(CustomerManagedKeyEncryption),
         }),
       ).annotate({
         identifier: "MapsAccountPropertiesEncryption",
@@ -1272,9 +1597,9 @@ function __c2(j: number): any {
           uniqueId: S.optional(S.String),
           disableLocalAuth: S.optional(S.Boolean),
           provisioningState: S.optional(S.String),
-          linkedResources: S.optional(__S(6)),
-          cors: S.optional(__S(10)),
-          encryption: S.optional(__S(21)),
+          linkedResources: S.optional(LinkedResources),
+          cors: S.optional(CorsRules),
+          encryption: S.optional(MapsAccountPropertiesEncryption),
         }),
       ).annotate({ identifier: "MapsAccountProperties" });
     case 7:
@@ -1283,13 +1608,13 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(AccountsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          sku: __S(16),
-          kind: S.optional(S.String),
-          systemData: S.optional(__S(17)),
-          identity: S.optional(__S(20)),
-          properties: S.optional(__S(22)),
+          sku: Sku,
+          kind: S.optional(Kind),
+          systemData: S.optional(AccountsCreateOrUpdateResponseSystemData),
+          identity: S.optional(AccountsCreateOrUpdateResponseIdentity),
+          properties: S.optional(MapsAccountProperties),
         }),
       ).annotate({
         identifier: "AccountsCreateOrUpdateResponse",
@@ -1311,9 +1636,9 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           creatorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(CreatorsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: __S(24),
+          properties: CreatorPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1338,10 +1663,10 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(CreatorsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: __S(26),
-          systemData: S.optional(__S(17)),
+          properties: CreatorProperties,
+          systemData: S.optional(CreatorsCreateOrUpdateResponseSystemData),
         }),
       ).annotate({
         identifier: "CreatorsCreateOrUpdateResponse",
@@ -1398,13 +1723,13 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(GetAccountResponseTagsMap),
           location: S.String,
-          sku: __S(16),
-          kind: S.optional(S.String),
-          systemData: S.optional(__S(17)),
-          identity: S.optional(__S(20)),
-          properties: S.optional(__S(22)),
+          sku: Sku,
+          kind: S.optional(Kind),
+          systemData: S.optional(GetAccountResponseSystemData),
+          identity: S.optional(AccountsCreateOrUpdateResponseIdentity),
+          properties: S.optional(MapsAccountProperties),
         }),
       ).annotate({ identifier: "GetAccountResponse" });
   }
@@ -1433,10 +1758,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(GetCreatorResponseTagsMap),
           location: S.String,
-          properties: __S(26),
-          systemData: S.optional(__S(17)),
+          properties: CreatorProperties,
+          systemData: S.optional(GetCreatorResponseSystemData),
         }),
       ).annotate({ identifier: "GetCreatorResponse" });
     case 2:
@@ -1459,10 +1784,10 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(MapsAccountSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(MapsAccountSystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "MapsAccountSystemData" });
@@ -1472,21 +1797,21 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(MapsAccountTagsMap),
           location: S.String,
-          sku: __S(16),
-          kind: S.optional(S.String),
-          systemData: S.optional(__S(35)),
-          identity: S.optional(__S(20)),
-          properties: S.optional(__S(22)),
+          sku: Sku,
+          kind: S.optional(Kind),
+          systemData: S.optional(MapsAccountSystemData),
+          identity: S.optional(AccountsCreateOrUpdateResponseIdentity),
+          properties: S.optional(MapsAccountProperties),
         }),
       ).annotate({ identifier: "MapsAccount" });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(MapsAccount);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(37)),
+          value: S.optional(MapsAccountsValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MapsAccounts" });
@@ -1539,9 +1864,9 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          signingKey: S.String,
+          signingKey: ListAccountSasRequestSigningKey,
           principalId: S.String,
-          regions: S.optional(__S(7)),
+          regions: S.optional(ListAccountSasRequestRegionsList),
           maxRatePerSecond: S.Number,
           start: S.String,
           expiry: S.String,
@@ -1583,18 +1908,18 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(CreatorTagsMap),
           location: S.String,
-          properties: __S(26),
-          systemData: S.optional(__S(35)),
+          properties: CreatorProperties,
+          systemData: S.optional(CreatorSystemData),
         }),
       ).annotate({ identifier: "Creator" });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(Creator);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(46)),
+          value: S.optional(CreatorListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreatorList" });
@@ -1634,7 +1959,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "Dimension" });
     case 3:
-      return S.Array(__S(50));
+      return S.Array(Dimension);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1642,7 +1967,7 @@ function __c6(j: number): any {
           displayName: S.optional(S.String),
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
-          dimensions: S.optional(__S(51)),
+          dimensions: S.optional(MetricSpecificationDimensionsList),
           aggregationType: S.optional(S.String),
           fillGapWithZero: S.optional(S.Boolean),
           category: S.optional(S.String),
@@ -1655,17 +1980,17 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "MetricSpecification" });
     case 5:
-      return S.Array(__S(52));
+      return S.Array(MetricSpecification);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(__S(53)),
+          metricSpecifications: S.optional(ServiceSpecificationMetricSpecificationsList),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(54)),
+          serviceSpecification: S.optional(ServiceSpecification),
         }),
       ).annotate({ identifier: "OperationProperties" });
   }
@@ -1677,17 +2002,17 @@ function __c7(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(49)),
+          display: S.optional(OperationDisplay),
           origin: S.optional(S.String),
-          properties: S.optional(__S(55)),
+          properties: S.optional(OperationProperties),
         }),
       ).annotate({ identifier: "OperationDetail" });
     case 1:
-      return S.Array(__S(56));
+      return S.Array(OperationDetail);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(57)),
+          value: S.optional(MapsOperationsValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MapsOperations" });
@@ -1712,7 +2037,7 @@ function __c7(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          keyType: S.String,
+          keyType: RegenerateAccountKeysRequestKeyType,
         }).pipe(
           T.Http({
             method: "POST",
@@ -1730,11 +2055,11 @@ function __c7(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
-          kind: S.optional(S.String),
-          sku: S.optional(__S(1)),
-          identity: S.optional(__S(4)),
-          properties: S.optional(__S(14)),
+          tags: S.optional(UpdateAccountRequestTagsMap),
+          kind: S.optional(Kind),
+          sku: S.optional(SkuInput),
+          identity: S.optional(AccountsCreateOrUpdateRequestIdentity),
+          properties: S.optional(MapsAccountPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1750,13 +2075,13 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateAccountResponseTagsMap),
           location: S.String,
-          sku: __S(16),
-          kind: S.optional(S.String),
-          systemData: S.optional(__S(17)),
-          identity: S.optional(__S(20)),
-          properties: S.optional(__S(22)),
+          sku: Sku,
+          kind: S.optional(Kind),
+          systemData: S.optional(UpdateAccountResponseSystemData),
+          identity: S.optional(AccountsCreateOrUpdateResponseIdentity),
+          properties: S.optional(MapsAccountProperties),
         }),
       ).annotate({ identifier: "UpdateAccountResponse" });
     case 7:
@@ -1766,8 +2091,8 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           creatorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
-          properties: S.optional(__S(24)),
+          tags: S.optional(UpdateCreatorRequestTagsMap),
+          properties: S.optional(CreatorPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1787,38 +2112,11 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateCreatorResponseTagsMap),
           location: S.String,
-          properties: __S(26),
-          systemData: S.optional(__S(17)),
+          properties: CreatorProperties,
+          systemData: S.optional(UpdateCreatorResponseSystemData),
         }),
       ).annotate({ identifier: "UpdateCreatorResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
   }
 }

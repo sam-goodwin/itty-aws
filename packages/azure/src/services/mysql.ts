@@ -7,20 +7,27 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 export type AdvancedThreatProtectionSettingsUpdatePutRequestAdvancedThreatProtectionName =
   "Default";
+const AdvancedThreatProtectionSettingsUpdatePutRequestAdvancedThreatProtectionName = S.String;
+
 /** Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled on the server. */
 export type AdvancedThreatProtectionState = "Enabled" | "Disabled";
+const AdvancedThreatProtectionState = S.String;
+
 /** Properties of an Advanced Threat Protection setting. */
 export interface AdvancedThreatProtectionPropertiesInput {
   /** Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled or a state has not been applied yet on the specific database or server. */
   state?: AdvancedThreatProtectionState | (string & {});
 }
+const AdvancedThreatProtectionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AdvancedThreatProtectionPropertiesInput>;
+
 export interface AdvancedThreatProtectionSettingsUpdatePutRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -35,10 +42,19 @@ export interface AdvancedThreatProtectionSettingsUpdatePutRequest {
   /** Resource properties. */
   properties?: AdvancedThreatProtectionPropertiesInput;
 }
+const AdvancedThreatProtectionSettingsUpdatePutRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AdvancedThreatProtectionSettingsUpdatePutRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -54,12 +70,16 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SystemData>;
+
 /** The current provisioning state. */
 export type AdvancedThreatProtectionProvisioningState =
   | "Succeeded"
   | "Updating"
   | "Canceled"
   | "Failed";
+const AdvancedThreatProtectionProvisioningState = S.String;
+
 /** Properties of an Advanced Threat Protection setting. */
 export interface AdvancedThreatProtectionProperties {
   /** Specifies the UTC creation time of the policy. */
@@ -69,6 +89,11 @@ export interface AdvancedThreatProtectionProperties {
   /** Provisioning state of the Threat Protection. */
   provisioningState?: AdvancedThreatProtectionProvisioningState;
 }
+const AdvancedThreatProtectionProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AdvancedThreatProtectionProperties>;
+
 export interface AdvancedThreatProtectionSettingsUpdatePutResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -81,9 +106,18 @@ export interface AdvancedThreatProtectionSettingsUpdatePutResponse {
   /** Resource properties. */
   properties?: AdvancedThreatProtectionProperties;
 }
+const AdvancedThreatProtectionSettingsUpdatePutResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AdvancedThreatProtectionSettingsUpdatePutResponse>;
+
 export type AzureADAdministratorsCreateOrUpdateRequestAdministratorName = "ActiveDirectory";
+const AzureADAdministratorsCreateOrUpdateRequestAdministratorName = S.String;
+
 /** Type of the sever administrator. */
 export type AdministratorType = "ActiveDirectory";
+const AdministratorType = S.String;
+
 /** The properties of an administrator. */
 export interface AdministratorProperties {
   /** Type of the sever administrator. */
@@ -97,6 +131,11 @@ export interface AdministratorProperties {
   /** The resource id of the identity used for AAD Authentication. */
   identityResourceId?: string;
 }
+const AdministratorProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AdministratorProperties>;
+
 export interface AzureADAdministratorsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -109,6 +148,11 @@ export interface AzureADAdministratorsCreateOrUpdateRequest {
   /** The properties of an administrator. */
   properties?: AdministratorProperties;
 }
+const AzureADAdministratorsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AzureADAdministratorsCreateOrUpdateRequest>;
+
 export interface AzureADAdministratorsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -121,8 +165,15 @@ export interface AzureADAdministratorsCreateOrUpdateResponse {
   /** The properties of an administrator. */
   properties?: AdministratorProperties;
 }
+const AzureADAdministratorsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AzureADAdministratorsCreateOrUpdateResponse>;
+
 /** Source of the configuration. */
 export type ConfigurationSource = "system-default" | "user-override";
+const ConfigurationSource = S.String;
+
 /** The properties of a configuration. */
 export interface ConfigurationPropertiesInput {
   /** Value of the configuration. */
@@ -132,6 +183,11 @@ export interface ConfigurationPropertiesInput {
   /** Source of the configuration. */
   source?: ConfigurationSource | (string & {});
 }
+const ConfigurationPropertiesInput = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ConfigurationPropertiesInput>;
+
 export interface ConfigurationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -144,12 +200,23 @@ export interface ConfigurationsCreateOrUpdateRequest {
   /** The properties of a configuration. */
   properties?: ConfigurationPropertiesInput;
 }
+const ConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ConfigurationsCreateOrUpdateRequest>;
+
 /** If is the configuration read only. */
 export type IsReadOnly = "True" | "False";
+const IsReadOnly = S.String;
+
 /** If is the configuration pending restart or not. */
 export type IsConfigPendingRestart = "True" | "False";
+const IsConfigPendingRestart = S.String;
+
 /** If is the configuration dynamic. */
 export type IsDynamicConfig = "True" | "False";
+const IsDynamicConfig = S.String;
+
 /** The properties of a configuration. */
 export interface ConfigurationProperties {
   /** Value of the configuration. */
@@ -175,6 +242,11 @@ export interface ConfigurationProperties {
   /** If is the configuration dynamic. */
   isDynamicConfig?: IsDynamicConfig;
 }
+const ConfigurationProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ConfigurationProperties>;
+
 export interface ConfigurationsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -187,8 +259,15 @@ export interface ConfigurationsCreateOrUpdateResponse {
   /** The properties of a configuration. */
   properties?: ConfigurationProperties;
 }
+const ConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ConfigurationsCreateOrUpdateResponse>;
+
 /** Backup Format for the current backup. (CollatedFormat is INTERNAL - DO NOT USE) */
 export type BackupFormat = "CollatedFormat" | "Raw";
+const BackupFormat = S.String;
+
 /** Backup Settings */
 export interface BackupSettings {
   /** The name of the backup. */
@@ -196,11 +275,15 @@ export interface BackupSettings {
   /** Backup Format for the current backup. (CollatedFormat is INTERNAL - DO NOT USE) */
   backupFormat?: BackupFormat | (string & {});
 }
+const BackupSettings = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<BackupSettings>;
+
 /** Details about the target where the backup content will be stored. */
 export interface BackupStoreDetails {
   /** Type of the specific object - used for deserializing */
   objectType: string;
 }
+const BackupStoreDetails = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<BackupStoreDetails>;
+
 export interface CreateBackupAndExportRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -213,6 +296,11 @@ export interface CreateBackupAndExportRequest {
   /** Backup Target Store Details */
   targetDetails: BackupStoreDetails;
 }
+const CreateBackupAndExportRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateBackupAndExportRequest>;
+
 /** BackupAndExport Response Properties */
 export interface BackupAndExportResponseProperties {
   /** Size of datasource in bytes */
@@ -222,8 +310,18 @@ export interface BackupAndExportResponseProperties {
   /** Metadata related to backup to be stored for restoring resource in key-value pairs. */
   backupMetadata?: string;
 }
+const BackupAndExportResponseProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<BackupAndExportResponseProperties>;
+
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
+const ErrorDetailDetailsList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ErrorDetailDetailsList>;
+
 /** The resource management error additional info. */
 export interface ErrorAdditionalInfo {
   /** The additional info type. */
@@ -231,8 +329,15 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
+const ErrorAdditionalInfo = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ErrorAdditionalInfo>;
+
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
+const ErrorDetailAdditionalInfoList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ErrorDetailAdditionalInfoList>;
+
 /** The error detail. */
 export interface ErrorDetail {
   /** The error code. */
@@ -246,10 +351,20 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
+const ErrorDetail = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ErrorDetail>;
+
 /** The error details. */
 export type CreateBackupAndExportResponseErrorDetailsList = Array<ErrorDetail>;
+const CreateBackupAndExportResponseErrorDetailsList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateBackupAndExportResponseErrorDetailsList>;
+
 /** The error additional info. */
 export type CreateBackupAndExportResponseErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
+const CreateBackupAndExportResponseErrorAdditionalInfoList =
+  ErrorDetailAdditionalInfoList as any as S.Schema<CreateBackupAndExportResponseErrorAdditionalInfoList>;
+
 /** The error detail. */
 export interface CreateBackupAndExportResponseError {
   /** The error code. */
@@ -263,6 +378,11 @@ export interface CreateBackupAndExportResponseError {
   /** The error additional info. */
   additionalInfo?: CreateBackupAndExportResponseErrorAdditionalInfoList;
 }
+const CreateBackupAndExportResponseError = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateBackupAndExportResponseError>;
+
 /** The operation status */
 export type OperationStatus =
   | "Pending"
@@ -271,6 +391,8 @@ export type OperationStatus =
   | "Failed"
   | "CancelInProgress"
   | "Canceled";
+const OperationStatus = S.String;
+
 export interface CreateBackupAndExportResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -293,9 +415,18 @@ export interface CreateBackupAndExportResponse {
   /** Operation progress (0-100). */
   percentComplete?: number;
 }
+const CreateBackupAndExportResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateBackupAndExportResponse>;
+
 export type BackupType = "FULL";
+const BackupType = S.String;
+
 /** The current provisioning state. */
 export type ProvisioningState = "Succeeded" | "Creating" | "Deleting" | "Failed" | "Canceled";
+const ProvisioningState = S.String;
+
 /** The properties of a server backup. */
 export interface ServerBackupPropertiesV2 {
   /** Backup name */
@@ -308,6 +439,11 @@ export interface ServerBackupPropertiesV2 {
   /** The provisioning state of backup resource. */
   provisioningState?: ProvisioningState | (string & {});
 }
+const ServerBackupPropertiesV2 = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ServerBackupPropertiesV2>;
+
 export interface CreateLongRunningBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -320,6 +456,11 @@ export interface CreateLongRunningBackupRequest {
   /** The properties of a server backup. */
   properties?: ServerBackupPropertiesV2;
 }
+const CreateLongRunningBackupRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateLongRunningBackupRequest>;
+
 export interface CreateLongRunningBackupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -332,16 +473,34 @@ export interface CreateLongRunningBackupResponse {
   /** The properties of a server backup. */
   properties?: ServerBackupPropertiesV2;
 }
+const CreateLongRunningBackupResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateLongRunningBackupResponse>;
+
 /** Resource tags. */
 export type CreateServerRequestTagsMap = { [key: string]: string | undefined };
+const CreateServerRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateServerRequestTagsMap>;
+
 /** The major version of a server. 8.0.21 stands for MySQL 8.0, 5.7.44 stands for MySQL 5.7 */
 export type ServerVersion = "5.7" | "8.0.21";
+const ServerVersion = S.String;
+
 /** The mode to create a new MySQL server. */
 export type CreateMode = "Default" | "PointInTimeRestore" | "Replica" | "GeoRestore";
+const CreateMode = S.String;
+
 /** The replication role. */
 export type ReplicationRole = "None" | "Source" | "Replica";
+const ReplicationRole = S.String;
+
 /** The key type, AzureKeyVault for enable cmk, SystemManaged for disable cmk. */
 export type DataEncryptionType = "AzureKeyVault" | "SystemManaged";
+const DataEncryptionType = S.String;
+
 /** The date encryption for cmk. */
 export interface DataEncryption {
   /** Primary user identity resource id */
@@ -355,14 +514,24 @@ export interface DataEncryption {
   /** The key type, AzureKeyVault for enable cmk, SystemManaged for disable cmk. */
   type?: DataEncryptionType | (string & {});
 }
+const DataEncryption = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<DataEncryption>;
+
 /** Enable Storage Auto Grow or not. */
 export type StorageInputAutoGrow = "Enabled" | "Disabled";
+const StorageInputAutoGrow = S.String;
+
 /** Enable Log On Disk or not. */
 export type StorageInputLogOnDisk = "Enabled" | "Disabled";
+const StorageInputLogOnDisk = S.String;
+
 /** Enable IO Auto Scaling or not. */
 export type StorageInputAutoIoScaling = "Enabled" | "Disabled";
+const StorageInputAutoIoScaling = S.String;
+
 /** The redundant type of the server storage. The parameter is used for server creation. */
 export type StorageInputStorageRedundancy = "LocalRedundancy" | "ZoneRedundancy";
+const StorageInputStorageRedundancy = S.String;
+
 /** Storage Profile properties of a server */
 export interface StorageInput {
   /** Max storage size allowed for a server. */
@@ -378,8 +547,12 @@ export interface StorageInput {
   /** The redundant type of the server storage. The parameter is used for server creation. */
   storageRedundancy?: StorageInputStorageRedundancy | (string & {});
 }
+const StorageInput = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<StorageInput>;
+
 /** Whether or not geo redundant backup is enabled. */
 export type BackupInputGeoRedundantBackup = "Enabled" | "Disabled";
+const BackupInputGeoRedundantBackup = S.String;
+
 /** Storage Profile properties of a server */
 export interface BackupInput {
   /** Backup retention days for the server. */
@@ -389,8 +562,12 @@ export interface BackupInput {
   /** Whether or not geo redundant backup is enabled. */
   geoRedundantBackup?: BackupInputGeoRedundantBackup | (string & {});
 }
+const BackupInput = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<BackupInput>;
+
 /** High availability mode for a server. */
 export type HighAvailabilityMode = "Disabled" | "ZoneRedundant" | "SameZone";
+const HighAvailabilityMode = S.String;
+
 /** The state of server high availability. */
 export type HighAvailabilityState =
   | "NotEnabled"
@@ -398,6 +575,8 @@ export type HighAvailabilityState =
   | "Healthy"
   | "FailingOver"
   | "RemovingStandby";
+const HighAvailabilityState = S.String;
+
 /** High availability properties of a server */
 export interface HighAvailability {
   /** High availability mode for a server. */
@@ -407,8 +586,12 @@ export interface HighAvailability {
   /** Availability zone of the standby server. */
   standbyAvailabilityZone?: string;
 }
+const HighAvailability = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<HighAvailability>;
+
 /** Enum to indicate whether value is 'Enabled' or 'Disabled' */
 export type EnableStatusEnum = "Enabled" | "Disabled";
+const EnableStatusEnum = S.String;
+
 /** Network related properties of a server */
 export interface Network {
   /** Whether or not public network access is allowed for this server. Value is 'Disabled' when server has VNet integration. */
@@ -418,15 +601,23 @@ export interface Network {
   /** Private DNS zone resource id. */
   privateDnsZoneResourceId?: string;
 }
+const Network = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<Network>;
+
 /** Enum to indicate the patch strategy of a server */
 export type PatchStrategy = "Regular" | "VirtualCanary";
+const PatchStrategy = S.String;
+
 /** Maintenance policy of a server. */
 export interface MaintenancePolicy {
   /** The patch strategy of this server */
   patchStrategy?: PatchStrategy | (string & {});
 }
+const MaintenancePolicy = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<MaintenancePolicy>;
+
 /** The batch of maintenance when enabled the custom managed maintenance window of a server. */
 export type BatchOfMaintenance = "Default" | "Batch1" | "Batch2";
+const BatchOfMaintenance = S.String;
+
 /** Maintenance window of a server. */
 export interface MaintenanceWindow {
   /** indicates whether custom window is enabled or disabled */
@@ -440,8 +631,12 @@ export interface MaintenanceWindow {
   /** The batch of maintenance when enabled the custom managed maintenance window of a server. */
   batchOfMaintenance?: BatchOfMaintenance | (string & {});
 }
+const MaintenanceWindow = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<MaintenanceWindow>;
+
 /** Storage type of import source. */
 export type ImportSourceStorageType = "AzureBlob";
+const ImportSourceStorageType = S.String;
+
 /** Import source related properties. */
 export interface ImportSourceProperties {
   /** Storage type of import source. */
@@ -453,6 +648,11 @@ export interface ImportSourceProperties {
   /** Relative path of data directory in storage. */
   dataDirPath?: string;
 }
+const ImportSourceProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ImportSourceProperties>;
+
 /** The properties of a server. */
 export interface ServerPropertiesInput {
   /** The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation). */
@@ -490,14 +690,31 @@ export interface ServerPropertiesInput {
   /** Source properties for import from storage. */
   importSourceProperties?: ImportSourceProperties;
 }
+const ServerPropertiesInput = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ServerPropertiesInput>;
+
 /** Type of managed service identity. */
 export type ManagedServiceIdentityType = "UserAssigned";
+const ManagedServiceIdentityType = S.String;
+
 /** Metadata of user assigned identity. */
 export interface UserAssignedIdentityInput {}
+const UserAssignedIdentityInput = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<UserAssignedIdentityInput>;
+
 /** Metadata of user assigned identity. */
 export type MySQLServerIdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
+const MySQLServerIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<MySQLServerIdentityInputUserAssignedIdentitiesMap>;
+
 /** Properties to configure Identity for Bring your Own Keys */
 export interface MySQLServerIdentityInput {
   /** Type of managed service identity. */
@@ -505,8 +722,15 @@ export interface MySQLServerIdentityInput {
   /** Metadata of user assigned identity. */
   userAssignedIdentities?: MySQLServerIdentityInputUserAssignedIdentitiesMap;
 }
+const MySQLServerIdentityInput = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<MySQLServerIdentityInput>;
+
 /** The tier of the particular SKU, e.g. GeneralPurpose. */
 export type ServerSkuTier = "Burstable" | "GeneralPurpose" | "MemoryOptimized";
+const ServerSkuTier = S.String;
+
 /** Billing information related properties of a server. */
 export interface MySQLServerSku {
   /** The name of the sku, e.g. Standard_D32s_v3. */
@@ -514,6 +738,8 @@ export interface MySQLServerSku {
   /** The tier of the particular SKU, e.g. GeneralPurpose. */
   tier: ServerSkuTier | (string & {});
 }
+const MySQLServerSku = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<MySQLServerSku>;
+
 export interface CreateServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -532,8 +758,13 @@ export interface CreateServerRequest {
   /** The SKU (pricing tier) of the server. */
   sku?: MySQLServerSku;
 }
+const CreateServerRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<CreateServerRequest>;
+
 /** Resource tags. */
 export type CreateServerResponseTagsMap = { [key: string]: string | undefined };
+const CreateServerResponseTagsMap =
+  CreateServerRequestTagsMap as any as S.Schema<CreateServerResponseTagsMap>;
+
 /** The state of a server. */
 export type ServerState =
   | "Ready"
@@ -543,14 +774,24 @@ export type ServerState =
   | "Stopping"
   | "Stopped"
   | "Updating";
+const ServerState = S.String;
+
 /** Enable Storage Auto Grow or not. */
 export type StorageAutoGrow = "Enabled" | "Disabled";
+const StorageAutoGrow = S.String;
+
 /** Enable Log On Disk or not. */
 export type StorageLogOnDisk = "Enabled" | "Disabled";
+const StorageLogOnDisk = S.String;
+
 /** Enable IO Auto Scaling or not. */
 export type StorageAutoIoScaling = "Enabled" | "Disabled";
+const StorageAutoIoScaling = S.String;
+
 /** The redundant type of the server storage. The parameter is used for server creation. */
 export type StorageStorageRedundancy = "LocalRedundancy" | "ZoneRedundancy";
+const StorageStorageRedundancy = S.String;
+
 /** Storage Profile properties of a server */
 export interface Storage {
   /** Max storage size allowed for a server. */
@@ -568,8 +809,12 @@ export interface Storage {
   /** The redundant type of the server storage. The parameter is used for server creation. */
   storageRedundancy?: StorageStorageRedundancy;
 }
+const Storage = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Storage>;
+
 /** Whether or not geo redundant backup is enabled. */
 export type BackupGeoRedundantBackup = "Enabled" | "Disabled";
+const BackupGeoRedundantBackup = S.String;
+
 /** Storage Profile properties of a server */
 export interface Backup {
   /** Backup retention days for the server. */
@@ -581,15 +826,26 @@ export interface Backup {
   /** Earliest restore point creation time (ISO8601 format) */
   earliestRestoreDate?: string;
 }
+const Backup = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Backup>;
+
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
+const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
+
 /** The private endpoint resource. */
 export interface PrivateEndpoint {
   /** The ARM identifier for private endpoint. */
   id?: string;
 }
+const PrivateEndpoint = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<PrivateEndpoint>;
+
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
+const PrivateEndpointServiceConnectionStatus = S.String;
+
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
@@ -599,12 +855,19 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<PrivateLinkServiceConnectionState>;
+
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
   | "Failed";
+const PrivateEndpointConnectionProvisioningState = S.String;
+
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionProperties {
   /** The group ids for the private endpoint resource. */
@@ -616,6 +879,11 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<PrivateEndpointConnectionProperties>;
+
 /** The private endpoint connection resource. */
 export interface ServerPropertiesPrivateEndpointConnectionsItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -629,9 +897,19 @@ export interface ServerPropertiesPrivateEndpointConnectionsItem {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const ServerPropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ServerPropertiesPrivateEndpointConnectionsItem>;
+
 /** PrivateEndpointConnections related properties of a server. */
 export type ServerPropertiesPrivateEndpointConnectionsList =
   Array<ServerPropertiesPrivateEndpointConnectionsItem>;
+const ServerPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ServerPropertiesPrivateEndpointConnectionsList>;
+
 /** The properties of a server. */
 export interface ServerProperties {
   /** The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation). */
@@ -679,6 +957,8 @@ export interface ServerProperties {
   /** Source properties for import from storage. */
   importSourceProperties?: ImportSourceProperties;
 }
+const ServerProperties = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ServerProperties>;
+
 /** Metadata of user assigned identity. */
 export interface UserAssignedIdentity {
   /** Principal Id of user assigned identity */
@@ -686,10 +966,17 @@ export interface UserAssignedIdentity {
   /** Client Id of user assigned identity */
   clientId?: string;
 }
+const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<UserAssignedIdentity>;
+
 /** Metadata of user assigned identity. */
 export type MySQLServerIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | undefined;
 };
+const MySQLServerIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<MySQLServerIdentityUserAssignedIdentitiesMap>;
+
 /** Properties to configure Identity for Bring your Own Keys */
 export interface MySQLServerIdentity {
   /** ObjectId from the KeyVault */
@@ -701,6 +988,8 @@ export interface MySQLServerIdentity {
   /** Metadata of user assigned identity. */
   userAssignedIdentities?: MySQLServerIdentityUserAssignedIdentitiesMap;
 }
+const MySQLServerIdentity = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<MySQLServerIdentity>;
+
 export interface CreateServerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -721,6 +1010,8 @@ export interface CreateServerResponse {
   /** The SKU (pricing tier) of the server. */
   sku?: MySQLServerSku;
 }
+const CreateServerResponse = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<CreateServerResponse>;
+
 /** The properties of a database. */
 export interface DatabaseProperties {
   /** The charset of the database. */
@@ -728,6 +1019,8 @@ export interface DatabaseProperties {
   /** The collation of the database. */
   collation?: string;
 }
+const DatabaseProperties = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<DatabaseProperties>;
+
 export interface DatabasesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -740,6 +1033,11 @@ export interface DatabasesCreateOrUpdateRequest {
   /** The properties of a database. */
   properties?: DatabaseProperties;
 }
+const DatabasesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<DatabasesCreateOrUpdateRequest>;
+
 export interface DatabasesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -752,7 +1050,14 @@ export interface DatabasesCreateOrUpdateResponse {
   /** The properties of a database. */
   properties?: DatabaseProperties;
 }
+const DatabasesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DatabasesCreateOrUpdateResponse>;
+
 export type DeleteAzureADAdministratorRequestAdministratorName = "ActiveDirectory";
+const DeleteAzureADAdministratorRequestAdministratorName = S.String;
+
 export interface DeleteAzureADAdministratorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -763,7 +1068,17 @@ export interface DeleteAzureADAdministratorRequest {
   /** The name of the Azure AD Administrator. */
   administratorName: DeleteAzureADAdministratorRequestAdministratorName | (string & {});
 }
+const DeleteAzureADAdministratorRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DeleteAzureADAdministratorRequest>;
+
 export interface DeleteAzureADAdministratorResponse {}
+const DeleteAzureADAdministratorResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<DeleteAzureADAdministratorResponse>;
+
 export interface DeleteDatabaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -774,7 +1089,14 @@ export interface DeleteDatabaseRequest {
   /** The name of the database. */
   databaseName: string;
 }
+const DeleteDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<DeleteDatabaseRequest>;
+
 export interface DeleteDatabaseResponse {}
+const DeleteDatabaseResponse = UserAssignedIdentityInput as any as S.Schema<DeleteDatabaseResponse>;
+
 export interface DeleteFirewallRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -785,7 +1107,15 @@ export interface DeleteFirewallRuleRequest {
   /** The name of the server firewall rule. */
   firewallRuleName: string;
 }
+const DeleteFirewallRuleRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<DeleteFirewallRuleRequest>;
+
 export interface DeleteFirewallRuleResponse {}
+const DeleteFirewallRuleResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteFirewallRuleResponse>;
+
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -796,7 +1126,15 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
+
 export interface DeletePrivateEndpointConnectionResponse {}
+const DeletePrivateEndpointConnectionResponse =
+  DeleteAzureADAdministratorResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+
 export interface DeleteServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -805,7 +1143,11 @@ export interface DeleteServerRequest {
   /** The name of the server. */
   serverName: string;
 }
+const DeleteServerRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<DeleteServerRequest>;
+
 export interface DeleteServerResponse {}
+const DeleteServerResponse = UserAssignedIdentityInput as any as S.Schema<DeleteServerResponse>;
+
 export interface DeleteServerKeyRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -816,7 +1158,15 @@ export interface DeleteServerKeyRequest {
   /** The name of the MySQL Server key to be deleted. */
   keyName: string;
 }
+const DeleteServerKeyRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<DeleteServerKeyRequest>;
+
 export interface DeleteServerKeyResponse {}
+const DeleteServerKeyResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteServerKeyResponse>;
+
 export interface DetachServerVNetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -827,6 +1177,11 @@ export interface DetachServerVNetRequest {
   /** Whether or not public network access is allowed for this server. Value is 'Disabled' when server has VNet integration. */
   publicNetworkAccess?: EnableStatusEnum | (string & {});
 }
+const DetachServerVNetRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DetachServerVNetRequest>;
+
 /** Resource tags. */
 export type DetachServerVNetResponseTagsMap = { [key: string]: string | undefined };
 export interface DetachServerVNetResponse {
@@ -849,6 +1204,8 @@ export interface DetachServerVNetResponse {
   /** The SKU (pricing tier) of the server. */
   sku?: MySQLServerSku;
 }
+const DetachServerVNetResponse = CreateServerResponse as any as S.Schema<DetachServerVNetResponse>;
+
 export interface ExecuteCheckNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -859,6 +1216,11 @@ export interface ExecuteCheckNameAvailabilityRequest {
   /** Resource type used for verification. */
   type?: string;
 }
+const ExecuteCheckNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ExecuteCheckNameAvailabilityRequest>;
+
 /** Represents a resource name availability. */
 export interface NameAvailability {
   /** Error Message. */
@@ -868,6 +1230,8 @@ export interface NameAvailability {
   /** Reason for name being unavailable. */
   reason?: string;
 }
+const NameAvailability = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<NameAvailability>;
+
 export interface ExecuteCheckNameAvailabilityWithoutLocationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -876,6 +1240,11 @@ export interface ExecuteCheckNameAvailabilityWithoutLocationRequest {
   /** Resource type used for verification. */
   type?: string;
 }
+const ExecuteCheckNameAvailabilityWithoutLocationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ExecuteCheckNameAvailabilityWithoutLocationRequest>;
+
 export interface ExecuteCheckVirtualNetworkSubnetUsageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -884,6 +1253,11 @@ export interface ExecuteCheckVirtualNetworkSubnetUsageRequest {
   /** Virtual network resource id. */
   virtualNetworkResourceId?: string;
 }
+const ExecuteCheckVirtualNetworkSubnetUsageRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ExecuteCheckVirtualNetworkSubnetUsageRequest>;
+
 /** Delegated subnet usage data. */
 export interface DelegatedSubnetUsage {
   /** name of the subnet */
@@ -891,8 +1265,15 @@ export interface DelegatedSubnetUsage {
   /** Number of used delegated subnets */
   usage?: number;
 }
+const DelegatedSubnetUsage = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<DelegatedSubnetUsage>;
+
 /** A list of delegated subnet usage */
 export type VirtualNetworkSubnetUsageResultDelegatedSubnetsUsageList = Array<DelegatedSubnetUsage>;
+const VirtualNetworkSubnetUsageResultDelegatedSubnetsUsageList = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<VirtualNetworkSubnetUsageResultDelegatedSubnetsUsageList>;
+
 /** Virtual network subnet usage data. */
 export interface VirtualNetworkSubnetUsageResult {
   /** The location name. */
@@ -902,12 +1283,27 @@ export interface VirtualNetworkSubnetUsageResult {
   /** A list of delegated subnet usage */
   delegatedSubnetsUsage?: VirtualNetworkSubnetUsageResultDelegatedSubnetsUsageList;
 }
+const VirtualNetworkSubnetUsageResult = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<VirtualNetworkSubnetUsageResult>;
+
 export interface ExecuteGetPrivateDnsZoneSuffixRequest {}
+const ExecuteGetPrivateDnsZoneSuffixRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ExecuteGetPrivateDnsZoneSuffixRequest>;
+
 /** The response of get private dns zone suffix. */
 export interface GetPrivateDnsZoneSuffixResponse {
   /** Represents the private DNS zone suffix. */
   privateDnsZoneSuffix?: string;
 }
+const GetPrivateDnsZoneSuffixResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<GetPrivateDnsZoneSuffixResponse>;
+
 /** The properties of a server firewall rule. */
 export interface FirewallRuleProperties {
   /** The start IP address of the server firewall rule. Must be IPv4 format. */
@@ -915,6 +1311,11 @@ export interface FirewallRuleProperties {
   /** The end IP address of the server firewall rule. Must be IPv4 format. */
   endIpAddress: string;
 }
+const FirewallRuleProperties = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<FirewallRuleProperties>;
+
 export interface FirewallRulesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -927,6 +1328,11 @@ export interface FirewallRulesCreateOrUpdateRequest {
   /** The properties of a firewall rule. */
   properties: FirewallRuleProperties;
 }
+const FirewallRulesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<FirewallRulesCreateOrUpdateRequest>;
+
 export interface FirewallRulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -939,7 +1345,14 @@ export interface FirewallRulesCreateOrUpdateResponse {
   /** The properties of a firewall rule. */
   properties: FirewallRuleProperties;
 }
+const FirewallRulesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<FirewallRulesCreateOrUpdateResponse>;
+
 export type GetAdvancedThreatProtectionSettingsRequestAdvancedThreatProtectionName = "Default";
+const GetAdvancedThreatProtectionSettingsRequestAdvancedThreatProtectionName = S.String;
+
 export interface GetAdvancedThreatProtectionSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -952,6 +1365,11 @@ export interface GetAdvancedThreatProtectionSettingsRequest {
     | GetAdvancedThreatProtectionSettingsRequestAdvancedThreatProtectionName
     | (string & {});
 }
+const GetAdvancedThreatProtectionSettingsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<GetAdvancedThreatProtectionSettingsRequest>;
+
 export interface GetAdvancedThreatProtectionSettingsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -964,7 +1382,12 @@ export interface GetAdvancedThreatProtectionSettingsResponse {
   /** Resource properties. */
   properties?: AdvancedThreatProtectionProperties;
 }
+const GetAdvancedThreatProtectionSettingsResponse =
+  AdvancedThreatProtectionSettingsUpdatePutResponse as any as S.Schema<GetAdvancedThreatProtectionSettingsResponse>;
+
 export type GetAzureADAdministratorRequestAdministratorName = "ActiveDirectory";
+const GetAzureADAdministratorRequestAdministratorName = S.String;
+
 export interface GetAzureADAdministratorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -975,6 +1398,11 @@ export interface GetAzureADAdministratorRequest {
   /** The name of the Azure AD Administrator. */
   administratorName: GetAzureADAdministratorRequestAdministratorName | (string & {});
 }
+const GetAzureADAdministratorRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<GetAzureADAdministratorRequest>;
+
 export interface GetAzureADAdministratorResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -987,6 +1415,9 @@ export interface GetAzureADAdministratorResponse {
   /** The properties of an administrator. */
   properties?: AdministratorProperties;
 }
+const GetAzureADAdministratorResponse =
+  AzureADAdministratorsCreateOrUpdateResponse as any as S.Schema<GetAzureADAdministratorResponse>;
+
 export interface GetBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -997,6 +1428,8 @@ export interface GetBackupRequest {
   /** The name of the backup. */
   backupName: string;
 }
+const GetBackupRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<GetBackupRequest>;
+
 /** The properties of a server backup. */
 export interface ServerBackupProperties {
   /** Backup type. */
@@ -1006,6 +1439,11 @@ export interface ServerBackupProperties {
   /** Backup source */
   source?: string;
 }
+const ServerBackupProperties = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ServerBackupProperties>;
+
 export interface GetBackupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1018,6 +1456,8 @@ export interface GetBackupResponse {
   /** The properties of a server backup. */
   properties?: ServerBackupProperties;
 }
+const GetBackupResponse = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<GetBackupResponse>;
+
 export interface GetConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1028,6 +1468,11 @@ export interface GetConfigurationRequest {
   /** The name of the server configuration. */
   configurationName: string;
 }
+const GetConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<GetConfigurationRequest>;
+
 export interface GetConfigurationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1040,6 +1485,11 @@ export interface GetConfigurationResponse {
   /** The properties of a configuration. */
   properties?: ConfigurationProperties;
 }
+const GetConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<GetConfigurationResponse>;
+
 export interface GetDatabaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1050,6 +1500,8 @@ export interface GetDatabaseRequest {
   /** The name of the database. */
   databaseName: string;
 }
+const GetDatabaseRequest = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<GetDatabaseRequest>;
+
 export interface GetDatabaseResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1062,6 +1514,8 @@ export interface GetDatabaseResponse {
   /** The properties of a database. */
   properties?: DatabaseProperties;
 }
+const GetDatabaseResponse = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<GetDatabaseResponse>;
+
 export interface GetFirewallRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1072,6 +1526,11 @@ export interface GetFirewallRuleRequest {
   /** The name of the server firewall rule. */
   firewallRuleName: string;
 }
+const GetFirewallRuleRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<GetFirewallRuleRequest>;
+
 export interface GetFirewallRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1084,6 +1543,11 @@ export interface GetFirewallRuleResponse {
   /** The properties of a firewall rule. */
   properties: FirewallRuleProperties;
 }
+const GetFirewallRuleResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GetFirewallRuleResponse>;
+
 export interface GetLocationBasedCapabilitySetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1092,8 +1556,16 @@ export interface GetLocationBasedCapabilitySetRequest {
   /** Name of capability set */
   capabilitySetName: string;
 }
+const GetLocationBasedCapabilitySetRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GetLocationBasedCapabilitySetRequest>;
+
 /** supported geo backup regions */
 export type CapabilityPropertiesV2SupportedGeoBackupRegionsList = Array<string>;
+const CapabilityPropertiesV2SupportedGeoBackupRegionsList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<CapabilityPropertiesV2SupportedGeoBackupRegionsList>;
+
 /** storage edition capability */
 export interface StorageEditionCapability {
   /** storage edition name */
@@ -1111,12 +1583,28 @@ export interface StorageEditionCapability {
   /** Maximum backup interval hours */
   maxBackupIntervalHours?: number;
 }
+const StorageEditionCapability = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<StorageEditionCapability>;
+
 /** A list of supported storage editions */
 export type ServerEditionCapabilityV2SupportedStorageEditionsList = Array<StorageEditionCapability>;
+const ServerEditionCapabilityV2SupportedStorageEditionsList = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ServerEditionCapabilityV2SupportedStorageEditionsList>;
+
 /** Supported zones */
 export type SkuCapabilityV2SupportedZonesList = Array<string>;
+const SkuCapabilityV2SupportedZonesList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<SkuCapabilityV2SupportedZonesList>;
+
 /** Supported high availability mode */
 export type SkuCapabilityV2SupportedHAModeList = Array<string>;
+const SkuCapabilityV2SupportedHAModeList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<SkuCapabilityV2SupportedHAModeList>;
+
 /** Sku capability */
 export interface SkuCapabilityV2 {
   /** vCore name */
@@ -1132,8 +1620,15 @@ export interface SkuCapabilityV2 {
   /** Supported high availability mode */
   supportedHAMode?: SkuCapabilityV2SupportedHAModeList;
 }
+const SkuCapabilityV2 = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<SkuCapabilityV2>;
+
 /** A list of supported Skus */
 export type ServerEditionCapabilityV2SupportedSkusList = Array<SkuCapabilityV2>;
+const ServerEditionCapabilityV2SupportedSkusList = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ServerEditionCapabilityV2SupportedSkusList>;
+
 /** Server edition capabilities. */
 export interface ServerEditionCapabilityV2 {
   /** Server edition name */
@@ -1147,16 +1642,36 @@ export interface ServerEditionCapabilityV2 {
   /** A list of supported Skus */
   supportedSkus?: ServerEditionCapabilityV2SupportedSkusList;
 }
+const ServerEditionCapabilityV2 = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ServerEditionCapabilityV2>;
+
 /** A list of supported flexible server editions. */
 export type CapabilityPropertiesV2SupportedFlexibleServerEditionsList =
   Array<ServerEditionCapabilityV2>;
+const CapabilityPropertiesV2SupportedFlexibleServerEditionsList = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<CapabilityPropertiesV2SupportedFlexibleServerEditionsList>;
+
 /** Server version capabilities. */
 export interface ServerVersionCapabilityV2 {
   /** server version */
   name?: string;
 }
+const ServerVersionCapabilityV2 = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ServerVersionCapabilityV2>;
+
 /** A list of supported server versions. */
 export type CapabilityPropertiesV2SupportedServerVersionsList = Array<ServerVersionCapabilityV2>;
+const CapabilityPropertiesV2SupportedServerVersionsList = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<CapabilityPropertiesV2SupportedServerVersionsList>;
+
 /** Server version capabilities. */
 export interface FeatureProperty {
   /** feature name */
@@ -1164,8 +1679,15 @@ export interface FeatureProperty {
   /** feature value */
   featureValue?: string;
 }
+const FeatureProperty = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<FeatureProperty>;
+
 /** A list of supported features. */
 export type CapabilityPropertiesV2SupportedFeaturesList = Array<FeatureProperty>;
+const CapabilityPropertiesV2SupportedFeaturesList = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<CapabilityPropertiesV2SupportedFeaturesList>;
+
 /** Location capability. */
 export interface CapabilityPropertiesV2 {
   /** supported geo backup regions */
@@ -1177,6 +1699,11 @@ export interface CapabilityPropertiesV2 {
   /** A list of supported features. */
   supportedFeatures?: CapabilityPropertiesV2SupportedFeaturesList;
 }
+const CapabilityPropertiesV2 = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<CapabilityPropertiesV2>;
+
 export interface GetLocationBasedCapabilitySetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1189,6 +1716,11 @@ export interface GetLocationBasedCapabilitySetResponse {
   /** The properties of a location capability set. */
   properties?: CapabilityPropertiesV2;
 }
+const GetLocationBasedCapabilitySetResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GetLocationBasedCapabilitySetResponse>;
+
 export interface GetLongRunningBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1199,6 +1731,11 @@ export interface GetLongRunningBackupRequest {
   /** The name of the backup. */
   backupName: string;
 }
+const GetLongRunningBackupRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GetLongRunningBackupRequest>;
+
 export interface GetLongRunningBackupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1211,6 +1748,9 @@ export interface GetLongRunningBackupResponse {
   /** The properties of a server backup. */
   properties?: ServerBackupPropertiesV2;
 }
+const GetLongRunningBackupResponse =
+  CreateLongRunningBackupResponse as any as S.Schema<GetLongRunningBackupResponse>;
+
 export interface GetOperationProgressRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1219,8 +1759,18 @@ export interface GetOperationProgressRequest {
   /** The ID of an ongoing async operation. */
   operationId: string;
 }
+const GetOperationProgressRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<GetOperationProgressRequest>;
+
 /** The operations list. */
 export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
+const OperationStatusResultOperationsList = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<OperationStatusResultOperationsList>;
+
 /** The current status of an async operation. */
 export interface OperationStatusResult {
   /** Fully qualified ID for the async operation. */
@@ -1242,15 +1792,32 @@ export interface OperationStatusResult {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
+const OperationStatusResult = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<OperationStatusResult>;
+
 /** The operations list. */
 export type GetOperationProgressResponseOperationsList = Array<OperationStatusResult>;
+const GetOperationProgressResponseOperationsList = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<GetOperationProgressResponseOperationsList>;
+
 /** Identifies the type of source operation */
 export type ObjectType = "BackupAndExportResponse" | "ImportFromStorageResponse";
+const ObjectType = S.String;
+
 /** Represents the response properties specific to the operation */
 export interface OperationProgressResponseType {
   /** Identifies the type of source operation */
   objectType: ObjectType;
 }
+const OperationProgressResponseType = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<OperationProgressResponseType>;
+
 export interface GetOperationProgressResponse {
   /** Fully qualified ID for the async operation. */
   id?: string;
@@ -1273,6 +1840,11 @@ export interface GetOperationProgressResponse {
   /** The response properties specific to the operation */
   properties?: OperationProgressResponseType;
 }
+const GetOperationProgressResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<GetOperationProgressResponse>;
+
 export interface GetOperationResultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1281,10 +1853,23 @@ export interface GetOperationResultRequest {
   /** The ID of an ongoing async operation. */
   operationId: string;
 }
+const GetOperationResultRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<GetOperationResultRequest>;
+
 /** The operations list. */
 export type GetOperationResultResponseOperationsList = Array<OperationStatusResult>;
+const GetOperationResultResponseOperationsList =
+  GetOperationProgressResponseOperationsList as any as S.Schema<GetOperationResultResponseOperationsList>;
+
 /** The extended properties of Operation Results */
 export type GetOperationResultResponsePropertiesMap = { [key: string]: unknown | undefined };
+const GetOperationResultResponsePropertiesMap = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<GetOperationResultResponsePropertiesMap>;
+
 export interface GetOperationResultResponse {
   /** Fully qualified ID for the async operation. */
   id?: string;
@@ -1307,6 +1892,11 @@ export interface GetOperationResultResponse {
   /** The extended properties of Operation Results */
   properties?: GetOperationResultResponsePropertiesMap;
 }
+const GetOperationResultResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<GetOperationResultResponse>;
+
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1317,6 +1907,11 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
+
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1329,6 +1924,9 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const GetPrivateEndpointConnectionResponse =
+  ServerPropertiesPrivateEndpointConnectionsItem as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+
 export interface GetPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1339,10 +1937,21 @@ export interface GetPrivateLinkResourceRequest {
   /** The name of the private link resource. */
   groupName: string;
 }
+const GetPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<GetPrivateLinkResourceRequest>;
+
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
+const PrivateLinkResourcePropertiesRequiredMembersList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
   /** The private link resource group id. */
@@ -1352,6 +1961,11 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
+const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<PrivateLinkResourceProperties>;
+
 export interface GetPrivateLinkResourceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1364,6 +1978,11 @@ export interface GetPrivateLinkResourceResponse {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
+const GetPrivateLinkResourceResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<GetPrivateLinkResourceResponse>;
+
 export interface GetServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1372,6 +1991,8 @@ export interface GetServerRequest {
   /** The name of the server. */
   serverName: string;
 }
+const GetServerRequest = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<GetServerRequest>;
+
 /** Resource tags. */
 export type GetServerResponseTagsMap = { [key: string]: string | undefined };
 export interface GetServerResponse {
@@ -1394,6 +2015,8 @@ export interface GetServerResponse {
   /** The SKU (pricing tier) of the server. */
   sku?: MySQLServerSku;
 }
+const GetServerResponse = CreateServerResponse as any as S.Schema<GetServerResponse>;
+
 export interface GetServerKeyRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1404,8 +2027,12 @@ export interface GetServerKeyRequest {
   /** The name of the MySQL Server key to be retrieved. */
   keyName: string;
 }
+const GetServerKeyRequest = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<GetServerKeyRequest>;
+
 /** The key type like 'AzureKeyVault'. */
 export type ServerKeyPropertiesServerKeyType = "AzureKeyVault";
+const ServerKeyPropertiesServerKeyType = S.String;
+
 /** Properties for a key execution. */
 export interface ServerKeyProperties {
   /** The key type like 'AzureKeyVault'. */
@@ -1415,6 +2042,8 @@ export interface ServerKeyProperties {
   /** The key creation date. */
   creationDate?: string;
 }
+const ServerKeyProperties = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<ServerKeyProperties>;
+
 export interface GetServerKeyResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1427,6 +2056,11 @@ export interface GetServerKeyResponse {
   /** Properties of the ServerKey Resource. */
   properties?: ServerKeyProperties;
 }
+const GetServerKeyResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GetServerKeyResponse>;
+
 export interface ListAdvancedThreatProtectionSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1435,6 +2069,11 @@ export interface ListAdvancedThreatProtectionSettingsRequest {
   /** The name of the server. */
   serverName: string;
 }
+const ListAdvancedThreatProtectionSettingsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ListAdvancedThreatProtectionSettingsRequest>;
+
 /** A server's Advanced Threat Protection. */
 export interface AdvancedThreatProtection {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1448,8 +2087,18 @@ export interface AdvancedThreatProtection {
   /** Resource properties. */
   properties?: AdvancedThreatProtectionProperties;
 }
+const AdvancedThreatProtection = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<AdvancedThreatProtection>;
+
 /** The AdvancedThreatProtection items on this page */
 export type AdvancedThreatProtectionListResultValueList = Array<AdvancedThreatProtection>;
+const AdvancedThreatProtectionListResultValueList = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<AdvancedThreatProtectionListResultValueList>;
+
 /** The response of a AdvancedThreatProtection list operation. */
 export interface AdvancedThreatProtectionListResult {
   /** The AdvancedThreatProtection items on this page */
@@ -1457,6 +2106,11 @@ export interface AdvancedThreatProtectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const AdvancedThreatProtectionListResult = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<AdvancedThreatProtectionListResult>;
+
 export interface ListAzureADAdministratorByServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1465,6 +2119,11 @@ export interface ListAzureADAdministratorByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
+const ListAzureADAdministratorByServerRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ListAzureADAdministratorByServerRequest>;
+
 /** Represents a Administrator. */
 export interface AzureADAdministrator {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1478,8 +2137,18 @@ export interface AzureADAdministrator {
   /** The properties of an administrator. */
   properties?: AdministratorProperties;
 }
+const AzureADAdministrator = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<AzureADAdministrator>;
+
 /** The list of azure ad administrator of a server. */
 export type AdministratorListResultValueList = Array<AzureADAdministrator>;
+const AdministratorListResultValueList = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<AdministratorListResultValueList>;
+
 /** A List of azure ad administrators. */
 export interface AdministratorListResult {
   /** The list of azure ad administrator of a server. */
@@ -1487,6 +2156,11 @@ export interface AdministratorListResult {
   /** The link used to get the next page of operations. */
   nextLink?: string;
 }
+const AdministratorListResult = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<AdministratorListResult>;
+
 export interface ListBackupByServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1495,6 +2169,11 @@ export interface ListBackupByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
+const ListBackupByServerRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ListBackupByServerRequest>;
+
 /** Server backup properties */
 export interface ServerBackup {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1508,8 +2187,15 @@ export interface ServerBackup {
   /** The properties of a server backup. */
   properties?: ServerBackupProperties;
 }
+const ServerBackup = GetBackupResponse as any as S.Schema<ServerBackup>;
+
 /** The ServerBackup items on this page */
 export type ServerBackupListResultValueList = Array<ServerBackup>;
+const ServerBackupListResultValueList = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ServerBackupListResultValueList>;
+
 /** The response of a ServerBackup list operation. */
 export interface ServerBackupListResult {
   /** The ServerBackup items on this page */
@@ -1517,6 +2203,11 @@ export interface ServerBackupListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ServerBackupListResult = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ServerBackupListResult>;
+
 export interface ListConfigurationByServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1533,6 +2224,11 @@ export interface ListConfigurationByServerRequest {
   /** The pageSize of the server configuration. */
   pageSize?: number;
 }
+const ListConfigurationByServerRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ListConfigurationByServerRequest>;
+
 /** Represents a Configuration. */
 export interface Configuration {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1546,8 +2242,15 @@ export interface Configuration {
   /** The properties of a configuration. */
   properties?: ConfigurationProperties;
 }
+const Configuration = GetConfigurationResponse as any as S.Schema<Configuration>;
+
 /** The Configuration items on this page */
 export type ConfigurationListResultValueList = Array<Configuration>;
+const ConfigurationListResultValueList = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ConfigurationListResultValueList>;
+
 /** The response of a Configuration list operation. */
 export interface ConfigurationListResult {
   /** The Configuration items on this page */
@@ -1555,6 +2258,11 @@ export interface ConfigurationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ConfigurationListResult = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ConfigurationListResult>;
+
 export interface ListDatabaseByServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1563,6 +2271,11 @@ export interface ListDatabaseByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
+const ListDatabaseByServerRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ListDatabaseByServerRequest>;
+
 /** Represents a Database. */
 export interface Database {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1576,8 +2289,15 @@ export interface Database {
   /** The properties of a database. */
   properties?: DatabaseProperties;
 }
+const Database = GetDatabaseResponse as any as S.Schema<Database>;
+
 /** The Database items on this page */
 export type DatabaseListResultValueList = Array<Database>;
+const DatabaseListResultValueList = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<DatabaseListResultValueList>;
+
 /** The response of a Database list operation. */
 export interface DatabaseListResult {
   /** The Database items on this page */
@@ -1585,6 +2305,8 @@ export interface DatabaseListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DatabaseListResult = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<DatabaseListResult>;
+
 export interface ListFirewallRuleByServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1593,6 +2315,11 @@ export interface ListFirewallRuleByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
+const ListFirewallRuleByServerRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<ListFirewallRuleByServerRequest>;
+
 /** Represents a server firewall rule. */
 export interface FirewallRule {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1606,8 +2333,15 @@ export interface FirewallRule {
   /** The properties of a firewall rule. */
   properties: FirewallRuleProperties;
 }
+const FirewallRule = GetFirewallRuleResponse as any as S.Schema<FirewallRule>;
+
 /** The FirewallRule items on this page */
 export type FirewallRuleListResultValueList = Array<FirewallRule>;
+const FirewallRuleListResultValueList = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<FirewallRuleListResultValueList>;
+
 /** The response of a FirewallRule list operation. */
 export interface FirewallRuleListResult {
   /** The FirewallRule items on this page */
@@ -1615,18 +2349,37 @@ export interface FirewallRuleListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const FirewallRuleListResult = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<FirewallRuleListResult>;
+
 export interface ListLocationBasedCapabilitiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the location. */
   locationName: string;
 }
+const ListLocationBasedCapabilitiesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ListLocationBasedCapabilitiesRequest>;
+
 /** Supported high availability mode */
 export type CapabilityPropertiesSupportedHAModeList = Array<string>;
+const CapabilityPropertiesSupportedHAModeList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<CapabilityPropertiesSupportedHAModeList>;
+
 /** supported geo backup regions */
 export type CapabilityPropertiesSupportedGeoBackupRegionsList = Array<string>;
+const CapabilityPropertiesSupportedGeoBackupRegionsList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<CapabilityPropertiesSupportedGeoBackupRegionsList>;
+
 /** A list of supported storage editions */
 export type ServerEditionCapabilitySupportedStorageEditionsList = Array<StorageEditionCapability>;
+const ServerEditionCapabilitySupportedStorageEditionsList =
+  ServerEditionCapabilityV2SupportedStorageEditionsList as any as S.Schema<ServerEditionCapabilitySupportedStorageEditionsList>;
+
 /** Sku capability */
 export interface SkuCapability {
   /** vCore name */
@@ -1638,8 +2391,15 @@ export interface SkuCapability {
   /** supported memory per vCore in MB */
   supportedMemoryPerVCoreMB?: number;
 }
+const SkuCapability = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<SkuCapability>;
+
 /** A list of supported Skus */
 export type ServerVersionCapabilitySupportedSkusList = Array<SkuCapability>;
+const ServerVersionCapabilitySupportedSkusList = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ServerVersionCapabilitySupportedSkusList>;
+
 /** Server version capabilities. */
 export interface ServerVersionCapability {
   /** server version */
@@ -1647,8 +2407,18 @@ export interface ServerVersionCapability {
   /** A list of supported Skus */
   supportedSkus?: ServerVersionCapabilitySupportedSkusList;
 }
+const ServerVersionCapability = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<ServerVersionCapability>;
+
 /** A list of supported server versions. */
 export type ServerEditionCapabilitySupportedServerVersionsList = Array<ServerVersionCapability>;
+const ServerEditionCapabilitySupportedServerVersionsList = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<ServerEditionCapabilitySupportedServerVersionsList>;
+
 /** Server edition capabilities. */
 export interface ServerEditionCapability {
   /** Server edition name */
@@ -1658,9 +2428,19 @@ export interface ServerEditionCapability {
   /** A list of supported server versions. */
   supportedServerVersions?: ServerEditionCapabilitySupportedServerVersionsList;
 }
+const ServerEditionCapability = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<ServerEditionCapability>;
+
 /** A list of supported flexible server editions. */
 export type CapabilityPropertiesSupportedFlexibleServerEditionsList =
   Array<ServerEditionCapability>;
+const CapabilityPropertiesSupportedFlexibleServerEditionsList = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<CapabilityPropertiesSupportedFlexibleServerEditionsList>;
+
 /** Location capabilities. */
 export interface CapabilityProperties {
   /** zone name */
@@ -1672,8 +2452,18 @@ export interface CapabilityProperties {
   /** A list of supported flexible server editions. */
   supportedFlexibleServerEditions?: CapabilityPropertiesSupportedFlexibleServerEditionsList;
 }
+const CapabilityProperties = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<CapabilityProperties>;
+
 /** The CapabilityProperties items on this page */
 export type CapabilitiesListResultValueList = Array<CapabilityProperties>;
+const CapabilitiesListResultValueList = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<CapabilitiesListResultValueList>;
+
 /** location capability */
 export interface CapabilitiesListResult {
   /** The CapabilityProperties items on this page */
@@ -1681,12 +2471,22 @@ export interface CapabilitiesListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const CapabilitiesListResult = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<CapabilitiesListResult>;
+
 export interface ListLocationBasedCapabilitySetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the location. */
   locationName: string;
 }
+const ListLocationBasedCapabilitySetRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<ListLocationBasedCapabilitySetRequest>;
+
 /** Represents a location capability set. */
 export interface Capability {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1700,8 +2500,15 @@ export interface Capability {
   /** The properties of a location capability set. */
   properties?: CapabilityPropertiesV2;
 }
+const Capability = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<Capability>;
+
 /** The CapabilitySetsList items on this page */
 export type CapabilitySetsListValueList = Array<Capability>;
+const CapabilitySetsListValueList = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<CapabilitySetsListValueList>;
+
 /** location capability set */
 export interface CapabilitySetsList {
   /** The CapabilitySetsList items on this page */
@@ -1709,6 +2516,8 @@ export interface CapabilitySetsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const CapabilitySetsList = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<CapabilitySetsList>;
+
 export interface ListLogFileByServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1717,6 +2526,11 @@ export interface ListLogFileByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
+const ListLogFileByServerRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ListLogFileByServerRequest>;
+
 /** The properties of a logFile. */
 export interface LogFileProperties {
   /** The size in kb of the logFile. */
@@ -1730,6 +2544,8 @@ export interface LogFileProperties {
   /** The url to download the log file from. */
   url?: string;
 }
+const LogFileProperties = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<LogFileProperties>;
+
 /** Represents a logFile. */
 export interface LogFile {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1743,8 +2559,15 @@ export interface LogFile {
   /** The properties of a logFile. */
   properties?: LogFileProperties;
 }
+const LogFile = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<LogFile>;
+
 /** The LogFile items on this page */
 export type LogFileListResultValueList = Array<LogFile>;
+const LogFileListResultValueList = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<LogFileListResultValueList>;
+
 /** The response of a LogFile list operation. */
 export interface LogFileListResult {
   /** The LogFile items on this page */
@@ -1752,6 +2575,8 @@ export interface LogFileListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const LogFileListResult = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<LogFileListResult>;
+
 export interface ListLongRunningBackupsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1760,6 +2585,11 @@ export interface ListLongRunningBackupsRequest {
   /** The name of the server. */
   serverName: string;
 }
+const ListLongRunningBackupsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<ListLongRunningBackupsRequest>;
+
 /** Server backup properties */
 export interface ServerBackupV2 {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1773,8 +2603,15 @@ export interface ServerBackupV2 {
   /** The properties of a server backup. */
   properties?: ServerBackupPropertiesV2;
 }
+const ServerBackupV2 = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<ServerBackupV2>;
+
 /** The ServerBackupV2 items on this page */
 export type ServerBackupV2ListResultValueList = Array<ServerBackupV2>;
+const ServerBackupV2ListResultValueList = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ServerBackupV2ListResultValueList>;
+
 /** The response of a ServerBackupV2 list operation. */
 export interface ServerBackupV2ListResult {
   /** The ServerBackupV2 items on this page */
@@ -1782,6 +2619,11 @@ export interface ServerBackupV2ListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ServerBackupV2ListResult = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<ServerBackupV2ListResult>;
+
 export interface ListMaintenancesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1790,12 +2632,19 @@ export interface ListMaintenancesRequest {
   /** The name of the server. */
   serverName: string;
 }
+const ListMaintenancesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<ListMaintenancesRequest>;
+
 /** The type of this maintenance. */
 export type MaintenanceType =
   | "RoutineMaintenance"
   | "MinorVersionUpgrade"
   | "SecurityPatches"
   | "HotFixes";
+const MaintenanceType = S.String;
+
 /** The current status of this maintenance. */
 export type MaintenanceState =
   | "Scheduled"
@@ -1804,8 +2653,12 @@ export type MaintenanceState =
   | "Processing"
   | "Completed"
   | "Canceled";
+const MaintenanceState = S.String;
+
 /** The current provisioning state. */
 export type MaintenanceProvisioningState = "Succeeded" | "Creating" | "Deleting" | "Failed";
+const MaintenanceProvisioningState = S.String;
+
 /** The properties of a maintenance resource. */
 export interface MaintenanceProperties {
   /** A string defines maintenance type. */
@@ -1831,6 +2684,11 @@ export interface MaintenanceProperties {
   /** Provisioning state of the Maintenance. */
   provisioningState?: MaintenanceProvisioningState;
 }
+const MaintenanceProperties = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<MaintenanceProperties>;
+
 /** Represents a maintenance. */
 export interface Maintenance {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1844,8 +2702,15 @@ export interface Maintenance {
   /** The properties of a maintenance */
   properties: MaintenanceProperties;
 }
+const Maintenance = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<Maintenance>;
+
 /** The Maintenance items on this page */
 export type MaintenanceListResultValueList = Array<Maintenance>;
+const MaintenanceListResultValueList = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<MaintenanceListResultValueList>;
+
 /** The response of a Maintenance list operation. */
 export interface MaintenanceListResult {
   /** The Maintenance items on this page */
@@ -1853,7 +2718,17 @@ export interface MaintenanceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const MaintenanceListResult = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<MaintenanceListResult>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Display metadata associated with the operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -1865,10 +2740,17 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type Origin = "user" | "system" | "user,system";
+const Origin = S.String;
+
 /** Additional descriptions for the operation. */
 export type OperationPropertiesMap = { [key: string]: unknown | undefined };
+const OperationPropertiesMap =
+  GetOperationResultResponsePropertiesMap as any as S.Schema<OperationPropertiesMap>;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -1880,8 +2762,15 @@ export interface Operation {
   /** Additional descriptions for the operation. */
   properties?: OperationPropertiesMap;
 }
+const Operation = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<Operation>;
+
 /** The Operation items on this page */
 export type OperationListResultValueList = Array<Operation>;
+const OperationListResultValueList = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<OperationListResultValueList>;
+
 /** The static parameters for a resource group based resource */
 export interface OperationListResult {
   /** The Operation items on this page */
@@ -1889,6 +2778,8 @@ export interface OperationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const OperationListResult = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<OperationListResult>;
+
 export interface ListPrivateEndpointConnectionByServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1897,12 +2788,20 @@ export interface ListPrivateEndpointConnectionByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
+const ListPrivateEndpointConnectionByServerRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<ListPrivateEndpointConnectionByServerRequest>;
+
 /** The private endpoint connection resource. */
 export type PrivateEndpointConnectionListResultValueItem =
   ServerPropertiesPrivateEndpointConnectionsItem;
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
   Array<ServerPropertiesPrivateEndpointConnectionsItem>;
+const PrivateEndpointConnectionListResultValueList =
+  ServerPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+
 /** The response of a PrivateEndpointConnection list operation. */
 export interface PrivateEndpointConnectionListResult {
   /** The PrivateEndpointConnection items on this page */
@@ -1910,6 +2809,11 @@ export interface PrivateEndpointConnectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PrivateEndpointConnectionListResult = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<PrivateEndpointConnectionListResult>;
+
 export interface ListPrivateLinkResourceByServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1918,6 +2822,11 @@ export interface ListPrivateLinkResourceByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
+const ListPrivateLinkResourceByServerRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<ListPrivateLinkResourceByServerRequest>;
+
 /** A private link resource. */
 export interface PrivateLinkResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1931,12 +2840,24 @@ export interface PrivateLinkResource {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
+const PrivateLinkResource = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<PrivateLinkResource>;
+
 /** Array of private link resources */
 export type ListPrivateLinkResourceByServerResponseValueList = Array<PrivateLinkResource>;
+const ListPrivateLinkResourceByServerResponseValueList = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<ListPrivateLinkResourceByServerResponseValueList>;
+
 export interface ListPrivateLinkResourceByServerResponse {
   /** Array of private link resources */
   value?: ListPrivateLinkResourceByServerResponseValueList;
 }
+const ListPrivateLinkResourceByServerResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<ListPrivateLinkResourceByServerResponse>;
+
 export interface ListReplicasByServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1945,6 +2866,11 @@ export interface ListReplicasByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
+const ListReplicasByServerRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<ListReplicasByServerRequest>;
+
 /** Resource tags. */
 export type ServerTagsMap = { [key: string]: string | undefined };
 /** Represents a server. */
@@ -1968,8 +2894,15 @@ export interface Server {
   /** The SKU (pricing tier) of the server. */
   sku?: MySQLServerSku;
 }
+const Server = CreateServerResponse as any as S.Schema<Server>;
+
 /** The Server items on this page */
 export type ServerListResultValueList = Array<Server>;
+const ServerListResultValueList = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<ServerListResultValueList>;
+
 /** The response of a Server list operation. */
 export interface ServerListResult {
   /** The Server items on this page */
@@ -1977,12 +2910,19 @@ export interface ServerListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ServerListResult = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<ServerListResult>;
+
 export interface ListServerByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListServerByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<ListServerByResourceGroupRequest>;
+
 export interface ListServerKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1991,6 +2931,11 @@ export interface ListServerKeysRequest {
   /** The name of the server. */
   serverName: string;
 }
+const ListServerKeysRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<ListServerKeysRequest>;
+
 /** A MySQL Server key. */
 export interface ServerKey {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2004,8 +2949,15 @@ export interface ServerKey {
   /** Properties of the ServerKey Resource. */
   properties?: ServerKeyProperties;
 }
+const ServerKey = GetServerKeyResponse as any as S.Schema<ServerKey>;
+
 /** A list of MySQL Server keys. */
 export type ServerKeyListResultValueList = Array<ServerKey>;
+const ServerKeyListResultValueList = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<ServerKeyListResultValueList>;
+
 /** A list of MySQL Server keys. */
 export interface ServerKeyListResult {
   /** A list of MySQL Server keys. */
@@ -2013,10 +2965,14 @@ export interface ServerKeyListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
+const ServerKeyListResult = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<ServerKeyListResult>;
+
 export interface ListServersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListServersRequest = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<ListServersRequest>;
+
 /** The private endpoint resource. */
 export type PrivateEndpointInput = UserAssignedIdentityInput;
 /** Properties of the private endpoint connection. */
@@ -2026,6 +2982,11 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
+const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
 export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2038,6 +2999,11 @@ export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
+const PrivateEndpointConnectionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>;
+
 export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2050,6 +3016,9 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const PrivateEndpointConnectionsCreateOrUpdateResponse =
+  ServerPropertiesPrivateEndpointConnectionsItem as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
+
 export interface PutBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2060,6 +3029,8 @@ export interface PutBackupRequest {
   /** The name of the backup. */
   backupName: string;
 }
+const PutBackupRequest = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<PutBackupRequest>;
+
 export interface PutBackupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2072,6 +3043,8 @@ export interface PutBackupResponse {
   /** The properties of a server backup. */
   properties?: ServerBackupProperties;
 }
+const PutBackupResponse = GetBackupResponse as any as S.Schema<PutBackupResponse>;
+
 export interface ReadMaintenanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2082,6 +3055,11 @@ export interface ReadMaintenanceRequest {
   /** The name of the maintenance. */
   maintenanceName: string;
 }
+const ReadMaintenanceRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<ReadMaintenanceRequest>;
+
 export interface ReadMaintenanceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2094,6 +3072,8 @@ export interface ReadMaintenanceResponse {
   /** The properties of a maintenance */
   properties: MaintenanceProperties;
 }
+const ReadMaintenanceResponse = Maintenance as any as S.Schema<ReadMaintenanceResponse>;
+
 export interface ResetServerGtidRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2104,7 +3084,15 @@ export interface ResetServerGtidRequest {
   /** The Gtid set of server. */
   gtidSet?: string;
 }
+const ResetServerGtidRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<ResetServerGtidRequest>;
+
 export interface ResetServerGtidResponse {}
+const ResetServerGtidResponse =
+  UserAssignedIdentityInput as any as S.Schema<ResetServerGtidResponse>;
+
 export interface RestartServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2117,9 +3105,18 @@ export interface RestartServerRequest {
   /** The maximum allowed failover time in seconds. */
   maxFailoverSeconds?: number;
 }
+const RestartServerRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<RestartServerRequest>;
+
 export interface RestartServerResponse {}
+const RestartServerResponse = UserAssignedIdentityInput as any as S.Schema<RestartServerResponse>;
+
 /** The key type like 'AzureKeyVault'. */
 export type ServerKeyPropertiesInputServerKeyType = "AzureKeyVault";
+const ServerKeyPropertiesInputServerKeyType = S.String;
+
 /** Properties for a key execution. */
 export interface ServerKeyPropertiesInput {
   /** The key type like 'AzureKeyVault'. */
@@ -2127,6 +3124,11 @@ export interface ServerKeyPropertiesInput {
   /** The URI of the key. */
   uri?: string;
 }
+const ServerKeyPropertiesInput = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<ServerKeyPropertiesInput>;
+
 export interface ServerKeysCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2139,6 +3141,11 @@ export interface ServerKeysCreateOrUpdateRequest {
   /** Properties of the ServerKey Resource. */
   properties?: ServerKeyPropertiesInput;
 }
+const ServerKeysCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<ServerKeysCreateOrUpdateRequest>;
+
 export interface ServerKeysCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2151,6 +3158,11 @@ export interface ServerKeysCreateOrUpdateResponse {
   /** Properties of the ServerKey Resource. */
   properties?: ServerKeyProperties;
 }
+const ServerKeysCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<ServerKeysCreateOrUpdateResponse>;
+
 export interface ServersFailoverRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2159,7 +3171,15 @@ export interface ServersFailoverRequest {
   /** The name of the server. */
   serverName: string;
 }
+const ServersFailoverRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<ServersFailoverRequest>;
+
 export interface ServersFailoverResponse {}
+const ServersFailoverResponse =
+  UserAssignedIdentityInput as any as S.Schema<ServersFailoverResponse>;
+
 export interface ServersMigrationCutoverMigrationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2168,8 +3188,16 @@ export interface ServersMigrationCutoverMigrationRequest {
   /** The name of the server. */
   serverName: string;
 }
+const ServersMigrationCutoverMigrationRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<ServersMigrationCutoverMigrationRequest>;
+
 /** Resource tags. */
 export type ServersMigrationCutoverMigrationResponseTagsMap = { [key: string]: string | undefined };
+const ServersMigrationCutoverMigrationResponseTagsMap =
+  CreateServerRequestTagsMap as any as S.Schema<ServersMigrationCutoverMigrationResponseTagsMap>;
+
 export interface ServersMigrationCutoverMigrationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2190,11 +3218,21 @@ export interface ServersMigrationCutoverMigrationResponse {
   /** The SKU (pricing tier) of the server. */
   sku?: MySQLServerSku;
 }
+const ServersMigrationCutoverMigrationResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<ServersMigrationCutoverMigrationResponse>;
+
 /** The properties that can be updated for a server. */
 export interface ServersUpgradeRequestProperties {
   /** Represents an server storage profile. */
   targetServerVersion?: string;
 }
+const ServersUpgradeRequestProperties = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<ServersUpgradeRequestProperties>;
+
 export interface ServersUpgradeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2205,7 +3243,14 @@ export interface ServersUpgradeRequest {
   /** The properties that can be updated for a server. */
   properties?: ServersUpgradeRequestProperties;
 }
+const ServersUpgradeRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<ServersUpgradeRequest>;
+
 export interface ServersUpgradeResponse {}
+const ServersUpgradeResponse = UserAssignedIdentityInput as any as S.Schema<ServersUpgradeResponse>;
+
 export interface StartServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2214,7 +3259,11 @@ export interface StartServerRequest {
   /** The name of the server. */
   serverName: string;
 }
+const StartServerRequest = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<StartServerRequest>;
+
 export interface StartServerResponse {}
+const StartServerResponse = UserAssignedIdentityInput as any as S.Schema<StartServerResponse>;
+
 export interface StopServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2223,13 +3272,24 @@ export interface StopServerRequest {
   /** The name of the server. */
   serverName: string;
 }
+const StopServerRequest = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<StopServerRequest>;
+
 export interface StopServerResponse {}
+const StopServerResponse = UserAssignedIdentityInput as any as S.Schema<StopServerResponse>;
+
 export type UpdateAdvancedThreatProtectionSettingsRequestAdvancedThreatProtectionName = "Default";
+const UpdateAdvancedThreatProtectionSettingsRequestAdvancedThreatProtectionName = S.String;
+
 /** Properties of Advanced Threat Protection that can be updated. */
 export interface AdvancedThreatProtectionUpdateProperties {
   /** Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled or a state has not been applied yet on the specific database or server. */
   state: AdvancedThreatProtectionState | (string & {});
 }
+const AdvancedThreatProtectionUpdateProperties = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<AdvancedThreatProtectionUpdateProperties>;
+
 export interface UpdateAdvancedThreatProtectionSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2244,6 +3304,11 @@ export interface UpdateAdvancedThreatProtectionSettingsRequest {
   /** Resource update properties. */
   properties?: AdvancedThreatProtectionUpdateProperties;
 }
+const UpdateAdvancedThreatProtectionSettingsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<UpdateAdvancedThreatProtectionSettingsRequest>;
+
 export interface UpdateAdvancedThreatProtectionSettingsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2256,6 +3321,9 @@ export interface UpdateAdvancedThreatProtectionSettingsResponse {
   /** Resource properties. */
   properties?: AdvancedThreatProtectionProperties;
 }
+const UpdateAdvancedThreatProtectionSettingsResponse =
+  AdvancedThreatProtectionSettingsUpdatePutResponse as any as S.Schema<UpdateAdvancedThreatProtectionSettingsResponse>;
+
 export interface UpdateConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2268,6 +3336,11 @@ export interface UpdateConfigurationRequest {
   /** The properties of a configuration. */
   properties?: ConfigurationPropertiesInput;
 }
+const UpdateConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<UpdateConfigurationRequest>;
+
 export interface UpdateConfigurationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2280,6 +3353,9 @@ export interface UpdateConfigurationResponse {
   /** The properties of a configuration. */
   properties?: ConfigurationProperties;
 }
+const UpdateConfigurationResponse =
+  ConfigurationsCreateOrUpdateResponse as any as S.Schema<UpdateConfigurationResponse>;
+
 /** The properties can be updated for a configuration. */
 export interface ConfigurationForBatchUpdateProperties {
   /** Value of the configuration. */
@@ -2287,6 +3363,11 @@ export interface ConfigurationForBatchUpdateProperties {
   /** Source of the configuration. */
   source?: string;
 }
+const ConfigurationForBatchUpdateProperties = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<ConfigurationForBatchUpdateProperties>;
+
 /** Represents a Configuration. */
 export interface ConfigurationForBatchUpdate {
   /** Name of the configuration. */
@@ -2294,10 +3375,22 @@ export interface ConfigurationForBatchUpdate {
   /** The properties can be updated for a configuration. */
   properties?: ConfigurationForBatchUpdateProperties;
 }
+const ConfigurationForBatchUpdate = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<ConfigurationForBatchUpdate>;
+
 /** The list of server configurations. */
 export type UpdateConfigurationBatchRequestValueList = Array<ConfigurationForBatchUpdate>;
+const UpdateConfigurationBatchRequestValueList = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<UpdateConfigurationBatchRequestValueList>;
+
 /** Whether to reset all server parameters to default. */
 export type ResetAllToDefault = "True" | "False";
+const ResetAllToDefault = S.String;
+
 export interface UpdateConfigurationBatchRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2310,11 +3403,21 @@ export interface UpdateConfigurationBatchRequest {
   /** Whether to reset all server parameters to default. */
   resetAllToDefault?: ResetAllToDefault | (string & {});
 }
+const UpdateConfigurationBatchRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<UpdateConfigurationBatchRequest>;
+
 /** The properties of a maintenance update parameter. */
 export interface MaintenancePropertiesForUpdate {
   /** The start time for a maintenance. */
   maintenanceStartTime?: string;
 }
+const MaintenancePropertiesForUpdate = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<MaintenancePropertiesForUpdate>;
+
 export interface UpdateMaintenanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2327,6 +3430,11 @@ export interface UpdateMaintenanceRequest {
   /** The properties of a maintenance update parameter */
   properties?: MaintenancePropertiesForUpdate;
 }
+const UpdateMaintenanceRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<UpdateMaintenanceRequest>;
+
 export interface UpdateMaintenanceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2339,6 +3447,11 @@ export interface UpdateMaintenanceResponse {
   /** The properties of a maintenance */
   properties: MaintenanceProperties;
 }
+const UpdateMaintenanceResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<UpdateMaintenanceResponse>;
+
 /** The properties that can be updated for a server. */
 export interface ServerPropertiesForUpdateInput {
   /** The password of the administrator login. */
@@ -2362,8 +3475,16 @@ export interface ServerPropertiesForUpdateInput {
   /** Network related properties of a server */
   network?: Network;
 }
+const ServerPropertiesForUpdateInput = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<ServerPropertiesForUpdateInput>;
+
 /** Application-specific metadata in the form of key-value pairs. */
 export type UpdateServerRequestTagsMap = { [key: string]: string | undefined };
+const UpdateServerRequestTagsMap =
+  CreateServerRequestTagsMap as any as S.Schema<UpdateServerRequestTagsMap>;
+
 export interface UpdateServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2380,6 +3501,8 @@ export interface UpdateServerRequest {
   /** Application-specific metadata in the form of key-value pairs. */
   tags?: UpdateServerRequestTagsMap;
 }
+const UpdateServerRequest = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<UpdateServerRequest>;
+
 /** Resource tags. */
 export type UpdateServerResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateServerResponse {
@@ -2402,6 +3525,8 @@ export interface UpdateServerResponse {
   /** The SKU (pricing tier) of the server. */
   sku?: MySQLServerSku;
 }
+const UpdateServerResponse = CreateServerResponse as any as S.Schema<UpdateServerResponse>;
+
 export interface ValidateBackupAndExportBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2410,16 +3535,31 @@ export interface ValidateBackupAndExportBackupRequest {
   /** The name of the server. */
   serverName: string;
 }
+const ValidateBackupAndExportBackupRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<ValidateBackupAndExportBackupRequest>;
+
 /** ValidateBackup Response Properties */
 export interface ValidateBackupResponseProperties {
   /** Estimated no of storage containers required for resource data to be backed up. */
   numberOfContainers?: number;
 }
+const ValidateBackupResponseProperties = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<ValidateBackupResponseProperties>;
+
 /** Represents ValidateBackup API Response */
 export interface ValidateBackupResponse {
   /** The response properties of a pre backup operation. */
   properties?: ValidateBackupResponseProperties;
 }
+const ValidateBackupResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<ValidateBackupResponse>;
+
 export interface ValidateServerEstimateHighAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2430,6 +3570,11 @@ export interface ValidateServerEstimateHighAvailabilityRequest {
   /** Expected Availability zone of the standby server. */
   expectedStandbyAvailabilityZone?: string;
 }
+const ValidateServerEstimateHighAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<ValidateServerEstimateHighAvailabilityRequest>;
+
 /** High availability validation properties of a server */
 export interface HighAvailabilityValidationEstimation {
   /** Estimated seconds of downtime for the deployment. */
@@ -2439,6 +3584,11 @@ export interface HighAvailabilityValidationEstimation {
   /** Expected Availability zone of the standby server. */
   expectedStandbyAvailabilityZone?: string;
 }
+const HighAvailabilityValidationEstimation = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<HighAvailabilityValidationEstimation>;
+
 export type AdvancedThreatProtectionSettingsUpdatePutError = AzureOpError;
 /** Updates a server's Advanced Threat Protection state. */
 export const AdvancedThreatProtectionSettingsUpdatePut: API.OperationMethod<
@@ -2447,8 +3597,8 @@ export const AdvancedThreatProtectionSettingsUpdatePut: API.OperationMethod<
   AdvancedThreatProtectionSettingsUpdatePutError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AdvancedThreatProtectionSettingsUpdatePutRequest>,
-  output: __S(4) as any as S.Schema<AdvancedThreatProtectionSettingsUpdatePutResponse>,
+  input: AdvancedThreatProtectionSettingsUpdatePutRequest,
+  output: AdvancedThreatProtectionSettingsUpdatePutResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2462,8 +3612,8 @@ export const AzureADAdministratorsCreateOrUpdate: API.OperationMethod<
   AzureADAdministratorsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<AzureADAdministratorsCreateOrUpdateRequest>,
-  output: __S(7) as any as S.Schema<AzureADAdministratorsCreateOrUpdateResponse>,
+  input: AzureADAdministratorsCreateOrUpdateRequest,
+  output: AzureADAdministratorsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2477,8 +3627,8 @@ export const ConfigurationsCreateOrUpdate: API.OperationMethod<
   ConfigurationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<ConfigurationsCreateOrUpdateRequest>,
-  output: __S(11) as any as S.Schema<ConfigurationsCreateOrUpdateResponse>,
+  input: ConfigurationsCreateOrUpdateRequest,
+  output: ConfigurationsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2492,8 +3642,8 @@ export const CreateBackupAndExport: API.OperationMethod<
   CreateBackupAndExportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<CreateBackupAndExportRequest>,
-  output: __S(22) as any as S.Schema<CreateBackupAndExportResponse>,
+  input: CreateBackupAndExportRequest,
+  output: CreateBackupAndExportResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2507,8 +3657,8 @@ export const CreateLongRunningBackup: API.OperationMethod<
   CreateLongRunningBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<CreateLongRunningBackupRequest>,
-  output: __S(25) as any as S.Schema<CreateLongRunningBackupResponse>,
+  input: CreateLongRunningBackupRequest,
+  output: CreateLongRunningBackupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2522,8 +3672,8 @@ export const CreateServer: API.OperationMethod<
   CreateServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<CreateServerRequest>,
-  output: __S(53) as any as S.Schema<CreateServerResponse>,
+  input: CreateServerRequest,
+  output: CreateServerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2537,8 +3687,8 @@ export const DatabasesCreateOrUpdate: API.OperationMethod<
   DatabasesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<DatabasesCreateOrUpdateRequest>,
-  output: __S(56) as any as S.Schema<DatabasesCreateOrUpdateResponse>,
+  input: DatabasesCreateOrUpdateRequest,
+  output: DatabasesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2552,8 +3702,8 @@ export const DeleteAzureADAdministrator: API.OperationMethod<
   DeleteAzureADAdministratorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<DeleteAzureADAdministratorRequest>,
-  output: __S(58) as any as S.Schema<DeleteAzureADAdministratorResponse>,
+  input: DeleteAzureADAdministratorRequest,
+  output: DeleteAzureADAdministratorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2567,8 +3717,8 @@ export const DeleteDatabase: API.OperationMethod<
   DeleteDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<DeleteDatabaseRequest>,
-  output: __S(36) as any as S.Schema<DeleteDatabaseResponse>,
+  input: DeleteDatabaseRequest,
+  output: DeleteDatabaseResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2582,8 +3732,8 @@ export const DeleteFirewallRule: API.OperationMethod<
   DeleteFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<DeleteFirewallRuleRequest>,
-  output: __S(36) as any as S.Schema<DeleteFirewallRuleResponse>,
+  input: DeleteFirewallRuleRequest,
+  output: DeleteFirewallRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2597,8 +3747,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(58) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: DeletePrivateEndpointConnectionRequest,
+  output: DeletePrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2612,8 +3762,8 @@ export const DeleteServer: API.OperationMethod<
   DeleteServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<DeleteServerRequest>,
-  output: __S(36) as any as S.Schema<DeleteServerResponse>,
+  input: DeleteServerRequest,
+  output: DeleteServerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2627,8 +3777,8 @@ export const DeleteServerKey: API.OperationMethod<
   DeleteServerKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<DeleteServerKeyRequest>,
-  output: __S(36) as any as S.Schema<DeleteServerKeyResponse>,
+  input: DeleteServerKeyRequest,
+  output: DeleteServerKeyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2642,8 +3792,8 @@ export const DetachServerVNet: API.OperationMethod<
   DetachServerVNetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<DetachServerVNetRequest>,
-  output: __S(53) as any as S.Schema<DetachServerVNetResponse>,
+  input: DetachServerVNetRequest,
+  output: DetachServerVNetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2657,8 +3807,8 @@ export const ExecuteCheckNameAvailability: API.OperationMethod<
   ExecuteCheckNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<ExecuteCheckNameAvailabilityRequest>,
-  output: __S(66) as any as S.Schema<NameAvailability>,
+  input: ExecuteCheckNameAvailabilityRequest,
+  output: NameAvailability,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2672,8 +3822,8 @@ export const ExecuteCheckNameAvailabilityWithoutLocation: API.OperationMethod<
   ExecuteCheckNameAvailabilityWithoutLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<ExecuteCheckNameAvailabilityWithoutLocationRequest>,
-  output: __S(66) as any as S.Schema<NameAvailability>,
+  input: ExecuteCheckNameAvailabilityWithoutLocationRequest,
+  output: NameAvailability,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2687,8 +3837,8 @@ export const ExecuteCheckVirtualNetworkSubnetUsage: API.OperationMethod<
   ExecuteCheckVirtualNetworkSubnetUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<ExecuteCheckVirtualNetworkSubnetUsageRequest>,
-  output: __S(71) as any as S.Schema<VirtualNetworkSubnetUsageResult>,
+  input: ExecuteCheckVirtualNetworkSubnetUsageRequest,
+  output: VirtualNetworkSubnetUsageResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2702,8 +3852,8 @@ export const ExecuteGetPrivateDnsZoneSuffix: API.OperationMethod<
   ExecuteGetPrivateDnsZoneSuffixError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<ExecuteGetPrivateDnsZoneSuffixRequest>,
-  output: __S(73) as any as S.Schema<GetPrivateDnsZoneSuffixResponse>,
+  input: ExecuteGetPrivateDnsZoneSuffixRequest,
+  output: GetPrivateDnsZoneSuffixResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2717,8 +3867,8 @@ export const FirewallRulesCreateOrUpdate: API.OperationMethod<
   FirewallRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<FirewallRulesCreateOrUpdateRequest>,
-  output: __S(76) as any as S.Schema<FirewallRulesCreateOrUpdateResponse>,
+  input: FirewallRulesCreateOrUpdateRequest,
+  output: FirewallRulesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2732,8 +3882,8 @@ export const GetAdvancedThreatProtectionSettings: API.OperationMethod<
   GetAdvancedThreatProtectionSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<GetAdvancedThreatProtectionSettingsRequest>,
-  output: __S(4) as any as S.Schema<GetAdvancedThreatProtectionSettingsResponse>,
+  input: GetAdvancedThreatProtectionSettingsRequest,
+  output: GetAdvancedThreatProtectionSettingsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2747,8 +3897,8 @@ export const GetAzureADAdministrator: API.OperationMethod<
   GetAzureADAdministratorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<GetAzureADAdministratorRequest>,
-  output: __S(7) as any as S.Schema<GetAzureADAdministratorResponse>,
+  input: GetAzureADAdministratorRequest,
+  output: GetAzureADAdministratorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2762,8 +3912,8 @@ export const GetBackup: API.OperationMethod<
   GetBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<GetBackupRequest>,
-  output: __S(81) as any as S.Schema<GetBackupResponse>,
+  input: GetBackupRequest,
+  output: GetBackupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2777,8 +3927,8 @@ export const GetConfiguration: API.OperationMethod<
   GetConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<GetConfigurationRequest>,
-  output: __S(83) as any as S.Schema<GetConfigurationResponse>,
+  input: GetConfigurationRequest,
+  output: GetConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2792,8 +3942,8 @@ export const GetDatabase: API.OperationMethod<
   GetDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<GetDatabaseRequest>,
-  output: __S(85) as any as S.Schema<GetDatabaseResponse>,
+  input: GetDatabaseRequest,
+  output: GetDatabaseResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2807,8 +3957,8 @@ export const GetFirewallRule: API.OperationMethod<
   GetFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<GetFirewallRuleRequest>,
-  output: __S(87) as any as S.Schema<GetFirewallRuleResponse>,
+  input: GetFirewallRuleRequest,
+  output: GetFirewallRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2822,8 +3972,8 @@ export const GetLocationBasedCapabilitySet: API.OperationMethod<
   GetLocationBasedCapabilitySetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<GetLocationBasedCapabilitySetRequest>,
-  output: __S(100) as any as S.Schema<GetLocationBasedCapabilitySetResponse>,
+  input: GetLocationBasedCapabilitySetRequest,
+  output: GetLocationBasedCapabilitySetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2837,8 +3987,8 @@ export const GetLongRunningBackup: API.OperationMethod<
   GetLongRunningBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<GetLongRunningBackupRequest>,
-  output: __S(25) as any as S.Schema<GetLongRunningBackupResponse>,
+  input: GetLongRunningBackupRequest,
+  output: GetLongRunningBackupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2852,8 +4002,8 @@ export const GetOperationProgress: API.OperationMethod<
   GetOperationProgressError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<GetOperationProgressRequest>,
-  output: __S(107) as any as S.Schema<GetOperationProgressResponse>,
+  input: GetOperationProgressRequest,
+  output: GetOperationProgressResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2867,8 +4017,8 @@ export const GetOperationResult: API.OperationMethod<
   GetOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<GetOperationResultRequest>,
-  output: __S(110) as any as S.Schema<GetOperationResultResponse>,
+  input: GetOperationResultRequest,
+  output: GetOperationResultResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2882,8 +4032,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(47) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: GetPrivateEndpointConnectionRequest,
+  output: GetPrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2897,8 +4047,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(114) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: GetPrivateLinkResourceRequest,
+  output: GetPrivateLinkResourceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2912,8 +4062,8 @@ export const GetServer: API.OperationMethod<
   GetServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115) as any as S.Schema<GetServerRequest>,
-  output: __S(53) as any as S.Schema<GetServerResponse>,
+  input: GetServerRequest,
+  output: GetServerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2927,8 +4077,8 @@ export const GetServerKey: API.OperationMethod<
   GetServerKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<GetServerKeyRequest>,
-  output: __S(118) as any as S.Schema<GetServerKeyResponse>,
+  input: GetServerKeyRequest,
+  output: GetServerKeyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2942,8 +4092,8 @@ export const ListAdvancedThreatProtectionSettings: API.OperationMethod<
   ListAdvancedThreatProtectionSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<ListAdvancedThreatProtectionSettingsRequest>,
-  output: __S(122) as any as S.Schema<AdvancedThreatProtectionListResult>,
+  input: ListAdvancedThreatProtectionSettingsRequest,
+  output: AdvancedThreatProtectionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2957,8 +4107,8 @@ export const ListAzureADAdministratorByServer: API.OperationMethod<
   ListAzureADAdministratorByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<ListAzureADAdministratorByServerRequest>,
-  output: __S(126) as any as S.Schema<AdministratorListResult>,
+  input: ListAzureADAdministratorByServerRequest,
+  output: AdministratorListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2972,8 +4122,8 @@ export const ListBackupByServer: API.OperationMethod<
   ListBackupByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<ListBackupByServerRequest>,
-  output: __S(129) as any as S.Schema<ServerBackupListResult>,
+  input: ListBackupByServerRequest,
+  output: ServerBackupListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2987,8 +4137,8 @@ export const ListConfigurationByServer: API.OperationMethod<
   ListConfigurationByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130) as any as S.Schema<ListConfigurationByServerRequest>,
-  output: __S(132) as any as S.Schema<ConfigurationListResult>,
+  input: ListConfigurationByServerRequest,
+  output: ConfigurationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3002,8 +4152,8 @@ export const ListDatabaseByServer: API.OperationMethod<
   ListDatabaseByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133) as any as S.Schema<ListDatabaseByServerRequest>,
-  output: __S(135) as any as S.Schema<DatabaseListResult>,
+  input: ListDatabaseByServerRequest,
+  output: DatabaseListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3017,8 +4167,8 @@ export const ListFirewallRuleByServer: API.OperationMethod<
   ListFirewallRuleByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<ListFirewallRuleByServerRequest>,
-  output: __S(138) as any as S.Schema<FirewallRuleListResult>,
+  input: ListFirewallRuleByServerRequest,
+  output: FirewallRuleListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3032,8 +4182,8 @@ export const ListLocationBasedCapabilities: API.OperationMethod<
   ListLocationBasedCapabilitiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<ListLocationBasedCapabilitiesRequest>,
-  output: __S(148) as any as S.Schema<CapabilitiesListResult>,
+  input: ListLocationBasedCapabilitiesRequest,
+  output: CapabilitiesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3047,8 +4197,8 @@ export const ListLocationBasedCapabilitySet: API.OperationMethod<
   ListLocationBasedCapabilitySetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<ListLocationBasedCapabilitySetRequest>,
-  output: __S(152) as any as S.Schema<CapabilitySetsList>,
+  input: ListLocationBasedCapabilitySetRequest,
+  output: CapabilitySetsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3062,8 +4212,8 @@ export const ListLogFileByServer: API.OperationMethod<
   ListLogFileByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<ListLogFileByServerRequest>,
-  output: __S(157) as any as S.Schema<LogFileListResult>,
+  input: ListLogFileByServerRequest,
+  output: LogFileListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3077,8 +4227,8 @@ export const ListLongRunningBackups: API.OperationMethod<
   ListLongRunningBackupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158) as any as S.Schema<ListLongRunningBackupsRequest>,
-  output: __S(161) as any as S.Schema<ServerBackupV2ListResult>,
+  input: ListLongRunningBackupsRequest,
+  output: ServerBackupV2ListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3092,8 +4242,8 @@ export const ListMaintenances: API.OperationMethod<
   ListMaintenancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162) as any as S.Schema<ListMaintenancesRequest>,
-  output: __S(166) as any as S.Schema<MaintenanceListResult>,
+  input: ListMaintenancesRequest,
+  output: MaintenanceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3107,8 +4257,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<ListOperationsRequest>,
-  output: __S(171) as any as S.Schema<OperationListResult>,
+  input: ListOperationsRequest,
+  output: OperationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3122,8 +4272,8 @@ export const ListPrivateEndpointConnectionByServer: API.OperationMethod<
   ListPrivateEndpointConnectionByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172) as any as S.Schema<ListPrivateEndpointConnectionByServerRequest>,
-  output: __S(173) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: ListPrivateEndpointConnectionByServerRequest,
+  output: PrivateEndpointConnectionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3137,8 +4287,8 @@ export const ListPrivateLinkResourceByServer: API.OperationMethod<
   ListPrivateLinkResourceByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174) as any as S.Schema<ListPrivateLinkResourceByServerRequest>,
-  output: __S(177) as any as S.Schema<ListPrivateLinkResourceByServerResponse>,
+  input: ListPrivateLinkResourceByServerRequest,
+  output: ListPrivateLinkResourceByServerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3152,8 +4302,8 @@ export const ListReplicasByServer: API.OperationMethod<
   ListReplicasByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178) as any as S.Schema<ListReplicasByServerRequest>,
-  output: __S(180) as any as S.Schema<ServerListResult>,
+  input: ListReplicasByServerRequest,
+  output: ServerListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3167,8 +4317,8 @@ export const ListServerByResourceGroup: API.OperationMethod<
   ListServerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<ListServerByResourceGroupRequest>,
-  output: __S(180) as any as S.Schema<ServerListResult>,
+  input: ListServerByResourceGroupRequest,
+  output: ServerListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3182,8 +4332,8 @@ export const ListServerKeys: API.OperationMethod<
   ListServerKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<ListServerKeysRequest>,
-  output: __S(184) as any as S.Schema<ServerKeyListResult>,
+  input: ListServerKeysRequest,
+  output: ServerKeyListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3197,8 +4347,8 @@ export const ListServers: API.OperationMethod<
   ListServersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<ListServersRequest>,
-  output: __S(180) as any as S.Schema<ServerListResult>,
+  input: ListServersRequest,
+  output: ServerListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3212,8 +4362,8 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
-  output: __S(47) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
+  input: PrivateEndpointConnectionsCreateOrUpdateRequest,
+  output: PrivateEndpointConnectionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3227,8 +4377,8 @@ export const PutBackup: API.OperationMethod<
   PutBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188) as any as S.Schema<PutBackupRequest>,
-  output: __S(81) as any as S.Schema<PutBackupResponse>,
+  input: PutBackupRequest,
+  output: PutBackupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3242,8 +4392,8 @@ export const ReadMaintenance: API.OperationMethod<
   ReadMaintenanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189) as any as S.Schema<ReadMaintenanceRequest>,
-  output: __S(164) as any as S.Schema<ReadMaintenanceResponse>,
+  input: ReadMaintenanceRequest,
+  output: ReadMaintenanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3257,8 +4407,8 @@ export const ResetServerGtid: API.OperationMethod<
   ResetServerGtidError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190) as any as S.Schema<ResetServerGtidRequest>,
-  output: __S(36) as any as S.Schema<ResetServerGtidResponse>,
+  input: ResetServerGtidRequest,
+  output: ResetServerGtidResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3272,8 +4422,8 @@ export const RestartServer: API.OperationMethod<
   RestartServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191) as any as S.Schema<RestartServerRequest>,
-  output: __S(36) as any as S.Schema<RestartServerResponse>,
+  input: RestartServerRequest,
+  output: RestartServerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3287,8 +4437,8 @@ export const ServerKeysCreateOrUpdate: API.OperationMethod<
   ServerKeysCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<ServerKeysCreateOrUpdateRequest>,
-  output: __S(194) as any as S.Schema<ServerKeysCreateOrUpdateResponse>,
+  input: ServerKeysCreateOrUpdateRequest,
+  output: ServerKeysCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3302,8 +4452,8 @@ export const ServersFailover: API.OperationMethod<
   ServersFailoverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195) as any as S.Schema<ServersFailoverRequest>,
-  output: __S(36) as any as S.Schema<ServersFailoverResponse>,
+  input: ServersFailoverRequest,
+  output: ServersFailoverResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3317,8 +4467,8 @@ export const ServersMigrationCutoverMigration: API.OperationMethod<
   ServersMigrationCutoverMigrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196) as any as S.Schema<ServersMigrationCutoverMigrationRequest>,
-  output: __S(197) as any as S.Schema<ServersMigrationCutoverMigrationResponse>,
+  input: ServersMigrationCutoverMigrationRequest,
+  output: ServersMigrationCutoverMigrationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3332,8 +4482,8 @@ export const ServersUpgrade: API.OperationMethod<
   ServersUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199) as any as S.Schema<ServersUpgradeRequest>,
-  output: __S(36) as any as S.Schema<ServersUpgradeResponse>,
+  input: ServersUpgradeRequest,
+  output: ServersUpgradeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3347,8 +4497,8 @@ export const StartServer: API.OperationMethod<
   StartServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200) as any as S.Schema<StartServerRequest>,
-  output: __S(36) as any as S.Schema<StartServerResponse>,
+  input: StartServerRequest,
+  output: StartServerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3362,8 +4512,8 @@ export const StopServer: API.OperationMethod<
   StopServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201) as any as S.Schema<StopServerRequest>,
-  output: __S(36) as any as S.Schema<StopServerResponse>,
+  input: StopServerRequest,
+  output: StopServerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3377,8 +4527,8 @@ export const UpdateAdvancedThreatProtectionSettings: API.OperationMethod<
   UpdateAdvancedThreatProtectionSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203) as any as S.Schema<UpdateAdvancedThreatProtectionSettingsRequest>,
-  output: __S(4) as any as S.Schema<UpdateAdvancedThreatProtectionSettingsResponse>,
+  input: UpdateAdvancedThreatProtectionSettingsRequest,
+  output: UpdateAdvancedThreatProtectionSettingsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3392,8 +4542,8 @@ export const UpdateConfiguration: API.OperationMethod<
   UpdateConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204) as any as S.Schema<UpdateConfigurationRequest>,
-  output: __S(11) as any as S.Schema<UpdateConfigurationResponse>,
+  input: UpdateConfigurationRequest,
+  output: UpdateConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3407,8 +4557,8 @@ export const UpdateConfigurationBatch: API.OperationMethod<
   UpdateConfigurationBatchError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208) as any as S.Schema<UpdateConfigurationBatchRequest>,
-  output: __S(132) as any as S.Schema<ConfigurationListResult>,
+  input: UpdateConfigurationBatchRequest,
+  output: ConfigurationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3422,8 +4572,8 @@ export const UpdateMaintenance: API.OperationMethod<
   UpdateMaintenanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210) as any as S.Schema<UpdateMaintenanceRequest>,
-  output: __S(211) as any as S.Schema<UpdateMaintenanceResponse>,
+  input: UpdateMaintenanceRequest,
+  output: UpdateMaintenanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3437,8 +4587,8 @@ export const UpdateServer: API.OperationMethod<
   UpdateServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213) as any as S.Schema<UpdateServerRequest>,
-  output: __S(53) as any as S.Schema<UpdateServerResponse>,
+  input: UpdateServerRequest,
+  output: UpdateServerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3452,8 +4602,8 @@ export const ValidateBackupAndExportBackup: API.OperationMethod<
   ValidateBackupAndExportBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214) as any as S.Schema<ValidateBackupAndExportBackupRequest>,
-  output: __S(216) as any as S.Schema<ValidateBackupResponse>,
+  input: ValidateBackupAndExportBackupRequest,
+  output: ValidateBackupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3467,8 +4617,8 @@ export const ValidateServerEstimateHighAvailability: API.OperationMethod<
   ValidateServerEstimateHighAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217) as any as S.Schema<ValidateServerEstimateHighAvailabilityRequest>,
-  output: __S(218) as any as S.Schema<HighAvailabilityValidationEstimation>,
+  input: ValidateServerEstimateHighAvailabilityRequest,
+  output: HighAvailabilityValidationEstimation,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3480,7 +4630,7 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(AdvancedThreatProtectionState),
         }),
       ).annotate({
         identifier: "AdvancedThreatProtectionPropertiesInput",
@@ -3491,8 +4641,11 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          advancedThreatProtectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(0)),
+          advancedThreatProtectionName:
+            AdvancedThreatProtectionSettingsUpdatePutRequestAdvancedThreatProtectionName.pipe(
+              T.Label(),
+            ),
+          properties: S.optional(AdvancedThreatProtectionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3508,10 +4661,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -3519,8 +4672,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           creationTime: S.optional(S.String),
-          state: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          state: S.optional(AdvancedThreatProtectionState),
+          provisioningState: S.optional(AdvancedThreatProtectionProvisioningState),
         }),
       ).annotate({
         identifier: "AdvancedThreatProtectionProperties",
@@ -3531,8 +4684,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AdvancedThreatProtectionProperties),
         }),
       ).annotate({
         identifier: "AdvancedThreatProtectionSettingsUpdatePutResponse",
@@ -3540,7 +4693,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          administratorType: S.optional(S.String),
+          administratorType: S.optional(AdministratorType),
           login: S.optional(S.String),
           sid: S.optional(S.String),
           tenantId: S.optional(S.String),
@@ -3553,8 +4706,10 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          administratorName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(5)),
+          administratorName: AzureADAdministratorsCreateOrUpdateRequestAdministratorName.pipe(
+            T.Label(),
+          ),
+          properties: S.optional(AdministratorProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3572,8 +4727,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(5)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AdministratorProperties),
         }),
       ).annotate({
         identifier: "AzureADAdministratorsCreateOrUpdateResponse",
@@ -3587,7 +4742,7 @@ function __c1(j: number): any {
         S.Struct({
           value: S.optional(S.String),
           currentValue: S.optional(S.String),
-          source: S.optional(S.String),
+          source: S.optional(ConfigurationSource),
         }),
       ).annotate({
         identifier: "ConfigurationPropertiesInput",
@@ -3599,7 +4754,7 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(8)),
+          properties: S.optional(ConfigurationPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3621,10 +4776,10 @@ function __c1(j: number): any {
           defaultValue: S.optional(S.String),
           dataType: S.optional(S.String),
           allowedValues: S.optional(S.String),
-          source: S.optional(S.String),
-          isReadOnly: S.optional(S.String),
-          isConfigPendingRestart: S.optional(S.String),
-          isDynamicConfig: S.optional(S.String),
+          source: S.optional(ConfigurationSource),
+          isReadOnly: S.optional(IsReadOnly),
+          isConfigPendingRestart: S.optional(IsConfigPendingRestart),
+          isDynamicConfig: S.optional(IsDynamicConfig),
         }),
       ).annotate({ identifier: "ConfigurationProperties" });
     case 3:
@@ -3633,8 +4788,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(10)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ConfigurationProperties),
         }),
       ).annotate({
         identifier: "ConfigurationsCreateOrUpdateResponse",
@@ -3643,7 +4798,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           backupName: S.String,
-          backupFormat: S.optional(S.String),
+          backupFormat: S.optional(BackupFormat),
         }),
       ).annotate({ identifier: "BackupSettings" });
     case 5:
@@ -3658,8 +4813,8 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          backupSettings: __S(12),
-          targetDetails: __S(13),
+          backupSettings: BackupSettings,
+          targetDetails: BackupStoreDetails,
         }).pipe(
           T.Http({
             method: "POST",
@@ -3686,7 +4841,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(19)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => ErrorDetail));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3695,27 +4850,27 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(ErrorAdditionalInfo);
     case 3:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(16)),
-          additionalInfo: S.optional(__S(18)),
+          details: S.optional(ErrorDetailDetailsList),
+          additionalInfo: S.optional(ErrorDetailAdditionalInfoList),
         }),
       ).annotate({ identifier: "ErrorDetail" });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(ErrorDetail);
     case 5:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(20)),
-          additionalInfo: S.optional(__S(18)),
+          details: S.optional(CreateBackupAndExportResponseErrorDetailsList),
+          additionalInfo: S.optional(CreateBackupAndExportResponseErrorAdditionalInfoList),
         }),
       ).annotate({
         identifier: "CreateBackupAndExportResponseError",
@@ -3726,10 +4881,10 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.String,
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(15)),
-          error: S.optional(__S(21)),
-          status: S.optional(S.String),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BackupAndExportResponseProperties),
+          error: S.optional(CreateBackupAndExportResponseError),
+          status: S.optional(OperationStatus),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           percentComplete: S.optional(S.Number),
@@ -3741,10 +4896,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           backupNameV2: S.optional(S.String),
-          backupType: S.optional(S.String),
+          backupType: S.optional(BackupType),
           completedTime: S.optional(S.String),
           source: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "ServerBackupPropertiesV2" });
   }
@@ -3758,7 +4913,7 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           backupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(23)),
+          properties: S.optional(ServerBackupPropertiesV2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3776,8 +4931,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(23)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ServerBackupPropertiesV2),
         }),
       ).annotate({
         identifier: "CreateLongRunningBackupResponse",
@@ -3791,7 +4946,7 @@ function __c3(j: number): any {
           primaryKeyURI: S.optional(S.String),
           geoBackupUserAssignedIdentityId: S.optional(S.String),
           geoBackupKeyURI: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(DataEncryptionType),
         }),
       ).annotate({ identifier: "DataEncryption" });
     case 4:
@@ -3799,10 +4954,10 @@ function __c3(j: number): any {
         S.Struct({
           storageSizeGB: S.optional(S.Number),
           iops: S.optional(S.Number),
-          autoGrow: S.optional(S.String),
-          logOnDisk: S.optional(S.String),
-          autoIoScaling: S.optional(S.String),
-          storageRedundancy: S.optional(S.String),
+          autoGrow: S.optional(StorageInputAutoGrow),
+          logOnDisk: S.optional(StorageInputLogOnDisk),
+          autoIoScaling: S.optional(StorageInputAutoIoScaling),
+          storageRedundancy: S.optional(StorageInputStorageRedundancy),
         }),
       ).annotate({ identifier: "StorageInput" });
     case 5:
@@ -3810,21 +4965,21 @@ function __c3(j: number): any {
         S.Struct({
           backupRetentionDays: S.optional(S.Number),
           backupIntervalHours: S.optional(S.Number),
-          geoRedundantBackup: S.optional(S.String),
+          geoRedundantBackup: S.optional(BackupInputGeoRedundantBackup),
         }),
       ).annotate({ identifier: "BackupInput" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(S.String),
-          state: S.optional(S.String),
+          mode: S.optional(HighAvailabilityMode),
+          state: S.optional(HighAvailabilityState),
           standbyAvailabilityZone: S.optional(S.String),
         }),
       ).annotate({ identifier: "HighAvailability" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          publicNetworkAccess: S.optional(S.String),
+          publicNetworkAccess: S.optional(EnableStatusEnum),
           delegatedSubnetResourceId: S.optional(S.String),
           privateDnsZoneResourceId: S.optional(S.String),
         }),
@@ -3836,7 +4991,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          patchStrategy: S.optional(S.String),
+          patchStrategy: S.optional(PatchStrategy),
         }),
       ).annotate({ identifier: "MaintenancePolicy" });
     case 1:
@@ -3846,13 +5001,13 @@ function __c4(j: number): any {
           startHour: S.optional(S.Number),
           startMinute: S.optional(S.Number),
           dayOfWeek: S.optional(S.Number),
-          batchOfMaintenance: S.optional(S.String),
+          batchOfMaintenance: S.optional(BatchOfMaintenance),
         }),
       ).annotate({ identifier: "MaintenanceWindow" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          storageType: S.optional(S.String),
+          storageType: S.optional(ImportSourceStorageType),
           storageUrl: S.optional(S.String),
           sasToken: S.optional(S.String),
           dataDirPath: S.optional(S.String),
@@ -3863,21 +5018,21 @@ function __c4(j: number): any {
         S.Struct({
           administratorLogin: S.optional(S.String),
           administratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          version: S.optional(S.String),
+          version: S.optional(ServerVersion),
           availabilityZone: S.optional(S.String),
-          createMode: S.optional(S.String),
+          createMode: S.optional(CreateMode),
           sourceServerResourceId: S.optional(S.String),
           restorePointInTime: S.optional(S.String),
-          replicationRole: S.optional(S.String),
-          dataEncryption: S.optional(__S(27)),
+          replicationRole: S.optional(ReplicationRole),
+          dataEncryption: S.optional(DataEncryption),
           databasePort: S.optional(S.Number),
-          storage: S.optional(__S(28)),
-          backup: S.optional(__S(29)),
-          highAvailability: S.optional(__S(30)),
-          network: S.optional(__S(31)),
-          maintenancePolicy: S.optional(__S(32)),
-          maintenanceWindow: S.optional(__S(33)),
-          importSourceProperties: S.optional(__S(34)),
+          storage: S.optional(StorageInput),
+          backup: S.optional(BackupInput),
+          highAvailability: S.optional(HighAvailability),
+          network: S.optional(Network),
+          maintenancePolicy: S.optional(MaintenancePolicy),
+          maintenanceWindow: S.optional(MaintenanceWindow),
+          importSourceProperties: S.optional(ImportSourceProperties),
         }),
       ).annotate({ identifier: "ServerPropertiesInput" });
     case 4:
@@ -3885,19 +5040,19 @@ function __c4(j: number): any {
         identifier: "UserAssignedIdentityInput",
       });
     case 5:
-      return S.Record(S.String, __S(36));
+      return S.Record(S.String, UserAssignedIdentityInput);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(37)),
+          type: S.optional(ManagedServiceIdentityType),
+          userAssignedIdentities: S.optional(MySQLServerIdentityInputUserAssignedIdentitiesMap),
         }),
       ).annotate({ identifier: "MySQLServerIdentityInput" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          tier: S.String,
+          tier: ServerSkuTier,
         }),
       ).annotate({ identifier: "MySQLServerSku" });
   }
@@ -3910,11 +5065,11 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(26)),
+          tags: S.optional(CreateServerRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(35)),
-          identity: S.optional(__S(38)),
-          sku: S.optional(__S(39)),
+          properties: S.optional(ServerPropertiesInput),
+          identity: S.optional(MySQLServerIdentityInput),
+          sku: S.optional(MySQLServerSku),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3929,11 +5084,11 @@ function __c5(j: number): any {
         S.Struct({
           storageSizeGB: S.optional(S.Number),
           iops: S.optional(S.Number),
-          autoGrow: S.optional(S.String),
-          logOnDisk: S.optional(S.String),
+          autoGrow: S.optional(StorageAutoGrow),
+          logOnDisk: S.optional(StorageLogOnDisk),
           storageSku: S.optional(S.String),
-          autoIoScaling: S.optional(S.String),
-          storageRedundancy: S.optional(S.String),
+          autoIoScaling: S.optional(StorageAutoIoScaling),
+          storageRedundancy: S.optional(StorageStorageRedundancy),
         }),
       ).annotate({ identifier: "Storage" });
     case 2:
@@ -3941,7 +5096,7 @@ function __c5(j: number): any {
         S.Struct({
           backupRetentionDays: S.optional(S.Number),
           backupIntervalHours: S.optional(S.Number),
-          geoRedundantBackup: S.optional(S.String),
+          geoRedundantBackup: S.optional(BackupGeoRedundantBackup),
           earliestRestoreDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "Backup" });
@@ -3956,7 +5111,7 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(PrivateEndpointServiceConnectionStatus),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -3966,10 +5121,10 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(43)),
-          privateEndpoint: S.optional(__S(44)),
-          privateLinkServiceConnectionState: __S(45),
-          provisioningState: S.optional(S.String),
+          groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
+          privateEndpoint: S.optional(PrivateEndpoint),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+          provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -3980,8 +5135,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(46)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateEndpointConnectionProperties),
         }),
       ).annotate({
         identifier: "ServerPropertiesPrivateEndpointConnectionsItem",
@@ -3991,32 +5146,32 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(ServerPropertiesPrivateEndpointConnectionsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           administratorLogin: S.optional(S.String),
           administratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          version: S.optional(S.String),
+          version: S.optional(ServerVersion),
           fullVersion: S.optional(S.String),
           availabilityZone: S.optional(S.String),
-          createMode: S.optional(S.String),
+          createMode: S.optional(CreateMode),
           sourceServerResourceId: S.optional(S.String),
           restorePointInTime: S.optional(S.String),
-          replicationRole: S.optional(S.String),
+          replicationRole: S.optional(ReplicationRole),
           replicaCapacity: S.optional(S.Number),
-          dataEncryption: S.optional(__S(27)),
-          state: S.optional(S.String),
+          dataEncryption: S.optional(DataEncryption),
+          state: S.optional(ServerState),
           fullyQualifiedDomainName: S.optional(S.String),
           databasePort: S.optional(S.Number),
-          storage: S.optional(__S(41)),
-          backup: S.optional(__S(42)),
-          highAvailability: S.optional(__S(30)),
-          network: S.optional(__S(31)),
-          privateEndpointConnections: S.optional(__S(48)),
-          maintenancePolicy: S.optional(__S(32)),
-          maintenanceWindow: S.optional(__S(33)),
-          importSourceProperties: S.optional(__S(34)),
+          storage: S.optional(Storage),
+          backup: S.optional(Backup),
+          highAvailability: S.optional(HighAvailability),
+          network: S.optional(Network),
+          privateEndpointConnections: S.optional(ServerPropertiesPrivateEndpointConnectionsList),
+          maintenancePolicy: S.optional(MaintenancePolicy),
+          maintenanceWindow: S.optional(MaintenanceWindow),
+          importSourceProperties: S.optional(ImportSourceProperties),
         }),
       ).annotate({ identifier: "ServerProperties" });
     case 2:
@@ -4027,14 +5182,14 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 3:
-      return S.Record(S.String, __S(50));
+      return S.Record(S.String, UserAssignedIdentity);
     case 4:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(51)),
+          type: S.optional(ManagedServiceIdentityType),
+          userAssignedIdentities: S.optional(MySQLServerIdentityUserAssignedIdentitiesMap),
         }),
       ).annotate({ identifier: "MySQLServerIdentity" });
     case 5:
@@ -4043,12 +5198,12 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(26)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateServerResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(49)),
-          identity: S.optional(__S(52)),
-          sku: S.optional(__S(39)),
+          properties: S.optional(ServerProperties),
+          identity: S.optional(MySQLServerIdentity),
+          sku: S.optional(MySQLServerSku),
         }),
       ).annotate({ identifier: "CreateServerResponse" });
     case 6:
@@ -4065,7 +5220,7 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(54)),
+          properties: S.optional(DatabaseProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4087,8 +5242,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(54)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DatabaseProperties),
         }),
       ).annotate({
         identifier: "DatabasesCreateOrUpdateResponse",
@@ -4099,7 +5254,7 @@ function __c7(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          administratorName: S.String.pipe(T.Label()),
+          administratorName: DeleteAzureADAdministratorRequestAdministratorName.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4208,7 +5363,7 @@ function __c8(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          publicNetworkAccess: S.optional(S.String),
+          publicNetworkAccess: S.optional(EnableStatusEnum),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4286,13 +5441,15 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "DelegatedSubnetUsage" });
     case 6:
-      return S.Array(__S(69));
+      return S.Array(DelegatedSubnetUsage);
     case 7:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
           subscriptionId: S.optional(S.String),
-          delegatedSubnetsUsage: S.optional(__S(70)),
+          delegatedSubnetsUsage: S.optional(
+            VirtualNetworkSubnetUsageResultDelegatedSubnetsUsageList,
+          ),
         }),
       ).annotate({
         identifier: "VirtualNetworkSubnetUsageResult",
@@ -4336,7 +5493,7 @@ function __c9(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           firewallRuleName: S.String.pipe(T.Label()),
-          properties: __S(74),
+          properties: FirewallRuleProperties,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4354,8 +5511,8 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: __S(74),
+          systemData: S.optional(SystemData),
+          properties: FirewallRuleProperties,
         }),
       ).annotate({
         identifier: "FirewallRulesCreateOrUpdateResponse",
@@ -4366,7 +5523,8 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          advancedThreatProtectionName: S.String.pipe(T.Label()),
+          advancedThreatProtectionName:
+            GetAdvancedThreatProtectionSettingsRequestAdvancedThreatProtectionName.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4384,7 +5542,7 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          administratorName: S.String.pipe(T.Label()),
+          administratorName: GetAzureADAdministratorRequestAdministratorName.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4430,8 +5588,8 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(80)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ServerBackupProperties),
         }),
       ).annotate({ identifier: "GetBackupResponse" });
     case 2:
@@ -4456,8 +5614,8 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(10)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ConfigurationProperties),
         }),
       ).annotate({ identifier: "GetConfigurationResponse" });
     case 4:
@@ -4482,8 +5640,8 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(54)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DatabaseProperties),
         }),
       ).annotate({ identifier: "GetDatabaseResponse" });
     case 6:
@@ -4508,8 +5666,8 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: __S(74),
+          systemData: S.optional(SystemData),
+          properties: FirewallRuleProperties,
         }),
       ).annotate({ identifier: "GetFirewallRuleResponse" });
   }
@@ -4546,7 +5704,7 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "StorageEditionCapability" });
     case 2:
-      return S.Array(__S(89));
+      return S.Array(StorageEditionCapability);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4554,26 +5712,28 @@ function __c11(j: number): any {
           vCores: S.optional(S.Number),
           supportedIops: S.optional(S.Number),
           supportedMemoryPerVCoreMB: S.optional(S.Number),
-          supportedZones: S.optional(__S(43)),
-          supportedHAMode: S.optional(__S(43)),
+          supportedZones: S.optional(SkuCapabilityV2SupportedZonesList),
+          supportedHAMode: S.optional(SkuCapabilityV2SupportedHAModeList),
         }),
       ).annotate({ identifier: "SkuCapabilityV2" });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(SkuCapabilityV2);
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           defaultSku: S.optional(S.String),
           defaultStorageSize: S.optional(S.Number),
-          supportedStorageEditions: S.optional(__S(90)),
-          supportedSkus: S.optional(__S(92)),
+          supportedStorageEditions: S.optional(
+            ServerEditionCapabilityV2SupportedStorageEditionsList,
+          ),
+          supportedSkus: S.optional(ServerEditionCapabilityV2SupportedSkusList),
         }),
       ).annotate({
         identifier: "ServerEditionCapabilityV2",
       });
     case 6:
-      return S.Array(__S(93));
+      return S.Array(ServerEditionCapabilityV2);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -4587,7 +5747,7 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95));
+      return S.Array(ServerVersionCapabilityV2);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4596,14 +5756,18 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "FeatureProperty" });
     case 2:
-      return S.Array(__S(97));
+      return S.Array(FeatureProperty);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          supportedGeoBackupRegions: S.optional(__S(43)),
-          supportedFlexibleServerEditions: S.optional(__S(94)),
-          supportedServerVersions: S.optional(__S(96)),
-          supportedFeatures: S.optional(__S(98)),
+          supportedGeoBackupRegions: S.optional(
+            CapabilityPropertiesV2SupportedGeoBackupRegionsList,
+          ),
+          supportedFlexibleServerEditions: S.optional(
+            CapabilityPropertiesV2SupportedFlexibleServerEditionsList,
+          ),
+          supportedServerVersions: S.optional(CapabilityPropertiesV2SupportedServerVersionsList),
+          supportedFeatures: S.optional(CapabilityPropertiesV2SupportedFeaturesList),
         }),
       ).annotate({ identifier: "CapabilityPropertiesV2" });
     case 4:
@@ -4612,8 +5776,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(99)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CapabilityPropertiesV2),
         }),
       ).annotate({
         identifier: "GetLocationBasedCapabilitySetResponse",
@@ -4654,7 +5818,7 @@ function __c12(j: number): any {
         identifier: "GetOperationProgressRequest",
       });
     case 7:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(104)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => OperationStatusResult));
   }
 }
 function __c13(j: number): any {
@@ -4669,16 +5833,16 @@ function __c13(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(103)),
-          error: S.optional(__S(19)),
+          operations: S.optional(OperationStatusResultOperationsList),
+          error: S.optional(ErrorDetail),
         }),
       ).annotate({ identifier: "OperationStatusResult" });
     case 1:
-      return S.Array(__S(104));
+      return S.Array(OperationStatusResult);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          objectType: S.String,
+          objectType: ObjectType,
         }),
       ).annotate({
         identifier: "OperationProgressResponseType",
@@ -4693,9 +5857,9 @@ function __c13(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(105)),
-          error: S.optional(__S(19)),
-          properties: S.optional(__S(106)),
+          operations: S.optional(GetOperationProgressResponseOperationsList),
+          error: S.optional(ErrorDetail),
+          properties: S.optional(OperationProgressResponseType),
         }),
       ).annotate({
         identifier: "GetOperationProgressResponse",
@@ -4729,9 +5893,9 @@ function __c13(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(105)),
-          error: S.optional(__S(19)),
-          properties: S.optional(__S(109)),
+          operations: S.optional(GetOperationResultResponseOperationsList),
+          error: S.optional(ErrorDetail),
+          properties: S.optional(GetOperationResultResponsePropertiesMap),
         }),
       ).annotate({
         identifier: "GetOperationResultResponse",
@@ -4780,8 +5944,8 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(43)),
-          requiredZoneNames: S.optional(__S(43)),
+          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
+          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -4792,8 +5956,8 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(113)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateLinkResourceProperties),
         }),
       ).annotate({
         identifier: "GetPrivateLinkResourceResponse",
@@ -4832,7 +5996,7 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          serverKeyType: S.String,
+          serverKeyType: ServerKeyPropertiesServerKeyType,
           uri: S.optional(S.String),
           creationDate: S.optional(S.String),
         }),
@@ -4844,7 +6008,7 @@ function __c14(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           kind: S.optional(S.String),
-          properties: S.optional(__S(117)),
+          properties: S.optional(ServerKeyProperties),
         }),
       ).annotate({ identifier: "GetServerKeyResponse" });
     case 7:
@@ -4874,16 +6038,16 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AdvancedThreatProtectionProperties),
         }),
       ).annotate({ identifier: "AdvancedThreatProtection" });
     case 1:
-      return S.Array(__S(120));
+      return S.Array(AdvancedThreatProtection);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(121)),
+          value: S.optional(AdvancedThreatProtectionListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4912,16 +6076,16 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(5)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AdministratorProperties),
         }),
       ).annotate({ identifier: "AzureADAdministrator" });
     case 5:
-      return S.Array(__S(124));
+      return S.Array(AzureADAdministrator);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(125)),
+          value: S.optional(AdministratorListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdministratorListResult" });
@@ -4947,11 +6111,11 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(81));
+      return S.Array(ServerBackup);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(128)),
+          value: S.optional(ServerBackupListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerBackupListResult" });
@@ -4977,11 +6141,11 @@ function __c16(j: number): any {
         identifier: "ListConfigurationByServerRequest",
       });
     case 3:
-      return S.Array(__S(83));
+      return S.Array(Configuration);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(131)),
+          value: S.optional(ConfigurationListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigurationListResult" });
@@ -5003,11 +6167,11 @@ function __c16(j: number): any {
         identifier: "ListDatabaseByServerRequest",
       });
     case 6:
-      return S.Array(__S(85));
+      return S.Array(Database);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(134)),
+          value: S.optional(DatabaseListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatabaseListResult" });
@@ -5033,11 +6197,11 @@ function __c17(j: number): any {
         identifier: "ListFirewallRuleByServerRequest",
       });
     case 1:
-      return S.Array(__S(87));
+      return S.Array(FirewallRule);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(137)),
+          value: S.optional(FirewallRuleListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FirewallRuleListResult" });
@@ -5067,16 +6231,16 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "SkuCapability" });
     case 5:
-      return S.Array(__S(140));
+      return S.Array(SkuCapability);
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          supportedSkus: S.optional(__S(141)),
+          supportedSkus: S.optional(ServerVersionCapabilitySupportedSkusList),
         }),
       ).annotate({ identifier: "ServerVersionCapability" });
     case 7:
-      return S.Array(__S(142));
+      return S.Array(ServerVersionCapability);
   }
 }
 function __c18(j: number): any {
@@ -5085,27 +6249,29 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          supportedStorageEditions: S.optional(__S(90)),
-          supportedServerVersions: S.optional(__S(143)),
+          supportedStorageEditions: S.optional(ServerEditionCapabilitySupportedStorageEditionsList),
+          supportedServerVersions: S.optional(ServerEditionCapabilitySupportedServerVersionsList),
         }),
       ).annotate({ identifier: "ServerEditionCapability" });
     case 1:
-      return S.Array(__S(144));
+      return S.Array(ServerEditionCapability);
     case 2:
       return S.suspend(() =>
         S.Struct({
           zone: S.optional(S.String),
-          supportedHAMode: S.optional(__S(43)),
-          supportedGeoBackupRegions: S.optional(__S(43)),
-          supportedFlexibleServerEditions: S.optional(__S(145)),
+          supportedHAMode: S.optional(CapabilityPropertiesSupportedHAModeList),
+          supportedGeoBackupRegions: S.optional(CapabilityPropertiesSupportedGeoBackupRegionsList),
+          supportedFlexibleServerEditions: S.optional(
+            CapabilityPropertiesSupportedFlexibleServerEditionsList,
+          ),
         }),
       ).annotate({ identifier: "CapabilityProperties" });
     case 3:
-      return S.Array(__S(146));
+      return S.Array(CapabilityProperties);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(147)),
+          value: S.optional(CapabilitiesListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CapabilitiesListResult" });
@@ -5131,12 +6297,12 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(99)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CapabilityPropertiesV2),
         }),
       ).annotate({ identifier: "Capability" });
     case 7:
-      return S.Array(__S(150));
+      return S.Array(Capability);
   }
 }
 function __c19(j: number): any {
@@ -5144,7 +6310,7 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(151)),
+          value: S.optional(CapabilitySetsListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CapabilitySetsList" });
@@ -5181,16 +6347,16 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(154)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(LogFileProperties),
         }),
       ).annotate({ identifier: "LogFile" });
     case 4:
-      return S.Array(__S(155));
+      return S.Array(LogFile);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(156)),
+          value: S.optional(LogFileListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogFileListResult" });
@@ -5217,8 +6383,8 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(23)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ServerBackupPropertiesV2),
         }),
       ).annotate({ identifier: "ServerBackupV2" });
   }
@@ -5226,11 +6392,11 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(159));
+      return S.Array(ServerBackupV2);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(160)),
+          value: S.optional(ServerBackupV2ListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerBackupV2ListResult" });
@@ -5252,8 +6418,8 @@ function __c20(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          maintenanceType: S.optional(S.String),
-          maintenanceState: S.optional(S.String),
+          maintenanceType: S.optional(MaintenanceType),
+          maintenanceState: S.optional(MaintenanceState),
           maintenanceStartTime: S.optional(S.String),
           maintenanceEndTime: S.optional(S.String),
           maintenanceExecutionStartTime: S.optional(S.String),
@@ -5262,7 +6428,7 @@ function __c20(j: number): any {
           maintenanceAvailableScheduleMaxTime: S.optional(S.String),
           maintenanceTitle: S.optional(S.String),
           maintenanceDescription: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(MaintenanceProvisioningState),
         }),
       ).annotate({ identifier: "MaintenanceProperties" });
     case 4:
@@ -5271,16 +6437,16 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: __S(163),
+          systemData: S.optional(SystemData),
+          properties: MaintenanceProperties,
         }),
       ).annotate({ identifier: "Maintenance" });
     case 5:
-      return S.Array(__S(164));
+      return S.Array(Maintenance);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(165)),
+          value: S.optional(MaintenanceListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MaintenanceListResult" });
@@ -5312,17 +6478,17 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(168)),
-          origin: S.optional(S.String),
-          properties: S.optional(__S(109)),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(Origin),
+          properties: S.optional(OperationPropertiesMap),
         }),
       ).annotate({ identifier: "Operation" });
     case 2:
-      return S.Array(__S(169));
+      return S.Array(Operation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(170)),
+          value: S.optional(OperationListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -5346,7 +6512,7 @@ function __c21(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(48),
+          value: PrivateEndpointConnectionListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -5375,8 +6541,8 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(113)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateLinkResourceProperties),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
   }
@@ -5384,11 +6550,11 @@ function __c21(j: number): any {
 function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(175));
+      return S.Array(PrivateLinkResource);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(176)),
+          value: S.optional(ListPrivateLinkResourceByServerResponseValueList),
         }),
       ).annotate({
         identifier: "ListPrivateLinkResourceByServerResponse",
@@ -5411,11 +6577,11 @@ function __c22(j: number): any {
         identifier: "ListReplicasByServerRequest",
       });
     case 3:
-      return S.Array(__S(53));
+      return S.Array(Server);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(179)),
+          value: S.optional(ServerListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerListResult" });
@@ -5451,7 +6617,7 @@ function __c22(j: number): any {
         ),
       ).annotate({ identifier: "ListServerKeysRequest" });
     case 7:
-      return S.Array(__S(118));
+      return S.Array(ServerKey);
   }
 }
 function __c23(j: number): any {
@@ -5459,7 +6625,7 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(183)),
+          value: S.optional(ServerKeyListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerKeyListResult" });
@@ -5479,8 +6645,8 @@ function __c23(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(36)),
-          privateLinkServiceConnectionState: __S(45),
+          privateEndpoint: S.optional(UserAssignedIdentityInput),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
@@ -5492,7 +6658,7 @@ function __c23(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(186)),
+          properties: S.optional(PrivateEndpointConnectionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5558,7 +6724,7 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          restartWithFailover: S.optional(S.String),
+          restartWithFailover: S.optional(EnableStatusEnum),
           maxFailoverSeconds: S.optional(S.Number),
         }).pipe(
           T.Http({
@@ -5576,7 +6742,7 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          serverKeyType: S.String,
+          serverKeyType: ServerKeyPropertiesInputServerKeyType,
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerKeyPropertiesInput" });
@@ -5587,7 +6753,7 @@ function __c24(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           keyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(192)),
+          properties: S.optional(ServerKeyPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5606,7 +6772,7 @@ function __c24(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           kind: S.optional(S.String),
-          properties: S.optional(__S(117)),
+          properties: S.optional(ServerKeyProperties),
         }),
       ).annotate({
         identifier: "ServerKeysCreateOrUpdateResponse",
@@ -5649,12 +6815,12 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(26)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(ServersMigrationCutoverMigrationResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(49)),
-          identity: S.optional(__S(52)),
-          sku: S.optional(__S(39)),
+          properties: S.optional(ServerProperties),
+          identity: S.optional(MySQLServerIdentity),
+          sku: S.optional(MySQLServerSku),
         }),
       ).annotate({
         identifier: "ServersMigrationCutoverMigrationResponse",
@@ -5673,7 +6839,7 @@ function __c24(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(198)),
+          properties: S.optional(ServersUpgradeRequestProperties),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5720,7 +6886,7 @@ function __c25(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          state: S.String,
+          state: AdvancedThreatProtectionState,
         }),
       ).annotate({
         identifier: "AdvancedThreatProtectionUpdateProperties",
@@ -5731,8 +6897,11 @@ function __c25(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          advancedThreatProtectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(202)),
+          advancedThreatProtectionName:
+            UpdateAdvancedThreatProtectionSettingsRequestAdvancedThreatProtectionName.pipe(
+              T.Label(),
+            ),
+          properties: S.optional(AdvancedThreatProtectionUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5751,7 +6920,7 @@ function __c25(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(8)),
+          properties: S.optional(ConfigurationPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5776,13 +6945,13 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(__S(205)),
+          properties: S.optional(ConfigurationForBatchUpdateProperties),
         }),
       ).annotate({
         identifier: "ConfigurationForBatchUpdate",
       });
     case 7:
-      return S.Array(__S(206));
+      return S.Array(ConfigurationForBatchUpdate);
   }
 }
 function __c26(j: number): any {
@@ -5793,8 +6962,8 @@ function __c26(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          value: S.optional(__S(207)),
-          resetAllToDefault: S.optional(S.String),
+          value: S.optional(UpdateConfigurationBatchRequestValueList),
+          resetAllToDefault: S.optional(ResetAllToDefault),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5821,7 +6990,7 @@ function __c26(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           maintenanceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(209)),
+          properties: S.optional(MaintenancePropertiesForUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5837,8 +7006,8 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: __S(163),
+          systemData: S.optional(SystemData),
+          properties: MaintenanceProperties,
         }),
       ).annotate({
         identifier: "UpdateMaintenanceResponse",
@@ -5847,15 +7016,15 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           administratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          version: S.optional(S.String),
-          storage: S.optional(__S(28)),
-          backup: S.optional(__S(29)),
-          highAvailability: S.optional(__S(30)),
-          maintenancePolicy: S.optional(__S(32)),
-          maintenanceWindow: S.optional(__S(33)),
-          replicationRole: S.optional(S.String),
-          dataEncryption: S.optional(__S(27)),
-          network: S.optional(__S(31)),
+          version: S.optional(ServerVersion),
+          storage: S.optional(StorageInput),
+          backup: S.optional(BackupInput),
+          highAvailability: S.optional(HighAvailability),
+          maintenancePolicy: S.optional(MaintenancePolicy),
+          maintenanceWindow: S.optional(MaintenanceWindow),
+          replicationRole: S.optional(ReplicationRole),
+          dataEncryption: S.optional(DataEncryption),
+          network: S.optional(Network),
         }),
       ).annotate({
         identifier: "ServerPropertiesForUpdateInput",
@@ -5866,10 +7035,10 @@ function __c26(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(38)),
-          sku: S.optional(__S(39)),
-          properties: S.optional(__S(212)),
-          tags: S.optional(__S(26)),
+          identity: S.optional(MySQLServerIdentityInput),
+          sku: S.optional(MySQLServerSku),
+          properties: S.optional(ServerPropertiesForUpdateInput),
+          tags: S.optional(UpdateServerRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5911,7 +7080,7 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(215)),
+          properties: S.optional(ValidateBackupResponseProperties),
         }),
       ).annotate({ identifier: "ValidateBackupResponse" });
     case 1:
@@ -5942,70 +7111,5 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "HighAvailabilityValidationEstimation",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
   }
 }

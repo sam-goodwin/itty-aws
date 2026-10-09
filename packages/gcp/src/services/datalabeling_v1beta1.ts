@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -68,9 +66,18 @@ export interface CancelProjectsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
+const CancelProjectsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CancelProjectsOperationsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
+const GoogleProtobufEmpty = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<GoogleProtobufEmpty>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StringList>;
+
 /** Container of information related to one possible annotation that can be used in a labeling task. For example, an image classification task where images are labeled as `dog` or `cat` must reference an AnnotationSpec for `dog` and an AnnotationSpec for `cat`. */
 export interface GoogleCloudDatalabelingV1beta1AnnotationSpec {
   /** Required. The display name of the AnnotationSpec. Maximum of 64 characters. */
@@ -80,8 +87,18 @@ export interface GoogleCloudDatalabelingV1beta1AnnotationSpec {
   /** Optional. User-provided description of the annotation specification. The description can be up to 10,000 characters long. */
   description?: string;
 }
+const GoogleCloudDatalabelingV1beta1AnnotationSpec = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotationSpec>;
+
 export type GoogleCloudDatalabelingV1beta1AnnotationSpecList =
   Array<GoogleCloudDatalabelingV1beta1AnnotationSpec>;
+const GoogleCloudDatalabelingV1beta1AnnotationSpecList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotationSpecList>;
+
 /** An AnnotationSpecSet is a collection of label definitions. For example, in image classification tasks, you define a set of possible labels for images as an AnnotationSpecSet. An AnnotationSpecSet is immutable upon creation. */
 export interface GoogleCloudDatalabelingV1beta1AnnotationSpecSet {
   /** Output only. The names of any related resources that are blocking changes to the annotation spec set. */
@@ -95,38 +112,70 @@ export interface GoogleCloudDatalabelingV1beta1AnnotationSpecSet {
   /** Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task. */
   annotationSpecs?: GoogleCloudDatalabelingV1beta1AnnotationSpecList;
 }
+const GoogleCloudDatalabelingV1beta1AnnotationSpecSet = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotationSpecSet>;
+
 /** Request message for CreateAnnotationSpecSet. */
 export interface GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest {
   /** Required. Annotation spec set to create. Annotation specs must be included. Only one annotation spec will be accepted for annotation specs with same display_name. */
   annotationSpecSet?: GoogleCloudDatalabelingV1beta1AnnotationSpecSet;
 }
+const GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest>;
+
 export interface CreateProjectsAnnotationSpecSetsRequest {
   /** Required. AnnotationSpecSet resource parent, format: projects/{project_id} */
   parent: string;
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest;
 }
+const CreateProjectsAnnotationSpecSetsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateProjectsAnnotationSpecSetsRequest>;
+
 export type GoogleCloudDatalabelingV1beta1InputConfigDataTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
   | "IMAGE"
   | "VIDEO"
   | "TEXT"
   | "GENERAL_DATA";
+const GoogleCloudDatalabelingV1beta1InputConfigDataTypeEnum = /*@__PURE__*/ S.String;
+
 /** Metadata for the text. */
 export interface GoogleCloudDatalabelingV1beta1TextMetadata {
   /** The language of this text, as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Default value is en-US. */
   languageCode?: string;
 }
+const GoogleCloudDatalabelingV1beta1TextMetadata = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1TextMetadata>;
+
 /** Metadata for classification annotations. */
 export interface GoogleCloudDatalabelingV1beta1ClassificationMetadata {
   /** Whether the classification task is multi-label or not. */
   isMultiLabel?: boolean;
 }
+const GoogleCloudDatalabelingV1beta1ClassificationMetadata = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ClassificationMetadata>;
+
 /** The BigQuery location for input data. If used in an EvaluationJob, this is where the service saves the prediction input and output sampled from the model version. */
 export interface GoogleCloudDatalabelingV1beta1BigQuerySource {
   /** Required. BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema). */
   inputUri?: string;
 }
+const GoogleCloudDatalabelingV1beta1BigQuerySource = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1BigQuerySource>;
+
 /** Source of the Cloud Storage file to be imported. */
 export interface GoogleCloudDatalabelingV1beta1GcsSource {
   /** Required. The input URI of source file. This must be a Cloud Storage path (`gs://...`). */
@@ -134,6 +183,11 @@ export interface GoogleCloudDatalabelingV1beta1GcsSource {
   /** Required. The format of the source file. Only "text/csv" is supported. */
   mimeType?: string;
 }
+const GoogleCloudDatalabelingV1beta1GcsSource = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1GcsSource>;
+
 export type GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeEnum =
   | "ANNOTATION_TYPE_UNSPECIFIED"
   | "IMAGE_CLASSIFICATION_ANNOTATION"
@@ -149,6 +203,8 @@ export type GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeEnum =
   | "TEXT_CLASSIFICATION_ANNOTATION"
   | "TEXT_ENTITY_EXTRACTION_ANNOTATION"
   | "GENERAL_CLASSIFICATION_ANNOTATION";
+const GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeEnum = /*@__PURE__*/ S.String;
+
 /** The configuration of input data, including data type, location, etc. */
 export interface GoogleCloudDatalabelingV1beta1InputConfig {
   /** Required. Data type must be specifed when user tries to import data. */
@@ -164,8 +220,18 @@ export interface GoogleCloudDatalabelingV1beta1InputConfig {
   /** Optional. The type of annotation to be performed on this data. You must specify this field if you are using this InputConfig in an EvaluationJob. */
   annotationType?: GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeEnum | (string & {});
 }
+const GoogleCloudDatalabelingV1beta1InputConfig = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1InputConfig>;
+
 export type GoogleCloudDatalabelingV1beta1InputConfigList =
   Array<GoogleCloudDatalabelingV1beta1InputConfig>;
+const GoogleCloudDatalabelingV1beta1InputConfigList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1InputConfigList>;
+
 /** Dataset is the resource to hold your data. You can request multiple labeling tasks for a dataset while each one will generate an AnnotatedDataset. */
 export interface GoogleCloudDatalabelingV1beta1Dataset {
   /** Required. The display name of the dataset. Maximum of 64 characters. */
@@ -185,19 +251,39 @@ export interface GoogleCloudDatalabelingV1beta1Dataset {
   /** Output only. The names of any related resources that are blocking changes to the dataset. */
   blockingResources?: StringList;
 }
+const GoogleCloudDatalabelingV1beta1Dataset = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1Dataset>;
+
 /** Request message for CreateDataset. */
 export interface GoogleCloudDatalabelingV1beta1CreateDatasetRequest {
   /** Required. The dataset to be created. */
   dataset?: GoogleCloudDatalabelingV1beta1Dataset;
 }
+const GoogleCloudDatalabelingV1beta1CreateDatasetRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1CreateDatasetRequest>;
+
 export interface CreateProjectsDatasetsRequest {
   /** Required. Dataset resource parent, format: projects/{project_id} */
   parent: string;
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1CreateDatasetRequest;
 }
+const CreateProjectsDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateProjectsDatasetsRequest>;
+
 /** Metadata describing the feedback from the operator. */
 export interface GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata {}
+const GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata>;
+
 /** Metadata describing the feedback from the labeling task requester. */
 export type GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata =
   GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata;
@@ -214,14 +300,29 @@ export interface GoogleCloudDatalabelingV1beta1FeedbackMessage {
   /** String content of the feedback. Maximum of 10000 characters. */
   body?: string;
 }
+const GoogleCloudDatalabelingV1beta1FeedbackMessage = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1FeedbackMessage>;
+
 export interface CreateProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest {
   /** Required. FeedbackMessage resource parent, format: projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}. */
   parent: string;
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1FeedbackMessage;
 }
+const CreateProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest =
+  /*@__PURE__*/ __L.at(
+    __c2,
+    3,
+  ) as any as S.Schema<CreateProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -231,6 +332,8 @@ export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
+const GoogleRpcStatus = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GoogleRpcStatus>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -244,21 +347,40 @@ export interface GoogleLongrunningOperation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
+const GoogleLongrunningOperation = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GoogleLongrunningOperation>;
+
 export type GoogleCloudDatalabelingV1beta1EvaluationJobStateEnum =
   | "STATE_UNSPECIFIED"
   | "SCHEDULED"
   | "RUNNING"
   | "PAUSED"
   | "STOPPED";
+const GoogleCloudDatalabelingV1beta1EvaluationJobStateEnum = /*@__PURE__*/ S.String;
+
 export type GoogleRpcStatusList = Array<GoogleRpcStatus>;
+const GoogleRpcStatusList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GoogleRpcStatusList>;
+
 /** Records a failed evaluation job run. */
 export interface GoogleCloudDatalabelingV1beta1Attempt {
   /** Details of errors that occurred. */
   partialFailures?: GoogleRpcStatusList;
   attemptTime?: string;
 }
+const GoogleCloudDatalabelingV1beta1Attempt = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1Attempt>;
+
 export type GoogleCloudDatalabelingV1beta1AttemptList =
   Array<GoogleCloudDatalabelingV1beta1Attempt>;
+const GoogleCloudDatalabelingV1beta1AttemptList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1AttemptList>;
+
 /** Configuration for how human labeling task should be done. */
 export interface GoogleCloudDatalabelingV1beta1HumanAnnotationConfig {
   /** Optional. The Language of this question, as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Default value is en-US. Only need to set this when task is language related. For example, French text classification. */
@@ -280,7 +402,14 @@ export interface GoogleCloudDatalabelingV1beta1HumanAnnotationConfig {
   /** Optional. A human-readable label used to logically group labeling tasks. This string must match the regular expression `[a-zA-Z\\d_-]{0,128}`. */
   labelGroup?: string;
 }
+const GoogleCloudDatalabelingV1beta1HumanAnnotationConfig = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1HumanAnnotationConfig>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<StringMap>;
+
 /** Provides details for how an evaluation job sends email alerts based on the results of a run. */
 export interface GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig {
   /** Required. A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email. */
@@ -288,6 +417,11 @@ export interface GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig {
   /** Required. An email address to send alerts to. */
   email?: string;
 }
+const GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig>;
+
 /** Config for image bounding poly (and bounding box) human labeling task. */
 export interface GoogleCloudDatalabelingV1beta1BoundingPolyConfig {
   /** Required. Annotation spec set resource name. */
@@ -295,11 +429,21 @@ export interface GoogleCloudDatalabelingV1beta1BoundingPolyConfig {
   /** Optional. Instruction message showed on contributors UI. */
   instructionMessage?: string;
 }
+const GoogleCloudDatalabelingV1beta1BoundingPolyConfig = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1BoundingPolyConfig>;
+
 /** Config for setting up sentiments. */
 export interface GoogleCloudDatalabelingV1beta1SentimentConfig {
   /** If set to true, contributors will have the option to select sentiment of the label they selected, to mark it as negative or positive label. Default is false. */
   enableLabelSentimentSelection?: boolean;
 }
+const GoogleCloudDatalabelingV1beta1SentimentConfig = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1SentimentConfig>;
+
 /** Config for text classification human labeling task. */
 export interface GoogleCloudDatalabelingV1beta1TextClassificationConfig {
   /** Optional. Configs for sentiment selection. We deprecate sentiment analysis in data labeling side as it is incompatible with uCAIP. */
@@ -309,11 +453,19 @@ export interface GoogleCloudDatalabelingV1beta1TextClassificationConfig {
   /** Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one text segment. */
   allowMultiLabel?: boolean;
 }
+const GoogleCloudDatalabelingV1beta1TextClassificationConfig = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1TextClassificationConfig>;
+
 export type GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeEnum =
   | "STRING_AGGREGATION_TYPE_UNSPECIFIED"
   | "MAJORITY_VOTE"
   | "UNANIMOUS_VOTE"
   | "NO_AGGREGATION";
+const GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeEnum =
+  /*@__PURE__*/ S.String;
+
 /** Config for image classification human labeling task. */
 export interface GoogleCloudDatalabelingV1beta1ImageClassificationConfig {
   /** Required. Annotation spec set resource name. */
@@ -325,16 +477,31 @@ export interface GoogleCloudDatalabelingV1beta1ImageClassificationConfig {
     | GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeEnum
     | (string & {});
 }
+const GoogleCloudDatalabelingV1beta1ImageClassificationConfig = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ImageClassificationConfig>;
+
 /** Options regarding evaluation between bounding boxes. */
 export interface GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions {
   /** Minimum [intersection-over-union (IOU)](/vision/automl/object-detection/docs/evaluate#intersection-over-union) required for 2 bounding boxes to be considered a match. This must be a number between 0 and 1. */
   iouThreshold?: number;
 }
+const GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions>;
+
 /** Configuration details used for calculating evaluation metrics and creating an Evaluation. */
 export interface GoogleCloudDatalabelingV1beta1EvaluationConfig {
   /** Only specify this field if the related model performs image object detection (`IMAGE_BOUNDING_BOX_ANNOTATION`). Describes how to evaluate bounding boxes. */
   boundingBoxEvaluationOptions?: GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions;
 }
+const GoogleCloudDatalabelingV1beta1EvaluationConfig = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1EvaluationConfig>;
+
 /** Configures specific details of how a continuous evaluation job works. Provide this configuration when you create an EvaluationJob. */
 export interface GoogleCloudDatalabelingV1beta1EvaluationJobConfig {
   /** Optional. Details for human annotation of your data. If you set labelMissingGroundTruth to `true` for this evaluation job, then you must specify this field. If you plan to provide your own ground truth labels, then omit this field. Note that you must create an Instruction resource before you can specify this field. Provide the name of the instruction resource in the `instruction` field within this configuration. */
@@ -358,6 +525,11 @@ export interface GoogleCloudDatalabelingV1beta1EvaluationJobConfig {
   /** Required. Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration. */
   evaluationConfig?: GoogleCloudDatalabelingV1beta1EvaluationConfig;
 }
+const GoogleCloudDatalabelingV1beta1EvaluationJobConfig = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1EvaluationJobConfig>;
+
 /** Defines an evaluation job that runs periodically to generate Evaluations. [Creating an evaluation job](/ml-engine/docs/continuous-evaluation/create-job) is the starting point for using continuous evaluation. */
 export interface GoogleCloudDatalabelingV1beta1EvaluationJob {
   /** Required. Description of the job. The description can be up to 25,000 characters long. */
@@ -381,33 +553,58 @@ export interface GoogleCloudDatalabelingV1beta1EvaluationJob {
   /** Output only. Timestamp of when this evaluation job was created. */
   createTime?: string;
 }
+const GoogleCloudDatalabelingV1beta1EvaluationJob = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1EvaluationJob>;
+
 /** Request message for CreateEvaluationJob. */
 export interface GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest {
   /** Required. The evaluation job to create. */
   job?: GoogleCloudDatalabelingV1beta1EvaluationJob;
 }
+const GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest>;
+
 export interface CreateProjectsEvaluationJobsRequest {
   /** Required. Evaluation job resource parent. Format: "projects/{project_id}" */
   parent: string;
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest;
 }
+const CreateProjectsEvaluationJobsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreateProjectsEvaluationJobsRequest>;
+
 /** Deprecated: this instruction format is not supported any more. Instruction from a CSV file. */
 export interface GoogleCloudDatalabelingV1beta1CsvInstruction {
   /** CSV file for the instruction. Only gcs path is allowed. */
   gcsFileUri?: string;
 }
+const GoogleCloudDatalabelingV1beta1CsvInstruction = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1CsvInstruction>;
+
 export type GoogleCloudDatalabelingV1beta1InstructionDataTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
   | "IMAGE"
   | "VIDEO"
   | "TEXT"
   | "GENERAL_DATA";
+const GoogleCloudDatalabelingV1beta1InstructionDataTypeEnum = /*@__PURE__*/ S.String;
+
 /** Instruction from a PDF file. */
 export interface GoogleCloudDatalabelingV1beta1PdfInstruction {
   /** PDF file for the instruction. Only gcs path is allowed. */
   gcsFileUri?: string;
 }
+const GoogleCloudDatalabelingV1beta1PdfInstruction =
+  GoogleCloudDatalabelingV1beta1CsvInstruction as any as S.Schema<GoogleCloudDatalabelingV1beta1PdfInstruction>;
+
 /** Instruction of how to perform the labeling task for human operators. Currently only PDF instruction is supported. */
 export interface GoogleCloudDatalabelingV1beta1Instruction {
   /** Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data. */
@@ -429,49 +626,105 @@ export interface GoogleCloudDatalabelingV1beta1Instruction {
   /** Output only. Last update time of instruction. */
   updateTime?: string;
 }
+const GoogleCloudDatalabelingV1beta1Instruction = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1Instruction>;
+
 /** Request message for CreateInstruction. */
 export interface GoogleCloudDatalabelingV1beta1CreateInstructionRequest {
   /** Required. Instruction of how to perform the labeling task. */
   instruction?: GoogleCloudDatalabelingV1beta1Instruction;
 }
+const GoogleCloudDatalabelingV1beta1CreateInstructionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1CreateInstructionRequest>;
+
 export interface CreateProjectsInstructionsRequest {
   /** Required. Instruction resource parent, format: projects/{project_id} */
   parent: string;
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1CreateInstructionRequest;
 }
+const CreateProjectsInstructionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateProjectsInstructionsRequest>;
+
 export interface DeleteProjectsAnnotationSpecSetsRequest {
   /** Required. AnnotationSpec resource name, format: `projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}`. */
   name: string;
 }
+const DeleteProjectsAnnotationSpecSetsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<DeleteProjectsAnnotationSpecSetsRequest>;
+
 export interface DeleteProjectsDatasetsRequest {
   /** Required. Dataset resource name, format: projects/{project_id}/datasets/{dataset_id} */
   name: string;
 }
+const DeleteProjectsDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DeleteProjectsDatasetsRequest>;
+
 export interface DeleteProjectsDatasetsAnnotatedDatasetsRequest {
   /** Required. Name of the annotated dataset to delete, format: projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/ {annotated_dataset_id} */
   name: string;
 }
+const DeleteProjectsDatasetsAnnotatedDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DeleteProjectsDatasetsAnnotatedDatasetsRequest>;
+
 export interface DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest {
   /** Required. Name of the FeedbackThread that is going to be deleted. Format: 'projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}'. */
   name: string;
 }
+const DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest>;
+
 export interface DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest {
   /** Required. Name of the FeedbackMessage that is going to be deleted. Format: 'projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessages/{feedback_message_id}'. */
   name: string;
 }
+const DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest =
+  /*@__PURE__*/ __L.at(
+    __c6,
+    0,
+  ) as any as S.Schema<DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest>;
+
 export interface DeleteProjectsEvaluationJobsRequest {
   /** Required. Name of the evaluation job that is going to be deleted. Format: "projects/{project_id}/evaluationJobs/{evaluation_job_id}" */
   name: string;
 }
+const DeleteProjectsEvaluationJobsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<DeleteProjectsEvaluationJobsRequest>;
+
 export interface DeleteProjectsInstructionsRequest {
   /** Required. Instruction resource name, format: projects/{project_id}/instructions/{instruction_id} */
   name: string;
 }
+const DeleteProjectsInstructionsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DeleteProjectsInstructionsRequest>;
+
 export interface DeleteProjectsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
+const DeleteProjectsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DeleteProjectsOperationsRequest>;
+
 /** Export destination of the data.Only gcs path is allowed in output_uri. */
 export interface GoogleCloudDatalabelingV1beta1GcsDestination {
   /** Required. The format of the gcs destination. Only "text/csv" and "application/json" are supported. */
@@ -479,11 +732,21 @@ export interface GoogleCloudDatalabelingV1beta1GcsDestination {
   /** Required. The output uri of destination file. */
   outputUri?: string;
 }
+const GoogleCloudDatalabelingV1beta1GcsDestination = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1GcsDestination>;
+
 /** Export folder destination of the data. */
 export interface GoogleCloudDatalabelingV1beta1GcsFolderDestination {
   /** Required. Cloud Storage directory to export data to. */
   outputFolderUri?: string;
 }
+const GoogleCloudDatalabelingV1beta1GcsFolderDestination = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1GcsFolderDestination>;
+
 /** The configuration of output data. */
 export interface GoogleCloudDatalabelingV1beta1OutputConfig {
   /** Output to a file in Cloud Storage. Should be used for labeling output other than image segmentation. */
@@ -491,6 +754,11 @@ export interface GoogleCloudDatalabelingV1beta1OutputConfig {
   /** Output to a folder in Cloud Storage. Should be used for image segmentation or document de-identification labeling outputs. */
   gcsFolderDestination?: GoogleCloudDatalabelingV1beta1GcsFolderDestination;
 }
+const GoogleCloudDatalabelingV1beta1OutputConfig = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1OutputConfig>;
+
 /** Request message for ExportData API. */
 export interface GoogleCloudDatalabelingV1beta1ExportDataRequest {
   /** Email of the user who started the export task and should be notified by email. If empty no notification will be sent. */
@@ -502,24 +770,49 @@ export interface GoogleCloudDatalabelingV1beta1ExportDataRequest {
   /** Required. Specify the output destination. */
   outputConfig?: GoogleCloudDatalabelingV1beta1OutputConfig;
 }
+const GoogleCloudDatalabelingV1beta1ExportDataRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ExportDataRequest>;
+
 export interface ExportDataProjectsDatasetsRequest {
   /** Required. Dataset resource name, format: projects/{project_id}/datasets/{dataset_id} */
   name: string;
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1ExportDataRequest;
 }
+const ExportDataProjectsDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ExportDataProjectsDatasetsRequest>;
+
 export interface GetProjectsAnnotationSpecSetsRequest {
   /** Required. AnnotationSpecSet resource name, format: projects/{project_id}/annotationSpecSets/{annotation_spec_set_id} */
   name: string;
 }
+const GetProjectsAnnotationSpecSetsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GetProjectsAnnotationSpecSetsRequest>;
+
 export interface GetProjectsDatasetsRequest {
   /** Required. Dataset resource name, format: projects/{project_id}/datasets/{dataset_id} */
   name: string;
 }
+const GetProjectsDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<GetProjectsDatasetsRequest>;
+
 export interface GetProjectsDatasetsAnnotatedDatasetsRequest {
   /** Required. Name of the annotated dataset to get, format: projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/ {annotated_dataset_id} */
   name: string;
 }
+const GetProjectsDatasetsAnnotatedDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetProjectsDatasetsAnnotatedDatasetsRequest>;
+
 /** Config for image polyline human labeling task. */
 export type GoogleCloudDatalabelingV1beta1PolylineConfig =
   GoogleCloudDatalabelingV1beta1BoundingPolyConfig;
@@ -532,11 +825,21 @@ export interface GoogleCloudDatalabelingV1beta1EventConfig {
   /** Required. The list of annotation spec set resource name. Similar to video classification, we support selecting event from multiple AnnotationSpecSet at the same time. */
   annotationSpecSets?: StringList;
 }
+const GoogleCloudDatalabelingV1beta1EventConfig = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1EventConfig>;
+
 /** Config for text entity extraction human labeling task. */
 export interface GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig {
   /** Required. Annotation spec set resource name. */
   annotationSpecSet?: string;
 }
+const GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig>;
+
 /** Annotation spec set with the setting of allowing multi labels or not. */
 export interface GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig {
   /** Required. Annotation spec set resource name. */
@@ -544,8 +847,18 @@ export interface GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig {
   /** Optional. If allow_multi_label is true, contributors are able to choose multiple labels from one annotation spec set. */
   allowMultiLabel?: boolean;
 }
+const GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig>;
+
 export type GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfigList =
   Array<GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig>;
+const GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfigList = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfigList>;
+
 /** Config for video classification human labeling task. Currently two types of video classification are supported: 1. Assign labels on the entire video. 2. Split the video into multiple video clips based on camera shot, and assign labels on each video clip. */
 export interface GoogleCloudDatalabelingV1beta1VideoClassificationConfig {
   /** Optional. Option to apply shot detection on the video. */
@@ -553,6 +866,11 @@ export interface GoogleCloudDatalabelingV1beta1VideoClassificationConfig {
   /** Required. The list of annotation spec set configs. Since watching a video clip takes much longer time than an image, we support label with multiple AnnotationSpecSet at the same time. Labels in each AnnotationSpecSet will be shown in a group to contributors. Contributors can select one or more (depending on whether to allow multi label) from each group. */
   annotationSpecSetConfigs?: GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfigList;
 }
+const GoogleCloudDatalabelingV1beta1VideoClassificationConfig = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1VideoClassificationConfig>;
+
 /** Config for video object tracking human labeling task. */
 export interface GoogleCloudDatalabelingV1beta1ObjectTrackingConfig {
   /** Required. Annotation spec set resource name. */
@@ -562,6 +880,11 @@ export interface GoogleCloudDatalabelingV1beta1ObjectTrackingConfig {
   /** The overlap length between different video clips. Users can configure is field in seconds, if not set, default value is 0.3s. */
   overlapLength?: number;
 }
+const GoogleCloudDatalabelingV1beta1ObjectTrackingConfig = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ObjectTrackingConfig>;
+
 /** Config for image segmentation */
 export interface GoogleCloudDatalabelingV1beta1SegmentationConfig {
   /** Required. Annotation spec set resource name. format: projects/{project_id}/annotationSpecSets/{annotation_spec_set_id} */
@@ -569,6 +892,9 @@ export interface GoogleCloudDatalabelingV1beta1SegmentationConfig {
   /** Instruction message showed on labelers UI. */
   instructionMessage?: string;
 }
+const GoogleCloudDatalabelingV1beta1SegmentationConfig =
+  GoogleCloudDatalabelingV1beta1BoundingPolyConfig as any as S.Schema<GoogleCloudDatalabelingV1beta1SegmentationConfig>;
+
 /** Config for video object detection human labeling task. Object detection will be conducted on the images extracted from the video, and those objects will be labeled with bounding boxes. User need to specify the number of images to be extracted per second as the extraction frame rate. */
 export interface GoogleCloudDatalabelingV1beta1ObjectDetectionConfig {
   /** Required. Number of frames per second to be extracted from the video. */
@@ -576,6 +902,11 @@ export interface GoogleCloudDatalabelingV1beta1ObjectDetectionConfig {
   /** Required. Annotation spec set resource name. */
   annotationSpecSet?: string;
 }
+const GoogleCloudDatalabelingV1beta1ObjectDetectionConfig = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ObjectDetectionConfig>;
+
 /** Metadata on AnnotatedDataset. */
 export interface GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata {
   /** Configuration for image polyline task. */
@@ -601,14 +932,26 @@ export interface GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata {
   /** Configuration for video object detection task. */
   objectDetectionConfig?: GoogleCloudDatalabelingV1beta1ObjectDetectionConfig;
 }
+const GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata>;
+
 export type GoogleCloudDatalabelingV1beta1AnnotatedDatasetAnnotationSourceEnum =
   | "ANNOTATION_SOURCE_UNSPECIFIED"
   | "OPERATOR";
+const GoogleCloudDatalabelingV1beta1AnnotatedDatasetAnnotationSourceEnum = /*@__PURE__*/ S.String;
+
 /** Statistics about annotation specs. */
 export interface GoogleCloudDatalabelingV1beta1LabelStats {
   /** Map of each annotation spec's example count. Key is the annotation spec name and value is the number of examples for that annotation spec. If the annotated dataset does not have annotation spec, the map will return a pair where the key is empty string and value is the total number of annotations. */
   exampleCount?: StringMap;
 }
+const GoogleCloudDatalabelingV1beta1LabelStats = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1LabelStats>;
+
 export type GoogleCloudDatalabelingV1beta1AnnotatedDatasetAnnotationTypeEnum =
   | "ANNOTATION_TYPE_UNSPECIFIED"
   | "IMAGE_CLASSIFICATION_ANNOTATION"
@@ -624,6 +967,8 @@ export type GoogleCloudDatalabelingV1beta1AnnotatedDatasetAnnotationTypeEnum =
   | "TEXT_CLASSIFICATION_ANNOTATION"
   | "TEXT_ENTITY_EXTRACTION_ANNOTATION"
   | "GENERAL_CLASSIFICATION_ANNOTATION";
+const GoogleCloudDatalabelingV1beta1AnnotatedDatasetAnnotationTypeEnum = /*@__PURE__*/ S.String;
+
 /** AnnotatedDataset is a set holding annotations for data in a Dataset. Each labeling task will generate an AnnotatedDataset under the Dataset that the task is requested for. */
 export interface GoogleCloudDatalabelingV1beta1AnnotatedDataset {
   /** Output only. Number of examples in the annotated dataset. */
@@ -649,10 +994,20 @@ export interface GoogleCloudDatalabelingV1beta1AnnotatedDataset {
   /** Output only. Time the AnnotatedDataset was created. */
   createTime?: string;
 }
+const GoogleCloudDatalabelingV1beta1AnnotatedDataset = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotatedDataset>;
+
 export interface GetProjectsDatasetsAnnotatedDatasetsDataItemsRequest {
   /** Required. The name of the data item to get, format: projects/{project_id}/datasets/{dataset_id}/dataItems/{data_item_id} */
   name: string;
 }
+const GetProjectsDatasetsAnnotatedDatasetsDataItemsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<GetProjectsDatasetsAnnotatedDatasetsDataItemsRequest>;
+
 /** Container of information of a video thumbnail. */
 export interface GoogleCloudDatalabelingV1beta1VideoThumbnail {
   /** A byte string of the video frame. */
@@ -660,8 +1015,18 @@ export interface GoogleCloudDatalabelingV1beta1VideoThumbnail {
   /** Time offset relative to the beginning of the video, corresponding to the video frame where the thumbnail has been extracted from. */
   timeOffset?: string;
 }
+const GoogleCloudDatalabelingV1beta1VideoThumbnail = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1VideoThumbnail>;
+
 export type GoogleCloudDatalabelingV1beta1VideoThumbnailList =
   Array<GoogleCloudDatalabelingV1beta1VideoThumbnail>;
+const GoogleCloudDatalabelingV1beta1VideoThumbnailList = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1VideoThumbnailList>;
+
 /** Container of information of a video. */
 export interface GoogleCloudDatalabelingV1beta1VideoPayload {
   /** Video format. */
@@ -675,11 +1040,21 @@ export interface GoogleCloudDatalabelingV1beta1VideoPayload {
   /** FPS of the video. */
   frameRate?: number;
 }
+const GoogleCloudDatalabelingV1beta1VideoPayload = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1VideoPayload>;
+
 /** Container of information about a piece of text. */
 export interface GoogleCloudDatalabelingV1beta1TextPayload {
   /** Text content. */
   textContent?: string;
 }
+const GoogleCloudDatalabelingV1beta1TextPayload = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1TextPayload>;
+
 /** Container of information about an image. */
 export interface GoogleCloudDatalabelingV1beta1ImagePayload {
   /** Image uri from the user bucket. */
@@ -691,6 +1066,11 @@ export interface GoogleCloudDatalabelingV1beta1ImagePayload {
   /** Signed uri of the image file in the service bucket. */
   signedUri?: string;
 }
+const GoogleCloudDatalabelingV1beta1ImagePayload = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ImagePayload>;
+
 /** DataItem is a piece of data, without annotation. For example, an image. */
 export interface GoogleCloudDatalabelingV1beta1DataItem {
   /** Output only. Name of the data item, in format of: projects/{project_id}/datasets/{dataset_id}/dataItems/{data_item_id} */
@@ -702,19 +1082,33 @@ export interface GoogleCloudDatalabelingV1beta1DataItem {
   /** The image payload, a container of the image bytes/uri. */
   imagePayload?: GoogleCloudDatalabelingV1beta1ImagePayload;
 }
+const GoogleCloudDatalabelingV1beta1DataItem = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1DataItem>;
+
 export interface GetProjectsDatasetsAnnotatedDatasetsExamplesRequest {
   /** Optional. An expression for filtering Examples. Filter by annotation_spec.display_name is supported. Format "annotation_spec.display_name = {display_name}" */
   filter?: string;
   /** Required. Name of example, format: projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/ {annotated_dataset_id}/examples/{example_id} */
   name: string;
 }
+const GetProjectsDatasetsAnnotatedDatasetsExamplesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<GetProjectsDatasetsAnnotatedDatasetsExamplesRequest>;
+
 export type GoogleCloudDatalabelingV1beta1AnnotationAnnotationSourceEnum =
   | "ANNOTATION_SOURCE_UNSPECIFIED"
   | "OPERATOR";
+const GoogleCloudDatalabelingV1beta1AnnotationAnnotationSourceEnum = /*@__PURE__*/ S.String;
+
 export type GoogleCloudDatalabelingV1beta1AnnotationAnnotationSentimentEnum =
   | "ANNOTATION_SENTIMENT_UNSPECIFIED"
   | "NEGATIVE"
   | "POSITIVE";
+const GoogleCloudDatalabelingV1beta1AnnotationAnnotationSentimentEnum = /*@__PURE__*/ S.String;
+
 /** General information useful for labels coming from contributors. */
 export interface GoogleCloudDatalabelingV1beta1OperatorMetadata {
   /** Comments from contributors. */
@@ -726,11 +1120,21 @@ export interface GoogleCloudDatalabelingV1beta1OperatorMetadata {
   /** The total number of contributors that choose this label. */
   labelVotes?: number;
 }
+const GoogleCloudDatalabelingV1beta1OperatorMetadata = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1OperatorMetadata>;
+
 /** Additional information associated with the annotation. */
 export interface GoogleCloudDatalabelingV1beta1AnnotationMetadata {
   /** Metadata related to human labeling. */
   operatorMetadata?: GoogleCloudDatalabelingV1beta1OperatorMetadata;
 }
+const GoogleCloudDatalabelingV1beta1AnnotationMetadata = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotationMetadata>;
+
 /** A vertex represents a 2D point in the image. NOTE: the normalized vertex coordinates are relative to the original image and range from 0 to 1. */
 export interface GoogleCloudDatalabelingV1beta1NormalizedVertex {
   /** Y coordinate. */
@@ -738,13 +1142,28 @@ export interface GoogleCloudDatalabelingV1beta1NormalizedVertex {
   /** X coordinate. */
   x?: number;
 }
+const GoogleCloudDatalabelingV1beta1NormalizedVertex = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1NormalizedVertex>;
+
 export type GoogleCloudDatalabelingV1beta1NormalizedVertexList =
   Array<GoogleCloudDatalabelingV1beta1NormalizedVertex>;
+const GoogleCloudDatalabelingV1beta1NormalizedVertexList = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1NormalizedVertexList>;
+
 /** Normalized polyline. */
 export interface GoogleCloudDatalabelingV1beta1NormalizedPolyline {
   /** The normalized polyline vertices. */
   normalizedVertices?: GoogleCloudDatalabelingV1beta1NormalizedVertexList;
 }
+const GoogleCloudDatalabelingV1beta1NormalizedPolyline = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1NormalizedPolyline>;
+
 /** A vertex represents a 2D point in the image. NOTE: the vertex coordinates are in the same scale as the original image. */
 export interface GoogleCloudDatalabelingV1beta1Vertex {
   /** X coordinate. */
@@ -752,12 +1171,27 @@ export interface GoogleCloudDatalabelingV1beta1Vertex {
   /** Y coordinate. */
   y?: number;
 }
+const GoogleCloudDatalabelingV1beta1Vertex = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1Vertex>;
+
 export type GoogleCloudDatalabelingV1beta1VertexList = Array<GoogleCloudDatalabelingV1beta1Vertex>;
+const GoogleCloudDatalabelingV1beta1VertexList = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1VertexList>;
+
 /** A line with multiple line segments. */
 export interface GoogleCloudDatalabelingV1beta1Polyline {
   /** The polyline vertices. */
   vertices?: GoogleCloudDatalabelingV1beta1VertexList;
 }
+const GoogleCloudDatalabelingV1beta1Polyline = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1Polyline>;
+
 /** A polyline for the image annotation. */
 export interface GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation {
   /** Label of this polyline. */
@@ -765,6 +1199,11 @@ export interface GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation {
   normalizedPolyline?: GoogleCloudDatalabelingV1beta1NormalizedPolyline;
   polyline?: GoogleCloudDatalabelingV1beta1Polyline;
 }
+const GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation>;
+
 /** A time period inside of an example that has a time dimension (e.g. video). */
 export interface GoogleCloudDatalabelingV1beta1TimeSegment {
   /** Start of the time segment (inclusive), represented as the duration since the example start. */
@@ -772,16 +1211,27 @@ export interface GoogleCloudDatalabelingV1beta1TimeSegment {
   /** End of the time segment (exclusive), represented as the duration since the example start. */
   endTimeOffset?: string;
 }
+const GoogleCloudDatalabelingV1beta1TimeSegment = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1TimeSegment>;
+
 /** Normalized bounding polygon. */
 export interface GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly {
   /** The bounding polygon normalized vertices. */
   normalizedVertices?: GoogleCloudDatalabelingV1beta1NormalizedVertexList;
 }
+const GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly =
+  GoogleCloudDatalabelingV1beta1NormalizedPolyline as any as S.Schema<GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly>;
+
 /** A bounding polygon in the image. */
 export interface GoogleCloudDatalabelingV1beta1BoundingPoly {
   /** The bounding polygon vertices. */
   vertices?: GoogleCloudDatalabelingV1beta1VertexList;
 }
+const GoogleCloudDatalabelingV1beta1BoundingPoly =
+  GoogleCloudDatalabelingV1beta1Polyline as any as S.Schema<GoogleCloudDatalabelingV1beta1BoundingPoly>;
+
 /** Video frame level annotation for object detection and tracking. */
 export interface GoogleCloudDatalabelingV1beta1ObjectTrackingFrame {
   /** The time offset of this frame relative to the beginning of the video. */
@@ -789,8 +1239,18 @@ export interface GoogleCloudDatalabelingV1beta1ObjectTrackingFrame {
   normalizedBoundingPoly?: GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly;
   boundingPoly?: GoogleCloudDatalabelingV1beta1BoundingPoly;
 }
+const GoogleCloudDatalabelingV1beta1ObjectTrackingFrame = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ObjectTrackingFrame>;
+
 export type GoogleCloudDatalabelingV1beta1ObjectTrackingFrameList =
   Array<GoogleCloudDatalabelingV1beta1ObjectTrackingFrame>;
+const GoogleCloudDatalabelingV1beta1ObjectTrackingFrameList = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ObjectTrackingFrameList>;
+
 /** Video object tracking annotation. */
 export interface GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation {
   /** The time segment of the video to which object tracking applies. */
@@ -800,16 +1260,29 @@ export interface GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation {
   /** Label of the object tracked in this annotation. */
   annotationSpec?: GoogleCloudDatalabelingV1beta1AnnotationSpec;
 }
+const GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation>;
+
 /** Image classification annotation definition. */
 export interface GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation {
   /** Label of image. */
   annotationSpec?: GoogleCloudDatalabelingV1beta1AnnotationSpec;
 }
+const GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation>;
+
 /** Text classification annotation. */
 export interface GoogleCloudDatalabelingV1beta1TextClassificationAnnotation {
   /** Label of the text. */
   annotationSpec?: GoogleCloudDatalabelingV1beta1AnnotationSpec;
 }
+const GoogleCloudDatalabelingV1beta1TextClassificationAnnotation =
+  GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation as any as S.Schema<GoogleCloudDatalabelingV1beta1TextClassificationAnnotation>;
+
 /** Image bounding poly annotation. It represents a polygon including bounding box in the image. */
 export interface GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation {
   normalizedBoundingPoly?: GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly;
@@ -817,6 +1290,11 @@ export interface GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation {
   /** Label of object in this bounding polygon. */
   annotationSpec?: GoogleCloudDatalabelingV1beta1AnnotationSpec;
 }
+const GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation>;
+
 /** Video classification annotation. */
 export interface GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation {
   /** Label of the segment specified by time_segment. */
@@ -824,6 +1302,11 @@ export interface GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation {
   /** The time segment of the video to which the annotation applies. */
   timeSegment?: GoogleCloudDatalabelingV1beta1TimeSegment;
 }
+const GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation>;
+
 /** Video event annotation. */
 export interface GoogleCloudDatalabelingV1beta1VideoEventAnnotation {
   /** The time segment of the video to which the annotation applies. */
@@ -831,9 +1314,19 @@ export interface GoogleCloudDatalabelingV1beta1VideoEventAnnotation {
   /** Label of the event in this annotation. */
   annotationSpec?: GoogleCloudDatalabelingV1beta1AnnotationSpec;
 }
+const GoogleCloudDatalabelingV1beta1VideoEventAnnotation = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1VideoEventAnnotation>;
+
 export type GoogleCloudDatalabelingV1beta1AnnotationSpecMap = {
   [key: string]: GoogleCloudDatalabelingV1beta1AnnotationSpec | undefined;
 };
+const GoogleCloudDatalabelingV1beta1AnnotationSpecMap = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotationSpecMap>;
+
 /** Image segmentation annotation. */
 export interface GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation {
   /** The mapping between rgb color and annotation spec. The key is the rgb color represented in format of rgb(0, 0, 0). The value is the AnnotationSpec. */
@@ -843,6 +1336,11 @@ export interface GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation {
   /** Image format. */
   mimeType?: string;
 }
+const GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation>;
+
 /** Start and end position in a sequence (e.g. text segment). */
 export interface GoogleCloudDatalabelingV1beta1SequentialSegment {
   /** End position (exclusive). */
@@ -850,6 +1348,11 @@ export interface GoogleCloudDatalabelingV1beta1SequentialSegment {
   /** Start position (inclusive). */
   start?: number;
 }
+const GoogleCloudDatalabelingV1beta1SequentialSegment = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1SequentialSegment>;
+
 /** Text entity extraction annotation. */
 export interface GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation {
   /** Label of the text entities. */
@@ -857,6 +1360,11 @@ export interface GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation {
   /** Position of the entity. */
   sequentialSegment?: GoogleCloudDatalabelingV1beta1SequentialSegment;
 }
+const GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation>;
+
 /** Annotation value for an example. */
 export interface GoogleCloudDatalabelingV1beta1AnnotationValue {
   /** Annotation value for image polyline cases. Polyline here is different from BoundingPoly. It is formed by line segments connected to each other but not closed form(Bounding Poly). The line segments can cross each other. */
@@ -878,6 +1386,11 @@ export interface GoogleCloudDatalabelingV1beta1AnnotationValue {
   /** Annotation value for text entity extraction case. */
   textEntityExtractionAnnotation?: GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation;
 }
+const GoogleCloudDatalabelingV1beta1AnnotationValue = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotationValue>;
+
 /** Annotation for Example. Each example may have one or more annotations. For example in image classification problem, each image might have one or more labels. We call labels binded with this image an Annotation. */
 export interface GoogleCloudDatalabelingV1beta1Annotation {
   /** Output only. The source of the annotation. */
@@ -891,8 +1404,18 @@ export interface GoogleCloudDatalabelingV1beta1Annotation {
   /** Output only. This is the actual annotation value, e.g classification, bounding box values are stored here. */
   annotationValue?: GoogleCloudDatalabelingV1beta1AnnotationValue;
 }
+const GoogleCloudDatalabelingV1beta1Annotation = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1Annotation>;
+
 export type GoogleCloudDatalabelingV1beta1AnnotationList =
   Array<GoogleCloudDatalabelingV1beta1Annotation>;
+const GoogleCloudDatalabelingV1beta1AnnotationList = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotationList>;
+
 /** An Example is a piece of data and its annotation. For example, an image with label "house". */
 export interface GoogleCloudDatalabelingV1beta1Example {
   /** The video payload, a container of the video uri. */
@@ -906,14 +1429,26 @@ export interface GoogleCloudDatalabelingV1beta1Example {
   /** The image payload, a container of the image bytes/uri. */
   imagePayload?: GoogleCloudDatalabelingV1beta1ImagePayload;
 }
+const GoogleCloudDatalabelingV1beta1Example = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1Example>;
+
 export interface GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest {
   /** Required. Name of the feedback. Format: 'projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}'. */
   name: string;
 }
+const GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest>;
+
 export type GoogleCloudDatalabelingV1beta1FeedbackThreadMetadataStatusEnum =
   | "FEEDBACK_THREAD_STATUS_UNSPECIFIED"
   | "NEW"
   | "REPLIED";
+const GoogleCloudDatalabelingV1beta1FeedbackThreadMetadataStatusEnum = /*@__PURE__*/ S.String;
+
 export interface GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata {
   /** When the thread is created */
   createTime?: string;
@@ -923,6 +1458,11 @@ export interface GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata {
   /** When the thread is last updated. */
   lastUpdateTime?: string;
 }
+const GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata>;
+
 /** A feedback thread of a certain labeling task on a certain annotated dataset. */
 export interface GoogleCloudDatalabelingV1beta1FeedbackThread {
   /** Name of the feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}' */
@@ -930,18 +1470,39 @@ export interface GoogleCloudDatalabelingV1beta1FeedbackThread {
   /** Metadata regarding the feedback thread. */
   feedbackThreadMetadata?: GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata;
 }
+const GoogleCloudDatalabelingV1beta1FeedbackThread = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1FeedbackThread>;
+
 export interface GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest {
   /** Required. Name of the feedback. Format: 'projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessages/{feedback_message_id}'. */
   name: string;
 }
+const GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest =
+  /*@__PURE__*/ __L.at(
+    __c13,
+    2,
+  ) as any as S.Schema<GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest>;
+
 export interface GetProjectsDatasetsDataItemsRequest {
   /** Required. The name of the data item to get, format: projects/{project_id}/datasets/{dataset_id}/dataItems/{data_item_id} */
   name: string;
 }
+const GetProjectsDatasetsDataItemsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<GetProjectsDatasetsDataItemsRequest>;
+
 export interface GetProjectsDatasetsEvaluationsRequest {
   /** Required. Name of the evaluation. Format: "projects/{project_id}/datasets/ {dataset_id}/evaluations/{evaluation_id}' */
   name: string;
 }
+const GetProjectsDatasetsEvaluationsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<GetProjectsDatasetsEvaluationsRequest>;
+
 export type GoogleCloudDatalabelingV1beta1EvaluationAnnotationTypeEnum =
   | "ANNOTATION_TYPE_UNSPECIFIED"
   | "IMAGE_CLASSIFICATION_ANNOTATION"
@@ -957,14 +1518,26 @@ export type GoogleCloudDatalabelingV1beta1EvaluationAnnotationTypeEnum =
   | "TEXT_CLASSIFICATION_ANNOTATION"
   | "TEXT_ENTITY_EXTRACTION_ANNOTATION"
   | "GENERAL_CLASSIFICATION_ANNOTATION";
+const GoogleCloudDatalabelingV1beta1EvaluationAnnotationTypeEnum = /*@__PURE__*/ S.String;
+
 export interface GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry {
   /** Number of items predicted to have this label. (The ground truth label for these items is the `Row.annotationSpec` of this entry's parent.) */
   itemCount?: number;
   /** The annotation spec of a predicted label. */
   annotationSpec?: GoogleCloudDatalabelingV1beta1AnnotationSpec;
 }
+const GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry>;
+
 export type GoogleCloudDatalabelingV1beta1ConfusionMatrixEntryList =
   Array<GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry>;
+const GoogleCloudDatalabelingV1beta1ConfusionMatrixEntryList = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ConfusionMatrixEntryList>;
+
 /** A row in the confusion matrix. Each entry in this row has the same ground truth label. */
 export interface GoogleCloudDatalabelingV1beta1Row {
   /** A list of the confusion matrix entries. One entry for each possible predicted label. */
@@ -972,11 +1545,26 @@ export interface GoogleCloudDatalabelingV1beta1Row {
   /** The annotation spec of the ground truth label for this row. */
   annotationSpec?: GoogleCloudDatalabelingV1beta1AnnotationSpec;
 }
+const GoogleCloudDatalabelingV1beta1Row = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1Row>;
+
 export type GoogleCloudDatalabelingV1beta1RowList = Array<GoogleCloudDatalabelingV1beta1Row>;
+const GoogleCloudDatalabelingV1beta1RowList = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1RowList>;
+
 /** Confusion matrix of the model running the classification. Only applicable when the metrics entry aggregates multiple labels. Not applicable when the entry is for a single label. */
 export interface GoogleCloudDatalabelingV1beta1ConfusionMatrix {
   row?: GoogleCloudDatalabelingV1beta1RowList;
 }
+const GoogleCloudDatalabelingV1beta1ConfusionMatrix = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ConfusionMatrix>;
+
 export interface GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry {
   /** Precision value for entries with label that has highest score. */
   precisionAt1?: number;
@@ -999,8 +1587,18 @@ export interface GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry {
   /** The harmonic mean of recall_at5 and precision_at5. */
   f1ScoreAt5?: number;
 }
+const GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry>;
+
 export type GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntryList =
   Array<GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry>;
+const GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntryList = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntryList>;
+
 export interface GoogleCloudDatalabelingV1beta1PrCurve {
   /** The annotation spec of the label for which the precision-recall curve calculated. If this field is empty, that means the precision-recall curve is an aggregate curve for all labels. */
   annotationSpec?: GoogleCloudDatalabelingV1beta1AnnotationSpec;
@@ -1011,6 +1609,11 @@ export interface GoogleCloudDatalabelingV1beta1PrCurve {
   /** Mean average prcision of this curve. */
   meanAveragePrecision?: number;
 }
+const GoogleCloudDatalabelingV1beta1PrCurve = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1PrCurve>;
+
 /** Metrics calculated for a classification model. */
 export interface GoogleCloudDatalabelingV1beta1ClassificationMetrics {
   /** Confusion matrix of predicted labels vs. ground truth labels. */
@@ -1018,15 +1621,30 @@ export interface GoogleCloudDatalabelingV1beta1ClassificationMetrics {
   /** Precision-recall curve based on ground truth labels, predicted labels, and scores for the predicted labels. */
   prCurve?: GoogleCloudDatalabelingV1beta1PrCurve;
 }
+const GoogleCloudDatalabelingV1beta1ClassificationMetrics = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ClassificationMetrics>;
+
 /** Metrics calculated for an image object detection (bounding box) model. */
 export interface GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics {
   /** Precision-recall curve. */
   prCurve?: GoogleCloudDatalabelingV1beta1PrCurve;
 }
+const GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics>;
+
 export interface GoogleCloudDatalabelingV1beta1EvaluationMetrics {
   classificationMetrics?: GoogleCloudDatalabelingV1beta1ClassificationMetrics;
   objectDetectionMetrics?: GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics;
 }
+const GoogleCloudDatalabelingV1beta1EvaluationMetrics = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1EvaluationMetrics>;
+
 /** Describes an evaluation between a machine learning model's predictions and ground truth labels. Created when an EvaluationJob runs successfully. */
 export interface GoogleCloudDatalabelingV1beta1Evaluation {
   /** Output only. Resource name of an evaluation. The name has the following format: "projects/{project_id}/datasets/{dataset_id}/evaluations/ {evaluation_id}' */
@@ -1044,18 +1662,38 @@ export interface GoogleCloudDatalabelingV1beta1Evaluation {
   /** Output only. The number of items in the ground truth dataset that were used for this evaluation. Only populated when the evaulation is for certain AnnotationTypes. */
   evaluatedItemCount?: string;
 }
+const GoogleCloudDatalabelingV1beta1Evaluation = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1Evaluation>;
+
 export interface GetProjectsEvaluationJobsRequest {
   /** Required. Name of the evaluation job. Format: "projects/{project_id} /evaluationJobs/{evaluation_job_id}" */
   name: string;
 }
+const GetProjectsEvaluationJobsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<GetProjectsEvaluationJobsRequest>;
+
 export interface GetProjectsInstructionsRequest {
   /** Required. Instruction resource name, format: projects/{project_id}/instructions/{instruction_id} */
   name: string;
 }
+const GetProjectsInstructionsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<GetProjectsInstructionsRequest>;
+
 export interface GetProjectsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetProjectsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<GetProjectsOperationsRequest>;
+
 /** Request message for ImportData API. */
 export interface GoogleCloudDatalabelingV1beta1ImportDataRequest {
   /** Email of the user who started the import task and should be notified by email. If empty no notification will be sent. */
@@ -1063,12 +1701,22 @@ export interface GoogleCloudDatalabelingV1beta1ImportDataRequest {
   /** Required. Specify the input source of the data. */
   inputConfig?: GoogleCloudDatalabelingV1beta1InputConfig;
 }
+const GoogleCloudDatalabelingV1beta1ImportDataRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ImportDataRequest>;
+
 export interface ImportDataProjectsDatasetsRequest {
   /** Required. Dataset resource name, format: projects/{project_id}/datasets/{dataset_id} */
   name: string;
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1ImportDataRequest;
 }
+const ImportDataProjectsDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ImportDataProjectsDatasetsRequest>;
+
 export type GoogleCloudDatalabelingV1beta1LabelImageRequestFeatureEnum =
   | "FEATURE_UNSPECIFIED"
   | "CLASSIFICATION"
@@ -1077,6 +1725,8 @@ export type GoogleCloudDatalabelingV1beta1LabelImageRequestFeatureEnum =
   | "BOUNDING_POLY"
   | "POLYLINE"
   | "SEGMENTATION";
+const GoogleCloudDatalabelingV1beta1LabelImageRequestFeatureEnum = /*@__PURE__*/ S.String;
+
 /** Request message for starting an image labeling task. */
 export interface GoogleCloudDatalabelingV1beta1LabelImageRequest {
   /** Configuration for segmentation task. One of image_classification_config, bounding_poly_config, polyline_config and segmentation_config are required. */
@@ -1092,16 +1742,28 @@ export interface GoogleCloudDatalabelingV1beta1LabelImageRequest {
   /** Required. The type of image labeling task. */
   feature?: GoogleCloudDatalabelingV1beta1LabelImageRequestFeatureEnum | (string & {});
 }
+const GoogleCloudDatalabelingV1beta1LabelImageRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1LabelImageRequest>;
+
 export interface LabelProjectsDatasetsImageRequest {
   /** Required. Name of the dataset to request labeling task, format: projects/{project_id}/datasets/{dataset_id} */
   parent: string;
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1LabelImageRequest;
 }
+const LabelProjectsDatasetsImageRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<LabelProjectsDatasetsImageRequest>;
+
 export type GoogleCloudDatalabelingV1beta1LabelTextRequestFeatureEnum =
   | "FEATURE_UNSPECIFIED"
   | "TEXT_CLASSIFICATION"
   | "TEXT_ENTITY_EXTRACTION";
+const GoogleCloudDatalabelingV1beta1LabelTextRequestFeatureEnum = /*@__PURE__*/ S.String;
+
 /** Request message for LabelText. */
 export interface GoogleCloudDatalabelingV1beta1LabelTextRequest {
   /** Configuration for text classification task. One of text_classification_config and text_entity_extraction_config is required. */
@@ -1113,18 +1775,30 @@ export interface GoogleCloudDatalabelingV1beta1LabelTextRequest {
   /** Required. The type of text labeling task. */
   feature?: GoogleCloudDatalabelingV1beta1LabelTextRequestFeatureEnum | (string & {});
 }
+const GoogleCloudDatalabelingV1beta1LabelTextRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1LabelTextRequest>;
+
 export interface LabelProjectsDatasetsTextRequest {
   /** Required. Name of the data set to request labeling task, format: projects/{project_id}/datasets/{dataset_id} */
   parent: string;
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1LabelTextRequest;
 }
+const LabelProjectsDatasetsTextRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<LabelProjectsDatasetsTextRequest>;
+
 export type GoogleCloudDatalabelingV1beta1LabelVideoRequestFeatureEnum =
   | "FEATURE_UNSPECIFIED"
   | "CLASSIFICATION"
   | "OBJECT_DETECTION"
   | "OBJECT_TRACKING"
   | "EVENT";
+const GoogleCloudDatalabelingV1beta1LabelVideoRequestFeatureEnum = /*@__PURE__*/ S.String;
+
 /** Request message for LabelVideo. */
 export interface GoogleCloudDatalabelingV1beta1LabelVideoRequest {
   /** Configuration for video object tracking task. One of video_classification_config, object_detection_config, object_tracking_config and event_config is required. */
@@ -1140,12 +1814,22 @@ export interface GoogleCloudDatalabelingV1beta1LabelVideoRequest {
   /** Configuration for video classification task. One of video_classification_config, object_detection_config, object_tracking_config and event_config is required. */
   videoClassificationConfig?: GoogleCloudDatalabelingV1beta1VideoClassificationConfig;
 }
+const GoogleCloudDatalabelingV1beta1LabelVideoRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1LabelVideoRequest>;
+
 export interface LabelProjectsDatasetsVideoRequest {
   /** Required. Name of the dataset to request labeling task, format: projects/{project_id}/datasets/{dataset_id} */
   parent: string;
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1LabelVideoRequest;
 }
+const LabelProjectsDatasetsVideoRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<LabelProjectsDatasetsVideoRequest>;
+
 export interface ListProjectsAnnotationSpecSetsRequest {
   /** Optional. Filter is not supported at this moment. */
   filter?: string;
@@ -1156,8 +1840,18 @@ export interface ListProjectsAnnotationSpecSetsRequest {
   /** Optional. Requested page size. Server may return fewer results than requested. Default value is 100. */
   pageSize?: number;
 }
+const ListProjectsAnnotationSpecSetsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ListProjectsAnnotationSpecSetsRequest>;
+
 export type GoogleCloudDatalabelingV1beta1AnnotationSpecSetList =
   Array<GoogleCloudDatalabelingV1beta1AnnotationSpecSet>;
+const GoogleCloudDatalabelingV1beta1AnnotationSpecSetList = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotationSpecSetList>;
+
 /** Results of listing annotation spec set under a project. */
 export interface GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse {
   /** The list of annotation spec sets. */
@@ -1165,6 +1859,11 @@ export interface GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse {
   /** A token to retrieve next page of results. */
   nextPageToken?: string;
 }
+const GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse>;
+
 export interface ListProjectsDatasetsRequest {
   /** Optional. A token identifying a page of results for the server to return. Typically obtained by ListDatasetsResponse.next_page_token of the previous [DataLabelingService.ListDatasets] call. Returns the first page if empty. */
   pageToken?: string;
@@ -1175,8 +1874,18 @@ export interface ListProjectsDatasetsRequest {
   /** Optional. Filter on dataset is not supported at this moment. */
   filter?: string;
 }
+const ListProjectsDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ListProjectsDatasetsRequest>;
+
 export type GoogleCloudDatalabelingV1beta1DatasetList =
   Array<GoogleCloudDatalabelingV1beta1Dataset>;
+const GoogleCloudDatalabelingV1beta1DatasetList = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1DatasetList>;
+
 /** Results of listing datasets within a project. */
 export interface GoogleCloudDatalabelingV1beta1ListDatasetsResponse {
   /** The list of datasets to return. */
@@ -1184,6 +1893,11 @@ export interface GoogleCloudDatalabelingV1beta1ListDatasetsResponse {
   /** A token to retrieve next page of results. */
   nextPageToken?: string;
 }
+const GoogleCloudDatalabelingV1beta1ListDatasetsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListDatasetsResponse>;
+
 export interface ListProjectsDatasetsAnnotatedDatasetsRequest {
   /** Optional. Requested page size. Server may return fewer results than requested. Default value is 100. */
   pageSize?: number;
@@ -1194,8 +1908,18 @@ export interface ListProjectsDatasetsAnnotatedDatasetsRequest {
   /** Required. Name of the dataset to list annotated datasets, format: projects/{project_id}/datasets/{dataset_id} */
   parent: string;
 }
+const ListProjectsDatasetsAnnotatedDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<ListProjectsDatasetsAnnotatedDatasetsRequest>;
+
 export type GoogleCloudDatalabelingV1beta1AnnotatedDatasetList =
   Array<GoogleCloudDatalabelingV1beta1AnnotatedDataset>;
+const GoogleCloudDatalabelingV1beta1AnnotatedDatasetList = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotatedDatasetList>;
+
 /** Results of listing annotated datasets for a dataset. */
 export interface GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse {
   /** A token to retrieve next page of results. */
@@ -1203,6 +1927,11 @@ export interface GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse {
   /** The list of annotated datasets to return. */
   annotatedDatasets?: GoogleCloudDatalabelingV1beta1AnnotatedDatasetList;
 }
+const GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse>;
+
 export interface ListProjectsDatasetsAnnotatedDatasetsDataItemsRequest {
   /** Optional. A token identifying a page of results for the server to return. Typically obtained by ListDataItemsResponse.next_page_token of the previous [DataLabelingService.ListDataItems] call. Return first page if empty. */
   pageToken?: string;
@@ -1213,8 +1942,18 @@ export interface ListProjectsDatasetsAnnotatedDatasetsDataItemsRequest {
   /** Optional. Requested page size. Server may return fewer results than requested. Default value is 100. */
   pageSize?: number;
 }
+const ListProjectsDatasetsAnnotatedDatasetsDataItemsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ListProjectsDatasetsAnnotatedDatasetsDataItemsRequest>;
+
 export type GoogleCloudDatalabelingV1beta1DataItemList =
   Array<GoogleCloudDatalabelingV1beta1DataItem>;
+const GoogleCloudDatalabelingV1beta1DataItemList = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1DataItemList>;
+
 /** Results of listing data items in a dataset. */
 export interface GoogleCloudDatalabelingV1beta1ListDataItemsResponse {
   /** A token to retrieve next page of results. */
@@ -1222,6 +1961,11 @@ export interface GoogleCloudDatalabelingV1beta1ListDataItemsResponse {
   /** The list of data items to return. */
   dataItems?: GoogleCloudDatalabelingV1beta1DataItemList;
 }
+const GoogleCloudDatalabelingV1beta1ListDataItemsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListDataItemsResponse>;
+
 export interface ListProjectsDatasetsAnnotatedDatasetsExamplesRequest {
   /** Required. Example resource parent. */
   parent: string;
@@ -1232,8 +1976,18 @@ export interface ListProjectsDatasetsAnnotatedDatasetsExamplesRequest {
   /** Optional. Requested page size. Server may return fewer results than requested. Default value is 100. */
   pageSize?: number;
 }
+const ListProjectsDatasetsAnnotatedDatasetsExamplesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<ListProjectsDatasetsAnnotatedDatasetsExamplesRequest>;
+
 export type GoogleCloudDatalabelingV1beta1ExampleList =
   Array<GoogleCloudDatalabelingV1beta1Example>;
+const GoogleCloudDatalabelingV1beta1ExampleList = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ExampleList>;
+
 /** Results of listing Examples in and annotated dataset. */
 export interface GoogleCloudDatalabelingV1beta1ListExamplesResponse {
   /** A token to retrieve next page of results. */
@@ -1241,6 +1995,11 @@ export interface GoogleCloudDatalabelingV1beta1ListExamplesResponse {
   /** The list of examples to return. */
   examples?: GoogleCloudDatalabelingV1beta1ExampleList;
 }
+const GoogleCloudDatalabelingV1beta1ListExamplesResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListExamplesResponse>;
+
 export interface ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest {
   /** Optional. A token identifying a page of results for the server to return. Typically obtained by ListFeedbackThreads.next_page_token of the previous [DataLabelingService.ListFeedbackThreads] call. Return first page if empty. */
   pageToken?: string;
@@ -1249,8 +2008,18 @@ export interface ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest {
   /** Optional. Requested page size. Server may return fewer results than requested. Default value is 100. */
   pageSize?: number;
 }
+const ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest>;
+
 export type GoogleCloudDatalabelingV1beta1FeedbackThreadList =
   Array<GoogleCloudDatalabelingV1beta1FeedbackThread>;
+const GoogleCloudDatalabelingV1beta1FeedbackThreadList = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1FeedbackThreadList>;
+
 /** Results for listing FeedbackThreads. */
 export interface GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse {
   /** A token to retrieve next page of results. */
@@ -1258,6 +2027,11 @@ export interface GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse {
   /** The list of feedback threads to return. */
   feedbackThreads?: GoogleCloudDatalabelingV1beta1FeedbackThreadList;
 }
+const GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse>;
+
 export interface ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest {
   /** Optional. Requested page size. Server may return fewer results than requested. Default value is 100. */
   pageSize?: number;
@@ -1266,8 +2040,19 @@ export interface ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMes
   /** Required. FeedbackMessage resource parent. Format: "projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}" */
   parent: string;
 }
+const ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest =
+  /*@__PURE__*/ __L.at(
+    __c18,
+    6,
+  ) as any as S.Schema<ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest>;
+
 export type GoogleCloudDatalabelingV1beta1FeedbackMessageList =
   Array<GoogleCloudDatalabelingV1beta1FeedbackMessage>;
+const GoogleCloudDatalabelingV1beta1FeedbackMessageList = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1FeedbackMessageList>;
+
 /** Results for listing FeedbackMessages. */
 export interface GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse {
   /** A token to retrieve next page of results. */
@@ -1275,6 +2060,11 @@ export interface GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse {
   /** The list of feedback messages to return. */
   feedbackMessages?: GoogleCloudDatalabelingV1beta1FeedbackMessageList;
 }
+const GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse>;
+
 export interface ListProjectsDatasetsDataItemsRequest {
   /** Optional. Filter is not supported at this moment. */
   filter?: string;
@@ -1285,6 +2075,11 @@ export interface ListProjectsDatasetsDataItemsRequest {
   /** Required. Name of the dataset to list data items, format: projects/{project_id}/datasets/{dataset_id} */
   parent: string;
 }
+const ListProjectsDatasetsDataItemsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ListProjectsDatasetsDataItemsRequest>;
+
 export interface ListProjectsEvaluationJobsRequest {
   /** Optional. A token identifying a page of results for the server to return. Typically obtained by the nextPageToken in the response to the previous request. The request returns the first page if this is empty. */
   pageToken?: string;
@@ -1295,8 +2090,18 @@ export interface ListProjectsEvaluationJobsRequest {
   /** Optional. Requested page size. Server may return fewer results than requested. Default value is 100. */
   pageSize?: number;
 }
+const ListProjectsEvaluationJobsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ListProjectsEvaluationJobsRequest>;
+
 export type GoogleCloudDatalabelingV1beta1EvaluationJobList =
   Array<GoogleCloudDatalabelingV1beta1EvaluationJob>;
+const GoogleCloudDatalabelingV1beta1EvaluationJobList = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1EvaluationJobList>;
+
 /** Results for listing evaluation jobs. */
 export interface GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse {
   /** A token to retrieve next page of results. */
@@ -1304,6 +2109,11 @@ export interface GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse {
   /** The list of evaluation jobs to return. */
   evaluationJobs?: GoogleCloudDatalabelingV1beta1EvaluationJobList;
 }
+const GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse>;
+
 export interface ListProjectsInstructionsRequest {
   /** Optional. Requested page size. Server may return fewer results than requested. Default value is 100. */
   pageSize?: number;
@@ -1314,8 +2124,18 @@ export interface ListProjectsInstructionsRequest {
   /** Optional. Filter is not supported at this moment. */
   filter?: string;
 }
+const ListProjectsInstructionsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ListProjectsInstructionsRequest>;
+
 export type GoogleCloudDatalabelingV1beta1InstructionList =
   Array<GoogleCloudDatalabelingV1beta1Instruction>;
+const GoogleCloudDatalabelingV1beta1InstructionList = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1InstructionList>;
+
 /** Results of listing instructions under a project. */
 export interface GoogleCloudDatalabelingV1beta1ListInstructionsResponse {
   /** The list of Instructions to return. */
@@ -1323,6 +2143,11 @@ export interface GoogleCloudDatalabelingV1beta1ListInstructionsResponse {
   /** A token to retrieve next page of results. */
   nextPageToken?: string;
 }
+const GoogleCloudDatalabelingV1beta1ListInstructionsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListInstructionsResponse>;
+
 export interface ListProjectsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
@@ -1335,7 +2160,17 @@ export interface ListProjectsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
+const ListProjectsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ListProjectsOperationsRequest>;
+
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
+const GoogleLongrunningOperationList = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<GoogleLongrunningOperationList>;
+
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -1345,6 +2180,11 @@ export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
+const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
+
 export interface PatchProjectsEvaluationJobsRequest {
   /** Output only. After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}" */
   name: string;
@@ -1353,6 +2193,11 @@ export interface PatchProjectsEvaluationJobsRequest {
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1EvaluationJob;
 }
+const PatchProjectsEvaluationJobsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<PatchProjectsEvaluationJobsRequest>;
+
 /** Request message for PauseEvaluationJob. */
 export type GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest =
   GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata;
@@ -1362,6 +2207,11 @@ export interface PauseProjectsEvaluationJobsRequest {
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata;
 }
+const PauseProjectsEvaluationJobsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<PauseProjectsEvaluationJobsRequest>;
+
 /** Request message ResumeEvaluationJob. */
 export type GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest =
   GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata;
@@ -1371,6 +2221,11 @@ export interface ResumeProjectsEvaluationJobsRequest {
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata;
 }
+const ResumeProjectsEvaluationJobsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ResumeProjectsEvaluationJobsRequest>;
+
 /** Request message of SearchExampleComparisons. */
 export interface GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest {
   /** Optional. Requested page size. Server may return fewer results than requested. Default value is 100. */
@@ -1378,12 +2233,22 @@ export interface GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest {
   /** Optional. A token identifying a page of results for the server to return. Typically obtained by the nextPageToken of the response to a previous search rquest. If you don't specify this field, the API call requests the first page of the search. */
   pageToken?: string;
 }
+const GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest>;
+
 export interface SearchProjectsDatasetsEvaluationsExampleComparisonsRequest {
   /** Required. Name of the Evaluation resource to search for example comparisons from. Format: "projects/{project_id}/datasets/{dataset_id}/evaluations/ {evaluation_id}" */
   parent: string;
   /** Request body */
   body?: GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest;
 }
+const SearchProjectsDatasetsEvaluationsExampleComparisonsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<SearchProjectsDatasetsEvaluationsExampleComparisonsRequest>;
+
 /** Example comparisons comparing ground truth output and predictions for a specific input. */
 export interface GoogleCloudDatalabelingV1beta1ExampleComparison {
   /** The ground truth output for the input. */
@@ -1391,8 +2256,18 @@ export interface GoogleCloudDatalabelingV1beta1ExampleComparison {
   /** Predictions by the model for the input. */
   modelCreatedExamples?: GoogleCloudDatalabelingV1beta1ExampleList;
 }
+const GoogleCloudDatalabelingV1beta1ExampleComparison = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ExampleComparison>;
+
 export type GoogleCloudDatalabelingV1beta1ExampleComparisonList =
   Array<GoogleCloudDatalabelingV1beta1ExampleComparison>;
+const GoogleCloudDatalabelingV1beta1ExampleComparisonList = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1ExampleComparisonList>;
+
 /** Results of searching example comparisons. */
 export interface GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse {
   /** A list of example comparisons matching the search criteria. */
@@ -1400,6 +2275,11 @@ export interface GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse 
   /** A token to retrieve next page of results. */
   nextPageToken?: string;
 }
+const GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse>;
+
 export interface SearchProjectsEvaluationsRequest {
   /** Optional. Requested page size. Server may return fewer results than requested. Default value is 100. */
   pageSize?: number;
@@ -1410,8 +2290,18 @@ export interface SearchProjectsEvaluationsRequest {
   /** Required. Evaluation search parent (project ID). Format: "projects/ {project_id}" */
   parent: string;
 }
+const SearchProjectsEvaluationsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<SearchProjectsEvaluationsRequest>;
+
 export type GoogleCloudDatalabelingV1beta1EvaluationList =
   Array<GoogleCloudDatalabelingV1beta1Evaluation>;
+const GoogleCloudDatalabelingV1beta1EvaluationList = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1EvaluationList>;
+
 /** Results of searching evaluations. */
 export interface GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse {
   /** A token to retrieve next page of results. */
@@ -1419,6 +2309,11 @@ export interface GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse {
   /** The list of evaluations matching the search. */
   evaluations?: GoogleCloudDatalabelingV1beta1EvaluationList;
 }
+const GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse>;
+
 export type CancelProjectsOperationsError = NotFound | Forbidden | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsOperations: API.OperationMethod<
@@ -1427,8 +2322,8 @@ export const cancelProjectsOperations: API.OperationMethod<
   CancelProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CancelProjectsOperationsRequest>,
-  output: __S(1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: CancelProjectsOperationsRequest,
+  output: GoogleProtobufEmpty,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1447,8 +2342,8 @@ export const createProjectsAnnotationSpecSets: API.OperationMethod<
   CreateProjectsAnnotationSpecSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<CreateProjectsAnnotationSpecSetsRequest>,
-  output: __S(5) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotationSpecSet>,
+  input: CreateProjectsAnnotationSpecSetsRequest,
+  output: GoogleCloudDatalabelingV1beta1AnnotationSpecSet,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1462,8 +2357,8 @@ export const createProjectsDatasets: API.OperationMethod<
   CreateProjectsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CreateProjectsDatasetsRequest>,
-  output: __S(14) as any as S.Schema<GoogleCloudDatalabelingV1beta1Dataset>,
+  input: CreateProjectsDatasetsRequest,
+  output: GoogleCloudDatalabelingV1beta1Dataset,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1482,10 +2377,8 @@ export const createProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessa
   CreateProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    19,
-  ) as any as S.Schema<CreateProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest>,
-  output: __S(23) as any as S.Schema<GoogleLongrunningOperation>,
+  input: CreateProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1504,8 +2397,8 @@ export const createProjectsEvaluationJobs: API.OperationMethod<
   CreateProjectsEvaluationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<CreateProjectsEvaluationJobsRequest>,
-  output: __S(37) as any as S.Schema<GoogleCloudDatalabelingV1beta1EvaluationJob>,
+  input: CreateProjectsEvaluationJobsRequest,
+  output: GoogleCloudDatalabelingV1beta1EvaluationJob,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1524,8 +2417,8 @@ export const createProjectsInstructions: API.OperationMethod<
   CreateProjectsInstructionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<CreateProjectsInstructionsRequest>,
-  output: __S(23) as any as S.Schema<GoogleLongrunningOperation>,
+  input: CreateProjectsInstructionsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1544,8 +2437,8 @@ export const deleteProjectsAnnotationSpecSets: API.OperationMethod<
   DeleteProjectsAnnotationSpecSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<DeleteProjectsAnnotationSpecSetsRequest>,
-  output: __S(1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: DeleteProjectsAnnotationSpecSetsRequest,
+  output: GoogleProtobufEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1559,8 +2452,8 @@ export const deleteProjectsDatasets: API.OperationMethod<
   DeleteProjectsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<DeleteProjectsDatasetsRequest>,
-  output: __S(1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: DeleteProjectsDatasetsRequest,
+  output: GoogleProtobufEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1579,8 +2472,8 @@ export const deleteProjectsDatasetsAnnotatedDatasets: API.OperationMethod<
   DeleteProjectsDatasetsAnnotatedDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<DeleteProjectsDatasetsAnnotatedDatasetsRequest>,
-  output: __S(1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: DeleteProjectsDatasetsAnnotatedDatasetsRequest,
+  output: GoogleProtobufEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1599,8 +2492,8 @@ export const deleteProjectsDatasetsAnnotatedDatasetsFeedbackThreads: API.Operati
   DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest>,
-  output: __S(1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest,
+  output: GoogleProtobufEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1619,10 +2512,8 @@ export const deleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessa
   DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    48,
-  ) as any as S.Schema<DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest>,
-  output: __S(1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest,
+  output: GoogleProtobufEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1641,8 +2532,8 @@ export const deleteProjectsEvaluationJobs: API.OperationMethod<
   DeleteProjectsEvaluationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<DeleteProjectsEvaluationJobsRequest>,
-  output: __S(1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: DeleteProjectsEvaluationJobsRequest,
+  output: GoogleProtobufEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1661,8 +2552,8 @@ export const deleteProjectsInstructions: API.OperationMethod<
   DeleteProjectsInstructionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<DeleteProjectsInstructionsRequest>,
-  output: __S(1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: DeleteProjectsInstructionsRequest,
+  output: GoogleProtobufEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1681,8 +2572,8 @@ export const deleteProjectsOperations: API.OperationMethod<
   DeleteProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<DeleteProjectsOperationsRequest>,
-  output: __S(1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: DeleteProjectsOperationsRequest,
+  output: GoogleProtobufEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1701,8 +2592,8 @@ export const exportDataProjectsDatasets: API.OperationMethod<
   ExportDataProjectsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<ExportDataProjectsDatasetsRequest>,
-  output: __S(23) as any as S.Schema<GoogleLongrunningOperation>,
+  input: ExportDataProjectsDatasetsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1716,8 +2607,8 @@ export const getProjectsAnnotationSpecSets: API.OperationMethod<
   GetProjectsAnnotationSpecSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<GetProjectsAnnotationSpecSetsRequest>,
-  output: __S(5) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotationSpecSet>,
+  input: GetProjectsAnnotationSpecSetsRequest,
+  output: GoogleCloudDatalabelingV1beta1AnnotationSpecSet,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1731,8 +2622,8 @@ export const getProjectsDatasets: API.OperationMethod<
   GetProjectsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<GetProjectsDatasetsRequest>,
-  output: __S(14) as any as S.Schema<GoogleCloudDatalabelingV1beta1Dataset>,
+  input: GetProjectsDatasetsRequest,
+  output: GoogleCloudDatalabelingV1beta1Dataset,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1746,8 +2637,8 @@ export const getProjectsDatasetsAnnotatedDatasets: API.OperationMethod<
   GetProjectsDatasetsAnnotatedDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<GetProjectsDatasetsAnnotatedDatasetsRequest>,
-  output: __S(69) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotatedDataset>,
+  input: GetProjectsDatasetsAnnotatedDatasetsRequest,
+  output: GoogleCloudDatalabelingV1beta1AnnotatedDataset,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1761,8 +2652,8 @@ export const getProjectsDatasetsAnnotatedDatasetsDataItems: API.OperationMethod<
   GetProjectsDatasetsAnnotatedDatasetsDataItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<GetProjectsDatasetsAnnotatedDatasetsDataItemsRequest>,
-  output: __S(76) as any as S.Schema<GoogleCloudDatalabelingV1beta1DataItem>,
+  input: GetProjectsDatasetsAnnotatedDatasetsDataItemsRequest,
+  output: GoogleCloudDatalabelingV1beta1DataItem,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1776,8 +2667,8 @@ export const getProjectsDatasetsAnnotatedDatasetsExamples: API.OperationMethod<
   GetProjectsDatasetsAnnotatedDatasetsExamplesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<GetProjectsDatasetsAnnotatedDatasetsExamplesRequest>,
-  output: __S(102) as any as S.Schema<GoogleCloudDatalabelingV1beta1Example>,
+  input: GetProjectsDatasetsAnnotatedDatasetsExamplesRequest,
+  output: GoogleCloudDatalabelingV1beta1Example,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1794,8 +2685,8 @@ export const getProjectsDatasetsAnnotatedDatasetsFeedbackThreads: API.OperationM
   GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest>,
-  output: __S(105) as any as S.Schema<GoogleCloudDatalabelingV1beta1FeedbackThread>,
+  input: GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest,
+  output: GoogleCloudDatalabelingV1beta1FeedbackThread,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1812,10 +2703,8 @@ export const getProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessages
   GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    106,
-  ) as any as S.Schema<GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest>,
-  output: __S(18) as any as S.Schema<GoogleCloudDatalabelingV1beta1FeedbackMessage>,
+  input: GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest,
+  output: GoogleCloudDatalabelingV1beta1FeedbackMessage,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1829,8 +2718,8 @@ export const getProjectsDatasetsDataItems: API.OperationMethod<
   GetProjectsDatasetsDataItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<GetProjectsDatasetsDataItemsRequest>,
-  output: __S(76) as any as S.Schema<GoogleCloudDatalabelingV1beta1DataItem>,
+  input: GetProjectsDatasetsDataItemsRequest,
+  output: GoogleCloudDatalabelingV1beta1DataItem,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1844,8 +2733,8 @@ export const getProjectsDatasetsEvaluations: API.OperationMethod<
   GetProjectsDatasetsEvaluationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<GetProjectsDatasetsEvaluationsRequest>,
-  output: __S(120) as any as S.Schema<GoogleCloudDatalabelingV1beta1Evaluation>,
+  input: GetProjectsDatasetsEvaluationsRequest,
+  output: GoogleCloudDatalabelingV1beta1Evaluation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1859,8 +2748,8 @@ export const getProjectsEvaluationJobs: API.OperationMethod<
   GetProjectsEvaluationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<GetProjectsEvaluationJobsRequest>,
-  output: __S(37) as any as S.Schema<GoogleCloudDatalabelingV1beta1EvaluationJob>,
+  input: GetProjectsEvaluationJobsRequest,
+  output: GoogleCloudDatalabelingV1beta1EvaluationJob,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1874,8 +2763,8 @@ export const getProjectsInstructions: API.OperationMethod<
   GetProjectsInstructionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<GetProjectsInstructionsRequest>,
-  output: __S(41) as any as S.Schema<GoogleCloudDatalabelingV1beta1Instruction>,
+  input: GetProjectsInstructionsRequest,
+  output: GoogleCloudDatalabelingV1beta1Instruction,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1889,8 +2778,8 @@ export const getProjectsOperations: API.OperationMethod<
   GetProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<GetProjectsOperationsRequest>,
-  output: __S(23) as any as S.Schema<GoogleLongrunningOperation>,
+  input: GetProjectsOperationsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1909,8 +2798,8 @@ export const importDataProjectsDatasets: API.OperationMethod<
   ImportDataProjectsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<ImportDataProjectsDatasetsRequest>,
-  output: __S(23) as any as S.Schema<GoogleLongrunningOperation>,
+  input: ImportDataProjectsDatasetsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1929,8 +2818,8 @@ export const labelProjectsDatasetsImage: API.OperationMethod<
   LabelProjectsDatasetsImageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<LabelProjectsDatasetsImageRequest>,
-  output: __S(23) as any as S.Schema<GoogleLongrunningOperation>,
+  input: LabelProjectsDatasetsImageRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1949,8 +2838,8 @@ export const labelProjectsDatasetsText: API.OperationMethod<
   LabelProjectsDatasetsTextError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<LabelProjectsDatasetsTextRequest>,
-  output: __S(23) as any as S.Schema<GoogleLongrunningOperation>,
+  input: LabelProjectsDatasetsTextRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1969,8 +2858,8 @@ export const labelProjectsDatasetsVideo: API.OperationMethod<
   LabelProjectsDatasetsVideoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<LabelProjectsDatasetsVideoRequest>,
-  output: __S(23) as any as S.Schema<GoogleLongrunningOperation>,
+  input: LabelProjectsDatasetsVideoRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1985,8 +2874,8 @@ export const listProjectsAnnotationSpecSets: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(132) as any as S.Schema<ListProjectsAnnotationSpecSetsRequest>,
-  output: __S(134) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse>,
+  input: ListProjectsAnnotationSpecSetsRequest,
+  output: GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2005,8 +2894,8 @@ export const listProjectsDatasets: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDatalabelingV1beta1ListDatasetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(135) as any as S.Schema<ListProjectsDatasetsRequest>,
-  output: __S(137) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListDatasetsResponse>,
+  input: ListProjectsDatasetsRequest,
+  output: GoogleCloudDatalabelingV1beta1ListDatasetsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2025,8 +2914,8 @@ export const listProjectsDatasetsAnnotatedDatasets: API.PaginatedOperationMethod
   GcpOpContext,
   GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(138) as any as S.Schema<ListProjectsDatasetsAnnotatedDatasetsRequest>,
-  output: __S(140) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse>,
+  input: ListProjectsDatasetsAnnotatedDatasetsRequest,
+  output: GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2045,8 +2934,8 @@ export const listProjectsDatasetsAnnotatedDatasetsDataItems: API.PaginatedOperat
   GcpOpContext,
   GoogleCloudDatalabelingV1beta1ListDataItemsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(141) as any as S.Schema<ListProjectsDatasetsAnnotatedDatasetsDataItemsRequest>,
-  output: __S(143) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListDataItemsResponse>,
+  input: ListProjectsDatasetsAnnotatedDatasetsDataItemsRequest,
+  output: GoogleCloudDatalabelingV1beta1ListDataItemsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2065,8 +2954,8 @@ export const listProjectsDatasetsAnnotatedDatasetsExamples: API.PaginatedOperati
   GcpOpContext,
   GoogleCloudDatalabelingV1beta1ListExamplesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(144) as any as S.Schema<ListProjectsDatasetsAnnotatedDatasetsExamplesRequest>,
-  output: __S(146) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListExamplesResponse>,
+  input: ListProjectsDatasetsAnnotatedDatasetsExamplesRequest,
+  output: GoogleCloudDatalabelingV1beta1ListExamplesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2088,8 +2977,8 @@ export const listProjectsDatasetsAnnotatedDatasetsFeedbackThreads: API.Paginated
   GcpOpContext,
   GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(147) as any as S.Schema<ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest>,
-  output: __S(149) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse>,
+  input: ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest,
+  output: GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2111,10 +3000,8 @@ export const listProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessage
   GcpOpContext,
   GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(
-    150,
-  ) as any as S.Schema<ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest>,
-  output: __S(152) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse>,
+  input: ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest,
+  output: GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2133,8 +3020,8 @@ export const listProjectsDatasetsDataItems: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDatalabelingV1beta1ListDataItemsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(153) as any as S.Schema<ListProjectsDatasetsDataItemsRequest>,
-  output: __S(143) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListDataItemsResponse>,
+  input: ListProjectsDatasetsDataItemsRequest,
+  output: GoogleCloudDatalabelingV1beta1ListDataItemsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2153,8 +3040,8 @@ export const listProjectsEvaluationJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(154) as any as S.Schema<ListProjectsEvaluationJobsRequest>,
-  output: __S(156) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse>,
+  input: ListProjectsEvaluationJobsRequest,
+  output: GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2173,8 +3060,8 @@ export const listProjectsInstructions: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDatalabelingV1beta1ListInstructionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(157) as any as S.Schema<ListProjectsInstructionsRequest>,
-  output: __S(159) as any as S.Schema<GoogleCloudDatalabelingV1beta1ListInstructionsResponse>,
+  input: ListProjectsInstructionsRequest,
+  output: GoogleCloudDatalabelingV1beta1ListInstructionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2193,8 +3080,8 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(160) as any as S.Schema<ListProjectsOperationsRequest>,
-  output: __S(162) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: ListProjectsOperationsRequest,
+  output: GoogleLongrunningListOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2217,8 +3104,8 @@ export const patchProjectsEvaluationJobs: API.OperationMethod<
   PatchProjectsEvaluationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<PatchProjectsEvaluationJobsRequest>,
-  output: __S(37) as any as S.Schema<GoogleCloudDatalabelingV1beta1EvaluationJob>,
+  input: PatchProjectsEvaluationJobsRequest,
+  output: GoogleCloudDatalabelingV1beta1EvaluationJob,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2237,8 +3124,8 @@ export const pauseProjectsEvaluationJobs: API.OperationMethod<
   PauseProjectsEvaluationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164) as any as S.Schema<PauseProjectsEvaluationJobsRequest>,
-  output: __S(1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: PauseProjectsEvaluationJobsRequest,
+  output: GoogleProtobufEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2257,8 +3144,8 @@ export const resumeProjectsEvaluationJobs: API.OperationMethod<
   ResumeProjectsEvaluationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165) as any as S.Schema<ResumeProjectsEvaluationJobsRequest>,
-  output: __S(1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: ResumeProjectsEvaluationJobsRequest,
+  output: GoogleProtobufEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2277,10 +3164,8 @@ export const searchProjectsDatasetsEvaluationsExampleComparisons: API.OperationM
   SearchProjectsDatasetsEvaluationsExampleComparisonsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<SearchProjectsDatasetsEvaluationsExampleComparisonsRequest>,
-  output: __S(
-    170,
-  ) as any as S.Schema<GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse>,
+  input: SearchProjectsDatasetsEvaluationsExampleComparisonsRequest,
+  output: GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2295,8 +3180,8 @@ export const searchProjectsEvaluations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(171) as any as S.Schema<SearchProjectsEvaluationsRequest>,
-  output: __S(173) as any as S.Schema<GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse>,
+  input: SearchProjectsEvaluationsRequest,
+  output: GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2340,15 +3225,15 @@ function __c0(j: number): any {
         identifier: "GoogleCloudDatalabelingV1beta1AnnotationSpec",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(GoogleCloudDatalabelingV1beta1AnnotationSpec);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          blockingResources: S.optional(__S(2)),
+          blockingResources: S.optional(StringList),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
           name: S.optional(S.String),
-          annotationSpecs: S.optional(__S(4)),
+          annotationSpecs: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpecList),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1AnnotationSpecSet",
@@ -2356,7 +3241,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          annotationSpecSet: S.optional(__S(5)),
+          annotationSpecSet: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpecSet),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest",
@@ -2365,7 +3250,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(6).pipe(T.HttpBody())),
+          body: S.optional(
+            GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest.pipe(T.HttpBody()),
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2416,29 +3303,29 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dataType: S.optional(S.String),
-          textMetadata: S.optional(__S(8)),
-          classificationMetadata: S.optional(__S(9)),
-          bigquerySource: S.optional(__S(10)),
-          gcsSource: S.optional(__S(11)),
-          annotationType: S.optional(S.String),
+          dataType: S.optional(GoogleCloudDatalabelingV1beta1InputConfigDataTypeEnum),
+          textMetadata: S.optional(GoogleCloudDatalabelingV1beta1TextMetadata),
+          classificationMetadata: S.optional(GoogleCloudDatalabelingV1beta1ClassificationMetadata),
+          bigquerySource: S.optional(GoogleCloudDatalabelingV1beta1BigQuerySource),
+          gcsSource: S.optional(GoogleCloudDatalabelingV1beta1GcsSource),
+          annotationType: S.optional(GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeEnum),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1InputConfig",
       });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(GoogleCloudDatalabelingV1beta1InputConfig);
     case 6:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           dataItemCount: S.optional(S.String),
-          inputConfigs: S.optional(__S(13)),
+          inputConfigs: S.optional(GoogleCloudDatalabelingV1beta1InputConfigList),
           createTime: S.optional(S.String),
           description: S.optional(S.String),
           lastMigrateTime: S.optional(S.String),
           name: S.optional(S.String),
-          blockingResources: S.optional(__S(2)),
+          blockingResources: S.optional(StringList),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1Dataset",
@@ -2446,7 +3333,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dataset: S.optional(__S(14)),
+          dataset: S.optional(GoogleCloudDatalabelingV1beta1Dataset),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1CreateDatasetRequest",
@@ -2459,7 +3346,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(15).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatalabelingV1beta1CreateDatasetRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2478,9 +3365,13 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          operatorFeedbackMetadata: S.optional(__S(17)),
+          operatorFeedbackMetadata: S.optional(
+            GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata,
+          ),
           image: S.optional(S.String),
-          requesterFeedbackMetadata: S.optional(__S(17)),
+          requesterFeedbackMetadata: S.optional(
+            GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata,
+          ),
           createTime: S.optional(S.String),
           body: S.optional(S.String),
         }),
@@ -2491,7 +3382,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(18).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatalabelingV1beta1FeedbackMessage.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2505,13 +3396,13 @@ function __c2(j: number): any {
     case 4:
       return S.Record(S.String, S.Unknown);
     case 5:
-      return S.Array(__S(20));
+      return S.Array(DocumentMap);
     case 6:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(__S(21)),
+          details: S.optional(DocumentMapList),
         }),
       ).annotate({
         identifier: "GoogleRpcStatus",
@@ -2520,10 +3411,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          error: S.optional(__S(22)),
-          metadata: S.optional(__S(20)),
+          error: S.optional(GoogleRpcStatus),
+          metadata: S.optional(DocumentMap),
           done: S.optional(S.Boolean),
-          response: S.optional(__S(20)),
+          response: S.optional(DocumentMap),
         }),
       ).annotate({
         identifier: "GoogleLongrunningOperation",
@@ -2533,18 +3424,18 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(22));
+      return S.Array(GoogleRpcStatus);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          partialFailures: S.optional(__S(24)),
+          partialFailures: S.optional(GoogleRpcStatusList),
           attemptTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1Attempt",
       });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(GoogleCloudDatalabelingV1beta1Attempt);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2553,7 +3444,7 @@ function __c3(j: number): any {
           questionDuration: S.optional(S.String),
           annotatedDatasetDescription: S.optional(S.String),
           userEmailAddress: S.optional(S.String),
-          contributorEmails: S.optional(__S(2)),
+          contributorEmails: S.optional(StringList),
           instruction: S.optional(S.String),
           replicaCount: S.optional(S.Number),
           labelGroup: S.optional(S.String),
@@ -2596,7 +3487,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sentimentConfig: S.optional(__S(31)),
+          sentimentConfig: S.optional(GoogleCloudDatalabelingV1beta1SentimentConfig),
           annotationSpecSet: S.optional(S.String),
           allowMultiLabel: S.optional(S.Boolean),
         }),
@@ -2608,7 +3499,9 @@ function __c4(j: number): any {
         S.Struct({
           annotationSpecSet: S.optional(S.String),
           allowMultiLabel: S.optional(S.Boolean),
-          answerAggregationType: S.optional(S.String),
+          answerAggregationType: S.optional(
+            GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeEnum,
+          ),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1ImageClassificationConfig",
@@ -2624,7 +3517,9 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          boundingBoxEvaluationOptions: S.optional(__S(34)),
+          boundingBoxEvaluationOptions: S.optional(
+            GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions,
+          ),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1EvaluationConfig",
@@ -2632,16 +3527,22 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          humanAnnotationConfig: S.optional(__S(27)),
-          bigqueryImportKeys: S.optional(__S(28)),
-          evaluationJobAlertConfig: S.optional(__S(29)),
+          humanAnnotationConfig: S.optional(GoogleCloudDatalabelingV1beta1HumanAnnotationConfig),
+          bigqueryImportKeys: S.optional(StringMap),
+          evaluationJobAlertConfig: S.optional(
+            GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig,
+          ),
           exampleSamplePercentage: S.optional(S.Number),
           exampleCount: S.optional(S.Number),
-          boundingPolyConfig: S.optional(__S(30)),
-          textClassificationConfig: S.optional(__S(32)),
-          inputConfig: S.optional(__S(12)),
-          imageClassificationConfig: S.optional(__S(33)),
-          evaluationConfig: S.optional(__S(35)),
+          boundingPolyConfig: S.optional(GoogleCloudDatalabelingV1beta1BoundingPolyConfig),
+          textClassificationConfig: S.optional(
+            GoogleCloudDatalabelingV1beta1TextClassificationConfig,
+          ),
+          inputConfig: S.optional(GoogleCloudDatalabelingV1beta1InputConfig),
+          imageClassificationConfig: S.optional(
+            GoogleCloudDatalabelingV1beta1ImageClassificationConfig,
+          ),
+          evaluationConfig: S.optional(GoogleCloudDatalabelingV1beta1EvaluationConfig),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1EvaluationJobConfig",
@@ -2650,12 +3551,12 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(GoogleCloudDatalabelingV1beta1EvaluationJobStateEnum),
           annotationSpecSet: S.optional(S.String),
-          attempts: S.optional(__S(26)),
+          attempts: S.optional(GoogleCloudDatalabelingV1beta1AttemptList),
           name: S.optional(S.String),
           labelMissingGroundTruth: S.optional(S.Boolean),
-          evaluationJobConfig: S.optional(__S(36)),
+          evaluationJobConfig: S.optional(GoogleCloudDatalabelingV1beta1EvaluationJobConfig),
           modelVersion: S.optional(S.String),
           schedule: S.optional(S.String),
           createTime: S.optional(S.String),
@@ -2666,7 +3567,7 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          job: S.optional(__S(37)),
+          job: S.optional(GoogleCloudDatalabelingV1beta1EvaluationJob),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest",
@@ -2675,7 +3576,9 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(38).pipe(T.HttpBody())),
+          body: S.optional(
+            GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest.pipe(T.HttpBody()),
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2701,14 +3604,14 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          csvInstruction: S.optional(__S(40)),
+          csvInstruction: S.optional(GoogleCloudDatalabelingV1beta1CsvInstruction),
           displayName: S.optional(S.String),
           createTime: S.optional(S.String),
-          blockingResources: S.optional(__S(2)),
-          dataType: S.optional(S.String),
+          blockingResources: S.optional(StringList),
+          dataType: S.optional(GoogleCloudDatalabelingV1beta1InstructionDataTypeEnum),
           description: S.optional(S.String),
           name: S.optional(S.String),
-          pdfInstruction: S.optional(__S(40)),
+          pdfInstruction: S.optional(GoogleCloudDatalabelingV1beta1PdfInstruction),
           updateTime: S.optional(S.String),
         }),
       ).annotate({
@@ -2717,7 +3620,7 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          instruction: S.optional(__S(41)),
+          instruction: S.optional(GoogleCloudDatalabelingV1beta1Instruction),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1CreateInstructionRequest",
@@ -2726,7 +3629,9 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(42).pipe(T.HttpBody())),
+          body: S.optional(
+            GoogleCloudDatalabelingV1beta1CreateInstructionRequest.pipe(T.HttpBody()),
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2873,8 +3778,8 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          gcsDestination: S.optional(__S(52)),
-          gcsFolderDestination: S.optional(__S(53)),
+          gcsDestination: S.optional(GoogleCloudDatalabelingV1beta1GcsDestination),
+          gcsFolderDestination: S.optional(GoogleCloudDatalabelingV1beta1GcsFolderDestination),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1OutputConfig",
@@ -2885,7 +3790,7 @@ function __c6(j: number): any {
           userEmailAddress: S.optional(S.String),
           filter: S.optional(S.String),
           annotatedDataset: S.optional(S.String),
-          outputConfig: S.optional(__S(54)),
+          outputConfig: S.optional(GoogleCloudDatalabelingV1beta1OutputConfig),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1ExportDataRequest",
@@ -2898,7 +3803,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(55).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatalabelingV1beta1ExportDataRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2956,7 +3861,7 @@ function __c7(j: number): any {
         S.Struct({
           clipLength: S.optional(S.Number),
           overlapLength: S.optional(S.Number),
-          annotationSpecSets: S.optional(__S(2)),
+          annotationSpecSets: S.optional(StringList),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1EventConfig",
@@ -2979,7 +3884,7 @@ function __c7(j: number): any {
         identifier: "GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig",
       });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig);
   }
 }
 function __c8(j: number): any {
@@ -2988,7 +3893,9 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           applyShotDetection: S.optional(S.Boolean),
-          annotationSpecSetConfigs: S.optional(__S(63)),
+          annotationSpecSetConfigs: S.optional(
+            GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfigList,
+          ),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1VideoClassificationConfig",
@@ -3015,17 +3922,25 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          polylineConfig: S.optional(__S(30)),
-          textClassificationConfig: S.optional(__S(32)),
-          eventConfig: S.optional(__S(60)),
-          textEntityExtractionConfig: S.optional(__S(61)),
-          imageClassificationConfig: S.optional(__S(33)),
-          humanAnnotationConfig: S.optional(__S(27)),
-          videoClassificationConfig: S.optional(__S(64)),
-          objectTrackingConfig: S.optional(__S(65)),
-          boundingPolyConfig: S.optional(__S(30)),
-          segmentationConfig: S.optional(__S(30)),
-          objectDetectionConfig: S.optional(__S(66)),
+          polylineConfig: S.optional(GoogleCloudDatalabelingV1beta1BoundingPolyConfig),
+          textClassificationConfig: S.optional(
+            GoogleCloudDatalabelingV1beta1TextClassificationConfig,
+          ),
+          eventConfig: S.optional(GoogleCloudDatalabelingV1beta1EventConfig),
+          textEntityExtractionConfig: S.optional(
+            GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig,
+          ),
+          imageClassificationConfig: S.optional(
+            GoogleCloudDatalabelingV1beta1ImageClassificationConfig,
+          ),
+          humanAnnotationConfig: S.optional(GoogleCloudDatalabelingV1beta1HumanAnnotationConfig),
+          videoClassificationConfig: S.optional(
+            GoogleCloudDatalabelingV1beta1VideoClassificationConfig,
+          ),
+          objectTrackingConfig: S.optional(GoogleCloudDatalabelingV1beta1ObjectTrackingConfig),
+          boundingPolyConfig: S.optional(GoogleCloudDatalabelingV1beta1BoundingPolyConfig),
+          segmentationConfig: S.optional(GoogleCloudDatalabelingV1beta1SegmentationConfig),
+          objectDetectionConfig: S.optional(GoogleCloudDatalabelingV1beta1ObjectDetectionConfig),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata",
@@ -3033,7 +3948,7 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          exampleCount: S.optional(__S(28)),
+          exampleCount: S.optional(StringMap),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1LabelStats",
@@ -3045,12 +3960,16 @@ function __c8(j: number): any {
           displayName: S.optional(S.String),
           name: S.optional(S.String),
           completedExampleCount: S.optional(S.String),
-          metadata: S.optional(__S(67)),
-          annotationSource: S.optional(S.String),
-          labelStats: S.optional(__S(68)),
-          annotationType: S.optional(S.String),
+          metadata: S.optional(GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata),
+          annotationSource: S.optional(
+            GoogleCloudDatalabelingV1beta1AnnotatedDatasetAnnotationSourceEnum,
+          ),
+          labelStats: S.optional(GoogleCloudDatalabelingV1beta1LabelStats),
+          annotationType: S.optional(
+            GoogleCloudDatalabelingV1beta1AnnotatedDatasetAnnotationTypeEnum,
+          ),
           description: S.optional(S.String),
-          blockingResources: S.optional(__S(2)),
+          blockingResources: S.optional(StringList),
           createTime: S.optional(S.String),
         }),
       ).annotate({
@@ -3084,14 +4003,14 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71));
+      return S.Array(GoogleCloudDatalabelingV1beta1VideoThumbnail);
     case 1:
       return S.suspend(() =>
         S.Struct({
           mimeType: S.optional(S.String),
           videoUri: S.optional(S.String),
           signedUri: S.optional(S.String),
-          videoThumbnails: S.optional(__S(72)),
+          videoThumbnails: S.optional(GoogleCloudDatalabelingV1beta1VideoThumbnailList),
           frameRate: S.optional(S.Number),
         }),
       ).annotate({
@@ -3120,9 +4039,9 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          videoPayload: S.optional(__S(73)),
-          textPayload: S.optional(__S(74)),
-          imagePayload: S.optional(__S(75)),
+          videoPayload: S.optional(GoogleCloudDatalabelingV1beta1VideoPayload),
+          textPayload: S.optional(GoogleCloudDatalabelingV1beta1TextPayload),
+          imagePayload: S.optional(GoogleCloudDatalabelingV1beta1ImagePayload),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1DataItem",
@@ -3145,7 +4064,7 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          comments: S.optional(__S(2)),
+          comments: S.optional(StringList),
           score: S.optional(S.Number),
           totalVotes: S.optional(S.Number),
           labelVotes: S.optional(S.Number),
@@ -3156,7 +4075,7 @@ function __c9(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          operatorMetadata: S.optional(__S(78)),
+          operatorMetadata: S.optional(GoogleCloudDatalabelingV1beta1OperatorMetadata),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1AnnotationMetadata",
@@ -3175,11 +4094,11 @@ function __c10(j: number): any {
         identifier: "GoogleCloudDatalabelingV1beta1NormalizedVertex",
       });
     case 1:
-      return S.Array(__S(80));
+      return S.Array(GoogleCloudDatalabelingV1beta1NormalizedVertex);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          normalizedVertices: S.optional(__S(81)),
+          normalizedVertices: S.optional(GoogleCloudDatalabelingV1beta1NormalizedVertexList),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1NormalizedPolyline",
@@ -3194,11 +4113,11 @@ function __c10(j: number): any {
         identifier: "GoogleCloudDatalabelingV1beta1Vertex",
       });
     case 4:
-      return S.Array(__S(83));
+      return S.Array(GoogleCloudDatalabelingV1beta1Vertex);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          vertices: S.optional(__S(84)),
+          vertices: S.optional(GoogleCloudDatalabelingV1beta1VertexList),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1Polyline",
@@ -3206,9 +4125,9 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          annotationSpec: S.optional(__S(3)),
-          normalizedPolyline: S.optional(__S(82)),
-          polyline: S.optional(__S(85)),
+          annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
+          normalizedPolyline: S.optional(GoogleCloudDatalabelingV1beta1NormalizedPolyline),
+          polyline: S.optional(GoogleCloudDatalabelingV1beta1Polyline),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation",
@@ -3230,20 +4149,20 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           timeOffset: S.optional(S.String),
-          normalizedBoundingPoly: S.optional(__S(82)),
-          boundingPoly: S.optional(__S(85)),
+          normalizedBoundingPoly: S.optional(GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly),
+          boundingPoly: S.optional(GoogleCloudDatalabelingV1beta1BoundingPoly),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1ObjectTrackingFrame",
       });
     case 1:
-      return S.Array(__S(88));
+      return S.Array(GoogleCloudDatalabelingV1beta1ObjectTrackingFrame);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          timeSegment: S.optional(__S(87)),
-          objectTrackingFrames: S.optional(__S(89)),
-          annotationSpec: S.optional(__S(3)),
+          timeSegment: S.optional(GoogleCloudDatalabelingV1beta1TimeSegment),
+          objectTrackingFrames: S.optional(GoogleCloudDatalabelingV1beta1ObjectTrackingFrameList),
+          annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation",
@@ -3251,7 +4170,7 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          annotationSpec: S.optional(__S(3)),
+          annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation",
@@ -3259,9 +4178,9 @@ function __c11(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          normalizedBoundingPoly: S.optional(__S(82)),
-          boundingPoly: S.optional(__S(85)),
-          annotationSpec: S.optional(__S(3)),
+          normalizedBoundingPoly: S.optional(GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly),
+          boundingPoly: S.optional(GoogleCloudDatalabelingV1beta1BoundingPoly),
+          annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation",
@@ -3269,8 +4188,8 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          annotationSpec: S.optional(__S(3)),
-          timeSegment: S.optional(__S(87)),
+          annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
+          timeSegment: S.optional(GoogleCloudDatalabelingV1beta1TimeSegment),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation",
@@ -3278,14 +4197,14 @@ function __c11(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          timeSegment: S.optional(__S(87)),
-          annotationSpec: S.optional(__S(3)),
+          timeSegment: S.optional(GoogleCloudDatalabelingV1beta1TimeSegment),
+          annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1VideoEventAnnotation",
       });
     case 7:
-      return S.Record(S.String, __S(3));
+      return S.Record(S.String, GoogleCloudDatalabelingV1beta1AnnotationSpec);
   }
 }
 function __c12(j: number): any {
@@ -3293,7 +4212,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          annotationColors: S.optional(__S(95)),
+          annotationColors: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpecMap),
           imageBytes: S.optional(S.String),
           mimeType: S.optional(S.String),
         }),
@@ -3312,8 +4231,8 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          annotationSpec: S.optional(__S(3)),
-          sequentialSegment: S.optional(__S(97)),
+          annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
+          sequentialSegment: S.optional(GoogleCloudDatalabelingV1beta1SequentialSegment),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation",
@@ -3321,15 +4240,31 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          imagePolylineAnnotation: S.optional(__S(86)),
-          videoObjectTrackingAnnotation: S.optional(__S(90)),
-          imageClassificationAnnotation: S.optional(__S(91)),
-          textClassificationAnnotation: S.optional(__S(91)),
-          imageBoundingPolyAnnotation: S.optional(__S(92)),
-          videoClassificationAnnotation: S.optional(__S(93)),
-          videoEventAnnotation: S.optional(__S(94)),
-          imageSegmentationAnnotation: S.optional(__S(96)),
-          textEntityExtractionAnnotation: S.optional(__S(98)),
+          imagePolylineAnnotation: S.optional(
+            GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation,
+          ),
+          videoObjectTrackingAnnotation: S.optional(
+            GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation,
+          ),
+          imageClassificationAnnotation: S.optional(
+            GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation,
+          ),
+          textClassificationAnnotation: S.optional(
+            GoogleCloudDatalabelingV1beta1TextClassificationAnnotation,
+          ),
+          imageBoundingPolyAnnotation: S.optional(
+            GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation,
+          ),
+          videoClassificationAnnotation: S.optional(
+            GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation,
+          ),
+          videoEventAnnotation: S.optional(GoogleCloudDatalabelingV1beta1VideoEventAnnotation),
+          imageSegmentationAnnotation: S.optional(
+            GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation,
+          ),
+          textEntityExtractionAnnotation: S.optional(
+            GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation,
+          ),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1AnnotationValue",
@@ -3337,25 +4272,29 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          annotationSource: S.optional(S.String),
-          annotationSentiment: S.optional(S.String),
+          annotationSource: S.optional(
+            GoogleCloudDatalabelingV1beta1AnnotationAnnotationSourceEnum,
+          ),
+          annotationSentiment: S.optional(
+            GoogleCloudDatalabelingV1beta1AnnotationAnnotationSentimentEnum,
+          ),
           name: S.optional(S.String),
-          annotationMetadata: S.optional(__S(79)),
-          annotationValue: S.optional(__S(99)),
+          annotationMetadata: S.optional(GoogleCloudDatalabelingV1beta1AnnotationMetadata),
+          annotationValue: S.optional(GoogleCloudDatalabelingV1beta1AnnotationValue),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1Annotation",
       });
     case 5:
-      return S.Array(__S(100));
+      return S.Array(GoogleCloudDatalabelingV1beta1Annotation);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          videoPayload: S.optional(__S(73)),
-          annotations: S.optional(__S(101)),
-          textPayload: S.optional(__S(74)),
+          videoPayload: S.optional(GoogleCloudDatalabelingV1beta1VideoPayload),
+          annotations: S.optional(GoogleCloudDatalabelingV1beta1AnnotationList),
+          textPayload: S.optional(GoogleCloudDatalabelingV1beta1TextPayload),
           name: S.optional(S.String),
-          imagePayload: S.optional(__S(75)),
+          imagePayload: S.optional(GoogleCloudDatalabelingV1beta1ImagePayload),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1Example",
@@ -3382,7 +4321,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(GoogleCloudDatalabelingV1beta1FeedbackThreadMetadataStatusEnum),
           thumbnail: S.optional(S.String),
           lastUpdateTime: S.optional(S.String),
         }),
@@ -3393,7 +4332,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          feedbackThreadMetadata: S.optional(__S(104)),
+          feedbackThreadMetadata: S.optional(GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1FeedbackThread",
@@ -3444,18 +4383,18 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           itemCount: S.optional(S.Number),
-          annotationSpec: S.optional(__S(3)),
+          annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry",
       });
     case 6:
-      return S.Array(__S(109));
+      return S.Array(GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(__S(110)),
-          annotationSpec: S.optional(__S(3)),
+          entries: S.optional(GoogleCloudDatalabelingV1beta1ConfusionMatrixEntryList),
+          annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1Row",
@@ -3465,11 +4404,11 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(111));
+      return S.Array(GoogleCloudDatalabelingV1beta1Row);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          row: S.optional(__S(112)),
+          row: S.optional(GoogleCloudDatalabelingV1beta1RowList),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1ConfusionMatrix",
@@ -3492,12 +4431,14 @@ function __c14(j: number): any {
         identifier: "GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry",
       });
     case 3:
-      return S.Array(__S(114));
+      return S.Array(GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          annotationSpec: S.optional(__S(3)),
-          confidenceMetricsEntries: S.optional(__S(115)),
+          annotationSpec: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpec),
+          confidenceMetricsEntries: S.optional(
+            GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntryList,
+          ),
           areaUnderCurve: S.optional(S.Number),
           meanAveragePrecision: S.optional(S.Number),
         }),
@@ -3507,8 +4448,8 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          confusionMatrix: S.optional(__S(113)),
-          prCurve: S.optional(__S(116)),
+          confusionMatrix: S.optional(GoogleCloudDatalabelingV1beta1ConfusionMatrix),
+          prCurve: S.optional(GoogleCloudDatalabelingV1beta1PrCurve),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1ClassificationMetrics",
@@ -3516,7 +4457,7 @@ function __c14(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          prCurve: S.optional(__S(116)),
+          prCurve: S.optional(GoogleCloudDatalabelingV1beta1PrCurve),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics",
@@ -3524,8 +4465,8 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          classificationMetrics: S.optional(__S(117)),
-          objectDetectionMetrics: S.optional(__S(118)),
+          classificationMetrics: S.optional(GoogleCloudDatalabelingV1beta1ClassificationMetrics),
+          objectDetectionMetrics: S.optional(GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1EvaluationMetrics",
@@ -3539,10 +4480,10 @@ function __c15(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           createTime: S.optional(S.String),
-          annotationType: S.optional(S.String),
-          evaluationMetrics: S.optional(__S(119)),
+          annotationType: S.optional(GoogleCloudDatalabelingV1beta1EvaluationAnnotationTypeEnum),
+          evaluationMetrics: S.optional(GoogleCloudDatalabelingV1beta1EvaluationMetrics),
           evaluationJobRunTime: S.optional(S.String),
-          config: S.optional(__S(35)),
+          config: S.optional(GoogleCloudDatalabelingV1beta1EvaluationConfig),
           evaluatedItemCount: S.optional(S.String),
         }),
       ).annotate({
@@ -3594,7 +4535,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userEmailAddress: S.optional(S.String),
-          inputConfig: S.optional(__S(12)),
+          inputConfig: S.optional(GoogleCloudDatalabelingV1beta1InputConfig),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1ImportDataRequest",
@@ -3603,7 +4544,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(124).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatalabelingV1beta1ImportDataRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3617,12 +4558,14 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          segmentationConfig: S.optional(__S(30)),
-          imageClassificationConfig: S.optional(__S(33)),
-          boundingPolyConfig: S.optional(__S(30)),
-          polylineConfig: S.optional(__S(30)),
-          basicConfig: S.optional(__S(27)),
-          feature: S.optional(S.String),
+          segmentationConfig: S.optional(GoogleCloudDatalabelingV1beta1SegmentationConfig),
+          imageClassificationConfig: S.optional(
+            GoogleCloudDatalabelingV1beta1ImageClassificationConfig,
+          ),
+          boundingPolyConfig: S.optional(GoogleCloudDatalabelingV1beta1BoundingPolyConfig),
+          polylineConfig: S.optional(GoogleCloudDatalabelingV1beta1BoundingPolyConfig),
+          basicConfig: S.optional(GoogleCloudDatalabelingV1beta1HumanAnnotationConfig),
+          feature: S.optional(GoogleCloudDatalabelingV1beta1LabelImageRequestFeatureEnum),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1LabelImageRequest",
@@ -3631,7 +4574,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(126).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatalabelingV1beta1LabelImageRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3649,10 +4592,14 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          textClassificationConfig: S.optional(__S(32)),
-          textEntityExtractionConfig: S.optional(__S(61)),
-          basicConfig: S.optional(__S(27)),
-          feature: S.optional(S.String),
+          textClassificationConfig: S.optional(
+            GoogleCloudDatalabelingV1beta1TextClassificationConfig,
+          ),
+          textEntityExtractionConfig: S.optional(
+            GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig,
+          ),
+          basicConfig: S.optional(GoogleCloudDatalabelingV1beta1HumanAnnotationConfig),
+          feature: S.optional(GoogleCloudDatalabelingV1beta1LabelTextRequestFeatureEnum),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1LabelTextRequest",
@@ -3661,7 +4608,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(128).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatalabelingV1beta1LabelTextRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3675,12 +4622,14 @@ function __c16(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          objectTrackingConfig: S.optional(__S(65)),
-          eventConfig: S.optional(__S(60)),
-          basicConfig: S.optional(__S(27)),
-          feature: S.optional(S.String),
-          objectDetectionConfig: S.optional(__S(66)),
-          videoClassificationConfig: S.optional(__S(64)),
+          objectTrackingConfig: S.optional(GoogleCloudDatalabelingV1beta1ObjectTrackingConfig),
+          eventConfig: S.optional(GoogleCloudDatalabelingV1beta1EventConfig),
+          basicConfig: S.optional(GoogleCloudDatalabelingV1beta1HumanAnnotationConfig),
+          feature: S.optional(GoogleCloudDatalabelingV1beta1LabelVideoRequestFeatureEnum),
+          objectDetectionConfig: S.optional(GoogleCloudDatalabelingV1beta1ObjectDetectionConfig),
+          videoClassificationConfig: S.optional(
+            GoogleCloudDatalabelingV1beta1VideoClassificationConfig,
+          ),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1LabelVideoRequest",
@@ -3689,7 +4638,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(130).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatalabelingV1beta1LabelVideoRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3718,11 +4667,11 @@ function __c16(j: number): any {
         identifier: "ListProjectsAnnotationSpecSetsRequest",
       });
     case 5:
-      return S.Array(__S(5));
+      return S.Array(GoogleCloudDatalabelingV1beta1AnnotationSpecSet);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          annotationSpecSets: S.optional(__S(133)),
+          annotationSpecSets: S.optional(GoogleCloudDatalabelingV1beta1AnnotationSpecSetList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3750,11 +4699,11 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(14));
+      return S.Array(GoogleCloudDatalabelingV1beta1Dataset);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          datasets: S.optional(__S(136)),
+          datasets: S.optional(GoogleCloudDatalabelingV1beta1DatasetList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3778,12 +4727,12 @@ function __c17(j: number): any {
         identifier: "ListProjectsDatasetsAnnotatedDatasetsRequest",
       });
     case 3:
-      return S.Array(__S(69));
+      return S.Array(GoogleCloudDatalabelingV1beta1AnnotatedDataset);
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          annotatedDatasets: S.optional(__S(139)),
+          annotatedDatasets: S.optional(GoogleCloudDatalabelingV1beta1AnnotatedDatasetList),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse",
@@ -3806,12 +4755,12 @@ function __c17(j: number): any {
         identifier: "ListProjectsDatasetsAnnotatedDatasetsDataItemsRequest",
       });
     case 6:
-      return S.Array(__S(76));
+      return S.Array(GoogleCloudDatalabelingV1beta1DataItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          dataItems: S.optional(__S(142)),
+          dataItems: S.optional(GoogleCloudDatalabelingV1beta1DataItemList),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1ListDataItemsResponse",
@@ -3838,12 +4787,12 @@ function __c18(j: number): any {
         identifier: "ListProjectsDatasetsAnnotatedDatasetsExamplesRequest",
       });
     case 1:
-      return S.Array(__S(102));
+      return S.Array(GoogleCloudDatalabelingV1beta1Example);
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          examples: S.optional(__S(145)),
+          examples: S.optional(GoogleCloudDatalabelingV1beta1ExampleList),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1ListExamplesResponse",
@@ -3865,12 +4814,12 @@ function __c18(j: number): any {
         identifier: "ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest",
       });
     case 4:
-      return S.Array(__S(105));
+      return S.Array(GoogleCloudDatalabelingV1beta1FeedbackThread);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          feedbackThreads: S.optional(__S(148)),
+          feedbackThreads: S.optional(GoogleCloudDatalabelingV1beta1FeedbackThreadList),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse",
@@ -3892,7 +4841,7 @@ function __c18(j: number): any {
         identifier: "ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest",
       });
     case 7:
-      return S.Array(__S(18));
+      return S.Array(GoogleCloudDatalabelingV1beta1FeedbackMessage);
   }
 }
 function __c19(j: number): any {
@@ -3901,7 +4850,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          feedbackMessages: S.optional(__S(151)),
+          feedbackMessages: S.optional(GoogleCloudDatalabelingV1beta1FeedbackMessageList),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse",
@@ -3941,12 +4890,12 @@ function __c19(j: number): any {
         identifier: "ListProjectsEvaluationJobsRequest",
       });
     case 3:
-      return S.Array(__S(37));
+      return S.Array(GoogleCloudDatalabelingV1beta1EvaluationJob);
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          evaluationJobs: S.optional(__S(155)),
+          evaluationJobs: S.optional(GoogleCloudDatalabelingV1beta1EvaluationJobList),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse",
@@ -3969,11 +4918,11 @@ function __c19(j: number): any {
         identifier: "ListProjectsInstructionsRequest",
       });
     case 6:
-      return S.Array(__S(41));
+      return S.Array(GoogleCloudDatalabelingV1beta1Instruction);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          instructions: S.optional(__S(158)),
+          instructions: S.optional(GoogleCloudDatalabelingV1beta1InstructionList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4002,13 +4951,13 @@ function __c20(j: number): any {
         identifier: "ListProjectsOperationsRequest",
       });
     case 1:
-      return S.Array(__S(23));
+      return S.Array(GoogleLongrunningOperation);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(161)),
+          operations: S.optional(GoogleLongrunningOperationList),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(2)),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
@@ -4018,7 +4967,7 @@ function __c20(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(37).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatalabelingV1beta1EvaluationJob.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4033,7 +4982,9 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(17).pipe(T.HttpBody())),
+          body: S.optional(
+            GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata.pipe(T.HttpBody()),
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4048,7 +4999,9 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(17).pipe(T.HttpBody())),
+          body: S.optional(
+            GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata.pipe(T.HttpBody()),
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4072,7 +5025,9 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(166).pipe(T.HttpBody())),
+          body: S.optional(
+            GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest.pipe(T.HttpBody()),
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4090,18 +5045,18 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          groundTruthExample: S.optional(__S(102)),
-          modelCreatedExamples: S.optional(__S(145)),
+          groundTruthExample: S.optional(GoogleCloudDatalabelingV1beta1Example),
+          modelCreatedExamples: S.optional(GoogleCloudDatalabelingV1beta1ExampleList),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1ExampleComparison",
       });
     case 1:
-      return S.Array(__S(168));
+      return S.Array(GoogleCloudDatalabelingV1beta1ExampleComparison);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          exampleComparisons: S.optional(__S(169)),
+          exampleComparisons: S.optional(GoogleCloudDatalabelingV1beta1ExampleComparisonList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4125,68 +5080,15 @@ function __c21(j: number): any {
         identifier: "SearchProjectsEvaluationsRequest",
       });
     case 4:
-      return S.Array(__S(120));
+      return S.Array(GoogleCloudDatalabelingV1beta1Evaluation);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          evaluations: S.optional(__S(172)),
+          evaluations: S.optional(GoogleCloudDatalabelingV1beta1EvaluationList),
         }),
       ).annotate({
         identifier: "GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
   }
 }

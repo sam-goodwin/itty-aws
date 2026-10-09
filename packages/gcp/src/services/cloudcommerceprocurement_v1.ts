@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -69,15 +67,29 @@ export interface ApproveEntitlementPlanChangeRequest {
   /** Required. Name of the pending plan that's being approved. */
   pendingPlanName?: string;
 }
+const ApproveEntitlementPlanChangeRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ApproveEntitlementPlanChangeRequest>;
+
 export interface ApprovePlanChangeProvidersEntitlementsRequest {
   /** Required. The resource name of the entitlement. */
   name: string;
   /** Request body */
   body?: ApproveEntitlementPlanChangeRequest;
 }
+const ApprovePlanChangeProvidersEntitlementsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ApprovePlanChangeProvidersEntitlementsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Empty>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<StringMap>;
+
 /** Request message for PartnerProcurementService.ApproveAccount. */
 export interface ApproveAccountRequest {
   /** Free form text string explaining the approval reason. Optional. Max allowed length: 256 bytes. Longer strings will be truncated. */
@@ -87,12 +99,22 @@ export interface ApproveAccountRequest {
   /** The name of the approval being approved. If absent and there is only one approval possible, that approval will be granted. If absent and there are many approvals possible, the request will fail with a 400 Bad Request. Optional. */
   approvalName?: string;
 }
+const ApproveAccountRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ApproveAccountRequest>;
+
 export interface ApproveProvidersAccountsRequest {
   /** Required. The resource name of the account, with the format `providers/{providerId}/accounts/{accountId}`. */
   name: string;
   /** Request body */
   body?: ApproveAccountRequest;
 }
+const ApproveProvidersAccountsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ApproveProvidersAccountsRequest>;
+
 /** Request message for [PartnerProcurementService.ApproveEntitlement[]. */
 export interface ApproveEntitlementRequest {
   /** Set of properties that should be associated with the entitlement. Optional. */
@@ -100,24 +122,45 @@ export interface ApproveEntitlementRequest {
   /** Optional. The resource name of the entitlement that was migrated, with the format `providers/{provider_id}/entitlements/{entitlement_id}`. Should only be sent when resources have been migrated from entitlement_migrated to the new entitlement. Optional. */
   entitlementMigrated?: string;
 }
+const ApproveEntitlementRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ApproveEntitlementRequest>;
+
 export interface ApproveProvidersEntitlementsRequest {
   /** Required. The resource name of the entitlement, with the format `providers/{providerId}/entitlements/{entitlementId}`. */
   name: string;
   /** Request body */
   body?: ApproveEntitlementRequest;
 }
+const ApproveProvidersEntitlementsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ApproveProvidersEntitlementsRequest>;
+
 export type GetProvidersAccountsViewEnum =
   | "ACCOUNT_VIEW_UNSPECIFIED"
   | "ACCOUNT_VIEW_BASIC"
   | "ACCOUNT_VIEW_FULL";
+const GetProvidersAccountsViewEnum = S.String;
+
 export interface GetProvidersAccountsRequest {
   /** Required. The name of the account to retrieve. */
   name: string;
   /** Optional. What information to include in the response. */
   view?: GetProvidersAccountsViewEnum | (string & {});
 }
+const GetProvidersAccountsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetProvidersAccountsRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DocumentMap>;
+
 export type ApprovalStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "APPROVED" | "REJECTED";
+const ApprovalStateEnum = S.String;
+
 /** An approval for some action on an account. */
 export interface Approval {
   /** Output only. The name of the approval. */
@@ -129,11 +172,17 @@ export interface Approval {
   /** Optional. The last update timestamp of the approval. */
   updateTime?: string;
 }
+const Approval = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Approval>;
+
 export type ApprovalList = Array<Approval>;
+const ApprovalList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ApprovalList>;
+
 export type AccountStateEnum =
   | "ACCOUNT_STATE_UNSPECIFIED"
   | "ACCOUNT_ACTIVATION_REQUESTED"
   | "ACCOUNT_ACTIVE";
+const AccountStateEnum = S.String;
+
 /** Represents an account that was established by the customer on the service provider's system. */
 export interface Account {
   /** Output only. The identifier of the service provider that this account was created against. Each service provider is assigned a unique provider value when they onboard with Cloud Commerce platform. */
@@ -153,10 +202,17 @@ export interface Account {
   /** Output only. The state of the account. This is used to decide whether the customer is in good standing with the provider and is able to make purchases. An account might not be able to make a purchase if the billing account is suspended, for example. */
   state?: AccountStateEnum;
 }
+const Account = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Account>;
+
 export interface GetProvidersEntitlementsRequest {
   /** Required. The name of the entitlement to retrieve. */
   name: string;
 }
+const GetProvidersEntitlementsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetProvidersEntitlementsRequest>;
+
 export type EntitlementStateEnum =
   | "ENTITLEMENT_STATE_UNSPECIFIED"
   | "ENTITLEMENT_ACTIVATION_REQUESTED"
@@ -166,13 +222,21 @@ export type EntitlementStateEnum =
   | "ENTITLEMENT_PENDING_PLAN_CHANGE"
   | "ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL"
   | "ENTITLEMENT_SUSPENDED";
+const EntitlementStateEnum = S.String;
+
 /** A resource using (consuming) this entitlement. */
 export interface Consumer {
   /** A project name with format `projects/`. */
   project?: string;
 }
+const Consumer = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Consumer>;
+
 export type ConsumerList = Array<Consumer>;
+const ConsumerList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ConsumerList>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<StringList>;
+
 /** Represents a procured product of a customer. */
 export interface Entitlement {
   /** Output only. The duration of the new offer, in ISO 8601 duration format. This field is populated for pending offer changes. It isn't populated for entitlements which aren't active yet. If the offer has a specified end date instead of a duration, this field is empty. * If the entitlement is in the state ENTITLEMENT_ACTIVATION_REQUESTED, ENTITLEMENT_ACTIVE, or ENTITLEMENT_PENDING_CANCELLATION, this field is empty. * If the entitlement is in the state ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL or ENTITLEMENT_PENDING_PLAN_CHANGE, and the upcoming offer doesn't have a specified end date, then this field is populated with the duration of the upcoming offer. Otherwise, this field is empty. * If the entitlement is in the state ENTITLEMENT_CANCELLED, then this field is empty. */
@@ -228,6 +292,8 @@ export interface Entitlement {
   /** Output only. The identifier of the quote that was used to procure. Empty if the order is not purchased using a quote. */
   quoteExternalName?: string;
 }
+const Entitlement = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Entitlement>;
+
 export interface ListProvidersAccountsRequest {
   /** Required. The parent resource name. */
   parent: string;
@@ -236,7 +302,14 @@ export interface ListProvidersAccountsRequest {
   /** The maximum number of entries that are requested. The default page size is 25 and the maximum page size is 200. */
   pageSize?: number;
 }
+const ListProvidersAccountsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListProvidersAccountsRequest>;
+
 export type AccountList = Array<Account>;
+const AccountList = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<AccountList>;
+
 /** Response message for [PartnerProcurementService.ListAccounts[]. */
 export interface ListAccountsResponse {
   /** The token for fetching the next page. */
@@ -244,6 +317,8 @@ export interface ListAccountsResponse {
   /** The list of accounts in this response. */
   accounts?: AccountList;
 }
+const ListAccountsResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ListAccountsResponse>;
+
 export interface ListProvidersEntitlementsRequest {
   /** Required. The parent resource name. */
   parent: string;
@@ -254,7 +329,14 @@ export interface ListProvidersEntitlementsRequest {
   /** The filter that can be used to limit the list request. The filter is a query string that can match a selected set of attributes with string values. For example `account=E-1234-5678-ABCD-EFGH`, `state=pending_cancellation`, and `plan!=foo-plan`. Supported query attributes are * `account` * `customer_billing_account` with value in the format of: `billingAccounts/{id}` * `product_external_name` * `quote_external_name` * `offer` * `new_pending_offer` * `plan` * `newPendingPlan` or `new_pending_plan` * `state` * `services` * `consumers.project` * `change_history.new_offer` Note that the consumers and change_history.new_offer match works on repeated structures, so equality (`consumers.project=projects/123456789`) is not supported. Set membership can be expressed with the `:` operator. For example, `consumers.project:projects/123456789` finds entitlements with at least one consumer with project field equal to `projects/123456789`. `change_history.new_offer` retrieves all entitlements that were once associated or are currently active with the offer. Also note that the state name match is case-insensitive and query can omit the prefix "ENTITLEMENT_". For example, `state=active` is equivalent to `state=ENTITLEMENT_ACTIVE`. If the query contains some special characters other than letters, underscore, or digits, the phrase must be quoted with double quotes. For example, `product="providerId:productId"`, where the product name needs to be quoted because it contains special character colon. Queries can be combined with `AND`, `OR`, and `NOT` to form more complex queries. They can also be grouped to force a desired evaluation order. For example, `state=active AND (account=E-1234 OR account=5678) AND NOT (product=foo-product)`. Connective `AND` can be omitted between two predicates. For example `account=E-1234 state=active` is equivalent to `account=E-1234 AND state=active`. */
   filter?: string;
 }
+const ListProvidersEntitlementsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ListProvidersEntitlementsRequest>;
+
 export type EntitlementList = Array<Entitlement>;
+const EntitlementList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<EntitlementList>;
+
 /** Response message for PartnerProcurementService.ListEntitlements. */
 export interface ListEntitlementsResponse {
   /** The token for fetching the next page. */
@@ -262,6 +344,11 @@ export interface ListEntitlementsResponse {
   /** The list of entitlements in this response. */
   entitlements?: EntitlementList;
 }
+const ListEntitlementsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListEntitlementsResponse>;
+
 export interface PatchProvidersEntitlementsRequest {
   /** Required. The name of the entitlement to update. */
   name: string;
@@ -270,6 +357,11 @@ export interface PatchProvidersEntitlementsRequest {
   /** Request body */
   body?: Entitlement;
 }
+const PatchProvidersEntitlementsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<PatchProvidersEntitlementsRequest>;
+
 /** Request message for PartnerProcurementService.RejectEntitlementPlanChange. */
 export interface RejectEntitlementPlanChangeRequest {
   /** Required. Name of the pending plan that is being rejected. */
@@ -277,12 +369,22 @@ export interface RejectEntitlementPlanChangeRequest {
   /** Free form text string explaining the rejection reason. Max allowed length: 256 bytes. Longer strings will be truncated. */
   reason?: string;
 }
+const RejectEntitlementPlanChangeRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<RejectEntitlementPlanChangeRequest>;
+
 export interface RejectPlanChangeProvidersEntitlementsRequest {
   /** Required. The resource name of the entitlement. */
   name: string;
   /** Request body */
   body?: RejectEntitlementPlanChangeRequest;
 }
+const RejectPlanChangeProvidersEntitlementsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<RejectPlanChangeProvidersEntitlementsRequest>;
+
 /** Request message for PartnerProcurementService.RejectAccount. */
 export interface RejectAccountRequest {
   /** The name of the approval being rejected. If absent and there is only one approval possible, that approval will be rejected. If absent and there are many approvals possible, the request will fail with a 400 Bad Request. Optional. */
@@ -290,42 +392,76 @@ export interface RejectAccountRequest {
   /** Free form text string explaining the rejection reason. Max allowed length: 256 bytes. Longer strings will be truncated. */
   reason?: string;
 }
+const RejectAccountRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<RejectAccountRequest>;
+
 export interface RejectProvidersAccountsRequest {
   /** Required. The resource name of the account. */
   name: string;
   /** Request body */
   body?: RejectAccountRequest;
 }
+const RejectProvidersAccountsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<RejectProvidersAccountsRequest>;
+
 /** Request message for PartnerProcurementService.RejectEntitlement. */
 export interface RejectEntitlementRequest {
   /** Free form text string explaining the rejection reason. Max allowed length: 256 bytes. Longer strings will be truncated. */
   reason?: string;
 }
+const RejectEntitlementRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<RejectEntitlementRequest>;
+
 export interface RejectProvidersEntitlementsRequest {
   /** Required. The resource name of the entitlement. */
   name: string;
   /** Request body */
   body?: RejectEntitlementRequest;
 }
+const RejectProvidersEntitlementsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<RejectProvidersEntitlementsRequest>;
+
 /** Request message for PartnerProcurementService.ResetAccount. */
 export interface ResetAccountRequest {}
+const ResetAccountRequest = Empty as any as S.Schema<ResetAccountRequest>;
+
 export interface ResetProvidersAccountsRequest {
   /** Required. The resource name of the account. */
   name: string;
   /** Request body */
   body?: ResetAccountRequest;
 }
+const ResetProvidersAccountsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ResetProvidersAccountsRequest>;
+
 /** Request message for ParterProcurementService.SuspendEntitlement. This is not yet supported. */
 export interface SuspendEntitlementRequest {
   /** A free-form reason string, explaining the reason for suspension request. */
   reason?: string;
 }
+const SuspendEntitlementRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<SuspendEntitlementRequest>;
+
 export interface SuspendProvidersEntitlementsRequest {
   /** Required. The name of the entitlement to suspend. */
   name: string;
   /** Request body */
   body?: SuspendEntitlementRequest;
 }
+const SuspendProvidersEntitlementsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<SuspendProvidersEntitlementsRequest>;
+
 export type ApprovePlanChangeProvidersEntitlementsError =
   | NotFound
   | Forbidden
@@ -339,8 +475,8 @@ export const approvePlanChangeProvidersEntitlements: API.OperationMethod<
   ApprovePlanChangeProvidersEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<ApprovePlanChangeProvidersEntitlementsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: ApprovePlanChangeProvidersEntitlementsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -359,8 +495,8 @@ export const approveProvidersAccounts: API.OperationMethod<
   ApproveProvidersAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<ApproveProvidersAccountsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: ApproveProvidersAccountsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -379,8 +515,8 @@ export const approveProvidersEntitlements: API.OperationMethod<
   ApproveProvidersEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<ApproveProvidersEntitlementsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: ApproveProvidersEntitlementsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -394,8 +530,8 @@ export const getProvidersAccounts: API.OperationMethod<
   GetProvidersAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<GetProvidersAccountsRequest>,
-  output: __S(12) as any as S.Schema<Account>,
+  input: GetProvidersAccountsRequest,
+  output: Account,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -409,8 +545,8 @@ export const getProvidersEntitlements: API.OperationMethod<
   GetProvidersEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<GetProvidersEntitlementsRequest>,
-  output: __S(17) as any as S.Schema<Entitlement>,
+  input: GetProvidersEntitlementsRequest,
+  output: Entitlement,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -425,8 +561,8 @@ export const listProvidersAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(18) as any as S.Schema<ListProvidersAccountsRequest>,
-  output: __S(20) as any as S.Schema<ListAccountsResponse>,
+  input: ListProvidersAccountsRequest,
+  output: ListAccountsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -442,8 +578,8 @@ export const listProvidersEntitlements: API.PaginatedOperationMethod<
   GcpOpContext,
   ListEntitlementsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(21) as any as S.Schema<ListProvidersEntitlementsRequest>,
-  output: __S(23) as any as S.Schema<ListEntitlementsResponse>,
+  input: ListProvidersEntitlementsRequest,
+  output: ListEntitlementsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -463,8 +599,8 @@ export const patchProvidersEntitlements: API.OperationMethod<
   PatchProvidersEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<PatchProvidersEntitlementsRequest>,
-  output: __S(17) as any as S.Schema<Entitlement>,
+  input: PatchProvidersEntitlementsRequest,
+  output: Entitlement,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -483,8 +619,8 @@ export const rejectPlanChangeProvidersEntitlements: API.OperationMethod<
   RejectPlanChangeProvidersEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<RejectPlanChangeProvidersEntitlementsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: RejectPlanChangeProvidersEntitlementsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -503,8 +639,8 @@ export const rejectProvidersAccounts: API.OperationMethod<
   RejectProvidersAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<RejectProvidersAccountsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: RejectProvidersAccountsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -523,8 +659,8 @@ export const rejectProvidersEntitlements: API.OperationMethod<
   RejectProvidersEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<RejectProvidersEntitlementsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: RejectProvidersEntitlementsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -538,8 +674,8 @@ export const resetProvidersAccounts: API.OperationMethod<
   ResetProvidersAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<ResetProvidersAccountsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: ResetProvidersAccountsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -558,8 +694,8 @@ export const suspendProvidersEntitlements: API.OperationMethod<
   SuspendProvidersEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<SuspendProvidersEntitlementsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: SuspendProvidersEntitlementsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -580,7 +716,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(ApproveEntitlementPlanChangeRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -601,7 +737,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reason: S.optional(S.String),
-          properties: S.optional(__S(3)),
+          properties: S.optional(StringMap),
           approvalName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApproveAccountRequest" });
@@ -609,7 +745,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(4).pipe(T.HttpBody())),
+          body: S.optional(ApproveAccountRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -623,7 +759,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(3)),
+          properties: S.optional(StringMap),
           entitlementMigrated: S.optional(S.String),
         }),
       ).annotate({
@@ -633,7 +769,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6).pipe(T.HttpBody())),
+          body: S.optional(ApproveEntitlementRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -652,7 +788,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(GetProvidersAccountsViewEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -669,24 +805,24 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(ApprovalStateEnum),
           reason: S.optional(S.String),
           updateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Approval" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(Approval);
     case 4:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
           createTime: S.optional(S.String),
-          inputProperties: S.optional(__S(9)),
-          approvals: S.optional(__S(11)),
+          inputProperties: S.optional(DocumentMap),
+          approvals: S.optional(ApprovalList),
           resellerParentBillingAccount: S.optional(S.String),
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(AccountStateEnum),
         }),
       ).annotate({ identifier: "Account" });
     case 5:
@@ -710,7 +846,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Consumer" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(Consumer);
   }
 }
 function __c2(j: number): any {
@@ -726,16 +862,16 @@ function __c2(j: number): any {
           product: S.optional(S.String),
           updateTime: S.optional(S.String),
           plan: S.optional(S.String),
-          inputProperties: S.optional(__S(9)),
+          inputProperties: S.optional(DocumentMap),
           usageReportingId: S.optional(S.String),
           subscriptionEndTime: S.optional(S.String),
           account: S.optional(S.String),
           newOfferEndTime: S.optional(S.String),
           provider: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(EntitlementStateEnum),
           productExternalName: S.optional(S.String),
-          consumers: S.optional(__S(15)),
-          entitlementBenefitIds: S.optional(__S(16)),
+          consumers: S.optional(ConsumerList),
+          entitlementBenefitIds: S.optional(StringList),
           messageToUser: S.optional(S.String),
           name: S.optional(S.String),
           newOfferStartTime: S.optional(S.String),
@@ -765,12 +901,12 @@ function __c2(j: number): any {
         identifier: "ListProvidersAccountsRequest",
       });
     case 3:
-      return S.Array(__S(12));
+      return S.Array(Account);
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          accounts: S.optional(__S(19)),
+          accounts: S.optional(AccountList),
         }),
       ).annotate({ identifier: "ListAccountsResponse" });
     case 5:
@@ -791,12 +927,12 @@ function __c2(j: number): any {
         identifier: "ListProvidersEntitlementsRequest",
       });
     case 6:
-      return S.Array(__S(17));
+      return S.Array(Entitlement);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          entitlements: S.optional(__S(22)),
+          entitlements: S.optional(EntitlementList),
         }),
       ).annotate({ identifier: "ListEntitlementsResponse" });
   }
@@ -808,7 +944,7 @@ function __c3(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(17).pipe(T.HttpBody())),
+          body: S.optional(Entitlement.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -832,7 +968,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(25).pipe(T.HttpBody())),
+          body: S.optional(RejectEntitlementPlanChangeRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -854,7 +990,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(27).pipe(T.HttpBody())),
+          body: S.optional(RejectAccountRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -875,7 +1011,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(29).pipe(T.HttpBody())),
+          body: S.optional(RejectEntitlementRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -890,7 +1026,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(2).pipe(T.HttpBody())),
+          body: S.optional(ResetAccountRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -917,7 +1053,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(32).pipe(T.HttpBody())),
+          body: S.optional(SuspendEntitlementRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -928,24 +1064,5 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "SuspendProvidersEntitlementsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

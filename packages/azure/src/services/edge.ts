@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -23,8 +21,15 @@ export interface ArtifactsListDownloadUriRequest {
   /** The name of the Artifact */
   artifactName: string;
 }
+const ArtifactsListDownloadUriRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ArtifactsListDownloadUriRequest>;
+
 /** The provisioning state of a resource type. */
 export type AzureResourceManagerResourceProvisioningState = "Succeeded" | "Failed" | "Canceled";
+const AzureResourceManagerResourceProvisioningState = S.String;
+
 /** The artifact download properties */
 export interface ArtifactDownloadResult {
   /** The resource provisioning state */
@@ -42,8 +47,18 @@ export interface ArtifactDownloadResult {
   /** The download link expiry time */
   linkExpiry: string;
 }
+const ArtifactDownloadResult = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ArtifactDownloadResult>;
+
 /** Solution dependencies */
 export type SolutionDependencyParameterDependenciesList = Array<SolutionDependencyParameter>;
+const SolutionDependencyParameterDependenciesList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<SolutionDependencyParameterDependenciesList>;
+
 /** Solution Dependency Context */
 export interface SolutionDependencyParameter {
   /** Solution Version Id */
@@ -59,8 +74,18 @@ export interface SolutionDependencyParameter {
   /** Solution dependencies */
   dependencies?: SolutionDependencyParameterDependenciesList;
 }
+const SolutionDependencyParameter = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<SolutionDependencyParameter>;
+
 /** Solution dependencies */
 export type BulkReviewTargetDetailsSolutionDependenciesList = Array<SolutionDependencyParameter>;
+const BulkReviewTargetDetailsSolutionDependenciesList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<BulkReviewTargetDetailsSolutionDependenciesList>;
+
 /** Bulk publish target details */
 export interface BulkReviewTargetDetails {
   /** ArmId of Target */
@@ -72,12 +97,28 @@ export interface BulkReviewTargetDetails {
   /** Configuration of solution */
   solutionConfiguration?: string;
 }
+const BulkReviewTargetDetails = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<BulkReviewTargetDetails>;
+
 /** Targets to which solution needs to be published */
 export type BulkSolutionTemplateVersionReviewSolutionRequestTargetsList =
   Array<BulkReviewTargetDetails>;
+const BulkSolutionTemplateVersionReviewSolutionRequestTargetsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<BulkSolutionTemplateVersionReviewSolutionRequestTargetsList>;
+
 /** Solution dependencies */
 export type BulkSolutionTemplateVersionReviewSolutionRequestSolutionDependenciesList =
   Array<SolutionDependencyParameter>;
+const BulkSolutionTemplateVersionReviewSolutionRequestSolutionDependenciesList =
+  /*@__PURE__*/ __L.at(
+    __c0,
+    7,
+  ) as any as S.Schema<BulkSolutionTemplateVersionReviewSolutionRequestSolutionDependenciesList>;
+
 export interface BulkSolutionTemplateVersionReviewSolutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -96,9 +137,24 @@ export interface BulkSolutionTemplateVersionReviewSolutionRequest {
   /** Configuration of solution */
   solutionConfiguration?: string;
 }
+const BulkSolutionTemplateVersionReviewSolutionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<BulkSolutionTemplateVersionReviewSolutionRequest>;
+
 export interface BulkSolutionTemplateVersionReviewSolutionResponse {}
+const BulkSolutionTemplateVersionReviewSolutionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<BulkSolutionTemplateVersionReviewSolutionResponse>;
+
 /** Hierarchy Ids */
 export type HierarchyMetadataHierarchyIdsList = Array<string>;
+const HierarchyMetadataHierarchyIdsList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<HierarchyMetadataHierarchyIdsList>;
+
 /** Hierarchy Ids With Level for applying config Template which will further generate ARG objects */
 export interface HierarchyMetadata {
   /** Hierarchy Ids */
@@ -106,10 +162,20 @@ export interface HierarchyMetadata {
   /** Hierarchy Level */
   level?: string;
 }
+const HierarchyMetadata = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<HierarchyMetadata>;
+
 /** Hierarchy ARM Ids */
 export type ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList = Array<HierarchyMetadata>;
+const ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList>;
+
 /** Hierarchy ARM Ids */
 export type ConfigTemplateMetadataPropertiesInputUnLinkedHierarchiesList = Array<HierarchyMetadata>;
+const ConfigTemplateMetadataPropertiesInputUnLinkedHierarchiesList =
+  ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList as any as S.Schema<ConfigTemplateMetadataPropertiesInputUnLinkedHierarchiesList>;
+
 /** ConfigTemplateMetadata Properties */
 export interface ConfigTemplateMetadataPropertiesInput {
   /** ArmId of Context */
@@ -119,6 +185,11 @@ export interface ConfigTemplateMetadataPropertiesInput {
   /** Hierarchy ARM Ids */
   unLinkedHierarchies?: ConfigTemplateMetadataPropertiesInputUnLinkedHierarchiesList;
 }
+const ConfigTemplateMetadataPropertiesInput = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ConfigTemplateMetadataPropertiesInput>;
+
 export interface ConfigTemplateMetadatasCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -131,10 +202,19 @@ export interface ConfigTemplateMetadatasCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ConfigTemplateMetadataPropertiesInput;
 }
+const ConfigTemplateMetadatasCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ConfigTemplateMetadatasCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -150,10 +230,18 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<SystemData>;
+
 /** Hierarchy ARM Ids */
 export type ConfigTemplateMetadataPropertiesLinkedHierarchiesList = Array<HierarchyMetadata>;
+const ConfigTemplateMetadataPropertiesLinkedHierarchiesList =
+  ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList as any as S.Schema<ConfigTemplateMetadataPropertiesLinkedHierarchiesList>;
+
 /** Hierarchy ARM Ids */
 export type ConfigTemplateMetadataPropertiesUnLinkedHierarchiesList = Array<HierarchyMetadata>;
+const ConfigTemplateMetadataPropertiesUnLinkedHierarchiesList =
+  ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList as any as S.Schema<ConfigTemplateMetadataPropertiesUnLinkedHierarchiesList>;
+
 /** Provisioning state of resource */
 export type ProvisioningState =
   | "Succeeded"
@@ -162,6 +250,8 @@ export type ProvisioningState =
   | "Initialized"
   | "InProgress"
   | "Deleting";
+const ProvisioningState = S.String;
+
 /** ConfigTemplateMetadata Properties */
 export interface ConfigTemplateMetadataProperties {
   /** ArmId of Context */
@@ -175,6 +265,11 @@ export interface ConfigTemplateMetadataProperties {
   /** Provisioning state of resource */
   provisioningState?: ProvisioningState;
 }
+const ConfigTemplateMetadataProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ConfigTemplateMetadataProperties>;
+
 export interface ConfigTemplateMetadatasCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -189,13 +284,28 @@ export interface ConfigTemplateMetadatasCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const ConfigTemplateMetadatasCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ConfigTemplateMetadatasCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type ConfigTemplatesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const ConfigTemplatesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ConfigTemplatesCreateOrUpdateRequestTagsMap>;
+
 /** Config Template Properties */
 export interface ConfigTemplatePropertiesInput {
   /** Description of config template */
   description: string;
 }
+const ConfigTemplatePropertiesInput = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ConfigTemplatePropertiesInput>;
+
 export interface ConfigTemplatesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -210,8 +320,16 @@ export interface ConfigTemplatesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ConfigTemplatePropertiesInput;
 }
+const ConfigTemplatesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ConfigTemplatesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type ConfigTemplatesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const ConfigTemplatesCreateOrUpdateResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigTemplatesCreateOrUpdateResponseTagsMap>;
+
 /** Config Template Properties */
 export interface ConfigTemplateProperties {
   /** A unique identifier for the config template, generated by the system */
@@ -223,6 +341,11 @@ export interface ConfigTemplateProperties {
   /** Provisioning state of resource */
   provisioningState?: ProvisioningState;
 }
+const ConfigTemplateProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ConfigTemplateProperties>;
+
 export interface ConfigTemplatesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -241,8 +364,16 @@ export interface ConfigTemplatesCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const ConfigTemplatesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ConfigTemplatesCreateOrUpdateResponse>;
+
 /** Hierarchy Ids */
 export type ConfigTemplatesLinkToHierarchiesRequestHierarchyIdsList = Array<string>;
+const ConfigTemplatesLinkToHierarchiesRequestHierarchyIdsList =
+  HierarchyMetadataHierarchyIdsList as any as S.Schema<ConfigTemplatesLinkToHierarchiesRequestHierarchyIdsList>;
+
 export interface ConfigTemplatesLinkToHierarchiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -257,9 +388,20 @@ export interface ConfigTemplatesLinkToHierarchiesRequest {
   /** Hierarchy Level */
   level?: string;
 }
+const ConfigTemplatesLinkToHierarchiesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ConfigTemplatesLinkToHierarchiesRequest>;
+
 export interface ConfigTemplatesLinkToHierarchiesResponse {}
+const ConfigTemplatesLinkToHierarchiesResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<ConfigTemplatesLinkToHierarchiesResponse>;
+
 /** Hierarchy Ids */
 export type ConfigTemplatesUnLinkFromHierarchiesRequestHierarchyIdsList = Array<string>;
+const ConfigTemplatesUnLinkFromHierarchiesRequestHierarchyIdsList =
+  HierarchyMetadataHierarchyIdsList as any as S.Schema<ConfigTemplatesUnLinkFromHierarchiesRequestHierarchyIdsList>;
+
 export interface ConfigTemplatesUnLinkFromHierarchiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -274,12 +416,25 @@ export interface ConfigTemplatesUnLinkFromHierarchiesRequest {
   /** Hierarchy Level */
   level?: string;
 }
+const ConfigTemplatesUnLinkFromHierarchiesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ConfigTemplatesUnLinkFromHierarchiesRequest>;
+
 export interface ConfigTemplatesUnLinkFromHierarchiesResponse {}
+const ConfigTemplatesUnLinkFromHierarchiesResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<ConfigTemplatesUnLinkFromHierarchiesResponse>;
+
 /** Config Template Version Properties */
 export interface ConfigTemplateVersionPropertiesInput {
   /** Configuration values */
   configurations: unknown;
 }
+const ConfigTemplateVersionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ConfigTemplateVersionPropertiesInput>;
+
 export interface ConfigTemplateVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -292,6 +447,11 @@ export interface ConfigTemplateVersionsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ConfigTemplateVersionPropertiesInput;
 }
+const ConfigTemplateVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ConfigTemplateVersionsCreateOrUpdateRequest>;
+
 /** Config Template Version Properties */
 export interface ConfigTemplateVersionProperties {
   /** Configuration values */
@@ -299,6 +459,11 @@ export interface ConfigTemplateVersionProperties {
   /** Provisioning state of resource */
   provisioningState?: ProvisioningState;
 }
+const ConfigTemplateVersionProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ConfigTemplateVersionProperties>;
+
 export interface ConfigTemplateVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -313,11 +478,21 @@ export interface ConfigTemplateVersionsCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const ConfigTemplateVersionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ConfigTemplateVersionsCreateOrUpdateResponse>;
+
 /** Properties for ConfigurationReference Resource */
 export interface ConfigurationReferencePropertiesInput {
   /** ArmId of Configuration resource */
   configurationResourceId?: string;
 }
+const ConfigurationReferencePropertiesInput = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ConfigurationReferencePropertiesInput>;
+
 export interface ConfigurationReferencesCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -326,6 +501,11 @@ export interface ConfigurationReferencesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationReferencePropertiesInput;
 }
+const ConfigurationReferencesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ConfigurationReferencesCreateOrUpdateRequest>;
+
 /** Properties for ConfigurationReference Resource */
 export interface ConfigurationReferenceProperties {
   /** The status of the last operation. */
@@ -333,6 +513,11 @@ export interface ConfigurationReferenceProperties {
   /** ArmId of Configuration resource */
   configurationResourceId?: string;
 }
+const ConfigurationReferenceProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ConfigurationReferenceProperties>;
+
 export interface ConfigurationReferencesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -345,10 +530,23 @@ export interface ConfigurationReferencesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationReferenceProperties;
 }
+const ConfigurationReferencesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ConfigurationReferencesCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type ConfigurationsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const ConfigurationsCreateOrUpdateRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationsCreateOrUpdateRequestTagsMap>;
+
 /** Configuration Properties */
 export interface ConfigurationPropertiesInput {}
+const ConfigurationPropertiesInput = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ConfigurationPropertiesInput>;
+
 export interface ConfigurationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -363,13 +561,26 @@ export interface ConfigurationsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationPropertiesInput;
 }
+const ConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ConfigurationsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type ConfigurationsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const ConfigurationsCreateOrUpdateResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationsCreateOrUpdateResponseTagsMap>;
+
 /** Configuration Properties */
 export interface ConfigurationProperties {
   /** Provisioning state of resource */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
+const ConfigurationProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ConfigurationProperties>;
+
 export interface ConfigurationsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -386,10 +597,20 @@ export interface ConfigurationsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationProperties;
 }
+const ConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ConfigurationsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type ContextsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const ContextsCreateOrUpdateRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<ContextsCreateOrUpdateRequestTagsMap>;
+
 /** Resource Type State */
 export type ResourceState = "active" | "inactive";
+const ResourceState = S.String;
+
 /** Capability, to match in Solution Templates & Targets */
 export interface Capability {
   /** Name of Capability */
@@ -399,8 +620,15 @@ export interface Capability {
   /** State of resource */
   state?: ResourceState | (string & {});
 }
+const Capability = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Capability>;
+
 /** List of Capabilities */
 export type ContextPropertiesInputCapabilitiesList = Array<Capability>;
+const ContextPropertiesInputCapabilitiesList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ContextPropertiesInputCapabilitiesList>;
+
 /** Hierarchy, to tag Sites / Hierarchy Provider nodes with what they represent */
 export interface Hierarchy {
   /** Name of Hierarchy */
@@ -408,8 +636,15 @@ export interface Hierarchy {
   /** Description of Hierarchy */
   description: string;
 }
+const Hierarchy = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Hierarchy>;
+
 /** List of Hierarchies */
 export type ContextPropertiesInputHierarchiesList = Array<Hierarchy>;
+const ContextPropertiesInputHierarchiesList = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ContextPropertiesInputHierarchiesList>;
+
 /** Context Properties */
 export interface ContextPropertiesInput {
   /** List of Capabilities */
@@ -417,6 +652,11 @@ export interface ContextPropertiesInput {
   /** List of Hierarchies */
   hierarchies: ContextPropertiesInputHierarchiesList;
 }
+const ContextPropertiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ContextPropertiesInput>;
+
 export interface ContextsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -431,12 +671,26 @@ export interface ContextsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ContextPropertiesInput;
 }
+const ContextsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ContextsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type ContextsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const ContextsCreateOrUpdateResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<ContextsCreateOrUpdateResponseTagsMap>;
+
 /** List of Capabilities */
 export type ContextPropertiesCapabilitiesList = Array<Capability>;
+const ContextPropertiesCapabilitiesList =
+  ContextPropertiesInputCapabilitiesList as any as S.Schema<ContextPropertiesCapabilitiesList>;
+
 /** List of Hierarchies */
 export type ContextPropertiesHierarchiesList = Array<Hierarchy>;
+const ContextPropertiesHierarchiesList =
+  ContextPropertiesInputHierarchiesList as any as S.Schema<ContextPropertiesHierarchiesList>;
+
 /** Context Properties */
 export interface ContextProperties {
   /** A unique identifier for the context, generated by the system */
@@ -448,6 +702,8 @@ export interface ContextProperties {
   /** Provisioning state of resource */
   provisioningState?: ProvisioningState;
 }
+const ContextProperties = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ContextProperties>;
+
 export interface ContextsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -464,13 +720,25 @@ export interface ContextsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ContextProperties;
 }
+const ContextsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ContextsCreateOrUpdateResponse>;
+
 /** Denotes which part of the version number will be updated */
 export type UpdateType = "Major" | "Minor" | "Patch";
+const UpdateType = S.String;
+
 /** Config Template Version Resource */
 export interface ConfigTemplateVersionInput {
   /** The resource-specific properties for this resource. */
   properties?: ConfigTemplateVersionPropertiesInput;
 }
+const ConfigTemplateVersionInput = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ConfigTemplateVersionInput>;
+
 export interface CreateConfigTemplateVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -485,6 +753,11 @@ export interface CreateConfigTemplateVersionRequest {
   /** Config Template Version */
   configTemplateVersion: ConfigTemplateVersionInput;
 }
+const CreateConfigTemplateVersionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CreateConfigTemplateVersionRequest>;
+
 export interface CreateConfigTemplateVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -499,16 +772,26 @@ export interface CreateConfigTemplateVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const CreateConfigTemplateVersionResponse =
+  ConfigTemplateVersionsCreateOrUpdateResponse as any as S.Schema<CreateConfigTemplateVersionResponse>;
+
 /** Schema Version Properties */
 export interface SchemaVersionPropertiesInput {
   /** Value of schema version */
   value: unknown;
 }
+const SchemaVersionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<SchemaVersionPropertiesInput>;
+
 /** Schema Version Resource */
 export interface SchemaVersionInput {
   /** The resource-specific properties for this resource. */
   properties?: SchemaVersionPropertiesInput;
 }
+const SchemaVersionInput = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<SchemaVersionInput>;
+
 export interface CreateSchemaVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -523,6 +806,11 @@ export interface CreateSchemaVersionRequest {
   /** Schema Version */
   schemaVersion: SchemaVersionInput;
 }
+const CreateSchemaVersionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<CreateSchemaVersionRequest>;
+
 /** Schema Version Properties */
 export interface SchemaVersionProperties {
   /** Value of schema version */
@@ -530,6 +818,11 @@ export interface SchemaVersionProperties {
   /** Provisioning state of resource */
   provisioningState?: ProvisioningState;
 }
+const SchemaVersionProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<SchemaVersionProperties>;
+
 export interface CreateSchemaVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -544,12 +837,24 @@ export interface CreateSchemaVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const CreateSchemaVersionResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<CreateSchemaVersionResponse>;
+
 /** App components spec */
 export type SolutionTemplateVersionPropertiesInputSpecificationMap = {
   [key: string]: unknown | undefined;
 };
+const SolutionTemplateVersionPropertiesInputSpecificationMap = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<SolutionTemplateVersionPropertiesInputSpecificationMap>;
+
 /** Available Orchestrator types */
 export type OrchestratorType = "TO";
+const OrchestratorType = S.String;
+
 /** Solution Template Version Properties */
 export interface SolutionTemplateVersionPropertiesInput {
   /** Config expressions for this solution version */
@@ -559,11 +864,21 @@ export interface SolutionTemplateVersionPropertiesInput {
   /** Orchestrator type */
   orchestratorType?: OrchestratorType | (string & {});
 }
+const SolutionTemplateVersionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<SolutionTemplateVersionPropertiesInput>;
+
 /** Solution Template Version Resource. Contains configurations that use expressions which can be resolved hierarchically along with edge specifications. */
 export interface SolutionTemplateVersionInput {
   /** The resource-specific properties for this resource. */
   properties?: SolutionTemplateVersionPropertiesInput;
 }
+const SolutionTemplateVersionInput = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<SolutionTemplateVersionInput>;
+
 export interface CreateSolutionTemplateVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -578,16 +893,26 @@ export interface CreateSolutionTemplateVersionRequest {
   /** Solution Template Version */
   solutionTemplateVersion: SolutionTemplateVersionInput;
 }
+const CreateSolutionTemplateVersionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<CreateSolutionTemplateVersionRequest>;
+
 /** App components spec */
 export type SolutionTemplateVersionPropertiesSpecificationMap = {
   [key: string]: unknown | undefined;
 };
+const SolutionTemplateVersionPropertiesSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<SolutionTemplateVersionPropertiesSpecificationMap>;
+
 /** Internal state of resource */
 export type InternalState =
   | "PendingValidation"
   | "Validated"
   | "ValidatedWithSchema"
   | "ValidatedWithoutSchema";
+const InternalState = S.String;
+
 /** Solution Template Version Properties */
 export interface SolutionTemplateVersionProperties {
   /** Config expressions for this solution version */
@@ -601,6 +926,11 @@ export interface SolutionTemplateVersionProperties {
   /** Provisioning state of resource */
   provisioningState?: ProvisioningState;
 }
+const SolutionTemplateVersionProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<SolutionTemplateVersionProperties>;
+
 export interface CreateSolutionTemplateVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -615,6 +945,11 @@ export interface CreateSolutionTemplateVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const CreateSolutionTemplateVersionResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<CreateSolutionTemplateVersionResponse>;
+
 export interface DeleteConfigTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -623,7 +958,15 @@ export interface DeleteConfigTemplateRequest {
   /** The name of the ConfigTemplate */
   configTemplateName: string;
 }
+const DeleteConfigTemplateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<DeleteConfigTemplateRequest>;
+
 export interface DeleteConfigTemplateResponse {}
+const DeleteConfigTemplateResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteConfigTemplateResponse>;
+
 export interface DeleteConfigTemplateMetadatasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -634,7 +977,15 @@ export interface DeleteConfigTemplateMetadatasRequest {
   /** The name of the ConfigTemplateMetadataProperties */
   configTemplateMetadataName: string;
 }
+const DeleteConfigTemplateMetadatasRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<DeleteConfigTemplateMetadatasRequest>;
+
 export interface DeleteConfigTemplateMetadatasResponse {}
+const DeleteConfigTemplateMetadatasResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<DeleteConfigTemplateMetadatasResponse>;
+
 export interface DeleteConfigTemplateVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -645,7 +996,15 @@ export interface DeleteConfigTemplateVersionRequest {
   /** The name of the ConfigTemplateVersion */
   configTemplateVersionName: string;
 }
+const DeleteConfigTemplateVersionRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<DeleteConfigTemplateVersionRequest>;
+
 export interface DeleteConfigTemplateVersionResponse {}
+const DeleteConfigTemplateVersionResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<DeleteConfigTemplateVersionResponse>;
+
 export interface DeleteConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -654,14 +1013,30 @@ export interface DeleteConfigurationRequest {
   /** Name of the Configuration */
   configurationName: string;
 }
+const DeleteConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<DeleteConfigurationRequest>;
+
 export interface DeleteConfigurationResponse {}
+const DeleteConfigurationResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteConfigurationResponse>;
+
 export interface DeleteConfigurationReferenceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The name of the ConfigurationReference */
   configurationReferenceName: string;
 }
+const DeleteConfigurationReferenceRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DeleteConfigurationReferenceRequest>;
+
 export interface DeleteConfigurationReferenceResponse {}
+const DeleteConfigurationReferenceResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<DeleteConfigurationReferenceResponse>;
+
 export interface DeleteContextRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -670,7 +1045,12 @@ export interface DeleteContextRequest {
   /** The name of the Context. */
   contextName: string;
 }
+const DeleteContextRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<DeleteContextRequest>;
+
 export interface DeleteContextResponse {}
+const DeleteContextResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteContextResponse>;
+
 export interface DeleteDiagnosticRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -679,7 +1059,15 @@ export interface DeleteDiagnosticRequest {
   /** Name of Diagnostic. */
   diagnosticName: string;
 }
+const DeleteDiagnosticRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DeleteDiagnosticRequest>;
+
 export interface DeleteDiagnosticResponse {}
+const DeleteDiagnosticResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteDiagnosticResponse>;
+
 export interface DeleteDisconnectedOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -688,7 +1076,15 @@ export interface DeleteDisconnectedOperationRequest {
   /** Name of the resource */
   name: string;
 }
+const DeleteDisconnectedOperationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DeleteDisconnectedOperationRequest>;
+
 export interface DeleteDisconnectedOperationResponse {}
+const DeleteDisconnectedOperationResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<DeleteDisconnectedOperationResponse>;
+
 export interface DeleteDynamicConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -699,7 +1095,15 @@ export interface DeleteDynamicConfigurationRequest {
   /** Name of the dynamic configuration */
   dynamicConfigurationName: string;
 }
+const DeleteDynamicConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<DeleteDynamicConfigurationRequest>;
+
 export interface DeleteDynamicConfigurationResponse {}
+const DeleteDynamicConfigurationResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<DeleteDynamicConfigurationResponse>;
+
 export interface DeleteDynamicConfigurationVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -712,7 +1116,15 @@ export interface DeleteDynamicConfigurationVersionRequest {
   /** The name of the DynamicConfigurationVersion */
   dynamicConfigurationVersionName: string;
 }
+const DeleteDynamicConfigurationVersionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DeleteDynamicConfigurationVersionRequest>;
+
 export interface DeleteDynamicConfigurationVersionResponse {}
+const DeleteDynamicConfigurationVersionResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<DeleteDynamicConfigurationVersionResponse>;
+
 export interface DeleteDynamicSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -723,7 +1135,15 @@ export interface DeleteDynamicSchemaRequest {
   /** The name of the DynamicSchema */
   dynamicSchemaName: string;
 }
+const DeleteDynamicSchemaRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<DeleteDynamicSchemaRequest>;
+
 export interface DeleteDynamicSchemaResponse {}
+const DeleteDynamicSchemaResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteDynamicSchemaResponse>;
+
 export interface DeleteDynamicSchemaVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -736,7 +1156,15 @@ export interface DeleteDynamicSchemaVersionRequest {
   /** The name of the DynamicSchemaVersion */
   dynamicSchemaVersionName: string;
 }
+const DeleteDynamicSchemaVersionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DeleteDynamicSchemaVersionRequest>;
+
 export interface DeleteDynamicSchemaVersionResponse {}
+const DeleteDynamicSchemaVersionResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<DeleteDynamicSchemaVersionResponse>;
+
 export interface DeleteExecutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -751,7 +1179,15 @@ export interface DeleteExecutionRequest {
   /** The name of the Execution. */
   executionName: string;
 }
+const DeleteExecutionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DeleteExecutionRequest>;
+
 export interface DeleteExecutionResponse {}
+const DeleteExecutionResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteExecutionResponse>;
+
 export interface DeleteHardwareSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -762,7 +1198,15 @@ export interface DeleteHardwareSettingsRequest {
   /** The name of the HardwareSetting */
   hardwareSettingName: string;
 }
+const DeleteHardwareSettingsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DeleteHardwareSettingsRequest>;
+
 export interface DeleteHardwareSettingsResponse {}
+const DeleteHardwareSettingsResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteHardwareSettingsResponse>;
+
 export interface DeleteInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -775,7 +1219,15 @@ export interface DeleteInstanceRequest {
   /** Name of the instance */
   instanceName: string;
 }
+const DeleteInstanceRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<DeleteInstanceRequest>;
+
 export interface DeleteInstanceResponse {}
+const DeleteInstanceResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteInstanceResponse>;
+
 export interface DeleteSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -784,14 +1236,26 @@ export interface DeleteSchemaRequest {
   /** The name of the Schema */
   schemaName: string;
 }
+const DeleteSchemaRequest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<DeleteSchemaRequest>;
+
 export interface DeleteSchemaResponse {}
+const DeleteSchemaResponse = ConfigurationPropertiesInput as any as S.Schema<DeleteSchemaResponse>;
+
 export interface DeleteSchemaReferenceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The name of the SchemaReference */
   schemaReferenceName: string;
 }
+const DeleteSchemaReferenceRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DeleteSchemaReferenceRequest>;
+
 export interface DeleteSchemaReferenceResponse {}
+const DeleteSchemaReferenceResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteSchemaReferenceResponse>;
+
 export interface DeleteSchemaVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -802,7 +1266,15 @@ export interface DeleteSchemaVersionRequest {
   /** The name of the SchemaVersion */
   schemaVersionName: string;
 }
+const DeleteSchemaVersionRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<DeleteSchemaVersionRequest>;
+
 export interface DeleteSchemaVersionResponse {}
+const DeleteSchemaVersionResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteSchemaVersionResponse>;
+
 export interface DeleteSiteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -811,7 +1283,11 @@ export interface DeleteSiteRequest {
   /** The name of the Site */
   siteName: string;
 }
+const DeleteSiteRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<DeleteSiteRequest>;
+
 export interface DeleteSiteResponse {}
+const DeleteSiteResponse = ConfigurationPropertiesInput as any as S.Schema<DeleteSiteResponse>;
+
 export interface DeleteSiteReferenceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -822,21 +1298,45 @@ export interface DeleteSiteReferenceRequest {
   /** The name of the SiteReference */
   siteReferenceName: string;
 }
+const DeleteSiteReferenceRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DeleteSiteReferenceRequest>;
+
 export interface DeleteSiteReferenceResponse {}
+const DeleteSiteReferenceResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteSiteReferenceResponse>;
+
 export interface DeleteSitesByServiceGroupRequest {
   /** The name of the service group */
   servicegroupName: string;
   /** The name of the Site */
   siteName: string;
 }
+const DeleteSitesByServiceGroupRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<DeleteSitesByServiceGroupRequest>;
+
 export interface DeleteSitesByServiceGroupResponse {}
+const DeleteSitesByServiceGroupResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<DeleteSitesByServiceGroupResponse>;
+
 export interface DeleteSitesBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Site */
   siteName: string;
 }
+const DeleteSitesBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<DeleteSitesBySubscriptionRequest>;
+
 export interface DeleteSitesBySubscriptionResponse {}
+const DeleteSitesBySubscriptionResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<DeleteSitesBySubscriptionResponse>;
+
 export interface DeleteSolutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -847,7 +1347,15 @@ export interface DeleteSolutionRequest {
   /** Name of the solution */
   solutionName: string;
 }
+const DeleteSolutionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<DeleteSolutionRequest>;
+
 export interface DeleteSolutionResponse {}
+const DeleteSolutionResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteSolutionResponse>;
+
 export interface DeleteSolutionTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -856,7 +1364,15 @@ export interface DeleteSolutionTemplateRequest {
   /** The name of the SolutionTemplate */
   solutionTemplateName: string;
 }
+const DeleteSolutionTemplateRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<DeleteSolutionTemplateRequest>;
+
 export interface DeleteSolutionTemplateResponse {}
+const DeleteSolutionTemplateResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteSolutionTemplateResponse>;
+
 export interface DeleteSolutionTemplateVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -867,7 +1383,15 @@ export interface DeleteSolutionTemplateVersionRequest {
   /** The name of the SolutionTemplateVersion */
   solutionTemplateVersionName: string;
 }
+const DeleteSolutionTemplateVersionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<DeleteSolutionTemplateVersionRequest>;
+
 export interface DeleteSolutionTemplateVersionResponse {}
+const DeleteSolutionTemplateVersionResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<DeleteSolutionTemplateVersionResponse>;
+
 export interface DeleteSolutionVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -880,7 +1404,15 @@ export interface DeleteSolutionVersionRequest {
   /** Name of the solution version */
   solutionVersionName: string;
 }
+const DeleteSolutionVersionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<DeleteSolutionVersionRequest>;
+
 export interface DeleteSolutionVersionResponse {}
+const DeleteSolutionVersionResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteSolutionVersionResponse>;
+
 export interface DeleteTargetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -891,7 +1423,11 @@ export interface DeleteTargetRequest {
   /** Force delete */
   forceDelete?: boolean;
 }
+const DeleteTargetRequest = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<DeleteTargetRequest>;
+
 export interface DeleteTargetResponse {}
+const DeleteTargetResponse = ConfigurationPropertiesInput as any as S.Schema<DeleteTargetResponse>;
+
 export interface DeleteWorkflowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -902,7 +1438,15 @@ export interface DeleteWorkflowRequest {
   /** Name of the workflow */
   workflowName: string;
 }
+const DeleteWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<DeleteWorkflowRequest>;
+
 export interface DeleteWorkflowResponse {}
+const DeleteWorkflowResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteWorkflowResponse>;
+
 export interface DeleteWorkflowVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -915,13 +1459,26 @@ export interface DeleteWorkflowVersionRequest {
   /** The name of the workflowVersion. */
   versionName: string;
 }
+const DeleteWorkflowVersionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<DeleteWorkflowVersionRequest>;
+
 export interface DeleteWorkflowVersionResponse {}
+const DeleteWorkflowVersionResponse =
+  ConfigurationPropertiesInput as any as S.Schema<DeleteWorkflowVersionResponse>;
+
 /** Resource tags. */
 export type DiagnosticsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const DiagnosticsCreateOrUpdateRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<DiagnosticsCreateOrUpdateRequestTagsMap>;
+
 /** The properties of a Diagnostic resource. */
 export type DiagnosticPropertiesInput = ConfigurationPropertiesInput;
 /** The supported ExtendedLocation types. */
 export type AzureResourceManagerCommonTypesExtendedLocationType = "EdgeZone" | "CustomLocation";
+const AzureResourceManagerCommonTypesExtendedLocationType = S.String;
+
 /** The complex type of the extended location. */
 export interface AzureResourceManagerCommonTypesExtendedLocation {
   /** The name of the extended location. */
@@ -929,6 +1486,11 @@ export interface AzureResourceManagerCommonTypesExtendedLocation {
   /** The type of the extended location. */
   type: AzureResourceManagerCommonTypesExtendedLocationType | (string & {});
 }
+const AzureResourceManagerCommonTypesExtendedLocation = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<AzureResourceManagerCommonTypesExtendedLocation>;
+
 export interface DiagnosticsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -945,13 +1507,23 @@ export interface DiagnosticsCreateOrUpdateRequest {
   /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
+const DiagnosticsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<DiagnosticsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type DiagnosticsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const DiagnosticsCreateOrUpdateResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<DiagnosticsCreateOrUpdateResponseTagsMap>;
+
 /** The properties of a Diagnostic resource. */
 export interface DiagnosticProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
+const DiagnosticProperties = ConfigurationProperties as any as S.Schema<DiagnosticProperties>;
+
 export interface DiagnosticsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -972,18 +1544,34 @@ export interface DiagnosticsCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const DiagnosticsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<DiagnosticsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type DisconnectedOperationsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const DisconnectedOperationsCreateOrUpdateRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<DisconnectedOperationsCreateOrUpdateRequestTagsMap>;
+
 /** Connection Intent */
 export type ConnectionIntent = "Connected" | "Disconnected";
+const ConnectionIntent = S.String;
+
 /** Registration status */
 export type RegistrationStatus = "Registered" | "Unregistered";
+const RegistrationStatus = S.String;
+
 /** Auto renew status */
 export type AutoRenew = "Enabled" | "Disabled";
+const AutoRenew = S.String;
+
 /** Pricing model */
 export type PricingModel = "Trial" | "Annual";
+const PricingModel = S.String;
+
 /** The billing period */
 export interface BillingPeriodInput {
   /** The number of cores */
@@ -991,6 +1579,8 @@ export interface BillingPeriodInput {
   /** The pricing model */
   pricingModel: PricingModel | (string & {});
 }
+const BillingPeriodInput = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<BillingPeriodInput>;
+
 /** The billing configuration */
 export interface BillingConfigurationInput {
   /** The auto renew setting */
@@ -1000,8 +1590,15 @@ export interface BillingConfigurationInput {
   /** The upcoming billing configuration */
   upcoming?: BillingPeriodInput;
 }
+const BillingConfigurationInput = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<BillingConfigurationInput>;
+
 /** Benefit plans status */
 export type BenefitPlanStatus = "Enabled" | "Disabled";
+const BenefitPlanStatus = S.String;
+
 /** The benefit plans */
 export interface BenefitPlans {
   /** Azure Hybrid Windows Server Benefit plan */
@@ -1009,6 +1606,8 @@ export interface BenefitPlans {
   /** Number of Windows Server VMs to license under the Azure Hybrid Benefit plan */
   windowsServerVmCount?: number;
 }
+const BenefitPlans = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<BenefitPlans>;
+
 /** The disconnected operation properties */
 export interface DisconnectedOperationPropertiesInput {
   /** The connection intent */
@@ -1022,6 +1621,11 @@ export interface DisconnectedOperationPropertiesInput {
   /** The benefit plans */
   benefitPlans?: BenefitPlans;
 }
+const DisconnectedOperationPropertiesInput = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<DisconnectedOperationPropertiesInput>;
+
 export interface DisconnectedOperationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1036,16 +1640,30 @@ export interface DisconnectedOperationsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: DisconnectedOperationPropertiesInput;
 }
+const DisconnectedOperationsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<DisconnectedOperationsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type DisconnectedOperationsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
+const DisconnectedOperationsCreateOrUpdateResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<DisconnectedOperationsCreateOrUpdateResponseTagsMap>;
+
 /** Billing model */
 export type BillingModel = "Capacity";
+const BillingModel = S.String;
+
 /** Connection status */
 export type ConnectionStatus = "Connected" | "Disconnected";
+const ConnectionStatus = S.String;
+
 /** Billing status */
 export type BillingStatus = "Enabled" | "Disabled" | "Stopped";
+const BillingStatus = S.String;
+
 /** The billing period */
 export interface BillingPeriod {
   /** The number of cores */
@@ -1057,6 +1675,8 @@ export interface BillingPeriod {
   /** The billing end date */
   endDate?: string;
 }
+const BillingPeriod = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<BillingPeriod>;
+
 /** The billing configuration */
 export interface BillingConfiguration {
   /** The auto renew setting */
@@ -1068,6 +1688,11 @@ export interface BillingConfiguration {
   /** The upcoming billing configuration */
   upcoming?: BillingPeriod;
 }
+const BillingConfiguration = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<BillingConfiguration>;
+
 /** The disconnected operation properties */
 export interface DisconnectedOperationProperties {
   /** The resource provisioning state */
@@ -1089,6 +1714,11 @@ export interface DisconnectedOperationProperties {
   /** The benefit plans */
   benefitPlans?: BenefitPlans;
 }
+const DisconnectedOperationProperties = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<DisconnectedOperationProperties>;
+
 export interface DisconnectedOperationsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1105,11 +1735,21 @@ export interface DisconnectedOperationsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: DisconnectedOperationProperties;
 }
+const DisconnectedOperationsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<DisconnectedOperationsCreateOrUpdateResponse>;
+
 /** Dynamic Configuration Properties */
 export interface DynamicConfigurationPropertiesInput {
   /** Current Version of dynamic configuration */
   currentVersion: string;
 }
+const DynamicConfigurationPropertiesInput = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<DynamicConfigurationPropertiesInput>;
+
 export interface DynamicConfigurationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1122,10 +1762,19 @@ export interface DynamicConfigurationsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: DynamicConfigurationPropertiesInput;
 }
+const DynamicConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<DynamicConfigurationsCreateOrUpdateRequest>;
+
 /** Available configuration types */
 export type ConfigurationType = "Shared" | "Hierarchy";
+const ConfigurationType = S.String;
+
 /** Available configuration models */
 export type ConfigurationModel = "Application" | "Common";
+const ConfigurationModel = S.String;
+
 /** Dynamic Configuration Properties */
 export interface DynamicConfigurationProperties {
   /** Current Version of dynamic configuration */
@@ -1139,6 +1788,11 @@ export interface DynamicConfigurationProperties {
   /** Provisioning state of resource */
   provisioningState?: ProvisioningState;
 }
+const DynamicConfigurationProperties = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<DynamicConfigurationProperties>;
+
 export interface DynamicConfigurationsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1151,11 +1805,21 @@ export interface DynamicConfigurationsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: DynamicConfigurationProperties;
 }
+const DynamicConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<DynamicConfigurationsCreateOrUpdateResponse>;
+
 /** Dynamic Configuration Properties */
 export interface DynamicConfigurationVersionPropertiesInput {
   /** Values of configuration version */
   values: unknown;
 }
+const DynamicConfigurationVersionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<DynamicConfigurationVersionPropertiesInput>;
+
 export interface DynamicConfigurationVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1170,8 +1834,15 @@ export interface DynamicConfigurationVersionsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: DynamicConfigurationVersionPropertiesInput;
 }
+const DynamicConfigurationVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<DynamicConfigurationVersionsCreateOrUpdateRequest>;
+
 /** Configuration State Enums */
 export type ConfigurationState = "ConfigurationCompleted" | "ConfigurationPending";
+const ConfigurationState = S.String;
+
 /** Dynamic Configuration Properties */
 export interface DynamicConfigurationVersionProperties {
   /** Values of configuration version */
@@ -1187,6 +1858,11 @@ export interface DynamicConfigurationVersionProperties {
   /** Provisioning state of resource */
   provisioningState?: ProvisioningState;
 }
+const DynamicConfigurationVersionProperties = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<DynamicConfigurationVersionProperties>;
+
 export interface DynamicConfigurationVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1199,6 +1875,11 @@ export interface DynamicConfigurationVersionsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: DynamicConfigurationVersionProperties;
 }
+const DynamicConfigurationVersionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<DynamicConfigurationVersionsCreateOrUpdateResponse>;
+
 /** DynamicSchema Properties */
 export type DynamicSchemaPropertiesInput = ConfigurationPropertiesInput;
 export interface DynamicSchemasCreateOrUpdateRequest {
@@ -1213,6 +1894,11 @@ export interface DynamicSchemasCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationPropertiesInput;
 }
+const DynamicSchemasCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<DynamicSchemasCreateOrUpdateRequest>;
+
 /** DynamicSchema Properties */
 export interface DynamicSchemaProperties {
   /** Display name of the dynamic schema */
@@ -1224,6 +1910,11 @@ export interface DynamicSchemaProperties {
   /** Provisioning state of resource */
   provisioningState?: ProvisioningState;
 }
+const DynamicSchemaProperties = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<DynamicSchemaProperties>;
+
 export interface DynamicSchemasCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1238,6 +1929,11 @@ export interface DynamicSchemasCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const DynamicSchemasCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<DynamicSchemasCreateOrUpdateResponse>;
+
 export interface DynamicSchemaVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1252,6 +1948,11 @@ export interface DynamicSchemaVersionsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: SchemaVersionPropertiesInput;
 }
+const DynamicSchemaVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<DynamicSchemaVersionsCreateOrUpdateRequest>;
+
 export interface DynamicSchemaVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1266,8 +1967,14 @@ export interface DynamicSchemaVersionsCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const DynamicSchemaVersionsCreateOrUpdateResponse =
+  CreateSchemaVersionResponse as any as S.Schema<DynamicSchemaVersionsCreateOrUpdateResponse>;
+
 /** Execution specification */
 export type ExecutionPropertiesInputSpecificationMap = { [key: string]: unknown | undefined };
+const ExecutionPropertiesInputSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<ExecutionPropertiesInputSpecificationMap>;
+
 /** Execution Properties */
 export interface ExecutionPropertiesInput {
   /** Workflow version of execution */
@@ -1275,6 +1982,11 @@ export interface ExecutionPropertiesInput {
   /** Execution specification */
   specification?: ExecutionPropertiesInputSpecificationMap;
 }
+const ExecutionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<ExecutionPropertiesInput>;
+
 export interface ExecutionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1293,14 +2005,30 @@ export interface ExecutionsCreateOrUpdateRequest {
   /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
+const ExecutionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<ExecutionsCreateOrUpdateRequest>;
+
 /** Execution specification */
 export type ExecutionPropertiesSpecificationMap = { [key: string]: unknown | undefined };
+const ExecutionPropertiesSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<ExecutionPropertiesSpecificationMap>;
+
 /** Instance State */
 export type ActiveState = "active" | "inactive";
+const ActiveState = S.String;
+
 /** The inputs of the StageHistory, Inputs holds a key-value map of user-defined parameters for the initial stage */
 export type StageStatusInputsMap = { [key: string]: unknown | undefined };
+const StageStatusInputsMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<StageStatusInputsMap>;
+
 /** The outputs of the StageHistory, it is different as the different input stages. */
 export type StageStatusOutputsMap = { [key: string]: unknown | undefined };
+const StageStatusOutputsMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<StageStatusOutputsMap>;
+
 /** Result of Stage execution */
 export interface StageStatus {
   /** Deployment status */
@@ -1320,8 +2048,15 @@ export interface StageStatus {
   /** The outputs of the StageHistory, it is different as the different input stages. */
   outputs?: StageStatusOutputsMap;
 }
+const StageStatus = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<StageStatus>;
+
 /** target resource statuses */
 export type ExecutionStatusStageHistoryList = Array<StageStatus>;
+const ExecutionStatusStageHistoryList = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ExecutionStatusStageHistoryList>;
+
 /** Execution Status */
 export interface ExecutionStatus {
   /** The lastModified timestamp of the Status */
@@ -1333,6 +2068,8 @@ export interface ExecutionStatus {
   /** target resource statuses */
   stageHistory?: ExecutionStatusStageHistoryList;
 }
+const ExecutionStatus = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<ExecutionStatus>;
+
 /** Execution Properties */
 export interface ExecutionProperties {
   /** Workflow version of execution */
@@ -1344,6 +2081,8 @@ export interface ExecutionProperties {
   /** Provisioning state of resource */
   provisioningState?: ProvisioningState;
 }
+const ExecutionProperties = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<ExecutionProperties>;
+
 export interface ExecutionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1360,6 +2099,11 @@ export interface ExecutionsCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const ExecutionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ExecutionsCreateOrUpdateResponse>;
+
 export interface GetArtifactRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1372,6 +2116,8 @@ export interface GetArtifactRequest {
   /** The name of the Artifact */
   artifactName: string;
 }
+const GetArtifactRequest = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<GetArtifactRequest>;
+
 /** The artifact properties */
 export interface ArtifactProperties {
   /** The resource provisioning state */
@@ -1385,6 +2131,8 @@ export interface ArtifactProperties {
   /** The artifact size in MB */
   size?: number;
 }
+const ArtifactProperties = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<ArtifactProperties>;
+
 export interface GetArtifactResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1397,6 +2145,8 @@ export interface GetArtifactResponse {
   /** The resource-specific properties for this resource. */
   properties?: ArtifactProperties;
 }
+const GetArtifactResponse = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<GetArtifactResponse>;
+
 export interface GetConfigTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1405,6 +2155,11 @@ export interface GetConfigTemplateRequest {
   /** The name of the ConfigTemplate */
   configTemplateName: string;
 }
+const GetConfigTemplateRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<GetConfigTemplateRequest>;
+
 /** Resource tags. */
 export type GetConfigTemplateResponseTagsMap = { [key: string]: string | undefined };
 export interface GetConfigTemplateResponse {
@@ -1425,6 +2180,9 @@ export interface GetConfigTemplateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const GetConfigTemplateResponse =
+  ConfigTemplatesCreateOrUpdateResponse as any as S.Schema<GetConfigTemplateResponse>;
+
 export interface GetConfigTemplateMetadatasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1435,6 +2193,11 @@ export interface GetConfigTemplateMetadatasRequest {
   /** The name of the ConfigTemplateMetadataProperties */
   configTemplateMetadataName: string;
 }
+const GetConfigTemplateMetadatasRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<GetConfigTemplateMetadatasRequest>;
+
 export interface GetConfigTemplateMetadatasResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1449,6 +2212,9 @@ export interface GetConfigTemplateMetadatasResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const GetConfigTemplateMetadatasResponse =
+  ConfigTemplateMetadatasCreateOrUpdateResponse as any as S.Schema<GetConfigTemplateMetadatasResponse>;
+
 export interface GetConfigTemplateSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1461,6 +2227,11 @@ export interface GetConfigTemplateSchemaRequest {
   /** The name of the ConfigTemplateSchemaProperties */
   configTemplateSchemaName: string;
 }
+const GetConfigTemplateSchemaRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<GetConfigTemplateSchemaRequest>;
+
 /** ConfigTemplateSchema Properties */
 export interface ConfigTemplateSchemaProperties {
   /** Value of schema */
@@ -1470,6 +2241,11 @@ export interface ConfigTemplateSchemaProperties {
   /** Provisioning state of resource */
   provisioningState?: ProvisioningState;
 }
+const ConfigTemplateSchemaProperties = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<ConfigTemplateSchemaProperties>;
+
 export interface GetConfigTemplateSchemaResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1484,6 +2260,11 @@ export interface GetConfigTemplateSchemaResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const GetConfigTemplateSchemaResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<GetConfigTemplateSchemaResponse>;
+
 export interface GetConfigTemplateVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1494,6 +2275,11 @@ export interface GetConfigTemplateVersionRequest {
   /** The name of the ConfigTemplateVersion */
   configTemplateVersionName: string;
 }
+const GetConfigTemplateVersionRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<GetConfigTemplateVersionRequest>;
+
 export interface GetConfigTemplateVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1508,6 +2294,9 @@ export interface GetConfigTemplateVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const GetConfigTemplateVersionResponse =
+  ConfigTemplateVersionsCreateOrUpdateResponse as any as S.Schema<GetConfigTemplateVersionResponse>;
+
 export interface GetConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1516,8 +2305,16 @@ export interface GetConfigurationRequest {
   /** Name of the Configuration */
   configurationName: string;
 }
+const GetConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<GetConfigurationRequest>;
+
 /** Resource tags. */
 export type GetConfigurationResponseTagsMap = { [key: string]: string | undefined };
+const GetConfigurationResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<GetConfigurationResponseTagsMap>;
+
 export interface GetConfigurationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1534,12 +2331,22 @@ export interface GetConfigurationResponse {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationProperties;
 }
+const GetConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<GetConfigurationResponse>;
+
 export interface GetConfigurationReferenceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The name of the ConfigurationReference */
   configurationReferenceName: string;
 }
+const GetConfigurationReferenceRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<GetConfigurationReferenceRequest>;
+
 export interface GetConfigurationReferenceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1552,6 +2359,9 @@ export interface GetConfigurationReferenceResponse {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationReferenceProperties;
 }
+const GetConfigurationReferenceResponse =
+  ConfigurationReferencesCreateOrUpdateResponse as any as S.Schema<GetConfigurationReferenceResponse>;
+
 export interface GetContextRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1560,8 +2370,13 @@ export interface GetContextRequest {
   /** The name of the Context. */
   contextName: string;
 }
+const GetContextRequest = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<GetContextRequest>;
+
 /** Resource tags. */
 export type GetContextResponseTagsMap = { [key: string]: string | undefined };
+const GetContextResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<GetContextResponseTagsMap>;
+
 export interface GetContextResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1578,6 +2393,8 @@ export interface GetContextResponse {
   /** The resource-specific properties for this resource. */
   properties?: ContextProperties;
 }
+const GetContextResponse = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<GetContextResponse>;
+
 export interface GetDiagnosticRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1586,8 +2403,16 @@ export interface GetDiagnosticRequest {
   /** Name of Diagnostic. */
   diagnosticName: string;
 }
+const GetDiagnosticRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<GetDiagnosticRequest>;
+
 /** Resource tags. */
 export type GetDiagnosticResponseTagsMap = { [key: string]: string | undefined };
+const GetDiagnosticResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<GetDiagnosticResponseTagsMap>;
+
 export interface GetDiagnosticResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1608,6 +2433,11 @@ export interface GetDiagnosticResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const GetDiagnosticResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<GetDiagnosticResponse>;
+
 export interface GetDisconnectedOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1616,6 +2446,11 @@ export interface GetDisconnectedOperationRequest {
   /** Name of the resource */
   name: string;
 }
+const GetDisconnectedOperationRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<GetDisconnectedOperationRequest>;
+
 /** Resource tags. */
 export type GetDisconnectedOperationResponseTagsMap = { [key: string]: string | undefined };
 export interface GetDisconnectedOperationResponse {
@@ -1634,6 +2469,9 @@ export interface GetDisconnectedOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: DisconnectedOperationProperties;
 }
+const GetDisconnectedOperationResponse =
+  DisconnectedOperationsCreateOrUpdateResponse as any as S.Schema<GetDisconnectedOperationResponse>;
+
 export interface GetDynamicConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1644,6 +2482,11 @@ export interface GetDynamicConfigurationRequest {
   /** Name of the dynamic configuration */
   dynamicConfigurationName: string;
 }
+const GetDynamicConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<GetDynamicConfigurationRequest>;
+
 export interface GetDynamicConfigurationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1656,6 +2499,9 @@ export interface GetDynamicConfigurationResponse {
   /** The resource-specific properties for this resource. */
   properties?: DynamicConfigurationProperties;
 }
+const GetDynamicConfigurationResponse =
+  DynamicConfigurationsCreateOrUpdateResponse as any as S.Schema<GetDynamicConfigurationResponse>;
+
 export interface GetDynamicConfigurationVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1668,6 +2514,11 @@ export interface GetDynamicConfigurationVersionRequest {
   /** The name of the DynamicConfigurationVersion */
   dynamicConfigurationVersionName: string;
 }
+const GetDynamicConfigurationVersionRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<GetDynamicConfigurationVersionRequest>;
+
 export interface GetDynamicConfigurationVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1680,6 +2531,9 @@ export interface GetDynamicConfigurationVersionResponse {
   /** The resource-specific properties for this resource. */
   properties?: DynamicConfigurationVersionProperties;
 }
+const GetDynamicConfigurationVersionResponse =
+  DynamicConfigurationVersionsCreateOrUpdateResponse as any as S.Schema<GetDynamicConfigurationVersionResponse>;
+
 export interface GetDynamicSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1690,6 +2544,11 @@ export interface GetDynamicSchemaRequest {
   /** The name of the DynamicSchema */
   dynamicSchemaName: string;
 }
+const GetDynamicSchemaRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<GetDynamicSchemaRequest>;
+
 export interface GetDynamicSchemaResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1704,6 +2563,11 @@ export interface GetDynamicSchemaResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const GetDynamicSchemaResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<GetDynamicSchemaResponse>;
+
 export interface GetDynamicSchemaVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1716,6 +2580,11 @@ export interface GetDynamicSchemaVersionRequest {
   /** The name of the DynamicSchemaVersion */
   dynamicSchemaVersionName: string;
 }
+const GetDynamicSchemaVersionRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<GetDynamicSchemaVersionRequest>;
+
 export interface GetDynamicSchemaVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1730,6 +2599,9 @@ export interface GetDynamicSchemaVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const GetDynamicSchemaVersionResponse =
+  CreateSchemaVersionResponse as any as S.Schema<GetDynamicSchemaVersionResponse>;
+
 export interface GetExecutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1744,6 +2616,8 @@ export interface GetExecutionRequest {
   /** The name of the Execution. */
   executionName: string;
 }
+const GetExecutionRequest = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<GetExecutionRequest>;
+
 export interface GetExecutionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1760,6 +2634,11 @@ export interface GetExecutionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const GetExecutionResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<GetExecutionResponse>;
+
 export interface GetHardwareSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1770,6 +2649,11 @@ export interface GetHardwareSettingsRequest {
   /** The name of the HardwareSetting */
   hardwareSettingName: string;
 }
+const GetHardwareSettingsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<GetHardwareSettingsRequest>;
+
 /** The hardware setting properties */
 export interface HardwareSettingProperties {
   /** The resource provisioning state */
@@ -1793,6 +2677,11 @@ export interface HardwareSettingProperties {
   /** The unique Id of the device */
   deviceId: string;
 }
+const HardwareSettingProperties = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<HardwareSettingProperties>;
+
 export interface GetHardwareSettingsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1805,12 +2694,22 @@ export interface GetHardwareSettingsResponse {
   /** The resource-specific properties for this resource. */
   properties?: HardwareSettingProperties;
 }
+const GetHardwareSettingsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<GetHardwareSettingsResponse>;
+
 export interface GetHierarchyConfigurationMetadatasRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** Name of the hierarchy configuration metadata */
   hierarchyConfigurationMetadataName: string;
 }
+const GetHierarchyConfigurationMetadatasRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<GetHierarchyConfigurationMetadatasRequest>;
+
 /** Hierarchy Configuration Metadata Properties */
 export interface HierarchyConfigurationMetadataProperties {
   /** Display name of the hierarchy configuration metadata resource */
@@ -1818,6 +2717,11 @@ export interface HierarchyConfigurationMetadataProperties {
   /** Configuration template Id */
   configTemplateId?: string;
 }
+const HierarchyConfigurationMetadataProperties = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<HierarchyConfigurationMetadataProperties>;
+
 export interface GetHierarchyConfigurationMetadatasResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1830,6 +2734,11 @@ export interface GetHierarchyConfigurationMetadatasResponse {
   /** The resource-specific properties for this resource. */
   properties?: HierarchyConfigurationMetadataProperties;
 }
+const GetHierarchyConfigurationMetadatasResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<GetHierarchyConfigurationMetadatasResponse>;
+
 export interface GetHierarchyConfigurationMetadataVersionRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -1838,8 +2747,15 @@ export interface GetHierarchyConfigurationMetadataVersionRequest {
   /** Name of the hierarchy configuration metadata version */
   hierarchyConfigurationMetadataVersionName: string;
 }
+const GetHierarchyConfigurationMetadataVersionRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<GetHierarchyConfigurationMetadataVersionRequest>;
+
 /** Configuration State Enums */
 export type ConfigTemplateConfigurationState = "ConfigurationCompleted" | "ConfigurationPending";
+const ConfigTemplateConfigurationState = S.String;
+
 /** Hierarchy Configuration Metadata Version Properties */
 export interface HierarchyConfigurationMetadataVersionProperties {
   /** Display name of the hierarchy configuration metadata resource */
@@ -1853,6 +2769,11 @@ export interface HierarchyConfigurationMetadataVersionProperties {
   /** Configuration status of the config template version */
   configurationStatus?: ConfigTemplateConfigurationState;
 }
+const HierarchyConfigurationMetadataVersionProperties = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<HierarchyConfigurationMetadataVersionProperties>;
+
 export interface GetHierarchyConfigurationMetadataVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1865,6 +2786,11 @@ export interface GetHierarchyConfigurationMetadataVersionResponse {
   /** The resource-specific properties for this resource. */
   properties?: HierarchyConfigurationMetadataVersionProperties;
 }
+const GetHierarchyConfigurationMetadataVersionResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<GetHierarchyConfigurationMetadataVersionResponse>;
+
 export interface GetImageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1875,12 +2801,21 @@ export interface GetImageRequest {
   /** The name of the Image */
   imageName: string;
 }
+const GetImageRequest = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<GetImageRequest>;
+
 /** Release Type */
 export type ReleaseType = "Install" | "Update";
+const ReleaseType = S.String;
+
 /** The versions that are compatible for this update package. */
 export type ImagePropertiesCompatibleVersionsList = Array<string>;
+const ImagePropertiesCompatibleVersionsList =
+  HierarchyMetadataHierarchyIdsList as any as S.Schema<ImagePropertiesCompatibleVersionsList>;
+
 /** System Reboot */
 export type SystemReboot = "Required" | "NotRequired";
+const SystemReboot = S.String;
+
 /** The update properties of the Update Release type Image */
 export interface ImageUpdateProperties {
   /** Indicates if a system reboot is required after applying the update. */
@@ -1894,6 +2829,11 @@ export interface ImageUpdateProperties {
   /** Details of feature updates included in this image release. */
   featureUpdates: string;
 }
+const ImageUpdateProperties = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ImageUpdateProperties>;
+
 /** The image properties */
 export interface ImageProperties {
   /** The resource provisioning state */
@@ -1913,6 +2853,8 @@ export interface ImageProperties {
   /** Image update properties for update release type image. */
   updateProperties?: ImageUpdateProperties;
 }
+const ImageProperties = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<ImageProperties>;
+
 export interface GetImageResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1925,6 +2867,8 @@ export interface GetImageResponse {
   /** The resource-specific properties for this resource. */
   properties?: ImageProperties;
 }
+const GetImageResponse = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<GetImageResponse>;
+
 export interface GetInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1937,8 +2881,12 @@ export interface GetInstanceRequest {
   /** Name of the instance */
   instanceName: string;
 }
+const GetInstanceRequest = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<GetInstanceRequest>;
+
 /** Defines a state of the reconciliation policy. */
 export type ReconciliationState = "inactive" | "active";
+const ReconciliationState = S.String;
+
 /** Defines a ReconciliationPolicy */
 export interface ReconciliationPolicyProperties {
   /** The state of the ReconciliationPolicy */
@@ -1946,6 +2894,11 @@ export interface ReconciliationPolicyProperties {
   /** Policy interval */
   interval: string;
 }
+const ReconciliationPolicyProperties = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ReconciliationPolicyProperties>;
+
 /** Component Status */
 export interface ComponentStatus {
   /** Component name */
@@ -1953,8 +2906,15 @@ export interface ComponentStatus {
   /** Component status */
   status?: string;
 }
+const ComponentStatus = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<ComponentStatus>;
+
 /** Component statuses */
 export type TargetStatusComponentStatusesList = Array<ComponentStatus>;
+const TargetStatusComponentStatusesList = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<TargetStatusComponentStatusesList>;
+
 /** Target Status */
 export interface TargetStatus {
   /** Target name */
@@ -1964,8 +2924,15 @@ export interface TargetStatus {
   /** Component statuses */
   componentStatuses?: TargetStatusComponentStatusesList;
 }
+const TargetStatus = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<TargetStatus>;
+
 /** Target resource statuses */
 export type DeploymentStatusTargetStatusesList = Array<TargetStatus>;
+const DeploymentStatusTargetStatusesList = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<DeploymentStatusTargetStatusesList>;
+
 /** Deployment Status */
 export interface DeploymentStatus {
   /** The lastModified of the Status */
@@ -1985,6 +2952,8 @@ export interface DeploymentStatus {
   /** Target resource statuses */
   targetStatuses?: DeploymentStatusTargetStatusesList;
 }
+const DeploymentStatus = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<DeploymentStatus>;
+
 /** Instance Properties */
 export interface InstanceProperties {
   /** Solution version of instance */
@@ -2004,6 +2973,8 @@ export interface InstanceProperties {
   /** Provisioning state of resource */
   provisioningState?: ProvisioningState;
 }
+const InstanceProperties = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<InstanceProperties>;
+
 export interface GetInstanceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2020,6 +2991,8 @@ export interface GetInstanceResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const GetInstanceResponse = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<GetInstanceResponse>;
+
 export interface GetInstanceHistoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2034,8 +3007,16 @@ export interface GetInstanceHistoryRequest {
   /** Name of the instance history */
   instanceHistoryName: string;
 }
+const GetInstanceHistoryRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<GetInstanceHistoryRequest>;
+
 /** App components spec */
 export type SolutionVersionSnapshotSpecificationMap = { [key: string]: unknown | undefined };
+const SolutionVersionSnapshotSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<SolutionVersionSnapshotSpecificationMap>;
+
 /** Solution Version Snapshot */
 export interface SolutionVersionSnapshot {
   /** Solution version of instance */
@@ -2043,8 +3024,16 @@ export interface SolutionVersionSnapshot {
   /** App components spec */
   specification?: SolutionVersionSnapshotSpecificationMap;
 }
+const SolutionVersionSnapshot = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<SolutionVersionSnapshot>;
+
 /** target spec */
 export type TargetSnapshotTargetSpecificationMap = { [key: string]: unknown | undefined };
+const TargetSnapshotTargetSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<TargetSnapshotTargetSpecificationMap>;
+
 /** Target Snapshot */
 export interface TargetSnapshot {
   /** Target of instance */
@@ -2054,6 +3043,8 @@ export interface TargetSnapshot {
   /** Scope of the target resource */
   solutionScope?: string;
 }
+const TargetSnapshot = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<TargetSnapshot>;
+
 /** Instance History Properties */
 export interface InstanceHistoryProperties {
   /** Solution version of instance */
@@ -2071,6 +3062,11 @@ export interface InstanceHistoryProperties {
   /** Provisioning state of resource */
   provisioningState?: ProvisioningState;
 }
+const InstanceHistoryProperties = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<InstanceHistoryProperties>;
+
 export interface GetInstanceHistoryResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2087,30 +3083,55 @@ export interface GetInstanceHistoryResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const GetInstanceHistoryResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<GetInstanceHistoryResponse>;
+
 export interface GetJobRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The name of the Job */
   jobName: string;
 }
+const GetJobRequest = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<GetJobRequest>;
+
 /** JobType for the job. Supports extensibility via string values. */
 export type JobType = "deploy" | "publish" | "staging" | "externalValidation" | "uninstall";
+const JobType = S.String;
+
 /** Status of a job or job step. */
 export type JobStatus = "NotStarted" | "InProgress" | "Succeeded" | "Failed";
+const JobStatus = S.String;
+
 /** Base Job Parameter */
 export interface JobParameterBase {
   /** Job type discriminator value */
   jobType: JobType;
 }
+const JobParameterBase = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<JobParameterBase>;
+
 /** Base Job Step Statistics */
 export interface JobStepStatisticsBase {
   /** Statistics type discriminator value */
   statisticsType: JobType;
 }
+const JobStepStatisticsBase = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<JobStepStatisticsBase>;
+
 /** Nested substeps for this step */
 export type JobStepStepsList = Array<JobStep>;
+const JobStepStepsList = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<JobStepStepsList>;
+
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
+const ErrorDetailDetailsList = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<ErrorDetailDetailsList>;
+
 /** The resource management error additional info. */
 export interface ErrorAdditionalInfo {
   /** The additional info type. */
@@ -2118,8 +3139,15 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
+const ErrorAdditionalInfo = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<ErrorAdditionalInfo>;
+
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
+const ErrorDetailAdditionalInfoList = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<ErrorDetailAdditionalInfoList>;
+
 /** The error detail. */
 export interface ErrorDetail {
   /** The error code. */
@@ -2133,10 +3161,20 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
+const ErrorDetail = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<ErrorDetail>;
+
 /** The error details. */
 export type JobStepErrorDetailsDetailsList = Array<ErrorDetail>;
+const JobStepErrorDetailsDetailsList = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<JobStepErrorDetailsDetailsList>;
+
 /** The error additional info. */
 export type JobStepErrorDetailsAdditionalInfoList = Array<ErrorAdditionalInfo>;
+const JobStepErrorDetailsAdditionalInfoList =
+  ErrorDetailAdditionalInfoList as any as S.Schema<JobStepErrorDetailsAdditionalInfoList>;
+
 /** The error detail. */
 export interface JobStepErrorDetails {
   /** The error code. */
@@ -2150,6 +3188,8 @@ export interface JobStepErrorDetails {
   /** The error additional info. */
   additionalInfo?: JobStepErrorDetailsAdditionalInfoList;
 }
+const JobStepErrorDetails = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<JobStepErrorDetails>;
+
 /** Job Step */
 export interface JobStep {
   /** Name of the step */
@@ -2169,12 +3209,25 @@ export interface JobStep {
   /** The error detail. */
   errorDetails?: JobStepErrorDetails;
 }
+const JobStep = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<JobStep>;
+
 /** Steps and substatuses for the job. */
 export type JobPropertiesStepsList = Array<JobStep>;
+const JobPropertiesStepsList = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<JobPropertiesStepsList>;
+
 /** The error details. */
 export type JobPropertiesErrorDetailsDetailsList = Array<ErrorDetail>;
+const JobPropertiesErrorDetailsDetailsList =
+  JobStepErrorDetailsDetailsList as any as S.Schema<JobPropertiesErrorDetailsDetailsList>;
+
 /** The error additional info. */
 export type JobPropertiesErrorDetailsAdditionalInfoList = Array<ErrorAdditionalInfo>;
+const JobPropertiesErrorDetailsAdditionalInfoList =
+  ErrorDetailAdditionalInfoList as any as S.Schema<JobPropertiesErrorDetailsAdditionalInfoList>;
+
 /** The error detail. */
 export interface JobPropertiesErrorDetails {
   /** The error code. */
@@ -2188,11 +3241,18 @@ export interface JobPropertiesErrorDetails {
   /** The error additional info. */
   additionalInfo?: JobPropertiesErrorDetailsAdditionalInfoList;
 }
+const JobPropertiesErrorDetails = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<JobPropertiesErrorDetails>;
+
 /** Additional metadata or properties. */
 export interface AdditionalData {
   /** Id of the workflow. */
   workflowId?: string;
 }
+const AdditionalData = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<AdditionalData>;
+
 /** Properties of a Job resource, including type, status, parameters, steps, and error details. */
 export interface JobProperties {
   /** The type of job. */
@@ -2218,6 +3278,8 @@ export interface JobProperties {
   /** Additional metadata or properties. */
   additionalData?: AdditionalData;
 }
+const JobProperties = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<JobProperties>;
+
 export interface GetJobResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2232,6 +3294,8 @@ export interface GetJobResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const GetJobResponse = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<GetJobResponse>;
+
 export interface GetSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2240,8 +3304,13 @@ export interface GetSchemaRequest {
   /** The name of the Schema */
   schemaName: string;
 }
+const GetSchemaRequest = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<GetSchemaRequest>;
+
 /** Resource tags. */
 export type GetSchemaResponseTagsMap = { [key: string]: string | undefined };
+const GetSchemaResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<GetSchemaResponseTagsMap>;
+
 /** Schema Properties */
 export interface SchemaProperties {
   /** Current Version of schema */
@@ -2249,6 +3318,8 @@ export interface SchemaProperties {
   /** Provisioning state of resource */
   provisioningState?: ProvisioningState;
 }
+const SchemaProperties = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<SchemaProperties>;
+
 export interface GetSchemaResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2267,12 +3338,19 @@ export interface GetSchemaResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const GetSchemaResponse = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<GetSchemaResponse>;
+
 export interface GetSchemaReferenceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The name of the SchemaReference */
   schemaReferenceName: string;
 }
+const GetSchemaReferenceRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<GetSchemaReferenceRequest>;
+
 /** Schema Reference Properties */
 export interface SchemaReferenceProperties {
   /** Schema Id of schema reference */
@@ -2280,6 +3358,11 @@ export interface SchemaReferenceProperties {
   /** Provisioning state of resource */
   provisioningState?: ProvisioningState;
 }
+const SchemaReferenceProperties = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<SchemaReferenceProperties>;
+
 export interface GetSchemaReferenceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2294,6 +3377,11 @@ export interface GetSchemaReferenceResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const GetSchemaReferenceResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<GetSchemaReferenceResponse>;
+
 export interface GetSchemaVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2304,6 +3392,11 @@ export interface GetSchemaVersionRequest {
   /** The name of the SchemaVersion */
   schemaVersionName: string;
 }
+const GetSchemaVersionRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<GetSchemaVersionRequest>;
+
 export interface GetSchemaVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2318,6 +3411,11 @@ export interface GetSchemaVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const GetSchemaVersionResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<GetSchemaVersionResponse>;
+
 export interface GetSiteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2326,6 +3424,8 @@ export interface GetSiteRequest {
   /** The name of the Site */
   siteName: string;
 }
+const GetSiteRequest = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<GetSiteRequest>;
+
 /** Site address properties */
 export interface SiteAddressProperties {
   /** First line of the street address */
@@ -2341,8 +3441,16 @@ export interface SiteAddressProperties {
   /** Postal or ZIP code of the address */
   postalCode?: string;
 }
+const SiteAddressProperties = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<SiteAddressProperties>;
+
 /** Key-value pairs for labeling the site resource. */
 export type SitePropertiesLabelsMap = { [key: string]: string | undefined };
+const SitePropertiesLabelsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<SitePropertiesLabelsMap>;
+
 /** Site properties */
 export interface SiteProperties {
   /** displayName of Site resource */
@@ -2356,6 +3464,8 @@ export interface SiteProperties {
   /** Provisioning state of last operation */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
+const SiteProperties = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<SiteProperties>;
+
 export interface GetSiteResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2368,6 +3478,8 @@ export interface GetSiteResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
+const GetSiteResponse = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<GetSiteResponse>;
+
 export interface GetSiteReferenceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2378,6 +3490,11 @@ export interface GetSiteReferenceRequest {
   /** The name of the SiteReference */
   siteReferenceName: string;
 }
+const GetSiteReferenceRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<GetSiteReferenceRequest>;
+
 /** Site Reference Properties */
 export interface SiteReferenceProperties {
   /** Azure Resource ID for Site */
@@ -2385,6 +3502,11 @@ export interface SiteReferenceProperties {
   /** Provisioning State */
   provisioningState?: ProvisioningState;
 }
+const SiteReferenceProperties = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<SiteReferenceProperties>;
+
 export interface GetSiteReferenceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2397,12 +3519,22 @@ export interface GetSiteReferenceResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteReferenceProperties;
 }
+const GetSiteReferenceResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<GetSiteReferenceResponse>;
+
 export interface GetSitesByServiceGroupRequest {
   /** The name of the service group */
   servicegroupName: string;
   /** The name of the Site */
   siteName: string;
 }
+const GetSitesByServiceGroupRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<GetSitesByServiceGroupRequest>;
+
 export interface GetSitesByServiceGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2415,12 +3547,22 @@ export interface GetSitesByServiceGroupResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
+const GetSitesByServiceGroupResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<GetSitesByServiceGroupResponse>;
+
 export interface GetSitesBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Site */
   siteName: string;
 }
+const GetSitesBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<GetSitesBySubscriptionRequest>;
+
 export interface GetSitesBySubscriptionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2433,6 +3575,9 @@ export interface GetSitesBySubscriptionResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
+const GetSitesBySubscriptionResponse =
+  GetSitesByServiceGroupResponse as any as S.Schema<GetSitesBySubscriptionResponse>;
+
 export interface GetSolutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2443,6 +3588,8 @@ export interface GetSolutionRequest {
   /** Name of the solution */
   solutionName: string;
 }
+const GetSolutionRequest = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<GetSolutionRequest>;
+
 /** Available Solution template Version along with latest revision */
 export interface AvailableSolutionTemplateVersion {
   /** Solution template Version */
@@ -2452,9 +3599,19 @@ export interface AvailableSolutionTemplateVersion {
   /** Has this solution template version been configured */
   isConfigured: boolean;
 }
+const AvailableSolutionTemplateVersion = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<AvailableSolutionTemplateVersion>;
+
 /** List of latest revisions for available solution template versions */
 export type SolutionPropertiesAvailableSolutionTemplateVersionsList =
   Array<AvailableSolutionTemplateVersion>;
+const SolutionPropertiesAvailableSolutionTemplateVersionsList = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<SolutionPropertiesAvailableSolutionTemplateVersionsList>;
+
 /** Solution Properties */
 export interface SolutionProperties {
   /** Solution template Id */
@@ -2466,6 +3623,8 @@ export interface SolutionProperties {
   /** Provisioning state of resource */
   provisioningState?: ProvisioningState;
 }
+const SolutionProperties = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<SolutionProperties>;
+
 export interface GetSolutionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2482,12 +3641,19 @@ export interface GetSolutionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const GetSolutionResponse = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<GetSolutionResponse>;
+
 export interface GetSolutionMetadatasRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** Name of the solution metadata */
   solutionMetadataName: string;
 }
+const GetSolutionMetadatasRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<GetSolutionMetadatasRequest>;
+
 /** Solution Metadata Properties */
 export interface SolutionMetadataProperties {
   /** Display name of the solution metadata resource */
@@ -2499,6 +3665,11 @@ export interface SolutionMetadataProperties {
   /** Current solution template version */
   currentVersion?: string;
 }
+const SolutionMetadataProperties = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<SolutionMetadataProperties>;
+
 export interface GetSolutionMetadatasResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2511,6 +3682,11 @@ export interface GetSolutionMetadatasResponse {
   /** The resource-specific properties for this resource. */
   properties?: SolutionMetadataProperties;
 }
+const GetSolutionMetadatasResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<GetSolutionMetadatasResponse>;
+
 export interface GetSolutionMetadataVersionRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -2519,6 +3695,11 @@ export interface GetSolutionMetadataVersionRequest {
   /** Name of the solution metadata version */
   solutionMetadataVersionName: string;
 }
+const GetSolutionMetadataVersionRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<GetSolutionMetadataVersionRequest>;
+
 /** Solution Metadata Version Properties */
 export interface SolutionMetadataVersionProperties {
   /** Display name of the solution metadata resource */
@@ -2532,6 +3713,11 @@ export interface SolutionMetadataVersionProperties {
   /** Configuration status of the solution template version */
   configurationStatus?: ConfigurationState;
 }
+const SolutionMetadataVersionProperties = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<SolutionMetadataVersionProperties>;
+
 export interface GetSolutionMetadataVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2544,6 +3730,11 @@ export interface GetSolutionMetadataVersionResponse {
   /** The resource-specific properties for this resource. */
   properties?: SolutionMetadataVersionProperties;
 }
+const GetSolutionMetadataVersionResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<GetSolutionMetadataVersionResponse>;
+
 export interface GetSolutionSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2556,6 +3747,11 @@ export interface GetSolutionSchemaRequest {
   /** The name of the SolutionSchemaProperties */
   solutionSchemaName: string;
 }
+const GetSolutionSchemaRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<GetSolutionSchemaRequest>;
+
 /** SolutionSchema Properties */
 export interface SolutionSchemaProperties {
   /** Value of schema */
@@ -2567,6 +3763,11 @@ export interface SolutionSchemaProperties {
   /** Provisioning state of resource */
   provisioningState?: ProvisioningState;
 }
+const SolutionSchemaProperties = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<SolutionSchemaProperties>;
+
 export interface GetSolutionSchemaResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2581,6 +3782,11 @@ export interface GetSolutionSchemaResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const GetSolutionSchemaResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<GetSolutionSchemaResponse>;
+
 export interface GetSolutionTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2589,10 +3795,21 @@ export interface GetSolutionTemplateRequest {
   /** The name of the SolutionTemplate */
   solutionTemplateName: string;
 }
+const GetSolutionTemplateRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<GetSolutionTemplateRequest>;
+
 /** Resource tags. */
 export type GetSolutionTemplateResponseTagsMap = { [key: string]: string | undefined };
+const GetSolutionTemplateResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<GetSolutionTemplateResponseTagsMap>;
+
 /** List of capabilities */
 export type SolutionTemplatePropertiesCapabilitiesList = Array<string>;
+const SolutionTemplatePropertiesCapabilitiesList =
+  HierarchyMetadataHierarchyIdsList as any as S.Schema<SolutionTemplatePropertiesCapabilitiesList>;
+
 /** Solution Template Properties */
 export interface SolutionTemplateProperties {
   /** A unique identifier for the solution template, generated by the system */
@@ -2610,6 +3827,11 @@ export interface SolutionTemplateProperties {
   /** Provisioning state of resource */
   provisioningState?: ProvisioningState;
 }
+const SolutionTemplateProperties = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<SolutionTemplateProperties>;
+
 export interface GetSolutionTemplateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2628,6 +3850,11 @@ export interface GetSolutionTemplateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const GetSolutionTemplateResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<GetSolutionTemplateResponse>;
+
 export interface GetSolutionTemplateVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2638,6 +3865,11 @@ export interface GetSolutionTemplateVersionRequest {
   /** The name of the SolutionTemplateVersion */
   solutionTemplateVersionName: string;
 }
+const GetSolutionTemplateVersionRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<GetSolutionTemplateVersionRequest>;
+
 export interface GetSolutionTemplateVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2652,6 +3884,9 @@ export interface GetSolutionTemplateVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const GetSolutionTemplateVersionResponse =
+  CreateSolutionTemplateVersionResponse as any as S.Schema<GetSolutionTemplateVersionResponse>;
+
 export interface GetSolutionVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2664,8 +3899,16 @@ export interface GetSolutionVersionRequest {
   /** Name of the solution version */
   solutionVersionName: string;
 }
+const GetSolutionVersionRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<GetSolutionVersionRequest>;
+
 /** App components spec */
 export type SolutionVersionPropertiesSpecificationMap = { [key: string]: unknown | undefined };
+const SolutionVersionPropertiesSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<SolutionVersionPropertiesSpecificationMap>;
+
 /** Solution Instance State */
 export type State =
   | "InReview"
@@ -2680,6 +3923,8 @@ export type State =
   | "ExternalValidationFailed"
   | "Staging"
   | "NotApplicable";
+const State = S.String;
+
 /** Stages for Solution Version */
 export type CMStages =
   | "Configuration"
@@ -2689,10 +3934,19 @@ export type CMStages =
   | "ExternalValidation"
   | "Staging"
   | "Unstaging";
+const CMStages = S.String;
+
 /** State Category for Solution Version */
 export type StateCategory = "Pending" | "InProgress" | "Completed" | "Failed" | "None";
+const StateCategory = S.String;
+
 /** Child stages which represents more granular level stage status if any */
 export type StageMapChildStagesList = Array<StageMap>;
+const StageMapChildStagesList = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<StageMapChildStagesList>;
+
 /** Stage Map for Solution Version */
 export interface StageMap {
   /** Display State */
@@ -2708,10 +3962,22 @@ export interface StageMap {
   /** Child stages which represents more granular level stage status if any */
   childStages?: StageMapChildStagesList;
 }
+const StageMap = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<StageMap>;
+
 /** Stages of revision */
 export type SolutionVersionPropertiesStagesList = Array<StageMap>;
+const SolutionVersionPropertiesStagesList = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<SolutionVersionPropertiesStagesList>;
+
 /** Solution dependencies */
 export type SolutionDependencyDependenciesList = Array<SolutionDependency>;
+const SolutionDependencyDependenciesList = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<SolutionDependencyDependenciesList>;
+
 /** Solution Dependency Context */
 export interface SolutionDependency {
   /** Solution Version Id */
@@ -2725,8 +3991,15 @@ export interface SolutionDependency {
   /** Solution dependencies */
   dependencies?: SolutionDependencyDependenciesList;
 }
+const SolutionDependency = /*@__PURE__*/ __L.at(__c28, 2) as any as S.Schema<SolutionDependency>;
+
 /** Solution Dependency Context */
 export type SolutionVersionPropertiesSolutionDependenciesList = Array<SolutionDependency>;
+const SolutionVersionPropertiesSolutionDependenciesList = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<SolutionVersionPropertiesSolutionDependenciesList>;
+
 /** The error details. */
 export type SolutionVersionPropertiesErrorDetailsDetailsList = Array<ErrorDetail>;
 /** The error additional info. */
@@ -2744,6 +4017,9 @@ export interface SolutionVersionPropertiesErrorDetails {
   /** The error additional info. */
   additionalInfo?: SolutionVersionPropertiesErrorDetailsAdditionalInfoList;
 }
+const SolutionVersionPropertiesErrorDetails =
+  JobPropertiesErrorDetails as any as S.Schema<SolutionVersionPropertiesErrorDetails>;
+
 /** Solution Version Properties */
 export interface SolutionVersionProperties {
   /** Solution Template Version Id */
@@ -2783,6 +4059,11 @@ export interface SolutionVersionProperties {
   /** Provisioning state of resource */
   provisioningState?: ProvisioningState;
 }
+const SolutionVersionProperties = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<SolutionVersionProperties>;
+
 export interface GetSolutionVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2799,6 +4080,11 @@ export interface GetSolutionVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const GetSolutionVersionResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<GetSolutionVersionResponse>;
+
 export interface GetTargetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2807,12 +4093,23 @@ export interface GetTargetRequest {
   /** Name of the target */
   targetName: string;
 }
+const GetTargetRequest = /*@__PURE__*/ __L.at(__c28, 6) as any as S.Schema<GetTargetRequest>;
+
 /** Resource tags. */
 export type GetTargetResponseTagsMap = { [key: string]: string | undefined };
+const GetTargetResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<GetTargetResponseTagsMap>;
+
 /** target spec */
 export type TargetPropertiesTargetSpecificationMap = { [key: string]: unknown | undefined };
+const TargetPropertiesTargetSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<TargetPropertiesTargetSpecificationMap>;
+
 /** List of capabilities */
 export type TargetPropertiesCapabilitiesList = Array<string>;
+const TargetPropertiesCapabilitiesList =
+  HierarchyMetadataHierarchyIdsList as any as S.Schema<TargetPropertiesCapabilitiesList>;
+
 /** Target Properties */
 export interface TargetProperties {
   /** Description of target */
@@ -2836,6 +4133,8 @@ export interface TargetProperties {
   /** Provisioning state of resource */
   provisioningState?: ProvisioningState;
 }
+const TargetProperties = /*@__PURE__*/ __L.at(__c28, 7) as any as S.Schema<TargetProperties>;
+
 export interface GetTargetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2856,6 +4155,8 @@ export interface GetTargetResponse {
   /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
+const GetTargetResponse = /*@__PURE__*/ __L.at(__c29, 0) as any as S.Schema<GetTargetResponse>;
+
 export interface GetWorkflowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2866,6 +4167,8 @@ export interface GetWorkflowRequest {
   /** Name of the workflow */
   workflowName: string;
 }
+const GetWorkflowRequest = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<GetWorkflowRequest>;
+
 /** Workflow Properties */
 export interface WorkflowProperties {
   /** Workflow template Id */
@@ -2873,6 +4176,8 @@ export interface WorkflowProperties {
   /** Provisioning state of resource */
   provisioningState?: ProvisioningState;
 }
+const WorkflowProperties = /*@__PURE__*/ __L.at(__c29, 2) as any as S.Schema<WorkflowProperties>;
+
 export interface GetWorkflowResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2889,6 +4194,8 @@ export interface GetWorkflowResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const GetWorkflowResponse = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<GetWorkflowResponse>;
+
 export interface GetWorkflowVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2901,10 +4208,21 @@ export interface GetWorkflowVersionRequest {
   /** The name of the workflowVersion. */
   versionName: string;
 }
+const GetWorkflowVersionRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<GetWorkflowVersionRequest>;
+
 /** Stage specification */
 export type StageSpecSpecificationMap = { [key: string]: unknown | undefined };
+const StageSpecSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<StageSpecSpecificationMap>;
+
 /** Task specification */
 export type TaskSpecSpecificationMap = { [key: string]: unknown | undefined };
+const TaskSpecSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<TaskSpecSpecificationMap>;
+
 /** Task Spec */
 export interface TaskSpec {
   /** Name of Task */
@@ -2914,10 +4232,16 @@ export interface TaskSpec {
   /** Task specification */
   specification: TaskSpecSpecificationMap;
 }
+const TaskSpec = /*@__PURE__*/ __L.at(__c29, 5) as any as S.Schema<TaskSpec>;
+
 /** List of tasks in the stage */
 export type StageSpecTasksList = Array<TaskSpec>;
+const StageSpecTasksList = /*@__PURE__*/ __L.at(__c29, 6) as any as S.Schema<StageSpecTasksList>;
+
 /** Error action mode */
 export type ErrorActionMode = "stopOnAnyFailure" | "stopOnNFailures" | "silentlyContinue";
+const ErrorActionMode = S.String;
+
 /** Error Action Properties */
 export interface ErrorAction {
   /** Error action mode */
@@ -2925,6 +4249,8 @@ export interface ErrorAction {
   /** Max tolerated failures */
   maxToleratedFailures?: number;
 }
+const ErrorAction = /*@__PURE__*/ __L.at(__c29, 7) as any as S.Schema<ErrorAction>;
+
 /** Task Option Properties */
 export interface TaskOption {
   /** Parallel worker numbers of the tasks */
@@ -2932,6 +4258,8 @@ export interface TaskOption {
   /** Error action for the tasks */
   errorAction?: ErrorAction;
 }
+const TaskOption = /*@__PURE__*/ __L.at(__c30, 0) as any as S.Schema<TaskOption>;
+
 /** Stage Properties */
 export interface StageSpec {
   /** Name of Stage */
@@ -2943,10 +4271,20 @@ export interface StageSpec {
   /** Task option for the stage */
   taskOption?: TaskOption;
 }
+const StageSpec = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<StageSpec>;
+
 /** A list of stage specs */
 export type WorkflowVersionPropertiesStageSpecList = Array<StageSpec>;
+const WorkflowVersionPropertiesStageSpecList = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<WorkflowVersionPropertiesStageSpecList>;
+
 /** Execution specification */
 export type WorkflowVersionPropertiesSpecificationMap = { [key: string]: unknown | undefined };
+const WorkflowVersionPropertiesSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<WorkflowVersionPropertiesSpecificationMap>;
+
 /** Workflow Version Properties */
 export interface WorkflowVersionProperties {
   /** Revision number of resolved config for this workflow version */
@@ -2964,6 +4302,11 @@ export interface WorkflowVersionProperties {
   /** Provisioning state of resource */
   provisioningState?: ProvisioningState;
 }
+const WorkflowVersionProperties = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<WorkflowVersionProperties>;
+
 export interface GetWorkflowVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2980,6 +4323,11 @@ export interface GetWorkflowVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const GetWorkflowVersionResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<GetWorkflowVersionResponse>;
+
 /** The hardware setting properties */
 export interface HardwareSettingPropertiesInput {
   /** The total number of cores */
@@ -3001,6 +4349,11 @@ export interface HardwareSettingPropertiesInput {
   /** The unique Id of the device */
   deviceId: string;
 }
+const HardwareSettingPropertiesInput = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<HardwareSettingPropertiesInput>;
+
 export interface HardwareSettingsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3013,6 +4366,11 @@ export interface HardwareSettingsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: HardwareSettingPropertiesInput;
 }
+const HardwareSettingsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<HardwareSettingsCreateOrUpdateRequest>;
+
 export interface HardwareSettingsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3025,6 +4383,9 @@ export interface HardwareSettingsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: HardwareSettingProperties;
 }
+const HardwareSettingsCreateOrUpdateResponse =
+  GetHardwareSettingsResponse as any as S.Schema<HardwareSettingsCreateOrUpdateResponse>;
+
 export interface ImagesListDownloadUriRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3035,8 +4396,16 @@ export interface ImagesListDownloadUriRequest {
   /** The name of the Image */
   imageName: string;
 }
+const ImagesListDownloadUriRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<ImagesListDownloadUriRequest>;
+
 /** The versions that are compatible for this update package. */
 export type ImageDownloadResultCompatibleVersionsList = Array<string>;
+const ImageDownloadResultCompatibleVersionsList =
+  HierarchyMetadataHierarchyIdsList as any as S.Schema<ImageDownloadResultCompatibleVersionsList>;
+
 /** The image download properties */
 export interface ImageDownloadResult {
   /** The resource provisioning state */
@@ -3062,6 +4431,8 @@ export interface ImageDownloadResult {
   /** The download link expiry time */
   linkExpiry: string;
 }
+const ImageDownloadResult = /*@__PURE__*/ __L.at(__c31, 0) as any as S.Schema<ImageDownloadResult>;
+
 export interface InstallTargetSolutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3072,7 +4443,15 @@ export interface InstallTargetSolutionRequest {
   /** Solution Version ARM Id */
   solutionVersionId: string;
 }
+const InstallTargetSolutionRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<InstallTargetSolutionRequest>;
+
 export interface InstallTargetSolutionResponse {}
+const InstallTargetSolutionResponse =
+  ConfigurationPropertiesInput as any as S.Schema<InstallTargetSolutionResponse>;
+
 /** Instance Properties */
 export interface InstancePropertiesInput {
   /** Solution version of instance */
@@ -3086,6 +4465,11 @@ export interface InstancePropertiesInput {
   /** Scope of instance */
   solutionScope?: string;
 }
+const InstancePropertiesInput = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<InstancePropertiesInput>;
+
 export interface InstancesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3102,6 +4486,11 @@ export interface InstancesCreateOrUpdateRequest {
   /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
+const InstancesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<InstancesCreateOrUpdateRequest>;
+
 export interface InstancesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3118,6 +4507,11 @@ export interface InstancesCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const InstancesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<InstancesCreateOrUpdateResponse>;
+
 export interface ListArtifactByParentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3128,6 +4522,11 @@ export interface ListArtifactByParentRequest {
   /** The name of the Image */
   imageName: string;
 }
+const ListArtifactByParentRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<ListArtifactByParentRequest>;
+
 /** Disconnected operations artifact resource. */
 export interface Artifact {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3141,8 +4540,15 @@ export interface Artifact {
   /** The resource-specific properties for this resource. */
   properties?: ArtifactProperties;
 }
+const Artifact = GetArtifactResponse as any as S.Schema<Artifact>;
+
 /** The Artifact items on this page */
 export type ArtifactListResultValueList = Array<Artifact>;
+const ArtifactListResultValueList = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<ArtifactListResultValueList>;
+
 /** The response of a Artifact list operation. */
 export interface ArtifactListResult {
   /** The Artifact items on this page */
@@ -3150,14 +4556,24 @@ export interface ArtifactListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ArtifactListResult = /*@__PURE__*/ __L.at(__c31, 7) as any as S.Schema<ArtifactListResult>;
+
 export interface ListConfigTemplateByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListConfigTemplateByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<ListConfigTemplateByResourceGroupRequest>;
+
 /** Resource tags. */
 export type ConfigTemplateTagsMap = { [key: string]: string | undefined };
+const ConfigTemplateTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigTemplateTagsMap>;
+
 /** Config Template Resource. Contains configuration expressions using the predefined expression language. */
 export interface ConfigTemplate {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3177,8 +4593,15 @@ export interface ConfigTemplate {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const ConfigTemplate = /*@__PURE__*/ __L.at(__c32, 1) as any as S.Schema<ConfigTemplate>;
+
 /** The ConfigTemplate items on this page */
 export type ConfigTemplateListResultValueList = Array<ConfigTemplate>;
+const ConfigTemplateListResultValueList = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<ConfigTemplateListResultValueList>;
+
 /** The response of a ConfigTemplate list operation. */
 export interface ConfigTemplateListResult {
   /** The ConfigTemplate items on this page */
@@ -3186,10 +4609,20 @@ export interface ConfigTemplateListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ConfigTemplateListResult = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<ConfigTemplateListResult>;
+
 export interface ListConfigTemplateBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListConfigTemplateBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<ListConfigTemplateBySubscriptionRequest>;
+
 export interface ListConfigTemplateMetadatasByConfigTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3198,6 +4631,11 @@ export interface ListConfigTemplateMetadatasByConfigTemplateRequest {
   /** The name of the ConfigTemplate */
   configTemplateName: string;
 }
+const ListConfigTemplateMetadatasByConfigTemplateRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<ListConfigTemplateMetadatasByConfigTemplateRequest>;
+
 /** ConfigTemplateMetadata Resource */
 export interface ConfigTemplateMetadata {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3213,8 +4651,18 @@ export interface ConfigTemplateMetadata {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const ConfigTemplateMetadata = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<ConfigTemplateMetadata>;
+
 /** The ConfigTemplateMetadata items on this page */
 export type ConfigTemplateMetadataListResultValueList = Array<ConfigTemplateMetadata>;
+const ConfigTemplateMetadataListResultValueList = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<ConfigTemplateMetadataListResultValueList>;
+
 /** The response of a ConfigTemplateMetadata list operation. */
 export interface ConfigTemplateMetadataListResult {
   /** The ConfigTemplateMetadata items on this page */
@@ -3222,6 +4670,11 @@ export interface ConfigTemplateMetadataListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ConfigTemplateMetadataListResult = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<ConfigTemplateMetadataListResult>;
+
 export interface ListConfigTemplateSchemaByConfigTemplateVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3232,6 +4685,11 @@ export interface ListConfigTemplateSchemaByConfigTemplateVersionRequest {
   /** The name of the ConfigTemplateVersion */
   configTemplateVersionName: string;
 }
+const ListConfigTemplateSchemaByConfigTemplateVersionRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<ListConfigTemplateSchemaByConfigTemplateVersionRequest>;
+
 /** SolutionSchema Resource */
 export interface ConfigTemplateSchema {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3247,8 +4705,18 @@ export interface ConfigTemplateSchema {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const ConfigTemplateSchema = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<ConfigTemplateSchema>;
+
 /** The ConfigTemplateSchema items on this page */
 export type ConfigTemplateSchemaListResultValueList = Array<ConfigTemplateSchema>;
+const ConfigTemplateSchemaListResultValueList = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<ConfigTemplateSchemaListResultValueList>;
+
 /** The response of a ConfigTemplateSchema list operation. */
 export interface ConfigTemplateSchemaListResult {
   /** The ConfigTemplateSchema items on this page */
@@ -3256,6 +4724,11 @@ export interface ConfigTemplateSchemaListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ConfigTemplateSchemaListResult = /*@__PURE__*/ __L.at(
+  __c33,
+  4,
+) as any as S.Schema<ConfigTemplateSchemaListResult>;
+
 export interface ListConfigTemplateVersionByConfigTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3264,6 +4737,11 @@ export interface ListConfigTemplateVersionByConfigTemplateRequest {
   /** The name of the ConfigTemplate */
   configTemplateName: string;
 }
+const ListConfigTemplateVersionByConfigTemplateRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<ListConfigTemplateVersionByConfigTemplateRequest>;
+
 /** Config Template Version Resource */
 export interface ConfigTemplateVersion {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3279,8 +4757,18 @@ export interface ConfigTemplateVersion {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const ConfigTemplateVersion = /*@__PURE__*/ __L.at(
+  __c33,
+  6,
+) as any as S.Schema<ConfigTemplateVersion>;
+
 /** The ConfigTemplateVersion items on this page */
 export type ConfigTemplateVersionListResultValueList = Array<ConfigTemplateVersion>;
+const ConfigTemplateVersionListResultValueList = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<ConfigTemplateVersionListResultValueList>;
+
 /** The response of a ConfigTemplateVersion list operation. */
 export interface ConfigTemplateVersionListResult {
   /** The ConfigTemplateVersion items on this page */
@@ -3288,12 +4776,22 @@ export interface ConfigTemplateVersionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ConfigTemplateVersionListResult = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<ConfigTemplateVersionListResult>;
+
 export interface ListConfigurationByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListConfigurationByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<ListConfigurationByResourceGroupRequest>;
+
 /** Resource tags. */
 export type ConfigurationTagsMap = { [key: string]: string | undefined };
 /** Configuration Resource */
@@ -3313,8 +4811,15 @@ export interface Configuration {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationProperties;
 }
+const Configuration = GetConfigurationResponse as any as S.Schema<Configuration>;
+
 /** The Configuration items on this page */
 export type ConfigurationListResultValueList = Array<Configuration>;
+const ConfigurationListResultValueList = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<ConfigurationListResultValueList>;
+
 /** The response of a Configuration list operation. */
 export interface ConfigurationListResult {
   /** The Configuration items on this page */
@@ -3322,14 +4827,29 @@ export interface ConfigurationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ConfigurationListResult = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<ConfigurationListResult>;
+
 export interface ListConfigurationBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListConfigurationBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<ListConfigurationBySubscriptionRequest>;
+
 export interface ListConfigurationReferencesRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
+const ListConfigurationReferencesRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<ListConfigurationReferencesRequest>;
+
 /** ConfigurationReference Resource */
 export interface ConfigurationReference {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3343,8 +4863,18 @@ export interface ConfigurationReference {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationReferenceProperties;
 }
+const ConfigurationReference = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<ConfigurationReference>;
+
 /** The ConfigurationReference items on this page */
 export type ConfigurationReferenceListResultValueList = Array<ConfigurationReference>;
+const ConfigurationReferenceListResultValueList = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<ConfigurationReferenceListResultValueList>;
+
 /** The response of a ConfigurationReference list operation. */
 export interface ConfigurationReferenceListResult {
   /** The ConfigurationReference items on this page */
@@ -3352,12 +4882,22 @@ export interface ConfigurationReferenceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ConfigurationReferenceListResult = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<ConfigurationReferenceListResult>;
+
 export interface ListContextByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListContextByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<ListContextByResourceGroupRequest>;
+
 /** Resource tags. */
 export type ContextTagsMap = { [key: string]: string | undefined };
 /** Context Resource */
@@ -3377,8 +4917,15 @@ export interface Context {
   /** The resource-specific properties for this resource. */
   properties?: ContextProperties;
 }
+const Context = GetContextResponse as any as S.Schema<Context>;
+
 /** The Context items on this page */
 export type ContextListResultValueList = Array<Context>;
+const ContextListResultValueList = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<ContextListResultValueList>;
+
 /** The response of a Context list operation. */
 export interface ContextListResult {
   /** The Context items on this page */
@@ -3386,16 +4933,28 @@ export interface ContextListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ContextListResult = /*@__PURE__*/ __L.at(__c35, 3) as any as S.Schema<ContextListResult>;
+
 export interface ListContextBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListContextBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<ListContextBySubscriptionRequest>;
+
 export interface ListDiagnosticByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListDiagnosticByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<ListDiagnosticByResourceGroupRequest>;
+
 /** Resource tags. */
 export type DiagnosticTagsMap = { [key: string]: string | undefined };
 /** A Diagnostic resource. */
@@ -3419,8 +4978,15 @@ export interface Diagnostic {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const Diagnostic = GetDiagnosticResponse as any as S.Schema<Diagnostic>;
+
 /** The Diagnostic items on this page */
 export type DiagnosticListResultValueList = Array<Diagnostic>;
+const DiagnosticListResultValueList = /*@__PURE__*/ __L.at(
+  __c35,
+  6,
+) as any as S.Schema<DiagnosticListResultValueList>;
+
 /** The response of a Diagnostic list operation. */
 export interface DiagnosticListResult {
   /** The Diagnostic items on this page */
@@ -3428,18 +4994,36 @@ export interface DiagnosticListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DiagnosticListResult = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<DiagnosticListResult>;
+
 export interface ListDiagnosticBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListDiagnosticBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<ListDiagnosticBySubscriptionRequest>;
+
 export interface ListDisconnectedOperationByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListDisconnectedOperationByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<ListDisconnectedOperationByResourceGroupRequest>;
+
 /** Resource tags. */
 export type DisconnectedOperationTagsMap = { [key: string]: string | undefined };
+const DisconnectedOperationTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<DisconnectedOperationTagsMap>;
+
 /** Disconnected operation resource. */
 export interface DisconnectedOperation {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3457,8 +5041,18 @@ export interface DisconnectedOperation {
   /** The resource-specific properties for this resource. */
   properties?: DisconnectedOperationProperties;
 }
+const DisconnectedOperation = /*@__PURE__*/ __L.at(
+  __c36,
+  2,
+) as any as S.Schema<DisconnectedOperation>;
+
 /** The DisconnectedOperation items on this page */
 export type DisconnectedOperationListResultValueList = Array<DisconnectedOperation>;
+const DisconnectedOperationListResultValueList = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<DisconnectedOperationListResultValueList>;
+
 /** The response of a DisconnectedOperation list operation. */
 export interface DisconnectedOperationListResult {
   /** The DisconnectedOperation items on this page */
@@ -3466,10 +5060,20 @@ export interface DisconnectedOperationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DisconnectedOperationListResult = /*@__PURE__*/ __L.at(
+  __c36,
+  4,
+) as any as S.Schema<DisconnectedOperationListResult>;
+
 export interface ListDisconnectedOperationBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListDisconnectedOperationBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<ListDisconnectedOperationBySubscriptionRequest>;
+
 export interface ListDisconnectedOperationDeploymentManifestRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3478,6 +5082,11 @@ export interface ListDisconnectedOperationDeploymentManifestRequest {
   /** Name of the resource */
   name: string;
 }
+const ListDisconnectedOperationDeploymentManifestRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<ListDisconnectedOperationDeploymentManifestRequest>;
+
 /** The disconnected operation manifest */
 export interface DisconnectedOperationDeploymentManifest {
   /** The resource identifier of the disconnected operations resource */
@@ -3499,6 +5108,11 @@ export interface DisconnectedOperationDeploymentManifest {
   /** The benefit plans */
   benefitPlans?: BenefitPlans;
 }
+const DisconnectedOperationDeploymentManifest = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<DisconnectedOperationDeploymentManifest>;
+
 export interface ListDynamicConfigurationByConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3507,6 +5121,11 @@ export interface ListDynamicConfigurationByConfigurationRequest {
   /** Name of the Configuration */
   configurationName: string;
 }
+const ListDynamicConfigurationByConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<ListDynamicConfigurationByConfigurationRequest>;
+
 /** Dynamic Configuration Resource */
 export interface DynamicConfiguration {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3520,8 +5139,18 @@ export interface DynamicConfiguration {
   /** The resource-specific properties for this resource. */
   properties?: DynamicConfigurationProperties;
 }
+const DynamicConfiguration = /*@__PURE__*/ __L.at(
+  __c37,
+  1,
+) as any as S.Schema<DynamicConfiguration>;
+
 /** The DynamicConfiguration items on this page */
 export type DynamicConfigurationListResultValueList = Array<DynamicConfiguration>;
+const DynamicConfigurationListResultValueList = /*@__PURE__*/ __L.at(
+  __c37,
+  2,
+) as any as S.Schema<DynamicConfigurationListResultValueList>;
+
 /** The response of a DynamicConfiguration list operation. */
 export interface DynamicConfigurationListResult {
   /** The DynamicConfiguration items on this page */
@@ -3529,6 +5158,11 @@ export interface DynamicConfigurationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DynamicConfigurationListResult = /*@__PURE__*/ __L.at(
+  __c37,
+  3,
+) as any as S.Schema<DynamicConfigurationListResult>;
+
 export interface ListDynamicConfigurationVersionByDynamicConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3539,6 +5173,11 @@ export interface ListDynamicConfigurationVersionByDynamicConfigurationRequest {
   /** Name of the dynamic configuration */
   dynamicConfigurationName: string;
 }
+const ListDynamicConfigurationVersionByDynamicConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  4,
+) as any as S.Schema<ListDynamicConfigurationVersionByDynamicConfigurationRequest>;
+
 /** Dynamic Configuration Resource */
 export interface DynamicConfigurationVersion {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3552,8 +5191,16 @@ export interface DynamicConfigurationVersion {
   /** The resource-specific properties for this resource. */
   properties?: DynamicConfigurationVersionProperties;
 }
+const DynamicConfigurationVersion =
+  DynamicConfigurationVersionsCreateOrUpdateResponse as any as S.Schema<DynamicConfigurationVersion>;
+
 /** The DynamicConfigurationVersion items on this page */
 export type DynamicConfigurationVersionListResultValueList = Array<DynamicConfigurationVersion>;
+const DynamicConfigurationVersionListResultValueList = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<DynamicConfigurationVersionListResultValueList>;
+
 /** The response of a DynamicConfigurationVersion list operation. */
 export interface DynamicConfigurationVersionListResult {
   /** The DynamicConfigurationVersion items on this page */
@@ -3561,6 +5208,11 @@ export interface DynamicConfigurationVersionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DynamicConfigurationVersionListResult = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<DynamicConfigurationVersionListResult>;
+
 export interface ListDynamicSchemaBySchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3569,6 +5221,11 @@ export interface ListDynamicSchemaBySchemaRequest {
   /** The name of the Schema */
   schemaName: string;
 }
+const ListDynamicSchemaBySchemaRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<ListDynamicSchemaBySchemaRequest>;
+
 /** DynamicSchema Resource */
 export interface DynamicSchema {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3584,8 +5241,15 @@ export interface DynamicSchema {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const DynamicSchema = GetDynamicSchemaResponse as any as S.Schema<DynamicSchema>;
+
 /** The DynamicSchema items on this page */
 export type DynamicSchemaListResultValueList = Array<DynamicSchema>;
+const DynamicSchemaListResultValueList = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<DynamicSchemaListResultValueList>;
+
 /** The response of a DynamicSchema list operation. */
 export interface DynamicSchemaListResult {
   /** The DynamicSchema items on this page */
@@ -3593,6 +5257,11 @@ export interface DynamicSchemaListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DynamicSchemaListResult = /*@__PURE__*/ __L.at(
+  __c38,
+  1,
+) as any as S.Schema<DynamicSchemaListResult>;
+
 export interface ListDynamicSchemaVersionByDynamicSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3603,6 +5272,11 @@ export interface ListDynamicSchemaVersionByDynamicSchemaRequest {
   /** The name of the DynamicSchema */
   dynamicSchemaName: string;
 }
+const ListDynamicSchemaVersionByDynamicSchemaRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<ListDynamicSchemaVersionByDynamicSchemaRequest>;
+
 /** Dynamic Schema Version Resource */
 export interface DynamicSchemaVersion {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3618,8 +5292,15 @@ export interface DynamicSchemaVersion {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const DynamicSchemaVersion = GetSchemaVersionResponse as any as S.Schema<DynamicSchemaVersion>;
+
 /** The DynamicSchemaVersion items on this page */
 export type DynamicSchemaVersionListResultValueList = Array<DynamicSchemaVersion>;
+const DynamicSchemaVersionListResultValueList = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<DynamicSchemaVersionListResultValueList>;
+
 /** The response of a DynamicSchemaVersion list operation. */
 export interface DynamicSchemaVersionListResult {
   /** The DynamicSchemaVersion items on this page */
@@ -3627,6 +5308,11 @@ export interface DynamicSchemaVersionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DynamicSchemaVersionListResult = /*@__PURE__*/ __L.at(
+  __c38,
+  4,
+) as any as S.Schema<DynamicSchemaVersionListResult>;
+
 export interface ListExecutionByWorkflowVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3639,6 +5325,11 @@ export interface ListExecutionByWorkflowVersionRequest {
   /** The name of the workflowVersion. */
   versionName: string;
 }
+const ListExecutionByWorkflowVersionRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  5,
+) as any as S.Schema<ListExecutionByWorkflowVersionRequest>;
+
 /** Execution Resource */
 export interface Execution {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3656,8 +5347,15 @@ export interface Execution {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const Execution = GetExecutionResponse as any as S.Schema<Execution>;
+
 /** The Execution items on this page */
 export type ExecutionListResultValueList = Array<Execution>;
+const ExecutionListResultValueList = /*@__PURE__*/ __L.at(
+  __c38,
+  6,
+) as any as S.Schema<ExecutionListResultValueList>;
+
 /** The response of a Execution list operation. */
 export interface ExecutionListResult {
   /** The Execution items on this page */
@@ -3665,6 +5363,8 @@ export interface ExecutionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ExecutionListResult = /*@__PURE__*/ __L.at(__c38, 7) as any as S.Schema<ExecutionListResult>;
+
 export interface ListHardwareSettingsByParentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3673,6 +5373,11 @@ export interface ListHardwareSettingsByParentRequest {
   /** Name of the resource */
   name: string;
 }
+const ListHardwareSettingsByParentRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<ListHardwareSettingsByParentRequest>;
+
 /** Hardware settings resource. */
 export interface HardwareSetting {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3686,8 +5391,15 @@ export interface HardwareSetting {
   /** The resource-specific properties for this resource. */
   properties?: HardwareSettingProperties;
 }
+const HardwareSetting = /*@__PURE__*/ __L.at(__c39, 1) as any as S.Schema<HardwareSetting>;
+
 /** The HardwareSetting items on this page */
 export type HardwareSettingListResultValueList = Array<HardwareSetting>;
+const HardwareSettingListResultValueList = /*@__PURE__*/ __L.at(
+  __c39,
+  2,
+) as any as S.Schema<HardwareSettingListResultValueList>;
+
 /** The response of a HardwareSetting list operation. */
 export interface HardwareSettingListResult {
   /** The HardwareSetting items on this page */
@@ -3695,10 +5407,20 @@ export interface HardwareSettingListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const HardwareSettingListResult = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<HardwareSettingListResult>;
+
 export interface ListHierarchyConfigurationMetadatasByParentRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
+const ListHierarchyConfigurationMetadatasByParentRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  4,
+) as any as S.Schema<ListHierarchyConfigurationMetadatasByParentRequest>;
+
 /** Hierarchy Configuration Metadata Resource attached to a Target or Site */
 export interface HierarchyConfigurationMetadata {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3712,9 +5434,17 @@ export interface HierarchyConfigurationMetadata {
   /** The resource-specific properties for this resource. */
   properties?: HierarchyConfigurationMetadataProperties;
 }
+const HierarchyConfigurationMetadata =
+  GetHierarchyConfigurationMetadatasResponse as any as S.Schema<HierarchyConfigurationMetadata>;
+
 /** The HierarchyConfigurationMetadata items on this page */
 export type HierarchyConfigurationMetadataListResultValueList =
   Array<HierarchyConfigurationMetadata>;
+const HierarchyConfigurationMetadataListResultValueList = /*@__PURE__*/ __L.at(
+  __c39,
+  5,
+) as any as S.Schema<HierarchyConfigurationMetadataListResultValueList>;
+
 /** The response of a HierarchyConfigurationMetadata list operation. */
 export interface HierarchyConfigurationMetadataListResult {
   /** The HierarchyConfigurationMetadata items on this page */
@@ -3722,12 +5452,22 @@ export interface HierarchyConfigurationMetadataListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const HierarchyConfigurationMetadataListResult = /*@__PURE__*/ __L.at(
+  __c39,
+  6,
+) as any as S.Schema<HierarchyConfigurationMetadataListResult>;
+
 export interface ListHierarchyConfigurationMetadataVersionByParentRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** Name of the hierarchy configuration metadata */
   hierarchyConfigurationMetadataName: string;
 }
+const ListHierarchyConfigurationMetadataVersionByParentRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<ListHierarchyConfigurationMetadataVersionByParentRequest>;
+
 /** Configuration Metadata Version Resource */
 export interface HierarchyConfigurationMetadataVersion {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3741,9 +5481,17 @@ export interface HierarchyConfigurationMetadataVersion {
   /** The resource-specific properties for this resource. */
   properties?: HierarchyConfigurationMetadataVersionProperties;
 }
+const HierarchyConfigurationMetadataVersion =
+  GetHierarchyConfigurationMetadataVersionResponse as any as S.Schema<HierarchyConfigurationMetadataVersion>;
+
 /** The HierarchyConfigurationMetadataVersion items on this page */
 export type HierarchyConfigurationMetadataVersionListResultValueList =
   Array<HierarchyConfigurationMetadataVersion>;
+const HierarchyConfigurationMetadataVersionListResultValueList = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<HierarchyConfigurationMetadataVersionListResultValueList>;
+
 /** The response of a HierarchyConfigurationMetadataVersion list operation. */
 export interface HierarchyConfigurationMetadataVersionListResult {
   /** The HierarchyConfigurationMetadataVersion items on this page */
@@ -3751,6 +5499,11 @@ export interface HierarchyConfigurationMetadataVersionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const HierarchyConfigurationMetadataVersionListResult = /*@__PURE__*/ __L.at(
+  __c40,
+  1,
+) as any as S.Schema<HierarchyConfigurationMetadataVersionListResult>;
+
 export interface ListImageByDisconnectedOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3765,6 +5518,11 @@ export interface ListImageByDisconnectedOperationRequest {
   /** The number of result items to skip. */
   _skip?: number;
 }
+const ListImageByDisconnectedOperationRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<ListImageByDisconnectedOperationRequest>;
+
 /** Holds the release information of a disconnected operations image. */
 export interface Image {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3778,8 +5536,15 @@ export interface Image {
   /** The resource-specific properties for this resource. */
   properties?: ImageProperties;
 }
+const Image = GetImageResponse as any as S.Schema<Image>;
+
 /** The Image items on this page */
 export type ImageListResultValueList = Array<Image>;
+const ImageListResultValueList = /*@__PURE__*/ __L.at(
+  __c40,
+  3,
+) as any as S.Schema<ImageListResultValueList>;
+
 /** The response of a Image list operation. */
 export interface ImageListResult {
   /** The Image items on this page */
@@ -3787,6 +5552,8 @@ export interface ImageListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ImageListResult = /*@__PURE__*/ __L.at(__c40, 4) as any as S.Schema<ImageListResult>;
+
 export interface ListInstanceBySolutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3797,6 +5564,11 @@ export interface ListInstanceBySolutionRequest {
   /** Name of the solution */
   solutionName: string;
 }
+const ListInstanceBySolutionRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  5,
+) as any as S.Schema<ListInstanceBySolutionRequest>;
+
 /** Instance Resource. Represents a deployment object. */
 export interface Instance {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3814,8 +5586,15 @@ export interface Instance {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const Instance = GetInstanceResponse as any as S.Schema<Instance>;
+
 /** The Instance items on this page */
 export type InstanceListResultValueList = Array<Instance>;
+const InstanceListResultValueList = /*@__PURE__*/ __L.at(
+  __c40,
+  6,
+) as any as S.Schema<InstanceListResultValueList>;
+
 /** The response of a Instance list operation. */
 export interface InstanceListResult {
   /** The Instance items on this page */
@@ -3823,6 +5602,8 @@ export interface InstanceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const InstanceListResult = /*@__PURE__*/ __L.at(__c40, 7) as any as S.Schema<InstanceListResult>;
+
 export interface ListInstanceHistoryByInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3835,6 +5616,11 @@ export interface ListInstanceHistoryByInstanceRequest {
   /** Name of the instance */
   instanceName: string;
 }
+const ListInstanceHistoryByInstanceRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<ListInstanceHistoryByInstanceRequest>;
+
 /** InstanceHistory Resource */
 export interface InstanceHistory {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3852,8 +5638,15 @@ export interface InstanceHistory {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const InstanceHistory = /*@__PURE__*/ __L.at(__c41, 1) as any as S.Schema<InstanceHistory>;
+
 /** The InstanceHistory items on this page */
 export type InstanceHistoryListResultValueList = Array<InstanceHistory>;
+const InstanceHistoryListResultValueList = /*@__PURE__*/ __L.at(
+  __c41,
+  2,
+) as any as S.Schema<InstanceHistoryListResultValueList>;
+
 /** The response of a InstanceHistory list operation. */
 export interface InstanceHistoryListResult {
   /** The InstanceHistory items on this page */
@@ -3861,10 +5654,20 @@ export interface InstanceHistoryListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const InstanceHistoryListResult = /*@__PURE__*/ __L.at(
+  __c41,
+  3,
+) as any as S.Schema<InstanceHistoryListResult>;
+
 export interface ListJobByTargetRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
+const ListJobByTargetRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  4,
+) as any as S.Schema<ListJobByTargetRequest>;
+
 /** Job extension resource for tracking job execution and substatuses. */
 export interface Job {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3880,8 +5683,15 @@ export interface Job {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const Job = GetJobResponse as any as S.Schema<Job>;
+
 /** The Job items on this page */
 export type JobListResultValueList = Array<Job>;
+const JobListResultValueList = /*@__PURE__*/ __L.at(
+  __c41,
+  5,
+) as any as S.Schema<JobListResultValueList>;
+
 /** The response of a Job list operation. */
 export interface JobListResult {
   /** The Job items on this page */
@@ -3889,7 +5699,14 @@ export interface JobListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const JobListResult = /*@__PURE__*/ __L.at(__c41, 6) as any as S.Schema<JobListResult>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  7,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -3901,10 +5718,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c42, 0) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -3918,22 +5741,41 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c42, 1) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c42,
+  2,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c42,
+  3,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListSchemaByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListSchemaByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  4,
+) as any as S.Schema<ListSchemaByResourceGroupRequest>;
+
 /** Resource tags. */
 export type SchemaTagsMap = { [key: string]: string | undefined };
+const SchemaTagsMap = ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<SchemaTagsMap>;
+
 /** Schema Resource */
 export interface Schema {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3953,8 +5795,15 @@ export interface Schema {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const Schema = /*@__PURE__*/ __L.at(__c42, 5) as any as S.Schema<Schema>;
+
 /** The Schema items on this page */
 export type SchemaListResultValueList = Array<Schema>;
+const SchemaListResultValueList = /*@__PURE__*/ __L.at(
+  __c42,
+  6,
+) as any as S.Schema<SchemaListResultValueList>;
+
 /** The response of a Schema list operation. */
 export interface SchemaListResult {
   /** The Schema items on this page */
@@ -3962,14 +5811,26 @@ export interface SchemaListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SchemaListResult = /*@__PURE__*/ __L.at(__c42, 7) as any as S.Schema<SchemaListResult>;
+
 export interface ListSchemaBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListSchemaBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  0,
+) as any as S.Schema<ListSchemaBySubscriptionRequest>;
+
 export interface ListSchemaReferenceByResourceGroupRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
+const ListSchemaReferenceByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  1,
+) as any as S.Schema<ListSchemaReferenceByResourceGroupRequest>;
+
 /** Schema Reference Resource */
 export interface SchemaReference {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3985,8 +5846,15 @@ export interface SchemaReference {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const SchemaReference = /*@__PURE__*/ __L.at(__c43, 2) as any as S.Schema<SchemaReference>;
+
 /** The SchemaReference items on this page */
 export type SchemaReferenceListResultValueList = Array<SchemaReference>;
+const SchemaReferenceListResultValueList = /*@__PURE__*/ __L.at(
+  __c43,
+  3,
+) as any as S.Schema<SchemaReferenceListResultValueList>;
+
 /** The response of a SchemaReference list operation. */
 export interface SchemaReferenceListResult {
   /** The SchemaReference items on this page */
@@ -3994,6 +5862,11 @@ export interface SchemaReferenceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SchemaReferenceListResult = /*@__PURE__*/ __L.at(
+  __c43,
+  4,
+) as any as S.Schema<SchemaReferenceListResult>;
+
 export interface ListSchemaVersionBySchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4002,10 +5875,18 @@ export interface ListSchemaVersionBySchemaRequest {
   /** The name of the Schema */
   schemaName: string;
 }
+const ListSchemaVersionBySchemaRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  5,
+) as any as S.Schema<ListSchemaVersionBySchemaRequest>;
+
 /** Schema Version Resource */
 export type SchemaVersion = DynamicSchemaVersion;
 /** The SchemaVersion items on this page */
 export type SchemaVersionListResultValueList = Array<DynamicSchemaVersion>;
+const SchemaVersionListResultValueList =
+  DynamicSchemaVersionListResultValueList as any as S.Schema<SchemaVersionListResultValueList>;
+
 /** The response of a SchemaVersion list operation. */
 export interface SchemaVersionListResult {
   /** The SchemaVersion items on this page */
@@ -4013,12 +5894,22 @@ export interface SchemaVersionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SchemaVersionListResult = /*@__PURE__*/ __L.at(
+  __c43,
+  6,
+) as any as S.Schema<SchemaVersionListResult>;
+
 export interface ListSiteByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListSiteByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  7,
+) as any as S.Schema<ListSiteByResourceGroupRequest>;
+
 /** Site as Extension Resource */
 export interface Site {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4032,8 +5923,15 @@ export interface Site {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
+const Site = GetSiteResponse as any as S.Schema<Site>;
+
 /** The Site items on this page */
 export type SiteListResultValueList = Array<Site>;
+const SiteListResultValueList = /*@__PURE__*/ __L.at(
+  __c44,
+  0,
+) as any as S.Schema<SiteListResultValueList>;
+
 /** The response of a Site list operation. */
 export interface SiteListResult {
   /** The Site items on this page */
@@ -4041,6 +5939,8 @@ export interface SiteListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SiteListResult = /*@__PURE__*/ __L.at(__c44, 1) as any as S.Schema<SiteListResult>;
+
 export interface ListSiteReferenceByContextRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4049,6 +5949,11 @@ export interface ListSiteReferenceByContextRequest {
   /** The name of the Context. */
   contextName: string;
 }
+const ListSiteReferenceByContextRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  2,
+) as any as S.Schema<ListSiteReferenceByContextRequest>;
+
 /** Site Reference Resource */
 export interface SiteReference {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4062,8 +5967,15 @@ export interface SiteReference {
   /** The resource-specific properties for this resource. */
   properties?: SiteReferenceProperties;
 }
+const SiteReference = GetSiteReferenceResponse as any as S.Schema<SiteReference>;
+
 /** The SiteReference items on this page */
 export type SiteReferenceListResultValueList = Array<SiteReference>;
+const SiteReferenceListResultValueList = /*@__PURE__*/ __L.at(
+  __c44,
+  3,
+) as any as S.Schema<SiteReferenceListResultValueList>;
+
 /** The response of a SiteReference list operation. */
 export interface SiteReferenceListResult {
   /** The SiteReference items on this page */
@@ -4071,14 +5983,29 @@ export interface SiteReferenceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SiteReferenceListResult = /*@__PURE__*/ __L.at(
+  __c44,
+  4,
+) as any as S.Schema<SiteReferenceListResult>;
+
 export interface ListSitesByServiceGroupByServiceGroupRequest {
   /** The name of the service group */
   servicegroupName: string;
 }
+const ListSitesByServiceGroupByServiceGroupRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  5,
+) as any as S.Schema<ListSitesByServiceGroupByServiceGroupRequest>;
+
 export interface ListSitesBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListSitesBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  6,
+) as any as S.Schema<ListSitesBySubscriptionRequest>;
+
 export interface ListSolutionByTargetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4087,6 +6014,11 @@ export interface ListSolutionByTargetRequest {
   /** Name of the target */
   targetName: string;
 }
+const ListSolutionByTargetRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  7,
+) as any as S.Schema<ListSolutionByTargetRequest>;
+
 /** Solution Resource attached to a Target */
 export interface Solution {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4104,8 +6036,15 @@ export interface Solution {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const Solution = GetSolutionResponse as any as S.Schema<Solution>;
+
 /** The Solution items on this page */
 export type SolutionListResultValueList = Array<Solution>;
+const SolutionListResultValueList = /*@__PURE__*/ __L.at(
+  __c45,
+  0,
+) as any as S.Schema<SolutionListResultValueList>;
+
 /** The response of a Solution list operation. */
 export interface SolutionListResult {
   /** The Solution items on this page */
@@ -4113,10 +6052,17 @@ export interface SolutionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SolutionListResult = /*@__PURE__*/ __L.at(__c45, 1) as any as S.Schema<SolutionListResult>;
+
 export interface ListSolutionMetadatasByParentRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
+const ListSolutionMetadatasByParentRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  2,
+) as any as S.Schema<ListSolutionMetadatasByParentRequest>;
+
 /** Solution Metadata Resource attached to a Target or Site */
 export interface SolutionMetadata {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4130,8 +6076,15 @@ export interface SolutionMetadata {
   /** The resource-specific properties for this resource. */
   properties?: SolutionMetadataProperties;
 }
+const SolutionMetadata = /*@__PURE__*/ __L.at(__c45, 3) as any as S.Schema<SolutionMetadata>;
+
 /** The SolutionMetadata items on this page */
 export type SolutionMetadataListResultValueList = Array<SolutionMetadata>;
+const SolutionMetadataListResultValueList = /*@__PURE__*/ __L.at(
+  __c45,
+  4,
+) as any as S.Schema<SolutionMetadataListResultValueList>;
+
 /** The response of a SolutionMetadata list operation. */
 export interface SolutionMetadataListResult {
   /** The SolutionMetadata items on this page */
@@ -4139,12 +6092,22 @@ export interface SolutionMetadataListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SolutionMetadataListResult = /*@__PURE__*/ __L.at(
+  __c45,
+  5,
+) as any as S.Schema<SolutionMetadataListResult>;
+
 export interface ListSolutionMetadataVersionByParentRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** Name of the solution metadata */
   solutionMetadataName: string;
 }
+const ListSolutionMetadataVersionByParentRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  6,
+) as any as S.Schema<ListSolutionMetadataVersionByParentRequest>;
+
 /** Solution Metadata Version Resource */
 export interface SolutionMetadataVersion {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4158,8 +6121,18 @@ export interface SolutionMetadataVersion {
   /** The resource-specific properties for this resource. */
   properties?: SolutionMetadataVersionProperties;
 }
+const SolutionMetadataVersion = /*@__PURE__*/ __L.at(
+  __c45,
+  7,
+) as any as S.Schema<SolutionMetadataVersion>;
+
 /** The SolutionMetadataVersion items on this page */
 export type SolutionMetadataVersionListResultValueList = Array<SolutionMetadataVersion>;
+const SolutionMetadataVersionListResultValueList = /*@__PURE__*/ __L.at(
+  __c46,
+  0,
+) as any as S.Schema<SolutionMetadataVersionListResultValueList>;
+
 /** The response of a SolutionMetadataVersion list operation. */
 export interface SolutionMetadataVersionListResult {
   /** The SolutionMetadataVersion items on this page */
@@ -4167,6 +6140,11 @@ export interface SolutionMetadataVersionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SolutionMetadataVersionListResult = /*@__PURE__*/ __L.at(
+  __c46,
+  1,
+) as any as S.Schema<SolutionMetadataVersionListResult>;
+
 export interface ListSolutionSchemaBySolutionTemplateVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4177,6 +6155,11 @@ export interface ListSolutionSchemaBySolutionTemplateVersionRequest {
   /** The name of the SolutionTemplateVersion */
   solutionTemplateVersionName: string;
 }
+const ListSolutionSchemaBySolutionTemplateVersionRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  2,
+) as any as S.Schema<ListSolutionSchemaBySolutionTemplateVersionRequest>;
+
 /** SolutionSchema Resource */
 export interface SolutionSchema {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4192,8 +6175,15 @@ export interface SolutionSchema {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const SolutionSchema = /*@__PURE__*/ __L.at(__c46, 3) as any as S.Schema<SolutionSchema>;
+
 /** The SolutionSchema items on this page */
 export type SolutionSchemaListResultValueList = Array<SolutionSchema>;
+const SolutionSchemaListResultValueList = /*@__PURE__*/ __L.at(
+  __c46,
+  4,
+) as any as S.Schema<SolutionSchemaListResultValueList>;
+
 /** The response of a SolutionSchema list operation. */
 export interface SolutionSchemaListResult {
   /** The SolutionSchema items on this page */
@@ -4201,14 +6191,27 @@ export interface SolutionSchemaListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SolutionSchemaListResult = /*@__PURE__*/ __L.at(
+  __c46,
+  5,
+) as any as S.Schema<SolutionSchemaListResult>;
+
 export interface ListSolutionTemplateByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListSolutionTemplateByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  6,
+) as any as S.Schema<ListSolutionTemplateByResourceGroupRequest>;
+
 /** Resource tags. */
 export type SolutionTemplateTagsMap = { [key: string]: string | undefined };
+const SolutionTemplateTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<SolutionTemplateTagsMap>;
+
 /** Solution Template Resource. Contains capabilities and operations for creating versions. */
 export interface SolutionTemplate {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4228,8 +6231,15 @@ export interface SolutionTemplate {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const SolutionTemplate = /*@__PURE__*/ __L.at(__c46, 7) as any as S.Schema<SolutionTemplate>;
+
 /** The SolutionTemplate items on this page */
 export type SolutionTemplateListResultValueList = Array<SolutionTemplate>;
+const SolutionTemplateListResultValueList = /*@__PURE__*/ __L.at(
+  __c47,
+  0,
+) as any as S.Schema<SolutionTemplateListResultValueList>;
+
 /** The response of a SolutionTemplate list operation. */
 export interface SolutionTemplateListResult {
   /** The SolutionTemplate items on this page */
@@ -4237,10 +6247,20 @@ export interface SolutionTemplateListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SolutionTemplateListResult = /*@__PURE__*/ __L.at(
+  __c47,
+  1,
+) as any as S.Schema<SolutionTemplateListResult>;
+
 export interface ListSolutionTemplateBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListSolutionTemplateBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  2,
+) as any as S.Schema<ListSolutionTemplateBySubscriptionRequest>;
+
 export interface ListSolutionTemplateVersionBySolutionTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4249,6 +6269,11 @@ export interface ListSolutionTemplateVersionBySolutionTemplateRequest {
   /** The name of the SolutionTemplate */
   solutionTemplateName: string;
 }
+const ListSolutionTemplateVersionBySolutionTemplateRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  3,
+) as any as S.Schema<ListSolutionTemplateVersionBySolutionTemplateRequest>;
+
 /** Solution Template Version Resource. Contains configurations that use expressions which can be resolved hierarchically along with edge specifications. */
 export interface SolutionTemplateVersion {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4264,8 +6289,18 @@ export interface SolutionTemplateVersion {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const SolutionTemplateVersion = /*@__PURE__*/ __L.at(
+  __c47,
+  4,
+) as any as S.Schema<SolutionTemplateVersion>;
+
 /** The SolutionTemplateVersion items on this page */
 export type SolutionTemplateVersionListResultValueList = Array<SolutionTemplateVersion>;
+const SolutionTemplateVersionListResultValueList = /*@__PURE__*/ __L.at(
+  __c47,
+  5,
+) as any as S.Schema<SolutionTemplateVersionListResultValueList>;
+
 /** The response of a SolutionTemplateVersion list operation. */
 export interface SolutionTemplateVersionListResult {
   /** The SolutionTemplateVersion items on this page */
@@ -4273,6 +6308,11 @@ export interface SolutionTemplateVersionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SolutionTemplateVersionListResult = /*@__PURE__*/ __L.at(
+  __c47,
+  6,
+) as any as S.Schema<SolutionTemplateVersionListResult>;
+
 export interface ListSolutionVersionBySolutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4283,6 +6323,11 @@ export interface ListSolutionVersionBySolutionRequest {
   /** Name of the solution */
   solutionName: string;
 }
+const ListSolutionVersionBySolutionRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  7,
+) as any as S.Schema<ListSolutionVersionBySolutionRequest>;
+
 /** Solution Version Resource. It has the resolved configuration along with edge specification. */
 export interface SolutionVersion {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4300,8 +6345,15 @@ export interface SolutionVersion {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const SolutionVersion = /*@__PURE__*/ __L.at(__c48, 0) as any as S.Schema<SolutionVersion>;
+
 /** The SolutionVersion items on this page */
 export type SolutionVersionListResultValueList = Array<SolutionVersion>;
+const SolutionVersionListResultValueList = /*@__PURE__*/ __L.at(
+  __c48,
+  1,
+) as any as S.Schema<SolutionVersionListResultValueList>;
+
 /** The response of a SolutionVersion list operation. */
 export interface SolutionVersionListResult {
   /** The SolutionVersion items on this page */
@@ -4309,12 +6361,22 @@ export interface SolutionVersionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SolutionVersionListResult = /*@__PURE__*/ __L.at(
+  __c48,
+  2,
+) as any as S.Schema<SolutionVersionListResult>;
+
 export interface ListTargetByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListTargetByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  3,
+) as any as S.Schema<ListTargetByResourceGroupRequest>;
+
 /** Resource tags. */
 export type TargetTagsMap = { [key: string]: string | undefined };
 /** Target Resource. Represents a resource to be deployed on the edge. */
@@ -4338,8 +6400,15 @@ export interface Target {
   /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
+const Target = GetTargetResponse as any as S.Schema<Target>;
+
 /** The Target items on this page */
 export type TargetListResultValueList = Array<Target>;
+const TargetListResultValueList = /*@__PURE__*/ __L.at(
+  __c48,
+  4,
+) as any as S.Schema<TargetListResultValueList>;
+
 /** The response of a Target list operation. */
 export interface TargetListResult {
   /** The Target items on this page */
@@ -4347,10 +6416,17 @@ export interface TargetListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const TargetListResult = /*@__PURE__*/ __L.at(__c48, 5) as any as S.Schema<TargetListResult>;
+
 export interface ListTargetBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListTargetBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  6,
+) as any as S.Schema<ListTargetBySubscriptionRequest>;
+
 export interface ListWorkflowByContextRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4359,6 +6435,11 @@ export interface ListWorkflowByContextRequest {
   /** The name of the Context. */
   contextName: string;
 }
+const ListWorkflowByContextRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  7,
+) as any as S.Schema<ListWorkflowByContextRequest>;
+
 /** Workflow Resource */
 export interface Workflow {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4376,8 +6457,15 @@ export interface Workflow {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const Workflow = GetWorkflowResponse as any as S.Schema<Workflow>;
+
 /** The Workflow items on this page */
 export type WorkflowListResultValueList = Array<Workflow>;
+const WorkflowListResultValueList = /*@__PURE__*/ __L.at(
+  __c49,
+  0,
+) as any as S.Schema<WorkflowListResultValueList>;
+
 /** The response of a Workflow list operation. */
 export interface WorkflowListResult {
   /** The Workflow items on this page */
@@ -4385,6 +6473,8 @@ export interface WorkflowListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const WorkflowListResult = /*@__PURE__*/ __L.at(__c49, 1) as any as S.Schema<WorkflowListResult>;
+
 export interface ListWorkflowVersionByWorkflowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4395,6 +6485,11 @@ export interface ListWorkflowVersionByWorkflowRequest {
   /** Name of the workflow */
   workflowName: string;
 }
+const ListWorkflowVersionByWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  2,
+) as any as S.Schema<ListWorkflowVersionByWorkflowRequest>;
+
 /** Workflow Version Resource */
 export interface WorkflowVersion {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4412,8 +6507,15 @@ export interface WorkflowVersion {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const WorkflowVersion = /*@__PURE__*/ __L.at(__c49, 3) as any as S.Schema<WorkflowVersion>;
+
 /** The WorkflowVersion items on this page */
 export type WorkflowVersionListResultValueList = Array<WorkflowVersion>;
+const WorkflowVersionListResultValueList = /*@__PURE__*/ __L.at(
+  __c49,
+  4,
+) as any as S.Schema<WorkflowVersionListResultValueList>;
+
 /** The response of a WorkflowVersion list operation. */
 export interface WorkflowVersionListResult {
   /** The WorkflowVersion items on this page */
@@ -4421,6 +6523,11 @@ export interface WorkflowVersionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const WorkflowVersionListResult = /*@__PURE__*/ __L.at(
+  __c49,
+  5,
+) as any as S.Schema<WorkflowVersionListResult>;
+
 export interface PublishTargetSolutionVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4431,6 +6538,11 @@ export interface PublishTargetSolutionVersionRequest {
   /** Solution Version ARM Id */
   solutionVersionId: string;
 }
+const PublishTargetSolutionVersionRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  6,
+) as any as S.Schema<PublishTargetSolutionVersionRequest>;
+
 export interface PublishTargetSolutionVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4447,6 +6559,9 @@ export interface PublishTargetSolutionVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const PublishTargetSolutionVersionResponse =
+  GetSolutionVersionResponse as any as S.Schema<PublishTargetSolutionVersionResponse>;
+
 export interface RemoveConfigTemplateVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4457,11 +6572,21 @@ export interface RemoveConfigTemplateVersionRequest {
   /** Version of the Resource */
   version: string;
 }
+const RemoveConfigTemplateVersionRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  7,
+) as any as S.Schema<RemoveConfigTemplateVersionRequest>;
+
 /** Remove Version response */
 export interface RemoveVersionResponse {
   /** Status for remove version response */
   status: string;
 }
+const RemoveVersionResponse = /*@__PURE__*/ __L.at(
+  __c50,
+  0,
+) as any as S.Schema<RemoveVersionResponse>;
+
 export interface RemoveSchemaVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4472,6 +6597,11 @@ export interface RemoveSchemaVersionRequest {
   /** Version of the Resource */
   version: string;
 }
+const RemoveSchemaVersionRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  1,
+) as any as S.Schema<RemoveSchemaVersionRequest>;
+
 export interface RemoveSolutionTemplateVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4482,7 +6612,15 @@ export interface RemoveSolutionTemplateVersionRequest {
   /** Version of the Resource */
   version: string;
 }
+const RemoveSolutionTemplateVersionRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  2,
+) as any as S.Schema<RemoveSolutionTemplateVersionRequest>;
+
 export interface RemoveSolutionTemplateVersionResponse {}
+const RemoveSolutionTemplateVersionResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<RemoveSolutionTemplateVersionResponse>;
+
 export interface RemoveTargetRevisionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4495,10 +6633,21 @@ export interface RemoveTargetRevisionRequest {
   /** Solution Version Name */
   solutionVersion: string;
 }
+const RemoveTargetRevisionRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  3,
+) as any as S.Schema<RemoveTargetRevisionRequest>;
+
 export interface RemoveTargetRevisionResponse {}
+const RemoveTargetRevisionResponse =
+  ConfigurationPropertiesInput as any as S.Schema<RemoveTargetRevisionResponse>;
+
 /** Solution Dependencies */
 export type ReviewTargetSolutionVersionRequestSolutionDependenciesList =
   Array<SolutionDependencyParameter>;
+const ReviewTargetSolutionVersionRequestSolutionDependenciesList =
+  BulkReviewTargetDetailsSolutionDependenciesList as any as S.Schema<ReviewTargetSolutionVersionRequestSolutionDependenciesList>;
+
 export interface ReviewTargetSolutionVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4513,6 +6662,11 @@ export interface ReviewTargetSolutionVersionRequest {
   /** Solution Dependencies */
   solutionDependencies?: ReviewTargetSolutionVersionRequestSolutionDependenciesList;
 }
+const ReviewTargetSolutionVersionRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  4,
+) as any as S.Schema<ReviewTargetSolutionVersionRequest>;
+
 export interface ReviewTargetSolutionVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4529,11 +6683,19 @@ export interface ReviewTargetSolutionVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const ReviewTargetSolutionVersionResponse =
+  GetSolutionVersionResponse as any as S.Schema<ReviewTargetSolutionVersionResponse>;
+
 /** Schema Reference Properties */
 export interface SchemaReferencePropertiesInput {
   /** Schema Id of schema reference */
   schemaId: string;
 }
+const SchemaReferencePropertiesInput = /*@__PURE__*/ __L.at(
+  __c50,
+  5,
+) as any as S.Schema<SchemaReferencePropertiesInput>;
+
 export interface SchemaReferencesCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -4542,6 +6704,11 @@ export interface SchemaReferencesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: SchemaReferencePropertiesInput;
 }
+const SchemaReferencesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  6,
+) as any as S.Schema<SchemaReferencesCreateOrUpdateRequest>;
+
 export interface SchemaReferencesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4556,8 +6723,14 @@ export interface SchemaReferencesCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const SchemaReferencesCreateOrUpdateResponse =
+  GetSchemaReferenceResponse as any as S.Schema<SchemaReferencesCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type SchemasCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const SchemasCreateOrUpdateRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<SchemasCreateOrUpdateRequestTagsMap>;
+
 /** Schema Properties */
 export type SchemaPropertiesInput = ConfigurationPropertiesInput;
 export interface SchemasCreateOrUpdateRequest {
@@ -4574,8 +6747,16 @@ export interface SchemasCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationPropertiesInput;
 }
+const SchemasCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  7,
+) as any as S.Schema<SchemasCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type SchemasCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const SchemasCreateOrUpdateResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<SchemasCreateOrUpdateResponseTagsMap>;
+
 export interface SchemasCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4594,6 +6775,11 @@ export interface SchemasCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const SchemasCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c51,
+  0,
+) as any as S.Schema<SchemasCreateOrUpdateResponse>;
+
 export interface SchemaVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4606,6 +6792,11 @@ export interface SchemaVersionsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: SchemaVersionPropertiesInput;
 }
+const SchemaVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  1,
+) as any as S.Schema<SchemaVersionsCreateOrUpdateRequest>;
+
 export interface SchemaVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4620,11 +6811,19 @@ export interface SchemaVersionsCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const SchemaVersionsCreateOrUpdateResponse =
+  CreateSchemaVersionResponse as any as S.Schema<SchemaVersionsCreateOrUpdateResponse>;
+
 /** Site Reference Properties */
 export interface SiteReferencePropertiesInput {
   /** Azure Resource ID for Site */
   siteId: string;
 }
+const SiteReferencePropertiesInput = /*@__PURE__*/ __L.at(
+  __c51,
+  2,
+) as any as S.Schema<SiteReferencePropertiesInput>;
+
 export interface SiteReferencesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4637,6 +6836,11 @@ export interface SiteReferencesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: SiteReferencePropertiesInput;
 }
+const SiteReferencesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  3,
+) as any as S.Schema<SiteReferencesCreateOrUpdateRequest>;
+
 export interface SiteReferencesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4649,8 +6853,16 @@ export interface SiteReferencesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteReferenceProperties;
 }
+const SiteReferencesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c51,
+  4,
+) as any as S.Schema<SiteReferencesCreateOrUpdateResponse>;
+
 /** Key-value pairs for labeling the site resource. */
 export type SitePropertiesInputLabelsMap = { [key: string]: string | undefined };
+const SitePropertiesInputLabelsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<SitePropertiesInputLabelsMap>;
+
 /** Site properties */
 export interface SitePropertiesInput {
   /** displayName of Site resource */
@@ -4662,6 +6874,8 @@ export interface SitePropertiesInput {
   /** Key-value pairs for labeling the site resource. */
   labels?: SitePropertiesInputLabelsMap;
 }
+const SitePropertiesInput = /*@__PURE__*/ __L.at(__c51, 5) as any as S.Schema<SitePropertiesInput>;
+
 export interface SitesByServiceGroupCreateOrUpdateRequest {
   /** The name of the service group */
   servicegroupName: string;
@@ -4670,6 +6884,11 @@ export interface SitesByServiceGroupCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: SitePropertiesInput;
 }
+const SitesByServiceGroupCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  6,
+) as any as S.Schema<SitesByServiceGroupCreateOrUpdateRequest>;
+
 export interface SitesByServiceGroupCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4682,6 +6901,9 @@ export interface SitesByServiceGroupCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
+const SitesByServiceGroupCreateOrUpdateResponse =
+  GetSitesByServiceGroupResponse as any as S.Schema<SitesByServiceGroupCreateOrUpdateResponse>;
+
 export interface SitesBySubscriptionCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4690,6 +6912,11 @@ export interface SitesBySubscriptionCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: SitePropertiesInput;
 }
+const SitesBySubscriptionCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  7,
+) as any as S.Schema<SitesBySubscriptionCreateOrUpdateRequest>;
+
 export interface SitesBySubscriptionCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4702,6 +6929,9 @@ export interface SitesBySubscriptionCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
+const SitesBySubscriptionCreateOrUpdateResponse =
+  GetSitesByServiceGroupResponse as any as S.Schema<SitesBySubscriptionCreateOrUpdateResponse>;
+
 export interface SitesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4712,6 +6942,11 @@ export interface SitesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: SitePropertiesInput;
 }
+const SitesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  0,
+) as any as S.Schema<SitesCreateOrUpdateRequest>;
+
 export interface SitesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4724,6 +6959,9 @@ export interface SitesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
+const SitesCreateOrUpdateResponse =
+  GetSitesByServiceGroupResponse as any as S.Schema<SitesCreateOrUpdateResponse>;
+
 /** Solution Properties */
 export type SolutionPropertiesInput = ConfigurationPropertiesInput;
 export interface SolutionsCreateOrUpdateRequest {
@@ -4740,6 +6978,11 @@ export interface SolutionsCreateOrUpdateRequest {
   /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
+const SolutionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  1,
+) as any as S.Schema<SolutionsCreateOrUpdateRequest>;
+
 export interface SolutionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4756,10 +6999,21 @@ export interface SolutionsCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const SolutionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c52,
+  2,
+) as any as S.Schema<SolutionsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type SolutionTemplatesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const SolutionTemplatesCreateOrUpdateRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<SolutionTemplatesCreateOrUpdateRequestTagsMap>;
+
 /** List of capabilities */
 export type SolutionTemplatePropertiesInputCapabilitiesList = Array<string>;
+const SolutionTemplatePropertiesInputCapabilitiesList =
+  HierarchyMetadataHierarchyIdsList as any as S.Schema<SolutionTemplatePropertiesInputCapabilitiesList>;
+
 /** Solution Template Properties */
 export interface SolutionTemplatePropertiesInput {
   /** Description of Solution template */
@@ -4771,6 +7025,11 @@ export interface SolutionTemplatePropertiesInput {
   /** Flag to enable external validation */
   enableExternalValidation?: boolean;
 }
+const SolutionTemplatePropertiesInput = /*@__PURE__*/ __L.at(
+  __c52,
+  3,
+) as any as S.Schema<SolutionTemplatePropertiesInput>;
+
 export interface SolutionTemplatesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4785,6 +7044,11 @@ export interface SolutionTemplatesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: SolutionTemplatePropertiesInput;
 }
+const SolutionTemplatesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  4,
+) as any as S.Schema<SolutionTemplatesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type SolutionTemplatesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface SolutionTemplatesCreateOrUpdateResponse {
@@ -4805,14 +7069,27 @@ export interface SolutionTemplatesCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const SolutionTemplatesCreateOrUpdateResponse =
+  GetSolutionTemplateResponse as any as S.Schema<SolutionTemplatesCreateOrUpdateResponse>;
+
 /** Bulk deploy target details */
 export interface BulkDeployTargetDetails {
   /** ArmId of Target Solution Version */
   solutionVersionId: string;
 }
+const BulkDeployTargetDetails = /*@__PURE__*/ __L.at(
+  __c52,
+  5,
+) as any as S.Schema<BulkDeployTargetDetails>;
+
 /** Targets to which solution needs to be deployed */
 export type SolutionTemplateVersionsBulkDeploySolutionRequestTargetsList =
   Array<BulkDeployTargetDetails>;
+const SolutionTemplateVersionsBulkDeploySolutionRequestTargetsList = /*@__PURE__*/ __L.at(
+  __c52,
+  6,
+) as any as S.Schema<SolutionTemplateVersionsBulkDeploySolutionRequestTargetsList>;
+
 export interface SolutionTemplateVersionsBulkDeploySolutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4825,9 +7102,20 @@ export interface SolutionTemplateVersionsBulkDeploySolutionRequest {
   /** Targets to which solution needs to be deployed */
   targets: SolutionTemplateVersionsBulkDeploySolutionRequestTargetsList;
 }
+const SolutionTemplateVersionsBulkDeploySolutionRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  7,
+) as any as S.Schema<SolutionTemplateVersionsBulkDeploySolutionRequest>;
+
 export interface SolutionTemplateVersionsBulkDeploySolutionResponse {}
+const SolutionTemplateVersionsBulkDeploySolutionResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<SolutionTemplateVersionsBulkDeploySolutionResponse>;
+
 /** Solution dependencies */
 export type BulkPublishTargetDetailsSolutionDependenciesList = Array<SolutionDependencyParameter>;
+const BulkPublishTargetDetailsSolutionDependenciesList =
+  BulkReviewTargetDetailsSolutionDependenciesList as any as S.Schema<BulkPublishTargetDetailsSolutionDependenciesList>;
+
 /** Bulk publish target details */
 export interface BulkPublishTargetDetails {
   /** ArmId of Target */
@@ -4841,12 +7129,25 @@ export interface BulkPublishTargetDetails {
   /** Configuration of solution */
   solutionConfiguration?: string;
 }
+const BulkPublishTargetDetails = /*@__PURE__*/ __L.at(
+  __c53,
+  0,
+) as any as S.Schema<BulkPublishTargetDetails>;
+
 /** Targets to which solution needs to be published */
 export type SolutionTemplateVersionsBulkPublishSolutionRequestTargetsList =
   Array<BulkPublishTargetDetails>;
+const SolutionTemplateVersionsBulkPublishSolutionRequestTargetsList = /*@__PURE__*/ __L.at(
+  __c53,
+  1,
+) as any as S.Schema<SolutionTemplateVersionsBulkPublishSolutionRequestTargetsList>;
+
 /** Solution dependencies */
 export type SolutionTemplateVersionsBulkPublishSolutionRequestSolutionDependenciesList =
   Array<SolutionDependencyParameter>;
+const SolutionTemplateVersionsBulkPublishSolutionRequestSolutionDependenciesList =
+  BulkSolutionTemplateVersionReviewSolutionRequestSolutionDependenciesList as any as S.Schema<SolutionTemplateVersionsBulkPublishSolutionRequestSolutionDependenciesList>;
+
 export interface SolutionTemplateVersionsBulkPublishSolutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4865,7 +7166,15 @@ export interface SolutionTemplateVersionsBulkPublishSolutionRequest {
   /** Configuration of solution */
   solutionConfiguration?: string;
 }
+const SolutionTemplateVersionsBulkPublishSolutionRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  2,
+) as any as S.Schema<SolutionTemplateVersionsBulkPublishSolutionRequest>;
+
 export interface SolutionTemplateVersionsBulkPublishSolutionResponse {}
+const SolutionTemplateVersionsBulkPublishSolutionResponse =
+  BulkSolutionTemplateVersionReviewSolutionResponse as any as S.Schema<SolutionTemplateVersionsBulkPublishSolutionResponse>;
+
 export interface SolutionTemplateVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4878,6 +7187,11 @@ export interface SolutionTemplateVersionsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: SolutionTemplateVersionPropertiesInput;
 }
+const SolutionTemplateVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  3,
+) as any as S.Schema<SolutionTemplateVersionsCreateOrUpdateRequest>;
+
 export interface SolutionTemplateVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4892,8 +7206,14 @@ export interface SolutionTemplateVersionsCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const SolutionTemplateVersionsCreateOrUpdateResponse =
+  CreateSolutionTemplateVersionResponse as any as S.Schema<SolutionTemplateVersionsCreateOrUpdateResponse>;
+
 /** App components spec */
 export type SolutionVersionPropertiesInputSpecificationMap = { [key: string]: unknown | undefined };
+const SolutionVersionPropertiesInputSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<SolutionVersionPropertiesInputSpecificationMap>;
+
 /** The error detail. */
 export type SolutionVersionPropertiesInputErrorDetails = ConfigurationPropertiesInput;
 /** Solution Version Properties */
@@ -4903,6 +7223,11 @@ export interface SolutionVersionPropertiesInput {
   /** The error detail. */
   errorDetails?: ConfigurationPropertiesInput;
 }
+const SolutionVersionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c53,
+  4,
+) as any as S.Schema<SolutionVersionPropertiesInput>;
+
 export interface SolutionVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4919,6 +7244,11 @@ export interface SolutionVersionsCreateOrUpdateRequest {
   /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
+const SolutionVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  5,
+) as any as S.Schema<SolutionVersionsCreateOrUpdateRequest>;
+
 export interface SolutionVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4935,12 +7265,24 @@ export interface SolutionVersionsCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const SolutionVersionsCreateOrUpdateResponse =
+  GetSolutionVersionResponse as any as S.Schema<SolutionVersionsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type TargetsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const TargetsCreateOrUpdateRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<TargetsCreateOrUpdateRequestTagsMap>;
+
 /** target spec */
 export type TargetPropertiesInputTargetSpecificationMap = { [key: string]: unknown | undefined };
+const TargetPropertiesInputTargetSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<TargetPropertiesInputTargetSpecificationMap>;
+
 /** List of capabilities */
 export type TargetPropertiesInputCapabilitiesList = Array<string>;
+const TargetPropertiesInputCapabilitiesList =
+  HierarchyMetadataHierarchyIdsList as any as S.Schema<TargetPropertiesInputCapabilitiesList>;
+
 /** Target Properties */
 export interface TargetPropertiesInput {
   /** Description of target */
@@ -4960,6 +7302,11 @@ export interface TargetPropertiesInput {
   /** State of resource */
   state?: ResourceState | (string & {});
 }
+const TargetPropertiesInput = /*@__PURE__*/ __L.at(
+  __c53,
+  6,
+) as any as S.Schema<TargetPropertiesInput>;
+
 export interface TargetsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4976,8 +7323,16 @@ export interface TargetsCreateOrUpdateRequest {
   /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
+const TargetsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  7,
+) as any as S.Schema<TargetsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type TargetsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const TargetsCreateOrUpdateResponseTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<TargetsCreateOrUpdateResponseTagsMap>;
+
 export interface TargetsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4998,9 +7353,17 @@ export interface TargetsCreateOrUpdateResponse {
   /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
+const TargetsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  0,
+) as any as S.Schema<TargetsCreateOrUpdateResponse>;
+
 /** Solution Dependencies */
 export type TargetsResolveConfigurationRequestSolutionDependenciesList =
   Array<SolutionDependencyParameter>;
+const TargetsResolveConfigurationRequestSolutionDependenciesList =
+  BulkReviewTargetDetailsSolutionDependenciesList as any as S.Schema<TargetsResolveConfigurationRequestSolutionDependenciesList>;
+
 export interface TargetsResolveConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5015,11 +7378,21 @@ export interface TargetsResolveConfigurationRequest {
   /** Solution Dependencies */
   solutionDependencies?: TargetsResolveConfigurationRequestSolutionDependenciesList;
 }
+const TargetsResolveConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  1,
+) as any as S.Schema<TargetsResolveConfigurationRequest>;
+
 /** Resolved Configuration */
 export interface ResolvedConfiguration {
   /** Resolved Configuration as string */
   configuration: string;
 }
+const ResolvedConfiguration = /*@__PURE__*/ __L.at(
+  __c54,
+  2,
+) as any as S.Schema<ResolvedConfiguration>;
+
 export interface TargetsUnstageSolutionVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5030,6 +7403,11 @@ export interface TargetsUnstageSolutionVersionRequest {
   /** Solution Version ARM Id */
   solutionVersionId: string;
 }
+const TargetsUnstageSolutionVersionRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  3,
+) as any as S.Schema<TargetsUnstageSolutionVersionRequest>;
+
 export interface TargetsUnstageSolutionVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5046,6 +7424,9 @@ export interface TargetsUnstageSolutionVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const TargetsUnstageSolutionVersionResponse =
+  GetSolutionVersionResponse as any as S.Schema<TargetsUnstageSolutionVersionResponse>;
+
 export interface UninstallTargetSolutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5058,14 +7439,32 @@ export interface UninstallTargetSolutionRequest {
   /** Solution Instance Name */
   solutionInstanceName?: string;
 }
+const UninstallTargetSolutionRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  4,
+) as any as S.Schema<UninstallTargetSolutionRequest>;
+
 export interface UninstallTargetSolutionResponse {}
+const UninstallTargetSolutionResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  5,
+) as any as S.Schema<UninstallTargetSolutionResponse>;
+
 /** Resource tags. */
 export type UpdateConfigTemplateRequestTagsMap = { [key: string]: string | undefined };
+const UpdateConfigTemplateRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateConfigTemplateRequestTagsMap>;
+
 /** The updatable properties of the ConfigTemplate. */
 export interface ConfigTemplateUpdateProperties {
   /** Description of config template */
   description?: string;
 }
+const ConfigTemplateUpdateProperties = /*@__PURE__*/ __L.at(
+  __c54,
+  6,
+) as any as S.Schema<ConfigTemplateUpdateProperties>;
+
 export interface UpdateConfigTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5078,6 +7477,11 @@ export interface UpdateConfigTemplateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ConfigTemplateUpdateProperties;
 }
+const UpdateConfigTemplateRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  7,
+) as any as S.Schema<UpdateConfigTemplateRequest>;
+
 /** Resource tags. */
 export type UpdateConfigTemplateResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateConfigTemplateResponse {
@@ -5098,6 +7502,9 @@ export interface UpdateConfigTemplateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const UpdateConfigTemplateResponse =
+  ConfigTemplatesCreateOrUpdateResponse as any as S.Schema<UpdateConfigTemplateResponse>;
+
 /** Hierarchy ARM Ids */
 export type ConfigTemplateMetadataUpdatePropertiesLinkedHierarchiesList = Array<HierarchyMetadata>;
 /** Hierarchy ARM Ids */
@@ -5112,6 +7519,9 @@ export interface ConfigTemplateMetadataUpdateProperties {
   /** Hierarchy ARM Ids */
   unLinkedHierarchies?: ConfigTemplateMetadataUpdatePropertiesUnLinkedHierarchiesList;
 }
+const ConfigTemplateMetadataUpdateProperties =
+  ConfigTemplateMetadataPropertiesInput as any as S.Schema<ConfigTemplateMetadataUpdateProperties>;
+
 export interface UpdateConfigTemplateMetadatasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5124,6 +7534,11 @@ export interface UpdateConfigTemplateMetadatasRequest {
   /** The resource-specific properties for this resource. */
   properties?: ConfigTemplateMetadataUpdateProperties;
 }
+const UpdateConfigTemplateMetadatasRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  0,
+) as any as S.Schema<UpdateConfigTemplateMetadatasRequest>;
+
 export interface UpdateConfigTemplateMetadatasResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5138,11 +7553,19 @@ export interface UpdateConfigTemplateMetadatasResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const UpdateConfigTemplateMetadatasResponse =
+  ConfigTemplateMetadatasCreateOrUpdateResponse as any as S.Schema<UpdateConfigTemplateMetadatasResponse>;
+
 /** Config Template Version Properties */
 export interface ConfigTemplateVersionPropertiesUpdate {
   /** Configuration values */
   configurations?: unknown;
 }
+const ConfigTemplateVersionPropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c55,
+  1,
+) as any as S.Schema<ConfigTemplateVersionPropertiesUpdate>;
+
 export interface UpdateConfigTemplateVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5155,6 +7578,11 @@ export interface UpdateConfigTemplateVersionRequest {
   /** The resource-specific properties for this resource. */
   properties?: ConfigTemplateVersionPropertiesUpdate;
 }
+const UpdateConfigTemplateVersionRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  2,
+) as any as S.Schema<UpdateConfigTemplateVersionRequest>;
+
 export interface UpdateConfigTemplateVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5169,8 +7597,14 @@ export interface UpdateConfigTemplateVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const UpdateConfigTemplateVersionResponse =
+  ConfigTemplateVersionsCreateOrUpdateResponse as any as S.Schema<UpdateConfigTemplateVersionResponse>;
+
 /** Resource tags. */
 export type UpdateConfigurationRequestTagsMap = { [key: string]: string | undefined };
+const UpdateConfigurationRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateConfigurationRequestTagsMap>;
+
 export interface UpdateConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5183,6 +7617,11 @@ export interface UpdateConfigurationRequest {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationPropertiesInput;
 }
+const UpdateConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  3,
+) as any as S.Schema<UpdateConfigurationRequest>;
+
 /** Resource tags. */
 export type UpdateConfigurationResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateConfigurationResponse {
@@ -5201,6 +7640,9 @@ export interface UpdateConfigurationResponse {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationProperties;
 }
+const UpdateConfigurationResponse =
+  ConfigurationsCreateOrUpdateResponse as any as S.Schema<UpdateConfigurationResponse>;
+
 export interface UpdateConfigurationReferenceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -5209,6 +7651,11 @@ export interface UpdateConfigurationReferenceRequest {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationReferencePropertiesInput;
 }
+const UpdateConfigurationReferenceRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  4,
+) as any as S.Schema<UpdateConfigurationReferenceRequest>;
+
 export interface UpdateConfigurationReferenceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5221,12 +7668,24 @@ export interface UpdateConfigurationReferenceResponse {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationReferenceProperties;
 }
+const UpdateConfigurationReferenceResponse =
+  ConfigurationReferencesCreateOrUpdateResponse as any as S.Schema<UpdateConfigurationReferenceResponse>;
+
 /** Resource tags. */
 export type UpdateContextRequestTagsMap = { [key: string]: string | undefined };
+const UpdateContextRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateContextRequestTagsMap>;
+
 /** List of Capabilities */
 export type ContextUpdatePropertiesCapabilitiesList = Array<Capability>;
+const ContextUpdatePropertiesCapabilitiesList =
+  ContextPropertiesInputCapabilitiesList as any as S.Schema<ContextUpdatePropertiesCapabilitiesList>;
+
 /** List of Hierarchies */
 export type ContextUpdatePropertiesHierarchiesList = Array<Hierarchy>;
+const ContextUpdatePropertiesHierarchiesList =
+  ContextPropertiesInputHierarchiesList as any as S.Schema<ContextUpdatePropertiesHierarchiesList>;
+
 /** The updatable properties of the Context. */
 export interface ContextUpdateProperties {
   /** List of Capabilities */
@@ -5234,6 +7693,11 @@ export interface ContextUpdateProperties {
   /** List of Hierarchies */
   hierarchies?: ContextUpdatePropertiesHierarchiesList;
 }
+const ContextUpdateProperties = /*@__PURE__*/ __L.at(
+  __c55,
+  5,
+) as any as S.Schema<ContextUpdateProperties>;
+
 export interface UpdateContextRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5246,6 +7710,11 @@ export interface UpdateContextRequest {
   /** The resource-specific properties for this resource. */
   properties?: ContextUpdateProperties;
 }
+const UpdateContextRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  6,
+) as any as S.Schema<UpdateContextRequest>;
+
 /** Resource tags. */
 export type UpdateContextResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateContextResponse {
@@ -5264,10 +7733,15 @@ export interface UpdateContextResponse {
   /** The resource-specific properties for this resource. */
   properties?: ContextProperties;
 }
+const UpdateContextResponse = GetContextResponse as any as S.Schema<UpdateContextResponse>;
+
 /** The updatable properties of the Diagnostic. */
 export type DiagnosticUpdatePropertiesInput = ConfigurationPropertiesInput;
 /** Resource tags. */
 export type UpdateDiagnosticRequestTagsMap = { [key: string]: string | undefined };
+const UpdateDiagnosticRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDiagnosticRequestTagsMap>;
+
 export interface UpdateDiagnosticRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5280,6 +7754,11 @@ export interface UpdateDiagnosticRequest {
   /** Resource tags. */
   tags?: UpdateDiagnosticRequestTagsMap;
 }
+const UpdateDiagnosticRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  7,
+) as any as S.Schema<UpdateDiagnosticRequest>;
+
 /** Resource tags. */
 export type UpdateDiagnosticResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateDiagnosticResponse {
@@ -5302,8 +7781,13 @@ export interface UpdateDiagnosticResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const UpdateDiagnosticResponse = GetDiagnosticResponse as any as S.Schema<UpdateDiagnosticResponse>;
+
 /** Resource tags. */
 export type UpdateDisconnectedOperationRequestTagsMap = { [key: string]: string | undefined };
+const UpdateDisconnectedOperationRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDisconnectedOperationRequestTagsMap>;
+
 /** The billing period */
 export interface BillingPeriodUpdate {
   /** The number of cores */
@@ -5311,6 +7795,8 @@ export interface BillingPeriodUpdate {
   /** The pricing model */
   pricingModel?: PricingModel | (string & {});
 }
+const BillingPeriodUpdate = /*@__PURE__*/ __L.at(__c56, 0) as any as S.Schema<BillingPeriodUpdate>;
+
 /** The billing configuration */
 export interface BillingConfigurationUpdate {
   /** The auto renew setting */
@@ -5320,6 +7806,11 @@ export interface BillingConfigurationUpdate {
   /** The upcoming billing configuration */
   upcoming?: BillingPeriodUpdate;
 }
+const BillingConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c56,
+  1,
+) as any as S.Schema<BillingConfigurationUpdate>;
+
 /** The updatable properties of the DisconnectedOperation. */
 export interface DisconnectedOperationUpdateProperties {
   /** The connection intent */
@@ -5333,6 +7824,11 @@ export interface DisconnectedOperationUpdateProperties {
   /** The benefit plans */
   benefitPlans?: BenefitPlans;
 }
+const DisconnectedOperationUpdateProperties = /*@__PURE__*/ __L.at(
+  __c56,
+  2,
+) as any as S.Schema<DisconnectedOperationUpdateProperties>;
+
 export interface UpdateDisconnectedOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5345,6 +7841,11 @@ export interface UpdateDisconnectedOperationRequest {
   /** The resource-specific properties for this resource. */
   properties?: DisconnectedOperationUpdateProperties;
 }
+const UpdateDisconnectedOperationRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  3,
+) as any as S.Schema<UpdateDisconnectedOperationRequest>;
+
 /** Resource tags. */
 export type UpdateDisconnectedOperationResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateDisconnectedOperationResponse {
@@ -5363,11 +7864,19 @@ export interface UpdateDisconnectedOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: DisconnectedOperationProperties;
 }
+const UpdateDisconnectedOperationResponse =
+  DisconnectedOperationsCreateOrUpdateResponse as any as S.Schema<UpdateDisconnectedOperationResponse>;
+
 /** Dynamic Configuration Properties */
 export interface DynamicConfigurationPropertiesUpdate {
   /** Current Version of dynamic configuration */
   currentVersion?: string;
 }
+const DynamicConfigurationPropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c56,
+  4,
+) as any as S.Schema<DynamicConfigurationPropertiesUpdate>;
+
 export interface UpdateDynamicConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5380,6 +7889,11 @@ export interface UpdateDynamicConfigurationRequest {
   /** The resource-specific properties for this resource. */
   properties?: DynamicConfigurationPropertiesUpdate;
 }
+const UpdateDynamicConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  5,
+) as any as S.Schema<UpdateDynamicConfigurationRequest>;
+
 export interface UpdateDynamicConfigurationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5392,11 +7906,19 @@ export interface UpdateDynamicConfigurationResponse {
   /** The resource-specific properties for this resource. */
   properties?: DynamicConfigurationProperties;
 }
+const UpdateDynamicConfigurationResponse =
+  DynamicConfigurationsCreateOrUpdateResponse as any as S.Schema<UpdateDynamicConfigurationResponse>;
+
 /** Dynamic Configuration Properties */
 export interface DynamicConfigurationVersionPropertiesUpdate {
   /** Values of configuration version */
   values?: unknown;
 }
+const DynamicConfigurationVersionPropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c56,
+  6,
+) as any as S.Schema<DynamicConfigurationVersionPropertiesUpdate>;
+
 export interface UpdateDynamicConfigurationVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5411,6 +7933,11 @@ export interface UpdateDynamicConfigurationVersionRequest {
   /** The resource-specific properties for this resource. */
   properties?: DynamicConfigurationVersionPropertiesUpdate;
 }
+const UpdateDynamicConfigurationVersionRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  7,
+) as any as S.Schema<UpdateDynamicConfigurationVersionRequest>;
+
 export interface UpdateDynamicConfigurationVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5423,6 +7950,9 @@ export interface UpdateDynamicConfigurationVersionResponse {
   /** The resource-specific properties for this resource. */
   properties?: DynamicConfigurationVersionProperties;
 }
+const UpdateDynamicConfigurationVersionResponse =
+  DynamicConfigurationVersionsCreateOrUpdateResponse as any as S.Schema<UpdateDynamicConfigurationVersionResponse>;
+
 export interface UpdateDynamicSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5435,6 +7965,11 @@ export interface UpdateDynamicSchemaRequest {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationPropertiesInput;
 }
+const UpdateDynamicSchemaRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  0,
+) as any as S.Schema<UpdateDynamicSchemaRequest>;
+
 export interface UpdateDynamicSchemaResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5449,11 +7984,19 @@ export interface UpdateDynamicSchemaResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const UpdateDynamicSchemaResponse =
+  DynamicSchemasCreateOrUpdateResponse as any as S.Schema<UpdateDynamicSchemaResponse>;
+
 /** Schema Version Properties */
 export interface SchemaVersionPropertiesUpdate {
   /** Value of schema version */
   value?: unknown;
 }
+const SchemaVersionPropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c57,
+  1,
+) as any as S.Schema<SchemaVersionPropertiesUpdate>;
+
 export interface UpdateDynamicSchemaVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5468,6 +8011,11 @@ export interface UpdateDynamicSchemaVersionRequest {
   /** The resource-specific properties for this resource. */
   properties?: SchemaVersionPropertiesUpdate;
 }
+const UpdateDynamicSchemaVersionRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  2,
+) as any as S.Schema<UpdateDynamicSchemaVersionRequest>;
+
 export interface UpdateDynamicSchemaVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5482,8 +8030,14 @@ export interface UpdateDynamicSchemaVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const UpdateDynamicSchemaVersionResponse =
+  CreateSchemaVersionResponse as any as S.Schema<UpdateDynamicSchemaVersionResponse>;
+
 /** Execution specification */
 export type ExecutionPropertiesUpdateSpecificationMap = { [key: string]: unknown | undefined };
+const ExecutionPropertiesUpdateSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<ExecutionPropertiesUpdateSpecificationMap>;
+
 /** Execution Properties */
 export interface ExecutionPropertiesUpdate {
   /** Workflow version of execution */
@@ -5491,6 +8045,11 @@ export interface ExecutionPropertiesUpdate {
   /** Execution specification */
   specification?: ExecutionPropertiesUpdateSpecificationMap;
 }
+const ExecutionPropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c57,
+  3,
+) as any as S.Schema<ExecutionPropertiesUpdate>;
+
 export interface UpdateExecutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5507,6 +8066,11 @@ export interface UpdateExecutionRequest {
   /** The resource-specific properties for this resource. */
   properties?: ExecutionPropertiesUpdate;
 }
+const UpdateExecutionRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  4,
+) as any as S.Schema<UpdateExecutionRequest>;
+
 export interface UpdateExecutionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5523,6 +8087,8 @@ export interface UpdateExecutionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const UpdateExecutionResponse = GetExecutionResponse as any as S.Schema<UpdateExecutionResponse>;
+
 /** Defines a ReconciliationPolicy */
 export interface ReconciliationPolicyPropertiesUpdate {
   /** The state of the ReconciliationPolicy */
@@ -5530,6 +8096,11 @@ export interface ReconciliationPolicyPropertiesUpdate {
   /** Policy interval */
   interval?: string;
 }
+const ReconciliationPolicyPropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c57,
+  5,
+) as any as S.Schema<ReconciliationPolicyPropertiesUpdate>;
+
 /** Instance Properties */
 export interface InstancePropertiesUpdate {
   /** Solution version of instance */
@@ -5543,6 +8114,11 @@ export interface InstancePropertiesUpdate {
   /** Scope of instance */
   solutionScope?: string;
 }
+const InstancePropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c57,
+  6,
+) as any as S.Schema<InstancePropertiesUpdate>;
+
 export interface UpdateInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5557,6 +8133,11 @@ export interface UpdateInstanceRequest {
   /** The resource-specific properties for this resource. */
   properties?: InstancePropertiesUpdate;
 }
+const UpdateInstanceRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  7,
+) as any as S.Schema<UpdateInstanceRequest>;
+
 export interface UpdateInstanceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5573,10 +8154,15 @@ export interface UpdateInstanceResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const UpdateInstanceResponse = GetInstanceResponse as any as S.Schema<UpdateInstanceResponse>;
+
 /** The updatable properties of the Schema. */
 export type SchemaUpdatePropertiesInput = ConfigurationPropertiesInput;
 /** Resource tags. */
 export type UpdateSchemaRequestTagsMap = { [key: string]: string | undefined };
+const UpdateSchemaRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSchemaRequestTagsMap>;
+
 export interface UpdateSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5589,6 +8175,8 @@ export interface UpdateSchemaRequest {
   /** Resource tags. */
   tags?: UpdateSchemaRequestTagsMap;
 }
+const UpdateSchemaRequest = /*@__PURE__*/ __L.at(__c58, 0) as any as S.Schema<UpdateSchemaRequest>;
+
 /** Resource tags. */
 export type UpdateSchemaResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateSchemaResponse {
@@ -5609,11 +8197,18 @@ export interface UpdateSchemaResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const UpdateSchemaResponse = GetSchemaResponse as any as S.Schema<UpdateSchemaResponse>;
+
 /** Schema Reference Properties */
 export interface SchemaReferencePropertiesUpdate {
   /** Schema Id of schema reference */
   schemaId?: string;
 }
+const SchemaReferencePropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c58,
+  1,
+) as any as S.Schema<SchemaReferencePropertiesUpdate>;
+
 export interface UpdateSchemaReferenceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -5622,6 +8217,11 @@ export interface UpdateSchemaReferenceRequest {
   /** The resource-specific properties for this resource. */
   properties?: SchemaReferencePropertiesUpdate;
 }
+const UpdateSchemaReferenceRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  2,
+) as any as S.Schema<UpdateSchemaReferenceRequest>;
+
 export interface UpdateSchemaReferenceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5636,6 +8236,9 @@ export interface UpdateSchemaReferenceResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const UpdateSchemaReferenceResponse =
+  GetSchemaReferenceResponse as any as S.Schema<UpdateSchemaReferenceResponse>;
+
 export interface UpdateSchemaVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5648,6 +8251,11 @@ export interface UpdateSchemaVersionRequest {
   /** The resource-specific properties for this resource. */
   properties?: SchemaVersionPropertiesUpdate;
 }
+const UpdateSchemaVersionRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  3,
+) as any as S.Schema<UpdateSchemaVersionRequest>;
+
 export interface UpdateSchemaVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5662,6 +8270,9 @@ export interface UpdateSchemaVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const UpdateSchemaVersionResponse =
+  CreateSchemaVersionResponse as any as S.Schema<UpdateSchemaVersionResponse>;
+
 /** Key-value pairs for labeling the site resource. */
 export type SiteUpdatePropertiesLabelsMap = { [key: string]: string | undefined };
 /** The updatable properties of the Site. */
@@ -5675,6 +8286,8 @@ export interface SiteUpdateProperties {
   /** Key-value pairs for labeling the site resource. */
   labels?: SiteUpdatePropertiesLabelsMap;
 }
+const SiteUpdateProperties = SitePropertiesInput as any as S.Schema<SiteUpdateProperties>;
+
 export interface UpdateSiteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5685,6 +8298,8 @@ export interface UpdateSiteRequest {
   /** The updatable properties of the Site. */
   properties?: SiteUpdateProperties;
 }
+const UpdateSiteRequest = /*@__PURE__*/ __L.at(__c58, 4) as any as S.Schema<UpdateSiteRequest>;
+
 export interface UpdateSiteResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5697,11 +8312,18 @@ export interface UpdateSiteResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
+const UpdateSiteResponse = GetSiteResponse as any as S.Schema<UpdateSiteResponse>;
+
 /** Site Reference Properties */
 export interface SiteReferencePropertiesUpdate {
   /** Azure Resource ID for Site */
   siteId?: string;
 }
+const SiteReferencePropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c58,
+  5,
+) as any as S.Schema<SiteReferencePropertiesUpdate>;
+
 export interface UpdateSiteReferenceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5714,6 +8336,11 @@ export interface UpdateSiteReferenceRequest {
   /** The resource-specific properties for this resource. */
   properties?: SiteReferencePropertiesUpdate;
 }
+const UpdateSiteReferenceRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  6,
+) as any as S.Schema<UpdateSiteReferenceRequest>;
+
 export interface UpdateSiteReferenceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5726,6 +8353,9 @@ export interface UpdateSiteReferenceResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteReferenceProperties;
 }
+const UpdateSiteReferenceResponse =
+  SiteReferencesCreateOrUpdateResponse as any as S.Schema<UpdateSiteReferenceResponse>;
+
 export interface UpdateSitesByServiceGroupRequest {
   /** The name of the service group */
   servicegroupName: string;
@@ -5734,6 +8364,11 @@ export interface UpdateSitesByServiceGroupRequest {
   /** The updatable properties of the Site. */
   properties?: SiteUpdateProperties;
 }
+const UpdateSitesByServiceGroupRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  7,
+) as any as S.Schema<UpdateSitesByServiceGroupRequest>;
+
 export interface UpdateSitesByServiceGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5746,6 +8381,9 @@ export interface UpdateSitesByServiceGroupResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
+const UpdateSitesByServiceGroupResponse =
+  GetSitesByServiceGroupResponse as any as S.Schema<UpdateSitesByServiceGroupResponse>;
+
 export interface UpdateSitesBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5754,6 +8392,11 @@ export interface UpdateSitesBySubscriptionRequest {
   /** The updatable properties of the Site. */
   properties?: SiteUpdateProperties;
 }
+const UpdateSitesBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  0,
+) as any as S.Schema<UpdateSitesBySubscriptionRequest>;
+
 export interface UpdateSitesBySubscriptionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5766,6 +8409,9 @@ export interface UpdateSitesBySubscriptionResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
+const UpdateSitesBySubscriptionResponse =
+  GetSitesByServiceGroupResponse as any as S.Schema<UpdateSitesBySubscriptionResponse>;
+
 /** The updatable properties of the Solution. */
 export type SolutionUpdatePropertiesInput = ConfigurationPropertiesInput;
 export interface UpdateSolutionRequest {
@@ -5780,6 +8426,11 @@ export interface UpdateSolutionRequest {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationPropertiesInput;
 }
+const UpdateSolutionRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  1,
+) as any as S.Schema<UpdateSolutionRequest>;
+
 export interface UpdateSolutionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5796,10 +8447,18 @@ export interface UpdateSolutionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const UpdateSolutionResponse = GetSolutionResponse as any as S.Schema<UpdateSolutionResponse>;
+
 /** Resource tags. */
 export type UpdateSolutionTemplateRequestTagsMap = { [key: string]: string | undefined };
+const UpdateSolutionTemplateRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSolutionTemplateRequestTagsMap>;
+
 /** List of capabilities */
 export type SolutionTemplateUpdatePropertiesCapabilitiesList = Array<string>;
+const SolutionTemplateUpdatePropertiesCapabilitiesList =
+  HierarchyMetadataHierarchyIdsList as any as S.Schema<SolutionTemplateUpdatePropertiesCapabilitiesList>;
+
 /** The updatable properties of the SolutionTemplate. */
 export interface SolutionTemplateUpdateProperties {
   /** Description of Solution template */
@@ -5811,6 +8470,11 @@ export interface SolutionTemplateUpdateProperties {
   /** Flag to enable external validation */
   enableExternalValidation?: boolean;
 }
+const SolutionTemplateUpdateProperties = /*@__PURE__*/ __L.at(
+  __c59,
+  2,
+) as any as S.Schema<SolutionTemplateUpdateProperties>;
+
 export interface UpdateSolutionTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5823,6 +8487,11 @@ export interface UpdateSolutionTemplateRequest {
   /** The resource-specific properties for this resource. */
   properties?: SolutionTemplateUpdateProperties;
 }
+const UpdateSolutionTemplateRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  3,
+) as any as S.Schema<UpdateSolutionTemplateRequest>;
+
 /** Resource tags. */
 export type UpdateSolutionTemplateResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateSolutionTemplateResponse {
@@ -5843,10 +8512,16 @@ export interface UpdateSolutionTemplateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const UpdateSolutionTemplateResponse =
+  GetSolutionTemplateResponse as any as S.Schema<UpdateSolutionTemplateResponse>;
+
 /** App components spec */
 export type SolutionTemplateVersionPropertiesUpdateSpecificationMap = {
   [key: string]: unknown | undefined;
 };
+const SolutionTemplateVersionPropertiesUpdateSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<SolutionTemplateVersionPropertiesUpdateSpecificationMap>;
+
 /** Solution Template Version Properties */
 export interface SolutionTemplateVersionPropertiesUpdate {
   /** Config expressions for this solution version */
@@ -5856,6 +8531,11 @@ export interface SolutionTemplateVersionPropertiesUpdate {
   /** Orchestrator type */
   orchestratorType?: OrchestratorType | (string & {});
 }
+const SolutionTemplateVersionPropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c59,
+  4,
+) as any as S.Schema<SolutionTemplateVersionPropertiesUpdate>;
+
 export interface UpdateSolutionTemplateVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5868,6 +8548,11 @@ export interface UpdateSolutionTemplateVersionRequest {
   /** The resource-specific properties for this resource. */
   properties?: SolutionTemplateVersionPropertiesUpdate;
 }
+const UpdateSolutionTemplateVersionRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  5,
+) as any as S.Schema<UpdateSolutionTemplateVersionRequest>;
+
 export interface UpdateSolutionTemplateVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5882,15 +8567,26 @@ export interface UpdateSolutionTemplateVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const UpdateSolutionTemplateVersionResponse =
+  CreateSolutionTemplateVersionResponse as any as S.Schema<UpdateSolutionTemplateVersionResponse>;
+
 /** App components spec */
 export type SolutionVersionPropertiesUpdateSpecificationMap = {
   [key: string]: unknown | undefined;
 };
+const SolutionVersionPropertiesUpdateSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<SolutionVersionPropertiesUpdateSpecificationMap>;
+
 /** Solution Version Properties */
 export interface SolutionVersionPropertiesUpdate {
   /** App components spec */
   specification?: SolutionVersionPropertiesUpdateSpecificationMap;
 }
+const SolutionVersionPropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c59,
+  6,
+) as any as S.Schema<SolutionVersionPropertiesUpdate>;
+
 export interface UpdateSolutionVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5905,6 +8601,11 @@ export interface UpdateSolutionVersionRequest {
   /** The resource-specific properties for this resource. */
   properties?: SolutionVersionPropertiesUpdate;
 }
+const UpdateSolutionVersionRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  7,
+) as any as S.Schema<UpdateSolutionVersionRequest>;
+
 export interface UpdateSolutionVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5921,12 +8622,24 @@ export interface UpdateSolutionVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const UpdateSolutionVersionResponse =
+  GetSolutionVersionResponse as any as S.Schema<UpdateSolutionVersionResponse>;
+
 /** Resource tags. */
 export type UpdateTargetRequestTagsMap = { [key: string]: string | undefined };
+const UpdateTargetRequestTagsMap =
+  ConfigTemplatesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateTargetRequestTagsMap>;
+
 /** target spec */
 export type TargetUpdatePropertiesTargetSpecificationMap = { [key: string]: unknown | undefined };
+const TargetUpdatePropertiesTargetSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<TargetUpdatePropertiesTargetSpecificationMap>;
+
 /** List of capabilities */
 export type TargetUpdatePropertiesCapabilitiesList = Array<string>;
+const TargetUpdatePropertiesCapabilitiesList =
+  HierarchyMetadataHierarchyIdsList as any as S.Schema<TargetUpdatePropertiesCapabilitiesList>;
+
 /** The updatable properties of the Target. */
 export interface TargetUpdateProperties {
   /** Description of target */
@@ -5946,6 +8659,11 @@ export interface TargetUpdateProperties {
   /** State of resource */
   state?: ResourceState | (string & {});
 }
+const TargetUpdateProperties = /*@__PURE__*/ __L.at(
+  __c60,
+  0,
+) as any as S.Schema<TargetUpdateProperties>;
+
 export interface UpdateTargetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5958,6 +8676,8 @@ export interface UpdateTargetRequest {
   /** The resource-specific properties for this resource. */
   properties?: TargetUpdateProperties;
 }
+const UpdateTargetRequest = /*@__PURE__*/ __L.at(__c60, 1) as any as S.Schema<UpdateTargetRequest>;
+
 /** Resource tags. */
 export type UpdateTargetResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateTargetResponse {
@@ -5980,10 +8700,14 @@ export interface UpdateTargetResponse {
   /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
+const UpdateTargetResponse = GetTargetResponse as any as S.Schema<UpdateTargetResponse>;
+
 /** The error detail. */
 export type UpdateTargetExternalValidationStatusRequestErrorDetails = ConfigurationPropertiesInput;
 /** Solution Instance Validation Status */
 export type ValidationStatus = "Valid" | "Invalid";
+const ValidationStatus = S.String;
+
 export interface UpdateTargetExternalValidationStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6000,6 +8724,11 @@ export interface UpdateTargetExternalValidationStatusRequest {
   /** Validation Status of external validation */
   validationStatus: ValidationStatus | (string & {});
 }
+const UpdateTargetExternalValidationStatusRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  2,
+) as any as S.Schema<UpdateTargetExternalValidationStatusRequest>;
+
 export interface UpdateTargetExternalValidationStatusResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -6016,6 +8745,9 @@ export interface UpdateTargetExternalValidationStatusResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const UpdateTargetExternalValidationStatusResponse =
+  GetSolutionVersionResponse as any as S.Schema<UpdateTargetExternalValidationStatusResponse>;
+
 /** Workflow Properties */
 export type WorkflowPropertiesInput = ConfigurationPropertiesInput;
 export interface UpdateWorkflowRequest {
@@ -6030,6 +8762,11 @@ export interface UpdateWorkflowRequest {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationPropertiesInput;
 }
+const UpdateWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  3,
+) as any as S.Schema<UpdateWorkflowRequest>;
+
 export interface UpdateWorkflowResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -6046,12 +8783,20 @@ export interface UpdateWorkflowResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const UpdateWorkflowResponse = GetWorkflowResponse as any as S.Schema<UpdateWorkflowResponse>;
+
 /** A list of stage specs */
 export type WorkflowVersionPropertiesUpdateStageSpecList = Array<StageSpec>;
+const WorkflowVersionPropertiesUpdateStageSpecList =
+  WorkflowVersionPropertiesStageSpecList as any as S.Schema<WorkflowVersionPropertiesUpdateStageSpecList>;
+
 /** Execution specification */
 export type WorkflowVersionPropertiesUpdateSpecificationMap = {
   [key: string]: unknown | undefined;
 };
+const WorkflowVersionPropertiesUpdateSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<WorkflowVersionPropertiesUpdateSpecificationMap>;
+
 /** Workflow Version Properties */
 export interface WorkflowVersionPropertiesUpdate {
   /** A list of stage specs */
@@ -6059,6 +8804,11 @@ export interface WorkflowVersionPropertiesUpdate {
   /** Execution specification */
   specification?: WorkflowVersionPropertiesUpdateSpecificationMap;
 }
+const WorkflowVersionPropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c60,
+  4,
+) as any as S.Schema<WorkflowVersionPropertiesUpdate>;
+
 export interface UpdateWorkflowVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6073,6 +8823,11 @@ export interface UpdateWorkflowVersionRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkflowVersionPropertiesUpdate;
 }
+const UpdateWorkflowVersionRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  5,
+) as any as S.Schema<UpdateWorkflowVersionRequest>;
+
 export interface UpdateWorkflowVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -6089,6 +8844,9 @@ export interface UpdateWorkflowVersionResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const UpdateWorkflowVersionResponse =
+  GetWorkflowVersionResponse as any as S.Schema<UpdateWorkflowVersionResponse>;
+
 export interface WorkflowsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6103,6 +8861,11 @@ export interface WorkflowsCreateOrUpdateRequest {
   /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
+const WorkflowsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  6,
+) as any as S.Schema<WorkflowsCreateOrUpdateRequest>;
+
 export interface WorkflowsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -6119,10 +8882,21 @@ export interface WorkflowsCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const WorkflowsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c60,
+  7,
+) as any as S.Schema<WorkflowsCreateOrUpdateResponse>;
+
 /** A list of stage specs */
 export type WorkflowVersionPropertiesInputStageSpecList = Array<StageSpec>;
+const WorkflowVersionPropertiesInputStageSpecList =
+  WorkflowVersionPropertiesStageSpecList as any as S.Schema<WorkflowVersionPropertiesInputStageSpecList>;
+
 /** Execution specification */
 export type WorkflowVersionPropertiesInputSpecificationMap = { [key: string]: unknown | undefined };
+const WorkflowVersionPropertiesInputSpecificationMap =
+  SolutionTemplateVersionPropertiesInputSpecificationMap as any as S.Schema<WorkflowVersionPropertiesInputSpecificationMap>;
+
 /** Workflow Version Properties */
 export interface WorkflowVersionPropertiesInput {
   /** A list of stage specs */
@@ -6130,6 +8904,11 @@ export interface WorkflowVersionPropertiesInput {
   /** Execution specification */
   specification?: WorkflowVersionPropertiesInputSpecificationMap;
 }
+const WorkflowVersionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c61,
+  0,
+) as any as S.Schema<WorkflowVersionPropertiesInput>;
+
 export interface WorkflowVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6146,6 +8925,11 @@ export interface WorkflowVersionsCreateOrUpdateRequest {
   /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
+const WorkflowVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c61,
+  1,
+) as any as S.Schema<WorkflowVersionsCreateOrUpdateRequest>;
+
 export interface WorkflowVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -6162,6 +8946,9 @@ export interface WorkflowVersionsCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
+const WorkflowVersionsCreateOrUpdateResponse =
+  GetWorkflowVersionResponse as any as S.Schema<WorkflowVersionsCreateOrUpdateResponse>;
+
 export type ArtifactsListDownloadUriError = AzureOpError;
 /** Get artifact download link. */
 export const ArtifactsListDownloadUri: API.OperationMethod<
@@ -6170,8 +8957,8 @@ export const ArtifactsListDownloadUri: API.OperationMethod<
   ArtifactsListDownloadUriError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ArtifactsListDownloadUriRequest>,
-  output: __S(1) as any as S.Schema<ArtifactDownloadResult>,
+  input: ArtifactsListDownloadUriRequest,
+  output: ArtifactDownloadResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6185,8 +8972,8 @@ export const BulkSolutionTemplateVersionReviewSolution: API.OperationMethod<
   BulkSolutionTemplateVersionReviewSolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<BulkSolutionTemplateVersionReviewSolutionRequest>,
-  output: __S(9) as any as S.Schema<BulkSolutionTemplateVersionReviewSolutionResponse>,
+  input: BulkSolutionTemplateVersionReviewSolutionRequest,
+  output: BulkSolutionTemplateVersionReviewSolutionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6200,8 +8987,8 @@ export const ConfigTemplateMetadatasCreateOrUpdate: API.OperationMethod<
   ConfigTemplateMetadatasCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<ConfigTemplateMetadatasCreateOrUpdateRequest>,
-  output: __S(17) as any as S.Schema<ConfigTemplateMetadatasCreateOrUpdateResponse>,
+  input: ConfigTemplateMetadatasCreateOrUpdateRequest,
+  output: ConfigTemplateMetadatasCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6215,8 +9002,8 @@ export const ConfigTemplatesCreateOrUpdate: API.OperationMethod<
   ConfigTemplatesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<ConfigTemplatesCreateOrUpdateRequest>,
-  output: __S(22) as any as S.Schema<ConfigTemplatesCreateOrUpdateResponse>,
+  input: ConfigTemplatesCreateOrUpdateRequest,
+  output: ConfigTemplatesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6230,8 +9017,8 @@ export const ConfigTemplatesLinkToHierarchies: API.OperationMethod<
   ConfigTemplatesLinkToHierarchiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<ConfigTemplatesLinkToHierarchiesRequest>,
-  output: __S(9) as any as S.Schema<ConfigTemplatesLinkToHierarchiesResponse>,
+  input: ConfigTemplatesLinkToHierarchiesRequest,
+  output: ConfigTemplatesLinkToHierarchiesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6245,8 +9032,8 @@ export const ConfigTemplatesUnLinkFromHierarchies: API.OperationMethod<
   ConfigTemplatesUnLinkFromHierarchiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<ConfigTemplatesUnLinkFromHierarchiesRequest>,
-  output: __S(9) as any as S.Schema<ConfigTemplatesUnLinkFromHierarchiesResponse>,
+  input: ConfigTemplatesUnLinkFromHierarchiesRequest,
+  output: ConfigTemplatesUnLinkFromHierarchiesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6260,8 +9047,8 @@ export const ConfigTemplateVersionsCreateOrUpdate: API.OperationMethod<
   ConfigTemplateVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<ConfigTemplateVersionsCreateOrUpdateRequest>,
-  output: __S(28) as any as S.Schema<ConfigTemplateVersionsCreateOrUpdateResponse>,
+  input: ConfigTemplateVersionsCreateOrUpdateRequest,
+  output: ConfigTemplateVersionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6275,8 +9062,8 @@ export const ConfigurationReferencesCreateOrUpdate: API.OperationMethod<
   ConfigurationReferencesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<ConfigurationReferencesCreateOrUpdateRequest>,
-  output: __S(32) as any as S.Schema<ConfigurationReferencesCreateOrUpdateResponse>,
+  input: ConfigurationReferencesCreateOrUpdateRequest,
+  output: ConfigurationReferencesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6290,8 +9077,8 @@ export const ConfigurationsCreateOrUpdate: API.OperationMethod<
   ConfigurationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<ConfigurationsCreateOrUpdateRequest>,
-  output: __S(36) as any as S.Schema<ConfigurationsCreateOrUpdateResponse>,
+  input: ConfigurationsCreateOrUpdateRequest,
+  output: ConfigurationsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6305,8 +9092,8 @@ export const ContextsCreateOrUpdate: API.OperationMethod<
   ContextsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<ContextsCreateOrUpdateRequest>,
-  output: __S(44) as any as S.Schema<ContextsCreateOrUpdateResponse>,
+  input: ContextsCreateOrUpdateRequest,
+  output: ContextsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6320,8 +9107,8 @@ export const CreateConfigTemplateVersion: API.OperationMethod<
   CreateConfigTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<CreateConfigTemplateVersionRequest>,
-  output: __S(28) as any as S.Schema<CreateConfigTemplateVersionResponse>,
+  input: CreateConfigTemplateVersionRequest,
+  output: CreateConfigTemplateVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6335,8 +9122,8 @@ export const CreateSchemaVersion: API.OperationMethod<
   CreateSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<CreateSchemaVersionRequest>,
-  output: __S(51) as any as S.Schema<CreateSchemaVersionResponse>,
+  input: CreateSchemaVersionRequest,
+  output: CreateSchemaVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6350,8 +9137,8 @@ export const CreateSolutionTemplateVersion: API.OperationMethod<
   CreateSolutionTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<CreateSolutionTemplateVersionRequest>,
-  output: __S(57) as any as S.Schema<CreateSolutionTemplateVersionResponse>,
+  input: CreateSolutionTemplateVersionRequest,
+  output: CreateSolutionTemplateVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6365,8 +9152,8 @@ export const DeleteConfigTemplate: API.OperationMethod<
   DeleteConfigTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<DeleteConfigTemplateRequest>,
-  output: __S(33) as any as S.Schema<DeleteConfigTemplateResponse>,
+  input: DeleteConfigTemplateRequest,
+  output: DeleteConfigTemplateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6380,8 +9167,8 @@ export const DeleteConfigTemplateMetadatas: API.OperationMethod<
   DeleteConfigTemplateMetadatasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<DeleteConfigTemplateMetadatasRequest>,
-  output: __S(9) as any as S.Schema<DeleteConfigTemplateMetadatasResponse>,
+  input: DeleteConfigTemplateMetadatasRequest,
+  output: DeleteConfigTemplateMetadatasResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6395,8 +9182,8 @@ export const DeleteConfigTemplateVersion: API.OperationMethod<
   DeleteConfigTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<DeleteConfigTemplateVersionRequest>,
-  output: __S(9) as any as S.Schema<DeleteConfigTemplateVersionResponse>,
+  input: DeleteConfigTemplateVersionRequest,
+  output: DeleteConfigTemplateVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6410,8 +9197,8 @@ export const DeleteConfiguration: API.OperationMethod<
   DeleteConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<DeleteConfigurationRequest>,
-  output: __S(33) as any as S.Schema<DeleteConfigurationResponse>,
+  input: DeleteConfigurationRequest,
+  output: DeleteConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6425,8 +9212,8 @@ export const DeleteConfigurationReference: API.OperationMethod<
   DeleteConfigurationReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<DeleteConfigurationReferenceRequest>,
-  output: __S(9) as any as S.Schema<DeleteConfigurationReferenceResponse>,
+  input: DeleteConfigurationReferenceRequest,
+  output: DeleteConfigurationReferenceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6440,8 +9227,8 @@ export const DeleteContext: API.OperationMethod<
   DeleteContextError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<DeleteContextRequest>,
-  output: __S(33) as any as S.Schema<DeleteContextResponse>,
+  input: DeleteContextRequest,
+  output: DeleteContextResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6455,8 +9242,8 @@ export const DeleteDiagnostic: API.OperationMethod<
   DeleteDiagnosticError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<DeleteDiagnosticRequest>,
-  output: __S(33) as any as S.Schema<DeleteDiagnosticResponse>,
+  input: DeleteDiagnosticRequest,
+  output: DeleteDiagnosticResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6470,8 +9257,8 @@ export const DeleteDisconnectedOperation: API.OperationMethod<
   DeleteDisconnectedOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<DeleteDisconnectedOperationRequest>,
-  output: __S(9) as any as S.Schema<DeleteDisconnectedOperationResponse>,
+  input: DeleteDisconnectedOperationRequest,
+  output: DeleteDisconnectedOperationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6485,8 +9272,8 @@ export const DeleteDynamicConfiguration: API.OperationMethod<
   DeleteDynamicConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<DeleteDynamicConfigurationRequest>,
-  output: __S(9) as any as S.Schema<DeleteDynamicConfigurationResponse>,
+  input: DeleteDynamicConfigurationRequest,
+  output: DeleteDynamicConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6500,8 +9287,8 @@ export const DeleteDynamicConfigurationVersion: API.OperationMethod<
   DeleteDynamicConfigurationVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<DeleteDynamicConfigurationVersionRequest>,
-  output: __S(9) as any as S.Schema<DeleteDynamicConfigurationVersionResponse>,
+  input: DeleteDynamicConfigurationVersionRequest,
+  output: DeleteDynamicConfigurationVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6515,8 +9302,8 @@ export const DeleteDynamicSchema: API.OperationMethod<
   DeleteDynamicSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<DeleteDynamicSchemaRequest>,
-  output: __S(33) as any as S.Schema<DeleteDynamicSchemaResponse>,
+  input: DeleteDynamicSchemaRequest,
+  output: DeleteDynamicSchemaResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6530,8 +9317,8 @@ export const DeleteDynamicSchemaVersion: API.OperationMethod<
   DeleteDynamicSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<DeleteDynamicSchemaVersionRequest>,
-  output: __S(9) as any as S.Schema<DeleteDynamicSchemaVersionResponse>,
+  input: DeleteDynamicSchemaVersionRequest,
+  output: DeleteDynamicSchemaVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6545,8 +9332,8 @@ export const DeleteExecution: API.OperationMethod<
   DeleteExecutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<DeleteExecutionRequest>,
-  output: __S(33) as any as S.Schema<DeleteExecutionResponse>,
+  input: DeleteExecutionRequest,
+  output: DeleteExecutionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6560,8 +9347,8 @@ export const DeleteHardwareSettings: API.OperationMethod<
   DeleteHardwareSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<DeleteHardwareSettingsRequest>,
-  output: __S(33) as any as S.Schema<DeleteHardwareSettingsResponse>,
+  input: DeleteHardwareSettingsRequest,
+  output: DeleteHardwareSettingsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6575,8 +9362,8 @@ export const DeleteInstance: API.OperationMethod<
   DeleteInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<DeleteInstanceRequest>,
-  output: __S(33) as any as S.Schema<DeleteInstanceResponse>,
+  input: DeleteInstanceRequest,
+  output: DeleteInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6590,8 +9377,8 @@ export const DeleteSchema: API.OperationMethod<
   DeleteSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<DeleteSchemaRequest>,
-  output: __S(33) as any as S.Schema<DeleteSchemaResponse>,
+  input: DeleteSchemaRequest,
+  output: DeleteSchemaResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6605,8 +9392,8 @@ export const DeleteSchemaReference: API.OperationMethod<
   DeleteSchemaReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<DeleteSchemaReferenceRequest>,
-  output: __S(33) as any as S.Schema<DeleteSchemaReferenceResponse>,
+  input: DeleteSchemaReferenceRequest,
+  output: DeleteSchemaReferenceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6620,8 +9407,8 @@ export const DeleteSchemaVersion: API.OperationMethod<
   DeleteSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<DeleteSchemaVersionRequest>,
-  output: __S(33) as any as S.Schema<DeleteSchemaVersionResponse>,
+  input: DeleteSchemaVersionRequest,
+  output: DeleteSchemaVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6635,8 +9422,8 @@ export const DeleteSite: API.OperationMethod<
   DeleteSiteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<DeleteSiteRequest>,
-  output: __S(33) as any as S.Schema<DeleteSiteResponse>,
+  input: DeleteSiteRequest,
+  output: DeleteSiteResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6650,8 +9437,8 @@ export const DeleteSiteReference: API.OperationMethod<
   DeleteSiteReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<DeleteSiteReferenceRequest>,
-  output: __S(33) as any as S.Schema<DeleteSiteReferenceResponse>,
+  input: DeleteSiteReferenceRequest,
+  output: DeleteSiteReferenceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6665,8 +9452,8 @@ export const DeleteSitesByServiceGroup: API.OperationMethod<
   DeleteSitesByServiceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<DeleteSitesByServiceGroupRequest>,
-  output: __S(9) as any as S.Schema<DeleteSitesByServiceGroupResponse>,
+  input: DeleteSitesByServiceGroupRequest,
+  output: DeleteSitesByServiceGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6680,8 +9467,8 @@ export const DeleteSitesBySubscription: API.OperationMethod<
   DeleteSitesBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<DeleteSitesBySubscriptionRequest>,
-  output: __S(9) as any as S.Schema<DeleteSitesBySubscriptionResponse>,
+  input: DeleteSitesBySubscriptionRequest,
+  output: DeleteSitesBySubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6695,8 +9482,8 @@ export const DeleteSolution: API.OperationMethod<
   DeleteSolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<DeleteSolutionRequest>,
-  output: __S(33) as any as S.Schema<DeleteSolutionResponse>,
+  input: DeleteSolutionRequest,
+  output: DeleteSolutionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6710,8 +9497,8 @@ export const DeleteSolutionTemplate: API.OperationMethod<
   DeleteSolutionTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<DeleteSolutionTemplateRequest>,
-  output: __S(33) as any as S.Schema<DeleteSolutionTemplateResponse>,
+  input: DeleteSolutionTemplateRequest,
+  output: DeleteSolutionTemplateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6725,8 +9512,8 @@ export const DeleteSolutionTemplateVersion: API.OperationMethod<
   DeleteSolutionTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<DeleteSolutionTemplateVersionRequest>,
-  output: __S(9) as any as S.Schema<DeleteSolutionTemplateVersionResponse>,
+  input: DeleteSolutionTemplateVersionRequest,
+  output: DeleteSolutionTemplateVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6740,8 +9527,8 @@ export const DeleteSolutionVersion: API.OperationMethod<
   DeleteSolutionVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<DeleteSolutionVersionRequest>,
-  output: __S(33) as any as S.Schema<DeleteSolutionVersionResponse>,
+  input: DeleteSolutionVersionRequest,
+  output: DeleteSolutionVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6755,8 +9542,8 @@ export const DeleteTarget: API.OperationMethod<
   DeleteTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<DeleteTargetRequest>,
-  output: __S(33) as any as S.Schema<DeleteTargetResponse>,
+  input: DeleteTargetRequest,
+  output: DeleteTargetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6770,8 +9557,8 @@ export const DeleteWorkflow: API.OperationMethod<
   DeleteWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<DeleteWorkflowRequest>,
-  output: __S(33) as any as S.Schema<DeleteWorkflowResponse>,
+  input: DeleteWorkflowRequest,
+  output: DeleteWorkflowResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6785,8 +9572,8 @@ export const DeleteWorkflowVersion: API.OperationMethod<
   DeleteWorkflowVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<DeleteWorkflowVersionRequest>,
-  output: __S(33) as any as S.Schema<DeleteWorkflowVersionResponse>,
+  input: DeleteWorkflowVersionRequest,
+  output: DeleteWorkflowVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6800,8 +9587,8 @@ export const DiagnosticsCreateOrUpdate: API.OperationMethod<
   DiagnosticsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<DiagnosticsCreateOrUpdateRequest>,
-  output: __S(89) as any as S.Schema<DiagnosticsCreateOrUpdateResponse>,
+  input: DiagnosticsCreateOrUpdateRequest,
+  output: DiagnosticsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6815,8 +9602,8 @@ export const DisconnectedOperationsCreateOrUpdate: API.OperationMethod<
   DisconnectedOperationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<DisconnectedOperationsCreateOrUpdateRequest>,
-  output: __S(98) as any as S.Schema<DisconnectedOperationsCreateOrUpdateResponse>,
+  input: DisconnectedOperationsCreateOrUpdateRequest,
+  output: DisconnectedOperationsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6830,8 +9617,8 @@ export const DynamicConfigurationsCreateOrUpdate: API.OperationMethod<
   DynamicConfigurationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<DynamicConfigurationsCreateOrUpdateRequest>,
-  output: __S(102) as any as S.Schema<DynamicConfigurationsCreateOrUpdateResponse>,
+  input: DynamicConfigurationsCreateOrUpdateRequest,
+  output: DynamicConfigurationsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6845,8 +9632,8 @@ export const DynamicConfigurationVersionsCreateOrUpdate: API.OperationMethod<
   DynamicConfigurationVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<DynamicConfigurationVersionsCreateOrUpdateRequest>,
-  output: __S(106) as any as S.Schema<DynamicConfigurationVersionsCreateOrUpdateResponse>,
+  input: DynamicConfigurationVersionsCreateOrUpdateRequest,
+  output: DynamicConfigurationVersionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6860,8 +9647,8 @@ export const DynamicSchemasCreateOrUpdate: API.OperationMethod<
   DynamicSchemasCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<DynamicSchemasCreateOrUpdateRequest>,
-  output: __S(109) as any as S.Schema<DynamicSchemasCreateOrUpdateResponse>,
+  input: DynamicSchemasCreateOrUpdateRequest,
+  output: DynamicSchemasCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6875,8 +9662,8 @@ export const DynamicSchemaVersionsCreateOrUpdate: API.OperationMethod<
   DynamicSchemaVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<DynamicSchemaVersionsCreateOrUpdateRequest>,
-  output: __S(51) as any as S.Schema<DynamicSchemaVersionsCreateOrUpdateResponse>,
+  input: DynamicSchemaVersionsCreateOrUpdateRequest,
+  output: DynamicSchemaVersionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6890,8 +9677,8 @@ export const ExecutionsCreateOrUpdate: API.OperationMethod<
   ExecutionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<ExecutionsCreateOrUpdateRequest>,
-  output: __S(117) as any as S.Schema<ExecutionsCreateOrUpdateResponse>,
+  input: ExecutionsCreateOrUpdateRequest,
+  output: ExecutionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6905,8 +9692,8 @@ export const GetArtifact: API.OperationMethod<
   GetArtifactError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<GetArtifactRequest>,
-  output: __S(120) as any as S.Schema<GetArtifactResponse>,
+  input: GetArtifactRequest,
+  output: GetArtifactResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6920,8 +9707,8 @@ export const GetConfigTemplate: API.OperationMethod<
   GetConfigTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<GetConfigTemplateRequest>,
-  output: __S(22) as any as S.Schema<GetConfigTemplateResponse>,
+  input: GetConfigTemplateRequest,
+  output: GetConfigTemplateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6935,8 +9722,8 @@ export const GetConfigTemplateMetadatas: API.OperationMethod<
   GetConfigTemplateMetadatasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<GetConfigTemplateMetadatasRequest>,
-  output: __S(17) as any as S.Schema<GetConfigTemplateMetadatasResponse>,
+  input: GetConfigTemplateMetadatasRequest,
+  output: GetConfigTemplateMetadatasResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6950,8 +9737,8 @@ export const GetConfigTemplateSchema: API.OperationMethod<
   GetConfigTemplateSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<GetConfigTemplateSchemaRequest>,
-  output: __S(125) as any as S.Schema<GetConfigTemplateSchemaResponse>,
+  input: GetConfigTemplateSchemaRequest,
+  output: GetConfigTemplateSchemaResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6965,8 +9752,8 @@ export const GetConfigTemplateVersion: API.OperationMethod<
   GetConfigTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<GetConfigTemplateVersionRequest>,
-  output: __S(28) as any as S.Schema<GetConfigTemplateVersionResponse>,
+  input: GetConfigTemplateVersionRequest,
+  output: GetConfigTemplateVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6980,8 +9767,8 @@ export const GetConfiguration: API.OperationMethod<
   GetConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<GetConfigurationRequest>,
-  output: __S(128) as any as S.Schema<GetConfigurationResponse>,
+  input: GetConfigurationRequest,
+  output: GetConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6995,8 +9782,8 @@ export const GetConfigurationReference: API.OperationMethod<
   GetConfigurationReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<GetConfigurationReferenceRequest>,
-  output: __S(32) as any as S.Schema<GetConfigurationReferenceResponse>,
+  input: GetConfigurationReferenceRequest,
+  output: GetConfigurationReferenceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7010,8 +9797,8 @@ export const GetContext: API.OperationMethod<
   GetContextError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130) as any as S.Schema<GetContextRequest>,
-  output: __S(131) as any as S.Schema<GetContextResponse>,
+  input: GetContextRequest,
+  output: GetContextResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7025,8 +9812,8 @@ export const GetDiagnostic: API.OperationMethod<
   GetDiagnosticError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<GetDiagnosticRequest>,
-  output: __S(133) as any as S.Schema<GetDiagnosticResponse>,
+  input: GetDiagnosticRequest,
+  output: GetDiagnosticResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7040,8 +9827,8 @@ export const GetDisconnectedOperation: API.OperationMethod<
   GetDisconnectedOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134) as any as S.Schema<GetDisconnectedOperationRequest>,
-  output: __S(98) as any as S.Schema<GetDisconnectedOperationResponse>,
+  input: GetDisconnectedOperationRequest,
+  output: GetDisconnectedOperationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7055,8 +9842,8 @@ export const GetDynamicConfiguration: API.OperationMethod<
   GetDynamicConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<GetDynamicConfigurationRequest>,
-  output: __S(102) as any as S.Schema<GetDynamicConfigurationResponse>,
+  input: GetDynamicConfigurationRequest,
+  output: GetDynamicConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7070,8 +9857,8 @@ export const GetDynamicConfigurationVersion: API.OperationMethod<
   GetDynamicConfigurationVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<GetDynamicConfigurationVersionRequest>,
-  output: __S(106) as any as S.Schema<GetDynamicConfigurationVersionResponse>,
+  input: GetDynamicConfigurationVersionRequest,
+  output: GetDynamicConfigurationVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7085,8 +9872,8 @@ export const GetDynamicSchema: API.OperationMethod<
   GetDynamicSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<GetDynamicSchemaRequest>,
-  output: __S(138) as any as S.Schema<GetDynamicSchemaResponse>,
+  input: GetDynamicSchemaRequest,
+  output: GetDynamicSchemaResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7100,8 +9887,8 @@ export const GetDynamicSchemaVersion: API.OperationMethod<
   GetDynamicSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<GetDynamicSchemaVersionRequest>,
-  output: __S(51) as any as S.Schema<GetDynamicSchemaVersionResponse>,
+  input: GetDynamicSchemaVersionRequest,
+  output: GetDynamicSchemaVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7115,8 +9902,8 @@ export const GetExecution: API.OperationMethod<
   GetExecutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<GetExecutionRequest>,
-  output: __S(141) as any as S.Schema<GetExecutionResponse>,
+  input: GetExecutionRequest,
+  output: GetExecutionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7130,8 +9917,8 @@ export const GetHardwareSettings: API.OperationMethod<
   GetHardwareSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<GetHardwareSettingsRequest>,
-  output: __S(144) as any as S.Schema<GetHardwareSettingsResponse>,
+  input: GetHardwareSettingsRequest,
+  output: GetHardwareSettingsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7145,8 +9932,8 @@ export const GetHierarchyConfigurationMetadatas: API.OperationMethod<
   GetHierarchyConfigurationMetadatasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<GetHierarchyConfigurationMetadatasRequest>,
-  output: __S(147) as any as S.Schema<GetHierarchyConfigurationMetadatasResponse>,
+  input: GetHierarchyConfigurationMetadatasRequest,
+  output: GetHierarchyConfigurationMetadatasResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7160,8 +9947,8 @@ export const GetHierarchyConfigurationMetadataVersion: API.OperationMethod<
   GetHierarchyConfigurationMetadataVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148) as any as S.Schema<GetHierarchyConfigurationMetadataVersionRequest>,
-  output: __S(150) as any as S.Schema<GetHierarchyConfigurationMetadataVersionResponse>,
+  input: GetHierarchyConfigurationMetadataVersionRequest,
+  output: GetHierarchyConfigurationMetadataVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7175,8 +9962,8 @@ export const GetImage: API.OperationMethod<
   GetImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<GetImageRequest>,
-  output: __S(154) as any as S.Schema<GetImageResponse>,
+  input: GetImageRequest,
+  output: GetImageResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7190,8 +9977,8 @@ export const GetInstance: API.OperationMethod<
   GetInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155) as any as S.Schema<GetInstanceRequest>,
-  output: __S(163) as any as S.Schema<GetInstanceResponse>,
+  input: GetInstanceRequest,
+  output: GetInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7205,8 +9992,8 @@ export const GetInstanceHistory: API.OperationMethod<
   GetInstanceHistoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164) as any as S.Schema<GetInstanceHistoryRequest>,
-  output: __S(168) as any as S.Schema<GetInstanceHistoryResponse>,
+  input: GetInstanceHistoryRequest,
+  output: GetInstanceHistoryResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7220,8 +10007,8 @@ export const GetJob: API.OperationMethod<
   GetJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<GetJobRequest>,
-  output: __S(184) as any as S.Schema<GetJobResponse>,
+  input: GetJobRequest,
+  output: GetJobResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7235,8 +10022,8 @@ export const GetSchema: API.OperationMethod<
   GetSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<GetSchemaRequest>,
-  output: __S(187) as any as S.Schema<GetSchemaResponse>,
+  input: GetSchemaRequest,
+  output: GetSchemaResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7250,8 +10037,8 @@ export const GetSchemaReference: API.OperationMethod<
   GetSchemaReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188) as any as S.Schema<GetSchemaReferenceRequest>,
-  output: __S(190) as any as S.Schema<GetSchemaReferenceResponse>,
+  input: GetSchemaReferenceRequest,
+  output: GetSchemaReferenceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7265,8 +10052,8 @@ export const GetSchemaVersion: API.OperationMethod<
   GetSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191) as any as S.Schema<GetSchemaVersionRequest>,
-  output: __S(192) as any as S.Schema<GetSchemaVersionResponse>,
+  input: GetSchemaVersionRequest,
+  output: GetSchemaVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7280,8 +10067,8 @@ export const GetSite: API.OperationMethod<
   GetSiteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<GetSiteRequest>,
-  output: __S(196) as any as S.Schema<GetSiteResponse>,
+  input: GetSiteRequest,
+  output: GetSiteResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7295,8 +10082,8 @@ export const GetSiteReference: API.OperationMethod<
   GetSiteReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197) as any as S.Schema<GetSiteReferenceRequest>,
-  output: __S(199) as any as S.Schema<GetSiteReferenceResponse>,
+  input: GetSiteReferenceRequest,
+  output: GetSiteReferenceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7310,8 +10097,8 @@ export const GetSitesByServiceGroup: API.OperationMethod<
   GetSitesByServiceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200) as any as S.Schema<GetSitesByServiceGroupRequest>,
-  output: __S(201) as any as S.Schema<GetSitesByServiceGroupResponse>,
+  input: GetSitesByServiceGroupRequest,
+  output: GetSitesByServiceGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7325,8 +10112,8 @@ export const GetSitesBySubscription: API.OperationMethod<
   GetSitesBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202) as any as S.Schema<GetSitesBySubscriptionRequest>,
-  output: __S(201) as any as S.Schema<GetSitesBySubscriptionResponse>,
+  input: GetSitesBySubscriptionRequest,
+  output: GetSitesBySubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7340,8 +10127,8 @@ export const GetSolution: API.OperationMethod<
   GetSolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203) as any as S.Schema<GetSolutionRequest>,
-  output: __S(207) as any as S.Schema<GetSolutionResponse>,
+  input: GetSolutionRequest,
+  output: GetSolutionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7355,8 +10142,8 @@ export const GetSolutionMetadatas: API.OperationMethod<
   GetSolutionMetadatasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208) as any as S.Schema<GetSolutionMetadatasRequest>,
-  output: __S(210) as any as S.Schema<GetSolutionMetadatasResponse>,
+  input: GetSolutionMetadatasRequest,
+  output: GetSolutionMetadatasResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7370,8 +10157,8 @@ export const GetSolutionMetadataVersion: API.OperationMethod<
   GetSolutionMetadataVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211) as any as S.Schema<GetSolutionMetadataVersionRequest>,
-  output: __S(213) as any as S.Schema<GetSolutionMetadataVersionResponse>,
+  input: GetSolutionMetadataVersionRequest,
+  output: GetSolutionMetadataVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7385,8 +10172,8 @@ export const GetSolutionSchema: API.OperationMethod<
   GetSolutionSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214) as any as S.Schema<GetSolutionSchemaRequest>,
-  output: __S(216) as any as S.Schema<GetSolutionSchemaResponse>,
+  input: GetSolutionSchemaRequest,
+  output: GetSolutionSchemaResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7400,8 +10187,8 @@ export const GetSolutionTemplate: API.OperationMethod<
   GetSolutionTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217) as any as S.Schema<GetSolutionTemplateRequest>,
-  output: __S(219) as any as S.Schema<GetSolutionTemplateResponse>,
+  input: GetSolutionTemplateRequest,
+  output: GetSolutionTemplateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7415,8 +10202,8 @@ export const GetSolutionTemplateVersion: API.OperationMethod<
   GetSolutionTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220) as any as S.Schema<GetSolutionTemplateVersionRequest>,
-  output: __S(57) as any as S.Schema<GetSolutionTemplateVersionResponse>,
+  input: GetSolutionTemplateVersionRequest,
+  output: GetSolutionTemplateVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7430,8 +10217,8 @@ export const GetSolutionVersion: API.OperationMethod<
   GetSolutionVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221) as any as S.Schema<GetSolutionVersionRequest>,
-  output: __S(229) as any as S.Schema<GetSolutionVersionResponse>,
+  input: GetSolutionVersionRequest,
+  output: GetSolutionVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7445,8 +10232,8 @@ export const GetTarget: API.OperationMethod<
   GetTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230) as any as S.Schema<GetTargetRequest>,
-  output: __S(232) as any as S.Schema<GetTargetResponse>,
+  input: GetTargetRequest,
+  output: GetTargetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7460,8 +10247,8 @@ export const GetWorkflow: API.OperationMethod<
   GetWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233) as any as S.Schema<GetWorkflowRequest>,
-  output: __S(235) as any as S.Schema<GetWorkflowResponse>,
+  input: GetWorkflowRequest,
+  output: GetWorkflowResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7475,8 +10262,8 @@ export const GetWorkflowVersion: API.OperationMethod<
   GetWorkflowVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236) as any as S.Schema<GetWorkflowVersionRequest>,
-  output: __S(244) as any as S.Schema<GetWorkflowVersionResponse>,
+  input: GetWorkflowVersionRequest,
+  output: GetWorkflowVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7490,8 +10277,8 @@ export const HardwareSettingsCreateOrUpdate: API.OperationMethod<
   HardwareSettingsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246) as any as S.Schema<HardwareSettingsCreateOrUpdateRequest>,
-  output: __S(144) as any as S.Schema<HardwareSettingsCreateOrUpdateResponse>,
+  input: HardwareSettingsCreateOrUpdateRequest,
+  output: HardwareSettingsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7505,8 +10292,8 @@ export const ImagesListDownloadUri: API.OperationMethod<
   ImagesListDownloadUriError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247) as any as S.Schema<ImagesListDownloadUriRequest>,
-  output: __S(248) as any as S.Schema<ImageDownloadResult>,
+  input: ImagesListDownloadUriRequest,
+  output: ImageDownloadResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7520,8 +10307,8 @@ export const InstallTargetSolution: API.OperationMethod<
   InstallTargetSolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249) as any as S.Schema<InstallTargetSolutionRequest>,
-  output: __S(33) as any as S.Schema<InstallTargetSolutionResponse>,
+  input: InstallTargetSolutionRequest,
+  output: InstallTargetSolutionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7535,8 +10322,8 @@ export const InstancesCreateOrUpdate: API.OperationMethod<
   InstancesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251) as any as S.Schema<InstancesCreateOrUpdateRequest>,
-  output: __S(252) as any as S.Schema<InstancesCreateOrUpdateResponse>,
+  input: InstancesCreateOrUpdateRequest,
+  output: InstancesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7550,8 +10337,8 @@ export const ListArtifactByParent: API.OperationMethod<
   ListArtifactByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253) as any as S.Schema<ListArtifactByParentRequest>,
-  output: __S(255) as any as S.Schema<ArtifactListResult>,
+  input: ListArtifactByParentRequest,
+  output: ArtifactListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7565,8 +10352,8 @@ export const ListConfigTemplateByResourceGroup: API.OperationMethod<
   ListConfigTemplateByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256) as any as S.Schema<ListConfigTemplateByResourceGroupRequest>,
-  output: __S(259) as any as S.Schema<ConfigTemplateListResult>,
+  input: ListConfigTemplateByResourceGroupRequest,
+  output: ConfigTemplateListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7580,8 +10367,8 @@ export const ListConfigTemplateBySubscription: API.OperationMethod<
   ListConfigTemplateBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260) as any as S.Schema<ListConfigTemplateBySubscriptionRequest>,
-  output: __S(259) as any as S.Schema<ConfigTemplateListResult>,
+  input: ListConfigTemplateBySubscriptionRequest,
+  output: ConfigTemplateListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7595,8 +10382,8 @@ export const ListConfigTemplateMetadatasByConfigTemplate: API.OperationMethod<
   ListConfigTemplateMetadatasByConfigTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261) as any as S.Schema<ListConfigTemplateMetadatasByConfigTemplateRequest>,
-  output: __S(264) as any as S.Schema<ConfigTemplateMetadataListResult>,
+  input: ListConfigTemplateMetadatasByConfigTemplateRequest,
+  output: ConfigTemplateMetadataListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7610,8 +10397,8 @@ export const ListConfigTemplateSchemaByConfigTemplateVersion: API.OperationMetho
   ListConfigTemplateSchemaByConfigTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265) as any as S.Schema<ListConfigTemplateSchemaByConfigTemplateVersionRequest>,
-  output: __S(268) as any as S.Schema<ConfigTemplateSchemaListResult>,
+  input: ListConfigTemplateSchemaByConfigTemplateVersionRequest,
+  output: ConfigTemplateSchemaListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7625,8 +10412,8 @@ export const ListConfigTemplateVersionByConfigTemplate: API.OperationMethod<
   ListConfigTemplateVersionByConfigTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269) as any as S.Schema<ListConfigTemplateVersionByConfigTemplateRequest>,
-  output: __S(272) as any as S.Schema<ConfigTemplateVersionListResult>,
+  input: ListConfigTemplateVersionByConfigTemplateRequest,
+  output: ConfigTemplateVersionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7640,8 +10427,8 @@ export const ListConfigurationByResourceGroup: API.OperationMethod<
   ListConfigurationByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273) as any as S.Schema<ListConfigurationByResourceGroupRequest>,
-  output: __S(275) as any as S.Schema<ConfigurationListResult>,
+  input: ListConfigurationByResourceGroupRequest,
+  output: ConfigurationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7655,8 +10442,8 @@ export const ListConfigurationBySubscription: API.OperationMethod<
   ListConfigurationBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276) as any as S.Schema<ListConfigurationBySubscriptionRequest>,
-  output: __S(275) as any as S.Schema<ConfigurationListResult>,
+  input: ListConfigurationBySubscriptionRequest,
+  output: ConfigurationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7670,8 +10457,8 @@ export const ListConfigurationReferences: API.OperationMethod<
   ListConfigurationReferencesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277) as any as S.Schema<ListConfigurationReferencesRequest>,
-  output: __S(280) as any as S.Schema<ConfigurationReferenceListResult>,
+  input: ListConfigurationReferencesRequest,
+  output: ConfigurationReferenceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7685,8 +10472,8 @@ export const ListContextByResourceGroup: API.OperationMethod<
   ListContextByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281) as any as S.Schema<ListContextByResourceGroupRequest>,
-  output: __S(283) as any as S.Schema<ContextListResult>,
+  input: ListContextByResourceGroupRequest,
+  output: ContextListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7700,8 +10487,8 @@ export const ListContextBySubscription: API.OperationMethod<
   ListContextBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284) as any as S.Schema<ListContextBySubscriptionRequest>,
-  output: __S(283) as any as S.Schema<ContextListResult>,
+  input: ListContextBySubscriptionRequest,
+  output: ContextListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7715,8 +10502,8 @@ export const ListDiagnosticByResourceGroup: API.OperationMethod<
   ListDiagnosticByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285) as any as S.Schema<ListDiagnosticByResourceGroupRequest>,
-  output: __S(287) as any as S.Schema<DiagnosticListResult>,
+  input: ListDiagnosticByResourceGroupRequest,
+  output: DiagnosticListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7730,8 +10517,8 @@ export const ListDiagnosticBySubscription: API.OperationMethod<
   ListDiagnosticBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288) as any as S.Schema<ListDiagnosticBySubscriptionRequest>,
-  output: __S(287) as any as S.Schema<DiagnosticListResult>,
+  input: ListDiagnosticBySubscriptionRequest,
+  output: DiagnosticListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7745,8 +10532,8 @@ export const ListDisconnectedOperationByResourceGroup: API.OperationMethod<
   ListDisconnectedOperationByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289) as any as S.Schema<ListDisconnectedOperationByResourceGroupRequest>,
-  output: __S(292) as any as S.Schema<DisconnectedOperationListResult>,
+  input: ListDisconnectedOperationByResourceGroupRequest,
+  output: DisconnectedOperationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7760,8 +10547,8 @@ export const ListDisconnectedOperationBySubscription: API.OperationMethod<
   ListDisconnectedOperationBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293) as any as S.Schema<ListDisconnectedOperationBySubscriptionRequest>,
-  output: __S(292) as any as S.Schema<DisconnectedOperationListResult>,
+  input: ListDisconnectedOperationBySubscriptionRequest,
+  output: DisconnectedOperationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7775,8 +10562,8 @@ export const ListDisconnectedOperationDeploymentManifest: API.OperationMethod<
   ListDisconnectedOperationDeploymentManifestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294) as any as S.Schema<ListDisconnectedOperationDeploymentManifestRequest>,
-  output: __S(295) as any as S.Schema<DisconnectedOperationDeploymentManifest>,
+  input: ListDisconnectedOperationDeploymentManifestRequest,
+  output: DisconnectedOperationDeploymentManifest,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7790,8 +10577,8 @@ export const ListDynamicConfigurationByConfiguration: API.OperationMethod<
   ListDynamicConfigurationByConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296) as any as S.Schema<ListDynamicConfigurationByConfigurationRequest>,
-  output: __S(299) as any as S.Schema<DynamicConfigurationListResult>,
+  input: ListDynamicConfigurationByConfigurationRequest,
+  output: DynamicConfigurationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7805,8 +10592,8 @@ export const ListDynamicConfigurationVersionByDynamicConfiguration: API.Operatio
   ListDynamicConfigurationVersionByDynamicConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300) as any as S.Schema<ListDynamicConfigurationVersionByDynamicConfigurationRequest>,
-  output: __S(302) as any as S.Schema<DynamicConfigurationVersionListResult>,
+  input: ListDynamicConfigurationVersionByDynamicConfigurationRequest,
+  output: DynamicConfigurationVersionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7820,8 +10607,8 @@ export const ListDynamicSchemaBySchema: API.OperationMethod<
   ListDynamicSchemaBySchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303) as any as S.Schema<ListDynamicSchemaBySchemaRequest>,
-  output: __S(305) as any as S.Schema<DynamicSchemaListResult>,
+  input: ListDynamicSchemaBySchemaRequest,
+  output: DynamicSchemaListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7835,8 +10622,8 @@ export const ListDynamicSchemaVersionByDynamicSchema: API.OperationMethod<
   ListDynamicSchemaVersionByDynamicSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306) as any as S.Schema<ListDynamicSchemaVersionByDynamicSchemaRequest>,
-  output: __S(308) as any as S.Schema<DynamicSchemaVersionListResult>,
+  input: ListDynamicSchemaVersionByDynamicSchemaRequest,
+  output: DynamicSchemaVersionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7850,8 +10637,8 @@ export const ListExecutionByWorkflowVersion: API.OperationMethod<
   ListExecutionByWorkflowVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309) as any as S.Schema<ListExecutionByWorkflowVersionRequest>,
-  output: __S(311) as any as S.Schema<ExecutionListResult>,
+  input: ListExecutionByWorkflowVersionRequest,
+  output: ExecutionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7865,8 +10652,8 @@ export const ListHardwareSettingsByParent: API.OperationMethod<
   ListHardwareSettingsByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312) as any as S.Schema<ListHardwareSettingsByParentRequest>,
-  output: __S(315) as any as S.Schema<HardwareSettingListResult>,
+  input: ListHardwareSettingsByParentRequest,
+  output: HardwareSettingListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7880,8 +10667,8 @@ export const ListHierarchyConfigurationMetadatasByParent: API.OperationMethod<
   ListHierarchyConfigurationMetadatasByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316) as any as S.Schema<ListHierarchyConfigurationMetadatasByParentRequest>,
-  output: __S(318) as any as S.Schema<HierarchyConfigurationMetadataListResult>,
+  input: ListHierarchyConfigurationMetadatasByParentRequest,
+  output: HierarchyConfigurationMetadataListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7895,8 +10682,8 @@ export const ListHierarchyConfigurationMetadataVersionByParent: API.OperationMet
   ListHierarchyConfigurationMetadataVersionByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319) as any as S.Schema<ListHierarchyConfigurationMetadataVersionByParentRequest>,
-  output: __S(321) as any as S.Schema<HierarchyConfigurationMetadataVersionListResult>,
+  input: ListHierarchyConfigurationMetadataVersionByParentRequest,
+  output: HierarchyConfigurationMetadataVersionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7910,8 +10697,8 @@ export const ListImageByDisconnectedOperation: API.OperationMethod<
   ListImageByDisconnectedOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322) as any as S.Schema<ListImageByDisconnectedOperationRequest>,
-  output: __S(324) as any as S.Schema<ImageListResult>,
+  input: ListImageByDisconnectedOperationRequest,
+  output: ImageListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7925,8 +10712,8 @@ export const ListInstanceBySolution: API.OperationMethod<
   ListInstanceBySolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325) as any as S.Schema<ListInstanceBySolutionRequest>,
-  output: __S(327) as any as S.Schema<InstanceListResult>,
+  input: ListInstanceBySolutionRequest,
+  output: InstanceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7940,8 +10727,8 @@ export const ListInstanceHistoryByInstance: API.OperationMethod<
   ListInstanceHistoryByInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328) as any as S.Schema<ListInstanceHistoryByInstanceRequest>,
-  output: __S(331) as any as S.Schema<InstanceHistoryListResult>,
+  input: ListInstanceHistoryByInstanceRequest,
+  output: InstanceHistoryListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7955,8 +10742,8 @@ export const ListJobByTarget: API.OperationMethod<
   ListJobByTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(332) as any as S.Schema<ListJobByTargetRequest>,
-  output: __S(334) as any as S.Schema<JobListResult>,
+  input: ListJobByTargetRequest,
+  output: JobListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7970,8 +10757,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335) as any as S.Schema<ListOperationsRequest>,
-  output: __S(339) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7985,8 +10772,8 @@ export const ListSchemaByResourceGroup: API.OperationMethod<
   ListSchemaByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(340) as any as S.Schema<ListSchemaByResourceGroupRequest>,
-  output: __S(343) as any as S.Schema<SchemaListResult>,
+  input: ListSchemaByResourceGroupRequest,
+  output: SchemaListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8000,8 +10787,8 @@ export const ListSchemaBySubscription: API.OperationMethod<
   ListSchemaBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344) as any as S.Schema<ListSchemaBySubscriptionRequest>,
-  output: __S(343) as any as S.Schema<SchemaListResult>,
+  input: ListSchemaBySubscriptionRequest,
+  output: SchemaListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8015,8 +10802,8 @@ export const ListSchemaReferenceByResourceGroup: API.OperationMethod<
   ListSchemaReferenceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345) as any as S.Schema<ListSchemaReferenceByResourceGroupRequest>,
-  output: __S(348) as any as S.Schema<SchemaReferenceListResult>,
+  input: ListSchemaReferenceByResourceGroupRequest,
+  output: SchemaReferenceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8030,8 +10817,8 @@ export const ListSchemaVersionBySchema: API.OperationMethod<
   ListSchemaVersionBySchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349) as any as S.Schema<ListSchemaVersionBySchemaRequest>,
-  output: __S(350) as any as S.Schema<SchemaVersionListResult>,
+  input: ListSchemaVersionBySchemaRequest,
+  output: SchemaVersionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8045,8 +10832,8 @@ export const ListSiteByResourceGroup: API.OperationMethod<
   ListSiteByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351) as any as S.Schema<ListSiteByResourceGroupRequest>,
-  output: __S(353) as any as S.Schema<SiteListResult>,
+  input: ListSiteByResourceGroupRequest,
+  output: SiteListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8060,8 +10847,8 @@ export const ListSiteReferenceByContext: API.OperationMethod<
   ListSiteReferenceByContextError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(354) as any as S.Schema<ListSiteReferenceByContextRequest>,
-  output: __S(356) as any as S.Schema<SiteReferenceListResult>,
+  input: ListSiteReferenceByContextRequest,
+  output: SiteReferenceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8075,8 +10862,8 @@ export const ListSitesByServiceGroupByServiceGroup: API.OperationMethod<
   ListSitesByServiceGroupByServiceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357) as any as S.Schema<ListSitesByServiceGroupByServiceGroupRequest>,
-  output: __S(353) as any as S.Schema<SiteListResult>,
+  input: ListSitesByServiceGroupByServiceGroupRequest,
+  output: SiteListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8090,8 +10877,8 @@ export const ListSitesBySubscription: API.OperationMethod<
   ListSitesBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358) as any as S.Schema<ListSitesBySubscriptionRequest>,
-  output: __S(353) as any as S.Schema<SiteListResult>,
+  input: ListSitesBySubscriptionRequest,
+  output: SiteListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8105,8 +10892,8 @@ export const ListSolutionByTarget: API.OperationMethod<
   ListSolutionByTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359) as any as S.Schema<ListSolutionByTargetRequest>,
-  output: __S(361) as any as S.Schema<SolutionListResult>,
+  input: ListSolutionByTargetRequest,
+  output: SolutionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8120,8 +10907,8 @@ export const ListSolutionMetadatasByParent: API.OperationMethod<
   ListSolutionMetadatasByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362) as any as S.Schema<ListSolutionMetadatasByParentRequest>,
-  output: __S(365) as any as S.Schema<SolutionMetadataListResult>,
+  input: ListSolutionMetadatasByParentRequest,
+  output: SolutionMetadataListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8135,8 +10922,8 @@ export const ListSolutionMetadataVersionByParent: API.OperationMethod<
   ListSolutionMetadataVersionByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(366) as any as S.Schema<ListSolutionMetadataVersionByParentRequest>,
-  output: __S(369) as any as S.Schema<SolutionMetadataVersionListResult>,
+  input: ListSolutionMetadataVersionByParentRequest,
+  output: SolutionMetadataVersionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8150,8 +10937,8 @@ export const ListSolutionSchemaBySolutionTemplateVersion: API.OperationMethod<
   ListSolutionSchemaBySolutionTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(370) as any as S.Schema<ListSolutionSchemaBySolutionTemplateVersionRequest>,
-  output: __S(373) as any as S.Schema<SolutionSchemaListResult>,
+  input: ListSolutionSchemaBySolutionTemplateVersionRequest,
+  output: SolutionSchemaListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8165,8 +10952,8 @@ export const ListSolutionTemplateByResourceGroup: API.OperationMethod<
   ListSolutionTemplateByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374) as any as S.Schema<ListSolutionTemplateByResourceGroupRequest>,
-  output: __S(377) as any as S.Schema<SolutionTemplateListResult>,
+  input: ListSolutionTemplateByResourceGroupRequest,
+  output: SolutionTemplateListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8180,8 +10967,8 @@ export const ListSolutionTemplateBySubscription: API.OperationMethod<
   ListSolutionTemplateBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378) as any as S.Schema<ListSolutionTemplateBySubscriptionRequest>,
-  output: __S(377) as any as S.Schema<SolutionTemplateListResult>,
+  input: ListSolutionTemplateBySubscriptionRequest,
+  output: SolutionTemplateListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8195,8 +10982,8 @@ export const ListSolutionTemplateVersionBySolutionTemplate: API.OperationMethod<
   ListSolutionTemplateVersionBySolutionTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(379) as any as S.Schema<ListSolutionTemplateVersionBySolutionTemplateRequest>,
-  output: __S(382) as any as S.Schema<SolutionTemplateVersionListResult>,
+  input: ListSolutionTemplateVersionBySolutionTemplateRequest,
+  output: SolutionTemplateVersionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8210,8 +10997,8 @@ export const ListSolutionVersionBySolution: API.OperationMethod<
   ListSolutionVersionBySolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(383) as any as S.Schema<ListSolutionVersionBySolutionRequest>,
-  output: __S(386) as any as S.Schema<SolutionVersionListResult>,
+  input: ListSolutionVersionBySolutionRequest,
+  output: SolutionVersionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8225,8 +11012,8 @@ export const ListTargetByResourceGroup: API.OperationMethod<
   ListTargetByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(387) as any as S.Schema<ListTargetByResourceGroupRequest>,
-  output: __S(389) as any as S.Schema<TargetListResult>,
+  input: ListTargetByResourceGroupRequest,
+  output: TargetListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8240,8 +11027,8 @@ export const ListTargetBySubscription: API.OperationMethod<
   ListTargetBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(390) as any as S.Schema<ListTargetBySubscriptionRequest>,
-  output: __S(389) as any as S.Schema<TargetListResult>,
+  input: ListTargetBySubscriptionRequest,
+  output: TargetListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8255,8 +11042,8 @@ export const ListWorkflowByContext: API.OperationMethod<
   ListWorkflowByContextError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391) as any as S.Schema<ListWorkflowByContextRequest>,
-  output: __S(393) as any as S.Schema<WorkflowListResult>,
+  input: ListWorkflowByContextRequest,
+  output: WorkflowListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8270,8 +11057,8 @@ export const ListWorkflowVersionByWorkflow: API.OperationMethod<
   ListWorkflowVersionByWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394) as any as S.Schema<ListWorkflowVersionByWorkflowRequest>,
-  output: __S(397) as any as S.Schema<WorkflowVersionListResult>,
+  input: ListWorkflowVersionByWorkflowRequest,
+  output: WorkflowVersionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8285,8 +11072,8 @@ export const PublishTargetSolutionVersion: API.OperationMethod<
   PublishTargetSolutionVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398) as any as S.Schema<PublishTargetSolutionVersionRequest>,
-  output: __S(229) as any as S.Schema<PublishTargetSolutionVersionResponse>,
+  input: PublishTargetSolutionVersionRequest,
+  output: PublishTargetSolutionVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8300,8 +11087,8 @@ export const RemoveConfigTemplateVersion: API.OperationMethod<
   RemoveConfigTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(399) as any as S.Schema<RemoveConfigTemplateVersionRequest>,
-  output: __S(400) as any as S.Schema<RemoveVersionResponse>,
+  input: RemoveConfigTemplateVersionRequest,
+  output: RemoveVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8315,8 +11102,8 @@ export const RemoveSchemaVersion: API.OperationMethod<
   RemoveSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401) as any as S.Schema<RemoveSchemaVersionRequest>,
-  output: __S(400) as any as S.Schema<RemoveVersionResponse>,
+  input: RemoveSchemaVersionRequest,
+  output: RemoveVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8330,8 +11117,8 @@ export const RemoveSolutionTemplateVersion: API.OperationMethod<
   RemoveSolutionTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(402) as any as S.Schema<RemoveSolutionTemplateVersionRequest>,
-  output: __S(9) as any as S.Schema<RemoveSolutionTemplateVersionResponse>,
+  input: RemoveSolutionTemplateVersionRequest,
+  output: RemoveSolutionTemplateVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8345,8 +11132,8 @@ export const RemoveTargetRevision: API.OperationMethod<
   RemoveTargetRevisionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(403) as any as S.Schema<RemoveTargetRevisionRequest>,
-  output: __S(33) as any as S.Schema<RemoveTargetRevisionResponse>,
+  input: RemoveTargetRevisionRequest,
+  output: RemoveTargetRevisionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8360,8 +11147,8 @@ export const ReviewTargetSolutionVersion: API.OperationMethod<
   ReviewTargetSolutionVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(404) as any as S.Schema<ReviewTargetSolutionVersionRequest>,
-  output: __S(229) as any as S.Schema<ReviewTargetSolutionVersionResponse>,
+  input: ReviewTargetSolutionVersionRequest,
+  output: ReviewTargetSolutionVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8375,8 +11162,8 @@ export const SchemaReferencesCreateOrUpdate: API.OperationMethod<
   SchemaReferencesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(406) as any as S.Schema<SchemaReferencesCreateOrUpdateRequest>,
-  output: __S(190) as any as S.Schema<SchemaReferencesCreateOrUpdateResponse>,
+  input: SchemaReferencesCreateOrUpdateRequest,
+  output: SchemaReferencesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8390,8 +11177,8 @@ export const SchemasCreateOrUpdate: API.OperationMethod<
   SchemasCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407) as any as S.Schema<SchemasCreateOrUpdateRequest>,
-  output: __S(408) as any as S.Schema<SchemasCreateOrUpdateResponse>,
+  input: SchemasCreateOrUpdateRequest,
+  output: SchemasCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8405,8 +11192,8 @@ export const SchemaVersionsCreateOrUpdate: API.OperationMethod<
   SchemaVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(409) as any as S.Schema<SchemaVersionsCreateOrUpdateRequest>,
-  output: __S(51) as any as S.Schema<SchemaVersionsCreateOrUpdateResponse>,
+  input: SchemaVersionsCreateOrUpdateRequest,
+  output: SchemaVersionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8420,8 +11207,8 @@ export const SiteReferencesCreateOrUpdate: API.OperationMethod<
   SiteReferencesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(411) as any as S.Schema<SiteReferencesCreateOrUpdateRequest>,
-  output: __S(412) as any as S.Schema<SiteReferencesCreateOrUpdateResponse>,
+  input: SiteReferencesCreateOrUpdateRequest,
+  output: SiteReferencesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8435,8 +11222,8 @@ export const SitesByServiceGroupCreateOrUpdate: API.OperationMethod<
   SitesByServiceGroupCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(414) as any as S.Schema<SitesByServiceGroupCreateOrUpdateRequest>,
-  output: __S(201) as any as S.Schema<SitesByServiceGroupCreateOrUpdateResponse>,
+  input: SitesByServiceGroupCreateOrUpdateRequest,
+  output: SitesByServiceGroupCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8450,8 +11237,8 @@ export const SitesBySubscriptionCreateOrUpdate: API.OperationMethod<
   SitesBySubscriptionCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(415) as any as S.Schema<SitesBySubscriptionCreateOrUpdateRequest>,
-  output: __S(201) as any as S.Schema<SitesBySubscriptionCreateOrUpdateResponse>,
+  input: SitesBySubscriptionCreateOrUpdateRequest,
+  output: SitesBySubscriptionCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8465,8 +11252,8 @@ export const SitesCreateOrUpdate: API.OperationMethod<
   SitesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416) as any as S.Schema<SitesCreateOrUpdateRequest>,
-  output: __S(201) as any as S.Schema<SitesCreateOrUpdateResponse>,
+  input: SitesCreateOrUpdateRequest,
+  output: SitesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8480,8 +11267,8 @@ export const SolutionsCreateOrUpdate: API.OperationMethod<
   SolutionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(417) as any as S.Schema<SolutionsCreateOrUpdateRequest>,
-  output: __S(418) as any as S.Schema<SolutionsCreateOrUpdateResponse>,
+  input: SolutionsCreateOrUpdateRequest,
+  output: SolutionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8495,8 +11282,8 @@ export const SolutionTemplatesCreateOrUpdate: API.OperationMethod<
   SolutionTemplatesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(420) as any as S.Schema<SolutionTemplatesCreateOrUpdateRequest>,
-  output: __S(219) as any as S.Schema<SolutionTemplatesCreateOrUpdateResponse>,
+  input: SolutionTemplatesCreateOrUpdateRequest,
+  output: SolutionTemplatesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8510,8 +11297,8 @@ export const SolutionTemplateVersionsBulkDeploySolution: API.OperationMethod<
   SolutionTemplateVersionsBulkDeploySolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423) as any as S.Schema<SolutionTemplateVersionsBulkDeploySolutionRequest>,
-  output: __S(9) as any as S.Schema<SolutionTemplateVersionsBulkDeploySolutionResponse>,
+  input: SolutionTemplateVersionsBulkDeploySolutionRequest,
+  output: SolutionTemplateVersionsBulkDeploySolutionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8525,8 +11312,8 @@ export const SolutionTemplateVersionsBulkPublishSolution: API.OperationMethod<
   SolutionTemplateVersionsBulkPublishSolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426) as any as S.Schema<SolutionTemplateVersionsBulkPublishSolutionRequest>,
-  output: __S(9) as any as S.Schema<SolutionTemplateVersionsBulkPublishSolutionResponse>,
+  input: SolutionTemplateVersionsBulkPublishSolutionRequest,
+  output: SolutionTemplateVersionsBulkPublishSolutionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8540,8 +11327,8 @@ export const SolutionTemplateVersionsCreateOrUpdate: API.OperationMethod<
   SolutionTemplateVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(427) as any as S.Schema<SolutionTemplateVersionsCreateOrUpdateRequest>,
-  output: __S(57) as any as S.Schema<SolutionTemplateVersionsCreateOrUpdateResponse>,
+  input: SolutionTemplateVersionsCreateOrUpdateRequest,
+  output: SolutionTemplateVersionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8555,8 +11342,8 @@ export const SolutionVersionsCreateOrUpdate: API.OperationMethod<
   SolutionVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(429) as any as S.Schema<SolutionVersionsCreateOrUpdateRequest>,
-  output: __S(229) as any as S.Schema<SolutionVersionsCreateOrUpdateResponse>,
+  input: SolutionVersionsCreateOrUpdateRequest,
+  output: SolutionVersionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8570,8 +11357,8 @@ export const TargetsCreateOrUpdate: API.OperationMethod<
   TargetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431) as any as S.Schema<TargetsCreateOrUpdateRequest>,
-  output: __S(432) as any as S.Schema<TargetsCreateOrUpdateResponse>,
+  input: TargetsCreateOrUpdateRequest,
+  output: TargetsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8585,8 +11372,8 @@ export const TargetsResolveConfiguration: API.OperationMethod<
   TargetsResolveConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433) as any as S.Schema<TargetsResolveConfigurationRequest>,
-  output: __S(434) as any as S.Schema<ResolvedConfiguration>,
+  input: TargetsResolveConfigurationRequest,
+  output: ResolvedConfiguration,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8600,8 +11387,8 @@ export const TargetsUnstageSolutionVersion: API.OperationMethod<
   TargetsUnstageSolutionVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(435) as any as S.Schema<TargetsUnstageSolutionVersionRequest>,
-  output: __S(229) as any as S.Schema<TargetsUnstageSolutionVersionResponse>,
+  input: TargetsUnstageSolutionVersionRequest,
+  output: TargetsUnstageSolutionVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8615,8 +11402,8 @@ export const UninstallTargetSolution: API.OperationMethod<
   UninstallTargetSolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436) as any as S.Schema<UninstallTargetSolutionRequest>,
-  output: __S(437) as any as S.Schema<UninstallTargetSolutionResponse>,
+  input: UninstallTargetSolutionRequest,
+  output: UninstallTargetSolutionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8630,8 +11417,8 @@ export const UpdateConfigTemplate: API.OperationMethod<
   UpdateConfigTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(439) as any as S.Schema<UpdateConfigTemplateRequest>,
-  output: __S(22) as any as S.Schema<UpdateConfigTemplateResponse>,
+  input: UpdateConfigTemplateRequest,
+  output: UpdateConfigTemplateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8645,8 +11432,8 @@ export const UpdateConfigTemplateMetadatas: API.OperationMethod<
   UpdateConfigTemplateMetadatasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(440) as any as S.Schema<UpdateConfigTemplateMetadatasRequest>,
-  output: __S(17) as any as S.Schema<UpdateConfigTemplateMetadatasResponse>,
+  input: UpdateConfigTemplateMetadatasRequest,
+  output: UpdateConfigTemplateMetadatasResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8660,8 +11447,8 @@ export const UpdateConfigTemplateVersion: API.OperationMethod<
   UpdateConfigTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(442) as any as S.Schema<UpdateConfigTemplateVersionRequest>,
-  output: __S(28) as any as S.Schema<UpdateConfigTemplateVersionResponse>,
+  input: UpdateConfigTemplateVersionRequest,
+  output: UpdateConfigTemplateVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8675,8 +11462,8 @@ export const UpdateConfiguration: API.OperationMethod<
   UpdateConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(443) as any as S.Schema<UpdateConfigurationRequest>,
-  output: __S(36) as any as S.Schema<UpdateConfigurationResponse>,
+  input: UpdateConfigurationRequest,
+  output: UpdateConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8690,8 +11477,8 @@ export const UpdateConfigurationReference: API.OperationMethod<
   UpdateConfigurationReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(444) as any as S.Schema<UpdateConfigurationReferenceRequest>,
-  output: __S(32) as any as S.Schema<UpdateConfigurationReferenceResponse>,
+  input: UpdateConfigurationReferenceRequest,
+  output: UpdateConfigurationReferenceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8705,8 +11492,8 @@ export const UpdateContext: API.OperationMethod<
   UpdateContextError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(446) as any as S.Schema<UpdateContextRequest>,
-  output: __S(131) as any as S.Schema<UpdateContextResponse>,
+  input: UpdateContextRequest,
+  output: UpdateContextResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8720,8 +11507,8 @@ export const UpdateDiagnostic: API.OperationMethod<
   UpdateDiagnosticError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(447) as any as S.Schema<UpdateDiagnosticRequest>,
-  output: __S(133) as any as S.Schema<UpdateDiagnosticResponse>,
+  input: UpdateDiagnosticRequest,
+  output: UpdateDiagnosticResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8735,8 +11522,8 @@ export const UpdateDisconnectedOperation: API.OperationMethod<
   UpdateDisconnectedOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451) as any as S.Schema<UpdateDisconnectedOperationRequest>,
-  output: __S(98) as any as S.Schema<UpdateDisconnectedOperationResponse>,
+  input: UpdateDisconnectedOperationRequest,
+  output: UpdateDisconnectedOperationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8750,8 +11537,8 @@ export const UpdateDynamicConfiguration: API.OperationMethod<
   UpdateDynamicConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(453) as any as S.Schema<UpdateDynamicConfigurationRequest>,
-  output: __S(102) as any as S.Schema<UpdateDynamicConfigurationResponse>,
+  input: UpdateDynamicConfigurationRequest,
+  output: UpdateDynamicConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8765,8 +11552,8 @@ export const UpdateDynamicConfigurationVersion: API.OperationMethod<
   UpdateDynamicConfigurationVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455) as any as S.Schema<UpdateDynamicConfigurationVersionRequest>,
-  output: __S(106) as any as S.Schema<UpdateDynamicConfigurationVersionResponse>,
+  input: UpdateDynamicConfigurationVersionRequest,
+  output: UpdateDynamicConfigurationVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8780,8 +11567,8 @@ export const UpdateDynamicSchema: API.OperationMethod<
   UpdateDynamicSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(456) as any as S.Schema<UpdateDynamicSchemaRequest>,
-  output: __S(109) as any as S.Schema<UpdateDynamicSchemaResponse>,
+  input: UpdateDynamicSchemaRequest,
+  output: UpdateDynamicSchemaResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8795,8 +11582,8 @@ export const UpdateDynamicSchemaVersion: API.OperationMethod<
   UpdateDynamicSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(458) as any as S.Schema<UpdateDynamicSchemaVersionRequest>,
-  output: __S(51) as any as S.Schema<UpdateDynamicSchemaVersionResponse>,
+  input: UpdateDynamicSchemaVersionRequest,
+  output: UpdateDynamicSchemaVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8810,8 +11597,8 @@ export const UpdateExecution: API.OperationMethod<
   UpdateExecutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(460) as any as S.Schema<UpdateExecutionRequest>,
-  output: __S(141) as any as S.Schema<UpdateExecutionResponse>,
+  input: UpdateExecutionRequest,
+  output: UpdateExecutionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8825,8 +11612,8 @@ export const UpdateInstance: API.OperationMethod<
   UpdateInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(463) as any as S.Schema<UpdateInstanceRequest>,
-  output: __S(163) as any as S.Schema<UpdateInstanceResponse>,
+  input: UpdateInstanceRequest,
+  output: UpdateInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8840,8 +11627,8 @@ export const UpdateSchema: API.OperationMethod<
   UpdateSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464) as any as S.Schema<UpdateSchemaRequest>,
-  output: __S(187) as any as S.Schema<UpdateSchemaResponse>,
+  input: UpdateSchemaRequest,
+  output: UpdateSchemaResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8855,8 +11642,8 @@ export const UpdateSchemaReference: API.OperationMethod<
   UpdateSchemaReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(466) as any as S.Schema<UpdateSchemaReferenceRequest>,
-  output: __S(190) as any as S.Schema<UpdateSchemaReferenceResponse>,
+  input: UpdateSchemaReferenceRequest,
+  output: UpdateSchemaReferenceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8870,8 +11657,8 @@ export const UpdateSchemaVersion: API.OperationMethod<
   UpdateSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(467) as any as S.Schema<UpdateSchemaVersionRequest>,
-  output: __S(51) as any as S.Schema<UpdateSchemaVersionResponse>,
+  input: UpdateSchemaVersionRequest,
+  output: UpdateSchemaVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8885,8 +11672,8 @@ export const UpdateSite: API.OperationMethod<
   UpdateSiteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(468) as any as S.Schema<UpdateSiteRequest>,
-  output: __S(196) as any as S.Schema<UpdateSiteResponse>,
+  input: UpdateSiteRequest,
+  output: UpdateSiteResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8900,8 +11687,8 @@ export const UpdateSiteReference: API.OperationMethod<
   UpdateSiteReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(470) as any as S.Schema<UpdateSiteReferenceRequest>,
-  output: __S(412) as any as S.Schema<UpdateSiteReferenceResponse>,
+  input: UpdateSiteReferenceRequest,
+  output: UpdateSiteReferenceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8915,8 +11702,8 @@ export const UpdateSitesByServiceGroup: API.OperationMethod<
   UpdateSitesByServiceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(471) as any as S.Schema<UpdateSitesByServiceGroupRequest>,
-  output: __S(201) as any as S.Schema<UpdateSitesByServiceGroupResponse>,
+  input: UpdateSitesByServiceGroupRequest,
+  output: UpdateSitesByServiceGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8930,8 +11717,8 @@ export const UpdateSitesBySubscription: API.OperationMethod<
   UpdateSitesBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(472) as any as S.Schema<UpdateSitesBySubscriptionRequest>,
-  output: __S(201) as any as S.Schema<UpdateSitesBySubscriptionResponse>,
+  input: UpdateSitesBySubscriptionRequest,
+  output: UpdateSitesBySubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8945,8 +11732,8 @@ export const UpdateSolution: API.OperationMethod<
   UpdateSolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(473) as any as S.Schema<UpdateSolutionRequest>,
-  output: __S(207) as any as S.Schema<UpdateSolutionResponse>,
+  input: UpdateSolutionRequest,
+  output: UpdateSolutionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8960,8 +11747,8 @@ export const UpdateSolutionTemplate: API.OperationMethod<
   UpdateSolutionTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(475) as any as S.Schema<UpdateSolutionTemplateRequest>,
-  output: __S(219) as any as S.Schema<UpdateSolutionTemplateResponse>,
+  input: UpdateSolutionTemplateRequest,
+  output: UpdateSolutionTemplateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8975,8 +11762,8 @@ export const UpdateSolutionTemplateVersion: API.OperationMethod<
   UpdateSolutionTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(477) as any as S.Schema<UpdateSolutionTemplateVersionRequest>,
-  output: __S(57) as any as S.Schema<UpdateSolutionTemplateVersionResponse>,
+  input: UpdateSolutionTemplateVersionRequest,
+  output: UpdateSolutionTemplateVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8990,8 +11777,8 @@ export const UpdateSolutionVersion: API.OperationMethod<
   UpdateSolutionVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(479) as any as S.Schema<UpdateSolutionVersionRequest>,
-  output: __S(229) as any as S.Schema<UpdateSolutionVersionResponse>,
+  input: UpdateSolutionVersionRequest,
+  output: UpdateSolutionVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9005,8 +11792,8 @@ export const UpdateTarget: API.OperationMethod<
   UpdateTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(481) as any as S.Schema<UpdateTargetRequest>,
-  output: __S(232) as any as S.Schema<UpdateTargetResponse>,
+  input: UpdateTargetRequest,
+  output: UpdateTargetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9020,8 +11807,8 @@ export const UpdateTargetExternalValidationStatus: API.OperationMethod<
   UpdateTargetExternalValidationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(482) as any as S.Schema<UpdateTargetExternalValidationStatusRequest>,
-  output: __S(229) as any as S.Schema<UpdateTargetExternalValidationStatusResponse>,
+  input: UpdateTargetExternalValidationStatusRequest,
+  output: UpdateTargetExternalValidationStatusResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9035,8 +11822,8 @@ export const UpdateWorkflow: API.OperationMethod<
   UpdateWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(483) as any as S.Schema<UpdateWorkflowRequest>,
-  output: __S(235) as any as S.Schema<UpdateWorkflowResponse>,
+  input: UpdateWorkflowRequest,
+  output: UpdateWorkflowResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9050,8 +11837,8 @@ export const UpdateWorkflowVersion: API.OperationMethod<
   UpdateWorkflowVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(485) as any as S.Schema<UpdateWorkflowVersionRequest>,
-  output: __S(244) as any as S.Schema<UpdateWorkflowVersionResponse>,
+  input: UpdateWorkflowVersionRequest,
+  output: UpdateWorkflowVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9065,8 +11852,8 @@ export const WorkflowsCreateOrUpdate: API.OperationMethod<
   WorkflowsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(486) as any as S.Schema<WorkflowsCreateOrUpdateRequest>,
-  output: __S(487) as any as S.Schema<WorkflowsCreateOrUpdateResponse>,
+  input: WorkflowsCreateOrUpdateRequest,
+  output: WorkflowsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9080,8 +11867,8 @@ export const WorkflowVersionsCreateOrUpdate: API.OperationMethod<
   WorkflowVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(489) as any as S.Schema<WorkflowVersionsCreateOrUpdateRequest>,
-  output: __S(244) as any as S.Schema<WorkflowVersionsCreateOrUpdateResponse>,
+  input: WorkflowVersionsCreateOrUpdateRequest,
+  output: WorkflowVersionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9112,7 +11899,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
           artifactOrder: S.Number,
           title: S.String,
           description: S.String,
@@ -9122,7 +11909,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ArtifactDownloadResult" });
     case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(3)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => SolutionDependencyParameter));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -9131,26 +11918,26 @@ function __c0(j: number): any {
           solutionTemplateVersion: S.optional(S.String),
           solutionInstanceName: S.optional(S.String),
           targetId: S.optional(S.String),
-          dependencies: S.optional(__S(2)),
+          dependencies: S.optional(SolutionDependencyParameterDependenciesList),
         }),
       ).annotate({
         identifier: "SolutionDependencyParameter",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(SolutionDependencyParameter);
     case 5:
       return S.suspend(() =>
         S.Struct({
           targetId: S.String,
-          solutionDependencies: S.optional(__S(4)),
+          solutionDependencies: S.optional(BulkReviewTargetDetailsSolutionDependenciesList),
           solutionInstanceName: S.optional(S.String),
           solutionConfiguration: S.optional(S.String),
         }),
       ).annotate({ identifier: "BulkReviewTargetDetails" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(BulkReviewTargetDetails);
     case 7:
-      return S.Array(__S(3));
+      return S.Array(SolutionDependencyParameter);
   }
 }
 function __c1(j: number): any {
@@ -9162,9 +11949,11 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           solutionTemplateName: S.String.pipe(T.Label()),
           solutionTemplateVersionName: S.String.pipe(T.Label()),
-          targets: __S(6),
+          targets: BulkSolutionTemplateVersionReviewSolutionRequestTargetsList,
           solutionInstanceName: S.optional(S.String),
-          solutionDependencies: S.optional(__S(7)),
+          solutionDependencies: S.optional(
+            BulkSolutionTemplateVersionReviewSolutionRequestSolutionDependenciesList,
+          ),
           solutionConfiguration: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -9186,18 +11975,20 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          hierarchyIds: S.optional(__S(10)),
+          hierarchyIds: S.optional(HierarchyMetadataHierarchyIdsList),
           level: S.optional(S.String),
         }),
       ).annotate({ identifier: "HierarchyMetadata" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(HierarchyMetadata);
     case 5:
       return S.suspend(() =>
         S.Struct({
           contextId: S.optional(S.String),
-          linkedHierarchies: S.optional(__S(12)),
-          unLinkedHierarchies: S.optional(__S(12)),
+          linkedHierarchies: S.optional(ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList),
+          unLinkedHierarchies: S.optional(
+            ConfigTemplateMetadataPropertiesInputUnLinkedHierarchiesList,
+          ),
         }),
       ).annotate({
         identifier: "ConfigTemplateMetadataPropertiesInput",
@@ -9209,7 +12000,7 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           configTemplateName: S.String.pipe(T.Label()),
           configTemplateMetadataName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(13)),
+          properties: S.optional(ConfigTemplateMetadataPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9225,10 +12016,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -9240,10 +12031,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           contextId: S.optional(S.String),
-          linkedHierarchies: S.optional(__S(12)),
-          unLinkedHierarchies: S.optional(__S(12)),
+          linkedHierarchies: S.optional(ConfigTemplateMetadataPropertiesLinkedHierarchiesList),
+          unLinkedHierarchies: S.optional(ConfigTemplateMetadataPropertiesUnLinkedHierarchiesList),
           templateUniqueIdentifier: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "ConfigTemplateMetadataProperties",
@@ -9254,8 +12045,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(16)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ConfigTemplateMetadataProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -9277,9 +12068,9 @@ function __c2(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           configTemplateName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18)),
+          tags: S.optional(ConfigTemplatesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(19)),
+          properties: S.optional(ConfigTemplatePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9297,7 +12088,7 @@ function __c2(j: number): any {
           uniqueIdentifier: S.optional(S.String),
           description: S.String,
           latestVersion: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "ConfigTemplateProperties" });
     case 6:
@@ -9306,10 +12097,10 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          tags: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(ConfigTemplatesCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(21)),
+          properties: S.optional(ConfigTemplateProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -9322,7 +12113,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           configTemplateName: S.String.pipe(T.Label()),
           contextId: S.String,
-          hierarchyIds: S.optional(__S(10)),
+          hierarchyIds: S.optional(ConfigTemplatesLinkToHierarchiesRequestHierarchyIdsList),
           level: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -9346,7 +12137,7 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           configTemplateName: S.String.pipe(T.Label()),
           contextId: S.String,
-          hierarchyIds: S.optional(__S(10)),
+          hierarchyIds: S.optional(ConfigTemplatesUnLinkFromHierarchiesRequestHierarchyIdsList),
           level: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -9374,7 +12165,7 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           configTemplateName: S.String.pipe(T.Label()),
           configTemplateVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(25)),
+          properties: S.optional(ConfigTemplateVersionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9390,7 +12181,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           configurations: S.Unknown,
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "ConfigTemplateVersionProperties",
@@ -9401,8 +12192,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(27)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ConfigTemplateVersionProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -9421,7 +12212,7 @@ function __c3(j: number): any {
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           configurationReferenceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(29)),
+          properties: S.optional(ConfigurationReferencePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9436,7 +12227,7 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
           configurationResourceId: S.optional(S.String),
         }),
       ).annotate({
@@ -9452,8 +12243,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(31)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ConfigurationReferenceProperties),
         }),
       ).annotate({
         identifier: "ConfigurationReferencesCreateOrUpdateResponse",
@@ -9468,9 +12259,9 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18)),
+          tags: S.optional(ConfigurationsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(33)),
+          properties: S.optional(ConfigurationPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9485,7 +12276,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
         }),
       ).annotate({ identifier: "ConfigurationProperties" });
     case 4:
@@ -9494,10 +12285,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          tags: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(ConfigurationsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(35)),
+          properties: S.optional(ConfigurationProperties),
         }),
       ).annotate({
         identifier: "ConfigurationsCreateOrUpdateResponse",
@@ -9507,11 +12298,11 @@ function __c4(j: number): any {
         S.Struct({
           name: S.String,
           description: S.String,
-          state: S.optional(S.String),
+          state: S.optional(ResourceState),
         }),
       ).annotate({ identifier: "Capability" });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(Capability);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -9524,12 +12315,12 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39));
+      return S.Array(Hierarchy);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          capabilities: __S(38),
-          hierarchies: __S(40),
+          capabilities: ContextPropertiesInputCapabilitiesList,
+          hierarchies: ContextPropertiesInputHierarchiesList,
         }),
       ).annotate({ identifier: "ContextPropertiesInput" });
     case 2:
@@ -9538,9 +12329,9 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           contextName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18)),
+          tags: S.optional(ContextsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(41)),
+          properties: S.optional(ContextPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9556,9 +12347,9 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           uniqueIdentifier: S.optional(S.String),
-          capabilities: __S(38),
-          hierarchies: __S(40),
-          provisioningState: S.optional(S.String),
+          capabilities: ContextPropertiesCapabilitiesList,
+          hierarchies: ContextPropertiesHierarchiesList,
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "ContextProperties" });
     case 4:
@@ -9567,10 +12358,10 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          tags: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(ContextsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(43)),
+          properties: S.optional(ContextProperties),
         }),
       ).annotate({
         identifier: "ContextsCreateOrUpdateResponse",
@@ -9578,7 +12369,7 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(25)),
+          properties: S.optional(ConfigTemplateVersionPropertiesInput),
         }),
       ).annotate({
         identifier: "ConfigTemplateVersionInput",
@@ -9589,9 +12380,9 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           configTemplateName: S.String.pipe(T.Label()),
-          updateType: S.optional(S.String),
+          updateType: S.optional(UpdateType),
           version: S.optional(S.String),
-          configTemplateVersion: __S(45),
+          configTemplateVersion: ConfigTemplateVersionInput,
         }).pipe(
           T.Http({
             method: "POST",
@@ -9618,7 +12409,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(47)),
+          properties: S.optional(SchemaVersionPropertiesInput),
         }),
       ).annotate({ identifier: "SchemaVersionInput" });
     case 1:
@@ -9627,9 +12418,9 @@ function __c6(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           schemaName: S.String.pipe(T.Label()),
-          updateType: S.optional(S.String),
+          updateType: S.optional(UpdateType),
           version: S.optional(S.String),
-          schemaVersion: __S(48),
+          schemaVersion: SchemaVersionInput,
         }).pipe(
           T.Http({
             method: "POST",
@@ -9645,7 +12436,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           value: S.Unknown,
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "SchemaVersionProperties" });
     case 3:
@@ -9654,8 +12445,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(50)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SchemaVersionProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -9667,8 +12458,8 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           configurations: S.optional(S.Unknown),
-          specification: __S(52),
-          orchestratorType: S.optional(S.String),
+          specification: SolutionTemplateVersionPropertiesInputSpecificationMap,
+          orchestratorType: S.optional(OrchestratorType),
         }),
       ).annotate({
         identifier: "SolutionTemplateVersionPropertiesInput",
@@ -9676,7 +12467,7 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(53)),
+          properties: S.optional(SolutionTemplateVersionPropertiesInput),
         }),
       ).annotate({
         identifier: "SolutionTemplateVersionInput",
@@ -9687,9 +12478,9 @@ function __c6(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           solutionTemplateName: S.String.pipe(T.Label()),
-          updateType: S.optional(S.String),
+          updateType: S.optional(UpdateType),
           version: S.optional(S.String),
-          solutionTemplateVersion: __S(54),
+          solutionTemplateVersion: SolutionTemplateVersionInput,
         }).pipe(
           T.Http({
             method: "POST",
@@ -9709,10 +12500,10 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           configurations: S.optional(S.Unknown),
-          specification: __S(52),
-          orchestratorType: S.optional(S.String),
-          internalState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          specification: SolutionTemplateVersionPropertiesSpecificationMap,
+          orchestratorType: S.optional(OrchestratorType),
+          internalState: S.optional(InternalState),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "SolutionTemplateVersionProperties",
@@ -9723,8 +12514,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(56)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SolutionTemplateVersionProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -10241,7 +13032,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: S.String,
+          type: AzureResourceManagerCommonTypesExtendedLocationType,
         }),
       ).annotate({
         identifier: "AzureResourceManagerCommonTypesExtendedLocation",
@@ -10256,10 +13047,10 @@ function __c11(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           diagnosticName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18)),
+          tags: S.optional(DiagnosticsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(33)),
-          extendedLocation: S.optional(__S(87)),
+          properties: S.optional(ConfigurationPropertiesInput),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10277,11 +13068,11 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          tags: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(DiagnosticsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(35)),
-          extendedLocation: S.optional(__S(87)),
+          properties: S.optional(DiagnosticProperties),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -10291,15 +13082,15 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           cores: S.Number,
-          pricingModel: S.String,
+          pricingModel: PricingModel,
         }),
       ).annotate({ identifier: "BillingPeriodInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          autoRenew: S.String,
-          current: __S(90),
-          upcoming: S.optional(__S(90)),
+          autoRenew: AutoRenew,
+          current: BillingPeriodInput,
+          upcoming: S.optional(BillingPeriodInput),
         }),
       ).annotate({
         identifier: "BillingConfigurationInput",
@@ -10307,18 +13098,18 @@ function __c11(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          azureHybridWindowsServerBenefit: S.optional(S.String),
+          azureHybridWindowsServerBenefit: S.optional(BenefitPlanStatus),
           windowsServerVmCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BenefitPlans" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          connectionIntent: S.String,
-          registrationStatus: S.optional(S.String),
+          connectionIntent: ConnectionIntent,
+          registrationStatus: S.optional(RegistrationStatus),
           deviceVersion: S.optional(S.String),
-          billingConfiguration: S.optional(__S(91)),
-          benefitPlans: S.optional(__S(92)),
+          billingConfiguration: S.optional(BillingConfigurationInput),
+          benefitPlans: S.optional(BenefitPlans),
         }),
       ).annotate({
         identifier: "DisconnectedOperationPropertiesInput",
@@ -10329,9 +13120,9 @@ function __c11(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18)),
+          tags: S.optional(DisconnectedOperationsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(93)),
+          properties: S.optional(DisconnectedOperationPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10347,7 +13138,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           cores: S.Number,
-          pricingModel: S.String,
+          pricingModel: PricingModel,
           startDate: S.optional(S.String),
           endDate: S.optional(S.String),
         }),
@@ -10359,24 +13150,24 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          autoRenew: S.String,
-          billingStatus: S.String,
-          current: __S(95),
-          upcoming: S.optional(__S(95)),
+          autoRenew: AutoRenew,
+          billingStatus: BillingStatus,
+          current: BillingPeriod,
+          upcoming: S.optional(BillingPeriod),
         }),
       ).annotate({ identifier: "BillingConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
           stampId: S.String,
-          billingModel: S.String,
-          connectionIntent: S.String,
-          connectionStatus: S.optional(S.String),
-          registrationStatus: S.optional(S.String),
+          billingModel: BillingModel,
+          connectionIntent: ConnectionIntent,
+          connectionStatus: S.optional(ConnectionStatus),
+          registrationStatus: S.optional(RegistrationStatus),
           deviceVersion: S.optional(S.String),
-          billingConfiguration: S.optional(__S(96)),
-          benefitPlans: S.optional(__S(92)),
+          billingConfiguration: S.optional(BillingConfiguration),
+          benefitPlans: S.optional(BenefitPlans),
         }),
       ).annotate({
         identifier: "DisconnectedOperationProperties",
@@ -10387,10 +13178,10 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          tags: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(DisconnectedOperationsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(97)),
+          properties: S.optional(DisconnectedOperationProperties),
         }),
       ).annotate({
         identifier: "DisconnectedOperationsCreateOrUpdateResponse",
@@ -10410,7 +13201,7 @@ function __c12(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
           dynamicConfigurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(99)),
+          properties: S.optional(DynamicConfigurationPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10427,9 +13218,9 @@ function __c12(j: number): any {
         S.Struct({
           currentVersion: S.String,
           displayName: S.optional(S.String),
-          dynamicConfigurationType: S.optional(S.String),
-          dynamicConfigurationModel: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          dynamicConfigurationType: S.optional(ConfigurationType),
+          dynamicConfigurationModel: S.optional(ConfigurationModel),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "DynamicConfigurationProperties",
@@ -10440,8 +13231,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(101)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DynamicConfigurationProperties),
         }),
       ).annotate({
         identifier: "DynamicConfigurationsCreateOrUpdateResponse",
@@ -10466,7 +13257,7 @@ function __c13(j: number): any {
           configurationName: S.String.pipe(T.Label()),
           dynamicConfigurationName: S.String.pipe(T.Label()),
           dynamicConfigurationVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(103)),
+          properties: S.optional(DynamicConfigurationVersionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10485,8 +13276,8 @@ function __c13(j: number): any {
           schemaId: S.optional(S.String),
           dynamicSchemaVersionId: S.optional(S.String),
           displayState: S.optional(S.String),
-          state: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          state: S.optional(ConfigurationState),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "DynamicConfigurationVersionProperties",
@@ -10497,8 +13288,8 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(105)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DynamicConfigurationVersionProperties),
         }),
       ).annotate({
         identifier: "DynamicConfigurationVersionsCreateOrUpdateResponse",
@@ -10510,7 +13301,7 @@ function __c13(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           schemaName: S.String.pipe(T.Label()),
           dynamicSchemaName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33)),
+          properties: S.optional(ConfigurationPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10526,9 +13317,9 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          configurationType: S.optional(S.String),
-          configurationModel: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          configurationType: S.optional(ConfigurationType),
+          configurationModel: S.optional(ConfigurationModel),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "DynamicSchemaProperties" });
     case 5:
@@ -10537,8 +13328,8 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(108)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DynamicSchemaProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -10552,7 +13343,7 @@ function __c13(j: number): any {
           schemaName: S.String.pipe(T.Label()),
           dynamicSchemaName: S.String.pipe(T.Label()),
           dynamicSchemaVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(47)),
+          properties: S.optional(SchemaVersionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10568,7 +13359,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           workflowVersionId: S.String,
-          specification: S.optional(__S(52)),
+          specification: S.optional(ExecutionPropertiesInputSpecificationMap),
         }),
       ).annotate({ identifier: "ExecutionPropertiesInput" });
   }
@@ -10584,8 +13375,8 @@ function __c14(j: number): any {
           workflowName: S.String.pipe(T.Label()),
           versionName: S.String.pipe(T.Label()),
           executionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(111)),
-          extendedLocation: S.optional(__S(87)),
+          properties: S.optional(ExecutionPropertiesInput),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10605,29 +13396,29 @@ function __c14(j: number): any {
           stage: S.optional(S.String),
           nextstage: S.optional(S.String),
           errorMessage: S.optional(S.String),
-          isActive: S.optional(S.String),
-          inputs: S.optional(__S(52)),
-          outputs: S.optional(__S(52)),
+          isActive: S.optional(ActiveState),
+          inputs: S.optional(StageStatusInputsMap),
+          outputs: S.optional(StageStatusOutputsMap),
         }),
       ).annotate({ identifier: "StageStatus" });
     case 2:
-      return S.Array(__S(113));
+      return S.Array(StageStatus);
     case 3:
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
           status: S.optional(S.Number),
           statusMessage: S.optional(S.String),
-          stageHistory: S.optional(__S(114)),
+          stageHistory: S.optional(ExecutionStatusStageHistoryList),
         }),
       ).annotate({ identifier: "ExecutionStatus" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           workflowVersionId: S.String,
-          specification: S.optional(__S(52)),
-          status: S.optional(__S(115)),
-          provisioningState: S.optional(S.String),
+          specification: S.optional(ExecutionPropertiesSpecificationMap),
+          status: S.optional(ExecutionStatus),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "ExecutionProperties" });
     case 5:
@@ -10636,9 +13427,9 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(116)),
-          extendedLocation: S.optional(__S(87)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ExecutionProperties),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -10664,7 +13455,7 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
           artifactOrder: S.Number,
           title: S.String,
           description: S.String,
@@ -10681,8 +13472,8 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(119)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ArtifactProperties),
         }),
       ).annotate({ identifier: "GetArtifactResponse" });
     case 1:
@@ -10742,7 +13533,7 @@ function __c15(j: number): any {
         S.Struct({
           value: S.optional(S.Unknown),
           templateUniqueIdentifier: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "ConfigTemplateSchemaProperties",
@@ -10753,8 +13544,8 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(124)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ConfigTemplateSchemaProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -10803,10 +13594,10 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          tags: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetConfigurationResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(35)),
+          properties: S.optional(ConfigurationProperties),
         }),
       ).annotate({ identifier: "GetConfigurationResponse" });
     case 1:
@@ -10846,10 +13637,10 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          tags: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetContextResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(43)),
+          properties: S.optional(ContextProperties),
         }),
       ).annotate({ identifier: "GetContextResponse" });
     case 4:
@@ -10873,11 +13664,11 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          tags: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetDiagnosticResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(35)),
-          extendedLocation: S.optional(__S(87)),
+          properties: S.optional(DiagnosticProperties),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetDiagnosticResponse" });
@@ -10961,8 +13752,8 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(108)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DynamicSchemaProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetDynamicSchemaResponse" });
@@ -11009,9 +13800,9 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(116)),
-          extendedLocation: S.optional(__S(87)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ExecutionProperties),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetExecutionResponse" });
@@ -11036,7 +13827,7 @@ function __c17(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
           totalCores: S.Number,
           diskSpaceInGb: S.Number,
           memoryInGb: S.Number,
@@ -11060,8 +13851,8 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(143)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(HardwareSettingProperties),
         }),
       ).annotate({
         identifier: "GetHardwareSettingsResponse",
@@ -11097,8 +13888,8 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(146)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(HierarchyConfigurationMetadataProperties),
         }),
       ).annotate({
         identifier: "GetHierarchyConfigurationMetadatasResponse",
@@ -11127,7 +13918,7 @@ function __c18(j: number): any {
           configTemplateVersionId: S.optional(S.String),
           schemaId: S.optional(S.String),
           dynamicConfigurationVersionId: S.optional(S.String),
-          configurationStatus: S.optional(S.String),
+          configurationStatus: S.optional(ConfigTemplateConfigurationState),
         }),
       ).annotate({
         identifier: "HierarchyConfigurationMetadataVersionProperties",
@@ -11138,8 +13929,8 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(149)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(HierarchyConfigurationMetadataVersionProperties),
         }),
       ).annotate({
         identifier: "GetHierarchyConfigurationMetadataVersionResponse",
@@ -11167,7 +13958,7 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          systemReboot: S.String,
+          systemReboot: SystemReboot,
           securityUpdates: S.String,
           osVersion: S.String,
           agentVersion: S.String,
@@ -11177,14 +13968,14 @@ function __c19(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
           releaseVersion: S.String,
           releaseDisplayName: S.String,
           releaseNotes: S.String,
           releaseDate: S.String,
-          releaseType: S.String,
-          compatibleVersions: S.optional(__S(10)),
-          updateProperties: S.optional(__S(152)),
+          releaseType: ReleaseType,
+          compatibleVersions: S.optional(ImagePropertiesCompatibleVersionsList),
+          updateProperties: S.optional(ImageUpdateProperties),
         }),
       ).annotate({ identifier: "ImageProperties" });
     case 2:
@@ -11193,8 +13984,8 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(153)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ImageProperties),
         }),
       ).annotate({ identifier: "GetImageResponse" });
     case 3:
@@ -11217,7 +14008,7 @@ function __c19(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          state: S.String,
+          state: ReconciliationState,
           interval: S.String,
         }),
       ).annotate({
@@ -11231,13 +14022,13 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "ComponentStatus" });
     case 6:
-      return S.Array(__S(157));
+      return S.Array(ComponentStatus);
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           status: S.optional(S.String),
-          componentStatuses: S.optional(__S(158)),
+          componentStatuses: S.optional(TargetStatusComponentStatusesList),
         }),
       ).annotate({ identifier: "TargetStatus" });
   }
@@ -11245,7 +14036,7 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(159));
+      return S.Array(TargetStatus);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11256,7 +14047,7 @@ function __c20(j: number): any {
           status: S.optional(S.String),
           statusDetails: S.optional(S.String),
           generation: S.optional(S.Number),
-          targetStatuses: S.optional(__S(160)),
+          targetStatuses: S.optional(DeploymentStatusTargetStatusesList),
         }),
       ).annotate({ identifier: "DeploymentStatus" });
     case 2:
@@ -11264,12 +14055,12 @@ function __c20(j: number): any {
         S.Struct({
           solutionVersionId: S.String,
           targetId: S.String,
-          activeState: S.optional(S.String),
-          reconciliationPolicy: S.optional(__S(156)),
+          activeState: S.optional(ActiveState),
+          reconciliationPolicy: S.optional(ReconciliationPolicyProperties),
           solutionScope: S.optional(S.String),
-          status: S.optional(__S(161)),
+          status: S.optional(DeploymentStatus),
           deploymentTimestampEpoch: S.optional(S.Number),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "InstanceProperties" });
     case 3:
@@ -11278,9 +14069,9 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(162)),
-          extendedLocation: S.optional(__S(87)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(InstanceProperties),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetInstanceResponse" });
@@ -11308,27 +14099,27 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           solutionVersionId: S.optional(S.String),
-          specification: S.optional(__S(52)),
+          specification: S.optional(SolutionVersionSnapshotSpecificationMap),
         }),
       ).annotate({ identifier: "SolutionVersionSnapshot" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           targetId: S.optional(S.String),
-          targetSpecification: S.optional(__S(52)),
+          targetSpecification: S.optional(TargetSnapshotTargetSpecificationMap),
           solutionScope: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetSnapshot" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          solutionVersion: __S(165),
-          target: __S(166),
+          solutionVersion: SolutionVersionSnapshot,
+          target: TargetSnapshot,
           solutionScope: S.optional(S.String),
-          activeState: S.optional(S.String),
-          reconciliationPolicy: S.optional(__S(156)),
-          status: S.optional(__S(161)),
-          provisioningState: S.optional(S.String),
+          activeState: S.optional(ActiveState),
+          reconciliationPolicy: S.optional(ReconciliationPolicyProperties),
+          status: S.optional(DeploymentStatus),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "InstanceHistoryProperties",
@@ -11343,9 +14134,9 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(167)),
-          extendedLocation: S.optional(__S(87)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(InstanceHistoryProperties),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -11368,19 +14159,19 @@ function __c21(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          jobType: S.String,
+          jobType: JobType,
         }),
       ).annotate({ identifier: "JobParameterBase" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          statisticsType: S.String,
+          statisticsType: JobType,
         }),
       ).annotate({ identifier: "JobStepStatisticsBase" });
     case 4:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(179)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => JobStep));
     case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(176)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => ErrorDetail));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -11389,7 +14180,7 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
     case 7:
-      return S.Array(__S(174));
+      return S.Array(ErrorAdditionalInfo);
   }
 }
 function __c22(j: number): any {
@@ -11400,45 +14191,45 @@ function __c22(j: number): any {
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(173)),
-          additionalInfo: S.optional(__S(175)),
+          details: S.optional(ErrorDetailDetailsList),
+          additionalInfo: S.optional(ErrorDetailAdditionalInfoList),
         }),
       ).annotate({ identifier: "ErrorDetail" });
     case 1:
-      return S.Array(__S(176));
+      return S.Array(ErrorDetail);
     case 2:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(177)),
-          additionalInfo: S.optional(__S(175)),
+          details: S.optional(JobStepErrorDetailsDetailsList),
+          additionalInfo: S.optional(JobStepErrorDetailsAdditionalInfoList),
         }),
       ).annotate({ identifier: "JobStepErrorDetails" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          status: S.String,
+          status: JobStatus,
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           message: S.optional(S.String),
-          statistics: S.optional(__S(171)),
-          steps: S.optional(__S(172)),
-          errorDetails: S.optional(__S(178)),
+          statistics: S.optional(JobStepStatisticsBase),
+          steps: S.optional(JobStepStepsList),
+          errorDetails: S.optional(JobStepErrorDetails),
         }),
       ).annotate({ identifier: "JobStep" });
     case 4:
-      return S.Array(__S(179));
+      return S.Array(JobStep);
     case 5:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(177)),
-          additionalInfo: S.optional(__S(175)),
+          details: S.optional(JobPropertiesErrorDetailsDetailsList),
+          additionalInfo: S.optional(JobPropertiesErrorDetailsAdditionalInfoList),
         }),
       ).annotate({
         identifier: "JobPropertiesErrorDetails",
@@ -11452,17 +14243,17 @@ function __c22(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          jobType: S.String,
+          jobType: JobType,
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          status: S.String,
-          jobParameter: S.optional(__S(170)),
+          status: JobStatus,
+          jobParameter: S.optional(JobParameterBase),
           correlationId: S.optional(S.String),
-          steps: S.optional(__S(180)),
+          steps: S.optional(JobPropertiesStepsList),
           triggeredBy: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          errorDetails: S.optional(__S(181)),
-          additionalData: S.optional(__S(182)),
+          provisioningState: S.optional(ProvisioningState),
+          errorDetails: S.optional(JobPropertiesErrorDetails),
+          additionalData: S.optional(AdditionalData),
         }),
       ).annotate({ identifier: "JobProperties" });
   }
@@ -11475,8 +14266,8 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(183)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(JobProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetJobResponse" });
@@ -11499,7 +14290,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           currentVersion: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "SchemaProperties" });
     case 3:
@@ -11508,10 +14299,10 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          tags: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetSchemaResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(186)),
+          properties: S.optional(SchemaProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetSchemaResponse" });
@@ -11535,7 +14326,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           schemaId: S.String,
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "SchemaReferenceProperties",
@@ -11546,8 +14337,8 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(189)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SchemaReferenceProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -11579,8 +14370,8 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(50)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SchemaVersionProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetSchemaVersionResponse" });
@@ -11615,9 +14406,9 @@ function __c24(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          siteAddress: S.optional(__S(194)),
-          labels: S.optional(__S(18)),
-          provisioningState: S.optional(S.String),
+          siteAddress: S.optional(SiteAddressProperties),
+          labels: S.optional(SitePropertiesLabelsMap),
+          provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
         }),
       ).annotate({ identifier: "SiteProperties" });
     case 4:
@@ -11626,8 +14417,8 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(195)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SiteProperties),
         }),
       ).annotate({ identifier: "GetSiteResponse" });
     case 5:
@@ -11650,7 +14441,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           siteId: S.String,
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "SiteReferenceProperties" });
     case 7:
@@ -11659,8 +14450,8 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(198)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SiteReferenceProperties),
         }),
       ).annotate({ identifier: "GetSiteReferenceResponse" });
   }
@@ -11689,8 +14480,8 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(195)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SiteProperties),
         }),
       ).annotate({
         identifier: "GetSitesByServiceGroupResponse",
@@ -11738,14 +14529,16 @@ function __c25(j: number): any {
         identifier: "AvailableSolutionTemplateVersion",
       });
     case 5:
-      return S.Array(__S(204));
+      return S.Array(AvailableSolutionTemplateVersion);
     case 6:
       return S.suspend(() =>
         S.Struct({
           solutionTemplateId: S.optional(S.String),
           displayName: S.optional(S.String),
-          availableSolutionTemplateVersions: S.optional(__S(205)),
-          provisioningState: S.optional(S.String),
+          availableSolutionTemplateVersions: S.optional(
+            SolutionPropertiesAvailableSolutionTemplateVersionsList,
+          ),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "SolutionProperties" });
     case 7:
@@ -11754,9 +14547,9 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(206)),
-          extendedLocation: S.optional(__S(87)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SolutionProperties),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetSolutionResponse" });
@@ -11797,8 +14590,8 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(209)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SolutionMetadataProperties),
         }),
       ).annotate({
         identifier: "GetSolutionMetadatasResponse",
@@ -11827,7 +14620,7 @@ function __c26(j: number): any {
           solutionTemplateVersionId: S.optional(S.String),
           schemaId: S.optional(S.String),
           dynamicConfigurationVersionId: S.optional(S.String),
-          configurationStatus: S.optional(S.String),
+          configurationStatus: S.optional(ConfigurationState),
         }),
       ).annotate({
         identifier: "SolutionMetadataVersionProperties",
@@ -11838,8 +14631,8 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(212)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SolutionMetadataVersionProperties),
         }),
       ).annotate({
         identifier: "GetSolutionMetadataVersionResponse",
@@ -11867,7 +14660,7 @@ function __c26(j: number): any {
           value: S.optional(S.Unknown),
           level: S.optional(S.String),
           templateUniqueIdentifier: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "SolutionSchemaProperties" });
   }
@@ -11880,8 +14673,8 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(215)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SolutionSchemaProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -11909,11 +14702,11 @@ function __c27(j: number): any {
         S.Struct({
           uniqueIdentifier: S.optional(S.String),
           description: S.String,
-          capabilities: __S(10),
+          capabilities: SolutionTemplatePropertiesCapabilitiesList,
           latestVersion: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(ResourceState),
           enableExternalValidation: S.optional(S.Boolean),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "SolutionTemplateProperties",
@@ -11924,10 +14717,10 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          tags: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetSolutionTemplateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(218)),
+          properties: S.optional(SolutionTemplateProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -11971,16 +14764,16 @@ function __c27(j: number): any {
         identifier: "GetSolutionVersionRequest",
       });
     case 6:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(223)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => StageMap));
     case 7:
       return S.suspend(() =>
         S.Struct({
           displayState: S.String,
-          stage: S.String,
-          status: S.String,
+          stage: CMStages,
+          status: StateCategory,
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          childStages: S.optional(__S(222)),
+          childStages: S.optional(StageMapChildStagesList),
         }),
       ).annotate({ identifier: "StageMap" });
   }
@@ -11988,9 +14781,9 @@ function __c27(j: number): any {
 function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(223));
+      return S.Array(StageMap);
     case 1:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(226)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => SolutionDependency));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -11998,11 +14791,11 @@ function __c28(j: number): any {
           solutionInstanceName: S.optional(S.String),
           solutionTemplateVersionId: S.String,
           targetId: S.String,
-          dependencies: S.optional(__S(225)),
+          dependencies: S.optional(SolutionDependencyDependenciesList),
         }),
       ).annotate({ identifier: "SolutionDependency" });
     case 3:
-      return S.Array(__S(226));
+      return S.Array(SolutionDependency);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -12011,19 +14804,19 @@ function __c28(j: number): any {
           targetDisplayName: S.optional(S.String),
           configuration: S.optional(S.Unknown),
           targetLevelConfiguration: S.optional(S.Unknown),
-          specification: __S(52),
+          specification: SolutionVersionPropertiesSpecificationMap,
           reviewId: S.optional(S.String),
           externalValidationId: S.optional(S.String),
-          state: S.optional(S.String),
-          currentStage: S.optional(__S(223)),
-          stages: S.optional(__S(224)),
+          state: S.optional(State),
+          currentStage: S.optional(StageMap),
+          stages: S.optional(SolutionVersionPropertiesStagesList),
           solutionInstanceName: S.optional(S.String),
-          solutionDependencies: S.optional(__S(227)),
-          errorDetails: S.optional(__S(181)),
+          solutionDependencies: S.optional(SolutionVersionPropertiesSolutionDependenciesList),
+          errorDetails: S.optional(SolutionVersionPropertiesErrorDetails),
           latestActionTrackingUri: S.optional(S.String),
           latestActionTriggeredBy: S.optional(S.String),
-          actionType: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          actionType: S.optional(JobType),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "SolutionVersionProperties",
@@ -12034,9 +14827,9 @@ function __c28(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(228)),
-          extendedLocation: S.optional(__S(87)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SolutionVersionProperties),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -12063,13 +14856,13 @@ function __c28(j: number): any {
           description: S.String,
           displayName: S.String,
           contextId: S.String,
-          targetSpecification: S.optional(__S(52)),
-          capabilities: __S(10),
+          targetSpecification: S.optional(TargetPropertiesTargetSpecificationMap),
+          capabilities: TargetPropertiesCapabilitiesList,
           hierarchyLevel: S.String,
-          status: S.optional(__S(161)),
+          status: S.optional(DeploymentStatus),
           solutionScope: S.optional(S.String),
-          state: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          state: S.optional(ResourceState),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "TargetProperties" });
   }
@@ -12082,12 +14875,12 @@ function __c29(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          tags: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetTargetResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(231)),
+          properties: S.optional(TargetProperties),
           eTag: S.optional(S.String),
-          extendedLocation: S.optional(__S(87)),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
         }),
       ).annotate({ identifier: "GetTargetResponse" });
     case 1:
@@ -12110,7 +14903,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           workflowTemplateId: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "WorkflowProperties" });
     case 3:
@@ -12119,9 +14912,9 @@ function __c29(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(234)),
-          extendedLocation: S.optional(__S(87)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WorkflowProperties),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetWorkflowResponse" });
@@ -12149,15 +14942,15 @@ function __c29(j: number): any {
         S.Struct({
           name: S.String,
           targetId: S.optional(S.String),
-          specification: __S(52),
+          specification: TaskSpecSpecificationMap,
         }),
       ).annotate({ identifier: "TaskSpec" });
     case 6:
-      return S.Array(__S(237));
+      return S.Array(TaskSpec);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(S.String),
+          mode: S.optional(ErrorActionMode),
           maxToleratedFailures: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ErrorAction" });
@@ -12169,30 +14962,30 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           concurrency: S.optional(S.Number),
-          errorAction: S.optional(__S(239)),
+          errorAction: S.optional(ErrorAction),
         }),
       ).annotate({ identifier: "TaskOption" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          specification: S.optional(__S(52)),
-          tasks: S.optional(__S(238)),
-          taskOption: S.optional(__S(240)),
+          specification: S.optional(StageSpecSpecificationMap),
+          tasks: S.optional(StageSpecTasksList),
+          taskOption: S.optional(TaskOption),
         }),
       ).annotate({ identifier: "StageSpec" });
     case 2:
-      return S.Array(__S(241));
+      return S.Array(StageSpec);
     case 3:
       return S.suspend(() =>
         S.Struct({
           revision: S.optional(S.Number),
           configuration: S.optional(S.String),
-          stageSpec: __S(242),
+          stageSpec: WorkflowVersionPropertiesStageSpecList,
           reviewId: S.optional(S.String),
-          state: S.optional(S.String),
-          specification: S.optional(__S(52)),
-          provisioningState: S.optional(S.String),
+          state: S.optional(State),
+          specification: S.optional(WorkflowVersionPropertiesSpecificationMap),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "WorkflowVersionProperties",
@@ -12203,9 +14996,9 @@ function __c30(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(243)),
-          extendedLocation: S.optional(__S(87)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WorkflowVersionProperties),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -12234,7 +15027,7 @@ function __c30(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           hardwareSettingName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(245)),
+          properties: S.optional(HardwareSettingPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12271,14 +15064,14 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
           releaseVersion: S.String,
           releaseDisplayName: S.String,
           releaseNotes: S.String,
           releaseDate: S.String,
-          releaseType: S.String,
-          compatibleVersions: S.optional(__S(10)),
-          updateProperties: S.optional(__S(152)),
+          releaseType: ReleaseType,
+          compatibleVersions: S.optional(ImageDownloadResultCompatibleVersionsList),
+          updateProperties: S.optional(ImageUpdateProperties),
           transactionId: S.String,
           downloadLink: S.String,
           linkExpiry: S.String,
@@ -12307,8 +15100,8 @@ function __c31(j: number): any {
         S.Struct({
           solutionVersionId: S.String,
           targetId: S.String,
-          activeState: S.optional(S.String),
-          reconciliationPolicy: S.optional(__S(156)),
+          activeState: S.optional(ActiveState),
+          reconciliationPolicy: S.optional(ReconciliationPolicyProperties),
           solutionScope: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstancePropertiesInput" });
@@ -12320,8 +15113,8 @@ function __c31(j: number): any {
           targetName: S.String.pipe(T.Label()),
           solutionName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(250)),
-          extendedLocation: S.optional(__S(87)),
+          properties: S.optional(InstancePropertiesInput),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12339,9 +15132,9 @@ function __c31(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(162)),
-          extendedLocation: S.optional(__S(87)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(InstanceProperties),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -12366,11 +15159,11 @@ function __c31(j: number): any {
         identifier: "ListArtifactByParentRequest",
       });
     case 6:
-      return S.Array(__S(120));
+      return S.Array(Artifact);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(254),
+          value: ArtifactListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArtifactListResult" });
@@ -12400,19 +15193,19 @@ function __c32(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          tags: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(ConfigTemplateTagsMap),
           location: S.String,
-          properties: S.optional(__S(21)),
+          properties: S.optional(ConfigTemplateProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigTemplate" });
     case 2:
-      return S.Array(__S(257));
+      return S.Array(ConfigTemplate);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(258),
+          value: ConfigTemplateListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigTemplateListResult" });
@@ -12454,13 +15247,13 @@ function __c32(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(16)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ConfigTemplateMetadataProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigTemplateMetadata" });
     case 7:
-      return S.Array(__S(262));
+      return S.Array(ConfigTemplateMetadata);
   }
 }
 function __c33(j: number): any {
@@ -12468,7 +15261,7 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(263),
+          value: ConfigTemplateMetadataListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12498,17 +15291,17 @@ function __c33(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(124)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ConfigTemplateSchemaProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigTemplateSchema" });
     case 3:
-      return S.Array(__S(266));
+      return S.Array(ConfigTemplateSchema);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(267),
+          value: ConfigTemplateSchemaListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12537,13 +15330,13 @@ function __c33(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(27)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ConfigTemplateVersionProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigTemplateVersion" });
     case 7:
-      return S.Array(__S(270));
+      return S.Array(ConfigTemplateVersion);
   }
 }
 function __c34(j: number): any {
@@ -12551,7 +15344,7 @@ function __c34(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(271),
+          value: ConfigTemplateVersionListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12574,11 +15367,11 @@ function __c34(j: number): any {
         identifier: "ListConfigurationByResourceGroupRequest",
       });
     case 2:
-      return S.Array(__S(128));
+      return S.Array(Configuration);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(274),
+          value: ConfigurationListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigurationListResult" });
@@ -12618,12 +15411,12 @@ function __c34(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(31)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ConfigurationReferenceProperties),
         }),
       ).annotate({ identifier: "ConfigurationReference" });
     case 7:
-      return S.Array(__S(278));
+      return S.Array(ConfigurationReference);
   }
 }
 function __c35(j: number): any {
@@ -12631,7 +15424,7 @@ function __c35(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(279),
+          value: ConfigurationReferenceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12654,11 +15447,11 @@ function __c35(j: number): any {
         identifier: "ListContextByResourceGroupRequest",
       });
     case 2:
-      return S.Array(__S(131));
+      return S.Array(Context);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(282),
+          value: ContextListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContextListResult" });
@@ -12694,11 +15487,11 @@ function __c35(j: number): any {
         identifier: "ListDiagnosticByResourceGroupRequest",
       });
     case 6:
-      return S.Array(__S(133));
+      return S.Array(Diagnostic);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(286),
+          value: DiagnosticListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiagnosticListResult" });
@@ -12743,18 +15536,18 @@ function __c36(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          tags: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(DisconnectedOperationTagsMap),
           location: S.String,
-          properties: S.optional(__S(97)),
+          properties: S.optional(DisconnectedOperationProperties),
         }),
       ).annotate({ identifier: "DisconnectedOperation" });
     case 3:
-      return S.Array(__S(290));
+      return S.Array(DisconnectedOperation);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(291),
+          value: DisconnectedOperationListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12799,11 +15592,11 @@ function __c36(j: number): any {
           resourceName: S.String,
           stampId: S.String,
           location: S.String,
-          billingModel: S.String,
-          connectionIntent: S.String,
+          billingModel: BillingModel,
+          connectionIntent: ConnectionIntent,
           cloud: S.optional(S.String),
-          billingConfiguration: S.optional(__S(96)),
-          benefitPlans: S.optional(__S(92)),
+          billingConfiguration: S.optional(BillingConfiguration),
+          benefitPlans: S.optional(BenefitPlans),
         }),
       ).annotate({
         identifier: "DisconnectedOperationDeploymentManifest",
@@ -12835,16 +15628,16 @@ function __c37(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(101)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DynamicConfigurationProperties),
         }),
       ).annotate({ identifier: "DynamicConfiguration" });
     case 2:
-      return S.Array(__S(297));
+      return S.Array(DynamicConfiguration);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(298),
+          value: DynamicConfigurationListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12869,11 +15662,11 @@ function __c37(j: number): any {
         identifier: "ListDynamicConfigurationVersionByDynamicConfigurationRequest",
       });
     case 5:
-      return S.Array(__S(106));
+      return S.Array(DynamicConfigurationVersion);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(301),
+          value: DynamicConfigurationVersionListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12901,11 +15694,11 @@ function __c37(j: number): any {
 function __c38(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(138));
+      return S.Array(DynamicSchema);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(304),
+          value: DynamicSchemaListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DynamicSchemaListResult" });
@@ -12928,11 +15721,11 @@ function __c38(j: number): any {
         identifier: "ListDynamicSchemaVersionByDynamicSchemaRequest",
       });
     case 3:
-      return S.Array(__S(192));
+      return S.Array(DynamicSchemaVersion);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(307),
+          value: DynamicSchemaVersionListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12958,11 +15751,11 @@ function __c38(j: number): any {
         identifier: "ListExecutionByWorkflowVersionRequest",
       });
     case 6:
-      return S.Array(__S(141));
+      return S.Array(Execution);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(310),
+          value: ExecutionListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExecutionListResult" });
@@ -12993,16 +15786,16 @@ function __c39(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(143)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(HardwareSettingProperties),
         }),
       ).annotate({ identifier: "HardwareSetting" });
     case 2:
-      return S.Array(__S(313));
+      return S.Array(HardwareSetting);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(314),
+          value: HardwareSettingListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -13024,11 +15817,11 @@ function __c39(j: number): any {
         identifier: "ListHierarchyConfigurationMetadatasByParentRequest",
       });
     case 5:
-      return S.Array(__S(147));
+      return S.Array(HierarchyConfigurationMetadata);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(317),
+          value: HierarchyConfigurationMetadataListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -13055,11 +15848,11 @@ function __c39(j: number): any {
 function __c40(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(150));
+      return S.Array(HierarchyConfigurationMetadataVersion);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(320),
+          value: HierarchyConfigurationMetadataVersionListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -13086,11 +15879,11 @@ function __c40(j: number): any {
         identifier: "ListImageByDisconnectedOperationRequest",
       });
     case 3:
-      return S.Array(__S(154));
+      return S.Array(Image);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(323),
+          value: ImageListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageListResult" });
@@ -13113,11 +15906,11 @@ function __c40(j: number): any {
         identifier: "ListInstanceBySolutionRequest",
       });
     case 6:
-      return S.Array(__S(163));
+      return S.Array(Instance);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(326),
+          value: InstanceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceListResult" });
@@ -13150,18 +15943,18 @@ function __c41(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(167)),
-          extendedLocation: S.optional(__S(87)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(InstanceHistoryProperties),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceHistory" });
     case 2:
-      return S.Array(__S(329));
+      return S.Array(InstanceHistory);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(330),
+          value: InstanceHistoryListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -13181,11 +15974,11 @@ function __c41(j: number): any {
         ),
       ).annotate({ identifier: "ListJobByTargetRequest" });
     case 5:
-      return S.Array(__S(184));
+      return S.Array(Job);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(333),
+          value: JobListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobListResult" });
@@ -13218,17 +16011,17 @@ function __c42(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(336)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 2:
-      return S.Array(__S(337));
+      return S.Array(Operation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(338)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -13254,19 +16047,19 @@ function __c42(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          tags: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(SchemaTagsMap),
           location: S.String,
-          properties: S.optional(__S(186)),
+          properties: S.optional(SchemaProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Schema" });
     case 6:
-      return S.Array(__S(341));
+      return S.Array(Schema);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(342),
+          value: SchemaListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchemaListResult" });
@@ -13310,17 +16103,17 @@ function __c43(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(189)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SchemaReferenceProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchemaReference" });
     case 3:
-      return S.Array(__S(346));
+      return S.Array(SchemaReference);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(347),
+          value: SchemaReferenceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -13346,7 +16139,7 @@ function __c43(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(307),
+          value: SchemaVersionListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchemaVersionListResult" });
@@ -13371,11 +16164,11 @@ function __c43(j: number): any {
 function __c44(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(196));
+      return S.Array(Site);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(352),
+          value: SiteListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SiteListResult" });
@@ -13397,11 +16190,11 @@ function __c44(j: number): any {
         identifier: "ListSiteReferenceByContextRequest",
       });
     case 3:
-      return S.Array(__S(199));
+      return S.Array(SiteReference);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(355),
+          value: SiteReferenceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SiteReferenceListResult" });
@@ -13457,11 +16250,11 @@ function __c44(j: number): any {
 function __c45(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(207));
+      return S.Array(Solution);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(360),
+          value: SolutionListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SolutionListResult" });
@@ -13486,16 +16279,16 @@ function __c45(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(209)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SolutionMetadataProperties),
         }),
       ).annotate({ identifier: "SolutionMetadata" });
     case 4:
-      return S.Array(__S(363));
+      return S.Array(SolutionMetadata);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(364),
+          value: SolutionMetadataListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -13523,8 +16316,8 @@ function __c45(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(212)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SolutionMetadataVersionProperties),
         }),
       ).annotate({ identifier: "SolutionMetadataVersion" });
   }
@@ -13532,11 +16325,11 @@ function __c45(j: number): any {
 function __c46(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(367));
+      return S.Array(SolutionMetadataVersion);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(368),
+          value: SolutionMetadataVersionListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -13566,17 +16359,17 @@ function __c46(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(215)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SolutionSchemaProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "SolutionSchema" });
     case 4:
-      return S.Array(__S(371));
+      return S.Array(SolutionSchema);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(372),
+          value: SolutionSchemaListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SolutionSchemaListResult" });
@@ -13602,10 +16395,10 @@ function __c46(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          tags: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(SolutionTemplateTagsMap),
           location: S.String,
-          properties: S.optional(__S(218)),
+          properties: S.optional(SolutionTemplateProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "SolutionTemplate" });
@@ -13614,11 +16407,11 @@ function __c46(j: number): any {
 function __c47(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(375));
+      return S.Array(SolutionTemplate);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(376),
+          value: SolutionTemplateListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -13662,17 +16455,17 @@ function __c47(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(56)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SolutionTemplateVersionProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "SolutionTemplateVersion" });
     case 5:
-      return S.Array(__S(380));
+      return S.Array(SolutionTemplateVersion);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(381),
+          value: SolutionTemplateVersionListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -13706,18 +16499,18 @@ function __c48(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(228)),
-          extendedLocation: S.optional(__S(87)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SolutionVersionProperties),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "SolutionVersion" });
     case 1:
-      return S.Array(__S(384));
+      return S.Array(SolutionVersion);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(385),
+          value: SolutionVersionListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -13740,11 +16533,11 @@ function __c48(j: number): any {
         identifier: "ListTargetByResourceGroupRequest",
       });
     case 4:
-      return S.Array(__S(232));
+      return S.Array(Target);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(388),
+          value: TargetListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetListResult" });
@@ -13785,11 +16578,11 @@ function __c48(j: number): any {
 function __c49(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(235));
+      return S.Array(Workflow);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(392),
+          value: WorkflowListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowListResult" });
@@ -13817,18 +16610,18 @@ function __c49(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(243)),
-          extendedLocation: S.optional(__S(87)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WorkflowVersionProperties),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowVersion" });
     case 4:
-      return S.Array(__S(395));
+      return S.Array(WorkflowVersion);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(396),
+          value: WorkflowVersionListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -13943,7 +16736,9 @@ function __c50(j: number): any {
           targetName: S.String.pipe(T.Label()),
           solutionTemplateVersionId: S.String,
           solutionInstanceName: S.optional(S.String),
-          solutionDependencies: S.optional(__S(4)),
+          solutionDependencies: S.optional(
+            ReviewTargetSolutionVersionRequestSolutionDependenciesList,
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13968,7 +16763,7 @@ function __c50(j: number): any {
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           schemaReferenceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(405)),
+          properties: S.optional(SchemaReferencePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13986,9 +16781,9 @@ function __c50(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           schemaName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18)),
+          tags: S.optional(SchemasCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(33)),
+          properties: S.optional(ConfigurationPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14010,10 +16805,10 @@ function __c51(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          tags: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(SchemasCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(186)),
+          properties: S.optional(SchemaProperties),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -14026,7 +16821,7 @@ function __c51(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           schemaName: S.String.pipe(T.Label()),
           schemaVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(47)),
+          properties: S.optional(SchemaVersionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14053,7 +16848,7 @@ function __c51(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           contextName: S.String.pipe(T.Label()),
           siteReferenceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(410)),
+          properties: S.optional(SiteReferencePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14071,8 +16866,8 @@ function __c51(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(198)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SiteReferenceProperties),
         }),
       ).annotate({
         identifier: "SiteReferencesCreateOrUpdateResponse",
@@ -14082,8 +16877,8 @@ function __c51(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          siteAddress: S.optional(__S(194)),
-          labels: S.optional(__S(18)),
+          siteAddress: S.optional(SiteAddressProperties),
+          labels: S.optional(SitePropertiesInputLabelsMap),
         }),
       ).annotate({ identifier: "SitePropertiesInput" });
     case 6:
@@ -14091,7 +16886,7 @@ function __c51(j: number): any {
         S.Struct({
           servicegroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(413)),
+          properties: S.optional(SitePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14108,7 +16903,7 @@ function __c51(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(413)),
+          properties: S.optional(SitePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14130,7 +16925,7 @@ function __c52(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(413)),
+          properties: S.optional(SitePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14149,8 +16944,8 @@ function __c52(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           targetName: S.String.pipe(T.Label()),
           solutionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33)),
-          extendedLocation: S.optional(__S(87)),
+          properties: S.optional(ConfigurationPropertiesInput),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14168,9 +16963,9 @@ function __c52(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(206)),
-          extendedLocation: S.optional(__S(87)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SolutionProperties),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -14180,8 +16975,8 @@ function __c52(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.String,
-          capabilities: __S(10),
-          state: S.optional(S.String),
+          capabilities: SolutionTemplatePropertiesInputCapabilitiesList,
+          state: S.optional(ResourceState),
           enableExternalValidation: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -14193,9 +16988,9 @@ function __c52(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           solutionTemplateName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18)),
+          tags: S.optional(SolutionTemplatesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(419)),
+          properties: S.optional(SolutionTemplatePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14214,7 +17009,7 @@ function __c52(j: number): any {
         }),
       ).annotate({ identifier: "BulkDeployTargetDetails" });
     case 6:
-      return S.Array(__S(421));
+      return S.Array(BulkDeployTargetDetails);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -14222,7 +17017,7 @@ function __c52(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           solutionTemplateName: S.String.pipe(T.Label()),
           solutionTemplateVersionName: S.String.pipe(T.Label()),
-          targets: __S(422),
+          targets: SolutionTemplateVersionsBulkDeploySolutionRequestTargetsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -14242,14 +17037,14 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           targetId: S.String,
-          solutionDependencies: S.optional(__S(4)),
+          solutionDependencies: S.optional(BulkPublishTargetDetailsSolutionDependenciesList),
           solutionInstanceName: S.optional(S.String),
           solutionVersionId: S.optional(S.String),
           solutionConfiguration: S.optional(S.String),
         }),
       ).annotate({ identifier: "BulkPublishTargetDetails" });
     case 1:
-      return S.Array(__S(424));
+      return S.Array(BulkPublishTargetDetails);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -14257,9 +17052,11 @@ function __c53(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           solutionTemplateName: S.String.pipe(T.Label()),
           solutionTemplateVersionName: S.String.pipe(T.Label()),
-          targets: __S(425),
+          targets: SolutionTemplateVersionsBulkPublishSolutionRequestTargetsList,
           solutionInstanceName: S.optional(S.String),
-          solutionDependencies: S.optional(__S(7)),
+          solutionDependencies: S.optional(
+            SolutionTemplateVersionsBulkPublishSolutionRequestSolutionDependenciesList,
+          ),
           solutionConfiguration: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -14279,7 +17076,7 @@ function __c53(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           solutionTemplateName: S.String.pipe(T.Label()),
           solutionTemplateVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(53)),
+          properties: S.optional(SolutionTemplateVersionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14294,8 +17091,8 @@ function __c53(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          specification: __S(52),
-          errorDetails: S.optional(__S(33)),
+          specification: SolutionVersionPropertiesInputSpecificationMap,
+          errorDetails: S.optional(ConfigurationPropertiesInput),
         }),
       ).annotate({
         identifier: "SolutionVersionPropertiesInput",
@@ -14308,8 +17105,8 @@ function __c53(j: number): any {
           targetName: S.String.pipe(T.Label()),
           solutionName: S.String.pipe(T.Label()),
           solutionVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(428)),
-          extendedLocation: S.optional(__S(87)),
+          properties: S.optional(SolutionVersionPropertiesInput),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14327,11 +17124,11 @@ function __c53(j: number): any {
           description: S.String,
           displayName: S.String,
           contextId: S.String,
-          targetSpecification: S.optional(__S(52)),
-          capabilities: __S(10),
+          targetSpecification: S.optional(TargetPropertiesInputTargetSpecificationMap),
+          capabilities: TargetPropertiesInputCapabilitiesList,
           hierarchyLevel: S.String,
           solutionScope: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(ResourceState),
         }),
       ).annotate({ identifier: "TargetPropertiesInput" });
     case 7:
@@ -14340,10 +17137,10 @@ function __c53(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           targetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18)),
+          tags: S.optional(TargetsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(430)),
-          extendedLocation: S.optional(__S(87)),
+          properties: S.optional(TargetPropertiesInput),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14365,12 +17162,12 @@ function __c54(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          tags: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(TargetsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(231)),
+          properties: S.optional(TargetProperties),
           eTag: S.optional(S.String),
-          extendedLocation: S.optional(__S(87)),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
         }),
       ).annotate({
         identifier: "TargetsCreateOrUpdateResponse",
@@ -14383,7 +17180,9 @@ function __c54(j: number): any {
           targetName: S.String.pipe(T.Label()),
           solutionTemplateVersionId: S.String,
           solutionInstanceName: S.optional(S.String),
-          solutionDependencies: S.optional(__S(4)),
+          solutionDependencies: S.optional(
+            TargetsResolveConfigurationRequestSolutionDependenciesList,
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14456,8 +17255,8 @@ function __c54(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           configTemplateName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18)),
-          properties: S.optional(__S(438)),
+          tags: S.optional(UpdateConfigTemplateRequestTagsMap),
+          properties: S.optional(ConfigTemplateUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14480,7 +17279,7 @@ function __c55(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           configTemplateName: S.String.pipe(T.Label()),
           configTemplateMetadataName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(13)),
+          properties: S.optional(ConfigTemplateMetadataUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14507,7 +17306,7 @@ function __c55(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           configTemplateName: S.String.pipe(T.Label()),
           configTemplateVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(441)),
+          properties: S.optional(ConfigTemplateVersionPropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14525,8 +17324,8 @@ function __c55(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18)),
-          properties: S.optional(__S(33)),
+          tags: S.optional(UpdateConfigurationRequestTagsMap),
+          properties: S.optional(ConfigurationPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14543,7 +17342,7 @@ function __c55(j: number): any {
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           configurationReferenceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(29)),
+          properties: S.optional(ConfigurationReferencePropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14558,8 +17357,8 @@ function __c55(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          capabilities: S.optional(__S(38)),
-          hierarchies: S.optional(__S(40)),
+          capabilities: S.optional(ContextUpdatePropertiesCapabilitiesList),
+          hierarchies: S.optional(ContextUpdatePropertiesHierarchiesList),
         }),
       ).annotate({ identifier: "ContextUpdateProperties" });
     case 6:
@@ -14568,8 +17367,8 @@ function __c55(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           contextName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18)),
-          properties: S.optional(__S(445)),
+          tags: S.optional(UpdateContextRequestTagsMap),
+          properties: S.optional(ContextUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14585,8 +17384,8 @@ function __c55(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           diagnosticName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33)),
-          tags: S.optional(__S(18)),
+          properties: S.optional(ConfigurationPropertiesInput),
+          tags: S.optional(UpdateDiagnosticRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14604,15 +17403,15 @@ function __c56(j: number): any {
       return S.suspend(() =>
         S.Struct({
           cores: S.optional(S.Number),
-          pricingModel: S.optional(S.String),
+          pricingModel: S.optional(PricingModel),
         }),
       ).annotate({ identifier: "BillingPeriodUpdate" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          autoRenew: S.optional(S.String),
-          current: S.optional(__S(448)),
-          upcoming: S.optional(__S(448)),
+          autoRenew: S.optional(AutoRenew),
+          current: S.optional(BillingPeriodUpdate),
+          upcoming: S.optional(BillingPeriodUpdate),
         }),
       ).annotate({
         identifier: "BillingConfigurationUpdate",
@@ -14620,11 +17419,11 @@ function __c56(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          connectionIntent: S.optional(S.String),
-          registrationStatus: S.optional(S.String),
+          connectionIntent: S.optional(ConnectionIntent),
+          registrationStatus: S.optional(RegistrationStatus),
           deviceVersion: S.optional(S.String),
-          billingConfiguration: S.optional(__S(449)),
-          benefitPlans: S.optional(__S(92)),
+          billingConfiguration: S.optional(BillingConfigurationUpdate),
+          benefitPlans: S.optional(BenefitPlans),
         }),
       ).annotate({
         identifier: "DisconnectedOperationUpdateProperties",
@@ -14635,8 +17434,8 @@ function __c56(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18)),
-          properties: S.optional(__S(450)),
+          tags: S.optional(UpdateDisconnectedOperationRequestTagsMap),
+          properties: S.optional(DisconnectedOperationUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14663,7 +17462,7 @@ function __c56(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
           dynamicConfigurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(452)),
+          properties: S.optional(DynamicConfigurationPropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14691,7 +17490,7 @@ function __c56(j: number): any {
           configurationName: S.String.pipe(T.Label()),
           dynamicConfigurationName: S.String.pipe(T.Label()),
           dynamicConfigurationVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(454)),
+          properties: S.optional(DynamicConfigurationVersionPropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14714,7 +17513,7 @@ function __c57(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           schemaName: S.String.pipe(T.Label()),
           dynamicSchemaName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33)),
+          properties: S.optional(ConfigurationPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14742,7 +17541,7 @@ function __c57(j: number): any {
           schemaName: S.String.pipe(T.Label()),
           dynamicSchemaName: S.String.pipe(T.Label()),
           dynamicSchemaVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(457)),
+          properties: S.optional(SchemaVersionPropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14758,7 +17557,7 @@ function __c57(j: number): any {
       return S.suspend(() =>
         S.Struct({
           workflowVersionId: S.optional(S.String),
-          specification: S.optional(__S(52)),
+          specification: S.optional(ExecutionPropertiesUpdateSpecificationMap),
         }),
       ).annotate({
         identifier: "ExecutionPropertiesUpdate",
@@ -14772,7 +17571,7 @@ function __c57(j: number): any {
           workflowName: S.String.pipe(T.Label()),
           versionName: S.String.pipe(T.Label()),
           executionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(459)),
+          properties: S.optional(ExecutionPropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14785,7 +17584,7 @@ function __c57(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(ReconciliationState),
           interval: S.optional(S.String),
         }),
       ).annotate({
@@ -14796,8 +17595,8 @@ function __c57(j: number): any {
         S.Struct({
           solutionVersionId: S.optional(S.String),
           targetId: S.optional(S.String),
-          activeState: S.optional(S.String),
-          reconciliationPolicy: S.optional(__S(461)),
+          activeState: S.optional(ActiveState),
+          reconciliationPolicy: S.optional(ReconciliationPolicyPropertiesUpdate),
           solutionScope: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstancePropertiesUpdate" });
@@ -14809,7 +17608,7 @@ function __c57(j: number): any {
           targetName: S.String.pipe(T.Label()),
           solutionName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(462)),
+          properties: S.optional(InstancePropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14829,8 +17628,8 @@ function __c58(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           schemaName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33)),
-          tags: S.optional(__S(18)),
+          properties: S.optional(ConfigurationPropertiesInput),
+          tags: S.optional(UpdateSchemaRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14853,7 +17652,7 @@ function __c58(j: number): any {
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           schemaReferenceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(465)),
+          properties: S.optional(SchemaReferencePropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14872,7 +17671,7 @@ function __c58(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           schemaName: S.String.pipe(T.Label()),
           schemaVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(457)),
+          properties: S.optional(SchemaVersionPropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14890,7 +17689,7 @@ function __c58(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(413)),
+          properties: S.optional(SiteUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14915,7 +17714,7 @@ function __c58(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           contextName: S.String.pipe(T.Label()),
           siteReferenceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(469)),
+          properties: S.optional(SiteReferencePropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14932,7 +17731,7 @@ function __c58(j: number): any {
         S.Struct({
           servicegroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(413)),
+          properties: S.optional(SiteUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14953,7 +17752,7 @@ function __c59(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(413)),
+          properties: S.optional(SiteUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14972,7 +17771,7 @@ function __c59(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           targetName: S.String.pipe(T.Label()),
           solutionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33)),
+          properties: S.optional(ConfigurationPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14986,8 +17785,8 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          capabilities: S.optional(__S(10)),
-          state: S.optional(S.String),
+          capabilities: S.optional(SolutionTemplateUpdatePropertiesCapabilitiesList),
+          state: S.optional(ResourceState),
           enableExternalValidation: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -14999,8 +17798,8 @@ function __c59(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           solutionTemplateName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18)),
-          properties: S.optional(__S(474)),
+          tags: S.optional(UpdateSolutionTemplateRequestTagsMap),
+          properties: S.optional(SolutionTemplateUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15016,8 +17815,8 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           configurations: S.optional(S.Unknown),
-          specification: S.optional(__S(52)),
-          orchestratorType: S.optional(S.String),
+          specification: S.optional(SolutionTemplateVersionPropertiesUpdateSpecificationMap),
+          orchestratorType: S.optional(OrchestratorType),
         }),
       ).annotate({
         identifier: "SolutionTemplateVersionPropertiesUpdate",
@@ -15029,7 +17828,7 @@ function __c59(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           solutionTemplateName: S.String.pipe(T.Label()),
           solutionTemplateVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(476)),
+          properties: S.optional(SolutionTemplateVersionPropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15044,7 +17843,7 @@ function __c59(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          specification: S.optional(__S(52)),
+          specification: S.optional(SolutionVersionPropertiesUpdateSpecificationMap),
         }),
       ).annotate({
         identifier: "SolutionVersionPropertiesUpdate",
@@ -15057,7 +17856,7 @@ function __c59(j: number): any {
           targetName: S.String.pipe(T.Label()),
           solutionName: S.String.pipe(T.Label()),
           solutionVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(478)),
+          properties: S.optional(SolutionVersionPropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15079,11 +17878,11 @@ function __c60(j: number): any {
           description: S.optional(S.String),
           displayName: S.optional(S.String),
           contextId: S.optional(S.String),
-          targetSpecification: S.optional(__S(52)),
-          capabilities: S.optional(__S(10)),
+          targetSpecification: S.optional(TargetUpdatePropertiesTargetSpecificationMap),
+          capabilities: S.optional(TargetUpdatePropertiesCapabilitiesList),
           hierarchyLevel: S.optional(S.String),
           solutionScope: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(ResourceState),
         }),
       ).annotate({ identifier: "TargetUpdateProperties" });
     case 1:
@@ -15092,8 +17891,8 @@ function __c60(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           targetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18)),
-          properties: S.optional(__S(480)),
+          tags: S.optional(UpdateTargetRequestTagsMap),
+          properties: S.optional(TargetUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15110,9 +17909,9 @@ function __c60(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           targetName: S.String.pipe(T.Label()),
           solutionVersionId: S.String,
-          errorDetails: S.optional(__S(33)),
+          errorDetails: S.optional(ConfigurationPropertiesInput),
           externalValidationId: S.String,
-          validationStatus: S.String,
+          validationStatus: ValidationStatus,
         }).pipe(
           T.Http({
             method: "POST",
@@ -15131,7 +17930,7 @@ function __c60(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           contextName: S.String.pipe(T.Label()),
           workflowName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33)),
+          properties: S.optional(ConfigurationPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15144,8 +17943,8 @@ function __c60(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          stageSpec: S.optional(__S(242)),
-          specification: S.optional(__S(52)),
+          stageSpec: S.optional(WorkflowVersionPropertiesUpdateStageSpecList),
+          specification: S.optional(WorkflowVersionPropertiesUpdateSpecificationMap),
         }),
       ).annotate({
         identifier: "WorkflowVersionPropertiesUpdate",
@@ -15158,7 +17957,7 @@ function __c60(j: number): any {
           contextName: S.String.pipe(T.Label()),
           workflowName: S.String.pipe(T.Label()),
           versionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(484)),
+          properties: S.optional(WorkflowVersionPropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15177,8 +17976,8 @@ function __c60(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           contextName: S.String.pipe(T.Label()),
           workflowName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33)),
-          extendedLocation: S.optional(__S(87)),
+          properties: S.optional(ConfigurationPropertiesInput),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15196,9 +17995,9 @@ function __c60(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(234)),
-          extendedLocation: S.optional(__S(87)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WorkflowProperties),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -15211,8 +18010,8 @@ function __c61(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          stageSpec: __S(242),
-          specification: S.optional(__S(52)),
+          stageSpec: WorkflowVersionPropertiesInputStageSpecList,
+          specification: S.optional(WorkflowVersionPropertiesInputSpecificationMap),
         }),
       ).annotate({
         identifier: "WorkflowVersionPropertiesInput",
@@ -15225,8 +18024,8 @@ function __c61(j: number): any {
           contextName: S.String.pipe(T.Label()),
           workflowName: S.String.pipe(T.Label()),
           versionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(488)),
-          extendedLocation: S.optional(__S(87)),
+          properties: S.optional(WorkflowVersionPropertiesInput),
+          extendedLocation: S.optional(AzureResourceManagerCommonTypesExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15238,138 +18037,5 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "WorkflowVersionsCreateOrUpdateRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
-    case 41:
-      return __c41(i & 7);
-    case 42:
-      return __c42(i & 7);
-    case 43:
-      return __c43(i & 7);
-    case 44:
-      return __c44(i & 7);
-    case 45:
-      return __c45(i & 7);
-    case 46:
-      return __c46(i & 7);
-    case 47:
-      return __c47(i & 7);
-    case 48:
-      return __c48(i & 7);
-    case 49:
-      return __c49(i & 7);
-    case 50:
-      return __c50(i & 7);
-    case 51:
-      return __c51(i & 7);
-    case 52:
-      return __c52(i & 7);
-    case 53:
-      return __c53(i & 7);
-    case 54:
-      return __c54(i & 7);
-    case 55:
-      return __c55(i & 7);
-    case 56:
-      return __c56(i & 7);
-    case 57:
-      return __c57(i & 7);
-    case 58:
-      return __c58(i & 7);
-    case 59:
-      return __c59(i & 7);
-    case 60:
-      return __c60(i & 7);
-    case 61:
-      return __c61(i & 7);
   }
 }

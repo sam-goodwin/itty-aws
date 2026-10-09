@@ -6,29 +6,37 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
 export type TunnelType = "TUNNEL_TYPE_UNSPECIFIED" | "TUNNEL_TYPE_H2";
+const TunnelType = S.String;
+
 export interface StartTunnelRequest {
   port?: number;
   unencrypted?: boolean;
   tunnelType?: TunnelType | (string & {});
 }
+const StartTunnelRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StartTunnelRequest>;
+
 export interface StartTunnelResponse {
   host?: string;
   port?: number;
   unencryptedHost?: string;
   unencryptedPort?: number;
 }
+const StartTunnelResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<StartTunnelResponse>;
+
 export interface StopTunnelRequest {
   port?: number;
 }
+const StopTunnelRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StopTunnelRequest>;
+
 export interface StopTunnelResponse {
   exists?: boolean;
 }
+const StopTunnelResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<StopTunnelResponse>;
+
 export type StartTunnelError = ModalOpError;
 /** Tunnels */
 export const startTunnel: API.OperationMethod<
@@ -37,8 +45,8 @@ export const startTunnel: API.OperationMethod<
   StartTunnelError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<StartTunnelRequest>,
-  output: __S(1) as any as S.Schema<StartTunnelResponse>,
+  input: StartTunnelRequest,
+  output: StartTunnelResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -51,8 +59,8 @@ export const stopTunnel: API.OperationMethod<
   StopTunnelError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<StopTunnelRequest>,
-  output: __S(3) as any as S.Schema<StopTunnelResponse>,
+  input: StopTunnelRequest,
+  output: StopTunnelResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -66,7 +74,7 @@ function __c0(j: number): any {
         S.Struct({
           port: S.optional(S.Number),
           unencrypted: S.optional(S.Boolean),
-          tunnelType: S.optional(S.String),
+          tunnelType: S.optional(TunnelType),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/TunnelStart", code: 200 }),
         ),
@@ -92,16 +100,5 @@ function __c0(j: number): any {
           exists: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "StopTunnelResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 2) {
-    case 0:
-      return __c0(i & 3);
   }
 }

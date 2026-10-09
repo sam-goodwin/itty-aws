@@ -7,13 +7,13 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Type of verification. */
 export type VerificationType = "Domain" | "SPF" | "DKIM" | "DKIM2" | "DMARC";
+const VerificationType = S.String;
+
 export interface CancelDomainVerificationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -26,7 +26,17 @@ export interface CancelDomainVerificationRequest {
   /** Type of verification. */
   verificationType: VerificationType | (string & {});
 }
+const CancelDomainVerificationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CancelDomainVerificationRequest>;
+
 export interface CancelDomainVerificationResponse {}
+const CancelDomainVerificationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CancelDomainVerificationResponse>;
+
 export interface CheckCommunicationServiceNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -35,8 +45,15 @@ export interface CheckCommunicationServiceNameAvailabilityRequest {
   /** The resource type. */
   type?: string;
 }
+const CheckCommunicationServiceNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CheckCommunicationServiceNameAvailabilityRequest>;
+
 /** The reason why the given name is not available. */
 export type CheckCommunicationServiceNameAvailabilityResponseReason = "Invalid" | "AlreadyExists";
+const CheckCommunicationServiceNameAvailabilityResponseReason = S.String;
+
 export interface CheckCommunicationServiceNameAvailabilityResponse {
   /** Indicates if the resource name is available. */
   nameAvailable?: boolean;
@@ -45,17 +62,31 @@ export interface CheckCommunicationServiceNameAvailabilityResponse {
   /** Detailed reason why the given name is available. */
   message?: string;
 }
+const CheckCommunicationServiceNameAvailabilityResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CheckCommunicationServiceNameAvailabilityResponse>;
+
 /** Resource tags. */
 export type CommunicationServicesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const CommunicationServicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CommunicationServicesCreateOrUpdateRequestTagsMap>;
+
 /** List of email Domain resource Ids. */
 export type DomainsResourceList = Array<string>;
+const DomainsResourceList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DomainsResourceList>;
+
 /** Allow, disallow, or let network security perimeter configuration control public network access to the protected resource. Value is optional but if passed in, it must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'. */
 export type CommunicationServicePropertiesInputPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
   | "SecuredByPerimeter";
+const CommunicationServicePropertiesInputPublicNetworkAccess = S.String;
+
 /** A class that describes the properties of the CommunicationService. */
 export interface CommunicationServicePropertiesInput {
   /** The location where the communication service stores its data at rest. */
@@ -67,24 +98,47 @@ export interface CommunicationServicePropertiesInput {
   /** Disable local authentication for the CommunicationService. */
   disableLocalAuth?: boolean;
 }
+const CommunicationServicePropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CommunicationServicePropertiesInput>;
+
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
+const ManagedServiceIdentityType = S.String;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
+const UserAssignedIdentityInput = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<UserAssignedIdentityInput>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CommunicationServicesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
+const CommunicationServicesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ __L.at(
+    __c1,
+    0,
+  ) as any as S.Schema<CommunicationServicesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CommunicationServicesCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CommunicationServicesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
+const CommunicationServicesCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CommunicationServicesCreateOrUpdateRequestIdentity>;
+
 export interface CommunicationServicesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -101,10 +155,19 @@ export interface CommunicationServicesCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CommunicationServicesCreateOrUpdateRequestIdentity;
 }
+const CommunicationServicesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CommunicationServicesCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -120,10 +183,15 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<SystemData>;
+
 /** Resource tags. */
 export type CommunicationServicesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
+const CommunicationServicesCreateOrUpdateResponseTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<CommunicationServicesCreateOrUpdateResponseTagsMap>;
+
 /** Provisioning state of the resource. */
 export type CommunicationServicesProvisioningState =
   | "Unknown"
@@ -135,11 +203,15 @@ export type CommunicationServicesProvisioningState =
   | "Updating"
   | "Deleting"
   | "Moving";
+const CommunicationServicesProvisioningState = S.String;
+
 /** Allow, disallow, or let network security perimeter configuration control public network access to the protected resource. Value is optional but if passed in, it must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'. */
 export type CommunicationServicePropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
   | "SecuredByPerimeter";
+const CommunicationServicePropertiesPublicNetworkAccess = S.String;
+
 /** A class that describes the properties of the CommunicationService. */
 export interface CommunicationServiceProperties {
   /** Provisioning state of the resource. */
@@ -161,6 +233,11 @@ export interface CommunicationServiceProperties {
   /** Disable local authentication for the CommunicationService. */
   disableLocalAuth?: boolean;
 }
+const CommunicationServiceProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CommunicationServiceProperties>;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -168,10 +245,18 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
+const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<UserAssignedIdentity>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CommunicationServicesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
+const CommunicationServicesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ __L.at(
+    __c1,
+    6,
+  ) as any as S.Schema<CommunicationServicesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CommunicationServicesCreateOrUpdateResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -182,6 +267,11 @@ export interface CommunicationServicesCreateOrUpdateResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CommunicationServicesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap;
 }
+const CommunicationServicesCreateOrUpdateResponseIdentity = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CommunicationServicesCreateOrUpdateResponseIdentity>;
+
 export interface CommunicationServicesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -200,6 +290,11 @@ export interface CommunicationServicesCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CommunicationServicesCreateOrUpdateResponseIdentity;
 }
+const CommunicationServicesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CommunicationServicesCreateOrUpdateResponse>;
+
 export interface CommunicationServicesLinkNotificationHubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -212,11 +307,21 @@ export interface CommunicationServicesLinkNotificationHubRequest {
   /** Connection string for the notification hub */
   connectionString: string | Redacted.Redacted<string>;
 }
+const CommunicationServicesLinkNotificationHubRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CommunicationServicesLinkNotificationHubRequest>;
+
 /** A notification hub that has been linked to the communication service */
 export interface LinkedNotificationHub {
   /** The resource ID of the notification hub */
   resourceId?: string;
 }
+const LinkedNotificationHub = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<LinkedNotificationHub>;
+
 export interface DeleteCommunicationServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -225,7 +330,15 @@ export interface DeleteCommunicationServiceRequest {
   /** The name of the CommunicationService resource. */
   communicationServiceName: string;
 }
+const DeleteCommunicationServiceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DeleteCommunicationServiceRequest>;
+
 export interface DeleteCommunicationServiceResponse {}
+const DeleteCommunicationServiceResponse =
+  CancelDomainVerificationResponse as any as S.Schema<DeleteCommunicationServiceResponse>;
+
 export interface DeleteDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -236,7 +349,11 @@ export interface DeleteDomainRequest {
   /** The name of the Domains resource. */
   domainName: string;
 }
+const DeleteDomainRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DeleteDomainRequest>;
+
 export interface DeleteDomainResponse {}
+const DeleteDomainResponse = UserAssignedIdentityInput as any as S.Schema<DeleteDomainResponse>;
+
 export interface DeleteEmailServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -245,7 +362,15 @@ export interface DeleteEmailServiceRequest {
   /** The name of the EmailService resource. */
   emailServiceName: string;
 }
+const DeleteEmailServiceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DeleteEmailServiceRequest>;
+
 export interface DeleteEmailServiceResponse {}
+const DeleteEmailServiceResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteEmailServiceResponse>;
+
 export interface DeleteSenderUsernameRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -258,7 +383,15 @@ export interface DeleteSenderUsernameRequest {
   /** The valid sender Username. */
   senderUsername: string;
 }
+const DeleteSenderUsernameRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DeleteSenderUsernameRequest>;
+
 export interface DeleteSenderUsernameResponse {}
+const DeleteSenderUsernameResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteSenderUsernameResponse>;
+
 export interface DeleteSmtpUsernameRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -269,7 +402,15 @@ export interface DeleteSmtpUsernameRequest {
   /** The name of the SmtpUsernameResource. */
   smtpUsername: string;
 }
+const DeleteSmtpUsernameRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DeleteSmtpUsernameRequest>;
+
 export interface DeleteSmtpUsernameResponse {}
+const DeleteSmtpUsernameResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteSmtpUsernameResponse>;
+
 export interface DeleteSuppressionListRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -282,7 +423,15 @@ export interface DeleteSuppressionListRequest {
   /** The name of the suppression list. */
   suppressionListName: string;
 }
+const DeleteSuppressionListRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DeleteSuppressionListRequest>;
+
 export interface DeleteSuppressionListResponse {}
+const DeleteSuppressionListResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteSuppressionListResponse>;
+
 export interface DeleteSuppressionListAddressRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -297,16 +446,31 @@ export interface DeleteSuppressionListAddressRequest {
   /** The id of the address in a suppression list. */
   addressId: string;
 }
+const DeleteSuppressionListAddressRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DeleteSuppressionListAddressRequest>;
+
 export interface DeleteSuppressionListAddressResponse {}
+const DeleteSuppressionListAddressResponse =
+  CancelDomainVerificationResponse as any as S.Schema<DeleteSuppressionListAddressResponse>;
+
 /** Resource tags. */
 export type DomainsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const DomainsCreateOrUpdateRequestTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<DomainsCreateOrUpdateRequestTagsMap>;
+
 /** Describes how a Domains resource is being managed. */
 export type DomainManagement =
   | "AzureManaged"
   | "CustomerManaged"
   | "CustomerManagedInExchangeOnline";
+const DomainManagement = S.String;
+
 /** Describes whether user engagement tracking is enabled or disabled. */
 export type UserEngagementTracking = "Disabled" | "Enabled";
+const UserEngagementTracking = S.String;
+
 /** A class that describes the properties of a Domains resource. */
 export interface DomainPropertiesInput {
   /** Describes how a Domains resource is being managed. */
@@ -314,6 +478,11 @@ export interface DomainPropertiesInput {
   /** Describes whether user engagement tracking is enabled or disabled. */
   userEngagementTracking?: UserEngagementTracking | (string & {});
 }
+const DomainPropertiesInput = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DomainPropertiesInput>;
+
 export interface DomainsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -330,8 +499,16 @@ export interface DomainsCreateOrUpdateRequest {
   /** The properties of a Domains resource. */
   properties?: DomainPropertiesInput;
 }
+const DomainsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DomainsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type DomainsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const DomainsCreateOrUpdateResponseTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<DomainsCreateOrUpdateResponseTagsMap>;
+
 /** Provisioning state of the resource. */
 export type DomainsProvisioningState =
   | "Unknown"
@@ -343,6 +520,8 @@ export type DomainsProvisioningState =
   | "Updating"
   | "Deleting"
   | "Moving";
+const DomainsProvisioningState = S.String;
+
 /** Status of the verification operation. */
 export type VerificationStatus =
   | "NotStarted"
@@ -351,6 +530,8 @@ export type VerificationStatus =
   | "VerificationFailed"
   | "Verified"
   | "CancellationRequested";
+const VerificationStatus = S.String;
+
 /** A class that represents a VerificationStatus record. */
 export interface VerificationStatusRecord {
   /** Status of the verification operation. */
@@ -358,6 +539,11 @@ export interface VerificationStatusRecord {
   /** Error code. This property will only be present if the status is UnableToVerify. */
   errorCode?: string;
 }
+const VerificationStatusRecord = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<VerificationStatusRecord>;
+
 /** List of VerificationStatusRecord */
 export interface DomainPropertiesVerificationStates {
   /** A class that represents a VerificationStatus record. */
@@ -371,6 +557,11 @@ export interface DomainPropertiesVerificationStates {
   /** A class that represents a VerificationStatus record. */
   DMARC?: VerificationStatusRecord;
 }
+const DomainPropertiesVerificationStates = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DomainPropertiesVerificationStates>;
+
 /** A class that represents a VerificationStatus record. */
 export interface DnsRecord {
   /** Type of the DNS record. Example: TXT */
@@ -382,6 +573,8 @@ export interface DnsRecord {
   /** Represents an expiry time in seconds to represent how long this entry can be cached by the resolver, default = 3600sec. */
   ttl?: number;
 }
+const DnsRecord = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<DnsRecord>;
+
 /** List of DnsRecord */
 export interface DomainPropertiesVerificationRecords {
   /** A class that represents a VerificationStatus record. */
@@ -395,6 +588,11 @@ export interface DomainPropertiesVerificationRecords {
   /** A class that represents a VerificationStatus record. */
   DMARC?: DnsRecord;
 }
+const DomainPropertiesVerificationRecords = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DomainPropertiesVerificationRecords>;
+
 /** A class that describes the properties of a Domains resource. */
 export interface DomainProperties {
   /** Provisioning state of the resource. */
@@ -414,6 +612,8 @@ export interface DomainProperties {
   /** Describes whether user engagement tracking is enabled or disabled. */
   userEngagementTracking?: UserEngagementTracking;
 }
+const DomainProperties = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DomainProperties>;
+
 export interface DomainsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -430,6 +630,11 @@ export interface DomainsCreateOrUpdateResponse {
   /** The properties of a Domains resource. */
   properties?: DomainProperties;
 }
+const DomainsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<DomainsCreateOrUpdateResponse>;
+
 export interface DomainsInitiateVerificationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -442,9 +647,20 @@ export interface DomainsInitiateVerificationRequest {
   /** Type of verification. */
   verificationType: VerificationType | (string & {});
 }
+const DomainsInitiateVerificationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<DomainsInitiateVerificationRequest>;
+
 export interface DomainsInitiateVerificationResponse {}
+const DomainsInitiateVerificationResponse =
+  CancelDomainVerificationResponse as any as S.Schema<DomainsInitiateVerificationResponse>;
+
 /** Resource tags. */
 export type EmailServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const EmailServicesCreateOrUpdateRequestTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<EmailServicesCreateOrUpdateRequestTagsMap>;
+
 /** Provisioning state of the resource. */
 export type EmailServicesProvisioningState =
   | "Unknown"
@@ -456,6 +672,8 @@ export type EmailServicesProvisioningState =
   | "Updating"
   | "Deleting"
   | "Moving";
+const EmailServicesProvisioningState = S.String;
+
 /** A class that describes the properties of the EmailService. */
 export interface EmailServiceProperties {
   /** Provisioning state of the resource. */
@@ -463,6 +681,11 @@ export interface EmailServiceProperties {
   /** The location where the email service stores its data at rest. */
   dataLocation: string;
 }
+const EmailServiceProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<EmailServiceProperties>;
+
 export interface EmailServicesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -477,8 +700,16 @@ export interface EmailServicesCreateOrUpdateRequest {
   /** The properties of the service. */
   properties?: EmailServiceProperties;
 }
+const EmailServicesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<EmailServicesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type EmailServicesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const EmailServicesCreateOrUpdateResponseTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<EmailServicesCreateOrUpdateResponseTagsMap>;
+
 export interface EmailServicesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -495,6 +726,11 @@ export interface EmailServicesCreateOrUpdateResponse {
   /** The properties of the service. */
   properties?: EmailServiceProperties;
 }
+const EmailServicesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<EmailServicesCreateOrUpdateResponse>;
+
 export interface GetCommunicationServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -503,6 +739,11 @@ export interface GetCommunicationServiceRequest {
   /** The name of the CommunicationService resource. */
   communicationServiceName: string;
 }
+const GetCommunicationServiceRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetCommunicationServiceRequest>;
+
 /** Resource tags. */
 export type GetCommunicationServiceResponseTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -537,6 +778,9 @@ export interface GetCommunicationServiceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetCommunicationServiceResponseIdentity;
 }
+const GetCommunicationServiceResponse =
+  CommunicationServicesCreateOrUpdateResponse as any as S.Schema<GetCommunicationServiceResponse>;
+
 export interface GetDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -547,8 +791,13 @@ export interface GetDomainRequest {
   /** The name of the Domains resource. */
   domainName: string;
 }
+const GetDomainRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<GetDomainRequest>;
+
 /** Resource tags. */
 export type GetDomainResponseTagsMap = { [key: string]: string | undefined };
+const GetDomainResponseTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<GetDomainResponseTagsMap>;
+
 export interface GetDomainResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -565,6 +814,8 @@ export interface GetDomainResponse {
   /** The properties of a Domains resource. */
   properties?: DomainProperties;
 }
+const GetDomainResponse = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<GetDomainResponse>;
+
 export interface GetEmailServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -573,8 +824,16 @@ export interface GetEmailServiceRequest {
   /** The name of the EmailService resource. */
   emailServiceName: string;
 }
+const GetEmailServiceRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetEmailServiceRequest>;
+
 /** Resource tags. */
 export type GetEmailServiceResponseTagsMap = { [key: string]: string | undefined };
+const GetEmailServiceResponseTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<GetEmailServiceResponseTagsMap>;
+
 export interface GetEmailServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -591,6 +850,11 @@ export interface GetEmailServiceResponse {
   /** The properties of the service. */
   properties?: EmailServiceProperties;
 }
+const GetEmailServiceResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GetEmailServiceResponse>;
+
 export interface GetSenderUsernameRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -603,6 +867,11 @@ export interface GetSenderUsernameRequest {
   /** The valid sender Username. */
   senderUsername: string;
 }
+const GetSenderUsernameRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetSenderUsernameRequest>;
+
 /** Provisioning state of the resource. Unknown is the default state for Communication Services. */
 export type ProvisioningState =
   | "Unknown"
@@ -614,6 +883,8 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Moving";
+const ProvisioningState = S.String;
+
 /** A class that describes the properties of a SenderUsername resource. */
 export interface SenderUsernameProperties {
   /** The location where the SenderUsername resource data is stored at rest. */
@@ -625,6 +896,11 @@ export interface SenderUsernameProperties {
   /** Provisioning state of the resource. Unknown is the default state for Communication Services. */
   provisioningState?: ProvisioningState;
 }
+const SenderUsernameProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<SenderUsernameProperties>;
+
 export interface GetSenderUsernameResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -637,6 +913,11 @@ export interface GetSenderUsernameResponse {
   /** The properties of a SenderUsername resource. */
   properties?: SenderUsernameProperties;
 }
+const GetSenderUsernameResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GetSenderUsernameResponse>;
+
 export interface GetSmtpUsernameRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -647,6 +928,11 @@ export interface GetSmtpUsernameRequest {
   /** The name of the SmtpUsernameResource. */
   smtpUsername: string;
 }
+const GetSmtpUsernameRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<GetSmtpUsernameRequest>;
+
 /** A class that describes the properties of a SmtpUsername resource. */
 export interface SmtpUsernameProperties {
   /** The SMTP username. Could be free form or in the email address format. */
@@ -656,6 +942,11 @@ export interface SmtpUsernameProperties {
   /** The tenant of the linked Entra Application. */
   tenantId: string;
 }
+const SmtpUsernameProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<SmtpUsernameProperties>;
+
 export interface GetSmtpUsernameResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -668,6 +959,11 @@ export interface GetSmtpUsernameResponse {
   /** The properties of a SmtpUsername resource. */
   properties?: SmtpUsernameProperties;
 }
+const GetSmtpUsernameResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetSmtpUsernameResponse>;
+
 export interface GetSuppressionListRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -680,6 +976,11 @@ export interface GetSuppressionListRequest {
   /** The name of the suppression list. */
   suppressionListName: string;
 }
+const GetSuppressionListRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetSuppressionListRequest>;
+
 /** A class that describes the properties of a SuppressionList resource. */
 export interface SuppressionListProperties {
   /** The name of the suppression list. This value must match one of the valid sender usernames of the sending domain. */
@@ -691,6 +992,11 @@ export interface SuppressionListProperties {
   /** The location where the SuppressionListAddress data is stored at rest. This value is inherited from the parent Domains resource. */
   dataLocation?: string;
 }
+const SuppressionListProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<SuppressionListProperties>;
+
 export interface GetSuppressionListResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -703,6 +1009,11 @@ export interface GetSuppressionListResponse {
   /** The properties of a SuppressionList resource. */
   properties?: SuppressionListProperties;
 }
+const GetSuppressionListResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GetSuppressionListResponse>;
+
 export interface GetSuppressionListAddressRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -717,6 +1028,11 @@ export interface GetSuppressionListAddressRequest {
   /** The id of the address in a suppression list. */
   addressId: string;
 }
+const GetSuppressionListAddressRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GetSuppressionListAddressRequest>;
+
 /** A class that describes the properties of a SuppressionListAddress resource. */
 export interface SuppressionListAddressProperties {
   /** Email address of the recipient. */
@@ -732,6 +1048,11 @@ export interface SuppressionListAddressProperties {
   /** The location where the SuppressionListAddress data is stored at rest. This value is inherited from the parent Domains resource. */
   dataLocation?: string;
 }
+const SuppressionListAddressProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<SuppressionListAddressProperties>;
+
 export interface GetSuppressionListAddressResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -744,18 +1065,36 @@ export interface GetSuppressionListAddressResponse {
   /** The properties of a SuppressionListAddress resource. */
   properties?: SuppressionListAddressProperties;
 }
+const GetSuppressionListAddressResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<GetSuppressionListAddressResponse>;
+
 export interface ListCommunicationServiceByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListCommunicationServiceByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListCommunicationServiceByResourceGroupRequest>;
+
 /** Resource tags. */
 export type CommunicationServiceResourceTagsMap = { [key: string]: string | undefined };
+const CommunicationServiceResourceTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<CommunicationServiceResourceTagsMap>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CommunicationServiceResourceIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
+const CommunicationServiceResourceIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<CommunicationServiceResourceIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CommunicationServiceResourceIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -766,6 +1105,11 @@ export interface CommunicationServiceResourceIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CommunicationServiceResourceIdentityUserAssignedIdentitiesMap;
 }
+const CommunicationServiceResourceIdentity = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<CommunicationServiceResourceIdentity>;
+
 /** A class representing a CommunicationService resource. */
 export interface CommunicationServiceResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -785,8 +1129,18 @@ export interface CommunicationServiceResource {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CommunicationServiceResourceIdentity;
 }
+const CommunicationServiceResource = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<CommunicationServiceResource>;
+
 /** The CommunicationServiceResource items on this page */
 export type CommunicationServiceResourceListValueList = Array<CommunicationServiceResource>;
+const CommunicationServiceResourceListValueList = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<CommunicationServiceResourceListValueList>;
+
 /** Object that includes an array of CommunicationServices and a possible link for next set. */
 export interface CommunicationServiceResourceList {
   /** The CommunicationServiceResource items on this page */
@@ -794,10 +1148,20 @@ export interface CommunicationServiceResourceList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const CommunicationServiceResourceList = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<CommunicationServiceResourceList>;
+
 export interface ListCommunicationServiceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListCommunicationServiceBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListCommunicationServiceBySubscriptionRequest>;
+
 export interface ListCommunicationServiceKeysRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -806,6 +1170,11 @@ export interface ListCommunicationServiceKeysRequest {
   /** The name of the CommunicationService resource. */
   communicationServiceName: string;
 }
+const ListCommunicationServiceKeysRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListCommunicationServiceKeysRequest>;
+
 /** A class representing the access keys of a CommunicationService. */
 export interface CommunicationServiceKeys {
   /** The primary access key. */
@@ -817,6 +1186,11 @@ export interface CommunicationServiceKeys {
   /** CommunicationService connection string constructed via the secondaryKey */
   secondaryConnectionString?: string;
 }
+const CommunicationServiceKeys = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<CommunicationServiceKeys>;
+
 export interface ListDomainByEmailServiceResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -825,6 +1199,11 @@ export interface ListDomainByEmailServiceResourceRequest {
   /** The name of the EmailService resource. */
   emailServiceName: string;
 }
+const ListDomainByEmailServiceResourceRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListDomainByEmailServiceResourceRequest>;
+
 /** Resource tags. */
 export type DomainResourceTagsMap = { [key: string]: string | undefined };
 /** A class representing a Domains resource. */
@@ -844,8 +1223,15 @@ export interface DomainResource {
   /** The properties of a Domains resource. */
   properties?: DomainProperties;
 }
+const DomainResource = GetDomainResponse as any as S.Schema<DomainResource>;
+
 /** The DomainResource items on this page */
 export type DomainResourceListValueList = Array<DomainResource>;
+const DomainResourceListValueList = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DomainResourceListValueList>;
+
 /** Object that includes an array of Domains resource and a possible link for next set. */
 export interface DomainResourceList {
   /** The DomainResource items on this page */
@@ -853,12 +1239,19 @@ export interface DomainResourceList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DomainResourceList = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<DomainResourceList>;
+
 export interface ListEmailServiceByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListEmailServiceByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ListEmailServiceByResourceGroupRequest>;
+
 /** Resource tags. */
 export type EmailServiceResourceTagsMap = { [key: string]: string | undefined };
 /** A class representing an EmailService resource. */
@@ -878,8 +1271,15 @@ export interface EmailServiceResource {
   /** The properties of the service. */
   properties?: EmailServiceProperties;
 }
+const EmailServiceResource = GetEmailServiceResponse as any as S.Schema<EmailServiceResource>;
+
 /** The EmailServiceResource items on this page */
 export type EmailServiceResourceListValueList = Array<EmailServiceResource>;
+const EmailServiceResourceListValueList = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<EmailServiceResourceListValueList>;
+
 /** Object that includes an array of EmailServices and a possible link for next set. */
 export interface EmailServiceResourceList {
   /** The EmailServiceResource items on this page */
@@ -887,19 +1287,47 @@ export interface EmailServiceResourceList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const EmailServiceResourceList = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<EmailServiceResourceList>;
+
 export interface ListEmailServiceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListEmailServiceBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListEmailServiceBySubscriptionRequest>;
+
 export interface ListEmailServiceVerifiedExchangeOnlineDomainsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListEmailServiceVerifiedExchangeOnlineDomainsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListEmailServiceVerifiedExchangeOnlineDomainsRequest>;
+
 /** List of FQDNs of verified domains in Exchange Online. */
 export type VerifiedExchangeOnlineDomainList = Array<string>;
+const VerifiedExchangeOnlineDomainList =
+  DomainsResourceList as any as S.Schema<VerifiedExchangeOnlineDomainList>;
+
 export type ListEmailServiceVerifiedExchangeOnlineDomainsResponse =
   VerifiedExchangeOnlineDomainList;
+const ListEmailServiceVerifiedExchangeOnlineDomainsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ListEmailServiceVerifiedExchangeOnlineDomainsResponse>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -911,10 +1339,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -928,14 +1362,26 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListSenderUsernameByDomainsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -946,6 +1392,11 @@ export interface ListSenderUsernameByDomainsRequest {
   /** The name of the Domains resource. */
   domainName: string;
 }
+const ListSenderUsernameByDomainsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ListSenderUsernameByDomainsRequest>;
+
 /** A class representing a SenderUsername resource. */
 export interface SenderUsernameResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -959,8 +1410,18 @@ export interface SenderUsernameResource {
   /** The properties of a SenderUsername resource. */
   properties?: SenderUsernameProperties;
 }
+const SenderUsernameResource = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<SenderUsernameResource>;
+
 /** The SenderUsernameResource items on this page */
 export type SenderUsernameResourceCollectionValueList = Array<SenderUsernameResource>;
+const SenderUsernameResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<SenderUsernameResourceCollectionValueList>;
+
 /** A class representing a Domains SenderUsernames collection. */
 export interface SenderUsernameResourceCollection {
   /** The SenderUsernameResource items on this page */
@@ -968,6 +1429,11 @@ export interface SenderUsernameResourceCollection {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SenderUsernameResourceCollection = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<SenderUsernameResourceCollection>;
+
 export interface ListSmtpUsernamesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -976,6 +1442,11 @@ export interface ListSmtpUsernamesRequest {
   /** The name of the CommunicationService resource. */
   communicationServiceName: string;
 }
+const ListSmtpUsernamesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListSmtpUsernamesRequest>;
+
 /** The object describing the smtp username resource. */
 export interface SmtpUsernameResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -989,8 +1460,15 @@ export interface SmtpUsernameResource {
   /** The properties of a SmtpUsername resource. */
   properties?: SmtpUsernameProperties;
 }
+const SmtpUsernameResource = GetSmtpUsernameResponse as any as S.Schema<SmtpUsernameResource>;
+
 /** The SmtpUsernameResource items on this page */
 export type SmtpUsernameResourceCollectionValueList = Array<SmtpUsernameResource>;
+const SmtpUsernameResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<SmtpUsernameResourceCollectionValueList>;
+
 /** Collection of SmtpUsername resources. Response will include a nextLink if response contains more pages. */
 export interface SmtpUsernameResourceCollection {
   /** The SmtpUsernameResource items on this page */
@@ -998,6 +1476,11 @@ export interface SmtpUsernameResourceCollection {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SmtpUsernameResourceCollection = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<SmtpUsernameResourceCollection>;
+
 export interface ListSuppressionListAddressesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1010,6 +1493,11 @@ export interface ListSuppressionListAddressesRequest {
   /** The name of the suppression list. */
   suppressionListName: string;
 }
+const ListSuppressionListAddressesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ListSuppressionListAddressesRequest>;
+
 /** A object that represents a SuppressionList record. */
 export interface SuppressionListAddressResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1023,9 +1511,17 @@ export interface SuppressionListAddressResource {
   /** The properties of a SuppressionListAddress resource. */
   properties?: SuppressionListAddressProperties;
 }
+const SuppressionListAddressResource =
+  GetSuppressionListAddressResponse as any as S.Schema<SuppressionListAddressResource>;
+
 /** The SuppressionListAddressResource items on this page */
 export type SuppressionListAddressResourceCollectionValueList =
   Array<SuppressionListAddressResource>;
+const SuppressionListAddressResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<SuppressionListAddressResourceCollectionValueList>;
+
 /** Collection of addresses in a suppression list. Response will include a nextLink if response contains more pages. */
 export interface SuppressionListAddressResourceCollection {
   /** The SuppressionListAddressResource items on this page */
@@ -1033,6 +1529,11 @@ export interface SuppressionListAddressResourceCollection {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SuppressionListAddressResourceCollection = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<SuppressionListAddressResourceCollection>;
+
 export interface ListSuppressionListByDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1043,6 +1544,11 @@ export interface ListSuppressionListByDomainRequest {
   /** The name of the Domains resource. */
   domainName: string;
 }
+const ListSuppressionListByDomainRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ListSuppressionListByDomainRequest>;
+
 /** A class representing a SuppressionList resource. */
 export interface SuppressionListResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1056,8 +1562,18 @@ export interface SuppressionListResource {
   /** The properties of a SuppressionList resource. */
   properties?: SuppressionListProperties;
 }
+const SuppressionListResource = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<SuppressionListResource>;
+
 /** The SuppressionListResource items on this page */
 export type SuppressionListResourceCollectionValueList = Array<SuppressionListResource>;
+const SuppressionListResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<SuppressionListResourceCollectionValueList>;
+
 /** A class representing a Domains SuppressionListResource collection. */
 export interface SuppressionListResourceCollection {
   /** The SuppressionListResource items on this page */
@@ -1065,8 +1581,15 @@ export interface SuppressionListResourceCollection {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SuppressionListResourceCollection = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<SuppressionListResourceCollection>;
+
 /** The keyType to regenerate. Must be either 'primary' or 'secondary'(case-insensitive). */
 export type KeyType = "Primary" | "Secondary";
+const KeyType = S.String;
+
 export interface RegenerateCommunicationServiceKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1077,6 +1600,11 @@ export interface RegenerateCommunicationServiceKeyRequest {
   /** The keyType to regenerate. Must be either 'primary' or 'secondary'(case-insensitive). */
   keyType?: KeyType | (string & {});
 }
+const RegenerateCommunicationServiceKeyRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<RegenerateCommunicationServiceKeyRequest>;
+
 /** A class that describes the properties of a SenderUsername resource. */
 export interface SenderUsernamePropertiesInput {
   /** A sender senderUsername to be used when sending emails. */
@@ -1084,6 +1612,11 @@ export interface SenderUsernamePropertiesInput {
   /** The display name for the senderUsername. */
   displayName?: string;
 }
+const SenderUsernamePropertiesInput = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<SenderUsernamePropertiesInput>;
+
 export interface SenderUsernamesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1098,6 +1631,11 @@ export interface SenderUsernamesCreateOrUpdateRequest {
   /** The properties of a SenderUsername resource. */
   properties?: SenderUsernamePropertiesInput;
 }
+const SenderUsernamesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<SenderUsernamesCreateOrUpdateRequest>;
+
 export interface SenderUsernamesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1110,6 +1648,9 @@ export interface SenderUsernamesCreateOrUpdateResponse {
   /** The properties of a SenderUsername resource. */
   properties?: SenderUsernameProperties;
 }
+const SenderUsernamesCreateOrUpdateResponse =
+  GetSenderUsernameResponse as any as S.Schema<SenderUsernamesCreateOrUpdateResponse>;
+
 export interface SmtpUsernamesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1122,6 +1663,11 @@ export interface SmtpUsernamesCreateOrUpdateRequest {
   /** The properties of a SmtpUsername resource. */
   properties?: SmtpUsernameProperties;
 }
+const SmtpUsernamesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<SmtpUsernamesCreateOrUpdateRequest>;
+
 export interface SmtpUsernamesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1134,6 +1680,11 @@ export interface SmtpUsernamesCreateOrUpdateResponse {
   /** The properties of a SmtpUsername resource. */
   properties?: SmtpUsernameProperties;
 }
+const SmtpUsernamesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<SmtpUsernamesCreateOrUpdateResponse>;
+
 /** A class that describes the properties of a SuppressionListAddress resource. */
 export interface SuppressionListAddressPropertiesInput {
   /** Email address of the recipient. */
@@ -1145,6 +1696,11 @@ export interface SuppressionListAddressPropertiesInput {
   /** An optional property to provide contextual notes or a description for an address. */
   notes?: string;
 }
+const SuppressionListAddressPropertiesInput = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<SuppressionListAddressPropertiesInput>;
+
 export interface SuppressionListAddressesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1161,6 +1717,11 @@ export interface SuppressionListAddressesCreateOrUpdateRequest {
   /** The properties of a SuppressionListAddress resource. */
   properties?: SuppressionListAddressPropertiesInput;
 }
+const SuppressionListAddressesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<SuppressionListAddressesCreateOrUpdateRequest>;
+
 export interface SuppressionListAddressesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1173,11 +1734,19 @@ export interface SuppressionListAddressesCreateOrUpdateResponse {
   /** The properties of a SuppressionListAddress resource. */
   properties?: SuppressionListAddressProperties;
 }
+const SuppressionListAddressesCreateOrUpdateResponse =
+  GetSuppressionListAddressResponse as any as S.Schema<SuppressionListAddressesCreateOrUpdateResponse>;
+
 /** A class that describes the properties of a SuppressionList resource. */
 export interface SuppressionListPropertiesInput {
   /** The name of the suppression list. This value must match one of the valid sender usernames of the sending domain. */
   listName?: string;
 }
+const SuppressionListPropertiesInput = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<SuppressionListPropertiesInput>;
+
 export interface SuppressionListsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1192,6 +1761,11 @@ export interface SuppressionListsCreateOrUpdateRequest {
   /** The properties of a SuppressionList resource. */
   properties?: SuppressionListPropertiesInput;
 }
+const SuppressionListsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<SuppressionListsCreateOrUpdateRequest>;
+
 export interface SuppressionListsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1204,13 +1778,21 @@ export interface SuppressionListsCreateOrUpdateResponse {
   /** The properties of a SuppressionList resource. */
   properties?: SuppressionListProperties;
 }
+const SuppressionListsCreateOrUpdateResponse =
+  GetSuppressionListResponse as any as S.Schema<SuppressionListsCreateOrUpdateResponse>;
+
 /** Tags of the service which is a list of key value pairs that describe the resource. */
 export type UpdateCommunicationServiceRequestTagsMap = { [key: string]: string | undefined };
+const UpdateCommunicationServiceRequestTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCommunicationServiceRequestTagsMap>;
+
 /** Allow, disallow, or let network security perimeter configuration control public network access to the protected resource. Value is optional but if passed in, it must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'. */
 export type CommunicationServiceUpdatePropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
   | "SecuredByPerimeter";
+const CommunicationServiceUpdatePropertiesPublicNetworkAccess = S.String;
+
 /** A class that describes the properties that can be updated for CommunicationService resource. */
 export interface CommunicationServiceUpdateProperties {
   /** List of email Domain resource Ids. */
@@ -1220,6 +1802,11 @@ export interface CommunicationServiceUpdateProperties {
   /** Disable local authentication for the CommunicationService. */
   disableLocalAuth?: boolean;
 }
+const CommunicationServiceUpdateProperties = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<CommunicationServiceUpdateProperties>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateCommunicationServiceRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
@@ -1230,6 +1817,9 @@ export interface UpdateCommunicationServiceRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateCommunicationServiceRequestIdentityUserAssignedIdentitiesMap;
 }
+const UpdateCommunicationServiceRequestIdentity =
+  CommunicationServicesCreateOrUpdateRequestIdentity as any as S.Schema<UpdateCommunicationServiceRequestIdentity>;
+
 export interface UpdateCommunicationServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1244,6 +1834,11 @@ export interface UpdateCommunicationServiceRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: UpdateCommunicationServiceRequestIdentity;
 }
+const UpdateCommunicationServiceRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<UpdateCommunicationServiceRequest>;
+
 /** Resource tags. */
 export type UpdateCommunicationServiceResponseTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -1278,13 +1873,24 @@ export interface UpdateCommunicationServiceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: UpdateCommunicationServiceResponseIdentity;
 }
+const UpdateCommunicationServiceResponse =
+  CommunicationServicesCreateOrUpdateResponse as any as S.Schema<UpdateCommunicationServiceResponse>;
+
 /** Tags of the service which is a list of key value pairs that describe the resource. */
 export type UpdateDomainRequestTagsMap = { [key: string]: string | undefined };
+const UpdateDomainRequestTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDomainRequestTagsMap>;
+
 /** A class that describes the updatable properties of a Domains resource. */
 export interface UpdateDomainProperties {
   /** Describes whether user engagement tracking is enabled or disabled. */
   userEngagementTracking?: UserEngagementTracking | (string & {});
 }
+const UpdateDomainProperties = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<UpdateDomainProperties>;
+
 export interface UpdateDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1299,6 +1905,8 @@ export interface UpdateDomainRequest {
   /** A class that describes the updatable properties of a Domains resource. */
   properties?: UpdateDomainProperties;
 }
+const UpdateDomainRequest = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<UpdateDomainRequest>;
+
 /** Resource tags. */
 export type UpdateDomainResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateDomainResponse {
@@ -1317,8 +1925,13 @@ export interface UpdateDomainResponse {
   /** The properties of a Domains resource. */
   properties?: DomainProperties;
 }
+const UpdateDomainResponse = GetDomainResponse as any as S.Schema<UpdateDomainResponse>;
+
 /** Tags of the service which is a list of key value pairs that describe the resource. */
 export type UpdateEmailServiceRequestTagsMap = { [key: string]: string | undefined };
+const UpdateEmailServiceRequestTagsMap =
+  CommunicationServicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEmailServiceRequestTagsMap>;
+
 export interface UpdateEmailServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1329,6 +1942,11 @@ export interface UpdateEmailServiceRequest {
   /** Tags of the service which is a list of key value pairs that describe the resource. */
   tags?: UpdateEmailServiceRequestTagsMap;
 }
+const UpdateEmailServiceRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<UpdateEmailServiceRequest>;
+
 /** Resource tags. */
 export type UpdateEmailServiceResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateEmailServiceResponse {
@@ -1347,6 +1965,9 @@ export interface UpdateEmailServiceResponse {
   /** The properties of the service. */
   properties?: EmailServiceProperties;
 }
+const UpdateEmailServiceResponse =
+  EmailServicesCreateOrUpdateResponse as any as S.Schema<UpdateEmailServiceResponse>;
+
 export type CancelDomainVerificationError = AzureOpError;
 /** Cancel Verification Cancel verification of DNS record. */
 export const CancelDomainVerification: API.OperationMethod<
@@ -1355,8 +1976,8 @@ export const CancelDomainVerification: API.OperationMethod<
   CancelDomainVerificationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CancelDomainVerificationRequest>,
-  output: __S(1) as any as S.Schema<CancelDomainVerificationResponse>,
+  input: CancelDomainVerificationRequest,
+  output: CancelDomainVerificationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1370,8 +1991,8 @@ export const CheckCommunicationServiceNameAvailability: API.OperationMethod<
   CheckCommunicationServiceNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CheckCommunicationServiceNameAvailabilityRequest>,
-  output: __S(3) as any as S.Schema<CheckCommunicationServiceNameAvailabilityResponse>,
+  input: CheckCommunicationServiceNameAvailabilityRequest,
+  output: CheckCommunicationServiceNameAvailabilityResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1385,8 +2006,8 @@ export const CommunicationServicesCreateOrUpdate: API.OperationMethod<
   CommunicationServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CommunicationServicesCreateOrUpdateRequest>,
-  output: __S(16) as any as S.Schema<CommunicationServicesCreateOrUpdateResponse>,
+  input: CommunicationServicesCreateOrUpdateRequest,
+  output: CommunicationServicesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1400,8 +2021,8 @@ export const CommunicationServicesLinkNotificationHub: API.OperationMethod<
   CommunicationServicesLinkNotificationHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<CommunicationServicesLinkNotificationHubRequest>,
-  output: __S(18) as any as S.Schema<LinkedNotificationHub>,
+  input: CommunicationServicesLinkNotificationHubRequest,
+  output: LinkedNotificationHub,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1415,8 +2036,8 @@ export const DeleteCommunicationService: API.OperationMethod<
   DeleteCommunicationServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<DeleteCommunicationServiceRequest>,
-  output: __S(1) as any as S.Schema<DeleteCommunicationServiceResponse>,
+  input: DeleteCommunicationServiceRequest,
+  output: DeleteCommunicationServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1430,8 +2051,8 @@ export const DeleteDomain: API.OperationMethod<
   DeleteDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<DeleteDomainRequest>,
-  output: __S(7) as any as S.Schema<DeleteDomainResponse>,
+  input: DeleteDomainRequest,
+  output: DeleteDomainResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1445,8 +2066,8 @@ export const DeleteEmailService: API.OperationMethod<
   DeleteEmailServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<DeleteEmailServiceRequest>,
-  output: __S(7) as any as S.Schema<DeleteEmailServiceResponse>,
+  input: DeleteEmailServiceRequest,
+  output: DeleteEmailServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1460,8 +2081,8 @@ export const DeleteSenderUsername: API.OperationMethod<
   DeleteSenderUsernameError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<DeleteSenderUsernameRequest>,
-  output: __S(7) as any as S.Schema<DeleteSenderUsernameResponse>,
+  input: DeleteSenderUsernameRequest,
+  output: DeleteSenderUsernameResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1475,8 +2096,8 @@ export const DeleteSmtpUsername: API.OperationMethod<
   DeleteSmtpUsernameError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<DeleteSmtpUsernameRequest>,
-  output: __S(7) as any as S.Schema<DeleteSmtpUsernameResponse>,
+  input: DeleteSmtpUsernameRequest,
+  output: DeleteSmtpUsernameResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1490,8 +2111,8 @@ export const DeleteSuppressionList: API.OperationMethod<
   DeleteSuppressionListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<DeleteSuppressionListRequest>,
-  output: __S(7) as any as S.Schema<DeleteSuppressionListResponse>,
+  input: DeleteSuppressionListRequest,
+  output: DeleteSuppressionListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1505,8 +2126,8 @@ export const DeleteSuppressionListAddress: API.OperationMethod<
   DeleteSuppressionListAddressError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<DeleteSuppressionListAddressRequest>,
-  output: __S(1) as any as S.Schema<DeleteSuppressionListAddressResponse>,
+  input: DeleteSuppressionListAddressRequest,
+  output: DeleteSuppressionListAddressResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1520,8 +2141,8 @@ export const DomainsCreateOrUpdate: API.OperationMethod<
   DomainsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<DomainsCreateOrUpdateRequest>,
-  output: __S(33) as any as S.Schema<DomainsCreateOrUpdateResponse>,
+  input: DomainsCreateOrUpdateRequest,
+  output: DomainsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1535,8 +2156,8 @@ export const DomainsInitiateVerification: API.OperationMethod<
   DomainsInitiateVerificationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<DomainsInitiateVerificationRequest>,
-  output: __S(1) as any as S.Schema<DomainsInitiateVerificationResponse>,
+  input: DomainsInitiateVerificationRequest,
+  output: DomainsInitiateVerificationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1550,8 +2171,8 @@ export const EmailServicesCreateOrUpdate: API.OperationMethod<
   EmailServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<EmailServicesCreateOrUpdateRequest>,
-  output: __S(37) as any as S.Schema<EmailServicesCreateOrUpdateResponse>,
+  input: EmailServicesCreateOrUpdateRequest,
+  output: EmailServicesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1565,8 +2186,8 @@ export const GetCommunicationService: API.OperationMethod<
   GetCommunicationServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<GetCommunicationServiceRequest>,
-  output: __S(16) as any as S.Schema<GetCommunicationServiceResponse>,
+  input: GetCommunicationServiceRequest,
+  output: GetCommunicationServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1580,8 +2201,8 @@ export const GetDomain: API.OperationMethod<
   GetDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<GetDomainRequest>,
-  output: __S(40) as any as S.Schema<GetDomainResponse>,
+  input: GetDomainRequest,
+  output: GetDomainResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1595,8 +2216,8 @@ export const GetEmailService: API.OperationMethod<
   GetEmailServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<GetEmailServiceRequest>,
-  output: __S(42) as any as S.Schema<GetEmailServiceResponse>,
+  input: GetEmailServiceRequest,
+  output: GetEmailServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1610,8 +2231,8 @@ export const GetSenderUsername: API.OperationMethod<
   GetSenderUsernameError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<GetSenderUsernameRequest>,
-  output: __S(45) as any as S.Schema<GetSenderUsernameResponse>,
+  input: GetSenderUsernameRequest,
+  output: GetSenderUsernameResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1625,8 +2246,8 @@ export const GetSmtpUsername: API.OperationMethod<
   GetSmtpUsernameError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<GetSmtpUsernameRequest>,
-  output: __S(48) as any as S.Schema<GetSmtpUsernameResponse>,
+  input: GetSmtpUsernameRequest,
+  output: GetSmtpUsernameResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1640,8 +2261,8 @@ export const GetSuppressionList: API.OperationMethod<
   GetSuppressionListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetSuppressionListRequest>,
-  output: __S(51) as any as S.Schema<GetSuppressionListResponse>,
+  input: GetSuppressionListRequest,
+  output: GetSuppressionListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1655,8 +2276,8 @@ export const GetSuppressionListAddress: API.OperationMethod<
   GetSuppressionListAddressError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<GetSuppressionListAddressRequest>,
-  output: __S(54) as any as S.Schema<GetSuppressionListAddressResponse>,
+  input: GetSuppressionListAddressRequest,
+  output: GetSuppressionListAddressResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1670,8 +2291,8 @@ export const ListCommunicationServiceByResourceGroup: API.OperationMethod<
   ListCommunicationServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<ListCommunicationServiceByResourceGroupRequest>,
-  output: __S(60) as any as S.Schema<CommunicationServiceResourceList>,
+  input: ListCommunicationServiceByResourceGroupRequest,
+  output: CommunicationServiceResourceList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1685,8 +2306,8 @@ export const ListCommunicationServiceBySubscription: API.OperationMethod<
   ListCommunicationServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<ListCommunicationServiceBySubscriptionRequest>,
-  output: __S(60) as any as S.Schema<CommunicationServiceResourceList>,
+  input: ListCommunicationServiceBySubscriptionRequest,
+  output: CommunicationServiceResourceList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1700,8 +2321,8 @@ export const ListCommunicationServiceKeys: API.OperationMethod<
   ListCommunicationServiceKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<ListCommunicationServiceKeysRequest>,
-  output: __S(63) as any as S.Schema<CommunicationServiceKeys>,
+  input: ListCommunicationServiceKeysRequest,
+  output: CommunicationServiceKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1715,8 +2336,8 @@ export const ListDomainByEmailServiceResource: API.OperationMethod<
   ListDomainByEmailServiceResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<ListDomainByEmailServiceResourceRequest>,
-  output: __S(66) as any as S.Schema<DomainResourceList>,
+  input: ListDomainByEmailServiceResourceRequest,
+  output: DomainResourceList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1730,8 +2351,8 @@ export const ListEmailServiceByResourceGroup: API.OperationMethod<
   ListEmailServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<ListEmailServiceByResourceGroupRequest>,
-  output: __S(69) as any as S.Schema<EmailServiceResourceList>,
+  input: ListEmailServiceByResourceGroupRequest,
+  output: EmailServiceResourceList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1745,8 +2366,8 @@ export const ListEmailServiceBySubscription: API.OperationMethod<
   ListEmailServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<ListEmailServiceBySubscriptionRequest>,
-  output: __S(69) as any as S.Schema<EmailServiceResourceList>,
+  input: ListEmailServiceBySubscriptionRequest,
+  output: EmailServiceResourceList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1760,8 +2381,8 @@ export const ListEmailServiceVerifiedExchangeOnlineDomains: API.OperationMethod<
   ListEmailServiceVerifiedExchangeOnlineDomainsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<ListEmailServiceVerifiedExchangeOnlineDomainsRequest>,
-  output: __S(72) as any as S.Schema<ListEmailServiceVerifiedExchangeOnlineDomainsResponse>,
+  input: ListEmailServiceVerifiedExchangeOnlineDomainsRequest,
+  output: ListEmailServiceVerifiedExchangeOnlineDomainsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1775,8 +2396,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<ListOperationsRequest>,
-  output: __S(77) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1790,8 +2411,8 @@ export const ListSenderUsernameByDomains: API.OperationMethod<
   ListSenderUsernameByDomainsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<ListSenderUsernameByDomainsRequest>,
-  output: __S(81) as any as S.Schema<SenderUsernameResourceCollection>,
+  input: ListSenderUsernameByDomainsRequest,
+  output: SenderUsernameResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1805,8 +2426,8 @@ export const ListSmtpUsernames: API.OperationMethod<
   ListSmtpUsernamesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<ListSmtpUsernamesRequest>,
-  output: __S(84) as any as S.Schema<SmtpUsernameResourceCollection>,
+  input: ListSmtpUsernamesRequest,
+  output: SmtpUsernameResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1820,8 +2441,8 @@ export const ListSuppressionListAddresses: API.OperationMethod<
   ListSuppressionListAddressesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<ListSuppressionListAddressesRequest>,
-  output: __S(87) as any as S.Schema<SuppressionListAddressResourceCollection>,
+  input: ListSuppressionListAddressesRequest,
+  output: SuppressionListAddressResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1835,8 +2456,8 @@ export const ListSuppressionListByDomain: API.OperationMethod<
   ListSuppressionListByDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<ListSuppressionListByDomainRequest>,
-  output: __S(91) as any as S.Schema<SuppressionListResourceCollection>,
+  input: ListSuppressionListByDomainRequest,
+  output: SuppressionListResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1850,8 +2471,8 @@ export const RegenerateCommunicationServiceKey: API.OperationMethod<
   RegenerateCommunicationServiceKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<RegenerateCommunicationServiceKeyRequest>,
-  output: __S(63) as any as S.Schema<CommunicationServiceKeys>,
+  input: RegenerateCommunicationServiceKeyRequest,
+  output: CommunicationServiceKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1865,8 +2486,8 @@ export const SenderUsernamesCreateOrUpdate: API.OperationMethod<
   SenderUsernamesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<SenderUsernamesCreateOrUpdateRequest>,
-  output: __S(45) as any as S.Schema<SenderUsernamesCreateOrUpdateResponse>,
+  input: SenderUsernamesCreateOrUpdateRequest,
+  output: SenderUsernamesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1880,8 +2501,8 @@ export const SmtpUsernamesCreateOrUpdate: API.OperationMethod<
   SmtpUsernamesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<SmtpUsernamesCreateOrUpdateRequest>,
-  output: __S(96) as any as S.Schema<SmtpUsernamesCreateOrUpdateResponse>,
+  input: SmtpUsernamesCreateOrUpdateRequest,
+  output: SmtpUsernamesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1895,8 +2516,8 @@ export const SuppressionListAddressesCreateOrUpdate: API.OperationMethod<
   SuppressionListAddressesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<SuppressionListAddressesCreateOrUpdateRequest>,
-  output: __S(54) as any as S.Schema<SuppressionListAddressesCreateOrUpdateResponse>,
+  input: SuppressionListAddressesCreateOrUpdateRequest,
+  output: SuppressionListAddressesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1910,8 +2531,8 @@ export const SuppressionListsCreateOrUpdate: API.OperationMethod<
   SuppressionListsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<SuppressionListsCreateOrUpdateRequest>,
-  output: __S(51) as any as S.Schema<SuppressionListsCreateOrUpdateResponse>,
+  input: SuppressionListsCreateOrUpdateRequest,
+  output: SuppressionListsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1925,8 +2546,8 @@ export const UpdateCommunicationService: API.OperationMethod<
   UpdateCommunicationServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<UpdateCommunicationServiceRequest>,
-  output: __S(16) as any as S.Schema<UpdateCommunicationServiceResponse>,
+  input: UpdateCommunicationServiceRequest,
+  output: UpdateCommunicationServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1940,8 +2561,8 @@ export const UpdateDomain: API.OperationMethod<
   UpdateDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<UpdateDomainRequest>,
-  output: __S(40) as any as S.Schema<UpdateDomainResponse>,
+  input: UpdateDomainRequest,
+  output: UpdateDomainResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1955,8 +2576,8 @@ export const UpdateEmailService: API.OperationMethod<
   UpdateEmailServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<UpdateEmailServiceRequest>,
-  output: __S(37) as any as S.Schema<UpdateEmailServiceResponse>,
+  input: UpdateEmailServiceRequest,
+  output: UpdateEmailServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1972,7 +2593,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           emailServiceName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
-          verificationType: S.String,
+          verificationType: VerificationType,
         }).pipe(
           T.Http({
             method: "POST",
@@ -2009,7 +2630,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.optional(S.Boolean),
-          reason: S.optional(S.String),
+          reason: S.optional(CheckCommunicationServiceNameAvailabilityResponseReason),
           message: S.optional(S.String),
         }),
       ).annotate({
@@ -2023,8 +2644,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dataLocation: S.String,
-          linkedDomains: S.optional(__S(5)),
-          publicNetworkAccess: S.optional(S.String),
+          linkedDomains: S.optional(DomainsResourceList),
+          publicNetworkAccess: S.optional(CommunicationServicePropertiesInputPublicNetworkAccess),
           disableLocalAuth: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -2039,12 +2660,14 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(7)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(8)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(
+            CommunicationServicesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap,
+          ),
         }),
       ).annotate({
         identifier: "CommunicationServicesCreateOrUpdateRequestIdentity",
@@ -2055,10 +2678,10 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           communicationServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4)),
+          tags: S.optional(CommunicationServicesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(6)),
-          identity: S.optional(__S(9)),
+          properties: S.optional(CommunicationServicePropertiesInput),
+          identity: S.optional(CommunicationServicesCreateOrUpdateRequestIdentity),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2074,24 +2697,24 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(CommunicationServicesProvisioningState),
           hostName: S.optional(S.String),
           dataLocation: S.String,
           notificationHubId: S.optional(S.String),
           version: S.optional(S.String),
           immutableResourceId: S.optional(S.String),
-          linkedDomains: S.optional(__S(5)),
-          publicNetworkAccess: S.optional(S.String),
+          linkedDomains: S.optional(DomainsResourceList),
+          publicNetworkAccess: S.optional(CommunicationServicePropertiesPublicNetworkAccess),
           disableLocalAuth: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -2105,14 +2728,16 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(13)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
     case 7:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(14)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(
+            CommunicationServicesCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap,
+          ),
         }),
       ).annotate({
         identifier: "CommunicationServicesCreateOrUpdateResponseIdentity",
@@ -2127,11 +2752,11 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CommunicationServicesCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(12)),
-          identity: S.optional(__S(15)),
+          properties: S.optional(CommunicationServiceProperties),
+          identity: S.optional(CommunicationServicesCreateOrUpdateResponseIdentity),
         }),
       ).annotate({
         identifier: "CommunicationServicesCreateOrUpdateResponse",
@@ -2294,8 +2919,8 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          domainManagement: S.String,
-          userEngagementTracking: S.optional(S.String),
+          domainManagement: DomainManagement,
+          userEngagementTracking: S.optional(UserEngagementTracking),
         }),
       ).annotate({ identifier: "DomainPropertiesInput" });
     case 3:
@@ -2305,9 +2930,9 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           emailServiceName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4)),
+          tags: S.optional(DomainsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(26)),
+          properties: S.optional(DomainPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2322,18 +2947,18 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(VerificationStatus),
           errorCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "VerificationStatusRecord" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Domain: S.optional(__S(28)),
-          SPF: S.optional(__S(28)),
-          DKIM: S.optional(__S(28)),
-          DKIM2: S.optional(__S(28)),
-          DMARC: S.optional(__S(28)),
+          Domain: S.optional(VerificationStatusRecord),
+          SPF: S.optional(VerificationStatusRecord),
+          DKIM: S.optional(VerificationStatusRecord),
+          DKIM2: S.optional(VerificationStatusRecord),
+          DMARC: S.optional(VerificationStatusRecord),
         }),
       ).annotate({
         identifier: "DomainPropertiesVerificationStates",
@@ -2350,11 +2975,11 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Domain: S.optional(__S(30)),
-          SPF: S.optional(__S(30)),
-          DKIM: S.optional(__S(30)),
-          DKIM2: S.optional(__S(30)),
-          DMARC: S.optional(__S(30)),
+          Domain: S.optional(DnsRecord),
+          SPF: S.optional(DnsRecord),
+          DKIM: S.optional(DnsRecord),
+          DKIM2: S.optional(DnsRecord),
+          DMARC: S.optional(DnsRecord),
         }),
       ).annotate({
         identifier: "DomainPropertiesVerificationRecords",
@@ -2366,14 +2991,14 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(DomainsProvisioningState),
           dataLocation: S.optional(S.String),
           fromSenderDomain: S.optional(S.String),
           mailFromSenderDomain: S.optional(S.String),
-          domainManagement: S.String,
-          verificationStates: S.optional(__S(29)),
-          verificationRecords: S.optional(__S(31)),
-          userEngagementTracking: S.optional(S.String),
+          domainManagement: DomainManagement,
+          verificationStates: S.optional(DomainPropertiesVerificationStates),
+          verificationRecords: S.optional(DomainPropertiesVerificationRecords),
+          userEngagementTracking: S.optional(UserEngagementTracking),
         }),
       ).annotate({ identifier: "DomainProperties" });
     case 1:
@@ -2382,10 +3007,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(DomainsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(32)),
+          properties: S.optional(DomainProperties),
         }),
       ).annotate({
         identifier: "DomainsCreateOrUpdateResponse",
@@ -2397,7 +3022,7 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           emailServiceName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
-          verificationType: S.String,
+          verificationType: VerificationType,
         }).pipe(
           T.Http({
             method: "POST",
@@ -2412,7 +3037,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(EmailServicesProvisioningState),
           dataLocation: S.String,
         }),
       ).annotate({ identifier: "EmailServiceProperties" });
@@ -2422,9 +3047,9 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           emailServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4)),
+          tags: S.optional(EmailServicesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(35)),
+          properties: S.optional(EmailServiceProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2442,10 +3067,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(EmailServicesCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(35)),
+          properties: S.optional(EmailServiceProperties),
         }),
       ).annotate({
         identifier: "EmailServicesCreateOrUpdateResponse",
@@ -2493,10 +3118,10 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetDomainResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(32)),
+          properties: S.optional(DomainProperties),
         }),
       ).annotate({ identifier: "GetDomainResponse" });
     case 1:
@@ -2520,10 +3145,10 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetEmailServiceResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(35)),
+          properties: S.optional(EmailServiceProperties),
         }),
       ).annotate({ identifier: "GetEmailServiceResponse" });
     case 3:
@@ -2549,7 +3174,7 @@ function __c5(j: number): any {
           dataLocation: S.optional(S.String),
           username: S.String,
           displayName: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "SenderUsernameProperties" });
     case 5:
@@ -2558,8 +3183,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          properties: S.optional(__S(44)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SenderUsernameProperties),
         }),
       ).annotate({
         identifier: "GetSenderUsernameResponse",
@@ -2598,8 +3223,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          properties: S.optional(__S(47)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SmtpUsernameProperties),
         }),
       ).annotate({ identifier: "GetSmtpUsernameResponse" });
     case 1:
@@ -2638,8 +3263,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          properties: S.optional(__S(50)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SuppressionListProperties),
         }),
       ).annotate({
         identifier: "GetSuppressionListResponse",
@@ -2683,8 +3308,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          properties: S.optional(__S(53)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SuppressionListAddressProperties),
         }),
       ).annotate({
         identifier: "GetSuppressionListAddressResponse",
@@ -2710,14 +3335,16 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(13)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
     case 1:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(56)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(
+            CommunicationServiceResourceIdentityUserAssignedIdentitiesMap,
+          ),
         }),
       ).annotate({
         identifier: "CommunicationServiceResourceIdentity",
@@ -2728,21 +3355,21 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CommunicationServiceResourceTagsMap),
           location: S.String,
-          properties: S.optional(__S(12)),
-          identity: S.optional(__S(57)),
+          properties: S.optional(CommunicationServiceProperties),
+          identity: S.optional(CommunicationServiceResourceIdentity),
         }),
       ).annotate({
         identifier: "CommunicationServiceResource",
       });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(CommunicationServiceResource);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(59),
+          value: CommunicationServiceResourceListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2811,11 +3438,11 @@ function __c8(j: number): any {
         identifier: "ListDomainByEmailServiceResourceRequest",
       });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(DomainResource);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(65),
+          value: DomainResourceListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainResourceList" });
@@ -2836,11 +3463,11 @@ function __c8(j: number): any {
         identifier: "ListEmailServiceByResourceGroupRequest",
       });
     case 4:
-      return S.Array(__S(42));
+      return S.Array(EmailServiceResource);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(68),
+          value: EmailServiceResourceListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailServiceResourceList" });
@@ -2879,7 +3506,7 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(5).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => VerifiedExchangeOnlineDomainList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListEmailServiceVerifiedExchangeOnlineDomainsResponse",
       });
     case 1:
@@ -2907,17 +3534,17 @@ function __c9(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(74)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 4:
-      return S.Array(__S(75));
+      return S.Array(Operation);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(76)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -2945,8 +3572,8 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          properties: S.optional(__S(44)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SenderUsernameProperties),
         }),
       ).annotate({ identifier: "SenderUsernameResource" });
   }
@@ -2954,11 +3581,11 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(79));
+      return S.Array(SenderUsernameResource);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(80),
+          value: SenderUsernameResourceCollectionValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2980,11 +3607,11 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "ListSmtpUsernamesRequest" });
     case 3:
-      return S.Array(__S(48));
+      return S.Array(SmtpUsernameResource);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(83),
+          value: SmtpUsernameResourceCollectionValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3010,11 +3637,11 @@ function __c10(j: number): any {
         identifier: "ListSuppressionListAddressesRequest",
       });
     case 6:
-      return S.Array(__S(54));
+      return S.Array(SuppressionListAddressResource);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(86),
+          value: SuppressionListAddressResourceCollectionValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3048,16 +3675,16 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          properties: S.optional(__S(50)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SuppressionListProperties),
         }),
       ).annotate({ identifier: "SuppressionListResource" });
     case 2:
-      return S.Array(__S(89));
+      return S.Array(SuppressionListResource);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(90),
+          value: SuppressionListResourceCollectionValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3069,7 +3696,7 @@ function __c11(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           communicationServiceName: S.String.pipe(T.Label()),
-          keyType: S.optional(S.String),
+          keyType: S.optional(KeyType),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3098,7 +3725,7 @@ function __c11(j: number): any {
           emailServiceName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
           senderUsername: S.String.pipe(T.Label()),
-          properties: S.optional(__S(93)),
+          properties: S.optional(SenderUsernamePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3117,7 +3744,7 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           communicationServiceName: S.String.pipe(T.Label()),
           smtpUsername: S.String.pipe(T.Label()),
-          properties: S.optional(__S(47)),
+          properties: S.optional(SmtpUsernameProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3139,8 +3766,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          properties: S.optional(__S(47)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SmtpUsernameProperties),
         }),
       ).annotate({
         identifier: "SmtpUsernamesCreateOrUpdateResponse",
@@ -3165,7 +3792,7 @@ function __c12(j: number): any {
           domainName: S.String.pipe(T.Label()),
           suppressionListName: S.String.pipe(T.Label()),
           addressId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(97)),
+          properties: S.optional(SuppressionListAddressPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3193,7 +3820,7 @@ function __c12(j: number): any {
           emailServiceName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
           suppressionListName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(99)),
+          properties: S.optional(SuppressionListPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3208,8 +3835,8 @@ function __c12(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          linkedDomains: S.optional(__S(5)),
-          publicNetworkAccess: S.optional(S.String),
+          linkedDomains: S.optional(DomainsResourceList),
+          publicNetworkAccess: S.optional(CommunicationServiceUpdatePropertiesPublicNetworkAccess),
           disableLocalAuth: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -3221,9 +3848,9 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           communicationServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4)),
-          properties: S.optional(__S(101)),
-          identity: S.optional(__S(9)),
+          tags: S.optional(UpdateCommunicationServiceRequestTagsMap),
+          properties: S.optional(CommunicationServiceUpdateProperties),
+          identity: S.optional(UpdateCommunicationServiceRequestIdentity),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3238,7 +3865,7 @@ function __c12(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          userEngagementTracking: S.optional(S.String),
+          userEngagementTracking: S.optional(UserEngagementTracking),
         }),
       ).annotate({ identifier: "UpdateDomainProperties" });
   }
@@ -3252,8 +3879,8 @@ function __c13(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           emailServiceName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4)),
-          properties: S.optional(__S(103)),
+          tags: S.optional(UpdateDomainRequestTagsMap),
+          properties: S.optional(UpdateDomainProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3269,7 +3896,7 @@ function __c13(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           emailServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4)),
+          tags: S.optional(UpdateEmailServiceRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3281,42 +3908,5 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "UpdateEmailServiceRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
   }
 }

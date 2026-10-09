@@ -7,8 +7,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -19,8 +17,15 @@ export interface PrivateIPAddress {
   /** Subnet used to include private IP. */
   subnetResourceId?: string;
 }
+const PrivateIPAddress = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<PrivateIPAddress>;
+
 /** List of the SQL virtual machine instance resource id's that are enrolled into the availability group listener. */
 export type LoadBalancerConfigurationSqlVirtualMachineInstancesList = Array<string>;
+const LoadBalancerConfigurationSqlVirtualMachineInstancesList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<LoadBalancerConfigurationSqlVirtualMachineInstancesList>;
+
 /** A load balancer configuration for an availability group listener. */
 export interface LoadBalancerConfiguration {
   /** Private IP address. */
@@ -34,9 +39,19 @@ export interface LoadBalancerConfiguration {
   /** List of the SQL virtual machine instance resource id's that are enrolled into the availability group listener. */
   sqlVirtualMachineInstances?: LoadBalancerConfigurationSqlVirtualMachineInstancesList;
 }
+const LoadBalancerConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<LoadBalancerConfiguration>;
+
 /** List of load balancer configurations for an availability group listener. */
 export type AvailabilityGroupListenerPropertiesInputLoadBalancerConfigurationsList =
   Array<LoadBalancerConfiguration>;
+const AvailabilityGroupListenerPropertiesInputLoadBalancerConfigurationsList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AvailabilityGroupListenerPropertiesInputLoadBalancerConfigurationsList>;
+
 /** Multi subnet ip configuration for an availability group listener. */
 export interface MultiSubnetIpConfiguration {
   /** Private IP address. */
@@ -44,17 +59,36 @@ export interface MultiSubnetIpConfiguration {
   /** SQL virtual machine instance resource id that are enrolled into the availability group listener. */
   sqlVirtualMachineInstance: string;
 }
+const MultiSubnetIpConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<MultiSubnetIpConfiguration>;
+
 /** List of multi subnet IP configurations for an AG listener. */
 export type AvailabilityGroupListenerPropertiesInputMultiSubnetIpConfigurationsList =
   Array<MultiSubnetIpConfiguration>;
+const AvailabilityGroupListenerPropertiesInputMultiSubnetIpConfigurationsList =
+  /*@__PURE__*/ __L.at(
+    __c0,
+    5,
+  ) as any as S.Schema<AvailabilityGroupListenerPropertiesInputMultiSubnetIpConfigurationsList>;
+
 /** Replica Role in availability group. */
 export type Role = "Primary" | "Secondary";
+const Role = S.String;
+
 /** Replica commit mode in availability group. */
 export type Commit = "Synchronous_Commit" | "Asynchronous_Commit";
+const Commit = S.String;
+
 /** Replica failover mode in availability group. */
 export type Failover = "Automatic" | "Manual";
+const Failover = S.String;
+
 /** Replica readable secondary mode in availability group. */
 export type ReadableSecondary = "No" | "All" | "Read_Only";
+const ReadableSecondary = S.String;
+
 /** Availability group replica configuration. */
 export interface AgReplica {
   /** Sql VirtualMachine Instance Id. */
@@ -68,13 +102,22 @@ export interface AgReplica {
   /** Replica readable secondary mode in availability group. */
   readableSecondary?: ReadableSecondary | (string & {});
 }
+const AgReplica = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AgReplica>;
+
 /** Replica configurations. */
 export type AgConfigurationReplicasList = Array<AgReplica>;
+const AgConfigurationReplicasList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AgConfigurationReplicasList>;
+
 /** Availability group configuration. */
 export interface AgConfiguration {
   /** Replica configurations. */
   replicas?: AgConfigurationReplicasList;
 }
+const AgConfiguration = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AgConfiguration>;
+
 /** The properties of an availability group listener. */
 export interface AvailabilityGroupListenerPropertiesInput {
   /** Name of the availability group. */
@@ -90,6 +133,11 @@ export interface AvailabilityGroupListenerPropertiesInput {
   /** Availability Group configuration. */
   availabilityGroupConfiguration?: AgConfiguration;
 }
+const AvailabilityGroupListenerPropertiesInput = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<AvailabilityGroupListenerPropertiesInput>;
+
 export interface AvailabilityGroupListenersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -102,10 +150,19 @@ export interface AvailabilityGroupListenersCreateOrUpdateRequest {
   /** Resource properties. */
   properties?: AvailabilityGroupListenerPropertiesInput;
 }
+const AvailabilityGroupListenersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<AvailabilityGroupListenersCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -121,12 +178,20 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<SystemData>;
+
 /** List of load balancer configurations for an availability group listener. */
 export type AvailabilityGroupListenerPropertiesLoadBalancerConfigurationsList =
   Array<LoadBalancerConfiguration>;
+const AvailabilityGroupListenerPropertiesLoadBalancerConfigurationsList =
+  AvailabilityGroupListenerPropertiesInputLoadBalancerConfigurationsList as any as S.Schema<AvailabilityGroupListenerPropertiesLoadBalancerConfigurationsList>;
+
 /** List of multi subnet IP configurations for an AG listener. */
 export type AvailabilityGroupListenerPropertiesMultiSubnetIpConfigurationsList =
   Array<MultiSubnetIpConfiguration>;
+const AvailabilityGroupListenerPropertiesMultiSubnetIpConfigurationsList =
+  AvailabilityGroupListenerPropertiesInputMultiSubnetIpConfigurationsList as any as S.Schema<AvailabilityGroupListenerPropertiesMultiSubnetIpConfigurationsList>;
+
 /** The properties of an availability group listener. */
 export interface AvailabilityGroupListenerProperties {
   /** Provisioning state to track the async operation status. */
@@ -144,6 +209,11 @@ export interface AvailabilityGroupListenerProperties {
   /** Availability Group configuration. */
   availabilityGroupConfiguration?: AgConfiguration;
 }
+const AvailabilityGroupListenerProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<AvailabilityGroupListenerProperties>;
+
 export interface AvailabilityGroupListenersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -156,6 +226,11 @@ export interface AvailabilityGroupListenersCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: AvailabilityGroupListenerProperties;
 }
+const AvailabilityGroupListenersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<AvailabilityGroupListenersCreateOrUpdateResponse>;
+
 export interface DeleteAvailabilityGroupListenerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -166,7 +241,17 @@ export interface DeleteAvailabilityGroupListenerRequest {
   /** Name of the availability group listener. */
   availabilityGroupListenerName: string;
 }
+const DeleteAvailabilityGroupListenerRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DeleteAvailabilityGroupListenerRequest>;
+
 export interface DeleteAvailabilityGroupListenerResponse {}
+const DeleteAvailabilityGroupListenerResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DeleteAvailabilityGroupListenerResponse>;
+
 export interface DeleteSqlVirtualMachineRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -175,7 +260,17 @@ export interface DeleteSqlVirtualMachineRequest {
   /** Name of the SQL virtual machine. */
   sqlVirtualMachineName: string;
 }
+const DeleteSqlVirtualMachineRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DeleteSqlVirtualMachineRequest>;
+
 export interface DeleteSqlVirtualMachineResponse {}
+const DeleteSqlVirtualMachineResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DeleteSqlVirtualMachineResponse>;
+
 export interface DeleteSqlVirtualMachineGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -184,7 +279,15 @@ export interface DeleteSqlVirtualMachineGroupRequest {
   /** Name of the SQL virtual machine group. */
   sqlVirtualMachineGroupName: string;
 }
+const DeleteSqlVirtualMachineGroupRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DeleteSqlVirtualMachineGroupRequest>;
+
 export interface DeleteSqlVirtualMachineGroupResponse {}
+const DeleteSqlVirtualMachineGroupResponse =
+  DeleteAvailabilityGroupListenerResponse as any as S.Schema<DeleteSqlVirtualMachineGroupResponse>;
+
 export interface FetchSqlVirtualMachineDCAssessmentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -195,7 +298,15 @@ export interface FetchSqlVirtualMachineDCAssessmentRequest {
   /** Boolean to run disk config Assessment. Use false to fetch past Assessment. */
   runDiskConfigRules?: boolean;
 }
+const FetchSqlVirtualMachineDCAssessmentRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<FetchSqlVirtualMachineDCAssessmentRequest>;
+
 export interface FetchSqlVirtualMachineDCAssessmentResponse {}
+const FetchSqlVirtualMachineDCAssessmentResponse =
+  DeleteAvailabilityGroupListenerResponse as any as S.Schema<FetchSqlVirtualMachineDCAssessmentResponse>;
+
 export interface GetAvailabilityGroupListenerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -208,6 +319,11 @@ export interface GetAvailabilityGroupListenerRequest {
   /** The child resources to include in the response. */
   _expand?: string;
 }
+const GetAvailabilityGroupListenerRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetAvailabilityGroupListenerRequest>;
+
 export interface GetAvailabilityGroupListenerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -220,6 +336,9 @@ export interface GetAvailabilityGroupListenerResponse {
   /** Resource properties. */
   properties?: AvailabilityGroupListenerProperties;
 }
+const GetAvailabilityGroupListenerResponse =
+  AvailabilityGroupListenersCreateOrUpdateResponse as any as S.Schema<GetAvailabilityGroupListenerResponse>;
+
 export interface GetSqlVirtualMachineRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -230,16 +349,34 @@ export interface GetSqlVirtualMachineRequest {
   /** The child resources to include in the response. */
   _expand?: string;
 }
+const GetSqlVirtualMachineRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetSqlVirtualMachineRequest>;
+
 /** Resource tags. */
 export type GetSqlVirtualMachineResponseTagsMap = { [key: string]: string | undefined };
+const GetSqlVirtualMachineResponseTagsMap = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetSqlVirtualMachineResponseTagsMap>;
+
 /** SQL Server license type. */
 export type SqlServerLicenseType = "PAYG" | "AHUB" | "DR";
+const SqlServerLicenseType = S.String;
+
 /** SQL Server Management type. NOTE: This parameter is not used anymore. API will automatically detect the Sql Management, refrain from using it. */
 export type SqlManagementMode = "Full" | "LightWeight" | "NoAgent";
+const SqlManagementMode = S.String;
+
 /** SQL IaaS Agent least privilege mode. */
 export type SqlVirtualMachinePropertiesLeastPrivilegeMode = "Enabled" | "NotSet";
+const SqlVirtualMachinePropertiesLeastPrivilegeMode = S.String;
+
 /** SQL Server edition type. */
 export type SqlImageSku = "Developer" | "Express" | "Standard" | "Enterprise" | "Web";
+const SqlImageSku = S.String;
+
 /** Domain credentials for setting up Windows Server Failover Cluster for SQL availability group. */
 export interface WsfcDomainCredentials {
   /** Cluster bootstrap account password. */
@@ -249,6 +386,11 @@ export interface WsfcDomainCredentials {
   /** SQL service account password. */
   sqlServiceAccountPassword?: string | Redacted.Redacted<string>;
 }
+const WsfcDomainCredentials = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<WsfcDomainCredentials>;
+
 /** Day of week to apply the patch on. */
 export type DayOfWeek =
   | "Everyday"
@@ -259,8 +401,12 @@ export type DayOfWeek =
   | "Friday"
   | "Saturday"
   | "Sunday";
+const DayOfWeek = S.String;
+
 /** Additional Patch to be enable or enabled on the SQL Virtual Machine. */
 export type AutoPatchingSettingsAdditionalVmPatch = "NotSet" | "MicrosoftUpdate";
+const AutoPatchingSettingsAdditionalVmPatch = S.String;
+
 /** Set a patching window during which Windows and SQL patches will be applied. */
 export interface AutoPatchingSettings {
   /** Enable or disable autopatching on SQL virtual machine. */
@@ -274,10 +420,16 @@ export interface AutoPatchingSettings {
   /** Additional Patch to be enable or enabled on the SQL Virtual Machine. */
   additionalVmPatch?: AutoPatchingSettingsAdditionalVmPatch | (string & {});
 }
+const AutoPatchingSettings = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<AutoPatchingSettings>;
+
 /** Backup schedule type. */
 export type BackupScheduleType = "Manual" | "Automated";
+const BackupScheduleType = S.String;
+
 /** Frequency of full backups. In both cases, full backups begin during the next scheduled time window. */
 export type FullBackupFrequencyType = "Daily" | "Weekly";
+const FullBackupFrequencyType = S.String;
+
 export type AutoBackupDaysOfWeek =
   | "Monday"
   | "Tuesday"
@@ -286,8 +438,15 @@ export type AutoBackupDaysOfWeek =
   | "Friday"
   | "Saturday"
   | "Sunday";
+const AutoBackupDaysOfWeek = S.String;
+
 /** Days of the week for the backups when FullBackupFrequency is set to Weekly. */
 export type AutoBackupSettingsDaysOfWeekList = Array<AutoBackupDaysOfWeek | (string & {})>;
+const AutoBackupSettingsDaysOfWeekList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<AutoBackupSettingsDaysOfWeekList>;
+
 /** Configure backups for databases in your SQL virtual machine. */
 export interface AutoBackupSettings {
   /** Enable or disable autobackup on SQL virtual machine. */
@@ -319,6 +478,8 @@ export interface AutoBackupSettings {
   /** Frequency of log backups. 5-60 minutes. */
   logBackupFrequency?: number;
 }
+const AutoBackupSettings = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<AutoBackupSettings>;
+
 /** Configure your SQL virtual machine to be able to connect to the Azure Key Vault service. */
 export interface KeyVaultCredentialSettings {
   /** Enable or disable key vault credential setting. */
@@ -332,8 +493,15 @@ export interface KeyVaultCredentialSettings {
   /** Service principal name secret to access key vault. */
   servicePrincipalSecret?: string;
 }
+const KeyVaultCredentialSettings = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<KeyVaultCredentialSettings>;
+
 /** SQL Server connectivity option. */
 export type ConnectivityType = "LOCAL" | "PRIVATE" | "PUBLIC";
+const ConnectivityType = S.String;
+
 /** Set the access level and network port settings for SQL Server. */
 export interface SqlConnectivityUpdateSettings {
   /** SQL Server connectivity option. */
@@ -345,15 +513,29 @@ export interface SqlConnectivityUpdateSettings {
   /** SQL Server sysadmin login password. */
   sqlAuthUpdatePassword?: string | Redacted.Redacted<string>;
 }
+const SqlConnectivityUpdateSettings = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<SqlConnectivityUpdateSettings>;
+
 /** SQL Server workload type. */
 export type SqlWorkloadType = "GENERAL" | "OLTP" | "DW";
+const SqlWorkloadType = S.String;
+
 /** Set workload type to optimize storage for SQL Server. */
 export interface SqlWorkloadTypeUpdateSettings {
   /** SQL Server workload type. */
   sqlWorkloadType?: SqlWorkloadType | (string & {});
 }
+const SqlWorkloadTypeUpdateSettings = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<SqlWorkloadTypeUpdateSettings>;
+
 /** Disk configuration to apply to SQL Server. */
 export type DiskConfigurationType = "NEW" | "EXTEND" | "ADD";
+const DiskConfigurationType = S.String;
+
 /** Set disk storage settings for SQL Server. */
 export interface SqlStorageUpdateSettings {
   /** Virtual machine disk count. */
@@ -363,11 +545,21 @@ export interface SqlStorageUpdateSettings {
   /** Disk configuration to apply to SQL Server. */
   diskConfigurationType?: DiskConfigurationType | (string & {});
 }
+const SqlStorageUpdateSettings = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<SqlStorageUpdateSettings>;
+
 /** Additional SQL Server feature settings. */
 export interface AdditionalFeaturesServerConfigurations {
   /** Enable or disable R services (SQL 2016 onwards). */
   isRServicesEnabled?: boolean;
 }
+const AdditionalFeaturesServerConfigurations = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<AdditionalFeaturesServerConfigurations>;
+
 /** Set the server/instance-level settings for SQL Server. */
 export interface SQLInstanceSettings {
   /** SQL Server Collation. */
@@ -385,11 +577,18 @@ export interface SQLInstanceSettings {
   /** SQL Server IFI. */
   isIfiEnabled?: boolean;
 }
+const SQLInstanceSettings = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<SQLInstanceSettings>;
+
 /** Enable AAD authentication for SQL VM. */
 export interface AADAuthenticationSettings {
   /** The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity */
   clientId?: string;
 }
+const AADAuthenticationSettings = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<AADAuthenticationSettings>;
+
 /** Set the connectivity, storage and workload settings. */
 export interface ServerConfigurationsManagementSettings {
   /** SQL connectivity type settings. */
@@ -405,8 +604,18 @@ export interface ServerConfigurationsManagementSettings {
   /** Azure AD authentication Settings. */
   azureAdAuthenticationSettings?: AADAuthenticationSettings;
 }
+const ServerConfigurationsManagementSettings = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ServerConfigurationsManagementSettings>;
+
 /** Logical Unit Numbers for the disks. */
 export type SQLStorageSettingsLunsList = Array<number>;
+const SQLStorageSettingsLunsList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<SQLStorageSettingsLunsList>;
+
 /** Set disk storage settings for SQL Server. */
 export interface SQLStorageSettings {
   /** Logical Unit Numbers for the disks. */
@@ -416,8 +625,13 @@ export interface SQLStorageSettings {
   /** Use storage pool to build a drive if true or not provided */
   useStoragePool?: boolean;
 }
+const SQLStorageSettings = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<SQLStorageSettings>;
+
 /** Logical Unit Numbers for the disks. */
 export type SQLTempDbSettingsLunsList = Array<number>;
+const SQLTempDbSettingsLunsList =
+  SQLStorageSettingsLunsList as any as S.Schema<SQLTempDbSettingsLunsList>;
+
 /** Set tempDb storage settings for SQL Server. */
 export interface SQLTempDbSettings {
   /** SQL Server tempdb data file size */
@@ -441,8 +655,12 @@ export interface SQLTempDbSettings {
   /** Use storage pool to build a drive if true or not provided */
   useStoragePool?: boolean;
 }
+const SQLTempDbSettings = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<SQLTempDbSettings>;
+
 /** Storage workload type. */
 export type StorageWorkloadType = "GENERAL" | "OLTP" | "DW";
+const StorageWorkloadType = S.String;
+
 /** Storage Configurations for SQL Data, Log and TempDb. */
 export interface StorageConfigurationSettings {
   /** SQL Server Data Storage Settings. */
@@ -460,18 +678,32 @@ export interface StorageConfigurationSettings {
   /** Enable SQL IaaS Agent storage configuration blade in Azure Portal. */
   enableStorageConfigBlade?: boolean;
 }
+const StorageConfigurationSettings = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<StorageConfigurationSettings>;
+
 /** SQL VM troubleshooting scenario. */
 export type TroubleshootingStatusTroubleshootingScenario = "UnhealthyReplica";
+const TroubleshootingStatusTroubleshootingScenario = S.String;
+
 /** SQL VM Troubleshoot UnhealthyReplica scenario information. */
 export interface UnhealthyReplicaInfo {
   /** The name of the availability group */
   availabilityGroupName?: string;
 }
+const UnhealthyReplicaInfo = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<UnhealthyReplicaInfo>;
+
 /** SQL VM Troubleshooting additional properties. */
 export interface TroubleshootingAdditionalProperties {
   /** The unhealthy replica information */
   unhealthyReplicaInfo?: UnhealthyReplicaInfo;
 }
+const TroubleshootingAdditionalProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<TroubleshootingAdditionalProperties>;
+
 /** Status of last troubleshooting operation on this SQL VM */
 export interface TroubleshootingStatus {
   /** Root cause of the issue */
@@ -487,6 +719,11 @@ export interface TroubleshootingStatus {
   /** Troubleshooting properties */
   properties?: TroubleshootingAdditionalProperties;
 }
+const TroubleshootingStatus = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<TroubleshootingStatus>;
+
 /** Day of the week to run assessment. */
 export type AssessmentDayOfWeek =
   | "Monday"
@@ -496,6 +733,8 @@ export type AssessmentDayOfWeek =
   | "Friday"
   | "Saturday"
   | "Sunday";
+const AssessmentDayOfWeek = S.String;
+
 /** Set assessment schedule for SQL Server. */
 export interface Schedule {
   /** Enable or disable assessment schedule on SQL virtual machine. */
@@ -509,6 +748,8 @@ export interface Schedule {
   /** Time of the day in HH:mm format. Eg. 17:30 */
   startTime?: string;
 }
+const Schedule = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Schedule>;
+
 /** Configure SQL best practices Assessment for databases in your SQL virtual machine. */
 export interface AssessmentSettings {
   /** Enable or disable SQL best practices Assessment feature on SQL virtual machine. */
@@ -518,10 +759,16 @@ export interface AssessmentSettings {
   /** Schedule for SQL best practices Assessment. */
   schedule?: Schedule;
 }
+const AssessmentSettings = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<AssessmentSettings>;
+
 /** Additional VM Patching solution enabled on the Virtual Machine */
 export type AdditionalOsPatch = "WU" | "WUMU" | "WSUS";
+const AdditionalOsPatch = S.String;
+
 /** Identity type of the virtual machine. Specify None to opt-out of Managed Identities. */
 export type VmIdentityType = "None" | "SystemAssigned" | "UserAssigned";
+const VmIdentityType = S.String;
+
 /** Virtual Machine Identity details used for Sql IaaS extension configurations. */
 export interface VirtualMachineIdentity {
   /** Identity type of the virtual machine. Specify None to opt-out of Managed Identities. */
@@ -529,8 +776,15 @@ export interface VirtualMachineIdentity {
   /** ARM Resource Id of the identity. Only required when UserAssigned identity is selected. */
   resourceId?: string;
 }
+const VirtualMachineIdentity = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<VirtualMachineIdentity>;
+
 /** Operating System of the current SQL Virtual Machine. */
 export type OsType = "Windows" | "Linux";
+const OsType = S.String;
+
 /** The SQL virtual machine properties. */
 export interface SqlVirtualMachineProperties {
   /** ARM Resource id of underlying virtual machine created from SQL marketplace image. */
@@ -576,12 +830,19 @@ export interface SqlVirtualMachineProperties {
   /** Operating System of the current SQL Virtual Machine. */
   osType?: OsType;
 }
+const SqlVirtualMachineProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<SqlVirtualMachineProperties>;
+
 /** The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource. */
 export type IdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
+const IdentityType = S.String;
+
 /** Azure Active Directory identity configuration for a resource. */
 export interface ResourceIdentity {
   /** The Azure Active Directory principal id. */
@@ -591,6 +852,8 @@ export interface ResourceIdentity {
   /** The Azure Active Directory tenant id. */
   tenantId?: string;
 }
+const ResourceIdentity = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<ResourceIdentity>;
+
 export interface GetSqlVirtualMachineResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -609,6 +872,11 @@ export interface GetSqlVirtualMachineResponse {
   /** DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server. */
   identity?: ResourceIdentity;
 }
+const GetSqlVirtualMachineResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetSqlVirtualMachineResponse>;
+
 export interface GetSqlVirtualMachineGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -617,18 +885,36 @@ export interface GetSqlVirtualMachineGroupRequest {
   /** Name of the SQL virtual machine group. */
   sqlVirtualMachineGroupName: string;
 }
+const GetSqlVirtualMachineGroupRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetSqlVirtualMachineGroupRequest>;
+
 /** Resource tags. */
 export type GetSqlVirtualMachineGroupResponseTagsMap = { [key: string]: string | undefined };
+const GetSqlVirtualMachineGroupResponseTagsMap =
+  GetSqlVirtualMachineResponseTagsMap as any as S.Schema<GetSqlVirtualMachineGroupResponseTagsMap>;
+
 /** SQL image sku. */
 export type SqlVmGroupImageSku = "Developer" | "Enterprise";
+const SqlVmGroupImageSku = S.String;
+
 /** Scale type. */
 export type ScaleType = "HA";
+const ScaleType = S.String;
+
 /** Type of cluster manager: Windows Server Failover Cluster (WSFC), implied by the scale type of the group and the OS type. */
 export type ClusterManagerType = "WSFC";
+const ClusterManagerType = S.String;
+
 /** Cluster type. */
 export type ClusterConfiguration = "Domainful";
+const ClusterConfiguration = S.String;
+
 /** Cluster subnet type. */
 export type ClusterSubnetType = "SingleSubnet" | "MultiSubnet";
+const ClusterSubnetType = S.String;
+
 /** Active Directory account details to operate Windows Server Failover Cluster. */
 export interface WsfcDomainProfile {
   /** Fully qualified name of the domain. */
@@ -652,6 +938,8 @@ export interface WsfcDomainProfile {
   /** Cluster subnet type. */
   clusterSubnetType?: ClusterSubnetType | (string & {});
 }
+const WsfcDomainProfile = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<WsfcDomainProfile>;
+
 /** The properties of a SQL virtual machine group. */
 export interface SqlVirtualMachineGroupProperties {
   /** Provisioning state to track the async operation status. */
@@ -669,6 +957,11 @@ export interface SqlVirtualMachineGroupProperties {
   /** Cluster Active Directory domain profile. */
   wsfcDomainProfile?: WsfcDomainProfile;
 }
+const SqlVirtualMachineGroupProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<SqlVirtualMachineGroupProperties>;
+
 export interface GetSqlVirtualMachineGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -685,6 +978,11 @@ export interface GetSqlVirtualMachineGroupResponse {
   /** Resource properties. */
   properties?: SqlVirtualMachineGroupProperties;
 }
+const GetSqlVirtualMachineGroupResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GetSqlVirtualMachineGroupResponse>;
+
 export interface ListAvailabilityGroupListenerByGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -693,6 +991,11 @@ export interface ListAvailabilityGroupListenerByGroupRequest {
   /** Name of the SQL virtual machine group. */
   sqlVirtualMachineGroupName: string;
 }
+const ListAvailabilityGroupListenerByGroupRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ListAvailabilityGroupListenerByGroupRequest>;
+
 /** A SQL Server availability group listener. */
 export interface AvailabilityGroupListener {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -706,8 +1009,16 @@ export interface AvailabilityGroupListener {
   /** Resource properties. */
   properties?: AvailabilityGroupListenerProperties;
 }
+const AvailabilityGroupListener =
+  AvailabilityGroupListenersCreateOrUpdateResponse as any as S.Schema<AvailabilityGroupListener>;
+
 /** The AvailabilityGroupListener items on this page */
 export type AvailabilityGroupListenerListResultValueList = Array<AvailabilityGroupListener>;
+const AvailabilityGroupListenerListResultValueList = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<AvailabilityGroupListenerListResultValueList>;
+
 /** The response of a AvailabilityGroupListener list operation. */
 export interface AvailabilityGroupListenerListResult {
   /** The AvailabilityGroupListener items on this page */
@@ -715,7 +1026,17 @@ export interface AvailabilityGroupListenerListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const AvailabilityGroupListenerListResult = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<AvailabilityGroupListenerListResult>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Display metadata associated with the operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -727,10 +1048,19 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation. */
 export type OperationOrigin = "user" | "system";
+const OperationOrigin = S.String;
+
 /** Additional descriptions for the operation. */
 export type OperationPropertiesMap = { [key: string]: unknown | undefined };
+const OperationPropertiesMap = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<OperationPropertiesMap>;
+
 /** Result of the request to list SQL operations. */
 export interface Operation {
   /** The name of the operation being performed on this particular object." */
@@ -742,8 +1072,15 @@ export interface Operation {
   /** Additional descriptions for the operation. */
   properties?: OperationPropertiesMap;
 }
+const Operation = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<Operation>;
+
 /** The Operation items on this page */
 export type OperationListResultValueList = Array<Operation>;
+const OperationListResultValueList = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<OperationListResultValueList>;
+
 /** Virtual machine resource id for response. */
 export interface OperationListResult {
   /** The Operation items on this page */
@@ -751,14 +1088,24 @@ export interface OperationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const OperationListResult = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<OperationListResult>;
+
 export interface ListSqlVirtualMachineByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListSqlVirtualMachineByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListSqlVirtualMachineByResourceGroupRequest>;
+
 /** Resource tags. */
 export type SqlVirtualMachineTagsMap = { [key: string]: string | undefined };
+const SqlVirtualMachineTagsMap =
+  GetSqlVirtualMachineResponseTagsMap as any as S.Schema<SqlVirtualMachineTagsMap>;
+
 /** A SQL virtual machine. */
 export interface SqlVirtualMachine {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -778,8 +1125,15 @@ export interface SqlVirtualMachine {
   /** DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server. */
   identity?: ResourceIdentity;
 }
+const SqlVirtualMachine = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<SqlVirtualMachine>;
+
 /** The SqlVirtualMachine items on this page */
 export type SqlVirtualMachineListResultValueList = Array<SqlVirtualMachine>;
+const SqlVirtualMachineListResultValueList = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<SqlVirtualMachineListResultValueList>;
+
 /** The response of a SqlVirtualMachine list operation. */
 export interface SqlVirtualMachineListResult {
   /** The SqlVirtualMachine items on this page */
@@ -787,6 +1141,11 @@ export interface SqlVirtualMachineListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SqlVirtualMachineListResult = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<SqlVirtualMachineListResult>;
+
 export interface ListSqlVirtualMachineBySqlVmGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -795,14 +1154,27 @@ export interface ListSqlVirtualMachineBySqlVmGroupRequest {
   /** Name of the SQL virtual machine group. */
   sqlVirtualMachineGroupName: string;
 }
+const ListSqlVirtualMachineBySqlVmGroupRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ListSqlVirtualMachineBySqlVmGroupRequest>;
+
 export interface ListSqlVirtualMachineGroupByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListSqlVirtualMachineGroupByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ListSqlVirtualMachineGroupByResourceGroupRequest>;
+
 /** Resource tags. */
 export type SqlVirtualMachineGroupTagsMap = { [key: string]: string | undefined };
+const SqlVirtualMachineGroupTagsMap =
+  GetSqlVirtualMachineResponseTagsMap as any as S.Schema<SqlVirtualMachineGroupTagsMap>;
+
 /** A SQL virtual machine group. */
 export interface SqlVirtualMachineGroup {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -820,8 +1192,18 @@ export interface SqlVirtualMachineGroup {
   /** Resource properties. */
   properties?: SqlVirtualMachineGroupProperties;
 }
+const SqlVirtualMachineGroup = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<SqlVirtualMachineGroup>;
+
 /** The SqlVirtualMachineGroup items on this page */
 export type SqlVirtualMachineGroupListResultValueList = Array<SqlVirtualMachineGroup>;
+const SqlVirtualMachineGroupListResultValueList = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<SqlVirtualMachineGroupListResultValueList>;
+
 /** The response of a SqlVirtualMachineGroup list operation. */
 export interface SqlVirtualMachineGroupListResult {
   /** The SqlVirtualMachineGroup items on this page */
@@ -829,14 +1211,29 @@ export interface SqlVirtualMachineGroupListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SqlVirtualMachineGroupListResult = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<SqlVirtualMachineGroupListResult>;
+
 export interface ListSqlVirtualMachineGroupsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListSqlVirtualMachineGroupsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListSqlVirtualMachineGroupsRequest>;
+
 export interface ListSqlVirtualMachinesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListSqlVirtualMachinesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListSqlVirtualMachinesRequest>;
+
 export interface RedeploySqlVirtualMachineRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -845,11 +1242,22 @@ export interface RedeploySqlVirtualMachineRequest {
   /** Name of the SQL virtual machine. */
   sqlVirtualMachineName: string;
 }
+const RedeploySqlVirtualMachineRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<RedeploySqlVirtualMachineRequest>;
+
 export interface RedeploySqlVirtualMachineResponse {}
+const RedeploySqlVirtualMachineResponse =
+  DeleteAvailabilityGroupListenerResponse as any as S.Schema<RedeploySqlVirtualMachineResponse>;
+
 /** Resource tags. */
 export type SqlVirtualMachineGroupsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const SqlVirtualMachineGroupsCreateOrUpdateRequestTagsMap =
+  GetSqlVirtualMachineResponseTagsMap as any as S.Schema<SqlVirtualMachineGroupsCreateOrUpdateRequestTagsMap>;
+
 /** The properties of a SQL virtual machine group. */
 export interface SqlVirtualMachineGroupPropertiesInput {
   /** SQL image offer. Examples may include SQL2016-WS2016, SQL2017-WS2016. */
@@ -859,6 +1267,11 @@ export interface SqlVirtualMachineGroupPropertiesInput {
   /** Cluster Active Directory domain profile. */
   wsfcDomainProfile?: WsfcDomainProfile;
 }
+const SqlVirtualMachineGroupPropertiesInput = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<SqlVirtualMachineGroupPropertiesInput>;
+
 export interface SqlVirtualMachineGroupsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -873,6 +1286,11 @@ export interface SqlVirtualMachineGroupsCreateOrUpdateRequest {
   /** Resource properties. */
   properties?: SqlVirtualMachineGroupPropertiesInput;
 }
+const SqlVirtualMachineGroupsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<SqlVirtualMachineGroupsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type SqlVirtualMachineGroupsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -893,10 +1311,18 @@ export interface SqlVirtualMachineGroupsCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: SqlVirtualMachineGroupProperties;
 }
+const SqlVirtualMachineGroupsCreateOrUpdateResponse =
+  GetSqlVirtualMachineGroupResponse as any as S.Schema<SqlVirtualMachineGroupsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type SqlVirtualMachinesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const SqlVirtualMachinesCreateOrUpdateRequestTagsMap =
+  GetSqlVirtualMachineResponseTagsMap as any as S.Schema<SqlVirtualMachinesCreateOrUpdateRequestTagsMap>;
+
 /** SQL IaaS Agent least privilege mode. */
 export type SqlVirtualMachinePropertiesInputLeastPrivilegeMode = "Enabled" | "NotSet";
+const SqlVirtualMachinePropertiesInputLeastPrivilegeMode = S.String;
+
 /** The SQL virtual machine properties. */
 export interface SqlVirtualMachinePropertiesInput {
   /** ARM Resource id of underlying virtual machine created from SQL marketplace image. */
@@ -934,11 +1360,21 @@ export interface SqlVirtualMachinePropertiesInput {
   /** Virtual Machine Identity details used for Sql IaaS extension configurations. */
   virtualMachineIdentitySettings?: VirtualMachineIdentity;
 }
+const SqlVirtualMachinePropertiesInput = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<SqlVirtualMachinePropertiesInput>;
+
 /** Azure Active Directory identity configuration for a resource. */
 export interface ResourceIdentityInput {
   /** The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource. */
   type?: IdentityType | (string & {});
 }
+const ResourceIdentityInput = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ResourceIdentityInput>;
+
 export interface SqlVirtualMachinesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -955,6 +1391,11 @@ export interface SqlVirtualMachinesCreateOrUpdateRequest {
   /** DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server. */
   identity?: ResourceIdentityInput;
 }
+const SqlVirtualMachinesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<SqlVirtualMachinesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type SqlVirtualMachinesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface SqlVirtualMachinesCreateOrUpdateResponse {
@@ -975,9 +1416,14 @@ export interface SqlVirtualMachinesCreateOrUpdateResponse {
   /** DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server. */
   identity?: ResourceIdentity;
 }
+const SqlVirtualMachinesCreateOrUpdateResponse =
+  GetSqlVirtualMachineResponse as any as S.Schema<SqlVirtualMachinesCreateOrUpdateResponse>;
+
 /** SQL VM troubleshooting scenario. */
 export type SqlVirtualMachineTroubleshootTroubleshootRequestTroubleshootingScenario =
   "UnhealthyReplica";
+const SqlVirtualMachineTroubleshootTroubleshootRequestTroubleshootingScenario = S.String;
+
 export interface SqlVirtualMachineTroubleshootTroubleshootRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -996,8 +1442,15 @@ export interface SqlVirtualMachineTroubleshootTroubleshootRequest {
   /** Troubleshooting properties */
   properties?: TroubleshootingAdditionalProperties;
 }
+const SqlVirtualMachineTroubleshootTroubleshootRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<SqlVirtualMachineTroubleshootTroubleshootRequest>;
+
 /** SQL VM troubleshooting scenario. */
 export type SqlVmTroubleshootingTroubleshootingScenario = "UnhealthyReplica";
+const SqlVmTroubleshootingTroubleshootingScenario = S.String;
+
 /** Details required for SQL VM troubleshooting */
 export interface SqlVmTroubleshooting {
   /** Start time in UTC timezone. */
@@ -1011,6 +1464,8 @@ export interface SqlVmTroubleshooting {
   /** Virtual machine resource id for response. */
   virtualMachineResourceId?: string;
 }
+const SqlVmTroubleshooting = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<SqlVmTroubleshooting>;
+
 export interface StartSqlVirtualMachineAssessmentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1019,9 +1474,20 @@ export interface StartSqlVirtualMachineAssessmentRequest {
   /** Name of the SQL virtual machine. */
   sqlVirtualMachineName: string;
 }
+const StartSqlVirtualMachineAssessmentRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<StartSqlVirtualMachineAssessmentRequest>;
+
 export interface StartSqlVirtualMachineAssessmentResponse {}
+const StartSqlVirtualMachineAssessmentResponse =
+  DeleteAvailabilityGroupListenerResponse as any as S.Schema<StartSqlVirtualMachineAssessmentResponse>;
+
 /** Resource tags. */
 export type UpdateSqlVirtualMachineRequestTagsMap = { [key: string]: string | undefined };
+const UpdateSqlVirtualMachineRequestTagsMap =
+  GetSqlVirtualMachineResponseTagsMap as any as S.Schema<UpdateSqlVirtualMachineRequestTagsMap>;
+
 export interface UpdateSqlVirtualMachineRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1032,6 +1498,11 @@ export interface UpdateSqlVirtualMachineRequest {
   /** Resource tags. */
   tags?: UpdateSqlVirtualMachineRequestTagsMap;
 }
+const UpdateSqlVirtualMachineRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<UpdateSqlVirtualMachineRequest>;
+
 /** Resource tags. */
 export type UpdateSqlVirtualMachineResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateSqlVirtualMachineResponse {
@@ -1052,8 +1523,14 @@ export interface UpdateSqlVirtualMachineResponse {
   /** DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server. */
   identity?: ResourceIdentity;
 }
+const UpdateSqlVirtualMachineResponse =
+  GetSqlVirtualMachineResponse as any as S.Schema<UpdateSqlVirtualMachineResponse>;
+
 /** Resource tags. */
 export type UpdateSqlVirtualMachineGroupRequestTagsMap = { [key: string]: string | undefined };
+const UpdateSqlVirtualMachineGroupRequestTagsMap =
+  GetSqlVirtualMachineResponseTagsMap as any as S.Schema<UpdateSqlVirtualMachineGroupRequestTagsMap>;
+
 export interface UpdateSqlVirtualMachineGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1064,6 +1541,11 @@ export interface UpdateSqlVirtualMachineGroupRequest {
   /** Resource tags. */
   tags?: UpdateSqlVirtualMachineGroupRequestTagsMap;
 }
+const UpdateSqlVirtualMachineGroupRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<UpdateSqlVirtualMachineGroupRequest>;
+
 /** Resource tags. */
 export type UpdateSqlVirtualMachineGroupResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateSqlVirtualMachineGroupResponse {
@@ -1082,6 +1564,9 @@ export interface UpdateSqlVirtualMachineGroupResponse {
   /** Resource properties. */
   properties?: SqlVirtualMachineGroupProperties;
 }
+const UpdateSqlVirtualMachineGroupResponse =
+  GetSqlVirtualMachineGroupResponse as any as S.Schema<UpdateSqlVirtualMachineGroupResponse>;
+
 export type AvailabilityGroupListenersCreateOrUpdateError = AzureOpError;
 /** Creates or updates an availability group listener. */
 export const AvailabilityGroupListenersCreateOrUpdate: API.OperationMethod<
@@ -1090,8 +1575,8 @@ export const AvailabilityGroupListenersCreateOrUpdate: API.OperationMethod<
   AvailabilityGroupListenersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<AvailabilityGroupListenersCreateOrUpdateRequest>,
-  output: __S(13) as any as S.Schema<AvailabilityGroupListenersCreateOrUpdateResponse>,
+  input: AvailabilityGroupListenersCreateOrUpdateRequest,
+  output: AvailabilityGroupListenersCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1105,8 +1590,8 @@ export const DeleteAvailabilityGroupListener: API.OperationMethod<
   DeleteAvailabilityGroupListenerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<DeleteAvailabilityGroupListenerRequest>,
-  output: __S(15) as any as S.Schema<DeleteAvailabilityGroupListenerResponse>,
+  input: DeleteAvailabilityGroupListenerRequest,
+  output: DeleteAvailabilityGroupListenerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1120,8 +1605,8 @@ export const DeleteSqlVirtualMachine: API.OperationMethod<
   DeleteSqlVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<DeleteSqlVirtualMachineRequest>,
-  output: __S(17) as any as S.Schema<DeleteSqlVirtualMachineResponse>,
+  input: DeleteSqlVirtualMachineRequest,
+  output: DeleteSqlVirtualMachineResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1135,8 +1620,8 @@ export const DeleteSqlVirtualMachineGroup: API.OperationMethod<
   DeleteSqlVirtualMachineGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<DeleteSqlVirtualMachineGroupRequest>,
-  output: __S(15) as any as S.Schema<DeleteSqlVirtualMachineGroupResponse>,
+  input: DeleteSqlVirtualMachineGroupRequest,
+  output: DeleteSqlVirtualMachineGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1150,8 +1635,8 @@ export const FetchSqlVirtualMachineDCAssessment: API.OperationMethod<
   FetchSqlVirtualMachineDCAssessmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<FetchSqlVirtualMachineDCAssessmentRequest>,
-  output: __S(15) as any as S.Schema<FetchSqlVirtualMachineDCAssessmentResponse>,
+  input: FetchSqlVirtualMachineDCAssessmentRequest,
+  output: FetchSqlVirtualMachineDCAssessmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1165,8 +1650,8 @@ export const GetAvailabilityGroupListener: API.OperationMethod<
   GetAvailabilityGroupListenerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<GetAvailabilityGroupListenerRequest>,
-  output: __S(13) as any as S.Schema<GetAvailabilityGroupListenerResponse>,
+  input: GetAvailabilityGroupListenerRequest,
+  output: GetAvailabilityGroupListenerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1180,8 +1665,8 @@ export const GetSqlVirtualMachine: API.OperationMethod<
   GetSqlVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetSqlVirtualMachineRequest>,
-  output: __S(47) as any as S.Schema<GetSqlVirtualMachineResponse>,
+  input: GetSqlVirtualMachineRequest,
+  output: GetSqlVirtualMachineResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1195,8 +1680,8 @@ export const GetSqlVirtualMachineGroup: API.OperationMethod<
   GetSqlVirtualMachineGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<GetSqlVirtualMachineGroupRequest>,
-  output: __S(51) as any as S.Schema<GetSqlVirtualMachineGroupResponse>,
+  input: GetSqlVirtualMachineGroupRequest,
+  output: GetSqlVirtualMachineGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1210,8 +1695,8 @@ export const ListAvailabilityGroupListenerByGroup: API.OperationMethod<
   ListAvailabilityGroupListenerByGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<ListAvailabilityGroupListenerByGroupRequest>,
-  output: __S(54) as any as S.Schema<AvailabilityGroupListenerListResult>,
+  input: ListAvailabilityGroupListenerByGroupRequest,
+  output: AvailabilityGroupListenerListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1225,8 +1710,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<ListOperationsRequest>,
-  output: __S(60) as any as S.Schema<OperationListResult>,
+  input: ListOperationsRequest,
+  output: OperationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1240,8 +1725,8 @@ export const ListSqlVirtualMachineByResourceGroup: API.OperationMethod<
   ListSqlVirtualMachineByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<ListSqlVirtualMachineByResourceGroupRequest>,
-  output: __S(64) as any as S.Schema<SqlVirtualMachineListResult>,
+  input: ListSqlVirtualMachineByResourceGroupRequest,
+  output: SqlVirtualMachineListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1255,8 +1740,8 @@ export const ListSqlVirtualMachineBySqlVmGroup: API.OperationMethod<
   ListSqlVirtualMachineBySqlVmGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<ListSqlVirtualMachineBySqlVmGroupRequest>,
-  output: __S(64) as any as S.Schema<SqlVirtualMachineListResult>,
+  input: ListSqlVirtualMachineBySqlVmGroupRequest,
+  output: SqlVirtualMachineListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1270,8 +1755,8 @@ export const ListSqlVirtualMachineGroupByResourceGroup: API.OperationMethod<
   ListSqlVirtualMachineGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<ListSqlVirtualMachineGroupByResourceGroupRequest>,
-  output: __S(69) as any as S.Schema<SqlVirtualMachineGroupListResult>,
+  input: ListSqlVirtualMachineGroupByResourceGroupRequest,
+  output: SqlVirtualMachineGroupListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1285,8 +1770,8 @@ export const ListSqlVirtualMachineGroups: API.OperationMethod<
   ListSqlVirtualMachineGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<ListSqlVirtualMachineGroupsRequest>,
-  output: __S(69) as any as S.Schema<SqlVirtualMachineGroupListResult>,
+  input: ListSqlVirtualMachineGroupsRequest,
+  output: SqlVirtualMachineGroupListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1300,8 +1785,8 @@ export const ListSqlVirtualMachines: API.OperationMethod<
   ListSqlVirtualMachinesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<ListSqlVirtualMachinesRequest>,
-  output: __S(64) as any as S.Schema<SqlVirtualMachineListResult>,
+  input: ListSqlVirtualMachinesRequest,
+  output: SqlVirtualMachineListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1315,8 +1800,8 @@ export const RedeploySqlVirtualMachine: API.OperationMethod<
   RedeploySqlVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<RedeploySqlVirtualMachineRequest>,
-  output: __S(15) as any as S.Schema<RedeploySqlVirtualMachineResponse>,
+  input: RedeploySqlVirtualMachineRequest,
+  output: RedeploySqlVirtualMachineResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1330,8 +1815,8 @@ export const SqlVirtualMachineGroupsCreateOrUpdate: API.OperationMethod<
   SqlVirtualMachineGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<SqlVirtualMachineGroupsCreateOrUpdateRequest>,
-  output: __S(51) as any as S.Schema<SqlVirtualMachineGroupsCreateOrUpdateResponse>,
+  input: SqlVirtualMachineGroupsCreateOrUpdateRequest,
+  output: SqlVirtualMachineGroupsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1345,8 +1830,8 @@ export const SqlVirtualMachinesCreateOrUpdate: API.OperationMethod<
   SqlVirtualMachinesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<SqlVirtualMachinesCreateOrUpdateRequest>,
-  output: __S(47) as any as S.Schema<SqlVirtualMachinesCreateOrUpdateResponse>,
+  input: SqlVirtualMachinesCreateOrUpdateRequest,
+  output: SqlVirtualMachinesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1360,8 +1845,8 @@ export const SqlVirtualMachineTroubleshootTroubleshoot: API.OperationMethod<
   SqlVirtualMachineTroubleshootTroubleshootError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<SqlVirtualMachineTroubleshootTroubleshootRequest>,
-  output: __S(79) as any as S.Schema<SqlVmTroubleshooting>,
+  input: SqlVirtualMachineTroubleshootTroubleshootRequest,
+  output: SqlVmTroubleshooting,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1375,8 +1860,8 @@ export const StartSqlVirtualMachineAssessment: API.OperationMethod<
   StartSqlVirtualMachineAssessmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<StartSqlVirtualMachineAssessmentRequest>,
-  output: __S(15) as any as S.Schema<StartSqlVirtualMachineAssessmentResponse>,
+  input: StartSqlVirtualMachineAssessmentRequest,
+  output: StartSqlVirtualMachineAssessmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1390,8 +1875,8 @@ export const UpdateSqlVirtualMachine: API.OperationMethod<
   UpdateSqlVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<UpdateSqlVirtualMachineRequest>,
-  output: __S(47) as any as S.Schema<UpdateSqlVirtualMachineResponse>,
+  input: UpdateSqlVirtualMachineRequest,
+  output: UpdateSqlVirtualMachineResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1405,8 +1890,8 @@ export const UpdateSqlVirtualMachineGroup: API.OperationMethod<
   UpdateSqlVirtualMachineGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<UpdateSqlVirtualMachineGroupRequest>,
-  output: __S(51) as any as S.Schema<UpdateSqlVirtualMachineGroupResponse>,
+  input: UpdateSqlVirtualMachineGroupRequest,
+  output: UpdateSqlVirtualMachineGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1427,40 +1912,42 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          privateIpAddress: S.optional(__S(0)),
+          privateIpAddress: S.optional(PrivateIPAddress),
           publicIpAddressResourceId: S.optional(S.String),
           loadBalancerResourceId: S.optional(S.String),
           probePort: S.optional(S.Number),
-          sqlVirtualMachineInstances: S.optional(__S(1)),
+          sqlVirtualMachineInstances: S.optional(
+            LoadBalancerConfigurationSqlVirtualMachineInstancesList,
+          ),
         }),
       ).annotate({
         identifier: "LoadBalancerConfiguration",
       });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(LoadBalancerConfiguration);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          privateIpAddress: __S(0),
+          privateIpAddress: PrivateIPAddress,
           sqlVirtualMachineInstance: S.String,
         }),
       ).annotate({
         identifier: "MultiSubnetIpConfiguration",
       });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(MultiSubnetIpConfiguration);
     case 6:
       return S.suspend(() =>
         S.Struct({
           sqlVirtualMachineInstanceId: S.optional(S.String),
-          role: S.optional(S.String),
-          commit: S.optional(S.String),
-          failover: S.optional(S.String),
-          readableSecondary: S.optional(S.String),
+          role: S.optional(Role),
+          commit: S.optional(Commit),
+          failover: S.optional(Failover),
+          readableSecondary: S.optional(ReadableSecondary),
         }),
       ).annotate({ identifier: "AgReplica" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(AgReplica);
   }
 }
 function __c1(j: number): any {
@@ -1468,18 +1955,22 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          replicas: S.optional(__S(7)),
+          replicas: S.optional(AgConfigurationReplicasList),
         }),
       ).annotate({ identifier: "AgConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           availabilityGroupName: S.optional(S.String),
-          loadBalancerConfigurations: S.optional(__S(3)),
-          multiSubnetIpConfigurations: S.optional(__S(5)),
+          loadBalancerConfigurations: S.optional(
+            AvailabilityGroupListenerPropertiesInputLoadBalancerConfigurationsList,
+          ),
+          multiSubnetIpConfigurations: S.optional(
+            AvailabilityGroupListenerPropertiesInputMultiSubnetIpConfigurationsList,
+          ),
           createDefaultAvailabilityGroupIfNotExist: S.optional(S.Boolean),
           port: S.optional(S.Number),
-          availabilityGroupConfiguration: S.optional(__S(8)),
+          availabilityGroupConfiguration: S.optional(AgConfiguration),
         }),
       ).annotate({
         identifier: "AvailabilityGroupListenerPropertiesInput",
@@ -1491,7 +1982,7 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sqlVirtualMachineGroupName: S.String.pipe(T.Label()),
           availabilityGroupListenerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(9)),
+          properties: S.optional(AvailabilityGroupListenerPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1507,10 +1998,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -1519,11 +2010,15 @@ function __c1(j: number): any {
         S.Struct({
           provisioningState: S.optional(S.String),
           availabilityGroupName: S.optional(S.String),
-          loadBalancerConfigurations: S.optional(__S(3)),
-          multiSubnetIpConfigurations: S.optional(__S(5)),
+          loadBalancerConfigurations: S.optional(
+            AvailabilityGroupListenerPropertiesLoadBalancerConfigurationsList,
+          ),
+          multiSubnetIpConfigurations: S.optional(
+            AvailabilityGroupListenerPropertiesMultiSubnetIpConfigurationsList,
+          ),
           createDefaultAvailabilityGroupIfNotExist: S.optional(S.Boolean),
           port: S.optional(S.Number),
-          availabilityGroupConfiguration: S.optional(__S(8)),
+          availabilityGroupConfiguration: S.optional(AgConfiguration),
         }),
       ).annotate({
         identifier: "AvailabilityGroupListenerProperties",
@@ -1534,8 +2029,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          properties: S.optional(__S(12)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AvailabilityGroupListenerProperties),
         }),
       ).annotate({
         identifier: "AvailabilityGroupListenersCreateOrUpdateResponse",
@@ -1677,14 +2172,14 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enable: S.optional(S.Boolean),
-          dayOfWeek: S.optional(S.String),
+          dayOfWeek: S.optional(DayOfWeek),
           maintenanceWindowStartingHour: S.optional(S.Number),
           maintenanceWindowDuration: S.optional(S.Number),
-          additionalVmPatch: S.optional(S.String),
+          additionalVmPatch: S.optional(AutoPatchingSettingsAdditionalVmPatch),
         }),
       ).annotate({ identifier: "AutoPatchingSettings" });
     case 1:
-      return S.Array(S.String);
+      return S.Array(AutoBackupDaysOfWeek);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1696,9 +2191,9 @@ function __c3(j: number): any {
           storageAccessKey: S.optional(S.String),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           backupSystemDbs: S.optional(S.Boolean),
-          backupScheduleType: S.optional(S.String),
-          fullBackupFrequency: S.optional(S.String),
-          daysOfWeek: S.optional(__S(25)),
+          backupScheduleType: S.optional(BackupScheduleType),
+          fullBackupFrequency: S.optional(FullBackupFrequencyType),
+          daysOfWeek: S.optional(AutoBackupSettingsDaysOfWeekList),
           fullBackupStartTime: S.optional(S.Number),
           fullBackupWindowHours: S.optional(S.Number),
           logBackupFrequency: S.optional(S.Number),
@@ -1719,7 +2214,7 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          connectivityType: S.optional(S.String),
+          connectivityType: S.optional(ConnectivityType),
           port: S.optional(S.Number),
           sqlAuthUpdateUserName: S.optional(S.String),
           sqlAuthUpdatePassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -1730,7 +2225,7 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          sqlWorkloadType: S.optional(S.String),
+          sqlWorkloadType: S.optional(SqlWorkloadType),
         }),
       ).annotate({
         identifier: "SqlWorkloadTypeUpdateSettings",
@@ -1740,7 +2235,7 @@ function __c3(j: number): any {
         S.Struct({
           diskCount: S.optional(S.Number),
           startingDeviceId: S.optional(S.Number),
-          diskConfigurationType: S.optional(S.String),
+          diskConfigurationType: S.optional(DiskConfigurationType),
         }),
       ).annotate({ identifier: "SqlStorageUpdateSettings" });
     case 7:
@@ -1778,12 +2273,14 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sqlConnectivityUpdateSettings: S.optional(__S(28)),
-          sqlWorkloadTypeUpdateSettings: S.optional(__S(29)),
-          sqlStorageUpdateSettings: S.optional(__S(30)),
-          additionalFeaturesServerConfigurations: S.optional(__S(31)),
-          sqlInstanceSettings: S.optional(__S(32)),
-          azureAdAuthenticationSettings: S.optional(__S(33)),
+          sqlConnectivityUpdateSettings: S.optional(SqlConnectivityUpdateSettings),
+          sqlWorkloadTypeUpdateSettings: S.optional(SqlWorkloadTypeUpdateSettings),
+          sqlStorageUpdateSettings: S.optional(SqlStorageUpdateSettings),
+          additionalFeaturesServerConfigurations: S.optional(
+            AdditionalFeaturesServerConfigurations,
+          ),
+          sqlInstanceSettings: S.optional(SQLInstanceSettings),
+          azureAdAuthenticationSettings: S.optional(AADAuthenticationSettings),
         }),
       ).annotate({
         identifier: "ServerConfigurationsManagementSettings",
@@ -1793,7 +2290,7 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          luns: S.optional(__S(35)),
+          luns: S.optional(SQLStorageSettingsLunsList),
           defaultFilePath: S.optional(S.String),
           useStoragePool: S.optional(S.Boolean),
         }),
@@ -1808,7 +2305,7 @@ function __c4(j: number): any {
           dataFileCount: S.optional(S.Number),
           persistFolder: S.optional(S.Boolean),
           persistFolderPath: S.optional(S.String),
-          luns: S.optional(__S(35)),
+          luns: S.optional(SQLTempDbSettingsLunsList),
           defaultFilePath: S.optional(S.String),
           useStoragePool: S.optional(S.Boolean),
         }),
@@ -1816,12 +2313,12 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sqlDataSettings: S.optional(__S(36)),
-          sqlLogSettings: S.optional(__S(36)),
-          sqlTempDbSettings: S.optional(__S(37)),
+          sqlDataSettings: S.optional(SQLStorageSettings),
+          sqlLogSettings: S.optional(SQLStorageSettings),
+          sqlTempDbSettings: S.optional(SQLTempDbSettings),
           sqlSystemDbOnDataDisk: S.optional(S.Boolean),
-          diskConfigurationType: S.optional(S.String),
-          storageWorkloadType: S.optional(S.String),
+          diskConfigurationType: S.optional(DiskConfigurationType),
+          storageWorkloadType: S.optional(StorageWorkloadType),
           enableStorageConfigBlade: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -1840,7 +2337,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          unhealthyReplicaInfo: S.optional(__S(39)),
+          unhealthyReplicaInfo: S.optional(UnhealthyReplicaInfo),
         }),
       ).annotate({
         identifier: "TroubleshootingAdditionalProperties",
@@ -1852,8 +2349,8 @@ function __c5(j: number): any {
           lastTriggerTimeUtc: S.optional(S.String),
           startTimeUtc: S.optional(S.String),
           endTimeUtc: S.optional(S.String),
-          troubleshootingScenario: S.optional(S.String),
-          properties: S.optional(__S(40)),
+          troubleshootingScenario: S.optional(TroubleshootingStatusTroubleshootingScenario),
+          properties: S.optional(TroubleshootingAdditionalProperties),
         }),
       ).annotate({ identifier: "TroubleshootingStatus" });
     case 2:
@@ -1862,7 +2359,7 @@ function __c5(j: number): any {
           enable: S.optional(S.Boolean),
           weeklyInterval: S.optional(S.Number),
           monthlyOccurrence: S.optional(S.Number),
-          dayOfWeek: S.optional(S.String),
+          dayOfWeek: S.optional(AssessmentDayOfWeek),
           startTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Schedule" });
@@ -1871,13 +2368,13 @@ function __c5(j: number): any {
         S.Struct({
           enable: S.optional(S.Boolean),
           runImmediately: S.optional(S.Boolean),
-          schedule: S.optional(__S(42)),
+          schedule: S.optional(Schedule),
         }),
       ).annotate({ identifier: "AssessmentSettings" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(VmIdentityType),
           resourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualMachineIdentity" });
@@ -1887,24 +2384,26 @@ function __c5(j: number): any {
           virtualMachineResourceId: S.optional(S.String),
           provisioningState: S.optional(S.String),
           sqlImageOffer: S.optional(S.String),
-          sqlServerLicenseType: S.optional(S.String),
-          sqlManagement: S.optional(S.String),
-          leastPrivilegeMode: S.optional(S.String),
-          sqlImageSku: S.optional(S.String),
+          sqlServerLicenseType: S.optional(SqlServerLicenseType),
+          sqlManagement: S.optional(SqlManagementMode),
+          leastPrivilegeMode: S.optional(SqlVirtualMachinePropertiesLeastPrivilegeMode),
+          sqlImageSku: S.optional(SqlImageSku),
           sqlVirtualMachineGroupResourceId: S.optional(S.String),
-          wsfcDomainCredentials: S.optional(__S(23)),
+          wsfcDomainCredentials: S.optional(WsfcDomainCredentials),
           wsfcStaticIp: S.optional(S.String),
-          autoPatchingSettings: S.optional(__S(24)),
-          autoBackupSettings: S.optional(__S(26)),
-          keyVaultCredentialSettings: S.optional(__S(27)),
-          serverConfigurationsManagementSettings: S.optional(__S(34)),
-          storageConfigurationSettings: S.optional(__S(38)),
-          troubleshootingStatus: S.optional(__S(41)),
-          assessmentSettings: S.optional(__S(43)),
+          autoPatchingSettings: S.optional(AutoPatchingSettings),
+          autoBackupSettings: S.optional(AutoBackupSettings),
+          keyVaultCredentialSettings: S.optional(KeyVaultCredentialSettings),
+          serverConfigurationsManagementSettings: S.optional(
+            ServerConfigurationsManagementSettings,
+          ),
+          storageConfigurationSettings: S.optional(StorageConfigurationSettings),
+          troubleshootingStatus: S.optional(TroubleshootingStatus),
+          assessmentSettings: S.optional(AssessmentSettings),
           enableAutomaticUpgrade: S.optional(S.Boolean),
-          additionalVmPatch: S.optional(S.String),
-          virtualMachineIdentitySettings: S.optional(__S(44)),
-          osType: S.optional(S.String),
+          additionalVmPatch: S.optional(AdditionalOsPatch),
+          virtualMachineIdentitySettings: S.optional(VirtualMachineIdentity),
+          osType: S.optional(OsType),
         }),
       ).annotate({
         identifier: "SqlVirtualMachineProperties",
@@ -1913,7 +2412,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(IdentityType),
           tenantId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceIdentity" });
@@ -1923,11 +2422,11 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          tags: S.optional(__S(22)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetSqlVirtualMachineResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(45)),
-          identity: S.optional(__S(46)),
+          properties: S.optional(SqlVirtualMachineProperties),
+          identity: S.optional(ResourceIdentity),
         }),
       ).annotate({
         identifier: "GetSqlVirtualMachineResponse",
@@ -1965,7 +2464,7 @@ function __c6(j: number): any {
           fileShareWitnessPath: S.optional(S.String),
           storageAccountUrl: S.optional(S.String),
           storageAccountPrimaryKey: S.optional(S.String),
-          clusterSubnetType: S.optional(S.String),
+          clusterSubnetType: S.optional(ClusterSubnetType),
         }),
       ).annotate({ identifier: "WsfcDomainProfile" });
     case 2:
@@ -1973,11 +2472,11 @@ function __c6(j: number): any {
         S.Struct({
           provisioningState: S.optional(S.String),
           sqlImageOffer: S.optional(S.String),
-          sqlImageSku: S.optional(S.String),
-          scaleType: S.optional(S.String),
-          clusterManagerType: S.optional(S.String),
-          clusterConfiguration: S.optional(S.String),
-          wsfcDomainProfile: S.optional(__S(49)),
+          sqlImageSku: S.optional(SqlVmGroupImageSku),
+          scaleType: S.optional(ScaleType),
+          clusterManagerType: S.optional(ClusterManagerType),
+          clusterConfiguration: S.optional(ClusterConfiguration),
+          wsfcDomainProfile: S.optional(WsfcDomainProfile),
         }),
       ).annotate({
         identifier: "SqlVirtualMachineGroupProperties",
@@ -1988,10 +2487,10 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          tags: S.optional(__S(22)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetSqlVirtualMachineGroupResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(50)),
+          properties: S.optional(SqlVirtualMachineGroupProperties),
         }),
       ).annotate({
         identifier: "GetSqlVirtualMachineGroupResponse",
@@ -2014,11 +2513,11 @@ function __c6(j: number): any {
         identifier: "ListAvailabilityGroupListenerByGroupRequest",
       });
     case 5:
-      return S.Array(__S(13));
+      return S.Array(AvailabilityGroupListener);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(53),
+          value: AvailabilityGroupListenerListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2054,17 +2553,17 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(56)),
-          origin: S.optional(S.String),
-          properties: S.optional(__S(57)),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          properties: S.optional(OperationPropertiesMap),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(Operation);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(59),
+          value: OperationListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -2090,15 +2589,15 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          tags: S.optional(__S(22)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(SqlVirtualMachineTagsMap),
           location: S.String,
-          properties: S.optional(__S(45)),
-          identity: S.optional(__S(46)),
+          properties: S.optional(SqlVirtualMachineProperties),
+          identity: S.optional(ResourceIdentity),
         }),
       ).annotate({ identifier: "SqlVirtualMachine" });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(SqlVirtualMachine);
   }
 }
 function __c8(j: number): any {
@@ -2106,7 +2605,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(63),
+          value: SqlVirtualMachineListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2151,18 +2650,18 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          tags: S.optional(__S(22)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(SqlVirtualMachineGroupTagsMap),
           location: S.String,
-          properties: S.optional(__S(50)),
+          properties: S.optional(SqlVirtualMachineGroupProperties),
         }),
       ).annotate({ identifier: "SqlVirtualMachineGroup" });
     case 4:
-      return S.Array(__S(67));
+      return S.Array(SqlVirtualMachineGroup);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(68),
+          value: SqlVirtualMachineGroupListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2223,8 +2722,8 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sqlImageOffer: S.optional(S.String),
-          sqlImageSku: S.optional(S.String),
-          wsfcDomainProfile: S.optional(__S(49)),
+          sqlImageSku: S.optional(SqlVmGroupImageSku),
+          wsfcDomainProfile: S.optional(WsfcDomainProfile),
         }),
       ).annotate({
         identifier: "SqlVirtualMachineGroupPropertiesInput",
@@ -2235,9 +2734,9 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlVirtualMachineGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(22)),
+          tags: S.optional(SqlVirtualMachineGroupsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(73)),
+          properties: S.optional(SqlVirtualMachineGroupPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2254,21 +2753,23 @@ function __c9(j: number): any {
         S.Struct({
           virtualMachineResourceId: S.optional(S.String),
           sqlImageOffer: S.optional(S.String),
-          sqlServerLicenseType: S.optional(S.String),
-          sqlManagement: S.optional(S.String),
-          leastPrivilegeMode: S.optional(S.String),
-          sqlImageSku: S.optional(S.String),
+          sqlServerLicenseType: S.optional(SqlServerLicenseType),
+          sqlManagement: S.optional(SqlManagementMode),
+          leastPrivilegeMode: S.optional(SqlVirtualMachinePropertiesInputLeastPrivilegeMode),
+          sqlImageSku: S.optional(SqlImageSku),
           sqlVirtualMachineGroupResourceId: S.optional(S.String),
-          wsfcDomainCredentials: S.optional(__S(23)),
+          wsfcDomainCredentials: S.optional(WsfcDomainCredentials),
           wsfcStaticIp: S.optional(S.String),
-          autoPatchingSettings: S.optional(__S(24)),
-          autoBackupSettings: S.optional(__S(26)),
-          keyVaultCredentialSettings: S.optional(__S(27)),
-          serverConfigurationsManagementSettings: S.optional(__S(34)),
-          storageConfigurationSettings: S.optional(__S(38)),
-          assessmentSettings: S.optional(__S(43)),
+          autoPatchingSettings: S.optional(AutoPatchingSettings),
+          autoBackupSettings: S.optional(AutoBackupSettings),
+          keyVaultCredentialSettings: S.optional(KeyVaultCredentialSettings),
+          serverConfigurationsManagementSettings: S.optional(
+            ServerConfigurationsManagementSettings,
+          ),
+          storageConfigurationSettings: S.optional(StorageConfigurationSettings),
+          assessmentSettings: S.optional(AssessmentSettings),
           enableAutomaticUpgrade: S.optional(S.Boolean),
-          virtualMachineIdentitySettings: S.optional(__S(44)),
+          virtualMachineIdentitySettings: S.optional(VirtualMachineIdentity),
         }),
       ).annotate({
         identifier: "SqlVirtualMachinePropertiesInput",
@@ -2276,7 +2777,7 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(IdentityType),
         }),
       ).annotate({ identifier: "ResourceIdentityInput" });
     case 5:
@@ -2285,10 +2786,10 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlVirtualMachineName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(22)),
+          tags: S.optional(SqlVirtualMachinesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(75)),
-          identity: S.optional(__S(76)),
+          properties: S.optional(SqlVirtualMachinePropertiesInput),
+          identity: S.optional(ResourceIdentityInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2308,8 +2809,10 @@ function __c9(j: number): any {
           sqlVirtualMachineName: S.String.pipe(T.Label()),
           startTimeUtc: S.optional(S.String),
           endTimeUtc: S.optional(S.String),
-          troubleshootingScenario: S.optional(S.String),
-          properties: S.optional(__S(40)),
+          troubleshootingScenario: S.optional(
+            SqlVirtualMachineTroubleshootTroubleshootRequestTroubleshootingScenario,
+          ),
+          properties: S.optional(TroubleshootingAdditionalProperties),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2326,8 +2829,8 @@ function __c9(j: number): any {
         S.Struct({
           startTimeUtc: S.optional(S.String),
           endTimeUtc: S.optional(S.String),
-          troubleshootingScenario: S.optional(S.String),
-          properties: S.optional(__S(40)),
+          troubleshootingScenario: S.optional(SqlVmTroubleshootingTroubleshootingScenario),
+          properties: S.optional(TroubleshootingAdditionalProperties),
           virtualMachineResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlVmTroubleshooting" });
@@ -2358,7 +2861,7 @@ function __c10(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlVirtualMachineName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(22)),
+          tags: S.optional(UpdateSqlVirtualMachineRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2376,7 +2879,7 @@ function __c10(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlVirtualMachineGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(22)),
+          tags: S.optional(UpdateSqlVirtualMachineGroupRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2388,36 +2891,5 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UpdateSqlVirtualMachineGroupRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
   }
 }

@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -52,9 +50,19 @@ export interface AcceptResolutionCenterCaseRequestAttachmentsItem {
   direct_upload_id?: string;
   id?: string;
 }
+const AcceptResolutionCenterCaseRequestAttachmentsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AcceptResolutionCenterCaseRequestAttachmentsItem>;
+
 /** Up to 3 evidence files, by existing file `id` or `direct_upload_id`. */
 export type AcceptResolutionCenterCaseRequestAttachmentsList =
   Array<AcceptResolutionCenterCaseRequestAttachmentsItem>;
+const AcceptResolutionCenterCaseRequestAttachmentsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AcceptResolutionCenterCaseRequestAttachmentsList>;
+
 export interface AcceptResolutionCenterCaseRequest {
   /** The resolution center case ID (`reso_` tag). */
   id: string;
@@ -67,12 +75,19 @@ export interface AcceptResolutionCenterCaseRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const AcceptResolutionCenterCaseRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AcceptResolutionCenterCaseRequest>;
+
 export interface AccountSummary {
   /** Account ID, prefixed `biz_`. */
   id: string;
   /** Account display name. */
   title: string;
 }
+const AccountSummary = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AccountSummary>;
+
 /** What you can do to this case right now, named for the endpoint that does it. Resolved for the calling credential, so a merchant and a customer reading the same case see their own options. */
 export type ResolutionCenterCaseAvailableActionsItem =
   | "accept"
@@ -81,8 +96,15 @@ export type ResolutionCenterCaseAvailableActionsItem =
   | "reply"
   | "appeal"
   | "withdraw";
+const ResolutionCenterCaseAvailableActionsItem = S.String;
+
 export type ResolutionCenterCaseAvailableActionsList =
   Array<ResolutionCenterCaseAvailableActionsItem>;
+const ResolutionCenterCaseAvailableActionsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ResolutionCenterCaseAvailableActionsList>;
+
 export interface ResolutionBuyer {
   /** The customer's email address. Requires the `member:email:read` scope; `null` without it. */
   email: string | null;
@@ -95,6 +117,8 @@ export interface ResolutionBuyer {
   /** The customer's Whop username. */
   username: string | null;
 }
+const ResolutionBuyer = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ResolutionBuyer>;
+
 export interface Money {
   /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
@@ -105,6 +129,8 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
+const Money = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Money>;
+
 export interface ReceiptLineItem {
   /** Line item ID, prefixed `li_`. Null when the payment predates item snapshots and the item is read from the payment's plan. */
   id: string | null;
@@ -123,9 +149,18 @@ export interface ReceiptLineItem {
   /** The recorded amount for this item's full quantity, before discounts, tax, and fees, in its purchase currency. Returns `null` when no item amount was recorded. */
   subtotal: Money | null;
 }
+const ReceiptLineItem = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ReceiptLineItem>;
+
 export type ResolutionCenterCaseLineItemsList = Array<ReceiptLineItem>;
+const ResolutionCenterCaseLineItemsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ResolutionCenterCaseLineItemsList>;
+
 /** Who prevailed on the claim. `null` until the case closes. Read `refund` for whether any money actually moved. */
 export type ResolutionCenterCaseOutcome = "customer_won" | "merchant_won" | "withdrawn";
+const ResolutionCenterCaseOutcome = S.String;
+
 export interface ResolutionPayment {
   /** Card brand, when the customer paid by card. */
   card_brand: string | null;
@@ -138,6 +173,8 @@ export interface ResolutionPayment {
   /** How the customer paid, such as `card` or `paypal`. */
   payment_method_type: string | null;
 }
+const ResolutionPayment = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ResolutionPayment>;
+
 /** What the customer says went wrong. Shares the `/disputes` vocabulary, so a case that later becomes a chargeback reports the same complaint. */
 export type ResolutionCenterCaseReason =
   | "fraudulent"
@@ -145,14 +182,20 @@ export type ResolutionCenterCaseReason =
   | "not_as_described"
   | "product_unacceptable"
   | "subscription_canceled";
+const ResolutionCenterCaseReason = S.String;
+
 /** Whether money moved and off whose balance: `none`, `merchant`, or `platform` (Whop refunded the customer and the merchant kept the funds). Independent of `outcome` -- a case the merchant won can still carry a platform refund. `null` while the case is open, and on older closed cases that predate this being recorded. */
 export type ResolutionCenterCaseRefund = "none" | "merchant" | "platform";
+const ResolutionCenterCaseRefund = S.String;
+
 /** Who the case is waiting on. `awaiting_merchant` and `awaiting_customer` name the side that owes a response, `under_review` means Whop is deciding, and `closed` means it is settled -- read `outcome` for how. */
 export type ResolutionCenterCaseStatus =
   | "awaiting_merchant"
   | "awaiting_customer"
   | "under_review"
   | "closed";
+const ResolutionCenterCaseStatus = S.String;
+
 export interface ResolutionCenterCase {
   /** The account the case was filed against. */
   account: AccountSummary | null;
@@ -191,11 +234,16 @@ export interface ResolutionCenterCase {
   /** When the case was last changed, as an ISO 8601 timestamp. */
   updated_at: string;
 }
+const ResolutionCenterCase = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ResolutionCenterCase>;
+
 export type AppealResolutionCenterCaseRequestAttachmentsItem =
   AcceptResolutionCenterCaseRequestAttachmentsItem;
 /** Up to 3 evidence files, by existing file `id` or `direct_upload_id`. */
 export type AppealResolutionCenterCaseRequestAttachmentsList =
   Array<AcceptResolutionCenterCaseRequestAttachmentsItem>;
+const AppealResolutionCenterCaseRequestAttachmentsList =
+  AcceptResolutionCenterCaseRequestAttachmentsList as any as S.Schema<AppealResolutionCenterCaseRequestAttachmentsList>;
+
 export interface AppealResolutionCenterCaseRequest {
   /** The resolution center case ID (`reso_` tag). */
   id: string;
@@ -206,10 +254,18 @@ export interface AppealResolutionCenterCaseRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const AppealResolutionCenterCaseRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<AppealResolutionCenterCaseRequest>;
+
 export type CreateResolutionCenterCaseRequestAttachmentsItem =
   AcceptResolutionCenterCaseRequestAttachmentsItem;
 export type CreateResolutionCenterCaseRequestAttachmentsList =
   Array<AcceptResolutionCenterCaseRequestAttachmentsItem>;
+const CreateResolutionCenterCaseRequestAttachmentsList =
+  AcceptResolutionCenterCaseRequestAttachmentsList as any as S.Schema<CreateResolutionCenterCaseRequestAttachmentsList>;
+
 /** What went wrong. Uses the same vocabulary as `/disputes`. */
 export type CreateResolutionCenterCaseRequestReason =
   | "fraudulent"
@@ -217,6 +273,8 @@ export type CreateResolutionCenterCaseRequestReason =
   | "not_as_described"
   | "product_unacceptable"
   | "subscription_canceled";
+const CreateResolutionCenterCaseRequestReason = S.String;
+
 export interface CreateResolutionCenterCaseRequest {
   attachments?: CreateResolutionCenterCaseRequestAttachmentsList;
   /** The customer's explanation. */
@@ -228,11 +286,19 @@ export interface CreateResolutionCenterCaseRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const CreateResolutionCenterCaseRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateResolutionCenterCaseRequest>;
+
 export type DenyResolutionCenterCaseRequestAttachmentsItem =
   AcceptResolutionCenterCaseRequestAttachmentsItem;
 /** Up to 3 evidence files, by existing file `id` or `direct_upload_id`. */
 export type DenyResolutionCenterCaseRequestAttachmentsList =
   Array<AcceptResolutionCenterCaseRequestAttachmentsItem>;
+const DenyResolutionCenterCaseRequestAttachmentsList =
+  AcceptResolutionCenterCaseRequestAttachmentsList as any as S.Schema<DenyResolutionCenterCaseRequestAttachmentsList>;
+
 export interface DenyResolutionCenterCaseRequest {
   /** The resolution center case ID (`reso_` tag). */
   id: string;
@@ -243,14 +309,27 @@ export interface DenyResolutionCenterCaseRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const DenyResolutionCenterCaseRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DenyResolutionCenterCaseRequest>;
+
 export interface GetResolutionCenterCaseRequest {
   /** The resolution center case ID (`reso_` tag). */
   id: string;
 }
+const GetResolutionCenterCaseRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetResolutionCenterCaseRequest>;
+
 export type GetResolutionCenterCaseSummaryRequestGroupsItem = "status" | "reason" | "outcome";
 export type GetResolutionCenterCaseSummaryRequestGroupsList = Array<
   GetResolutionCenterCaseSummaryRequestGroupsItem | (string & {})
 >;
+const GetResolutionCenterCaseSummaryRequestGroupsList =
+  ResolutionCenterCaseAvailableActionsList as any as S.Schema<GetResolutionCenterCaseSummaryRequestGroupsList>;
+
 export type GetResolutionCenterCaseSummaryRequestStatusItem =
   | "awaiting_merchant"
   | "awaiting_customer"
@@ -259,6 +338,9 @@ export type GetResolutionCenterCaseSummaryRequestStatusItem =
 export type GetResolutionCenterCaseSummaryRequestStatusList = Array<
   GetResolutionCenterCaseSummaryRequestStatusItem | (string & {})
 >;
+const GetResolutionCenterCaseSummaryRequestStatusList =
+  ResolutionCenterCaseAvailableActionsList as any as S.Schema<GetResolutionCenterCaseSummaryRequestStatusList>;
+
 export type GetResolutionCenterCaseSummaryRequestReasonItem =
   | "fraudulent"
   | "product_not_received"
@@ -268,6 +350,9 @@ export type GetResolutionCenterCaseSummaryRequestReasonItem =
 export type GetResolutionCenterCaseSummaryRequestReasonList = Array<
   GetResolutionCenterCaseSummaryRequestReasonItem | (string & {})
 >;
+const GetResolutionCenterCaseSummaryRequestReasonList =
+  ResolutionCenterCaseAvailableActionsList as any as S.Schema<GetResolutionCenterCaseSummaryRequestReasonList>;
+
 export type GetResolutionCenterCaseSummaryRequestOutcomeItem =
   | "customer_won"
   | "merchant_won"
@@ -275,6 +360,9 @@ export type GetResolutionCenterCaseSummaryRequestOutcomeItem =
 export type GetResolutionCenterCaseSummaryRequestOutcomeList = Array<
   GetResolutionCenterCaseSummaryRequestOutcomeItem | (string & {})
 >;
+const GetResolutionCenterCaseSummaryRequestOutcomeList =
+  ResolutionCenterCaseAvailableActionsList as any as S.Schema<GetResolutionCenterCaseSummaryRequestOutcomeList>;
+
 export interface GetResolutionCenterCaseSummaryRequest {
   /** Which breakdowns to return, keyed by these names under `groups`. Repeat the parameter to ask for several; omit it for all of them. */
   groups?: GetResolutionCenterCaseSummaryRequestGroupsList;
@@ -293,12 +381,22 @@ export interface GetResolutionCenterCaseSummaryRequest {
   /** Only count cases created after this ISO 8601 timestamp. */
   created_after?: string;
 }
+const GetResolutionCenterCaseSummaryRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetResolutionCenterCaseSummaryRequest>;
+
 /** How many of the matching cases ended each way. Every outcome is present, including those with a count of zero; open cases are counted in none of them. */
 export interface GetResolutionCenterCaseSummaryResponseGroupsOutcome {
   customer_won: number;
   merchant_won: number;
   withdrawn: number;
 }
+const GetResolutionCenterCaseSummaryResponseGroupsOutcome = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetResolutionCenterCaseSummaryResponseGroupsOutcome>;
+
 /** How many of the matching cases were opened for each reason. Every reason is present, including those with a count of zero. */
 export interface GetResolutionCenterCaseSummaryResponseGroupsReason {
   fraudulent: number;
@@ -307,6 +405,11 @@ export interface GetResolutionCenterCaseSummaryResponseGroupsReason {
   product_unacceptable: number;
   subscription_canceled: number;
 }
+const GetResolutionCenterCaseSummaryResponseGroupsReason = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetResolutionCenterCaseSummaryResponseGroupsReason>;
+
 /** How many of the matching cases are in each status. Every status is present, including those with a count of zero. */
 export interface GetResolutionCenterCaseSummaryResponseGroupsStatus {
   awaiting_customer: number;
@@ -314,6 +417,11 @@ export interface GetResolutionCenterCaseSummaryResponseGroupsStatus {
   closed: number;
   under_review: number;
 }
+const GetResolutionCenterCaseSummaryResponseGroupsStatus = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetResolutionCenterCaseSummaryResponseGroupsStatus>;
+
 /** One entry per requested breakdown, keyed by the field it groups on. A field you did not ask for is absent. */
 export interface GetResolutionCenterCaseSummaryResponseGroups {
   /** How many of the matching cases ended each way. Every outcome is present, including those with a count of zero; open cases are counted in none of them. */
@@ -323,12 +431,22 @@ export interface GetResolutionCenterCaseSummaryResponseGroups {
   /** How many of the matching cases are in each status. Every status is present, including those with a count of zero. */
   status?: GetResolutionCenterCaseSummaryResponseGroupsStatus;
 }
+const GetResolutionCenterCaseSummaryResponseGroups = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetResolutionCenterCaseSummaryResponseGroups>;
+
 export interface GetResolutionCenterCaseSummaryResponse {
   /** One entry per requested breakdown, keyed by the field it groups on. A field you did not ask for is absent. */
   groups: GetResolutionCenterCaseSummaryResponseGroups;
   /** How many cases match the filters. */
   total: number;
 }
+const GetResolutionCenterCaseSummaryResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetResolutionCenterCaseSummaryResponse>;
+
 export interface ListResolutionCenterCaseEventsRequest {
   /** The resolution center case ID (`reso_` tag). */
   id: string;
@@ -341,6 +459,11 @@ export interface ListResolutionCenterCaseEventsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
+const ListResolutionCenterCaseEventsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ListResolutionCenterCaseEventsRequest>;
+
 /** The action recorded in this event. */
 export type ResolutionEventAction =
   | "created"
@@ -354,6 +477,8 @@ export type ResolutionEventAction =
   | "dispute_opened"
   | "dispute_customer_won"
   | "dispute_merchant_won";
+const ResolutionEventAction = S.String;
+
 export interface ResolutionAttachment {
   /** The file's MIME type. */
   content_type: string | null;
@@ -364,9 +489,18 @@ export interface ResolutionAttachment {
   /** A URL to view or download the file. */
   url: string | null;
 }
+const ResolutionAttachment = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ResolutionAttachment>;
+
 export type ResolutionEventAttachmentsList = Array<ResolutionAttachment>;
+const ResolutionEventAttachmentsList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ResolutionEventAttachmentsList>;
+
 /** The party that performed the action. */
 export type ResolutionEventReporterType = "merchant" | "customer" | "platform" | "system";
+const ResolutionEventReporterType = S.String;
+
 export interface ResolutionEvent {
   /** The action recorded in this event. */
   action: ResolutionEventAction;
@@ -384,19 +518,40 @@ export interface ResolutionEvent {
   /** Whether the merchant can see this event in the timeline. */
   viewable_by_merchant: boolean;
 }
+const ResolutionEvent = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ResolutionEvent>;
+
 export type ListResolutionCenterCaseEventsResponseDataList = Array<ResolutionEvent>;
+const ListResolutionCenterCaseEventsResponseDataList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListResolutionCenterCaseEventsResponseDataList>;
+
 export interface ListResolutionCenterCaseEventsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
+const ListResolutionCenterCaseEventsResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListResolutionCenterCaseEventsResponsePageInfo>;
+
 export interface ListResolutionCenterCaseEventsResponse {
   data: ListResolutionCenterCaseEventsResponseDataList;
   page_info: ListResolutionCenterCaseEventsResponsePageInfo;
 }
+const ListResolutionCenterCaseEventsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ListResolutionCenterCaseEventsResponse>;
+
 export type ListResolutionCenterCasesRequestOrder = "created_at" | "response_due_at";
+const ListResolutionCenterCasesRequestOrder = S.String;
+
 export type ListResolutionCenterCasesRequestDirection = "asc" | "desc";
+const ListResolutionCenterCasesRequestDirection = S.String;
+
 export type ListResolutionCenterCasesRequestStatusItem =
   | "awaiting_merchant"
   | "awaiting_customer"
@@ -405,6 +560,9 @@ export type ListResolutionCenterCasesRequestStatusItem =
 export type ListResolutionCenterCasesRequestStatusList = Array<
   ListResolutionCenterCasesRequestStatusItem | (string & {})
 >;
+const ListResolutionCenterCasesRequestStatusList =
+  ResolutionCenterCaseAvailableActionsList as any as S.Schema<ListResolutionCenterCasesRequestStatusList>;
+
 export type ListResolutionCenterCasesRequestReasonItem =
   | "fraudulent"
   | "product_not_received"
@@ -414,6 +572,9 @@ export type ListResolutionCenterCasesRequestReasonItem =
 export type ListResolutionCenterCasesRequestReasonList = Array<
   ListResolutionCenterCasesRequestReasonItem | (string & {})
 >;
+const ListResolutionCenterCasesRequestReasonList =
+  ResolutionCenterCaseAvailableActionsList as any as S.Schema<ListResolutionCenterCasesRequestReasonList>;
+
 export type ListResolutionCenterCasesRequestOutcomeItem =
   | "customer_won"
   | "merchant_won"
@@ -421,6 +582,9 @@ export type ListResolutionCenterCasesRequestOutcomeItem =
 export type ListResolutionCenterCasesRequestOutcomeList = Array<
   ListResolutionCenterCasesRequestOutcomeItem | (string & {})
 >;
+const ListResolutionCenterCasesRequestOutcomeList =
+  ResolutionCenterCaseAvailableActionsList as any as S.Schema<ListResolutionCenterCasesRequestOutcomeList>;
+
 export interface ListResolutionCenterCasesRequest {
   /** Only cases filed against this account (`biz_` tag). With read access to the account this lists its whole queue; without, only the cases you opened against it. */
   account_id?: string;
@@ -449,18 +613,36 @@ export interface ListResolutionCenterCasesRequest {
   /** Only cases created after this ISO 8601 timestamp. */
   created_after?: string;
 }
+const ListResolutionCenterCasesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ListResolutionCenterCasesRequest>;
+
 export type ListResolutionCenterCasesResponseDataList = Array<ResolutionCenterCase>;
+const ListResolutionCenterCasesResponseDataList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListResolutionCenterCasesResponseDataList>;
+
 export type ListResolutionCenterCasesResponsePageInfo =
   ListResolutionCenterCaseEventsResponsePageInfo;
 export interface ListResolutionCenterCasesResponse {
   data: ListResolutionCenterCasesResponseDataList;
   page_info: ListResolutionCenterCaseEventsResponsePageInfo;
 }
+const ListResolutionCenterCasesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ListResolutionCenterCasesResponse>;
+
 export type ReplyToResolutionCenterCaseRequestAttachmentsItem =
   AcceptResolutionCenterCaseRequestAttachmentsItem;
 /** Up to 3 evidence files, by existing file `id` or `direct_upload_id`. */
 export type ReplyToResolutionCenterCaseRequestAttachmentsList =
   Array<AcceptResolutionCenterCaseRequestAttachmentsItem>;
+const ReplyToResolutionCenterCaseRequestAttachmentsList =
+  AcceptResolutionCenterCaseRequestAttachmentsList as any as S.Schema<ReplyToResolutionCenterCaseRequestAttachmentsList>;
+
 export interface ReplyToResolutionCenterCaseRequest {
   /** The resolution center case ID (`reso_` tag). */
   id: string;
@@ -471,11 +653,19 @@ export interface ReplyToResolutionCenterCaseRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const ReplyToResolutionCenterCaseRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ReplyToResolutionCenterCaseRequest>;
+
 export type RequestResolutionCenterCaseInfoRequestAttachmentsItem =
   AcceptResolutionCenterCaseRequestAttachmentsItem;
 /** Up to 3 evidence files, by existing file `id` or `direct_upload_id`. */
 export type RequestResolutionCenterCaseInfoRequestAttachmentsList =
   Array<AcceptResolutionCenterCaseRequestAttachmentsItem>;
+const RequestResolutionCenterCaseInfoRequestAttachmentsList =
+  AcceptResolutionCenterCaseRequestAttachmentsList as any as S.Schema<RequestResolutionCenterCaseInfoRequestAttachmentsList>;
+
 export interface RequestResolutionCenterCaseInfoRequest {
   /** The resolution center case ID (`reso_` tag). */
   id: string;
@@ -486,12 +676,22 @@ export interface RequestResolutionCenterCaseInfoRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const RequestResolutionCenterCaseInfoRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<RequestResolutionCenterCaseInfoRequest>;
+
 export interface WithdrawResolutionCenterCaseRequest {
   /** The resolution center case ID (`reso_` tag). */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const WithdrawResolutionCenterCaseRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<WithdrawResolutionCenterCaseRequest>;
+
 export type AcceptResolutionCenterCaseError = Forbidden | Conflict | WhopOpError;
 /** Accept a Case Accepts the case in the customer's favor, as the merchant: refunds the payment in full and closes the case. */
 export const acceptResolutionCenterCase: API.OperationMethod<
@@ -500,8 +700,8 @@ export const acceptResolutionCenterCase: API.OperationMethod<
   AcceptResolutionCenterCaseError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<AcceptResolutionCenterCaseRequest>,
-  output: __S(10) as any as S.Schema<ResolutionCenterCase>,
+  input: AcceptResolutionCenterCaseRequest,
+  output: ResolutionCenterCase,
   errors: [Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -515,8 +715,8 @@ export const appealResolutionCenterCase: API.OperationMethod<
   AppealResolutionCenterCaseError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<AppealResolutionCenterCaseRequest>,
-  output: __S(10) as any as S.Schema<ResolutionCenterCase>,
+  input: AppealResolutionCenterCaseRequest,
+  output: ResolutionCenterCase,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -530,8 +730,8 @@ export const createResolutionCenterCase: API.OperationMethod<
   CreateResolutionCenterCaseError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CreateResolutionCenterCaseRequest>,
-  output: __S(10) as any as S.Schema<ResolutionCenterCase>,
+  input: CreateResolutionCenterCaseRequest,
+  output: ResolutionCenterCase,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -545,8 +745,8 @@ export const denyResolutionCenterCase: API.OperationMethod<
   DenyResolutionCenterCaseError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<DenyResolutionCenterCaseRequest>,
-  output: __S(10) as any as S.Schema<ResolutionCenterCase>,
+  input: DenyResolutionCenterCaseRequest,
+  output: ResolutionCenterCase,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -560,8 +760,8 @@ export const getResolutionCenterCase: API.OperationMethod<
   GetResolutionCenterCaseError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetResolutionCenterCaseRequest>,
-  output: __S(10) as any as S.Schema<ResolutionCenterCase>,
+  input: GetResolutionCenterCaseRequest,
+  output: ResolutionCenterCase,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -575,8 +775,8 @@ export const getResolutionCenterCaseSummary: API.OperationMethod<
   GetResolutionCenterCaseSummaryError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<GetResolutionCenterCaseSummaryRequest>,
-  output: __S(20) as any as S.Schema<GetResolutionCenterCaseSummaryResponse>,
+  input: GetResolutionCenterCaseSummaryRequest,
+  output: GetResolutionCenterCaseSummaryResponse,
   errors: [BadRequest],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -592,8 +792,8 @@ export const listResolutionCenterCaseEvents: API.PaginatedOperationMethod<
   ResolutionEvent
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(21) as any as S.Schema<ListResolutionCenterCaseEventsRequest>,
-    output: __S(27) as any as S.Schema<ListResolutionCenterCaseEventsResponse>,
+    input: ListResolutionCenterCaseEventsRequest,
+    output: ListResolutionCenterCaseEventsResponse,
     errors: [NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -619,8 +819,8 @@ export const listResolutionCenterCases: API.PaginatedOperationMethod<
   ResolutionCenterCase
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(28) as any as S.Schema<ListResolutionCenterCasesRequest>,
-    output: __S(30) as any as S.Schema<ListResolutionCenterCasesResponse>,
+    input: ListResolutionCenterCasesRequest,
+    output: ListResolutionCenterCasesResponse,
     errors: [Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -644,8 +844,8 @@ export const replyToResolutionCenterCase: API.OperationMethod<
   ReplyToResolutionCenterCaseError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<ReplyToResolutionCenterCaseRequest>,
-  output: __S(10) as any as S.Schema<ResolutionCenterCase>,
+  input: ReplyToResolutionCenterCaseRequest,
+  output: ResolutionCenterCase,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -659,8 +859,8 @@ export const requestResolutionCenterCaseInfo: API.OperationMethod<
   RequestResolutionCenterCaseInfoError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<RequestResolutionCenterCaseInfoRequest>,
-  output: __S(10) as any as S.Schema<ResolutionCenterCase>,
+  input: RequestResolutionCenterCaseInfoRequest,
+  output: ResolutionCenterCase,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -674,8 +874,8 @@ export const withdrawResolutionCenterCase: API.OperationMethod<
   WithdrawResolutionCenterCaseError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<WithdrawResolutionCenterCaseRequest>,
-  output: __S(10) as any as S.Schema<ResolutionCenterCase>,
+  input: WithdrawResolutionCenterCaseRequest,
+  output: ResolutionCenterCase,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -694,12 +894,12 @@ function __c0(j: number): any {
         identifier: "AcceptResolutionCenterCaseRequestAttachmentsItem",
       });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(AcceptResolutionCenterCaseRequestAttachmentsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          attachments: S.optional(__S(1)),
+          attachments: S.optional(AcceptResolutionCenterCaseRequestAttachmentsList),
           message: S.optional(S.String),
           terminate_membership: S.optional(S.Boolean),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -715,7 +915,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "AccountSummary" });
     case 4:
-      return S.Array(S.String);
+      return S.Array(ResolutionCenterCaseAvailableActionsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -745,7 +945,7 @@ function __c0(j: number): any {
           product_id: S.NullOr(S.String),
           product_title: S.NullOr(S.String),
           quantity: S.Number,
-          subtotal: S.NullOr(__S(6)),
+          subtotal: S.NullOr(Money),
         }),
       ).annotate({ identifier: "ReceiptLineItem" });
   }
@@ -753,7 +953,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(ReceiptLineItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -767,24 +967,24 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          account: S.NullOr(__S(3)),
+          account: S.NullOr(AccountSummary),
           amount: S.Number,
-          available_actions: __S(4),
-          buyer: __S(5),
+          available_actions: ResolutionCenterCaseAvailableActionsList,
+          buyer: ResolutionBuyer,
           created_at: S.String,
           currency: S.NullOr(S.String),
           customer_appealed: S.Boolean,
           escalated: S.Boolean,
           id: S.String,
-          line_items: __S(8),
-          outcome: S.NullOr(S.String),
-          payment: __S(9),
+          line_items: ResolutionCenterCaseLineItemsList,
+          outcome: S.NullOr(ResolutionCenterCaseOutcome),
+          payment: ResolutionPayment,
           plan_id: S.NullOr(S.String),
           product_id: S.NullOr(S.String),
-          reason: S.String,
-          refund: S.NullOr(S.String),
+          reason: ResolutionCenterCaseReason,
+          refund: S.NullOr(ResolutionCenterCaseRefund),
           response_due_at: S.NullOr(S.String),
-          status: S.String,
+          status: ResolutionCenterCaseStatus,
           updated_at: S.String,
         }),
       ).annotate({ identifier: "ResolutionCenterCase" });
@@ -792,7 +992,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          attachments: S.optional(__S(1)),
+          attachments: S.optional(AppealResolutionCenterCaseRequestAttachmentsList),
           message: S.String,
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/resolution_center_cases/{id}/appeal", code: 200 })),
@@ -802,9 +1002,9 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          attachments: S.optional(__S(1)),
+          attachments: S.optional(CreateResolutionCenterCaseRequestAttachmentsList),
           message: S.String,
-          reason: S.String,
+          reason: CreateResolutionCenterCaseRequestReason,
           receipt_id: S.String,
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/resolution_center_cases", code: 200 })),
@@ -815,7 +1015,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          attachments: S.optional(__S(1)),
+          attachments: S.optional(DenyResolutionCenterCaseRequestAttachmentsList),
           message: S.String,
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/resolution_center_cases/{id}/deny", code: 200 })),
@@ -833,12 +1033,12 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          groups: S.optional(__S(4).pipe(T.Query())),
+          groups: S.optional(GetResolutionCenterCaseSummaryRequestGroupsList.pipe(T.Query())),
           account_id: S.optional(S.String.pipe(T.Query())),
           user_id: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(__S(4).pipe(T.Query())),
-          reason: S.optional(__S(4).pipe(T.Query())),
-          outcome: S.optional(__S(4).pipe(T.Query())),
+          status: S.optional(GetResolutionCenterCaseSummaryRequestStatusList.pipe(T.Query())),
+          reason: S.optional(GetResolutionCenterCaseSummaryRequestReasonList.pipe(T.Query())),
+          outcome: S.optional(GetResolutionCenterCaseSummaryRequestOutcomeList.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/resolution_center_cases/summary", code: 200 })),
@@ -885,9 +1085,9 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          outcome: S.optional(__S(16)),
-          reason: S.optional(__S(17)),
-          status: S.optional(__S(18)),
+          outcome: S.optional(GetResolutionCenterCaseSummaryResponseGroupsOutcome),
+          reason: S.optional(GetResolutionCenterCaseSummaryResponseGroupsReason),
+          status: S.optional(GetResolutionCenterCaseSummaryResponseGroupsStatus),
         }),
       ).annotate({
         identifier: "GetResolutionCenterCaseSummaryResponseGroups",
@@ -895,7 +1095,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          groups: __S(19),
+          groups: GetResolutionCenterCaseSummaryResponseGroups,
           total: S.Number,
         }),
       ).annotate({
@@ -923,7 +1123,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "ResolutionAttachment" });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(ResolutionAttachment);
   }
 }
 function __c3(j: number): any {
@@ -931,18 +1131,18 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: S.String,
-          attachments: __S(23),
+          action: ResolutionEventAction,
+          attachments: ResolutionEventAttachmentsList,
           created_at: S.String,
           details: S.NullOr(S.String),
           id: S.String,
-          reporter_type: S.String,
+          reporter_type: ResolutionEventReporterType,
           viewable_by_customer: S.Boolean,
           viewable_by_merchant: S.Boolean,
         }),
       ).annotate({ identifier: "ResolutionEvent" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(ResolutionEvent);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -957,8 +1157,8 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(25),
-          page_info: __S(26),
+          data: ListResolutionCenterCaseEventsResponseDataList,
+          page_info: ListResolutionCenterCaseEventsResponsePageInfo,
         }),
       ).annotate({
         identifier: "ListResolutionCenterCaseEventsResponse",
@@ -972,11 +1172,11 @@ function __c3(j: number): any {
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(__S(4).pipe(T.Query())),
-          reason: S.optional(__S(4).pipe(T.Query())),
-          outcome: S.optional(__S(4).pipe(T.Query())),
+          order: S.optional(ListResolutionCenterCasesRequestOrder.pipe(T.Query())),
+          direction: S.optional(ListResolutionCenterCasesRequestDirection.pipe(T.Query())),
+          status: S.optional(ListResolutionCenterCasesRequestStatusList.pipe(T.Query())),
+          reason: S.optional(ListResolutionCenterCasesRequestReasonList.pipe(T.Query())),
+          outcome: S.optional(ListResolutionCenterCasesRequestOutcomeList.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/resolution_center_cases", code: 200 })),
@@ -984,12 +1184,12 @@ function __c3(j: number): any {
         identifier: "ListResolutionCenterCasesRequest",
       });
     case 5:
-      return S.Array(__S(10));
+      return S.Array(ResolutionCenterCase);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(29),
-          page_info: __S(26),
+          data: ListResolutionCenterCasesResponseDataList,
+          page_info: ListResolutionCenterCaseEventsResponsePageInfo,
         }),
       ).annotate({
         identifier: "ListResolutionCenterCasesResponse",
@@ -998,7 +1198,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          attachments: S.optional(__S(1)),
+          attachments: S.optional(ReplyToResolutionCenterCaseRequestAttachmentsList),
           message: S.String,
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/resolution_center_cases/{id}/reply", code: 200 })),
@@ -1013,7 +1213,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          attachments: S.optional(__S(1)),
+          attachments: S.optional(RequestResolutionCenterCaseInfoRequestAttachmentsList),
           message: S.optional(S.String),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(
@@ -1033,24 +1233,5 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "WithdrawResolutionCenterCaseRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

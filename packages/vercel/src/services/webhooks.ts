@@ -7,8 +7,6 @@ import * as Redacted from "effect/Redacted";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -152,8 +150,20 @@ export type CreateWebhookRequestEventsItem =
   | "comment.reaction-added"
   | "comment.reaction-removed"
   | "comment.mentioned";
+const CreateWebhookRequestEventsItem = S.String;
+
 export type CreateWebhookRequestEventsList = Array<CreateWebhookRequestEventsItem | (string & {})>;
+const CreateWebhookRequestEventsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateWebhookRequestEventsList>;
+
 export type CreateWebhookRequestProjectIdsList = Array<string>;
+const CreateWebhookRequestProjectIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateWebhookRequestProjectIdsList>;
+
 export interface CreateWebhookRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
@@ -163,7 +173,12 @@ export interface CreateWebhookRequest {
   events: CreateWebhookRequestEventsList;
   projectIds?: CreateWebhookRequestProjectIdsList;
 }
+const CreateWebhookRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateWebhookRequest>;
+
 export type CreateWebhookResponseAlertRuleIdsList = Array<string>;
+const CreateWebhookResponseAlertRuleIdsList =
+  CreateWebhookRequestProjectIdsList as any as S.Schema<CreateWebhookResponseAlertRuleIdsList>;
+
 /** The webhooks events */
 export type CreateWebhookResponseEventsItem =
   | "ai-gateway.auto-reload.limit-reached"
@@ -280,8 +295,14 @@ export type CreateWebhookResponseEventsItem =
   | "thread.unresolved";
 /** The webhooks events */
 export type CreateWebhookResponseEventsList = Array<CreateWebhookResponseEventsItem>;
+const CreateWebhookResponseEventsList =
+  CreateWebhookRequestEventsList as any as S.Schema<CreateWebhookResponseEventsList>;
+
 /** The ID of the projects the webhook is associated with */
 export type CreateWebhookResponseProjectIdsList = Array<string>;
+const CreateWebhookResponseProjectIdsList =
+  CreateWebhookRequestProjectIdsList as any as S.Schema<CreateWebhookResponseProjectIdsList>;
+
 export interface CreateWebhookResponse {
   alertRuleIds?: CreateWebhookResponseAlertRuleIdsList;
   /** A number containing the date when the webhook was created in in milliseconds */
@@ -301,6 +322,11 @@ export interface CreateWebhookResponse {
   /** A string with the URL of the webhook */
   url: string;
 }
+const CreateWebhookResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateWebhookResponse>;
+
 export interface DeleteWebhookRequest {
   id: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -308,7 +334,14 @@ export interface DeleteWebhookRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const DeleteWebhookRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DeleteWebhookRequest>;
+
 export interface DeleteWebhookResponse {}
+const DeleteWebhookResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteWebhookResponse>;
+
 export interface GetWebhookRequest {
   id: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -316,7 +349,12 @@ export interface GetWebhookRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetWebhookRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetWebhookRequest>;
+
 export type GetWebhookResponseAlertRuleIdsList = Array<string>;
+const GetWebhookResponseAlertRuleIdsList =
+  CreateWebhookRequestProjectIdsList as any as S.Schema<GetWebhookResponseAlertRuleIdsList>;
+
 /** The webhooks events */
 export type GetWebhookResponseEventsItem =
   | "ai-gateway.auto-reload.limit-reached"
@@ -433,8 +471,14 @@ export type GetWebhookResponseEventsItem =
   | "thread.unresolved";
 /** The webhooks events */
 export type GetWebhookResponseEventsList = Array<GetWebhookResponseEventsItem>;
+const GetWebhookResponseEventsList =
+  CreateWebhookRequestEventsList as any as S.Schema<GetWebhookResponseEventsList>;
+
 /** The ID of the projects the webhook is associated with */
 export type GetWebhookResponseProjectIdsList = Array<string>;
+const GetWebhookResponseProjectIdsList =
+  CreateWebhookRequestProjectIdsList as any as S.Schema<GetWebhookResponseProjectIdsList>;
+
 export interface GetWebhookResponse {
   alertRuleIds?: GetWebhookResponseAlertRuleIdsList;
   /** A number containing the date when the webhook was created in in milliseconds */
@@ -452,6 +496,8 @@ export interface GetWebhookResponse {
   /** A string with the URL of the webhook */
   url: string;
 }
+const GetWebhookResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetWebhookResponse>;
+
 export interface GetWebhooksRequest {
   projectId?: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -459,6 +505,8 @@ export interface GetWebhooksRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetWebhooksRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetWebhooksRequest>;
+
 export type GetWebhooksResponseBodyCase0ItemAlertRuleIdsList = Array<string>;
 /** The webhooks events */
 export type GetWebhooksResponseBodyCase0ItemEventsItem =
@@ -822,7 +870,11 @@ export type GetWebhooksResponseBodyCase1List = Array<GetWebhooksResponseBodyCase
 export type GetWebhooksResponseBody =
   | GetWebhooksResponseBodyCase0List
   | GetWebhooksResponseBodyCase1List;
+const GetWebhooksResponseBody = S.Unknown as any as S.Schema<GetWebhooksResponseBody>;
+
 export type GetWebhooksResponse = GetWebhooksResponseBody;
+const GetWebhooksResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetWebhooksResponse>;
+
 export type CreateWebhookError = BadRequest | Forbidden | NotFound | VercelOpError;
 /** Creates a webhook Creates a webhook */
 export const createWebhook: API.OperationMethod<
@@ -831,8 +883,8 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateWebhookRequest>,
-  output: __S(3) as any as S.Schema<CreateWebhookResponse>,
+  input: CreateWebhookRequest,
+  output: CreateWebhookResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -846,8 +898,8 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DeleteWebhookRequest>,
-  output: __S(5) as any as S.Schema<DeleteWebhookResponse>,
+  input: DeleteWebhookRequest,
+  output: DeleteWebhookResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -861,8 +913,8 @@ export const getWebhook: API.OperationMethod<
   GetWebhookError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetWebhookRequest>,
-  output: __S(7) as any as S.Schema<GetWebhookResponse>,
+  input: GetWebhookRequest,
+  output: GetWebhookResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -876,8 +928,8 @@ export const getWebhooks: API.OperationMethod<
   GetWebhooksError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<GetWebhooksRequest>,
-  output: __S(9) as any as S.Schema<GetWebhooksResponse>,
+  input: GetWebhooksRequest,
+  output: GetWebhooksResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -887,7 +939,7 @@ export const getWebhooks: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(CreateWebhookRequestEventsItem);
     case 1:
       return S.Array(S.String);
     case 2:
@@ -896,19 +948,19 @@ function __c0(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           url: S.String,
-          events: __S(0),
-          projectIds: S.optional(__S(1)),
+          events: CreateWebhookRequestEventsList,
+          projectIds: S.optional(CreateWebhookRequestProjectIdsList),
         }).pipe(T.Http({ method: "POST", uri: "/v1/webhooks", code: 200 })),
       ).annotate({ identifier: "CreateWebhookRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          alertRuleIds: S.optional(__S(1)),
+          alertRuleIds: S.optional(CreateWebhookResponseAlertRuleIdsList),
           createdAt: S.Number,
-          events: __S(0),
+          events: CreateWebhookResponseEventsList,
           id: S.String,
           ownerId: S.String,
-          projectIds: S.optional(__S(1)),
+          projectIds: S.optional(CreateWebhookResponseProjectIdsList),
           secret: S.String.pipe(T.SensitiveValue({})),
           updatedAt: S.Number,
           url: S.String,
@@ -937,12 +989,12 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          alertRuleIds: S.optional(__S(1)),
+          alertRuleIds: S.optional(GetWebhookResponseAlertRuleIdsList),
           createdAt: S.Number,
-          events: __S(0),
+          events: GetWebhookResponseEventsList,
           id: S.String,
           ownerId: S.String,
-          projectIds: S.optional(__S(1)),
+          projectIds: S.optional(GetWebhookResponseProjectIdsList),
           updatedAt: S.Number,
           url: S.String,
         }),
@@ -960,21 +1012,8 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/webhooks", code: 200 })),
       ).annotate({ identifier: "GetWebhooksRequest" });
     case 1:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetWebhooksResponseBody.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetWebhooksResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

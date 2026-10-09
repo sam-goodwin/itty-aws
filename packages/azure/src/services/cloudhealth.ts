@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -15,6 +13,11 @@ export type { AzureOpError, AzureOpContext };
 export type AddEntityDataAnnotationRequestAnnotationDetailsMap = {
   [key: string]: string | undefined;
 };
+const AddEntityDataAnnotationRequestAnnotationDetailsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddEntityDataAnnotationRequestAnnotationDetailsMap>;
+
 export interface AddEntityDataAnnotationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -29,8 +32,16 @@ export interface AddEntityDataAnnotationRequest {
   /** Optional description of the annotation */
   description?: string;
 }
+const AddEntityDataAnnotationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AddEntityDataAnnotationRequest>;
+
 /** Annotation details as a dynamic key-value pair bag. Service-enforced limits: a maximum of 10 entries per annotation and a maximum value length of 256 characters. Requests exceeding these limits will be rejected with a 400 response. */
 export type DataAnnotationAnnotationDetailsMap = { [key: string]: string | undefined };
+const DataAnnotationAnnotationDetailsMap =
+  AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<DataAnnotationAnnotationDetailsMap>;
+
 /** A single data annotation on an entity */
 export interface DataAnnotation {
   /** Auto-assigned identifier for the annotation */
@@ -42,8 +53,12 @@ export interface DataAnnotation {
   /** Optional description of the annotation */
   description?: string;
 }
+const DataAnnotation = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DataAnnotation>;
+
 /** Supported kinds of authentication settings as discriminator */
 export type AuthenticationKind = "ManagedIdentity";
+const AuthenticationKind = S.String;
+
 /** Authentication setting properties */
 export interface AuthenticationSettingPropertiesInput {
   /** Display name */
@@ -51,6 +66,11 @@ export interface AuthenticationSettingPropertiesInput {
   /** Kind of the authentication setting */
   authenticationKind: AuthenticationKind | (string & {});
 }
+const AuthenticationSettingPropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AuthenticationSettingPropertiesInput>;
+
 export interface AuthenticationSettingsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -63,10 +83,19 @@ export interface AuthenticationSettingsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: AuthenticationSettingPropertiesInput;
 }
+const AuthenticationSettingsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AuthenticationSettingsCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -82,6 +111,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<SystemData>;
+
 /** Health Model provisioning states */
 export type HealthModelProvisioningState =
   | "Succeeded"
@@ -89,6 +120,8 @@ export type HealthModelProvisioningState =
   | "Canceled"
   | "Creating"
   | "Deleting";
+const HealthModelProvisioningState = S.String;
+
 /** Authentication setting properties */
 export interface AuthenticationSettingProperties {
   /** The status of the last operation. */
@@ -98,6 +131,11 @@ export interface AuthenticationSettingProperties {
   /** Kind of the authentication setting */
   authenticationKind: AuthenticationKind;
 }
+const AuthenticationSettingProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AuthenticationSettingProperties>;
+
 export interface AuthenticationSettingsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -110,28 +148,53 @@ export interface AuthenticationSettingsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: AuthenticationSettingProperties;
 }
+const AuthenticationSettingsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AuthenticationSettingsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type CreateHealthModelRequestTagsMap = { [key: string]: string | undefined };
+const CreateHealthModelRequestTagsMap =
+  AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<CreateHealthModelRequestTagsMap>;
+
 /** HealthModel properties */
 export interface HealthModelPropertiesInput {}
+const HealthModelPropertiesInput = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<HealthModelPropertiesInput>;
+
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
+const ManagedServiceIdentityType = S.String;
+
 /** User assigned identity properties */
 export type UserAssignedIdentityInput = HealthModelPropertiesInput;
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateHealthModelRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: HealthModelPropertiesInput | null | undefined;
 };
+const CreateHealthModelRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateHealthModelRequestIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateHealthModelRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateHealthModelRequestIdentityUserAssignedIdentitiesMap;
 }
+const CreateHealthModelRequestIdentity = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateHealthModelRequestIdentity>;
+
 export interface CreateHealthModelRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -148,13 +211,26 @@ export interface CreateHealthModelRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateHealthModelRequestIdentity;
 }
+const CreateHealthModelRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateHealthModelRequest>;
+
 /** Resource tags. */
 export type CreateHealthModelResponseTagsMap = { [key: string]: string | undefined };
+const CreateHealthModelResponseTagsMap =
+  AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<CreateHealthModelResponseTagsMap>;
+
 /** HealthModel properties */
 export interface HealthModelProperties {
   /** The status of the last operation. */
   provisioningState?: HealthModelProvisioningState;
 }
+const HealthModelProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<HealthModelProperties>;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -162,10 +238,17 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
+const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<UserAssignedIdentity>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateHealthModelResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
+const CreateHealthModelResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateHealthModelResponseIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateHealthModelResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -176,6 +259,11 @@ export interface CreateHealthModelResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateHealthModelResponseIdentityUserAssignedIdentitiesMap;
 }
+const CreateHealthModelResponseIdentity = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateHealthModelResponseIdentity>;
+
 export interface CreateHealthModelResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -194,6 +282,11 @@ export interface CreateHealthModelResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateHealthModelResponseIdentity;
 }
+const CreateHealthModelResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateHealthModelResponse>;
+
 export interface DeleteAuthenticationSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -204,7 +297,17 @@ export interface DeleteAuthenticationSettingsRequest {
   /** Name of the authentication setting. Must be unique within a health model. */
   authenticationSettingName: string;
 }
+const DeleteAuthenticationSettingsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DeleteAuthenticationSettingsRequest>;
+
 export interface DeleteAuthenticationSettingsResponse {}
+const DeleteAuthenticationSettingsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DeleteAuthenticationSettingsResponse>;
+
 export interface DeleteDiscoveryRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -215,7 +318,15 @@ export interface DeleteDiscoveryRuleRequest {
   /** Name of the discovery rule. Must be unique within a health model. */
   discoveryRuleName: string;
 }
+const DeleteDiscoveryRuleRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DeleteDiscoveryRuleRequest>;
+
 export interface DeleteDiscoveryRuleResponse {}
+const DeleteDiscoveryRuleResponse =
+  HealthModelPropertiesInput as any as S.Schema<DeleteDiscoveryRuleResponse>;
+
 export interface DeleteEntityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -226,7 +337,11 @@ export interface DeleteEntityRequest {
   /** Name of the entity. Must be unique within a health model. */
   entityName: string;
 }
+const DeleteEntityRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DeleteEntityRequest>;
+
 export interface DeleteEntityResponse {}
+const DeleteEntityResponse = HealthModelPropertiesInput as any as S.Schema<DeleteEntityResponse>;
+
 export interface DeleteHealthModelRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -235,7 +350,15 @@ export interface DeleteHealthModelRequest {
   /** Name of health model resource */
   healthModelName: string;
 }
+const DeleteHealthModelRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DeleteHealthModelRequest>;
+
 export interface DeleteHealthModelResponse {}
+const DeleteHealthModelResponse =
+  HealthModelPropertiesInput as any as S.Schema<DeleteHealthModelResponse>;
+
 export interface DeleteRelationshipRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -246,7 +369,15 @@ export interface DeleteRelationshipRequest {
   /** Name of the relationship. Must be unique within a health model. For example, a concatenation of parentEntityName and childEntityName can be used as the name. */
   relationshipName: string;
 }
+const DeleteRelationshipRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DeleteRelationshipRequest>;
+
 export interface DeleteRelationshipResponse {}
+const DeleteRelationshipResponse =
+  HealthModelPropertiesInput as any as S.Schema<DeleteRelationshipResponse>;
+
 export interface DeleteSignalDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -257,20 +388,41 @@ export interface DeleteSignalDefinitionRequest {
   /** Name of the signal definition. Must be unique within a health model. */
   signalDefinitionName: string;
 }
+const DeleteSignalDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DeleteSignalDefinitionRequest>;
+
 export interface DeleteSignalDefinitionResponse {}
+const DeleteSignalDefinitionResponse =
+  HealthModelPropertiesInput as any as S.Schema<DeleteSignalDefinitionResponse>;
+
 /** Discovery rule relationship discovery behavior */
 export type DiscoveryRuleRelationshipDiscoveryBehavior = "Enabled" | "Disabled";
+const DiscoveryRuleRelationshipDiscoveryBehavior = S.String;
+
 /** Discovery rule recommended signal behavior */
 export type DiscoveryRuleRecommendedSignalsBehavior = "Enabled" | "Disabled";
+const DiscoveryRuleRecommendedSignalsBehavior = S.String;
+
 /** Discovery rule specification kind discriminator */
 export type DiscoveryRuleKind = "ResourceGraphQuery" | "ApplicationInsightsTopology";
+const DiscoveryRuleKind = S.String;
+
 /** Base model for discovery rule specifications */
 export interface DiscoveryRuleSpecification {
   /** Kind of the discovery rule specification */
   kind: DiscoveryRuleKind | (string & {});
 }
+const DiscoveryRuleSpecification = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DiscoveryRuleSpecification>;
+
 /** Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health to the discovered entities. Defaults to `Enabled`: discovery rules updated via this API version without setting this field will begin emitting a Resource Health availability signal. Pass `Disabled` to preserve pre-`2026-05-01-preview` behavior. */
 export type DiscoveryRulePropertiesInputAddResourceHealthSignal = "Enabled" | "Disabled";
+const DiscoveryRulePropertiesInputAddResourceHealthSignal = S.String;
+
 /** Discovery rule properties */
 export interface DiscoveryRulePropertiesInput {
   /** Display name */
@@ -286,6 +438,11 @@ export interface DiscoveryRulePropertiesInput {
   /** Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health to the discovered entities. Defaults to `Enabled`: discovery rules updated via this API version without setting this field will begin emitting a Resource Health availability signal. Pass `Disabled` to preserve pre-`2026-05-01-preview` behavior. */
   addResourceHealthSignal?: DiscoveryRulePropertiesInputAddResourceHealthSignal | (string & {});
 }
+const DiscoveryRulePropertiesInput = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DiscoveryRulePropertiesInput>;
+
 export interface DiscoveryRulesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -298,10 +455,22 @@ export interface DiscoveryRulesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: DiscoveryRulePropertiesInput;
 }
+const DiscoveryRulesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DiscoveryRulesCreateOrUpdateRequest>;
+
 /** Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health to the discovered entities. Defaults to `Enabled`: discovery rules updated via this API version without setting this field will begin emitting a Resource Health availability signal. Pass `Disabled` to preserve pre-`2026-05-01-preview` behavior. */
 export type DiscoveryRulePropertiesAddResourceHealthSignal = "Enabled" | "Disabled";
+const DiscoveryRulePropertiesAddResourceHealthSignal = S.String;
+
 /** Additional context information, like resource IDs or query details */
 export type DiscoveryErrorContextList = Array<string>;
+const DiscoveryErrorContextList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DiscoveryErrorContextList>;
+
 /** Error details for a failed discovery operation */
 export interface DiscoveryError {
   /** Error message */
@@ -309,6 +478,8 @@ export interface DiscoveryError {
   /** Additional context information, like resource IDs or query details */
   context?: DiscoveryErrorContextList;
 }
+const DiscoveryError = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DiscoveryError>;
+
 /** Discovery rule properties */
 export interface DiscoveryRuleProperties {
   /** The status of the last operation. */
@@ -330,6 +501,11 @@ export interface DiscoveryRuleProperties {
   /** Name of the entity which represents the discovery rule. Note: It might take a few minutes after creating the discovery rule until the entity is created. */
   entityName?: string;
 }
+const DiscoveryRuleProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DiscoveryRuleProperties>;
+
 export interface DiscoveryRulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -342,6 +518,11 @@ export interface DiscoveryRulesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: DiscoveryRuleProperties;
 }
+const DiscoveryRulesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DiscoveryRulesCreateOrUpdateResponse>;
+
 /** Visual position of the entity */
 export interface EntityCoordinates {
   /** X Coordinate */
@@ -349,6 +530,8 @@ export interface EntityCoordinates {
   /** Y Coordinate */
   y: number;
 }
+const EntityCoordinates = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<EntityCoordinates>;
+
 /** Visual icon definition of an entity */
 export interface IconDefinition {
   /** Name of the built-in icon, or 'Custom' to use customData */
@@ -356,18 +539,29 @@ export interface IconDefinition {
   /** Custom data. Base64-encoded SVG data. If set, this overrides the built-in icon. */
   customData?: string;
 }
+const IconDefinition = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<IconDefinition>;
+
 /** Impact of the entity in health state propagation */
 export type EntityPropertiesInputImpact = "Standard" | "Limited" | "Suppressed";
+const EntityPropertiesInputImpact = S.String;
+
 /** Optional set of tags (key-value pairs) */
 export type EntityPropertiesInputTagsMap = { [key: string]: string | undefined };
+const EntityPropertiesInputTagsMap =
+  AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<EntityPropertiesInputTagsMap>;
+
 /** Supported signal kinds as discriminator */
 export type SignalKind =
   | "AzureResourceMetric"
   | "LogAnalyticsQuery"
   | "PrometheusMetricsQuery"
   | "External";
+const SignalKind = S.String;
+
 /** Metric aggregation type */
 export type MetricAggregationType = "None" | "Average" | "Count" | "Minimum" | "Maximum" | "Total";
+const MetricAggregationType = S.String;
+
 /** Interval in which the signal is being evaluated. Defaults to PT1M (1 minute). */
 export type AzureResourceSignalInputRefreshInterval =
   | "PT1M"
@@ -377,6 +571,8 @@ export type AzureResourceSignalInputRefreshInterval =
   | "PT30M"
   | "PT1H"
   | "PT2H";
+const AzureResourceSignalInputRefreshInterval = S.String;
+
 /** Signal operator */
 export type SignalOperator =
   | "GreaterThan"
@@ -386,8 +582,12 @@ export type SignalOperator =
   | "Equal"
   | "NotEqual"
   | "Dynamic";
+const SignalOperator = S.String;
+
 /** Sensitivity level for dynamic threshold detection */
 export type DynamicThresholdSensitivity = "Low" | "Medium" | "High";
+const DynamicThresholdSensitivity = S.String;
+
 /** Threshold-based evaluation rule for a signal definition */
 export interface ThresholdRuleV2 {
   /** Operator how to compare the signal value with the threshold */
@@ -397,6 +597,8 @@ export interface ThresholdRuleV2 {
   /** Sensitivity level for dynamic threshold detection. Only applicable when operator is Dynamic. */
   sensitivity?: DynamicThresholdSensitivity | (string & {});
 }
+const ThresholdRuleV2 = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ThresholdRuleV2>;
+
 /** Evaluation rule for a signal definition */
 export interface EvaluationRule {
   /** Degraded rule with static threshold. */
@@ -404,6 +606,8 @@ export interface EvaluationRule {
   /** Unhealthy rule with static threshold. */
   unhealthyRule: ThresholdRuleV2;
 }
+const EvaluationRule = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<EvaluationRule>;
+
 /** An Azure Resource Metric signal instance assigned to an entity. */
 export interface AzureResourceSignalInput {
   /** Kind of the signal instance */
@@ -431,15 +635,32 @@ export interface AzureResourceSignalInput {
   /** Evaluation rules for the signal definition */
   evaluationRules?: EvaluationRule;
 }
+const AzureResourceSignalInput = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<AzureResourceSignalInput>;
+
 /** Signals assigned to this group. */
 export type AzureResourceSignalsInputSignalsList = Array<AzureResourceSignalInput>;
+const AzureResourceSignalsInputSignalsList = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<AzureResourceSignalsInputSignalsList>;
+
 /** Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health. Defaults to Enabled. */
 export type AzureResourceHealthSignalInputEnabled = "Enabled" | "Disabled";
+const AzureResourceHealthSignalInputEnabled = S.String;
+
 /** Azure resource health signal configuration */
 export interface AzureResourceHealthSignalInput {
   /** Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health. Defaults to Enabled. */
   enabled?: AzureResourceHealthSignalInputEnabled | (string & {});
 }
+const AzureResourceHealthSignalInput = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<AzureResourceHealthSignalInput>;
+
 /** A grouping of Azure resource signals */
 export interface AzureResourceSignalsInput {
   /** Reference to the name of the authentication setting which is used for querying the data source. */
@@ -453,6 +674,11 @@ export interface AzureResourceSignalsInput {
   /** Optional configuration for automatically adding a signal based on the resource's availability state in Azure Resource Health. */
   resourceHealth?: AzureResourceHealthSignalInput;
 }
+const AzureResourceSignalsInput = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<AzureResourceSignalsInput>;
+
 /** Interval in which the signal is being evaluated. Defaults to PT1M (1 minute). */
 export type LogAnalyticsSignalInputRefreshInterval =
   | "PT1M"
@@ -462,6 +688,8 @@ export type LogAnalyticsSignalInputRefreshInterval =
   | "PT30M"
   | "PT1H"
   | "PT2H";
+const LogAnalyticsSignalInputRefreshInterval = S.String;
+
 /** A Log Analytics Query signal instance assigned to an entity. */
 export interface LogAnalyticsSignalInput {
   /** Kind of the signal instance */
@@ -485,8 +713,18 @@ export interface LogAnalyticsSignalInput {
   /** Evaluation rules for the signal definition */
   evaluationRules?: EvaluationRule;
 }
+const LogAnalyticsSignalInput = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<LogAnalyticsSignalInput>;
+
 /** Signals assigned to this group. */
 export type LogAnalyticsSignalsInputSignalsList = Array<LogAnalyticsSignalInput>;
+const LogAnalyticsSignalsInputSignalsList = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<LogAnalyticsSignalsInputSignalsList>;
+
 /** A grouping of Log Analytics workspace signals. */
 export interface LogAnalyticsSignalsInput {
   /** Reference to the name of the authentication setting which is used for querying the data source. */
@@ -496,6 +734,11 @@ export interface LogAnalyticsSignalsInput {
   /** Signals assigned to this group. */
   signals?: LogAnalyticsSignalsInputSignalsList;
 }
+const LogAnalyticsSignalsInput = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<LogAnalyticsSignalsInput>;
+
 /** Interval in which the signal is being evaluated. Defaults to PT1M (1 minute). */
 export type PrometheusMetricsSignalInputRefreshInterval =
   | "PT1M"
@@ -505,6 +748,8 @@ export type PrometheusMetricsSignalInputRefreshInterval =
   | "PT30M"
   | "PT1H"
   | "PT2H";
+const PrometheusMetricsSignalInputRefreshInterval = S.String;
+
 /** A Prometheus Metrics Query signal instance assigned to an entity. */
 export interface PrometheusMetricsSignalInput {
   /** Kind of the signal instance */
@@ -526,8 +771,18 @@ export interface PrometheusMetricsSignalInput {
   /** Evaluation rules for the signal definition */
   evaluationRules?: EvaluationRule;
 }
+const PrometheusMetricsSignalInput = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<PrometheusMetricsSignalInput>;
+
 /** Signals assigned to this signal group. */
 export type AzureMonitorWorkspaceSignalsInputSignalsList = Array<PrometheusMetricsSignalInput>;
+const AzureMonitorWorkspaceSignalsInputSignalsList = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<AzureMonitorWorkspaceSignalsInputSignalsList>;
+
 /** A grouping of Azure Monitor workspace signals. */
 export interface AzureMonitorWorkspaceSignalsInput {
   /** Reference to the name of the authentication setting which is used for querying the data source. */
@@ -537,14 +792,23 @@ export interface AzureMonitorWorkspaceSignalsInput {
   /** Signals assigned to this signal group. */
   signals?: AzureMonitorWorkspaceSignalsInputSignalsList;
 }
+const AzureMonitorWorkspaceSignalsInput = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<AzureMonitorWorkspaceSignalsInput>;
+
 /** Aggregation type for child dependencies. */
 export type DependenciesSignalGroupV2AggregationType =
   | "WorstOf"
   | "BestOf"
   | "MinHealthy"
   | "MaxNotHealthy";
+const DependenciesSignalGroupV2AggregationType = S.String;
+
 /** Unit type for the thresholds used by threshold-bearing aggregation strategies. */
 export type AggregationUnit = "Absolute" | "Percentage";
+const AggregationUnit = S.String;
+
 /** Properties for dependent entities, i.e. child entities */
 export interface DependenciesSignalGroupV2 {
   /** Aggregation type for child dependencies. */
@@ -558,6 +822,11 @@ export interface DependenciesSignalGroupV2 {
   /** If true, children with Unknown health state are excluded from aggregation calculations. Defaults to true. */
   ignoreUnknown?: boolean;
 }
+const DependenciesSignalGroupV2 = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DependenciesSignalGroupV2>;
+
 /** Contains various signal groups that can be assigned to an entity */
 export interface SignalGroupsInput {
   /** Azure Resource Signal Group */
@@ -569,14 +838,21 @@ export interface SignalGroupsInput {
   /** Settings for dependency signals to control how the health state of child entities influences the health state of the parent entity. */
   dependencies?: DependenciesSignalGroupV2;
 }
+const SignalGroupsInput = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<SignalGroupsInput>;
+
 /** Aggregation strategy applied across the members of this group. */
 export type SignalAggregationGroupInputAggregationType =
   | "WorstOf"
   | "BestOf"
   | "MinHealthy"
   | "MaxNotHealthy";
+const SignalAggregationGroupInputAggregationType = S.String;
+
 /** Names of signals on this entity which are members of the group. Members are matched by name; references to signals that do not currently exist on the entity are accepted (typically for pre-declared external signals) and surfaced via 'unresolvedMembers'. A signal may be listed in multiple groups; no duplicates within this list. */
 export type SignalAggregationGroupInputMembersList = Array<string>;
+const SignalAggregationGroupInputMembersList =
+  DiscoveryErrorContextList as any as S.Schema<SignalAggregationGroupInputMembersList>;
+
 /** A logical group of signals on an entity, evaluated under a configurable aggregation strategy. Groups are independent even when they share members. Each group's aggregated state is one of the inputs to the entity's composite health computation alongside any signals not declared in any group's members[]. */
 export interface SignalAggregationGroupInput {
   /** Name of the aggregation group. Unique within the entity. */
@@ -596,12 +872,27 @@ export interface SignalAggregationGroupInput {
   /** If true (default), members reporting Unknown are excluded from the aggregation. For MinHealthy and MaxNotHealthy this flag affects the denominator/count and is meaningful. For WorstOf and BestOf the flag has no observable effect: under WorstOf, Unknown=0 is the lowest severity and can never beat any non-Unknown member in a Max() so filtering it changes nothing observable; under BestOf, Unknown is unconditionally excluded by the strategy itself irrespective of the flag. The flag is retained on the contract for vocabulary symmetry across all four strategies. */
   ignoreUnknown?: boolean;
 }
+const SignalAggregationGroupInput = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<SignalAggregationGroupInput>;
+
 /** Logical aggregation groups over the signals on this entity. Overlap is allowed: the same signal may appear in more than one group's members. Each group is evaluated independently according to its strategy, and a shared signal can contribute to multiple group states and related per-group telemetry. Group states contribute alongside any ungrouped signals and the dependency-aggregated child health to the entity's overall worst-of composite. */
 export type EntityPropertiesInputSignalAggregationGroupsList = Array<SignalAggregationGroupInput>;
+const EntityPropertiesInputSignalAggregationGroupsList = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<EntityPropertiesInputSignalAggregationGroupsList>;
+
 /** Severity of an alert */
 export type AlertSeverity = "Sev0" | "Sev1" | "Sev2" | "Sev3" | "Sev4";
+const AlertSeverity = S.String;
+
 /** Optional list of action group resource IDs to be notified when the alert is triggered. */
 export type AlertConfigurationActionGroupIdsList = Array<string>;
+const AlertConfigurationActionGroupIdsList =
+  DiscoveryErrorContextList as any as S.Schema<AlertConfigurationActionGroupIdsList>;
+
 /** Alert configuration details */
 export interface AlertConfiguration {
   /** The severity of triggered alert. */
@@ -611,6 +902,8 @@ export interface AlertConfiguration {
   /** Optional list of action group resource IDs to be notified when the alert is triggered. */
   actionGroupIds?: AlertConfigurationActionGroupIdsList;
 }
+const AlertConfiguration = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<AlertConfiguration>;
+
 /** Alert configuration for an entity */
 export interface EntityAlerts {
   /** Alert to be triggered on state change to unhealthy */
@@ -618,6 +911,8 @@ export interface EntityAlerts {
   /** Alert to be triggered on state change to degraded */
   degraded?: AlertConfiguration;
 }
+const EntityAlerts = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<EntityAlerts>;
+
 /** Properties which are common across all kinds of entities */
 export interface EntityPropertiesInput {
   /** Display name */
@@ -639,6 +934,11 @@ export interface EntityPropertiesInput {
   /** Alert configuration for this entity */
   alerts?: EntityAlerts;
 }
+const EntityPropertiesInput = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<EntityPropertiesInput>;
+
 export interface EntitiesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -651,12 +951,24 @@ export interface EntitiesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: EntityPropertiesInput;
 }
+const EntitiesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<EntitiesCreateOrUpdateRequest>;
+
 /** Impact of the entity in health state propagation */
 export type EntityPropertiesImpact = "Standard" | "Limited" | "Suppressed";
+const EntityPropertiesImpact = S.String;
+
 /** Optional set of tags (key-value pairs) */
 export type EntityPropertiesTagsMap = { [key: string]: string | undefined };
+const EntityPropertiesTagsMap =
+  AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<EntityPropertiesTagsMap>;
+
 /** Health state of an entity */
 export type HealthState = "Healthy" | "Degraded" | "Unhealthy" | "Unknown";
+const HealthState = S.String;
+
 /** Status of a signal */
 export interface SignalStatus {
   /** Health state of this signal */
@@ -670,6 +982,8 @@ export interface SignalStatus {
   /** Additional context as provided by the submitter */
   additionalContext?: string;
 }
+const SignalStatus = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<SignalStatus>;
+
 /** Interval in which the signal is being evaluated. Defaults to PT1M (1 minute). */
 export type AzureResourceSignalRefreshInterval =
   | "PT1M"
@@ -679,6 +993,8 @@ export type AzureResourceSignalRefreshInterval =
   | "PT30M"
   | "PT1H"
   | "PT2H";
+const AzureResourceSignalRefreshInterval = S.String;
+
 /** An Azure Resource Metric signal instance assigned to an entity. */
 export interface AzureResourceSignal {
   /** Kind of the signal instance */
@@ -708,18 +1024,35 @@ export interface AzureResourceSignal {
   /** Evaluation rules for the signal definition */
   evaluationRules?: EvaluationRule;
 }
+const AzureResourceSignal = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<AzureResourceSignal>;
+
 /** Signals assigned to this group. */
 export type AzureResourceSignalsSignalsList = Array<AzureResourceSignal>;
+const AzureResourceSignalsSignalsList = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<AzureResourceSignalsSignalsList>;
+
 /** Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health. Defaults to Enabled. */
 export type AzureResourceHealthSignalEnabled = "Enabled" | "Disabled";
+const AzureResourceHealthSignalEnabled = S.String;
+
 /** Availability state of an Azure resource as reported by Azure Resource Health. */
 export type ResourceHealthAvailabilityState = "Available" | "Unavailable" | "Degraded" | "Unknown";
+const ResourceHealthAvailabilityState = S.String;
+
 /** Whether an Azure Resource Health status changing event was planned or unplanned. */
 export type ResourceHealthCategory = "Planned" | "Unplanned";
+const ResourceHealthCategory = S.String;
+
 /** Reason type for the current Azure Resource Health availability state. */
 export type ResourceHealthReasonType = "Unplanned" | "Planned" | "UserInitiated";
+const ResourceHealthReasonType = S.String;
+
 /** Whether the current Azure Resource Health availability state is persistent or transient. */
 export type ResourceHealthReasonChronicity = "Persistent" | "Transient";
+const ResourceHealthReasonChronicity = S.String;
+
 /** Status of an Azure Resource Health signal, including availability information reported by Azure Resource Health. */
 export interface AzureResourceHealthSignalStatus {
   /** Health state of this signal */
@@ -747,6 +1080,11 @@ export interface AzureResourceHealthSignalStatus {
   /** Timestamp when Azure Resource Health observed the current availability state. */
   availabilityReportedTime?: string;
 }
+const AzureResourceHealthSignalStatus = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<AzureResourceHealthSignalStatus>;
+
 /** Azure resource health signal configuration */
 export interface AzureResourceHealthSignal {
   /** Whether to automatically add a signal for the Azure resource's availability state from Azure Resource Health. Defaults to Enabled. */
@@ -756,6 +1094,11 @@ export interface AzureResourceHealthSignal {
   /** Current status of the Azure resource health signal. */
   status?: AzureResourceHealthSignalStatus;
 }
+const AzureResourceHealthSignal = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<AzureResourceHealthSignal>;
+
 /** A grouping of Azure resource signals */
 export interface AzureResourceSignals {
   /** Reference to the name of the authentication setting which is used for querying the data source. */
@@ -769,6 +1112,8 @@ export interface AzureResourceSignals {
   /** Optional configuration for automatically adding a signal based on the resource's availability state in Azure Resource Health. */
   resourceHealth?: AzureResourceHealthSignal;
 }
+const AzureResourceSignals = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<AzureResourceSignals>;
+
 /** Interval in which the signal is being evaluated. Defaults to PT1M (1 minute). */
 export type LogAnalyticsSignalRefreshInterval =
   | "PT1M"
@@ -778,6 +1123,8 @@ export type LogAnalyticsSignalRefreshInterval =
   | "PT30M"
   | "PT1H"
   | "PT2H";
+const LogAnalyticsSignalRefreshInterval = S.String;
+
 /** A Log Analytics Query signal instance assigned to an entity. */
 export interface LogAnalyticsSignal {
   /** Kind of the signal instance */
@@ -803,8 +1150,15 @@ export interface LogAnalyticsSignal {
   /** Evaluation rules for the signal definition */
   evaluationRules?: EvaluationRule;
 }
+const LogAnalyticsSignal = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<LogAnalyticsSignal>;
+
 /** Signals assigned to this group. */
 export type LogAnalyticsSignalsSignalsList = Array<LogAnalyticsSignal>;
+const LogAnalyticsSignalsSignalsList = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<LogAnalyticsSignalsSignalsList>;
+
 /** A grouping of Log Analytics workspace signals. */
 export interface LogAnalyticsSignals {
   /** Reference to the name of the authentication setting which is used for querying the data source. */
@@ -814,6 +1168,8 @@ export interface LogAnalyticsSignals {
   /** Signals assigned to this group. */
   signals?: LogAnalyticsSignalsSignalsList;
 }
+const LogAnalyticsSignals = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<LogAnalyticsSignals>;
+
 /** Interval in which the signal is being evaluated. Defaults to PT1M (1 minute). */
 export type PrometheusMetricsSignalRefreshInterval =
   | "PT1M"
@@ -823,6 +1179,8 @@ export type PrometheusMetricsSignalRefreshInterval =
   | "PT30M"
   | "PT1H"
   | "PT2H";
+const PrometheusMetricsSignalRefreshInterval = S.String;
+
 /** A Prometheus Metrics Query signal instance assigned to an entity. */
 export interface PrometheusMetricsSignal {
   /** Kind of the signal instance */
@@ -846,8 +1204,18 @@ export interface PrometheusMetricsSignal {
   /** Evaluation rules for the signal definition */
   evaluationRules?: EvaluationRule;
 }
+const PrometheusMetricsSignal = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<PrometheusMetricsSignal>;
+
 /** Signals assigned to this signal group. */
 export type AzureMonitorWorkspaceSignalsSignalsList = Array<PrometheusMetricsSignal>;
+const AzureMonitorWorkspaceSignalsSignalsList = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<AzureMonitorWorkspaceSignalsSignalsList>;
+
 /** A grouping of Azure Monitor workspace signals. */
 export interface AzureMonitorWorkspaceSignals {
   /** Reference to the name of the authentication setting which is used for querying the data source. */
@@ -857,6 +1225,11 @@ export interface AzureMonitorWorkspaceSignals {
   /** Signals assigned to this signal group. */
   signals?: AzureMonitorWorkspaceSignalsSignalsList;
 }
+const AzureMonitorWorkspaceSignals = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<AzureMonitorWorkspaceSignals>;
+
 /** An externally submitted signal instance assigned to an entity. */
 export interface ExternalSignal {
   /** Kind of the signal instance */
@@ -870,13 +1243,22 @@ export interface ExternalSignal {
   /** Evaluation rules for the external signal as submitted. */
   evaluationRules?: EvaluationRule;
 }
+const ExternalSignal = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<ExternalSignal>;
+
 /** Signals assigned to this signal group. */
 export type ExternalSignalGroupSignalsList = Array<ExternalSignal>;
+const ExternalSignalGroupSignalsList = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ExternalSignalGroupSignalsList>;
+
 /** A grouping of externally submitted signals. */
 export interface ExternalSignalGroup {
   /** Signals assigned to this signal group. */
   signals?: ExternalSignalGroupSignalsList;
 }
+const ExternalSignalGroup = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ExternalSignalGroup>;
+
 /** Contains various signal groups that can be assigned to an entity */
 export interface SignalGroups {
   /** Azure Resource Signal Group */
@@ -890,16 +1272,26 @@ export interface SignalGroups {
   /** List of signals which have been externally submitted for this entity. */
   external?: ExternalSignalGroup;
 }
+const SignalGroups = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<SignalGroups>;
+
 /** Aggregation strategy applied across the members of this group. */
 export type SignalAggregationGroupAggregationType =
   | "WorstOf"
   | "BestOf"
   | "MinHealthy"
   | "MaxNotHealthy";
+const SignalAggregationGroupAggregationType = S.String;
+
 /** Names of signals on this entity which are members of the group. Members are matched by name; references to signals that do not currently exist on the entity are accepted (typically for pre-declared external signals) and surfaced via 'unresolvedMembers'. A signal may be listed in multiple groups; no duplicates within this list. */
 export type SignalAggregationGroupMembersList = Array<string>;
+const SignalAggregationGroupMembersList =
+  DiscoveryErrorContextList as any as S.Schema<SignalAggregationGroupMembersList>;
+
 /** Members listed in 'members' that do not currently resolve to a signal on this entity at the time of the last entity evaluation. Treated as Unknown during aggregation. Empty/omitted when every member resolves. */
 export type SignalAggregationGroupUnresolvedMembersList = Array<string>;
+const SignalAggregationGroupUnresolvedMembersList =
+  DiscoveryErrorContextList as any as S.Schema<SignalAggregationGroupUnresolvedMembersList>;
+
 /** A logical group of signals on an entity, evaluated under a configurable aggregation strategy. Groups are independent even when they share members. Each group's aggregated state is one of the inputs to the entity's composite health computation alongside any signals not declared in any group's members[]. */
 export interface SignalAggregationGroup {
   /** Name of the aggregation group. Unique within the entity. */
@@ -923,8 +1315,18 @@ export interface SignalAggregationGroup {
   /** Members listed in 'members' that do not currently resolve to a signal on this entity at the time of the last entity evaluation. Treated as Unknown during aggregation. Empty/omitted when every member resolves. */
   unresolvedMembers?: SignalAggregationGroupUnresolvedMembersList;
 }
+const SignalAggregationGroup = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<SignalAggregationGroup>;
+
 /** Logical aggregation groups over the signals on this entity. Overlap is allowed: the same signal may appear in more than one group's members. Each group is evaluated independently according to its strategy, and a shared signal can contribute to multiple group states and related per-group telemetry. Group states contribute alongside any ungrouped signals and the dependency-aggregated child health to the entity's overall worst-of composite. */
 export type EntityPropertiesSignalAggregationGroupsList = Array<SignalAggregationGroup>;
+const EntityPropertiesSignalAggregationGroupsList = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<EntityPropertiesSignalAggregationGroupsList>;
+
 /** Properties which are common across all kinds of entities */
 export interface EntityProperties {
   /** The status of the last operation. */
@@ -952,6 +1354,8 @@ export interface EntityProperties {
   /** Alert configuration for this entity */
   alerts?: EntityAlerts;
 }
+const EntityProperties = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<EntityProperties>;
+
 export interface EntitiesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -964,6 +1368,11 @@ export interface EntitiesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: EntityProperties;
 }
+const EntitiesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<EntitiesCreateOrUpdateResponse>;
+
 /** Evaluation rules for the health report */
 export type HealthReportEvaluationRule = EvaluationRule;
 export interface EntitiesIngestHealthReportRequest {
@@ -988,7 +1397,15 @@ export interface EntitiesIngestHealthReportRequest {
   /** Optional additional context or description for the health report */
   additionalContext?: string;
 }
+const EntitiesIngestHealthReportRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<EntitiesIngestHealthReportRequest>;
+
 export interface EntitiesIngestHealthReportResponse {}
+const EntitiesIngestHealthReportResponse =
+  DeleteAuthenticationSettingsResponse as any as S.Schema<EntitiesIngestHealthReportResponse>;
+
 export interface GetAuthenticationSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -999,6 +1416,11 @@ export interface GetAuthenticationSettingsRequest {
   /** Name of the authentication setting. Must be unique within a health model. */
   authenticationSettingName: string;
 }
+const GetAuthenticationSettingsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<GetAuthenticationSettingsRequest>;
+
 export interface GetAuthenticationSettingsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1011,6 +1433,9 @@ export interface GetAuthenticationSettingsResponse {
   /** The resource-specific properties for this resource. */
   properties?: AuthenticationSettingProperties;
 }
+const GetAuthenticationSettingsResponse =
+  AuthenticationSettingsCreateOrUpdateResponse as any as S.Schema<GetAuthenticationSettingsResponse>;
+
 export interface GetDiscoveryRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1021,6 +1446,11 @@ export interface GetDiscoveryRuleRequest {
   /** Name of the discovery rule. Must be unique within a health model. */
   discoveryRuleName: string;
 }
+const GetDiscoveryRuleRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<GetDiscoveryRuleRequest>;
+
 export interface GetDiscoveryRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1033,6 +1463,11 @@ export interface GetDiscoveryRuleResponse {
   /** The resource-specific properties for this resource. */
   properties?: DiscoveryRuleProperties;
 }
+const GetDiscoveryRuleResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GetDiscoveryRuleResponse>;
+
 export interface GetEntityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1043,6 +1478,8 @@ export interface GetEntityRequest {
   /** Name of the entity. Must be unique within a health model. */
   entityName: string;
 }
+const GetEntityRequest = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<GetEntityRequest>;
+
 export interface GetEntityResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1055,6 +1492,8 @@ export interface GetEntityResponse {
   /** The resource-specific properties for this resource. */
   properties?: EntityProperties;
 }
+const GetEntityResponse = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<GetEntityResponse>;
+
 export interface GetEntityDataAnnotationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1073,8 +1512,18 @@ export interface GetEntityDataAnnotationsRequest {
   /** An opaque string value that identifies the portion of the result set to be returned with the next operation. Must not be combined with startAt or endAt. */
   nextMarker?: string;
 }
+const GetEntityDataAnnotationsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<GetEntityDataAnnotationsRequest>;
+
 /** List of data annotations */
 export type GetDataAnnotationsResponseAnnotationsList = Array<DataAnnotation>;
+const GetDataAnnotationsResponseAnnotationsList = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<GetDataAnnotationsResponseAnnotationsList>;
+
 /** Response containing data annotations for an entity */
 export interface GetDataAnnotationsResponse {
   /** Name of the entity */
@@ -1084,6 +1533,11 @@ export interface GetDataAnnotationsResponse {
   /** An opaque string value that identifies the portion of the result set to be returned with the next operation. */
   nextMarker?: string;
 }
+const GetDataAnnotationsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<GetDataAnnotationsResponse>;
+
 export interface GetEntityHistoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1102,6 +1556,11 @@ export interface GetEntityHistoryRequest {
   /** An opaque string value that identifies the portion of the result set to be returned with the next operation. Must not be combined with startAt or endAt. */
   nextMarker?: string;
 }
+const GetEntityHistoryRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<GetEntityHistoryRequest>;
+
 /** A health state transition record */
 export interface HealthStateTransition {
   /** Previous health state before the transition */
@@ -1113,8 +1572,18 @@ export interface HealthStateTransition {
   /** Reason of the transition */
   reason?: string;
 }
+const HealthStateTransition = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<HealthStateTransition>;
+
 /** List of health state transitions */
 export type EntityHistoryResponseHistoryList = Array<HealthStateTransition>;
+const EntityHistoryResponseHistoryList = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<EntityHistoryResponseHistoryList>;
+
 /** Response containing entity health state transitions */
 export interface EntityHistoryResponse {
   /** Name of the entity */
@@ -1124,6 +1593,11 @@ export interface EntityHistoryResponse {
   /** An opaque string value that identifies the portion of the result set to be returned with the next operation. */
   nextMarker?: string;
 }
+const EntityHistoryResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<EntityHistoryResponse>;
+
 export interface GetEntitySignalHistoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1144,6 +1618,11 @@ export interface GetEntitySignalHistoryRequest {
   /** An opaque string value that identifies the portion of the result set to be returned with the next operation. Must not be combined with startAt or endAt. */
   nextMarker?: string;
 }
+const GetEntitySignalHistoryRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<GetEntitySignalHistoryRequest>;
+
 /** A data point in the signal time series */
 export interface SignalHistoryDataPoint {
   /** Timestamp of the data point */
@@ -1155,8 +1634,18 @@ export interface SignalHistoryDataPoint {
   /** Additional context as provided by the submitter */
   additionalContext?: string;
 }
+const SignalHistoryDataPoint = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<SignalHistoryDataPoint>;
+
 /** Signal history data points */
 export type SignalHistoryResponseHistoryList = Array<SignalHistoryDataPoint>;
+const SignalHistoryResponseHistoryList = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<SignalHistoryResponseHistoryList>;
+
 /** Response containing signal history */
 export interface SignalHistoryResponse {
   /** Name of the entity */
@@ -1168,6 +1657,11 @@ export interface SignalHistoryResponse {
   /** An opaque string value that identifies the portion of the result set to be returned with the next operation. */
   nextMarker?: string;
 }
+const SignalHistoryResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<SignalHistoryResponse>;
+
 export interface GetEntitySignalRecommendationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1178,20 +1672,37 @@ export interface GetEntitySignalRecommendationsRequest {
   /** Name of the entity. Must be unique within a health model. */
   entityName: string;
 }
+const GetEntitySignalRecommendationsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<GetEntitySignalRecommendationsRequest>;
+
 /** Azure resource types to which the recommended signal configuration applies. */
 export type SignalConfigurationApplicableResourceTypesList = Array<string>;
+const SignalConfigurationApplicableResourceTypesList =
+  DiscoveryErrorContextList as any as S.Schema<SignalConfigurationApplicableResourceTypesList>;
+
 /** Refresh interval in ISO duration format */
 export type RefreshInterval = "PT1M" | "PT5M" | "PT10M" | "PT15M" | "PT30M" | "PT1H" | "PT2H";
+const RefreshInterval = S.String;
+
 /** Supported signal recommendation kinds. */
 export type SignalRecommendationKind =
   | "AzureResourceMetric"
   | "LogAnalyticsQuery"
   | "PrometheusMetricsQuery";
+const SignalRecommendationKind = S.String;
+
 /** Kind-specific signal recommendation configuration. */
 export interface SignalRecommendationConfiguration {
   /** Kind of the recommended signal. */
   signalKind: SignalRecommendationKind;
 }
+const SignalRecommendationConfiguration = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<SignalRecommendationConfiguration>;
+
 /** A signal configuration for an Azure resource type */
 export interface SignalConfiguration {
   /** Unique identifier of the recommended signal configuration. */
@@ -1211,11 +1722,21 @@ export interface SignalConfiguration {
   /** Evaluation rules with recommended thresholds. */
   evaluationRules?: EvaluationRule;
 }
+const SignalConfiguration = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<SignalConfiguration>;
+
 /** Signals that are broadly recommended to be enabled by default for health models monitoring an Entity of this resource type. Each entry is a complete signal configuration (metric, aggregation, thresholds) ready to be added to a health model. Independent of `recommendedConfigurations` -- not paired by index. */
 export type GetSignalRecommendationsResponseRecommendedSignalsList = Array<SignalConfiguration>;
+const GetSignalRecommendationsResponseRecommendedSignalsList = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GetSignalRecommendationsResponseRecommendedSignalsList>;
+
 /** Additional signal configurations for metrics that are not broadly applicable to every health model for an Entity of this resource type, but if a caller chooses to monitor one of these metrics, the provided thresholds are suggested as a starting point. Independent of `recommendedSignals` -- not paired by index. */
 export type GetSignalRecommendationsResponseRecommendedConfigurationsList =
   Array<SignalConfiguration>;
+const GetSignalRecommendationsResponseRecommendedConfigurationsList =
+  GetSignalRecommendationsResponseRecommendedSignalsList as any as S.Schema<GetSignalRecommendationsResponseRecommendedConfigurationsList>;
+
 /** Response from `getSignalRecommendations` containing two independent suggestion streams for the Azure resource type represented by the target Entity. `recommendedSignals` lists signals broadly recommended to be enabled by default; `recommendedConfigurations` lists additional metrics that are not broadly applicable but, if a caller chooses to monitor one of them, ship with suggested starting-point thresholds. The two arrays are independent -- items are not paired by index, and callers should treat them as two separate suggestion streams. */
 export interface GetSignalRecommendationsResponse {
   /** Signals that are broadly recommended to be enabled by default for health models monitoring an Entity of this resource type. Each entry is a complete signal configuration (metric, aggregation, thresholds) ready to be added to a health model. Independent of `recommendedConfigurations` -- not paired by index. */
@@ -1223,6 +1744,11 @@ export interface GetSignalRecommendationsResponse {
   /** Additional signal configurations for metrics that are not broadly applicable to every health model for an Entity of this resource type, but if a caller chooses to monitor one of these metrics, the provided thresholds are suggested as a starting point. Independent of `recommendedSignals` -- not paired by index. */
   recommendedConfigurations: GetSignalRecommendationsResponseRecommendedConfigurationsList;
 }
+const GetSignalRecommendationsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<GetSignalRecommendationsResponse>;
+
 export interface GetHealthModelRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1231,8 +1757,16 @@ export interface GetHealthModelRequest {
   /** Name of health model resource */
   healthModelName: string;
 }
+const GetHealthModelRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GetHealthModelRequest>;
+
 /** Resource tags. */
 export type GetHealthModelResponseTagsMap = { [key: string]: string | undefined };
+const GetHealthModelResponseTagsMap =
+  AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<GetHealthModelResponseTagsMap>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetHealthModelResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
@@ -1247,6 +1781,9 @@ export interface GetHealthModelResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetHealthModelResponseIdentityUserAssignedIdentitiesMap;
 }
+const GetHealthModelResponseIdentity =
+  CreateHealthModelResponseIdentity as any as S.Schema<GetHealthModelResponseIdentity>;
+
 export interface GetHealthModelResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1265,6 +1802,11 @@ export interface GetHealthModelResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetHealthModelResponseIdentity;
 }
+const GetHealthModelResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<GetHealthModelResponse>;
+
 export interface GetRelationshipRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1275,8 +1817,16 @@ export interface GetRelationshipRequest {
   /** Name of the relationship. Must be unique within a health model. For example, a concatenation of parentEntityName and childEntityName can be used as the name. */
   relationshipName: string;
 }
+const GetRelationshipRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<GetRelationshipRequest>;
+
 /** Optional set of tags (key-value pairs) */
 export type RelationshipPropertiesTagsMap = { [key: string]: string | undefined };
+const RelationshipPropertiesTagsMap =
+  AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<RelationshipPropertiesTagsMap>;
+
 /** Relationship properties */
 export interface RelationshipProperties {
   /** The status of the last operation. */
@@ -1292,6 +1842,11 @@ export interface RelationshipProperties {
   /** Discovered by which discovery rule. If set, the relationship cannot be deleted manually. */
   discoveredBy?: string;
 }
+const RelationshipProperties = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<RelationshipProperties>;
+
 export interface GetRelationshipResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1304,6 +1859,11 @@ export interface GetRelationshipResponse {
   /** The resource-specific properties for this resource. */
   properties?: RelationshipProperties;
 }
+const GetRelationshipResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<GetRelationshipResponse>;
+
 export interface GetSignalDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1314,6 +1874,11 @@ export interface GetSignalDefinitionRequest {
   /** Name of the signal definition. Must be unique within a health model. */
   signalDefinitionName: string;
 }
+const GetSignalDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GetSignalDefinitionRequest>;
+
 /** Interval in which the signal is being evaluated. Defaults to PT1M (1 minute). */
 export type SignalDefinitionPropertiesRefreshInterval =
   | "PT1M"
@@ -1323,8 +1888,13 @@ export type SignalDefinitionPropertiesRefreshInterval =
   | "PT30M"
   | "PT1H"
   | "PT2H";
+const SignalDefinitionPropertiesRefreshInterval = S.String;
+
 /** Optional set of tags (key-value pairs) */
 export type SignalDefinitionPropertiesTagsMap = { [key: string]: string | undefined };
+const SignalDefinitionPropertiesTagsMap =
+  AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<SignalDefinitionPropertiesTagsMap>;
+
 /** SignalDefinition properties */
 export interface SignalDefinitionProperties {
   /** The status of the last operation. */
@@ -1342,6 +1912,11 @@ export interface SignalDefinitionProperties {
   /** Evaluation rules for the signal definition */
   evaluationRules: EvaluationRule;
 }
+const SignalDefinitionProperties = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<SignalDefinitionProperties>;
+
 export interface GetSignalDefinitionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1354,6 +1929,11 @@ export interface GetSignalDefinitionResponse {
   /** The resource-specific properties for this resource. */
   properties?: SignalDefinitionProperties;
 }
+const GetSignalDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<GetSignalDefinitionResponse>;
+
 export interface ListAuthenticationSettingsByHealthModelRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1362,6 +1942,11 @@ export interface ListAuthenticationSettingsByHealthModelRequest {
   /** Name of health model resource */
   healthModelName: string;
 }
+const ListAuthenticationSettingsByHealthModelRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ListAuthenticationSettingsByHealthModelRequest>;
+
 /** An authentication setting in a health model */
 export interface AuthenticationSetting {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1375,8 +1960,18 @@ export interface AuthenticationSetting {
   /** The resource-specific properties for this resource. */
   properties?: AuthenticationSettingProperties;
 }
+const AuthenticationSetting = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<AuthenticationSetting>;
+
 /** The AuthenticationSetting items on this page */
 export type AuthenticationSettingListResultValueList = Array<AuthenticationSetting>;
+const AuthenticationSettingListResultValueList = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<AuthenticationSettingListResultValueList>;
+
 /** The response of a AuthenticationSetting list operation. */
 export interface AuthenticationSettingListResult {
   /** The AuthenticationSetting items on this page */
@@ -1384,6 +1979,11 @@ export interface AuthenticationSettingListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const AuthenticationSettingListResult = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<AuthenticationSettingListResult>;
+
 export interface ListDiscoveryRuleByHealthModelRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1394,6 +1994,11 @@ export interface ListDiscoveryRuleByHealthModelRequest {
   /** Timestamp to use for the operation. When specified, the version of the resource at this point in time is retrieved. If not specified, the latest version is used. */
   timestamp?: string;
 }
+const ListDiscoveryRuleByHealthModelRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ListDiscoveryRuleByHealthModelRequest>;
+
 /** A discovery rule which automatically finds entities and relationships in a health model based on an Azure Resource Graph query */
 export interface DiscoveryRule {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1407,8 +2012,15 @@ export interface DiscoveryRule {
   /** The resource-specific properties for this resource. */
   properties?: DiscoveryRuleProperties;
 }
+const DiscoveryRule = GetDiscoveryRuleResponse as any as S.Schema<DiscoveryRule>;
+
 /** The DiscoveryRule items on this page */
 export type DiscoveryRuleListResultValueList = Array<DiscoveryRule>;
+const DiscoveryRuleListResultValueList = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<DiscoveryRuleListResultValueList>;
+
 /** The response of a DiscoveryRule list operation. */
 export interface DiscoveryRuleListResult {
   /** The DiscoveryRule items on this page */
@@ -1416,6 +2028,11 @@ export interface DiscoveryRuleListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DiscoveryRuleListResult = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<DiscoveryRuleListResult>;
+
 export interface ListEntityByHealthModelRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1426,6 +2043,11 @@ export interface ListEntityByHealthModelRequest {
   /** Timestamp to use for the operation. When specified, the version of the resource at this point in time is retrieved. If not specified, the latest version is used. */
   timestamp?: string;
 }
+const ListEntityByHealthModelRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ListEntityByHealthModelRequest>;
+
 /** An entity (aka node) of a health model */
 export interface Entity {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1439,8 +2061,15 @@ export interface Entity {
   /** The resource-specific properties for this resource. */
   properties?: EntityProperties;
 }
+const Entity = GetEntityResponse as any as S.Schema<Entity>;
+
 /** The Entity items on this page */
 export type EntityListResultValueList = Array<Entity>;
+const EntityListResultValueList = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<EntityListResultValueList>;
+
 /** The response of a Entity list operation. */
 export interface EntityListResult {
   /** The Entity items on this page */
@@ -1448,18 +2077,31 @@ export interface EntityListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const EntityListResult = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<EntityListResult>;
+
 export interface ListHealthModelByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListHealthModelByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ListHealthModelByResourceGroupRequest>;
+
 /** Resource tags. */
 export type HealthModelTagsMap = { [key: string]: string | undefined };
+const HealthModelTagsMap =
+  AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<HealthModelTagsMap>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type HealthModelIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
+const HealthModelIdentityUserAssignedIdentitiesMap =
+  CreateHealthModelResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<HealthModelIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface HealthModelIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -1470,6 +2112,8 @@ export interface HealthModelIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: HealthModelIdentityUserAssignedIdentitiesMap;
 }
+const HealthModelIdentity = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<HealthModelIdentity>;
+
 /** A HealthModel resource */
 export interface HealthModel {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1489,8 +2133,15 @@ export interface HealthModel {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: HealthModelIdentity;
 }
+const HealthModel = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<HealthModel>;
+
 /** The HealthModel items on this page */
 export type HealthModelListResultValueList = Array<HealthModel>;
+const HealthModelListResultValueList = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<HealthModelListResultValueList>;
+
 /** The response of a HealthModel list operation. */
 export interface HealthModelListResult {
   /** The HealthModel items on this page */
@@ -1498,11 +2149,26 @@ export interface HealthModelListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const HealthModelListResult = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<HealthModelListResult>;
+
 export interface ListHealthModelBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListHealthModelBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<ListHealthModelBySubscriptionRequest>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -1514,10 +2180,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -1531,14 +2203,26 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListRelationshipByHealthModelRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1549,6 +2233,11 @@ export interface ListRelationshipByHealthModelRequest {
   /** Timestamp to use for the operation. When specified, the version of the resource at this point in time is retrieved. If not specified, the latest version is used. */
   timestamp?: string;
 }
+const ListRelationshipByHealthModelRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<ListRelationshipByHealthModelRequest>;
+
 /** A relationship (aka edge) between two entities in a health model */
 export interface Relationship {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1562,8 +2251,15 @@ export interface Relationship {
   /** The resource-specific properties for this resource. */
   properties?: RelationshipProperties;
 }
+const Relationship = GetRelationshipResponse as any as S.Schema<Relationship>;
+
 /** The Relationship items on this page */
 export type RelationshipListResultValueList = Array<Relationship>;
+const RelationshipListResultValueList = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<RelationshipListResultValueList>;
+
 /** The response of a Relationship list operation. */
 export interface RelationshipListResult {
   /** The Relationship items on this page */
@@ -1571,6 +2267,11 @@ export interface RelationshipListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const RelationshipListResult = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<RelationshipListResult>;
+
 export interface ListSignalDefinitionByHealthModelRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1581,6 +2282,11 @@ export interface ListSignalDefinitionByHealthModelRequest {
   /** Timestamp to use for the operation. When specified, the version of the resource at this point in time is retrieved. If not specified, the latest version is used. */
   timestamp?: string;
 }
+const ListSignalDefinitionByHealthModelRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ListSignalDefinitionByHealthModelRequest>;
+
 /** A signal definition in a health model */
 export interface SignalDefinition {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1594,8 +2300,15 @@ export interface SignalDefinition {
   /** The resource-specific properties for this resource. */
   properties?: SignalDefinitionProperties;
 }
+const SignalDefinition = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<SignalDefinition>;
+
 /** The SignalDefinition items on this page */
 export type SignalDefinitionListResultValueList = Array<SignalDefinition>;
+const SignalDefinitionListResultValueList = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<SignalDefinitionListResultValueList>;
+
 /** The response of a SignalDefinition list operation. */
 export interface SignalDefinitionListResult {
   /** The SignalDefinition items on this page */
@@ -1603,8 +2316,16 @@ export interface SignalDefinitionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SignalDefinitionListResult = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<SignalDefinitionListResult>;
+
 /** Optional set of tags (key-value pairs) */
 export type RelationshipPropertiesInputTagsMap = { [key: string]: string | undefined };
+const RelationshipPropertiesInputTagsMap =
+  AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<RelationshipPropertiesInputTagsMap>;
+
 /** Relationship properties */
 export interface RelationshipPropertiesInput {
   /** Display name */
@@ -1616,6 +2337,11 @@ export interface RelationshipPropertiesInput {
   /** Optional set of tags (key-value pairs) */
   tags?: RelationshipPropertiesInputTagsMap;
 }
+const RelationshipPropertiesInput = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<RelationshipPropertiesInput>;
+
 export interface RelationshipsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1628,6 +2354,11 @@ export interface RelationshipsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: RelationshipPropertiesInput;
 }
+const RelationshipsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<RelationshipsCreateOrUpdateRequest>;
+
 export interface RelationshipsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1640,6 +2371,11 @@ export interface RelationshipsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: RelationshipProperties;
 }
+const RelationshipsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<RelationshipsCreateOrUpdateResponse>;
+
 /** Interval in which the signal is being evaluated. Defaults to PT1M (1 minute). */
 export type SignalDefinitionPropertiesInputRefreshInterval =
   | "PT1M"
@@ -1649,8 +2385,13 @@ export type SignalDefinitionPropertiesInputRefreshInterval =
   | "PT30M"
   | "PT1H"
   | "PT2H";
+const SignalDefinitionPropertiesInputRefreshInterval = S.String;
+
 /** Optional set of tags (key-value pairs) */
 export type SignalDefinitionPropertiesInputTagsMap = { [key: string]: string | undefined };
+const SignalDefinitionPropertiesInputTagsMap =
+  AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<SignalDefinitionPropertiesInputTagsMap>;
+
 /** SignalDefinition properties */
 export interface SignalDefinitionPropertiesInput {
   /** Display name */
@@ -1666,6 +2407,11 @@ export interface SignalDefinitionPropertiesInput {
   /** Evaluation rules for the signal definition */
   evaluationRules: EvaluationRule;
 }
+const SignalDefinitionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<SignalDefinitionPropertiesInput>;
+
 export interface SignalDefinitionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1678,6 +2424,11 @@ export interface SignalDefinitionsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: SignalDefinitionPropertiesInput;
 }
+const SignalDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<SignalDefinitionsCreateOrUpdateRequest>;
+
 export interface SignalDefinitionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1690,6 +2441,9 @@ export interface SignalDefinitionsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: SignalDefinitionProperties;
 }
+const SignalDefinitionsCreateOrUpdateResponse =
+  GetSignalDefinitionResponse as any as S.Schema<SignalDefinitionsCreateOrUpdateResponse>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateHealthModelRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: HealthModelPropertiesInput | null | undefined;
@@ -1700,8 +2454,14 @@ export interface UpdateHealthModelRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateHealthModelRequestIdentityUserAssignedIdentitiesMap;
 }
+const UpdateHealthModelRequestIdentity =
+  CreateHealthModelRequestIdentity as any as S.Schema<UpdateHealthModelRequestIdentity>;
+
 /** Resource tags. */
 export type UpdateHealthModelRequestTagsMap = { [key: string]: string | undefined };
+const UpdateHealthModelRequestTagsMap =
+  AddEntityDataAnnotationRequestAnnotationDetailsMap as any as S.Schema<UpdateHealthModelRequestTagsMap>;
+
 export interface UpdateHealthModelRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1714,6 +2474,11 @@ export interface UpdateHealthModelRequest {
   /** Resource tags. */
   tags?: UpdateHealthModelRequestTagsMap;
 }
+const UpdateHealthModelRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<UpdateHealthModelRequest>;
+
 /** Resource tags. */
 export type UpdateHealthModelResponseTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -1748,6 +2513,9 @@ export interface UpdateHealthModelResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: UpdateHealthModelResponseIdentity;
 }
+const UpdateHealthModelResponse =
+  CreateHealthModelResponse as any as S.Schema<UpdateHealthModelResponse>;
+
 export type AddEntityDataAnnotationError = AzureOpError;
 /** Add a data annotation to an entity */
 export const AddEntityDataAnnotation: API.OperationMethod<
@@ -1756,8 +2524,8 @@ export const AddEntityDataAnnotation: API.OperationMethod<
   AddEntityDataAnnotationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AddEntityDataAnnotationRequest>,
-  output: __S(2) as any as S.Schema<DataAnnotation>,
+  input: AddEntityDataAnnotationRequest,
+  output: DataAnnotation,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1771,8 +2539,8 @@ export const AuthenticationSettingsCreateOrUpdate: API.OperationMethod<
   AuthenticationSettingsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<AuthenticationSettingsCreateOrUpdateRequest>,
-  output: __S(7) as any as S.Schema<AuthenticationSettingsCreateOrUpdateResponse>,
+  input: AuthenticationSettingsCreateOrUpdateRequest,
+  output: AuthenticationSettingsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1786,8 +2554,8 @@ export const CreateHealthModel: API.OperationMethod<
   CreateHealthModelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CreateHealthModelRequest>,
-  output: __S(16) as any as S.Schema<CreateHealthModelResponse>,
+  input: CreateHealthModelRequest,
+  output: CreateHealthModelResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1801,8 +2569,8 @@ export const DeleteAuthenticationSettings: API.OperationMethod<
   DeleteAuthenticationSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<DeleteAuthenticationSettingsRequest>,
-  output: __S(18) as any as S.Schema<DeleteAuthenticationSettingsResponse>,
+  input: DeleteAuthenticationSettingsRequest,
+  output: DeleteAuthenticationSettingsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1816,8 +2584,8 @@ export const DeleteDiscoveryRule: API.OperationMethod<
   DeleteDiscoveryRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<DeleteDiscoveryRuleRequest>,
-  output: __S(8) as any as S.Schema<DeleteDiscoveryRuleResponse>,
+  input: DeleteDiscoveryRuleRequest,
+  output: DeleteDiscoveryRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1831,8 +2599,8 @@ export const DeleteEntity: API.OperationMethod<
   DeleteEntityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<DeleteEntityRequest>,
-  output: __S(8) as any as S.Schema<DeleteEntityResponse>,
+  input: DeleteEntityRequest,
+  output: DeleteEntityResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1846,8 +2614,8 @@ export const DeleteHealthModel: API.OperationMethod<
   DeleteHealthModelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<DeleteHealthModelRequest>,
-  output: __S(8) as any as S.Schema<DeleteHealthModelResponse>,
+  input: DeleteHealthModelRequest,
+  output: DeleteHealthModelResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1861,8 +2629,8 @@ export const DeleteRelationship: API.OperationMethod<
   DeleteRelationshipError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<DeleteRelationshipRequest>,
-  output: __S(8) as any as S.Schema<DeleteRelationshipResponse>,
+  input: DeleteRelationshipRequest,
+  output: DeleteRelationshipResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1876,8 +2644,8 @@ export const DeleteSignalDefinition: API.OperationMethod<
   DeleteSignalDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<DeleteSignalDefinitionRequest>,
-  output: __S(8) as any as S.Schema<DeleteSignalDefinitionResponse>,
+  input: DeleteSignalDefinitionRequest,
+  output: DeleteSignalDefinitionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1891,8 +2659,8 @@ export const DiscoveryRulesCreateOrUpdate: API.OperationMethod<
   DiscoveryRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<DiscoveryRulesCreateOrUpdateRequest>,
-  output: __S(30) as any as S.Schema<DiscoveryRulesCreateOrUpdateResponse>,
+  input: DiscoveryRulesCreateOrUpdateRequest,
+  output: DiscoveryRulesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1906,8 +2674,8 @@ export const EntitiesCreateOrUpdate: API.OperationMethod<
   EntitiesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<EntitiesCreateOrUpdateRequest>,
-  output: __S(72) as any as S.Schema<EntitiesCreateOrUpdateResponse>,
+  input: EntitiesCreateOrUpdateRequest,
+  output: EntitiesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1921,8 +2689,8 @@ export const EntitiesIngestHealthReport: API.OperationMethod<
   EntitiesIngestHealthReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<EntitiesIngestHealthReportRequest>,
-  output: __S(18) as any as S.Schema<EntitiesIngestHealthReportResponse>,
+  input: EntitiesIngestHealthReportRequest,
+  output: EntitiesIngestHealthReportResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1936,8 +2704,8 @@ export const GetAuthenticationSettings: API.OperationMethod<
   GetAuthenticationSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<GetAuthenticationSettingsRequest>,
-  output: __S(7) as any as S.Schema<GetAuthenticationSettingsResponse>,
+  input: GetAuthenticationSettingsRequest,
+  output: GetAuthenticationSettingsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1951,8 +2719,8 @@ export const GetDiscoveryRule: API.OperationMethod<
   GetDiscoveryRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<GetDiscoveryRuleRequest>,
-  output: __S(76) as any as S.Schema<GetDiscoveryRuleResponse>,
+  input: GetDiscoveryRuleRequest,
+  output: GetDiscoveryRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1966,8 +2734,8 @@ export const GetEntity: API.OperationMethod<
   GetEntityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<GetEntityRequest>,
-  output: __S(78) as any as S.Schema<GetEntityResponse>,
+  input: GetEntityRequest,
+  output: GetEntityResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1981,8 +2749,8 @@ export const GetEntityDataAnnotations: API.OperationMethod<
   GetEntityDataAnnotationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<GetEntityDataAnnotationsRequest>,
-  output: __S(81) as any as S.Schema<GetDataAnnotationsResponse>,
+  input: GetEntityDataAnnotationsRequest,
+  output: GetDataAnnotationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1996,8 +2764,8 @@ export const GetEntityHistory: API.OperationMethod<
   GetEntityHistoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<GetEntityHistoryRequest>,
-  output: __S(85) as any as S.Schema<EntityHistoryResponse>,
+  input: GetEntityHistoryRequest,
+  output: EntityHistoryResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2011,8 +2779,8 @@ export const GetEntitySignalHistory: API.OperationMethod<
   GetEntitySignalHistoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<GetEntitySignalHistoryRequest>,
-  output: __S(89) as any as S.Schema<SignalHistoryResponse>,
+  input: GetEntitySignalHistoryRequest,
+  output: SignalHistoryResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2026,8 +2794,8 @@ export const GetEntitySignalRecommendations: API.OperationMethod<
   GetEntitySignalRecommendationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<GetEntitySignalRecommendationsRequest>,
-  output: __S(94) as any as S.Schema<GetSignalRecommendationsResponse>,
+  input: GetEntitySignalRecommendationsRequest,
+  output: GetSignalRecommendationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2041,8 +2809,8 @@ export const GetHealthModel: API.OperationMethod<
   GetHealthModelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<GetHealthModelRequest>,
-  output: __S(96) as any as S.Schema<GetHealthModelResponse>,
+  input: GetHealthModelRequest,
+  output: GetHealthModelResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2056,8 +2824,8 @@ export const GetRelationship: API.OperationMethod<
   GetRelationshipError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<GetRelationshipRequest>,
-  output: __S(99) as any as S.Schema<GetRelationshipResponse>,
+  input: GetRelationshipRequest,
+  output: GetRelationshipResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2071,8 +2839,8 @@ export const GetSignalDefinition: API.OperationMethod<
   GetSignalDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<GetSignalDefinitionRequest>,
-  output: __S(102) as any as S.Schema<GetSignalDefinitionResponse>,
+  input: GetSignalDefinitionRequest,
+  output: GetSignalDefinitionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2086,8 +2854,8 @@ export const ListAuthenticationSettingsByHealthModel: API.OperationMethod<
   ListAuthenticationSettingsByHealthModelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<ListAuthenticationSettingsByHealthModelRequest>,
-  output: __S(106) as any as S.Schema<AuthenticationSettingListResult>,
+  input: ListAuthenticationSettingsByHealthModelRequest,
+  output: AuthenticationSettingListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2101,8 +2869,8 @@ export const ListDiscoveryRuleByHealthModel: API.OperationMethod<
   ListDiscoveryRuleByHealthModelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<ListDiscoveryRuleByHealthModelRequest>,
-  output: __S(109) as any as S.Schema<DiscoveryRuleListResult>,
+  input: ListDiscoveryRuleByHealthModelRequest,
+  output: DiscoveryRuleListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2116,8 +2884,8 @@ export const ListEntityByHealthModel: API.OperationMethod<
   ListEntityByHealthModelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<ListEntityByHealthModelRequest>,
-  output: __S(112) as any as S.Schema<EntityListResult>,
+  input: ListEntityByHealthModelRequest,
+  output: EntityListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2131,8 +2899,8 @@ export const ListHealthModelByResourceGroup: API.OperationMethod<
   ListHealthModelByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<ListHealthModelByResourceGroupRequest>,
-  output: __S(117) as any as S.Schema<HealthModelListResult>,
+  input: ListHealthModelByResourceGroupRequest,
+  output: HealthModelListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2146,8 +2914,8 @@ export const ListHealthModelBySubscription: API.OperationMethod<
   ListHealthModelBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<ListHealthModelBySubscriptionRequest>,
-  output: __S(117) as any as S.Schema<HealthModelListResult>,
+  input: ListHealthModelBySubscriptionRequest,
+  output: HealthModelListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2161,8 +2929,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<ListOperationsRequest>,
-  output: __S(123) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2176,8 +2944,8 @@ export const ListRelationshipByHealthModel: API.OperationMethod<
   ListRelationshipByHealthModelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<ListRelationshipByHealthModelRequest>,
-  output: __S(126) as any as S.Schema<RelationshipListResult>,
+  input: ListRelationshipByHealthModelRequest,
+  output: RelationshipListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2191,8 +2959,8 @@ export const ListSignalDefinitionByHealthModel: API.OperationMethod<
   ListSignalDefinitionByHealthModelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<ListSignalDefinitionByHealthModelRequest>,
-  output: __S(130) as any as S.Schema<SignalDefinitionListResult>,
+  input: ListSignalDefinitionByHealthModelRequest,
+  output: SignalDefinitionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2206,8 +2974,8 @@ export const RelationshipsCreateOrUpdate: API.OperationMethod<
   RelationshipsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<RelationshipsCreateOrUpdateRequest>,
-  output: __S(133) as any as S.Schema<RelationshipsCreateOrUpdateResponse>,
+  input: RelationshipsCreateOrUpdateRequest,
+  output: RelationshipsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2221,8 +2989,8 @@ export const SignalDefinitionsCreateOrUpdate: API.OperationMethod<
   SignalDefinitionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<SignalDefinitionsCreateOrUpdateRequest>,
-  output: __S(102) as any as S.Schema<SignalDefinitionsCreateOrUpdateResponse>,
+  input: SignalDefinitionsCreateOrUpdateRequest,
+  output: SignalDefinitionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2236,8 +3004,8 @@ export const UpdateHealthModel: API.OperationMethod<
   UpdateHealthModelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<UpdateHealthModelRequest>,
-  output: __S(16) as any as S.Schema<UpdateHealthModelResponse>,
+  input: UpdateHealthModelRequest,
+  output: UpdateHealthModelResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2255,7 +3023,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           healthModelName: S.String.pipe(T.Label()),
           entityName: S.String.pipe(T.Label()),
-          annotationDetails: __S(0),
+          annotationDetails: AddEntityDataAnnotationRequestAnnotationDetailsMap,
           description: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -2273,7 +3041,7 @@ function __c0(j: number): any {
         S.Struct({
           annotationId: S.optional(S.String),
           createdAt: S.optional(S.String),
-          annotationDetails: __S(0),
+          annotationDetails: DataAnnotationAnnotationDetailsMap,
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataAnnotation" });
@@ -2281,7 +3049,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          authenticationKind: S.String,
+          authenticationKind: AuthenticationKind,
         }),
       ).annotate({
         identifier: "AuthenticationSettingPropertiesInput",
@@ -2293,7 +3061,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           healthModelName: S.String.pipe(T.Label()),
           authenticationSettingName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(3)),
+          properties: S.optional(AuthenticationSettingPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2309,19 +3077,19 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(HealthModelProvisioningState),
           displayName: S.optional(S.String),
-          authenticationKind: S.String,
+          authenticationKind: AuthenticationKind,
         }),
       ).annotate({
         identifier: "AuthenticationSettingProperties",
@@ -2332,8 +3100,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5)),
-          properties: S.optional(__S(6)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AuthenticationSettingProperties),
         }),
       ).annotate({
         identifier: "AuthenticationSettingsCreateOrUpdateResponse",
@@ -2347,12 +3115,14 @@ function __c1(j: number): any {
         identifier: "HealthModelPropertiesInput",
       });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(8)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(HealthModelPropertiesInput));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(9)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(
+            CreateHealthModelRequestIdentityUserAssignedIdentitiesMap,
+          ),
         }),
       ).annotate({
         identifier: "CreateHealthModelRequestIdentity",
@@ -2363,10 +3133,10 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           healthModelName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(CreateHealthModelRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(8)),
-          identity: S.optional(__S(10)),
+          properties: S.optional(HealthModelPropertiesInput),
+          identity: S.optional(CreateHealthModelRequestIdentity),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2379,7 +3149,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(HealthModelProvisioningState),
         }),
       ).annotate({ identifier: "HealthModelProperties" });
     case 5:
@@ -2390,14 +3160,16 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(13)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
     case 7:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(14)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(
+            CreateHealthModelResponseIdentityUserAssignedIdentitiesMap,
+          ),
         }),
       ).annotate({
         identifier: "CreateHealthModelResponseIdentity",
@@ -2412,11 +3184,11 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateHealthModelResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(12)),
-          identity: S.optional(__S(15)),
+          properties: S.optional(HealthModelProperties),
+          identity: S.optional(CreateHealthModelResponseIdentity),
         }),
       ).annotate({
         identifier: "CreateHealthModelResponse",
@@ -2535,7 +3307,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
+          kind: DiscoveryRuleKind,
         }),
       ).annotate({
         identifier: "DiscoveryRuleSpecification",
@@ -2545,10 +3317,10 @@ function __c3(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           authenticationSetting: S.String,
-          discoverRelationships: S.String,
-          addRecommendedSignals: S.String,
-          specification: __S(24),
-          addResourceHealthSignal: S.optional(S.String),
+          discoverRelationships: DiscoveryRuleRelationshipDiscoveryBehavior,
+          addRecommendedSignals: DiscoveryRuleRecommendedSignalsBehavior,
+          specification: DiscoveryRuleSpecification,
+          addResourceHealthSignal: S.optional(DiscoveryRulePropertiesInputAddResourceHealthSignal),
         }),
       ).annotate({
         identifier: "DiscoveryRulePropertiesInput",
@@ -2560,7 +3332,7 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           healthModelName: S.String.pipe(T.Label()),
           discoveryRuleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(25)),
+          properties: S.optional(DiscoveryRulePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2578,20 +3350,20 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.String,
-          context: S.optional(__S(27)),
+          context: S.optional(DiscoveryErrorContextList),
         }),
       ).annotate({ identifier: "DiscoveryError" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(HealthModelProvisioningState),
           displayName: S.optional(S.String),
           authenticationSetting: S.String,
-          discoverRelationships: S.String,
-          addRecommendedSignals: S.String,
-          specification: __S(24),
-          addResourceHealthSignal: S.optional(S.String),
-          error: S.optional(__S(28)),
+          discoverRelationships: DiscoveryRuleRelationshipDiscoveryBehavior,
+          addRecommendedSignals: DiscoveryRuleRecommendedSignalsBehavior,
+          specification: DiscoveryRuleSpecification,
+          addResourceHealthSignal: S.optional(DiscoveryRulePropertiesAddResourceHealthSignal),
+          error: S.optional(DiscoveryError),
           entityName: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiscoveryRuleProperties" });
@@ -2601,8 +3373,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5)),
-          properties: S.optional(__S(29)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DiscoveryRuleProperties),
         }),
       ).annotate({
         identifier: "DiscoveryRulesCreateOrUpdateResponse",
@@ -2628,41 +3400,41 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          operator: S.String,
+          operator: SignalOperator,
           threshold: S.optional(S.Number),
-          sensitivity: S.optional(S.String),
+          sensitivity: S.optional(DynamicThresholdSensitivity),
         }),
       ).annotate({ identifier: "ThresholdRuleV2" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          degradedRule: S.optional(__S(33)),
-          unhealthyRule: __S(33),
+          degradedRule: S.optional(ThresholdRuleV2),
+          unhealthyRule: ThresholdRuleV2,
         }),
       ).annotate({ identifier: "EvaluationRule" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          signalKind: S.String,
+          signalKind: SignalKind,
           name: S.String,
           signalDefinitionName: S.optional(S.String),
           metricNamespace: S.optional(S.String),
           metricName: S.optional(S.String),
           timeGrain: S.optional(S.String),
-          aggregationType: S.optional(S.String),
+          aggregationType: S.optional(MetricAggregationType),
           dimensionFilter: S.optional(S.String),
           displayName: S.optional(S.String),
-          refreshInterval: S.optional(S.String),
+          refreshInterval: S.optional(AzureResourceSignalInputRefreshInterval),
           dataUnit: S.optional(S.String),
-          evaluationRules: S.optional(__S(34)),
+          evaluationRules: S.optional(EvaluationRule),
         }),
       ).annotate({ identifier: "AzureResourceSignalInput" });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(AzureResourceSignalInput);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          enabled: S.optional(S.String),
+          enabled: S.optional(AzureResourceHealthSignalInputEnabled),
         }),
       ).annotate({
         identifier: "AzureResourceHealthSignalInput",
@@ -2673,8 +3445,8 @@ function __c4(j: number): any {
           authenticationSetting: S.String,
           azureResourceId: S.String,
           azureResourceKind: S.optional(S.String),
-          signals: S.optional(__S(36)),
-          resourceHealth: S.optional(__S(37)),
+          signals: S.optional(AzureResourceSignalsInputSignalsList),
+          resourceHealth: S.optional(AzureResourceHealthSignalInput),
         }),
       ).annotate({
         identifier: "AzureResourceSignalsInput",
@@ -2682,16 +3454,16 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          signalKind: S.String,
+          signalKind: SignalKind,
           name: S.String,
           signalDefinitionName: S.optional(S.String),
           queryText: S.optional(S.String),
           timeGrain: S.optional(S.String),
           valueColumnName: S.optional(S.String),
           displayName: S.optional(S.String),
-          refreshInterval: S.optional(S.String),
+          refreshInterval: S.optional(LogAnalyticsSignalInputRefreshInterval),
           dataUnit: S.optional(S.String),
-          evaluationRules: S.optional(__S(34)),
+          evaluationRules: S.optional(EvaluationRule),
         }),
       ).annotate({ identifier: "LogAnalyticsSignalInput" });
   }
@@ -2699,39 +3471,39 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39));
+      return S.Array(LogAnalyticsSignalInput);
     case 1:
       return S.suspend(() =>
         S.Struct({
           authenticationSetting: S.String,
           logAnalyticsWorkspaceResourceId: S.String,
-          signals: S.optional(__S(40)),
+          signals: S.optional(LogAnalyticsSignalsInputSignalsList),
         }),
       ).annotate({ identifier: "LogAnalyticsSignalsInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          signalKind: S.String,
+          signalKind: SignalKind,
           name: S.String,
           signalDefinitionName: S.optional(S.String),
           queryText: S.optional(S.String),
           timeGrain: S.optional(S.String),
           displayName: S.optional(S.String),
-          refreshInterval: S.optional(S.String),
+          refreshInterval: S.optional(PrometheusMetricsSignalInputRefreshInterval),
           dataUnit: S.optional(S.String),
-          evaluationRules: S.optional(__S(34)),
+          evaluationRules: S.optional(EvaluationRule),
         }),
       ).annotate({
         identifier: "PrometheusMetricsSignalInput",
       });
     case 3:
-      return S.Array(__S(42));
+      return S.Array(PrometheusMetricsSignalInput);
     case 4:
       return S.suspend(() =>
         S.Struct({
           authenticationSetting: S.String,
           azureMonitorWorkspaceResourceId: S.String,
-          signals: S.optional(__S(43)),
+          signals: S.optional(AzureMonitorWorkspaceSignalsInputSignalsList),
         }),
       ).annotate({
         identifier: "AzureMonitorWorkspaceSignalsInput",
@@ -2739,10 +3511,10 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          aggregationType: S.String,
+          aggregationType: DependenciesSignalGroupV2AggregationType,
           degradedThreshold: S.optional(S.Number),
           unhealthyThreshold: S.optional(S.Number),
-          unit: S.optional(S.String),
+          unit: S.optional(AggregationUnit),
           ignoreUnknown: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -2751,10 +3523,10 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          azureResource: S.optional(__S(38)),
-          azureLogAnalytics: S.optional(__S(41)),
-          azureMonitorWorkspace: S.optional(__S(44)),
-          dependencies: S.optional(__S(45)),
+          azureResource: S.optional(AzureResourceSignalsInput),
+          azureLogAnalytics: S.optional(LogAnalyticsSignalsInput),
+          azureMonitorWorkspace: S.optional(AzureMonitorWorkspaceSignalsInput),
+          dependencies: S.optional(DependenciesSignalGroupV2),
         }),
       ).annotate({ identifier: "SignalGroupsInput" });
     case 7:
@@ -2762,11 +3534,11 @@ function __c5(j: number): any {
         S.Struct({
           name: S.String,
           displayName: S.optional(S.String),
-          aggregationType: S.optional(S.String),
-          members: __S(27),
+          aggregationType: S.optional(SignalAggregationGroupInputAggregationType),
+          members: SignalAggregationGroupInputMembersList,
           degradedThreshold: S.optional(S.Number),
           unhealthyThreshold: S.optional(S.Number),
-          unit: S.optional(S.String),
+          unit: S.optional(AggregationUnit),
           ignoreUnknown: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -2777,34 +3549,34 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(SignalAggregationGroupInput);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          severity: S.String,
+          severity: AlertSeverity,
           description: S.optional(S.String),
-          actionGroupIds: S.optional(__S(27)),
+          actionGroupIds: S.optional(AlertConfigurationActionGroupIdsList),
         }),
       ).annotate({ identifier: "AlertConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          unhealthy: S.optional(__S(49)),
-          degraded: S.optional(__S(49)),
+          unhealthy: S.optional(AlertConfiguration),
+          degraded: S.optional(AlertConfiguration),
         }),
       ).annotate({ identifier: "EntityAlerts" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          canvasPosition: S.optional(__S(31)),
-          icon: S.optional(__S(32)),
+          canvasPosition: S.optional(EntityCoordinates),
+          icon: S.optional(IconDefinition),
           healthObjective: S.optional(S.Number),
-          impact: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          signalGroups: S.optional(__S(46)),
-          signalAggregationGroups: S.optional(__S(48)),
-          alerts: S.optional(__S(50)),
+          impact: S.optional(EntityPropertiesInputImpact),
+          tags: S.optional(EntityPropertiesInputTagsMap),
+          signalGroups: S.optional(SignalGroupsInput),
+          signalAggregationGroups: S.optional(EntityPropertiesInputSignalAggregationGroupsList),
+          alerts: S.optional(EntityAlerts),
         }),
       ).annotate({ identifier: "EntityPropertiesInput" });
     case 4:
@@ -2814,7 +3586,7 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           healthModelName: S.String.pipe(T.Label()),
           entityName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(51)),
+          properties: S.optional(EntityPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2829,7 +3601,7 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          healthState: S.optional(S.String),
+          healthState: S.optional(HealthState),
           value: S.optional(S.Number),
           reportedAt: S.optional(S.String),
           error: S.optional(S.String),
@@ -2839,23 +3611,23 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          signalKind: S.String,
+          signalKind: SignalKind,
           name: S.String,
           signalDefinitionName: S.optional(S.String),
-          status: S.optional(__S(53)),
+          status: S.optional(SignalStatus),
           metricNamespace: S.optional(S.String),
           metricName: S.optional(S.String),
           timeGrain: S.optional(S.String),
-          aggregationType: S.optional(S.String),
+          aggregationType: S.optional(MetricAggregationType),
           dimensionFilter: S.optional(S.String),
           displayName: S.optional(S.String),
-          refreshInterval: S.optional(S.String),
+          refreshInterval: S.optional(AzureResourceSignalRefreshInterval),
           dataUnit: S.optional(S.String),
-          evaluationRules: S.optional(__S(34)),
+          evaluationRules: S.optional(EvaluationRule),
         }),
       ).annotate({ identifier: "AzureResourceSignal" });
     case 7:
-      return S.Array(__S(54));
+      return S.Array(AzureResourceSignal);
   }
 }
 function __c7(j: number): any {
@@ -2863,17 +3635,17 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          healthState: S.optional(S.String),
+          healthState: S.optional(HealthState),
           value: S.optional(S.Number),
           reportedAt: S.optional(S.String),
           error: S.optional(S.String),
           additionalContext: S.optional(S.String),
-          availabilityState: S.optional(S.String),
-          category: S.optional(S.String),
+          availabilityState: S.optional(ResourceHealthAvailabilityState),
+          category: S.optional(ResourceHealthCategory),
           detailedStatus: S.optional(S.String),
           summary: S.optional(S.String),
-          reasonType: S.optional(S.String),
-          reasonChronicity: S.optional(S.String),
+          reasonType: S.optional(ResourceHealthReasonType),
+          reasonChronicity: S.optional(ResourceHealthReasonChronicity),
           availabilityReportedTime: S.optional(S.String),
         }),
       ).annotate({
@@ -2882,9 +3654,9 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          enabled: S.optional(S.String),
+          enabled: S.optional(AzureResourceHealthSignalEnabled),
           signalName: S.optional(S.String),
-          status: S.optional(__S(56)),
+          status: S.optional(AzureResourceHealthSignalStatus),
         }),
       ).annotate({
         identifier: "AzureResourceHealthSignal",
@@ -2895,53 +3667,53 @@ function __c7(j: number): any {
           authenticationSetting: S.String,
           azureResourceId: S.String,
           azureResourceKind: S.optional(S.String),
-          signals: S.optional(__S(55)),
-          resourceHealth: S.optional(__S(57)),
+          signals: S.optional(AzureResourceSignalsSignalsList),
+          resourceHealth: S.optional(AzureResourceHealthSignal),
         }),
       ).annotate({ identifier: "AzureResourceSignals" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          signalKind: S.String,
+          signalKind: SignalKind,
           name: S.String,
           signalDefinitionName: S.optional(S.String),
-          status: S.optional(__S(53)),
+          status: S.optional(SignalStatus),
           queryText: S.optional(S.String),
           timeGrain: S.optional(S.String),
           valueColumnName: S.optional(S.String),
           displayName: S.optional(S.String),
-          refreshInterval: S.optional(S.String),
+          refreshInterval: S.optional(LogAnalyticsSignalRefreshInterval),
           dataUnit: S.optional(S.String),
-          evaluationRules: S.optional(__S(34)),
+          evaluationRules: S.optional(EvaluationRule),
         }),
       ).annotate({ identifier: "LogAnalyticsSignal" });
     case 4:
-      return S.Array(__S(59));
+      return S.Array(LogAnalyticsSignal);
     case 5:
       return S.suspend(() =>
         S.Struct({
           authenticationSetting: S.String,
           logAnalyticsWorkspaceResourceId: S.String,
-          signals: S.optional(__S(60)),
+          signals: S.optional(LogAnalyticsSignalsSignalsList),
         }),
       ).annotate({ identifier: "LogAnalyticsSignals" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          signalKind: S.String,
+          signalKind: SignalKind,
           name: S.String,
           signalDefinitionName: S.optional(S.String),
-          status: S.optional(__S(53)),
+          status: S.optional(SignalStatus),
           queryText: S.optional(S.String),
           timeGrain: S.optional(S.String),
           displayName: S.optional(S.String),
-          refreshInterval: S.optional(S.String),
+          refreshInterval: S.optional(PrometheusMetricsSignalRefreshInterval),
           dataUnit: S.optional(S.String),
-          evaluationRules: S.optional(__S(34)),
+          evaluationRules: S.optional(EvaluationRule),
         }),
       ).annotate({ identifier: "PrometheusMetricsSignal" });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(PrometheusMetricsSignal);
   }
 }
 function __c8(j: number): any {
@@ -2951,7 +3723,7 @@ function __c8(j: number): any {
         S.Struct({
           authenticationSetting: S.String,
           azureMonitorWorkspaceResourceId: S.String,
-          signals: S.optional(__S(63)),
+          signals: S.optional(AzureMonitorWorkspaceSignalsSignalsList),
         }),
       ).annotate({
         identifier: "AzureMonitorWorkspaceSignals",
@@ -2959,29 +3731,29 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          signalKind: S.String,
+          signalKind: SignalKind,
           name: S.String,
           signalDefinitionName: S.optional(S.String),
-          status: S.optional(__S(53)),
-          evaluationRules: S.optional(__S(34)),
+          status: S.optional(SignalStatus),
+          evaluationRules: S.optional(EvaluationRule),
         }),
       ).annotate({ identifier: "ExternalSignal" });
     case 2:
-      return S.Array(__S(65));
+      return S.Array(ExternalSignal);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          signals: S.optional(__S(66)),
+          signals: S.optional(ExternalSignalGroupSignalsList),
         }),
       ).annotate({ identifier: "ExternalSignalGroup" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          azureResource: S.optional(__S(58)),
-          azureLogAnalytics: S.optional(__S(61)),
-          azureMonitorWorkspace: S.optional(__S(64)),
-          dependencies: S.optional(__S(45)),
-          external: S.optional(__S(67)),
+          azureResource: S.optional(AzureResourceSignals),
+          azureLogAnalytics: S.optional(LogAnalyticsSignals),
+          azureMonitorWorkspace: S.optional(AzureMonitorWorkspaceSignals),
+          dependencies: S.optional(DependenciesSignalGroupV2),
+          external: S.optional(ExternalSignalGroup),
         }),
       ).annotate({ identifier: "SignalGroups" });
     case 5:
@@ -2989,33 +3761,33 @@ function __c8(j: number): any {
         S.Struct({
           name: S.String,
           displayName: S.optional(S.String),
-          aggregationType: S.optional(S.String),
-          members: __S(27),
+          aggregationType: S.optional(SignalAggregationGroupAggregationType),
+          members: SignalAggregationGroupMembersList,
           degradedThreshold: S.optional(S.Number),
           unhealthyThreshold: S.optional(S.Number),
-          unit: S.optional(S.String),
+          unit: S.optional(AggregationUnit),
           ignoreUnknown: S.optional(S.Boolean),
-          aggregatedHealthState: S.optional(S.String),
-          unresolvedMembers: S.optional(__S(27)),
+          aggregatedHealthState: S.optional(HealthState),
+          unresolvedMembers: S.optional(SignalAggregationGroupUnresolvedMembersList),
         }),
       ).annotate({ identifier: "SignalAggregationGroup" });
     case 6:
-      return S.Array(__S(69));
+      return S.Array(SignalAggregationGroup);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(HealthModelProvisioningState),
           displayName: S.optional(S.String),
-          canvasPosition: S.optional(__S(31)),
-          icon: S.optional(__S(32)),
+          canvasPosition: S.optional(EntityCoordinates),
+          icon: S.optional(IconDefinition),
           healthObjective: S.optional(S.Number),
-          impact: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          signalGroups: S.optional(__S(68)),
-          signalAggregationGroups: S.optional(__S(70)),
+          impact: S.optional(EntityPropertiesImpact),
+          tags: S.optional(EntityPropertiesTagsMap),
+          signalGroups: S.optional(SignalGroups),
+          signalAggregationGroups: S.optional(EntityPropertiesSignalAggregationGroupsList),
           discoveredBy: S.optional(S.String),
-          healthState: S.optional(S.String),
-          alerts: S.optional(__S(50)),
+          healthState: S.optional(HealthState),
+          alerts: S.optional(EntityAlerts),
         }),
       ).annotate({ identifier: "EntityProperties" });
   }
@@ -3028,8 +3800,8 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5)),
-          properties: S.optional(__S(71)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(EntityProperties),
         }),
       ).annotate({
         identifier: "EntitiesCreateOrUpdateResponse",
@@ -3042,9 +3814,9 @@ function __c9(j: number): any {
           healthModelName: S.String.pipe(T.Label()),
           entityName: S.String.pipe(T.Label()),
           signalName: S.String,
-          healthState: S.String,
+          healthState: HealthState,
           value: S.optional(S.Number),
-          evaluationRules: S.optional(__S(34)),
+          evaluationRules: S.optional(EvaluationRule),
           expiresInMinutes: S.optional(S.Number),
           additionalContext: S.optional(S.String),
         }).pipe(
@@ -3098,8 +3870,8 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5)),
-          properties: S.optional(__S(29)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DiscoveryRuleProperties),
         }),
       ).annotate({ identifier: "GetDiscoveryRuleResponse" });
     case 5:
@@ -3124,8 +3896,8 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5)),
-          properties: S.optional(__S(71)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(EntityProperties),
         }),
       ).annotate({ identifier: "GetEntityResponse" });
     case 7:
@@ -3155,12 +3927,12 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2));
+      return S.Array(DataAnnotation);
     case 1:
       return S.suspend(() =>
         S.Struct({
           entityName: S.String,
-          annotations: __S(80),
+          annotations: GetDataAnnotationsResponseAnnotationsList,
           nextMarker: S.optional(S.String),
         }),
       ).annotate({
@@ -3189,19 +3961,19 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          previousState: S.String,
-          newState: S.String,
+          previousState: HealthState,
+          newState: HealthState,
           occurredAt: S.String,
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "HealthStateTransition" });
     case 4:
-      return S.Array(__S(83));
+      return S.Array(HealthStateTransition);
     case 5:
       return S.suspend(() =>
         S.Struct({
           entityName: S.String,
-          history: __S(84),
+          history: EntityHistoryResponseHistoryList,
           nextMarker: S.optional(S.String),
         }),
       ).annotate({ identifier: "EntityHistoryResponse" });
@@ -3233,7 +4005,7 @@ function __c10(j: number): any {
         S.Struct({
           occurredAt: S.String,
           value: S.optional(S.Number),
-          healthState: S.String,
+          healthState: HealthState,
           additionalContext: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignalHistoryDataPoint" });
@@ -3242,13 +4014,13 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87));
+      return S.Array(SignalHistoryDataPoint);
     case 1:
       return S.suspend(() =>
         S.Struct({
           entityName: S.String,
           signalName: S.String,
-          history: __S(88),
+          history: SignalHistoryResponseHistoryList,
           nextMarker: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignalHistoryResponse" });
@@ -3273,7 +4045,7 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          signalKind: S.String,
+          signalKind: SignalRecommendationKind,
         }),
       ).annotate({
         identifier: "SignalRecommendationConfiguration",
@@ -3284,20 +4056,20 @@ function __c11(j: number): any {
           signalId: S.String,
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          applicableResourceTypes: S.optional(__S(27)),
-          refreshInterval: S.optional(S.String),
+          applicableResourceTypes: S.optional(SignalConfigurationApplicableResourceTypesList),
+          refreshInterval: S.optional(RefreshInterval),
           dataUnit: S.optional(S.String),
-          configuration: __S(91),
-          evaluationRules: S.optional(__S(34)),
+          configuration: SignalRecommendationConfiguration,
+          evaluationRules: S.optional(EvaluationRule),
         }),
       ).annotate({ identifier: "SignalConfiguration" });
     case 5:
-      return S.Array(__S(92));
+      return S.Array(SignalConfiguration);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          recommendedSignals: __S(93),
-          recommendedConfigurations: __S(93),
+          recommendedSignals: GetSignalRecommendationsResponseRecommendedSignalsList,
+          recommendedConfigurations: GetSignalRecommendationsResponseRecommendedConfigurationsList,
         }),
       ).annotate({
         identifier: "GetSignalRecommendationsResponse",
@@ -3327,11 +4099,11 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetHealthModelResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(12)),
-          identity: S.optional(__S(15)),
+          properties: S.optional(HealthModelProperties),
+          identity: S.optional(GetHealthModelResponseIdentity),
         }),
       ).annotate({ identifier: "GetHealthModelResponse" });
     case 1:
@@ -3353,11 +4125,11 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(HealthModelProvisioningState),
           displayName: S.optional(S.String),
           parentEntityName: S.String,
           childEntityName: S.String,
-          tags: S.optional(__S(0)),
+          tags: S.optional(RelationshipPropertiesTagsMap),
           discoveredBy: S.optional(S.String),
         }),
       ).annotate({ identifier: "RelationshipProperties" });
@@ -3367,8 +4139,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5)),
-          properties: S.optional(__S(98)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(RelationshipProperties),
         }),
       ).annotate({ identifier: "GetRelationshipResponse" });
     case 4:
@@ -3392,13 +4164,13 @@ function __c12(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(HealthModelProvisioningState),
           displayName: S.optional(S.String),
-          signalKind: S.String,
-          refreshInterval: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          signalKind: SignalKind,
+          refreshInterval: S.optional(SignalDefinitionPropertiesRefreshInterval),
+          tags: S.optional(SignalDefinitionPropertiesTagsMap),
           dataUnit: S.optional(S.String),
-          evaluationRules: __S(34),
+          evaluationRules: EvaluationRule,
         }),
       ).annotate({
         identifier: "SignalDefinitionProperties",
@@ -3409,8 +4181,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5)),
-          properties: S.optional(__S(101)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SignalDefinitionProperties),
         }),
       ).annotate({
         identifier: "GetSignalDefinitionResponse",
@@ -3442,16 +4214,16 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5)),
-          properties: S.optional(__S(6)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AuthenticationSettingProperties),
         }),
       ).annotate({ identifier: "AuthenticationSetting" });
     case 1:
-      return S.Array(__S(104));
+      return S.Array(AuthenticationSetting);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(105),
+          value: AuthenticationSettingListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3476,11 +4248,11 @@ function __c13(j: number): any {
         identifier: "ListDiscoveryRuleByHealthModelRequest",
       });
     case 4:
-      return S.Array(__S(76));
+      return S.Array(DiscoveryRule);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(108),
+          value: DiscoveryRuleListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiscoveryRuleListResult" });
@@ -3503,7 +4275,7 @@ function __c13(j: number): any {
         identifier: "ListEntityByHealthModelRequest",
       });
     case 7:
-      return S.Array(__S(78));
+      return S.Array(Entity);
   }
 }
 function __c14(j: number): any {
@@ -3511,7 +4283,7 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(111),
+          value: EntityListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EntityListResult" });
@@ -3536,8 +4308,8 @@ function __c14(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(14)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(HealthModelIdentityUserAssignedIdentitiesMap),
         }),
       ).annotate({ identifier: "HealthModelIdentity" });
     case 3:
@@ -3546,19 +4318,19 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(HealthModelTagsMap),
           location: S.String,
-          properties: S.optional(__S(12)),
-          identity: S.optional(__S(114)),
+          properties: S.optional(HealthModelProperties),
+          identity: S.optional(HealthModelIdentity),
         }),
       ).annotate({ identifier: "HealthModel" });
     case 4:
-      return S.Array(__S(115));
+      return S.Array(HealthModel);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(116),
+          value: HealthModelListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "HealthModelListResult" });
@@ -3606,17 +4378,17 @@ function __c15(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(120)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 2:
-      return S.Array(__S(121));
+      return S.Array(Operation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(122)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -3639,11 +4411,11 @@ function __c15(j: number): any {
         identifier: "ListRelationshipByHealthModelRequest",
       });
     case 5:
-      return S.Array(__S(99));
+      return S.Array(Relationship);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(125),
+          value: RelationshipListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RelationshipListResult" });
@@ -3675,16 +4447,16 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5)),
-          properties: S.optional(__S(101)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SignalDefinitionProperties),
         }),
       ).annotate({ identifier: "SignalDefinition" });
     case 1:
-      return S.Array(__S(128));
+      return S.Array(SignalDefinition);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(129),
+          value: SignalDefinitionListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3696,7 +4468,7 @@ function __c16(j: number): any {
           displayName: S.optional(S.String),
           parentEntityName: S.String,
           childEntityName: S.String,
-          tags: S.optional(__S(0)),
+          tags: S.optional(RelationshipPropertiesInputTagsMap),
         }),
       ).annotate({
         identifier: "RelationshipPropertiesInput",
@@ -3708,7 +4480,7 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           healthModelName: S.String.pipe(T.Label()),
           relationshipName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(131)),
+          properties: S.optional(RelationshipPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3726,8 +4498,8 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5)),
-          properties: S.optional(__S(98)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(RelationshipProperties),
         }),
       ).annotate({
         identifier: "RelationshipsCreateOrUpdateResponse",
@@ -3736,11 +4508,11 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          signalKind: S.String,
-          refreshInterval: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          signalKind: SignalKind,
+          refreshInterval: S.optional(SignalDefinitionPropertiesInputRefreshInterval),
+          tags: S.optional(SignalDefinitionPropertiesInputTagsMap),
           dataUnit: S.optional(S.String),
-          evaluationRules: __S(34),
+          evaluationRules: EvaluationRule,
         }),
       ).annotate({
         identifier: "SignalDefinitionPropertiesInput",
@@ -3752,7 +4524,7 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           healthModelName: S.String.pipe(T.Label()),
           signalDefinitionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(134)),
+          properties: S.optional(SignalDefinitionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3774,8 +4546,8 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           healthModelName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(10)),
-          tags: S.optional(__S(0)),
+          identity: S.optional(UpdateHealthModelRequestIdentity),
+          tags: S.optional(UpdateHealthModelRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3785,50 +4557,5 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateHealthModelRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
   }
 }

@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "SupplyChain",
   serviceShapeName: "GalaxyPublicAPIGateway",
@@ -127,84 +125,157 @@ export interface CreateBillOfMaterialsImportJobRequest {
   s3uri: string;
   clientToken?: string;
 }
+const CreateBillOfMaterialsImportJobRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateBillOfMaterialsImportJobRequest>;
 export interface CreateBillOfMaterialsImportJobResponse {
   jobId: string;
 }
+const CreateBillOfMaterialsImportJobResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateBillOfMaterialsImportJobResponse>;
 export type DataIntegrationFlowName = string;
 export type DataIntegrationFlowSourceType = "S3" | "DATASET" | (string & {});
+const DataIntegrationFlowSourceType = S.String;
+
 export type DataIntegrationFlowSourceName = string;
 export type S3BucketName = string;
 export type DataIntegrationFlowS3Prefix = string;
 export type DataIntegrationFlowFileType = "CSV" | "PARQUET" | "JSON" | (string & {});
+const DataIntegrationFlowFileType = S.String;
+
 export interface DataIntegrationFlowS3Options {
   fileType?: DataIntegrationFlowFileType;
 }
+const DataIntegrationFlowS3Options = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DataIntegrationFlowS3Options>;
 export interface DataIntegrationFlowS3SourceConfiguration {
   bucketName: string;
   prefix: string;
   options?: DataIntegrationFlowS3Options;
 }
+const DataIntegrationFlowS3SourceConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DataIntegrationFlowS3SourceConfiguration>;
 export type DatasetIdentifier = string;
 export type DataIntegrationFlowLoadType = "INCREMENTAL" | "REPLACE" | (string & {});
+const DataIntegrationFlowLoadType = S.String;
+
 export type DataIntegrationFlowDedupeStrategyType = "FIELD_PRIORITY" | (string & {});
+const DataIntegrationFlowDedupeStrategyType = S.String;
+
 export type DataIntegrationFlowFieldPriorityDedupeFieldName = string;
 export type DataIntegrationFlowFieldPriorityDedupeSortOrder = "ASC" | "DESC" | (string & {});
+const DataIntegrationFlowFieldPriorityDedupeSortOrder = S.String;
+
 export interface DataIntegrationFlowFieldPriorityDedupeField {
   name: string;
   sortOrder: DataIntegrationFlowFieldPriorityDedupeSortOrder;
 }
+const DataIntegrationFlowFieldPriorityDedupeField = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DataIntegrationFlowFieldPriorityDedupeField>;
 export type DataIntegrationFlowFieldPriorityDedupeFieldList =
   DataIntegrationFlowFieldPriorityDedupeField[];
+const DataIntegrationFlowFieldPriorityDedupeFieldList = /*@__PURE__*/ __L.at(__c0, 5);
 export interface DataIntegrationFlowFieldPriorityDedupeStrategyConfiguration {
   fields: DataIntegrationFlowFieldPriorityDedupeField[];
 }
+const DataIntegrationFlowFieldPriorityDedupeStrategyConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DataIntegrationFlowFieldPriorityDedupeStrategyConfiguration>;
 export interface DataIntegrationFlowDedupeStrategy {
   type: DataIntegrationFlowDedupeStrategyType;
   fieldPriority?: DataIntegrationFlowFieldPriorityDedupeStrategyConfiguration;
 }
+const DataIntegrationFlowDedupeStrategy = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DataIntegrationFlowDedupeStrategy>;
 export interface DataIntegrationFlowDatasetOptions {
   loadType?: DataIntegrationFlowLoadType;
   dedupeRecords?: boolean;
   dedupeStrategy?: DataIntegrationFlowDedupeStrategy;
 }
+const DataIntegrationFlowDatasetOptions = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DataIntegrationFlowDatasetOptions>;
 export interface DataIntegrationFlowDatasetSourceConfiguration {
   datasetIdentifier: string;
   options?: DataIntegrationFlowDatasetOptions;
 }
+const DataIntegrationFlowDatasetSourceConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DataIntegrationFlowDatasetSourceConfiguration>;
 export interface DataIntegrationFlowSource {
   sourceType: DataIntegrationFlowSourceType;
   sourceName: string;
   s3Source?: DataIntegrationFlowS3SourceConfiguration;
   datasetSource?: DataIntegrationFlowDatasetSourceConfiguration;
 }
+const DataIntegrationFlowSource = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DataIntegrationFlowSource>;
 export type DataIntegrationFlowSourceList = DataIntegrationFlowSource[];
+const DataIntegrationFlowSourceList = /*@__PURE__*/ __L.at(__c1, 3);
 export type DataIntegrationFlowTransformationType = "SQL" | "NONE" | (string & {});
+const DataIntegrationFlowTransformationType = S.String;
+
 export type DataIntegrationFlowSQLQuery = string | redacted.Redacted<string>;
 export interface DataIntegrationFlowSQLTransformationConfiguration {
   query: string | redacted.Redacted<string>;
 }
+const DataIntegrationFlowSQLTransformationConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DataIntegrationFlowSQLTransformationConfiguration>;
 export interface DataIntegrationFlowTransformation {
   transformationType: DataIntegrationFlowTransformationType;
   sqlTransformation?: DataIntegrationFlowSQLTransformationConfiguration;
 }
+const DataIntegrationFlowTransformation = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DataIntegrationFlowTransformation>;
 export type DataIntegrationFlowTargetType = "S3" | "DATASET" | (string & {});
+const DataIntegrationFlowTargetType = S.String;
+
 export interface DataIntegrationFlowS3TargetConfiguration {
   bucketName: string;
   prefix: string;
   options?: DataIntegrationFlowS3Options;
 }
+const DataIntegrationFlowS3TargetConfiguration =
+  DataIntegrationFlowS3SourceConfiguration as any as S.Schema<DataIntegrationFlowS3TargetConfiguration>;
 export interface DataIntegrationFlowDatasetTargetConfiguration {
   datasetIdentifier: string;
   options?: DataIntegrationFlowDatasetOptions;
 }
+const DataIntegrationFlowDatasetTargetConfiguration =
+  DataIntegrationFlowDatasetSourceConfiguration as any as S.Schema<DataIntegrationFlowDatasetTargetConfiguration>;
 export interface DataIntegrationFlowTarget {
   targetType: DataIntegrationFlowTargetType;
   s3Target?: DataIntegrationFlowS3TargetConfiguration;
   datasetTarget?: DataIntegrationFlowDatasetTargetConfiguration;
 }
+const DataIntegrationFlowTarget = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DataIntegrationFlowTarget>;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
+const TagMap = /*@__PURE__*/ __L.at(__c1, 7);
 export interface CreateDataIntegrationFlowRequest {
   instanceId: string;
   name: string;
@@ -213,10 +284,18 @@ export interface CreateDataIntegrationFlowRequest {
   target: DataIntegrationFlowTarget;
   tags?: { [key: string]: string | undefined };
 }
+const CreateDataIntegrationFlowRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateDataIntegrationFlowRequest>;
 export interface CreateDataIntegrationFlowResponse {
   instanceId: string;
   name: string;
 }
+const CreateDataIntegrationFlowResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateDataIntegrationFlowResponse>;
 export type DataLakeNamespaceName = string;
 export type DataLakeDatasetName = string;
 export type DataLakeDatasetSchemaName = string;
@@ -228,21 +307,37 @@ export type DataLakeDatasetSchemaFieldType =
   | "TIMESTAMP"
   | "LONG"
   | (string & {});
+const DataLakeDatasetSchemaFieldType = S.String;
+
 export interface DataLakeDatasetSchemaField {
   name: string;
   type: DataLakeDatasetSchemaFieldType;
   isRequired: boolean;
 }
+const DataLakeDatasetSchemaField = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DataLakeDatasetSchemaField>;
 export type DataLakeDatasetSchemaFieldList = DataLakeDatasetSchemaField[];
+const DataLakeDatasetSchemaFieldList = /*@__PURE__*/ __L.at(__c2, 3);
 export interface DataLakeDatasetPrimaryKeyField {
   name: string;
 }
+const DataLakeDatasetPrimaryKeyField = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DataLakeDatasetPrimaryKeyField>;
 export type DataLakeDatasetPrimaryKeyFieldList = DataLakeDatasetPrimaryKeyField[];
+const DataLakeDatasetPrimaryKeyFieldList = /*@__PURE__*/ __L.at(__c2, 5);
 export interface DataLakeDatasetSchema {
   name: string;
   fields: DataLakeDatasetSchemaField[];
   primaryKeys?: DataLakeDatasetPrimaryKeyField[];
 }
+const DataLakeDatasetSchema = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DataLakeDatasetSchema>;
 export type DataLakeDatasetDescription = string;
 export type DataLakeDatasetPartitionTransformType =
   | "YEAR"
@@ -251,17 +346,32 @@ export type DataLakeDatasetPartitionTransformType =
   | "HOUR"
   | "IDENTITY"
   | (string & {});
+const DataLakeDatasetPartitionTransformType = S.String;
+
 export interface DataLakeDatasetPartitionFieldTransform {
   type: DataLakeDatasetPartitionTransformType;
 }
+const DataLakeDatasetPartitionFieldTransform = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DataLakeDatasetPartitionFieldTransform>;
 export interface DataLakeDatasetPartitionField {
   name: string;
   transform: DataLakeDatasetPartitionFieldTransform;
 }
+const DataLakeDatasetPartitionField = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DataLakeDatasetPartitionField>;
 export type DataLakeDatasetPartitionFieldList = DataLakeDatasetPartitionField[];
+const DataLakeDatasetPartitionFieldList = /*@__PURE__*/ __L.at(__c3, 1);
 export interface DataLakeDatasetPartitionSpec {
   fields: DataLakeDatasetPartitionField[];
 }
+const DataLakeDatasetPartitionSpec = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DataLakeDatasetPartitionSpec>;
 export interface CreateDataLakeDatasetRequest {
   instanceId: string;
   namespace: string;
@@ -271,6 +381,10 @@ export interface CreateDataLakeDatasetRequest {
   partitionSpec?: DataLakeDatasetPartitionSpec;
   tags?: { [key: string]: string | undefined };
 }
+const CreateDataLakeDatasetRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateDataLakeDatasetRequest>;
 export type AscResourceArn = string;
 export interface DataLakeDataset {
   instanceId: string;
@@ -283,9 +397,14 @@ export interface DataLakeDataset {
   createdTime: Date;
   lastModifiedTime: Date;
 }
+const DataLakeDataset = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DataLakeDataset>;
 export interface CreateDataLakeDatasetResponse {
   dataset: DataLakeDataset;
 }
+const CreateDataLakeDatasetResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateDataLakeDatasetResponse>;
 export type DataLakeNamespaceDescription = string;
 export interface CreateDataLakeNamespaceRequest {
   instanceId: string;
@@ -293,6 +412,10 @@ export interface CreateDataLakeNamespaceRequest {
   description?: string;
   tags?: { [key: string]: string | undefined };
 }
+const CreateDataLakeNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateDataLakeNamespaceRequest>;
 export interface DataLakeNamespace {
   instanceId: string;
   name: string;
@@ -301,9 +424,14 @@ export interface DataLakeNamespace {
   createdTime: Date;
   lastModifiedTime: Date;
 }
+const DataLakeNamespace = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<DataLakeNamespace>;
 export interface CreateDataLakeNamespaceResponse {
   namespace: DataLakeNamespace;
 }
+const CreateDataLakeNamespaceResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateDataLakeNamespaceResponse>;
 export type InstanceName = string;
 export type InstanceDescription = string;
 export type KmsKeyArn = string;
@@ -316,6 +444,10 @@ export interface CreateInstanceRequest {
   tags?: { [key: string]: string | undefined };
   clientToken?: string;
 }
+const CreateInstanceRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateInstanceRequest>;
 export type AwsAccountId = string;
 export type InstanceState =
   | "Initializing"
@@ -325,6 +457,8 @@ export type InstanceState =
   | "Deleting"
   | "Deleted"
   | (string & {});
+const InstanceState = S.String;
+
 export interface Instance {
   instanceId: string;
   awsAccountId: string;
@@ -338,45 +472,79 @@ export interface Instance {
   kmsKeyArn?: string;
   versionNumber?: number;
 }
+const Instance = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Instance>;
 export interface CreateInstanceResponse {
   instance: Instance;
 }
+const CreateInstanceResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateInstanceResponse>;
 export interface DeleteDataIntegrationFlowRequest {
   instanceId: string;
   name: string;
 }
+const DeleteDataIntegrationFlowRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DeleteDataIntegrationFlowRequest>;
 export interface DeleteDataIntegrationFlowResponse {
   instanceId: string;
   name: string;
 }
+const DeleteDataIntegrationFlowResponse =
+  CreateDataIntegrationFlowResponse as any as S.Schema<DeleteDataIntegrationFlowResponse>;
 export interface DeleteDataLakeDatasetRequest {
   instanceId: string;
   namespace: string;
   name: string;
 }
+const DeleteDataLakeDatasetRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DeleteDataLakeDatasetRequest>;
 export interface DeleteDataLakeDatasetResponse {
   instanceId: string;
   namespace: string;
   name: string;
 }
+const DeleteDataLakeDatasetResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<DeleteDataLakeDatasetResponse>;
 export interface DeleteDataLakeNamespaceRequest {
   instanceId: string;
   name: string;
 }
+const DeleteDataLakeNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<DeleteDataLakeNamespaceRequest>;
 export interface DeleteDataLakeNamespaceResponse {
   instanceId: string;
   name: string;
 }
+const DeleteDataLakeNamespaceResponse =
+  CreateDataIntegrationFlowResponse as any as S.Schema<DeleteDataLakeNamespaceResponse>;
 export interface DeleteInstanceRequest {
   instanceId: string;
 }
+const DeleteInstanceRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<DeleteInstanceRequest>;
 export interface DeleteInstanceResponse {
   instance: Instance;
 }
+const DeleteInstanceResponse = CreateInstanceResponse as any as S.Schema<DeleteInstanceResponse>;
 export interface GetBillOfMaterialsImportJobRequest {
   instanceId: string;
   jobId: string;
 }
+const GetBillOfMaterialsImportJobRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetBillOfMaterialsImportJobRequest>;
 export type ConfigurationJobStatus =
   | "NEW"
   | "FAILED"
@@ -384,6 +552,8 @@ export type ConfigurationJobStatus =
   | "QUEUED"
   | "SUCCESS"
   | (string & {});
+const ConfigurationJobStatus = S.String;
+
 export interface BillOfMaterialsImportJob {
   instanceId: string;
   jobId: string;
@@ -391,13 +561,25 @@ export interface BillOfMaterialsImportJob {
   s3uri: string;
   message?: string;
 }
+const BillOfMaterialsImportJob = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<BillOfMaterialsImportJob>;
 export interface GetBillOfMaterialsImportJobResponse {
   job: BillOfMaterialsImportJob;
 }
+const GetBillOfMaterialsImportJobResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetBillOfMaterialsImportJobResponse>;
 export interface GetDataIntegrationEventRequest {
   instanceId: string;
   eventId: string;
 }
+const GetDataIntegrationEventRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GetDataIntegrationEventRequest>;
 export type DataIntegrationEventType =
   | "scn.data.forecast"
   | "scn.data.inventorylevel"
@@ -416,6 +598,8 @@ export type DataIntegrationEventType =
   | "scn.data.supplyplan"
   | "scn.data.dataset"
   | (string & {});
+const DataIntegrationEventType = S.String;
+
 export type DataIntegrationEventGroupId = string;
 export type DataIntegrationDatasetArn = string;
 export type DataIntegrationEventDatasetOperationType =
@@ -423,20 +607,32 @@ export type DataIntegrationEventDatasetOperationType =
   | "UPSERT"
   | "DELETE"
   | (string & {});
+const DataIntegrationEventDatasetOperationType = S.String;
+
 export type DataIntegrationEventDatasetLoadStatus =
   | "SUCCEEDED"
   | "IN_PROGRESS"
   | "FAILED"
   | (string & {});
+const DataIntegrationEventDatasetLoadStatus = S.String;
+
 export interface DataIntegrationEventDatasetLoadExecutionDetails {
   status: DataIntegrationEventDatasetLoadStatus;
   message?: string;
 }
+const DataIntegrationEventDatasetLoadExecutionDetails = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DataIntegrationEventDatasetLoadExecutionDetails>;
 export interface DataIntegrationEventDatasetTargetDetails {
   datasetIdentifier: string;
   operationType: DataIntegrationEventDatasetOperationType;
   datasetLoadExecution: DataIntegrationEventDatasetLoadExecutionDetails;
 }
+const DataIntegrationEventDatasetTargetDetails = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DataIntegrationEventDatasetTargetDetails>;
 export interface DataIntegrationEvent {
   instanceId: string;
   eventId: string;
@@ -445,13 +641,22 @@ export interface DataIntegrationEvent {
   eventTimestamp: Date;
   datasetTargetDetails?: DataIntegrationEventDatasetTargetDetails;
 }
+const DataIntegrationEvent = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<DataIntegrationEvent>;
 export interface GetDataIntegrationEventResponse {
   event: DataIntegrationEvent;
 }
+const GetDataIntegrationEventResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetDataIntegrationEventResponse>;
 export interface GetDataIntegrationFlowRequest {
   instanceId: string;
   name: string;
 }
+const GetDataIntegrationFlowRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetDataIntegrationFlowRequest>;
 export interface DataIntegrationFlow {
   instanceId: string;
   name: string;
@@ -461,36 +666,63 @@ export interface DataIntegrationFlow {
   createdTime: Date;
   lastModifiedTime: Date;
 }
+const DataIntegrationFlow = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<DataIntegrationFlow>;
 export interface GetDataIntegrationFlowResponse {
   flow: DataIntegrationFlow;
 }
+const GetDataIntegrationFlowResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GetDataIntegrationFlowResponse>;
 export interface GetDataIntegrationFlowExecutionRequest {
   instanceId: string;
   flowName: string;
   executionId: string;
 }
+const GetDataIntegrationFlowExecutionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GetDataIntegrationFlowExecutionRequest>;
 export type DataIntegrationFlowExecutionStatus =
   | "SUCCEEDED"
   | "IN_PROGRESS"
   | "FAILED"
   | (string & {});
+const DataIntegrationFlowExecutionStatus = S.String;
+
 export type DataIntegrationS3ObjectKey = string;
 export interface DataIntegrationFlowS3Source {
   bucketName: string;
   key: string;
 }
+const DataIntegrationFlowS3Source = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DataIntegrationFlowS3Source>;
 export interface DataIntegrationFlowDatasetSource {
   datasetIdentifier: string;
 }
+const DataIntegrationFlowDatasetSource = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<DataIntegrationFlowDatasetSource>;
 export interface DataIntegrationFlowExecutionSourceInfo {
   sourceType: DataIntegrationFlowSourceType;
   s3Source?: DataIntegrationFlowS3Source;
   datasetSource?: DataIntegrationFlowDatasetSource;
 }
+const DataIntegrationFlowExecutionSourceInfo = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<DataIntegrationFlowExecutionSourceInfo>;
 export type DataIntegrationFlowExecutionDiagnosticReportsRootS3URI = string;
 export interface DataIntegrationFlowExecutionOutputMetadata {
   diagnosticReportsRootS3URI?: string;
 }
+const DataIntegrationFlowExecutionOutputMetadata = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DataIntegrationFlowExecutionOutputMetadata>;
 export interface DataIntegrationFlowExecution {
   instanceId: string;
   flowName: string;
@@ -502,30 +734,52 @@ export interface DataIntegrationFlowExecution {
   endTime?: Date;
   outputMetadata?: DataIntegrationFlowExecutionOutputMetadata;
 }
+const DataIntegrationFlowExecution = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DataIntegrationFlowExecution>;
 export interface GetDataIntegrationFlowExecutionResponse {
   flowExecution: DataIntegrationFlowExecution;
 }
+const GetDataIntegrationFlowExecutionResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<GetDataIntegrationFlowExecutionResponse>;
 export interface GetDataLakeDatasetRequest {
   instanceId: string;
   namespace: string;
   name: string;
 }
+const GetDataLakeDatasetRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetDataLakeDatasetRequest>;
 export interface GetDataLakeDatasetResponse {
   dataset: DataLakeDataset;
 }
+const GetDataLakeDatasetResponse =
+  CreateDataLakeDatasetResponse as any as S.Schema<GetDataLakeDatasetResponse>;
 export interface GetDataLakeNamespaceRequest {
   instanceId: string;
   name: string;
 }
+const GetDataLakeNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GetDataLakeNamespaceRequest>;
 export interface GetDataLakeNamespaceResponse {
   namespace: DataLakeNamespace;
 }
+const GetDataLakeNamespaceResponse =
+  CreateDataLakeNamespaceResponse as any as S.Schema<GetDataLakeNamespaceResponse>;
 export interface GetInstanceRequest {
   instanceId: string;
 }
+const GetInstanceRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<GetInstanceRequest>;
 export interface GetInstanceResponse {
   instance: Instance;
 }
+const GetInstanceResponse = CreateInstanceResponse as any as S.Schema<GetInstanceResponse>;
 export type DataIntegrationEventNextToken = string;
 export type DataIntegrationEventMaxResults = number;
 export interface ListDataIntegrationEventsRequest {
@@ -534,11 +788,20 @@ export interface ListDataIntegrationEventsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListDataIntegrationEventsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListDataIntegrationEventsRequest>;
 export type DataIntegrationEventList = DataIntegrationEvent[];
+const DataIntegrationEventList = /*@__PURE__*/ __L.at(__c7, 7);
 export interface ListDataIntegrationEventsResponse {
   events: DataIntegrationEvent[];
   nextToken?: string;
 }
+const ListDataIntegrationEventsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListDataIntegrationEventsResponse>;
 export type DataIntegrationFlowExecutionNextToken = string;
 export type DataIntegrationFlowExecutionMaxResults = number;
 export interface ListDataIntegrationFlowExecutionsRequest {
@@ -547,11 +810,20 @@ export interface ListDataIntegrationFlowExecutionsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListDataIntegrationFlowExecutionsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ListDataIntegrationFlowExecutionsRequest>;
 export type DataIntegrationFlowExecutionList = DataIntegrationFlowExecution[];
+const DataIntegrationFlowExecutionList = /*@__PURE__*/ __L.at(__c8, 2);
 export interface ListDataIntegrationFlowExecutionsResponse {
   flowExecutions: DataIntegrationFlowExecution[];
   nextToken?: string;
 }
+const ListDataIntegrationFlowExecutionsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ListDataIntegrationFlowExecutionsResponse>;
 export type DataIntegrationFlowNextToken = string;
 export type DataIntegrationFlowMaxResults = number;
 export interface ListDataIntegrationFlowsRequest {
@@ -559,11 +831,20 @@ export interface ListDataIntegrationFlowsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListDataIntegrationFlowsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ListDataIntegrationFlowsRequest>;
 export type DataIntegrationFlowList = DataIntegrationFlow[];
+const DataIntegrationFlowList = /*@__PURE__*/ __L.at(__c8, 5);
 export interface ListDataIntegrationFlowsResponse {
   flows: DataIntegrationFlow[];
   nextToken?: string;
 }
+const ListDataIntegrationFlowsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListDataIntegrationFlowsResponse>;
 export type DataLakeDatasetNextToken = string;
 export type DataLakeDatasetMaxResults = number;
 export interface ListDataLakeDatasetsRequest {
@@ -572,11 +853,20 @@ export interface ListDataLakeDatasetsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListDataLakeDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListDataLakeDatasetsRequest>;
 export type DataLakeDatasetList = DataLakeDataset[];
+const DataLakeDatasetList = /*@__PURE__*/ __L.at(__c9, 0);
 export interface ListDataLakeDatasetsResponse {
   datasets: DataLakeDataset[];
   nextToken?: string;
 }
+const ListDataLakeDatasetsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListDataLakeDatasetsResponse>;
 export type DataLakeNamespaceNextToken = string;
 export type DataLakeNamespaceMaxResults = number;
 export interface ListDataLakeNamespacesRequest {
@@ -584,37 +874,66 @@ export interface ListDataLakeNamespacesRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListDataLakeNamespacesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListDataLakeNamespacesRequest>;
 export type DataLakeNamespaceList = DataLakeNamespace[];
+const DataLakeNamespaceList = /*@__PURE__*/ __L.at(__c9, 3);
 export interface ListDataLakeNamespacesResponse {
   namespaces: DataLakeNamespace[];
   nextToken?: string;
 }
+const ListDataLakeNamespacesResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ListDataLakeNamespacesResponse>;
 export type InstanceNextToken = string;
 export type InstanceMaxResults = number;
 export type InstanceNameList = string[];
+const InstanceNameList = /*@__PURE__*/ __L.at(__c9, 5);
 export type InstanceStateList = InstanceState[];
+const InstanceStateList = /*@__PURE__*/ __L.at(__c9, 6);
 export interface ListInstancesRequest {
   nextToken?: string;
   maxResults?: number;
   instanceNameFilter?: string[];
   instanceStateFilter?: InstanceState[];
 }
+const ListInstancesRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ListInstancesRequest>;
 export type InstanceList = Instance[];
+const InstanceList = /*@__PURE__*/ __L.at(__c10, 0);
 export interface ListInstancesResponse {
   instances: Instance[];
   nextToken?: string;
 }
+const ListInstancesResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ListInstancesResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export type DataIntegrationEventData = string | redacted.Redacted<string>;
 export interface DataIntegrationEventDatasetTargetConfiguration {
   datasetIdentifier: string;
   operationType: DataIntegrationEventDatasetOperationType;
 }
+const DataIntegrationEventDatasetTargetConfiguration = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<DataIntegrationEventDatasetTargetConfiguration>;
 export interface SendDataIntegrationEventRequest {
   instanceId: string;
   eventType: DataIntegrationEventType;
@@ -624,20 +943,36 @@ export interface SendDataIntegrationEventRequest {
   clientToken?: string;
   datasetTarget?: DataIntegrationEventDatasetTargetConfiguration;
 }
+const SendDataIntegrationEventRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<SendDataIntegrationEventRequest>;
 export interface SendDataIntegrationEventResponse {
   eventId: string;
 }
+const SendDataIntegrationEventResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<SendDataIntegrationEventResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
+const TagKeyList = InstanceNameList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDataIntegrationFlowRequest {
   instanceId: string;
   name: string;
@@ -645,34 +980,57 @@ export interface UpdateDataIntegrationFlowRequest {
   transformation?: DataIntegrationFlowTransformation;
   target?: DataIntegrationFlowTarget;
 }
+const UpdateDataIntegrationFlowRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<UpdateDataIntegrationFlowRequest>;
 export interface UpdateDataIntegrationFlowResponse {
   flow: DataIntegrationFlow;
 }
+const UpdateDataIntegrationFlowResponse =
+  GetDataIntegrationFlowResponse as any as S.Schema<UpdateDataIntegrationFlowResponse>;
 export interface UpdateDataLakeDatasetRequest {
   instanceId: string;
   namespace: string;
   name: string;
   description?: string;
 }
+const UpdateDataLakeDatasetRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<UpdateDataLakeDatasetRequest>;
 export interface UpdateDataLakeDatasetResponse {
   dataset: DataLakeDataset;
 }
+const UpdateDataLakeDatasetResponse =
+  CreateDataLakeDatasetResponse as any as S.Schema<UpdateDataLakeDatasetResponse>;
 export interface UpdateDataLakeNamespaceRequest {
   instanceId: string;
   name: string;
   description?: string;
 }
+const UpdateDataLakeNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<UpdateDataLakeNamespaceRequest>;
 export interface UpdateDataLakeNamespaceResponse {
   namespace: DataLakeNamespace;
 }
+const UpdateDataLakeNamespaceResponse =
+  CreateDataLakeNamespaceResponse as any as S.Schema<UpdateDataLakeNamespaceResponse>;
 export interface UpdateInstanceRequest {
   instanceId: string;
   instanceName?: string;
   instanceDescription?: string;
 }
+const UpdateInstanceRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<UpdateInstanceRequest>;
 export interface UpdateInstanceResponse {
   instance: Instance;
 }
+const UpdateInstanceResponse = CreateInstanceResponse as any as S.Schema<UpdateInstanceResponse>;
 export type CreateBillOfMaterialsImportJobError =
   | AccessDeniedException
   | ConflictException
@@ -692,8 +1050,8 @@ export const createBillOfMaterialsImportJob: API.OperationMethod<
   CreateBillOfMaterialsImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateBillOfMaterialsImportJobRequest>,
-  output: __S(1) as any as S.Schema<CreateBillOfMaterialsImportJobResponse>,
+  input: CreateBillOfMaterialsImportJobRequest,
+  output: CreateBillOfMaterialsImportJobResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -724,8 +1082,8 @@ export const createDataIntegrationFlow: API.OperationMethod<
   CreateDataIntegrationFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CreateDataIntegrationFlowRequest>,
-  output: __S(17) as any as S.Schema<CreateDataIntegrationFlowResponse>,
+  input: CreateDataIntegrationFlowRequest,
+  output: CreateDataIntegrationFlowResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -757,8 +1115,8 @@ export const createDataLakeDataset: API.OperationMethod<
   CreateDataLakeDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<CreateDataLakeDatasetRequest>,
-  output: __S(29) as any as S.Schema<CreateDataLakeDatasetResponse>,
+  input: CreateDataLakeDatasetRequest,
+  output: CreateDataLakeDatasetResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -790,8 +1148,8 @@ export const createDataLakeNamespace: API.OperationMethod<
   CreateDataLakeNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<CreateDataLakeNamespaceRequest>,
-  output: __S(32) as any as S.Schema<CreateDataLakeNamespaceResponse>,
+  input: CreateDataLakeNamespaceRequest,
+  output: CreateDataLakeNamespaceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -824,8 +1182,8 @@ export const createInstance: API.OperationMethod<
   CreateInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<CreateInstanceRequest>,
-  output: __S(35) as any as S.Schema<CreateInstanceResponse>,
+  input: CreateInstanceRequest,
+  output: CreateInstanceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -854,8 +1212,8 @@ export const deleteDataIntegrationFlow: API.OperationMethod<
   DeleteDataIntegrationFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<DeleteDataIntegrationFlowRequest>,
-  output: __S(17) as any as S.Schema<DeleteDataIntegrationFlowResponse>,
+  input: DeleteDataIntegrationFlowRequest,
+  output: DeleteDataIntegrationFlowResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -883,8 +1241,8 @@ export const deleteDataLakeDataset: API.OperationMethod<
   DeleteDataLakeDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<DeleteDataLakeDatasetRequest>,
-  output: __S(38) as any as S.Schema<DeleteDataLakeDatasetResponse>,
+  input: DeleteDataLakeDatasetRequest,
+  output: DeleteDataLakeDatasetResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -913,8 +1271,8 @@ export const deleteDataLakeNamespace: API.OperationMethod<
   DeleteDataLakeNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<DeleteDataLakeNamespaceRequest>,
-  output: __S(17) as any as S.Schema<DeleteDataLakeNamespaceResponse>,
+  input: DeleteDataLakeNamespaceRequest,
+  output: DeleteDataLakeNamespaceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -945,8 +1303,8 @@ export const deleteInstance: API.OperationMethod<
   DeleteInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<DeleteInstanceRequest>,
-  output: __S(35) as any as S.Schema<DeleteInstanceResponse>,
+  input: DeleteInstanceRequest,
+  output: DeleteInstanceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -975,8 +1333,8 @@ export const getBillOfMaterialsImportJob: API.OperationMethod<
   GetBillOfMaterialsImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<GetBillOfMaterialsImportJobRequest>,
-  output: __S(43) as any as S.Schema<GetBillOfMaterialsImportJobResponse>,
+  input: GetBillOfMaterialsImportJobRequest,
+  output: GetBillOfMaterialsImportJobResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1005,8 +1363,8 @@ export const getDataIntegrationEvent: API.OperationMethod<
   GetDataIntegrationEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<GetDataIntegrationEventRequest>,
-  output: __S(48) as any as S.Schema<GetDataIntegrationEventResponse>,
+  input: GetDataIntegrationEventRequest,
+  output: GetDataIntegrationEventResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1035,8 +1393,8 @@ export const getDataIntegrationFlow: API.OperationMethod<
   GetDataIntegrationFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetDataIntegrationFlowRequest>,
-  output: __S(51) as any as S.Schema<GetDataIntegrationFlowResponse>,
+  input: GetDataIntegrationFlowRequest,
+  output: GetDataIntegrationFlowResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1065,8 +1423,8 @@ export const getDataIntegrationFlowExecution: API.OperationMethod<
   GetDataIntegrationFlowExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<GetDataIntegrationFlowExecutionRequest>,
-  output: __S(58) as any as S.Schema<GetDataIntegrationFlowExecutionResponse>,
+  input: GetDataIntegrationFlowExecutionRequest,
+  output: GetDataIntegrationFlowExecutionResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1095,8 +1453,8 @@ export const getDataLakeDataset: API.OperationMethod<
   GetDataLakeDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<GetDataLakeDatasetRequest>,
-  output: __S(29) as any as S.Schema<GetDataLakeDatasetResponse>,
+  input: GetDataLakeDatasetRequest,
+  output: GetDataLakeDatasetResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1125,8 +1483,8 @@ export const getDataLakeNamespace: API.OperationMethod<
   GetDataLakeNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<GetDataLakeNamespaceRequest>,
-  output: __S(32) as any as S.Schema<GetDataLakeNamespaceResponse>,
+  input: GetDataLakeNamespaceRequest,
+  output: GetDataLakeNamespaceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1155,8 +1513,8 @@ export const getInstance: API.OperationMethod<
   GetInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<GetInstanceRequest>,
-  output: __S(35) as any as S.Schema<GetInstanceResponse>,
+  input: GetInstanceRequest,
+  output: GetInstanceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1185,8 +1543,8 @@ export const listDataIntegrationEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataIntegrationEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(62) as any as S.Schema<ListDataIntegrationEventsRequest>,
-  output: __S(64) as any as S.Schema<ListDataIntegrationEventsResponse>,
+  input: ListDataIntegrationEventsRequest,
+  output: ListDataIntegrationEventsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1221,8 +1579,8 @@ export const listDataIntegrationFlowExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataIntegrationFlowExecution
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(65) as any as S.Schema<ListDataIntegrationFlowExecutionsRequest>,
-  output: __S(67) as any as S.Schema<ListDataIntegrationFlowExecutionsResponse>,
+  input: ListDataIntegrationFlowExecutionsRequest,
+  output: ListDataIntegrationFlowExecutionsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1257,8 +1615,8 @@ export const listDataIntegrationFlows: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataIntegrationFlow
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(68) as any as S.Schema<ListDataIntegrationFlowsRequest>,
-  output: __S(70) as any as S.Schema<ListDataIntegrationFlowsResponse>,
+  input: ListDataIntegrationFlowsRequest,
+  output: ListDataIntegrationFlowsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1293,8 +1651,8 @@ export const listDataLakeDatasets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataLakeDataset
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(71) as any as S.Schema<ListDataLakeDatasetsRequest>,
-  output: __S(73) as any as S.Schema<ListDataLakeDatasetsResponse>,
+  input: ListDataLakeDatasetsRequest,
+  output: ListDataLakeDatasetsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1329,8 +1687,8 @@ export const listDataLakeNamespaces: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataLakeNamespace
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(74) as any as S.Schema<ListDataLakeNamespacesRequest>,
-  output: __S(76) as any as S.Schema<ListDataLakeNamespacesResponse>,
+  input: ListDataLakeNamespacesRequest,
+  output: ListDataLakeNamespacesResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1364,8 +1722,8 @@ export const listInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Instance
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(79) as any as S.Schema<ListInstancesRequest>,
-  output: __S(81) as any as S.Schema<ListInstancesResponse>,
+  input: ListInstancesRequest,
+  output: ListInstancesResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1399,8 +1757,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(83) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1431,8 +1789,8 @@ export const sendDataIntegrationEvent: API.OperationMethod<
   SendDataIntegrationEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<SendDataIntegrationEventRequest>,
-  output: __S(86) as any as S.Schema<SendDataIntegrationEventResponse>,
+  input: SendDataIntegrationEventRequest,
+  output: SendDataIntegrationEventResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1463,8 +1821,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<TagResourceRequest>,
-  output: __S(88) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1493,8 +1851,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<UntagResourceRequest>,
-  output: __S(88) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1523,8 +1881,8 @@ export const updateDataIntegrationFlow: API.OperationMethod<
   UpdateDataIntegrationFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<UpdateDataIntegrationFlowRequest>,
-  output: __S(51) as any as S.Schema<UpdateDataIntegrationFlowResponse>,
+  input: UpdateDataIntegrationFlowRequest,
+  output: UpdateDataIntegrationFlowResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1553,8 +1911,8 @@ export const updateDataLakeDataset: API.OperationMethod<
   UpdateDataLakeDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<UpdateDataLakeDatasetRequest>,
-  output: __S(29) as any as S.Schema<UpdateDataLakeDatasetResponse>,
+  input: UpdateDataLakeDatasetRequest,
+  output: UpdateDataLakeDatasetResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1583,8 +1941,8 @@ export const updateDataLakeNamespace: API.OperationMethod<
   UpdateDataLakeNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<UpdateDataLakeNamespaceRequest>,
-  output: __S(32) as any as S.Schema<UpdateDataLakeNamespaceResponse>,
+  input: UpdateDataLakeNamespaceRequest,
+  output: UpdateDataLakeNamespaceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1613,8 +1971,8 @@ export const updateInstance: API.OperationMethod<
   UpdateInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<UpdateInstanceRequest>,
-  output: __S(35) as any as S.Schema<UpdateInstanceResponse>,
+  input: UpdateInstanceRequest,
+  output: UpdateInstanceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1657,7 +2015,9 @@ function __c0(j: number): any {
         identifier: "CreateBillOfMaterialsImportJobResponse",
       });
     case 2:
-      return S.suspend(() => S.Struct({ fileType: S.optional(S.String) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ fileType: S.optional(DataIntegrationFlowFileType) }),
+      ).annotate({
         identifier: "DataIntegrationFlowS3Options",
       });
     case 3:
@@ -1665,26 +2025,30 @@ function __c0(j: number): any {
         S.Struct({
           bucketName: S.String,
           prefix: S.String,
-          options: S.optional(__S(2)),
+          options: S.optional(DataIntegrationFlowS3Options),
         }),
       ).annotate({
         identifier: "DataIntegrationFlowS3SourceConfiguration",
       });
     case 4:
-      return S.suspend(() => S.Struct({ name: S.String, sortOrder: S.String })).annotate({
+      return S.suspend(() =>
+        S.Struct({ name: S.String, sortOrder: DataIntegrationFlowFieldPriorityDedupeSortOrder }),
+      ).annotate({
         identifier: "DataIntegrationFlowFieldPriorityDedupeField",
       });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(DataIntegrationFlowFieldPriorityDedupeField);
     case 6:
-      return S.suspend(() => S.Struct({ fields: __S(5) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ fields: DataIntegrationFlowFieldPriorityDedupeFieldList }),
+      ).annotate({
         identifier: "DataIntegrationFlowFieldPriorityDedupeStrategyConfiguration",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          fieldPriority: S.optional(__S(6)),
+          type: DataIntegrationFlowDedupeStrategyType,
+          fieldPriority: S.optional(DataIntegrationFlowFieldPriorityDedupeStrategyConfiguration),
         }),
       ).annotate({
         identifier: "DataIntegrationFlowDedupeStrategy",
@@ -1696,9 +2060,9 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          loadType: S.optional(S.String),
+          loadType: S.optional(DataIntegrationFlowLoadType),
           dedupeRecords: S.optional(S.Boolean),
-          dedupeStrategy: S.optional(__S(7)),
+          dedupeStrategy: S.optional(DataIntegrationFlowDedupeStrategy),
         }),
       ).annotate({
         identifier: "DataIntegrationFlowDatasetOptions",
@@ -1707,7 +2071,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           datasetIdentifier: S.String,
-          options: S.optional(__S(8)),
+          options: S.optional(DataIntegrationFlowDatasetOptions),
         }),
       ).annotate({
         identifier: "DataIntegrationFlowDatasetSourceConfiguration",
@@ -1715,16 +2079,16 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sourceType: S.String,
+          sourceType: DataIntegrationFlowSourceType,
           sourceName: S.String,
-          s3Source: S.optional(__S(3)),
-          datasetSource: S.optional(__S(9)),
+          s3Source: S.optional(DataIntegrationFlowS3SourceConfiguration),
+          datasetSource: S.optional(DataIntegrationFlowDatasetSourceConfiguration),
         }),
       ).annotate({
         identifier: "DataIntegrationFlowSource",
       });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(DataIntegrationFlowSource);
     case 4:
       return S.suspend(() => S.Struct({ query: SensitiveString })).annotate({
         identifier: "DataIntegrationFlowSQLTransformationConfiguration",
@@ -1732,8 +2096,8 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          transformationType: S.String,
-          sqlTransformation: S.optional(__S(12)),
+          transformationType: DataIntegrationFlowTransformationType,
+          sqlTransformation: S.optional(DataIntegrationFlowSQLTransformationConfiguration),
         }),
       ).annotate({
         identifier: "DataIntegrationFlowTransformation",
@@ -1741,9 +2105,9 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          targetType: S.String,
-          s3Target: S.optional(__S(3)),
-          datasetTarget: S.optional(__S(9)),
+          targetType: DataIntegrationFlowTargetType,
+          s3Target: S.optional(DataIntegrationFlowS3TargetConfiguration),
+          datasetTarget: S.optional(DataIntegrationFlowDatasetTargetConfiguration),
         }),
       ).annotate({
         identifier: "DataIntegrationFlowTarget",
@@ -1759,10 +2123,10 @@ function __c2(j: number): any {
         S.Struct({
           instanceId: S.String.pipe(T.HttpLabel("instanceId")),
           name: S.String.pipe(T.HttpLabel("name")),
-          sources: __S(11),
-          transformation: __S(13),
-          target: __S(14),
-          tags: S.optional(__S(15)),
+          sources: DataIntegrationFlowSourceList,
+          transformation: DataIntegrationFlowTransformation,
+          target: DataIntegrationFlowTarget,
+          tags: S.optional(TagMap),
         }).pipe(
           T.all(
             T.Http({
@@ -1785,28 +2149,28 @@ function __c2(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ name: S.String, type: S.String, isRequired: S.Boolean }),
+        S.Struct({ name: S.String, type: DataLakeDatasetSchemaFieldType, isRequired: S.Boolean }),
       ).annotate({
         identifier: "DataLakeDatasetSchemaField",
       });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(DataLakeDatasetSchemaField);
     case 4:
       return S.suspend(() => S.Struct({ name: S.String })).annotate({
         identifier: "DataLakeDatasetPrimaryKeyField",
       });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(DataLakeDatasetPrimaryKeyField);
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          fields: __S(19),
-          primaryKeys: S.optional(__S(21)),
+          fields: DataLakeDatasetSchemaFieldList,
+          primaryKeys: S.optional(DataLakeDatasetPrimaryKeyFieldList),
         }),
       ).annotate({ identifier: "DataLakeDatasetSchema" });
     case 7:
-      return S.suspend(() => S.Struct({ type: S.String })).annotate({
+      return S.suspend(() => S.Struct({ type: DataLakeDatasetPartitionTransformType })).annotate({
         identifier: "DataLakeDatasetPartitionFieldTransform",
       });
   }
@@ -1814,13 +2178,15 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ name: S.String, transform: __S(23) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ name: S.String, transform: DataLakeDatasetPartitionFieldTransform }),
+      ).annotate({
         identifier: "DataLakeDatasetPartitionField",
       });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(DataLakeDatasetPartitionField);
     case 2:
-      return S.suspend(() => S.Struct({ fields: __S(25) })).annotate({
+      return S.suspend(() => S.Struct({ fields: DataLakeDatasetPartitionFieldList })).annotate({
         identifier: "DataLakeDatasetPartitionSpec",
       });
     case 3:
@@ -1829,10 +2195,10 @@ function __c3(j: number): any {
           instanceId: S.String.pipe(T.HttpLabel("instanceId")),
           namespace: S.String.pipe(T.HttpLabel("namespace")),
           name: S.String.pipe(T.HttpLabel("name")),
-          schema: S.optional(__S(22)),
+          schema: S.optional(DataLakeDatasetSchema),
           description: S.optional(S.String),
-          partitionSpec: S.optional(__S(26)),
-          tags: S.optional(__S(15)),
+          partitionSpec: S.optional(DataLakeDatasetPartitionSpec),
+          tags: S.optional(TagMap),
         }).pipe(
           T.all(
             T.Http({
@@ -1856,15 +2222,15 @@ function __c3(j: number): any {
           namespace: S.String,
           name: S.String,
           arn: S.String,
-          schema: __S(22),
+          schema: DataLakeDatasetSchema,
           description: S.optional(S.String),
-          partitionSpec: S.optional(__S(26)),
+          partitionSpec: S.optional(DataLakeDatasetPartitionSpec),
           createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModifiedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "DataLakeDataset" });
     case 5:
-      return S.suspend(() => S.Struct({ dataset: __S(28) })).annotate({
+      return S.suspend(() => S.Struct({ dataset: DataLakeDataset })).annotate({
         identifier: "CreateDataLakeDatasetResponse",
       });
     case 6:
@@ -1873,7 +2239,7 @@ function __c3(j: number): any {
           instanceId: S.String.pipe(T.HttpLabel("instanceId")),
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
-          tags: S.optional(__S(15)),
+          tags: S.optional(TagMap),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/api/datalake/instance/{instanceId}/namespaces/{name}" }),
@@ -1903,7 +2269,7 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ namespace: __S(31) })).annotate({
+      return S.suspend(() => S.Struct({ namespace: DataLakeNamespace })).annotate({
         identifier: "CreateDataLakeNamespaceResponse",
       });
     case 1:
@@ -1913,7 +2279,7 @@ function __c4(j: number): any {
           instanceDescription: S.optional(S.String),
           kmsKeyArn: S.optional(S.String),
           webAppDnsDomain: S.optional(S.String),
-          tags: S.optional(__S(15)),
+          tags: S.optional(TagMap),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/api/instance" }), svc, auth, proto, ver, rules),
@@ -1924,7 +2290,7 @@ function __c4(j: number): any {
         S.Struct({
           instanceId: S.String,
           awsAccountId: S.String,
-          state: S.String,
+          state: InstanceState,
           errorMessage: S.optional(S.String),
           webAppDnsDomain: S.optional(S.String),
           createdTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -1936,7 +2302,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "Instance" });
     case 3:
-      return S.suspend(() => S.Struct({ instance: __S(34) })).annotate({
+      return S.suspend(() => S.Struct({ instance: Instance })).annotate({
         identifier: "CreateInstanceResponse",
       });
     case 4:
@@ -2052,13 +2418,13 @@ function __c5(j: number): any {
         S.Struct({
           instanceId: S.String,
           jobId: S.String,
-          status: S.String,
+          status: ConfigurationJobStatus,
           s3uri: S.String,
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillOfMaterialsImportJob" });
     case 3:
-      return S.suspend(() => S.Struct({ job: __S(42) })).annotate({
+      return S.suspend(() => S.Struct({ job: BillOfMaterialsImportJob })).annotate({
         identifier: "GetBillOfMaterialsImportJobResponse",
       });
     case 4:
@@ -2084,7 +2450,7 @@ function __c5(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ status: S.String, message: S.optional(S.String) }),
+        S.Struct({ status: DataIntegrationEventDatasetLoadStatus, message: S.optional(S.String) }),
       ).annotate({
         identifier: "DataIntegrationEventDatasetLoadExecutionDetails",
       });
@@ -2092,8 +2458,8 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           datasetIdentifier: S.String,
-          operationType: S.String,
-          datasetLoadExecution: __S(45),
+          operationType: DataIntegrationEventDatasetOperationType,
+          datasetLoadExecution: DataIntegrationEventDatasetLoadExecutionDetails,
         }),
       ).annotate({
         identifier: "DataIntegrationEventDatasetTargetDetails",
@@ -2103,10 +2469,10 @@ function __c5(j: number): any {
         S.Struct({
           instanceId: S.String,
           eventId: S.String,
-          eventType: S.String,
+          eventType: DataIntegrationEventType,
           eventGroupId: S.String,
           eventTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          datasetTargetDetails: S.optional(__S(46)),
+          datasetTargetDetails: S.optional(DataIntegrationEventDatasetTargetDetails),
         }),
       ).annotate({ identifier: "DataIntegrationEvent" });
   }
@@ -2114,7 +2480,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ event: __S(47) })).annotate({
+      return S.suspend(() => S.Struct({ event: DataIntegrationEvent })).annotate({
         identifier: "GetDataIntegrationEventResponse",
       });
     case 1:
@@ -2143,15 +2509,15 @@ function __c6(j: number): any {
         S.Struct({
           instanceId: S.String,
           name: S.String,
-          sources: __S(11),
-          transformation: __S(13),
-          target: __S(14),
+          sources: DataIntegrationFlowSourceList,
+          transformation: DataIntegrationFlowTransformation,
+          target: DataIntegrationFlowTarget,
           createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModifiedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "DataIntegrationFlow" });
     case 3:
-      return S.suspend(() => S.Struct({ flow: __S(50) })).annotate({
+      return S.suspend(() => S.Struct({ flow: DataIntegrationFlow })).annotate({
         identifier: "GetDataIntegrationFlowResponse",
       });
     case 4:
@@ -2187,9 +2553,9 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          sourceType: S.String,
-          s3Source: S.optional(__S(53)),
-          datasetSource: S.optional(__S(54)),
+          sourceType: DataIntegrationFlowSourceType,
+          s3Source: S.optional(DataIntegrationFlowS3Source),
+          datasetSource: S.optional(DataIntegrationFlowDatasetSource),
         }),
       ).annotate({
         identifier: "DataIntegrationFlowExecutionSourceInfo",
@@ -2210,18 +2576,18 @@ function __c7(j: number): any {
           instanceId: S.String,
           flowName: S.String,
           executionId: S.String,
-          status: S.optional(S.String),
-          sourceInfo: S.optional(__S(55)),
+          status: S.optional(DataIntegrationFlowExecutionStatus),
+          sourceInfo: S.optional(DataIntegrationFlowExecutionSourceInfo),
           message: S.optional(S.String),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          outputMetadata: S.optional(__S(56)),
+          outputMetadata: S.optional(DataIntegrationFlowExecutionOutputMetadata),
         }),
       ).annotate({
         identifier: "DataIntegrationFlowExecution",
       });
     case 2:
-      return S.suspend(() => S.Struct({ flowExecution: __S(57) })).annotate({
+      return S.suspend(() => S.Struct({ flowExecution: DataIntegrationFlowExecution })).annotate({
         identifier: "GetDataIntegrationFlowExecutionResponse",
       });
     case 3:
@@ -2281,7 +2647,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           instanceId: S.String.pipe(T.HttpLabel("instanceId")),
-          eventType: S.optional(S.String).pipe(T.HttpQuery("eventType")),
+          eventType: S.optional(DataIntegrationEventType).pipe(T.HttpQuery("eventType")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(
@@ -2301,14 +2667,14 @@ function __c7(j: number): any {
         identifier: "ListDataIntegrationEventsRequest",
       });
     case 7:
-      return S.Array(__S(47));
+      return S.Array(DataIntegrationEvent);
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ events: __S(63), nextToken: S.optional(S.String) }),
+        S.Struct({ events: DataIntegrationEventList, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListDataIntegrationEventsResponse",
       });
@@ -2336,11 +2702,11 @@ function __c8(j: number): any {
         identifier: "ListDataIntegrationFlowExecutionsRequest",
       });
     case 2:
-      return S.Array(__S(57));
+      return S.Array(DataIntegrationFlowExecution);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          flowExecutions: __S(66),
+          flowExecutions: DataIntegrationFlowExecutionList,
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2369,10 +2735,10 @@ function __c8(j: number): any {
         identifier: "ListDataIntegrationFlowsRequest",
       });
     case 5:
-      return S.Array(__S(50));
+      return S.Array(DataIntegrationFlow);
     case 6:
       return S.suspend(() =>
-        S.Struct({ flows: __S(69), nextToken: S.optional(S.String) }),
+        S.Struct({ flows: DataIntegrationFlowList, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListDataIntegrationFlowsResponse",
       });
@@ -2404,10 +2770,10 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(28));
+      return S.Array(DataLakeDataset);
     case 1:
       return S.suspend(() =>
-        S.Struct({ datasets: __S(72), nextToken: S.optional(S.String) }),
+        S.Struct({ datasets: DataLakeDatasetList, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListDataLakeDatasetsResponse",
       });
@@ -2431,24 +2797,26 @@ function __c9(j: number): any {
         identifier: "ListDataLakeNamespacesRequest",
       });
     case 3:
-      return S.Array(__S(31));
+      return S.Array(DataLakeNamespace);
     case 4:
       return S.suspend(() =>
-        S.Struct({ namespaces: __S(75), nextToken: S.optional(S.String) }),
+        S.Struct({ namespaces: DataLakeNamespaceList, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListDataLakeNamespacesResponse",
       });
     case 5:
       return S.Array(S.String);
     case 6:
-      return S.Array(S.String);
+      return S.Array(InstanceState);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          instanceNameFilter: S.optional(__S(77)).pipe(T.HttpQuery("instanceNameFilter")),
-          instanceStateFilter: S.optional(__S(78)).pipe(T.HttpQuery("instanceStateFilter")),
+          instanceNameFilter: S.optional(InstanceNameList).pipe(T.HttpQuery("instanceNameFilter")),
+          instanceStateFilter: S.optional(InstanceStateList).pipe(
+            T.HttpQuery("instanceStateFilter"),
+          ),
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/api/instance" }), svc, auth, proto, ver, rules),
         ),
@@ -2458,10 +2826,10 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(34));
+      return S.Array(Instance);
     case 1:
       return S.suspend(() =>
-        S.Struct({ instances: __S(80), nextToken: S.optional(S.String) }),
+        S.Struct({ instances: InstanceList, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListInstancesResponse" });
     case 2:
       return S.suspend(() =>
@@ -2479,14 +2847,14 @@ function __c10(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 3:
-      return S.suspend(() => S.Struct({ tags: __S(15) })).annotate({
+      return S.suspend(() => S.Struct({ tags: TagMap })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
           datasetIdentifier: S.String,
-          operationType: S.String,
+          operationType: DataIntegrationEventDatasetOperationType,
         }),
       ).annotate({
         identifier: "DataIntegrationEventDatasetTargetConfiguration",
@@ -2495,12 +2863,12 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           instanceId: S.String.pipe(T.HttpLabel("instanceId")),
-          eventType: S.String,
+          eventType: DataIntegrationEventType,
           data: SensitiveString,
           eventGroupId: S.String,
           eventTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          datasetTarget: S.optional(__S(84)),
+          datasetTarget: S.optional(DataIntegrationEventDatasetTargetConfiguration),
         }).pipe(
           T.all(
             T.Http({
@@ -2523,7 +2891,7 @@ function __c10(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: __S(15) }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/api/tags/{resourceArn}" }),
             svc,
@@ -2546,7 +2914,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(77).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/api/tags/{resourceArn}" }),
@@ -2563,9 +2931,9 @@ function __c11(j: number): any {
         S.Struct({
           instanceId: S.String.pipe(T.HttpLabel("instanceId")),
           name: S.String.pipe(T.HttpLabel("name")),
-          sources: S.optional(__S(11)),
-          transformation: S.optional(__S(13)),
-          target: S.optional(__S(14)),
+          sources: S.optional(DataIntegrationFlowSourceList),
+          transformation: S.optional(DataIntegrationFlowTransformation),
+          target: S.optional(DataIntegrationFlowTarget),
         }).pipe(
           T.all(
             T.Http({
@@ -2644,38 +3012,5 @@ function __c11(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateInstanceRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
   }
 }

@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Pinpoint SMS Voice",
   serviceShapeName: "PinpointSMSVoice",
@@ -116,15 +114,31 @@ export type WordCharactersWithDelimiters = string;
 export interface CreateConfigurationSetRequest {
   ConfigurationSetName?: string;
 }
+const CreateConfigurationSetRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateConfigurationSetRequest>;
 export interface CreateConfigurationSetResponse {}
+const CreateConfigurationSetResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateConfigurationSetResponse>;
 export interface CloudWatchLogsDestination {
   IamRoleArn?: string;
   LogGroupArn?: string;
 }
+const CloudWatchLogsDestination = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CloudWatchLogsDestination>;
 export interface KinesisFirehoseDestination {
   DeliveryStreamArn?: string;
   IamRoleArn?: string;
 }
+const KinesisFirehoseDestination = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<KinesisFirehoseDestination>;
 export type EventType =
   | "INITIATED_CALL"
   | "RINGING"
@@ -134,10 +148,14 @@ export type EventType =
   | "FAILED"
   | "NO_ANSWER"
   | (string & {});
+const EventType = S.String;
+
 export type EventTypes = EventType[];
+const EventTypes = /*@__PURE__*/ __L.at(__c0, 4);
 export interface SnsDestination {
   TopicArn?: string;
 }
+const SnsDestination = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<SnsDestination>;
 export interface EventDestinationDefinition {
   CloudWatchLogsDestination?: CloudWatchLogsDestination;
   Enabled?: boolean;
@@ -145,25 +163,53 @@ export interface EventDestinationDefinition {
   MatchingEventTypes?: EventType[];
   SnsDestination?: SnsDestination;
 }
+const EventDestinationDefinition = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<EventDestinationDefinition>;
 export type NonEmptyString = string;
 export interface CreateConfigurationSetEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestination?: EventDestinationDefinition;
   EventDestinationName?: string;
 }
+const CreateConfigurationSetEventDestinationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateConfigurationSetEventDestinationRequest>;
 export interface CreateConfigurationSetEventDestinationResponse {}
+const CreateConfigurationSetEventDestinationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateConfigurationSetEventDestinationResponse>;
 export interface DeleteConfigurationSetRequest {
   ConfigurationSetName: string;
 }
+const DeleteConfigurationSetRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteConfigurationSetRequest>;
 export interface DeleteConfigurationSetResponse {}
+const DeleteConfigurationSetResponse =
+  CreateConfigurationSetResponse as any as S.Schema<DeleteConfigurationSetResponse>;
 export interface DeleteConfigurationSetEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestinationName: string;
 }
+const DeleteConfigurationSetEventDestinationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteConfigurationSetEventDestinationRequest>;
 export interface DeleteConfigurationSetEventDestinationResponse {}
+const DeleteConfigurationSetEventDestinationResponse =
+  CreateConfigurationSetEventDestinationResponse as any as S.Schema<DeleteConfigurationSetEventDestinationResponse>;
 export interface GetConfigurationSetEventDestinationsRequest {
   ConfigurationSetName: string;
 }
+const GetConfigurationSetEventDestinationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetConfigurationSetEventDestinationsRequest>;
 export interface EventDestination {
   CloudWatchLogsDestination?: CloudWatchLogsDestination;
   Enabled?: boolean;
@@ -172,38 +218,60 @@ export interface EventDestination {
   Name?: string;
   SnsDestination?: SnsDestination;
 }
+const EventDestination = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<EventDestination>;
 export type EventDestinations = EventDestination[];
+const EventDestinations = /*@__PURE__*/ __L.at(__c1, 5);
 export interface GetConfigurationSetEventDestinationsResponse {
   EventDestinations?: EventDestination[];
 }
+const GetConfigurationSetEventDestinationsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetConfigurationSetEventDestinationsResponse>;
 export interface ListConfigurationSetsRequest {
   NextToken?: string;
   PageSize?: string;
 }
+const ListConfigurationSetsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListConfigurationSetsRequest>;
 export type ConfigurationSets = string[];
+const ConfigurationSets = /*@__PURE__*/ __L.at(__c2, 0);
 export type NextTokenString = string;
 export interface ListConfigurationSetsResponse {
   ConfigurationSets?: string[];
   NextToken?: string;
 }
+const ListConfigurationSetsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListConfigurationSetsResponse>;
 export interface CallInstructionsMessageType {
   Text?: string;
 }
+const CallInstructionsMessageType = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CallInstructionsMessageType>;
 export interface PlainTextMessageType {
   LanguageCode?: string;
   Text?: string;
   VoiceId?: string;
 }
+const PlainTextMessageType = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<PlainTextMessageType>;
 export interface SSMLMessageType {
   LanguageCode?: string;
   Text?: string;
   VoiceId?: string;
 }
+const SSMLMessageType = PlainTextMessageType as any as S.Schema<SSMLMessageType>;
 export interface VoiceMessageContent {
   CallInstructionsMessage?: CallInstructionsMessageType;
   PlainTextMessage?: PlainTextMessageType;
   SSMLMessage?: SSMLMessageType;
 }
+const VoiceMessageContent = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<VoiceMessageContent>;
 export interface SendVoiceMessageRequest {
   CallerId?: string;
   ConfigurationSetName?: string;
@@ -211,15 +279,29 @@ export interface SendVoiceMessageRequest {
   DestinationPhoneNumber?: string;
   OriginationPhoneNumber?: string;
 }
+const SendVoiceMessageRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<SendVoiceMessageRequest>;
 export interface SendVoiceMessageResponse {
   MessageId?: string;
 }
+const SendVoiceMessageResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<SendVoiceMessageResponse>;
 export interface UpdateConfigurationSetEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestination?: EventDestinationDefinition;
   EventDestinationName: string;
 }
+const UpdateConfigurationSetEventDestinationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<UpdateConfigurationSetEventDestinationRequest>;
 export interface UpdateConfigurationSetEventDestinationResponse {}
+const UpdateConfigurationSetEventDestinationResponse =
+  CreateConfigurationSetEventDestinationResponse as any as S.Schema<UpdateConfigurationSetEventDestinationResponse>;
 export type CreateConfigurationSetError =
   | AlreadyExistsException
   | BadRequestException
@@ -236,8 +318,8 @@ export const createConfigurationSet: API.OperationMethod<
   CreateConfigurationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateConfigurationSetRequest>,
-  output: __S(1) as any as S.Schema<CreateConfigurationSetResponse>,
+  input: CreateConfigurationSetRequest,
+  output: CreateConfigurationSetResponse,
   errors: [
     AlreadyExistsException,
     BadRequestException,
@@ -267,8 +349,8 @@ export const createConfigurationSetEventDestination: API.OperationMethod<
   CreateConfigurationSetEventDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<CreateConfigurationSetEventDestinationRequest>,
-  output: __S(8) as any as S.Schema<CreateConfigurationSetEventDestinationResponse>,
+  input: CreateConfigurationSetEventDestinationRequest,
+  output: CreateConfigurationSetEventDestinationResponse,
   errors: [
     AlreadyExistsException,
     BadRequestException,
@@ -297,8 +379,8 @@ export const deleteConfigurationSet: API.OperationMethod<
   DeleteConfigurationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeleteConfigurationSetRequest>,
-  output: __S(1) as any as S.Schema<DeleteConfigurationSetResponse>,
+  input: DeleteConfigurationSetRequest,
+  output: DeleteConfigurationSetResponse,
   errors: [
     BadRequestException,
     InternalServiceErrorException,
@@ -325,8 +407,8 @@ export const deleteConfigurationSetEventDestination: API.OperationMethod<
   DeleteConfigurationSetEventDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeleteConfigurationSetEventDestinationRequest>,
-  output: __S(8) as any as S.Schema<DeleteConfigurationSetEventDestinationResponse>,
+  input: DeleteConfigurationSetEventDestinationRequest,
+  output: DeleteConfigurationSetEventDestinationResponse,
   errors: [
     BadRequestException,
     InternalServiceErrorException,
@@ -353,8 +435,8 @@ export const getConfigurationSetEventDestinations: API.OperationMethod<
   GetConfigurationSetEventDestinationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetConfigurationSetEventDestinationsRequest>,
-  output: __S(14) as any as S.Schema<GetConfigurationSetEventDestinationsResponse>,
+  input: GetConfigurationSetEventDestinationsRequest,
+  output: GetConfigurationSetEventDestinationsResponse,
   errors: [
     BadRequestException,
     InternalServiceErrorException,
@@ -380,8 +462,8 @@ export const listConfigurationSets: API.OperationMethod<
   ListConfigurationSetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<ListConfigurationSetsRequest>,
-  output: __S(17) as any as S.Schema<ListConfigurationSetsResponse>,
+  input: ListConfigurationSetsRequest,
+  output: ListConfigurationSetsResponse,
   errors: [BadRequestException, InternalServiceErrorException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -402,8 +484,8 @@ export const sendVoiceMessage: API.OperationMethod<
   SendVoiceMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<SendVoiceMessageRequest>,
-  output: __S(22) as any as S.Schema<SendVoiceMessageResponse>,
+  input: SendVoiceMessageRequest,
+  output: SendVoiceMessageResponse,
   errors: [BadRequestException, InternalServiceErrorException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -425,8 +507,8 @@ export const updateConfigurationSetEventDestination: API.OperationMethod<
   UpdateConfigurationSetEventDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<UpdateConfigurationSetEventDestinationRequest>,
-  output: __S(8) as any as S.Schema<UpdateConfigurationSetEventDestinationResponse>,
+  input: UpdateConfigurationSetEventDestinationRequest,
+  output: UpdateConfigurationSetEventDestinationResponse,
   errors: [
     BadRequestException,
     InternalServiceErrorException,
@@ -473,7 +555,7 @@ function __c0(j: number): any {
         identifier: "KinesisFirehoseDestination",
       });
     case 4:
-      return S.Array(S.String);
+      return S.Array(EventType);
     case 5:
       return S.suspend(() => S.Struct({ TopicArn: S.optional(S.String) })).annotate({
         identifier: "SnsDestination",
@@ -481,11 +563,11 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          CloudWatchLogsDestination: S.optional(__S(2)),
+          CloudWatchLogsDestination: S.optional(CloudWatchLogsDestination),
           Enabled: S.optional(S.Boolean),
-          KinesisFirehoseDestination: S.optional(__S(3)),
-          MatchingEventTypes: S.optional(__S(4)),
-          SnsDestination: S.optional(__S(5)),
+          KinesisFirehoseDestination: S.optional(KinesisFirehoseDestination),
+          MatchingEventTypes: S.optional(EventTypes),
+          SnsDestination: S.optional(SnsDestination),
         }),
       ).annotate({
         identifier: "EventDestinationDefinition",
@@ -494,7 +576,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
-          EventDestination: S.optional(__S(6)),
+          EventDestination: S.optional(EventDestinationDefinition),
           EventDestinationName: S.optional(S.String),
         }).pipe(
           T.all(
@@ -580,18 +662,20 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          CloudWatchLogsDestination: S.optional(__S(2)),
+          CloudWatchLogsDestination: S.optional(CloudWatchLogsDestination),
           Enabled: S.optional(S.Boolean),
-          KinesisFirehoseDestination: S.optional(__S(3)),
-          MatchingEventTypes: S.optional(__S(4)),
+          KinesisFirehoseDestination: S.optional(KinesisFirehoseDestination),
+          MatchingEventTypes: S.optional(EventTypes),
           Name: S.optional(S.String),
-          SnsDestination: S.optional(__S(5)),
+          SnsDestination: S.optional(SnsDestination),
         }),
       ).annotate({ identifier: "EventDestination" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(EventDestination);
     case 6:
-      return S.suspend(() => S.Struct({ EventDestinations: S.optional(__S(13)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ EventDestinations: S.optional(EventDestinations) }),
+      ).annotate({
         identifier: "GetConfigurationSetEventDestinationsResponse",
       });
     case 7:
@@ -621,7 +705,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationSets: S.optional(__S(16)),
+          ConfigurationSets: S.optional(ConfigurationSets),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -642,9 +726,9 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          CallInstructionsMessage: S.optional(__S(18)),
-          PlainTextMessage: S.optional(__S(19)),
-          SSMLMessage: S.optional(__S(19)),
+          CallInstructionsMessage: S.optional(CallInstructionsMessageType),
+          PlainTextMessage: S.optional(PlainTextMessageType),
+          SSMLMessage: S.optional(SSMLMessageType),
         }),
       ).annotate({ identifier: "VoiceMessageContent" });
     case 5:
@@ -652,7 +736,7 @@ function __c2(j: number): any {
         S.Struct({
           CallerId: S.optional(S.String),
           ConfigurationSetName: S.optional(S.String),
-          Content: S.optional(__S(20)),
+          Content: S.optional(VoiceMessageContent),
           DestinationPhoneNumber: S.optional(S.String),
           OriginationPhoneNumber: S.optional(S.String),
         }).pipe(
@@ -674,7 +758,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
-          EventDestination: S.optional(__S(6)),
+          EventDestination: S.optional(EventDestinationDefinition),
           EventDestinationName: S.String.pipe(T.HttpLabel("EventDestinationName")),
         }).pipe(
           T.all(
@@ -692,20 +776,5 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdateConfigurationSetEventDestinationRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

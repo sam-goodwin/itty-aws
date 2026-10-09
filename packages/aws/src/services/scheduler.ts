@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Scheduler",
   serviceShapeName: "AWSChronosService",
@@ -134,29 +132,35 @@ export type ResourceArn = string;
 export interface DeadLetterConfig {
   Arn?: string;
 }
+const DeadLetterConfig = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DeadLetterConfig>;
 export type MaximumEventAgeInSeconds = number;
 export type MaximumRetryAttempts = number;
 export interface RetryPolicy {
   MaximumEventAgeInSeconds?: number;
   MaximumRetryAttempts?: number;
 }
+const RetryPolicy = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<RetryPolicy>;
 export type TargetInput = string;
 export type TaskDefinitionArn = string;
 export type TaskCount = number;
 export type LaunchType = string;
 export type Subnet = string;
 export type Subnets = string[];
+const Subnets = /*@__PURE__*/ __L.at(__c0, 2);
 export type SecurityGroup = string;
 export type SecurityGroups = string[];
+const SecurityGroups = Subnets as any as S.Schema<SecurityGroups>;
 export type AssignPublicIp = string;
 export interface AwsVpcConfiguration {
   Subnets: string[];
   SecurityGroups?: string[];
   AssignPublicIp?: string;
 }
+const AwsVpcConfiguration = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AwsVpcConfiguration>;
 export interface NetworkConfiguration {
   awsvpcConfiguration?: AwsVpcConfiguration;
 }
+const NetworkConfiguration = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<NetworkConfiguration>;
 export type PlatformVersion = string;
 export type Group = string;
 export type CapacityProvider = string;
@@ -167,7 +171,12 @@ export interface CapacityProviderStrategyItem {
   weight?: number;
   base?: number;
 }
+const CapacityProviderStrategyItem = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CapacityProviderStrategyItem>;
 export type CapacityProviderStrategy = CapacityProviderStrategyItem[];
+const CapacityProviderStrategy = /*@__PURE__*/ __L.at(__c0, 6);
 export type EnableECSManagedTags = boolean;
 export type EnableExecuteCommand = boolean;
 export type PlacementConstraintType = string;
@@ -176,20 +185,26 @@ export interface PlacementConstraint {
   type?: string;
   expression?: string;
 }
+const PlacementConstraint = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<PlacementConstraint>;
 export type PlacementConstraints = PlacementConstraint[];
+const PlacementConstraints = /*@__PURE__*/ __L.at(__c1, 0);
 export type PlacementStrategyType = string;
 export type PlacementStrategyField = string;
 export interface PlacementStrategy {
   type?: string;
   field?: string;
 }
+const PlacementStrategy = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<PlacementStrategy>;
 export type PlacementStrategies = PlacementStrategy[];
+const PlacementStrategies = /*@__PURE__*/ __L.at(__c1, 2);
 export type PropagateTags = string;
 export type ReferenceId = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
+const TagMap = /*@__PURE__*/ __L.at(__c1, 3);
 export type Tags = { [key: string]: string | undefined }[];
+const Tags = /*@__PURE__*/ __L.at(__c1, 4);
 export interface EcsParameters {
   TaskDefinitionArn: string;
   TaskCount?: number;
@@ -206,30 +221,46 @@ export interface EcsParameters {
   ReferenceId?: string;
   Tags?: { [key: string]: string | undefined }[];
 }
+const EcsParameters = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<EcsParameters>;
 export type DetailType = string;
 export type Source = string;
 export interface EventBridgeParameters {
   DetailType: string;
   Source: string;
 }
+const EventBridgeParameters = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<EventBridgeParameters>;
 export type TargetPartitionKey = string;
 export interface KinesisParameters {
   PartitionKey: string;
 }
+const KinesisParameters = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<KinesisParameters>;
 export type SageMakerPipelineParameterName = string;
 export type SageMakerPipelineParameterValue = string;
 export interface SageMakerPipelineParameter {
   Name: string;
   Value: string;
 }
+const SageMakerPipelineParameter = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<SageMakerPipelineParameter>;
 export type SageMakerPipelineParameterList = SageMakerPipelineParameter[];
+const SageMakerPipelineParameterList = /*@__PURE__*/ __L.at(__c2, 1);
 export interface SageMakerPipelineParameters {
   PipelineParameterList?: SageMakerPipelineParameter[];
 }
+const SageMakerPipelineParameters = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<SageMakerPipelineParameters>;
 export type MessageGroupId = string;
 export interface SqsParameters {
   MessageGroupId?: string;
 }
+const SqsParameters = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<SqsParameters>;
 export interface Target {
   Arn: string;
   RoleArn: string;
@@ -242,12 +273,14 @@ export interface Target {
   SageMakerPipelineParameters?: SageMakerPipelineParameters;
   SqsParameters?: SqsParameters;
 }
+const Target = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Target>;
 export type FlexibleTimeWindowMode = string;
 export type MaximumWindowInMinutes = number;
 export interface FlexibleTimeWindow {
   Mode: string;
   MaximumWindowInMinutes?: number;
 }
+const FlexibleTimeWindow = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<FlexibleTimeWindow>;
 export type ClientToken = string;
 export type ActionAfterCompletion = string;
 export interface CreateScheduleInput {
@@ -265,39 +298,60 @@ export interface CreateScheduleInput {
   ClientToken?: string;
   ActionAfterCompletion?: string;
 }
+const CreateScheduleInput = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CreateScheduleInput>;
 export type ScheduleArn = string;
 export interface CreateScheduleOutput {
   ScheduleArn: string;
 }
+const CreateScheduleOutput = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<CreateScheduleOutput>;
 export interface Tag {
   Key: string;
   Value: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
+const TagList = /*@__PURE__*/ __L.at(__c3, 1);
 export interface CreateScheduleGroupInput {
   Name: string;
   Tags?: Tag[];
   ClientToken?: string;
 }
+const CreateScheduleGroupInput = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateScheduleGroupInput>;
 export type ScheduleGroupArn = string;
 export interface CreateScheduleGroupOutput {
   ScheduleGroupArn: string;
 }
+const CreateScheduleGroupOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateScheduleGroupOutput>;
 export interface DeleteScheduleInput {
   Name: string;
   GroupName?: string;
   ClientToken?: string;
 }
+const DeleteScheduleInput = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DeleteScheduleInput>;
 export interface DeleteScheduleOutput {}
+const DeleteScheduleOutput = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<DeleteScheduleOutput>;
 export interface DeleteScheduleGroupInput {
   Name: string;
   ClientToken?: string;
 }
+const DeleteScheduleGroupInput = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DeleteScheduleGroupInput>;
 export interface DeleteScheduleGroupOutput {}
+const DeleteScheduleGroupOutput =
+  DeleteScheduleOutput as any as S.Schema<DeleteScheduleGroupOutput>;
 export interface GetScheduleInput {
   Name: string;
   GroupName?: string;
 }
+const GetScheduleInput = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GetScheduleInput>;
 export type CreationDate = Date;
 export type LastModificationDate = Date;
 export interface GetScheduleOutput {
@@ -317,9 +371,14 @@ export interface GetScheduleOutput {
   FlexibleTimeWindow?: FlexibleTimeWindow;
   ActionAfterCompletion?: string;
 }
+const GetScheduleOutput = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GetScheduleOutput>;
 export interface GetScheduleGroupInput {
   Name: string;
 }
+const GetScheduleGroupInput = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetScheduleGroupInput>;
 export type ScheduleGroupState = string;
 export interface GetScheduleGroupOutput {
   Arn?: string;
@@ -328,6 +387,10 @@ export interface GetScheduleGroupOutput {
   CreationDate?: Date;
   LastModificationDate?: Date;
 }
+const GetScheduleGroupOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetScheduleGroupOutput>;
 export type ScheduleGroupNamePrefix = string;
 export type NextToken = string;
 export type MaxResults = number;
@@ -336,6 +399,10 @@ export interface ListScheduleGroupsInput {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListScheduleGroupsInput = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListScheduleGroupsInput>;
 export interface ScheduleGroupSummary {
   Arn?: string;
   Name?: string;
@@ -343,11 +410,17 @@ export interface ScheduleGroupSummary {
   CreationDate?: Date;
   LastModificationDate?: Date;
 }
+const ScheduleGroupSummary = GetScheduleGroupOutput as any as S.Schema<ScheduleGroupSummary>;
 export type ScheduleGroupList = ScheduleGroupSummary[];
+const ScheduleGroupList = /*@__PURE__*/ __L.at(__c4, 4);
 export interface ListScheduleGroupsOutput {
   NextToken?: string;
   ScheduleGroups: ScheduleGroupSummary[];
 }
+const ListScheduleGroupsOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListScheduleGroupsOutput>;
 export type NamePrefix = string;
 export interface ListSchedulesInput {
   GroupName?: string;
@@ -356,9 +429,11 @@ export interface ListSchedulesInput {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListSchedulesInput = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ListSchedulesInput>;
 export interface TargetSummary {
   Arn: string;
 }
+const TargetSummary = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<TargetSummary>;
 export interface ScheduleSummary {
   Arn?: string;
   Name?: string;
@@ -368,29 +443,45 @@ export interface ScheduleSummary {
   LastModificationDate?: Date;
   Target?: TargetSummary;
 }
+const ScheduleSummary = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ScheduleSummary>;
 export type ScheduleList = ScheduleSummary[];
+const ScheduleList = /*@__PURE__*/ __L.at(__c5, 1);
 export interface ListSchedulesOutput {
   NextToken?: string;
   Schedules: ScheduleSummary[];
 }
+const ListSchedulesOutput = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ListSchedulesOutput>;
 export type TagResourceArn = string;
 export interface ListTagsForResourceInput {
   ResourceArn: string;
 }
+const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   Tags?: Tag[];
 }
+const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListTagsForResourceOutput>;
 export interface TagResourceInput {
   ResourceArn: string;
   Tags: Tag[];
 }
+const TagResourceInput = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
+const TagResourceOutput = DeleteScheduleOutput as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
+const TagKeyList = Subnets as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   ResourceArn: string;
   TagKeys: string[];
 }
+const UntagResourceInput = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
+const UntagResourceOutput = DeleteScheduleOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateScheduleInput {
   Name: string;
   GroupName?: string;
@@ -406,9 +497,11 @@ export interface UpdateScheduleInput {
   ClientToken?: string;
   ActionAfterCompletion?: string;
 }
+const UpdateScheduleInput = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<UpdateScheduleInput>;
 export interface UpdateScheduleOutput {
   ScheduleArn: string;
 }
+const UpdateScheduleOutput = CreateScheduleOutput as any as S.Schema<UpdateScheduleOutput>;
 export type CreateScheduleError =
   | ConflictException
   | InternalServerException
@@ -427,8 +520,8 @@ export const createSchedule: API.OperationMethod<
   CreateScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<CreateScheduleInput>,
-  output: __S(23) as any as S.Schema<CreateScheduleOutput>,
+  input: CreateScheduleInput,
+  output: CreateScheduleOutput,
   errors: [
     ConflictException,
     InternalServerException,
@@ -459,8 +552,8 @@ export const createScheduleGroup: API.OperationMethod<
   CreateScheduleGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<CreateScheduleGroupInput>,
-  output: __S(27) as any as S.Schema<CreateScheduleGroupOutput>,
+  input: CreateScheduleGroupInput,
+  output: CreateScheduleGroupOutput,
   errors: [
     ConflictException,
     InternalServerException,
@@ -489,8 +582,8 @@ export const deleteSchedule: API.OperationMethod<
   DeleteScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<DeleteScheduleInput>,
-  output: __S(29) as any as S.Schema<DeleteScheduleOutput>,
+  input: DeleteScheduleInput,
+  output: DeleteScheduleOutput,
   errors: [
     ConflictException,
     InternalServerException,
@@ -524,8 +617,8 @@ export const deleteScheduleGroup: API.OperationMethod<
   DeleteScheduleGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<DeleteScheduleGroupInput>,
-  output: __S(29) as any as S.Schema<DeleteScheduleGroupOutput>,
+  input: DeleteScheduleGroupInput,
+  output: DeleteScheduleGroupOutput,
   errors: [
     ConflictException,
     InternalServerException,
@@ -553,8 +646,8 @@ export const getSchedule: API.OperationMethod<
   GetScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GetScheduleInput>,
-  output: __S(32) as any as S.Schema<GetScheduleOutput>,
+  input: GetScheduleInput,
+  output: GetScheduleOutput,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -581,8 +674,8 @@ export const getScheduleGroup: API.OperationMethod<
   GetScheduleGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<GetScheduleGroupInput>,
-  output: __S(34) as any as S.Schema<GetScheduleGroupOutput>,
+  input: GetScheduleGroupInput,
+  output: GetScheduleGroupOutput,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -609,8 +702,8 @@ export const listScheduleGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScheduleGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(35) as any as S.Schema<ListScheduleGroupsInput>,
-  output: __S(37) as any as S.Schema<ListScheduleGroupsOutput>,
+  input: ListScheduleGroupsInput,
+  output: ListScheduleGroupsOutput,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -639,8 +732,8 @@ export const listSchedules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScheduleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(38) as any as S.Schema<ListSchedulesInput>,
-  output: __S(42) as any as S.Schema<ListSchedulesOutput>,
+  input: ListSchedulesInput,
+  output: ListSchedulesOutput,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -673,8 +766,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(44) as any as S.Schema<ListTagsForResourceOutput>,
+  input: ListTagsForResourceInput,
+  output: ListTagsForResourceOutput,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -702,8 +795,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<TagResourceInput>,
-  output: __S(29) as any as S.Schema<TagResourceOutput>,
+  input: TagResourceInput,
+  output: TagResourceOutput,
   errors: [
     ConflictException,
     InternalServerException,
@@ -732,8 +825,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<UntagResourceInput>,
-  output: __S(29) as any as S.Schema<UntagResourceOutput>,
+  input: UntagResourceInput,
+  output: UntagResourceOutput,
   errors: [
     ConflictException,
     InternalServerException,
@@ -768,8 +861,8 @@ export const updateSchedule: API.OperationMethod<
   UpdateScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<UpdateScheduleInput>,
-  output: __S(23) as any as S.Schema<UpdateScheduleOutput>,
+  input: UpdateScheduleInput,
+  output: UpdateScheduleOutput,
   errors: [
     ConflictException,
     InternalServerException,
@@ -802,15 +895,15 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Subnets: __S(2),
-          SecurityGroups: S.optional(__S(2)),
+          Subnets: Subnets,
+          SecurityGroups: S.optional(SecurityGroups),
           AssignPublicIp: S.optional(S.String),
         }),
       ).annotate({ identifier: "AwsVpcConfiguration" });
     case 4:
-      return S.suspend(() => S.Struct({ awsvpcConfiguration: S.optional(__S(3)) })).annotate({
-        identifier: "NetworkConfiguration",
-      });
+      return S.suspend(() =>
+        S.Struct({ awsvpcConfiguration: S.optional(AwsVpcConfiguration) }),
+      ).annotate({ identifier: "NetworkConfiguration" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -822,7 +915,7 @@ function __c0(j: number): any {
         identifier: "CapacityProviderStrategyItem",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(CapacityProviderStrategyItem);
     case 7:
       return S.suspend(() =>
         S.Struct({ type: S.optional(S.String), expression: S.optional(S.String) }),
@@ -832,34 +925,34 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(PlacementConstraint);
     case 1:
       return S.suspend(() =>
         S.Struct({ type: S.optional(S.String), field: S.optional(S.String) }),
       ).annotate({ identifier: "PlacementStrategy" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(PlacementStrategy);
     case 3:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 4:
-      return S.Array(__S(11));
+      return S.Array(TagMap);
     case 5:
       return S.suspend(() =>
         S.Struct({
           TaskDefinitionArn: S.String,
           TaskCount: S.optional(S.Number),
           LaunchType: S.optional(S.String),
-          NetworkConfiguration: S.optional(__S(4)),
+          NetworkConfiguration: S.optional(NetworkConfiguration),
           PlatformVersion: S.optional(S.String),
           Group: S.optional(S.String),
-          CapacityProviderStrategy: S.optional(__S(6)),
+          CapacityProviderStrategy: S.optional(CapacityProviderStrategy),
           EnableECSManagedTags: S.optional(S.Boolean),
           EnableExecuteCommand: S.optional(S.Boolean),
-          PlacementConstraints: S.optional(__S(8)),
-          PlacementStrategy: S.optional(__S(10)),
+          PlacementConstraints: S.optional(PlacementConstraints),
+          PlacementStrategy: S.optional(PlacementStrategies),
           PropagateTags: S.optional(S.String),
           ReferenceId: S.optional(S.String),
-          Tags: S.optional(__S(12)),
+          Tags: S.optional(Tags),
         }),
       ).annotate({ identifier: "EcsParameters" });
     case 6:
@@ -879,9 +972,11 @@ function __c2(j: number): any {
         identifier: "SageMakerPipelineParameter",
       });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(SageMakerPipelineParameter);
     case 2:
-      return S.suspend(() => S.Struct({ PipelineParameterList: S.optional(__S(17)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ PipelineParameterList: S.optional(SageMakerPipelineParameterList) }),
+      ).annotate({
         identifier: "SageMakerPipelineParameters",
       });
     case 3:
@@ -893,14 +988,14 @@ function __c2(j: number): any {
         S.Struct({
           Arn: S.String,
           RoleArn: S.String,
-          DeadLetterConfig: S.optional(__S(0)),
-          RetryPolicy: S.optional(__S(1)),
+          DeadLetterConfig: S.optional(DeadLetterConfig),
+          RetryPolicy: S.optional(RetryPolicy),
           Input: S.optional(S.String),
-          EcsParameters: S.optional(__S(13)),
-          EventBridgeParameters: S.optional(__S(14)),
-          KinesisParameters: S.optional(__S(15)),
-          SageMakerPipelineParameters: S.optional(__S(18)),
-          SqsParameters: S.optional(__S(19)),
+          EcsParameters: S.optional(EcsParameters),
+          EventBridgeParameters: S.optional(EventBridgeParameters),
+          KinesisParameters: S.optional(KinesisParameters),
+          SageMakerPipelineParameters: S.optional(SageMakerPipelineParameters),
+          SqsParameters: S.optional(SqsParameters),
         }),
       ).annotate({ identifier: "Target" });
     case 5:
@@ -919,8 +1014,8 @@ function __c2(j: number): any {
           ScheduleExpressionTimezone: S.optional(S.String),
           State: S.optional(S.String),
           KmsKeyArn: S.optional(S.String),
-          Target: __S(20),
-          FlexibleTimeWindow: __S(21),
+          Target: Target,
+          FlexibleTimeWindow: FlexibleTimeWindow,
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           ActionAfterCompletion: S.optional(S.String),
         }).pipe(
@@ -940,12 +1035,12 @@ function __c3(j: number): any {
         identifier: "Tag",
       });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(Tag);
     case 2:
       return S.suspend(() =>
         S.Struct({
           Name: S.String.pipe(T.HttpLabel("Name")),
-          Tags: S.optional(__S(25)),
+          Tags: S.optional(TagList),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -1027,8 +1122,8 @@ function __c4(j: number): any {
           CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModificationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           KmsKeyArn: S.optional(S.String),
-          Target: S.optional(__S(20)),
-          FlexibleTimeWindow: S.optional(__S(21)),
+          Target: S.optional(Target),
+          FlexibleTimeWindow: S.optional(FlexibleTimeWindow),
           ActionAfterCompletion: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetScheduleOutput" });
@@ -1066,10 +1161,10 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "ListScheduleGroupsInput" });
     case 4:
-      return S.Array(__S(34));
+      return S.Array(ScheduleGroupSummary);
     case 5:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), ScheduleGroups: __S(36) }),
+        S.Struct({ NextToken: S.optional(S.String), ScheduleGroups: ScheduleGroupList }),
       ).annotate({ identifier: "ListScheduleGroupsOutput" });
     case 6:
       return S.suspend(() =>
@@ -1098,14 +1193,14 @@ function __c5(j: number): any {
           State: S.optional(S.String),
           CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModificationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Target: S.optional(__S(39)),
+          Target: S.optional(TargetSummary),
         }),
       ).annotate({ identifier: "ScheduleSummary" });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(ScheduleSummary);
     case 2:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Schedules: __S(41) }),
+        S.Struct({ NextToken: S.optional(S.String), Schedules: ScheduleList }),
       ).annotate({ identifier: "ListSchedulesOutput" });
     case 3:
       return S.suspend(() =>
@@ -1121,12 +1216,12 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 4:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(25)) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: __S(25) }).pipe(
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: TagList }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
             svc,
@@ -1141,7 +1236,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: __S(2).pipe(T.HttpQuery("TagKeys")),
+          TagKeys: TagKeyList.pipe(T.HttpQuery("TagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -1165,34 +1260,13 @@ function __c5(j: number): any {
           ScheduleExpressionTimezone: S.optional(S.String),
           State: S.optional(S.String),
           KmsKeyArn: S.optional(S.String),
-          Target: __S(20),
-          FlexibleTimeWindow: __S(21),
+          Target: Target,
+          FlexibleTimeWindow: FlexibleTimeWindow,
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           ActionAfterCompletion: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/schedules/{Name}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateScheduleInput" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

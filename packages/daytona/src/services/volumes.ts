@@ -6,8 +6,6 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
@@ -16,6 +14,8 @@ export interface CreateVolumeRequest {
   xDaytonaOrganizationID?: string;
   name: string;
 }
+const CreateVolumeRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateVolumeRequest>;
+
 /** Volume state */
 export type VolumeState =
   | "creating"
@@ -25,6 +25,8 @@ export type VolumeState =
   | "deleting"
   | "deleted"
   | "error";
+const VolumeState = S.String;
+
 export interface VolumeDto {
   /** Volume ID */
   id: string;
@@ -43,33 +45,55 @@ export interface VolumeDto {
   /** The error reason of the volume */
   errorReason: string | null;
 }
+const VolumeDto = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<VolumeDto>;
+
 export interface DeleteVolumeRequest {
   /** ID of the volume */
   volumeId: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const DeleteVolumeRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DeleteVolumeRequest>;
+
 export interface DeleteVolumeResponse {}
+const DeleteVolumeResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DeleteVolumeResponse>;
+
 export interface GetVolumeRequest {
   /** ID of the volume */
   volumeId: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetVolumeRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetVolumeRequest>;
+
 export interface GetVolumeByNameRequest {
   /** Name of the volume */
   name: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetVolumeByNameRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetVolumeByNameRequest>;
+
 export interface ListVolumesRequest {
   /** Include deleted volumes in the response */
   includeDeleted?: boolean;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const ListVolumesRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ListVolumesRequest>;
+
 export type ListVolumesResponseBodyList = Array<VolumeDto>;
+const ListVolumesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListVolumesResponseBodyList>;
+
 export type ListVolumesResponse = ListVolumesResponseBodyList;
+const ListVolumesResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ListVolumesResponse>;
+
 export type CreateVolumeError = DaytonaOpError;
 /** Create a new volume */
 export const createVolume: API.OperationMethod<
@@ -78,8 +102,8 @@ export const createVolume: API.OperationMethod<
   CreateVolumeError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateVolumeRequest>,
-  output: __S(1) as any as S.Schema<VolumeDto>,
+  input: CreateVolumeRequest,
+  output: VolumeDto,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -93,8 +117,8 @@ export const deleteVolume: API.OperationMethod<
   DeleteVolumeError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteVolumeRequest>,
-  output: __S(3) as any as S.Schema<DeleteVolumeResponse>,
+  input: DeleteVolumeRequest,
+  output: DeleteVolumeResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -108,8 +132,8 @@ export const getVolume: API.OperationMethod<
   GetVolumeError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetVolumeRequest>,
-  output: __S(1) as any as S.Schema<VolumeDto>,
+  input: GetVolumeRequest,
+  output: VolumeDto,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -123,8 +147,8 @@ export const getVolumeByName: API.OperationMethod<
   GetVolumeByNameError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<GetVolumeByNameRequest>,
-  output: __S(1) as any as S.Schema<VolumeDto>,
+  input: GetVolumeByNameRequest,
+  output: VolumeDto,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -138,8 +162,8 @@ export const listVolumes: API.OperationMethod<
   ListVolumesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<ListVolumesRequest>,
-  output: __S(8) as any as S.Schema<ListVolumesResponse>,
+  input: ListVolumesRequest,
+  output: ListVolumesResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -161,7 +185,7 @@ function __c0(j: number): any {
           id: S.String,
           name: S.String,
           organizationId: S.String,
-          state: S.String,
+          state: VolumeState,
           createdAt: S.String,
           updatedAt: S.String,
           lastUsedAt: S.optional(S.NullOr(S.String)),
@@ -201,27 +225,14 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/volumes", code: 200 })),
       ).annotate({ identifier: "ListVolumesRequest" });
     case 7:
-      return S.Array(__S(1));
+      return S.Array(VolumeDto);
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(7).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListVolumesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVolumesResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

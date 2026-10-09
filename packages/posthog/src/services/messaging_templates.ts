@@ -5,17 +5,28 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `liquid` - liquid */
 export type MessageTemplateContentTemplatingEnum = "liquid";
+const MessageTemplateContentTemplatingEnum = S.String;
+
 /** Rows of {id, cells, columns[{id, contents[{id, type, values}], values}], values}. */
 export type EmailTemplateDesignBodyRowsList = Array<unknown>;
+const EmailTemplateDesignBodyRowsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<EmailTemplateDesignBodyRowsList>;
+
 export type EmailTemplateDesignBodyHeadersList = Array<unknown>;
+const EmailTemplateDesignBodyHeadersList =
+  EmailTemplateDesignBodyRowsList as any as S.Schema<EmailTemplateDesignBodyHeadersList>;
+
 export type EmailTemplateDesignBodyFootersList = Array<unknown>;
+const EmailTemplateDesignBodyFootersList =
+  EmailTemplateDesignBodyRowsList as any as S.Schema<EmailTemplateDesignBodyFootersList>;
+
 export interface EmailTemplateDesignBody {
   /** Any unique string. */
   id?: string;
@@ -26,6 +37,11 @@ export interface EmailTemplateDesignBody {
   /** Body-level settings: backgroundColor, contentWidth ('600px'), fontFamily, textColor. */
   values?: unknown;
 }
+const EmailTemplateDesignBody = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<EmailTemplateDesignBody>;
+
 /** Design JSON for PostHog's visual email editor -- the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill. */
 export interface EmailTemplateDesign {
   /** Highest htmlID suffix per element type, e.g. {"u_row": 1, "u_content_text": 2}. */
@@ -34,6 +50,8 @@ export interface EmailTemplateDesign {
   schemaVersion: number;
   body: EmailTemplateDesignBody;
 }
+const EmailTemplateDesign = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<EmailTemplateDesign>;
+
 export interface EmailTemplate {
   /** Email subject line. Supports Liquid templating. Required for email-type templates. */
   subject?: string;
@@ -44,12 +62,19 @@ export interface EmailTemplate {
   /** Design JSON for PostHog's visual email editor -- the authoring surface and source of truth. The server renders the sent email from it, and it opens as editable blocks in the editor. Full schema in the designing-email-templates skill. */
   design?: EmailTemplateDesign;
 }
+const EmailTemplate = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<EmailTemplate>;
+
 export interface MessageTemplateContent {
   /** Templating language for the email content. Always 'liquid' -- Liquid tags pass through verbatim. * `liquid` - liquid */
   templating?: MessageTemplateContentTemplatingEnum | (string & {});
   /** Email message content. Replaced as a whole on update -- send the complete object. */
   email?: EmailTemplate | null;
 }
+const MessageTemplateContent = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<MessageTemplateContent>;
+
 export interface CreateMessagingTemplateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -66,7 +91,17 @@ export interface CreateMessagingTemplateRequest {
   /** Soft-delete flag. Set true to remove the template from the library. */
   deleted?: boolean;
 }
+const CreateMessagingTemplateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateMessagingTemplateRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -80,6 +115,8 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -91,6 +128,8 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<UserBasic>;
+
 export interface MessageTemplate {
   id: string;
   /** Human-readable template name shown in the library. */
@@ -109,12 +148,19 @@ export interface MessageTemplate {
   /** Soft-delete flag. Set true to remove the template from the library. */
   deleted?: boolean;
 }
+const MessageTemplate = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<MessageTemplate>;
+
 export interface GetMessagingTemplateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this message template. */
   id: string;
 }
+const GetMessagingTemplateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetMessagingTemplateRequest>;
+
 export interface ListMessagingTemplatesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -123,20 +169,45 @@ export interface ListMessagingTemplatesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListMessagingTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListMessagingTemplatesRequest>;
+
 export type PaginatedMessageTemplateListResultsList = Array<MessageTemplate>;
+const PaginatedMessageTemplateListResultsList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<PaginatedMessageTemplateListResultsList>;
+
 export interface PaginatedMessageTemplateList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedMessageTemplateListResultsList;
 }
+const PaginatedMessageTemplateList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<PaginatedMessageTemplateList>;
+
 export interface MessagingTemplatesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this message template. */
   id: string;
 }
+const MessagingTemplatesDestroyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<MessagingTemplatesDestroyRequest>;
+
 export interface MessagingTemplatesDestroyResponse {}
+const MessagingTemplatesDestroyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<MessagingTemplatesDestroyResponse>;
+
 export interface UpdateMessagingTemplateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -155,6 +226,11 @@ export interface UpdateMessagingTemplateRequest {
   /** Soft-delete flag. Set true to remove the template from the library. */
   deleted?: boolean;
 }
+const UpdateMessagingTemplateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<UpdateMessagingTemplateRequest>;
+
 /** * `update_content` - update_content * `update_column` - update_column * `update_row` - update_row * `update_body` - update_body * `add_content` - add_content * `remove_content` - remove_content * `move_content` - move_content * `add_row` - add_row * `remove_row` - remove_row */
 export type EmailTemplateDesignOperationEnum =
   | "update_content"
@@ -166,6 +242,8 @@ export type EmailTemplateDesignOperationEnum =
   | "move_content"
   | "add_row"
   | "remove_row";
+const EmailTemplateDesignOperationEnum = S.String;
+
 export interface DesignOperation {
   /** Design edit. update_content {id, patch}: deep-merge patch into the content block's fields (a null leaf deletes that key) -- the surgical path, e.g. change just values.text. update_row / update_column {id, patch} and update_body {patch}: same deep-merge for row/column/body-level settings. add_content {column_id, content, index?}: insert a content block into a column (id and Unlayer numbering are filled in for you). remove_content {id} / move_content {id, column_id, index?}: delete or relocate a block. add_row {row, index?} / remove_row {id}: add or delete a row. * `update_content` - update_content * `update_column` - update_column * `update_row` - update_row * `update_body` - update_body * `add_content` - add_content * `remove_content` - remove_content * `move_content` - move_content * `add_row` - add_row * `remove_row` - remove_row */
   op: EmailTemplateDesignOperationEnum | (string & {});
@@ -182,8 +260,15 @@ export interface DesignOperation {
   /** add_*\/move_content only. 0-based insert position; omit to append to the end. */
   index?: number;
 }
+const DesignOperation = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DesignOperation>;
+
 /** Ordered edits applied atomically to a template's Unlayer design: the stored design is read, the ops are applied in order, the result is validated and re-rendered to HTML, and it's saved only if valid -- otherwise the template is unchanged. Reference blocks by id so you never resend the whole design. */
 export type UpdateMessagingTemplatesDesignPartialRequestOperationsList = Array<DesignOperation>;
+const UpdateMessagingTemplatesDesignPartialRequestOperationsList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<UpdateMessagingTemplatesDesignPartialRequestOperationsList>;
+
 export interface UpdateMessagingTemplatesDesignPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -192,6 +277,11 @@ export interface UpdateMessagingTemplatesDesignPartialRequest {
   /** Ordered edits applied atomically to a template's Unlayer design: the stored design is read, the ops are applied in order, the result is validated and re-rendered to HTML, and it's saved only if valid -- otherwise the template is unchanged. Reference blocks by id so you never resend the whole design. */
   operations?: UpdateMessagingTemplatesDesignPartialRequestOperationsList;
 }
+const UpdateMessagingTemplatesDesignPartialRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<UpdateMessagingTemplatesDesignPartialRequest>;
+
 export interface UpdateMessagingTemplatesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -210,6 +300,11 @@ export interface UpdateMessagingTemplatesPartialRequest {
   /** Soft-delete flag. Set true to remove the template from the library. */
   deleted?: boolean;
 }
+const UpdateMessagingTemplatesPartialRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<UpdateMessagingTemplatesPartialRequest>;
+
 export type CreateMessagingTemplateError = PosthogOpError;
 export const createMessagingTemplate: API.OperationMethod<
   CreateMessagingTemplateRequest,
@@ -217,8 +312,8 @@ export const createMessagingTemplate: API.OperationMethod<
   CreateMessagingTemplateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreateMessagingTemplateRequest>,
-  output: __S(8) as any as S.Schema<MessageTemplate>,
+  input: CreateMessagingTemplateRequest,
+  output: MessageTemplate,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -231,8 +326,8 @@ export const getMessagingTemplate: API.OperationMethod<
   GetMessagingTemplateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<GetMessagingTemplateRequest>,
-  output: __S(8) as any as S.Schema<MessageTemplate>,
+  input: GetMessagingTemplateRequest,
+  output: MessageTemplate,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -245,8 +340,8 @@ export const listMessagingTemplates: API.OperationMethod<
   ListMessagingTemplatesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<ListMessagingTemplatesRequest>,
-  output: __S(12) as any as S.Schema<PaginatedMessageTemplateList>,
+  input: ListMessagingTemplatesRequest,
+  output: PaginatedMessageTemplateList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -260,8 +355,8 @@ export const messagingTemplatesDestroy: API.OperationMethod<
   MessagingTemplatesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<MessagingTemplatesDestroyRequest>,
-  output: __S(14) as any as S.Schema<MessagingTemplatesDestroyResponse>,
+  input: MessagingTemplatesDestroyRequest,
+  output: MessagingTemplatesDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -274,8 +369,8 @@ export const updateMessagingTemplate: API.OperationMethod<
   UpdateMessagingTemplateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<UpdateMessagingTemplateRequest>,
-  output: __S(8) as any as S.Schema<MessageTemplate>,
+  input: UpdateMessagingTemplateRequest,
+  output: MessageTemplate,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -288,8 +383,8 @@ export const updateMessagingTemplatesDesignPartial: API.OperationMethod<
   UpdateMessagingTemplatesDesignPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<UpdateMessagingTemplatesDesignPartialRequest>,
-  output: __S(8) as any as S.Schema<MessageTemplate>,
+  input: UpdateMessagingTemplatesDesignPartialRequest,
+  output: MessageTemplate,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -302,8 +397,8 @@ export const updateMessagingTemplatesPartial: API.OperationMethod<
   UpdateMessagingTemplatesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<UpdateMessagingTemplatesPartialRequest>,
-  output: __S(8) as any as S.Schema<MessageTemplate>,
+  input: UpdateMessagingTemplatesPartialRequest,
+  output: MessageTemplate,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -318,9 +413,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          rows: __S(0),
-          headers: S.optional(__S(0)),
-          footers: S.optional(__S(0)),
+          rows: EmailTemplateDesignBodyRowsList,
+          headers: S.optional(EmailTemplateDesignBodyHeadersList),
+          footers: S.optional(EmailTemplateDesignBodyFootersList),
           values: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "EmailTemplateDesignBody" });
@@ -329,7 +424,7 @@ function __c0(j: number): any {
         S.Struct({
           counters: S.optional(S.Unknown),
           schemaVersion: S.Number,
-          body: __S(1),
+          body: EmailTemplateDesignBody,
         }),
       ).annotate({ identifier: "EmailTemplateDesign" });
     case 3:
@@ -338,14 +433,14 @@ function __c0(j: number): any {
           subject: S.optional(S.String),
           text: S.optional(S.String),
           html: S.optional(S.String),
-          design: S.optional(__S(2)),
+          design: S.optional(EmailTemplateDesign),
         }),
       ).annotate({ identifier: "EmailTemplate" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          templating: S.optional(S.String),
-          email: S.optional(S.NullOr(__S(3))),
+          templating: S.optional(MessageTemplateContentTemplatingEnum),
+          email: S.optional(S.NullOr(EmailTemplate)),
         }),
       ).annotate({ identifier: "MessageTemplateContent" });
     case 5:
@@ -354,7 +449,7 @@ function __c0(j: number): any {
           project_id: S.String.pipe(T.Label()),
           name: S.String,
           description: S.optional(S.String),
-          content: S.optional(__S(4)),
+          content: S.optional(MessageTemplateContent),
           type: S.optional(S.String),
           message_category: S.optional(S.NullOr(S.String)),
           deleted: S.optional(S.Boolean),
@@ -380,8 +475,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(6))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
   }
@@ -396,8 +491,8 @@ function __c1(j: number): any {
           description: S.optional(S.String),
           created_at: S.String,
           updated_at: S.String,
-          content: S.optional(__S(4)),
-          created_by: __S(7),
+          content: S.optional(MessageTemplateContent),
+          created_by: UserBasic,
           type: S.optional(S.String),
           message_category: S.optional(S.NullOr(S.String)),
           deleted: S.optional(S.Boolean),
@@ -435,14 +530,14 @@ function __c1(j: number): any {
         identifier: "ListMessagingTemplatesRequest",
       });
     case 3:
-      return S.Array(__S(8));
+      return S.Array(MessageTemplate);
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(11),
+          results: PaginatedMessageTemplateListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedMessageTemplateList",
@@ -473,7 +568,7 @@ function __c1(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.String,
           description: S.optional(S.String),
-          content: S.optional(__S(4)),
+          content: S.optional(MessageTemplateContent),
           type: S.optional(S.String),
           message_category: S.optional(S.NullOr(S.String)),
           deleted: S.optional(S.Boolean),
@@ -494,7 +589,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          op: S.String,
+          op: EmailTemplateDesignOperationEnum,
           id: S.optional(S.String),
           column_id: S.optional(S.String),
           patch: S.optional(S.Unknown),
@@ -504,13 +599,13 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "DesignOperation" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(DesignOperation);
     case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          operations: S.optional(__S(17)),
+          operations: S.optional(UpdateMessagingTemplatesDesignPartialRequestOperationsList),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -528,7 +623,7 @@ function __c2(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          content: S.optional(__S(4)),
+          content: S.optional(MessageTemplateContent),
           type: S.optional(S.String),
           message_category: S.optional(S.NullOr(S.String)),
           deleted: S.optional(S.Boolean),
@@ -542,20 +637,5 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdateMessagingTemplatesPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

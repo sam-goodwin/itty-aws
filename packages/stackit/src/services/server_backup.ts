@@ -7,8 +7,6 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -40,6 +38,11 @@ export class NotFound
   ) {}
 
 export type CreateBackupRequestVolumeIdsList = Array<string>;
+const CreateBackupRequestVolumeIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateBackupRequestVolumeIdsList>;
+
 export interface CreateBackupRequest {
   /** project id */
   projectId: string;
@@ -53,10 +56,17 @@ export interface CreateBackupRequest {
   retentionPeriod: number;
   volumeIds?: CreateBackupRequestVolumeIdsList;
 }
+const CreateBackupRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateBackupRequest>;
+
 export interface BackupJob {
   id: string;
 }
+const BackupJob = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<BackupJob>;
+
 export type BackupPropertiesVolumeIdsList = Array<string>;
+const BackupPropertiesVolumeIdsList =
+  CreateBackupRequestVolumeIdsList as any as S.Schema<BackupPropertiesVolumeIdsList>;
+
 export interface BackupProperties {
   /** Max 255 characters */
   name: string;
@@ -64,6 +74,8 @@ export interface BackupProperties {
   retentionPeriod: number;
   volumeIds?: BackupPropertiesVolumeIdsList;
 }
+const BackupProperties = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<BackupProperties>;
+
 export interface CreateBackupScheduleRequest {
   /** project id */
   projectId: string;
@@ -78,6 +90,11 @@ export interface CreateBackupScheduleRequest {
   /** An rrule (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates */
   rrule: string;
 }
+const CreateBackupScheduleRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateBackupScheduleRequest>;
+
 export interface BackupSchedule {
   backupProperties?: BackupProperties;
   enabled: boolean;
@@ -86,6 +103,8 @@ export interface BackupSchedule {
   /** An rrule (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates */
   rrule: string;
 }
+const BackupSchedule = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<BackupSchedule>;
+
 export interface DeleteBackupRequest {
   /** project id */
   projectId: string;
@@ -98,7 +117,11 @@ export interface DeleteBackupRequest {
   /** force delete the backup */
   force?: boolean;
 }
+const DeleteBackupRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DeleteBackupRequest>;
+
 export interface DeleteBackupResponse {}
+const DeleteBackupResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DeleteBackupResponse>;
+
 export interface DeleteBackupScheduleRequest {
   /** project id */
   projectId: string;
@@ -109,7 +132,15 @@ export interface DeleteBackupScheduleRequest {
   /** backup schedule id */
   backupScheduleId: string;
 }
+const DeleteBackupScheduleRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteBackupScheduleRequest>;
+
 export interface DeleteBackupScheduleResponse {}
+const DeleteBackupScheduleResponse =
+  DeleteBackupResponse as any as S.Schema<DeleteBackupScheduleResponse>;
+
 export interface DeleteVolumeBackupRequest {
   /** project id */
   projectId: string;
@@ -124,7 +155,15 @@ export interface DeleteVolumeBackupRequest {
   /** Force delete the volume backup */
   force?: boolean;
 }
+const DeleteVolumeBackupRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteVolumeBackupRequest>;
+
 export interface DeleteVolumeBackupResponse {}
+const DeleteVolumeBackupResponse =
+  DeleteBackupResponse as any as S.Schema<DeleteVolumeBackupResponse>;
+
 export interface DisableServiceResourceRequest {
   /** project id */
   projectId: string;
@@ -133,7 +172,15 @@ export interface DisableServiceResourceRequest {
   /** server id */
   serverId: string;
 }
+const DisableServiceResourceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DisableServiceResourceRequest>;
+
 export interface DisableServiceResourceResponse {}
+const DisableServiceResourceResponse =
+  DeleteBackupResponse as any as S.Schema<DisableServiceResourceResponse>;
+
 export interface EnableServiceResourceRequest {
   /** project id */
   projectId: string;
@@ -143,7 +190,15 @@ export interface EnableServiceResourceRequest {
   serverId: string;
   backupPolicyId?: string;
 }
+const EnableServiceResourceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<EnableServiceResourceRequest>;
+
 export interface EnableServiceResourceResponse {}
+const EnableServiceResourceResponse =
+  DeleteBackupResponse as any as S.Schema<EnableServiceResourceResponse>;
+
 export interface GetBackupRequest {
   /** project id */
   projectId: string;
@@ -154,6 +209,8 @@ export interface GetBackupRequest {
   /** id of the backup */
   backupId: string;
 }
+const GetBackupRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetBackupRequest>;
+
 export type BackupStatus =
   | "in-progress"
   | "inconsistent"
@@ -163,6 +220,8 @@ export type BackupStatus =
   | "error-creating"
   | "error-deleting"
   | "unrecognized";
+const BackupStatus = S.String;
+
 export type BackupVolumeBackupsItemStatus =
   | "available"
   | "creating"
@@ -173,6 +232,8 @@ export type BackupVolumeBackupsItemStatus =
   | "restoring"
   | "error-creating"
   | "unrecognized";
+const BackupVolumeBackupsItemStatus = S.String;
+
 export interface BackupVolumeBackupsItem {
   id?: string;
   lastRestoredAt?: string;
@@ -181,7 +242,17 @@ export interface BackupVolumeBackupsItem {
   status?: BackupVolumeBackupsItemStatus;
   volumeId?: string;
 }
+const BackupVolumeBackupsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<BackupVolumeBackupsItem>;
+
 export type BackupVolumeBackupsList = Array<BackupVolumeBackupsItem>;
+const BackupVolumeBackupsList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<BackupVolumeBackupsList>;
+
 export interface Backup {
   createdAt: string;
   expireAt: string;
@@ -192,6 +263,8 @@ export interface Backup {
   status: BackupStatus;
   volumeBackups?: BackupVolumeBackupsList;
 }
+const Backup = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Backup>;
+
 export interface GetBackupScheduleRequest {
   /** project id */
   projectId: string;
@@ -202,6 +275,11 @@ export interface GetBackupScheduleRequest {
   /** backup schedule id */
   backupScheduleId: string;
 }
+const GetBackupScheduleRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetBackupScheduleRequest>;
+
 export interface GetServiceResourceRequest {
   /** project id */
   projectId: string;
@@ -210,17 +288,37 @@ export interface GetServiceResourceRequest {
   /** server id */
   serverId: string;
 }
+const GetServiceResourceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetServiceResourceRequest>;
+
 export interface GetBackupServiceResponse {
   enabled?: boolean;
 }
+const GetBackupServiceResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetBackupServiceResponse>;
+
 export interface ListBackupPoliciesRequest {
   /** project id */
   projectId: string;
 }
+const ListBackupPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListBackupPoliciesRequest>;
+
 export interface BackupPolicyBackupProperties {
   name?: string;
   retentionPeriod?: number;
 }
+const BackupPolicyBackupProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<BackupPolicyBackupProperties>;
+
 export interface BackupPolicy {
   backupProperties?: BackupPolicyBackupProperties;
   default?: boolean;
@@ -231,10 +329,22 @@ export interface BackupPolicy {
   /** An rrule (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates */
   rrule?: string;
 }
+const BackupPolicy = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<BackupPolicy>;
+
 export type GetBackupPoliciesResponseItemsList = Array<BackupPolicy>;
+const GetBackupPoliciesResponseItemsList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetBackupPoliciesResponseItemsList>;
+
 export interface GetBackupPoliciesResponse {
   items?: GetBackupPoliciesResponseItemsList;
 }
+const GetBackupPoliciesResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetBackupPoliciesResponse>;
+
 export interface ListBackupsRequest {
   /** project id */
   projectId: string;
@@ -243,10 +353,22 @@ export interface ListBackupsRequest {
   /** server id */
   serverId: string;
 }
+const ListBackupsRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ListBackupsRequest>;
+
 export type GetBackupsListResponseItemsList = Array<Backup>;
+const GetBackupsListResponseItemsList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetBackupsListResponseItemsList>;
+
 export interface GetBackupsListResponse {
   items?: GetBackupsListResponseItemsList;
 }
+const GetBackupsListResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetBackupsListResponse>;
+
 export interface ListBackupSchedulesRequest {
   /** project id */
   projectId: string;
@@ -255,11 +377,29 @@ export interface ListBackupSchedulesRequest {
   /** server id */
   serverId: string;
 }
+const ListBackupSchedulesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ListBackupSchedulesRequest>;
+
 export type GetBackupSchedulesResponseItemsList = Array<BackupSchedule>;
+const GetBackupSchedulesResponseItemsList = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetBackupSchedulesResponseItemsList>;
+
 export interface GetBackupSchedulesResponse {
   items?: GetBackupSchedulesResponseItemsList;
 }
+const GetBackupSchedulesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetBackupSchedulesResponse>;
+
 export type RestoreBackupRequestVolumeIdsList = Array<string>;
+const RestoreBackupRequestVolumeIdsList =
+  CreateBackupRequestVolumeIdsList as any as S.Schema<RestoreBackupRequestVolumeIdsList>;
+
 export interface RestoreBackupRequest {
   /** project id */
   projectId: string;
@@ -272,7 +412,11 @@ export interface RestoreBackupRequest {
   startServerAfterRestore: boolean;
   volumeIds?: RestoreBackupRequestVolumeIdsList;
 }
+const RestoreBackupRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<RestoreBackupRequest>;
+
 export interface RestoreBackupResponse {}
+const RestoreBackupResponse = DeleteBackupResponse as any as S.Schema<RestoreBackupResponse>;
+
 export interface RestoreVolumeBackupRequest {
   /** project id */
   projectId: string;
@@ -286,7 +430,15 @@ export interface RestoreVolumeBackupRequest {
   volumeBackupId: string;
   restoreVolumeId: string;
 }
+const RestoreVolumeBackupRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<RestoreVolumeBackupRequest>;
+
 export interface RestoreVolumeBackupResponse {}
+const RestoreVolumeBackupResponse =
+  DeleteBackupResponse as any as S.Schema<RestoreVolumeBackupResponse>;
+
 export interface UpdateBackupScheduleRequest {
   /** project id */
   projectId: string;
@@ -303,6 +455,11 @@ export interface UpdateBackupScheduleRequest {
   /** An rrule (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates */
   rrule: string;
 }
+const UpdateBackupScheduleRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<UpdateBackupScheduleRequest>;
+
 export type CreateBackupError = BadRequest | NotFound | Conflict | StackitOpError;
 /** create backup */
 export const createBackup: API.OperationMethod<
@@ -311,8 +468,8 @@ export const createBackup: API.OperationMethod<
   CreateBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateBackupRequest>,
-  output: __S(2) as any as S.Schema<BackupJob>,
+  input: CreateBackupRequest,
+  output: BackupJob,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -326,8 +483,8 @@ export const createBackupSchedule: API.OperationMethod<
   CreateBackupScheduleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateBackupScheduleRequest>,
-  output: __S(5) as any as S.Schema<BackupSchedule>,
+  input: CreateBackupScheduleRequest,
+  output: BackupSchedule,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -341,8 +498,8 @@ export const deleteBackup: API.OperationMethod<
   DeleteBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DeleteBackupRequest>,
-  output: __S(7) as any as S.Schema<DeleteBackupResponse>,
+  input: DeleteBackupRequest,
+  output: DeleteBackupResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -356,8 +513,8 @@ export const deleteBackupSchedule: API.OperationMethod<
   DeleteBackupScheduleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<DeleteBackupScheduleRequest>,
-  output: __S(7) as any as S.Schema<DeleteBackupScheduleResponse>,
+  input: DeleteBackupScheduleRequest,
+  output: DeleteBackupScheduleResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -371,8 +528,8 @@ export const deleteVolumeBackup: API.OperationMethod<
   DeleteVolumeBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeleteVolumeBackupRequest>,
-  output: __S(7) as any as S.Schema<DeleteVolumeBackupResponse>,
+  input: DeleteVolumeBackupRequest,
+  output: DeleteVolumeBackupResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -386,8 +543,8 @@ export const disableServiceResource: API.OperationMethod<
   DisableServiceResourceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DisableServiceResourceRequest>,
-  output: __S(7) as any as S.Schema<DisableServiceResourceResponse>,
+  input: DisableServiceResourceRequest,
+  output: DisableServiceResourceResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -401,8 +558,8 @@ export const enableServiceResource: API.OperationMethod<
   EnableServiceResourceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<EnableServiceResourceRequest>,
-  output: __S(7) as any as S.Schema<EnableServiceResourceResponse>,
+  input: EnableServiceResourceRequest,
+  output: EnableServiceResourceResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -416,8 +573,8 @@ export const getBackup: API.OperationMethod<
   GetBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<GetBackupRequest>,
-  output: __S(15) as any as S.Schema<Backup>,
+  input: GetBackupRequest,
+  output: Backup,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -431,8 +588,8 @@ export const getBackupSchedule: API.OperationMethod<
   GetBackupScheduleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetBackupScheduleRequest>,
-  output: __S(5) as any as S.Schema<BackupSchedule>,
+  input: GetBackupScheduleRequest,
+  output: BackupSchedule,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -446,8 +603,8 @@ export const getServiceResource: API.OperationMethod<
   GetServiceResourceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<GetServiceResourceRequest>,
-  output: __S(18) as any as S.Schema<GetBackupServiceResponse>,
+  input: GetServiceResourceRequest,
+  output: GetBackupServiceResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -461,8 +618,8 @@ export const listBackupPolicies: API.OperationMethod<
   ListBackupPoliciesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<ListBackupPoliciesRequest>,
-  output: __S(23) as any as S.Schema<GetBackupPoliciesResponse>,
+  input: ListBackupPoliciesRequest,
+  output: GetBackupPoliciesResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -476,8 +633,8 @@ export const listBackups: API.OperationMethod<
   ListBackupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<ListBackupsRequest>,
-  output: __S(26) as any as S.Schema<GetBackupsListResponse>,
+  input: ListBackupsRequest,
+  output: GetBackupsListResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -491,8 +648,8 @@ export const listBackupSchedules: API.OperationMethod<
   ListBackupSchedulesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<ListBackupSchedulesRequest>,
-  output: __S(29) as any as S.Schema<GetBackupSchedulesResponse>,
+  input: ListBackupSchedulesRequest,
+  output: GetBackupSchedulesResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -506,8 +663,8 @@ export const restoreBackup: API.OperationMethod<
   RestoreBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<RestoreBackupRequest>,
-  output: __S(7) as any as S.Schema<RestoreBackupResponse>,
+  input: RestoreBackupRequest,
+  output: RestoreBackupResponse,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -521,8 +678,8 @@ export const restoreVolumeBackup: API.OperationMethod<
   RestoreVolumeBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<RestoreVolumeBackupRequest>,
-  output: __S(7) as any as S.Schema<RestoreVolumeBackupResponse>,
+  input: RestoreVolumeBackupRequest,
+  output: RestoreVolumeBackupResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -536,8 +693,8 @@ export const updateBackupSchedule: API.OperationMethod<
   UpdateBackupScheduleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<UpdateBackupScheduleRequest>,
-  output: __S(5) as any as S.Schema<BackupSchedule>,
+  input: UpdateBackupScheduleRequest,
+  output: BackupSchedule,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -556,7 +713,7 @@ function __c0(j: number): any {
           serverId: S.String.pipe(T.Label()),
           name: S.String,
           retentionPeriod: S.Number,
-          volumeIds: S.optional(__S(0)),
+          volumeIds: S.optional(CreateBackupRequestVolumeIdsList),
         }).pipe(
           T.Http({
             method: "POST",
@@ -577,7 +734,7 @@ function __c0(j: number): any {
         S.Struct({
           name: S.String,
           retentionPeriod: S.Number,
-          volumeIds: S.optional(__S(0)),
+          volumeIds: S.optional(BackupPropertiesVolumeIdsList),
         }),
       ).annotate({ identifier: "BackupProperties" });
     case 4:
@@ -586,7 +743,7 @@ function __c0(j: number): any {
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           serverId: S.String.pipe(T.Label()),
-          backupProperties: S.optional(__S(3)),
+          backupProperties: S.optional(BackupProperties),
           enabled: S.Boolean,
           name: S.String,
           rrule: S.String,
@@ -604,7 +761,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          backupProperties: S.optional(__S(3)),
+          backupProperties: S.optional(BackupProperties),
           enabled: S.Boolean,
           id: S.Number,
           name: S.String,
@@ -732,12 +889,12 @@ function __c1(j: number): any {
           lastRestoredAt: S.optional(S.String),
           lastRestoredVolumeId: S.optional(S.String),
           size: S.optional(S.Number),
-          status: S.optional(S.String),
+          status: S.optional(BackupVolumeBackupsItemStatus),
           volumeId: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackupVolumeBackupsItem" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(BackupVolumeBackupsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -747,8 +904,8 @@ function __c1(j: number): any {
           lastRestoredAt: S.optional(S.String),
           name: S.String,
           size: S.optional(S.Number),
-          status: S.String,
-          volumeBackups: S.optional(__S(14)),
+          status: BackupStatus,
+          volumeBackups: S.optional(BackupVolumeBackupsList),
         }),
       ).annotate({ identifier: "Backup" });
   }
@@ -821,7 +978,7 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          backupProperties: S.optional(__S(20)),
+          backupProperties: S.optional(BackupPolicyBackupProperties),
           default: S.optional(S.Boolean),
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
@@ -831,11 +988,11 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "BackupPolicy" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(BackupPolicy);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(22)),
+          items: S.optional(GetBackupPoliciesResponseItemsList),
         }),
       ).annotate({
         identifier: "GetBackupPoliciesResponse",
@@ -860,11 +1017,11 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListBackupsRequest" });
     case 1:
-      return S.Array(__S(15));
+      return S.Array(Backup);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(25)),
+          items: S.optional(GetBackupsListResponseItemsList),
         }),
       ).annotate({ identifier: "GetBackupsListResponse" });
     case 3:
@@ -885,11 +1042,11 @@ function __c3(j: number): any {
         identifier: "ListBackupSchedulesRequest",
       });
     case 4:
-      return S.Array(__S(5));
+      return S.Array(BackupSchedule);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(28)),
+          items: S.optional(GetBackupSchedulesResponseItemsList),
         }),
       ).annotate({
         identifier: "GetBackupSchedulesResponse",
@@ -902,7 +1059,7 @@ function __c3(j: number): any {
           serverId: S.String.pipe(T.Label()),
           backupId: S.String.pipe(T.Label()),
           startServerAfterRestore: S.Boolean,
-          volumeIds: S.optional(__S(0)),
+          volumeIds: S.optional(RestoreBackupRequestVolumeIdsList),
         }).pipe(
           T.Http({
             method: "POST",
@@ -943,7 +1100,7 @@ function __c4(j: number): any {
           region: S.String.pipe(T.Label()),
           serverId: S.String.pipe(T.Label()),
           backupScheduleId: S.String.pipe(T.Label()),
-          backupProperties: S.optional(__S(3)),
+          backupProperties: S.optional(BackupProperties),
           enabled: S.Boolean,
           name: S.String,
           rrule: S.String,
@@ -958,24 +1115,5 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "UpdateBackupScheduleRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -66,14 +64,22 @@ export class NotFound
 
 /** The request message for the CloseCase endpoint. */
 export interface CloseCaseRequest {}
+const CloseCaseRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CloseCaseRequest>;
+
 export interface CloseCasesRequest {
   /** Required. The name of the case to close. */
   name: string;
   /** Request body */
   body?: CloseCaseRequest;
 }
+const CloseCasesRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CloseCasesRequest>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StringList>;
+
 export type CasePriorityEnum = "PRIORITY_UNSPECIFIED" | "P0" | "P1" | "P2" | "P3" | "P4";
+const CasePriorityEnum = S.String;
+
 export type CaseStateEnum =
   | "STATE_UNSPECIFIED"
   | "NEW"
@@ -81,6 +87,8 @@ export type CaseStateEnum =
   | "ACTION_REQUIRED"
   | "SOLUTION_PROVIDED"
   | "CLOSED";
+const CaseStateEnum = S.String;
+
 /** A Case Classification represents the topic that a case is about. It's very important to use accurate classifications, because they're used to route your cases to specialists who can help you. A classification always has an ID that is its unique identifier. A valid ID is required when creating a case. */
 export interface CaseClassification {
   /** The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`. Classification IDs returned by `caseClassifications.search` are guaranteed to be valid for at least 6 months. If a given classification is deactiveated, it will immediately stop being returned. After 6 months, `case.create` requests using the classification ID will fail. */
@@ -88,6 +96,8 @@ export interface CaseClassification {
   /** A display name for the classification. The display name is not static and can change. To uniquely and consistently identify classifications, use the `CaseClassification.id` field. */
   displayName?: string;
 }
+const CaseClassification = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CaseClassification>;
+
 /** An Actor represents an entity that performed an action. For example, an actor could be a user who posted a comment on a support case, a user who uploaded an attachment, or a service account that created a support case. */
 export interface Actor {
   /** Output only. The username of the actor. It may look like an email or other format provided by the identity provider. If not provided, it is inferred from the credentials supplied. When a name is provided, a username must also be provided. If the user is a Google Support agent, this will not be set. */
@@ -99,6 +109,8 @@ export interface Actor {
   /** Output only. Whether the actor is a Google support actor. */
   googleSupport?: boolean;
 }
+const Actor = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Actor>;
+
 /** A Case is an object that contains the details of a support case. It contains fields for the time it was created, its priority, its classification, and more. Cases can also have comments and attachments that get added over time. A case is parented by a Google Cloud organization or project. Organizations are identified by a number, so the name of a case parented by an organization would look like this: ``` organizations/123/cases/456 ``` Projects have two unique identifiers, an ID and a number, and they look like this: ``` projects/abc/cases/456 ``` ``` projects/123/cases/456 ``` You can use either of them when calling the API. To learn more about project identifiers, see [AIP-2510](https://google.aip.dev/cloud/2510). */
 export interface Case {
   /** The email addresses to receive updates on this case. */
@@ -132,12 +144,16 @@ export interface Case {
   /** The user who created the case. This field is ignored on input. Note: The name and email will be obfuscated if the case was created by Google Support. */
   creator?: Actor;
 }
+const Case = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Case>;
+
 export interface CreateCasesRequest {
   /** Required. The name of the parent under which the case should be created. */
   parent: string;
   /** Request body */
   body?: Case;
 }
+const CreateCasesRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateCasesRequest>;
+
 /** A comment associated with a support case. Case comments are the primary way for Google Support to communicate with a user who has opened a case. When a user responds to Google Support, the user's responses also appear as comments. */
 export interface Comment {
   /** Output only. The time when the comment was created. */
@@ -151,22 +167,33 @@ export interface Comment {
   /** The full comment body. Maximum of 12800 characters. */
   body?: string;
 }
+const Comment = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Comment>;
+
 export interface CreateCasesCommentsRequest {
   /** Required. The name of the case to which the comment should be added. */
   parent: string;
   /** Request body */
   body?: Comment;
 }
+const CreateCasesCommentsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateCasesCommentsRequest>;
+
 export type SupportEventSubscriptionFailureReasonEnum =
   | "FAILURE_REASON_UNSPECIFIED"
   | "PERMISSION_DENIED"
   | "TOPIC_NOT_FOUND"
   | "OTHER";
+const SupportEventSubscriptionFailureReasonEnum = S.String;
+
 export type SupportEventSubscriptionStateEnum =
   | "STATE_UNSPECIFIED"
   | "WORKING"
   | "FAILING"
   | "DELETED";
+const SupportEventSubscriptionStateEnum = S.String;
+
 /** A support event subscription. You can also manage support event subscriptions using other tools: * [`gcloud support support-event-subscriptions`](/sdk/gcloud/reference/support/support-event-subscriptions) (or [`gcloud beta`](/sdk/gcloud/reference/beta/support/support-event-subscriptions) for beta) * [Terraform `google_cloud_support_support_event_subscription`](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloud_support_support_event_subscription) (or [google-beta provider](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/cloud_support_support_event_subscription) for beta) */
 export interface SupportEventSubscription {
   /** Required. The name of the Pub/Sub topic to publish notifications to. Format: projects/{project}/topics/{topic} */
@@ -186,20 +213,37 @@ export interface SupportEventSubscription {
   /** Identifier. The resource name of the support event subscription. */
   name?: string;
 }
+const SupportEventSubscription = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<SupportEventSubscription>;
+
 export interface CreateOrganizationsSupportEventSubscriptionsRequest {
   /** Required. The parent resource name where the support event subscription will be created. Format: organizations/{organization_id} */
   parent: string;
   /** Request body */
   body?: SupportEventSubscription;
 }
+const CreateOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateOrganizationsSupportEventSubscriptionsRequest>;
+
 export interface DeleteOrganizationsSupportEventSubscriptionsRequest {
   /** Required. The name of the support event subscription to delete. Format: organizations/{organization_id}/supportEventSubscriptions/{subscription_id} */
   name: string;
 }
+const DeleteOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DeleteOrganizationsSupportEventSubscriptionsRequest>;
+
 export interface DownloadMediaRequest {
   /** The name of the file attachment to download. */
   name: string;
 }
+const DownloadMediaRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DownloadMediaRequest>;
+
 export type MediaReferenceTypeEnum =
   | "PATH"
   | "BLOB_REF"
@@ -214,6 +258,8 @@ export type MediaReferenceTypeEnum =
   | "DIFF_UPLOAD_RESPONSE"
   | "COSMO_BINARY_REFERENCE"
   | "ARBITRARY_BYTES";
+const MediaReferenceTypeEnum = S.String;
+
 /** # gdata.* are outside protos with mising documentation */
 export interface DiffVersionResponse {
   /** # gdata.* are outside protos with mising documentation */
@@ -221,6 +267,8 @@ export interface DiffVersionResponse {
   /** # gdata.* are outside protos with mising documentation */
   objectSizeBytes?: string;
 }
+const DiffVersionResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DiffVersionResponse>;
+
 /** # gdata.* are outside protos with mising documentation */
 export interface ObjectId {
   /** # gdata.* are outside protos with mising documentation */
@@ -230,6 +278,8 @@ export interface ObjectId {
   /** # gdata.* are outside protos with mising documentation */
   bucketName?: string;
 }
+const ObjectId = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ObjectId>;
+
 /** # gdata.* are outside protos with mising documentation */
 export interface Blobstore2Info {
   /** # gdata.* are outside protos with mising documentation */
@@ -247,12 +297,16 @@ export interface Blobstore2Info {
   /** # gdata.* are outside protos with mising documentation */
   uploadFragmentListCreationInfo?: string;
 }
+const Blobstore2Info = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Blobstore2Info>;
+
 export type CompositeMediaReferenceTypeEnum =
   | "PATH"
   | "BLOB_REF"
   | "INLINE"
   | "BIGSTORE_REF"
   | "COSMO_BINARY_REFERENCE";
+const CompositeMediaReferenceTypeEnum = S.String;
+
 /** # gdata.* are outside protos with mising documentation */
 export interface CompositeMedia {
   /** # gdata.* are outside protos with mising documentation */
@@ -278,12 +332,18 @@ export interface CompositeMedia {
   /** # gdata.* are outside protos with mising documentation */
   blobRef?: string;
 }
+const CompositeMedia = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<CompositeMedia>;
+
 /** # gdata.* are outside protos with mising documentation */
 export interface DiffDownloadResponse {
   /** # gdata.* are outside protos with mising documentation */
   objectLocation?: CompositeMedia;
 }
+const DiffDownloadResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DiffDownloadResponse>;
+
 export type CompositeMediaList = Array<CompositeMedia>;
+const CompositeMediaList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CompositeMediaList>;
+
 /** # gdata.* are outside protos with mising documentation */
 export interface DiffChecksumsResponse {
   /** # gdata.* are outside protos with mising documentation */
@@ -297,6 +357,11 @@ export interface DiffChecksumsResponse {
   /** # gdata.* are outside protos with mising documentation */
   checksumsLocation?: CompositeMedia;
 }
+const DiffChecksumsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DiffChecksumsResponse>;
+
 /** # gdata.* are outside protos with mising documentation */
 export interface DiffUploadRequest {
   /** # gdata.* are outside protos with mising documentation */
@@ -306,6 +371,8 @@ export interface DiffUploadRequest {
   /** # gdata.* are outside protos with mising documentation */
   objectInfo?: CompositeMedia;
 }
+const DiffUploadRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DiffUploadRequest>;
+
 /** # gdata.* are outside protos with mising documentation */
 export interface DiffUploadResponse {
   /** # gdata.* are outside protos with mising documentation */
@@ -313,6 +380,8 @@ export interface DiffUploadResponse {
   /** # gdata.* are outside protos with mising documentation */
   objectVersion?: string;
 }
+const DiffUploadResponse = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<DiffUploadResponse>;
+
 /** # gdata.* are outside protos with mising documentation */
 export interface ContentTypeInfo {
   /** # gdata.* are outside protos with mising documentation */
@@ -330,6 +399,8 @@ export interface ContentTypeInfo {
   /** # gdata.* are outside protos with mising documentation */
   fromUrlPath?: string;
 }
+const ContentTypeInfo = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ContentTypeInfo>;
+
 /** # gdata.* are outside protos with mising documentation */
 export interface DownloadParameters {
   /** # gdata.* are outside protos with mising documentation */
@@ -337,6 +408,8 @@ export interface DownloadParameters {
   /** # gdata.* are outside protos with mising documentation */
   ignoreRange?: boolean;
 }
+const DownloadParameters = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DownloadParameters>;
+
 /** # gdata.* are outside protos with mising documentation */
 export interface Media {
   /** # gdata.* are outside protos with mising documentation */
@@ -402,11 +475,15 @@ export interface Media {
   /** # gdata.* are outside protos with mising documentation */
   downloadParameters?: DownloadParameters;
 }
+const Media = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Media>;
+
 export type EscalationReasonEnum =
   | "REASON_UNSPECIFIED"
   | "RESOLUTION_TIME"
   | "TECHNICAL_EXPERTISE"
   | "BUSINESS_IMPACT";
+const EscalationReasonEnum = S.String;
+
 /** An escalation of a support case. */
 export interface Escalation {
   /** Required. The reason why the Case is being escalated. */
@@ -414,17 +491,23 @@ export interface Escalation {
   /** Required. A free text description to accompany the `reason` field above. Provides additional context on why the case is being escalated. */
   justification?: string;
 }
+const Escalation = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Escalation>;
+
 /** The request message for the EscalateCase endpoint. */
 export interface EscalateCaseRequest {
   /** The escalation information to be sent with the escalation request. */
   escalation?: Escalation;
 }
+const EscalateCaseRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<EscalateCaseRequest>;
+
 export interface EscalateCasesRequest {
   /** Required. The name of the case to be escalated. */
   name: string;
   /** Request body */
   body?: EscalateCaseRequest;
 }
+const EscalateCasesRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<EscalateCasesRequest>;
+
 /** Request message for ExpungeSupportEventSubscription. */
 export type ExpungeSupportEventSubscriptionRequest = CloseCaseRequest;
 export interface ExpungeOrganizationsSupportEventSubscriptionsRequest {
@@ -433,16 +516,30 @@ export interface ExpungeOrganizationsSupportEventSubscriptionsRequest {
   /** Request body */
   body?: CloseCaseRequest;
 }
+const ExpungeOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ExpungeOrganizationsSupportEventSubscriptionsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = CloseCaseRequest as any as S.Schema<Empty>;
+
 export interface GetCasesRequest {
   /** Required. The full name of a case to be retrieved. */
   name: string;
 }
+const GetCasesRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetCasesRequest>;
+
 export interface GetCasesAttachmentsRequest {
   /** Required. The name of the attachment to get. */
   name: string;
 }
+const GetCasesAttachmentsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetCasesAttachmentsRequest>;
+
 /** An Attachment contains metadata about a file that was uploaded to a case - it is NOT a file itself. That being said, the name of an Attachment object can be used to download its accompanying file through the `media.download` endpoint. While attachments can be uploaded in the console at the same time as a comment, they're associated on a "case" level, not a "comment" level. */
 export interface Attachment {
   /** Output only. The user who uploaded the attachment. Note, the name and email will be obfuscated if the attachment was uploaded by Google support. */
@@ -458,14 +555,26 @@ export interface Attachment {
   /** Output only. The MIME type of the attachment (e.g. text/plain). */
   mimeType?: string;
 }
+const Attachment = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<Attachment>;
+
 export interface GetCasesCommentsRequest {
   /** Required. The name of the comment to retrieve. */
   name: string;
 }
+const GetCasesCommentsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetCasesCommentsRequest>;
+
 export interface GetOrganizationsSupportEventSubscriptionsRequest {
   /** Required. The name of the support event subscription to retrieve. Format: organizations/{organization_id}/supportEventSubscriptions/{subscription_id} */
   name: string;
 }
+const GetOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetOrganizationsSupportEventSubscriptionsRequest>;
+
 export interface ListCasesRequest {
   /** Required. The name of a parent to list cases under. */
   parent: string;
@@ -476,7 +585,11 @@ export interface ListCasesRequest {
   /** An expression used to filter cases. If it's an empty string, then no filtering happens. Otherwise, the endpoint returns the cases that match the filter. Expressions use the following fields separated by `AND` and specified with `=`: - `state`: Can be `OPEN` or `CLOSED`. - `priority`: Can be `P0`, `P1`, `P2`, `P3`, or `P4`. You can specify multiple values for priority using the `OR` operator. For example, `priority=P1 OR priority=P2`. - `creator.email`: The email address of the case creator. EXAMPLES: - `state=CLOSED` - `state=OPEN AND creator.email="tester@example.com"` - `state=OPEN AND (priority=P0 OR priority=P1)` */
   filter?: string;
 }
+const ListCasesRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ListCasesRequest>;
+
 export type CaseList = Array<Case>;
+const CaseList = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<CaseList>;
+
 /** The response message for the ListCases endpoint. */
 export interface ListCasesResponse {
   /** The list of cases associated with the parent after any filters have been applied. */
@@ -484,6 +597,8 @@ export interface ListCasesResponse {
   /** A token to retrieve the next page of results. Set this in the `page_token` field of subsequent `cases.list` requests. If unspecified, there are no more results to retrieve. */
   nextPageToken?: string;
 }
+const ListCasesResponse = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ListCasesResponse>;
+
 export interface ListCasesAttachmentsRequest {
   /** The maximum number of attachments fetched with each request. If not provided, the default is 10. The maximum page size that will be returned is 100. The size of each page can be smaller than the requested page size and can include zero. For example, you could request 100 attachments on one page, receive 0, and then on the next page, receive 90. */
   pageSize?: number;
@@ -492,7 +607,14 @@ export interface ListCasesAttachmentsRequest {
   /** Required. The name of the case for which attachments should be listed. */
   parent: string;
 }
+const ListCasesAttachmentsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListCasesAttachmentsRequest>;
+
 export type AttachmentList = Array<Attachment>;
+const AttachmentList = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<AttachmentList>;
+
 /** The response message for the ListAttachments endpoint. */
 export interface ListAttachmentsResponse {
   /** A token to retrieve the next page of results. Set this in the `page_token` field of subsequent `cases.attachments.list` requests. If unspecified, there are no more results to retrieve. */
@@ -500,6 +622,11 @@ export interface ListAttachmentsResponse {
   /** The list of attachments associated with a case. */
   attachments?: AttachmentList;
 }
+const ListAttachmentsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListAttachmentsResponse>;
+
 export interface ListCasesCommentsRequest {
   /** Required. The name of the case for which to list comments. */
   parent: string;
@@ -508,7 +635,14 @@ export interface ListCasesCommentsRequest {
   /** The maximum number of comments to fetch. Defaults to 10. */
   pageSize?: number;
 }
+const ListCasesCommentsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListCasesCommentsRequest>;
+
 export type CommentList = Array<Comment>;
+const CommentList = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<CommentList>;
+
 /** The response message for the ListComments endpoint. */
 export interface ListCommentsResponse {
   /** List of the comments associated with the case. */
@@ -516,6 +650,8 @@ export interface ListCommentsResponse {
   /** A token to retrieve the next page of results. Set this in the `page_token` field of subsequent `cases.comments.list` requests. If unspecified, there are no more results to retrieve. */
   nextPageToken?: string;
 }
+const ListCommentsResponse = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ListCommentsResponse>;
+
 export interface ListOrganizationsSupportEventSubscriptionsRequest {
   /** Optional. Filter expression based on AIP-160. Supported fields: - pub_sub_topic - state Examples: - `pub_sub_topic="projects/example-project/topics/example-topic"` - `state=WORKING` - `pub_sub_topic="projects/example-project/topics/example-topic" AND state=WORKING` */
   filter?: string;
@@ -528,7 +664,17 @@ export interface ListOrganizationsSupportEventSubscriptionsRequest {
   /** Optional. A token identifying the page of results to return. If unspecified, the first page is retrieved. When paginating, all other parameters provided to `ListSupportEventSubscriptions` must match the call that provided the page token. */
   pageToken?: string;
 }
+const ListOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ListOrganizationsSupportEventSubscriptionsRequest>;
+
 export type SupportEventSubscriptionList = Array<SupportEventSubscription>;
+const SupportEventSubscriptionList = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<SupportEventSubscriptionList>;
+
 /** Response message for ListSupportEventSubscriptions. */
 export interface ListSupportEventSubscriptionsResponse {
   /** The support event subscriptions. */
@@ -536,6 +682,11 @@ export interface ListSupportEventSubscriptionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListSupportEventSubscriptionsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListSupportEventSubscriptionsResponse>;
+
 export interface PatchCasesRequest {
   /** A list of attributes of the case that should be updated. Supported values are `priority`, `display_name`, and `subscriber_email_addresses`. If no fields are specified, all supported fields are updated. Be careful - if you do not provide a field mask, then you might accidentally clear some fields. For example, if you leave the field mask empty and do not provide a value for `subscriber_email_addresses`, then `subscriber_email_addresses` is updated to empty. */
   updateMask?: string;
@@ -544,6 +695,8 @@ export interface PatchCasesRequest {
   /** Request body */
   body?: Case;
 }
+const PatchCasesRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<PatchCasesRequest>;
+
 export interface PatchOrganizationsSupportEventSubscriptionsRequest {
   /** Identifier. The resource name of the support event subscription. */
   name: string;
@@ -552,6 +705,11 @@ export interface PatchOrganizationsSupportEventSubscriptionsRequest {
   /** Request body */
   body?: SupportEventSubscription;
 }
+const PatchOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<PatchOrganizationsSupportEventSubscriptionsRequest>;
+
 export interface SearchCaseClassificationsRequest {
   /** The maximum number of classifications fetched with each request. */
   pageSize?: number;
@@ -560,7 +718,17 @@ export interface SearchCaseClassificationsRequest {
   /** An expression used to filter case classifications. If it's an empty string, then no filtering happens. Otherwise, case classifications will be returned that match the filter. */
   query?: string;
 }
+const SearchCaseClassificationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<SearchCaseClassificationsRequest>;
+
 export type CaseClassificationList = Array<CaseClassification>;
+const CaseClassificationList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<CaseClassificationList>;
+
 /** The response message for SearchCaseClassifications endpoint. */
 export interface SearchCaseClassificationsResponse {
   /** The classifications retrieved. */
@@ -568,6 +736,11 @@ export interface SearchCaseClassificationsResponse {
   /** A token to retrieve the next page of results. Set this in the `page_token` field of subsequent `caseClassifications.list` requests. If unspecified, there are no more results to retrieve. */
   nextPageToken?: string;
 }
+const SearchCaseClassificationsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<SearchCaseClassificationsResponse>;
+
 export interface SearchCasesRequest {
   /** A token identifying the page of results to return. If unspecified, the first page is retrieved. */
   pageToken?: string;
@@ -578,6 +751,8 @@ export interface SearchCasesRequest {
   /** The maximum number of cases fetched with each request. The default page size is 10. */
   pageSize?: number;
 }
+const SearchCasesRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<SearchCasesRequest>;
+
 /** The response message for the SearchCases endpoint. */
 export interface SearchCasesResponse {
   /** A token to retrieve the next page of results. Set this in the `page_token` field of subsequent `cases.search` requests. If unspecified, there are no more results to retrieve. */
@@ -585,6 +760,8 @@ export interface SearchCasesResponse {
   /** The list of cases associated with the parent after any filters have been applied. */
   cases?: CaseList;
 }
+const SearchCasesResponse = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<SearchCasesResponse>;
+
 /** Request message for UndeleteSupportEventSubscription. */
 export type UndeleteSupportEventSubscriptionRequest = CloseCaseRequest;
 export interface UndeleteOrganizationsSupportEventSubscriptionsRequest {
@@ -593,17 +770,29 @@ export interface UndeleteOrganizationsSupportEventSubscriptionsRequest {
   /** Request body */
   body?: CloseCaseRequest;
 }
+const UndeleteOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<UndeleteOrganizationsSupportEventSubscriptionsRequest>;
+
 /** The request message for the CreateAttachment endpoint. */
 export interface CreateAttachmentRequest {
   /** Required. The attachment to be created. */
   attachment?: Attachment;
 }
+const CreateAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreateAttachmentRequest>;
+
 export interface UploadMediaRequest {
   /** Required. The name of the case or Cloud resource to which the attachment should be attached. */
   parent: string;
   /** Request body */
   body?: CreateAttachmentRequest;
 }
+const UploadMediaRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<UploadMediaRequest>;
+
 export type CloseCasesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Close a case. EXAMPLES: cURL: ```shell case="projects/some-project/cases/43595344" curl \ --request POST \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case:close" ``` Python: ```python import googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.cases().close( name="projects/some-project/cases/43595344" ) print(request.execute()) ``` */
 export const closeCases: API.OperationMethod<
@@ -612,8 +801,8 @@ export const closeCases: API.OperationMethod<
   CloseCasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CloseCasesRequest>,
-  output: __S(5) as any as S.Schema<Case>,
+  input: CloseCasesRequest,
+  output: Case,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -627,8 +816,8 @@ export const createCases: API.OperationMethod<
   CreateCasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateCasesRequest>,
-  output: __S(5) as any as S.Schema<Case>,
+  input: CreateCasesRequest,
+  output: Case,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -642,8 +831,8 @@ export const createCasesComments: API.OperationMethod<
   CreateCasesCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateCasesCommentsRequest>,
-  output: __S(7) as any as S.Schema<Comment>,
+  input: CreateCasesCommentsRequest,
+  output: Comment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -662,8 +851,8 @@ export const createOrganizationsSupportEventSubscriptions: API.OperationMethod<
   CreateOrganizationsSupportEventSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CreateOrganizationsSupportEventSubscriptionsRequest>,
-  output: __S(9) as any as S.Schema<SupportEventSubscription>,
+  input: CreateOrganizationsSupportEventSubscriptionsRequest,
+  output: SupportEventSubscription,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -682,8 +871,8 @@ export const deleteOrganizationsSupportEventSubscriptions: API.OperationMethod<
   DeleteOrganizationsSupportEventSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<DeleteOrganizationsSupportEventSubscriptionsRequest>,
-  output: __S(9) as any as S.Schema<SupportEventSubscription>,
+  input: DeleteOrganizationsSupportEventSubscriptionsRequest,
+  output: SupportEventSubscription,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -697,8 +886,8 @@ export const downloadMedia: API.OperationMethod<
   DownloadMediaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DownloadMediaRequest>,
-  output: __S(24) as any as S.Schema<Media>,
+  input: DownloadMediaRequest,
+  output: Media,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -712,8 +901,8 @@ export const escalateCases: API.OperationMethod<
   EscalateCasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<EscalateCasesRequest>,
-  output: __S(5) as any as S.Schema<Case>,
+  input: EscalateCasesRequest,
+  output: Case,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -732,8 +921,8 @@ export const expungeOrganizationsSupportEventSubscriptions: API.OperationMethod<
   ExpungeOrganizationsSupportEventSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<ExpungeOrganizationsSupportEventSubscriptionsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: ExpungeOrganizationsSupportEventSubscriptionsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -743,8 +932,8 @@ export type GetCasesError = NotFound | Forbidden | GcpOpError;
 /** Retrieve a case. EXAMPLES: cURL: ```shell case="projects/some-project/cases/16033687" curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case" ``` Python: ```python import googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.cases().get( name="projects/some-project/cases/43595344", ) print(request.execute()) ``` */
 export const getCases: API.OperationMethod<GetCasesRequest, Case, GetCasesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(29) as any as S.Schema<GetCasesRequest>,
-    output: __S(5) as any as S.Schema<Case>,
+    input: GetCasesRequest,
+    output: Case,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -758,8 +947,8 @@ export const getCasesAttachments: API.OperationMethod<
   GetCasesAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<GetCasesAttachmentsRequest>,
-  output: __S(31) as any as S.Schema<Attachment>,
+  input: GetCasesAttachmentsRequest,
+  output: Attachment,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -773,8 +962,8 @@ export const getCasesComments: API.OperationMethod<
   GetCasesCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<GetCasesCommentsRequest>,
-  output: __S(7) as any as S.Schema<Comment>,
+  input: GetCasesCommentsRequest,
+  output: Comment,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -788,8 +977,8 @@ export const getOrganizationsSupportEventSubscriptions: API.OperationMethod<
   GetOrganizationsSupportEventSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<GetOrganizationsSupportEventSubscriptionsRequest>,
-  output: __S(9) as any as S.Schema<SupportEventSubscription>,
+  input: GetOrganizationsSupportEventSubscriptionsRequest,
+  output: SupportEventSubscription,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -804,8 +993,8 @@ export const listCases: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(34) as any as S.Schema<ListCasesRequest>,
-  output: __S(36) as any as S.Schema<ListCasesResponse>,
+  input: ListCasesRequest,
+  output: ListCasesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -821,8 +1010,8 @@ export const listCasesAttachments: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(37) as any as S.Schema<ListCasesAttachmentsRequest>,
-  output: __S(39) as any as S.Schema<ListAttachmentsResponse>,
+  input: ListCasesAttachmentsRequest,
+  output: ListAttachmentsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -838,8 +1027,8 @@ export const listCasesComments: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCommentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(40) as any as S.Schema<ListCasesCommentsRequest>,
-  output: __S(42) as any as S.Schema<ListCommentsResponse>,
+  input: ListCasesCommentsRequest,
+  output: ListCommentsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -855,8 +1044,8 @@ export const listOrganizationsSupportEventSubscriptions: API.PaginatedOperationM
   GcpOpContext,
   ListSupportEventSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(43) as any as S.Schema<ListOrganizationsSupportEventSubscriptionsRequest>,
-  output: __S(45) as any as S.Schema<ListSupportEventSubscriptionsResponse>,
+  input: ListOrganizationsSupportEventSubscriptionsRequest,
+  output: ListSupportEventSubscriptionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -871,8 +1060,8 @@ export const patchCases: API.OperationMethod<
   PatchCasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<PatchCasesRequest>,
-  output: __S(5) as any as S.Schema<Case>,
+  input: PatchCasesRequest,
+  output: Case,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -891,8 +1080,8 @@ export const patchOrganizationsSupportEventSubscriptions: API.OperationMethod<
   PatchOrganizationsSupportEventSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<PatchOrganizationsSupportEventSubscriptionsRequest>,
-  output: __S(9) as any as S.Schema<SupportEventSubscription>,
+  input: PatchOrganizationsSupportEventSubscriptionsRequest,
+  output: SupportEventSubscription,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -907,8 +1096,8 @@ export const searchCaseClassifications: API.PaginatedOperationMethod<
   GcpOpContext,
   SearchCaseClassificationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(48) as any as S.Schema<SearchCaseClassificationsRequest>,
-  output: __S(50) as any as S.Schema<SearchCaseClassificationsResponse>,
+  input: SearchCaseClassificationsRequest,
+  output: SearchCaseClassificationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -924,8 +1113,8 @@ export const searchCases: API.PaginatedOperationMethod<
   GcpOpContext,
   SearchCasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(51) as any as S.Schema<SearchCasesRequest>,
-  output: __S(52) as any as S.Schema<SearchCasesResponse>,
+  input: SearchCasesRequest,
+  output: SearchCasesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -945,8 +1134,8 @@ export const undeleteOrganizationsSupportEventSubscriptions: API.OperationMethod
   UndeleteOrganizationsSupportEventSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<UndeleteOrganizationsSupportEventSubscriptionsRequest>,
-  output: __S(9) as any as S.Schema<SupportEventSubscription>,
+  input: UndeleteOrganizationsSupportEventSubscriptionsRequest,
+  output: SupportEventSubscription,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -960,8 +1149,8 @@ export const uploadMedia: API.OperationMethod<
   UploadMediaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<UploadMediaRequest>,
-  output: __S(31) as any as S.Schema<Attachment>,
+  input: UploadMediaRequest,
+  output: Attachment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -978,7 +1167,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(CloseCaseRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1008,28 +1197,28 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          subscriberEmailAddresses: S.optional(__S(2)),
+          subscriberEmailAddresses: S.optional(StringList),
           updateTime: S.optional(S.String),
           createTime: S.optional(S.String),
           escalated: S.optional(S.Boolean),
           displayName: S.optional(S.String),
           contactEmail: S.optional(S.String),
-          priority: S.optional(S.String),
+          priority: S.optional(CasePriorityEnum),
           testCase: S.optional(S.Boolean),
           languageCode: S.optional(S.String),
-          state: S.optional(S.String),
-          classification: S.optional(__S(3)),
+          state: S.optional(CaseStateEnum),
+          classification: S.optional(CaseClassification),
           name: S.optional(S.String),
           timeZone: S.optional(S.String),
           description: S.optional(S.String),
-          creator: S.optional(__S(4)),
+          creator: S.optional(Actor),
         }),
       ).annotate({ identifier: "Case" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(5).pipe(T.HttpBody())),
+          body: S.optional(Case.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1044,7 +1233,7 @@ function __c0(j: number): any {
           createTime: S.optional(S.String),
           plainTextBody: S.optional(S.String),
           name: S.optional(S.String),
-          creator: S.optional(__S(4)),
+          creator: S.optional(Actor),
           body: S.optional(S.String),
         }),
       ).annotate({ identifier: "Comment" });
@@ -1056,7 +1245,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(7).pipe(T.HttpBody())),
+          body: S.optional(Comment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1072,10 +1261,10 @@ function __c1(j: number): any {
         S.Struct({
           pubSubTopic: S.optional(S.String),
           purgeTime: S.optional(S.String),
-          failureReason: S.optional(S.String),
+          failureReason: S.optional(SupportEventSubscriptionFailureReasonEnum),
           deleteTime: S.optional(S.String),
           updateTime: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(SupportEventSubscriptionStateEnum),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -1084,7 +1273,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(9).pipe(T.HttpBody())),
+          body: S.optional(SupportEventSubscription.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1158,46 +1347,46 @@ function __c2(j: number): any {
           crc32cHash: S.optional(S.Number),
           length: S.optional(S.String),
           inline: S.optional(S.String),
-          objectId: S.optional(__S(14)),
+          objectId: S.optional(ObjectId),
           path: S.optional(S.String),
-          blobstore2Info: S.optional(__S(15)),
+          blobstore2Info: S.optional(Blobstore2Info),
           sha1Hash: S.optional(S.String),
           cosmoBinaryReference: S.optional(S.String),
           md5Hash: S.optional(S.String),
-          referenceType: S.optional(S.String),
+          referenceType: S.optional(CompositeMediaReferenceTypeEnum),
           blobRef: S.optional(S.String),
         }),
       ).annotate({ identifier: "CompositeMedia" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          objectLocation: S.optional(__S(16)),
+          objectLocation: S.optional(CompositeMedia),
         }),
       ).annotate({ identifier: "DiffDownloadResponse" });
     case 2:
-      return S.Array(__S(16));
+      return S.Array(CompositeMedia);
     case 3:
       return S.suspend(() =>
         S.Struct({
           objectVersion: S.optional(S.String),
-          objectLocation: S.optional(__S(16)),
+          objectLocation: S.optional(CompositeMedia),
           chunkSizeBytes: S.optional(S.String),
           objectSizeBytes: S.optional(S.String),
-          checksumsLocation: S.optional(__S(16)),
+          checksumsLocation: S.optional(CompositeMedia),
         }),
       ).annotate({ identifier: "DiffChecksumsResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          checksumsInfo: S.optional(__S(16)),
+          checksumsInfo: S.optional(CompositeMedia),
           objectVersion: S.optional(S.String),
-          objectInfo: S.optional(__S(16)),
+          objectInfo: S.optional(CompositeMedia),
         }),
       ).annotate({ identifier: "DiffUploadRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          originalObject: S.optional(__S(16)),
+          originalObject: S.optional(CompositeMedia),
           objectVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiffUploadResponse" });
@@ -1232,52 +1421,52 @@ function __c3(j: number): any {
           sha1Hash: S.optional(S.String),
           isPotentialRetry: S.optional(S.Boolean),
           sha256Hash: S.optional(S.String),
-          referenceType: S.optional(S.String),
+          referenceType: S.optional(MediaReferenceTypeEnum),
           algorithm: S.optional(S.String),
           path: S.optional(S.String),
           hashVerified: S.optional(S.Boolean),
           token: S.optional(S.String),
           length: S.optional(S.String),
-          diffVersionResponse: S.optional(__S(13)),
-          objectId: S.optional(__S(14)),
+          diffVersionResponse: S.optional(DiffVersionResponse),
+          objectId: S.optional(ObjectId),
           mediaId: S.optional(S.String),
-          diffDownloadResponse: S.optional(__S(17)),
-          compositeMedia: S.optional(__S(18)),
-          diffChecksumsResponse: S.optional(__S(19)),
+          diffDownloadResponse: S.optional(DiffDownloadResponse),
+          compositeMedia: S.optional(CompositeMediaList),
+          diffChecksumsResponse: S.optional(DiffChecksumsResponse),
           hash: S.optional(S.String),
-          diffUploadRequest: S.optional(__S(20)),
+          diffUploadRequest: S.optional(DiffUploadRequest),
           md5Hash: S.optional(S.String),
-          diffUploadResponse: S.optional(__S(21)),
+          diffUploadResponse: S.optional(DiffUploadResponse),
           timestamp: S.optional(S.String),
-          contentTypeInfo: S.optional(__S(22)),
+          contentTypeInfo: S.optional(ContentTypeInfo),
           contentType: S.optional(S.String),
           crc32cHash: S.optional(S.Number),
           bigstoreObjectRef: S.optional(S.String),
-          blobstore2Info: S.optional(__S(15)),
+          blobstore2Info: S.optional(Blobstore2Info),
           cosmoBinaryReference: S.optional(S.String),
           filename: S.optional(S.String),
           blobRef: S.optional(S.String),
-          downloadParameters: S.optional(__S(23)),
+          downloadParameters: S.optional(DownloadParameters),
         }),
       ).annotate({ identifier: "Media" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          reason: S.optional(S.String),
+          reason: S.optional(EscalationReasonEnum),
           justification: S.optional(S.String),
         }),
       ).annotate({ identifier: "Escalation" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          escalation: S.optional(__S(25)),
+          escalation: S.optional(Escalation),
         }),
       ).annotate({ identifier: "EscalateCaseRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(26).pipe(T.HttpBody())),
+          body: S.optional(EscalateCaseRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1290,7 +1479,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(CloseCaseRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1330,7 +1519,7 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          creator: S.optional(__S(4)),
+          creator: S.optional(Actor),
           sizeBytes: S.optional(S.String),
           name: S.optional(S.String),
           filename: S.optional(S.String),
@@ -1384,11 +1573,11 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "ListCasesRequest" });
     case 3:
-      return S.Array(__S(5));
+      return S.Array(Case);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          cases: S.optional(__S(35)),
+          cases: S.optional(CaseList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCasesResponse" });
@@ -1409,12 +1598,12 @@ function __c4(j: number): any {
         identifier: "ListCasesAttachmentsRequest",
       });
     case 6:
-      return S.Array(__S(31));
+      return S.Array(Attachment);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          attachments: S.optional(__S(38)),
+          attachments: S.optional(AttachmentList),
         }),
       ).annotate({ identifier: "ListAttachmentsResponse" });
   }
@@ -1436,11 +1625,11 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListCasesCommentsRequest" });
     case 1:
-      return S.Array(__S(7));
+      return S.Array(Comment);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          comments: S.optional(__S(41)),
+          comments: S.optional(CommentList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCommentsResponse" });
@@ -1463,11 +1652,11 @@ function __c5(j: number): any {
         identifier: "ListOrganizationsSupportEventSubscriptionsRequest",
       });
     case 4:
-      return S.Array(__S(9));
+      return S.Array(SupportEventSubscription);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          supportEventSubscriptions: S.optional(__S(44)),
+          supportEventSubscriptions: S.optional(SupportEventSubscriptionList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1478,7 +1667,7 @@ function __c5(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(5).pipe(T.HttpBody())),
+          body: S.optional(Case.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1492,7 +1681,7 @@ function __c5(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(9).pipe(T.HttpBody())),
+          body: S.optional(SupportEventSubscription.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1524,11 +1713,11 @@ function __c6(j: number): any {
         identifier: "SearchCaseClassificationsRequest",
       });
     case 1:
-      return S.Array(__S(3));
+      return S.Array(CaseClassification);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          caseClassifications: S.optional(__S(49)),
+          caseClassifications: S.optional(CaseClassificationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1553,14 +1742,14 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          cases: S.optional(__S(35)),
+          cases: S.optional(CaseList),
         }),
       ).annotate({ identifier: "SearchCasesResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(CloseCaseRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1574,14 +1763,14 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          attachment: S.optional(__S(31)),
+          attachment: S.optional(Attachment),
         }),
       ).annotate({ identifier: "CreateAttachmentRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(54).pipe(T.HttpBody())),
+          body: S.optional(CreateAttachmentRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1590,28 +1779,5 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UploadMediaRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

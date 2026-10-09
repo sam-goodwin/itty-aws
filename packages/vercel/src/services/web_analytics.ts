@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -70,12 +68,23 @@ export type AggregateEventsRequestByItemCase0 =
   | "flags"
   | "eventData";
 export type AggregateEventsRequestByItem = AggregateEventsRequestByItemCase0 | unknown;
+const AggregateEventsRequestByItem = S.Unknown as any as S.Schema<AggregateEventsRequestByItem>;
+
 /** Up to two dimensions used to break down results. At most one time granularity is allowed: hour, day, week, month, year. Other dimensions: country, deviceType, environment, requestPath, referrerHostname, osName, browserName, route, utmSource, utmMedium, utmCampaign, utmContent, utmTerm, eventName. JSON dimensions: flags, eventData. Used bare, they break down results by key, for example flags returns one group per flag name. With a key, they break down results by that key's value, for example eventData/plan. Wrap keys containing characters other than letters, digits, and underscores in single quotes, for example flags/'my-flag'. */
 export type AggregateEventsRequestByList = Array<AggregateEventsRequestByItem>;
+const AggregateEventsRequestByList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AggregateEventsRequestByList>;
+
 /** Timestamp in milliseconds, or a valid Date string. Selects data from (including) this date and time. Will be adjusted according to the desired time granularity. */
 export type AggregateEventsRequestSince = number | string;
+const AggregateEventsRequestSince = S.Unknown as any as S.Schema<AggregateEventsRequestSince>;
+
 /** Timestamp in milliseconds, or a valid Date string. Selects data until (including) this date. Will be adjusted according to the desired time granularity. */
 export type AggregateEventsRequestUntil = number | string;
+const AggregateEventsRequestUntil = S.Unknown as any as S.Schema<AggregateEventsRequestUntil>;
+
 export interface AggregateEventsRequest {
   /** The project identifier or the project name */
   projectId: string;
@@ -94,6 +103,11 @@ export interface AggregateEventsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const AggregateEventsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AggregateEventsRequest>;
+
 export interface AggregateEventsResponseDataCase0Item {
   browserName?: string;
   country?: string;
@@ -144,6 +158,8 @@ export type AggregateEventsResponseDataCase1List = Array<AggregateEventsResponse
 export type AggregateEventsResponseData =
   | AggregateEventsResponseDataCase0List
   | AggregateEventsResponseDataCase1List;
+const AggregateEventsResponseData = S.Unknown as any as S.Schema<AggregateEventsResponseData>;
+
 export type AggregateEventsResponseQueryGroupByItemCase1 =
   | "browserName"
   | "country"
@@ -164,8 +180,16 @@ export type AggregateEventsResponseQueryGroupByItemCase1 =
 export type AggregateEventsResponseQueryGroupByItem =
   | string
   | AggregateEventsResponseQueryGroupByItemCase1;
+const AggregateEventsResponseQueryGroupByItem =
+  S.Unknown as any as S.Schema<AggregateEventsResponseQueryGroupByItem>;
+
 export type AggregateEventsResponseQueryGroupByList =
   Array<AggregateEventsResponseQueryGroupByItem>;
+const AggregateEventsResponseQueryGroupByList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AggregateEventsResponseQueryGroupByList>;
+
 export interface AggregateEventsResponseQuery {
   filter?: string;
   groupBy?: AggregateEventsResponseQueryGroupByList;
@@ -173,11 +197,21 @@ export interface AggregateEventsResponseQuery {
   since: string;
   until: string;
 }
+const AggregateEventsResponseQuery = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AggregateEventsResponseQuery>;
+
 export interface AggregateEventsResponse {
   data: AggregateEventsResponseData;
   query: AggregateEventsResponseQuery;
   version: number;
 }
+const AggregateEventsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AggregateEventsResponse>;
+
 export type AggregatePageviewsRequestByItemCase0 =
   | "hour"
   | "day"
@@ -199,12 +233,24 @@ export type AggregatePageviewsRequestByItemCase0 =
   | "utmTerm"
   | "flags";
 export type AggregatePageviewsRequestByItem = AggregatePageviewsRequestByItemCase0 | unknown;
+const AggregatePageviewsRequestByItem =
+  S.Unknown as any as S.Schema<AggregatePageviewsRequestByItem>;
+
 /** Up to two dimensions used to break down results. At most one time granularity is allowed: hour, day, week, month, year. Other dimensions: country, deviceType, environment, requestPath, referrerHostname, osName, browserName, route, utmSource, utmMedium, utmCampaign, utmContent, utmTerm. JSON dimensions: flags. Used bare, it breaks down results by key, for example flags returns one group per flag name. With a key, it breaks down results by that key's value, for example flags/beta_banner. Wrap keys containing characters other than letters, digits, and underscores in single quotes, for example flags/'my-flag'. */
 export type AggregatePageviewsRequestByList = Array<AggregatePageviewsRequestByItem>;
+const AggregatePageviewsRequestByList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AggregatePageviewsRequestByList>;
+
 /** Timestamp in milliseconds, or a valid Date string. Selects data from (including) this date and time. Will be adjusted according to the desired time granularity. */
 export type AggregatePageviewsRequestSince = number | string;
+const AggregatePageviewsRequestSince = S.Unknown as any as S.Schema<AggregatePageviewsRequestSince>;
+
 /** Timestamp in milliseconds, or a valid Date string. Selects data until (including) this date. Will be adjusted according to the desired time granularity. */
 export type AggregatePageviewsRequestUntil = number | string;
+const AggregatePageviewsRequestUntil = S.Unknown as any as S.Schema<AggregatePageviewsRequestUntil>;
+
 export interface AggregatePageviewsRequest {
   /** The project identifier or the project name */
   projectId: string;
@@ -223,6 +269,11 @@ export interface AggregatePageviewsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const AggregatePageviewsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AggregatePageviewsRequest>;
+
 export interface AggregatePageviewsResponseDataCase0Item {
   browserName?: string;
   country?: string;
@@ -271,6 +322,8 @@ export type AggregatePageviewsResponseDataCase1List =
 export type AggregatePageviewsResponseData =
   | AggregatePageviewsResponseDataCase0List
   | AggregatePageviewsResponseDataCase1List;
+const AggregatePageviewsResponseData = S.Unknown as any as S.Schema<AggregatePageviewsResponseData>;
+
 export type AggregatePageviewsResponseQueryGroupByItemCase1 =
   | "browserName"
   | "country"
@@ -289,8 +342,16 @@ export type AggregatePageviewsResponseQueryGroupByItemCase1 =
 export type AggregatePageviewsResponseQueryGroupByItem =
   | string
   | AggregatePageviewsResponseQueryGroupByItemCase1;
+const AggregatePageviewsResponseQueryGroupByItem =
+  S.Unknown as any as S.Schema<AggregatePageviewsResponseQueryGroupByItem>;
+
 export type AggregatePageviewsResponseQueryGroupByList =
   Array<AggregatePageviewsResponseQueryGroupByItem>;
+const AggregatePageviewsResponseQueryGroupByList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AggregatePageviewsResponseQueryGroupByList>;
+
 export interface AggregatePageviewsResponseQuery {
   filter?: string;
   groupBy?: AggregatePageviewsResponseQueryGroupByList;
@@ -298,15 +359,29 @@ export interface AggregatePageviewsResponseQuery {
   since: string;
   until: string;
 }
+const AggregatePageviewsResponseQuery = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AggregatePageviewsResponseQuery>;
+
 export interface AggregatePageviewsResponse {
   data: AggregatePageviewsResponseData;
   query: AggregatePageviewsResponseQuery;
   version: number;
 }
+const AggregatePageviewsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<AggregatePageviewsResponse>;
+
 /** Timestamp in milliseconds, or a valid Date string. Selects data from (including) this date and time. Will be adjusted according to the desired time granularity. */
 export type CountEventsRequestSince = number | string;
+const CountEventsRequestSince = S.Unknown as any as S.Schema<CountEventsRequestSince>;
+
 /** Timestamp in milliseconds, or a valid Date string. Selects data until (including) this date. Will be adjusted according to the desired time granularity. */
 export type CountEventsRequestUntil = number | string;
+const CountEventsRequestUntil = S.Unknown as any as S.Schema<CountEventsRequestUntil>;
+
 export interface CountEventsRequest {
   /** The project identifier or the project name */
   projectId: string;
@@ -321,6 +396,8 @@ export interface CountEventsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const CountEventsRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CountEventsRequest>;
+
 export type CountEventsResponseDataCase0 = AggregateEventsResponseDataCase1Item;
 export interface CountEventsResponseDataCase1 {
   count: number;
@@ -329,20 +406,33 @@ export interface CountEventsResponseDataCase1 {
 export type CountEventsResponseData =
   | AggregateEventsResponseDataCase1Item
   | CountEventsResponseDataCase1;
+const CountEventsResponseData = S.Unknown as any as S.Schema<CountEventsResponseData>;
+
 export interface CountEventsResponseQuery {
   filter?: string;
   since: string;
   until: string;
 }
+const CountEventsResponseQuery = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CountEventsResponseQuery>;
+
 export interface CountEventsResponse {
   data: CountEventsResponseData;
   query: CountEventsResponseQuery;
   version: number;
 }
+const CountEventsResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CountEventsResponse>;
+
 /** Timestamp in milliseconds, or a valid Date string. Selects data from (including) this date and time. Will be adjusted according to the desired time granularity. */
 export type CountPageviewsRequestSince = number | string;
+const CountPageviewsRequestSince = S.Unknown as any as S.Schema<CountPageviewsRequestSince>;
+
 /** Timestamp in milliseconds, or a valid Date string. Selects data until (including) this date. Will be adjusted according to the desired time granularity. */
 export type CountPageviewsRequestUntil = number | string;
+const CountPageviewsRequestUntil = S.Unknown as any as S.Schema<CountPageviewsRequestUntil>;
+
 export interface CountPageviewsRequest {
   /** The project identifier or the project name */
   projectId: string;
@@ -357,6 +447,11 @@ export interface CountPageviewsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const CountPageviewsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CountPageviewsRequest>;
+
 export type CountPageviewsResponseDataCase0 = AggregatePageviewsResponseDataCase1Item;
 export interface CountPageviewsResponseDataCase1 {
   pageviews: number;
@@ -365,26 +460,51 @@ export interface CountPageviewsResponseDataCase1 {
 export type CountPageviewsResponseData =
   | AggregatePageviewsResponseDataCase1Item
   | CountPageviewsResponseDataCase1;
+const CountPageviewsResponseData = S.Unknown as any as S.Schema<CountPageviewsResponseData>;
+
 export type CountPageviewsResponseQuery = CountEventsResponseQuery;
 export interface CountPageviewsResponse {
   data: CountPageviewsResponseData;
   query: CountEventsResponseQuery;
   version: number;
 }
+const CountPageviewsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CountPageviewsResponse>;
+
 export interface CreateSpeedInsightsToggleRequest {
   projectId: string;
   value: boolean;
 }
+const CreateSpeedInsightsToggleRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateSpeedInsightsToggleRequest>;
+
 export interface CreateSpeedInsightsToggleResponse {
   value: boolean;
 }
+const CreateSpeedInsightsToggleResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateSpeedInsightsToggleResponse>;
+
 export interface CreateWebInsightsToggleRequest {
   projectId: string;
   value: boolean;
 }
+const CreateWebInsightsToggleRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateWebInsightsToggleRequest>;
+
 export interface CreateWebInsightsToggleResponse {
   value: boolean;
 }
+const CreateWebInsightsToggleResponse =
+  CreateSpeedInsightsToggleResponse as any as S.Schema<CreateWebInsightsToggleResponse>;
+
 export type AggregateEventsError =
   | BadRequest
   | PaymentRequired
@@ -398,8 +518,8 @@ export const aggregateEvents: API.OperationMethod<
   AggregateEventsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AggregateEventsRequest>,
-  output: __S(4) as any as S.Schema<AggregateEventsResponse>,
+  input: AggregateEventsRequest,
+  output: AggregateEventsResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -418,8 +538,8 @@ export const aggregatePageviews: API.OperationMethod<
   AggregatePageviewsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<AggregatePageviewsRequest>,
-  output: __S(9) as any as S.Schema<AggregatePageviewsResponse>,
+  input: AggregatePageviewsRequest,
+  output: AggregatePageviewsResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -433,8 +553,8 @@ export const countEvents: API.OperationMethod<
   CountEventsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CountEventsRequest>,
-  output: __S(12) as any as S.Schema<CountEventsResponse>,
+  input: CountEventsRequest,
+  output: CountEventsResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -453,8 +573,8 @@ export const countPageviews: API.OperationMethod<
   CountPageviewsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CountPageviewsRequest>,
-  output: __S(14) as any as S.Schema<CountPageviewsResponse>,
+  input: CountPageviewsRequest,
+  output: CountPageviewsResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -472,8 +592,8 @@ export const createSpeedInsightsToggle: API.OperationMethod<
   CreateSpeedInsightsToggleError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<CreateSpeedInsightsToggleRequest>,
-  output: __S(16) as any as S.Schema<CreateSpeedInsightsToggleResponse>,
+  input: CreateSpeedInsightsToggleRequest,
+  output: CreateSpeedInsightsToggleResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -486,8 +606,8 @@ export const createWebInsightsToggle: API.OperationMethod<
   CreateWebInsightsToggleError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<CreateWebInsightsToggleRequest>,
-  output: __S(16) as any as S.Schema<CreateWebInsightsToggleResponse>,
+  input: CreateWebInsightsToggleRequest,
+  output: CreateWebInsightsToggleResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -497,14 +617,14 @@ export const createWebInsightsToggle: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Unknown);
+      return S.Array(AggregateEventsRequestByItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Query()),
-          by: __S(0).pipe(T.Query()),
-          since: S.Unknown.pipe(T.Query()),
-          until: S.Unknown.pipe(T.Query()),
+          by: AggregateEventsRequestByList.pipe(T.Query()),
+          since: AggregateEventsRequestSince.pipe(T.Query()),
+          until: AggregateEventsRequestUntil.pipe(T.Query()),
           limit: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
@@ -514,12 +634,12 @@ function __c0(j: number): any {
         ),
       ).annotate({ identifier: "AggregateEventsRequest" });
     case 2:
-      return S.Array(S.Unknown);
+      return S.Array(AggregateEventsResponseQueryGroupByItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String),
-          groupBy: S.optional(__S(2)),
+          groupBy: S.optional(AggregateEventsResponseQueryGroupByList),
           limit: S.Number,
           since: S.String,
           until: S.String,
@@ -530,20 +650,20 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.Unknown,
-          query: __S(3),
+          data: AggregateEventsResponseData,
+          query: AggregateEventsResponseQuery,
           version: S.Number,
         }),
       ).annotate({ identifier: "AggregateEventsResponse" });
     case 5:
-      return S.Array(S.Unknown);
+      return S.Array(AggregatePageviewsRequestByItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Query()),
-          by: __S(5).pipe(T.Query()),
-          since: S.Unknown.pipe(T.Query()),
-          until: S.Unknown.pipe(T.Query()),
+          by: AggregatePageviewsRequestByList.pipe(T.Query()),
+          since: AggregatePageviewsRequestSince.pipe(T.Query()),
+          until: AggregatePageviewsRequestUntil.pipe(T.Query()),
           limit: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
@@ -555,7 +675,7 @@ function __c0(j: number): any {
         identifier: "AggregatePageviewsRequest",
       });
     case 7:
-      return S.Array(S.Unknown);
+      return S.Array(AggregatePageviewsResponseQueryGroupByItem);
   }
 }
 function __c1(j: number): any {
@@ -564,7 +684,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String),
-          groupBy: S.optional(__S(7)),
+          groupBy: S.optional(AggregatePageviewsResponseQueryGroupByList),
           limit: S.Number,
           since: S.String,
           until: S.String,
@@ -575,8 +695,8 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: S.Unknown,
-          query: __S(8),
+          data: AggregatePageviewsResponseData,
+          query: AggregatePageviewsResponseQuery,
           version: S.Number,
         }),
       ).annotate({
@@ -586,8 +706,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Query()),
-          since: S.optional(S.Unknown.pipe(T.Query())),
-          until: S.optional(S.Unknown.pipe(T.Query())),
+          since: S.optional(CountEventsRequestSince.pipe(T.Query())),
+          until: S.optional(CountEventsRequestUntil.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
@@ -604,8 +724,8 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.Unknown,
-          query: __S(11),
+          data: CountEventsResponseData,
+          query: CountEventsResponseQuery,
           version: S.Number,
         }),
       ).annotate({ identifier: "CountEventsResponse" });
@@ -613,8 +733,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Query()),
-          since: S.optional(S.Unknown.pipe(T.Query())),
-          until: S.optional(S.Unknown.pipe(T.Query())),
+          since: S.optional(CountPageviewsRequestSince.pipe(T.Query())),
+          until: S.optional(CountPageviewsRequestUntil.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
@@ -623,8 +743,8 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: S.Unknown,
-          query: __S(11),
+          data: CountPageviewsResponseData,
+          query: CountEventsResponseQuery,
           version: S.Number,
         }),
       ).annotate({ identifier: "CountPageviewsResponse" });
@@ -658,20 +778,5 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateWebInsightsToggleRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

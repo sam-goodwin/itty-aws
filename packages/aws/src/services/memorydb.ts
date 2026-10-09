@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://memorydb.amazonaws.com/doc/2021-01-01/");
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "MemoryDB",
@@ -630,39 +628,59 @@ export class UserQuotaExceededFault
     ),
   ).pipe(C.withBadRequestError) {}
 export type ClusterNameList = string[];
+const ClusterNameList = /*@__PURE__*/ __L.at(__c0, 0);
 export interface ServiceUpdateRequest {
   ServiceUpdateNameToApply?: string;
 }
+const ServiceUpdateRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ServiceUpdateRequest>;
 export interface BatchUpdateClusterRequest {
   ClusterNames: string[];
   ServiceUpdate?: ServiceUpdateRequest;
 }
+const BatchUpdateClusterRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<BatchUpdateClusterRequest>;
 export interface SlotMigration {
   ProgressPercentage?: number;
 }
+const SlotMigration = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SlotMigration>;
 export interface ReshardingStatus {
   SlotMigration?: SlotMigration;
 }
+const ReshardingStatus = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ReshardingStatus>;
 export type ACLName = string;
 export interface ACLsUpdateStatus {
   ACLToApply?: string;
 }
+const ACLsUpdateStatus = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ACLsUpdateStatus>;
 export type ServiceUpdateStatus =
   | "available"
   | "in-progress"
   | "complete"
   | "scheduled"
   | (string & {});
+const ServiceUpdateStatus = S.String;
+
 export interface PendingModifiedServiceUpdate {
   ServiceUpdateName?: string;
   Status?: ServiceUpdateStatus;
 }
+const PendingModifiedServiceUpdate = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<PendingModifiedServiceUpdate>;
 export type PendingModifiedServiceUpdateList = PendingModifiedServiceUpdate[];
+const PendingModifiedServiceUpdateList = /*@__PURE__*/ __L.at(__c0, 7);
 export interface ClusterPendingUpdates {
   Resharding?: ReshardingStatus;
   ACLs?: ACLsUpdateStatus;
   ServiceUpdates?: PendingModifiedServiceUpdate[];
 }
+const ClusterPendingUpdates = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ClusterPendingUpdates>;
 export interface Endpoint {
   Address?: string;
   Port?: number;
@@ -675,7 +693,9 @@ export interface Node {
   CreateTime?: Date;
   Endpoint?: Endpoint;
 }
+const Node = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Node>;
 export type NodeList = Node[];
+const NodeList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface Shard {
   Name?: string;
   Status?: string;
@@ -683,16 +703,31 @@ export interface Shard {
   Nodes?: Node[];
   NumberOfNodes?: number;
 }
+const Shard = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Shard>;
 export type ShardList = Shard[];
+const ShardList = /*@__PURE__*/ __L.at(__c1, 5);
 export type AZStatus = "singleaz" | "multiaz" | (string & {});
+const AZStatus = S.String;
+
 export interface SecurityGroupMembership {
   SecurityGroupId?: string;
   Status?: string;
 }
+const SecurityGroupMembership = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<SecurityGroupMembership>;
 export type SecurityGroupMembershipList = SecurityGroupMembership[];
+const SecurityGroupMembershipList = /*@__PURE__*/ __L.at(__c1, 7);
 export type DataTieringStatus = "true" | "false" | (string & {});
+const DataTieringStatus = S.String;
+
 export type NetworkType = "ipv4" | "ipv6" | "dual_stack" | (string & {});
+const NetworkType = S.String;
+
 export type IpDiscovery = "ipv4" | "ipv6" | (string & {});
+const IpDiscovery = S.String;
+
 export interface Cluster {
   Name?: string;
   Description?: string;
@@ -725,24 +760,34 @@ export interface Cluster {
   NetworkType?: NetworkType;
   IpDiscovery?: IpDiscovery;
 }
+const Cluster = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Cluster>;
 export type ClusterList = Cluster[];
+const ClusterList = /*@__PURE__*/ __L.at(__c2, 1);
 export interface UnprocessedCluster {
   ClusterName?: string;
   ErrorType?: string;
   ErrorMessage?: string;
 }
+const UnprocessedCluster = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<UnprocessedCluster>;
 export type UnprocessedClusterList = UnprocessedCluster[];
+const UnprocessedClusterList = /*@__PURE__*/ __L.at(__c2, 3);
 export interface BatchUpdateClusterResponse {
   ProcessedClusters?: Cluster[];
   UnprocessedClusters?: UnprocessedCluster[];
 }
+const BatchUpdateClusterResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<BatchUpdateClusterResponse>;
 export type TargetBucket = string;
 export type KmsKeyId = string;
 export interface Tag {
   Key?: string;
   Value?: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Tag>;
 export type TagList = Tag[];
+const TagList = /*@__PURE__*/ __L.at(__c2, 6);
 export interface CopySnapshotRequest {
   SourceSnapshotName: string;
   TargetSnapshotName: string;
@@ -750,17 +795,21 @@ export interface CopySnapshotRequest {
   KmsKeyId?: string;
   Tags?: Tag[];
 }
+const CopySnapshotRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<CopySnapshotRequest>;
 export interface ShardConfiguration {
   Slots?: string;
   ReplicaCount?: number;
 }
+const ShardConfiguration = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ShardConfiguration>;
 export interface ShardDetail {
   Name?: string;
   Configuration?: ShardConfiguration;
   Size?: string;
   SnapshotCreationTime?: Date;
 }
+const ShardDetail = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ShardDetail>;
 export type ShardDetails = ShardDetail[];
+const ShardDetails = /*@__PURE__*/ __L.at(__c3, 2);
 export interface ClusterConfiguration {
   Name?: string;
   Description?: string;
@@ -780,6 +829,7 @@ export interface ClusterConfiguration {
   MultiRegionParameterGroupName?: string;
   MultiRegionClusterName?: string;
 }
+const ClusterConfiguration = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ClusterConfiguration>;
 export interface Snapshot {
   Name?: string;
   Status?: string;
@@ -789,22 +839,29 @@ export interface Snapshot {
   ClusterConfiguration?: ClusterConfiguration;
   DataTiering?: DataTieringStatus;
 }
+const Snapshot = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<Snapshot>;
 export interface CopySnapshotResponse {
   Snapshot?: Snapshot;
 }
+const CopySnapshotResponse = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CopySnapshotResponse>;
 export type UserName = string;
 export type UserNameListInput = string[];
+const UserNameListInput = ClusterNameList as any as S.Schema<UserNameListInput>;
 export interface CreateACLRequest {
   ACLName: string;
   UserNames?: string[];
   Tags?: Tag[];
 }
+const CreateACLRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<CreateACLRequest>;
 export type UserNameList = string[];
+const UserNameList = ClusterNameList as any as S.Schema<UserNameList>;
 export interface ACLPendingChanges {
   UserNamesToRemove?: string[];
   UserNamesToAdd?: string[];
 }
+const ACLPendingChanges = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ACLPendingChanges>;
 export type ACLClusterNameList = string[];
+const ACLClusterNameList = ClusterNameList as any as S.Schema<ACLClusterNameList>;
 export interface ACL {
   Name?: string;
   Status?: string;
@@ -814,11 +871,15 @@ export interface ACL {
   Clusters?: string[];
   ARN?: string;
 }
+const ACL = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ACL>;
 export interface CreateACLResponse {
   ACL?: ACL;
 }
+const CreateACLResponse = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<CreateACLResponse>;
 export type SecurityGroupIdsList = string[];
+const SecurityGroupIdsList = /*@__PURE__*/ __L.at(__c4, 2);
 export type SnapshotArnsList = string[];
+const SnapshotArnsList = /*@__PURE__*/ __L.at(__c4, 3);
 export interface CreateClusterRequest {
   ClusterName: string;
   NodeType: string;
@@ -847,9 +908,14 @@ export interface CreateClusterRequest {
   NetworkType?: NetworkType;
   IpDiscovery?: IpDiscovery;
 }
+const CreateClusterRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<CreateClusterRequest>;
 export interface CreateClusterResponse {
   Cluster?: Cluster;
 }
+const CreateClusterResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateClusterResponse>;
 export interface CreateMultiRegionClusterRequest {
   MultiRegionClusterNameSuffix: string;
   Description?: string;
@@ -861,13 +927,19 @@ export interface CreateMultiRegionClusterRequest {
   TLSEnabled?: boolean;
   Tags?: Tag[];
 }
+const CreateMultiRegionClusterRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateMultiRegionClusterRequest>;
 export interface RegionalCluster {
   ClusterName?: string;
   Region?: string;
   Status?: string;
   ARN?: string;
 }
+const RegionalCluster = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<RegionalCluster>;
 export type RegionalClusterList = RegionalCluster[];
+const RegionalClusterList = /*@__PURE__*/ __L.at(__c5, 0);
 export interface MultiRegionCluster {
   MultiRegionClusterName?: string;
   Description?: string;
@@ -881,50 +953,78 @@ export interface MultiRegionCluster {
   TLSEnabled?: boolean;
   ARN?: string;
 }
+const MultiRegionCluster = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<MultiRegionCluster>;
 export interface CreateMultiRegionClusterResponse {
   MultiRegionCluster?: MultiRegionCluster;
 }
+const CreateMultiRegionClusterResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<CreateMultiRegionClusterResponse>;
 export interface CreateParameterGroupRequest {
   ParameterGroupName: string;
   Family: string;
   Description?: string;
   Tags?: Tag[];
 }
+const CreateParameterGroupRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateParameterGroupRequest>;
 export interface ParameterGroup {
   Name?: string;
   Family?: string;
   Description?: string;
   ARN?: string;
 }
+const ParameterGroup = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ParameterGroup>;
 export interface CreateParameterGroupResponse {
   ParameterGroup?: ParameterGroup;
 }
+const CreateParameterGroupResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreateParameterGroupResponse>;
 export interface CreateSnapshotRequest {
   ClusterName: string;
   SnapshotName: string;
   KmsKeyId?: string;
   Tags?: Tag[];
 }
+const CreateSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CreateSnapshotRequest>;
 export interface CreateSnapshotResponse {
   Snapshot?: Snapshot;
 }
+const CreateSnapshotResponse = CopySnapshotResponse as any as S.Schema<CreateSnapshotResponse>;
 export type SubnetIdentifierList = string[];
+const SubnetIdentifierList = /*@__PURE__*/ __L.at(__c5, 7);
 export interface CreateSubnetGroupRequest {
   SubnetGroupName: string;
   Description?: string;
   SubnetIds: string[];
   Tags?: Tag[];
 }
+const CreateSubnetGroupRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreateSubnetGroupRequest>;
 export interface AvailabilityZone {
   Name?: string;
 }
+const AvailabilityZone = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<AvailabilityZone>;
 export type NetworkTypeList = NetworkType[];
+const NetworkTypeList = /*@__PURE__*/ __L.at(__c6, 2);
 export interface Subnet {
   Identifier?: string;
   AvailabilityZone?: AvailabilityZone;
   SupportedNetworkTypes?: NetworkType[];
 }
+const Subnet = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<Subnet>;
 export type SubnetList = Subnet[];
+const SubnetList = /*@__PURE__*/ __L.at(__c6, 4);
 export interface SubnetGroup {
   Name?: string;
   Description?: string;
@@ -933,15 +1033,23 @@ export interface SubnetGroup {
   ARN?: string;
   SupportedNetworkTypes?: NetworkType[];
 }
+const SubnetGroup = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<SubnetGroup>;
 export interface CreateSubnetGroupResponse {
   SubnetGroup?: SubnetGroup;
 }
+const CreateSubnetGroupResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreateSubnetGroupResponse>;
 export type InputAuthenticationType = "password" | "iam" | (string & {});
+const InputAuthenticationType = S.String;
+
 export type PasswordListInput = string[];
 export interface AuthenticationMode {
   Type?: InputAuthenticationType;
   Passwords?: Array<string | redacted.Redacted<string>>;
 }
+const AuthenticationMode = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<AuthenticationMode>;
 export type AccessString = string;
 export interface CreateUserRequest {
   UserName: string;
@@ -949,12 +1057,17 @@ export interface CreateUserRequest {
   AccessString: string;
   Tags?: Tag[];
 }
+const CreateUserRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<CreateUserRequest>;
 export type ACLNameList = string[];
+const ACLNameList = ClusterNameList as any as S.Schema<ACLNameList>;
 export type AuthenticationType = "password" | "no-password" | "iam" | (string & {});
+const AuthenticationType = S.String;
+
 export interface Authentication {
   Type?: AuthenticationType;
   PasswordCount?: number;
 }
+const Authentication = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<Authentication>;
 export interface User {
   Name?: string;
   Status?: string;
@@ -964,73 +1077,115 @@ export interface User {
   Authentication?: Authentication;
   ARN?: string;
 }
+const User = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<User>;
 export interface CreateUserResponse {
   User?: User;
 }
+const CreateUserResponse = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<CreateUserResponse>;
 export interface DeleteACLRequest {
   ACLName: string;
 }
+const DeleteACLRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<DeleteACLRequest>;
 export interface DeleteACLResponse {
   ACL?: ACL;
 }
+const DeleteACLResponse = CreateACLResponse as any as S.Schema<DeleteACLResponse>;
 export interface DeleteClusterRequest {
   ClusterName: string;
   MultiRegionClusterName?: string;
   FinalSnapshotName?: string;
 }
+const DeleteClusterRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<DeleteClusterRequest>;
 export interface DeleteClusterResponse {
   Cluster?: Cluster;
 }
+const DeleteClusterResponse = CreateClusterResponse as any as S.Schema<DeleteClusterResponse>;
 export interface DeleteMultiRegionClusterRequest {
   MultiRegionClusterName: string;
 }
+const DeleteMultiRegionClusterRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DeleteMultiRegionClusterRequest>;
 export interface DeleteMultiRegionClusterResponse {
   MultiRegionCluster?: MultiRegionCluster;
 }
+const DeleteMultiRegionClusterResponse =
+  CreateMultiRegionClusterResponse as any as S.Schema<DeleteMultiRegionClusterResponse>;
 export interface DeleteParameterGroupRequest {
   ParameterGroupName: string;
 }
+const DeleteParameterGroupRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<DeleteParameterGroupRequest>;
 export interface DeleteParameterGroupResponse {
   ParameterGroup?: ParameterGroup;
 }
+const DeleteParameterGroupResponse =
+  CreateParameterGroupResponse as any as S.Schema<DeleteParameterGroupResponse>;
 export interface DeleteSnapshotRequest {
   SnapshotName: string;
 }
+const DeleteSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DeleteSnapshotRequest>;
 export interface DeleteSnapshotResponse {
   Snapshot?: Snapshot;
 }
+const DeleteSnapshotResponse = CopySnapshotResponse as any as S.Schema<DeleteSnapshotResponse>;
 export interface DeleteSubnetGroupRequest {
   SubnetGroupName: string;
 }
+const DeleteSubnetGroupRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DeleteSubnetGroupRequest>;
 export interface DeleteSubnetGroupResponse {
   SubnetGroup?: SubnetGroup;
 }
+const DeleteSubnetGroupResponse =
+  CreateSubnetGroupResponse as any as S.Schema<DeleteSubnetGroupResponse>;
 export interface DeleteUserRequest {
   UserName: string;
 }
+const DeleteUserRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<DeleteUserRequest>;
 export interface DeleteUserResponse {
   User?: User;
 }
+const DeleteUserResponse = CreateUserResponse as any as S.Schema<DeleteUserResponse>;
 export interface DescribeACLsRequest {
   ACLName?: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeACLsRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<DescribeACLsRequest>;
 export type ACLList = ACL[];
+const ACLList = /*@__PURE__*/ __L.at(__c8, 4);
 export interface DescribeACLsResponse {
   ACLs?: ACL[];
   NextToken?: string;
 }
+const DescribeACLsResponse = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<DescribeACLsResponse>;
 export interface DescribeClustersRequest {
   ClusterName?: string;
   MaxResults?: number;
   NextToken?: string;
   ShowShardDetails?: boolean;
 }
+const DescribeClustersRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DescribeClustersRequest>;
 export interface DescribeClustersResponse {
   NextToken?: string;
   Clusters?: Cluster[];
 }
+const DescribeClustersResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DescribeClustersResponse>;
 export interface DescribeEngineVersionsRequest {
   Engine?: string;
   EngineVersion?: string;
@@ -1039,17 +1194,27 @@ export interface DescribeEngineVersionsRequest {
   NextToken?: string;
   DefaultOnly?: boolean;
 }
+const DescribeEngineVersionsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<DescribeEngineVersionsRequest>;
 export interface EngineVersionInfo {
   Engine?: string;
   EngineVersion?: string;
   EnginePatchVersion?: string;
   ParameterGroupFamily?: string;
 }
+const EngineVersionInfo = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<EngineVersionInfo>;
 export type EngineVersionInfoList = EngineVersionInfo[];
+const EngineVersionInfoList = /*@__PURE__*/ __L.at(__c9, 2);
 export interface DescribeEngineVersionsResponse {
   NextToken?: string;
   EngineVersions?: EngineVersionInfo[];
 }
+const DescribeEngineVersionsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<DescribeEngineVersionsResponse>;
 export type SourceType =
   | "node"
   | "parameter-group"
@@ -1058,6 +1223,8 @@ export type SourceType =
   | "user"
   | "acl"
   | (string & {});
+const SourceType = S.String;
+
 export interface DescribeEventsRequest {
   SourceName?: string;
   SourceType?: SourceType;
@@ -1067,50 +1234,86 @@ export interface DescribeEventsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeEventsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DescribeEventsRequest>;
 export interface Event {
   SourceName?: string;
   SourceType?: SourceType;
   Message?: string;
   Date?: Date;
 }
+const Event = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<Event>;
 export type EventList = Event[];
+const EventList = /*@__PURE__*/ __L.at(__c9, 6);
 export interface DescribeEventsResponse {
   NextToken?: string;
   Events?: Event[];
 }
+const DescribeEventsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<DescribeEventsResponse>;
 export interface DescribeMultiRegionClustersRequest {
   MultiRegionClusterName?: string;
   MaxResults?: number;
   NextToken?: string;
   ShowClusterDetails?: boolean;
 }
+const DescribeMultiRegionClustersRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<DescribeMultiRegionClustersRequest>;
 export type MultiRegionClusterList = MultiRegionCluster[];
+const MultiRegionClusterList = /*@__PURE__*/ __L.at(__c10, 1);
 export interface DescribeMultiRegionClustersResponse {
   NextToken?: string;
   MultiRegionClusters?: MultiRegionCluster[];
 }
+const DescribeMultiRegionClustersResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<DescribeMultiRegionClustersResponse>;
 export interface DescribeMultiRegionParameterGroupsRequest {
   MultiRegionParameterGroupName?: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeMultiRegionParameterGroupsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<DescribeMultiRegionParameterGroupsRequest>;
 export interface MultiRegionParameterGroup {
   Name?: string;
   Family?: string;
   Description?: string;
   ARN?: string;
 }
+const MultiRegionParameterGroup = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<MultiRegionParameterGroup>;
 export type MultiRegionParameterGroupList = MultiRegionParameterGroup[];
+const MultiRegionParameterGroupList = /*@__PURE__*/ __L.at(__c10, 5);
 export interface DescribeMultiRegionParameterGroupsResponse {
   NextToken?: string;
   MultiRegionParameterGroups?: MultiRegionParameterGroup[];
 }
+const DescribeMultiRegionParameterGroupsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<DescribeMultiRegionParameterGroupsResponse>;
 export interface DescribeMultiRegionParametersRequest {
   MultiRegionParameterGroupName: string;
   Source?: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeMultiRegionParametersRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<DescribeMultiRegionParametersRequest>;
 export interface MultiRegionParameter {
   Name?: string;
   Value?: string;
@@ -1120,26 +1323,48 @@ export interface MultiRegionParameter {
   AllowedValues?: string;
   MinimumEngineVersion?: string;
 }
+const MultiRegionParameter = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<MultiRegionParameter>;
 export type MultiRegionParametersList = MultiRegionParameter[];
+const MultiRegionParametersList = /*@__PURE__*/ __L.at(__c11, 1);
 export interface DescribeMultiRegionParametersResponse {
   NextToken?: string;
   MultiRegionParameters?: MultiRegionParameter[];
 }
+const DescribeMultiRegionParametersResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<DescribeMultiRegionParametersResponse>;
 export interface DescribeParameterGroupsRequest {
   ParameterGroupName?: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeParameterGroupsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<DescribeParameterGroupsRequest>;
 export type ParameterGroupList = ParameterGroup[];
+const ParameterGroupList = /*@__PURE__*/ __L.at(__c11, 4);
 export interface DescribeParameterGroupsResponse {
   NextToken?: string;
   ParameterGroups?: ParameterGroup[];
 }
+const DescribeParameterGroupsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<DescribeParameterGroupsResponse>;
 export interface DescribeParametersRequest {
   ParameterGroupName: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeParametersRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<DescribeParametersRequest>;
 export interface Parameter {
   Name?: string;
   Value?: string;
@@ -1148,11 +1373,17 @@ export interface Parameter {
   AllowedValues?: string;
   MinimumEngineVersion?: string;
 }
+const Parameter = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<Parameter>;
 export type ParametersList = Parameter[];
+const ParametersList = /*@__PURE__*/ __L.at(__c12, 0);
 export interface DescribeParametersResponse {
   NextToken?: string;
   Parameters?: Parameter[];
 }
+const DescribeParametersResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<DescribeParametersResponse>;
 export interface DescribeReservedNodesRequest {
   ReservationId?: string;
   ReservedNodesOfferingId?: string;
@@ -1162,11 +1393,17 @@ export interface DescribeReservedNodesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeReservedNodesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<DescribeReservedNodesRequest>;
 export interface RecurringCharge {
   RecurringChargeAmount?: number;
   RecurringChargeFrequency?: string;
 }
+const RecurringCharge = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<RecurringCharge>;
 export type RecurringChargeList = RecurringCharge[];
+const RecurringChargeList = /*@__PURE__*/ __L.at(__c12, 4);
 export interface ReservedNode {
   ReservationId?: string;
   ReservedNodesOfferingId?: string;
@@ -1180,11 +1417,17 @@ export interface ReservedNode {
   RecurringCharges?: RecurringCharge[];
   ARN?: string;
 }
+const ReservedNode = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<ReservedNode>;
 export type ReservedNodeList = ReservedNode[];
+const ReservedNodeList = /*@__PURE__*/ __L.at(__c12, 6);
 export interface DescribeReservedNodesResponse {
   NextToken?: string;
   ReservedNodes?: ReservedNode[];
 }
+const DescribeReservedNodesResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<DescribeReservedNodesResponse>;
 export interface DescribeReservedNodesOfferingsRequest {
   ReservedNodesOfferingId?: string;
   NodeType?: string;
@@ -1193,6 +1436,10 @@ export interface DescribeReservedNodesOfferingsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeReservedNodesOfferingsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<DescribeReservedNodesOfferingsRequest>;
 export interface ReservedNodesOffering {
   ReservedNodesOfferingId?: string;
   NodeType?: string;
@@ -1201,12 +1448,22 @@ export interface ReservedNodesOffering {
   OfferingType?: string;
   RecurringCharges?: RecurringCharge[];
 }
+const ReservedNodesOffering = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ReservedNodesOffering>;
 export type ReservedNodesOfferingList = ReservedNodesOffering[];
+const ReservedNodesOfferingList = /*@__PURE__*/ __L.at(__c13, 2);
 export interface DescribeReservedNodesOfferingsResponse {
   NextToken?: string;
   ReservedNodesOfferings?: ReservedNodesOffering[];
 }
+const DescribeReservedNodesOfferingsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<DescribeReservedNodesOfferingsResponse>;
 export type ServiceUpdateStatusList = ServiceUpdateStatus[];
+const ServiceUpdateStatusList = NetworkTypeList as any as S.Schema<ServiceUpdateStatusList>;
 export interface DescribeServiceUpdatesRequest {
   ServiceUpdateName?: string;
   ClusterNames?: string[];
@@ -1214,7 +1471,13 @@ export interface DescribeServiceUpdatesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeServiceUpdatesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<DescribeServiceUpdatesRequest>;
 export type ServiceUpdateType = "security-update" | (string & {});
+const ServiceUpdateType = S.String;
+
 export interface ServiceUpdate {
   ClusterName?: string;
   ServiceUpdateName?: string;
@@ -1226,11 +1489,17 @@ export interface ServiceUpdate {
   NodesUpdated?: string;
   AutoUpdateStartDate?: Date;
 }
+const ServiceUpdate = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<ServiceUpdate>;
 export type ServiceUpdateList = ServiceUpdate[];
+const ServiceUpdateList = /*@__PURE__*/ __L.at(__c13, 6);
 export interface DescribeServiceUpdatesResponse {
   NextToken?: string;
   ServiceUpdates?: ServiceUpdate[];
 }
+const DescribeServiceUpdatesResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<DescribeServiceUpdatesResponse>;
 export interface DescribeSnapshotsRequest {
   ClusterName?: string;
   SnapshotName?: string;
@@ -1239,115 +1508,200 @@ export interface DescribeSnapshotsRequest {
   MaxResults?: number;
   ShowDetail?: boolean;
 }
+const DescribeSnapshotsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<DescribeSnapshotsRequest>;
 export type SnapshotList = Snapshot[];
+const SnapshotList = /*@__PURE__*/ __L.at(__c14, 1);
 export interface DescribeSnapshotsResponse {
   NextToken?: string;
   Snapshots?: Snapshot[];
 }
+const DescribeSnapshotsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<DescribeSnapshotsResponse>;
 export interface DescribeSubnetGroupsRequest {
   SubnetGroupName?: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeSubnetGroupsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<DescribeSubnetGroupsRequest>;
 export type SubnetGroupList = SubnetGroup[];
+const SubnetGroupList = /*@__PURE__*/ __L.at(__c14, 4);
 export interface DescribeSubnetGroupsResponse {
   NextToken?: string;
   SubnetGroups?: SubnetGroup[];
 }
+const DescribeSubnetGroupsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<DescribeSubnetGroupsResponse>;
 export type FilterName = string;
 export type FilterValue = string;
 export type FilterValueList = string[];
+const FilterValueList = ClusterNameList as any as S.Schema<FilterValueList>;
 export interface Filter {
   Name: string;
   Values: string[];
 }
+const Filter = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
+const FilterList = /*@__PURE__*/ __L.at(__c14, 7);
 export interface DescribeUsersRequest {
   UserName?: string;
   Filters?: Filter[];
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeUsersRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<DescribeUsersRequest>;
 export type UserList = User[];
+const UserList = /*@__PURE__*/ __L.at(__c15, 1);
 export interface DescribeUsersResponse {
   Users?: User[];
   NextToken?: string;
 }
+const DescribeUsersResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<DescribeUsersResponse>;
 export interface FailoverShardRequest {
   ClusterName: string;
   ShardName: string;
 }
+const FailoverShardRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<FailoverShardRequest>;
 export interface FailoverShardResponse {
   Cluster?: Cluster;
 }
+const FailoverShardResponse = CreateClusterResponse as any as S.Schema<FailoverShardResponse>;
 export interface ListAllowedMultiRegionClusterUpdatesRequest {
   MultiRegionClusterName: string;
 }
+const ListAllowedMultiRegionClusterUpdatesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<ListAllowedMultiRegionClusterUpdatesRequest>;
 export type NodeTypeList = string[];
+const NodeTypeList = ClusterNameList as any as S.Schema<NodeTypeList>;
 export interface ListAllowedMultiRegionClusterUpdatesResponse {
   ScaleUpNodeTypes?: string[];
   ScaleDownNodeTypes?: string[];
 }
+const ListAllowedMultiRegionClusterUpdatesResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ListAllowedMultiRegionClusterUpdatesResponse>;
 export interface ListAllowedNodeTypeUpdatesRequest {
   ClusterName: string;
 }
+const ListAllowedNodeTypeUpdatesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<ListAllowedNodeTypeUpdatesRequest>;
 export interface ListAllowedNodeTypeUpdatesResponse {
   ScaleUpNodeTypes?: string[];
   ScaleDownNodeTypes?: string[];
 }
+const ListAllowedNodeTypeUpdatesResponse =
+  ListAllowedMultiRegionClusterUpdatesResponse as any as S.Schema<ListAllowedNodeTypeUpdatesResponse>;
 export interface ListTagsRequest {
   ResourceArn: string;
 }
+const ListTagsRequest = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<ListTagsRequest>;
 export interface ListTagsResponse {
   TagList?: Tag[];
 }
+const ListTagsResponse = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<ListTagsResponse>;
 export interface PurchaseReservedNodesOfferingRequest {
   ReservedNodesOfferingId: string;
   ReservationId?: string;
   NodeCount?: number;
   Tags?: Tag[];
 }
+const PurchaseReservedNodesOfferingRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<PurchaseReservedNodesOfferingRequest>;
 export interface PurchaseReservedNodesOfferingResponse {
   ReservedNode?: ReservedNode;
 }
+const PurchaseReservedNodesOfferingResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<PurchaseReservedNodesOfferingResponse>;
 export type ParameterNameList = string[];
+const ParameterNameList = ClusterNameList as any as S.Schema<ParameterNameList>;
 export interface ResetParameterGroupRequest {
   ParameterGroupName: string;
   AllParameters?: boolean;
   ParameterNames?: string[];
 }
+const ResetParameterGroupRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ResetParameterGroupRequest>;
 export interface ResetParameterGroupResponse {
   ParameterGroup?: ParameterGroup;
 }
+const ResetParameterGroupResponse =
+  CreateParameterGroupResponse as any as S.Schema<ResetParameterGroupResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {
   TagList?: Tag[];
 }
+const TagResourceResponse = ListTagsResponse as any as S.Schema<TagResourceResponse>;
 export type KeyList = string[];
+const KeyList = ClusterNameList as any as S.Schema<KeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {
   TagList?: Tag[];
 }
+const UntagResourceResponse = ListTagsResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateACLRequest {
   ACLName: string;
   UserNamesToAdd?: string[];
   UserNamesToRemove?: string[];
 }
+const UpdateACLRequest = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<UpdateACLRequest>;
 export interface UpdateACLResponse {
   ACL?: ACL;
 }
+const UpdateACLResponse = CreateACLResponse as any as S.Schema<UpdateACLResponse>;
 export interface ReplicaConfigurationRequest {
   ReplicaCount?: number;
 }
+const ReplicaConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ReplicaConfigurationRequest>;
 export interface ShardConfigurationRequest {
   ShardCount?: number;
 }
+const ShardConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<ShardConfigurationRequest>;
 export interface UpdateClusterRequest {
   ClusterName: string;
   Description?: string;
@@ -1366,10 +1720,17 @@ export interface UpdateClusterRequest {
   ACLName?: string;
   IpDiscovery?: IpDiscovery;
 }
+const UpdateClusterRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<UpdateClusterRequest>;
 export interface UpdateClusterResponse {
   Cluster?: Cluster;
 }
+const UpdateClusterResponse = CreateClusterResponse as any as S.Schema<UpdateClusterResponse>;
 export type UpdateStrategy = "coordinated" | "uncoordinated" | (string & {});
+const UpdateStrategy = S.String;
+
 export interface UpdateMultiRegionClusterRequest {
   MultiRegionClusterName: string;
   NodeType?: string;
@@ -1379,37 +1740,59 @@ export interface UpdateMultiRegionClusterRequest {
   MultiRegionParameterGroupName?: string;
   UpdateStrategy?: UpdateStrategy;
 }
+const UpdateMultiRegionClusterRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<UpdateMultiRegionClusterRequest>;
 export interface UpdateMultiRegionClusterResponse {
   MultiRegionCluster?: MultiRegionCluster;
 }
+const UpdateMultiRegionClusterResponse =
+  CreateMultiRegionClusterResponse as any as S.Schema<UpdateMultiRegionClusterResponse>;
 export interface ParameterNameValue {
   ParameterName?: string;
   ParameterValue?: string;
 }
+const ParameterNameValue = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<ParameterNameValue>;
 export type ParameterNameValueList = ParameterNameValue[];
+const ParameterNameValueList = /*@__PURE__*/ __L.at(__c17, 4);
 export interface UpdateParameterGroupRequest {
   ParameterGroupName: string;
   ParameterNameValues: ParameterNameValue[];
 }
+const UpdateParameterGroupRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<UpdateParameterGroupRequest>;
 export interface UpdateParameterGroupResponse {
   ParameterGroup?: ParameterGroup;
 }
+const UpdateParameterGroupResponse =
+  CreateParameterGroupResponse as any as S.Schema<UpdateParameterGroupResponse>;
 export interface UpdateSubnetGroupRequest {
   SubnetGroupName: string;
   Description?: string;
   SubnetIds?: string[];
 }
+const UpdateSubnetGroupRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<UpdateSubnetGroupRequest>;
 export interface UpdateSubnetGroupResponse {
   SubnetGroup?: SubnetGroup;
 }
+const UpdateSubnetGroupResponse =
+  CreateSubnetGroupResponse as any as S.Schema<UpdateSubnetGroupResponse>;
 export interface UpdateUserRequest {
   UserName: string;
   AuthenticationMode?: AuthenticationMode;
   AccessString?: string;
 }
+const UpdateUserRequest = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<UpdateUserRequest>;
 export interface UpdateUserResponse {
   User?: User;
 }
+const UpdateUserResponse = CreateUserResponse as any as S.Schema<UpdateUserResponse>;
 export type AwsQueryErrorMessage = string;
 export type ExceptionMessage = string;
 export type BatchUpdateClusterError =
@@ -1426,8 +1809,8 @@ export const batchUpdateCluster: API.OperationMethod<
   BatchUpdateClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<BatchUpdateClusterRequest>,
-  output: __S(20) as any as S.Schema<BatchUpdateClusterResponse>,
+  input: BatchUpdateClusterRequest,
+  output: BatchUpdateClusterResponse,
   errors: [
     InvalidParameterValueException,
     ServiceUpdateNotFoundFault,
@@ -1457,8 +1840,8 @@ export const copySnapshot: API.OperationMethod<
   CopySnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CopySnapshotRequest>,
-  output: __S(29) as any as S.Schema<CopySnapshotResponse>,
+  input: CopySnapshotRequest,
+  output: CopySnapshotResponse,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterValueException,
@@ -1492,8 +1875,8 @@ export const createACL: API.OperationMethod<
   CreateACLError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<CreateACLRequest>,
-  output: __S(33) as any as S.Schema<CreateACLResponse>,
+  input: CreateACLRequest,
+  output: CreateACLResponse,
   errors: [
     ACLAlreadyExistsFault,
     ACLQuotaExceededFault,
@@ -1537,8 +1920,8 @@ export const createCluster: API.OperationMethod<
   CreateClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<CreateClusterRequest>,
-  output: __S(37) as any as S.Schema<CreateClusterResponse>,
+  input: CreateClusterRequest,
+  output: CreateClusterResponse,
   errors: [
     ACLNotFoundFault,
     ClusterAlreadyExistsFault,
@@ -1581,8 +1964,8 @@ export const createMultiRegionCluster: API.OperationMethod<
   CreateMultiRegionClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<CreateMultiRegionClusterRequest>,
-  output: __S(42) as any as S.Schema<CreateMultiRegionClusterResponse>,
+  input: CreateMultiRegionClusterRequest,
+  output: CreateMultiRegionClusterResponse,
   errors: [
     ClusterQuotaForCustomerExceededFault,
     InvalidParameterCombinationException,
@@ -1615,8 +1998,8 @@ export const createParameterGroup: API.OperationMethod<
   CreateParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<CreateParameterGroupRequest>,
-  output: __S(45) as any as S.Schema<CreateParameterGroupResponse>,
+  input: CreateParameterGroupRequest,
+  output: CreateParameterGroupResponse,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterGroupStateFault,
@@ -1650,8 +2033,8 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<CreateSnapshotRequest>,
-  output: __S(29) as any as S.Schema<CreateSnapshotResponse>,
+  input: CreateSnapshotRequest,
+  output: CreateSnapshotResponse,
   errors: [
     ClusterNotFoundFault,
     InvalidClusterStateFault,
@@ -1688,8 +2071,8 @@ export const createSubnetGroup: API.OperationMethod<
   CreateSubnetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<CreateSubnetGroupRequest>,
-  output: __S(54) as any as S.Schema<CreateSubnetGroupResponse>,
+  input: CreateSubnetGroupRequest,
+  output: CreateSubnetGroupResponse,
   errors: [
     InvalidSubnet,
     ServiceLinkedRoleNotFoundFault,
@@ -1721,8 +2104,8 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<CreateUserRequest>,
-  output: __S(59) as any as S.Schema<CreateUserResponse>,
+  input: CreateUserRequest,
+  output: CreateUserResponse,
   errors: [
     DuplicateUserNameFault,
     InvalidParameterCombinationException,
@@ -1750,8 +2133,8 @@ export const deleteACL: API.OperationMethod<
   DeleteACLError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<DeleteACLRequest>,
-  output: __S(33) as any as S.Schema<DeleteACLResponse>,
+  input: DeleteACLRequest,
+  output: DeleteACLResponse,
   errors: [ACLNotFoundFault, InvalidACLStateFault, InvalidParameterValueException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1778,8 +2161,8 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<DeleteClusterRequest>,
-  output: __S(37) as any as S.Schema<DeleteClusterResponse>,
+  input: DeleteClusterRequest,
+  output: DeleteClusterResponse,
   errors: [
     ClusterNotFoundFault,
     InvalidClusterStateFault,
@@ -1807,8 +2190,8 @@ export const deleteMultiRegionCluster: API.OperationMethod<
   DeleteMultiRegionClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<DeleteMultiRegionClusterRequest>,
-  output: __S(42) as any as S.Schema<DeleteMultiRegionClusterResponse>,
+  input: DeleteMultiRegionClusterRequest,
+  output: DeleteMultiRegionClusterResponse,
   errors: [
     InvalidMultiRegionClusterStateFault,
     InvalidParameterValueException,
@@ -1836,8 +2219,8 @@ export const deleteParameterGroup: API.OperationMethod<
   DeleteParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<DeleteParameterGroupRequest>,
-  output: __S(45) as any as S.Schema<DeleteParameterGroupResponse>,
+  input: DeleteParameterGroupRequest,
+  output: DeleteParameterGroupResponse,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterGroupStateFault,
@@ -1866,8 +2249,8 @@ export const deleteSnapshot: API.OperationMethod<
   DeleteSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<DeleteSnapshotRequest>,
-  output: __S(29) as any as S.Schema<DeleteSnapshotResponse>,
+  input: DeleteSnapshotRequest,
+  output: DeleteSnapshotResponse,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterValueException,
@@ -1894,8 +2277,8 @@ export const deleteSubnetGroup: API.OperationMethod<
   DeleteSubnetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<DeleteSubnetGroupRequest>,
-  output: __S(54) as any as S.Schema<DeleteSubnetGroupResponse>,
+  input: DeleteSubnetGroupRequest,
+  output: DeleteSubnetGroupResponse,
   errors: [ServiceLinkedRoleNotFoundFault, SubnetGroupInUseFault, SubnetGroupNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1916,8 +2299,8 @@ export const deleteUser: API.OperationMethod<
   DeleteUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<DeleteUserRequest>,
-  output: __S(59) as any as S.Schema<DeleteUserResponse>,
+  input: DeleteUserRequest,
+  output: DeleteUserResponse,
   errors: [InvalidParameterValueException, InvalidUserStateFault, UserNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1938,8 +2321,8 @@ export const describeACLs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ACL
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(67) as any as S.Schema<DescribeACLsRequest>,
-  output: __S(69) as any as S.Schema<DescribeACLsResponse>,
+  input: DescribeACLsRequest,
+  output: DescribeACLsResponse,
   errors: [ACLNotFoundFault, InvalidParameterCombinationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1968,8 +2351,8 @@ export const describeClusters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Cluster
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(70) as any as S.Schema<DescribeClustersRequest>,
-  output: __S(71) as any as S.Schema<DescribeClustersResponse>,
+  input: DescribeClustersRequest,
+  output: DescribeClustersResponse,
   errors: [
     ClusterNotFoundFault,
     InvalidParameterCombinationException,
@@ -2002,8 +2385,8 @@ export const describeEngineVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EngineVersionInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(72) as any as S.Schema<DescribeEngineVersionsRequest>,
-  output: __S(75) as any as S.Schema<DescribeEngineVersionsResponse>,
+  input: DescribeEngineVersionsRequest,
+  output: DescribeEngineVersionsResponse,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterValueException,
@@ -2037,8 +2420,8 @@ export const describeEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Event
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(76) as any as S.Schema<DescribeEventsRequest>,
-  output: __S(79) as any as S.Schema<DescribeEventsResponse>,
+  input: DescribeEventsRequest,
+  output: DescribeEventsResponse,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterValueException,
@@ -2071,8 +2454,8 @@ export const describeMultiRegionClusters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MultiRegionCluster
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(80) as any as S.Schema<DescribeMultiRegionClustersRequest>,
-  output: __S(82) as any as S.Schema<DescribeMultiRegionClustersResponse>,
+  input: DescribeMultiRegionClustersRequest,
+  output: DescribeMultiRegionClustersResponse,
   errors: [
     ClusterNotFoundFault,
     InvalidParameterCombinationException,
@@ -2105,8 +2488,8 @@ export const describeMultiRegionParameterGroups: API.OperationMethod<
   DescribeMultiRegionParameterGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<DescribeMultiRegionParameterGroupsRequest>,
-  output: __S(86) as any as S.Schema<DescribeMultiRegionParameterGroupsResponse>,
+  input: DescribeMultiRegionParameterGroupsRequest,
+  output: DescribeMultiRegionParameterGroupsResponse,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterValueException,
@@ -2133,8 +2516,8 @@ export const describeMultiRegionParameters: API.OperationMethod<
   DescribeMultiRegionParametersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<DescribeMultiRegionParametersRequest>,
-  output: __S(90) as any as S.Schema<DescribeMultiRegionParametersResponse>,
+  input: DescribeMultiRegionParametersRequest,
+  output: DescribeMultiRegionParametersResponse,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterValueException,
@@ -2162,8 +2545,8 @@ export const describeParameterGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ParameterGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(91) as any as S.Schema<DescribeParameterGroupsRequest>,
-  output: __S(93) as any as S.Schema<DescribeParameterGroupsResponse>,
+  input: DescribeParameterGroupsRequest,
+  output: DescribeParameterGroupsResponse,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterValueException,
@@ -2197,8 +2580,8 @@ export const describeParameters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Parameter
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(94) as any as S.Schema<DescribeParametersRequest>,
-  output: __S(97) as any as S.Schema<DescribeParametersResponse>,
+  input: DescribeParametersRequest,
+  output: DescribeParametersResponse,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterValueException,
@@ -2232,8 +2615,8 @@ export const describeReservedNodes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReservedNode
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(98) as any as S.Schema<DescribeReservedNodesRequest>,
-  output: __S(103) as any as S.Schema<DescribeReservedNodesResponse>,
+  input: DescribeReservedNodesRequest,
+  output: DescribeReservedNodesResponse,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterValueException,
@@ -2267,8 +2650,8 @@ export const describeReservedNodesOfferings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReservedNodesOffering
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(104) as any as S.Schema<DescribeReservedNodesOfferingsRequest>,
-  output: __S(107) as any as S.Schema<DescribeReservedNodesOfferingsResponse>,
+  input: DescribeReservedNodesOfferingsRequest,
+  output: DescribeReservedNodesOfferingsResponse,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterValueException,
@@ -2300,8 +2683,8 @@ export const describeServiceUpdates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceUpdate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(108) as any as S.Schema<DescribeServiceUpdatesRequest>,
-  output: __S(111) as any as S.Schema<DescribeServiceUpdatesResponse>,
+  input: DescribeServiceUpdatesRequest,
+  output: DescribeServiceUpdatesResponse,
   errors: [InvalidParameterCombinationException, InvalidParameterValueException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2331,8 +2714,8 @@ export const describeSnapshots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Snapshot
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(112) as any as S.Schema<DescribeSnapshotsRequest>,
-  output: __S(114) as any as S.Schema<DescribeSnapshotsResponse>,
+  input: DescribeSnapshotsRequest,
+  output: DescribeSnapshotsResponse,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterValueException,
@@ -2364,8 +2747,8 @@ export const describeSubnetGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SubnetGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(115) as any as S.Schema<DescribeSubnetGroupsRequest>,
-  output: __S(117) as any as S.Schema<DescribeSubnetGroupsResponse>,
+  input: DescribeSubnetGroupsRequest,
+  output: DescribeSubnetGroupsResponse,
   errors: [ServiceLinkedRoleNotFoundFault, SubnetGroupNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2392,8 +2775,8 @@ export const describeUsers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   User
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(120) as any as S.Schema<DescribeUsersRequest>,
-  output: __S(122) as any as S.Schema<DescribeUsersResponse>,
+  input: DescribeUsersRequest,
+  output: DescribeUsersResponse,
   errors: [InvalidParameterCombinationException, UserNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2426,8 +2809,8 @@ export const failoverShard: API.OperationMethod<
   FailoverShardError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<FailoverShardRequest>,
-  output: __S(37) as any as S.Schema<FailoverShardResponse>,
+  input: FailoverShardRequest,
+  output: FailoverShardResponse,
   errors: [
     APICallRateForCustomerExceededFault,
     ClusterNotFoundFault,
@@ -2457,8 +2840,8 @@ export const listAllowedMultiRegionClusterUpdates: API.OperationMethod<
   ListAllowedMultiRegionClusterUpdatesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<ListAllowedMultiRegionClusterUpdatesRequest>,
-  output: __S(125) as any as S.Schema<ListAllowedMultiRegionClusterUpdatesResponse>,
+  input: ListAllowedMultiRegionClusterUpdatesRequest,
+  output: ListAllowedMultiRegionClusterUpdatesResponse,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterValueException,
@@ -2486,8 +2869,8 @@ export const listAllowedNodeTypeUpdates: API.OperationMethod<
   ListAllowedNodeTypeUpdatesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<ListAllowedNodeTypeUpdatesRequest>,
-  output: __S(125) as any as S.Schema<ListAllowedNodeTypeUpdatesResponse>,
+  input: ListAllowedNodeTypeUpdatesRequest,
+  output: ListAllowedNodeTypeUpdatesResponse,
   errors: [
     ClusterNotFoundFault,
     InvalidParameterCombinationException,
@@ -2523,8 +2906,8 @@ export const listTags: API.OperationMethod<
   ListTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<ListTagsRequest>,
-  output: __S(128) as any as S.Schema<ListTagsResponse>,
+  input: ListTagsRequest,
+  output: ListTagsResponse,
   errors: [
     ACLNotFoundFault,
     ClusterNotFoundFault,
@@ -2561,8 +2944,8 @@ export const purchaseReservedNodesOffering: API.OperationMethod<
   PurchaseReservedNodesOfferingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<PurchaseReservedNodesOfferingRequest>,
-  output: __S(130) as any as S.Schema<PurchaseReservedNodesOfferingResponse>,
+  input: PurchaseReservedNodesOfferingRequest,
+  output: PurchaseReservedNodesOfferingResponse,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterValueException,
@@ -2593,8 +2976,8 @@ export const resetParameterGroup: API.OperationMethod<
   ResetParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<ResetParameterGroupRequest>,
-  output: __S(45) as any as S.Schema<ResetParameterGroupResponse>,
+  input: ResetParameterGroupRequest,
+  output: ResetParameterGroupResponse,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterGroupStateFault,
@@ -2639,8 +3022,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<TagResourceRequest>,
-  output: __S(128) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     ACLNotFoundFault,
     ClusterNotFoundFault,
@@ -2693,8 +3076,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133) as any as S.Schema<UntagResourceRequest>,
-  output: __S(128) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     ACLNotFoundFault,
     ClusterNotFoundFault,
@@ -2733,8 +3116,8 @@ export const updateACL: API.OperationMethod<
   UpdateACLError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134) as any as S.Schema<UpdateACLRequest>,
-  output: __S(33) as any as S.Schema<UpdateACLResponse>,
+  input: UpdateACLRequest,
+  output: UpdateACLResponse,
   errors: [
     ACLNotFoundFault,
     DefaultUserRequired,
@@ -2776,8 +3159,8 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<UpdateClusterRequest>,
-  output: __S(37) as any as S.Schema<UpdateClusterResponse>,
+  input: UpdateClusterRequest,
+  output: UpdateClusterResponse,
   errors: [
     ACLNotFoundFault,
     ClusterNotFoundFault,
@@ -2817,8 +3200,8 @@ export const updateMultiRegionCluster: API.OperationMethod<
   UpdateMultiRegionClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<UpdateMultiRegionClusterRequest>,
-  output: __S(42) as any as S.Schema<UpdateMultiRegionClusterResponse>,
+  input: UpdateMultiRegionClusterRequest,
+  output: UpdateMultiRegionClusterResponse,
   errors: [
     InvalidMultiRegionClusterStateFault,
     InvalidParameterCombinationException,
@@ -2847,8 +3230,8 @@ export const updateParameterGroup: API.OperationMethod<
   UpdateParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141) as any as S.Schema<UpdateParameterGroupRequest>,
-  output: __S(45) as any as S.Schema<UpdateParameterGroupResponse>,
+  input: UpdateParameterGroupRequest,
+  output: UpdateParameterGroupResponse,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterGroupStateFault,
@@ -2878,8 +3261,8 @@ export const updateSubnetGroup: API.OperationMethod<
   UpdateSubnetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<UpdateSubnetGroupRequest>,
-  output: __S(54) as any as S.Schema<UpdateSubnetGroupResponse>,
+  input: UpdateSubnetGroupRequest,
+  output: UpdateSubnetGroupResponse,
   errors: [
     InvalidSubnet,
     ServiceLinkedRoleNotFoundFault,
@@ -2908,8 +3291,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143) as any as S.Schema<UpdateUserRequest>,
-  output: __S(59) as any as S.Schema<UpdateUserResponse>,
+  input: UpdateUserRequest,
+  output: UpdateUserResponse,
   errors: [
     InvalidParameterCombinationException,
     InvalidParameterValueException,
@@ -2933,8 +3316,8 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ClusterNames: __S(0),
-          ServiceUpdate: S.optional(__S(1)),
+          ClusterNames: ClusterNameList,
+          ServiceUpdate: S.optional(ServiceUpdateRequest),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "BatchUpdateClusterRequest",
@@ -2944,7 +3327,7 @@ function __c0(j: number): any {
         identifier: "SlotMigration",
       });
     case 4:
-      return S.suspend(() => S.Struct({ SlotMigration: S.optional(__S(3)) })).annotate({
+      return S.suspend(() => S.Struct({ SlotMigration: S.optional(SlotMigration) })).annotate({
         identifier: "ReshardingStatus",
       });
     case 5:
@@ -2955,18 +3338,18 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ServiceUpdateName: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(ServiceUpdateStatus),
         }),
       ).annotate({
         identifier: "PendingModifiedServiceUpdate",
       });
     case 7:
       return S.Array(
-        /*@__PURE__*/ __S(6)
-          .pipe(/*@__PURE__*/ T.XmlName("PendingModifiedServiceUpdate"))
-          .annotate({
-            identifier: "PendingModifiedServiceUpdate",
-          }),
+        /*@__PURE__*/ PendingModifiedServiceUpdate.pipe(
+          /*@__PURE__*/ T.XmlName("PendingModifiedServiceUpdate"),
+        ).annotate({
+          identifier: "PendingModifiedServiceUpdate",
+        }),
       );
   }
 }
@@ -2975,9 +3358,9 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Resharding: S.optional(__S(4)),
-          ACLs: S.optional(__S(5)),
-          ServiceUpdates: S.optional(__S(7)),
+          Resharding: S.optional(ReshardingStatus),
+          ACLs: S.optional(ACLsUpdateStatus),
+          ServiceUpdates: S.optional(PendingModifiedServiceUpdateList),
         }),
       ).annotate({ identifier: "ClusterPendingUpdates" });
     case 1:
@@ -2996,9 +3379,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "Node" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(10)
-          .pipe(/*@__PURE__*/ T.XmlName("Node"))
-          .annotate({ identifier: "Node" }),
+        /*@__PURE__*/ Node.pipe(/*@__PURE__*/ T.XmlName("Node")).annotate({ identifier: "Node" }),
       );
     case 4:
       return S.suspend(() =>
@@ -3006,13 +3387,13 @@ function __c1(j: number): any {
           Name: S.optional(S.String),
           Status: S.optional(S.String),
           Slots: S.optional(S.String),
-          Nodes: S.optional(__S(11)),
+          Nodes: S.optional(NodeList),
           NumberOfNodes: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Shard" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(12).pipe(/*@__PURE__*/ T.XmlName("Shard")).annotate({
+        /*@__PURE__*/ Shard.pipe(/*@__PURE__*/ T.XmlName("Shard")).annotate({
           identifier: "Shard",
         }),
       );
@@ -3021,7 +3402,7 @@ function __c1(j: number): any {
         S.Struct({ SecurityGroupId: S.optional(S.String), Status: S.optional(S.String) }),
       ).annotate({ identifier: "SecurityGroupMembership" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(SecurityGroupMembership);
   }
 }
 function __c2(j: number): any {
@@ -3032,11 +3413,11 @@ function __c2(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           Status: S.optional(S.String),
-          PendingUpdates: S.optional(__S(8)),
+          PendingUpdates: S.optional(ClusterPendingUpdates),
           MultiRegionClusterName: S.optional(S.String),
           NumberOfShards: S.optional(S.Number),
-          Shards: S.optional(__S(13)),
-          AvailabilityMode: S.optional(S.String),
+          Shards: S.optional(ShardList),
+          AvailabilityMode: S.optional(AZStatus),
           ClusterEndpoint: S.optional(Endpoint),
           NodeType: S.optional(S.String),
           Engine: S.optional(S.String),
@@ -3044,7 +3425,7 @@ function __c2(j: number): any {
           EnginePatchVersion: S.optional(S.String),
           ParameterGroupName: S.optional(S.String),
           ParameterGroupStatus: S.optional(S.String),
-          SecurityGroups: S.optional(__S(15)),
+          SecurityGroups: S.optional(SecurityGroupMembershipList),
           SubnetGroupName: S.optional(S.String),
           TLSEnabled: S.optional(S.Boolean),
           KmsKeyId: S.optional(S.String),
@@ -3056,14 +3437,14 @@ function __c2(j: number): any {
           SnapshotWindow: S.optional(S.String),
           ACLName: S.optional(S.String),
           AutoMinorVersionUpgrade: S.optional(S.Boolean),
-          DataTiering: S.optional(S.String),
-          NetworkType: S.optional(S.String),
-          IpDiscovery: S.optional(S.String),
+          DataTiering: S.optional(DataTieringStatus),
+          NetworkType: S.optional(NetworkType),
+          IpDiscovery: S.optional(IpDiscovery),
         }),
       ).annotate({ identifier: "Cluster" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(16).pipe(/*@__PURE__*/ T.XmlName("Cluster")).annotate({
+        /*@__PURE__*/ Cluster.pipe(/*@__PURE__*/ T.XmlName("Cluster")).annotate({
           identifier: "Cluster",
         }),
       );
@@ -3077,15 +3458,17 @@ function __c2(j: number): any {
       ).annotate({ identifier: "UnprocessedCluster" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(18).pipe(/*@__PURE__*/ T.XmlName("UnprocessedCluster")).annotate({
+        /*@__PURE__*/ UnprocessedCluster.pipe(
+          /*@__PURE__*/ T.XmlName("UnprocessedCluster"),
+        ).annotate({
           identifier: "UnprocessedCluster",
         }),
       );
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ProcessedClusters: S.optional(__S(17)),
-          UnprocessedClusters: S.optional(__S(19)),
+          ProcessedClusters: S.optional(ClusterList),
+          UnprocessedClusters: S.optional(UnprocessedClusterList),
         }).pipe(ns),
       ).annotate({
         identifier: "BatchUpdateClusterResponse",
@@ -3096,7 +3479,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "Tag" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(21).pipe(/*@__PURE__*/ T.XmlName("Tag")).annotate({ identifier: "Tag" }),
+        /*@__PURE__*/ Tag.pipe(/*@__PURE__*/ T.XmlName("Tag")).annotate({ identifier: "Tag" }),
       );
     case 7:
       return S.suspend(() =>
@@ -3105,7 +3488,7 @@ function __c2(j: number): any {
           TargetSnapshotName: S.String,
           TargetBucket: S.optional(S.String),
           KmsKeyId: S.optional(S.String),
-          Tags: S.optional(__S(22)),
+          Tags: S.optional(TagList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CopySnapshotRequest" });
   }
@@ -3120,13 +3503,13 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Configuration: S.optional(__S(24)),
+          Configuration: S.optional(ShardConfiguration),
           Size: S.optional(S.String),
           SnapshotCreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ShardDetail" });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(ShardDetail);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3144,7 +3527,7 @@ function __c3(j: number): any {
           SnapshotRetentionLimit: S.optional(S.Number),
           SnapshotWindow: S.optional(S.String),
           NumShards: S.optional(S.Number),
-          Shards: S.optional(__S(26)),
+          Shards: S.optional(ShardDetails),
           MultiRegionParameterGroupName: S.optional(S.String),
           MultiRegionClusterName: S.optional(S.String),
         }),
@@ -3157,27 +3540,27 @@ function __c3(j: number): any {
           Source: S.optional(S.String),
           KmsKeyId: S.optional(S.String),
           ARN: S.optional(S.String),
-          ClusterConfiguration: S.optional(__S(27)),
-          DataTiering: S.optional(S.String),
+          ClusterConfiguration: S.optional(ClusterConfiguration),
+          DataTiering: S.optional(DataTieringStatus),
         }),
       ).annotate({ identifier: "Snapshot" });
     case 5:
-      return S.suspend(() => S.Struct({ Snapshot: S.optional(__S(28)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Snapshot: S.optional(Snapshot) }).pipe(ns)).annotate({
         identifier: "CopySnapshotResponse",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
           ACLName: S.String,
-          UserNames: S.optional(__S(0)),
-          Tags: S.optional(__S(22)),
+          UserNames: S.optional(UserNameListInput),
+          Tags: S.optional(TagList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateACLRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          UserNamesToRemove: S.optional(__S(0)),
-          UserNamesToAdd: S.optional(__S(0)),
+          UserNamesToRemove: S.optional(UserNameList),
+          UserNamesToAdd: S.optional(UserNameList),
         }),
       ).annotate({ identifier: "ACLPendingChanges" });
   }
@@ -3189,15 +3572,15 @@ function __c4(j: number): any {
         S.Struct({
           Name: S.optional(S.String),
           Status: S.optional(S.String),
-          UserNames: S.optional(__S(0)),
+          UserNames: S.optional(UserNameList),
           MinimumEngineVersion: S.optional(S.String),
-          PendingChanges: S.optional(__S(31)),
-          Clusters: S.optional(__S(0)),
+          PendingChanges: S.optional(ACLPendingChanges),
+          Clusters: S.optional(ACLClusterNameList),
           ARN: S.optional(S.String),
         }),
       ).annotate({ identifier: "ACL" });
     case 1:
-      return S.suspend(() => S.Struct({ ACL: S.optional(__S(32)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ ACL: S.optional(ACL) }).pipe(ns)).annotate({
         identifier: "CreateACLResponse",
       });
     case 2:
@@ -3215,28 +3598,28 @@ function __c4(j: number): any {
           NumShards: S.optional(S.Number),
           NumReplicasPerShard: S.optional(S.Number),
           SubnetGroupName: S.optional(S.String),
-          SecurityGroupIds: S.optional(__S(34)),
+          SecurityGroupIds: S.optional(SecurityGroupIdsList),
           MaintenanceWindow: S.optional(S.String),
           Port: S.optional(S.Number),
           SnsTopicArn: S.optional(S.String),
           TLSEnabled: S.optional(S.Boolean),
           KmsKeyId: S.optional(S.String),
-          SnapshotArns: S.optional(__S(35)),
+          SnapshotArns: S.optional(SnapshotArnsList),
           SnapshotName: S.optional(S.String),
           SnapshotRetentionLimit: S.optional(S.Number),
-          Tags: S.optional(__S(22)),
+          Tags: S.optional(TagList),
           SnapshotWindow: S.optional(S.String),
           ACLName: S.String,
           Engine: S.optional(S.String),
           EngineVersion: S.optional(S.String),
           AutoMinorVersionUpgrade: S.optional(S.Boolean),
           DataTiering: S.optional(S.Boolean),
-          NetworkType: S.optional(S.String),
-          IpDiscovery: S.optional(S.String),
+          NetworkType: S.optional(NetworkType),
+          IpDiscovery: S.optional(IpDiscovery),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateClusterRequest" });
     case 5:
-      return S.suspend(() => S.Struct({ Cluster: S.optional(__S(16)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Cluster: S.optional(Cluster) }).pipe(ns)).annotate({
         identifier: "CreateClusterResponse",
       });
     case 6:
@@ -3250,7 +3633,7 @@ function __c4(j: number): any {
           MultiRegionParameterGroupName: S.optional(S.String),
           NumShards: S.optional(S.Number),
           TLSEnabled: S.optional(S.Boolean),
-          Tags: S.optional(__S(22)),
+          Tags: S.optional(TagList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateMultiRegionClusterRequest",
@@ -3270,7 +3653,7 @@ function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ __S(39).pipe(/*@__PURE__*/ T.XmlName("RegionalCluster")).annotate({
+        /*@__PURE__*/ RegionalCluster.pipe(/*@__PURE__*/ T.XmlName("RegionalCluster")).annotate({
           identifier: "RegionalCluster",
         }),
       );
@@ -3284,7 +3667,7 @@ function __c5(j: number): any {
           Engine: S.optional(S.String),
           EngineVersion: S.optional(S.String),
           NumberOfShards: S.optional(S.Number),
-          Clusters: S.optional(__S(40)),
+          Clusters: S.optional(RegionalClusterList),
           MultiRegionParameterGroupName: S.optional(S.String),
           TLSEnabled: S.optional(S.Boolean),
           ARN: S.optional(S.String),
@@ -3292,7 +3675,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "MultiRegionCluster" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ MultiRegionCluster: S.optional(__S(41)) }).pipe(ns),
+        S.Struct({ MultiRegionCluster: S.optional(MultiRegionCluster) }).pipe(ns),
       ).annotate({
         identifier: "CreateMultiRegionClusterResponse",
       });
@@ -3302,7 +3685,7 @@ function __c5(j: number): any {
           ParameterGroupName: S.String,
           Family: S.String,
           Description: S.optional(S.String),
-          Tags: S.optional(__S(22)),
+          Tags: S.optional(TagList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateParameterGroupRequest",
@@ -3317,7 +3700,9 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "ParameterGroup" });
     case 5:
-      return S.suspend(() => S.Struct({ ParameterGroup: S.optional(__S(44)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ ParameterGroup: S.optional(ParameterGroup) }).pipe(ns),
+      ).annotate({
         identifier: "CreateParameterGroupResponse",
       });
     case 6:
@@ -3326,7 +3711,7 @@ function __c5(j: number): any {
           ClusterName: S.String,
           SnapshotName: S.String,
           KmsKeyId: S.optional(S.String),
-          Tags: S.optional(__S(22)),
+          Tags: S.optional(TagList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateSnapshotRequest" });
     case 7:
@@ -3340,8 +3725,8 @@ function __c6(j: number): any {
         S.Struct({
           SubnetGroupName: S.String,
           Description: S.optional(S.String),
-          SubnetIds: __S(47),
-          Tags: S.optional(__S(22)),
+          SubnetIds: SubnetIdentifierList,
+          Tags: S.optional(TagList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateSubnetGroupRequest" });
     case 1:
@@ -3349,18 +3734,18 @@ function __c6(j: number): any {
         identifier: "AvailabilityZone",
       });
     case 2:
-      return S.Array(S.String);
+      return S.Array(NetworkType);
     case 3:
       return S.suspend(() =>
         S.Struct({
           Identifier: S.optional(S.String),
-          AvailabilityZone: S.optional(__S(49)),
-          SupportedNetworkTypes: S.optional(__S(50)),
+          AvailabilityZone: S.optional(AvailabilityZone),
+          SupportedNetworkTypes: S.optional(NetworkTypeList),
         }),
       ).annotate({ identifier: "Subnet" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(51).pipe(/*@__PURE__*/ T.XmlName("Subnet")).annotate({
+        /*@__PURE__*/ Subnet.pipe(/*@__PURE__*/ T.XmlName("Subnet")).annotate({
           identifier: "Subnet",
         }),
       );
@@ -3370,19 +3755,19 @@ function __c6(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           VpcId: S.optional(S.String),
-          Subnets: S.optional(__S(52)),
+          Subnets: S.optional(SubnetList),
           ARN: S.optional(S.String),
-          SupportedNetworkTypes: S.optional(__S(50)),
+          SupportedNetworkTypes: S.optional(NetworkTypeList),
         }),
       ).annotate({ identifier: "SubnetGroup" });
     case 6:
-      return S.suspend(() => S.Struct({ SubnetGroup: S.optional(__S(53)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ SubnetGroup: S.optional(SubnetGroup) }).pipe(ns)).annotate({
         identifier: "CreateSubnetGroupResponse",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Type: S.optional(S.String),
+          Type: S.optional(InputAuthenticationType),
           Passwords: S.optional(S.Array(SensitiveString)),
         }),
       ).annotate({ identifier: "AuthenticationMode" });
@@ -3394,14 +3779,14 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           UserName: S.String,
-          AuthenticationMode: __S(55),
+          AuthenticationMode: AuthenticationMode,
           AccessString: S.String,
-          Tags: S.optional(__S(22)),
+          Tags: S.optional(TagList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateUserRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Type: S.optional(S.String), PasswordCount: S.optional(S.Number) }),
+        S.Struct({ Type: S.optional(AuthenticationType), PasswordCount: S.optional(S.Number) }),
       ).annotate({ identifier: "Authentication" });
     case 2:
       return S.suspend(() =>
@@ -3409,14 +3794,14 @@ function __c7(j: number): any {
           Name: S.optional(S.String),
           Status: S.optional(S.String),
           AccessString: S.optional(S.String),
-          ACLNames: S.optional(__S(0)),
+          ACLNames: S.optional(ACLNameList),
           MinimumEngineVersion: S.optional(S.String),
-          Authentication: S.optional(__S(57)),
+          Authentication: S.optional(Authentication),
           ARN: S.optional(S.String),
         }),
       ).annotate({ identifier: "User" });
     case 3:
-      return S.suspend(() => S.Struct({ User: S.optional(__S(58)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ User: S.optional(User) }).pipe(ns)).annotate({
         identifier: "CreateUserResponse",
       });
     case 4:
@@ -3480,10 +3865,10 @@ function __c8(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeACLsRequest" });
     case 4:
-      return S.Array(__S(32));
+      return S.Array(ACL);
     case 5:
       return S.suspend(() =>
-        S.Struct({ ACLs: S.optional(__S(68)), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ ACLs: S.optional(ACLList), NextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "DescribeACLsResponse" });
     case 6:
       return S.suspend(() =>
@@ -3496,7 +3881,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "DescribeClustersRequest" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Clusters: S.optional(__S(17)) }).pipe(ns),
+        S.Struct({ NextToken: S.optional(S.String), Clusters: S.optional(ClusterList) }).pipe(ns),
       ).annotate({ identifier: "DescribeClustersResponse" });
   }
 }
@@ -3525,12 +3910,12 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "EngineVersionInfo" });
     case 2:
-      return S.Array(__S(73));
+      return S.Array(EngineVersionInfo);
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          EngineVersions: S.optional(__S(74)),
+          EngineVersions: S.optional(EngineVersionInfoList),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeEngineVersionsResponse",
@@ -3539,7 +3924,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SourceName: S.optional(S.String),
-          SourceType: S.optional(S.String),
+          SourceType: S.optional(SourceType),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Duration: S.optional(S.Number),
@@ -3551,20 +3936,20 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SourceName: S.optional(S.String),
-          SourceType: S.optional(S.String),
+          SourceType: S.optional(SourceType),
           Message: S.optional(S.String),
           Date: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Event" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(77).pipe(/*@__PURE__*/ T.XmlName("Event")).annotate({
+        /*@__PURE__*/ Event.pipe(/*@__PURE__*/ T.XmlName("Event")).annotate({
           identifier: "Event",
         }),
       );
     case 7:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Events: S.optional(__S(78)) }).pipe(ns),
+        S.Struct({ NextToken: S.optional(S.String), Events: S.optional(EventList) }).pipe(ns),
       ).annotate({ identifier: "DescribeEventsResponse" });
   }
 }
@@ -3582,12 +3967,12 @@ function __c10(j: number): any {
         identifier: "DescribeMultiRegionClustersRequest",
       });
     case 1:
-      return S.Array(__S(41));
+      return S.Array(MultiRegionCluster);
     case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          MultiRegionClusters: S.optional(__S(81)),
+          MultiRegionClusters: S.optional(MultiRegionClusterList),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeMultiRegionClustersResponse",
@@ -3615,7 +4000,9 @@ function __c10(j: number): any {
       });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(84).pipe(/*@__PURE__*/ T.XmlName("MultiRegionParameterGroup")).annotate({
+        /*@__PURE__*/ MultiRegionParameterGroup.pipe(
+          /*@__PURE__*/ T.XmlName("MultiRegionParameterGroup"),
+        ).annotate({
           identifier: "MultiRegionParameterGroup",
         }),
       );
@@ -3623,7 +4010,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          MultiRegionParameterGroups: S.optional(__S(85)),
+          MultiRegionParameterGroups: S.optional(MultiRegionParameterGroupList),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeMultiRegionParameterGroupsResponse",
@@ -3657,7 +4044,9 @@ function __c11(j: number): any {
       ).annotate({ identifier: "MultiRegionParameter" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(88).pipe(/*@__PURE__*/ T.XmlName("MultiRegionParameter")).annotate({
+        /*@__PURE__*/ MultiRegionParameter.pipe(
+          /*@__PURE__*/ T.XmlName("MultiRegionParameter"),
+        ).annotate({
           identifier: "MultiRegionParameter",
         }),
       );
@@ -3665,7 +4054,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          MultiRegionParameters: S.optional(__S(89)),
+          MultiRegionParameters: S.optional(MultiRegionParametersList),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeMultiRegionParametersResponse",
@@ -3682,7 +4071,7 @@ function __c11(j: number): any {
       });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(44).pipe(/*@__PURE__*/ T.XmlName("ParameterGroup")).annotate({
+        /*@__PURE__*/ ParameterGroup.pipe(/*@__PURE__*/ T.XmlName("ParameterGroup")).annotate({
           identifier: "ParameterGroup",
         }),
       );
@@ -3690,7 +4079,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          ParameterGroups: S.optional(__S(92)),
+          ParameterGroups: S.optional(ParameterGroupList),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeParameterGroupsResponse",
@@ -3722,13 +4111,15 @@ function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ __S(95).pipe(/*@__PURE__*/ T.XmlName("Parameter")).annotate({
+        /*@__PURE__*/ Parameter.pipe(/*@__PURE__*/ T.XmlName("Parameter")).annotate({
           identifier: "Parameter",
         }),
       );
     case 1:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Parameters: S.optional(__S(96)) }).pipe(ns),
+        S.Struct({ NextToken: S.optional(S.String), Parameters: S.optional(ParametersList) }).pipe(
+          ns,
+        ),
       ).annotate({
         identifier: "DescribeParametersResponse",
       });
@@ -3755,7 +4146,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "RecurringCharge" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(99).pipe(/*@__PURE__*/ T.XmlName("RecurringCharge")).annotate({
+        /*@__PURE__*/ RecurringCharge.pipe(/*@__PURE__*/ T.XmlName("RecurringCharge")).annotate({
           identifier: "RecurringCharge",
         }),
       );
@@ -3771,13 +4162,13 @@ function __c12(j: number): any {
           NodeCount: S.optional(S.Number),
           OfferingType: S.optional(S.String),
           State: S.optional(S.String),
-          RecurringCharges: S.optional(__S(100)),
+          RecurringCharges: S.optional(RecurringChargeList),
           ARN: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReservedNode" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(101).pipe(/*@__PURE__*/ T.XmlName("ReservedNode")).annotate({
+        /*@__PURE__*/ ReservedNode.pipe(/*@__PURE__*/ T.XmlName("ReservedNode")).annotate({
           identifier: "ReservedNode",
         }),
       );
@@ -3785,7 +4176,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          ReservedNodes: S.optional(__S(102)),
+          ReservedNodes: S.optional(ReservedNodeList),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeReservedNodesResponse",
@@ -3815,12 +4206,14 @@ function __c13(j: number): any {
           Duration: S.optional(S.Number),
           FixedPrice: S.optional(S.Number),
           OfferingType: S.optional(S.String),
-          RecurringCharges: S.optional(__S(100)),
+          RecurringCharges: S.optional(RecurringChargeList),
         }),
       ).annotate({ identifier: "ReservedNodesOffering" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(105).pipe(/*@__PURE__*/ T.XmlName("ReservedNodesOffering")).annotate({
+        /*@__PURE__*/ ReservedNodesOffering.pipe(
+          /*@__PURE__*/ T.XmlName("ReservedNodesOffering"),
+        ).annotate({
           identifier: "ReservedNodesOffering",
         }),
       );
@@ -3828,7 +4221,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          ReservedNodesOfferings: S.optional(__S(106)),
+          ReservedNodesOfferings: S.optional(ReservedNodesOfferingList),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeReservedNodesOfferingsResponse",
@@ -3837,8 +4230,8 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ServiceUpdateName: S.optional(S.String),
-          ClusterNames: S.optional(__S(0)),
-          Status: S.optional(__S(50)),
+          ClusterNames: S.optional(ClusterNameList),
+          Status: S.optional(ServiceUpdateStatusList),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -3852,8 +4245,8 @@ function __c13(j: number): any {
           ServiceUpdateName: S.optional(S.String),
           ReleaseDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Description: S.optional(S.String),
-          Status: S.optional(S.String),
-          Type: S.optional(S.String),
+          Status: S.optional(ServiceUpdateStatus),
+          Type: S.optional(ServiceUpdateType),
           Engine: S.optional(S.String),
           NodesUpdated: S.optional(S.String),
           AutoUpdateStartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3861,7 +4254,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "ServiceUpdate" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(109).pipe(/*@__PURE__*/ T.XmlName("ServiceUpdate")).annotate({
+        /*@__PURE__*/ ServiceUpdate.pipe(/*@__PURE__*/ T.XmlName("ServiceUpdate")).annotate({
           identifier: "ServiceUpdate",
         }),
       );
@@ -3869,7 +4262,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          ServiceUpdates: S.optional(__S(110)),
+          ServiceUpdates: S.optional(ServiceUpdateList),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeServiceUpdatesResponse",
@@ -3890,10 +4283,10 @@ function __c14(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeSnapshotsRequest" });
     case 1:
-      return S.Array(__S(28));
+      return S.Array(Snapshot);
     case 2:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Snapshots: S.optional(__S(113)) }).pipe(ns),
+        S.Struct({ NextToken: S.optional(S.String), Snapshots: S.optional(SnapshotList) }).pipe(ns),
       ).annotate({
         identifier: "DescribeSnapshotsResponse",
       });
@@ -3908,22 +4301,22 @@ function __c14(j: number): any {
         identifier: "DescribeSubnetGroupsRequest",
       });
     case 4:
-      return S.Array(__S(53));
+      return S.Array(SubnetGroup);
     case 5:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          SubnetGroups: S.optional(__S(116)),
+          SubnetGroups: S.optional(SubnetGroupList),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeSubnetGroupsResponse",
       });
     case 6:
-      return S.suspend(() => S.Struct({ Name: S.String, Values: __S(0) })).annotate({
+      return S.suspend(() => S.Struct({ Name: S.String, Values: FilterValueList })).annotate({
         identifier: "Filter",
       });
     case 7:
-      return S.Array(__S(118));
+      return S.Array(Filter);
   }
 }
 function __c15(j: number): any {
@@ -3932,16 +4325,16 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           UserName: S.optional(S.String),
-          Filters: S.optional(__S(119)),
+          Filters: S.optional(FilterList),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeUsersRequest" });
     case 1:
-      return S.Array(__S(58));
+      return S.Array(User);
     case 2:
       return S.suspend(() =>
-        S.Struct({ Users: S.optional(__S(121)), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Users: S.optional(UserList), NextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "DescribeUsersResponse" });
     case 3:
       return S.suspend(() =>
@@ -3960,8 +4353,8 @@ function __c15(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ScaleUpNodeTypes: S.optional(__S(0)),
-          ScaleDownNodeTypes: S.optional(__S(0)),
+          ScaleUpNodeTypes: S.optional(NodeTypeList),
+          ScaleDownNodeTypes: S.optional(NodeTypeList),
         }).pipe(ns),
       ).annotate({
         identifier: "ListAllowedMultiRegionClusterUpdatesResponse",
@@ -3985,7 +4378,7 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ TagList: S.optional(__S(22)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ TagList: S.optional(TagList) }).pipe(ns)).annotate({
         identifier: "ListTagsResponse",
       });
     case 1:
@@ -3994,13 +4387,15 @@ function __c16(j: number): any {
           ReservedNodesOfferingId: S.String,
           ReservationId: S.optional(S.String),
           NodeCount: S.optional(S.Number),
-          Tags: S.optional(__S(22)),
+          Tags: S.optional(TagList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PurchaseReservedNodesOfferingRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ ReservedNode: S.optional(__S(101)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ ReservedNode: S.optional(ReservedNode) }).pipe(ns),
+      ).annotate({
         identifier: "PurchaseReservedNodesOfferingResponse",
       });
     case 3:
@@ -4008,20 +4403,20 @@ function __c16(j: number): any {
         S.Struct({
           ParameterGroupName: S.String,
           AllParameters: S.optional(S.Boolean),
-          ParameterNames: S.optional(__S(0)),
+          ParameterNames: S.optional(ParameterNameList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ResetParameterGroupRequest",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: __S(22) }).pipe(
+        S.Struct({ ResourceArn: S.String, Tags: TagList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: __S(0) }).pipe(
+        S.Struct({ ResourceArn: S.String, TagKeys: KeyList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -4029,8 +4424,8 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ACLName: S.String,
-          UserNamesToAdd: S.optional(__S(0)),
-          UserNamesToRemove: S.optional(__S(0)),
+          UserNamesToAdd: S.optional(UserNameListInput),
+          UserNamesToRemove: S.optional(UserNameListInput),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateACLRequest" });
     case 7:
@@ -4050,7 +4445,7 @@ function __c17(j: number): any {
         S.Struct({
           ClusterName: S.String,
           Description: S.optional(S.String),
-          SecurityGroupIds: S.optional(__S(34)),
+          SecurityGroupIds: S.optional(SecurityGroupIdsList),
           MaintenanceWindow: S.optional(S.String),
           SnsTopicArn: S.optional(S.String),
           SnsTopicStatus: S.optional(S.String),
@@ -4060,10 +4455,10 @@ function __c17(j: number): any {
           NodeType: S.optional(S.String),
           Engine: S.optional(S.String),
           EngineVersion: S.optional(S.String),
-          ReplicaConfiguration: S.optional(__S(135)),
-          ShardConfiguration: S.optional(__S(136)),
+          ReplicaConfiguration: S.optional(ReplicaConfigurationRequest),
+          ShardConfiguration: S.optional(ShardConfigurationRequest),
           ACLName: S.optional(S.String),
-          IpDiscovery: S.optional(S.String),
+          IpDiscovery: S.optional(IpDiscovery),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateClusterRequest" });
     case 2:
@@ -4073,9 +4468,9 @@ function __c17(j: number): any {
           NodeType: S.optional(S.String),
           Description: S.optional(S.String),
           EngineVersion: S.optional(S.String),
-          ShardConfiguration: S.optional(__S(136)),
+          ShardConfiguration: S.optional(ShardConfigurationRequest),
           MultiRegionParameterGroupName: S.optional(S.String),
-          UpdateStrategy: S.optional(S.String),
+          UpdateStrategy: S.optional(UpdateStrategy),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateMultiRegionClusterRequest",
@@ -4086,7 +4481,9 @@ function __c17(j: number): any {
       ).annotate({ identifier: "ParameterNameValue" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ __S(139).pipe(/*@__PURE__*/ T.XmlName("ParameterNameValue")).annotate({
+        /*@__PURE__*/ ParameterNameValue.pipe(
+          /*@__PURE__*/ T.XmlName("ParameterNameValue"),
+        ).annotate({
           identifier: "ParameterNameValue",
         }),
       );
@@ -4094,7 +4491,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ParameterGroupName: S.String,
-          ParameterNameValues: __S(140),
+          ParameterNameValues: ParameterNameValueList,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateParameterGroupRequest",
@@ -4104,61 +4501,16 @@ function __c17(j: number): any {
         S.Struct({
           SubnetGroupName: S.String,
           Description: S.optional(S.String),
-          SubnetIds: S.optional(__S(47)),
+          SubnetIds: S.optional(SubnetIdentifierList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateSubnetGroupRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           UserName: S.String,
-          AuthenticationMode: S.optional(__S(55)),
+          AuthenticationMode: S.optional(AuthenticationMode),
           AccessString: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateUserRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
   }
 }

@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "IoT", serviceShapeName: "AWSIotService" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "iot" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2015-05-28");
@@ -300,7 +298,15 @@ export interface AcceptCertificateTransferRequest {
   certificateId: string;
   setAsActive?: boolean;
 }
+const AcceptCertificateTransferRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AcceptCertificateTransferRequest>;
 export interface AcceptCertificateTransferResponse {}
+const AcceptCertificateTransferResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AcceptCertificateTransferResponse>;
 export type BillingGroupName = string;
 export type BillingGroupArn = string;
 export type ThingName = string;
@@ -311,7 +317,15 @@ export interface AddThingToBillingGroupRequest {
   thingName?: string;
   thingArn?: string;
 }
+const AddThingToBillingGroupRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AddThingToBillingGroupRequest>;
 export interface AddThingToBillingGroupResponse {}
+const AddThingToBillingGroupResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AddThingToBillingGroupResponse>;
 export type ThingGroupName = string;
 export type ThingGroupArn = string;
 export type OverrideDynamicGroups = boolean;
@@ -322,7 +336,13 @@ export interface AddThingToThingGroupRequest {
   thingArn?: string;
   overrideDynamicGroups?: boolean;
 }
+const AddThingToThingGroupRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AddThingToThingGroupRequest>;
 export interface AddThingToThingGroupResponse {}
+const AddThingToThingGroupResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<AddThingToThingGroupResponse>;
 export type PackageName = string;
 export type VersionName = string;
 export type S3Bucket = string;
@@ -333,9 +353,11 @@ export interface S3Location {
   key?: string;
   version?: string;
 }
+const S3Location = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<S3Location>;
 export interface Sbom {
   s3Location?: S3Location;
 }
+const Sbom = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Sbom>;
 export type ClientToken = string;
 export interface AssociateSbomWithPackageVersionRequest {
   packageName: string;
@@ -343,15 +365,26 @@ export interface AssociateSbomWithPackageVersionRequest {
   sbom: Sbom;
   clientToken?: string;
 }
+const AssociateSbomWithPackageVersionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AssociateSbomWithPackageVersionRequest>;
 export type SbomValidationStatus = "IN_PROGRESS" | "FAILED" | "SUCCEEDED" | (string & {});
+const SbomValidationStatus = S.String;
+
 export interface AssociateSbomWithPackageVersionResponse {
   packageName?: string;
   versionName?: string;
   sbom?: Sbom;
   sbomValidationStatus?: SbomValidationStatus;
 }
+const AssociateSbomWithPackageVersionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AssociateSbomWithPackageVersionResponse>;
 export type TargetArn = string;
 export type JobTargets = string[];
+const JobTargets = /*@__PURE__*/ __L.at(__c1, 1);
 export type JobId = string;
 export type Comment = string;
 export type NamespaceId = string;
@@ -361,6 +394,10 @@ export interface AssociateTargetsWithJobRequest {
   comment?: string;
   namespaceId?: string;
 }
+const AssociateTargetsWithJobRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<AssociateTargetsWithJobRequest>;
 export type JobArn = string;
 export type JobDescription = string;
 export interface AssociateTargetsWithJobResponse {
@@ -368,51 +405,102 @@ export interface AssociateTargetsWithJobResponse {
   jobId?: string;
   description?: string;
 }
+const AssociateTargetsWithJobResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<AssociateTargetsWithJobResponse>;
 export type PolicyName = string;
 export type PolicyTarget = string;
 export interface AttachPolicyRequest {
   policyName: string;
   target: string;
 }
+const AttachPolicyRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<AttachPolicyRequest>;
 export interface AttachPolicyResponse {}
+const AttachPolicyResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<AttachPolicyResponse>;
 export type Principal = string;
 export interface AttachPrincipalPolicyRequest {
   policyName: string;
   principal: string;
 }
+const AttachPrincipalPolicyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<AttachPrincipalPolicyRequest>;
 export interface AttachPrincipalPolicyResponse {}
+const AttachPrincipalPolicyResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<AttachPrincipalPolicyResponse>;
 export type SecurityProfileName = string;
 export type SecurityProfileTargetArn = string;
 export interface AttachSecurityProfileRequest {
   securityProfileName: string;
   securityProfileTargetArn: string;
 }
+const AttachSecurityProfileRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<AttachSecurityProfileRequest>;
 export interface AttachSecurityProfileResponse {}
+const AttachSecurityProfileResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<AttachSecurityProfileResponse>;
 export type ThingPrincipalType = "EXCLUSIVE_THING" | "NON_EXCLUSIVE_THING" | (string & {});
+const ThingPrincipalType = S.String;
+
 export interface AttachThingPrincipalRequest {
   thingName: string;
   principal: string;
   thingPrincipalType?: ThingPrincipalType;
 }
+const AttachThingPrincipalRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<AttachThingPrincipalRequest>;
 export interface AttachThingPrincipalResponse {}
+const AttachThingPrincipalResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<AttachThingPrincipalResponse>;
 export type MitigationActionsTaskId = string;
 export interface CancelAuditMitigationActionsTaskRequest {
   taskId: string;
 }
+const CancelAuditMitigationActionsTaskRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CancelAuditMitigationActionsTaskRequest>;
 export interface CancelAuditMitigationActionsTaskResponse {}
+const CancelAuditMitigationActionsTaskResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<CancelAuditMitigationActionsTaskResponse>;
 export type AuditTaskId = string;
 export interface CancelAuditTaskRequest {
   taskId: string;
 }
+const CancelAuditTaskRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CancelAuditTaskRequest>;
 export interface CancelAuditTaskResponse {}
+const CancelAuditTaskResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<CancelAuditTaskResponse>;
 export interface CancelCertificateTransferRequest {
   certificateId: string;
 }
+const CancelCertificateTransferRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CancelCertificateTransferRequest>;
 export interface CancelCertificateTransferResponse {}
+const CancelCertificateTransferResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<CancelCertificateTransferResponse>;
 export interface CancelDetectMitigationActionsTaskRequest {
   taskId: string;
 }
+const CancelDetectMitigationActionsTaskRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CancelDetectMitigationActionsTaskRequest>;
 export interface CancelDetectMitigationActionsTaskResponse {}
+const CancelDetectMitigationActionsTaskResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<CancelDetectMitigationActionsTaskResponse>;
 export type ReasonCode = string;
 export type ForceFlag = boolean;
 export interface CancelJobRequest {
@@ -421,15 +509,18 @@ export interface CancelJobRequest {
   comment?: string;
   force?: boolean;
 }
+const CancelJobRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CancelJobRequest>;
 export interface CancelJobResponse {
   jobArn?: string;
   jobId?: string;
   description?: string;
 }
+const CancelJobResponse = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<CancelJobResponse>;
 export type ExpectedVersion = number;
 export type DetailsKey = string;
 export type DetailsValue = string;
 export type DetailsMap = { [key: string]: string | undefined };
+const DetailsMap = /*@__PURE__*/ __L.at(__c2, 6);
 export interface CancelJobExecutionRequest {
   jobId: string;
   thingName: string;
@@ -437,14 +528,32 @@ export interface CancelJobExecutionRequest {
   expectedVersion?: number;
   statusDetails?: { [key: string]: string | undefined };
 }
+const CancelJobExecutionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CancelJobExecutionRequest>;
 export interface CancelJobExecutionResponse {}
+const CancelJobExecutionResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<CancelJobExecutionResponse>;
 export interface ClearDefaultAuthorizerRequest {}
+const ClearDefaultAuthorizerRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ClearDefaultAuthorizerRequest>;
 export interface ClearDefaultAuthorizerResponse {}
+const ClearDefaultAuthorizerResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<ClearDefaultAuthorizerResponse>;
 export type ConfirmationToken = string;
 export interface ConfirmTopicRuleDestinationRequest {
   confirmationToken: string;
 }
+const ConfirmTopicRuleDestinationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ConfirmTopicRuleDestinationRequest>;
 export interface ConfirmTopicRuleDestinationResponse {}
+const ConfirmTopicRuleDestinationResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<ConfirmTopicRuleDestinationResponse>;
 export type AuditCheckName = string;
 export type CognitoIdentityPoolId = string;
 export type ClientId = string;
@@ -453,6 +562,10 @@ export interface PolicyVersionIdentifier {
   policyName?: string;
   policyVersionId?: string;
 }
+const PolicyVersionIdentifier = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<PolicyVersionIdentifier>;
 export type AwsAccountId = string;
 export type RoleArn = string;
 export type RoleAliasArn = string;
@@ -464,6 +577,10 @@ export interface IssuerCertificateIdentifier {
   issuerId?: string;
   issuerCertificateSerialNumber?: string;
 }
+const IssuerCertificateIdentifier = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<IssuerCertificateIdentifier>;
 export type CertificateArn = string;
 export interface ResourceIdentifier {
   deviceCertificateId?: string;
@@ -477,6 +594,7 @@ export interface ResourceIdentifier {
   issuerCertificateIdentifier?: IssuerCertificateIdentifier;
   deviceCertificateArn?: string;
 }
+const ResourceIdentifier = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ResourceIdentifier>;
 export type SuppressIndefinitely = boolean;
 export type AuditDescription = string;
 export type ClientRequestToken = string;
@@ -488,21 +606,32 @@ export interface CreateAuditSuppressionRequest {
   description?: string;
   clientRequestToken: string;
 }
+const CreateAuditSuppressionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateAuditSuppressionRequest>;
 export interface CreateAuditSuppressionResponse {}
+const CreateAuditSuppressionResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<CreateAuditSuppressionResponse>;
 export type AuthorizerName = string;
 export type AuthorizerFunctionArn = string;
 export type TokenKeyName = string;
 export type KeyName = string;
 export type KeyValue = string;
 export type PublicKeyMap = { [key: string]: string | undefined };
+const PublicKeyMap = /*@__PURE__*/ __L.at(__c3, 6);
 export type AuthorizerStatus = "ACTIVE" | "INACTIVE" | (string & {});
+const AuthorizerStatus = S.String;
+
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   Key: string;
   Value?: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<Tag>;
 export type TagList = Tag[];
+const TagList = /*@__PURE__*/ __L.at(__c4, 0);
 export type BooleanKey = boolean;
 export type EnableCachingForHttp = boolean;
 export interface CreateAuthorizerRequest {
@@ -515,41 +644,72 @@ export interface CreateAuthorizerRequest {
   signingDisabled?: boolean;
   enableCachingForHttp?: boolean;
 }
+const CreateAuthorizerRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateAuthorizerRequest>;
 export type AuthorizerArn = string;
 export interface CreateAuthorizerResponse {
   authorizerName?: string;
   authorizerArn?: string;
 }
+const CreateAuthorizerResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CreateAuthorizerResponse>;
 export type BillingGroupDescription = string;
 export interface BillingGroupProperties {
   billingGroupDescription?: string;
 }
+const BillingGroupProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<BillingGroupProperties>;
 export interface CreateBillingGroupRequest {
   billingGroupName: string;
   billingGroupProperties?: BillingGroupProperties;
   tags?: Tag[];
 }
+const CreateBillingGroupRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateBillingGroupRequest>;
 export type BillingGroupId = string;
 export interface CreateBillingGroupResponse {
   billingGroupName?: string;
   billingGroupArn?: string;
   billingGroupId?: string;
 }
+const CreateBillingGroupResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateBillingGroupResponse>;
 export type CertificateSigningRequest = string;
 export interface CreateCertificateFromCsrRequest {
   certificateSigningRequest: string;
   setAsActive?: boolean;
 }
+const CreateCertificateFromCsrRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateCertificateFromCsrRequest>;
 export type CertificatePem = string;
 export interface CreateCertificateFromCsrResponse {
   certificateArn?: string;
   certificateId?: string;
   certificatePem?: string;
 }
+const CreateCertificateFromCsrResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreateCertificateFromCsrResponse>;
 export type CertificateProviderName = string;
 export type CertificateProviderFunctionArn = string;
 export type CertificateProviderOperation = "CreateCertificateFromCsr" | (string & {});
+const CertificateProviderOperation = S.String;
+
 export type CertificateProviderAccountDefaultForOperations = CertificateProviderOperation[];
+const CertificateProviderAccountDefaultForOperations = /*@__PURE__*/ __L.at(__c5, 0);
 export interface CreateCertificateProviderRequest {
   certificateProviderName: string;
   lambdaFunctionArn: string;
@@ -557,13 +717,23 @@ export interface CreateCertificateProviderRequest {
   clientToken?: string;
   tags?: Tag[];
 }
+const CreateCertificateProviderRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CreateCertificateProviderRequest>;
 export type CertificateProviderArn = string;
 export interface CreateCertificateProviderResponse {
   certificateProviderName?: string;
   certificateProviderArn?: string;
 }
+const CreateCertificateProviderResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<CreateCertificateProviderResponse>;
 export type CommandId = string;
 export type CommandNamespace = "AWS-IoT" | "AWS-IoT-FleetWise" | (string & {});
+const CommandNamespace = S.String;
+
 export type DisplayName = string;
 export type CommandDescription = string;
 export type CommandPayloadBlob = Uint8Array;
@@ -572,14 +742,22 @@ export interface CommandPayload {
   content?: Uint8Array;
   contentType?: string;
 }
+const CommandPayload = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<CommandPayload>;
 export type CommandPayloadTemplateString = string;
 export type OutputFormat = "JSON" | "CBOR" | (string & {});
+const OutputFormat = S.String;
+
 export interface AwsJsonSubstitutionCommandPreprocessorConfig {
   outputFormat: OutputFormat;
 }
+const AwsJsonSubstitutionCommandPreprocessorConfig = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<AwsJsonSubstitutionCommandPreprocessorConfig>;
 export interface CommandPreprocessor {
   awsJsonSubstitution?: AwsJsonSubstitutionCommandPreprocessorConfig;
 }
+const CommandPreprocessor = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<CommandPreprocessor>;
 export type CommandParameterName = string;
 export type CommandParameterType =
   | "STRING"
@@ -590,6 +768,8 @@ export type CommandParameterType =
   | "BOOLEAN"
   | "BINARY"
   | (string & {});
+const CommandParameterType = S.String;
+
 export type StringParameterValue = string;
 export type BooleanParameterValue = boolean;
 export type IntegerParameterValue = number;
@@ -606,6 +786,10 @@ export interface CommandParameterValue {
   BIN?: Uint8Array;
   UL?: string;
 }
+const CommandParameterValue = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CommandParameterValue>;
 export type CommandParameterValueComparisonOperator =
   | "EQUALS"
   | "NOT_EQUALS"
@@ -618,11 +802,19 @@ export type CommandParameterValueComparisonOperator =
   | "IN_RANGE"
   | "NOT_IN_RANGE"
   | (string & {});
+const CommandParameterValueComparisonOperator = S.String;
+
 export type CommandParameterValueStringList = string[];
+const CommandParameterValueStringList =
+  JobTargets as any as S.Schema<CommandParameterValueStringList>;
 export interface CommandParameterValueNumberRange {
   min: string;
   max: string;
 }
+const CommandParameterValueNumberRange = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CommandParameterValueNumberRange>;
 export interface CommandParameterValueComparisonOperand {
   number?: string;
   numbers?: string[];
@@ -630,11 +822,20 @@ export interface CommandParameterValueComparisonOperand {
   strings?: string[];
   numberRange?: CommandParameterValueNumberRange;
 }
+const CommandParameterValueComparisonOperand = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CommandParameterValueComparisonOperand>;
 export interface CommandParameterValueCondition {
   comparisonOperator: CommandParameterValueComparisonOperator;
   operand: CommandParameterValueComparisonOperand;
 }
+const CommandParameterValueCondition = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<CommandParameterValueCondition>;
 export type CommandParameterValueConditionList = CommandParameterValueCondition[];
+const CommandParameterValueConditionList = /*@__PURE__*/ __L.at(__c6, 2);
 export type CommandParameterDescription = string;
 export interface CommandParameter {
   name: string;
@@ -644,7 +845,9 @@ export interface CommandParameter {
   valueConditions?: CommandParameterValueCondition[];
   description?: string;
 }
+const CommandParameter = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<CommandParameter>;
 export type CommandParameterList = CommandParameter[];
+const CommandParameterList = /*@__PURE__*/ __L.at(__c6, 4);
 export interface CreateCommandRequest {
   commandId: string;
   namespace?: CommandNamespace;
@@ -657,11 +860,16 @@ export interface CreateCommandRequest {
   roleArn?: string;
   tags?: Tag[];
 }
+const CreateCommandRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<CreateCommandRequest>;
 export type CommandArn = string;
 export interface CreateCommandResponse {
   commandId?: string;
   commandArn?: string;
 }
+const CreateCommandResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreateCommandResponse>;
 export type MetricName = string;
 export type CustomMetricDisplayName = string;
 export type CustomMetricType =
@@ -670,6 +878,8 @@ export type CustomMetricType =
   | "number-list"
   | "number"
   | (string & {});
+const CustomMetricType = S.String;
+
 export interface CreateCustomMetricRequest {
   metricName: string;
   displayName?: string;
@@ -677,15 +887,26 @@ export interface CreateCustomMetricRequest {
   tags?: Tag[];
   clientRequestToken: string;
 }
+const CreateCustomMetricRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<CreateCustomMetricRequest>;
 export type CustomMetricArn = string;
 export interface CreateCustomMetricResponse {
   metricName?: string;
   metricArn?: string;
 }
+const CreateCustomMetricResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<CreateCustomMetricResponse>;
 export type DimensionName = string;
 export type DimensionType = "TOPIC_FILTER" | (string & {});
+const DimensionType = S.String;
+
 export type DimensionStringValue = string;
 export type DimensionStringValues = string[];
+const DimensionStringValues = JobTargets as any as S.Schema<DimensionStringValues>;
 export interface CreateDimensionRequest {
   name: string;
   type: DimensionType;
@@ -693,25 +914,38 @@ export interface CreateDimensionRequest {
   tags?: Tag[];
   clientRequestToken: string;
 }
+const CreateDimensionRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<CreateDimensionRequest>;
 export type DimensionArn = string;
 export interface CreateDimensionResponse {
   name?: string;
   arn?: string;
 }
+const CreateDimensionResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<CreateDimensionResponse>;
 export type DomainConfigurationName = string;
 export type DomainName = string;
 export type AcmCertificateArn = string;
 export type ServerCertificateArns = string[];
+const ServerCertificateArns = JobTargets as any as S.Schema<ServerCertificateArns>;
 export type AllowAuthorizerOverride = boolean;
 export interface AuthorizerConfig {
   defaultAuthorizerName?: string;
   allowAuthorizerOverride?: boolean;
 }
+const AuthorizerConfig = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<AuthorizerConfig>;
 export type ServiceType = "DATA" | "CREDENTIAL_PROVIDER" | "JOBS" | (string & {});
+const ServiceType = S.String;
+
 export type SecurityPolicy = string;
 export interface TlsConfig {
   securityPolicy?: string;
 }
+const TlsConfig = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<TlsConfig>;
 export type EnableOCSPCheck = boolean;
 export type OCSPLambdaArn = string;
 export interface ServerCertificateConfig {
@@ -719,6 +953,10 @@ export interface ServerCertificateConfig {
   ocspLambdaArn?: string;
   ocspAuthorizedResponderArn?: string;
 }
+const ServerCertificateConfig = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ServerCertificateConfig>;
 export type AuthenticationType =
   | "CUSTOM_AUTH_X509"
   | "CUSTOM_AUTH"
@@ -726,11 +964,19 @@ export type AuthenticationType =
   | "AWS_SIGV4"
   | "DEFAULT"
   | (string & {});
+const AuthenticationType = S.String;
+
 export type ApplicationProtocol = "SECURE_MQTT" | "MQTT_WSS" | "HTTPS" | "DEFAULT" | (string & {});
+const ApplicationProtocol = S.String;
+
 export type ClientCertificateCallbackArn = string;
 export interface ClientCertificateConfig {
   clientCertificateCallbackArn?: string;
 }
+const ClientCertificateConfig = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ClientCertificateConfig>;
 export interface CreateDomainConfigurationRequest {
   domainConfigurationName: string;
   domainName?: string;
@@ -745,24 +991,35 @@ export interface CreateDomainConfigurationRequest {
   applicationProtocol?: ApplicationProtocol;
   clientCertificateConfig?: ClientCertificateConfig;
 }
+const CreateDomainConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<CreateDomainConfigurationRequest>;
 export type DomainConfigurationArn = string;
 export interface CreateDomainConfigurationResponse {
   domainConfigurationName?: string;
   domainConfigurationArn?: string;
 }
+const CreateDomainConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<CreateDomainConfigurationResponse>;
 export type ThingGroupDescription = string;
 export type AttributeName = string;
 export type AttributeValue = string;
 export type Attributes = { [key: string]: string | undefined };
+const Attributes = DetailsMap as any as S.Schema<Attributes>;
 export type Flag = boolean;
 export interface AttributePayload {
   attributes?: { [key: string]: string | undefined };
   merge?: boolean;
 }
+const AttributePayload = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<AttributePayload>;
 export interface ThingGroupProperties {
   thingGroupDescription?: string;
   attributePayload?: AttributePayload;
 }
+const ThingGroupProperties = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ThingGroupProperties>;
 export type IndexName = string;
 export type QueryString = string;
 export type QueryVersion = string;
@@ -774,6 +1031,10 @@ export interface CreateDynamicThingGroupRequest {
   queryVersion?: string;
   tags?: Tag[];
 }
+const CreateDynamicThingGroupRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<CreateDynamicThingGroupRequest>;
 export type ThingGroupId = string;
 export interface CreateDynamicThingGroupResponse {
   thingGroupName?: string;
@@ -783,14 +1044,22 @@ export interface CreateDynamicThingGroupResponse {
   queryString?: string;
   queryVersion?: string;
 }
+const CreateDynamicThingGroupResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<CreateDynamicThingGroupResponse>;
 export type FleetMetricName = string;
 export type AggregationTypeName = "Statistics" | "Percentiles" | "Cardinality" | (string & {});
+const AggregationTypeName = S.String;
+
 export type AggregationTypeValue = string;
 export type AggregationTypeValues = string[];
+const AggregationTypeValues = JobTargets as any as S.Schema<AggregationTypeValues>;
 export interface AggregationType {
   name: AggregationTypeName;
   values?: string[];
 }
+const AggregationType = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<AggregationType>;
 export type FleetMetricPeriod = number;
 export type AggregationField = string;
 export type FleetMetricDescription = string;
@@ -823,6 +1092,8 @@ export type FleetMetricUnit =
   | "Count/Second"
   | "None"
   | (string & {});
+const FleetMetricUnit = S.String;
+
 export interface CreateFleetMetricRequest {
   metricName: string;
   queryString: string;
@@ -835,11 +1106,17 @@ export interface CreateFleetMetricRequest {
   unit?: FleetMetricUnit;
   tags?: Tag[];
 }
+const CreateFleetMetricRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<CreateFleetMetricRequest>;
 export type FleetMetricArn = string;
 export interface CreateFleetMetricResponse {
   metricName?: string;
   metricArn?: string;
 }
+const CreateFleetMetricResponse =
+  CreateCustomMetricResponse as any as S.Schema<CreateFleetMetricResponse>;
 export type JobDocumentSource = string;
 export type JobDocument = string;
 export type ExpiresInSec = number;
@@ -847,7 +1124,10 @@ export interface PresignedUrlConfig {
   roleArn?: string;
   expiresInSec?: number;
 }
+const PresignedUrlConfig = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<PresignedUrlConfig>;
 export type TargetSelection = "CONTINUOUS" | "SNAPSHOT" | (string & {});
+const TargetSelection = S.String;
+
 export type MaxJobExecutionsPerMin = number;
 export type RolloutRatePerMinute = number;
 export type IncrementFactor = number;
@@ -856,17 +1136,30 @@ export interface RateIncreaseCriteria {
   numberOfNotifiedThings?: number;
   numberOfSucceededThings?: number;
 }
+const RateIncreaseCriteria = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<RateIncreaseCriteria>;
 export interface ExponentialRolloutRate {
   baseRatePerMinute: number;
   incrementFactor: number;
   rateIncreaseCriteria: RateIncreaseCriteria;
 }
+const ExponentialRolloutRate = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ExponentialRolloutRate>;
 export interface JobExecutionsRolloutConfig {
   maximumPerMinute?: number;
   exponentialRate?: ExponentialRolloutRate;
 }
+const JobExecutionsRolloutConfig = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<JobExecutionsRolloutConfig>;
 export type JobExecutionFailureType = "FAILED" | "REJECTED" | "TIMED_OUT" | "ALL" | (string & {});
+const JobExecutionFailureType = S.String;
+
 export type AbortAction = "CANCEL" | (string & {});
+const AbortAction = S.String;
+
 export type AbortThresholdPercentage = number;
 export type MinimumNumberOfExecutedThings = number;
 export interface AbortCriteria {
@@ -875,45 +1168,64 @@ export interface AbortCriteria {
   thresholdPercentage: number;
   minNumberOfExecutedThings: number;
 }
+const AbortCriteria = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<AbortCriteria>;
 export type AbortCriteriaList = AbortCriteria[];
+const AbortCriteriaList = /*@__PURE__*/ __L.at(__c9, 4);
 export interface AbortConfig {
   criteriaList: AbortCriteria[];
 }
+const AbortConfig = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<AbortConfig>;
 export type InProgressTimeoutInMinutes = number;
 export interface TimeoutConfig {
   inProgressTimeoutInMinutes?: number;
 }
+const TimeoutConfig = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<TimeoutConfig>;
 export type JobTemplateArn = string;
 export type RetryableFailureType = "FAILED" | "TIMED_OUT" | "ALL" | (string & {});
+const RetryableFailureType = S.String;
+
 export type NumberOfRetries = number;
 export interface RetryCriteria {
   failureType: RetryableFailureType;
   numberOfRetries: number;
 }
+const RetryCriteria = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<RetryCriteria>;
 export type RetryCriteriaList = RetryCriteria[];
+const RetryCriteriaList = /*@__PURE__*/ __L.at(__c10, 0);
 export interface JobExecutionsRetryConfig {
   criteriaList: RetryCriteria[];
 }
+const JobExecutionsRetryConfig = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<JobExecutionsRetryConfig>;
 export type ParameterKey = string;
 export type ParameterValue = string;
 export type ParameterMap = { [key: string]: string | undefined };
+const ParameterMap = PublicKeyMap as any as S.Schema<ParameterMap>;
 export type StringDateTime = string;
 export type JobEndBehavior = "STOP_ROLLOUT" | "CANCEL" | "FORCE_CANCEL" | (string & {});
+const JobEndBehavior = S.String;
+
 export type CronExpression = string;
 export type DurationInMinutes = number;
 export interface MaintenanceWindow {
   startTime: string;
   durationInMinutes: number;
 }
+const MaintenanceWindow = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<MaintenanceWindow>;
 export type MaintenanceWindows = MaintenanceWindow[];
+const MaintenanceWindows = /*@__PURE__*/ __L.at(__c10, 3);
 export interface SchedulingConfig {
   startTime?: string;
   endTime?: string;
   endBehavior?: JobEndBehavior;
   maintenanceWindows?: MaintenanceWindow[];
 }
+const SchedulingConfig = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<SchedulingConfig>;
 export type PackageVersionArn = string;
 export type DestinationPackageVersions = string[];
+const DestinationPackageVersions = JobTargets as any as S.Schema<DestinationPackageVersions>;
 export interface CreateJobRequest {
   jobId: string;
   targets: string[];
@@ -933,11 +1245,13 @@ export interface CreateJobRequest {
   schedulingConfig?: SchedulingConfig;
   destinationPackageVersions?: string[];
 }
+const CreateJobRequest = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<CreateJobRequest>;
 export interface CreateJobResponse {
   jobArn?: string;
   jobId?: string;
   description?: string;
 }
+const CreateJobResponse = CancelJobResponse as any as S.Schema<CreateJobResponse>;
 export type JobTemplateId = string;
 export interface CreateJobTemplateRequest {
   jobTemplateId: string;
@@ -954,52 +1268,98 @@ export interface CreateJobTemplateRequest {
   maintenanceWindows?: MaintenanceWindow[];
   destinationPackageVersions?: string[];
 }
+const CreateJobTemplateRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<CreateJobTemplateRequest>;
 export interface CreateJobTemplateResponse {
   jobTemplateArn?: string;
   jobTemplateId?: string;
 }
+const CreateJobTemplateResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<CreateJobTemplateResponse>;
 export interface CreateKeysAndCertificateRequest {
   setAsActive?: boolean;
 }
+const CreateKeysAndCertificateRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<CreateKeysAndCertificateRequest>;
 export type PublicKey = string;
 export type PrivateKey = string | redacted.Redacted<string>;
 export interface KeyPair {
   PublicKey?: string;
   PrivateKey?: string | redacted.Redacted<string>;
 }
+const KeyPair = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<KeyPair>;
 export interface CreateKeysAndCertificateResponse {
   certificateArn?: string;
   certificateId?: string;
   certificatePem?: string;
   keyPair?: KeyPair;
 }
+const CreateKeysAndCertificateResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<CreateKeysAndCertificateResponse>;
 export type MitigationActionName = string;
 export type DeviceCertificateUpdateAction = "DEACTIVATE" | (string & {});
+const DeviceCertificateUpdateAction = S.String;
+
 export interface UpdateDeviceCertificateParams {
   action: DeviceCertificateUpdateAction;
 }
+const UpdateDeviceCertificateParams = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<UpdateDeviceCertificateParams>;
 export type CACertificateUpdateAction = "DEACTIVATE" | (string & {});
 export interface UpdateCACertificateParams {
   action: CACertificateUpdateAction;
 }
+const UpdateCACertificateParams =
+  UpdateDeviceCertificateParams as any as S.Schema<UpdateCACertificateParams>;
 export type ThingGroupNames = string[];
+const ThingGroupNames = JobTargets as any as S.Schema<ThingGroupNames>;
 export interface AddThingsToThingGroupParams {
   thingGroupNames: string[];
   overrideDynamicGroups?: boolean;
 }
+const AddThingsToThingGroupParams = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<AddThingsToThingGroupParams>;
 export type PolicyTemplateName = "BLANK_POLICY" | (string & {});
+const PolicyTemplateName = S.String;
+
 export interface ReplaceDefaultPolicyVersionParams {
   templateName: PolicyTemplateName;
 }
+const ReplaceDefaultPolicyVersionParams = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ReplaceDefaultPolicyVersionParams>;
 export type LogLevel = "DEBUG" | "INFO" | "ERROR" | "WARN" | "DISABLED" | (string & {});
+const LogLevel = S.String;
+
 export interface EnableIoTLoggingParams {
   roleArnForLogging: string;
   logLevel: LogLevel;
 }
+const EnableIoTLoggingParams = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<EnableIoTLoggingParams>;
 export type SnsTopicArn = string;
 export interface PublishFindingToSnsParams {
   topicArn: string;
 }
+const PublishFindingToSnsParams = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<PublishFindingToSnsParams>;
 export interface MitigationActionParams {
   updateDeviceCertificateParams?: UpdateDeviceCertificateParams;
   updateCACertificateParams?: UpdateCACertificateParams;
@@ -1008,24 +1368,40 @@ export interface MitigationActionParams {
   enableIoTLoggingParams?: EnableIoTLoggingParams;
   publishFindingToSnsParams?: PublishFindingToSnsParams;
 }
+const MitigationActionParams = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<MitigationActionParams>;
 export interface CreateMitigationActionRequest {
   actionName: string;
   roleArn: string;
   actionParams: MitigationActionParams;
   tags?: Tag[];
 }
+const CreateMitigationActionRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<CreateMitigationActionRequest>;
 export type MitigationActionArn = string;
 export type MitigationActionId = string;
 export interface CreateMitigationActionResponse {
   actionArn?: string;
   actionId?: string;
 }
+const CreateMitigationActionResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<CreateMitigationActionResponse>;
 export type OTAUpdateId = string;
 export type OTAUpdateDescription = string;
 export type Target = string;
 export type Targets = string[];
+const Targets = JobTargets as any as S.Schema<Targets>;
 export type Protocol = "MQTT" | "HTTP" | (string & {});
+const Protocol = S.String;
+
 export type Protocols = Protocol[];
+const Protocols = /*@__PURE__*/ __L.at(__c12, 3);
 export type MaximumPerMinute = number;
 export type AwsJobRolloutRatePerMinute = number;
 export type AwsJobRolloutIncrementFactor = number;
@@ -1034,19 +1410,35 @@ export interface AwsJobRateIncreaseCriteria {
   numberOfNotifiedThings?: number;
   numberOfSucceededThings?: number;
 }
+const AwsJobRateIncreaseCriteria = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<AwsJobRateIncreaseCriteria>;
 export interface AwsJobExponentialRolloutRate {
   baseRatePerMinute: number;
   incrementFactor: number;
   rateIncreaseCriteria: AwsJobRateIncreaseCriteria;
 }
+const AwsJobExponentialRolloutRate = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<AwsJobExponentialRolloutRate>;
 export interface AwsJobExecutionsRolloutConfig {
   maximumPerMinute?: number;
   exponentialRate?: AwsJobExponentialRolloutRate;
 }
+const AwsJobExecutionsRolloutConfig = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<AwsJobExecutionsRolloutConfig>;
 export type ExpiresInSeconds = number;
 export interface AwsJobPresignedUrlConfig {
   expiresInSec?: number;
 }
+const AwsJobPresignedUrlConfig = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<AwsJobPresignedUrlConfig>;
 export type AwsJobAbortCriteriaFailureType =
   | "FAILED"
   | "REJECTED"
@@ -1063,13 +1455,16 @@ export interface AwsJobAbortCriteria {
   minNumberOfExecutedThings: number;
 }
 export type AwsJobAbortCriteriaList = AwsJobAbortCriteria[];
+const AwsJobAbortCriteriaList = AbortCriteriaList as any as S.Schema<AwsJobAbortCriteriaList>;
 export interface AwsJobAbortConfig {
   abortCriteriaList: AwsJobAbortCriteria[];
 }
+const AwsJobAbortConfig = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<AwsJobAbortConfig>;
 export type AwsJobTimeoutInProgressTimeoutInMinutes = number;
 export interface AwsJobTimeoutConfig {
   inProgressTimeoutInMinutes?: number;
 }
+const AwsJobTimeoutConfig = TimeoutConfig as any as S.Schema<AwsJobTimeoutConfig>;
 export type FileName = string;
 export type FileType = number;
 export type OTAUpdateFileVersion = string;
@@ -1079,10 +1474,12 @@ export interface Stream {
   streamId?: string;
   fileId?: number;
 }
+const Stream = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<Stream>;
 export interface FileLocation {
   stream?: Stream;
   s3Location?: S3Location;
 }
+const FileLocation = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<FileLocation>;
 export type SigningJobId = string;
 export type Platform = string;
 export type CertificatePathOnDevice = string;
@@ -1091,30 +1488,48 @@ export interface SigningProfileParameter {
   platform?: string;
   certificatePathOnDevice?: string;
 }
+const SigningProfileParameter = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<SigningProfileParameter>;
 export type SigningProfileName = string;
 export type Prefix = string;
 export interface S3Destination {
   bucket?: string;
   prefix?: string;
 }
+const S3Destination = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<S3Destination>;
 export interface Destination {
   s3Destination?: S3Destination;
 }
+const Destination = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<Destination>;
 export interface StartSigningJobParameter {
   signingProfileParameter?: SigningProfileParameter;
   signingProfileName?: string;
   destination?: Destination;
 }
+const StartSigningJobParameter = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<StartSigningJobParameter>;
 export type Signature = Uint8Array;
 export interface CodeSigningSignature {
   inlineDocument?: Uint8Array;
 }
+const CodeSigningSignature = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<CodeSigningSignature>;
 export type CertificateName = string;
 export type InlineDocument = string;
 export interface CodeSigningCertificateChain {
   certificateName?: string;
   inlineDocument?: string;
 }
+const CodeSigningCertificateChain = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<CodeSigningCertificateChain>;
 export type HashAlgorithm = string;
 export type SignatureAlgorithm = string;
 export interface CustomCodeSigning {
@@ -1123,14 +1538,17 @@ export interface CustomCodeSigning {
   hashAlgorithm?: string;
   signatureAlgorithm?: string;
 }
+const CustomCodeSigning = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<CustomCodeSigning>;
 export interface CodeSigning {
   awsSignerJobId?: string;
   startSigningJobParameter?: StartSigningJobParameter;
   customCodeSigning?: CustomCodeSigning;
 }
+const CodeSigning = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<CodeSigning>;
 export type AttributeKey = string;
 export type Value = string;
 export type AttributesMap = { [key: string]: string | undefined };
+const AttributesMap = PublicKeyMap as any as S.Schema<AttributesMap>;
 export interface OTAUpdateFile {
   fileName?: string;
   fileType?: number;
@@ -1139,8 +1557,11 @@ export interface OTAUpdateFile {
   codeSigning?: CodeSigning;
   attributes?: { [key: string]: string | undefined };
 }
+const OTAUpdateFile = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<OTAUpdateFile>;
 export type OTAUpdateFiles = OTAUpdateFile[];
+const OTAUpdateFiles = /*@__PURE__*/ __L.at(__c14, 4);
 export type AdditionalParameterMap = { [key: string]: string | undefined };
+const AdditionalParameterMap = PublicKeyMap as any as S.Schema<AdditionalParameterMap>;
 export interface CreateOTAUpdateRequest {
   otaUpdateId: string;
   description?: string;
@@ -1156,6 +1577,10 @@ export interface CreateOTAUpdateRequest {
   additionalParameters?: { [key: string]: string | undefined };
   tags?: Tag[];
 }
+const CreateOTAUpdateRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<CreateOTAUpdateRequest>;
 export type AwsIotJobId = string;
 export type OTAUpdateArn = string;
 export type AwsIotJobArn = string;
@@ -1167,6 +1592,8 @@ export type OTAUpdateStatus =
   | "DELETE_IN_PROGRESS"
   | "DELETE_FAILED"
   | (string & {});
+const OTAUpdateStatus = S.String;
+
 export interface CreateOTAUpdateResponse {
   otaUpdateId?: string;
   awsIotJobId?: string;
@@ -1174,26 +1601,41 @@ export interface CreateOTAUpdateResponse {
   awsIotJobArn?: string;
   otaUpdateStatus?: OTAUpdateStatus;
 }
+const CreateOTAUpdateResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<CreateOTAUpdateResponse>;
 export type ResourceDescription = string | redacted.Redacted<string>;
 export type TagMap = { [key: string]: string | undefined };
+const TagMap = DetailsMap as any as S.Schema<TagMap>;
 export interface CreatePackageRequest {
   packageName: string;
   description?: string | redacted.Redacted<string>;
   tags?: { [key: string]: string | undefined };
   clientToken?: string;
 }
+const CreatePackageRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<CreatePackageRequest>;
 export type PackageArn = string;
 export interface CreatePackageResponse {
   packageName?: string;
   packageArn?: string;
   description?: string | redacted.Redacted<string>;
 }
+const CreatePackageResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<CreatePackageResponse>;
 export type ResourceAttributeKey = string;
 export type ResourceAttributeValue = string;
 export type ResourceAttributes = { [key: string]: string | undefined };
+const ResourceAttributes = PublicKeyMap as any as S.Schema<ResourceAttributes>;
 export interface PackageVersionArtifact {
   s3Location?: S3Location;
 }
+const PackageVersionArtifact = Sbom as any as S.Schema<PackageVersionArtifact>;
 export type PackageVersionRecipe = string | redacted.Redacted<string>;
 export interface CreatePackageVersionRequest {
   packageName: string;
@@ -1205,7 +1647,13 @@ export interface CreatePackageVersionRequest {
   tags?: { [key: string]: string | undefined };
   clientToken?: string;
 }
+const CreatePackageVersionRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<CreatePackageVersionRequest>;
 export type PackageVersionStatus = "DRAFT" | "PUBLISHED" | "DEPRECATED" | (string & {});
+const PackageVersionStatus = S.String;
+
 export type PackageVersionErrorReason = string;
 export interface CreatePackageVersionResponse {
   packageVersionArn?: string;
@@ -1216,12 +1664,17 @@ export interface CreatePackageVersionResponse {
   status?: PackageVersionStatus;
   errorReason?: string;
 }
+const CreatePackageVersionResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<CreatePackageVersionResponse>;
 export type PolicyDocument = string;
 export interface CreatePolicyRequest {
   policyName: string;
   policyDocument: string;
   tags?: Tag[];
 }
+const CreatePolicyRequest = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<CreatePolicyRequest>;
 export type PolicyArn = string;
 export interface CreatePolicyResponse {
   policyName?: string;
@@ -1229,12 +1682,20 @@ export interface CreatePolicyResponse {
   policyDocument?: string;
   policyVersionId?: string;
 }
+const CreatePolicyResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<CreatePolicyResponse>;
 export type SetAsDefault = boolean;
 export interface CreatePolicyVersionRequest {
   policyName: string;
   policyDocument: string;
   setAsDefault?: boolean;
 }
+const CreatePolicyVersionRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<CreatePolicyVersionRequest>;
 export type IsDefaultVersion = boolean;
 export interface CreatePolicyVersionResponse {
   policyArn?: string;
@@ -1242,16 +1703,28 @@ export interface CreatePolicyVersionResponse {
   policyVersionId?: string;
   isDefaultVersion?: boolean;
 }
+const CreatePolicyVersionResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<CreatePolicyVersionResponse>;
 export type TemplateName = string;
 export interface CreateProvisioningClaimRequest {
   templateName: string;
 }
+const CreateProvisioningClaimRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<CreateProvisioningClaimRequest>;
 export interface CreateProvisioningClaimResponse {
   certificateId?: string;
   certificatePem?: string;
   keyPair?: KeyPair;
   expiration?: Date;
 }
+const CreateProvisioningClaimResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<CreateProvisioningClaimResponse>;
 export type TemplateDescription = string;
 export type TemplateBody = string;
 export type Enabled2 = boolean;
@@ -1260,7 +1733,10 @@ export interface ProvisioningHook {
   payloadVersion?: string;
   targetArn: string;
 }
+const ProvisioningHook = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<ProvisioningHook>;
 export type TemplateType = "FLEET_PROVISIONING" | "JITP" | (string & {});
+const TemplateType = S.String;
+
 export interface CreateProvisioningTemplateRequest {
   templateName: string;
   description?: string;
@@ -1271,6 +1747,10 @@ export interface CreateProvisioningTemplateRequest {
   tags?: Tag[];
   type?: TemplateType;
 }
+const CreateProvisioningTemplateRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<CreateProvisioningTemplateRequest>;
 export type TemplateArn = string;
 export type TemplateVersionId = number;
 export interface CreateProvisioningTemplateResponse {
@@ -1278,17 +1758,29 @@ export interface CreateProvisioningTemplateResponse {
   templateName?: string;
   defaultVersionId?: number;
 }
+const CreateProvisioningTemplateResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<CreateProvisioningTemplateResponse>;
 export interface CreateProvisioningTemplateVersionRequest {
   templateName: string;
   templateBody: string;
   setAsDefault?: boolean;
 }
+const CreateProvisioningTemplateVersionRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<CreateProvisioningTemplateVersionRequest>;
 export interface CreateProvisioningTemplateVersionResponse {
   templateArn?: string;
   templateName?: string;
   versionId?: number;
   isDefaultVersion?: boolean;
 }
+const CreateProvisioningTemplateVersionResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<CreateProvisioningTemplateVersionResponse>;
 export type RoleAlias = string;
 export type CredentialDurationSeconds = number;
 export interface CreateRoleAliasRequest {
@@ -1297,14 +1789,27 @@ export interface CreateRoleAliasRequest {
   credentialDurationSeconds?: number;
   tags?: Tag[];
 }
+const CreateRoleAliasRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<CreateRoleAliasRequest>;
 export interface CreateRoleAliasResponse {
   roleAlias?: string;
   roleAliasArn?: string;
 }
+const CreateRoleAliasResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<CreateRoleAliasResponse>;
 export type AuditFrequency = "DAILY" | "WEEKLY" | "BIWEEKLY" | "MONTHLY" | (string & {});
+const AuditFrequency = S.String;
+
 export type DayOfMonth = string;
 export type DayOfWeek = "SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | (string & {});
+const DayOfWeek = S.String;
+
 export type TargetAuditCheckNames = string[];
+const TargetAuditCheckNames = JobTargets as any as S.Schema<TargetAuditCheckNames>;
 export type ScheduledAuditName = string;
 export interface CreateScheduledAuditRequest {
   frequency: AuditFrequency;
@@ -1314,18 +1819,29 @@ export interface CreateScheduledAuditRequest {
   scheduledAuditName: string;
   tags?: Tag[];
 }
+const CreateScheduledAuditRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<CreateScheduledAuditRequest>;
 export type ScheduledAuditArn = string;
 export interface CreateScheduledAuditResponse {
   scheduledAuditArn?: string;
 }
+const CreateScheduledAuditResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<CreateScheduledAuditResponse>;
 export type SecurityProfileDescription = string;
 export type BehaviorName = string;
 export type BehaviorMetric = string;
 export type DimensionValueOperator = "IN" | "NOT_IN" | (string & {});
+const DimensionValueOperator = S.String;
+
 export interface MetricDimension {
   dimensionName: string;
   operator?: DimensionValueOperator;
 }
+const MetricDimension = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<MetricDimension>;
 export type ComparisonOperator =
   | "less-than"
   | "less-than-equals"
@@ -1338,14 +1854,20 @@ export type ComparisonOperator =
   | "in-set"
   | "not-in-set"
   | (string & {});
+const ComparisonOperator = S.String;
+
 export type UnsignedLong = number;
 export type Cidr = string;
 export type Cidrs = string[];
+const Cidrs = JobTargets as any as S.Schema<Cidrs>;
 export type Port = number;
 export type Ports = number[];
+const Ports = /*@__PURE__*/ __L.at(__c17, 3);
 export type NumberList = number[];
+const NumberList = Ports as any as S.Schema<NumberList>;
 export type StringValue = string;
 export type StringList = string[];
+const StringList = JobTargets as any as S.Schema<StringList>;
 export interface MetricValue {
   count?: number;
   cidrs?: string[];
@@ -1354,6 +1876,7 @@ export interface MetricValue {
   numbers?: number[];
   strings?: string[];
 }
+const MetricValue = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<MetricValue>;
 export type DurationSeconds = number;
 export type ConsecutiveDatapointsToAlarm = number;
 export type ConsecutiveDatapointsToClear = number;
@@ -1361,10 +1884,20 @@ export type EvaluationStatistic = string;
 export interface StatisticalThreshold {
   statistic?: string;
 }
+const StatisticalThreshold = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<StatisticalThreshold>;
 export type ConfidenceLevel = "LOW" | "MEDIUM" | "HIGH" | (string & {});
+const ConfidenceLevel = S.String;
+
 export interface MachineLearningDetectionConfig {
   confidenceLevel: ConfidenceLevel;
 }
+const MachineLearningDetectionConfig = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<MachineLearningDetectionConfig>;
 export interface BehaviorCriteria {
   comparisonOperator?: ComparisonOperator;
   value?: MetricValue;
@@ -1374,6 +1907,7 @@ export interface BehaviorCriteria {
   statisticalThreshold?: StatisticalThreshold;
   mlDetectionConfig?: MachineLearningDetectionConfig;
 }
+const BehaviorCriteria = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<BehaviorCriteria>;
 export type SuppressAlerts = boolean;
 export type ExportMetric = boolean;
 export interface Behavior {
@@ -1384,26 +1918,36 @@ export interface Behavior {
   suppressAlerts?: boolean;
   exportMetric?: boolean;
 }
+const Behavior = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<Behavior>;
 export type Behaviors = Behavior[];
+const Behaviors = /*@__PURE__*/ __L.at(__c18, 1);
 export type AlertTargetType = "SNS" | (string & {});
+const AlertTargetType = S.String;
+
 export type AlertTargetArn = string;
 export interface AlertTarget {
   alertTargetArn: string;
   roleArn: string;
 }
+const AlertTarget = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<AlertTarget>;
 export type AlertTargets = { [key in AlertTargetType]?: AlertTarget };
+const AlertTargets = /*@__PURE__*/ __L.at(__c18, 3);
 export type AdditionalMetricsToRetainList = string[];
+const AdditionalMetricsToRetainList = JobTargets as any as S.Schema<AdditionalMetricsToRetainList>;
 export interface MetricToRetain {
   metric: string;
   metricDimension?: MetricDimension;
   exportMetric?: boolean;
 }
+const MetricToRetain = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<MetricToRetain>;
 export type AdditionalMetricsToRetainV2List = MetricToRetain[];
+const AdditionalMetricsToRetainV2List = /*@__PURE__*/ __L.at(__c18, 5);
 export type MqttTopic = string;
 export interface MetricsExportConfig {
   mqttTopic: string;
   roleArn: string;
 }
+const MetricsExportConfig = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<MetricsExportConfig>;
 export interface CreateSecurityProfileRequest {
   securityProfileName: string;
   securityProfileDescription?: string;
@@ -1414,17 +1958,27 @@ export interface CreateSecurityProfileRequest {
   tags?: Tag[];
   metricsExportConfig?: MetricsExportConfig;
 }
+const CreateSecurityProfileRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<CreateSecurityProfileRequest>;
 export type SecurityProfileArn = string;
 export interface CreateSecurityProfileResponse {
   securityProfileName?: string;
   securityProfileArn?: string;
 }
+const CreateSecurityProfileResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<CreateSecurityProfileResponse>;
 export type StreamDescription = string;
 export interface StreamFile {
   fileId?: number;
   s3Location?: S3Location;
 }
+const StreamFile = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<StreamFile>;
 export type StreamFiles = StreamFile[];
+const StreamFiles = /*@__PURE__*/ __L.at(__c19, 2);
 export interface CreateStreamRequest {
   streamId: string;
   description?: string;
@@ -1432,6 +1986,7 @@ export interface CreateStreamRequest {
   roleArn: string;
   tags?: Tag[];
 }
+const CreateStreamRequest = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<CreateStreamRequest>;
 export type StreamArn = string;
 export type StreamVersion = number;
 export interface CreateStreamResponse {
@@ -1440,6 +1995,10 @@ export interface CreateStreamResponse {
   description?: string;
   streamVersion?: number;
 }
+const CreateStreamResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<CreateStreamResponse>;
 export type ThingTypeName = string;
 export interface CreateThingRequest {
   thingName: string;
@@ -1447,25 +2006,36 @@ export interface CreateThingRequest {
   attributePayload?: AttributePayload;
   billingGroupName?: string;
 }
+const CreateThingRequest = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<CreateThingRequest>;
 export type ThingId = string;
 export interface CreateThingResponse {
   thingName?: string;
   thingArn?: string;
   thingId?: string;
 }
+const CreateThingResponse = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<CreateThingResponse>;
 export interface CreateThingGroupRequest {
   thingGroupName: string;
   parentGroupName?: string;
   thingGroupProperties?: ThingGroupProperties;
   tags?: Tag[];
 }
+const CreateThingGroupRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<CreateThingGroupRequest>;
 export interface CreateThingGroupResponse {
   thingGroupName?: string;
   thingGroupArn?: string;
   thingGroupId?: string;
 }
+const CreateThingGroupResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<CreateThingGroupResponse>;
 export type ThingTypeDescription = string;
 export type SearchableAttributes = string[];
+const SearchableAttributes = JobTargets as any as S.Schema<SearchableAttributes>;
 export type UserPropertyKeyName = string;
 export type ConnectionAttributeName = string;
 export interface PropagatingAttribute {
@@ -1473,20 +2043,31 @@ export interface PropagatingAttribute {
   thingAttribute?: string;
   connectionAttribute?: string;
 }
+const PropagatingAttribute = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<PropagatingAttribute>;
 export type PropagatingAttributeList = PropagatingAttribute[];
+const PropagatingAttributeList = /*@__PURE__*/ __L.at(__c20, 2);
 export interface Mqtt5Configuration {
   propagatingAttributes?: PropagatingAttribute[];
 }
+const Mqtt5Configuration = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<Mqtt5Configuration>;
 export interface ThingTypeProperties {
   thingTypeDescription?: string;
   searchableAttributes?: string[];
   mqtt5Configuration?: Mqtt5Configuration;
 }
+const ThingTypeProperties = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<ThingTypeProperties>;
 export interface CreateThingTypeRequest {
   thingTypeName: string;
   thingTypeProperties?: ThingTypeProperties;
   tags?: Tag[];
 }
+const CreateThingTypeRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<CreateThingTypeRequest>;
 export type ThingTypeArn = string;
 export type ThingTypeId = string;
 export interface CreateThingTypeResponse {
@@ -1494,6 +2075,10 @@ export interface CreateThingTypeResponse {
   thingTypeArn?: string;
   thingTypeId?: string;
 }
+const CreateThingTypeResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<CreateThingTypeResponse>;
 export type RuleName = string;
 export type SQL = string;
 export type Description = string;
@@ -1503,6 +2088,8 @@ export type DynamoOperation = string;
 export type HashKeyField = string;
 export type HashKeyValue = string;
 export type DynamoKeyType = "STRING" | "NUMBER" | (string & {});
+const DynamoKeyType = S.String;
+
 export type RangeKeyField = string;
 export type RangeKeyValue = string;
 export type PayloadField = string;
@@ -1518,23 +2105,30 @@ export interface DynamoDBAction {
   rangeKeyType?: DynamoKeyType;
   payloadField?: string;
 }
+const DynamoDBAction = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<DynamoDBAction>;
 export interface PutItemInput {
   tableName: string;
 }
+const PutItemInput = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<PutItemInput>;
 export interface DynamoDBv2Action {
   roleArn: string;
   putItem: PutItemInput;
 }
+const DynamoDBv2Action = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<DynamoDBv2Action>;
 export type FunctionArn = string;
 export interface LambdaAction {
   functionArn: string;
 }
+const LambdaAction = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<LambdaAction>;
 export type MessageFormat = "RAW" | "JSON" | (string & {});
+const MessageFormat = S.String;
+
 export interface SnsAction {
   targetArn: string;
   roleArn: string;
   messageFormat?: MessageFormat;
 }
+const SnsAction = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<SnsAction>;
 export type QueueUrl = string;
 export type UseBase64 = boolean;
 export interface SqsAction {
@@ -1542,6 +2136,7 @@ export interface SqsAction {
   queueUrl: string;
   useBase64?: boolean;
 }
+const SqsAction = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<SqsAction>;
 export type StreamName = string;
 export type PartitionKey = string;
 export interface KinesisAction {
@@ -1549,6 +2144,7 @@ export interface KinesisAction {
   streamName: string;
   partitionKey?: string;
 }
+const KinesisAction = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<KinesisAction>;
 export type TopicPattern = string;
 export type Qos = number;
 export type PayloadFormatIndicator = string;
@@ -1562,7 +2158,9 @@ export interface UserProperty {
   key: string;
   value: string;
 }
+const UserProperty = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<UserProperty>;
 export type UserProperties = UserProperty[];
+const UserProperties = /*@__PURE__*/ __L.at(__c21, 7);
 export interface MqttHeaders {
   payloadFormatIndicator?: string;
   contentType?: string;
@@ -1571,12 +2169,14 @@ export interface MqttHeaders {
   messageExpiry?: string;
   userProperties?: UserProperty[];
 }
+const MqttHeaders = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<MqttHeaders>;
 export interface RepublishAction {
   roleArn: string;
   topic: string;
   qos?: number;
   headers?: MqttHeaders;
 }
+const RepublishAction = /*@__PURE__*/ __L.at(__c22, 1) as any as S.Schema<RepublishAction>;
 export type BucketName = string;
 export type Key = string;
 export type CannedAccessControlList =
@@ -1589,12 +2189,15 @@ export type CannedAccessControlList =
   | "bucket-owner-full-control"
   | "log-delivery-write"
   | (string & {});
+const CannedAccessControlList = S.String;
+
 export interface S3Action {
   roleArn: string;
   bucketName: string;
   key: string;
   cannedAcl?: CannedAccessControlList;
 }
+const S3Action = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<S3Action>;
 export type DeliveryStreamName = string;
 export type FirehoseSeparator = string;
 export type BatchMode = boolean;
@@ -1604,6 +2207,7 @@ export interface FirehoseAction {
   separator?: string;
   batchMode?: boolean;
 }
+const FirehoseAction = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<FirehoseAction>;
 export interface CloudwatchMetricAction {
   roleArn: string;
   metricNamespace: string;
@@ -1612,6 +2216,10 @@ export interface CloudwatchMetricAction {
   metricUnit: string;
   metricTimestamp?: string;
 }
+const CloudwatchMetricAction = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<CloudwatchMetricAction>;
 export type AlarmName = string;
 export type StateReason = string;
 export type StateValue = string;
@@ -1621,12 +2229,20 @@ export interface CloudwatchAlarmAction {
   stateReason: string;
   stateValue: string;
 }
+const CloudwatchAlarmAction = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<CloudwatchAlarmAction>;
 export type LogGroupName = string;
 export interface CloudwatchLogsAction {
   roleArn: string;
   logGroupName: string;
   batchMode?: boolean;
 }
+const CloudwatchLogsAction = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<CloudwatchLogsAction>;
 export type ElasticsearchEndpoint = string;
 export type ElasticsearchIndex = string;
 export type ElasticsearchType = string;
@@ -1638,12 +2254,14 @@ export interface ElasticsearchAction {
   type: string;
   id: string;
 }
+const ElasticsearchAction = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<ElasticsearchAction>;
 export type SalesforceToken = string;
 export type SalesforceEndpoint = string;
 export interface SalesforceAction {
   token: string;
   url: string;
 }
+const SalesforceAction = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<SalesforceAction>;
 export type ChannelName = string;
 export interface IotAnalyticsAction {
   channelArn?: string;
@@ -1651,6 +2269,7 @@ export interface IotAnalyticsAction {
   batchMode?: boolean;
   roleArn?: string;
 }
+const IotAnalyticsAction = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<IotAnalyticsAction>;
 export type InputName = string;
 export type MessageId = string;
 export interface IotEventsAction {
@@ -1659,6 +2278,7 @@ export interface IotEventsAction {
   batchMode?: boolean;
   roleArn: string;
 }
+const IotEventsAction = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<IotEventsAction>;
 export type AssetPropertyEntryId = string;
 export type AssetId = string;
 export type AssetPropertyId = string;
@@ -1672,19 +2292,26 @@ export type AssetPropertyVariant =
   | { stringValue?: never; integerValue: string; doubleValue?: never; booleanValue?: never }
   | { stringValue?: never; integerValue?: never; doubleValue: string; booleanValue?: never }
   | { stringValue?: never; integerValue?: never; doubleValue?: never; booleanValue: string };
+const AssetPropertyVariant = /*@__PURE__*/ __L.at(__c23, 3);
 export type AssetPropertyTimeInSeconds = string;
 export type AssetPropertyOffsetInNanos = string;
 export interface AssetPropertyTimestamp {
   timeInSeconds: string;
   offsetInNanos?: string;
 }
+const AssetPropertyTimestamp = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<AssetPropertyTimestamp>;
 export type AssetPropertyQuality = string;
 export interface AssetPropertyValue {
   value: AssetPropertyVariant;
   timestamp: AssetPropertyTimestamp;
   quality?: string;
 }
+const AssetPropertyValue = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<AssetPropertyValue>;
 export type AssetPropertyValueList = AssetPropertyValue[];
+const AssetPropertyValueList = /*@__PURE__*/ __L.at(__c23, 6);
 export interface PutAssetPropertyValueEntry {
   entryId?: string;
   assetId?: string;
@@ -1692,11 +2319,17 @@ export interface PutAssetPropertyValueEntry {
   propertyAlias?: string;
   propertyValues: AssetPropertyValue[];
 }
+const PutAssetPropertyValueEntry = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<PutAssetPropertyValueEntry>;
 export type PutAssetPropertyValueEntryList = PutAssetPropertyValueEntry[];
+const PutAssetPropertyValueEntryList = /*@__PURE__*/ __L.at(__c24, 0);
 export interface IotSiteWiseAction {
   putAssetPropertyValueEntries: PutAssetPropertyValueEntry[];
   roleArn: string;
 }
+const IotSiteWiseAction = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<IotSiteWiseAction>;
 export type ExecutionNamePrefix = string;
 export type StateMachineName = string;
 export interface StepFunctionsAction {
@@ -1704,6 +2337,7 @@ export interface StepFunctionsAction {
   stateMachineName: string;
   roleArn: string;
 }
+const StepFunctionsAction = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<StepFunctionsAction>;
 export type TimestreamDatabaseName = string;
 export type TimestreamTableName = string;
 export type TimestreamDimensionName = string;
@@ -1712,13 +2346,16 @@ export interface TimestreamDimension {
   name: string;
   value: string;
 }
+const TimestreamDimension = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<TimestreamDimension>;
 export type TimestreamDimensionList = TimestreamDimension[];
+const TimestreamDimensionList = /*@__PURE__*/ __L.at(__c24, 4);
 export type TimestreamTimestampValue = string;
 export type TimestreamTimestampUnit = string;
 export interface TimestreamTimestamp {
   value: string;
   unit: string;
 }
+const TimestreamTimestamp = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<TimestreamTimestamp>;
 export interface TimestreamAction {
   roleArn: string;
   databaseName: string;
@@ -1726,6 +2363,7 @@ export interface TimestreamAction {
   dimensions: TimestreamDimension[];
   timestamp?: TimestreamTimestamp;
 }
+const TimestreamAction = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<TimestreamAction>;
 export type Url = string;
 export type HeaderKey = string;
 export type HeaderValue = string;
@@ -1734,6 +2372,7 @@ export interface HttpActionHeader {
   value: string;
 }
 export type HeaderList = HttpActionHeader[];
+const HeaderList = UserProperties as any as S.Schema<HeaderList>;
 export type SigningRegion = string;
 export type ServiceName = string;
 export interface SigV4Authorization {
@@ -1741,9 +2380,11 @@ export interface SigV4Authorization {
   serviceName: string;
   roleArn: string;
 }
+const SigV4Authorization = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<SigV4Authorization>;
 export interface HttpAuthorization {
   sigv4?: SigV4Authorization;
 }
+const HttpAuthorization = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<HttpAuthorization>;
 export type EnableBatching = boolean;
 export type MaxBatchOpenMs = number;
 export type MaxBatchSize = number;
@@ -1755,6 +2396,7 @@ export interface BatchConfig {
   maxBatchSizeBytes?: number;
   batchAcrossTopics?: boolean;
 }
+const BatchConfig = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<BatchConfig>;
 export interface HttpAction {
   url: string;
   confirmationUrl?: string;
@@ -1763,7 +2405,9 @@ export interface HttpAction {
   enableBatching?: boolean;
   batchConfig?: BatchConfig;
 }
+const HttpAction = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<HttpAction>;
 export type ClientProperties = { [key: string]: string | undefined };
+const ClientProperties = PublicKeyMap as any as S.Schema<ClientProperties>;
 export type KafkaHeaderKey = string;
 export type KafkaHeaderValue = string;
 export interface KafkaActionHeader {
@@ -1771,6 +2415,7 @@ export interface KafkaActionHeader {
   value: string;
 }
 export type KafkaHeaders = KafkaActionHeader[];
+const KafkaHeaders = UserProperties as any as S.Schema<KafkaHeaders>;
 export interface KafkaAction {
   destinationArn: string;
   topic: string;
@@ -1779,6 +2424,7 @@ export interface KafkaAction {
   clientProperties: { [key: string]: string | undefined };
   headers?: KafkaActionHeader[];
 }
+const KafkaAction = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<KafkaAction>;
 export interface OpenSearchAction {
   roleArn: string;
   endpoint: string;
@@ -1786,10 +2432,12 @@ export interface OpenSearchAction {
   type: string;
   id: string;
 }
+const OpenSearchAction = ElasticsearchAction as any as S.Schema<OpenSearchAction>;
 export interface LocationTimestamp {
   value: string;
   unit?: string;
 }
+const LocationTimestamp = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<LocationTimestamp>;
 export interface LocationAction {
   roleArn: string;
   trackerName: string;
@@ -1798,13 +2446,17 @@ export interface LocationAction {
   latitude: string;
   longitude: string;
 }
+const LocationAction = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<LocationAction>;
 export type InfluxDBDatabaseName = string;
 export type InfluxDBTableName = string;
 export type InfluxDBOrganization = string;
 export type InfluxDBTagName = string;
 export type InfluxDBTagValue = string;
 export type InfluxDBTagMap = { [key: string]: string | undefined };
+const InfluxDBTagMap = PublicKeyMap as any as S.Schema<InfluxDBTagMap>;
 export type InfluxDBTimestampUnit = "s" | "ms" | "us" | "ns" | (string & {});
+const InfluxDBTimestampUnit = S.String;
+
 export type InfluxDBMaxBatchSize = number;
 export type InfluxDBMaxBatchOpenMs = number;
 export type InfluxDBMaxBatchSizeBytes = number;
@@ -1815,6 +2467,7 @@ export interface InfluxDBBatchConfig {
   maxBatchSizeBytes?: number;
   batchAcrossTopics?: boolean;
 }
+const InfluxDBBatchConfig = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<InfluxDBBatchConfig>;
 export interface InfluxDBAction {
   destinationArn: string;
   roleArn: string;
@@ -1825,6 +2478,7 @@ export interface InfluxDBAction {
   timestampUnit?: InfluxDBTimestampUnit;
   batchConfig?: InfluxDBBatchConfig;
 }
+const InfluxDBAction = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<InfluxDBAction>;
 export interface Action {
   dynamoDB?: DynamoDBAction;
   dynamoDBv2?: DynamoDBv2Action;
@@ -1851,7 +2505,9 @@ export interface Action {
   location?: LocationAction;
   influxDB?: InfluxDBAction;
 }
+const Action = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<Action>;
 export type ActionList = Action[];
+const ActionList = /*@__PURE__*/ __L.at(__c26, 1);
 export type IsDisabled = boolean;
 export type AwsIotSqlVersion = string;
 export interface TopicRulePayload {
@@ -1862,19 +2518,32 @@ export interface TopicRulePayload {
   awsIotSqlVersion?: string;
   errorAction?: Action;
 }
+const TopicRulePayload = /*@__PURE__*/ __L.at(__c26, 2) as any as S.Schema<TopicRulePayload>;
 export interface CreateTopicRuleRequest {
   ruleName: string;
   topicRulePayload: TopicRulePayload;
   tags?: string;
 }
+const CreateTopicRuleRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<CreateTopicRuleRequest>;
 export interface CreateTopicRuleResponse {}
+const CreateTopicRuleResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<CreateTopicRuleResponse>;
 export interface HttpUrlDestinationConfiguration {
   confirmationUrl: string;
 }
+const HttpUrlDestinationConfiguration = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<HttpUrlDestinationConfiguration>;
 export type SubnetId = string;
 export type SubnetIdList = string[];
+const SubnetIdList = JobTargets as any as S.Schema<SubnetIdList>;
 export type SecurityGroupId = string;
 export type SecurityGroupList = string[];
+const SecurityGroupList = JobTargets as any as S.Schema<SecurityGroupList>;
 export type VpcId = string;
 export interface VpcDestinationConfiguration {
   subnetIds: string[];
@@ -1882,9 +2551,17 @@ export interface VpcDestinationConfiguration {
   vpcId: string;
   roleArn: string;
 }
+const VpcDestinationConfiguration = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<VpcDestinationConfiguration>;
 export type InfluxDBVersion = "V2" | "V3" | (string & {});
+const InfluxDBVersion = S.String;
+
 export type InfluxDBSecretId = string;
 export type InfluxDBSecretType = "SecretString" | "SecretBinary" | (string & {});
+const InfluxDBSecretType = S.String;
+
 export type InfluxDBSecretKey = string;
 export interface InfluxDBDestinationConfiguration {
   endpoint: string;
@@ -1893,14 +2570,26 @@ export interface InfluxDBDestinationConfiguration {
   secretType?: InfluxDBSecretType;
   secretKey?: string;
 }
+const InfluxDBDestinationConfiguration = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<InfluxDBDestinationConfiguration>;
 export interface TopicRuleDestinationConfiguration {
   httpUrlConfiguration?: HttpUrlDestinationConfiguration;
   vpcConfiguration?: VpcDestinationConfiguration;
   influxDBConfiguration?: InfluxDBDestinationConfiguration;
 }
+const TopicRuleDestinationConfiguration = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<TopicRuleDestinationConfiguration>;
 export interface CreateTopicRuleDestinationRequest {
   destinationConfiguration: TopicRuleDestinationConfiguration;
 }
+const CreateTopicRuleDestinationRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<CreateTopicRuleDestinationRequest>;
 export type TopicRuleDestinationStatus =
   | "ENABLED"
   | "IN_PROGRESS"
@@ -1908,17 +2597,27 @@ export type TopicRuleDestinationStatus =
   | "ERROR"
   | "DELETING"
   | (string & {});
+const TopicRuleDestinationStatus = S.String;
+
 export type CreatedAtDate = Date;
 export type LastUpdatedAtDate = Date;
 export interface HttpUrlDestinationProperties {
   confirmationUrl?: string;
 }
+const HttpUrlDestinationProperties = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<HttpUrlDestinationProperties>;
 export interface VpcDestinationProperties {
   subnetIds?: string[];
   securityGroups?: string[];
   vpcId?: string;
   roleArn?: string;
 }
+const VpcDestinationProperties = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<VpcDestinationProperties>;
 export interface InfluxDBDestinationProperties {
   endpoint?: string;
   influxDBVersion?: InfluxDBVersion;
@@ -1926,6 +2625,10 @@ export interface InfluxDBDestinationProperties {
   secretType?: InfluxDBSecretType;
   secretKey?: string;
 }
+const InfluxDBDestinationProperties = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<InfluxDBDestinationProperties>;
 export interface TopicRuleDestination {
   arn?: string;
   status?: TopicRuleDestinationStatus;
@@ -1936,84 +2639,182 @@ export interface TopicRuleDestination {
   vpcProperties?: VpcDestinationProperties;
   influxDBProperties?: InfluxDBDestinationProperties;
 }
+const TopicRuleDestination = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<TopicRuleDestination>;
 export interface CreateTopicRuleDestinationResponse {
   topicRuleDestination?: TopicRuleDestination;
 }
+const CreateTopicRuleDestinationResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<CreateTopicRuleDestinationResponse>;
 export type DeleteScheduledAudits = boolean;
 export interface DeleteAccountAuditConfigurationRequest {
   deleteScheduledAudits?: boolean;
 }
+const DeleteAccountAuditConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<DeleteAccountAuditConfigurationRequest>;
 export interface DeleteAccountAuditConfigurationResponse {}
+const DeleteAccountAuditConfigurationResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<DeleteAccountAuditConfigurationResponse>;
 export interface DeleteAuditSuppressionRequest {
   checkName: string;
   resourceIdentifier: ResourceIdentifier;
 }
+const DeleteAuditSuppressionRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<DeleteAuditSuppressionRequest>;
 export interface DeleteAuditSuppressionResponse {}
+const DeleteAuditSuppressionResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeleteAuditSuppressionResponse>;
 export interface DeleteAuthorizerRequest {
   authorizerName: string;
 }
+const DeleteAuthorizerRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<DeleteAuthorizerRequest>;
 export interface DeleteAuthorizerResponse {}
+const DeleteAuthorizerResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeleteAuthorizerResponse>;
 export type OptionalVersion = number;
 export interface DeleteBillingGroupRequest {
   billingGroupName: string;
   expectedVersion?: number;
 }
+const DeleteBillingGroupRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<DeleteBillingGroupRequest>;
 export interface DeleteBillingGroupResponse {}
+const DeleteBillingGroupResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeleteBillingGroupResponse>;
 export interface DeleteCACertificateRequest {
   certificateId: string;
 }
+const DeleteCACertificateRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<DeleteCACertificateRequest>;
 export interface DeleteCACertificateResponse {}
+const DeleteCACertificateResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeleteCACertificateResponse>;
 export type ForceDelete = boolean;
 export interface DeleteCertificateRequest {
   certificateId: string;
   forceDelete?: boolean;
 }
+const DeleteCertificateRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<DeleteCertificateRequest>;
 export interface DeleteCertificateResponse {}
+const DeleteCertificateResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeleteCertificateResponse>;
 export interface DeleteCertificateProviderRequest {
   certificateProviderName: string;
 }
+const DeleteCertificateProviderRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<DeleteCertificateProviderRequest>;
 export interface DeleteCertificateProviderResponse {}
+const DeleteCertificateProviderResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<DeleteCertificateProviderResponse>;
 export interface DeleteCommandRequest {
   commandId: string;
 }
+const DeleteCommandRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<DeleteCommandRequest>;
 export type StatusCode = number;
 export interface DeleteCommandResponse {
   statusCode?: number;
 }
+const DeleteCommandResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<DeleteCommandResponse>;
 export type CommandExecutionId = string;
 export interface DeleteCommandExecutionRequest {
   executionId: string;
   targetArn: string;
 }
+const DeleteCommandExecutionRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<DeleteCommandExecutionRequest>;
 export interface DeleteCommandExecutionResponse {}
+const DeleteCommandExecutionResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeleteCommandExecutionResponse>;
 export interface DeleteCustomMetricRequest {
   metricName: string;
 }
+const DeleteCustomMetricRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<DeleteCustomMetricRequest>;
 export interface DeleteCustomMetricResponse {}
+const DeleteCustomMetricResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeleteCustomMetricResponse>;
 export interface DeleteDimensionRequest {
   name: string;
 }
+const DeleteDimensionRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<DeleteDimensionRequest>;
 export interface DeleteDimensionResponse {}
+const DeleteDimensionResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeleteDimensionResponse>;
 export interface DeleteDomainConfigurationRequest {
   domainConfigurationName: string;
 }
+const DeleteDomainConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<DeleteDomainConfigurationRequest>;
 export interface DeleteDomainConfigurationResponse {}
+const DeleteDomainConfigurationResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<DeleteDomainConfigurationResponse>;
 export interface DeleteDynamicThingGroupRequest {
   thingGroupName: string;
   expectedVersion?: number;
 }
+const DeleteDynamicThingGroupRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<DeleteDynamicThingGroupRequest>;
 export interface DeleteDynamicThingGroupResponse {}
+const DeleteDynamicThingGroupResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<DeleteDynamicThingGroupResponse>;
 export interface DeleteFleetMetricRequest {
   metricName: string;
   expectedVersion?: number;
 }
+const DeleteFleetMetricRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<DeleteFleetMetricRequest>;
 export interface DeleteFleetMetricResponse {}
+const DeleteFleetMetricResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeleteFleetMetricResponse>;
 export interface DeleteJobRequest {
   jobId: string;
   force?: boolean;
   namespaceId?: string;
 }
+const DeleteJobRequest = /*@__PURE__*/ __L.at(__c29, 6) as any as S.Schema<DeleteJobRequest>;
 export interface DeleteJobResponse {}
+const DeleteJobResponse = AddThingToBillingGroupResponse as any as S.Schema<DeleteJobResponse>;
 export type ExecutionNumber = number;
 export interface DeleteJobExecutionRequest {
   jobId: string;
@@ -2022,15 +2823,33 @@ export interface DeleteJobExecutionRequest {
   force?: boolean;
   namespaceId?: string;
 }
+const DeleteJobExecutionRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<DeleteJobExecutionRequest>;
 export interface DeleteJobExecutionResponse {}
+const DeleteJobExecutionResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeleteJobExecutionResponse>;
 export interface DeleteJobTemplateRequest {
   jobTemplateId: string;
 }
+const DeleteJobTemplateRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<DeleteJobTemplateRequest>;
 export interface DeleteJobTemplateResponse {}
+const DeleteJobTemplateResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeleteJobTemplateResponse>;
 export interface DeleteMitigationActionRequest {
   actionName: string;
 }
+const DeleteMitigationActionRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<DeleteMitigationActionRequest>;
 export interface DeleteMitigationActionResponse {}
+const DeleteMitigationActionResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeleteMitigationActionResponse>;
 export type DeleteStream_ = boolean;
 export type ForceDeleteAWSJob = boolean;
 export interface DeleteOTAUpdateRequest {
@@ -2038,77 +2857,169 @@ export interface DeleteOTAUpdateRequest {
   deleteStream?: boolean;
   forceDeleteAWSJob?: boolean;
 }
+const DeleteOTAUpdateRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<DeleteOTAUpdateRequest>;
 export interface DeleteOTAUpdateResponse {}
+const DeleteOTAUpdateResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeleteOTAUpdateResponse>;
 export interface DeletePackageRequest {
   packageName: string;
   clientToken?: string;
 }
+const DeletePackageRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<DeletePackageRequest>;
 export interface DeletePackageResponse {}
+const DeletePackageResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeletePackageResponse>;
 export interface DeletePackageVersionRequest {
   packageName: string;
   versionName: string;
   clientToken?: string;
 }
+const DeletePackageVersionRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<DeletePackageVersionRequest>;
 export interface DeletePackageVersionResponse {}
+const DeletePackageVersionResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeletePackageVersionResponse>;
 export interface DeletePolicyRequest {
   policyName: string;
 }
+const DeletePolicyRequest = /*@__PURE__*/ __L.at(__c30, 5) as any as S.Schema<DeletePolicyRequest>;
 export interface DeletePolicyResponse {}
+const DeletePolicyResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeletePolicyResponse>;
 export interface DeletePolicyVersionRequest {
   policyName: string;
   policyVersionId: string;
 }
+const DeletePolicyVersionRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<DeletePolicyVersionRequest>;
 export interface DeletePolicyVersionResponse {}
+const DeletePolicyVersionResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeletePolicyVersionResponse>;
 export interface DeleteProvisioningTemplateRequest {
   templateName: string;
 }
+const DeleteProvisioningTemplateRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<DeleteProvisioningTemplateRequest>;
 export interface DeleteProvisioningTemplateResponse {}
+const DeleteProvisioningTemplateResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<DeleteProvisioningTemplateResponse>;
 export interface DeleteProvisioningTemplateVersionRequest {
   templateName: string;
   versionId: number;
 }
+const DeleteProvisioningTemplateVersionRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<DeleteProvisioningTemplateVersionRequest>;
 export interface DeleteProvisioningTemplateVersionResponse {}
+const DeleteProvisioningTemplateVersionResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<DeleteProvisioningTemplateVersionResponse>;
 export interface DeleteRegistrationCodeRequest {}
+const DeleteRegistrationCodeRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<DeleteRegistrationCodeRequest>;
 export interface DeleteRegistrationCodeResponse {}
+const DeleteRegistrationCodeResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeleteRegistrationCodeResponse>;
 export interface DeleteRoleAliasRequest {
   roleAlias: string;
 }
+const DeleteRoleAliasRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<DeleteRoleAliasRequest>;
 export interface DeleteRoleAliasResponse {}
+const DeleteRoleAliasResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeleteRoleAliasResponse>;
 export interface DeleteScheduledAuditRequest {
   scheduledAuditName: string;
 }
+const DeleteScheduledAuditRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<DeleteScheduledAuditRequest>;
 export interface DeleteScheduledAuditResponse {}
+const DeleteScheduledAuditResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeleteScheduledAuditResponse>;
 export interface DeleteSecurityProfileRequest {
   securityProfileName: string;
   expectedVersion?: number;
 }
+const DeleteSecurityProfileRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<DeleteSecurityProfileRequest>;
 export interface DeleteSecurityProfileResponse {}
+const DeleteSecurityProfileResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeleteSecurityProfileResponse>;
 export interface DeleteStreamRequest {
   streamId: string;
 }
+const DeleteStreamRequest = /*@__PURE__*/ __L.at(__c31, 5) as any as S.Schema<DeleteStreamRequest>;
 export interface DeleteStreamResponse {}
+const DeleteStreamResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeleteStreamResponse>;
 export interface DeleteThingRequest {
   thingName: string;
   expectedVersion?: number;
 }
+const DeleteThingRequest = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<DeleteThingRequest>;
 export interface DeleteThingResponse {}
+const DeleteThingResponse = AddThingToBillingGroupResponse as any as S.Schema<DeleteThingResponse>;
 export interface DeleteThingGroupRequest {
   thingGroupName: string;
   expectedVersion?: number;
 }
+const DeleteThingGroupRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<DeleteThingGroupRequest>;
 export interface DeleteThingGroupResponse {}
+const DeleteThingGroupResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeleteThingGroupResponse>;
 export interface DeleteThingTypeRequest {
   thingTypeName: string;
 }
+const DeleteThingTypeRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<DeleteThingTypeRequest>;
 export interface DeleteThingTypeResponse {}
+const DeleteThingTypeResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeleteThingTypeResponse>;
 export interface DeleteTopicRuleRequest {
   ruleName: string;
 }
+const DeleteTopicRuleRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<DeleteTopicRuleRequest>;
 export interface DeleteTopicRuleResponse {}
+const DeleteTopicRuleResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeleteTopicRuleResponse>;
 export interface DeleteTopicRuleDestinationRequest {
   arn: string;
 }
+const DeleteTopicRuleDestinationRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<DeleteTopicRuleDestinationRequest>;
 export interface DeleteTopicRuleDestinationResponse {}
+const DeleteTopicRuleDestinationResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<DeleteTopicRuleDestinationResponse>;
 export type LogTargetType =
   | "DEFAULT"
   | "THING_GROUP"
@@ -2116,50 +3027,93 @@ export type LogTargetType =
   | "SOURCE_IP"
   | "PRINCIPAL_ID"
   | (string & {});
+const LogTargetType = S.String;
+
 export type LogTargetName = string;
 export interface DeleteV2LoggingLevelRequest {
   targetType: LogTargetType;
   targetName: string;
 }
+const DeleteV2LoggingLevelRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<DeleteV2LoggingLevelRequest>;
 export interface DeleteV2LoggingLevelResponse {}
+const DeleteV2LoggingLevelResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeleteV2LoggingLevelResponse>;
 export type UndoDeprecate = boolean;
 export interface DeprecateThingTypeRequest {
   thingTypeName: string;
   undoDeprecate?: boolean;
 }
+const DeprecateThingTypeRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<DeprecateThingTypeRequest>;
 export interface DeprecateThingTypeResponse {}
+const DeprecateThingTypeResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DeprecateThingTypeResponse>;
 export interface DescribeAccountAuditConfigurationRequest {}
+const DescribeAccountAuditConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<DescribeAccountAuditConfigurationRequest>;
 export type AuditNotificationType = "SNS" | (string & {});
+const AuditNotificationType = S.String;
+
 export type Enabled = boolean;
 export interface AuditNotificationTarget {
   targetArn?: string;
   roleArn?: string;
   enabled?: boolean;
 }
+const AuditNotificationTarget = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<AuditNotificationTarget>;
 export type AuditNotificationTargetConfigurations = {
   [key in AuditNotificationType]?: AuditNotificationTarget;
 };
+const AuditNotificationTargetConfigurations = /*@__PURE__*/ __L.at(__c32, 7);
 export type ConfigName =
   | "CERT_AGE_THRESHOLD_IN_DAYS"
   | "CERT_EXPIRATION_THRESHOLD_IN_DAYS"
   | (string & {});
+const ConfigName = S.String;
+
 export type ConfigValue = string;
 export type CheckCustomConfiguration = { [key in ConfigName]?: string };
+const CheckCustomConfiguration = /*@__PURE__*/ __L.at(__c33, 0);
 export interface AuditCheckConfiguration {
   enabled?: boolean;
   configuration?: { [key: string]: string | undefined };
 }
+const AuditCheckConfiguration = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<AuditCheckConfiguration>;
 export type AuditCheckConfigurations = { [key: string]: AuditCheckConfiguration | undefined };
+const AuditCheckConfigurations = /*@__PURE__*/ __L.at(__c33, 2);
 export interface DescribeAccountAuditConfigurationResponse {
   roleArn?: string;
   auditNotificationTargetConfigurations?: { [key: string]: AuditNotificationTarget | undefined };
   auditCheckConfigurations?: { [key: string]: AuditCheckConfiguration | undefined };
 }
+const DescribeAccountAuditConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<DescribeAccountAuditConfigurationResponse>;
 export type FindingId = string;
 export interface DescribeAuditFindingRequest {
   findingId: string;
 }
+const DescribeAuditFindingRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  4,
+) as any as S.Schema<DescribeAuditFindingRequest>;
 export type AuditFindingSeverity = "CRITICAL" | "HIGH" | "MEDIUM" | "LOW" | (string & {});
+const AuditFindingSeverity = S.String;
+
 export type ResourceType =
   | "DEVICE_CERTIFICATE"
   | "CA_CERTIFICATE"
@@ -2171,18 +3125,27 @@ export type ResourceType =
   | "IAM_ROLE"
   | "ISSUER_CERTIFICATE"
   | (string & {});
+const ResourceType = S.String;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = DetailsMap as any as S.Schema<StringMap>;
 export interface NonCompliantResource {
   resourceType?: ResourceType;
   resourceIdentifier?: ResourceIdentifier;
   additionalInfo?: { [key: string]: string | undefined };
 }
+const NonCompliantResource = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<NonCompliantResource>;
 export interface RelatedResource {
   resourceType?: ResourceType;
   resourceIdentifier?: ResourceIdentifier;
   additionalInfo?: { [key: string]: string | undefined };
 }
+const RelatedResource = NonCompliantResource as any as S.Schema<RelatedResource>;
 export type RelatedResources = RelatedResource[];
+const RelatedResources = /*@__PURE__*/ __L.at(__c33, 6);
 export type ReasonForNonCompliance = string;
 export type ReasonForNonComplianceCode = string;
 export type IsSuppressed = boolean;
@@ -2199,18 +3162,29 @@ export interface AuditFinding {
   reasonForNonComplianceCode?: string;
   isSuppressed?: boolean;
 }
+const AuditFinding = /*@__PURE__*/ __L.at(__c33, 7) as any as S.Schema<AuditFinding>;
 export interface DescribeAuditFindingResponse {
   finding?: AuditFinding;
 }
+const DescribeAuditFindingResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<DescribeAuditFindingResponse>;
 export interface DescribeAuditMitigationActionsTaskRequest {
   taskId: string;
 }
+const DescribeAuditMitigationActionsTaskRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<DescribeAuditMitigationActionsTaskRequest>;
 export type AuditMitigationActionsTaskStatus =
   | "IN_PROGRESS"
   | "COMPLETED"
   | "FAILED"
   | "CANCELED"
   | (string & {});
+const AuditMitigationActionsTaskStatus = S.String;
+
 export type TotalFindingsCount = number;
 export type FailedFindingsCount = number;
 export type SucceededFindingsCount = number;
@@ -2223,26 +3197,42 @@ export interface TaskStatisticsForAuditCheck {
   skippedFindingsCount?: number;
   canceledFindingsCount?: number;
 }
+const TaskStatisticsForAuditCheck = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<TaskStatisticsForAuditCheck>;
 export type AuditMitigationActionsTaskStatistics = {
   [key: string]: TaskStatisticsForAuditCheck | undefined;
 };
+const AuditMitigationActionsTaskStatistics = /*@__PURE__*/ __L.at(__c34, 3);
 export type FindingIds = string[];
+const FindingIds = JobTargets as any as S.Schema<FindingIds>;
 export type ReasonForNonComplianceCodes = string[];
+const ReasonForNonComplianceCodes = JobTargets as any as S.Schema<ReasonForNonComplianceCodes>;
 export type AuditCheckToReasonCodeFilter = { [key: string]: string[] | undefined };
+const AuditCheckToReasonCodeFilter = /*@__PURE__*/ __L.at(__c34, 4);
 export interface AuditMitigationActionsTaskTarget {
   auditTaskId?: string;
   findingIds?: string[];
   auditCheckToReasonCodeFilter?: { [key: string]: string[] | undefined };
 }
+const AuditMitigationActionsTaskTarget = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<AuditMitigationActionsTaskTarget>;
 export type MitigationActionNameList = string[];
 export type AuditCheckToActionsMapping = { [key: string]: string[] | undefined };
+const AuditCheckToActionsMapping =
+  AuditCheckToReasonCodeFilter as any as S.Schema<AuditCheckToActionsMapping>;
 export interface MitigationAction {
   name?: string;
   id?: string;
   roleArn?: string;
   actionParams?: MitigationActionParams;
 }
+const MitigationAction = /*@__PURE__*/ __L.at(__c34, 6) as any as S.Schema<MitigationAction>;
 export type MitigationActionList = MitigationAction[];
+const MitigationActionList = /*@__PURE__*/ __L.at(__c34, 7);
 export interface DescribeAuditMitigationActionsTaskResponse {
   taskStatus?: AuditMitigationActionsTaskStatus;
   startTime?: Date;
@@ -2252,10 +3242,18 @@ export interface DescribeAuditMitigationActionsTaskResponse {
   auditCheckToActionsMapping?: { [key: string]: string[] | undefined };
   actionsDefinition?: MitigationAction[];
 }
+const DescribeAuditMitigationActionsTaskResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<DescribeAuditMitigationActionsTaskResponse>;
 export interface DescribeAuditSuppressionRequest {
   checkName: string;
   resourceIdentifier: ResourceIdentifier;
 }
+const DescribeAuditSuppressionRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<DescribeAuditSuppressionRequest>;
 export interface DescribeAuditSuppressionResponse {
   checkName?: string;
   resourceIdentifier?: ResourceIdentifier;
@@ -2263,11 +3261,23 @@ export interface DescribeAuditSuppressionResponse {
   suppressIndefinitely?: boolean;
   description?: string;
 }
+const DescribeAuditSuppressionResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<DescribeAuditSuppressionResponse>;
 export interface DescribeAuditTaskRequest {
   taskId: string;
 }
+const DescribeAuditTaskRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<DescribeAuditTaskRequest>;
 export type AuditTaskStatus = "IN_PROGRESS" | "COMPLETED" | "FAILED" | "CANCELED" | (string & {});
+const AuditTaskStatus = S.String;
+
 export type AuditTaskType = "ON_DEMAND_AUDIT_TASK" | "SCHEDULED_AUDIT_TASK" | (string & {});
+const AuditTaskType = S.String;
+
 export type TotalChecksCount = number;
 export type InProgressChecksCount = number;
 export type WaitingForDataCollectionChecksCount = number;
@@ -2284,6 +3294,7 @@ export interface TaskStatistics {
   failedChecks?: number;
   canceledChecks?: number;
 }
+const TaskStatistics = /*@__PURE__*/ __L.at(__c35, 4) as any as S.Schema<TaskStatistics>;
 export type AuditCheckRunStatus =
   | "IN_PROGRESS"
   | "WAITING_FOR_DATA_COLLECTION"
@@ -2292,6 +3303,8 @@ export type AuditCheckRunStatus =
   | "COMPLETED_NON_COMPLIANT"
   | "FAILED"
   | (string & {});
+const AuditCheckRunStatus = S.String;
+
 export type CheckCompliant = boolean;
 export type TotalResourcesCount = number;
 export type NonCompliantResourcesCount = number;
@@ -2307,7 +3320,9 @@ export interface AuditCheckDetails {
   errorCode?: string;
   message?: string;
 }
+const AuditCheckDetails = /*@__PURE__*/ __L.at(__c35, 5) as any as S.Schema<AuditCheckDetails>;
 export type AuditDetails = { [key: string]: AuditCheckDetails | undefined };
+const AuditDetails = /*@__PURE__*/ __L.at(__c35, 6);
 export interface DescribeAuditTaskResponse {
   taskStatus?: AuditTaskStatus;
   taskType?: AuditTaskType;
@@ -2316,9 +3331,17 @@ export interface DescribeAuditTaskResponse {
   scheduledAuditName?: string;
   auditDetails?: { [key: string]: AuditCheckDetails | undefined };
 }
+const DescribeAuditTaskResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<DescribeAuditTaskResponse>;
 export interface DescribeAuthorizerRequest {
   authorizerName: string;
 }
+const DescribeAuthorizerRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<DescribeAuthorizerRequest>;
 export interface AuthorizerDescription {
   authorizerName?: string;
   authorizerArn?: string;
@@ -2331,17 +3354,33 @@ export interface AuthorizerDescription {
   signingDisabled?: boolean;
   enableCachingForHttp?: boolean;
 }
+const AuthorizerDescription = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<AuthorizerDescription>;
 export interface DescribeAuthorizerResponse {
   authorizerDescription?: AuthorizerDescription;
 }
+const DescribeAuthorizerResponse = /*@__PURE__*/ __L.at(
+  __c36,
+  2,
+) as any as S.Schema<DescribeAuthorizerResponse>;
 export interface DescribeBillingGroupRequest {
   billingGroupName: string;
 }
+const DescribeBillingGroupRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<DescribeBillingGroupRequest>;
 export type Version = number;
 export type CreationDate = Date;
 export interface BillingGroupMetadata {
   creationDate?: Date;
 }
+const BillingGroupMetadata = /*@__PURE__*/ __L.at(
+  __c36,
+  4,
+) as any as S.Schema<BillingGroupMetadata>;
 export interface DescribeBillingGroupResponse {
   billingGroupName?: string;
   billingGroupId?: string;
@@ -2350,18 +3389,33 @@ export interface DescribeBillingGroupResponse {
   billingGroupProperties?: BillingGroupProperties;
   billingGroupMetadata?: BillingGroupMetadata;
 }
+const DescribeBillingGroupResponse = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<DescribeBillingGroupResponse>;
 export interface DescribeCACertificateRequest {
   certificateId: string;
 }
+const DescribeCACertificateRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<DescribeCACertificateRequest>;
 export type CACertificateStatus = "ACTIVE" | "INACTIVE" | (string & {});
+const CACertificateStatus = S.String;
+
 export type AutoRegistrationStatus = "ENABLE" | "DISABLE" | (string & {});
+const AutoRegistrationStatus = S.String;
+
 export type CustomerVersion = number;
 export type GenerationId = string;
 export interface CertificateValidity {
   notBefore?: Date;
   notAfter?: Date;
 }
+const CertificateValidity = /*@__PURE__*/ __L.at(__c36, 7) as any as S.Schema<CertificateValidity>;
 export type CertificateMode = "DEFAULT" | "SNI_ONLY" | (string & {});
+const CertificateMode = S.String;
+
 export interface CACertificateDescription {
   certificateArn?: string;
   certificateId?: string;
@@ -2376,18 +3430,31 @@ export interface CACertificateDescription {
   validity?: CertificateValidity;
   certificateMode?: CertificateMode;
 }
+const CACertificateDescription = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<CACertificateDescription>;
 export interface RegistrationConfig {
   templateBody?: string;
   roleArn?: string;
   templateName?: string;
 }
+const RegistrationConfig = /*@__PURE__*/ __L.at(__c37, 1) as any as S.Schema<RegistrationConfig>;
 export interface DescribeCACertificateResponse {
   certificateDescription?: CACertificateDescription;
   registrationConfig?: RegistrationConfig;
 }
+const DescribeCACertificateResponse = /*@__PURE__*/ __L.at(
+  __c37,
+  2,
+) as any as S.Schema<DescribeCACertificateResponse>;
 export interface DescribeCertificateRequest {
   certificateId: string;
 }
+const DescribeCertificateRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  3,
+) as any as S.Schema<DescribeCertificateRequest>;
 export type CertificateStatus =
   | "ACTIVE"
   | "INACTIVE"
@@ -2396,6 +3463,8 @@ export type CertificateStatus =
   | "REGISTER_INACTIVE"
   | "PENDING_ACTIVATION"
   | (string & {});
+const CertificateStatus = S.String;
+
 export type Message = string;
 export interface TransferData {
   transferMessage?: string;
@@ -2404,6 +3473,7 @@ export interface TransferData {
   acceptDate?: Date;
   rejectDate?: Date;
 }
+const TransferData = /*@__PURE__*/ __L.at(__c37, 4) as any as S.Schema<TransferData>;
 export interface CertificateDescription {
   certificateArn?: string;
   certificateId?: string;
@@ -2420,12 +3490,24 @@ export interface CertificateDescription {
   validity?: CertificateValidity;
   certificateMode?: CertificateMode;
 }
+const CertificateDescription = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<CertificateDescription>;
 export interface DescribeCertificateResponse {
   certificateDescription?: CertificateDescription;
 }
+const DescribeCertificateResponse = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<DescribeCertificateResponse>;
 export interface DescribeCertificateProviderRequest {
   certificateProviderName: string;
 }
+const DescribeCertificateProviderRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<DescribeCertificateProviderRequest>;
 export interface DescribeCertificateProviderResponse {
   certificateProviderName?: string;
   certificateProviderArn?: string;
@@ -2434,9 +3516,17 @@ export interface DescribeCertificateProviderResponse {
   creationDate?: Date;
   lastModifiedDate?: Date;
 }
+const DescribeCertificateProviderResponse = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<DescribeCertificateProviderResponse>;
 export interface DescribeCustomMetricRequest {
   metricName: string;
 }
+const DescribeCustomMetricRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  1,
+) as any as S.Schema<DescribeCustomMetricRequest>;
 export interface DescribeCustomMetricResponse {
   metricName?: string;
   metricArn?: string;
@@ -2445,30 +3535,56 @@ export interface DescribeCustomMetricResponse {
   creationDate?: Date;
   lastModifiedDate?: Date;
 }
+const DescribeCustomMetricResponse = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<DescribeCustomMetricResponse>;
 export interface DescribeDefaultAuthorizerRequest {}
+const DescribeDefaultAuthorizerRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<DescribeDefaultAuthorizerRequest>;
 export interface DescribeDefaultAuthorizerResponse {
   authorizerDescription?: AuthorizerDescription;
 }
+const DescribeDefaultAuthorizerResponse =
+  DescribeAuthorizerResponse as any as S.Schema<DescribeDefaultAuthorizerResponse>;
 export interface DescribeDetectMitigationActionsTaskRequest {
   taskId: string;
 }
+const DescribeDetectMitigationActionsTaskRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  4,
+) as any as S.Schema<DescribeDetectMitigationActionsTaskRequest>;
 export type DetectMitigationActionsTaskStatus =
   | "IN_PROGRESS"
   | "SUCCESSFUL"
   | "FAILED"
   | "CANCELED"
   | (string & {});
+const DetectMitigationActionsTaskStatus = S.String;
+
 export type ViolationId = string;
 export type TargetViolationIdsForDetectMitigationActions = string[];
+const TargetViolationIdsForDetectMitigationActions =
+  JobTargets as any as S.Schema<TargetViolationIdsForDetectMitigationActions>;
 export interface DetectMitigationActionsTaskTarget {
   violationIds?: string[];
   securityProfileName?: string;
   behaviorName?: string;
 }
+const DetectMitigationActionsTaskTarget = /*@__PURE__*/ __L.at(
+  __c38,
+  5,
+) as any as S.Schema<DetectMitigationActionsTaskTarget>;
 export interface ViolationEventOccurrenceRange {
   startTime: Date;
   endTime: Date;
 }
+const ViolationEventOccurrenceRange = /*@__PURE__*/ __L.at(
+  __c38,
+  6,
+) as any as S.Schema<ViolationEventOccurrenceRange>;
 export type PrimitiveBoolean = boolean;
 export type GenericLongValue = number;
 export interface DetectMitigationActionsTaskStatistics {
@@ -2476,6 +3592,10 @@ export interface DetectMitigationActionsTaskStatistics {
   actionsSkipped?: number;
   actionsFailed?: number;
 }
+const DetectMitigationActionsTaskStatistics = /*@__PURE__*/ __L.at(
+  __c38,
+  7,
+) as any as S.Schema<DetectMitigationActionsTaskStatistics>;
 export interface DetectMitigationActionsTaskSummary {
   taskId?: string;
   taskStatus?: DetectMitigationActionsTaskStatus;
@@ -2488,12 +3608,24 @@ export interface DetectMitigationActionsTaskSummary {
   actionsDefinition?: MitigationAction[];
   taskStatistics?: DetectMitigationActionsTaskStatistics;
 }
+const DetectMitigationActionsTaskSummary = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<DetectMitigationActionsTaskSummary>;
 export interface DescribeDetectMitigationActionsTaskResponse {
   taskSummary?: DetectMitigationActionsTaskSummary;
 }
+const DescribeDetectMitigationActionsTaskResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  1,
+) as any as S.Schema<DescribeDetectMitigationActionsTaskResponse>;
 export interface DescribeDimensionRequest {
   name: string;
 }
+const DescribeDimensionRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  2,
+) as any as S.Schema<DescribeDimensionRequest>;
 export interface DescribeDimensionResponse {
   name?: string;
   arn?: string;
@@ -2502,20 +3634,39 @@ export interface DescribeDimensionResponse {
   creationDate?: Date;
   lastModifiedDate?: Date;
 }
+const DescribeDimensionResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<DescribeDimensionResponse>;
 export type ReservedDomainConfigurationName = string;
 export interface DescribeDomainConfigurationRequest {
   domainConfigurationName: string;
 }
+const DescribeDomainConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  4,
+) as any as S.Schema<DescribeDomainConfigurationRequest>;
 export type ServerCertificateStatus = "INVALID" | "VALID" | (string & {});
+const ServerCertificateStatus = S.String;
+
 export type ServerCertificateStatusDetail = string;
 export interface ServerCertificateSummary {
   serverCertificateArn?: string;
   serverCertificateStatus?: ServerCertificateStatus;
   serverCertificateStatusDetail?: string;
 }
+const ServerCertificateSummary = /*@__PURE__*/ __L.at(
+  __c39,
+  5,
+) as any as S.Schema<ServerCertificateSummary>;
 export type ServerCertificates = ServerCertificateSummary[];
+const ServerCertificates = /*@__PURE__*/ __L.at(__c39, 6);
 export type DomainConfigurationStatus = "ENABLED" | "DISABLED" | (string & {});
+const DomainConfigurationStatus = S.String;
+
 export type DomainType = "ENDPOINT" | "AWS_MANAGED" | "CUSTOMER_MANAGED" | (string & {});
+const DomainType = S.String;
+
 export interface DescribeDomainConfigurationResponse {
   domainConfigurationName?: string;
   domainConfigurationArn?: string;
@@ -2532,16 +3683,32 @@ export interface DescribeDomainConfigurationResponse {
   applicationProtocol?: ApplicationProtocol;
   clientCertificateConfig?: ClientCertificateConfig;
 }
+const DescribeDomainConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<DescribeDomainConfigurationResponse>;
 export interface DescribeEncryptionConfigurationRequest {}
+const DescribeEncryptionConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<DescribeEncryptionConfigurationRequest>;
 export type EncryptionType = "CUSTOMER_MANAGED_KMS_KEY" | "AWS_OWNED_KMS_KEY" | (string & {});
+const EncryptionType = S.String;
+
 export type KmsKeyArn = string;
 export type KmsAccessRoleArn = string;
 export type ConfigurationStatus = "HEALTHY" | "UNHEALTHY" | (string & {});
+const ConfigurationStatus = S.String;
+
 export interface ConfigurationDetails {
   configurationStatus?: ConfigurationStatus;
   errorCode?: string;
   errorMessage?: string;
 }
+const ConfigurationDetails = /*@__PURE__*/ __L.at(
+  __c40,
+  1,
+) as any as S.Schema<ConfigurationDetails>;
 export interface DescribeEncryptionConfigurationResponse {
   encryptionType?: EncryptionType;
   kmsKeyArn?: string;
@@ -2549,15 +3716,31 @@ export interface DescribeEncryptionConfigurationResponse {
   configurationDetails?: ConfigurationDetails;
   lastModifiedDate?: Date;
 }
+const DescribeEncryptionConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<DescribeEncryptionConfigurationResponse>;
 export type EndpointType = string;
 export interface DescribeEndpointRequest {
   endpointType?: string;
 }
+const DescribeEndpointRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  3,
+) as any as S.Schema<DescribeEndpointRequest>;
 export type EndpointAddress = string;
 export interface DescribeEndpointResponse {
   endpointAddress?: string;
 }
+const DescribeEndpointResponse = /*@__PURE__*/ __L.at(
+  __c40,
+  4,
+) as any as S.Schema<DescribeEndpointResponse>;
 export interface DescribeEventConfigurationsRequest {}
+const DescribeEventConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  5,
+) as any as S.Schema<DescribeEventConfigurationsRequest>;
 export type EventType =
   | "THING"
   | "THING_GROUP"
@@ -2571,19 +3754,31 @@ export type EventType =
   | "CERTIFICATE"
   | "CA_CERTIFICATE"
   | (string & {});
+const EventType = S.String;
+
 export interface Configuration {
   Enabled?: boolean;
 }
+const Configuration = /*@__PURE__*/ __L.at(__c40, 6) as any as S.Schema<Configuration>;
 export type EventConfigurations = { [key in EventType]?: Configuration };
+const EventConfigurations = /*@__PURE__*/ __L.at(__c40, 7);
 export type LastModifiedDate = Date;
 export interface DescribeEventConfigurationsResponse {
   eventConfigurations?: { [key: string]: Configuration | undefined };
   creationDate?: Date;
   lastModifiedDate?: Date;
 }
+const DescribeEventConfigurationsResponse = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<DescribeEventConfigurationsResponse>;
 export interface DescribeFleetMetricRequest {
   metricName: string;
 }
+const DescribeFleetMetricRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  1,
+) as any as S.Schema<DescribeFleetMetricRequest>;
 export interface DescribeFleetMetricResponse {
   metricName?: string;
   queryString?: string;
@@ -2599,21 +3794,36 @@ export interface DescribeFleetMetricResponse {
   version?: number;
   metricArn?: string;
 }
+const DescribeFleetMetricResponse = /*@__PURE__*/ __L.at(
+  __c41,
+  2,
+) as any as S.Schema<DescribeFleetMetricResponse>;
 export interface DescribeIndexRequest {
   indexName: string;
 }
+const DescribeIndexRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  3,
+) as any as S.Schema<DescribeIndexRequest>;
 export type IndexStatus = "ACTIVE" | "BUILDING" | "REBUILDING" | (string & {});
+const IndexStatus = S.String;
+
 export type IndexSchema = string;
 export interface DescribeIndexResponse {
   indexName?: string;
   indexStatus?: IndexStatus;
   schema?: string;
 }
+const DescribeIndexResponse = /*@__PURE__*/ __L.at(
+  __c41,
+  4,
+) as any as S.Schema<DescribeIndexResponse>;
 export type BeforeSubstitutionFlag = boolean;
 export interface DescribeJobRequest {
   jobId: string;
   beforeSubstitution?: boolean;
 }
+const DescribeJobRequest = /*@__PURE__*/ __L.at(__c41, 5) as any as S.Schema<DescribeJobRequest>;
 export type JobStatus =
   | "IN_PROGRESS"
   | "CANCELED"
@@ -2621,9 +3831,12 @@ export type JobStatus =
   | "DELETION_IN_PROGRESS"
   | "SCHEDULED"
   | (string & {});
+const JobStatus = S.String;
+
 export type Forced = boolean;
 export type ProcessingTargetName = string;
 export type ProcessingTargetNameList = string[];
+const ProcessingTargetNameList = JobTargets as any as S.Schema<ProcessingTargetNameList>;
 export type CanceledThings = number;
 export type SucceededThings = number;
 export type FailedThings = number;
@@ -2643,11 +3856,14 @@ export interface JobProcessDetails {
   numberOfRemovedThings?: number;
   numberOfTimedOutThings?: number;
 }
+const JobProcessDetails = /*@__PURE__*/ __L.at(__c41, 6) as any as S.Schema<JobProcessDetails>;
 export type BooleanWrapperObject = boolean;
 export interface ScheduledJobRollout {
   startTime?: string;
 }
+const ScheduledJobRollout = /*@__PURE__*/ __L.at(__c41, 7) as any as S.Schema<ScheduledJobRollout>;
 export type ScheduledJobRolloutList = ScheduledJobRollout[];
+const ScheduledJobRolloutList = /*@__PURE__*/ __L.at(__c42, 0);
 export interface Job {
   jobArn?: string;
   jobId?: string;
@@ -2675,15 +3891,21 @@ export interface Job {
   scheduledJobRollouts?: ScheduledJobRollout[];
   destinationPackageVersions?: string[];
 }
+const Job = /*@__PURE__*/ __L.at(__c42, 1) as any as S.Schema<Job>;
 export interface DescribeJobResponse {
   documentSource?: string;
   job?: Job;
 }
+const DescribeJobResponse = /*@__PURE__*/ __L.at(__c42, 2) as any as S.Schema<DescribeJobResponse>;
 export interface DescribeJobExecutionRequest {
   jobId: string;
   thingName: string;
   executionNumber?: number;
 }
+const DescribeJobExecutionRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  3,
+) as any as S.Schema<DescribeJobExecutionRequest>;
 export type JobExecutionStatus =
   | "QUEUED"
   | "IN_PROGRESS"
@@ -2694,9 +3916,15 @@ export type JobExecutionStatus =
   | "REMOVED"
   | "CANCELED"
   | (string & {});
+const JobExecutionStatus = S.String;
+
 export interface JobExecutionStatusDetails {
   detailsMap?: { [key: string]: string | undefined };
 }
+const JobExecutionStatusDetails = /*@__PURE__*/ __L.at(
+  __c42,
+  4,
+) as any as S.Schema<JobExecutionStatusDetails>;
 export type VersionNumber = number;
 export type ApproximateSecondsBeforeTimedOut = number;
 export interface JobExecution {
@@ -2712,12 +3940,21 @@ export interface JobExecution {
   versionNumber?: number;
   approximateSecondsBeforeTimedOut?: number;
 }
+const JobExecution = /*@__PURE__*/ __L.at(__c42, 5) as any as S.Schema<JobExecution>;
 export interface DescribeJobExecutionResponse {
   execution?: JobExecution;
 }
+const DescribeJobExecutionResponse = /*@__PURE__*/ __L.at(
+  __c42,
+  6,
+) as any as S.Schema<DescribeJobExecutionResponse>;
 export interface DescribeJobTemplateRequest {
   jobTemplateId: string;
 }
+const DescribeJobTemplateRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  7,
+) as any as S.Schema<DescribeJobTemplateRequest>;
 export interface DescribeJobTemplateResponse {
   jobTemplateArn?: string;
   jobTemplateId?: string;
@@ -2733,14 +3970,23 @@ export interface DescribeJobTemplateResponse {
   maintenanceWindows?: MaintenanceWindow[];
   destinationPackageVersions?: string[];
 }
+const DescribeJobTemplateResponse = /*@__PURE__*/ __L.at(
+  __c43,
+  0,
+) as any as S.Schema<DescribeJobTemplateResponse>;
 export type ManagedJobTemplateName = string;
 export type ManagedTemplateVersion = string;
 export interface DescribeManagedJobTemplateRequest {
   templateName: string;
   templateVersion?: string;
 }
+const DescribeManagedJobTemplateRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  1,
+) as any as S.Schema<DescribeManagedJobTemplateRequest>;
 export type Environment = string;
 export type Environments = string[];
+const Environments = JobTargets as any as S.Schema<Environments>;
 export type Regex = string;
 export type Example = string;
 export type Optional = boolean;
@@ -2751,7 +3997,9 @@ export interface DocumentParameter {
   example?: string;
   optional?: boolean;
 }
+const DocumentParameter = /*@__PURE__*/ __L.at(__c43, 2) as any as S.Schema<DocumentParameter>;
 export type DocumentParameters = DocumentParameter[];
+const DocumentParameters = /*@__PURE__*/ __L.at(__c43, 3);
 export interface DescribeManagedJobTemplateResponse {
   templateName?: string;
   templateArn?: string;
@@ -2761,9 +4009,17 @@ export interface DescribeManagedJobTemplateResponse {
   documentParameters?: DocumentParameter[];
   document?: string;
 }
+const DescribeManagedJobTemplateResponse = /*@__PURE__*/ __L.at(
+  __c43,
+  4,
+) as any as S.Schema<DescribeManagedJobTemplateResponse>;
 export interface DescribeMitigationActionRequest {
   actionName: string;
 }
+const DescribeMitigationActionRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  5,
+) as any as S.Schema<DescribeMitigationActionRequest>;
 export type MitigationActionType =
   | "UPDATE_DEVICE_CERTIFICATE"
   | "UPDATE_CA_CERTIFICATE"
@@ -2772,6 +4028,8 @@ export type MitigationActionType =
   | "ENABLE_IOT_LOGGING"
   | "PUBLISH_FINDING_TO_SNS"
   | (string & {});
+const MitigationActionType = S.String;
+
 export interface DescribeMitigationActionResponse {
   actionName?: string;
   actionType?: MitigationActionType;
@@ -2782,9 +4040,17 @@ export interface DescribeMitigationActionResponse {
   creationDate?: Date;
   lastModifiedDate?: Date;
 }
+const DescribeMitigationActionResponse = /*@__PURE__*/ __L.at(
+  __c43,
+  6,
+) as any as S.Schema<DescribeMitigationActionResponse>;
 export interface DescribeProvisioningTemplateRequest {
   templateName: string;
 }
+const DescribeProvisioningTemplateRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  7,
+) as any as S.Schema<DescribeProvisioningTemplateRequest>;
 export interface DescribeProvisioningTemplateResponse {
   templateArn?: string;
   templateName?: string;
@@ -2798,19 +4064,35 @@ export interface DescribeProvisioningTemplateResponse {
   preProvisioningHook?: ProvisioningHook;
   type?: TemplateType;
 }
+const DescribeProvisioningTemplateResponse = /*@__PURE__*/ __L.at(
+  __c44,
+  0,
+) as any as S.Schema<DescribeProvisioningTemplateResponse>;
 export interface DescribeProvisioningTemplateVersionRequest {
   templateName: string;
   versionId: number;
 }
+const DescribeProvisioningTemplateVersionRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  1,
+) as any as S.Schema<DescribeProvisioningTemplateVersionRequest>;
 export interface DescribeProvisioningTemplateVersionResponse {
   versionId?: number;
   creationDate?: Date;
   templateBody?: string;
   isDefaultVersion?: boolean;
 }
+const DescribeProvisioningTemplateVersionResponse = /*@__PURE__*/ __L.at(
+  __c44,
+  2,
+) as any as S.Schema<DescribeProvisioningTemplateVersionResponse>;
 export interface DescribeRoleAliasRequest {
   roleAlias: string;
 }
+const DescribeRoleAliasRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  3,
+) as any as S.Schema<DescribeRoleAliasRequest>;
 export interface RoleAliasDescription {
   roleAlias?: string;
   roleAliasArn?: string;
@@ -2820,12 +4102,24 @@ export interface RoleAliasDescription {
   creationDate?: Date;
   lastModifiedDate?: Date;
 }
+const RoleAliasDescription = /*@__PURE__*/ __L.at(
+  __c44,
+  4,
+) as any as S.Schema<RoleAliasDescription>;
 export interface DescribeRoleAliasResponse {
   roleAliasDescription?: RoleAliasDescription;
 }
+const DescribeRoleAliasResponse = /*@__PURE__*/ __L.at(
+  __c44,
+  5,
+) as any as S.Schema<DescribeRoleAliasResponse>;
 export interface DescribeScheduledAuditRequest {
   scheduledAuditName: string;
 }
+const DescribeScheduledAuditRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  6,
+) as any as S.Schema<DescribeScheduledAuditRequest>;
 export interface DescribeScheduledAuditResponse {
   frequency?: AuditFrequency;
   dayOfMonth?: string;
@@ -2834,9 +4128,17 @@ export interface DescribeScheduledAuditResponse {
   scheduledAuditName?: string;
   scheduledAuditArn?: string;
 }
+const DescribeScheduledAuditResponse = /*@__PURE__*/ __L.at(
+  __c44,
+  7,
+) as any as S.Schema<DescribeScheduledAuditResponse>;
 export interface DescribeSecurityProfileRequest {
   securityProfileName: string;
 }
+const DescribeSecurityProfileRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  0,
+) as any as S.Schema<DescribeSecurityProfileRequest>;
 export interface DescribeSecurityProfileResponse {
   securityProfileName?: string;
   securityProfileArn?: string;
@@ -2850,9 +4152,17 @@ export interface DescribeSecurityProfileResponse {
   lastModifiedDate?: Date;
   metricsExportConfig?: MetricsExportConfig;
 }
+const DescribeSecurityProfileResponse = /*@__PURE__*/ __L.at(
+  __c45,
+  1,
+) as any as S.Schema<DescribeSecurityProfileResponse>;
 export interface DescribeStreamRequest {
   streamId: string;
 }
+const DescribeStreamRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  2,
+) as any as S.Schema<DescribeStreamRequest>;
 export interface StreamInfo {
   streamId?: string;
   streamArn?: string;
@@ -2863,12 +4173,21 @@ export interface StreamInfo {
   lastUpdatedAt?: Date;
   roleArn?: string;
 }
+const StreamInfo = /*@__PURE__*/ __L.at(__c45, 3) as any as S.Schema<StreamInfo>;
 export interface DescribeStreamResponse {
   streamInfo?: StreamInfo;
 }
+const DescribeStreamResponse = /*@__PURE__*/ __L.at(
+  __c45,
+  4,
+) as any as S.Schema<DescribeStreamResponse>;
 export interface DescribeThingRequest {
   thingName: string;
 }
+const DescribeThingRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  5,
+) as any as S.Schema<DescribeThingRequest>;
 export interface DescribeThingResponse {
   defaultClientId?: string;
   thingName?: string;
@@ -2879,20 +4198,33 @@ export interface DescribeThingResponse {
   version?: number;
   billingGroupName?: string;
 }
+const DescribeThingResponse = /*@__PURE__*/ __L.at(
+  __c45,
+  6,
+) as any as S.Schema<DescribeThingResponse>;
 export interface DescribeThingGroupRequest {
   thingGroupName: string;
 }
+const DescribeThingGroupRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  7,
+) as any as S.Schema<DescribeThingGroupRequest>;
 export interface GroupNameAndArn {
   groupName?: string;
   groupArn?: string;
 }
+const GroupNameAndArn = /*@__PURE__*/ __L.at(__c46, 0) as any as S.Schema<GroupNameAndArn>;
 export type ThingGroupNameAndArnList = GroupNameAndArn[];
+const ThingGroupNameAndArnList = /*@__PURE__*/ __L.at(__c46, 1);
 export interface ThingGroupMetadata {
   parentGroupName?: string;
   rootToParentThingGroups?: GroupNameAndArn[];
   creationDate?: Date;
 }
+const ThingGroupMetadata = /*@__PURE__*/ __L.at(__c46, 2) as any as S.Schema<ThingGroupMetadata>;
 export type DynamicGroupStatus = "ACTIVE" | "BUILDING" | "REBUILDING" | (string & {});
+const DynamicGroupStatus = S.String;
+
 export interface DescribeThingGroupResponse {
   thingGroupName?: string;
   thingGroupId?: string;
@@ -2905,10 +4237,18 @@ export interface DescribeThingGroupResponse {
   queryVersion?: string;
   status?: DynamicGroupStatus;
 }
+const DescribeThingGroupResponse = /*@__PURE__*/ __L.at(
+  __c46,
+  3,
+) as any as S.Schema<DescribeThingGroupResponse>;
 export type TaskId = string;
 export interface DescribeThingRegistrationTaskRequest {
   taskId: string;
 }
+const DescribeThingRegistrationTaskRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  4,
+) as any as S.Schema<DescribeThingRegistrationTaskRequest>;
 export type RegistryS3BucketName = string;
 export type RegistryS3KeyName = string;
 export type Status =
@@ -2918,6 +4258,8 @@ export type Status =
   | "Cancelled"
   | "Cancelling"
   | (string & {});
+const Status = S.String;
+
 export type Count = number;
 export type Percentage = number;
 export interface DescribeThingRegistrationTaskResponse {
@@ -2934,15 +4276,24 @@ export interface DescribeThingRegistrationTaskResponse {
   failureCount?: number;
   percentageProgress?: number;
 }
+const DescribeThingRegistrationTaskResponse = /*@__PURE__*/ __L.at(
+  __c46,
+  5,
+) as any as S.Schema<DescribeThingRegistrationTaskResponse>;
 export interface DescribeThingTypeRequest {
   thingTypeName: string;
 }
+const DescribeThingTypeRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  6,
+) as any as S.Schema<DescribeThingTypeRequest>;
 export type DeprecationDate = Date;
 export interface ThingTypeMetadata {
   deprecated?: boolean;
   deprecationDate?: Date;
   creationDate?: Date;
 }
+const ThingTypeMetadata = /*@__PURE__*/ __L.at(__c46, 7) as any as S.Schema<ThingTypeMetadata>;
 export interface DescribeThingTypeResponse {
   thingTypeName?: string;
   thingTypeId?: string;
@@ -2950,40 +4301,83 @@ export interface DescribeThingTypeResponse {
   thingTypeProperties?: ThingTypeProperties;
   thingTypeMetadata?: ThingTypeMetadata;
 }
+const DescribeThingTypeResponse = /*@__PURE__*/ __L.at(
+  __c47,
+  0,
+) as any as S.Schema<DescribeThingTypeResponse>;
 export interface DetachPolicyRequest {
   policyName: string;
   target: string;
 }
+const DetachPolicyRequest = /*@__PURE__*/ __L.at(__c47, 1) as any as S.Schema<DetachPolicyRequest>;
 export interface DetachPolicyResponse {}
+const DetachPolicyResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DetachPolicyResponse>;
 export interface DetachPrincipalPolicyRequest {
   policyName: string;
   principal: string;
 }
+const DetachPrincipalPolicyRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  2,
+) as any as S.Schema<DetachPrincipalPolicyRequest>;
 export interface DetachPrincipalPolicyResponse {}
+const DetachPrincipalPolicyResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DetachPrincipalPolicyResponse>;
 export interface DetachSecurityProfileRequest {
   securityProfileName: string;
   securityProfileTargetArn: string;
 }
+const DetachSecurityProfileRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  3,
+) as any as S.Schema<DetachSecurityProfileRequest>;
 export interface DetachSecurityProfileResponse {}
+const DetachSecurityProfileResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DetachSecurityProfileResponse>;
 export interface DetachThingPrincipalRequest {
   thingName: string;
   principal: string;
 }
+const DetachThingPrincipalRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  4,
+) as any as S.Schema<DetachThingPrincipalRequest>;
 export interface DetachThingPrincipalResponse {}
+const DetachThingPrincipalResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DetachThingPrincipalResponse>;
 export interface DisableTopicRuleRequest {
   ruleName: string;
 }
+const DisableTopicRuleRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  5,
+) as any as S.Schema<DisableTopicRuleRequest>;
 export interface DisableTopicRuleResponse {}
+const DisableTopicRuleResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<DisableTopicRuleResponse>;
 export interface DisassociateSbomFromPackageVersionRequest {
   packageName: string;
   versionName: string;
   clientToken?: string;
 }
+const DisassociateSbomFromPackageVersionRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  6,
+) as any as S.Schema<DisassociateSbomFromPackageVersionRequest>;
 export interface DisassociateSbomFromPackageVersionResponse {}
+const DisassociateSbomFromPackageVersionResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<DisassociateSbomFromPackageVersionResponse>;
 export interface EnableTopicRuleRequest {
   ruleName: string;
 }
+const EnableTopicRuleRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  7,
+) as any as S.Schema<EnableTopicRuleRequest>;
 export interface EnableTopicRuleResponse {}
+const EnableTopicRuleResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<EnableTopicRuleResponse>;
 export type TinyMaxResults = number;
 export type NextToken = string;
 export interface GetBehaviorModelTrainingSummariesRequest {
@@ -2991,7 +4385,13 @@ export interface GetBehaviorModelTrainingSummariesRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const GetBehaviorModelTrainingSummariesRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  0,
+) as any as S.Schema<GetBehaviorModelTrainingSummariesRequest>;
 export type ModelStatus = "PENDING_BUILD" | "ACTIVE" | "EXPIRED" | (string & {});
+const ModelStatus = S.String;
+
 export type DataCollectionPercentage = number;
 export interface BehaviorModelTrainingSummary {
   securityProfileName?: string;
@@ -3001,18 +4401,32 @@ export interface BehaviorModelTrainingSummary {
   datapointsCollectionPercentage?: number;
   lastModelRefreshDate?: Date;
 }
+const BehaviorModelTrainingSummary = /*@__PURE__*/ __L.at(
+  __c48,
+  1,
+) as any as S.Schema<BehaviorModelTrainingSummary>;
 export type BehaviorModelTrainingSummaries = BehaviorModelTrainingSummary[];
+const BehaviorModelTrainingSummaries = /*@__PURE__*/ __L.at(__c48, 2);
 export interface GetBehaviorModelTrainingSummariesResponse {
   summaries?: BehaviorModelTrainingSummary[];
   nextToken?: string;
 }
+const GetBehaviorModelTrainingSummariesResponse = /*@__PURE__*/ __L.at(
+  __c48,
+  3,
+) as any as S.Schema<GetBehaviorModelTrainingSummariesResponse>;
 export type MaxBuckets = number;
 export interface TermsAggregation {
   maxBuckets?: number;
 }
+const TermsAggregation = /*@__PURE__*/ __L.at(__c48, 4) as any as S.Schema<TermsAggregation>;
 export interface BucketsAggregationType {
   termsAggregation?: TermsAggregation;
 }
+const BucketsAggregationType = /*@__PURE__*/ __L.at(
+  __c48,
+  5,
+) as any as S.Schema<BucketsAggregationType>;
 export interface GetBucketsAggregationRequest {
   indexName?: string;
   queryString: string;
@@ -3020,28 +4434,47 @@ export interface GetBucketsAggregationRequest {
   queryVersion?: string;
   bucketsAggregationType: BucketsAggregationType;
 }
+const GetBucketsAggregationRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  6,
+) as any as S.Schema<GetBucketsAggregationRequest>;
 export type BucketKeyValue = string;
 export interface Bucket {
   keyValue?: string;
   count?: number;
 }
+const Bucket = /*@__PURE__*/ __L.at(__c48, 7) as any as S.Schema<Bucket>;
 export type Buckets = Bucket[];
+const Buckets = /*@__PURE__*/ __L.at(__c49, 0);
 export interface GetBucketsAggregationResponse {
   totalCount?: number;
   buckets?: Bucket[];
 }
+const GetBucketsAggregationResponse = /*@__PURE__*/ __L.at(
+  __c49,
+  1,
+) as any as S.Schema<GetBucketsAggregationResponse>;
 export interface GetCardinalityRequest {
   indexName?: string;
   queryString: string;
   aggregationField?: string;
   queryVersion?: string;
 }
+const GetCardinalityRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  2,
+) as any as S.Schema<GetCardinalityRequest>;
 export interface GetCardinalityResponse {
   cardinality?: number;
 }
+const GetCardinalityResponse = /*@__PURE__*/ __L.at(
+  __c49,
+  3,
+) as any as S.Schema<GetCardinalityResponse>;
 export interface GetCommandRequest {
   commandId: string;
 }
+const GetCommandRequest = /*@__PURE__*/ __L.at(__c49, 4) as any as S.Schema<GetCommandRequest>;
 export type DeprecationFlag = boolean;
 export interface GetCommandResponse {
   commandId?: string;
@@ -3059,11 +4492,16 @@ export interface GetCommandResponse {
   deprecated?: boolean;
   pendingDeletion?: boolean;
 }
+const GetCommandResponse = /*@__PURE__*/ __L.at(__c49, 5) as any as S.Schema<GetCommandResponse>;
 export interface GetCommandExecutionRequest {
   executionId: string;
   targetArn: string;
   includeResult?: boolean;
 }
+const GetCommandExecutionRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  6,
+) as any as S.Schema<GetCommandExecutionRequest>;
 export type CommandExecutionStatus =
   | "CREATED"
   | "IN_PROGRESS"
@@ -3072,12 +4510,15 @@ export type CommandExecutionStatus =
   | "REJECTED"
   | "TIMED_OUT"
   | (string & {});
+const CommandExecutionStatus = S.String;
+
 export type StatusReasonCode = string;
 export type StatusReasonDescription = string;
 export interface StatusReason {
   reasonCode: string;
   reasonDescription?: string;
 }
+const StatusReason = /*@__PURE__*/ __L.at(__c49, 7) as any as S.Schema<StatusReason>;
 export type CommandExecutionResultName = string;
 export type StringCommandExecutionResult = string;
 export type BooleanCommandExecutionResult = boolean;
@@ -3087,8 +4528,14 @@ export interface CommandExecutionResult {
   B?: boolean;
   BIN?: Uint8Array;
 }
+const CommandExecutionResult = /*@__PURE__*/ __L.at(
+  __c50,
+  0,
+) as any as S.Schema<CommandExecutionResult>;
 export type CommandExecutionResultMap = { [key: string]: CommandExecutionResult | undefined };
+const CommandExecutionResultMap = /*@__PURE__*/ __L.at(__c50, 1);
 export type CommandExecutionParameterMap = { [key: string]: CommandParameterValue | undefined };
+const CommandExecutionParameterMap = /*@__PURE__*/ __L.at(__c50, 2);
 export type CommandExecutionTimeoutInSeconds = number;
 export interface GetCommandExecutionResponse {
   executionId?: string;
@@ -3105,51 +4552,89 @@ export interface GetCommandExecutionResponse {
   completedAt?: Date;
   timeToLive?: Date;
 }
+const GetCommandExecutionResponse = /*@__PURE__*/ __L.at(
+  __c50,
+  3,
+) as any as S.Schema<GetCommandExecutionResponse>;
 export interface GetEffectivePoliciesRequest {
   principal?: string;
   cognitoIdentityPoolId?: string;
   thingName?: string;
 }
+const GetEffectivePoliciesRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  4,
+) as any as S.Schema<GetEffectivePoliciesRequest>;
 export interface EffectivePolicy {
   policyName?: string;
   policyArn?: string;
   policyDocument?: string;
 }
+const EffectivePolicy = /*@__PURE__*/ __L.at(__c50, 5) as any as S.Schema<EffectivePolicy>;
 export type EffectivePolicies = EffectivePolicy[];
+const EffectivePolicies = /*@__PURE__*/ __L.at(__c50, 6);
 export interface GetEffectivePoliciesResponse {
   effectivePolicies?: EffectivePolicy[];
 }
+const GetEffectivePoliciesResponse = /*@__PURE__*/ __L.at(
+  __c50,
+  7,
+) as any as S.Schema<GetEffectivePoliciesResponse>;
 export interface GetIndexingConfigurationRequest {}
+const GetIndexingConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  0,
+) as any as S.Schema<GetIndexingConfigurationRequest>;
 export type ThingIndexingMode = "OFF" | "REGISTRY" | "REGISTRY_AND_SHADOW" | (string & {});
+const ThingIndexingMode = S.String;
+
 export type ThingConnectivityIndexingMode = "OFF" | "STATUS" | (string & {});
+const ThingConnectivityIndexingMode = S.String;
+
 export type DeviceDefenderIndexingMode = "OFF" | "VIOLATIONS" | (string & {});
+const DeviceDefenderIndexingMode = S.String;
+
 export type NamedShadowIndexingMode = "OFF" | "ON" | (string & {});
+const NamedShadowIndexingMode = S.String;
+
 export type FieldName = string;
 export type FieldType = "Number" | "String" | "Boolean" | (string & {});
+const FieldType = S.String;
+
 export interface Field {
   name?: string;
   type?: FieldType;
 }
+const Field = /*@__PURE__*/ __L.at(__c51, 1) as any as S.Schema<Field>;
 export type Fields = Field[];
+const Fields = /*@__PURE__*/ __L.at(__c51, 2);
 export type ShadowName = string;
 export type NamedShadowNamesFilter = string[];
+const NamedShadowNamesFilter = JobTargets as any as S.Schema<NamedShadowNamesFilter>;
 export type TargetFieldName = string;
 export type TargetFieldOrder = "LatLon" | "LonLat" | (string & {});
+const TargetFieldOrder = S.String;
+
 export interface GeoLocationTarget {
   name?: string;
   order?: TargetFieldOrder;
 }
+const GeoLocationTarget = /*@__PURE__*/ __L.at(__c51, 3) as any as S.Schema<GeoLocationTarget>;
 export type GeoLocationsFilter = GeoLocationTarget[];
+const GeoLocationsFilter = /*@__PURE__*/ __L.at(__c51, 4);
 export type FleetIndexingApi = "GET_THING_CONNECTIVITY_DATA" | (string & {});
 export type FleetIndexingApiList = FleetIndexingApi[];
+const FleetIndexingApiList = Protocols as any as S.Schema<FleetIndexingApiList>;
 export interface ConnectivityFilter {
   includeSocketInformation?: FleetIndexingApi[];
 }
+const ConnectivityFilter = /*@__PURE__*/ __L.at(__c51, 5) as any as S.Schema<ConnectivityFilter>;
 export interface IndexingFilter {
   namedShadowNames?: string[];
   geoLocations?: GeoLocationTarget[];
   connectivity?: ConnectivityFilter;
 }
+const IndexingFilter = /*@__PURE__*/ __L.at(__c51, 6) as any as S.Schema<IndexingFilter>;
 export interface ThingIndexingConfiguration {
   thingIndexingMode: ThingIndexingMode;
   thingConnectivityIndexingMode?: ThingConnectivityIndexingMode;
@@ -3159,37 +4644,69 @@ export interface ThingIndexingConfiguration {
   customFields?: Field[];
   filter?: IndexingFilter;
 }
+const ThingIndexingConfiguration = /*@__PURE__*/ __L.at(
+  __c51,
+  7,
+) as any as S.Schema<ThingIndexingConfiguration>;
 export type ThingGroupIndexingMode = "OFF" | "ON" | (string & {});
+const ThingGroupIndexingMode = S.String;
+
 export interface ThingGroupIndexingConfiguration {
   thingGroupIndexingMode: ThingGroupIndexingMode;
   managedFields?: Field[];
   customFields?: Field[];
 }
+const ThingGroupIndexingConfiguration = /*@__PURE__*/ __L.at(
+  __c52,
+  0,
+) as any as S.Schema<ThingGroupIndexingConfiguration>;
 export interface GetIndexingConfigurationResponse {
   thingIndexingConfiguration?: ThingIndexingConfiguration;
   thingGroupIndexingConfiguration?: ThingGroupIndexingConfiguration;
 }
+const GetIndexingConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c52,
+  1,
+) as any as S.Schema<GetIndexingConfigurationResponse>;
 export interface GetJobDocumentRequest {
   jobId: string;
   beforeSubstitution?: boolean;
 }
+const GetJobDocumentRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  2,
+) as any as S.Schema<GetJobDocumentRequest>;
 export interface GetJobDocumentResponse {
   document?: string;
 }
+const GetJobDocumentResponse = /*@__PURE__*/ __L.at(
+  __c52,
+  3,
+) as any as S.Schema<GetJobDocumentResponse>;
 export interface GetLoggingOptionsRequest {}
+const GetLoggingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  4,
+) as any as S.Schema<GetLoggingOptionsRequest>;
 export interface GetLoggingOptionsResponse {
   roleArn?: string;
   logLevel?: LogLevel;
 }
+const GetLoggingOptionsResponse = /*@__PURE__*/ __L.at(
+  __c52,
+  5,
+) as any as S.Schema<GetLoggingOptionsResponse>;
 export interface GetOTAUpdateRequest {
   otaUpdateId: string;
 }
+const GetOTAUpdateRequest = /*@__PURE__*/ __L.at(__c52, 6) as any as S.Schema<GetOTAUpdateRequest>;
 export type Code = string;
 export type OTAUpdateErrorMessage = string;
 export interface ErrorInfo {
   code?: string;
   message?: string;
 }
+const ErrorInfo = /*@__PURE__*/ __L.at(__c52, 7) as any as S.Schema<ErrorInfo>;
 export interface OTAUpdateInfo {
   otaUpdateId?: string;
   otaUpdateArn?: string;
@@ -3208,12 +4725,18 @@ export interface OTAUpdateInfo {
   errorInfo?: ErrorInfo;
   additionalParameters?: { [key: string]: string | undefined };
 }
+const OTAUpdateInfo = /*@__PURE__*/ __L.at(__c53, 0) as any as S.Schema<OTAUpdateInfo>;
 export interface GetOTAUpdateResponse {
   otaUpdateInfo?: OTAUpdateInfo;
 }
+const GetOTAUpdateResponse = /*@__PURE__*/ __L.at(
+  __c53,
+  1,
+) as any as S.Schema<GetOTAUpdateResponse>;
 export interface GetPackageRequest {
   packageName: string;
 }
+const GetPackageRequest = /*@__PURE__*/ __L.at(__c53, 2) as any as S.Schema<GetPackageRequest>;
 export interface GetPackageResponse {
   packageName?: string;
   packageArn?: string;
@@ -3222,19 +4745,36 @@ export interface GetPackageResponse {
   creationDate?: Date;
   lastModifiedDate?: Date;
 }
+const GetPackageResponse = /*@__PURE__*/ __L.at(__c53, 3) as any as S.Schema<GetPackageResponse>;
 export interface GetPackageConfigurationRequest {}
+const GetPackageConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  4,
+) as any as S.Schema<GetPackageConfigurationRequest>;
 export type EnabledBoolean = boolean;
 export interface VersionUpdateByJobsConfig {
   enabled?: boolean;
   roleArn?: string;
 }
+const VersionUpdateByJobsConfig = /*@__PURE__*/ __L.at(
+  __c53,
+  5,
+) as any as S.Schema<VersionUpdateByJobsConfig>;
 export interface GetPackageConfigurationResponse {
   versionUpdateByJobsConfig?: VersionUpdateByJobsConfig;
 }
+const GetPackageConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c53,
+  6,
+) as any as S.Schema<GetPackageConfigurationResponse>;
 export interface GetPackageVersionRequest {
   packageName: string;
   versionName: string;
 }
+const GetPackageVersionRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  7,
+) as any as S.Schema<GetPackageVersionRequest>;
 export interface GetPackageVersionResponse {
   packageVersionArn?: string;
   packageName?: string;
@@ -3250,8 +4790,13 @@ export interface GetPackageVersionResponse {
   sbomValidationStatus?: SbomValidationStatus;
   recipe?: string | redacted.Redacted<string>;
 }
+const GetPackageVersionResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  0,
+) as any as S.Schema<GetPackageVersionResponse>;
 export type Percent = number;
 export type PercentList = number[];
+const PercentList = Ports as any as S.Schema<PercentList>;
 export interface GetPercentilesRequest {
   indexName?: string;
   queryString: string;
@@ -3259,18 +4804,29 @@ export interface GetPercentilesRequest {
   queryVersion?: string;
   percents?: number[];
 }
+const GetPercentilesRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  1,
+) as any as S.Schema<GetPercentilesRequest>;
 export type PercentValue = number;
 export interface PercentPair {
   percent?: number;
   value?: number;
 }
+const PercentPair = /*@__PURE__*/ __L.at(__c54, 2) as any as S.Schema<PercentPair>;
 export type Percentiles = PercentPair[];
+const Percentiles = /*@__PURE__*/ __L.at(__c54, 3);
 export interface GetPercentilesResponse {
   percentiles?: PercentPair[];
 }
+const GetPercentilesResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  4,
+) as any as S.Schema<GetPercentilesResponse>;
 export interface GetPolicyRequest {
   policyName: string;
 }
+const GetPolicyRequest = /*@__PURE__*/ __L.at(__c54, 5) as any as S.Schema<GetPolicyRequest>;
 export interface GetPolicyResponse {
   policyName?: string;
   policyArn?: string;
@@ -3280,10 +4836,15 @@ export interface GetPolicyResponse {
   lastModifiedDate?: Date;
   generationId?: string;
 }
+const GetPolicyResponse = /*@__PURE__*/ __L.at(__c54, 6) as any as S.Schema<GetPolicyResponse>;
 export interface GetPolicyVersionRequest {
   policyName: string;
   policyVersionId: string;
 }
+const GetPolicyVersionRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  7,
+) as any as S.Schema<GetPolicyVersionRequest>;
 export interface GetPolicyVersionResponse {
   policyArn?: string;
   policyName?: string;
@@ -3294,17 +4855,33 @@ export interface GetPolicyVersionResponse {
   lastModifiedDate?: Date;
   generationId?: string;
 }
+const GetPolicyVersionResponse = /*@__PURE__*/ __L.at(
+  __c55,
+  0,
+) as any as S.Schema<GetPolicyVersionResponse>;
 export interface GetRegistrationCodeRequest {}
+const GetRegistrationCodeRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  1,
+) as any as S.Schema<GetRegistrationCodeRequest>;
 export type RegistrationCode = string;
 export interface GetRegistrationCodeResponse {
   registrationCode?: string;
 }
+const GetRegistrationCodeResponse = /*@__PURE__*/ __L.at(
+  __c55,
+  2,
+) as any as S.Schema<GetRegistrationCodeResponse>;
 export interface GetStatisticsRequest {
   indexName?: string;
   queryString: string;
   aggregationField?: string;
   queryVersion?: string;
 }
+const GetStatisticsRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  3,
+) as any as S.Schema<GetStatisticsRequest>;
 export type Average = number;
 export type Sum = number;
 export type Minimum = number;
@@ -3322,14 +4899,23 @@ export interface Statistics {
   variance?: number;
   stdDeviation?: number;
 }
+const Statistics = /*@__PURE__*/ __L.at(__c55, 4) as any as S.Schema<Statistics>;
 export interface GetStatisticsResponse {
   statistics?: Statistics;
 }
+const GetStatisticsResponse = /*@__PURE__*/ __L.at(
+  __c55,
+  5,
+) as any as S.Schema<GetStatisticsResponse>;
 export type ConnectivityApiThingName = string | redacted.Redacted<string>;
 export interface GetThingConnectivityDataRequest {
   thingName: string | redacted.Redacted<string>;
   includeSocketInformation?: boolean;
 }
+const GetThingConnectivityDataRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  6,
+) as any as S.Schema<GetThingConnectivityDataRequest>;
 export type DisconnectReasonValue =
   | "AUTH_ERROR"
   | "CLIENT_INITIATED_DISCONNECT"
@@ -3347,6 +4933,8 @@ export type DisconnectReasonValue =
   | "UNKNOWN"
   | "NONE"
   | (string & {});
+const DisconnectReasonValue = S.String;
+
 export type SourceIp = string | redacted.Redacted<string>;
 export type SourcePort = number;
 export type TargetIp = string | redacted.Redacted<string>;
@@ -3369,9 +4957,14 @@ export interface GetThingConnectivityDataResponse {
   sessionExpiry?: number;
   clientId?: string;
 }
+const GetThingConnectivityDataResponse = /*@__PURE__*/ __L.at(
+  __c55,
+  7,
+) as any as S.Schema<GetThingConnectivityDataResponse>;
 export interface GetTopicRuleRequest {
   ruleName: string;
 }
+const GetTopicRuleRequest = /*@__PURE__*/ __L.at(__c56, 0) as any as S.Schema<GetTopicRuleRequest>;
 export type RuleArn = string;
 export interface TopicRule {
   ruleName?: string;
@@ -3383,20 +4976,35 @@ export interface TopicRule {
   awsIotSqlVersion?: string;
   errorAction?: Action;
 }
+const TopicRule = /*@__PURE__*/ __L.at(__c56, 1) as any as S.Schema<TopicRule>;
 export interface GetTopicRuleResponse {
   ruleArn?: string;
   rule?: TopicRule;
 }
+const GetTopicRuleResponse = /*@__PURE__*/ __L.at(
+  __c56,
+  2,
+) as any as S.Schema<GetTopicRuleResponse>;
 export interface GetTopicRuleDestinationRequest {
   arn: string;
 }
+const GetTopicRuleDestinationRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  3,
+) as any as S.Schema<GetTopicRuleDestinationRequest>;
 export interface GetTopicRuleDestinationResponse {
   topicRuleDestination?: TopicRuleDestination;
 }
+const GetTopicRuleDestinationResponse =
+  CreateTopicRuleDestinationResponse as any as S.Schema<GetTopicRuleDestinationResponse>;
 export type VerboseFlag = boolean;
 export interface GetV2LoggingOptionsRequest {
   verbose?: boolean;
 }
+const GetV2LoggingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  4,
+) as any as S.Schema<GetV2LoggingOptionsRequest>;
 export type DisableAllLogs = boolean;
 export type LogEventType = string;
 export type LogDestination = string;
@@ -3405,15 +5013,26 @@ export interface LogEventConfiguration {
   logLevel?: LogLevel;
   logDestination?: string;
 }
+const LogEventConfiguration = /*@__PURE__*/ __L.at(
+  __c56,
+  5,
+) as any as S.Schema<LogEventConfiguration>;
 export type LogEventConfigurations = LogEventConfiguration[];
+const LogEventConfigurations = /*@__PURE__*/ __L.at(__c56, 6);
 export interface GetV2LoggingOptionsResponse {
   roleArn?: string;
   defaultLogLevel?: LogLevel;
   disableAllLogs?: boolean;
   eventConfigurations?: LogEventConfiguration[];
 }
+const GetV2LoggingOptionsResponse = /*@__PURE__*/ __L.at(
+  __c56,
+  7,
+) as any as S.Schema<GetV2LoggingOptionsResponse>;
 export type DeviceDefenderThingName = string;
 export type BehaviorCriteriaType = "STATIC" | "STATISTICAL" | "MACHINE_LEARNING" | (string & {});
+const BehaviorCriteriaType = S.String;
+
 export type ListSuppressedAlerts = boolean;
 export type VerificationState =
   | "FALSE_POSITIVE"
@@ -3421,6 +5040,8 @@ export type VerificationState =
   | "TRUE_POSITIVE"
   | "UNKNOWN"
   | (string & {});
+const VerificationState = S.String;
+
 export type MaxResults = number;
 export interface ListActiveViolationsRequest {
   thingName?: string;
@@ -3431,9 +5052,17 @@ export interface ListActiveViolationsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListActiveViolationsRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  0,
+) as any as S.Schema<ListActiveViolationsRequest>;
 export interface ViolationEventAdditionalInfo {
   confidenceLevel?: ConfidenceLevel;
 }
+const ViolationEventAdditionalInfo = /*@__PURE__*/ __L.at(
+  __c57,
+  1,
+) as any as S.Schema<ViolationEventAdditionalInfo>;
 export type VerificationStateDescription = string;
 export interface ActiveViolation {
   violationId?: string;
@@ -3447,11 +5076,17 @@ export interface ActiveViolation {
   lastViolationTime?: Date;
   violationStartTime?: Date;
 }
+const ActiveViolation = /*@__PURE__*/ __L.at(__c57, 2) as any as S.Schema<ActiveViolation>;
 export type ActiveViolations = ActiveViolation[];
+const ActiveViolations = /*@__PURE__*/ __L.at(__c57, 3);
 export interface ListActiveViolationsResponse {
   activeViolations?: ActiveViolation[];
   nextToken?: string;
 }
+const ListActiveViolationsResponse = /*@__PURE__*/ __L.at(
+  __c57,
+  4,
+) as any as S.Schema<ListActiveViolationsResponse>;
 export type Recursive = boolean;
 export type Marker = string;
 export type PageSize = number;
@@ -3461,15 +5096,25 @@ export interface ListAttachedPoliciesRequest {
   marker?: string;
   pageSize?: number;
 }
+const ListAttachedPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  5,
+) as any as S.Schema<ListAttachedPoliciesRequest>;
 export interface Policy {
   policyName?: string;
   policyArn?: string;
 }
+const Policy = /*@__PURE__*/ __L.at(__c57, 6) as any as S.Schema<Policy>;
 export type Policies = Policy[];
+const Policies = /*@__PURE__*/ __L.at(__c57, 7);
 export interface ListAttachedPoliciesResponse {
   policies?: Policy[];
   nextMarker?: string;
 }
+const ListAttachedPoliciesResponse = /*@__PURE__*/ __L.at(
+  __c58,
+  0,
+) as any as S.Schema<ListAttachedPoliciesResponse>;
 export type ListSuppressedFindings = boolean;
 export interface ListAuditFindingsRequest {
   taskId?: string;
@@ -3481,11 +5126,20 @@ export interface ListAuditFindingsRequest {
   endTime?: Date;
   listSuppressedFindings?: boolean;
 }
+const ListAuditFindingsRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  1,
+) as any as S.Schema<ListAuditFindingsRequest>;
 export type AuditFindings = AuditFinding[];
+const AuditFindings = /*@__PURE__*/ __L.at(__c58, 2);
 export interface ListAuditFindingsResponse {
   findings?: AuditFinding[];
   nextToken?: string;
 }
+const ListAuditFindingsResponse = /*@__PURE__*/ __L.at(
+  __c58,
+  3,
+) as any as S.Schema<ListAuditFindingsResponse>;
 export type AuditMitigationActionsExecutionStatus =
   | "IN_PROGRESS"
   | "COMPLETED"
@@ -3494,6 +5148,8 @@ export type AuditMitigationActionsExecutionStatus =
   | "SKIPPED"
   | "PENDING"
   | (string & {});
+const AuditMitigationActionsExecutionStatus = S.String;
+
 export interface ListAuditMitigationActionsExecutionsRequest {
   taskId: string;
   actionStatus?: AuditMitigationActionsExecutionStatus;
@@ -3501,6 +5157,10 @@ export interface ListAuditMitigationActionsExecutionsRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListAuditMitigationActionsExecutionsRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  4,
+) as any as S.Schema<ListAuditMitigationActionsExecutionsRequest>;
 export interface AuditMitigationActionExecutionMetadata {
   taskId?: string;
   findingId?: string;
@@ -3512,11 +5172,20 @@ export interface AuditMitigationActionExecutionMetadata {
   errorCode?: string;
   message?: string;
 }
+const AuditMitigationActionExecutionMetadata = /*@__PURE__*/ __L.at(
+  __c58,
+  5,
+) as any as S.Schema<AuditMitigationActionExecutionMetadata>;
 export type AuditMitigationActionExecutionMetadataList = AuditMitigationActionExecutionMetadata[];
+const AuditMitigationActionExecutionMetadataList = /*@__PURE__*/ __L.at(__c58, 6);
 export interface ListAuditMitigationActionsExecutionsResponse {
   actionsExecutions?: AuditMitigationActionExecutionMetadata[];
   nextToken?: string;
 }
+const ListAuditMitigationActionsExecutionsResponse = /*@__PURE__*/ __L.at(
+  __c58,
+  7,
+) as any as S.Schema<ListAuditMitigationActionsExecutionsResponse>;
 export interface ListAuditMitigationActionsTasksRequest {
   auditTaskId?: string;
   findingId?: string;
@@ -3526,16 +5195,29 @@ export interface ListAuditMitigationActionsTasksRequest {
   startTime: Date;
   endTime: Date;
 }
+const ListAuditMitigationActionsTasksRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  0,
+) as any as S.Schema<ListAuditMitigationActionsTasksRequest>;
 export interface AuditMitigationActionsTaskMetadata {
   taskId?: string;
   startTime?: Date;
   taskStatus?: AuditMitigationActionsTaskStatus;
 }
+const AuditMitigationActionsTaskMetadata = /*@__PURE__*/ __L.at(
+  __c59,
+  1,
+) as any as S.Schema<AuditMitigationActionsTaskMetadata>;
 export type AuditMitigationActionsTaskMetadataList = AuditMitigationActionsTaskMetadata[];
+const AuditMitigationActionsTaskMetadataList = /*@__PURE__*/ __L.at(__c59, 2);
 export interface ListAuditMitigationActionsTasksResponse {
   tasks?: AuditMitigationActionsTaskMetadata[];
   nextToken?: string;
 }
+const ListAuditMitigationActionsTasksResponse = /*@__PURE__*/ __L.at(
+  __c59,
+  3,
+) as any as S.Schema<ListAuditMitigationActionsTasksResponse>;
 export type AscendingOrder = boolean;
 export interface ListAuditSuppressionsRequest {
   checkName?: string;
@@ -3544,6 +5226,10 @@ export interface ListAuditSuppressionsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListAuditSuppressionsRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  4,
+) as any as S.Schema<ListAuditSuppressionsRequest>;
 export interface AuditSuppression {
   checkName: string;
   resourceIdentifier: ResourceIdentifier;
@@ -3551,11 +5237,17 @@ export interface AuditSuppression {
   suppressIndefinitely?: boolean;
   description?: string;
 }
+const AuditSuppression = /*@__PURE__*/ __L.at(__c59, 5) as any as S.Schema<AuditSuppression>;
 export type AuditSuppressionList = AuditSuppression[];
+const AuditSuppressionList = /*@__PURE__*/ __L.at(__c59, 6);
 export interface ListAuditSuppressionsResponse {
   suppressions?: AuditSuppression[];
   nextToken?: string;
 }
+const ListAuditSuppressionsResponse = /*@__PURE__*/ __L.at(
+  __c59,
+  7,
+) as any as S.Schema<ListAuditSuppressionsResponse>;
 export interface ListAuditTasksRequest {
   startTime: Date;
   endTime: Date;
@@ -3564,77 +5256,132 @@ export interface ListAuditTasksRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListAuditTasksRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  0,
+) as any as S.Schema<ListAuditTasksRequest>;
 export interface AuditTaskMetadata {
   taskId?: string;
   taskStatus?: AuditTaskStatus;
   taskType?: AuditTaskType;
 }
+const AuditTaskMetadata = /*@__PURE__*/ __L.at(__c60, 1) as any as S.Schema<AuditTaskMetadata>;
 export type AuditTaskMetadataList = AuditTaskMetadata[];
+const AuditTaskMetadataList = /*@__PURE__*/ __L.at(__c60, 2);
 export interface ListAuditTasksResponse {
   tasks?: AuditTaskMetadata[];
   nextToken?: string;
 }
+const ListAuditTasksResponse = /*@__PURE__*/ __L.at(
+  __c60,
+  3,
+) as any as S.Schema<ListAuditTasksResponse>;
 export interface ListAuthorizersRequest {
   pageSize?: number;
   marker?: string;
   ascendingOrder?: boolean;
   status?: AuthorizerStatus;
 }
+const ListAuthorizersRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  4,
+) as any as S.Schema<ListAuthorizersRequest>;
 export interface AuthorizerSummary {
   authorizerName?: string;
   authorizerArn?: string;
 }
+const AuthorizerSummary = CreateAuthorizerResponse as any as S.Schema<AuthorizerSummary>;
 export type Authorizers = AuthorizerSummary[];
+const Authorizers = /*@__PURE__*/ __L.at(__c60, 5);
 export interface ListAuthorizersResponse {
   authorizers?: AuthorizerSummary[];
   nextMarker?: string;
 }
+const ListAuthorizersResponse = /*@__PURE__*/ __L.at(
+  __c60,
+  6,
+) as any as S.Schema<ListAuthorizersResponse>;
 export type RegistryMaxResults = number;
 export interface ListBillingGroupsRequest {
   nextToken?: string;
   maxResults?: number;
   namePrefixFilter?: string;
 }
+const ListBillingGroupsRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  7,
+) as any as S.Schema<ListBillingGroupsRequest>;
 export type BillingGroupNameAndArnList = GroupNameAndArn[];
+const BillingGroupNameAndArnList =
+  ThingGroupNameAndArnList as any as S.Schema<BillingGroupNameAndArnList>;
 export interface ListBillingGroupsResponse {
   billingGroups?: GroupNameAndArn[];
   nextToken?: string;
 }
+const ListBillingGroupsResponse = /*@__PURE__*/ __L.at(
+  __c61,
+  0,
+) as any as S.Schema<ListBillingGroupsResponse>;
 export interface ListCACertificatesRequest {
   pageSize?: number;
   marker?: string;
   ascendingOrder?: boolean;
   templateName?: string;
 }
+const ListCACertificatesRequest = /*@__PURE__*/ __L.at(
+  __c61,
+  1,
+) as any as S.Schema<ListCACertificatesRequest>;
 export interface CACertificate {
   certificateArn?: string;
   certificateId?: string;
   status?: CACertificateStatus;
   creationDate?: Date;
 }
+const CACertificate = /*@__PURE__*/ __L.at(__c61, 2) as any as S.Schema<CACertificate>;
 export type CACertificates = CACertificate[];
+const CACertificates = /*@__PURE__*/ __L.at(__c61, 3);
 export interface ListCACertificatesResponse {
   certificates?: CACertificate[];
   nextMarker?: string;
 }
+const ListCACertificatesResponse = /*@__PURE__*/ __L.at(
+  __c61,
+  4,
+) as any as S.Schema<ListCACertificatesResponse>;
 export interface ListCertificateProvidersRequest {
   nextToken?: string;
   ascendingOrder?: boolean;
 }
+const ListCertificateProvidersRequest = /*@__PURE__*/ __L.at(
+  __c61,
+  5,
+) as any as S.Schema<ListCertificateProvidersRequest>;
 export interface CertificateProviderSummary {
   certificateProviderName?: string;
   certificateProviderArn?: string;
 }
+const CertificateProviderSummary =
+  CreateCertificateProviderResponse as any as S.Schema<CertificateProviderSummary>;
 export type CertificateProviders = CertificateProviderSummary[];
+const CertificateProviders = /*@__PURE__*/ __L.at(__c61, 6);
 export interface ListCertificateProvidersResponse {
   certificateProviders?: CertificateProviderSummary[];
   nextToken?: string;
 }
+const ListCertificateProvidersResponse = /*@__PURE__*/ __L.at(
+  __c61,
+  7,
+) as any as S.Schema<ListCertificateProvidersResponse>;
 export interface ListCertificatesRequest {
   pageSize?: number;
   marker?: string;
   ascendingOrder?: boolean;
 }
+const ListCertificatesRequest = /*@__PURE__*/ __L.at(
+  __c62,
+  0,
+) as any as S.Schema<ListCertificatesRequest>;
 export interface Certificate {
   certificateArn?: string;
   certificateId?: string;
@@ -3642,27 +5389,44 @@ export interface Certificate {
   certificateMode?: CertificateMode;
   creationDate?: Date;
 }
+const Certificate = /*@__PURE__*/ __L.at(__c62, 1) as any as S.Schema<Certificate>;
 export type Certificates = Certificate[];
+const Certificates = /*@__PURE__*/ __L.at(__c62, 2);
 export interface ListCertificatesResponse {
   certificates?: Certificate[];
   nextMarker?: string;
 }
+const ListCertificatesResponse = /*@__PURE__*/ __L.at(
+  __c62,
+  3,
+) as any as S.Schema<ListCertificatesResponse>;
 export interface ListCertificatesByCARequest {
   caCertificateId: string;
   pageSize?: number;
   marker?: string;
   ascendingOrder?: boolean;
 }
+const ListCertificatesByCARequest = /*@__PURE__*/ __L.at(
+  __c62,
+  4,
+) as any as S.Schema<ListCertificatesByCARequest>;
 export interface ListCertificatesByCAResponse {
   certificates?: Certificate[];
   nextMarker?: string;
 }
+const ListCertificatesByCAResponse = /*@__PURE__*/ __L.at(
+  __c62,
+  5,
+) as any as S.Schema<ListCertificatesByCAResponse>;
 export type CommandMaxResults = number;
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
+const SortOrder = S.String;
+
 export interface TimeFilter {
   after?: string;
   before?: string;
 }
+const TimeFilter = /*@__PURE__*/ __L.at(__c62, 6) as any as S.Schema<TimeFilter>;
 export interface ListCommandExecutionsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -3674,6 +5438,10 @@ export interface ListCommandExecutionsRequest {
   targetArn?: string;
   commandArn?: string;
 }
+const ListCommandExecutionsRequest = /*@__PURE__*/ __L.at(
+  __c62,
+  7,
+) as any as S.Schema<ListCommandExecutionsRequest>;
 export interface CommandExecutionSummary {
   commandArn?: string;
   executionId?: string;
@@ -3683,11 +5451,20 @@ export interface CommandExecutionSummary {
   startedAt?: Date;
   completedAt?: Date;
 }
+const CommandExecutionSummary = /*@__PURE__*/ __L.at(
+  __c63,
+  0,
+) as any as S.Schema<CommandExecutionSummary>;
 export type CommandExecutionSummaryList = CommandExecutionSummary[];
+const CommandExecutionSummaryList = /*@__PURE__*/ __L.at(__c63, 1);
 export interface ListCommandExecutionsResponse {
   commandExecutions?: CommandExecutionSummary[];
   nextToken?: string;
 }
+const ListCommandExecutionsResponse = /*@__PURE__*/ __L.at(
+  __c63,
+  2,
+) as any as S.Schema<ListCommandExecutionsResponse>;
 export interface ListCommandsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -3695,6 +5472,7 @@ export interface ListCommandsRequest {
   commandParameterName?: string;
   sortOrder?: SortOrder;
 }
+const ListCommandsRequest = /*@__PURE__*/ __L.at(__c63, 3) as any as S.Schema<ListCommandsRequest>;
 export interface CommandSummary {
   commandArn?: string;
   commandId?: string;
@@ -3704,20 +5482,35 @@ export interface CommandSummary {
   lastUpdatedAt?: Date;
   pendingDeletion?: boolean;
 }
+const CommandSummary = /*@__PURE__*/ __L.at(__c63, 4) as any as S.Schema<CommandSummary>;
 export type CommandSummaryList = CommandSummary[];
+const CommandSummaryList = /*@__PURE__*/ __L.at(__c63, 5);
 export interface ListCommandsResponse {
   commands?: CommandSummary[];
   nextToken?: string;
 }
+const ListCommandsResponse = /*@__PURE__*/ __L.at(
+  __c63,
+  6,
+) as any as S.Schema<ListCommandsResponse>;
 export interface ListCustomMetricsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListCustomMetricsRequest = /*@__PURE__*/ __L.at(
+  __c63,
+  7,
+) as any as S.Schema<ListCustomMetricsRequest>;
 export type MetricNames = string[];
+const MetricNames = JobTargets as any as S.Schema<MetricNames>;
 export interface ListCustomMetricsResponse {
   metricNames?: string[];
   nextToken?: string;
 }
+const ListCustomMetricsResponse = /*@__PURE__*/ __L.at(
+  __c64,
+  0,
+) as any as S.Schema<ListCustomMetricsResponse>;
 export interface ListDetectMitigationActionsExecutionsRequest {
   taskId?: string;
   violationId?: string;
@@ -3727,12 +5520,18 @@ export interface ListDetectMitigationActionsExecutionsRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListDetectMitigationActionsExecutionsRequest = /*@__PURE__*/ __L.at(
+  __c64,
+  1,
+) as any as S.Schema<ListDetectMitigationActionsExecutionsRequest>;
 export type DetectMitigationActionExecutionStatus =
   | "IN_PROGRESS"
   | "SUCCESSFUL"
   | "FAILED"
   | "SKIPPED"
   | (string & {});
+const DetectMitigationActionExecutionStatus = S.String;
+
 export type DetectMitigationActionExecutionErrorCode = string;
 export interface DetectMitigationActionExecution {
   taskId?: string;
@@ -3745,69 +5544,125 @@ export interface DetectMitigationActionExecution {
   errorCode?: string;
   message?: string;
 }
+const DetectMitigationActionExecution = /*@__PURE__*/ __L.at(
+  __c64,
+  2,
+) as any as S.Schema<DetectMitigationActionExecution>;
 export type DetectMitigationActionExecutionList = DetectMitigationActionExecution[];
+const DetectMitigationActionExecutionList = /*@__PURE__*/ __L.at(__c64, 3);
 export interface ListDetectMitigationActionsExecutionsResponse {
   actionsExecutions?: DetectMitigationActionExecution[];
   nextToken?: string;
 }
+const ListDetectMitigationActionsExecutionsResponse = /*@__PURE__*/ __L.at(
+  __c64,
+  4,
+) as any as S.Schema<ListDetectMitigationActionsExecutionsResponse>;
 export interface ListDetectMitigationActionsTasksRequest {
   maxResults?: number;
   nextToken?: string;
   startTime: Date;
   endTime: Date;
 }
+const ListDetectMitigationActionsTasksRequest = /*@__PURE__*/ __L.at(
+  __c64,
+  5,
+) as any as S.Schema<ListDetectMitigationActionsTasksRequest>;
 export type DetectMitigationActionsTaskSummaryList = DetectMitigationActionsTaskSummary[];
+const DetectMitigationActionsTaskSummaryList = /*@__PURE__*/ __L.at(__c64, 6);
 export interface ListDetectMitigationActionsTasksResponse {
   tasks?: DetectMitigationActionsTaskSummary[];
   nextToken?: string;
 }
+const ListDetectMitigationActionsTasksResponse = /*@__PURE__*/ __L.at(
+  __c64,
+  7,
+) as any as S.Schema<ListDetectMitigationActionsTasksResponse>;
 export interface ListDimensionsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListDimensionsRequest = /*@__PURE__*/ __L.at(
+  __c65,
+  0,
+) as any as S.Schema<ListDimensionsRequest>;
 export type DimensionNames = string[];
+const DimensionNames = JobTargets as any as S.Schema<DimensionNames>;
 export interface ListDimensionsResponse {
   dimensionNames?: string[];
   nextToken?: string;
 }
+const ListDimensionsResponse = /*@__PURE__*/ __L.at(
+  __c65,
+  1,
+) as any as S.Schema<ListDimensionsResponse>;
 export interface ListDomainConfigurationsRequest {
   marker?: string;
   pageSize?: number;
   serviceType?: ServiceType;
 }
+const ListDomainConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c65,
+  2,
+) as any as S.Schema<ListDomainConfigurationsRequest>;
 export interface DomainConfigurationSummary {
   domainConfigurationName?: string;
   domainConfigurationArn?: string;
   serviceType?: ServiceType;
 }
+const DomainConfigurationSummary = /*@__PURE__*/ __L.at(
+  __c65,
+  3,
+) as any as S.Schema<DomainConfigurationSummary>;
 export type DomainConfigurations = DomainConfigurationSummary[];
+const DomainConfigurations = /*@__PURE__*/ __L.at(__c65, 4);
 export interface ListDomainConfigurationsResponse {
   domainConfigurations?: DomainConfigurationSummary[];
   nextMarker?: string;
 }
+const ListDomainConfigurationsResponse = /*@__PURE__*/ __L.at(
+  __c65,
+  5,
+) as any as S.Schema<ListDomainConfigurationsResponse>;
 export interface ListFleetMetricsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListFleetMetricsRequest = /*@__PURE__*/ __L.at(
+  __c65,
+  6,
+) as any as S.Schema<ListFleetMetricsRequest>;
 export interface FleetMetricNameAndArn {
   metricName?: string;
   metricArn?: string;
 }
+const FleetMetricNameAndArn = /*@__PURE__*/ __L.at(
+  __c65,
+  7,
+) as any as S.Schema<FleetMetricNameAndArn>;
 export type FleetMetricNameAndArnList = FleetMetricNameAndArn[];
+const FleetMetricNameAndArnList = /*@__PURE__*/ __L.at(__c66, 0);
 export interface ListFleetMetricsResponse {
   fleetMetrics?: FleetMetricNameAndArn[];
   nextToken?: string;
 }
+const ListFleetMetricsResponse = /*@__PURE__*/ __L.at(
+  __c66,
+  1,
+) as any as S.Schema<ListFleetMetricsResponse>;
 export type QueryMaxResults = number;
 export interface ListIndicesRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListIndicesRequest = /*@__PURE__*/ __L.at(__c66, 2) as any as S.Schema<ListIndicesRequest>;
 export type IndexNamesList = string[];
+const IndexNamesList = JobTargets as any as S.Schema<IndexNamesList>;
 export interface ListIndicesResponse {
   indexNames?: string[];
   nextToken?: string;
 }
+const ListIndicesResponse = /*@__PURE__*/ __L.at(__c66, 3) as any as S.Schema<ListIndicesResponse>;
 export type LaserMaxResults = number;
 export interface ListJobExecutionsForJobRequest {
   jobId: string;
@@ -3815,6 +5670,10 @@ export interface ListJobExecutionsForJobRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListJobExecutionsForJobRequest = /*@__PURE__*/ __L.at(
+  __c66,
+  4,
+) as any as S.Schema<ListJobExecutionsForJobRequest>;
 export type RetryAttempt = number;
 export interface JobExecutionSummary {
   status?: JobExecutionStatus;
@@ -3824,15 +5683,25 @@ export interface JobExecutionSummary {
   executionNumber?: number;
   retryAttempt?: number;
 }
+const JobExecutionSummary = /*@__PURE__*/ __L.at(__c66, 5) as any as S.Schema<JobExecutionSummary>;
 export interface JobExecutionSummaryForJob {
   thingArn?: string;
   jobExecutionSummary?: JobExecutionSummary;
 }
+const JobExecutionSummaryForJob = /*@__PURE__*/ __L.at(
+  __c66,
+  6,
+) as any as S.Schema<JobExecutionSummaryForJob>;
 export type JobExecutionSummaryForJobList = JobExecutionSummaryForJob[];
+const JobExecutionSummaryForJobList = /*@__PURE__*/ __L.at(__c66, 7);
 export interface ListJobExecutionsForJobResponse {
   executionSummaries?: JobExecutionSummaryForJob[];
   nextToken?: string;
 }
+const ListJobExecutionsForJobResponse = /*@__PURE__*/ __L.at(
+  __c67,
+  0,
+) as any as S.Schema<ListJobExecutionsForJobResponse>;
 export interface ListJobExecutionsForThingRequest {
   thingName: string;
   status?: JobExecutionStatus;
@@ -3841,15 +5710,28 @@ export interface ListJobExecutionsForThingRequest {
   nextToken?: string;
   jobId?: string;
 }
+const ListJobExecutionsForThingRequest = /*@__PURE__*/ __L.at(
+  __c67,
+  1,
+) as any as S.Schema<ListJobExecutionsForThingRequest>;
 export interface JobExecutionSummaryForThing {
   jobId?: string;
   jobExecutionSummary?: JobExecutionSummary;
 }
+const JobExecutionSummaryForThing = /*@__PURE__*/ __L.at(
+  __c67,
+  2,
+) as any as S.Schema<JobExecutionSummaryForThing>;
 export type JobExecutionSummaryForThingList = JobExecutionSummaryForThing[];
+const JobExecutionSummaryForThingList = /*@__PURE__*/ __L.at(__c67, 3);
 export interface ListJobExecutionsForThingResponse {
   executionSummaries?: JobExecutionSummaryForThing[];
   nextToken?: string;
 }
+const ListJobExecutionsForThingResponse = /*@__PURE__*/ __L.at(
+  __c67,
+  4,
+) as any as S.Schema<ListJobExecutionsForThingResponse>;
 export interface ListJobsRequest {
   status?: JobStatus;
   targetSelection?: TargetSelection;
@@ -3859,6 +5741,7 @@ export interface ListJobsRequest {
   thingGroupId?: string;
   namespaceId?: string;
 }
+const ListJobsRequest = /*@__PURE__*/ __L.at(__c67, 5) as any as S.Schema<ListJobsRequest>;
 export interface JobSummary {
   jobArn?: string;
   jobId?: string;
@@ -3870,31 +5753,48 @@ export interface JobSummary {
   completedAt?: Date;
   isConcurrent?: boolean;
 }
+const JobSummary = /*@__PURE__*/ __L.at(__c67, 6) as any as S.Schema<JobSummary>;
 export type JobSummaryList = JobSummary[];
+const JobSummaryList = /*@__PURE__*/ __L.at(__c67, 7);
 export interface ListJobsResponse {
   jobs?: JobSummary[];
   nextToken?: string;
 }
+const ListJobsResponse = /*@__PURE__*/ __L.at(__c68, 0) as any as S.Schema<ListJobsResponse>;
 export interface ListJobTemplatesRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListJobTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c68,
+  1,
+) as any as S.Schema<ListJobTemplatesRequest>;
 export interface JobTemplateSummary {
   jobTemplateArn?: string;
   jobTemplateId?: string;
   description?: string;
   createdAt?: Date;
 }
+const JobTemplateSummary = /*@__PURE__*/ __L.at(__c68, 2) as any as S.Schema<JobTemplateSummary>;
 export type JobTemplateSummaryList = JobTemplateSummary[];
+const JobTemplateSummaryList = /*@__PURE__*/ __L.at(__c68, 3);
 export interface ListJobTemplatesResponse {
   jobTemplates?: JobTemplateSummary[];
   nextToken?: string;
 }
+const ListJobTemplatesResponse = /*@__PURE__*/ __L.at(
+  __c68,
+  4,
+) as any as S.Schema<ListJobTemplatesResponse>;
 export interface ListManagedJobTemplatesRequest {
   templateName?: string;
   maxResults?: number;
   nextToken?: string;
 }
+const ListManagedJobTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c68,
+  5,
+) as any as S.Schema<ListManagedJobTemplatesRequest>;
 export interface ManagedJobTemplateSummary {
   templateArn?: string;
   templateName?: string;
@@ -3902,11 +5802,20 @@ export interface ManagedJobTemplateSummary {
   environments?: string[];
   templateVersion?: string;
 }
+const ManagedJobTemplateSummary = /*@__PURE__*/ __L.at(
+  __c68,
+  6,
+) as any as S.Schema<ManagedJobTemplateSummary>;
 export type ManagedJobTemplatesSummaryList = ManagedJobTemplateSummary[];
+const ManagedJobTemplatesSummaryList = /*@__PURE__*/ __L.at(__c68, 7);
 export interface ListManagedJobTemplatesResponse {
   managedJobTemplates?: ManagedJobTemplateSummary[];
   nextToken?: string;
 }
+const ListManagedJobTemplatesResponse = /*@__PURE__*/ __L.at(
+  __c69,
+  0,
+) as any as S.Schema<ListManagedJobTemplatesResponse>;
 export interface ListMetricValuesRequest {
   thingName: string;
   metricName: string;
@@ -3917,50 +5826,87 @@ export interface ListMetricValuesRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListMetricValuesRequest = /*@__PURE__*/ __L.at(
+  __c69,
+  1,
+) as any as S.Schema<ListMetricValuesRequest>;
 export interface MetricDatum {
   timestamp?: Date;
   value?: MetricValue;
 }
+const MetricDatum = /*@__PURE__*/ __L.at(__c69, 2) as any as S.Schema<MetricDatum>;
 export type MetricDatumList = MetricDatum[];
+const MetricDatumList = /*@__PURE__*/ __L.at(__c69, 3);
 export interface ListMetricValuesResponse {
   metricDatumList?: MetricDatum[];
   nextToken?: string;
 }
+const ListMetricValuesResponse = /*@__PURE__*/ __L.at(
+  __c69,
+  4,
+) as any as S.Schema<ListMetricValuesResponse>;
 export interface ListMitigationActionsRequest {
   actionType?: MitigationActionType;
   maxResults?: number;
   nextToken?: string;
 }
+const ListMitigationActionsRequest = /*@__PURE__*/ __L.at(
+  __c69,
+  5,
+) as any as S.Schema<ListMitigationActionsRequest>;
 export interface MitigationActionIdentifier {
   actionName?: string;
   actionArn?: string;
   creationDate?: Date;
 }
+const MitigationActionIdentifier = /*@__PURE__*/ __L.at(
+  __c69,
+  6,
+) as any as S.Schema<MitigationActionIdentifier>;
 export type MitigationActionIdentifierList = MitigationActionIdentifier[];
+const MitigationActionIdentifierList = /*@__PURE__*/ __L.at(__c69, 7);
 export interface ListMitigationActionsResponse {
   actionIdentifiers?: MitigationActionIdentifier[];
   nextToken?: string;
 }
+const ListMitigationActionsResponse = /*@__PURE__*/ __L.at(
+  __c70,
+  0,
+) as any as S.Schema<ListMitigationActionsResponse>;
 export interface ListOTAUpdatesRequest {
   maxResults?: number;
   nextToken?: string;
   otaUpdateStatus?: OTAUpdateStatus;
 }
+const ListOTAUpdatesRequest = /*@__PURE__*/ __L.at(
+  __c70,
+  1,
+) as any as S.Schema<ListOTAUpdatesRequest>;
 export interface OTAUpdateSummary {
   otaUpdateId?: string;
   otaUpdateArn?: string;
   creationDate?: Date;
 }
+const OTAUpdateSummary = /*@__PURE__*/ __L.at(__c70, 2) as any as S.Schema<OTAUpdateSummary>;
 export type OTAUpdatesSummary = OTAUpdateSummary[];
+const OTAUpdatesSummary = /*@__PURE__*/ __L.at(__c70, 3);
 export interface ListOTAUpdatesResponse {
   otaUpdates?: OTAUpdateSummary[];
   nextToken?: string;
 }
+const ListOTAUpdatesResponse = /*@__PURE__*/ __L.at(
+  __c70,
+  4,
+) as any as S.Schema<ListOTAUpdatesResponse>;
 export interface ListOutgoingCertificatesRequest {
   pageSize?: number;
   marker?: string;
   ascendingOrder?: boolean;
 }
+const ListOutgoingCertificatesRequest = /*@__PURE__*/ __L.at(
+  __c70,
+  5,
+) as any as S.Schema<ListOutgoingCertificatesRequest>;
 export interface OutgoingCertificate {
   certificateArn?: string;
   certificateId?: string;
@@ -3969,33 +5915,50 @@ export interface OutgoingCertificate {
   transferMessage?: string;
   creationDate?: Date;
 }
+const OutgoingCertificate = /*@__PURE__*/ __L.at(__c70, 6) as any as S.Schema<OutgoingCertificate>;
 export type OutgoingCertificates = OutgoingCertificate[];
+const OutgoingCertificates = /*@__PURE__*/ __L.at(__c70, 7);
 export interface ListOutgoingCertificatesResponse {
   outgoingCertificates?: OutgoingCertificate[];
   nextMarker?: string;
 }
+const ListOutgoingCertificatesResponse = /*@__PURE__*/ __L.at(
+  __c71,
+  0,
+) as any as S.Schema<ListOutgoingCertificatesResponse>;
 export type PackageCatalogMaxResults = number;
 export interface ListPackagesRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListPackagesRequest = /*@__PURE__*/ __L.at(__c71, 1) as any as S.Schema<ListPackagesRequest>;
 export interface PackageSummary {
   packageName?: string;
   defaultVersionName?: string;
   creationDate?: Date;
   lastModifiedDate?: Date;
 }
+const PackageSummary = /*@__PURE__*/ __L.at(__c71, 2) as any as S.Schema<PackageSummary>;
 export type PackageSummaryList = PackageSummary[];
+const PackageSummaryList = /*@__PURE__*/ __L.at(__c71, 3);
 export interface ListPackagesResponse {
   packageSummaries?: PackageSummary[];
   nextToken?: string;
 }
+const ListPackagesResponse = /*@__PURE__*/ __L.at(
+  __c71,
+  4,
+) as any as S.Schema<ListPackagesResponse>;
 export interface ListPackageVersionsRequest {
   packageName: string;
   status?: PackageVersionStatus;
   maxResults?: number;
   nextToken?: string;
 }
+const ListPackageVersionsRequest = /*@__PURE__*/ __L.at(
+  __c71,
+  5,
+) as any as S.Schema<ListPackageVersionsRequest>;
 export interface PackageVersionSummary {
   packageName?: string;
   versionName?: string;
@@ -4003,83 +5966,148 @@ export interface PackageVersionSummary {
   creationDate?: Date;
   lastModifiedDate?: Date;
 }
+const PackageVersionSummary = /*@__PURE__*/ __L.at(
+  __c71,
+  6,
+) as any as S.Schema<PackageVersionSummary>;
 export type PackageVersionSummaryList = PackageVersionSummary[];
+const PackageVersionSummaryList = /*@__PURE__*/ __L.at(__c71, 7);
 export interface ListPackageVersionsResponse {
   packageVersionSummaries?: PackageVersionSummary[];
   nextToken?: string;
 }
+const ListPackageVersionsResponse = /*@__PURE__*/ __L.at(
+  __c72,
+  0,
+) as any as S.Schema<ListPackageVersionsResponse>;
 export interface ListPoliciesRequest {
   marker?: string;
   pageSize?: number;
   ascendingOrder?: boolean;
 }
+const ListPoliciesRequest = /*@__PURE__*/ __L.at(__c72, 1) as any as S.Schema<ListPoliciesRequest>;
 export interface ListPoliciesResponse {
   policies?: Policy[];
   nextMarker?: string;
 }
+const ListPoliciesResponse = /*@__PURE__*/ __L.at(
+  __c72,
+  2,
+) as any as S.Schema<ListPoliciesResponse>;
 export interface ListPolicyPrincipalsRequest {
   policyName: string;
   marker?: string;
   pageSize?: number;
   ascendingOrder?: boolean;
 }
+const ListPolicyPrincipalsRequest = /*@__PURE__*/ __L.at(
+  __c72,
+  3,
+) as any as S.Schema<ListPolicyPrincipalsRequest>;
 export type PrincipalArn = string;
 export type Principals = string[];
+const Principals = JobTargets as any as S.Schema<Principals>;
 export interface ListPolicyPrincipalsResponse {
   principals?: string[];
   nextMarker?: string;
 }
+const ListPolicyPrincipalsResponse = /*@__PURE__*/ __L.at(
+  __c72,
+  4,
+) as any as S.Schema<ListPolicyPrincipalsResponse>;
 export interface ListPolicyVersionsRequest {
   policyName: string;
 }
+const ListPolicyVersionsRequest = /*@__PURE__*/ __L.at(
+  __c72,
+  5,
+) as any as S.Schema<ListPolicyVersionsRequest>;
 export interface PolicyVersion {
   versionId?: string;
   isDefaultVersion?: boolean;
   createDate?: Date;
 }
+const PolicyVersion = /*@__PURE__*/ __L.at(__c72, 6) as any as S.Schema<PolicyVersion>;
 export type PolicyVersions = PolicyVersion[];
+const PolicyVersions = /*@__PURE__*/ __L.at(__c72, 7);
 export interface ListPolicyVersionsResponse {
   policyVersions?: PolicyVersion[];
 }
+const ListPolicyVersionsResponse = /*@__PURE__*/ __L.at(
+  __c73,
+  0,
+) as any as S.Schema<ListPolicyVersionsResponse>;
 export interface ListPrincipalPoliciesRequest {
   principal: string;
   marker?: string;
   pageSize?: number;
   ascendingOrder?: boolean;
 }
+const ListPrincipalPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c73,
+  1,
+) as any as S.Schema<ListPrincipalPoliciesRequest>;
 export interface ListPrincipalPoliciesResponse {
   policies?: Policy[];
   nextMarker?: string;
 }
+const ListPrincipalPoliciesResponse =
+  ListAttachedPoliciesResponse as any as S.Schema<ListPrincipalPoliciesResponse>;
 export interface ListPrincipalThingsRequest {
   nextToken?: string;
   maxResults?: number;
   principal: string;
 }
+const ListPrincipalThingsRequest = /*@__PURE__*/ __L.at(
+  __c73,
+  2,
+) as any as S.Schema<ListPrincipalThingsRequest>;
 export type ThingNameList = string[];
+const ThingNameList = JobTargets as any as S.Schema<ThingNameList>;
 export interface ListPrincipalThingsResponse {
   things?: string[];
   nextToken?: string;
 }
+const ListPrincipalThingsResponse = /*@__PURE__*/ __L.at(
+  __c73,
+  3,
+) as any as S.Schema<ListPrincipalThingsResponse>;
 export interface ListPrincipalThingsV2Request {
   nextToken?: string;
   maxResults?: number;
   principal: string;
   thingPrincipalType?: ThingPrincipalType;
 }
+const ListPrincipalThingsV2Request = /*@__PURE__*/ __L.at(
+  __c73,
+  4,
+) as any as S.Schema<ListPrincipalThingsV2Request>;
 export interface PrincipalThingObject {
   thingName: string;
   thingPrincipalType?: ThingPrincipalType;
 }
+const PrincipalThingObject = /*@__PURE__*/ __L.at(
+  __c73,
+  5,
+) as any as S.Schema<PrincipalThingObject>;
 export type PrincipalThingObjects = PrincipalThingObject[];
+const PrincipalThingObjects = /*@__PURE__*/ __L.at(__c73, 6);
 export interface ListPrincipalThingsV2Response {
   principalThingObjects?: PrincipalThingObject[];
   nextToken?: string;
 }
+const ListPrincipalThingsV2Response = /*@__PURE__*/ __L.at(
+  __c73,
+  7,
+) as any as S.Schema<ListPrincipalThingsV2Response>;
 export interface ListProvisioningTemplatesRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListProvisioningTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c74,
+  0,
+) as any as S.Schema<ListProvisioningTemplatesRequest>;
 export interface ProvisioningTemplateSummary {
   templateArn?: string;
   templateName?: string;
@@ -4089,46 +6117,87 @@ export interface ProvisioningTemplateSummary {
   enabled?: boolean;
   type?: TemplateType;
 }
+const ProvisioningTemplateSummary = /*@__PURE__*/ __L.at(
+  __c74,
+  1,
+) as any as S.Schema<ProvisioningTemplateSummary>;
 export type ProvisioningTemplateListing = ProvisioningTemplateSummary[];
+const ProvisioningTemplateListing = /*@__PURE__*/ __L.at(__c74, 2);
 export interface ListProvisioningTemplatesResponse {
   templates?: ProvisioningTemplateSummary[];
   nextToken?: string;
 }
+const ListProvisioningTemplatesResponse = /*@__PURE__*/ __L.at(
+  __c74,
+  3,
+) as any as S.Schema<ListProvisioningTemplatesResponse>;
 export interface ListProvisioningTemplateVersionsRequest {
   templateName: string;
   maxResults?: number;
   nextToken?: string;
 }
+const ListProvisioningTemplateVersionsRequest = /*@__PURE__*/ __L.at(
+  __c74,
+  4,
+) as any as S.Schema<ListProvisioningTemplateVersionsRequest>;
 export interface ProvisioningTemplateVersionSummary {
   versionId?: number;
   creationDate?: Date;
   isDefaultVersion?: boolean;
 }
+const ProvisioningTemplateVersionSummary = /*@__PURE__*/ __L.at(
+  __c74,
+  5,
+) as any as S.Schema<ProvisioningTemplateVersionSummary>;
 export type ProvisioningTemplateVersionListing = ProvisioningTemplateVersionSummary[];
+const ProvisioningTemplateVersionListing = /*@__PURE__*/ __L.at(__c74, 6);
 export interface ListProvisioningTemplateVersionsResponse {
   versions?: ProvisioningTemplateVersionSummary[];
   nextToken?: string;
 }
+const ListProvisioningTemplateVersionsResponse = /*@__PURE__*/ __L.at(
+  __c74,
+  7,
+) as any as S.Schema<ListProvisioningTemplateVersionsResponse>;
 export interface ListRelatedResourcesForAuditFindingRequest {
   findingId: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListRelatedResourcesForAuditFindingRequest = /*@__PURE__*/ __L.at(
+  __c75,
+  0,
+) as any as S.Schema<ListRelatedResourcesForAuditFindingRequest>;
 export interface ListRelatedResourcesForAuditFindingResponse {
   relatedResources?: RelatedResource[];
   nextToken?: string;
 }
+const ListRelatedResourcesForAuditFindingResponse = /*@__PURE__*/ __L.at(
+  __c75,
+  1,
+) as any as S.Schema<ListRelatedResourcesForAuditFindingResponse>;
 export interface ListRoleAliasesRequest {
   pageSize?: number;
   marker?: string;
   ascendingOrder?: boolean;
 }
+const ListRoleAliasesRequest = /*@__PURE__*/ __L.at(
+  __c75,
+  2,
+) as any as S.Schema<ListRoleAliasesRequest>;
 export type RoleAliases = string[];
+const RoleAliases = JobTargets as any as S.Schema<RoleAliases>;
 export interface ListRoleAliasesResponse {
   roleAliases?: string[];
   nextMarker?: string;
 }
+const ListRoleAliasesResponse = /*@__PURE__*/ __L.at(
+  __c75,
+  3,
+) as any as S.Schema<ListRoleAliasesResponse>;
 export type SbomValidationResult = "FAILED" | "SUCCEEDED" | (string & {});
+const SbomValidationResult = S.String;
+
 export interface ListSbomValidationResultsRequest {
   packageName: string;
   versionName: string;
@@ -4136,10 +6205,16 @@ export interface ListSbomValidationResultsRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListSbomValidationResultsRequest = /*@__PURE__*/ __L.at(
+  __c75,
+  4,
+) as any as S.Schema<ListSbomValidationResultsRequest>;
 export type SbomValidationErrorCode =
   | "INCOMPATIBLE_FORMAT"
   | "FILE_SIZE_LIMIT_EXCEEDED"
   | (string & {});
+const SbomValidationErrorCode = S.String;
+
 export type SbomValidationErrorMessage = string;
 export interface SbomValidationResultSummary {
   fileName?: string;
@@ -4147,15 +6222,28 @@ export interface SbomValidationResultSummary {
   errorCode?: SbomValidationErrorCode;
   errorMessage?: string;
 }
+const SbomValidationResultSummary = /*@__PURE__*/ __L.at(
+  __c75,
+  5,
+) as any as S.Schema<SbomValidationResultSummary>;
 export type SbomValidationResultSummaryList = SbomValidationResultSummary[];
+const SbomValidationResultSummaryList = /*@__PURE__*/ __L.at(__c75, 6);
 export interface ListSbomValidationResultsResponse {
   validationResultSummaries?: SbomValidationResultSummary[];
   nextToken?: string;
 }
+const ListSbomValidationResultsResponse = /*@__PURE__*/ __L.at(
+  __c75,
+  7,
+) as any as S.Schema<ListSbomValidationResultsResponse>;
 export interface ListScheduledAuditsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListScheduledAuditsRequest = /*@__PURE__*/ __L.at(
+  __c76,
+  0,
+) as any as S.Schema<ListScheduledAuditsRequest>;
 export interface ScheduledAuditMetadata {
   scheduledAuditName?: string;
   scheduledAuditArn?: string;
@@ -4163,89 +6251,158 @@ export interface ScheduledAuditMetadata {
   dayOfMonth?: string;
   dayOfWeek?: DayOfWeek;
 }
+const ScheduledAuditMetadata = /*@__PURE__*/ __L.at(
+  __c76,
+  1,
+) as any as S.Schema<ScheduledAuditMetadata>;
 export type ScheduledAuditMetadataList = ScheduledAuditMetadata[];
+const ScheduledAuditMetadataList = /*@__PURE__*/ __L.at(__c76, 2);
 export interface ListScheduledAuditsResponse {
   scheduledAudits?: ScheduledAuditMetadata[];
   nextToken?: string;
 }
+const ListScheduledAuditsResponse = /*@__PURE__*/ __L.at(
+  __c76,
+  3,
+) as any as S.Schema<ListScheduledAuditsResponse>;
 export interface ListSecurityProfilesRequest {
   nextToken?: string;
   maxResults?: number;
   dimensionName?: string;
   metricName?: string;
 }
+const ListSecurityProfilesRequest = /*@__PURE__*/ __L.at(
+  __c76,
+  4,
+) as any as S.Schema<ListSecurityProfilesRequest>;
 export interface SecurityProfileIdentifier {
   name: string;
   arn: string;
 }
+const SecurityProfileIdentifier = /*@__PURE__*/ __L.at(
+  __c76,
+  5,
+) as any as S.Schema<SecurityProfileIdentifier>;
 export type SecurityProfileIdentifiers = SecurityProfileIdentifier[];
+const SecurityProfileIdentifiers = /*@__PURE__*/ __L.at(__c76, 6);
 export interface ListSecurityProfilesResponse {
   securityProfileIdentifiers?: SecurityProfileIdentifier[];
   nextToken?: string;
 }
+const ListSecurityProfilesResponse = /*@__PURE__*/ __L.at(
+  __c76,
+  7,
+) as any as S.Schema<ListSecurityProfilesResponse>;
 export interface ListSecurityProfilesForTargetRequest {
   nextToken?: string;
   maxResults?: number;
   recursive?: boolean;
   securityProfileTargetArn: string;
 }
+const ListSecurityProfilesForTargetRequest = /*@__PURE__*/ __L.at(
+  __c77,
+  0,
+) as any as S.Schema<ListSecurityProfilesForTargetRequest>;
 export interface SecurityProfileTarget {
   arn: string;
 }
+const SecurityProfileTarget = /*@__PURE__*/ __L.at(
+  __c77,
+  1,
+) as any as S.Schema<SecurityProfileTarget>;
 export interface SecurityProfileTargetMapping {
   securityProfileIdentifier?: SecurityProfileIdentifier;
   target?: SecurityProfileTarget;
 }
+const SecurityProfileTargetMapping = /*@__PURE__*/ __L.at(
+  __c77,
+  2,
+) as any as S.Schema<SecurityProfileTargetMapping>;
 export type SecurityProfileTargetMappings = SecurityProfileTargetMapping[];
+const SecurityProfileTargetMappings = /*@__PURE__*/ __L.at(__c77, 3);
 export interface ListSecurityProfilesForTargetResponse {
   securityProfileTargetMappings?: SecurityProfileTargetMapping[];
   nextToken?: string;
 }
+const ListSecurityProfilesForTargetResponse = /*@__PURE__*/ __L.at(
+  __c77,
+  4,
+) as any as S.Schema<ListSecurityProfilesForTargetResponse>;
 export interface ListStreamsRequest {
   maxResults?: number;
   nextToken?: string;
   ascendingOrder?: boolean;
 }
+const ListStreamsRequest = /*@__PURE__*/ __L.at(__c77, 5) as any as S.Schema<ListStreamsRequest>;
 export interface StreamSummary {
   streamId?: string;
   streamArn?: string;
   streamVersion?: number;
   description?: string;
 }
+const StreamSummary = /*@__PURE__*/ __L.at(__c77, 6) as any as S.Schema<StreamSummary>;
 export type StreamsSummary = StreamSummary[];
+const StreamsSummary = /*@__PURE__*/ __L.at(__c77, 7);
 export interface ListStreamsResponse {
   streams?: StreamSummary[];
   nextToken?: string;
 }
+const ListStreamsResponse = /*@__PURE__*/ __L.at(__c78, 0) as any as S.Schema<ListStreamsResponse>;
 export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
   nextToken?: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c78,
+  1,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
   nextToken?: string;
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c78,
+  2,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListTargetsForPolicyRequest {
   policyName: string;
   marker?: string;
   pageSize?: number;
 }
+const ListTargetsForPolicyRequest = /*@__PURE__*/ __L.at(
+  __c78,
+  3,
+) as any as S.Schema<ListTargetsForPolicyRequest>;
 export type PolicyTargets = string[];
+const PolicyTargets = JobTargets as any as S.Schema<PolicyTargets>;
 export interface ListTargetsForPolicyResponse {
   targets?: string[];
   nextMarker?: string;
 }
+const ListTargetsForPolicyResponse = /*@__PURE__*/ __L.at(
+  __c78,
+  4,
+) as any as S.Schema<ListTargetsForPolicyResponse>;
 export interface ListTargetsForSecurityProfileRequest {
   securityProfileName: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListTargetsForSecurityProfileRequest = /*@__PURE__*/ __L.at(
+  __c78,
+  5,
+) as any as S.Schema<ListTargetsForSecurityProfileRequest>;
 export type SecurityProfileTargets = SecurityProfileTarget[];
+const SecurityProfileTargets = /*@__PURE__*/ __L.at(__c78, 6);
 export interface ListTargetsForSecurityProfileResponse {
   securityProfileTargets?: SecurityProfileTarget[];
   nextToken?: string;
 }
+const ListTargetsForSecurityProfileResponse = /*@__PURE__*/ __L.at(
+  __c78,
+  7,
+) as any as S.Schema<ListTargetsForSecurityProfileResponse>;
 export type RecursiveWithoutDefault = boolean;
 export interface ListThingGroupsRequest {
   nextToken?: string;
@@ -4254,67 +6411,124 @@ export interface ListThingGroupsRequest {
   namePrefixFilter?: string;
   recursive?: boolean;
 }
+const ListThingGroupsRequest = /*@__PURE__*/ __L.at(
+  __c79,
+  0,
+) as any as S.Schema<ListThingGroupsRequest>;
 export interface ListThingGroupsResponse {
   thingGroups?: GroupNameAndArn[];
   nextToken?: string;
 }
+const ListThingGroupsResponse = /*@__PURE__*/ __L.at(
+  __c79,
+  1,
+) as any as S.Schema<ListThingGroupsResponse>;
 export interface ListThingGroupsForThingRequest {
   thingName: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListThingGroupsForThingRequest = /*@__PURE__*/ __L.at(
+  __c79,
+  2,
+) as any as S.Schema<ListThingGroupsForThingRequest>;
 export interface ListThingGroupsForThingResponse {
   thingGroups?: GroupNameAndArn[];
   nextToken?: string;
 }
+const ListThingGroupsForThingResponse = /*@__PURE__*/ __L.at(
+  __c79,
+  3,
+) as any as S.Schema<ListThingGroupsForThingResponse>;
 export interface ListThingPrincipalsRequest {
   nextToken?: string;
   maxResults?: number;
   thingName: string;
 }
+const ListThingPrincipalsRequest = /*@__PURE__*/ __L.at(
+  __c79,
+  4,
+) as any as S.Schema<ListThingPrincipalsRequest>;
 export interface ListThingPrincipalsResponse {
   principals?: string[];
   nextToken?: string;
 }
+const ListThingPrincipalsResponse = /*@__PURE__*/ __L.at(
+  __c79,
+  5,
+) as any as S.Schema<ListThingPrincipalsResponse>;
 export interface ListThingPrincipalsV2Request {
   nextToken?: string;
   maxResults?: number;
   thingName: string;
   thingPrincipalType?: ThingPrincipalType;
 }
+const ListThingPrincipalsV2Request = /*@__PURE__*/ __L.at(
+  __c79,
+  6,
+) as any as S.Schema<ListThingPrincipalsV2Request>;
 export interface ThingPrincipalObject {
   principal: string;
   thingPrincipalType?: ThingPrincipalType;
 }
+const ThingPrincipalObject = /*@__PURE__*/ __L.at(
+  __c79,
+  7,
+) as any as S.Schema<ThingPrincipalObject>;
 export type ThingPrincipalObjects = ThingPrincipalObject[];
+const ThingPrincipalObjects = /*@__PURE__*/ __L.at(__c80, 0);
 export interface ListThingPrincipalsV2Response {
   thingPrincipalObjects?: ThingPrincipalObject[];
   nextToken?: string;
 }
+const ListThingPrincipalsV2Response = /*@__PURE__*/ __L.at(
+  __c80,
+  1,
+) as any as S.Schema<ListThingPrincipalsV2Response>;
 export type ReportType = "ERRORS" | "RESULTS" | (string & {});
+const ReportType = S.String;
+
 export interface ListThingRegistrationTaskReportsRequest {
   taskId: string;
   reportType: ReportType;
   nextToken?: string;
   maxResults?: number;
 }
+const ListThingRegistrationTaskReportsRequest = /*@__PURE__*/ __L.at(
+  __c80,
+  2,
+) as any as S.Schema<ListThingRegistrationTaskReportsRequest>;
 export type S3FileUrl = string;
 export type S3FileUrlList = string[];
+const S3FileUrlList = JobTargets as any as S.Schema<S3FileUrlList>;
 export interface ListThingRegistrationTaskReportsResponse {
   resourceLinks?: string[];
   reportType?: ReportType;
   nextToken?: string;
 }
+const ListThingRegistrationTaskReportsResponse = /*@__PURE__*/ __L.at(
+  __c80,
+  3,
+) as any as S.Schema<ListThingRegistrationTaskReportsResponse>;
 export interface ListThingRegistrationTasksRequest {
   nextToken?: string;
   maxResults?: number;
   status?: Status;
 }
+const ListThingRegistrationTasksRequest = /*@__PURE__*/ __L.at(
+  __c80,
+  4,
+) as any as S.Schema<ListThingRegistrationTasksRequest>;
 export type TaskIdList = string[];
+const TaskIdList = JobTargets as any as S.Schema<TaskIdList>;
 export interface ListThingRegistrationTasksResponse {
   taskIds?: string[];
   nextToken?: string;
 }
+const ListThingRegistrationTasksResponse = /*@__PURE__*/ __L.at(
+  __c80,
+  5,
+) as any as S.Schema<ListThingRegistrationTasksResponse>;
 export type UsePrefixAttributeValue = boolean;
 export interface ListThingsRequest {
   nextToken?: string;
@@ -4324,6 +6538,7 @@ export interface ListThingsRequest {
   thingTypeName?: string;
   usePrefixAttributeValue?: boolean;
 }
+const ListThingsRequest = /*@__PURE__*/ __L.at(__c80, 6) as any as S.Schema<ListThingsRequest>;
 export interface ThingAttribute {
   thingName?: string;
   thingTypeName?: string;
@@ -4331,60 +6546,92 @@ export interface ThingAttribute {
   attributes?: { [key: string]: string | undefined };
   version?: number;
 }
+const ThingAttribute = /*@__PURE__*/ __L.at(__c80, 7) as any as S.Schema<ThingAttribute>;
 export type ThingAttributeList = ThingAttribute[];
+const ThingAttributeList = /*@__PURE__*/ __L.at(__c81, 0);
 export interface ListThingsResponse {
   things?: ThingAttribute[];
   nextToken?: string;
 }
+const ListThingsResponse = /*@__PURE__*/ __L.at(__c81, 1) as any as S.Schema<ListThingsResponse>;
 export interface ListThingsInBillingGroupRequest {
   billingGroupName: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListThingsInBillingGroupRequest = /*@__PURE__*/ __L.at(
+  __c81,
+  2,
+) as any as S.Schema<ListThingsInBillingGroupRequest>;
 export interface ListThingsInBillingGroupResponse {
   things?: string[];
   nextToken?: string;
 }
+const ListThingsInBillingGroupResponse =
+  ListPrincipalThingsResponse as any as S.Schema<ListThingsInBillingGroupResponse>;
 export interface ListThingsInThingGroupRequest {
   thingGroupName: string;
   recursive?: boolean;
   nextToken?: string;
   maxResults?: number;
 }
+const ListThingsInThingGroupRequest = /*@__PURE__*/ __L.at(
+  __c81,
+  3,
+) as any as S.Schema<ListThingsInThingGroupRequest>;
 export interface ListThingsInThingGroupResponse {
   things?: string[];
   nextToken?: string;
 }
+const ListThingsInThingGroupResponse =
+  ListPrincipalThingsResponse as any as S.Schema<ListThingsInThingGroupResponse>;
 export interface ListThingTypesRequest {
   nextToken?: string;
   maxResults?: number;
   thingTypeName?: string;
 }
+const ListThingTypesRequest = /*@__PURE__*/ __L.at(
+  __c81,
+  4,
+) as any as S.Schema<ListThingTypesRequest>;
 export interface ThingTypeDefinition {
   thingTypeName?: string;
   thingTypeArn?: string;
   thingTypeProperties?: ThingTypeProperties;
   thingTypeMetadata?: ThingTypeMetadata;
 }
+const ThingTypeDefinition = /*@__PURE__*/ __L.at(__c81, 5) as any as S.Schema<ThingTypeDefinition>;
 export type ThingTypeList = ThingTypeDefinition[];
+const ThingTypeList = /*@__PURE__*/ __L.at(__c81, 6);
 export interface ListThingTypesResponse {
   thingTypes?: ThingTypeDefinition[];
   nextToken?: string;
 }
+const ListThingTypesResponse = /*@__PURE__*/ __L.at(
+  __c81,
+  7,
+) as any as S.Schema<ListThingTypesResponse>;
 export type TopicRuleDestinationMaxResults = number;
 export interface ListTopicRuleDestinationsRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListTopicRuleDestinationsRequest = /*@__PURE__*/ __L.at(
+  __c82,
+  0,
+) as any as S.Schema<ListTopicRuleDestinationsRequest>;
 export interface HttpUrlDestinationSummary {
   confirmationUrl?: string;
 }
+const HttpUrlDestinationSummary =
+  HttpUrlDestinationProperties as any as S.Schema<HttpUrlDestinationSummary>;
 export interface VpcDestinationSummary {
   subnetIds?: string[];
   securityGroups?: string[];
   vpcId?: string;
   roleArn?: string;
 }
+const VpcDestinationSummary = VpcDestinationProperties as any as S.Schema<VpcDestinationSummary>;
 export interface InfluxDBDestinationSummary {
   endpoint?: string;
   influxDBVersion?: InfluxDBVersion;
@@ -4392,6 +6639,8 @@ export interface InfluxDBDestinationSummary {
   secretType?: InfluxDBSecretType;
   secretKey?: string;
 }
+const InfluxDBDestinationSummary =
+  InfluxDBDestinationProperties as any as S.Schema<InfluxDBDestinationSummary>;
 export interface TopicRuleDestinationSummary {
   arn?: string;
   status?: TopicRuleDestinationStatus;
@@ -4402,11 +6651,20 @@ export interface TopicRuleDestinationSummary {
   vpcDestinationSummary?: VpcDestinationSummary;
   influxDBSummary?: InfluxDBDestinationSummary;
 }
+const TopicRuleDestinationSummary = /*@__PURE__*/ __L.at(
+  __c82,
+  1,
+) as any as S.Schema<TopicRuleDestinationSummary>;
 export type TopicRuleDestinationSummaries = TopicRuleDestinationSummary[];
+const TopicRuleDestinationSummaries = /*@__PURE__*/ __L.at(__c82, 2);
 export interface ListTopicRuleDestinationsResponse {
   destinationSummaries?: TopicRuleDestinationSummary[];
   nextToken?: string;
 }
+const ListTopicRuleDestinationsResponse = /*@__PURE__*/ __L.at(
+  __c82,
+  3,
+) as any as S.Schema<ListTopicRuleDestinationsResponse>;
 export type Topic = string;
 export type TopicRuleMaxResults = number;
 export interface ListTopicRulesRequest {
@@ -4415,6 +6673,10 @@ export interface ListTopicRulesRequest {
   nextToken?: string;
   ruleDisabled?: boolean;
 }
+const ListTopicRulesRequest = /*@__PURE__*/ __L.at(
+  __c82,
+  4,
+) as any as S.Schema<ListTopicRulesRequest>;
 export interface TopicRuleListItem {
   ruleArn?: string;
   ruleName?: string;
@@ -4422,30 +6684,50 @@ export interface TopicRuleListItem {
   createdAt?: Date;
   ruleDisabled?: boolean;
 }
+const TopicRuleListItem = /*@__PURE__*/ __L.at(__c82, 5) as any as S.Schema<TopicRuleListItem>;
 export type TopicRuleList = TopicRuleListItem[];
+const TopicRuleList = /*@__PURE__*/ __L.at(__c82, 6);
 export interface ListTopicRulesResponse {
   rules?: TopicRuleListItem[];
   nextToken?: string;
 }
+const ListTopicRulesResponse = /*@__PURE__*/ __L.at(
+  __c82,
+  7,
+) as any as S.Schema<ListTopicRulesResponse>;
 export type SkyfallMaxResults = number;
 export interface ListV2LoggingLevelsRequest {
   targetType?: LogTargetType;
   nextToken?: string;
   maxResults?: number;
 }
+const ListV2LoggingLevelsRequest = /*@__PURE__*/ __L.at(
+  __c83,
+  0,
+) as any as S.Schema<ListV2LoggingLevelsRequest>;
 export interface LogTarget {
   targetType: LogTargetType;
   targetName?: string;
 }
+const LogTarget = /*@__PURE__*/ __L.at(__c83, 1) as any as S.Schema<LogTarget>;
 export interface LogTargetConfiguration {
   logTarget?: LogTarget;
   logLevel?: LogLevel;
 }
+const LogTargetConfiguration = /*@__PURE__*/ __L.at(
+  __c83,
+  2,
+) as any as S.Schema<LogTargetConfiguration>;
 export type LogTargetConfigurations = LogTargetConfiguration[];
+const LogTargetConfigurations = /*@__PURE__*/ __L.at(__c83, 3);
 export interface ListV2LoggingLevelsResponse {
   logTargetConfigurations?: LogTargetConfiguration[];
   nextToken?: string;
 }
+const ListV2LoggingLevelsResponse = /*@__PURE__*/ __L.at(
+  __c83,
+  4,
+) as any as S.Schema<ListV2LoggingLevelsResponse>;
 export interface ListViolationEventsRequest {
   startTime: Date;
   endTime: Date;
@@ -4457,7 +6739,13 @@ export interface ListViolationEventsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListViolationEventsRequest = /*@__PURE__*/ __L.at(
+  __c83,
+  5,
+) as any as S.Schema<ListViolationEventsRequest>;
 export type ViolationEventType = "in-alarm" | "alarm-cleared" | "alarm-invalidated" | (string & {});
+const ViolationEventType = S.String;
+
 export interface ViolationEvent {
   violationId?: string;
   thingName?: string;
@@ -4470,17 +6758,29 @@ export interface ViolationEvent {
   verificationStateDescription?: string;
   violationEventTime?: Date;
 }
+const ViolationEvent = /*@__PURE__*/ __L.at(__c83, 6) as any as S.Schema<ViolationEvent>;
 export type ViolationEvents = ViolationEvent[];
+const ViolationEvents = /*@__PURE__*/ __L.at(__c83, 7);
 export interface ListViolationEventsResponse {
   violationEvents?: ViolationEvent[];
   nextToken?: string;
 }
+const ListViolationEventsResponse = /*@__PURE__*/ __L.at(
+  __c84,
+  0,
+) as any as S.Schema<ListViolationEventsResponse>;
 export interface PutVerificationStateOnViolationRequest {
   violationId: string;
   verificationState: VerificationState;
   verificationStateDescription?: string;
 }
+const PutVerificationStateOnViolationRequest = /*@__PURE__*/ __L.at(
+  __c84,
+  1,
+) as any as S.Schema<PutVerificationStateOnViolationRequest>;
 export interface PutVerificationStateOnViolationResponse {}
+const PutVerificationStateOnViolationResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<PutVerificationStateOnViolationResponse>;
 export type AllowAutoRegistration = boolean;
 export interface RegisterCACertificateRequest {
   caCertificate: string;
@@ -4491,10 +6791,18 @@ export interface RegisterCACertificateRequest {
   tags?: Tag[];
   certificateMode?: CertificateMode;
 }
+const RegisterCACertificateRequest = /*@__PURE__*/ __L.at(
+  __c84,
+  2,
+) as any as S.Schema<RegisterCACertificateRequest>;
 export interface RegisterCACertificateResponse {
   certificateArn?: string;
   certificateId?: string;
 }
+const RegisterCACertificateResponse = /*@__PURE__*/ __L.at(
+  __c84,
+  3,
+) as any as S.Schema<RegisterCACertificateResponse>;
 export type SetAsActiveFlag = boolean;
 export interface RegisterCertificateRequest {
   certificatePem: string;
@@ -4502,54 +6810,100 @@ export interface RegisterCertificateRequest {
   setAsActive?: boolean;
   status?: CertificateStatus;
 }
+const RegisterCertificateRequest = /*@__PURE__*/ __L.at(
+  __c84,
+  4,
+) as any as S.Schema<RegisterCertificateRequest>;
 export interface RegisterCertificateResponse {
   certificateArn?: string;
   certificateId?: string;
 }
+const RegisterCertificateResponse =
+  RegisterCACertificateResponse as any as S.Schema<RegisterCertificateResponse>;
 export interface RegisterCertificateWithoutCARequest {
   certificatePem: string;
   status?: CertificateStatus;
 }
+const RegisterCertificateWithoutCARequest = /*@__PURE__*/ __L.at(
+  __c84,
+  5,
+) as any as S.Schema<RegisterCertificateWithoutCARequest>;
 export interface RegisterCertificateWithoutCAResponse {
   certificateArn?: string;
   certificateId?: string;
 }
+const RegisterCertificateWithoutCAResponse =
+  RegisterCACertificateResponse as any as S.Schema<RegisterCertificateWithoutCAResponse>;
 export type Parameter = string;
 export type Parameters = { [key: string]: string | undefined };
+const Parameters = DetailsMap as any as S.Schema<Parameters>;
 export interface RegisterThingRequest {
   templateBody: string;
   parameters?: { [key: string]: string | undefined };
 }
+const RegisterThingRequest = /*@__PURE__*/ __L.at(
+  __c84,
+  6,
+) as any as S.Schema<RegisterThingRequest>;
 export type ResourceLogicalId = string;
 export type ResourceArns = { [key: string]: string | undefined };
+const ResourceArns = PublicKeyMap as any as S.Schema<ResourceArns>;
 export interface RegisterThingResponse {
   certificatePem?: string;
   resourceArns?: { [key: string]: string | undefined };
 }
+const RegisterThingResponse = /*@__PURE__*/ __L.at(
+  __c84,
+  7,
+) as any as S.Schema<RegisterThingResponse>;
 export interface RejectCertificateTransferRequest {
   certificateId: string;
   rejectReason?: string;
 }
+const RejectCertificateTransferRequest = /*@__PURE__*/ __L.at(
+  __c85,
+  0,
+) as any as S.Schema<RejectCertificateTransferRequest>;
 export interface RejectCertificateTransferResponse {}
+const RejectCertificateTransferResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<RejectCertificateTransferResponse>;
 export interface RemoveThingFromBillingGroupRequest {
   billingGroupName?: string;
   billingGroupArn?: string;
   thingName?: string;
   thingArn?: string;
 }
+const RemoveThingFromBillingGroupRequest = /*@__PURE__*/ __L.at(
+  __c85,
+  1,
+) as any as S.Schema<RemoveThingFromBillingGroupRequest>;
 export interface RemoveThingFromBillingGroupResponse {}
+const RemoveThingFromBillingGroupResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<RemoveThingFromBillingGroupResponse>;
 export interface RemoveThingFromThingGroupRequest {
   thingGroupName?: string;
   thingGroupArn?: string;
   thingName?: string;
   thingArn?: string;
 }
+const RemoveThingFromThingGroupRequest = /*@__PURE__*/ __L.at(
+  __c85,
+  2,
+) as any as S.Schema<RemoveThingFromThingGroupRequest>;
 export interface RemoveThingFromThingGroupResponse {}
+const RemoveThingFromThingGroupResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<RemoveThingFromThingGroupResponse>;
 export interface ReplaceTopicRuleRequest {
   ruleName: string;
   topicRulePayload: TopicRulePayload;
 }
+const ReplaceTopicRuleRequest = /*@__PURE__*/ __L.at(
+  __c85,
+  3,
+) as any as S.Schema<ReplaceTopicRuleRequest>;
 export interface ReplaceTopicRuleResponse {}
+const ReplaceTopicRuleResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<ReplaceTopicRuleResponse>;
 export type SearchQueryMaxResults = number;
 export interface SearchIndexRequest {
   indexName?: string;
@@ -4558,7 +6912,9 @@ export interface SearchIndexRequest {
   maxResults?: number;
   queryVersion?: string;
 }
+const SearchIndexRequest = /*@__PURE__*/ __L.at(__c85, 4) as any as S.Schema<SearchIndexRequest>;
 export type ThingGroupNameList = string[];
+const ThingGroupNameList = JobTargets as any as S.Schema<ThingGroupNameList>;
 export type JsonDocument = string;
 export type ConnectivityTimestamp = number;
 export type DisconnectReason = string;
@@ -4571,6 +6927,7 @@ export interface ThingConnectivity {
   sessionExpiry?: number;
   clientId?: string;
 }
+const ThingConnectivity = /*@__PURE__*/ __L.at(__c85, 5) as any as S.Schema<ThingConnectivity>;
 export interface ThingDocument {
   thingName?: string;
   thingId?: string;
@@ -4581,7 +6938,9 @@ export interface ThingDocument {
   deviceDefender?: string;
   connectivity?: ThingConnectivity;
 }
+const ThingDocument = /*@__PURE__*/ __L.at(__c85, 6) as any as S.Schema<ThingDocument>;
 export type ThingDocumentList = ThingDocument[];
+const ThingDocumentList = /*@__PURE__*/ __L.at(__c85, 7);
 export interface ThingGroupDocument {
   thingGroupName?: string;
   thingGroupId?: string;
@@ -4589,54 +6948,103 @@ export interface ThingGroupDocument {
   attributes?: { [key: string]: string | undefined };
   parentGroupNames?: string[];
 }
+const ThingGroupDocument = /*@__PURE__*/ __L.at(__c86, 0) as any as S.Schema<ThingGroupDocument>;
 export type ThingGroupDocumentList = ThingGroupDocument[];
+const ThingGroupDocumentList = /*@__PURE__*/ __L.at(__c86, 1);
 export interface SearchIndexResponse {
   nextToken?: string;
   things?: ThingDocument[];
   thingGroups?: ThingGroupDocument[];
 }
+const SearchIndexResponse = /*@__PURE__*/ __L.at(__c86, 2) as any as S.Schema<SearchIndexResponse>;
 export interface SetDefaultAuthorizerRequest {
   authorizerName: string;
 }
+const SetDefaultAuthorizerRequest = /*@__PURE__*/ __L.at(
+  __c86,
+  3,
+) as any as S.Schema<SetDefaultAuthorizerRequest>;
 export interface SetDefaultAuthorizerResponse {
   authorizerName?: string;
   authorizerArn?: string;
 }
+const SetDefaultAuthorizerResponse = /*@__PURE__*/ __L.at(
+  __c86,
+  4,
+) as any as S.Schema<SetDefaultAuthorizerResponse>;
 export interface SetDefaultPolicyVersionRequest {
   policyName: string;
   policyVersionId: string;
 }
+const SetDefaultPolicyVersionRequest = /*@__PURE__*/ __L.at(
+  __c86,
+  5,
+) as any as S.Schema<SetDefaultPolicyVersionRequest>;
 export interface SetDefaultPolicyVersionResponse {}
+const SetDefaultPolicyVersionResponse =
+  DeleteDynamicThingGroupResponse as any as S.Schema<SetDefaultPolicyVersionResponse>;
 export interface LoggingOptionsPayload {
   roleArn: string;
   logLevel?: LogLevel;
 }
+const LoggingOptionsPayload = /*@__PURE__*/ __L.at(
+  __c86,
+  6,
+) as any as S.Schema<LoggingOptionsPayload>;
 export interface SetLoggingOptionsRequest {
   loggingOptionsPayload: LoggingOptionsPayload;
 }
+const SetLoggingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c86,
+  7,
+) as any as S.Schema<SetLoggingOptionsRequest>;
 export interface SetLoggingOptionsResponse {}
+const SetLoggingOptionsResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<SetLoggingOptionsResponse>;
 export interface SetV2LoggingLevelRequest {
   logTarget: LogTarget;
   logLevel: LogLevel;
 }
+const SetV2LoggingLevelRequest = /*@__PURE__*/ __L.at(
+  __c87,
+  0,
+) as any as S.Schema<SetV2LoggingLevelRequest>;
 export interface SetV2LoggingLevelResponse {}
+const SetV2LoggingLevelResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<SetV2LoggingLevelResponse>;
 export interface SetV2LoggingOptionsRequest {
   roleArn?: string;
   defaultLogLevel?: LogLevel;
   disableAllLogs?: boolean;
   eventConfigurations?: LogEventConfiguration[];
 }
+const SetV2LoggingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c87,
+  1,
+) as any as S.Schema<SetV2LoggingOptionsRequest>;
 export interface SetV2LoggingOptionsResponse {}
+const SetV2LoggingOptionsResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<SetV2LoggingOptionsResponse>;
 export interface StartAuditMitigationActionsTaskRequest {
   taskId: string;
   target: AuditMitigationActionsTaskTarget;
   auditCheckToActionsMapping: { [key: string]: string[] | undefined };
   clientRequestToken: string;
 }
+const StartAuditMitigationActionsTaskRequest = /*@__PURE__*/ __L.at(
+  __c87,
+  2,
+) as any as S.Schema<StartAuditMitigationActionsTaskRequest>;
 export interface StartAuditMitigationActionsTaskResponse {
   taskId?: string;
 }
+const StartAuditMitigationActionsTaskResponse = /*@__PURE__*/ __L.at(
+  __c87,
+  3,
+) as any as S.Schema<StartAuditMitigationActionsTaskResponse>;
 export type DetectMitigationActionsToExecuteList = string[];
+const DetectMitigationActionsToExecuteList =
+  JobTargets as any as S.Schema<DetectMitigationActionsToExecuteList>;
 export interface StartDetectMitigationActionsTaskRequest {
   taskId: string;
   target: DetectMitigationActionsTaskTarget;
@@ -4646,42 +7054,74 @@ export interface StartDetectMitigationActionsTaskRequest {
   includeSuppressedAlerts?: boolean;
   clientRequestToken: string;
 }
+const StartDetectMitigationActionsTaskRequest = /*@__PURE__*/ __L.at(
+  __c87,
+  4,
+) as any as S.Schema<StartDetectMitigationActionsTaskRequest>;
 export interface StartDetectMitigationActionsTaskResponse {
   taskId?: string;
 }
+const StartDetectMitigationActionsTaskResponse =
+  StartAuditMitigationActionsTaskResponse as any as S.Schema<StartDetectMitigationActionsTaskResponse>;
 export interface StartOnDemandAuditTaskRequest {
   targetCheckNames: string[];
 }
+const StartOnDemandAuditTaskRequest = /*@__PURE__*/ __L.at(
+  __c87,
+  5,
+) as any as S.Schema<StartOnDemandAuditTaskRequest>;
 export interface StartOnDemandAuditTaskResponse {
   taskId?: string;
 }
+const StartOnDemandAuditTaskResponse =
+  StartAuditMitigationActionsTaskResponse as any as S.Schema<StartOnDemandAuditTaskResponse>;
 export interface StartThingRegistrationTaskRequest {
   templateBody: string;
   inputFileBucket: string;
   inputFileKey: string;
   roleArn: string;
 }
+const StartThingRegistrationTaskRequest = /*@__PURE__*/ __L.at(
+  __c87,
+  6,
+) as any as S.Schema<StartThingRegistrationTaskRequest>;
 export interface StartThingRegistrationTaskResponse {
   taskId?: string;
 }
+const StartThingRegistrationTaskResponse =
+  StartAuditMitigationActionsTaskResponse as any as S.Schema<StartThingRegistrationTaskResponse>;
 export interface StopThingRegistrationTaskRequest {
   taskId: string;
 }
+const StopThingRegistrationTaskRequest = /*@__PURE__*/ __L.at(
+  __c87,
+  7,
+) as any as S.Schema<StopThingRegistrationTaskRequest>;
 export interface StopThingRegistrationTaskResponse {}
+const StopThingRegistrationTaskResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<StopThingRegistrationTaskResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c88, 0) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = AddThingToBillingGroupResponse as any as S.Schema<TagResourceResponse>;
 export type ActionType = "PUBLISH" | "SUBSCRIBE" | "RECEIVE" | "CONNECT" | (string & {});
+const ActionType = S.String;
+
 export type Resource = string;
 export type Resources = string[];
+const Resources = JobTargets as any as S.Schema<Resources>;
 export interface AuthInfo {
   actionType?: ActionType;
   resources: string[];
 }
+const AuthInfo = /*@__PURE__*/ __L.at(__c88, 1) as any as S.Schema<AuthInfo>;
 export type AuthInfos = AuthInfo[];
+const AuthInfos = /*@__PURE__*/ __L.at(__c88, 2);
 export type PolicyNames = string[];
+const PolicyNames = JobTargets as any as S.Schema<PolicyNames>;
 export interface TestAuthorizationRequest {
   principal?: string;
   cognitoIdentityPoolId?: string;
@@ -4690,22 +7130,33 @@ export interface TestAuthorizationRequest {
   policyNamesToAdd?: string[];
   policyNamesToSkip?: string[];
 }
+const TestAuthorizationRequest = /*@__PURE__*/ __L.at(
+  __c88,
+  3,
+) as any as S.Schema<TestAuthorizationRequest>;
 export interface Allowed {
   policies?: Policy[];
 }
+const Allowed = /*@__PURE__*/ __L.at(__c88, 4) as any as S.Schema<Allowed>;
 export interface ImplicitDeny {
   policies?: Policy[];
 }
+const ImplicitDeny = Allowed as any as S.Schema<ImplicitDeny>;
 export interface ExplicitDeny {
   policies?: Policy[];
 }
+const ExplicitDeny = Allowed as any as S.Schema<ExplicitDeny>;
 export interface Denied {
   implicitDeny?: ImplicitDeny;
   explicitDeny?: ExplicitDeny;
 }
+const Denied = /*@__PURE__*/ __L.at(__c88, 5) as any as S.Schema<Denied>;
 export type AuthDecision = "ALLOWED" | "EXPLICIT_DENY" | "IMPLICIT_DENY" | (string & {});
+const AuthDecision = S.String;
+
 export type MissingContextValue = string;
 export type MissingContextValues = string[];
+const MissingContextValues = JobTargets as any as S.Schema<MissingContextValues>;
 export interface AuthResult {
   authInfo?: AuthInfo;
   allowed?: Allowed;
@@ -4713,20 +7164,28 @@ export interface AuthResult {
   authDecision?: AuthDecision;
   missingContextValues?: string[];
 }
+const AuthResult = /*@__PURE__*/ __L.at(__c88, 6) as any as S.Schema<AuthResult>;
 export type AuthResults = AuthResult[];
+const AuthResults = /*@__PURE__*/ __L.at(__c88, 7);
 export interface TestAuthorizationResponse {
   authResults?: AuthResult[];
 }
+const TestAuthorizationResponse = /*@__PURE__*/ __L.at(
+  __c89,
+  0,
+) as any as S.Schema<TestAuthorizationResponse>;
 export type Token = string;
 export type TokenSignature = string;
 export type HttpHeaderName = string;
 export type HttpHeaderValue = string;
 export type HttpHeaders = { [key: string]: string | undefined };
+const HttpHeaders = PublicKeyMap as any as S.Schema<HttpHeaders>;
 export type HttpQueryString = string;
 export interface HttpContext {
   headers?: { [key: string]: string | undefined };
   queryString?: string;
 }
+const HttpContext = /*@__PURE__*/ __L.at(__c89, 1) as any as S.Schema<HttpContext>;
 export type MqttUsername = string;
 export type MqttPassword = Uint8Array;
 export type MqttClientId = string;
@@ -4735,10 +7194,12 @@ export interface MqttContext {
   password?: Uint8Array;
   clientId?: string;
 }
+const MqttContext = /*@__PURE__*/ __L.at(__c89, 2) as any as S.Schema<MqttContext>;
 export type ServerName = string;
 export interface TlsContext {
   serverName?: string;
 }
+const TlsContext = /*@__PURE__*/ __L.at(__c89, 3) as any as S.Schema<TlsContext>;
 export interface TestInvokeAuthorizerRequest {
   authorizerName: string;
   token?: string;
@@ -4747,9 +7208,14 @@ export interface TestInvokeAuthorizerRequest {
   mqttContext?: MqttContext;
   tlsContext?: TlsContext;
 }
+const TestInvokeAuthorizerRequest = /*@__PURE__*/ __L.at(
+  __c89,
+  4,
+) as any as S.Schema<TestInvokeAuthorizerRequest>;
 export type IsAuthenticated = boolean;
 export type PrincipalId = string;
 export type PolicyDocuments = string[];
+const PolicyDocuments = JobTargets as any as S.Schema<PolicyDocuments>;
 export type Seconds = number;
 export interface TestInvokeAuthorizerResponse {
   isAuthenticated?: boolean;
@@ -4758,26 +7224,51 @@ export interface TestInvokeAuthorizerResponse {
   refreshAfterInSeconds?: number;
   disconnectAfterInSeconds?: number;
 }
+const TestInvokeAuthorizerResponse = /*@__PURE__*/ __L.at(
+  __c89,
+  5,
+) as any as S.Schema<TestInvokeAuthorizerResponse>;
 export interface TransferCertificateRequest {
   certificateId: string;
   targetAwsAccount: string;
   transferMessage?: string;
 }
+const TransferCertificateRequest = /*@__PURE__*/ __L.at(
+  __c89,
+  6,
+) as any as S.Schema<TransferCertificateRequest>;
 export interface TransferCertificateResponse {
   transferredCertificateArn?: string;
 }
+const TransferCertificateResponse = /*@__PURE__*/ __L.at(
+  __c89,
+  7,
+) as any as S.Schema<TransferCertificateResponse>;
 export type TagKeyList = string[];
+const TagKeyList = JobTargets as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c90,
+  0,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAccountAuditConfigurationRequest {
   roleArn?: string;
   auditNotificationTargetConfigurations?: { [key: string]: AuditNotificationTarget | undefined };
   auditCheckConfigurations?: { [key: string]: AuditCheckConfiguration | undefined };
 }
+const UpdateAccountAuditConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c90,
+  1,
+) as any as S.Schema<UpdateAccountAuditConfigurationRequest>;
 export interface UpdateAccountAuditConfigurationResponse {}
+const UpdateAccountAuditConfigurationResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<UpdateAccountAuditConfigurationResponse>;
 export interface UpdateAuditSuppressionRequest {
   checkName: string;
   resourceIdentifier: ResourceIdentifier;
@@ -4785,7 +7276,13 @@ export interface UpdateAuditSuppressionRequest {
   suppressIndefinitely?: boolean;
   description?: string;
 }
+const UpdateAuditSuppressionRequest = /*@__PURE__*/ __L.at(
+  __c90,
+  2,
+) as any as S.Schema<UpdateAuditSuppressionRequest>;
 export interface UpdateAuditSuppressionResponse {}
+const UpdateAuditSuppressionResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<UpdateAuditSuppressionResponse>;
 export interface UpdateAuthorizerRequest {
   authorizerName: string;
   authorizerFunctionArn?: string;
@@ -4794,18 +7291,32 @@ export interface UpdateAuthorizerRequest {
   status?: AuthorizerStatus;
   enableCachingForHttp?: boolean;
 }
+const UpdateAuthorizerRequest = /*@__PURE__*/ __L.at(
+  __c90,
+  3,
+) as any as S.Schema<UpdateAuthorizerRequest>;
 export interface UpdateAuthorizerResponse {
   authorizerName?: string;
   authorizerArn?: string;
 }
+const UpdateAuthorizerResponse =
+  CreateAuthorizerResponse as any as S.Schema<UpdateAuthorizerResponse>;
 export interface UpdateBillingGroupRequest {
   billingGroupName: string;
   billingGroupProperties: BillingGroupProperties;
   expectedVersion?: number;
 }
+const UpdateBillingGroupRequest = /*@__PURE__*/ __L.at(
+  __c90,
+  4,
+) as any as S.Schema<UpdateBillingGroupRequest>;
 export interface UpdateBillingGroupResponse {
   version?: number;
 }
+const UpdateBillingGroupResponse = /*@__PURE__*/ __L.at(
+  __c90,
+  5,
+) as any as S.Schema<UpdateBillingGroupResponse>;
 export type RemoveAutoRegistration = boolean;
 export interface UpdateCACertificateRequest {
   certificateId: string;
@@ -4814,27 +7325,49 @@ export interface UpdateCACertificateRequest {
   registrationConfig?: RegistrationConfig;
   removeAutoRegistration?: boolean;
 }
+const UpdateCACertificateRequest = /*@__PURE__*/ __L.at(
+  __c90,
+  6,
+) as any as S.Schema<UpdateCACertificateRequest>;
 export interface UpdateCACertificateResponse {}
+const UpdateCACertificateResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<UpdateCACertificateResponse>;
 export interface UpdateCertificateRequest {
   certificateId: string;
   newStatus: CertificateStatus;
 }
+const UpdateCertificateRequest = /*@__PURE__*/ __L.at(
+  __c90,
+  7,
+) as any as S.Schema<UpdateCertificateRequest>;
 export interface UpdateCertificateResponse {}
+const UpdateCertificateResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<UpdateCertificateResponse>;
 export interface UpdateCertificateProviderRequest {
   certificateProviderName: string;
   lambdaFunctionArn?: string;
   accountDefaultForOperations?: CertificateProviderOperation[];
 }
+const UpdateCertificateProviderRequest = /*@__PURE__*/ __L.at(
+  __c91,
+  0,
+) as any as S.Schema<UpdateCertificateProviderRequest>;
 export interface UpdateCertificateProviderResponse {
   certificateProviderName?: string;
   certificateProviderArn?: string;
 }
+const UpdateCertificateProviderResponse =
+  CreateCertificateProviderResponse as any as S.Schema<UpdateCertificateProviderResponse>;
 export interface UpdateCommandRequest {
   commandId: string;
   displayName?: string;
   description?: string;
   deprecated?: boolean;
 }
+const UpdateCommandRequest = /*@__PURE__*/ __L.at(
+  __c91,
+  1,
+) as any as S.Schema<UpdateCommandRequest>;
 export interface UpdateCommandResponse {
   commandId?: string;
   displayName?: string;
@@ -4842,10 +7375,18 @@ export interface UpdateCommandResponse {
   deprecated?: boolean;
   lastUpdatedAt?: Date;
 }
+const UpdateCommandResponse = /*@__PURE__*/ __L.at(
+  __c91,
+  2,
+) as any as S.Schema<UpdateCommandResponse>;
 export interface UpdateCustomMetricRequest {
   metricName: string;
   displayName: string;
 }
+const UpdateCustomMetricRequest = /*@__PURE__*/ __L.at(
+  __c91,
+  3,
+) as any as S.Schema<UpdateCustomMetricRequest>;
 export interface UpdateCustomMetricResponse {
   metricName?: string;
   metricArn?: string;
@@ -4854,10 +7395,16 @@ export interface UpdateCustomMetricResponse {
   creationDate?: Date;
   lastModifiedDate?: Date;
 }
+const UpdateCustomMetricResponse =
+  DescribeCustomMetricResponse as any as S.Schema<UpdateCustomMetricResponse>;
 export interface UpdateDimensionRequest {
   name: string;
   stringValues: string[];
 }
+const UpdateDimensionRequest = /*@__PURE__*/ __L.at(
+  __c91,
+  4,
+) as any as S.Schema<UpdateDimensionRequest>;
 export interface UpdateDimensionResponse {
   name?: string;
   arn?: string;
@@ -4866,6 +7413,10 @@ export interface UpdateDimensionResponse {
   creationDate?: Date;
   lastModifiedDate?: Date;
 }
+const UpdateDimensionResponse = /*@__PURE__*/ __L.at(
+  __c91,
+  5,
+) as any as S.Schema<UpdateDimensionResponse>;
 export type RemoveAuthorizerConfig = boolean;
 export interface UpdateDomainConfigurationRequest {
   domainConfigurationName: string;
@@ -4878,10 +7429,16 @@ export interface UpdateDomainConfigurationRequest {
   applicationProtocol?: ApplicationProtocol;
   clientCertificateConfig?: ClientCertificateConfig;
 }
+const UpdateDomainConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c91,
+  6,
+) as any as S.Schema<UpdateDomainConfigurationRequest>;
 export interface UpdateDomainConfigurationResponse {
   domainConfigurationName?: string;
   domainConfigurationArn?: string;
 }
+const UpdateDomainConfigurationResponse =
+  CreateDomainConfigurationResponse as any as S.Schema<UpdateDomainConfigurationResponse>;
 export interface UpdateDynamicThingGroupRequest {
   thingGroupName: string;
   thingGroupProperties: ThingGroupProperties;
@@ -4890,19 +7447,37 @@ export interface UpdateDynamicThingGroupRequest {
   queryString?: string;
   queryVersion?: string;
 }
+const UpdateDynamicThingGroupRequest = /*@__PURE__*/ __L.at(
+  __c91,
+  7,
+) as any as S.Schema<UpdateDynamicThingGroupRequest>;
 export interface UpdateDynamicThingGroupResponse {
   version?: number;
 }
+const UpdateDynamicThingGroupResponse =
+  UpdateBillingGroupResponse as any as S.Schema<UpdateDynamicThingGroupResponse>;
 export interface UpdateEncryptionConfigurationRequest {
   encryptionType: EncryptionType;
   kmsKeyArn?: string;
   kmsAccessRoleArn?: string;
 }
+const UpdateEncryptionConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c92,
+  0,
+) as any as S.Schema<UpdateEncryptionConfigurationRequest>;
 export interface UpdateEncryptionConfigurationResponse {}
+const UpdateEncryptionConfigurationResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<UpdateEncryptionConfigurationResponse>;
 export interface UpdateEventConfigurationsRequest {
   eventConfigurations?: { [key: string]: Configuration | undefined };
 }
+const UpdateEventConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c92,
+  1,
+) as any as S.Schema<UpdateEventConfigurationsRequest>;
 export interface UpdateEventConfigurationsResponse {}
+const UpdateEventConfigurationsResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<UpdateEventConfigurationsResponse>;
 export interface UpdateFleetMetricRequest {
   metricName: string;
   queryString?: string;
@@ -4915,12 +7490,24 @@ export interface UpdateFleetMetricRequest {
   unit?: FleetMetricUnit;
   expectedVersion?: number;
 }
+const UpdateFleetMetricRequest = /*@__PURE__*/ __L.at(
+  __c92,
+  2,
+) as any as S.Schema<UpdateFleetMetricRequest>;
 export interface UpdateFleetMetricResponse {}
+const UpdateFleetMetricResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<UpdateFleetMetricResponse>;
 export interface UpdateIndexingConfigurationRequest {
   thingIndexingConfiguration?: ThingIndexingConfiguration;
   thingGroupIndexingConfiguration?: ThingGroupIndexingConfiguration;
 }
+const UpdateIndexingConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c92,
+  3,
+) as any as S.Schema<UpdateIndexingConfigurationRequest>;
 export interface UpdateIndexingConfigurationResponse {}
+const UpdateIndexingConfigurationResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<UpdateIndexingConfigurationResponse>;
 export interface UpdateJobRequest {
   jobId: string;
   description?: string;
@@ -4931,16 +7518,24 @@ export interface UpdateJobRequest {
   namespaceId?: string;
   jobExecutionsRetryConfig?: JobExecutionsRetryConfig;
 }
+const UpdateJobRequest = /*@__PURE__*/ __L.at(__c92, 4) as any as S.Schema<UpdateJobRequest>;
 export interface UpdateJobResponse {}
+const UpdateJobResponse = AddThingToBillingGroupResponse as any as S.Schema<UpdateJobResponse>;
 export interface UpdateMitigationActionRequest {
   actionName: string;
   roleArn?: string;
   actionParams?: MitigationActionParams;
 }
+const UpdateMitigationActionRequest = /*@__PURE__*/ __L.at(
+  __c92,
+  5,
+) as any as S.Schema<UpdateMitigationActionRequest>;
 export interface UpdateMitigationActionResponse {
   actionArn?: string;
   actionId?: string;
 }
+const UpdateMitigationActionResponse =
+  CreateMitigationActionResponse as any as S.Schema<UpdateMitigationActionResponse>;
 export type UnsetDefaultVersion = boolean;
 export interface UpdatePackageRequest {
   packageName: string;
@@ -4949,13 +7544,27 @@ export interface UpdatePackageRequest {
   unsetDefaultVersion?: boolean;
   clientToken?: string;
 }
+const UpdatePackageRequest = /*@__PURE__*/ __L.at(
+  __c92,
+  6,
+) as any as S.Schema<UpdatePackageRequest>;
 export interface UpdatePackageResponse {}
+const UpdatePackageResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<UpdatePackageResponse>;
 export interface UpdatePackageConfigurationRequest {
   versionUpdateByJobsConfig?: VersionUpdateByJobsConfig;
   clientToken?: string;
 }
+const UpdatePackageConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c92,
+  7,
+) as any as S.Schema<UpdatePackageConfigurationRequest>;
 export interface UpdatePackageConfigurationResponse {}
+const UpdatePackageConfigurationResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<UpdatePackageConfigurationResponse>;
 export type PackageVersionAction = "PUBLISH" | "DEPRECATE" | (string & {});
+const PackageVersionAction = S.String;
+
 export interface UpdatePackageVersionRequest {
   packageName: string;
   versionName: string;
@@ -4966,7 +7575,13 @@ export interface UpdatePackageVersionRequest {
   recipe?: string | redacted.Redacted<string>;
   clientToken?: string;
 }
+const UpdatePackageVersionRequest = /*@__PURE__*/ __L.at(
+  __c93,
+  0,
+) as any as S.Schema<UpdatePackageVersionRequest>;
 export interface UpdatePackageVersionResponse {}
+const UpdatePackageVersionResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<UpdatePackageVersionResponse>;
 export type RemoveHook = boolean;
 export interface UpdateProvisioningTemplateRequest {
   templateName: string;
@@ -4977,16 +7592,27 @@ export interface UpdateProvisioningTemplateRequest {
   preProvisioningHook?: ProvisioningHook;
   removePreProvisioningHook?: boolean;
 }
+const UpdateProvisioningTemplateRequest = /*@__PURE__*/ __L.at(
+  __c93,
+  1,
+) as any as S.Schema<UpdateProvisioningTemplateRequest>;
 export interface UpdateProvisioningTemplateResponse {}
+const UpdateProvisioningTemplateResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<UpdateProvisioningTemplateResponse>;
 export interface UpdateRoleAliasRequest {
   roleAlias: string;
   roleArn?: string;
   credentialDurationSeconds?: number;
 }
+const UpdateRoleAliasRequest = /*@__PURE__*/ __L.at(
+  __c93,
+  2,
+) as any as S.Schema<UpdateRoleAliasRequest>;
 export interface UpdateRoleAliasResponse {
   roleAlias?: string;
   roleAliasArn?: string;
 }
+const UpdateRoleAliasResponse = CreateRoleAliasResponse as any as S.Schema<UpdateRoleAliasResponse>;
 export interface UpdateScheduledAuditRequest {
   frequency?: AuditFrequency;
   dayOfMonth?: string;
@@ -4994,9 +7620,15 @@ export interface UpdateScheduledAuditRequest {
   targetCheckNames?: string[];
   scheduledAuditName: string;
 }
+const UpdateScheduledAuditRequest = /*@__PURE__*/ __L.at(
+  __c93,
+  3,
+) as any as S.Schema<UpdateScheduledAuditRequest>;
 export interface UpdateScheduledAuditResponse {
   scheduledAuditArn?: string;
 }
+const UpdateScheduledAuditResponse =
+  CreateScheduledAuditResponse as any as S.Schema<UpdateScheduledAuditResponse>;
 export type DeleteBehaviors = boolean;
 export type DeleteAlertTargets = boolean;
 export type DeleteAdditionalMetricsToRetain = boolean;
@@ -5015,6 +7647,10 @@ export interface UpdateSecurityProfileRequest {
   metricsExportConfig?: MetricsExportConfig;
   deleteMetricsExportConfig?: boolean;
 }
+const UpdateSecurityProfileRequest = /*@__PURE__*/ __L.at(
+  __c93,
+  4,
+) as any as S.Schema<UpdateSecurityProfileRequest>;
 export interface UpdateSecurityProfileResponse {
   securityProfileName?: string;
   securityProfileArn?: string;
@@ -5028,18 +7664,22 @@ export interface UpdateSecurityProfileResponse {
   lastModifiedDate?: Date;
   metricsExportConfig?: MetricsExportConfig;
 }
+const UpdateSecurityProfileResponse =
+  DescribeSecurityProfileResponse as any as S.Schema<UpdateSecurityProfileResponse>;
 export interface UpdateStreamRequest {
   streamId: string;
   description?: string;
   files?: StreamFile[];
   roleArn?: string;
 }
+const UpdateStreamRequest = /*@__PURE__*/ __L.at(__c93, 5) as any as S.Schema<UpdateStreamRequest>;
 export interface UpdateStreamResponse {
   streamId?: string;
   streamArn?: string;
   description?: string;
   streamVersion?: number;
 }
+const UpdateStreamResponse = CreateStreamResponse as any as S.Schema<UpdateStreamResponse>;
 export type RemoveThingType = boolean;
 export interface UpdateThingRequest {
   thingName: string;
@@ -5048,45 +7688,84 @@ export interface UpdateThingRequest {
   expectedVersion?: number;
   removeThingType?: boolean;
 }
+const UpdateThingRequest = /*@__PURE__*/ __L.at(__c93, 6) as any as S.Schema<UpdateThingRequest>;
 export interface UpdateThingResponse {}
+const UpdateThingResponse = AddThingToBillingGroupResponse as any as S.Schema<UpdateThingResponse>;
 export interface UpdateThingGroupRequest {
   thingGroupName: string;
   thingGroupProperties: ThingGroupProperties;
   expectedVersion?: number;
 }
+const UpdateThingGroupRequest = /*@__PURE__*/ __L.at(
+  __c93,
+  7,
+) as any as S.Schema<UpdateThingGroupRequest>;
 export interface UpdateThingGroupResponse {
   version?: number;
 }
+const UpdateThingGroupResponse = /*@__PURE__*/ __L.at(
+  __c94,
+  0,
+) as any as S.Schema<UpdateThingGroupResponse>;
 export type ThingGroupList = string[];
+const ThingGroupList = JobTargets as any as S.Schema<ThingGroupList>;
 export interface UpdateThingGroupsForThingRequest {
   thingName?: string;
   thingGroupsToAdd?: string[];
   thingGroupsToRemove?: string[];
   overrideDynamicGroups?: boolean;
 }
+const UpdateThingGroupsForThingRequest = /*@__PURE__*/ __L.at(
+  __c94,
+  1,
+) as any as S.Schema<UpdateThingGroupsForThingRequest>;
 export interface UpdateThingGroupsForThingResponse {}
+const UpdateThingGroupsForThingResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<UpdateThingGroupsForThingResponse>;
 export interface UpdateThingTypeRequest {
   thingTypeName: string;
   thingTypeProperties?: ThingTypeProperties;
 }
+const UpdateThingTypeRequest = /*@__PURE__*/ __L.at(
+  __c94,
+  2,
+) as any as S.Schema<UpdateThingTypeRequest>;
 export interface UpdateThingTypeResponse {}
+const UpdateThingTypeResponse =
+  AddThingToBillingGroupResponse as any as S.Schema<UpdateThingTypeResponse>;
 export interface UpdateTopicRuleDestinationRequest {
   arn: string;
   status: TopicRuleDestinationStatus;
 }
+const UpdateTopicRuleDestinationRequest = /*@__PURE__*/ __L.at(
+  __c94,
+  3,
+) as any as S.Schema<UpdateTopicRuleDestinationRequest>;
 export interface UpdateTopicRuleDestinationResponse {}
+const UpdateTopicRuleDestinationResponse =
+  AcceptCertificateTransferResponse as any as S.Schema<UpdateTopicRuleDestinationResponse>;
 export interface ValidateSecurityProfileBehaviorsRequest {
   behaviors: Behavior[];
 }
+const ValidateSecurityProfileBehaviorsRequest = /*@__PURE__*/ __L.at(
+  __c94,
+  4,
+) as any as S.Schema<ValidateSecurityProfileBehaviorsRequest>;
 export type Valid = boolean;
 export interface ValidationError {
   errorMessage?: string;
 }
+const ValidationError = /*@__PURE__*/ __L.at(__c94, 5) as any as S.Schema<ValidationError>;
 export type ValidationErrors = ValidationError[];
+const ValidationErrors = /*@__PURE__*/ __L.at(__c94, 6);
 export interface ValidateSecurityProfileBehaviorsResponse {
   valid?: boolean;
   validationErrors?: ValidationError[];
 }
+const ValidateSecurityProfileBehaviorsResponse = /*@__PURE__*/ __L.at(
+  __c94,
+  7,
+) as any as S.Schema<ValidateSecurityProfileBehaviorsResponse>;
 export type ErrorMessage2 = string;
 export type ResourceId = string;
 export type AcceptCertificateTransferError =
@@ -5113,8 +7792,8 @@ export const acceptCertificateTransfer: API.OperationMethod<
   AcceptCertificateTransferError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AcceptCertificateTransferRequest>,
-  output: __S(1) as any as S.Schema<AcceptCertificateTransferResponse>,
+  input: AcceptCertificateTransferRequest,
+  output: AcceptCertificateTransferResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5146,8 +7825,8 @@ export const addThingToBillingGroup: API.OperationMethod<
   AddThingToBillingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<AddThingToBillingGroupRequest>,
-  output: __S(3) as any as S.Schema<AddThingToBillingGroupResponse>,
+  input: AddThingToBillingGroupRequest,
+  output: AddThingToBillingGroupResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5176,8 +7855,8 @@ export const addThingToThingGroup: API.OperationMethod<
   AddThingToThingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<AddThingToThingGroupRequest>,
-  output: __S(3) as any as S.Schema<AddThingToThingGroupResponse>,
+  input: AddThingToThingGroupRequest,
+  output: AddThingToThingGroupResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5208,8 +7887,8 @@ export const associateSbomWithPackageVersion: API.OperationMethod<
   AssociateSbomWithPackageVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<AssociateSbomWithPackageVersionRequest>,
-  output: __S(8) as any as S.Schema<AssociateSbomWithPackageVersionResponse>,
+  input: AssociateSbomWithPackageVersionRequest,
+  output: AssociateSbomWithPackageVersionResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -5249,8 +7928,8 @@ export const associateTargetsWithJob: API.OperationMethod<
   AssociateTargetsWithJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<AssociateTargetsWithJobRequest>,
-  output: __S(11) as any as S.Schema<AssociateTargetsWithJobResponse>,
+  input: AssociateTargetsWithJobRequest,
+  output: AssociateTargetsWithJobResponse,
   errors: [
     InvalidRequestException,
     LimitExceededException,
@@ -5284,8 +7963,8 @@ export const attachPolicy: API.OperationMethod<
   AttachPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<AttachPolicyRequest>,
-  output: __S(3) as any as S.Schema<AttachPolicyResponse>,
+  input: AttachPolicyRequest,
+  output: AttachPolicyResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5324,8 +8003,8 @@ export const attachPrincipalPolicy: API.OperationMethod<
   AttachPrincipalPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<AttachPrincipalPolicyRequest>,
-  output: __S(3) as any as S.Schema<AttachPrincipalPolicyResponse>,
+  input: AttachPrincipalPolicyRequest,
+  output: AttachPrincipalPolicyResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5362,8 +8041,8 @@ export const attachSecurityProfile: API.OperationMethod<
   AttachSecurityProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<AttachSecurityProfileRequest>,
-  output: __S(3) as any as S.Schema<AttachSecurityProfileResponse>,
+  input: AttachSecurityProfileRequest,
+  output: AttachSecurityProfileResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5397,8 +8076,8 @@ export const attachThingPrincipal: API.OperationMethod<
   AttachThingPrincipalError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<AttachThingPrincipalRequest>,
-  output: __S(3) as any as S.Schema<AttachThingPrincipalResponse>,
+  input: AttachThingPrincipalRequest,
+  output: AttachThingPrincipalResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5431,8 +8110,8 @@ export const cancelAuditMitigationActionsTask: API.OperationMethod<
   CancelAuditMitigationActionsTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CancelAuditMitigationActionsTaskRequest>,
-  output: __S(1) as any as S.Schema<CancelAuditMitigationActionsTaskResponse>,
+  input: CancelAuditMitigationActionsTaskRequest,
+  output: CancelAuditMitigationActionsTaskResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5461,8 +8140,8 @@ export const cancelAuditTask: API.OperationMethod<
   CancelAuditTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<CancelAuditTaskRequest>,
-  output: __S(3) as any as S.Schema<CancelAuditTaskResponse>,
+  input: CancelAuditTaskRequest,
+  output: CancelAuditTaskResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5502,8 +8181,8 @@ export const cancelCertificateTransfer: API.OperationMethod<
   CancelCertificateTransferError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CancelCertificateTransferRequest>,
-  output: __S(1) as any as S.Schema<CancelCertificateTransferResponse>,
+  input: CancelCertificateTransferRequest,
+  output: CancelCertificateTransferResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5537,8 +8216,8 @@ export const cancelDetectMitigationActionsTask: API.OperationMethod<
   CancelDetectMitigationActionsTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<CancelDetectMitigationActionsTaskRequest>,
-  output: __S(1) as any as S.Schema<CancelDetectMitigationActionsTaskResponse>,
+  input: CancelDetectMitigationActionsTaskRequest,
+  output: CancelDetectMitigationActionsTaskResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5568,8 +8247,8 @@ export const cancelJob: API.OperationMethod<
   CancelJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CancelJobRequest>,
-  output: __S(21) as any as S.Schema<CancelJobResponse>,
+  input: CancelJobRequest,
+  output: CancelJobResponse,
   errors: [
     InvalidRequestException,
     LimitExceededException,
@@ -5601,8 +8280,8 @@ export const cancelJobExecution: API.OperationMethod<
   CancelJobExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CancelJobExecutionRequest>,
-  output: __S(3) as any as S.Schema<CancelJobExecutionResponse>,
+  input: CancelJobExecutionRequest,
+  output: CancelJobExecutionResponse,
   errors: [
     InvalidRequestException,
     InvalidStateTransitionException,
@@ -5635,8 +8314,8 @@ export const clearDefaultAuthorizer: API.OperationMethod<
   ClearDefaultAuthorizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<ClearDefaultAuthorizerRequest>,
-  output: __S(3) as any as S.Schema<ClearDefaultAuthorizerResponse>,
+  input: ClearDefaultAuthorizerRequest,
+  output: ClearDefaultAuthorizerResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5671,8 +8350,8 @@ export const confirmTopicRuleDestination: API.OperationMethod<
   ConfirmTopicRuleDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<ConfirmTopicRuleDestinationRequest>,
-  output: __S(1) as any as S.Schema<ConfirmTopicRuleDestinationResponse>,
+  input: ConfirmTopicRuleDestinationRequest,
+  output: ConfirmTopicRuleDestinationResponse,
   errors: [
     ConflictingResourceUpdateException,
     InternalException,
@@ -5703,8 +8382,8 @@ export const createAuditSuppression: API.OperationMethod<
   CreateAuditSuppressionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<CreateAuditSuppressionRequest>,
-  output: __S(3) as any as S.Schema<CreateAuditSuppressionResponse>,
+  input: CreateAuditSuppressionRequest,
+  output: CreateAuditSuppressionResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5737,8 +8416,8 @@ export const createAuthorizer: API.OperationMethod<
   CreateAuthorizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<CreateAuthorizerRequest>,
-  output: __S(34) as any as S.Schema<CreateAuthorizerResponse>,
+  input: CreateAuthorizerRequest,
+  output: CreateAuthorizerResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5772,8 +8451,8 @@ export const createBillingGroup: API.OperationMethod<
   CreateBillingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<CreateBillingGroupRequest>,
-  output: __S(37) as any as S.Schema<CreateBillingGroupResponse>,
+  input: CreateBillingGroupRequest,
+  output: CreateBillingGroupResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5844,8 +8523,8 @@ export const createCertificateFromCsr: API.OperationMethod<
   CreateCertificateFromCsrError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<CreateCertificateFromCsrRequest>,
-  output: __S(39) as any as S.Schema<CreateCertificateFromCsrResponse>,
+  input: CreateCertificateFromCsrRequest,
+  output: CreateCertificateFromCsrResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5888,8 +8567,8 @@ export const createCertificateProvider: API.OperationMethod<
   CreateCertificateProviderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<CreateCertificateProviderRequest>,
-  output: __S(42) as any as S.Schema<CreateCertificateProviderResponse>,
+  input: CreateCertificateProviderRequest,
+  output: CreateCertificateProviderResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5921,8 +8600,8 @@ export const createCommand: API.OperationMethod<
   CreateCommandError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<CreateCommandRequest>,
-  output: __S(54) as any as S.Schema<CreateCommandResponse>,
+  input: CreateCommandRequest,
+  output: CreateCommandResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -5958,8 +8637,8 @@ export const createCustomMetric: API.OperationMethod<
   CreateCustomMetricError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<CreateCustomMetricRequest>,
-  output: __S(56) as any as S.Schema<CreateCustomMetricResponse>,
+  input: CreateCustomMetricRequest,
+  output: CreateCustomMetricResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5993,8 +8672,8 @@ export const createDimension: API.OperationMethod<
   CreateDimensionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<CreateDimensionRequest>,
-  output: __S(58) as any as S.Schema<CreateDimensionResponse>,
+  input: CreateDimensionRequest,
+  output: CreateDimensionResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6028,8 +8707,8 @@ export const createDomainConfiguration: API.OperationMethod<
   CreateDomainConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<CreateDomainConfigurationRequest>,
-  output: __S(64) as any as S.Schema<CreateDomainConfigurationResponse>,
+  input: CreateDomainConfigurationRequest,
+  output: CreateDomainConfigurationResponse,
   errors: [
     CertificateValidationException,
     InternalFailureException,
@@ -6065,8 +8744,8 @@ export const createDynamicThingGroup: API.OperationMethod<
   CreateDynamicThingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<CreateDynamicThingGroupRequest>,
-  output: __S(68) as any as S.Schema<CreateDynamicThingGroupResponse>,
+  input: CreateDynamicThingGroupRequest,
+  output: CreateDynamicThingGroupResponse,
   errors: [
     InternalFailureException,
     InvalidQueryException,
@@ -6105,8 +8784,8 @@ export const createFleetMetric: API.OperationMethod<
   CreateFleetMetricError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<CreateFleetMetricRequest>,
-  output: __S(56) as any as S.Schema<CreateFleetMetricResponse>,
+  input: CreateFleetMetricRequest,
+  output: CreateFleetMetricResponse,
   errors: [
     IndexNotReadyException,
     InternalFailureException,
@@ -6144,8 +8823,8 @@ export const createJob: API.OperationMethod<
   CreateJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<CreateJobRequest>,
-  output: __S(21) as any as S.Schema<CreateJobResponse>,
+  input: CreateJobRequest,
+  output: CreateJobResponse,
   errors: [
     InvalidRequestException,
     LimitExceededException,
@@ -6178,8 +8857,8 @@ export const createJobTemplate: API.OperationMethod<
   CreateJobTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<CreateJobTemplateRequest>,
-  output: __S(87) as any as S.Schema<CreateJobTemplateResponse>,
+  input: CreateJobTemplateRequest,
+  output: CreateJobTemplateResponse,
   errors: [
     ConflictException,
     InternalFailureException,
@@ -6216,8 +8895,8 @@ export const createKeysAndCertificate: API.OperationMethod<
   CreateKeysAndCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<CreateKeysAndCertificateRequest>,
-  output: __S(90) as any as S.Schema<CreateKeysAndCertificateResponse>,
+  input: CreateKeysAndCertificateRequest,
+  output: CreateKeysAndCertificateResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6249,8 +8928,8 @@ export const createMitigationAction: API.OperationMethod<
   CreateMitigationActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<CreateMitigationActionRequest>,
-  output: __S(98) as any as S.Schema<CreateMitigationActionResponse>,
+  input: CreateMitigationActionRequest,
+  output: CreateMitigationActionResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6284,8 +8963,8 @@ export const createOTAUpdate: API.OperationMethod<
   CreateOTAUpdateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<CreateOTAUpdateRequest>,
-  output: __S(118) as any as S.Schema<CreateOTAUpdateResponse>,
+  input: CreateOTAUpdateRequest,
+  output: CreateOTAUpdateResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6319,8 +8998,8 @@ export const createPackage: API.OperationMethod<
   CreatePackageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<CreatePackageRequest>,
-  output: __S(120) as any as S.Schema<CreatePackageResponse>,
+  input: CreatePackageRequest,
+  output: CreatePackageResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -6351,8 +9030,8 @@ export const createPackageVersion: API.OperationMethod<
   CreatePackageVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<CreatePackageVersionRequest>,
-  output: __S(122) as any as S.Schema<CreatePackageVersionResponse>,
+  input: CreatePackageVersionRequest,
+  output: CreatePackageVersionResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -6389,8 +9068,8 @@ export const createPolicy: API.OperationMethod<
   CreatePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<CreatePolicyRequest>,
-  output: __S(124) as any as S.Schema<CreatePolicyResponse>,
+  input: CreatePolicyRequest,
+  output: CreatePolicyResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6433,8 +9112,8 @@ export const createPolicyVersion: API.OperationMethod<
   CreatePolicyVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<CreatePolicyVersionRequest>,
-  output: __S(126) as any as S.Schema<CreatePolicyVersionResponse>,
+  input: CreatePolicyVersionRequest,
+  output: CreatePolicyVersionResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6469,8 +9148,8 @@ export const createProvisioningClaim: API.OperationMethod<
   CreateProvisioningClaimError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<CreateProvisioningClaimRequest>,
-  output: __S(128) as any as S.Schema<CreateProvisioningClaimResponse>,
+  input: CreateProvisioningClaimRequest,
+  output: CreateProvisioningClaimResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6503,8 +9182,8 @@ export const createProvisioningTemplate: API.OperationMethod<
   CreateProvisioningTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130) as any as S.Schema<CreateProvisioningTemplateRequest>,
-  output: __S(131) as any as S.Schema<CreateProvisioningTemplateResponse>,
+  input: CreateProvisioningTemplateRequest,
+  output: CreateProvisioningTemplateResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6538,8 +9217,8 @@ export const createProvisioningTemplateVersion: API.OperationMethod<
   CreateProvisioningTemplateVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<CreateProvisioningTemplateVersionRequest>,
-  output: __S(133) as any as S.Schema<CreateProvisioningTemplateVersionResponse>,
+  input: CreateProvisioningTemplateVersionRequest,
+  output: CreateProvisioningTemplateVersionResponse,
   errors: [
     ConflictingResourceUpdateException,
     InternalFailureException,
@@ -6581,8 +9260,8 @@ export const createRoleAlias: API.OperationMethod<
   CreateRoleAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134) as any as S.Schema<CreateRoleAliasRequest>,
-  output: __S(135) as any as S.Schema<CreateRoleAliasResponse>,
+  input: CreateRoleAliasRequest,
+  output: CreateRoleAliasResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6616,8 +9295,8 @@ export const createScheduledAudit: API.OperationMethod<
   CreateScheduledAuditError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<CreateScheduledAuditRequest>,
-  output: __S(137) as any as S.Schema<CreateScheduledAuditResponse>,
+  input: CreateScheduledAuditRequest,
+  output: CreateScheduledAuditResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6649,8 +9328,8 @@ export const createSecurityProfile: API.OperationMethod<
   CreateSecurityProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<CreateSecurityProfileRequest>,
-  output: __S(152) as any as S.Schema<CreateSecurityProfileResponse>,
+  input: CreateSecurityProfileRequest,
+  output: CreateSecurityProfileResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6685,8 +9364,8 @@ export const createStream: API.OperationMethod<
   CreateStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155) as any as S.Schema<CreateStreamRequest>,
-  output: __S(156) as any as S.Schema<CreateStreamResponse>,
+  input: CreateStreamRequest,
+  output: CreateStreamResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6728,8 +9407,8 @@ export const createThing: API.OperationMethod<
   CreateThingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157) as any as S.Schema<CreateThingRequest>,
-  output: __S(158) as any as S.Schema<CreateThingResponse>,
+  input: CreateThingRequest,
+  output: CreateThingResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6767,8 +9446,8 @@ export const createThingGroup: API.OperationMethod<
   CreateThingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159) as any as S.Schema<CreateThingGroupRequest>,
-  output: __S(160) as any as S.Schema<CreateThingGroupResponse>,
+  input: CreateThingGroupRequest,
+  output: CreateThingGroupResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6801,8 +9480,8 @@ export const createThingType: API.OperationMethod<
   CreateThingTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165) as any as S.Schema<CreateThingTypeRequest>,
-  output: __S(166) as any as S.Schema<CreateThingTypeResponse>,
+  input: CreateThingTypeRequest,
+  output: CreateThingTypeResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6837,8 +9516,8 @@ export const createTopicRule: API.OperationMethod<
   CreateTopicRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211) as any as S.Schema<CreateTopicRuleRequest>,
-  output: __S(3) as any as S.Schema<CreateTopicRuleResponse>,
+  input: CreateTopicRuleRequest,
+  output: CreateTopicRuleResponse,
   errors: [
     ConflictingResourceUpdateException,
     InternalException,
@@ -6872,8 +9551,8 @@ export const createTopicRuleDestination: API.OperationMethod<
   CreateTopicRuleDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216) as any as S.Schema<CreateTopicRuleDestinationRequest>,
-  output: __S(221) as any as S.Schema<CreateTopicRuleDestinationResponse>,
+  input: CreateTopicRuleDestinationRequest,
+  output: CreateTopicRuleDestinationResponse,
   errors: [
     ConflictingResourceUpdateException,
     InternalException,
@@ -6906,8 +9585,8 @@ export const deleteAccountAuditConfiguration: API.OperationMethod<
   DeleteAccountAuditConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222) as any as S.Schema<DeleteAccountAuditConfigurationRequest>,
-  output: __S(1) as any as S.Schema<DeleteAccountAuditConfigurationResponse>,
+  input: DeleteAccountAuditConfigurationRequest,
+  output: DeleteAccountAuditConfigurationResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6935,8 +9614,8 @@ export const deleteAuditSuppression: API.OperationMethod<
   DeleteAuditSuppressionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223) as any as S.Schema<DeleteAuditSuppressionRequest>,
-  output: __S(3) as any as S.Schema<DeleteAuditSuppressionResponse>,
+  input: DeleteAuditSuppressionRequest,
+  output: DeleteAuditSuppressionResponse,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6963,8 +9642,8 @@ export const deleteAuthorizer: API.OperationMethod<
   DeleteAuthorizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224) as any as S.Schema<DeleteAuthorizerRequest>,
-  output: __S(3) as any as S.Schema<DeleteAuthorizerResponse>,
+  input: DeleteAuthorizerRequest,
+  output: DeleteAuthorizerResponse,
   errors: [
     DeleteConflictException,
     InternalFailureException,
@@ -6996,8 +9675,8 @@ export const deleteBillingGroup: API.OperationMethod<
   DeleteBillingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225) as any as S.Schema<DeleteBillingGroupRequest>,
-  output: __S(3) as any as S.Schema<DeleteBillingGroupResponse>,
+  input: DeleteBillingGroupRequest,
+  output: DeleteBillingGroupResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7029,8 +9708,8 @@ export const deleteCACertificate: API.OperationMethod<
   DeleteCACertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226) as any as S.Schema<DeleteCACertificateRequest>,
-  output: __S(3) as any as S.Schema<DeleteCACertificateResponse>,
+  input: DeleteCACertificateRequest,
+  output: DeleteCACertificateResponse,
   errors: [
     CertificateStateException,
     InternalFailureException,
@@ -7070,8 +9749,8 @@ export const deleteCertificate: API.OperationMethod<
   DeleteCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227) as any as S.Schema<DeleteCertificateRequest>,
-  output: __S(3) as any as S.Schema<DeleteCertificateResponse>,
+  input: DeleteCertificateRequest,
+  output: DeleteCertificateResponse,
   errors: [
     CertificateStateException,
     DeleteConflictException,
@@ -7111,8 +9790,8 @@ export const deleteCertificateProvider: API.OperationMethod<
   DeleteCertificateProviderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228) as any as S.Schema<DeleteCertificateProviderRequest>,
-  output: __S(1) as any as S.Schema<DeleteCertificateProviderResponse>,
+  input: DeleteCertificateProviderRequest,
+  output: DeleteCertificateProviderResponse,
   errors: [
     DeleteConflictException,
     InternalFailureException,
@@ -7142,8 +9821,8 @@ export const deleteCommand: API.OperationMethod<
   DeleteCommandError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229) as any as S.Schema<DeleteCommandRequest>,
-  output: __S(230) as any as S.Schema<DeleteCommandResponse>,
+  input: DeleteCommandRequest,
+  output: DeleteCommandResponse,
   errors: [ConflictException, InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7168,8 +9847,8 @@ export const deleteCommandExecution: API.OperationMethod<
   DeleteCommandExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231) as any as S.Schema<DeleteCommandExecutionRequest>,
-  output: __S(3) as any as S.Schema<DeleteCommandExecutionResponse>,
+  input: DeleteCommandExecutionRequest,
+  output: DeleteCommandExecutionResponse,
   errors: [ConflictException, InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7201,8 +9880,8 @@ export const deleteCustomMetric: API.OperationMethod<
   DeleteCustomMetricError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232) as any as S.Schema<DeleteCustomMetricRequest>,
-  output: __S(3) as any as S.Schema<DeleteCustomMetricResponse>,
+  input: DeleteCustomMetricRequest,
+  output: DeleteCustomMetricResponse,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7227,8 +9906,8 @@ export const deleteDimension: API.OperationMethod<
   DeleteDimensionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233) as any as S.Schema<DeleteDimensionRequest>,
-  output: __S(3) as any as S.Schema<DeleteDimensionResponse>,
+  input: DeleteDimensionRequest,
+  output: DeleteDimensionResponse,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7254,8 +9933,8 @@ export const deleteDomainConfiguration: API.OperationMethod<
   DeleteDomainConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234) as any as S.Schema<DeleteDomainConfigurationRequest>,
-  output: __S(1) as any as S.Schema<DeleteDomainConfigurationResponse>,
+  input: DeleteDomainConfigurationRequest,
+  output: DeleteDomainConfigurationResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7286,8 +9965,8 @@ export const deleteDynamicThingGroup: API.OperationMethod<
   DeleteDynamicThingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235) as any as S.Schema<DeleteDynamicThingGroupRequest>,
-  output: __S(236) as any as S.Schema<DeleteDynamicThingGroupResponse>,
+  input: DeleteDynamicThingGroupRequest,
+  output: DeleteDynamicThingGroupResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7319,8 +9998,8 @@ export const deleteFleetMetric: API.OperationMethod<
   DeleteFleetMetricError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237) as any as S.Schema<DeleteFleetMetricRequest>,
-  output: __S(3) as any as S.Schema<DeleteFleetMetricResponse>,
+  input: DeleteFleetMetricRequest,
+  output: DeleteFleetMetricResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7361,8 +10040,8 @@ export const deleteJob: API.OperationMethod<
   DeleteJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238) as any as S.Schema<DeleteJobRequest>,
-  output: __S(3) as any as S.Schema<DeleteJobResponse>,
+  input: DeleteJobRequest,
+  output: DeleteJobResponse,
   errors: [
     InvalidRequestException,
     InvalidStateTransitionException,
@@ -7394,8 +10073,8 @@ export const deleteJobExecution: API.OperationMethod<
   DeleteJobExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239) as any as S.Schema<DeleteJobExecutionRequest>,
-  output: __S(3) as any as S.Schema<DeleteJobExecutionResponse>,
+  input: DeleteJobExecutionRequest,
+  output: DeleteJobExecutionResponse,
   errors: [
     InvalidRequestException,
     InvalidStateTransitionException,
@@ -7423,8 +10102,8 @@ export const deleteJobTemplate: API.OperationMethod<
   DeleteJobTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240) as any as S.Schema<DeleteJobTemplateRequest>,
-  output: __S(3) as any as S.Schema<DeleteJobTemplateResponse>,
+  input: DeleteJobTemplateRequest,
+  output: DeleteJobTemplateResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7452,8 +10131,8 @@ export const deleteMitigationAction: API.OperationMethod<
   DeleteMitigationActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241) as any as S.Schema<DeleteMitigationActionRequest>,
-  output: __S(3) as any as S.Schema<DeleteMitigationActionResponse>,
+  input: DeleteMitigationActionRequest,
+  output: DeleteMitigationActionResponse,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7480,8 +10159,8 @@ export const deleteOTAUpdate: API.OperationMethod<
   DeleteOTAUpdateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242) as any as S.Schema<DeleteOTAUpdateRequest>,
-  output: __S(3) as any as S.Schema<DeleteOTAUpdateResponse>,
+  input: DeleteOTAUpdateRequest,
+  output: DeleteOTAUpdateResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7514,8 +10193,8 @@ export const deletePackage: API.OperationMethod<
   DeletePackageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243) as any as S.Schema<DeletePackageRequest>,
-  output: __S(3) as any as S.Schema<DeletePackageResponse>,
+  input: DeletePackageRequest,
+  output: DeletePackageResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7538,8 +10217,8 @@ export const deletePackageVersion: API.OperationMethod<
   DeletePackageVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244) as any as S.Schema<DeletePackageVersionRequest>,
-  output: __S(3) as any as S.Schema<DeletePackageVersionResponse>,
+  input: DeletePackageVersionRequest,
+  output: DeletePackageVersionResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7579,8 +10258,8 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245) as any as S.Schema<DeletePolicyRequest>,
-  output: __S(3) as any as S.Schema<DeletePolicyResponse>,
+  input: DeletePolicyRequest,
+  output: DeletePolicyResponse,
   errors: [
     DeleteConflictException,
     InternalFailureException,
@@ -7617,8 +10296,8 @@ export const deletePolicyVersion: API.OperationMethod<
   DeletePolicyVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246) as any as S.Schema<DeletePolicyVersionRequest>,
-  output: __S(3) as any as S.Schema<DeletePolicyVersionResponse>,
+  input: DeletePolicyVersionRequest,
+  output: DeletePolicyVersionResponse,
   errors: [
     DeleteConflictException,
     InternalFailureException,
@@ -7653,8 +10332,8 @@ export const deleteProvisioningTemplate: API.OperationMethod<
   DeleteProvisioningTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247) as any as S.Schema<DeleteProvisioningTemplateRequest>,
-  output: __S(1) as any as S.Schema<DeleteProvisioningTemplateResponse>,
+  input: DeleteProvisioningTemplateRequest,
+  output: DeleteProvisioningTemplateResponse,
   errors: [
     ConflictingResourceUpdateException,
     DeleteConflictException,
@@ -7689,8 +10368,8 @@ export const deleteProvisioningTemplateVersion: API.OperationMethod<
   DeleteProvisioningTemplateVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248) as any as S.Schema<DeleteProvisioningTemplateVersionRequest>,
-  output: __S(1) as any as S.Schema<DeleteProvisioningTemplateVersionResponse>,
+  input: DeleteProvisioningTemplateVersionRequest,
+  output: DeleteProvisioningTemplateVersionResponse,
   errors: [
     ConflictingResourceUpdateException,
     DeleteConflictException,
@@ -7723,8 +10402,8 @@ export const deleteRegistrationCode: API.OperationMethod<
   DeleteRegistrationCodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249) as any as S.Schema<DeleteRegistrationCodeRequest>,
-  output: __S(3) as any as S.Schema<DeleteRegistrationCodeResponse>,
+  input: DeleteRegistrationCodeRequest,
+  output: DeleteRegistrationCodeResponse,
   errors: [
     InternalFailureException,
     ResourceNotFoundException,
@@ -7757,8 +10436,8 @@ export const deleteRoleAlias: API.OperationMethod<
   DeleteRoleAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250) as any as S.Schema<DeleteRoleAliasRequest>,
-  output: __S(3) as any as S.Schema<DeleteRoleAliasResponse>,
+  input: DeleteRoleAliasRequest,
+  output: DeleteRoleAliasResponse,
   errors: [
     DeleteConflictException,
     InternalFailureException,
@@ -7790,8 +10469,8 @@ export const deleteScheduledAudit: API.OperationMethod<
   DeleteScheduledAuditError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251) as any as S.Schema<DeleteScheduledAuditRequest>,
-  output: __S(3) as any as S.Schema<DeleteScheduledAuditResponse>,
+  input: DeleteScheduledAuditRequest,
+  output: DeleteScheduledAuditResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7822,8 +10501,8 @@ export const deleteSecurityProfile: API.OperationMethod<
   DeleteSecurityProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252) as any as S.Schema<DeleteSecurityProfileRequest>,
-  output: __S(3) as any as S.Schema<DeleteSecurityProfileResponse>,
+  input: DeleteSecurityProfileRequest,
+  output: DeleteSecurityProfileResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7855,8 +10534,8 @@ export const deleteStream: API.OperationMethod<
   DeleteStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253) as any as S.Schema<DeleteStreamRequest>,
-  output: __S(3) as any as S.Schema<DeleteStreamResponse>,
+  input: DeleteStreamRequest,
+  output: DeleteStreamResponse,
   errors: [
     DeleteConflictException,
     InternalFailureException,
@@ -7892,8 +10571,8 @@ export const deleteThing: API.OperationMethod<
   DeleteThingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254) as any as S.Schema<DeleteThingRequest>,
-  output: __S(3) as any as S.Schema<DeleteThingResponse>,
+  input: DeleteThingRequest,
+  output: DeleteThingResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7925,8 +10604,8 @@ export const deleteThingGroup: API.OperationMethod<
   DeleteThingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255) as any as S.Schema<DeleteThingGroupRequest>,
-  output: __S(3) as any as S.Schema<DeleteThingGroupResponse>,
+  input: DeleteThingGroupRequest,
+  output: DeleteThingGroupResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7959,8 +10638,8 @@ export const deleteThingType: API.OperationMethod<
   DeleteThingTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256) as any as S.Schema<DeleteThingTypeRequest>,
-  output: __S(3) as any as S.Schema<DeleteThingTypeResponse>,
+  input: DeleteThingTypeRequest,
+  output: DeleteThingTypeResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7993,8 +10672,8 @@ export const deleteTopicRule: API.OperationMethod<
   DeleteTopicRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257) as any as S.Schema<DeleteTopicRuleRequest>,
-  output: __S(3) as any as S.Schema<DeleteTopicRuleResponse>,
+  input: DeleteTopicRuleRequest,
+  output: DeleteTopicRuleResponse,
   errors: [
     ConflictingResourceUpdateException,
     InternalException,
@@ -8026,8 +10705,8 @@ export const deleteTopicRuleDestination: API.OperationMethod<
   DeleteTopicRuleDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258) as any as S.Schema<DeleteTopicRuleDestinationRequest>,
-  output: __S(1) as any as S.Schema<DeleteTopicRuleDestinationResponse>,
+  input: DeleteTopicRuleDestinationRequest,
+  output: DeleteTopicRuleDestinationResponse,
   errors: [
     ConflictingResourceUpdateException,
     InternalException,
@@ -8056,8 +10735,8 @@ export const deleteV2LoggingLevel: API.OperationMethod<
   DeleteV2LoggingLevelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259) as any as S.Schema<DeleteV2LoggingLevelRequest>,
-  output: __S(3) as any as S.Schema<DeleteV2LoggingLevelResponse>,
+  input: DeleteV2LoggingLevelRequest,
+  output: DeleteV2LoggingLevelResponse,
   errors: [InternalException, InvalidRequestException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8084,8 +10763,8 @@ export const deprecateThingType: API.OperationMethod<
   DeprecateThingTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260) as any as S.Schema<DeprecateThingTypeRequest>,
-  output: __S(3) as any as S.Schema<DeprecateThingTypeResponse>,
+  input: DeprecateThingTypeRequest,
+  output: DeprecateThingTypeResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8116,8 +10795,8 @@ export const describeAccountAuditConfiguration: API.OperationMethod<
   DescribeAccountAuditConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261) as any as S.Schema<DescribeAccountAuditConfigurationRequest>,
-  output: __S(267) as any as S.Schema<DescribeAccountAuditConfigurationResponse>,
+  input: DescribeAccountAuditConfigurationRequest,
+  output: DescribeAccountAuditConfigurationResponse,
   errors: [InternalFailureException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8145,8 +10824,8 @@ export const describeAuditFinding: API.OperationMethod<
   DescribeAuditFindingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268) as any as S.Schema<DescribeAuditFindingRequest>,
-  output: __S(272) as any as S.Schema<DescribeAuditFindingResponse>,
+  input: DescribeAuditFindingRequest,
+  output: DescribeAuditFindingResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8173,8 +10852,8 @@ export const describeAuditMitigationActionsTask: API.OperationMethod<
   DescribeAuditMitigationActionsTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273) as any as S.Schema<DescribeAuditMitigationActionsTaskRequest>,
-  output: __S(280) as any as S.Schema<DescribeAuditMitigationActionsTaskResponse>,
+  input: DescribeAuditMitigationActionsTaskRequest,
+  output: DescribeAuditMitigationActionsTaskResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8201,8 +10880,8 @@ export const describeAuditSuppression: API.OperationMethod<
   DescribeAuditSuppressionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281) as any as S.Schema<DescribeAuditSuppressionRequest>,
-  output: __S(282) as any as S.Schema<DescribeAuditSuppressionResponse>,
+  input: DescribeAuditSuppressionRequest,
+  output: DescribeAuditSuppressionResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8231,8 +10910,8 @@ export const describeAuditTask: API.OperationMethod<
   DescribeAuditTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283) as any as S.Schema<DescribeAuditTaskRequest>,
-  output: __S(287) as any as S.Schema<DescribeAuditTaskResponse>,
+  input: DescribeAuditTaskRequest,
+  output: DescribeAuditTaskResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8263,8 +10942,8 @@ export const describeAuthorizer: API.OperationMethod<
   DescribeAuthorizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288) as any as S.Schema<DescribeAuthorizerRequest>,
-  output: __S(290) as any as S.Schema<DescribeAuthorizerResponse>,
+  input: DescribeAuthorizerRequest,
+  output: DescribeAuthorizerResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8295,8 +10974,8 @@ export const describeBillingGroup: API.OperationMethod<
   DescribeBillingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291) as any as S.Schema<DescribeBillingGroupRequest>,
-  output: __S(293) as any as S.Schema<DescribeBillingGroupResponse>,
+  input: DescribeBillingGroupRequest,
+  output: DescribeBillingGroupResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8327,8 +11006,8 @@ export const describeCACertificate: API.OperationMethod<
   DescribeCACertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294) as any as S.Schema<DescribeCACertificateRequest>,
-  output: __S(298) as any as S.Schema<DescribeCACertificateResponse>,
+  input: DescribeCACertificateRequest,
+  output: DescribeCACertificateResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8361,8 +11040,8 @@ export const describeCertificate: API.OperationMethod<
   DescribeCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299) as any as S.Schema<DescribeCertificateRequest>,
-  output: __S(302) as any as S.Schema<DescribeCertificateResponse>,
+  input: DescribeCertificateRequest,
+  output: DescribeCertificateResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8395,8 +11074,8 @@ export const describeCertificateProvider: API.OperationMethod<
   DescribeCertificateProviderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303) as any as S.Schema<DescribeCertificateProviderRequest>,
-  output: __S(304) as any as S.Schema<DescribeCertificateProviderResponse>,
+  input: DescribeCertificateProviderRequest,
+  output: DescribeCertificateProviderResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8429,8 +11108,8 @@ export const describeCustomMetric: API.OperationMethod<
   DescribeCustomMetricError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305) as any as S.Schema<DescribeCustomMetricRequest>,
-  output: __S(306) as any as S.Schema<DescribeCustomMetricResponse>,
+  input: DescribeCustomMetricRequest,
+  output: DescribeCustomMetricResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8461,8 +11140,8 @@ export const describeDefaultAuthorizer: API.OperationMethod<
   DescribeDefaultAuthorizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307) as any as S.Schema<DescribeDefaultAuthorizerRequest>,
-  output: __S(290) as any as S.Schema<DescribeDefaultAuthorizerResponse>,
+  input: DescribeDefaultAuthorizerRequest,
+  output: DescribeDefaultAuthorizerResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8495,8 +11174,8 @@ export const describeDetectMitigationActionsTask: API.OperationMethod<
   DescribeDetectMitigationActionsTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308) as any as S.Schema<DescribeDetectMitigationActionsTaskRequest>,
-  output: __S(313) as any as S.Schema<DescribeDetectMitigationActionsTaskResponse>,
+  input: DescribeDetectMitigationActionsTaskRequest,
+  output: DescribeDetectMitigationActionsTaskResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8527,8 +11206,8 @@ export const describeDimension: API.OperationMethod<
   DescribeDimensionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314) as any as S.Schema<DescribeDimensionRequest>,
-  output: __S(315) as any as S.Schema<DescribeDimensionResponse>,
+  input: DescribeDimensionRequest,
+  output: DescribeDimensionResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8559,8 +11238,8 @@ export const describeDomainConfiguration: API.OperationMethod<
   DescribeDomainConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316) as any as S.Schema<DescribeDomainConfigurationRequest>,
-  output: __S(319) as any as S.Schema<DescribeDomainConfigurationResponse>,
+  input: DescribeDomainConfigurationRequest,
+  output: DescribeDomainConfigurationResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8592,8 +11271,8 @@ export const describeEncryptionConfiguration: API.OperationMethod<
   DescribeEncryptionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320) as any as S.Schema<DescribeEncryptionConfigurationRequest>,
-  output: __S(322) as any as S.Schema<DescribeEncryptionConfigurationResponse>,
+  input: DescribeEncryptionConfigurationRequest,
+  output: DescribeEncryptionConfigurationResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8626,8 +11305,8 @@ export const describeEndpoint: API.OperationMethod<
   DescribeEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323) as any as S.Schema<DescribeEndpointRequest>,
-  output: __S(324) as any as S.Schema<DescribeEndpointResponse>,
+  input: DescribeEndpointRequest,
+  output: DescribeEndpointResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8654,8 +11333,8 @@ export const describeEventConfigurations: API.OperationMethod<
   DescribeEventConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325) as any as S.Schema<DescribeEventConfigurationsRequest>,
-  output: __S(328) as any as S.Schema<DescribeEventConfigurationsResponse>,
+  input: DescribeEventConfigurationsRequest,
+  output: DescribeEventConfigurationsResponse,
   errors: [InternalFailureException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8681,8 +11360,8 @@ export const describeFleetMetric: API.OperationMethod<
   DescribeFleetMetricError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329) as any as S.Schema<DescribeFleetMetricRequest>,
-  output: __S(330) as any as S.Schema<DescribeFleetMetricResponse>,
+  input: DescribeFleetMetricRequest,
+  output: DescribeFleetMetricResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8715,8 +11394,8 @@ export const describeIndex: API.OperationMethod<
   DescribeIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331) as any as S.Schema<DescribeIndexRequest>,
-  output: __S(332) as any as S.Schema<DescribeIndexResponse>,
+  input: DescribeIndexRequest,
+  output: DescribeIndexResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8747,8 +11426,8 @@ export const describeJob: API.OperationMethod<
   DescribeJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333) as any as S.Schema<DescribeJobRequest>,
-  output: __S(338) as any as S.Schema<DescribeJobResponse>,
+  input: DescribeJobRequest,
+  output: DescribeJobResponse,
   errors: [
     InvalidRequestException,
     ResourceNotFoundException,
@@ -8777,8 +11456,8 @@ export const describeJobExecution: API.OperationMethod<
   DescribeJobExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339) as any as S.Schema<DescribeJobExecutionRequest>,
-  output: __S(342) as any as S.Schema<DescribeJobExecutionResponse>,
+  input: DescribeJobExecutionRequest,
+  output: DescribeJobExecutionResponse,
   errors: [
     InvalidRequestException,
     ResourceNotFoundException,
@@ -8805,8 +11484,8 @@ export const describeJobTemplate: API.OperationMethod<
   DescribeJobTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343) as any as S.Schema<DescribeJobTemplateRequest>,
-  output: __S(344) as any as S.Schema<DescribeJobTemplateResponse>,
+  input: DescribeJobTemplateRequest,
+  output: DescribeJobTemplateResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8833,8 +11512,8 @@ export const describeManagedJobTemplate: API.OperationMethod<
   DescribeManagedJobTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345) as any as S.Schema<DescribeManagedJobTemplateRequest>,
-  output: __S(348) as any as S.Schema<DescribeManagedJobTemplateResponse>,
+  input: DescribeManagedJobTemplateRequest,
+  output: DescribeManagedJobTemplateResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -8863,8 +11542,8 @@ export const describeMitigationAction: API.OperationMethod<
   DescribeMitigationActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349) as any as S.Schema<DescribeMitigationActionRequest>,
-  output: __S(350) as any as S.Schema<DescribeMitigationActionResponse>,
+  input: DescribeMitigationActionRequest,
+  output: DescribeMitigationActionResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8894,8 +11573,8 @@ export const describeProvisioningTemplate: API.OperationMethod<
   DescribeProvisioningTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351) as any as S.Schema<DescribeProvisioningTemplateRequest>,
-  output: __S(352) as any as S.Schema<DescribeProvisioningTemplateResponse>,
+  input: DescribeProvisioningTemplateRequest,
+  output: DescribeProvisioningTemplateResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8926,8 +11605,8 @@ export const describeProvisioningTemplateVersion: API.OperationMethod<
   DescribeProvisioningTemplateVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353) as any as S.Schema<DescribeProvisioningTemplateVersionRequest>,
-  output: __S(354) as any as S.Schema<DescribeProvisioningTemplateVersionResponse>,
+  input: DescribeProvisioningTemplateVersionRequest,
+  output: DescribeProvisioningTemplateVersionResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8959,8 +11638,8 @@ export const describeRoleAlias: API.OperationMethod<
   DescribeRoleAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355) as any as S.Schema<DescribeRoleAliasRequest>,
-  output: __S(357) as any as S.Schema<DescribeRoleAliasResponse>,
+  input: DescribeRoleAliasRequest,
+  output: DescribeRoleAliasResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8991,8 +11670,8 @@ export const describeScheduledAudit: API.OperationMethod<
   DescribeScheduledAuditError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358) as any as S.Schema<DescribeScheduledAuditRequest>,
-  output: __S(359) as any as S.Schema<DescribeScheduledAuditResponse>,
+  input: DescribeScheduledAuditRequest,
+  output: DescribeScheduledAuditResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -9023,8 +11702,8 @@ export const describeSecurityProfile: API.OperationMethod<
   DescribeSecurityProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360) as any as S.Schema<DescribeSecurityProfileRequest>,
-  output: __S(361) as any as S.Schema<DescribeSecurityProfileResponse>,
+  input: DescribeSecurityProfileRequest,
+  output: DescribeSecurityProfileResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -9055,8 +11734,8 @@ export const describeStream: API.OperationMethod<
   DescribeStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362) as any as S.Schema<DescribeStreamRequest>,
-  output: __S(364) as any as S.Schema<DescribeStreamResponse>,
+  input: DescribeStreamRequest,
+  output: DescribeStreamResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -9089,8 +11768,8 @@ export const describeThing: API.OperationMethod<
   DescribeThingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(365) as any as S.Schema<DescribeThingRequest>,
-  output: __S(366) as any as S.Schema<DescribeThingResponse>,
+  input: DescribeThingRequest,
+  output: DescribeThingResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -9121,8 +11800,8 @@ export const describeThingGroup: API.OperationMethod<
   DescribeThingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(367) as any as S.Schema<DescribeThingGroupRequest>,
-  output: __S(371) as any as S.Schema<DescribeThingGroupResponse>,
+  input: DescribeThingGroupRequest,
+  output: DescribeThingGroupResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -9152,8 +11831,8 @@ export const describeThingRegistrationTask: API.OperationMethod<
   DescribeThingRegistrationTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(372) as any as S.Schema<DescribeThingRegistrationTaskRequest>,
-  output: __S(373) as any as S.Schema<DescribeThingRegistrationTaskResponse>,
+  input: DescribeThingRegistrationTaskRequest,
+  output: DescribeThingRegistrationTaskResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -9185,8 +11864,8 @@ export const describeThingType: API.OperationMethod<
   DescribeThingTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374) as any as S.Schema<DescribeThingTypeRequest>,
-  output: __S(376) as any as S.Schema<DescribeThingTypeResponse>,
+  input: DescribeThingTypeRequest,
+  output: DescribeThingTypeResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -9222,8 +11901,8 @@ export const detachPolicy: API.OperationMethod<
   DetachPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(377) as any as S.Schema<DetachPolicyRequest>,
-  output: __S(3) as any as S.Schema<DetachPolicyResponse>,
+  input: DetachPolicyRequest,
+  output: DetachPolicyResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -9259,8 +11938,8 @@ export const detachPrincipalPolicy: API.OperationMethod<
   DetachPrincipalPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378) as any as S.Schema<DetachPrincipalPolicyRequest>,
-  output: __S(3) as any as S.Schema<DetachPrincipalPolicyResponse>,
+  input: DetachPrincipalPolicyRequest,
+  output: DetachPrincipalPolicyResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -9293,8 +11972,8 @@ export const detachSecurityProfile: API.OperationMethod<
   DetachSecurityProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(379) as any as S.Schema<DetachSecurityProfileRequest>,
-  output: __S(3) as any as S.Schema<DetachSecurityProfileResponse>,
+  input: DetachSecurityProfileRequest,
+  output: DetachSecurityProfileResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -9330,8 +12009,8 @@ export const detachThingPrincipal: API.OperationMethod<
   DetachThingPrincipalError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(380) as any as S.Schema<DetachThingPrincipalRequest>,
-  output: __S(3) as any as S.Schema<DetachThingPrincipalResponse>,
+  input: DetachThingPrincipalRequest,
+  output: DetachThingPrincipalResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -9363,8 +12042,8 @@ export const disableTopicRule: API.OperationMethod<
   DisableTopicRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(381) as any as S.Schema<DisableTopicRuleRequest>,
-  output: __S(3) as any as S.Schema<DisableTopicRuleResponse>,
+  input: DisableTopicRuleRequest,
+  output: DisableTopicRuleResponse,
   errors: [
     ConflictingResourceUpdateException,
     InternalException,
@@ -9395,8 +12074,8 @@ export const disassociateSbomFromPackageVersion: API.OperationMethod<
   DisassociateSbomFromPackageVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(382) as any as S.Schema<DisassociateSbomFromPackageVersionRequest>,
-  output: __S(1) as any as S.Schema<DisassociateSbomFromPackageVersionResponse>,
+  input: DisassociateSbomFromPackageVersionRequest,
+  output: DisassociateSbomFromPackageVersionResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -9427,8 +12106,8 @@ export const enableTopicRule: API.OperationMethod<
   EnableTopicRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(383) as any as S.Schema<EnableTopicRuleRequest>,
-  output: __S(3) as any as S.Schema<EnableTopicRuleResponse>,
+  input: EnableTopicRuleRequest,
+  output: EnableTopicRuleResponse,
   errors: [
     ConflictingResourceUpdateException,
     InternalException,
@@ -9461,8 +12140,8 @@ export const getBehaviorModelTrainingSummaries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BehaviorModelTrainingSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(384) as any as S.Schema<GetBehaviorModelTrainingSummariesRequest>,
-  output: __S(387) as any as S.Schema<GetBehaviorModelTrainingSummariesResponse>,
+  input: GetBehaviorModelTrainingSummariesRequest,
+  output: GetBehaviorModelTrainingSummariesResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -9502,8 +12181,8 @@ export const getBucketsAggregation: API.OperationMethod<
   GetBucketsAggregationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(390) as any as S.Schema<GetBucketsAggregationRequest>,
-  output: __S(393) as any as S.Schema<GetBucketsAggregationResponse>,
+  input: GetBucketsAggregationRequest,
+  output: GetBucketsAggregationResponse,
   errors: [
     IndexNotReadyException,
     InternalFailureException,
@@ -9542,8 +12221,8 @@ export const getCardinality: API.OperationMethod<
   GetCardinalityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394) as any as S.Schema<GetCardinalityRequest>,
-  output: __S(395) as any as S.Schema<GetCardinalityResponse>,
+  input: GetCardinalityRequest,
+  output: GetCardinalityResponse,
   errors: [
     IndexNotReadyException,
     InternalFailureException,
@@ -9575,8 +12254,8 @@ export const getCommand: API.OperationMethod<
   GetCommandError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(396) as any as S.Schema<GetCommandRequest>,
-  output: __S(397) as any as S.Schema<GetCommandResponse>,
+  input: GetCommandRequest,
+  output: GetCommandResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -9603,8 +12282,8 @@ export const getCommandExecution: API.OperationMethod<
   GetCommandExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398) as any as S.Schema<GetCommandExecutionRequest>,
-  output: __S(403) as any as S.Schema<GetCommandExecutionResponse>,
+  input: GetCommandExecutionRequest,
+  output: GetCommandExecutionResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -9637,8 +12316,8 @@ export const getEffectivePolicies: API.OperationMethod<
   GetEffectivePoliciesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(404) as any as S.Schema<GetEffectivePoliciesRequest>,
-  output: __S(407) as any as S.Schema<GetEffectivePoliciesResponse>,
+  input: GetEffectivePoliciesRequest,
+  output: GetEffectivePoliciesResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -9671,8 +12350,8 @@ export const getIndexingConfiguration: API.OperationMethod<
   GetIndexingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408) as any as S.Schema<GetIndexingConfigurationRequest>,
-  output: __S(417) as any as S.Schema<GetIndexingConfigurationResponse>,
+  input: GetIndexingConfigurationRequest,
+  output: GetIndexingConfigurationResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -9702,8 +12381,8 @@ export const getJobDocument: API.OperationMethod<
   GetJobDocumentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(418) as any as S.Schema<GetJobDocumentRequest>,
-  output: __S(419) as any as S.Schema<GetJobDocumentResponse>,
+  input: GetJobDocumentRequest,
+  output: GetJobDocumentResponse,
   errors: [
     InvalidRequestException,
     ResourceNotFoundException,
@@ -9734,8 +12413,8 @@ export const getLoggingOptions: API.OperationMethod<
   GetLoggingOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(420) as any as S.Schema<GetLoggingOptionsRequest>,
-  output: __S(421) as any as S.Schema<GetLoggingOptionsResponse>,
+  input: GetLoggingOptionsRequest,
+  output: GetLoggingOptionsResponse,
   errors: [InternalException, InvalidRequestException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9761,8 +12440,8 @@ export const getOTAUpdate: API.OperationMethod<
   GetOTAUpdateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(422) as any as S.Schema<GetOTAUpdateRequest>,
-  output: __S(425) as any as S.Schema<GetOTAUpdateResponse>,
+  input: GetOTAUpdateRequest,
+  output: GetOTAUpdateResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -9793,8 +12472,8 @@ export const getPackage: API.OperationMethod<
   GetPackageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426) as any as S.Schema<GetPackageRequest>,
-  output: __S(427) as any as S.Schema<GetPackageResponse>,
+  input: GetPackageRequest,
+  output: GetPackageResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -9821,8 +12500,8 @@ export const getPackageConfiguration: API.OperationMethod<
   GetPackageConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(428) as any as S.Schema<GetPackageConfigurationRequest>,
-  output: __S(430) as any as S.Schema<GetPackageConfigurationResponse>,
+  input: GetPackageConfigurationRequest,
+  output: GetPackageConfigurationResponse,
   errors: [InternalServerException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9846,8 +12525,8 @@ export const getPackageVersion: API.OperationMethod<
   GetPackageVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431) as any as S.Schema<GetPackageVersionRequest>,
-  output: __S(432) as any as S.Schema<GetPackageVersionResponse>,
+  input: GetPackageVersionRequest,
+  output: GetPackageVersionResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -9889,8 +12568,8 @@ export const getPercentiles: API.OperationMethod<
   GetPercentilesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433) as any as S.Schema<GetPercentilesRequest>,
-  output: __S(436) as any as S.Schema<GetPercentilesResponse>,
+  input: GetPercentilesRequest,
+  output: GetPercentilesResponse,
   errors: [
     IndexNotReadyException,
     InternalFailureException,
@@ -9927,8 +12606,8 @@ export const getPolicy: API.OperationMethod<
   GetPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(437) as any as S.Schema<GetPolicyRequest>,
-  output: __S(438) as any as S.Schema<GetPolicyResponse>,
+  input: GetPolicyRequest,
+  output: GetPolicyResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -9961,8 +12640,8 @@ export const getPolicyVersion: API.OperationMethod<
   GetPolicyVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(439) as any as S.Schema<GetPolicyVersionRequest>,
-  output: __S(440) as any as S.Schema<GetPolicyVersionResponse>,
+  input: GetPolicyVersionRequest,
+  output: GetPolicyVersionResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -9998,8 +12677,8 @@ export const getRegistrationCode: API.OperationMethod<
   GetRegistrationCodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(441) as any as S.Schema<GetRegistrationCodeRequest>,
-  output: __S(442) as any as S.Schema<GetRegistrationCodeResponse>,
+  input: GetRegistrationCodeRequest,
+  output: GetRegistrationCodeResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -10036,8 +12715,8 @@ export const getStatistics: API.OperationMethod<
   GetStatisticsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(443) as any as S.Schema<GetStatisticsRequest>,
-  output: __S(445) as any as S.Schema<GetStatisticsResponse>,
+  input: GetStatisticsRequest,
+  output: GetStatisticsResponse,
   errors: [
     IndexNotReadyException,
     InternalFailureException,
@@ -10072,8 +12751,8 @@ export const getThingConnectivityData: API.OperationMethod<
   GetThingConnectivityDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(446) as any as S.Schema<GetThingConnectivityDataRequest>,
-  output: __S(447) as any as S.Schema<GetThingConnectivityDataResponse>,
+  input: GetThingConnectivityDataRequest,
+  output: GetThingConnectivityDataResponse,
   errors: [
     IndexNotReadyException,
     InternalFailureException,
@@ -10106,8 +12785,8 @@ export const getTopicRule: API.OperationMethod<
   GetTopicRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448) as any as S.Schema<GetTopicRuleRequest>,
-  output: __S(450) as any as S.Schema<GetTopicRuleResponse>,
+  input: GetTopicRuleRequest,
+  output: GetTopicRuleResponse,
   errors: [
     InternalException,
     InvalidRequestException,
@@ -10137,8 +12816,8 @@ export const getTopicRuleDestination: API.OperationMethod<
   GetTopicRuleDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451) as any as S.Schema<GetTopicRuleDestinationRequest>,
-  output: __S(221) as any as S.Schema<GetTopicRuleDestinationResponse>,
+  input: GetTopicRuleDestinationRequest,
+  output: GetTopicRuleDestinationResponse,
   errors: [
     InternalException,
     InvalidRequestException,
@@ -10166,8 +12845,8 @@ export const getV2LoggingOptions: API.OperationMethod<
   GetV2LoggingOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(452) as any as S.Schema<GetV2LoggingOptionsRequest>,
-  output: __S(455) as any as S.Schema<GetV2LoggingOptionsResponse>,
+  input: GetV2LoggingOptionsRequest,
+  output: GetV2LoggingOptionsResponse,
   errors: [InternalException, NotConfiguredException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10194,8 +12873,8 @@ export const listActiveViolations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ActiveViolation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(456) as any as S.Schema<ListActiveViolationsRequest>,
-  output: __S(460) as any as S.Schema<ListActiveViolationsResponse>,
+  input: ListActiveViolationsRequest,
+  output: ListActiveViolationsResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -10234,8 +12913,8 @@ export const listAttachedPolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Policy
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(461) as any as S.Schema<ListAttachedPoliciesRequest>,
-  output: __S(464) as any as S.Schema<ListAttachedPoliciesResponse>,
+  input: ListAttachedPoliciesRequest,
+  output: ListAttachedPoliciesResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -10274,8 +12953,8 @@ export const listAuditFindings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AuditFinding
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(465) as any as S.Schema<ListAuditFindingsRequest>,
-  output: __S(467) as any as S.Schema<ListAuditFindingsResponse>,
+  input: ListAuditFindingsRequest,
+  output: ListAuditFindingsResponse,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10306,8 +12985,8 @@ export const listAuditMitigationActionsExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AuditMitigationActionExecutionMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(468) as any as S.Schema<ListAuditMitigationActionsExecutionsRequest>,
-  output: __S(471) as any as S.Schema<ListAuditMitigationActionsExecutionsResponse>,
+  input: ListAuditMitigationActionsExecutionsRequest,
+  output: ListAuditMitigationActionsExecutionsResponse,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10337,8 +13016,8 @@ export const listAuditMitigationActionsTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AuditMitigationActionsTaskMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(472) as any as S.Schema<ListAuditMitigationActionsTasksRequest>,
-  output: __S(475) as any as S.Schema<ListAuditMitigationActionsTasksResponse>,
+  input: ListAuditMitigationActionsTasksRequest,
+  output: ListAuditMitigationActionsTasksResponse,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10368,8 +13047,8 @@ export const listAuditSuppressions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AuditSuppression
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(476) as any as S.Schema<ListAuditSuppressionsRequest>,
-  output: __S(479) as any as S.Schema<ListAuditSuppressionsResponse>,
+  input: ListAuditSuppressionsRequest,
+  output: ListAuditSuppressionsResponse,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10400,8 +13079,8 @@ export const listAuditTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AuditTaskMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(480) as any as S.Schema<ListAuditTasksRequest>,
-  output: __S(483) as any as S.Schema<ListAuditTasksResponse>,
+  input: ListAuditTasksRequest,
+  output: ListAuditTasksResponse,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10433,8 +13112,8 @@ export const listAuthorizers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AuthorizerSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(484) as any as S.Schema<ListAuthorizersRequest>,
-  output: __S(486) as any as S.Schema<ListAuthorizersResponse>,
+  input: ListAuthorizersRequest,
+  output: ListAuthorizersResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -10471,8 +13150,8 @@ export const listBillingGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GroupNameAndArn
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(487) as any as S.Schema<ListBillingGroupsRequest>,
-  output: __S(488) as any as S.Schema<ListBillingGroupsResponse>,
+  input: ListBillingGroupsRequest,
+  output: ListBillingGroupsResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -10512,8 +13191,8 @@ export const listCACertificates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CACertificate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(489) as any as S.Schema<ListCACertificatesRequest>,
-  output: __S(492) as any as S.Schema<ListCACertificatesResponse>,
+  input: ListCACertificatesRequest,
+  output: ListCACertificatesResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -10550,8 +13229,8 @@ export const listCertificateProviders: API.OperationMethod<
   ListCertificateProvidersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(493) as any as S.Schema<ListCertificateProvidersRequest>,
-  output: __S(495) as any as S.Schema<ListCertificateProvidersResponse>,
+  input: ListCertificateProvidersRequest,
+  output: ListCertificateProvidersResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -10586,8 +13265,8 @@ export const listCertificates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Certificate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(496) as any as S.Schema<ListCertificatesRequest>,
-  output: __S(499) as any as S.Schema<ListCertificatesResponse>,
+  input: ListCertificatesRequest,
+  output: ListCertificatesResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -10625,8 +13304,8 @@ export const listCertificatesByCA: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Certificate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(500) as any as S.Schema<ListCertificatesByCARequest>,
-  output: __S(501) as any as S.Schema<ListCertificatesByCAResponse>,
+  input: ListCertificatesByCARequest,
+  output: ListCertificatesByCAResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -10676,8 +13355,8 @@ export const listCommandExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CommandExecutionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(503) as any as S.Schema<ListCommandExecutionsRequest>,
-  output: __S(506) as any as S.Schema<ListCommandExecutionsResponse>,
+  input: ListCommandExecutionsRequest,
+  output: ListCommandExecutionsResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -10710,8 +13389,8 @@ export const listCommands: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CommandSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(507) as any as S.Schema<ListCommandsRequest>,
-  output: __S(510) as any as S.Schema<ListCommandsResponse>,
+  input: ListCommandsRequest,
+  output: ListCommandsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10743,8 +13422,8 @@ export const listCustomMetrics: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MetricName
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(511) as any as S.Schema<ListCustomMetricsRequest>,
-  output: __S(512) as any as S.Schema<ListCustomMetricsResponse>,
+  input: ListCustomMetricsRequest,
+  output: ListCustomMetricsResponse,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10776,8 +13455,8 @@ export const listDetectMitigationActionsExecutions: API.PaginatedOperationMethod
   Credentials | HttpClient.HttpClient,
   DetectMitigationActionExecution
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(513) as any as S.Schema<ListDetectMitigationActionsExecutionsRequest>,
-  output: __S(516) as any as S.Schema<ListDetectMitigationActionsExecutionsResponse>,
+  input: ListDetectMitigationActionsExecutionsRequest,
+  output: ListDetectMitigationActionsExecutionsResponse,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10809,8 +13488,8 @@ export const listDetectMitigationActionsTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DetectMitigationActionsTaskSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(517) as any as S.Schema<ListDetectMitigationActionsTasksRequest>,
-  output: __S(519) as any as S.Schema<ListDetectMitigationActionsTasksResponse>,
+  input: ListDetectMitigationActionsTasksRequest,
+  output: ListDetectMitigationActionsTasksResponse,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10842,8 +13521,8 @@ export const listDimensions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DimensionName
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(520) as any as S.Schema<ListDimensionsRequest>,
-  output: __S(521) as any as S.Schema<ListDimensionsResponse>,
+  input: ListDimensionsRequest,
+  output: ListDimensionsResponse,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10876,8 +13555,8 @@ export const listDomainConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DomainConfigurationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(522) as any as S.Schema<ListDomainConfigurationsRequest>,
-  output: __S(525) as any as S.Schema<ListDomainConfigurationsResponse>,
+  input: ListDomainConfigurationsRequest,
+  output: ListDomainConfigurationsResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -10915,8 +13594,8 @@ export const listFleetMetrics: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FleetMetricNameAndArn
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(526) as any as S.Schema<ListFleetMetricsRequest>,
-  output: __S(529) as any as S.Schema<ListFleetMetricsResponse>,
+  input: ListFleetMetricsRequest,
+  output: ListFleetMetricsResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -10954,8 +13633,8 @@ export const listIndices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IndexName
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(530) as any as S.Schema<ListIndicesRequest>,
-  output: __S(531) as any as S.Schema<ListIndicesResponse>,
+  input: ListIndicesRequest,
+  output: ListIndicesResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -10992,8 +13671,8 @@ export const listJobExecutionsForJob: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   JobExecutionSummaryForJob
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(532) as any as S.Schema<ListJobExecutionsForJobRequest>,
-  output: __S(536) as any as S.Schema<ListJobExecutionsForJobResponse>,
+  input: ListJobExecutionsForJobRequest,
+  output: ListJobExecutionsForJobResponse,
   errors: [
     InvalidRequestException,
     ResourceNotFoundException,
@@ -11029,8 +13708,8 @@ export const listJobExecutionsForThing: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   JobExecutionSummaryForThing
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(537) as any as S.Schema<ListJobExecutionsForThingRequest>,
-  output: __S(540) as any as S.Schema<ListJobExecutionsForThingResponse>,
+  input: ListJobExecutionsForThingRequest,
+  output: ListJobExecutionsForThingResponse,
   errors: [
     InvalidRequestException,
     ResourceNotFoundException,
@@ -11066,8 +13745,8 @@ export const listJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   JobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(541) as any as S.Schema<ListJobsRequest>,
-  output: __S(544) as any as S.Schema<ListJobsResponse>,
+  input: ListJobsRequest,
+  output: ListJobsResponse,
   errors: [
     InvalidRequestException,
     ResourceNotFoundException,
@@ -11102,8 +13781,8 @@ export const listJobTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   JobTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(545) as any as S.Schema<ListJobTemplatesRequest>,
-  output: __S(548) as any as S.Schema<ListJobTemplatesResponse>,
+  input: ListJobTemplatesRequest,
+  output: ListJobTemplatesResponse,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11132,8 +13811,8 @@ export const listManagedJobTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ManagedJobTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(549) as any as S.Schema<ListManagedJobTemplatesRequest>,
-  output: __S(552) as any as S.Schema<ListManagedJobTemplatesResponse>,
+  input: ListManagedJobTemplatesRequest,
+  output: ListManagedJobTemplatesResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -11168,8 +13847,8 @@ export const listMetricValues: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MetricDatum
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(553) as any as S.Schema<ListMetricValuesRequest>,
-  output: __S(556) as any as S.Schema<ListMetricValuesResponse>,
+  input: ListMetricValuesRequest,
+  output: ListMetricValuesResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -11204,8 +13883,8 @@ export const listMitigationActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MitigationActionIdentifier
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(557) as any as S.Schema<ListMitigationActionsRequest>,
-  output: __S(560) as any as S.Schema<ListMitigationActionsResponse>,
+  input: ListMitigationActionsRequest,
+  output: ListMitigationActionsResponse,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11237,8 +13916,8 @@ export const listOTAUpdates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   OTAUpdateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(561) as any as S.Schema<ListOTAUpdatesRequest>,
-  output: __S(564) as any as S.Schema<ListOTAUpdatesResponse>,
+  input: ListOTAUpdatesRequest,
+  output: ListOTAUpdatesResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -11276,8 +13955,8 @@ export const listOutgoingCertificates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   OutgoingCertificate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(565) as any as S.Schema<ListOutgoingCertificatesRequest>,
-  output: __S(568) as any as S.Schema<ListOutgoingCertificatesResponse>,
+  input: ListOutgoingCertificatesRequest,
+  output: ListOutgoingCertificatesResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -11313,8 +13992,8 @@ export const listPackages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PackageSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(569) as any as S.Schema<ListPackagesRequest>,
-  output: __S(572) as any as S.Schema<ListPackagesResponse>,
+  input: ListPackagesRequest,
+  output: ListPackagesResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11344,8 +14023,8 @@ export const listPackageVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PackageVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(573) as any as S.Schema<ListPackageVersionsRequest>,
-  output: __S(576) as any as S.Schema<ListPackageVersionsResponse>,
+  input: ListPackageVersionsRequest,
+  output: ListPackageVersionsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11377,8 +14056,8 @@ export const listPolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Policy
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(577) as any as S.Schema<ListPoliciesRequest>,
-  output: __S(578) as any as S.Schema<ListPoliciesResponse>,
+  input: ListPoliciesRequest,
+  output: ListPoliciesResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -11420,8 +14099,8 @@ export const listPolicyPrincipals: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PrincipalArn
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(579) as any as S.Schema<ListPolicyPrincipalsRequest>,
-  output: __S(580) as any as S.Schema<ListPolicyPrincipalsResponse>,
+  input: ListPolicyPrincipalsRequest,
+  output: ListPolicyPrincipalsResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -11461,8 +14140,8 @@ export const listPolicyVersions: API.OperationMethod<
   ListPolicyVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(581) as any as S.Schema<ListPolicyVersionsRequest>,
-  output: __S(584) as any as S.Schema<ListPolicyVersionsResponse>,
+  input: ListPolicyVersionsRequest,
+  output: ListPolicyVersionsResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -11500,8 +14179,8 @@ export const listPrincipalPolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Policy
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(585) as any as S.Schema<ListPrincipalPoliciesRequest>,
-  output: __S(464) as any as S.Schema<ListPrincipalPoliciesResponse>,
+  input: ListPrincipalPoliciesRequest,
+  output: ListPrincipalPoliciesResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -11543,8 +14222,8 @@ export const listPrincipalThings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ThingName
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(586) as any as S.Schema<ListPrincipalThingsRequest>,
-  output: __S(587) as any as S.Schema<ListPrincipalThingsResponse>,
+  input: ListPrincipalThingsRequest,
+  output: ListPrincipalThingsResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -11585,8 +14264,8 @@ export const listPrincipalThingsV2: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PrincipalThingObject
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(588) as any as S.Schema<ListPrincipalThingsV2Request>,
-  output: __S(591) as any as S.Schema<ListPrincipalThingsV2Response>,
+  input: ListPrincipalThingsV2Request,
+  output: ListPrincipalThingsV2Response,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -11624,8 +14303,8 @@ export const listProvisioningTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProvisioningTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(592) as any as S.Schema<ListProvisioningTemplatesRequest>,
-  output: __S(595) as any as S.Schema<ListProvisioningTemplatesResponse>,
+  input: ListProvisioningTemplatesRequest,
+  output: ListProvisioningTemplatesResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -11662,8 +14341,8 @@ export const listProvisioningTemplateVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProvisioningTemplateVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(596) as any as S.Schema<ListProvisioningTemplateVersionsRequest>,
-  output: __S(599) as any as S.Schema<ListProvisioningTemplateVersionsResponse>,
+  input: ListProvisioningTemplateVersionsRequest,
+  output: ListProvisioningTemplateVersionsResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -11722,8 +14401,8 @@ export const listRelatedResourcesForAuditFinding: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RelatedResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(600) as any as S.Schema<ListRelatedResourcesForAuditFindingRequest>,
-  output: __S(601) as any as S.Schema<ListRelatedResourcesForAuditFindingResponse>,
+  input: ListRelatedResourcesForAuditFindingRequest,
+  output: ListRelatedResourcesForAuditFindingResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -11760,8 +14439,8 @@ export const listRoleAliases: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RoleAlias
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(602) as any as S.Schema<ListRoleAliasesRequest>,
-  output: __S(603) as any as S.Schema<ListRoleAliasesResponse>,
+  input: ListRoleAliasesRequest,
+  output: ListRoleAliasesResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -11798,8 +14477,8 @@ export const listSbomValidationResults: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SbomValidationResultSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(604) as any as S.Schema<ListSbomValidationResultsRequest>,
-  output: __S(607) as any as S.Schema<ListSbomValidationResultsResponse>,
+  input: ListSbomValidationResultsRequest,
+  output: ListSbomValidationResultsResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -11834,8 +14513,8 @@ export const listScheduledAudits: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScheduledAuditMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(608) as any as S.Schema<ListScheduledAuditsRequest>,
-  output: __S(611) as any as S.Schema<ListScheduledAuditsResponse>,
+  input: ListScheduledAuditsRequest,
+  output: ListScheduledAuditsResponse,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11872,8 +14551,8 @@ export const listSecurityProfiles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SecurityProfileIdentifier
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(612) as any as S.Schema<ListSecurityProfilesRequest>,
-  output: __S(615) as any as S.Schema<ListSecurityProfilesResponse>,
+  input: ListSecurityProfilesRequest,
+  output: ListSecurityProfilesResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -11911,8 +14590,8 @@ export const listSecurityProfilesForTarget: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SecurityProfileTargetMapping
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(616) as any as S.Schema<ListSecurityProfilesForTargetRequest>,
-  output: __S(620) as any as S.Schema<ListSecurityProfilesForTargetResponse>,
+  input: ListSecurityProfilesForTargetRequest,
+  output: ListSecurityProfilesForTargetResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -11949,8 +14628,8 @@ export const listStreams: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   StreamSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(621) as any as S.Schema<ListStreamsRequest>,
-  output: __S(624) as any as S.Schema<ListStreamsResponse>,
+  input: ListStreamsRequest,
+  output: ListStreamsResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -11987,8 +14666,8 @@ export const listTagsForResource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Tag
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(625) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(626) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -12022,8 +14701,8 @@ export const listTargetsForPolicy: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PolicyTarget
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(627) as any as S.Schema<ListTargetsForPolicyRequest>,
-  output: __S(628) as any as S.Schema<ListTargetsForPolicyResponse>,
+  input: ListTargetsForPolicyRequest,
+  output: ListTargetsForPolicyResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -12064,8 +14743,8 @@ export const listTargetsForSecurityProfile: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SecurityProfileTarget
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(629) as any as S.Schema<ListTargetsForSecurityProfileRequest>,
-  output: __S(631) as any as S.Schema<ListTargetsForSecurityProfileResponse>,
+  input: ListTargetsForSecurityProfileRequest,
+  output: ListTargetsForSecurityProfileResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -12101,8 +14780,8 @@ export const listThingGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GroupNameAndArn
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(632) as any as S.Schema<ListThingGroupsRequest>,
-  output: __S(633) as any as S.Schema<ListThingGroupsResponse>,
+  input: ListThingGroupsRequest,
+  output: ListThingGroupsResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -12138,8 +14817,8 @@ export const listThingGroupsForThing: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GroupNameAndArn
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(634) as any as S.Schema<ListThingGroupsForThingRequest>,
-  output: __S(635) as any as S.Schema<ListThingGroupsForThingResponse>,
+  input: ListThingGroupsForThingRequest,
+  output: ListThingGroupsForThingResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -12179,8 +14858,8 @@ export const listThingPrincipals: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PrincipalArn
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(636) as any as S.Schema<ListThingPrincipalsRequest>,
-  output: __S(637) as any as S.Schema<ListThingPrincipalsResponse>,
+  input: ListThingPrincipalsRequest,
+  output: ListThingPrincipalsResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -12221,8 +14900,8 @@ export const listThingPrincipalsV2: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ThingPrincipalObject
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(638) as any as S.Schema<ListThingPrincipalsV2Request>,
-  output: __S(641) as any as S.Schema<ListThingPrincipalsV2Response>,
+  input: ListThingPrincipalsV2Request,
+  output: ListThingPrincipalsV2Response,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -12258,8 +14937,8 @@ export const listThingRegistrationTaskReports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   S3FileUrl
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(642) as any as S.Schema<ListThingRegistrationTaskReportsRequest>,
-  output: __S(643) as any as S.Schema<ListThingRegistrationTaskReportsResponse>,
+  input: ListThingRegistrationTaskReportsRequest,
+  output: ListThingRegistrationTaskReportsResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -12295,8 +14974,8 @@ export const listThingRegistrationTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TaskId
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(644) as any as S.Schema<ListThingRegistrationTasksRequest>,
-  output: __S(645) as any as S.Schema<ListThingRegistrationTasksResponse>,
+  input: ListThingRegistrationTasksRequest,
+  output: ListThingRegistrationTasksResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -12339,8 +15018,8 @@ export const listThings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ThingAttribute
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(646) as any as S.Schema<ListThingsRequest>,
-  output: __S(649) as any as S.Schema<ListThingsResponse>,
+  input: ListThingsRequest,
+  output: ListThingsResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -12377,8 +15056,8 @@ export const listThingsInBillingGroup: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ThingName
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(650) as any as S.Schema<ListThingsInBillingGroupRequest>,
-  output: __S(587) as any as S.Schema<ListThingsInBillingGroupResponse>,
+  input: ListThingsInBillingGroupRequest,
+  output: ListThingsInBillingGroupResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -12414,8 +15093,8 @@ export const listThingsInThingGroup: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ThingName
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(651) as any as S.Schema<ListThingsInThingGroupRequest>,
-  output: __S(587) as any as S.Schema<ListThingsInThingGroupResponse>,
+  input: ListThingsInThingGroupRequest,
+  output: ListThingsInThingGroupResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -12452,8 +15131,8 @@ export const listThingTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ThingTypeDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(652) as any as S.Schema<ListThingTypesRequest>,
-  output: __S(655) as any as S.Schema<ListThingTypesResponse>,
+  input: ListThingTypesRequest,
+  output: ListThingTypesResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -12490,8 +15169,8 @@ export const listTopicRuleDestinations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TopicRuleDestinationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(656) as any as S.Schema<ListTopicRuleDestinationsRequest>,
-  output: __S(659) as any as S.Schema<ListTopicRuleDestinationsResponse>,
+  input: ListTopicRuleDestinationsRequest,
+  output: ListTopicRuleDestinationsResponse,
   errors: [
     InternalException,
     InvalidRequestException,
@@ -12527,8 +15206,8 @@ export const listTopicRules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TopicRuleListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(660) as any as S.Schema<ListTopicRulesRequest>,
-  output: __S(663) as any as S.Schema<ListTopicRulesResponse>,
+  input: ListTopicRulesRequest,
+  output: ListTopicRulesResponse,
   errors: [
     InternalException,
     InvalidRequestException,
@@ -12564,8 +15243,8 @@ export const listV2LoggingLevels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LogTargetConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(664) as any as S.Schema<ListV2LoggingLevelsRequest>,
-  output: __S(668) as any as S.Schema<ListV2LoggingLevelsResponse>,
+  input: ListV2LoggingLevelsRequest,
+  output: ListV2LoggingLevelsResponse,
   errors: [
     InternalException,
     InvalidRequestException,
@@ -12604,8 +15283,8 @@ export const listViolationEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ViolationEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(669) as any as S.Schema<ListViolationEventsRequest>,
-  output: __S(672) as any as S.Schema<ListViolationEventsResponse>,
+  input: ListViolationEventsRequest,
+  output: ListViolationEventsResponse,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -12634,8 +15313,8 @@ export const putVerificationStateOnViolation: API.OperationMethod<
   PutVerificationStateOnViolationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(673) as any as S.Schema<PutVerificationStateOnViolationRequest>,
-  output: __S(1) as any as S.Schema<PutVerificationStateOnViolationResponse>,
+  input: PutVerificationStateOnViolationRequest,
+  output: PutVerificationStateOnViolationResponse,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -12667,8 +15346,8 @@ export const registerCACertificate: API.OperationMethod<
   RegisterCACertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(674) as any as S.Schema<RegisterCACertificateRequest>,
-  output: __S(675) as any as S.Schema<RegisterCACertificateResponse>,
+  input: RegisterCACertificateRequest,
+  output: RegisterCACertificateResponse,
   errors: [
     CertificateValidationException,
     InternalFailureException,
@@ -12710,8 +15389,8 @@ export const registerCertificate: API.OperationMethod<
   RegisterCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(676) as any as S.Schema<RegisterCertificateRequest>,
-  output: __S(675) as any as S.Schema<RegisterCertificateResponse>,
+  input: RegisterCertificateRequest,
+  output: RegisterCertificateResponse,
   errors: [
     CertificateConflictException,
     CertificateStateException,
@@ -12749,8 +15428,8 @@ export const registerCertificateWithoutCA: API.OperationMethod<
   RegisterCertificateWithoutCAError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(677) as any as S.Schema<RegisterCertificateWithoutCARequest>,
-  output: __S(675) as any as S.Schema<RegisterCertificateWithoutCAResponse>,
+  input: RegisterCertificateWithoutCARequest,
+  output: RegisterCertificateWithoutCAResponse,
   errors: [
     CertificateStateException,
     CertificateValidationException,
@@ -12789,8 +15468,8 @@ export const registerThing: API.OperationMethod<
   RegisterThingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(678) as any as S.Schema<RegisterThingRequest>,
-  output: __S(679) as any as S.Schema<RegisterThingResponse>,
+  input: RegisterThingRequest,
+  output: RegisterThingResponse,
   errors: [
     ConflictingResourceUpdateException,
     InternalFailureException,
@@ -12833,8 +15512,8 @@ export const rejectCertificateTransfer: API.OperationMethod<
   RejectCertificateTransferError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(680) as any as S.Schema<RejectCertificateTransferRequest>,
-  output: __S(1) as any as S.Schema<RejectCertificateTransferResponse>,
+  input: RejectCertificateTransferRequest,
+  output: RejectCertificateTransferResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -12868,8 +15547,8 @@ export const removeThingFromBillingGroup: API.OperationMethod<
   RemoveThingFromBillingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(681) as any as S.Schema<RemoveThingFromBillingGroupRequest>,
-  output: __S(1) as any as S.Schema<RemoveThingFromBillingGroupResponse>,
+  input: RemoveThingFromBillingGroupRequest,
+  output: RemoveThingFromBillingGroupResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -12903,8 +15582,8 @@ export const removeThingFromThingGroup: API.OperationMethod<
   RemoveThingFromThingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(682) as any as S.Schema<RemoveThingFromThingGroupRequest>,
-  output: __S(1) as any as S.Schema<RemoveThingFromThingGroupResponse>,
+  input: RemoveThingFromThingGroupRequest,
+  output: RemoveThingFromThingGroupResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -12937,8 +15616,8 @@ export const replaceTopicRule: API.OperationMethod<
   ReplaceTopicRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(683) as any as S.Schema<ReplaceTopicRuleRequest>,
-  output: __S(3) as any as S.Schema<ReplaceTopicRuleResponse>,
+  input: ReplaceTopicRuleRequest,
+  output: ReplaceTopicRuleResponse,
   errors: [
     ConflictingResourceUpdateException,
     InternalException,
@@ -12975,8 +15654,8 @@ export const searchIndex: API.OperationMethod<
   SearchIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(684) as any as S.Schema<SearchIndexRequest>,
-  output: __S(690) as any as S.Schema<SearchIndexResponse>,
+  input: SearchIndexRequest,
+  output: SearchIndexResponse,
   errors: [
     IndexNotReadyException,
     InternalFailureException,
@@ -13013,8 +15692,8 @@ export const setDefaultAuthorizer: API.OperationMethod<
   SetDefaultAuthorizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(691) as any as S.Schema<SetDefaultAuthorizerRequest>,
-  output: __S(692) as any as S.Schema<SetDefaultAuthorizerResponse>,
+  input: SetDefaultAuthorizerRequest,
+  output: SetDefaultAuthorizerResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -13051,8 +15730,8 @@ export const setDefaultPolicyVersion: API.OperationMethod<
   SetDefaultPolicyVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(693) as any as S.Schema<SetDefaultPolicyVersionRequest>,
-  output: __S(236) as any as S.Schema<SetDefaultPolicyVersionResponse>,
+  input: SetDefaultPolicyVersionRequest,
+  output: SetDefaultPolicyVersionResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -13085,8 +15764,8 @@ export const setLoggingOptions: API.OperationMethod<
   SetLoggingOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(695) as any as S.Schema<SetLoggingOptionsRequest>,
-  output: __S(3) as any as S.Schema<SetLoggingOptionsResponse>,
+  input: SetLoggingOptionsRequest,
+  output: SetLoggingOptionsResponse,
   errors: [InternalException, InvalidRequestException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -13111,8 +15790,8 @@ export const setV2LoggingLevel: API.OperationMethod<
   SetV2LoggingLevelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(696) as any as S.Schema<SetV2LoggingLevelRequest>,
-  output: __S(3) as any as S.Schema<SetV2LoggingLevelResponse>,
+  input: SetV2LoggingLevelRequest,
+  output: SetV2LoggingLevelResponse,
   errors: [
     InternalException,
     InvalidRequestException,
@@ -13141,8 +15820,8 @@ export const setV2LoggingOptions: API.OperationMethod<
   SetV2LoggingOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(697) as any as S.Schema<SetV2LoggingOptionsRequest>,
-  output: __S(3) as any as S.Schema<SetV2LoggingOptionsResponse>,
+  input: SetV2LoggingOptionsRequest,
+  output: SetV2LoggingOptionsResponse,
   errors: [InternalException, InvalidRequestException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -13167,8 +15846,8 @@ export const startAuditMitigationActionsTask: API.OperationMethod<
   StartAuditMitigationActionsTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(698) as any as S.Schema<StartAuditMitigationActionsTaskRequest>,
-  output: __S(699) as any as S.Schema<StartAuditMitigationActionsTaskResponse>,
+  input: StartAuditMitigationActionsTaskRequest,
+  output: StartAuditMitigationActionsTaskResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -13201,8 +15880,8 @@ export const startDetectMitigationActionsTask: API.OperationMethod<
   StartDetectMitigationActionsTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(700) as any as S.Schema<StartDetectMitigationActionsTaskRequest>,
-  output: __S(699) as any as S.Schema<StartDetectMitigationActionsTaskResponse>,
+  input: StartDetectMitigationActionsTaskRequest,
+  output: StartDetectMitigationActionsTaskResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -13232,8 +15911,8 @@ export const startOnDemandAuditTask: API.OperationMethod<
   StartOnDemandAuditTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(701) as any as S.Schema<StartOnDemandAuditTaskRequest>,
-  output: __S(699) as any as S.Schema<StartOnDemandAuditTaskResponse>,
+  input: StartOnDemandAuditTaskRequest,
+  output: StartOnDemandAuditTaskResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -13262,8 +15941,8 @@ export const startThingRegistrationTask: API.OperationMethod<
   StartThingRegistrationTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(702) as any as S.Schema<StartThingRegistrationTaskRequest>,
-  output: __S(699) as any as S.Schema<StartThingRegistrationTaskResponse>,
+  input: StartThingRegistrationTaskRequest,
+  output: StartThingRegistrationTaskResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -13293,8 +15972,8 @@ export const stopThingRegistrationTask: API.OperationMethod<
   StopThingRegistrationTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(703) as any as S.Schema<StopThingRegistrationTaskRequest>,
-  output: __S(1) as any as S.Schema<StopThingRegistrationTaskResponse>,
+  input: StopThingRegistrationTaskRequest,
+  output: StopThingRegistrationTaskResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -13326,8 +16005,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704) as any as S.Schema<TagResourceRequest>,
-  output: __S(3) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -13362,8 +16041,8 @@ export const testAuthorization: API.OperationMethod<
   TestAuthorizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(707) as any as S.Schema<TestAuthorizationRequest>,
-  output: __S(712) as any as S.Schema<TestAuthorizationResponse>,
+  input: TestAuthorizationRequest,
+  output: TestAuthorizationResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -13400,8 +16079,8 @@ export const testInvokeAuthorizer: API.OperationMethod<
   TestInvokeAuthorizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(716) as any as S.Schema<TestInvokeAuthorizerRequest>,
-  output: __S(717) as any as S.Schema<TestInvokeAuthorizerResponse>,
+  input: TestInvokeAuthorizerRequest,
+  output: TestInvokeAuthorizerResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -13461,8 +16140,8 @@ export const transferCertificate: API.OperationMethod<
   TransferCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(718) as any as S.Schema<TransferCertificateRequest>,
-  output: __S(719) as any as S.Schema<TransferCertificateResponse>,
+  input: TransferCertificateRequest,
+  output: TransferCertificateResponse,
   errors: [
     CertificateStateException,
     InternalFailureException,
@@ -13495,8 +16174,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720) as any as S.Schema<UntagResourceRequest>,
-  output: __S(3) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -13526,8 +16205,8 @@ export const updateAccountAuditConfiguration: API.OperationMethod<
   UpdateAccountAuditConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(721) as any as S.Schema<UpdateAccountAuditConfigurationRequest>,
-  output: __S(1) as any as S.Schema<UpdateAccountAuditConfigurationResponse>,
+  input: UpdateAccountAuditConfigurationRequest,
+  output: UpdateAccountAuditConfigurationResponse,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -13549,8 +16228,8 @@ export const updateAuditSuppression: API.OperationMethod<
   UpdateAuditSuppressionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(722) as any as S.Schema<UpdateAuditSuppressionRequest>,
-  output: __S(3) as any as S.Schema<UpdateAuditSuppressionResponse>,
+  input: UpdateAuditSuppressionRequest,
+  output: UpdateAuditSuppressionResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -13582,8 +16261,8 @@ export const updateAuthorizer: API.OperationMethod<
   UpdateAuthorizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(723) as any as S.Schema<UpdateAuthorizerRequest>,
-  output: __S(34) as any as S.Schema<UpdateAuthorizerResponse>,
+  input: UpdateAuthorizerRequest,
+  output: UpdateAuthorizerResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -13616,8 +16295,8 @@ export const updateBillingGroup: API.OperationMethod<
   UpdateBillingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(724) as any as S.Schema<UpdateBillingGroupRequest>,
-  output: __S(725) as any as S.Schema<UpdateBillingGroupResponse>,
+  input: UpdateBillingGroupRequest,
+  output: UpdateBillingGroupResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -13649,8 +16328,8 @@ export const updateCACertificate: API.OperationMethod<
   UpdateCACertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(726) as any as S.Schema<UpdateCACertificateRequest>,
-  output: __S(3) as any as S.Schema<UpdateCACertificateResponse>,
+  input: UpdateCACertificateRequest,
+  output: UpdateCACertificateResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -13692,8 +16371,8 @@ export const updateCertificate: API.OperationMethod<
   UpdateCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(727) as any as S.Schema<UpdateCertificateRequest>,
-  output: __S(3) as any as S.Schema<UpdateCertificateResponse>,
+  input: UpdateCertificateRequest,
+  output: UpdateCertificateResponse,
   errors: [
     CertificateStateException,
     InternalFailureException,
@@ -13727,8 +16406,8 @@ export const updateCertificateProvider: API.OperationMethod<
   UpdateCertificateProviderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(728) as any as S.Schema<UpdateCertificateProviderRequest>,
-  output: __S(42) as any as S.Schema<UpdateCertificateProviderResponse>,
+  input: UpdateCertificateProviderRequest,
+  output: UpdateCertificateProviderResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -13758,8 +16437,8 @@ export const updateCommand: API.OperationMethod<
   UpdateCommandError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(729) as any as S.Schema<UpdateCommandRequest>,
-  output: __S(730) as any as S.Schema<UpdateCommandResponse>,
+  input: UpdateCommandRequest,
+  output: UpdateCommandResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -13792,8 +16471,8 @@ export const updateCustomMetric: API.OperationMethod<
   UpdateCustomMetricError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(731) as any as S.Schema<UpdateCustomMetricRequest>,
-  output: __S(306) as any as S.Schema<UpdateCustomMetricResponse>,
+  input: UpdateCustomMetricRequest,
+  output: UpdateCustomMetricResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -13829,8 +16508,8 @@ export const updateDimension: API.OperationMethod<
   UpdateDimensionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(732) as any as S.Schema<UpdateDimensionRequest>,
-  output: __S(733) as any as S.Schema<UpdateDimensionResponse>,
+  input: UpdateDimensionRequest,
+  output: UpdateDimensionResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -13863,8 +16542,8 @@ export const updateDomainConfiguration: API.OperationMethod<
   UpdateDomainConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(734) as any as S.Schema<UpdateDomainConfigurationRequest>,
-  output: __S(64) as any as S.Schema<UpdateDomainConfigurationResponse>,
+  input: UpdateDomainConfigurationRequest,
+  output: UpdateDomainConfigurationResponse,
   errors: [
     CertificateValidationException,
     InternalFailureException,
@@ -13898,8 +16577,8 @@ export const updateDynamicThingGroup: API.OperationMethod<
   UpdateDynamicThingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(735) as any as S.Schema<UpdateDynamicThingGroupRequest>,
-  output: __S(725) as any as S.Schema<UpdateDynamicThingGroupResponse>,
+  input: UpdateDynamicThingGroupRequest,
+  output: UpdateDynamicThingGroupResponse,
   errors: [
     InternalFailureException,
     InvalidQueryException,
@@ -13933,8 +16612,8 @@ export const updateEncryptionConfiguration: API.OperationMethod<
   UpdateEncryptionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736) as any as S.Schema<UpdateEncryptionConfigurationRequest>,
-  output: __S(1) as any as S.Schema<UpdateEncryptionConfigurationResponse>,
+  input: UpdateEncryptionConfigurationRequest,
+  output: UpdateEncryptionConfigurationResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -13963,8 +16642,8 @@ export const updateEventConfigurations: API.OperationMethod<
   UpdateEventConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(737) as any as S.Schema<UpdateEventConfigurationsRequest>,
-  output: __S(1) as any as S.Schema<UpdateEventConfigurationsResponse>,
+  input: UpdateEventConfigurationsRequest,
+  output: UpdateEventConfigurationsResponse,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -13994,8 +16673,8 @@ export const updateFleetMetric: API.OperationMethod<
   UpdateFleetMetricError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(738) as any as S.Schema<UpdateFleetMetricRequest>,
-  output: __S(3) as any as S.Schema<UpdateFleetMetricResponse>,
+  input: UpdateFleetMetricRequest,
+  output: UpdateFleetMetricResponse,
   errors: [
     IndexNotReadyException,
     InternalFailureException,
@@ -14031,8 +16710,8 @@ export const updateIndexingConfiguration: API.OperationMethod<
   UpdateIndexingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(739) as any as S.Schema<UpdateIndexingConfigurationRequest>,
-  output: __S(1) as any as S.Schema<UpdateIndexingConfigurationResponse>,
+  input: UpdateIndexingConfigurationRequest,
+  output: UpdateIndexingConfigurationResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -14062,8 +16741,8 @@ export const updateJob: API.OperationMethod<
   UpdateJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(740) as any as S.Schema<UpdateJobRequest>,
-  output: __S(3) as any as S.Schema<UpdateJobResponse>,
+  input: UpdateJobRequest,
+  output: UpdateJobResponse,
   errors: [
     InvalidRequestException,
     ResourceNotFoundException,
@@ -14092,8 +16771,8 @@ export const updateMitigationAction: API.OperationMethod<
   UpdateMitigationActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(741) as any as S.Schema<UpdateMitigationActionRequest>,
-  output: __S(98) as any as S.Schema<UpdateMitigationActionResponse>,
+  input: UpdateMitigationActionRequest,
+  output: UpdateMitigationActionResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -14123,8 +16802,8 @@ export const updatePackage: API.OperationMethod<
   UpdatePackageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(742) as any as S.Schema<UpdatePackageRequest>,
-  output: __S(3) as any as S.Schema<UpdatePackageResponse>,
+  input: UpdatePackageRequest,
+  output: UpdatePackageResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -14154,8 +16833,8 @@ export const updatePackageConfiguration: API.OperationMethod<
   UpdatePackageConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(743) as any as S.Schema<UpdatePackageConfigurationRequest>,
-  output: __S(1) as any as S.Schema<UpdatePackageConfigurationResponse>,
+  input: UpdatePackageConfigurationRequest,
+  output: UpdatePackageConfigurationResponse,
   errors: [ConflictException, InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -14180,8 +16859,8 @@ export const updatePackageVersion: API.OperationMethod<
   UpdatePackageVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(744) as any as S.Schema<UpdatePackageVersionRequest>,
-  output: __S(3) as any as S.Schema<UpdatePackageVersionResponse>,
+  input: UpdatePackageVersionRequest,
+  output: UpdatePackageVersionResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -14212,8 +16891,8 @@ export const updateProvisioningTemplate: API.OperationMethod<
   UpdateProvisioningTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(745) as any as S.Schema<UpdateProvisioningTemplateRequest>,
-  output: __S(1) as any as S.Schema<UpdateProvisioningTemplateResponse>,
+  input: UpdateProvisioningTemplateRequest,
+  output: UpdateProvisioningTemplateResponse,
   errors: [
     ConflictingResourceUpdateException,
     InternalFailureException,
@@ -14252,8 +16931,8 @@ export const updateRoleAlias: API.OperationMethod<
   UpdateRoleAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(746) as any as S.Schema<UpdateRoleAliasRequest>,
-  output: __S(135) as any as S.Schema<UpdateRoleAliasResponse>,
+  input: UpdateRoleAliasRequest,
+  output: UpdateRoleAliasResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -14285,8 +16964,8 @@ export const updateScheduledAudit: API.OperationMethod<
   UpdateScheduledAuditError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(747) as any as S.Schema<UpdateScheduledAuditRequest>,
-  output: __S(137) as any as S.Schema<UpdateScheduledAuditResponse>,
+  input: UpdateScheduledAuditRequest,
+  output: UpdateScheduledAuditResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -14318,8 +16997,8 @@ export const updateSecurityProfile: API.OperationMethod<
   UpdateSecurityProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(748) as any as S.Schema<UpdateSecurityProfileRequest>,
-  output: __S(361) as any as S.Schema<UpdateSecurityProfileResponse>,
+  input: UpdateSecurityProfileRequest,
+  output: UpdateSecurityProfileResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -14352,8 +17031,8 @@ export const updateStream: API.OperationMethod<
   UpdateStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(749) as any as S.Schema<UpdateStreamRequest>,
-  output: __S(156) as any as S.Schema<UpdateStreamResponse>,
+  input: UpdateStreamRequest,
+  output: UpdateStreamResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -14388,8 +17067,8 @@ export const updateThing: API.OperationMethod<
   UpdateThingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(750) as any as S.Schema<UpdateThingRequest>,
-  output: __S(3) as any as S.Schema<UpdateThingResponse>,
+  input: UpdateThingRequest,
+  output: UpdateThingResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -14422,8 +17101,8 @@ export const updateThingGroup: API.OperationMethod<
   UpdateThingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(751) as any as S.Schema<UpdateThingGroupRequest>,
-  output: __S(752) as any as S.Schema<UpdateThingGroupResponse>,
+  input: UpdateThingGroupRequest,
+  output: UpdateThingGroupResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -14453,8 +17132,8 @@ export const updateThingGroupsForThing: API.OperationMethod<
   UpdateThingGroupsForThingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(753) as any as S.Schema<UpdateThingGroupsForThingRequest>,
-  output: __S(1) as any as S.Schema<UpdateThingGroupsForThingResponse>,
+  input: UpdateThingGroupsForThingRequest,
+  output: UpdateThingGroupsForThingResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -14483,8 +17162,8 @@ export const updateThingType: API.OperationMethod<
   UpdateThingTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(754) as any as S.Schema<UpdateThingTypeRequest>,
-  output: __S(3) as any as S.Schema<UpdateThingTypeResponse>,
+  input: UpdateThingTypeRequest,
+  output: UpdateThingTypeResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -14517,8 +17196,8 @@ export const updateTopicRuleDestination: API.OperationMethod<
   UpdateTopicRuleDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(755) as any as S.Schema<UpdateTopicRuleDestinationRequest>,
-  output: __S(1) as any as S.Schema<UpdateTopicRuleDestinationResponse>,
+  input: UpdateTopicRuleDestinationRequest,
+  output: UpdateTopicRuleDestinationResponse,
   errors: [
     ConflictingResourceUpdateException,
     InternalException,
@@ -14549,8 +17228,8 @@ export const validateSecurityProfileBehaviors: API.OperationMethod<
   ValidateSecurityProfileBehaviorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(756) as any as S.Schema<ValidateSecurityProfileBehaviorsRequest>,
-  output: __S(759) as any as S.Schema<ValidateSecurityProfileBehaviorsResponse>,
+  input: ValidateSecurityProfileBehaviorsRequest,
+  output: ValidateSecurityProfileBehaviorsResponse,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -14636,7 +17315,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "S3Location" });
     case 6:
-      return S.suspend(() => S.Struct({ s3Location: S.optional(__S(5)) })).annotate({
+      return S.suspend(() => S.Struct({ s3Location: S.optional(S3Location) })).annotate({
         identifier: "Sbom",
       });
     case 7:
@@ -14644,7 +17323,7 @@ function __c0(j: number): any {
         S.Struct({
           packageName: S.String.pipe(T.HttpLabel("packageName")),
           versionName: S.String.pipe(T.HttpLabel("versionName")),
-          sbom: __S(6),
+          sbom: Sbom,
           clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -14668,8 +17347,8 @@ function __c1(j: number): any {
         S.Struct({
           packageName: S.optional(S.String),
           versionName: S.optional(S.String),
-          sbom: S.optional(__S(6)),
-          sbomValidationStatus: S.optional(S.String),
+          sbom: S.optional(Sbom),
+          sbomValidationStatus: S.optional(SbomValidationStatus),
         }),
       ).annotate({
         identifier: "AssociateSbomWithPackageVersionResponse",
@@ -14679,7 +17358,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          targets: __S(9),
+          targets: JobTargets,
           jobId: S.String.pipe(T.HttpLabel("jobId")),
           comment: S.optional(S.String),
           namespaceId: S.optional(S.String).pipe(T.HttpQuery("namespaceId")),
@@ -14760,7 +17439,9 @@ function __c1(j: number): any {
         S.Struct({
           thingName: S.String.pipe(T.HttpLabel("thingName")),
           principal: S.String.pipe(T.HttpHeader("x-amzn-principal")),
-          thingPrincipalType: S.optional(S.String).pipe(T.HttpQuery("thingPrincipalType")),
+          thingPrincipalType: S.optional(ThingPrincipalType).pipe(
+            T.HttpQuery("thingPrincipalType"),
+          ),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/things/{thingName}/principals" }),
@@ -14871,7 +17552,7 @@ function __c2(j: number): any {
           thingName: S.String.pipe(T.HttpLabel("thingName")),
           force: S.optional(S.Boolean).pipe(T.HttpQuery("force")),
           expectedVersion: S.optional(S.Number),
-          statusDetails: S.optional(__S(22)),
+          statusDetails: S.optional(DetailsMap),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/things/{thingName}/jobs/{jobId}/cancel" }),
@@ -14940,11 +17621,11 @@ function __c3(j: number): any {
           caCertificateId: S.optional(S.String),
           cognitoIdentityPoolId: S.optional(S.String),
           clientId: S.optional(S.String),
-          policyVersionIdentifier: S.optional(__S(26)),
+          policyVersionIdentifier: S.optional(PolicyVersionIdentifier),
           account: S.optional(S.String),
           iamRoleArn: S.optional(S.String),
           roleAliasArn: S.optional(S.String),
-          issuerCertificateIdentifier: S.optional(__S(27)),
+          issuerCertificateIdentifier: S.optional(IssuerCertificateIdentifier),
           deviceCertificateArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceIdentifier" });
@@ -14952,7 +17633,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           checkName: S.String,
-          resourceIdentifier: __S(28),
+          resourceIdentifier: ResourceIdentifier,
           expirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           suppressIndefinitely: S.optional(S.Boolean),
           description: S.optional(S.String),
@@ -14981,16 +17662,16 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(Tag);
     case 1:
       return S.suspend(() =>
         S.Struct({
           authorizerName: S.String.pipe(T.HttpLabel("authorizerName")),
           authorizerFunctionArn: S.String,
           tokenKeyName: S.optional(S.String),
-          tokenSigningPublicKeys: S.optional(__S(30)),
-          status: S.optional(S.String),
-          tags: S.optional(__S(32)),
+          tokenSigningPublicKeys: S.optional(PublicKeyMap),
+          status: S.optional(AuthorizerStatus),
+          tags: S.optional(TagList),
           signingDisabled: S.optional(S.Boolean),
           enableCachingForHttp: S.optional(S.Boolean),
         }).pipe(
@@ -15016,8 +17697,8 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           billingGroupName: S.String.pipe(T.HttpLabel("billingGroupName")),
-          billingGroupProperties: S.optional(__S(35)),
-          tags: S.optional(__S(32)),
+          billingGroupProperties: S.optional(BillingGroupProperties),
+          tags: S.optional(TagList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/billing-groups/{billingGroupName}" }),
@@ -15067,15 +17748,15 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(CertificateProviderOperation);
     case 1:
       return S.suspend(() =>
         S.Struct({
           certificateProviderName: S.String.pipe(T.HttpLabel("certificateProviderName")),
           lambdaFunctionArn: S.String,
-          accountDefaultForOperations: __S(40),
+          accountDefaultForOperations: CertificateProviderAccountDefaultForOperations,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(32)),
+          tags: S.optional(TagList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/certificate-providers/{certificateProviderName}" }),
@@ -15103,13 +17784,13 @@ function __c5(j: number): any {
         S.Struct({ content: S.optional(T.Blob), contentType: S.optional(S.String) }),
       ).annotate({ identifier: "CommandPayload" });
     case 4:
-      return S.suspend(() => S.Struct({ outputFormat: S.String })).annotate({
+      return S.suspend(() => S.Struct({ outputFormat: OutputFormat })).annotate({
         identifier: "AwsJsonSubstitutionCommandPreprocessorConfig",
       });
     case 5:
-      return S.suspend(() => S.Struct({ awsJsonSubstitution: S.optional(__S(44)) })).annotate({
-        identifier: "CommandPreprocessor",
-      });
+      return S.suspend(() =>
+        S.Struct({ awsJsonSubstitution: S.optional(AwsJsonSubstitutionCommandPreprocessorConfig) }),
+      ).annotate({ identifier: "CommandPreprocessor" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -15134,10 +17815,10 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           number: S.optional(S.String),
-          numbers: S.optional(__S(9)),
+          numbers: S.optional(CommandParameterValueStringList),
           string: S.optional(S.String),
-          strings: S.optional(__S(9)),
-          numberRange: S.optional(__S(47)),
+          strings: S.optional(CommandParameterValueStringList),
+          numberRange: S.optional(CommandParameterValueNumberRange),
         }),
       ).annotate({
         identifier: "CommandParameterValueComparisonOperand",
@@ -15145,40 +17826,40 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          comparisonOperator: S.String,
-          operand: __S(48),
+          comparisonOperator: CommandParameterValueComparisonOperator,
+          operand: CommandParameterValueComparisonOperand,
         }),
       ).annotate({
         identifier: "CommandParameterValueCondition",
       });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(CommandParameterValueCondition);
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: S.optional(S.String),
-          value: S.optional(__S(46)),
-          defaultValue: S.optional(__S(46)),
-          valueConditions: S.optional(__S(50)),
+          type: S.optional(CommandParameterType),
+          value: S.optional(CommandParameterValue),
+          defaultValue: S.optional(CommandParameterValue),
+          valueConditions: S.optional(CommandParameterValueConditionList),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommandParameter" });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(CommandParameter);
     case 5:
       return S.suspend(() =>
         S.Struct({
           commandId: S.String.pipe(T.HttpLabel("commandId")),
-          namespace: S.optional(S.String),
+          namespace: S.optional(CommandNamespace),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          payload: S.optional(__S(43)),
+          payload: S.optional(CommandPayload),
           payloadTemplate: S.optional(S.String),
-          preprocessor: S.optional(__S(45)),
-          mandatoryParameters: S.optional(__S(52)),
+          preprocessor: S.optional(CommandPreprocessor),
+          mandatoryParameters: S.optional(CommandParameterList),
           roleArn: S.optional(S.String),
-          tags: S.optional(__S(32)),
+          tags: S.optional(TagList),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/commands/{commandId}" }),
@@ -15199,8 +17880,8 @@ function __c6(j: number): any {
         S.Struct({
           metricName: S.String.pipe(T.HttpLabel("metricName")),
           displayName: S.optional(S.String),
-          metricType: S.String,
-          tags: S.optional(__S(32)),
+          metricType: CustomMetricType,
+          tags: S.optional(TagList),
           clientRequestToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -15229,9 +17910,9 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
-          type: S.String,
-          stringValues: __S(9),
-          tags: S.optional(__S(32)),
+          type: DimensionType,
+          stringValues: DimensionStringValues,
+          tags: S.optional(TagList),
           clientRequestToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -15276,16 +17957,16 @@ function __c7(j: number): any {
         S.Struct({
           domainConfigurationName: S.String.pipe(T.HttpLabel("domainConfigurationName")),
           domainName: S.optional(S.String),
-          serverCertificateArns: S.optional(__S(9)),
+          serverCertificateArns: S.optional(ServerCertificateArns),
           validationCertificateArn: S.optional(S.String),
-          authorizerConfig: S.optional(__S(59)),
-          serviceType: S.optional(S.String),
-          tags: S.optional(__S(32)),
-          tlsConfig: S.optional(__S(60)),
-          serverCertificateConfig: S.optional(__S(61)),
-          authenticationType: S.optional(S.String),
-          applicationProtocol: S.optional(S.String),
-          clientCertificateConfig: S.optional(__S(62)),
+          authorizerConfig: S.optional(AuthorizerConfig),
+          serviceType: S.optional(ServiceType),
+          tags: S.optional(TagList),
+          tlsConfig: S.optional(TlsConfig),
+          serverCertificateConfig: S.optional(ServerCertificateConfig),
+          authenticationType: S.optional(AuthenticationType),
+          applicationProtocol: S.optional(ApplicationProtocol),
+          clientCertificateConfig: S.optional(ClientCertificateConfig),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/domainConfigurations/{domainConfigurationName}" }),
@@ -15314,24 +17995,24 @@ function __c8(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ attributes: S.optional(__S(22)), merge: S.optional(S.Boolean) }),
+        S.Struct({ attributes: S.optional(Attributes), merge: S.optional(S.Boolean) }),
       ).annotate({ identifier: "AttributePayload" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           thingGroupDescription: S.optional(S.String),
-          attributePayload: S.optional(__S(65)),
+          attributePayload: S.optional(AttributePayload),
         }),
       ).annotate({ identifier: "ThingGroupProperties" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           thingGroupName: S.String.pipe(T.HttpLabel("thingGroupName")),
-          thingGroupProperties: S.optional(__S(66)),
+          thingGroupProperties: S.optional(ThingGroupProperties),
           indexName: S.optional(S.String),
           queryString: S.String,
           queryVersion: S.optional(S.String),
-          tags: S.optional(__S(32)),
+          tags: S.optional(TagList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/dynamic-thing-groups/{thingGroupName}" }),
@@ -15359,22 +18040,22 @@ function __c8(j: number): any {
         identifier: "CreateDynamicThingGroupResponse",
       });
     case 5:
-      return S.suspend(() => S.Struct({ name: S.String, values: S.optional(__S(9)) })).annotate({
-        identifier: "AggregationType",
-      });
+      return S.suspend(() =>
+        S.Struct({ name: AggregationTypeName, values: S.optional(AggregationTypeValues) }),
+      ).annotate({ identifier: "AggregationType" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           metricName: S.String.pipe(T.HttpLabel("metricName")),
           queryString: S.String,
-          aggregationType: __S(69),
+          aggregationType: AggregationType,
           period: S.Number,
           aggregationField: S.String,
           description: S.optional(S.String),
           queryVersion: S.optional(S.String),
           indexName: S.optional(S.String),
-          unit: S.optional(S.String),
-          tags: S.optional(__S(32)),
+          unit: S.optional(FleetMetricUnit),
+          tags: S.optional(TagList),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/fleet-metric/{metricName}" }),
@@ -15406,14 +18087,14 @@ function __c9(j: number): any {
         S.Struct({
           baseRatePerMinute: S.Number,
           incrementFactor: S.Number,
-          rateIncreaseCriteria: __S(72),
+          rateIncreaseCriteria: RateIncreaseCriteria,
         }),
       ).annotate({ identifier: "ExponentialRolloutRate" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           maximumPerMinute: S.optional(S.Number),
-          exponentialRate: S.optional(__S(73)),
+          exponentialRate: S.optional(ExponentialRolloutRate),
         }),
       ).annotate({
         identifier: "JobExecutionsRolloutConfig",
@@ -15421,16 +18102,16 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          failureType: S.String,
-          action: S.String,
+          failureType: JobExecutionFailureType,
+          action: AbortAction,
           thresholdPercentage: S.Number,
           minNumberOfExecutedThings: S.Number,
         }),
       ).annotate({ identifier: "AbortCriteria" });
     case 4:
-      return S.Array(__S(75));
+      return S.Array(AbortCriteria);
     case 5:
-      return S.suspend(() => S.Struct({ criteriaList: __S(76) })).annotate({
+      return S.suspend(() => S.Struct({ criteriaList: AbortCriteriaList })).annotate({
         identifier: "AbortConfig",
       });
     case 6:
@@ -15439,16 +18120,16 @@ function __c9(j: number): any {
       ).annotate({ identifier: "TimeoutConfig" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ failureType: S.String, numberOfRetries: S.Number }),
+        S.Struct({ failureType: RetryableFailureType, numberOfRetries: S.Number }),
       ).annotate({ identifier: "RetryCriteria" });
   }
 }
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(79));
+      return S.Array(RetryCriteria);
     case 1:
-      return S.suspend(() => S.Struct({ criteriaList: __S(80) })).annotate({
+      return S.suspend(() => S.Struct({ criteriaList: RetryCriteriaList })).annotate({
         identifier: "JobExecutionsRetryConfig",
       });
     case 2:
@@ -15456,36 +18137,36 @@ function __c10(j: number): any {
         S.Struct({ startTime: S.String, durationInMinutes: S.Number }),
       ).annotate({ identifier: "MaintenanceWindow" });
     case 3:
-      return S.Array(__S(82));
+      return S.Array(MaintenanceWindow);
     case 4:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          endBehavior: S.optional(S.String),
-          maintenanceWindows: S.optional(__S(83)),
+          endBehavior: S.optional(JobEndBehavior),
+          maintenanceWindows: S.optional(MaintenanceWindows),
         }),
       ).annotate({ identifier: "SchedulingConfig" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           jobId: S.String.pipe(T.HttpLabel("jobId")),
-          targets: __S(9),
+          targets: JobTargets,
           documentSource: S.optional(S.String),
           document: S.optional(S.String),
           description: S.optional(S.String),
-          presignedUrlConfig: S.optional(__S(71)),
-          targetSelection: S.optional(S.String),
-          jobExecutionsRolloutConfig: S.optional(__S(74)),
-          abortConfig: S.optional(__S(77)),
-          timeoutConfig: S.optional(__S(78)),
-          tags: S.optional(__S(32)),
+          presignedUrlConfig: S.optional(PresignedUrlConfig),
+          targetSelection: S.optional(TargetSelection),
+          jobExecutionsRolloutConfig: S.optional(JobExecutionsRolloutConfig),
+          abortConfig: S.optional(AbortConfig),
+          timeoutConfig: S.optional(TimeoutConfig),
+          tags: S.optional(TagList),
           namespaceId: S.optional(S.String),
           jobTemplateArn: S.optional(S.String),
-          jobExecutionsRetryConfig: S.optional(__S(81)),
-          documentParameters: S.optional(__S(30)),
-          schedulingConfig: S.optional(__S(84)),
-          destinationPackageVersions: S.optional(__S(9)),
+          jobExecutionsRetryConfig: S.optional(JobExecutionsRetryConfig),
+          documentParameters: S.optional(ParameterMap),
+          schedulingConfig: S.optional(SchedulingConfig),
+          destinationPackageVersions: S.optional(DestinationPackageVersions),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/jobs/{jobId}" }), svc, auth, proto, ver, rules),
         ),
@@ -15498,14 +18179,14 @@ function __c10(j: number): any {
           documentSource: S.optional(S.String),
           document: S.optional(S.String),
           description: S.String,
-          presignedUrlConfig: S.optional(__S(71)),
-          jobExecutionsRolloutConfig: S.optional(__S(74)),
-          abortConfig: S.optional(__S(77)),
-          timeoutConfig: S.optional(__S(78)),
-          tags: S.optional(__S(32)),
-          jobExecutionsRetryConfig: S.optional(__S(81)),
-          maintenanceWindows: S.optional(__S(83)),
-          destinationPackageVersions: S.optional(__S(9)),
+          presignedUrlConfig: S.optional(PresignedUrlConfig),
+          jobExecutionsRolloutConfig: S.optional(JobExecutionsRolloutConfig),
+          abortConfig: S.optional(AbortConfig),
+          timeoutConfig: S.optional(TimeoutConfig),
+          tags: S.optional(TagList),
+          jobExecutionsRetryConfig: S.optional(JobExecutionsRetryConfig),
+          maintenanceWindows: S.optional(MaintenanceWindows),
+          destinationPackageVersions: S.optional(DestinationPackageVersions),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/job-templates/{jobTemplateId}" }),
@@ -15552,31 +18233,31 @@ function __c11(j: number): any {
           certificateArn: S.optional(S.String),
           certificateId: S.optional(S.String),
           certificatePem: S.optional(S.String),
-          keyPair: S.optional(__S(89)),
+          keyPair: S.optional(KeyPair),
         }),
       ).annotate({
         identifier: "CreateKeysAndCertificateResponse",
       });
     case 3:
-      return S.suspend(() => S.Struct({ action: S.String })).annotate({
+      return S.suspend(() => S.Struct({ action: DeviceCertificateUpdateAction })).annotate({
         identifier: "UpdateDeviceCertificateParams",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          thingGroupNames: __S(9),
+          thingGroupNames: ThingGroupNames,
           overrideDynamicGroups: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "AddThingsToThingGroupParams",
       });
     case 5:
-      return S.suspend(() => S.Struct({ templateName: S.String })).annotate({
+      return S.suspend(() => S.Struct({ templateName: PolicyTemplateName })).annotate({
         identifier: "ReplaceDefaultPolicyVersionParams",
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ roleArnForLogging: S.String, logLevel: S.String }),
+        S.Struct({ roleArnForLogging: S.String, logLevel: LogLevel }),
       ).annotate({ identifier: "EnableIoTLoggingParams" });
     case 7:
       return S.suspend(() => S.Struct({ topicArn: S.String })).annotate({
@@ -15589,12 +18270,12 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          updateDeviceCertificateParams: S.optional(__S(91)),
-          updateCACertificateParams: S.optional(__S(91)),
-          addThingsToThingGroupParams: S.optional(__S(92)),
-          replaceDefaultPolicyVersionParams: S.optional(__S(93)),
-          enableIoTLoggingParams: S.optional(__S(94)),
-          publishFindingToSnsParams: S.optional(__S(95)),
+          updateDeviceCertificateParams: S.optional(UpdateDeviceCertificateParams),
+          updateCACertificateParams: S.optional(UpdateCACertificateParams),
+          addThingsToThingGroupParams: S.optional(AddThingsToThingGroupParams),
+          replaceDefaultPolicyVersionParams: S.optional(ReplaceDefaultPolicyVersionParams),
+          enableIoTLoggingParams: S.optional(EnableIoTLoggingParams),
+          publishFindingToSnsParams: S.optional(PublishFindingToSnsParams),
         }),
       ).annotate({ identifier: "MitigationActionParams" });
     case 1:
@@ -15602,8 +18283,8 @@ function __c12(j: number): any {
         S.Struct({
           actionName: S.String.pipe(T.HttpLabel("actionName")),
           roleArn: S.String,
-          actionParams: __S(96),
-          tags: S.optional(__S(32)),
+          actionParams: MitigationActionParams,
+          tags: S.optional(TagList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/mitigationactions/actions/{actionName}" }),
@@ -15624,7 +18305,7 @@ function __c12(j: number): any {
         identifier: "CreateMitigationActionResponse",
       });
     case 3:
-      return S.Array(S.String);
+      return S.Array(Protocol);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -15639,7 +18320,7 @@ function __c12(j: number): any {
         S.Struct({
           baseRatePerMinute: S.Number,
           incrementFactor: S.Number,
-          rateIncreaseCriteria: __S(100),
+          rateIncreaseCriteria: AwsJobRateIncreaseCriteria,
         }),
       ).annotate({
         identifier: "AwsJobExponentialRolloutRate",
@@ -15648,7 +18329,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           maximumPerMinute: S.optional(S.Number),
-          exponentialRate: S.optional(__S(101)),
+          exponentialRate: S.optional(AwsJobExponentialRolloutRate),
         }),
       ).annotate({
         identifier: "AwsJobExecutionsRolloutConfig",
@@ -15662,7 +18343,7 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ abortCriteriaList: __S(76) })).annotate({
+      return S.suspend(() => S.Struct({ abortCriteriaList: AwsJobAbortCriteriaList })).annotate({
         identifier: "AwsJobAbortConfig",
       });
     case 1:
@@ -15671,7 +18352,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "Stream" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ stream: S.optional(__S(105)), s3Location: S.optional(__S(5)) }),
+        S.Struct({ stream: S.optional(Stream), s3Location: S.optional(S3Location) }),
       ).annotate({ identifier: "FileLocation" });
     case 3:
       return S.suspend(() =>
@@ -15686,15 +18367,15 @@ function __c13(j: number): any {
         S.Struct({ bucket: S.optional(S.String), prefix: S.optional(S.String) }),
       ).annotate({ identifier: "S3Destination" });
     case 5:
-      return S.suspend(() => S.Struct({ s3Destination: S.optional(__S(108)) })).annotate({
+      return S.suspend(() => S.Struct({ s3Destination: S.optional(S3Destination) })).annotate({
         identifier: "Destination",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          signingProfileParameter: S.optional(__S(107)),
+          signingProfileParameter: S.optional(SigningProfileParameter),
           signingProfileName: S.optional(S.String),
-          destination: S.optional(__S(109)),
+          destination: S.optional(Destination),
         }),
       ).annotate({ identifier: "StartSigningJobParameter" });
     case 7:
@@ -15714,8 +18395,8 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          signature: S.optional(__S(111)),
-          certificateChain: S.optional(__S(112)),
+          signature: S.optional(CodeSigningSignature),
+          certificateChain: S.optional(CodeSigningCertificateChain),
           hashAlgorithm: S.optional(S.String),
           signatureAlgorithm: S.optional(S.String),
         }),
@@ -15724,8 +18405,8 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           awsSignerJobId: S.optional(S.String),
-          startSigningJobParameter: S.optional(__S(110)),
-          customCodeSigning: S.optional(__S(113)),
+          startSigningJobParameter: S.optional(StartSigningJobParameter),
+          customCodeSigning: S.optional(CustomCodeSigning),
         }),
       ).annotate({ identifier: "CodeSigning" });
     case 3:
@@ -15734,29 +18415,29 @@ function __c14(j: number): any {
           fileName: S.optional(S.String),
           fileType: S.optional(S.Number),
           fileVersion: S.optional(S.String),
-          fileLocation: S.optional(__S(106)),
-          codeSigning: S.optional(__S(114)),
-          attributes: S.optional(__S(30)),
+          fileLocation: S.optional(FileLocation),
+          codeSigning: S.optional(CodeSigning),
+          attributes: S.optional(AttributesMap),
         }),
       ).annotate({ identifier: "OTAUpdateFile" });
     case 4:
-      return S.Array(__S(115));
+      return S.Array(OTAUpdateFile);
     case 5:
       return S.suspend(() =>
         S.Struct({
           otaUpdateId: S.String.pipe(T.HttpLabel("otaUpdateId")),
           description: S.optional(S.String),
-          targets: __S(9),
-          protocols: S.optional(__S(99)),
-          targetSelection: S.optional(S.String),
-          awsJobExecutionsRolloutConfig: S.optional(__S(102)),
-          awsJobPresignedUrlConfig: S.optional(__S(103)),
-          awsJobAbortConfig: S.optional(__S(104)),
-          awsJobTimeoutConfig: S.optional(__S(78)),
-          files: __S(116),
+          targets: Targets,
+          protocols: S.optional(Protocols),
+          targetSelection: S.optional(TargetSelection),
+          awsJobExecutionsRolloutConfig: S.optional(AwsJobExecutionsRolloutConfig),
+          awsJobPresignedUrlConfig: S.optional(AwsJobPresignedUrlConfig),
+          awsJobAbortConfig: S.optional(AwsJobAbortConfig),
+          awsJobTimeoutConfig: S.optional(AwsJobTimeoutConfig),
+          files: OTAUpdateFiles,
           roleArn: S.String,
-          additionalParameters: S.optional(__S(30)),
-          tags: S.optional(__S(32)),
+          additionalParameters: S.optional(AdditionalParameterMap),
+          tags: S.optional(TagList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/otaUpdates/{otaUpdateId}" }),
@@ -15775,7 +18456,7 @@ function __c14(j: number): any {
           awsIotJobId: S.optional(S.String),
           otaUpdateArn: S.optional(S.String),
           awsIotJobArn: S.optional(S.String),
-          otaUpdateStatus: S.optional(S.String),
+          otaUpdateStatus: S.optional(OTAUpdateStatus),
         }),
       ).annotate({ identifier: "CreateOTAUpdateResponse" });
     case 7:
@@ -15783,7 +18464,7 @@ function __c14(j: number): any {
         S.Struct({
           packageName: S.String.pipe(T.HttpLabel("packageName")),
           description: S.optional(SensitiveString),
-          tags: S.optional(__S(22)),
+          tags: S.optional(TagMap),
           clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -15814,10 +18495,10 @@ function __c15(j: number): any {
           packageName: S.String.pipe(T.HttpLabel("packageName")),
           versionName: S.String.pipe(T.HttpLabel("versionName")),
           description: S.optional(SensitiveString),
-          attributes: S.optional(__S(30)),
-          artifact: S.optional(__S(6)),
+          attributes: S.optional(ResourceAttributes),
+          artifact: S.optional(PackageVersionArtifact),
           recipe: S.optional(SensitiveString),
-          tags: S.optional(__S(22)),
+          tags: S.optional(TagMap),
           clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -15839,8 +18520,8 @@ function __c15(j: number): any {
           packageName: S.optional(S.String),
           versionName: S.optional(S.String),
           description: S.optional(SensitiveString),
-          attributes: S.optional(__S(30)),
-          status: S.optional(S.String),
+          attributes: S.optional(ResourceAttributes),
+          status: S.optional(PackageVersionStatus),
           errorReason: S.optional(S.String),
         }),
       ).annotate({
@@ -15851,7 +18532,7 @@ function __c15(j: number): any {
         S.Struct({
           policyName: S.String.pipe(T.HttpLabel("policyName")),
           policyDocument: S.String,
-          tags: S.optional(__S(32)),
+          tags: S.optional(TagList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/policies/{policyName}" }),
@@ -15929,7 +18610,7 @@ function __c16(j: number): any {
         S.Struct({
           certificateId: S.optional(S.String),
           certificatePem: S.optional(S.String),
-          keyPair: S.optional(__S(89)),
+          keyPair: S.optional(KeyPair),
           expiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
@@ -15947,9 +18628,9 @@ function __c16(j: number): any {
           templateBody: S.String,
           enabled: S.optional(S.Boolean),
           provisioningRoleArn: S.String,
-          preProvisioningHook: S.optional(__S(129)),
-          tags: S.optional(__S(32)),
-          type: S.optional(S.String),
+          preProvisioningHook: S.optional(ProvisioningHook),
+          tags: S.optional(TagList),
+          type: S.optional(TemplateType),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/provisioning-templates" }),
@@ -16009,7 +18690,7 @@ function __c16(j: number): any {
           roleAlias: S.String.pipe(T.HttpLabel("roleAlias")),
           roleArn: S.String,
           credentialDurationSeconds: S.optional(S.Number),
-          tags: S.optional(__S(32)),
+          tags: S.optional(TagList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/role-aliases/{roleAlias}" }),
@@ -16032,12 +18713,12 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          frequency: S.String,
+          frequency: AuditFrequency,
           dayOfMonth: S.optional(S.String),
-          dayOfWeek: S.optional(S.String),
-          targetCheckNames: __S(9),
+          dayOfWeek: S.optional(DayOfWeek),
+          targetCheckNames: TargetAuditCheckNames,
           scheduledAuditName: S.String.pipe(T.HttpLabel("scheduledAuditName")),
-          tags: S.optional(__S(32)),
+          tags: S.optional(TagList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/audit/scheduledaudits/{scheduledAuditName}" }),
@@ -16057,7 +18738,7 @@ function __c17(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ dimensionName: S.String, operator: S.optional(S.String) }),
+        S.Struct({ dimensionName: S.String, operator: S.optional(DimensionValueOperator) }),
       ).annotate({ identifier: "MetricDimension" });
     case 3:
       return S.Array(S.Number);
@@ -16065,11 +18746,11 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          cidrs: S.optional(__S(9)),
-          ports: S.optional(__S(139)),
+          cidrs: S.optional(Cidrs),
+          ports: S.optional(Ports),
           number: S.optional(S.Number),
-          numbers: S.optional(__S(139)),
-          strings: S.optional(__S(9)),
+          numbers: S.optional(NumberList),
+          strings: S.optional(StringList),
         }),
       ).annotate({ identifier: "MetricValue" });
     case 5:
@@ -16077,19 +18758,19 @@ function __c17(j: number): any {
         identifier: "StatisticalThreshold",
       });
     case 6:
-      return S.suspend(() => S.Struct({ confidenceLevel: S.String })).annotate({
+      return S.suspend(() => S.Struct({ confidenceLevel: ConfidenceLevel })).annotate({
         identifier: "MachineLearningDetectionConfig",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          comparisonOperator: S.optional(S.String),
-          value: S.optional(__S(140)),
+          comparisonOperator: S.optional(ComparisonOperator),
+          value: S.optional(MetricValue),
           durationSeconds: S.optional(S.Number),
           consecutiveDatapointsToAlarm: S.optional(S.Number),
           consecutiveDatapointsToClear: S.optional(S.Number),
-          statisticalThreshold: S.optional(__S(141)),
-          mlDetectionConfig: S.optional(__S(142)),
+          statisticalThreshold: S.optional(StatisticalThreshold),
+          mlDetectionConfig: S.optional(MachineLearningDetectionConfig),
         }),
       ).annotate({ identifier: "BehaviorCriteria" });
   }
@@ -16101,30 +18782,30 @@ function __c18(j: number): any {
         S.Struct({
           name: S.String,
           metric: S.optional(S.String),
-          metricDimension: S.optional(__S(138)),
-          criteria: S.optional(__S(143)),
+          metricDimension: S.optional(MetricDimension),
+          criteria: S.optional(BehaviorCriteria),
           suppressAlerts: S.optional(S.Boolean),
           exportMetric: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Behavior" });
     case 1:
-      return S.Array(__S(144));
+      return S.Array(Behavior);
     case 2:
       return S.suspend(() => S.Struct({ alertTargetArn: S.String, roleArn: S.String })).annotate({
         identifier: "AlertTarget",
       });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(146).pipe(S.optional));
+      return S.Record(AlertTargetType, /*@__PURE__*/ AlertTarget.pipe(S.optional));
     case 4:
       return S.suspend(() =>
         S.Struct({
           metric: S.String,
-          metricDimension: S.optional(__S(138)),
+          metricDimension: S.optional(MetricDimension),
           exportMetric: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MetricToRetain" });
     case 5:
-      return S.Array(__S(148));
+      return S.Array(MetricToRetain);
     case 6:
       return S.suspend(() => S.Struct({ mqttTopic: S.String, roleArn: S.String })).annotate({
         identifier: "MetricsExportConfig",
@@ -16134,12 +18815,12 @@ function __c18(j: number): any {
         S.Struct({
           securityProfileName: S.String.pipe(T.HttpLabel("securityProfileName")),
           securityProfileDescription: S.optional(S.String),
-          behaviors: S.optional(__S(145)),
-          alertTargets: S.optional(__S(147)),
-          additionalMetricsToRetain: S.optional(__S(9)),
-          additionalMetricsToRetainV2: S.optional(__S(149)),
-          tags: S.optional(__S(32)),
-          metricsExportConfig: S.optional(__S(150)),
+          behaviors: S.optional(Behaviors),
+          alertTargets: S.optional(AlertTargets),
+          additionalMetricsToRetain: S.optional(AdditionalMetricsToRetainList),
+          additionalMetricsToRetainV2: S.optional(AdditionalMetricsToRetainV2List),
+          tags: S.optional(TagList),
+          metricsExportConfig: S.optional(MetricsExportConfig),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/security-profiles/{securityProfileName}" }),
@@ -16168,18 +18849,18 @@ function __c19(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ fileId: S.optional(S.Number), s3Location: S.optional(__S(5)) }),
+        S.Struct({ fileId: S.optional(S.Number), s3Location: S.optional(S3Location) }),
       ).annotate({ identifier: "StreamFile" });
     case 2:
-      return S.Array(__S(153));
+      return S.Array(StreamFile);
     case 3:
       return S.suspend(() =>
         S.Struct({
           streamId: S.String.pipe(T.HttpLabel("streamId")),
           description: S.optional(S.String),
-          files: __S(154),
+          files: StreamFiles,
           roleArn: S.String,
-          tags: S.optional(__S(32)),
+          tags: S.optional(TagList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/streams/{streamId}" }),
@@ -16205,7 +18886,7 @@ function __c19(j: number): any {
         S.Struct({
           thingName: S.String.pipe(T.HttpLabel("thingName")),
           thingTypeName: S.optional(S.String),
-          attributePayload: S.optional(__S(65)),
+          attributePayload: S.optional(AttributePayload),
           billingGroupName: S.optional(S.String),
         }).pipe(
           T.all(
@@ -16231,8 +18912,8 @@ function __c19(j: number): any {
         S.Struct({
           thingGroupName: S.String.pipe(T.HttpLabel("thingGroupName")),
           parentGroupName: S.optional(S.String),
-          thingGroupProperties: S.optional(__S(66)),
-          tags: S.optional(__S(32)),
+          thingGroupProperties: S.optional(ThingGroupProperties),
+          tags: S.optional(TagList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/thing-groups/{thingGroupName}" }),
@@ -16265,25 +18946,25 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "PropagatingAttribute" });
     case 2:
-      return S.Array(__S(161));
+      return S.Array(PropagatingAttribute);
     case 3:
-      return S.suspend(() => S.Struct({ propagatingAttributes: S.optional(__S(162)) })).annotate({
-        identifier: "Mqtt5Configuration",
-      });
+      return S.suspend(() =>
+        S.Struct({ propagatingAttributes: S.optional(PropagatingAttributeList) }),
+      ).annotate({ identifier: "Mqtt5Configuration" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           thingTypeDescription: S.optional(S.String),
-          searchableAttributes: S.optional(__S(9)),
-          mqtt5Configuration: S.optional(__S(163)),
+          searchableAttributes: S.optional(SearchableAttributes),
+          mqtt5Configuration: S.optional(Mqtt5Configuration),
         }),
       ).annotate({ identifier: "ThingTypeProperties" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           thingTypeName: S.String.pipe(T.HttpLabel("thingTypeName")),
-          thingTypeProperties: S.optional(__S(164)),
-          tags: S.optional(__S(32)),
+          thingTypeProperties: S.optional(ThingTypeProperties),
+          tags: S.optional(TagList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/thing-types/{thingTypeName}" }),
@@ -16311,10 +18992,10 @@ function __c20(j: number): any {
           operation: S.optional(S.String),
           hashKeyField: S.String,
           hashKeyValue: S.String,
-          hashKeyType: S.optional(S.String),
+          hashKeyType: S.optional(DynamoKeyType),
           rangeKeyField: S.optional(S.String),
           rangeKeyValue: S.optional(S.String),
-          rangeKeyType: S.optional(S.String),
+          rangeKeyType: S.optional(DynamoKeyType),
           payloadField: S.optional(S.String),
         }),
       ).annotate({ identifier: "DynamoDBAction" });
@@ -16327,7 +19008,7 @@ function __c21(j: number): any {
         identifier: "PutItemInput",
       });
     case 1:
-      return S.suspend(() => S.Struct({ roleArn: S.String, putItem: __S(168) })).annotate({
+      return S.suspend(() => S.Struct({ roleArn: S.String, putItem: PutItemInput })).annotate({
         identifier: "DynamoDBv2Action",
       });
     case 2:
@@ -16339,7 +19020,7 @@ function __c21(j: number): any {
         S.Struct({
           targetArn: S.String,
           roleArn: S.String,
-          messageFormat: S.optional(S.String),
+          messageFormat: S.optional(MessageFormat),
         }),
       ).annotate({ identifier: "SnsAction" });
     case 4:
@@ -16355,7 +19036,7 @@ function __c21(j: number): any {
         identifier: "UserProperty",
       });
     case 7:
-      return S.Array(__S(174));
+      return S.Array(UserProperty);
   }
 }
 function __c22(j: number): any {
@@ -16368,7 +19049,7 @@ function __c22(j: number): any {
           responseTopic: S.optional(S.String),
           correlationData: S.optional(S.String),
           messageExpiry: S.optional(S.String),
-          userProperties: S.optional(__S(175)),
+          userProperties: S.optional(UserProperties),
         }),
       ).annotate({ identifier: "MqttHeaders" });
     case 1:
@@ -16377,7 +19058,7 @@ function __c22(j: number): any {
           roleArn: S.String,
           topic: S.String,
           qos: S.optional(S.Number),
-          headers: S.optional(__S(176)),
+          headers: S.optional(MqttHeaders),
         }),
       ).annotate({ identifier: "RepublishAction" });
     case 2:
@@ -16386,7 +19067,7 @@ function __c22(j: number): any {
           roleArn: S.String,
           bucketName: S.String,
           key: S.String,
-          cannedAcl: S.optional(S.String),
+          cannedAcl: S.optional(CannedAccessControlList),
         }),
       ).annotate({ identifier: "S3Action" });
     case 3:
@@ -16472,13 +19153,13 @@ function __c23(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(187),
-          timestamp: __S(188),
+          value: AssetPropertyVariant,
+          timestamp: AssetPropertyTimestamp,
           quality: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssetPropertyValue" });
     case 6:
-      return S.Array(__S(189));
+      return S.Array(AssetPropertyValue);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -16486,7 +19167,7 @@ function __c23(j: number): any {
           assetId: S.optional(S.String),
           propertyId: S.optional(S.String),
           propertyAlias: S.optional(S.String),
-          propertyValues: __S(190),
+          propertyValues: AssetPropertyValueList,
         }),
       ).annotate({
         identifier: "PutAssetPropertyValueEntry",
@@ -16496,11 +19177,11 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(191));
+      return S.Array(PutAssetPropertyValueEntry);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          putAssetPropertyValueEntries: __S(192),
+          putAssetPropertyValueEntries: PutAssetPropertyValueEntryList,
           roleArn: S.String,
         }),
       ).annotate({ identifier: "IotSiteWiseAction" });
@@ -16517,7 +19198,7 @@ function __c24(j: number): any {
         identifier: "TimestreamDimension",
       });
     case 4:
-      return S.Array(__S(195));
+      return S.Array(TimestreamDimension);
     case 5:
       return S.suspend(() => S.Struct({ value: S.String, unit: S.String })).annotate({
         identifier: "TimestreamTimestamp",
@@ -16528,8 +19209,8 @@ function __c24(j: number): any {
           roleArn: S.String,
           databaseName: S.String,
           tableName: S.String,
-          dimensions: __S(196),
-          timestamp: S.optional(__S(197)),
+          dimensions: TimestreamDimensionList,
+          timestamp: S.optional(TimestreamTimestamp),
         }),
       ).annotate({ identifier: "TimestreamAction" });
     case 7:
@@ -16541,7 +19222,7 @@ function __c24(j: number): any {
 function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ sigv4: S.optional(__S(199)) })).annotate({
+      return S.suspend(() => S.Struct({ sigv4: S.optional(SigV4Authorization) })).annotate({
         identifier: "HttpAuthorization",
       });
     case 1:
@@ -16558,10 +19239,10 @@ function __c25(j: number): any {
         S.Struct({
           url: S.String,
           confirmationUrl: S.optional(S.String),
-          headers: S.optional(__S(175)),
-          auth: S.optional(__S(200)),
+          headers: S.optional(HeaderList),
+          auth: S.optional(HttpAuthorization),
           enableBatching: S.optional(S.Boolean),
-          batchConfig: S.optional(__S(201)),
+          batchConfig: S.optional(BatchConfig),
         }),
       ).annotate({ identifier: "HttpAction" });
     case 3:
@@ -16571,8 +19252,8 @@ function __c25(j: number): any {
           topic: S.String,
           key: S.optional(S.String),
           partition: S.optional(S.String),
-          clientProperties: __S(30),
-          headers: S.optional(__S(175)),
+          clientProperties: ClientProperties,
+          headers: S.optional(KafkaHeaders),
         }),
       ).annotate({ identifier: "KafkaAction" });
     case 4:
@@ -16585,7 +19266,7 @@ function __c25(j: number): any {
           roleArn: S.String,
           trackerName: S.String,
           deviceId: S.String,
-          timestamp: S.optional(__S(204)),
+          timestamp: S.optional(LocationTimestamp),
           latitude: S.String,
           longitude: S.String,
         }),
@@ -16607,9 +19288,9 @@ function __c25(j: number): any {
           databaseName: S.String,
           tableName: S.String,
           organization: S.optional(S.String),
-          tags: S.optional(__S(30)),
-          timestampUnit: S.optional(S.String),
-          batchConfig: S.optional(__S(206)),
+          tags: S.optional(InfluxDBTagMap),
+          timestampUnit: S.optional(InfluxDBTimestampUnit),
+          batchConfig: S.optional(InfluxDBBatchConfig),
         }),
       ).annotate({ identifier: "InfluxDBAction" });
   }
@@ -16619,50 +19300,50 @@ function __c26(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dynamoDB: S.optional(__S(167)),
-          dynamoDBv2: S.optional(__S(169)),
-          lambda: S.optional(__S(170)),
-          sns: S.optional(__S(171)),
-          sqs: S.optional(__S(172)),
-          kinesis: S.optional(__S(173)),
-          republish: S.optional(__S(177)),
-          s3: S.optional(__S(178)),
-          firehose: S.optional(__S(179)),
-          cloudwatchMetric: S.optional(__S(180)),
-          cloudwatchAlarm: S.optional(__S(181)),
-          cloudwatchLogs: S.optional(__S(182)),
-          elasticsearch: S.optional(__S(183)),
-          salesforce: S.optional(__S(184)),
-          iotAnalytics: S.optional(__S(185)),
-          iotEvents: S.optional(__S(186)),
-          iotSiteWise: S.optional(__S(193)),
-          stepFunctions: S.optional(__S(194)),
-          timestream: S.optional(__S(198)),
-          http: S.optional(__S(202)),
-          kafka: S.optional(__S(203)),
-          openSearch: S.optional(__S(183)),
-          location: S.optional(__S(205)),
-          influxDB: S.optional(__S(207)),
+          dynamoDB: S.optional(DynamoDBAction),
+          dynamoDBv2: S.optional(DynamoDBv2Action),
+          lambda: S.optional(LambdaAction),
+          sns: S.optional(SnsAction),
+          sqs: S.optional(SqsAction),
+          kinesis: S.optional(KinesisAction),
+          republish: S.optional(RepublishAction),
+          s3: S.optional(S3Action),
+          firehose: S.optional(FirehoseAction),
+          cloudwatchMetric: S.optional(CloudwatchMetricAction),
+          cloudwatchAlarm: S.optional(CloudwatchAlarmAction),
+          cloudwatchLogs: S.optional(CloudwatchLogsAction),
+          elasticsearch: S.optional(ElasticsearchAction),
+          salesforce: S.optional(SalesforceAction),
+          iotAnalytics: S.optional(IotAnalyticsAction),
+          iotEvents: S.optional(IotEventsAction),
+          iotSiteWise: S.optional(IotSiteWiseAction),
+          stepFunctions: S.optional(StepFunctionsAction),
+          timestream: S.optional(TimestreamAction),
+          http: S.optional(HttpAction),
+          kafka: S.optional(KafkaAction),
+          openSearch: S.optional(OpenSearchAction),
+          location: S.optional(LocationAction),
+          influxDB: S.optional(InfluxDBAction),
         }),
       ).annotate({ identifier: "Action" });
     case 1:
-      return S.Array(__S(208));
+      return S.Array(Action);
     case 2:
       return S.suspend(() =>
         S.Struct({
           sql: S.String,
           description: S.optional(S.String),
-          actions: __S(209),
+          actions: ActionList,
           ruleDisabled: S.optional(S.Boolean),
           awsIotSqlVersion: S.optional(S.String),
-          errorAction: S.optional(__S(208)),
+          errorAction: S.optional(Action),
         }),
       ).annotate({ identifier: "TopicRulePayload" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           ruleName: S.String.pipe(T.HttpLabel("ruleName")),
-          topicRulePayload: __S(210).pipe(T.HttpPayload()).annotate({
+          topicRulePayload: TopicRulePayload.pipe(T.HttpPayload()).annotate({
             identifier: "TopicRulePayload",
           }),
           tags: S.optional(S.String).pipe(T.HttpHeader("x-amz-tagging")),
@@ -16677,8 +19358,8 @@ function __c26(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          subnetIds: __S(9),
-          securityGroups: S.optional(__S(9)),
+          subnetIds: SubnetIdList,
+          securityGroups: S.optional(SecurityGroupList),
           vpcId: S.String,
           roleArn: S.String,
         }),
@@ -16689,9 +19370,9 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endpoint: S.String,
-          influxDBVersion: S.String,
+          influxDBVersion: InfluxDBVersion,
           secretId: S.String,
-          secretType: S.optional(S.String),
+          secretType: S.optional(InfluxDBSecretType),
           secretKey: S.optional(S.String),
         }),
       ).annotate({
@@ -16700,9 +19381,9 @@ function __c26(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          httpUrlConfiguration: S.optional(__S(212)),
-          vpcConfiguration: S.optional(__S(213)),
-          influxDBConfiguration: S.optional(__S(214)),
+          httpUrlConfiguration: S.optional(HttpUrlDestinationConfiguration),
+          vpcConfiguration: S.optional(VpcDestinationConfiguration),
+          influxDBConfiguration: S.optional(InfluxDBDestinationConfiguration),
         }),
       ).annotate({
         identifier: "TopicRuleDestinationConfiguration",
@@ -16713,7 +19394,7 @@ function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ destinationConfiguration: __S(215) }).pipe(
+        S.Struct({ destinationConfiguration: TopicRuleDestinationConfiguration }).pipe(
           T.all(T.Http({ method: "POST", uri: "/destinations" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -16726,8 +19407,8 @@ function __c27(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          subnetIds: S.optional(__S(9)),
-          securityGroups: S.optional(__S(9)),
+          subnetIds: S.optional(SubnetIdList),
+          securityGroups: S.optional(SecurityGroupList),
           vpcId: S.optional(S.String),
           roleArn: S.optional(S.String),
         }),
@@ -16736,9 +19417,9 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endpoint: S.optional(S.String),
-          influxDBVersion: S.optional(S.String),
+          influxDBVersion: S.optional(InfluxDBVersion),
           secretId: S.optional(S.String),
-          secretType: S.optional(S.String),
+          secretType: S.optional(InfluxDBSecretType),
           secretKey: S.optional(S.String),
         }),
       ).annotate({
@@ -16748,17 +19429,19 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(TopicRuleDestinationStatus),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           statusReason: S.optional(S.String),
-          httpUrlProperties: S.optional(__S(217)),
-          vpcProperties: S.optional(__S(218)),
-          influxDBProperties: S.optional(__S(219)),
+          httpUrlProperties: S.optional(HttpUrlDestinationProperties),
+          vpcProperties: S.optional(VpcDestinationProperties),
+          influxDBProperties: S.optional(InfluxDBDestinationProperties),
         }),
       ).annotate({ identifier: "TopicRuleDestination" });
     case 5:
-      return S.suspend(() => S.Struct({ topicRuleDestination: S.optional(__S(220)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ topicRuleDestination: S.optional(TopicRuleDestination) }),
+      ).annotate({
         identifier: "CreateTopicRuleDestinationResponse",
       });
     case 6:
@@ -16780,7 +19463,7 @@ function __c27(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ checkName: S.String, resourceIdentifier: __S(28) }).pipe(
+        S.Struct({ checkName: S.String, resourceIdentifier: ResourceIdentifier }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/audit/suppressions/delete" }),
             svc,
@@ -17341,7 +20024,7 @@ function __c32(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          targetType: S.String.pipe(T.HttpQuery("targetType")),
+          targetType: LogTargetType.pipe(T.HttpQuery("targetType")),
           targetName: S.String.pipe(T.HttpQuery("targetName")),
         }).pipe(
           T.all(T.Http({ method: "DELETE", uri: "/v2LoggingLevel" }), svc, auth, proto, ver, rules),
@@ -17391,28 +20074,31 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "AuditNotificationTarget" });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(262).pipe(S.optional));
+      return S.Record(
+        AuditNotificationType,
+        /*@__PURE__*/ AuditNotificationTarget.pipe(S.optional),
+      );
   }
 }
 function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.Record(ConfigName, /*@__PURE__*/ S.String.pipe(S.optional));
     case 1:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          configuration: S.optional(__S(264)),
+          configuration: S.optional(CheckCustomConfiguration),
         }),
       ).annotate({ identifier: "AuditCheckConfiguration" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(265).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ AuditCheckConfiguration.pipe(S.optional));
     case 3:
       return S.suspend(() =>
         S.Struct({
           roleArn: S.optional(S.String),
-          auditNotificationTargetConfigurations: S.optional(__S(263)),
-          auditCheckConfigurations: S.optional(__S(266)),
+          auditNotificationTargetConfigurations: S.optional(AuditNotificationTargetConfigurations),
+          auditCheckConfigurations: S.optional(AuditCheckConfigurations),
         }),
       ).annotate({
         identifier: "DescribeAccountAuditConfigurationResponse",
@@ -17435,13 +20121,13 @@ function __c33(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          resourceType: S.optional(S.String),
-          resourceIdentifier: S.optional(__S(28)),
-          additionalInfo: S.optional(__S(22)),
+          resourceType: S.optional(ResourceType),
+          resourceIdentifier: S.optional(ResourceIdentifier),
+          additionalInfo: S.optional(StringMap),
         }),
       ).annotate({ identifier: "NonCompliantResource" });
     case 6:
-      return S.Array(__S(269));
+      return S.Array(RelatedResource);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -17450,9 +20136,9 @@ function __c33(j: number): any {
           checkName: S.optional(S.String),
           taskStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           findingTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          severity: S.optional(S.String),
-          nonCompliantResource: S.optional(__S(269)),
-          relatedResources: S.optional(__S(270)),
+          severity: S.optional(AuditFindingSeverity),
+          nonCompliantResource: S.optional(NonCompliantResource),
+          relatedResources: S.optional(RelatedResources),
           reasonForNonCompliance: S.optional(S.String),
           reasonForNonComplianceCode: S.optional(S.String),
           isSuppressed: S.optional(S.Boolean),
@@ -17463,7 +20149,7 @@ function __c33(j: number): any {
 function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ finding: S.optional(__S(271)) })).annotate({
+      return S.suspend(() => S.Struct({ finding: S.optional(AuditFinding) })).annotate({
         identifier: "DescribeAuditFindingResponse",
       });
     case 1:
@@ -17494,15 +20180,15 @@ function __c34(j: number): any {
         identifier: "TaskStatisticsForAuditCheck",
       });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(274).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ TaskStatisticsForAuditCheck.pipe(S.optional));
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(9).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ ReasonForNonComplianceCodes.pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({
           auditTaskId: S.optional(S.String),
-          findingIds: S.optional(__S(9)),
-          auditCheckToReasonCodeFilter: S.optional(__S(276)),
+          findingIds: S.optional(FindingIds),
+          auditCheckToReasonCodeFilter: S.optional(AuditCheckToReasonCodeFilter),
         }),
       ).annotate({
         identifier: "AuditMitigationActionsTaskTarget",
@@ -17513,11 +20199,11 @@ function __c34(j: number): any {
           name: S.optional(S.String),
           id: S.optional(S.String),
           roleArn: S.optional(S.String),
-          actionParams: S.optional(__S(96)),
+          actionParams: S.optional(MitigationActionParams),
         }),
       ).annotate({ identifier: "MitigationAction" });
     case 7:
-      return S.Array(__S(278));
+      return S.Array(MitigationAction);
   }
 }
 function __c35(j: number): any {
@@ -17525,20 +20211,20 @@ function __c35(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          taskStatus: S.optional(S.String),
+          taskStatus: S.optional(AuditMitigationActionsTaskStatus),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          taskStatistics: S.optional(__S(275)),
-          target: S.optional(__S(277)),
-          auditCheckToActionsMapping: S.optional(__S(276)),
-          actionsDefinition: S.optional(__S(279)),
+          taskStatistics: S.optional(AuditMitigationActionsTaskStatistics),
+          target: S.optional(AuditMitigationActionsTaskTarget),
+          auditCheckToActionsMapping: S.optional(AuditCheckToActionsMapping),
+          actionsDefinition: S.optional(MitigationActionList),
         }),
       ).annotate({
         identifier: "DescribeAuditMitigationActionsTaskResponse",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ checkName: S.String, resourceIdentifier: __S(28) }).pipe(
+        S.Struct({ checkName: S.String, resourceIdentifier: ResourceIdentifier }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/audit/suppressions/describe" }),
             svc,
@@ -17555,7 +20241,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           checkName: S.optional(S.String),
-          resourceIdentifier: S.optional(__S(28)),
+          resourceIdentifier: S.optional(ResourceIdentifier),
           expirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           suppressIndefinitely: S.optional(S.Boolean),
           description: S.optional(S.String),
@@ -17591,7 +20277,7 @@ function __c35(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          checkRunStatus: S.optional(S.String),
+          checkRunStatus: S.optional(AuditCheckRunStatus),
           checkCompliant: S.optional(S.Boolean),
           totalResourcesCount: S.optional(S.Number),
           nonCompliantResourcesCount: S.optional(S.Number),
@@ -17601,16 +20287,16 @@ function __c35(j: number): any {
         }),
       ).annotate({ identifier: "AuditCheckDetails" });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(285).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ AuditCheckDetails.pipe(S.optional));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          taskStatus: S.optional(S.String),
-          taskType: S.optional(S.String),
+          taskStatus: S.optional(AuditTaskStatus),
+          taskType: S.optional(AuditTaskType),
           taskStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          taskStatistics: S.optional(__S(284)),
+          taskStatistics: S.optional(TaskStatistics),
           scheduledAuditName: S.optional(S.String),
-          auditDetails: S.optional(__S(286)),
+          auditDetails: S.optional(AuditDetails),
         }),
       ).annotate({
         identifier: "DescribeAuditTaskResponse",
@@ -17641,8 +20327,8 @@ function __c36(j: number): any {
           authorizerArn: S.optional(S.String),
           authorizerFunctionArn: S.optional(S.String),
           tokenKeyName: S.optional(S.String),
-          tokenSigningPublicKeys: S.optional(__S(30)),
-          status: S.optional(S.String),
+          tokenSigningPublicKeys: S.optional(PublicKeyMap),
+          status: S.optional(AuthorizerStatus),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           signingDisabled: S.optional(S.Boolean),
@@ -17650,7 +20336,9 @@ function __c36(j: number): any {
         }),
       ).annotate({ identifier: "AuthorizerDescription" });
     case 2:
-      return S.suspend(() => S.Struct({ authorizerDescription: S.optional(__S(289)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ authorizerDescription: S.optional(AuthorizerDescription) }),
+      ).annotate({
         identifier: "DescribeAuthorizerResponse",
       });
     case 3:
@@ -17679,8 +20367,8 @@ function __c36(j: number): any {
           billingGroupId: S.optional(S.String),
           billingGroupArn: S.optional(S.String),
           version: S.optional(S.Number),
-          billingGroupProperties: S.optional(__S(35)),
-          billingGroupMetadata: S.optional(__S(292)),
+          billingGroupProperties: S.optional(BillingGroupProperties),
+          billingGroupMetadata: S.optional(BillingGroupMetadata),
         }),
       ).annotate({
         identifier: "DescribeBillingGroupResponse",
@@ -17716,16 +20404,16 @@ function __c37(j: number): any {
         S.Struct({
           certificateArn: S.optional(S.String),
           certificateId: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(CACertificateStatus),
           certificatePem: S.optional(S.String),
           ownedBy: S.optional(S.String),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          autoRegistrationStatus: S.optional(S.String),
+          autoRegistrationStatus: S.optional(AutoRegistrationStatus),
           lastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           customerVersion: S.optional(S.Number),
           generationId: S.optional(S.String),
-          validity: S.optional(__S(295)),
-          certificateMode: S.optional(S.String),
+          validity: S.optional(CertificateValidity),
+          certificateMode: S.optional(CertificateMode),
         }),
       ).annotate({ identifier: "CACertificateDescription" });
     case 1:
@@ -17739,8 +20427,8 @@ function __c37(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          certificateDescription: S.optional(__S(296)),
-          registrationConfig: S.optional(__S(297)),
+          certificateDescription: S.optional(CACertificateDescription),
+          registrationConfig: S.optional(RegistrationConfig),
         }),
       ).annotate({
         identifier: "DescribeCACertificateResponse",
@@ -17776,21 +20464,23 @@ function __c37(j: number): any {
           certificateArn: S.optional(S.String),
           certificateId: S.optional(S.String),
           caCertificateId: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(CertificateStatus),
           certificatePem: S.optional(S.String),
           ownedBy: S.optional(S.String),
           previousOwnedBy: S.optional(S.String),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           customerVersion: S.optional(S.Number),
-          transferData: S.optional(__S(300)),
+          transferData: S.optional(TransferData),
           generationId: S.optional(S.String),
-          validity: S.optional(__S(295)),
-          certificateMode: S.optional(S.String),
+          validity: S.optional(CertificateValidity),
+          certificateMode: S.optional(CertificateMode),
         }),
       ).annotate({ identifier: "CertificateDescription" });
     case 6:
-      return S.suspend(() => S.Struct({ certificateDescription: S.optional(__S(301)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ certificateDescription: S.optional(CertificateDescription) }),
+      ).annotate({
         identifier: "DescribeCertificateResponse",
       });
     case 7:
@@ -17820,7 +20510,7 @@ function __c38(j: number): any {
           certificateProviderName: S.optional(S.String),
           certificateProviderArn: S.optional(S.String),
           lambdaFunctionArn: S.optional(S.String),
-          accountDefaultForOperations: S.optional(__S(40)),
+          accountDefaultForOperations: S.optional(CertificateProviderAccountDefaultForOperations),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -17847,7 +20537,7 @@ function __c38(j: number): any {
         S.Struct({
           metricName: S.optional(S.String),
           metricArn: S.optional(S.String),
-          metricType: S.optional(S.String),
+          metricType: S.optional(CustomMetricType),
           displayName: S.optional(S.String),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -17888,7 +20578,7 @@ function __c38(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          violationIds: S.optional(__S(9)),
+          violationIds: S.optional(TargetViolationIdsForDetectMitigationActions),
           securityProfileName: S.optional(S.String),
           behaviorName: S.optional(S.String),
         }),
@@ -17922,21 +20612,23 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
-          taskStatus: S.optional(S.String),
+          taskStatus: S.optional(DetectMitigationActionsTaskStatus),
           taskStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           taskEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          target: S.optional(__S(309)),
-          violationEventOccurrenceRange: S.optional(__S(310)),
+          target: S.optional(DetectMitigationActionsTaskTarget),
+          violationEventOccurrenceRange: S.optional(ViolationEventOccurrenceRange),
           onlyActiveViolationsIncluded: S.optional(S.Boolean),
           suppressedAlertsIncluded: S.optional(S.Boolean),
-          actionsDefinition: S.optional(__S(279)),
-          taskStatistics: S.optional(__S(311)),
+          actionsDefinition: S.optional(MitigationActionList),
+          taskStatistics: S.optional(DetectMitigationActionsTaskStatistics),
         }),
       ).annotate({
         identifier: "DetectMitigationActionsTaskSummary",
       });
     case 1:
-      return S.suspend(() => S.Struct({ taskSummary: S.optional(__S(312)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ taskSummary: S.optional(DetectMitigationActionsTaskSummary) }),
+      ).annotate({
         identifier: "DescribeDetectMitigationActionsTaskResponse",
       });
     case 2:
@@ -17950,8 +20642,8 @@ function __c39(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           arn: S.optional(S.String),
-          type: S.optional(S.String),
-          stringValues: S.optional(__S(9)),
+          type: S.optional(DimensionType),
+          stringValues: S.optional(DimensionStringValues),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -17979,29 +20671,29 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serverCertificateArn: S.optional(S.String),
-          serverCertificateStatus: S.optional(S.String),
+          serverCertificateStatus: S.optional(ServerCertificateStatus),
           serverCertificateStatusDetail: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerCertificateSummary" });
     case 6:
-      return S.Array(__S(317));
+      return S.Array(ServerCertificateSummary);
     case 7:
       return S.suspend(() =>
         S.Struct({
           domainConfigurationName: S.optional(S.String),
           domainConfigurationArn: S.optional(S.String),
           domainName: S.optional(S.String),
-          serverCertificates: S.optional(__S(318)),
-          authorizerConfig: S.optional(__S(59)),
-          domainConfigurationStatus: S.optional(S.String),
-          serviceType: S.optional(S.String),
-          domainType: S.optional(S.String),
+          serverCertificates: S.optional(ServerCertificates),
+          authorizerConfig: S.optional(AuthorizerConfig),
+          domainConfigurationStatus: S.optional(DomainConfigurationStatus),
+          serviceType: S.optional(ServiceType),
+          domainType: S.optional(DomainType),
           lastStatusChangeDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tlsConfig: S.optional(__S(60)),
-          serverCertificateConfig: S.optional(__S(61)),
-          authenticationType: S.optional(S.String),
-          applicationProtocol: S.optional(S.String),
-          clientCertificateConfig: S.optional(__S(62)),
+          tlsConfig: S.optional(TlsConfig),
+          serverCertificateConfig: S.optional(ServerCertificateConfig),
+          authenticationType: S.optional(AuthenticationType),
+          applicationProtocol: S.optional(ApplicationProtocol),
+          clientCertificateConfig: S.optional(ClientCertificateConfig),
         }),
       ).annotate({
         identifier: "DescribeDomainConfigurationResponse",
@@ -18028,7 +20720,7 @@ function __c40(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          configurationStatus: S.optional(S.String),
+          configurationStatus: S.optional(ConfigurationStatus),
           errorCode: S.optional(S.String),
           errorMessage: S.optional(S.String),
         }),
@@ -18036,10 +20728,10 @@ function __c40(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          encryptionType: S.optional(S.String),
+          encryptionType: S.optional(EncryptionType),
           kmsKeyArn: S.optional(S.String),
           kmsAccessRoleArn: S.optional(S.String),
-          configurationDetails: S.optional(__S(321)),
+          configurationDetails: S.optional(ConfigurationDetails),
           lastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
@@ -18075,7 +20767,7 @@ function __c40(j: number): any {
         identifier: "Configuration",
       });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(326).pipe(S.optional));
+      return S.Record(EventType, /*@__PURE__*/ Configuration.pipe(S.optional));
   }
 }
 function __c41(j: number): any {
@@ -18083,7 +20775,7 @@ function __c41(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          eventConfigurations: S.optional(__S(327)),
+          eventConfigurations: S.optional(EventConfigurations),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -18110,7 +20802,7 @@ function __c41(j: number): any {
         S.Struct({
           metricName: S.optional(S.String),
           queryString: S.optional(S.String),
-          aggregationType: S.optional(__S(69)),
+          aggregationType: S.optional(AggregationType),
           period: S.optional(S.Number),
           aggregationField: S.optional(S.String),
           description: S.optional(S.String),
@@ -18118,7 +20810,7 @@ function __c41(j: number): any {
           indexName: S.optional(S.String),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          unit: S.optional(S.String),
+          unit: S.optional(FleetMetricUnit),
           version: S.optional(S.Number),
           metricArn: S.optional(S.String),
         }),
@@ -18142,7 +20834,7 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           indexName: S.optional(S.String),
-          indexStatus: S.optional(S.String),
+          indexStatus: S.optional(IndexStatus),
           schema: S.optional(S.String),
         }),
       ).annotate({ identifier: "DescribeIndexResponse" });
@@ -18158,7 +20850,7 @@ function __c41(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          processingTargets: S.optional(__S(9)),
+          processingTargets: S.optional(ProcessingTargetNameList),
           numberOfCanceledThings: S.optional(S.Number),
           numberOfSucceededThings: S.optional(S.Number),
           numberOfFailedThings: S.optional(S.Number),
@@ -18178,40 +20870,40 @@ function __c41(j: number): any {
 function __c42(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(335));
+      return S.Array(ScheduledJobRollout);
     case 1:
       return S.suspend(() =>
         S.Struct({
           jobArn: S.optional(S.String),
           jobId: S.optional(S.String),
-          targetSelection: S.optional(S.String),
-          status: S.optional(S.String),
+          targetSelection: S.optional(TargetSelection),
+          status: S.optional(JobStatus),
           forceCanceled: S.optional(S.Boolean),
           reasonCode: S.optional(S.String),
           comment: S.optional(S.String),
-          targets: S.optional(__S(9)),
+          targets: S.optional(JobTargets),
           description: S.optional(S.String),
-          presignedUrlConfig: S.optional(__S(71)),
-          jobExecutionsRolloutConfig: S.optional(__S(74)),
-          abortConfig: S.optional(__S(77)),
+          presignedUrlConfig: S.optional(PresignedUrlConfig),
+          jobExecutionsRolloutConfig: S.optional(JobExecutionsRolloutConfig),
+          abortConfig: S.optional(AbortConfig),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          jobProcessDetails: S.optional(__S(334)),
-          timeoutConfig: S.optional(__S(78)),
+          jobProcessDetails: S.optional(JobProcessDetails),
+          timeoutConfig: S.optional(TimeoutConfig),
           namespaceId: S.optional(S.String),
           jobTemplateArn: S.optional(S.String),
-          jobExecutionsRetryConfig: S.optional(__S(81)),
-          documentParameters: S.optional(__S(30)),
+          jobExecutionsRetryConfig: S.optional(JobExecutionsRetryConfig),
+          documentParameters: S.optional(ParameterMap),
           isConcurrent: S.optional(S.Boolean),
-          schedulingConfig: S.optional(__S(84)),
-          scheduledJobRollouts: S.optional(__S(336)),
-          destinationPackageVersions: S.optional(__S(9)),
+          schedulingConfig: S.optional(SchedulingConfig),
+          scheduledJobRollouts: S.optional(ScheduledJobRolloutList),
+          destinationPackageVersions: S.optional(DestinationPackageVersions),
         }),
       ).annotate({ identifier: "Job" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ documentSource: S.optional(S.String), job: S.optional(__S(337)) }),
+        S.Struct({ documentSource: S.optional(S.String), job: S.optional(Job) }),
       ).annotate({ identifier: "DescribeJobResponse" });
     case 3:
       return S.suspend(() =>
@@ -18233,16 +20925,16 @@ function __c42(j: number): any {
         identifier: "DescribeJobExecutionRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ detailsMap: S.optional(__S(22)) })).annotate({
+      return S.suspend(() => S.Struct({ detailsMap: S.optional(DetailsMap) })).annotate({
         identifier: "JobExecutionStatusDetails",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
           jobId: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(JobExecutionStatus),
           forceCanceled: S.optional(S.Boolean),
-          statusDetails: S.optional(__S(340)),
+          statusDetails: S.optional(JobExecutionStatusDetails),
           thingArn: S.optional(S.String),
           queuedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -18253,7 +20945,7 @@ function __c42(j: number): any {
         }),
       ).annotate({ identifier: "JobExecution" });
     case 6:
-      return S.suspend(() => S.Struct({ execution: S.optional(__S(341)) })).annotate({
+      return S.suspend(() => S.Struct({ execution: S.optional(JobExecution) })).annotate({
         identifier: "DescribeJobExecutionResponse",
       });
     case 7:
@@ -18284,13 +20976,13 @@ function __c43(j: number): any {
           documentSource: S.optional(S.String),
           document: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          presignedUrlConfig: S.optional(__S(71)),
-          jobExecutionsRolloutConfig: S.optional(__S(74)),
-          abortConfig: S.optional(__S(77)),
-          timeoutConfig: S.optional(__S(78)),
-          jobExecutionsRetryConfig: S.optional(__S(81)),
-          maintenanceWindows: S.optional(__S(83)),
-          destinationPackageVersions: S.optional(__S(9)),
+          presignedUrlConfig: S.optional(PresignedUrlConfig),
+          jobExecutionsRolloutConfig: S.optional(JobExecutionsRolloutConfig),
+          abortConfig: S.optional(AbortConfig),
+          timeoutConfig: S.optional(TimeoutConfig),
+          jobExecutionsRetryConfig: S.optional(JobExecutionsRetryConfig),
+          maintenanceWindows: S.optional(MaintenanceWindows),
+          destinationPackageVersions: S.optional(DestinationPackageVersions),
         }),
       ).annotate({
         identifier: "DescribeJobTemplateResponse",
@@ -18324,7 +21016,7 @@ function __c43(j: number): any {
         }),
       ).annotate({ identifier: "DocumentParameter" });
     case 3:
-      return S.Array(__S(346));
+      return S.Array(DocumentParameter);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -18332,8 +21024,8 @@ function __c43(j: number): any {
           templateArn: S.optional(S.String),
           description: S.optional(S.String),
           templateVersion: S.optional(S.String),
-          environments: S.optional(__S(9)),
-          documentParameters: S.optional(__S(347)),
+          environments: S.optional(Environments),
+          documentParameters: S.optional(DocumentParameters),
           document: S.optional(S.String),
         }),
       ).annotate({
@@ -18358,11 +21050,11 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           actionName: S.optional(S.String),
-          actionType: S.optional(S.String),
+          actionType: S.optional(MitigationActionType),
           actionArn: S.optional(S.String),
           actionId: S.optional(S.String),
           roleArn: S.optional(S.String),
-          actionParams: S.optional(__S(96)),
+          actionParams: S.optional(MitigationActionParams),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -18400,8 +21092,8 @@ function __c44(j: number): any {
           templateBody: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           provisioningRoleArn: S.optional(S.String),
-          preProvisioningHook: S.optional(__S(129)),
-          type: S.optional(S.String),
+          preProvisioningHook: S.optional(ProvisioningHook),
+          type: S.optional(TemplateType),
         }),
       ).annotate({
         identifier: "DescribeProvisioningTemplateResponse",
@@ -18464,7 +21156,9 @@ function __c44(j: number): any {
         }),
       ).annotate({ identifier: "RoleAliasDescription" });
     case 5:
-      return S.suspend(() => S.Struct({ roleAliasDescription: S.optional(__S(356)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ roleAliasDescription: S.optional(RoleAliasDescription) }),
+      ).annotate({
         identifier: "DescribeRoleAliasResponse",
       });
     case 6:
@@ -18485,10 +21179,10 @@ function __c44(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          frequency: S.optional(S.String),
+          frequency: S.optional(AuditFrequency),
           dayOfMonth: S.optional(S.String),
-          dayOfWeek: S.optional(S.String),
-          targetCheckNames: S.optional(__S(9)),
+          dayOfWeek: S.optional(DayOfWeek),
+          targetCheckNames: S.optional(TargetAuditCheckNames),
           scheduledAuditName: S.optional(S.String),
           scheduledAuditArn: S.optional(S.String),
         }),
@@ -18520,14 +21214,14 @@ function __c45(j: number): any {
           securityProfileName: S.optional(S.String),
           securityProfileArn: S.optional(S.String),
           securityProfileDescription: S.optional(S.String),
-          behaviors: S.optional(__S(145)),
-          alertTargets: S.optional(__S(147)),
-          additionalMetricsToRetain: S.optional(__S(9)),
-          additionalMetricsToRetainV2: S.optional(__S(149)),
+          behaviors: S.optional(Behaviors),
+          alertTargets: S.optional(AlertTargets),
+          additionalMetricsToRetain: S.optional(AdditionalMetricsToRetainList),
+          additionalMetricsToRetainV2: S.optional(AdditionalMetricsToRetainV2List),
           version: S.optional(S.Number),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          metricsExportConfig: S.optional(__S(150)),
+          metricsExportConfig: S.optional(MetricsExportConfig),
         }),
       ).annotate({
         identifier: "DescribeSecurityProfileResponse",
@@ -18552,14 +21246,14 @@ function __c45(j: number): any {
           streamArn: S.optional(S.String),
           streamVersion: S.optional(S.Number),
           description: S.optional(S.String),
-          files: S.optional(__S(154)),
+          files: S.optional(StreamFiles),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           roleArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "StreamInfo" });
     case 4:
-      return S.suspend(() => S.Struct({ streamInfo: S.optional(__S(363)) })).annotate({
+      return S.suspend(() => S.Struct({ streamInfo: S.optional(StreamInfo) })).annotate({
         identifier: "DescribeStreamResponse",
       });
     case 5:
@@ -18583,7 +21277,7 @@ function __c45(j: number): any {
           thingId: S.optional(S.String),
           thingArn: S.optional(S.String),
           thingTypeName: S.optional(S.String),
-          attributes: S.optional(__S(22)),
+          attributes: S.optional(Attributes),
           version: S.optional(S.Number),
           billingGroupName: S.optional(S.String),
         }),
@@ -18612,12 +21306,12 @@ function __c46(j: number): any {
         S.Struct({ groupName: S.optional(S.String), groupArn: S.optional(S.String) }),
       ).annotate({ identifier: "GroupNameAndArn" });
     case 1:
-      return S.Array(__S(368));
+      return S.Array(GroupNameAndArn);
     case 2:
       return S.suspend(() =>
         S.Struct({
           parentGroupName: S.optional(S.String),
-          rootToParentThingGroups: S.optional(__S(369)),
+          rootToParentThingGroups: S.optional(ThingGroupNameAndArnList),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ThingGroupMetadata" });
@@ -18628,12 +21322,12 @@ function __c46(j: number): any {
           thingGroupId: S.optional(S.String),
           thingGroupArn: S.optional(S.String),
           version: S.optional(S.Number),
-          thingGroupProperties: S.optional(__S(66)),
-          thingGroupMetadata: S.optional(__S(370)),
+          thingGroupProperties: S.optional(ThingGroupProperties),
+          thingGroupMetadata: S.optional(ThingGroupMetadata),
           indexName: S.optional(S.String),
           queryString: S.optional(S.String),
           queryVersion: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(DynamicGroupStatus),
         }),
       ).annotate({
         identifier: "DescribeThingGroupResponse",
@@ -18663,7 +21357,7 @@ function __c46(j: number): any {
           inputFileBucket: S.optional(S.String),
           inputFileKey: S.optional(S.String),
           roleArn: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(Status),
           message: S.optional(S.String),
           successCount: S.optional(S.Number),
           failureCount: S.optional(S.Number),
@@ -18703,8 +21397,8 @@ function __c47(j: number): any {
           thingTypeName: S.optional(S.String),
           thingTypeId: S.optional(S.String),
           thingTypeArn: S.optional(S.String),
-          thingTypeProperties: S.optional(__S(164)),
-          thingTypeMetadata: S.optional(__S(375)),
+          thingTypeProperties: S.optional(ThingTypeProperties),
+          thingTypeMetadata: S.optional(ThingTypeMetadata),
         }),
       ).annotate({
         identifier: "DescribeThingTypeResponse",
@@ -18855,7 +21549,7 @@ function __c48(j: number): any {
           trainingDataCollectionStartDate: S.optional(
             S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           ),
-          modelStatus: S.optional(S.String),
+          modelStatus: S.optional(ModelStatus),
           datapointsCollectionPercentage: S.optional(S.Number),
           lastModelRefreshDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -18863,11 +21557,11 @@ function __c48(j: number): any {
         identifier: "BehaviorModelTrainingSummary",
       });
     case 2:
-      return S.Array(__S(385));
+      return S.Array(BehaviorModelTrainingSummary);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          summaries: S.optional(__S(386)),
+          summaries: S.optional(BehaviorModelTrainingSummaries),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -18878,9 +21572,9 @@ function __c48(j: number): any {
         identifier: "TermsAggregation",
       });
     case 5:
-      return S.suspend(() => S.Struct({ termsAggregation: S.optional(__S(388)) })).annotate({
-        identifier: "BucketsAggregationType",
-      });
+      return S.suspend(() => S.Struct({ termsAggregation: S.optional(TermsAggregation) })).annotate(
+        { identifier: "BucketsAggregationType" },
+      );
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -18888,7 +21582,7 @@ function __c48(j: number): any {
           queryString: S.String,
           aggregationField: S.String,
           queryVersion: S.optional(S.String),
-          bucketsAggregationType: __S(389),
+          bucketsAggregationType: BucketsAggregationType,
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/indices/buckets" }), svc, auth, proto, ver, rules),
         ),
@@ -18904,10 +21598,10 @@ function __c48(j: number): any {
 function __c49(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(391));
+      return S.Array(Bucket);
     case 1:
       return S.suspend(() =>
-        S.Struct({ totalCount: S.optional(S.Number), buckets: S.optional(__S(392)) }),
+        S.Struct({ totalCount: S.optional(S.Number), buckets: S.optional(Buckets) }),
       ).annotate({
         identifier: "GetBucketsAggregationResponse",
       });
@@ -18951,13 +21645,13 @@ function __c49(j: number): any {
         S.Struct({
           commandId: S.optional(S.String),
           commandArn: S.optional(S.String),
-          namespace: S.optional(S.String),
+          namespace: S.optional(CommandNamespace),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          mandatoryParameters: S.optional(__S(52)),
-          payload: S.optional(__S(43)),
+          mandatoryParameters: S.optional(CommandParameterList),
+          payload: S.optional(CommandPayload),
           payloadTemplate: S.optional(S.String),
-          preprocessor: S.optional(__S(45)),
+          preprocessor: S.optional(CommandPreprocessor),
           roleArn: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -18997,19 +21691,19 @@ function __c50(j: number): any {
         S.Struct({ S: S.optional(S.String), B: S.optional(S.Boolean), BIN: S.optional(T.Blob) }),
       ).annotate({ identifier: "CommandExecutionResult" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(400).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ CommandExecutionResult.pipe(S.optional));
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(46).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ CommandParameterValue.pipe(S.optional));
     case 3:
       return S.suspend(() =>
         S.Struct({
           executionId: S.optional(S.String),
           commandArn: S.optional(S.String),
           targetArn: S.optional(S.String),
-          status: S.optional(S.String),
-          statusReason: S.optional(__S(399)),
-          result: S.optional(__S(401)),
-          parameters: S.optional(__S(402)),
+          status: S.optional(CommandExecutionStatus),
+          statusReason: S.optional(StatusReason),
+          result: S.optional(CommandExecutionResultMap),
+          parameters: S.optional(CommandExecutionParameterMap),
           executionTimeoutSeconds: S.optional(S.Number),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -19048,9 +21742,11 @@ function __c50(j: number): any {
         }),
       ).annotate({ identifier: "EffectivePolicy" });
     case 6:
-      return S.Array(__S(405));
+      return S.Array(EffectivePolicy);
     case 7:
-      return S.suspend(() => S.Struct({ effectivePolicies: S.optional(__S(406)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ effectivePolicies: S.optional(EffectivePolicies) }),
+      ).annotate({
         identifier: "GetEffectivePoliciesResponse",
       });
   }
@@ -19067,38 +21763,38 @@ function __c51(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ name: S.optional(S.String), type: S.optional(S.String) }),
+        S.Struct({ name: S.optional(S.String), type: S.optional(FieldType) }),
       ).annotate({ identifier: "Field" });
     case 2:
-      return S.Array(__S(409));
+      return S.Array(Field);
     case 3:
       return S.suspend(() =>
-        S.Struct({ name: S.optional(S.String), order: S.optional(S.String) }),
+        S.Struct({ name: S.optional(S.String), order: S.optional(TargetFieldOrder) }),
       ).annotate({ identifier: "GeoLocationTarget" });
     case 4:
-      return S.Array(__S(411));
+      return S.Array(GeoLocationTarget);
     case 5:
-      return S.suspend(() => S.Struct({ includeSocketInformation: S.optional(__S(99)) })).annotate({
-        identifier: "ConnectivityFilter",
-      });
+      return S.suspend(() =>
+        S.Struct({ includeSocketInformation: S.optional(FleetIndexingApiList) }),
+      ).annotate({ identifier: "ConnectivityFilter" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          namedShadowNames: S.optional(__S(9)),
-          geoLocations: S.optional(__S(412)),
-          connectivity: S.optional(__S(413)),
+          namedShadowNames: S.optional(NamedShadowNamesFilter),
+          geoLocations: S.optional(GeoLocationsFilter),
+          connectivity: S.optional(ConnectivityFilter),
         }),
       ).annotate({ identifier: "IndexingFilter" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          thingIndexingMode: S.String,
-          thingConnectivityIndexingMode: S.optional(S.String),
-          deviceDefenderIndexingMode: S.optional(S.String),
-          namedShadowIndexingMode: S.optional(S.String),
-          managedFields: S.optional(__S(410)),
-          customFields: S.optional(__S(410)),
-          filter: S.optional(__S(414)),
+          thingIndexingMode: ThingIndexingMode,
+          thingConnectivityIndexingMode: S.optional(ThingConnectivityIndexingMode),
+          deviceDefenderIndexingMode: S.optional(DeviceDefenderIndexingMode),
+          namedShadowIndexingMode: S.optional(NamedShadowIndexingMode),
+          managedFields: S.optional(Fields),
+          customFields: S.optional(Fields),
+          filter: S.optional(IndexingFilter),
         }),
       ).annotate({
         identifier: "ThingIndexingConfiguration",
@@ -19110,9 +21806,9 @@ function __c52(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          thingGroupIndexingMode: S.String,
-          managedFields: S.optional(__S(410)),
-          customFields: S.optional(__S(410)),
+          thingGroupIndexingMode: ThingGroupIndexingMode,
+          managedFields: S.optional(Fields),
+          customFields: S.optional(Fields),
         }),
       ).annotate({
         identifier: "ThingGroupIndexingConfiguration",
@@ -19120,8 +21816,8 @@ function __c52(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          thingIndexingConfiguration: S.optional(__S(415)),
-          thingGroupIndexingConfiguration: S.optional(__S(416)),
+          thingIndexingConfiguration: S.optional(ThingIndexingConfiguration),
+          thingGroupIndexingConfiguration: S.optional(ThingGroupIndexingConfiguration),
         }),
       ).annotate({
         identifier: "GetIndexingConfigurationResponse",
@@ -19154,7 +21850,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "GetLoggingOptionsRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ roleArn: S.optional(S.String), logLevel: S.optional(S.String) }),
+        S.Struct({ roleArn: S.optional(S.String), logLevel: S.optional(LogLevel) }),
       ).annotate({
         identifier: "GetLoggingOptionsResponse",
       });
@@ -19187,21 +21883,21 @@ function __c53(j: number): any {
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           description: S.optional(S.String),
-          targets: S.optional(__S(9)),
-          protocols: S.optional(__S(99)),
-          awsJobExecutionsRolloutConfig: S.optional(__S(102)),
-          awsJobPresignedUrlConfig: S.optional(__S(103)),
-          targetSelection: S.optional(S.String),
-          otaUpdateFiles: S.optional(__S(116)),
-          otaUpdateStatus: S.optional(S.String),
+          targets: S.optional(Targets),
+          protocols: S.optional(Protocols),
+          awsJobExecutionsRolloutConfig: S.optional(AwsJobExecutionsRolloutConfig),
+          awsJobPresignedUrlConfig: S.optional(AwsJobPresignedUrlConfig),
+          targetSelection: S.optional(TargetSelection),
+          otaUpdateFiles: S.optional(OTAUpdateFiles),
+          otaUpdateStatus: S.optional(OTAUpdateStatus),
           awsIotJobId: S.optional(S.String),
           awsIotJobArn: S.optional(S.String),
-          errorInfo: S.optional(__S(423)),
-          additionalParameters: S.optional(__S(30)),
+          errorInfo: S.optional(ErrorInfo),
+          additionalParameters: S.optional(AdditionalParameterMap),
         }),
       ).annotate({ identifier: "OTAUpdateInfo" });
     case 1:
-      return S.suspend(() => S.Struct({ otaUpdateInfo: S.optional(__S(424)) })).annotate({
+      return S.suspend(() => S.Struct({ otaUpdateInfo: S.optional(OTAUpdateInfo) })).annotate({
         identifier: "GetOTAUpdateResponse",
       });
     case 2:
@@ -19251,7 +21947,7 @@ function __c53(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ versionUpdateByJobsConfig: S.optional(__S(429)) }),
+        S.Struct({ versionUpdateByJobsConfig: S.optional(VersionUpdateByJobsConfig) }),
       ).annotate({
         identifier: "GetPackageConfigurationResponse",
       });
@@ -19282,14 +21978,14 @@ function __c54(j: number): any {
           packageName: S.optional(S.String),
           versionName: S.optional(S.String),
           description: S.optional(SensitiveString),
-          attributes: S.optional(__S(30)),
-          artifact: S.optional(__S(6)),
-          status: S.optional(S.String),
+          attributes: S.optional(ResourceAttributes),
+          artifact: S.optional(PackageVersionArtifact),
+          status: S.optional(PackageVersionStatus),
           errorReason: S.optional(S.String),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          sbom: S.optional(__S(6)),
-          sbomValidationStatus: S.optional(S.String),
+          sbom: S.optional(Sbom),
+          sbomValidationStatus: S.optional(SbomValidationStatus),
           recipe: S.optional(SensitiveString),
         }),
       ).annotate({
@@ -19302,7 +21998,7 @@ function __c54(j: number): any {
           queryString: S.String,
           aggregationField: S.optional(S.String),
           queryVersion: S.optional(S.String),
-          percents: S.optional(__S(139)),
+          percents: S.optional(PercentList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/indices/percentiles" }),
@@ -19319,9 +22015,9 @@ function __c54(j: number): any {
         S.Struct({ percent: S.optional(S.Number), value: S.optional(S.Number) }),
       ).annotate({ identifier: "PercentPair" });
     case 3:
-      return S.Array(__S(434));
+      return S.Array(PercentPair);
     case 4:
-      return S.suspend(() => S.Struct({ percentiles: S.optional(__S(435)) })).annotate({
+      return S.suspend(() => S.Struct({ percentiles: S.optional(Percentiles) })).annotate({
         identifier: "GetPercentilesResponse",
       });
     case 5:
@@ -19426,7 +22122,7 @@ function __c55(j: number): any {
         }),
       ).annotate({ identifier: "Statistics" });
     case 5:
-      return S.suspend(() => S.Struct({ statistics: S.optional(__S(444)) })).annotate({
+      return S.suspend(() => S.Struct({ statistics: S.optional(Statistics) })).annotate({
         identifier: "GetStatisticsResponse",
       });
     case 6:
@@ -19453,7 +22149,7 @@ function __c55(j: number): any {
           thingName: S.optional(SensitiveString),
           connected: S.optional(S.Boolean),
           timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          disconnectReason: S.optional(S.String),
+          disconnectReason: S.optional(DisconnectReasonValue),
           sourceIp: S.optional(SensitiveString),
           sourcePort: S.optional(S.Number),
           targetIp: S.optional(SensitiveString),
@@ -19484,15 +22180,15 @@ function __c56(j: number): any {
           sql: S.optional(S.String),
           description: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          actions: S.optional(__S(209)),
+          actions: S.optional(ActionList),
           ruleDisabled: S.optional(S.Boolean),
           awsIotSqlVersion: S.optional(S.String),
-          errorAction: S.optional(__S(208)),
+          errorAction: S.optional(Action),
         }),
       ).annotate({ identifier: "TopicRule" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ruleArn: S.optional(S.String), rule: S.optional(__S(449)) }),
+        S.Struct({ ruleArn: S.optional(S.String), rule: S.optional(TopicRule) }),
       ).annotate({ identifier: "GetTopicRuleResponse" });
     case 3:
       return S.suspend(() =>
@@ -19521,19 +22217,19 @@ function __c56(j: number): any {
       return S.suspend(() =>
         S.Struct({
           eventType: S.String,
-          logLevel: S.optional(S.String),
+          logLevel: S.optional(LogLevel),
           logDestination: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogEventConfiguration" });
     case 6:
-      return S.Array(__S(453));
+      return S.Array(LogEventConfiguration);
     case 7:
       return S.suspend(() =>
         S.Struct({
           roleArn: S.optional(S.String),
-          defaultLogLevel: S.optional(S.String),
+          defaultLogLevel: S.optional(LogLevel),
           disableAllLogs: S.optional(S.Boolean),
-          eventConfigurations: S.optional(__S(454)),
+          eventConfigurations: S.optional(LogEventConfigurations),
         }),
       ).annotate({
         identifier: "GetV2LoggingOptionsResponse",
@@ -19547,9 +22243,11 @@ function __c57(j: number): any {
         S.Struct({
           thingName: S.optional(S.String).pipe(T.HttpQuery("thingName")),
           securityProfileName: S.optional(S.String).pipe(T.HttpQuery("securityProfileName")),
-          behaviorCriteriaType: S.optional(S.String).pipe(T.HttpQuery("behaviorCriteriaType")),
+          behaviorCriteriaType: S.optional(BehaviorCriteriaType).pipe(
+            T.HttpQuery("behaviorCriteriaType"),
+          ),
           listSuppressedAlerts: S.optional(S.Boolean).pipe(T.HttpQuery("listSuppressedAlerts")),
-          verificationState: S.optional(S.String).pipe(T.HttpQuery("verificationState")),
+          verificationState: S.optional(VerificationState).pipe(T.HttpQuery("verificationState")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(
@@ -19559,7 +22257,7 @@ function __c57(j: number): any {
         identifier: "ListActiveViolationsRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ confidenceLevel: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ confidenceLevel: S.optional(ConfidenceLevel) })).annotate({
         identifier: "ViolationEventAdditionalInfo",
       });
     case 2:
@@ -19568,21 +22266,21 @@ function __c57(j: number): any {
           violationId: S.optional(S.String),
           thingName: S.optional(S.String),
           securityProfileName: S.optional(S.String),
-          behavior: S.optional(__S(144)),
-          lastViolationValue: S.optional(__S(140)),
-          violationEventAdditionalInfo: S.optional(__S(457)),
-          verificationState: S.optional(S.String),
+          behavior: S.optional(Behavior),
+          lastViolationValue: S.optional(MetricValue),
+          violationEventAdditionalInfo: S.optional(ViolationEventAdditionalInfo),
+          verificationState: S.optional(VerificationState),
           verificationStateDescription: S.optional(S.String),
           lastViolationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           violationStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ActiveViolation" });
     case 3:
-      return S.Array(__S(458));
+      return S.Array(ActiveViolation);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          activeViolations: S.optional(__S(459)),
+          activeViolations: S.optional(ActiveViolations),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -19613,14 +22311,14 @@ function __c57(j: number): any {
         S.Struct({ policyName: S.optional(S.String), policyArn: S.optional(S.String) }),
       ).annotate({ identifier: "Policy" });
     case 7:
-      return S.Array(__S(462));
+      return S.Array(Policy);
   }
 }
 function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ policies: S.optional(__S(463)), nextMarker: S.optional(S.String) }),
+        S.Struct({ policies: S.optional(Policies), nextMarker: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAttachedPoliciesResponse",
       });
@@ -19629,7 +22327,7 @@ function __c58(j: number): any {
         S.Struct({
           taskId: S.optional(S.String),
           checkName: S.optional(S.String),
-          resourceIdentifier: S.optional(__S(28)),
+          resourceIdentifier: S.optional(ResourceIdentifier),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -19640,10 +22338,10 @@ function __c58(j: number): any {
         ),
       ).annotate({ identifier: "ListAuditFindingsRequest" });
     case 2:
-      return S.Array(__S(271));
+      return S.Array(AuditFinding);
     case 3:
       return S.suspend(() =>
-        S.Struct({ findings: S.optional(__S(466)), nextToken: S.optional(S.String) }),
+        S.Struct({ findings: S.optional(AuditFindings), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAuditFindingsResponse",
       });
@@ -19651,7 +22349,9 @@ function __c58(j: number): any {
       return S.suspend(() =>
         S.Struct({
           taskId: S.String.pipe(T.HttpQuery("taskId")),
-          actionStatus: S.optional(S.String).pipe(T.HttpQuery("actionStatus")),
+          actionStatus: S.optional(AuditMitigationActionsExecutionStatus).pipe(
+            T.HttpQuery("actionStatus"),
+          ),
           findingId: S.String.pipe(T.HttpQuery("findingId")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -19675,7 +22375,7 @@ function __c58(j: number): any {
           findingId: S.optional(S.String),
           actionName: S.optional(S.String),
           actionId: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(AuditMitigationActionsExecutionStatus),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           errorCode: S.optional(S.String),
@@ -19685,11 +22385,11 @@ function __c58(j: number): any {
         identifier: "AuditMitigationActionExecutionMetadata",
       });
     case 6:
-      return S.Array(__S(469));
+      return S.Array(AuditMitigationActionExecutionMetadata);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          actionsExecutions: S.optional(__S(470)),
+          actionsExecutions: S.optional(AuditMitigationActionExecutionMetadataList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -19704,7 +22404,7 @@ function __c59(j: number): any {
         S.Struct({
           auditTaskId: S.optional(S.String).pipe(T.HttpQuery("auditTaskId")),
           findingId: S.optional(S.String).pipe(T.HttpQuery("findingId")),
-          taskStatus: S.optional(S.String).pipe(T.HttpQuery("taskStatus")),
+          taskStatus: S.optional(AuditMitigationActionsTaskStatus).pipe(T.HttpQuery("taskStatus")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(T.HttpQuery("startTime")),
@@ -19727,17 +22427,17 @@ function __c59(j: number): any {
         S.Struct({
           taskId: S.optional(S.String),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          taskStatus: S.optional(S.String),
+          taskStatus: S.optional(AuditMitigationActionsTaskStatus),
         }),
       ).annotate({
         identifier: "AuditMitigationActionsTaskMetadata",
       });
     case 2:
-      return S.Array(__S(473));
+      return S.Array(AuditMitigationActionsTaskMetadata);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          tasks: S.optional(__S(474)),
+          tasks: S.optional(AuditMitigationActionsTaskMetadataList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -19747,7 +22447,7 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           checkName: S.optional(S.String),
-          resourceIdentifier: S.optional(__S(28)),
+          resourceIdentifier: S.optional(ResourceIdentifier),
           ascendingOrder: S.optional(S.Boolean),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
@@ -19768,18 +22468,18 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           checkName: S.String,
-          resourceIdentifier: __S(28),
+          resourceIdentifier: ResourceIdentifier,
           expirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           suppressIndefinitely: S.optional(S.Boolean),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditSuppression" });
     case 6:
-      return S.Array(__S(477));
+      return S.Array(AuditSuppression);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          suppressions: S.optional(__S(478)),
+          suppressions: S.optional(AuditSuppressionList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -19794,8 +22494,8 @@ function __c60(j: number): any {
         S.Struct({
           startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(T.HttpQuery("startTime")),
           endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(T.HttpQuery("endTime")),
-          taskType: S.optional(S.String).pipe(T.HttpQuery("taskType")),
-          taskStatus: S.optional(S.String).pipe(T.HttpQuery("taskStatus")),
+          taskType: S.optional(AuditTaskType).pipe(T.HttpQuery("taskType")),
+          taskStatus: S.optional(AuditTaskStatus).pipe(T.HttpQuery("taskStatus")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(
@@ -19806,15 +22506,15 @@ function __c60(j: number): any {
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
-          taskStatus: S.optional(S.String),
-          taskType: S.optional(S.String),
+          taskStatus: S.optional(AuditTaskStatus),
+          taskType: S.optional(AuditTaskType),
         }),
       ).annotate({ identifier: "AuditTaskMetadata" });
     case 2:
-      return S.Array(__S(481));
+      return S.Array(AuditTaskMetadata);
     case 3:
       return S.suspend(() =>
-        S.Struct({ tasks: S.optional(__S(482)), nextToken: S.optional(S.String) }),
+        S.Struct({ tasks: S.optional(AuditTaskMetadataList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAuditTasksResponse" });
     case 4:
       return S.suspend(() =>
@@ -19822,16 +22522,16 @@ function __c60(j: number): any {
           pageSize: S.optional(S.Number).pipe(T.HttpQuery("pageSize")),
           marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
           ascendingOrder: S.optional(S.Boolean).pipe(T.HttpQuery("isAscendingOrder")),
-          status: S.optional(S.String).pipe(T.HttpQuery("status")),
+          status: S.optional(AuthorizerStatus).pipe(T.HttpQuery("status")),
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/authorizers" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListAuthorizersRequest" });
     case 5:
-      return S.Array(__S(34));
+      return S.Array(AuthorizerSummary);
     case 6:
       return S.suspend(() =>
-        S.Struct({ authorizers: S.optional(__S(485)), nextMarker: S.optional(S.String) }),
+        S.Struct({ authorizers: S.optional(Authorizers), nextMarker: S.optional(S.String) }),
       ).annotate({ identifier: "ListAuthorizersResponse" });
     case 7:
       return S.suspend(() =>
@@ -19850,7 +22550,7 @@ function __c61(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          billingGroups: S.optional(__S(369)),
+          billingGroups: S.optional(BillingGroupNameAndArnList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -19874,15 +22574,15 @@ function __c61(j: number): any {
         S.Struct({
           certificateArn: S.optional(S.String),
           certificateId: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(CACertificateStatus),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "CACertificate" });
     case 3:
-      return S.Array(__S(490));
+      return S.Array(CACertificate);
     case 4:
       return S.suspend(() =>
-        S.Struct({ certificates: S.optional(__S(491)), nextMarker: S.optional(S.String) }),
+        S.Struct({ certificates: S.optional(CACertificates), nextMarker: S.optional(S.String) }),
       ).annotate({
         identifier: "ListCACertificatesResponse",
       });
@@ -19905,11 +22605,11 @@ function __c61(j: number): any {
         identifier: "ListCertificateProvidersRequest",
       });
     case 6:
-      return S.Array(__S(42));
+      return S.Array(CertificateProviderSummary);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          certificateProviders: S.optional(__S(494)),
+          certificateProviders: S.optional(CertificateProviders),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -19934,16 +22634,16 @@ function __c62(j: number): any {
         S.Struct({
           certificateArn: S.optional(S.String),
           certificateId: S.optional(S.String),
-          status: S.optional(S.String),
-          certificateMode: S.optional(S.String),
+          status: S.optional(CertificateStatus),
+          certificateMode: S.optional(CertificateMode),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Certificate" });
     case 2:
-      return S.Array(__S(497));
+      return S.Array(Certificate);
     case 3:
       return S.suspend(() =>
-        S.Struct({ certificates: S.optional(__S(498)), nextMarker: S.optional(S.String) }),
+        S.Struct({ certificates: S.optional(Certificates), nextMarker: S.optional(S.String) }),
       ).annotate({ identifier: "ListCertificatesResponse" });
     case 4:
       return S.suspend(() =>
@@ -19967,7 +22667,7 @@ function __c62(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ certificates: S.optional(__S(498)), nextMarker: S.optional(S.String) }),
+        S.Struct({ certificates: S.optional(Certificates), nextMarker: S.optional(S.String) }),
       ).annotate({
         identifier: "ListCertificatesByCAResponse",
       });
@@ -19980,11 +22680,11 @@ function __c62(j: number): any {
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          namespace: S.optional(S.String),
-          status: S.optional(S.String),
-          sortOrder: S.optional(S.String),
-          startedTimeFilter: S.optional(__S(502)),
-          completedTimeFilter: S.optional(__S(502)),
+          namespace: S.optional(CommandNamespace),
+          status: S.optional(CommandExecutionStatus),
+          sortOrder: S.optional(SortOrder),
+          startedTimeFilter: S.optional(TimeFilter),
+          completedTimeFilter: S.optional(TimeFilter),
           targetArn: S.optional(S.String),
           commandArn: S.optional(S.String),
         }).pipe(
@@ -20010,18 +22710,18 @@ function __c63(j: number): any {
           commandArn: S.optional(S.String),
           executionId: S.optional(S.String),
           targetArn: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(CommandExecutionStatus),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "CommandExecutionSummary" });
     case 1:
-      return S.Array(__S(504));
+      return S.Array(CommandExecutionSummary);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          commandExecutions: S.optional(__S(505)),
+          commandExecutions: S.optional(CommandExecutionSummaryList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -20032,9 +22732,9 @@ function __c63(j: number): any {
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
+          namespace: S.optional(CommandNamespace).pipe(T.HttpQuery("namespace")),
           commandParameterName: S.optional(S.String).pipe(T.HttpQuery("commandParameterName")),
-          sortOrder: S.optional(S.String).pipe(T.HttpQuery("sortOrder")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/commands" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListCommandsRequest" });
     case 4:
@@ -20050,10 +22750,10 @@ function __c63(j: number): any {
         }),
       ).annotate({ identifier: "CommandSummary" });
     case 5:
-      return S.Array(__S(508));
+      return S.Array(CommandSummary);
     case 6:
       return S.suspend(() =>
-        S.Struct({ commands: S.optional(__S(509)), nextToken: S.optional(S.String) }),
+        S.Struct({ commands: S.optional(CommandSummaryList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListCommandsResponse" });
     case 7:
       return S.suspend(() =>
@@ -20070,7 +22770,7 @@ function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ metricNames: S.optional(__S(9)), nextToken: S.optional(S.String) }),
+        S.Struct({ metricNames: S.optional(MetricNames), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListCustomMetricsResponse",
       });
@@ -20110,7 +22810,7 @@ function __c64(j: number): any {
           thingName: S.optional(S.String),
           executionStartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           executionEndDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(S.String),
+          status: S.optional(DetectMitigationActionExecutionStatus),
           errorCode: S.optional(S.String),
           message: S.optional(S.String),
         }),
@@ -20118,11 +22818,11 @@ function __c64(j: number): any {
         identifier: "DetectMitigationActionExecution",
       });
     case 3:
-      return S.Array(__S(514));
+      return S.Array(DetectMitigationActionExecution);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          actionsExecutions: S.optional(__S(515)),
+          actionsExecutions: S.optional(DetectMitigationActionExecutionList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -20149,11 +22849,11 @@ function __c64(j: number): any {
         identifier: "ListDetectMitigationActionsTasksRequest",
       });
     case 6:
-      return S.Array(__S(312));
+      return S.Array(DetectMitigationActionsTaskSummary);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          tasks: S.optional(__S(518)),
+          tasks: S.optional(DetectMitigationActionsTaskSummaryList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -20172,14 +22872,14 @@ function __c65(j: number): any {
       ).annotate({ identifier: "ListDimensionsRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ dimensionNames: S.optional(__S(9)), nextToken: S.optional(S.String) }),
+        S.Struct({ dimensionNames: S.optional(DimensionNames), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDimensionsResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
           pageSize: S.optional(S.Number).pipe(T.HttpQuery("pageSize")),
-          serviceType: S.optional(S.String).pipe(T.HttpQuery("serviceType")),
+          serviceType: S.optional(ServiceType).pipe(T.HttpQuery("serviceType")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/domainConfigurations" }),
@@ -20198,17 +22898,17 @@ function __c65(j: number): any {
         S.Struct({
           domainConfigurationName: S.optional(S.String),
           domainConfigurationArn: S.optional(S.String),
-          serviceType: S.optional(S.String),
+          serviceType: S.optional(ServiceType),
         }),
       ).annotate({
         identifier: "DomainConfigurationSummary",
       });
     case 4:
-      return S.Array(__S(523));
+      return S.Array(DomainConfigurationSummary);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          domainConfigurations: S.optional(__S(524)),
+          domainConfigurations: S.optional(DomainConfigurations),
           nextMarker: S.optional(S.String),
         }),
       ).annotate({
@@ -20232,11 +22932,11 @@ function __c65(j: number): any {
 function __c66(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(527));
+      return S.Array(FleetMetricNameAndArn);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          fleetMetrics: S.optional(__S(528)),
+          fleetMetrics: S.optional(FleetMetricNameAndArnList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListFleetMetricsResponse" });
@@ -20249,13 +22949,13 @@ function __c66(j: number): any {
       ).annotate({ identifier: "ListIndicesRequest" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ indexNames: S.optional(__S(9)), nextToken: S.optional(S.String) }),
+        S.Struct({ indexNames: S.optional(IndexNamesList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListIndicesResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           jobId: S.String.pipe(T.HttpLabel("jobId")),
-          status: S.optional(S.String).pipe(T.HttpQuery("status")),
+          status: S.optional(JobExecutionStatus).pipe(T.HttpQuery("status")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
         }).pipe(
@@ -20274,7 +22974,7 @@ function __c66(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(JobExecutionStatus),
           queuedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -20286,13 +22986,13 @@ function __c66(j: number): any {
       return S.suspend(() =>
         S.Struct({
           thingArn: S.optional(S.String),
-          jobExecutionSummary: S.optional(__S(533)),
+          jobExecutionSummary: S.optional(JobExecutionSummary),
         }),
       ).annotate({
         identifier: "JobExecutionSummaryForJob",
       });
     case 7:
-      return S.Array(__S(534));
+      return S.Array(JobExecutionSummaryForJob);
   }
 }
 function __c67(j: number): any {
@@ -20300,7 +23000,7 @@ function __c67(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          executionSummaries: S.optional(__S(535)),
+          executionSummaries: S.optional(JobExecutionSummaryForJobList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -20310,7 +23010,7 @@ function __c67(j: number): any {
       return S.suspend(() =>
         S.Struct({
           thingName: S.String.pipe(T.HttpLabel("thingName")),
-          status: S.optional(S.String).pipe(T.HttpQuery("status")),
+          status: S.optional(JobExecutionStatus).pipe(T.HttpQuery("status")),
           namespaceId: S.optional(S.String).pipe(T.HttpQuery("namespaceId")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -20332,17 +23032,17 @@ function __c67(j: number): any {
       return S.suspend(() =>
         S.Struct({
           jobId: S.optional(S.String),
-          jobExecutionSummary: S.optional(__S(533)),
+          jobExecutionSummary: S.optional(JobExecutionSummary),
         }),
       ).annotate({
         identifier: "JobExecutionSummaryForThing",
       });
     case 3:
-      return S.Array(__S(538));
+      return S.Array(JobExecutionSummaryForThing);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          executionSummaries: S.optional(__S(539)),
+          executionSummaries: S.optional(JobExecutionSummaryForThingList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -20351,8 +23051,8 @@ function __c67(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String).pipe(T.HttpQuery("status")),
-          targetSelection: S.optional(S.String).pipe(T.HttpQuery("targetSelection")),
+          status: S.optional(JobStatus).pipe(T.HttpQuery("status")),
+          targetSelection: S.optional(TargetSelection).pipe(T.HttpQuery("targetSelection")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           thingGroupName: S.optional(S.String).pipe(T.HttpQuery("thingGroupName")),
@@ -20366,8 +23066,8 @@ function __c67(j: number): any {
           jobArn: S.optional(S.String),
           jobId: S.optional(S.String),
           thingGroupId: S.optional(S.String),
-          targetSelection: S.optional(S.String),
-          status: S.optional(S.String),
+          targetSelection: S.optional(TargetSelection),
+          status: S.optional(JobStatus),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -20375,14 +23075,14 @@ function __c67(j: number): any {
         }),
       ).annotate({ identifier: "JobSummary" });
     case 7:
-      return S.Array(__S(542));
+      return S.Array(JobSummary);
   }
 }
 function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ jobs: S.optional(__S(543)), nextToken: S.optional(S.String) }),
+        S.Struct({ jobs: S.optional(JobSummaryList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListJobsResponse" });
     case 1:
       return S.suspend(() =>
@@ -20403,11 +23103,11 @@ function __c68(j: number): any {
         }),
       ).annotate({ identifier: "JobTemplateSummary" });
     case 3:
-      return S.Array(__S(546));
+      return S.Array(JobTemplateSummary);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          jobTemplates: S.optional(__S(547)),
+          jobTemplates: S.optional(JobTemplateSummaryList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListJobTemplatesResponse" });
@@ -20436,14 +23136,14 @@ function __c68(j: number): any {
           templateArn: S.optional(S.String),
           templateName: S.optional(S.String),
           description: S.optional(S.String),
-          environments: S.optional(__S(9)),
+          environments: S.optional(Environments),
           templateVersion: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedJobTemplateSummary",
       });
     case 7:
-      return S.Array(__S(550));
+      return S.Array(ManagedJobTemplateSummary);
   }
 }
 function __c69(j: number): any {
@@ -20451,7 +23151,7 @@ function __c69(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          managedJobTemplates: S.optional(__S(551)),
+          managedJobTemplates: S.optional(ManagedJobTemplatesSummaryList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -20463,7 +23163,9 @@ function __c69(j: number): any {
           thingName: S.String.pipe(T.HttpQuery("thingName")),
           metricName: S.String.pipe(T.HttpQuery("metricName")),
           dimensionName: S.optional(S.String).pipe(T.HttpQuery("dimensionName")),
-          dimensionValueOperator: S.optional(S.String).pipe(T.HttpQuery("dimensionValueOperator")),
+          dimensionValueOperator: S.optional(DimensionValueOperator).pipe(
+            T.HttpQuery("dimensionValueOperator"),
+          ),
           startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(T.HttpQuery("startTime")),
           endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(T.HttpQuery("endTime")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -20476,19 +23178,19 @@ function __c69(j: number): any {
       return S.suspend(() =>
         S.Struct({
           timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          value: S.optional(__S(140)),
+          value: S.optional(MetricValue),
         }),
       ).annotate({ identifier: "MetricDatum" });
     case 3:
-      return S.Array(__S(554));
+      return S.Array(MetricDatum);
     case 4:
       return S.suspend(() =>
-        S.Struct({ metricDatumList: S.optional(__S(555)), nextToken: S.optional(S.String) }),
+        S.Struct({ metricDatumList: S.optional(MetricDatumList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListMetricValuesResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          actionType: S.optional(S.String).pipe(T.HttpQuery("actionType")),
+          actionType: S.optional(MitigationActionType).pipe(T.HttpQuery("actionType")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
         }).pipe(
@@ -20515,7 +23217,7 @@ function __c69(j: number): any {
         identifier: "MitigationActionIdentifier",
       });
     case 7:
-      return S.Array(__S(558));
+      return S.Array(MitigationActionIdentifier);
   }
 }
 function __c70(j: number): any {
@@ -20523,7 +23225,7 @@ function __c70(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          actionIdentifiers: S.optional(__S(559)),
+          actionIdentifiers: S.optional(MitigationActionIdentifierList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -20534,7 +23236,7 @@ function __c70(j: number): any {
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          otaUpdateStatus: S.optional(S.String).pipe(T.HttpQuery("otaUpdateStatus")),
+          otaUpdateStatus: S.optional(OTAUpdateStatus).pipe(T.HttpQuery("otaUpdateStatus")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/otaUpdates" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListOTAUpdatesRequest" });
     case 2:
@@ -20546,10 +23248,10 @@ function __c70(j: number): any {
         }),
       ).annotate({ identifier: "OTAUpdateSummary" });
     case 3:
-      return S.Array(__S(562));
+      return S.Array(OTAUpdateSummary);
     case 4:
       return S.suspend(() =>
-        S.Struct({ otaUpdates: S.optional(__S(563)), nextToken: S.optional(S.String) }),
+        S.Struct({ otaUpdates: S.optional(OTAUpdatesSummary), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListOTAUpdatesResponse" });
     case 5:
       return S.suspend(() =>
@@ -20582,7 +23284,7 @@ function __c70(j: number): any {
         }),
       ).annotate({ identifier: "OutgoingCertificate" });
     case 7:
-      return S.Array(__S(566));
+      return S.Array(OutgoingCertificate);
   }
 }
 function __c71(j: number): any {
@@ -20590,7 +23292,7 @@ function __c71(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          outgoingCertificates: S.optional(__S(567)),
+          outgoingCertificates: S.optional(OutgoingCertificates),
           nextMarker: S.optional(S.String),
         }),
       ).annotate({
@@ -20613,11 +23315,11 @@ function __c71(j: number): any {
         }),
       ).annotate({ identifier: "PackageSummary" });
     case 3:
-      return S.Array(__S(570));
+      return S.Array(PackageSummary);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          packageSummaries: S.optional(__S(571)),
+          packageSummaries: S.optional(PackageSummaryList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPackagesResponse" });
@@ -20625,7 +23327,7 @@ function __c71(j: number): any {
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.HttpLabel("packageName")),
-          status: S.optional(S.String).pipe(T.HttpQuery("status")),
+          status: S.optional(PackageVersionStatus).pipe(T.HttpQuery("status")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
         }).pipe(
@@ -20646,13 +23348,13 @@ function __c71(j: number): any {
         S.Struct({
           packageName: S.optional(S.String),
           versionName: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(PackageVersionStatus),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "PackageVersionSummary" });
     case 7:
-      return S.Array(__S(574));
+      return S.Array(PackageVersionSummary);
   }
 }
 function __c72(j: number): any {
@@ -20660,7 +23362,7 @@ function __c72(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          packageVersionSummaries: S.optional(__S(575)),
+          packageVersionSummaries: S.optional(PackageVersionSummaryList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -20676,7 +23378,7 @@ function __c72(j: number): any {
       ).annotate({ identifier: "ListPoliciesRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ policies: S.optional(__S(463)), nextMarker: S.optional(S.String) }),
+        S.Struct({ policies: S.optional(Policies), nextMarker: S.optional(S.String) }),
       ).annotate({ identifier: "ListPoliciesResponse" });
     case 3:
       return S.suspend(() =>
@@ -20693,7 +23395,7 @@ function __c72(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ principals: S.optional(__S(9)), nextMarker: S.optional(S.String) }),
+        S.Struct({ principals: S.optional(Principals), nextMarker: S.optional(S.String) }),
       ).annotate({
         identifier: "ListPolicyPrincipalsResponse",
       });
@@ -20721,13 +23423,13 @@ function __c72(j: number): any {
         }),
       ).annotate({ identifier: "PolicyVersion" });
     case 7:
-      return S.Array(__S(582));
+      return S.Array(PolicyVersion);
   }
 }
 function __c73(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ policyVersions: S.optional(__S(583)) })).annotate({
+      return S.suspend(() => S.Struct({ policyVersions: S.optional(PolicyVersions) })).annotate({
         identifier: "ListPolicyVersionsResponse",
       });
     case 1:
@@ -20764,7 +23466,7 @@ function __c73(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ things: S.optional(__S(9)), nextToken: S.optional(S.String) }),
+        S.Struct({ things: S.optional(ThingNameList), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListPrincipalThingsResponse",
       });
@@ -20774,7 +23476,9 @@ function __c73(j: number): any {
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           principal: S.String.pipe(T.HttpHeader("x-amzn-principal")),
-          thingPrincipalType: S.optional(S.String).pipe(T.HttpQuery("thingPrincipalType")),
+          thingPrincipalType: S.optional(ThingPrincipalType).pipe(
+            T.HttpQuery("thingPrincipalType"),
+          ),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/principals/things-v2" }),
@@ -20790,14 +23494,14 @@ function __c73(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ thingName: S.String, thingPrincipalType: S.optional(S.String) }),
+        S.Struct({ thingName: S.String, thingPrincipalType: S.optional(ThingPrincipalType) }),
       ).annotate({ identifier: "PrincipalThingObject" });
     case 6:
-      return S.Array(__S(589));
+      return S.Array(PrincipalThingObject);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          principalThingObjects: S.optional(__S(590)),
+          principalThingObjects: S.optional(PrincipalThingObjects),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -20834,17 +23538,17 @@ function __c74(j: number): any {
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           enabled: S.optional(S.Boolean),
-          type: S.optional(S.String),
+          type: S.optional(TemplateType),
         }),
       ).annotate({
         identifier: "ProvisioningTemplateSummary",
       });
     case 2:
-      return S.Array(__S(593));
+      return S.Array(ProvisioningTemplateSummary);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          templates: S.optional(__S(594)),
+          templates: S.optional(ProvisioningTemplateListing),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -20880,11 +23584,11 @@ function __c74(j: number): any {
         identifier: "ProvisioningTemplateVersionSummary",
       });
     case 6:
-      return S.Array(__S(597));
+      return S.Array(ProvisioningTemplateVersionSummary);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          versions: S.optional(__S(598)),
+          versions: S.optional(ProvisioningTemplateVersionListing),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -20916,7 +23620,7 @@ function __c75(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          relatedResources: S.optional(__S(270)),
+          relatedResources: S.optional(RelatedResources),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -20934,14 +23638,14 @@ function __c75(j: number): any {
       ).annotate({ identifier: "ListRoleAliasesRequest" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ roleAliases: S.optional(__S(9)), nextMarker: S.optional(S.String) }),
+        S.Struct({ roleAliases: S.optional(RoleAliases), nextMarker: S.optional(S.String) }),
       ).annotate({ identifier: "ListRoleAliasesResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.HttpLabel("packageName")),
           versionName: S.String.pipe(T.HttpLabel("versionName")),
-          validationResult: S.optional(S.String).pipe(T.HttpQuery("validationResult")),
+          validationResult: S.optional(SbomValidationResult).pipe(T.HttpQuery("validationResult")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
         }).pipe(
@@ -20964,19 +23668,19 @@ function __c75(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fileName: S.optional(S.String),
-          validationResult: S.optional(S.String),
-          errorCode: S.optional(S.String),
+          validationResult: S.optional(SbomValidationResult),
+          errorCode: S.optional(SbomValidationErrorCode),
           errorMessage: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SbomValidationResultSummary",
       });
     case 6:
-      return S.Array(__S(605));
+      return S.Array(SbomValidationResultSummary);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          validationResultSummaries: S.optional(__S(606)),
+          validationResultSummaries: S.optional(SbomValidationResultSummaryList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -21009,17 +23713,17 @@ function __c76(j: number): any {
         S.Struct({
           scheduledAuditName: S.optional(S.String),
           scheduledAuditArn: S.optional(S.String),
-          frequency: S.optional(S.String),
+          frequency: S.optional(AuditFrequency),
           dayOfMonth: S.optional(S.String),
-          dayOfWeek: S.optional(S.String),
+          dayOfWeek: S.optional(DayOfWeek),
         }),
       ).annotate({ identifier: "ScheduledAuditMetadata" });
     case 2:
-      return S.Array(__S(609));
+      return S.Array(ScheduledAuditMetadata);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          scheduledAudits: S.optional(__S(610)),
+          scheduledAudits: S.optional(ScheduledAuditMetadataList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -21043,11 +23747,11 @@ function __c76(j: number): any {
         identifier: "SecurityProfileIdentifier",
       });
     case 6:
-      return S.Array(__S(613));
+      return S.Array(SecurityProfileIdentifier);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          securityProfileIdentifiers: S.optional(__S(614)),
+          securityProfileIdentifiers: S.optional(SecurityProfileIdentifiers),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -21084,18 +23788,18 @@ function __c77(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          securityProfileIdentifier: S.optional(__S(613)),
-          target: S.optional(__S(617)),
+          securityProfileIdentifier: S.optional(SecurityProfileIdentifier),
+          target: S.optional(SecurityProfileTarget),
         }),
       ).annotate({
         identifier: "SecurityProfileTargetMapping",
       });
     case 3:
-      return S.Array(__S(618));
+      return S.Array(SecurityProfileTargetMapping);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          securityProfileTargetMappings: S.optional(__S(619)),
+          securityProfileTargetMappings: S.optional(SecurityProfileTargetMappings),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -21119,14 +23823,14 @@ function __c77(j: number): any {
         }),
       ).annotate({ identifier: "StreamSummary" });
     case 7:
-      return S.Array(__S(622));
+      return S.Array(StreamSummary);
   }
 }
 function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ streams: S.optional(__S(623)), nextToken: S.optional(S.String) }),
+        S.Struct({ streams: S.optional(StreamsSummary), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListStreamsResponse" });
     case 1:
       return S.suspend(() =>
@@ -21139,7 +23843,7 @@ function __c78(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ tags: S.optional(__S(32)), nextToken: S.optional(S.String) }),
+        S.Struct({ tags: S.optional(TagList), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
@@ -21164,7 +23868,7 @@ function __c78(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ targets: S.optional(__S(9)), nextMarker: S.optional(S.String) }),
+        S.Struct({ targets: S.optional(PolicyTargets), nextMarker: S.optional(S.String) }),
       ).annotate({
         identifier: "ListTargetsForPolicyResponse",
       });
@@ -21188,11 +23892,11 @@ function __c78(j: number): any {
         identifier: "ListTargetsForSecurityProfileRequest",
       });
     case 6:
-      return S.Array(__S(617));
+      return S.Array(SecurityProfileTarget);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          securityProfileTargets: S.optional(__S(630)),
+          securityProfileTargets: S.optional(SecurityProfileTargets),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -21217,7 +23921,7 @@ function __c79(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          thingGroups: S.optional(__S(369)),
+          thingGroups: S.optional(ThingGroupNameAndArnList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListThingGroupsResponse" });
@@ -21243,7 +23947,7 @@ function __c79(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          thingGroups: S.optional(__S(369)),
+          thingGroups: S.optional(ThingGroupNameAndArnList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -21270,7 +23974,7 @@ function __c79(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ principals: S.optional(__S(9)), nextToken: S.optional(S.String) }),
+        S.Struct({ principals: S.optional(Principals), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListThingPrincipalsResponse",
       });
@@ -21280,7 +23984,9 @@ function __c79(j: number): any {
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           thingName: S.String.pipe(T.HttpLabel("thingName")),
-          thingPrincipalType: S.optional(S.String).pipe(T.HttpQuery("thingPrincipalType")),
+          thingPrincipalType: S.optional(ThingPrincipalType).pipe(
+            T.HttpQuery("thingPrincipalType"),
+          ),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/things/{thingName}/principals-v2" }),
@@ -21296,18 +24002,18 @@ function __c79(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ principal: S.String, thingPrincipalType: S.optional(S.String) }),
+        S.Struct({ principal: S.String, thingPrincipalType: S.optional(ThingPrincipalType) }),
       ).annotate({ identifier: "ThingPrincipalObject" });
   }
 }
 function __c80(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(639));
+      return S.Array(ThingPrincipalObject);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          thingPrincipalObjects: S.optional(__S(640)),
+          thingPrincipalObjects: S.optional(ThingPrincipalObjects),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -21317,7 +24023,7 @@ function __c80(j: number): any {
       return S.suspend(() =>
         S.Struct({
           taskId: S.String.pipe(T.HttpLabel("taskId")),
-          reportType: S.String.pipe(T.HttpQuery("reportType")),
+          reportType: ReportType.pipe(T.HttpQuery("reportType")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(
@@ -21336,8 +24042,8 @@ function __c80(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resourceLinks: S.optional(__S(9)),
-          reportType: S.optional(S.String),
+          resourceLinks: S.optional(S3FileUrlList),
+          reportType: S.optional(ReportType),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -21348,7 +24054,7 @@ function __c80(j: number): any {
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          status: S.optional(S.String).pipe(T.HttpQuery("status")),
+          status: S.optional(Status).pipe(T.HttpQuery("status")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/thing-registration-tasks" }),
@@ -21364,7 +24070,7 @@ function __c80(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ taskIds: S.optional(__S(9)), nextToken: S.optional(S.String) }),
+        S.Struct({ taskIds: S.optional(TaskIdList), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListThingRegistrationTasksResponse",
       });
@@ -21387,7 +24093,7 @@ function __c80(j: number): any {
           thingName: S.optional(S.String),
           thingTypeName: S.optional(S.String),
           thingArn: S.optional(S.String),
-          attributes: S.optional(__S(22)),
+          attributes: S.optional(Attributes),
           version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ThingAttribute" });
@@ -21396,10 +24102,10 @@ function __c80(j: number): any {
 function __c81(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(647));
+      return S.Array(ThingAttribute);
     case 1:
       return S.suspend(() =>
-        S.Struct({ things: S.optional(__S(648)), nextToken: S.optional(S.String) }),
+        S.Struct({ things: S.optional(ThingAttributeList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListThingsResponse" });
     case 2:
       return S.suspend(() =>
@@ -21455,15 +24161,15 @@ function __c81(j: number): any {
         S.Struct({
           thingTypeName: S.optional(S.String),
           thingTypeArn: S.optional(S.String),
-          thingTypeProperties: S.optional(__S(164)),
-          thingTypeMetadata: S.optional(__S(375)),
+          thingTypeProperties: S.optional(ThingTypeProperties),
+          thingTypeMetadata: S.optional(ThingTypeMetadata),
         }),
       ).annotate({ identifier: "ThingTypeDefinition" });
     case 6:
-      return S.Array(__S(653));
+      return S.Array(ThingTypeDefinition);
     case 7:
       return S.suspend(() =>
-        S.Struct({ thingTypes: S.optional(__S(654)), nextToken: S.optional(S.String) }),
+        S.Struct({ thingTypes: S.optional(ThingTypeList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListThingTypesResponse" });
   }
 }
@@ -21484,23 +24190,23 @@ function __c82(j: number): any {
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(TopicRuleDestinationStatus),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           statusReason: S.optional(S.String),
-          httpUrlSummary: S.optional(__S(217)),
-          vpcDestinationSummary: S.optional(__S(218)),
-          influxDBSummary: S.optional(__S(219)),
+          httpUrlSummary: S.optional(HttpUrlDestinationSummary),
+          vpcDestinationSummary: S.optional(VpcDestinationSummary),
+          influxDBSummary: S.optional(InfluxDBDestinationSummary),
         }),
       ).annotate({
         identifier: "TopicRuleDestinationSummary",
       });
     case 2:
-      return S.Array(__S(657));
+      return S.Array(TopicRuleDestinationSummary);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          destinationSummaries: S.optional(__S(658)),
+          destinationSummaries: S.optional(TopicRuleDestinationSummaries),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -21526,10 +24232,10 @@ function __c82(j: number): any {
         }),
       ).annotate({ identifier: "TopicRuleListItem" });
     case 6:
-      return S.Array(__S(661));
+      return S.Array(TopicRuleListItem);
     case 7:
       return S.suspend(() =>
-        S.Struct({ rules: S.optional(__S(662)), nextToken: S.optional(S.String) }),
+        S.Struct({ rules: S.optional(TopicRuleList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTopicRulesResponse" });
   }
 }
@@ -21538,7 +24244,7 @@ function __c83(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          targetType: S.optional(S.String).pipe(T.HttpQuery("targetType")),
+          targetType: S.optional(LogTargetType).pipe(T.HttpQuery("targetType")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(
@@ -21549,18 +24255,18 @@ function __c83(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ targetType: S.String, targetName: S.optional(S.String) }),
+        S.Struct({ targetType: LogTargetType, targetName: S.optional(S.String) }),
       ).annotate({ identifier: "LogTarget" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ logTarget: S.optional(__S(665)), logLevel: S.optional(S.String) }),
+        S.Struct({ logTarget: S.optional(LogTarget), logLevel: S.optional(LogLevel) }),
       ).annotate({ identifier: "LogTargetConfiguration" });
     case 3:
-      return S.Array(__S(666));
+      return S.Array(LogTargetConfiguration);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          logTargetConfigurations: S.optional(__S(667)),
+          logTargetConfigurations: S.optional(LogTargetConfigurations),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -21573,9 +24279,11 @@ function __c83(j: number): any {
           endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(T.HttpQuery("endTime")),
           thingName: S.optional(S.String).pipe(T.HttpQuery("thingName")),
           securityProfileName: S.optional(S.String).pipe(T.HttpQuery("securityProfileName")),
-          behaviorCriteriaType: S.optional(S.String).pipe(T.HttpQuery("behaviorCriteriaType")),
+          behaviorCriteriaType: S.optional(BehaviorCriteriaType).pipe(
+            T.HttpQuery("behaviorCriteriaType"),
+          ),
           listSuppressedAlerts: S.optional(S.Boolean).pipe(T.HttpQuery("listSuppressedAlerts")),
-          verificationState: S.optional(S.String).pipe(T.HttpQuery("verificationState")),
+          verificationState: S.optional(VerificationState).pipe(T.HttpQuery("verificationState")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(
@@ -21590,24 +24298,24 @@ function __c83(j: number): any {
           violationId: S.optional(S.String),
           thingName: S.optional(S.String),
           securityProfileName: S.optional(S.String),
-          behavior: S.optional(__S(144)),
-          metricValue: S.optional(__S(140)),
-          violationEventAdditionalInfo: S.optional(__S(457)),
-          violationEventType: S.optional(S.String),
-          verificationState: S.optional(S.String),
+          behavior: S.optional(Behavior),
+          metricValue: S.optional(MetricValue),
+          violationEventAdditionalInfo: S.optional(ViolationEventAdditionalInfo),
+          violationEventType: S.optional(ViolationEventType),
+          verificationState: S.optional(VerificationState),
           verificationStateDescription: S.optional(S.String),
           violationEventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ViolationEvent" });
     case 7:
-      return S.Array(__S(670));
+      return S.Array(ViolationEvent);
   }
 }
 function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ violationEvents: S.optional(__S(671)), nextToken: S.optional(S.String) }),
+        S.Struct({ violationEvents: S.optional(ViolationEvents), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListViolationEventsResponse",
       });
@@ -21615,7 +24323,7 @@ function __c84(j: number): any {
       return S.suspend(() =>
         S.Struct({
           violationId: S.String.pipe(T.HttpLabel("violationId")),
-          verificationState: S.String,
+          verificationState: VerificationState,
           verificationStateDescription: S.optional(S.String),
         }).pipe(
           T.all(
@@ -21637,9 +24345,9 @@ function __c84(j: number): any {
           verificationCertificate: S.optional(S.String),
           setAsActive: S.optional(S.Boolean).pipe(T.HttpQuery("setAsActive")),
           allowAutoRegistration: S.optional(S.Boolean).pipe(T.HttpQuery("allowAutoRegistration")),
-          registrationConfig: S.optional(__S(297)),
-          tags: S.optional(__S(32)),
-          certificateMode: S.optional(S.String),
+          registrationConfig: S.optional(RegistrationConfig),
+          tags: S.optional(TagList),
+          certificateMode: S.optional(CertificateMode),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/cacertificate" }), svc, auth, proto, ver, rules),
         ),
@@ -21658,7 +24366,7 @@ function __c84(j: number): any {
           certificatePem: S.String,
           caCertificatePem: S.optional(S.String),
           setAsActive: S.optional(S.Boolean).pipe(T.HttpQuery("setAsActive")),
-          status: S.optional(S.String),
+          status: S.optional(CertificateStatus),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/certificate/register" }),
@@ -21674,7 +24382,7 @@ function __c84(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ certificatePem: S.String, status: S.optional(S.String) }).pipe(
+        S.Struct({ certificatePem: S.String, status: S.optional(CertificateStatus) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/certificate/register-no-ca" }),
             svc,
@@ -21689,13 +24397,13 @@ function __c84(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ templateBody: S.String, parameters: S.optional(__S(22)) }).pipe(
+        S.Struct({ templateBody: S.String, parameters: S.optional(Parameters) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/things" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "RegisterThingRequest" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ certificatePem: S.optional(S.String), resourceArns: S.optional(__S(30)) }),
+        S.Struct({ certificatePem: S.optional(S.String), resourceArns: S.optional(ResourceArns) }),
       ).annotate({ identifier: "RegisterThingResponse" });
   }
 }
@@ -21763,7 +24471,7 @@ function __c85(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ruleName: S.String.pipe(T.HttpLabel("ruleName")),
-          topicRulePayload: __S(210).pipe(T.HttpPayload()).annotate({
+          topicRulePayload: TopicRulePayload.pipe(T.HttpPayload()).annotate({
             identifier: "TopicRulePayload",
           }),
         }).pipe(
@@ -21807,15 +24515,15 @@ function __c85(j: number): any {
           thingName: S.optional(S.String),
           thingId: S.optional(S.String),
           thingTypeName: S.optional(S.String),
-          thingGroupNames: S.optional(__S(9)),
-          attributes: S.optional(__S(22)),
+          thingGroupNames: S.optional(ThingGroupNameList),
+          attributes: S.optional(Attributes),
           shadow: S.optional(S.String),
           deviceDefender: S.optional(S.String),
-          connectivity: S.optional(__S(685)),
+          connectivity: S.optional(ThingConnectivity),
         }),
       ).annotate({ identifier: "ThingDocument" });
     case 7:
-      return S.Array(__S(686));
+      return S.Array(ThingDocument);
   }
 }
 function __c86(j: number): any {
@@ -21826,18 +24534,18 @@ function __c86(j: number): any {
           thingGroupName: S.optional(S.String),
           thingGroupId: S.optional(S.String),
           thingGroupDescription: S.optional(S.String),
-          attributes: S.optional(__S(22)),
-          parentGroupNames: S.optional(__S(9)),
+          attributes: S.optional(Attributes),
+          parentGroupNames: S.optional(ThingGroupNameList),
         }),
       ).annotate({ identifier: "ThingGroupDocument" });
     case 1:
-      return S.Array(__S(688));
+      return S.Array(ThingGroupDocument);
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          things: S.optional(__S(687)),
-          thingGroups: S.optional(__S(689)),
+          things: S.optional(ThingDocumentList),
+          thingGroups: S.optional(ThingGroupDocumentList),
         }),
       ).annotate({ identifier: "SearchIndexResponse" });
     case 3:
@@ -21881,12 +24589,12 @@ function __c86(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ roleArn: S.String, logLevel: S.optional(S.String) }),
+        S.Struct({ roleArn: S.String, logLevel: S.optional(LogLevel) }),
       ).annotate({ identifier: "LoggingOptionsPayload" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          loggingOptionsPayload: __S(694).pipe(T.HttpPayload()).annotate({
+          loggingOptionsPayload: LoggingOptionsPayload.pipe(T.HttpPayload()).annotate({
             identifier: "LoggingOptionsPayload",
           }),
         }).pipe(
@@ -21899,7 +24607,7 @@ function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ logTarget: __S(665), logLevel: S.String }).pipe(
+        S.Struct({ logTarget: LogTarget, logLevel: LogLevel }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v2LoggingLevel" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "SetV2LoggingLevelRequest" });
@@ -21907,9 +24615,9 @@ function __c87(j: number): any {
       return S.suspend(() =>
         S.Struct({
           roleArn: S.optional(S.String),
-          defaultLogLevel: S.optional(S.String),
+          defaultLogLevel: S.optional(LogLevel),
           disableAllLogs: S.optional(S.Boolean),
-          eventConfigurations: S.optional(__S(454)),
+          eventConfigurations: S.optional(LogEventConfigurations),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v2LoggingOptions" }), svc, auth, proto, ver, rules),
         ),
@@ -21920,8 +24628,8 @@ function __c87(j: number): any {
       return S.suspend(() =>
         S.Struct({
           taskId: S.String.pipe(T.HttpLabel("taskId")),
-          target: __S(277),
-          auditCheckToActionsMapping: __S(276),
+          target: AuditMitigationActionsTaskTarget,
+          auditCheckToActionsMapping: AuditCheckToActionsMapping,
           clientRequestToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -21944,9 +24652,9 @@ function __c87(j: number): any {
       return S.suspend(() =>
         S.Struct({
           taskId: S.String.pipe(T.HttpLabel("taskId")),
-          target: __S(309),
-          actions: __S(9),
-          violationEventOccurrenceRange: S.optional(__S(310)),
+          target: DetectMitigationActionsTaskTarget,
+          actions: DetectMitigationActionsToExecuteList,
+          violationEventOccurrenceRange: S.optional(ViolationEventOccurrenceRange),
           includeOnlyActiveViolations: S.optional(S.Boolean),
           includeSuppressedAlerts: S.optional(S.Boolean),
           clientRequestToken: S.String.pipe(T.IdempotencyToken()),
@@ -21965,7 +24673,7 @@ function __c87(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ targetCheckNames: __S(9) }).pipe(
+        S.Struct({ targetCheckNames: TargetAuditCheckNames }).pipe(
           T.all(T.Http({ method: "POST", uri: "/audit/tasks" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -22012,25 +24720,25 @@ function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: __S(32) }).pipe(
+        S.Struct({ resourceArn: S.String, tags: TagList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/tags" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ actionType: S.optional(S.String), resources: __S(9) }),
+        S.Struct({ actionType: S.optional(ActionType), resources: Resources }),
       ).annotate({ identifier: "AuthInfo" });
     case 2:
-      return S.Array(__S(705));
+      return S.Array(AuthInfo);
     case 3:
       return S.suspend(() =>
         S.Struct({
           principal: S.optional(S.String),
           cognitoIdentityPoolId: S.optional(S.String),
-          authInfos: __S(706),
+          authInfos: AuthInfos,
           clientId: S.optional(S.String).pipe(T.HttpQuery("clientId")),
-          policyNamesToAdd: S.optional(__S(9)),
-          policyNamesToSkip: S.optional(__S(9)),
+          policyNamesToAdd: S.optional(PolicyNames),
+          policyNamesToSkip: S.optional(PolicyNames),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/test-authorization" }),
@@ -22043,39 +24751,39 @@ function __c88(j: number): any {
         ),
       ).annotate({ identifier: "TestAuthorizationRequest" });
     case 4:
-      return S.suspend(() => S.Struct({ policies: S.optional(__S(463)) })).annotate({
+      return S.suspend(() => S.Struct({ policies: S.optional(Policies) })).annotate({
         identifier: "Allowed",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          implicitDeny: S.optional(__S(708)),
-          explicitDeny: S.optional(__S(708)),
+          implicitDeny: S.optional(ImplicitDeny),
+          explicitDeny: S.optional(ExplicitDeny),
         }),
       ).annotate({ identifier: "Denied" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          authInfo: S.optional(__S(705)),
-          allowed: S.optional(__S(708)),
-          denied: S.optional(__S(709)),
-          authDecision: S.optional(S.String),
-          missingContextValues: S.optional(__S(9)),
+          authInfo: S.optional(AuthInfo),
+          allowed: S.optional(Allowed),
+          denied: S.optional(Denied),
+          authDecision: S.optional(AuthDecision),
+          missingContextValues: S.optional(MissingContextValues),
         }),
       ).annotate({ identifier: "AuthResult" });
     case 7:
-      return S.Array(__S(710));
+      return S.Array(AuthResult);
   }
 }
 function __c89(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ authResults: S.optional(__S(711)) })).annotate({
+      return S.suspend(() => S.Struct({ authResults: S.optional(AuthResults) })).annotate({
         identifier: "TestAuthorizationResponse",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ headers: S.optional(__S(30)), queryString: S.optional(S.String) }),
+        S.Struct({ headers: S.optional(HttpHeaders), queryString: S.optional(S.String) }),
       ).annotate({ identifier: "HttpContext" });
     case 2:
       return S.suspend(() =>
@@ -22095,9 +24803,9 @@ function __c89(j: number): any {
           authorizerName: S.String.pipe(T.HttpLabel("authorizerName")),
           token: S.optional(S.String),
           tokenSignature: S.optional(S.String),
-          httpContext: S.optional(__S(713)),
-          mqttContext: S.optional(__S(714)),
-          tlsContext: S.optional(__S(715)),
+          httpContext: S.optional(HttpContext),
+          mqttContext: S.optional(MqttContext),
+          tlsContext: S.optional(TlsContext),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/authorizer/{authorizerName}/test" }),
@@ -22116,7 +24824,7 @@ function __c89(j: number): any {
         S.Struct({
           isAuthenticated: S.optional(S.Boolean),
           principalId: S.optional(S.String),
-          policyDocuments: S.optional(__S(9)),
+          policyDocuments: S.optional(PolicyDocuments),
           refreshAfterInSeconds: S.optional(S.Number),
           disconnectAfterInSeconds: S.optional(S.Number),
         }),
@@ -22154,7 +24862,7 @@ function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tagKeys: __S(9) }).pipe(
+        S.Struct({ resourceArn: S.String, tagKeys: TagKeyList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/untag" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -22162,8 +24870,8 @@ function __c90(j: number): any {
       return S.suspend(() =>
         S.Struct({
           roleArn: S.optional(S.String),
-          auditNotificationTargetConfigurations: S.optional(__S(263)),
-          auditCheckConfigurations: S.optional(__S(266)),
+          auditNotificationTargetConfigurations: S.optional(AuditNotificationTargetConfigurations),
+          auditCheckConfigurations: S.optional(AuditCheckConfigurations),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/audit/configuration" }),
@@ -22181,7 +24889,7 @@ function __c90(j: number): any {
       return S.suspend(() =>
         S.Struct({
           checkName: S.String,
-          resourceIdentifier: __S(28),
+          resourceIdentifier: ResourceIdentifier,
           expirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           suppressIndefinitely: S.optional(S.Boolean),
           description: S.optional(S.String),
@@ -22204,8 +24912,8 @@ function __c90(j: number): any {
           authorizerName: S.String.pipe(T.HttpLabel("authorizerName")),
           authorizerFunctionArn: S.optional(S.String),
           tokenKeyName: S.optional(S.String),
-          tokenSigningPublicKeys: S.optional(__S(30)),
-          status: S.optional(S.String),
+          tokenSigningPublicKeys: S.optional(PublicKeyMap),
+          status: S.optional(AuthorizerStatus),
           enableCachingForHttp: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -22222,7 +24930,7 @@ function __c90(j: number): any {
       return S.suspend(() =>
         S.Struct({
           billingGroupName: S.String.pipe(T.HttpLabel("billingGroupName")),
-          billingGroupProperties: __S(35),
+          billingGroupProperties: BillingGroupProperties,
           expectedVersion: S.optional(S.Number),
         }).pipe(
           T.all(
@@ -22245,11 +24953,11 @@ function __c90(j: number): any {
       return S.suspend(() =>
         S.Struct({
           certificateId: S.String.pipe(T.HttpLabel("certificateId")),
-          newStatus: S.optional(S.String).pipe(T.HttpQuery("newStatus")),
-          newAutoRegistrationStatus: S.optional(S.String).pipe(
+          newStatus: S.optional(CACertificateStatus).pipe(T.HttpQuery("newStatus")),
+          newAutoRegistrationStatus: S.optional(AutoRegistrationStatus).pipe(
             T.HttpQuery("newAutoRegistrationStatus"),
           ),
-          registrationConfig: S.optional(__S(297)),
+          registrationConfig: S.optional(RegistrationConfig),
           removeAutoRegistration: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -22268,7 +24976,7 @@ function __c90(j: number): any {
       return S.suspend(() =>
         S.Struct({
           certificateId: S.String.pipe(T.HttpLabel("certificateId")),
-          newStatus: S.String.pipe(T.HttpQuery("newStatus")),
+          newStatus: CertificateStatus.pipe(T.HttpQuery("newStatus")),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/certificates/{certificateId}" }),
@@ -22289,7 +24997,7 @@ function __c91(j: number): any {
         S.Struct({
           certificateProviderName: S.String.pipe(T.HttpLabel("certificateProviderName")),
           lambdaFunctionArn: S.optional(S.String),
-          accountDefaultForOperations: S.optional(__S(40)),
+          accountDefaultForOperations: S.optional(CertificateProviderAccountDefaultForOperations),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/certificate-providers/{certificateProviderName}" }),
@@ -22353,7 +25061,7 @@ function __c91(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
-          stringValues: __S(9),
+          stringValues: DimensionStringValues,
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/dimensions/{name}" }),
@@ -22370,8 +25078,8 @@ function __c91(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           arn: S.optional(S.String),
-          type: S.optional(S.String),
-          stringValues: S.optional(__S(9)),
+          type: S.optional(DimensionType),
+          stringValues: S.optional(DimensionStringValues),
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -22380,14 +25088,14 @@ function __c91(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domainConfigurationName: S.String.pipe(T.HttpLabel("domainConfigurationName")),
-          authorizerConfig: S.optional(__S(59)),
-          domainConfigurationStatus: S.optional(S.String),
+          authorizerConfig: S.optional(AuthorizerConfig),
+          domainConfigurationStatus: S.optional(DomainConfigurationStatus),
           removeAuthorizerConfig: S.optional(S.Boolean),
-          tlsConfig: S.optional(__S(60)),
-          serverCertificateConfig: S.optional(__S(61)),
-          authenticationType: S.optional(S.String),
-          applicationProtocol: S.optional(S.String),
-          clientCertificateConfig: S.optional(__S(62)),
+          tlsConfig: S.optional(TlsConfig),
+          serverCertificateConfig: S.optional(ServerCertificateConfig),
+          authenticationType: S.optional(AuthenticationType),
+          applicationProtocol: S.optional(ApplicationProtocol),
+          clientCertificateConfig: S.optional(ClientCertificateConfig),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/domainConfigurations/{domainConfigurationName}" }),
@@ -22405,7 +25113,7 @@ function __c91(j: number): any {
       return S.suspend(() =>
         S.Struct({
           thingGroupName: S.String.pipe(T.HttpLabel("thingGroupName")),
-          thingGroupProperties: __S(66),
+          thingGroupProperties: ThingGroupProperties,
           expectedVersion: S.optional(S.Number),
           indexName: S.optional(S.String),
           queryString: S.optional(S.String),
@@ -22430,7 +25138,7 @@ function __c92(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          encryptionType: S.String,
+          encryptionType: EncryptionType,
           kmsKeyArn: S.optional(S.String),
           kmsAccessRoleArn: S.optional(S.String),
         }).pipe(
@@ -22448,7 +25156,7 @@ function __c92(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ eventConfigurations: S.optional(__S(327)) }).pipe(
+        S.Struct({ eventConfigurations: S.optional(EventConfigurations) }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/event-configurations" }),
             svc,
@@ -22466,13 +25174,13 @@ function __c92(j: number): any {
         S.Struct({
           metricName: S.String.pipe(T.HttpLabel("metricName")),
           queryString: S.optional(S.String),
-          aggregationType: S.optional(__S(69)),
+          aggregationType: S.optional(AggregationType),
           period: S.optional(S.Number),
           aggregationField: S.optional(S.String),
           description: S.optional(S.String),
           queryVersion: S.optional(S.String),
           indexName: S.String,
-          unit: S.optional(S.String),
+          unit: S.optional(FleetMetricUnit),
           expectedVersion: S.optional(S.Number),
         }).pipe(
           T.all(
@@ -22488,8 +25196,8 @@ function __c92(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          thingIndexingConfiguration: S.optional(__S(415)),
-          thingGroupIndexingConfiguration: S.optional(__S(416)),
+          thingIndexingConfiguration: S.optional(ThingIndexingConfiguration),
+          thingGroupIndexingConfiguration: S.optional(ThingGroupIndexingConfiguration),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/indexing/config" }), svc, auth, proto, ver, rules),
         ),
@@ -22501,12 +25209,12 @@ function __c92(j: number): any {
         S.Struct({
           jobId: S.String.pipe(T.HttpLabel("jobId")),
           description: S.optional(S.String),
-          presignedUrlConfig: S.optional(__S(71)),
-          jobExecutionsRolloutConfig: S.optional(__S(74)),
-          abortConfig: S.optional(__S(77)),
-          timeoutConfig: S.optional(__S(78)),
+          presignedUrlConfig: S.optional(PresignedUrlConfig),
+          jobExecutionsRolloutConfig: S.optional(JobExecutionsRolloutConfig),
+          abortConfig: S.optional(AbortConfig),
+          timeoutConfig: S.optional(TimeoutConfig),
           namespaceId: S.optional(S.String).pipe(T.HttpQuery("namespaceId")),
-          jobExecutionsRetryConfig: S.optional(__S(81)),
+          jobExecutionsRetryConfig: S.optional(JobExecutionsRetryConfig),
         }).pipe(
           T.all(T.Http({ method: "PATCH", uri: "/jobs/{jobId}" }), svc, auth, proto, ver, rules),
         ),
@@ -22516,7 +25224,7 @@ function __c92(j: number): any {
         S.Struct({
           actionName: S.String.pipe(T.HttpLabel("actionName")),
           roleArn: S.optional(S.String),
-          actionParams: S.optional(__S(96)),
+          actionParams: S.optional(MitigationActionParams),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/mitigationactions/actions/{actionName}" }),
@@ -22552,7 +25260,7 @@ function __c92(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          versionUpdateByJobsConfig: S.optional(__S(429)),
+          versionUpdateByJobsConfig: S.optional(VersionUpdateByJobsConfig),
           clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -22577,9 +25285,9 @@ function __c93(j: number): any {
           packageName: S.String.pipe(T.HttpLabel("packageName")),
           versionName: S.String.pipe(T.HttpLabel("versionName")),
           description: S.optional(SensitiveString),
-          attributes: S.optional(__S(30)),
-          artifact: S.optional(__S(6)),
-          action: S.optional(S.String),
+          attributes: S.optional(ResourceAttributes),
+          artifact: S.optional(PackageVersionArtifact),
+          action: S.optional(PackageVersionAction),
           recipe: S.optional(SensitiveString),
           clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
         }).pipe(
@@ -22603,7 +25311,7 @@ function __c93(j: number): any {
           enabled: S.optional(S.Boolean),
           defaultVersionId: S.optional(S.Number),
           provisioningRoleArn: S.optional(S.String),
-          preProvisioningHook: S.optional(__S(129)),
+          preProvisioningHook: S.optional(ProvisioningHook),
           removePreProvisioningHook: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -22638,10 +25346,10 @@ function __c93(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          frequency: S.optional(S.String),
+          frequency: S.optional(AuditFrequency),
           dayOfMonth: S.optional(S.String),
-          dayOfWeek: S.optional(S.String),
-          targetCheckNames: S.optional(__S(9)),
+          dayOfWeek: S.optional(DayOfWeek),
+          targetCheckNames: S.optional(TargetAuditCheckNames),
           scheduledAuditName: S.String.pipe(T.HttpLabel("scheduledAuditName")),
         }).pipe(
           T.all(
@@ -22661,15 +25369,15 @@ function __c93(j: number): any {
         S.Struct({
           securityProfileName: S.String.pipe(T.HttpLabel("securityProfileName")),
           securityProfileDescription: S.optional(S.String),
-          behaviors: S.optional(__S(145)),
-          alertTargets: S.optional(__S(147)),
-          additionalMetricsToRetain: S.optional(__S(9)),
-          additionalMetricsToRetainV2: S.optional(__S(149)),
+          behaviors: S.optional(Behaviors),
+          alertTargets: S.optional(AlertTargets),
+          additionalMetricsToRetain: S.optional(AdditionalMetricsToRetainList),
+          additionalMetricsToRetainV2: S.optional(AdditionalMetricsToRetainV2List),
           deleteBehaviors: S.optional(S.Boolean),
           deleteAlertTargets: S.optional(S.Boolean),
           deleteAdditionalMetricsToRetain: S.optional(S.Boolean),
           expectedVersion: S.optional(S.Number).pipe(T.HttpQuery("expectedVersion")),
-          metricsExportConfig: S.optional(__S(150)),
+          metricsExportConfig: S.optional(MetricsExportConfig),
           deleteMetricsExportConfig: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -22689,7 +25397,7 @@ function __c93(j: number): any {
         S.Struct({
           streamId: S.String.pipe(T.HttpLabel("streamId")),
           description: S.optional(S.String),
-          files: S.optional(__S(154)),
+          files: S.optional(StreamFiles),
           roleArn: S.optional(S.String),
         }).pipe(
           T.all(
@@ -22707,7 +25415,7 @@ function __c93(j: number): any {
         S.Struct({
           thingName: S.String.pipe(T.HttpLabel("thingName")),
           thingTypeName: S.optional(S.String),
-          attributePayload: S.optional(__S(65)),
+          attributePayload: S.optional(AttributePayload),
           expectedVersion: S.optional(S.Number),
           removeThingType: S.optional(S.Boolean),
         }).pipe(
@@ -22725,7 +25433,7 @@ function __c93(j: number): any {
       return S.suspend(() =>
         S.Struct({
           thingGroupName: S.String.pipe(T.HttpLabel("thingGroupName")),
-          thingGroupProperties: __S(66),
+          thingGroupProperties: ThingGroupProperties,
           expectedVersion: S.optional(S.Number),
         }).pipe(
           T.all(
@@ -22750,8 +25458,8 @@ function __c94(j: number): any {
       return S.suspend(() =>
         S.Struct({
           thingName: S.optional(S.String),
-          thingGroupsToAdd: S.optional(__S(9)),
-          thingGroupsToRemove: S.optional(__S(9)),
+          thingGroupsToAdd: S.optional(ThingGroupList),
+          thingGroupsToRemove: S.optional(ThingGroupList),
           overrideDynamicGroups: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -22770,7 +25478,7 @@ function __c94(j: number): any {
       return S.suspend(() =>
         S.Struct({
           thingTypeName: S.String.pipe(T.HttpLabel("thingTypeName")),
-          thingTypeProperties: S.optional(__S(164)),
+          thingTypeProperties: S.optional(ThingTypeProperties),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/thing-types/{thingTypeName}" }),
@@ -22784,7 +25492,7 @@ function __c94(j: number): any {
       ).annotate({ identifier: "UpdateThingTypeRequest" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ arn: S.String, status: S.String }).pipe(
+        S.Struct({ arn: S.String, status: TopicRuleDestinationStatus }).pipe(
           T.all(T.Http({ method: "PATCH", uri: "/destinations" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -22792,7 +25500,7 @@ function __c94(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ behaviors: __S(145) }).pipe(
+        S.Struct({ behaviors: Behaviors }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/security-profile-behaviors/validate" }),
             svc,
@@ -22810,211 +25518,12 @@ function __c94(j: number): any {
         identifier: "ValidationError",
       });
     case 6:
-      return S.Array(__S(757));
+      return S.Array(ValidationError);
     case 7:
       return S.suspend(() =>
-        S.Struct({ valid: S.optional(S.Boolean), validationErrors: S.optional(__S(758)) }),
+        S.Struct({ valid: S.optional(S.Boolean), validationErrors: S.optional(ValidationErrors) }),
       ).annotate({
         identifier: "ValidateSecurityProfileBehaviorsResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
-    case 41:
-      return __c41(i & 7);
-    case 42:
-      return __c42(i & 7);
-    case 43:
-      return __c43(i & 7);
-    case 44:
-      return __c44(i & 7);
-    case 45:
-      return __c45(i & 7);
-    case 46:
-      return __c46(i & 7);
-    case 47:
-      return __c47(i & 7);
-    case 48:
-      return __c48(i & 7);
-    case 49:
-      return __c49(i & 7);
-    case 50:
-      return __c50(i & 7);
-    case 51:
-      return __c51(i & 7);
-    case 52:
-      return __c52(i & 7);
-    case 53:
-      return __c53(i & 7);
-    case 54:
-      return __c54(i & 7);
-    case 55:
-      return __c55(i & 7);
-    case 56:
-      return __c56(i & 7);
-    case 57:
-      return __c57(i & 7);
-    case 58:
-      return __c58(i & 7);
-    case 59:
-      return __c59(i & 7);
-    case 60:
-      return __c60(i & 7);
-    case 61:
-      return __c61(i & 7);
-    case 62:
-      return __c62(i & 7);
-    case 63:
-      return __c63(i & 7);
-    case 64:
-      return __c64(i & 7);
-    case 65:
-      return __c65(i & 7);
-    case 66:
-      return __c66(i & 7);
-    case 67:
-      return __c67(i & 7);
-    case 68:
-      return __c68(i & 7);
-    case 69:
-      return __c69(i & 7);
-    case 70:
-      return __c70(i & 7);
-    case 71:
-      return __c71(i & 7);
-    case 72:
-      return __c72(i & 7);
-    case 73:
-      return __c73(i & 7);
-    case 74:
-      return __c74(i & 7);
-    case 75:
-      return __c75(i & 7);
-    case 76:
-      return __c76(i & 7);
-    case 77:
-      return __c77(i & 7);
-    case 78:
-      return __c78(i & 7);
-    case 79:
-      return __c79(i & 7);
-    case 80:
-      return __c80(i & 7);
-    case 81:
-      return __c81(i & 7);
-    case 82:
-      return __c82(i & 7);
-    case 83:
-      return __c83(i & 7);
-    case 84:
-      return __c84(i & 7);
-    case 85:
-      return __c85(i & 7);
-    case 86:
-      return __c86(i & 7);
-    case 87:
-      return __c87(i & 7);
-    case 88:
-      return __c88(i & 7);
-    case 89:
-      return __c89(i & 7);
-    case 90:
-      return __c90(i & 7);
-    case 91:
-      return __c91(i & 7);
-    case 92:
-      return __c92(i & 7);
-    case 93:
-      return __c93(i & 7);
-    case 94:
-      return __c94(i & 7);
   }
 }

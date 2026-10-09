@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -54,6 +52,8 @@ export type ListEconomicIntelligenceRequestStatus =
   | "ready"
   | "executed"
   | "superseded";
+const ListEconomicIntelligenceRequestStatus = S.String;
+
 export interface ListEconomicIntelligenceRequest {
   /** Account ID, prefixed `biz_`. Defaults to the API key's own account; omit for personal onboarding. */
   account_id?: string;
@@ -70,17 +70,36 @@ export interface ListEconomicIntelligenceRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
+const ListEconomicIntelligenceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ListEconomicIntelligenceRequest>;
+
 export interface EconomicIntelligenceOperation {
   /** Concise description of the operation and affected resource, or null for older recommendations. */
   description: string | null;
   /** API operation or assistant tool name. */
   tool_name: string;
 }
+const EconomicIntelligenceOperation = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<EconomicIntelligenceOperation>;
+
 export type EconomicIntelligenceExpectedToolCallsList = Array<EconomicIntelligenceOperation>;
+const EconomicIntelligenceExpectedToolCallsList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<EconomicIntelligenceExpectedToolCallsList>;
+
 /** How the user rated this recommendation, or `null` if they have not rated it */
 export type EconomicIntelligenceSentiment = "positive" | "negative";
+const EconomicIntelligenceSentiment = S.String;
+
 /** `queued` when awaiting generation; `pending` while generating; `ready` when available for approval; `executed` when approved; `superseded` when rejected or replaced. */
 export type EconomicIntelligenceStatus = "queued" | "pending" | "ready" | "executed" | "superseded";
+const EconomicIntelligenceStatus = S.String;
+
 export interface EconomicIntelligence2 {
   /** ID of the account this recommendation is for, prefixed `biz_`, or null for personal onboarding. */
   account_id: string | null;
@@ -114,21 +133,45 @@ export interface EconomicIntelligence2 {
   /** The user's written feedback, or `null` if they have not provided any. */
   user_feedback: string | null;
 }
+const EconomicIntelligence2 = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<EconomicIntelligence2>;
+
 export type ListEconomicIntelligenceResponseDataList = Array<EconomicIntelligence2>;
+const ListEconomicIntelligenceResponseDataList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ListEconomicIntelligenceResponseDataList>;
+
 export interface ListEconomicIntelligenceResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
+const ListEconomicIntelligenceResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListEconomicIntelligenceResponsePageInfo>;
+
 export interface ListEconomicIntelligenceResponse {
   data: ListEconomicIntelligenceResponseDataList;
   page_info: ListEconomicIntelligenceResponsePageInfo;
 }
+const ListEconomicIntelligenceResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListEconomicIntelligenceResponse>;
+
 /** A signed-in user can rate a recommendation as `positive` or `negative`. Can be sent alone or together with status. */
 export type UpdateEconomicIntelligenceRequestSentiment = "positive" | "negative";
+const UpdateEconomicIntelligenceRequestSentiment = S.String;
+
 /** Use `executed` to record approval, or `superseded` to reject the recommendation. */
 export type UpdateEconomicIntelligenceRequestStatus = "executed" | "superseded";
+const UpdateEconomicIntelligenceRequestStatus = S.String;
+
 export interface UpdateEconomicIntelligenceRequest {
   /** Recommendation ID, prefixed `reca_`. */
   id: string;
@@ -143,6 +186,11 @@ export interface UpdateEconomicIntelligenceRequest {
   /** An optional explanation of the rating or rejection. Negative feedback informs replacement recommendations. */
   user_feedback?: string;
 }
+const UpdateEconomicIntelligenceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<UpdateEconomicIntelligenceRequest>;
+
 export type ListEconomicIntelligenceError = BadRequest | Forbidden | NotFound | WhopOpError;
 /** List Economic Intelligence Lists an account's recommendations and generation requests, newest first. Without an account, signed-out visitors receive a business-setup template and eligible users receive their saved setup recommendation. */
 export const listEconomicIntelligence: API.PaginatedOperationMethod<
@@ -153,8 +201,8 @@ export const listEconomicIntelligence: API.PaginatedOperationMethod<
   EconomicIntelligence2
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(0) as any as S.Schema<ListEconomicIntelligenceRequest>,
-    output: __S(6) as any as S.Schema<ListEconomicIntelligenceResponse>,
+    input: ListEconomicIntelligenceRequest,
+    output: ListEconomicIntelligenceResponse,
     errors: [BadRequest, Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -183,8 +231,8 @@ export const updateEconomicIntelligence: API.OperationMethod<
   UpdateEconomicIntelligenceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<UpdateEconomicIntelligenceRequest>,
-  output: __S(3) as any as S.Schema<EconomicIntelligence2>,
+  input: UpdateEconomicIntelligenceRequest,
+  output: EconomicIntelligence2,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -197,7 +245,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(ListEconomicIntelligenceRequestStatus.pipe(T.Query())),
           input: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
@@ -217,7 +265,7 @@ function __c0(j: number): any {
         identifier: "EconomicIntelligenceOperation",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(EconomicIntelligenceOperation);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -226,13 +274,13 @@ function __c0(j: number): any {
           ai_chat_id: S.NullOr(S.String),
           created_at: S.NullOr(S.String),
           executed_at: S.NullOr(S.String),
-          expected_tool_calls: S.NullOr(__S(2)),
+          expected_tool_calls: S.NullOr(EconomicIntelligenceExpectedToolCallsList),
           id: S.String,
           input: S.NullOr(S.String),
           prompt: S.NullOr(S.String),
           reasoning: S.NullOr(S.String),
-          sentiment: S.NullOr(S.String),
-          status: S.String,
+          sentiment: S.NullOr(EconomicIntelligenceSentiment),
+          status: EconomicIntelligenceStatus,
           superseded_at: S.NullOr(S.String),
           target_url: S.optional(S.NullOr(S.String)),
           title: S.NullOr(S.String),
@@ -240,7 +288,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "EconomicIntelligence2" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(EconomicIntelligence2);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -255,8 +303,8 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(4),
-          page_info: __S(5),
+          data: ListEconomicIntelligenceResponseDataList,
+          page_info: ListEconomicIntelligenceResponsePageInfo,
         }),
       ).annotate({
         identifier: "ListEconomicIntelligenceResponse",
@@ -267,23 +315,12 @@ function __c0(j: number): any {
           id: S.String.pipe(T.Label()),
           account_id: S.optional(S.String.pipe(T.Query())),
           input: S.optional(S.String),
-          sentiment: S.optional(S.String),
-          status: S.optional(S.String),
+          sentiment: S.optional(UpdateEconomicIntelligenceRequestSentiment),
+          status: S.optional(UpdateEconomicIntelligenceRequestStatus),
           user_feedback: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/economic_intelligence/{id}", code: 200 })),
       ).annotate({
         identifier: "UpdateEconomicIntelligenceRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

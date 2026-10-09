@@ -5,8 +5,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -15,7 +13,17 @@ export interface AccountRelationshipDefinitionsDestroyRequest {
   project_id: string;
   id: string;
 }
+const AccountRelationshipDefinitionsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AccountRelationshipDefinitionsDestroyRequest>;
+
 export interface AccountRelationshipDefinitionsDestroyResponse {}
+const AccountRelationshipDefinitionsDestroyResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AccountRelationshipDefinitionsDestroyResponse>;
+
 export interface CreateAccountRelationshipDefinitionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -26,6 +34,11 @@ export interface CreateAccountRelationshipDefinitionRequest {
   /** Whether only one user can hold this relationship per account at a time, e.g. a single CSM per account. */
   is_single_holder?: boolean;
 }
+const CreateAccountRelationshipDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateAccountRelationshipDefinitionRequest>;
+
 /** A team-defined account relationship type (CSM, Onboarding manager, ...). */
 export interface AccountRelationshipDefinition {
   /** Relationship definition UUID. */
@@ -39,11 +52,21 @@ export interface AccountRelationshipDefinition {
   /** Whether customer analytics can take control of this relationship per account. Rows under a controlled relationship can't be deleted. On an account where control has started, only a person can change the relationship and an empty relationship is a deliberate decision. Set by project operators, not through this API. */
   is_controlled: boolean;
 }
+const AccountRelationshipDefinition = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AccountRelationshipDefinition>;
+
 export interface GetAccountRelationshipDefinitionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const GetAccountRelationshipDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetAccountRelationshipDefinitionRequest>;
+
 export interface ListAccountRelationshipDefinitionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -52,14 +75,29 @@ export interface ListAccountRelationshipDefinitionsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListAccountRelationshipDefinitionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListAccountRelationshipDefinitionsRequest>;
+
 export type PaginatedAccountRelationshipDefinitionListResultsList =
   Array<AccountRelationshipDefinition>;
+const PaginatedAccountRelationshipDefinitionListResultsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<PaginatedAccountRelationshipDefinitionListResultsList>;
+
 export interface PaginatedAccountRelationshipDefinitionList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedAccountRelationshipDefinitionListResultsList;
 }
+const PaginatedAccountRelationshipDefinitionList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<PaginatedAccountRelationshipDefinitionList>;
+
 export interface UpdateAccountRelationshipDefinitionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -71,6 +109,11 @@ export interface UpdateAccountRelationshipDefinitionRequest {
   /** Whether only one user can hold this relationship per account at a time, e.g. a single CSM per account. */
   is_single_holder?: boolean;
 }
+const UpdateAccountRelationshipDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<UpdateAccountRelationshipDefinitionRequest>;
+
 export interface UpdateAccountRelationshipDefinitionsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -82,6 +125,11 @@ export interface UpdateAccountRelationshipDefinitionsPartialRequest {
   /** Whether only one user can hold this relationship per account at a time, e.g. a single CSM per account. */
   is_single_holder?: boolean;
 }
+const UpdateAccountRelationshipDefinitionsPartialRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<UpdateAccountRelationshipDefinitionsPartialRequest>;
+
 export type AccountRelationshipDefinitionsDestroyError = PosthogOpError;
 export const accountRelationshipDefinitionsDestroy: API.OperationMethod<
   AccountRelationshipDefinitionsDestroyRequest,
@@ -89,8 +137,8 @@ export const accountRelationshipDefinitionsDestroy: API.OperationMethod<
   AccountRelationshipDefinitionsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AccountRelationshipDefinitionsDestroyRequest>,
-  output: __S(1) as any as S.Schema<AccountRelationshipDefinitionsDestroyResponse>,
+  input: AccountRelationshipDefinitionsDestroyRequest,
+  output: AccountRelationshipDefinitionsDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -103,8 +151,8 @@ export const createAccountRelationshipDefinition: API.OperationMethod<
   CreateAccountRelationshipDefinitionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateAccountRelationshipDefinitionRequest>,
-  output: __S(3) as any as S.Schema<AccountRelationshipDefinition>,
+  input: CreateAccountRelationshipDefinitionRequest,
+  output: AccountRelationshipDefinition,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -117,8 +165,8 @@ export const getAccountRelationshipDefinition: API.OperationMethod<
   GetAccountRelationshipDefinitionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetAccountRelationshipDefinitionRequest>,
-  output: __S(3) as any as S.Schema<AccountRelationshipDefinition>,
+  input: GetAccountRelationshipDefinitionRequest,
+  output: AccountRelationshipDefinition,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -131,8 +179,8 @@ export const listAccountRelationshipDefinitions: API.OperationMethod<
   ListAccountRelationshipDefinitionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<ListAccountRelationshipDefinitionsRequest>,
-  output: __S(7) as any as S.Schema<PaginatedAccountRelationshipDefinitionList>,
+  input: ListAccountRelationshipDefinitionsRequest,
+  output: PaginatedAccountRelationshipDefinitionList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -145,8 +193,8 @@ export const updateAccountRelationshipDefinition: API.OperationMethod<
   UpdateAccountRelationshipDefinitionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<UpdateAccountRelationshipDefinitionRequest>,
-  output: __S(3) as any as S.Schema<AccountRelationshipDefinition>,
+  input: UpdateAccountRelationshipDefinitionRequest,
+  output: AccountRelationshipDefinition,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -159,8 +207,8 @@ export const updateAccountRelationshipDefinitionsPartial: API.OperationMethod<
   UpdateAccountRelationshipDefinitionsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<UpdateAccountRelationshipDefinitionsPartialRequest>,
-  output: __S(3) as any as S.Schema<AccountRelationshipDefinition>,
+  input: UpdateAccountRelationshipDefinitionsPartialRequest,
+  output: AccountRelationshipDefinition,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -249,14 +297,14 @@ function __c0(j: number): any {
         identifier: "ListAccountRelationshipDefinitionsRequest",
       });
     case 6:
-      return S.Array(__S(3));
+      return S.Array(AccountRelationshipDefinition);
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(6),
+          results: PaginatedAccountRelationshipDefinitionListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedAccountRelationshipDefinitionList",
@@ -301,18 +349,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateAccountRelationshipDefinitionsPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

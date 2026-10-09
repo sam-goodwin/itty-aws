@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -71,6 +69,8 @@ export interface Price {
   /** The price represented as a number in micros (1 million micros is an equivalent to one's currency standard unit, for example, 1 USD = 1000000 micros). */
   amountMicros?: string;
 }
+const Price = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Price>;
+
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
 export interface TimeZone {
   /** Optional. IANA Time Zone Database version number. For example "2019a". */
@@ -78,6 +78,8 @@ export interface TimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
   id?: string;
 }
+const TimeZone = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<TimeZone>;
+
 /** Represents civil time (or occasionally physical time). This type can represent a civil time in one of a few possible ways: * When utc_offset is set and time_zone is unset: a civil time on a calendar day with a particular offset from UTC. * When time_zone is set and utc_offset is unset: a civil time on a calendar day in a particular time zone. * When neither time_zone nor utc_offset is set: a civil time on a calendar day in local time. The date is relative to the Proleptic Gregorian Calendar. If year, month, or day are 0, the DateTime is considered not to have a specific year, month, or day respectively. This type may also be used to represent a physical time if all the date and time fields are set and either case of the `time_offset` oneof is set. Consider using `Timestamp` message for physical time instead. If your use case also would like to store the user's timezone, that can be done in another field. This type is more flexible than some applications may want. Make sure to document and validate your application's limitations. */
 export interface DateTime {
   /** Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API may allow the value 60 if it allows leap-seconds. */
@@ -99,6 +101,8 @@ export interface DateTime {
   /** Time zone. */
   timeZone?: TimeZone;
 }
+const DateTime = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DateTime>;
+
 /** Represents how many items are in the shipment for the given shipment_id and line_item_id. */
 export interface ShipmentLineItemMapping {
   /** Required. The shipment ID. This field will be hashed in returned OrderTrackingSignal creation response. */
@@ -108,8 +112,20 @@ export interface ShipmentLineItemMapping {
   /** Required. The line item quantity in the shipment. */
   quantity?: string;
 }
+const ShipmentLineItemMapping = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ShipmentLineItemMapping>;
+
 export type ShipmentLineItemMappingList = Array<ShipmentLineItemMapping>;
+const ShipmentLineItemMappingList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ShipmentLineItemMappingList>;
+
 export type ShippingInfoShippingStatusEnum = "SHIPPING_STATE_UNSPECIFIED" | "SHIPPED" | "DELIVERED";
+const ShippingInfoShippingStatusEnum = S.String;
+
 /** The shipping information for the order. */
 export interface ShippingInfo {
   /** Optional. The latest delivery promised time. Include the year and timezone string, if available. This field is required, if one of the following fields is absent: tracking_id or carrier_name. */
@@ -135,8 +151,14 @@ export interface ShippingInfo {
   /** Optional. The name of the shipping carrier for the delivery. This field is required if one of the following fields is absent: earliest_delivery_promise_time, latest_delivery_promise_time, and actual_delivery_time. */
   carrier?: string;
 }
+const ShippingInfo = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ShippingInfo>;
+
 export type ShippingInfoList = Array<ShippingInfo>;
+const ShippingInfoList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ShippingInfoList>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<StringList>;
+
 /** The line items of the order. */
 export interface LineItemDetails {
   /** Optional. The Global Trade Item Number. */
@@ -156,7 +178,11 @@ export interface LineItemDetails {
   /** Optional. The Global Trade Item Numbers. */
   gtins?: StringList;
 }
+const LineItemDetails = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<LineItemDetails>;
+
 export type LineItemDetailsList = Array<LineItemDetails>;
+const LineItemDetailsList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<LineItemDetailsList>;
+
 /** Represents a business trade from which signals are extracted, such as shipping. */
 export interface OrderTrackingSignal {
   /** Optional. The delivery postal code, as a continuous string without spaces or dashes, for example "95016". This field will be anonymized in returned OrderTrackingSignal creation response. */
@@ -180,6 +206,8 @@ export interface OrderTrackingSignal {
   /** Required. Information about line items in the order. */
   lineItems?: LineItemDetailsList;
 }
+const OrderTrackingSignal = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<OrderTrackingSignal>;
+
 export interface CreateAccountsOrderTrackingSignalsRequest {
   /** Required. The account of the business for which the order signal is created. Format: accounts/{account} */
   parent: string;
@@ -188,6 +216,11 @@ export interface CreateAccountsOrderTrackingSignalsRequest {
   /** Request body */
   body?: OrderTrackingSignal;
 }
+const CreateAccountsOrderTrackingSignalsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateAccountsOrderTrackingSignalsRequest>;
+
 export type CreateAccountsOrderTrackingSignalsError =
   | NotFound
   | Forbidden
@@ -201,8 +234,8 @@ export const createAccountsOrderTrackingSignals: API.OperationMethod<
   CreateAccountsOrderTrackingSignalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CreateAccountsOrderTrackingSignalsRequest>,
-  output: __S(10) as any as S.Schema<OrderTrackingSignal>,
+  input: CreateAccountsOrderTrackingSignalsRequest,
+  output: OrderTrackingSignal,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -236,7 +269,7 @@ function __c0(j: number): any {
           nanos: S.optional(S.Number),
           hours: S.optional(S.Number),
           minutes: S.optional(S.Number),
-          timeZone: S.optional(__S(1)),
+          timeZone: S.optional(TimeZone),
         }),
       ).annotate({ identifier: "DateTime" });
     case 3:
@@ -248,25 +281,25 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ShipmentLineItemMapping" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(ShipmentLineItemMapping);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          latestDeliveryPromiseTime: S.optional(__S(2)),
-          shippingStatus: S.optional(S.String),
+          latestDeliveryPromiseTime: S.optional(DateTime),
+          shippingStatus: S.optional(ShippingInfoShippingStatusEnum),
           carrierService: S.optional(S.String),
           originPostalCode: S.optional(S.String),
-          shippedTime: S.optional(__S(2)),
+          shippedTime: S.optional(DateTime),
           shipmentId: S.optional(S.String),
           trackingId: S.optional(S.String),
           originRegionCode: S.optional(S.String),
-          earliestDeliveryPromiseTime: S.optional(__S(2)),
-          actualDeliveryTime: S.optional(__S(2)),
+          earliestDeliveryPromiseTime: S.optional(DateTime),
+          actualDeliveryTime: S.optional(DateTime),
           carrier: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShippingInfo" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(ShippingInfo);
     case 7:
       return S.Array(S.String);
   }
@@ -283,24 +316,24 @@ function __c1(j: number): any {
           brand: S.optional(S.String),
           lineItemId: S.optional(S.String),
           mpn: S.optional(S.String),
-          gtins: S.optional(__S(7)),
+          gtins: S.optional(StringList),
         }),
       ).annotate({ identifier: "LineItemDetails" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(LineItemDetails);
     case 2:
       return S.suspend(() =>
         S.Struct({
           deliveryPostalCode: S.optional(S.String),
           deliveryRegionCode: S.optional(S.String),
-          customerShippingFee: S.optional(__S(0)),
+          customerShippingFee: S.optional(Price),
           orderTrackingSignalId: S.optional(S.String),
           orderId: S.optional(S.String),
-          orderCreatedTime: S.optional(__S(2)),
-          shipmentLineItemMapping: S.optional(__S(4)),
+          orderCreatedTime: S.optional(DateTime),
+          shipmentLineItemMapping: S.optional(ShipmentLineItemMappingList),
           merchantId: S.optional(S.String),
-          shippingInfo: S.optional(__S(6)),
-          lineItems: S.optional(__S(9)),
+          shippingInfo: S.optional(ShippingInfoList),
+          lineItems: S.optional(LineItemDetailsList),
         }),
       ).annotate({ identifier: "OrderTrackingSignal" });
     case 3:
@@ -308,7 +341,7 @@ function __c1(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           orderTrackingSignalId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(10).pipe(T.HttpBody())),
+          body: S.optional(OrderTrackingSignal.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -319,18 +352,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateAccountsOrderTrackingSignalsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

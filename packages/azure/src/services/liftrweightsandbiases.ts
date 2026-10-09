@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -19,7 +17,17 @@ export interface DeleteInstanceRequest {
   /** Name of the Instance resource */
   instancename: string;
 }
+const DeleteInstanceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeleteInstanceRequest>;
+
 export interface DeleteInstanceResponse {}
+const DeleteInstanceResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<DeleteInstanceResponse>;
+
 export interface GetInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -28,10 +36,16 @@ export interface GetInstanceRequest {
   /** Name of the Instance resource */
   instancename: string;
 }
+const GetInstanceRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetInstanceRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -47,14 +61,23 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SystemData>;
+
 /** Resource tags. */
 export type GetInstanceResponseTagsMap = { [key: string]: string | undefined };
+const GetInstanceResponseTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetInstanceResponseTagsMap>;
+
 /** Marketplace subscription status of a resource. */
 export type LiftrBaseMarketplaceSubscriptionStatus =
   | "PendingFulfillmentStart"
   | "Subscribed"
   | "Suspended"
   | "Unsubscribed";
+const LiftrBaseMarketplaceSubscriptionStatus = S.String;
+
 /** Offer details for the marketplace that is selected by the user */
 export interface LiftrBaseOfferDetails {
   /** Publisher Id for the marketplace offer */
@@ -70,6 +93,11 @@ export interface LiftrBaseOfferDetails {
   /** Plan Display Name for the marketplace offer */
   termId?: string;
 }
+const LiftrBaseOfferDetails = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<LiftrBaseOfferDetails>;
+
 /** Marketplace details for an organization */
 export interface LiftrBaseMarketplaceDetails {
   /** Azure subscription id for the the marketplace offer is purchased from */
@@ -79,6 +107,11 @@ export interface LiftrBaseMarketplaceDetails {
   /** Offer details for the marketplace that is selected by the user */
   offerDetails: LiftrBaseOfferDetails;
 }
+const LiftrBaseMarketplaceDetails = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<LiftrBaseMarketplaceDetails>;
+
 /** User details for an organization */
 export interface LiftrBaseUserDetails {
   /** First name of the user */
@@ -92,8 +125,12 @@ export interface LiftrBaseUserDetails {
   /** User's phone number */
   phoneNumber?: string;
 }
+const LiftrBaseUserDetails = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<LiftrBaseUserDetails>;
+
 /** The provisioning state of a resource type. */
 export type AzureResourceManagerResourceProvisioningState = "Succeeded" | "Failed" | "Canceled";
+const AzureResourceManagerResourceProvisioningState = S.String;
+
 /** The available regions */
 export type Region =
   | "eastus"
@@ -102,6 +139,8 @@ export type Region =
   | "westeurope"
   | "japaneast"
   | "koreacentral";
+const Region = S.String;
+
 /** Partner's specific Properties */
 export interface PartnerProperties {
   /** The region of the instance */
@@ -109,12 +148,23 @@ export interface PartnerProperties {
   /** The subdomain of the instance */
   subdomain: string;
 }
+const PartnerProperties = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<PartnerProperties>;
+
 /** Defines the type of Single Sign-On (SSO) mechanism being used */
 export type LiftrBaseSingleSignOnType = "Saml" | "OpenId";
+const LiftrBaseSingleSignOnType = S.String;
+
 /** Various states of the SSO resource */
 export type LiftrBaseSingleSignOnStates = "Initial" | "Enable" | "Disable";
+const LiftrBaseSingleSignOnStates = S.String;
+
 /** List of AAD domains fetched from Microsoft Graph for user. */
 export type LiftrBaseSingleSignOnPropertiesV2AadDomainsList = Array<string>;
+const LiftrBaseSingleSignOnPropertiesV2AadDomainsList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<LiftrBaseSingleSignOnPropertiesV2AadDomainsList>;
+
 /** Properties specific to Single Sign On Resource */
 export interface LiftrBaseSingleSignOnPropertiesV2 {
   /** Type of Single Sign-On mechanism being used */
@@ -128,6 +178,11 @@ export interface LiftrBaseSingleSignOnPropertiesV2 {
   /** List of AAD domains fetched from Microsoft Graph for user. */
   aadDomains?: LiftrBaseSingleSignOnPropertiesV2AadDomainsList;
 }
+const LiftrBaseSingleSignOnPropertiesV2 = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<LiftrBaseSingleSignOnPropertiesV2>;
+
 /** Properties specific to Instance */
 export interface InstanceProperties {
   /** Marketplace details of the resource. */
@@ -141,12 +196,16 @@ export interface InstanceProperties {
   /** Single sign-on properties */
   singleSignOnProperties?: LiftrBaseSingleSignOnPropertiesV2;
 }
+const InstanceProperties = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<InstanceProperties>;
+
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
+const ManagedServiceIdentityType = S.String;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -154,8 +213,15 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
+const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<UserAssignedIdentity>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | null | undefined };
+const UserAssignedIdentities = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<UserAssignedIdentities>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetInstanceResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -165,6 +231,11 @@ export interface GetInstanceResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
+const GetInstanceResponseIdentity = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetInstanceResponseIdentity>;
+
 export interface GetInstanceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -183,8 +254,13 @@ export interface GetInstanceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetInstanceResponseIdentity;
 }
+const GetInstanceResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetInstanceResponse>;
+
 /** Resource tags. */
 export type InstancesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const InstancesCreateOrUpdateRequestTagsMap =
+  GetInstanceResponseTagsMap as any as S.Schema<InstancesCreateOrUpdateRequestTagsMap>;
+
 /** Properties specific to Instance */
 export interface InstancePropertiesInput {
   /** Marketplace details of the resource. */
@@ -196,17 +272,35 @@ export interface InstancePropertiesInput {
   /** Single sign-on properties */
   singleSignOnProperties?: LiftrBaseSingleSignOnPropertiesV2;
 }
+const InstancePropertiesInput = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<InstancePropertiesInput>;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
+const UserAssignedIdentityInput =
+  DeleteInstanceResponse as any as S.Schema<UserAssignedIdentityInput>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
+const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface InstancesCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
+const InstancesCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<InstancesCreateOrUpdateRequestIdentity>;
+
 export interface InstancesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -223,8 +317,16 @@ export interface InstancesCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: InstancesCreateOrUpdateRequestIdentity;
 }
+const InstancesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<InstancesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type InstancesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const InstancesCreateOrUpdateResponseTagsMap =
+  GetInstanceResponseTagsMap as any as S.Schema<InstancesCreateOrUpdateResponseTagsMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type InstancesCreateOrUpdateResponseIdentity = GetInstanceResponseIdentity;
 export interface InstancesCreateOrUpdateResponse {
@@ -245,12 +347,22 @@ export interface InstancesCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetInstanceResponseIdentity;
 }
+const InstancesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<InstancesCreateOrUpdateResponse>;
+
 export interface ListInstanceByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListInstanceByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ListInstanceByResourceGroupRequest>;
+
 /** Resource tags. */
 export type InstanceResourceTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -274,8 +386,15 @@ export interface InstanceResource {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetInstanceResponseIdentity;
 }
+const InstanceResource = GetInstanceResponse as any as S.Schema<InstanceResource>;
+
 /** The InstanceResource items on this page */
 export type InstanceResourceListResultValueList = Array<InstanceResource>;
+const InstanceResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<InstanceResourceListResultValueList>;
+
 /** The response of a InstanceResource list operation. */
 export interface InstanceResourceListResult {
   /** The InstanceResource items on this page */
@@ -283,11 +402,26 @@ export interface InstanceResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const InstanceResourceListResult = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<InstanceResourceListResult>;
+
 export interface ListInstanceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListInstanceBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListInstanceBySubscriptionRequest>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -299,10 +433,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -316,28 +456,51 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListOperationsResponse>;
+
 /** Resource tags. */
 export type UpdateInstanceRequestTagsMap = { [key: string]: string | undefined };
+const UpdateInstanceRequestTagsMap =
+  GetInstanceResponseTagsMap as any as S.Schema<UpdateInstanceRequestTagsMap>;
+
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
+const AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType = S.String;
+
 /** User assigned identity properties */
 export type AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue =
   UserAssignedIdentityInput;
 /** The identities assigned to this resource by the user. */
 export type AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap =
   { [key: string]: UserAssignedIdentityInput | undefined };
+const AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap =
+  /*@__PURE__*/ __L.at(
+    __c3,
+    6,
+  ) as any as S.Schema<AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput {
   /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
@@ -345,6 +508,11 @@ export interface AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInpu
   /** The identities assigned to this resource by the user. */
   userAssignedIdentities?: AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap;
 }
+const AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput>;
+
 export interface UpdateInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -357,6 +525,11 @@ export interface UpdateInstanceRequest {
   /** The managed service identities assigned to this resource. */
   identity?: AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput;
 }
+const UpdateInstanceRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<UpdateInstanceRequest>;
+
 /** Resource tags. */
 export type UpdateInstanceResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -379,6 +552,8 @@ export interface UpdateInstanceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetInstanceResponseIdentity;
 }
+const UpdateInstanceResponse = GetInstanceResponse as any as S.Schema<UpdateInstanceResponse>;
+
 export type DeleteInstanceError = AzureOpError;
 /** Delete a InstanceResource */
 export const DeleteInstance: API.OperationMethod<
@@ -387,8 +562,8 @@ export const DeleteInstance: API.OperationMethod<
   DeleteInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeleteInstanceRequest>,
-  output: __S(1) as any as S.Schema<DeleteInstanceResponse>,
+  input: DeleteInstanceRequest,
+  output: DeleteInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -402,8 +577,8 @@ export const GetInstance: API.OperationMethod<
   GetInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetInstanceRequest>,
-  output: __S(15) as any as S.Schema<GetInstanceResponse>,
+  input: GetInstanceRequest,
+  output: GetInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -417,8 +592,8 @@ export const InstancesCreateOrUpdate: API.OperationMethod<
   InstancesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<InstancesCreateOrUpdateRequest>,
-  output: __S(20) as any as S.Schema<InstancesCreateOrUpdateResponse>,
+  input: InstancesCreateOrUpdateRequest,
+  output: InstancesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -432,8 +607,8 @@ export const ListInstanceByResourceGroup: API.OperationMethod<
   ListInstanceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<ListInstanceByResourceGroupRequest>,
-  output: __S(23) as any as S.Schema<InstanceResourceListResult>,
+  input: ListInstanceByResourceGroupRequest,
+  output: InstanceResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -447,8 +622,8 @@ export const ListInstanceBySubscription: API.OperationMethod<
   ListInstanceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<ListInstanceBySubscriptionRequest>,
-  output: __S(23) as any as S.Schema<InstanceResourceListResult>,
+  input: ListInstanceBySubscriptionRequest,
+  output: InstanceResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -462,8 +637,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<ListOperationsRequest>,
-  output: __S(29) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -477,8 +652,8 @@ export const UpdateInstance: API.OperationMethod<
   UpdateInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<UpdateInstanceRequest>,
-  output: __S(15) as any as S.Schema<UpdateInstanceResponse>,
+  input: UpdateInstanceRequest,
+  output: UpdateInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -525,10 +700,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -549,8 +724,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.optional(S.String),
-          subscriptionStatus: S.optional(S.String),
-          offerDetails: __S(5),
+          subscriptionStatus: S.optional(LiftrBaseMarketplaceSubscriptionStatus),
+          offerDetails: LiftrBaseOfferDetails,
         }),
       ).annotate({
         identifier: "LiftrBaseMarketplaceDetails",
@@ -572,7 +747,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          region: S.String,
+          region: Region,
           subdomain: S.String,
         }),
       ).annotate({ identifier: "PartnerProperties" });
@@ -581,11 +756,11 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          state: S.optional(S.String),
+          type: LiftrBaseSingleSignOnType,
+          state: S.optional(LiftrBaseSingleSignOnStates),
           enterpriseAppId: S.optional(S.String),
           url: S.optional(S.String),
-          aadDomains: S.optional(__S(9)),
+          aadDomains: S.optional(LiftrBaseSingleSignOnPropertiesV2AadDomainsList),
         }),
       ).annotate({
         identifier: "LiftrBaseSingleSignOnPropertiesV2",
@@ -593,11 +768,11 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          marketplace: __S(6),
-          user: __S(7),
-          provisioningState: S.optional(S.String),
-          partnerProperties: __S(8),
-          singleSignOnProperties: S.optional(__S(10)),
+          marketplace: LiftrBaseMarketplaceDetails,
+          user: LiftrBaseUserDetails,
+          provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
+          partnerProperties: PartnerProperties,
+          singleSignOnProperties: S.optional(LiftrBaseSingleSignOnPropertiesV2),
         }),
       ).annotate({ identifier: "InstanceProperties" });
     case 4:
@@ -608,14 +783,14 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(12)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
     case 6:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(13)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(UserAssignedIdentities),
         }),
       ).annotate({
         identifier: "GetInstanceResponseIdentity",
@@ -626,11 +801,11 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetInstanceResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(11)),
-          identity: S.optional(__S(14)),
+          properties: S.optional(InstanceProperties),
+          identity: S.optional(GetInstanceResponseIdentity),
         }),
       ).annotate({ identifier: "GetInstanceResponse" });
   }
@@ -640,19 +815,19 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          marketplace: __S(6),
-          user: __S(7),
-          partnerProperties: __S(8),
-          singleSignOnProperties: S.optional(__S(10)),
+          marketplace: LiftrBaseMarketplaceDetails,
+          user: LiftrBaseUserDetails,
+          partnerProperties: PartnerProperties,
+          singleSignOnProperties: S.optional(LiftrBaseSingleSignOnPropertiesV2),
         }),
       ).annotate({ identifier: "InstancePropertiesInput" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(17)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
         }),
       ).annotate({
         identifier: "InstancesCreateOrUpdateRequestIdentity",
@@ -663,10 +838,10 @@ function __c2(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           instancename: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4)),
+          tags: S.optional(InstancesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(16)),
-          identity: S.optional(__S(18)),
+          properties: S.optional(InstancePropertiesInput),
+          identity: S.optional(InstancesCreateOrUpdateRequestIdentity),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -684,11 +859,11 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(InstancesCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(11)),
-          identity: S.optional(__S(14)),
+          properties: S.optional(InstanceProperties),
+          identity: S.optional(GetInstanceResponseIdentity),
         }),
       ).annotate({
         identifier: "InstancesCreateOrUpdateResponse",
@@ -710,11 +885,11 @@ function __c2(j: number): any {
         identifier: "ListInstanceByResourceGroupRequest",
       });
     case 6:
-      return S.Array(__S(15));
+      return S.Array(InstanceResource);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(22),
+          value: InstanceResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -764,27 +939,29 @@ function __c3(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(26)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(Operation);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(28)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 6:
-      return S.Record(S.String, __S(1));
+      return S.Record(S.String, UserAssignedIdentityInput);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(30)),
+          type: S.optional(AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType),
+          userAssignedIdentities: S.optional(
+            AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap,
+          ),
         }),
       ).annotate({
         identifier: "AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput",
@@ -799,8 +976,8 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           instancename: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4)),
-          identity: S.optional(__S(31)),
+          tags: S.optional(UpdateInstanceRequestTagsMap),
+          identity: S.optional(AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -810,24 +987,5 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateInstanceRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

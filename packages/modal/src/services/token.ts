@@ -7,8 +7,6 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
@@ -18,22 +16,38 @@ export interface CreateTokenFlowRequest {
   nextUrl?: string;
   expiresInSeconds?: number;
 }
+const CreateTokenFlowRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateTokenFlowRequest>;
+
 export interface CreateTokenFlowResponse {
   tokenFlowId?: string;
   webUrl?: string;
   code?: string;
   waitSecret?: string | Redacted.Redacted<string>;
 }
+const CreateTokenFlowResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateTokenFlowResponse>;
+
 export interface GetTokenInfoRequest {}
+const GetTokenInfoRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetTokenInfoRequest>;
+
 export interface UserIdentity {
   userId?: string;
   username?: string;
 }
+const UserIdentity = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<UserIdentity>;
+
 export interface ServiceUserIdentity {
   serviceUserId?: string;
   serviceUserName?: string;
   createdBy?: UserIdentity;
 }
+const ServiceUserIdentity = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ServiceUserIdentity>;
+
 export interface GetTokenInfoResponse {
   tokenId?: string;
   workspaceId?: string;
@@ -45,17 +59,26 @@ export interface GetTokenInfoResponse {
   expiresAt?: string;
   tokenName?: string;
 }
+const GetTokenInfoResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetTokenInfoResponse>;
+
 export interface WaitTokenFlowRequest {
   timeout?: number;
   tokenFlowId?: string;
   waitSecret?: string | Redacted.Redacted<string>;
 }
+const WaitTokenFlowRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<WaitTokenFlowRequest>;
+
 export interface WaitTokenFlowResponse {
   tokenId?: string;
   tokenSecret?: string | Redacted.Redacted<string>;
   timeout?: boolean;
   workspaceUsername?: string;
 }
+const WaitTokenFlowResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<WaitTokenFlowResponse>;
+
 export type CreateTokenFlowError = ModalOpError;
 /** Tokens (web auth flow) */
 export const createTokenFlow: API.OperationMethod<
@@ -64,8 +87,8 @@ export const createTokenFlow: API.OperationMethod<
   CreateTokenFlowError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateTokenFlowRequest>,
-  output: __S(1) as any as S.Schema<CreateTokenFlowResponse>,
+  input: CreateTokenFlowRequest,
+  output: CreateTokenFlowResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -78,8 +101,8 @@ export const getTokenInfo: API.OperationMethod<
   GetTokenInfoError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetTokenInfoRequest>,
-  output: __S(5) as any as S.Schema<GetTokenInfoResponse>,
+  input: GetTokenInfoRequest,
+  output: GetTokenInfoResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -92,8 +115,8 @@ export const waitTokenFlow: API.OperationMethod<
   WaitTokenFlowError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<WaitTokenFlowRequest>,
-  output: __S(7) as any as S.Schema<WaitTokenFlowResponse>,
+  input: WaitTokenFlowRequest,
+  output: WaitTokenFlowResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -140,7 +163,7 @@ function __c0(j: number): any {
         S.Struct({
           serviceUserId: S.optional(S.String),
           serviceUserName: S.optional(S.String),
-          createdBy: S.optional(__S(3)),
+          createdBy: S.optional(UserIdentity),
         }),
       ).annotate({ identifier: "ServiceUserIdentity" });
     case 5:
@@ -149,8 +172,8 @@ function __c0(j: number): any {
           tokenId: S.optional(S.String),
           workspaceId: S.optional(S.String),
           workspaceName: S.optional(S.String),
-          userIdentity: S.optional(__S(3)),
-          serviceUserIdentity: S.optional(__S(4)),
+          userIdentity: S.optional(UserIdentity),
+          serviceUserIdentity: S.optional(ServiceUserIdentity),
           createdAt: S.optional(S.String),
           expiresAt: S.optional(S.String),
           tokenName: S.optional(S.String),
@@ -175,16 +198,5 @@ function __c0(j: number): any {
           workspaceUsername: S.optional(S.String),
         }),
       ).annotate({ identifier: "WaitTokenFlowResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

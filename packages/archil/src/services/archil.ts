@@ -8,8 +8,6 @@ import { UnknownArchilError } from "../errors.ts";
 import { ArchilProtocol, type ArchilOpError, type ArchilOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { ArchilOpError, ArchilOpContext };
 
@@ -65,12 +63,18 @@ export interface AwsStsUser {
   principal: string;
 }
 export type DiskUser = TokenUser | AwsStsUser;
+const DiskUser = S.Unknown as any as S.Schema<DiskUser>;
+
 export interface AddDiskUserRequest {
   /** Disk ID (format `dsk-{16 hex chars}`) */
   id: string;
   body: DiskUser;
 }
+const AddDiskUserRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AddDiskUserRequest>;
+
 export type AuthorizedUserType = "token" | "awssts";
+const AuthorizedUserType = S.String;
+
 export interface AuthorizedUser {
   type?: AuthorizedUserType;
   /** Use identifier instead. Only populated for awssts type (the IAM ARN). */
@@ -83,16 +87,28 @@ export interface AuthorizedUser {
   identifier?: string;
   createdAt?: string;
 }
+const AuthorizedUser = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AuthorizedUser>;
+
 export interface ApiResponseAuthorizedUser {
   success: boolean;
   data: AuthorizedUser;
 }
+const ApiResponseAuthorizedUser = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ApiResponseAuthorizedUser>;
+
 export interface CreateApiTokenRequest {
   /** Token name */
   name: string;
   /** Token description */
   description?: string;
 }
+const CreateApiTokenRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateApiTokenRequest>;
+
 export interface ApiResponseTokenCreatedData {
   /** Token hash/ID */
   id?: string;
@@ -105,10 +121,20 @@ export interface ApiResponseTokenCreatedData {
   /** Full token value (only shown at creation) */
   token?: string;
 }
+const ApiResponseTokenCreatedData = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ApiResponseTokenCreatedData>;
+
 export interface ApiResponseTokenCreated {
   success: boolean;
   data: ApiResponseTokenCreatedData;
 }
+const ApiResponseTokenCreated = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ApiResponseTokenCreated>;
+
 /** Mount type identifier */
 export type S3MountType = "s3";
 /** Mount configuration for Amazon S3 buckets */
@@ -197,10 +223,22 @@ export interface AzureBlobMount {
   bucketPrefix?: string;
 }
 export type MountConfig = S3Mount | GCSMount | R2Mount | S3CompatibleMount | AzureBlobMount;
+const MountConfig = S.Unknown as any as S.Schema<MountConfig>;
+
 /** Storage mount to attach. Omit for archil-managed storage. */
 export type CreateDiskRequestMountsList = Array<MountConfig>;
+const CreateDiskRequestMountsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateDiskRequestMountsList>;
+
 /** Deprecated. Use AddDiskUser after creation instead. When provided, suppresses the default auto-generated token user. */
 export type CreateDiskRequestAuthMethodsList = Array<DiskUser>;
+const CreateDiskRequestAuthMethodsList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateDiskRequestAuthMethodsList>;
+
 export interface CreateDiskRequest {
   /** Disk name (alphanumeric, dashes, underscores) */
   name: string;
@@ -209,20 +247,49 @@ export interface CreateDiskRequest {
   /** Deprecated. Use AddDiskUser after creation instead. When provided, suppresses the default auto-generated token user. */
   authMethods?: CreateDiskRequestAuthMethodsList;
 }
+const CreateDiskRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateDiskRequest>;
+
 export type ApiResponseCreateDiskDataAuthorizedUsersList = Array<AuthorizedUser>;
+const ApiResponseCreateDiskDataAuthorizedUsersList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ApiResponseCreateDiskDataAuthorizedUsersList>;
+
 export interface ApiResponseCreateDiskData {
   diskId?: string;
   authorizedUsers?: ApiResponseCreateDiskDataAuthorizedUsersList;
 }
+const ApiResponseCreateDiskData = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ApiResponseCreateDiskData>;
+
 export interface ApiResponseCreateDisk {
   success: boolean;
   data: ApiResponseCreateDiskData;
 }
+const ApiResponseCreateDisk = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ApiResponseCreateDisk>;
+
 /** TCP ports to expose publicly when the sandbox is created. */
 export type CreateSandboxRequestPortsList = Array<number>;
+const CreateSandboxRequestPortsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateSandboxRequestPortsList>;
+
 /** Environment variables applied to every process */
 export type CreateSandboxRequestEnvMap = { [key: string]: string | undefined };
+const CreateSandboxRequestEnvMap = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateSandboxRequestEnvMap>;
+
 export type SandboxNetworkAction = "allow" | "deny";
+const SandboxNetworkAction = S.String;
+
 /** Outbound HTTPS request headers to set, overwriting values supplied by the sandbox. */
 export type SandboxEgressTransformHeadersMap = { [key: string]: string | undefined };
 /** Optional outbound HTTPS request transformations. An omitted or empty transform leaves the rule as an ordinary allow without request mutations. */
@@ -238,12 +305,27 @@ export interface SandboxEgressRule {
   forward_url?: string;
 }
 export type SandboxEgressPolicyAllowItem = string | SandboxEgressRule;
+const SandboxEgressPolicyAllowItem = S.Unknown as any as S.Schema<SandboxEgressPolicyAllowItem>;
+
 /** Allowed IPv4 addresses, CIDR ranges, exact domains, wildcard domains beginning with `*.`, or target objects with optional outbound HTTPS request transformations. A wildcard matches subdomains but not the apex domain, including when applying transformations. */
 export type SandboxEgressPolicyAllowList = Array<SandboxEgressPolicyAllowItem>;
+const SandboxEgressPolicyAllowList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<SandboxEgressPolicyAllowList>;
+
 /** Denied IPv4 addresses, CIDR ranges, exact domains, or wildcard domains beginning with `*.`. A wildcard matches subdomains but not the apex domain. */
 export type SandboxEgressPolicyDenyList = Array<string>;
+const SandboxEgressPolicyDenyList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<SandboxEgressPolicyDenyList>;
+
 /** Optional hosts whose HTTP(S) requests should finish before pausing, regardless of URL path. Pausing gates new matching requests and waits up to ten minutes by default for active responses, including streams, before taking a snapshot. Errors stop counting, and expiry proceeds with the snapshot. This does not limit requests during normal operation. Selectors do not grant network access. Matching uses the original request host before transformations or forwarding. Only TCP ports 80 and 443 are supported. Connections may need to be retried after resume. */
 export type SandboxEgressPolicyDrainOnPauseList = Array<string>;
+const SandboxEgressPolicyDrainOnPauseList =
+  SandboxEgressPolicyDenyList as any as S.Schema<SandboxEgressPolicyDrainOnPauseList>;
+
 /** Deny targets take precedence when an address or domain matches both lists. When domain rules or drain selectors are present, TCP ports 80 and 443 are restricted to HTTP/1.1 or HTTP/2. Plaintext HTTP authority is enforced on port 80, but requests matching a transformation rule are rejected unless the rule also forwards. Port 443 is TLS-terminated; both TLS SNI and HTTP authority are evaluated, and the HTTP authority selects the upstream, any request transformations, and any request forwarding. DNS to the sandbox's configured resolvers is allowed and UDP port 443 is denied. */
 export interface SandboxEgressPolicy {
   default: SandboxNetworkAction | (string & {});
@@ -254,10 +336,14 @@ export interface SandboxEgressPolicy {
   /** Optional hosts whose HTTP(S) requests should finish before pausing, regardless of URL path. Pausing gates new matching requests and waits up to ten minutes by default for active responses, including streams, before taking a snapshot. Errors stop counting, and expiry proceeds with the snapshot. This does not limit requests during normal operation. Selectors do not grant network access. Matching uses the original request host before transformations or forwarding. Only TCP ports 80 and 443 are supported. Connections may need to be retried after resume. */
   drain_on_pause?: SandboxEgressPolicyDrainOnPauseList;
 }
+const SandboxEgressPolicy = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<SandboxEgressPolicy>;
+
 /** Sandbox network policy. New sandboxes on free plans receive deny-all egress with no allowlist exceptions. Start/resume and forks retain the stored policy. For paid accounts, egress is unrestricted when omitted. */
 export interface SandboxNetwork {
   egress?: SandboxEgressPolicy;
 }
+const SandboxNetwork = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<SandboxNetwork>;
+
 export interface CreateSandboxRequest {
   /** Hold the request for a completed sandbox lifecycle transition */
   wait?: boolean;
@@ -281,19 +367,38 @@ export interface CreateSandboxRequest {
   /** Maximum number of concurrently attached process sessions. Detached processes and one-shot process controls do not count. */
   max_concurrent_execs?: number;
 }
+const CreateSandboxRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CreateSandboxRequest>;
+
 export interface CreateSandboxResponse {}
+const CreateSandboxResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateSandboxResponse>;
+
 export interface CreateSandboxConnectionRequest {
   /** Sandbox UUID */
   sid: string;
 }
+const CreateSandboxConnectionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateSandboxConnectionRequest>;
+
 export interface SandboxConnection {
   url: string;
   expires_at: string;
 }
+const SandboxConnection = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<SandboxConnection>;
+
 export interface ApiResponseSandboxConnection {
   success: boolean;
   data: SandboxConnection;
 }
+const ApiResponseSandboxConnection = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ApiResponseSandboxConnection>;
+
 export interface CreateSandboxPortTokenRequest {
   /** Sandbox UUID */
   sid: string;
@@ -301,6 +406,11 @@ export interface CreateSandboxPortTokenRequest {
   /** Token lifetime as a Go duration string (for example, "4m", "1h", or "24h"). Maximum 365 days ("8760h"). Omit for no expiration. */
   ttl?: string;
 }
+const CreateSandboxPortTokenRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateSandboxPortTokenRequest>;
+
 export interface CreatedSandboxPortToken {
   /** Stable token identifier used for get and revoke operations. */
   id: string;
@@ -313,10 +423,20 @@ export interface CreatedSandboxPortToken {
   /** Raw token returned only when the token is created. */
   token: string;
 }
+const CreatedSandboxPortToken = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreatedSandboxPortToken>;
+
 export interface ApiResponseCreatedSandboxPortToken {
   success: boolean;
   data: CreatedSandboxPortToken;
 }
+const ApiResponseCreatedSandboxPortToken = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ApiResponseCreatedSandboxPortToken>;
+
 export interface CreateShareUrlRequest {
   /** Disk ID (format `dsk-{16 hex chars}`) */
   id: string;
@@ -325,51 +445,96 @@ export interface CreateShareUrlRequest {
   /** URL lifetime in seconds. Any integer from 1 to 604800 (7 days). Defaults to 86400 (24 hours). */
   expiresIn?: number;
 }
+const CreateShareUrlRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateShareUrlRequest>;
+
 export interface ApiResponseShareUrlData {
   /** The signed, public download URL. */
   url: string;
   /** URL lifetime in seconds. */
   expiresIn: number;
 }
+const ApiResponseShareUrlData = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ApiResponseShareUrlData>;
+
 export interface ApiResponseShareUrl {
   success: boolean;
   data: ApiResponseShareUrlData;
 }
+const ApiResponseShareUrl = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ApiResponseShareUrl>;
+
 export interface DeleteDiskRequest {
   /** Disk ID (format `dsk-{16 hex chars}`) */
   id: string;
 }
+const DeleteDiskRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<DeleteDiskRequest>;
+
 export interface ApiResponseEmpty {
   success: boolean;
 }
+const ApiResponseEmpty = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<ApiResponseEmpty>;
+
 export interface DeleteSandboxRequest {
   /** Sandbox UUID */
   sid: string;
 }
+const DeleteSandboxRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<DeleteSandboxRequest>;
+
 export interface DeleteSandboxResponse {}
+const DeleteSandboxResponse = CreateSandboxResponse as any as S.Schema<DeleteSandboxResponse>;
+
 export interface DeleteSandboxPortRequest {
   /** Sandbox UUID */
   sid: string;
   port: number;
 }
+const DeleteSandboxPortRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<DeleteSandboxPortRequest>;
+
 export interface DeleteSandboxPortResponse {}
+const DeleteSandboxPortResponse =
+  CreateSandboxResponse as any as S.Schema<DeleteSandboxPortResponse>;
+
 export interface DeleteSandboxPortTokenRequest {
   /** Sandbox UUID */
   sid: string;
   token_id: string;
 }
+const DeleteSandboxPortTokenRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<DeleteSandboxPortTokenRequest>;
+
 export interface DeleteSandboxPortTokenResponse {}
+const DeleteSandboxPortTokenResponse =
+  CreateSandboxResponse as any as S.Schema<DeleteSandboxPortTokenResponse>;
+
 export interface DeleteTokenRequest {
   /** The token ID (hash) */
   id: string;
 }
+const DeleteTokenRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<DeleteTokenRequest>;
+
 export interface ApiResponseMessageData {
   message?: string;
 }
+const ApiResponseMessageData = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ApiResponseMessageData>;
+
 export interface ApiResponseMessage {
   success: boolean;
   data: ApiResponseMessageData;
 }
+const ApiResponseMessage = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ApiResponseMessage>;
+
 export interface ExecMount {
   /** Disk ID to mount at this relative path */
   disk: string;
@@ -379,14 +544,20 @@ export interface ExecMount {
   readOnly?: boolean;
 }
 export type ExecRequestDisksValue = string | ExecMount;
+const ExecRequestDisksValue = S.Unknown as any as S.Schema<ExecRequestDisksValue>;
+
 /** Map of relative path under `/mnt/archil` to the disk to mount there. At least one entry is required. Relative paths must be non-empty, non-absolute, and contain no `.` or `..` segments. Each value is either a plain disk ID string (mounts the disk's root, read-write) or an object that additionally selects a subdirectory of the disk and/or marks the mount as read-only. */
 export type ExecRequestDisksMap = { [key: string]: ExecRequestDisksValue | undefined };
+const ExecRequestDisksMap = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ExecRequestDisksMap>;
+
 export interface ExecRequest {
   /** Map of relative path under `/mnt/archil` to the disk to mount there. At least one entry is required. Relative paths must be non-empty, non-absolute, and contain no `.` or `..` segments. Each value is either a plain disk ID string (mounts the disk's root, read-write) or an object that additionally selects a subdirectory of the disk and/or marks the mount as read-only. */
   disks: ExecRequestDisksMap;
   /** Shell command to execute inside the container */
   command: string;
 }
+const ExecRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ExecRequest>;
+
 /** Server-measured timings for an exec request. */
 export interface ExecTiming {
   /** End-to-end wall clock measured on the server, from request arrival to response. */
@@ -396,6 +567,8 @@ export interface ExecTiming {
   /** Time the user's command itself ran, measured by the runtime. */
   executeMs: number;
 }
+const ExecTiming = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<ExecTiming>;
+
 export interface ExecDiskResult {
   /** Exit code of the command (0 = success) */
   exitCode: number;
@@ -405,33 +578,53 @@ export interface ExecDiskResult {
   stderr: string;
   timing: ExecTiming;
 }
+const ExecDiskResult = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ExecDiskResult>;
+
 export interface ApiResponseExec {
   success: boolean;
   data: ExecDiskResult;
 }
+const ApiResponseExec = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ApiResponseExec>;
+
 export interface ExecDiskRequest {
   /** Disk ID (format `dsk-{16 hex chars}`) */
   id: string;
   /** Shell command to execute inside the container */
   command: string;
 }
+const ExecDiskRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ExecDiskRequest>;
+
 export interface ApiResponseExecDisk {
   success: boolean;
   data: ExecDiskResult;
 }
+const ApiResponseExecDisk = ApiResponseExec as any as S.Schema<ApiResponseExecDisk>;
+
 export interface ExposeSandboxPortRequest {
   /** Sandbox UUID */
   sid: string;
   port: number;
 }
+const ExposeSandboxPortRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ExposeSandboxPortRequest>;
+
 export interface SandboxPort {
   port: number;
   hostname: string;
 }
+const SandboxPort = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<SandboxPort>;
+
 export interface ApiResponseSandboxPort {
   success: boolean;
   data: SandboxPort;
 }
+const ApiResponseSandboxPort = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ApiResponseSandboxPort>;
+
 export interface ForkSandboxRequest {
   /** Sandbox UUID */
   sid: string;
@@ -442,17 +635,29 @@ export interface ForkSandboxRequest {
   /** Fork this checkpoint of the source, as returned by pause, stop, or describe, instead of the source's live state. The source is neither paused nor resumed. Only the current session's checkpoint and the one before it are accepted; an uncommitted or superseded checkpoint is rejected with 409. */
   checkpoint?: string;
 }
+const ForkSandboxRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<ForkSandboxRequest>;
+
 export interface ForkSandboxResponse {}
+const ForkSandboxResponse = CreateSandboxResponse as any as S.Schema<ForkSandboxResponse>;
+
 export interface GetDiskRequest {
   /** Disk ID (format `dsk-{16 hex chars}`) */
   id: string;
 }
+const GetDiskRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<GetDiskRequest>;
+
 /** Disk status */
 export type DiskResponseStatus = "available" | "creating" | "deleting" | "deleted" | "failed";
+const DiskResponseStatus = S.String;
+
 /** Storage backend type */
 export type MountResponseType = "s3" | "gcs" | "r2" | "s3-compatible" | "azure-blob";
+const MountResponseType = S.String;
+
 /** Access mode */
 export type MountResponseAccessMode = "rw" | "ro";
+const MountResponseAccessMode = S.String;
+
 /** Mount configuration details (secrets omitted) */
 export interface MountConfigResponse {
   /** Bucket name */
@@ -464,10 +669,16 @@ export interface MountConfigResponse {
   /** Session identifier for IAM-authorized mounts */
   sessionId?: string;
 }
+const MountConfigResponse = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<MountConfigResponse>;
+
 /** Current connection status */
 export type MountResponseConnectionStatus = "connected" | "disconnected";
+const MountResponseConnectionStatus = S.String;
+
 /** How the mount authenticates to the storage backend */
 export type MountResponseAuthorizationType = "iam" | "accessKeys" | "oauth";
+const MountResponseAuthorizationType = S.String;
+
 export interface MountResponse {
   /** Mount identifier */
   id?: string;
@@ -487,7 +698,14 @@ export interface MountResponse {
   /** How the mount authenticates to the storage backend */
   authorizationType?: MountResponseAuthorizationType;
 }
+const MountResponse = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<MountResponse>;
+
 export type DiskResponseMountsList = Array<MountResponse>;
+const DiskResponseMountsList = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DiskResponseMountsList>;
+
 export interface DiskMetrics {
   /** Data transfer amount with unit (e.g., "1.5 GB") */
   dataTransfer?: string;
@@ -496,13 +714,25 @@ export interface DiskMetrics {
   /** Average response time with unit (e.g., "45ms") */
   avgResponseTime?: string;
 }
+const DiskMetrics = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<DiskMetrics>;
+
 export interface ConnectedClient {
   id?: string;
   ipAddress?: string;
   connectedAt?: string;
 }
+const ConnectedClient = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ConnectedClient>;
+
 export type DiskResponseConnectedClientsList = Array<ConnectedClient>;
+const DiskResponseConnectedClientsList = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DiskResponseConnectedClientsList>;
+
 export type DiskResponseAuthorizedUsersList = Array<AuthorizedUser>;
+const DiskResponseAuthorizedUsersList =
+  ApiResponseCreateDiskDataAuthorizedUsersList as any as S.Schema<DiskResponseAuthorizedUsersList>;
+
 export interface DiskResponse {
   /** Disk ID */
   id: string;
@@ -531,14 +761,20 @@ export interface DiskResponse {
   connectedClients?: DiskResponseConnectedClientsList;
   authorizedUsers?: DiskResponseAuthorizedUsersList;
 }
+const DiskResponse = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<DiskResponse>;
+
 export interface ApiResponseDisk {
   success: boolean;
   data: DiskResponse;
 }
+const ApiResponseDisk = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ApiResponseDisk>;
+
 export interface GetSandboxRequest {
   /** Sandbox UUID */
   sid: string;
 }
+const GetSandboxRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<GetSandboxRequest>;
+
 export type SandboxState =
   | "pending"
   | "running"
@@ -550,11 +786,17 @@ export type SandboxState =
   | "failed"
   | "deleting"
   | "deleted";
+const SandboxState = S.String;
+
 /** Sandbox CPU architecture. */
 export type SandboxPlatform = "arm64" | "amd64";
+const SandboxPlatform = S.String;
+
 export type SandboxEndpoint = SandboxPort;
 /** Public hostnames published by enabled sandbox services. */
 export type SandboxEndpointsList = Array<SandboxPort>;
+const SandboxEndpointsList = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<SandboxEndpointsList>;
+
 export interface Sandbox {
   sandbox_id: string;
   /** Sandbox name. */
@@ -584,23 +826,42 @@ export interface Sandbox {
   /** Disk checkpoint the current session leaves behind. Present while pausing, paused, stopping, or stopped, and committed once the sandbox is paused or stopped. Pass it to the fork endpoint to fork exactly this state. */
   checkpoint?: string;
 }
+const Sandbox = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<Sandbox>;
+
 export interface ApiResponseSandbox {
   success: boolean;
   data: Sandbox;
 }
+const ApiResponseSandbox = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<ApiResponseSandbox>;
+
 export interface GetSandboxNetworkRequest {
   /** Sandbox UUID */
   sid: string;
 }
+const GetSandboxNetworkRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GetSandboxNetworkRequest>;
+
 export interface ApiResponseSandboxNetwork {
   success: boolean;
   data: SandboxNetwork;
 }
+const ApiResponseSandboxNetwork = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ApiResponseSandboxNetwork>;
+
 export interface GetSandboxPortTokenRequest {
   /** Sandbox UUID */
   sid: string;
   token_id: string;
 }
+const GetSandboxPortTokenRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GetSandboxPortTokenRequest>;
+
 export interface SandboxPortToken {
   /** Stable token identifier used for get and revoke operations. */
   id: string;
@@ -609,10 +870,17 @@ export interface SandboxPortToken {
   /** When the token expires. Absent for a non-expiring token. */
   expires_at?: string;
 }
+const SandboxPortToken = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<SandboxPortToken>;
+
 export interface ApiResponseSandboxPortToken {
   success: boolean;
   data: SandboxPortToken;
 }
+const ApiResponseSandboxPortToken = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ApiResponseSandboxPortToken>;
+
 export interface GrepDiskRequest {
   /** Disk ID (format `dsk-{16 hex chars}`) */
   id: string;
@@ -629,6 +897,8 @@ export interface GrepDiskRequest {
   /** Stop scanning once the aggregator has this many matches. Returned matches are a sample of whichever workers reported first, not the lexicographically first N. */
   maxResults?: number;
 }
+const GrepDiskRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<GrepDiskRequest>;
+
 export interface GrepMatch {
   /** Path to the file (relative to the disk root). */
   file: string;
@@ -637,7 +907,14 @@ export interface GrepMatch {
   /** The matching line. */
   text: string;
 }
+const GrepMatch = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<GrepMatch>;
+
 export type GrepDiskResultMatchesList = Array<GrepMatch>;
+const GrepDiskResultMatchesList = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GrepDiskResultMatchesList>;
+
 /** Why the search stopped. - `completed`: every file under the directory was scanned successfully. - `incomplete`: pipeline ran to its natural end but one or more batches errored (invalid regex, unreadable file, runtime issue). Results may be partial or wrong; do not rely on completeness. - `max_results`: hit `maxResults` before scanning everything. - `deadline`: hit `maxDurationSeconds`. - `list_failed`: directory listing failed; partial results may be present. */
 export type GrepStoppedReason =
   | "completed"
@@ -645,6 +922,8 @@ export type GrepStoppedReason =
   | "max_results"
   | "deadline"
   | "list_failed";
+const GrepStoppedReason = S.String;
+
 export interface GrepDiskResult {
   matches: GrepDiskResultMatchesList;
   stoppedReason: GrepStoppedReason;
@@ -661,16 +940,22 @@ export interface GrepDiskResult {
   /** Wall-clock time spent matching, from the first grep container being dispatched to the last container reporting results. 0 if no batches ran. */
   grepMs: number;
 }
+const GrepDiskResult = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<GrepDiskResult>;
+
 export interface ApiResponseGrepDisk {
   success: boolean;
   data: GrepDiskResult;
 }
+const ApiResponseGrepDisk = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ApiResponseGrepDisk>;
+
 export interface ListApiTokensRequest {
   /** Maximum number of items to return */
   limit?: number;
   /** Pagination cursor from a previous response */
   cursor?: string;
 }
+const ListApiTokensRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<ListApiTokensRequest>;
+
 export interface ApiTokenResponse {
   /** Token hash/ID */
   id?: string;
@@ -681,14 +966,28 @@ export interface ApiTokenResponse {
   createdAt?: string;
   lastUsedAt?: string;
 }
+const ApiTokenResponse = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<ApiTokenResponse>;
+
 export type ApiResponseTokenListDataTokensList = Array<ApiTokenResponse>;
+const ApiResponseTokenListDataTokensList = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ApiResponseTokenListDataTokensList>;
+
 export interface ApiResponseTokenListData {
   tokens?: ApiResponseTokenListDataTokensList;
 }
+const ApiResponseTokenListData = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ApiResponseTokenListData>;
+
 export interface ApiResponseTokenList {
   success: boolean;
   data: ApiResponseTokenListData;
 }
+const ApiResponseTokenList = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ApiResponseTokenList>;
+
 export interface ListDisksRequest {
   /** Maximum number of items to return */
   limit?: number;
@@ -697,36 +996,76 @@ export interface ListDisksRequest {
   /** Filter disks by exact name match. */
   name?: string;
 }
+const ListDisksRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<ListDisksRequest>;
+
 export type ApiResponseDiskListDataList = Array<DiskResponse>;
+const ApiResponseDiskListDataList = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ApiResponseDiskListDataList>;
+
 /** All API responses use a standard envelope with `success: boolean` and `data` (on success) or `error: string` (on failure). The ApiResponse_* schemas each define the specific `data` shape for their endpoint. */
 export interface ApiResponseDiskList {
   success: boolean;
   data: ApiResponseDiskListDataList;
 }
+const ApiResponseDiskList = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<ApiResponseDiskList>;
+
 export interface ListSandboxesRequest {
   /** Only sandboxes that mount this disk */
   filesystem?: string;
 }
+const ListSandboxesRequest = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<ListSandboxesRequest>;
+
 export type ApiResponseSandboxListDataSandboxesList = Array<Sandbox>;
+const ApiResponseSandboxListDataSandboxesList = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ApiResponseSandboxListDataSandboxesList>;
+
 export interface ApiResponseSandboxListData {
   sandboxes?: ApiResponseSandboxListDataSandboxesList;
 }
+const ApiResponseSandboxListData = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ApiResponseSandboxListData>;
+
 export interface ApiResponseSandboxList {
   success: boolean;
   data: ApiResponseSandboxListData;
 }
+const ApiResponseSandboxList = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ApiResponseSandboxList>;
+
 export interface ListSandboxPortsRequest {
   /** Sandbox UUID */
   sid: string;
 }
+const ListSandboxPortsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListSandboxPortsRequest>;
+
 export type SandboxPortListPortsList = Array<SandboxPort>;
+const SandboxPortListPortsList = SandboxEndpointsList as any as S.Schema<SandboxPortListPortsList>;
+
 export interface SandboxPortList {
   ports: SandboxPortListPortsList;
 }
+const SandboxPortList = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<SandboxPortList>;
+
 export interface ApiResponseSandboxPortList {
   success: boolean;
   data: SandboxPortList;
 }
+const ApiResponseSandboxPortList = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ApiResponseSandboxPortList>;
+
 export interface ListSandboxPortTokensRequest {
   /** Sandbox UUID */
   sid: string;
@@ -735,21 +1074,45 @@ export interface ListSandboxPortTokensRequest {
   /** Pagination cursor from a previous response */
   cursor?: string;
 }
+const ListSandboxPortTokensRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ListSandboxPortTokensRequest>;
+
 export type SandboxPortTokenListTokensList = Array<SandboxPortToken>;
+const SandboxPortTokenListTokensList = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<SandboxPortTokenListTokensList>;
+
 export interface SandboxPortTokenList {
   tokens: SandboxPortTokenListTokensList;
 }
+const SandboxPortTokenList = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<SandboxPortTokenList>;
+
 export interface ApiResponseSandboxPortTokenList {
   success: boolean;
   data: SandboxPortTokenList;
   /** Set when more port tokens remain. */
   nextCursor?: string;
 }
+const ApiResponseSandboxPortTokenList = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ApiResponseSandboxPortTokenList>;
+
 export interface PauseSandboxRequest {
   /** Sandbox UUID */
   sid: string;
 }
+const PauseSandboxRequest = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<PauseSandboxRequest>;
+
 export type RemoveDiskUserRequestUserType = "token" | "awssts";
+const RemoveDiskUserRequestUserType = S.String;
+
 export interface RemoveDiskUserRequest {
   /** Disk ID (format `dsk-{16 hex chars}`) */
   id: string;
@@ -760,12 +1123,22 @@ export interface RemoveDiskUserRequest {
   /** Use identifier instead. */
   principal?: string;
 }
+const RemoveDiskUserRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<RemoveDiskUserRequest>;
+
 export interface ResumeSandboxRequest {
   /** Sandbox UUID */
   sid: string;
   /** Hold the request for a completed sandbox lifecycle transition */
   wait?: boolean;
 }
+const ResumeSandboxRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ResumeSandboxRequest>;
+
 export interface SetSandboxTimeoutRequest {
   /** Sandbox UUID */
   sid: string;
@@ -774,21 +1147,35 @@ export interface SetSandboxTimeoutRequest {
   /** Seconds without a direct process connection before the sandbox pauses. Zero disables idle expiry. */
   idle_ttl_seconds?: number;
 }
+const SetSandboxTimeoutRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<SetSandboxTimeoutRequest>;
+
 export interface StartSandboxRequest {
   /** Sandbox UUID */
   sid: string;
   /** Hold the request for a completed sandbox lifecycle transition */
   wait?: boolean;
 }
+const StartSandboxRequest = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<StartSandboxRequest>;
+
 export interface StopSandboxRequest {
   /** Sandbox UUID */
   sid: string;
 }
+const StopSandboxRequest = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<StopSandboxRequest>;
+
 export interface UpdateSandboxNetworkRequest {
   /** Sandbox UUID */
   sid: string;
   egress?: SandboxEgressPolicy;
 }
+const UpdateSandboxNetworkRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<UpdateSandboxNetworkRequest>;
+
 export type AddDiskUserError = BadRequest | ArchilOpError;
 /** Add user to disk Adds an authorized user to a disk. Users can authenticate via: - **token**: A shared token with a nickname and 4-character suffix - **awssts**: AWS STS role assumption with an IAM principal ARN */
 export const addDiskUser: API.OperationMethod<
@@ -797,8 +1184,8 @@ export const addDiskUser: API.OperationMethod<
   AddDiskUserError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AddDiskUserRequest>,
-  output: __S(2) as any as S.Schema<ApiResponseAuthorizedUser>,
+  input: AddDiskUserRequest,
+  output: ApiResponseAuthorizedUser,
   errors: [BadRequest, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -812,8 +1199,8 @@ export const createApiToken: API.OperationMethod<
   CreateApiTokenError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateApiTokenRequest>,
-  output: __S(5) as any as S.Schema<ApiResponseTokenCreated>,
+  input: CreateApiTokenRequest,
+  output: ApiResponseTokenCreated,
   errors: [BadRequest, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -827,8 +1214,8 @@ export const createDisk: API.OperationMethod<
   CreateDiskError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateDiskRequest>,
-  output: __S(11) as any as S.Schema<ApiResponseCreateDisk>,
+  input: CreateDiskRequest,
+  output: ApiResponseCreateDisk,
   errors: [BadRequest, Forbidden, Conflict, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -842,8 +1229,8 @@ export const createSandbox: API.OperationMethod<
   CreateSandboxError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CreateSandboxRequest>,
-  output: __S(19) as any as S.Schema<CreateSandboxResponse>,
+  input: CreateSandboxRequest,
+  output: CreateSandboxResponse,
   errors: [BadRequest, Conflict, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -857,8 +1244,8 @@ export const createSandboxConnection: API.OperationMethod<
   CreateSandboxConnectionError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CreateSandboxConnectionRequest>,
-  output: __S(22) as any as S.Schema<ApiResponseSandboxConnection>,
+  input: CreateSandboxConnectionRequest,
+  output: ApiResponseSandboxConnection,
   errors: [NotFound, Conflict, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -872,8 +1259,8 @@ export const createSandboxPortToken: API.OperationMethod<
   CreateSandboxPortTokenError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateSandboxPortTokenRequest>,
-  output: __S(25) as any as S.Schema<ApiResponseCreatedSandboxPortToken>,
+  input: CreateSandboxPortTokenRequest,
+  output: ApiResponseCreatedSandboxPortToken,
   errors: [BadRequest, NotFound, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -887,8 +1274,8 @@ export const createShareUrl: API.OperationMethod<
   CreateShareUrlError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<CreateShareUrlRequest>,
-  output: __S(28) as any as S.Schema<ApiResponseShareUrl>,
+  input: CreateShareUrlRequest,
+  output: ApiResponseShareUrl,
   errors: [BadRequest, NotFound, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -902,8 +1289,8 @@ export const deleteDisk: API.OperationMethod<
   DeleteDiskError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<DeleteDiskRequest>,
-  output: __S(30) as any as S.Schema<ApiResponseEmpty>,
+  input: DeleteDiskRequest,
+  output: ApiResponseEmpty,
   errors: [BadRequest, NotFound, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -917,8 +1304,8 @@ export const deleteSandbox: API.OperationMethod<
   DeleteSandboxError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<DeleteSandboxRequest>,
-  output: __S(19) as any as S.Schema<DeleteSandboxResponse>,
+  input: DeleteSandboxRequest,
+  output: DeleteSandboxResponse,
   errors: [NotFound, Conflict, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -932,8 +1319,8 @@ export const deleteSandboxPort: API.OperationMethod<
   DeleteSandboxPortError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<DeleteSandboxPortRequest>,
-  output: __S(19) as any as S.Schema<DeleteSandboxPortResponse>,
+  input: DeleteSandboxPortRequest,
+  output: DeleteSandboxPortResponse,
   errors: [BadRequest, NotFound, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -947,8 +1334,8 @@ export const deleteSandboxPortToken: API.OperationMethod<
   DeleteSandboxPortTokenError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<DeleteSandboxPortTokenRequest>,
-  output: __S(19) as any as S.Schema<DeleteSandboxPortTokenResponse>,
+  input: DeleteSandboxPortTokenRequest,
+  output: DeleteSandboxPortTokenResponse,
   errors: [NotFound, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -962,8 +1349,8 @@ export const deleteToken: API.OperationMethod<
   DeleteTokenError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<DeleteTokenRequest>,
-  output: __S(36) as any as S.Schema<ApiResponseMessage>,
+  input: DeleteTokenRequest,
+  output: ApiResponseMessage,
   errors: [NotFound, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -973,8 +1360,8 @@ export type ExecError = BadRequest | NotFound | ArchilOpError;
 /** Execute a command with multiple disks mounted Launches a container with the supplied set of disks each mounted at its own relative path under `/mnt/archil`, runs the command to completion, and shuts down the container. Activation is atomic: every disk mounts or none of them do. Relative paths must be non-empty, non-absolute, and contain no `.` / `..` segments. Mounting two disks at the same relative path is an error. */
 export const exec: API.OperationMethod<ExecRequest, ApiResponseExec, ExecError, ArchilOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(38) as any as S.Schema<ExecRequest>,
-    output: __S(41) as any as S.Schema<ApiResponseExec>,
+    input: ExecRequest,
+    output: ApiResponseExec,
     errors: [BadRequest, NotFound, UnknownArchilError],
     protocol: ArchilProtocol,
     retry: Retry.Retry,
@@ -988,8 +1375,8 @@ export const execDisk: API.OperationMethod<
   ExecDiskError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<ExecDiskRequest>,
-  output: __S(41) as any as S.Schema<ApiResponseExecDisk>,
+  input: ExecDiskRequest,
+  output: ApiResponseExecDisk,
   errors: [BadRequest, NotFound, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -1003,8 +1390,8 @@ export const exposeSandboxPort: API.OperationMethod<
   ExposeSandboxPortError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<ExposeSandboxPortRequest>,
-  output: __S(45) as any as S.Schema<ApiResponseSandboxPort>,
+  input: ExposeSandboxPortRequest,
+  output: ApiResponseSandboxPort,
   errors: [BadRequest, NotFound, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -1018,8 +1405,8 @@ export const forkSandbox: API.OperationMethod<
   ForkSandboxError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<ForkSandboxRequest>,
-  output: __S(19) as any as S.Schema<ForkSandboxResponse>,
+  input: ForkSandboxRequest,
+  output: ForkSandboxResponse,
   errors: [BadRequest, NotFound, Conflict, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -1033,8 +1420,8 @@ export const getDisk: API.OperationMethod<
   GetDiskError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<GetDiskRequest>,
-  output: __S(55) as any as S.Schema<ApiResponseDisk>,
+  input: GetDiskRequest,
+  output: ApiResponseDisk,
   errors: [BadRequest, NotFound, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -1048,8 +1435,8 @@ export const getSandbox: API.OperationMethod<
   GetSandboxError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<GetSandboxRequest>,
-  output: __S(59) as any as S.Schema<ApiResponseSandbox>,
+  input: GetSandboxRequest,
+  output: ApiResponseSandbox,
   errors: [NotFound, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -1063,8 +1450,8 @@ export const getSandboxNetwork: API.OperationMethod<
   GetSandboxNetworkError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<GetSandboxNetworkRequest>,
-  output: __S(61) as any as S.Schema<ApiResponseSandboxNetwork>,
+  input: GetSandboxNetworkRequest,
+  output: ApiResponseSandboxNetwork,
   errors: [NotFound, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -1078,8 +1465,8 @@ export const getSandboxPortToken: API.OperationMethod<
   GetSandboxPortTokenError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<GetSandboxPortTokenRequest>,
-  output: __S(64) as any as S.Schema<ApiResponseSandboxPortToken>,
+  input: GetSandboxPortTokenRequest,
+  output: ApiResponseSandboxPortToken,
   errors: [NotFound, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -1093,8 +1480,8 @@ export const grepDisk: API.OperationMethod<
   GrepDiskError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<GrepDiskRequest>,
-  output: __S(69) as any as S.Schema<ApiResponseGrepDisk>,
+  input: GrepDiskRequest,
+  output: ApiResponseGrepDisk,
   errors: [BadRequest, NotFound, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -1108,8 +1495,8 @@ export const listApiTokens: API.OperationMethod<
   ListApiTokensError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<ListApiTokensRequest>,
-  output: __S(74) as any as S.Schema<ApiResponseTokenList>,
+  input: ListApiTokensRequest,
+  output: ApiResponseTokenList,
   errors: [UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -1123,8 +1510,8 @@ export const listDisks: API.OperationMethod<
   ListDisksError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<ListDisksRequest>,
-  output: __S(77) as any as S.Schema<ApiResponseDiskList>,
+  input: ListDisksRequest,
+  output: ApiResponseDiskList,
   errors: [UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -1138,8 +1525,8 @@ export const listSandboxes: API.OperationMethod<
   ListSandboxesError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<ListSandboxesRequest>,
-  output: __S(81) as any as S.Schema<ApiResponseSandboxList>,
+  input: ListSandboxesRequest,
+  output: ApiResponseSandboxList,
   errors: [BadRequest, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -1153,8 +1540,8 @@ export const listSandboxPorts: API.OperationMethod<
   ListSandboxPortsError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<ListSandboxPortsRequest>,
-  output: __S(84) as any as S.Schema<ApiResponseSandboxPortList>,
+  input: ListSandboxPortsRequest,
+  output: ApiResponseSandboxPortList,
   errors: [NotFound, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -1168,8 +1555,8 @@ export const listSandboxPortTokens: API.OperationMethod<
   ListSandboxPortTokensError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<ListSandboxPortTokensRequest>,
-  output: __S(88) as any as S.Schema<ApiResponseSandboxPortTokenList>,
+  input: ListSandboxPortTokensRequest,
+  output: ApiResponseSandboxPortTokenList,
   errors: [BadRequest, NotFound, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -1183,8 +1570,8 @@ export const pauseSandbox: API.OperationMethod<
   PauseSandboxError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<PauseSandboxRequest>,
-  output: __S(59) as any as S.Schema<ApiResponseSandbox>,
+  input: PauseSandboxRequest,
+  output: ApiResponseSandbox,
   errors: [BadRequest, NotFound, Conflict, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -1198,8 +1585,8 @@ export const removeDiskUser: API.OperationMethod<
   RemoveDiskUserError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<RemoveDiskUserRequest>,
-  output: __S(36) as any as S.Schema<ApiResponseMessage>,
+  input: RemoveDiskUserRequest,
+  output: ApiResponseMessage,
   errors: [BadRequest, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -1213,8 +1600,8 @@ export const resumeSandbox: API.OperationMethod<
   ResumeSandboxError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<ResumeSandboxRequest>,
-  output: __S(59) as any as S.Schema<ApiResponseSandbox>,
+  input: ResumeSandboxRequest,
+  output: ApiResponseSandbox,
   errors: [BadRequest, NotFound, Conflict, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -1228,8 +1615,8 @@ export const setSandboxTimeout: API.OperationMethod<
   SetSandboxTimeoutError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<SetSandboxTimeoutRequest>,
-  output: __S(59) as any as S.Schema<ApiResponseSandbox>,
+  input: SetSandboxTimeoutRequest,
+  output: ApiResponseSandbox,
   errors: [BadRequest, NotFound, Conflict, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -1243,8 +1630,8 @@ export const startSandbox: API.OperationMethod<
   StartSandboxError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<StartSandboxRequest>,
-  output: __S(59) as any as S.Schema<ApiResponseSandbox>,
+  input: StartSandboxRequest,
+  output: ApiResponseSandbox,
   errors: [BadRequest, NotFound, Conflict, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -1258,8 +1645,8 @@ export const stopSandbox: API.OperationMethod<
   StopSandboxError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<StopSandboxRequest>,
-  output: __S(59) as any as S.Schema<ApiResponseSandbox>,
+  input: StopSandboxRequest,
+  output: ApiResponseSandbox,
   errors: [BadRequest, NotFound, Conflict, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -1278,8 +1665,8 @@ export const updateSandboxNetwork: API.OperationMethod<
   UpdateSandboxNetworkError,
   ArchilOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<UpdateSandboxNetworkRequest>,
-  output: __S(61) as any as S.Schema<ApiResponseSandboxNetwork>,
+  input: UpdateSandboxNetworkRequest,
+  output: ApiResponseSandboxNetwork,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownArchilError],
   protocol: ArchilProtocol,
   retry: Retry.Retry,
@@ -1292,13 +1679,13 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          body: S.Unknown.pipe(T.HttpBody()),
+          body: DiskUser.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/api/disks/{id}/users", code: 200 })),
       ).annotate({ identifier: "AddDiskUserRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(AuthorizedUserType),
           principal: S.optional(S.String),
           nickname: S.optional(S.String),
           tokenSuffix: S.optional(S.String),
@@ -1311,7 +1698,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          data: __S(1),
+          data: AuthorizedUser,
         }),
       ).annotate({
         identifier: "ApiResponseAuthorizedUser",
@@ -1341,13 +1728,13 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          data: __S(4),
+          data: ApiResponseTokenCreatedData,
         }),
       ).annotate({ identifier: "ApiResponseTokenCreated" });
     case 6:
-      return S.Array(S.Unknown);
+      return S.Array(MountConfig);
     case 7:
-      return S.Array(S.Unknown);
+      return S.Array(DiskUser);
   }
 }
 function __c1(j: number): any {
@@ -1356,17 +1743,17 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          mounts: S.optional(__S(6)),
-          authMethods: S.optional(__S(7)),
+          mounts: S.optional(CreateDiskRequestMountsList),
+          authMethods: S.optional(CreateDiskRequestAuthMethodsList),
         }).pipe(T.Http({ method: "POST", uri: "/api/disks", code: 200 })),
       ).annotate({ identifier: "CreateDiskRequest" });
     case 1:
-      return S.Array(__S(1));
+      return S.Array(AuthorizedUser);
     case 2:
       return S.suspend(() =>
         S.Struct({
           diskId: S.optional(S.String),
-          authorizedUsers: S.optional(__S(9)),
+          authorizedUsers: S.optional(ApiResponseCreateDiskDataAuthorizedUsersList),
         }),
       ).annotate({
         identifier: "ApiResponseCreateDiskData",
@@ -1375,7 +1762,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          data: __S(10),
+          data: ApiResponseCreateDiskData,
         }),
       ).annotate({ identifier: "ApiResponseCreateDisk" });
     case 4:
@@ -1383,7 +1770,7 @@ function __c1(j: number): any {
     case 5:
       return S.Record(S.String, S.String);
     case 6:
-      return S.Array(S.Unknown);
+      return S.Array(SandboxEgressPolicyAllowItem);
     case 7:
       return S.Array(S.String);
   }
@@ -1393,16 +1780,16 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          default: S.String,
-          allow: S.optional(__S(14)),
-          deny: S.optional(__S(15)),
-          drain_on_pause: S.optional(__S(15)),
+          default: SandboxNetworkAction,
+          allow: S.optional(SandboxEgressPolicyAllowList),
+          deny: S.optional(SandboxEgressPolicyDenyList),
+          drain_on_pause: S.optional(SandboxEgressPolicyDrainOnPauseList),
         }),
       ).annotate({ identifier: "SandboxEgressPolicy" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          egress: S.optional(__S(16)),
+          egress: S.optional(SandboxEgressPolicy),
         }),
       ).annotate({ identifier: "SandboxNetwork" });
     case 2:
@@ -1413,10 +1800,10 @@ function __c2(j: number): any {
           vcpu_count: S.optional(S.Number),
           mem_size_mib: S.optional(S.Number),
           base_image: S.optional(S.String),
-          ports: S.optional(__S(12)),
+          ports: S.optional(CreateSandboxRequestPortsList),
           enable_service_ingress: S.optional(S.Boolean),
-          env: S.optional(__S(13)),
-          network: S.optional(__S(17)),
+          env: S.optional(CreateSandboxRequestEnvMap),
+          network: S.optional(SandboxNetwork),
           max_ttl_seconds: S.optional(S.Number),
           idle_ttl_seconds: S.optional(S.Number),
           max_concurrent_execs: S.optional(S.Number),
@@ -1445,7 +1832,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          data: __S(21),
+          data: SandboxConnection,
         }),
       ).annotate({
         identifier: "ApiResponseSandboxConnection",
@@ -1479,7 +1866,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          data: __S(24),
+          data: CreatedSandboxPortToken,
         }),
       ).annotate({
         identifier: "ApiResponseCreatedSandboxPortToken",
@@ -1503,7 +1890,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          data: __S(27),
+          data: ApiResponseShareUrlData,
         }),
       ).annotate({ identifier: "ApiResponseShareUrl" });
     case 5:
@@ -1566,15 +1953,15 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          data: __S(35),
+          data: ApiResponseMessageData,
         }),
       ).annotate({ identifier: "ApiResponseMessage" });
     case 5:
-      return S.Record(S.String, S.Unknown);
+      return S.Record(S.String, ExecRequestDisksValue);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          disks: __S(37),
+          disks: ExecRequestDisksMap,
           command: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/api/exec", code: 200 })),
       ).annotate({ identifier: "ExecRequest" });
@@ -1596,14 +1983,14 @@ function __c5(j: number): any {
           exitCode: S.Number,
           stdout: S.String,
           stderr: S.String,
-          timing: __S(39),
+          timing: ExecTiming,
         }),
       ).annotate({ identifier: "ExecDiskResult" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          data: __S(40),
+          data: ExecDiskResult,
         }),
       ).annotate({ identifier: "ApiResponseExec" });
     case 2:
@@ -1631,7 +2018,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          data: __S(44),
+          data: SandboxPort,
         }),
       ).annotate({ identifier: "ApiResponseSandboxPort" });
     case 6:
@@ -1666,18 +2053,18 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(MountResponseType),
           path: S.optional(S.String),
           name: S.optional(S.String),
-          accessMode: S.optional(S.String),
-          config: S.optional(__S(48)),
-          connectionStatus: S.optional(S.String),
+          accessMode: S.optional(MountResponseAccessMode),
+          config: S.optional(MountConfigResponse),
+          connectionStatus: S.optional(MountResponseConnectionStatus),
           authError: S.optional(S.String),
-          authorizationType: S.optional(S.String),
+          authorizationType: S.optional(MountResponseAuthorizationType),
         }),
       ).annotate({ identifier: "MountResponse" });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(MountResponse);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1695,14 +2082,14 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "ConnectedClient" });
     case 5:
-      return S.Array(__S(52));
+      return S.Array(ConnectedClient);
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           organization: S.String,
-          status: S.String,
+          status: DiskResponseStatus,
           fsHandlerStatus: S.optional(S.String),
           provider: S.String,
           region: S.String,
@@ -1710,17 +2097,17 @@ function __c6(j: number): any {
           lastAccessed: S.optional(S.String),
           dataSize: S.optional(S.Number),
           monthlyUsage: S.optional(S.String),
-          mounts: S.optional(__S(50)),
-          metrics: S.optional(__S(51)),
-          connectedClients: S.optional(__S(53)),
-          authorizedUsers: S.optional(__S(9)),
+          mounts: S.optional(DiskResponseMountsList),
+          metrics: S.optional(DiskMetrics),
+          connectedClients: S.optional(DiskResponseConnectedClientsList),
+          authorizedUsers: S.optional(DiskResponseAuthorizedUsersList),
         }),
       ).annotate({ identifier: "DiskResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          data: __S(54),
+          data: DiskResponse,
         }),
       ).annotate({ identifier: "ApiResponseDisk" });
   }
@@ -1734,21 +2121,21 @@ function __c7(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/sandboxes/{sid}", code: 200 })),
       ).annotate({ identifier: "GetSandboxRequest" });
     case 1:
-      return S.Array(__S(44));
+      return S.Array(SandboxPort);
     case 2:
       return S.suspend(() =>
         S.Struct({
           sandbox_id: S.String,
           name: S.String,
-          status: S.String,
+          status: SandboxState,
           vcpu_count: S.Number,
           mem_size_mib: S.Number,
           max_ttl_seconds: S.Number,
           idle_ttl_seconds: S.Number,
           max_concurrent_execs: S.Number,
           base_image: S.String,
-          platform: S.optional(S.String),
-          endpoints: S.optional(__S(57)),
+          platform: S.optional(SandboxPlatform),
+          endpoints: S.optional(SandboxEndpointsList),
           enable_service_ingress: S.optional(S.Boolean),
           created_at: S.String,
           running_at: S.optional(S.String),
@@ -1762,7 +2149,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          data: __S(58),
+          data: Sandbox,
         }),
       ).annotate({ identifier: "ApiResponseSandbox" });
     case 4:
@@ -1775,7 +2162,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          data: __S(17),
+          data: SandboxNetwork,
         }),
       ).annotate({
         identifier: "ApiResponseSandboxNetwork",
@@ -1808,7 +2195,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          data: __S(63),
+          data: SandboxPortToken,
         }),
       ).annotate({
         identifier: "ApiResponseSandboxPortToken",
@@ -1834,12 +2221,12 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "GrepMatch" });
     case 3:
-      return S.Array(__S(66));
+      return S.Array(GrepMatch);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          matches: __S(67),
-          stoppedReason: S.String,
+          matches: GrepDiskResultMatchesList,
+          stoppedReason: GrepStoppedReason,
           filesScanned: S.Number,
           containersDispatched: S.Number,
           computeSecondsUsed: S.Number,
@@ -1852,7 +2239,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          data: __S(68),
+          data: GrepDiskResult,
         }),
       ).annotate({ identifier: "ApiResponseGrepDisk" });
     case 6:
@@ -1878,18 +2265,18 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71));
+      return S.Array(ApiTokenResponse);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          tokens: S.optional(__S(72)),
+          tokens: S.optional(ApiResponseTokenListDataTokensList),
         }),
       ).annotate({ identifier: "ApiResponseTokenListData" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          data: __S(73),
+          data: ApiResponseTokenListData,
         }),
       ).annotate({ identifier: "ApiResponseTokenList" });
     case 3:
@@ -1901,12 +2288,12 @@ function __c9(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/disks", code: 200 })),
       ).annotate({ identifier: "ListDisksRequest" });
     case 4:
-      return S.Array(__S(54));
+      return S.Array(DiskResponse);
     case 5:
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          data: __S(76),
+          data: ApiResponseDiskListDataList,
         }),
       ).annotate({ identifier: "ApiResponseDiskList" });
     case 6:
@@ -1916,7 +2303,7 @@ function __c9(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/sandboxes", code: 200 })),
       ).annotate({ identifier: "ListSandboxesRequest" });
     case 7:
-      return S.Array(__S(58));
+      return S.Array(Sandbox);
   }
 }
 function __c10(j: number): any {
@@ -1924,7 +2311,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sandboxes: S.optional(__S(79)),
+          sandboxes: S.optional(ApiResponseSandboxListDataSandboxesList),
         }),
       ).annotate({
         identifier: "ApiResponseSandboxListData",
@@ -1933,7 +2320,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          data: __S(80),
+          data: ApiResponseSandboxListData,
         }),
       ).annotate({ identifier: "ApiResponseSandboxList" });
     case 2:
@@ -1945,14 +2332,14 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ports: __S(57),
+          ports: SandboxPortListPortsList,
         }),
       ).annotate({ identifier: "SandboxPortList" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          data: __S(83),
+          data: SandboxPortList,
         }),
       ).annotate({
         identifier: "ApiResponseSandboxPortList",
@@ -1968,11 +2355,11 @@ function __c10(j: number): any {
         identifier: "ListSandboxPortTokensRequest",
       });
     case 6:
-      return S.Array(__S(63));
+      return S.Array(SandboxPortToken);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          tokens: __S(86),
+          tokens: SandboxPortTokenListTokensList,
         }),
       ).annotate({ identifier: "SandboxPortTokenList" });
   }
@@ -1983,7 +2370,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          data: __S(87),
+          data: SandboxPortTokenList,
           nextCursor: S.optional(S.String),
         }),
       ).annotate({
@@ -1999,7 +2386,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          userType: S.String.pipe(T.Label()),
+          userType: RemoveDiskUserRequestUserType.pipe(T.Label()),
           identifier: S.optional(S.String.pipe(T.Query())),
           principal: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/disks/{id}/users/{userType}", code: 200 })),
@@ -2036,43 +2423,10 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sid: S.String.pipe(T.Label()),
-          egress: S.optional(__S(16)),
+          egress: S.optional(SandboxEgressPolicy),
         }).pipe(T.Http({ method: "PUT", uri: "/api/sandboxes/{sid}/network", code: 200 })),
       ).annotate({
         identifier: "UpdateSandboxNetworkRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
   }
 }

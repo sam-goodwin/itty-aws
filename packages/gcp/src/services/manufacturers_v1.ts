@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -68,18 +66,35 @@ export interface DeleteAccountsLanguagesProductCertificationsRequest {
   /** Required. The name of the product certification to delete. Format: accounts/{account}/languages/{language_code}/productCertifications/{id} */
   name: string;
 }
+const DeleteAccountsLanguagesProductCertificationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeleteAccountsLanguagesProductCertificationsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Empty>;
+
 export interface DeleteAccountsProductsRequest {
   /** Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer Center account. */
   parent: string;
   /** Name in the format `{target_country}:{content_language}:{product_id}`. `target_country` - The target country of the product as a CLDR territory code (for example, US). `content_language` - The content language of the product as a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#id. */
   name: string;
 }
+const DeleteAccountsProductsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteAccountsProductsRequest>;
+
 export interface GetAccountsLanguagesProductCertificationsRequest {
   /** Required. The name of the product certification to get. Format: accounts/{account}/languages/{language_code}/productCertifications/{id} */
   name: string;
 }
+const GetAccountsLanguagesProductCertificationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GetAccountsLanguagesProductCertificationsRequest>;
+
 /** Description of a certification. */
 export interface Certification {
   /** Optional. A unique code to identify the certification. */
@@ -97,9 +112,17 @@ export interface Certification {
   /** Optional. A URL link to the certification. */
   link?: string;
 }
+const Certification = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Certification>;
+
 export type CertificationList = Array<Certification>;
+const CertificationList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CertificationList>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StringList>;
+
 export type DestinationStatusStatusEnum = "UNKNOWN" | "ACTIVE" | "PENDING" | "DISAPPROVED";
+const DestinationStatusStatusEnum = S.String;
+
 /** The destination status. */
 export interface DestinationStatus {
   /** Output only. List of country codes (ISO 3166-1 alpha-2) where the offer is approved. */
@@ -113,9 +136,20 @@ export interface DestinationStatus {
   /** The name of the destination. */
   destination?: string;
 }
+const DestinationStatus = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DestinationStatus>;
+
 export type DestinationStatusList = Array<DestinationStatus>;
+const DestinationStatusList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DestinationStatusList>;
+
 export type IssueResolutionEnum = "RESOLUTION_UNSPECIFIED" | "USER_ACTION" | "PENDING_PROCESSING";
+const IssueResolutionEnum = S.String;
+
 export type IssueSeverityEnum = "SEVERITY_UNSPECIFIED" | "ERROR" | "WARNING" | "INFO";
+const IssueSeverityEnum = S.String;
+
 /** Product issue. */
 export interface Issue {
   /** The timestamp when this issue appeared. */
@@ -137,7 +171,11 @@ export interface Issue {
   /** Output only. List of country codes (ISO 3166-1 alpha-2) where issue applies to the manufacturer product. */
   applicableCountries?: StringList;
 }
+const Issue = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Issue>;
+
 export type IssueList = Array<Issue>;
+const IssueList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<IssueList>;
+
 /** Product certification data. */
 export interface ProductCertification {
   /** Required. A list of certifications to link to the described product. */
@@ -161,14 +199,23 @@ export interface ProductCertification {
   /** Output only. A server-generated list of issues associated with the product. */
   issues?: IssueList;
 }
+const ProductCertification = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ProductCertification>;
+
 export type GetAccountsProductsIncludeEnum =
   | "UNKNOWN"
   | "ATTRIBUTES"
   | "ISSUES"
   | "DESTINATION_STATUSES";
+const GetAccountsProductsIncludeEnum = S.String;
+
 export type GetAccountsProductsIncludeEnumList = Array<
   GetAccountsProductsIncludeEnum | (string & {})
 >;
+const GetAccountsProductsIncludeEnumList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetAccountsProductsIncludeEnumList>;
+
 export interface GetAccountsProductsRequest {
   /** The information to be included in the response. Only sections listed here will be returned. */
   include?: GetAccountsProductsIncludeEnumList;
@@ -177,6 +224,11 @@ export interface GetAccountsProductsRequest {
   /** Name in the format `{target_country}:{content_language}:{product_id}`. `target_country` - The target country of the product as a CLDR territory code (for example, US). `content_language` - The content language of the product as a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#id. */
   name: string;
 }
+const GetAccountsProductsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetAccountsProductsRequest>;
+
 /** The number of products in a single package. For more information, see https://support.google.com/manufacturers/answer/6124116#count. */
 export interface Count {
   /** The numeric value of the number of products in a package. */
@@ -184,6 +236,8 @@ export interface Count {
   /** The unit in which these products are counted. */
   unit?: string;
 }
+const Count = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Count>;
+
 /** The capacity of a product. For more information, see https://support.google.com/manufacturers/answer/6124116#capacity. */
 export interface Capacity {
   /** The numeric value of the capacity. */
@@ -191,7 +245,11 @@ export interface Capacity {
   /** The unit of the capacity, i.e., MB, GB, or TB. */
   unit?: string;
 }
+const Capacity = Count as any as S.Schema<Capacity>;
+
 export type ImageTypeEnum = "TYPE_UNSPECIFIED" | "CRAWLED" | "UPLOADED";
+const ImageTypeEnum = S.String;
+
 export type ImageStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "PENDING_PROCESSING"
@@ -206,6 +264,8 @@ export type ImageStatusEnum =
   | "CRAWL_SKIPPED"
   | "HOSTLOADED"
   | "HTTP_404";
+const ImageStatusEnum = S.String;
+
 /** An image. */
 export interface Image {
   /** The type of the image, i.e., crawled or uploaded. @OutputOnly */
@@ -215,6 +275,8 @@ export interface Image {
   /** The status of the image. @OutputOnly */
   status?: ImageStatusEnum | (string & {});
 }
+const Image = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Image>;
+
 /** A product detail of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#productdetail. */
 export interface ProductDetail {
   /** The value of the attribute. */
@@ -224,7 +286,11 @@ export interface ProductDetail {
   /** The name of the attribute. */
   attributeName?: string;
 }
+const ProductDetail = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ProductDetail>;
+
 export type ProductDetailList = Array<ProductDetail>;
+const ProductDetailList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ProductDetailList>;
+
 /** A feature description of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#featuredesc. */
 export interface FeatureDescription {
   /** A short description of the feature. */
@@ -234,7 +300,14 @@ export interface FeatureDescription {
   /** An optional image describing the feature. */
   image?: Image;
 }
+const FeatureDescription = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<FeatureDescription>;
+
 export type FeatureDescriptionList = Array<FeatureDescription>;
+const FeatureDescriptionList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<FeatureDescriptionList>;
+
 export interface Grocery {
   /** Nutrition claim. */
   nutritionClaim?: StringList;
@@ -255,7 +328,11 @@ export interface Grocery {
   /** Indications. */
   indications?: string;
 }
+const Grocery = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Grocery>;
+
 export type ImageList = Array<Image>;
+const ImageList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ImageList>;
+
 /** Combination of float amount and unit. */
 export interface FloatUnit {
   /** amount. */
@@ -263,6 +340,8 @@ export interface FloatUnit {
   /** unit. */
   unit?: string;
 }
+const FloatUnit = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<FloatUnit>;
+
 /** Voluntary Nutrition Facts. */
 export interface VoluntaryNutritionFact {
   /** Value. */
@@ -272,7 +351,17 @@ export interface VoluntaryNutritionFact {
   /** Name. */
   name?: string;
 }
+const VoluntaryNutritionFact = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<VoluntaryNutritionFact>;
+
 export type VoluntaryNutritionFactList = Array<VoluntaryNutritionFact>;
+const VoluntaryNutritionFactList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<VoluntaryNutritionFactList>;
+
 export interface Nutrition {
   /** Polyunsaturated fat. */
   polyunsaturatedFat?: FloatUnit;
@@ -361,6 +450,8 @@ export interface Nutrition {
   /** Calcium. */
   calcium?: FloatUnit;
 }
+const Nutrition = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Nutrition>;
+
 /** A price. */
 export interface Price {
   /** The numeric value of the price. */
@@ -368,6 +459,8 @@ export interface Price {
   /** The currency in which the price is denoted. */
   currency?: string;
 }
+const Price = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Price>;
+
 /** Description of a certification. */
 export interface GoogleShoppingManufacturersV1ProductCertification {
   /** Required. Name of the certification body. */
@@ -385,8 +478,18 @@ export interface GoogleShoppingManufacturersV1ProductCertification {
   /** Optional. A URL link to the certification. */
   link?: string;
 }
+const GoogleShoppingManufacturersV1ProductCertification = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GoogleShoppingManufacturersV1ProductCertification>;
+
 export type GoogleShoppingManufacturersV1ProductCertificationList =
   Array<GoogleShoppingManufacturersV1ProductCertification>;
+const GoogleShoppingManufacturersV1ProductCertificationList = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GoogleShoppingManufacturersV1ProductCertificationList>;
+
 /** Attributes of the product. For more information, see https://support.google.com/manufacturers/answer/6124116. */
 export interface Attributes {
   /** The color of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#color. */
@@ -474,6 +577,8 @@ export interface Attributes {
   /** Optional. List of countries to show this product in. Countries provided in this attribute will override any of the countries configured at feed level. The values should be: the [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) of the countries in which this item will be shown. */
   intendedCountry?: StringList;
 }
+const Attributes = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<Attributes>;
+
 /** Product data. */
 export interface Product {
   /** Attributes of the product uploaded to the Manufacturer Center. Manually edited attributes are taken into account. */
@@ -495,6 +600,8 @@ export interface Product {
   /** The target country of the product as a CLDR territory code (for example, US). */
   targetCountry?: string;
 }
+const Product = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Product>;
+
 export interface ListAccountsLanguagesProductCertificationsRequest {
   /** Required. The parent, which owns this collection of product certifications. Format: accounts/{account}/languages/{language_code} */
   parent: string;
@@ -503,7 +610,17 @@ export interface ListAccountsLanguagesProductCertificationsRequest {
   /** Optional. A page token, received from a previous `ListProductCertifications` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListProductCertifications` must match the call that provided the page token. Required if requesting the second or higher page. */
   pageToken?: string;
 }
+const ListAccountsLanguagesProductCertificationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ListAccountsLanguagesProductCertificationsRequest>;
+
 export type ProductCertificationList = Array<ProductCertification>;
+const ProductCertificationList = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ProductCertificationList>;
+
 /** Response for ListProductCertifications method. */
 export interface ListProductCertificationsResponse {
   /** The product certifications from the specified certification body. */
@@ -511,6 +628,11 @@ export interface ListProductCertificationsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListProductCertificationsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListProductCertificationsResponse>;
+
 export type ListAccountsProductsIncludeEnum =
   | "UNKNOWN"
   | "ATTRIBUTES"
@@ -519,6 +641,9 @@ export type ListAccountsProductsIncludeEnum =
 export type ListAccountsProductsIncludeEnumList = Array<
   ListAccountsProductsIncludeEnum | (string & {})
 >;
+const ListAccountsProductsIncludeEnumList =
+  GetAccountsProductsIncludeEnumList as any as S.Schema<ListAccountsProductsIncludeEnumList>;
+
 export interface ListAccountsProductsRequest {
   /** Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer Center account. */
   parent: string;
@@ -529,13 +654,22 @@ export interface ListAccountsProductsRequest {
   /** The token returned by the previous request. */
   pageToken?: string;
 }
+const ListAccountsProductsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListAccountsProductsRequest>;
+
 export type ProductList = Array<Product>;
+const ProductList = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<ProductList>;
+
 export interface ListProductsResponse {
   /** List of the products. */
   products?: ProductList;
   /** The token for the retrieval of the next page of product statuses. */
   nextPageToken?: string;
 }
+const ListProductsResponse = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ListProductsResponse>;
+
 export interface PatchAccountsLanguagesProductCertificationsRequest {
   /** Required. The unique name identifier of a product certification Format: accounts/{account}/languages/{language_code}/productCertifications/{id} Where `id` is a some unique identifier and `language_code` is a 2-letter ISO 639-1 code of a Shopping supported language according to https://support.google.com/merchants/answer/160637. */
   name: string;
@@ -544,6 +678,11 @@ export interface PatchAccountsLanguagesProductCertificationsRequest {
   /** Request body */
   body?: ProductCertification;
 }
+const PatchAccountsLanguagesProductCertificationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<PatchAccountsLanguagesProductCertificationsRequest>;
+
 export interface UpdateAccountsProductsRequest {
   /** Name in the format `{target_country}:{content_language}:{product_id}`. `target_country` - The target country of the product as a CLDR territory code (for example, US). `content_language` - The content language of the product as a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#id. */
   name: string;
@@ -552,6 +691,11 @@ export interface UpdateAccountsProductsRequest {
   /** Request body */
   body?: Attributes;
 }
+const UpdateAccountsProductsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<UpdateAccountsProductsRequest>;
+
 export type DeleteAccountsLanguagesProductCertificationsError =
   | NotFound
   | Forbidden
@@ -565,8 +709,8 @@ export const deleteAccountsLanguagesProductCertifications: API.OperationMethod<
   DeleteAccountsLanguagesProductCertificationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeleteAccountsLanguagesProductCertificationsRequest>,
-  output: __S(1) as any as S.Schema<Empty>,
+  input: DeleteAccountsLanguagesProductCertificationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -580,8 +724,8 @@ export const deleteAccountsProducts: API.OperationMethod<
   DeleteAccountsProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteAccountsProductsRequest>,
-  output: __S(1) as any as S.Schema<Empty>,
+  input: DeleteAccountsProductsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -595,8 +739,8 @@ export const getAccountsLanguagesProductCertifications: API.OperationMethod<
   GetAccountsLanguagesProductCertificationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<GetAccountsLanguagesProductCertificationsRequest>,
-  output: __S(11) as any as S.Schema<ProductCertification>,
+  input: GetAccountsLanguagesProductCertificationsRequest,
+  output: ProductCertification,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -610,8 +754,8 @@ export const getAccountsProducts: API.OperationMethod<
   GetAccountsProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<GetAccountsProductsRequest>,
-  output: __S(30) as any as S.Schema<Product>,
+  input: GetAccountsProductsRequest,
+  output: Product,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -626,8 +770,8 @@ export const listAccountsLanguagesProductCertifications: API.PaginatedOperationM
   GcpOpContext,
   ListProductCertificationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(31) as any as S.Schema<ListAccountsLanguagesProductCertificationsRequest>,
-  output: __S(33) as any as S.Schema<ListProductCertificationsResponse>,
+  input: ListAccountsLanguagesProductCertificationsRequest,
+  output: ListProductCertificationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -643,8 +787,8 @@ export const listAccountsProducts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(34) as any as S.Schema<ListAccountsProductsRequest>,
-  output: __S(36) as any as S.Schema<ListProductsResponse>,
+  input: ListAccountsProductsRequest,
+  output: ListProductsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -664,8 +808,8 @@ export const patchAccountsLanguagesProductCertifications: API.OperationMethod<
   PatchAccountsLanguagesProductCertificationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<PatchAccountsLanguagesProductCertificationsRequest>,
-  output: __S(11) as any as S.Schema<ProductCertification>,
+  input: PatchAccountsLanguagesProductCertificationsRequest,
+  output: ProductCertification,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -679,8 +823,8 @@ export const updateAccountsProducts: API.OperationMethod<
   UpdateAccountsProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<UpdateAccountsProductsRequest>,
-  output: __S(1) as any as S.Schema<Empty>,
+  input: UpdateAccountsProductsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -749,16 +893,16 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Certification" });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(Certification);
     case 6:
       return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          approvedCountries: S.optional(__S(6)),
-          pendingCountries: S.optional(__S(6)),
-          status: S.optional(S.String),
-          disapprovedCountries: S.optional(__S(6)),
+          approvedCountries: S.optional(StringList),
+          pendingCountries: S.optional(StringList),
+          status: S.optional(DestinationStatusStatusEnum),
+          disapprovedCountries: S.optional(StringList),
           destination: S.optional(S.String),
         }),
       ).annotate({ identifier: "DestinationStatus" });
@@ -767,7 +911,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(DestinationStatus);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -775,36 +919,36 @@ function __c1(j: number): any {
           description: S.optional(S.String),
           destination: S.optional(S.String),
           type: S.optional(S.String),
-          resolution: S.optional(S.String),
+          resolution: S.optional(IssueResolutionEnum),
           attribute: S.optional(S.String),
           title: S.optional(S.String),
-          severity: S.optional(S.String),
-          applicableCountries: S.optional(__S(6)),
+          severity: S.optional(IssueSeverityEnum),
+          applicableCountries: S.optional(StringList),
         }),
       ).annotate({ identifier: "Issue" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(Issue);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          certification: S.optional(__S(5)),
-          mpn: S.optional(__S(6)),
-          countryCode: S.optional(__S(6)),
+          certification: S.optional(CertificationList),
+          mpn: S.optional(StringList),
+          countryCode: S.optional(StringList),
           name: S.optional(S.String),
           title: S.optional(S.String),
-          destinationStatuses: S.optional(__S(8)),
+          destinationStatuses: S.optional(DestinationStatusList),
           brand: S.optional(S.String),
-          productCode: S.optional(__S(6)),
-          productType: S.optional(__S(6)),
-          issues: S.optional(__S(10)),
+          productCode: S.optional(StringList),
+          productType: S.optional(StringList),
+          issues: S.optional(IssueList),
         }),
       ).annotate({ identifier: "ProductCertification" });
     case 4:
-      return S.Array(S.String);
+      return S.Array(GetAccountsProductsIncludeEnum);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          include: S.optional(__S(12).pipe(T.Query())),
+          include: S.optional(GetAccountsProductsIncludeEnumList.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
         }).pipe(
@@ -827,9 +971,9 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(ImageTypeEnum),
           imageUrl: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(ImageStatusEnum),
         }),
       ).annotate({ identifier: "Image" });
   }
@@ -845,33 +989,33 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "ProductDetail" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(ProductDetail);
     case 2:
       return S.suspend(() =>
         S.Struct({
           headline: S.optional(S.String),
           text: S.optional(S.String),
-          image: S.optional(__S(15)),
+          image: S.optional(Image),
         }),
       ).annotate({ identifier: "FeatureDescription" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(FeatureDescription);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          nutritionClaim: S.optional(__S(6)),
+          nutritionClaim: S.optional(StringList),
           alcoholByVolume: S.optional(S.Number),
           storageInstructions: S.optional(S.String),
           allergens: S.optional(S.String),
           directions: S.optional(S.String),
           activeIngredients: S.optional(S.String),
           ingredients: S.optional(S.String),
-          derivedNutritionClaim: S.optional(__S(6)),
+          derivedNutritionClaim: S.optional(StringList),
           indications: S.optional(S.String),
         }),
       ).annotate({ identifier: "Grocery" });
     case 5:
-      return S.Array(__S(15));
+      return S.Array(Image);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -882,7 +1026,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(22)),
+          value: S.optional(FloatUnit),
           dailyPercentage: S.optional(S.Number),
           name: S.optional(S.String),
         }),
@@ -892,53 +1036,53 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(VoluntaryNutritionFact);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          polyunsaturatedFat: S.optional(__S(22)),
+          polyunsaturatedFat: S.optional(FloatUnit),
           totalCarbohydrateDailyPercentage: S.optional(S.Number),
-          potassium: S.optional(__S(22)),
+          potassium: S.optional(FloatUnit),
           ironDailyPercentage: S.optional(S.Number),
-          monounsaturatedFat: S.optional(__S(22)),
-          folateFolicAcid: S.optional(__S(22)),
+          monounsaturatedFat: S.optional(FloatUnit),
+          folateFolicAcid: S.optional(FloatUnit),
           nutritionFactMeasure: S.optional(S.String),
           potassiumDailyPercentage: S.optional(S.Number),
           servingSizeDescription: S.optional(S.String),
-          voluntaryNutritionFact: S.optional(__S(24)),
-          cholesterol: S.optional(__S(22)),
-          starch: S.optional(__S(22)),
-          totalFat: S.optional(__S(22)),
-          totalSugars: S.optional(__S(22)),
+          voluntaryNutritionFact: S.optional(VoluntaryNutritionFactList),
+          cholesterol: S.optional(FloatUnit),
+          starch: S.optional(FloatUnit),
+          totalFat: S.optional(FloatUnit),
+          totalSugars: S.optional(FloatUnit),
           servingsPerContainer: S.optional(S.String),
           folateMcgDfe: S.optional(S.Number),
-          dietaryFiber: S.optional(__S(22)),
-          energyFromFat: S.optional(__S(22)),
-          servingSizeMeasure: S.optional(__S(22)),
-          energy: S.optional(__S(22)),
-          vitaminD: S.optional(__S(22)),
-          addedSugars: S.optional(__S(22)),
+          dietaryFiber: S.optional(FloatUnit),
+          energyFromFat: S.optional(FloatUnit),
+          servingSizeMeasure: S.optional(FloatUnit),
+          energy: S.optional(FloatUnit),
+          vitaminD: S.optional(FloatUnit),
+          addedSugars: S.optional(FloatUnit),
           proteinDailyPercentage: S.optional(S.Number),
           totalSugarsDailyPercentage: S.optional(S.Number),
-          protein: S.optional(__S(22)),
-          transFat: S.optional(__S(22)),
+          protein: S.optional(FloatUnit),
+          transFat: S.optional(FloatUnit),
           dietaryFiberDailyPercentage: S.optional(S.Number),
-          saturatedFat: S.optional(__S(22)),
+          saturatedFat: S.optional(FloatUnit),
           saturatedFatDailyPercentage: S.optional(S.Number),
           folateDailyPercentage: S.optional(S.Number),
           calciumDailyPercentage: S.optional(S.Number),
           cholesterolDailyPercentage: S.optional(S.Number),
           totalFatDailyPercentage: S.optional(S.Number),
-          polyols: S.optional(__S(22)),
+          polyols: S.optional(FloatUnit),
           addedSugarsDailyPercentage: S.optional(S.Number),
-          iron: S.optional(__S(22)),
+          iron: S.optional(FloatUnit),
           sodiumDailyPercentage: S.optional(S.Number),
           transFatDailyPercentage: S.optional(S.Number),
           preparedSizeDescription: S.optional(S.String),
-          totalCarbohydrate: S.optional(__S(22)),
+          totalCarbohydrate: S.optional(FloatUnit),
           vitaminDDailyPercentage: S.optional(S.Number),
-          sodium: S.optional(__S(22)),
-          calcium: S.optional(__S(22)),
+          sodium: S.optional(FloatUnit),
+          calcium: S.optional(FloatUnit),
         }),
       ).annotate({ identifier: "Nutrition" });
     case 2:
@@ -963,61 +1107,61 @@ function __c3(j: number): any {
         identifier: "GoogleShoppingManufacturersV1ProductCertification",
       });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(GoogleShoppingManufacturersV1ProductCertification);
     case 5:
       return S.suspend(() =>
         S.Struct({
           color: S.optional(S.String),
-          count: S.optional(__S(14)),
+          count: S.optional(Count),
           theme: S.optional(S.String),
           flavor: S.optional(S.String),
-          capacity: S.optional(__S(14)),
+          capacity: S.optional(Capacity),
           ageGroup: S.optional(S.String),
           material: S.optional(S.String),
           mpn: S.optional(S.String),
           releaseDate: S.optional(S.String),
           title: S.optional(S.String),
           productName: S.optional(S.String),
-          imageLink: S.optional(__S(15)),
+          imageLink: S.optional(Image),
           disclosureDate: S.optional(S.String),
-          excludedDestination: S.optional(__S(6)),
-          richProductContent: S.optional(__S(6)),
+          excludedDestination: S.optional(StringList),
+          richProductContent: S.optional(StringList),
           size: S.optional(S.String),
           productLine: S.optional(S.String),
           productPageUrl: S.optional(S.String),
-          productDetail: S.optional(__S(17)),
+          productDetail: S.optional(ProductDetailList),
           gender: S.optional(S.String),
           scent: S.optional(S.String),
           virtualModelLink: S.optional(S.String),
-          gtin: S.optional(__S(6)),
+          gtin: S.optional(StringList),
           targetClientId: S.optional(S.String),
           format: S.optional(S.String),
           brand: S.optional(S.String),
-          featureDescription: S.optional(__S(19)),
-          productType: S.optional(__S(6)),
-          productHighlight: S.optional(__S(6)),
+          featureDescription: S.optional(FeatureDescriptionList),
+          productType: S.optional(StringList),
+          productHighlight: S.optional(StringList),
           itemGroupId: S.optional(S.String),
-          grocery: S.optional(__S(20)),
-          additionalImageLink: S.optional(__S(21)),
-          nutrition: S.optional(__S(25)),
-          videoLink: S.optional(__S(6)),
-          suggestedRetailPrice: S.optional(__S(26)),
-          includedDestination: S.optional(__S(6)),
+          grocery: S.optional(Grocery),
+          additionalImageLink: S.optional(ImageList),
+          nutrition: S.optional(Nutrition),
+          videoLink: S.optional(StringList),
+          suggestedRetailPrice: S.optional(Price),
+          includedDestination: S.optional(StringList),
           sizeSystem: S.optional(S.String),
-          certification: S.optional(__S(28)),
+          certification: S.optional(GoogleShoppingManufacturersV1ProductCertificationList),
           pattern: S.optional(S.String),
           description: S.optional(S.String),
-          sizeType: S.optional(__S(6)),
-          intendedCountry: S.optional(__S(6)),
+          sizeType: S.optional(StringList),
+          intendedCountry: S.optional(StringList),
         }),
       ).annotate({ identifier: "Attributes" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(__S(29)),
-          destinationStatuses: S.optional(__S(8)),
+          attributes: S.optional(Attributes),
+          destinationStatuses: S.optional(DestinationStatusList),
           feedLabel: S.optional(S.String),
-          issues: S.optional(__S(10)),
+          issues: S.optional(IssueList),
           contentLanguage: S.optional(S.String),
           parent: S.optional(S.String),
           productId: S.optional(S.String),
@@ -1046,11 +1190,11 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(11));
+      return S.Array(ProductCertification);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          productCertifications: S.optional(__S(32)),
+          productCertifications: S.optional(ProductCertificationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1060,7 +1204,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          include: S.optional(__S(12).pipe(T.Query())),
+          include: S.optional(ListAccountsProductsIncludeEnumList.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -1074,11 +1218,11 @@ function __c4(j: number): any {
         identifier: "ListAccountsProductsRequest",
       });
     case 3:
-      return S.Array(__S(30));
+      return S.Array(Product);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          products: S.optional(__S(35)),
+          products: S.optional(ProductList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListProductsResponse" });
@@ -1087,7 +1231,7 @@ function __c4(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(11).pipe(T.HttpBody())),
+          body: S.optional(ProductCertification.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1103,7 +1247,7 @@ function __c4(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(29).pipe(T.HttpBody())),
+          body: S.optional(Attributes.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1114,24 +1258,5 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "UpdateAccountsProductsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

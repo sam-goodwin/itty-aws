@@ -8,8 +8,6 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -48,10 +46,17 @@ export interface CreateBackupRequest {
   /** Instance id */
   instanceId: string;
 }
+const CreateBackupRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateBackupRequest>;
+
 export interface CreateBackupResponseItem {
   id: number;
   message: string;
 }
+const CreateBackupResponseItem = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateBackupResponseItem>;
+
 export interface CreateCredentialsRequest {
   /** Project id on which user has permissions */
   projectId: string;
@@ -61,7 +66,14 @@ export interface CreateCredentialsRequest {
   instanceId: string;
   parameters?: unknown;
 }
+const CreateCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateCredentialsRequest>;
+
 export type CredentialsHostsList = Array<string>;
+const CredentialsHostsList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CredentialsHostsList>;
+
 export interface Credentials {
   host: string;
   hosts?: CredentialsHostsList;
@@ -71,16 +83,26 @@ export interface Credentials {
   uri?: string;
   username: string;
 }
+const Credentials = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Credentials>;
+
 export interface RawCredentials {
   credentials: Credentials;
 }
+const RawCredentials = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<RawCredentials>;
+
 export interface CredentialsResponse {
   id: string;
   raw?: RawCredentials;
   uri: string;
 }
+const CredentialsResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CredentialsResponse>;
+
 export type InstanceParametersLazyfreeLazyEviction = "yes" | "no";
+const InstanceParametersLazyfreeLazyEviction = S.String;
+
 export type InstanceParametersLazyfreeLazyExpire = "yes" | "no";
+const InstanceParametersLazyfreeLazyExpire = S.String;
+
 export type InstanceParametersMaxmemoryPolicy =
   | "volatile-lru"
   | "allkeys-lru"
@@ -88,7 +110,12 @@ export type InstanceParametersMaxmemoryPolicy =
   | "allkeys-random"
   | "volatile-ttl"
   | "noeviction";
+const InstanceParametersMaxmemoryPolicy = S.String;
+
 export type InstanceParametersSyslogList = Array<string>;
+const InstanceParametersSyslogList =
+  CredentialsHostsList as any as S.Schema<InstanceParametersSyslogList>;
+
 export interface InstanceParameters {
   /** The unit is milliseconds. */
   down_after_milliseconds?: number;
@@ -124,6 +151,8 @@ export interface InstanceParameters {
   snapshot?: string;
   syslog?: InstanceParametersSyslogList;
 }
+const InstanceParameters = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<InstanceParameters>;
+
 export interface CreateInstanceRequest {
   /** Project id on which user has permissions */
   projectId: string;
@@ -133,9 +162,19 @@ export interface CreateInstanceRequest {
   parameters?: InstanceParameters;
   planId: string;
 }
+const CreateInstanceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateInstanceRequest>;
+
 export interface CreateInstanceResponse {
   instanceId: string;
 }
+const CreateInstanceResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateInstanceResponse>;
+
 export interface DeleteCredentialsRequest {
   /** Project id on which user has permissions */
   projectId: string;
@@ -146,7 +185,17 @@ export interface DeleteCredentialsRequest {
   /** Id of the credentials being deleted */
   credentialsId: string;
 }
+const DeleteCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteCredentialsRequest>;
+
 export interface DeleteCredentialsResponse {}
+const DeleteCredentialsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DeleteCredentialsResponse>;
+
 export interface DeleteInstanceRequest {
   /** Project id on which user has permissions */
   projectId: string;
@@ -155,7 +204,14 @@ export interface DeleteInstanceRequest {
   /** Instance id */
   instanceId: string;
 }
+const DeleteInstanceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeleteInstanceRequest>;
+
 export interface DeleteInstanceResponse {}
+const DeleteInstanceResponse = DeleteCredentialsResponse as any as S.Schema<DeleteInstanceResponse>;
+
 export interface DownloadBackupRequest {
   /** Project id on which user has permissions */
   projectId: string;
@@ -166,7 +222,14 @@ export interface DownloadBackupRequest {
   /** Backup id */
   backupId: number;
 }
+const DownloadBackupRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DownloadBackupRequest>;
+
 export interface DownloadBackupResponse {}
+const DownloadBackupResponse = DeleteCredentialsResponse as any as S.Schema<DownloadBackupResponse>;
+
 export interface GetCredentialsRequest {
   /** Project id on which user has permissions */
   projectId: string;
@@ -177,6 +240,11 @@ export interface GetCredentialsRequest {
   /** Credentials id of credentials to fetch */
   credentialsId: string;
 }
+const GetCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetCredentialsRequest>;
+
 export interface GetInstanceRequest {
   /** Project id on which user has permissions */
   projectId: string;
@@ -185,14 +253,27 @@ export interface GetInstanceRequest {
   /** Instance id */
   instanceId: string;
 }
+const GetInstanceRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetInstanceRequest>;
+
 export type InstanceLastOperationState = "in progress" | "succeeded" | "failed";
+const InstanceLastOperationState = S.String;
+
 export type InstanceLastOperationType = "create" | "update" | "delete";
+const InstanceLastOperationType = S.String;
+
 export interface InstanceLastOperation {
   description: string;
   state: InstanceLastOperationState;
   type: InstanceLastOperationType;
 }
+const InstanceLastOperation = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<InstanceLastOperation>;
+
 export type InstanceStatus = "active" | "failed" | "stopped" | "creating" | "deleting" | "updating";
+const InstanceStatus = S.String;
+
 export interface Instance {
   cfGuid: string;
   cfOrganizationGuid: string;
@@ -209,6 +290,8 @@ export interface Instance {
   planName: string;
   status?: InstanceStatus;
 }
+const Instance = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Instance>;
+
 export interface GetMetricsRequest {
   /** Project id on which user has permissions */
   projectId: string;
@@ -217,6 +300,8 @@ export interface GetMetricsRequest {
   /** Instance id */
   instanceId: string;
 }
+const GetMetricsRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetMetricsRequest>;
+
 export interface GetMetricsResponse {
   cpuIdleTime?: number;
   cpuLoadPercent: number;
@@ -242,6 +327,8 @@ export interface GetMetricsResponse {
   parachuteDiskPersistentUsedPercent: number;
   parachuteDiskPersistentUsedThreshold: number;
 }
+const GetMetricsResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetMetricsResponse>;
+
 export interface ListBackupsRequest {
   /** Project id on which user has permissions */
   projectId: string;
@@ -250,6 +337,8 @@ export interface ListBackupsRequest {
   /** Instance id */
   instanceId: string;
 }
+const ListBackupsRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ListBackupsRequest>;
+
 export interface Backup {
   downloadable?: boolean;
   finished_at: string;
@@ -258,8 +347,14 @@ export interface Backup {
   status: string;
   triggered_at?: string;
 }
+const Backup = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Backup>;
+
 export type ListBackupsResponse = Array<Backup>;
+const ListBackupsResponse = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ListBackupsResponse>;
+
 export type ListBackupsResponse2 = ListBackupsResponse;
+const ListBackupsResponse2 = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ListBackupsResponse2>;
+
 export interface ListCredentialsRequest {
   /** Project id on which user has permissions */
   projectId: string;
@@ -268,29 +363,60 @@ export interface ListCredentialsRequest {
   /** Instance id */
   instanceId: string;
 }
+const ListCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListCredentialsRequest>;
+
 export interface CredentialsListItem {
   id: string;
 }
+const CredentialsListItem = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<CredentialsListItem>;
+
 export type ListCredentialsResponseCredentialsListList = Array<CredentialsListItem>;
+const ListCredentialsResponseCredentialsListList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListCredentialsResponseCredentialsListList>;
+
 export interface ListCredentialsResponse {
   credentialsList: ListCredentialsResponseCredentialsListList;
 }
+const ListCredentialsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ListCredentialsResponse>;
+
 export interface ListInstancesRequest {
   /** Project id on which user has permissions */
   projectId: string;
   /** region in which the project resides */
   regionId: string;
 }
+const ListInstancesRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ListInstancesRequest>;
+
 export type ListInstancesResponseInstancesList = Array<Instance>;
+const ListInstancesResponseInstancesList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListInstancesResponseInstancesList>;
+
 export interface ListInstancesResponse {
   instances: ListInstancesResponseInstancesList;
 }
+const ListInstancesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ListInstancesResponse>;
+
 export interface ListOfferingsRequest {
   /** Project id on which user has permissions */
   projectId: string;
   /** region in which the project resides */
   regionId: string;
 }
+const ListOfferingsRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ListOfferingsRequest>;
+
 export interface Plan {
   description: string;
   free: boolean;
@@ -298,14 +424,22 @@ export interface Plan {
   name: string;
   skuName: string;
 }
+const Plan = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Plan>;
+
 export type OfferingPlansList = Array<Plan>;
+const OfferingPlansList = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<OfferingPlansList>;
+
 export interface Schema {
   parameters: unknown;
 }
+const Schema = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Schema>;
+
 export interface InstanceSchema {
   create: Schema;
   update: Schema;
 }
+const InstanceSchema = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<InstanceSchema>;
+
 export interface Offering {
   description: string;
   documentationUrl: string;
@@ -318,10 +452,22 @@ export interface Offering {
   schema?: InstanceSchema;
   version: string;
 }
+const Offering = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<Offering>;
+
 export type ListOfferingsResponseOfferingsList = Array<Offering>;
+const ListOfferingsResponseOfferingsList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListOfferingsResponseOfferingsList>;
+
 export interface ListOfferingsResponse {
   offerings: ListOfferingsResponseOfferingsList;
 }
+const ListOfferingsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListOfferingsResponse>;
+
 export interface ListRestoresRequest {
   /** Project id on which user has permissions */
   projectId: string;
@@ -330,6 +476,8 @@ export interface ListRestoresRequest {
   /** Instance id */
   instanceId: string;
 }
+const ListRestoresRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<ListRestoresRequest>;
+
 export interface Restore {
   backup_id: number;
   finished_at: string;
@@ -337,10 +485,19 @@ export interface Restore {
   status: string;
   triggered_at?: string;
 }
+const Restore = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Restore>;
+
 export type ListRestoresResponseInstanceRestoresList = Array<Restore>;
+const ListRestoresResponseInstanceRestoresList = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ListRestoresResponseInstanceRestoresList>;
+
 export interface ListRestoresResponse {
   instanceRestores: ListRestoresResponseInstanceRestoresList;
 }
+const ListRestoresResponse = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ListRestoresResponse>;
+
 export interface PartialUpdateInstanceRequest {
   /** Project id on which user has permissions */
   projectId: string;
@@ -352,7 +509,15 @@ export interface PartialUpdateInstanceRequest {
   parameters?: InstanceParameters;
   planId?: string;
 }
+const PartialUpdateInstanceRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<PartialUpdateInstanceRequest>;
+
 export interface PartialUpdateInstanceResponse {}
+const PartialUpdateInstanceResponse =
+  DeleteCredentialsResponse as any as S.Schema<PartialUpdateInstanceResponse>;
+
 export interface TriggerRecreateRequest {
   /** Project id on which user has permissions */
   projectId: string;
@@ -361,6 +526,11 @@ export interface TriggerRecreateRequest {
   /** Instance id */
   instanceId: string;
 }
+const TriggerRecreateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<TriggerRecreateRequest>;
+
 export interface TriggerRestartRequest {
   /** Project id on which user has permissions */
   projectId: string;
@@ -369,6 +539,11 @@ export interface TriggerRestartRequest {
   /** Instance id */
   instanceId: string;
 }
+const TriggerRestartRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<TriggerRestartRequest>;
+
 export interface TriggerRestoreRequest {
   /** Project id on which user has permissions */
   projectId: string;
@@ -379,9 +554,19 @@ export interface TriggerRestoreRequest {
   /** Backup id */
   backupId: number;
 }
+const TriggerRestoreRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<TriggerRestoreRequest>;
+
 export interface TriggerRestoreResponse {
   id: number;
 }
+const TriggerRestoreResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<TriggerRestoreResponse>;
+
 export interface UpdateBackupsConfigRequest {
   /** Project id on which user has permissions */
   projectId: string;
@@ -391,9 +576,19 @@ export interface UpdateBackupsConfigRequest {
   instanceId: string;
   encryption_key?: string;
 }
+const UpdateBackupsConfigRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<UpdateBackupsConfigRequest>;
+
 export interface UpdateBackupsConfigResponse {
   message: string;
 }
+const UpdateBackupsConfigResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<UpdateBackupsConfigResponse>;
+
 export type CreateBackupError = BadRequest | NotFound | StackitOpError;
 /** create a backup */
 export const createBackup: API.OperationMethod<
@@ -402,8 +597,8 @@ export const createBackup: API.OperationMethod<
   CreateBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateBackupRequest>,
-  output: __S(1) as any as S.Schema<CreateBackupResponseItem>,
+  input: CreateBackupRequest,
+  output: CreateBackupResponseItem,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -417,8 +612,8 @@ export const createCredentials: API.OperationMethod<
   CreateCredentialsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateCredentialsRequest>,
-  output: __S(6) as any as S.Schema<CredentialsResponse>,
+  input: CreateCredentialsRequest,
+  output: CredentialsResponse,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -432,8 +627,8 @@ export const createInstance: API.OperationMethod<
   CreateInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateInstanceRequest>,
-  output: __S(9) as any as S.Schema<CreateInstanceResponse>,
+  input: CreateInstanceRequest,
+  output: CreateInstanceResponse,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -447,8 +642,8 @@ export const deleteCredentials: API.OperationMethod<
   DeleteCredentialsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeleteCredentialsRequest>,
-  output: __S(11) as any as S.Schema<DeleteCredentialsResponse>,
+  input: DeleteCredentialsRequest,
+  output: DeleteCredentialsResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -462,8 +657,8 @@ export const deleteInstance: API.OperationMethod<
   DeleteInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DeleteInstanceRequest>,
-  output: __S(11) as any as S.Schema<DeleteInstanceResponse>,
+  input: DeleteInstanceRequest,
+  output: DeleteInstanceResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -477,8 +672,8 @@ export const downloadBackup: API.OperationMethod<
   DownloadBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<DownloadBackupRequest>,
-  output: __S(11) as any as S.Schema<DownloadBackupResponse>,
+  input: DownloadBackupRequest,
+  output: DownloadBackupResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -492,8 +687,8 @@ export const getCredentials: API.OperationMethod<
   GetCredentialsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetCredentialsRequest>,
-  output: __S(6) as any as S.Schema<CredentialsResponse>,
+  input: GetCredentialsRequest,
+  output: CredentialsResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -507,8 +702,8 @@ export const getInstance: API.OperationMethod<
   GetInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<GetInstanceRequest>,
-  output: __S(17) as any as S.Schema<Instance>,
+  input: GetInstanceRequest,
+  output: Instance,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -522,8 +717,8 @@ export const getMetrics: API.OperationMethod<
   GetMetricsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<GetMetricsRequest>,
-  output: __S(19) as any as S.Schema<GetMetricsResponse>,
+  input: GetMetricsRequest,
+  output: GetMetricsResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -537,8 +732,8 @@ export const listBackups: API.OperationMethod<
   ListBackupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<ListBackupsRequest>,
-  output: __S(23) as any as S.Schema<ListBackupsResponse2>,
+  input: ListBackupsRequest,
+  output: ListBackupsResponse2,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -552,8 +747,8 @@ export const listCredentials: API.OperationMethod<
   ListCredentialsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<ListCredentialsRequest>,
-  output: __S(27) as any as S.Schema<ListCredentialsResponse>,
+  input: ListCredentialsRequest,
+  output: ListCredentialsResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -567,8 +762,8 @@ export const listInstances: API.OperationMethod<
   ListInstancesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<ListInstancesRequest>,
-  output: __S(30) as any as S.Schema<ListInstancesResponse>,
+  input: ListInstancesRequest,
+  output: ListInstancesResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -582,8 +777,8 @@ export const listOfferings: API.OperationMethod<
   ListOfferingsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<ListOfferingsRequest>,
-  output: __S(38) as any as S.Schema<ListOfferingsResponse>,
+  input: ListOfferingsRequest,
+  output: ListOfferingsResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -597,8 +792,8 @@ export const listRestores: API.OperationMethod<
   ListRestoresError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<ListRestoresRequest>,
-  output: __S(42) as any as S.Schema<ListRestoresResponse>,
+  input: ListRestoresRequest,
+  output: ListRestoresResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -612,8 +807,8 @@ export const partialUpdateInstance: API.OperationMethod<
   PartialUpdateInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<PartialUpdateInstanceRequest>,
-  output: __S(11) as any as S.Schema<PartialUpdateInstanceResponse>,
+  input: PartialUpdateInstanceRequest,
+  output: PartialUpdateInstanceResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -627,8 +822,8 @@ export const triggerRecreate: API.OperationMethod<
   TriggerRecreateError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<TriggerRecreateRequest>,
-  output: __S(9) as any as S.Schema<CreateInstanceResponse>,
+  input: TriggerRecreateRequest,
+  output: CreateInstanceResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -642,8 +837,8 @@ export const triggerRestart: API.OperationMethod<
   TriggerRestartError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<TriggerRestartRequest>,
-  output: __S(9) as any as S.Schema<CreateInstanceResponse>,
+  input: TriggerRestartRequest,
+  output: CreateInstanceResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -657,8 +852,8 @@ export const triggerRestore: API.OperationMethod<
   TriggerRestoreError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<TriggerRestoreRequest>,
-  output: __S(47) as any as S.Schema<TriggerRestoreResponse>,
+  input: TriggerRestoreRequest,
+  output: TriggerRestoreResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -672,8 +867,8 @@ export const updateBackupsConfig: API.OperationMethod<
   UpdateBackupsConfigError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<UpdateBackupsConfigRequest>,
-  output: __S(49) as any as S.Schema<UpdateBackupsConfigResponse>,
+  input: UpdateBackupsConfigRequest,
+  output: UpdateBackupsConfigResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -726,7 +921,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           host: S.String,
-          hosts: S.optional(__S(3)),
+          hosts: S.optional(CredentialsHostsList),
           load_balanced_host: S.optional(S.String),
           password: S.String.pipe(T.SensitiveValue({})),
           port: S.optional(S.Number),
@@ -737,14 +932,14 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          credentials: __S(4),
+          credentials: Credentials,
         }),
       ).annotate({ identifier: "RawCredentials" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          raw: S.optional(__S(5)),
+          raw: S.optional(RawCredentials),
           uri: S.String,
         }),
       ).annotate({ identifier: "CredentialsResponse" });
@@ -755,12 +950,18 @@ function __c0(j: number): any {
           enable_monitoring: S.optional(S.Boolean),
           failover_timeout: S.optional(S.Number.pipe(T.Body("failover-timeout"))),
           graphite: S.optional(S.String),
-          lazyfree_lazy_eviction: S.optional(S.String.pipe(T.Body("lazyfree-lazy-eviction"))),
-          lazyfree_lazy_expire: S.optional(S.String.pipe(T.Body("lazyfree-lazy-expire"))),
+          lazyfree_lazy_eviction: S.optional(
+            InstanceParametersLazyfreeLazyEviction.pipe(T.Body("lazyfree-lazy-eviction")),
+          ),
+          lazyfree_lazy_expire: S.optional(
+            InstanceParametersLazyfreeLazyExpire.pipe(T.Body("lazyfree-lazy-expire")),
+          ),
           lua_time_limit: S.optional(S.Number.pipe(T.Body("lua-time-limit"))),
           max_disk_threshold: S.optional(S.Number),
           maxclients: S.optional(S.Number),
-          maxmemory_policy: S.optional(S.String.pipe(T.Body("maxmemory-policy"))),
+          maxmemory_policy: S.optional(
+            InstanceParametersMaxmemoryPolicy.pipe(T.Body("maxmemory-policy")),
+          ),
           maxmemory_samples: S.optional(S.Number.pipe(T.Body("maxmemory-samples"))),
           metrics_frequency: S.optional(S.Number),
           metrics_prefix: S.optional(S.String),
@@ -771,7 +972,7 @@ function __c0(j: number): any {
           repl_backlog_size: S.optional(S.String.pipe(T.Body("repl-backlog-size"))),
           sgw_acl: S.optional(S.String),
           snapshot: S.optional(S.String),
-          syslog: S.optional(__S(3)),
+          syslog: S.optional(InstanceParametersSyslogList),
         }),
       ).annotate({ identifier: "InstanceParameters" });
   }
@@ -784,7 +985,7 @@ function __c1(j: number): any {
           projectId: S.String.pipe(T.Label()),
           regionId: S.String.pipe(T.Label()),
           instanceName: S.String,
-          parameters: S.optional(__S(7)),
+          parameters: S.optional(InstanceParameters),
           planId: S.String,
         }).pipe(
           T.Http({
@@ -891,8 +1092,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.String,
-          state: S.String,
-          type: S.String,
+          state: InstanceLastOperationState,
+          type: InstanceLastOperationType,
         }),
       ).annotate({ identifier: "InstanceLastOperation" });
     case 1:
@@ -904,14 +1105,14 @@ function __c2(j: number): any {
           dashboardUrl: S.String,
           imageUrl: S.String,
           instanceId: S.optional(S.String),
-          lastOperation: __S(16),
+          lastOperation: InstanceLastOperation,
           name: S.String,
           offeringName: S.String,
           offeringVersion: S.String,
           parameters: S.Unknown,
           planId: S.String,
           planName: S.String,
-          status: S.optional(S.String),
+          status: S.optional(InstanceStatus),
         }),
       ).annotate({ identifier: "Instance" });
     case 2:
@@ -984,9 +1185,9 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "Backup" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(Backup);
     case 7:
-      return S.suspend(() => __S(22).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListBackupsResponse.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListBackupsResponse2",
       });
   }
@@ -1015,11 +1216,11 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "CredentialsListItem" });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(CredentialsListItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          credentialsList: __S(26),
+          credentialsList: ListCredentialsResponseCredentialsListList,
         }),
       ).annotate({ identifier: "ListCredentialsResponse" });
     case 4:
@@ -1037,11 +1238,11 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListInstancesRequest" });
     case 5:
-      return S.Array(__S(17));
+      return S.Array(Instance);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          instances: __S(29),
+          instances: ListInstancesResponseInstancesList,
         }),
       ).annotate({ identifier: "ListInstancesResponse" });
     case 7:
@@ -1073,7 +1274,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "Plan" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(Plan);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1083,8 +1284,8 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          create: __S(34),
-          update: __S(34),
+          create: Schema,
+          update: Schema,
         }),
       ).annotate({ identifier: "InstanceSchema" });
     case 4:
@@ -1096,18 +1297,18 @@ function __c4(j: number): any {
           latest: S.Boolean,
           lifecycle: S.optional(S.String),
           name: S.String,
-          plans: __S(33),
+          plans: OfferingPlansList,
           quotaCount: S.Number,
-          schema: S.optional(__S(35)),
+          schema: S.optional(InstanceSchema),
           version: S.String,
         }),
       ).annotate({ identifier: "Offering" });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(Offering);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          offerings: __S(37),
+          offerings: ListOfferingsResponseOfferingsList,
         }),
       ).annotate({ identifier: "ListOfferingsResponse" });
     case 7:
@@ -1140,11 +1341,11 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "Restore" });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(Restore);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          instanceRestores: __S(41),
+          instanceRestores: ListRestoresResponseInstanceRestoresList,
         }),
       ).annotate({ identifier: "ListRestoresResponse" });
     case 3:
@@ -1154,7 +1355,7 @@ function __c5(j: number): any {
           regionId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           instanceName: S.optional(S.String),
-          parameters: S.optional(__S(7)),
+          parameters: S.optional(InstanceParameters),
           planId: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1249,28 +1450,5 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UpdateBackupsConfigResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

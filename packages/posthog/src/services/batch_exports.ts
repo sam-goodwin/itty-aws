@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -49,6 +47,8 @@ export type BatchExportBackfillStatusEnum =
   | "TimedOut"
   | "Running"
   | "Starting";
+const BatchExportBackfillStatusEnum = S.String;
+
 export interface BatchExportsBackfillsCancelCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -72,14 +72,34 @@ export interface BatchExportsBackfillsCancelCreateRequest {
   /** The BatchExport this backfill belongs to. */
   batch_export?: string;
 }
+const BatchExportsBackfillsCancelCreateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<BatchExportsBackfillsCancelCreateRequest>;
+
 export interface BatchExportsBackfillsCancelCreateResponse {}
+const BatchExportsBackfillsCancelCreateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BatchExportsBackfillsCancelCreateResponse>;
+
 export interface BatchExportsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this batch export. */
   id: string;
 }
+const BatchExportsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<BatchExportsDestroyRequest>;
+
 export interface BatchExportsDestroyResponse {}
+const BatchExportsDestroyResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<BatchExportsDestroyResponse>;
+
 /** * `Cancelled` - Cancelled * `Completed` - Completed * `ContinuedAsNew` - Continued As New * `Failed` - Failed * `FailedRetryable` - Failed Retryable * `FailedBilling` - Failed Billing * `Terminated` - Terminated * `TimedOut` - Timedout * `Running` - Running * `Starting` - Starting */
 export type BatchExportRunStatusEnum =
   | "Cancelled"
@@ -92,6 +112,8 @@ export type BatchExportRunStatusEnum =
   | "TimedOut"
   | "Running"
   | "Starting";
+const BatchExportRunStatusEnum = S.String;
+
 export interface BatchExportsRunsCancelCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -123,7 +145,15 @@ export interface BatchExportsRunsCancelCreateRequest {
   /** The backfill this run belongs to. */
   backfill?: string | null;
 }
+const BatchExportsRunsCancelCreateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<BatchExportsRunsCancelCreateRequest>;
+
 export interface BatchExportsRunsCancelCreateResponse {}
+const BatchExportsRunsCancelCreateResponse =
+  BatchExportsBackfillsCancelCreateResponse as any as S.Schema<BatchExportsRunsCancelCreateResponse>;
+
 export interface BatchExportsRunsRetryCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -155,7 +185,15 @@ export interface BatchExportsRunsRetryCreateRequest {
   /** The backfill this run belongs to. */
   backfill?: string | null;
 }
+const BatchExportsRunsRetryCreateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<BatchExportsRunsRetryCreateRequest>;
+
 export interface BatchExportsRunsRetryCreateResponse {}
+const BatchExportsRunsRetryCreateResponse =
+  BatchExportsBackfillsCancelCreateResponse as any as S.Schema<BatchExportsRunsRetryCreateResponse>;
+
 export interface BatchExportsUnpauseCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -164,9 +202,19 @@ export interface BatchExportsUnpauseCreateRequest {
   /** Whether to backfill the runs that the batch export missed while it was paused. */
   backfill?: boolean;
 }
+const BatchExportsUnpauseCreateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<BatchExportsUnpauseCreateRequest>;
+
 export interface BatchExportsUnpauseCreateResponse {}
+const BatchExportsUnpauseCreateResponse =
+  BatchExportsBackfillsCancelCreateResponse as any as S.Schema<BatchExportsUnpauseCreateResponse>;
+
 /** * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
 export type BatchExportModelEnum = "events" | "persons" | "sessions" | "hogql";
+const BatchExportModelEnum = S.String;
+
 /** * `Databricks` - Databricks */
 export type DatabricksDestinationRequestTypeEnum = "Databricks";
 /** Typed configuration for a Databricks batch-export destination. Credentials live in the linked Integration, not in this config. Mirrors `DatabricksBatchExportInputs` in `products/batch_exports/backend/service.py`. */
@@ -403,6 +451,8 @@ export type BatchExportDestinationRequest =
   | S3CompatibleDestinationRequest
   | SnowflakeDestinationRequest
   | RedshiftDestinationRequest;
+const BatchExportDestinationRequest = S.Unknown as any as S.Schema<BatchExportDestinationRequest>;
+
 /** * `hour` - hour * `day` - day * `week` - week * `every 5 minutes` - every 5 minutes * `every 15 minutes` - every 15 minutes */
 export type BatchExportIntervalEnum =
   | "hour"
@@ -410,11 +460,17 @@ export type BatchExportIntervalEnum =
   | "week"
   | "every 5 minutes"
   | "every 15 minutes";
+const BatchExportIntervalEnum = S.String;
+
 export type BounceRatePageViewMode =
   | "count_pageviews"
   | "uniq_urls"
   | "uniq_page_screen_autocaptures";
+const BounceRatePageViewMode = S.String;
+
 export type FilterLogicalOperator = "AND" | "OR";
+const FilterLogicalOperator = S.String;
+
 export type CustomBotField =
   | "$raw_user_agent"
   | "$ip"
@@ -430,7 +486,11 @@ export type CustomBotField =
   | "$geoip_country_code"
   | "$referrer"
   | "$referring_domain";
+const CustomBotField = S.String;
+
 export type CustomBotMatcher = "contains" | "regex" | "exact" | "cidr";
+const CustomBotMatcher = S.String;
+
 export interface CustomBotCondition {
   id: string;
   /** The event property this condition reads. */
@@ -439,7 +499,14 @@ export interface CustomBotCondition {
   /** Matched against the property named by `key`. */
   pattern: string;
 }
+const CustomBotCondition = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CustomBotCondition>;
+
 export type CustomBotRuleItemsList = Array<CustomBotCondition>;
+const CustomBotRuleItemsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CustomBotRuleItemsList>;
+
 export interface CustomBotRule {
   /** Reported by `$virt_traffic_category`. Defaults to `custom`. */
   category?: string | null;
@@ -450,7 +517,14 @@ export interface CustomBotRule {
   /** Reported by `$virt_bot_name` and `$virt_bot_operator` when the rule matches. */
   name: string;
 }
+const CustomBotRule = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CustomBotRule>;
+
 export type HogQLQueryModifiersCustomBotDefinitionsList = Array<CustomBotRule>;
+const HogQLQueryModifiersCustomBotDefinitionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<HogQLQueryModifiersCustomBotDefinitionsList>;
+
 export type CustomChannelField =
   | "utm_source"
   | "utm_medium"
@@ -459,6 +533,8 @@ export type CustomChannelField =
   | "url"
   | "pathname"
   | "hostname";
+const CustomChannelField = S.String;
+
 export type CustomChannelOperator =
   | "exact"
   | "is_not"
@@ -468,39 +544,86 @@ export type CustomChannelOperator =
   | "not_icontains"
   | "regex"
   | "not_regex";
+const CustomChannelOperator = S.String;
+
 export type CustomChannelConditionValueCase1List = Array<string>;
+const CustomChannelConditionValueCase1List = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CustomChannelConditionValueCase1List>;
+
 export type CustomChannelConditionValue = string | CustomChannelConditionValueCase1List;
+const CustomChannelConditionValue = S.Unknown as any as S.Schema<CustomChannelConditionValue>;
+
 export interface CustomChannelCondition {
   id?: string;
   key?: CustomChannelField | (string & {});
   op?: CustomChannelOperator | (string & {});
   value?: CustomChannelConditionValue | null;
 }
+const CustomChannelCondition = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CustomChannelCondition>;
+
 export type CustomChannelRuleItemsList = Array<CustomChannelCondition>;
+const CustomChannelRuleItemsList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CustomChannelRuleItemsList>;
+
 export interface CustomChannelRule {
   channel_type?: string;
   combiner?: FilterLogicalOperator | (string & {});
   id?: string;
   items?: CustomChannelRuleItemsList;
 }
+const CustomChannelRule = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CustomChannelRule>;
+
 export type HogQLQueryModifiersCustomChannelTypeRulesList = Array<CustomChannelRule>;
+const HogQLQueryModifiersCustomChannelTypeRulesList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<HogQLQueryModifiersCustomChannelTypeRulesList>;
+
 export interface DataWarehouseEventsModifier {
   distinct_id_field?: string;
   id_field?: string;
   table_name?: string;
   timestamp_field?: string;
 }
+const DataWarehouseEventsModifier = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DataWarehouseEventsModifier>;
+
 export type HogQLQueryModifiersDataWarehouseEventsModifiersList =
   Array<DataWarehouseEventsModifier>;
+const HogQLQueryModifiersDataWarehouseEventsModifiersList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<HogQLQueryModifiersDataWarehouseEventsModifiersList>;
+
 export type HogQLQueryModifiersForceClickhouseDataSkippingIndexesList = Array<string>;
+const HogQLQueryModifiersForceClickhouseDataSkippingIndexesList =
+  CustomChannelConditionValueCase1List as any as S.Schema<HogQLQueryModifiersForceClickhouseDataSkippingIndexesList>;
+
 export type InCohortVia = "auto" | "leftjoin" | "subquery" | "leftjoin_conjoined";
+const InCohortVia = S.String;
+
 export type InlineCohortCalculation = "off" | "auto" | "always";
+const InlineCohortCalculation = S.String;
+
 export type MaterializationMode =
   | "auto"
   | "legacy_null_as_string"
   | "legacy_null_as_null"
   | "disabled";
+const MaterializationMode = S.String;
+
 export type MaterializedColumnsOptimizationMode = "disabled" | "optimized";
+const MaterializedColumnsOptimizationMode = S.String;
+
 export type ParserMode =
   | "cpp_only"
   | "cpp_with_rust_shadow"
@@ -509,16 +632,30 @@ export type ParserMode =
   | "rust_only"
   | "rust_py_only"
   | "rust_py_with_cpp_shadow";
+const ParserMode = S.String;
+
 export type PersonsArgMaxVersion = "auto" | "v1" | "v2";
+const PersonsArgMaxVersion = S.String;
+
 export type PersonsJoinMode = "inner" | "left";
+const PersonsJoinMode = S.String;
+
 export type PersonsOnEventsMode =
   | "disabled"
   | "person_id_no_override_properties_on_events"
   | "person_id_override_properties_on_events"
   | "person_id_override_properties_joined";
+const PersonsOnEventsMode = S.String;
+
 export type PropertyGroupsMode = "enabled" | "disabled" | "optimized";
+const PropertyGroupsMode = S.String;
+
 export type SessionTableVersion = "auto" | "v1" | "v2" | "v3";
+const SessionTableVersion = S.String;
+
 export type SessionsV2JoinMode = "string" | "uuid";
+const SessionsV2JoinMode = S.String;
+
 export interface HogQLQueryModifiers {
   bounceRateDurationSeconds?: number | null;
   bounceRatePageViewMode?: BounceRatePageViewMode | (string & {}) | null;
@@ -569,6 +706,8 @@ export interface HogQLQueryModifiers {
   /** Serve filters on the stored session-entry attribution properties (`$channel_type`, `$entry_utm_*`, `$entry_referring_domain`) by recomputing the value from the session's first pageview. Resolved server-side; not intended to be set by clients. */
   webAnalyticsFirstPageviewFilters?: boolean | null;
 }
+const HogQLQueryModifiers = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<HogQLQueryModifiers>;
+
 export interface CreateBatchExportRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -595,9 +734,16 @@ export interface CreateBatchExportRequest {
   /** Hour-of-day offset (0-23) for daily and weekly intervals. */
   offset_hour?: number | null;
 }
+const CreateBatchExportRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateBatchExportRequest>;
+
 export type BlankEnum = "";
 /** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
 export type BatchExportOutputModel = BatchExportModelEnum | BlankEnum;
+const BatchExportOutputModel = S.Unknown as any as S.Schema<BatchExportOutputModel>;
+
 /** * `AwsS3` - Aws S3 * `S3Compatible` - S3 Compatible * `Snowflake` - Snowflake * `Postgres` - Postgres * `Redshift` - Redshift * `BigQuery` - Bigquery * `Databricks` - Databricks * `AzureBlob` - Azure Blob * `Workflows` - Workflows * `HTTP` - Http * `NoOp` - Noop * `FileDownload` - File Download */
 export type BatchExportDestinationTypeEnum =
   | "AwsS3"
@@ -612,6 +758,8 @@ export type BatchExportDestinationTypeEnum =
   | "HTTP"
   | "NoOp"
   | "FileDownload";
+const BatchExportDestinationTypeEnum = S.String;
+
 export type BatchExportDestinationConfig =
   | DatabricksDestinationConfig
   | AzureBlobDestinationConfig
@@ -621,6 +769,8 @@ export type BatchExportDestinationConfig =
   | S3CompatibleDestinationConfig
   | SnowflakeDestinationConfig
   | RedshiftDestinationConfig;
+const BatchExportDestinationConfig = S.Unknown as any as S.Schema<BatchExportDestinationConfig>;
+
 /** Serializer for an BatchExportDestination model. The `config` field is polymorphic and typed only for destinations that keep credentials in the linked Integration (currently Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible, Snowflake, Redshift). Other destination types accept the same JSON shape but without a typed OpenAPI schema. Secret fields are stripped from `config` on read. */
 export interface BatchExportDestinationOutput {
   /** A choice of supported BatchExportDestination types. * `AwsS3` - Aws S3 * `S3Compatible` - S3 Compatible * `Snowflake` - Snowflake * `Postgres` - Postgres * `Redshift` - Redshift * `BigQuery` - Bigquery * `Databricks` - Databricks * `AzureBlob` - Azure Blob * `Workflows` - Workflows * `HTTP` - Http * `NoOp` - Noop * `FileDownload` - File Download */
@@ -630,6 +780,11 @@ export interface BatchExportDestinationOutput {
   /** The integration for this destination. */
   integration?: number | null;
 }
+const BatchExportDestinationOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<BatchExportDestinationOutput>;
+
 /** Serializer for a BatchExportRun model. */
 export interface BatchExportRun {
   id?: string;
@@ -664,8 +819,15 @@ export interface BatchExportRun {
   /** The backfill this run belongs to. */
   backfill?: string | null;
 }
+const BatchExportRun = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<BatchExportRun>;
+
 /** The 10 most recent runs of this batch export, ordered newest first. */
 export type BatchExportOutputLatestRunsList = Array<BatchExportRun>;
+const BatchExportOutputLatestRunsList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<BatchExportOutputLatestRunsList>;
+
 /** * `Africa/Abidjan` - Africa/Abidjan * `Africa/Accra` - Africa/Accra * `Africa/Addis_Ababa` - Africa/Addis_Ababa * `Africa/Algiers` - Africa/Algiers * `Africa/Asmara` - Africa/Asmara * `Africa/Asmera` - Africa/Asmera * `Africa/Bamako` - Africa/Bamako * `Africa/Bangui` - Africa/Bangui * `Africa/Banjul` - Africa/Banjul * `Africa/Bissau` - Africa/Bissau * `Africa/Blantyre` - Africa/Blantyre * `Africa/Brazzaville` - Africa/Brazzaville * `Africa/Bujumbura` - Africa/Bujumbura * `Africa/Cairo` - Africa/Cairo * `Africa/Casablanca` - Africa/Casablanca * `Africa/Ceuta` - Africa/Ceuta * `Africa/Conakry` - Africa/Conakry * `Africa/Dakar` - Africa/Dakar * `Africa/Dar_es_Salaam` - Africa/Dar_es_Salaam * `Africa/Djibouti` - Africa/Djibouti * `Africa/Douala` - Africa/Douala * `Africa/El_Aaiun` - Africa/El_Aaiun * `Africa/Freetown` - Africa/Freetown * `Africa/Gaborone` - Africa/Gaborone * `Africa/Harare` - Africa/Harare * `Africa/Johannesburg` - Africa/Johannesburg * `Africa/Juba` - Africa/Juba * `Africa/Kampala` - Africa/Kampala * `Africa/Khartoum` - Africa/Khartoum * `Africa/Kigali` - Africa/Kigali * `Africa/Kinshasa` - Africa/Kinshasa * `Africa/Lagos` - Africa/Lagos * `Africa/Libreville` - Africa/Libreville * `Africa/Lome` - Africa/Lome * `Africa/Luanda` - Africa/Luanda * `Africa/Lubumbashi` - Africa/Lubumbashi * `Africa/Lusaka` - Africa/Lusaka * `Africa/Malabo` - Africa/Malabo * `Africa/Maputo` - Africa/Maputo * `Africa/Maseru` - Africa/Maseru * `Africa/Mbabane` - Africa/Mbabane * `Africa/Mogadishu` - Africa/Mogadishu * `Africa/Monrovia` - Africa/Monrovia * `Africa/Nairobi` - Africa/Nairobi * `Africa/Ndjamena` - Africa/Ndjamena * `Africa/Niamey` - Africa/Niamey * `Africa/Nouakchott` - Africa/Nouakchott * `Africa/Ouagadougou` - Africa/Ouagadougou * `Africa/Porto-Novo` - Africa/Porto-Novo * `Africa/Sao_Tome` - Africa/Sao_Tome * `Africa/Timbuktu` - Africa/Timbuktu * `Africa/Tripoli` - Africa/Tripoli * `Africa/Tunis` - Africa/Tunis * `Africa/Windhoek` - Africa/Windhoek * `America/Adak` - America/Adak * `America/Anchorage` - America/Anchorage * `America/Anguilla` - America/Anguilla * `America/Antigua` - America/Antigua * `America/Araguaina` - America/Araguaina * `America/Argentina/Buenos_Aires` - America/Argentina/Buenos_Aires * `America/Argentina/Catamarca` - America/Argentina/Catamarca * `America/Argentina/ComodRivadavia` - America/Argentina/ComodRivadavia * `America/Argentina/Cordoba` - America/Argentina/Cordoba * `America/Argentina/Jujuy` - America/Argentina/Jujuy * `America/Argentina/La_Rioja` - America/Argentina/La_Rioja * `America/Argentina/Mendoza` - America/Argentina/Mendoza * `America/Argentina/Rio_Gallegos` - America/Argentina/Rio_Gallegos * `America/Argentina/Salta` - America/Argentina/Salta * `America/Argentina/San_Juan` - America/Argentina/San_Juan * `America/Argentina/San_Luis` - America/Argentina/San_Luis * `America/Argentina/Tucuman` - America/Argentina/Tucuman * `America/Argentina/Ushuaia` - America/Argentina/Ushuaia * `America/Aruba` - America/Aruba * `America/Asuncion` - America/Asuncion * `America/Atikokan` - America/Atikokan * `America/Atka` - America/Atka * `America/Bahia` - America/Bahia * `America/Bahia_Banderas` - America/Bahia_Banderas * `America/Barbados` - America/Barbados * `America/Belem` - America/Belem * `America/Belize` - America/Belize * `America/Blanc-Sablon` - America/Blanc-Sablon * `America/Boa_Vista` - America/Boa_Vista * `America/Bogota` - America/Bogota * `America/Boise` - America/Boise * `America/Buenos_Aires` - America/Buenos_Aires * `America/Cambridge_Bay` - America/Cambridge_Bay * `America/Campo_Grande` - America/Campo_Grande * `America/Cancun` - America/Cancun * `America/Caracas` - America/Caracas * `America/Catamarca` - America/Catamarca * `America/Cayenne` - America/Cayenne * `America/Cayman` - America/Cayman * `America/Chicago` - America/Chicago * `America/Chihuahua` - America/Chihuahua * `America/Ciudad_Juarez` - America/Ciudad_Juarez * `America/Coral_Harbour` - America/Coral_Harbour * `America/Cordoba` - America/Cordoba * `America/Costa_Rica` - America/Costa_Rica * `America/Creston` - America/Creston * `America/Cuiaba` - America/Cuiaba * `America/Curacao` - America/Curacao * `America/Danmarkshavn` - America/Danmarkshavn * `America/Dawson` - America/Dawson * `America/Dawson_Creek` - America/Dawson_Creek * `America/Denver` - America/Denver * `America/Detroit` - America/Detroit * `America/Dominica` - America/Dominica * `America/Edmonton` - America/Edmonton * `America/Eirunepe` - America/Eirunepe * `America/El_Salvador` - America/El_Salvador * `America/Ensenada` - America/Ensenada * `America/Fort_Nelson` - America/Fort_Nelson * `America/Fort_Wayne` - America/Fort_Wayne * `America/Fortaleza` - America/Fortaleza * `America/Glace_Bay` - America/Glace_Bay * `America/Godthab` - America/Godthab * `America/Goose_Bay` - America/Goose_Bay * `America/Grand_Turk` - America/Grand_Turk * `America/Grenada` - America/Grenada * `America/Guadeloupe` - America/Guadeloupe * `America/Guatemala` - America/Guatemala * `America/Guayaquil` - America/Guayaquil * `America/Guyana` - America/Guyana * `America/Halifax` - America/Halifax * `America/Havana` - America/Havana * `America/Hermosillo` - America/Hermosillo * `America/Indiana/Indianapolis` - America/Indiana/Indianapolis * `America/Indiana/Knox` - America/Indiana/Knox * `America/Indiana/Marengo` - America/Indiana/Marengo * `America/Indiana/Petersburg` - America/Indiana/Petersburg * `America/Indiana/Tell_City` - America/Indiana/Tell_City * `America/Indiana/Vevay` - America/Indiana/Vevay * `America/Indiana/Vincennes` - America/Indiana/Vincennes * `America/Indiana/Winamac` - America/Indiana/Winamac * `America/Indianapolis` - America/Indianapolis * `America/Inuvik` - America/Inuvik * `America/Iqaluit` - America/Iqaluit * `America/Jamaica` - America/Jamaica * `America/Jujuy` - America/Jujuy * `America/Juneau` - America/Juneau * `America/Kentucky/Louisville` - America/Kentucky/Louisville * `America/Kentucky/Monticello` - America/Kentucky/Monticello * `America/Knox_IN` - America/Knox_IN * `America/Kralendijk` - America/Kralendijk * `America/La_Paz` - America/La_Paz * `America/Lima` - America/Lima * `America/Los_Angeles` - America/Los_Angeles * `America/Louisville` - America/Louisville * `America/Lower_Princes` - America/Lower_Princes * `America/Maceio` - America/Maceio * `America/Managua` - America/Managua * `America/Manaus` - America/Manaus * `America/Marigot` - America/Marigot * `America/Martinique` - America/Martinique * `America/Matamoros` - America/Matamoros * `America/Mazatlan` - America/Mazatlan * `America/Mendoza` - America/Mendoza * `America/Menominee` - America/Menominee * `America/Merida` - America/Merida * `America/Metlakatla` - America/Metlakatla * `America/Mexico_City` - America/Mexico_City * `America/Miquelon` - America/Miquelon * `America/Moncton` - America/Moncton * `America/Monterrey` - America/Monterrey * `America/Montevideo` - America/Montevideo * `America/Montreal` - America/Montreal * `America/Montserrat` - America/Montserrat * `America/Nassau` - America/Nassau * `America/New_York` - America/New_York * `America/Nipigon` - America/Nipigon * `America/Nome` - America/Nome * `America/Noronha` - America/Noronha * `America/North_Dakota/Beulah` - America/North_Dakota/Beulah * `America/North_Dakota/Center` - America/North_Dakota/Center * `America/North_Dakota/New_Salem` - America/North_Dakota/New_Salem * `America/Nuuk` - America/Nuuk * `America/Ojinaga` - America/Ojinaga * `America/Panama` - America/Panama * `America/Pangnirtung` - America/Pangnirtung * `America/Paramaribo` - America/Paramaribo * `America/Phoenix` - America/Phoenix * `America/Port-au-Prince` - America/Port-au-Prince * `America/Port_of_Spain` - America/Port_of_Spain * `America/Porto_Acre` - America/Porto_Acre * `America/Porto_Velho` - America/Porto_Velho * `America/Puerto_Rico` - America/Puerto_Rico * `America/Punta_Arenas` - America/Punta_Arenas * `America/Rainy_River` - America/Rainy_River * `America/Rankin_Inlet` - America/Rankin_Inlet * `America/Recife` - America/Recife * `America/Regina` - America/Regina * `America/Resolute` - America/Resolute * `America/Rio_Branco` - America/Rio_Branco * `America/Rosario` - America/Rosario * `America/Santa_Isabel` - America/Santa_Isabel * `America/Santarem` - America/Santarem * `America/Santiago` - America/Santiago * `America/Santo_Domingo` - America/Santo_Domingo * `America/Sao_Paulo` - America/Sao_Paulo * `America/Scoresbysund` - America/Scoresbysund * `America/Shiprock` - America/Shiprock * `America/Sitka` - America/Sitka * `America/St_Barthelemy` - America/St_Barthelemy * `America/St_Johns` - America/St_Johns * `America/St_Kitts` - America/St_Kitts * `America/St_Lucia` - America/St_Lucia * `America/St_Thomas` - America/St_Thomas * `America/St_Vincent` - America/St_Vincent * `America/Swift_Current` - America/Swift_Current * `America/Tegucigalpa` - America/Tegucigalpa * `America/Thule` - America/Thule * `America/Thunder_Bay` - America/Thunder_Bay * `America/Tijuana` - America/Tijuana * `America/Toronto` - America/Toronto * `America/Tortola` - America/Tortola * `America/Vancouver` - America/Vancouver * `America/Virgin` - America/Virgin * `America/Whitehorse` - America/Whitehorse * `America/Winnipeg` - America/Winnipeg * `America/Yakutat` - America/Yakutat * `America/Yellowknife` - America/Yellowknife * `Antarctica/Casey` - Antarctica/Casey * `Antarctica/Davis` - Antarctica/Davis * `Antarctica/DumontDUrville` - Antarctica/DumontDUrville * `Antarctica/Macquarie` - Antarctica/Macquarie * `Antarctica/Mawson` - Antarctica/Mawson * `Antarctica/McMurdo` - Antarctica/McMurdo * `Antarctica/Palmer` - Antarctica/Palmer * `Antarctica/Rothera` - Antarctica/Rothera * `Antarctica/South_Pole` - Antarctica/South_Pole * `Antarctica/Syowa` - Antarctica/Syowa * `Antarctica/Troll` - Antarctica/Troll * `Antarctica/Vostok` - Antarctica/Vostok * `Arctic/Longyearbyen` - Arctic/Longyearbyen * `Asia/Aden` - Asia/Aden * `Asia/Almaty` - Asia/Almaty * `Asia/Amman` - Asia/Amman * `Asia/Anadyr` - Asia/Anadyr * `Asia/Aqtau` - Asia/Aqtau * `Asia/Aqtobe` - Asia/Aqtobe * `Asia/Ashgabat` - Asia/Ashgabat * `Asia/Ashkhabad` - Asia/Ashkhabad * `Asia/Atyrau` - Asia/Atyrau * `Asia/Baghdad` - Asia/Baghdad * `Asia/Bahrain` - Asia/Bahrain * `Asia/Baku` - Asia/Baku * `Asia/Bangkok` - Asia/Bangkok * `Asia/Barnaul` - Asia/Barnaul * `Asia/Beirut` - Asia/Beirut * `Asia/Bishkek` - Asia/Bishkek * `Asia/Brunei` - Asia/Brunei * `Asia/Calcutta` - Asia/Calcutta * `Asia/Chita` - Asia/Chita * `Asia/Choibalsan` - Asia/Choibalsan * `Asia/Chongqing` - Asia/Chongqing * `Asia/Chungking` - Asia/Chungking * `Asia/Colombo` - Asia/Colombo * `Asia/Dacca` - Asia/Dacca * `Asia/Damascus` - Asia/Damascus * `Asia/Dhaka` - Asia/Dhaka * `Asia/Dili` - Asia/Dili * `Asia/Dubai` - Asia/Dubai * `Asia/Dushanbe` - Asia/Dushanbe * `Asia/Famagusta` - Asia/Famagusta * `Asia/Gaza` - Asia/Gaza * `Asia/Harbin` - Asia/Harbin * `Asia/Hebron` - Asia/Hebron * `Asia/Ho_Chi_Minh` - Asia/Ho_Chi_Minh * `Asia/Hong_Kong` - Asia/Hong_Kong * `Asia/Hovd` - Asia/Hovd * `Asia/Irkutsk` - Asia/Irkutsk * `Asia/Istanbul` - Asia/Istanbul * `Asia/Jakarta` - Asia/Jakarta * `Asia/Jayapura` - Asia/Jayapura * `Asia/Jerusalem` - Asia/Jerusalem * `Asia/Kabul` - Asia/Kabul * `Asia/Kamchatka` - Asia/Kamchatka * `Asia/Karachi` - Asia/Karachi * `Asia/Kashgar` - Asia/Kashgar * `Asia/Kathmandu` - Asia/Kathmandu * `Asia/Katmandu` - Asia/Katmandu * `Asia/Khandyga` - Asia/Khandyga * `Asia/Kolkata` - Asia/Kolkata * `Asia/Krasnoyarsk` - Asia/Krasnoyarsk * `Asia/Kuala_Lumpur` - Asia/Kuala_Lumpur * `Asia/Kuching` - Asia/Kuching * `Asia/Kuwait` - Asia/Kuwait * `Asia/Macao` - Asia/Macao * `Asia/Macau` - Asia/Macau * `Asia/Magadan` - Asia/Magadan * `Asia/Makassar` - Asia/Makassar * `Asia/Manila` - Asia/Manila * `Asia/Muscat` - Asia/Muscat * `Asia/Nicosia` - Asia/Nicosia * `Asia/Novokuznetsk` - Asia/Novokuznetsk * `Asia/Novosibirsk` - Asia/Novosibirsk * `Asia/Omsk` - Asia/Omsk * `Asia/Oral` - Asia/Oral * `Asia/Phnom_Penh` - Asia/Phnom_Penh * `Asia/Pontianak` - Asia/Pontianak * `Asia/Pyongyang` - Asia/Pyongyang * `Asia/Qatar` - Asia/Qatar * `Asia/Qostanay` - Asia/Qostanay * `Asia/Qyzylorda` - Asia/Qyzylorda * `Asia/Rangoon` - Asia/Rangoon * `Asia/Riyadh` - Asia/Riyadh * `Asia/Saigon` - Asia/Saigon * `Asia/Sakhalin` - Asia/Sakhalin * `Asia/Samarkand` - Asia/Samarkand * `Asia/Seoul` - Asia/Seoul * `Asia/Shanghai` - Asia/Shanghai * `Asia/Singapore` - Asia/Singapore * `Asia/Srednekolymsk` - Asia/Srednekolymsk * `Asia/Taipei` - Asia/Taipei * `Asia/Tashkent` - Asia/Tashkent * `Asia/Tbilisi` - Asia/Tbilisi * `Asia/Tehran` - Asia/Tehran * `Asia/Tel_Aviv` - Asia/Tel_Aviv * `Asia/Thimbu` - Asia/Thimbu * `Asia/Thimphu` - Asia/Thimphu * `Asia/Tokyo` - Asia/Tokyo * `Asia/Tomsk` - Asia/Tomsk * `Asia/Ujung_Pandang` - Asia/Ujung_Pandang * `Asia/Ulaanbaatar` - Asia/Ulaanbaatar * `Asia/Ulan_Bator` - Asia/Ulan_Bator * `Asia/Urumqi` - Asia/Urumqi * `Asia/Ust-Nera` - Asia/Ust-Nera * `Asia/Vientiane` - Asia/Vientiane * `Asia/Vladivostok` - Asia/Vladivostok * `Asia/Yakutsk` - Asia/Yakutsk * `Asia/Yangon` - Asia/Yangon * `Asia/Yekaterinburg` - Asia/Yekaterinburg * `Asia/Yerevan` - Asia/Yerevan * `Atlantic/Azores` - Atlantic/Azores * `Atlantic/Bermuda` - Atlantic/Bermuda * `Atlantic/Canary` - Atlantic/Canary * `Atlantic/Cape_Verde` - Atlantic/Cape_Verde * `Atlantic/Faeroe` - Atlantic/Faeroe * `Atlantic/Faroe` - Atlantic/Faroe * `Atlantic/Jan_Mayen` - Atlantic/Jan_Mayen * `Atlantic/Madeira` - Atlantic/Madeira * `Atlantic/Reykjavik` - Atlantic/Reykjavik * `Atlantic/South_Georgia` - Atlantic/South_Georgia * `Atlantic/St_Helena` - Atlantic/St_Helena * `Atlantic/Stanley` - Atlantic/Stanley * `Australia/ACT` - Australia/ACT * `Australia/Adelaide` - Australia/Adelaide * `Australia/Brisbane` - Australia/Brisbane * `Australia/Broken_Hill` - Australia/Broken_Hill * `Australia/Canberra` - Australia/Canberra * `Australia/Currie` - Australia/Currie * `Australia/Darwin` - Australia/Darwin * `Australia/Eucla` - Australia/Eucla * `Australia/Hobart` - Australia/Hobart * `Australia/LHI` - Australia/LHI * `Australia/Lindeman` - Australia/Lindeman * `Australia/Lord_Howe` - Australia/Lord_Howe * `Australia/Melbourne` - Australia/Melbourne * `Australia/NSW` - Australia/NSW * `Australia/North` - Australia/North * `Australia/Perth` - Australia/Perth * `Australia/Queensland` - Australia/Queensland * `Australia/South` - Australia/South * `Australia/Sydney` - Australia/Sydney * `Australia/Tasmania` - Australia/Tasmania * `Australia/Victoria` - Australia/Victoria * `Australia/West` - Australia/West * `Australia/Yancowinna` - Australia/Yancowinna * `Brazil/Acre` - Brazil/Acre * `Brazil/DeNoronha` - Brazil/DeNoronha * `Brazil/East` - Brazil/East * `Brazil/West` - Brazil/West * `CET` - CET * `CST6CDT` - CST6CDT * `Canada/Atlantic` - Canada/Atlantic * `Canada/Central` - Canada/Central * `Canada/Eastern` - Canada/Eastern * `Canada/Mountain` - Canada/Mountain * `Canada/Newfoundland` - Canada/Newfoundland * `Canada/Pacific` - Canada/Pacific * `Canada/Saskatchewan` - Canada/Saskatchewan * `Canada/Yukon` - Canada/Yukon * `Chile/Continental` - Chile/Continental * `Chile/EasterIsland` - Chile/EasterIsland * `Cuba` - Cuba * `EET` - EET * `EST` - EST * `EST5EDT` - EST5EDT * `Egypt` - Egypt * `Eire` - Eire * `Etc/GMT` - Etc/GMT * `Etc/GMT+0` - Etc/GMT+0 * `Etc/GMT+1` - Etc/GMT+1 * `Etc/GMT+10` - Etc/GMT+10 * `Etc/GMT+11` - Etc/GMT+11 * `Etc/GMT+12` - Etc/GMT+12 * `Etc/GMT+2` - Etc/GMT+2 * `Etc/GMT+3` - Etc/GMT+3 * `Etc/GMT+4` - Etc/GMT+4 * `Etc/GMT+5` - Etc/GMT+5 * `Etc/GMT+6` - Etc/GMT+6 * `Etc/GMT+7` - Etc/GMT+7 * `Etc/GMT+8` - Etc/GMT+8 * `Etc/GMT+9` - Etc/GMT+9 * `Etc/GMT-0` - Etc/GMT-0 * `Etc/GMT-1` - Etc/GMT-1 * `Etc/GMT-10` - Etc/GMT-10 * `Etc/GMT-11` - Etc/GMT-11 * `Etc/GMT-12` - Etc/GMT-12 * `Etc/GMT-13` - Etc/GMT-13 * `Etc/GMT-14` - Etc/GMT-14 * `Etc/GMT-2` - Etc/GMT-2 * `Etc/GMT-3` - Etc/GMT-3 * `Etc/GMT-4` - Etc/GMT-4 * `Etc/GMT-5` - Etc/GMT-5 * `Etc/GMT-6` - Etc/GMT-6 * `Etc/GMT-7` - Etc/GMT-7 * `Etc/GMT-8` - Etc/GMT-8 * `Etc/GMT-9` - Etc/GMT-9 * `Etc/GMT0` - Etc/GMT0 * `Etc/Greenwich` - Etc/Greenwich * `Etc/UCT` - Etc/UCT * `Etc/UTC` - Etc/UTC * `Etc/Universal` - Etc/Universal * `Etc/Zulu` - Etc/Zulu * `Europe/Amsterdam` - Europe/Amsterdam * `Europe/Andorra` - Europe/Andorra * `Europe/Astrakhan` - Europe/Astrakhan * `Europe/Athens` - Europe/Athens * `Europe/Belfast` - Europe/Belfast * `Europe/Belgrade` - Europe/Belgrade * `Europe/Berlin` - Europe/Berlin * `Europe/Bratislava` - Europe/Bratislava * `Europe/Brussels` - Europe/Brussels * `Europe/Bucharest` - Europe/Bucharest * `Europe/Budapest` - Europe/Budapest * `Europe/Busingen` - Europe/Busingen * `Europe/Chisinau` - Europe/Chisinau * `Europe/Copenhagen` - Europe/Copenhagen * `Europe/Dublin` - Europe/Dublin * `Europe/Gibraltar` - Europe/Gibraltar * `Europe/Guernsey` - Europe/Guernsey * `Europe/Helsinki` - Europe/Helsinki * `Europe/Isle_of_Man` - Europe/Isle_of_Man * `Europe/Istanbul` - Europe/Istanbul * `Europe/Jersey` - Europe/Jersey * `Europe/Kaliningrad` - Europe/Kaliningrad * `Europe/Kiev` - Europe/Kiev * `Europe/Kirov` - Europe/Kirov * `Europe/Kyiv` - Europe/Kyiv * `Europe/Lisbon` - Europe/Lisbon * `Europe/Ljubljana` - Europe/Ljubljana * `Europe/London` - Europe/London * `Europe/Luxembourg` - Europe/Luxembourg * `Europe/Madrid` - Europe/Madrid * `Europe/Malta` - Europe/Malta * `Europe/Mariehamn` - Europe/Mariehamn * `Europe/Minsk` - Europe/Minsk * `Europe/Monaco` - Europe/Monaco * `Europe/Moscow` - Europe/Moscow * `Europe/Nicosia` - Europe/Nicosia * `Europe/Oslo` - Europe/Oslo * `Europe/Paris` - Europe/Paris * `Europe/Podgorica` - Europe/Podgorica * `Europe/Prague` - Europe/Prague * `Europe/Riga` - Europe/Riga * `Europe/Rome` - Europe/Rome * `Europe/Samara` - Europe/Samara * `Europe/San_Marino` - Europe/San_Marino * `Europe/Sarajevo` - Europe/Sarajevo * `Europe/Saratov` - Europe/Saratov * `Europe/Simferopol` - Europe/Simferopol * `Europe/Skopje` - Europe/Skopje * `Europe/Sofia` - Europe/Sofia * `Europe/Stockholm` - Europe/Stockholm * `Europe/Tallinn` - Europe/Tallinn * `Europe/Tirane` - Europe/Tirane * `Europe/Tiraspol` - Europe/Tiraspol * `Europe/Ulyanovsk` - Europe/Ulyanovsk * `Europe/Uzhgorod` - Europe/Uzhgorod * `Europe/Vaduz` - Europe/Vaduz * `Europe/Vatican` - Europe/Vatican * `Europe/Vienna` - Europe/Vienna * `Europe/Vilnius` - Europe/Vilnius * `Europe/Volgograd` - Europe/Volgograd * `Europe/Warsaw` - Europe/Warsaw * `Europe/Zagreb` - Europe/Zagreb * `Europe/Zaporozhye` - Europe/Zaporozhye * `Europe/Zurich` - Europe/Zurich * `GB` - GB * `GB-Eire` - GB-Eire * `GMT` - GMT * `GMT+0` - GMT+0 * `GMT-0` - GMT-0 * `GMT0` - GMT0 * `Greenwich` - Greenwich * `HST` - HST * `Hongkong` - Hongkong * `Iceland` - Iceland * `Indian/Antananarivo` - Indian/Antananarivo * `Indian/Chagos` - Indian/Chagos * `Indian/Christmas` - Indian/Christmas * `Indian/Cocos` - Indian/Cocos * `Indian/Comoro` - Indian/Comoro * `Indian/Kerguelen` - Indian/Kerguelen * `Indian/Mahe` - Indian/Mahe * `Indian/Maldives` - Indian/Maldives * `Indian/Mauritius` - Indian/Mauritius * `Indian/Mayotte` - Indian/Mayotte * `Indian/Reunion` - Indian/Reunion * `Iran` - Iran * `Israel` - Israel * `Jamaica` - Jamaica * `Japan` - Japan * `Kwajalein` - Kwajalein * `Libya` - Libya * `MET` - MET * `MST` - MST * `MST7MDT` - MST7MDT * `Mexico/BajaNorte` - Mexico/BajaNorte * `Mexico/BajaSur` - Mexico/BajaSur * `Mexico/General` - Mexico/General * `NZ` - NZ * `NZ-CHAT` - NZ-CHAT * `Navajo` - Navajo * `PRC` - PRC * `PST8PDT` - PST8PDT * `Pacific/Apia` - Pacific/Apia * `Pacific/Auckland` - Pacific/Auckland * `Pacific/Bougainville` - Pacific/Bougainville * `Pacific/Chatham` - Pacific/Chatham * `Pacific/Chuuk` - Pacific/Chuuk * `Pacific/Easter` - Pacific/Easter * `Pacific/Efate` - Pacific/Efate * `Pacific/Enderbury` - Pacific/Enderbury * `Pacific/Fakaofo` - Pacific/Fakaofo * `Pacific/Fiji` - Pacific/Fiji * `Pacific/Funafuti` - Pacific/Funafuti * `Pacific/Galapagos` - Pacific/Galapagos * `Pacific/Gambier` - Pacific/Gambier * `Pacific/Guadalcanal` - Pacific/Guadalcanal * `Pacific/Guam` - Pacific/Guam * `Pacific/Honolulu` - Pacific/Honolulu * `Pacific/Johnston` - Pacific/Johnston * `Pacific/Kanton` - Pacific/Kanton * `Pacific/Kiritimati` - Pacific/Kiritimati * `Pacific/Kosrae` - Pacific/Kosrae * `Pacific/Kwajalein` - Pacific/Kwajalein * `Pacific/Majuro` - Pacific/Majuro * `Pacific/Marquesas` - Pacific/Marquesas * `Pacific/Midway` - Pacific/Midway * `Pacific/Nauru` - Pacific/Nauru * `Pacific/Niue` - Pacific/Niue * `Pacific/Norfolk` - Pacific/Norfolk * `Pacific/Noumea` - Pacific/Noumea * `Pacific/Pago_Pago` - Pacific/Pago_Pago * `Pacific/Palau` - Pacific/Palau * `Pacific/Pitcairn` - Pacific/Pitcairn * `Pacific/Pohnpei` - Pacific/Pohnpei * `Pacific/Ponape` - Pacific/Ponape * `Pacific/Port_Moresby` - Pacific/Port_Moresby * `Pacific/Rarotonga` - Pacific/Rarotonga * `Pacific/Saipan` - Pacific/Saipan * `Pacific/Samoa` - Pacific/Samoa * `Pacific/Tahiti` - Pacific/Tahiti * `Pacific/Tarawa` - Pacific/Tarawa * `Pacific/Tongatapu` - Pacific/Tongatapu * `Pacific/Truk` - Pacific/Truk * `Pacific/Wake` - Pacific/Wake * `Pacific/Wallis` - Pacific/Wallis * `Pacific/Yap` - Pacific/Yap * `Poland` - Poland * `Portugal` - Portugal * `ROC` - ROC * `ROK` - ROK * `Singapore` - Singapore * `Turkey` - Turkey * `UCT` - UCT * `US/Alaska` - US/Alaska * `US/Aleutian` - US/Aleutian * `US/Arizona` - US/Arizona * `US/Central` - US/Central * `US/East-Indiana` - US/East-Indiana * `US/Eastern` - US/Eastern * `US/Hawaii` - US/Hawaii * `US/Indiana-Starke` - US/Indiana-Starke * `US/Michigan` - US/Michigan * `US/Mountain` - US/Mountain * `US/Pacific` - US/Pacific * `US/Samoa` - US/Samoa * `UTC` - UTC * `Universal` - Universal * `W-SU` - W-SU * `WET` - WET * `Zulu` - Zulu */
 export type TimezoneEnum =
   | "Africa/Abidjan"
@@ -1264,6 +1426,8 @@ export type TimezoneEnum =
   | "W-SU"
   | "WET"
   | "Zulu";
+const TimezoneEnum = S.String;
+
 /** Serializer for a BatchExport model. */
 export interface BatchExportOutput {
   id?: string;
@@ -1305,6 +1469,8 @@ export interface BatchExportOutput {
   /** Hour-of-day offset (0-23) for daily and weekly intervals. Only valid when interval is 'day' or 'week'. */
   offset_hour?: number | null;
 }
+const BatchExportOutput = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<BatchExportOutput>;
+
 export interface CreateBatchExportsBackfillRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1326,11 +1492,21 @@ export interface CreateBatchExportsBackfillRequest {
   /** The BatchExport this backfill belongs to. */
   batch_export?: string;
 }
+const CreateBatchExportsBackfillRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateBatchExportsBackfillRequest>;
+
 export interface BatchExportBackfillProgress {
   total_runs?: number | null;
   finished_runs?: number | null;
   progress?: number | null;
 }
+const BatchExportBackfillProgress = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<BatchExportBackfillProgress>;
+
 export interface BatchExportBackfill {
   id?: string;
   progress?: BatchExportBackfillProgress | null;
@@ -1355,15 +1531,30 @@ export interface BatchExportBackfill {
   /** The BatchExport this backfill belongs to. */
   batch_export?: string;
 }
+const BatchExportBackfill = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<BatchExportBackfill>;
+
 export interface CreateBatchExportsPauseRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this batch export. */
   id: string;
 }
+const CreateBatchExportsPauseRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateBatchExportsPauseRequest>;
+
 export interface CreateBatchExportsPauseResponse {}
+const CreateBatchExportsPauseResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateBatchExportsPauseResponse>;
+
 /** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
 export type CreateBatchExportsRunTestStepRequestModel = BatchExportModelEnum | BlankEnum;
+const CreateBatchExportsRunTestStepRequestModel =
+  S.Unknown as any as S.Schema<CreateBatchExportsRunTestStepRequestModel>;
+
 /** Serializer for an BatchExportDestination model. The `config` field is polymorphic and typed only for destinations that keep credentials in the linked Integration (currently Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible, Snowflake, Redshift). Other destination types accept the same JSON shape but without a typed OpenAPI schema. Secret fields are stripped from `config` on read. */
 export interface BatchExportDestination {
   /** A choice of supported BatchExportDestination types. * `AwsS3` - Aws S3 * `S3Compatible` - S3 Compatible * `Snowflake` - Snowflake * `Postgres` - Postgres * `Redshift` - Redshift * `BigQuery` - Bigquery * `Databricks` - Databricks * `AzureBlob` - Azure Blob * `Workflows` - Workflows * `HTTP` - Http * `NoOp` - Noop * `FileDownload` - File Download */
@@ -1375,6 +1566,11 @@ export interface BatchExportDestination {
   /** ID of a team-scoped Integration providing credentials, for destinations that authenticate through one. Required for all of them. */
   integration_id?: number | null;
 }
+const BatchExportDestination = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<BatchExportDestination>;
+
 export interface CreateBatchExportsRunTestStepRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1408,9 +1604,20 @@ export interface CreateBatchExportsRunTestStepRequest {
   /** Hour-of-day offset (0-23) for daily and weekly intervals. Only valid when interval is 'day' or 'week'. */
   offset_hour?: number | null;
 }
+const CreateBatchExportsRunTestStepRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateBatchExportsRunTestStepRequest>;
+
 export interface CreateBatchExportsRunTestStepResponse {}
+const CreateBatchExportsRunTestStepResponse =
+  BatchExportsBackfillsCancelCreateResponse as any as S.Schema<CreateBatchExportsRunTestStepResponse>;
+
 /** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
 export type CreateBatchExportsRunTestStepNewRequestModel = BatchExportModelEnum | BlankEnum;
+const CreateBatchExportsRunTestStepNewRequestModel =
+  S.Unknown as any as S.Schema<CreateBatchExportsRunTestStepNewRequestModel>;
+
 export interface CreateBatchExportsRunTestStepNewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1442,16 +1649,34 @@ export interface CreateBatchExportsRunTestStepNewRequest {
   /** Hour-of-day offset (0-23) for daily and weekly intervals. Only valid when interval is 'day' or 'week'. */
   offset_hour?: number | null;
 }
+const CreateBatchExportsRunTestStepNewRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateBatchExportsRunTestStepNewRequest>;
+
 export interface CreateBatchExportsRunTestStepNewResponse {}
+const CreateBatchExportsRunTestStepNewResponse =
+  BatchExportsBackfillsCancelCreateResponse as any as S.Schema<CreateBatchExportsRunTestStepNewResponse>;
+
 export interface FileDownloadBatchExportsCancelCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this batch export run. */
   id: string;
 }
+const FileDownloadBatchExportsCancelCreateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<FileDownloadBatchExportsCancelCreateRequest>;
+
 export interface FileDownloadBatchExportsCancelCreateResponse {}
+const FileDownloadBatchExportsCancelCreateResponse =
+  BatchExportsBackfillsCancelCreateResponse as any as S.Schema<FileDownloadBatchExportsCancelCreateResponse>;
+
 /** * `hogql` - hogql */
 export type FileDownloadHogQLModelEnum = "hogql";
+const FileDownloadHogQLModelEnum = S.String;
+
 export interface FileDownloadBatchExportsCountRowsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1466,11 +1691,21 @@ export interface FileDownloadBatchExportsCountRowsCreateRequest {
   /** End of the export interval. Required for the events, persons, and sessions models. For HogQL, required only when the query references {data_interval_end}. A supplied end must not be in the future or precede a supplied start. Bounds replace HogQL placeholders; they do not add filters to the query. */
   data_interval_end?: string;
 }
+const FileDownloadBatchExportsCountRowsCreateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<FileDownloadBatchExportsCountRowsCreateRequest>;
+
 /** Typed output for view set `count_rows`. */
 export interface FileDownloadCountRowsResponse {
   /** Number of rows the query returns with the supplied interval bounds. Data arriving between counting and exporting can change the result. */
   count: number;
 }
+const FileDownloadCountRowsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<FileDownloadCountRowsResponse>;
+
 /** Typed configuration for a FileDownload batch-export destination. */
 export interface FileDownloadDestinationFileConfig {
   /** File format * `Parquet` - Parquet * `JSONLines` - JSONLines */
@@ -1529,19 +1764,37 @@ export type CreateFileDownloadRequest =
   | FileDownloadPersonsRequest
   | FileDownloadSessionsRequest
   | FileDownloadHogQLRequest;
+const CreateFileDownloadRequest = S.Unknown as any as S.Schema<CreateFileDownloadRequest>;
+
 export interface FileDownloadBatchExportsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   body?: CreateFileDownloadRequest;
 }
+const FileDownloadBatchExportsCreateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<FileDownloadBatchExportsCreateRequest>;
+
 export interface FileDownloadBatchExportsCreateResponse {}
+const FileDownloadBatchExportsCreateResponse =
+  BatchExportsBackfillsCancelCreateResponse as any as S.Schema<FileDownloadBatchExportsCreateResponse>;
+
 export interface FileDownloadBatchExportsDownloadRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this batch export run. */
   id: string;
 }
+const FileDownloadBatchExportsDownloadRetrieveRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<FileDownloadBatchExportsDownloadRetrieveRequest>;
+
 export interface FileDownloadBatchExportsDownloadRetrieveResponse {}
+const FileDownloadBatchExportsDownloadRetrieveResponse =
+  BatchExportsBackfillsCancelCreateResponse as any as S.Schema<FileDownloadBatchExportsDownloadRetrieveResponse>;
+
 export interface FileDownloadBatchExportsListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1550,6 +1803,11 @@ export interface FileDownloadBatchExportsListRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const FileDownloadBatchExportsListRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<FileDownloadBatchExportsListRequest>;
+
 /** Typed output for view set `list`. */
 export interface ListOutput {
   /** ID of the file download batch export run. */
@@ -1557,13 +1815,25 @@ export interface ListOutput {
   /** Current status of the file download batch export run. * `Cancelled` - Cancelled * `Completed` - Completed * `ContinuedAsNew` - Continued As New * `Failed` - Failed * `FailedRetryable` - Failed Retryable * `FailedBilling` - Failed Billing * `Terminated` - Terminated * `TimedOut` - Timedout * `Running` - Running * `Starting` - Starting */
   status: BatchExportRunStatusEnum;
 }
+const ListOutput = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ListOutput>;
+
 export type PaginatedListOutputListResultsList = Array<ListOutput>;
+const PaginatedListOutputListResultsList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<PaginatedListOutputListResultsList>;
+
 export interface PaginatedListOutputList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedListOutputListResultsList;
 }
+const PaginatedListOutputList = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<PaginatedListOutputList>;
+
 export interface FileDownloadBatchExportsLogsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1582,13 +1852,26 @@ export interface FileDownloadBatchExportsLogsRetrieveRequest {
   /** Case-insensitive substring search across log messages. */
   search?: string;
 }
+const FileDownloadBatchExportsLogsRetrieveRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<FileDownloadBatchExportsLogsRetrieveRequest>;
+
 export interface FileDownloadBatchExportsLogsRetrieveResponse {}
+const FileDownloadBatchExportsLogsRetrieveResponse =
+  BatchExportsBackfillsCancelCreateResponse as any as S.Schema<FileDownloadBatchExportsLogsRetrieveResponse>;
+
 export interface FileDownloadBatchExportsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this batch export run. */
   id: string;
 }
+const FileDownloadBatchExportsRetrieveRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<FileDownloadBatchExportsRetrieveRequest>;
+
 /** * `Starting` - Starting * `Running` - Running * `Cancelled` - Cancelled */
 export type RetrieveBasicOutputStatusEnum = "Starting" | "Running" | "Cancelled";
 /** Typed output for view set `retrieve` with any of the statuses without extra output. */
@@ -1621,13 +1904,25 @@ export type RetrieveFileDownloadResponse =
   | RetrieveBasicOutput
   | RetrieveCompletedOutput
   | RetrieveFailedOutput;
+const RetrieveFileDownloadResponse = S.Unknown as any as S.Schema<RetrieveFileDownloadResponse>;
+
 export type FileDownloadBatchExportsRetrieveResponse = RetrieveFileDownloadResponse;
+const FileDownloadBatchExportsRetrieveResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<FileDownloadBatchExportsRetrieveResponse>;
+
 export interface GetBatchExportRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this batch export. */
   id: string;
 }
+const GetBatchExportRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GetBatchExportRequest>;
+
 export interface GetBatchExportsBackfillRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1635,6 +1930,11 @@ export interface GetBatchExportsBackfillRequest {
   /** A UUID string identifying this batch export backfill. */
   id: string;
 }
+const GetBatchExportsBackfillRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GetBatchExportsBackfillRequest>;
+
 export interface GetBatchExportsLogRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1653,7 +1953,15 @@ export interface GetBatchExportsLogRequest {
   /** Case-insensitive substring search across log messages. */
   search?: string;
 }
+const GetBatchExportsLogRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<GetBatchExportsLogRequest>;
+
 export interface GetBatchExportsLogResponse {}
+const GetBatchExportsLogResponse =
+  BatchExportsDestroyResponse as any as S.Schema<GetBatchExportsLogResponse>;
+
 export interface GetBatchExportsRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1661,6 +1969,11 @@ export interface GetBatchExportsRunRequest {
   /** A UUID string identifying this batch export run. */
   id: string;
 }
+const GetBatchExportsRunRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetBatchExportsRunRequest>;
+
 export interface GetBatchExportsRunsLogRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1680,12 +1993,28 @@ export interface GetBatchExportsRunsLogRequest {
   /** Case-insensitive substring search across log messages. */
   search?: string;
 }
+const GetBatchExportsRunsLogRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetBatchExportsRunsLogRequest>;
+
 export interface GetBatchExportsRunsLogResponse {}
+const GetBatchExportsRunsLogResponse =
+  BatchExportsDestroyResponse as any as S.Schema<GetBatchExportsRunsLogResponse>;
+
 export interface GetBatchExportsTestRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const GetBatchExportsTestRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetBatchExportsTestRequest>;
+
 export interface GetBatchExportsTestResponse {}
+const GetBatchExportsTestResponse =
+  BatchExportsDestroyResponse as any as S.Schema<GetBatchExportsTestResponse>;
+
 export interface ListBatchExportsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1694,13 +2023,28 @@ export interface ListBatchExportsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListBatchExportsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListBatchExportsRequest>;
+
 export type PaginatedBatchExportListOutputResultsList = Array<BatchExportOutput>;
+const PaginatedBatchExportListOutputResultsList = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<PaginatedBatchExportListOutputResultsList>;
+
 export interface PaginatedBatchExportListOutput {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedBatchExportListOutputResultsList;
 }
+const PaginatedBatchExportListOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<PaginatedBatchExportListOutput>;
+
 export interface ListBatchExportsBackfillsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1710,12 +2054,27 @@ export interface ListBatchExportsBackfillsRequest {
   /** Which field to use when ordering the results. */
   ordering?: string;
 }
+const ListBatchExportsBackfillsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ListBatchExportsBackfillsRequest>;
+
 export type PaginatedBatchExportBackfillListResultsList = Array<BatchExportBackfill>;
+const PaginatedBatchExportBackfillListResultsList = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<PaginatedBatchExportBackfillListResultsList>;
+
 export interface PaginatedBatchExportBackfillList {
   next?: string | null;
   previous?: string | null;
   results?: PaginatedBatchExportBackfillListResultsList;
 }
+const PaginatedBatchExportBackfillList = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<PaginatedBatchExportBackfillList>;
+
 /** * `Cancelled` - Cancelled * `Completed` - Completed * `ContinuedAsNew` - Continued As New * `Failed` - Failed * `FailedRetryable` - Failed Retryable * `FailedBilling` - Failed Billing * `Terminated` - Terminated * `TimedOut` - Timedout * `Running` - Running * `Starting` - Starting */
 export type ListBatchExportsRunsRequestStatusItem =
   | "Cancelled"
@@ -1728,9 +2087,16 @@ export type ListBatchExportsRunsRequestStatusItem =
   | "TimedOut"
   | "Running"
   | "Starting";
+const ListBatchExportsRunsRequestStatusItem = S.String;
+
 export type ListBatchExportsRunsRequestStatusList = Array<
   ListBatchExportsRunsRequestStatusItem | (string & {})
 >;
+const ListBatchExportsRunsRequestStatusList = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ListBatchExportsRunsRequestStatusList>;
+
 export interface ListBatchExportsRunsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1750,12 +2116,25 @@ export interface ListBatchExportsRunsRequest {
   /** Only return runs in these statuses. Repeat the parameter to pass more than one status. */
   status?: ListBatchExportsRunsRequestStatusList;
 }
+const ListBatchExportsRunsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ListBatchExportsRunsRequest>;
+
 export type PaginatedBatchExportRunListResultsList = Array<BatchExportRun>;
+const PaginatedBatchExportRunListResultsList =
+  BatchExportOutputLatestRunsList as any as S.Schema<PaginatedBatchExportRunListResultsList>;
+
 export interface PaginatedBatchExportRunList {
   next?: string | null;
   previous?: string | null;
   results?: PaginatedBatchExportRunListResultsList;
 }
+const PaginatedBatchExportRunList = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<PaginatedBatchExportRunList>;
+
 export interface UpdateBatchExportRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1784,6 +2163,11 @@ export interface UpdateBatchExportRequest {
   /** Hour-of-day offset (0-23) for daily and weekly intervals. */
   offset_hour?: number | null;
 }
+const UpdateBatchExportRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<UpdateBatchExportRequest>;
+
 export interface UpdateBatchExportsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1812,6 +2196,11 @@ export interface UpdateBatchExportsPartialRequest {
   /** Hour-of-day offset (0-23) for daily and weekly intervals. */
   offset_hour?: number | null;
 }
+const UpdateBatchExportsPartialRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<UpdateBatchExportsPartialRequest>;
+
 export type BatchExportsBackfillsCancelCreateError =
   | BadRequest
   | Forbidden
@@ -1824,8 +2213,8 @@ export const batchExportsBackfillsCancelCreate: API.OperationMethod<
   BatchExportsBackfillsCancelCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<BatchExportsBackfillsCancelCreateRequest>,
-  output: __S(1) as any as S.Schema<BatchExportsBackfillsCancelCreateResponse>,
+  input: BatchExportsBackfillsCancelCreateRequest,
+  output: BatchExportsBackfillsCancelCreateResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1838,8 +2227,8 @@ export const batchExportsDestroy: API.OperationMethod<
   BatchExportsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<BatchExportsDestroyRequest>,
-  output: __S(3) as any as S.Schema<BatchExportsDestroyResponse>,
+  input: BatchExportsDestroyRequest,
+  output: BatchExportsDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1853,8 +2242,8 @@ export const batchExportsRunsCancelCreate: API.OperationMethod<
   BatchExportsRunsCancelCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<BatchExportsRunsCancelCreateRequest>,
-  output: __S(1) as any as S.Schema<BatchExportsRunsCancelCreateResponse>,
+  input: BatchExportsRunsCancelCreateRequest,
+  output: BatchExportsRunsCancelCreateResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1868,8 +2257,8 @@ export const batchExportsRunsRetryCreate: API.OperationMethod<
   BatchExportsRunsRetryCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<BatchExportsRunsRetryCreateRequest>,
-  output: __S(1) as any as S.Schema<BatchExportsRunsRetryCreateResponse>,
+  input: BatchExportsRunsRetryCreateRequest,
+  output: BatchExportsRunsRetryCreateResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1883,8 +2272,8 @@ export const batchExportsUnpauseCreate: API.OperationMethod<
   BatchExportsUnpauseCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<BatchExportsUnpauseCreateRequest>,
-  output: __S(1) as any as S.Schema<BatchExportsUnpauseCreateResponse>,
+  input: BatchExportsUnpauseCreateRequest,
+  output: BatchExportsUnpauseCreateResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1897,8 +2286,8 @@ export const createBatchExport: API.OperationMethod<
   CreateBatchExportError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<CreateBatchExportRequest>,
-  output: __S(23) as any as S.Schema<BatchExportOutput>,
+  input: CreateBatchExportRequest,
+  output: BatchExportOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1912,8 +2301,8 @@ export const createBatchExportsBackfill: API.OperationMethod<
   CreateBatchExportsBackfillError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<CreateBatchExportsBackfillRequest>,
-  output: __S(26) as any as S.Schema<BatchExportBackfill>,
+  input: CreateBatchExportsBackfillRequest,
+  output: BatchExportBackfill,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1927,8 +2316,8 @@ export const createBatchExportsPause: API.OperationMethod<
   CreateBatchExportsPauseError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<CreateBatchExportsPauseRequest>,
-  output: __S(28) as any as S.Schema<CreateBatchExportsPauseResponse>,
+  input: CreateBatchExportsPauseRequest,
+  output: CreateBatchExportsPauseResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1941,8 +2330,8 @@ export const createBatchExportsRunTestStep: API.OperationMethod<
   CreateBatchExportsRunTestStepError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<CreateBatchExportsRunTestStepRequest>,
-  output: __S(1) as any as S.Schema<CreateBatchExportsRunTestStepResponse>,
+  input: CreateBatchExportsRunTestStepRequest,
+  output: CreateBatchExportsRunTestStepResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1959,8 +2348,8 @@ export const createBatchExportsRunTestStepNew: API.OperationMethod<
   CreateBatchExportsRunTestStepNewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<CreateBatchExportsRunTestStepNewRequest>,
-  output: __S(1) as any as S.Schema<CreateBatchExportsRunTestStepNewResponse>,
+  input: CreateBatchExportsRunTestStepNewRequest,
+  output: CreateBatchExportsRunTestStepNewResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1974,8 +2363,8 @@ export const fileDownloadBatchExportsCancelCreate: API.OperationMethod<
   FileDownloadBatchExportsCancelCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<FileDownloadBatchExportsCancelCreateRequest>,
-  output: __S(1) as any as S.Schema<FileDownloadBatchExportsCancelCreateResponse>,
+  input: FileDownloadBatchExportsCancelCreateRequest,
+  output: FileDownloadBatchExportsCancelCreateResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1989,8 +2378,8 @@ export const fileDownloadBatchExportsCountRowsCreate: API.OperationMethod<
   FileDownloadBatchExportsCountRowsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<FileDownloadBatchExportsCountRowsCreateRequest>,
-  output: __S(34) as any as S.Schema<FileDownloadCountRowsResponse>,
+  input: FileDownloadBatchExportsCountRowsCreateRequest,
+  output: FileDownloadCountRowsResponse,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2004,8 +2393,8 @@ export const fileDownloadBatchExportsCreate: API.OperationMethod<
   FileDownloadBatchExportsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<FileDownloadBatchExportsCreateRequest>,
-  output: __S(1) as any as S.Schema<FileDownloadBatchExportsCreateResponse>,
+  input: FileDownloadBatchExportsCreateRequest,
+  output: FileDownloadBatchExportsCreateResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2019,8 +2408,8 @@ export const fileDownloadBatchExportsDownloadRetrieve: API.OperationMethod<
   FileDownloadBatchExportsDownloadRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<FileDownloadBatchExportsDownloadRetrieveRequest>,
-  output: __S(1) as any as S.Schema<FileDownloadBatchExportsDownloadRetrieveResponse>,
+  input: FileDownloadBatchExportsDownloadRetrieveRequest,
+  output: FileDownloadBatchExportsDownloadRetrieveResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2033,8 +2422,8 @@ export const fileDownloadBatchExportsList: API.OperationMethod<
   FileDownloadBatchExportsListError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<FileDownloadBatchExportsListRequest>,
-  output: __S(40) as any as S.Schema<PaginatedListOutputList>,
+  input: FileDownloadBatchExportsListRequest,
+  output: PaginatedListOutputList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2047,8 +2436,8 @@ export const fileDownloadBatchExportsLogsRetrieve: API.OperationMethod<
   FileDownloadBatchExportsLogsRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<FileDownloadBatchExportsLogsRetrieveRequest>,
-  output: __S(1) as any as S.Schema<FileDownloadBatchExportsLogsRetrieveResponse>,
+  input: FileDownloadBatchExportsLogsRetrieveRequest,
+  output: FileDownloadBatchExportsLogsRetrieveResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2062,8 +2451,8 @@ export const fileDownloadBatchExportsRetrieve: API.OperationMethod<
   FileDownloadBatchExportsRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<FileDownloadBatchExportsRetrieveRequest>,
-  output: __S(43) as any as S.Schema<FileDownloadBatchExportsRetrieveResponse>,
+  input: FileDownloadBatchExportsRetrieveRequest,
+  output: FileDownloadBatchExportsRetrieveResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2076,8 +2465,8 @@ export const getBatchExport: API.OperationMethod<
   GetBatchExportError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<GetBatchExportRequest>,
-  output: __S(23) as any as S.Schema<BatchExportOutput>,
+  input: GetBatchExportRequest,
+  output: BatchExportOutput,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2091,8 +2480,8 @@ export const getBatchExportsBackfill: API.OperationMethod<
   GetBatchExportsBackfillError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<GetBatchExportsBackfillRequest>,
-  output: __S(26) as any as S.Schema<BatchExportBackfill>,
+  input: GetBatchExportsBackfillRequest,
+  output: BatchExportBackfill,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2105,8 +2494,8 @@ export const getBatchExportsLog: API.OperationMethod<
   GetBatchExportsLogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<GetBatchExportsLogRequest>,
-  output: __S(3) as any as S.Schema<GetBatchExportsLogResponse>,
+  input: GetBatchExportsLogRequest,
+  output: GetBatchExportsLogResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2119,8 +2508,8 @@ export const getBatchExportsRun: API.OperationMethod<
   GetBatchExportsRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<GetBatchExportsRunRequest>,
-  output: __S(21) as any as S.Schema<BatchExportRun>,
+  input: GetBatchExportsRunRequest,
+  output: BatchExportRun,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2133,8 +2522,8 @@ export const getBatchExportsRunsLog: API.OperationMethod<
   GetBatchExportsRunsLogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<GetBatchExportsRunsLogRequest>,
-  output: __S(3) as any as S.Schema<GetBatchExportsRunsLogResponse>,
+  input: GetBatchExportsRunsLogRequest,
+  output: GetBatchExportsRunsLogResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2147,8 +2536,8 @@ export const getBatchExportsTest: API.OperationMethod<
   GetBatchExportsTestError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetBatchExportsTestRequest>,
-  output: __S(3) as any as S.Schema<GetBatchExportsTestResponse>,
+  input: GetBatchExportsTestRequest,
+  output: GetBatchExportsTestResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2161,8 +2550,8 @@ export const listBatchExports: API.OperationMethod<
   ListBatchExportsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<ListBatchExportsRequest>,
-  output: __S(52) as any as S.Schema<PaginatedBatchExportListOutput>,
+  input: ListBatchExportsRequest,
+  output: PaginatedBatchExportListOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2176,8 +2565,8 @@ export const listBatchExportsBackfills: API.OperationMethod<
   ListBatchExportsBackfillsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<ListBatchExportsBackfillsRequest>,
-  output: __S(55) as any as S.Schema<PaginatedBatchExportBackfillList>,
+  input: ListBatchExportsBackfillsRequest,
+  output: PaginatedBatchExportBackfillList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2190,8 +2579,8 @@ export const listBatchExportsRuns: API.OperationMethod<
   ListBatchExportsRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<ListBatchExportsRunsRequest>,
-  output: __S(58) as any as S.Schema<PaginatedBatchExportRunList>,
+  input: ListBatchExportsRunsRequest,
+  output: PaginatedBatchExportRunList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2204,8 +2593,8 @@ export const updateBatchExport: API.OperationMethod<
   UpdateBatchExportError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<UpdateBatchExportRequest>,
-  output: __S(23) as any as S.Schema<BatchExportOutput>,
+  input: UpdateBatchExportRequest,
+  output: BatchExportOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2218,8 +2607,8 @@ export const updateBatchExportsPartial: API.OperationMethod<
   UpdateBatchExportsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<UpdateBatchExportsPartialRequest>,
-  output: __S(23) as any as S.Schema<BatchExportOutput>,
+  input: UpdateBatchExportsPartialRequest,
+  output: BatchExportOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2236,7 +2625,7 @@ function __c0(j: number): any {
           id: S.String.pipe(T.Label()),
           start_at: S.optional(S.NullOr(S.String)),
           end_at: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
+          status: S.optional(BatchExportBackfillStatusEnum),
           finished_at: S.optional(S.NullOr(S.String)),
           total_records_count: S.optional(S.NullOr(S.Number)),
           adjusted_start_at: S.optional(S.NullOr(S.String)),
@@ -2282,7 +2671,7 @@ function __c0(j: number): any {
           batch_export_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           data_interval_end: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(BatchExportRunStatusEnum),
           records_completed: S.optional(S.NullOr(S.Number)),
           records_failed: S.optional(S.NullOr(S.Number)),
           latest_error: S.optional(S.NullOr(S.String)),
@@ -2310,7 +2699,7 @@ function __c0(j: number): any {
           batch_export_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           data_interval_end: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(BatchExportRunStatusEnum),
           records_completed: S.optional(S.NullOr(S.Number)),
           records_failed: S.optional(S.NullOr(S.Number)),
           latest_error: S.optional(S.NullOr(S.String)),
@@ -2351,8 +2740,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          key: S.String,
-          matcher: S.String,
+          key: CustomBotField,
+          matcher: CustomBotMatcher,
           pattern: S.String,
         }),
       ).annotate({ identifier: "CustomBotCondition" });
@@ -2361,43 +2750,43 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(CustomBotCondition);
     case 1:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.NullOr(S.String)),
-          combiner: S.String,
+          combiner: FilterLogicalOperator,
           id: S.String,
-          items: __S(8),
+          items: CustomBotRuleItemsList,
           name: S.String,
         }),
       ).annotate({ identifier: "CustomBotRule" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(CustomBotRule);
     case 3:
       return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          key: S.optional(S.String),
-          op: S.optional(S.String),
-          value: S.optional(S.NullOr(S.Unknown)),
+          key: S.optional(CustomChannelField),
+          op: S.optional(CustomChannelOperator),
+          value: S.optional(S.NullOr(CustomChannelConditionValue)),
         }),
       ).annotate({ identifier: "CustomChannelCondition" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(CustomChannelCondition);
     case 6:
       return S.suspend(() =>
         S.Struct({
           channel_type: S.optional(S.String),
-          combiner: S.optional(S.String),
+          combiner: S.optional(FilterLogicalOperator),
           id: S.optional(S.String),
-          items: S.optional(__S(13)),
+          items: S.optional(CustomChannelRuleItemsList),
         }),
       ).annotate({ identifier: "CustomChannelRule" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(CustomChannelRule);
   }
 }
 function __c2(j: number): any {
@@ -2414,39 +2803,47 @@ function __c2(j: number): any {
         identifier: "DataWarehouseEventsModifier",
       });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(DataWarehouseEventsModifier);
     case 2:
       return S.suspend(() =>
         S.Struct({
           bounceRateDurationSeconds: S.optional(S.NullOr(S.Number)),
-          bounceRatePageViewMode: S.optional(S.NullOr(S.String)),
+          bounceRatePageViewMode: S.optional(S.NullOr(BounceRatePageViewMode)),
           convertToProjectTimezone: S.optional(S.NullOr(S.Boolean)),
           cookielessTrafficIsRegular: S.optional(S.NullOr(S.Boolean)),
-          customBotDefinitions: S.optional(S.NullOr(__S(10))),
-          customChannelTypeRules: S.optional(S.NullOr(__S(15))),
-          dataWarehouseEventsModifiers: S.optional(S.NullOr(__S(17))),
+          customBotDefinitions: S.optional(S.NullOr(HogQLQueryModifiersCustomBotDefinitionsList)),
+          customChannelTypeRules: S.optional(
+            S.NullOr(HogQLQueryModifiersCustomChannelTypeRulesList),
+          ),
+          dataWarehouseEventsModifiers: S.optional(
+            S.NullOr(HogQLQueryModifiersDataWarehouseEventsModifiersList),
+          ),
           debug: S.optional(S.NullOr(S.Boolean)),
-          forceClickhouseDataSkippingIndexes: S.optional(S.NullOr(__S(11))),
+          forceClickhouseDataSkippingIndexes: S.optional(
+            S.NullOr(HogQLQueryModifiersForceClickhouseDataSkippingIndexesList),
+          ),
           formatCsvAllowDoubleQuotes: S.optional(S.NullOr(S.Boolean)),
-          inCohortVia: S.optional(S.NullOr(S.String)),
-          inlineCohortCalculation: S.optional(S.NullOr(S.String)),
-          materializationMode: S.optional(S.NullOr(S.String)),
-          materializedColumnsOptimizationMode: S.optional(S.NullOr(S.String)),
+          inCohortVia: S.optional(S.NullOr(InCohortVia)),
+          inlineCohortCalculation: S.optional(S.NullOr(InlineCohortCalculation)),
+          materializationMode: S.optional(S.NullOr(MaterializationMode)),
+          materializedColumnsOptimizationMode: S.optional(
+            S.NullOr(MaterializedColumnsOptimizationMode),
+          ),
           mergeFederatedAggregateJoins: S.optional(S.NullOr(S.Boolean)),
           optimizeJoinedFilters: S.optional(S.NullOr(S.Boolean)),
           optimizeProjections: S.optional(S.NullOr(S.Boolean)),
-          parserMode: S.optional(S.NullOr(S.String)),
+          parserMode: S.optional(S.NullOr(ParserMode)),
           personIdPushdown: S.optional(S.NullOr(S.Boolean)),
-          personsArgMaxVersion: S.optional(S.NullOr(S.String)),
-          personsJoinMode: S.optional(S.NullOr(S.String)),
-          personsOnEventsMode: S.optional(S.NullOr(S.String)),
-          propertyGroupsMode: S.optional(S.NullOr(S.String)),
+          personsArgMaxVersion: S.optional(S.NullOr(PersonsArgMaxVersion)),
+          personsJoinMode: S.optional(S.NullOr(PersonsJoinMode)),
+          personsOnEventsMode: S.optional(S.NullOr(PersonsOnEventsMode)),
+          propertyGroupsMode: S.optional(S.NullOr(PropertyGroupsMode)),
           pushDownPredicates: S.optional(S.NullOr(S.Boolean)),
           s3TableUseInvalidColumns: S.optional(S.NullOr(S.Boolean)),
           sessionIdPushdown: S.optional(S.NullOr(S.Boolean)),
           sessionPropertyPreAggregation: S.optional(S.NullOr(S.Boolean)),
-          sessionTableVersion: S.optional(S.NullOr(S.String)),
-          sessionsV2JoinMode: S.optional(S.NullOr(S.String)),
+          sessionTableVersion: S.optional(S.NullOr(SessionTableVersion)),
+          sessionsV2JoinMode: S.optional(S.NullOr(SessionsV2JoinMode)),
           timings: S.optional(S.NullOr(S.Boolean)),
           typeAwareCastSimplification: S.optional(S.NullOr(S.Boolean)),
           useMaterializedViews: S.optional(S.NullOr(S.Boolean)),
@@ -2462,12 +2859,12 @@ function __c2(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           name: S.String,
-          model: S.optional(S.String),
-          destination: S.Unknown,
-          interval: S.String,
+          model: S.optional(BatchExportModelEnum),
+          destination: BatchExportDestinationRequest,
+          interval: BatchExportIntervalEnum,
           paused: S.optional(S.Boolean),
           hogql_query: S.optional(S.NullOr(S.String)),
-          hogql_modifiers: S.optional(S.NullOr(__S(18))),
+          hogql_modifiers: S.optional(S.NullOr(HogQLQueryModifiers)),
           filters: S.optional(S.Unknown),
           timezone: S.optional(S.NullOr(S.String)),
           offset_day: S.optional(S.NullOr(S.Number)),
@@ -2479,8 +2876,8 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          config: S.optional(S.Unknown),
+          type: S.optional(BatchExportDestinationTypeEnum),
+          config: S.optional(BatchExportDestinationConfig),
           integration: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
@@ -2491,7 +2888,7 @@ function __c2(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           data_interval_end: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(BatchExportRunStatusEnum),
           records_completed: S.optional(S.NullOr(S.Number)),
           records_failed: S.optional(S.NullOr(S.Number)),
           latest_error: S.optional(S.NullOr(S.String)),
@@ -2508,28 +2905,28 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "BatchExportRun" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(BatchExportRun);
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           team_id: S.optional(S.Number),
           name: S.optional(S.String),
-          model: S.optional(S.NullOr(S.Unknown)),
-          destination: S.optional(__S(20)),
-          interval: S.optional(S.String),
+          model: S.optional(S.NullOr(BatchExportOutputModel)),
+          destination: S.optional(BatchExportDestinationOutput),
+          interval: S.optional(BatchExportIntervalEnum),
           paused: S.optional(S.Boolean),
           created_at: S.optional(S.String),
           last_updated_at: S.optional(S.String),
           last_paused_at: S.optional(S.NullOr(S.String)),
           start_at: S.optional(S.NullOr(S.String)),
           end_at: S.optional(S.NullOr(S.String)),
-          latest_runs: S.optional(__S(22)),
+          latest_runs: S.optional(BatchExportOutputLatestRunsList),
           hogql_query: S.optional(S.NullOr(S.String)),
-          hogql_modifiers: S.optional(S.NullOr(__S(18))),
+          hogql_modifiers: S.optional(S.NullOr(HogQLQueryModifiers)),
           schema: S.optional(S.Unknown),
           filters: S.optional(S.Unknown),
-          timezone: S.optional(S.NullOr(S.String)),
+          timezone: S.optional(S.NullOr(TimezoneEnum)),
           offset_day: S.optional(S.NullOr(S.Number)),
           offset_hour: S.optional(S.NullOr(S.Number)),
         }),
@@ -2545,7 +2942,7 @@ function __c3(j: number): any {
           batch_export_id: S.String.pipe(T.Label()),
           start_at: S.optional(S.NullOr(S.String)),
           end_at: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
+          status: S.optional(BatchExportBackfillStatusEnum),
           finished_at: S.optional(S.NullOr(S.String)),
           total_records_count: S.optional(S.NullOr(S.Number)),
           adjusted_start_at: S.optional(S.NullOr(S.String)),
@@ -2575,10 +2972,10 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          progress: S.optional(S.NullOr(__S(25))),
+          progress: S.optional(S.NullOr(BatchExportBackfillProgress)),
           start_at: S.optional(S.NullOr(S.String)),
           end_at: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
+          status: S.optional(BatchExportBackfillStatusEnum),
           created_at: S.optional(S.String),
           finished_at: S.optional(S.NullOr(S.String)),
           last_updated_at: S.optional(S.String),
@@ -2610,8 +3007,8 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          config: S.optional(S.Unknown),
+          type: S.optional(BatchExportDestinationTypeEnum),
+          config: S.optional(BatchExportDestinationConfig),
           integration: S.optional(S.NullOr(S.Number)),
           integration_id: S.optional(S.NullOr(S.Number)),
         }),
@@ -2622,17 +3019,17 @@ function __c3(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          model: S.optional(S.NullOr(S.Unknown)),
-          destination: S.optional(__S(29)),
-          interval: S.optional(S.String),
+          model: S.optional(S.NullOr(CreateBatchExportsRunTestStepRequestModel)),
+          destination: S.optional(BatchExportDestination),
+          interval: S.optional(BatchExportIntervalEnum),
           paused: S.optional(S.Boolean),
           last_paused_at: S.optional(S.NullOr(S.String)),
           start_at: S.optional(S.NullOr(S.String)),
           end_at: S.optional(S.NullOr(S.String)),
           hogql_query: S.optional(S.NullOr(S.String)),
-          hogql_modifiers: S.optional(S.NullOr(__S(18))),
+          hogql_modifiers: S.optional(S.NullOr(HogQLQueryModifiers)),
           filters: S.optional(S.Unknown),
-          timezone: S.optional(S.NullOr(S.String)),
+          timezone: S.optional(S.NullOr(TimezoneEnum)),
           offset_day: S.optional(S.NullOr(S.Number)),
           offset_hour: S.optional(S.NullOr(S.Number)),
         }).pipe(
@@ -2650,17 +3047,17 @@ function __c3(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          model: S.optional(S.NullOr(S.Unknown)),
-          destination: S.optional(__S(29)),
-          interval: S.optional(S.String),
+          model: S.optional(S.NullOr(CreateBatchExportsRunTestStepNewRequestModel)),
+          destination: S.optional(BatchExportDestination),
+          interval: S.optional(BatchExportIntervalEnum),
           paused: S.optional(S.Boolean),
           last_paused_at: S.optional(S.NullOr(S.String)),
           start_at: S.optional(S.NullOr(S.String)),
           end_at: S.optional(S.NullOr(S.String)),
           hogql_query: S.optional(S.NullOr(S.String)),
-          hogql_modifiers: S.optional(S.NullOr(__S(18))),
+          hogql_modifiers: S.optional(S.NullOr(HogQLQueryModifiers)),
           filters: S.optional(S.Unknown),
-          timezone: S.optional(S.NullOr(S.String)),
+          timezone: S.optional(S.NullOr(TimezoneEnum)),
           offset_day: S.optional(S.NullOr(S.Number)),
           offset_hour: S.optional(S.NullOr(S.Number)),
         }).pipe(
@@ -2696,9 +3093,9 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          model: S.String,
+          model: FileDownloadHogQLModelEnum,
           hogql_query: S.String,
-          hogql_modifiers: S.optional(__S(18)),
+          hogql_modifiers: S.optional(HogQLQueryModifiers),
           data_interval_start: S.optional(S.String),
           data_interval_end: S.optional(S.String),
         }).pipe(
@@ -2723,7 +3120,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+          body: S.optional(CreateFileDownloadRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2769,11 +3166,11 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          status: S.String,
+          status: BatchExportRunStatusEnum,
         }),
       ).annotate({ identifier: "ListOutput" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(ListOutput);
   }
 }
 function __c5(j: number): any {
@@ -2784,7 +3181,7 @@ function __c5(j: number): any {
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(39),
+          results: PaginatedListOutputListResultsList,
         }),
       ).annotate({ identifier: "PaginatedListOutputList" });
     case 1:
@@ -2824,7 +3221,7 @@ function __c5(j: number): any {
         identifier: "FileDownloadBatchExportsRetrieveRequest",
       });
     case 3:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => RetrieveFileDownloadResponse.pipe(T.RawResponseRoot())).annotate({
         identifier: "FileDownloadBatchExportsRetrieveResponse",
       });
     case 4:
@@ -2944,14 +3341,14 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "ListBatchExportsRequest" });
     case 3:
-      return S.Array(__S(23));
+      return S.Array(BatchExportOutput);
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(51)),
+          results: S.optional(PaginatedBatchExportListOutputResultsList),
         }),
       ).annotate({
         identifier: "PaginatedBatchExportListOutput",
@@ -2974,13 +3371,13 @@ function __c6(j: number): any {
         identifier: "ListBatchExportsBackfillsRequest",
       });
     case 6:
-      return S.Array(__S(26));
+      return S.Array(BatchExportBackfill);
     case 7:
       return S.suspend(() =>
         S.Struct({
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(54)),
+          results: S.optional(PaginatedBatchExportBackfillListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedBatchExportBackfillList",
@@ -2990,7 +3387,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(ListBatchExportsRunsRequestStatusItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3002,7 +3399,7 @@ function __c7(j: number): any {
           end: S.optional(S.String.pipe(T.Query())),
           ordering: S.optional(S.String.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(__S(56).pipe(T.Query())),
+          status: S.optional(ListBatchExportsRunsRequestStatusList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3018,7 +3415,7 @@ function __c7(j: number): any {
         S.Struct({
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(22)),
+          results: S.optional(PaginatedBatchExportRunListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedBatchExportRunList",
@@ -3029,12 +3426,12 @@ function __c7(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.String,
-          model: S.optional(S.String),
-          destination: S.Unknown,
-          interval: S.String,
+          model: S.optional(BatchExportModelEnum),
+          destination: BatchExportDestinationRequest,
+          interval: BatchExportIntervalEnum,
           paused: S.optional(S.Boolean),
           hogql_query: S.optional(S.NullOr(S.String)),
-          hogql_modifiers: S.optional(S.NullOr(__S(18))),
+          hogql_modifiers: S.optional(S.NullOr(HogQLQueryModifiers)),
           filters: S.optional(S.Unknown),
           timezone: S.optional(S.NullOr(S.String)),
           offset_day: S.optional(S.NullOr(S.Number)),
@@ -3053,12 +3450,12 @@ function __c7(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          model: S.optional(S.String),
-          destination: S.optional(S.Unknown),
-          interval: S.optional(S.String),
+          model: S.optional(BatchExportModelEnum),
+          destination: S.optional(BatchExportDestinationRequest),
+          interval: S.optional(BatchExportIntervalEnum),
           paused: S.optional(S.Boolean),
           hogql_query: S.optional(S.NullOr(S.String)),
-          hogql_modifiers: S.optional(S.NullOr(__S(18))),
+          hogql_modifiers: S.optional(S.NullOr(HogQLQueryModifiers)),
           filters: S.optional(S.Unknown),
           timezone: S.optional(S.NullOr(S.String)),
           offset_day: S.optional(S.NullOr(S.Number)),
@@ -3073,30 +3470,5 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateBatchExportsPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
   }
 }

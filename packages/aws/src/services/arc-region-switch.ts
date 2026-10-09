@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "ARC Region switch",
   serviceShapeName: "ArcRegionSwitch",
@@ -166,6 +164,8 @@ export type PlanArn = string;
 export type ExecutionId = string;
 export type StepName = string;
 export type Approval = "approve" | "decline" | (string & {});
+const Approval = S.String;
+
 export type ExecutionComment = string;
 export interface ApprovePlanExecutionStepRequest {
   planArn: string;
@@ -174,13 +174,29 @@ export interface ApprovePlanExecutionStepRequest {
   approval: Approval;
   comment?: string;
 }
+const ApprovePlanExecutionStepRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ApprovePlanExecutionStepRequest>;
 export interface ApprovePlanExecutionStepResponse {}
+const ApprovePlanExecutionStepResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ApprovePlanExecutionStepResponse>;
 export interface CancelPlanExecutionRequest {
   planArn: string;
   executionId: string;
   comment?: string;
 }
+const CancelPlanExecutionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CancelPlanExecutionRequest>;
 export interface CancelPlanExecutionResponse {}
+const CancelPlanExecutionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CancelPlanExecutionResponse>;
 export type IamRoleArn = string;
 export type LambdaArn = string;
 export interface Lambdas {
@@ -188,17 +204,24 @@ export interface Lambdas {
   externalId?: string;
   arn?: string;
 }
+const Lambdas = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Lambdas>;
 export type LambdaList = Lambdas[];
+const LambdaList = /*@__PURE__*/ __L.at(__c0, 5);
 export type RegionToRunIn =
   | "activatingRegion"
   | "deactivatingRegion"
   | "activeRegion"
   | "inactiveRegion"
   | (string & {});
+const RegionToRunIn = S.String;
+
 export type LambdaUngracefulBehavior = "skip" | (string & {});
+const LambdaUngracefulBehavior = S.String;
+
 export interface LambdaUngraceful {
   behavior?: LambdaUngracefulBehavior;
 }
+const LambdaUngraceful = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<LambdaUngraceful>;
 export interface CustomActionLambdaConfiguration {
   timeoutMinutes?: number;
   lambdas: Lambdas[];
@@ -206,6 +229,10 @@ export interface CustomActionLambdaConfiguration {
   regionToRun: RegionToRunIn;
   ungraceful?: LambdaUngraceful;
 }
+const CustomActionLambdaConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CustomActionLambdaConfiguration>;
 export type AsgArn = string;
 export interface Asg {
   crossAccountRole?: string;
@@ -213,14 +240,20 @@ export interface Asg {
   arn?: string;
 }
 export type AsgList = Asg[];
+const AsgList = LambdaList as any as S.Schema<AsgList>;
 export interface Ec2Ungraceful {
   minimumSuccessPercentage: number;
 }
+const Ec2Ungraceful = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Ec2Ungraceful>;
 export type Ec2AsgCapacityMonitoringApproach =
   | "sampledMaxInLast24Hours"
   | "autoscalingMaxInLast24Hours"
   | (string & {});
+const Ec2AsgCapacityMonitoringApproach = S.String;
+
 export type WaitELBTargetGroupHealthy = "enabled" | "disabled" | (string & {});
+const WaitELBTargetGroupHealthy = S.String;
+
 export interface Ec2AsgCapacityIncreaseConfiguration {
   timeoutMinutes?: number;
   asgs: Asg[];
@@ -229,33 +262,62 @@ export interface Ec2AsgCapacityIncreaseConfiguration {
   capacityMonitoringApproach?: Ec2AsgCapacityMonitoringApproach;
   waitELBTargetGroupHealthy?: WaitELBTargetGroupHealthy;
 }
+const Ec2AsgCapacityIncreaseConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<Ec2AsgCapacityIncreaseConfiguration>;
 export type RoleArn = string;
 export interface ExecutionApprovalConfiguration {
   timeoutMinutes?: number;
   approvalRole: string;
 }
+const ExecutionApprovalConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ExecutionApprovalConfiguration>;
 export type RoutingControlArn = string;
 export type RoutingControlStateChange = "On" | "Off" | (string & {});
+const RoutingControlStateChange = S.String;
+
 export interface ArcRoutingControlState {
   routingControlArn: string;
   state: RoutingControlStateChange;
 }
+const ArcRoutingControlState = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ArcRoutingControlState>;
 export type ArcRoutingControlStates = ArcRoutingControlState[];
+const ArcRoutingControlStates = /*@__PURE__*/ __L.at(__c1, 4);
 export type RegionAndRoutingControls = { [key: string]: ArcRoutingControlState[] | undefined };
+const RegionAndRoutingControls = /*@__PURE__*/ __L.at(__c1, 5);
 export interface ArcRoutingControlConfiguration {
   timeoutMinutes?: number;
   crossAccountRole?: string;
   externalId?: string;
   regionAndRoutingControls: { [key: string]: ArcRoutingControlState[] | undefined };
 }
+const ArcRoutingControlConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ArcRoutingControlConfiguration>;
 export type GlobalAuroraDefaultBehavior = "switchoverOnly" | "failover" | (string & {});
+const GlobalAuroraDefaultBehavior = S.String;
+
 export type GlobalAuroraUngracefulBehavior = "failover" | (string & {});
+const GlobalAuroraUngracefulBehavior = S.String;
+
 export interface GlobalAuroraUngraceful {
   ungraceful?: GlobalAuroraUngracefulBehavior;
 }
+const GlobalAuroraUngraceful = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GlobalAuroraUngraceful>;
 export type GlobalClusterIdentifier = string;
 export type AuroraClusterArn = string;
 export type AuroraClusterArns = string[];
+const AuroraClusterArns = /*@__PURE__*/ __L.at(__c2, 0);
 export interface GlobalAuroraConfiguration {
   timeoutMinutes?: number;
   crossAccountRole?: string;
@@ -265,14 +327,26 @@ export interface GlobalAuroraConfiguration {
   globalClusterIdentifier: string;
   databaseClusterArns: string[];
 }
+const GlobalAuroraConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GlobalAuroraConfiguration>;
 export interface ParallelExecutionBlockConfiguration {
   steps: Step[];
 }
+const ParallelExecutionBlockConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ParallelExecutionBlockConfiguration>;
 export interface RegionSwitchPlanConfiguration {
   crossAccountRole?: string;
   externalId?: string;
   arn: string;
 }
+const RegionSwitchPlanConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<RegionSwitchPlanConfiguration>;
 export type EcsClusterArn = string;
 export type EcsServiceArn = string;
 export interface Service {
@@ -281,14 +355,19 @@ export interface Service {
   clusterArn?: string;
   serviceArn?: string;
 }
+const Service = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Service>;
 export type ServiceList = Service[];
+const ServiceList = /*@__PURE__*/ __L.at(__c2, 5);
 export interface EcsUngraceful {
   minimumSuccessPercentage: number;
 }
+const EcsUngraceful = Ec2Ungraceful as any as S.Schema<EcsUngraceful>;
 export type EcsCapacityMonitoringApproach =
   | "sampledMaxInLast24Hours"
   | "containerInsightsMaxInLast24Hours"
   | (string & {});
+const EcsCapacityMonitoringApproach = S.String;
+
 export interface EcsCapacityIncreaseConfiguration {
   timeoutMinutes?: number;
   services: Service[];
@@ -297,10 +376,18 @@ export interface EcsCapacityIncreaseConfiguration {
   capacityMonitoringApproach?: EcsCapacityMonitoringApproach;
   waitELBTargetGroupHealthy?: WaitELBTargetGroupHealthy;
 }
+const EcsCapacityIncreaseConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<EcsCapacityIncreaseConfiguration>;
 export interface KubernetesResourceType {
   apiVersion: string;
   kind: string;
 }
+const KubernetesResourceType = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<KubernetesResourceType>;
 export type Region = string;
 export type KubernetesNamespace = string;
 export interface KubernetesScalingResource {
@@ -308,24 +395,39 @@ export interface KubernetesScalingResource {
   name: string;
   hpaName?: string;
 }
+const KubernetesScalingResource = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<KubernetesScalingResource>;
 export type RegionalScalingResource = { [key: string]: KubernetesScalingResource | undefined };
+const RegionalScalingResource = /*@__PURE__*/ __L.at(__c3, 1);
 export type KubernetesScalingApplication = {
   [key: string]: { [key: string]: KubernetesScalingResource | undefined } | undefined;
 };
+const KubernetesScalingApplication = /*@__PURE__*/ __L.at(__c3, 2);
 export type KubernetesScalingApps = {
   [key: string]: { [key: string]: KubernetesScalingResource | undefined } | undefined;
 }[];
+const KubernetesScalingApps = /*@__PURE__*/ __L.at(__c3, 3);
 export type EksClusterArn = string;
 export interface EksCluster {
   crossAccountRole?: string;
   externalId?: string;
   clusterArn: string;
 }
+const EksCluster = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<EksCluster>;
 export type EksClusters = EksCluster[];
+const EksClusters = /*@__PURE__*/ __L.at(__c3, 5);
 export interface EksResourceScalingUngraceful {
   minimumSuccessPercentage: number;
 }
+const EksResourceScalingUngraceful = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<EksResourceScalingUngraceful>;
 export type EksCapacityMonitoringApproach = "sampledMaxInLast24Hours" | (string & {});
+const EksCapacityMonitoringApproach = S.String;
+
 export interface EksResourceScalingConfiguration {
   timeoutMinutes?: number;
   kubernetesResourceType: KubernetesResourceType;
@@ -337,6 +439,10 @@ export interface EksResourceScalingConfiguration {
   targetPercent?: number;
   capacityMonitoringApproach?: EksCapacityMonitoringApproach;
 }
+const EksResourceScalingConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<EksResourceScalingConfiguration>;
 export type Route53HostedZoneId = string;
 export type Route53RecordName = string;
 export type Route53ResourceRecordSetIdentifier = string;
@@ -344,7 +450,12 @@ export interface Route53ResourceRecordSet {
   recordSetIdentifier?: string;
   region?: string;
 }
+const Route53ResourceRecordSet = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<Route53ResourceRecordSet>;
 export type Route53ResourceRecordSetList = Route53ResourceRecordSet[];
+const Route53ResourceRecordSetList = /*@__PURE__*/ __L.at(__c4, 1);
 export interface Route53HealthCheckConfiguration {
   timeoutMinutes?: number;
   crossAccountRole?: string;
@@ -353,14 +464,22 @@ export interface Route53HealthCheckConfiguration {
   recordName: string;
   recordSets?: Route53ResourceRecordSet[];
 }
+const Route53HealthCheckConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<Route53HealthCheckConfiguration>;
 export type DocumentDbDefaultBehavior = "switchoverOnly" | "failover" | (string & {});
+const DocumentDbDefaultBehavior = S.String;
+
 export type DocumentDbUngracefulBehavior = "failover" | (string & {});
 export interface DocumentDbUngraceful {
   ungraceful?: DocumentDbUngracefulBehavior;
 }
+const DocumentDbUngraceful = GlobalAuroraUngraceful as any as S.Schema<DocumentDbUngraceful>;
 export type DocumentDbGlobalClusterIdentifier = string;
 export type DocumentDbClusterArn = string;
 export type DocumentDbClusterArns = string[];
+const DocumentDbClusterArns = AuroraClusterArns as any as S.Schema<DocumentDbClusterArns>;
 export interface DocumentDbConfiguration {
   timeoutMinutes?: number;
   crossAccountRole?: string;
@@ -370,39 +489,65 @@ export interface DocumentDbConfiguration {
   globalClusterIdentifier: string;
   databaseClusterArns: string[];
 }
+const DocumentDbConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<DocumentDbConfiguration>;
 export type RdsDbInstanceArn = string;
 export type RdsDbInstanceArnMap = { [key: string]: string | undefined };
+const RdsDbInstanceArnMap = /*@__PURE__*/ __L.at(__c4, 4);
 export interface RdsPromoteReadReplicaConfiguration {
   timeoutMinutes?: number;
   crossAccountRole?: string;
   externalId?: string;
   dbInstanceArnMap: { [key: string]: string | undefined };
 }
+const RdsPromoteReadReplicaConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<RdsPromoteReadReplicaConfiguration>;
 export interface RdsCreateCrossRegionReplicaConfiguration {
   timeoutMinutes?: number;
   crossAccountRole?: string;
   externalId?: string;
   dbInstanceArnMap: { [key: string]: string | undefined };
 }
+const RdsCreateCrossRegionReplicaConfiguration =
+  RdsPromoteReadReplicaConfiguration as any as S.Schema<RdsCreateCrossRegionReplicaConfiguration>;
 export type EventSourceMappingAction = "enable" | "disable" | (string & {});
+const EventSourceMappingAction = S.String;
+
 export type EventSourceMappingArn = string;
 export interface EventSourceMapping {
   crossAccountRole?: string;
   externalId?: string;
   arn: string;
 }
+const EventSourceMapping = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<EventSourceMapping>;
 export type RegionEventSourceMappingMap = { [key: string]: EventSourceMapping | undefined };
+const RegionEventSourceMappingMap = /*@__PURE__*/ __L.at(__c4, 7);
 export type LambdaEventSourceMappingUngracefulBehavior = "skip" | (string & {});
+const LambdaEventSourceMappingUngracefulBehavior = S.String;
+
 export interface LambdaEventSourceMappingUngraceful {
   behavior?: LambdaEventSourceMappingUngracefulBehavior;
 }
+const LambdaEventSourceMappingUngraceful = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<LambdaEventSourceMappingUngraceful>;
 export interface LambdaEventSourceMappingConfiguration {
   timeoutMinutes?: number;
   action: EventSourceMappingAction;
   regionEventSourceMappings: { [key: string]: EventSourceMapping | undefined };
   ungraceful?: LambdaEventSourceMappingUngraceful;
 }
+const LambdaEventSourceMappingConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<LambdaEventSourceMappingConfiguration>;
 export type RegionAuroraClusterMap = { [key: string]: string | undefined };
+const RegionAuroraClusterMap = RdsDbInstanceArnMap as any as S.Schema<RegionAuroraClusterMap>;
 export interface AuroraServerlessScalingConfiguration {
   timeoutMinutes?: number;
   crossAccountRole?: string;
@@ -411,8 +556,14 @@ export interface AuroraServerlessScalingConfiguration {
   regionDatabaseClusterArns: { [key: string]: string | undefined };
   targetPercent?: number;
 }
+const AuroraServerlessScalingConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<AuroraServerlessScalingConfiguration>;
 export type AuroraInstanceArn = string;
 export type RegionAuroraInstanceArnMap = { [key: string]: string | undefined };
+const RegionAuroraInstanceArnMap =
+  RdsDbInstanceArnMap as any as S.Schema<RegionAuroraInstanceArnMap>;
 export interface AuroraProvisionedScalingConfiguration {
   timeoutMinutes?: number;
   crossAccountRole?: string;
@@ -421,14 +572,23 @@ export interface AuroraProvisionedScalingConfiguration {
   regionDatabaseClusterArns: { [key: string]: string | undefined };
   instanceArns: { [key: string]: string | undefined };
 }
+const AuroraProvisionedScalingConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<AuroraProvisionedScalingConfiguration>;
 export type NeptuneDefaultBehavior = "switchoverOnly" | "failover" | (string & {});
+const NeptuneDefaultBehavior = S.String;
+
 export type NeptuneUngracefulBehavior = "failover" | (string & {});
 export interface NeptuneUngraceful {
   ungraceful?: NeptuneUngracefulBehavior;
 }
+const NeptuneUngraceful = GlobalAuroraUngraceful as any as S.Schema<NeptuneUngraceful>;
 export type NeptuneGlobalClusterIdentifier = string;
 export type NeptuneClusterArn = string;
 export type RegionNeptuneClusterArnMap = { [key: string]: string | undefined };
+const RegionNeptuneClusterArnMap =
+  RdsDbInstanceArnMap as any as S.Schema<RegionNeptuneClusterArnMap>;
 export interface NeptuneGlobalDatabaseConfiguration {
   timeoutMinutes?: number;
   crossAccountRole?: string;
@@ -438,10 +598,15 @@ export interface NeptuneGlobalDatabaseConfiguration {
   globalClusterIdentifier: string;
   regionDatabaseClusterArns: { [key: string]: string | undefined };
 }
+const NeptuneGlobalDatabaseConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<NeptuneGlobalDatabaseConfiguration>;
 export type RdsUngracefulBehavior = "promoteReadReplica" | (string & {});
 export interface RdsUngraceful {
   ungraceful?: RdsUngracefulBehavior;
 }
+const RdsUngraceful = GlobalAuroraUngraceful as any as S.Schema<RdsUngraceful>;
 export interface RdsSwitchoverReadReplicaConfiguration {
   timeoutMinutes?: number;
   crossAccountRole?: string;
@@ -449,6 +614,10 @@ export interface RdsSwitchoverReadReplicaConfiguration {
   dbInstanceArnMap: { [key: string]: string | undefined };
   ungraceful?: RdsUngraceful;
 }
+const RdsSwitchoverReadReplicaConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<RdsSwitchoverReadReplicaConfiguration>;
 export type ExecutionBlockConfiguration =
   | {
       customActionLambdaConfig: CustomActionLambdaConfiguration;
@@ -810,6 +979,10 @@ export type ExecutionBlockConfiguration =
       neptuneGlobalDatabaseConfig?: never;
       rdsSwitchoverReadReplicaConfig: RdsSwitchoverReadReplicaConfiguration;
     };
+const ExecutionBlockConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ExecutionBlockConfiguration>;
 export type ExecutionBlockType =
   | "CustomActionLambda"
   | "ManualApproval"
@@ -830,35 +1003,51 @@ export type ExecutionBlockType =
   | "NeptuneGlobalDatabase"
   | "RdsSwitchoverReadReplica"
   | (string & {});
+const ExecutionBlockType = S.String;
+
 export interface Step {
   name: string;
   description?: string;
   executionBlockConfiguration: ExecutionBlockConfiguration;
   executionBlockType: ExecutionBlockType;
 }
+const Step = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<Step>;
 export type Steps = Step[];
+const Steps = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Steps>;
 export type WorkflowTargetAction = "activate" | "deactivate" | "postRecovery" | (string & {});
+const WorkflowTargetAction = S.String;
+
 export interface Workflow {
   steps?: Step[];
   workflowTargetAction: WorkflowTargetAction;
   workflowTargetRegion?: string;
   workflowDescription?: string;
 }
+const Workflow = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<Workflow>;
 export type WorkflowList = Workflow[];
+const WorkflowList = /*@__PURE__*/ __L.at(__c6, 2);
 export type AlarmType = "applicationHealth" | "trigger" | (string & {});
+const AlarmType = S.String;
+
 export interface AssociatedAlarm {
   crossAccountRole?: string;
   externalId?: string;
   resourceIdentifier: string;
   alarmType: AlarmType;
 }
+const AssociatedAlarm = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<AssociatedAlarm>;
 export type AssociatedAlarmMap = { [key: string]: AssociatedAlarm | undefined };
+const AssociatedAlarmMap = /*@__PURE__*/ __L.at(__c6, 4);
 export type AlarmCondition = "red" | "green" | (string & {});
+const AlarmCondition = S.String;
+
 export interface TriggerCondition {
   associatedAlarmName: string;
   condition: AlarmCondition;
 }
+const TriggerCondition = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<TriggerCondition>;
 export type TriggerConditionList = TriggerCondition[];
+const TriggerConditionList = /*@__PURE__*/ __L.at(__c6, 6);
 export interface Trigger {
   description?: string;
   targetRegion: string;
@@ -866,23 +1055,36 @@ export interface Trigger {
   conditions: TriggerCondition[];
   minDelayMinutesBetweenExecutions: number;
 }
+const Trigger = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<Trigger>;
 export type TriggerList = Trigger[];
+const TriggerList = /*@__PURE__*/ __L.at(__c7, 0);
 export type AccountId = string;
 export interface S3ReportOutputConfiguration {
   bucketPath?: string;
   bucketOwner?: string;
 }
+const S3ReportOutputConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<S3ReportOutputConfiguration>;
 export type ReportOutputConfiguration = { s3Configuration: S3ReportOutputConfiguration };
+const ReportOutputConfiguration = /*@__PURE__*/ __L.at(__c7, 2);
 export type ReportOutputList = ReportOutputConfiguration[];
+const ReportOutputList = /*@__PURE__*/ __L.at(__c7, 3);
 export interface ReportConfiguration {
   reportOutput?: ReportOutputConfiguration[];
 }
+const ReportConfiguration = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<ReportConfiguration>;
 export type PlanName = string;
 export type RegionList = string[];
+const RegionList = AuroraClusterArns as any as S.Schema<RegionList>;
 export type RecoveryApproach = "activeActive" | "activePassive" | (string & {});
+const RecoveryApproach = S.String;
+
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
+const Tags = /*@__PURE__*/ __L.at(__c7, 5);
 export interface CreatePlanRequest {
   description?: string;
   workflows: Workflow[];
@@ -898,6 +1100,7 @@ export interface CreatePlanRequest {
   primaryRegion?: string;
   tags?: { [key: string]: string | undefined };
 }
+const CreatePlanRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<CreatePlanRequest>;
 export interface Plan {
   arn: string;
   description?: string;
@@ -916,19 +1119,25 @@ export interface Plan {
   version?: string;
   updatedAt?: Date;
 }
+const Plan = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<Plan>;
 export interface CreatePlanResponse {
   plan?: Plan;
 }
+const CreatePlanResponse = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<CreatePlanResponse>;
 export interface DeletePlanRequest {
   arn: string;
 }
+const DeletePlanRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<DeletePlanRequest>;
 export interface DeletePlanResponse {}
+const DeletePlanResponse = CancelPlanExecutionResponse as any as S.Schema<DeletePlanResponse>;
 export interface GetPlanRequest {
   arn: string;
 }
+const GetPlanRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<GetPlanRequest>;
 export interface GetPlanResponse {
   plan?: Plan;
 }
+const GetPlanResponse = CreatePlanResponse as any as S.Schema<GetPlanResponse>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface GetPlanEvaluationStatusRequest {
@@ -936,19 +1145,30 @@ export interface GetPlanEvaluationStatusRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const GetPlanEvaluationStatusRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GetPlanEvaluationStatusRequest>;
 export type EvaluationStatus =
   | "passed"
   | "actionRequired"
   | "pendingEvaluation"
   | "unknown"
   | (string & {});
+const EvaluationStatus = S.String;
+
 export type ExecutionAction = "activate" | "deactivate" | "postRecovery" | (string & {});
+const ExecutionAction = S.String;
+
 export interface MinimalWorkflow {
   action?: ExecutionAction;
   name?: string;
 }
+const MinimalWorkflow = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<MinimalWorkflow>;
 export type ResourceArn = string;
 export type ResourceWarningStatus = "active" | "resolved" | (string & {});
+const ResourceWarningStatus = S.String;
+
 export interface ResourceWarning {
   workflow?: MinimalWorkflow;
   version: string;
@@ -958,7 +1178,9 @@ export interface ResourceWarning {
   warningUpdatedTime: Date;
   warningMessage: string;
 }
+const ResourceWarning = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ResourceWarning>;
 export type PlanWarnings = ResourceWarning[];
+const PlanWarnings = /*@__PURE__*/ __L.at(__c8, 6);
 export interface GetPlanEvaluationStatusResponse {
   planArn: string;
   lastEvaluationTime?: Date;
@@ -968,6 +1190,10 @@ export interface GetPlanEvaluationStatusResponse {
   warnings?: ResourceWarning[];
   nextToken?: string;
 }
+const GetPlanEvaluationStatusResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<GetPlanEvaluationStatusResponse>;
 export type GetPlanExecutionStepStatesMaxResults = number;
 export interface GetPlanExecutionRequest {
   planArn: string;
@@ -975,7 +1201,13 @@ export interface GetPlanExecutionRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const GetPlanExecutionRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<GetPlanExecutionRequest>;
 export type ExecutionMode = "graceful" | "ungraceful" | (string & {});
+const ExecutionMode = S.String;
+
 export type ExecutionState =
   | "inProgress"
   | "pausedByFailedStep"
@@ -989,6 +1221,8 @@ export type ExecutionState =
   | "pending"
   | "completedMonitoringApplicationHealth"
   | (string & {});
+const ExecutionState = S.String;
+
 export type StepStatus =
   | "notStarted"
   | "running"
@@ -998,6 +1232,8 @@ export type StepStatus =
   | "skipped"
   | "pendingApproval"
   | (string & {});
+const StepStatus = S.String;
+
 export interface StepState {
   name?: string;
   status?: StepStatus;
@@ -1005,28 +1241,37 @@ export interface StepState {
   endTime?: Date;
   stepMode?: ExecutionMode;
 }
+const StepState = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<StepState>;
 export type StepStates = StepState[];
+const StepStates = /*@__PURE__*/ __L.at(__c9, 2);
 export type Duration = string;
 export interface S3ReportOutput {
   s3ObjectKey?: string;
 }
+const S3ReportOutput = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<S3ReportOutput>;
 export type FailedReportErrorCode =
   | "insufficientPermissions"
   | "invalidResource"
   | "configurationError"
   | (string & {});
+const FailedReportErrorCode = S.String;
+
 export interface FailedReportOutput {
   errorCode?: FailedReportErrorCode;
   errorMessage?: string;
 }
+const FailedReportOutput = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<FailedReportOutput>;
 export type ReportOutput =
   | { s3ReportOutput: S3ReportOutput; failedReportOutput?: never }
   | { s3ReportOutput?: never; failedReportOutput: FailedReportOutput };
+const ReportOutput = /*@__PURE__*/ __L.at(__c9, 5);
 export interface GeneratedReport {
   reportGenerationTime?: Date;
   reportOutput?: ReportOutput;
 }
+const GeneratedReport = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<GeneratedReport>;
 export type GeneratedReportDetails = GeneratedReport[];
+const GeneratedReportDetails = /*@__PURE__*/ __L.at(__c9, 7);
 export interface GetPlanExecutionResponse {
   planArn: string;
   executionId: string;
@@ -1046,12 +1291,21 @@ export interface GetPlanExecutionResponse {
   generatedReportDetails?: GeneratedReport[];
   nextToken?: string;
 }
+const GetPlanExecutionResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<GetPlanExecutionResponse>;
 export interface GetPlanInRegionRequest {
   arn: string;
 }
+const GetPlanInRegionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<GetPlanInRegionRequest>;
 export interface GetPlanInRegionResponse {
   plan?: Plan;
 }
+const GetPlanInRegionResponse = CreatePlanResponse as any as S.Schema<GetPlanInRegionResponse>;
 export type ListExecutionEventsMaxResults = number;
 export interface ListPlanExecutionEventsRequest {
   planArn: string;
@@ -1060,6 +1314,10 @@ export interface ListPlanExecutionEventsRequest {
   nextToken?: string;
   name?: string;
 }
+const ListPlanExecutionEventsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListPlanExecutionEventsRequest>;
 export type ExecutionEventType =
   | "unknown"
   | "executionPending"
@@ -1088,7 +1346,10 @@ export type ExecutionEventType =
   | "stepPendingApplicationHealthMonitor"
   | "planEvaluationWarning"
   | (string & {});
+const ExecutionEventType = S.String;
+
 export type Resources = string[];
+const Resources = AuroraClusterArns as any as S.Schema<Resources>;
 export interface ExecutionEvent {
   timestamp?: Date;
   type?: ExecutionEventType;
@@ -1100,11 +1361,17 @@ export interface ExecutionEvent {
   eventId: string;
   previousEventId?: string;
 }
+const ExecutionEvent = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<ExecutionEvent>;
 export type ExecutionEventList = ExecutionEvent[];
+const ExecutionEventList = /*@__PURE__*/ __L.at(__c10, 4);
 export interface ListPlanExecutionEventsResponse {
   items?: ExecutionEvent[];
   nextToken?: string;
 }
+const ListPlanExecutionEventsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ListPlanExecutionEventsResponse>;
 export type ListExecutionsMaxResults = number;
 export interface ListPlanExecutionsRequest {
   planArn: string;
@@ -1112,6 +1379,10 @@ export interface ListPlanExecutionsRequest {
   nextToken?: string;
   state?: ExecutionState;
 }
+const ListPlanExecutionsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ListPlanExecutionsRequest>;
 export interface AbbreviatedExecution {
   planArn: string;
   executionId: string;
@@ -1127,15 +1398,25 @@ export interface AbbreviatedExecution {
   recoveryExecutionId?: string;
   actualRecoveryTime?: string;
 }
+const AbbreviatedExecution = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<AbbreviatedExecution>;
 export type AbbreviatedExecutionsList = AbbreviatedExecution[];
+const AbbreviatedExecutionsList = /*@__PURE__*/ __L.at(__c11, 0);
 export interface ListPlanExecutionsResponse {
   items?: AbbreviatedExecution[];
   nextToken?: string;
 }
+const ListPlanExecutionsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ListPlanExecutionsResponse>;
 export interface ListPlansRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListPlansRequest = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<ListPlansRequest>;
 export interface AbbreviatedPlan {
   arn: string;
   owner: string;
@@ -1150,19 +1431,30 @@ export interface AbbreviatedPlan {
   activePlanExecution?: string;
   recoveryTimeObjectiveMinutes?: number;
 }
+const AbbreviatedPlan = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<AbbreviatedPlan>;
 export type PlanList = AbbreviatedPlan[];
+const PlanList = /*@__PURE__*/ __L.at(__c11, 4);
 export interface ListPlansResponse {
   plans?: AbbreviatedPlan[];
   nextToken?: string;
 }
+const ListPlansResponse = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<ListPlansResponse>;
 export interface ListPlansInRegionRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListPlansInRegionRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ListPlansInRegionRequest>;
 export interface ListPlansInRegionResponse {
   plans?: AbbreviatedPlan[];
   nextToken?: string;
 }
+const ListPlansInRegionResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ListPlansInRegionResponse>;
 export interface ListRoute53HealthChecksRequest {
   arn: string;
   hostedZoneId?: string;
@@ -1170,8 +1462,14 @@ export interface ListRoute53HealthChecksRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListRoute53HealthChecksRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ListRoute53HealthChecksRequest>;
 export type Route53HealthCheckId = string;
 export type Route53HealthCheckStatus = "healthy" | "unhealthy" | "unknown" | (string & {});
+const Route53HealthCheckStatus = S.String;
+
 export interface Route53HealthCheck {
   hostedZoneId: string;
   recordName: string;
@@ -1179,11 +1477,17 @@ export interface Route53HealthCheck {
   status?: Route53HealthCheckStatus;
   region: string;
 }
+const Route53HealthCheck = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<Route53HealthCheck>;
 export type Route53HealthCheckList = Route53HealthCheck[];
+const Route53HealthCheckList = /*@__PURE__*/ __L.at(__c12, 2);
 export interface ListRoute53HealthChecksResponse {
   healthChecks?: Route53HealthCheck[];
   nextToken?: string;
 }
+const ListRoute53HealthChecksResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<ListRoute53HealthChecksResponse>;
 export interface ListRoute53HealthChecksInRegionRequest {
   arn: string;
   hostedZoneId?: string;
@@ -1191,16 +1495,27 @@ export interface ListRoute53HealthChecksInRegionRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListRoute53HealthChecksInRegionRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ListRoute53HealthChecksInRegionRequest>;
 export interface ListRoute53HealthChecksInRegionResponse {
   healthChecks?: Route53HealthCheck[];
   nextToken?: string;
 }
+const ListRoute53HealthChecksInRegionResponse =
+  ListRoute53HealthChecksResponse as any as S.Schema<ListRoute53HealthChecksInRegionResponse>;
 export type PlanArnList = string[];
+const PlanArnList = AuroraClusterArns as any as S.Schema<PlanArnList>;
 export interface ListServiceQuotaWarningsRequest {
   planArns?: string[];
   maxResults?: number;
   nextToken?: string;
 }
+const ListServiceQuotaWarningsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ListServiceQuotaWarningsRequest>;
 export type ServiceQuotaWarningStatus =
   | "pending"
   | "denied"
@@ -1208,6 +1523,8 @@ export type ServiceQuotaWarningStatus =
   | "maxRegionSwitchRequestsExceeded"
   | "maxAccountRequestsExceeded"
   | (string & {});
+const ServiceQuotaWarningStatus = S.String;
+
 export interface ServiceQuotaWarningSummary {
   accountId: string;
   quotaRegion: string;
@@ -1222,17 +1539,34 @@ export interface ServiceQuotaWarningSummary {
   lastCheckedAt?: Date;
   warningCreatedAt?: Date;
 }
+const ServiceQuotaWarningSummary = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ServiceQuotaWarningSummary>;
 export type ServiceQuotaWarningSummaryList = ServiceQuotaWarningSummary[];
+const ServiceQuotaWarningSummaryList = /*@__PURE__*/ __L.at(__c12, 7);
 export interface ListServiceQuotaWarningsResponse {
   serviceQuotaWarningSummaries: ServiceQuotaWarningSummary[];
   nextToken?: string;
 }
+const ListServiceQuotaWarningsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ListServiceQuotaWarningsResponse>;
 export interface ListTagsForResourceRequest {
   arn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   resourceTags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export type RecoveryExecutionId = string;
 export interface StartPlanExecutionRequest {
   planArn: string;
@@ -1244,6 +1578,10 @@ export interface StartPlanExecutionRequest {
   recoveryExecutionId?: string;
   clientToken?: string;
 }
+const StartPlanExecutionRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<StartPlanExecutionRequest>;
 export interface StartPlanExecutionResponse {
   executionId?: string;
   plan?: string;
@@ -1251,17 +1589,29 @@ export interface StartPlanExecutionResponse {
   activateRegion?: string;
   deactivateRegion?: string;
 }
+const StartPlanExecutionResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<StartPlanExecutionResponse>;
 export interface TagResourceRequest {
   arn: string;
   tags: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = CancelPlanExecutionResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
+const TagKeys = AuroraClusterArns as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   arn: string;
   resourceTagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = CancelPlanExecutionResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdatePlanRequest {
   arn: string;
   description?: string;
@@ -1273,23 +1623,35 @@ export interface UpdatePlanRequest {
   reportConfiguration?: ReportConfiguration;
   serviceQuotaChecksEnabled?: boolean;
 }
+const UpdatePlanRequest = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<UpdatePlanRequest>;
 export interface UpdatePlanResponse {
   plan?: Plan;
 }
+const UpdatePlanResponse = CreatePlanResponse as any as S.Schema<UpdatePlanResponse>;
 export type UpdatePlanExecutionAction =
   | "switchToGraceful"
   | "switchToUngraceful"
   | "pause"
   | "resume"
   | (string & {});
+const UpdatePlanExecutionAction = S.String;
+
 export interface UpdatePlanExecutionRequest {
   planArn: string;
   executionId: string;
   action: UpdatePlanExecutionAction;
   comment?: string;
 }
+const UpdatePlanExecutionRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<UpdatePlanExecutionRequest>;
 export interface UpdatePlanExecutionResponse {}
+const UpdatePlanExecutionResponse =
+  CancelPlanExecutionResponse as any as S.Schema<UpdatePlanExecutionResponse>;
 export type UpdatePlanExecutionStepAction = "switchToUngraceful" | "skip" | (string & {});
+const UpdatePlanExecutionStepAction = S.String;
+
 export interface UpdatePlanExecutionStepRequest {
   planArn: string;
   executionId: string;
@@ -1297,7 +1659,15 @@ export interface UpdatePlanExecutionStepRequest {
   stepName: string;
   actionToTake: UpdatePlanExecutionStepAction;
 }
+const UpdatePlanExecutionStepRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<UpdatePlanExecutionStepRequest>;
 export interface UpdatePlanExecutionStepResponse {}
+const UpdatePlanExecutionStepResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<UpdatePlanExecutionStepResponse>;
 export type ApprovePlanExecutionStepError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -1313,8 +1683,8 @@ export const approvePlanExecutionStep: API.OperationMethod<
   ApprovePlanExecutionStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ApprovePlanExecutionStepRequest>,
-  output: __S(1) as any as S.Schema<ApprovePlanExecutionStepResponse>,
+  input: ApprovePlanExecutionStepRequest,
+  output: ApprovePlanExecutionStepResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1336,8 +1706,8 @@ export const cancelPlanExecution: API.OperationMethod<
   CancelPlanExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CancelPlanExecutionRequest>,
-  output: __S(3) as any as S.Schema<CancelPlanExecutionResponse>,
+  input: CancelPlanExecutionRequest,
+  output: CancelPlanExecutionResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1356,8 +1726,8 @@ export const createPlan: API.OperationMethod<
   CreatePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<CreatePlanRequest>,
-  output: __S(64) as any as S.Schema<CreatePlanResponse>,
+  input: CreatePlanRequest,
+  output: CreatePlanResponse,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1376,8 +1746,8 @@ export const deletePlan: API.OperationMethod<
   DeletePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<DeletePlanRequest>,
-  output: __S(3) as any as S.Schema<DeletePlanResponse>,
+  input: DeletePlanRequest,
+  output: DeletePlanResponse,
   errors: [IllegalStateException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1394,8 +1764,8 @@ export const getPlan: API.OperationMethod<
   GetPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<GetPlanRequest>,
-  output: __S(64) as any as S.Schema<GetPlanResponse>,
+  input: GetPlanRequest,
+  output: GetPlanResponse,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1416,8 +1786,8 @@ export const getPlanEvaluationStatus: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceWarning
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(67) as any as S.Schema<GetPlanEvaluationStatusRequest>,
-  output: __S(71) as any as S.Schema<GetPlanEvaluationStatusResponse>,
+  input: GetPlanEvaluationStatusRequest,
+  output: GetPlanEvaluationStatusResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1444,8 +1814,8 @@ export const getPlanExecution: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   StepState
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(72) as any as S.Schema<GetPlanExecutionRequest>,
-  output: __S(80) as any as S.Schema<GetPlanExecutionResponse>,
+  input: GetPlanExecutionRequest,
+  output: GetPlanExecutionResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1468,8 +1838,8 @@ export const getPlanInRegion: API.OperationMethod<
   GetPlanInRegionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<GetPlanInRegionRequest>,
-  output: __S(64) as any as S.Schema<GetPlanInRegionResponse>,
+  input: GetPlanInRegionRequest,
+  output: GetPlanInRegionResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1490,8 +1860,8 @@ export const listPlanExecutionEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExecutionEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(82) as any as S.Schema<ListPlanExecutionEventsRequest>,
-  output: __S(85) as any as S.Schema<ListPlanExecutionEventsResponse>,
+  input: ListPlanExecutionEventsRequest,
+  output: ListPlanExecutionEventsResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1518,8 +1888,8 @@ export const listPlanExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AbbreviatedExecution
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(86) as any as S.Schema<ListPlanExecutionsRequest>,
-  output: __S(89) as any as S.Schema<ListPlanExecutionsResponse>,
+  input: ListPlanExecutionsRequest,
+  output: ListPlanExecutionsResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1543,8 +1913,8 @@ export const listPlans: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AbbreviatedPlan
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(90) as any as S.Schema<ListPlansRequest>,
-  output: __S(93) as any as S.Schema<ListPlansResponse>,
+  input: ListPlansRequest,
+  output: ListPlansResponse,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1568,8 +1938,8 @@ export const listPlansInRegion: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AbbreviatedPlan
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(94) as any as S.Schema<ListPlansInRegionRequest>,
-  output: __S(95) as any as S.Schema<ListPlansInRegionResponse>,
+  input: ListPlansInRegionRequest,
+  output: ListPlansInRegionResponse,
   errors: [AccessDeniedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1598,8 +1968,8 @@ export const listRoute53HealthChecks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Route53HealthCheck
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(96) as any as S.Schema<ListRoute53HealthChecksRequest>,
-  output: __S(99) as any as S.Schema<ListRoute53HealthChecksResponse>,
+  input: ListRoute53HealthChecksRequest,
+  output: ListRoute53HealthChecksResponse,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1633,8 +2003,8 @@ export const listRoute53HealthChecksInRegion: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Route53HealthCheck
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(100) as any as S.Schema<ListRoute53HealthChecksInRegionRequest>,
-  output: __S(99) as any as S.Schema<ListRoute53HealthChecksInRegionResponse>,
+  input: ListRoute53HealthChecksInRegionRequest,
+  output: ListRoute53HealthChecksInRegionResponse,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1668,8 +2038,8 @@ export const listServiceQuotaWarnings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceQuotaWarningSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(101) as any as S.Schema<ListServiceQuotaWarningsRequest>,
-  output: __S(104) as any as S.Schema<ListServiceQuotaWarningsResponse>,
+  input: ListServiceQuotaWarningsRequest,
+  output: ListServiceQuotaWarningsResponse,
   errors: [AccessDeniedException, InternalServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1695,8 +2065,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(106) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1721,8 +2091,8 @@ export const startPlanExecution: API.OperationMethod<
   StartPlanExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<StartPlanExecutionRequest>,
-  output: __S(108) as any as S.Schema<StartPlanExecutionResponse>,
+  input: StartPlanExecutionRequest,
+  output: StartPlanExecutionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1745,8 +2115,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<TagResourceRequest>,
-  output: __S(3) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1763,8 +2133,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<UntagResourceRequest>,
-  output: __S(3) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1781,8 +2151,8 @@ export const updatePlan: API.OperationMethod<
   UpdatePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<UpdatePlanRequest>,
-  output: __S(64) as any as S.Schema<UpdatePlanResponse>,
+  input: UpdatePlanRequest,
+  output: UpdatePlanResponse,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1803,8 +2173,8 @@ export const updatePlanExecution: API.OperationMethod<
   UpdatePlanExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<UpdatePlanExecutionRequest>,
-  output: __S(3) as any as S.Schema<UpdatePlanExecutionResponse>,
+  input: UpdatePlanExecutionRequest,
+  output: UpdatePlanExecutionResponse,
   errors: [AccessDeniedException, IllegalStateException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1824,8 +2194,8 @@ export const updatePlanExecutionStep: API.OperationMethod<
   UpdatePlanExecutionStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<UpdatePlanExecutionStepRequest>,
-  output: __S(114) as any as S.Schema<UpdatePlanExecutionStepResponse>,
+  input: UpdatePlanExecutionStepRequest,
+  output: UpdatePlanExecutionStepResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1841,7 +2211,7 @@ function __c0(j: number): any {
           planArn: S.String,
           executionId: S.String,
           stepName: S.String,
-          approval: S.String,
+          approval: Approval,
           comment: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -1872,19 +2242,19 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Lambdas" });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(Lambdas);
     case 6:
-      return S.suspend(() => S.Struct({ behavior: S.optional(S.String) })).annotate({
-        identifier: "LambdaUngraceful",
-      });
+      return S.suspend(() => S.Struct({ behavior: S.optional(LambdaUngracefulBehavior) })).annotate(
+        { identifier: "LambdaUngraceful" },
+      );
     case 7:
       return S.suspend(() =>
         S.Struct({
           timeoutMinutes: S.optional(S.Number),
-          lambdas: __S(5),
+          lambdas: LambdaList,
           retryIntervalMinutes: S.Number,
-          regionToRun: S.String,
-          ungraceful: S.optional(__S(6)),
+          regionToRun: RegionToRunIn,
+          ungraceful: S.optional(LambdaUngraceful),
         }),
       ).annotate({
         identifier: "CustomActionLambdaConfiguration",
@@ -1901,11 +2271,11 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           timeoutMinutes: S.optional(S.Number),
-          asgs: __S(5),
-          ungraceful: S.optional(__S(8)),
+          asgs: AsgList,
+          ungraceful: S.optional(Ec2Ungraceful),
           targetPercent: S.optional(S.Number),
-          capacityMonitoringApproach: S.optional(S.String),
-          waitELBTargetGroupHealthy: S.optional(S.String),
+          capacityMonitoringApproach: S.optional(Ec2AsgCapacityMonitoringApproach),
+          waitELBTargetGroupHealthy: S.optional(WaitELBTargetGroupHealthy),
         }),
       ).annotate({
         identifier: "Ec2AsgCapacityIncreaseConfiguration",
@@ -1917,28 +2287,28 @@ function __c1(j: number): any {
         identifier: "ExecutionApprovalConfiguration",
       });
     case 3:
-      return S.suspend(() => S.Struct({ routingControlArn: S.String, state: S.String })).annotate({
-        identifier: "ArcRoutingControlState",
-      });
+      return S.suspend(() =>
+        S.Struct({ routingControlArn: S.String, state: RoutingControlStateChange }),
+      ).annotate({ identifier: "ArcRoutingControlState" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(ArcRoutingControlState);
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(12).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ ArcRoutingControlStates.pipe(S.optional));
     case 6:
       return S.suspend(() =>
         S.Struct({
           timeoutMinutes: S.optional(S.Number),
           crossAccountRole: S.optional(S.String),
           externalId: S.optional(S.String),
-          regionAndRoutingControls: __S(13),
+          regionAndRoutingControls: RegionAndRoutingControls,
         }),
       ).annotate({
         identifier: "ArcRoutingControlConfiguration",
       });
     case 7:
-      return S.suspend(() => S.Struct({ ungraceful: S.optional(S.String) })).annotate({
-        identifier: "GlobalAuroraUngraceful",
-      });
+      return S.suspend(() =>
+        S.Struct({ ungraceful: S.optional(GlobalAuroraUngracefulBehavior) }),
+      ).annotate({ identifier: "GlobalAuroraUngraceful" });
   }
 }
 function __c2(j: number): any {
@@ -1951,17 +2321,17 @@ function __c2(j: number): any {
           timeoutMinutes: S.optional(S.Number),
           crossAccountRole: S.optional(S.String),
           externalId: S.optional(S.String),
-          behavior: S.String,
-          ungraceful: S.optional(__S(15)),
+          behavior: GlobalAuroraDefaultBehavior,
+          ungraceful: S.optional(GlobalAuroraUngraceful),
           globalClusterIdentifier: S.String,
-          databaseClusterArns: __S(16),
+          databaseClusterArns: AuroraClusterArns,
         }),
       ).annotate({
         identifier: "GlobalAuroraConfiguration",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ steps: S.suspend(() => __S(48)).annotate({ identifier: "Steps" }) }),
+        S.Struct({ steps: S.suspend(() => Steps).annotate({ identifier: "Steps" }) }),
       ).annotate({
         identifier: "ParallelExecutionBlockConfiguration",
       });
@@ -1985,16 +2355,16 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "Service" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(Service);
     case 6:
       return S.suspend(() =>
         S.Struct({
           timeoutMinutes: S.optional(S.Number),
-          services: __S(21),
-          ungraceful: S.optional(__S(8)),
+          services: ServiceList,
+          ungraceful: S.optional(EcsUngraceful),
           targetPercent: S.optional(S.Number),
-          capacityMonitoringApproach: S.optional(S.String),
-          waitELBTargetGroupHealthy: S.optional(S.String),
+          capacityMonitoringApproach: S.optional(EcsCapacityMonitoringApproach),
+          waitELBTargetGroupHealthy: S.optional(WaitELBTargetGroupHealthy),
         }),
       ).annotate({
         identifier: "EcsCapacityIncreaseConfiguration",
@@ -2014,11 +2384,11 @@ function __c3(j: number): any {
         identifier: "KubernetesScalingResource",
       });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(24).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ KubernetesScalingResource.pipe(S.optional));
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(25).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ RegionalScalingResource.pipe(S.optional));
     case 3:
-      return S.Array(__S(26));
+      return S.Array(KubernetesScalingApplication);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2028,7 +2398,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "EksCluster" });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(EksCluster);
     case 6:
       return S.suspend(() => S.Struct({ minimumSuccessPercentage: S.Number })).annotate({
         identifier: "EksResourceScalingUngraceful",
@@ -2037,12 +2407,12 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           timeoutMinutes: S.optional(S.Number),
-          kubernetesResourceType: __S(23),
-          scalingResources: S.optional(__S(27)),
-          eksClusters: S.optional(__S(29)),
-          ungraceful: S.optional(__S(30)),
+          kubernetesResourceType: KubernetesResourceType,
+          scalingResources: S.optional(KubernetesScalingApps),
+          eksClusters: S.optional(EksClusters),
+          ungraceful: S.optional(EksResourceScalingUngraceful),
           targetPercent: S.optional(S.Number),
-          capacityMonitoringApproach: S.optional(S.String),
+          capacityMonitoringApproach: S.optional(EksCapacityMonitoringApproach),
         }),
       ).annotate({
         identifier: "EksResourceScalingConfiguration",
@@ -2056,7 +2426,7 @@ function __c4(j: number): any {
         S.Struct({ recordSetIdentifier: S.optional(S.String), region: S.optional(S.String) }),
       ).annotate({ identifier: "Route53ResourceRecordSet" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(Route53ResourceRecordSet);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2065,7 +2435,7 @@ function __c4(j: number): any {
           externalId: S.optional(S.String),
           hostedZoneId: S.String,
           recordName: S.String,
-          recordSets: S.optional(__S(33)),
+          recordSets: S.optional(Route53ResourceRecordSetList),
         }),
       ).annotate({
         identifier: "Route53HealthCheckConfiguration",
@@ -2076,10 +2446,10 @@ function __c4(j: number): any {
           timeoutMinutes: S.optional(S.Number),
           crossAccountRole: S.optional(S.String),
           externalId: S.optional(S.String),
-          behavior: S.String,
-          ungraceful: S.optional(__S(15)),
+          behavior: DocumentDbDefaultBehavior,
+          ungraceful: S.optional(DocumentDbUngraceful),
           globalClusterIdentifier: S.String,
-          databaseClusterArns: __S(16),
+          databaseClusterArns: DocumentDbClusterArns,
         }),
       ).annotate({ identifier: "DocumentDbConfiguration" });
     case 4:
@@ -2090,7 +2460,7 @@ function __c4(j: number): any {
           timeoutMinutes: S.optional(S.Number),
           crossAccountRole: S.optional(S.String),
           externalId: S.optional(S.String),
-          dbInstanceArnMap: __S(36),
+          dbInstanceArnMap: RdsDbInstanceArnMap,
         }),
       ).annotate({
         identifier: "RdsPromoteReadReplicaConfiguration",
@@ -2104,22 +2474,24 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "EventSourceMapping" });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(38).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ EventSourceMapping.pipe(S.optional));
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ behavior: S.optional(S.String) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ behavior: S.optional(LambdaEventSourceMappingUngracefulBehavior) }),
+      ).annotate({
         identifier: "LambdaEventSourceMappingUngraceful",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
           timeoutMinutes: S.optional(S.Number),
-          action: S.String,
-          regionEventSourceMappings: __S(39),
-          ungraceful: S.optional(__S(40)),
+          action: EventSourceMappingAction,
+          regionEventSourceMappings: RegionEventSourceMappingMap,
+          ungraceful: S.optional(LambdaEventSourceMappingUngraceful),
         }),
       ).annotate({
         identifier: "LambdaEventSourceMappingConfiguration",
@@ -2131,7 +2503,7 @@ function __c5(j: number): any {
           crossAccountRole: S.optional(S.String),
           externalId: S.optional(S.String),
           globalClusterIdentifier: S.String,
-          regionDatabaseClusterArns: __S(36),
+          regionDatabaseClusterArns: RegionAuroraClusterMap,
           targetPercent: S.optional(S.Number),
         }),
       ).annotate({
@@ -2144,8 +2516,8 @@ function __c5(j: number): any {
           crossAccountRole: S.optional(S.String),
           externalId: S.optional(S.String),
           globalClusterIdentifier: S.String,
-          regionDatabaseClusterArns: __S(36),
-          instanceArns: __S(36),
+          regionDatabaseClusterArns: RegionAuroraClusterMap,
+          instanceArns: RegionAuroraInstanceArnMap,
         }),
       ).annotate({
         identifier: "AuroraProvisionedScalingConfiguration",
@@ -2156,10 +2528,10 @@ function __c5(j: number): any {
           timeoutMinutes: S.optional(S.Number),
           crossAccountRole: S.optional(S.String),
           externalId: S.optional(S.String),
-          behavior: S.String,
-          ungraceful: S.optional(__S(15)),
+          behavior: NeptuneDefaultBehavior,
+          ungraceful: S.optional(NeptuneUngraceful),
           globalClusterIdentifier: S.String,
-          regionDatabaseClusterArns: __S(36),
+          regionDatabaseClusterArns: RegionNeptuneClusterArnMap,
         }),
       ).annotate({
         identifier: "NeptuneGlobalDatabaseConfiguration",
@@ -2170,47 +2542,48 @@ function __c5(j: number): any {
           timeoutMinutes: S.optional(S.Number),
           crossAccountRole: S.optional(S.String),
           externalId: S.optional(S.String),
-          dbInstanceArnMap: __S(36),
-          ungraceful: S.optional(__S(15)),
+          dbInstanceArnMap: RdsDbInstanceArnMap,
+          ungraceful: S.optional(RdsUngraceful),
         }),
       ).annotate({
         identifier: "RdsSwitchoverReadReplicaConfiguration",
       });
     case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ customActionLambdaConfig: __S(7) }),
+        /*@__PURE__*/ S.Struct({ customActionLambdaConfig: CustomActionLambdaConfiguration }),
         /*@__PURE__*/ S.Struct({
-          ec2AsgCapacityIncreaseConfig: __S(9),
+          ec2AsgCapacityIncreaseConfig: Ec2AsgCapacityIncreaseConfiguration,
         }),
-        /*@__PURE__*/ S.Struct({ executionApprovalConfig: __S(10) }),
-        /*@__PURE__*/ S.Struct({ arcRoutingControlConfig: __S(14) }),
-        /*@__PURE__*/ S.Struct({ globalAuroraConfig: __S(17) }),
+        /*@__PURE__*/ S.Struct({ executionApprovalConfig: ExecutionApprovalConfiguration }),
+        /*@__PURE__*/ S.Struct({ arcRoutingControlConfig: ArcRoutingControlConfiguration }),
+        /*@__PURE__*/ S.Struct({ globalAuroraConfig: GlobalAuroraConfiguration }),
         /*@__PURE__*/ S.Struct({
           parallelConfig: /*@__PURE__*/ S.suspend(
-            (): S.Schema<ParallelExecutionBlockConfiguration> => __S(18),
+            (): S.Schema<ParallelExecutionBlockConfiguration> =>
+              ParallelExecutionBlockConfiguration,
           ).annotate({ identifier: "ParallelExecutionBlockConfiguration" }),
         }),
-        /*@__PURE__*/ S.Struct({ regionSwitchPlanConfig: __S(19) }),
-        /*@__PURE__*/ S.Struct({ ecsCapacityIncreaseConfig: __S(22) }),
-        /*@__PURE__*/ S.Struct({ eksResourceScalingConfig: __S(31) }),
-        /*@__PURE__*/ S.Struct({ route53HealthCheckConfig: __S(34) }),
-        /*@__PURE__*/ S.Struct({ documentDbConfig: __S(35) }),
-        /*@__PURE__*/ S.Struct({ rdsPromoteReadReplicaConfig: __S(37) }),
+        /*@__PURE__*/ S.Struct({ regionSwitchPlanConfig: RegionSwitchPlanConfiguration }),
+        /*@__PURE__*/ S.Struct({ ecsCapacityIncreaseConfig: EcsCapacityIncreaseConfiguration }),
+        /*@__PURE__*/ S.Struct({ eksResourceScalingConfig: EksResourceScalingConfiguration }),
+        /*@__PURE__*/ S.Struct({ route53HealthCheckConfig: Route53HealthCheckConfiguration }),
+        /*@__PURE__*/ S.Struct({ documentDbConfig: DocumentDbConfiguration }),
+        /*@__PURE__*/ S.Struct({ rdsPromoteReadReplicaConfig: RdsPromoteReadReplicaConfiguration }),
         /*@__PURE__*/ S.Struct({
-          rdsCreateCrossRegionReadReplicaConfig: __S(37),
+          rdsCreateCrossRegionReadReplicaConfig: RdsCreateCrossRegionReplicaConfiguration,
         }),
         /*@__PURE__*/ S.Struct({
-          lambdaEventSourceMappingConfig: __S(41),
+          lambdaEventSourceMappingConfig: LambdaEventSourceMappingConfiguration,
         }),
         /*@__PURE__*/ S.Struct({
-          auroraServerlessScalingConfig: __S(42),
+          auroraServerlessScalingConfig: AuroraServerlessScalingConfiguration,
         }),
         /*@__PURE__*/ S.Struct({
-          auroraProvisionedScalingConfig: __S(43),
+          auroraProvisionedScalingConfig: AuroraProvisionedScalingConfiguration,
         }),
-        /*@__PURE__*/ S.Struct({ neptuneGlobalDatabaseConfig: __S(44) }),
+        /*@__PURE__*/ S.Struct({ neptuneGlobalDatabaseConfig: NeptuneGlobalDatabaseConfiguration }),
         /*@__PURE__*/ S.Struct({
-          rdsSwitchoverReadReplicaConfig: __S(45),
+          rdsSwitchoverReadReplicaConfig: RdsSwitchoverReadReplicaConfiguration,
         }),
       ]);
     case 7:
@@ -2218,10 +2591,10 @@ function __c5(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          executionBlockConfiguration: S.suspend(() => __S(46)).annotate({
+          executionBlockConfiguration: S.suspend(() => ExecutionBlockConfiguration).annotate({
             identifier: "ExecutionBlockConfiguration",
           }),
-          executionBlockType: S.String,
+          executionBlockType: ExecutionBlockType,
         }),
       ).annotate({ identifier: "Step" });
   }
@@ -2230,43 +2603,43 @@ function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<Step> => __S(47)).annotate({ identifier: "Step" }),
+        /*@__PURE__*/ S.suspend((): S.Schema<Step> => Step).annotate({ identifier: "Step" }),
       );
     case 1:
       return S.suspend(() =>
         S.Struct({
-          steps: S.optional(__S(48)),
-          workflowTargetAction: S.String,
+          steps: S.optional(Steps),
+          workflowTargetAction: WorkflowTargetAction,
           workflowTargetRegion: S.optional(S.String),
           workflowDescription: S.optional(S.String),
         }),
       ).annotate({ identifier: "Workflow" });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(Workflow);
     case 3:
       return S.suspend(() =>
         S.Struct({
           crossAccountRole: S.optional(S.String),
           externalId: S.optional(S.String),
           resourceIdentifier: S.String,
-          alarmType: S.String,
+          alarmType: AlarmType,
         }),
       ).annotate({ identifier: "AssociatedAlarm" });
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(51).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ AssociatedAlarm.pipe(S.optional));
     case 5:
       return S.suspend(() =>
-        S.Struct({ associatedAlarmName: S.String, condition: S.String }),
+        S.Struct({ associatedAlarmName: S.String, condition: AlarmCondition }),
       ).annotate({ identifier: "TriggerCondition" });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(TriggerCondition);
     case 7:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           targetRegion: S.String,
-          action: S.String,
-          conditions: __S(54),
+          action: WorkflowTargetAction,
+          conditions: TriggerConditionList,
           minDelayMinutesBetweenExecutions: S.Number,
         }),
       ).annotate({ identifier: "Trigger" });
@@ -2275,7 +2648,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55));
+      return S.Array(Trigger);
     case 1:
       return S.suspend(() =>
         S.Struct({ bucketPath: S.optional(S.String), bucketOwner: S.optional(S.String) }),
@@ -2283,11 +2656,11 @@ function __c7(j: number): any {
         identifier: "S3ReportOutputConfiguration",
       });
     case 2:
-      return S.Union([/*@__PURE__*/ S.Struct({ s3Configuration: __S(57) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ s3Configuration: S3ReportOutputConfiguration })]);
     case 3:
-      return S.Array(__S(58));
+      return S.Array(ReportOutputConfiguration);
     case 4:
-      return S.suspend(() => S.Struct({ reportOutput: S.optional(__S(59)) })).annotate({
+      return S.suspend(() => S.Struct({ reportOutput: S.optional(ReportOutputList) })).annotate({
         identifier: "ReportConfiguration",
       });
     case 5:
@@ -2296,18 +2669,18 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          workflows: __S(50),
+          workflows: WorkflowList,
           executionRole: S.String,
           recoveryTimeObjectiveMinutes: S.optional(S.Number),
-          associatedAlarms: S.optional(__S(52)),
-          triggers: S.optional(__S(56)),
-          reportConfiguration: S.optional(__S(60)),
+          associatedAlarms: S.optional(AssociatedAlarmMap),
+          triggers: S.optional(TriggerList),
+          reportConfiguration: S.optional(ReportConfiguration),
           serviceQuotaChecksEnabled: S.optional(S.Boolean),
           name: S.String,
-          regions: __S(16),
-          recoveryApproach: S.String,
+          regions: RegionList,
+          recoveryApproach: RecoveryApproach,
           primaryRegion: S.optional(S.String),
-          tags: S.optional(__S(61)),
+          tags: S.optional(Tags),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/" }),
@@ -2325,16 +2698,16 @@ function __c7(j: number): any {
         S.Struct({
           arn: S.String,
           description: S.optional(S.String),
-          workflows: __S(50),
+          workflows: WorkflowList,
           executionRole: S.String,
           recoveryTimeObjectiveMinutes: S.optional(S.Number),
-          associatedAlarms: S.optional(__S(52)),
-          triggers: S.optional(__S(56)),
-          reportConfiguration: S.optional(__S(60)),
+          associatedAlarms: S.optional(AssociatedAlarmMap),
+          triggers: S.optional(TriggerList),
+          reportConfiguration: S.optional(ReportConfiguration),
           serviceQuotaChecksEnabled: S.optional(S.Boolean),
           name: S.String,
-          regions: __S(16),
-          recoveryApproach: S.String,
+          regions: RegionList,
+          recoveryApproach: RecoveryApproach,
           primaryRegion: S.optional(S.String),
           owner: S.String,
           version: S.optional(S.String),
@@ -2346,7 +2719,7 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ plan: S.optional(__S(63)) })).annotate({
+      return S.suspend(() => S.Struct({ plan: S.optional(Plan) })).annotate({
         identifier: "CreatePlanResponse",
       });
     case 1:
@@ -2389,22 +2762,22 @@ function __c8(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ action: S.optional(S.String), name: S.optional(S.String) }),
+        S.Struct({ action: S.optional(ExecutionAction), name: S.optional(S.String) }),
       ).annotate({ identifier: "MinimalWorkflow" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          workflow: S.optional(__S(68)),
+          workflow: S.optional(MinimalWorkflow),
           version: S.String,
           stepName: S.optional(S.String),
           resourceArn: S.optional(S.String),
-          warningStatus: S.String,
+          warningStatus: ResourceWarningStatus,
           warningUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           warningMessage: S.String,
         }),
       ).annotate({ identifier: "ResourceWarning" });
     case 6:
-      return S.Array(__S(69));
+      return S.Array(ResourceWarning);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2412,8 +2785,8 @@ function __c8(j: number): any {
           lastEvaluationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastEvaluatedVersion: S.optional(S.String),
           region: S.optional(S.String),
-          evaluationState: S.optional(S.String),
-          warnings: S.optional(__S(70)),
+          evaluationState: S.optional(EvaluationStatus),
+          warnings: S.optional(PlanWarnings),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2436,14 +2809,14 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(StepStatus),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          stepMode: S.optional(S.String),
+          stepMode: S.optional(ExecutionMode),
         }),
       ).annotate({ identifier: "StepState" });
     case 2:
-      return S.Array(__S(73));
+      return S.Array(StepState);
     case 3:
       return S.suspend(() => S.Struct({ s3ObjectKey: S.optional(S.String) })).annotate({
         identifier: "S3ReportOutput",
@@ -2451,24 +2824,24 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          errorCode: S.optional(S.String),
+          errorCode: S.optional(FailedReportErrorCode),
           errorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "FailedReportOutput" });
     case 5:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ s3ReportOutput: __S(75) }),
-        /*@__PURE__*/ S.Struct({ failedReportOutput: __S(76) }),
+        /*@__PURE__*/ S.Struct({ s3ReportOutput: S3ReportOutput }),
+        /*@__PURE__*/ S.Struct({ failedReportOutput: FailedReportOutput }),
       ]);
     case 6:
       return S.suspend(() =>
         S.Struct({
           reportGenerationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          reportOutput: S.optional(__S(77)),
+          reportOutput: S.optional(ReportOutput),
         }),
       ).annotate({ identifier: "GeneratedReport" });
     case 7:
-      return S.Array(__S(78));
+      return S.Array(GeneratedReport);
   }
 }
 function __c10(j: number): any {
@@ -2483,15 +2856,15 @@ function __c10(j: number): any {
           comment: S.optional(S.String),
           startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          mode: S.String,
-          executionState: S.String,
-          executionAction: S.String,
+          mode: ExecutionMode,
+          executionState: ExecutionState,
+          executionAction: ExecutionAction,
           executionRegion: S.String,
           recoveryExecutionId: S.optional(S.String),
-          stepStates: S.optional(__S(74)),
-          plan: S.optional(__S(63)),
+          stepStates: S.optional(StepStates),
+          plan: S.optional(Plan),
           actualRecoveryTime: S.optional(S.String),
-          generatedReportDetails: S.optional(__S(79)),
+          generatedReportDetails: S.optional(GeneratedReportDetails),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetPlanExecutionResponse" });
@@ -2517,10 +2890,10 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          type: S.optional(S.String),
+          type: S.optional(ExecutionEventType),
           stepName: S.optional(S.String),
-          executionBlockType: S.optional(S.String),
-          resources: S.optional(__S(16)),
+          executionBlockType: S.optional(ExecutionBlockType),
+          resources: S.optional(Resources),
           error: S.optional(S.String),
           description: S.optional(S.String),
           eventId: S.String,
@@ -2528,10 +2901,10 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "ExecutionEvent" });
     case 4:
-      return S.Array(__S(83));
+      return S.Array(ExecutionEvent);
     case 5:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(84)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(ExecutionEventList), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListPlanExecutionEventsResponse",
       });
@@ -2541,7 +2914,7 @@ function __c10(j: number): any {
           planArn: S.String,
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(ExecutionState),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListPlanExecutionsRequest",
@@ -2556,9 +2929,9 @@ function __c10(j: number): any {
           comment: S.optional(S.String),
           startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          mode: S.String,
-          executionState: S.String,
-          executionAction: S.String,
+          mode: ExecutionMode,
+          executionState: ExecutionState,
+          executionAction: ExecutionAction,
           executionRegion: S.String,
           recoveryExecutionId: S.optional(S.String),
           actualRecoveryTime: S.optional(S.String),
@@ -2569,10 +2942,10 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87));
+      return S.Array(AbbreviatedExecution);
     case 1:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(88)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(AbbreviatedExecutionsList), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListPlanExecutionsResponse",
       });
@@ -2596,8 +2969,8 @@ function __c11(j: number): any {
           arn: S.String,
           owner: S.String,
           name: S.String,
-          regions: __S(16),
-          recoveryApproach: S.String,
+          regions: RegionList,
+          recoveryApproach: RecoveryApproach,
           primaryRegion: S.optional(S.String),
           version: S.optional(S.String),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -2608,10 +2981,10 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "AbbreviatedPlan" });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(AbbreviatedPlan);
     case 5:
       return S.suspend(() =>
-        S.Struct({ plans: S.optional(__S(92)), nextToken: S.optional(S.String) }),
+        S.Struct({ plans: S.optional(PlanList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListPlansResponse" });
     case 6:
       return S.suspend(() =>
@@ -2621,7 +2994,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "ListPlansInRegionRequest" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ plans: S.optional(__S(92)), nextToken: S.optional(S.String) }),
+        S.Struct({ plans: S.optional(PlanList), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListPlansInRegionResponse",
       });
@@ -2657,16 +3030,16 @@ function __c12(j: number): any {
           hostedZoneId: S.String,
           recordName: S.String,
           healthCheckId: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(Route53HealthCheckStatus),
           region: S.String,
         }),
       ).annotate({ identifier: "Route53HealthCheck" });
     case 2:
-      return S.Array(__S(97));
+      return S.Array(Route53HealthCheck);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          healthChecks: S.optional(__S(98)),
+          healthChecks: S.optional(Route53HealthCheckList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2687,7 +3060,7 @@ function __c12(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          planArns: S.optional(__S(16)),
+          planArns: S.optional(PlanArnList),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -2702,7 +3075,7 @@ function __c12(j: number): any {
           serviceCode: S.optional(S.String),
           quotaCode: S.optional(S.String),
           quotaName: S.optional(S.String),
-          status: S.String,
+          status: ServiceQuotaWarningStatus,
           planArn: S.String,
           requestId: S.optional(S.String),
           caseId: S.optional(S.String),
@@ -2714,7 +3087,7 @@ function __c12(j: number): any {
         identifier: "ServiceQuotaWarningSummary",
       });
     case 7:
-      return S.Array(__S(102));
+      return S.Array(ServiceQuotaWarningSummary);
   }
 }
 function __c13(j: number): any {
@@ -2722,7 +3095,7 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          serviceQuotaWarningSummaries: __S(103),
+          serviceQuotaWarningSummaries: ServiceQuotaWarningSummaryList,
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2745,7 +3118,7 @@ function __c13(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ resourceTags: S.optional(__S(61)) })).annotate({
+      return S.suspend(() => S.Struct({ resourceTags: S.optional(Tags) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 3:
@@ -2753,8 +3126,8 @@ function __c13(j: number): any {
         S.Struct({
           planArn: S.String,
           targetRegion: S.String,
-          action: S.String,
-          mode: S.optional(S.String),
+          action: ExecutionAction,
+          mode: S.optional(ExecutionMode),
           comment: S.optional(S.String),
           latestVersion: S.optional(S.String),
           recoveryExecutionId: S.optional(S.String),
@@ -2777,7 +3150,7 @@ function __c13(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ arn: S.String, tags: __S(61) }).pipe(
+        S.Struct({ arn: S.String, tags: Tags }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/" }),
             svc,
@@ -2791,7 +3164,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ arn: S.String, resourceTagKeys: __S(16) }).pipe(
+        S.Struct({ arn: S.String, resourceTagKeys: TagKeys }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/" }),
             svc,
@@ -2808,12 +3181,12 @@ function __c13(j: number): any {
         S.Struct({
           arn: S.String,
           description: S.optional(S.String),
-          workflows: __S(50),
+          workflows: WorkflowList,
           executionRole: S.String,
           recoveryTimeObjectiveMinutes: S.optional(S.Number),
-          associatedAlarms: S.optional(__S(52)),
-          triggers: S.optional(__S(56)),
-          reportConfiguration: S.optional(__S(60)),
+          associatedAlarms: S.optional(AssociatedAlarmMap),
+          triggers: S.optional(TriggerList),
+          reportConfiguration: S.optional(ReportConfiguration),
           serviceQuotaChecksEnabled: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -2836,7 +3209,7 @@ function __c14(j: number): any {
         S.Struct({
           planArn: S.String,
           executionId: S.String,
-          action: S.String,
+          action: UpdatePlanExecutionAction,
           comment: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -2849,7 +3222,7 @@ function __c14(j: number): any {
           executionId: S.String,
           comment: S.String,
           stepName: S.String,
-          actionToTake: S.String,
+          actionToTake: UpdatePlanExecutionStepAction,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdatePlanExecutionStepRequest",
@@ -2858,44 +3231,5 @@ function __c14(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "UpdatePlanExecutionStepResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
   }
 }

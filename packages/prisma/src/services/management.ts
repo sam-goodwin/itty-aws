@@ -8,8 +8,6 @@ import { UnknownPrismaError } from "../errors.ts";
 import { PrismaProtocol, type PrismaOpError, type PrismaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PrismaOpError, PrismaOpContext };
 
@@ -64,6 +62,11 @@ export interface CreateAuthGithubActionsTokenRequest {
   /** Requested token lifetime in seconds. Defaults to 1800 (30 min); capped at 3600 (60 min). */
   expiresInSeconds?: number;
 }
+const CreateAuthGithubActionsTokenRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateAuthGithubActionsTokenRequest>;
+
 export interface CreateAuthGithubActionsTokenResponseData {
   /** Prefixed integration token ID (`itgr_` prefix). */
   id: string;
@@ -75,9 +78,19 @@ export interface CreateAuthGithubActionsTokenResponseData {
   /** Prefixed workspace ID the token is scoped to. */
   workspaceId: string;
 }
+const CreateAuthGithubActionsTokenResponseData = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateAuthGithubActionsTokenResponseData>;
+
 export interface CreateAuthGithubActionsTokenResponse {
   data: CreateAuthGithubActionsTokenResponseData;
 }
+const CreateAuthGithubActionsTokenResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateAuthGithubActionsTokenResponse>;
+
 export interface CreateBucketRequest {
   /** ID of the project to create the bucket in */
   projectId: string;
@@ -90,11 +103,18 @@ export interface CreateBucketRequest {
   /** Declared identity of the resource, unique within its branch. Set by the tool that declares the resource. */
   logicalId?: string;
 }
+const CreateBucketRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateBucketRequest>;
+
 export interface CreateBucketResponseDataProject {
   id: string;
   url: string;
   name: string;
 }
+const CreateBucketResponseDataProject = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateBucketResponseDataProject>;
+
 export interface CreateBucketResponseData {
   id: string;
   type: string;
@@ -107,11 +127,20 @@ export interface CreateBucketResponseData {
   branchId: string | null;
   logicalId: string | null;
 }
+const CreateBucketResponseData = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateBucketResponseData>;
+
 export interface CreateBucketResponse {
   data: CreateBucketResponseData;
 }
+const CreateBucketResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateBucketResponse>;
+
 /** Access role for the key: "read" or "read_write". */
 export type CreateBucketKeyRequestRole = "read" | "read_write";
+const CreateBucketKeyRequestRole = S.String;
+
 export interface CreateBucketKeyRequest {
   bucketId: string;
   /** Display name for the key. Generated if omitted. */
@@ -119,7 +148,14 @@ export interface CreateBucketKeyRequest {
   /** Access role for the key: "read" or "read_write". */
   role: CreateBucketKeyRequestRole | (string & {});
 }
+const CreateBucketKeyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateBucketKeyRequest>;
+
 export type CreateBucketKeyResponseDataRole = "read" | "read_write";
+const CreateBucketKeyResponseDataRole = S.String;
+
 export interface CreateBucketKeyResponseData {
   id: string;
   type: string;
@@ -132,11 +168,23 @@ export interface CreateBucketKeyResponseData {
   endpoint: string;
   bucketName: string;
 }
+const CreateBucketKeyResponseData = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateBucketKeyResponseData>;
+
 export interface CreateBucketKeyResponse {
   data: CreateBucketKeyResponseData;
 }
+const CreateBucketKeyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateBucketKeyResponse>;
+
 /** `ci` for a build reported from a CI run, `cli` for a deploy run directly by a human or agent. */
 export type CreateBuildRequestSource = "ci" | "cli";
+const CreateBuildRequestSource = S.String;
+
 /** Identifies the CI run. Supplying it makes creation idempotent -- a repeat call for the same run returns the build that already exists. Omit it for builds with no run to name, such as a deploy from a laptop, where every call creates a new build. */
 export interface CreateBuildRequestRunIdentity {
   /** CI provider the run identity belongs to. */
@@ -148,6 +196,11 @@ export interface CreateBuildRequestRunIdentity {
   /** Attempt number of the run; a re-run is a separate build. */
   runAttempt: number;
 }
+const CreateBuildRequestRunIdentity = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateBuildRequestRunIdentity>;
+
 export interface CreateBuildRequest {
   /** `ci` for a build reported from a CI run, `cli` for a deploy run directly by a human or agent. */
   source: CreateBuildRequestSource | (string & {});
@@ -165,15 +218,23 @@ export interface CreateBuildRequest {
   /** Content hash of the application topology this run deploys, as submitted to the application-topology endpoint. A value match, never a reference: equal hashes identify the same graph. */
   applicationTopologyContentHash?: string;
 }
+const CreateBuildRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CreateBuildRequest>;
+
 export type CreateBuildResponseDataSource = "webhook" | "setup" | "manual" | "ci" | "cli";
+const CreateBuildResponseDataSource = S.String;
+
 export type CreateBuildResponseDataState =
   | "pending"
   | "running"
   | "succeeded"
   | "failed"
   | "cancelled";
+const CreateBuildResponseDataState = S.String;
+
 /** Null when nothing reported a phase; the platform never invents an observation it did not receive. */
 export type CreateBuildResponseDataPhase = "queued" | "build" | "deploy";
+const CreateBuildResponseDataPhase = S.String;
+
 export interface CreateBuildResponseData {
   id: string;
   source: CreateBuildResponseDataSource;
@@ -195,19 +256,38 @@ export interface CreateBuildResponseData {
   startedAt: string | null;
   finishedAt: string | null;
 }
+const CreateBuildResponseData = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateBuildResponseData>;
+
 export interface CreateBuildResponse {
   data: CreateBuildResponseData;
 }
+const CreateBuildResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CreateBuildResponse>;
+
 export interface CreateConnectionRequest {
   databaseId: string;
   name: string;
 }
+const CreateConnectionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateConnectionRequest>;
+
 export type CreateConnectionResponseDataKind = "postgres" | "accelerate";
+const CreateConnectionResponseDataKind = S.String;
+
 export interface CreateConnectionResponseDataEndpointsDirect {
   host: string;
   port: number;
   connectionString: string | Redacted.Redacted<string>;
 }
+const CreateConnectionResponseDataEndpointsDirect = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateConnectionResponseDataEndpointsDirect>;
+
 export type CreateConnectionResponseDataEndpointsPooled =
   CreateConnectionResponseDataEndpointsDirect;
 export type CreateConnectionResponseDataEndpointsAccelerate =
@@ -217,12 +297,22 @@ export interface CreateConnectionResponseDataEndpoints {
   pooled?: CreateConnectionResponseDataEndpointsDirect;
   accelerate?: CreateConnectionResponseDataEndpointsDirect;
 }
+const CreateConnectionResponseDataEndpoints = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateConnectionResponseDataEndpoints>;
+
 /** Deprecated: use `endpoints.direct` instead. */
 export interface CreateConnectionResponseDataDirectConnection {
   host: string;
   pass: string;
   user: string;
 }
+const CreateConnectionResponseDataDirectConnection = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateConnectionResponseDataDirectConnection>;
+
 export type CreateConnectionResponseDataDatabase = CreateBucketResponseDataProject;
 export interface CreateConnectionResponseData {
   id: string;
@@ -244,12 +334,27 @@ export interface CreateConnectionResponseData {
   /** Deprecated: use `endpoints.direct.connectionString` or `endpoints.pooled.connectionString` instead. */
   user: string | null;
 }
+const CreateConnectionResponseData = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateConnectionResponseData>;
+
 export interface CreateConnectionResponse {
   data: CreateConnectionResponseData;
 }
+const CreateConnectionResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateConnectionResponse>;
+
 export interface CreateConnectionRotateRequest {
   id: string;
 }
+const CreateConnectionRotateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateConnectionRotateRequest>;
+
 export type CreateConnectionRotateResponseDataKind = "postgres" | "accelerate";
 export type CreateConnectionRotateResponseDataEndpointsDirect =
   CreateConnectionResponseDataEndpointsDirect;
@@ -282,9 +387,17 @@ export interface CreateConnectionRotateResponseData {
   /** Deprecated: use `endpoints.direct.connectionString` or `endpoints.pooled.connectionString` instead. */
   user: string | null;
 }
+const CreateConnectionRotateResponseData =
+  CreateConnectionResponseData as any as S.Schema<CreateConnectionRotateResponseData>;
+
 export interface CreateConnectionRotateResponse {
   data: CreateConnectionRotateResponseData;
 }
+const CreateConnectionRotateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateConnectionRotateResponse>;
+
 /** Use "inherit" to use the project's default region (falls back to the default database's region for projects without one). */
 export type CreateDatabaseRequestRegion =
   | "us-east-1"
@@ -294,9 +407,16 @@ export type CreateDatabaseRequestRegion =
   | "ap-northeast-1"
   | "ap-southeast-1"
   | "inherit";
+const CreateDatabaseRequestRegion = S.String;
+
 export interface CreateDatabaseRequestSourceCase0 {
   type: string;
 }
+const CreateDatabaseRequestSourceCase0 = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateDatabaseRequestSourceCase0>;
+
 export interface CreateDatabaseRequestSourceCase1 {
   type: string;
   /** ID of the database the backup belongs to */
@@ -304,16 +424,31 @@ export interface CreateDatabaseRequestSourceCase1 {
   /** ID of the backup to restore from */
   backupId: string;
 }
+const CreateDatabaseRequestSourceCase1 = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateDatabaseRequestSourceCase1>;
+
 export interface CreateDatabaseRequestSourceCase2 {
   type: string;
   /** ID of the database to clone from */
   databaseId: string;
 }
+const CreateDatabaseRequestSourceCase2 = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateDatabaseRequestSourceCase2>;
+
 /** Source to create the database from. Omit to create an empty database. */
 export type CreateDatabaseRequestSource =
   | CreateDatabaseRequestSourceCase0
   | CreateDatabaseRequestSourceCase1
   | CreateDatabaseRequestSourceCase2;
+const CreateDatabaseRequestSource = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateDatabaseRequestSource>;
+
 export interface CreateDatabaseRequest {
   /** ID of the project to create the database in */
   projectId: string;
@@ -332,13 +467,27 @@ export interface CreateDatabaseRequest {
   /** Declared identity of the resource, unique within its branch. Set by the tool that declares the resource. */
   logicalId?: string;
 }
+const CreateDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateDatabaseRequest>;
+
 export type CreateDatabaseResponseDataStatus = "failure" | "provisioning" | "ready" | "recovering";
+const CreateDatabaseResponseDataStatus = S.String;
+
 export type CreateDatabaseResponseDataConnectionsItemKind = "postgres" | "accelerate";
+const CreateDatabaseResponseDataConnectionsItemKind = S.String;
+
 export interface CreateDatabaseResponseDataConnectionsItemEndpointsDirect {
   host: string;
   port: number;
   connectionString?: string | Redacted.Redacted<string>;
 }
+const CreateDatabaseResponseDataConnectionsItemEndpointsDirect = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateDatabaseResponseDataConnectionsItemEndpointsDirect>;
+
 export type CreateDatabaseResponseDataConnectionsItemEndpointsPooled =
   CreateDatabaseResponseDataConnectionsItemEndpointsDirect;
 export type CreateDatabaseResponseDataConnectionsItemEndpointsAccelerate =
@@ -348,6 +497,11 @@ export interface CreateDatabaseResponseDataConnectionsItemEndpoints {
   pooled?: CreateDatabaseResponseDataConnectionsItemEndpointsDirect;
   accelerate?: CreateDatabaseResponseDataConnectionsItemEndpointsDirect;
 }
+const CreateDatabaseResponseDataConnectionsItemEndpoints = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateDatabaseResponseDataConnectionsItemEndpoints>;
+
 /** Deprecated: use `endpoints.direct` instead. */
 export type CreateDatabaseResponseDataConnectionsItemDirectConnection =
   CreateConnectionResponseDataDirectConnection;
@@ -364,28 +518,56 @@ export interface CreateDatabaseResponseDataConnectionsItem {
   directConnection?: CreateConnectionResponseDataDirectConnection | null;
   database: CreateBucketResponseDataProject;
 }
+const CreateDatabaseResponseDataConnectionsItem = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateDatabaseResponseDataConnectionsItem>;
+
 export type CreateDatabaseResponseDataConnectionsList =
   Array<CreateDatabaseResponseDataConnectionsItem>;
+const CreateDatabaseResponseDataConnectionsList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateDatabaseResponseDataConnectionsList>;
+
 export type CreateDatabaseResponseDataProject = CreateBucketResponseDataProject;
 export interface CreateDatabaseResponseDataRegion {
   id: string;
   name: string;
 }
+const CreateDatabaseResponseDataRegion = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateDatabaseResponseDataRegion>;
+
 export type CreateDatabaseResponseDataSourceCase0 = CreateDatabaseRequestSourceCase0;
+const CreateDatabaseResponseDataSourceCase0 = CreateDatabaseRequestSourceCase0;
+
 export interface CreateDatabaseResponseDataSourceCase1 {
   type: string;
   databaseId: string;
   /** ID of the backup to restore from */
   backupId: string;
 }
+const CreateDatabaseResponseDataSourceCase1 =
+  CreateDatabaseRequestSourceCase1 as any as S.Schema<CreateDatabaseResponseDataSourceCase1>;
+
 export interface CreateDatabaseResponseDataSourceCase2 {
   type: string;
   databaseId: string;
 }
+const CreateDatabaseResponseDataSourceCase2 =
+  CreateDatabaseRequestSourceCase2 as any as S.Schema<CreateDatabaseResponseDataSourceCase2>;
+
 export type CreateDatabaseResponseDataSource =
   | CreateDatabaseRequestSourceCase0
   | CreateDatabaseResponseDataSourceCase1
   | CreateDatabaseResponseDataSourceCase2;
+const CreateDatabaseResponseDataSource = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateDatabaseResponseDataSource>;
+
 export interface CreateDatabaseResponseData {
   id: string;
   type: string;
@@ -402,13 +584,28 @@ export interface CreateDatabaseResponseData {
   branchId: string | null;
   logicalId: string | null;
 }
+const CreateDatabaseResponseData = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateDatabaseResponseData>;
+
 export interface CreateDatabaseResponse {
   data: CreateDatabaseResponseData;
 }
+const CreateDatabaseResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CreateDatabaseResponse>;
+
 export interface CreateDatabaseConnectionRequest {
   databaseId: string;
   name: string;
 }
+const CreateDatabaseConnectionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateDatabaseConnectionRequest>;
+
 export type CreateDatabaseConnectionResponseDataKind = "postgres" | "accelerate";
 export type CreateDatabaseConnectionResponseDataEndpointsDirect =
   CreateConnectionResponseDataEndpointsDirect;
@@ -444,21 +641,38 @@ export interface CreateDatabaseConnectionResponseData {
 export interface CreateDatabaseConnectionResponse {
   data: CreateDatabaseConnectionResponseData;
 }
+const CreateDatabaseConnectionResponse =
+  CreateConnectionRotateResponse as any as S.Schema<CreateDatabaseConnectionResponse>;
+
 export type CreateDatabaseRestoreRequestSource = CreateDatabaseRequestSourceCase1;
 export interface CreateDatabaseRestoreRequest {
   targetDatabaseId: string;
   source: CreateDatabaseRequestSourceCase1;
 }
+const CreateDatabaseRestoreRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateDatabaseRestoreRequest>;
+
 export type CreateDatabaseRestoreResponseDataStatus =
   | "failure"
   | "provisioning"
   | "ready"
   | "recovering";
+const CreateDatabaseRestoreResponseDataStatus = S.String;
+
 export type CreateDatabaseRestoreResponseDataConnectionsItemKind = "postgres" | "accelerate";
+const CreateDatabaseRestoreResponseDataConnectionsItemKind = S.String;
+
 export interface CreateDatabaseRestoreResponseDataConnectionsItemEndpointsDirect {
   host: string;
   port: number;
 }
+const CreateDatabaseRestoreResponseDataConnectionsItemEndpointsDirect = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateDatabaseRestoreResponseDataConnectionsItemEndpointsDirect>;
+
 export type CreateDatabaseRestoreResponseDataConnectionsItemEndpointsPooled =
   CreateDatabaseRestoreResponseDataConnectionsItemEndpointsDirect;
 export type CreateDatabaseRestoreResponseDataConnectionsItemEndpointsAccelerate =
@@ -468,6 +682,11 @@ export interface CreateDatabaseRestoreResponseDataConnectionsItemEndpoints {
   pooled?: CreateDatabaseRestoreResponseDataConnectionsItemEndpointsDirect;
   accelerate?: CreateDatabaseRestoreResponseDataConnectionsItemEndpointsDirect;
 }
+const CreateDatabaseRestoreResponseDataConnectionsItemEndpoints = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateDatabaseRestoreResponseDataConnectionsItemEndpoints>;
+
 /** Deprecated: use `endpoints.direct` instead. */
 export type CreateDatabaseRestoreResponseDataConnectionsItemDirectConnection =
   CreateConnectionResponseDataDirectConnection;
@@ -485,8 +704,18 @@ export interface CreateDatabaseRestoreResponseDataConnectionsItem {
   directConnection?: CreateConnectionResponseDataDirectConnection | null;
   database: CreateBucketResponseDataProject;
 }
+const CreateDatabaseRestoreResponseDataConnectionsItem = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreateDatabaseRestoreResponseDataConnectionsItem>;
+
 export type CreateDatabaseRestoreResponseDataConnectionsList =
   Array<CreateDatabaseRestoreResponseDataConnectionsItem>;
+const CreateDatabaseRestoreResponseDataConnectionsList = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<CreateDatabaseRestoreResponseDataConnectionsList>;
+
 export type CreateDatabaseRestoreResponseDataProject = CreateBucketResponseDataProject;
 export type CreateDatabaseRestoreResponseDataRegion = CreateDatabaseResponseDataRegion;
 export interface CreateDatabaseRestoreResponseDataSource {
@@ -494,6 +723,9 @@ export interface CreateDatabaseRestoreResponseDataSource {
   databaseId: string;
   backupId: string;
 }
+const CreateDatabaseRestoreResponseDataSource =
+  CreateDatabaseRequestSourceCase1 as any as S.Schema<CreateDatabaseRestoreResponseDataSource>;
+
 export interface CreateDatabaseRestoreResponseData {
   id: string;
   type: string;
@@ -510,25 +742,65 @@ export interface CreateDatabaseRestoreResponseData {
   branchId: string | null;
   logicalId: string | null;
 }
+const CreateDatabaseRestoreResponseData = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CreateDatabaseRestoreResponseData>;
+
 export interface CreateDatabaseRestoreResponse {
   data: CreateDatabaseRestoreResponseData;
 }
+const CreateDatabaseRestoreResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<CreateDatabaseRestoreResponse>;
+
 export interface CreateDeploymentStartRequest {
   deploymentId: string;
 }
+const CreateDeploymentStartRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateDeploymentStartRequest>;
+
 export interface CreateDeploymentStartResponseData {
   previewDomain: string;
 }
+const CreateDeploymentStartResponseData = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreateDeploymentStartResponseData>;
+
 export interface CreateDeploymentStartResponse {
   data: CreateDeploymentStartResponseData;
 }
+const CreateDeploymentStartResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreateDeploymentStartResponse>;
+
 export interface CreateDeploymentStopRequest {
   deploymentId: string;
 }
+const CreateDeploymentStopRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CreateDeploymentStopRequest>;
+
 export interface CreateDeploymentStopResponse {}
+const CreateDeploymentStopResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreateDeploymentStopResponse>;
+
 export interface CreateDomainRetryRequest {
   domainId: string;
 }
+const CreateDomainRetryRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreateDomainRetryRequest>;
+
 export type CreateDomainRetryResponseDataStatus =
   | "pending_dns"
   | "verifying"
@@ -537,15 +809,29 @@ export type CreateDomainRetryResponseDataStatus =
   | "active"
   | "failed"
   | "removing";
+const CreateDomainRetryResponseDataStatus = S.String;
+
 export type CreateDomainRetryResponseDataFailureCategory = "dns" | "acme" | "storage" | "unknown";
+const CreateDomainRetryResponseDataFailureCategory = S.String;
+
 export interface CreateDomainRetryResponseDataDnsRecordsItem {
   type: string;
   name: string;
   value: string;
   ttl: number | null;
 }
+const CreateDomainRetryResponseDataDnsRecordsItem = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<CreateDomainRetryResponseDataDnsRecordsItem>;
+
 export type CreateDomainRetryResponseDataDnsRecordsList =
   Array<CreateDomainRetryResponseDataDnsRecordsItem>;
+const CreateDomainRetryResponseDataDnsRecordsList = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<CreateDomainRetryResponseDataDnsRecordsList>;
+
 export interface CreateDomainRetryResponseData {
   id: string;
   type: string;
@@ -563,10 +849,22 @@ export interface CreateDomainRetryResponseData {
   updatedAt: string;
   dnsRecords: CreateDomainRetryResponseDataDnsRecordsList;
 }
+const CreateDomainRetryResponseData = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<CreateDomainRetryResponseData>;
+
 export interface CreateDomainRetryResponse {
   data: CreateDomainRetryResponseData;
 }
+const CreateDomainRetryResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<CreateDomainRetryResponse>;
+
 export type CreateEnvironmentVariableRequestClass = "production" | "preview";
+const CreateEnvironmentVariableRequestClass = S.String;
+
 export interface CreateEnvironmentVariableRequest {
   projectId: string;
   branchId?: string;
@@ -574,7 +872,14 @@ export interface CreateEnvironmentVariableRequest {
   key: string;
   value: string;
 }
+const CreateEnvironmentVariableRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<CreateEnvironmentVariableRequest>;
+
 export type CreateEnvironmentVariableResponseDataClass = "production" | "preview";
+const CreateEnvironmentVariableResponseDataClass = S.String;
+
 export interface CreateEnvironmentVariableResponseData {
   id: string;
   type: string;
@@ -588,9 +893,19 @@ export interface CreateEnvironmentVariableResponseData {
   createdAt: string;
   updatedAt: string;
 }
+const CreateEnvironmentVariableResponseData = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreateEnvironmentVariableResponseData>;
+
 export interface CreateEnvironmentVariableResponse {
   data: CreateEnvironmentVariableResponseData;
 }
+const CreateEnvironmentVariableResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<CreateEnvironmentVariableResponse>;
+
 export type CreateProjectRequestRegion =
   | "us-east-1"
   | "us-west-1"
@@ -598,6 +913,8 @@ export type CreateProjectRequestRegion =
   | "eu-central-1"
   | "ap-northeast-1"
   | "ap-southeast-1";
+const CreateProjectRequestRegion = S.String;
+
 export interface CreateProjectRequest {
   createDatabase?: boolean;
   name?: string;
@@ -605,8 +922,12 @@ export interface CreateProjectRequest {
   logicalId?: string;
   workspaceId?: string;
 }
+const CreateProjectRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<CreateProjectRequest>;
+
 export type CreateProjectResponseDataWorkspace = CreateBucketResponseDataProject;
 export type CreateProjectResponseDataDatabaseStatus = "provisioning" | "ready";
+const CreateProjectResponseDataDatabaseStatus = S.String;
+
 export type CreateProjectResponseDataDatabaseConnectionsItemKind = "postgres" | "accelerate";
 export type CreateProjectResponseDataDatabaseConnectionsItemEndpointsDirect =
   CreateDatabaseResponseDataConnectionsItemEndpointsDirect;
@@ -635,15 +956,31 @@ export interface CreateProjectResponseDataDatabaseConnectionsItem {
 }
 export type CreateProjectResponseDataDatabaseConnectionsList =
   Array<CreateProjectResponseDataDatabaseConnectionsItem>;
+const CreateProjectResponseDataDatabaseConnectionsList =
+  CreateDatabaseResponseDataConnectionsList as any as S.Schema<CreateProjectResponseDataDatabaseConnectionsList>;
+
 export type CreateProjectResponseDataDatabaseRegion = CreateDatabaseResponseDataRegion;
 export type CreateProjectResponseDataDatabaseSourceCase0 = CreateDatabaseRequestSourceCase0;
+const CreateProjectResponseDataDatabaseSourceCase0 = CreateDatabaseRequestSourceCase0;
+
 export type CreateProjectResponseDataDatabaseSourceCase1 = CreateDatabaseResponseDataSourceCase1;
+const CreateProjectResponseDataDatabaseSourceCase1 = CreateDatabaseResponseDataSourceCase1;
+
 export type CreateProjectResponseDataDatabaseSourceCase2 = CreateDatabaseResponseDataSourceCase2;
+const CreateProjectResponseDataDatabaseSourceCase2 = CreateDatabaseResponseDataSourceCase2;
+
 export type CreateProjectResponseDataDatabaseSource =
   | CreateDatabaseRequestSourceCase0
   | CreateDatabaseResponseDataSourceCase1
   | CreateDatabaseResponseDataSourceCase2;
+const CreateProjectResponseDataDatabaseSource = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<CreateProjectResponseDataDatabaseSource>;
+
 export type CreateProjectResponseDataDatabaseApiKeysItemKind = "postgres" | "accelerate";
+const CreateProjectResponseDataDatabaseApiKeysItemKind = S.String;
+
 export type CreateProjectResponseDataDatabaseApiKeysItemEndpointsDirect =
   CreateDatabaseRestoreResponseDataConnectionsItemEndpointsDirect;
 export type CreateProjectResponseDataDatabaseApiKeysItemEndpointsPooled =
@@ -668,9 +1005,19 @@ export interface CreateProjectResponseDataDatabaseApiKeysItem {
   /** Deprecated: use `endpoints.direct` instead. */
   directConnection?: CreateConnectionResponseDataDirectConnection | null;
 }
+const CreateProjectResponseDataDatabaseApiKeysItem = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<CreateProjectResponseDataDatabaseApiKeysItem>;
+
 /** Deprecated: use `connections[]` instead. */
 export type CreateProjectResponseDataDatabaseApiKeysList =
   Array<CreateProjectResponseDataDatabaseApiKeysItem>;
+const CreateProjectResponseDataDatabaseApiKeysList = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<CreateProjectResponseDataDatabaseApiKeysList>;
+
 /** Deprecated: use `connections[].endpoints.direct` instead. */
 export type CreateProjectResponseDataDatabaseDirectConnection =
   CreateConnectionResponseDataDirectConnection;
@@ -695,6 +1042,11 @@ export interface CreateProjectResponseDataDatabase {
   /** Deprecated: use `connections[].endpoints.direct` instead. */
   directConnection: CreateConnectionResponseDataDirectConnection | null;
 }
+const CreateProjectResponseDataDatabase = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<CreateProjectResponseDataDatabase>;
+
 export interface CreateProjectResponseData {
   id: string;
   type: string;
@@ -706,15 +1058,32 @@ export interface CreateProjectResponseData {
   workspace: CreateBucketResponseDataProject;
   database: CreateProjectResponseDataDatabase | null;
 }
+const CreateProjectResponseData = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<CreateProjectResponseData>;
+
 export interface CreateProjectResponse {
   data: CreateProjectResponseData;
 }
+const CreateProjectResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<CreateProjectResponse>;
+
 export interface CreateProjectBranchRequest {
   projectId: string;
   gitName: string;
   isDefault?: boolean;
 }
+const CreateProjectBranchRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<CreateProjectBranchRequest>;
+
 export type CreateProjectBranchResponseDataRole = "production" | "preview";
+const CreateProjectBranchResponseDataRole = S.String;
+
 /** Thin reference to the parent Project. Member resources are intentionally NOT inlined -- list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
 export type CreateProjectBranchResponseDataProject = CreateBucketResponseDataProject;
 export interface CreateProjectBranchResponseData {
@@ -729,9 +1098,19 @@ export interface CreateProjectBranchResponseData {
   /** Thin reference to the parent Project. Member resources are intentionally NOT inlined -- list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
   project: CreateBucketResponseDataProject;
 }
+const CreateProjectBranchResponseData = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<CreateProjectBranchResponseData>;
+
 export interface CreateProjectBranchResponse {
   data: CreateProjectBranchResponseData;
 }
+const CreateProjectBranchResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<CreateProjectBranchResponse>;
+
 export interface CreateProjectBranchAlchemyStateLeaseRequest {
   projectId: string;
   branchId: string;
@@ -744,15 +1123,30 @@ export interface CreateProjectBranchAlchemyStateLeaseRequest {
   /** Free-form description of the acquiring deploy, echoed in the contention error so a blocked deploy can name who holds the lease. */
   holderDescription?: string;
 }
+const CreateProjectBranchAlchemyStateLeaseRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<CreateProjectBranchAlchemyStateLeaseRequest>;
+
 export interface CreateProjectBranchAlchemyStateLeaseResponseData {
   /** Capability token for the deploy lease. Send it in the Alchemy-State-Lease-Id header with every state operation; do not log it. */
   leaseId: string;
   /** Lease expiry as an ISO-8601 timestamp. */
   expiresAt: string;
 }
+const CreateProjectBranchAlchemyStateLeaseResponseData = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<CreateProjectBranchAlchemyStateLeaseResponseData>;
+
 export interface CreateProjectBranchAlchemyStateLeaseResponse {
   data: CreateProjectBranchAlchemyStateLeaseResponseData;
 }
+const CreateProjectBranchAlchemyStateLeaseResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<CreateProjectBranchAlchemyStateLeaseResponse>;
+
 /** Use "inherit" to use the project's default region (falls back to the default database's region for projects without one). */
 export type CreateProjectDatabaseRequestRegion =
   | "us-east-1"
@@ -762,18 +1156,36 @@ export type CreateProjectDatabaseRequestRegion =
   | "ap-northeast-1"
   | "ap-southeast-1"
   | "inherit";
+const CreateProjectDatabaseRequestRegion = S.String;
+
 /** Deprecated: use `source` instead. */
 export interface CreateProjectDatabaseRequestFromDatabase {
   id: string;
   backupId?: string;
 }
+const CreateProjectDatabaseRequestFromDatabase = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<CreateProjectDatabaseRequestFromDatabase>;
+
 export type CreateProjectDatabaseRequestSourceCase0 = CreateDatabaseRequestSourceCase0;
+const CreateProjectDatabaseRequestSourceCase0 = CreateDatabaseRequestSourceCase0;
+
 export type CreateProjectDatabaseRequestSourceCase1 = CreateDatabaseRequestSourceCase1;
+const CreateProjectDatabaseRequestSourceCase1 = CreateDatabaseRequestSourceCase1;
+
 export type CreateProjectDatabaseRequestSourceCase2 = CreateDatabaseRequestSourceCase2;
+const CreateProjectDatabaseRequestSourceCase2 = CreateDatabaseRequestSourceCase2;
+
 export type CreateProjectDatabaseRequestSource =
   | CreateDatabaseRequestSourceCase0
   | CreateDatabaseRequestSourceCase1
   | CreateDatabaseRequestSourceCase2;
+const CreateProjectDatabaseRequestSource = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<CreateProjectDatabaseRequestSource>;
+
 export interface CreateProjectDatabaseRequest {
   projectId: string;
   /** Use "inherit" to use the project's default region (falls back to the default database's region for projects without one). */
@@ -784,7 +1196,14 @@ export interface CreateProjectDatabaseRequest {
   fromDatabase?: CreateProjectDatabaseRequestFromDatabase;
   source?: CreateProjectDatabaseRequestSource;
 }
+const CreateProjectDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<CreateProjectDatabaseRequest>;
+
 export type CreateProjectDatabaseResponseDataStatus = "provisioning" | "ready";
+const CreateProjectDatabaseResponseDataStatus = S.String;
+
 export type CreateProjectDatabaseResponseDataConnectionsItemKind = "postgres" | "accelerate";
 export type CreateProjectDatabaseResponseDataConnectionsItemEndpointsDirect =
   CreateDatabaseResponseDataConnectionsItemEndpointsDirect;
@@ -813,15 +1232,29 @@ export interface CreateProjectDatabaseResponseDataConnectionsItem {
 }
 export type CreateProjectDatabaseResponseDataConnectionsList =
   Array<CreateProjectDatabaseResponseDataConnectionsItem>;
+const CreateProjectDatabaseResponseDataConnectionsList =
+  CreateDatabaseResponseDataConnectionsList as any as S.Schema<CreateProjectDatabaseResponseDataConnectionsList>;
+
 export type CreateProjectDatabaseResponseDataProject = CreateBucketResponseDataProject;
 export type CreateProjectDatabaseResponseDataRegion = CreateDatabaseResponseDataRegion;
 export type CreateProjectDatabaseResponseDataSourceCase0 = CreateDatabaseRequestSourceCase0;
+const CreateProjectDatabaseResponseDataSourceCase0 = CreateDatabaseRequestSourceCase0;
+
 export type CreateProjectDatabaseResponseDataSourceCase1 = CreateDatabaseResponseDataSourceCase1;
+const CreateProjectDatabaseResponseDataSourceCase1 = CreateDatabaseResponseDataSourceCase1;
+
 export type CreateProjectDatabaseResponseDataSourceCase2 = CreateDatabaseResponseDataSourceCase2;
+const CreateProjectDatabaseResponseDataSourceCase2 = CreateDatabaseResponseDataSourceCase2;
+
 export type CreateProjectDatabaseResponseDataSource =
   | CreateDatabaseRequestSourceCase0
   | CreateDatabaseResponseDataSourceCase1
   | CreateDatabaseResponseDataSourceCase2;
+const CreateProjectDatabaseResponseDataSource = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<CreateProjectDatabaseResponseDataSource>;
+
 export type CreateProjectDatabaseResponseDataApiKeysItemKind = "postgres" | "accelerate";
 export type CreateProjectDatabaseResponseDataApiKeysItemEndpointsDirect =
   CreateDatabaseRestoreResponseDataConnectionsItemEndpointsDirect;
@@ -850,6 +1283,9 @@ export interface CreateProjectDatabaseResponseDataApiKeysItem {
 /** Deprecated: use `connections[]` instead. */
 export type CreateProjectDatabaseResponseDataApiKeysList =
   Array<CreateProjectDatabaseResponseDataApiKeysItem>;
+const CreateProjectDatabaseResponseDataApiKeysList =
+  CreateProjectResponseDataDatabaseApiKeysList as any as S.Schema<CreateProjectDatabaseResponseDataApiKeysList>;
+
 /** Deprecated: use `connections[].endpoints.direct` instead. */
 export type CreateProjectDatabaseResponseDataDirectConnection =
   CreateConnectionResponseDataDirectConnection;
@@ -875,21 +1311,48 @@ export interface CreateProjectDatabaseResponseData {
   /** Deprecated: use `connections[].endpoints.direct` instead. */
   directConnection: CreateConnectionResponseDataDirectConnection | null;
 }
+const CreateProjectDatabaseResponseData = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<CreateProjectDatabaseResponseData>;
+
 export interface CreateProjectDatabaseResponse {
   data: CreateProjectDatabaseResponseData;
 }
+const CreateProjectDatabaseResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<CreateProjectDatabaseResponse>;
+
 export interface CreateProjectTransferRequest {
   id: string;
   recipientAccessToken: string;
 }
+const CreateProjectTransferRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<CreateProjectTransferRequest>;
+
 export interface CreateProjectTransferResponse {}
+const CreateProjectTransferResponse =
+  CreateDeploymentStopResponse as any as S.Schema<CreateProjectTransferResponse>;
+
 export type CreateScmInstallationsInstallIntentRequestProvider = "github";
+const CreateScmInstallationsInstallIntentRequestProvider = S.String;
+
 export interface CreateScmInstallationsInstallIntentRequest {
   provider: CreateScmInstallationsInstallIntentRequestProvider | (string & {});
   workspaceId: string;
   repository?: string;
 }
+const CreateScmInstallationsInstallIntentRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<CreateScmInstallationsInstallIntentRequest>;
+
 export type CreateScmInstallationsInstallIntentResponseDataProvider = "github";
+const CreateScmInstallationsInstallIntentResponseDataProvider = S.String;
+
 export interface CreateScmInstallationsInstallIntentResponseData {
   type: string;
   provider: CreateScmInstallationsInstallIntentResponseDataProvider;
@@ -899,9 +1362,19 @@ export interface CreateScmInstallationsInstallIntentResponseData {
   accountLogin?: string;
   hint?: string;
 }
+const CreateScmInstallationsInstallIntentResponseData = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<CreateScmInstallationsInstallIntentResponseData>;
+
 export interface CreateScmInstallationsInstallIntentResponse {
   data: CreateScmInstallationsInstallIntentResponseData;
 }
+const CreateScmInstallationsInstallIntentResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<CreateScmInstallationsInstallIntentResponse>;
+
 export type CreateServiceRequestRegionId =
   | "us-east-1"
   | "us-west-1"
@@ -909,6 +1382,8 @@ export type CreateServiceRequestRegionId =
   | "eu-central-1"
   | "ap-northeast-1"
   | "ap-southeast-1";
+const CreateServiceRequestRegionId = S.String;
+
 export interface CreateServiceRequest {
   displayName: string;
   regionId?: CreateServiceRequestRegionId | (string & {});
@@ -918,6 +1393,8 @@ export interface CreateServiceRequest {
   /** Declared identity of the resource, unique within its branch. Set by the tool that declares the resource. */
   logicalId?: string;
 }
+const CreateServiceRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<CreateServiceRequest>;
+
 export type CreateServiceResponseDataRegion = CreateDatabaseResponseDataRegion;
 export interface CreateServiceResponseData {
   id: string;
@@ -932,17 +1409,37 @@ export interface CreateServiceResponseData {
   createdAt: string;
   logicalId: string | null;
 }
+const CreateServiceResponseData = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<CreateServiceResponseData>;
+
 export interface CreateServiceResponse {
   data: CreateServiceResponseData;
 }
+const CreateServiceResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<CreateServiceResponse>;
+
 export interface CreateServiceDeploymentRequestPortMapping {
   http?: number | null;
 }
+const CreateServiceDeploymentRequestPortMapping = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<CreateServiceDeploymentRequestPortMapping>;
+
 export interface CreateServiceDeploymentRequest {
   serviceId: string;
   portMapping?: CreateServiceDeploymentRequestPortMapping;
   skipCodeUpload?: boolean;
 }
+const CreateServiceDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<CreateServiceDeploymentRequest>;
+
 export interface CreateServiceDeploymentResponseData {
   id: string;
   type: string;
@@ -950,13 +1447,28 @@ export interface CreateServiceDeploymentResponseData {
   foundryVersionId: string;
   uploadUrl: string | null;
 }
+const CreateServiceDeploymentResponseData = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<CreateServiceDeploymentResponseData>;
+
 export interface CreateServiceDeploymentResponse {
   data: CreateServiceDeploymentResponseData;
 }
+const CreateServiceDeploymentResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<CreateServiceDeploymentResponse>;
+
 export interface CreateServiceDomainRequest {
   serviceId: string;
   hostname: string;
 }
+const CreateServiceDomainRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<CreateServiceDomainRequest>;
+
 export type CreateServiceDomainResponseDataStatus =
   | "pending_dns"
   | "verifying"
@@ -965,11 +1477,18 @@ export type CreateServiceDomainResponseDataStatus =
   | "active"
   | "failed"
   | "removing";
+const CreateServiceDomainResponseDataStatus = S.String;
+
 export type CreateServiceDomainResponseDataFailureCategory = "dns" | "acme" | "storage" | "unknown";
+const CreateServiceDomainResponseDataFailureCategory = S.String;
+
 export type CreateServiceDomainResponseDataDnsRecordsItem =
   CreateDomainRetryResponseDataDnsRecordsItem;
 export type CreateServiceDomainResponseDataDnsRecordsList =
   Array<CreateDomainRetryResponseDataDnsRecordsItem>;
+const CreateServiceDomainResponseDataDnsRecordsList =
+  CreateDomainRetryResponseDataDnsRecordsList as any as S.Schema<CreateServiceDomainResponseDataDnsRecordsList>;
+
 export interface CreateServiceDomainResponseData {
   id: string;
   type: string;
@@ -987,32 +1506,65 @@ export interface CreateServiceDomainResponseData {
   updatedAt: string;
   dnsRecords: CreateServiceDomainResponseDataDnsRecordsList;
 }
+const CreateServiceDomainResponseData = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<CreateServiceDomainResponseData>;
+
 export interface CreateServiceDomainResponse {
   data: CreateServiceDomainResponseData;
 }
+const CreateServiceDomainResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<CreateServiceDomainResponse>;
+
 export interface CreateServicePromoteRequest {
   serviceId: string;
   deploymentId?: string;
   /** Deprecated: use `deploymentId` instead. Ignored when `deploymentId` is also present. */
   versionId?: string;
 }
+const CreateServicePromoteRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<CreateServicePromoteRequest>;
+
 export interface CreateServicePromoteResponseData {
   appEndpointDomain: string;
   reassignedDomains: number;
 }
+const CreateServicePromoteResponseData = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<CreateServicePromoteResponseData>;
+
 export interface CreateServicePromoteResponse {
   data: CreateServicePromoteResponseData;
 }
+const CreateServicePromoteResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<CreateServicePromoteResponse>;
+
 export interface CreateServiceRollbackRequest {
   serviceId: string;
   deploymentId?: string;
   /** Deprecated: use `deploymentId` instead. Ignored when `deploymentId` is also present. */
   versionId?: string;
 }
+const CreateServiceRollbackRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<CreateServiceRollbackRequest>;
+
 export type CreateServiceRollbackResponseData = CreateServicePromoteResponseData;
 export interface CreateServiceRollbackResponse {
   data: CreateServicePromoteResponseData;
 }
+const CreateServiceRollbackResponse =
+  CreateServicePromoteResponse as any as S.Schema<CreateServiceRollbackResponse>;
+
 export interface CreateSourceRepositoryRequest {
   projectId: string;
   provider: string;
@@ -1020,8 +1572,17 @@ export interface CreateSourceRepositoryRequest {
   /** Optional SCM installation ID to use for linking. When omitted, the API auto-picks the workspace's installation. */
   installationId?: string;
 }
+const CreateSourceRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<CreateSourceRepositoryRequest>;
+
 export type CreateSourceRepositoryResponseDataProvider = "github";
+const CreateSourceRepositoryResponseDataProvider = S.String;
+
 export type CreateSourceRepositoryResponseDataStatus = "active" | "archived";
+const CreateSourceRepositoryResponseDataStatus = S.String;
+
 export interface CreateSourceRepositoryResponseData {
   id: string;
   type: string;
@@ -1037,13 +1598,28 @@ export interface CreateSourceRepositoryResponseData {
   createdAt: string;
   updatedAt: string;
 }
+const CreateSourceRepositoryResponseData = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<CreateSourceRepositoryResponseData>;
+
 export interface CreateSourceRepositoryResponse {
   data: CreateSourceRepositoryResponseData;
   hint?: string;
 }
+const CreateSourceRepositoryResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<CreateSourceRepositoryResponse>;
+
 export interface CreateWorkspaceRequest {
   displayName?: string;
 }
+const CreateWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<CreateWorkspaceRequest>;
+
 export interface CreateWorkspaceResponseData {
   id: string;
   type: string;
@@ -1051,14 +1627,29 @@ export interface CreateWorkspaceResponseData {
   name: string;
   createdAt: string;
 }
+const CreateWorkspaceResponseData = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<CreateWorkspaceResponseData>;
+
 export interface CreateWorkspaceResponse {
   data: CreateWorkspaceResponseData;
 }
+const CreateWorkspaceResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<CreateWorkspaceResponse>;
+
 export interface CreateWorkspaceServiceTokenRequest {
   workspaceId: string;
   /** Display name for the service token. */
   name: string;
 }
+const CreateWorkspaceServiceTokenRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<CreateWorkspaceServiceTokenRequest>;
+
 export interface CreateWorkspaceServiceTokenResponseData {
   id: string;
   type: string;
@@ -1068,62 +1659,158 @@ export interface CreateWorkspaceServiceTokenResponseData {
   expiresAt?: string | null;
   value: string;
 }
+const CreateWorkspaceServiceTokenResponseData = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<CreateWorkspaceServiceTokenResponseData>;
+
 export interface CreateWorkspaceServiceTokenResponse {
   data: CreateWorkspaceServiceTokenResponseData;
 }
+const CreateWorkspaceServiceTokenResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<CreateWorkspaceServiceTokenResponse>;
+
 export interface DeleteBranchRequest {
   branchId: string;
 }
+const DeleteBranchRequest = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<DeleteBranchRequest>;
+
 export interface DeleteBranchResponse {}
+const DeleteBranchResponse = CreateDeploymentStopResponse as any as S.Schema<DeleteBranchResponse>;
+
 export interface DeleteBucketRequest {
   bucketId: string;
 }
+const DeleteBucketRequest = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<DeleteBucketRequest>;
+
 export interface DeleteBucketResponse {}
+const DeleteBucketResponse = CreateDeploymentStopResponse as any as S.Schema<DeleteBucketResponse>;
+
 export interface DeleteBucketKeyRequest {
   bucketId: string;
   keyId: string;
 }
+const DeleteBucketKeyRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<DeleteBucketKeyRequest>;
+
 export interface DeleteBucketKeyResponse {}
+const DeleteBucketKeyResponse =
+  CreateDeploymentStopResponse as any as S.Schema<DeleteBucketKeyResponse>;
+
 export interface DeleteConnectionRequest {
   id: string;
 }
+const DeleteConnectionRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<DeleteConnectionRequest>;
+
 export interface DeleteConnectionResponse {}
+const DeleteConnectionResponse =
+  CreateDeploymentStopResponse as any as S.Schema<DeleteConnectionResponse>;
+
 export interface DeleteDatabaseRequest {
   databaseId: string;
 }
+const DeleteDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<DeleteDatabaseRequest>;
+
 export interface DeleteDatabaseResponse {}
+const DeleteDatabaseResponse =
+  CreateDeploymentStopResponse as any as S.Schema<DeleteDatabaseResponse>;
+
 export interface DeleteDeploymentRequest {
   deploymentId: string;
 }
+const DeleteDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<DeleteDeploymentRequest>;
+
 export interface DeleteDeploymentResponse {}
+const DeleteDeploymentResponse =
+  CreateDeploymentStopResponse as any as S.Schema<DeleteDeploymentResponse>;
+
 export interface DeleteDomainRequest {
   domainId: string;
 }
+const DeleteDomainRequest = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<DeleteDomainRequest>;
+
 export interface DeleteDomainResponse {}
+const DeleteDomainResponse = CreateDeploymentStopResponse as any as S.Schema<DeleteDomainResponse>;
+
 export interface DeleteEnvironmentVariableRequest {
   envVarId: string;
 }
+const DeleteEnvironmentVariableRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<DeleteEnvironmentVariableRequest>;
+
 export interface DeleteEnvironmentVariableResponse {}
+const DeleteEnvironmentVariableResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<DeleteEnvironmentVariableResponse>;
+
 export interface DeleteIntegrationRequest {
   id: string;
 }
+const DeleteIntegrationRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<DeleteIntegrationRequest>;
+
 export interface DeleteIntegrationResponse {}
+const DeleteIntegrationResponse =
+  CreateDeploymentStopResponse as any as S.Schema<DeleteIntegrationResponse>;
+
 export interface DeleteProjectRequest {
   id: string;
 }
+const DeleteProjectRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<DeleteProjectRequest>;
+
 export interface DeleteProjectResponse {}
+const DeleteProjectResponse =
+  CreateDeploymentStopResponse as any as S.Schema<DeleteProjectResponse>;
+
 export interface DeleteProjectBranchAlchemyStateLeaseRequest {
   projectId: string;
   branchId: string;
 }
+const DeleteProjectBranchAlchemyStateLeaseRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<DeleteProjectBranchAlchemyStateLeaseRequest>;
+
 export interface DeleteProjectBranchAlchemyStateLeaseResponse {}
+const DeleteProjectBranchAlchemyStateLeaseResponse =
+  DeleteEnvironmentVariableResponse as any as S.Schema<DeleteProjectBranchAlchemyStateLeaseResponse>;
+
 export interface DeleteProjectBranchAlchemyStateStateStackRequest {
   projectId: string;
   branchId: string;
   stack: string;
   stage?: string;
 }
+const DeleteProjectBranchAlchemyStateStateStackRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<DeleteProjectBranchAlchemyStateStateStackRequest>;
+
 export interface DeleteProjectBranchAlchemyStateStateStackResponse {}
+const DeleteProjectBranchAlchemyStateStateStackResponse =
+  DeleteEnvironmentVariableResponse as any as S.Schema<DeleteProjectBranchAlchemyStateStateStackResponse>;
+
 export interface DeleteProjectBranchAlchemyStateStateStackStageResourceRequest {
   projectId: string;
   branchId: string;
@@ -1131,28 +1818,75 @@ export interface DeleteProjectBranchAlchemyStateStateStackStageResourceRequest {
   stage: string;
   fqn: string;
 }
+const DeleteProjectBranchAlchemyStateStateStackStageResourceRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<DeleteProjectBranchAlchemyStateStateStackStageResourceRequest>;
+
 export interface DeleteProjectBranchAlchemyStateStateStackStageResourceResponse {}
+const DeleteProjectBranchAlchemyStateStateStackStageResourceResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<DeleteProjectBranchAlchemyStateStateStackStageResourceResponse>;
+
 export interface DeleteServiceRequest {
   serviceId: string;
 }
+const DeleteServiceRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<DeleteServiceRequest>;
+
 export interface DeleteServiceResponse {}
+const DeleteServiceResponse =
+  CreateDeploymentStopResponse as any as S.Schema<DeleteServiceResponse>;
+
 export interface DeleteSourceRepositoryRequest {
   id: string;
 }
+const DeleteSourceRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<DeleteSourceRepositoryRequest>;
+
 export interface DeleteSourceRepositoryResponse {}
+const DeleteSourceRepositoryResponse =
+  CreateDeploymentStopResponse as any as S.Schema<DeleteSourceRepositoryResponse>;
+
 export interface DeleteWorkspaceIntegrationRequest {
   workspaceId: string;
   clientId: string;
 }
+const DeleteWorkspaceIntegrationRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<DeleteWorkspaceIntegrationRequest>;
+
 export interface DeleteWorkspaceIntegrationResponse {}
+const DeleteWorkspaceIntegrationResponse =
+  DeleteEnvironmentVariableResponse as any as S.Schema<DeleteWorkspaceIntegrationResponse>;
+
 export interface DeleteWorkspaceServiceTokenRequest {
   workspaceId: string;
   serviceTokenId: string;
 }
+const DeleteWorkspaceServiceTokenRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<DeleteWorkspaceServiceTokenRequest>;
+
 export interface DeleteWorkspaceServiceTokenResponse {}
+const DeleteWorkspaceServiceTokenResponse =
+  DeleteEnvironmentVariableResponse as any as S.Schema<DeleteWorkspaceServiceTokenResponse>;
+
 export interface GetAgentApprovalRequest {
   approvalId: string;
 }
+const GetAgentApprovalRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<GetAgentApprovalRequest>;
+
 export type GetAgentApprovalResponseStatus =
   | "pending"
   | "approved"
@@ -1160,6 +1894,8 @@ export type GetAgentApprovalResponseStatus =
   | "denied"
   | "expired"
   | "consumed";
+const GetAgentApprovalResponseStatus = S.String;
+
 export interface GetAgentApprovalResponse {
   id: string;
   status: GetAgentApprovalResponseStatus;
@@ -1168,10 +1904,19 @@ export interface GetAgentApprovalResponse {
   decidedAt: string | null;
   hint?: string;
 }
+const GetAgentApprovalResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<GetAgentApprovalResponse>;
+
 export interface GetBranchRequest {
   branchId: string;
 }
+const GetBranchRequest = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<GetBranchRequest>;
+
 export type GetBranchResponseDataRole = "production" | "preview";
+const GetBranchResponseDataRole = S.String;
+
 /** Thin reference to the parent Project. Member resources are intentionally NOT inlined -- list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
 export type GetBranchResponseDataProject = CreateBucketResponseDataProject;
 export interface GetBranchResponseData {
@@ -1186,23 +1931,41 @@ export interface GetBranchResponseData {
   /** Thin reference to the parent Project. Member resources are intentionally NOT inlined -- list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
   project: CreateBucketResponseDataProject;
 }
+const GetBranchResponseData = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<GetBranchResponseData>;
+
 export interface GetBranchResponse {
   data: GetBranchResponseData;
 }
+const GetBranchResponse = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<GetBranchResponse>;
+
 export interface GetBucketRequest {
   bucketId: string;
 }
+const GetBucketRequest = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<GetBucketRequest>;
+
 export type GetBucketResponseDataProject = CreateBucketResponseDataProject;
 export type GetBucketResponseData = CreateBucketResponseData;
 export interface GetBucketResponse {
   data: CreateBucketResponseData;
 }
+const GetBucketResponse = CreateBucketResponse as any as S.Schema<GetBucketResponse>;
+
 export interface GetBucketKeysRequest {
   bucketId: string;
   cursor?: string;
   limit?: number;
 }
+const GetBucketKeysRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<GetBucketKeysRequest>;
+
 export type GetBucketKeysResponseDataItemRole = "read" | "read_write";
+const GetBucketKeysResponseDataItemRole = S.String;
+
 export interface GetBucketKeysResponseDataItem {
   id: string;
   type: string;
@@ -1211,17 +1974,37 @@ export interface GetBucketKeysResponseDataItem {
   role: GetBucketKeysResponseDataItemRole;
   createdAt: string;
 }
+const GetBucketKeysResponseDataItem = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<GetBucketKeysResponseDataItem>;
+
 export type GetBucketKeysResponseDataList = Array<GetBucketKeysResponseDataItem>;
+const GetBucketKeysResponseDataList = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<GetBucketKeysResponseDataList>;
+
 export interface GetBucketKeysResponsePagination {
   /** Next cursor to continue pagination */
   nextCursor: string | null;
   /** Whether there are more items to paginate */
   hasMore: boolean;
 }
+const GetBucketKeysResponsePagination = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<GetBucketKeysResponsePagination>;
+
 export interface GetBucketKeysResponse {
   data: GetBucketKeysResponseDataList;
   pagination: GetBucketKeysResponsePagination;
 }
+const GetBucketKeysResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<GetBucketKeysResponse>;
+
 export interface GetBucketsRequest {
   cursor?: string;
   limit?: number;
@@ -1230,26 +2013,43 @@ export interface GetBucketsRequest {
   branchId?: string;
   branchGitName?: string;
 }
+const GetBucketsRequest = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<GetBucketsRequest>;
+
 export type GetBucketsResponseDataItemProject = CreateBucketResponseDataProject;
 export type GetBucketsResponseDataItem = CreateBucketResponseData;
 export type GetBucketsResponseDataList = Array<CreateBucketResponseData>;
+const GetBucketsResponseDataList = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<GetBucketsResponseDataList>;
+
 export type GetBucketsResponsePagination = GetBucketKeysResponsePagination;
 export interface GetBucketsResponse {
   data: GetBucketsResponseDataList;
   pagination: GetBucketKeysResponsePagination;
 }
+const GetBucketsResponse = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<GetBucketsResponse>;
+
 export interface GetBuildRequest {
   buildId: string;
 }
+const GetBuildRequest = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<GetBuildRequest>;
+
 export type GetBuildResponseDataSource = "webhook" | "setup" | "manual" | "ci" | "cli";
+const GetBuildResponseDataSource = S.String;
+
 export type GetBuildResponseDataState =
   | "pending"
   | "running"
   | "succeeded"
   | "failed"
   | "cancelled";
+const GetBuildResponseDataState = S.String;
+
 /** Null when nothing reported a phase; the platform never invents an observation it did not receive. */
 export type GetBuildResponseDataPhase = "queued" | "build" | "deploy";
+const GetBuildResponseDataPhase = S.String;
+
 export type GetBuildResponseDataResourcesItemResourceType =
   | "project"
   | "branch"
@@ -1259,7 +2059,11 @@ export type GetBuildResponseDataResourcesItemResourceType =
   | "bucket"
   | "service_key"
   | "config_variable";
+const GetBuildResponseDataResourcesItemResourceType = S.String;
+
 export type GetBuildResponseDataResourcesItemAction = "created" | "acted_on" | "deleted";
+const GetBuildResponseDataResourcesItemAction = S.String;
+
 export interface GetBuildResponseDataResourcesItem {
   resourceType: GetBuildResponseDataResourcesItemResourceType;
   /** Prefixed id of the reported resource. */
@@ -1267,7 +2071,17 @@ export interface GetBuildResponseDataResourcesItem {
   action: GetBuildResponseDataResourcesItemAction;
   createdAt: string;
 }
+const GetBuildResponseDataResourcesItem = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<GetBuildResponseDataResourcesItem>;
+
 export type GetBuildResponseDataResourcesList = Array<GetBuildResponseDataResourcesItem>;
+const GetBuildResponseDataResourcesList = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<GetBuildResponseDataResourcesList>;
+
 export interface GetBuildResponseData {
   id: string;
   source: GetBuildResponseDataSource;
@@ -1290,10 +2104,19 @@ export interface GetBuildResponseData {
   finishedAt: string | null;
   resources: GetBuildResponseDataResourcesList;
 }
+const GetBuildResponseData = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<GetBuildResponseData>;
+
 export interface GetBuildResponse {
   data: GetBuildResponseData;
 }
+const GetBuildResponse = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<GetBuildResponse>;
+
 export type GetBuildsRequestState = "pending" | "running" | "succeeded" | "failed" | "cancelled";
+const GetBuildsRequestState = S.String;
+
 export interface GetBuildsRequest {
   cursor?: string;
   limit?: number;
@@ -1301,15 +2124,23 @@ export interface GetBuildsRequest {
   branchId?: string;
   state?: GetBuildsRequestState | (string & {});
 }
+const GetBuildsRequest = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<GetBuildsRequest>;
+
 export type GetBuildsResponseDataItemSource = "webhook" | "setup" | "manual" | "ci" | "cli";
+const GetBuildsResponseDataItemSource = S.String;
+
 export type GetBuildsResponseDataItemState =
   | "pending"
   | "running"
   | "succeeded"
   | "failed"
   | "cancelled";
+const GetBuildsResponseDataItemState = S.String;
+
 /** Null when nothing reported a phase; the platform never invents an observation it did not receive. */
 export type GetBuildsResponseDataItemPhase = "queued" | "build" | "deploy";
+const GetBuildsResponseDataItemPhase = S.String;
+
 export interface GetBuildsResponseDataItem {
   id: string;
   source: GetBuildsResponseDataItemSource;
@@ -1331,15 +2162,32 @@ export interface GetBuildsResponseDataItem {
   startedAt: string | null;
   finishedAt: string | null;
 }
+const GetBuildsResponseDataItem = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<GetBuildsResponseDataItem>;
+
 export type GetBuildsResponseDataList = Array<GetBuildsResponseDataItem>;
+const GetBuildsResponseDataList = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<GetBuildsResponseDataList>;
+
 export type GetBuildsResponsePagination = GetBucketKeysResponsePagination;
 export interface GetBuildsResponse {
   data: GetBuildsResponseDataList;
   pagination: GetBucketKeysResponsePagination;
 }
+const GetBuildsResponse = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<GetBuildsResponse>;
+
 export interface GetConnectionRequest {
   id: string;
 }
+const GetConnectionRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<GetConnectionRequest>;
+
 export type GetConnectionResponseDataKind = "postgres" | "accelerate";
 export type GetConnectionResponseDataEndpointsDirect =
   CreateDatabaseRestoreResponseDataConnectionsItemEndpointsDirect;
@@ -1365,14 +2213,27 @@ export interface GetConnectionResponseData {
   directConnection?: CreateConnectionResponseDataDirectConnection | null;
   database: CreateBucketResponseDataProject;
 }
+const GetConnectionResponseData =
+  CreateDatabaseRestoreResponseDataConnectionsItem as any as S.Schema<GetConnectionResponseData>;
+
 export interface GetConnectionResponse {
   data: GetConnectionResponseData;
 }
+const GetConnectionResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<GetConnectionResponse>;
+
 export interface GetConnectionsRequest {
   cursor?: string;
   limit?: number;
   databaseId?: string;
 }
+const GetConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<GetConnectionsRequest>;
+
 export type GetConnectionsResponseDataItemKind = "postgres" | "accelerate";
 export type GetConnectionsResponseDataItemEndpointsDirect =
   CreateDatabaseRestoreResponseDataConnectionsItemEndpointsDirect;
@@ -1399,15 +2260,27 @@ export interface GetConnectionsResponseDataItem {
   database: CreateBucketResponseDataProject;
 }
 export type GetConnectionsResponseDataList = Array<GetConnectionsResponseDataItem>;
+const GetConnectionsResponseDataList =
+  CreateDatabaseRestoreResponseDataConnectionsList as any as S.Schema<GetConnectionsResponseDataList>;
+
 export type GetConnectionsResponsePagination = GetBucketKeysResponsePagination;
 export interface GetConnectionsResponse {
   data: GetConnectionsResponseDataList;
   pagination: GetBucketKeysResponsePagination;
 }
+const GetConnectionsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<GetConnectionsResponse>;
+
 export interface GetDatabaseRequest {
   databaseId: string;
 }
+const GetDatabaseRequest = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<GetDatabaseRequest>;
+
 export type GetDatabaseResponseDataStatus = "failure" | "provisioning" | "ready" | "recovering";
+const GetDatabaseResponseDataStatus = S.String;
+
 export type GetDatabaseResponseDataConnectionsItemKind = "postgres" | "accelerate";
 export type GetDatabaseResponseDataConnectionsItemEndpointsDirect =
   CreateDatabaseRestoreResponseDataConnectionsItemEndpointsDirect;
@@ -1434,15 +2307,29 @@ export interface GetDatabaseResponseDataConnectionsItem {
   database: CreateBucketResponseDataProject;
 }
 export type GetDatabaseResponseDataConnectionsList = Array<GetDatabaseResponseDataConnectionsItem>;
+const GetDatabaseResponseDataConnectionsList =
+  CreateDatabaseRestoreResponseDataConnectionsList as any as S.Schema<GetDatabaseResponseDataConnectionsList>;
+
 export type GetDatabaseResponseDataProject = CreateBucketResponseDataProject;
 export type GetDatabaseResponseDataRegion = CreateDatabaseResponseDataRegion;
 export type GetDatabaseResponseDataSourceCase0 = CreateDatabaseRequestSourceCase0;
+const GetDatabaseResponseDataSourceCase0 = CreateDatabaseRequestSourceCase0;
+
 export type GetDatabaseResponseDataSourceCase1 = CreateDatabaseResponseDataSourceCase1;
+const GetDatabaseResponseDataSourceCase1 = CreateDatabaseResponseDataSourceCase1;
+
 export type GetDatabaseResponseDataSourceCase2 = CreateDatabaseResponseDataSourceCase2;
+const GetDatabaseResponseDataSourceCase2 = CreateDatabaseResponseDataSourceCase2;
+
 export type GetDatabaseResponseDataSource =
   | CreateDatabaseRequestSourceCase0
   | CreateDatabaseResponseDataSourceCase1
   | CreateDatabaseResponseDataSourceCase2;
+const GetDatabaseResponseDataSource = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<GetDatabaseResponseDataSource>;
+
 export interface GetDatabaseResponseData {
   id: string;
   type: string;
@@ -1459,19 +2346,35 @@ export interface GetDatabaseResponseData {
   branchId: string | null;
   logicalId: string | null;
 }
+const GetDatabaseResponseData = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<GetDatabaseResponseData>;
+
 export interface GetDatabaseResponse {
   data: GetDatabaseResponseData;
 }
+const GetDatabaseResponse = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<GetDatabaseResponse>;
+
 export interface GetDatabaseBackupsRequest {
   databaseId: string;
   limit?: number;
 }
+const GetDatabaseBackupsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<GetDatabaseBackupsRequest>;
+
 export type GetDatabaseBackupsResponseDataItemBackupType = "full" | "incremental" | "differential";
+const GetDatabaseBackupsResponseDataItemBackupType = S.String;
+
 export type GetDatabaseBackupsResponseDataItemStatus =
   | "running"
   | "completed"
   | "failed"
   | "unknown";
+const GetDatabaseBackupsResponseDataItemStatus = S.String;
+
 export interface GetDatabaseBackupsResponseDataItem {
   id: string;
   backupType: GetDatabaseBackupsResponseDataItemBackupType;
@@ -1480,24 +2383,54 @@ export interface GetDatabaseBackupsResponseDataItem {
   status: GetDatabaseBackupsResponseDataItemStatus;
   type?: string;
 }
+const GetDatabaseBackupsResponseDataItem = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<GetDatabaseBackupsResponseDataItem>;
+
 export type GetDatabaseBackupsResponseDataList = Array<GetDatabaseBackupsResponseDataItem>;
+const GetDatabaseBackupsResponseDataList = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<GetDatabaseBackupsResponseDataList>;
+
 export interface GetDatabaseBackupsResponseMeta {
   backupRetentionDays: number;
 }
+const GetDatabaseBackupsResponseMeta = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<GetDatabaseBackupsResponseMeta>;
+
 export interface GetDatabaseBackupsResponsePagination {
   hasMore: boolean;
   limit: number | null;
 }
+const GetDatabaseBackupsResponsePagination = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<GetDatabaseBackupsResponsePagination>;
+
 export interface GetDatabaseBackupsResponse {
   data: GetDatabaseBackupsResponseDataList;
   meta: GetDatabaseBackupsResponseMeta;
   pagination: GetDatabaseBackupsResponsePagination;
 }
+const GetDatabaseBackupsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<GetDatabaseBackupsResponse>;
+
 export interface GetDatabaseConnectionsRequest {
   databaseId: string;
   cursor?: string;
   limit?: number;
 }
+const GetDatabaseConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<GetDatabaseConnectionsRequest>;
+
 export type GetDatabaseConnectionsResponseDataItemKind = "postgres" | "accelerate";
 export type GetDatabaseConnectionsResponseDataItemEndpointsDirect =
   CreateDatabaseRestoreResponseDataConnectionsItemEndpointsDirect;
@@ -1524,11 +2457,19 @@ export interface GetDatabaseConnectionsResponseDataItem {
   database: CreateBucketResponseDataProject;
 }
 export type GetDatabaseConnectionsResponseDataList = Array<GetDatabaseConnectionsResponseDataItem>;
+const GetDatabaseConnectionsResponseDataList =
+  CreateDatabaseRestoreResponseDataConnectionsList as any as S.Schema<GetDatabaseConnectionsResponseDataList>;
+
 export type GetDatabaseConnectionsResponsePagination = GetBucketKeysResponsePagination;
 export interface GetDatabaseConnectionsResponse {
   data: GetDatabaseConnectionsResponseDataList;
   pagination: GetBucketKeysResponsePagination;
 }
+const GetDatabaseConnectionsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<GetDatabaseConnectionsResponse>;
+
 export interface GetDatabasesRequest {
   cursor?: string;
   limit?: number;
@@ -1537,11 +2478,15 @@ export interface GetDatabasesRequest {
   branchId?: string;
   branchGitName?: string;
 }
+const GetDatabasesRequest = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<GetDatabasesRequest>;
+
 export type GetDatabasesResponseDataItemStatus =
   | "failure"
   | "provisioning"
   | "ready"
   | "recovering";
+const GetDatabasesResponseDataItemStatus = S.String;
+
 export type GetDatabasesResponseDataItemConnectionsItemKind = "postgres" | "accelerate";
 export type GetDatabasesResponseDataItemConnectionsItemEndpointsDirect =
   CreateDatabaseRestoreResponseDataConnectionsItemEndpointsDirect;
@@ -1569,15 +2514,29 @@ export interface GetDatabasesResponseDataItemConnectionsItem {
 }
 export type GetDatabasesResponseDataItemConnectionsList =
   Array<GetDatabasesResponseDataItemConnectionsItem>;
+const GetDatabasesResponseDataItemConnectionsList =
+  CreateDatabaseRestoreResponseDataConnectionsList as any as S.Schema<GetDatabasesResponseDataItemConnectionsList>;
+
 export type GetDatabasesResponseDataItemProject = CreateBucketResponseDataProject;
 export type GetDatabasesResponseDataItemRegion = CreateDatabaseResponseDataRegion;
 export type GetDatabasesResponseDataItemSourceCase0 = CreateDatabaseRequestSourceCase0;
+const GetDatabasesResponseDataItemSourceCase0 = CreateDatabaseRequestSourceCase0;
+
 export type GetDatabasesResponseDataItemSourceCase1 = CreateDatabaseResponseDataSourceCase1;
+const GetDatabasesResponseDataItemSourceCase1 = CreateDatabaseResponseDataSourceCase1;
+
 export type GetDatabasesResponseDataItemSourceCase2 = CreateDatabaseResponseDataSourceCase2;
+const GetDatabasesResponseDataItemSourceCase2 = CreateDatabaseResponseDataSourceCase2;
+
 export type GetDatabasesResponseDataItemSource =
   | CreateDatabaseRequestSourceCase0
   | CreateDatabaseResponseDataSourceCase1
   | CreateDatabaseResponseDataSourceCase2;
+const GetDatabasesResponseDataItemSource = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<GetDatabasesResponseDataItemSource>;
+
 export interface GetDatabasesResponseDataItem {
   id: string;
   type: string;
@@ -1594,43 +2553,98 @@ export interface GetDatabasesResponseDataItem {
   branchId: string | null;
   logicalId: string | null;
 }
+const GetDatabasesResponseDataItem = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<GetDatabasesResponseDataItem>;
+
 export type GetDatabasesResponseDataList = Array<GetDatabasesResponseDataItem>;
+const GetDatabasesResponseDataList = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<GetDatabasesResponseDataList>;
+
 export type GetDatabasesResponsePagination = GetBucketKeysResponsePagination;
 export interface GetDatabasesResponse {
   data: GetDatabasesResponseDataList;
   pagination: GetBucketKeysResponsePagination;
 }
+const GetDatabasesResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<GetDatabasesResponse>;
+
 export interface GetDatabaseUsageRequest {
   databaseId: string;
   startDate?: string;
   endDate?: string;
 }
+const GetDatabaseUsageRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<GetDatabaseUsageRequest>;
+
 export interface GetDatabaseUsageResponsePeriod {
   start: string;
   end: string;
 }
+const GetDatabaseUsageResponsePeriod = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<GetDatabaseUsageResponsePeriod>;
+
 export interface GetDatabaseUsageResponseMetricsOperations {
   used: number;
   unit: string;
 }
+const GetDatabaseUsageResponseMetricsOperations = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<GetDatabaseUsageResponseMetricsOperations>;
+
 export type GetDatabaseUsageResponseMetricsStorage = GetDatabaseUsageResponseMetricsOperations;
 export interface GetDatabaseUsageResponseMetrics {
   operations: GetDatabaseUsageResponseMetricsOperations;
   storage: GetDatabaseUsageResponseMetricsOperations;
 }
+const GetDatabaseUsageResponseMetrics = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<GetDatabaseUsageResponseMetrics>;
+
 export interface GetDatabaseUsageResponse {
   period: GetDatabaseUsageResponsePeriod;
   metrics: GetDatabaseUsageResponseMetrics;
   generatedAt: string;
 }
+const GetDatabaseUsageResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<GetDatabaseUsageResponse>;
+
 export interface GetDeploymentRequest {
   deploymentId: string;
 }
+const GetDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<GetDeploymentRequest>;
+
 /** Environment variable names present on this compute version. Values are always redacted as "[redacted]" and must not be treated as deployed secret values. */
 export type GetDeploymentResponseDataEnvVarsMap = { [key: string]: string | undefined };
+const GetDeploymentResponseDataEnvVarsMap = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<GetDeploymentResponseDataEnvVarsMap>;
+
 export interface GetDeploymentResponseDataPortMapping {
   http?: number;
 }
+const GetDeploymentResponseDataPortMapping = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<GetDeploymentResponseDataPortMapping>;
+
 export interface GetDeploymentResponseData {
   id: string;
   type: string;
@@ -1644,19 +2658,39 @@ export interface GetDeploymentResponseData {
   portMapping?: GetDeploymentResponseDataPortMapping;
   createdAt: string;
 }
+const GetDeploymentResponseData = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<GetDeploymentResponseData>;
+
 export interface GetDeploymentResponse {
   data: GetDeploymentResponseData;
 }
+const GetDeploymentResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<GetDeploymentResponse>;
+
 export interface GetDeploymentLogsRequest {
   deploymentId: string;
   tail?: number;
   from_start?: boolean;
   cursor?: string;
 }
+const GetDeploymentLogsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<GetDeploymentLogsRequest>;
+
 export interface GetDeploymentLogsResponse {}
+const GetDeploymentLogsResponse =
+  CreateDeploymentStopResponse as any as S.Schema<GetDeploymentLogsResponse>;
+
 export interface GetDomainRequest {
   domainId: string;
 }
+const GetDomainRequest = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<GetDomainRequest>;
+
 export type GetDomainResponseDataStatus =
   | "pending_dns"
   | "verifying"
@@ -1665,10 +2699,17 @@ export type GetDomainResponseDataStatus =
   | "active"
   | "failed"
   | "removing";
+const GetDomainResponseDataStatus = S.String;
+
 export type GetDomainResponseDataFailureCategory = "dns" | "acme" | "storage" | "unknown";
+const GetDomainResponseDataFailureCategory = S.String;
+
 export type GetDomainResponseDataDnsRecordsItem = CreateDomainRetryResponseDataDnsRecordsItem;
 export type GetDomainResponseDataDnsRecordsList =
   Array<CreateDomainRetryResponseDataDnsRecordsItem>;
+const GetDomainResponseDataDnsRecordsList =
+  CreateDomainRetryResponseDataDnsRecordsList as any as S.Schema<GetDomainResponseDataDnsRecordsList>;
+
 export interface GetDomainResponseData {
   id: string;
   type: string;
@@ -1686,12 +2727,24 @@ export interface GetDomainResponseData {
   updatedAt: string;
   dnsRecords: GetDomainResponseDataDnsRecordsList;
 }
+const GetDomainResponseData = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<GetDomainResponseData>;
+
 export interface GetDomainResponse {
   data: GetDomainResponseData;
 }
+const GetDomainResponse = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<GetDomainResponse>;
+
 export interface GetEnvironmentVariableRequest {
   envVarId: string;
 }
+const GetEnvironmentVariableRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<GetEnvironmentVariableRequest>;
+
 export type GetEnvironmentVariableResponseDataClass = "production" | "preview";
 export interface GetEnvironmentVariableResponseData {
   id: string;
@@ -1709,7 +2762,12 @@ export interface GetEnvironmentVariableResponseData {
 export interface GetEnvironmentVariableResponse {
   data: GetEnvironmentVariableResponseData;
 }
+const GetEnvironmentVariableResponse =
+  CreateEnvironmentVariableResponse as any as S.Schema<GetEnvironmentVariableResponse>;
+
 export type GetEnvironmentVariablesRequestClass = "production" | "preview";
+const GetEnvironmentVariablesRequestClass = S.String;
+
 export interface GetEnvironmentVariablesRequest {
   cursor?: string;
   limit?: number;
@@ -1718,6 +2776,11 @@ export interface GetEnvironmentVariablesRequest {
   key?: string;
   branchId?: string;
 }
+const GetEnvironmentVariablesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<GetEnvironmentVariablesRequest>;
+
 export type GetEnvironmentVariablesResponseDataItemClass = "production" | "preview";
 export interface GetEnvironmentVariablesResponseDataItem {
   id: string;
@@ -1732,27 +2795,60 @@ export interface GetEnvironmentVariablesResponseDataItem {
   createdAt: string;
   updatedAt: string;
 }
+const GetEnvironmentVariablesResponseDataItem =
+  CreateEnvironmentVariableResponseData as any as S.Schema<GetEnvironmentVariablesResponseDataItem>;
+
 export type GetEnvironmentVariablesResponseDataList =
   Array<GetEnvironmentVariablesResponseDataItem>;
+const GetEnvironmentVariablesResponseDataList = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<GetEnvironmentVariablesResponseDataList>;
+
 export type GetEnvironmentVariablesResponsePagination = GetBucketKeysResponsePagination;
 export interface GetEnvironmentVariablesResponse {
   data: GetEnvironmentVariablesResponseDataList;
   pagination: GetBucketKeysResponsePagination;
 }
+const GetEnvironmentVariablesResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<GetEnvironmentVariablesResponse>;
+
 export interface GetIntegrationRequest {
   id: string;
 }
+const GetIntegrationRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<GetIntegrationRequest>;
+
 export type GetIntegrationResponseDataScopesList = Array<string>;
+const GetIntegrationResponseDataScopesList = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<GetIntegrationResponseDataScopesList>;
+
 export interface GetIntegrationResponseDataClient {
   id: string;
   name: string;
   createdAt: string;
 }
+const GetIntegrationResponseDataClient = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<GetIntegrationResponseDataClient>;
+
 export interface GetIntegrationResponseDataCreatedByUser {
   id: string;
   email: string;
   displayName: string | null;
 }
+const GetIntegrationResponseDataCreatedByUser = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<GetIntegrationResponseDataCreatedByUser>;
+
 export interface GetIntegrationResponseData {
   id: string;
   url: string;
@@ -1761,14 +2857,29 @@ export interface GetIntegrationResponseData {
   client: GetIntegrationResponseDataClient;
   createdByUser: GetIntegrationResponseDataCreatedByUser;
 }
+const GetIntegrationResponseData = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<GetIntegrationResponseData>;
+
 export interface GetIntegrationResponse {
   data: GetIntegrationResponseData;
 }
+const GetIntegrationResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<GetIntegrationResponse>;
+
 export interface GetIntegrationsRequest {
   cursor?: string;
   limit?: number;
   workspaceId: string;
 }
+const GetIntegrationsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<GetIntegrationsRequest>;
+
 export type GetIntegrationsResponseDataItemScopesList = Array<string>;
 export type GetIntegrationsResponseDataItemClient = GetIntegrationResponseDataClient;
 export type GetIntegrationsResponseDataItemCreatedByUser = GetIntegrationResponseDataCreatedByUser;
@@ -1780,40 +2891,73 @@ export interface GetIntegrationsResponseDataItem {
   client: GetIntegrationResponseDataClient;
   createdByUser: GetIntegrationResponseDataCreatedByUser;
 }
+const GetIntegrationsResponseDataItem =
+  GetIntegrationResponseData as any as S.Schema<GetIntegrationsResponseDataItem>;
+
 export type GetIntegrationsResponseDataList = Array<GetIntegrationsResponseDataItem>;
+const GetIntegrationsResponseDataList = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<GetIntegrationsResponseDataList>;
+
 export type GetIntegrationsResponsePagination = GetBucketKeysResponsePagination;
 export interface GetIntegrationsResponse {
   data: GetIntegrationsResponseDataList;
   pagination: GetBucketKeysResponsePagination;
 }
+const GetIntegrationsResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<GetIntegrationsResponse>;
+
 export interface GetMeRequest {}
+const GetMeRequest = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<GetMeRequest>;
+
 export interface GetMeResponseDataUser {
   id: string;
   email: string;
   name: string | null;
 }
+const GetMeResponseDataUser = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<GetMeResponseDataUser>;
+
 export type GetMeResponseDataWorkspace = CreateDatabaseResponseDataRegion;
 export type GetMeResponseDataCredentialType =
   | "oauth"
   | "service_token"
   | "management_token"
   | "agent_token";
+const GetMeResponseDataCredentialType = S.String;
+
 export interface GetMeResponseDataCredential {
   type: GetMeResponseDataCredentialType;
   id: string | null;
   name: string | null;
 }
+const GetMeResponseDataCredential = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<GetMeResponseDataCredential>;
+
 export interface GetMeResponseData {
   user: GetMeResponseDataUser | null;
   workspace: CreateDatabaseResponseDataRegion | null;
   credential: GetMeResponseDataCredential;
 }
+const GetMeResponseData = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<GetMeResponseData>;
+
 export interface GetMeResponse {
   data: GetMeResponseData;
 }
+const GetMeResponse = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<GetMeResponse>;
+
 export interface GetProjectRequest {
   id: string;
 }
+const GetProjectRequest = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<GetProjectRequest>;
+
 export type GetProjectResponseDataWorkspace = CreateBucketResponseDataProject;
 export interface GetProjectResponseData {
   id: string;
@@ -1825,33 +2969,79 @@ export interface GetProjectResponseData {
   defaultRegion: string | null;
   workspace: CreateBucketResponseDataProject;
 }
+const GetProjectResponseData = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<GetProjectResponseData>;
+
 export interface GetProjectResponse {
   data: GetProjectResponseData;
 }
+const GetProjectResponse = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<GetProjectResponse>;
+
 export interface GetProjectBranchAlchemyStateStateStacksRequest {
   projectId: string;
   branchId: string;
 }
+const GetProjectBranchAlchemyStateStateStacksRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<GetProjectBranchAlchemyStateStateStacksRequest>;
+
 export type GetProjectBranchAlchemyStateStateStacksResponseBodyList = Array<string>;
+const GetProjectBranchAlchemyStateStateStacksResponseBodyList =
+  GetIntegrationResponseDataScopesList as any as S.Schema<GetProjectBranchAlchemyStateStateStacksResponseBodyList>;
+
 export type GetProjectBranchAlchemyStateStateStacksResponse =
   GetProjectBranchAlchemyStateStateStacksResponseBodyList;
+const GetProjectBranchAlchemyStateStateStacksResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<GetProjectBranchAlchemyStateStateStacksResponse>;
+
 export interface GetProjectBranchAlchemyStateStateStackStageOutputRequest {
   projectId: string;
   branchId: string;
   stack: string;
   stage: string;
 }
+const GetProjectBranchAlchemyStateStateStackStageOutputRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStageOutputRequest>;
+
 export type GetProjectBranchAlchemyStateStateStackStageOutputResponse = unknown;
+const GetProjectBranchAlchemyStateStateStackStageOutputResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStageOutputResponse>;
+
 export interface GetProjectBranchAlchemyStateStateStackStageReplacedResourcesRequest {
   projectId: string;
   branchId: string;
   stack: string;
   stage: string;
 }
+const GetProjectBranchAlchemyStateStateStackStageReplacedResourcesRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStageReplacedResourcesRequest>;
+
 export type GetProjectBranchAlchemyStateStateStackStageReplacedResourcesResponseBodyList =
   Array<unknown>;
+const GetProjectBranchAlchemyStateStateStackStageReplacedResourcesResponseBodyList =
+  /*@__PURE__*/ __L.at(
+    __c25,
+    5,
+  ) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStageReplacedResourcesResponseBodyList>;
+
 export type GetProjectBranchAlchemyStateStateStackStageReplacedResourcesResponse =
   GetProjectBranchAlchemyStateStateStackStageReplacedResourcesResponseBodyList;
+const GetProjectBranchAlchemyStateStateStackStageReplacedResourcesResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStageReplacedResourcesResponse>;
+
 export interface GetProjectBranchAlchemyStateStateStackStageResourceRequest {
   projectId: string;
   branchId: string;
@@ -1859,48 +3049,108 @@ export interface GetProjectBranchAlchemyStateStateStackStageResourceRequest {
   stage: string;
   fqn: string;
 }
+const GetProjectBranchAlchemyStateStateStackStageResourceRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStageResourceRequest>;
+
 export type GetProjectBranchAlchemyStateStateStackStageResourceResponse = unknown;
+const GetProjectBranchAlchemyStateStateStackStageResourceResponse =
+  GetProjectBranchAlchemyStateStateStackStageOutputResponse as any as S.Schema<GetProjectBranchAlchemyStateStateStackStageResourceResponse>;
+
 export interface GetProjectBranchAlchemyStateStateStackStageResourcesRequest {
   projectId: string;
   branchId: string;
   stack: string;
   stage: string;
 }
+const GetProjectBranchAlchemyStateStateStackStageResourcesRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStageResourcesRequest>;
+
 export type GetProjectBranchAlchemyStateStateStackStageResourcesResponseBodyList = Array<string>;
+const GetProjectBranchAlchemyStateStateStackStageResourcesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStageResourcesResponseBodyList>;
+
 export type GetProjectBranchAlchemyStateStateStackStageResourcesResponse =
   GetProjectBranchAlchemyStateStateStackStageResourcesResponseBodyList;
+const GetProjectBranchAlchemyStateStateStackStageResourcesResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStageResourcesResponse>;
+
 export interface GetProjectBranchAlchemyStateStateStackStagesRequest {
   projectId: string;
   branchId: string;
   stack: string;
 }
+const GetProjectBranchAlchemyStateStateStackStagesRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStagesRequest>;
+
 export type GetProjectBranchAlchemyStateStateStackStagesResponseBodyList = Array<string>;
 export type GetProjectBranchAlchemyStateStateStackStagesResponse =
   GetProjectBranchAlchemyStateStateStackStagesResponseBodyList;
+const GetProjectBranchAlchemyStateStateStackStagesResponse =
+  GetProjectBranchAlchemyStateStateStacksResponse as any as S.Schema<GetProjectBranchAlchemyStateStateStackStagesResponse>;
+
 export interface GetProjectBranchAlchemyStateVersionRequest {
   projectId: string;
   branchId: string;
 }
+const GetProjectBranchAlchemyStateVersionRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<GetProjectBranchAlchemyStateVersionRequest>;
+
 export interface GetProjectBranchAlchemyStateVersionResponse {
   version: number;
 }
+const GetProjectBranchAlchemyStateVersionResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<GetProjectBranchAlchemyStateVersionResponse>;
+
 export interface GetProjectBranchApplicationTopologyRequest {
   projectId: string;
   branchId: string;
 }
+const GetProjectBranchApplicationTopologyRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<GetProjectBranchApplicationTopologyRequest>;
+
 export type GetProjectBranchApplicationTopologyResponseDataNodesItemKind =
   | "module"
   | "service"
   | "resource";
+const GetProjectBranchApplicationTopologyResponseDataNodesItemKind = S.String;
+
 export interface GetProjectBranchApplicationTopologyResponseDataNodesItem {
   logicalId: string;
   parentLogicalId: string | null;
   kind: GetProjectBranchApplicationTopologyResponseDataNodesItemKind;
   type?: string;
 }
+const GetProjectBranchApplicationTopologyResponseDataNodesItem = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<GetProjectBranchApplicationTopologyResponseDataNodesItem>;
+
 export type GetProjectBranchApplicationTopologyResponseDataNodesList =
   Array<GetProjectBranchApplicationTopologyResponseDataNodesItem>;
+const GetProjectBranchApplicationTopologyResponseDataNodesList = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<GetProjectBranchApplicationTopologyResponseDataNodesList>;
+
 export type GetProjectBranchApplicationTopologyResponseDataPortsItemDirection = "in" | "out";
+const GetProjectBranchApplicationTopologyResponseDataPortsItemDirection = S.String;
+
 export interface GetProjectBranchApplicationTopologyResponseDataPortsItem {
   logicalId: string;
   direction: GetProjectBranchApplicationTopologyResponseDataPortsItemDirection;
@@ -1908,31 +3158,63 @@ export interface GetProjectBranchApplicationTopologyResponseDataPortsItem {
   contractKind?: string;
   contractHash?: string;
 }
+const GetProjectBranchApplicationTopologyResponseDataPortsItem = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<GetProjectBranchApplicationTopologyResponseDataPortsItem>;
+
 export type GetProjectBranchApplicationTopologyResponseDataPortsList =
   Array<GetProjectBranchApplicationTopologyResponseDataPortsItem>;
+const GetProjectBranchApplicationTopologyResponseDataPortsList = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<GetProjectBranchApplicationTopologyResponseDataPortsList>;
+
 export type GetProjectBranchApplicationTopologyResponseDataEdgesItemFromDirection = "in" | "out";
+const GetProjectBranchApplicationTopologyResponseDataEdgesItemFromDirection = S.String;
+
 export interface GetProjectBranchApplicationTopologyResponseDataEdgesItemFrom {
   logicalId: string;
   direction: GetProjectBranchApplicationTopologyResponseDataEdgesItemFromDirection;
   name: string;
 }
+const GetProjectBranchApplicationTopologyResponseDataEdgesItemFrom = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<GetProjectBranchApplicationTopologyResponseDataEdgesItemFrom>;
+
 export type GetProjectBranchApplicationTopologyResponseDataEdgesItemToDirection = "in" | "out";
 export interface GetProjectBranchApplicationTopologyResponseDataEdgesItemTo {
   logicalId: string;
   direction: GetProjectBranchApplicationTopologyResponseDataEdgesItemToDirection;
   name: string;
 }
+const GetProjectBranchApplicationTopologyResponseDataEdgesItemTo =
+  GetProjectBranchApplicationTopologyResponseDataEdgesItemFrom as any as S.Schema<GetProjectBranchApplicationTopologyResponseDataEdgesItemTo>;
+
 export type GetProjectBranchApplicationTopologyResponseDataEdgesItemFamily =
   | "communication"
   | "data";
+const GetProjectBranchApplicationTopologyResponseDataEdgesItemFamily = S.String;
+
 export interface GetProjectBranchApplicationTopologyResponseDataEdgesItem {
   from: GetProjectBranchApplicationTopologyResponseDataEdgesItemFrom;
   to: GetProjectBranchApplicationTopologyResponseDataEdgesItemTo;
   family: GetProjectBranchApplicationTopologyResponseDataEdgesItemFamily;
   style?: string;
 }
+const GetProjectBranchApplicationTopologyResponseDataEdgesItem = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<GetProjectBranchApplicationTopologyResponseDataEdgesItem>;
+
 export type GetProjectBranchApplicationTopologyResponseDataEdgesList =
   Array<GetProjectBranchApplicationTopologyResponseDataEdgesItem>;
+const GetProjectBranchApplicationTopologyResponseDataEdgesList = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<GetProjectBranchApplicationTopologyResponseDataEdgesList>;
+
 export interface GetProjectBranchApplicationTopologyResponseData {
   nodes: GetProjectBranchApplicationTopologyResponseDataNodesList;
   ports: GetProjectBranchApplicationTopologyResponseDataPortsList;
@@ -1940,9 +3222,19 @@ export interface GetProjectBranchApplicationTopologyResponseData {
   contentHash?: string;
   writtenAt?: string;
 }
+const GetProjectBranchApplicationTopologyResponseData = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<GetProjectBranchApplicationTopologyResponseData>;
+
 export interface GetProjectBranchApplicationTopologyResponse {
   data: GetProjectBranchApplicationTopologyResponseData;
 }
+const GetProjectBranchApplicationTopologyResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<GetProjectBranchApplicationTopologyResponse>;
+
 export interface GetProjectBranchesRequest {
   projectId: string;
   cursor?: string;
@@ -1950,6 +3242,11 @@ export interface GetProjectBranchesRequest {
   gitName?: string;
   gitNameContains?: string;
 }
+const GetProjectBranchesRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<GetProjectBranchesRequest>;
+
 export type GetProjectBranchesResponseDataItemRole = "production" | "preview";
 /** Thin reference to the parent Project. Member resources are intentionally NOT inlined -- list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
 export type GetProjectBranchesResponseDataItemProject = CreateBucketResponseDataProject;
@@ -1965,25 +3262,48 @@ export interface GetProjectBranchesResponseDataItem {
   /** Thin reference to the parent Project. Member resources are intentionally NOT inlined -- list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
   project: CreateBucketResponseDataProject;
 }
+const GetProjectBranchesResponseDataItem =
+  CreateProjectBranchResponseData as any as S.Schema<GetProjectBranchesResponseDataItem>;
+
 export type GetProjectBranchesResponseDataList = Array<GetProjectBranchesResponseDataItem>;
+const GetProjectBranchesResponseDataList = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<GetProjectBranchesResponseDataList>;
+
 export interface GetProjectBranchesResponsePagination {
   nextCursor: string | null;
   hasMore: boolean;
 }
+const GetProjectBranchesResponsePagination =
+  GetBucketKeysResponsePagination as any as S.Schema<GetProjectBranchesResponsePagination>;
+
 export interface GetProjectBranchesResponse {
   data: GetProjectBranchesResponseDataList;
   pagination: GetProjectBranchesResponsePagination;
 }
+const GetProjectBranchesResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<GetProjectBranchesResponse>;
+
 export interface GetProjectDatabasesRequest {
   projectId: string;
   cursor?: string;
   limit?: number;
 }
+const GetProjectDatabasesRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<GetProjectDatabasesRequest>;
+
 export type GetProjectDatabasesResponseDataItemStatus =
   | "failure"
   | "provisioning"
   | "ready"
   | "recovering";
+const GetProjectDatabasesResponseDataItemStatus = S.String;
+
 export type GetProjectDatabasesResponseDataItemConnectionsItemKind = "postgres" | "accelerate";
 export type GetProjectDatabasesResponseDataItemConnectionsItemEndpointsDirect =
   CreateDatabaseRestoreResponseDataConnectionsItemEndpointsDirect;
@@ -2012,15 +3332,29 @@ export interface GetProjectDatabasesResponseDataItemConnectionsItem {
 }
 export type GetProjectDatabasesResponseDataItemConnectionsList =
   Array<GetProjectDatabasesResponseDataItemConnectionsItem>;
+const GetProjectDatabasesResponseDataItemConnectionsList =
+  CreateDatabaseRestoreResponseDataConnectionsList as any as S.Schema<GetProjectDatabasesResponseDataItemConnectionsList>;
+
 export type GetProjectDatabasesResponseDataItemProject = CreateBucketResponseDataProject;
 export type GetProjectDatabasesResponseDataItemRegion = CreateDatabaseResponseDataRegion;
 export type GetProjectDatabasesResponseDataItemSourceCase0 = CreateDatabaseRequestSourceCase0;
+const GetProjectDatabasesResponseDataItemSourceCase0 = CreateDatabaseRequestSourceCase0;
+
 export type GetProjectDatabasesResponseDataItemSourceCase1 = CreateDatabaseResponseDataSourceCase1;
+const GetProjectDatabasesResponseDataItemSourceCase1 = CreateDatabaseResponseDataSourceCase1;
+
 export type GetProjectDatabasesResponseDataItemSourceCase2 = CreateDatabaseResponseDataSourceCase2;
+const GetProjectDatabasesResponseDataItemSourceCase2 = CreateDatabaseResponseDataSourceCase2;
+
 export type GetProjectDatabasesResponseDataItemSource =
   | CreateDatabaseRequestSourceCase0
   | CreateDatabaseResponseDataSourceCase1
   | CreateDatabaseResponseDataSourceCase2;
+const GetProjectDatabasesResponseDataItemSource = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<GetProjectDatabasesResponseDataItemSource>;
+
 export interface GetProjectDatabasesResponseDataItem {
   id: string;
   type: string;
@@ -2037,31 +3371,63 @@ export interface GetProjectDatabasesResponseDataItem {
   branchId: string | null;
   logicalId: string | null;
 }
+const GetProjectDatabasesResponseDataItem = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<GetProjectDatabasesResponseDataItem>;
+
 export type GetProjectDatabasesResponseDataList = Array<GetProjectDatabasesResponseDataItem>;
+const GetProjectDatabasesResponseDataList = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<GetProjectDatabasesResponseDataList>;
+
 export type GetProjectDatabasesResponsePagination = GetBucketKeysResponsePagination;
 export interface GetProjectDatabasesResponse {
   data: GetProjectDatabasesResponseDataList;
   pagination: GetBucketKeysResponsePagination;
 }
+const GetProjectDatabasesResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<GetProjectDatabasesResponse>;
+
 export interface GetProjectsRequest {
   cursor?: string;
   limit?: number;
   logicalId?: string;
 }
+const GetProjectsRequest = /*@__PURE__*/ __L.at(__c29, 0) as any as S.Schema<GetProjectsRequest>;
+
 export type GetProjectsResponseDataItemWorkspace = CreateBucketResponseDataProject;
 export type GetProjectsResponseDataItem = GetProjectResponseData;
 export type GetProjectsResponseDataList = Array<GetProjectResponseData>;
+const GetProjectsResponseDataList = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<GetProjectsResponseDataList>;
+
 export type GetProjectsResponsePagination = GetBucketKeysResponsePagination;
 export interface GetProjectsResponse {
   data: GetProjectsResponseDataList;
   pagination: GetBucketKeysResponsePagination;
 }
+const GetProjectsResponse = /*@__PURE__*/ __L.at(__c29, 2) as any as S.Schema<GetProjectsResponse>;
+
 export type GetRegionsRequestProduct = "postgres" | "accelerate";
+const GetRegionsRequestProduct = S.String;
+
 export interface GetRegionsRequest {
   product?: GetRegionsRequestProduct | (string & {});
 }
+const GetRegionsRequest = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<GetRegionsRequest>;
+
 export type GetRegionsResponseDataItemProduct = "postgres" | "accelerate";
+const GetRegionsResponseDataItemProduct = S.String;
+
 export type GetRegionsResponseDataItemStatus = "available" | "unavailable";
+const GetRegionsResponseDataItemStatus = S.String;
+
 export interface GetRegionsResponseDataItem {
   id: string;
   type: string;
@@ -2069,37 +3435,96 @@ export interface GetRegionsResponseDataItem {
   product: GetRegionsResponseDataItemProduct;
   status?: GetRegionsResponseDataItemStatus;
 }
+const GetRegionsResponseDataItem = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<GetRegionsResponseDataItem>;
+
 export type GetRegionsResponseDataList = Array<GetRegionsResponseDataItem>;
+const GetRegionsResponseDataList = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<GetRegionsResponseDataList>;
+
 export interface GetRegionsResponse {
   data: GetRegionsResponseDataList;
 }
+const GetRegionsResponse = /*@__PURE__*/ __L.at(__c29, 6) as any as S.Schema<GetRegionsResponse>;
+
 export interface GetRegionsAccelerateRequest {}
+const GetRegionsAccelerateRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<GetRegionsAccelerateRequest>;
+
 export interface GetRegionsAccelerateResponseDataItem {
   id: string;
   type: string;
   name: string;
 }
+const GetRegionsAccelerateResponseDataItem = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<GetRegionsAccelerateResponseDataItem>;
+
 export type GetRegionsAccelerateResponseDataList = Array<GetRegionsAccelerateResponseDataItem>;
+const GetRegionsAccelerateResponseDataList = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<GetRegionsAccelerateResponseDataList>;
+
 export interface GetRegionsAccelerateResponse {
   data: GetRegionsAccelerateResponseDataList;
 }
+const GetRegionsAccelerateResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<GetRegionsAccelerateResponse>;
+
 export interface GetRegionsPostgresRequest {}
+const GetRegionsPostgresRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<GetRegionsPostgresRequest>;
+
 export type GetRegionsPostgresResponseDataItemStatus = "available" | "unavailable";
+const GetRegionsPostgresResponseDataItemStatus = S.String;
+
 export interface GetRegionsPostgresResponseDataItem {
   id: string;
   type: string;
   name: string;
   status: GetRegionsPostgresResponseDataItemStatus;
 }
+const GetRegionsPostgresResponseDataItem = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<GetRegionsPostgresResponseDataItem>;
+
 export type GetRegionsPostgresResponseDataList = Array<GetRegionsPostgresResponseDataItem>;
+const GetRegionsPostgresResponseDataList = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<GetRegionsPostgresResponseDataList>;
+
 export interface GetRegionsPostgresResponse {
   data: GetRegionsPostgresResponseDataList;
 }
+const GetRegionsPostgresResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<GetRegionsPostgresResponse>;
+
 export interface GetScmInstallationRepositoriesRequest {
   installationId: string;
   cursor?: string;
   limit?: number;
 }
+const GetScmInstallationRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<GetScmInstallationRepositoriesRequest>;
+
 export interface GetScmInstallationRepositoriesResponseDataItem {
   /** Numeric repository ID assigned by the SCM provider */
   id: number;
@@ -2109,21 +3534,45 @@ export interface GetScmInstallationRepositoriesResponseDataItem {
   defaultBranch: string;
   isPrivate: boolean;
 }
+const GetScmInstallationRepositoriesResponseDataItem = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<GetScmInstallationRepositoriesResponseDataItem>;
+
 export type GetScmInstallationRepositoriesResponseDataList =
   Array<GetScmInstallationRepositoriesResponseDataItem>;
+const GetScmInstallationRepositoriesResponseDataList = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<GetScmInstallationRepositoriesResponseDataList>;
+
 export type GetScmInstallationRepositoriesResponsePagination = GetProjectBranchesResponsePagination;
 export interface GetScmInstallationRepositoriesResponse {
   data: GetScmInstallationRepositoriesResponseDataList;
   pagination: GetProjectBranchesResponsePagination;
 }
+const GetScmInstallationRepositoriesResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<GetScmInstallationRepositoriesResponse>;
+
 export interface GetScmInstallationsRequest {
   cursor?: string;
   limit?: number;
   workspaceId: string;
   repository?: string;
 }
+const GetScmInstallationsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<GetScmInstallationsRequest>;
+
 export type GetScmInstallationsResponseDataItemProvider = "github";
+const GetScmInstallationsResponseDataItemProvider = S.String;
+
 export type GetScmInstallationsResponseDataItemAccountType = "user" | "organization";
+const GetScmInstallationsResponseDataItemAccountType = S.String;
+
 export interface GetScmInstallationsResponseDataItem {
   id: string;
   type: string;
@@ -2139,26 +3588,50 @@ export interface GetScmInstallationsResponseDataItem {
   createdAt: string;
   updatedAt: string;
 }
+const GetScmInstallationsResponseDataItem = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<GetScmInstallationsResponseDataItem>;
+
 export type GetScmInstallationsResponseDataList = Array<GetScmInstallationsResponseDataItem>;
+const GetScmInstallationsResponseDataList = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<GetScmInstallationsResponseDataList>;
+
 export type GetScmInstallationsResponsePagination = GetBucketKeysResponsePagination;
 export interface GetScmInstallationsResponse {
   data: GetScmInstallationsResponseDataList;
   pagination: GetBucketKeysResponsePagination;
   hint?: string;
 }
+const GetScmInstallationsResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<GetScmInstallationsResponse>;
+
 export interface GetServiceRequest {
   serviceId: string;
 }
+const GetServiceRequest = /*@__PURE__*/ __L.at(__c31, 7) as any as S.Schema<GetServiceRequest>;
+
 export type GetServiceResponseDataRegion = CreateDatabaseResponseDataRegion;
 export type GetServiceResponseData = CreateServiceResponseData;
 export interface GetServiceResponse {
   data: CreateServiceResponseData;
 }
+const GetServiceResponse = CreateServiceResponse as any as S.Schema<GetServiceResponse>;
+
 export interface GetServiceDeploymentsRequest {
   serviceId: string;
   cursor?: string;
   limit?: number;
 }
+const GetServiceDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<GetServiceDeploymentsRequest>;
+
 export interface GetServiceDeploymentsResponseDataItem {
   id: string;
   type: string;
@@ -2167,15 +3640,35 @@ export interface GetServiceDeploymentsResponseDataItem {
   foundryVersionId: string;
   createdAt: string;
 }
+const GetServiceDeploymentsResponseDataItem = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<GetServiceDeploymentsResponseDataItem>;
+
 export type GetServiceDeploymentsResponseDataList = Array<GetServiceDeploymentsResponseDataItem>;
+const GetServiceDeploymentsResponseDataList = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<GetServiceDeploymentsResponseDataList>;
+
 export type GetServiceDeploymentsResponsePagination = GetBucketKeysResponsePagination;
 export interface GetServiceDeploymentsResponse {
   data: GetServiceDeploymentsResponseDataList;
   pagination: GetBucketKeysResponsePagination;
 }
+const GetServiceDeploymentsResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<GetServiceDeploymentsResponse>;
+
 export interface GetServiceDomainsRequest {
   serviceId: string;
 }
+const GetServiceDomainsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<GetServiceDomainsRequest>;
+
 export type GetServiceDomainsResponseDataItemStatus =
   | "pending_dns"
   | "verifying"
@@ -2184,15 +3677,22 @@ export type GetServiceDomainsResponseDataItemStatus =
   | "active"
   | "failed"
   | "removing";
+const GetServiceDomainsResponseDataItemStatus = S.String;
+
 export type GetServiceDomainsResponseDataItemFailureCategory =
   | "dns"
   | "acme"
   | "storage"
   | "unknown";
+const GetServiceDomainsResponseDataItemFailureCategory = S.String;
+
 export type GetServiceDomainsResponseDataItemDnsRecordsItem =
   CreateDomainRetryResponseDataDnsRecordsItem;
 export type GetServiceDomainsResponseDataItemDnsRecordsList =
   Array<CreateDomainRetryResponseDataDnsRecordsItem>;
+const GetServiceDomainsResponseDataItemDnsRecordsList =
+  CreateDomainRetryResponseDataDnsRecordsList as any as S.Schema<GetServiceDomainsResponseDataItemDnsRecordsList>;
+
 export interface GetServiceDomainsResponseDataItem {
   id: string;
   type: string;
@@ -2210,15 +3710,35 @@ export interface GetServiceDomainsResponseDataItem {
   updatedAt: string;
   dnsRecords: GetServiceDomainsResponseDataItemDnsRecordsList;
 }
+const GetServiceDomainsResponseDataItem = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<GetServiceDomainsResponseDataItem>;
+
 export type GetServiceDomainsResponseDataList = Array<GetServiceDomainsResponseDataItem>;
+const GetServiceDomainsResponseDataList = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<GetServiceDomainsResponseDataList>;
+
 export interface GetServiceDomainsResponsePagination {
   hasMore: boolean;
   nextCursor: unknown | null;
 }
+const GetServiceDomainsResponsePagination = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<GetServiceDomainsResponsePagination>;
+
 export interface GetServiceDomainsResponse {
   data: GetServiceDomainsResponseDataList;
   pagination: GetServiceDomainsResponsePagination;
 }
+const GetServiceDomainsResponse = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<GetServiceDomainsResponse>;
+
 export interface GetServicesRequest {
   cursor?: string;
   limit?: number;
@@ -2227,19 +3747,33 @@ export interface GetServicesRequest {
   branchId?: string;
   branchGitName?: string;
 }
+const GetServicesRequest = /*@__PURE__*/ __L.at(__c33, 1) as any as S.Schema<GetServicesRequest>;
+
 export type GetServicesResponseDataItemRegion = CreateDatabaseResponseDataRegion;
 export type GetServicesResponseDataItem = CreateServiceResponseData;
 export type GetServicesResponseDataList = Array<CreateServiceResponseData>;
+const GetServicesResponseDataList = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<GetServicesResponseDataList>;
+
 export type GetServicesResponsePagination = GetBucketKeysResponsePagination;
 export interface GetServicesResponse {
   data: GetServicesResponseDataList;
   pagination: GetBucketKeysResponsePagination;
 }
+const GetServicesResponse = /*@__PURE__*/ __L.at(__c33, 3) as any as S.Schema<GetServicesResponse>;
+
 export interface GetSourceRepositoriesRequest {
   cursor?: string;
   limit?: number;
   projectId: string;
 }
+const GetSourceRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  4,
+) as any as S.Schema<GetSourceRepositoriesRequest>;
+
 export type GetSourceRepositoriesResponseDataItemProvider = "github";
 export type GetSourceRepositoriesResponseDataItemStatus = "active" | "archived";
 export interface GetSourceRepositoriesResponseDataItem {
@@ -2257,15 +3791,33 @@ export interface GetSourceRepositoriesResponseDataItem {
   createdAt: string;
   updatedAt: string;
 }
+const GetSourceRepositoriesResponseDataItem =
+  CreateSourceRepositoryResponseData as any as S.Schema<GetSourceRepositoriesResponseDataItem>;
+
 export type GetSourceRepositoriesResponseDataList = Array<GetSourceRepositoriesResponseDataItem>;
+const GetSourceRepositoriesResponseDataList = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<GetSourceRepositoriesResponseDataList>;
+
 export type GetSourceRepositoriesResponsePagination = GetProjectBranchesResponsePagination;
 export interface GetSourceRepositoriesResponse {
   data: GetSourceRepositoriesResponseDataList;
   pagination: GetProjectBranchesResponsePagination;
 }
+const GetSourceRepositoriesResponse = /*@__PURE__*/ __L.at(
+  __c33,
+  6,
+) as any as S.Schema<GetSourceRepositoriesResponse>;
+
 export interface GetSourceRepositoryRequest {
   id: string;
 }
+const GetSourceRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<GetSourceRepositoryRequest>;
+
 export type GetSourceRepositoryResponseDataProvider = "github";
 export type GetSourceRepositoryResponseDataStatus = "active" | "archived";
 export interface GetSourceRepositoryResponseData {
@@ -2287,18 +3839,30 @@ export interface GetSourceRepositoryResponse {
   data: GetSourceRepositoryResponseData;
   hint?: string;
 }
+const GetSourceRepositoryResponse =
+  CreateSourceRepositoryResponse as any as S.Schema<GetSourceRepositoryResponse>;
+
 export interface GetWorkspaceRequest {
   id: string;
 }
+const GetWorkspaceRequest = /*@__PURE__*/ __L.at(__c34, 0) as any as S.Schema<GetWorkspaceRequest>;
+
 export type GetWorkspaceResponseData = CreateWorkspaceResponseData;
 export interface GetWorkspaceResponse {
   data: CreateWorkspaceResponseData;
 }
+const GetWorkspaceResponse = CreateWorkspaceResponse as any as S.Schema<GetWorkspaceResponse>;
+
 export interface GetWorkspaceIntegrationsRequest {
   workspaceId: string;
   cursor?: string;
   limit?: number;
 }
+const GetWorkspaceIntegrationsRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<GetWorkspaceIntegrationsRequest>;
+
 export type GetWorkspaceIntegrationsResponseDataItemScopesList = Array<string>;
 export type GetWorkspaceIntegrationsResponseDataItemClient = GetIntegrationResponseDataClient;
 export type GetWorkspaceIntegrationsResponseDataItemCreatedByUser =
@@ -2313,27 +3877,55 @@ export interface GetWorkspaceIntegrationsResponseDataItem {
 }
 export type GetWorkspaceIntegrationsResponseDataList =
   Array<GetWorkspaceIntegrationsResponseDataItem>;
+const GetWorkspaceIntegrationsResponseDataList =
+  GetIntegrationsResponseDataList as any as S.Schema<GetWorkspaceIntegrationsResponseDataList>;
+
 export type GetWorkspaceIntegrationsResponsePagination = GetBucketKeysResponsePagination;
 export interface GetWorkspaceIntegrationsResponse {
   data: GetWorkspaceIntegrationsResponseDataList;
   pagination: GetBucketKeysResponsePagination;
 }
+const GetWorkspaceIntegrationsResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<GetWorkspaceIntegrationsResponse>;
+
 export interface GetWorkspacesRequest {
   cursor?: string;
   limit?: number;
 }
+const GetWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<GetWorkspacesRequest>;
+
 export type GetWorkspacesResponseDataItem = CreateWorkspaceResponseData;
 export type GetWorkspacesResponseDataList = Array<CreateWorkspaceResponseData>;
+const GetWorkspacesResponseDataList = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<GetWorkspacesResponseDataList>;
+
 export type GetWorkspacesResponsePagination = GetBucketKeysResponsePagination;
 export interface GetWorkspacesResponse {
   data: GetWorkspacesResponseDataList;
   pagination: GetBucketKeysResponsePagination;
 }
+const GetWorkspacesResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<GetWorkspacesResponse>;
+
 export interface GetWorkspaceServiceTokensRequest {
   workspaceId: string;
   cursor?: string;
   limit?: number;
 }
+const GetWorkspaceServiceTokensRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<GetWorkspaceServiceTokensRequest>;
+
 export interface GetWorkspaceServiceTokensResponseDataItem {
   id: string;
   type: string;
@@ -2342,24 +3934,54 @@ export interface GetWorkspaceServiceTokensResponseDataItem {
   createdAt: string;
   expiresAt?: string | null;
 }
+const GetWorkspaceServiceTokensResponseDataItem = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<GetWorkspaceServiceTokensResponseDataItem>;
+
 export type GetWorkspaceServiceTokensResponseDataList =
   Array<GetWorkspaceServiceTokensResponseDataItem>;
+const GetWorkspaceServiceTokensResponseDataList = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<GetWorkspaceServiceTokensResponseDataList>;
+
 export type GetWorkspaceServiceTokensResponsePagination = GetBucketKeysResponsePagination;
 export interface GetWorkspaceServiceTokensResponse {
   data: GetWorkspaceServiceTokensResponseDataList;
   pagination: GetBucketKeysResponsePagination;
 }
+const GetWorkspaceServiceTokensResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<GetWorkspaceServiceTokensResponse>;
+
 export interface GetWorkspaceSubscriptionRequest {
   id: string;
 }
+const GetWorkspaceSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<GetWorkspaceSubscriptionRequest>;
+
 export interface GetWorkspaceSubscriptionResponseData {
   planName: string;
   usageBlocked: boolean;
   upgradeUrl: string;
 }
+const GetWorkspaceSubscriptionResponseData = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<GetWorkspaceSubscriptionResponseData>;
+
 export interface GetWorkspaceSubscriptionResponse {
   data: GetWorkspaceSubscriptionResponseData;
 }
+const GetWorkspaceSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<GetWorkspaceSubscriptionResponse>;
+
 export type PutBuildResourceRequestResourceType =
   | "project"
   | "branch"
@@ -2369,8 +3991,12 @@ export type PutBuildResourceRequestResourceType =
   | "bucket"
   | "service_key"
   | "config_variable";
+const PutBuildResourceRequestResourceType = S.String;
+
 /** The strongest effect the build had on the resource. Re-reporting is safe: a weaker action never overwrites a stronger one, so `created` survives a later `acted_on`. */
 export type PutBuildResourceRequestAction = "created" | "acted_on" | "deleted";
+const PutBuildResourceRequestAction = S.String;
+
 export interface PutBuildResourceRequest {
   buildId: string;
   resourceType: PutBuildResourceRequestResourceType | (string & {});
@@ -2378,14 +4004,30 @@ export interface PutBuildResourceRequest {
   /** The strongest effect the build had on the resource. Re-reporting is safe: a weaker action never overwrites a stronger one, so `created` survives a later `acted_on`. */
   action: PutBuildResourceRequestAction | (string & {});
 }
+const PutBuildResourceRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<PutBuildResourceRequest>;
+
 export interface PutBuildResourceResponse {}
+const PutBuildResourceResponse =
+  CreateDeploymentStopResponse as any as S.Schema<PutBuildResourceResponse>;
+
 export interface PutProjectBranchAlchemyStateStateStackStageOutputRequest {
   projectId: string;
   branchId: string;
   stack: string;
   stage: string;
 }
+const PutProjectBranchAlchemyStateStateStackStageOutputRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  6,
+) as any as S.Schema<PutProjectBranchAlchemyStateStateStackStageOutputRequest>;
+
 export type PutProjectBranchAlchemyStateStateStackStageOutputResponse = unknown;
+const PutProjectBranchAlchemyStateStateStackStageOutputResponse =
+  GetProjectBranchAlchemyStateStateStackStageOutputResponse as any as S.Schema<PutProjectBranchAlchemyStateStateStackStageOutputResponse>;
+
 export interface PutProjectBranchAlchemyStateStateStackStageResourceRequest {
   projectId: string;
   branchId: string;
@@ -2393,20 +4035,42 @@ export interface PutProjectBranchAlchemyStateStateStackStageResourceRequest {
   stage: string;
   fqn: string;
 }
+const PutProjectBranchAlchemyStateStateStackStageResourceRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<PutProjectBranchAlchemyStateStateStackStageResourceRequest>;
+
 export type PutProjectBranchAlchemyStateStateStackStageResourceResponse = unknown;
+const PutProjectBranchAlchemyStateStateStackStageResourceResponse =
+  GetProjectBranchAlchemyStateStateStackStageOutputResponse as any as S.Schema<PutProjectBranchAlchemyStateStateStackStageResourceResponse>;
+
 export type PutProjectBranchApplicationTopologyRequestNodesItemKind =
   | "module"
   | "service"
   | "resource";
+const PutProjectBranchApplicationTopologyRequestNodesItemKind = S.String;
+
 export interface PutProjectBranchApplicationTopologyRequestNodesItem {
   logicalId: string;
   parentLogicalId: string | null;
   kind: PutProjectBranchApplicationTopologyRequestNodesItemKind | (string & {});
   type?: string;
 }
+const PutProjectBranchApplicationTopologyRequestNodesItem = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<PutProjectBranchApplicationTopologyRequestNodesItem>;
+
 export type PutProjectBranchApplicationTopologyRequestNodesList =
   Array<PutProjectBranchApplicationTopologyRequestNodesItem>;
+const PutProjectBranchApplicationTopologyRequestNodesList = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<PutProjectBranchApplicationTopologyRequestNodesList>;
+
 export type PutProjectBranchApplicationTopologyRequestPortsItemDirection = "in" | "out";
+const PutProjectBranchApplicationTopologyRequestPortsItemDirection = S.String;
+
 export interface PutProjectBranchApplicationTopologyRequestPortsItem {
   logicalId: string;
   direction: PutProjectBranchApplicationTopologyRequestPortsItemDirection | (string & {});
@@ -2414,29 +4078,61 @@ export interface PutProjectBranchApplicationTopologyRequestPortsItem {
   contractKind?: string;
   contractHash?: string;
 }
+const PutProjectBranchApplicationTopologyRequestPortsItem = /*@__PURE__*/ __L.at(
+  __c36,
+  2,
+) as any as S.Schema<PutProjectBranchApplicationTopologyRequestPortsItem>;
+
 export type PutProjectBranchApplicationTopologyRequestPortsList =
   Array<PutProjectBranchApplicationTopologyRequestPortsItem>;
+const PutProjectBranchApplicationTopologyRequestPortsList = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<PutProjectBranchApplicationTopologyRequestPortsList>;
+
 export type PutProjectBranchApplicationTopologyRequestEdgesItemFromDirection = "in" | "out";
+const PutProjectBranchApplicationTopologyRequestEdgesItemFromDirection = S.String;
+
 export interface PutProjectBranchApplicationTopologyRequestEdgesItemFrom {
   logicalId: string;
   direction: PutProjectBranchApplicationTopologyRequestEdgesItemFromDirection | (string & {});
   name: string;
 }
+const PutProjectBranchApplicationTopologyRequestEdgesItemFrom = /*@__PURE__*/ __L.at(
+  __c36,
+  4,
+) as any as S.Schema<PutProjectBranchApplicationTopologyRequestEdgesItemFrom>;
+
 export type PutProjectBranchApplicationTopologyRequestEdgesItemToDirection = "in" | "out";
 export interface PutProjectBranchApplicationTopologyRequestEdgesItemTo {
   logicalId: string;
   direction: PutProjectBranchApplicationTopologyRequestEdgesItemToDirection | (string & {});
   name: string;
 }
+const PutProjectBranchApplicationTopologyRequestEdgesItemTo =
+  PutProjectBranchApplicationTopologyRequestEdgesItemFrom as any as S.Schema<PutProjectBranchApplicationTopologyRequestEdgesItemTo>;
+
 export type PutProjectBranchApplicationTopologyRequestEdgesItemFamily = "communication" | "data";
+const PutProjectBranchApplicationTopologyRequestEdgesItemFamily = S.String;
+
 export interface PutProjectBranchApplicationTopologyRequestEdgesItem {
   from: PutProjectBranchApplicationTopologyRequestEdgesItemFrom;
   to: PutProjectBranchApplicationTopologyRequestEdgesItemTo;
   family: PutProjectBranchApplicationTopologyRequestEdgesItemFamily | (string & {});
   style?: string;
 }
+const PutProjectBranchApplicationTopologyRequestEdgesItem = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<PutProjectBranchApplicationTopologyRequestEdgesItem>;
+
 export type PutProjectBranchApplicationTopologyRequestEdgesList =
   Array<PutProjectBranchApplicationTopologyRequestEdgesItem>;
+const PutProjectBranchApplicationTopologyRequestEdgesList = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<PutProjectBranchApplicationTopologyRequestEdgesList>;
+
 export interface PutProjectBranchApplicationTopologyRequest {
   projectId: string;
   branchId: string;
@@ -2445,6 +4141,11 @@ export interface PutProjectBranchApplicationTopologyRequest {
   ports: PutProjectBranchApplicationTopologyRequestPortsList;
   edges: PutProjectBranchApplicationTopologyRequestEdgesList;
 }
+const PutProjectBranchApplicationTopologyRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<PutProjectBranchApplicationTopologyRequest>;
+
 export type PutProjectBranchApplicationTopologyResponseDataNodesItemKind =
   | "module"
   | "service"
@@ -2500,10 +4201,15 @@ export interface PutProjectBranchApplicationTopologyResponseData {
 export interface PutProjectBranchApplicationTopologyResponse {
   data: PutProjectBranchApplicationTopologyResponseData;
 }
+const PutProjectBranchApplicationTopologyResponse =
+  GetProjectBranchApplicationTopologyResponse as any as S.Schema<PutProjectBranchApplicationTopologyResponse>;
+
 export interface UpdateBranchRequest {
   branchId: string;
   isDefault?: boolean | null;
 }
+const UpdateBranchRequest = /*@__PURE__*/ __L.at(__c37, 0) as any as S.Schema<UpdateBranchRequest>;
+
 export type UpdateBranchResponseDataRole = "production" | "preview";
 /** Thin reference to the parent Project. Member resources are intentionally NOT inlined -- list /v1/databases?branchId=<br_xxx> or /v1/apps?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
 export type UpdateBranchResponseDataProject = CreateBucketResponseDataProject;
@@ -2522,6 +4228,8 @@ export interface UpdateBranchResponseData {
 export interface UpdateBranchResponse {
   data: UpdateBranchResponseData;
 }
+const UpdateBranchResponse = GetBranchResponse as any as S.Schema<UpdateBranchResponse>;
+
 export interface UpdateBucketRequest {
   bucketId: string;
   /** New display name for the bucket. A label only: the provider bucket name does not change. */
@@ -2533,14 +4241,22 @@ export interface UpdateBucketRequest {
   /** Declared identity of the resource, unique within its branch. Set by the tool that declares the resource. Send null to clear the logical id. */
   logicalId?: string | null;
 }
+const UpdateBucketRequest = /*@__PURE__*/ __L.at(__c37, 1) as any as S.Schema<UpdateBucketRequest>;
+
 export type UpdateBucketResponseDataProject = CreateBucketResponseDataProject;
 export type UpdateBucketResponseData = CreateBucketResponseData;
 export interface UpdateBucketResponse {
   data: CreateBucketResponseData;
 }
+const UpdateBucketResponse = CreateBucketResponse as any as S.Schema<UpdateBucketResponse>;
+
 /** How far the run has got. */
 export type UpdateBuildRequestPhase = "queued" | "build" | "deploy";
+const UpdateBuildRequestPhase = S.String;
+
 export type UpdateBuildRequestState = "pending" | "running" | "succeeded" | "failed" | "cancelled";
+const UpdateBuildRequestState = S.String;
+
 export interface UpdateBuildRequest {
   buildId: string;
   /** How far the run has got. */
@@ -2559,6 +4275,8 @@ export interface UpdateBuildRequest {
   /** Content hash of the application topology this run deploys, as submitted to the application-topology endpoint. A value match, never a reference: equal hashes identify the same graph. Can be set once and never changed, like `projectId`. */
   applicationTopologyContentHash?: string;
 }
+const UpdateBuildRequest = /*@__PURE__*/ __L.at(__c37, 2) as any as S.Schema<UpdateBuildRequest>;
+
 export type UpdateBuildResponseDataSource = "webhook" | "setup" | "manual" | "ci" | "cli";
 export type UpdateBuildResponseDataState =
   | "pending"
@@ -2592,6 +4310,8 @@ export interface UpdateBuildResponseData {
 export interface UpdateBuildResponse {
   data: UpdateBuildResponseData;
 }
+const UpdateBuildResponse = CreateBuildResponse as any as S.Schema<UpdateBuildResponse>;
+
 export interface UpdateDatabaseRequest {
   databaseId: string;
   /** New display name for the database */
@@ -2603,7 +4323,14 @@ export interface UpdateDatabaseRequest {
   /** Declared identity of the resource, unique within its branch. Set by the tool that declares the resource. Send null to clear the logical id. */
   logicalId?: string | null;
 }
+const UpdateDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  3,
+) as any as S.Schema<UpdateDatabaseRequest>;
+
 export type UpdateDatabaseResponseDataStatus = "failure" | "provisioning" | "ready" | "recovering";
+const UpdateDatabaseResponseDataStatus = S.String;
+
 export type UpdateDatabaseResponseDataConnectionsItemKind = "postgres" | "accelerate";
 export type UpdateDatabaseResponseDataConnectionsItemEndpointsDirect =
   CreateDatabaseRestoreResponseDataConnectionsItemEndpointsDirect;
@@ -2631,15 +4358,29 @@ export interface UpdateDatabaseResponseDataConnectionsItem {
 }
 export type UpdateDatabaseResponseDataConnectionsList =
   Array<UpdateDatabaseResponseDataConnectionsItem>;
+const UpdateDatabaseResponseDataConnectionsList =
+  CreateDatabaseRestoreResponseDataConnectionsList as any as S.Schema<UpdateDatabaseResponseDataConnectionsList>;
+
 export type UpdateDatabaseResponseDataProject = CreateBucketResponseDataProject;
 export type UpdateDatabaseResponseDataRegion = CreateDatabaseResponseDataRegion;
 export type UpdateDatabaseResponseDataSourceCase0 = CreateDatabaseRequestSourceCase0;
+const UpdateDatabaseResponseDataSourceCase0 = CreateDatabaseRequestSourceCase0;
+
 export type UpdateDatabaseResponseDataSourceCase1 = CreateDatabaseResponseDataSourceCase1;
+const UpdateDatabaseResponseDataSourceCase1 = CreateDatabaseResponseDataSourceCase1;
+
 export type UpdateDatabaseResponseDataSourceCase2 = CreateDatabaseResponseDataSourceCase2;
+const UpdateDatabaseResponseDataSourceCase2 = CreateDatabaseResponseDataSourceCase2;
+
 export type UpdateDatabaseResponseDataSource =
   | CreateDatabaseRequestSourceCase0
   | CreateDatabaseResponseDataSourceCase1
   | CreateDatabaseResponseDataSourceCase2;
+const UpdateDatabaseResponseDataSource = /*@__PURE__*/ __L.at(
+  __c37,
+  4,
+) as any as S.Schema<UpdateDatabaseResponseDataSource>;
+
 export interface UpdateDatabaseResponseData {
   id: string;
   type: string;
@@ -2656,13 +4397,28 @@ export interface UpdateDatabaseResponseData {
   branchId: string | null;
   logicalId: string | null;
 }
+const UpdateDatabaseResponseData = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<UpdateDatabaseResponseData>;
+
 export interface UpdateDatabaseResponse {
   data: UpdateDatabaseResponseData;
 }
+const UpdateDatabaseResponse = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<UpdateDatabaseResponse>;
+
 export interface UpdateEnvironmentVariableRequest {
   envVarId: string;
   value: string;
 }
+const UpdateEnvironmentVariableRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<UpdateEnvironmentVariableRequest>;
+
 export type UpdateEnvironmentVariableResponseDataClass = "production" | "preview";
 export interface UpdateEnvironmentVariableResponseData {
   id: string;
@@ -2680,28 +4436,51 @@ export interface UpdateEnvironmentVariableResponseData {
 export interface UpdateEnvironmentVariableResponse {
   data: UpdateEnvironmentVariableResponseData;
 }
+const UpdateEnvironmentVariableResponse =
+  CreateEnvironmentVariableResponse as any as S.Schema<UpdateEnvironmentVariableResponse>;
+
 export type UpdateProjectRequestSettingsMap = { [key: string]: unknown | undefined };
+const UpdateProjectRequestSettingsMap = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<UpdateProjectRequestSettingsMap>;
+
 export interface UpdateProjectRequest {
   id: string;
   name?: string;
   settings?: UpdateProjectRequestSettingsMap;
 }
+const UpdateProjectRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  1,
+) as any as S.Schema<UpdateProjectRequest>;
+
 export type UpdateProjectResponseDataWorkspace = CreateBucketResponseDataProject;
 export type UpdateProjectResponseData = GetProjectResponseData;
 export interface UpdateProjectResponse {
   data: GetProjectResponseData;
 }
+const UpdateProjectResponse = GetProjectResponse as any as S.Schema<UpdateProjectResponse>;
+
 export interface UpdateProjectBranchAlchemyStateLeaseRequest {
   projectId: string;
   branchId: string;
   /** Requested lease TTL in seconds. Default 60, clamped to [30, 300]. */
   ttlSeconds?: number;
 }
+const UpdateProjectBranchAlchemyStateLeaseRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<UpdateProjectBranchAlchemyStateLeaseRequest>;
+
 export type UpdateProjectBranchAlchemyStateLeaseResponseData =
   CreateProjectBranchAlchemyStateLeaseResponseData;
 export interface UpdateProjectBranchAlchemyStateLeaseResponse {
   data: CreateProjectBranchAlchemyStateLeaseResponseData;
 }
+const UpdateProjectBranchAlchemyStateLeaseResponse =
+  CreateProjectBranchAlchemyStateLeaseResponse as any as S.Schema<UpdateProjectBranchAlchemyStateLeaseResponse>;
+
 export interface UpdateServiceRequest {
   serviceId: string;
   displayName?: string;
@@ -2710,11 +4489,18 @@ export interface UpdateServiceRequest {
   branchId?: string | null;
   branchGitName?: string | null;
 }
+const UpdateServiceRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<UpdateServiceRequest>;
+
 export type UpdateServiceResponseDataRegion = CreateDatabaseResponseDataRegion;
 export type UpdateServiceResponseData = CreateServiceResponseData;
 export interface UpdateServiceResponse {
   data: CreateServiceResponseData;
 }
+const UpdateServiceResponse = CreateServiceResponse as any as S.Schema<UpdateServiceResponse>;
+
 export type CreateAuthGithubActionsTokenError = PrismaOpError;
 /** Exchange a GitHub Actions OIDC token for a workspace service token U+26A0 Experimental endpoint: this API is in active development and may change at any time without notice. U+26A0 Verifies the GitHub Actions OIDC token and mints a short-lived workspace service token. The caller must request the token with audience `prisma-cloud`. Any verification failure returns a generic 401 -- the response never reveals whether a repository is connected. */
 export const createAuthGithubActionsToken: API.OperationMethod<
@@ -2723,8 +4509,8 @@ export const createAuthGithubActionsToken: API.OperationMethod<
   CreateAuthGithubActionsTokenError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateAuthGithubActionsTokenRequest>,
-  output: __S(2) as any as S.Schema<CreateAuthGithubActionsTokenResponse>,
+  input: CreateAuthGithubActionsTokenRequest,
+  output: CreateAuthGithubActionsTokenResponse,
   errors: [UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -2738,8 +4524,8 @@ export const createBucket: API.OperationMethod<
   CreateBucketError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateBucketRequest>,
-  output: __S(6) as any as S.Schema<CreateBucketResponse>,
+  input: CreateBucketRequest,
+  output: CreateBucketResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -2753,8 +4539,8 @@ export const createBucketKey: API.OperationMethod<
   CreateBucketKeyError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<CreateBucketKeyRequest>,
-  output: __S(9) as any as S.Schema<CreateBucketKeyResponse>,
+  input: CreateBucketKeyRequest,
+  output: CreateBucketKeyResponse,
   errors: [BadRequest, NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -2768,8 +4554,8 @@ export const createBuild: API.OperationMethod<
   CreateBuildError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CreateBuildRequest>,
-  output: __S(13) as any as S.Schema<CreateBuildResponse>,
+  input: CreateBuildRequest,
+  output: CreateBuildResponse,
   errors: [NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -2783,8 +4569,8 @@ export const createConnection: API.OperationMethod<
   CreateConnectionError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<CreateConnectionRequest>,
-  output: __S(19) as any as S.Schema<CreateConnectionResponse>,
+  input: CreateConnectionRequest,
+  output: CreateConnectionResponse,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -2798,8 +4584,8 @@ export const createConnectionRotate: API.OperationMethod<
   CreateConnectionRotateError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CreateConnectionRotateRequest>,
-  output: __S(21) as any as S.Schema<CreateConnectionRotateResponse>,
+  input: CreateConnectionRotateRequest,
+  output: CreateConnectionRotateResponse,
   errors: [NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -2819,8 +4605,8 @@ export const createDatabase: API.OperationMethod<
   CreateDatabaseError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<CreateDatabaseRequest>,
-  output: __S(34) as any as S.Schema<CreateDatabaseResponse>,
+  input: CreateDatabaseRequest,
+  output: CreateDatabaseResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -2834,8 +4620,8 @@ export const createDatabaseConnection: API.OperationMethod<
   CreateDatabaseConnectionError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<CreateDatabaseConnectionRequest>,
-  output: __S(21) as any as S.Schema<CreateDatabaseConnectionResponse>,
+  input: CreateDatabaseConnectionRequest,
+  output: CreateDatabaseConnectionResponse,
   errors: [NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -2849,8 +4635,8 @@ export const createDatabaseRestore: API.OperationMethod<
   CreateDatabaseRestoreError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<CreateDatabaseRestoreRequest>,
-  output: __S(42) as any as S.Schema<CreateDatabaseRestoreResponse>,
+  input: CreateDatabaseRestoreRequest,
+  output: CreateDatabaseRestoreResponse,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -2864,8 +4650,8 @@ export const createDeploymentStart: API.OperationMethod<
   CreateDeploymentStartError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<CreateDeploymentStartRequest>,
-  output: __S(45) as any as S.Schema<CreateDeploymentStartResponse>,
+  input: CreateDeploymentStartRequest,
+  output: CreateDeploymentStartResponse,
   errors: [Forbidden, NotFound, Conflict, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -2879,8 +4665,8 @@ export const createDeploymentStop: API.OperationMethod<
   CreateDeploymentStopError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<CreateDeploymentStopRequest>,
-  output: __S(47) as any as S.Schema<CreateDeploymentStopResponse>,
+  input: CreateDeploymentStopRequest,
+  output: CreateDeploymentStopResponse,
   errors: [Forbidden, NotFound, Conflict, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -2894,8 +4680,8 @@ export const createDomainRetry: API.OperationMethod<
   CreateDomainRetryError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<CreateDomainRetryRequest>,
-  output: __S(52) as any as S.Schema<CreateDomainRetryResponse>,
+  input: CreateDomainRetryRequest,
+  output: CreateDomainRetryResponse,
   errors: [Forbidden, NotFound, Conflict, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -2913,8 +4699,8 @@ export const createEnvironmentVariable: API.OperationMethod<
   CreateEnvironmentVariableError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<CreateEnvironmentVariableRequest>,
-  output: __S(55) as any as S.Schema<CreateEnvironmentVariableResponse>,
+  input: CreateEnvironmentVariableRequest,
+  output: CreateEnvironmentVariableResponse,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -2928,8 +4714,8 @@ export const createProject: API.OperationMethod<
   CreateProjectError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<CreateProjectRequest>,
-  output: __S(62) as any as S.Schema<CreateProjectResponse>,
+  input: CreateProjectRequest,
+  output: CreateProjectResponse,
   errors: [Conflict, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -2943,8 +4729,8 @@ export const createProjectBranch: API.OperationMethod<
   CreateProjectBranchError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<CreateProjectBranchRequest>,
-  output: __S(65) as any as S.Schema<CreateProjectBranchResponse>,
+  input: CreateProjectBranchRequest,
+  output: CreateProjectBranchResponse,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -2958,8 +4744,8 @@ export const createProjectBranchAlchemyStateLease: API.OperationMethod<
   CreateProjectBranchAlchemyStateLeaseError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<CreateProjectBranchAlchemyStateLeaseRequest>,
-  output: __S(68) as any as S.Schema<CreateProjectBranchAlchemyStateLeaseResponse>,
+  input: CreateProjectBranchAlchemyStateLeaseRequest,
+  output: CreateProjectBranchAlchemyStateLeaseResponse,
   errors: [NotFound, Conflict, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -2979,8 +4765,8 @@ export const createProjectDatabase: API.OperationMethod<
   CreateProjectDatabaseError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<CreateProjectDatabaseRequest>,
-  output: __S(74) as any as S.Schema<CreateProjectDatabaseResponse>,
+  input: CreateProjectDatabaseRequest,
+  output: CreateProjectDatabaseResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -2994,8 +4780,8 @@ export const createProjectTransfer: API.OperationMethod<
   CreateProjectTransferError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<CreateProjectTransferRequest>,
-  output: __S(47) as any as S.Schema<CreateProjectTransferResponse>,
+  input: CreateProjectTransferRequest,
+  output: CreateProjectTransferResponse,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3013,8 +4799,8 @@ export const createScmInstallationsInstallIntent: API.OperationMethod<
   CreateScmInstallationsInstallIntentError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<CreateScmInstallationsInstallIntentRequest>,
-  output: __S(78) as any as S.Schema<CreateScmInstallationsInstallIntentResponse>,
+  input: CreateScmInstallationsInstallIntentRequest,
+  output: CreateScmInstallationsInstallIntentResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3033,8 +4819,8 @@ export const createService: API.OperationMethod<
   CreateServiceError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<CreateServiceRequest>,
-  output: __S(81) as any as S.Schema<CreateServiceResponse>,
+  input: CreateServiceRequest,
+  output: CreateServiceResponse,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3052,8 +4838,8 @@ export const createServiceDeployment: API.OperationMethod<
   CreateServiceDeploymentError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<CreateServiceDeploymentRequest>,
-  output: __S(85) as any as S.Schema<CreateServiceDeploymentResponse>,
+  input: CreateServiceDeploymentRequest,
+  output: CreateServiceDeploymentResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3073,8 +4859,8 @@ export const createServiceDomain: API.OperationMethod<
   CreateServiceDomainError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<CreateServiceDomainRequest>,
-  output: __S(88) as any as S.Schema<CreateServiceDomainResponse>,
+  input: CreateServiceDomainRequest,
+  output: CreateServiceDomainResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3093,8 +4879,8 @@ export const createServicePromote: API.OperationMethod<
   CreateServicePromoteError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<CreateServicePromoteRequest>,
-  output: __S(91) as any as S.Schema<CreateServicePromoteResponse>,
+  input: CreateServicePromoteRequest,
+  output: CreateServicePromoteResponse,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3113,8 +4899,8 @@ export const createServiceRollback: API.OperationMethod<
   CreateServiceRollbackError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<CreateServiceRollbackRequest>,
-  output: __S(91) as any as S.Schema<CreateServiceRollbackResponse>,
+  input: CreateServiceRollbackRequest,
+  output: CreateServiceRollbackResponse,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3133,8 +4919,8 @@ export const createSourceRepository: API.OperationMethod<
   CreateSourceRepositoryError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<CreateSourceRepositoryRequest>,
-  output: __S(95) as any as S.Schema<CreateSourceRepositoryResponse>,
+  input: CreateSourceRepositoryRequest,
+  output: CreateSourceRepositoryResponse,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3148,8 +4934,8 @@ export const createWorkspace: API.OperationMethod<
   CreateWorkspaceError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<CreateWorkspaceRequest>,
-  output: __S(98) as any as S.Schema<CreateWorkspaceResponse>,
+  input: CreateWorkspaceRequest,
+  output: CreateWorkspaceResponse,
   errors: [Forbidden, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3163,8 +4949,8 @@ export const createWorkspaceServiceToken: API.OperationMethod<
   CreateWorkspaceServiceTokenError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<CreateWorkspaceServiceTokenRequest>,
-  output: __S(101) as any as S.Schema<CreateWorkspaceServiceTokenResponse>,
+  input: CreateWorkspaceServiceTokenRequest,
+  output: CreateWorkspaceServiceTokenResponse,
   errors: [NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3178,8 +4964,8 @@ export const deleteBranch: API.OperationMethod<
   DeleteBranchError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<DeleteBranchRequest>,
-  output: __S(47) as any as S.Schema<DeleteBranchResponse>,
+  input: DeleteBranchRequest,
+  output: DeleteBranchResponse,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3193,8 +4979,8 @@ export const deleteBucket: API.OperationMethod<
   DeleteBucketError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<DeleteBucketRequest>,
-  output: __S(47) as any as S.Schema<DeleteBucketResponse>,
+  input: DeleteBucketRequest,
+  output: DeleteBucketResponse,
   errors: [NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3208,8 +4994,8 @@ export const deleteBucketKey: API.OperationMethod<
   DeleteBucketKeyError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<DeleteBucketKeyRequest>,
-  output: __S(47) as any as S.Schema<DeleteBucketKeyResponse>,
+  input: DeleteBucketKeyRequest,
+  output: DeleteBucketKeyResponse,
   errors: [NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3223,8 +5009,8 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<DeleteConnectionRequest>,
-  output: __S(47) as any as S.Schema<DeleteConnectionResponse>,
+  input: DeleteConnectionRequest,
+  output: DeleteConnectionResponse,
   errors: [NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3238,8 +5024,8 @@ export const deleteDatabase: API.OperationMethod<
   DeleteDatabaseError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<DeleteDatabaseRequest>,
-  output: __S(47) as any as S.Schema<DeleteDatabaseResponse>,
+  input: DeleteDatabaseRequest,
+  output: DeleteDatabaseResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3253,8 +5039,8 @@ export const deleteDeployment: API.OperationMethod<
   DeleteDeploymentError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<DeleteDeploymentRequest>,
-  output: __S(47) as any as S.Schema<DeleteDeploymentResponse>,
+  input: DeleteDeploymentRequest,
+  output: DeleteDeploymentResponse,
   errors: [Forbidden, NotFound, Conflict, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3268,8 +5054,8 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<DeleteDomainRequest>,
-  output: __S(47) as any as S.Schema<DeleteDomainResponse>,
+  input: DeleteDomainRequest,
+  output: DeleteDomainResponse,
   errors: [Forbidden, NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3283,8 +5069,8 @@ export const deleteEnvironmentVariable: API.OperationMethod<
   DeleteEnvironmentVariableError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<DeleteEnvironmentVariableRequest>,
-  output: __S(110) as any as S.Schema<DeleteEnvironmentVariableResponse>,
+  input: DeleteEnvironmentVariableRequest,
+  output: DeleteEnvironmentVariableResponse,
   errors: [NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3298,8 +5084,8 @@ export const deleteIntegration: API.OperationMethod<
   DeleteIntegrationError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<DeleteIntegrationRequest>,
-  output: __S(47) as any as S.Schema<DeleteIntegrationResponse>,
+  input: DeleteIntegrationRequest,
+  output: DeleteIntegrationResponse,
   errors: [NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3318,8 +5104,8 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<DeleteProjectRequest>,
-  output: __S(47) as any as S.Schema<DeleteProjectResponse>,
+  input: DeleteProjectRequest,
+  output: DeleteProjectResponse,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3333,8 +5119,8 @@ export const deleteProjectBranchAlchemyStateLease: API.OperationMethod<
   DeleteProjectBranchAlchemyStateLeaseError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<DeleteProjectBranchAlchemyStateLeaseRequest>,
-  output: __S(110) as any as S.Schema<DeleteProjectBranchAlchemyStateLeaseResponse>,
+  input: DeleteProjectBranchAlchemyStateLeaseRequest,
+  output: DeleteProjectBranchAlchemyStateLeaseResponse,
   errors: [NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3348,8 +5134,8 @@ export const deleteProjectBranchAlchemyStateStateStack: API.OperationMethod<
   DeleteProjectBranchAlchemyStateStateStackError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<DeleteProjectBranchAlchemyStateStateStackRequest>,
-  output: __S(110) as any as S.Schema<DeleteProjectBranchAlchemyStateStateStackResponse>,
+  input: DeleteProjectBranchAlchemyStateStateStackRequest,
+  output: DeleteProjectBranchAlchemyStateStateStackResponse,
   errors: [NotFound, Conflict, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3366,10 +5152,8 @@ export const deleteProjectBranchAlchemyStateStateStackStageResource: API.Operati
   DeleteProjectBranchAlchemyStateStateStackStageResourceError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115) as any as S.Schema<DeleteProjectBranchAlchemyStateStateStackStageResourceRequest>,
-  output: __S(
-    116,
-  ) as any as S.Schema<DeleteProjectBranchAlchemyStateStateStackStageResourceResponse>,
+  input: DeleteProjectBranchAlchemyStateStateStackStageResourceRequest,
+  output: DeleteProjectBranchAlchemyStateStateStackStageResourceResponse,
   errors: [NotFound, Conflict, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3383,8 +5167,8 @@ export const deleteService: API.OperationMethod<
   DeleteServiceError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<DeleteServiceRequest>,
-  output: __S(47) as any as S.Schema<DeleteServiceResponse>,
+  input: DeleteServiceRequest,
+  output: DeleteServiceResponse,
   errors: [Forbidden, NotFound, Conflict, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3398,8 +5182,8 @@ export const deleteSourceRepository: API.OperationMethod<
   DeleteSourceRepositoryError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<DeleteSourceRepositoryRequest>,
-  output: __S(47) as any as S.Schema<DeleteSourceRepositoryResponse>,
+  input: DeleteSourceRepositoryRequest,
+  output: DeleteSourceRepositoryResponse,
   errors: [NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3413,8 +5197,8 @@ export const deleteWorkspaceIntegration: API.OperationMethod<
   DeleteWorkspaceIntegrationError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<DeleteWorkspaceIntegrationRequest>,
-  output: __S(110) as any as S.Schema<DeleteWorkspaceIntegrationResponse>,
+  input: DeleteWorkspaceIntegrationRequest,
+  output: DeleteWorkspaceIntegrationResponse,
   errors: [NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3428,8 +5212,8 @@ export const deleteWorkspaceServiceToken: API.OperationMethod<
   DeleteWorkspaceServiceTokenError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<DeleteWorkspaceServiceTokenRequest>,
-  output: __S(110) as any as S.Schema<DeleteWorkspaceServiceTokenResponse>,
+  input: DeleteWorkspaceServiceTokenRequest,
+  output: DeleteWorkspaceServiceTokenResponse,
   errors: [NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3443,8 +5227,8 @@ export const getAgentApproval: API.OperationMethod<
   GetAgentApprovalError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<GetAgentApprovalRequest>,
-  output: __S(122) as any as S.Schema<GetAgentApprovalResponse>,
+  input: GetAgentApprovalRequest,
+  output: GetAgentApprovalResponse,
   errors: [NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3458,8 +5242,8 @@ export const getBranch: API.OperationMethod<
   GetBranchError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<GetBranchRequest>,
-  output: __S(125) as any as S.Schema<GetBranchResponse>,
+  input: GetBranchRequest,
+  output: GetBranchResponse,
   errors: [NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3473,8 +5257,8 @@ export const getBucket: API.OperationMethod<
   GetBucketError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<GetBucketRequest>,
-  output: __S(6) as any as S.Schema<GetBucketResponse>,
+  input: GetBucketRequest,
+  output: GetBucketResponse,
   errors: [NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3488,8 +5272,8 @@ export const getBucketKeys: API.OperationMethod<
   GetBucketKeysError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<GetBucketKeysRequest>,
-  output: __S(131) as any as S.Schema<GetBucketKeysResponse>,
+  input: GetBucketKeysRequest,
+  output: GetBucketKeysResponse,
   errors: [NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3503,8 +5287,8 @@ export const getBuckets: API.OperationMethod<
   GetBucketsError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<GetBucketsRequest>,
-  output: __S(134) as any as S.Schema<GetBucketsResponse>,
+  input: GetBucketsRequest,
+  output: GetBucketsResponse,
   errors: [UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3518,8 +5302,8 @@ export const getBuild: API.OperationMethod<
   GetBuildError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<GetBuildRequest>,
-  output: __S(139) as any as S.Schema<GetBuildResponse>,
+  input: GetBuildRequest,
+  output: GetBuildResponse,
   errors: [NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3533,8 +5317,8 @@ export const getBuilds: API.OperationMethod<
   GetBuildsError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<GetBuildsRequest>,
-  output: __S(143) as any as S.Schema<GetBuildsResponse>,
+  input: GetBuildsRequest,
+  output: GetBuildsResponse,
   errors: [NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3548,8 +5332,8 @@ export const getConnection: API.OperationMethod<
   GetConnectionError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144) as any as S.Schema<GetConnectionRequest>,
-  output: __S(145) as any as S.Schema<GetConnectionResponse>,
+  input: GetConnectionRequest,
+  output: GetConnectionResponse,
   errors: [NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3563,8 +5347,8 @@ export const getConnections: API.OperationMethod<
   GetConnectionsError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<GetConnectionsRequest>,
-  output: __S(147) as any as S.Schema<GetConnectionsResponse>,
+  input: GetConnectionsRequest,
+  output: GetConnectionsResponse,
   errors: [UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3578,8 +5362,8 @@ export const getDatabase: API.OperationMethod<
   GetDatabaseError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148) as any as S.Schema<GetDatabaseRequest>,
-  output: __S(151) as any as S.Schema<GetDatabaseResponse>,
+  input: GetDatabaseRequest,
+  output: GetDatabaseResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3593,8 +5377,8 @@ export const getDatabaseBackups: API.OperationMethod<
   GetDatabaseBackupsError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152) as any as S.Schema<GetDatabaseBackupsRequest>,
-  output: __S(157) as any as S.Schema<GetDatabaseBackupsResponse>,
+  input: GetDatabaseBackupsRequest,
+  output: GetDatabaseBackupsResponse,
   errors: [NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3608,8 +5392,8 @@ export const getDatabaseConnections: API.OperationMethod<
   GetDatabaseConnectionsError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158) as any as S.Schema<GetDatabaseConnectionsRequest>,
-  output: __S(159) as any as S.Schema<GetDatabaseConnectionsResponse>,
+  input: GetDatabaseConnectionsRequest,
+  output: GetDatabaseConnectionsResponse,
   errors: [UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3623,8 +5407,8 @@ export const getDatabases: API.OperationMethod<
   GetDatabasesError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160) as any as S.Schema<GetDatabasesRequest>,
-  output: __S(164) as any as S.Schema<GetDatabasesResponse>,
+  input: GetDatabasesRequest,
+  output: GetDatabasesResponse,
   errors: [Forbidden, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3638,8 +5422,8 @@ export const getDatabaseUsage: API.OperationMethod<
   GetDatabaseUsageError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165) as any as S.Schema<GetDatabaseUsageRequest>,
-  output: __S(169) as any as S.Schema<GetDatabaseUsageResponse>,
+  input: GetDatabaseUsageRequest,
+  output: GetDatabaseUsageResponse,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3653,8 +5437,8 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170) as any as S.Schema<GetDeploymentRequest>,
-  output: __S(174) as any as S.Schema<GetDeploymentResponse>,
+  input: GetDeploymentRequest,
+  output: GetDeploymentResponse,
   errors: [Forbidden, NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3668,8 +5452,8 @@ export const getDeploymentLogs: API.OperationMethod<
   GetDeploymentLogsError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<GetDeploymentLogsRequest>,
-  output: __S(47) as any as S.Schema<GetDeploymentLogsResponse>,
+  input: GetDeploymentLogsRequest,
+  output: GetDeploymentLogsResponse,
   errors: [Forbidden, NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3683,8 +5467,8 @@ export const getDomain: API.OperationMethod<
   GetDomainError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<GetDomainRequest>,
-  output: __S(178) as any as S.Schema<GetDomainResponse>,
+  input: GetDomainRequest,
+  output: GetDomainResponse,
   errors: [Forbidden, NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3698,8 +5482,8 @@ export const getEnvironmentVariable: API.OperationMethod<
   GetEnvironmentVariableError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<GetEnvironmentVariableRequest>,
-  output: __S(55) as any as S.Schema<GetEnvironmentVariableResponse>,
+  input: GetEnvironmentVariableRequest,
+  output: GetEnvironmentVariableResponse,
   errors: [NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3713,8 +5497,8 @@ export const getEnvironmentVariables: API.OperationMethod<
   GetEnvironmentVariablesError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180) as any as S.Schema<GetEnvironmentVariablesRequest>,
-  output: __S(182) as any as S.Schema<GetEnvironmentVariablesResponse>,
+  input: GetEnvironmentVariablesRequest,
+  output: GetEnvironmentVariablesResponse,
   errors: [NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3728,8 +5512,8 @@ export const getIntegration: API.OperationMethod<
   GetIntegrationError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183) as any as S.Schema<GetIntegrationRequest>,
-  output: __S(188) as any as S.Schema<GetIntegrationResponse>,
+  input: GetIntegrationRequest,
+  output: GetIntegrationResponse,
   errors: [NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3743,8 +5527,8 @@ export const getIntegrations: API.OperationMethod<
   GetIntegrationsError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189) as any as S.Schema<GetIntegrationsRequest>,
-  output: __S(191) as any as S.Schema<GetIntegrationsResponse>,
+  input: GetIntegrationsRequest,
+  output: GetIntegrationsResponse,
   errors: [UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3754,8 +5538,8 @@ export type GetMeError = PrismaOpError;
 /** Get current authenticated principal Returns the user, workspace, and credential represented by the current token. */
 export const getMe: API.OperationMethod<GetMeRequest, GetMeResponse, GetMeError, PrismaOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(192) as any as S.Schema<GetMeRequest>,
-    output: __S(196) as any as S.Schema<GetMeResponse>,
+    input: GetMeRequest,
+    output: GetMeResponse,
     errors: [UnknownPrismaError],
     protocol: PrismaProtocol,
     retry: Retry.Retry,
@@ -3769,8 +5553,8 @@ export const getProject: API.OperationMethod<
   GetProjectError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197) as any as S.Schema<GetProjectRequest>,
-  output: __S(199) as any as S.Schema<GetProjectResponse>,
+  input: GetProjectRequest,
+  output: GetProjectResponse,
   errors: [NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3784,8 +5568,8 @@ export const getProjectBranchAlchemyStateStateStacks: API.OperationMethod<
   GetProjectBranchAlchemyStateStateStacksError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200) as any as S.Schema<GetProjectBranchAlchemyStateStateStacksRequest>,
-  output: __S(201) as any as S.Schema<GetProjectBranchAlchemyStateStateStacksResponse>,
+  input: GetProjectBranchAlchemyStateStateStacksRequest,
+  output: GetProjectBranchAlchemyStateStateStacksResponse,
   errors: [NotFound, Conflict, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3802,8 +5586,8 @@ export const getProjectBranchAlchemyStateStateStackStageOutput: API.OperationMet
   GetProjectBranchAlchemyStateStateStackStageOutputError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStageOutputRequest>,
-  output: __S(203) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStageOutputResponse>,
+  input: GetProjectBranchAlchemyStateStateStackStageOutputRequest,
+  output: GetProjectBranchAlchemyStateStateStackStageOutputResponse,
   errors: [NotFound, Conflict, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3820,12 +5604,8 @@ export const getProjectBranchAlchemyStateStateStackStageReplacedResources: API.O
   GetProjectBranchAlchemyStateStateStackStageReplacedResourcesError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    204,
-  ) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStageReplacedResourcesRequest>,
-  output: __S(
-    206,
-  ) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStageReplacedResourcesResponse>,
+  input: GetProjectBranchAlchemyStateStateStackStageReplacedResourcesRequest,
+  output: GetProjectBranchAlchemyStateStateStackStageReplacedResourcesResponse,
   errors: [NotFound, Conflict, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3842,8 +5622,8 @@ export const getProjectBranchAlchemyStateStateStackStageResource: API.OperationM
   GetProjectBranchAlchemyStateStateStackStageResourceError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStageResourceRequest>,
-  output: __S(203) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStageResourceResponse>,
+  input: GetProjectBranchAlchemyStateStateStackStageResourceRequest,
+  output: GetProjectBranchAlchemyStateStateStackStageResourceResponse,
   errors: [NotFound, Conflict, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3860,8 +5640,8 @@ export const getProjectBranchAlchemyStateStateStackStageResources: API.Operation
   GetProjectBranchAlchemyStateStateStackStageResourcesError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStageResourcesRequest>,
-  output: __S(210) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStageResourcesResponse>,
+  input: GetProjectBranchAlchemyStateStateStackStageResourcesRequest,
+  output: GetProjectBranchAlchemyStateStateStackStageResourcesResponse,
   errors: [NotFound, Conflict, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3875,8 +5655,8 @@ export const getProjectBranchAlchemyStateStateStackStages: API.OperationMethod<
   GetProjectBranchAlchemyStateStateStackStagesError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStagesRequest>,
-  output: __S(201) as any as S.Schema<GetProjectBranchAlchemyStateStateStackStagesResponse>,
+  input: GetProjectBranchAlchemyStateStateStackStagesRequest,
+  output: GetProjectBranchAlchemyStateStateStackStagesResponse,
   errors: [NotFound, Conflict, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3890,8 +5670,8 @@ export const getProjectBranchAlchemyStateVersion: API.OperationMethod<
   GetProjectBranchAlchemyStateVersionError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212) as any as S.Schema<GetProjectBranchAlchemyStateVersionRequest>,
-  output: __S(213) as any as S.Schema<GetProjectBranchAlchemyStateVersionResponse>,
+  input: GetProjectBranchAlchemyStateVersionRequest,
+  output: GetProjectBranchAlchemyStateVersionResponse,
   errors: [UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3905,8 +5685,8 @@ export const getProjectBranchApplicationTopology: API.OperationMethod<
   GetProjectBranchApplicationTopologyError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214) as any as S.Schema<GetProjectBranchApplicationTopologyRequest>,
-  output: __S(223) as any as S.Schema<GetProjectBranchApplicationTopologyResponse>,
+  input: GetProjectBranchApplicationTopologyRequest,
+  output: GetProjectBranchApplicationTopologyResponse,
   errors: [NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3920,8 +5700,8 @@ export const getProjectBranches: API.OperationMethod<
   GetProjectBranchesError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224) as any as S.Schema<GetProjectBranchesRequest>,
-  output: __S(226) as any as S.Schema<GetProjectBranchesResponse>,
+  input: GetProjectBranchesRequest,
+  output: GetProjectBranchesResponse,
   errors: [NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3935,8 +5715,8 @@ export const getProjectDatabases: API.OperationMethod<
   GetProjectDatabasesError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227) as any as S.Schema<GetProjectDatabasesRequest>,
-  output: __S(231) as any as S.Schema<GetProjectDatabasesResponse>,
+  input: GetProjectDatabasesRequest,
+  output: GetProjectDatabasesResponse,
   errors: [NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3950,8 +5730,8 @@ export const getProjects: API.OperationMethod<
   GetProjectsError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232) as any as S.Schema<GetProjectsRequest>,
-  output: __S(234) as any as S.Schema<GetProjectsResponse>,
+  input: GetProjectsRequest,
+  output: GetProjectsResponse,
   errors: [UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3965,8 +5745,8 @@ export const getRegions: API.OperationMethod<
   GetRegionsError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235) as any as S.Schema<GetRegionsRequest>,
-  output: __S(238) as any as S.Schema<GetRegionsResponse>,
+  input: GetRegionsRequest,
+  output: GetRegionsResponse,
   errors: [UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3980,8 +5760,8 @@ export const getRegionsAccelerate: API.OperationMethod<
   GetRegionsAccelerateError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239) as any as S.Schema<GetRegionsAccelerateRequest>,
-  output: __S(242) as any as S.Schema<GetRegionsAccelerateResponse>,
+  input: GetRegionsAccelerateRequest,
+  output: GetRegionsAccelerateResponse,
   errors: [UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -3995,8 +5775,8 @@ export const getRegionsPostgres: API.OperationMethod<
   GetRegionsPostgresError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243) as any as S.Schema<GetRegionsPostgresRequest>,
-  output: __S(246) as any as S.Schema<GetRegionsPostgresResponse>,
+  input: GetRegionsPostgresRequest,
+  output: GetRegionsPostgresResponse,
   errors: [UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4010,8 +5790,8 @@ export const getScmInstallationRepositories: API.OperationMethod<
   GetScmInstallationRepositoriesError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247) as any as S.Schema<GetScmInstallationRepositoriesRequest>,
-  output: __S(250) as any as S.Schema<GetScmInstallationRepositoriesResponse>,
+  input: GetScmInstallationRepositoriesRequest,
+  output: GetScmInstallationRepositoriesResponse,
   errors: [NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4025,8 +5805,8 @@ export const getScmInstallations: API.OperationMethod<
   GetScmInstallationsError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251) as any as S.Schema<GetScmInstallationsRequest>,
-  output: __S(254) as any as S.Schema<GetScmInstallationsResponse>,
+  input: GetScmInstallationsRequest,
+  output: GetScmInstallationsResponse,
   errors: [UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4040,8 +5820,8 @@ export const getService: API.OperationMethod<
   GetServiceError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255) as any as S.Schema<GetServiceRequest>,
-  output: __S(81) as any as S.Schema<GetServiceResponse>,
+  input: GetServiceRequest,
+  output: GetServiceResponse,
   errors: [Forbidden, NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4055,8 +5835,8 @@ export const getServiceDeployments: API.OperationMethod<
   GetServiceDeploymentsError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256) as any as S.Schema<GetServiceDeploymentsRequest>,
-  output: __S(259) as any as S.Schema<GetServiceDeploymentsResponse>,
+  input: GetServiceDeploymentsRequest,
+  output: GetServiceDeploymentsResponse,
   errors: [Forbidden, NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4070,8 +5850,8 @@ export const getServiceDomains: API.OperationMethod<
   GetServiceDomainsError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260) as any as S.Schema<GetServiceDomainsRequest>,
-  output: __S(264) as any as S.Schema<GetServiceDomainsResponse>,
+  input: GetServiceDomainsRequest,
+  output: GetServiceDomainsResponse,
   errors: [Forbidden, NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4085,8 +5865,8 @@ export const getServices: API.OperationMethod<
   GetServicesError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265) as any as S.Schema<GetServicesRequest>,
-  output: __S(267) as any as S.Schema<GetServicesResponse>,
+  input: GetServicesRequest,
+  output: GetServicesResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4100,8 +5880,8 @@ export const getSourceRepositories: API.OperationMethod<
   GetSourceRepositoriesError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268) as any as S.Schema<GetSourceRepositoriesRequest>,
-  output: __S(270) as any as S.Schema<GetSourceRepositoriesResponse>,
+  input: GetSourceRepositoriesRequest,
+  output: GetSourceRepositoriesResponse,
   errors: [NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4115,8 +5895,8 @@ export const getSourceRepository: API.OperationMethod<
   GetSourceRepositoryError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271) as any as S.Schema<GetSourceRepositoryRequest>,
-  output: __S(95) as any as S.Schema<GetSourceRepositoryResponse>,
+  input: GetSourceRepositoryRequest,
+  output: GetSourceRepositoryResponse,
   errors: [NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4130,8 +5910,8 @@ export const getWorkspace: API.OperationMethod<
   GetWorkspaceError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272) as any as S.Schema<GetWorkspaceRequest>,
-  output: __S(98) as any as S.Schema<GetWorkspaceResponse>,
+  input: GetWorkspaceRequest,
+  output: GetWorkspaceResponse,
   errors: [NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4145,8 +5925,8 @@ export const getWorkspaceIntegrations: API.OperationMethod<
   GetWorkspaceIntegrationsError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273) as any as S.Schema<GetWorkspaceIntegrationsRequest>,
-  output: __S(274) as any as S.Schema<GetWorkspaceIntegrationsResponse>,
+  input: GetWorkspaceIntegrationsRequest,
+  output: GetWorkspaceIntegrationsResponse,
   errors: [NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4160,8 +5940,8 @@ export const getWorkspaces: API.OperationMethod<
   GetWorkspacesError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275) as any as S.Schema<GetWorkspacesRequest>,
-  output: __S(277) as any as S.Schema<GetWorkspacesResponse>,
+  input: GetWorkspacesRequest,
+  output: GetWorkspacesResponse,
   errors: [UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4175,8 +5955,8 @@ export const getWorkspaceServiceTokens: API.OperationMethod<
   GetWorkspaceServiceTokensError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278) as any as S.Schema<GetWorkspaceServiceTokensRequest>,
-  output: __S(281) as any as S.Schema<GetWorkspaceServiceTokensResponse>,
+  input: GetWorkspaceServiceTokensRequest,
+  output: GetWorkspaceServiceTokensResponse,
   errors: [UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4190,8 +5970,8 @@ export const getWorkspaceSubscription: API.OperationMethod<
   GetWorkspaceSubscriptionError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282) as any as S.Schema<GetWorkspaceSubscriptionRequest>,
-  output: __S(284) as any as S.Schema<GetWorkspaceSubscriptionResponse>,
+  input: GetWorkspaceSubscriptionRequest,
+  output: GetWorkspaceSubscriptionResponse,
   errors: [NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4205,8 +5985,8 @@ export const putBuildResource: API.OperationMethod<
   PutBuildResourceError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285) as any as S.Schema<PutBuildResourceRequest>,
-  output: __S(47) as any as S.Schema<PutBuildResourceResponse>,
+  input: PutBuildResourceRequest,
+  output: PutBuildResourceResponse,
   errors: [NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4223,8 +6003,8 @@ export const putProjectBranchAlchemyStateStateStackStageOutput: API.OperationMet
   PutProjectBranchAlchemyStateStateStackStageOutputError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286) as any as S.Schema<PutProjectBranchAlchemyStateStateStackStageOutputRequest>,
-  output: __S(203) as any as S.Schema<PutProjectBranchAlchemyStateStateStackStageOutputResponse>,
+  input: PutProjectBranchAlchemyStateStateStackStageOutputRequest,
+  output: PutProjectBranchAlchemyStateStateStackStageOutputResponse,
   errors: [NotFound, Conflict, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4241,8 +6021,8 @@ export const putProjectBranchAlchemyStateStateStackStageResource: API.OperationM
   PutProjectBranchAlchemyStateStateStackStageResourceError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287) as any as S.Schema<PutProjectBranchAlchemyStateStateStackStageResourceRequest>,
-  output: __S(203) as any as S.Schema<PutProjectBranchAlchemyStateStateStackStageResourceResponse>,
+  input: PutProjectBranchAlchemyStateStateStackStageResourceRequest,
+  output: PutProjectBranchAlchemyStateStateStackStageResourceResponse,
   errors: [NotFound, Conflict, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4259,8 +6039,8 @@ export const putProjectBranchApplicationTopology: API.OperationMethod<
   PutProjectBranchApplicationTopologyError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295) as any as S.Schema<PutProjectBranchApplicationTopologyRequest>,
-  output: __S(223) as any as S.Schema<PutProjectBranchApplicationTopologyResponse>,
+  input: PutProjectBranchApplicationTopologyRequest,
+  output: PutProjectBranchApplicationTopologyResponse,
   errors: [NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4274,8 +6054,8 @@ export const updateBranch: API.OperationMethod<
   UpdateBranchError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296) as any as S.Schema<UpdateBranchRequest>,
-  output: __S(125) as any as S.Schema<UpdateBranchResponse>,
+  input: UpdateBranchRequest,
+  output: UpdateBranchResponse,
   errors: [NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4289,8 +6069,8 @@ export const updateBucket: API.OperationMethod<
   UpdateBucketError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297) as any as S.Schema<UpdateBucketRequest>,
-  output: __S(6) as any as S.Schema<UpdateBucketResponse>,
+  input: UpdateBucketRequest,
+  output: UpdateBucketResponse,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4304,8 +6084,8 @@ export const updateBuild: API.OperationMethod<
   UpdateBuildError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298) as any as S.Schema<UpdateBuildRequest>,
-  output: __S(13) as any as S.Schema<UpdateBuildResponse>,
+  input: UpdateBuildRequest,
+  output: UpdateBuildResponse,
   errors: [NotFound, Conflict, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4324,8 +6104,8 @@ export const updateDatabase: API.OperationMethod<
   UpdateDatabaseError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299) as any as S.Schema<UpdateDatabaseRequest>,
-  output: __S(302) as any as S.Schema<UpdateDatabaseResponse>,
+  input: UpdateDatabaseRequest,
+  output: UpdateDatabaseResponse,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4339,8 +6119,8 @@ export const updateEnvironmentVariable: API.OperationMethod<
   UpdateEnvironmentVariableError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303) as any as S.Schema<UpdateEnvironmentVariableRequest>,
-  output: __S(55) as any as S.Schema<UpdateEnvironmentVariableResponse>,
+  input: UpdateEnvironmentVariableRequest,
+  output: UpdateEnvironmentVariableResponse,
   errors: [NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4354,8 +6134,8 @@ export const updateProject: API.OperationMethod<
   UpdateProjectError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305) as any as S.Schema<UpdateProjectRequest>,
-  output: __S(199) as any as S.Schema<UpdateProjectResponse>,
+  input: UpdateProjectRequest,
+  output: UpdateProjectResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4369,8 +6149,8 @@ export const updateProjectBranchAlchemyStateLease: API.OperationMethod<
   UpdateProjectBranchAlchemyStateLeaseError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306) as any as S.Schema<UpdateProjectBranchAlchemyStateLeaseRequest>,
-  output: __S(68) as any as S.Schema<UpdateProjectBranchAlchemyStateLeaseResponse>,
+  input: UpdateProjectBranchAlchemyStateLeaseRequest,
+  output: UpdateProjectBranchAlchemyStateLeaseResponse,
   errors: [NotFound, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4389,8 +6169,8 @@ export const updateService: API.OperationMethod<
   UpdateServiceError,
   PrismaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307) as any as S.Schema<UpdateServiceRequest>,
-  output: __S(81) as any as S.Schema<UpdateServiceResponse>,
+  input: UpdateServiceRequest,
+  output: UpdateServiceResponse,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPrismaError],
   protocol: PrismaProtocol,
   retry: Retry.Retry,
@@ -4423,7 +6203,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(1),
+          data: CreateAuthGithubActionsTokenResponseData,
         }),
       ).annotate({
         identifier: "CreateAuthGithubActionsTokenResponse",
@@ -4458,7 +6238,7 @@ function __c0(j: number): any {
           providerName: S.String,
           status: S.String,
           createdAt: S.String,
-          project: __S(4),
+          project: CreateBucketResponseDataProject,
           branchId: S.NullOr(S.String),
           logicalId: S.NullOr(S.String),
         }),
@@ -4466,7 +6246,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(5),
+          data: CreateBucketResponseData,
         }),
       ).annotate({ identifier: "CreateBucketResponse" });
     case 7:
@@ -4474,7 +6254,7 @@ function __c0(j: number): any {
         S.Struct({
           bucketId: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          role: S.String,
+          role: CreateBucketKeyRequestRole,
         }).pipe(T.Http({ method: "POST", uri: "/v1/buckets/{bucketId}/keys", code: 200 })),
       ).annotate({ identifier: "CreateBucketKeyRequest" });
   }
@@ -4488,7 +6268,7 @@ function __c1(j: number): any {
           type: S.String,
           name: S.String,
           valueHint: S.String,
-          role: S.String,
+          role: CreateBucketKeyResponseDataRole,
           createdAt: S.String,
           secretAccessKey: S.String.pipe(T.SensitiveValue({})),
           accessKeyId: S.String.pipe(T.SensitiveValue({})),
@@ -4501,7 +6281,7 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(8),
+          data: CreateBucketKeyResponseData,
         }),
       ).annotate({ identifier: "CreateBucketKeyResponse" });
     case 2:
@@ -4518,10 +6298,10 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          source: S.String,
+          source: CreateBuildRequestSource,
           commitSha: S.String,
           branchName: S.String,
-          runIdentity: S.optional(__S(10)),
+          runIdentity: S.optional(CreateBuildRequestRunIdentity),
           externalLogUrl: S.optional(S.String),
           projectId: S.optional(S.String),
           branchId: S.optional(S.String),
@@ -4532,9 +6312,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          source: S.String,
-          state: S.String,
-          phase: S.NullOr(S.String),
+          source: CreateBuildResponseDataSource,
+          state: CreateBuildResponseDataState,
+          phase: S.NullOr(CreateBuildResponseDataPhase),
           commitSha: S.String,
           branchName: S.String,
           gitRepoId: S.NullOr(S.String),
@@ -4553,7 +6333,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(12),
+          data: CreateBuildResponseData,
         }),
       ).annotate({ identifier: "CreateBuildResponse" });
     case 6:
@@ -4580,9 +6360,9 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          direct: S.optional(__S(15)),
-          pooled: S.optional(__S(15)),
-          accelerate: S.optional(__S(15)),
+          direct: S.optional(CreateConnectionResponseDataEndpointsDirect),
+          pooled: S.optional(CreateConnectionResponseDataEndpointsDirect),
+          accelerate: S.optional(CreateConnectionResponseDataEndpointsDirect),
         }),
       ).annotate({
         identifier: "CreateConnectionResponseDataEndpoints",
@@ -4605,11 +6385,11 @@ function __c2(j: number): any {
           url: S.String,
           name: S.String,
           createdAt: S.String,
-          kind: S.String,
-          endpoints: __S(16),
+          kind: CreateConnectionResponseDataKind,
+          endpoints: CreateConnectionResponseDataEndpoints,
           connectionString: S.String.pipe(T.SensitiveValue({})),
-          directConnection: S.optional(S.NullOr(__S(17))),
-          database: __S(4),
+          directConnection: S.optional(S.NullOr(CreateConnectionResponseDataDirectConnection)),
+          database: CreateBucketResponseDataProject,
           host: S.NullOr(S.String),
           pass: S.NullOr(S.String),
           user: S.NullOr(S.String),
@@ -4620,7 +6400,7 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(18),
+          data: CreateConnectionResponseData,
         }),
       ).annotate({ identifier: "CreateConnectionResponse" });
     case 4:
@@ -4634,7 +6414,7 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(18),
+          data: CreateConnectionRotateResponseData,
         }),
       ).annotate({
         identifier: "CreateConnectionRotateResponse",
@@ -4671,15 +6451,21 @@ function __c3(j: number): any {
         identifier: "CreateDatabaseRequestSourceCase2",
       });
     case 1:
-      return S.suspend(() => S.Union([__S(22), __S(23), __S(24)]));
+      return S.suspend(() =>
+        S.Union([
+          CreateDatabaseRequestSourceCase0,
+          CreateDatabaseRequestSourceCase1,
+          CreateDatabaseRequestSourceCase2,
+        ]),
+      );
     case 2:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String,
-          region: S.optional(S.String),
+          region: S.optional(CreateDatabaseRequestRegion),
           name: S.optional(S.String),
           isDefault: S.optional(S.Boolean),
-          source: S.optional(__S(25)),
+          source: S.optional(CreateDatabaseRequestSource),
           branchId: S.optional(S.NullOr(S.String)),
           branchGitName: S.optional(S.NullOr(S.String)),
           logicalId: S.optional(S.String),
@@ -4698,9 +6484,9 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          direct: S.optional(__S(27)),
-          pooled: S.optional(__S(27)),
-          accelerate: S.optional(__S(27)),
+          direct: S.optional(CreateDatabaseResponseDataConnectionsItemEndpointsDirect),
+          pooled: S.optional(CreateDatabaseResponseDataConnectionsItemEndpointsDirect),
+          accelerate: S.optional(CreateDatabaseResponseDataConnectionsItemEndpointsDirect),
         }),
       ).annotate({
         identifier: "CreateDatabaseResponseDataConnectionsItemEndpoints",
@@ -4713,16 +6499,16 @@ function __c3(j: number): any {
           url: S.String,
           name: S.String,
           createdAt: S.String,
-          kind: S.String,
-          endpoints: __S(28),
-          directConnection: S.optional(S.NullOr(__S(17))),
-          database: __S(4),
+          kind: CreateDatabaseResponseDataConnectionsItemKind,
+          endpoints: CreateDatabaseResponseDataConnectionsItemEndpoints,
+          directConnection: S.optional(S.NullOr(CreateConnectionResponseDataDirectConnection)),
+          database: CreateBucketResponseDataProject,
         }),
       ).annotate({
         identifier: "CreateDatabaseResponseDataConnectionsItem",
       });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(CreateDatabaseResponseDataConnectionsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -4737,7 +6523,13 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Union([__S(22), __S(23), __S(24)]));
+      return S.suspend(() =>
+        S.Union([
+          CreateDatabaseResponseDataSourceCase0,
+          CreateDatabaseResponseDataSourceCase1,
+          CreateDatabaseResponseDataSourceCase2,
+        ]),
+      );
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4745,14 +6537,14 @@ function __c4(j: number): any {
           type: S.String,
           url: S.String,
           name: S.String,
-          status: S.String,
+          status: CreateDatabaseResponseDataStatus,
           createdAt: S.String,
           isDefault: S.Boolean,
           defaultConnectionId: S.NullOr(S.String),
-          connections: __S(30),
-          project: __S(4),
-          region: S.NullOr(__S(31)),
-          source: S.NullOr(__S(32)),
+          connections: CreateDatabaseResponseDataConnectionsList,
+          project: CreateBucketResponseDataProject,
+          region: S.NullOr(CreateDatabaseResponseDataRegion),
+          source: S.NullOr(CreateDatabaseResponseDataSource),
           branchId: S.NullOr(S.String),
           logicalId: S.NullOr(S.String),
         }),
@@ -4762,7 +6554,7 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(33),
+          data: CreateDatabaseResponseData,
         }),
       ).annotate({ identifier: "CreateDatabaseResponse" });
     case 3:
@@ -4780,7 +6572,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           targetDatabaseId: S.String.pipe(T.Label()),
-          source: __S(23),
+          source: CreateDatabaseRequestSourceCase1,
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/databases/{targetDatabaseId}/restore", code: 200 }),
         ),
@@ -4799,9 +6591,9 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          direct: S.optional(__S(37)),
-          pooled: S.optional(__S(37)),
-          accelerate: S.optional(__S(37)),
+          direct: S.optional(CreateDatabaseRestoreResponseDataConnectionsItemEndpointsDirect),
+          pooled: S.optional(CreateDatabaseRestoreResponseDataConnectionsItemEndpointsDirect),
+          accelerate: S.optional(CreateDatabaseRestoreResponseDataConnectionsItemEndpointsDirect),
         }),
       ).annotate({
         identifier: "CreateDatabaseRestoreResponseDataConnectionsItemEndpoints",
@@ -4814,10 +6606,10 @@ function __c4(j: number): any {
           url: S.String,
           name: S.String,
           createdAt: S.String,
-          kind: S.String,
-          endpoints: __S(38),
-          directConnection: S.optional(S.NullOr(__S(17))),
-          database: __S(4),
+          kind: CreateDatabaseRestoreResponseDataConnectionsItemKind,
+          endpoints: CreateDatabaseRestoreResponseDataConnectionsItemEndpoints,
+          directConnection: S.optional(S.NullOr(CreateConnectionResponseDataDirectConnection)),
+          database: CreateBucketResponseDataProject,
         }),
       ).annotate({
         identifier: "CreateDatabaseRestoreResponseDataConnectionsItem",
@@ -4827,7 +6619,7 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39));
+      return S.Array(CreateDatabaseRestoreResponseDataConnectionsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4835,14 +6627,14 @@ function __c5(j: number): any {
           type: S.String,
           url: S.String,
           name: S.String,
-          status: S.String,
+          status: CreateDatabaseRestoreResponseDataStatus,
           createdAt: S.String,
           isDefault: S.Boolean,
           defaultConnectionId: S.NullOr(S.String),
-          connections: __S(40),
-          project: __S(4),
-          region: S.NullOr(__S(31)),
-          source: __S(23),
+          connections: CreateDatabaseRestoreResponseDataConnectionsList,
+          project: CreateBucketResponseDataProject,
+          region: S.NullOr(CreateDatabaseResponseDataRegion),
+          source: CreateDatabaseRestoreResponseDataSource,
           branchId: S.NullOr(S.String),
           logicalId: S.NullOr(S.String),
         }),
@@ -4852,7 +6644,7 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(41),
+          data: CreateDatabaseRestoreResponseData,
         }),
       ).annotate({
         identifier: "CreateDatabaseRestoreResponse",
@@ -4876,7 +6668,7 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(44),
+          data: CreateDeploymentStartResponseData,
         }),
       ).annotate({
         identifier: "CreateDeploymentStartResponse",
@@ -4915,7 +6707,7 @@ function __c6(j: number): any {
         identifier: "CreateDomainRetryResponseDataDnsRecordsItem",
       });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(CreateDomainRetryResponseDataDnsRecordsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4925,14 +6717,14 @@ function __c6(j: number): any {
           hostname: S.String,
           appId: S.String,
           computeServiceId: S.String,
-          status: S.String,
+          status: CreateDomainRetryResponseDataStatus,
           foundryStatus: S.String,
           failureReason: S.NullOr(S.String),
-          failureCategory: S.NullOr(S.String),
+          failureCategory: S.NullOr(CreateDomainRetryResponseDataFailureCategory),
           certExpiresAt: S.NullOr(S.String),
           createdAt: S.String,
           updatedAt: S.String,
-          dnsRecords: __S(50),
+          dnsRecords: CreateDomainRetryResponseDataDnsRecordsList,
         }),
       ).annotate({
         identifier: "CreateDomainRetryResponseData",
@@ -4940,7 +6732,7 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(51),
+          data: CreateDomainRetryResponseData,
         }),
       ).annotate({
         identifier: "CreateDomainRetryResponse",
@@ -4950,7 +6742,7 @@ function __c6(j: number): any {
         S.Struct({
           projectId: S.String,
           branchId: S.optional(S.String),
-          class: S.String,
+          class: CreateEnvironmentVariableRequestClass,
           key: S.String,
           value: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/v1/environment-variables", code: 200 })),
@@ -4965,7 +6757,7 @@ function __c6(j: number): any {
           url: S.String,
           projectId: S.String,
           branchId: S.NullOr(S.String),
-          class: S.String,
+          class: CreateEnvironmentVariableResponseDataClass,
           key: S.String,
           valueKid: S.String,
           isManagedBySystem: S.Boolean,
@@ -4978,7 +6770,7 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(54),
+          data: CreateEnvironmentVariableResponseData,
         }),
       ).annotate({
         identifier: "CreateEnvironmentVariableResponse",
@@ -4992,13 +6784,19 @@ function __c7(j: number): any {
         S.Struct({
           createDatabase: S.optional(S.Boolean),
           name: S.optional(S.String),
-          region: S.optional(S.String),
+          region: S.optional(CreateProjectRequestRegion),
           logicalId: S.optional(S.String),
           workspaceId: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v1/projects", code: 200 })),
       ).annotate({ identifier: "CreateProjectRequest" });
     case 1:
-      return S.suspend(() => S.Union([__S(22), __S(23), __S(24)]));
+      return S.suspend(() =>
+        S.Union([
+          CreateProjectResponseDataDatabaseSourceCase0,
+          CreateProjectResponseDataDatabaseSourceCase1,
+          CreateProjectResponseDataDatabaseSourceCase2,
+        ]),
+      );
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5007,16 +6805,16 @@ function __c7(j: number): any {
           url: S.String,
           name: S.String,
           createdAt: S.String,
-          kind: S.String,
-          endpoints: __S(38),
+          kind: CreateProjectResponseDataDatabaseApiKeysItemKind,
+          endpoints: CreateDatabaseRestoreResponseDataConnectionsItemEndpoints,
           connectionString: S.String.pipe(T.SensitiveValue({})),
-          directConnection: S.optional(S.NullOr(__S(17))),
+          directConnection: S.optional(S.NullOr(CreateConnectionResponseDataDirectConnection)),
         }),
       ).annotate({
         identifier: "CreateProjectResponseDataDatabaseApiKeysItem",
       });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(CreateProjectResponseDataDatabaseApiKeysItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -5024,18 +6822,18 @@ function __c7(j: number): any {
           type: S.String,
           url: S.String,
           name: S.String,
-          status: S.String,
+          status: CreateProjectResponseDataDatabaseStatus,
           createdAt: S.String,
           isDefault: S.Boolean,
           defaultConnectionId: S.NullOr(S.String),
-          connections: __S(30),
-          region: __S(31),
-          source: S.NullOr(__S(57)),
+          connections: CreateProjectResponseDataDatabaseConnectionsList,
+          region: CreateDatabaseResponseDataRegion,
+          source: S.NullOr(CreateProjectResponseDataDatabaseSource),
           branchId: S.NullOr(S.String),
           logicalId: S.NullOr(S.String),
-          apiKeys: __S(59),
+          apiKeys: CreateProjectResponseDataDatabaseApiKeysList,
           connectionString: S.NullOr(S.String).pipe(T.SensitiveValue({})),
-          directConnection: S.NullOr(__S(17)),
+          directConnection: S.NullOr(CreateConnectionResponseDataDirectConnection),
         }),
       ).annotate({
         identifier: "CreateProjectResponseDataDatabase",
@@ -5050,8 +6848,8 @@ function __c7(j: number): any {
           logicalId: S.NullOr(S.String),
           createdAt: S.String,
           defaultRegion: S.NullOr(S.String),
-          workspace: __S(4),
-          database: S.NullOr(__S(60)),
+          workspace: CreateBucketResponseDataProject,
+          database: S.NullOr(CreateProjectResponseDataDatabase),
         }),
       ).annotate({
         identifier: "CreateProjectResponseData",
@@ -5059,7 +6857,7 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(61),
+          data: CreateProjectResponseData,
         }),
       ).annotate({ identifier: "CreateProjectResponse" });
     case 7:
@@ -5084,10 +6882,10 @@ function __c8(j: number): any {
           url: S.String,
           gitName: S.String,
           isDefault: S.Boolean,
-          role: S.String,
+          role: CreateProjectBranchResponseDataRole,
           createdAt: S.String,
           updatedAt: S.String,
-          project: __S(4),
+          project: CreateBucketResponseDataProject,
         }),
       ).annotate({
         identifier: "CreateProjectBranchResponseData",
@@ -5095,7 +6893,7 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(64),
+          data: CreateProjectBranchResponseData,
         }),
       ).annotate({
         identifier: "CreateProjectBranchResponse",
@@ -5131,7 +6929,7 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(67),
+          data: CreateProjectBranchAlchemyStateLeaseResponseData,
         }),
       ).annotate({
         identifier: "CreateProjectBranchAlchemyStateLeaseResponse",
@@ -5146,16 +6944,22 @@ function __c8(j: number): any {
         identifier: "CreateProjectDatabaseRequestFromDatabase",
       });
     case 6:
-      return S.suspend(() => S.Union([__S(22), __S(23), __S(24)]));
+      return S.suspend(() =>
+        S.Union([
+          CreateProjectDatabaseRequestSourceCase0,
+          CreateProjectDatabaseRequestSourceCase1,
+          CreateProjectDatabaseRequestSourceCase2,
+        ]),
+      );
     case 7:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          region: S.optional(S.String),
+          region: S.optional(CreateProjectDatabaseRequestRegion),
           name: S.optional(S.String),
           isDefault: S.optional(S.Boolean),
-          fromDatabase: S.optional(__S(69)),
-          source: S.optional(__S(70)),
+          fromDatabase: S.optional(CreateProjectDatabaseRequestFromDatabase),
+          source: S.optional(CreateProjectDatabaseRequestSource),
         }).pipe(T.Http({ method: "POST", uri: "/v1/projects/{projectId}/databases", code: 200 })),
       ).annotate({
         identifier: "CreateProjectDatabaseRequest",
@@ -5165,7 +6969,13 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Union([__S(22), __S(23), __S(24)]));
+      return S.suspend(() =>
+        S.Union([
+          CreateProjectDatabaseResponseDataSourceCase0,
+          CreateProjectDatabaseResponseDataSourceCase1,
+          CreateProjectDatabaseResponseDataSourceCase2,
+        ]),
+      );
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5173,19 +6983,19 @@ function __c9(j: number): any {
           type: S.String,
           url: S.String,
           name: S.String,
-          status: S.String,
+          status: CreateProjectDatabaseResponseDataStatus,
           createdAt: S.String,
           isDefault: S.Boolean,
           defaultConnectionId: S.NullOr(S.String),
-          connections: __S(30),
-          project: __S(4),
-          region: __S(31),
-          source: S.NullOr(__S(72)),
+          connections: CreateProjectDatabaseResponseDataConnectionsList,
+          project: CreateBucketResponseDataProject,
+          region: CreateDatabaseResponseDataRegion,
+          source: S.NullOr(CreateProjectDatabaseResponseDataSource),
           branchId: S.NullOr(S.String),
           logicalId: S.NullOr(S.String),
-          apiKeys: __S(59),
+          apiKeys: CreateProjectDatabaseResponseDataApiKeysList,
           connectionString: S.NullOr(S.String).pipe(T.SensitiveValue({})),
-          directConnection: S.NullOr(__S(17)),
+          directConnection: S.NullOr(CreateConnectionResponseDataDirectConnection),
         }),
       ).annotate({
         identifier: "CreateProjectDatabaseResponseData",
@@ -5193,7 +7003,7 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(73),
+          data: CreateProjectDatabaseResponseData,
         }),
       ).annotate({
         identifier: "CreateProjectDatabaseResponse",
@@ -5210,7 +7020,7 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provider: S.String,
+          provider: CreateScmInstallationsInstallIntentRequestProvider,
           workspaceId: S.String,
           repository: S.optional(S.String),
         }).pipe(
@@ -5223,7 +7033,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          provider: S.String,
+          provider: CreateScmInstallationsInstallIntentResponseDataProvider,
           workspaceId: S.String,
           installUrl: S.String,
           alreadyLinked: S.optional(S.Boolean),
@@ -5236,7 +7046,7 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(77),
+          data: CreateScmInstallationsInstallIntentResponseData,
         }),
       ).annotate({
         identifier: "CreateScmInstallationsInstallIntentResponse",
@@ -5245,7 +7055,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.String,
-          regionId: S.optional(S.String),
+          regionId: S.optional(CreateServiceRequestRegionId),
           branchId: S.optional(S.NullOr(S.String)),
           branchGitName: S.optional(S.NullOr(S.String)),
           projectId: S.String,
@@ -5263,7 +7073,7 @@ function __c10(j: number): any {
           type: S.String,
           url: S.String,
           name: S.String,
-          region: __S(31),
+          region: CreateDatabaseResponseDataRegion,
           projectId: S.String,
           branchId: S.NullOr(S.String),
           latestDeploymentId: S.NullOr(S.String),
@@ -5277,7 +7087,7 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(80),
+          data: CreateServiceResponseData,
         }),
       ).annotate({ identifier: "CreateServiceResponse" });
     case 2:
@@ -5292,7 +7102,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String.pipe(T.Label()),
-          portMapping: S.optional(__S(82)),
+          portMapping: S.optional(CreateServiceDeploymentRequestPortMapping),
           skipCodeUpload: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/v1/services/{serviceId}/deployments", code: 200 })),
       ).annotate({
@@ -5313,7 +7123,7 @@ function __c10(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(84),
+          data: CreateServiceDeploymentResponseData,
         }),
       ).annotate({
         identifier: "CreateServiceDeploymentResponse",
@@ -5336,14 +7146,14 @@ function __c10(j: number): any {
           hostname: S.String,
           appId: S.String,
           computeServiceId: S.String,
-          status: S.String,
+          status: CreateServiceDomainResponseDataStatus,
           foundryStatus: S.String,
           failureReason: S.NullOr(S.String),
-          failureCategory: S.NullOr(S.String),
+          failureCategory: S.NullOr(CreateServiceDomainResponseDataFailureCategory),
           certExpiresAt: S.NullOr(S.String),
           createdAt: S.String,
           updatedAt: S.String,
-          dnsRecords: __S(50),
+          dnsRecords: CreateServiceDomainResponseDataDnsRecordsList,
         }),
       ).annotate({
         identifier: "CreateServiceDomainResponseData",
@@ -5355,7 +7165,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: __S(87),
+          data: CreateServiceDomainResponseData,
         }),
       ).annotate({
         identifier: "CreateServiceDomainResponse",
@@ -5382,7 +7192,7 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(90),
+          data: CreateServicePromoteResponseData,
         }),
       ).annotate({
         identifier: "CreateServicePromoteResponse",
@@ -5415,11 +7225,11 @@ function __c11(j: number): any {
           type: S.String,
           url: S.String,
           repoId: S.Number,
-          provider: S.String,
+          provider: CreateSourceRepositoryResponseDataProvider,
           repoFullName: S.String,
           defaultBranch: S.String,
           isPrivate: S.Boolean,
-          status: S.String,
+          status: CreateSourceRepositoryResponseDataStatus,
           projectId: S.String,
           installationId: S.String,
           createdAt: S.String,
@@ -5431,7 +7241,7 @@ function __c11(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(94),
+          data: CreateSourceRepositoryResponseData,
           hint: S.optional(S.String),
         }),
       ).annotate({
@@ -5462,7 +7272,7 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(97),
+          data: CreateWorkspaceResponseData,
         }),
       ).annotate({ identifier: "CreateWorkspaceResponse" });
     case 3:
@@ -5493,7 +7303,7 @@ function __c12(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(100),
+          data: CreateWorkspaceServiceTokenResponseData,
         }),
       ).annotate({
         identifier: "CreateWorkspaceServiceTokenResponse",
@@ -5689,7 +7499,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          status: S.String,
+          status: GetAgentApprovalResponseStatus,
           expiresAt: S.String,
           windowExpiresAt: S.NullOr(S.String),
           decidedAt: S.NullOr(S.String),
@@ -5710,16 +7520,16 @@ function __c15(j: number): any {
           url: S.String,
           gitName: S.String,
           isDefault: S.Boolean,
-          role: S.String,
+          role: GetBranchResponseDataRole,
           createdAt: S.String,
           updatedAt: S.String,
-          project: __S(4),
+          project: CreateBucketResponseDataProject,
         }),
       ).annotate({ identifier: "GetBranchResponseData" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(124),
+          data: GetBranchResponseData,
         }),
       ).annotate({ identifier: "GetBranchResponse" });
     case 6:
@@ -5747,14 +7557,14 @@ function __c16(j: number): any {
           type: S.String,
           name: S.String,
           valueHint: S.String,
-          role: S.String,
+          role: GetBucketKeysResponseDataItemRole,
           createdAt: S.String,
         }),
       ).annotate({
         identifier: "GetBucketKeysResponseDataItem",
       });
     case 1:
-      return S.Array(__S(128));
+      return S.Array(GetBucketKeysResponseDataItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5767,8 +7577,8 @@ function __c16(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(129),
-          pagination: __S(130),
+          data: GetBucketKeysResponseDataList,
+          pagination: GetBucketKeysResponsePagination,
         }),
       ).annotate({ identifier: "GetBucketKeysResponse" });
     case 4:
@@ -5783,12 +7593,12 @@ function __c16(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/buckets", code: 200 })),
       ).annotate({ identifier: "GetBucketsRequest" });
     case 5:
-      return S.Array(__S(5));
+      return S.Array(CreateBucketResponseData);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(133),
-          pagination: __S(130),
+          data: GetBucketsResponseDataList,
+          pagination: GetBucketKeysResponsePagination,
         }),
       ).annotate({ identifier: "GetBucketsResponse" });
     case 7:
@@ -5804,23 +7614,23 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resourceType: S.String,
+          resourceType: GetBuildResponseDataResourcesItemResourceType,
           resourceId: S.String,
-          action: S.String,
+          action: GetBuildResponseDataResourcesItemAction,
           createdAt: S.String,
         }),
       ).annotate({
         identifier: "GetBuildResponseDataResourcesItem",
       });
     case 1:
-      return S.Array(__S(136));
+      return S.Array(GetBuildResponseDataResourcesItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          source: S.String,
-          state: S.String,
-          phase: S.NullOr(S.String),
+          source: GetBuildResponseDataSource,
+          state: GetBuildResponseDataState,
+          phase: S.NullOr(GetBuildResponseDataPhase),
           commitSha: S.String,
           branchName: S.String,
           gitRepoId: S.NullOr(S.String),
@@ -5834,13 +7644,13 @@ function __c17(j: number): any {
           createdAt: S.String,
           startedAt: S.NullOr(S.String),
           finishedAt: S.NullOr(S.String),
-          resources: __S(137),
+          resources: GetBuildResponseDataResourcesList,
         }),
       ).annotate({ identifier: "GetBuildResponseData" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(138),
+          data: GetBuildResponseData,
         }),
       ).annotate({ identifier: "GetBuildResponse" });
     case 4:
@@ -5850,16 +7660,16 @@ function __c17(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           projectId: S.optional(S.String.pipe(T.Query())),
           branchId: S.optional(S.String.pipe(T.Query())),
-          state: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(GetBuildsRequestState.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/builds", code: 200 })),
       ).annotate({ identifier: "GetBuildsRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          source: S.String,
-          state: S.String,
-          phase: S.NullOr(S.String),
+          source: GetBuildsResponseDataItemSource,
+          state: GetBuildsResponseDataItemState,
+          phase: S.NullOr(GetBuildsResponseDataItemPhase),
           commitSha: S.String,
           branchName: S.String,
           gitRepoId: S.NullOr(S.String),
@@ -5878,12 +7688,12 @@ function __c17(j: number): any {
         identifier: "GetBuildsResponseDataItem",
       });
     case 6:
-      return S.Array(__S(141));
+      return S.Array(GetBuildsResponseDataItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(142),
-          pagination: __S(130),
+          data: GetBuildsResponseDataList,
+          pagination: GetBucketKeysResponsePagination,
         }),
       ).annotate({ identifier: "GetBuildsResponse" });
   }
@@ -5899,7 +7709,7 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(39),
+          data: GetConnectionResponseData,
         }),
       ).annotate({ identifier: "GetConnectionResponse" });
     case 2:
@@ -5913,8 +7723,8 @@ function __c18(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(40),
-          pagination: __S(130),
+          data: GetConnectionsResponseDataList,
+          pagination: GetBucketKeysResponsePagination,
         }),
       ).annotate({ identifier: "GetConnectionsResponse" });
     case 4:
@@ -5924,7 +7734,13 @@ function __c18(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/databases/{databaseId}", code: 200 })),
       ).annotate({ identifier: "GetDatabaseRequest" });
     case 5:
-      return S.suspend(() => S.Union([__S(22), __S(23), __S(24)]));
+      return S.suspend(() =>
+        S.Union([
+          GetDatabaseResponseDataSourceCase0,
+          GetDatabaseResponseDataSourceCase1,
+          GetDatabaseResponseDataSourceCase2,
+        ]),
+      );
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5932,14 +7748,14 @@ function __c18(j: number): any {
           type: S.String,
           url: S.String,
           name: S.String,
-          status: S.String,
+          status: GetDatabaseResponseDataStatus,
           createdAt: S.String,
           isDefault: S.Boolean,
           defaultConnectionId: S.NullOr(S.String),
-          connections: __S(40),
-          project: __S(4),
-          region: S.NullOr(__S(31)),
-          source: S.NullOr(__S(149)),
+          connections: GetDatabaseResponseDataConnectionsList,
+          project: CreateBucketResponseDataProject,
+          region: S.NullOr(CreateDatabaseResponseDataRegion),
+          source: S.NullOr(GetDatabaseResponseDataSource),
           branchId: S.NullOr(S.String),
           logicalId: S.NullOr(S.String),
         }),
@@ -5947,7 +7763,7 @@ function __c18(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(150),
+          data: GetDatabaseResponseData,
         }),
       ).annotate({ identifier: "GetDatabaseResponse" });
   }
@@ -5967,17 +7783,17 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          backupType: S.String,
+          backupType: GetDatabaseBackupsResponseDataItemBackupType,
           createdAt: S.String,
           size: S.optional(S.Number),
-          status: S.String,
+          status: GetDatabaseBackupsResponseDataItemStatus,
           type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetDatabaseBackupsResponseDataItem",
       });
     case 2:
-      return S.Array(__S(153));
+      return S.Array(GetDatabaseBackupsResponseDataItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5998,9 +7814,9 @@ function __c19(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(154),
-          meta: __S(155),
-          pagination: __S(156),
+          data: GetDatabaseBackupsResponseDataList,
+          meta: GetDatabaseBackupsResponseMeta,
+          pagination: GetDatabaseBackupsResponsePagination,
         }),
       ).annotate({
         identifier: "GetDatabaseBackupsResponse",
@@ -6020,8 +7836,8 @@ function __c19(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(40),
-          pagination: __S(130),
+          data: GetDatabaseConnectionsResponseDataList,
+          pagination: GetBucketKeysResponsePagination,
         }),
       ).annotate({
         identifier: "GetDatabaseConnectionsResponse",
@@ -6042,7 +7858,13 @@ function __c20(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/databases", code: 200 })),
       ).annotate({ identifier: "GetDatabasesRequest" });
     case 1:
-      return S.suspend(() => S.Union([__S(22), __S(23), __S(24)]));
+      return S.suspend(() =>
+        S.Union([
+          GetDatabasesResponseDataItemSourceCase0,
+          GetDatabasesResponseDataItemSourceCase1,
+          GetDatabasesResponseDataItemSourceCase2,
+        ]),
+      );
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6050,14 +7872,14 @@ function __c20(j: number): any {
           type: S.String,
           url: S.String,
           name: S.String,
-          status: S.String,
+          status: GetDatabasesResponseDataItemStatus,
           createdAt: S.String,
           isDefault: S.Boolean,
           defaultConnectionId: S.NullOr(S.String),
-          connections: __S(40),
-          project: __S(4),
-          region: S.NullOr(__S(31)),
-          source: S.NullOr(__S(161)),
+          connections: GetDatabasesResponseDataItemConnectionsList,
+          project: CreateBucketResponseDataProject,
+          region: S.NullOr(CreateDatabaseResponseDataRegion),
+          source: S.NullOr(GetDatabasesResponseDataItemSource),
           branchId: S.NullOr(S.String),
           logicalId: S.NullOr(S.String),
         }),
@@ -6065,12 +7887,12 @@ function __c20(j: number): any {
         identifier: "GetDatabasesResponseDataItem",
       });
     case 3:
-      return S.Array(__S(162));
+      return S.Array(GetDatabasesResponseDataItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(163),
-          pagination: __S(130),
+          data: GetDatabasesResponseDataList,
+          pagination: GetBucketKeysResponsePagination,
         }),
       ).annotate({ identifier: "GetDatabasesResponse" });
     case 5:
@@ -6106,8 +7928,8 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          operations: __S(167),
-          storage: __S(167),
+          operations: GetDatabaseUsageResponseMetricsOperations,
+          storage: GetDatabaseUsageResponseMetricsOperations,
         }),
       ).annotate({
         identifier: "GetDatabaseUsageResponseMetrics",
@@ -6115,8 +7937,8 @@ function __c21(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          period: __S(166),
-          metrics: __S(168),
+          period: GetDatabaseUsageResponsePeriod,
+          metrics: GetDatabaseUsageResponseMetrics,
           generatedAt: S.String,
         }),
       ).annotate({ identifier: "GetDatabaseUsageResponse" });
@@ -6146,8 +7968,8 @@ function __c21(j: number): any {
           foundryVersionId: S.String,
           status: S.String,
           previewDomain: S.NullOr(S.String),
-          envVars: S.optional(__S(171)),
-          portMapping: S.optional(__S(172)),
+          envVars: S.optional(GetDeploymentResponseDataEnvVarsMap),
+          portMapping: S.optional(GetDeploymentResponseDataPortMapping),
           createdAt: S.String,
         }),
       ).annotate({
@@ -6156,7 +7978,7 @@ function __c21(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(173),
+          data: GetDeploymentResponseData,
         }),
       ).annotate({ identifier: "GetDeploymentResponse" });
     case 7:
@@ -6187,20 +8009,20 @@ function __c22(j: number): any {
           hostname: S.String,
           appId: S.String,
           computeServiceId: S.String,
-          status: S.String,
+          status: GetDomainResponseDataStatus,
           foundryStatus: S.String,
           failureReason: S.NullOr(S.String),
-          failureCategory: S.NullOr(S.String),
+          failureCategory: S.NullOr(GetDomainResponseDataFailureCategory),
           certExpiresAt: S.NullOr(S.String),
           createdAt: S.String,
           updatedAt: S.String,
-          dnsRecords: __S(50),
+          dnsRecords: GetDomainResponseDataDnsRecordsList,
         }),
       ).annotate({ identifier: "GetDomainResponseData" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(177),
+          data: GetDomainResponseData,
         }),
       ).annotate({ identifier: "GetDomainResponse" });
     case 3:
@@ -6217,7 +8039,7 @@ function __c22(j: number): any {
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           projectId: S.optional(S.String.pipe(T.Query())),
-          class: S.optional(S.String.pipe(T.Query())),
+          class: S.optional(GetEnvironmentVariablesRequestClass.pipe(T.Query())),
           key: S.optional(S.String.pipe(T.Query())),
           branchId: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/environment-variables", code: 200 })),
@@ -6225,12 +8047,12 @@ function __c22(j: number): any {
         identifier: "GetEnvironmentVariablesRequest",
       });
     case 5:
-      return S.Array(__S(54));
+      return S.Array(GetEnvironmentVariablesResponseDataItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(181),
-          pagination: __S(130),
+          data: GetEnvironmentVariablesResponseDataList,
+          pagination: GetBucketKeysResponsePagination,
         }),
       ).annotate({
         identifier: "GetEnvironmentVariablesResponse",
@@ -6273,9 +8095,9 @@ function __c23(j: number): any {
           id: S.String,
           url: S.String,
           createdAt: S.String,
-          scopes: __S(184),
-          client: __S(185),
-          createdByUser: __S(186),
+          scopes: GetIntegrationResponseDataScopesList,
+          client: GetIntegrationResponseDataClient,
+          createdByUser: GetIntegrationResponseDataCreatedByUser,
         }),
       ).annotate({
         identifier: "GetIntegrationResponseData",
@@ -6283,7 +8105,7 @@ function __c23(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(187),
+          data: GetIntegrationResponseData,
         }),
       ).annotate({ identifier: "GetIntegrationResponse" });
     case 5:
@@ -6295,12 +8117,12 @@ function __c23(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/integrations", code: 200 })),
       ).annotate({ identifier: "GetIntegrationsRequest" });
     case 6:
-      return S.Array(__S(187));
+      return S.Array(GetIntegrationsResponseDataItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(190),
-          pagination: __S(130),
+          data: GetIntegrationsResponseDataList,
+          pagination: GetBucketKeysResponsePagination,
         }),
       ).annotate({ identifier: "GetIntegrationsResponse" });
   }
@@ -6322,7 +8144,7 @@ function __c24(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: GetMeResponseDataCredentialType,
           id: S.NullOr(S.String),
           name: S.NullOr(S.String),
         }),
@@ -6332,15 +8154,15 @@ function __c24(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          user: S.NullOr(__S(193)),
-          workspace: S.NullOr(__S(31)),
-          credential: __S(194),
+          user: S.NullOr(GetMeResponseDataUser),
+          workspace: S.NullOr(CreateDatabaseResponseDataRegion),
+          credential: GetMeResponseDataCredential,
         }),
       ).annotate({ identifier: "GetMeResponseData" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(195),
+          data: GetMeResponseData,
         }),
       ).annotate({ identifier: "GetMeResponse" });
     case 5:
@@ -6359,13 +8181,13 @@ function __c24(j: number): any {
           logicalId: S.NullOr(S.String),
           createdAt: S.String,
           defaultRegion: S.NullOr(S.String),
-          workspace: __S(4),
+          workspace: CreateBucketResponseDataProject,
         }),
       ).annotate({ identifier: "GetProjectResponseData" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(198),
+          data: GetProjectResponseData,
         }),
       ).annotate({ identifier: "GetProjectResponse" });
   }
@@ -6388,7 +8210,9 @@ function __c25(j: number): any {
         identifier: "GetProjectBranchAlchemyStateStateStacksRequest",
       });
     case 1:
-      return S.suspend(() => __S(184).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetProjectBranchAlchemyStateStateStacksResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetProjectBranchAlchemyStateStateStacksResponse",
       });
     case 2:
@@ -6432,7 +8256,11 @@ function __c25(j: number): any {
     case 5:
       return S.Array(S.Unknown);
     case 6:
-      return S.suspend(() => __S(205).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetProjectBranchAlchemyStateStateStackStageReplacedResourcesResponseBodyList.pipe(
+          T.RawResponseRoot(),
+        ),
+      ).annotate({
         identifier: "GetProjectBranchAlchemyStateStateStackStageReplacedResourcesResponse",
       });
     case 7:
@@ -6477,7 +8305,11 @@ function __c26(j: number): any {
     case 1:
       return S.Array(S.String);
     case 2:
-      return S.suspend(() => __S(209).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetProjectBranchAlchemyStateStateStackStageResourcesResponseBodyList.pipe(
+          T.RawResponseRoot(),
+        ),
+      ).annotate({
         identifier: "GetProjectBranchAlchemyStateStateStackStageResourcesResponse",
       });
     case 3:
@@ -6539,7 +8371,7 @@ function __c26(j: number): any {
         S.Struct({
           logicalId: S.String,
           parentLogicalId: S.NullOr(S.String),
-          kind: S.String,
+          kind: GetProjectBranchApplicationTopologyResponseDataNodesItemKind,
           type: S.optional(S.String),
         }),
       ).annotate({
@@ -6550,12 +8382,12 @@ function __c26(j: number): any {
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(215));
+      return S.Array(GetProjectBranchApplicationTopologyResponseDataNodesItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           logicalId: S.String,
-          direction: S.String,
+          direction: GetProjectBranchApplicationTopologyResponseDataPortsItemDirection,
           name: S.String,
           contractKind: S.optional(S.String),
           contractHash: S.optional(S.String),
@@ -6564,12 +8396,12 @@ function __c27(j: number): any {
         identifier: "GetProjectBranchApplicationTopologyResponseDataPortsItem",
       });
     case 2:
-      return S.Array(__S(217));
+      return S.Array(GetProjectBranchApplicationTopologyResponseDataPortsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           logicalId: S.String,
-          direction: S.String,
+          direction: GetProjectBranchApplicationTopologyResponseDataEdgesItemFromDirection,
           name: S.String,
         }),
       ).annotate({
@@ -6578,22 +8410,22 @@ function __c27(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          from: __S(219),
-          to: __S(219),
-          family: S.String,
+          from: GetProjectBranchApplicationTopologyResponseDataEdgesItemFrom,
+          to: GetProjectBranchApplicationTopologyResponseDataEdgesItemTo,
+          family: GetProjectBranchApplicationTopologyResponseDataEdgesItemFamily,
           style: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetProjectBranchApplicationTopologyResponseDataEdgesItem",
       });
     case 5:
-      return S.Array(__S(220));
+      return S.Array(GetProjectBranchApplicationTopologyResponseDataEdgesItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          nodes: __S(216),
-          ports: __S(218),
-          edges: __S(221),
+          nodes: GetProjectBranchApplicationTopologyResponseDataNodesList,
+          ports: GetProjectBranchApplicationTopologyResponseDataPortsList,
+          edges: GetProjectBranchApplicationTopologyResponseDataEdgesList,
           contentHash: S.optional(S.String),
           writtenAt: S.optional(S.String),
         }),
@@ -6603,7 +8435,7 @@ function __c27(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(222),
+          data: GetProjectBranchApplicationTopologyResponseData,
         }),
       ).annotate({
         identifier: "GetProjectBranchApplicationTopologyResponse",
@@ -6625,12 +8457,12 @@ function __c28(j: number): any {
         identifier: "GetProjectBranchesRequest",
       });
     case 1:
-      return S.Array(__S(64));
+      return S.Array(GetProjectBranchesResponseDataItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(225),
-          pagination: __S(130),
+          data: GetProjectBranchesResponseDataList,
+          pagination: GetProjectBranchesResponsePagination,
         }),
       ).annotate({
         identifier: "GetProjectBranchesResponse",
@@ -6646,7 +8478,13 @@ function __c28(j: number): any {
         identifier: "GetProjectDatabasesRequest",
       });
     case 4:
-      return S.suspend(() => S.Union([__S(22), __S(23), __S(24)]));
+      return S.suspend(() =>
+        S.Union([
+          GetProjectDatabasesResponseDataItemSourceCase0,
+          GetProjectDatabasesResponseDataItemSourceCase1,
+          GetProjectDatabasesResponseDataItemSourceCase2,
+        ]),
+      );
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -6654,14 +8492,14 @@ function __c28(j: number): any {
           type: S.String,
           url: S.String,
           name: S.String,
-          status: S.String,
+          status: GetProjectDatabasesResponseDataItemStatus,
           createdAt: S.String,
           isDefault: S.Boolean,
           defaultConnectionId: S.NullOr(S.String),
-          connections: __S(40),
-          project: __S(4),
-          region: S.NullOr(__S(31)),
-          source: S.NullOr(__S(228)),
+          connections: GetProjectDatabasesResponseDataItemConnectionsList,
+          project: CreateBucketResponseDataProject,
+          region: S.NullOr(CreateDatabaseResponseDataRegion),
+          source: S.NullOr(GetProjectDatabasesResponseDataItemSource),
           branchId: S.NullOr(S.String),
           logicalId: S.NullOr(S.String),
         }),
@@ -6669,12 +8507,12 @@ function __c28(j: number): any {
         identifier: "GetProjectDatabasesResponseDataItem",
       });
     case 6:
-      return S.Array(__S(229));
+      return S.Array(GetProjectDatabasesResponseDataItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(230),
-          pagination: __S(130),
+          data: GetProjectDatabasesResponseDataList,
+          pagination: GetBucketKeysResponsePagination,
         }),
       ).annotate({
         identifier: "GetProjectDatabasesResponse",
@@ -6692,18 +8530,18 @@ function __c29(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/projects", code: 200 })),
       ).annotate({ identifier: "GetProjectsRequest" });
     case 1:
-      return S.Array(__S(198));
+      return S.Array(GetProjectResponseData);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(233),
-          pagination: __S(130),
+          data: GetProjectsResponseDataList,
+          pagination: GetBucketKeysResponsePagination,
         }),
       ).annotate({ identifier: "GetProjectsResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          product: S.optional(S.String.pipe(T.Query())),
+          product: S.optional(GetRegionsRequestProduct.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/regions", code: 200 })),
       ).annotate({ identifier: "GetRegionsRequest" });
     case 4:
@@ -6712,18 +8550,18 @@ function __c29(j: number): any {
           id: S.String,
           type: S.String,
           name: S.String,
-          product: S.String,
-          status: S.optional(S.String),
+          product: GetRegionsResponseDataItemProduct,
+          status: S.optional(GetRegionsResponseDataItemStatus),
         }),
       ).annotate({
         identifier: "GetRegionsResponseDataItem",
       });
     case 5:
-      return S.Array(__S(236));
+      return S.Array(GetRegionsResponseDataItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(237),
+          data: GetRegionsResponseDataList,
         }),
       ).annotate({ identifier: "GetRegionsResponse" });
     case 7:
@@ -6747,11 +8585,11 @@ function __c30(j: number): any {
         identifier: "GetRegionsAccelerateResponseDataItem",
       });
     case 1:
-      return S.Array(__S(240));
+      return S.Array(GetRegionsAccelerateResponseDataItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(241),
+          data: GetRegionsAccelerateResponseDataList,
         }),
       ).annotate({
         identifier: "GetRegionsAccelerateResponse",
@@ -6768,17 +8606,17 @@ function __c30(j: number): any {
           id: S.String,
           type: S.String,
           name: S.String,
-          status: S.String,
+          status: GetRegionsPostgresResponseDataItemStatus,
         }),
       ).annotate({
         identifier: "GetRegionsPostgresResponseDataItem",
       });
     case 5:
-      return S.Array(__S(244));
+      return S.Array(GetRegionsPostgresResponseDataItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(245),
+          data: GetRegionsPostgresResponseDataList,
         }),
       ).annotate({
         identifier: "GetRegionsPostgresResponse",
@@ -6816,12 +8654,12 @@ function __c31(j: number): any {
         identifier: "GetScmInstallationRepositoriesResponseDataItem",
       });
     case 1:
-      return S.Array(__S(248));
+      return S.Array(GetScmInstallationRepositoriesResponseDataItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(249),
-          pagination: __S(130),
+          data: GetScmInstallationRepositoriesResponseDataList,
+          pagination: GetProjectBranchesResponsePagination,
         }),
       ).annotate({
         identifier: "GetScmInstallationRepositoriesResponse",
@@ -6843,11 +8681,11 @@ function __c31(j: number): any {
           id: S.String,
           type: S.String,
           url: S.String,
-          provider: S.String,
+          provider: GetScmInstallationsResponseDataItemProvider,
           installationId: S.Number,
           accountId: S.Number,
           accountLogin: S.String,
-          accountType: S.String,
+          accountType: GetScmInstallationsResponseDataItemAccountType,
           suspended: S.Boolean,
           createdAt: S.String,
           updatedAt: S.String,
@@ -6856,12 +8694,12 @@ function __c31(j: number): any {
         identifier: "GetScmInstallationsResponseDataItem",
       });
     case 5:
-      return S.Array(__S(252));
+      return S.Array(GetScmInstallationsResponseDataItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(253),
-          pagination: __S(130),
+          data: GetScmInstallationsResponseDataList,
+          pagination: GetBucketKeysResponsePagination,
           hint: S.optional(S.String),
         }),
       ).annotate({
@@ -6901,12 +8739,12 @@ function __c32(j: number): any {
         identifier: "GetServiceDeploymentsResponseDataItem",
       });
     case 2:
-      return S.Array(__S(257));
+      return S.Array(GetServiceDeploymentsResponseDataItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(258),
-          pagination: __S(130),
+          data: GetServiceDeploymentsResponseDataList,
+          pagination: GetBucketKeysResponsePagination,
         }),
       ).annotate({
         identifier: "GetServiceDeploymentsResponse",
@@ -6926,20 +8764,20 @@ function __c32(j: number): any {
           hostname: S.String,
           appId: S.String,
           computeServiceId: S.String,
-          status: S.String,
+          status: GetServiceDomainsResponseDataItemStatus,
           foundryStatus: S.String,
           failureReason: S.NullOr(S.String),
-          failureCategory: S.NullOr(S.String),
+          failureCategory: S.NullOr(GetServiceDomainsResponseDataItemFailureCategory),
           certExpiresAt: S.NullOr(S.String),
           createdAt: S.String,
           updatedAt: S.String,
-          dnsRecords: __S(50),
+          dnsRecords: GetServiceDomainsResponseDataItemDnsRecordsList,
         }),
       ).annotate({
         identifier: "GetServiceDomainsResponseDataItem",
       });
     case 6:
-      return S.Array(__S(261));
+      return S.Array(GetServiceDomainsResponseDataItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -6956,8 +8794,8 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: __S(262),
-          pagination: __S(263),
+          data: GetServiceDomainsResponseDataList,
+          pagination: GetServiceDomainsResponsePagination,
         }),
       ).annotate({
         identifier: "GetServiceDomainsResponse",
@@ -6974,12 +8812,12 @@ function __c33(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/services", code: 200 })),
       ).annotate({ identifier: "GetServicesRequest" });
     case 2:
-      return S.Array(__S(80));
+      return S.Array(CreateServiceResponseData);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(266),
-          pagination: __S(130),
+          data: GetServicesResponseDataList,
+          pagination: GetBucketKeysResponsePagination,
         }),
       ).annotate({ identifier: "GetServicesResponse" });
     case 4:
@@ -6993,12 +8831,12 @@ function __c33(j: number): any {
         identifier: "GetSourceRepositoriesRequest",
       });
     case 5:
-      return S.Array(__S(94));
+      return S.Array(GetSourceRepositoriesResponseDataItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(269),
-          pagination: __S(130),
+          data: GetSourceRepositoriesResponseDataList,
+          pagination: GetProjectBranchesResponsePagination,
         }),
       ).annotate({
         identifier: "GetSourceRepositoriesResponse",
@@ -7036,8 +8874,8 @@ function __c34(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(190),
-          pagination: __S(130),
+          data: GetWorkspaceIntegrationsResponseDataList,
+          pagination: GetBucketKeysResponsePagination,
         }),
       ).annotate({
         identifier: "GetWorkspaceIntegrationsResponse",
@@ -7050,12 +8888,12 @@ function __c34(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/workspaces", code: 200 })),
       ).annotate({ identifier: "GetWorkspacesRequest" });
     case 4:
-      return S.Array(__S(97));
+      return S.Array(CreateWorkspaceResponseData);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(276),
-          pagination: __S(130),
+          data: GetWorkspacesResponseDataList,
+          pagination: GetBucketKeysResponsePagination,
         }),
       ).annotate({ identifier: "GetWorkspacesResponse" });
     case 6:
@@ -7088,12 +8926,12 @@ function __c34(j: number): any {
 function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(279));
+      return S.Array(GetWorkspaceServiceTokensResponseDataItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(280),
-          pagination: __S(130),
+          data: GetWorkspaceServiceTokensResponseDataList,
+          pagination: GetBucketKeysResponsePagination,
         }),
       ).annotate({
         identifier: "GetWorkspaceServiceTokensResponse",
@@ -7119,7 +8957,7 @@ function __c35(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(283),
+          data: GetWorkspaceSubscriptionResponseData,
         }),
       ).annotate({
         identifier: "GetWorkspaceSubscriptionResponse",
@@ -7128,9 +8966,9 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           buildId: S.String.pipe(T.Label()),
-          resourceType: S.String.pipe(T.Label()),
+          resourceType: PutBuildResourceRequestResourceType.pipe(T.Label()),
           resourceId: S.String.pipe(T.Label()),
-          action: S.String,
+          action: PutBuildResourceRequestAction,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7183,19 +9021,19 @@ function __c36(j: number): any {
         S.Struct({
           logicalId: S.String,
           parentLogicalId: S.NullOr(S.String),
-          kind: S.String,
+          kind: PutProjectBranchApplicationTopologyRequestNodesItemKind,
           type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PutProjectBranchApplicationTopologyRequestNodesItem",
       });
     case 1:
-      return S.Array(__S(288));
+      return S.Array(PutProjectBranchApplicationTopologyRequestNodesItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           logicalId: S.String,
-          direction: S.String,
+          direction: PutProjectBranchApplicationTopologyRequestPortsItemDirection,
           name: S.String,
           contractKind: S.optional(S.String),
           contractHash: S.optional(S.String),
@@ -7204,12 +9042,12 @@ function __c36(j: number): any {
         identifier: "PutProjectBranchApplicationTopologyRequestPortsItem",
       });
     case 3:
-      return S.Array(__S(290));
+      return S.Array(PutProjectBranchApplicationTopologyRequestPortsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           logicalId: S.String,
-          direction: S.String,
+          direction: PutProjectBranchApplicationTopologyRequestEdgesItemFromDirection,
           name: S.String,
         }),
       ).annotate({
@@ -7218,25 +9056,25 @@ function __c36(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          from: __S(292),
-          to: __S(292),
-          family: S.String,
+          from: PutProjectBranchApplicationTopologyRequestEdgesItemFrom,
+          to: PutProjectBranchApplicationTopologyRequestEdgesItemTo,
+          family: PutProjectBranchApplicationTopologyRequestEdgesItemFamily,
           style: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PutProjectBranchApplicationTopologyRequestEdgesItem",
       });
     case 6:
-      return S.Array(__S(293));
+      return S.Array(PutProjectBranchApplicationTopologyRequestEdgesItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           branchId: S.String.pipe(T.Label()),
           contentHash: S.optional(S.String),
-          nodes: __S(289),
-          ports: __S(291),
-          edges: __S(294),
+          nodes: PutProjectBranchApplicationTopologyRequestNodesList,
+          ports: PutProjectBranchApplicationTopologyRequestPortsList,
+          edges: PutProjectBranchApplicationTopologyRequestEdgesList,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7272,8 +9110,8 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           buildId: S.String.pipe(T.Label()),
-          phase: S.optional(S.String),
-          state: S.optional(S.String),
+          phase: S.optional(UpdateBuildRequestPhase),
+          state: S.optional(UpdateBuildRequestState),
           failingStep: S.optional(S.String),
           errorMessage: S.optional(S.String),
           externalLogUrl: S.optional(S.String),
@@ -7294,7 +9132,13 @@ function __c37(j: number): any {
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/databases/{databaseId}", code: 200 })),
       ).annotate({ identifier: "UpdateDatabaseRequest" });
     case 4:
-      return S.suspend(() => S.Union([__S(22), __S(23), __S(24)]));
+      return S.suspend(() =>
+        S.Union([
+          UpdateDatabaseResponseDataSourceCase0,
+          UpdateDatabaseResponseDataSourceCase1,
+          UpdateDatabaseResponseDataSourceCase2,
+        ]),
+      );
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -7302,14 +9146,14 @@ function __c37(j: number): any {
           type: S.String,
           url: S.String,
           name: S.String,
-          status: S.String,
+          status: UpdateDatabaseResponseDataStatus,
           createdAt: S.String,
           isDefault: S.Boolean,
           defaultConnectionId: S.NullOr(S.String),
-          connections: __S(40),
-          project: __S(4),
-          region: S.NullOr(__S(31)),
-          source: S.NullOr(__S(300)),
+          connections: UpdateDatabaseResponseDataConnectionsList,
+          project: CreateBucketResponseDataProject,
+          region: S.NullOr(CreateDatabaseResponseDataRegion),
+          source: S.NullOr(UpdateDatabaseResponseDataSource),
           branchId: S.NullOr(S.String),
           logicalId: S.NullOr(S.String),
         }),
@@ -7319,7 +9163,7 @@ function __c37(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(301),
+          data: UpdateDatabaseResponseData,
         }),
       ).annotate({ identifier: "UpdateDatabaseResponse" });
     case 7:
@@ -7344,7 +9188,7 @@ function __c38(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          settings: S.optional(__S(304)),
+          settings: S.optional(UpdateProjectRequestSettingsMap),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/projects/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateProjectRequest" });
     case 2:
@@ -7373,92 +9217,5 @@ function __c38(j: number): any {
           branchGitName: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/services/{serviceId}", code: 200 })),
       ).annotate({ identifier: "UpdateServiceRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
   }
 }

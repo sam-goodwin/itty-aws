@@ -6,17 +6,22 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Type of managed service identity (either system assigned, or none). */
 export type SystemAssignedServiceIdentityType = "None" | "SystemAssigned";
+const SystemAssignedServiceIdentityType = S.String;
+
 /** Managed service identity (either system assigned, or none) */
 export interface DataScannersCreateOrUpdateRequestIdentity {
   type: SystemAssignedServiceIdentityType | (string & {});
 }
+const DataScannersCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DataScannersCreateOrUpdateRequestIdentity>;
+
 export interface DataScannersCreateOrUpdateRequest {
   /** The scope of the data scanner. Valid scopes are a subscription (format: 'subscriptions/{subscriptionId}') or a resource group (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'). */
   scopeId: string;
@@ -27,10 +32,19 @@ export interface DataScannersCreateOrUpdateRequest {
   /** Managed service identity (either system assigned, or none) */
   identity?: DataScannersCreateOrUpdateRequestIdentity;
 }
+const DataScannersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<DataScannersCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -46,6 +60,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SystemData>;
+
 /** Managed service identity (either system assigned, or none) */
 export interface DataScannersCreateOrUpdateResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -54,6 +70,11 @@ export interface DataScannersCreateOrUpdateResponseIdentity {
   tenantId?: string;
   type: SystemAssignedServiceIdentityType;
 }
+const DataScannersCreateOrUpdateResponseIdentity = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DataScannersCreateOrUpdateResponseIdentity>;
+
 export interface DataScannersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -68,19 +89,39 @@ export interface DataScannersCreateOrUpdateResponse {
   /** Managed service identity (either system assigned, or none) */
   identity?: DataScannersCreateOrUpdateResponseIdentity;
 }
+const DataScannersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DataScannersCreateOrUpdateResponse>;
+
 export interface DeleteDataScannerRequest {
   /** The scope of the data scanner. Valid scopes are a subscription (format: 'subscriptions/{subscriptionId}') or a resource group (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'). */
   scopeId: string;
   /** The name of the data scanner. */
   scannerName: string;
 }
+const DeleteDataScannerRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteDataScannerRequest>;
+
 export interface DeleteDataScannerResponse {}
+const DeleteDataScannerResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DeleteDataScannerResponse>;
+
 export interface GetDataScannerRequest {
   /** The scope of the data scanner. Valid scopes are a subscription (format: 'subscriptions/{subscriptionId}') or a resource group (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'). */
   scopeId: string;
   /** The name of the data scanner. */
   scannerName: string;
 }
+const GetDataScannerRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetDataScannerRequest>;
+
 /** Managed service identity (either system assigned, or none) */
 export type GetDataScannerResponseIdentity = DataScannersCreateOrUpdateResponseIdentity;
 export interface GetDataScannerResponse {
@@ -97,10 +138,20 @@ export interface GetDataScannerResponse {
   /** Managed service identity (either system assigned, or none) */
   identity?: DataScannersCreateOrUpdateResponseIdentity;
 }
+const GetDataScannerResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetDataScannerResponse>;
+
 export interface ListDataScannersRequest {
   /** The scope of the data scanner. Valid scopes are a subscription (format: 'subscriptions/{subscriptionId}') or a resource group (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'). */
   scopeId: string;
 }
+const ListDataScannersRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListDataScannersRequest>;
+
 /** Managed service identity (either system assigned, or none) */
 export type DataScannerIdentity = DataScannersCreateOrUpdateResponseIdentity;
 /** The data scanner resource used by Defender for Storage to scan data for malware and sensitive data discovery. */
@@ -118,8 +169,15 @@ export interface DataScanner {
   /** Managed service identity (either system assigned, or none) */
   identity?: DataScannersCreateOrUpdateResponseIdentity;
 }
+const DataScanner = GetDataScannerResponse as any as S.Schema<DataScanner>;
+
 /** The list of data scanner resources. */
 export type DataScannerListValueList = Array<DataScanner>;
+const DataScannerListValueList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DataScannerListValueList>;
+
 /** List of data scanner resources. */
 export interface DataScannerList {
   /** The list of data scanner resources. */
@@ -127,6 +185,8 @@ export interface DataScannerList {
   /** The URI to fetch the next page. */
   nextLink?: string;
 }
+const DataScannerList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DataScannerList>;
+
 export type DataScannersCreateOrUpdateError = AzureOpError;
 /** Creates or updates a data scanner resource for the specified scope. */
 export const DataScannersCreateOrUpdate: API.OperationMethod<
@@ -135,8 +195,8 @@ export const DataScannersCreateOrUpdate: API.OperationMethod<
   DataScannersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<DataScannersCreateOrUpdateRequest>,
-  output: __S(4) as any as S.Schema<DataScannersCreateOrUpdateResponse>,
+  input: DataScannersCreateOrUpdateRequest,
+  output: DataScannersCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -150,8 +210,8 @@ export const DeleteDataScanner: API.OperationMethod<
   DeleteDataScannerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<DeleteDataScannerRequest>,
-  output: __S(6) as any as S.Schema<DeleteDataScannerResponse>,
+  input: DeleteDataScannerRequest,
+  output: DeleteDataScannerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -165,8 +225,8 @@ export const GetDataScanner: API.OperationMethod<
   GetDataScannerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<GetDataScannerRequest>,
-  output: __S(8) as any as S.Schema<GetDataScannerResponse>,
+  input: GetDataScannerRequest,
+  output: GetDataScannerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -180,8 +240,8 @@ export const ListDataScanners: API.OperationMethod<
   ListDataScannersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<ListDataScannersRequest>,
-  output: __S(11) as any as S.Schema<DataScannerList>,
+  input: ListDataScannersRequest,
+  output: DataScannerList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -193,7 +253,7 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: SystemAssignedServiceIdentityType,
         }),
       ).annotate({
         identifier: "DataScannersCreateOrUpdateRequestIdentity",
@@ -204,7 +264,7 @@ function __c0(j: number): any {
           scopeId: S.String.pipe(T.Label()),
           scannerName: S.String.pipe(T.Label()),
           properties: S.optional(S.Unknown),
-          identity: S.optional(__S(0)),
+          identity: S.optional(DataScannersCreateOrUpdateRequestIdentity),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -220,10 +280,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -232,7 +292,7 @@ function __c0(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
+          type: SystemAssignedServiceIdentityType,
         }),
       ).annotate({
         identifier: "DataScannersCreateOrUpdateResponseIdentity",
@@ -243,9 +303,9 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
           properties: S.optional(S.Unknown),
-          identity: S.optional(__S(3)),
+          identity: S.optional(DataScannersCreateOrUpdateResponseIdentity),
         }),
       ).annotate({
         identifier: "DataScannersCreateOrUpdateResponse",
@@ -292,9 +352,9 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
           properties: S.optional(S.Unknown),
-          identity: S.optional(__S(3)),
+          identity: S.optional(DataScannersCreateOrUpdateResponseIdentity),
         }),
       ).annotate({ identifier: "GetDataScannerResponse" });
     case 1:
@@ -311,26 +371,13 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListDataScannersRequest" });
     case 2:
-      return S.Array(__S(8));
+      return S.Array(DataScanner);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(10),
+          value: DataScannerListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataScannerList" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

@@ -11,8 +11,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
@@ -58,6 +56,11 @@ export interface AddResourceGroupRequest {
   /** The resource group to add the repository to, if null, the repository will be removed from the resource group */
   resourceGroupId: string | null;
 }
+const AddResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddResourceGroupRequest>;
+
 export type AddResourceGroupResponseType =
   | "dataset"
   | "model"
@@ -65,24 +68,46 @@ export type AddResourceGroupResponseType =
   | "bucket"
   | "kernel"
   | "container";
+const AddResourceGroupResponseType = S.String;
+
 export interface AddResourceGroupResponse {
   name: string;
   type: AddResourceGroupResponseType;
   private: boolean;
   addedBy: string;
 }
+const AddResourceGroupResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AddResourceGroupResponse>;
+
 export interface BatchFileOperationsRequest {
   namespace: string;
   repo: string;
 }
+const BatchFileOperationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<BatchFileOperationsRequest>;
+
 export interface BatchFileOperationsResponseFailedItem {
   /** File path that failed */
   path: string;
   /** Error message */
   error: string;
 }
+const BatchFileOperationsResponseFailedItem = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<BatchFileOperationsResponseFailedItem>;
+
 /** List of failed operations */
 export type BatchFileOperationsResponseFailedList = Array<BatchFileOperationsResponseFailedItem>;
+const BatchFileOperationsResponseFailedList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<BatchFileOperationsResponseFailedList>;
+
 export interface BatchFileOperationsResponse {
   /** True if all operations succeeded */
   success: boolean;
@@ -93,18 +118,41 @@ export interface BatchFileOperationsResponse {
   /** List of failed operations */
   failed: BatchFileOperationsResponseFailedList;
 }
+const BatchFileOperationsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<BatchFileOperationsResponse>;
+
 /** Bucket visibility. Cannot be specified along with private. */
 export type CreateBucketRequestVisibility = "private" | "public";
+const CreateBucketRequestVisibility = S.String;
+
 export type CreateBucketRequestCdnItemProvider = "gcp" | "aws";
+const CreateBucketRequestCdnItemProvider = S.String;
+
 export type CreateBucketRequestCdnItemRegion = "us" | "eu";
+const CreateBucketRequestCdnItemRegion = S.String;
+
 export interface CreateBucketRequestCdnItem {
   provider: CreateBucketRequestCdnItemProvider | (string & {});
   region: CreateBucketRequestCdnItemRegion | (string & {});
 }
+const CreateBucketRequestCdnItem = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateBucketRequestCdnItem>;
+
 /** CDN pre-warming regions */
 export type CreateBucketRequestCdnList = Array<CreateBucketRequestCdnItem>;
+const CreateBucketRequestCdnList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateBucketRequestCdnList>;
+
 /** The region where the bucket is hosted. */
 export type CreateBucketRequestRegion = "us" | "eu";
+const CreateBucketRequestRegion = S.String;
+
 export interface CreateBucketRequest {
   namespace: string;
   repo: string;
@@ -120,34 +168,64 @@ export interface CreateBucketRequest {
   /** Free-text description. */
   description?: string;
 }
+const CreateBucketRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateBucketRequest>;
+
 export interface CreateBucketResponse {
   url: string;
   name: string;
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
 }
+const CreateBucketResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CreateBucketResponse>;
+
 export interface DeleteBucketRequest {
   namespace: string;
   repo: string;
 }
+const DeleteBucketRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DeleteBucketRequest>;
+
 export interface DeleteBucketResponse {}
+const DeleteBucketResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DeleteBucketResponse>;
+
 export type DuplicateXetFilesRequestTargetType = "model" | "space" | "dataset" | "kernel";
+const DuplicateXetFilesRequestTargetType = S.String;
+
 export interface DuplicateXetFilesRequestTarget {
   type: DuplicateXetFilesRequestTargetType | (string & {});
   name: string;
 }
+const DuplicateXetFilesRequestTarget = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DuplicateXetFilesRequestTarget>;
+
 export interface DuplicateXetFilesRequestFilesItem {
   xetHash: string;
   sha256: string;
   filename?: string;
 }
+const DuplicateXetFilesRequestFilesItem = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DuplicateXetFilesRequestFilesItem>;
+
 export type DuplicateXetFilesRequestFilesList = Array<DuplicateXetFilesRequestFilesItem>;
+const DuplicateXetFilesRequestFilesList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DuplicateXetFilesRequestFilesList>;
+
 export interface DuplicateXetFilesRequest {
   namespace: string;
   repo: string;
   target: DuplicateXetFilesRequestTarget;
   files: DuplicateXetFilesRequestFilesList;
 }
+const DuplicateXetFilesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DuplicateXetFilesRequest>;
+
 export interface DuplicateXetFilesResponseFailedItem {
   /** Xet content hash of the file that failed */
   xetHash: string;
@@ -156,8 +234,18 @@ export interface DuplicateXetFilesResponseFailedItem {
   /** Error message */
   error: string;
 }
+const DuplicateXetFilesResponseFailedItem = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DuplicateXetFilesResponseFailedItem>;
+
 /** Per-file failures */
 export type DuplicateXetFilesResponseFailedList = Array<DuplicateXetFilesResponseFailedItem>;
+const DuplicateXetFilesResponseFailedList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DuplicateXetFilesResponseFailedList>;
+
 export interface DuplicateXetFilesResponse {
   /** True if all requested files were duplicated (or already present) */
   success: boolean;
@@ -168,23 +256,49 @@ export interface DuplicateXetFilesResponse {
   /** Per-file failures */
   failed: DuplicateXetFilesResponseFailedList;
 }
+const DuplicateXetFilesResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DuplicateXetFilesResponse>;
+
 export interface FollowChangesRequest {
   namespace: string;
   repo: string;
   cursor?: string;
   since?: string;
 }
+const FollowChangesRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<FollowChangesRequest>;
+
 export interface FollowChangesResponse {}
+const FollowChangesResponse = DeleteBucketResponse as any as S.Schema<FollowChangesResponse>;
+
 export interface GetBucketDetailsRequest {
   namespace: string;
   repo: string;
 }
+const GetBucketDetailsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetBucketDetailsRequest>;
+
 export type GetBucketDetailsResponseRepoType = "bucket" | "container";
+const GetBucketDetailsResponseRepoType = S.String;
+
 export type GetBucketDetailsResponseAdminTagsList = Array<string>;
+const GetBucketDetailsResponseAdminTagsList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetBucketDetailsResponseAdminTagsList>;
+
 export interface GetBucketDetailsResponseDisabled {
   reason: string;
   hideReadme?: boolean;
 }
+const GetBucketDetailsResponseDisabled = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetBucketDetailsResponseDisabled>;
+
 export type GetBucketDetailsResponseCdnRegionsItemProvider = "gcp" | "aws";
 export type GetBucketDetailsResponseCdnRegionsItemRegion = "us" | "eu";
 export interface GetBucketDetailsResponseCdnRegionsItem {
@@ -192,12 +306,20 @@ export interface GetBucketDetailsResponseCdnRegionsItem {
   region: GetBucketDetailsResponseCdnRegionsItemRegion;
 }
 export type GetBucketDetailsResponseCdnRegionsList = Array<GetBucketDetailsResponseCdnRegionsItem>;
+const GetBucketDetailsResponseCdnRegionsList =
+  CreateBucketRequestCdnList as any as S.Schema<GetBucketDetailsResponseCdnRegionsList>;
+
 export interface GetBucketDetailsResponseResourceGroup {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
   name: string;
   numUsers?: number;
 }
+const GetBucketDetailsResponseResourceGroup = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetBucketDetailsResponseResourceGroup>;
+
 export interface GetBucketDetailsResponse {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -219,6 +341,11 @@ export interface GetBucketDetailsResponse {
   cdnRegions: GetBucketDetailsResponseCdnRegionsList;
   resourceGroup?: GetBucketDetailsResponseResourceGroup;
 }
+const GetBucketDetailsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetBucketDetailsResponse>;
+
 export interface GetFileMetadataRequest {
   namespace: string;
   repo: string;
@@ -227,6 +354,11 @@ export interface GetFileMetadataRequest {
   download?: string;
   accept?: string;
 }
+const GetFileMetadataRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetFileMetadataRequest>;
+
 export interface GetFileMetadataResponse {
   /** The XET hash of the file */
   hash: string;
@@ -241,20 +373,39 @@ export interface GetFileMetadataResponse {
   /** The content type of the file */
   contentType?: string;
 }
+const GetFileMetadataResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetFileMetadataResponse>;
+
 export interface GetResourceGroupRequest {
   namespace: string;
   repo: string;
 }
+const GetResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetResourceGroupRequest>;
+
 export interface GetResourceGroupResponse {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
   name: string;
   numUsers?: number;
 }
+const GetResourceGroupResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetResourceGroupResponse>;
+
 /** Sort order. `path` (default) sorts lexicographically; `uploadedAt` sorts by most recent upload first. In recursive mode `uploadedAt` is only supported at the bucket root (no path prefix). In non-recursive mode, only supported at root or exact folder prefixes. */
 export type ListFilesRequestSort = "path" | "uploadedAt";
+const ListFilesRequestSort = S.String;
+
 /** Sort direction. Defaults to `asc` for `path` and `desc` for `uploadedAt`. */
 export type ListFilesRequestDirection = "asc" | "desc";
+const ListFilesRequestDirection = S.String;
+
 export interface ListFilesRequest {
   namespace: string;
   repo: string;
@@ -265,7 +416,11 @@ export interface ListFilesRequest {
   sort?: ListFilesRequestSort | (string & {});
   direction?: ListFilesRequestDirection | (string & {});
 }
+const ListFilesRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ListFilesRequest>;
+
 export type ListFilesResponseBodyItemType = "file" | "directory";
+const ListFilesResponseBodyItemType = S.String;
+
 export interface ListFilesResponseBodyItem {
   type: ListFilesResponseBodyItemType;
   path: string;
@@ -278,14 +433,36 @@ export interface ListFilesResponseBodyItem {
   uploadedAt: string;
   contentType?: string;
 }
+const ListFilesResponseBodyItem = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ListFilesResponseBodyItem>;
+
 export type ListFilesResponseBodyList = Array<ListFilesResponseBodyItem>;
+const ListFilesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ListFilesResponseBodyList>;
+
 export type ListFilesResponse = ListFilesResponseBodyList;
+const ListFilesResponse = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ListFilesResponse>;
+
 export interface ListNamespaceBucketsRequest {
   namespace: string;
   search?: string;
 }
+const ListNamespaceBucketsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListNamespaceBucketsRequest>;
+
 export type ListNamespaceBucketsResponseBodyItemRepoType = "bucket" | "container";
+const ListNamespaceBucketsResponseBodyItemRepoType = S.String;
+
 export type ListNamespaceBucketsResponseBodyItemAdminTagsList = Array<string>;
+const ListNamespaceBucketsResponseBodyItemAdminTagsList =
+  GetBucketDetailsResponseAdminTagsList as any as S.Schema<ListNamespaceBucketsResponseBodyItemAdminTagsList>;
+
 export type ListNamespaceBucketsResponseBodyItemDisabled = GetBucketDetailsResponseDisabled;
 export type ListNamespaceBucketsResponseBodyItemCdnRegionsItemProvider = "gcp" | "aws";
 export type ListNamespaceBucketsResponseBodyItemCdnRegionsItemRegion = "us" | "eu";
@@ -295,6 +472,9 @@ export interface ListNamespaceBucketsResponseBodyItemCdnRegionsItem {
 }
 export type ListNamespaceBucketsResponseBodyItemCdnRegionsList =
   Array<ListNamespaceBucketsResponseBodyItemCdnRegionsItem>;
+const ListNamespaceBucketsResponseBodyItemCdnRegionsList =
+  CreateBucketRequestCdnList as any as S.Schema<ListNamespaceBucketsResponseBodyItemCdnRegionsList>;
+
 export type ListNamespaceBucketsResponseBodyItemResourceGroup =
   GetBucketDetailsResponseResourceGroup;
 /** Bucket overview information */
@@ -319,15 +499,34 @@ export interface ListNamespaceBucketsResponseBodyItem {
   cdnRegions: ListNamespaceBucketsResponseBodyItemCdnRegionsList;
   resourceGroup?: GetBucketDetailsResponseResourceGroup;
 }
+const ListNamespaceBucketsResponseBodyItem = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListNamespaceBucketsResponseBodyItem>;
+
 export type ListNamespaceBucketsResponseBodyList = Array<ListNamespaceBucketsResponseBodyItem>;
+const ListNamespaceBucketsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListNamespaceBucketsResponseBodyList>;
+
 export type ListNamespaceBucketsResponse = ListNamespaceBucketsResponseBodyList;
+const ListNamespaceBucketsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListNamespaceBucketsResponse>;
+
 export type ListPathsInfoRequestPathsCase0List = Array<string>;
 export type ListPathsInfoRequestPaths = ListPathsInfoRequestPathsCase0List | string;
+const ListPathsInfoRequestPaths = S.Unknown as any as S.Schema<ListPathsInfoRequestPaths>;
+
 export interface ListPathsInfoRequest {
   namespace: string;
   repo: string;
   paths: ListPathsInfoRequestPaths;
 }
+const ListPathsInfoRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ListPathsInfoRequest>;
+
 export type ListPathsInfoResponseBodyItemType = "file" | "directory";
 export interface ListPathsInfoResponseBodyItem {
   type: ListPathsInfoResponseBodyItemType;
@@ -343,6 +542,8 @@ export interface ListPathsInfoResponseBodyItem {
 }
 export type ListPathsInfoResponseBodyList = Array<ListPathsInfoResponseBodyItem>;
 export type ListPathsInfoResponse = ListPathsInfoResponseBodyList;
+const ListPathsInfoResponse = ListFilesResponse as any as S.Schema<ListPathsInfoResponse>;
+
 export type UpdateBucketSettingsRequestCdnRegionsItemProvider = "gcp" | "aws";
 export type UpdateBucketSettingsRequestCdnRegionsItemRegion = "us" | "eu";
 export interface UpdateBucketSettingsRequestCdnRegionsItem {
@@ -351,12 +552,20 @@ export interface UpdateBucketSettingsRequestCdnRegionsItem {
 }
 export type UpdateBucketSettingsRequestCdnRegionsList =
   Array<UpdateBucketSettingsRequestCdnRegionsItem>;
+const UpdateBucketSettingsRequestCdnRegionsList =
+  CreateBucketRequestCdnList as any as S.Schema<UpdateBucketSettingsRequestCdnRegionsList>;
+
 export interface UpdateBucketSettingsRequest {
   namespace: string;
   repo: string;
   private?: unknown;
   cdnRegions?: UpdateBucketSettingsRequestCdnRegionsList;
 }
+const UpdateBucketSettingsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<UpdateBucketSettingsRequest>;
+
 export type UpdateBucketSettingsResponseCdnRegionsItemProvider = "gcp" | "aws";
 export type UpdateBucketSettingsResponseCdnRegionsItemRegion = "us" | "eu";
 export interface UpdateBucketSettingsResponseCdnRegionsItem {
@@ -365,28 +574,44 @@ export interface UpdateBucketSettingsResponseCdnRegionsItem {
 }
 export type UpdateBucketSettingsResponseCdnRegionsList =
   Array<UpdateBucketSettingsResponseCdnRegionsItem>;
+const UpdateBucketSettingsResponseCdnRegionsList =
+  CreateBucketRequestCdnList as any as S.Schema<UpdateBucketSettingsResponseCdnRegionsList>;
+
 export interface UpdateBucketSettingsResponse {
   private?: boolean;
   cdnRegions?: UpdateBucketSettingsResponseCdnRegionsList;
 }
+const UpdateBucketSettingsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<UpdateBucketSettingsResponse>;
+
 export interface XetReadTokenRequest {
   namespace: string;
   repo: string;
 }
+const XetReadTokenRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<XetReadTokenRequest>;
+
 export interface XetReadTokenResponse {
   casUrl: string;
   exp: number;
   accessToken: string | Redacted.Redacted<string>;
 }
+const XetReadTokenResponse = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<XetReadTokenResponse>;
+
 export interface XetWriteTokenRequest {
   namespace: string;
   repo: string;
 }
+const XetWriteTokenRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<XetWriteTokenRequest>;
+
 export interface XetWriteTokenResponse {
   casUrl: string;
   exp: number;
   accessToken: string | Redacted.Redacted<string>;
 }
+const XetWriteTokenResponse = XetReadTokenResponse as any as S.Schema<XetWriteTokenResponse>;
+
 export type AddResourceGroupError = HuggingFaceOpError;
 /** Add resource group Add the repository to a resource group */
 export const addResourceGroup: API.OperationMethod<
@@ -395,8 +620,8 @@ export const addResourceGroup: API.OperationMethod<
   AddResourceGroupError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AddResourceGroupRequest>,
-  output: __S(1) as any as S.Schema<AddResourceGroupResponse>,
+  input: AddResourceGroupRequest,
+  output: AddResourceGroupResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -410,8 +635,8 @@ export const batchFileOperations: API.OperationMethod<
   BatchFileOperationsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<BatchFileOperationsRequest>,
-  output: __S(5) as any as S.Schema<BatchFileOperationsResponse>,
+  input: BatchFileOperationsRequest,
+  output: BatchFileOperationsResponse,
   errors: [UnprocessableEntity],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -425,8 +650,8 @@ export const createBucket: API.OperationMethod<
   CreateBucketError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateBucketRequest>,
-  output: __S(9) as any as S.Schema<CreateBucketResponse>,
+  input: CreateBucketRequest,
+  output: CreateBucketResponse,
   errors: [Conflict],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -440,8 +665,8 @@ export const deleteBucket: API.OperationMethod<
   DeleteBucketError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeleteBucketRequest>,
-  output: __S(11) as any as S.Schema<DeleteBucketResponse>,
+  input: DeleteBucketRequest,
+  output: DeleteBucketResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -455,8 +680,8 @@ export const duplicateXetFiles: API.OperationMethod<
   DuplicateXetFilesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DuplicateXetFilesRequest>,
-  output: __S(18) as any as S.Schema<DuplicateXetFilesResponse>,
+  input: DuplicateXetFilesRequest,
+  output: DuplicateXetFilesResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -470,8 +695,8 @@ export const followChanges: API.OperationMethod<
   FollowChangesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<FollowChangesRequest>,
-  output: __S(11) as any as S.Schema<FollowChangesResponse>,
+  input: FollowChangesRequest,
+  output: FollowChangesResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -485,8 +710,8 @@ export const getBucketDetails: API.OperationMethod<
   GetBucketDetailsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<GetBucketDetailsRequest>,
-  output: __S(24) as any as S.Schema<GetBucketDetailsResponse>,
+  input: GetBucketDetailsRequest,
+  output: GetBucketDetailsResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -500,8 +725,8 @@ export const getFileMetadata: API.OperationMethod<
   GetFileMetadataError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<GetFileMetadataRequest>,
-  output: __S(26) as any as S.Schema<GetFileMetadataResponse>,
+  input: GetFileMetadataRequest,
+  output: GetFileMetadataResponse,
   errors: [BadRequest, NotFound],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -515,8 +740,8 @@ export const getResourceGroup: API.OperationMethod<
   GetResourceGroupError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<GetResourceGroupRequest>,
-  output: __S(28) as any as S.Schema<GetResourceGroupResponse>,
+  input: GetResourceGroupRequest,
+  output: GetResourceGroupResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -530,8 +755,8 @@ export const listFiles: API.OperationMethod<
   ListFilesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<ListFilesRequest>,
-  output: __S(32) as any as S.Schema<ListFilesResponse>,
+  input: ListFilesRequest,
+  output: ListFilesResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -545,8 +770,8 @@ export const listNamespaceBuckets: API.OperationMethod<
   ListNamespaceBucketsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<ListNamespaceBucketsRequest>,
-  output: __S(36) as any as S.Schema<ListNamespaceBucketsResponse>,
+  input: ListNamespaceBucketsRequest,
+  output: ListNamespaceBucketsResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -560,8 +785,8 @@ export const listPathsInfo: API.OperationMethod<
   ListPathsInfoError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<ListPathsInfoRequest>,
-  output: __S(32) as any as S.Schema<ListPathsInfoResponse>,
+  input: ListPathsInfoRequest,
+  output: ListPathsInfoResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -575,8 +800,8 @@ export const updateBucketSettings: API.OperationMethod<
   UpdateBucketSettingsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<UpdateBucketSettingsRequest>,
-  output: __S(39) as any as S.Schema<UpdateBucketSettingsResponse>,
+  input: UpdateBucketSettingsRequest,
+  output: UpdateBucketSettingsResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -590,8 +815,8 @@ export const xetReadToken: API.OperationMethod<
   XetReadTokenError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<XetReadTokenRequest>,
-  output: __S(41) as any as S.Schema<XetReadTokenResponse>,
+  input: XetReadTokenRequest,
+  output: XetReadTokenResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -605,8 +830,8 @@ export const xetWriteToken: API.OperationMethod<
   XetWriteTokenError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<XetWriteTokenRequest>,
-  output: __S(41) as any as S.Schema<XetWriteTokenResponse>,
+  input: XetWriteTokenRequest,
+  output: XetWriteTokenResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -633,7 +858,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: S.String,
+          type: AddResourceGroupResponseType,
           private: S.Boolean,
           addedBy: S.String,
         }),
@@ -659,14 +884,14 @@ function __c0(j: number): any {
         identifier: "BatchFileOperationsResponseFailedItem",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(BatchFileOperationsResponseFailedItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
           processed: S.Number,
           succeeded: S.Number,
-          failed: __S(4),
+          failed: BatchFileOperationsResponseFailedList,
         }),
       ).annotate({
         identifier: "BatchFileOperationsResponse",
@@ -674,14 +899,14 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provider: S.String,
-          region: S.String,
+          provider: CreateBucketRequestCdnItemProvider,
+          region: CreateBucketRequestCdnItemRegion,
         }),
       ).annotate({
         identifier: "CreateBucketRequestCdnItem",
       });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(CreateBucketRequestCdnItem);
   }
 }
 function __c1(j: number): any {
@@ -692,10 +917,10 @@ function __c1(j: number): any {
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           private: S.optional(S.NullOr(S.Boolean)),
-          visibility: S.optional(S.String),
+          visibility: S.optional(CreateBucketRequestVisibility),
           resourceGroupId: S.optional(S.String),
-          cdn: S.optional(__S(7)),
-          region: S.optional(S.String),
+          cdn: S.optional(CreateBucketRequestCdnList),
+          region: S.optional(CreateBucketRequestRegion),
           description: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/api/buckets/{namespace}/{repo}", code: 200 })),
       ).annotate({ identifier: "CreateBucketRequest" });
@@ -721,7 +946,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: DuplicateXetFilesRequestTargetType,
           name: S.String,
         }),
       ).annotate({
@@ -738,14 +963,14 @@ function __c1(j: number): any {
         identifier: "DuplicateXetFilesRequestFilesItem",
       });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(DuplicateXetFilesRequestFilesItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          target: __S(12),
-          files: __S(14),
+          target: DuplicateXetFilesRequestTarget,
+          files: DuplicateXetFilesRequestFilesList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -769,14 +994,14 @@ function __c2(j: number): any {
         identifier: "DuplicateXetFilesResponseFailedItem",
       });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(DuplicateXetFilesResponseFailedItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
           processed: S.Number,
           succeeded: S.Number,
-          failed: __S(17),
+          failed: DuplicateXetFilesResponseFailedList,
         }),
       ).annotate({
         identifier: "DuplicateXetFilesResponse",
@@ -836,11 +1061,11 @@ function __c3(j: number): any {
           updatedAt: S.String,
           size: S.Number,
           totalFiles: S.Number,
-          repoType: S.String,
-          adminTags: S.optional(__S(21)),
-          disabled: S.optional(__S(22)),
-          cdnRegions: __S(7),
-          resourceGroup: S.optional(__S(23)),
+          repoType: GetBucketDetailsResponseRepoType,
+          adminTags: S.optional(GetBucketDetailsResponseAdminTagsList),
+          disabled: S.optional(GetBucketDetailsResponseDisabled),
+          cdnRegions: GetBucketDetailsResponseCdnRegionsList,
+          resourceGroup: S.optional(GetBucketDetailsResponseResourceGroup),
         }),
       ).annotate({ identifier: "GetBucketDetailsResponse" });
     case 1:
@@ -897,8 +1122,8 @@ function __c3(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           recursive: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(ListFilesRequestSort.pipe(T.Query())),
+          direction: S.optional(ListFilesRequestDirection.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/buckets/{namespace}/{repo}/tree/{path}", code: 200 }),
         ),
@@ -906,7 +1131,7 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: ListFilesResponseBodyItemType,
           path: S.String,
           size: S.optional(S.Number),
           xetHash: S.optional(S.String),
@@ -919,13 +1144,13 @@ function __c3(j: number): any {
         identifier: "ListFilesResponseBodyItem",
       });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(ListFilesResponseBodyItem);
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(31).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListFilesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListFilesResponse",
       });
     case 1:
@@ -949,19 +1174,21 @@ function __c4(j: number): any {
           updatedAt: S.String,
           size: S.Number,
           totalFiles: S.Number,
-          repoType: S.String,
-          adminTags: S.optional(__S(21)),
-          disabled: S.optional(__S(22)),
-          cdnRegions: __S(7),
-          resourceGroup: S.optional(__S(23)),
+          repoType: ListNamespaceBucketsResponseBodyItemRepoType,
+          adminTags: S.optional(ListNamespaceBucketsResponseBodyItemAdminTagsList),
+          disabled: S.optional(GetBucketDetailsResponseDisabled),
+          cdnRegions: ListNamespaceBucketsResponseBodyItemCdnRegionsList,
+          resourceGroup: S.optional(GetBucketDetailsResponseResourceGroup),
         }),
       ).annotate({
         identifier: "ListNamespaceBucketsResponseBodyItem",
       });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(ListNamespaceBucketsResponseBodyItem);
     case 4:
-      return S.suspend(() => __S(35).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListNamespaceBucketsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListNamespaceBucketsResponse",
       });
     case 5:
@@ -969,7 +1196,7 @@ function __c4(j: number): any {
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          paths: S.Unknown,
+          paths: ListPathsInfoRequestPaths,
         }).pipe(
           T.Http({ method: "POST", uri: "/api/buckets/{namespace}/{repo}/paths-info", code: 200 }),
         ),
@@ -980,7 +1207,7 @@ function __c4(j: number): any {
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           private: S.optional(S.Unknown),
-          cdnRegions: S.optional(__S(7)),
+          cdnRegions: S.optional(UpdateBucketSettingsRequestCdnRegionsList),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/buckets/{namespace}/{repo}/settings", code: 200 }),
         ),
@@ -991,7 +1218,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           private: S.optional(S.Boolean),
-          cdnRegions: S.optional(__S(7)),
+          cdnRegions: S.optional(UpdateBucketSettingsResponseCdnRegionsList),
         }),
       ).annotate({
         identifier: "UpdateBucketSettingsResponse",
@@ -1034,26 +1261,5 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "XetWriteTokenRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

@@ -6,13 +6,16 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Tags for the subscription */
 export type AcceptOwnershipRequestPropertiesTagsMap = { [key: string]: string | undefined };
+const AcceptOwnershipRequestPropertiesTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AcceptOwnershipRequestPropertiesTagsMap>;
+
 /** Accept subscription ownership request properties. */
 export interface AcceptOwnershipRequestProperties {
   /** The friendly name of the subscription. */
@@ -22,23 +25,50 @@ export interface AcceptOwnershipRequestProperties {
   /** Tags for the subscription */
   tags?: AcceptOwnershipRequestPropertiesTagsMap;
 }
+const AcceptOwnershipRequestProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AcceptOwnershipRequestProperties>;
+
 export interface AcceptSubscriptionOwnershipRequest {
   /** Subscription Id. */
   subscriptionId: string;
   /** Accept subscription ownership request properties. */
   properties?: AcceptOwnershipRequestProperties;
 }
+const AcceptSubscriptionOwnershipRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AcceptSubscriptionOwnershipRequest>;
+
 export interface AcceptSubscriptionOwnershipResponse {}
+const AcceptSubscriptionOwnershipResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AcceptSubscriptionOwnershipResponse>;
+
 export interface AcceptSubscriptionOwnershipStatusRequest {
   /** Subscription Id. */
   subscriptionId: string;
 }
+const AcceptSubscriptionOwnershipStatusRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AcceptSubscriptionOwnershipStatusRequest>;
+
 /** The accept ownership state of the resource. */
 export type AcceptOwnershipState = "Pending" | "Completed" | "Expired";
+const AcceptOwnershipState = S.String;
+
 /** The provisioning state of the resource. */
 export type ProvisioningState = "Pending" | "Accepted" | "Succeeded";
+const ProvisioningState = S.String;
+
 /** Tags for the subscription */
 export type AcceptOwnershipStatusResponseTagsMap = { [key: string]: string | undefined };
+const AcceptOwnershipStatusResponseTagsMap =
+  AcceptOwnershipRequestPropertiesTagsMap as any as S.Schema<AcceptOwnershipStatusResponseTagsMap>;
+
 /** Subscription Accept Ownership Response */
 export interface AcceptOwnershipStatusResponse {
   /** Newly created subscription Id. */
@@ -54,19 +84,39 @@ export interface AcceptOwnershipStatusResponse {
   /** Tags for the subscription */
   tags?: AcceptOwnershipStatusResponseTagsMap;
 }
+const AcceptOwnershipStatusResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AcceptOwnershipStatusResponse>;
+
 export interface CancelSubscriptionRequest {
   /** Subscription Id. */
   subscriptionId: string;
 }
+const CancelSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CancelSubscriptionRequest>;
+
 /** The ID of the canceled subscription */
 export interface CanceledSubscriptionId {
   /** The ID of the canceled subscription */
   subscriptionId?: string;
 }
+const CanceledSubscriptionId = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CanceledSubscriptionId>;
+
 /** The workload type of the subscription. It can be either Production or DevTest. */
 export type Workload = "Production" | "DevTest";
+const Workload = S.String;
+
 /** Tags for the subscription */
 export type PutAliasRequestAdditionalPropertiesTagsMap = { [key: string]: string | undefined };
+const PutAliasRequestAdditionalPropertiesTagsMap =
+  AcceptOwnershipRequestPropertiesTagsMap as any as S.Schema<PutAliasRequestAdditionalPropertiesTagsMap>;
+
 /** Put subscription additional properties. */
 export interface PutAliasRequestAdditionalProperties {
   /** Management group Id for the subscription. */
@@ -78,6 +128,11 @@ export interface PutAliasRequestAdditionalProperties {
   /** Tags for the subscription */
   tags?: PutAliasRequestAdditionalPropertiesTagsMap;
 }
+const PutAliasRequestAdditionalProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<PutAliasRequestAdditionalProperties>;
+
 /** Put subscription properties. */
 export interface PutAliasRequestProperties {
   /** The friendly name of the subscription. */
@@ -91,19 +146,31 @@ export interface PutAliasRequestProperties {
   /** Put alias request additional properties. */
   additionalProperties?: PutAliasRequestAdditionalProperties;
 }
+const PutAliasRequestProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<PutAliasRequestProperties>;
+
 export interface CreateAliasRequest {
   /** AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn't have any other lifecycle need beyond the request for subscription creation. */
   aliasName: string;
   /** Put alias request properties. */
   properties?: PutAliasRequestProperties;
 }
+const CreateAliasRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CreateAliasRequest>;
+
 /** The provisioning state of the resource. */
 export type SubscriptionAliasResponsePropertiesProvisioningState =
   | "Accepted"
   | "Succeeded"
   | "Failed";
+const SubscriptionAliasResponsePropertiesProvisioningState = S.String;
+
 /** Tags for the subscription */
 export type SubscriptionAliasResponsePropertiesTagsMap = { [key: string]: string | undefined };
+const SubscriptionAliasResponsePropertiesTagsMap =
+  AcceptOwnershipRequestPropertiesTagsMap as any as S.Schema<SubscriptionAliasResponsePropertiesTagsMap>;
+
 /** Put subscription creation result properties. */
 export interface SubscriptionAliasResponseProperties {
   /** Newly created subscription Id. */
@@ -128,18 +195,27 @@ export interface SubscriptionAliasResponseProperties {
   /** Tags for the subscription */
   tags?: SubscriptionAliasResponsePropertiesTagsMap;
 }
+const SubscriptionAliasResponseProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<SubscriptionAliasResponseProperties>;
+
 /** The type of identity that created the resource. */
 export type SubscriptionAliasResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const SubscriptionAliasResponseSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SubscriptionAliasResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const SubscriptionAliasResponseSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SubscriptionAliasResponseSystemData {
   /** The identity that created the resource. */
@@ -155,6 +231,11 @@ export interface SubscriptionAliasResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SubscriptionAliasResponseSystemData = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<SubscriptionAliasResponseSystemData>;
+
 /** Subscription Information with the alias. */
 export interface SubscriptionAliasResponse {
   /** Fully qualified ID for the alias resource. */
@@ -168,28 +249,51 @@ export interface SubscriptionAliasResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: SubscriptionAliasResponseSystemData;
 }
+const SubscriptionAliasResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<SubscriptionAliasResponse>;
+
 export interface DeleteAliasRequest {
   /** AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn't have any other lifecycle need beyond the request for subscription creation. */
   aliasName: string;
 }
+const DeleteAliasRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<DeleteAliasRequest>;
+
 export interface DeleteAliasResponse {}
+const DeleteAliasResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DeleteAliasResponse>;
+
 export interface EnableSubscriptionRequest {
   /** Subscription Id. */
   subscriptionId: string;
 }
+const EnableSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<EnableSubscriptionRequest>;
+
 /** The ID of the subscriptions that is being enabled */
 export interface EnabledSubscriptionId {
   /** The ID of the subscriptions that is being enabled */
   subscriptionId?: string;
 }
+const EnabledSubscriptionId = CanceledSubscriptionId as any as S.Schema<EnabledSubscriptionId>;
+
 export interface GetAliasRequest {
   /** AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn't have any other lifecycle need beyond the request for subscription creation. */
   aliasName: string;
 }
+const GetAliasRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetAliasRequest>;
+
 export interface GetBillingAccountPolicyRequest {
   /** Billing Account Id. */
   billingAccountId: string;
 }
+const GetBillingAccountPolicyRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetBillingAccountPolicyRequest>;
+
 /** Billing account service tenant. */
 export interface ServiceTenantResponse {
   /** Service tenant id. */
@@ -197,9 +301,19 @@ export interface ServiceTenantResponse {
   /** Service tenant name. */
   tenantName?: string;
 }
+const ServiceTenantResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ServiceTenantResponse>;
+
 /** Service tenant for the billing account. */
 export type BillingAccountPoliciesResponsePropertiesServiceTenantsList =
   Array<ServiceTenantResponse>;
+const BillingAccountPoliciesResponsePropertiesServiceTenantsList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<BillingAccountPoliciesResponsePropertiesServiceTenantsList>;
+
 /** Put billing account policies response properties. */
 export interface BillingAccountPoliciesResponseProperties {
   /** Service tenant for the billing account. */
@@ -207,6 +321,11 @@ export interface BillingAccountPoliciesResponseProperties {
   /** Determine if the transfers are allowed for the billing account */
   allowTransfers?: boolean;
 }
+const BillingAccountPoliciesResponseProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<BillingAccountPoliciesResponseProperties>;
+
 /** The type of identity that created the resource. */
 export type BillingAccountPoliciesResponseSystemDataCreatedByType =
   | "User"
@@ -234,6 +353,9 @@ export interface BillingAccountPoliciesResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const BillingAccountPoliciesResponseSystemData =
+  SubscriptionAliasResponseSystemData as any as S.Schema<BillingAccountPoliciesResponseSystemData>;
+
 /** Billing account policies information. */
 export interface BillingAccountPoliciesResponse {
   /** Fully qualified ID for the policy. */
@@ -247,18 +369,43 @@ export interface BillingAccountPoliciesResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: BillingAccountPoliciesResponseSystemData;
 }
+const BillingAccountPoliciesResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<BillingAccountPoliciesResponse>;
+
 export interface GetSubscriptionOperationRequest {
   /** The operation ID, which can be found from the Location field in the generate recommendation response header. */
   operationId: string;
 }
+const GetSubscriptionOperationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetSubscriptionOperationRequest>;
+
 /** The created subscription object. */
 export interface SubscriptionCreationResult {
   /** The link to the new subscription. Use this link to check the status of subscription creation operation. */
   subscriptionLink?: string;
 }
+const SubscriptionCreationResult = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<SubscriptionCreationResult>;
+
 export interface GetSubscriptionPolicyPolicyForTenantRequest {}
+const GetSubscriptionPolicyPolicyForTenantRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetSubscriptionPolicyPolicyForTenantRequest>;
+
 /** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
 export type TenantPolicyExemptedPrincipalsList = Array<string>;
+const TenantPolicyExemptedPrincipalsList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<TenantPolicyExemptedPrincipalsList>;
+
 /** Tenant policy. */
 export interface TenantPolicy {
   /** Policy Id. */
@@ -270,6 +417,8 @@ export interface TenantPolicy {
   /** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
   exemptedPrincipals?: TenantPolicyExemptedPrincipalsList;
 }
+const TenantPolicy = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<TenantPolicy>;
+
 /** The type of identity that created the resource. */
 export type GetTenantPolicyResponseSystemDataCreatedByType =
   | "User"
@@ -297,6 +446,9 @@ export interface GetTenantPolicyResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetTenantPolicyResponseSystemData =
+  SubscriptionAliasResponseSystemData as any as S.Schema<GetTenantPolicyResponseSystemData>;
+
 /** Tenant policy Information. */
 export interface GetTenantPolicyResponse {
   /** Policy Id. */
@@ -310,9 +462,21 @@ export interface GetTenantPolicyResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetTenantPolicyResponseSystemData;
 }
+const GetTenantPolicyResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetTenantPolicyResponse>;
+
 export interface ListAliasRequest {}
+const ListAliasRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ListAliasRequest>;
+
 /** The list of alias. */
 export type SubscriptionAliasListResultValueList = Array<SubscriptionAliasResponse>;
+const SubscriptionAliasListResultValueList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<SubscriptionAliasListResultValueList>;
+
 /** The list of aliases. */
 export interface SubscriptionAliasListResult {
   /** The list of alias. */
@@ -320,7 +484,17 @@ export interface SubscriptionAliasListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
+const SubscriptionAliasListResult = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<SubscriptionAliasListResult>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft.Subscription */
@@ -332,6 +506,8 @@ export interface OperationDisplay {
   /** Localized friendly description for the operation */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<OperationDisplay>;
+
 /** REST API operation */
 export interface Operation {
   /** Operation name: {provider}/{resource}/{operation} */
@@ -341,8 +517,15 @@ export interface Operation {
   /** The object that represents the operation. */
   display?: OperationDisplay;
 }
+const Operation = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Operation>;
+
 /** List of operations. */
 export type OperationListResultValueList = Array<Operation>;
+const OperationListResultValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<OperationListResultValueList>;
+
 /** Result of the request to list operations. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationListResult {
   /** List of operations. */
@@ -350,9 +533,21 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
+const OperationListResult = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<OperationListResult>;
+
 export interface ListSubscriptionPolicyPolicyForTenantRequest {}
+const ListSubscriptionPolicyPolicyForTenantRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListSubscriptionPolicyPolicyForTenantRequest>;
+
 /** The list of tenant policies. */
 export type GetTenantPolicyListResponseValueList = Array<GetTenantPolicyResponse>;
+const GetTenantPolicyListResponseValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetTenantPolicyListResponseValueList>;
+
 /** Tenant policy information list. */
 export interface GetTenantPolicyListResponse {
   /** The list of tenant policies. */
@@ -360,19 +555,37 @@ export interface GetTenantPolicyListResponse {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
+const GetTenantPolicyListResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<GetTenantPolicyListResponse>;
+
 export interface RenameSubscriptionRequest {
   /** Subscription Id. */
   subscriptionId: string;
   /** New subscription name */
   subscriptionName?: string;
 }
+const RenameSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<RenameSubscriptionRequest>;
+
 /** The ID of the subscriptions that is being renamed */
 export interface RenamedSubscriptionId {
   /** The ID of the subscriptions that is being renamed */
   subscriptionId?: string;
 }
+const RenamedSubscriptionId = CanceledSubscriptionId as any as S.Schema<RenamedSubscriptionId>;
+
 /** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
 export type SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList = Array<string>;
+const SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList =
+  /*@__PURE__*/ __L.at(
+    __c5,
+    1,
+  ) as any as S.Schema<SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList>;
+
 export interface SubscriptionPolicyAddUpdatePolicyForTenantRequest {
   /** Blocks the leaving of subscriptions from user's tenant. */
   blockSubscriptionsLeavingTenant?: boolean;
@@ -381,6 +594,11 @@ export interface SubscriptionPolicyAddUpdatePolicyForTenantRequest {
   /** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
   exemptedPrincipals?: SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList;
 }
+const SubscriptionPolicyAddUpdatePolicyForTenantRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<SubscriptionPolicyAddUpdatePolicyForTenantRequest>;
+
 export type AcceptSubscriptionOwnershipError = AzureOpError;
 /** Accept subscription ownership. */
 export const AcceptSubscriptionOwnership: API.OperationMethod<
@@ -389,8 +607,8 @@ export const AcceptSubscriptionOwnership: API.OperationMethod<
   AcceptSubscriptionOwnershipError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<AcceptSubscriptionOwnershipRequest>,
-  output: __S(3) as any as S.Schema<AcceptSubscriptionOwnershipResponse>,
+  input: AcceptSubscriptionOwnershipRequest,
+  output: AcceptSubscriptionOwnershipResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -404,8 +622,8 @@ export const AcceptSubscriptionOwnershipStatus: API.OperationMethod<
   AcceptSubscriptionOwnershipStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<AcceptSubscriptionOwnershipStatusRequest>,
-  output: __S(5) as any as S.Schema<AcceptOwnershipStatusResponse>,
+  input: AcceptSubscriptionOwnershipStatusRequest,
+  output: AcceptOwnershipStatusResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -419,8 +637,8 @@ export const CancelSubscription: API.OperationMethod<
   CancelSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CancelSubscriptionRequest>,
-  output: __S(7) as any as S.Schema<CanceledSubscriptionId>,
+  input: CancelSubscriptionRequest,
+  output: CanceledSubscriptionId,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -434,8 +652,8 @@ export const CreateAlias: API.OperationMethod<
   CreateAliasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CreateAliasRequest>,
-  output: __S(13) as any as S.Schema<SubscriptionAliasResponse>,
+  input: CreateAliasRequest,
+  output: SubscriptionAliasResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -449,8 +667,8 @@ export const DeleteAlias: API.OperationMethod<
   DeleteAliasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<DeleteAliasRequest>,
-  output: __S(15) as any as S.Schema<DeleteAliasResponse>,
+  input: DeleteAliasRequest,
+  output: DeleteAliasResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -464,8 +682,8 @@ export const EnableSubscription: API.OperationMethod<
   EnableSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<EnableSubscriptionRequest>,
-  output: __S(7) as any as S.Schema<EnabledSubscriptionId>,
+  input: EnableSubscriptionRequest,
+  output: EnabledSubscriptionId,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -479,8 +697,8 @@ export const GetAlias: API.OperationMethod<
   GetAliasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<GetAliasRequest>,
-  output: __S(13) as any as S.Schema<SubscriptionAliasResponse>,
+  input: GetAliasRequest,
+  output: SubscriptionAliasResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -494,8 +712,8 @@ export const GetBillingAccountPolicy: API.OperationMethod<
   GetBillingAccountPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<GetBillingAccountPolicyRequest>,
-  output: __S(22) as any as S.Schema<BillingAccountPoliciesResponse>,
+  input: GetBillingAccountPolicyRequest,
+  output: BillingAccountPoliciesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -509,8 +727,8 @@ export const GetSubscriptionOperation: API.OperationMethod<
   GetSubscriptionOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<GetSubscriptionOperationRequest>,
-  output: __S(24) as any as S.Schema<SubscriptionCreationResult>,
+  input: GetSubscriptionOperationRequest,
+  output: SubscriptionCreationResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -524,8 +742,8 @@ export const GetSubscriptionPolicyPolicyForTenant: API.OperationMethod<
   GetSubscriptionPolicyPolicyForTenantError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<GetSubscriptionPolicyPolicyForTenantRequest>,
-  output: __S(28) as any as S.Schema<GetTenantPolicyResponse>,
+  input: GetSubscriptionPolicyPolicyForTenantRequest,
+  output: GetTenantPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -539,8 +757,8 @@ export const ListAlias: API.OperationMethod<
   ListAliasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<ListAliasRequest>,
-  output: __S(31) as any as S.Schema<SubscriptionAliasListResult>,
+  input: ListAliasRequest,
+  output: SubscriptionAliasListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -554,8 +772,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<ListOperationsRequest>,
-  output: __S(36) as any as S.Schema<OperationListResult>,
+  input: ListOperationsRequest,
+  output: OperationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -569,8 +787,8 @@ export const ListSubscriptionPolicyPolicyForTenant: API.OperationMethod<
   ListSubscriptionPolicyPolicyForTenantError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<ListSubscriptionPolicyPolicyForTenantRequest>,
-  output: __S(39) as any as S.Schema<GetTenantPolicyListResponse>,
+  input: ListSubscriptionPolicyPolicyForTenantRequest,
+  output: GetTenantPolicyListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -584,8 +802,8 @@ export const RenameSubscription: API.OperationMethod<
   RenameSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<RenameSubscriptionRequest>,
-  output: __S(7) as any as S.Schema<RenamedSubscriptionId>,
+  input: RenameSubscriptionRequest,
+  output: RenamedSubscriptionId,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -599,8 +817,8 @@ export const SubscriptionPolicyAddUpdatePolicyForTenant: API.OperationMethod<
   SubscriptionPolicyAddUpdatePolicyForTenantError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<SubscriptionPolicyAddUpdatePolicyForTenantRequest>,
-  output: __S(28) as any as S.Schema<GetTenantPolicyResponse>,
+  input: SubscriptionPolicyAddUpdatePolicyForTenantRequest,
+  output: GetTenantPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -616,7 +834,7 @@ function __c0(j: number): any {
         S.Struct({
           displayName: S.String,
           managementGroupId: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(AcceptOwnershipRequestPropertiesTagsMap),
         }),
       ).annotate({
         identifier: "AcceptOwnershipRequestProperties",
@@ -625,7 +843,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1)),
+          properties: S.optional(AcceptOwnershipRequestProperties),
         }).pipe(
           T.Http({
             method: "POST",
@@ -660,12 +878,12 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.optional(S.String),
-          acceptOwnershipState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          acceptOwnershipState: S.optional(AcceptOwnershipState),
+          provisioningState: S.optional(ProvisioningState),
           billingOwner: S.optional(S.String),
           subscriptionTenantId: S.optional(S.String),
           displayName: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(AcceptOwnershipStatusResponseTagsMap),
         }),
       ).annotate({
         identifier: "AcceptOwnershipStatusResponse",
@@ -701,7 +919,7 @@ function __c1(j: number): any {
           managementGroupId: S.optional(S.String),
           subscriptionTenantId: S.optional(S.String),
           subscriptionOwnerId: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(PutAliasRequestAdditionalPropertiesTagsMap),
         }),
       ).annotate({
         identifier: "PutAliasRequestAdditionalProperties",
@@ -710,11 +928,11 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          workload: S.optional(S.String),
+          workload: S.optional(Workload),
           billingScope: S.optional(S.String),
           subscriptionId: S.optional(S.String),
           resellerId: S.optional(S.String),
-          additionalProperties: S.optional(__S(8)),
+          additionalProperties: S.optional(PutAliasRequestAdditionalProperties),
         }),
       ).annotate({
         identifier: "PutAliasRequestProperties",
@@ -723,7 +941,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           aliasName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(9)),
+          properties: S.optional(PutAliasRequestProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -738,16 +956,16 @@ function __c1(j: number): any {
         S.Struct({
           subscriptionId: S.optional(S.String),
           displayName: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(SubscriptionAliasResponsePropertiesProvisioningState),
           acceptOwnershipUrl: S.optional(S.String),
-          acceptOwnershipState: S.optional(S.String),
+          acceptOwnershipState: S.optional(AcceptOwnershipState),
           billingScope: S.optional(S.String),
-          workload: S.optional(S.String),
+          workload: S.optional(Workload),
           resellerId: S.optional(S.String),
           subscriptionOwnerId: S.optional(S.String),
           managementGroupId: S.optional(S.String),
           createdTime: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(SubscriptionAliasResponsePropertiesTagsMap),
         }),
       ).annotate({
         identifier: "SubscriptionAliasResponseProperties",
@@ -756,10 +974,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SubscriptionAliasResponseSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SubscriptionAliasResponseSystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -771,8 +989,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(11)),
-          systemData: S.optional(__S(12)),
+          properties: S.optional(SubscriptionAliasResponseProperties),
+          systemData: S.optional(SubscriptionAliasResponseSystemData),
         }),
       ).annotate({
         identifier: "SubscriptionAliasResponse",
@@ -849,11 +1067,11 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "ServiceTenantResponse" });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(ServiceTenantResponse);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          serviceTenants: S.optional(__S(20)),
+          serviceTenants: S.optional(BillingAccountPoliciesResponsePropertiesServiceTenantsList),
           allowTransfers: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -865,8 +1083,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(21)),
-          systemData: S.optional(__S(12)),
+          properties: S.optional(BillingAccountPoliciesResponseProperties),
+          systemData: S.optional(BillingAccountPoliciesResponseSystemData),
         }),
       ).annotate({
         identifier: "BillingAccountPoliciesResponse",
@@ -919,7 +1137,7 @@ function __c3(j: number): any {
           policyId: S.optional(S.String),
           blockSubscriptionsLeavingTenant: S.optional(S.Boolean),
           blockSubscriptionsIntoTenant: S.optional(S.Boolean),
-          exemptedPrincipals: S.optional(__S(26)),
+          exemptedPrincipals: S.optional(TenantPolicyExemptedPrincipalsList),
         }),
       ).annotate({ identifier: "TenantPolicy" });
     case 4:
@@ -928,8 +1146,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(27)),
-          systemData: S.optional(__S(12)),
+          properties: S.optional(TenantPolicy),
+          systemData: S.optional(GetTenantPolicyResponseSystemData),
         }),
       ).annotate({ identifier: "GetTenantPolicyResponse" });
     case 5:
@@ -944,11 +1162,11 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListAliasRequest" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(SubscriptionAliasResponse);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(30)),
+          value: S.optional(SubscriptionAliasListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -983,15 +1201,15 @@ function __c4(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(33)),
+          display: S.optional(OperationDisplay),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(Operation);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(35)),
+          value: S.optional(OperationListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -1009,11 +1227,11 @@ function __c4(j: number): any {
         identifier: "ListSubscriptionPolicyPolicyForTenantRequest",
       });
     case 6:
-      return S.Array(__S(28));
+      return S.Array(GetTenantPolicyResponse);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(38)),
+          value: S.optional(GetTenantPolicyListResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1046,7 +1264,9 @@ function __c5(j: number): any {
         S.Struct({
           blockSubscriptionsLeavingTenant: S.optional(S.Boolean),
           blockSubscriptionsIntoTenant: S.optional(S.Boolean),
-          exemptedPrincipals: S.optional(__S(41)),
+          exemptedPrincipals: S.optional(
+            SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList,
+          ),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1058,26 +1278,5 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "SubscriptionPolicyAddUpdatePolicyForTenantRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

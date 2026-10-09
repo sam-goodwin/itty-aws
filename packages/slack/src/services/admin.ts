@@ -7,8 +7,6 @@ import { slackPaginate } from "../pagination.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
@@ -18,16 +16,31 @@ export interface AddAliasRequest {
   /** Name of the emoji for which the alias is being made. Any wrapping whitespace or colons will be automatically trimmed. */
   alias_for: string;
 }
+const AddAliasRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AddAliasRequest>;
+
 export interface AddAliasResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const AddAliasResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AddAliasResponse>;
+
 /** List of user IDs to allow for named_entities visibility */
 export type AddAppsPermissionsRequestUserIdsList = Array<string>;
+const AddAppsPermissionsRequestUserIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AddAppsPermissionsRequestUserIdsList>;
+
 /** List of encoded usergroup IDs */
 export type AddAppsPermissionsRequestUsergroupIdsList = Array<string>;
+const AddAppsPermissionsRequestUsergroupIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<AddAppsPermissionsRequestUsergroupIdsList>;
+
 /** List of encoded channel IDs to add to the channel restriction list. Interpretation depends on the app's `channel_restriction_mode`, which is configured via the `admin.apps.permissions.set` method. */
 export type AddAppsPermissionsRequestChannelIdsList = Array<string>;
+const AddAppsPermissionsRequestChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<AddAppsPermissionsRequestChannelIdsList>;
+
 export interface AddAppsPermissionsRequest {
   /** Encoded ID of the app */
   app_id: string;
@@ -38,14 +51,30 @@ export interface AddAppsPermissionsRequest {
   /** List of encoded channel IDs to add to the channel restriction list. Interpretation depends on the app's `channel_restriction_mode`, which is configured via the `admin.apps.permissions.set` method. */
   channel_ids?: AddAppsPermissionsRequestChannelIdsList;
 }
+const AddAppsPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AddAppsPermissionsRequest>;
+
 export interface AddAppsPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const AddAppsPermissionsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AddAppsPermissionsResponse>;
+
 /** List of the entity IDs for which roles will be assigned. These can be Org IDs, Team IDs or Channel IDs */
 export type AddAssignmentsRequestEntityIdsList = Array<string>;
+const AddAssignmentsRequestEntityIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<AddAssignmentsRequestEntityIdsList>;
+
 /** List of IDs from the users to be added to the given role */
 export type AddAssignmentsRequestUserIdsList = Array<string>;
+const AddAssignmentsRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<AddAssignmentsRequestUserIdsList>;
+
 export interface AddAssignmentsRequest {
   /** ID of the role to which users will be assigned */
   role_id: string;
@@ -54,14 +83,27 @@ export interface AddAssignmentsRequest {
   /** List of IDs from the users to be added to the given role */
   user_ids: AddAssignmentsRequestUserIdsList;
 }
+const AddAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AddAssignmentsRequest>;
+
 export interface AddAssignmentsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   /** A string representation of the error type */
   error?: string;
 }
+const AddAssignmentsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AddAssignmentsResponse>;
+
 /** Comma separated string of channel IDs. */
 export type AddChannelsRequestChannelIdsList = Array<string>;
+const AddChannelsRequestChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<AddChannelsRequestChannelIdsList>;
+
 export interface AddChannelsRequest {
   /** ID of the IDP group to add default channels for. */
   usergroup_id: string;
@@ -70,8 +112,13 @@ export interface AddChannelsRequest {
   /** Comma separated string of channel IDs. */
   channel_ids: AddChannelsRequestChannelIdsList;
 }
+const AddChannelsRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<AddChannelsRequest>;
+
 /** List of channel IDs that are not valid for this action */
 export type AddChannelsResponseInvalidChannelsList = Array<string>;
+const AddChannelsResponseInvalidChannelsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<AddChannelsResponseInvalidChannelsList>;
+
 export interface AddChannelsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -80,16 +127,22 @@ export interface AddChannelsResponse {
   /** List of channel IDs that are not valid for this action */
   invalid_channels?: AddChannelsResponseInvalidChannelsList;
 }
+const AddChannelsResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AddChannelsResponse>;
+
 export interface AddEmojiRequest {
   /** The name of the emoji to be added (using lower-case letters only). Colons (`:myemoji:`) around the value are not required, although they may be included. */
   name: string;
   /** The URL of a file to use as an image for the emoji. Square images under 128KB and with transparent backgrounds work best. */
   url?: string;
 }
+const AddEmojiRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AddEmojiRequest>;
+
 export interface AddEmojiResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const AddEmojiResponse = AddAliasResponse as any as S.Schema<AddEmojiResponse>;
+
 export interface AddGroupRequest {
   /** The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization. */
   team_id?: string;
@@ -98,11 +151,18 @@ export interface AddGroupRequest {
   /** The channel to link this group to. */
   channel_id: string;
 }
+const AddGroupRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<AddGroupRequest>;
+
 export interface AddGroupResponse {
   ok: boolean;
 }
+const AddGroupResponse = AddAliasResponse as any as S.Schema<AddGroupResponse>;
+
 /** A comma separated list of encoded team (workspace) IDs. Each workspace *MUST* belong to the organization associated with the token. */
 export type AddTeamsRequestTeamIdsList = Array<string>;
+const AddTeamsRequestTeamIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<AddTeamsRequestTeamIdsList>;
+
 export interface AddTeamsRequest {
   /** An encoded usergroup (IDP Group) ID. */
   usergroup_id: string;
@@ -111,18 +171,27 @@ export interface AddTeamsRequest {
   /** When `true`, this method automatically creates new workspace accounts for the IDP group members. */
   auto_provision?: boolean;
 }
+const AddTeamsRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<AddTeamsRequest>;
+
 export interface AddTeamsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const AddTeamsResponse = AddAliasResponse as any as S.Schema<AddTeamsResponse>;
+
 /** The encoded user IDs to add to the usergroup, provided as a JSON array or a comma-separated string. */
 export type AddUsersRequestUsersList = Array<string>;
+const AddUsersRequestUsersList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<AddUsersRequestUsersList>;
+
 export interface AddUsersRequest {
   /** ID of the usergroup to add users to */
   id: string;
   /** The encoded user IDs to add to the usergroup, provided as a JSON array or a comma-separated string. */
   users: AddUsersRequestUsersList;
 }
+const AddUsersRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<AddUsersRequest>;
+
 export type AddUsersResponseInvalidUsersItemReason =
   | "guest_user"
   | "deleted_user"
@@ -131,11 +200,23 @@ export type AddUsersResponseInvalidUsersItemReason =
   | "channel_limit_exceeded"
   | "multi_workspace_idp_group"
   | "usergroup_limit_exceeded";
+const AddUsersResponseInvalidUsersItemReason = S.String;
+
 export interface AddUsersResponseInvalidUsersItem {
   user_id: string;
   reason: AddUsersResponseInvalidUsersItemReason;
 }
+const AddUsersResponseInvalidUsersItem = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<AddUsersResponseInvalidUsersItem>;
+
 export type AddUsersResponseInvalidUsersList = Array<AddUsersResponseInvalidUsersItem>;
+const AddUsersResponseInvalidUsersList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<AddUsersResponseInvalidUsersList>;
+
 export interface AddUsersResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -143,20 +224,36 @@ export interface AddUsersResponse {
   error?: string;
   invalid_users?: AddUsersResponseInvalidUsersList;
 }
+const AddUsersResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<AddUsersResponse>;
+
 /** Array of workflow IDs to edit; max 50 */
 export type AddWorkflowsCollaboratorRequestWorkflowIdsList = Array<string>;
+const AddWorkflowsCollaboratorRequestWorkflowIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<AddWorkflowsCollaboratorRequestWorkflowIdsList>;
+
 /** Array of collaborators (encoded user IDs) to add; max 50 */
 export type AddWorkflowsCollaboratorRequestCollaboratorIdsList = Array<string>;
+const AddWorkflowsCollaboratorRequestCollaboratorIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<AddWorkflowsCollaboratorRequestCollaboratorIdsList>;
+
 export interface AddWorkflowsCollaboratorRequest {
   /** Array of workflow IDs to edit; max 50 */
   workflow_ids: AddWorkflowsCollaboratorRequestWorkflowIdsList;
   /** Array of collaborators (encoded user IDs) to add; max 50 */
   collaborator_ids: AddWorkflowsCollaboratorRequestCollaboratorIdsList;
 }
+const AddWorkflowsCollaboratorRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<AddWorkflowsCollaboratorRequest>;
+
 export interface AddWorkflowsCollaboratorResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const AddWorkflowsCollaboratorResponse =
+  AddAppsPermissionsResponse as any as S.Schema<AddWorkflowsCollaboratorResponse>;
+
 export interface AnalyticsMessagesActivityRequest {
   /** Channel ID for channel of the message activity to query. */
   channel: string;
@@ -169,11 +266,21 @@ export interface AnalyticsMessagesActivityRequest {
   /** Maximum number of entries to return. Defaults to 50 if not passed. Max allowed is 100. */
   limit?: number;
 }
+const AnalyticsMessagesActivityRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<AnalyticsMessagesActivityRequest>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export interface AnalyticsMessagesActivityResponseResponseMetadata {
   /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
+const AnalyticsMessagesActivityResponseResponseMetadata = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<AnalyticsMessagesActivityResponseResponseMetadata>;
+
 export interface AnalyticsMessagesActivityResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -181,6 +288,11 @@ export interface AnalyticsMessagesActivityResponse {
   response_metadata?: AnalyticsMessagesActivityResponseResponseMetadata;
   message_activities: unknown;
 }
+const AnalyticsMessagesActivityResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<AnalyticsMessagesActivityResponse>;
+
 export interface AnalyticsMessagesMetadataRequest {
   /** Channel ID for channel containing the messages to query. */
   channel: string;
@@ -191,6 +303,11 @@ export interface AnalyticsMessagesMetadataRequest {
   /** Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](https://docs.slack.dev/apis/web-api/pagination) for more detail. */
   cursor?: string;
 }
+const AnalyticsMessagesMetadataRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<AnalyticsMessagesMetadataRequest>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type AnalyticsMessagesMetadataResponseResponseMetadata =
   AnalyticsMessagesActivityResponseResponseMetadata;
@@ -200,9 +317,19 @@ export interface AnalyticsMessagesMetadataResponseMessagesItemReactionsItem {
   /** Number of times this reaction was used */
   count: number;
 }
+const AnalyticsMessagesMetadataResponseMessagesItemReactionsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<AnalyticsMessagesMetadataResponseMessagesItemReactionsItem>;
+
 /** An array of reaction counts */
 export type AnalyticsMessagesMetadataResponseMessagesItemReactionsList =
   Array<AnalyticsMessagesMetadataResponseMessagesItemReactionsItem>;
+const AnalyticsMessagesMetadataResponseMessagesItemReactionsList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<AnalyticsMessagesMetadataResponseMessagesItemReactionsList>;
+
 export interface AnalyticsMessagesMetadataResponseMessagesItemFilesItem {
   /** Encoded file ID */
   id: string;
@@ -233,9 +360,19 @@ export interface AnalyticsMessagesMetadataResponseMessagesItemFilesItem {
   /** Display type for media files */
   media_display_type?: string;
 }
+const AnalyticsMessagesMetadataResponseMessagesItemFilesItem = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<AnalyticsMessagesMetadataResponseMessagesItemFilesItem>;
+
 /** An array of files attached to the message */
 export type AnalyticsMessagesMetadataResponseMessagesItemFilesList =
   Array<AnalyticsMessagesMetadataResponseMessagesItemFilesItem>;
+const AnalyticsMessagesMetadataResponseMessagesItemFilesList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<AnalyticsMessagesMetadataResponseMessagesItemFilesList>;
+
 export interface AnalyticsMessagesMetadataResponseMessagesItem {
   /** Encoded ID of user who authored message */
   user_id?: string;
@@ -254,9 +391,19 @@ export interface AnalyticsMessagesMetadataResponseMessagesItem {
   /** An array of files attached to the message */
   files?: AnalyticsMessagesMetadataResponseMessagesItemFilesList;
 }
+const AnalyticsMessagesMetadataResponseMessagesItem = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<AnalyticsMessagesMetadataResponseMessagesItem>;
+
 /** An array of message metadata */
 export type AnalyticsMessagesMetadataResponseMessagesList =
   Array<AnalyticsMessagesMetadataResponseMessagesItem>;
+const AnalyticsMessagesMetadataResponseMessagesList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<AnalyticsMessagesMetadataResponseMessagesList>;
+
 export interface AnalyticsMessagesMetadataResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -265,6 +412,11 @@ export interface AnalyticsMessagesMetadataResponse {
   /** An array of message metadata */
   messages: AnalyticsMessagesMetadataResponseMessagesList;
 }
+const AnalyticsMessagesMetadataResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<AnalyticsMessagesMetadataResponse>;
+
 export interface ApproveAppRequest {
   /** Auto-create an Admin-Approved App automation rule that pre-approves future child app installs from this manager app. */
   allow_child_auto_install?: boolean;
@@ -281,20 +433,32 @@ export interface ApproveAppRequest {
   /** Bot scopes to approve for the app */
   bot_scopes?: string;
 }
+const ApproveAppRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ApproveAppRequest>;
+
 export interface ApproveAppResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const ApproveAppResponse = AddAliasResponse as any as S.Schema<ApproveAppResponse>;
+
 export interface ApproveInviteRequestRequest {
   /** ID for the workspace where the invite request was made. */
   team_id?: string;
   /** ID of the request to invite. */
   invite_request_id: string;
 }
+const ApproveInviteRequestRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ApproveInviteRequestRequest>;
+
 export interface ApproveInviteRequestResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const ApproveInviteRequestResponse =
+  AddAppsPermissionsResponse as any as S.Schema<ApproveInviteRequestResponse>;
+
 export interface AppsRestrictRequest {
   /** The id of the app to restrict. */
   app_id?: string;
@@ -305,19 +469,34 @@ export interface AppsRestrictRequest {
   /** The ID of the enterprise to approve the app on */
   enterprise_id?: string;
 }
+const AppsRestrictRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<AppsRestrictRequest>;
+
 export interface AppsRestrictResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const AppsRestrictResponse = AddAliasResponse as any as S.Schema<AppsRestrictResponse>;
+
 export interface ArchiveConversationRequest {
   /** The channel to archive. */
   channel_id: string;
 }
+const ArchiveConversationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ArchiveConversationRequest>;
+
 export interface ArchiveConversationResponse {
   ok: boolean;
 }
+const ArchiveConversationResponse =
+  AddAppsPermissionsResponse as any as S.Schema<ArchiveConversationResponse>;
+
 /** Array of IDs to assign to the policy. */
 export type AssignEntitiesRequestEntityIdsList = Array<string>;
+const AssignEntitiesRequestEntityIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<AssignEntitiesRequestEntityIdsList>;
+
 export interface AssignEntitiesRequest {
   /** The name of the authentication policy to assign the entities to. Currently, `email_password` is the only policy that may be used with this method. */
   policy_name: string;
@@ -326,12 +505,22 @@ export interface AssignEntitiesRequest {
   /** Array of IDs to assign to the policy. */
   entity_ids: AssignEntitiesRequestEntityIdsList;
 }
+const AssignEntitiesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<AssignEntitiesRequest>;
+
 export interface AssignEntitiesResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   /** Count of entities under the policy and provided filter conditions */
   entity_total_count: number;
 }
+const AssignEntitiesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<AssignEntitiesResponse>;
+
 export interface AssignUserRequest {
   /** The ID (`T1234`) of the workspace. */
   team_id: string;
@@ -344,25 +533,47 @@ export interface AssignUserRequest {
   /** Comma separated values of channel IDs to add user in the new workspace. */
   channel_ids?: string;
 }
+const AssignUserRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<AssignUserRequest>;
+
 export interface AssignUserResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const AssignUserResponse = AddAliasResponse as any as S.Schema<AssignUserResponse>;
+
 /** An array of channel IDs to archive. No more than 100 items are allowed. */
 export type BulkArchiveRequestChannelIdsList = Array<string>;
+const BulkArchiveRequestChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<BulkArchiveRequestChannelIdsList>;
+
 export interface BulkArchiveRequest {
   /** An array of channel IDs to archive. No more than 100 items are allowed. */
   channel_ids: BulkArchiveRequestChannelIdsList;
 }
+const BulkArchiveRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<BulkArchiveRequest>;
+
 /** The reason the channel was not added */
 export type BulkArchiveResponseNotAddedItemErrorsList = Array<string>;
+const BulkArchiveResponseNotAddedItemErrorsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<BulkArchiveResponseNotAddedItemErrorsList>;
+
 export interface BulkArchiveResponseNotAddedItem {
   channel_id: string;
   /** The reason the channel was not added */
   errors: BulkArchiveResponseNotAddedItemErrorsList;
 }
+const BulkArchiveResponseNotAddedItem = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<BulkArchiveResponseNotAddedItem>;
+
 /** The channel ID and reason it could not be archived. */
 export type BulkArchiveResponseNotAddedList = Array<BulkArchiveResponseNotAddedItem>;
+const BulkArchiveResponseNotAddedList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<BulkArchiveResponseNotAddedList>;
+
 export interface BulkArchiveResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -370,12 +581,19 @@ export interface BulkArchiveResponse {
   /** The channel ID and reason it could not be archived. */
   not_added: BulkArchiveResponseNotAddedList;
 }
+const BulkArchiveResponse = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<BulkArchiveResponse>;
+
 /** An array of channel IDs. */
 export type BulkDeleteRequestChannelIdsList = Array<string>;
+const BulkDeleteRequestChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<BulkDeleteRequestChannelIdsList>;
+
 export interface BulkDeleteRequest {
   /** An array of channel IDs. */
   channel_ids: BulkDeleteRequestChannelIdsList;
 }
+const BulkDeleteRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<BulkDeleteRequest>;
+
 /** The reason the channel was not added */
 export type BulkDeleteResponseNotAddedItemErrorsList = Array<string>;
 export interface BulkDeleteResponseNotAddedItem {
@@ -392,14 +610,21 @@ export interface BulkDeleteResponse {
   /** The channel ID and reason it could not be deleted. */
   not_added: BulkDeleteResponseNotAddedList;
 }
+const BulkDeleteResponse = BulkArchiveResponse as any as S.Schema<BulkDeleteResponse>;
+
 /** An array of channel IDs. */
 export type BulkMoveRequestChannelIdsList = Array<string>;
+const BulkMoveRequestChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<BulkMoveRequestChannelIdsList>;
+
 export interface BulkMoveRequest {
   /** Target team ID */
   target_team_id: string;
   /** An array of channel IDs. */
   channel_ids: BulkMoveRequestChannelIdsList;
 }
+const BulkMoveRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<BulkMoveRequest>;
+
 /** The reason the channel was not added */
 export type BulkMoveResponseNotAddedItemErrorsList = Array<string>;
 export interface BulkMoveResponseNotAddedItem {
@@ -416,13 +641,23 @@ export interface BulkMoveResponse {
   /** The channel ID and reason it could not be moved. */
   not_added: BulkMoveResponseNotAddedList;
 }
+const BulkMoveResponse = BulkArchiveResponse as any as S.Schema<BulkMoveResponse>;
+
 export type BulkSetExcludeFromSlackAiRequestChannelIdsList = Array<string>;
+const BulkSetExcludeFromSlackAiRequestChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<BulkSetExcludeFromSlackAiRequestChannelIdsList>;
+
 export interface BulkSetExcludeFromSlackAiRequest {
   /** An array of channel IDs to exclude from Slack AI. */
   channel_ids: BulkSetExcludeFromSlackAiRequestChannelIdsList;
   /** Whether the channels should be excluded from Slack AI. */
   exclude: boolean;
 }
+const BulkSetExcludeFromSlackAiRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<BulkSetExcludeFromSlackAiRequest>;
+
 /** The reason the channel was not added */
 export type BulkSetExcludeFromSlackAiResponseNotAddedItemErrorsList = Array<string>;
 export interface BulkSetExcludeFromSlackAiResponseNotAddedItem {
@@ -433,6 +668,9 @@ export interface BulkSetExcludeFromSlackAiResponseNotAddedItem {
 /** The channel ID and reason it could not be excluded from Slack AI */
 export type BulkSetExcludeFromSlackAiResponseNotAddedList =
   Array<BulkSetExcludeFromSlackAiResponseNotAddedItem>;
+const BulkSetExcludeFromSlackAiResponseNotAddedList =
+  BulkArchiveResponseNotAddedList as any as S.Schema<BulkSetExcludeFromSlackAiResponseNotAddedList>;
+
 export interface BulkSetExcludeFromSlackAiResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -440,14 +678,27 @@ export interface BulkSetExcludeFromSlackAiResponse {
   /** The channel ID and reason it could not be excluded from Slack AI */
   not_added: BulkSetExcludeFromSlackAiResponseNotAddedList;
 }
+const BulkSetExcludeFromSlackAiResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<BulkSetExcludeFromSlackAiResponse>;
+
 /** An array of channel IDs on which to set the property. */
 export type BulkSetPropertiesRequestChannelIdsList = Array<string>;
+const BulkSetPropertiesRequestChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<BulkSetPropertiesRequestChannelIdsList>;
+
 export interface BulkSetPropertiesRequest {
   /** An array of channel IDs on which to set the property. */
   channel_ids: BulkSetPropertiesRequestChannelIdsList;
   /** The property for this channel in a key value format. Only one property can be updated at a time */
   property: string;
 }
+const BulkSetPropertiesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<BulkSetPropertiesRequest>;
+
 /** The reasons the channel was not updated */
 export type BulkSetPropertiesResponseNotUpdatedItemErrorsList = Array<string>;
 export interface BulkSetPropertiesResponseNotUpdatedItem {
@@ -458,6 +709,9 @@ export interface BulkSetPropertiesResponseNotUpdatedItem {
 /** Channels that could not be updated, with reasons */
 export type BulkSetPropertiesResponseNotUpdatedList =
   Array<BulkSetPropertiesResponseNotUpdatedItem>;
+const BulkSetPropertiesResponseNotUpdatedList =
+  BulkArchiveResponseNotAddedList as any as S.Schema<BulkSetPropertiesResponseNotUpdatedList>;
+
 export interface BulkSetPropertiesResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -465,6 +719,11 @@ export interface BulkSetPropertiesResponse {
   /** Channels that could not be updated, with reasons */
   not_updated: BulkSetPropertiesResponseNotUpdatedList;
 }
+const BulkSetPropertiesResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<BulkSetPropertiesResponse>;
+
 export interface CancelAppsRequestRequest {
   /** The id of the request to cancel. */
   request_id: string;
@@ -473,10 +732,18 @@ export interface CancelAppsRequestRequest {
   /** The ID of the enterprise where this request belongs */
   enterprise_id?: string;
 }
+const CancelAppsRequestRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CancelAppsRequestRequest>;
+
 export interface CancelAppsRequestResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const CancelAppsRequestResponse =
+  AddAppsPermissionsResponse as any as S.Schema<CancelAppsRequestResponse>;
+
 export interface ClearResolutionRequest {
   /** The id of the app whose resolution you want to clear/undo. */
   app_id: string;
@@ -485,42 +752,80 @@ export interface ClearResolutionRequest {
   /** The enterprise to clear the app resolution from */
   enterprise_id?: string;
 }
+const ClearResolutionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ClearResolutionRequest>;
+
 export interface ClearResolutionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const ClearResolutionResponse = AddAliasResponse as any as S.Schema<ClearResolutionResponse>;
+
 /** The IDs of users you'd like to clear session settings for. */
 export type ClearSettingsRequestUserIdsList = Array<string>;
+const ClearSettingsRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<ClearSettingsRequestUserIdsList>;
+
 export interface ClearSettingsRequest {
   /** The IDs of users you'd like to clear session settings for. */
   user_ids: ClearSettingsRequestUserIdsList;
 }
+const ClearSettingsRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ClearSettingsRequest>;
+
 export interface ClearSettingsResponse {
   ok: boolean;
 }
+const ClearSettingsResponse = AddAliasResponse as any as S.Schema<ClearSettingsResponse>;
+
 export interface ConvertToPrivateRequest {
   /** The channel to convert to private. */
   channel_id: string;
   /** Name of private channel to create. Only respected when converting an MPIM. */
   name?: string;
 }
+const ConvertToPrivateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ConvertToPrivateRequest>;
+
 export interface ConvertToPrivateResponse {
   ok: boolean;
 }
+const ConvertToPrivateResponse = AddAliasResponse as any as S.Schema<ConvertToPrivateResponse>;
+
 export interface ConvertToPublicRequest {
   /** The channel to convert to public. */
   channel_id: string;
 }
+const ConvertToPublicRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ConvertToPublicRequest>;
+
 export interface ConvertToPublicResponse {
   ok: boolean;
 }
+const ConvertToPublicResponse = AddAliasResponse as any as S.Schema<ConvertToPublicResponse>;
+
 /** A list of [IDP Groups](https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-organization) ids that the primary usergroup is to be barriered from. */
 export type CreateBarrierRequestBarrieredFromUsergroupIdsList = Array<string>;
+const CreateBarrierRequestBarrieredFromUsergroupIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<CreateBarrierRequestBarrieredFromUsergroupIdsList>;
+
 export type CreateBarrierRequestRestrictedSubjectsItem = "im" | "mpim" | "call";
+const CreateBarrierRequestRestrictedSubjectsItem = S.String;
+
 /** What kind of interactions are blocked by this barrier? For v1, we only support a list of all 3, eg `im, mpim, call` */
 export type CreateBarrierRequestRestrictedSubjectsList = Array<
   CreateBarrierRequestRestrictedSubjectsItem | (string & {})
 >;
+const CreateBarrierRequestRestrictedSubjectsList = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<CreateBarrierRequestRestrictedSubjectsList>;
+
 export interface CreateBarrierRequest {
   /** The id of the primary [IDP Group](https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-organization) */
   primary_usergroup_id: string;
@@ -529,10 +834,17 @@ export interface CreateBarrierRequest {
   /** What kind of interactions are blocked by this barrier? For v1, we only support a list of all 3, eg `im, mpim, call` */
   restricted_subjects: CreateBarrierRequestRestrictedSubjectsList;
 }
+const CreateBarrierRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<CreateBarrierRequest>;
+
 export interface CreateBarrierResponse {
   ok: boolean;
   barrier: unknown;
 }
+const CreateBarrierResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<CreateBarrierResponse>;
+
 export interface CreateConversationRequest {
   /** Name of the public or private channel to create. */
   name: string;
@@ -545,10 +857,20 @@ export interface CreateConversationRequest {
   /** The workspace to create the channel in. Note: this argument is required unless you set `org_wide=true`. */
   team_id?: string;
 }
+const CreateConversationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<CreateConversationRequest>;
+
 export interface CreateConversationResponse {
   ok: boolean;
   channel_id?: string;
 }
+const CreateConversationResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreateConversationResponse>;
+
 export interface CreateForObjectsRequest {
   /** Object / Record ID (15 or 18 digit accepted). See [here](https://help.salesforce.com/s/articleView?id=000385008&type=1) for how to look up an ID. */
   object_id: string;
@@ -557,12 +879,22 @@ export interface CreateForObjectsRequest {
   /** Optional flag to add all team members related to the object to the newly created Salesforce channel. When true, adds a maximum of 100 team members to the channel. */
   invite_object_team?: boolean;
 }
+const CreateForObjectsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<CreateForObjectsRequest>;
+
 export interface CreateForObjectsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   /** Slack Channel ID, in the format of an alphanumeric string starting with C */
   channel_id: string;
 }
+const CreateForObjectsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<CreateForObjectsResponse>;
+
 export interface CreateTeamRequest {
   /** Team domain (for example, slacksoftballteam). Domains are limited to 21 characters. */
   team_domain: string;
@@ -573,11 +905,15 @@ export interface CreateTeamRequest {
   /** Who can join the team. A team's discoverability can be `open`, `closed`, `invite_only`, or `unlisted`. */
   team_discoverability?: string;
 }
+const CreateTeamRequest = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<CreateTeamRequest>;
+
 export interface CreateTeamResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   team: string;
 }
+const CreateTeamResponse = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<CreateTeamResponse>;
+
 export interface CreateUsergroupRequest {
   /** Unique name for the usergroup */
   name: string;
@@ -588,6 +924,11 @@ export interface CreateUsergroupRequest {
   /** Configure whether or not this usergroup should be visible in the client */
   is_visible?: boolean;
 }
+const CreateUsergroupRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<CreateUsergroupRequest>;
+
 export interface CreateUsergroupResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -595,64 +936,125 @@ export interface CreateUsergroupResponse {
   error?: string;
   subteam?: unknown;
 }
+const CreateUsergroupResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<CreateUsergroupResponse>;
+
 export interface DeleteBarrierRequest {
   /** The ID of the barrier you're trying to delete */
   barrier_id: string;
 }
+const DeleteBarrierRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<DeleteBarrierRequest>;
+
 export interface DeleteBarrierResponse {
   ok: boolean;
 }
+const DeleteBarrierResponse = AddAliasResponse as any as S.Schema<DeleteBarrierResponse>;
+
 export interface DeleteConversationRequest {
   /** The channel to delete. */
   channel_id: string;
 }
+const DeleteConversationRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DeleteConversationRequest>;
+
 export interface DeleteConversationResponse {
   ok: boolean;
 }
+const DeleteConversationResponse =
+  AddAppsPermissionsResponse as any as S.Schema<DeleteConversationResponse>;
+
 /** Used for disconnecting a team from a shared channel. Only one team ID may be passed at a time. */
 export type DisconnectSharedRequestLeavingTeamIdsList = Array<string>;
+const DisconnectSharedRequestLeavingTeamIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<DisconnectSharedRequestLeavingTeamIdsList>;
+
 export interface DisconnectSharedRequest {
   /** The channel to be disconnected from some workspaces. */
   channel_id: string;
   /** Used for disconnecting a team from a shared channel. Only one team ID may be passed at a time. */
   leaving_team_ids?: DisconnectSharedRequestLeavingTeamIdsList;
 }
+const DisconnectSharedRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<DisconnectSharedRequest>;
+
 export interface DisconnectSharedResponse {
   ok: boolean;
 }
+const DisconnectSharedResponse = AddAliasResponse as any as S.Schema<DisconnectSharedResponse>;
+
 export interface ExportUsersUnsupportedVersionRequest {
   /** Unix timestamp of a date to start looking for user sessions. If not provided will start six months ago. */
   date_sessions_started?: number;
   /** Unix timestamp of the date of past or upcoming end of support cycles. If not provided will include all announced end of support cycles. */
   date_end_of_support?: number;
 }
+const ExportUsersUnsupportedVersionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ExportUsersUnsupportedVersionRequest>;
+
 export interface ExportUsersUnsupportedVersionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const ExportUsersUnsupportedVersionResponse =
+  AddAppsPermissionsResponse as any as S.Schema<ExportUsersUnsupportedVersionResponse>;
+
 export interface FetchUsergroupRequest {
   /** ID of the usergroup to fetch */
   id: string;
 }
+const FetchUsergroupRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<FetchUsergroupRequest>;
+
 export interface FetchUsergroupResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   subteam: unknown;
 }
+const FetchUsergroupResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<FetchUsergroupResponse>;
+
 export interface GetConversationPrefsRequest {
   /** The channel to get preferences for. */
   channel_id: string;
 }
+const GetConversationPrefsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GetConversationPrefsRequest>;
+
 /** Comma separated string of user types */
 export type GetConversationPrefsResponsePrefsWhoCanPostTypeList = Array<string>;
+const GetConversationPrefsResponsePrefsWhoCanPostTypeList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<GetConversationPrefsResponsePrefsWhoCanPostTypeList>;
+
 /** Comma separated string of user IDs */
 export type GetConversationPrefsResponsePrefsWhoCanPostUserList = Array<string>;
+const GetConversationPrefsResponsePrefsWhoCanPostUserList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<GetConversationPrefsResponsePrefsWhoCanPostUserList>;
+
 export interface GetConversationPrefsResponsePrefsWhoCanPost {
   /** Comma separated string of user types */
   type?: GetConversationPrefsResponsePrefsWhoCanPostTypeList;
   /** Comma separated string of user IDs */
   user?: GetConversationPrefsResponsePrefsWhoCanPostUserList;
 }
+const GetConversationPrefsResponsePrefsWhoCanPost = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<GetConversationPrefsResponsePrefsWhoCanPost>;
+
 /** Comma separated string of user types */
 export type GetConversationPrefsResponsePrefsCanThreadTypeList = Array<string>;
 /** Comma separated string of user IDs */
@@ -663,22 +1065,41 @@ export interface GetConversationPrefsResponsePrefsCanThread {
   /** Comma separated string of user IDs */
   user?: GetConversationPrefsResponsePrefsCanThreadUserList;
 }
+const GetConversationPrefsResponsePrefsCanThread =
+  GetConversationPrefsResponsePrefsWhoCanPost as any as S.Schema<GetConversationPrefsResponsePrefsCanThread>;
+
 export interface GetConversationPrefsResponsePrefsMembershipLimit {
   /** Membership limit value */
   value?: number;
 }
+const GetConversationPrefsResponsePrefsMembershipLimit = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetConversationPrefsResponsePrefsMembershipLimit>;
+
 export interface GetConversationPrefsResponsePrefsCanHuddle {
   /** Can start a huddle */
   enabled?: boolean;
 }
+const GetConversationPrefsResponsePrefsCanHuddle = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<GetConversationPrefsResponsePrefsCanHuddle>;
+
 export interface GetConversationPrefsResponsePrefsEnableAtChannel {
   /** Enable channel mentions in channel. */
   enabled?: boolean;
 }
+const GetConversationPrefsResponsePrefsEnableAtChannel =
+  GetConversationPrefsResponsePrefsCanHuddle as any as S.Schema<GetConversationPrefsResponsePrefsEnableAtChannel>;
+
 export interface GetConversationPrefsResponsePrefsEnableAtHere {
   /** Enable here mentions in channel. */
   enabled?: boolean;
 }
+const GetConversationPrefsResponsePrefsEnableAtHere =
+  GetConversationPrefsResponsePrefsCanHuddle as any as S.Schema<GetConversationPrefsResponsePrefsEnableAtHere>;
+
 export interface GetConversationPrefsResponsePrefs {
   who_can_post?: GetConversationPrefsResponsePrefsWhoCanPost;
   can_thread?: GetConversationPrefsResponsePrefsCanThread;
@@ -687,14 +1108,29 @@ export interface GetConversationPrefsResponsePrefs {
   enable_at_channel?: GetConversationPrefsResponsePrefsEnableAtChannel;
   enable_at_here?: GetConversationPrefsResponsePrefsEnableAtHere;
 }
+const GetConversationPrefsResponsePrefs = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<GetConversationPrefsResponsePrefs>;
+
 export interface GetConversationPrefsResponse {
   ok: boolean;
   prefs?: GetConversationPrefsResponsePrefs;
 }
+const GetConversationPrefsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<GetConversationPrefsResponse>;
+
 export interface GetCustomRetentionRequest {
   /** The conversation to get the retention policy for. */
   channel_id: string;
 }
+const GetCustomRetentionRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<GetCustomRetentionRequest>;
+
 export interface GetCustomRetentionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -703,6 +1139,11 @@ export interface GetCustomRetentionResponse {
   /** The message retention duration in days to set for this conversation */
   duration_days: number;
 }
+const GetCustomRetentionResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<GetCustomRetentionResponse>;
+
 export interface GetEntitiesRequest {
   /** The name of the policy to fetch entities for. Currently, `email_password` is the only policy that may be used with this method. */
   policy_name: string;
@@ -713,6 +1154,8 @@ export interface GetEntitiesRequest {
   /** Set `cursor` to `next_cursor` returned by the previous call to list items in the next page. */
   cursor?: string;
 }
+const GetEntitiesRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<GetEntitiesRequest>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type GetEntitiesResponseResponseMetadata = AnalyticsMessagesActivityResponseResponseMetadata;
 export interface GetEntitiesResponseEntitiesItem {
@@ -723,8 +1166,18 @@ export interface GetEntitiesResponseEntitiesItem {
   /** The date this entity was assigned to this policy. */
   date_added: number;
 }
+const GetEntitiesResponseEntitiesItem = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GetEntitiesResponseEntitiesItem>;
+
 /** Entities assigned to the policy */
 export type GetEntitiesResponseEntitiesList = Array<GetEntitiesResponseEntitiesItem>;
+const GetEntitiesResponseEntitiesList = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<GetEntitiesResponseEntitiesList>;
+
 export interface GetEntitiesResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -735,16 +1188,22 @@ export interface GetEntitiesResponse {
   /** Count of entities under the policy and provided filter conditions */
   entity_total_count: number;
 }
+const GetEntitiesResponse = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<GetEntitiesResponse>;
+
 export interface GetExpirationRequest {
   /** The ID of the guest user to get the expiration for. */
   user_id: string;
   /** If an org token is passed in and this team is on the org, it will operate on the workspace level on the specified team. Otherwise it will operate on the org or team in context. */
   target_team?: string;
 }
+const GetExpirationRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<GetExpirationRequest>;
+
 export interface GetExpirationResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const GetExpirationResponse = AddAliasResponse as any as S.Schema<GetExpirationResponse>;
+
 export interface GetFileRequest {
   /** Date to retrieve the analytics data for, expressed as `YYYY-MM-DD` in UTC. Required unless `metadata_only` is set to true. */
   date?: string;
@@ -753,12 +1212,26 @@ export interface GetFileRequest {
   /** Retrieve metadata for the `type` of analytics indicated. Can be used only with `type` set to `public_channel` analytics. See [detail below](#metadata_only). Omit the `date` parameter when using this argument. */
   metadata_only?: boolean;
 }
+const GetFileRequest = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<GetFileRequest>;
+
 export type GetFileResponse = unknown;
+const GetFileResponse = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<GetFileResponse>;
+
 export interface GetItemRequest {}
+const GetItemRequest = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<GetItemRequest>;
+
 /** allow list of IPv4 addresses using cidr notation in the Enterprise organization configuration */
 export type GetItemResponseTrustedCidrList = Array<string>;
+const GetItemResponseTrustedCidrList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<GetItemResponseTrustedCidrList>;
+
 /** allow list of Autonomous System Numbers (ASN) in the Enterprise organization configuration */
 export type GetItemResponseTrustedAsnsList = Array<number>;
+const GetItemResponseTrustedAsnsList = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<GetItemResponseTrustedAsnsList>;
+
 export interface GetItemResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -767,22 +1240,42 @@ export interface GetItemResponse {
   /** allow list of Autonomous System Numbers (ASN) in the Enterprise organization configuration */
   trusted_asns?: GetItemResponseTrustedAsnsList;
 }
+const GetItemResponse = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<GetItemResponse>;
+
 /** The IDs of users you'd like to fetch session settings for. Note: if a user does not have any active sessions, they will not be returned in the response. */
 export type GetSettingsRequestUserIdsList = Array<string>;
+const GetSettingsRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<GetSettingsRequestUserIdsList>;
+
 export interface GetSettingsRequest {
   /** The IDs of users you'd like to fetch session settings for. Note: if a user does not have any active sessions, they will not be returned in the response. */
   user_ids: GetSettingsRequestUserIdsList;
 }
+const GetSettingsRequest = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<GetSettingsRequest>;
+
 export interface GetSettingsResponseSessionSettingsItem {
   /** Encoded ID of the user */
   user_id: string;
   desktop_app_browser_quit: unknown;
   duration: unknown;
 }
+const GetSettingsResponseSessionSettingsItem = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<GetSettingsResponseSessionSettingsItem>;
+
 /** User specific session settings */
 export type GetSettingsResponseSessionSettingsList = Array<GetSettingsResponseSessionSettingsItem>;
+const GetSettingsResponseSessionSettingsList = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GetSettingsResponseSessionSettingsList>;
+
 /** The IDs of users requested that do not have any user session settings applied. */
 export type GetSettingsResponseNoSettingsAppliedList = Array<string>;
+const GetSettingsResponseNoSettingsAppliedList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<GetSettingsResponseNoSettingsAppliedList>;
+
 export interface GetSettingsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -791,6 +1284,8 @@ export interface GetSettingsResponse {
   /** The IDs of users requested that do not have any user session settings applied. */
   no_settings_applied?: GetSettingsResponseNoSettingsAppliedList;
 }
+const GetSettingsResponse = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<GetSettingsResponse>;
+
 export interface GetTeamsRequest {
   /** The channel to determine connected workspaces within the organization for. */
   channel_id: string;
@@ -799,6 +1294,8 @@ export interface GetTeamsRequest {
   /** The maximum number of items to return. Must be between 1 - 1000 both inclusive. */
   limit?: number;
 }
+const GetTeamsRequest = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<GetTeamsRequest>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type GetTeamsResponseResponseMetadata = AnalyticsMessagesActivityResponseResponseMetadata;
 export interface GetTeamsResponse {
@@ -806,37 +1303,66 @@ export interface GetTeamsResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: AnalyticsMessagesActivityResponseResponseMetadata;
 }
+const GetTeamsResponse = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<GetTeamsResponse>;
+
 export interface InvalidateUsersSessionRequest {
   /** ID of the user that the session belongs to. */
   user_id: string;
   /** ID of the session to invalidate. */
   session_id: number;
 }
+const InvalidateUsersSessionRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<InvalidateUsersSessionRequest>;
+
 export interface InvalidateUsersSessionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const InvalidateUsersSessionResponse =
+  AddAppsPermissionsResponse as any as S.Schema<InvalidateUsersSessionResponse>;
+
 /** The users to invite. */
 export type InviteConversationRequestUserIdsList = Array<string>;
+const InviteConversationRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<InviteConversationRequestUserIdsList>;
+
 export interface InviteConversationRequest {
   /** The users to invite. */
   user_ids: InviteConversationRequestUserIdsList;
   /** The channel that the users will be invited to. */
   channel_id: string;
 }
+const InviteConversationRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<InviteConversationRequest>;
+
 export interface InviteConversationResponse {
   ok: boolean;
 }
+const InviteConversationResponse =
+  AddAppsPermissionsResponse as any as S.Schema<InviteConversationResponse>;
+
 export interface InviteRequestsDenyRequest {
   /** ID for the workspace where the invite request was made. */
   team_id?: string;
   /** ID of the request to invite. */
   invite_request_id: string;
 }
+const InviteRequestsDenyRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<InviteRequestsDenyRequest>;
+
 export interface InviteRequestsDenyResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const InviteRequestsDenyResponse =
+  AddAppsPermissionsResponse as any as S.Schema<InviteRequestsDenyResponse>;
+
 export interface InviteUserRequest {
   /** The ID (`T1234`) of the workspace. */
   team_id: string;
@@ -859,9 +1385,13 @@ export interface InviteUserRequest {
   /** Allow invited user to sign in via email and password. Only available for Enterprise org teams via admin invite. */
   email_password_policy_enabled?: boolean;
 }
+const InviteUserRequest = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<InviteUserRequest>;
+
 export interface InviteUserResponse {
   ok: boolean;
 }
+const InviteUserResponse = AddAliasResponse as any as S.Schema<InviteUserResponse>;
+
 export interface LinkObjectsRequest {
   /** Channel ID for Slack channel that will be linked to a Salesforce record. */
   channel: string;
@@ -870,12 +1400,18 @@ export interface LinkObjectsRequest {
   /** Salesforce org ID (15 or 18 digit accepted). See [here](https://help.salesforce.com/s/articleView?id=000385215&type=1) for how to look up Salesforce org ID. */
   salesforce_org_id: string;
 }
+const LinkObjectsRequest = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<LinkObjectsRequest>;
+
 export interface LinkObjectsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const LinkObjectsResponse = AddAliasResponse as any as S.Schema<LinkObjectsResponse>;
+
 /** The direction you want the data sorted by (always by timestamp) */
 export type ListAppsActivitiesRequestSortDirection = "asc" | "desc";
+const ListAppsActivitiesRequestSortDirection = S.String;
+
 export interface ListAppsActivitiesRequest {
   /** The ID of the app to get activities from. */
   app_id?: string;
@@ -904,7 +1440,17 @@ export interface ListAppsActivitiesRequest {
   /** The direction you want the data sorted by (always by timestamp) */
   sort_direction?: ListAppsActivitiesRequestSortDirection | (string & {});
 }
+const ListAppsActivitiesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ListAppsActivitiesRequest>;
+
 export type ListAppsActivitiesResponseActivitiesList = Array<unknown>;
+const ListAppsActivitiesResponseActivitiesList = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ListAppsActivitiesResponseActivitiesList>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListAppsActivitiesResponseResponseMetadata =
   AnalyticsMessagesActivityResponseResponseMetadata;
@@ -915,6 +1461,11 @@ export interface ListAppsActivitiesResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: AnalyticsMessagesActivityResponseResponseMetadata;
 }
+const ListAppsActivitiesResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ListAppsActivitiesResponse>;
+
 export interface ListAppsApprovedRequest {
   /** The maximum number of items to return. Must be between 1 - 1000 both inclusive. */
   limit?: number;
@@ -925,7 +1476,15 @@ export interface ListAppsApprovedRequest {
   /** Limit the results to only include certified apps. When false, no certified apps will appear in the result */
   certified?: boolean;
 }
+const ListAppsApprovedRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<ListAppsApprovedRequest>;
+
 export type ListAppsApprovedResponseApprovedAppsList = Array<unknown>;
+const ListAppsApprovedResponseApprovedAppsList =
+  ListAppsActivitiesResponseActivitiesList as any as S.Schema<ListAppsApprovedResponseApprovedAppsList>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListAppsApprovedResponseResponseMetadata =
   AnalyticsMessagesActivityResponseResponseMetadata;
@@ -936,12 +1495,22 @@ export interface ListAppsApprovedResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: AnalyticsMessagesActivityResponseResponseMetadata;
 }
+const ListAppsApprovedResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ListAppsApprovedResponse>;
+
 export interface ListAppsMcpServersRequest {
   /** The maximum number of items to return. Must be between 1 - 1000 both inclusive. */
   limit?: number;
   /** Set `cursor` to `next_cursor` returned by the previous call to list items in the next page */
   cursor?: string;
 }
+const ListAppsMcpServersRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ListAppsMcpServersRequest>;
+
 export interface ListAppsMcpServersResponseServersItem {
   /** Encoded ID of the MCP server */
   server_id: string;
@@ -956,7 +1525,17 @@ export interface ListAppsMcpServersResponseServersItem {
   /** Name of the app that provides this MCP server */
   app_name: string;
 }
+const ListAppsMcpServersResponseServersItem = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ListAppsMcpServersResponseServersItem>;
+
 export type ListAppsMcpServersResponseServersList = Array<ListAppsMcpServersResponseServersItem>;
+const ListAppsMcpServersResponseServersList = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ListAppsMcpServersResponseServersList>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListAppsMcpServersResponseResponseMetadata =
   AnalyticsMessagesActivityResponseResponseMetadata;
@@ -967,24 +1546,50 @@ export interface ListAppsMcpServersResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: AnalyticsMessagesActivityResponseResponseMetadata;
 }
+const ListAppsMcpServersResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ListAppsMcpServersResponse>;
+
 export interface ListAppsMcpServersPermissionsRequest {
   /** Encoded ID of the app */
   app_id: string;
 }
+const ListAppsMcpServersPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ListAppsMcpServersPermissionsRequest>;
+
 export type ListAppsMcpServersPermissionsResponseServersList = Array<unknown>;
+const ListAppsMcpServersPermissionsResponseServersList =
+  ListAppsActivitiesResponseActivitiesList as any as S.Schema<ListAppsMcpServersPermissionsResponseServersList>;
+
 export interface ListAppsMcpServersPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   servers: ListAppsMcpServersPermissionsResponseServersList;
 }
+const ListAppsMcpServersPermissionsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ListAppsMcpServersPermissionsResponse>;
+
 export interface ListAppsPermissionsRequest {
   /** Encoded ID of the app */
   app_id: string;
 }
+const ListAppsPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ListAppsPermissionsRequest>;
+
 export interface ListAppsPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const ListAppsPermissionsResponse =
+  AddAppsPermissionsResponse as any as S.Schema<ListAppsPermissionsResponse>;
+
 export interface ListAppsRequestsRequest {
   /** The maximum number of items to return. Must be between 1 - 1000 both inclusive. */
   limit?: number;
@@ -995,7 +1600,15 @@ export interface ListAppsRequestsRequest {
   /** Include requests for certified apps */
   certified?: boolean;
 }
+const ListAppsRequestsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ListAppsRequestsRequest>;
+
 export type ListAppsRequestsResponseAppRequestsList = Array<unknown>;
+const ListAppsRequestsResponseAppRequestsList =
+  ListAppsActivitiesResponseActivitiesList as any as S.Schema<ListAppsRequestsResponseAppRequestsList>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListAppsRequestsResponseResponseMetadata =
   AnalyticsMessagesActivityResponseResponseMetadata;
@@ -1006,6 +1619,11 @@ export interface ListAppsRequestsResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: AnalyticsMessagesActivityResponseResponseMetadata;
 }
+const ListAppsRequestsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ListAppsRequestsResponse>;
+
 export interface ListAppsRestrictedRequest {
   /** The maximum number of items to return. Must be between 1 - 1000 both inclusive. */
   limit?: number;
@@ -1016,7 +1634,15 @@ export interface ListAppsRestrictedRequest {
   /** Limit the results to only include certified apps. When false, no certified apps will appear in the result */
   certified?: boolean;
 }
+const ListAppsRestrictedRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ListAppsRestrictedRequest>;
+
 export type ListAppsRestrictedResponseRestrictedAppsList = Array<unknown>;
+const ListAppsRestrictedResponseRestrictedAppsList =
+  ListAppsActivitiesResponseActivitiesList as any as S.Schema<ListAppsRestrictedResponseRestrictedAppsList>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListAppsRestrictedResponseResponseMetadata =
   AnalyticsMessagesActivityResponseResponseMetadata;
@@ -1027,8 +1653,19 @@ export interface ListAppsRestrictedResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: AnalyticsMessagesActivityResponseResponseMetadata;
 }
+const ListAppsRestrictedResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<ListAppsRestrictedResponse>;
+
 export type ListAssignmentsRequestRoleIdsList = Array<string>;
+const ListAssignmentsRequestRoleIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<ListAssignmentsRequestRoleIdsList>;
+
 export type ListAssignmentsRequestEntityIdsList = Array<string>;
+const ListAssignmentsRequestEntityIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<ListAssignmentsRequestEntityIdsList>;
+
 export interface ListAssignmentsRequest {
   /** Set `cursor` to `next_cursor` returned by the previous call to list items in the next page */
   cursor?: string;
@@ -1041,6 +1678,11 @@ export interface ListAssignmentsRequest {
   /** Sort direction. Default is descending on date_create, can be either ASC or DESC */
   sort_dir?: string;
 }
+const ListAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<ListAssignmentsRequest>;
+
 export interface ListAssignmentsResponseRoleAssignmentsItem {
   /** ID of the role that is assigned */
   role_id: string;
@@ -1051,8 +1693,18 @@ export interface ListAssignmentsResponseRoleAssignmentsItem {
   /** Timestamp of when the membership was created. */
   date_create: number;
 }
+const ListAssignmentsResponseRoleAssignmentsItem = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ListAssignmentsResponseRoleAssignmentsItem>;
+
 export type ListAssignmentsResponseRoleAssignmentsList =
   Array<ListAssignmentsResponseRoleAssignmentsItem>;
+const ListAssignmentsResponseRoleAssignmentsList = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ListAssignmentsResponseRoleAssignmentsList>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListAssignmentsResponseResponseMetadata =
   AnalyticsMessagesActivityResponseResponseMetadata;
@@ -1065,13 +1717,23 @@ export interface ListAssignmentsResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: AnalyticsMessagesActivityResponseResponseMetadata;
 }
+const ListAssignmentsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ListAssignmentsResponse>;
+
 export interface ListBarriersRequest {
   /** The maximum number of items to return. Must be between 1 - 1000 both inclusive */
   limit?: number;
   /** Set `cursor` to `next_cursor` returned by the previous call to list items in the next page */
   cursor?: string;
 }
+const ListBarriersRequest = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<ListBarriersRequest>;
+
 export type ListBarriersResponseBarriersList = Array<unknown>;
+const ListBarriersResponseBarriersList =
+  ListAppsActivitiesResponseActivitiesList as any as S.Schema<ListBarriersResponseBarriersList>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListBarriersResponseResponseMetadata =
   AnalyticsMessagesActivityResponseResponseMetadata;
@@ -1081,6 +1743,11 @@ export interface ListBarriersResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: AnalyticsMessagesActivityResponseResponseMetadata;
 }
+const ListBarriersResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ListBarriersResponse>;
+
 export interface ListChannelsRequest {
   /** ID of the IDP group to list default channels for. */
   usergroup_id: string;
@@ -1089,7 +1756,12 @@ export interface ListChannelsRequest {
   /** Flag to include or exclude the count of members per channel. */
   include_num_members?: boolean;
 }
+const ListChannelsRequest = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<ListChannelsRequest>;
+
 export type ListChannelsResponseChannelsList = Array<string>;
+const ListChannelsResponseChannelsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<ListChannelsResponseChannelsList>;
+
 export interface ListChannelsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -1097,13 +1769,25 @@ export interface ListChannelsResponse {
   /** A string representation of the error type */
   error?: string;
 }
+const ListChannelsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ListChannelsResponse>;
+
 export interface ListEmojiRequest {
   /** Set `cursor` to `next_cursor` returned by the previous call to list items in the next page */
   cursor?: string;
   /** The maximum number of items to return. Must be between 1 - 1000 both inclusive. */
   limit?: number;
 }
+const ListEmojiRequest = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<ListEmojiRequest>;
+
 export type ListEmojiResponseEmojiMap = { [key: string]: unknown | undefined };
+const ListEmojiResponseEmojiMap = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ListEmojiResponseEmojiMap>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListEmojiResponseResponseMetadata = AnalyticsMessagesActivityResponseResponseMetadata;
 export interface ListEmojiResponse {
@@ -1113,8 +1797,13 @@ export interface ListEmojiResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: AnalyticsMessagesActivityResponseResponseMetadata;
 }
+const ListEmojiResponse = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<ListEmojiResponse>;
+
 /** Comma-separated array of app IDs to get functions for; max 50. */
 export type ListFunctionsRequestAppIdsList = Array<string>;
+const ListFunctionsRequestAppIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<ListFunctionsRequestAppIdsList>;
+
 export interface ListFunctionsRequest {
   /** The team context to retrieve functions from. */
   team_id?: string;
@@ -1127,7 +1816,15 @@ export interface ListFunctionsRequest {
   /** The number of results that will be returned by the API on each invocation. Must be between 1 and 1000, both inclusive. */
   limit?: number;
 }
+const ListFunctionsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ListFunctionsRequest>;
+
 export type ListFunctionsResponseFunctionsList = Array<unknown>;
+const ListFunctionsResponseFunctionsList =
+  ListAppsActivitiesResponseActivitiesList as any as S.Schema<ListFunctionsResponseFunctionsList>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListFunctionsResponseResponseMetadata =
   AnalyticsMessagesActivityResponseResponseMetadata;
@@ -1138,16 +1835,28 @@ export interface ListFunctionsResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: AnalyticsMessagesActivityResponseResponseMetadata;
 }
+const ListFunctionsResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<ListFunctionsResponse>;
+
 export interface ListGroupsRequest {
   channel_id: string;
   /** The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization. */
   team_id?: string;
 }
+const ListGroupsRequest = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<ListGroupsRequest>;
+
 export type ListGroupsResponseGroupIdsList = Array<string>;
+const ListGroupsResponseGroupIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<ListGroupsResponseGroupIdsList>;
+
 export interface ListGroupsResponse {
   ok: boolean;
   group_ids: ListGroupsResponseGroupIdsList;
 }
+const ListGroupsResponse = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<ListGroupsResponse>;
+
 export interface ListInviteRequestsRequest {
   /** ID for the workspace where the invite requests were made. */
   team_id?: string;
@@ -1156,10 +1865,18 @@ export interface ListInviteRequestsRequest {
   /** The number of results that will be returned by the API on each invocation. Must be between 1 - 1000, both inclusive */
   limit?: number;
 }
+const ListInviteRequestsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ListInviteRequestsRequest>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListInviteRequestsResponseResponseMetadata =
   AnalyticsMessagesActivityResponseResponseMetadata;
 export type ListInviteRequestsResponseInviteRequestsList = Array<unknown>;
+const ListInviteRequestsResponseInviteRequestsList =
+  ListAppsActivitiesResponseActivitiesList as any as S.Schema<ListInviteRequestsResponseInviteRequestsList>;
+
 export interface ListInviteRequestsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -1167,6 +1884,11 @@ export interface ListInviteRequestsResponse {
   response_metadata?: AnalyticsMessagesActivityResponseResponseMetadata;
   invite_requests: ListInviteRequestsResponseInviteRequestsList;
 }
+const ListInviteRequestsResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ListInviteRequestsResponse>;
+
 export interface ListInviteRequestsApprovedRequest {
   /** ID for the workspace where the invite requests were made. */
   team_id?: string;
@@ -1175,10 +1897,18 @@ export interface ListInviteRequestsApprovedRequest {
   /** The number of results that will be returned by the API on each invocation. Must be between 1 - 1000, both inclusive */
   limit?: number;
 }
+const ListInviteRequestsApprovedRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ListInviteRequestsApprovedRequest>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListInviteRequestsApprovedResponseResponseMetadata =
   AnalyticsMessagesActivityResponseResponseMetadata;
 export type ListInviteRequestsApprovedResponseApprovedRequestsList = Array<unknown>;
+const ListInviteRequestsApprovedResponseApprovedRequestsList =
+  ListAppsActivitiesResponseActivitiesList as any as S.Schema<ListInviteRequestsApprovedResponseApprovedRequestsList>;
+
 export interface ListInviteRequestsApprovedResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -1186,6 +1916,11 @@ export interface ListInviteRequestsApprovedResponse {
   response_metadata?: AnalyticsMessagesActivityResponseResponseMetadata;
   approved_requests: ListInviteRequestsApprovedResponseApprovedRequestsList;
 }
+const ListInviteRequestsApprovedResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ListInviteRequestsApprovedResponse>;
+
 export interface ListInviteRequestsDeniedRequest {
   /** ID for the workspace where the invite requests were made */
   team_id?: string;
@@ -1194,10 +1929,18 @@ export interface ListInviteRequestsDeniedRequest {
   /** The number of results that will be returned by the API on each invocation. Must be between 1 - 1000 both inclusive */
   limit?: number;
 }
+const ListInviteRequestsDeniedRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ListInviteRequestsDeniedRequest>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListInviteRequestsDeniedResponseResponseMetadata =
   AnalyticsMessagesActivityResponseResponseMetadata;
 export type ListInviteRequestsDeniedResponseDeniedRequestsList = Array<unknown>;
+const ListInviteRequestsDeniedResponseDeniedRequestsList =
+  ListAppsActivitiesResponseActivitiesList as any as S.Schema<ListInviteRequestsDeniedResponseDeniedRequestsList>;
+
 export interface ListInviteRequestsDeniedResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -1205,6 +1948,11 @@ export interface ListInviteRequestsDeniedResponse {
   response_metadata?: AnalyticsMessagesActivityResponseResponseMetadata;
   denied_requests: ListInviteRequestsDeniedResponseDeniedRequestsList;
 }
+const ListInviteRequestsDeniedResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ListInviteRequestsDeniedResponse>;
+
 export interface ListOriginalConnectedChannelInfoRequest {
   /** A comma-separated list of channels to filter to. */
   channel_ids?: string;
@@ -1215,18 +1963,39 @@ export interface ListOriginalConnectedChannelInfoRequest {
   /** Set `cursor` to `next_cursor` returned by the previous call to list items in the next page. */
   cursor?: string;
 }
+const ListOriginalConnectedChannelInfoRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ListOriginalConnectedChannelInfoRequest>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListOriginalConnectedChannelInfoResponseResponseMetadata =
   AnalyticsMessagesActivityResponseResponseMetadata;
 export type ListOriginalConnectedChannelInfoResponseChannelsItemInternalTeamIdsList = Array<string>;
+const ListOriginalConnectedChannelInfoResponseChannelsItemInternalTeamIdsList =
+  /*@__PURE__*/ __L.at(
+    __c16,
+    6,
+  ) as any as S.Schema<ListOriginalConnectedChannelInfoResponseChannelsItemInternalTeamIdsList>;
+
 export interface ListOriginalConnectedChannelInfoResponseChannelsItem {
   id: string;
   internal_team_ids: ListOriginalConnectedChannelInfoResponseChannelsItemInternalTeamIdsList;
   original_connected_host_id: string;
   original_connected_channel_id: string;
 }
+const ListOriginalConnectedChannelInfoResponseChannelsItem = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ListOriginalConnectedChannelInfoResponseChannelsItem>;
+
 export type ListOriginalConnectedChannelInfoResponseChannelsList =
   Array<ListOriginalConnectedChannelInfoResponseChannelsItem>;
+const ListOriginalConnectedChannelInfoResponseChannelsList = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<ListOriginalConnectedChannelInfoResponseChannelsList>;
+
 export interface ListOriginalConnectedChannelInfoResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -1234,18 +2003,30 @@ export interface ListOriginalConnectedChannelInfoResponse {
   response_metadata?: AnalyticsMessagesActivityResponseResponseMetadata;
   channels: ListOriginalConnectedChannelInfoResponseChannelsList;
 }
+const ListOriginalConnectedChannelInfoResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<ListOriginalConnectedChannelInfoResponse>;
+
 export interface ListTeamsRequest {
   /** The maximum number of items to return. Must be a positive integer no larger than 1000. */
   limit?: number;
   /** Set `cursor` to `next_cursor` returned by the previous call to list items in the next page. */
   cursor?: string;
 }
+const ListTeamsRequest = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<ListTeamsRequest>;
+
 export interface ListTeamsResponseTeamsItemPrimaryOwner {
   /** Encoded user ID of the primary owner of the workspace */
   user_id: string;
   /** Email of the primary owner of the workspace */
   email: string;
 }
+const ListTeamsResponseTeamsItemPrimaryOwner = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ListTeamsResponseTeamsItemPrimaryOwner>;
+
 export interface ListTeamsResponseTeamsItem {
   /** Encoded ID of the workspace */
   id?: string;
@@ -1257,7 +2038,17 @@ export interface ListTeamsResponseTeamsItem {
   /** The URL of the workspace */
   team_url: string;
 }
+const ListTeamsResponseTeamsItem = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<ListTeamsResponseTeamsItem>;
+
 export type ListTeamsResponseTeamsList = Array<ListTeamsResponseTeamsItem>;
+const ListTeamsResponseTeamsList = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ListTeamsResponseTeamsList>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListTeamsResponseResponseMetadata = AnalyticsMessagesActivityResponseResponseMetadata;
 export interface ListTeamsResponse {
@@ -1267,6 +2058,8 @@ export interface ListTeamsResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: AnalyticsMessagesActivityResponseResponseMetadata;
 }
+const ListTeamsResponse = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<ListTeamsResponse>;
+
 export interface ListTeamsAdminsRequest {
   /** The maximum number of items to return. */
   limit?: number;
@@ -1274,7 +2067,15 @@ export interface ListTeamsAdminsRequest {
   cursor?: string;
   team_id: string;
 }
+const ListTeamsAdminsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<ListTeamsAdminsRequest>;
+
 export type ListTeamsAdminsResponseAdminIdsList = Array<string>;
+const ListTeamsAdminsResponseAdminIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<ListTeamsAdminsResponseAdminIdsList>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListTeamsAdminsResponseResponseMetadata =
   AnalyticsMessagesActivityResponseResponseMetadata;
@@ -1285,6 +2086,11 @@ export interface ListTeamsAdminsResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: AnalyticsMessagesActivityResponseResponseMetadata;
 }
+const ListTeamsAdminsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<ListTeamsAdminsResponse>;
+
 export interface ListTeamsOwnersRequest {
   team_id: string;
   /** The maximum number of items to return. Must be between 1 - 1000 both inclusive. */
@@ -1292,7 +2098,15 @@ export interface ListTeamsOwnersRequest {
   /** Set `cursor` to `next_cursor` returned by the previous call to list items in the next page. */
   cursor?: string;
 }
+const ListTeamsOwnersRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<ListTeamsOwnersRequest>;
+
 export type ListTeamsOwnersResponseOwnerIdsList = Array<string>;
+const ListTeamsOwnersResponseOwnerIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<ListTeamsOwnersResponseOwnerIdsList>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListTeamsOwnersResponseResponseMetadata =
   AnalyticsMessagesActivityResponseResponseMetadata;
@@ -1303,6 +2117,11 @@ export interface ListTeamsOwnersResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: AnalyticsMessagesActivityResponseResponseMetadata;
 }
+const ListTeamsOwnersResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<ListTeamsOwnersResponse>;
+
 export interface ListUsersRequest {
   /** The ID (T1234) of a workspace. Filters results to just the specified workspace. */
   team_id?: string;
@@ -1321,10 +2140,18 @@ export interface ListUsersRequest {
   /** Limit for how many users to be retrieved per page */
   limit?: number;
 }
+const ListUsersRequest = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<ListUsersRequest>;
+
 /** Roles that a user has */
 export type ListUsersResponseUsersItemRolesList = Array<string>;
+const ListUsersResponseUsersItemRolesList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<ListUsersResponseUsersItemRolesList>;
+
 /** IDs of the workspaces that a user belongs to */
 export type ListUsersResponseUsersItemWorkspacesList = Array<string>;
+const ListUsersResponseUsersItemWorkspacesList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<ListUsersResponseUsersItemWorkspacesList>;
+
 export interface ListUsersResponseUsersItem {
   /** Encoded user ID */
   id: string;
@@ -1365,7 +2192,17 @@ export interface ListUsersResponseUsersItem {
   /** date of when the user was deactivated, returned as epoch seconds */
   deactivated_ts?: number;
 }
+const ListUsersResponseUsersItem = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<ListUsersResponseUsersItem>;
+
 export type ListUsersResponseUsersList = Array<ListUsersResponseUsersItem>;
+const ListUsersResponseUsersList = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<ListUsersResponseUsersList>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListUsersResponseResponseMetadata = AnalyticsMessagesActivityResponseResponseMetadata;
 export interface ListUsersResponse {
@@ -1375,6 +2212,8 @@ export interface ListUsersResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: AnalyticsMessagesActivityResponseResponseMetadata;
 }
+const ListUsersResponse = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<ListUsersResponse>;
+
 export interface ListUsersSessionRequest {
   /** The ID of the workspace you'd like active sessions for. If you pass a `team_id`, you'll need to pass a `user_id` as well. */
   team_id?: string;
@@ -1385,6 +2224,11 @@ export interface ListUsersSessionRequest {
   /** Set `cursor` to `next_cursor` returned by the previous call to list items in the next page. */
   cursor?: string;
 }
+const ListUsersSessionRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<ListUsersSessionRequest>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListUsersSessionResponseResponseMetadata =
   AnalyticsMessagesActivityResponseResponseMetadata;
@@ -1400,6 +2244,11 @@ export interface ListUsersSessionResponseActiveSessionsItemRecent {
   /** IP address */
   ip?: string;
 }
+const ListUsersSessionResponseActiveSessionsItemRecent = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ListUsersSessionResponseActiveSessionsItemRecent>;
+
 export interface ListUsersSessionResponseActiveSessionsItemCreated {
   /** Type of device used when session was created */
   device_hardware?: string;
@@ -1412,6 +2261,9 @@ export interface ListUsersSessionResponseActiveSessionsItemCreated {
   /** IP address used when session was created */
   ip?: string;
 }
+const ListUsersSessionResponseActiveSessionsItemCreated =
+  ListUsersSessionResponseActiveSessionsItemRecent as any as S.Schema<ListUsersSessionResponseActiveSessionsItemCreated>;
+
 export interface ListUsersSessionResponseActiveSessionsItem {
   /** Encoded ID of the user */
   user_id: string;
@@ -1422,9 +2274,19 @@ export interface ListUsersSessionResponseActiveSessionsItem {
   recent?: ListUsersSessionResponseActiveSessionsItemRecent;
   created: ListUsersSessionResponseActiveSessionsItemCreated;
 }
+const ListUsersSessionResponseActiveSessionsItem = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ListUsersSessionResponseActiveSessionsItem>;
+
 /** Active user session data */
 export type ListUsersSessionResponseActiveSessionsList =
   Array<ListUsersSessionResponseActiveSessionsItem>;
+const ListUsersSessionResponseActiveSessionsList = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ListUsersSessionResponseActiveSessionsList>;
+
 export interface ListUsersSessionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -1433,8 +2295,16 @@ export interface ListUsersSessionResponse {
   /** Active user session data */
   active_sessions: ListUsersSessionResponseActiveSessionsList;
 }
+const ListUsersSessionResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<ListUsersSessionResponse>;
+
 /** An array of app IDs to get app configs for */
 export type LookupAppsConfigRequestAppIdsList = Array<string>;
+const LookupAppsConfigRequestAppIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<LookupAppsConfigRequestAppIdsList>;
+
 export type LookupAppsConfigRequestRichLinkPreviewTypesItem =
   | "all_details"
   | "limited_details"
@@ -1444,28 +2314,56 @@ export type LookupAppsConfigRequestRichLinkPreviewTypesItem =
 export type LookupAppsConfigRequestRichLinkPreviewTypesList = Array<
   LookupAppsConfigRequestRichLinkPreviewTypesItem | (string & {})
 >;
+const LookupAppsConfigRequestRichLinkPreviewTypesList =
+  CreateBarrierRequestRestrictedSubjectsList as any as S.Schema<LookupAppsConfigRequestRichLinkPreviewTypesList>;
+
 export interface LookupAppsConfigRequest {
   /** An array of app IDs to get app configs for */
   app_ids?: LookupAppsConfigRequestAppIdsList;
   /** return apps with the corresponding rich link preview layouts */
   rich_link_preview_types?: LookupAppsConfigRequestRichLinkPreviewTypesList;
 }
+const LookupAppsConfigRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<LookupAppsConfigRequest>;
+
 export type LookupAppsConfigResponseConfigsItemWorkflowAuthStrategy =
   | "builder_choice"
   | "end_user_only";
+const LookupAppsConfigResponseConfigsItemWorkflowAuthStrategy = S.String;
+
 export interface LookupAppsConfigResponseConfigsItem {
   app_id: string;
   workflow_auth_strategy: LookupAppsConfigResponseConfigsItemWorkflowAuthStrategy;
   domain_restrictions: unknown;
 }
+const LookupAppsConfigResponseConfigsItem = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<LookupAppsConfigResponseConfigsItem>;
+
 export type LookupAppsConfigResponseConfigsList = Array<LookupAppsConfigResponseConfigsItem>;
+const LookupAppsConfigResponseConfigsList = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<LookupAppsConfigResponseConfigsList>;
+
 export interface LookupAppsConfigResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   configs: LookupAppsConfigResponseConfigsList;
 }
+const LookupAppsConfigResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<LookupAppsConfigResponse>;
+
 /** Array of team IDs to filter by */
 export type LookupConversationRequestTeamIdsList = Array<string>;
+const LookupConversationRequestTeamIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<LookupConversationRequestTeamIdsList>;
+
 export interface LookupConversationRequest {
   /** Array of team IDs to filter by */
   team_ids: LookupConversationRequestTeamIdsList;
@@ -1478,7 +2376,15 @@ export interface LookupConversationRequest {
   /** Maximum number of results */
   limit?: number;
 }
+const LookupConversationRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<LookupConversationRequest>;
+
 export type LookupConversationResponseChannelIdsList = Array<string>;
+const LookupConversationResponseChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<LookupConversationResponseChannelIdsList>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type LookupConversationResponseResponseMetadata =
   AnalyticsMessagesActivityResponseResponseMetadata;
@@ -1489,17 +2395,39 @@ export interface LookupConversationResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: AnalyticsMessagesActivityResponseResponseMetadata;
 }
+const LookupConversationResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<LookupConversationResponse>;
+
 /** An array of function IDs to get permissions for */
 export type LookupFunctionsPermissionsRequestFunctionIdsList = Array<string>;
+const LookupFunctionsPermissionsRequestFunctionIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<LookupFunctionsPermissionsRequestFunctionIdsList>;
+
 export interface LookupFunctionsPermissionsRequest {
   /** An array of function IDs to get permissions for */
   function_ids: LookupFunctionsPermissionsRequestFunctionIdsList;
 }
+const LookupFunctionsPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<LookupFunctionsPermissionsRequest>;
+
 export type LookupFunctionsPermissionsResponsePermissionsMap = {
   [key: string]: unknown | undefined;
 };
+const LookupFunctionsPermissionsResponsePermissionsMap =
+  ListEmojiResponseEmojiMap as any as S.Schema<LookupFunctionsPermissionsResponsePermissionsMap>;
+
 export type LookupFunctionsPermissionsResponseMetadataMap = { [key: string]: unknown | undefined };
+const LookupFunctionsPermissionsResponseMetadataMap =
+  ListEmojiResponseEmojiMap as any as S.Schema<LookupFunctionsPermissionsResponseMetadataMap>;
+
 export type LookupFunctionsPermissionsResponseErrorsMap = { [key: string]: unknown | undefined };
+const LookupFunctionsPermissionsResponseErrorsMap =
+  ListEmojiResponseEmojiMap as any as S.Schema<LookupFunctionsPermissionsResponseErrorsMap>;
+
 export interface LookupFunctionsPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -1507,46 +2435,95 @@ export interface LookupFunctionsPermissionsResponse {
   metadata: LookupFunctionsPermissionsResponseMetadataMap;
   errors: LookupFunctionsPermissionsResponseErrorsMap;
 }
+const LookupFunctionsPermissionsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<LookupFunctionsPermissionsResponse>;
+
 /** An array of workflow IDs to look up permissions for */
 export type LookupWorkflowsPermissionsRequestWorkflowIdsList = Array<string>;
+const LookupWorkflowsPermissionsRequestWorkflowIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<LookupWorkflowsPermissionsRequestWorkflowIdsList>;
+
 export interface LookupWorkflowsPermissionsRequest {
   /** An array of workflow IDs to look up permissions for */
   workflow_ids: LookupWorkflowsPermissionsRequestWorkflowIdsList;
   /** Maximum number of triggers to fetch for each workflow when determining overall run permissions; max 1000 */
   max_workflow_triggers?: number;
 }
+const LookupWorkflowsPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<LookupWorkflowsPermissionsRequest>;
+
 export type LookupWorkflowsPermissionsResponsePermissionsMap = {
   [key: string]: unknown | undefined;
 };
+const LookupWorkflowsPermissionsResponsePermissionsMap =
+  ListEmojiResponseEmojiMap as any as S.Schema<LookupWorkflowsPermissionsResponsePermissionsMap>;
+
 export interface LookupWorkflowsPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   permissions: LookupWorkflowsPermissionsResponsePermissionsMap;
 }
+const LookupWorkflowsPermissionsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<LookupWorkflowsPermissionsResponse>;
+
 /** The trigger type IDs for which to get the permissions. */
 export type LookupWorkflowsTriggersTypesPermissionsRequestTriggerTypeIdsList = Array<string>;
+const LookupWorkflowsTriggersTypesPermissionsRequestTriggerTypeIdsList =
+  ListOriginalConnectedChannelInfoResponseChannelsItemInternalTeamIdsList as any as S.Schema<LookupWorkflowsTriggersTypesPermissionsRequestTriggerTypeIdsList>;
+
 export interface LookupWorkflowsTriggersTypesPermissionsRequest {
   /** The trigger type IDs for which to get the permissions. */
   trigger_type_ids: LookupWorkflowsTriggersTypesPermissionsRequestTriggerTypeIdsList;
 }
+const LookupWorkflowsTriggersTypesPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<LookupWorkflowsTriggersTypesPermissionsRequest>;
+
 export type LookupWorkflowsTriggersTypesPermissionsResponsePermissionsMap = {
   [key: string]: unknown | undefined;
 };
+const LookupWorkflowsTriggersTypesPermissionsResponsePermissionsMap =
+  ListEmojiResponseEmojiMap as any as S.Schema<LookupWorkflowsTriggersTypesPermissionsResponsePermissionsMap>;
+
 export type LookupWorkflowsTriggersTypesPermissionsResponseMetadataMap = {
   [key: string]: unknown | undefined;
 };
+const LookupWorkflowsTriggersTypesPermissionsResponseMetadataMap =
+  ListEmojiResponseEmojiMap as any as S.Schema<LookupWorkflowsTriggersTypesPermissionsResponseMetadataMap>;
+
 export interface LookupWorkflowsTriggersTypesPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   permissions: LookupWorkflowsTriggersTypesPermissionsResponsePermissionsMap;
   metadata: LookupWorkflowsTriggersTypesPermissionsResponseMetadataMap;
 }
+const LookupWorkflowsTriggersTypesPermissionsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<LookupWorkflowsTriggersTypesPermissionsResponse>;
+
 /** List of user IDs whose named_entities access will be revoked */
 export type RemoveAppsPermissionsRequestUserIdsList = Array<string>;
+const RemoveAppsPermissionsRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveAppsPermissionsRequestUserIdsList>;
+
 /** List of encoded usergroup IDs */
 export type RemoveAppsPermissionsRequestUsergroupIdsList = Array<string>;
+const RemoveAppsPermissionsRequestUsergroupIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveAppsPermissionsRequestUsergroupIdsList>;
+
 /** List of encoded channel IDs to remove from the channel restriction list. Interpretation depends on the app's `channel_restriction_mode`, which is configured via the `admin.apps.permissions.set` method. */
 export type RemoveAppsPermissionsRequestChannelIdsList = Array<string>;
+const RemoveAppsPermissionsRequestChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveAppsPermissionsRequestChannelIdsList>;
+
 export interface RemoveAppsPermissionsRequest {
   /** Encoded ID of the app */
   app_id: string;
@@ -1557,14 +2534,28 @@ export interface RemoveAppsPermissionsRequest {
   /** List of encoded channel IDs to remove from the channel restriction list. Interpretation depends on the app's `channel_restriction_mode`, which is configured via the `admin.apps.permissions.set` method. */
   channel_ids?: RemoveAppsPermissionsRequestChannelIdsList;
 }
+const RemoveAppsPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<RemoveAppsPermissionsRequest>;
+
 export interface RemoveAppsPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const RemoveAppsPermissionsResponse =
+  AddAppsPermissionsResponse as any as S.Schema<RemoveAppsPermissionsResponse>;
+
 /** List of the entity IDs for which roles will be revoked. These can be Org IDs, Team IDs or Channel IDs */
 export type RemoveAssignmentsRequestEntityIdsList = Array<string>;
+const RemoveAssignmentsRequestEntityIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveAssignmentsRequestEntityIdsList>;
+
 /** List of IDs of the users whose roles will be revoked */
 export type RemoveAssignmentsRequestUserIdsList = Array<string>;
+const RemoveAssignmentsRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveAssignmentsRequestUserIdsList>;
+
 export interface RemoveAssignmentsRequest {
   /** ID of the role to which users will be assigned */
   role_id: string;
@@ -1573,20 +2564,38 @@ export interface RemoveAssignmentsRequest {
   /** List of IDs of the users whose roles will be revoked */
   user_ids: RemoveAssignmentsRequestUserIdsList;
 }
+const RemoveAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<RemoveAssignmentsRequest>;
+
 export interface RemoveAssignmentsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   /** A string representation of the error type */
   error?: string;
 }
+const RemoveAssignmentsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<RemoveAssignmentsResponse>;
+
 /** Comma-separated string of channel IDs */
 export type RemoveChannelsRequestChannelIdsList = Array<string>;
+const RemoveChannelsRequestChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveChannelsRequestChannelIdsList>;
+
 export interface RemoveChannelsRequest {
   /** ID of the IDP Group */
   usergroup_id: string;
   /** Comma-separated string of channel IDs */
   channel_ids: RemoveChannelsRequestChannelIdsList;
 }
+const RemoveChannelsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<RemoveChannelsRequest>;
+
 /** List of channel IDs that are not valid for this action */
 export type RemoveChannelsResponseInvalidChannelsList = Array<string>;
 export interface RemoveChannelsResponse {
@@ -1597,24 +2606,41 @@ export interface RemoveChannelsResponse {
   /** List of channel IDs that are not valid for this action */
   invalid_channels?: RemoveChannelsResponseInvalidChannelsList;
 }
+const RemoveChannelsResponse = AddChannelsResponse as any as S.Schema<RemoveChannelsResponse>;
+
 export interface RemoveCustomRetentionRequest {
   /** The conversation to set the retention policy for. */
   channel_id: string;
 }
+const RemoveCustomRetentionRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<RemoveCustomRetentionRequest>;
+
 export interface RemoveCustomRetentionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const RemoveCustomRetentionResponse =
+  AddAppsPermissionsResponse as any as S.Schema<RemoveCustomRetentionResponse>;
+
 export interface RemoveEmojiRequest {
   /** The name of the emoji to be removed. Colons (`:myemoji:`) around the value are not required, although they may be included. */
   name: string;
 }
+const RemoveEmojiRequest = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<RemoveEmojiRequest>;
+
 export interface RemoveEmojiResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const RemoveEmojiResponse = AddAliasResponse as any as S.Schema<RemoveEmojiResponse>;
+
 /** Encoded IDs of the entities you'd like to remove from the policy. */
 export type RemoveEntitiesRequestEntityIdsList = Array<string>;
+const RemoveEntitiesRequestEntityIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveEntitiesRequestEntityIdsList>;
+
 export interface RemoveEntitiesRequest {
   /** The name of the policy to remove entities from. Currently, `email_password` is the only policy that may be used with this method. */
   policy_name: string;
@@ -1623,12 +2649,19 @@ export interface RemoveEntitiesRequest {
   /** Encoded IDs of the entities you'd like to remove from the policy. */
   entity_ids: RemoveEntitiesRequestEntityIdsList;
 }
+const RemoveEntitiesRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<RemoveEntitiesRequest>;
+
 export interface RemoveEntitiesResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   /** Count of entities under the policy and provided filter conditions */
   entity_total_count: number;
 }
+const RemoveEntitiesResponse = AssignEntitiesResponse as any as S.Schema<RemoveEntitiesResponse>;
+
 export interface RemoveGroupRequest {
   /** The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization. */
   team_id: string;
@@ -1637,77 +2670,128 @@ export interface RemoveGroupRequest {
   /** The channel to remove the linked group from. */
   channel_id: string;
 }
+const RemoveGroupRequest = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<RemoveGroupRequest>;
+
 export interface RemoveGroupResponse {
   ok: boolean;
 }
+const RemoveGroupResponse = AddAliasResponse as any as S.Schema<RemoveGroupResponse>;
+
 /** A comma separated list of encoded team (workspace) IDs. Each workspace *MUST* belong to the organization associated with the token. */
 export type RemoveTeamsRequestTeamIdsList = Array<string>;
+const RemoveTeamsRequestTeamIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveTeamsRequestTeamIdsList>;
+
 export interface RemoveTeamsRequest {
   /** An encoded usergroup (IDP Group) ID. */
   usergroup_id: string;
   /** A comma separated list of encoded team (workspace) IDs. Each workspace *MUST* belong to the organization associated with the token. */
   team_ids: RemoveTeamsRequestTeamIdsList;
 }
+const RemoveTeamsRequest = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<RemoveTeamsRequest>;
+
 export interface RemoveTeamsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const RemoveTeamsResponse = AddAliasResponse as any as S.Schema<RemoveTeamsResponse>;
+
 export interface RemoveUserRequest {
   /** The ID (`T1234`) of the workspace. */
   team_id: string;
   /** The ID of the user to remove. */
   user_id: string;
 }
+const RemoveUserRequest = /*@__PURE__*/ __L.at(__c22, 1) as any as S.Schema<RemoveUserRequest>;
+
 export interface RemoveUserResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const RemoveUserResponse = AddAliasResponse as any as S.Schema<RemoveUserResponse>;
+
 /** The encoded user IDs to remove from the usergroup, provided as a JSON array or a comma-separated string. */
 export type RemoveUsersRequestUsersList = Array<string>;
+const RemoveUsersRequestUsersList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveUsersRequestUsersList>;
+
 export interface RemoveUsersRequest {
   /** ID of the usergroup to remove users from */
   id: string;
   /** The encoded user IDs to remove from the usergroup, provided as a JSON array or a comma-separated string. */
   users: RemoveUsersRequestUsersList;
 }
+const RemoveUsersRequest = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<RemoveUsersRequest>;
+
 export interface RemoveUsersResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const RemoveUsersResponse = AddAliasResponse as any as S.Schema<RemoveUsersResponse>;
+
 /** Array of workflow IDs to edit; max 50 */
 export type RemoveWorkflowsCollaboratorRequestWorkflowIdsList = Array<string>;
+const RemoveWorkflowsCollaboratorRequestWorkflowIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveWorkflowsCollaboratorRequestWorkflowIdsList>;
+
 /** Array of collaborators (encoded user IDs) to remove; max 50 */
 export type RemoveWorkflowsCollaboratorRequestCollaboratorIdsList = Array<string>;
+const RemoveWorkflowsCollaboratorRequestCollaboratorIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<RemoveWorkflowsCollaboratorRequestCollaboratorIdsList>;
+
 export interface RemoveWorkflowsCollaboratorRequest {
   /** Array of workflow IDs to edit; max 50 */
   workflow_ids: RemoveWorkflowsCollaboratorRequestWorkflowIdsList;
   /** Array of collaborators (encoded user IDs) to remove; max 50 */
   collaborator_ids: RemoveWorkflowsCollaboratorRequestCollaboratorIdsList;
 }
+const RemoveWorkflowsCollaboratorRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<RemoveWorkflowsCollaboratorRequest>;
+
 export interface RemoveWorkflowsCollaboratorResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const RemoveWorkflowsCollaboratorResponse =
+  AddAppsPermissionsResponse as any as S.Schema<RemoveWorkflowsCollaboratorResponse>;
+
 export interface RenameConversationRequest {
   /** The channel to rename. */
   channel_id: string;
   name: string;
 }
+const RenameConversationRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<RenameConversationRequest>;
+
 export interface RenameConversationResponse {
   ok: boolean;
 }
+const RenameConversationResponse =
+  AddAppsPermissionsResponse as any as S.Schema<RenameConversationResponse>;
+
 export interface RenameEmojiRequest {
   /** The name of the emoji to be renamed. Colons (`:myemoji:`) around the value are not required, although they may be included. */
   name: string;
   /** The new name of the emoji. */
   new_name: string;
 }
+const RenameEmojiRequest = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<RenameEmojiRequest>;
+
 export interface RenameEmojiResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const RenameEmojiResponse = AddAliasResponse as any as S.Schema<RenameEmojiResponse>;
+
 /** The list of up to 1,000 user IDs to wipe sessions for */
 export type ResetBulkRequestUserIdsList = Array<string>;
+const ResetBulkRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<ResetBulkRequestUserIdsList>;
+
 export interface ResetBulkRequest {
   /** The list of up to 1,000 user IDs to wipe sessions for */
   user_ids: ResetBulkRequestUserIdsList;
@@ -1716,10 +2800,14 @@ export interface ResetBulkRequest {
   /** Only expire web sessions (default: false) */
   web_only?: boolean;
 }
+const ResetBulkRequest = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<ResetBulkRequest>;
+
 export interface ResetBulkResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const ResetBulkResponse = AddAliasResponse as any as S.Schema<ResetBulkResponse>;
+
 export interface ResetUsersSessionRequest {
   /** The ID of the user to wipe sessions for */
   user_id: string;
@@ -1728,16 +2816,33 @@ export interface ResetUsersSessionRequest {
   /** Only expire web sessions (default: false) */
   web_only?: boolean;
 }
+const ResetUsersSessionRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<ResetUsersSessionRequest>;
+
 export interface ResetUsersSessionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const ResetUsersSessionResponse =
+  AddAppsPermissionsResponse as any as S.Schema<ResetUsersSessionResponse>;
+
 /** Comma separated string of team IDs, signifying the internal workspaces to search through. */
 export type SearchConversationRequestTeamIdsList = Array<string>;
+const SearchConversationRequestTeamIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SearchConversationRequestTeamIdsList>;
+
 /** Array of encoded team IDs, signifying the external orgs to search through. */
 export type SearchConversationRequestConnectedTeamIdsList = Array<string>;
+const SearchConversationRequestConnectedTeamIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SearchConversationRequestConnectedTeamIdsList>;
+
 /** The type of channel to include or exclude in the search. For example `private` will search private channels, while `private_exclude` will exclude them. For a full list of types, check the [Types section](#types). */
 export type SearchConversationRequestSearchChannelTypesList = Array<string>;
+const SearchConversationRequestSearchChannelTypesList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SearchConversationRequestSearchChannelTypesList>;
+
 export interface SearchConversationRequest {
   /** Comma separated string of team IDs, signifying the internal workspaces to search through. */
   team_ids?: SearchConversationRequestTeamIdsList;
@@ -1758,7 +2863,15 @@ export interface SearchConversationRequest {
   /** Only return the total_count of channels. Omits channel data and allows access for admins without channel manager permissions. */
   total_count_only?: boolean;
 }
+const SearchConversationRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<SearchConversationRequest>;
+
 export type SearchConversationResponseConversationsList = Array<string>;
+const SearchConversationResponseConversationsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SearchConversationResponseConversationsList>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type SearchConversationResponseResponseMetadata =
   AnalyticsMessagesActivityResponseResponseMetadata;
@@ -1775,18 +2888,37 @@ export interface SearchConversationResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: AnalyticsMessagesActivityResponseResponseMetadata;
 }
+const SearchConversationResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<SearchConversationResponse>;
+
 /** Only include workflows where all of the provided user IDs are a manager/collaborator of that workflow */
 export type SearchWorkflowRequestCollaboratorIdsList = Array<string>;
+const SearchWorkflowRequestCollaboratorIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SearchWorkflowRequestCollaboratorIdsList>;
+
 /** Source of workflow creation, either from code or workflow builder */
 export type SearchWorkflowRequestSource = "code" | "workflow_builder" | "sales_home" | "agent";
+const SearchWorkflowRequestSource = S.String;
+
 /** The field used to sort the returned workflows */
 export type SearchWorkflowRequestSort = "name";
+const SearchWorkflowRequestSort = S.String;
+
 /** Sort direction. Possible values are `asc` for ascending order like (1, 2, 3) or (a, b, c), and `desc` for descending order like (3, 2, 1) or (c, b, a) */
 export type SearchWorkflowRequestSortDir = "asc" | "desc";
+const SearchWorkflowRequestSortDir = S.String;
+
 /** Filter workflows by their published status */
 export type SearchWorkflowRequestPublishStatus = "all" | "published" | "unpublished";
+const SearchWorkflowRequestPublishStatus = S.String;
+
 /** Only include workflows that use all of the provided step function ids */
 export type SearchWorkflowRequestStepFunctionIdsList = Array<string>;
+const SearchWorkflowRequestStepFunctionIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SearchWorkflowRequestStepFunctionIdsList>;
+
 export interface SearchWorkflowRequest {
   /** A search query to filter for workflow name or description */
   query?: string;
@@ -1817,7 +2949,15 @@ export interface SearchWorkflowRequest {
   /** Only include workflows that use all of the provided step function ids */
   step_function_ids?: SearchWorkflowRequestStepFunctionIdsList;
 }
+const SearchWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<SearchWorkflowRequest>;
+
 export type SearchWorkflowResponseWorkflowsList = Array<unknown>;
+const SearchWorkflowResponseWorkflowsList =
+  ListAppsActivitiesResponseActivitiesList as any as S.Schema<SearchWorkflowResponseWorkflowsList>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type SearchWorkflowResponseResponseMetadata =
   AnalyticsMessagesActivityResponseResponseMetadata;
@@ -1830,28 +2970,47 @@ export interface SearchWorkflowResponse {
   /** The total number of workflows that match this search criteria */
   total_found: number;
 }
+const SearchWorkflowResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<SearchWorkflowResponse>;
+
 export interface SetAdminRequest {
   /** The ID of the workspace or organization. */
   team_id: string;
   /** The ID of the user to designate as an admin. */
   user_id: string;
 }
+const SetAdminRequest = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<SetAdminRequest>;
+
 export interface SetAdminResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const SetAdminResponse = AddAliasResponse as any as S.Schema<SetAdminResponse>;
+
 /** The workflow auth permission. Can be one of `builder_choice` or `end_user_only`. */
 export type SetAppsConfigRequestWorkflowAuthStrategy = "builder_choice" | "end_user_only";
+const SetAppsConfigRequestWorkflowAuthStrategy = S.String;
+
 /** Indicates the app-level override for rich link preview. Unsupported for free teams. */
 export type SetAppsConfigRequestRichLinkPreviewType =
   | "all_details"
   | "limited_details"
   | "no_preview"
   | "default_to_global_setting";
+const SetAppsConfigRequestRichLinkPreviewType = S.String;
+
 /** List of URLs for allowed connector authorization */
 export type SetAppsConfigRequestDomainRestrictionsUrlsList = Array<string>;
+const SetAppsConfigRequestDomainRestrictionsUrlsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetAppsConfigRequestDomainRestrictionsUrlsList>;
+
 /** List of emails for allowed connector authorization */
 export type SetAppsConfigRequestDomainRestrictionsEmailsList = Array<string>;
+const SetAppsConfigRequestDomainRestrictionsEmailsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetAppsConfigRequestDomainRestrictionsEmailsList>;
+
 /** Domain restrictions for the app. Should be an object with two properties: `urls` and `emails`. Each is an array of strings, and each sets the allowed URLs and emails for connector authorization, respectively. */
 export interface SetAppsConfigRequestDomainRestrictions {
   /** List of URLs for allowed connector authorization */
@@ -1859,6 +3018,11 @@ export interface SetAppsConfigRequestDomainRestrictions {
   /** List of emails for allowed connector authorization */
   emails?: SetAppsConfigRequestDomainRestrictionsEmailsList;
 }
+const SetAppsConfigRequestDomainRestrictions = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<SetAppsConfigRequestDomainRestrictions>;
+
 export interface SetAppsConfigRequest {
   /** The encoded app ID to set the app config for */
   app_id: string;
@@ -1869,20 +3033,35 @@ export interface SetAppsConfigRequest {
   /** Domain restrictions for the app. Should be an object with two properties: `urls` and `emails`. Each is an array of strings, and each sets the allowed URLs and emails for connector authorization, respectively. */
   domain_restrictions?: SetAppsConfigRequestDomainRestrictions;
 }
+const SetAppsConfigRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<SetAppsConfigRequest>;
+
 export interface SetAppsConfigResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const SetAppsConfigResponse = AddAliasResponse as any as S.Schema<SetAppsConfigResponse>;
+
 /** The type of permission that defines who can use this MCP server */
 export type SetAppsMcpServersPermissionsRequestPermissionType =
   | "everyone"
   | "no_one"
   | "named_entities"
   | "named_entities_exclude";
+const SetAppsMcpServersPermissionsRequestPermissionType = S.String;
+
 /** List of user IDs to set for named_entities or named_entities_exclude */
 export type SetAppsMcpServersPermissionsRequestUserIdsList = Array<string>;
+const SetAppsMcpServersPermissionsRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetAppsMcpServersPermissionsRequestUserIdsList>;
+
 /** List of encoded usergroup IDs */
 export type SetAppsMcpServersPermissionsRequestUsergroupIdsList = Array<string>;
+const SetAppsMcpServersPermissionsRequestUsergroupIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetAppsMcpServersPermissionsRequestUsergroupIdsList>;
+
 export interface SetAppsMcpServersPermissionsRequest {
   /** Encoded ID of the app */
   app_id: string;
@@ -1895,23 +3074,44 @@ export interface SetAppsMcpServersPermissionsRequest {
   /** List of encoded usergroup IDs */
   usergroup_ids?: SetAppsMcpServersPermissionsRequestUsergroupIdsList;
 }
+const SetAppsMcpServersPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<SetAppsMcpServersPermissionsRequest>;
+
 export interface SetAppsMcpServersPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const SetAppsMcpServersPermissionsResponse =
+  AddAppsPermissionsResponse as any as S.Schema<SetAppsMcpServersPermissionsResponse>;
+
 /** The type of permission that defines who can access the app */
 export type SetAppsPermissionsRequestPermissionType = "everyone" | "named_entities" | "no_one";
+const SetAppsPermissionsRequestPermissionType = S.String;
+
 /** List of user IDs to allow for named_entities visibility */
 export type SetAppsPermissionsRequestUserIdsList = Array<string>;
+const SetAppsPermissionsRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetAppsPermissionsRequestUserIdsList>;
+
 /** List of encoded usergroup IDs */
 export type SetAppsPermissionsRequestUsergroupIdsList = Array<string>;
+const SetAppsPermissionsRequestUsergroupIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetAppsPermissionsRequestUsergroupIdsList>;
+
 /** The mode that defines where the app can be used in channels */
 export type SetAppsPermissionsRequestChannelRestrictionMode =
   | "all_channels"
   | "specific_channels"
   | "all_channels_except";
+const SetAppsPermissionsRequestChannelRestrictionMode = S.String;
+
 /** List of encoded channel IDs for channel restrictions. Semantics depend on channel_restriction_mode: allowlist for specific_channels, exclusion list for all_channels_except */
 export type SetAppsPermissionsRequestChannelIdsList = Array<string>;
+const SetAppsPermissionsRequestChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetAppsPermissionsRequestChannelIdsList>;
+
 export interface SetAppsPermissionsRequest {
   /** Encoded ID of the app */
   app_id: string;
@@ -1926,58 +3126,108 @@ export interface SetAppsPermissionsRequest {
   /** List of encoded channel IDs for channel restrictions. Semantics depend on channel_restriction_mode: allowlist for specific_channels, exclusion list for all_channels_except */
   channel_ids?: SetAppsPermissionsRequestChannelIdsList;
 }
+const SetAppsPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<SetAppsPermissionsRequest>;
+
 export interface SetAppsPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const SetAppsPermissionsResponse =
+  AddAppsPermissionsResponse as any as S.Schema<SetAppsPermissionsResponse>;
+
 export interface SetConversationPrefsRequest {
   /** The channel to set the prefs for */
   channel_id: string;
   /** The prefs for this channel in a stringified JSON format. */
   prefs: string;
 }
+const SetConversationPrefsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<SetConversationPrefsRequest>;
+
 export interface SetConversationPrefsResponse {
   ok: boolean;
 }
+const SetConversationPrefsResponse =
+  AddAppsPermissionsResponse as any as S.Schema<SetConversationPrefsResponse>;
+
 export interface SetCustomRetentionRequest {
   /** The conversation to set the retention policy for. */
   channel_id: string;
   /** The message retention duration in days to set for this conversation */
   duration_days: number;
 }
+const SetCustomRetentionRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<SetCustomRetentionRequest>;
+
 export interface SetCustomRetentionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const SetCustomRetentionResponse =
+  AddAppsPermissionsResponse as any as S.Schema<SetCustomRetentionResponse>;
+
 export type SetDefaultChannelsRequestChannelIdsList = Array<string>;
+const SetDefaultChannelsRequestChannelIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetDefaultChannelsRequestChannelIdsList>;
+
 export interface SetDefaultChannelsRequest {
   /** ID for the workspace to set the default channel for. */
   team_id: string;
   /** An array of channel IDs. */
   channel_ids: SetDefaultChannelsRequestChannelIdsList;
 }
+const SetDefaultChannelsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<SetDefaultChannelsRequest>;
+
 export interface SetDefaultChannelsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const SetDefaultChannelsResponse =
+  AddAppsPermissionsResponse as any as S.Schema<SetDefaultChannelsResponse>;
+
 export interface SetDescriptionRequest {
   /** ID for the workspace to set the description for. */
   team_id: string;
   /** The new description for the workspace. */
   description: string;
 }
+const SetDescriptionRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<SetDescriptionRequest>;
+
 export interface SetDescriptionResponse {
   ok: boolean;
 }
+const SetDescriptionResponse = AddAliasResponse as any as S.Schema<SetDescriptionResponse>;
+
 export interface SetDiscoverabilityRequest {
   /** The ID of the workspace to set discoverability on. */
   team_id: string;
   /** This workspace's discovery setting. It must be set to one of `open`, `invite_only`, `closed`, or `unlisted`. */
   discoverability: string;
 }
+const SetDiscoverabilityRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<SetDiscoverabilityRequest>;
+
 export interface SetDiscoverabilityResponse {
   ok: boolean;
 }
+const SetDiscoverabilityResponse =
+  AddAppsPermissionsResponse as any as S.Schema<SetDiscoverabilityResponse>;
+
 export interface SetExpirationRequest {
   /** The ID (`T1234`) of the workspace. */
   team_id?: string;
@@ -1986,36 +3236,65 @@ export interface SetExpirationRequest {
   /** Epoch timestamp in seconds when guest account should be disabled. */
   expiration_ts: number;
 }
+const SetExpirationRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<SetExpirationRequest>;
+
 export interface SetExpirationResponse {
   ok: boolean;
 }
+const SetExpirationResponse = AddAliasResponse as any as S.Schema<SetExpirationResponse>;
+
 /** The function visibility. */
 export type SetFunctionsPermissionsRequestVisibility =
   | "everyone"
   | "app_collaborators"
   | "named_entities"
   | "no_one";
+const SetFunctionsPermissionsRequestVisibility = S.String;
+
 /** List of user IDs to allow for `named_entities` visibility. */
 export type SetFunctionsPermissionsRequestUserIdsList = Array<string>;
+const SetFunctionsPermissionsRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetFunctionsPermissionsRequestUserIdsList>;
+
 export type SetFunctionsPermissionsRequestPermissionsItemVisibility =
   | "everyone"
   | "named_entities"
   | "no_one";
+const SetFunctionsPermissionsRequestPermissionsItemVisibility = S.String;
+
 export type SetFunctionsPermissionsRequestPermissionsItemPermissionType =
   | "slack_function"
   | "private_channel_access"
   | "connector_resource";
+const SetFunctionsPermissionsRequestPermissionsItemPermissionType = S.String;
+
 /** List of user IDs to allow for `named_entities` visibility. */
 export type SetFunctionsPermissionsRequestPermissionsItemUserIdsList = Array<string>;
+const SetFunctionsPermissionsRequestPermissionsItemUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetFunctionsPermissionsRequestPermissionsItemUserIdsList>;
+
 export interface SetFunctionsPermissionsRequestPermissionsItem {
   visibility: SetFunctionsPermissionsRequestPermissionsItemVisibility | (string & {});
   permission_type: SetFunctionsPermissionsRequestPermissionsItemPermissionType | (string & {});
   /** List of user IDs to allow for `named_entities` visibility. */
   user_ids?: SetFunctionsPermissionsRequestPermissionsItemUserIdsList;
 }
+const SetFunctionsPermissionsRequestPermissionsItem = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<SetFunctionsPermissionsRequestPermissionsItem>;
+
 /** Array of permissions for the function. */
 export type SetFunctionsPermissionsRequestPermissionsList =
   Array<SetFunctionsPermissionsRequestPermissionsItem>;
+const SetFunctionsPermissionsRequestPermissionsList = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<SetFunctionsPermissionsRequestPermissionsList>;
+
 export interface SetFunctionsPermissionsRequest {
   /** The function ID to set permissions for. */
   function_id: string;
@@ -2026,51 +3305,78 @@ export interface SetFunctionsPermissionsRequest {
   /** Array of permissions for the function. */
   permissions?: SetFunctionsPermissionsRequestPermissionsList;
 }
+const SetFunctionsPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<SetFunctionsPermissionsRequest>;
+
 export interface SetFunctionsPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const SetFunctionsPermissionsResponse =
+  AddAppsPermissionsResponse as any as S.Schema<SetFunctionsPermissionsResponse>;
+
 export interface SetIconRequest {
   /** Image URL for the icon */
   image_url: string;
   /** ID for the workspace to set the icon for. */
   team_id: string;
 }
+const SetIconRequest = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<SetIconRequest>;
+
 export interface SetIconResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const SetIconResponse = AddAliasResponse as any as S.Schema<SetIconResponse>;
+
 export interface SetNameRequest {
   /** ID for the workspace to set the name for. */
   team_id: string;
   /** The new name of the workspace. */
   name: string;
 }
+const SetNameRequest = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<SetNameRequest>;
+
 export interface SetNameResponse {
   ok: boolean;
 }
+const SetNameResponse = AddAliasResponse as any as S.Schema<SetNameResponse>;
+
 export interface SetOwnerRequest {
   /** The ID of the workspace or organization. */
   team_id: string;
   /** ID of the user to promote to owner. */
   user_id: string;
 }
+const SetOwnerRequest = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<SetOwnerRequest>;
+
 export interface SetOwnerResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const SetOwnerResponse = AddAliasResponse as any as S.Schema<SetOwnerResponse>;
+
 export interface SetRegularRequest {
   /** The ID of the workspace or organization. */
   team_id: string;
   /** The ID of the user to designate as a regular user. */
   user_id: string;
 }
+const SetRegularRequest = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<SetRegularRequest>;
+
 export interface SetRegularResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const SetRegularResponse = AddAliasResponse as any as S.Schema<SetRegularResponse>;
+
 /** The list of up to 1,000 user IDs to apply the session settings for */
 export type SetSettingsRequestUserIdsList = Array<string>;
+const SetSettingsRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetSettingsRequestUserIdsList>;
+
 export interface SetSettingsRequest {
   /** The list of up to 1,000 user IDs to apply the session settings for */
   user_ids: SetSettingsRequestUserIdsList;
@@ -2079,11 +3385,18 @@ export interface SetSettingsRequest {
   /** Terminate the session when the client--either the desktop app or a browser window--is closed. */
   desktop_app_browser_quit?: boolean;
 }
+const SetSettingsRequest = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<SetSettingsRequest>;
+
 export interface SetSettingsResponse {
   ok: boolean;
 }
+const SetSettingsResponse = AddAliasResponse as any as S.Schema<SetSettingsResponse>;
+
 /** A comma-separated list of workspaces to which the channel should be shared. Not required if the channel is being shared org-wide. */
 export type SetTeamsRequestTargetTeamIdsList = Array<string>;
+const SetTeamsRequestTargetTeamIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetTeamsRequestTargetTeamIdsList>;
+
 export interface SetTeamsRequest {
   /** The encoded `channel_id` to add or remove to workspaces. */
   channel_id: string;
@@ -2094,26 +3407,45 @@ export interface SetTeamsRequest {
   /** True if channel has to be converted to an org channel */
   org_channel?: boolean;
 }
+const SetTeamsRequest = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<SetTeamsRequest>;
+
 export interface SetTeamsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   channel: string;
 }
+const SetTeamsResponse = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<SetTeamsResponse>;
+
 /** The function visibility */
 export type SetWorkflowsTriggersTypesPermissionsRequestVisibility =
   | "everyone"
   | "named_entities"
   | "no_one";
+const SetWorkflowsTriggersTypesPermissionsRequestVisibility = S.String;
+
 /** List of user IDs to allow for named_entities visibility */
 export type SetWorkflowsTriggersTypesPermissionsRequestUserIdsList = Array<string>;
+const SetWorkflowsTriggersTypesPermissionsRequestUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<SetWorkflowsTriggersTypesPermissionsRequestUserIdsList>;
+
 /** Dict of permissions keyed by permission type ID. */
 export type SetWorkflowsTriggersTypesPermissionsRequestPermissionsPermissionsMap = {
   [key: string]: unknown | undefined;
 };
+const SetWorkflowsTriggersTypesPermissionsRequestPermissionsPermissionsMap = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<SetWorkflowsTriggersTypesPermissionsRequestPermissionsPermissionsMap>;
+
 export interface SetWorkflowsTriggersTypesPermissionsRequestPermissions {
   /** Dict of permissions keyed by permission type ID. */
   permissions?: SetWorkflowsTriggersTypesPermissionsRequestPermissionsPermissionsMap;
 }
+const SetWorkflowsTriggersTypesPermissionsRequestPermissions = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<SetWorkflowsTriggersTypesPermissionsRequestPermissions>;
+
 export interface SetWorkflowsTriggersTypesPermissionsRequest {
   /** The trigger type ID for which to set the permissions */
   id: string;
@@ -2123,14 +3455,30 @@ export interface SetWorkflowsTriggersTypesPermissionsRequest {
   user_ids?: SetWorkflowsTriggersTypesPermissionsRequestUserIdsList;
   permissions?: SetWorkflowsTriggersTypesPermissionsRequestPermissions;
 }
+const SetWorkflowsTriggersTypesPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<SetWorkflowsTriggersTypesPermissionsRequest>;
+
 export interface SetWorkflowsTriggersTypesPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const SetWorkflowsTriggersTypesPermissionsResponse =
+  AddAppsPermissionsResponse as any as S.Schema<SetWorkflowsTriggersTypesPermissionsResponse>;
+
 export interface TeamsSettingsInfoRequest {
   team_id: string;
 }
+const TeamsSettingsInfoRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<TeamsSettingsInfoRequest>;
+
 export type TeamsSettingsInfoResponseTeamItemDefaultChannelsList = Array<unknown>;
+const TeamsSettingsInfoResponseTeamItemDefaultChannelsList =
+  ListAppsActivitiesResponseActivitiesList as any as S.Schema<TeamsSettingsInfoResponseTeamItemDefaultChannelsList>;
+
 export interface TeamsSettingsInfoResponseTeamItem {
   id?: string;
   name?: string;
@@ -2141,18 +3489,41 @@ export interface TeamsSettingsInfoResponseTeamItem {
   enterprise_name?: string;
   default_channels?: TeamsSettingsInfoResponseTeamItemDefaultChannelsList;
 }
+const TeamsSettingsInfoResponseTeamItem = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<TeamsSettingsInfoResponseTeamItem>;
+
 export type TeamsSettingsInfoResponseTeamList = Array<TeamsSettingsInfoResponseTeamItem>;
+const TeamsSettingsInfoResponseTeamList = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<TeamsSettingsInfoResponseTeamList>;
+
 export interface TeamsSettingsInfoResponse {
   ok: boolean;
   team: TeamsSettingsInfoResponseTeamList;
 }
+const TeamsSettingsInfoResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<TeamsSettingsInfoResponse>;
+
 export interface UnarchiveConversationRequest {
   /** The channel to unarchive. */
   channel_id: string;
 }
+const UnarchiveConversationRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<UnarchiveConversationRequest>;
+
 export interface UnarchiveConversationResponse {
   ok: boolean;
 }
+const UnarchiveConversationResponse =
+  AddAppsPermissionsResponse as any as S.Schema<UnarchiveConversationResponse>;
+
 export interface UninstallAppRequest {
   /** The ID of the app to uninstall. */
   app_id: string;
@@ -2161,37 +3532,65 @@ export interface UninstallAppRequest {
   /** The enterprise to completely uninstall the application from (across all workspaces). With an org-level token, this or `team_ids` is required. */
   enterprise_id?: string;
 }
+const UninstallAppRequest = /*@__PURE__*/ __L.at(__c27, 1) as any as S.Schema<UninstallAppRequest>;
+
 export interface UninstallAppResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const UninstallAppResponse = AddAliasResponse as any as S.Schema<UninstallAppResponse>;
+
 export interface UnlinkObjectsRequest {
   /** Channel ID for Slack channel that will be unlinked from the Salesforce record. */
   channel: string;
   /** Channel name you would like to give to the channel that is being unlinked from the Salesforce record. */
   new_name: string;
 }
+const UnlinkObjectsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<UnlinkObjectsRequest>;
+
 export interface UnlinkObjectsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const UnlinkObjectsResponse = AddAliasResponse as any as S.Schema<UnlinkObjectsResponse>;
+
 /** Array of workflow IDs to unpublish */
 export type UnpublishWorkflowRequestWorkflowIdsList = Array<string>;
+const UnpublishWorkflowRequestWorkflowIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<UnpublishWorkflowRequestWorkflowIdsList>;
+
 export interface UnpublishWorkflowRequest {
   /** Array of workflow IDs to unpublish */
   workflow_ids: UnpublishWorkflowRequestWorkflowIdsList;
 }
+const UnpublishWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<UnpublishWorkflowRequest>;
+
 export interface UnpublishWorkflowResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const UnpublishWorkflowResponse =
+  AddAppsPermissionsResponse as any as S.Schema<UnpublishWorkflowResponse>;
+
 /** A list of [IDP Groups](https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-organization) ids that the primary usergroup is to be barriered from. */
 export type UpdateBarrierRequestBarrieredFromUsergroupIdsList = Array<string>;
+const UpdateBarrierRequestBarrieredFromUsergroupIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<UpdateBarrierRequestBarrieredFromUsergroupIdsList>;
+
 export type UpdateBarrierRequestRestrictedSubjectsItem = "im" | "mpim" | "call";
 /** What kind of interactions are blocked by this barrier? For v1, we only support a list of all 3, eg `im, mpim, call` */
 export type UpdateBarrierRequestRestrictedSubjectsList = Array<
   UpdateBarrierRequestRestrictedSubjectsItem | (string & {})
 >;
+const UpdateBarrierRequestRestrictedSubjectsList =
+  CreateBarrierRequestRestrictedSubjectsList as any as S.Schema<UpdateBarrierRequestRestrictedSubjectsList>;
+
 export interface UpdateBarrierRequest {
   /** The ID of the barrier you're trying to modify */
   barrier_id: string;
@@ -2202,24 +3601,41 @@ export interface UpdateBarrierRequest {
   /** What kind of interactions are blocked by this barrier? For v1, we only support a list of all 3, eg `im, mpim, call` */
   restricted_subjects: UpdateBarrierRequestRestrictedSubjectsList;
 }
+const UpdateBarrierRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<UpdateBarrierRequest>;
+
 export interface UpdateBarrierResponse {
   ok: boolean;
   barrier: unknown;
 }
+const UpdateBarrierResponse = CreateBarrierResponse as any as S.Schema<UpdateBarrierResponse>;
+
 /** allow list of IPv4 addresses using cidr notation in the Enterprise organization configuration */
 export type UpdateItemRequestTrustedCidrList = Array<string>;
+const UpdateItemRequestTrustedCidrList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<UpdateItemRequestTrustedCidrList>;
+
 /** allow list of Autonomous System Numbers (ASN) in the Enterprise organization configuration */
 export type UpdateItemRequestTrustedAsnsList = Array<number>;
+const UpdateItemRequestTrustedAsnsList =
+  GetItemResponseTrustedAsnsList as any as S.Schema<UpdateItemRequestTrustedAsnsList>;
+
 export interface UpdateItemRequest {
   /** allow list of IPv4 addresses using cidr notation in the Enterprise organization configuration */
   trusted_cidr?: UpdateItemRequestTrustedCidrList;
   /** allow list of Autonomous System Numbers (ASN) in the Enterprise organization configuration */
   trusted_asns?: UpdateItemRequestTrustedAsnsList;
 }
+const UpdateItemRequest = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<UpdateItemRequest>;
+
 export interface UpdateItemResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const UpdateItemResponse = AddAliasResponse as any as S.Schema<UpdateItemResponse>;
+
 export interface UpdateUsergroupRequest {
   /** ID of the usergroup to update */
   id: string;
@@ -2232,8 +3648,16 @@ export interface UpdateUsergroupRequest {
   /** Configure whether or not this usergroup should be visible in the client. */
   is_visible?: boolean;
 }
+const UpdateUsergroupRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<UpdateUsergroupRequest>;
+
 /** List of user IDs who would exceed their channel limit */
 export type UpdateUsergroupResponseChannelLimitUserIdsList = Array<string>;
+const UpdateUsergroupResponseChannelLimitUserIdsList =
+  AddAppsPermissionsRequestUserIdsList as any as S.Schema<UpdateUsergroupResponseChannelLimitUserIdsList>;
+
 export interface UpdateUsergroupResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -2241,12 +3665,19 @@ export interface UpdateUsergroupResponse {
   /** List of user IDs who would exceed their channel limit */
   channel_limit_user_ids?: UpdateUsergroupResponseChannelLimitUserIdsList;
 }
+const UpdateUsergroupResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<UpdateUsergroupResponse>;
+
 export interface UploadUsersRequest {
   /** ID of the usergroup to upload users to */
   id: string;
   /** Csv of users to upload in format member id, email */
   file?: unknown;
 }
+const UploadUsersRequest = /*@__PURE__*/ __L.at(__c28, 0) as any as S.Schema<UploadUsersRequest>;
+
 export type UploadUsersResponseInvalidUsersItemReason =
   | "guest_user"
   | "deleted_user"
@@ -2260,6 +3691,9 @@ export interface UploadUsersResponseInvalidUsersItem {
   reason: UploadUsersResponseInvalidUsersItemReason;
 }
 export type UploadUsersResponseInvalidUsersList = Array<UploadUsersResponseInvalidUsersItem>;
+const UploadUsersResponseInvalidUsersList =
+  AddUsersResponseInvalidUsersList as any as S.Schema<UploadUsersResponseInvalidUsersList>;
+
 export interface UploadUsersResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -2267,6 +3701,8 @@ export interface UploadUsersResponse {
   successful_user_count: number;
   invalid_users?: UploadUsersResponseInvalidUsersList;
 }
+const UploadUsersResponse = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<UploadUsersResponse>;
+
 export type AddAliasError = SlackOpError;
 /** Add an emoji alias. Required scopes -- user: `admin.teams:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `emoji_limit_reached` -- Unable to add emoji due to limit reached. - `error_bad_name_i18n` -- Value passed for `name` was invalid. - `error_invalid_alias` -- Value passed for `alias_for` does not exist. - `error_missing_name` -- Value passed for `name` is missing or empty. - `error_name_taken` -- Value passed for `name` already exists. - `error_name_taken_i18n` -- The name has already been taken by another emoji, in the international set. Emoji must have unique names. - `failed_to_alias_emoji` -- Failed to alias the specified emoji. - `feature_not_enabled` -- The Admin APIs feature is not enabled for this team. - `no_alias_selected` -- Value passed for `alias_for` was invalid. - `not_an_admin` -- This method is only accessible by org owners and Admins. See https://docs.slack.dev/reference/methods/admin.emoji.addAlias */
 export const addAlias: API.OperationMethod<
@@ -2275,8 +3711,8 @@ export const addAlias: API.OperationMethod<
   AddAliasError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AddAliasRequest>,
-  output: __S(1) as any as S.Schema<AddAliasResponse>,
+  input: AddAliasRequest,
+  output: AddAliasResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2290,8 +3726,8 @@ export const addAppsPermissions: API.OperationMethod<
   AddAppsPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<AddAppsPermissionsRequest>,
-  output: __S(4) as any as S.Schema<AddAppsPermissionsResponse>,
+  input: AddAppsPermissionsRequest,
+  output: AddAppsPermissionsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2305,8 +3741,8 @@ export const addAssignments: API.OperationMethod<
   AddAssignmentsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<AddAssignmentsRequest>,
-  output: __S(6) as any as S.Schema<AddAssignmentsResponse>,
+  input: AddAssignmentsRequest,
+  output: AddAssignmentsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2320,8 +3756,8 @@ export const addChannels: API.OperationMethod<
   AddChannelsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<AddChannelsRequest>,
-  output: __S(8) as any as S.Schema<AddChannelsResponse>,
+  input: AddChannelsRequest,
+  output: AddChannelsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2335,8 +3771,8 @@ export const addEmoji: API.OperationMethod<
   AddEmojiError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<AddEmojiRequest>,
-  output: __S(1) as any as S.Schema<AddEmojiResponse>,
+  input: AddEmojiRequest,
+  output: AddEmojiResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2350,8 +3786,8 @@ export const addGroup: API.OperationMethod<
   AddGroupError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<AddGroupRequest>,
-  output: __S(1) as any as S.Schema<AddGroupResponse>,
+  input: AddGroupRequest,
+  output: AddGroupResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2365,8 +3801,8 @@ export const addTeams: API.OperationMethod<
   AddTeamsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<AddTeamsRequest>,
-  output: __S(1) as any as S.Schema<AddTeamsResponse>,
+  input: AddTeamsRequest,
+  output: AddTeamsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2380,8 +3816,8 @@ export const addUsers: API.OperationMethod<
   AddUsersError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<AddUsersRequest>,
-  output: __S(15) as any as S.Schema<AddUsersResponse>,
+  input: AddUsersRequest,
+  output: AddUsersResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2395,8 +3831,8 @@ export const addWorkflowsCollaborator: API.OperationMethod<
   AddWorkflowsCollaboratorError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<AddWorkflowsCollaboratorRequest>,
-  output: __S(4) as any as S.Schema<AddWorkflowsCollaboratorResponse>,
+  input: AddWorkflowsCollaboratorRequest,
+  output: AddWorkflowsCollaboratorResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2410,8 +3846,8 @@ export const analyticsMessagesActivity: API.OperationMethod<
   AnalyticsMessagesActivityError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<AnalyticsMessagesActivityRequest>,
-  output: __S(19) as any as S.Schema<AnalyticsMessagesActivityResponse>,
+  input: AnalyticsMessagesActivityRequest,
+  output: AnalyticsMessagesActivityResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2427,8 +3863,8 @@ export const analyticsMessagesMetadata: API.PaginatedOperationMethod<
   AnalyticsMessagesMetadataResponseMessagesItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(20) as any as S.Schema<AnalyticsMessagesMetadataRequest>,
-    output: __S(27) as any as S.Schema<AnalyticsMessagesMetadataResponse>,
+    input: AnalyticsMessagesMetadataRequest,
+    output: AnalyticsMessagesMetadataResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -2450,8 +3886,8 @@ export const approveApp: API.OperationMethod<
   ApproveAppError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<ApproveAppRequest>,
-  output: __S(1) as any as S.Schema<ApproveAppResponse>,
+  input: ApproveAppRequest,
+  output: ApproveAppResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2465,8 +3901,8 @@ export const approveInviteRequest: API.OperationMethod<
   ApproveInviteRequestError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<ApproveInviteRequestRequest>,
-  output: __S(4) as any as S.Schema<ApproveInviteRequestResponse>,
+  input: ApproveInviteRequestRequest,
+  output: ApproveInviteRequestResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2480,8 +3916,8 @@ export const appsRestrict: API.OperationMethod<
   AppsRestrictError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<AppsRestrictRequest>,
-  output: __S(1) as any as S.Schema<AppsRestrictResponse>,
+  input: AppsRestrictRequest,
+  output: AppsRestrictResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2495,8 +3931,8 @@ export const archiveConversation: API.OperationMethod<
   ArchiveConversationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<ArchiveConversationRequest>,
-  output: __S(4) as any as S.Schema<ArchiveConversationResponse>,
+  input: ArchiveConversationRequest,
+  output: ArchiveConversationResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2510,8 +3946,8 @@ export const assignEntities: API.OperationMethod<
   AssignEntitiesError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<AssignEntitiesRequest>,
-  output: __S(33) as any as S.Schema<AssignEntitiesResponse>,
+  input: AssignEntitiesRequest,
+  output: AssignEntitiesResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2525,8 +3961,8 @@ export const assignUser: API.OperationMethod<
   AssignUserError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<AssignUserRequest>,
-  output: __S(1) as any as S.Schema<AssignUserResponse>,
+  input: AssignUserRequest,
+  output: AssignUserResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2540,8 +3976,8 @@ export const bulkArchive: API.OperationMethod<
   BulkArchiveError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<BulkArchiveRequest>,
-  output: __S(38) as any as S.Schema<BulkArchiveResponse>,
+  input: BulkArchiveRequest,
+  output: BulkArchiveResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2555,8 +3991,8 @@ export const bulkDelete: API.OperationMethod<
   BulkDeleteError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<BulkDeleteRequest>,
-  output: __S(38) as any as S.Schema<BulkDeleteResponse>,
+  input: BulkDeleteRequest,
+  output: BulkDeleteResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2570,8 +4006,8 @@ export const bulkMove: API.OperationMethod<
   BulkMoveError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<BulkMoveRequest>,
-  output: __S(38) as any as S.Schema<BulkMoveResponse>,
+  input: BulkMoveRequest,
+  output: BulkMoveResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2585,8 +4021,8 @@ export const bulkSetExcludeFromSlackAi: API.OperationMethod<
   BulkSetExcludeFromSlackAiError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<BulkSetExcludeFromSlackAiRequest>,
-  output: __S(42) as any as S.Schema<BulkSetExcludeFromSlackAiResponse>,
+  input: BulkSetExcludeFromSlackAiRequest,
+  output: BulkSetExcludeFromSlackAiResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2600,8 +4036,8 @@ export const bulkSetProperties: API.OperationMethod<
   BulkSetPropertiesError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<BulkSetPropertiesRequest>,
-  output: __S(44) as any as S.Schema<BulkSetPropertiesResponse>,
+  input: BulkSetPropertiesRequest,
+  output: BulkSetPropertiesResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2615,8 +4051,8 @@ export const cancelAppsRequest: API.OperationMethod<
   CancelAppsRequestError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<CancelAppsRequestRequest>,
-  output: __S(4) as any as S.Schema<CancelAppsRequestResponse>,
+  input: CancelAppsRequestRequest,
+  output: CancelAppsRequestResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2630,8 +4066,8 @@ export const clearResolution: API.OperationMethod<
   ClearResolutionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<ClearResolutionRequest>,
-  output: __S(1) as any as S.Schema<ClearResolutionResponse>,
+  input: ClearResolutionRequest,
+  output: ClearResolutionResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2645,8 +4081,8 @@ export const clearSettings: API.OperationMethod<
   ClearSettingsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<ClearSettingsRequest>,
-  output: __S(1) as any as S.Schema<ClearSettingsResponse>,
+  input: ClearSettingsRequest,
+  output: ClearSettingsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2660,8 +4096,8 @@ export const convertToPrivate: API.OperationMethod<
   ConvertToPrivateError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<ConvertToPrivateRequest>,
-  output: __S(1) as any as S.Schema<ConvertToPrivateResponse>,
+  input: ConvertToPrivateRequest,
+  output: ConvertToPrivateResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2675,8 +4111,8 @@ export const convertToPublic: API.OperationMethod<
   ConvertToPublicError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<ConvertToPublicRequest>,
-  output: __S(1) as any as S.Schema<ConvertToPublicResponse>,
+  input: ConvertToPublicRequest,
+  output: ConvertToPublicResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2690,8 +4126,8 @@ export const createBarrier: API.OperationMethod<
   CreateBarrierError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<CreateBarrierRequest>,
-  output: __S(52) as any as S.Schema<CreateBarrierResponse>,
+  input: CreateBarrierRequest,
+  output: CreateBarrierResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2705,8 +4141,8 @@ export const createConversation: API.OperationMethod<
   CreateConversationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<CreateConversationRequest>,
-  output: __S(54) as any as S.Schema<CreateConversationResponse>,
+  input: CreateConversationRequest,
+  output: CreateConversationResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2720,8 +4156,8 @@ export const createForObjects: API.OperationMethod<
   CreateForObjectsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<CreateForObjectsRequest>,
-  output: __S(56) as any as S.Schema<CreateForObjectsResponse>,
+  input: CreateForObjectsRequest,
+  output: CreateForObjectsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2735,8 +4171,8 @@ export const createTeam: API.OperationMethod<
   CreateTeamError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<CreateTeamRequest>,
-  output: __S(58) as any as S.Schema<CreateTeamResponse>,
+  input: CreateTeamRequest,
+  output: CreateTeamResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2750,8 +4186,8 @@ export const createUsergroup: API.OperationMethod<
   CreateUsergroupError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<CreateUsergroupRequest>,
-  output: __S(60) as any as S.Schema<CreateUsergroupResponse>,
+  input: CreateUsergroupRequest,
+  output: CreateUsergroupResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2765,8 +4201,8 @@ export const deleteBarrier: API.OperationMethod<
   DeleteBarrierError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<DeleteBarrierRequest>,
-  output: __S(1) as any as S.Schema<DeleteBarrierResponse>,
+  input: DeleteBarrierRequest,
+  output: DeleteBarrierResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2780,8 +4216,8 @@ export const deleteConversation: API.OperationMethod<
   DeleteConversationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<DeleteConversationRequest>,
-  output: __S(4) as any as S.Schema<DeleteConversationResponse>,
+  input: DeleteConversationRequest,
+  output: DeleteConversationResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2795,8 +4231,8 @@ export const disconnectShared: API.OperationMethod<
   DisconnectSharedError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<DisconnectSharedRequest>,
-  output: __S(1) as any as S.Schema<DisconnectSharedResponse>,
+  input: DisconnectSharedRequest,
+  output: DisconnectSharedResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2810,8 +4246,8 @@ export const exportUsersUnsupportedVersion: API.OperationMethod<
   ExportUsersUnsupportedVersionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<ExportUsersUnsupportedVersionRequest>,
-  output: __S(4) as any as S.Schema<ExportUsersUnsupportedVersionResponse>,
+  input: ExportUsersUnsupportedVersionRequest,
+  output: ExportUsersUnsupportedVersionResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2825,8 +4261,8 @@ export const fetchUsergroup: API.OperationMethod<
   FetchUsergroupError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<FetchUsergroupRequest>,
-  output: __S(66) as any as S.Schema<FetchUsergroupResponse>,
+  input: FetchUsergroupRequest,
+  output: FetchUsergroupResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2840,8 +4276,8 @@ export const getConversationPrefs: API.OperationMethod<
   GetConversationPrefsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<GetConversationPrefsRequest>,
-  output: __S(72) as any as S.Schema<GetConversationPrefsResponse>,
+  input: GetConversationPrefsRequest,
+  output: GetConversationPrefsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2855,8 +4291,8 @@ export const getCustomRetention: API.OperationMethod<
   GetCustomRetentionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<GetCustomRetentionRequest>,
-  output: __S(74) as any as S.Schema<GetCustomRetentionResponse>,
+  input: GetCustomRetentionRequest,
+  output: GetCustomRetentionResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2872,8 +4308,8 @@ export const getEntities: API.PaginatedOperationMethod<
   GetEntitiesResponseEntitiesItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(75) as any as S.Schema<GetEntitiesRequest>,
-    output: __S(78) as any as S.Schema<GetEntitiesResponse>,
+    input: GetEntitiesRequest,
+    output: GetEntitiesResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -2896,8 +4332,8 @@ export const getExpiration: API.OperationMethod<
   GetExpirationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<GetExpirationRequest>,
-  output: __S(1) as any as S.Schema<GetExpirationResponse>,
+  input: GetExpirationRequest,
+  output: GetExpirationResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2911,8 +4347,8 @@ export const getFile: API.OperationMethod<
   GetFileError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<GetFileRequest>,
-  output: __S(81) as any as S.Schema<GetFileResponse>,
+  input: GetFileRequest,
+  output: GetFileResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2926,8 +4362,8 @@ export const getItem: API.OperationMethod<
   GetItemError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<GetItemRequest>,
-  output: __S(84) as any as S.Schema<GetItemResponse>,
+  input: GetItemRequest,
+  output: GetItemResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2941,8 +4377,8 @@ export const getSettings: API.OperationMethod<
   GetSettingsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<GetSettingsRequest>,
-  output: __S(88) as any as S.Schema<GetSettingsResponse>,
+  input: GetSettingsRequest,
+  output: GetSettingsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2956,8 +4392,8 @@ export const getTeams: API.OperationMethod<
   GetTeamsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<GetTeamsRequest>,
-  output: __S(90) as any as S.Schema<GetTeamsResponse>,
+  input: GetTeamsRequest,
+  output: GetTeamsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2971,8 +4407,8 @@ export const invalidateUsersSession: API.OperationMethod<
   InvalidateUsersSessionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<InvalidateUsersSessionRequest>,
-  output: __S(4) as any as S.Schema<InvalidateUsersSessionResponse>,
+  input: InvalidateUsersSessionRequest,
+  output: InvalidateUsersSessionResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2986,8 +4422,8 @@ export const inviteConversation: API.OperationMethod<
   InviteConversationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<InviteConversationRequest>,
-  output: __S(4) as any as S.Schema<InviteConversationResponse>,
+  input: InviteConversationRequest,
+  output: InviteConversationResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3001,8 +4437,8 @@ export const inviteRequestsDeny: API.OperationMethod<
   InviteRequestsDenyError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<InviteRequestsDenyRequest>,
-  output: __S(4) as any as S.Schema<InviteRequestsDenyResponse>,
+  input: InviteRequestsDenyRequest,
+  output: InviteRequestsDenyResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3016,8 +4452,8 @@ export const inviteUser: API.OperationMethod<
   InviteUserError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<InviteUserRequest>,
-  output: __S(1) as any as S.Schema<InviteUserResponse>,
+  input: InviteUserRequest,
+  output: InviteUserResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3031,8 +4467,8 @@ export const linkObjects: API.OperationMethod<
   LinkObjectsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<LinkObjectsRequest>,
-  output: __S(1) as any as S.Schema<LinkObjectsResponse>,
+  input: LinkObjectsRequest,
+  output: LinkObjectsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3048,8 +4484,8 @@ export const listAppsActivities: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(96) as any as S.Schema<ListAppsActivitiesRequest>,
-    output: __S(98) as any as S.Schema<ListAppsActivitiesResponse>,
+    input: ListAppsActivitiesRequest,
+    output: ListAppsActivitiesResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3074,8 +4510,8 @@ export const listAppsApproved: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(99) as any as S.Schema<ListAppsApprovedRequest>,
-    output: __S(100) as any as S.Schema<ListAppsApprovedResponse>,
+    input: ListAppsApprovedRequest,
+    output: ListAppsApprovedResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3100,8 +4536,8 @@ export const listAppsMcpServers: API.PaginatedOperationMethod<
   ListAppsMcpServersResponseServersItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(101) as any as S.Schema<ListAppsMcpServersRequest>,
-    output: __S(104) as any as S.Schema<ListAppsMcpServersResponse>,
+    input: ListAppsMcpServersRequest,
+    output: ListAppsMcpServersResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3124,8 +4560,8 @@ export const listAppsMcpServersPermissions: API.OperationMethod<
   ListAppsMcpServersPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<ListAppsMcpServersPermissionsRequest>,
-  output: __S(106) as any as S.Schema<ListAppsMcpServersPermissionsResponse>,
+  input: ListAppsMcpServersPermissionsRequest,
+  output: ListAppsMcpServersPermissionsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3139,8 +4575,8 @@ export const listAppsPermissions: API.OperationMethod<
   ListAppsPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<ListAppsPermissionsRequest>,
-  output: __S(4) as any as S.Schema<ListAppsPermissionsResponse>,
+  input: ListAppsPermissionsRequest,
+  output: ListAppsPermissionsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3156,8 +4592,8 @@ export const listAppsRequests: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(108) as any as S.Schema<ListAppsRequestsRequest>,
-    output: __S(109) as any as S.Schema<ListAppsRequestsResponse>,
+    input: ListAppsRequestsRequest,
+    output: ListAppsRequestsResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3182,8 +4618,8 @@ export const listAppsRestricted: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(110) as any as S.Schema<ListAppsRestrictedRequest>,
-    output: __S(111) as any as S.Schema<ListAppsRestrictedResponse>,
+    input: ListAppsRestrictedRequest,
+    output: ListAppsRestrictedResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3208,8 +4644,8 @@ export const listAssignments: API.PaginatedOperationMethod<
   ListAssignmentsResponseRoleAssignmentsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(112) as any as S.Schema<ListAssignmentsRequest>,
-    output: __S(115) as any as S.Schema<ListAssignmentsResponse>,
+    input: ListAssignmentsRequest,
+    output: ListAssignmentsResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3234,8 +4670,8 @@ export const listBarriers: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(116) as any as S.Schema<ListBarriersRequest>,
-    output: __S(117) as any as S.Schema<ListBarriersResponse>,
+    input: ListBarriersRequest,
+    output: ListBarriersResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3258,8 +4694,8 @@ export const listChannels: API.OperationMethod<
   ListChannelsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<ListChannelsRequest>,
-  output: __S(119) as any as S.Schema<ListChannelsResponse>,
+  input: ListChannelsRequest,
+  output: ListChannelsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3273,8 +4709,8 @@ export const listEmoji: API.OperationMethod<
   ListEmojiError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<ListEmojiRequest>,
-  output: __S(122) as any as S.Schema<ListEmojiResponse>,
+  input: ListEmojiRequest,
+  output: ListEmojiResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3290,8 +4726,8 @@ export const listFunctions: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(123) as any as S.Schema<ListFunctionsRequest>,
-    output: __S(124) as any as S.Schema<ListFunctionsResponse>,
+    input: ListFunctionsRequest,
+    output: ListFunctionsResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3314,8 +4750,8 @@ export const listGroups: API.OperationMethod<
   ListGroupsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<ListGroupsRequest>,
-  output: __S(126) as any as S.Schema<ListGroupsResponse>,
+  input: ListGroupsRequest,
+  output: ListGroupsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3331,8 +4767,8 @@ export const listInviteRequests: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(127) as any as S.Schema<ListInviteRequestsRequest>,
-    output: __S(128) as any as S.Schema<ListInviteRequestsResponse>,
+    input: ListInviteRequestsRequest,
+    output: ListInviteRequestsResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3357,8 +4793,8 @@ export const listInviteRequestsApproved: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(129) as any as S.Schema<ListInviteRequestsApprovedRequest>,
-    output: __S(130) as any as S.Schema<ListInviteRequestsApprovedResponse>,
+    input: ListInviteRequestsApprovedRequest,
+    output: ListInviteRequestsApprovedResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3383,8 +4819,8 @@ export const listInviteRequestsDenied: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(131) as any as S.Schema<ListInviteRequestsDeniedRequest>,
-    output: __S(132) as any as S.Schema<ListInviteRequestsDeniedResponse>,
+    input: ListInviteRequestsDeniedRequest,
+    output: ListInviteRequestsDeniedResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3409,8 +4845,8 @@ export const listOriginalConnectedChannelInfo: API.PaginatedOperationMethod<
   ListOriginalConnectedChannelInfoResponseChannelsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(133) as any as S.Schema<ListOriginalConnectedChannelInfoRequest>,
-    output: __S(137) as any as S.Schema<ListOriginalConnectedChannelInfoResponse>,
+    input: ListOriginalConnectedChannelInfoRequest,
+    output: ListOriginalConnectedChannelInfoResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3435,8 +4871,8 @@ export const listTeams: API.PaginatedOperationMethod<
   ListTeamsResponseTeamsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(138) as any as S.Schema<ListTeamsRequest>,
-    output: __S(142) as any as S.Schema<ListTeamsResponse>,
+    input: ListTeamsRequest,
+    output: ListTeamsResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3461,8 +4897,8 @@ export const listTeamsAdmins: API.PaginatedOperationMethod<
   string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(143) as any as S.Schema<ListTeamsAdminsRequest>,
-    output: __S(144) as any as S.Schema<ListTeamsAdminsResponse>,
+    input: ListTeamsAdminsRequest,
+    output: ListTeamsAdminsResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3487,8 +4923,8 @@ export const listTeamsOwners: API.PaginatedOperationMethod<
   string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(145) as any as S.Schema<ListTeamsOwnersRequest>,
-    output: __S(146) as any as S.Schema<ListTeamsOwnersResponse>,
+    input: ListTeamsOwnersRequest,
+    output: ListTeamsOwnersResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3513,8 +4949,8 @@ export const listUsers: API.PaginatedOperationMethod<
   ListUsersResponseUsersItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(147) as any as S.Schema<ListUsersRequest>,
-    output: __S(150) as any as S.Schema<ListUsersResponse>,
+    input: ListUsersRequest,
+    output: ListUsersResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3539,8 +4975,8 @@ export const listUsersSession: API.PaginatedOperationMethod<
   ListUsersSessionResponseActiveSessionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(151) as any as S.Schema<ListUsersSessionRequest>,
-    output: __S(155) as any as S.Schema<ListUsersSessionResponse>,
+    input: ListUsersSessionRequest,
+    output: ListUsersSessionResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3563,8 +4999,8 @@ export const lookupAppsConfig: API.OperationMethod<
   LookupAppsConfigError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156) as any as S.Schema<LookupAppsConfigRequest>,
-  output: __S(159) as any as S.Schema<LookupAppsConfigResponse>,
+  input: LookupAppsConfigRequest,
+  output: LookupAppsConfigResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3580,8 +5016,8 @@ export const lookupConversation: API.PaginatedOperationMethod<
   string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(160) as any as S.Schema<LookupConversationRequest>,
-    output: __S(161) as any as S.Schema<LookupConversationResponse>,
+    input: LookupConversationRequest,
+    output: LookupConversationResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3604,8 +5040,8 @@ export const lookupFunctionsPermissions: API.OperationMethod<
   LookupFunctionsPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162) as any as S.Schema<LookupFunctionsPermissionsRequest>,
-  output: __S(163) as any as S.Schema<LookupFunctionsPermissionsResponse>,
+  input: LookupFunctionsPermissionsRequest,
+  output: LookupFunctionsPermissionsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3619,8 +5055,8 @@ export const lookupWorkflowsPermissions: API.OperationMethod<
   LookupWorkflowsPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164) as any as S.Schema<LookupWorkflowsPermissionsRequest>,
-  output: __S(165) as any as S.Schema<LookupWorkflowsPermissionsResponse>,
+  input: LookupWorkflowsPermissionsRequest,
+  output: LookupWorkflowsPermissionsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3634,8 +5070,8 @@ export const lookupWorkflowsTriggersTypesPermissions: API.OperationMethod<
   LookupWorkflowsTriggersTypesPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<LookupWorkflowsTriggersTypesPermissionsRequest>,
-  output: __S(167) as any as S.Schema<LookupWorkflowsTriggersTypesPermissionsResponse>,
+  input: LookupWorkflowsTriggersTypesPermissionsRequest,
+  output: LookupWorkflowsTriggersTypesPermissionsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3649,8 +5085,8 @@ export const removeAppsPermissions: API.OperationMethod<
   RemoveAppsPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<RemoveAppsPermissionsRequest>,
-  output: __S(4) as any as S.Schema<RemoveAppsPermissionsResponse>,
+  input: RemoveAppsPermissionsRequest,
+  output: RemoveAppsPermissionsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3664,8 +5100,8 @@ export const removeAssignments: API.OperationMethod<
   RemoveAssignmentsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<RemoveAssignmentsRequest>,
-  output: __S(170) as any as S.Schema<RemoveAssignmentsResponse>,
+  input: RemoveAssignmentsRequest,
+  output: RemoveAssignmentsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3679,8 +5115,8 @@ export const removeChannels: API.OperationMethod<
   RemoveChannelsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171) as any as S.Schema<RemoveChannelsRequest>,
-  output: __S(8) as any as S.Schema<RemoveChannelsResponse>,
+  input: RemoveChannelsRequest,
+  output: RemoveChannelsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3694,8 +5130,8 @@ export const removeCustomRetention: API.OperationMethod<
   RemoveCustomRetentionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172) as any as S.Schema<RemoveCustomRetentionRequest>,
-  output: __S(4) as any as S.Schema<RemoveCustomRetentionResponse>,
+  input: RemoveCustomRetentionRequest,
+  output: RemoveCustomRetentionResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3709,8 +5145,8 @@ export const removeEmoji: API.OperationMethod<
   RemoveEmojiError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173) as any as S.Schema<RemoveEmojiRequest>,
-  output: __S(1) as any as S.Schema<RemoveEmojiResponse>,
+  input: RemoveEmojiRequest,
+  output: RemoveEmojiResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3724,8 +5160,8 @@ export const removeEntities: API.OperationMethod<
   RemoveEntitiesError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174) as any as S.Schema<RemoveEntitiesRequest>,
-  output: __S(33) as any as S.Schema<RemoveEntitiesResponse>,
+  input: RemoveEntitiesRequest,
+  output: RemoveEntitiesResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3739,8 +5175,8 @@ export const removeGroup: API.OperationMethod<
   RemoveGroupError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<RemoveGroupRequest>,
-  output: __S(1) as any as S.Schema<RemoveGroupResponse>,
+  input: RemoveGroupRequest,
+  output: RemoveGroupResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3754,8 +5190,8 @@ export const removeTeams: API.OperationMethod<
   RemoveTeamsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<RemoveTeamsRequest>,
-  output: __S(1) as any as S.Schema<RemoveTeamsResponse>,
+  input: RemoveTeamsRequest,
+  output: RemoveTeamsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3769,8 +5205,8 @@ export const removeUser: API.OperationMethod<
   RemoveUserError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<RemoveUserRequest>,
-  output: __S(1) as any as S.Schema<RemoveUserResponse>,
+  input: RemoveUserRequest,
+  output: RemoveUserResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3784,8 +5220,8 @@ export const removeUsers: API.OperationMethod<
   RemoveUsersError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178) as any as S.Schema<RemoveUsersRequest>,
-  output: __S(1) as any as S.Schema<RemoveUsersResponse>,
+  input: RemoveUsersRequest,
+  output: RemoveUsersResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3799,8 +5235,8 @@ export const removeWorkflowsCollaborator: API.OperationMethod<
   RemoveWorkflowsCollaboratorError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<RemoveWorkflowsCollaboratorRequest>,
-  output: __S(4) as any as S.Schema<RemoveWorkflowsCollaboratorResponse>,
+  input: RemoveWorkflowsCollaboratorRequest,
+  output: RemoveWorkflowsCollaboratorResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3814,8 +5250,8 @@ export const renameConversation: API.OperationMethod<
   RenameConversationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180) as any as S.Schema<RenameConversationRequest>,
-  output: __S(4) as any as S.Schema<RenameConversationResponse>,
+  input: RenameConversationRequest,
+  output: RenameConversationResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3829,8 +5265,8 @@ export const renameEmoji: API.OperationMethod<
   RenameEmojiError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<RenameEmojiRequest>,
-  output: __S(1) as any as S.Schema<RenameEmojiResponse>,
+  input: RenameEmojiRequest,
+  output: RenameEmojiResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3844,8 +5280,8 @@ export const resetBulk: API.OperationMethod<
   ResetBulkError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<ResetBulkRequest>,
-  output: __S(1) as any as S.Schema<ResetBulkResponse>,
+  input: ResetBulkRequest,
+  output: ResetBulkResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3859,8 +5295,8 @@ export const resetUsersSession: API.OperationMethod<
   ResetUsersSessionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183) as any as S.Schema<ResetUsersSessionRequest>,
-  output: __S(4) as any as S.Schema<ResetUsersSessionResponse>,
+  input: ResetUsersSessionRequest,
+  output: ResetUsersSessionResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3876,8 +5312,8 @@ export const searchConversation: API.PaginatedOperationMethod<
   string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(184) as any as S.Schema<SearchConversationRequest>,
-    output: __S(185) as any as S.Schema<SearchConversationResponse>,
+    input: SearchConversationRequest,
+    output: SearchConversationResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3902,8 +5338,8 @@ export const searchWorkflow: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(186) as any as S.Schema<SearchWorkflowRequest>,
-    output: __S(187) as any as S.Schema<SearchWorkflowResponse>,
+    input: SearchWorkflowRequest,
+    output: SearchWorkflowResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3926,8 +5362,8 @@ export const setAdmin: API.OperationMethod<
   SetAdminError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188) as any as S.Schema<SetAdminRequest>,
-  output: __S(1) as any as S.Schema<SetAdminResponse>,
+  input: SetAdminRequest,
+  output: SetAdminResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3941,8 +5377,8 @@ export const setAppsConfig: API.OperationMethod<
   SetAppsConfigError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190) as any as S.Schema<SetAppsConfigRequest>,
-  output: __S(1) as any as S.Schema<SetAppsConfigResponse>,
+  input: SetAppsConfigRequest,
+  output: SetAppsConfigResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3956,8 +5392,8 @@ export const setAppsMcpServersPermissions: API.OperationMethod<
   SetAppsMcpServersPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191) as any as S.Schema<SetAppsMcpServersPermissionsRequest>,
-  output: __S(4) as any as S.Schema<SetAppsMcpServersPermissionsResponse>,
+  input: SetAppsMcpServersPermissionsRequest,
+  output: SetAppsMcpServersPermissionsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3971,8 +5407,8 @@ export const setAppsPermissions: API.OperationMethod<
   SetAppsPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192) as any as S.Schema<SetAppsPermissionsRequest>,
-  output: __S(4) as any as S.Schema<SetAppsPermissionsResponse>,
+  input: SetAppsPermissionsRequest,
+  output: SetAppsPermissionsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3986,8 +5422,8 @@ export const setConversationPrefs: API.OperationMethod<
   SetConversationPrefsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<SetConversationPrefsRequest>,
-  output: __S(4) as any as S.Schema<SetConversationPrefsResponse>,
+  input: SetConversationPrefsRequest,
+  output: SetConversationPrefsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4001,8 +5437,8 @@ export const setCustomRetention: API.OperationMethod<
   SetCustomRetentionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194) as any as S.Schema<SetCustomRetentionRequest>,
-  output: __S(4) as any as S.Schema<SetCustomRetentionResponse>,
+  input: SetCustomRetentionRequest,
+  output: SetCustomRetentionResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4016,8 +5452,8 @@ export const setDefaultChannels: API.OperationMethod<
   SetDefaultChannelsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195) as any as S.Schema<SetDefaultChannelsRequest>,
-  output: __S(4) as any as S.Schema<SetDefaultChannelsResponse>,
+  input: SetDefaultChannelsRequest,
+  output: SetDefaultChannelsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4031,8 +5467,8 @@ export const setDescription: API.OperationMethod<
   SetDescriptionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196) as any as S.Schema<SetDescriptionRequest>,
-  output: __S(1) as any as S.Schema<SetDescriptionResponse>,
+  input: SetDescriptionRequest,
+  output: SetDescriptionResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4046,8 +5482,8 @@ export const setDiscoverability: API.OperationMethod<
   SetDiscoverabilityError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197) as any as S.Schema<SetDiscoverabilityRequest>,
-  output: __S(4) as any as S.Schema<SetDiscoverabilityResponse>,
+  input: SetDiscoverabilityRequest,
+  output: SetDiscoverabilityResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4061,8 +5497,8 @@ export const setExpiration: API.OperationMethod<
   SetExpirationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198) as any as S.Schema<SetExpirationRequest>,
-  output: __S(1) as any as S.Schema<SetExpirationResponse>,
+  input: SetExpirationRequest,
+  output: SetExpirationResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4076,8 +5512,8 @@ export const setFunctionsPermissions: API.OperationMethod<
   SetFunctionsPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201) as any as S.Schema<SetFunctionsPermissionsRequest>,
-  output: __S(4) as any as S.Schema<SetFunctionsPermissionsResponse>,
+  input: SetFunctionsPermissionsRequest,
+  output: SetFunctionsPermissionsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4091,8 +5527,8 @@ export const setIcon: API.OperationMethod<
   SetIconError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202) as any as S.Schema<SetIconRequest>,
-  output: __S(1) as any as S.Schema<SetIconResponse>,
+  input: SetIconRequest,
+  output: SetIconResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4106,8 +5542,8 @@ export const setName: API.OperationMethod<
   SetNameError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203) as any as S.Schema<SetNameRequest>,
-  output: __S(1) as any as S.Schema<SetNameResponse>,
+  input: SetNameRequest,
+  output: SetNameResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4121,8 +5557,8 @@ export const setOwner: API.OperationMethod<
   SetOwnerError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204) as any as S.Schema<SetOwnerRequest>,
-  output: __S(1) as any as S.Schema<SetOwnerResponse>,
+  input: SetOwnerRequest,
+  output: SetOwnerResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4136,8 +5572,8 @@ export const setRegular: API.OperationMethod<
   SetRegularError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205) as any as S.Schema<SetRegularRequest>,
-  output: __S(1) as any as S.Schema<SetRegularResponse>,
+  input: SetRegularRequest,
+  output: SetRegularResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4151,8 +5587,8 @@ export const setSettings: API.OperationMethod<
   SetSettingsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206) as any as S.Schema<SetSettingsRequest>,
-  output: __S(1) as any as S.Schema<SetSettingsResponse>,
+  input: SetSettingsRequest,
+  output: SetSettingsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4166,8 +5602,8 @@ export const setTeams: API.OperationMethod<
   SetTeamsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207) as any as S.Schema<SetTeamsRequest>,
-  output: __S(208) as any as S.Schema<SetTeamsResponse>,
+  input: SetTeamsRequest,
+  output: SetTeamsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4181,8 +5617,8 @@ export const setWorkflowsTriggersTypesPermissions: API.OperationMethod<
   SetWorkflowsTriggersTypesPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211) as any as S.Schema<SetWorkflowsTriggersTypesPermissionsRequest>,
-  output: __S(4) as any as S.Schema<SetWorkflowsTriggersTypesPermissionsResponse>,
+  input: SetWorkflowsTriggersTypesPermissionsRequest,
+  output: SetWorkflowsTriggersTypesPermissionsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4196,8 +5632,8 @@ export const teamsSettingsInfo: API.OperationMethod<
   TeamsSettingsInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212) as any as S.Schema<TeamsSettingsInfoRequest>,
-  output: __S(215) as any as S.Schema<TeamsSettingsInfoResponse>,
+  input: TeamsSettingsInfoRequest,
+  output: TeamsSettingsInfoResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4211,8 +5647,8 @@ export const unarchiveConversation: API.OperationMethod<
   UnarchiveConversationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216) as any as S.Schema<UnarchiveConversationRequest>,
-  output: __S(4) as any as S.Schema<UnarchiveConversationResponse>,
+  input: UnarchiveConversationRequest,
+  output: UnarchiveConversationResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4226,8 +5662,8 @@ export const uninstallApp: API.OperationMethod<
   UninstallAppError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217) as any as S.Schema<UninstallAppRequest>,
-  output: __S(1) as any as S.Schema<UninstallAppResponse>,
+  input: UninstallAppRequest,
+  output: UninstallAppResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4241,8 +5677,8 @@ export const unlinkObjects: API.OperationMethod<
   UnlinkObjectsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218) as any as S.Schema<UnlinkObjectsRequest>,
-  output: __S(1) as any as S.Schema<UnlinkObjectsResponse>,
+  input: UnlinkObjectsRequest,
+  output: UnlinkObjectsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4256,8 +5692,8 @@ export const unpublishWorkflow: API.OperationMethod<
   UnpublishWorkflowError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219) as any as S.Schema<UnpublishWorkflowRequest>,
-  output: __S(4) as any as S.Schema<UnpublishWorkflowResponse>,
+  input: UnpublishWorkflowRequest,
+  output: UnpublishWorkflowResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4271,8 +5707,8 @@ export const updateBarrier: API.OperationMethod<
   UpdateBarrierError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220) as any as S.Schema<UpdateBarrierRequest>,
-  output: __S(52) as any as S.Schema<UpdateBarrierResponse>,
+  input: UpdateBarrierRequest,
+  output: UpdateBarrierResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4286,8 +5722,8 @@ export const updateItem: API.OperationMethod<
   UpdateItemError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221) as any as S.Schema<UpdateItemRequest>,
-  output: __S(1) as any as S.Schema<UpdateItemResponse>,
+  input: UpdateItemRequest,
+  output: UpdateItemResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4301,8 +5737,8 @@ export const updateUsergroup: API.OperationMethod<
   UpdateUsergroupError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222) as any as S.Schema<UpdateUsergroupRequest>,
-  output: __S(223) as any as S.Schema<UpdateUsergroupResponse>,
+  input: UpdateUsergroupRequest,
+  output: UpdateUsergroupResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4316,8 +5752,8 @@ export const uploadUsers: API.OperationMethod<
   UploadUsersError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224) as any as S.Schema<UploadUsersRequest>,
-  output: __S(225) as any as S.Schema<UploadUsersResponse>,
+  input: UploadUsersRequest,
+  output: UploadUsersResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4345,9 +5781,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           app_id: S.String,
-          user_ids: S.optional(__S(2)),
-          usergroup_ids: S.optional(__S(2)),
-          channel_ids: S.optional(__S(2)),
+          user_ids: S.optional(AddAppsPermissionsRequestUserIdsList),
+          usergroup_ids: S.optional(AddAppsPermissionsRequestUsergroupIdsList),
+          channel_ids: S.optional(AddAppsPermissionsRequestChannelIdsList),
         }).pipe(T.Http({ method: "POST", uri: "/admin.apps.permissions.add", code: 200 })),
       ).annotate({
         identifier: "AddAppsPermissionsRequest",
@@ -4364,8 +5800,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           role_id: S.String,
-          entity_ids: __S(2),
-          user_ids: __S(2),
+          entity_ids: AddAssignmentsRequestEntityIdsList,
+          user_ids: AddAssignmentsRequestUserIdsList,
         }).pipe(T.Http({ method: "POST", uri: "/admin.roles.addAssignments", code: 200 })),
       ).annotate({ identifier: "AddAssignmentsRequest" });
     case 6:
@@ -4380,7 +5816,7 @@ function __c0(j: number): any {
         S.Struct({
           usergroup_id: S.String,
           team_id: S.optional(S.String),
-          channel_ids: __S(2),
+          channel_ids: AddChannelsRequestChannelIdsList,
         }).pipe(T.Http({ method: "POST", uri: "/admin.usergroups.addChannels", code: 200 })),
       ).annotate({ identifier: "AddChannelsRequest" });
   }
@@ -4392,7 +5828,7 @@ function __c1(j: number): any {
         S.Struct({
           ok: S.Boolean,
           error: S.optional(S.String),
-          invalid_channels: S.optional(__S(2)),
+          invalid_channels: S.optional(AddChannelsResponseInvalidChannelsList),
         }),
       ).annotate({ identifier: "AddChannelsResponse" });
     case 1:
@@ -4416,7 +5852,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           usergroup_id: S.String,
-          team_ids: __S(2),
+          team_ids: AddTeamsRequestTeamIdsList,
           auto_provision: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/admin.usergroups.addTeams", code: 200 })),
       ).annotate({ identifier: "AddTeamsRequest" });
@@ -4424,26 +5860,26 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          users: __S(2),
+          users: AddUsersRequestUsersList,
         }).pipe(T.Http({ method: "POST", uri: "/admin.usergroups.addUsers", code: 200 })),
       ).annotate({ identifier: "AddUsersRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String,
-          reason: S.String,
+          reason: AddUsersResponseInvalidUsersItemReason,
         }),
       ).annotate({
         identifier: "AddUsersResponseInvalidUsersItem",
       });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(AddUsersResponseInvalidUsersItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           error: S.optional(S.String),
-          invalid_users: S.optional(__S(14)),
+          invalid_users: S.optional(AddUsersResponseInvalidUsersList),
         }),
       ).annotate({ identifier: "AddUsersResponse" });
   }
@@ -4453,8 +5889,8 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          workflow_ids: __S(2),
-          collaborator_ids: __S(2),
+          workflow_ids: AddWorkflowsCollaboratorRequestWorkflowIdsList,
+          collaborator_ids: AddWorkflowsCollaboratorRequestCollaboratorIdsList,
         }).pipe(T.Http({ method: "POST", uri: "/admin.workflows.collaborators.add", code: 200 })),
       ).annotate({
         identifier: "AddWorkflowsCollaboratorRequest",
@@ -4483,7 +5919,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          response_metadata: S.optional(__S(18)),
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
           message_activities: S.Unknown,
         }),
       ).annotate({
@@ -4510,7 +5946,7 @@ function __c2(j: number): any {
         identifier: "AnalyticsMessagesMetadataResponseMessagesItemReactionsItem",
       });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(AnalyticsMessagesMetadataResponseMessagesItemReactionsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -4537,7 +5973,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(AnalyticsMessagesMetadataResponseMessagesItemFilesItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4549,20 +5985,20 @@ function __c3(j: number): any {
           display_as_bot: S.optional(S.Boolean),
           client_msg_id: S.optional(S.String),
           text_character_count: S.optional(S.Number),
-          reactions: S.optional(__S(22)),
-          files: S.optional(__S(24)),
+          reactions: S.optional(AnalyticsMessagesMetadataResponseMessagesItemReactionsList),
+          files: S.optional(AnalyticsMessagesMetadataResponseMessagesItemFilesList),
         }),
       ).annotate({
         identifier: "AnalyticsMessagesMetadataResponseMessagesItem",
       });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(AnalyticsMessagesMetadataResponseMessagesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          response_metadata: S.optional(__S(18)),
-          messages: __S(26),
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
+          messages: AnalyticsMessagesMetadataResponseMessagesList,
         }),
       ).annotate({
         identifier: "AnalyticsMessagesMetadataResponse",
@@ -4614,7 +6050,7 @@ function __c4(j: number): any {
         S.Struct({
           policy_name: S.String,
           entity_type: S.Unknown,
-          entity_ids: __S(2),
+          entity_ids: AssignEntitiesRequestEntityIdsList,
         }).pipe(T.Http({ method: "POST", uri: "/admin.auth.policy.assignEntities", code: 200 })),
       ).annotate({ identifier: "AssignEntitiesRequest" });
     case 1:
@@ -4637,7 +6073,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          channel_ids: __S(2),
+          channel_ids: BulkArchiveRequestChannelIdsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -4651,25 +6087,25 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
-          errors: __S(2),
+          errors: BulkArchiveResponseNotAddedItemErrorsList,
         }),
       ).annotate({
         identifier: "BulkArchiveResponseNotAddedItem",
       });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(BulkArchiveResponseNotAddedItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           bulk_action_id: S.String,
-          not_added: __S(37),
+          not_added: BulkArchiveResponseNotAddedList,
         }),
       ).annotate({ identifier: "BulkArchiveResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          channel_ids: __S(2),
+          channel_ids: BulkDeleteRequestChannelIdsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -4687,7 +6123,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           target_team_id: S.String,
-          channel_ids: __S(2),
+          channel_ids: BulkMoveRequestChannelIdsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -4700,7 +6136,7 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          channel_ids: __S(2).pipe(T.Query()),
+          channel_ids: BulkSetExcludeFromSlackAiRequestChannelIdsList.pipe(T.Query()),
           exclude: S.Boolean.pipe(T.Query()),
         }).pipe(
           T.Http({
@@ -4717,7 +6153,7 @@ function __c5(j: number): any {
         S.Struct({
           ok: S.Boolean,
           bulk_action_id: S.String,
-          not_added: __S(37),
+          not_added: BulkSetExcludeFromSlackAiResponseNotAddedList,
         }),
       ).annotate({
         identifier: "BulkSetExcludeFromSlackAiResponse",
@@ -4725,7 +6161,7 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          channel_ids: __S(2),
+          channel_ids: BulkSetPropertiesRequestChannelIdsList,
           property: S.String,
         }).pipe(
           T.Http({
@@ -4741,7 +6177,7 @@ function __c5(j: number): any {
         S.Struct({
           ok: S.Boolean,
           bulk_action_id: S.String,
-          not_updated: __S(37),
+          not_updated: BulkSetPropertiesResponseNotUpdatedList,
         }),
       ).annotate({
         identifier: "BulkSetPropertiesResponse",
@@ -4765,7 +6201,7 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          user_ids: __S(2),
+          user_ids: ClearSettingsRequestUserIdsList,
         }).pipe(T.Http({ method: "POST", uri: "/admin.users.session.clearSettings", code: 200 })),
       ).annotate({ identifier: "ClearSettingsRequest" });
   }
@@ -4788,13 +6224,13 @@ function __c6(j: number): any {
         }).pipe(T.Http({ method: "POST", uri: "/admin.conversations.convertToPublic", code: 200 })),
       ).annotate({ identifier: "ConvertToPublicRequest" });
     case 2:
-      return S.Array(S.String);
+      return S.Array(CreateBarrierRequestRestrictedSubjectsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           primary_usergroup_id: S.String,
-          barriered_from_usergroup_ids: __S(2),
-          restricted_subjects: __S(50),
+          barriered_from_usergroup_ids: CreateBarrierRequestBarrieredFromUsergroupIdsList,
+          restricted_subjects: CreateBarrierRequestRestrictedSubjectsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -4911,7 +6347,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
-          leaving_team_ids: S.optional(__S(2)),
+          leaving_team_ids: S.optional(DisconnectSharedRequestLeavingTeamIdsList),
         }).pipe(
           T.Http({ method: "POST", uri: "/admin.conversations.disconnectShared", code: 200 }),
         ),
@@ -4962,8 +6398,8 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(__S(2)),
-          user: S.optional(__S(2)),
+          type: S.optional(GetConversationPrefsResponsePrefsWhoCanPostTypeList),
+          user: S.optional(GetConversationPrefsResponsePrefsWhoCanPostUserList),
         }),
       ).annotate({
         identifier: "GetConversationPrefsResponsePrefsWhoCanPost",
@@ -4987,12 +6423,12 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          who_can_post: S.optional(__S(68)),
-          can_thread: S.optional(__S(68)),
-          membership_limit: S.optional(__S(69)),
-          can_huddle: S.optional(__S(70)),
-          enable_at_channel: S.optional(__S(70)),
-          enable_at_here: S.optional(__S(70)),
+          who_can_post: S.optional(GetConversationPrefsResponsePrefsWhoCanPost),
+          can_thread: S.optional(GetConversationPrefsResponsePrefsCanThread),
+          membership_limit: S.optional(GetConversationPrefsResponsePrefsMembershipLimit),
+          can_huddle: S.optional(GetConversationPrefsResponsePrefsCanHuddle),
+          enable_at_channel: S.optional(GetConversationPrefsResponsePrefsEnableAtChannel),
+          enable_at_here: S.optional(GetConversationPrefsResponsePrefsEnableAtHere),
         }),
       ).annotate({
         identifier: "GetConversationPrefsResponsePrefs",
@@ -5005,7 +6441,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          prefs: S.optional(__S(71)),
+          prefs: S.optional(GetConversationPrefsResponsePrefs),
         }),
       ).annotate({
         identifier: "GetConversationPrefsResponse",
@@ -5050,13 +6486,13 @@ function __c9(j: number): any {
         identifier: "GetEntitiesResponseEntitiesItem",
       });
     case 5:
-      return S.Array(__S(76));
+      return S.Array(GetEntitiesResponseEntitiesItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          response_metadata: S.optional(__S(18)),
-          entities: __S(77),
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
+          entities: GetEntitiesResponseEntitiesList,
           entity_total_count: S.Number,
         }),
       ).annotate({ identifier: "GetEntitiesResponse" });
@@ -5095,14 +6531,14 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          trusted_cidr: S.optional(__S(2)),
-          trusted_asns: S.optional(__S(83)),
+          trusted_cidr: S.optional(GetItemResponseTrustedCidrList),
+          trusted_asns: S.optional(GetItemResponseTrustedAsnsList),
         }),
       ).annotate({ identifier: "GetItemResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          user_ids: __S(2),
+          user_ids: GetSettingsRequestUserIdsList,
         }).pipe(T.Http({ method: "POST", uri: "/admin.users.session.getSettings", code: 200 })),
       ).annotate({ identifier: "GetSettingsRequest" });
     case 6:
@@ -5116,7 +6552,7 @@ function __c10(j: number): any {
         identifier: "GetSettingsResponseSessionSettingsItem",
       });
     case 7:
-      return S.Array(__S(86));
+      return S.Array(GetSettingsResponseSessionSettingsItem);
   }
 }
 function __c11(j: number): any {
@@ -5125,8 +6561,8 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          session_settings: S.optional(__S(87)),
-          no_settings_applied: S.optional(__S(2)),
+          session_settings: S.optional(GetSettingsResponseSessionSettingsList),
+          no_settings_applied: S.optional(GetSettingsResponseNoSettingsAppliedList),
         }),
       ).annotate({ identifier: "GetSettingsResponse" });
     case 1:
@@ -5141,7 +6577,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          response_metadata: S.optional(__S(18)),
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
         }),
       ).annotate({ identifier: "GetTeamsResponse" });
     case 3:
@@ -5156,7 +6592,7 @@ function __c11(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          user_ids: __S(2),
+          user_ids: InviteConversationRequestUserIdsList,
           channel_id: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/admin.conversations.invite", code: 200 })),
       ).annotate({
@@ -5213,7 +6649,7 @@ function __c12(j: number): any {
           trace_id: S.optional(S.String),
           min_date_created: S.optional(S.Number),
           max_date_created: S.optional(S.Number),
-          sort_direction: S.optional(S.String),
+          sort_direction: S.optional(ListAppsActivitiesRequestSortDirection),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5231,8 +6667,8 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          activities: __S(97),
-          response_metadata: S.optional(__S(18)),
+          activities: ListAppsActivitiesResponseActivitiesList,
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
         }),
       ).annotate({
         identifier: "ListAppsActivitiesResponse",
@@ -5251,8 +6687,8 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          approved_apps: __S(97),
-          response_metadata: S.optional(__S(18)),
+          approved_apps: ListAppsApprovedResponseApprovedAppsList,
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
         }),
       ).annotate({ identifier: "ListAppsApprovedResponse" });
     case 5:
@@ -5278,7 +6714,7 @@ function __c12(j: number): any {
         identifier: "ListAppsMcpServersResponseServersItem",
       });
     case 7:
-      return S.Array(__S(102));
+      return S.Array(ListAppsMcpServersResponseServersItem);
   }
 }
 function __c13(j: number): any {
@@ -5287,8 +6723,8 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          servers: __S(103),
-          response_metadata: S.optional(__S(18)),
+          servers: ListAppsMcpServersResponseServersList,
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
         }),
       ).annotate({
         identifier: "ListAppsMcpServersResponse",
@@ -5307,7 +6743,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          servers: __S(97),
+          servers: ListAppsMcpServersPermissionsResponseServersList,
         }),
       ).annotate({
         identifier: "ListAppsMcpServersPermissionsResponse",
@@ -5334,8 +6770,8 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          app_requests: __S(97),
-          response_metadata: S.optional(__S(18)),
+          app_requests: ListAppsRequestsResponseAppRequestsList,
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
         }),
       ).annotate({ identifier: "ListAppsRequestsResponse" });
     case 6:
@@ -5354,8 +6790,8 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          restricted_apps: __S(97),
-          response_metadata: S.optional(__S(18)),
+          restricted_apps: ListAppsRestrictedResponseRestrictedAppsList,
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
         }),
       ).annotate({
         identifier: "ListAppsRestrictedResponse",
@@ -5369,8 +6805,8 @@ function __c14(j: number): any {
         S.Struct({
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          role_ids: S.optional(__S(2).pipe(T.Query())),
-          entity_ids: S.optional(__S(2).pipe(T.Query())),
+          role_ids: S.optional(ListAssignmentsRequestRoleIdsList.pipe(T.Query())),
+          entity_ids: S.optional(ListAssignmentsRequestEntityIdsList.pipe(T.Query())),
           sort_dir: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/admin.roles.listAssignments", code: 200 })),
       ).annotate({ identifier: "ListAssignmentsRequest" });
@@ -5386,14 +6822,14 @@ function __c14(j: number): any {
         identifier: "ListAssignmentsResponseRoleAssignmentsItem",
       });
     case 2:
-      return S.Array(__S(113));
+      return S.Array(ListAssignmentsResponseRoleAssignmentsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           error: S.optional(S.String),
-          role_assignments: __S(114),
-          response_metadata: S.optional(__S(18)),
+          role_assignments: ListAssignmentsResponseRoleAssignmentsList,
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
         }),
       ).annotate({ identifier: "ListAssignmentsResponse" });
     case 4:
@@ -5407,8 +6843,8 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          barriers: __S(97),
-          response_metadata: S.optional(__S(18)),
+          barriers: ListBarriersResponseBarriersList,
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
         }),
       ).annotate({ identifier: "ListBarriersResponse" });
     case 6:
@@ -5423,7 +6859,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          channels: __S(2),
+          channels: ListChannelsResponseChannelsList,
           error: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListChannelsResponse" });
@@ -5444,15 +6880,15 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          emoji: __S(121),
-          response_metadata: S.optional(__S(18)),
+          emoji: ListEmojiResponseEmojiMap,
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
         }),
       ).annotate({ identifier: "ListEmojiResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           team_id: S.optional(S.String),
-          app_ids: __S(2),
+          app_ids: ListFunctionsRequestAppIdsList,
           include_non_distributed_functions: S.optional(S.Boolean),
           cursor: S.optional(S.String),
           limit: S.optional(S.Number),
@@ -5462,8 +6898,8 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          functions: __S(97),
-          response_metadata: S.optional(__S(18)),
+          functions: ListFunctionsResponseFunctionsList,
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
         }),
       ).annotate({ identifier: "ListFunctionsResponse" });
     case 5:
@@ -5483,7 +6919,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          group_ids: __S(2),
+          group_ids: ListGroupsResponseGroupIdsList,
         }),
       ).annotate({ identifier: "ListGroupsResponse" });
     case 7:
@@ -5504,8 +6940,8 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          response_metadata: S.optional(__S(18)),
-          invite_requests: __S(97),
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
+          invite_requests: ListInviteRequestsResponseInviteRequestsList,
         }),
       ).annotate({
         identifier: "ListInviteRequestsResponse",
@@ -5524,8 +6960,8 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          response_metadata: S.optional(__S(18)),
-          approved_requests: __S(97),
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
+          approved_requests: ListInviteRequestsApprovedResponseApprovedRequestsList,
         }),
       ).annotate({
         identifier: "ListInviteRequestsApprovedResponse",
@@ -5544,8 +6980,8 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          response_metadata: S.optional(__S(18)),
-          denied_requests: __S(97),
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
+          denied_requests: ListInviteRequestsDeniedResponseDeniedRequestsList,
         }),
       ).annotate({
         identifier: "ListInviteRequestsDeniedResponse",
@@ -5574,7 +7010,8 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          internal_team_ids: __S(134),
+          internal_team_ids:
+            ListOriginalConnectedChannelInfoResponseChannelsItemInternalTeamIdsList,
           original_connected_host_id: S.String,
           original_connected_channel_id: S.String,
         }),
@@ -5586,13 +7023,13 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(135));
+      return S.Array(ListOriginalConnectedChannelInfoResponseChannelsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          response_metadata: S.optional(__S(18)),
-          channels: __S(136),
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
+          channels: ListOriginalConnectedChannelInfoResponseChannelsList,
         }),
       ).annotate({
         identifier: "ListOriginalConnectedChannelInfoResponse",
@@ -5619,20 +7056,20 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.String,
           discoverability: S.String,
-          primary_owner: __S(139),
+          primary_owner: ListTeamsResponseTeamsItemPrimaryOwner,
           team_url: S.String,
         }),
       ).annotate({
         identifier: "ListTeamsResponseTeamsItem",
       });
     case 5:
-      return S.Array(__S(140));
+      return S.Array(ListTeamsResponseTeamsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          teams: __S(141),
-          response_metadata: S.optional(__S(18)),
+          teams: ListTeamsResponseTeamsList,
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
         }),
       ).annotate({ identifier: "ListTeamsResponse" });
     case 7:
@@ -5651,8 +7088,8 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          admin_ids: __S(2),
-          response_metadata: S.optional(__S(18)),
+          admin_ids: ListTeamsAdminsResponseAdminIdsList,
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
         }),
       ).annotate({ identifier: "ListTeamsAdminsResponse" });
     case 1:
@@ -5667,8 +7104,8 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          owner_ids: __S(2),
-          response_metadata: S.optional(__S(18)),
+          owner_ids: ListTeamsOwnersResponseOwnerIdsList,
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
         }),
       ).annotate({ identifier: "ListTeamsOwnersResponse" });
     case 3:
@@ -5700,9 +7137,9 @@ function __c18(j: number): any {
           is_ultra_restricted: S.Boolean,
           is_bot: S.Boolean,
           expiration_ts: S.optional(S.Number),
-          roles: S.optional(__S(2)),
+          roles: S.optional(ListUsersResponseUsersItemRolesList),
           last_active_ts: S.optional(S.Number),
-          workspaces: S.optional(__S(2)),
+          workspaces: S.optional(ListUsersResponseUsersItemWorkspacesList),
           is_active: S.optional(S.Boolean),
           date_created: S.optional(S.Number),
           deactivated_ts: S.optional(S.Number),
@@ -5711,13 +7148,13 @@ function __c18(j: number): any {
         identifier: "ListUsersResponseUsersItem",
       });
     case 5:
-      return S.Array(__S(148));
+      return S.Array(ListUsersResponseUsersItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          users: __S(149),
-          response_metadata: S.optional(__S(18)),
+          users: ListUsersResponseUsersList,
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
         }),
       ).annotate({ identifier: "ListUsersResponse" });
     case 7:
@@ -5751,46 +7188,46 @@ function __c19(j: number): any {
           user_id: S.String,
           team_id: S.String,
           session_id: S.Number,
-          recent: S.optional(__S(152)),
-          created: __S(152),
+          recent: S.optional(ListUsersSessionResponseActiveSessionsItemRecent),
+          created: ListUsersSessionResponseActiveSessionsItemCreated,
         }),
       ).annotate({
         identifier: "ListUsersSessionResponseActiveSessionsItem",
       });
     case 2:
-      return S.Array(__S(153));
+      return S.Array(ListUsersSessionResponseActiveSessionsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          response_metadata: S.optional(__S(18)),
-          active_sessions: __S(154),
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
+          active_sessions: ListUsersSessionResponseActiveSessionsList,
         }),
       ).annotate({ identifier: "ListUsersSessionResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          app_ids: S.optional(__S(2)),
-          rich_link_preview_types: S.optional(__S(50)),
+          app_ids: S.optional(LookupAppsConfigRequestAppIdsList),
+          rich_link_preview_types: S.optional(LookupAppsConfigRequestRichLinkPreviewTypesList),
         }).pipe(T.Http({ method: "POST", uri: "/admin.apps.config.lookup", code: 200 })),
       ).annotate({ identifier: "LookupAppsConfigRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           app_id: S.String,
-          workflow_auth_strategy: S.String,
+          workflow_auth_strategy: LookupAppsConfigResponseConfigsItemWorkflowAuthStrategy,
           domain_restrictions: S.Unknown,
         }),
       ).annotate({
         identifier: "LookupAppsConfigResponseConfigsItem",
       });
     case 6:
-      return S.Array(__S(157));
+      return S.Array(LookupAppsConfigResponseConfigsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          configs: __S(158),
+          configs: LookupAppsConfigResponseConfigsList,
         }),
       ).annotate({ identifier: "LookupAppsConfigResponse" });
   }
@@ -5800,7 +7237,7 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          team_ids: __S(2),
+          team_ids: LookupConversationRequestTeamIdsList,
           max_member_count: S.optional(S.Number),
           last_message_activity_before: S.Number,
           cursor: S.optional(S.String),
@@ -5820,8 +7257,8 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          channel_ids: __S(2),
-          response_metadata: S.optional(__S(18)),
+          channel_ids: LookupConversationResponseChannelIdsList,
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
         }),
       ).annotate({
         identifier: "LookupConversationResponse",
@@ -5829,7 +7266,7 @@ function __c20(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          function_ids: __S(2),
+          function_ids: LookupFunctionsPermissionsRequestFunctionIdsList,
         }).pipe(T.Http({ method: "POST", uri: "/admin.functions.permissions.lookup", code: 200 })),
       ).annotate({
         identifier: "LookupFunctionsPermissionsRequest",
@@ -5838,9 +7275,9 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          permissions: __S(121),
-          metadata: __S(121),
-          errors: __S(121),
+          permissions: LookupFunctionsPermissionsResponsePermissionsMap,
+          metadata: LookupFunctionsPermissionsResponseMetadataMap,
+          errors: LookupFunctionsPermissionsResponseErrorsMap,
         }),
       ).annotate({
         identifier: "LookupFunctionsPermissionsResponse",
@@ -5848,7 +7285,7 @@ function __c20(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          workflow_ids: __S(2),
+          workflow_ids: LookupWorkflowsPermissionsRequestWorkflowIdsList,
           max_workflow_triggers: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/admin.workflows.permissions.lookup", code: 200 })),
       ).annotate({
@@ -5858,7 +7295,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          permissions: __S(121),
+          permissions: LookupWorkflowsPermissionsResponsePermissionsMap,
         }),
       ).annotate({
         identifier: "LookupWorkflowsPermissionsResponse",
@@ -5866,7 +7303,7 @@ function __c20(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          trigger_type_ids: __S(134),
+          trigger_type_ids: LookupWorkflowsTriggersTypesPermissionsRequestTriggerTypeIdsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -5881,8 +7318,8 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          permissions: __S(121),
-          metadata: __S(121),
+          permissions: LookupWorkflowsTriggersTypesPermissionsResponsePermissionsMap,
+          metadata: LookupWorkflowsTriggersTypesPermissionsResponseMetadataMap,
         }),
       ).annotate({
         identifier: "LookupWorkflowsTriggersTypesPermissionsResponse",
@@ -5895,9 +7332,9 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           app_id: S.String,
-          user_ids: S.optional(__S(2)),
-          usergroup_ids: S.optional(__S(2)),
-          channel_ids: S.optional(__S(2)),
+          user_ids: S.optional(RemoveAppsPermissionsRequestUserIdsList),
+          usergroup_ids: S.optional(RemoveAppsPermissionsRequestUsergroupIdsList),
+          channel_ids: S.optional(RemoveAppsPermissionsRequestChannelIdsList),
         }).pipe(T.Http({ method: "POST", uri: "/admin.apps.permissions.remove", code: 200 })),
       ).annotate({
         identifier: "RemoveAppsPermissionsRequest",
@@ -5906,8 +7343,8 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           role_id: S.String,
-          entity_ids: __S(2),
-          user_ids: __S(2),
+          entity_ids: RemoveAssignmentsRequestEntityIdsList,
+          user_ids: RemoveAssignmentsRequestUserIdsList,
         }).pipe(T.Http({ method: "POST", uri: "/admin.roles.removeAssignments", code: 200 })),
       ).annotate({ identifier: "RemoveAssignmentsRequest" });
     case 2:
@@ -5923,7 +7360,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           usergroup_id: S.String,
-          channel_ids: __S(2),
+          channel_ids: RemoveChannelsRequestChannelIdsList,
         }).pipe(T.Http({ method: "POST", uri: "/admin.usergroups.removeChannels", code: 200 })),
       ).annotate({ identifier: "RemoveChannelsRequest" });
     case 4:
@@ -5947,7 +7384,7 @@ function __c21(j: number): any {
         S.Struct({
           policy_name: S.String,
           entity_type: S.Unknown,
-          entity_ids: __S(2),
+          entity_ids: RemoveEntitiesRequestEntityIdsList,
         }).pipe(T.Http({ method: "POST", uri: "/admin.auth.policy.removeEntities", code: 200 })),
       ).annotate({ identifier: "RemoveEntitiesRequest" });
     case 7:
@@ -5972,7 +7409,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           usergroup_id: S.String,
-          team_ids: __S(2),
+          team_ids: RemoveTeamsRequestTeamIdsList,
         }).pipe(T.Http({ method: "POST", uri: "/admin.usergroups.removeTeams", code: 200 })),
       ).annotate({ identifier: "RemoveTeamsRequest" });
     case 1:
@@ -5986,14 +7423,14 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          users: __S(2),
+          users: RemoveUsersRequestUsersList,
         }).pipe(T.Http({ method: "POST", uri: "/admin.usergroups.removeUsers", code: 200 })),
       ).annotate({ identifier: "RemoveUsersRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          workflow_ids: __S(2),
-          collaborator_ids: __S(2),
+          workflow_ids: RemoveWorkflowsCollaboratorRequestWorkflowIdsList,
+          collaborator_ids: RemoveWorkflowsCollaboratorRequestCollaboratorIdsList,
         }).pipe(
           T.Http({ method: "POST", uri: "/admin.workflows.collaborators.remove", code: 200 }),
         ),
@@ -6019,7 +7456,7 @@ function __c22(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          user_ids: __S(2),
+          user_ids: ResetBulkRequestUserIdsList,
           mobile_only: S.optional(S.Boolean),
           web_only: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/admin.users.session.resetBulk", code: 200 })),
@@ -6039,12 +7476,12 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          team_ids: S.optional(__S(2)),
-          connected_team_ids: S.optional(__S(2)),
+          team_ids: S.optional(SearchConversationRequestTeamIdsList),
+          connected_team_ids: S.optional(SearchConversationRequestConnectedTeamIdsList),
           query: S.optional(S.String),
           limit: S.optional(S.Number),
           cursor: S.optional(S.String),
-          search_channel_types: S.optional(__S(2)),
+          search_channel_types: S.optional(SearchConversationRequestSearchChannelTypesList),
           sort: S.optional(S.String),
           sort_dir: S.optional(S.String),
           total_count_only: S.optional(S.Boolean),
@@ -6056,11 +7493,11 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          conversations: __S(2),
+          conversations: SearchConversationResponseConversationsList,
           next_cursor: S.String,
           total_count: S.Number,
           error: S.optional(S.String),
-          response_metadata: S.optional(__S(18)),
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
         }),
       ).annotate({
         identifier: "SearchConversationResponse",
@@ -6073,23 +7510,23 @@ function __c23(j: number): any {
           cursor: S.optional(S.String),
           limit: S.optional(S.Number),
           no_collaborators: S.optional(S.Boolean),
-          collaborator_ids: S.optional(__S(2)),
+          collaborator_ids: S.optional(SearchWorkflowRequestCollaboratorIdsList),
           num_trigger_ids: S.optional(S.Number),
           is_sales_elevate: S.optional(S.Boolean),
-          source: S.optional(S.String),
-          sort: S.optional(S.String),
-          sort_dir: S.optional(S.String),
+          source: S.optional(SearchWorkflowRequestSource),
+          sort: S.optional(SearchWorkflowRequestSort),
+          sort_dir: S.optional(SearchWorkflowRequestSortDir),
           trigger_type_id: S.optional(S.String),
-          publish_status: S.optional(S.String),
-          step_function_ids: S.optional(__S(2)),
+          publish_status: S.optional(SearchWorkflowRequestPublishStatus),
+          step_function_ids: S.optional(SearchWorkflowRequestStepFunctionIdsList),
         }).pipe(T.Http({ method: "POST", uri: "/admin.workflows.search", code: 200 })),
       ).annotate({ identifier: "SearchWorkflowRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          workflows: __S(97),
-          response_metadata: S.optional(__S(18)),
+          workflows: SearchWorkflowResponseWorkflowsList,
+          response_metadata: S.optional(AnalyticsMessagesActivityResponseResponseMetadata),
           total_found: S.Number,
         }),
       ).annotate({ identifier: "SearchWorkflowResponse" });
@@ -6103,8 +7540,8 @@ function __c23(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          urls: S.optional(__S(2)),
-          emails: S.optional(__S(2)),
+          urls: S.optional(SetAppsConfigRequestDomainRestrictionsUrlsList),
+          emails: S.optional(SetAppsConfigRequestDomainRestrictionsEmailsList),
         }),
       ).annotate({
         identifier: "SetAppsConfigRequestDomainRestrictions",
@@ -6113,9 +7550,9 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           app_id: S.String,
-          workflow_auth_strategy: S.optional(S.String),
-          rich_link_preview_type: S.optional(S.String),
-          domain_restrictions: S.optional(__S(189)),
+          workflow_auth_strategy: S.optional(SetAppsConfigRequestWorkflowAuthStrategy),
+          rich_link_preview_type: S.optional(SetAppsConfigRequestRichLinkPreviewType),
+          domain_restrictions: S.optional(SetAppsConfigRequestDomainRestrictions),
         }).pipe(T.Http({ method: "POST", uri: "/admin.apps.config.set", code: 200 })),
       ).annotate({ identifier: "SetAppsConfigRequest" });
     case 7:
@@ -6123,9 +7560,9 @@ function __c23(j: number): any {
         S.Struct({
           app_id: S.String,
           server_id: S.String,
-          permission_type: S.String,
-          user_ids: S.optional(__S(2)),
-          usergroup_ids: S.optional(__S(2)),
+          permission_type: SetAppsMcpServersPermissionsRequestPermissionType,
+          user_ids: S.optional(SetAppsMcpServersPermissionsRequestUserIdsList),
+          usergroup_ids: S.optional(SetAppsMcpServersPermissionsRequestUsergroupIdsList),
         }).pipe(
           T.Http({ method: "POST", uri: "/admin.apps.mcp.servers.permissions.set", code: 200 }),
         ),
@@ -6140,11 +7577,11 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           app_id: S.String,
-          permission_type: S.String,
-          user_ids: S.optional(__S(2)),
-          usergroup_ids: S.optional(__S(2)),
-          channel_restriction_mode: S.optional(S.String),
-          channel_ids: S.optional(__S(2)),
+          permission_type: SetAppsPermissionsRequestPermissionType,
+          user_ids: S.optional(SetAppsPermissionsRequestUserIdsList),
+          usergroup_ids: S.optional(SetAppsPermissionsRequestUsergroupIdsList),
+          channel_restriction_mode: S.optional(SetAppsPermissionsRequestChannelRestrictionMode),
+          channel_ids: S.optional(SetAppsPermissionsRequestChannelIdsList),
         }).pipe(T.Http({ method: "POST", uri: "/admin.apps.permissions.set", code: 200 })),
       ).annotate({
         identifier: "SetAppsPermissionsRequest",
@@ -6175,7 +7612,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           team_id: S.String.pipe(T.Query()),
-          channel_ids: __S(2).pipe(T.Query()),
+          channel_ids: SetDefaultChannelsRequestChannelIdsList.pipe(T.Query()),
         }).pipe(
           T.Http({ method: "GET", uri: "/admin.teams.settings.setDefaultChannels", code: 200 }),
         ),
@@ -6211,9 +7648,9 @@ function __c24(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          visibility: S.String,
-          permission_type: S.String,
-          user_ids: S.optional(__S(2)),
+          visibility: SetFunctionsPermissionsRequestPermissionsItemVisibility,
+          permission_type: SetFunctionsPermissionsRequestPermissionsItemPermissionType,
+          user_ids: S.optional(SetFunctionsPermissionsRequestPermissionsItemUserIdsList),
         }),
       ).annotate({
         identifier: "SetFunctionsPermissionsRequestPermissionsItem",
@@ -6223,14 +7660,14 @@ function __c24(j: number): any {
 function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(199));
+      return S.Array(SetFunctionsPermissionsRequestPermissionsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           function_id: S.String,
-          visibility: S.optional(S.String),
-          user_ids: S.optional(__S(2)),
-          permissions: S.optional(__S(200)),
+          visibility: S.optional(SetFunctionsPermissionsRequestVisibility),
+          user_ids: S.optional(SetFunctionsPermissionsRequestUserIdsList),
+          permissions: S.optional(SetFunctionsPermissionsRequestPermissionsList),
         }).pipe(T.Http({ method: "POST", uri: "/admin.functions.permissions.set", code: 200 })),
       ).annotate({
         identifier: "SetFunctionsPermissionsRequest",
@@ -6266,7 +7703,7 @@ function __c25(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          user_ids: __S(2),
+          user_ids: SetSettingsRequestUserIdsList,
           duration: S.optional(S.Number),
           desktop_app_browser_quit: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/admin.users.session.setSettings", code: 200 })),
@@ -6276,7 +7713,7 @@ function __c25(j: number): any {
         S.Struct({
           channel_id: S.String,
           team_id: S.optional(S.String),
-          target_team_ids: S.optional(__S(2)),
+          target_team_ids: S.optional(SetTeamsRequestTargetTeamIdsList),
           org_channel: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/admin.conversations.setTeams", code: 200 })),
       ).annotate({ identifier: "SetTeamsRequest" });
@@ -6296,7 +7733,9 @@ function __c26(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(209)),
+          permissions: S.optional(
+            SetWorkflowsTriggersTypesPermissionsRequestPermissionsPermissionsMap,
+          ),
         }),
       ).annotate({
         identifier: "SetWorkflowsTriggersTypesPermissionsRequestPermissions",
@@ -6305,9 +7744,9 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          visibility: S.optional(S.String),
-          user_ids: S.optional(__S(2)),
-          permissions: S.optional(__S(210)),
+          visibility: S.optional(SetWorkflowsTriggersTypesPermissionsRequestVisibility),
+          user_ids: S.optional(SetWorkflowsTriggersTypesPermissionsRequestUserIdsList),
+          permissions: S.optional(SetWorkflowsTriggersTypesPermissionsRequestPermissions),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6334,18 +7773,18 @@ function __c26(j: number): any {
           icon: S.optional(S.Unknown),
           enterprise_id: S.optional(S.String),
           enterprise_name: S.optional(S.String),
-          default_channels: S.optional(__S(97)),
+          default_channels: S.optional(TeamsSettingsInfoResponseTeamItemDefaultChannelsList),
         }),
       ).annotate({
         identifier: "TeamsSettingsInfoResponseTeamItem",
       });
     case 6:
-      return S.Array(__S(213));
+      return S.Array(TeamsSettingsInfoResponseTeamItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          team: __S(214),
+          team: TeamsSettingsInfoResponseTeamList,
         }),
       ).annotate({
         identifier: "TeamsSettingsInfoResponse",
@@ -6380,7 +7819,7 @@ function __c27(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          workflow_ids: __S(2),
+          workflow_ids: UnpublishWorkflowRequestWorkflowIdsList,
         }).pipe(T.Http({ method: "POST", uri: "/admin.workflows.unpublish", code: 200 })),
       ).annotate({ identifier: "UnpublishWorkflowRequest" });
     case 4:
@@ -6388,8 +7827,8 @@ function __c27(j: number): any {
         S.Struct({
           barrier_id: S.String,
           primary_usergroup_id: S.String,
-          barriered_from_usergroup_ids: __S(2),
-          restricted_subjects: __S(50),
+          barriered_from_usergroup_ids: UpdateBarrierRequestBarrieredFromUsergroupIdsList,
+          restricted_subjects: UpdateBarrierRequestRestrictedSubjectsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -6402,8 +7841,8 @@ function __c27(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          trusted_cidr: S.optional(__S(2)),
-          trusted_asns: S.optional(__S(83)),
+          trusted_cidr: S.optional(UpdateItemRequestTrustedCidrList),
+          trusted_asns: S.optional(UpdateItemRequestTrustedAsnsList),
         }).pipe(
           T.Http({ method: "POST", uri: "/admin.audit.anomaly.allow.updateItem", code: 200 }),
         ),
@@ -6423,7 +7862,7 @@ function __c27(j: number): any {
         S.Struct({
           ok: S.Boolean,
           subteam: S.optional(S.Unknown),
-          channel_limit_user_ids: S.optional(__S(2)),
+          channel_limit_user_ids: S.optional(UpdateUsergroupResponseChannelLimitUserIdsList),
         }),
       ).annotate({ identifier: "UpdateUsergroupResponse" });
   }
@@ -6442,75 +7881,8 @@ function __c28(j: number): any {
         S.Struct({
           ok: S.Boolean,
           successful_user_count: S.Number,
-          invalid_users: S.optional(__S(14)),
+          invalid_users: S.optional(UploadUsersResponseInvalidUsersList),
         }),
       ).annotate({ identifier: "UploadUsersResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
   }
 }

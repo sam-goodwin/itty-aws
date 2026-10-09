@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "WorkMailMessageFlow",
   serviceShapeName: "GiraffeMessageInTransitService",
@@ -100,9 +98,17 @@ export type MessageIdType = string;
 export interface GetRawMessageContentRequest {
   messageId: string;
 }
+const GetRawMessageContentRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetRawMessageContentRequest>;
 export interface GetRawMessageContentResponse {
   messageContent: T.StreamingOutputBody;
 }
+const GetRawMessageContentResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GetRawMessageContentResponse>;
 export type S3BucketIdType = string;
 export type S3KeyIdType = string;
 export type S3VersionType = string;
@@ -111,14 +117,24 @@ export interface S3Reference {
   key: string;
   objectVersion?: string;
 }
+const S3Reference = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<S3Reference>;
 export interface RawMessageContent {
   s3Reference: S3Reference;
 }
+const RawMessageContent = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<RawMessageContent>;
 export interface PutRawMessageContentRequest {
   messageId: string;
   content: RawMessageContent;
 }
+const PutRawMessageContentRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<PutRawMessageContentRequest>;
 export interface PutRawMessageContentResponse {}
+const PutRawMessageContentResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<PutRawMessageContentResponse>;
 export type ErrorMessage = string;
 export type GetRawMessageContentError = ResourceNotFoundException | CommonErrors;
 /**
@@ -130,8 +146,8 @@ export const getRawMessageContent: API.OperationMethod<
   GetRawMessageContentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetRawMessageContentRequest>,
-  output: __S(1) as any as S.Schema<GetRawMessageContentResponse>,
+  input: GetRawMessageContentRequest,
+  output: GetRawMessageContentResponse,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -163,8 +179,8 @@ export const putRawMessageContent: API.OperationMethod<
   PutRawMessageContentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<PutRawMessageContentRequest>,
-  output: __S(5) as any as S.Schema<PutRawMessageContentResponse>,
+  input: PutRawMessageContentRequest,
+  output: PutRawMessageContentResponse,
   errors: [InvalidContentLocation, MessageFrozen, MessageRejected, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -200,14 +216,14 @@ function __c0(j: number): any {
         S.Struct({ bucket: S.String, key: S.String, objectVersion: S.optional(S.String) }),
       ).annotate({ identifier: "S3Reference" });
     case 3:
-      return S.suspend(() => S.Struct({ s3Reference: __S(2) })).annotate({
+      return S.suspend(() => S.Struct({ s3Reference: S3Reference })).annotate({
         identifier: "RawMessageContent",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
           messageId: S.String.pipe(T.HttpLabel("messageId")),
-          content: __S(3),
+          content: RawMessageContent,
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/messages/{messageId}" }),
@@ -225,16 +241,5 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "PutRawMessageContentResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

@@ -6,8 +6,6 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
@@ -15,10 +13,14 @@ export interface CompletionContext {
   triggerCharacter?: string;
   triggerKind: number;
 }
+const CompletionContext = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CompletionContext>;
+
 export interface LspPosition {
   character: number;
   line: number;
 }
+const LspPosition = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<LspPosition>;
+
 export interface CompletionsRequest {
   context?: CompletionContext;
   languageId: string;
@@ -26,6 +28,8 @@ export interface CompletionsRequest {
   position: LspPosition;
   uri: string;
 }
+const CompletionsRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CompletionsRequest>;
+
 export interface CompletionItem {
   detail?: string;
   documentation?: unknown;
@@ -35,23 +39,40 @@ export interface CompletionItem {
   label: string;
   sortText?: string;
 }
+const CompletionItem = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CompletionItem>;
+
 export type CompletionListItemsList = Array<CompletionItem>;
+const CompletionListItemsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CompletionListItemsList>;
+
 export interface CompletionList {
   isIncomplete: boolean;
   items: CompletionListItemsList;
 }
+const CompletionList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CompletionList>;
+
 export interface DidCloseRequest {
   languageId: string;
   pathToProject: string;
   uri: string;
 }
+const DidCloseRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DidCloseRequest>;
+
 export interface DidCloseResponse {}
+const DidCloseResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DidCloseResponse>;
+
 export interface DidOpenRequest {
   languageId: string;
   pathToProject: string;
   uri: string;
 }
+const DidOpenRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DidOpenRequest>;
+
 export interface DidOpenResponse {}
+const DidOpenResponse = DidCloseResponse as any as S.Schema<DidOpenResponse>;
+
 export interface DocumentSymbolsRequest {
   /** Language ID (e.g., python, typescript) */
   languageId: string;
@@ -60,31 +81,60 @@ export interface DocumentSymbolsRequest {
   /** Document URI */
   uri: string;
 }
+const DocumentSymbolsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DocumentSymbolsRequest>;
+
 export interface LspRange {
   end: LspPosition;
   start: LspPosition;
 }
+const LspRange = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<LspRange>;
+
 export interface LspLocation {
   range: LspRange;
   uri: string;
 }
+const LspLocation = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<LspLocation>;
+
 export interface LspSymbol {
   kind: number;
   location: LspLocation;
   name: string;
 }
+const LspSymbol = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<LspSymbol>;
+
 export type DocumentSymbolsResponseBodyList = Array<LspSymbol>;
+const DocumentSymbolsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DocumentSymbolsResponseBodyList>;
+
 export type DocumentSymbolsResponse = DocumentSymbolsResponseBodyList;
+const DocumentSymbolsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DocumentSymbolsResponse>;
+
 export interface StartRequest {
   languageId: string;
   pathToProject: string;
 }
+const StartRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<StartRequest>;
+
 export interface StartResponse {}
+const StartResponse = DidCloseResponse as any as S.Schema<StartResponse>;
+
 export interface StopRequest {
   languageId: string;
   pathToProject: string;
 }
+const StopRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<StopRequest>;
+
 export interface StopResponse {}
+const StopResponse = DidCloseResponse as any as S.Schema<StopResponse>;
+
 export interface WorkspaceSymbolsRequest {
   /** Search query */
   query: string;
@@ -93,8 +143,16 @@ export interface WorkspaceSymbolsRequest {
   /** Path to project */
   pathToProject: string;
 }
+const WorkspaceSymbolsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<WorkspaceSymbolsRequest>;
+
 export type WorkspaceSymbolsResponseBodyList = Array<LspSymbol>;
 export type WorkspaceSymbolsResponse = WorkspaceSymbolsResponseBodyList;
+const WorkspaceSymbolsResponse =
+  DocumentSymbolsResponse as any as S.Schema<WorkspaceSymbolsResponse>;
+
 export type CompletionsError = DaytonaOpError;
 /** Get code completions Get code completion suggestions from the LSP server */
 export const completions: API.OperationMethod<
@@ -103,8 +161,8 @@ export const completions: API.OperationMethod<
   CompletionsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CompletionsRequest>,
-  output: __S(5) as any as S.Schema<CompletionList>,
+  input: CompletionsRequest,
+  output: CompletionList,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -118,8 +176,8 @@ export const didClose: API.OperationMethod<
   DidCloseError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DidCloseRequest>,
-  output: __S(7) as any as S.Schema<DidCloseResponse>,
+  input: DidCloseRequest,
+  output: DidCloseResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -133,8 +191,8 @@ export const didOpen: API.OperationMethod<
   DidOpenError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<DidOpenRequest>,
-  output: __S(7) as any as S.Schema<DidOpenResponse>,
+  input: DidOpenRequest,
+  output: DidOpenResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -148,8 +206,8 @@ export const documentSymbols: API.OperationMethod<
   DocumentSymbolsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DocumentSymbolsRequest>,
-  output: __S(14) as any as S.Schema<DocumentSymbolsResponse>,
+  input: DocumentSymbolsRequest,
+  output: DocumentSymbolsResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -159,8 +217,8 @@ export type StartError = DaytonaOpError;
 /** Start LSP server Start a Language Server Protocol server for the specified language */
 export const start: API.OperationMethod<StartRequest, StartResponse, StartError, DaytonaOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(15) as any as S.Schema<StartRequest>,
-    output: __S(7) as any as S.Schema<StartResponse>,
+    input: StartRequest,
+    output: StartResponse,
     errors: [UnknownDaytonaError],
     protocol: DaytonaProtocol,
     retry: Retry.Retry,
@@ -170,8 +228,8 @@ export type StopError = DaytonaOpError;
 /** Stop LSP server Stop a Language Server Protocol server */
 export const stop: API.OperationMethod<StopRequest, StopResponse, StopError, DaytonaOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(16) as any as S.Schema<StopRequest>,
-    output: __S(7) as any as S.Schema<StopResponse>,
+    input: StopRequest,
+    output: StopResponse,
     errors: [UnknownDaytonaError],
     protocol: DaytonaProtocol,
     retry: Retry.Retry,
@@ -185,8 +243,8 @@ export const workspaceSymbols: API.OperationMethod<
   WorkspaceSymbolsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<WorkspaceSymbolsRequest>,
-  output: __S(14) as any as S.Schema<WorkspaceSymbolsResponse>,
+  input: WorkspaceSymbolsRequest,
+  output: WorkspaceSymbolsResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -212,10 +270,10 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          context: S.optional(__S(0)),
+          context: S.optional(CompletionContext),
           languageId: S.String,
           pathToProject: S.String,
-          position: __S(1),
+          position: LspPosition,
           uri: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/lsp/completions", code: 200 })),
       ).annotate({ identifier: "CompletionsRequest" });
@@ -232,12 +290,12 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "CompletionItem" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(CompletionItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           isIncomplete: S.Boolean,
-          items: __S(4),
+          items: CompletionListItemsList,
         }),
       ).annotate({ identifier: "CompletionList" });
     case 6:
@@ -275,14 +333,14 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          end: __S(1),
-          start: __S(1),
+          end: LspPosition,
+          start: LspPosition,
         }),
       ).annotate({ identifier: "LspRange" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          range: __S(10),
+          range: LspRange,
           uri: S.String,
         }),
       ).annotate({ identifier: "LspLocation" });
@@ -290,14 +348,14 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.Number,
-          location: __S(11),
+          location: LspLocation,
           name: S.String,
         }),
       ).annotate({ identifier: "LspSymbol" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(LspSymbol);
     case 6:
-      return S.suspend(() => __S(13).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => DocumentSymbolsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "DocumentSymbolsResponse",
       });
     case 7:
@@ -326,20 +384,5 @@ function __c2(j: number): any {
           pathToProject: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/lsp/workspacesymbols", code: 200 })),
       ).annotate({ identifier: "WorkspaceSymbolsRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

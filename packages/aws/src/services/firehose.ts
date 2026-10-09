@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://firehose.amazonaws.com/doc/2015-08-04");
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Firehose",
@@ -124,22 +122,38 @@ export type DeliveryStreamType =
   | "MSKAsSource"
   | "DatabaseAsSource"
   | (string & {});
+const DeliveryStreamType = S.String;
+
 export type ThroughputHintInMBs = number;
 export interface DirectPutSourceConfiguration {
   ThroughputHintInMBs: number;
 }
+const DirectPutSourceConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DirectPutSourceConfiguration>;
 export type KinesisStreamARN = string;
 export type RoleARN = string;
 export interface KinesisStreamSourceConfiguration {
   KinesisStreamARN: string;
   RoleARN: string;
 }
+const KinesisStreamSourceConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<KinesisStreamSourceConfiguration>;
 export type AWSKMSKeyARNForSSE = string;
 export type KeyType = "AWS_OWNED_CMK" | "CUSTOMER_MANAGED_CMK" | (string & {});
+const KeyType = S.String;
+
 export interface DeliveryStreamEncryptionConfigurationInput {
   KeyARN?: string;
   KeyType: KeyType;
 }
+const DeliveryStreamEncryptionConfigurationInput = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeliveryStreamEncryptionConfigurationInput>;
 export type BucketARN = string;
 export type Prefix = string;
 export type ErrorOutputPrefix = string;
@@ -149,6 +163,7 @@ export interface BufferingHints {
   SizeInMBs?: number;
   IntervalInSeconds?: number;
 }
+const BufferingHints = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<BufferingHints>;
 export type CompressionFormat =
   | "UNCOMPRESSED"
   | "GZIP"
@@ -156,15 +171,24 @@ export type CompressionFormat =
   | "Snappy"
   | "HADOOP_SNAPPY"
   | (string & {});
+const CompressionFormat = S.String;
+
 export type NoEncryptionConfig = "NoEncryption" | (string & {});
+const NoEncryptionConfig = S.String;
+
 export type AWSKMSKeyARN = string;
 export interface KMSEncryptionConfig {
   AWSKMSKeyARN: string;
 }
+const KMSEncryptionConfig = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<KMSEncryptionConfig>;
 export interface EncryptionConfiguration {
   NoEncryptionConfig?: NoEncryptionConfig;
   KMSEncryptionConfig?: KMSEncryptionConfig;
 }
+const EncryptionConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<EncryptionConfiguration>;
 export type LogGroupName = string;
 export type LogStreamName = string;
 export interface CloudWatchLoggingOptions {
@@ -172,6 +196,10 @@ export interface CloudWatchLoggingOptions {
   LogGroupName?: string;
   LogStreamName?: string;
 }
+const CloudWatchLoggingOptions = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CloudWatchLoggingOptions>;
 export interface S3DestinationConfiguration {
   RoleARN: string;
   BucketARN: string;
@@ -182,6 +210,10 @@ export interface S3DestinationConfiguration {
   EncryptionConfiguration?: EncryptionConfiguration;
   CloudWatchLoggingOptions?: CloudWatchLoggingOptions;
 }
+const S3DestinationConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<S3DestinationConfiguration>;
 export type ProcessorType =
   | "RecordDeAggregation"
   | "Decompression"
@@ -190,6 +222,8 @@ export type ProcessorType =
   | "MetadataExtraction"
   | "AppendDelimiterToRecord"
   | (string & {});
+const ProcessorType = S.String;
+
 export type ProcessorParameterName =
   | "LambdaArn"
   | "NumberOfRetries"
@@ -203,22 +237,34 @@ export type ProcessorParameterName =
   | "CompressionFormat"
   | "DataMessageExtraction"
   | (string & {});
+const ProcessorParameterName = S.String;
+
 export type ProcessorParameterValue = string;
 export interface ProcessorParameter {
   ParameterName: ProcessorParameterName;
   ParameterValue: string;
 }
+const ProcessorParameter = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ProcessorParameter>;
 export type ProcessorParameterList = ProcessorParameter[];
+const ProcessorParameterList = /*@__PURE__*/ __L.at(__c1, 1);
 export interface Processor {
   Type: ProcessorType;
   Parameters?: ProcessorParameter[];
 }
+const Processor = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Processor>;
 export type ProcessorList = Processor[];
+const ProcessorList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface ProcessingConfiguration {
   Enabled?: boolean;
   Processors?: Processor[];
 }
+const ProcessingConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ProcessingConfiguration>;
 export type S3BackupMode = "Disabled" | "Enabled" | (string & {});
+const S3BackupMode = S.String;
+
 export type NonEmptyStringWithoutWhitespace = string;
 export interface SchemaConfiguration {
   RoleARN?: string;
@@ -228,29 +274,43 @@ export interface SchemaConfiguration {
   Region?: string;
   VersionId?: string;
 }
+const SchemaConfiguration = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<SchemaConfiguration>;
 export type NonEmptyString = string;
 export type ColumnToJsonKeyMappings = { [key: string]: string | undefined };
+const ColumnToJsonKeyMappings = /*@__PURE__*/ __L.at(__c1, 6);
 export interface OpenXJsonSerDe {
   ConvertDotsInJsonKeysToUnderscores?: boolean;
   CaseInsensitive?: boolean;
   ColumnToJsonKeyMappings?: { [key: string]: string | undefined };
 }
+const OpenXJsonSerDe = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<OpenXJsonSerDe>;
 export type ListOfNonEmptyStrings = string[];
+const ListOfNonEmptyStrings = /*@__PURE__*/ __L.at(__c2, 0);
 export interface HiveJsonSerDe {
   TimestampFormats?: string[];
 }
+const HiveJsonSerDe = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<HiveJsonSerDe>;
 export interface Deserializer {
   OpenXJsonSerDe?: OpenXJsonSerDe;
   HiveJsonSerDe?: HiveJsonSerDe;
 }
+const Deserializer = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Deserializer>;
 export interface InputFormatConfiguration {
   Deserializer?: Deserializer;
 }
+const InputFormatConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<InputFormatConfiguration>;
 export type BlockSizeBytes = number;
 export type ParquetPageSizeBytes = number;
 export type ParquetCompression = "UNCOMPRESSED" | "GZIP" | "SNAPPY" | (string & {});
+const ParquetCompression = S.String;
+
 export type NonNegativeIntegerObject = number;
 export type ParquetWriterVersion = "V1" | "V2" | (string & {});
+const ParquetWriterVersion = S.String;
+
 export interface ParquetSerDe {
   BlockSizeBytes?: number;
   PageSizeBytes?: number;
@@ -259,12 +319,19 @@ export interface ParquetSerDe {
   MaxPaddingBytes?: number;
   WriterVersion?: ParquetWriterVersion;
 }
+const ParquetSerDe = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ParquetSerDe>;
 export type OrcStripeSizeBytes = number;
 export type OrcRowIndexStride = number;
 export type Proportion = number;
 export type OrcCompression = "NONE" | "ZLIB" | "SNAPPY" | (string & {});
+const OrcCompression = S.String;
+
 export type ListOfNonEmptyStringsWithoutWhitespace = string[];
+const ListOfNonEmptyStringsWithoutWhitespace =
+  ListOfNonEmptyStrings as any as S.Schema<ListOfNonEmptyStringsWithoutWhitespace>;
 export type OrcFormatVersion = "V0_11" | "V0_12" | (string & {});
+const OrcFormatVersion = S.String;
+
 export interface OrcSerDe {
   StripeSizeBytes?: number;
   BlockSizeBytes?: number;
@@ -277,27 +344,42 @@ export interface OrcSerDe {
   DictionaryKeyThreshold?: number;
   FormatVersion?: OrcFormatVersion;
 }
+const OrcSerDe = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<OrcSerDe>;
 export interface Serializer {
   ParquetSerDe?: ParquetSerDe;
   OrcSerDe?: OrcSerDe;
 }
+const Serializer = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Serializer>;
 export interface OutputFormatConfiguration {
   Serializer?: Serializer;
 }
+const OutputFormatConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<OutputFormatConfiguration>;
 export interface DataFormatConversionConfiguration {
   SchemaConfiguration?: SchemaConfiguration;
   InputFormatConfiguration?: InputFormatConfiguration;
   OutputFormatConfiguration?: OutputFormatConfiguration;
   Enabled?: boolean;
 }
+const DataFormatConversionConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DataFormatConversionConfiguration>;
 export type RetryDurationInSeconds = number;
 export interface RetryOptions {
   DurationInSeconds?: number;
 }
+const RetryOptions = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<RetryOptions>;
 export interface DynamicPartitioningConfiguration {
   RetryOptions?: RetryOptions;
   Enabled?: boolean;
 }
+const DynamicPartitioningConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DynamicPartitioningConfiguration>;
 export type FileExtension = string;
 export type CustomTimeZone = string;
 export interface ExtendedS3DestinationConfiguration {
@@ -317,6 +399,10 @@ export interface ExtendedS3DestinationConfiguration {
   FileExtension?: string;
   CustomTimeZone?: string;
 }
+const ExtendedS3DestinationConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ExtendedS3DestinationConfiguration>;
 export type ClusterJDBCURL = string;
 export type DataTableName = string;
 export type DataTableColumns = string;
@@ -326,19 +412,27 @@ export interface CopyCommand {
   DataTableColumns?: string;
   CopyOptions?: string;
 }
+const CopyCommand = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<CopyCommand>;
 export type Username = string | redacted.Redacted<string>;
 export type Password = string | redacted.Redacted<string>;
 export type RedshiftRetryDurationInSeconds = number;
 export interface RedshiftRetryOptions {
   DurationInSeconds?: number;
 }
+const RedshiftRetryOptions = RetryOptions as any as S.Schema<RedshiftRetryOptions>;
 export type RedshiftS3BackupMode = "Disabled" | "Enabled" | (string & {});
+const RedshiftS3BackupMode = S.String;
+
 export type SecretARN = string;
 export interface SecretsManagerConfiguration {
   SecretARN?: string;
   RoleARN?: string;
   Enabled: boolean;
 }
+const SecretsManagerConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<SecretsManagerConfiguration>;
 export interface RedshiftDestinationConfiguration {
   RoleARN: string;
   ClusterJDBCURL: string;
@@ -353,6 +447,10 @@ export interface RedshiftDestinationConfiguration {
   CloudWatchLoggingOptions?: CloudWatchLoggingOptions;
   SecretsManagerConfiguration?: SecretsManagerConfiguration;
 }
+const RedshiftDestinationConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<RedshiftDestinationConfiguration>;
 export type ElasticsearchDomainARN = string;
 export type ElasticsearchClusterEndpoint = string;
 export type ElasticsearchIndexName = string;
@@ -364,28 +462,46 @@ export type ElasticsearchIndexRotationPeriod =
   | "OneWeek"
   | "OneMonth"
   | (string & {});
+const ElasticsearchIndexRotationPeriod = S.String;
+
 export type ElasticsearchBufferingIntervalInSeconds = number;
 export type ElasticsearchBufferingSizeInMBs = number;
 export interface ElasticsearchBufferingHints {
   IntervalInSeconds?: number;
   SizeInMBs?: number;
 }
+const ElasticsearchBufferingHints = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ElasticsearchBufferingHints>;
 export type ElasticsearchRetryDurationInSeconds = number;
 export interface ElasticsearchRetryOptions {
   DurationInSeconds?: number;
 }
+const ElasticsearchRetryOptions = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ElasticsearchRetryOptions>;
 export type ElasticsearchS3BackupMode = "FailedDocumentsOnly" | "AllDocuments" | (string & {});
+const ElasticsearchS3BackupMode = S.String;
+
 export type SubnetIdList = string[];
+const SubnetIdList = ListOfNonEmptyStrings as any as S.Schema<SubnetIdList>;
 export type SecurityGroupIdList = string[];
+const SecurityGroupIdList = ListOfNonEmptyStrings as any as S.Schema<SecurityGroupIdList>;
 export interface VpcConfiguration {
   SubnetIds: string[];
   RoleARN: string;
   SecurityGroupIds: string[];
 }
+const VpcConfiguration = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<VpcConfiguration>;
 export type DefaultDocumentIdFormat = "FIREHOSE_DEFAULT" | "NO_DOCUMENT_ID" | (string & {});
+const DefaultDocumentIdFormat = S.String;
+
 export interface DocumentIdOptions {
   DefaultDocumentIdFormat: DefaultDocumentIdFormat;
 }
+const DocumentIdOptions = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<DocumentIdOptions>;
 export interface ElasticsearchDestinationConfiguration {
   RoleARN: string;
   DomainARN?: string;
@@ -402,6 +518,10 @@ export interface ElasticsearchDestinationConfiguration {
   VpcConfiguration?: VpcConfiguration;
   DocumentIdOptions?: DocumentIdOptions;
 }
+const ElasticsearchDestinationConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ElasticsearchDestinationConfiguration>;
 export type AmazonopensearchserviceDomainARN = string;
 export type AmazonopensearchserviceClusterEndpoint = string;
 export type AmazonopensearchserviceIndexName = string;
@@ -413,20 +533,28 @@ export type AmazonopensearchserviceIndexRotationPeriod =
   | "OneWeek"
   | "OneMonth"
   | (string & {});
+const AmazonopensearchserviceIndexRotationPeriod = S.String;
+
 export type AmazonopensearchserviceBufferingIntervalInSeconds = number;
 export type AmazonopensearchserviceBufferingSizeInMBs = number;
 export interface AmazonopensearchserviceBufferingHints {
   IntervalInSeconds?: number;
   SizeInMBs?: number;
 }
+const AmazonopensearchserviceBufferingHints =
+  ElasticsearchBufferingHints as any as S.Schema<AmazonopensearchserviceBufferingHints>;
 export type AmazonopensearchserviceRetryDurationInSeconds = number;
 export interface AmazonopensearchserviceRetryOptions {
   DurationInSeconds?: number;
 }
+const AmazonopensearchserviceRetryOptions =
+  ElasticsearchRetryOptions as any as S.Schema<AmazonopensearchserviceRetryOptions>;
 export type AmazonopensearchserviceS3BackupMode =
   | "FailedDocumentsOnly"
   | "AllDocuments"
   | (string & {});
+const AmazonopensearchserviceS3BackupMode = S.String;
+
 export interface AmazonopensearchserviceDestinationConfiguration {
   RoleARN: string;
   DomainARN?: string;
@@ -443,21 +571,31 @@ export interface AmazonopensearchserviceDestinationConfiguration {
   VpcConfiguration?: VpcConfiguration;
   DocumentIdOptions?: DocumentIdOptions;
 }
+const AmazonopensearchserviceDestinationConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<AmazonopensearchserviceDestinationConfiguration>;
 export type HECEndpoint = string;
 export type HECEndpointType = "Raw" | "Event" | (string & {});
+const HECEndpointType = S.String;
+
 export type HECToken = string;
 export type HECAcknowledgmentTimeoutInSeconds = number;
 export type SplunkRetryDurationInSeconds = number;
 export interface SplunkRetryOptions {
   DurationInSeconds?: number;
 }
+const SplunkRetryOptions = RetryOptions as any as S.Schema<SplunkRetryOptions>;
 export type SplunkS3BackupMode = "FailedEventsOnly" | "AllEvents" | (string & {});
+const SplunkS3BackupMode = S.String;
+
 export type SplunkBufferingIntervalInSeconds = number;
 export type SplunkBufferingSizeInMBs = number;
 export interface SplunkBufferingHints {
   IntervalInSeconds?: number;
   SizeInMBs?: number;
 }
+const SplunkBufferingHints = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<SplunkBufferingHints>;
 export interface SplunkDestinationConfiguration {
   HECEndpoint: string;
   HECEndpointType: HECEndpointType;
@@ -471,6 +609,10 @@ export interface SplunkDestinationConfiguration {
   BufferingHints?: SplunkBufferingHints;
   SecretsManagerConfiguration?: SecretsManagerConfiguration;
 }
+const SplunkDestinationConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<SplunkDestinationConfiguration>;
 export type HttpEndpointUrl = string | redacted.Redacted<string>;
 export type HttpEndpointName = string;
 export type HttpEndpointAccessKey = string | redacted.Redacted<string>;
@@ -479,29 +621,51 @@ export interface HttpEndpointConfiguration {
   Name?: string;
   AccessKey?: string | redacted.Redacted<string>;
 }
+const HttpEndpointConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<HttpEndpointConfiguration>;
 export type HttpEndpointBufferingSizeInMBs = number;
 export type HttpEndpointBufferingIntervalInSeconds = number;
 export interface HttpEndpointBufferingHints {
   SizeInMBs?: number;
   IntervalInSeconds?: number;
 }
+const HttpEndpointBufferingHints = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<HttpEndpointBufferingHints>;
 export type ContentEncoding = "NONE" | "GZIP" | (string & {});
+const ContentEncoding = S.String;
+
 export type HttpEndpointAttributeName = string | redacted.Redacted<string>;
 export type HttpEndpointAttributeValue = string | redacted.Redacted<string>;
 export interface HttpEndpointCommonAttribute {
   AttributeName: string | redacted.Redacted<string>;
   AttributeValue: string | redacted.Redacted<string>;
 }
+const HttpEndpointCommonAttribute = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<HttpEndpointCommonAttribute>;
 export type HttpEndpointCommonAttributesList = HttpEndpointCommonAttribute[];
+const HttpEndpointCommonAttributesList = /*@__PURE__*/ __L.at(__c5, 2);
 export interface HttpEndpointRequestConfiguration {
   ContentEncoding?: ContentEncoding;
   CommonAttributes?: HttpEndpointCommonAttribute[];
 }
+const HttpEndpointRequestConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<HttpEndpointRequestConfiguration>;
 export type HttpEndpointRetryDurationInSeconds = number;
 export interface HttpEndpointRetryOptions {
   DurationInSeconds?: number;
 }
+const HttpEndpointRetryOptions = RetryOptions as any as S.Schema<HttpEndpointRetryOptions>;
 export type HttpEndpointS3BackupMode = "FailedDataOnly" | "AllData" | (string & {});
+const HttpEndpointS3BackupMode = S.String;
+
 export interface HttpEndpointDestinationConfiguration {
   EndpointConfiguration: HttpEndpointConfiguration;
   BufferingHints?: HttpEndpointBufferingHints;
@@ -514,13 +678,19 @@ export interface HttpEndpointDestinationConfiguration {
   S3Configuration: S3DestinationConfiguration;
   SecretsManagerConfiguration?: SecretsManagerConfiguration;
 }
+const HttpEndpointDestinationConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<HttpEndpointDestinationConfiguration>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   Key: string;
   Value?: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<Tag>;
 export type TagDeliveryStreamInputTagList = Tag[];
+const TagDeliveryStreamInputTagList = /*@__PURE__*/ __L.at(__c5, 6);
 export type AmazonOpenSearchServerlessCollectionEndpoint = string;
 export type AmazonOpenSearchServerlessIndexName = string;
 export type AmazonOpenSearchServerlessBufferingIntervalInSeconds = number;
@@ -529,14 +699,20 @@ export interface AmazonOpenSearchServerlessBufferingHints {
   IntervalInSeconds?: number;
   SizeInMBs?: number;
 }
+const AmazonOpenSearchServerlessBufferingHints =
+  ElasticsearchBufferingHints as any as S.Schema<AmazonOpenSearchServerlessBufferingHints>;
 export type AmazonOpenSearchServerlessRetryDurationInSeconds = number;
 export interface AmazonOpenSearchServerlessRetryOptions {
   DurationInSeconds?: number;
 }
+const AmazonOpenSearchServerlessRetryOptions =
+  ElasticsearchRetryOptions as any as S.Schema<AmazonOpenSearchServerlessRetryOptions>;
 export type AmazonOpenSearchServerlessS3BackupMode =
   | "FailedDocumentsOnly"
   | "AllDocuments"
   | (string & {});
+const AmazonOpenSearchServerlessS3BackupMode = S.String;
+
 export interface AmazonOpenSearchServerlessDestinationConfiguration {
   RoleARN: string;
   CollectionEndpoint?: string;
@@ -549,13 +725,23 @@ export interface AmazonOpenSearchServerlessDestinationConfiguration {
   CloudWatchLoggingOptions?: CloudWatchLoggingOptions;
   VpcConfiguration?: VpcConfiguration;
 }
+const AmazonOpenSearchServerlessDestinationConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<AmazonOpenSearchServerlessDestinationConfiguration>;
 export type MSKClusterARN = string;
 export type TopicName = string;
 export type Connectivity = "PUBLIC" | "PRIVATE" | (string & {});
+const Connectivity = S.String;
+
 export interface AuthenticationConfiguration {
   RoleARN: string;
   Connectivity: Connectivity;
 }
+const AuthenticationConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<AuthenticationConfiguration>;
 export type ReadFromTimestamp = Date;
 export interface MSKSourceConfiguration {
   MSKClusterARN: string;
@@ -563,6 +749,10 @@ export interface MSKSourceConfiguration {
   AuthenticationConfiguration: AuthenticationConfiguration;
   ReadFromTimestamp?: Date;
 }
+const MSKSourceConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<MSKSourceConfiguration>;
 export type SnowflakeAccountUrl = string | redacted.Redacted<string>;
 export type SnowflakePrivateKey = string | redacted.Redacted<string>;
 export type SnowflakeKeyPassphrase = string | redacted.Redacted<string>;
@@ -575,28 +765,42 @@ export interface SnowflakeRoleConfiguration {
   Enabled?: boolean;
   SnowflakeRole?: string | redacted.Redacted<string>;
 }
+const SnowflakeRoleConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<SnowflakeRoleConfiguration>;
 export type SnowflakeDataLoadingOption =
   | "JSON_MAPPING"
   | "VARIANT_CONTENT_MAPPING"
   | "VARIANT_CONTENT_AND_METADATA_MAPPING"
   | (string & {});
+const SnowflakeDataLoadingOption = S.String;
+
 export type SnowflakeMetaDataColumnName = string | redacted.Redacted<string>;
 export type SnowflakeContentColumnName = string | redacted.Redacted<string>;
 export type SnowflakePrivateLinkVpceId = string | redacted.Redacted<string>;
 export interface SnowflakeVpcConfiguration {
   PrivateLinkVpceId: string | redacted.Redacted<string>;
 }
+const SnowflakeVpcConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<SnowflakeVpcConfiguration>;
 export type SnowflakeRetryDurationInSeconds = number;
 export interface SnowflakeRetryOptions {
   DurationInSeconds?: number;
 }
+const SnowflakeRetryOptions = RetryOptions as any as S.Schema<SnowflakeRetryOptions>;
 export type SnowflakeS3BackupMode = "FailedDataOnly" | "AllData" | (string & {});
+const SnowflakeS3BackupMode = S.String;
+
 export type SnowflakeBufferingSizeInMBs = number;
 export type SnowflakeBufferingIntervalInSeconds = number;
 export interface SnowflakeBufferingHints {
   SizeInMBs?: number;
   IntervalInSeconds?: number;
 }
+const SnowflakeBufferingHints = BufferingHints as any as S.Schema<SnowflakeBufferingHints>;
 export interface SnowflakeDestinationConfiguration {
   AccountUrl: string | redacted.Redacted<string>;
   PrivateKey?: string | redacted.Redacted<string>;
@@ -619,14 +823,21 @@ export interface SnowflakeDestinationConfiguration {
   SecretsManagerConfiguration?: SecretsManagerConfiguration;
   BufferingHints?: SnowflakeBufferingHints;
 }
+const SnowflakeDestinationConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<SnowflakeDestinationConfiguration>;
 export type StringWithLettersDigitsUnderscoresDots = string;
 export interface PartitionField {
   SourceName: string;
 }
+const PartitionField = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<PartitionField>;
 export type PartitionFields = PartitionField[];
+const PartitionFields = /*@__PURE__*/ __L.at(__c6, 6);
 export interface PartitionSpec {
   Identity?: PartitionField[];
 }
+const PartitionSpec = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<PartitionSpec>;
 export interface DestinationTableConfiguration {
   DestinationTableName: string;
   DestinationDatabaseName: string;
@@ -634,20 +845,34 @@ export interface DestinationTableConfiguration {
   PartitionSpec?: PartitionSpec;
   S3ErrorOutputPrefix?: string;
 }
+const DestinationTableConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DestinationTableConfiguration>;
 export type DestinationTableConfigurationList = DestinationTableConfiguration[];
+const DestinationTableConfigurationList = /*@__PURE__*/ __L.at(__c7, 1);
 export interface SchemaEvolutionConfiguration {
   Enabled: boolean;
 }
+const SchemaEvolutionConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<SchemaEvolutionConfiguration>;
 export interface TableCreationConfiguration {
   Enabled: boolean;
 }
+const TableCreationConfiguration =
+  SchemaEvolutionConfiguration as any as S.Schema<TableCreationConfiguration>;
 export type IcebergS3BackupMode = "FailedDataOnly" | "AllData" | (string & {});
+const IcebergS3BackupMode = S.String;
+
 export type GlueDataCatalogARN = string;
 export type WarehouseLocation = string;
 export interface CatalogConfiguration {
   CatalogARN?: string;
   WarehouseLocation?: string;
 }
+const CatalogConfiguration = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<CatalogConfiguration>;
 export interface IcebergDestinationConfiguration {
   DestinationTableConfigurationList?: DestinationTableConfiguration[];
   SchemaEvolutionConfiguration?: SchemaEvolutionConfiguration;
@@ -662,36 +887,60 @@ export interface IcebergDestinationConfiguration {
   CatalogConfiguration: CatalogConfiguration;
   S3Configuration: S3DestinationConfiguration;
 }
+const IcebergDestinationConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<IcebergDestinationConfiguration>;
 export type DatabaseType = "MySQL" | "PostgreSQL" | (string & {});
+const DatabaseType = S.String;
+
 export type DatabaseEndpoint = string;
 export type DatabasePort = number;
 export type SSLMode = "Disabled" | "Enabled" | (string & {});
+const SSLMode = S.String;
+
 export type DatabaseName = string;
 export type DatabaseIncludeOrExcludeList = string[];
+const DatabaseIncludeOrExcludeList =
+  ListOfNonEmptyStrings as any as S.Schema<DatabaseIncludeOrExcludeList>;
 export interface DatabaseList {
   Include?: string[];
   Exclude?: string[];
 }
+const DatabaseList = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<DatabaseList>;
 export type DatabaseTableName = string;
 export type DatabaseTableIncludeOrExcludeList = string[];
 export interface DatabaseTableList {
   Include?: string[];
   Exclude?: string[];
 }
+const DatabaseTableList = DatabaseList as any as S.Schema<DatabaseTableList>;
 export type DatabaseColumnName = string;
 export type DatabaseColumnIncludeOrExcludeList = string[];
+const DatabaseColumnIncludeOrExcludeList =
+  ListOfNonEmptyStrings as any as S.Schema<DatabaseColumnIncludeOrExcludeList>;
 export interface DatabaseColumnList {
   Include?: string[];
   Exclude?: string[];
 }
+const DatabaseColumnList = DatabaseList as any as S.Schema<DatabaseColumnList>;
 export type DatabaseSurrogateKeyList = string[];
+const DatabaseSurrogateKeyList = ListOfNonEmptyStrings as any as S.Schema<DatabaseSurrogateKeyList>;
 export interface DatabaseSourceAuthenticationConfiguration {
   SecretsManagerConfiguration: SecretsManagerConfiguration;
 }
+const DatabaseSourceAuthenticationConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DatabaseSourceAuthenticationConfiguration>;
 export type VpcEndpointServiceName = string;
 export interface DatabaseSourceVPCConfiguration {
   VpcEndpointServiceName: string;
 }
+const DatabaseSourceVPCConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<DatabaseSourceVPCConfiguration>;
 export interface DatabaseSourceConfiguration {
   Type: DatabaseType;
   Endpoint: string;
@@ -705,6 +954,10 @@ export interface DatabaseSourceConfiguration {
   DatabaseSourceAuthenticationConfiguration: DatabaseSourceAuthenticationConfiguration;
   DatabaseSourceVPCConfiguration: DatabaseSourceVPCConfiguration;
 }
+const DatabaseSourceConfiguration = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DatabaseSourceConfiguration>;
 export interface CreateDeliveryStreamInput {
   DeliveryStreamName: string;
   DeliveryStreamType?: DeliveryStreamType;
@@ -725,15 +978,31 @@ export interface CreateDeliveryStreamInput {
   IcebergDestinationConfiguration?: IcebergDestinationConfiguration;
   DatabaseSourceConfiguration?: DatabaseSourceConfiguration;
 }
+const CreateDeliveryStreamInput = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<CreateDeliveryStreamInput>;
 export type DeliveryStreamARN = string;
 export interface CreateDeliveryStreamOutput {
   DeliveryStreamARN?: string;
 }
+const CreateDeliveryStreamOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<CreateDeliveryStreamOutput>;
 export interface DeleteDeliveryStreamInput {
   DeliveryStreamName: string;
   AllowForceDelete?: boolean;
 }
+const DeleteDeliveryStreamInput = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DeleteDeliveryStreamInput>;
 export interface DeleteDeliveryStreamOutput {}
+const DeleteDeliveryStreamOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<DeleteDeliveryStreamOutput>;
 export type DescribeDeliveryStreamInputLimit = number;
 export type DestinationId = string;
 export interface DescribeDeliveryStreamInput {
@@ -741,6 +1010,10 @@ export interface DescribeDeliveryStreamInput {
   Limit?: number;
   ExclusiveStartDestinationId?: string;
 }
+const DescribeDeliveryStreamInput = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DescribeDeliveryStreamInput>;
 export type DeliveryStreamStatus =
   | "CREATING"
   | "CREATING_FAILED"
@@ -748,6 +1021,8 @@ export type DeliveryStreamStatus =
   | "DELETING_FAILED"
   | "ACTIVE"
   | (string & {});
+const DeliveryStreamStatus = S.String;
+
 export type DeliveryStreamFailureType =
   | "VPC_ENDPOINT_SERVICE_NAME_NOT_FOUND"
   | "VPC_INTERFACE_ENDPOINT_SERVICE_ACCESS_DENIED"
@@ -767,10 +1042,13 @@ export type DeliveryStreamFailureType =
   | "SECURITY_GROUP_ACCESS_DENIED"
   | "UNKNOWN_ERROR"
   | (string & {});
+const DeliveryStreamFailureType = S.String;
+
 export interface FailureDescription {
   Type: DeliveryStreamFailureType;
   Details: string;
 }
+const FailureDescription = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<FailureDescription>;
 export type DeliveryStreamEncryptionStatus =
   | "ENABLED"
   | "ENABLING"
@@ -779,22 +1057,36 @@ export type DeliveryStreamEncryptionStatus =
   | "DISABLING"
   | "DISABLING_FAILED"
   | (string & {});
+const DeliveryStreamEncryptionStatus = S.String;
+
 export interface DeliveryStreamEncryptionConfiguration {
   KeyARN?: string;
   KeyType?: KeyType;
   Status?: DeliveryStreamEncryptionStatus;
   FailureDescription?: FailureDescription;
 }
+const DeliveryStreamEncryptionConfiguration = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DeliveryStreamEncryptionConfiguration>;
 export type DeliveryStreamVersionId = string;
 export interface DirectPutSourceDescription {
   ThroughputHintInMBs?: number;
 }
+const DirectPutSourceDescription = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<DirectPutSourceDescription>;
 export type DeliveryStartTimestamp = Date;
 export interface KinesisStreamSourceDescription {
   KinesisStreamARN?: string;
   RoleARN?: string;
   DeliveryStartTimestamp?: Date;
 }
+const KinesisStreamSourceDescription = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<KinesisStreamSourceDescription>;
 export interface MSKSourceDescription {
   MSKClusterARN?: string;
   TopicName?: string;
@@ -802,8 +1094,13 @@ export interface MSKSourceDescription {
   DeliveryStartTimestamp?: Date;
   ReadFromTimestamp?: Date;
 }
+const MSKSourceDescription = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<MSKSourceDescription>;
 export type SnapshotRequestedBy = "USER" | "FIREHOSE" | (string & {});
+const SnapshotRequestedBy = S.String;
+
 export type SnapshotStatus = "IN_PROGRESS" | "COMPLETE" | "SUSPENDED" | (string & {});
+const SnapshotStatus = S.String;
+
 export interface DatabaseSnapshotInfo {
   Id: string;
   Table: string;
@@ -812,7 +1109,9 @@ export interface DatabaseSnapshotInfo {
   Status: SnapshotStatus;
   FailureDescription?: FailureDescription;
 }
+const DatabaseSnapshotInfo = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<DatabaseSnapshotInfo>;
 export type DatabaseSnapshotInfoList = DatabaseSnapshotInfo[];
+const DatabaseSnapshotInfoList = /*@__PURE__*/ __L.at(__c9, 4);
 export interface DatabaseSourceDescription {
   Type?: DatabaseType;
   Endpoint?: string;
@@ -827,12 +1126,17 @@ export interface DatabaseSourceDescription {
   DatabaseSourceAuthenticationConfiguration?: DatabaseSourceAuthenticationConfiguration;
   DatabaseSourceVPCConfiguration?: DatabaseSourceVPCConfiguration;
 }
+const DatabaseSourceDescription = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DatabaseSourceDescription>;
 export interface SourceDescription {
   DirectPutSourceDescription?: DirectPutSourceDescription;
   KinesisStreamSourceDescription?: KinesisStreamSourceDescription;
   MSKSourceDescription?: MSKSourceDescription;
   DatabaseSourceDescription?: DatabaseSourceDescription;
 }
+const SourceDescription = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<SourceDescription>;
 export interface S3DestinationDescription {
   RoleARN: string;
   BucketARN: string;
@@ -843,6 +1147,10 @@ export interface S3DestinationDescription {
   EncryptionConfiguration: EncryptionConfiguration;
   CloudWatchLoggingOptions?: CloudWatchLoggingOptions;
 }
+const S3DestinationDescription = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<S3DestinationDescription>;
 export interface ExtendedS3DestinationDescription {
   RoleARN: string;
   BucketARN: string;
@@ -860,6 +1168,10 @@ export interface ExtendedS3DestinationDescription {
   FileExtension?: string;
   CustomTimeZone?: string;
 }
+const ExtendedS3DestinationDescription = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ExtendedS3DestinationDescription>;
 export interface RedshiftDestinationDescription {
   RoleARN: string;
   ClusterJDBCURL: string;
@@ -873,12 +1185,20 @@ export interface RedshiftDestinationDescription {
   CloudWatchLoggingOptions?: CloudWatchLoggingOptions;
   SecretsManagerConfiguration?: SecretsManagerConfiguration;
 }
+const RedshiftDestinationDescription = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<RedshiftDestinationDescription>;
 export interface VpcConfigurationDescription {
   SubnetIds: string[];
   RoleARN: string;
   SecurityGroupIds: string[];
   VpcId: string;
 }
+const VpcConfigurationDescription = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<VpcConfigurationDescription>;
 export interface ElasticsearchDestinationDescription {
   RoleARN?: string;
   DomainARN?: string;
@@ -895,6 +1215,10 @@ export interface ElasticsearchDestinationDescription {
   VpcConfigurationDescription?: VpcConfigurationDescription;
   DocumentIdOptions?: DocumentIdOptions;
 }
+const ElasticsearchDestinationDescription = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ElasticsearchDestinationDescription>;
 export interface AmazonopensearchserviceDestinationDescription {
   RoleARN?: string;
   DomainARN?: string;
@@ -911,6 +1235,10 @@ export interface AmazonopensearchserviceDestinationDescription {
   VpcConfigurationDescription?: VpcConfigurationDescription;
   DocumentIdOptions?: DocumentIdOptions;
 }
+const AmazonopensearchserviceDestinationDescription = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<AmazonopensearchserviceDestinationDescription>;
 export interface SplunkDestinationDescription {
   HECEndpoint?: string;
   HECEndpointType?: HECEndpointType;
@@ -924,10 +1252,18 @@ export interface SplunkDestinationDescription {
   BufferingHints?: SplunkBufferingHints;
   SecretsManagerConfiguration?: SecretsManagerConfiguration;
 }
+const SplunkDestinationDescription = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<SplunkDestinationDescription>;
 export interface HttpEndpointDescription {
   Url?: string | redacted.Redacted<string>;
   Name?: string;
 }
+const HttpEndpointDescription = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<HttpEndpointDescription>;
 export interface HttpEndpointDestinationDescription {
   EndpointConfiguration?: HttpEndpointDescription;
   BufferingHints?: HttpEndpointBufferingHints;
@@ -940,6 +1276,10 @@ export interface HttpEndpointDestinationDescription {
   S3DestinationDescription?: S3DestinationDescription;
   SecretsManagerConfiguration?: SecretsManagerConfiguration;
 }
+const HttpEndpointDestinationDescription = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<HttpEndpointDestinationDescription>;
 export interface SnowflakeDestinationDescription {
   AccountUrl?: string | redacted.Redacted<string>;
   User?: string | redacted.Redacted<string>;
@@ -960,6 +1300,10 @@ export interface SnowflakeDestinationDescription {
   SecretsManagerConfiguration?: SecretsManagerConfiguration;
   BufferingHints?: SnowflakeBufferingHints;
 }
+const SnowflakeDestinationDescription = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<SnowflakeDestinationDescription>;
 export interface AmazonOpenSearchServerlessDestinationDescription {
   RoleARN?: string;
   CollectionEndpoint?: string;
@@ -972,6 +1316,10 @@ export interface AmazonOpenSearchServerlessDestinationDescription {
   CloudWatchLoggingOptions?: CloudWatchLoggingOptions;
   VpcConfigurationDescription?: VpcConfigurationDescription;
 }
+const AmazonOpenSearchServerlessDestinationDescription = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<AmazonOpenSearchServerlessDestinationDescription>;
 export interface IcebergDestinationDescription {
   DestinationTableConfigurationList?: DestinationTableConfiguration[];
   SchemaEvolutionConfiguration?: SchemaEvolutionConfiguration;
@@ -986,6 +1334,10 @@ export interface IcebergDestinationDescription {
   CatalogConfiguration?: CatalogConfiguration;
   S3DestinationDescription?: S3DestinationDescription;
 }
+const IcebergDestinationDescription = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<IcebergDestinationDescription>;
 export interface DestinationDescription {
   DestinationId: string;
   S3DestinationDescription?: S3DestinationDescription;
@@ -999,7 +1351,12 @@ export interface DestinationDescription {
   AmazonOpenSearchServerlessDestinationDescription?: AmazonOpenSearchServerlessDestinationDescription;
   IcebergDestinationDescription?: IcebergDestinationDescription;
 }
+const DestinationDescription = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<DestinationDescription>;
 export type DestinationDescriptionList = DestinationDescription[];
+const DestinationDescriptionList = /*@__PURE__*/ __L.at(__c11, 4);
 export interface DeliveryStreamDescription {
   DeliveryStreamName: string;
   DeliveryStreamARN: string;
@@ -1014,49 +1371,81 @@ export interface DeliveryStreamDescription {
   Destinations: DestinationDescription[];
   HasMoreDestinations: boolean;
 }
+const DeliveryStreamDescription = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<DeliveryStreamDescription>;
 export interface DescribeDeliveryStreamOutput {
   DeliveryStreamDescription: DeliveryStreamDescription;
 }
+const DescribeDeliveryStreamOutput = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<DescribeDeliveryStreamOutput>;
 export type ListDeliveryStreamsInputLimit = number;
 export interface ListDeliveryStreamsInput {
   Limit?: number;
   DeliveryStreamType?: DeliveryStreamType;
   ExclusiveStartDeliveryStreamName?: string;
 }
+const ListDeliveryStreamsInput = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ListDeliveryStreamsInput>;
 export type DeliveryStreamNameList = string[];
+const DeliveryStreamNameList = ListOfNonEmptyStrings as any as S.Schema<DeliveryStreamNameList>;
 export interface ListDeliveryStreamsOutput {
   DeliveryStreamNames: string[];
   HasMoreDeliveryStreams: boolean;
 }
+const ListDeliveryStreamsOutput = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ListDeliveryStreamsOutput>;
 export type ListTagsForDeliveryStreamInputLimit = number;
 export interface ListTagsForDeliveryStreamInput {
   DeliveryStreamName: string;
   ExclusiveStartTagKey?: string;
   Limit?: number;
 }
+const ListTagsForDeliveryStreamInput = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ListTagsForDeliveryStreamInput>;
 export type ListTagsForDeliveryStreamOutputTagList = Tag[];
+const ListTagsForDeliveryStreamOutputTagList =
+  TagDeliveryStreamInputTagList as any as S.Schema<ListTagsForDeliveryStreamOutputTagList>;
 export interface ListTagsForDeliveryStreamOutput {
   Tags: Tag[];
   HasMoreTags: boolean;
 }
+const ListTagsForDeliveryStreamOutput = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ListTagsForDeliveryStreamOutput>;
 export type Data = Uint8Array;
 export interface Record {
   Data: Uint8Array;
 }
+const Record = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<Record>;
 export interface PutRecordInput {
   DeliveryStreamName: string;
   Record: Record;
 }
+const PutRecordInput = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<PutRecordInput>;
 export type PutResponseRecordId = string;
 export interface PutRecordOutput {
   RecordId: string;
   Encrypted?: boolean;
 }
+const PutRecordOutput = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<PutRecordOutput>;
 export type PutRecordBatchRequestEntryList = Record[];
+const PutRecordBatchRequestEntryList = /*@__PURE__*/ __L.at(__c12, 6);
 export interface PutRecordBatchInput {
   DeliveryStreamName: string;
   Records: Record[];
 }
+const PutRecordBatchInput = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<PutRecordBatchInput>;
 export type ErrorCode = string;
 export type ErrorMessage = string;
 export interface PutRecordBatchResponseEntry {
@@ -1064,32 +1453,68 @@ export interface PutRecordBatchResponseEntry {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
+const PutRecordBatchResponseEntry = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<PutRecordBatchResponseEntry>;
 export type PutRecordBatchResponseEntryList = PutRecordBatchResponseEntry[];
+const PutRecordBatchResponseEntryList = /*@__PURE__*/ __L.at(__c13, 1);
 export interface PutRecordBatchOutput {
   FailedPutCount: number;
   Encrypted?: boolean;
   RequestResponses: PutRecordBatchResponseEntry[];
 }
+const PutRecordBatchOutput = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<PutRecordBatchOutput>;
 export interface StartDeliveryStreamEncryptionInput {
   DeliveryStreamName: string;
   DeliveryStreamEncryptionConfigurationInput?: DeliveryStreamEncryptionConfigurationInput;
 }
+const StartDeliveryStreamEncryptionInput = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<StartDeliveryStreamEncryptionInput>;
 export interface StartDeliveryStreamEncryptionOutput {}
+const StartDeliveryStreamEncryptionOutput =
+  DeleteDeliveryStreamOutput as any as S.Schema<StartDeliveryStreamEncryptionOutput>;
 export interface StopDeliveryStreamEncryptionInput {
   DeliveryStreamName: string;
 }
+const StopDeliveryStreamEncryptionInput = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<StopDeliveryStreamEncryptionInput>;
 export interface StopDeliveryStreamEncryptionOutput {}
+const StopDeliveryStreamEncryptionOutput =
+  DeleteDeliveryStreamOutput as any as S.Schema<StopDeliveryStreamEncryptionOutput>;
 export interface TagDeliveryStreamInput {
   DeliveryStreamName: string;
   Tags: Tag[];
 }
+const TagDeliveryStreamInput = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<TagDeliveryStreamInput>;
 export interface TagDeliveryStreamOutput {}
+const TagDeliveryStreamOutput = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<TagDeliveryStreamOutput>;
 export type TagKeyList = string[];
+const TagKeyList = ListOfNonEmptyStrings as any as S.Schema<TagKeyList>;
 export interface UntagDeliveryStreamInput {
   DeliveryStreamName: string;
   TagKeys: string[];
 }
+const UntagDeliveryStreamInput = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<UntagDeliveryStreamInput>;
 export interface UntagDeliveryStreamOutput {}
+const UntagDeliveryStreamOutput =
+  DeleteDeliveryStreamOutput as any as S.Schema<UntagDeliveryStreamOutput>;
 export interface S3DestinationUpdate {
   RoleARN?: string;
   BucketARN?: string;
@@ -1100,6 +1525,7 @@ export interface S3DestinationUpdate {
   EncryptionConfiguration?: EncryptionConfiguration;
   CloudWatchLoggingOptions?: CloudWatchLoggingOptions;
 }
+const S3DestinationUpdate = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<S3DestinationUpdate>;
 export interface ExtendedS3DestinationUpdate {
   RoleARN?: string;
   BucketARN?: string;
@@ -1117,6 +1543,10 @@ export interface ExtendedS3DestinationUpdate {
   FileExtension?: string;
   CustomTimeZone?: string;
 }
+const ExtendedS3DestinationUpdate = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ExtendedS3DestinationUpdate>;
 export interface RedshiftDestinationUpdate {
   RoleARN?: string;
   ClusterJDBCURL?: string;
@@ -1131,6 +1561,10 @@ export interface RedshiftDestinationUpdate {
   CloudWatchLoggingOptions?: CloudWatchLoggingOptions;
   SecretsManagerConfiguration?: SecretsManagerConfiguration;
 }
+const RedshiftDestinationUpdate = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<RedshiftDestinationUpdate>;
 export interface ElasticsearchDestinationUpdate {
   RoleARN?: string;
   DomainARN?: string;
@@ -1145,6 +1579,10 @@ export interface ElasticsearchDestinationUpdate {
   CloudWatchLoggingOptions?: CloudWatchLoggingOptions;
   DocumentIdOptions?: DocumentIdOptions;
 }
+const ElasticsearchDestinationUpdate = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ElasticsearchDestinationUpdate>;
 export interface AmazonopensearchserviceDestinationUpdate {
   RoleARN?: string;
   DomainARN?: string;
@@ -1159,6 +1597,10 @@ export interface AmazonopensearchserviceDestinationUpdate {
   CloudWatchLoggingOptions?: CloudWatchLoggingOptions;
   DocumentIdOptions?: DocumentIdOptions;
 }
+const AmazonopensearchserviceDestinationUpdate = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<AmazonopensearchserviceDestinationUpdate>;
 export interface SplunkDestinationUpdate {
   HECEndpoint?: string;
   HECEndpointType?: HECEndpointType;
@@ -1172,6 +1614,10 @@ export interface SplunkDestinationUpdate {
   BufferingHints?: SplunkBufferingHints;
   SecretsManagerConfiguration?: SecretsManagerConfiguration;
 }
+const SplunkDestinationUpdate = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<SplunkDestinationUpdate>;
 export interface HttpEndpointDestinationUpdate {
   EndpointConfiguration?: HttpEndpointConfiguration;
   BufferingHints?: HttpEndpointBufferingHints;
@@ -1184,6 +1630,10 @@ export interface HttpEndpointDestinationUpdate {
   S3Update?: S3DestinationUpdate;
   SecretsManagerConfiguration?: SecretsManagerConfiguration;
 }
+const HttpEndpointDestinationUpdate = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<HttpEndpointDestinationUpdate>;
 export interface AmazonOpenSearchServerlessDestinationUpdate {
   RoleARN?: string;
   CollectionEndpoint?: string;
@@ -1194,6 +1644,10 @@ export interface AmazonOpenSearchServerlessDestinationUpdate {
   ProcessingConfiguration?: ProcessingConfiguration;
   CloudWatchLoggingOptions?: CloudWatchLoggingOptions;
 }
+const AmazonOpenSearchServerlessDestinationUpdate = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<AmazonOpenSearchServerlessDestinationUpdate>;
 export interface SnowflakeDestinationUpdate {
   AccountUrl?: string | redacted.Redacted<string>;
   PrivateKey?: string | redacted.Redacted<string>;
@@ -1215,6 +1669,10 @@ export interface SnowflakeDestinationUpdate {
   SecretsManagerConfiguration?: SecretsManagerConfiguration;
   BufferingHints?: SnowflakeBufferingHints;
 }
+const SnowflakeDestinationUpdate = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<SnowflakeDestinationUpdate>;
 export interface IcebergDestinationUpdate {
   DestinationTableConfigurationList?: DestinationTableConfiguration[];
   SchemaEvolutionConfiguration?: SchemaEvolutionConfiguration;
@@ -1229,6 +1687,10 @@ export interface IcebergDestinationUpdate {
   CatalogConfiguration?: CatalogConfiguration;
   S3Configuration?: S3DestinationConfiguration;
 }
+const IcebergDestinationUpdate = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<IcebergDestinationUpdate>;
 export interface UpdateDestinationInput {
   DeliveryStreamName: string;
   CurrentDeliveryStreamVersionId: string;
@@ -1244,7 +1706,12 @@ export interface UpdateDestinationInput {
   SnowflakeDestinationUpdate?: SnowflakeDestinationUpdate;
   IcebergDestinationUpdate?: IcebergDestinationUpdate;
 }
+const UpdateDestinationInput = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<UpdateDestinationInput>;
 export interface UpdateDestinationOutput {}
+const UpdateDestinationOutput = TagDeliveryStreamOutput as any as S.Schema<UpdateDestinationOutput>;
 export type CreateDeliveryStreamError =
   | InvalidArgumentException
   | InvalidKMSResourceException
@@ -1330,8 +1797,8 @@ export const createDeliveryStream: API.OperationMethod<
   CreateDeliveryStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<CreateDeliveryStreamInput>,
-  output: __S(66) as any as S.Schema<CreateDeliveryStreamOutput>,
+  input: CreateDeliveryStreamInput,
+  output: CreateDeliveryStreamOutput,
   errors: [
     InvalidArgumentException,
     InvalidKMSResourceException,
@@ -1371,8 +1838,8 @@ export const deleteDeliveryStream: API.OperationMethod<
   DeleteDeliveryStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<DeleteDeliveryStreamInput>,
-  output: __S(68) as any as S.Schema<DeleteDeliveryStreamOutput>,
+  input: DeleteDeliveryStreamInput,
+  output: DeleteDeliveryStreamOutput,
   errors: [ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1396,8 +1863,8 @@ export const describeDeliveryStream: API.OperationMethod<
   DescribeDeliveryStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<DescribeDeliveryStreamInput>,
-  output: __S(94) as any as S.Schema<DescribeDeliveryStreamOutput>,
+  input: DescribeDeliveryStreamInput,
+  output: DescribeDeliveryStreamOutput,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1422,8 +1889,8 @@ export const listDeliveryStreams: API.OperationMethod<
   ListDeliveryStreamsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<ListDeliveryStreamsInput>,
-  output: __S(96) as any as S.Schema<ListDeliveryStreamsOutput>,
+  input: ListDeliveryStreamsInput,
+  output: ListDeliveryStreamsOutput,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1445,8 +1912,8 @@ export const listTagsForDeliveryStream: API.OperationMethod<
   ListTagsForDeliveryStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<ListTagsForDeliveryStreamInput>,
-  output: __S(98) as any as S.Schema<ListTagsForDeliveryStreamOutput>,
+  input: ListTagsForDeliveryStreamInput,
+  output: ListTagsForDeliveryStreamOutput,
   errors: [InvalidArgumentException, LimitExceededException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1517,8 +1984,8 @@ export const putRecord: API.OperationMethod<
   PutRecordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<PutRecordInput>,
-  output: __S(101) as any as S.Schema<PutRecordOutput>,
+  input: PutRecordInput,
+  output: PutRecordOutput,
   errors: [
     InvalidArgumentException,
     InvalidKMSResourceException,
@@ -1616,8 +2083,8 @@ export const putRecordBatch: API.OperationMethod<
   PutRecordBatchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<PutRecordBatchInput>,
-  output: __S(106) as any as S.Schema<PutRecordBatchOutput>,
+  input: PutRecordBatchInput,
+  output: PutRecordBatchOutput,
   errors: [
     InvalidArgumentException,
     InvalidKMSResourceException,
@@ -1691,8 +2158,8 @@ export const startDeliveryStreamEncryption: API.OperationMethod<
   StartDeliveryStreamEncryptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<StartDeliveryStreamEncryptionInput>,
-  output: __S(68) as any as S.Schema<StartDeliveryStreamEncryptionOutput>,
+  input: StartDeliveryStreamEncryptionInput,
+  output: StartDeliveryStreamEncryptionOutput,
   errors: [
     InvalidArgumentException,
     InvalidKMSResourceException,
@@ -1742,8 +2209,8 @@ export const stopDeliveryStreamEncryption: API.OperationMethod<
   StopDeliveryStreamEncryptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<StopDeliveryStreamEncryptionInput>,
-  output: __S(68) as any as S.Schema<StopDeliveryStreamEncryptionOutput>,
+  input: StopDeliveryStreamEncryptionInput,
+  output: StopDeliveryStreamEncryptionOutput,
   errors: [
     InvalidArgumentException,
     LimitExceededException,
@@ -1781,8 +2248,8 @@ export const tagDeliveryStream: API.OperationMethod<
   TagDeliveryStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<TagDeliveryStreamInput>,
-  output: __S(110) as any as S.Schema<TagDeliveryStreamOutput>,
+  input: TagDeliveryStreamInput,
+  output: TagDeliveryStreamOutput,
   errors: [
     InvalidArgumentException,
     LimitExceededException,
@@ -1814,8 +2281,8 @@ export const untagDeliveryStream: API.OperationMethod<
   UntagDeliveryStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<UntagDeliveryStreamInput>,
-  output: __S(68) as any as S.Schema<UntagDeliveryStreamOutput>,
+  input: UntagDeliveryStreamInput,
+  output: UntagDeliveryStreamOutput,
   errors: [
     InvalidArgumentException,
     LimitExceededException,
@@ -1869,8 +2336,8 @@ export const updateDestination: API.OperationMethod<
   UpdateDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<UpdateDestinationInput>,
-  output: __S(110) as any as S.Schema<UpdateDestinationOutput>,
+  input: UpdateDestinationInput,
+  output: UpdateDestinationOutput,
   errors: [
     ConcurrentModificationException,
     InvalidArgumentException,
@@ -1894,11 +2361,11 @@ function __c0(j: number): any {
         identifier: "KinesisStreamSourceConfiguration",
       });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ KeyARN: S.optional(S.String), KeyType: S.String }),
-      ).annotate({
-        identifier: "DeliveryStreamEncryptionConfigurationInput",
-      });
+      return S.suspend(() => S.Struct({ KeyARN: S.optional(S.String), KeyType: KeyType })).annotate(
+        {
+          identifier: "DeliveryStreamEncryptionConfigurationInput",
+        },
+      );
     case 3:
       return S.suspend(() =>
         S.Struct({ SizeInMBs: S.optional(S.Number), IntervalInSeconds: S.optional(S.Number) }),
@@ -1910,8 +2377,8 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          NoEncryptionConfig: S.optional(S.String),
-          KMSEncryptionConfig: S.optional(__S(4)),
+          NoEncryptionConfig: S.optional(NoEncryptionConfig),
+          KMSEncryptionConfig: S.optional(KMSEncryptionConfig),
         }),
       ).annotate({ identifier: "EncryptionConfiguration" });
     case 6:
@@ -1929,10 +2396,10 @@ function __c0(j: number): any {
           BucketARN: S.String,
           Prefix: S.optional(S.String),
           ErrorOutputPrefix: S.optional(S.String),
-          BufferingHints: S.optional(__S(3)),
-          CompressionFormat: S.optional(S.String),
-          EncryptionConfiguration: S.optional(__S(5)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
+          BufferingHints: S.optional(BufferingHints),
+          CompressionFormat: S.optional(CompressionFormat),
+          EncryptionConfiguration: S.optional(EncryptionConfiguration),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
         }),
       ).annotate({
         identifier: "S3DestinationConfiguration",
@@ -1943,19 +2410,19 @@ function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ParameterName: S.String, ParameterValue: S.String }),
+        S.Struct({ ParameterName: ProcessorParameterName, ParameterValue: S.String }),
       ).annotate({ identifier: "ProcessorParameter" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(ProcessorParameter);
     case 2:
-      return S.suspend(() => S.Struct({ Type: S.String, Parameters: S.optional(__S(9)) })).annotate(
-        { identifier: "Processor" },
-      );
+      return S.suspend(() =>
+        S.Struct({ Type: ProcessorType, Parameters: S.optional(ProcessorParameterList) }),
+      ).annotate({ identifier: "Processor" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(Processor);
     case 4:
       return S.suspend(() =>
-        S.Struct({ Enabled: S.optional(S.Boolean), Processors: S.optional(__S(11)) }),
+        S.Struct({ Enabled: S.optional(S.Boolean), Processors: S.optional(ProcessorList) }),
       ).annotate({ identifier: "ProcessingConfiguration" });
     case 5:
       return S.suspend(() =>
@@ -1975,7 +2442,7 @@ function __c1(j: number): any {
         S.Struct({
           ConvertDotsInJsonKeysToUnderscores: S.optional(S.Boolean),
           CaseInsensitive: S.optional(S.Boolean),
-          ColumnToJsonKeyMappings: S.optional(__S(14)),
+          ColumnToJsonKeyMappings: S.optional(ColumnToJsonKeyMappings),
         }),
       ).annotate({ identifier: "OpenXJsonSerDe" });
   }
@@ -1985,18 +2452,18 @@ function __c2(j: number): any {
     case 0:
       return S.Array(S.String);
     case 1:
-      return S.suspend(() => S.Struct({ TimestampFormats: S.optional(__S(16)) })).annotate({
-        identifier: "HiveJsonSerDe",
-      });
+      return S.suspend(() =>
+        S.Struct({ TimestampFormats: S.optional(ListOfNonEmptyStrings) }),
+      ).annotate({ identifier: "HiveJsonSerDe" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          OpenXJsonSerDe: S.optional(__S(15)),
-          HiveJsonSerDe: S.optional(__S(17)),
+          OpenXJsonSerDe: S.optional(OpenXJsonSerDe),
+          HiveJsonSerDe: S.optional(HiveJsonSerDe),
         }),
       ).annotate({ identifier: "Deserializer" });
     case 3:
-      return S.suspend(() => S.Struct({ Deserializer: S.optional(__S(18)) })).annotate({
+      return S.suspend(() => S.Struct({ Deserializer: S.optional(Deserializer) })).annotate({
         identifier: "InputFormatConfiguration",
       });
     case 4:
@@ -2004,10 +2471,10 @@ function __c2(j: number): any {
         S.Struct({
           BlockSizeBytes: S.optional(S.Number),
           PageSizeBytes: S.optional(S.Number),
-          Compression: S.optional(S.String),
+          Compression: S.optional(ParquetCompression),
           EnableDictionaryCompression: S.optional(S.Boolean),
           MaxPaddingBytes: S.optional(S.Number),
-          WriterVersion: S.optional(S.String),
+          WriterVersion: S.optional(ParquetWriterVersion),
         }),
       ).annotate({ identifier: "ParquetSerDe" });
     case 5:
@@ -2018,19 +2485,19 @@ function __c2(j: number): any {
           RowIndexStride: S.optional(S.Number),
           EnablePadding: S.optional(S.Boolean),
           PaddingTolerance: S.optional(S.Number),
-          Compression: S.optional(S.String),
-          BloomFilterColumns: S.optional(__S(16)),
+          Compression: S.optional(OrcCompression),
+          BloomFilterColumns: S.optional(ListOfNonEmptyStringsWithoutWhitespace),
           BloomFilterFalsePositiveProbability: S.optional(S.Number),
           DictionaryKeyThreshold: S.optional(S.Number),
-          FormatVersion: S.optional(S.String),
+          FormatVersion: S.optional(OrcFormatVersion),
         }),
       ).annotate({ identifier: "OrcSerDe" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ ParquetSerDe: S.optional(__S(20)), OrcSerDe: S.optional(__S(21)) }),
+        S.Struct({ ParquetSerDe: S.optional(ParquetSerDe), OrcSerDe: S.optional(OrcSerDe) }),
       ).annotate({ identifier: "Serializer" });
     case 7:
-      return S.suspend(() => S.Struct({ Serializer: S.optional(__S(22)) })).annotate({
+      return S.suspend(() => S.Struct({ Serializer: S.optional(Serializer) })).annotate({
         identifier: "OutputFormatConfiguration",
       });
   }
@@ -2040,9 +2507,9 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          SchemaConfiguration: S.optional(__S(13)),
-          InputFormatConfiguration: S.optional(__S(19)),
-          OutputFormatConfiguration: S.optional(__S(23)),
+          SchemaConfiguration: S.optional(SchemaConfiguration),
+          InputFormatConfiguration: S.optional(InputFormatConfiguration),
+          OutputFormatConfiguration: S.optional(OutputFormatConfiguration),
           Enabled: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -2054,7 +2521,7 @@ function __c3(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ RetryOptions: S.optional(__S(25)), Enabled: S.optional(S.Boolean) }),
+        S.Struct({ RetryOptions: S.optional(RetryOptions), Enabled: S.optional(S.Boolean) }),
       ).annotate({
         identifier: "DynamicPartitioningConfiguration",
       });
@@ -2065,15 +2532,15 @@ function __c3(j: number): any {
           BucketARN: S.String,
           Prefix: S.optional(S.String),
           ErrorOutputPrefix: S.optional(S.String),
-          BufferingHints: S.optional(__S(3)),
-          CompressionFormat: S.optional(S.String),
-          EncryptionConfiguration: S.optional(__S(5)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          ProcessingConfiguration: S.optional(__S(12)),
-          S3BackupMode: S.optional(S.String),
-          S3BackupConfiguration: S.optional(__S(7)),
-          DataFormatConversionConfiguration: S.optional(__S(24)),
-          DynamicPartitioningConfiguration: S.optional(__S(26)),
+          BufferingHints: S.optional(BufferingHints),
+          CompressionFormat: S.optional(CompressionFormat),
+          EncryptionConfiguration: S.optional(EncryptionConfiguration),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
+          S3BackupMode: S.optional(S3BackupMode),
+          S3BackupConfiguration: S.optional(S3DestinationConfiguration),
+          DataFormatConversionConfiguration: S.optional(DataFormatConversionConfiguration),
+          DynamicPartitioningConfiguration: S.optional(DynamicPartitioningConfiguration),
           FileExtension: S.optional(S.String),
           CustomTimeZone: S.optional(S.String),
         }),
@@ -2103,16 +2570,16 @@ function __c3(j: number): any {
         S.Struct({
           RoleARN: S.String,
           ClusterJDBCURL: S.String,
-          CopyCommand: __S(28),
+          CopyCommand: CopyCommand,
           Username: S.optional(SensitiveString),
           Password: S.optional(SensitiveString),
-          RetryOptions: S.optional(__S(25)),
-          S3Configuration: __S(7),
-          ProcessingConfiguration: S.optional(__S(12)),
-          S3BackupMode: S.optional(S.String),
-          S3BackupConfiguration: S.optional(__S(7)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          SecretsManagerConfiguration: S.optional(__S(29)),
+          RetryOptions: S.optional(RedshiftRetryOptions),
+          S3Configuration: S3DestinationConfiguration,
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
+          S3BackupMode: S.optional(RedshiftS3BackupMode),
+          S3BackupConfiguration: S.optional(S3DestinationConfiguration),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          SecretsManagerConfiguration: S.optional(SecretsManagerConfiguration),
         }),
       ).annotate({
         identifier: "RedshiftDestinationConfiguration",
@@ -2134,15 +2601,15 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          SubnetIds: __S(16),
+          SubnetIds: SubnetIdList,
           RoleARN: S.String,
-          SecurityGroupIds: __S(16),
+          SecurityGroupIds: SecurityGroupIdList,
         }),
       ).annotate({ identifier: "VpcConfiguration" });
     case 2:
-      return S.suspend(() => S.Struct({ DefaultDocumentIdFormat: S.String })).annotate({
-        identifier: "DocumentIdOptions",
-      });
+      return S.suspend(() =>
+        S.Struct({ DefaultDocumentIdFormat: DefaultDocumentIdFormat }),
+      ).annotate({ identifier: "DocumentIdOptions" });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2151,15 +2618,15 @@ function __c4(j: number): any {
           ClusterEndpoint: S.optional(S.String),
           IndexName: S.String,
           TypeName: S.optional(S.String),
-          IndexRotationPeriod: S.optional(S.String),
-          BufferingHints: S.optional(__S(31)),
-          RetryOptions: S.optional(__S(32)),
-          S3BackupMode: S.optional(S.String),
-          S3Configuration: __S(7),
-          ProcessingConfiguration: S.optional(__S(12)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          VpcConfiguration: S.optional(__S(33)),
-          DocumentIdOptions: S.optional(__S(34)),
+          IndexRotationPeriod: S.optional(ElasticsearchIndexRotationPeriod),
+          BufferingHints: S.optional(ElasticsearchBufferingHints),
+          RetryOptions: S.optional(ElasticsearchRetryOptions),
+          S3BackupMode: S.optional(ElasticsearchS3BackupMode),
+          S3Configuration: S3DestinationConfiguration,
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          VpcConfiguration: S.optional(VpcConfiguration),
+          DocumentIdOptions: S.optional(DocumentIdOptions),
         }),
       ).annotate({
         identifier: "ElasticsearchDestinationConfiguration",
@@ -2172,15 +2639,15 @@ function __c4(j: number): any {
           ClusterEndpoint: S.optional(S.String),
           IndexName: S.String,
           TypeName: S.optional(S.String),
-          IndexRotationPeriod: S.optional(S.String),
-          BufferingHints: S.optional(__S(31)),
-          RetryOptions: S.optional(__S(32)),
-          S3BackupMode: S.optional(S.String),
-          S3Configuration: __S(7),
-          ProcessingConfiguration: S.optional(__S(12)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          VpcConfiguration: S.optional(__S(33)),
-          DocumentIdOptions: S.optional(__S(34)),
+          IndexRotationPeriod: S.optional(AmazonopensearchserviceIndexRotationPeriod),
+          BufferingHints: S.optional(AmazonopensearchserviceBufferingHints),
+          RetryOptions: S.optional(AmazonopensearchserviceRetryOptions),
+          S3BackupMode: S.optional(AmazonopensearchserviceS3BackupMode),
+          S3Configuration: S3DestinationConfiguration,
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          VpcConfiguration: S.optional(VpcConfiguration),
+          DocumentIdOptions: S.optional(DocumentIdOptions),
         }),
       ).annotate({
         identifier: "AmazonopensearchserviceDestinationConfiguration",
@@ -2193,16 +2660,16 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           HECEndpoint: S.String,
-          HECEndpointType: S.String,
+          HECEndpointType: HECEndpointType,
           HECToken: S.optional(SensitiveString),
           HECAcknowledgmentTimeoutInSeconds: S.optional(S.Number),
-          RetryOptions: S.optional(__S(25)),
-          S3BackupMode: S.optional(S.String),
-          S3Configuration: __S(7),
-          ProcessingConfiguration: S.optional(__S(12)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          BufferingHints: S.optional(__S(37)),
-          SecretsManagerConfiguration: S.optional(__S(29)),
+          RetryOptions: S.optional(SplunkRetryOptions),
+          S3BackupMode: S.optional(SplunkS3BackupMode),
+          S3Configuration: S3DestinationConfiguration,
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          BufferingHints: S.optional(SplunkBufferingHints),
+          SecretsManagerConfiguration: S.optional(SecretsManagerConfiguration),
         }),
       ).annotate({
         identifier: "SplunkDestinationConfiguration",
@@ -2234,12 +2701,12 @@ function __c5(j: number): any {
         identifier: "HttpEndpointCommonAttribute",
       });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(HttpEndpointCommonAttribute);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ContentEncoding: S.optional(S.String),
-          CommonAttributes: S.optional(__S(42)),
+          ContentEncoding: S.optional(ContentEncoding),
+          CommonAttributes: S.optional(HttpEndpointCommonAttributesList),
         }),
       ).annotate({
         identifier: "HttpEndpointRequestConfiguration",
@@ -2247,16 +2714,16 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          EndpointConfiguration: __S(39),
-          BufferingHints: S.optional(__S(40)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          RequestConfiguration: S.optional(__S(43)),
-          ProcessingConfiguration: S.optional(__S(12)),
+          EndpointConfiguration: HttpEndpointConfiguration,
+          BufferingHints: S.optional(HttpEndpointBufferingHints),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          RequestConfiguration: S.optional(HttpEndpointRequestConfiguration),
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
           RoleARN: S.optional(S.String),
-          RetryOptions: S.optional(__S(25)),
-          S3BackupMode: S.optional(S.String),
-          S3Configuration: __S(7),
-          SecretsManagerConfiguration: S.optional(__S(29)),
+          RetryOptions: S.optional(HttpEndpointRetryOptions),
+          S3BackupMode: S.optional(HttpEndpointS3BackupMode),
+          S3Configuration: S3DestinationConfiguration,
+          SecretsManagerConfiguration: S.optional(SecretsManagerConfiguration),
         }),
       ).annotate({
         identifier: "HttpEndpointDestinationConfiguration",
@@ -2266,20 +2733,20 @@ function __c5(j: number): any {
         identifier: "Tag",
       });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(Tag);
     case 7:
       return S.suspend(() =>
         S.Struct({
           RoleARN: S.String,
           CollectionEndpoint: S.optional(S.String),
           IndexName: S.String,
-          BufferingHints: S.optional(__S(31)),
-          RetryOptions: S.optional(__S(32)),
-          S3BackupMode: S.optional(S.String),
-          S3Configuration: __S(7),
-          ProcessingConfiguration: S.optional(__S(12)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          VpcConfiguration: S.optional(__S(33)),
+          BufferingHints: S.optional(AmazonOpenSearchServerlessBufferingHints),
+          RetryOptions: S.optional(AmazonOpenSearchServerlessRetryOptions),
+          S3BackupMode: S.optional(AmazonOpenSearchServerlessS3BackupMode),
+          S3Configuration: S3DestinationConfiguration,
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          VpcConfiguration: S.optional(VpcConfiguration),
         }),
       ).annotate({
         identifier: "AmazonOpenSearchServerlessDestinationConfiguration",
@@ -2289,7 +2756,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ RoleARN: S.String, Connectivity: S.String })).annotate({
+      return S.suspend(() => S.Struct({ RoleARN: S.String, Connectivity: Connectivity })).annotate({
         identifier: "AuthenticationConfiguration",
       });
     case 1:
@@ -2297,7 +2764,7 @@ function __c6(j: number): any {
         S.Struct({
           MSKClusterARN: S.String,
           TopicName: S.String,
-          AuthenticationConfiguration: __S(48),
+          AuthenticationConfiguration: AuthenticationConfiguration,
           ReadFromTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "MSKSourceConfiguration" });
@@ -2321,19 +2788,19 @@ function __c6(j: number): any {
           Database: SensitiveString,
           Schema: SensitiveString,
           Table: SensitiveString,
-          SnowflakeRoleConfiguration: S.optional(__S(50)),
-          DataLoadingOption: S.optional(S.String),
+          SnowflakeRoleConfiguration: S.optional(SnowflakeRoleConfiguration),
+          DataLoadingOption: S.optional(SnowflakeDataLoadingOption),
           MetaDataColumnName: S.optional(SensitiveString),
           ContentColumnName: S.optional(SensitiveString),
-          SnowflakeVpcConfiguration: S.optional(__S(51)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          ProcessingConfiguration: S.optional(__S(12)),
+          SnowflakeVpcConfiguration: S.optional(SnowflakeVpcConfiguration),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
           RoleARN: S.String,
-          RetryOptions: S.optional(__S(25)),
-          S3BackupMode: S.optional(S.String),
-          S3Configuration: __S(7),
-          SecretsManagerConfiguration: S.optional(__S(29)),
-          BufferingHints: S.optional(__S(3)),
+          RetryOptions: S.optional(SnowflakeRetryOptions),
+          S3BackupMode: S.optional(SnowflakeS3BackupMode),
+          S3Configuration: S3DestinationConfiguration,
+          SecretsManagerConfiguration: S.optional(SecretsManagerConfiguration),
+          BufferingHints: S.optional(SnowflakeBufferingHints),
         }),
       ).annotate({
         identifier: "SnowflakeDestinationConfiguration",
@@ -2343,9 +2810,9 @@ function __c6(j: number): any {
         identifier: "PartitionField",
       });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(PartitionField);
     case 7:
-      return S.suspend(() => S.Struct({ Identity: S.optional(__S(54)) })).annotate({
+      return S.suspend(() => S.Struct({ Identity: S.optional(PartitionFields) })).annotate({
         identifier: "PartitionSpec",
       });
   }
@@ -2357,15 +2824,15 @@ function __c7(j: number): any {
         S.Struct({
           DestinationTableName: S.String,
           DestinationDatabaseName: S.String,
-          UniqueKeys: S.optional(__S(16)),
-          PartitionSpec: S.optional(__S(55)),
+          UniqueKeys: S.optional(ListOfNonEmptyStringsWithoutWhitespace),
+          PartitionSpec: S.optional(PartitionSpec),
           S3ErrorOutputPrefix: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DestinationTableConfiguration",
       });
     case 1:
-      return S.Array(__S(56));
+      return S.Array(DestinationTableConfiguration);
     case 2:
       return S.suspend(() => S.Struct({ Enabled: S.Boolean })).annotate({
         identifier: "SchemaEvolutionConfiguration",
@@ -2377,18 +2844,18 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          DestinationTableConfigurationList: S.optional(__S(57)),
-          SchemaEvolutionConfiguration: S.optional(__S(58)),
-          TableCreationConfiguration: S.optional(__S(58)),
-          BufferingHints: S.optional(__S(3)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          ProcessingConfiguration: S.optional(__S(12)),
-          S3BackupMode: S.optional(S.String),
-          RetryOptions: S.optional(__S(25)),
+          DestinationTableConfigurationList: S.optional(DestinationTableConfigurationList),
+          SchemaEvolutionConfiguration: S.optional(SchemaEvolutionConfiguration),
+          TableCreationConfiguration: S.optional(TableCreationConfiguration),
+          BufferingHints: S.optional(BufferingHints),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
+          S3BackupMode: S.optional(IcebergS3BackupMode),
+          RetryOptions: S.optional(RetryOptions),
           RoleARN: S.String,
           AppendOnly: S.optional(S.Boolean),
-          CatalogConfiguration: __S(59),
-          S3Configuration: __S(7),
+          CatalogConfiguration: CatalogConfiguration,
+          S3Configuration: S3DestinationConfiguration,
         }),
       ).annotate({
         identifier: "IcebergDestinationConfiguration",
@@ -2396,12 +2863,14 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Include: S.optional(__S(16)),
-          Exclude: S.optional(__S(16)),
+          Include: S.optional(DatabaseIncludeOrExcludeList),
+          Exclude: S.optional(DatabaseIncludeOrExcludeList),
         }),
       ).annotate({ identifier: "DatabaseList" });
     case 6:
-      return S.suspend(() => S.Struct({ SecretsManagerConfiguration: __S(29) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ SecretsManagerConfiguration: SecretsManagerConfiguration }),
+      ).annotate({
         identifier: "DatabaseSourceAuthenticationConfiguration",
       });
     case 7:
@@ -2415,17 +2884,17 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Type: S.String,
+          Type: DatabaseType,
           Endpoint: S.String,
           Port: S.Number,
-          SSLMode: S.optional(S.String),
-          Databases: __S(61),
-          Tables: __S(61),
-          Columns: S.optional(__S(61)),
-          SurrogateKeys: S.optional(__S(16)),
+          SSLMode: S.optional(SSLMode),
+          Databases: DatabaseList,
+          Tables: DatabaseTableList,
+          Columns: S.optional(DatabaseColumnList),
+          SurrogateKeys: S.optional(DatabaseSurrogateKeyList),
           SnapshotWatermarkTable: S.String,
-          DatabaseSourceAuthenticationConfiguration: __S(62),
-          DatabaseSourceVPCConfiguration: __S(63),
+          DatabaseSourceAuthenticationConfiguration: DatabaseSourceAuthenticationConfiguration,
+          DatabaseSourceVPCConfiguration: DatabaseSourceVPCConfiguration,
         }),
       ).annotate({
         identifier: "DatabaseSourceConfiguration",
@@ -2434,23 +2903,29 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DeliveryStreamName: S.String,
-          DeliveryStreamType: S.optional(S.String),
-          DirectPutSourceConfiguration: S.optional(__S(0)),
-          KinesisStreamSourceConfiguration: S.optional(__S(1)),
-          DeliveryStreamEncryptionConfigurationInput: S.optional(__S(2)),
-          S3DestinationConfiguration: S.optional(__S(7)),
-          ExtendedS3DestinationConfiguration: S.optional(__S(27)),
-          RedshiftDestinationConfiguration: S.optional(__S(30)),
-          ElasticsearchDestinationConfiguration: S.optional(__S(35)),
-          AmazonopensearchserviceDestinationConfiguration: S.optional(__S(36)),
-          SplunkDestinationConfiguration: S.optional(__S(38)),
-          HttpEndpointDestinationConfiguration: S.optional(__S(44)),
-          Tags: S.optional(__S(46)),
-          AmazonOpenSearchServerlessDestinationConfiguration: S.optional(__S(47)),
-          MSKSourceConfiguration: S.optional(__S(49)),
-          SnowflakeDestinationConfiguration: S.optional(__S(52)),
-          IcebergDestinationConfiguration: S.optional(__S(60)),
-          DatabaseSourceConfiguration: S.optional(__S(64)),
+          DeliveryStreamType: S.optional(DeliveryStreamType),
+          DirectPutSourceConfiguration: S.optional(DirectPutSourceConfiguration),
+          KinesisStreamSourceConfiguration: S.optional(KinesisStreamSourceConfiguration),
+          DeliveryStreamEncryptionConfigurationInput: S.optional(
+            DeliveryStreamEncryptionConfigurationInput,
+          ),
+          S3DestinationConfiguration: S.optional(S3DestinationConfiguration),
+          ExtendedS3DestinationConfiguration: S.optional(ExtendedS3DestinationConfiguration),
+          RedshiftDestinationConfiguration: S.optional(RedshiftDestinationConfiguration),
+          ElasticsearchDestinationConfiguration: S.optional(ElasticsearchDestinationConfiguration),
+          AmazonopensearchserviceDestinationConfiguration: S.optional(
+            AmazonopensearchserviceDestinationConfiguration,
+          ),
+          SplunkDestinationConfiguration: S.optional(SplunkDestinationConfiguration),
+          HttpEndpointDestinationConfiguration: S.optional(HttpEndpointDestinationConfiguration),
+          Tags: S.optional(TagDeliveryStreamInputTagList),
+          AmazonOpenSearchServerlessDestinationConfiguration: S.optional(
+            AmazonOpenSearchServerlessDestinationConfiguration,
+          ),
+          MSKSourceConfiguration: S.optional(MSKSourceConfiguration),
+          SnowflakeDestinationConfiguration: S.optional(SnowflakeDestinationConfiguration),
+          IcebergDestinationConfiguration: S.optional(IcebergDestinationConfiguration),
+          DatabaseSourceConfiguration: S.optional(DatabaseSourceConfiguration),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateDeliveryStreamInput",
@@ -2484,16 +2959,16 @@ function __c8(j: number): any {
         identifier: "DescribeDeliveryStreamInput",
       });
     case 6:
-      return S.suspend(() => S.Struct({ Type: S.String, Details: S.String })).annotate({
-        identifier: "FailureDescription",
-      });
+      return S.suspend(() =>
+        S.Struct({ Type: DeliveryStreamFailureType, Details: S.String }),
+      ).annotate({ identifier: "FailureDescription" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           KeyARN: S.optional(S.String),
-          KeyType: S.optional(S.String),
-          Status: S.optional(S.String),
-          FailureDescription: S.optional(__S(70)),
+          KeyType: S.optional(KeyType),
+          Status: S.optional(DeliveryStreamEncryptionStatus),
+          FailureDescription: S.optional(FailureDescription),
         }),
       ).annotate({
         identifier: "DeliveryStreamEncryptionConfiguration",
@@ -2521,7 +2996,7 @@ function __c9(j: number): any {
         S.Struct({
           MSKClusterARN: S.optional(S.String),
           TopicName: S.optional(S.String),
-          AuthenticationConfiguration: S.optional(__S(48)),
+          AuthenticationConfiguration: S.optional(AuthenticationConfiguration),
           DeliveryStartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ReadFromTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -2532,28 +3007,30 @@ function __c9(j: number): any {
           Id: S.String,
           Table: S.String,
           RequestTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          RequestedBy: S.String,
-          Status: S.String,
-          FailureDescription: S.optional(__S(70)),
+          RequestedBy: SnapshotRequestedBy,
+          Status: SnapshotStatus,
+          FailureDescription: S.optional(FailureDescription),
         }),
       ).annotate({ identifier: "DatabaseSnapshotInfo" });
     case 4:
-      return S.Array(__S(75));
+      return S.Array(DatabaseSnapshotInfo);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Type: S.optional(S.String),
+          Type: S.optional(DatabaseType),
           Endpoint: S.optional(S.String),
           Port: S.optional(S.Number),
-          SSLMode: S.optional(S.String),
-          Databases: S.optional(__S(61)),
-          Tables: S.optional(__S(61)),
-          Columns: S.optional(__S(61)),
-          SurrogateKeys: S.optional(__S(16)),
+          SSLMode: S.optional(SSLMode),
+          Databases: S.optional(DatabaseList),
+          Tables: S.optional(DatabaseTableList),
+          Columns: S.optional(DatabaseColumnList),
+          SurrogateKeys: S.optional(DatabaseColumnIncludeOrExcludeList),
           SnapshotWatermarkTable: S.optional(S.String),
-          SnapshotInfo: S.optional(__S(76)),
-          DatabaseSourceAuthenticationConfiguration: S.optional(__S(62)),
-          DatabaseSourceVPCConfiguration: S.optional(__S(63)),
+          SnapshotInfo: S.optional(DatabaseSnapshotInfoList),
+          DatabaseSourceAuthenticationConfiguration: S.optional(
+            DatabaseSourceAuthenticationConfiguration,
+          ),
+          DatabaseSourceVPCConfiguration: S.optional(DatabaseSourceVPCConfiguration),
         }),
       ).annotate({
         identifier: "DatabaseSourceDescription",
@@ -2561,10 +3038,10 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          DirectPutSourceDescription: S.optional(__S(72)),
-          KinesisStreamSourceDescription: S.optional(__S(73)),
-          MSKSourceDescription: S.optional(__S(74)),
-          DatabaseSourceDescription: S.optional(__S(77)),
+          DirectPutSourceDescription: S.optional(DirectPutSourceDescription),
+          KinesisStreamSourceDescription: S.optional(KinesisStreamSourceDescription),
+          MSKSourceDescription: S.optional(MSKSourceDescription),
+          DatabaseSourceDescription: S.optional(DatabaseSourceDescription),
         }),
       ).annotate({ identifier: "SourceDescription" });
     case 7:
@@ -2574,10 +3051,10 @@ function __c9(j: number): any {
           BucketARN: S.String,
           Prefix: S.optional(S.String),
           ErrorOutputPrefix: S.optional(S.String),
-          BufferingHints: __S(3),
-          CompressionFormat: S.String,
-          EncryptionConfiguration: __S(5),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
+          BufferingHints: BufferingHints,
+          CompressionFormat: CompressionFormat,
+          EncryptionConfiguration: EncryptionConfiguration,
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
         }),
       ).annotate({ identifier: "S3DestinationDescription" });
   }
@@ -2591,15 +3068,15 @@ function __c10(j: number): any {
           BucketARN: S.String,
           Prefix: S.optional(S.String),
           ErrorOutputPrefix: S.optional(S.String),
-          BufferingHints: __S(3),
-          CompressionFormat: S.String,
-          EncryptionConfiguration: __S(5),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          ProcessingConfiguration: S.optional(__S(12)),
-          S3BackupMode: S.optional(S.String),
-          S3BackupDescription: S.optional(__S(79)),
-          DataFormatConversionConfiguration: S.optional(__S(24)),
-          DynamicPartitioningConfiguration: S.optional(__S(26)),
+          BufferingHints: BufferingHints,
+          CompressionFormat: CompressionFormat,
+          EncryptionConfiguration: EncryptionConfiguration,
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
+          S3BackupMode: S.optional(S3BackupMode),
+          S3BackupDescription: S.optional(S3DestinationDescription),
+          DataFormatConversionConfiguration: S.optional(DataFormatConversionConfiguration),
+          DynamicPartitioningConfiguration: S.optional(DynamicPartitioningConfiguration),
           FileExtension: S.optional(S.String),
           CustomTimeZone: S.optional(S.String),
         }),
@@ -2611,15 +3088,15 @@ function __c10(j: number): any {
         S.Struct({
           RoleARN: S.String,
           ClusterJDBCURL: S.String,
-          CopyCommand: __S(28),
+          CopyCommand: CopyCommand,
           Username: S.optional(SensitiveString),
-          RetryOptions: S.optional(__S(25)),
-          S3DestinationDescription: __S(79),
-          ProcessingConfiguration: S.optional(__S(12)),
-          S3BackupMode: S.optional(S.String),
-          S3BackupDescription: S.optional(__S(79)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          SecretsManagerConfiguration: S.optional(__S(29)),
+          RetryOptions: S.optional(RedshiftRetryOptions),
+          S3DestinationDescription: S3DestinationDescription,
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
+          S3BackupMode: S.optional(RedshiftS3BackupMode),
+          S3BackupDescription: S.optional(S3DestinationDescription),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          SecretsManagerConfiguration: S.optional(SecretsManagerConfiguration),
         }),
       ).annotate({
         identifier: "RedshiftDestinationDescription",
@@ -2627,9 +3104,9 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          SubnetIds: __S(16),
+          SubnetIds: SubnetIdList,
           RoleARN: S.String,
-          SecurityGroupIds: __S(16),
+          SecurityGroupIds: SecurityGroupIdList,
           VpcId: S.String,
         }),
       ).annotate({
@@ -2643,15 +3120,15 @@ function __c10(j: number): any {
           ClusterEndpoint: S.optional(S.String),
           IndexName: S.optional(S.String),
           TypeName: S.optional(S.String),
-          IndexRotationPeriod: S.optional(S.String),
-          BufferingHints: S.optional(__S(31)),
-          RetryOptions: S.optional(__S(32)),
-          S3BackupMode: S.optional(S.String),
-          S3DestinationDescription: S.optional(__S(79)),
-          ProcessingConfiguration: S.optional(__S(12)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          VpcConfigurationDescription: S.optional(__S(82)),
-          DocumentIdOptions: S.optional(__S(34)),
+          IndexRotationPeriod: S.optional(ElasticsearchIndexRotationPeriod),
+          BufferingHints: S.optional(ElasticsearchBufferingHints),
+          RetryOptions: S.optional(ElasticsearchRetryOptions),
+          S3BackupMode: S.optional(ElasticsearchS3BackupMode),
+          S3DestinationDescription: S.optional(S3DestinationDescription),
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          VpcConfigurationDescription: S.optional(VpcConfigurationDescription),
+          DocumentIdOptions: S.optional(DocumentIdOptions),
         }),
       ).annotate({
         identifier: "ElasticsearchDestinationDescription",
@@ -2664,15 +3141,15 @@ function __c10(j: number): any {
           ClusterEndpoint: S.optional(S.String),
           IndexName: S.optional(S.String),
           TypeName: S.optional(S.String),
-          IndexRotationPeriod: S.optional(S.String),
-          BufferingHints: S.optional(__S(31)),
-          RetryOptions: S.optional(__S(32)),
-          S3BackupMode: S.optional(S.String),
-          S3DestinationDescription: S.optional(__S(79)),
-          ProcessingConfiguration: S.optional(__S(12)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          VpcConfigurationDescription: S.optional(__S(82)),
-          DocumentIdOptions: S.optional(__S(34)),
+          IndexRotationPeriod: S.optional(AmazonopensearchserviceIndexRotationPeriod),
+          BufferingHints: S.optional(AmazonopensearchserviceBufferingHints),
+          RetryOptions: S.optional(AmazonopensearchserviceRetryOptions),
+          S3BackupMode: S.optional(AmazonopensearchserviceS3BackupMode),
+          S3DestinationDescription: S.optional(S3DestinationDescription),
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          VpcConfigurationDescription: S.optional(VpcConfigurationDescription),
+          DocumentIdOptions: S.optional(DocumentIdOptions),
         }),
       ).annotate({
         identifier: "AmazonopensearchserviceDestinationDescription",
@@ -2681,16 +3158,16 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           HECEndpoint: S.optional(S.String),
-          HECEndpointType: S.optional(S.String),
+          HECEndpointType: S.optional(HECEndpointType),
           HECToken: S.optional(SensitiveString),
           HECAcknowledgmentTimeoutInSeconds: S.optional(S.Number),
-          RetryOptions: S.optional(__S(25)),
-          S3BackupMode: S.optional(S.String),
-          S3DestinationDescription: S.optional(__S(79)),
-          ProcessingConfiguration: S.optional(__S(12)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          BufferingHints: S.optional(__S(37)),
-          SecretsManagerConfiguration: S.optional(__S(29)),
+          RetryOptions: S.optional(SplunkRetryOptions),
+          S3BackupMode: S.optional(SplunkS3BackupMode),
+          S3DestinationDescription: S.optional(S3DestinationDescription),
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          BufferingHints: S.optional(SplunkBufferingHints),
+          SecretsManagerConfiguration: S.optional(SecretsManagerConfiguration),
         }),
       ).annotate({
         identifier: "SplunkDestinationDescription",
@@ -2702,16 +3179,16 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          EndpointConfiguration: S.optional(__S(86)),
-          BufferingHints: S.optional(__S(40)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          RequestConfiguration: S.optional(__S(43)),
-          ProcessingConfiguration: S.optional(__S(12)),
+          EndpointConfiguration: S.optional(HttpEndpointDescription),
+          BufferingHints: S.optional(HttpEndpointBufferingHints),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          RequestConfiguration: S.optional(HttpEndpointRequestConfiguration),
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
           RoleARN: S.optional(S.String),
-          RetryOptions: S.optional(__S(25)),
-          S3BackupMode: S.optional(S.String),
-          S3DestinationDescription: S.optional(__S(79)),
-          SecretsManagerConfiguration: S.optional(__S(29)),
+          RetryOptions: S.optional(HttpEndpointRetryOptions),
+          S3BackupMode: S.optional(HttpEndpointS3BackupMode),
+          S3DestinationDescription: S.optional(S3DestinationDescription),
+          SecretsManagerConfiguration: S.optional(SecretsManagerConfiguration),
         }),
       ).annotate({
         identifier: "HttpEndpointDestinationDescription",
@@ -2728,19 +3205,19 @@ function __c11(j: number): any {
           Database: S.optional(SensitiveString),
           Schema: S.optional(SensitiveString),
           Table: S.optional(SensitiveString),
-          SnowflakeRoleConfiguration: S.optional(__S(50)),
-          DataLoadingOption: S.optional(S.String),
+          SnowflakeRoleConfiguration: S.optional(SnowflakeRoleConfiguration),
+          DataLoadingOption: S.optional(SnowflakeDataLoadingOption),
           MetaDataColumnName: S.optional(SensitiveString),
           ContentColumnName: S.optional(SensitiveString),
-          SnowflakeVpcConfiguration: S.optional(__S(51)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          ProcessingConfiguration: S.optional(__S(12)),
+          SnowflakeVpcConfiguration: S.optional(SnowflakeVpcConfiguration),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
           RoleARN: S.optional(S.String),
-          RetryOptions: S.optional(__S(25)),
-          S3BackupMode: S.optional(S.String),
-          S3DestinationDescription: S.optional(__S(79)),
-          SecretsManagerConfiguration: S.optional(__S(29)),
-          BufferingHints: S.optional(__S(3)),
+          RetryOptions: S.optional(SnowflakeRetryOptions),
+          S3BackupMode: S.optional(SnowflakeS3BackupMode),
+          S3DestinationDescription: S.optional(S3DestinationDescription),
+          SecretsManagerConfiguration: S.optional(SecretsManagerConfiguration),
+          BufferingHints: S.optional(SnowflakeBufferingHints),
         }),
       ).annotate({
         identifier: "SnowflakeDestinationDescription",
@@ -2751,13 +3228,13 @@ function __c11(j: number): any {
           RoleARN: S.optional(S.String),
           CollectionEndpoint: S.optional(S.String),
           IndexName: S.optional(S.String),
-          BufferingHints: S.optional(__S(31)),
-          RetryOptions: S.optional(__S(32)),
-          S3BackupMode: S.optional(S.String),
-          S3DestinationDescription: S.optional(__S(79)),
-          ProcessingConfiguration: S.optional(__S(12)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          VpcConfigurationDescription: S.optional(__S(82)),
+          BufferingHints: S.optional(AmazonOpenSearchServerlessBufferingHints),
+          RetryOptions: S.optional(AmazonOpenSearchServerlessRetryOptions),
+          S3BackupMode: S.optional(AmazonOpenSearchServerlessS3BackupMode),
+          S3DestinationDescription: S.optional(S3DestinationDescription),
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          VpcConfigurationDescription: S.optional(VpcConfigurationDescription),
         }),
       ).annotate({
         identifier: "AmazonOpenSearchServerlessDestinationDescription",
@@ -2765,18 +3242,18 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          DestinationTableConfigurationList: S.optional(__S(57)),
-          SchemaEvolutionConfiguration: S.optional(__S(58)),
-          TableCreationConfiguration: S.optional(__S(58)),
-          BufferingHints: S.optional(__S(3)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          ProcessingConfiguration: S.optional(__S(12)),
-          S3BackupMode: S.optional(S.String),
-          RetryOptions: S.optional(__S(25)),
+          DestinationTableConfigurationList: S.optional(DestinationTableConfigurationList),
+          SchemaEvolutionConfiguration: S.optional(SchemaEvolutionConfiguration),
+          TableCreationConfiguration: S.optional(TableCreationConfiguration),
+          BufferingHints: S.optional(BufferingHints),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
+          S3BackupMode: S.optional(IcebergS3BackupMode),
+          RetryOptions: S.optional(RetryOptions),
           RoleARN: S.optional(S.String),
           AppendOnly: S.optional(S.Boolean),
-          CatalogConfiguration: S.optional(__S(59)),
-          S3DestinationDescription: S.optional(__S(79)),
+          CatalogConfiguration: S.optional(CatalogConfiguration),
+          S3DestinationDescription: S.optional(S3DestinationDescription),
         }),
       ).annotate({
         identifier: "IcebergDestinationDescription",
@@ -2785,48 +3262,54 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DestinationId: S.String,
-          S3DestinationDescription: S.optional(__S(79)),
-          ExtendedS3DestinationDescription: S.optional(__S(80)),
-          RedshiftDestinationDescription: S.optional(__S(81)),
-          ElasticsearchDestinationDescription: S.optional(__S(83)),
-          AmazonopensearchserviceDestinationDescription: S.optional(__S(84)),
-          SplunkDestinationDescription: S.optional(__S(85)),
-          HttpEndpointDestinationDescription: S.optional(__S(87)),
-          SnowflakeDestinationDescription: S.optional(__S(88)),
-          AmazonOpenSearchServerlessDestinationDescription: S.optional(__S(89)),
-          IcebergDestinationDescription: S.optional(__S(90)),
+          S3DestinationDescription: S.optional(S3DestinationDescription),
+          ExtendedS3DestinationDescription: S.optional(ExtendedS3DestinationDescription),
+          RedshiftDestinationDescription: S.optional(RedshiftDestinationDescription),
+          ElasticsearchDestinationDescription: S.optional(ElasticsearchDestinationDescription),
+          AmazonopensearchserviceDestinationDescription: S.optional(
+            AmazonopensearchserviceDestinationDescription,
+          ),
+          SplunkDestinationDescription: S.optional(SplunkDestinationDescription),
+          HttpEndpointDestinationDescription: S.optional(HttpEndpointDestinationDescription),
+          SnowflakeDestinationDescription: S.optional(SnowflakeDestinationDescription),
+          AmazonOpenSearchServerlessDestinationDescription: S.optional(
+            AmazonOpenSearchServerlessDestinationDescription,
+          ),
+          IcebergDestinationDescription: S.optional(IcebergDestinationDescription),
         }),
       ).annotate({ identifier: "DestinationDescription" });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(DestinationDescription);
     case 5:
       return S.suspend(() =>
         S.Struct({
           DeliveryStreamName: S.String,
           DeliveryStreamARN: S.String,
-          DeliveryStreamStatus: S.String,
-          FailureDescription: S.optional(__S(70)),
-          DeliveryStreamEncryptionConfiguration: S.optional(__S(71)),
-          DeliveryStreamType: S.String,
+          DeliveryStreamStatus: DeliveryStreamStatus,
+          FailureDescription: S.optional(FailureDescription),
+          DeliveryStreamEncryptionConfiguration: S.optional(DeliveryStreamEncryptionConfiguration),
+          DeliveryStreamType: DeliveryStreamType,
           VersionId: S.String,
           CreateTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdateTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Source: S.optional(__S(78)),
-          Destinations: __S(92),
+          Source: S.optional(SourceDescription),
+          Destinations: DestinationDescriptionList,
           HasMoreDestinations: S.Boolean,
         }),
       ).annotate({
         identifier: "DeliveryStreamDescription",
       });
     case 6:
-      return S.suspend(() => S.Struct({ DeliveryStreamDescription: __S(93) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ DeliveryStreamDescription: DeliveryStreamDescription }).pipe(ns),
+      ).annotate({
         identifier: "DescribeDeliveryStreamOutput",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
           Limit: S.optional(S.Number),
-          DeliveryStreamType: S.optional(S.String),
+          DeliveryStreamType: S.optional(DeliveryStreamType),
           ExclusiveStartDeliveryStreamName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListDeliveryStreamsInput" });
@@ -2837,7 +3320,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          DeliveryStreamNames: __S(16),
+          DeliveryStreamNames: DeliveryStreamNameList,
           HasMoreDeliveryStreams: S.Boolean,
         }).pipe(ns),
       ).annotate({
@@ -2854,18 +3337,18 @@ function __c12(j: number): any {
         identifier: "ListTagsForDeliveryStreamInput",
       });
     case 2:
-      return S.suspend(() => S.Struct({ Tags: __S(46), HasMoreTags: S.Boolean }).pipe(ns)).annotate(
-        {
-          identifier: "ListTagsForDeliveryStreamOutput",
-        },
-      );
+      return S.suspend(() =>
+        S.Struct({ Tags: ListTagsForDeliveryStreamOutputTagList, HasMoreTags: S.Boolean }).pipe(ns),
+      ).annotate({
+        identifier: "ListTagsForDeliveryStreamOutput",
+      });
     case 3:
       return S.suspend(() => S.Struct({ Data: T.Blob })).annotate({
         identifier: "Record",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ DeliveryStreamName: S.String, Record: __S(99) }).pipe(
+        S.Struct({ DeliveryStreamName: S.String, Record: Record }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutRecordInput" });
@@ -2874,10 +3357,10 @@ function __c12(j: number): any {
         S.Struct({ RecordId: S.String, Encrypted: S.optional(S.Boolean) }).pipe(ns),
       ).annotate({ identifier: "PutRecordOutput" });
     case 6:
-      return S.Array(__S(99));
+      return S.Array(Record);
     case 7:
       return S.suspend(() =>
-        S.Struct({ DeliveryStreamName: S.String, Records: __S(102) }).pipe(
+        S.Struct({ DeliveryStreamName: S.String, Records: PutRecordBatchRequestEntryList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutRecordBatchInput" });
@@ -2896,20 +3379,22 @@ function __c13(j: number): any {
         identifier: "PutRecordBatchResponseEntry",
       });
     case 1:
-      return S.Array(__S(104));
+      return S.Array(PutRecordBatchResponseEntry);
     case 2:
       return S.suspend(() =>
         S.Struct({
           FailedPutCount: S.Number,
           Encrypted: S.optional(S.Boolean),
-          RequestResponses: __S(105),
+          RequestResponses: PutRecordBatchResponseEntryList,
         }).pipe(ns),
       ).annotate({ identifier: "PutRecordBatchOutput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           DeliveryStreamName: S.String,
-          DeliveryStreamEncryptionConfigurationInput: S.optional(__S(2)),
+          DeliveryStreamEncryptionConfigurationInput: S.optional(
+            DeliveryStreamEncryptionConfigurationInput,
+          ),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartDeliveryStreamEncryptionInput",
@@ -2924,7 +3409,7 @@ function __c13(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ DeliveryStreamName: S.String, Tags: __S(46) }).pipe(
+        S.Struct({ DeliveryStreamName: S.String, Tags: TagDeliveryStreamInputTagList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagDeliveryStreamInput" });
@@ -2934,7 +3419,7 @@ function __c13(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ DeliveryStreamName: S.String, TagKeys: __S(16) }).pipe(
+        S.Struct({ DeliveryStreamName: S.String, TagKeys: TagKeyList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagDeliveryStreamInput" });
@@ -2949,10 +3434,10 @@ function __c14(j: number): any {
           BucketARN: S.optional(S.String),
           Prefix: S.optional(S.String),
           ErrorOutputPrefix: S.optional(S.String),
-          BufferingHints: S.optional(__S(3)),
-          CompressionFormat: S.optional(S.String),
-          EncryptionConfiguration: S.optional(__S(5)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
+          BufferingHints: S.optional(BufferingHints),
+          CompressionFormat: S.optional(CompressionFormat),
+          EncryptionConfiguration: S.optional(EncryptionConfiguration),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
         }),
       ).annotate({ identifier: "S3DestinationUpdate" });
     case 1:
@@ -2962,15 +3447,15 @@ function __c14(j: number): any {
           BucketARN: S.optional(S.String),
           Prefix: S.optional(S.String),
           ErrorOutputPrefix: S.optional(S.String),
-          BufferingHints: S.optional(__S(3)),
-          CompressionFormat: S.optional(S.String),
-          EncryptionConfiguration: S.optional(__S(5)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          ProcessingConfiguration: S.optional(__S(12)),
-          S3BackupMode: S.optional(S.String),
-          S3BackupUpdate: S.optional(__S(112)),
-          DataFormatConversionConfiguration: S.optional(__S(24)),
-          DynamicPartitioningConfiguration: S.optional(__S(26)),
+          BufferingHints: S.optional(BufferingHints),
+          CompressionFormat: S.optional(CompressionFormat),
+          EncryptionConfiguration: S.optional(EncryptionConfiguration),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
+          S3BackupMode: S.optional(S3BackupMode),
+          S3BackupUpdate: S.optional(S3DestinationUpdate),
+          DataFormatConversionConfiguration: S.optional(DataFormatConversionConfiguration),
+          DynamicPartitioningConfiguration: S.optional(DynamicPartitioningConfiguration),
           FileExtension: S.optional(S.String),
           CustomTimeZone: S.optional(S.String),
         }),
@@ -2982,16 +3467,16 @@ function __c14(j: number): any {
         S.Struct({
           RoleARN: S.optional(S.String),
           ClusterJDBCURL: S.optional(S.String),
-          CopyCommand: S.optional(__S(28)),
+          CopyCommand: S.optional(CopyCommand),
           Username: S.optional(SensitiveString),
           Password: S.optional(SensitiveString),
-          RetryOptions: S.optional(__S(25)),
-          S3Update: S.optional(__S(112)),
-          ProcessingConfiguration: S.optional(__S(12)),
-          S3BackupMode: S.optional(S.String),
-          S3BackupUpdate: S.optional(__S(112)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          SecretsManagerConfiguration: S.optional(__S(29)),
+          RetryOptions: S.optional(RedshiftRetryOptions),
+          S3Update: S.optional(S3DestinationUpdate),
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
+          S3BackupMode: S.optional(RedshiftS3BackupMode),
+          S3BackupUpdate: S.optional(S3DestinationUpdate),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          SecretsManagerConfiguration: S.optional(SecretsManagerConfiguration),
         }),
       ).annotate({
         identifier: "RedshiftDestinationUpdate",
@@ -3004,13 +3489,13 @@ function __c14(j: number): any {
           ClusterEndpoint: S.optional(S.String),
           IndexName: S.optional(S.String),
           TypeName: S.optional(S.String),
-          IndexRotationPeriod: S.optional(S.String),
-          BufferingHints: S.optional(__S(31)),
-          RetryOptions: S.optional(__S(32)),
-          S3Update: S.optional(__S(112)),
-          ProcessingConfiguration: S.optional(__S(12)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          DocumentIdOptions: S.optional(__S(34)),
+          IndexRotationPeriod: S.optional(ElasticsearchIndexRotationPeriod),
+          BufferingHints: S.optional(ElasticsearchBufferingHints),
+          RetryOptions: S.optional(ElasticsearchRetryOptions),
+          S3Update: S.optional(S3DestinationUpdate),
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          DocumentIdOptions: S.optional(DocumentIdOptions),
         }),
       ).annotate({
         identifier: "ElasticsearchDestinationUpdate",
@@ -3023,13 +3508,13 @@ function __c14(j: number): any {
           ClusterEndpoint: S.optional(S.String),
           IndexName: S.optional(S.String),
           TypeName: S.optional(S.String),
-          IndexRotationPeriod: S.optional(S.String),
-          BufferingHints: S.optional(__S(31)),
-          RetryOptions: S.optional(__S(32)),
-          S3Update: S.optional(__S(112)),
-          ProcessingConfiguration: S.optional(__S(12)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          DocumentIdOptions: S.optional(__S(34)),
+          IndexRotationPeriod: S.optional(AmazonopensearchserviceIndexRotationPeriod),
+          BufferingHints: S.optional(AmazonopensearchserviceBufferingHints),
+          RetryOptions: S.optional(AmazonopensearchserviceRetryOptions),
+          S3Update: S.optional(S3DestinationUpdate),
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          DocumentIdOptions: S.optional(DocumentIdOptions),
         }),
       ).annotate({
         identifier: "AmazonopensearchserviceDestinationUpdate",
@@ -3038,31 +3523,31 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           HECEndpoint: S.optional(S.String),
-          HECEndpointType: S.optional(S.String),
+          HECEndpointType: S.optional(HECEndpointType),
           HECToken: S.optional(SensitiveString),
           HECAcknowledgmentTimeoutInSeconds: S.optional(S.Number),
-          RetryOptions: S.optional(__S(25)),
-          S3BackupMode: S.optional(S.String),
-          S3Update: S.optional(__S(112)),
-          ProcessingConfiguration: S.optional(__S(12)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          BufferingHints: S.optional(__S(37)),
-          SecretsManagerConfiguration: S.optional(__S(29)),
+          RetryOptions: S.optional(SplunkRetryOptions),
+          S3BackupMode: S.optional(SplunkS3BackupMode),
+          S3Update: S.optional(S3DestinationUpdate),
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          BufferingHints: S.optional(SplunkBufferingHints),
+          SecretsManagerConfiguration: S.optional(SecretsManagerConfiguration),
         }),
       ).annotate({ identifier: "SplunkDestinationUpdate" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          EndpointConfiguration: S.optional(__S(39)),
-          BufferingHints: S.optional(__S(40)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          RequestConfiguration: S.optional(__S(43)),
-          ProcessingConfiguration: S.optional(__S(12)),
+          EndpointConfiguration: S.optional(HttpEndpointConfiguration),
+          BufferingHints: S.optional(HttpEndpointBufferingHints),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          RequestConfiguration: S.optional(HttpEndpointRequestConfiguration),
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
           RoleARN: S.optional(S.String),
-          RetryOptions: S.optional(__S(25)),
-          S3BackupMode: S.optional(S.String),
-          S3Update: S.optional(__S(112)),
-          SecretsManagerConfiguration: S.optional(__S(29)),
+          RetryOptions: S.optional(HttpEndpointRetryOptions),
+          S3BackupMode: S.optional(HttpEndpointS3BackupMode),
+          S3Update: S.optional(S3DestinationUpdate),
+          SecretsManagerConfiguration: S.optional(SecretsManagerConfiguration),
         }),
       ).annotate({
         identifier: "HttpEndpointDestinationUpdate",
@@ -3073,11 +3558,11 @@ function __c14(j: number): any {
           RoleARN: S.optional(S.String),
           CollectionEndpoint: S.optional(S.String),
           IndexName: S.optional(S.String),
-          BufferingHints: S.optional(__S(31)),
-          RetryOptions: S.optional(__S(32)),
-          S3Update: S.optional(__S(112)),
-          ProcessingConfiguration: S.optional(__S(12)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
+          BufferingHints: S.optional(AmazonOpenSearchServerlessBufferingHints),
+          RetryOptions: S.optional(AmazonOpenSearchServerlessRetryOptions),
+          S3Update: S.optional(S3DestinationUpdate),
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
         }),
       ).annotate({
         identifier: "AmazonOpenSearchServerlessDestinationUpdate",
@@ -3096,18 +3581,18 @@ function __c15(j: number): any {
           Database: S.optional(SensitiveString),
           Schema: S.optional(SensitiveString),
           Table: S.optional(SensitiveString),
-          SnowflakeRoleConfiguration: S.optional(__S(50)),
-          DataLoadingOption: S.optional(S.String),
+          SnowflakeRoleConfiguration: S.optional(SnowflakeRoleConfiguration),
+          DataLoadingOption: S.optional(SnowflakeDataLoadingOption),
           MetaDataColumnName: S.optional(SensitiveString),
           ContentColumnName: S.optional(SensitiveString),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          ProcessingConfiguration: S.optional(__S(12)),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
           RoleARN: S.optional(S.String),
-          RetryOptions: S.optional(__S(25)),
-          S3BackupMode: S.optional(S.String),
-          S3Update: S.optional(__S(112)),
-          SecretsManagerConfiguration: S.optional(__S(29)),
-          BufferingHints: S.optional(__S(3)),
+          RetryOptions: S.optional(SnowflakeRetryOptions),
+          S3BackupMode: S.optional(SnowflakeS3BackupMode),
+          S3Update: S.optional(S3DestinationUpdate),
+          SecretsManagerConfiguration: S.optional(SecretsManagerConfiguration),
+          BufferingHints: S.optional(SnowflakeBufferingHints),
         }),
       ).annotate({
         identifier: "SnowflakeDestinationUpdate",
@@ -3115,18 +3600,18 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          DestinationTableConfigurationList: S.optional(__S(57)),
-          SchemaEvolutionConfiguration: S.optional(__S(58)),
-          TableCreationConfiguration: S.optional(__S(58)),
-          BufferingHints: S.optional(__S(3)),
-          CloudWatchLoggingOptions: S.optional(__S(6)),
-          ProcessingConfiguration: S.optional(__S(12)),
-          S3BackupMode: S.optional(S.String),
-          RetryOptions: S.optional(__S(25)),
+          DestinationTableConfigurationList: S.optional(DestinationTableConfigurationList),
+          SchemaEvolutionConfiguration: S.optional(SchemaEvolutionConfiguration),
+          TableCreationConfiguration: S.optional(TableCreationConfiguration),
+          BufferingHints: S.optional(BufferingHints),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          ProcessingConfiguration: S.optional(ProcessingConfiguration),
+          S3BackupMode: S.optional(IcebergS3BackupMode),
+          RetryOptions: S.optional(RetryOptions),
           RoleARN: S.optional(S.String),
           AppendOnly: S.optional(S.Boolean),
-          CatalogConfiguration: S.optional(__S(59)),
-          S3Configuration: S.optional(__S(7)),
+          CatalogConfiguration: S.optional(CatalogConfiguration),
+          S3Configuration: S.optional(S3DestinationConfiguration),
         }),
       ).annotate({ identifier: "IcebergDestinationUpdate" });
     case 2:
@@ -3135,58 +3620,21 @@ function __c15(j: number): any {
           DeliveryStreamName: S.String,
           CurrentDeliveryStreamVersionId: S.String,
           DestinationId: S.String,
-          S3DestinationUpdate: S.optional(__S(112)),
-          ExtendedS3DestinationUpdate: S.optional(__S(113)),
-          RedshiftDestinationUpdate: S.optional(__S(114)),
-          ElasticsearchDestinationUpdate: S.optional(__S(115)),
-          AmazonopensearchserviceDestinationUpdate: S.optional(__S(116)),
-          SplunkDestinationUpdate: S.optional(__S(117)),
-          HttpEndpointDestinationUpdate: S.optional(__S(118)),
-          AmazonOpenSearchServerlessDestinationUpdate: S.optional(__S(119)),
-          SnowflakeDestinationUpdate: S.optional(__S(120)),
-          IcebergDestinationUpdate: S.optional(__S(121)),
+          S3DestinationUpdate: S.optional(S3DestinationUpdate),
+          ExtendedS3DestinationUpdate: S.optional(ExtendedS3DestinationUpdate),
+          RedshiftDestinationUpdate: S.optional(RedshiftDestinationUpdate),
+          ElasticsearchDestinationUpdate: S.optional(ElasticsearchDestinationUpdate),
+          AmazonopensearchserviceDestinationUpdate: S.optional(
+            AmazonopensearchserviceDestinationUpdate,
+          ),
+          SplunkDestinationUpdate: S.optional(SplunkDestinationUpdate),
+          HttpEndpointDestinationUpdate: S.optional(HttpEndpointDestinationUpdate),
+          AmazonOpenSearchServerlessDestinationUpdate: S.optional(
+            AmazonOpenSearchServerlessDestinationUpdate,
+          ),
+          SnowflakeDestinationUpdate: S.optional(SnowflakeDestinationUpdate),
+          IcebergDestinationUpdate: S.optional(IcebergDestinationUpdate),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateDestinationInput" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
   }
 }

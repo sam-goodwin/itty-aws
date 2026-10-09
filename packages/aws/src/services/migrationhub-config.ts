@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "MigrationHub Config",
   serviceShapeName: "AWSMigrationHubMultiAccountService",
@@ -112,17 +110,24 @@ export class ThrottlingException
   ).pipe(C.withThrottlingError) {}
 export type HomeRegion = string;
 export type TargetType = "ACCOUNT" | (string & {});
+const TargetType = S.String;
+
 export type TargetId = string;
 export interface Target {
   Type: TargetType;
   Id?: string;
 }
+const Target = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Target>;
 export type DryRun = boolean;
 export interface CreateHomeRegionControlRequest {
   HomeRegion: string;
   Target: Target;
   DryRun?: boolean;
 }
+const CreateHomeRegionControlRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateHomeRegionControlRequest>;
 export type ControlId = string;
 export type RequestedTime = Date;
 export interface HomeRegionControl {
@@ -131,13 +136,26 @@ export interface HomeRegionControl {
   Target?: Target;
   RequestedTime?: Date;
 }
+const HomeRegionControl = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<HomeRegionControl>;
 export interface CreateHomeRegionControlResult {
   HomeRegionControl?: HomeRegionControl;
 }
+const CreateHomeRegionControlResult = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateHomeRegionControlResult>;
 export interface DeleteHomeRegionControlRequest {
   ControlId: string;
 }
+const DeleteHomeRegionControlRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeleteHomeRegionControlRequest>;
 export interface DeleteHomeRegionControlResult {}
+const DeleteHomeRegionControlResult = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteHomeRegionControlResult>;
 export type DescribeHomeRegionControlsMaxResults = number;
 export type Token = string;
 export interface DescribeHomeRegionControlsRequest {
@@ -147,15 +165,26 @@ export interface DescribeHomeRegionControlsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeHomeRegionControlsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DescribeHomeRegionControlsRequest>;
 export type HomeRegionControls = HomeRegionControl[];
+const HomeRegionControls = /*@__PURE__*/ __L.at(__c0, 7);
 export interface DescribeHomeRegionControlsResult {
   HomeRegionControls?: HomeRegionControl[];
   NextToken?: string;
 }
+const DescribeHomeRegionControlsResult = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DescribeHomeRegionControlsResult>;
 export interface GetHomeRegionRequest {}
+const GetHomeRegionRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetHomeRegionRequest>;
 export interface GetHomeRegionResult {
   HomeRegion?: string;
 }
+const GetHomeRegionResult = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetHomeRegionResult>;
 export type ErrorMessage = string;
 export type RetryAfterSeconds = number;
 export type CreateHomeRegionControlError =
@@ -175,8 +204,8 @@ export const createHomeRegionControl: API.OperationMethod<
   CreateHomeRegionControlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateHomeRegionControlRequest>,
-  output: __S(3) as any as S.Schema<CreateHomeRegionControlResult>,
+  input: CreateHomeRegionControlRequest,
+  output: CreateHomeRegionControlResult,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -206,8 +235,8 @@ export const deleteHomeRegionControl: API.OperationMethod<
   DeleteHomeRegionControlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DeleteHomeRegionControlRequest>,
-  output: __S(5) as any as S.Schema<DeleteHomeRegionControlResult>,
+  input: DeleteHomeRegionControlRequest,
+  output: DeleteHomeRegionControlResult,
   errors: [
     AccessDeniedException,
     InternalServerError,
@@ -238,8 +267,8 @@ export const describeHomeRegionControls: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(6) as any as S.Schema<DescribeHomeRegionControlsRequest>,
-  output: __S(8) as any as S.Schema<DescribeHomeRegionControlsResult>,
+  input: DescribeHomeRegionControlsRequest,
+  output: DescribeHomeRegionControlsResult,
   errors: [
     AccessDeniedException,
     InternalServerError,
@@ -277,8 +306,8 @@ export const getHomeRegion: API.OperationMethod<
   GetHomeRegionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<GetHomeRegionRequest>,
-  output: __S(10) as any as S.Schema<GetHomeRegionResult>,
+  input: GetHomeRegionRequest,
+  output: GetHomeRegionResult,
   errors: [
     AccessDeniedException,
     InternalServerError,
@@ -295,12 +324,12 @@ export const getHomeRegion: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Type: S.String, Id: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ Type: TargetType, Id: S.optional(S.String) })).annotate({
         identifier: "Target",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ HomeRegion: S.String, Target: __S(0), DryRun: S.optional(S.Boolean) }).pipe(
+        S.Struct({ HomeRegion: S.String, Target: Target, DryRun: S.optional(S.Boolean) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -311,12 +340,14 @@ function __c0(j: number): any {
         S.Struct({
           ControlId: S.optional(S.String),
           HomeRegion: S.optional(S.String),
-          Target: S.optional(__S(0)),
+          Target: S.optional(Target),
           RequestedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "HomeRegionControl" });
     case 3:
-      return S.suspend(() => S.Struct({ HomeRegionControl: S.optional(__S(2)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ HomeRegionControl: S.optional(HomeRegionControl) }),
+      ).annotate({
         identifier: "CreateHomeRegionControlResult",
       });
     case 4:
@@ -336,7 +367,7 @@ function __c0(j: number): any {
         S.Struct({
           ControlId: S.optional(S.String),
           HomeRegion: S.optional(S.String),
-          Target: S.optional(__S(0)),
+          Target: S.optional(Target),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -344,7 +375,7 @@ function __c0(j: number): any {
         identifier: "DescribeHomeRegionControlsRequest",
       });
     case 7:
-      return S.Array(__S(2));
+      return S.Array(HomeRegionControl);
   }
 }
 function __c1(j: number): any {
@@ -352,7 +383,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          HomeRegionControls: S.optional(__S(7)),
+          HomeRegionControls: S.optional(HomeRegionControls),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -368,18 +399,5 @@ function __c1(j: number): any {
       return S.suspend(() => S.Struct({ HomeRegion: S.optional(S.String) })).annotate({
         identifier: "GetHomeRegionResult",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

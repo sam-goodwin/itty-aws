@@ -7,15 +7,20 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type CreateMonitorRequestTagsMap = { [key: string]: string | undefined };
+const CreateMonitorRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateMonitorRequestTagsMap>;
+
 /** Flag specifying if the resource monitoring is enabled or disabled. */
 export type MonitorPropertiesInputMonitoringStatus = "Enabled" | "Disabled";
+const MonitorPropertiesInputMonitoringStatus = S.String;
+
 /** Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well. */
 export interface DatadogOrganizationProperties {
   /** Name of the Datadog organization. */
@@ -39,6 +44,11 @@ export interface DatadogOrganizationProperties {
   /** The configuration which describes the state of resource collection. This collects configuration information for all resources in a subscription. */
   resourceCollection?: boolean;
 }
+const DatadogOrganizationProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<DatadogOrganizationProperties>;
+
 /** Includes name, email and optionally, phone number. User Information can't be null. */
 export interface UserInfo {
   /** Name of the user */
@@ -48,6 +58,8 @@ export interface UserInfo {
   /** Phone number of the user used by Datadog for contacting them if needed */
   phoneNumber?: string;
 }
+const UserInfo = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<UserInfo>;
+
 /** Properties specific to the monitor resource. */
 export interface MonitorPropertiesInput {
   /** Flag specifying if the resource monitoring is enabled or disabled. */
@@ -57,16 +69,30 @@ export interface MonitorPropertiesInput {
   /** Includes name, email and optionally, phone number. User Information can't be null. */
   userInfo?: UserInfo;
 }
+const MonitorPropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<MonitorPropertiesInput>;
+
 export interface ResourceSku {
   /** Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'. */
   name: string;
 }
+const ResourceSku = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ResourceSku>;
+
 /** Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'. */
 export type ManagedIdentityTypes = "SystemAssigned" | "UserAssigned";
+const ManagedIdentityTypes = S.String;
+
 export interface IdentityPropertiesInput {
   /** Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'. */
   type?: ManagedIdentityTypes | (string & {});
 }
+const IdentityPropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<IdentityPropertiesInput>;
+
 export interface CreateMonitorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -83,10 +109,16 @@ export interface CreateMonitorRequest {
   sku?: ResourceSku;
   identity?: IdentityPropertiesInput;
 }
+const CreateMonitorRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateMonitorRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -102,8 +134,13 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SystemData>;
+
 /** Resource tags. */
 export type CreateMonitorResponseTagsMap = { [key: string]: string | undefined };
+const CreateMonitorResponseTagsMap =
+  CreateMonitorRequestTagsMap as any as S.Schema<CreateMonitorResponseTagsMap>;
+
 export type ProvisioningState =
   | "Accepted"
   | "Creating"
@@ -114,15 +151,23 @@ export type ProvisioningState =
   | "Canceled"
   | "Deleted"
   | "NotSpecified";
+const ProvisioningState = S.String;
+
 /** Flag specifying if the resource monitoring is enabled or disabled. */
 export type MonitorPropertiesMonitoringStatus = "Enabled" | "Disabled";
+const MonitorPropertiesMonitoringStatus = S.String;
+
 /** Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will go in Suspended state. */
 export type MarketplaceSubscriptionStatus =
   | "Provisioning"
   | "Active"
   | "Suspended"
   | "Unsubscribed";
+const MarketplaceSubscriptionStatus = S.String;
+
 export type LiftrResourceCategories = "Unknown" | "MonitorLogs";
+const LiftrResourceCategories = S.String;
+
 /** Properties specific to the monitor resource. */
 export interface MonitorProperties {
   provisioningState?: ProvisioningState;
@@ -138,6 +183,8 @@ export interface MonitorProperties {
   /** The priority of the resource. */
   liftrResourcePreference?: number;
 }
+const MonitorProperties = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<MonitorProperties>;
+
 export interface IdentityProperties {
   /** The identity ID. */
   principalId?: string;
@@ -146,6 +193,8 @@ export interface IdentityProperties {
   /** Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'. */
   type?: ManagedIdentityTypes;
 }
+const IdentityProperties = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<IdentityProperties>;
+
 export interface CreateMonitorResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -164,6 +213,11 @@ export interface CreateMonitorResponse {
   sku?: ResourceSku;
   identity?: IdentityProperties;
 }
+const CreateMonitorResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateMonitorResponse>;
+
 export interface DeleteMonitorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -172,7 +226,14 @@ export interface DeleteMonitorRequest {
   /** Monitor resource name */
   monitorName: string;
 }
+const DeleteMonitorRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DeleteMonitorRequest>;
+
 export interface DeleteMonitorResponse {}
+const DeleteMonitorResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeleteMonitorResponse>;
+
 export interface DeleteMonitoredSubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -183,7 +244,17 @@ export interface DeleteMonitoredSubscriptionRequest {
   /** The configuration name. Only 'default' value is supported. */
   configurationName: string;
 }
+const DeleteMonitoredSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteMonitoredSubscriptionRequest>;
+
 export interface DeleteMonitoredSubscriptionResponse {}
+const DeleteMonitoredSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DeleteMonitoredSubscriptionResponse>;
+
 export interface GetBillingInfoRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -192,6 +263,11 @@ export interface GetBillingInfoRequest {
   /** Monitor resource name */
   monitorName: string;
 }
+const GetBillingInfoRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetBillingInfoRequest>;
+
 /** Marketplace SAAS Info of the resource. */
 export interface MarketplaceSaaSInfo {
   /** Marketplace Subscription Id. This is a GUID-formatted string. */
@@ -205,6 +281,8 @@ export interface MarketplaceSaaSInfo {
   /** Flag specifying if the Marketplace status is subscribed or not. */
   subscribed?: boolean;
 }
+const MarketplaceSaaSInfo = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<MarketplaceSaaSInfo>;
+
 /** Partner Billing details associated with the resource. */
 export interface PartnerBillingEntity {
   /** The Datadog Organization Id. */
@@ -214,6 +292,8 @@ export interface PartnerBillingEntity {
   /** Link to the datadog organization page */
   partnerEntityUri?: string;
 }
+const PartnerBillingEntity = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<PartnerBillingEntity>;
+
 /** Marketplace Subscription and Organization details to which resource gets billed into. */
 export interface BillingInfoResponse {
   /** Marketplace Subscription details */
@@ -221,12 +301,19 @@ export interface BillingInfoResponse {
   /** Partner Billing Entity details: Organization Info */
   partnerBillingEntity?: PartnerBillingEntity;
 }
+const BillingInfoResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<BillingInfoResponse>;
+
 export interface GetCreationSupportedRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** Datadog Organization Id */
   datadogOrganizationId: string;
 }
+const GetCreationSupportedRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetCreationSupportedRequest>;
+
 /** Datadog resource can be created or not properties. */
 export interface CreateResourceSupportedProperties {
   /** The ARM id of the subscription. */
@@ -234,11 +321,21 @@ export interface CreateResourceSupportedProperties {
   /** Indicates if selected subscription supports Datadog resource creation, if not it is already being monitored for the selected organization via multi subscription feature. */
   creationSupported?: boolean;
 }
+const CreateResourceSupportedProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateResourceSupportedProperties>;
+
 /** Datadog resource can be created or not. */
 export interface CreateResourceSupportedResponse {
   /** Represents the properties of the resource. */
   properties?: CreateResourceSupportedProperties;
 }
+const CreateResourceSupportedResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateResourceSupportedResponse>;
+
 export interface GetMonitorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -247,6 +344,8 @@ export interface GetMonitorRequest {
   /** Monitor resource name */
   monitorName: string;
 }
+const GetMonitorRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GetMonitorRequest>;
+
 /** Resource tags. */
 export type GetMonitorResponseTagsMap = { [key: string]: string | undefined };
 export interface GetMonitorResponse {
@@ -267,6 +366,8 @@ export interface GetMonitorResponse {
   sku?: ResourceSku;
   identity?: IdentityProperties;
 }
+const GetMonitorResponse = CreateMonitorResponse as any as S.Schema<GetMonitorResponse>;
+
 export interface GetMonitorDefaultKeyRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -275,6 +376,11 @@ export interface GetMonitorDefaultKeyRequest {
   /** Monitor resource name */
   monitorName: string;
 }
+const GetMonitorDefaultKeyRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetMonitorDefaultKeyRequest>;
+
 export interface DatadogApiKey {
   /** The user that created the API key. */
   createdBy?: string;
@@ -285,6 +391,8 @@ export interface DatadogApiKey {
   /** The time of creation of the API key. */
   created?: string;
 }
+const DatadogApiKey = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<DatadogApiKey>;
+
 export interface GetMonitoredSubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -295,12 +403,23 @@ export interface GetMonitoredSubscriptionRequest {
   /** The configuration name. Only 'default' value is supported. */
   configurationName: string;
 }
+const GetMonitoredSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetMonitoredSubscriptionRequest>;
+
 /** The operation for the patch on the resource. */
 export type Operation = "AddBegin" | "AddComplete" | "DeleteBegin" | "DeleteComplete" | "Active";
+const Operation = S.String;
+
 /** The state of monitoring. */
 export type Status = "InProgress" | "Active" | "Failed" | "Deleting";
+const Status = S.String;
+
 /** Valid actions for a filtering tag. Exclusion takes priority over inclusion. */
 export type TagAction = "Include" | "Exclude";
+const TagAction = S.String;
+
 /** The definition of a filtering tag. Filtering tags are used for capturing resources and include/exclude them from being monitored. */
 export interface FilteringTag {
   /** The name (also known as the key) of the tag. */
@@ -310,8 +429,15 @@ export interface FilteringTag {
   /** Valid actions for a filtering tag. Exclusion takes priority over inclusion. */
   action?: TagAction | (string & {});
 }
+const FilteringTag = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<FilteringTag>;
+
 /** List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
 export type LogRulesFilteringTagsList = Array<FilteringTag>;
+const LogRulesFilteringTagsList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<LogRulesFilteringTagsList>;
+
 /** Set of rules for sending logs for the Monitor resource. */
 export interface LogRules {
   /** Flag specifying if AAD logs should be sent for the Monitor resource. */
@@ -323,15 +449,25 @@ export interface LogRules {
   /** List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
   filteringTags?: LogRulesFilteringTagsList;
 }
+const LogRules = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<LogRules>;
+
 /** List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
 export type MetricRulesFilteringTagsList = Array<FilteringTag>;
+const MetricRulesFilteringTagsList =
+  LogRulesFilteringTagsList as any as S.Schema<MetricRulesFilteringTagsList>;
+
 /** Set of rules for sending metrics for the Monitor resource. */
 export interface MetricRules {
   /** List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
   filteringTags?: MetricRulesFilteringTagsList;
 }
+const MetricRules = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<MetricRules>;
+
 /** List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
 export type AgentRulesFilteringTagsList = Array<FilteringTag>;
+const AgentRulesFilteringTagsList =
+  LogRulesFilteringTagsList as any as S.Schema<AgentRulesFilteringTagsList>;
+
 /** Set of rules for managing agents for the Monitor resource. */
 export interface AgentRules {
   /** Flag specifying if agent monitoring should be enabled for the Monitor resource. */
@@ -339,6 +475,8 @@ export interface AgentRules {
   /** List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
   filteringTags?: AgentRulesFilteringTagsList;
 }
+const AgentRules = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<AgentRules>;
+
 /** Definition of the properties for a TagRules resource. */
 export interface MonitoringTagRulesProperties {
   provisioningState?: ProvisioningState;
@@ -353,6 +491,11 @@ export interface MonitoringTagRulesProperties {
   /** Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent. */
   customMetrics?: boolean;
 }
+const MonitoringTagRulesProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<MonitoringTagRulesProperties>;
+
 /** The list of subscriptions and it's monitoring status by current Datadog monitor. */
 export interface MonitoredSubscription {
   /** The subscriptionId to be monitored. */
@@ -364,8 +507,18 @@ export interface MonitoredSubscription {
   /** Definition of the properties for a TagRules resource. */
   tagRules?: MonitoringTagRulesProperties;
 }
+const MonitoredSubscription = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<MonitoredSubscription>;
+
 /** List of subscriptions and the state of the monitoring. */
 export type SubscriptionListMonitoredSubscriptionListList = Array<MonitoredSubscription>;
+const SubscriptionListMonitoredSubscriptionListList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<SubscriptionListMonitoredSubscriptionListList>;
+
 /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
 export interface SubscriptionList {
   /** The operation for the patch on the resource. */
@@ -373,6 +526,8 @@ export interface SubscriptionList {
   /** List of subscriptions and the state of the monitoring. */
   monitoredSubscriptionList?: SubscriptionListMonitoredSubscriptionListList;
 }
+const SubscriptionList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<SubscriptionList>;
+
 export interface GetMonitoredSubscriptionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -385,6 +540,11 @@ export interface GetMonitoredSubscriptionResponse {
   /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
   properties?: SubscriptionList;
 }
+const GetMonitoredSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetMonitoredSubscriptionResponse>;
+
 export interface GetSingleSignOnConfigurationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -395,8 +555,15 @@ export interface GetSingleSignOnConfigurationRequest {
   /** Configuration name */
   configurationName: string;
 }
+const GetSingleSignOnConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetSingleSignOnConfigurationRequest>;
+
 /** Various states of the SSO resource */
 export type SingleSignOnStates = "Initial" | "Enable" | "Disable" | "Existing";
+const SingleSignOnStates = S.String;
+
 export interface DatadogSingleSignOnProperties {
   provisioningState?: ProvisioningState;
   /** Various states of the SSO resource */
@@ -406,6 +573,11 @@ export interface DatadogSingleSignOnProperties {
   /** The login URL specific to this Datadog Organization. */
   singleSignOnUrl?: string;
 }
+const DatadogSingleSignOnProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DatadogSingleSignOnProperties>;
+
 export interface GetSingleSignOnConfigurationResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -417,6 +589,11 @@ export interface GetSingleSignOnConfigurationResponse {
   systemData?: SystemData;
   properties?: DatadogSingleSignOnProperties;
 }
+const GetSingleSignOnConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetSingleSignOnConfigurationResponse>;
+
 export interface GetTagRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -427,6 +604,8 @@ export interface GetTagRuleRequest {
   /** Rule set name */
   ruleSetName: string;
 }
+const GetTagRuleRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<GetTagRuleRequest>;
+
 export interface GetTagRuleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -439,14 +618,26 @@ export interface GetTagRuleResponse {
   /** Definition of the properties for a TagRules resource. */
   properties?: MonitoringTagRulesProperties;
 }
+const GetTagRuleResponse = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<GetTagRuleResponse>;
+
 export interface ListCreationSupportedRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** Datadog Organization Id */
   datadogOrganizationId: string;
 }
+const ListCreationSupportedRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ListCreationSupportedRequest>;
+
 /** The CreateResourceSupportedResponse items on this page */
 export type CreateResourceSupportedResponseListValueList = Array<CreateResourceSupportedResponse>;
+const CreateResourceSupportedResponseListValueList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<CreateResourceSupportedResponseListValueList>;
+
 /** Paged collection of CreateResourceSupportedResponse items */
 export interface CreateResourceSupportedResponseList {
   /** The CreateResourceSupportedResponse items on this page */
@@ -454,10 +645,20 @@ export interface CreateResourceSupportedResponseList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const CreateResourceSupportedResponseList = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateResourceSupportedResponseList>;
+
 export interface ListMarketplaceAgreementsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListMarketplaceAgreementsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListMarketplaceAgreementsRequest>;
+
 /** Terms properties. */
 export interface DatadogAgreementProperties {
   /** Publisher identifier string. */
@@ -477,18 +678,27 @@ export interface DatadogAgreementProperties {
   /** If any version of the terms have been accepted, otherwise false. */
   accepted?: boolean;
 }
+const DatadogAgreementProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DatadogAgreementProperties>;
+
 /** The type of identity that created the resource. */
 export type DatadogAgreementResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const DatadogAgreementResourceSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type DatadogAgreementResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const DatadogAgreementResourceSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface DatadogAgreementResourceSystemData {
   /** The identity that created the resource. */
@@ -504,6 +714,11 @@ export interface DatadogAgreementResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const DatadogAgreementResourceSystemData = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DatadogAgreementResourceSystemData>;
+
 export interface DatadogAgreementResource {
   /** ARM id of the resource. */
   id?: string;
@@ -516,8 +731,18 @@ export interface DatadogAgreementResource {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: DatadogAgreementResourceSystemData;
 }
+const DatadogAgreementResource = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DatadogAgreementResource>;
+
 /** The DatadogAgreementResource items on this page */
 export type DatadogAgreementResourceListResponseValueList = Array<DatadogAgreementResource>;
+const DatadogAgreementResourceListResponseValueList = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DatadogAgreementResourceListResponseValueList>;
+
 /** Response of a list operation. */
 export interface DatadogAgreementResourceListResponse {
   /** The DatadogAgreementResource items on this page */
@@ -525,6 +750,11 @@ export interface DatadogAgreementResourceListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DatadogAgreementResourceListResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<DatadogAgreementResourceListResponse>;
+
 export interface ListMonitorApiKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -533,8 +763,18 @@ export interface ListMonitorApiKeysRequest {
   /** Monitor resource name */
   monitorName: string;
 }
+const ListMonitorApiKeysRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListMonitorApiKeysRequest>;
+
 /** The DatadogApiKey items on this page */
 export type DatadogApiKeyListResponseValueList = Array<DatadogApiKey>;
+const DatadogApiKeyListResponseValueList = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DatadogApiKeyListResponseValueList>;
+
 /** Response of a list operation. */
 export interface DatadogApiKeyListResponse {
   /** The DatadogApiKey items on this page */
@@ -542,12 +782,22 @@ export interface DatadogApiKeyListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DatadogApiKeyListResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DatadogApiKeyListResponse>;
+
 export interface ListMonitorByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListMonitorByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ListMonitorByResourceGroupRequest>;
+
 /** Resource tags. */
 export type DatadogMonitorResourceTagsMap = { [key: string]: string | undefined };
 /** Concrete tracked resource types can be created by aliasing this type using a specific property type. */
@@ -569,8 +819,15 @@ export interface DatadogMonitorResource {
   sku?: ResourceSku;
   identity?: IdentityProperties;
 }
+const DatadogMonitorResource = CreateMonitorResponse as any as S.Schema<DatadogMonitorResource>;
+
 /** The DatadogMonitorResource items on this page */
 export type DatadogMonitorResourceListResponseValueList = Array<DatadogMonitorResource>;
+const DatadogMonitorResourceListResponseValueList = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<DatadogMonitorResourceListResponseValueList>;
+
 /** Response of a list operation. */
 export interface DatadogMonitorResourceListResponse {
   /** The DatadogMonitorResource items on this page */
@@ -578,6 +835,11 @@ export interface DatadogMonitorResourceListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DatadogMonitorResourceListResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<DatadogMonitorResourceListResponse>;
+
 export interface ListMonitoredSubscriptionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -586,6 +848,11 @@ export interface ListMonitoredSubscriptionsRequest {
   /** Monitor resource name */
   monitorName: string;
 }
+const ListMonitoredSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ListMonitoredSubscriptionsRequest>;
+
 /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
 export interface MonitoredSubscriptionProperties {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -599,8 +866,16 @@ export interface MonitoredSubscriptionProperties {
   /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
   properties?: SubscriptionList;
 }
+const MonitoredSubscriptionProperties =
+  GetMonitoredSubscriptionResponse as any as S.Schema<MonitoredSubscriptionProperties>;
+
 /** The MonitoredSubscriptionProperties items on this page */
 export type MonitoredSubscriptionPropertiesListValueList = Array<MonitoredSubscriptionProperties>;
+const MonitoredSubscriptionPropertiesListValueList = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<MonitoredSubscriptionPropertiesListValueList>;
+
 /** Paged collection of MonitoredSubscriptionProperties items */
 export interface MonitoredSubscriptionPropertiesList {
   /** The MonitoredSubscriptionProperties items on this page */
@@ -608,6 +883,11 @@ export interface MonitoredSubscriptionPropertiesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const MonitoredSubscriptionPropertiesList = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<MonitoredSubscriptionPropertiesList>;
+
 export interface ListMonitorHostsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -616,10 +896,22 @@ export interface ListMonitorHostsRequest {
   /** Monitor resource name */
   monitorName: string;
 }
+const ListMonitorHostsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListMonitorHostsRequest>;
+
 /** The aliases for the host installed via the Datadog agent. */
 export type DatadogHostAliasesList = Array<string>;
+const DatadogHostAliasesList = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<DatadogHostAliasesList>;
+
 /** The Datadog integrations reporting metrics for the host. */
 export type DatadogHostAppsList = Array<string>;
+const DatadogHostAppsList = DatadogHostAliasesList as any as S.Schema<DatadogHostAppsList>;
+
 export interface DatadogInstallMethod {
   /** The tool. */
   tool?: string;
@@ -628,16 +920,22 @@ export interface DatadogInstallMethod {
   /** The installer version. */
   installerVersion?: string;
 }
+const DatadogInstallMethod = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<DatadogInstallMethod>;
+
 export interface DatadogLogsAgent {
   /** The transport. */
   transport?: string;
 }
+const DatadogLogsAgent = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<DatadogLogsAgent>;
+
 export interface DatadogHostMetadata {
   /** The agent version. */
   agentVersion?: string;
   installMethod?: DatadogInstallMethod;
   logsAgent?: DatadogLogsAgent;
 }
+const DatadogHostMetadata = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<DatadogHostMetadata>;
+
 export interface DatadogHost {
   /** The name of the host. */
   name?: string;
@@ -647,8 +945,15 @@ export interface DatadogHost {
   apps?: DatadogHostAppsList;
   meta?: DatadogHostMetadata;
 }
+const DatadogHost = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<DatadogHost>;
+
 /** The DatadogHost items on this page */
 export type DatadogHostListResponseValueList = Array<DatadogHost>;
+const DatadogHostListResponseValueList = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DatadogHostListResponseValueList>;
+
 /** Response of a list operation. */
 export interface DatadogHostListResponse {
   /** The DatadogHost items on this page */
@@ -656,6 +961,11 @@ export interface DatadogHostListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DatadogHostListResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<DatadogHostListResponse>;
+
 export interface ListMonitorLinkedResourcesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -664,6 +974,11 @@ export interface ListMonitorLinkedResourcesRequest {
   /** Monitor resource name */
   monitorName: string;
 }
+const ListMonitorLinkedResourcesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ListMonitorLinkedResourcesRequest>;
+
 /** The definition of a linked resource. */
 export interface LinkedResource {
   /** The ARM id of the linked resource. */
@@ -671,8 +986,15 @@ export interface LinkedResource {
   /** The location of the linked resource. */
   location?: string;
 }
+const LinkedResource = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<LinkedResource>;
+
 /** The LinkedResource items on this page */
 export type LinkedResourceListResponseValueList = Array<LinkedResource>;
+const LinkedResourceListResponseValueList = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<LinkedResourceListResponseValueList>;
+
 /** Response of a list operation. */
 export interface LinkedResourceListResponse {
   /** The LinkedResource items on this page */
@@ -680,6 +1002,11 @@ export interface LinkedResourceListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const LinkedResourceListResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<LinkedResourceListResponse>;
+
 export interface ListMonitorMonitoredResourcesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -688,6 +1015,11 @@ export interface ListMonitorMonitoredResourcesRequest {
   /** Monitor resource name */
   monitorName: string;
 }
+const ListMonitorMonitoredResourcesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListMonitorMonitoredResourcesRequest>;
+
 /** The properties of a resource currently being monitored by the Datadog monitor resource. */
 export interface MonitoredResource {
   /** The ARM id of the resource. */
@@ -701,8 +1033,15 @@ export interface MonitoredResource {
   /** Reason for why the resource is sending logs (or why it is not sending). */
   reasonForLogsStatus?: string;
 }
+const MonitoredResource = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<MonitoredResource>;
+
 /** The MonitoredResource items on this page */
 export type MonitoredResourceListResponseValueList = Array<MonitoredResource>;
+const MonitoredResourceListResponseValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<MonitoredResourceListResponseValueList>;
+
 /** Response of a list operation. */
 export interface MonitoredResourceListResponse {
   /** The MonitoredResource items on this page */
@@ -710,11 +1049,23 @@ export interface MonitoredResourceListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const MonitoredResourceListResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<MonitoredResourceListResponse>;
+
 export interface ListMonitorsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListMonitorsRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<ListMonitorsRequest>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider, i.e., Microsoft.Datadog. */
@@ -726,6 +1077,8 @@ export interface OperationDisplay {
   /** Description of the operation, e.g., 'Write monitors'. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<OperationDisplay>;
+
 /** A Microsoft.Datadog REST API operation. */
 export interface OperationResult {
   /** Operation name, i.e., {provider}/{resource}/{operation}. */
@@ -735,8 +1088,15 @@ export interface OperationResult {
   /** Indicates whether the operation is a data action */
   isDataAction?: boolean;
 }
+const OperationResult = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<OperationResult>;
+
 /** The list of operations. */
 export type OperationListResultValueList = Array<OperationResult>;
+const OperationListResultValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<OperationListResultValueList>;
+
 /** Represents a paginated list of operation results. */
 export interface OperationListResult {
   /** The list of operations. */
@@ -744,6 +1104,8 @@ export interface OperationListResult {
   /** The URL to get the next set of results, if any. */
   nextLink?: string;
 }
+const OperationListResult = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<OperationListResult>;
+
 export interface ListSingleSignOnConfigurationsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -752,6 +1114,11 @@ export interface ListSingleSignOnConfigurationsRequest {
   /** Monitor resource name */
   monitorName: string;
 }
+const ListSingleSignOnConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ListSingleSignOnConfigurationsRequest>;
+
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
 export interface DatadogSingleSignOnResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -764,8 +1131,16 @@ export interface DatadogSingleSignOnResource {
   systemData?: SystemData;
   properties?: DatadogSingleSignOnProperties;
 }
+const DatadogSingleSignOnResource =
+  GetSingleSignOnConfigurationResponse as any as S.Schema<DatadogSingleSignOnResource>;
+
 /** The DatadogSingleSignOnResource items on this page */
 export type DatadogSingleSignOnResourceListResponseValueList = Array<DatadogSingleSignOnResource>;
+const DatadogSingleSignOnResourceListResponseValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<DatadogSingleSignOnResourceListResponseValueList>;
+
 /** Response of a list operation. */
 export interface DatadogSingleSignOnResourceListResponse {
   /** The DatadogSingleSignOnResource items on this page */
@@ -773,6 +1148,11 @@ export interface DatadogSingleSignOnResourceListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DatadogSingleSignOnResourceListResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<DatadogSingleSignOnResourceListResponse>;
+
 export interface ListTagRulesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -781,6 +1161,8 @@ export interface ListTagRulesRequest {
   /** Monitor resource name */
   monitorName: string;
 }
+const ListTagRulesRequest = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<ListTagRulesRequest>;
+
 /** Capture logs and metrics of Azure resources based on ARM tags. */
 export interface MonitoringTagRules {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -794,8 +1176,15 @@ export interface MonitoringTagRules {
   /** Definition of the properties for a TagRules resource. */
   properties?: MonitoringTagRulesProperties;
 }
+const MonitoringTagRules = GetTagRuleResponse as any as S.Schema<MonitoringTagRules>;
+
 /** The MonitoringTagRules items on this page */
 export type MonitoringTagRulesListResponseValueList = Array<MonitoringTagRules>;
+const MonitoringTagRulesListResponseValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<MonitoringTagRulesListResponseValueList>;
+
 /** Response of a list operation. */
 export interface MonitoringTagRulesListResponse {
   /** The MonitoringTagRules items on this page */
@@ -803,12 +1192,22 @@ export interface MonitoringTagRulesListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const MonitoringTagRulesListResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<MonitoringTagRulesListResponse>;
+
 export interface MarketplaceAgreementsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** Represents the properties of the resource. */
   properties?: DatadogAgreementProperties;
 }
+const MarketplaceAgreementsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<MarketplaceAgreementsCreateOrUpdateRequest>;
+
 export interface OrganizationsResubscribeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -822,8 +1221,16 @@ export interface OrganizationsResubscribeRequest {
   /** Newly selected Azure resource group in which the new Marketplace subscription will be created for Resubscribe */
   resourceGroup?: string;
 }
+const OrganizationsResubscribeRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<OrganizationsResubscribeRequest>;
+
 /** Resource tags. */
 export type OrganizationsResubscribeResponseTagsMap = { [key: string]: string | undefined };
+const OrganizationsResubscribeResponseTagsMap =
+  CreateMonitorRequestTagsMap as any as S.Schema<OrganizationsResubscribeResponseTagsMap>;
+
 export interface OrganizationsResubscribeResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -842,6 +1249,11 @@ export interface OrganizationsResubscribeResponse {
   sku?: ResourceSku;
   identity?: IdentityProperties;
 }
+const OrganizationsResubscribeResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<OrganizationsResubscribeResponse>;
+
 export interface RefreshMonitorSetPasswordLinkRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -850,9 +1262,19 @@ export interface RefreshMonitorSetPasswordLinkRequest {
   /** Monitor resource name */
   monitorName: string;
 }
+const RefreshMonitorSetPasswordLinkRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<RefreshMonitorSetPasswordLinkRequest>;
+
 export interface DatadogSetPasswordLink {
   setPasswordLink?: string | Redacted.Redacted<string>;
 }
+const DatadogSetPasswordLink = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<DatadogSetPasswordLink>;
+
 export interface SetMonitorDefaultKeyRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -869,13 +1291,26 @@ export interface SetMonitorDefaultKeyRequest {
   /** The time of creation of the API key. */
   created?: string;
 }
+const SetMonitorDefaultKeyRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<SetMonitorDefaultKeyRequest>;
+
 export interface SetMonitorDefaultKeyResponse {}
+const SetMonitorDefaultKeyResponse =
+  DeleteMonitorResponse as any as S.Schema<SetMonitorDefaultKeyResponse>;
+
 export interface DatadogSingleSignOnPropertiesInput {
   /** Various states of the SSO resource */
   singleSignOnState?: SingleSignOnStates | (string & {});
   /** The Id of the Enterprise App used for Single sign-on. */
   enterpriseAppId?: string;
 }
+const DatadogSingleSignOnPropertiesInput = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<DatadogSingleSignOnPropertiesInput>;
+
 export interface SingleSignOnConfigurationsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -887,6 +1322,11 @@ export interface SingleSignOnConfigurationsCreateOrUpdateRequest {
   configurationName: string;
   properties?: DatadogSingleSignOnPropertiesInput;
 }
+const SingleSignOnConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<SingleSignOnConfigurationsCreateOrUpdateRequest>;
+
 export interface SingleSignOnConfigurationsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -898,6 +1338,9 @@ export interface SingleSignOnConfigurationsCreateOrUpdateResponse {
   systemData?: SystemData;
   properties?: DatadogSingleSignOnProperties;
 }
+const SingleSignOnConfigurationsCreateOrUpdateResponse =
+  GetSingleSignOnConfigurationResponse as any as S.Schema<SingleSignOnConfigurationsCreateOrUpdateResponse>;
+
 /** Definition of the properties for a TagRules resource. */
 export interface MonitoringTagRulesPropertiesInput {
   /** Set of rules for sending logs for the Monitor resource. */
@@ -911,6 +1354,11 @@ export interface MonitoringTagRulesPropertiesInput {
   /** Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent. */
   customMetrics?: boolean;
 }
+const MonitoringTagRulesPropertiesInput = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<MonitoringTagRulesPropertiesInput>;
+
 export interface TagRulesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -923,6 +1371,11 @@ export interface TagRulesCreateOrUpdateRequest {
   /** Definition of the properties for a TagRules resource. */
   properties?: MonitoringTagRulesPropertiesInput;
 }
+const TagRulesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<TagRulesCreateOrUpdateRequest>;
+
 export interface TagRulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -935,8 +1388,15 @@ export interface TagRulesCreateOrUpdateResponse {
   /** Definition of the properties for a TagRules resource. */
   properties?: MonitoringTagRulesProperties;
 }
+const TagRulesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<TagRulesCreateOrUpdateResponse>;
+
 /** Flag specifying if the resource monitoring is enabled or disabled. */
 export type MonitorUpdatePropertiesMonitoringStatus = "Enabled" | "Disabled";
+const MonitorUpdatePropertiesMonitoringStatus = S.String;
+
 /** The set of properties that can be update in a PATCH request to a monitor resource. */
 export interface MonitorUpdateProperties {
   /** Flag specifying if the resource monitoring is enabled or disabled. */
@@ -946,8 +1406,16 @@ export interface MonitorUpdateProperties {
   /** The new resource collection value of the monitor resource. This collects configuration information for all resources in a subscription. */
   resourceCollection?: boolean;
 }
+const MonitorUpdateProperties = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<MonitorUpdateProperties>;
+
 /** The new tags of the monitor resource. */
 export type UpdateMonitorRequestTagsMap = { [key: string]: string | undefined };
+const UpdateMonitorRequestTagsMap =
+  CreateMonitorRequestTagsMap as any as S.Schema<UpdateMonitorRequestTagsMap>;
+
 export interface UpdateMonitorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -961,6 +1429,11 @@ export interface UpdateMonitorRequest {
   tags?: UpdateMonitorRequestTagsMap;
   sku?: ResourceSku;
 }
+const UpdateMonitorRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<UpdateMonitorRequest>;
+
 /** Resource tags. */
 export type UpdateMonitorResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateMonitorResponse {
@@ -981,6 +1454,8 @@ export interface UpdateMonitorResponse {
   sku?: ResourceSku;
   identity?: IdentityProperties;
 }
+const UpdateMonitorResponse = CreateMonitorResponse as any as S.Schema<UpdateMonitorResponse>;
+
 /** The list of subscriptions and it's monitoring status by current Datadog monitor. */
 export interface MonitoredSubscriptionInput {
   /** The subscriptionId to be monitored. */
@@ -992,8 +1467,18 @@ export interface MonitoredSubscriptionInput {
   /** Definition of the properties for a TagRules resource. */
   tagRules?: MonitoringTagRulesPropertiesInput;
 }
+const MonitoredSubscriptionInput = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<MonitoredSubscriptionInput>;
+
 /** List of subscriptions and the state of the monitoring. */
 export type SubscriptionListInputMonitoredSubscriptionListList = Array<MonitoredSubscriptionInput>;
+const SubscriptionListInputMonitoredSubscriptionListList = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<SubscriptionListInputMonitoredSubscriptionListList>;
+
 /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
 export interface SubscriptionListInput {
   /** The operation for the patch on the resource. */
@@ -1001,6 +1486,11 @@ export interface SubscriptionListInput {
   /** List of subscriptions and the state of the monitoring. */
   monitoredSubscriptionList?: SubscriptionListInputMonitoredSubscriptionListList;
 }
+const SubscriptionListInput = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<SubscriptionListInput>;
+
 export interface UpdateMonitoredSubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1013,6 +1503,11 @@ export interface UpdateMonitoredSubscriptionRequest {
   /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
   properties?: SubscriptionListInput;
 }
+const UpdateMonitoredSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<UpdateMonitoredSubscriptionRequest>;
+
 export interface UpdateMonitoredSubscriptionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1025,6 +1520,9 @@ export interface UpdateMonitoredSubscriptionResponse {
   /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
   properties?: SubscriptionList;
 }
+const UpdateMonitoredSubscriptionResponse =
+  GetMonitoredSubscriptionResponse as any as S.Schema<UpdateMonitoredSubscriptionResponse>;
+
 export interface UpdateMonitoredSubscriptionsCreateorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1037,6 +1535,11 @@ export interface UpdateMonitoredSubscriptionsCreateorRequest {
   /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
   properties?: SubscriptionListInput;
 }
+const UpdateMonitoredSubscriptionsCreateorRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<UpdateMonitoredSubscriptionsCreateorRequest>;
+
 export interface UpdateMonitoredSubscriptionsCreateorResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1049,6 +1552,9 @@ export interface UpdateMonitoredSubscriptionsCreateorResponse {
   /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
   properties?: SubscriptionList;
 }
+const UpdateMonitoredSubscriptionsCreateorResponse =
+  GetMonitoredSubscriptionResponse as any as S.Schema<UpdateMonitoredSubscriptionsCreateorResponse>;
+
 export type CreateMonitorError = AzureOpError;
 /** Create a monitor resource. Create a monitor resource. */
 export const CreateMonitor: API.OperationMethod<
@@ -1057,8 +1563,8 @@ export const CreateMonitor: API.OperationMethod<
   CreateMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateMonitorRequest>,
-  output: __S(10) as any as S.Schema<CreateMonitorResponse>,
+  input: CreateMonitorRequest,
+  output: CreateMonitorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1072,8 +1578,8 @@ export const DeleteMonitor: API.OperationMethod<
   DeleteMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<DeleteMonitorRequest>,
-  output: __S(12) as any as S.Schema<DeleteMonitorResponse>,
+  input: DeleteMonitorRequest,
+  output: DeleteMonitorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1087,8 +1593,8 @@ export const DeleteMonitoredSubscription: API.OperationMethod<
   DeleteMonitoredSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<DeleteMonitoredSubscriptionRequest>,
-  output: __S(14) as any as S.Schema<DeleteMonitoredSubscriptionResponse>,
+  input: DeleteMonitoredSubscriptionRequest,
+  output: DeleteMonitoredSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1102,8 +1608,8 @@ export const GetBillingInfo: API.OperationMethod<
   GetBillingInfoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<GetBillingInfoRequest>,
-  output: __S(18) as any as S.Schema<BillingInfoResponse>,
+  input: GetBillingInfoRequest,
+  output: BillingInfoResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1117,8 +1623,8 @@ export const GetCreationSupported: API.OperationMethod<
   GetCreationSupportedError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetCreationSupportedRequest>,
-  output: __S(21) as any as S.Schema<CreateResourceSupportedResponse>,
+  input: GetCreationSupportedRequest,
+  output: CreateResourceSupportedResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1132,8 +1638,8 @@ export const GetMonitor: API.OperationMethod<
   GetMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<GetMonitorRequest>,
-  output: __S(10) as any as S.Schema<GetMonitorResponse>,
+  input: GetMonitorRequest,
+  output: GetMonitorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1147,8 +1653,8 @@ export const GetMonitorDefaultKey: API.OperationMethod<
   GetMonitorDefaultKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<GetMonitorDefaultKeyRequest>,
-  output: __S(24) as any as S.Schema<DatadogApiKey>,
+  input: GetMonitorDefaultKeyRequest,
+  output: DatadogApiKey,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1162,8 +1668,8 @@ export const GetMonitoredSubscription: API.OperationMethod<
   GetMonitoredSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<GetMonitoredSubscriptionRequest>,
-  output: __S(35) as any as S.Schema<GetMonitoredSubscriptionResponse>,
+  input: GetMonitoredSubscriptionRequest,
+  output: GetMonitoredSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1177,8 +1683,8 @@ export const GetSingleSignOnConfiguration: API.OperationMethod<
   GetSingleSignOnConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GetSingleSignOnConfigurationRequest>,
-  output: __S(38) as any as S.Schema<GetSingleSignOnConfigurationResponse>,
+  input: GetSingleSignOnConfigurationRequest,
+  output: GetSingleSignOnConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1192,8 +1698,8 @@ export const GetTagRule: API.OperationMethod<
   GetTagRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<GetTagRuleRequest>,
-  output: __S(40) as any as S.Schema<GetTagRuleResponse>,
+  input: GetTagRuleRequest,
+  output: GetTagRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1207,8 +1713,8 @@ export const ListCreationSupported: API.OperationMethod<
   ListCreationSupportedError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<ListCreationSupportedRequest>,
-  output: __S(43) as any as S.Schema<CreateResourceSupportedResponseList>,
+  input: ListCreationSupportedRequest,
+  output: CreateResourceSupportedResponseList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1222,8 +1728,8 @@ export const ListMarketplaceAgreements: API.OperationMethod<
   ListMarketplaceAgreementsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<ListMarketplaceAgreementsRequest>,
-  output: __S(49) as any as S.Schema<DatadogAgreementResourceListResponse>,
+  input: ListMarketplaceAgreementsRequest,
+  output: DatadogAgreementResourceListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1237,8 +1743,8 @@ export const ListMonitorApiKeys: API.OperationMethod<
   ListMonitorApiKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<ListMonitorApiKeysRequest>,
-  output: __S(52) as any as S.Schema<DatadogApiKeyListResponse>,
+  input: ListMonitorApiKeysRequest,
+  output: DatadogApiKeyListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1252,8 +1758,8 @@ export const ListMonitorByResourceGroup: API.OperationMethod<
   ListMonitorByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<ListMonitorByResourceGroupRequest>,
-  output: __S(55) as any as S.Schema<DatadogMonitorResourceListResponse>,
+  input: ListMonitorByResourceGroupRequest,
+  output: DatadogMonitorResourceListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1267,8 +1773,8 @@ export const ListMonitoredSubscriptions: API.OperationMethod<
   ListMonitoredSubscriptionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<ListMonitoredSubscriptionsRequest>,
-  output: __S(58) as any as S.Schema<MonitoredSubscriptionPropertiesList>,
+  input: ListMonitoredSubscriptionsRequest,
+  output: MonitoredSubscriptionPropertiesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1282,8 +1788,8 @@ export const ListMonitorHosts: API.OperationMethod<
   ListMonitorHostsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<ListMonitorHostsRequest>,
-  output: __S(66) as any as S.Schema<DatadogHostListResponse>,
+  input: ListMonitorHostsRequest,
+  output: DatadogHostListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1297,8 +1803,8 @@ export const ListMonitorLinkedResources: API.OperationMethod<
   ListMonitorLinkedResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<ListMonitorLinkedResourcesRequest>,
-  output: __S(70) as any as S.Schema<LinkedResourceListResponse>,
+  input: ListMonitorLinkedResourcesRequest,
+  output: LinkedResourceListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1312,8 +1818,8 @@ export const ListMonitorMonitoredResources: API.OperationMethod<
   ListMonitorMonitoredResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<ListMonitorMonitoredResourcesRequest>,
-  output: __S(74) as any as S.Schema<MonitoredResourceListResponse>,
+  input: ListMonitorMonitoredResourcesRequest,
+  output: MonitoredResourceListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1327,8 +1833,8 @@ export const ListMonitors: API.OperationMethod<
   ListMonitorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<ListMonitorsRequest>,
-  output: __S(55) as any as S.Schema<DatadogMonitorResourceListResponse>,
+  input: ListMonitorsRequest,
+  output: DatadogMonitorResourceListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1342,8 +1848,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<ListOperationsRequest>,
-  output: __S(80) as any as S.Schema<OperationListResult>,
+  input: ListOperationsRequest,
+  output: OperationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1357,8 +1863,8 @@ export const ListSingleSignOnConfigurations: API.OperationMethod<
   ListSingleSignOnConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<ListSingleSignOnConfigurationsRequest>,
-  output: __S(83) as any as S.Schema<DatadogSingleSignOnResourceListResponse>,
+  input: ListSingleSignOnConfigurationsRequest,
+  output: DatadogSingleSignOnResourceListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1372,8 +1878,8 @@ export const ListTagRules: API.OperationMethod<
   ListTagRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<ListTagRulesRequest>,
-  output: __S(86) as any as S.Schema<MonitoringTagRulesListResponse>,
+  input: ListTagRulesRequest,
+  output: MonitoringTagRulesListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1387,8 +1893,8 @@ export const MarketplaceAgreementsCreateOrUpdate: API.OperationMethod<
   MarketplaceAgreementsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<MarketplaceAgreementsCreateOrUpdateRequest>,
-  output: __S(47) as any as S.Schema<DatadogAgreementResource>,
+  input: MarketplaceAgreementsCreateOrUpdateRequest,
+  output: DatadogAgreementResource,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1402,8 +1908,8 @@ export const OrganizationsResubscribe: API.OperationMethod<
   OrganizationsResubscribeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<OrganizationsResubscribeRequest>,
-  output: __S(89) as any as S.Schema<OrganizationsResubscribeResponse>,
+  input: OrganizationsResubscribeRequest,
+  output: OrganizationsResubscribeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1417,8 +1923,8 @@ export const RefreshMonitorSetPasswordLink: API.OperationMethod<
   RefreshMonitorSetPasswordLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<RefreshMonitorSetPasswordLinkRequest>,
-  output: __S(91) as any as S.Schema<DatadogSetPasswordLink>,
+  input: RefreshMonitorSetPasswordLinkRequest,
+  output: DatadogSetPasswordLink,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1432,8 +1938,8 @@ export const SetMonitorDefaultKey: API.OperationMethod<
   SetMonitorDefaultKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<SetMonitorDefaultKeyRequest>,
-  output: __S(12) as any as S.Schema<SetMonitorDefaultKeyResponse>,
+  input: SetMonitorDefaultKeyRequest,
+  output: SetMonitorDefaultKeyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1447,8 +1953,8 @@ export const SingleSignOnConfigurationsCreateOrUpdate: API.OperationMethod<
   SingleSignOnConfigurationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<SingleSignOnConfigurationsCreateOrUpdateRequest>,
-  output: __S(38) as any as S.Schema<SingleSignOnConfigurationsCreateOrUpdateResponse>,
+  input: SingleSignOnConfigurationsCreateOrUpdateRequest,
+  output: SingleSignOnConfigurationsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1462,8 +1968,8 @@ export const TagRulesCreateOrUpdate: API.OperationMethod<
   TagRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<TagRulesCreateOrUpdateRequest>,
-  output: __S(97) as any as S.Schema<TagRulesCreateOrUpdateResponse>,
+  input: TagRulesCreateOrUpdateRequest,
+  output: TagRulesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1477,8 +1983,8 @@ export const UpdateMonitor: API.OperationMethod<
   UpdateMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<UpdateMonitorRequest>,
-  output: __S(10) as any as S.Schema<UpdateMonitorResponse>,
+  input: UpdateMonitorRequest,
+  output: UpdateMonitorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1492,8 +1998,8 @@ export const UpdateMonitoredSubscription: API.OperationMethod<
   UpdateMonitoredSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<UpdateMonitoredSubscriptionRequest>,
-  output: __S(35) as any as S.Schema<UpdateMonitoredSubscriptionResponse>,
+  input: UpdateMonitoredSubscriptionRequest,
+  output: UpdateMonitoredSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1507,8 +2013,8 @@ export const UpdateMonitoredSubscriptionsCreateor: API.OperationMethod<
   UpdateMonitoredSubscriptionsCreateorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<UpdateMonitoredSubscriptionsCreateorRequest>,
-  output: __S(35) as any as S.Schema<UpdateMonitoredSubscriptionsCreateorResponse>,
+  input: UpdateMonitoredSubscriptionsCreateorRequest,
+  output: UpdateMonitoredSubscriptionsCreateorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1547,9 +2053,9 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          monitoringStatus: S.optional(S.String),
-          datadogOrganizationProperties: S.optional(__S(1)),
-          userInfo: S.optional(__S(2)),
+          monitoringStatus: S.optional(MonitorPropertiesInputMonitoringStatus),
+          datadogOrganizationProperties: S.optional(DatadogOrganizationProperties),
+          userInfo: S.optional(UserInfo),
         }),
       ).annotate({ identifier: "MonitorPropertiesInput" });
     case 4:
@@ -1561,7 +2067,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(ManagedIdentityTypes),
         }),
       ).annotate({ identifier: "IdentityPropertiesInput" });
     case 6:
@@ -1570,11 +2076,11 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(CreateMonitorRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(3)),
-          sku: S.optional(__S(4)),
-          identity: S.optional(__S(5)),
+          properties: S.optional(MonitorPropertiesInput),
+          sku: S.optional(ResourceSku),
+          identity: S.optional(IdentityPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1588,10 +2094,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -1602,12 +2108,12 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          monitoringStatus: S.optional(S.String),
-          marketplaceSubscriptionStatus: S.optional(S.String),
-          datadogOrganizationProperties: S.optional(__S(1)),
-          userInfo: S.optional(__S(2)),
-          liftrResourceCategory: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
+          monitoringStatus: S.optional(MonitorPropertiesMonitoringStatus),
+          marketplaceSubscriptionStatus: S.optional(MarketplaceSubscriptionStatus),
+          datadogOrganizationProperties: S.optional(DatadogOrganizationProperties),
+          userInfo: S.optional(UserInfo),
+          liftrResourceCategory: S.optional(LiftrResourceCategories),
           liftrResourcePreference: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MonitorProperties" });
@@ -1616,7 +2122,7 @@ function __c1(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(ManagedIdentityTypes),
         }),
       ).annotate({ identifier: "IdentityProperties" });
     case 2:
@@ -1625,12 +2131,12 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateMonitorResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(8)),
-          sku: S.optional(__S(4)),
-          identity: S.optional(__S(9)),
+          properties: S.optional(MonitorProperties),
+          sku: S.optional(ResourceSku),
+          identity: S.optional(IdentityProperties),
         }),
       ).annotate({ identifier: "CreateMonitorResponse" });
     case 3:
@@ -1714,8 +2220,8 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          marketplaceSaasInfo: S.optional(__S(16)),
-          partnerBillingEntity: S.optional(__S(17)),
+          marketplaceSaasInfo: S.optional(MarketplaceSaaSInfo),
+          partnerBillingEntity: S.optional(PartnerBillingEntity),
         }),
       ).annotate({ identifier: "BillingInfoResponse" });
     case 3:
@@ -1746,7 +2252,7 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(20)),
+          properties: S.optional(CreateResourceSupportedProperties),
         }),
       ).annotate({
         identifier: "CreateResourceSupportedResponse",
@@ -1819,40 +2325,40 @@ function __c3(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           value: S.optional(S.String),
-          action: S.optional(S.String),
+          action: S.optional(TagAction),
         }),
       ).annotate({ identifier: "FilteringTag" });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(FilteringTag);
     case 4:
       return S.suspend(() =>
         S.Struct({
           sendAadLogs: S.optional(S.Boolean),
           sendSubscriptionLogs: S.optional(S.Boolean),
           sendResourceLogs: S.optional(S.Boolean),
-          filteringTags: S.optional(__S(27)),
+          filteringTags: S.optional(LogRulesFilteringTagsList),
         }),
       ).annotate({ identifier: "LogRules" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          filteringTags: S.optional(__S(27)),
+          filteringTags: S.optional(MetricRulesFilteringTagsList),
         }),
       ).annotate({ identifier: "MetricRules" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           enableAgentMonitoring: S.optional(S.Boolean),
-          filteringTags: S.optional(__S(27)),
+          filteringTags: S.optional(AgentRulesFilteringTagsList),
         }),
       ).annotate({ identifier: "AgentRules" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          logRules: S.optional(__S(28)),
-          metricRules: S.optional(__S(29)),
-          agentRules: S.optional(__S(30)),
+          provisioningState: S.optional(ProvisioningState),
+          logRules: S.optional(LogRules),
+          metricRules: S.optional(MetricRules),
+          agentRules: S.optional(AgentRules),
           automuting: S.optional(S.Boolean),
           customMetrics: S.optional(S.Boolean),
         }),
@@ -1867,18 +2373,18 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(Status),
           error: S.optional(S.String),
-          tagRules: S.optional(__S(31)),
+          tagRules: S.optional(MonitoringTagRulesProperties),
         }),
       ).annotate({ identifier: "MonitoredSubscription" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(MonitoredSubscription);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          operation: S.optional(S.String),
-          monitoredSubscriptionList: S.optional(__S(33)),
+          operation: S.optional(Operation),
+          monitoredSubscriptionList: S.optional(SubscriptionListMonitoredSubscriptionListList),
         }),
       ).annotate({ identifier: "SubscriptionList" });
     case 3:
@@ -1887,8 +2393,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(34)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SubscriptionList),
         }),
       ).annotate({
         identifier: "GetMonitoredSubscriptionResponse",
@@ -1914,8 +2420,8 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          singleSignOnState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
+          singleSignOnState: S.optional(SingleSignOnStates),
           enterpriseAppId: S.optional(S.String),
           singleSignOnUrl: S.optional(S.String),
         }),
@@ -1928,8 +2434,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(37)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DatadogSingleSignOnProperties),
         }),
       ).annotate({
         identifier: "GetSingleSignOnConfigurationResponse",
@@ -1960,8 +2466,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(31)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(MonitoringTagRulesProperties),
         }),
       ).annotate({ identifier: "GetTagRuleResponse" });
     case 1:
@@ -1981,11 +2487,11 @@ function __c5(j: number): any {
         identifier: "ListCreationSupportedRequest",
       });
     case 2:
-      return S.Array(__S(21));
+      return S.Array(CreateResourceSupportedResponse);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(42),
+          value: CreateResourceSupportedResponseListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2025,10 +2531,10 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(DatadogAgreementResourceSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(DatadogAgreementResourceSystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -2040,8 +2546,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(45)),
-          systemData: S.optional(__S(46)),
+          properties: S.optional(DatadogAgreementProperties),
+          systemData: S.optional(DatadogAgreementResourceSystemData),
         }),
       ).annotate({ identifier: "DatadogAgreementResource" });
   }
@@ -2049,11 +2555,11 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(DatadogAgreementResource);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(48),
+          value: DatadogAgreementResourceListResponseValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2077,11 +2583,11 @@ function __c6(j: number): any {
         identifier: "ListMonitorApiKeysRequest",
       });
     case 3:
-      return S.Array(__S(24));
+      return S.Array(DatadogApiKey);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(51),
+          value: DatadogApiKeyListResponseValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2104,11 +2610,11 @@ function __c6(j: number): any {
         identifier: "ListMonitorByResourceGroupRequest",
       });
     case 6:
-      return S.Array(__S(10));
+      return S.Array(DatadogMonitorResource);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(54),
+          value: DatadogMonitorResourceListResponseValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2136,11 +2642,11 @@ function __c7(j: number): any {
         identifier: "ListMonitoredSubscriptionsRequest",
       });
     case 1:
-      return S.Array(__S(35));
+      return S.Array(MonitoredSubscriptionProperties);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(57),
+          value: MonitoredSubscriptionPropertiesListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2181,8 +2687,8 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           agentVersion: S.optional(S.String),
-          installMethod: S.optional(__S(61)),
-          logsAgent: S.optional(__S(62)),
+          installMethod: S.optional(DatadogInstallMethod),
+          logsAgent: S.optional(DatadogLogsAgent),
         }),
       ).annotate({ identifier: "DatadogHostMetadata" });
   }
@@ -2193,17 +2699,17 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          aliases: S.optional(__S(60)),
-          apps: S.optional(__S(60)),
-          meta: S.optional(__S(63)),
+          aliases: S.optional(DatadogHostAliasesList),
+          apps: S.optional(DatadogHostAppsList),
+          meta: S.optional(DatadogHostMetadata),
         }),
       ).annotate({ identifier: "DatadogHost" });
     case 1:
-      return S.Array(__S(64));
+      return S.Array(DatadogHost);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(65),
+          value: DatadogHostListResponseValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatadogHostListResponse" });
@@ -2232,11 +2738,11 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "LinkedResource" });
     case 5:
-      return S.Array(__S(68));
+      return S.Array(LinkedResource);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(69),
+          value: LinkedResourceListResponseValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2274,11 +2780,11 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "MonitoredResource" });
     case 1:
-      return S.Array(__S(72));
+      return S.Array(MonitoredResource);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(73),
+          value: MonitoredResourceListResponseValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2321,12 +2827,12 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(77)),
+          display: S.optional(OperationDisplay),
           isDataAction: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "OperationResult" });
     case 7:
-      return S.Array(__S(78));
+      return S.Array(OperationResult);
   }
 }
 function __c10(j: number): any {
@@ -2334,7 +2840,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(79),
+          value: OperationListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -2356,11 +2862,11 @@ function __c10(j: number): any {
         identifier: "ListSingleSignOnConfigurationsRequest",
       });
     case 2:
-      return S.Array(__S(38));
+      return S.Array(DatadogSingleSignOnResource);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(82),
+          value: DatadogSingleSignOnResourceListResponseValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2382,11 +2888,11 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "ListTagRulesRequest" });
     case 5:
-      return S.Array(__S(40));
+      return S.Array(MonitoringTagRules);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(85),
+          value: MonitoringTagRulesListResponseValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2396,7 +2902,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(45)),
+          properties: S.optional(DatadogAgreementProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2418,7 +2924,7 @@ function __c11(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
-          sku: S.optional(__S(4)),
+          sku: S.optional(ResourceSku),
           azureSubscriptionId: S.optional(S.String),
           resourceGroup: S.optional(S.String),
         }).pipe(
@@ -2438,12 +2944,12 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(OrganizationsResubscribeResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(8)),
-          sku: S.optional(__S(4)),
-          identity: S.optional(__S(9)),
+          properties: S.optional(MonitorProperties),
+          sku: S.optional(ResourceSku),
+          identity: S.optional(IdentityProperties),
         }),
       ).annotate({
         identifier: "OrganizationsResubscribeResponse",
@@ -2495,7 +3001,7 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          singleSignOnState: S.optional(S.String),
+          singleSignOnState: S.optional(SingleSignOnStates),
           enterpriseAppId: S.optional(S.String),
         }),
       ).annotate({
@@ -2508,7 +3014,7 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(93)),
+          properties: S.optional(DatadogSingleSignOnPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2523,9 +3029,9 @@ function __c11(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          logRules: S.optional(__S(28)),
-          metricRules: S.optional(__S(29)),
-          agentRules: S.optional(__S(30)),
+          logRules: S.optional(LogRules),
+          metricRules: S.optional(MetricRules),
+          agentRules: S.optional(AgentRules),
           automuting: S.optional(S.Boolean),
           customMetrics: S.optional(S.Boolean),
         }),
@@ -2543,7 +3049,7 @@ function __c12(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
           ruleSetName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(95)),
+          properties: S.optional(MonitoringTagRulesPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2561,8 +3067,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(31)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(MonitoringTagRulesProperties),
         }),
       ).annotate({
         identifier: "TagRulesCreateOrUpdateResponse",
@@ -2570,7 +3076,7 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          monitoringStatus: S.optional(S.String),
+          monitoringStatus: S.optional(MonitorUpdatePropertiesMonitoringStatus),
           cspm: S.optional(S.Boolean),
           resourceCollection: S.optional(S.Boolean),
         }),
@@ -2581,9 +3087,9 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(98)),
-          tags: S.optional(__S(0)),
-          sku: S.optional(__S(4)),
+          properties: S.optional(MonitorUpdateProperties),
+          tags: S.optional(UpdateMonitorRequestTagsMap),
+          sku: S.optional(ResourceSku),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2597,20 +3103,20 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(Status),
           error: S.optional(S.String),
-          tagRules: S.optional(__S(95)),
+          tagRules: S.optional(MonitoringTagRulesPropertiesInput),
         }),
       ).annotate({
         identifier: "MonitoredSubscriptionInput",
       });
     case 5:
-      return S.Array(__S(100));
+      return S.Array(MonitoredSubscriptionInput);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          operation: S.optional(S.String),
-          monitoredSubscriptionList: S.optional(__S(101)),
+          operation: S.optional(Operation),
+          monitoredSubscriptionList: S.optional(SubscriptionListInputMonitoredSubscriptionListList),
         }),
       ).annotate({ identifier: "SubscriptionListInput" });
     case 7:
@@ -2620,7 +3126,7 @@ function __c12(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(102)),
+          properties: S.optional(SubscriptionListInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2643,7 +3149,7 @@ function __c13(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(102)),
+          properties: S.optional(SubscriptionListInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2655,42 +3161,5 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "UpdateMonitoredSubscriptionsCreateorRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
   }
 }

@@ -12,8 +12,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -74,7 +72,14 @@ export interface CreateMtlsCertificateRequest {
   /** The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page. */
   privateKey?: string;
 }
+const CreateMtlsCertificateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateMtlsCertificateRequest>;
+
 export type CreateResponseType = "custom" | "gateway_managed" | "access_managed";
+const CreateResponseType = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateMtlsCertificateResponse {
   /** Certificate identifier tag. */
@@ -100,13 +105,25 @@ export interface CreateMtlsCertificateResponse {
   /** This is the time the certificate was uploaded. */
   uploadedOn?: string | null;
 }
+const CreateMtlsCertificateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateMtlsCertificateResponse>;
+
 export interface DeleteMtlsCertificateRequest {
   /** Identifier. */
   accountId: string;
   /** Certificate identifier tag. */
   mtlsCertificateId: string;
 }
+const DeleteMtlsCertificateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteMtlsCertificateRequest>;
+
 export type DeleteResponseType = "custom" | "gateway_managed" | "access_managed";
+const DeleteResponseType = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteMtlsCertificateResponse {
   /** Certificate identifier tag. */
@@ -130,31 +147,61 @@ export interface DeleteMtlsCertificateResponse {
   /** This is the time the certificate was uploaded. */
   uploadedOn?: string | null;
 }
+const DeleteMtlsCertificateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeleteMtlsCertificateResponse>;
+
 export interface GetAssociationRequest {
   /** Identifier. */
   accountId: string;
   /** Certificate identifier tag. */
   mtlsCertificateId: string;
 }
+const GetAssociationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetAssociationRequest>;
+
 export interface AssociationsGetResultItem {
   /** The service using the certificate. */
   service?: string | null;
   /** Certificate deployment status for the given service. */
   status?: string | null;
 }
+const AssociationsGetResultItem = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AssociationsGetResultItem>;
+
 export type AssociationsGetResultList = Array<AssociationsGetResultItem>;
+const AssociationsGetResultList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AssociationsGetResultList>;
+
 export interface GetAssociationResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: AssociationsGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const GetAssociationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetAssociationResponse>;
+
 export interface GetMtlsCertificateRequest {
   /** Identifier. */
   accountId: string;
   /** Certificate identifier tag. */
   mtlsCertificateId: string;
 }
+const GetMtlsCertificateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetMtlsCertificateRequest>;
+
 export type GetResponseType = "custom" | "gateway_managed" | "access_managed";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetMtlsCertificateResponse {
@@ -179,15 +226,29 @@ export interface GetMtlsCertificateResponse {
   /** This is the time the certificate was uploaded. */
   uploadedOn?: string | null;
 }
+const GetMtlsCertificateResponse =
+  DeleteMtlsCertificateResponse as any as S.Schema<GetMtlsCertificateResponse>;
+
 export type ListRequestType = "custom" | "gateway_managed" | "access_managed";
+const ListRequestType = S.String;
+
 export type ListRequestTypeList = Array<ListRequestType | (string & {})>;
+const ListRequestTypeList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ListRequestTypeList>;
+
 export interface ListMtlsCertificatesRequest {
   /** Identifier. */
   accountId: string;
   /** Filters results by certificate type. Multiple types can be comma-separated. */
   type?: ListRequestTypeList;
 }
+const ListMtlsCertificatesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListMtlsCertificatesRequest>;
+
 export type ListResultItemType = "custom" | "gateway_managed" | "access_managed";
+const ListResultItemType = S.String;
+
 export interface ListResultItem {
   /** Certificate identifier tag. */
   id?: string | null;
@@ -210,13 +271,22 @@ export interface ListResultItem {
   /** This is the time the certificate was uploaded. */
   uploadedOn?: string | null;
 }
+const ListResultItem = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ListResultItem>;
+
 export type ListResultList = Array<ListResultItem>;
+const ListResultList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ListResultList>;
+
 export interface ListMtlsCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListMtlsCertificatesResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ListMtlsCertificatesResponse>;
+
 export type CreateMtlsCertificateError = CertificateAlreadyExists | CloudflareOpError;
 /** Upload a certificate that you want to use with mTLS-enabled Cloudflare services, such as Bring Your Own CA (BYO-CA) for mTLS. To create certificates issued by the Cloudflare managed CA, use the [Create Client Certificate endpoint](https://developers.cloudflare.com/api/resources/client_certificates/methods/create/). */
 export const createMtlsCertificate: API.OperationMethod<
@@ -225,8 +295,8 @@ export const createMtlsCertificate: API.OperationMethod<
   CreateMtlsCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateMtlsCertificateRequest>,
-  output: __S(1) as any as S.Schema<CreateMtlsCertificateResponse>,
+  input: CreateMtlsCertificateRequest,
+  output: CreateMtlsCertificateResponse,
   errors: [CertificateAlreadyExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -244,8 +314,8 @@ export const deleteMtlsCertificate: API.OperationMethod<
   DeleteMtlsCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteMtlsCertificateRequest>,
-  output: __S(3) as any as S.Schema<DeleteMtlsCertificateResponse>,
+  input: DeleteMtlsCertificateRequest,
+  output: DeleteMtlsCertificateResponse,
   errors: [
     CertificateNotFound,
     CertificateAlreadyDeleted,
@@ -267,8 +337,8 @@ export const getAssociation: API.PaginatedOperationMethod<
   AssociationsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(4) as any as S.Schema<GetAssociationRequest>,
-    output: __S(7) as any as S.Schema<GetAssociationResponse>,
+    input: GetAssociationRequest,
+    output: GetAssociationResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -285,8 +355,8 @@ export const getMtlsCertificate: API.OperationMethod<
   GetMtlsCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<GetMtlsCertificateRequest>,
-  output: __S(3) as any as S.Schema<GetMtlsCertificateResponse>,
+  input: GetMtlsCertificateRequest,
+  output: GetMtlsCertificateResponse,
   errors: [CertificateNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -302,8 +372,8 @@ export const listMtlsCertificates: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(10) as any as S.Schema<ListMtlsCertificatesRequest>,
-    output: __S(13) as any as S.Schema<ListMtlsCertificatesResponse>,
+    input: ListMtlsCertificatesRequest,
+    output: ListMtlsCertificatesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -342,7 +412,7 @@ function __c0(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
           signature: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(CreateResponseType)),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
           uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -377,7 +447,7 @@ function __c0(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
           signature: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(DeleteResponseType)),
           uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -408,11 +478,11 @@ function __c0(j: number): any {
         identifier: "AssociationsGetResultItem",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(AssociationsGetResultItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: __S(6).pipe(T.EnvelopePayload()),
+          result: AssociationsGetResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetAssociationResponse" });
@@ -438,12 +508,12 @@ function __c1(j: number): any {
         identifier: "GetMtlsCertificateRequest",
       });
     case 1:
-      return S.Array(S.String);
+      return S.Array(ListRequestType);
     case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          type: S.optional(__S(9).pipe(T.Query())),
+          type: S.optional(ListRequestTypeList.pipe(T.Query())),
         })
           .pipe(
             T.Http({ method: "GET", uri: "/accounts/{account_id}/mtls_certificates", code: 200 }),
@@ -463,33 +533,20 @@ function __c1(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
           signature: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(ListResultItemType)),
           uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
         }),
       ).annotate({ identifier: "ListResultItem" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(ListResultItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: __S(12).pipe(T.EnvelopePayload()),
+          result: ListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListMtlsCertificatesResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

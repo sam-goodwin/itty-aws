@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Service Quotas",
   serviceShapeName: "ServiceQuotasV20190624",
@@ -182,12 +180,28 @@ export class TooManyTagsException
     /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export interface AssociateServiceQuotaTemplateRequest {}
+const AssociateServiceQuotaTemplateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AssociateServiceQuotaTemplateRequest>;
 export interface AssociateServiceQuotaTemplateResponse {}
+const AssociateServiceQuotaTemplateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AssociateServiceQuotaTemplateResponse>;
 export type RequestId = string;
 export interface CreateSupportCaseRequest {
   RequestId: string;
 }
+const CreateSupportCaseRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateSupportCaseRequest>;
 export interface CreateSupportCaseResponse {}
+const CreateSupportCaseResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateSupportCaseResponse>;
 export type ServiceCode = string;
 export type QuotaCode = string;
 export type AwsRegion = string;
@@ -196,27 +210,62 @@ export interface DeleteServiceQuotaIncreaseRequestFromTemplateRequest {
   QuotaCode: string;
   AwsRegion: string;
 }
+const DeleteServiceQuotaIncreaseRequestFromTemplateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeleteServiceQuotaIncreaseRequestFromTemplateRequest>;
 export interface DeleteServiceQuotaIncreaseRequestFromTemplateResponse {}
+const DeleteServiceQuotaIncreaseRequestFromTemplateResponse =
+  AssociateServiceQuotaTemplateResponse as any as S.Schema<DeleteServiceQuotaIncreaseRequestFromTemplateResponse>;
 export interface DisassociateServiceQuotaTemplateRequest {}
+const DisassociateServiceQuotaTemplateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DisassociateServiceQuotaTemplateRequest>;
 export interface DisassociateServiceQuotaTemplateResponse {}
+const DisassociateServiceQuotaTemplateResponse =
+  AssociateServiceQuotaTemplateResponse as any as S.Schema<DisassociateServiceQuotaTemplateResponse>;
 export interface GetAssociationForServiceQuotaTemplateRequest {}
+const GetAssociationForServiceQuotaTemplateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetAssociationForServiceQuotaTemplateRequest>;
 export type ServiceQuotaTemplateAssociationStatus = "ASSOCIATED" | "DISASSOCIATED" | (string & {});
+const ServiceQuotaTemplateAssociationStatus = S.String;
+
 export interface GetAssociationForServiceQuotaTemplateResponse {
   ServiceQuotaTemplateAssociationStatus?: ServiceQuotaTemplateAssociationStatus;
 }
+const GetAssociationForServiceQuotaTemplateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetAssociationForServiceQuotaTemplateResponse>;
 export interface GetAutoManagementConfigurationRequest {}
+const GetAutoManagementConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetAutoManagementConfigurationRequest>;
 export type OptInLevel = "ACCOUNT" | (string & {});
+const OptInLevel = S.String;
+
 export type OptInType = "NotifyOnly" | "NotifyAndAdjust" | (string & {});
+const OptInType = S.String;
+
 export type AmazonResourceName = string;
 export type OptInStatus = "ENABLED" | "DISABLED" | (string & {});
+const OptInStatus = S.String;
+
 export type ExcludedService = string;
 export type QuotaName = string;
 export interface QuotaInfo {
   QuotaCode?: string;
   QuotaName?: string;
 }
+const QuotaInfo = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<QuotaInfo>;
 export type QuotaInfoList = QuotaInfo[];
+const QuotaInfoList = /*@__PURE__*/ __L.at(__c1, 2);
 export type ExclusionQuotaList = { [key: string]: QuotaInfo[] | undefined };
+const ExclusionQuotaList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface GetAutoManagementConfigurationResponse {
   OptInLevel?: OptInLevel;
   OptInType?: OptInType;
@@ -224,10 +273,18 @@ export interface GetAutoManagementConfigurationResponse {
   OptInStatus?: OptInStatus;
   ExclusionList?: { [key: string]: QuotaInfo[] | undefined };
 }
+const GetAutoManagementConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetAutoManagementConfigurationResponse>;
 export interface GetAWSDefaultServiceQuotaRequest {
   ServiceCode: string;
   QuotaCode: string;
 }
+const GetAWSDefaultServiceQuotaRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetAWSDefaultServiceQuotaRequest>;
 export type ServiceName = string;
 export type QuotaArn = string;
 export type QuotaValue = number;
@@ -239,6 +296,7 @@ export type QuotaMetricName = string;
 export type MetricDimensionName = string;
 export type MetricDimensionValue = string;
 export type MetricDimensionsMapDefinition = { [key: string]: string | undefined };
+const MetricDimensionsMapDefinition = /*@__PURE__*/ __L.at(__c1, 6);
 export type Statistic = string;
 export interface MetricInfo {
   MetricNamespace?: string;
@@ -246,6 +304,7 @@ export interface MetricInfo {
   MetricDimensions?: { [key: string]: string | undefined };
   MetricStatisticRecommendation?: string;
 }
+const MetricInfo = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<MetricInfo>;
 export type PeriodValue = number;
 export type PeriodUnit =
   | "MICROSECOND"
@@ -256,32 +315,45 @@ export type PeriodUnit =
   | "DAY"
   | "WEEK"
   | (string & {});
+const PeriodUnit = S.String;
+
 export interface QuotaPeriod {
   PeriodValue?: number;
   PeriodUnit?: PeriodUnit;
 }
+const QuotaPeriod = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<QuotaPeriod>;
 export type ErrorCode =
   | "DEPENDENCY_ACCESS_DENIED_ERROR"
   | "DEPENDENCY_THROTTLING_ERROR"
   | "DEPENDENCY_SERVICE_ERROR"
   | "SERVICE_QUOTA_NOT_AVAILABLE_ERROR"
   | (string & {});
+const ErrorCode = S.String;
+
 export type ErrorMessage = string;
 export interface ErrorReason {
   ErrorCode?: ErrorCode;
   ErrorMessage?: string;
 }
+const ErrorReason = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ErrorReason>;
 export type AppliedLevelEnum = "ACCOUNT" | "RESOURCE" | "ALL" | (string & {});
+const AppliedLevelEnum = S.String;
+
 export type QuotaContextScope = "RESOURCE" | "ACCOUNT" | (string & {});
+const QuotaContextScope = S.String;
+
 export type QuotaContextScopeType = string;
 export type QuotaContextId = string;
 export type AdjustableAtLevelEnum = "ACCOUNT" | "PER_RESOURCE" | "ALL" | (string & {});
+const AdjustableAtLevelEnum = S.String;
+
 export interface QuotaContextInfo {
   ContextScope?: QuotaContextScope;
   ContextScopeType?: string;
   ContextId?: string;
   AdjustableAtLevel?: AdjustableAtLevelEnum;
 }
+const QuotaContextInfo = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<QuotaContextInfo>;
 export type QuotaDescription = string;
 export interface ServiceQuota {
   ServiceCode?: string;
@@ -300,9 +372,14 @@ export interface ServiceQuota {
   QuotaContext?: QuotaContextInfo;
   Description?: string;
 }
+const ServiceQuota = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ServiceQuota>;
 export interface GetAWSDefaultServiceQuotaResponse {
   Quota?: ServiceQuota;
 }
+const GetAWSDefaultServiceQuotaResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetAWSDefaultServiceQuotaResponse>;
 export type ReportId = string;
 export type NextToken = string;
 export type MaxResultsUtilization = number;
@@ -311,7 +388,13 @@ export interface GetQuotaUtilizationReportRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const GetQuotaUtilizationReportRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetQuotaUtilizationReportRequest>;
 export type ReportStatus = "PENDING" | "IN_PROGRESS" | "COMPLETED" | "FAILED" | (string & {});
+const ReportStatus = S.String;
+
 export type TotalCount = number;
 export type UtilizationPct = number;
 export type DefaultValue = number;
@@ -327,7 +410,9 @@ export interface QuotaUtilizationInfo {
   ServiceName?: string;
   Adjustable?: boolean;
 }
+const QuotaUtilizationInfo = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<QuotaUtilizationInfo>;
 export type QuotaUtilizationInfoList = QuotaUtilizationInfo[];
+const QuotaUtilizationInfoList = /*@__PURE__*/ __L.at(__c2, 7);
 export type ReportErrorCode = string;
 export type ReportErrorMessage = string;
 export interface GetQuotaUtilizationReportResponse {
@@ -340,10 +425,20 @@ export interface GetQuotaUtilizationReportResponse {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
+const GetQuotaUtilizationReportResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetQuotaUtilizationReportResponse>;
 export interface GetRequestedServiceQuotaChangeRequest {
   RequestId: string;
 }
+const GetRequestedServiceQuotaChangeRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetRequestedServiceQuotaChangeRequest>;
 export type RequestType = "AutomaticManagement" | (string & {});
+const RequestType = S.String;
+
 export type CustomerServiceEngagementId = string;
 export type RequestStatus =
   | "PENDING"
@@ -354,6 +449,8 @@ export type RequestStatus =
   | "NOT_APPROVED"
   | "INVALID_REQUEST"
   | (string & {});
+const RequestStatus = S.String;
+
 export type Requester = string;
 export interface RequestedServiceQuotaChange {
   Id?: string;
@@ -374,22 +471,42 @@ export interface RequestedServiceQuotaChange {
   QuotaRequestedAtLevel?: AppliedLevelEnum;
   QuotaContext?: QuotaContextInfo;
 }
+const RequestedServiceQuotaChange = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<RequestedServiceQuotaChange>;
 export interface GetRequestedServiceQuotaChangeResponse {
   RequestedQuota?: RequestedServiceQuotaChange;
 }
+const GetRequestedServiceQuotaChangeResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetRequestedServiceQuotaChangeResponse>;
 export interface GetServiceQuotaRequest {
   ServiceCode: string;
   QuotaCode: string;
   ContextId?: string;
 }
+const GetServiceQuotaRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetServiceQuotaRequest>;
 export interface GetServiceQuotaResponse {
   Quota?: ServiceQuota;
 }
+const GetServiceQuotaResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetServiceQuotaResponse>;
 export interface GetServiceQuotaIncreaseRequestFromTemplateRequest {
   ServiceCode: string;
   QuotaCode: string;
   AwsRegion: string;
 }
+const GetServiceQuotaIncreaseRequestFromTemplateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetServiceQuotaIncreaseRequestFromTemplateRequest>;
 export interface ServiceQuotaIncreaseRequestInTemplate {
   ServiceCode?: string;
   ServiceName?: string;
@@ -400,20 +517,37 @@ export interface ServiceQuotaIncreaseRequestInTemplate {
   Unit?: string;
   GlobalQuota?: boolean;
 }
+const ServiceQuotaIncreaseRequestInTemplate = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ServiceQuotaIncreaseRequestInTemplate>;
 export interface GetServiceQuotaIncreaseRequestFromTemplateResponse {
   ServiceQuotaIncreaseRequestInTemplate?: ServiceQuotaIncreaseRequestInTemplate;
 }
+const GetServiceQuotaIncreaseRequestFromTemplateResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetServiceQuotaIncreaseRequestFromTemplateResponse>;
 export type MaxResults = number;
 export interface ListAWSDefaultServiceQuotasRequest {
   ServiceCode: string;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListAWSDefaultServiceQuotasRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListAWSDefaultServiceQuotasRequest>;
 export type ServiceQuotaListDefinition = ServiceQuota[];
+const ServiceQuotaListDefinition = /*@__PURE__*/ __L.at(__c4, 2);
 export interface ListAWSDefaultServiceQuotasResponse {
   NextToken?: string;
   Quotas?: ServiceQuota[];
 }
+const ListAWSDefaultServiceQuotasResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListAWSDefaultServiceQuotasResponse>;
 export interface ListRequestedServiceQuotaChangeHistoryRequest {
   ServiceCode?: string;
   Status?: RequestStatus;
@@ -421,11 +555,20 @@ export interface ListRequestedServiceQuotaChangeHistoryRequest {
   MaxResults?: number;
   QuotaRequestedAtLevel?: AppliedLevelEnum;
 }
+const ListRequestedServiceQuotaChangeHistoryRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListRequestedServiceQuotaChangeHistoryRequest>;
 export type RequestedServiceQuotaChangeHistoryListDefinition = RequestedServiceQuotaChange[];
+const RequestedServiceQuotaChangeHistoryListDefinition = /*@__PURE__*/ __L.at(__c4, 5);
 export interface ListRequestedServiceQuotaChangeHistoryResponse {
   NextToken?: string;
   RequestedQuotas?: RequestedServiceQuotaChange[];
 }
+const ListRequestedServiceQuotaChangeHistoryResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListRequestedServiceQuotaChangeHistoryResponse>;
 export interface ListRequestedServiceQuotaChangeHistoryByQuotaRequest {
   ServiceCode: string;
   QuotaCode: string;
@@ -434,21 +577,36 @@ export interface ListRequestedServiceQuotaChangeHistoryByQuotaRequest {
   MaxResults?: number;
   QuotaRequestedAtLevel?: AppliedLevelEnum;
 }
+const ListRequestedServiceQuotaChangeHistoryByQuotaRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListRequestedServiceQuotaChangeHistoryByQuotaRequest>;
 export interface ListRequestedServiceQuotaChangeHistoryByQuotaResponse {
   NextToken?: string;
   RequestedQuotas?: RequestedServiceQuotaChange[];
 }
+const ListRequestedServiceQuotaChangeHistoryByQuotaResponse =
+  ListRequestedServiceQuotaChangeHistoryResponse as any as S.Schema<ListRequestedServiceQuotaChangeHistoryByQuotaResponse>;
 export interface ListServiceQuotaIncreaseRequestsInTemplateRequest {
   ServiceCode?: string;
   AwsRegion?: string;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListServiceQuotaIncreaseRequestsInTemplateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListServiceQuotaIncreaseRequestsInTemplateRequest>;
 export type ServiceQuotaIncreaseRequestInTemplateList = ServiceQuotaIncreaseRequestInTemplate[];
+const ServiceQuotaIncreaseRequestInTemplateList = /*@__PURE__*/ __L.at(__c5, 1);
 export interface ListServiceQuotaIncreaseRequestsInTemplateResponse {
   ServiceQuotaIncreaseRequestInTemplateList?: ServiceQuotaIncreaseRequestInTemplate[];
   NextToken?: string;
 }
+const ListServiceQuotaIncreaseRequestsInTemplateResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListServiceQuotaIncreaseRequestsInTemplateResponse>;
 export interface ListServiceQuotasRequest {
   ServiceCode: string;
   NextToken?: string;
@@ -456,45 +614,71 @@ export interface ListServiceQuotasRequest {
   QuotaCode?: string;
   QuotaAppliedAtLevel?: AppliedLevelEnum;
 }
+const ListServiceQuotasRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ListServiceQuotasRequest>;
 export interface ListServiceQuotasResponse {
   NextToken?: string;
   Quotas?: ServiceQuota[];
 }
+const ListServiceQuotasResponse =
+  ListAWSDefaultServiceQuotasResponse as any as S.Schema<ListServiceQuotasResponse>;
 export interface ListServicesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListServicesRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ListServicesRequest>;
 export interface ServiceInfo {
   ServiceCode?: string;
   ServiceName?: string;
 }
+const ServiceInfo = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ServiceInfo>;
 export type ServiceInfoListDefinition = ServiceInfo[];
+const ServiceInfoListDefinition = /*@__PURE__*/ __L.at(__c5, 6);
 export interface ListServicesResponse {
   NextToken?: string;
   Services?: ServiceInfo[];
 }
+const ListServicesResponse = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ListServicesResponse>;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<Tag>;
 export type OutputTags = Tag[];
+const OutputTags = /*@__PURE__*/ __L.at(__c6, 2);
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutServiceQuotaIncreaseRequestIntoTemplateRequest {
   QuotaCode: string;
   ServiceCode: string;
   AwsRegion: string;
   DesiredValue: number;
 }
+const PutServiceQuotaIncreaseRequestIntoTemplateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<PutServiceQuotaIncreaseRequestIntoTemplateRequest>;
 export interface PutServiceQuotaIncreaseRequestIntoTemplateResponse {
   ServiceQuotaIncreaseRequestInTemplate?: ServiceQuotaIncreaseRequestInTemplate;
 }
+const PutServiceQuotaIncreaseRequestIntoTemplateResponse =
+  GetServiceQuotaIncreaseRequestFromTemplateResponse as any as S.Schema<PutServiceQuotaIncreaseRequestIntoTemplateResponse>;
 export type SupportCaseAllowed = boolean;
 export interface RequestServiceQuotaIncreaseRequest {
   ServiceCode: string;
@@ -503,46 +687,86 @@ export interface RequestServiceQuotaIncreaseRequest {
   ContextId?: string;
   SupportCaseAllowed?: boolean;
 }
+const RequestServiceQuotaIncreaseRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<RequestServiceQuotaIncreaseRequest>;
 export interface RequestServiceQuotaIncreaseResponse {
   RequestedQuota?: RequestedServiceQuotaChange;
 }
+const RequestServiceQuotaIncreaseResponse =
+  GetRequestedServiceQuotaChangeResponse as any as S.Schema<RequestServiceQuotaIncreaseResponse>;
 export type ExcludedLimit = string;
 export type ExcludedQuotaList = string[];
+const ExcludedQuotaList = /*@__PURE__*/ __L.at(__c6, 6);
 export type ExclusionList = { [key: string]: string[] | undefined };
+const ExclusionList = /*@__PURE__*/ __L.at(__c6, 7);
 export interface StartAutoManagementRequest {
   OptInLevel: OptInLevel;
   OptInType: OptInType;
   NotificationArn?: string;
   ExclusionList?: { [key: string]: string[] | undefined };
 }
+const StartAutoManagementRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<StartAutoManagementRequest>;
 export interface StartAutoManagementResponse {}
+const StartAutoManagementResponse =
+  CreateSupportCaseResponse as any as S.Schema<StartAutoManagementResponse>;
 export interface StartQuotaUtilizationReportRequest {}
+const StartQuotaUtilizationReportRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<StartQuotaUtilizationReportRequest>;
 export type ReportMessage = string;
 export interface StartQuotaUtilizationReportResponse {
   ReportId?: string;
   Status?: ReportStatus;
   Message?: string;
 }
+const StartQuotaUtilizationReportResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<StartQuotaUtilizationReportResponse>;
 export interface StopAutoManagementRequest {}
+const StopAutoManagementRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<StopAutoManagementRequest>;
 export interface StopAutoManagementResponse {}
+const StopAutoManagementResponse =
+  CreateSupportCaseResponse as any as S.Schema<StopAutoManagementResponse>;
 export type InputTags = Tag[];
+const InputTags = OutputTags as any as S.Schema<InputTags>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = CreateSupportCaseResponse as any as S.Schema<TagResourceResponse>;
 export type InputTagKeys = string[];
+const InputTagKeys = ExcludedQuotaList as any as S.Schema<InputTagKeys>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = CreateSupportCaseResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAutoManagementRequest {
   OptInType?: OptInType;
   NotificationArn?: string;
   ExclusionList?: { [key: string]: string[] | undefined };
 }
+const UpdateAutoManagementRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<UpdateAutoManagementRequest>;
 export interface UpdateAutoManagementResponse {}
+const UpdateAutoManagementResponse =
+  CreateSupportCaseResponse as any as S.Schema<UpdateAutoManagementResponse>;
 export type ExceptionMessage = string;
 export type AssociateServiceQuotaTemplateError =
   | AccessDeniedException
@@ -566,8 +790,8 @@ export const associateServiceQuotaTemplate: API.OperationMethod<
   AssociateServiceQuotaTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AssociateServiceQuotaTemplateRequest>,
-  output: __S(1) as any as S.Schema<AssociateServiceQuotaTemplateResponse>,
+  input: AssociateServiceQuotaTemplateRequest,
+  output: AssociateServiceQuotaTemplateResponse,
   errors: [
     AccessDeniedException,
     AWSServiceAccessNotEnabledException,
@@ -603,8 +827,8 @@ export const createSupportCase: API.OperationMethod<
   CreateSupportCaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateSupportCaseRequest>,
-  output: __S(3) as any as S.Schema<CreateSupportCaseResponse>,
+  input: CreateSupportCaseRequest,
+  output: CreateSupportCaseResponse,
   errors: [
     AccessDeniedException,
     DependencyAccessDeniedException,
@@ -641,8 +865,8 @@ export const deleteServiceQuotaIncreaseRequestFromTemplate: API.OperationMethod<
   DeleteServiceQuotaIncreaseRequestFromTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DeleteServiceQuotaIncreaseRequestFromTemplateRequest>,
-  output: __S(1) as any as S.Schema<DeleteServiceQuotaIncreaseRequestFromTemplateResponse>,
+  input: DeleteServiceQuotaIncreaseRequestFromTemplateRequest,
+  output: DeleteServiceQuotaIncreaseRequestFromTemplateResponse,
   errors: [
     AccessDeniedException,
     AWSServiceAccessNotEnabledException,
@@ -680,8 +904,8 @@ export const disassociateServiceQuotaTemplate: API.OperationMethod<
   DisassociateServiceQuotaTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<DisassociateServiceQuotaTemplateRequest>,
-  output: __S(1) as any as S.Schema<DisassociateServiceQuotaTemplateResponse>,
+  input: DisassociateServiceQuotaTemplateRequest,
+  output: DisassociateServiceQuotaTemplateResponse,
   errors: [
     AccessDeniedException,
     AWSServiceAccessNotEnabledException,
@@ -716,8 +940,8 @@ export const getAssociationForServiceQuotaTemplate: API.OperationMethod<
   GetAssociationForServiceQuotaTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetAssociationForServiceQuotaTemplateRequest>,
-  output: __S(7) as any as S.Schema<GetAssociationForServiceQuotaTemplateResponse>,
+  input: GetAssociationForServiceQuotaTemplateRequest,
+  output: GetAssociationForServiceQuotaTemplateResponse,
   errors: [
     AccessDeniedException,
     AWSServiceAccessNotEnabledException,
@@ -750,8 +974,8 @@ export const getAutoManagementConfiguration: API.OperationMethod<
   GetAutoManagementConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<GetAutoManagementConfigurationRequest>,
-  output: __S(12) as any as S.Schema<GetAutoManagementConfigurationResponse>,
+  input: GetAutoManagementConfigurationRequest,
+  output: GetAutoManagementConfigurationResponse,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -781,8 +1005,8 @@ export const getAWSDefaultServiceQuota: API.OperationMethod<
   GetAWSDefaultServiceQuotaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<GetAWSDefaultServiceQuotaRequest>,
-  output: __S(20) as any as S.Schema<GetAWSDefaultServiceQuotaResponse>,
+  input: GetAWSDefaultServiceQuotaRequest,
+  output: GetAWSDefaultServiceQuotaResponse,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -823,8 +1047,8 @@ export const getQuotaUtilizationReport: API.OperationMethod<
   GetQuotaUtilizationReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetQuotaUtilizationReportRequest>,
-  output: __S(24) as any as S.Schema<GetQuotaUtilizationReportResponse>,
+  input: GetQuotaUtilizationReportRequest,
+  output: GetQuotaUtilizationReportResponse,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -854,8 +1078,8 @@ export const getRequestedServiceQuotaChange: API.OperationMethod<
   GetRequestedServiceQuotaChangeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<GetRequestedServiceQuotaChangeRequest>,
-  output: __S(27) as any as S.Schema<GetRequestedServiceQuotaChangeResponse>,
+  input: GetRequestedServiceQuotaChangeRequest,
+  output: GetRequestedServiceQuotaChangeResponse,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -886,8 +1110,8 @@ export const getServiceQuota: API.OperationMethod<
   GetServiceQuotaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<GetServiceQuotaRequest>,
-  output: __S(29) as any as S.Schema<GetServiceQuotaResponse>,
+  input: GetServiceQuotaRequest,
+  output: GetServiceQuotaResponse,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -921,8 +1145,8 @@ export const getServiceQuotaIncreaseRequestFromTemplate: API.OperationMethod<
   GetServiceQuotaIncreaseRequestFromTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<GetServiceQuotaIncreaseRequestFromTemplateRequest>,
-  output: __S(32) as any as S.Schema<GetServiceQuotaIncreaseRequestFromTemplateResponse>,
+  input: GetServiceQuotaIncreaseRequestFromTemplateRequest,
+  output: GetServiceQuotaIncreaseRequestFromTemplateResponse,
   errors: [
     AccessDeniedException,
     AWSServiceAccessNotEnabledException,
@@ -958,8 +1182,8 @@ export const listAWSDefaultServiceQuotas: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceQuota
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(33) as any as S.Schema<ListAWSDefaultServiceQuotasRequest>,
-  output: __S(35) as any as S.Schema<ListAWSDefaultServiceQuotasResponse>,
+  input: ListAWSDefaultServiceQuotasRequest,
+  output: ListAWSDefaultServiceQuotasResponse,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -999,8 +1223,8 @@ export const listRequestedServiceQuotaChangeHistory: API.PaginatedOperationMetho
   Credentials | HttpClient.HttpClient,
   RequestedServiceQuotaChange
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(36) as any as S.Schema<ListRequestedServiceQuotaChangeHistoryRequest>,
-  output: __S(38) as any as S.Schema<ListRequestedServiceQuotaChangeHistoryResponse>,
+  input: ListRequestedServiceQuotaChangeHistoryRequest,
+  output: ListRequestedServiceQuotaChangeHistoryResponse,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1039,8 +1263,8 @@ export const listRequestedServiceQuotaChangeHistoryByQuota: API.PaginatedOperati
   Credentials | HttpClient.HttpClient,
   RequestedServiceQuotaChange
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(39) as any as S.Schema<ListRequestedServiceQuotaChangeHistoryByQuotaRequest>,
-  output: __S(38) as any as S.Schema<ListRequestedServiceQuotaChangeHistoryByQuotaResponse>,
+  input: ListRequestedServiceQuotaChangeHistoryByQuotaRequest,
+  output: ListRequestedServiceQuotaChangeHistoryByQuotaResponse,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1080,8 +1304,8 @@ export const listServiceQuotaIncreaseRequestsInTemplate: API.PaginatedOperationM
   Credentials | HttpClient.HttpClient,
   ServiceQuotaIncreaseRequestInTemplate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(40) as any as S.Schema<ListServiceQuotaIncreaseRequestsInTemplateRequest>,
-  output: __S(42) as any as S.Schema<ListServiceQuotaIncreaseRequestsInTemplateResponse>,
+  input: ListServiceQuotaIncreaseRequestsInTemplateRequest,
+  output: ListServiceQuotaIncreaseRequestsInTemplateResponse,
   errors: [
     AccessDeniedException,
     AWSServiceAccessNotEnabledException,
@@ -1124,8 +1348,8 @@ export const listServiceQuotas: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceQuota
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(43) as any as S.Schema<ListServiceQuotasRequest>,
-  output: __S(35) as any as S.Schema<ListServiceQuotasResponse>,
+  input: ListServiceQuotasRequest,
+  output: ListServiceQuotasResponse,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1162,8 +1386,8 @@ export const listServices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(44) as any as S.Schema<ListServicesRequest>,
-  output: __S(47) as any as S.Schema<ListServicesResponse>,
+  input: ListServicesRequest,
+  output: ListServicesResponse,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1198,8 +1422,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(51) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1233,8 +1457,8 @@ export const putServiceQuotaIncreaseRequestIntoTemplate: API.OperationMethod<
   PutServiceQuotaIncreaseRequestIntoTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<PutServiceQuotaIncreaseRequestIntoTemplateRequest>,
-  output: __S(32) as any as S.Schema<PutServiceQuotaIncreaseRequestIntoTemplateResponse>,
+  input: PutServiceQuotaIncreaseRequestIntoTemplateRequest,
+  output: PutServiceQuotaIncreaseRequestIntoTemplateResponse,
   errors: [
     AccessDeniedException,
     AWSServiceAccessNotEnabledException,
@@ -1273,8 +1497,8 @@ export const requestServiceQuotaIncrease: API.OperationMethod<
   RequestServiceQuotaIncreaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<RequestServiceQuotaIncreaseRequest>,
-  output: __S(27) as any as S.Schema<RequestServiceQuotaIncreaseResponse>,
+  input: RequestServiceQuotaIncreaseRequest,
+  output: RequestServiceQuotaIncreaseResponse,
   errors: [
     AccessDeniedException,
     DependencyAccessDeniedException,
@@ -1309,8 +1533,8 @@ export const startAutoManagement: API.OperationMethod<
   StartAutoManagementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<StartAutoManagementRequest>,
-  output: __S(3) as any as S.Schema<StartAutoManagementResponse>,
+  input: StartAutoManagementRequest,
+  output: StartAutoManagementResponse,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1346,8 +1570,8 @@ export const startQuotaUtilizationReport: API.OperationMethod<
   StartQuotaUtilizationReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<StartQuotaUtilizationReportRequest>,
-  output: __S(58) as any as S.Schema<StartQuotaUtilizationReportResponse>,
+  input: StartQuotaUtilizationReportRequest,
+  output: StartQuotaUtilizationReportResponse,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1379,8 +1603,8 @@ export const stopAutoManagement: API.OperationMethod<
   StopAutoManagementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<StopAutoManagementRequest>,
-  output: __S(3) as any as S.Schema<StopAutoManagementResponse>,
+  input: StopAutoManagementRequest,
+  output: StopAutoManagementResponse,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1412,8 +1636,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<TagResourceRequest>,
-  output: __S(3) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1445,8 +1669,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<UntagResourceRequest>,
-  output: __S(3) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1477,8 +1701,8 @@ export const updateAutoManagement: API.OperationMethod<
   UpdateAutoManagementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<UpdateAutoManagementRequest>,
-  output: __S(3) as any as S.Schema<UpdateAutoManagementResponse>,
+  input: UpdateAutoManagementRequest,
+  output: UpdateAutoManagementResponse,
   errors: [
     AccessDeniedException,
     IllegalArgumentException,
@@ -1543,7 +1767,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ServiceQuotaTemplateAssociationStatus: S.optional(S.String),
+          ServiceQuotaTemplateAssociationStatus: S.optional(ServiceQuotaTemplateAssociationStatus),
         }),
       ).annotate({
         identifier: "GetAssociationForServiceQuotaTemplateResponse",
@@ -1565,17 +1789,17 @@ function __c1(j: number): any {
         S.Struct({ QuotaCode: S.optional(S.String), QuotaName: S.optional(S.String) }),
       ).annotate({ identifier: "QuotaInfo" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(QuotaInfo);
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(10).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ QuotaInfoList.pipe(S.optional));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          OptInLevel: S.optional(S.String),
-          OptInType: S.optional(S.String),
+          OptInLevel: S.optional(OptInLevel),
+          OptInType: S.optional(OptInType),
           NotificationArn: S.optional(S.String),
-          OptInStatus: S.optional(S.String),
-          ExclusionList: S.optional(__S(11)),
+          OptInStatus: S.optional(OptInStatus),
+          ExclusionList: S.optional(ExclusionQuotaList),
         }),
       ).annotate({
         identifier: "GetAutoManagementConfigurationResponse",
@@ -1595,7 +1819,7 @@ function __c1(j: number): any {
         S.Struct({
           MetricNamespace: S.optional(S.String),
           MetricName: S.optional(S.String),
-          MetricDimensions: S.optional(__S(14)),
+          MetricDimensions: S.optional(MetricDimensionsMapDefinition),
           MetricStatisticRecommendation: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricInfo" });
@@ -1605,19 +1829,19 @@ function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ PeriodValue: S.optional(S.Number), PeriodUnit: S.optional(S.String) }),
+        S.Struct({ PeriodValue: S.optional(S.Number), PeriodUnit: S.optional(PeriodUnit) }),
       ).annotate({ identifier: "QuotaPeriod" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ErrorCode: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
+        S.Struct({ ErrorCode: S.optional(ErrorCode), ErrorMessage: S.optional(S.String) }),
       ).annotate({ identifier: "ErrorReason" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ContextScope: S.optional(S.String),
+          ContextScope: S.optional(QuotaContextScope),
           ContextScopeType: S.optional(S.String),
           ContextId: S.optional(S.String),
-          AdjustableAtLevel: S.optional(S.String),
+          AdjustableAtLevel: S.optional(AdjustableAtLevelEnum),
         }),
       ).annotate({ identifier: "QuotaContextInfo" });
     case 3:
@@ -1632,16 +1856,16 @@ function __c2(j: number): any {
           Unit: S.optional(S.String),
           Adjustable: S.optional(S.Boolean),
           GlobalQuota: S.optional(S.Boolean),
-          UsageMetric: S.optional(__S(15)),
-          Period: S.optional(__S(16)),
-          ErrorReason: S.optional(__S(17)),
-          QuotaAppliedAtLevel: S.optional(S.String),
-          QuotaContext: S.optional(__S(18)),
+          UsageMetric: S.optional(MetricInfo),
+          Period: S.optional(QuotaPeriod),
+          ErrorReason: S.optional(ErrorReason),
+          QuotaAppliedAtLevel: S.optional(AppliedLevelEnum),
+          QuotaContext: S.optional(QuotaContextInfo),
           Description: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceQuota" });
     case 4:
-      return S.suspend(() => S.Struct({ Quota: S.optional(__S(19)) })).annotate({
+      return S.suspend(() => S.Struct({ Quota: S.optional(ServiceQuota) })).annotate({
         identifier: "GetAWSDefaultServiceQuotaResponse",
       });
     case 5:
@@ -1669,7 +1893,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "QuotaUtilizationInfo" });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(QuotaUtilizationInfo);
   }
 }
 function __c3(j: number): any {
@@ -1678,10 +1902,10 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ReportId: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(ReportStatus),
           GeneratedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TotalCount: S.optional(S.Number),
-          Quotas: S.optional(__S(23)),
+          Quotas: S.optional(QuotaUtilizationInfoList),
           NextToken: S.optional(S.String),
           ErrorCode: S.optional(S.String),
           ErrorMessage: S.optional(S.String),
@@ -1701,28 +1925,30 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
-          RequestType: S.optional(S.String),
+          RequestType: S.optional(RequestType),
           CaseId: S.optional(S.String),
           ServiceCode: S.optional(S.String),
           ServiceName: S.optional(S.String),
           QuotaCode: S.optional(S.String),
           QuotaName: S.optional(S.String),
           DesiredValue: S.optional(S.Number),
-          Status: S.optional(S.String),
+          Status: S.optional(RequestStatus),
           Created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Requester: S.optional(S.String),
           QuotaArn: S.optional(S.String),
           GlobalQuota: S.optional(S.Boolean),
           Unit: S.optional(S.String),
-          QuotaRequestedAtLevel: S.optional(S.String),
-          QuotaContext: S.optional(__S(18)),
+          QuotaRequestedAtLevel: S.optional(AppliedLevelEnum),
+          QuotaContext: S.optional(QuotaContextInfo),
         }),
       ).annotate({
         identifier: "RequestedServiceQuotaChange",
       });
     case 3:
-      return S.suspend(() => S.Struct({ RequestedQuota: S.optional(__S(26)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ RequestedQuota: S.optional(RequestedServiceQuotaChange) }),
+      ).annotate({
         identifier: "GetRequestedServiceQuotaChangeResponse",
       });
     case 4:
@@ -1734,7 +1960,7 @@ function __c3(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetServiceQuotaRequest" });
     case 5:
-      return S.suspend(() => S.Struct({ Quota: S.optional(__S(19)) })).annotate({
+      return S.suspend(() => S.Struct({ Quota: S.optional(ServiceQuota) })).annotate({
         identifier: "GetServiceQuotaResponse",
       });
     case 6:
@@ -1767,7 +1993,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ServiceQuotaIncreaseRequestInTemplate: S.optional(__S(31)),
+          ServiceQuotaIncreaseRequestInTemplate: S.optional(ServiceQuotaIncreaseRequestInTemplate),
         }),
       ).annotate({
         identifier: "GetServiceQuotaIncreaseRequestFromTemplateResponse",
@@ -1783,12 +2009,12 @@ function __c4(j: number): any {
         identifier: "ListAWSDefaultServiceQuotasRequest",
       });
     case 2:
-      return S.Array(__S(19));
+      return S.Array(ServiceQuota);
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          Quotas: S.optional(__S(34)),
+          Quotas: S.optional(ServiceQuotaListDefinition),
         }),
       ).annotate({
         identifier: "ListAWSDefaultServiceQuotasResponse",
@@ -1797,21 +2023,21 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ServiceCode: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(RequestStatus),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          QuotaRequestedAtLevel: S.optional(S.String),
+          QuotaRequestedAtLevel: S.optional(AppliedLevelEnum),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListRequestedServiceQuotaChangeHistoryRequest",
       });
     case 5:
-      return S.Array(__S(26));
+      return S.Array(RequestedServiceQuotaChange);
     case 6:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          RequestedQuotas: S.optional(__S(37)),
+          RequestedQuotas: S.optional(RequestedServiceQuotaChangeHistoryListDefinition),
         }),
       ).annotate({
         identifier: "ListRequestedServiceQuotaChangeHistoryResponse",
@@ -1821,10 +2047,10 @@ function __c4(j: number): any {
         S.Struct({
           ServiceCode: S.String,
           QuotaCode: S.String,
-          Status: S.optional(S.String),
+          Status: S.optional(RequestStatus),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          QuotaRequestedAtLevel: S.optional(S.String),
+          QuotaRequestedAtLevel: S.optional(AppliedLevelEnum),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListRequestedServiceQuotaChangeHistoryByQuotaRequest",
@@ -1845,11 +2071,13 @@ function __c5(j: number): any {
         identifier: "ListServiceQuotaIncreaseRequestsInTemplateRequest",
       });
     case 1:
-      return S.Array(__S(31));
+      return S.Array(ServiceQuotaIncreaseRequestInTemplate);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ServiceQuotaIncreaseRequestInTemplateList: S.optional(__S(41)),
+          ServiceQuotaIncreaseRequestInTemplateList: S.optional(
+            ServiceQuotaIncreaseRequestInTemplateList,
+          ),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1862,7 +2090,7 @@ function __c5(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           QuotaCode: S.optional(S.String),
-          QuotaAppliedAtLevel: S.optional(S.String),
+          QuotaAppliedAtLevel: S.optional(AppliedLevelEnum),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListServiceQuotasRequest" });
     case 4:
@@ -1876,12 +2104,12 @@ function __c5(j: number): any {
         S.Struct({ ServiceCode: S.optional(S.String), ServiceName: S.optional(S.String) }),
       ).annotate({ identifier: "ServiceInfo" });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(ServiceInfo);
     case 7:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          Services: S.optional(__S(46)),
+          Services: S.optional(ServiceInfoListDefinition),
         }),
       ).annotate({ identifier: "ListServicesResponse" });
   }
@@ -1901,9 +2129,9 @@ function __c6(j: number): any {
         identifier: "Tag",
       });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(Tag);
     case 3:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(50)) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(OutputTags) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 4:
@@ -1932,7 +2160,7 @@ function __c6(j: number): any {
     case 6:
       return S.Array(S.String);
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(54).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ ExcludedQuotaList.pipe(S.optional));
   }
 }
 function __c7(j: number): any {
@@ -1940,10 +2168,10 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          OptInLevel: S.String,
-          OptInType: S.String,
+          OptInLevel: OptInLevel,
+          OptInType: OptInType,
           NotificationArn: S.optional(S.String),
-          ExclusionList: S.optional(__S(55)),
+          ExclusionList: S.optional(ExclusionList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartAutoManagementRequest",
@@ -1960,7 +2188,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ReportId: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(ReportStatus),
           Message: S.optional(S.String),
         }),
       ).annotate({
@@ -1976,50 +2204,25 @@ function __c7(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(50) }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: InputTags }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(54) }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: InputTagKeys }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          OptInType: S.optional(S.String),
+          OptInType: S.optional(OptInType),
           NotificationArn: S.optional(S.String),
-          ExclusionList: S.optional(__S(55)),
+          ExclusionList: S.optional(ExclusionList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateAutoManagementRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
   }
 }

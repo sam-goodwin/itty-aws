@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Redshift Serverless",
   serviceShapeName: "RedshiftServerless",
@@ -170,16 +168,23 @@ export interface Tag {
   key: string;
   value: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
+const TagList = /*@__PURE__*/ __L.at(__c0, 1);
 export interface ConvertRecoveryPointToSnapshotRequest {
   recoveryPointId: string;
   snapshotName: string;
   retentionPeriod?: number;
   tags?: Tag[];
 }
+const ConvertRecoveryPointToSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ConvertRecoveryPointToSnapshotRequest>;
 export type SnapshotStatus = string;
 export type KmsKeyId = string;
 export type AccountIdList = string[];
+const AccountIdList = /*@__PURE__*/ __L.at(__c0, 3);
 export interface Snapshot {
   namespaceName?: string;
   namespaceArn?: string;
@@ -204,9 +209,14 @@ export interface Snapshot {
   adminPasswordSecretArn?: string;
   adminPasswordSecretKmsKeyId?: string;
 }
+const Snapshot = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Snapshot>;
 export interface ConvertRecoveryPointToSnapshotResponse {
   snapshot?: Snapshot;
 }
+const ConvertRecoveryPointToSnapshotResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ConvertRecoveryPointToSnapshotResponse>;
 export type WorkgroupName = string;
 export type CustomDomainName = string;
 export type CustomDomainCertificateArnString = string;
@@ -215,16 +225,26 @@ export interface CreateCustomDomainAssociationRequest {
   customDomainName: string;
   customDomainCertificateArn: string;
 }
+const CreateCustomDomainAssociationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateCustomDomainAssociationRequest>;
 export interface CreateCustomDomainAssociationResponse {
   customDomainName?: string;
   workgroupName?: string;
   customDomainCertificateArn?: string;
   customDomainCertificateExpiryTime?: Date;
 }
+const CreateCustomDomainAssociationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateCustomDomainAssociationResponse>;
 export type SubnetId = string;
 export type SubnetIdList = string[];
+const SubnetIdList = AccountIdList as any as S.Schema<SubnetIdList>;
 export type VpcSecurityGroupId = string;
 export type VpcSecurityGroupIdList = string[];
+const VpcSecurityGroupIdList = AccountIdList as any as S.Schema<VpcSecurityGroupIdList>;
 export type OwnerAccount = string;
 export interface CreateEndpointAccessRequest {
   endpointName: string;
@@ -233,11 +253,20 @@ export interface CreateEndpointAccessRequest {
   vpcSecurityGroupIds?: string[];
   ownerAccount?: string;
 }
+const CreateEndpointAccessRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateEndpointAccessRequest>;
 export interface VpcSecurityGroupMembership {
   vpcSecurityGroupId?: string;
   status?: string;
 }
+const VpcSecurityGroupMembership = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<VpcSecurityGroupMembership>;
 export type VpcSecurityGroupMembershipList = VpcSecurityGroupMembership[];
+const VpcSecurityGroupMembershipList = /*@__PURE__*/ __L.at(__c1, 2);
 export interface NetworkInterface {
   networkInterfaceId?: string;
   subnetId?: string;
@@ -245,12 +274,15 @@ export interface NetworkInterface {
   availabilityZone?: string;
   ipv6Address?: string;
 }
+const NetworkInterface = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<NetworkInterface>;
 export type NetworkInterfaceList = NetworkInterface[];
+const NetworkInterfaceList = /*@__PURE__*/ __L.at(__c1, 4);
 export interface VpcEndpoint {
   vpcEndpointId?: string;
   vpcId?: string;
   networkInterfaces?: NetworkInterface[];
 }
+const VpcEndpoint = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<VpcEndpoint>;
 export interface EndpointAccess {
   endpointName?: string;
   endpointStatus?: string;
@@ -263,16 +295,23 @@ export interface EndpointAccess {
   vpcEndpoint?: VpcEndpoint;
   endpointArn?: string;
 }
+const EndpointAccess = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<EndpointAccess>;
 export interface CreateEndpointAccessResponse {
   endpoint?: EndpointAccess;
 }
+const CreateEndpointAccessResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateEndpointAccessResponse>;
 export type NamespaceName = string;
 export type DbUser = string | redacted.Redacted<string>;
 export type DbPassword = string | redacted.Redacted<string>;
 export type IamRoleArn = string;
 export type IamRoleArnList = string[];
+const IamRoleArnList = AccountIdList as any as S.Schema<IamRoleArnList>;
 export type LogExport = string;
 export type LogExportList = string[];
+const LogExportList = AccountIdList as any as S.Schema<LogExportList>;
 export type RedshiftIdcApplicationArn = string;
 export interface CreateNamespaceRequest {
   namespaceName: string;
@@ -288,11 +327,17 @@ export interface CreateNamespaceRequest {
   adminPasswordSecretKmsKeyId?: string;
   redshiftIdcApplicationArn?: string;
 }
+const CreateNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateNamespaceRequest>;
 export type NamespaceStatus = string;
 export type S3TableName = string;
 export type S3TableNameList = string[];
+const S3TableNameList = AccountIdList as any as S.Schema<S3TableNameList>;
 export type S3TableGranularity = string;
 export type S3TableLastIngestionTimeMap = { [key: string]: string | undefined };
+const S3TableLastIngestionTimeMap = /*@__PURE__*/ __L.at(__c2, 1);
 export interface S3TablePublishStatus {
   s3Tables?: string[];
   s3TableNamespace?: string;
@@ -300,6 +345,7 @@ export interface S3TablePublishStatus {
   enabledAll?: boolean;
   lastIngestionTimes?: { [key: string]: string | undefined };
 }
+const S3TablePublishStatus = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<S3TablePublishStatus>;
 export interface Namespace {
   namespaceArn?: string;
   namespaceId?: string;
@@ -318,9 +364,14 @@ export interface Namespace {
   catalogArn?: string;
   s3TablePublishStatus?: S3TablePublishStatus;
 }
+const Namespace = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Namespace>;
 export interface CreateNamespaceResponse {
   namespace?: Namespace;
 }
+const CreateNamespaceResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateNamespaceResponse>;
 export type Capacity = number;
 export type OfferingId = string;
 export interface CreateReservationRequest {
@@ -328,6 +379,10 @@ export interface CreateReservationRequest {
   offeringId: string;
   clientToken?: string;
 }
+const CreateReservationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateReservationRequest>;
 export type ReservationId = string;
 export type ReservationArn = string;
 export type Duration = number;
@@ -342,6 +397,7 @@ export interface ReservationOffering {
   currencyCode?: string;
   offeringType?: string;
 }
+const ReservationOffering = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ReservationOffering>;
 export type Status = string;
 export interface Reservation {
   reservationId?: string;
@@ -352,9 +408,14 @@ export interface Reservation {
   offering?: ReservationOffering;
   status?: string;
 }
+const Reservation = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Reservation>;
 export interface CreateReservationResponse {
   reservation?: Reservation;
 }
+const CreateReservationResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateReservationResponse>;
 export type ScheduledActionName = string;
 export type SnapshotNamePrefix = string;
 export interface CreateSnapshotScheduleActionParameters {
@@ -363,8 +424,14 @@ export interface CreateSnapshotScheduleActionParameters {
   retentionPeriod?: number;
   tags?: Tag[];
 }
+const CreateSnapshotScheduleActionParameters = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateSnapshotScheduleActionParameters>;
 export type TargetAction = { createSnapshot: CreateSnapshotScheduleActionParameters };
+const TargetAction = /*@__PURE__*/ __L.at(__c3, 2);
 export type Schedule = { at: Date; cron?: never } | { at?: never; cron: string };
+const Schedule = /*@__PURE__*/ __L.at(__c3, 3);
 export interface CreateScheduledActionRequest {
   scheduledActionName: string;
   targetAction: TargetAction;
@@ -376,7 +443,12 @@ export interface CreateScheduledActionRequest {
   startTime?: Date;
   endTime?: Date;
 }
+const CreateScheduledActionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateScheduledActionRequest>;
 export type NextInvocationsList = Date[];
+const NextInvocationsList = /*@__PURE__*/ __L.at(__c3, 5);
 export type State = string;
 export interface ScheduledActionResponse {
   scheduledActionName?: string;
@@ -391,24 +463,44 @@ export interface ScheduledActionResponse {
   namespaceName?: string;
   scheduledActionUuid?: string;
 }
+const ScheduledActionResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ScheduledActionResponse>;
 export interface CreateScheduledActionResponse {
   scheduledAction?: ScheduledActionResponse;
 }
+const CreateScheduledActionResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateScheduledActionResponse>;
 export interface CreateSnapshotRequest {
   namespaceName: string;
   snapshotName: string;
   retentionPeriod?: number;
   tags?: Tag[];
 }
+const CreateSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateSnapshotRequest>;
 export interface CreateSnapshotResponse {
   snapshot?: Snapshot;
 }
+const CreateSnapshotResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateSnapshotResponse>;
 export interface CreateSnapshotCopyConfigurationRequest {
   namespaceName: string;
   destinationRegion: string;
   snapshotRetentionPeriod?: number;
   destinationKmsKeyId?: string;
 }
+const CreateSnapshotCopyConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CreateSnapshotCopyConfigurationRequest>;
 export interface SnapshotCopyConfiguration {
   snapshotCopyConfigurationId?: string;
   snapshotCopyConfigurationArn?: string;
@@ -417,9 +509,17 @@ export interface SnapshotCopyConfiguration {
   snapshotRetentionPeriod?: number;
   destinationKmsKeyId?: string;
 }
+const SnapshotCopyConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<SnapshotCopyConfiguration>;
 export interface CreateSnapshotCopyConfigurationResponse {
   snapshotCopyConfiguration: SnapshotCopyConfiguration;
 }
+const CreateSnapshotCopyConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateSnapshotCopyConfigurationResponse>;
 export type UsageLimitUsageType = string;
 export type UsageLimitPeriod = string;
 export type UsageLimitBreachAction = string;
@@ -430,6 +530,10 @@ export interface CreateUsageLimitRequest {
   period?: string;
   breachAction?: string;
 }
+const CreateUsageLimitRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateUsageLimitRequest>;
 export interface UsageLimit {
   usageLimitId?: string;
   usageLimitArn?: string;
@@ -439,23 +543,32 @@ export interface UsageLimit {
   period?: string;
   breachAction?: string;
 }
+const UsageLimit = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<UsageLimit>;
 export interface CreateUsageLimitResponse {
   usageLimit?: UsageLimit;
 }
+const CreateUsageLimitResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreateUsageLimitResponse>;
 export type ParameterKey = string;
 export type ParameterValue = string;
 export interface ConfigParameter {
   parameterKey?: string;
   parameterValue?: string;
 }
+const ConfigParameter = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ConfigParameter>;
 export type ConfigParameterList = ConfigParameter[];
+const ConfigParameterList = /*@__PURE__*/ __L.at(__c5, 1);
 export type SecurityGroupId = string;
 export type SecurityGroupIdList = string[];
+const SecurityGroupIdList = AccountIdList as any as S.Schema<SecurityGroupIdList>;
 export type PerformanceTargetStatus = string;
 export interface PerformanceTarget {
   status?: string;
   level?: number;
 }
+const PerformanceTarget = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<PerformanceTarget>;
 export type IpAddressType = string;
 export type TrackName = string;
 export interface CreateWorkgroupRequest {
@@ -475,8 +588,13 @@ export interface CreateWorkgroupRequest {
   trackName?: string;
   extraComputeForAutomaticOptimization?: boolean;
 }
+const CreateWorkgroupRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateWorkgroupRequest>;
 export type WorkgroupStatus = string;
 export type VpcEndpointList = VpcEndpoint[];
+const VpcEndpointList = /*@__PURE__*/ __L.at(__c5, 4);
 export interface Endpoint {
   address?: string;
   port?: number;
@@ -484,6 +602,7 @@ export interface Endpoint {
 }
 const Endpoint = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<Endpoint>;
 export type VpcIds = string[];
+const VpcIds = AccountIdList as any as S.Schema<VpcIds>;
 export interface Workgroup {
   workgroupId?: string;
   workgroupArn?: string;
@@ -512,62 +631,128 @@ export interface Workgroup {
   pendingTrackName?: string;
   extraComputeForAutomaticOptimization?: boolean;
 }
+const Workgroup = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Workgroup>;
 export interface CreateWorkgroupResponse {
   workgroup?: Workgroup;
 }
+const CreateWorkgroupResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreateWorkgroupResponse>;
 export interface DeleteCustomDomainAssociationRequest {
   workgroupName: string;
   customDomainName: string;
 }
+const DeleteCustomDomainAssociationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DeleteCustomDomainAssociationRequest>;
 export interface DeleteCustomDomainAssociationResponse {}
+const DeleteCustomDomainAssociationResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<DeleteCustomDomainAssociationResponse>;
 export interface DeleteEndpointAccessRequest {
   endpointName: string;
 }
+const DeleteEndpointAccessRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DeleteEndpointAccessRequest>;
 export interface DeleteEndpointAccessResponse {
   endpoint?: EndpointAccess;
 }
+const DeleteEndpointAccessResponse =
+  CreateEndpointAccessResponse as any as S.Schema<DeleteEndpointAccessResponse>;
 export interface DeleteNamespaceRequest {
   namespaceName: string;
   finalSnapshotName?: string;
   finalSnapshotRetentionPeriod?: number;
 }
+const DeleteNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DeleteNamespaceRequest>;
 export interface DeleteNamespaceResponse {
   namespace: Namespace;
 }
+const DeleteNamespaceResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DeleteNamespaceResponse>;
 export interface DeleteResourcePolicyRequest {
   resourceArn: string;
 }
+const DeleteResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
+const DeleteResourcePolicyResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteScheduledActionRequest {
   scheduledActionName: string;
 }
+const DeleteScheduledActionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<DeleteScheduledActionRequest>;
 export interface DeleteScheduledActionResponse {
   scheduledAction?: ScheduledActionResponse;
 }
+const DeleteScheduledActionResponse =
+  CreateScheduledActionResponse as any as S.Schema<DeleteScheduledActionResponse>;
 export interface DeleteSnapshotRequest {
   snapshotName: string;
 }
+const DeleteSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DeleteSnapshotRequest>;
 export interface DeleteSnapshotResponse {
   snapshot?: Snapshot;
 }
+const DeleteSnapshotResponse = CreateSnapshotResponse as any as S.Schema<DeleteSnapshotResponse>;
 export interface DeleteSnapshotCopyConfigurationRequest {
   snapshotCopyConfigurationId: string;
 }
+const DeleteSnapshotCopyConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DeleteSnapshotCopyConfigurationRequest>;
 export interface DeleteSnapshotCopyConfigurationResponse {
   snapshotCopyConfiguration: SnapshotCopyConfiguration;
 }
+const DeleteSnapshotCopyConfigurationResponse =
+  CreateSnapshotCopyConfigurationResponse as any as S.Schema<DeleteSnapshotCopyConfigurationResponse>;
 export interface DeleteUsageLimitRequest {
   usageLimitId: string;
 }
+const DeleteUsageLimitRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<DeleteUsageLimitRequest>;
 export interface DeleteUsageLimitResponse {
   usageLimit?: UsageLimit;
 }
+const DeleteUsageLimitResponse =
+  CreateUsageLimitResponse as any as S.Schema<DeleteUsageLimitResponse>;
 export interface DeleteWorkgroupRequest {
   workgroupName: string;
 }
+const DeleteWorkgroupRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<DeleteWorkgroupRequest>;
 export interface DeleteWorkgroupResponse {
   workgroup: Workgroup;
 }
+const DeleteWorkgroupResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<DeleteWorkgroupResponse>;
 export type DbName = string;
 export interface GetCredentialsRequest {
   dbName?: string;
@@ -575,45 +760,80 @@ export interface GetCredentialsRequest {
   workgroupName?: string;
   customDomainName?: string;
 }
+const GetCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<GetCredentialsRequest>;
 export interface GetCredentialsResponse {
   dbUser?: string | redacted.Redacted<string>;
   dbPassword?: string | redacted.Redacted<string>;
   expiration?: Date;
   nextRefreshTime?: Date;
 }
+const GetCredentialsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GetCredentialsResponse>;
 export interface GetCustomDomainAssociationRequest {
   customDomainName: string;
   workgroupName: string;
 }
+const GetCustomDomainAssociationRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetCustomDomainAssociationRequest>;
 export interface GetCustomDomainAssociationResponse {
   customDomainName?: string;
   workgroupName?: string;
   customDomainCertificateArn?: string;
   customDomainCertificateExpiryTime?: Date;
 }
+const GetCustomDomainAssociationResponse =
+  CreateCustomDomainAssociationResponse as any as S.Schema<GetCustomDomainAssociationResponse>;
 export interface GetEndpointAccessRequest {
   endpointName: string;
 }
+const GetEndpointAccessRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GetEndpointAccessRequest>;
 export interface GetEndpointAccessResponse {
   endpoint?: EndpointAccess;
 }
+const GetEndpointAccessResponse =
+  CreateEndpointAccessResponse as any as S.Schema<GetEndpointAccessResponse>;
 export type WorkgroupNameList = string[];
+const WorkgroupNameList = AccountIdList as any as S.Schema<WorkgroupNameList>;
 export interface GetIdentityCenterAuthTokenRequest {
   workgroupNames: string[];
 }
+const GetIdentityCenterAuthTokenRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<GetIdentityCenterAuthTokenRequest>;
 export interface GetIdentityCenterAuthTokenResponse {
   token?: string | redacted.Redacted<string>;
   expirationTime?: Date;
 }
+const GetIdentityCenterAuthTokenResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetIdentityCenterAuthTokenResponse>;
 export interface GetNamespaceRequest {
   namespaceName: string;
 }
+const GetNamespaceRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<GetNamespaceRequest>;
 export interface GetNamespaceResponse {
   namespace: Namespace;
 }
+const GetNamespaceResponse = DeleteNamespaceResponse as any as S.Schema<GetNamespaceResponse>;
 export interface GetRecoveryPointRequest {
   recoveryPointId: string;
 }
+const GetRecoveryPointRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<GetRecoveryPointRequest>;
 export interface RecoveryPoint {
   recoveryPointId?: string;
   recoveryPointCreateTime?: Date;
@@ -622,48 +842,90 @@ export interface RecoveryPoint {
   workgroupName?: string;
   namespaceArn?: string;
 }
+const RecoveryPoint = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<RecoveryPoint>;
 export interface GetRecoveryPointResponse {
   recoveryPoint?: RecoveryPoint;
 }
+const GetRecoveryPointResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<GetRecoveryPointResponse>;
 export interface GetReservationRequest {
   reservationId: string;
 }
+const GetReservationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<GetReservationRequest>;
 export interface GetReservationResponse {
   reservation: Reservation;
 }
+const GetReservationResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<GetReservationResponse>;
 export interface GetReservationOfferingRequest {
   offeringId: string;
 }
+const GetReservationOfferingRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<GetReservationOfferingRequest>;
 export interface GetReservationOfferingResponse {
   reservationOffering: ReservationOffering;
 }
+const GetReservationOfferingResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<GetReservationOfferingResponse>;
 export interface GetResourcePolicyRequest {
   resourceArn: string;
 }
+const GetResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<GetResourcePolicyRequest>;
 export interface ResourcePolicy {
   resourceArn?: string;
   policy?: string;
 }
+const ResourcePolicy = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<ResourcePolicy>;
 export interface GetResourcePolicyResponse {
   resourcePolicy?: ResourcePolicy;
 }
+const GetResourcePolicyResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<GetResourcePolicyResponse>;
 export interface GetScheduledActionRequest {
   scheduledActionName: string;
 }
+const GetScheduledActionRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<GetScheduledActionRequest>;
 export interface GetScheduledActionResponse {
   scheduledAction?: ScheduledActionResponse;
 }
+const GetScheduledActionResponse =
+  CreateScheduledActionResponse as any as S.Schema<GetScheduledActionResponse>;
 export interface GetSnapshotRequest {
   snapshotName?: string;
   ownerAccount?: string;
   snapshotArn?: string;
 }
+const GetSnapshotRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<GetSnapshotRequest>;
 export interface GetSnapshotResponse {
   snapshot?: Snapshot;
 }
+const GetSnapshotResponse = CreateSnapshotResponse as any as S.Schema<GetSnapshotResponse>;
 export interface GetTableRestoreStatusRequest {
   tableRestoreRequestId: string;
 }
+const GetTableRestoreStatusRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<GetTableRestoreStatusRequest>;
 export interface TableRestoreStatus {
   tableRestoreRequestId?: string;
   status?: string;
@@ -682,37 +944,54 @@ export interface TableRestoreStatus {
   newTableName?: string;
   recoveryPointId?: string;
 }
+const TableRestoreStatus = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<TableRestoreStatus>;
 export interface GetTableRestoreStatusResponse {
   tableRestoreStatus?: TableRestoreStatus;
 }
+const GetTableRestoreStatusResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<GetTableRestoreStatusResponse>;
 export interface GetTrackRequest {
   trackName: string;
 }
+const GetTrackRequest = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<GetTrackRequest>;
 export interface UpdateTarget {
   trackName?: string;
   workgroupVersion?: string;
 }
+const UpdateTarget = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<UpdateTarget>;
 export type UpdateTargetsList = UpdateTarget[];
+const UpdateTargetsList = /*@__PURE__*/ __L.at(__c10, 5);
 export interface ServerlessTrack {
   trackName?: string;
   workgroupVersion?: string;
   updateTargets?: UpdateTarget[];
 }
+const ServerlessTrack = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ServerlessTrack>;
 export interface GetTrackResponse {
   track?: ServerlessTrack;
 }
+const GetTrackResponse = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<GetTrackResponse>;
 export interface GetUsageLimitRequest {
   usageLimitId: string;
 }
+const GetUsageLimitRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GetUsageLimitRequest>;
 export interface GetUsageLimitResponse {
   usageLimit?: UsageLimit;
 }
+const GetUsageLimitResponse = CreateUsageLimitResponse as any as S.Schema<GetUsageLimitResponse>;
 export interface GetWorkgroupRequest {
   workgroupName: string;
 }
+const GetWorkgroupRequest = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<GetWorkgroupRequest>;
 export interface GetWorkgroupResponse {
   workgroup: Workgroup;
 }
+const GetWorkgroupResponse = DeleteWorkgroupResponse as any as S.Schema<GetWorkgroupResponse>;
 export type PaginationToken = string;
 export interface ListCustomDomainAssociationsRequest {
   nextToken?: string;
@@ -720,17 +999,27 @@ export interface ListCustomDomainAssociationsRequest {
   customDomainName?: string;
   customDomainCertificateArn?: string;
 }
+const ListCustomDomainAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ListCustomDomainAssociationsRequest>;
 export interface Association {
   customDomainCertificateArn?: string;
   customDomainCertificateExpiryTime?: Date;
   customDomainName?: string;
   workgroupName?: string;
 }
+const Association = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<Association>;
 export type AssociationList = Association[];
+const AssociationList = /*@__PURE__*/ __L.at(__c11, 4);
 export interface ListCustomDomainAssociationsResponse {
   nextToken?: string;
   associations?: Association[];
 }
+const ListCustomDomainAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ListCustomDomainAssociationsResponse>;
 export interface ListEndpointAccessRequest {
   nextToken?: string;
   maxResults?: number;
@@ -738,17 +1027,30 @@ export interface ListEndpointAccessRequest {
   vpcId?: string;
   ownerAccount?: string;
 }
+const ListEndpointAccessRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ListEndpointAccessRequest>;
 export type EndpointAccessList = EndpointAccess[];
+const EndpointAccessList = /*@__PURE__*/ __L.at(__c11, 7);
 export interface ListEndpointAccessResponse {
   nextToken?: string;
   endpoints: EndpointAccess[];
 }
+const ListEndpointAccessResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ListEndpointAccessResponse>;
 export type SourceArn = string;
 export interface ListManagedWorkgroupsRequest {
   sourceArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListManagedWorkgroupsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ListManagedWorkgroupsRequest>;
 export type ManagedWorkgroupName = string;
 export type ManagedWorkgroupStatus =
   | "CREATING"
@@ -757,6 +1059,8 @@ export type ManagedWorkgroupStatus =
   | "AVAILABLE"
   | "NOT_AVAILABLE"
   | (string & {});
+const ManagedWorkgroupStatus = S.String;
+
 export interface ManagedWorkgroupListItem {
   managedWorkgroupName?: string;
   managedWorkgroupId?: string;
@@ -764,20 +1068,38 @@ export interface ManagedWorkgroupListItem {
   status?: ManagedWorkgroupStatus;
   creationDate?: Date;
 }
+const ManagedWorkgroupListItem = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ManagedWorkgroupListItem>;
 export type ManagedWorkgroups = ManagedWorkgroupListItem[];
+const ManagedWorkgroups = /*@__PURE__*/ __L.at(__c12, 3);
 export interface ListManagedWorkgroupsResponse {
   nextToken?: string;
   managedWorkgroups?: ManagedWorkgroupListItem[];
 }
+const ListManagedWorkgroupsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ListManagedWorkgroupsResponse>;
 export interface ListNamespacesRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListNamespacesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ListNamespacesRequest>;
 export type NamespaceList = Namespace[];
+const NamespaceList = /*@__PURE__*/ __L.at(__c12, 6);
 export interface ListNamespacesResponse {
   nextToken?: string;
   namespaces: Namespace[];
 }
+const ListNamespacesResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ListNamespacesResponse>;
 export interface ListRecoveryPointsRequest {
   nextToken?: string;
   maxResults?: number;
@@ -786,53 +1108,102 @@ export interface ListRecoveryPointsRequest {
   namespaceName?: string;
   namespaceArn?: string;
 }
+const ListRecoveryPointsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ListRecoveryPointsRequest>;
 export type RecoveryPointList = RecoveryPoint[];
+const RecoveryPointList = /*@__PURE__*/ __L.at(__c13, 1);
 export interface ListRecoveryPointsResponse {
   recoveryPoints?: RecoveryPoint[];
   nextToken?: string;
 }
+const ListRecoveryPointsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ListRecoveryPointsResponse>;
 export interface ListReservationOfferingsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListReservationOfferingsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ListReservationOfferingsRequest>;
 export type ReservationOfferingsList = ReservationOffering[];
+const ReservationOfferingsList = /*@__PURE__*/ __L.at(__c13, 4);
 export interface ListReservationOfferingsResponse {
   reservationOfferingsList: ReservationOffering[];
   nextToken?: string;
 }
+const ListReservationOfferingsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ListReservationOfferingsResponse>;
 export interface ListReservationsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListReservationsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ListReservationsRequest>;
 export type ReservationsList = Reservation[];
+const ReservationsList = /*@__PURE__*/ __L.at(__c13, 7);
 export interface ListReservationsResponse {
   reservationsList: Reservation[];
   nextToken?: string;
 }
+const ListReservationsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<ListReservationsResponse>;
 export interface ListScheduledActionsRequest {
   nextToken?: string;
   maxResults?: number;
   namespaceName?: string;
 }
+const ListScheduledActionsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ListScheduledActionsRequest>;
 export interface ScheduledActionAssociation {
   namespaceName?: string;
   scheduledActionName?: string;
 }
+const ScheduledActionAssociation = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ScheduledActionAssociation>;
 export type ScheduledActionsList = ScheduledActionAssociation[];
+const ScheduledActionsList = /*@__PURE__*/ __L.at(__c14, 3);
 export interface ListScheduledActionsResponse {
   nextToken?: string;
   scheduledActions?: ScheduledActionAssociation[];
 }
+const ListScheduledActionsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<ListScheduledActionsResponse>;
 export interface ListSnapshotCopyConfigurationsRequest {
   namespaceName?: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListSnapshotCopyConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ListSnapshotCopyConfigurationsRequest>;
 export type SnapshotCopyConfigurations = SnapshotCopyConfiguration[];
+const SnapshotCopyConfigurations = /*@__PURE__*/ __L.at(__c14, 6);
 export interface ListSnapshotCopyConfigurationsResponse {
   nextToken?: string;
   snapshotCopyConfigurations: SnapshotCopyConfiguration[];
 }
+const ListSnapshotCopyConfigurationsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ListSnapshotCopyConfigurationsResponse>;
 export interface ListSnapshotsRequest {
   nextToken?: string;
   maxResults?: number;
@@ -842,76 +1213,137 @@ export interface ListSnapshotsRequest {
   startTime?: Date;
   endTime?: Date;
 }
+const ListSnapshotsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<ListSnapshotsRequest>;
 export type SnapshotList = Snapshot[];
+const SnapshotList = /*@__PURE__*/ __L.at(__c15, 1);
 export interface ListSnapshotsResponse {
   nextToken?: string;
   snapshots?: Snapshot[];
 }
+const ListSnapshotsResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ListSnapshotsResponse>;
 export interface ListTableRestoreStatusRequest {
   nextToken?: string;
   maxResults?: number;
   namespaceName?: string;
   workgroupName?: string;
 }
+const ListTableRestoreStatusRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ListTableRestoreStatusRequest>;
 export type TableRestoreStatusList = TableRestoreStatus[];
+const TableRestoreStatusList = /*@__PURE__*/ __L.at(__c15, 4);
 export interface ListTableRestoreStatusResponse {
   nextToken?: string;
   tableRestoreStatuses?: TableRestoreStatus[];
 }
+const ListTableRestoreStatusResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ListTableRestoreStatusResponse>;
 export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListTracksRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListTracksRequest = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<ListTracksRequest>;
 export type TrackList = ServerlessTrack[];
+const TrackList = /*@__PURE__*/ __L.at(__c16, 1);
 export interface ListTracksResponse {
   tracks?: ServerlessTrack[];
   nextToken?: string;
 }
+const ListTracksResponse = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<ListTracksResponse>;
 export interface ListUsageLimitsRequest {
   resourceArn?: string;
   usageType?: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListUsageLimitsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ListUsageLimitsRequest>;
 export type UsageLimits = UsageLimit[];
+const UsageLimits = /*@__PURE__*/ __L.at(__c16, 4);
 export interface ListUsageLimitsResponse {
   usageLimits?: UsageLimit[];
   nextToken?: string;
 }
+const ListUsageLimitsResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ListUsageLimitsResponse>;
 export interface ListWorkgroupsRequest {
   nextToken?: string;
   maxResults?: number;
   ownerAccount?: string;
 }
+const ListWorkgroupsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ListWorkgroupsRequest>;
 export type WorkgroupList = Workgroup[];
+const WorkgroupList = /*@__PURE__*/ __L.at(__c16, 7);
 export interface ListWorkgroupsResponse {
   nextToken?: string;
   workgroups: Workgroup[];
 }
+const ListWorkgroupsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<ListWorkgroupsResponse>;
 export interface PutResourcePolicyRequest {
   resourceArn: string;
   policy: string;
 }
+const PutResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<PutResourcePolicyRequest>;
 export interface PutResourcePolicyResponse {
   resourcePolicy?: ResourcePolicy;
 }
+const PutResourcePolicyResponse =
+  GetResourcePolicyResponse as any as S.Schema<PutResourcePolicyResponse>;
 export interface RestoreFromRecoveryPointRequest {
   recoveryPointId: string;
   namespaceName: string;
   workgroupName: string;
   maintainIntegration?: boolean;
 }
+const RestoreFromRecoveryPointRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<RestoreFromRecoveryPointRequest>;
 export interface RestoreFromRecoveryPointResponse {
   recoveryPointId?: string;
   namespace?: Namespace;
 }
+const RestoreFromRecoveryPointResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<RestoreFromRecoveryPointResponse>;
 export interface RestoreFromSnapshotRequest {
   namespaceName: string;
   workgroupName: string;
@@ -922,11 +1354,19 @@ export interface RestoreFromSnapshotRequest {
   adminPasswordSecretKmsKeyId?: string;
   maintainIntegration?: boolean;
 }
+const RestoreFromSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<RestoreFromSnapshotRequest>;
 export interface RestoreFromSnapshotResponse {
   snapshotName?: string;
   ownerAccount?: string;
   namespace?: Namespace;
 }
+const RestoreFromSnapshotResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<RestoreFromSnapshotResponse>;
 export interface RestoreTableFromRecoveryPointRequest {
   namespaceName: string;
   workgroupName: string;
@@ -939,9 +1379,15 @@ export interface RestoreTableFromRecoveryPointRequest {
   newTableName: string;
   activateCaseSensitiveIdentifier?: boolean;
 }
+const RestoreTableFromRecoveryPointRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<RestoreTableFromRecoveryPointRequest>;
 export interface RestoreTableFromRecoveryPointResponse {
   tableRestoreStatus?: TableRestoreStatus;
 }
+const RestoreTableFromRecoveryPointResponse =
+  GetTableRestoreStatusResponse as any as S.Schema<RestoreTableFromRecoveryPointResponse>;
 export interface RestoreTableFromSnapshotRequest {
   namespaceName: string;
   workgroupName: string;
@@ -954,38 +1400,65 @@ export interface RestoreTableFromSnapshotRequest {
   newTableName: string;
   activateCaseSensitiveIdentifier?: boolean;
 }
+const RestoreTableFromSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<RestoreTableFromSnapshotRequest>;
 export interface RestoreTableFromSnapshotResponse {
   tableRestoreStatus?: TableRestoreStatus;
 }
+const RestoreTableFromSnapshotResponse =
+  GetTableRestoreStatusResponse as any as S.Schema<RestoreTableFromSnapshotResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = DeleteResourcePolicyResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
+const TagKeyList = AccountIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse =
+  DeleteResourcePolicyResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateCustomDomainAssociationRequest {
   workgroupName: string;
   customDomainName: string;
   customDomainCertificateArn: string;
 }
+const UpdateCustomDomainAssociationRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<UpdateCustomDomainAssociationRequest>;
 export interface UpdateCustomDomainAssociationResponse {
   customDomainName?: string;
   workgroupName?: string;
   customDomainCertificateArn?: string;
   customDomainCertificateExpiryTime?: Date;
 }
+const UpdateCustomDomainAssociationResponse =
+  CreateCustomDomainAssociationResponse as any as S.Schema<UpdateCustomDomainAssociationResponse>;
 export interface UpdateEndpointAccessRequest {
   endpointName: string;
   vpcSecurityGroupIds?: string[];
 }
+const UpdateEndpointAccessRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<UpdateEndpointAccessRequest>;
 export interface UpdateEndpointAccessResponse {
   endpoint?: EndpointAccess;
 }
+const UpdateEndpointAccessResponse =
+  CreateEndpointAccessResponse as any as S.Schema<UpdateEndpointAccessResponse>;
 export type LakehouseRegistration = string;
 export type CatalogNameString = string;
 export type LakehouseIdcRegistration = string;
@@ -997,12 +1470,20 @@ export interface UpdateLakehouseConfigurationRequest {
   lakehouseIdcApplicationArn?: string;
   dryRun?: boolean;
 }
+const UpdateLakehouseConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<UpdateLakehouseConfigurationRequest>;
 export interface UpdateLakehouseConfigurationResponse {
   namespaceName?: string;
   lakehouseIdcApplicationArn?: string;
   lakehouseRegistrationStatus?: string;
   catalogArn?: string;
 }
+const UpdateLakehouseConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<UpdateLakehouseConfigurationResponse>;
 export type LogDestinationType = string;
 export type S3TableAction = string;
 export interface UpdateNamespaceRequest {
@@ -1021,9 +1502,14 @@ export interface UpdateNamespaceRequest {
   s3TableKmsKeyId?: string;
   s3TableGranularity?: string;
 }
+const UpdateNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<UpdateNamespaceRequest>;
 export interface UpdateNamespaceResponse {
   namespace: Namespace;
 }
+const UpdateNamespaceResponse = DeleteNamespaceResponse as any as S.Schema<UpdateNamespaceResponse>;
 export interface UpdateScheduledActionRequest {
   scheduledActionName: string;
   targetAction?: TargetAction;
@@ -1034,31 +1520,54 @@ export interface UpdateScheduledActionRequest {
   startTime?: Date;
   endTime?: Date;
 }
+const UpdateScheduledActionRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<UpdateScheduledActionRequest>;
 export interface UpdateScheduledActionResponse {
   scheduledAction?: ScheduledActionResponse;
 }
+const UpdateScheduledActionResponse =
+  CreateScheduledActionResponse as any as S.Schema<UpdateScheduledActionResponse>;
 export interface UpdateSnapshotRequest {
   snapshotName: string;
   retentionPeriod?: number;
 }
+const UpdateSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<UpdateSnapshotRequest>;
 export interface UpdateSnapshotResponse {
   snapshot?: Snapshot;
 }
+const UpdateSnapshotResponse = CreateSnapshotResponse as any as S.Schema<UpdateSnapshotResponse>;
 export interface UpdateSnapshotCopyConfigurationRequest {
   snapshotCopyConfigurationId: string;
   snapshotRetentionPeriod?: number;
 }
+const UpdateSnapshotCopyConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<UpdateSnapshotCopyConfigurationRequest>;
 export interface UpdateSnapshotCopyConfigurationResponse {
   snapshotCopyConfiguration: SnapshotCopyConfiguration;
 }
+const UpdateSnapshotCopyConfigurationResponse =
+  CreateSnapshotCopyConfigurationResponse as any as S.Schema<UpdateSnapshotCopyConfigurationResponse>;
 export interface UpdateUsageLimitRequest {
   usageLimitId: string;
   amount?: number;
   breachAction?: string;
 }
+const UpdateUsageLimitRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<UpdateUsageLimitRequest>;
 export interface UpdateUsageLimitResponse {
   usageLimit?: UsageLimit;
 }
+const UpdateUsageLimitResponse =
+  CreateUsageLimitResponse as any as S.Schema<UpdateUsageLimitResponse>;
 export interface UpdateWorkgroupRequest {
   workgroupName: string;
   baseCapacity?: number;
@@ -1074,9 +1583,14 @@ export interface UpdateWorkgroupRequest {
   trackName?: string;
   extraComputeForAutomaticOptimization?: boolean;
 }
+const UpdateWorkgroupRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<UpdateWorkgroupRequest>;
 export interface UpdateWorkgroupResponse {
   workgroup: Workgroup;
 }
+const UpdateWorkgroupResponse = DeleteWorkgroupResponse as any as S.Schema<UpdateWorkgroupResponse>;
 export type ConvertRecoveryPointToSnapshotError =
   | ConflictException
   | InternalServerException
@@ -1094,8 +1608,8 @@ export const convertRecoveryPointToSnapshot: API.OperationMethod<
   ConvertRecoveryPointToSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<ConvertRecoveryPointToSnapshotRequest>,
-  output: __S(5) as any as S.Schema<ConvertRecoveryPointToSnapshotResponse>,
+  input: ConvertRecoveryPointToSnapshotRequest,
+  output: ConvertRecoveryPointToSnapshotResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1126,8 +1640,8 @@ export const createCustomDomainAssociation: API.OperationMethod<
   CreateCustomDomainAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateCustomDomainAssociationRequest>,
-  output: __S(7) as any as S.Schema<CreateCustomDomainAssociationResponse>,
+  input: CreateCustomDomainAssociationRequest,
+  output: CreateCustomDomainAssociationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1158,8 +1672,8 @@ export const createEndpointAccess: API.OperationMethod<
   CreateEndpointAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateEndpointAccessRequest>,
-  output: __S(15) as any as S.Schema<CreateEndpointAccessResponse>,
+  input: CreateEndpointAccessRequest,
+  output: CreateEndpointAccessResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1188,8 +1702,8 @@ export const createNamespace: API.OperationMethod<
   CreateNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CreateNamespaceRequest>,
-  output: __S(20) as any as S.Schema<CreateNamespaceResponse>,
+  input: CreateNamespaceRequest,
+  output: CreateNamespaceResponse,
   errors: [ConflictException, InternalServerException, TooManyTagsException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1214,8 +1728,8 @@ export const createReservation: API.OperationMethod<
   CreateReservationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<CreateReservationRequest>,
-  output: __S(24) as any as S.Schema<CreateReservationResponse>,
+  input: CreateReservationRequest,
+  output: CreateReservationResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1245,8 +1759,8 @@ export const createScheduledAction: API.OperationMethod<
   CreateScheduledActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<CreateScheduledActionRequest>,
-  output: __S(31) as any as S.Schema<CreateScheduledActionResponse>,
+  input: CreateScheduledActionRequest,
+  output: CreateScheduledActionResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1275,8 +1789,8 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<CreateSnapshotRequest>,
-  output: __S(33) as any as S.Schema<CreateSnapshotResponse>,
+  input: CreateSnapshotRequest,
+  output: CreateSnapshotResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1307,8 +1821,8 @@ export const createSnapshotCopyConfiguration: API.OperationMethod<
   CreateSnapshotCopyConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<CreateSnapshotCopyConfigurationRequest>,
-  output: __S(36) as any as S.Schema<CreateSnapshotCopyConfigurationResponse>,
+  input: CreateSnapshotCopyConfigurationRequest,
+  output: CreateSnapshotCopyConfigurationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1338,8 +1852,8 @@ export const createUsageLimit: API.OperationMethod<
   CreateUsageLimitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<CreateUsageLimitRequest>,
-  output: __S(39) as any as S.Schema<CreateUsageLimitResponse>,
+  input: CreateUsageLimitRequest,
+  output: CreateUsageLimitResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1380,8 +1894,8 @@ export const createWorkgroup: API.OperationMethod<
   CreateWorkgroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<CreateWorkgroupRequest>,
-  output: __S(47) as any as S.Schema<CreateWorkgroupResponse>,
+  input: CreateWorkgroupRequest,
+  output: CreateWorkgroupResponse,
   errors: [
     ConflictException,
     InsufficientCapacityException,
@@ -1413,8 +1927,8 @@ export const deleteCustomDomainAssociation: API.OperationMethod<
   DeleteCustomDomainAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<DeleteCustomDomainAssociationRequest>,
-  output: __S(49) as any as S.Schema<DeleteCustomDomainAssociationResponse>,
+  input: DeleteCustomDomainAssociationRequest,
+  output: DeleteCustomDomainAssociationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1443,8 +1957,8 @@ export const deleteEndpointAccess: API.OperationMethod<
   DeleteEndpointAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<DeleteEndpointAccessRequest>,
-  output: __S(15) as any as S.Schema<DeleteEndpointAccessResponse>,
+  input: DeleteEndpointAccessRequest,
+  output: DeleteEndpointAccessResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1471,8 +1985,8 @@ export const deleteNamespace: API.OperationMethod<
   DeleteNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<DeleteNamespaceRequest>,
-  output: __S(52) as any as S.Schema<DeleteNamespaceResponse>,
+  input: DeleteNamespaceRequest,
+  output: DeleteNamespaceResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1498,8 +2012,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<DeleteResourcePolicyRequest>,
-  output: __S(54) as any as S.Schema<DeleteResourcePolicyResponse>,
+  input: DeleteResourcePolicyRequest,
+  output: DeleteResourcePolicyResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1520,8 +2034,8 @@ export const deleteScheduledAction: API.OperationMethod<
   DeleteScheduledActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<DeleteScheduledActionRequest>,
-  output: __S(31) as any as S.Schema<DeleteScheduledActionResponse>,
+  input: DeleteScheduledActionRequest,
+  output: DeleteScheduledActionResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1543,8 +2057,8 @@ export const deleteSnapshot: API.OperationMethod<
   DeleteSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<DeleteSnapshotRequest>,
-  output: __S(33) as any as S.Schema<DeleteSnapshotResponse>,
+  input: DeleteSnapshotRequest,
+  output: DeleteSnapshotResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1572,8 +2086,8 @@ export const deleteSnapshotCopyConfiguration: API.OperationMethod<
   DeleteSnapshotCopyConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<DeleteSnapshotCopyConfigurationRequest>,
-  output: __S(36) as any as S.Schema<DeleteSnapshotCopyConfigurationResponse>,
+  input: DeleteSnapshotCopyConfigurationRequest,
+  output: DeleteSnapshotCopyConfigurationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1601,8 +2115,8 @@ export const deleteUsageLimit: API.OperationMethod<
   DeleteUsageLimitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<DeleteUsageLimitRequest>,
-  output: __S(39) as any as S.Schema<DeleteUsageLimitResponse>,
+  input: DeleteUsageLimitRequest,
+  output: DeleteUsageLimitResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1629,8 +2143,8 @@ export const deleteWorkgroup: API.OperationMethod<
   DeleteWorkgroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<DeleteWorkgroupRequest>,
-  output: __S(60) as any as S.Schema<DeleteWorkgroupResponse>,
+  input: DeleteWorkgroupRequest,
+  output: DeleteWorkgroupResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1662,8 +2176,8 @@ export const getCredentials: API.OperationMethod<
   GetCredentialsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<GetCredentialsRequest>,
-  output: __S(62) as any as S.Schema<GetCredentialsResponse>,
+  input: GetCredentialsRequest,
+  output: GetCredentialsResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1687,8 +2201,8 @@ export const getCustomDomainAssociation: API.OperationMethod<
   GetCustomDomainAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<GetCustomDomainAssociationRequest>,
-  output: __S(7) as any as S.Schema<GetCustomDomainAssociationResponse>,
+  input: GetCustomDomainAssociationRequest,
+  output: GetCustomDomainAssociationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1717,8 +2231,8 @@ export const getEndpointAccess: API.OperationMethod<
   GetEndpointAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<GetEndpointAccessRequest>,
-  output: __S(15) as any as S.Schema<GetEndpointAccessResponse>,
+  input: GetEndpointAccessRequest,
+  output: GetEndpointAccessResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1752,8 +2266,8 @@ export const getIdentityCenterAuthToken: API.OperationMethod<
   GetIdentityCenterAuthTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<GetIdentityCenterAuthTokenRequest>,
-  output: __S(66) as any as S.Schema<GetIdentityCenterAuthTokenResponse>,
+  input: GetIdentityCenterAuthTokenRequest,
+  output: GetIdentityCenterAuthTokenResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1782,8 +2296,8 @@ export const getNamespace: API.OperationMethod<
   GetNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<GetNamespaceRequest>,
-  output: __S(52) as any as S.Schema<GetNamespaceResponse>,
+  input: GetNamespaceRequest,
+  output: GetNamespaceResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1805,8 +2319,8 @@ export const getRecoveryPoint: API.OperationMethod<
   GetRecoveryPointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<GetRecoveryPointRequest>,
-  output: __S(70) as any as S.Schema<GetRecoveryPointResponse>,
+  input: GetRecoveryPointRequest,
+  output: GetRecoveryPointResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1833,8 +2347,8 @@ export const getReservation: API.OperationMethod<
   GetReservationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<GetReservationRequest>,
-  output: __S(72) as any as S.Schema<GetReservationResponse>,
+  input: GetReservationRequest,
+  output: GetReservationResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1861,8 +2375,8 @@ export const getReservationOffering: API.OperationMethod<
   GetReservationOfferingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<GetReservationOfferingRequest>,
-  output: __S(74) as any as S.Schema<GetReservationOfferingResponse>,
+  input: GetReservationOfferingRequest,
+  output: GetReservationOfferingResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1888,8 +2402,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<GetResourcePolicyRequest>,
-  output: __S(77) as any as S.Schema<GetResourcePolicyResponse>,
+  input: GetResourcePolicyRequest,
+  output: GetResourcePolicyResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1910,8 +2424,8 @@ export const getScheduledAction: API.OperationMethod<
   GetScheduledActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<GetScheduledActionRequest>,
-  output: __S(31) as any as S.Schema<GetScheduledActionResponse>,
+  input: GetScheduledActionRequest,
+  output: GetScheduledActionResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1932,8 +2446,8 @@ export const getSnapshot: API.OperationMethod<
   GetSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<GetSnapshotRequest>,
-  output: __S(33) as any as S.Schema<GetSnapshotResponse>,
+  input: GetSnapshotRequest,
+  output: GetSnapshotResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1953,8 +2467,8 @@ export const getTableRestoreStatus: API.OperationMethod<
   GetTableRestoreStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<GetTableRestoreStatusRequest>,
-  output: __S(82) as any as S.Schema<GetTableRestoreStatusResponse>,
+  input: GetTableRestoreStatusRequest,
+  output: GetTableRestoreStatusResponse,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1979,8 +2493,8 @@ export const getTrack: API.OperationMethod<
   GetTrackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<GetTrackRequest>,
-  output: __S(87) as any as S.Schema<GetTrackResponse>,
+  input: GetTrackRequest,
+  output: GetTrackResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2010,8 +2524,8 @@ export const getUsageLimit: API.OperationMethod<
   GetUsageLimitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<GetUsageLimitRequest>,
-  output: __S(39) as any as S.Schema<GetUsageLimitResponse>,
+  input: GetUsageLimitRequest,
+  output: GetUsageLimitResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2037,8 +2551,8 @@ export const getWorkgroup: API.OperationMethod<
   GetWorkgroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<GetWorkgroupRequest>,
-  output: __S(60) as any as S.Schema<GetWorkgroupResponse>,
+  input: GetWorkgroupRequest,
+  output: GetWorkgroupResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2062,8 +2576,8 @@ export const listCustomDomainAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Association
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(90) as any as S.Schema<ListCustomDomainAssociationsRequest>,
-  output: __S(93) as any as S.Schema<ListCustomDomainAssociationsResponse>,
+  input: ListCustomDomainAssociationsRequest,
+  output: ListCustomDomainAssociationsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2098,8 +2612,8 @@ export const listEndpointAccess: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EndpointAccess
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(94) as any as S.Schema<ListEndpointAccessRequest>,
-  output: __S(96) as any as S.Schema<ListEndpointAccessResponse>,
+  input: ListEndpointAccessRequest,
+  output: ListEndpointAccessResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2131,8 +2645,8 @@ export const listManagedWorkgroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ManagedWorkgroupListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(97) as any as S.Schema<ListManagedWorkgroupsRequest>,
-  output: __S(100) as any as S.Schema<ListManagedWorkgroupsResponse>,
+  input: ListManagedWorkgroupsRequest,
+  output: ListManagedWorkgroupsResponse,
   errors: [AccessDeniedException, InternalServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2156,8 +2670,8 @@ export const listNamespaces: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Namespace
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(101) as any as S.Schema<ListNamespacesRequest>,
-  output: __S(103) as any as S.Schema<ListNamespacesResponse>,
+  input: ListNamespacesRequest,
+  output: ListNamespacesResponse,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2181,8 +2695,8 @@ export const listRecoveryPoints: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecoveryPoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(104) as any as S.Schema<ListRecoveryPointsRequest>,
-  output: __S(106) as any as S.Schema<ListRecoveryPointsResponse>,
+  input: ListRecoveryPointsRequest,
+  output: ListRecoveryPointsResponse,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2210,8 +2724,8 @@ export const listReservationOfferings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReservationOffering
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(107) as any as S.Schema<ListReservationOfferingsRequest>,
-  output: __S(109) as any as S.Schema<ListReservationOfferingsResponse>,
+  input: ListReservationOfferingsRequest,
+  output: ListReservationOfferingsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2239,8 +2753,8 @@ export const listReservations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Reservation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(110) as any as S.Schema<ListReservationsRequest>,
-  output: __S(112) as any as S.Schema<ListReservationsResponse>,
+  input: ListReservationsRequest,
+  output: ListReservationsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2269,8 +2783,8 @@ export const listScheduledActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScheduledActionAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(113) as any as S.Schema<ListScheduledActionsRequest>,
-  output: __S(116) as any as S.Schema<ListScheduledActionsResponse>,
+  input: ListScheduledActionsRequest,
+  output: ListScheduledActionsResponse,
   errors: [
     InternalServerException,
     InvalidPaginationException,
@@ -2305,8 +2819,8 @@ export const listSnapshotCopyConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SnapshotCopyConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(117) as any as S.Schema<ListSnapshotCopyConfigurationsRequest>,
-  output: __S(119) as any as S.Schema<ListSnapshotCopyConfigurationsResponse>,
+  input: ListSnapshotCopyConfigurationsRequest,
+  output: ListSnapshotCopyConfigurationsResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2340,8 +2854,8 @@ export const listSnapshots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Snapshot
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(120) as any as S.Schema<ListSnapshotsRequest>,
-  output: __S(122) as any as S.Schema<ListSnapshotsResponse>,
+  input: ListSnapshotsRequest,
+  output: ListSnapshotsResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2369,8 +2883,8 @@ export const listTableRestoreStatus: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TableRestoreStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(123) as any as S.Schema<ListTableRestoreStatusRequest>,
-  output: __S(125) as any as S.Schema<ListTableRestoreStatusResponse>,
+  input: ListTableRestoreStatusRequest,
+  output: ListTableRestoreStatusResponse,
   errors: [InvalidPaginationException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2398,8 +2912,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(127) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2428,8 +2942,8 @@ export const listTracks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServerlessTrack
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(128) as any as S.Schema<ListTracksRequest>,
-  output: __S(130) as any as S.Schema<ListTracksResponse>,
+  input: ListTracksRequest,
+  output: ListTracksResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2465,8 +2979,8 @@ export const listUsageLimits: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   UsageLimit
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(131) as any as S.Schema<ListUsageLimitsRequest>,
-  output: __S(133) as any as S.Schema<ListUsageLimitsResponse>,
+  input: ListUsageLimitsRequest,
+  output: ListUsageLimitsResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2496,8 +3010,8 @@ export const listWorkgroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Workgroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(134) as any as S.Schema<ListWorkgroupsRequest>,
-  output: __S(136) as any as S.Schema<ListWorkgroupsResponse>,
+  input: ListWorkgroupsRequest,
+  output: ListWorkgroupsResponse,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2526,8 +3040,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<PutResourcePolicyRequest>,
-  output: __S(77) as any as S.Schema<PutResourcePolicyResponse>,
+  input: PutResourcePolicyRequest,
+  output: PutResourcePolicyResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2555,8 +3069,8 @@ export const restoreFromRecoveryPoint: API.OperationMethod<
   RestoreFromRecoveryPointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<RestoreFromRecoveryPointRequest>,
-  output: __S(139) as any as S.Schema<RestoreFromRecoveryPointResponse>,
+  input: RestoreFromRecoveryPointRequest,
+  output: RestoreFromRecoveryPointResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2584,8 +3098,8 @@ export const restoreFromSnapshot: API.OperationMethod<
   RestoreFromSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<RestoreFromSnapshotRequest>,
-  output: __S(141) as any as S.Schema<RestoreFromSnapshotResponse>,
+  input: RestoreFromSnapshotRequest,
+  output: RestoreFromSnapshotResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2613,8 +3127,8 @@ export const restoreTableFromRecoveryPoint: API.OperationMethod<
   RestoreTableFromRecoveryPointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<RestoreTableFromRecoveryPointRequest>,
-  output: __S(82) as any as S.Schema<RestoreTableFromRecoveryPointResponse>,
+  input: RestoreTableFromRecoveryPointRequest,
+  output: RestoreTableFromRecoveryPointResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2641,8 +3155,8 @@ export const restoreTableFromSnapshot: API.OperationMethod<
   RestoreTableFromSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143) as any as S.Schema<RestoreTableFromSnapshotRequest>,
-  output: __S(82) as any as S.Schema<RestoreTableFromSnapshotResponse>,
+  input: RestoreTableFromSnapshotRequest,
+  output: RestoreTableFromSnapshotResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2670,8 +3184,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144) as any as S.Schema<TagResourceRequest>,
-  output: __S(54) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2699,8 +3213,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<UntagResourceRequest>,
-  output: __S(54) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2729,8 +3243,8 @@ export const updateCustomDomainAssociation: API.OperationMethod<
   UpdateCustomDomainAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<UpdateCustomDomainAssociationRequest>,
-  output: __S(7) as any as S.Schema<UpdateCustomDomainAssociationResponse>,
+  input: UpdateCustomDomainAssociationRequest,
+  output: UpdateCustomDomainAssociationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2760,8 +3274,8 @@ export const updateEndpointAccess: API.OperationMethod<
   UpdateEndpointAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147) as any as S.Schema<UpdateEndpointAccessRequest>,
-  output: __S(15) as any as S.Schema<UpdateEndpointAccessResponse>,
+  input: UpdateEndpointAccessRequest,
+  output: UpdateEndpointAccessResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2790,8 +3304,8 @@ export const updateLakehouseConfiguration: API.OperationMethod<
   UpdateLakehouseConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148) as any as S.Schema<UpdateLakehouseConfigurationRequest>,
-  output: __S(149) as any as S.Schema<UpdateLakehouseConfigurationResponse>,
+  input: UpdateLakehouseConfigurationRequest,
+  output: UpdateLakehouseConfigurationResponse,
   errors: [
     ConflictException,
     DryRunException,
@@ -2821,8 +3335,8 @@ export const updateNamespace: API.OperationMethod<
   UpdateNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<UpdateNamespaceRequest>,
-  output: __S(52) as any as S.Schema<UpdateNamespaceResponse>,
+  input: UpdateNamespaceRequest,
+  output: UpdateNamespaceResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2849,8 +3363,8 @@ export const updateScheduledAction: API.OperationMethod<
   UpdateScheduledActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<UpdateScheduledActionRequest>,
-  output: __S(31) as any as S.Schema<UpdateScheduledActionResponse>,
+  input: UpdateScheduledActionRequest,
+  output: UpdateScheduledActionResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2877,8 +3391,8 @@ export const updateSnapshot: API.OperationMethod<
   UpdateSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152) as any as S.Schema<UpdateSnapshotRequest>,
-  output: __S(33) as any as S.Schema<UpdateSnapshotResponse>,
+  input: UpdateSnapshotRequest,
+  output: UpdateSnapshotResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2906,8 +3420,8 @@ export const updateSnapshotCopyConfiguration: API.OperationMethod<
   UpdateSnapshotCopyConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<UpdateSnapshotCopyConfigurationRequest>,
-  output: __S(36) as any as S.Schema<UpdateSnapshotCopyConfigurationResponse>,
+  input: UpdateSnapshotCopyConfigurationRequest,
+  output: UpdateSnapshotCopyConfigurationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2935,8 +3449,8 @@ export const updateUsageLimit: API.OperationMethod<
   UpdateUsageLimitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<UpdateUsageLimitRequest>,
-  output: __S(39) as any as S.Schema<UpdateUsageLimitResponse>,
+  input: UpdateUsageLimitRequest,
+  output: UpdateUsageLimitResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2975,8 +3489,8 @@ export const updateWorkgroup: API.OperationMethod<
   UpdateWorkgroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155) as any as S.Schema<UpdateWorkgroupRequest>,
-  output: __S(60) as any as S.Schema<UpdateWorkgroupResponse>,
+  input: UpdateWorkgroupRequest,
+  output: UpdateWorkgroupResponse,
   errors: [
     ConflictException,
     InsufficientCapacityException,
@@ -2998,14 +3512,14 @@ function __c0(j: number): any {
         identifier: "Tag",
       });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(Tag);
     case 2:
       return S.suspend(() =>
         S.Struct({
           recoveryPointId: S.String,
           snapshotName: S.String,
           retentionPeriod: S.optional(S.Number),
-          tags: S.optional(__S(1)),
+          tags: S.optional(TagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ConvertRecoveryPointToSnapshotRequest",
@@ -3035,14 +3549,14 @@ function __c0(j: number): any {
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
           snapshotArn: S.optional(S.String),
-          accountsWithRestoreAccess: S.optional(__S(3)),
-          accountsWithProvisionedRestoreAccess: S.optional(__S(3)),
+          accountsWithRestoreAccess: S.optional(AccountIdList),
+          accountsWithProvisionedRestoreAccess: S.optional(AccountIdList),
           adminPasswordSecretArn: S.optional(S.String),
           adminPasswordSecretKmsKeyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Snapshot" });
     case 5:
-      return S.suspend(() => S.Struct({ snapshot: S.optional(__S(4)) })).annotate({
+      return S.suspend(() => S.Struct({ snapshot: S.optional(Snapshot) })).annotate({
         identifier: "ConvertRecoveryPointToSnapshotResponse",
       });
     case 6:
@@ -3076,9 +3590,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endpointName: S.String,
-          subnetIds: __S(3),
+          subnetIds: SubnetIdList,
           workgroupName: S.String,
-          vpcSecurityGroupIds: S.optional(__S(3)),
+          vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
           ownerAccount: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -3091,7 +3605,7 @@ function __c1(j: number): any {
         identifier: "VpcSecurityGroupMembership",
       });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(VpcSecurityGroupMembership);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3103,13 +3617,13 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "NetworkInterface" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(NetworkInterface);
     case 5:
       return S.suspend(() =>
         S.Struct({
           vpcEndpointId: S.optional(S.String),
           vpcId: S.optional(S.String),
-          networkInterfaces: S.optional(__S(12)),
+          networkInterfaces: S.optional(NetworkInterfaceList),
         }),
       ).annotate({ identifier: "VpcEndpoint" });
     case 6:
@@ -3121,14 +3635,14 @@ function __c1(j: number): any {
           endpointCreateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           port: S.optional(S.Number),
           address: S.optional(S.String),
-          subnetIds: S.optional(__S(3)),
-          vpcSecurityGroups: S.optional(__S(10)),
-          vpcEndpoint: S.optional(__S(13)),
+          subnetIds: S.optional(SubnetIdList),
+          vpcSecurityGroups: S.optional(VpcSecurityGroupMembershipList),
+          vpcEndpoint: S.optional(VpcEndpoint),
           endpointArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "EndpointAccess" });
     case 7:
-      return S.suspend(() => S.Struct({ endpoint: S.optional(__S(14)) })).annotate({
+      return S.suspend(() => S.Struct({ endpoint: S.optional(EndpointAccess) })).annotate({
         identifier: "CreateEndpointAccessResponse",
       });
   }
@@ -3144,9 +3658,9 @@ function __c2(j: number): any {
           dbName: S.optional(S.String),
           kmsKeyId: S.optional(S.String),
           defaultIamRoleArn: S.optional(S.String),
-          iamRoles: S.optional(__S(3)),
-          logExports: S.optional(__S(3)),
-          tags: S.optional(__S(1)),
+          iamRoles: S.optional(IamRoleArnList),
+          logExports: S.optional(LogExportList),
+          tags: S.optional(TagList),
           manageAdminPassword: S.optional(S.Boolean),
           adminPasswordSecretKmsKeyId: S.optional(S.String),
           redshiftIdcApplicationArn: S.optional(S.String),
@@ -3157,11 +3671,11 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          s3Tables: S.optional(__S(3)),
+          s3Tables: S.optional(S3TableNameList),
           s3TableNamespace: S.optional(S.String),
           s3TableGranularity: S.optional(S.String),
           enabledAll: S.optional(S.Boolean),
-          lastIngestionTimes: S.optional(__S(17)),
+          lastIngestionTimes: S.optional(S3TableLastIngestionTimeMap),
         }),
       ).annotate({ identifier: "S3TablePublishStatus" });
     case 3:
@@ -3174,19 +3688,19 @@ function __c2(j: number): any {
           dbName: S.optional(S.String),
           kmsKeyId: S.optional(S.String),
           defaultIamRoleArn: S.optional(S.String),
-          iamRoles: S.optional(__S(3)),
-          logExports: S.optional(__S(3)),
+          iamRoles: S.optional(IamRoleArnList),
+          logExports: S.optional(LogExportList),
           status: S.optional(S.String),
           creationDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           adminPasswordSecretArn: S.optional(S.String),
           adminPasswordSecretKmsKeyId: S.optional(S.String),
           lakehouseRegistrationStatus: S.optional(S.String),
           catalogArn: S.optional(S.String),
-          s3TablePublishStatus: S.optional(__S(18)),
+          s3TablePublishStatus: S.optional(S3TablePublishStatus),
         }),
       ).annotate({ identifier: "Namespace" });
     case 4:
-      return S.suspend(() => S.Struct({ namespace: S.optional(__S(19)) })).annotate({
+      return S.suspend(() => S.Struct({ namespace: S.optional(Namespace) })).annotate({
         identifier: "CreateNamespaceResponse",
       });
     case 5:
@@ -3216,7 +3730,7 @@ function __c2(j: number): any {
           startDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           endDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           capacity: S.optional(S.Number),
-          offering: S.optional(__S(22)),
+          offering: S.optional(ReservationOffering),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "Reservation" });
@@ -3225,7 +3739,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ reservation: S.optional(__S(23)) })).annotate({
+      return S.suspend(() => S.Struct({ reservation: S.optional(Reservation) })).annotate({
         identifier: "CreateReservationResponse",
       });
     case 1:
@@ -3234,13 +3748,15 @@ function __c3(j: number): any {
           namespaceName: S.String,
           snapshotNamePrefix: S.String,
           retentionPeriod: S.optional(S.Number),
-          tags: S.optional(__S(1)),
+          tags: S.optional(TagList),
         }),
       ).annotate({
         identifier: "CreateSnapshotScheduleActionParameters",
       });
     case 2:
-      return S.Union([/*@__PURE__*/ S.Struct({ createSnapshot: __S(25) })]);
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ createSnapshot: CreateSnapshotScheduleActionParameters }),
+      ]);
     case 3:
       return S.Union([
         /*@__PURE__*/ S.Struct({
@@ -3252,8 +3768,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scheduledActionName: S.String,
-          targetAction: __S(26),
-          schedule: __S(27),
+          targetAction: TargetAction,
+          schedule: Schedule,
           roleArn: S.String,
           namespaceName: S.String,
           enabled: S.optional(S.Boolean),
@@ -3270,20 +3786,22 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scheduledActionName: S.optional(S.String),
-          schedule: S.optional(__S(27)),
+          schedule: S.optional(Schedule),
           scheduledActionDescription: S.optional(S.String),
-          nextInvocations: S.optional(__S(29)),
+          nextInvocations: S.optional(NextInvocationsList),
           roleArn: S.optional(S.String),
           state: S.optional(S.String),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          targetAction: S.optional(__S(26)),
+          targetAction: S.optional(TargetAction),
           namespaceName: S.optional(S.String),
           scheduledActionUuid: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScheduledActionResponse" });
     case 7:
-      return S.suspend(() => S.Struct({ scheduledAction: S.optional(__S(30)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ scheduledAction: S.optional(ScheduledActionResponse) }),
+      ).annotate({
         identifier: "CreateScheduledActionResponse",
       });
   }
@@ -3296,11 +3814,11 @@ function __c4(j: number): any {
           namespaceName: S.String,
           snapshotName: S.String,
           retentionPeriod: S.optional(S.Number),
-          tags: S.optional(__S(1)),
+          tags: S.optional(TagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateSnapshotRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ snapshot: S.optional(__S(4)) })).annotate({
+      return S.suspend(() => S.Struct({ snapshot: S.optional(Snapshot) })).annotate({
         identifier: "CreateSnapshotResponse",
       });
     case 2:
@@ -3328,7 +3846,9 @@ function __c4(j: number): any {
         identifier: "SnapshotCopyConfiguration",
       });
     case 4:
-      return S.suspend(() => S.Struct({ snapshotCopyConfiguration: __S(35) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ snapshotCopyConfiguration: SnapshotCopyConfiguration }),
+      ).annotate({
         identifier: "CreateSnapshotCopyConfigurationResponse",
       });
     case 5:
@@ -3354,7 +3874,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "UsageLimit" });
     case 7:
-      return S.suspend(() => S.Struct({ usageLimit: S.optional(__S(38)) })).annotate({
+      return S.suspend(() => S.Struct({ usageLimit: S.optional(UsageLimit) })).annotate({
         identifier: "CreateUsageLimitResponse",
       });
   }
@@ -3366,7 +3886,7 @@ function __c5(j: number): any {
         S.Struct({ parameterKey: S.optional(S.String), parameterValue: S.optional(S.String) }),
       ).annotate({ identifier: "ConfigParameter" });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(ConfigParameter);
     case 2:
       return S.suspend(() =>
         S.Struct({ status: S.optional(S.String), level: S.optional(S.Number) }),
@@ -3378,27 +3898,27 @@ function __c5(j: number): any {
           namespaceName: S.String,
           baseCapacity: S.optional(S.Number),
           enhancedVpcRouting: S.optional(S.Boolean),
-          configParameters: S.optional(__S(41)),
-          securityGroupIds: S.optional(__S(3)),
-          subnetIds: S.optional(__S(3)),
+          configParameters: S.optional(ConfigParameterList),
+          securityGroupIds: S.optional(SecurityGroupIdList),
+          subnetIds: S.optional(SubnetIdList),
           publiclyAccessible: S.optional(S.Boolean),
-          tags: S.optional(__S(1)),
+          tags: S.optional(TagList),
           port: S.optional(S.Number),
           maxCapacity: S.optional(S.Number),
-          pricePerformanceTarget: S.optional(__S(42)),
+          pricePerformanceTarget: S.optional(PerformanceTarget),
           ipAddressType: S.optional(S.String),
           trackName: S.optional(S.String),
           extraComputeForAutomaticOptimization: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateWorkgroupRequest" });
     case 4:
-      return S.Array(__S(13));
+      return S.Array(VpcEndpoint);
     case 5:
       return S.suspend(() =>
         S.Struct({
           address: S.optional(S.String),
           port: S.optional(S.Number),
-          vpcEndpoints: S.optional(__S(44)),
+          vpcEndpoints: S.optional(VpcEndpointList),
         }),
       ).annotate({ identifier: "Endpoint" });
     case 6:
@@ -3410,9 +3930,9 @@ function __c5(j: number): any {
           namespaceName: S.optional(S.String),
           baseCapacity: S.optional(S.Number),
           enhancedVpcRouting: S.optional(S.Boolean),
-          configParameters: S.optional(__S(41)),
-          securityGroupIds: S.optional(__S(3)),
-          subnetIds: S.optional(__S(3)),
+          configParameters: S.optional(ConfigParameterList),
+          securityGroupIds: S.optional(SecurityGroupIdList),
+          subnetIds: S.optional(SubnetIdList),
           status: S.optional(S.String),
           endpoint: S.optional(Endpoint),
           publiclyAccessible: S.optional(S.Boolean),
@@ -3426,16 +3946,16 @@ function __c5(j: number): any {
           workgroupVersion: S.optional(S.String),
           patchVersion: S.optional(S.String),
           maxCapacity: S.optional(S.Number),
-          crossAccountVpcs: S.optional(__S(3)),
+          crossAccountVpcs: S.optional(VpcIds),
           ipAddressType: S.optional(S.String),
-          pricePerformanceTarget: S.optional(__S(42)),
+          pricePerformanceTarget: S.optional(PerformanceTarget),
           trackName: S.optional(S.String),
           pendingTrackName: S.optional(S.String),
           extraComputeForAutomaticOptimization: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Workgroup" });
     case 7:
-      return S.suspend(() => S.Struct({ workgroup: S.optional(__S(46)) })).annotate({
+      return S.suspend(() => S.Struct({ workgroup: S.optional(Workgroup) })).annotate({
         identifier: "CreateWorkgroupResponse",
       });
   }
@@ -3471,7 +3991,7 @@ function __c6(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DeleteNamespaceRequest" });
     case 4:
-      return S.suspend(() => S.Struct({ namespace: __S(19) })).annotate({
+      return S.suspend(() => S.Struct({ namespace: Namespace })).annotate({
         identifier: "DeleteNamespaceResponse",
       });
     case 5:
@@ -3525,7 +4045,7 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "DeleteWorkgroupRequest" });
     case 4:
-      return S.suspend(() => S.Struct({ workgroup: __S(46) })).annotate({
+      return S.suspend(() => S.Struct({ workgroup: Workgroup })).annotate({
         identifier: "DeleteWorkgroupResponse",
       });
     case 5:
@@ -3566,7 +4086,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "GetEndpointAccessRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ workgroupNames: __S(3) }).pipe(
+        S.Struct({ workgroupNames: WorkgroupNameList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -3607,7 +4127,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "RecoveryPoint" });
     case 6:
-      return S.suspend(() => S.Struct({ recoveryPoint: S.optional(__S(69)) })).annotate({
+      return S.suspend(() => S.Struct({ recoveryPoint: S.optional(RecoveryPoint) })).annotate({
         identifier: "GetRecoveryPointResponse",
       });
     case 7:
@@ -3621,7 +4141,7 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ reservation: __S(23) })).annotate({
+      return S.suspend(() => S.Struct({ reservation: Reservation })).annotate({
         identifier: "GetReservationResponse",
       });
     case 1:
@@ -3633,7 +4153,7 @@ function __c9(j: number): any {
         identifier: "GetReservationOfferingRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ reservationOffering: __S(22) })).annotate({
+      return S.suspend(() => S.Struct({ reservationOffering: ReservationOffering })).annotate({
         identifier: "GetReservationOfferingResponse",
       });
     case 3:
@@ -3647,7 +4167,7 @@ function __c9(j: number): any {
         S.Struct({ resourceArn: S.optional(S.String), policy: S.optional(S.String) }),
       ).annotate({ identifier: "ResourcePolicy" });
     case 5:
-      return S.suspend(() => S.Struct({ resourcePolicy: S.optional(__S(76)) })).annotate({
+      return S.suspend(() => S.Struct({ resourcePolicy: S.optional(ResourcePolicy) })).annotate({
         identifier: "GetResourcePolicyResponse",
       });
     case 6:
@@ -3700,7 +4220,9 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "TableRestoreStatus" });
     case 2:
-      return S.suspend(() => S.Struct({ tableRestoreStatus: S.optional(__S(81)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ tableRestoreStatus: S.optional(TableRestoreStatus) }),
+      ).annotate({
         identifier: "GetTableRestoreStatusResponse",
       });
     case 3:
@@ -3714,17 +4236,17 @@ function __c10(j: number): any {
         S.Struct({ trackName: S.optional(S.String), workgroupVersion: S.optional(S.String) }),
       ).annotate({ identifier: "UpdateTarget" });
     case 5:
-      return S.Array(__S(84));
+      return S.Array(UpdateTarget);
     case 6:
       return S.suspend(() =>
         S.Struct({
           trackName: S.optional(S.String),
           workgroupVersion: S.optional(S.String),
-          updateTargets: S.optional(__S(85)),
+          updateTargets: S.optional(UpdateTargetsList),
         }),
       ).annotate({ identifier: "ServerlessTrack" });
     case 7:
-      return S.suspend(() => S.Struct({ track: S.optional(__S(86)) })).annotate({
+      return S.suspend(() => S.Struct({ track: S.optional(ServerlessTrack) })).annotate({
         identifier: "GetTrackResponse",
       });
   }
@@ -3766,10 +4288,10 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "Association" });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(Association);
     case 5:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), associations: S.optional(__S(92)) }),
+        S.Struct({ nextToken: S.optional(S.String), associations: S.optional(AssociationList) }),
       ).annotate({
         identifier: "ListCustomDomainAssociationsResponse",
       });
@@ -3786,14 +4308,14 @@ function __c11(j: number): any {
         identifier: "ListEndpointAccessRequest",
       });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(EndpointAccess);
   }
 }
 function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), endpoints: __S(95) }),
+        S.Struct({ nextToken: S.optional(S.String), endpoints: EndpointAccessList }),
       ).annotate({
         identifier: "ListEndpointAccessResponse",
       });
@@ -3813,17 +4335,17 @@ function __c12(j: number): any {
           managedWorkgroupName: S.optional(S.String),
           managedWorkgroupId: S.optional(S.String),
           sourceArn: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(ManagedWorkgroupStatus),
           creationDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "ManagedWorkgroupListItem" });
     case 3:
-      return S.Array(__S(98));
+      return S.Array(ManagedWorkgroupListItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          managedWorkgroups: S.optional(__S(99)),
+          managedWorkgroups: S.optional(ManagedWorkgroups),
         }),
       ).annotate({
         identifier: "ListManagedWorkgroupsResponse",
@@ -3836,10 +4358,10 @@ function __c12(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListNamespacesRequest" });
     case 6:
-      return S.Array(__S(19));
+      return S.Array(Namespace);
     case 7:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), namespaces: __S(102) }),
+        S.Struct({ nextToken: S.optional(S.String), namespaces: NamespaceList }),
       ).annotate({ identifier: "ListNamespacesResponse" });
   }
 }
@@ -3859,11 +4381,11 @@ function __c13(j: number): any {
         identifier: "ListRecoveryPointsRequest",
       });
     case 1:
-      return S.Array(__S(69));
+      return S.Array(RecoveryPoint);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          recoveryPoints: S.optional(__S(105)),
+          recoveryPoints: S.optional(RecoveryPointList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3879,11 +4401,11 @@ function __c13(j: number): any {
         identifier: "ListReservationOfferingsRequest",
       });
     case 4:
-      return S.Array(__S(22));
+      return S.Array(ReservationOffering);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          reservationOfferingsList: __S(108),
+          reservationOfferingsList: ReservationOfferingsList,
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3897,14 +4419,14 @@ function __c13(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListReservationsRequest" });
     case 7:
-      return S.Array(__S(23));
+      return S.Array(Reservation);
   }
 }
 function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ reservationsList: __S(111), nextToken: S.optional(S.String) }),
+        S.Struct({ reservationsList: ReservationsList, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListReservationsResponse" });
     case 1:
       return S.suspend(() =>
@@ -3926,12 +4448,12 @@ function __c14(j: number): any {
         identifier: "ScheduledActionAssociation",
       });
     case 3:
-      return S.Array(__S(114));
+      return S.Array(ScheduledActionAssociation);
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          scheduledActions: S.optional(__S(115)),
+          scheduledActions: S.optional(ScheduledActionsList),
         }),
       ).annotate({
         identifier: "ListScheduledActionsResponse",
@@ -3947,12 +4469,12 @@ function __c14(j: number): any {
         identifier: "ListSnapshotCopyConfigurationsRequest",
       });
     case 6:
-      return S.Array(__S(35));
+      return S.Array(SnapshotCopyConfiguration);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          snapshotCopyConfigurations: __S(118),
+          snapshotCopyConfigurations: SnapshotCopyConfigurations,
         }),
       ).annotate({
         identifier: "ListSnapshotCopyConfigurationsResponse",
@@ -3974,10 +4496,10 @@ function __c15(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListSnapshotsRequest" });
     case 1:
-      return S.Array(__S(4));
+      return S.Array(Snapshot);
     case 2:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), snapshots: S.optional(__S(121)) }),
+        S.Struct({ nextToken: S.optional(S.String), snapshots: S.optional(SnapshotList) }),
       ).annotate({ identifier: "ListSnapshotsResponse" });
     case 3:
       return S.suspend(() =>
@@ -3991,12 +4513,12 @@ function __c15(j: number): any {
         identifier: "ListTableRestoreStatusRequest",
       });
     case 4:
-      return S.Array(__S(81));
+      return S.Array(TableRestoreStatus);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          tableRestoreStatuses: S.optional(__S(124)),
+          tableRestoreStatuses: S.optional(TableRestoreStatusList),
         }),
       ).annotate({
         identifier: "ListTableRestoreStatusResponse",
@@ -4010,7 +4532,7 @@ function __c15(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 7:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(1)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(TagList) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -4025,10 +4547,10 @@ function __c16(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListTracksRequest" });
     case 1:
-      return S.Array(__S(86));
+      return S.Array(ServerlessTrack);
     case 2:
       return S.suspend(() =>
-        S.Struct({ tracks: S.optional(__S(129)), nextToken: S.optional(S.String) }),
+        S.Struct({ tracks: S.optional(TrackList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTracksResponse" });
     case 3:
       return S.suspend(() =>
@@ -4040,10 +4562,10 @@ function __c16(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListUsageLimitsRequest" });
     case 4:
-      return S.Array(__S(38));
+      return S.Array(UsageLimit);
     case 5:
       return S.suspend(() =>
-        S.Struct({ usageLimits: S.optional(__S(132)), nextToken: S.optional(S.String) }),
+        S.Struct({ usageLimits: S.optional(UsageLimits), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListUsageLimitsResponse" });
     case 6:
       return S.suspend(() =>
@@ -4054,14 +4576,14 @@ function __c16(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListWorkgroupsRequest" });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(Workgroup);
   }
 }
 function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), workgroups: __S(135) }),
+        S.Struct({ nextToken: S.optional(S.String), workgroups: WorkgroupList }),
       ).annotate({ identifier: "ListWorkgroupsResponse" });
     case 1:
       return S.suspend(() =>
@@ -4082,7 +4604,7 @@ function __c17(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ recoveryPointId: S.optional(S.String), namespace: S.optional(__S(19)) }),
+        S.Struct({ recoveryPointId: S.optional(S.String), namespace: S.optional(Namespace) }),
       ).annotate({
         identifier: "RestoreFromRecoveryPointResponse",
       });
@@ -4106,7 +4628,7 @@ function __c17(j: number): any {
         S.Struct({
           snapshotName: S.optional(S.String),
           ownerAccount: S.optional(S.String),
-          namespace: S.optional(__S(19)),
+          namespace: S.optional(Namespace),
         }),
       ).annotate({
         identifier: "RestoreFromSnapshotResponse",
@@ -4151,13 +4673,13 @@ function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: __S(1) }).pipe(
+        S.Struct({ resourceArn: S.String, tags: TagList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tagKeys: __S(3) }).pipe(
+        S.Struct({ resourceArn: S.String, tagKeys: TagKeyList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -4175,7 +4697,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endpointName: S.String,
-          vpcSecurityGroupIds: S.optional(__S(3)),
+          vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateEndpointAccessRequest",
@@ -4212,13 +4734,13 @@ function __c18(j: number): any {
           adminUsername: S.optional(SensitiveString),
           kmsKeyId: S.optional(S.String),
           defaultIamRoleArn: S.optional(S.String),
-          iamRoles: S.optional(__S(3)),
-          logExports: S.optional(__S(3)),
+          iamRoles: S.optional(IamRoleArnList),
+          logExports: S.optional(LogExportList),
           manageAdminPassword: S.optional(S.Boolean),
           adminPasswordSecretKmsKeyId: S.optional(S.String),
           logDestinationType: S.optional(S.String),
           s3TableAction: S.optional(S.String),
-          s3TableNames: S.optional(__S(3)),
+          s3TableNames: S.optional(S3TableNameList),
           s3TableKmsKeyId: S.optional(S.String),
           s3TableGranularity: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -4227,8 +4749,8 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scheduledActionName: S.String,
-          targetAction: S.optional(__S(26)),
-          schedule: S.optional(__S(27)),
+          targetAction: S.optional(TargetAction),
+          schedule: S.optional(Schedule),
           roleArn: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           scheduledActionDescription: S.optional(S.String),
@@ -4271,66 +4793,17 @@ function __c19(j: number): any {
           workgroupName: S.String,
           baseCapacity: S.optional(S.Number),
           enhancedVpcRouting: S.optional(S.Boolean),
-          configParameters: S.optional(__S(41)),
+          configParameters: S.optional(ConfigParameterList),
           publiclyAccessible: S.optional(S.Boolean),
-          subnetIds: S.optional(__S(3)),
-          securityGroupIds: S.optional(__S(3)),
+          subnetIds: S.optional(SubnetIdList),
+          securityGroupIds: S.optional(SecurityGroupIdList),
           port: S.optional(S.Number),
           maxCapacity: S.optional(S.Number),
           ipAddressType: S.optional(S.String),
-          pricePerformanceTarget: S.optional(__S(42)),
+          pricePerformanceTarget: S.optional(PerformanceTarget),
           trackName: S.optional(S.String),
           extraComputeForAutomaticOptimization: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateWorkgroupRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
   }
 }

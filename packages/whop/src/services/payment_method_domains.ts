@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -56,10 +54,19 @@ export interface CreatePaymentMethodDomainRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const CreatePaymentMethodDomainRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreatePaymentMethodDomainRequest>;
+
 /** Wallet provider the domain is registered with. */
 export type PaymentMethodDomainProvider = "apple";
+const PaymentMethodDomainProvider = S.String;
+
 /** Verification status. `pending` means the provider could not fetch the domain-association file yet; only `verified` domains show wallet payment methods at checkout. */
 export type PaymentMethodDomainStatus = "pending" | "verified";
+const PaymentMethodDomainStatus = S.String;
+
 export interface PaymentMethodDomain {
   /** ID of the account the domain is registered for, prefixed `biz_`. */
   account_id: string | null;
@@ -76,22 +83,47 @@ export interface PaymentMethodDomain {
   /** When the domain was last updated, as an ISO 8601 timestamp. */
   updated_at: string;
 }
+const PaymentMethodDomain = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<PaymentMethodDomain>;
+
 export interface DeletePaymentMethodDomainRequest {
   /** The unique identifier of the payment method domain, prefixed `pmd_`. */
   id: string;
 }
+const DeletePaymentMethodDomainRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeletePaymentMethodDomainRequest>;
+
 export interface DeletePaymentMethodDomainResponse {
   deleted: boolean;
   id: string;
 }
+const DeletePaymentMethodDomainResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeletePaymentMethodDomainResponse>;
+
 export interface GetPaymentMethodDomainRequest {
   /** The unique identifier of the payment method domain, prefixed `pmd_`. */
   id: string;
 }
+const GetPaymentMethodDomainRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetPaymentMethodDomainRequest>;
+
 export type ListPaymentMethodDomainsRequestStatus = "pending" | "verified";
+const ListPaymentMethodDomainsRequestStatus = S.String;
+
 export type ListPaymentMethodDomainsRequestProvider = "apple";
+const ListPaymentMethodDomainsRequestProvider = S.String;
+
 export type ListPaymentMethodDomainsRequestOrder = "created_at";
+const ListPaymentMethodDomainsRequestOrder = S.String;
+
 export type ListPaymentMethodDomainsRequestDirection = "asc" | "desc";
+const ListPaymentMethodDomainsRequestDirection = S.String;
+
 export interface ListPaymentMethodDomainsRequest {
   /** Only domains registered for this account (`biz_` tag). Defaults to the caller's account plus its connected accounts. */
   account_id?: string;
@@ -118,23 +150,48 @@ export interface ListPaymentMethodDomainsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
+const ListPaymentMethodDomainsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListPaymentMethodDomainsRequest>;
+
 export type ListPaymentMethodDomainsResponseDataList = Array<PaymentMethodDomain>;
+const ListPaymentMethodDomainsResponseDataList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListPaymentMethodDomainsResponseDataList>;
+
 export interface ListPaymentMethodDomainsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
+const ListPaymentMethodDomainsResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListPaymentMethodDomainsResponsePageInfo>;
+
 export interface ListPaymentMethodDomainsResponse {
   data: ListPaymentMethodDomainsResponseDataList;
   page_info: ListPaymentMethodDomainsResponsePageInfo;
 }
+const ListPaymentMethodDomainsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListPaymentMethodDomainsResponse>;
+
 export interface VerifyPaymentMethodDomainRequest {
   /** The unique identifier of the payment method domain, prefixed `pmd_`. */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const VerifyPaymentMethodDomainRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<VerifyPaymentMethodDomainRequest>;
+
 export type CreatePaymentMethodDomainError =
   | BadRequest
   | Forbidden
@@ -148,8 +205,8 @@ export const createPaymentMethodDomain: API.OperationMethod<
   CreatePaymentMethodDomainError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreatePaymentMethodDomainRequest>,
-  output: __S(1) as any as S.Schema<PaymentMethodDomain>,
+  input: CreatePaymentMethodDomainRequest,
+  output: PaymentMethodDomain,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -163,8 +220,8 @@ export const deletePaymentMethodDomain: API.OperationMethod<
   DeletePaymentMethodDomainError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeletePaymentMethodDomainRequest>,
-  output: __S(3) as any as S.Schema<DeletePaymentMethodDomainResponse>,
+  input: DeletePaymentMethodDomainRequest,
+  output: DeletePaymentMethodDomainResponse,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -178,8 +235,8 @@ export const getPaymentMethodDomain: API.OperationMethod<
   GetPaymentMethodDomainError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetPaymentMethodDomainRequest>,
-  output: __S(1) as any as S.Schema<PaymentMethodDomain>,
+  input: GetPaymentMethodDomainRequest,
+  output: PaymentMethodDomain,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -195,8 +252,8 @@ export const listPaymentMethodDomains: API.PaginatedOperationMethod<
   PaymentMethodDomain
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(5) as any as S.Schema<ListPaymentMethodDomainsRequest>,
-    output: __S(8) as any as S.Schema<ListPaymentMethodDomainsResponse>,
+    input: ListPaymentMethodDomainsRequest,
+    output: ListPaymentMethodDomainsResponse,
     errors: [BadRequest, Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -225,8 +282,8 @@ export const verifyPaymentMethodDomain: API.OperationMethod<
   VerifyPaymentMethodDomainError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<VerifyPaymentMethodDomainRequest>,
-  output: __S(1) as any as S.Schema<PaymentMethodDomain>,
+  input: VerifyPaymentMethodDomainRequest,
+  output: PaymentMethodDomain,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -252,8 +309,8 @@ function __c0(j: number): any {
           created_at: S.String,
           hostname: S.String,
           id: S.String,
-          provider: S.String,
-          status: S.String,
+          provider: PaymentMethodDomainProvider,
+          status: PaymentMethodDomainStatus,
           updated_at: S.String,
         }),
       ).annotate({ identifier: "PaymentMethodDomain" });
@@ -287,12 +344,12 @@ function __c0(j: number): any {
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
           hostname: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-          provider: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(ListPaymentMethodDomainsRequestStatus.pipe(T.Query())),
+          provider: S.optional(ListPaymentMethodDomainsRequestProvider.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListPaymentMethodDomainsRequestOrder.pipe(T.Query())),
+          direction: S.optional(ListPaymentMethodDomainsRequestDirection.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
@@ -302,7 +359,7 @@ function __c0(j: number): any {
         identifier: "ListPaymentMethodDomainsRequest",
       });
     case 6:
-      return S.Array(__S(1));
+      return S.Array(PaymentMethodDomain);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -321,8 +378,8 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: __S(6),
-          page_info: __S(7),
+          data: ListPaymentMethodDomainsResponseDataList,
+          page_info: ListPaymentMethodDomainsResponsePageInfo,
         }),
       ).annotate({
         identifier: "ListPaymentMethodDomainsResponse",
@@ -336,18 +393,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "VerifyPaymentMethodDomainRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

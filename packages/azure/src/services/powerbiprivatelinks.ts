@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -15,8 +13,12 @@ export interface PrivateEndpoint {
   /** Specifies the id of private endpoint. */
   id?: string;
 }
+const PrivateEndpoint = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<PrivateEndpoint>;
+
 /** Status of the connection. */
 export type ConnectionStateStatus = "Pending" | "Approved" | "Rejected" | "Disconnected";
+const ConnectionStateStatus = S.String;
+
 /** ConnectionState information. */
 export interface ConnectionState {
   /** Status of the connection. */
@@ -26,6 +28,8 @@ export interface ConnectionState {
   /** Actions required (if any). */
   actionsRequired?: string;
 }
+const ConnectionState = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ConnectionState>;
+
 /** Provisioning state of the Private Endpoint Connection. */
 export type PrivateEndpointConnectionPropertiesProvisioningState =
   | "Creating"
@@ -34,6 +38,8 @@ export type PrivateEndpointConnectionPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
+const PrivateEndpointConnectionPropertiesProvisioningState = S.String;
+
 export interface PrivateEndpointConnectionProperties {
   /** Specifies the private endpoint. */
   privateEndpoint?: PrivateEndpoint;
@@ -42,21 +48,46 @@ export interface PrivateEndpointConnectionProperties {
   /** Provisioning state of the Private Endpoint Connection. */
   provisioningState?: PrivateEndpointConnectionPropertiesProvisioningState | (string & {});
 }
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<PrivateEndpointConnectionProperties>;
+
 export interface PrivateEndpointConnectionInput {
   /** Specifies the properties of the private endpoint connection. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const PrivateEndpointConnectionInput = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<PrivateEndpointConnectionInput>;
+
 /** Specifies the private endpoint connections of the resource. */
 export type TenantPropertiesInputPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnectionInput>;
+const TenantPropertiesInputPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<TenantPropertiesInputPrivateEndpointConnectionsList>;
+
 export interface TenantPropertiesInput {
   /** Specifies the tenant id of the resource. */
   tenantId?: string;
   /** Specifies the private endpoint connections of the resource. */
   privateEndpointConnections?: TenantPropertiesInputPrivateEndpointConnectionsList;
 }
+const TenantPropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<TenantPropertiesInput>;
+
 /** Specifies the tags of the resource. */
 export type CreatePowerBIResourceRequestTagsMap = { [key: string]: string | undefined };
+const CreatePowerBIResourceRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreatePowerBIResourceRequestTagsMap>;
+
 export interface CreatePowerBIResourceRequest {
   /** The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000). */
   subscriptionId: string;
@@ -71,18 +102,27 @@ export interface CreatePowerBIResourceRequest {
   /** Specifies the tags of the resource. */
   tags?: CreatePowerBIResourceRequestTagsMap;
 }
+const CreatePowerBIResourceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreatePowerBIResourceRequest>;
+
 /** The type of identity that created the resource. */
 export type TenantResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const TenantResourceSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type TenantResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const TenantResourceSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface TenantResourceSystemData {
   /** The identity that created the resource. */
@@ -98,18 +138,27 @@ export interface TenantResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const TenantResourceSystemData = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<TenantResourceSystemData>;
+
 /** The type of identity that created the resource. */
 export type PrivateEndpointConnectionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const PrivateEndpointConnectionSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type PrivateEndpointConnectionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const PrivateEndpointConnectionSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface PrivateEndpointConnectionSystemData {
   /** The identity that created the resource. */
@@ -125,6 +174,11 @@ export interface PrivateEndpointConnectionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const PrivateEndpointConnectionSystemData = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<PrivateEndpointConnectionSystemData>;
+
 export interface PrivateEndpointConnection {
   /** Specifies the id of the resource. */
   id?: string;
@@ -137,16 +191,31 @@ export interface PrivateEndpointConnection {
   /** Specifies the properties of the private endpoint connection. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const PrivateEndpointConnection = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<PrivateEndpointConnection>;
+
 /** Specifies the private endpoint connections of the resource. */
 export type TenantPropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
+const TenantPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<TenantPropertiesPrivateEndpointConnectionsList>;
+
 export interface TenantProperties {
   /** Specifies the tenant id of the resource. */
   tenantId?: string;
   /** Specifies the private endpoint connections of the resource. */
   privateEndpointConnections?: TenantPropertiesPrivateEndpointConnectionsList;
 }
+const TenantProperties = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<TenantProperties>;
+
 /** Specifies the tags of the resource. */
 export type TenantResourceTagsMap = { [key: string]: string | undefined };
+const TenantResourceTagsMap =
+  CreatePowerBIResourceRequestTagsMap as any as S.Schema<TenantResourceTagsMap>;
+
 export interface TenantResource {
   /** Specifies the resource identifier of the resource. */
   id?: string;
@@ -163,6 +232,8 @@ export interface TenantResource {
   /** Specifies the tags of the resource. */
   tags?: TenantResourceTagsMap;
 }
+const TenantResource = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<TenantResource>;
+
 export interface CreatePrivateEndpointConnectionRequest {
   /** The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000). */
   subscriptionId: string;
@@ -175,6 +246,11 @@ export interface CreatePrivateEndpointConnectionRequest {
   /** Specifies the properties of the private endpoint connection. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreatePrivateEndpointConnectionRequest>;
+
 export interface DeletePowerBIResourceRequest {
   /** The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000). */
   subscriptionId: string;
@@ -183,7 +259,17 @@ export interface DeletePowerBIResourceRequest {
   /** The name of the Azure resource. */
   azureResourceName: string;
 }
+const DeletePowerBIResourceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DeletePowerBIResourceRequest>;
+
 export interface DeletePowerBIResourceResponse {}
+const DeletePowerBIResourceResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DeletePowerBIResourceResponse>;
+
 export interface DeletePrivateEndpointConnectionRequest {
   /** The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000). */
   subscriptionId: string;
@@ -194,7 +280,17 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint. */
   privateEndpointName: string;
 }
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
+
 export interface DeletePrivateEndpointConnectionResponse {}
+const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+
 export interface GetPrivateEndpointConnectionRequest {
   /** The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000). */
   subscriptionId: string;
@@ -205,6 +301,11 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint. */
   privateEndpointName: string;
 }
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
+
 export interface GetPrivateLinkResourceRequest {
   /** The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000). */
   subscriptionId: string;
@@ -215,10 +316,23 @@ export interface GetPrivateLinkResourceRequest {
   /** The name of private link resource. */
   privateLinkResourceName: string;
 }
+const GetPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetPrivateLinkResourceRequest>;
+
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
+const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  PrivateLinkResourcePropertiesRequiredMembersList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
   /** The private link resource group id. */
@@ -228,6 +342,11 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource Private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
+const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<PrivateLinkResourceProperties>;
+
 /** A private link resource */
 export interface PrivateLinkResource {
   /** Resource properties. */
@@ -239,14 +358,26 @@ export interface PrivateLinkResource {
   /** Type of the resource. */
   type?: string;
 }
+const PrivateLinkResource = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<PrivateLinkResource>;
+
 export interface GetPrivateLinkServiceResourceOperationResultRequest {
   /** The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000). */
   subscriptionId: string;
   /** The id of Azure async operation. */
   operationId: string;
 }
+const GetPrivateLinkServiceResourceOperationResultRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetPrivateLinkServiceResourceOperationResultRequest>;
+
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
+const ErrorDetailDetailsList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ErrorDetailDetailsList>;
+
 /** The resource management error additional info. */
 export interface ErrorAdditionalInfo {
   /** The additional info type. */
@@ -254,8 +385,15 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
+const ErrorAdditionalInfo = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ErrorAdditionalInfo>;
+
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
+const ErrorDetailAdditionalInfoList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ErrorDetailAdditionalInfoList>;
+
 /** The error detail. */
 export interface ErrorDetail {
   /** The error code. */
@@ -269,10 +407,20 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
+const ErrorDetail = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ErrorDetail>;
+
 /** The error details. */
 export type AsyncOperationDetailErrorDetailsList = Array<ErrorDetail>;
+const AsyncOperationDetailErrorDetailsList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<AsyncOperationDetailErrorDetailsList>;
+
 /** The error additional info. */
 export type AsyncOperationDetailErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
+const AsyncOperationDetailErrorAdditionalInfoList =
+  ErrorDetailAdditionalInfoList as any as S.Schema<AsyncOperationDetailErrorAdditionalInfoList>;
+
 /** The error detail. */
 export interface AsyncOperationDetailError {
   /** The error code. */
@@ -286,6 +434,11 @@ export interface AsyncOperationDetailError {
   /** The error additional info. */
   additionalInfo?: AsyncOperationDetailErrorAdditionalInfoList;
 }
+const AsyncOperationDetailError = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<AsyncOperationDetailError>;
+
 export interface AsyncOperationDetail {
   /** The operation id. */
   id?: string;
@@ -300,7 +453,14 @@ export interface AsyncOperationDetail {
   /** The error detail. */
   error?: AsyncOperationDetailError;
 }
+const AsyncOperationDetail = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<AsyncOperationDetail>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -312,10 +472,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -329,14 +495,26 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListPowerBIResourceByResourceNameRequest {
   /** The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000). */
   subscriptionId: string;
@@ -345,9 +523,24 @@ export interface ListPowerBIResourceByResourceNameRequest {
   /** The name of the Azure resource. */
   azureResourceName: string;
 }
+const ListPowerBIResourceByResourceNameRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListPowerBIResourceByResourceNameRequest>;
+
 export type ListPowerBIResourceByResourceNameResponseBodyList = Array<TenantResource>;
+const ListPowerBIResourceByResourceNameResponseBodyList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListPowerBIResourceByResourceNameResponseBodyList>;
+
 export type ListPowerBIResourceByResourceNameResponse =
   ListPowerBIResourceByResourceNameResponseBodyList;
+const ListPowerBIResourceByResourceNameResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListPowerBIResourceByResourceNameResponse>;
+
 export interface ListPrivateEndpointConnectionByResourceRequest {
   /** The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000). */
   subscriptionId: string;
@@ -356,8 +549,16 @@ export interface ListPrivateEndpointConnectionByResourceRequest {
   /** The name of the powerbi resource. */
   azureResourceName: string;
 }
+const ListPrivateEndpointConnectionByResourceRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListPrivateEndpointConnectionByResourceRequest>;
+
 /** Specifies the name of the private endpoint connection. */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
+const PrivateEndpointConnectionListResultValueList =
+  TenantPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+
 /** List of private endpoint connections. */
 export interface PrivateEndpointConnectionListResult {
   /** Specifies the name of the private endpoint connection. */
@@ -365,6 +566,11 @@ export interface PrivateEndpointConnectionListResult {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const PrivateEndpointConnectionListResult = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<PrivateEndpointConnectionListResult>;
+
 export interface ListPrivateLinkResourceByResourceRequest {
   /** The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000). */
   subscriptionId: string;
@@ -373,8 +579,18 @@ export interface ListPrivateLinkResourceByResourceRequest {
   /** The name of the Azure resource. */
   azureResourceName: string;
 }
+const ListPrivateLinkResourceByResourceRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListPrivateLinkResourceByResourceRequest>;
+
 /** A collection of private endpoint connection resources. */
 export type PrivateLinkResourcesListResultValueList = Array<PrivateLinkResource>;
+const PrivateLinkResourcesListResultValueList = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<PrivateLinkResourcesListResultValueList>;
+
 /** Specifies list of the private link resource. */
 export interface PrivateLinkResourcesListResult {
   /** A collection of private endpoint connection resources. */
@@ -382,25 +598,56 @@ export interface PrivateLinkResourcesListResult {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const PrivateLinkResourcesListResult = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<PrivateLinkResourcesListResult>;
+
 export interface ListPrivateLinkServiceByResourceGroupRequest {
   /** The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000). */
   subscriptionId: string;
   /** The name of the resource group. */
   resourceGroupName: string;
 }
+const ListPrivateLinkServiceByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListPrivateLinkServiceByResourceGroupRequest>;
+
 export type ListPrivateLinkServiceByResourceGroupResponseBodyList = Array<TenantResource>;
 export type ListPrivateLinkServiceByResourceGroupResponse =
   ListPrivateLinkServiceByResourceGroupResponseBodyList;
+const ListPrivateLinkServiceByResourceGroupResponse =
+  ListPowerBIResourceByResourceNameResponse as any as S.Schema<ListPrivateLinkServiceByResourceGroupResponse>;
+
 export interface ListPrivateLinkServicesForPowerBIBySubscriptionIdRequest {
   /** The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000). */
   subscriptionId: string;
 }
+const ListPrivateLinkServicesForPowerBIBySubscriptionIdRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ListPrivateLinkServicesForPowerBIBySubscriptionIdRequest>;
+
 export type ListPrivateLinkServicesForPowerBIBySubscriptionIdResponseBodyList =
   Array<TenantResource>;
+const ListPrivateLinkServicesForPowerBIBySubscriptionIdResponseBodyList = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListPrivateLinkServicesForPowerBIBySubscriptionIdResponseBodyList>;
+
 export type ListPrivateLinkServicesForPowerBIBySubscriptionIdResponse =
   ListPrivateLinkServicesForPowerBIBySubscriptionIdResponseBodyList;
+const ListPrivateLinkServicesForPowerBIBySubscriptionIdResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListPrivateLinkServicesForPowerBIBySubscriptionIdResponse>;
+
 /** Specifies the tags of the resource. */
 export type UpdatePowerBIResourceRequestTagsMap = { [key: string]: string | undefined };
+const UpdatePowerBIResourceRequestTagsMap =
+  CreatePowerBIResourceRequestTagsMap as any as S.Schema<UpdatePowerBIResourceRequestTagsMap>;
+
 export interface UpdatePowerBIResourceRequest {
   /** The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000). */
   subscriptionId: string;
@@ -415,6 +662,11 @@ export interface UpdatePowerBIResourceRequest {
   /** Specifies the tags of the resource. */
   tags?: UpdatePowerBIResourceRequestTagsMap;
 }
+const UpdatePowerBIResourceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<UpdatePowerBIResourceRequest>;
+
 export type CreatePowerBIResourceError = AzureOpError;
 /** Creates or updates a Private Link Service Resource for Power BI. */
 export const CreatePowerBIResource: API.OperationMethod<
@@ -423,8 +675,8 @@ export const CreatePowerBIResource: API.OperationMethod<
   CreatePowerBIResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<CreatePowerBIResourceRequest>,
-  output: __S(13) as any as S.Schema<TenantResource>,
+  input: CreatePowerBIResourceRequest,
+  output: TenantResource,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -438,8 +690,8 @@ export const CreatePrivateEndpointConnection: API.OperationMethod<
   CreatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
-  output: __S(10) as any as S.Schema<PrivateEndpointConnection>,
+  input: CreatePrivateEndpointConnectionRequest,
+  output: PrivateEndpointConnection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -453,8 +705,8 @@ export const DeletePowerBIResource: API.OperationMethod<
   DeletePowerBIResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DeletePowerBIResourceRequest>,
-  output: __S(16) as any as S.Schema<DeletePowerBIResourceResponse>,
+  input: DeletePowerBIResourceRequest,
+  output: DeletePowerBIResourceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -468,8 +720,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(18) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: DeletePrivateEndpointConnectionRequest,
+  output: DeletePrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -483,8 +735,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(10) as any as S.Schema<PrivateEndpointConnection>,
+  input: GetPrivateEndpointConnectionRequest,
+  output: PrivateEndpointConnection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -498,8 +750,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(23) as any as S.Schema<PrivateLinkResource>,
+  input: GetPrivateLinkResourceRequest,
+  output: PrivateLinkResource,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -513,8 +765,8 @@ export const GetPrivateLinkServiceResourceOperationResult: API.OperationMethod<
   GetPrivateLinkServiceResourceOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetPrivateLinkServiceResourceOperationResultRequest>,
-  output: __S(31) as any as S.Schema<AsyncOperationDetail>,
+  input: GetPrivateLinkServiceResourceOperationResultRequest,
+  output: AsyncOperationDetail,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -528,8 +780,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<ListOperationsRequest>,
-  output: __S(36) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -543,8 +795,8 @@ export const ListPowerBIResourceByResourceName: API.OperationMethod<
   ListPowerBIResourceByResourceNameError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<ListPowerBIResourceByResourceNameRequest>,
-  output: __S(39) as any as S.Schema<ListPowerBIResourceByResourceNameResponse>,
+  input: ListPowerBIResourceByResourceNameRequest,
+  output: ListPowerBIResourceByResourceNameResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -558,8 +810,8 @@ export const ListPrivateEndpointConnectionByResource: API.OperationMethod<
   ListPrivateEndpointConnectionByResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<ListPrivateEndpointConnectionByResourceRequest>,
-  output: __S(41) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: ListPrivateEndpointConnectionByResourceRequest,
+  output: PrivateEndpointConnectionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -573,8 +825,8 @@ export const ListPrivateLinkResourceByResource: API.OperationMethod<
   ListPrivateLinkResourceByResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<ListPrivateLinkResourceByResourceRequest>,
-  output: __S(44) as any as S.Schema<PrivateLinkResourcesListResult>,
+  input: ListPrivateLinkResourceByResourceRequest,
+  output: PrivateLinkResourcesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -588,8 +840,8 @@ export const ListPrivateLinkServiceByResourceGroup: API.OperationMethod<
   ListPrivateLinkServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<ListPrivateLinkServiceByResourceGroupRequest>,
-  output: __S(39) as any as S.Schema<ListPrivateLinkServiceByResourceGroupResponse>,
+  input: ListPrivateLinkServiceByResourceGroupRequest,
+  output: ListPrivateLinkServiceByResourceGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -603,8 +855,8 @@ export const ListPrivateLinkServicesForPowerBIBySubscriptionId: API.OperationMet
   ListPrivateLinkServicesForPowerBIBySubscriptionIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<ListPrivateLinkServicesForPowerBIBySubscriptionIdRequest>,
-  output: __S(48) as any as S.Schema<ListPrivateLinkServicesForPowerBIBySubscriptionIdResponse>,
+  input: ListPrivateLinkServicesForPowerBIBySubscriptionIdRequest,
+  output: ListPrivateLinkServicesForPowerBIBySubscriptionIdResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -618,8 +870,8 @@ export const UpdatePowerBIResource: API.OperationMethod<
   UpdatePowerBIResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<UpdatePowerBIResourceRequest>,
-  output: __S(13) as any as S.Schema<TenantResource>,
+  input: UpdatePowerBIResourceRequest,
+  output: TenantResource,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -637,7 +889,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(ConnectionStateStatus),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -645,9 +897,9 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(0)),
-          privateLinkServiceConnectionState: S.optional(__S(1)),
-          provisioningState: S.optional(S.String),
+          privateEndpoint: S.optional(PrivateEndpoint),
+          privateLinkServiceConnectionState: S.optional(ConnectionState),
+          provisioningState: S.optional(PrivateEndpointConnectionPropertiesProvisioningState),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -655,18 +907,20 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(2)),
+          properties: S.optional(PrivateEndpointConnectionProperties),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionInput",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(PrivateEndpointConnectionInput);
     case 5:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(4)),
+          privateEndpointConnections: S.optional(
+            TenantPropertiesInputPrivateEndpointConnectionsList,
+          ),
         }),
       ).annotate({ identifier: "TenantPropertiesInput" });
     case 6:
@@ -678,8 +932,8 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           azureResourceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          properties: S.optional(__S(5)),
-          tags: S.optional(__S(6)),
+          properties: S.optional(TenantPropertiesInput),
+          tags: S.optional(CreatePowerBIResourceRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -699,10 +953,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(TenantResourceSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(TenantResourceSystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "TenantResourceSystemData" });
@@ -710,10 +964,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(PrivateEndpointConnectionSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(PrivateEndpointConnectionSystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -725,19 +979,19 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          properties: S.optional(__S(2)),
+          systemData: S.optional(PrivateEndpointConnectionSystemData),
+          properties: S.optional(PrivateEndpointConnectionProperties),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnection",
       });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(PrivateEndpointConnection);
     case 4:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(11)),
+          privateEndpointConnections: S.optional(TenantPropertiesPrivateEndpointConnectionsList),
         }),
       ).annotate({ identifier: "TenantProperties" });
     case 5:
@@ -746,10 +1000,10 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
+          systemData: S.optional(TenantResourceSystemData),
           location: S.optional(S.String),
-          properties: S.optional(__S(12)),
-          tags: S.optional(__S(6)),
+          properties: S.optional(TenantProperties),
+          tags: S.optional(TenantResourceTagsMap),
         }),
       ).annotate({ identifier: "TenantResource" });
     case 6:
@@ -759,7 +1013,7 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           azureResourceName: S.String.pipe(T.Label()),
           privateEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2)),
+          properties: S.optional(PrivateEndpointConnectionProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -860,8 +1114,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(21)),
-          requiredZoneNames: S.optional(__S(21)),
+          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
+          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -869,7 +1123,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(22)),
+          properties: S.optional(PrivateLinkResourceProperties),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
@@ -896,7 +1150,7 @@ function __c3(j: number): any {
         identifier: "GetPrivateLinkServiceResourceOperationResultRequest",
       });
     case 1:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(28)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => ErrorDetail));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -905,27 +1159,27 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(ErrorAdditionalInfo);
     case 4:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(25)),
-          additionalInfo: S.optional(__S(27)),
+          details: S.optional(ErrorDetailDetailsList),
+          additionalInfo: S.optional(ErrorDetailAdditionalInfoList),
         }),
       ).annotate({ identifier: "ErrorDetail" });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(ErrorDetail);
     case 6:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(29)),
-          additionalInfo: S.optional(__S(27)),
+          details: S.optional(AsyncOperationDetailErrorDetailsList),
+          additionalInfo: S.optional(AsyncOperationDetailErrorAdditionalInfoList),
         }),
       ).annotate({
         identifier: "AsyncOperationDetailError",
@@ -938,7 +1192,7 @@ function __c3(j: number): any {
           status: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          error: S.optional(__S(30)),
+          error: S.optional(AsyncOperationDetailError),
         }),
       ).annotate({ identifier: "AsyncOperationDetail" });
   }
@@ -970,17 +1224,17 @@ function __c4(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(33)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(Operation);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(35)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -1002,9 +1256,11 @@ function __c4(j: number): any {
         identifier: "ListPowerBIResourceByResourceNameRequest",
       });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(TenantResource);
     case 7:
-      return S.suspend(() => __S(38).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPowerBIResourceByResourceNameResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPowerBIResourceByResourceNameResponse",
       });
   }
@@ -1031,7 +1287,7 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(11)),
+          value: S.optional(PrivateEndpointConnectionListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1055,11 +1311,11 @@ function __c5(j: number): any {
         identifier: "ListPrivateLinkResourceByResourceRequest",
       });
     case 3:
-      return S.Array(__S(23));
+      return S.Array(PrivateLinkResource);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(43)),
+          value: S.optional(PrivateLinkResourcesListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1097,13 +1353,15 @@ function __c5(j: number): any {
         identifier: "ListPrivateLinkServicesForPowerBIBySubscriptionIdRequest",
       });
     case 7:
-      return S.Array(__S(13));
+      return S.Array(TenantResource);
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(47).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPrivateLinkServicesForPowerBIBySubscriptionIdResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPrivateLinkServicesForPowerBIBySubscriptionIdResponse",
       });
     case 1:
@@ -1113,8 +1371,8 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           azureResourceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          properties: S.optional(__S(5)),
-          tags: S.optional(__S(6)),
+          properties: S.optional(TenantPropertiesInput),
+          tags: S.optional(UpdatePowerBIResourceRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1126,28 +1384,5 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UpdatePowerBIResourceRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

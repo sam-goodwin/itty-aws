@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -113,12 +111,23 @@ export interface ManagedService {
   /** The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements. */
   serviceName?: string;
 }
+const ManagedService = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ManagedService>;
+
 export interface CreateServicesRequest {
   /** Request body */
   body?: ManagedService;
 }
+const CreateServicesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateServicesRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -128,6 +137,8 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
+const Status = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Status>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -141,15 +152,26 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
+const Operation = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Operation>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StringList>;
+
 export type MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum =
   | "TIME_SERIES_RESOURCE_HIERARCHY_LEVEL_UNSPECIFIED"
   | "PROJECT"
   | "ORGANIZATION"
   | "FOLDER";
+const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum = S.String;
+
 export type MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList = Array<
   MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum | (string & {})
 >;
+const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList>;
+
 export type MetricDescriptorMetadataLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "UNIMPLEMENTED"
@@ -159,6 +181,8 @@ export type MetricDescriptorMetadataLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
+const MetricDescriptorMetadataLaunchStageEnum = S.String;
+
 /** Additional annotations that can be used to guide the usage of a metric. */
 export interface MetricDescriptorMetadata {
   /** The scope of the timeseries data of the metric. */
@@ -170,6 +194,11 @@ export interface MetricDescriptorMetadata {
   /** The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors. */
   ingestDelay?: string;
 }
+const MetricDescriptorMetadata = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<MetricDescriptorMetadata>;
+
 export type MetricDescriptorLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "UNIMPLEMENTED"
@@ -179,7 +208,11 @@ export type MetricDescriptorLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
+const MetricDescriptorLaunchStageEnum = S.String;
+
 export type LabelDescriptorValueTypeEnum = "STRING" | "BOOL" | "INT64";
+const LabelDescriptorValueTypeEnum = S.String;
+
 /** A description of a label. */
 export interface LabelDescriptor {
   /** The label key. */
@@ -189,7 +222,11 @@ export interface LabelDescriptor {
   /** A human-readable description for the label. */
   description?: string;
 }
+const LabelDescriptor = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<LabelDescriptor>;
+
 export type LabelDescriptorList = Array<LabelDescriptor>;
+const LabelDescriptorList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<LabelDescriptorList>;
+
 export type MetricDescriptorValueTypeEnum =
   | "VALUE_TYPE_UNSPECIFIED"
   | "BOOL"
@@ -198,11 +235,15 @@ export type MetricDescriptorValueTypeEnum =
   | "STRING"
   | "DISTRIBUTION"
   | "MONEY";
+const MetricDescriptorValueTypeEnum = S.String;
+
 export type MetricDescriptorMetricKindEnum =
   | "METRIC_KIND_UNSPECIFIED"
   | "GAUGE"
   | "DELTA"
   | "CUMULATIVE";
+const MetricDescriptorMetricKindEnum = S.String;
+
 /** Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable. */
 export interface MetricDescriptor {
   /** Read-only. If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. */
@@ -228,7 +269,11 @@ export interface MetricDescriptor {
   /** A detailed description of the metric, which can be used in documentation. */
   description?: string;
 }
+const MetricDescriptor = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<MetricDescriptor>;
+
 export type MetricDescriptorList = Array<MetricDescriptor>;
+const MetricDescriptorList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<MetricDescriptorList>;
+
 /** A protocol buffer option, which can be attached to a message, field, enumeration, etc. New usages of this message as an alternative to FileOptions, MessageOptions, FieldOptions, EnumOptions, EnumValueOptions, ServiceOptions, or MethodOptions are strongly discouraged. */
 export interface Option {
   /** The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type. */
@@ -236,7 +281,11 @@ export interface Option {
   /** The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, `"map_entry"`. For custom options, it should be the fully-qualified name. For example, `"google.api.http"`. */
   name?: string;
 }
+const Option = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Option>;
+
 export type OptionList = Array<Option>;
+const OptionList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<OptionList>;
+
 /** Enum value definition. New usages of this message as an alternative to EnumValueDescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information. */
 export interface EnumValue {
   /** Enum value name. */
@@ -246,13 +295,21 @@ export interface EnumValue {
   /** Protocol buffer options. */
   options?: OptionList;
 }
+const EnumValue = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<EnumValue>;
+
 export type EnumValueList = Array<EnumValue>;
+const EnumValueList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<EnumValueList>;
+
 export type EnumSyntaxEnum = "SYNTAX_PROTO2" | "SYNTAX_PROTO3" | "SYNTAX_EDITIONS";
+const EnumSyntaxEnum = S.String;
+
 /** `SourceContext` represents information about the source of a protobuf element, like the file in which it is defined. */
 export interface SourceContext {
   /** The path-qualified name of the .proto file that contained the associated protobuf element. For example: `"google/protobuf/source_context.proto"`. */
   fileName?: string;
 }
+const SourceContext = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<SourceContext>;
+
 /** Enum type definition. New usages of this message as an alternative to EnumDescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information. */
 export interface Enum {
   /** Enum type name. */
@@ -268,7 +325,11 @@ export interface Enum {
   /** The source edition string, only valid when syntax is SYNTAX_EDITIONS. */
   edition?: string;
 }
+const Enum = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Enum>;
+
 export type EnumList = Array<Enum>;
+const EnumList = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<EnumList>;
+
 /** Usage configuration rules for the service. */
 export interface UsageRule {
   /** Selects the methods to which this rule applies. Use '*' to indicate all methods in all APIs. Refer to selector for syntax details. */
@@ -278,7 +339,11 @@ export interface UsageRule {
   /** If true, the selected method should skip service control and the control plane features, such as quota and billing, will not be available. This flag is used by Google Cloud Endpoints to bypass checks for internal methods, such as service health check methods. */
   skipServiceControl?: boolean;
 }
+const UsageRule = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<UsageRule>;
+
 export type UsageRuleList = Array<UsageRule>;
+const UsageRuleList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<UsageRuleList>;
+
 /** Configuration controlling usage of a service. */
 export interface Usage {
   /** Requirements that must be satisfied before a consumer project can use the service. Each requirement is of the form /; for example 'serviceusage.googleapis.com/billing-enabled'. For Google APIs, a Terms of Service requirement must be included here. Google Cloud APIs must include "serviceusage.googleapis.com/tos/cloud". Other Google APIs should include "serviceusage.googleapis.com/tos/universal". Additional ToS can be included based on the business needs. */
@@ -288,6 +353,8 @@ export interface Usage {
   /** The full resource name of a channel used for sending notifications to the service producer. Google Service Management currently only supports [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as a notification channel. To use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud Pub/Sub topic that uses the Cloud Pub/Sub topic name format documented in https://cloud.google.com/pubsub/docs/overview. */
   producerNotificationChannel?: string;
 }
+const Usage = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Usage>;
+
 /** Configuration of a specific logging destination (the producer project or the consumer project). */
 export interface LoggingDestination {
   /** The monitored resource type. The type must be defined in the Service.monitored_resources section. */
@@ -295,7 +362,14 @@ export interface LoggingDestination {
   /** Names of the logs to be sent to this destination. Each name must be defined in the Service.logs section. If the log name is not a domain scoped name, it will be automatically prefixed with the service name followed by "/". */
   logs?: StringList;
 }
+const LoggingDestination = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<LoggingDestination>;
+
 export type LoggingDestinationList = Array<LoggingDestination>;
+const LoggingDestinationList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<LoggingDestinationList>;
+
 /** Logging configuration of the service. The following example shows how to configure logs to be sent to the producer and consumer projects. In the example, the `activity_history` log is sent to both the producer and consumer projects, whereas the `purchase_history` log is only sent to the producer project. monitored_resources: - type: library.googleapis.com/branch labels: - key: /city description: The city where the library branch is located in. - key: /name description: The name of the branch. logs: - name: activity_history labels: - key: /customer_id - name: purchase_history logging: producer_destinations: - monitored_resource: library.googleapis.com/branch logs: - activity_history - purchase_history consumer_destinations: - monitored_resource: library.googleapis.com/branch logs: - activity_history */
 export interface Logging {
   /** Logging configurations for sending logs to the consumer project. There can be multiple consumer destinations, each one must have a different monitored resource type. A log can be used in at most one consumer destination. */
@@ -303,6 +377,8 @@ export interface Logging {
   /** Logging configurations for sending logs to the producer project. There can be multiple producer destinations, each one must have a different monitored resource type. A log can be used in at most one producer destination. */
   producerDestinations?: LoggingDestinationList;
 }
+const Logging = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Logging>;
+
 /** A custom error rule. */
 export interface CustomErrorRule {
   /** Selects messages to which this rule applies. Refer to selector for syntax details. */
@@ -310,7 +386,11 @@ export interface CustomErrorRule {
   /** Mark this message as possible payload in error response. Otherwise, objects of this type will be filtered when they appear in error payload. */
   isErrorType?: boolean;
 }
+const CustomErrorRule = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<CustomErrorRule>;
+
 export type CustomErrorRuleList = Array<CustomErrorRule>;
+const CustomErrorRuleList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<CustomErrorRuleList>;
+
 /** Customize service error responses. For example, list any service specific protobuf types that can appear in error detail lists of error responses. Example: custom_error: types: - google.foo.v1.CustomError - google.foo.v1.AnotherError */
 export interface CustomError {
   /** The list of custom error detail types, e.g. 'google.foo.v1.CustomError'. */
@@ -318,6 +398,8 @@ export interface CustomError {
   /** The list of custom error rules that apply to individual API messages. **NOTE:** All service configuration rules follow "last one wins" order. */
   rules?: CustomErrorRuleList;
 }
+const CustomError = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<CustomError>;
+
 /** This message is used to configure the generation of a subset of the RPCs in a service for client libraries. Note: This feature should not be used in most cases. */
 export interface SelectiveGapicGeneration {
   /** An allowlist of the fully qualified names of RPCs that should be included on public client surfaces. */
@@ -325,13 +407,25 @@ export interface SelectiveGapicGeneration {
   /** Setting this to true indicates to the client generators that methods that would be excluded from the generation should instead be generated in a way that indicates these methods should not be consumed by end users. How this is expressed is up to individual language implementations to decide. Some examples may be: added annotations, obfuscated identifiers, or other language idiomatic patterns. */
   generateOmittedAsInternal?: boolean;
 }
+const SelectiveGapicGeneration = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<SelectiveGapicGeneration>;
+
 export type CommonLanguageSettingsDestinationsItemEnum =
   | "CLIENT_LIBRARY_DESTINATION_UNSPECIFIED"
   | "GITHUB"
   | "PACKAGE_MANAGER";
+const CommonLanguageSettingsDestinationsItemEnum = S.String;
+
 export type CommonLanguageSettingsDestinationsItemEnumList = Array<
   CommonLanguageSettingsDestinationsItemEnum | (string & {})
 >;
+const CommonLanguageSettingsDestinationsItemEnumList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CommonLanguageSettingsDestinationsItemEnumList>;
+
 /** Required information for every language. */
 export interface CommonLanguageSettings {
   /** Configuration for which RPCs should be generated in the GAPIC client. Note: This field should not be used in most cases. */
@@ -341,6 +435,11 @@ export interface CommonLanguageSettings {
   /** Link to automatically generated reference documentation. Example: https://cloud.google.com/nodejs/docs/reference/asset/latest */
   referenceDocsUri?: string;
 }
+const CommonLanguageSettings = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CommonLanguageSettings>;
+
 /** Settings for Php client libraries. */
 export interface PhpSettings {
   /** The package name to use in Php. Clobbers the php_namespace option set in the protobuf. This should be used **only** by APIs who have already set the language_settings.php.package_name" field in gapic.yaml. API teams should use the protobuf php_namespace option where possible. Example of a YAML configuration:: publishing: library_settings: php_settings: library_package: Google\Cloud\PubSub\V1 */
@@ -348,7 +447,11 @@ export interface PhpSettings {
   /** Some settings. */
   common?: CommonLanguageSettings;
 }
+const PhpSettings = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<PhpSettings>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<StringMap>;
+
 /** Settings for Dotnet client libraries. */
 export interface DotnetSettings {
   /** Map from full resource types to the effective short name for the resource. This is used when otherwise resource named from different services would cause naming collisions. Example entry: "datalabeling.googleapis.com/Dataset": "DataLabelingDataset" */
@@ -364,11 +467,15 @@ export interface DotnetSettings {
   /** Method signatures (in the form "service.method(signature)") which are provided separately, so shouldn't be generated. Snippets *calling* these methods are still generated, however. */
   handwrittenSignatures?: StringList;
 }
+const DotnetSettings = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<DotnetSettings>;
+
 /** Settings for Ruby client libraries. */
 export interface RubySettings {
   /** Some settings. */
   common?: CommonLanguageSettings;
 }
+const RubySettings = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<RubySettings>;
+
 /** Settings for Node client libraries. */
 export type NodeSettings = RubySettings;
 /** Settings for Go client libraries. */
@@ -378,6 +485,8 @@ export interface GoSettings {
   /** Map of service names to renamed services. Keys are the package relative service names and values are the name to be used for the service client and call options. Example: publishing: go_settings: renamed_services: Publisher: TopicAdmin */
   renamedServices?: StringMap;
 }
+const GoSettings = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<GoSettings>;
+
 export type ClientLibrarySettingsLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "UNIMPLEMENTED"
@@ -387,6 +496,8 @@ export type ClientLibrarySettingsLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
+const ClientLibrarySettingsLaunchStageEnum = S.String;
+
 /** Settings for C++ client libraries. */
 export type CppSettings = RubySettings;
 /** Experimental features to be included during client library generation. These fields will be deprecated once the feature graduates and is enabled by default. */
@@ -398,6 +509,8 @@ export interface ExperimentalFeatures {
   /** Disables generation of an unversioned Python package for this client library. This means that the module names will need to be versioned in import statements. For example `import google.cloud.library_v2` instead of `import google.cloud.library`. */
   unversionedPackageDisabled?: boolean;
 }
+const ExperimentalFeatures = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ExperimentalFeatures>;
+
 /** Settings for Python client libraries. */
 export interface PythonSettings {
   /** Some settings. */
@@ -405,6 +518,8 @@ export interface PythonSettings {
   /** Experimental features to be included during client library generation. */
   experimentalFeatures?: ExperimentalFeatures;
 }
+const PythonSettings = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<PythonSettings>;
+
 /** Settings for Java client libraries. */
 export interface JavaSettings {
   /** Configure the Java class name to use instead of the service's for its corresponding generated GAPIC client. Keys are fully-qualified service names as they appear in the protobuf (including the full the language_settings.java.interface_names" field in gapic.yaml. API teams should otherwise use the service name as it appears in the protobuf. Example of a YAML configuration:: publishing: java_settings: service_class_names: - google.pubsub.v1.Publisher: TopicAdmin - google.pubsub.v1.Subscriber: SubscriptionAdmin */
@@ -414,6 +529,8 @@ export interface JavaSettings {
   /** The package name to use in Java. Clobbers the java_package option set in the protobuf. This should be used **only** by APIs who have already set the language_settings.java.package_name" field in gapic.yaml. API teams should use the protobuf java_package option where possible. Example of a YAML configuration:: publishing: library_settings: java_settings: library_package: com.google.cloud.pubsub.v1 */
   libraryPackage?: string;
 }
+const JavaSettings = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<JavaSettings>;
+
 /** Details about how and where to publish client libraries. */
 export interface ClientLibrarySettings {
   /** Version of the API to apply these settings to. This is the full protobuf package for the API, ending in the version element. Examples: "google.cloud.speech.v1" and "google.spanner.admin.database.v1". */
@@ -439,7 +556,17 @@ export interface ClientLibrarySettings {
   /** Settings for legacy Java features, supported in the Service YAML. */
   javaSettings?: JavaSettings;
 }
+const ClientLibrarySettings = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ClientLibrarySettings>;
+
 export type ClientLibrarySettingsList = Array<ClientLibrarySettings>;
+const ClientLibrarySettingsList = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ClientLibrarySettingsList>;
+
 export type PublishingOrganizationEnum =
   | "CLIENT_LIBRARY_ORGANIZATION_UNSPECIFIED"
   | "CLOUD"
@@ -450,11 +577,15 @@ export type PublishingOrganizationEnum =
   | "GEO"
   | "GENERATIVE_AI"
   | "HEALTH";
+const PublishingOrganizationEnum = S.String;
+
 export type BatchingSettingsProtoFlowControlLimitExceededBehaviorEnum =
   | "UNSET_BEHAVIOR"
   | "THROW_EXCEPTION"
   | "BLOCK"
   | "IGNORE";
+const BatchingSettingsProtoFlowControlLimitExceededBehaviorEnum = S.String;
+
 /** `BatchingSettingsProto` specifies a set of batching thresholds, each of which acts as a trigger to send a batch of messages as a request. At least one threshold must be positive nonzero. */
 export interface BatchingSettingsProto {
   /** The maximum number of elements allowed by flow control. */
@@ -476,6 +607,11 @@ export interface BatchingSettingsProto {
   /** The maximum size of the request that could be accepted by server. */
   requestByteLimit?: number;
 }
+const BatchingSettingsProto = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<BatchingSettingsProto>;
+
 /** `BatchingDescriptorProto` specifies the fields of the request message to be used for batching, and, optionally, the fields of the response message to be used for demultiplexing. */
 export interface BatchingDescriptorProto {
   /** The repeated field in the request message to be aggregated by batching. */
@@ -485,6 +621,11 @@ export interface BatchingDescriptorProto {
   /** A list of the fields in the request message. Two requests will be batched together only if the values of every field specified in `request_discriminator_fields` is equal between the two requests. */
   discriminatorFields?: StringList;
 }
+const BatchingDescriptorProto = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<BatchingDescriptorProto>;
+
 /** `BatchingConfigProto` defines the batching configuration for an API method. */
 export interface BatchingConfigProto {
   /** The thresholds which trigger a batched request to be sent. */
@@ -492,6 +633,8 @@ export interface BatchingConfigProto {
   /** The request and response fields used in batching. */
   batchDescriptor?: BatchingDescriptorProto;
 }
+const BatchingConfigProto = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<BatchingConfigProto>;
+
 /** Describes settings to use when generating API methods that use the long-running operation pattern. All default values below are from those used in the client library generators (e.g. [Java](https://github.com/googleapis/gapic-generator-java/blob/04c2faa191a9b5a10b92392fe8482279c4404803/src/main/java/com/google/api/generator/gapic/composer/common/RetrySettingsComposer.java)). */
 export interface LongRunning {
   /** Initial delay after which the first poll request will be made. Default value: 5 seconds. */
@@ -503,6 +646,8 @@ export interface LongRunning {
   /** Maximum time between two subsequent poll requests. Default value: 45 seconds. */
   maxPollDelay?: string;
 }
+const LongRunning = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<LongRunning>;
+
 /** Describes the generator configuration for a method. */
 export interface MethodSettings {
   /** The fully qualified name of the method, for which the options below apply. This is used to find the method to apply the options. Example: publishing: method_settings: - selector: google.storage.control.v2.StorageControl.CreateFolder # method settings for CreateFolder... */
@@ -514,7 +659,11 @@ export interface MethodSettings {
   /** List of top-level fields of the request message, that should be automatically populated by the client libraries based on their (google.api.field_info).format. Currently supported format: UUID4. Example of a YAML configuration: publishing: method_settings: - selector: google.example.v1.ExampleService.CreateExample auto_populated_fields: - request_id */
   autoPopulatedFields?: StringList;
 }
+const MethodSettings = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<MethodSettings>;
+
 export type MethodSettingsList = Array<MethodSettings>;
+const MethodSettingsList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<MethodSettingsList>;
+
 /** This message configures the settings for publishing [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from the service config. */
 export interface Publishing {
   /** Used as a tracking tag when collecting data about the APIs developer relations artifacts like docs, packages delivered to package managers, etc. Example: "speech". */
@@ -540,6 +689,8 @@ export interface Publishing {
   /** Link to product home page. Example: https://cloud.google.com/asset-inventory/docs/overview */
   documentationUri?: string;
 }
+const Publishing = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Publishing>;
+
 /** Configuration of a specific monitoring destination (the producer project or the consumer project). */
 export interface MonitoringDestination {
   /** Types of the metrics to report to this monitoring destination. Each type must be defined in Service.metrics section. */
@@ -547,7 +698,17 @@ export interface MonitoringDestination {
   /** The monitored resource type. The type must be defined in Service.monitored_resources section. */
   monitoredResource?: string;
 }
+const MonitoringDestination = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<MonitoringDestination>;
+
 export type MonitoringDestinationList = Array<MonitoringDestination>;
+const MonitoringDestinationList = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<MonitoringDestinationList>;
+
 /** Monitoring configuration of the service. The example below shows how to configure monitored resources and metrics for monitoring. In the example, a monitored resource and two metrics are defined. The `library.googleapis.com/book/returned_count` metric is sent to both producer and consumer projects, whereas the `library.googleapis.com/book/num_overdue` metric is only sent to the consumer project. monitored_resources: - type: library.googleapis.com/Branch display_name: "Library Branch" description: "A branch of a library." launch_stage: GA labels: - key: resource_container description: "The Cloud container (ie. project id) for the Branch." - key: location description: "The location of the library branch." - key: branch_id description: "The id of the branch." metrics: - name: library.googleapis.com/book/returned_count display_name: "Books Returned" description: "The count of books that have been returned." launch_stage: GA metric_kind: DELTA value_type: INT64 unit: "1" labels: - key: customer_id description: "The id of the customer." - name: library.googleapis.com/book/num_overdue display_name: "Books Overdue" description: "The current number of overdue books." launch_stage: GA metric_kind: GAUGE value_type: INT64 unit: "1" labels: - key: customer_id description: "The id of the customer." monitoring: producer_destinations: - monitored_resource: library.googleapis.com/Branch metrics: - library.googleapis.com/book/returned_count consumer_destinations: - monitored_resource: library.googleapis.com/Branch metrics: - library.googleapis.com/book/returned_count - library.googleapis.com/book/num_overdue */
 export interface Monitoring {
   /** Monitoring configurations for sending metrics to the consumer project. There can be multiple consumer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration. */
@@ -555,8 +716,14 @@ export interface Monitoring {
   /** Monitoring configurations for sending metrics to the producer project. There can be multiple producer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration. */
   producerDestinations?: MonitoringDestinationList;
 }
+const Monitoring = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<Monitoring>;
+
 export type ApiSyntaxEnum = "SYNTAX_PROTO2" | "SYNTAX_PROTO3" | "SYNTAX_EDITIONS";
+const ApiSyntaxEnum = S.String;
+
 export type MethodSyntaxEnum = "SYNTAX_PROTO2" | "SYNTAX_PROTO3" | "SYNTAX_EDITIONS";
+const MethodSyntaxEnum = S.String;
+
 /** Method represents a method of an API interface. New usages of this message as an alternative to MethodDescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information. */
 export interface Method {
   /** If true, the request is streamed. */
@@ -576,7 +743,11 @@ export interface Method {
   /** The simple name of this method. */
   name?: string;
 }
+const Method = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<Method>;
+
 export type MethodList = Array<Method>;
+const MethodList = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<MethodList>;
+
 /** Declares an API Interface to be included in this interface. The including interface must redeclare all the methods from the included interface, but documentation and options are inherited as follows: - If after comment and whitespace stripping, the documentation string of the redeclared method is empty, it will be inherited from the original method. - Each annotation belonging to the service config (http, visibility) which is not set in the redeclared method will be inherited. - If an http annotation is inherited, the path pattern will be modified as follows. Any version prefix will be replaced by the version of the including interface plus the root path if specified. Example of a simple mixin: package google.acl.v1; service AccessControl { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v1/{resource=**}:getAcl"; } } package google.storage.v2; service Storage { // rpc GetAcl(GetAclRequest) returns (Acl); // Get a data record. rpc GetData(GetDataRequest) returns (Data) { option (google.api.http).get = "/v2/{resource=**}"; } } Example of a mixin configuration: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl The mixin construct implies that all methods in `AccessControl` are also declared with same name and request/response types in `Storage`. A documentation generator or annotation processor will see the effective `Storage.GetAcl` method after inheriting documentation and annotations as follows: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern changed from `v1` to `v2`. If the `root` field in the mixin is specified, it should be a relative path under which inherited HTTP paths are placed. Example: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl root: acls This implies the following inherited HTTP annotation: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/acls/{resource=**}:getAcl"; } ... } */
 export interface Mixin {
   /** If non-empty specifies a path under which inherited HTTP paths are rooted. */
@@ -584,7 +755,11 @@ export interface Mixin {
   /** The fully qualified name of the interface which is included. */
   name?: string;
 }
+const Mixin = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<Mixin>;
+
 export type MixinList = Array<Mixin>;
+const MixinList = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<MixinList>;
+
 /** Api is a light-weight descriptor for an API Interface. Interfaces are also described as "protocol buffer services" in some contexts, such as by the "service" keyword in a .proto file, but they are different from API Services, which represent a concrete implementation of an interface as opposed to simply a description of methods and bindings. They are also sometimes simply referred to as "APIs" in other contexts, such as the name of this message itself. See https://cloud.google.com/apis/design/glossary for detailed terminology. New usages of this message as an alternative to ServiceDescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information. */
 export interface Api {
   /** The source edition string, only valid when syntax is SYNTAX_EDITIONS. */
@@ -604,12 +779,18 @@ export interface Api {
   /** Included interfaces. See Mixin. */
   mixins?: MixinList;
 }
+const Api = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<Api>;
+
 export type ApiList = Array<Api>;
+const ApiList = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ApiList>;
+
 /** Source information used to create a Service Config */
 export interface SourceInfo {
   /** All files used during config generation. */
   sourceFiles?: DocumentMapList;
 }
+const SourceInfo = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<SourceInfo>;
+
 /** Represents a documentation page. A page can contain subpages to represent nested documentation set structure. */
 export interface Page {
   /** The name of the page. It will be used as an identity of the page to generate URI of the page, text of the link to this page in navigation, etc. The full page name (start from the root page name to this page concatenated with `.`) can be used as reference to the page in your documentation. For example: pages: - name: Tutorial content: (== include tutorial.md ==) subpages: - name: Java content: (== include tutorial_java.md ==) You can reference `Java` page using Markdown reference link syntax: `Java`. */
@@ -619,7 +800,11 @@ export interface Page {
   /** The Markdown content of the page. You can use ```(== include {path} ==)``` to include content from a Markdown file. The content can be used to produce the documentation page such as HTML format page. */
   content?: string;
 }
+const Page = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<Page>;
+
 export type PageList = Array<Page>;
+const PageList = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<PageList>;
+
 /** A documentation rule provides information about individual API elements. */
 export interface DocumentationRule {
   /** Deprecation description of the selected element(s). It can be provided if an element is marked as `deprecated`. */
@@ -631,7 +816,14 @@ export interface DocumentationRule {
   /** The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used. */
   selector?: string;
 }
+const DocumentationRule = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<DocumentationRule>;
+
 export type DocumentationRuleList = Array<DocumentationRule>;
+const DocumentationRuleList = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DocumentationRuleList>;
+
 /** `Documentation` provides the information for describing a service. Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages: - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: > ... - selector: google.calendar.Calendar.Put description: > ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation. */
 export interface Documentation {
   /** The top level pages for the documentation set. */
@@ -651,7 +843,11 @@ export interface Documentation {
   /** Specifies the service root url if the default one (the service name from the yaml file) is not suitable. This can be seen in any fully specified service urls as well as sections that show a base that other urls are relative to. */
   serviceRootUrl?: string;
 }
+const Documentation = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<Documentation>;
+
 export type TypeSyntaxEnum = "SYNTAX_PROTO2" | "SYNTAX_PROTO3" | "SYNTAX_EDITIONS";
+const TypeSyntaxEnum = S.String;
+
 export type FieldKindEnum =
   | "TYPE_UNKNOWN"
   | "TYPE_DOUBLE"
@@ -672,11 +868,15 @@ export type FieldKindEnum =
   | "TYPE_SFIXED64"
   | "TYPE_SINT32"
   | "TYPE_SINT64";
+const FieldKindEnum = S.String;
+
 export type FieldCardinalityEnum =
   | "CARDINALITY_UNKNOWN"
   | "CARDINALITY_OPTIONAL"
   | "CARDINALITY_REQUIRED"
   | "CARDINALITY_REPEATED";
+const FieldCardinalityEnum = S.String;
+
 /** A single field of a message type. New usages of this message as an alternative to FieldDescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information. */
 export interface Field {
   /** Whether to use alternative packed wire representation. */
@@ -700,7 +900,11 @@ export interface Field {
   /** The field number. */
   number?: number;
 }
+const Field = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<Field>;
+
 export type FieldList = Array<Field>;
+const FieldList = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<FieldList>;
+
 /** A protocol buffer message type. New usages of this message as an alternative to DescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information. */
 export interface Type {
   /** The fully qualified message name. */
@@ -718,12 +922,18 @@ export interface Type {
   /** The list of fields. */
   fields?: FieldList;
 }
+const Type = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<Type>;
+
 export type TypeList = Array<Type>;
+const TypeList = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<TypeList>;
+
 /** OAuth scopes are a way to define data and permissions on data. For example, there are scopes defined for "Read-only access to Google Calendar" and "Access to Cloud Platform". Users can consent to a scope for an application, giving it permission to access that data on their behalf. OAuth scope specifications should be fairly coarse grained; a user will need to see and understand the text description of what your scope means. In most cases: use one or at most two OAuth scopes for an entire family of products. If your product has multiple APIs, you should probably be sharing the OAuth scope across all of those APIs. When you need finer grained OAuth consent screens: talk with your product management about how developers will use them in practice. Please note that even though each of the canonical scopes is enough for a request to be accepted and passed to the backend, a request can still fail due to the backend requiring additional scopes or permissions. */
 export interface OAuthRequirements {
   /** The list of publicly documented OAuth scopes that are allowed access. An OAuth token containing any of these scopes will be accepted. Example: canonical_scopes: https://www.googleapis.com/auth/calendar, https://www.googleapis.com/auth/calendar.read */
   canonicalScopes?: string;
 }
+const OAuthRequirements = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<OAuthRequirements>;
+
 /** User-defined authentication requirements, including support for [JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32). */
 export interface AuthRequirement {
   /** NOTE: This will be deprecated soon, once AuthProvider.audiences is implemented and accepted in all the runtime components. The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3). that are allowed to access. A JWT containing any of these audiences will be accepted. When this setting is absent, only JWTs with audience "https://Service_name/API_name" will be accepted. For example, if no audiences are in the setting, LibraryService API will only accept JWTs with the following audience "https://library-example.googleapis.com/google.example.library.v1.LibraryService". Example: audiences: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com */
@@ -731,7 +941,11 @@ export interface AuthRequirement {
   /** id from authentication provider. Example: provider_id: bookstore_auth */
   providerId?: string;
 }
+const AuthRequirement = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<AuthRequirement>;
+
 export type AuthRequirementList = Array<AuthRequirement>;
+const AuthRequirementList = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<AuthRequirementList>;
+
 /** Authentication rules for the service. By default, if a method has any authentication requirements, every request must include a valid credential matching one of the requirements. It's an error to include more than one kind of credential in a single request. If a method doesn't have any auth requirements, request credentials will be ignored. */
 export interface AuthenticationRule {
   /** The requirements for OAuth credentials. */
@@ -743,7 +957,14 @@ export interface AuthenticationRule {
   /** If true, the service accepts API keys without any other credential. This flag only applies to HTTP and gRPC requests. */
   allowWithoutCredential?: boolean;
 }
+const AuthenticationRule = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<AuthenticationRule>;
+
 export type AuthenticationRuleList = Array<AuthenticationRule>;
+const AuthenticationRuleList = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<AuthenticationRuleList>;
+
 /** Specifies a location to extract JWT from an API request. */
 export interface JwtLocation {
   /** Specifies URL query parameter name to extract JWT token. */
@@ -755,7 +976,11 @@ export interface JwtLocation {
   /** The value prefix. The value format is "value_prefix{token}" Only applies to "in" header type. Must be empty for "in" query type. If not empty, the header value has to match (case sensitive) this prefix. If not matched, JWT will not be extracted. If matched, JWT will be extracted after the prefix is removed. For example, for "Authorization: Bearer {JWT}", value_prefix="Bearer " with a space at the end. */
   valuePrefix?: string;
 }
+const JwtLocation = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<JwtLocation>;
+
 export type JwtLocationList = Array<JwtLocation>;
+const JwtLocationList = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<JwtLocationList>;
+
 /** Configuration for an authentication provider, including support for [JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32). */
 export interface AuthProvider {
   /** The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3). that are allowed to access. A JWT containing any of these audiences will be accepted. When this setting is absent, JWTs with audiences: - "https://[service.name]/[google.protobuf.Api.name]" - "https://[service.name]/" will be accepted. For example, if no audiences are in the setting, LibraryService API will accept JWTs with the following audiences: - https://library-example.googleapis.com/google.example.library.v1.LibraryService - https://library-example.googleapis.com/ Example: audiences: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com */
@@ -771,7 +996,11 @@ export interface AuthProvider {
   /** Defines the locations to extract the JWT. For now it is only used by the Cloud Endpoints to store the OpenAPI extension [x-google-jwt-locations] (https://cloud.google.com/endpoints/docs/openapi/openapi-extensions#x-google-jwt-locations) JWT locations can be one of HTTP headers, URL query parameters or cookies. The rule is that the first match wins. If not specified, default to use following 3 locations: 1) Authorization: Bearer 2) x-goog-iap-jwt-assertion 3) access_token query parameter Default locations can be specified as followings: jwt_locations: - header: Authorization value_prefix: "Bearer " - header: x-goog-iap-jwt-assertion - query: access_token */
   jwtLocations?: JwtLocationList;
 }
+const AuthProvider = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<AuthProvider>;
+
 export type AuthProviderList = Array<AuthProvider>;
+const AuthProviderList = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<AuthProviderList>;
+
 /** `Authentication` defines the authentication configuration for API methods provided by an API service. Example: name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: "*" requirements: provider_id: google_calendar_auth - selector: google.calendar.Delegate oauth: canonical_scopes: https://www.googleapis.com/auth/calendar.read */
 export interface Authentication {
   /** A list of authentication rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order. */
@@ -779,6 +1008,8 @@ export interface Authentication {
   /** Defines a set of authentication providers that a service supports. */
   providers?: AuthProviderList;
 }
+const Authentication = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<Authentication>;
+
 /** Define a parameter's name and location. The parameter may be passed as either an HTTP header or a URL query parameter, and if both are passed the behavior is implementation-dependent. */
 export interface SystemParameter {
   /** Define the name of the parameter, such as "api_key" . It is case sensitive. */
@@ -788,7 +1019,11 @@ export interface SystemParameter {
   /** Define the HTTP header name to use for the parameter. It is case insensitive. */
   httpHeader?: string;
 }
+const SystemParameter = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<SystemParameter>;
+
 export type SystemParameterList = Array<SystemParameter>;
+const SystemParameterList = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<SystemParameterList>;
+
 /** Define a system parameter rule mapping system parameter definitions to methods. */
 export interface SystemParameterRule {
   /** Define parameters. Multiple names may be defined for a parameter. For a given method call, only one of them should be used. If multiple names are used the behavior is implementation-dependent. If none of the specified names are present the behavior is parameter-dependent. */
@@ -796,12 +1031,21 @@ export interface SystemParameterRule {
   /** Selects the methods to which this rule applies. Use '*' to indicate all methods in all APIs. Refer to selector for syntax details. */
   selector?: string;
 }
+const SystemParameterRule = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<SystemParameterRule>;
+
 export type SystemParameterRuleList = Array<SystemParameterRule>;
+const SystemParameterRuleList = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<SystemParameterRuleList>;
+
 /** ### System parameter configuration A system parameter is a special kind of parameter defined by the API system, not by an individual API. It is typically mapped to an HTTP header and/or a URL query parameter. This configuration specifies which methods change the names of the system parameters. */
 export interface SystemParameters {
   /** Define system parameters. The parameters defined here will override the default parameters implemented by the system. If this field is missing from the service config, default system parameters will be used. Default system parameters and names is implementation-dependent. Example: define api key for all methods system_parameters rules: - selector: "*" parameters: - name: api_key url_query_parameter: api_key Example: define 2 api key names for a specific method. system_parameters rules: - selector: "/ListShelves" parameters: - name: api_key http_header: Api-Key1 - name: api_key http_header: Api-Key2 **NOTE:** All service configuration rules follow "last one wins" order. */
   rules?: SystemParameterRuleList;
 }
+const SystemParameters = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<SystemParameters>;
+
 /** A custom pattern is used for defining custom HTTP verb. */
 export interface CustomHttpPattern {
   /** The name of this custom HTTP verb. */
@@ -809,6 +1053,8 @@ export interface CustomHttpPattern {
   /** The path matched by this custom verb. */
   path?: string;
 }
+const CustomHttpPattern = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<CustomHttpPattern>;
+
 /** gRPC Transcoding gRPC Transcoding is a feature for mapping between a gRPC method and one or more HTTP REST endpoints. It allows developers to build a single API service that supports both gRPC APIs and REST APIs. Many systems, including [Google APIs](https://github.com/googleapis/googleapis), [Cloud Endpoints](https://cloud.google.com/endpoints), [gRPC Gateway](https://github.com/grpc-ecosystem/grpc-gateway), and [Envoy](https://github.com/envoyproxy/envoy) proxy support this feature and use it for large scale production services. `HttpRule` defines the schema of the gRPC/REST mapping. The mapping specifies how different portions of the gRPC request message are mapped to the URL path, URL query parameters, and HTTP request body. It also controls how the gRPC response message is mapped to the HTTP response body. `HttpRule` is typically specified as an `google.api.http` annotation on the gRPC method. Each mapping specifies a URL path template and an HTTP method. The path template may refer to one or more fields in the gRPC request message, as long as each field is a non-repeated field with a primitive (non-message) type. The path template controls how fields of the request message are mapped to the URL path. Example: service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http) = { get: "/v1/{name=messages/*}" }; } } message GetMessageRequest { string name = 1; // Mapped to URL path. } message Message { string text = 1; // The resource content. } This enables an HTTP REST to gRPC mapping as below: - HTTP: `GET /v1/messages/123456` - gRPC: `GetMessage(name: "messages/123456")` Any fields in the request message which are not bound by the path template automatically become HTTP query parameters if there is no HTTP request body. For example: service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http) = { get:"/v1/messages/{message_id}" }; } } message GetMessageRequest { message SubMessage { string subfield = 1; } string message_id = 1; // Mapped to URL path. int64 revision = 2; // Mapped to URL query parameter `revision`. SubMessage sub = 3; // Mapped to URL query parameter `sub.subfield`. } This enables a HTTP JSON to RPC mapping as below: - HTTP: `GET /v1/messages/123456?revision=2&sub.subfield=foo` - gRPC: `GetMessage(message_id: "123456" revision: 2 sub: SubMessage(subfield: "foo"))` Note that fields which are mapped to URL query parameters must have a primitive type or a repeated primitive type or a non-repeated message type. In the case of a repeated type, the parameter can be repeated in the URL as `...?param=A&param=B`. In the case of a message type, each field of the message is mapped to a separate parameter, such as `...?foo.a=A&foo.b=B&foo.c=C`. For HTTP methods that allow a request body, the `body` field specifies the mapping. Consider a REST update method on the message resource collection: service Messaging { rpc UpdateMessage(UpdateMessageRequest) returns (Message) { option (google.api.http) = { patch: "/v1/messages/{message_id}" body: "message" }; } } message UpdateMessageRequest { string message_id = 1; // mapped to the URL Message message = 2; // mapped to the body } The following HTTP JSON to RPC mapping is enabled, where the representation of the JSON in the request body is determined by protos JSON encoding: - HTTP: `PATCH /v1/messages/123456 { "text": "Hi!" }` - gRPC: `UpdateMessage(message_id: "123456" message { text: "Hi!" })` The special name `*` can be used in the body mapping to define that every field not bound by the path template should be mapped to the request body. This enables the following alternative definition of the update method: service Messaging { rpc UpdateMessage(Message) returns (Message) { option (google.api.http) = { patch: "/v1/messages/{message_id}" body: "*" }; } } message Message { string message_id = 1; string text = 2; } The following HTTP JSON to RPC mapping is enabled: - HTTP: `PATCH /v1/messages/123456 { "text": "Hi!" }` - gRPC: `UpdateMessage(message_id: "123456" text: "Hi!")` Note that when using `*` in the body mapping, it is not possible to have HTTP parameters, as all fields not bound by the path end in the body. This makes this option more rarely used in practice when defining REST APIs. The common usage of `*` is in custom methods which don't use the URL at all for transferring data. It is possible to define multiple HTTP methods for one RPC by using the `additional_bindings` option. Example: service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http) = { get: "/v1/messages/{message_id}" additional_bindings { get: "/v1/users/{user_id}/messages/{message_id}" } }; } } message GetMessageRequest { string message_id = 1; string user_id = 2; } This enables the following two alternative HTTP JSON to RPC mappings: - HTTP: `GET /v1/messages/123456` - gRPC: `GetMessage(message_id: "123456")` - HTTP: `GET /v1/users/me/messages/123456` - gRPC: `GetMessage(user_id: "me" message_id: "123456")` Rules for HTTP mapping 1. Leaf request fields (recursive expansion nested messages in the request message) are classified into three categories: - Fields referred by the path template. They are passed via the URL path. - Fields referred by the HttpRule.body. They are passed via the HTTP request body. - All other fields are passed via the URL query parameters, and the parameter name is the field path in the request message. A repeated field can be represented as multiple query parameters under the same name. 2. If HttpRule.body is "*", there is no URL query parameter, all fields are passed via URL path and HTTP request body. 3. If HttpRule.body is omitted, there is no HTTP request body, all fields are passed via URL path and URL query parameters. Path template syntax Template = "/" Segments [ Verb ] ; Segments = Segment { "/" Segment } ; Segment = "*" | "**" | LITERAL | Variable ; Variable = "{" FieldPath [ "=" Segments ] "}" ; FieldPath = IDENT { "." IDENT } ; Verb = ":" LITERAL ; The syntax `*` matches a single URL path segment. The syntax `**` matches zero or more URL path segments, which must be the last part of the URL path except the `Verb`. The syntax `Variable` matches part of the URL path as specified by its template. A variable template must not contain other variables. If a variable matches a single path segment, its template may be omitted, e.g. `{var}` is equivalent to `{var=*}`. The syntax `LITERAL` matches literal text in the URL path. If the `LITERAL` contains any reserved character, such characters should be percent-encoded before the matching. If a variable contains exactly one path segment, such as `"{var}"` or `"{var=*}"`, when such a variable is expanded into a URL path on the client side, all characters except `[-_.~0-9a-zA-Z]` are percent-encoded. The server side does the reverse decoding. Such variables show up in the [Discovery Document](https://developers.google.com/discovery/v1/reference/apis) as `{var}`. If a variable contains multiple path segments, such as `"{var=foo/*}"` or `"{var=**}"`, when such a variable is expanded into a URL path on the client side, all characters except `[-_.~/0-9a-zA-Z]` are percent-encoded. The server side does the reverse decoding, except "%2F" and "%2f" are left unchanged. Such variables show up in the [Discovery Document](https://developers.google.com/discovery/v1/reference/apis) as `{+var}`. Using gRPC API Service Configuration gRPC API Service Configuration (service config) is a configuration language for configuring a gRPC service to become a user-facing product. The service config is simply the YAML representation of the `google.api.Service` proto message. As an alternative to annotating your proto file, you can configure gRPC transcoding in your service config YAML files. You do this by specifying a `HttpRule` that maps the gRPC method to a REST endpoint, achieving the same effect as the proto annotation. This can be particularly useful if you have a proto that is reused in multiple services. Note that any transcoding specified in the service config will override any matching transcoding configuration in the proto. The following example selects a gRPC method and applies an `HttpRule` to it: http: rules: - selector: example.v1.Messaging.GetMessage get: /v1/messages/{message_id}/{sub.subfield} Special notes When gRPC Transcoding is used to map a gRPC to JSON REST endpoints, the proto to JSON conversion must follow the [proto3 specification](https://developers.google.com/protocol-buffers/docs/proto3#json). While the single segment variable follows the semantics of [RFC 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.2 Simple String Expansion, the multi segment variable **does not** follow RFC 6570 Section 3.2.3 Reserved Expansion. The reason is that the Reserved Expansion does not expand special characters like `?` and `#`, which would lead to invalid URLs. As the result, gRPC Transcoding uses a custom encoding for multi segment variables. The path variables **must not** refer to any repeated or mapped field, because client libraries are not capable of handling such variable expansion. The path variables **must not** capture the leading "/" character. The reason is that the most common use case "{var}" does not capture the leading "/" character. For consistency, all path variables must share the same behavior. Repeated message fields must not be mapped to URL query parameters, because no client library can support such complicated mapping. If an API needs to use a JSON array for request or response body, it can map the request or response body to a repeated field. However, some gRPC Transcoding implementations may not support this feature. */
 export interface HttpRule {
   /** Maps to HTTP POST. Used for creating a resource or performing an action. */
@@ -832,7 +1078,11 @@ export interface HttpRule {
   /** Maps to HTTP PUT. Used for replacing a resource. */
   put?: string;
 }
+const HttpRule = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<HttpRule>;
+
 export type HttpRuleList = Array<HttpRule>;
+const HttpRuleList = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<HttpRuleList>;
+
 /** Defines the HTTP configuration for an API service. It contains a list of HttpRule, each specifying the mapping of an RPC method to one or more HTTP REST API methods. */
 export interface Http {
   /** A list of HTTP configuration rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order. */
@@ -840,11 +1090,17 @@ export interface Http {
   /** When set to true, URL path parameters will be fully URI-decoded except in cases of single segment matches in reserved expansion, where "%2F" will be left encoded. The default behavior is to not decode RFC 6570 reserved characters in multi segment matches. */
   fullyDecodeReservedExpansion?: boolean;
 }
+const Http = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<Http>;
+
 export type BackendRuleMap = { [key: string]: BackendRule | undefined };
+const BackendRuleMap = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<BackendRuleMap>;
+
 export type BackendRulePathTranslationEnum =
   | "PATH_TRANSLATION_UNSPECIFIED"
   | "CONSTANT_ADDRESS"
   | "APPEND_PATH_TO_ADDRESS";
+const BackendRulePathTranslationEnum = S.String;
+
 /** A backend rule provides configuration for an individual API element. */
 export interface BackendRule {
   /** Deprecated, do not use. */
@@ -870,12 +1126,18 @@ export interface BackendRule {
   /** The number of seconds to wait for a response from a request. The default varies based on the request protocol and deployment environment. */
   deadline?: number;
 }
+const BackendRule = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<BackendRule>;
+
 export type BackendRuleList = Array<BackendRule>;
+const BackendRuleList = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<BackendRuleList>;
+
 /** `Backend` defines the backend configuration for a service. */
 export interface Backend {
   /** A list of API backend rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order. */
   rules?: BackendRuleList;
 }
+const Backend = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<Backend>;
+
 /** A context rule provides information about the context for an individual API element. */
 export interface ContextRule {
   /** A list of full type names or extension IDs of extensions allowed in grpc side channel from backend to client. */
@@ -889,12 +1151,18 @@ export interface ContextRule {
   /** A list of full type names of requested contexts, only the requested context will be made available to the backend. */
   requested?: StringList;
 }
+const ContextRule = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<ContextRule>;
+
 export type ContextRuleList = Array<ContextRule>;
+const ContextRuleList = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<ContextRuleList>;
+
 /** `Context` defines which contexts an API requests. Example: context: rules: - selector: "*" requested: - google.rpc.context.ProjectContext - google.rpc.context.OriginContext The above specifies that all methods in the API request `google.rpc.context.ProjectContext` and `google.rpc.context.OriginContext`. Available context types are defined in package `google.rpc.context`. This also provides mechanism to allowlist any protobuf message extension that can be sent in grpc metadata using "x-goog-ext--bin" and "x-goog-ext--jspb" format. For example, list any service specific protobuf types that can appear in grpc metadata as follows in your yaml file: Example: context: rules: - selector: "google.example.library.v1.LibraryService.CreateBook" allowed_request_extensions: - google.foo.v1.NewExtension allowed_response_extensions: - google.foo.v1.NewExtension You can also specify extension ID instead of fully qualified extension name here. */
 export interface Context {
   /** A list of RPC context rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order. */
   rules?: ContextRuleList;
 }
+const Context = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<Context>;
+
 /** Configuration of a specific billing destination (Currently only support bill against consumer project). */
 export interface BillingDestination {
   /** The monitored resource type. The type must be defined in Service.monitored_resources section. */
@@ -902,12 +1170,21 @@ export interface BillingDestination {
   /** Names of the metrics to report to this billing destination. Each name must be defined in Service.metrics section. */
   metrics?: StringList;
 }
+const BillingDestination = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<BillingDestination>;
+
 export type BillingDestinationList = Array<BillingDestination>;
+const BillingDestinationList = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<BillingDestinationList>;
+
 /** Billing related configuration of the service. The following example shows how to configure monitored resources and metrics for billing, `consumer_destinations` is the only supported destination and the monitored resources need at least one label key `cloud.googleapis.com/location` to indicate the location of the billing usage, using different monitored resources between monitoring and billing is recommended so they can be evolved independently: monitored_resources: - type: library.googleapis.com/billing_branch labels: - key: cloud.googleapis.com/location description: | Predefined label to support billing location restriction. - key: city description: | Custom label to define the city where the library branch is located in. - key: name description: Custom label to define the name of the library branch. metrics: - name: library.googleapis.com/book/borrowed_count metric_kind: DELTA value_type: INT64 unit: "1" billing: consumer_destinations: - monitored_resource: library.googleapis.com/billing_branch metrics: - library.googleapis.com/book/borrowed_count */
 export interface Billing {
   /** Billing configurations for sending metrics to the consumer project. There can be multiple consumer destinations per service, each one must have a different monitored resource type. A metric can be used in at most one consumer destination. */
   consumerDestinations?: BillingDestinationList;
 }
+const Billing = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<Billing>;
+
 export type MonitoredResourceDescriptorLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "UNIMPLEMENTED"
@@ -917,6 +1194,8 @@ export type MonitoredResourceDescriptorLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
+const MonitoredResourceDescriptorLaunchStageEnum = S.String;
+
 /** An object that describes the schema of a MonitoredResource object using a type name and a set of labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of `"gce_instance"` and specifies the use of the labels `"instance_id"` and `"zone"` to identify particular VM instances. Different APIs can support different monitored resource types. APIs generally provide a `list` method that returns the monitored resource descriptors used by the API. */
 export interface MonitoredResourceDescriptor {
   /** Optional. The launch stage of the monitored resource definition. */
@@ -932,7 +1211,17 @@ export interface MonitoredResourceDescriptor {
   /** Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, `"Google Cloud SQL Database"`. */
   displayName?: string;
 }
+const MonitoredResourceDescriptor = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<MonitoredResourceDescriptor>;
+
 export type MonitoredResourceDescriptorList = Array<MonitoredResourceDescriptor>;
+const MonitoredResourceDescriptorList = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<MonitoredResourceDescriptorList>;
+
 /** A description of a log type. Example in YAML format: - name: library.googleapis.com/activity_history description: The history of borrowing and returning library items. display_name: Activity labels: - key: /customer_id description: Identifier of a library customer */
 export interface LogDescriptor {
   /** A human-readable description of this log. This information appears in the documentation and can contain details. */
@@ -944,7 +1233,11 @@ export interface LogDescriptor {
   /** The name of the log. It must be less than 512 characters long and can include the following characters: upper- and lower-case alphanumeric characters [A-Za-z0-9], and punctuation characters including slash, underscore, hyphen, period [/_-.]. */
   name?: string;
 }
+const LogDescriptor = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<LogDescriptor>;
+
 export type LogDescriptorList = Array<LogDescriptor>;
+const LogDescriptorList = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<LogDescriptorList>;
+
 /** `Endpoint` describes a network address of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example: type: google.api.Service name: library-example.googleapis.com endpoints: # Declares network address `https://library-example.googleapis.com` # for service `library-example.googleapis.com`. The `https` scheme # is implicit for all service endpoints. Other schemes may be # supported in the future. - name: library-example.googleapis.com allow_cors: false - name: content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls to be passed to the API frontend, for it # to decide whether the subsequent cross-origin request is allowed # to proceed. allow_cors: true */
 export interface Endpoint {
   /** The specification of an Internet routable address of API frontend that will handle requests to this [API Endpoint](https://cloud.google.com/apis/design/glossary). It should be either a valid IPv4 address or a fully-qualified domain name. For example, "8.8.8.8" or "myservice.appspot.com". */
@@ -956,7 +1249,11 @@ export interface Endpoint {
   /** Aliases for this endpoint, these will be served by the same UrlMap as the parent endpoint, and will be provisioned in the GCP stack for the Regional Endpoints. */
   aliases?: StringList;
 }
+const Endpoint = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<Endpoint>;
+
 export type EndpointList = Array<Endpoint>;
+const EndpointList = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<EndpointList>;
+
 /** Rule-based configuration for an aspect. */
 export interface AspectRule {
   /** Required. Selects the RPC methods to which this rule applies. Refer to selector for syntax details. */
@@ -964,7 +1261,11 @@ export interface AspectRule {
   /** Required. Rules of the configuration. The underlying schema should be defined by Aspect owners as protobuf message under `google/api/configaspects/proto`. */
   config?: DocumentMap;
 }
+const AspectRule = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<AspectRule>;
+
 export type AspectRuleList = Array<AspectRule>;
+const AspectRuleList = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<AspectRuleList>;
+
 /** Aspect represents Generic aspect. It is used to configure an aspect without making direct changes to service.proto */
 export interface Aspect {
   /** Content of the configuration. The underlying schema should be defined by Aspect owners as protobuf message under `google/api/configaspects/proto`. */
@@ -974,7 +1275,11 @@ export interface Aspect {
   /** The type of this aspect configuration. */
   kind?: string;
 }
+const Aspect = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<Aspect>;
+
 export type AspectList = Array<Aspect>;
+const AspectList = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<AspectList>;
+
 /** Google API Policy Annotation This message defines a simple API policy annotation that can be used to annotate API request and response message fields with applicable policies. One field may have multiple applicable policies that must all be satisfied before a request can be processed. This policy annotation is used to generate the overall policy that will be used for automatic runtime policy enforcement and documentation generation. */
 export interface FieldPolicy {
   /** Specifies the required permission(s) for the resource referred to by the field. It requires the field contains a valid resource reference, and the request must pass the permission checks to proceed. For example, "resourcemanager.projects.get". */
@@ -984,7 +1289,11 @@ export interface FieldPolicy {
   /** Specifies the resource type for the resource referred to by the field. */
   resourceType?: string;
 }
+const FieldPolicy = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<FieldPolicy>;
+
 export type FieldPolicyList = Array<FieldPolicy>;
+const FieldPolicyList = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<FieldPolicyList>;
+
 /** Defines policies applying to an RPC method. */
 export interface MethodPolicy {
   /** Selects a method to which these policies should be enforced, for example, "google.pubsub.v1.Subscriber.CreateSubscription". Refer to selector for syntax details. NOTE: This field must not be set in the proto annotation. It will be automatically filled by the service config compiler . */
@@ -992,7 +1301,11 @@ export interface MethodPolicy {
   /** Policies that are applicable to the request message. */
   requestPolicies?: FieldPolicyList;
 }
+const MethodPolicy = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<MethodPolicy>;
+
 export type MethodPolicyList = Array<MethodPolicy>;
+const MethodPolicyList = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<MethodPolicyList>;
+
 /** Selects and configures the service controller used by the service. Example: control: environment: servicecontrol.googleapis.com */
 export interface Control {
   /** Defines policies applying to the API methods of the service. */
@@ -1000,10 +1313,14 @@ export interface Control {
   /** The service controller environment to use. If empty, no control plane features (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com. */
   environment?: string;
 }
+const Control = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<Control>;
+
 export type QuotaLimitTrafficSourceEnum =
   | "TRAFFIC_SOURCE_UNSPECIFIED"
   | "TRAFFIC_SOURCE_NONAGENTIC"
   | "TRAFFIC_SOURCE_AGENTIC";
+const QuotaLimitTrafficSourceEnum = S.String;
+
 /** `QuotaLimit` defines a specific limit that applies over a specified duration for a limit type. There can be at most one limit for a duration and limit type combination defined within a `QuotaGroup`. */
 export interface QuotaLimit {
   /** Tiered limit values. You must specify this as a key:value pair, with an integer value that is the maximum number of requests allowed for the specified unit. Currently only STANDARD is supported. */
@@ -1029,7 +1346,11 @@ export interface QuotaLimit {
   /** The name of the metric this quota limit applies to. The quota limits with the same metric will be checked together during runtime. The metric must be defined within the service config. */
   metric?: string;
 }
+const QuotaLimit = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<QuotaLimit>;
+
 export type QuotaLimitList = Array<QuotaLimit>;
+const QuotaLimitList = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<QuotaLimitList>;
+
 /** Bind API methods to metrics. Binding a method to a metric causes that metric's configured quota behaviors to apply to the method call. */
 export interface MetricRule {
   /** Metrics to update when the selected methods are called, and the associated cost applied to each metric. The key of the map is the metric name, and the values are the amount increased for the metric against which the quota limits are defined. The value must not be negative. */
@@ -1041,7 +1362,11 @@ export interface MetricRule {
   /** Optional. Metrics to update when the selected methods are called, and the associated cost applied to each metric, iff the source of the call is an agent. The key of the map is the metric name, and the values are the amount increased for the metric against which the quota limits are defined. The value must not be negative. */
   agenticMetricCosts?: StringMap;
 }
+const MetricRule = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<MetricRule>;
+
 export type MetricRuleList = Array<MetricRule>;
+const MetricRuleList = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<MetricRuleList>;
+
 /** Quota configuration helps to achieve fairness and budgeting in service usage. The metric based quota configuration works this way: - The service configuration defines a set of metrics. - For API calls, the quota.metric_rules maps methods to metrics with corresponding costs. - The quota.limits defines limits on the metrics, which will be used for quota checks at runtime. An example quota configuration in yaml format: quota: limits: - name: apiWriteQpsPerProject metric: library.googleapis.com/write_calls unit: "1/min/{project}" # rate limit for consumer projects values: STANDARD: 10000 (The metric rules bind all methods to the read_calls metric, except for the UpdateBook and DeleteBook methods. These two methods are mapped to the write_calls metric, with the UpdateBook method consuming at twice rate as the DeleteBook method.) metric_rules: - selector: "*" metric_costs: library.googleapis.com/read_calls: 1 - selector: google.example.library.v1.LibraryService.UpdateBook metric_costs: library.googleapis.com/write_calls: 2 - selector: google.example.library.v1.LibraryService.DeleteBook metric_costs: library.googleapis.com/write_calls: 1 Corresponding Metric definition: metrics: - name: library.googleapis.com/read_calls display_name: Read requests metric_kind: DELTA value_type: INT64 - name: library.googleapis.com/write_calls display_name: Write requests metric_kind: DELTA value_type: INT64 */
 export interface Quota {
   /** List of QuotaLimit definitions for the service. */
@@ -1049,6 +1374,8 @@ export interface Quota {
   /** List of MetricRule definitions, each one mapping a selected method to one or more metrics. */
   metricRules?: MetricRuleList;
 }
+const Quota = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<Quota>;
+
 /** `Service` is the root object of Google API service configuration (service config). It describes the basic information about a logical service, such as the service name and the user-facing title, and delegates other aspects to sub-sections. Each sub-section is either a proto message or a repeated proto message that configures a specific aspect, such as auth. For more information, see each proto message definition. Example: type: google.api.Service name: calendar.googleapis.com title: Google Calendar API apis: - name: google.calendar.v3.Calendar visibility: rules: - selector: "google.calendar.v3.*" restriction: PREVIEW backend: rules: - selector: "google.calendar.v3.*" address: calendar.example.com authentication: providers: - id: google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: "*" requirements: provider_id: google_calendar_auth */
 export interface Service {
   /** Defines the metrics used by this service. */
@@ -1110,20 +1437,39 @@ export interface Service {
   /** Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`. */
   configVersion?: number;
 }
+const Service = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<Service>;
+
 export interface CreateServicesConfigsRequest {
   /** Required. The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example: `example.googleapis.com`. */
   serviceName: string;
   /** Request body */
   body?: Service;
 }
+const CreateServicesConfigsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<CreateServicesConfigsRequest>;
+
 export type DoubleMap = { [key: string]: number | undefined };
+const DoubleMap = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<DoubleMap>;
+
 /** Strategy that specifies how clients of Google Service Controller want to send traffic to use different config versions. This is generally used by API proxy to split traffic based on your configured percentage for each config version. One example of how to gradually rollout a new service configuration using this strategy: Day 1 Rollout { id: "example.googleapis.com/rollout_20160206" traffic_percent_strategy { percentages: { "example.googleapis.com/20160201": 70.00 "example.googleapis.com/20160206": 30.00 } } } Day 2 Rollout { id: "example.googleapis.com/rollout_20160207" traffic_percent_strategy: { percentages: { "example.googleapis.com/20160206": 100.00 } } } */
 export interface TrafficPercentStrategy {
   /** Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0. */
   percentages?: DoubleMap;
 }
+const TrafficPercentStrategy = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<TrafficPercentStrategy>;
+
 /** Strategy used to delete a service. This strategy is a placeholder only used by the system generated rollout to delete a service. */
 export interface DeleteServiceStrategy {}
+const DeleteServiceStrategy = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<DeleteServiceStrategy>;
+
 export type RolloutStatusEnum =
   | "ROLLOUT_STATUS_UNSPECIFIED"
   | "IN_PROGRESS"
@@ -1132,6 +1478,8 @@ export type RolloutStatusEnum =
   | "FAILED"
   | "PENDING"
   | "FAILED_ROLLED_BACK";
+const RolloutStatusEnum = S.String;
+
 /** A rollout resource that defines how service configuration versions are pushed to control plane systems. Typically, you create a new version of the service config, and then create a Rollout to push the service config. */
 export interface Rollout {
   /** Creation time of the rollout. Readonly. */
@@ -1149,16 +1497,28 @@ export interface Rollout {
   /** The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly. */
   status?: RolloutStatusEnum | (string & {});
 }
+const Rollout = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<Rollout>;
+
 export interface CreateServicesRolloutsRequest {
   /** Required. The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example: `example.googleapis.com`. */
   serviceName: string;
   /** Request body */
   body?: Rollout;
 }
+const CreateServicesRolloutsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<CreateServicesRolloutsRequest>;
+
 export interface DeleteServicesRequest {
   /** Required. The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example: `example.googleapis.com`. */
   serviceName: string;
 }
+const DeleteServicesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<DeleteServicesRequest>;
+
 /** Request message for GenerateConfigReport method. */
 export interface GenerateConfigReportRequest {
   /** Required. Service configuration for which we want to generate the report. For this version of API, the supported types are google.api.servicemanagement.v1.ConfigRef, google.api.servicemanagement.v1.ConfigSource, and google.api.Service */
@@ -1166,11 +1526,23 @@ export interface GenerateConfigReportRequest {
   /** Optional. Service configuration against which the comparison will be done. For this version of API, the supported types are google.api.servicemanagement.v1.ConfigRef, google.api.servicemanagement.v1.ConfigSource, and google.api.Service */
   oldConfig?: DocumentMap;
 }
+const GenerateConfigReportRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<GenerateConfigReportRequest>;
+
 export interface GenerateConfigReportServicesRequest {
   /** Request body */
   body?: GenerateConfigReportRequest;
 }
+const GenerateConfigReportServicesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<GenerateConfigReportServicesRequest>;
+
 export type DiagnosticKindEnum = "WARNING" | "ERROR";
+const DiagnosticKindEnum = S.String;
+
 /** Represents a diagnostic message (error or warning) */
 export interface Diagnostic {
   /** Message describing the error or warning. */
@@ -1180,18 +1552,28 @@ export interface Diagnostic {
   /** The kind of diagnostic information provided. */
   kind?: DiagnosticKindEnum;
 }
+const Diagnostic = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<Diagnostic>;
+
 export type DiagnosticList = Array<Diagnostic>;
+const DiagnosticList = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<DiagnosticList>;
+
 /** Generated advice about this change, used for providing more information about how a change will affect the existing service. */
 export interface Advice {
   /** Useful description for why this advice was applied and what actions should be taken to mitigate any implied risks. */
   description?: string;
 }
+const Advice = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<Advice>;
+
 export type AdviceList = Array<Advice>;
+const AdviceList = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<AdviceList>;
+
 export type ConfigChangeChangeTypeEnum =
   | "CHANGE_TYPE_UNSPECIFIED"
   | "ADDED"
   | "REMOVED"
   | "MODIFIED";
+const ConfigChangeChangeTypeEnum = S.String;
+
 /** Output generated from semantically comparing two versions of a service configuration. Includes detailed information about a field that have changed with applicable advice about potential consequences for the change, such as backwards-incompatibility. */
 export interface ConfigChange {
   /** Collection of advice provided for this change, useful for determining the possible impact of this change. */
@@ -1205,13 +1587,21 @@ export interface ConfigChange {
   /** Object hierarchy path to the change, with levels separated by a '.' character. For repeated fields, an applicable unique identifier field is used for the index (usually selector, name, or id). For maps, the term 'key' is used. If the field has no unique identifier, the numeric index is used. Examples: - visibility.rules[selector=="google.LibraryService.ListBooks"].restriction - quota.metric_rules[selector=="google"].metric_costs[key=="reads"].value - logging.producer_destinations[0] */
   element?: string;
 }
+const ConfigChange = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<ConfigChange>;
+
 export type ConfigChangeList = Array<ConfigChange>;
+const ConfigChangeList = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<ConfigChangeList>;
+
 /** Change report associated with a particular service configuration. It contains a list of ConfigChanges based on the comparison between two service configurations. */
 export interface ChangeReport {
   /** List of changes between two service configurations. The changes will be alphabetically sorted based on the identifier of each change. A ConfigChange identifier is a dot separated path to the configuration. Example: visibility.rules[selector='LibraryService.CreateBook'].restriction */
   configChanges?: ConfigChangeList;
 }
+const ChangeReport = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<ChangeReport>;
+
 export type ChangeReportList = Array<ChangeReport>;
+const ChangeReportList = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<ChangeReportList>;
+
 /** Response message for GenerateConfigReport method. */
 export interface GenerateConfigReportResponse {
   /** Name of the service this report belongs to. */
@@ -1223,7 +1613,14 @@ export interface GenerateConfigReportResponse {
   /** list of ChangeReport, each corresponding to comparison between two service configurations. */
   changeReports?: ChangeReportList;
 }
+const GenerateConfigReportResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<GenerateConfigReportResponse>;
+
 export type GetConfigServicesViewEnum = "BASIC" | "FULL";
+const GetConfigServicesViewEnum = S.String;
+
 export interface GetConfigServicesRequest {
   /** Required. The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example: `example.googleapis.com`. */
   serviceName: string;
@@ -1232,27 +1629,43 @@ export interface GetConfigServicesRequest {
   /** Specifies which parts of the Service Config should be returned in the response. */
   view?: GetConfigServicesViewEnum | (string & {});
 }
+const GetConfigServicesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<GetConfigServicesRequest>;
+
 /** Encapsulates settings provided to GetIamPolicy. */
 export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
+const GetPolicyOptions = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<GetPolicyOptions>;
+
 /** Request message for `GetIamPolicy` method. */
 export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
+const GetIamPolicyRequest = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<GetIamPolicyRequest>;
+
 export interface GetIamPolicyServicesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
+const GetIamPolicyServicesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<GetIamPolicyServicesRequest>;
+
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
+const AuditLogConfigLogTypeEnum = S.String;
+
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -1260,7 +1673,11 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
+const AuditLogConfig = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<AuditLogConfig>;
+
 export type AuditLogConfigList = Array<AuditLogConfig>;
+const AuditLogConfigList = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<AuditLogConfigList>;
+
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
@@ -1268,7 +1685,11 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
+const AuditConfig = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<AuditConfig>;
+
 export type AuditConfigList = Array<AuditConfig>;
+const AuditConfigList = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<AuditConfigList>;
+
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
@@ -1280,6 +1701,8 @@ export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
+const Expr = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<Expr>;
+
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -1289,7 +1712,11 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
+const Binding = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<Binding>;
+
 export type BindingList = Array<Binding>;
+const BindingList = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<BindingList>;
+
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
@@ -1301,21 +1728,37 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
+const Policy = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<Policy>;
+
 export interface GetIamPolicyServicesConsumersRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
+const GetIamPolicyServicesConsumersRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<GetIamPolicyServicesConsumersRequest>;
+
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetOperationsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<GetOperationsRequest>;
+
 export interface GetServicesRequest {
   /** Required. The name of the service. See the `ServiceManager` overview for naming requirements. For example: `example.googleapis.com`. */
   serviceName: string;
 }
+const GetServicesRequest = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<GetServicesRequest>;
+
 export type GetServicesConfigsViewEnum = "BASIC" | "FULL";
+const GetServicesConfigsViewEnum = S.String;
+
 export interface GetServicesConfigsRequest {
   /** Required. The id of the service configuration resource. This field must be specified for the server to return all fields, including `SourceInfo`. */
   configId: string;
@@ -1324,12 +1767,22 @@ export interface GetServicesConfigsRequest {
   /** Required. The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example: `example.googleapis.com`. */
   serviceName: string;
 }
+const GetServicesConfigsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<GetServicesConfigsRequest>;
+
 export interface GetServicesRolloutsRequest {
   /** Required. The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example: `example.googleapis.com`. */
   serviceName: string;
   /** Required. The id of the rollout resource. */
   rolloutId: string;
 }
+const GetServicesRolloutsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<GetServicesRolloutsRequest>;
+
 export interface ListOperationsRequest {
   /** Not used. */
   name?: string;
@@ -1342,7 +1795,14 @@ export interface ListOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ListOperationsRequest>;
+
 export type OperationList = Array<Operation>;
+const OperationList = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<OperationList>;
+
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -1352,6 +1812,11 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListServicesRequest {
   /** Include services produced by the specified project. */
   producerProjectId?: string;
@@ -1362,7 +1827,11 @@ export interface ListServicesRequest {
   /** Token identifying which result to start with; returned by a previous list call. */
   pageToken?: string;
 }
+const ListServicesRequest = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<ListServicesRequest>;
+
 export type ManagedServiceList = Array<ManagedService>;
+const ManagedServiceList = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<ManagedServiceList>;
+
 /** Response message for `ListServices` method. */
 export interface ListServicesResponse {
   /** The returned services will only have the name field set. */
@@ -1370,6 +1839,11 @@ export interface ListServicesResponse {
   /** Token that can be passed to `ListServices` to resume a paginated query. */
   nextPageToken?: string;
 }
+const ListServicesResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<ListServicesResponse>;
+
 export interface ListServicesConfigsRequest {
   /** The token of the page to retrieve. */
   pageToken?: string;
@@ -1378,7 +1852,14 @@ export interface ListServicesConfigsRequest {
   /** The max number of items to include in the response list. Page size is 50 if not specified. Maximum value is 100. */
   pageSize?: number;
 }
+const ListServicesConfigsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<ListServicesConfigsRequest>;
+
 export type ServiceList = Array<Service>;
+const ServiceList = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<ServiceList>;
+
 /** Response message for ListServiceConfigs method. */
 export interface ListServiceConfigsResponse {
   /** The list of service configuration resources. */
@@ -1386,6 +1867,11 @@ export interface ListServiceConfigsResponse {
   /** The token of the next page of results. */
   nextPageToken?: string;
 }
+const ListServiceConfigsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<ListServiceConfigsResponse>;
+
 export interface ListServicesRolloutsRequest {
   /** The max number of items to include in the response list. Page size is 50 if not specified. Maximum value is 100. */
   pageSize?: number;
@@ -1396,7 +1882,14 @@ export interface ListServicesRolloutsRequest {
   /** The token of the page to retrieve. */
   pageToken?: string;
 }
+const ListServicesRolloutsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<ListServicesRolloutsRequest>;
+
 export type RolloutList = Array<Rollout>;
+const RolloutList = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<RolloutList>;
+
 /** Response message for ListServiceRollouts method. */
 export interface ListServiceRolloutsResponse {
   /** The list of rollout resources. */
@@ -1404,6 +1897,11 @@ export interface ListServiceRolloutsResponse {
   /** The token of the next page of results. */
   nextPageToken?: string;
 }
+const ListServiceRolloutsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<ListServiceRolloutsResponse>;
+
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -1411,18 +1909,30 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
+const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<SetIamPolicyRequest>;
+
 export interface SetIamPolicyServicesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyServicesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<SetIamPolicyServicesRequest>;
+
 export interface SetIamPolicyServicesConsumersRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyServicesConsumersRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<SetIamPolicyServicesConsumersRequest>;
+
 export type ConfigFileFileTypeEnum =
   | "FILE_TYPE_UNSPECIFIED"
   | "SERVICE_CONFIG_YAML"
@@ -1430,6 +1940,8 @@ export type ConfigFileFileTypeEnum =
   | "OPEN_API_YAML"
   | "FILE_DESCRIPTOR_SET_PROTO"
   | "PROTO_FILE";
+const ConfigFileFileTypeEnum = S.String;
+
 /** Generic specification of a source configuration file */
 export interface ConfigFile {
   /** The bytes that constitute the file. */
@@ -1439,7 +1951,11 @@ export interface ConfigFile {
   /** The type of configuration file this represents. */
   fileType?: ConfigFileFileTypeEnum | (string & {});
 }
+const ConfigFile = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<ConfigFile>;
+
 export type ConfigFileList = Array<ConfigFile>;
+const ConfigFileList = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<ConfigFileList>;
+
 /** Represents a source file which is used to generate the service configuration defined by `google.api.Service`. */
 export interface ConfigSource {
   /** A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. If empty, the server may choose to generate one instead. */
@@ -1447,6 +1963,8 @@ export interface ConfigSource {
   /** Set of source configuration files that are used to generate a service configuration (`google.api.Service`). */
   files?: ConfigFileList;
 }
+const ConfigSource = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<ConfigSource>;
+
 /** Request message for SubmitConfigSource method. */
 export interface SubmitConfigSourceRequest {
   /** Required. The source configuration for the service. */
@@ -1454,38 +1972,71 @@ export interface SubmitConfigSourceRequest {
   /** Optional. If set, this will result in the generation of a `google.api.Service` configuration based on the `ConfigSource` provided, but the generated config and the sources will NOT be persisted. */
   validateOnly?: boolean;
 }
+const SubmitConfigSourceRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<SubmitConfigSourceRequest>;
+
 export interface SubmitServicesConfigsRequest {
   /** Required. The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example: `example.googleapis.com`. */
   serviceName: string;
   /** Request body */
   body?: SubmitConfigSourceRequest;
 }
+const SubmitServicesConfigsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<SubmitServicesConfigsRequest>;
+
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
+const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<TestIamPermissionsRequest>;
+
 export interface TestIamPermissionsServicesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsServicesRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<TestIamPermissionsServicesRequest>;
+
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
+const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
+
 export interface TestIamPermissionsServicesConsumersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsServicesConsumersRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<TestIamPermissionsServicesConsumersRequest>;
+
 export interface UndeleteServicesRequest {
   /** Required. The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example: `example.googleapis.com`. */
   serviceName: string;
 }
+const UndeleteServicesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<UndeleteServicesRequest>;
+
 export type CreateServicesError =
   | NotFound
   | Forbidden
@@ -1500,8 +2051,8 @@ export const createServices: API.OperationMethod<
   CreateServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateServicesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: CreateServicesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceSoftDeleted, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1521,8 +2072,8 @@ export const createServicesConfigs: API.OperationMethod<
   CreateServicesConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<CreateServicesConfigsRequest>,
-  output: __S(117) as any as S.Schema<Service>,
+  input: CreateServicesConfigsRequest,
+  output: Service,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1536,8 +2087,8 @@ export const createServicesRollouts: API.OperationMethod<
   CreateServicesRolloutsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<CreateServicesRolloutsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: CreateServicesRolloutsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1557,8 +2108,8 @@ export const deleteServices: API.OperationMethod<
   DeleteServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<DeleteServicesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: DeleteServicesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1577,8 +2128,8 @@ export const generateConfigReportServices: API.OperationMethod<
   GenerateConfigReportServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<GenerateConfigReportServicesRequest>,
-  output: __S(135) as any as S.Schema<GenerateConfigReportResponse>,
+  input: GenerateConfigReportServicesRequest,
+  output: GenerateConfigReportResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1592,8 +2143,8 @@ export const getConfigServices: API.OperationMethod<
   GetConfigServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<GetConfigServicesRequest>,
-  output: __S(117) as any as S.Schema<Service>,
+  input: GetConfigServicesRequest,
+  output: Service,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1607,8 +2158,8 @@ export const getIamPolicyServices: API.OperationMethod<
   GetIamPolicyServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<GetIamPolicyServicesRequest>,
-  output: __S(147) as any as S.Schema<Policy>,
+  input: GetIamPolicyServicesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1627,8 +2178,8 @@ export const getIamPolicyServicesConsumers: API.OperationMethod<
   GetIamPolicyServicesConsumersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148) as any as S.Schema<GetIamPolicyServicesConsumersRequest>,
-  output: __S(147) as any as S.Schema<Policy>,
+  input: GetIamPolicyServicesConsumersRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1642,8 +2193,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<GetOperationsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: GetOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1657,8 +2208,8 @@ export const getServices: API.OperationMethod<
   GetServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<GetServicesRequest>,
-  output: __S(0) as any as S.Schema<ManagedService>,
+  input: GetServicesRequest,
+  output: ManagedService,
   errors: [NotFound, Forbidden, ServiceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1672,8 +2223,8 @@ export const getServicesConfigs: API.OperationMethod<
   GetServicesConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<GetServicesConfigsRequest>,
-  output: __S(117) as any as S.Schema<Service>,
+  input: GetServicesConfigsRequest,
+  output: Service,
   errors: [NotFound, Forbidden, ServiceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1687,8 +2238,8 @@ export const getServicesRollouts: API.OperationMethod<
   GetServicesRolloutsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152) as any as S.Schema<GetServicesRolloutsRequest>,
-  output: __S(122) as any as S.Schema<Rollout>,
+  input: GetServicesRolloutsRequest,
+  output: Rollout,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1703,8 +2254,8 @@ export const listOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(153) as any as S.Schema<ListOperationsRequest>,
-  output: __S(155) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1720,8 +2271,8 @@ export const listServices: API.PaginatedOperationMethod<
   GcpOpContext,
   ListServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(156) as any as S.Schema<ListServicesRequest>,
-  output: __S(158) as any as S.Schema<ListServicesResponse>,
+  input: ListServicesRequest,
+  output: ListServicesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1737,8 +2288,8 @@ export const listServicesConfigs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListServiceConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(159) as any as S.Schema<ListServicesConfigsRequest>,
-  output: __S(161) as any as S.Schema<ListServiceConfigsResponse>,
+  input: ListServicesConfigsRequest,
+  output: ListServiceConfigsResponse,
   errors: [NotFound, Forbidden, ServiceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1754,8 +2305,8 @@ export const listServicesRollouts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListServiceRolloutsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(162) as any as S.Schema<ListServicesRolloutsRequest>,
-  output: __S(164) as any as S.Schema<ListServiceRolloutsResponse>,
+  input: ListServicesRolloutsRequest,
+  output: ListServiceRolloutsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1770,8 +2321,8 @@ export const setIamPolicyServices: API.OperationMethod<
   SetIamPolicyServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<SetIamPolicyServicesRequest>,
-  output: __S(147) as any as S.Schema<Policy>,
+  input: SetIamPolicyServicesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1790,8 +2341,8 @@ export const setIamPolicyServicesConsumers: API.OperationMethod<
   SetIamPolicyServicesConsumersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<SetIamPolicyServicesConsumersRequest>,
-  output: __S(147) as any as S.Schema<Policy>,
+  input: SetIamPolicyServicesConsumersRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1805,8 +2356,8 @@ export const submitServicesConfigs: API.OperationMethod<
   SubmitServicesConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172) as any as S.Schema<SubmitServicesConfigsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: SubmitServicesConfigsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1825,8 +2376,8 @@ export const testIamPermissionsServices: API.OperationMethod<
   TestIamPermissionsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174) as any as S.Schema<TestIamPermissionsServicesRequest>,
-  output: __S(173) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsServicesRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1845,8 +2396,8 @@ export const testIamPermissionsServicesConsumers: API.OperationMethod<
   TestIamPermissionsServicesConsumersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<TestIamPermissionsServicesConsumersRequest>,
-  output: __S(173) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsServicesConsumersRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1867,8 +2418,8 @@ export const undeleteServices: API.OperationMethod<
   UndeleteServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<UndeleteServicesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: UndeleteServicesRequest,
+  output: Operation,
   errors: [
     NotFound,
     Forbidden,
@@ -1895,7 +2446,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(ManagedService.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1907,12 +2458,12 @@ function __c0(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(__S(2));
+      return S.Array(DocumentMap);
     case 4:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
-          details: S.optional(__S(3)),
+          details: S.optional(DocumentMapList),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Status" });
@@ -1920,16 +2471,16 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          response: S.optional(__S(2)),
+          response: S.optional(DocumentMap),
           done: S.optional(S.Boolean),
-          metadata: S.optional(__S(2)),
-          error: S.optional(__S(4)),
+          metadata: S.optional(DocumentMap),
+          error: S.optional(Status),
         }),
       ).annotate({ identifier: "Operation" });
     case 6:
       return S.Array(S.String);
     case 7:
-      return S.Array(S.String);
+      return S.Array(MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum);
   }
 }
 function __c1(j: number): any {
@@ -1937,9 +2488,11 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          timeSeriesResourceHierarchyLevel: S.optional(__S(7)),
+          timeSeriesResourceHierarchyLevel: S.optional(
+            MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList,
+          ),
           samplePeriod: S.optional(S.String),
-          launchStage: S.optional(S.String),
+          launchStage: S.optional(MetricDescriptorMetadataLaunchStageEnum),
           ingestDelay: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricDescriptorMetadata" });
@@ -1947,45 +2500,45 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          valueType: S.optional(S.String),
+          valueType: S.optional(LabelDescriptorValueTypeEnum),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "LabelDescriptor" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(LabelDescriptor);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          monitoredResourceTypes: S.optional(__S(6)),
-          metadata: S.optional(__S(8)),
+          monitoredResourceTypes: S.optional(StringList),
+          metadata: S.optional(MetricDescriptorMetadata),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          launchStage: S.optional(S.String),
+          launchStage: S.optional(MetricDescriptorLaunchStageEnum),
           unit: S.optional(S.String),
-          labels: S.optional(__S(10)),
-          valueType: S.optional(S.String),
+          labels: S.optional(LabelDescriptorList),
+          valueType: S.optional(MetricDescriptorValueTypeEnum),
           displayName: S.optional(S.String),
-          metricKind: S.optional(S.String),
+          metricKind: S.optional(MetricDescriptorMetricKindEnum),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricDescriptor" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(MetricDescriptor);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2)),
+          value: S.optional(DocumentMap),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Option" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(Option);
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           number: S.optional(S.Number),
-          options: S.optional(__S(14)),
+          options: S.optional(OptionList),
         }),
       ).annotate({ identifier: "EnumValue" });
   }
@@ -1993,7 +2546,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(EnumValue);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2004,15 +2557,15 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          enumvalue: S.optional(__S(16)),
-          syntax: S.optional(S.String),
-          options: S.optional(__S(14)),
-          sourceContext: S.optional(__S(17)),
+          enumvalue: S.optional(EnumValueList),
+          syntax: S.optional(EnumSyntaxEnum),
+          options: S.optional(OptionList),
+          sourceContext: S.optional(SourceContext),
           edition: S.optional(S.String),
         }),
       ).annotate({ identifier: "Enum" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(Enum);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2022,12 +2575,12 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "UsageRule" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(UsageRule);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          requirements: S.optional(__S(6)),
-          rules: S.optional(__S(21)),
+          requirements: S.optional(StringList),
+          rules: S.optional(UsageRuleList),
           producerNotificationChannel: S.optional(S.String),
         }),
       ).annotate({ identifier: "Usage" });
@@ -2035,7 +2588,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           monitoredResource: S.optional(S.String),
-          logs: S.optional(__S(6)),
+          logs: S.optional(StringList),
         }),
       ).annotate({ identifier: "LoggingDestination" });
   }
@@ -2043,12 +2596,12 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(LoggingDestination);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          consumerDestinations: S.optional(__S(24)),
-          producerDestinations: S.optional(__S(24)),
+          consumerDestinations: S.optional(LoggingDestinationList),
+          producerDestinations: S.optional(LoggingDestinationList),
         }),
       ).annotate({ identifier: "Logging" });
     case 2:
@@ -2059,28 +2612,28 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "CustomErrorRule" });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(CustomErrorRule);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          types: S.optional(__S(6)),
-          rules: S.optional(__S(27)),
+          types: S.optional(StringList),
+          rules: S.optional(CustomErrorRuleList),
         }),
       ).annotate({ identifier: "CustomError" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          methods: S.optional(__S(6)),
+          methods: S.optional(StringList),
           generateOmittedAsInternal: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SelectiveGapicGeneration" });
     case 6:
-      return S.Array(S.String);
+      return S.Array(CommonLanguageSettingsDestinationsItemEnum);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          selectiveGapicGeneration: S.optional(__S(29)),
-          destinations: S.optional(__S(30)),
+          selectiveGapicGeneration: S.optional(SelectiveGapicGeneration),
+          destinations: S.optional(CommonLanguageSettingsDestinationsItemEnumList),
           referenceDocsUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommonLanguageSettings" });
@@ -2092,7 +2645,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           libraryPackage: S.optional(S.String),
-          common: S.optional(__S(31)),
+          common: S.optional(CommonLanguageSettings),
         }),
       ).annotate({ identifier: "PhpSettings" });
     case 1:
@@ -2100,25 +2653,25 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          renamedResources: S.optional(__S(33)),
-          renamedServices: S.optional(__S(33)),
-          ignoredResources: S.optional(__S(6)),
-          forcedNamespaceAliases: S.optional(__S(6)),
-          common: S.optional(__S(31)),
-          handwrittenSignatures: S.optional(__S(6)),
+          renamedResources: S.optional(StringMap),
+          renamedServices: S.optional(StringMap),
+          ignoredResources: S.optional(StringList),
+          forcedNamespaceAliases: S.optional(StringList),
+          common: S.optional(CommonLanguageSettings),
+          handwrittenSignatures: S.optional(StringList),
         }),
       ).annotate({ identifier: "DotnetSettings" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          common: S.optional(__S(31)),
+          common: S.optional(CommonLanguageSettings),
         }),
       ).annotate({ identifier: "RubySettings" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          common: S.optional(__S(31)),
-          renamedServices: S.optional(__S(33)),
+          common: S.optional(CommonLanguageSettings),
+          renamedServices: S.optional(StringMap),
         }),
       ).annotate({ identifier: "GoSettings" });
     case 5:
@@ -2132,15 +2685,15 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          common: S.optional(__S(31)),
-          experimentalFeatures: S.optional(__S(37)),
+          common: S.optional(CommonLanguageSettings),
+          experimentalFeatures: S.optional(ExperimentalFeatures),
         }),
       ).annotate({ identifier: "PythonSettings" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          serviceClassNames: S.optional(__S(33)),
-          common: S.optional(__S(31)),
+          serviceClassNames: S.optional(StringMap),
+          common: S.optional(CommonLanguageSettings),
           libraryPackage: S.optional(S.String),
         }),
       ).annotate({ identifier: "JavaSettings" });
@@ -2152,27 +2705,29 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
-          phpSettings: S.optional(__S(32)),
-          dotnetSettings: S.optional(__S(34)),
+          phpSettings: S.optional(PhpSettings),
+          dotnetSettings: S.optional(DotnetSettings),
           restNumericEnums: S.optional(S.Boolean),
-          rubySettings: S.optional(__S(35)),
-          nodeSettings: S.optional(__S(35)),
-          goSettings: S.optional(__S(36)),
-          launchStage: S.optional(S.String),
-          cppSettings: S.optional(__S(35)),
-          pythonSettings: S.optional(__S(38)),
-          javaSettings: S.optional(__S(39)),
+          rubySettings: S.optional(RubySettings),
+          nodeSettings: S.optional(RubySettings),
+          goSettings: S.optional(GoSettings),
+          launchStage: S.optional(ClientLibrarySettingsLaunchStageEnum),
+          cppSettings: S.optional(RubySettings),
+          pythonSettings: S.optional(PythonSettings),
+          javaSettings: S.optional(JavaSettings),
         }),
       ).annotate({ identifier: "ClientLibrarySettings" });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(ClientLibrarySettings);
     case 2:
       return S.suspend(() =>
         S.Struct({
           flowControlElementLimit: S.optional(S.Number),
           requestByteThreshold: S.optional(S.String),
           flowControlByteLimit: S.optional(S.Number),
-          flowControlLimitExceededBehavior: S.optional(S.String),
+          flowControlLimitExceededBehavior: S.optional(
+            BatchingSettingsProtoFlowControlLimitExceededBehaviorEnum,
+          ),
           delayThreshold: S.optional(S.String),
           elementCountThreshold: S.optional(S.Number),
           elementCountLimit: S.optional(S.Number),
@@ -2184,14 +2739,14 @@ function __c5(j: number): any {
         S.Struct({
           batchedField: S.optional(S.String),
           subresponseField: S.optional(S.String),
-          discriminatorFields: S.optional(__S(6)),
+          discriminatorFields: S.optional(StringList),
         }),
       ).annotate({ identifier: "BatchingDescriptorProto" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          thresholds: S.optional(__S(42)),
-          batchDescriptor: S.optional(__S(43)),
+          thresholds: S.optional(BatchingSettingsProto),
+          batchDescriptor: S.optional(BatchingDescriptorProto),
         }),
       ).annotate({ identifier: "BatchingConfigProto" });
     case 5:
@@ -2207,13 +2762,13 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           selector: S.optional(S.String),
-          batching: S.optional(__S(44)),
-          longRunning: S.optional(__S(45)),
-          autoPopulatedFields: S.optional(__S(6)),
+          batching: S.optional(BatchingConfigProto),
+          longRunning: S.optional(LongRunning),
+          autoPopulatedFields: S.optional(StringList),
         }),
       ).annotate({ identifier: "MethodSettings" });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(MethodSettings);
   }
 }
 function __c6(j: number): any {
@@ -2222,32 +2777,32 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           apiShortName: S.optional(S.String),
-          librarySettings: S.optional(__S(41)),
-          organization: S.optional(S.String),
+          librarySettings: S.optional(ClientLibrarySettingsList),
+          organization: S.optional(PublishingOrganizationEnum),
           newIssueUri: S.optional(S.String),
-          codeownerGithubTeams: S.optional(__S(6)),
+          codeownerGithubTeams: S.optional(StringList),
           docTagPrefix: S.optional(S.String),
           protoReferenceDocumentationUri: S.optional(S.String),
           restReferenceDocumentationUri: S.optional(S.String),
           githubLabel: S.optional(S.String),
-          methodSettings: S.optional(__S(47)),
+          methodSettings: S.optional(MethodSettingsList),
           documentationUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "Publishing" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          metrics: S.optional(__S(6)),
+          metrics: S.optional(StringList),
           monitoredResource: S.optional(S.String),
         }),
       ).annotate({ identifier: "MonitoringDestination" });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(MonitoringDestination);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          consumerDestinations: S.optional(__S(50)),
-          producerDestinations: S.optional(__S(50)),
+          consumerDestinations: S.optional(MonitoringDestinationList),
+          producerDestinations: S.optional(MonitoringDestinationList),
         }),
       ).annotate({ identifier: "Monitoring" });
     case 4:
@@ -2257,14 +2812,14 @@ function __c6(j: number): any {
           responseStreaming: S.optional(S.Boolean),
           responseTypeUrl: S.optional(S.String),
           edition: S.optional(S.String),
-          options: S.optional(__S(14)),
-          syntax: S.optional(S.String),
+          options: S.optional(OptionList),
+          syntax: S.optional(MethodSyntaxEnum),
           requestTypeUrl: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Method" });
     case 5:
-      return S.Array(__S(52));
+      return S.Array(Method);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2273,7 +2828,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "Mixin" });
     case 7:
-      return S.Array(__S(54));
+      return S.Array(Mixin);
   }
 }
 function __c7(j: number): any {
@@ -2283,32 +2838,32 @@ function __c7(j: number): any {
         S.Struct({
           edition: S.optional(S.String),
           name: S.optional(S.String),
-          syntax: S.optional(S.String),
-          options: S.optional(__S(14)),
+          syntax: S.optional(ApiSyntaxEnum),
+          options: S.optional(OptionList),
           version: S.optional(S.String),
-          sourceContext: S.optional(__S(17)),
-          methods: S.optional(__S(53)),
-          mixins: S.optional(__S(55)),
+          sourceContext: S.optional(SourceContext),
+          methods: S.optional(MethodList),
+          mixins: S.optional(MixinList),
         }),
       ).annotate({ identifier: "Api" });
     case 1:
-      return S.Array(__S(56));
+      return S.Array(Api);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sourceFiles: S.optional(__S(3)),
+          sourceFiles: S.optional(DocumentMapList),
         }),
       ).annotate({ identifier: "SourceInfo" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          subpages: S.optional(S.suspend(() => __S(60))),
+          subpages: S.optional(S.suspend(() => PageList)),
           content: S.optional(S.String),
         }),
       ).annotate({ identifier: "Page" });
     case 4:
-      return S.Array(__S(59));
+      return S.Array(Page);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2319,13 +2874,13 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "DocumentationRule" });
     case 6:
-      return S.Array(__S(61));
+      return S.Array(DocumentationRule);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          pages: S.optional(__S(60)),
-          rules: S.optional(__S(62)),
-          sectionOverrides: S.optional(__S(60)),
+          pages: S.optional(PageList),
+          rules: S.optional(DocumentationRuleList),
+          sectionOverrides: S.optional(PageList),
           overview: S.optional(S.String),
           summary: S.optional(S.String),
           documentationRootUrl: S.optional(S.String),
@@ -2345,29 +2900,29 @@ function __c8(j: number): any {
           jsonName: S.optional(S.String),
           defaultValue: S.optional(S.String),
           oneofIndex: S.optional(S.Number),
-          kind: S.optional(S.String),
+          kind: S.optional(FieldKindEnum),
           name: S.optional(S.String),
-          options: S.optional(__S(14)),
-          cardinality: S.optional(S.String),
+          options: S.optional(OptionList),
+          cardinality: S.optional(FieldCardinalityEnum),
           number: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Field" });
     case 1:
-      return S.Array(__S(64));
+      return S.Array(Field);
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          oneofs: S.optional(__S(6)),
+          oneofs: S.optional(StringList),
           edition: S.optional(S.String),
-          sourceContext: S.optional(__S(17)),
-          options: S.optional(__S(14)),
-          syntax: S.optional(S.String),
-          fields: S.optional(__S(65)),
+          sourceContext: S.optional(SourceContext),
+          options: S.optional(OptionList),
+          syntax: S.optional(TypeSyntaxEnum),
+          fields: S.optional(FieldList),
         }),
       ).annotate({ identifier: "Type" });
     case 3:
-      return S.Array(__S(66));
+      return S.Array(Type);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2382,13 +2937,13 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "AuthRequirement" });
     case 6:
-      return S.Array(__S(69));
+      return S.Array(AuthRequirement);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          oauth: S.optional(__S(68)),
+          oauth: S.optional(OAuthRequirements),
           selector: S.optional(S.String),
-          requirements: S.optional(__S(70)),
+          requirements: S.optional(AuthRequirementList),
           allowWithoutCredential: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AuthenticationRule" });
@@ -2397,7 +2952,7 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71));
+      return S.Array(AuthenticationRule);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2408,7 +2963,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "JwtLocation" });
     case 2:
-      return S.Array(__S(73));
+      return S.Array(JwtLocation);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2417,16 +2972,16 @@ function __c9(j: number): any {
           authorizationUrl: S.optional(S.String),
           id: S.optional(S.String),
           issuer: S.optional(S.String),
-          jwtLocations: S.optional(__S(74)),
+          jwtLocations: S.optional(JwtLocationList),
         }),
       ).annotate({ identifier: "AuthProvider" });
     case 4:
-      return S.Array(__S(75));
+      return S.Array(AuthProvider);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(72)),
-          providers: S.optional(__S(76)),
+          rules: S.optional(AuthenticationRuleList),
+          providers: S.optional(AuthProviderList),
         }),
       ).annotate({ identifier: "Authentication" });
     case 6:
@@ -2438,7 +2993,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "SystemParameter" });
     case 7:
-      return S.Array(__S(78));
+      return S.Array(SystemParameter);
   }
 }
 function __c10(j: number): any {
@@ -2446,16 +3001,16 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(79)),
+          parameters: S.optional(SystemParameterList),
           selector: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemParameterRule" });
     case 1:
-      return S.Array(__S(80));
+      return S.Array(SystemParameterRule);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(81)),
+          rules: S.optional(SystemParameterRuleList),
         }),
       ).annotate({ identifier: "SystemParameters" });
     case 3:
@@ -2470,29 +3025,29 @@ function __c10(j: number): any {
         S.Struct({
           post: S.optional(S.String),
           patch: S.optional(S.String),
-          custom: S.optional(__S(83)),
+          custom: S.optional(CustomHttpPattern),
           responseBody: S.optional(S.String),
           delete: S.optional(S.String),
           body: S.optional(S.String),
           get: S.optional(S.String),
-          additionalBindings: S.optional(S.suspend(() => __S(85))),
+          additionalBindings: S.optional(S.suspend(() => HttpRuleList)),
           selector: S.optional(S.String),
           put: S.optional(S.String),
         }),
       ).annotate({ identifier: "HttpRule" });
     case 5:
-      return S.Array(__S(84));
+      return S.Array(HttpRule);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(85)),
+          rules: S.optional(HttpRuleList),
           fullyDecodeReservedExpansion: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Http" });
     case 7:
       return S.Record(
         S.String,
-        /*@__PURE__*/ S.suspend(() => __S(88)),
+        /*@__PURE__*/ S.suspend(() => BackendRule),
       );
   }
 }
@@ -2507,48 +3062,48 @@ function __c11(j: number): any {
           selector: S.optional(S.String),
           protocol: S.optional(S.String),
           disableAuth: S.optional(S.Boolean),
-          overridesByRequestProtocol: S.optional(__S(87)),
-          pathTranslation: S.optional(S.String),
+          overridesByRequestProtocol: S.optional(BackendRuleMap),
+          pathTranslation: S.optional(BackendRulePathTranslationEnum),
           loadBalancingPolicy: S.optional(S.String),
           operationDeadline: S.optional(S.Number),
           deadline: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BackendRule" });
     case 1:
-      return S.Array(__S(88));
+      return S.Array(BackendRule);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(89)),
+          rules: S.optional(BackendRuleList),
         }),
       ).annotate({ identifier: "Backend" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          allowedResponseExtensions: S.optional(__S(6)),
+          allowedResponseExtensions: S.optional(StringList),
           selector: S.optional(S.String),
-          allowedRequestExtensions: S.optional(__S(6)),
-          provided: S.optional(__S(6)),
-          requested: S.optional(__S(6)),
+          allowedRequestExtensions: S.optional(StringList),
+          provided: S.optional(StringList),
+          requested: S.optional(StringList),
         }),
       ).annotate({ identifier: "ContextRule" });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(ContextRule);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(92)),
+          rules: S.optional(ContextRuleList),
         }),
       ).annotate({ identifier: "Context" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           monitoredResource: S.optional(S.String),
-          metrics: S.optional(__S(6)),
+          metrics: S.optional(StringList),
         }),
       ).annotate({ identifier: "BillingDestination" });
     case 7:
-      return S.Array(__S(94));
+      return S.Array(BillingDestination);
   }
 }
 function __c12(j: number): any {
@@ -2556,51 +3111,51 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          consumerDestinations: S.optional(__S(95)),
+          consumerDestinations: S.optional(BillingDestinationList),
         }),
       ).annotate({ identifier: "Billing" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          launchStage: S.optional(S.String),
+          launchStage: S.optional(MonitoredResourceDescriptorLaunchStageEnum),
           name: S.optional(S.String),
           type: S.optional(S.String),
           description: S.optional(S.String),
-          labels: S.optional(__S(10)),
+          labels: S.optional(LabelDescriptorList),
           displayName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MonitoredResourceDescriptor",
       });
     case 2:
-      return S.Array(__S(97));
+      return S.Array(MonitoredResourceDescriptor);
     case 3:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          labels: S.optional(__S(10)),
+          labels: S.optional(LabelDescriptorList),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogDescriptor" });
     case 4:
-      return S.Array(__S(99));
+      return S.Array(LogDescriptor);
     case 5:
       return S.suspend(() =>
         S.Struct({
           target: S.optional(S.String),
           name: S.optional(S.String),
           allowCors: S.optional(S.Boolean),
-          aliases: S.optional(__S(6)),
+          aliases: S.optional(StringList),
         }),
       ).annotate({ identifier: "Endpoint" });
     case 6:
-      return S.Array(__S(101));
+      return S.Array(Endpoint);
     case 7:
       return S.suspend(() =>
         S.Struct({
           selector: S.optional(S.String),
-          config: S.optional(__S(2)),
+          config: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "AspectRule" });
   }
@@ -2608,17 +3163,17 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(103));
+      return S.Array(AspectRule);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          spec: S.optional(__S(2)),
-          rules: S.optional(__S(104)),
+          spec: S.optional(DocumentMap),
+          rules: S.optional(AspectRuleList),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Aspect" });
     case 2:
-      return S.Array(__S(105));
+      return S.Array(Aspect);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2628,20 +3183,20 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "FieldPolicy" });
     case 4:
-      return S.Array(__S(107));
+      return S.Array(FieldPolicy);
     case 5:
       return S.suspend(() =>
         S.Struct({
           selector: S.optional(S.String),
-          requestPolicies: S.optional(__S(108)),
+          requestPolicies: S.optional(FieldPolicyList),
         }),
       ).annotate({ identifier: "MethodPolicy" });
     case 6:
-      return S.Array(__S(109));
+      return S.Array(MethodPolicy);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          methodPolicies: S.optional(__S(110)),
+          methodPolicies: S.optional(MethodPolicyList),
           environment: S.optional(S.String),
         }),
       ).annotate({ identifier: "Control" });
@@ -2652,12 +3207,12 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(33)),
+          values: S.optional(StringMap),
           unit: S.optional(S.String),
           displayName: S.optional(S.String),
           duration: S.optional(S.String),
           description: S.optional(S.String),
-          trafficSource: S.optional(S.String),
+          trafficSource: S.optional(QuotaLimitTrafficSourceEnum),
           defaultLimit: S.optional(S.String),
           name: S.optional(S.String),
           maxLimit: S.optional(S.String),
@@ -2666,56 +3221,56 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "QuotaLimit" });
     case 1:
-      return S.Array(__S(112));
+      return S.Array(QuotaLimit);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metricCosts: S.optional(__S(33)),
+          metricCosts: S.optional(StringMap),
           selector: S.optional(S.String),
-          nonagenticMetricCosts: S.optional(__S(33)),
-          agenticMetricCosts: S.optional(__S(33)),
+          nonagenticMetricCosts: S.optional(StringMap),
+          agenticMetricCosts: S.optional(StringMap),
         }),
       ).annotate({ identifier: "MetricRule" });
     case 3:
-      return S.Array(__S(114));
+      return S.Array(MetricRule);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          limits: S.optional(__S(113)),
-          metricRules: S.optional(__S(115)),
+          limits: S.optional(QuotaLimitList),
+          metricRules: S.optional(MetricRuleList),
         }),
       ).annotate({ identifier: "Quota" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          metrics: S.optional(__S(12)),
-          enums: S.optional(__S(19)),
-          usage: S.optional(__S(22)),
-          logging: S.optional(__S(25)),
-          customError: S.optional(__S(28)),
+          metrics: S.optional(MetricDescriptorList),
+          enums: S.optional(EnumList),
+          usage: S.optional(Usage),
+          logging: S.optional(Logging),
+          customError: S.optional(CustomError),
           producerProjectId: S.optional(S.String),
-          publishing: S.optional(__S(48)),
-          monitoring: S.optional(__S(51)),
-          apis: S.optional(__S(57)),
-          sourceInfo: S.optional(__S(58)),
+          publishing: S.optional(Publishing),
+          monitoring: S.optional(Monitoring),
+          apis: S.optional(ApiList),
+          sourceInfo: S.optional(SourceInfo),
           id: S.optional(S.String),
-          documentation: S.optional(__S(63)),
-          systemTypes: S.optional(__S(67)),
+          documentation: S.optional(Documentation),
+          systemTypes: S.optional(TypeList),
           title: S.optional(S.String),
-          authentication: S.optional(__S(77)),
-          systemParameters: S.optional(__S(82)),
-          types: S.optional(__S(67)),
-          http: S.optional(__S(86)),
-          backend: S.optional(__S(90)),
-          context: S.optional(__S(93)),
-          billing: S.optional(__S(96)),
-          monitoredResources: S.optional(__S(98)),
-          logs: S.optional(__S(100)),
+          authentication: S.optional(Authentication),
+          systemParameters: S.optional(SystemParameters),
+          types: S.optional(TypeList),
+          http: S.optional(Http),
+          backend: S.optional(Backend),
+          context: S.optional(Context),
+          billing: S.optional(Billing),
+          monitoredResources: S.optional(MonitoredResourceDescriptorList),
+          logs: S.optional(LogDescriptorList),
           name: S.optional(S.String),
-          endpoints: S.optional(__S(102)),
-          aspects: S.optional(__S(106)),
-          control: S.optional(__S(111)),
-          quota: S.optional(__S(116)),
+          endpoints: S.optional(EndpointList),
+          aspects: S.optional(AspectList),
+          control: S.optional(Control),
+          quota: S.optional(Quota),
           configVersion: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Service" });
@@ -2723,7 +3278,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          body: S.optional(__S(117).pipe(T.HttpBody())),
+          body: S.optional(Service.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2743,7 +3298,7 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          percentages: S.optional(__S(119)),
+          percentages: S.optional(DoubleMap),
         }),
       ).annotate({ identifier: "TrafficPercentStrategy" });
     case 1:
@@ -2757,16 +3312,16 @@ function __c15(j: number): any {
           serviceName: S.optional(S.String),
           createdBy: S.optional(S.String),
           rolloutId: S.optional(S.String),
-          trafficPercentStrategy: S.optional(__S(120)),
-          deleteServiceStrategy: S.optional(__S(121)),
-          status: S.optional(S.String),
+          trafficPercentStrategy: S.optional(TrafficPercentStrategy),
+          deleteServiceStrategy: S.optional(DeleteServiceStrategy),
+          status: S.optional(RolloutStatusEnum),
         }),
       ).annotate({ identifier: "Rollout" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          body: S.optional(__S(122).pipe(T.HttpBody())),
+          body: S.optional(Rollout.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2792,8 +3347,8 @@ function __c15(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          newConfig: S.optional(__S(2)),
-          oldConfig: S.optional(__S(2)),
+          newConfig: S.optional(DocumentMap),
+          oldConfig: S.optional(DocumentMap),
         }),
       ).annotate({
         identifier: "GenerateConfigReportRequest",
@@ -2801,7 +3356,7 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(125).pipe(T.HttpBody())),
+          body: S.optional(GenerateConfigReportRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2817,7 +3372,7 @@ function __c15(j: number): any {
         S.Struct({
           message: S.optional(S.String),
           location: S.optional(S.String),
-          kind: S.optional(S.String),
+          kind: S.optional(DiagnosticKindEnum),
         }),
       ).annotate({ identifier: "Diagnostic" });
   }
@@ -2825,7 +3380,7 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(127));
+      return S.Array(Diagnostic);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2833,34 +3388,34 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "Advice" });
     case 2:
-      return S.Array(__S(129));
+      return S.Array(Advice);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          advices: S.optional(__S(130)),
-          changeType: S.optional(S.String),
+          advices: S.optional(AdviceList),
+          changeType: S.optional(ConfigChangeChangeTypeEnum),
           newValue: S.optional(S.String),
           oldValue: S.optional(S.String),
           element: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigChange" });
     case 4:
-      return S.Array(__S(131));
+      return S.Array(ConfigChange);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          configChanges: S.optional(__S(132)),
+          configChanges: S.optional(ConfigChangeList),
         }),
       ).annotate({ identifier: "ChangeReport" });
     case 6:
-      return S.Array(__S(133));
+      return S.Array(ChangeReport);
     case 7:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.optional(S.String),
           id: S.optional(S.String),
-          diagnostics: S.optional(__S(128)),
-          changeReports: S.optional(__S(134)),
+          diagnostics: S.optional(DiagnosticList),
+          changeReports: S.optional(ChangeReportList),
         }),
       ).annotate({
         identifier: "GenerateConfigReportResponse",
@@ -2874,7 +3429,7 @@ function __c17(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           configId: S.optional(S.String.pipe(T.Query())),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(GetConfigServicesViewEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2892,14 +3447,14 @@ function __c17(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(__S(137)),
+          options: S.optional(GetPolicyOptions),
         }),
       ).annotate({ identifier: "GetIamPolicyRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(138).pipe(T.HttpBody())),
+          body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2913,21 +3468,21 @@ function __c17(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(6)),
+          logType: S.optional(AuditLogConfigLogTypeEnum),
+          exemptedMembers: S.optional(StringList),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
     case 5:
-      return S.Array(__S(140));
+      return S.Array(AuditLogConfig);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          auditLogConfigs: S.optional(__S(141)),
+          auditLogConfigs: S.optional(AuditLogConfigList),
           service: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditConfig" });
     case 7:
-      return S.Array(__S(142));
+      return S.Array(AuditConfig);
   }
 }
 function __c18(j: number): any {
@@ -2944,27 +3499,27 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(__S(144)),
-          members: S.optional(__S(6)),
+          condition: S.optional(Expr),
+          members: S.optional(StringList),
           role: S.optional(S.String),
         }),
       ).annotate({ identifier: "Binding" });
     case 2:
-      return S.Array(__S(145));
+      return S.Array(Binding);
     case 3:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          auditConfigs: S.optional(__S(143)),
+          auditConfigs: S.optional(AuditConfigList),
           version: S.optional(S.Number),
-          bindings: S.optional(__S(146)),
+          bindings: S.optional(BindingList),
         }),
       ).annotate({ identifier: "Policy" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(138).pipe(T.HttpBody())),
+          body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3003,7 +3558,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           configId: S.String.pipe(T.Label()),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(GetServicesConfigsViewEnum.pipe(T.Query())),
           serviceName: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -3051,13 +3606,13 @@ function __c19(j: number): any {
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
     case 2:
-      return S.Array(__S(5));
+      return S.Array(Operation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(154)),
+          operations: S.optional(OperationList),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(6)),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 4:
@@ -3076,11 +3631,11 @@ function __c19(j: number): any {
         ),
       ).annotate({ identifier: "ListServicesRequest" });
     case 5:
-      return S.Array(__S(0));
+      return S.Array(ManagedService);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          services: S.optional(__S(157)),
+          services: S.optional(ManagedServiceList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListServicesResponse" });
@@ -3105,11 +3660,11 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(117));
+      return S.Array(Service);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          serviceConfigs: S.optional(__S(160)),
+          serviceConfigs: S.optional(ServiceList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3133,11 +3688,11 @@ function __c20(j: number): any {
         identifier: "ListServicesRolloutsRequest",
       });
     case 3:
-      return S.Array(__S(122));
+      return S.Array(Rollout);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          rollouts: S.optional(__S(163)),
+          rollouts: S.optional(RolloutList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3146,7 +3701,7 @@ function __c20(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(147)),
+          policy: S.optional(Policy),
           updateMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
@@ -3154,7 +3709,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(165).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3169,7 +3724,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(165).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3189,22 +3744,22 @@ function __c21(j: number): any {
         S.Struct({
           fileContents: S.optional(S.String),
           filePath: S.optional(S.String),
-          fileType: S.optional(S.String),
+          fileType: S.optional(ConfigFileFileTypeEnum),
         }),
       ).annotate({ identifier: "ConfigFile" });
     case 1:
-      return S.Array(__S(168));
+      return S.Array(ConfigFile);
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          files: S.optional(__S(169)),
+          files: S.optional(ConfigFileList),
         }),
       ).annotate({ identifier: "ConfigSource" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          configSource: S.optional(__S(170)),
+          configSource: S.optional(ConfigSource),
           validateOnly: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -3214,7 +3769,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          body: S.optional(__S(171).pipe(T.HttpBody())),
+          body: S.optional(SubmitConfigSourceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3228,7 +3783,7 @@ function __c21(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(6)),
+          permissions: S.optional(StringList),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -3237,7 +3792,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(173).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3252,7 +3807,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(173).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3279,60 +3834,5 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UndeleteServicesRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
   }
 }

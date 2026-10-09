@@ -7,13 +7,13 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** The status of a firmware analysis job. */
 export type Status = "Pending" | "Extracting" | "Analyzing" | "Ready" | "Error";
+const Status = S.String;
+
 /** Error and status message */
 export interface StatusMessage {
   /** The error code */
@@ -21,8 +21,15 @@ export interface StatusMessage {
   /** The error or status message */
   message?: string;
 }
+const StatusMessage = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StatusMessage>;
+
 /** A list of errors or other messages generated during firmware analysis */
 export type FirmwarePropertiesInputStatusMessagesList = Array<StatusMessage>;
+const FirmwarePropertiesInputStatusMessagesList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<FirmwarePropertiesInputStatusMessagesList>;
+
 /** Firmware properties. */
 export interface FirmwarePropertiesInput {
   /** File name for a firmware that user uploaded. */
@@ -42,6 +49,11 @@ export interface FirmwarePropertiesInput {
   /** A list of errors or other messages generated during firmware analysis */
   statusMessages?: FirmwarePropertiesInputStatusMessagesList;
 }
+const FirmwarePropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<FirmwarePropertiesInput>;
+
 export interface CreateFirmwareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -54,10 +66,19 @@ export interface CreateFirmwareRequest {
   /** The resource-specific properties for this resource. */
   properties?: FirmwarePropertiesInput;
 }
+const CreateFirmwareRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateFirmwareRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -73,8 +94,13 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<SystemData>;
+
 /** A list of errors or other messages generated during firmware analysis */
 export type FirmwarePropertiesStatusMessagesList = Array<StatusMessage>;
+const FirmwarePropertiesStatusMessagesList =
+  FirmwarePropertiesInputStatusMessagesList as any as S.Schema<FirmwarePropertiesStatusMessagesList>;
+
 /** The status of a firmware analysis job. */
 export type ProvisioningState =
   | "Succeeded"
@@ -83,6 +109,8 @@ export type ProvisioningState =
   | "Pending"
   | "Extracting"
   | "Analyzing";
+const ProvisioningState = S.String;
+
 /** Firmware properties. */
 export interface FirmwareProperties {
   /** File name for a firmware that user uploaded. */
@@ -104,6 +132,8 @@ export interface FirmwareProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
+const FirmwareProperties = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<FirmwareProperties>;
+
 export interface CreateFirmwareResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -116,12 +146,29 @@ export interface CreateFirmwareResponse {
   /** The resource-specific properties for this resource. */
   properties?: FirmwareProperties;
 }
+const CreateFirmwareResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateFirmwareResponse>;
+
 /** Resource tags. */
 export type CreateWorkspaceRequestTagsMap = { [key: string]: string | undefined };
+const CreateWorkspaceRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateWorkspaceRequestTagsMap>;
+
 /** Workspace properties. */
 export interface WorkspacePropertiesInput {}
+const WorkspacePropertiesInput = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<WorkspacePropertiesInput>;
+
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
 export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
+const SkuTier = S.String;
+
 /** The resource model definition representing SKU */
 export interface CreateWorkspaceRequestSku {
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
@@ -134,6 +181,11 @@ export interface CreateWorkspaceRequestSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
+const CreateWorkspaceRequestSku = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateWorkspaceRequestSku>;
+
 export interface CreateWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -150,13 +202,23 @@ export interface CreateWorkspaceRequest {
   /** The resource model definition representing SKU */
   sku?: CreateWorkspaceRequestSku;
 }
+const CreateWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateWorkspaceRequest>;
+
 /** Resource tags. */
 export type CreateWorkspaceResponseTagsMap = { [key: string]: string | undefined };
+const CreateWorkspaceResponseTagsMap =
+  CreateWorkspaceRequestTagsMap as any as S.Schema<CreateWorkspaceResponseTagsMap>;
+
 /** Workspace properties. */
 export interface WorkspaceProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
+const WorkspaceProperties = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<WorkspaceProperties>;
+
 /** The resource model definition representing SKU */
 export interface CreateWorkspaceResponseSku {
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
@@ -169,6 +231,9 @@ export interface CreateWorkspaceResponseSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
+const CreateWorkspaceResponseSku =
+  CreateWorkspaceRequestSku as any as S.Schema<CreateWorkspaceResponseSku>;
+
 export interface CreateWorkspaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -187,6 +252,11 @@ export interface CreateWorkspaceResponse {
   /** The resource model definition representing SKU */
   sku?: CreateWorkspaceResponseSku;
 }
+const CreateWorkspaceResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateWorkspaceResponse>;
+
 export interface DeleteFirmwareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -197,7 +267,14 @@ export interface DeleteFirmwareRequest {
   /** The id of the firmware. */
   firmwareId: string;
 }
+const DeleteFirmwareRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteFirmwareRequest>;
+
 export interface DeleteFirmwareResponse {}
+const DeleteFirmwareResponse = WorkspacePropertiesInput as any as S.Schema<DeleteFirmwareResponse>;
+
 export interface DeleteWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -206,7 +283,15 @@ export interface DeleteWorkspaceRequest {
   /** The name of the firmware analysis workspace. */
   workspaceName: string;
 }
+const DeleteWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DeleteWorkspaceRequest>;
+
 export interface DeleteWorkspaceResponse {}
+const DeleteWorkspaceResponse =
+  WorkspacePropertiesInput as any as S.Schema<DeleteWorkspaceResponse>;
+
 export interface GetFirmwareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -217,6 +302,8 @@ export interface GetFirmwareRequest {
   /** The id of the firmware. */
   firmwareId: string;
 }
+const GetFirmwareRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetFirmwareRequest>;
+
 export interface GetFirmwareResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -229,12 +316,16 @@ export interface GetFirmwareResponse {
   /** The resource-specific properties for this resource. */
   properties?: FirmwareProperties;
 }
+const GetFirmwareResponse = CreateFirmwareResponse as any as S.Schema<GetFirmwareResponse>;
+
 export type GetSummaryRequestSummaryType =
   | "Firmware"
   | "CommonVulnerabilitiesAndExposures"
   | "BinaryHardening"
   | "CryptoCertificate"
   | "CryptoKey";
+const GetSummaryRequestSummaryType = S.String;
+
 export interface GetSummaryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -247,6 +338,8 @@ export interface GetSummaryRequest {
   /** The Firmware analysis summary name describing the type of summary. */
   summaryType: GetSummaryRequestSummaryType | (string & {});
 }
+const GetSummaryRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetSummaryRequest>;
+
 /** Describes the type of summary. */
 export type SummaryType =
   | "Firmware"
@@ -254,6 +347,8 @@ export type SummaryType =
   | "BinaryHardening"
   | "CryptoCertificate"
   | "CryptoKey";
+const SummaryType = S.String;
+
 /** Properties of an analysis summary. */
 export interface SummaryResourceProperties {
   /** The type of summary. */
@@ -261,6 +356,11 @@ export interface SummaryResourceProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
+const SummaryResourceProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<SummaryResourceProperties>;
+
 export interface GetSummaryResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -273,6 +373,8 @@ export interface GetSummaryResponse {
   /** The resource-specific properties for this resource. */
   properties?: SummaryResourceProperties;
 }
+const GetSummaryResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetSummaryResponse>;
+
 export interface GetUsageMetricsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -283,6 +385,11 @@ export interface GetUsageMetricsRequest {
   /** The Firmware analysis summary name describing the type of summary. */
   name: string;
 }
+const GetUsageMetricsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetUsageMetricsRequest>;
+
 /** Properties of a workspaces usage metrics. */
 export interface UsageMetricProperties {
   /** The number of firmware analysis jobs that have been submitted in the current month. */
@@ -292,6 +399,11 @@ export interface UsageMetricProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
+const UsageMetricProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<UsageMetricProperties>;
+
 export interface GetUsageMetricsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -304,6 +416,11 @@ export interface GetUsageMetricsResponse {
   /** The resource-specific properties for this resource. */
   properties?: UsageMetricProperties;
 }
+const GetUsageMetricsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetUsageMetricsResponse>;
+
 export interface GetWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -312,6 +429,8 @@ export interface GetWorkspaceRequest {
   /** The name of the firmware analysis workspace. */
   workspaceName: string;
 }
+const GetWorkspaceRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GetWorkspaceRequest>;
+
 /** Resource tags. */
 export type GetWorkspaceResponseTagsMap = { [key: string]: string | undefined };
 /** The resource model definition representing SKU */
@@ -334,6 +453,8 @@ export interface GetWorkspaceResponse {
   /** The resource model definition representing SKU */
   sku?: CreateWorkspaceResponseSku;
 }
+const GetWorkspaceResponse = CreateWorkspaceResponse as any as S.Schema<GetWorkspaceResponse>;
+
 export interface ListBinaryHardeningByFirmwareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -344,6 +465,11 @@ export interface ListBinaryHardeningByFirmwareRequest {
   /** The id of the firmware. */
   firmwareId: string;
 }
+const ListBinaryHardeningByFirmwareRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListBinaryHardeningByFirmwareRequest>;
+
 /** Binary hardening features. */
 export interface BinaryHardeningFeatures {
   /** Flag indicating the binary's stack is set to NX (no-execute). */
@@ -357,8 +483,15 @@ export interface BinaryHardeningFeatures {
   /** Flag indicating if debug symbols have been stripped from the binary. */
   stripped?: boolean;
 }
+const BinaryHardeningFeatures = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<BinaryHardeningFeatures>;
+
 /** String to indicate if the executable is 32 or 64 bit. */
 export type ExecutableClass = "x86" | "x64";
+const ExecutableClass = S.String;
+
 /** Binary hardening of a firmware. */
 export interface BinaryHardeningResult {
   /** ID for the binary hardening result. */
@@ -378,6 +511,11 @@ export interface BinaryHardeningResult {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
+const BinaryHardeningResult = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<BinaryHardeningResult>;
+
 /** The object representing a firmware analysis binary hardening result resource */
 export interface BinaryHardeningResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -391,8 +529,18 @@ export interface BinaryHardeningResource {
   /** The resource-specific properties for this resource. */
   properties?: BinaryHardeningResult;
 }
+const BinaryHardeningResource = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<BinaryHardeningResource>;
+
 /** The BinaryHardeningResource items on this page */
 export type BinaryHardeningResourceListResultValueList = Array<BinaryHardeningResource>;
+const BinaryHardeningResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<BinaryHardeningResourceListResultValueList>;
+
 /** The response of a BinaryHardeningResource list operation. */
 export interface BinaryHardeningResourceListResult {
   /** The BinaryHardeningResource items on this page */
@@ -400,6 +548,11 @@ export interface BinaryHardeningResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const BinaryHardeningResourceListResult = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<BinaryHardeningResourceListResult>;
+
 export interface ListCryptoCertificateByFirmwareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -410,6 +563,11 @@ export interface ListCryptoCertificateByFirmwareRequest {
   /** The id of the firmware. */
   firmwareId: string;
 }
+const ListCryptoCertificateByFirmwareRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListCryptoCertificateByFirmwareRequest>;
+
 /** Information on an entity (distinguished name) in a cryptographic certificate. */
 export interface CryptoCertificateEntity {
   /** Common name of the certificate entity. */
@@ -423,6 +581,11 @@ export interface CryptoCertificateEntity {
   /** Country code of the certificate entity. */
   country?: string;
 }
+const CryptoCertificateEntity = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CryptoCertificateEntity>;
+
 /** Activities for which the cryptographic certificate can be used. */
 export type CertificateUsage =
   | "digitalSignature"
@@ -441,10 +604,22 @@ export type CertificateUsage =
   | "emailProtection"
   | "timeStamping"
   | "ocspSigning";
+const CertificateUsage = S.String;
+
 /** List of functions the certificate can fulfill. */
 export type CryptoCertificateCertificateUsageList = Array<CertificateUsage>;
+const CryptoCertificateCertificateUsageList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CryptoCertificateCertificateUsageList>;
+
 /** List of files where this certificate was found. */
 export type CryptoCertificateFilePathsList = Array<string>;
+const CryptoCertificateFilePathsList = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CryptoCertificateFilePathsList>;
+
 /** Details of a matching paired key or certificate. */
 export interface PairedKey {
   /** ID of the paired key or certificate. */
@@ -452,6 +627,8 @@ export interface PairedKey {
   /** The type indicating whether the paired object is a key or certificate. */
   type?: string;
 }
+const PairedKey = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<PairedKey>;
+
 /** Crypto certificate properties */
 export interface CryptoCertificate {
   /** ID for the certificate result. */
@@ -497,6 +674,8 @@ export interface CryptoCertificate {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
+const CryptoCertificate = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<CryptoCertificate>;
+
 /** The object representing a firmware analysis crypto certificate resource */
 export interface CryptoCertificateResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -510,8 +689,18 @@ export interface CryptoCertificateResource {
   /** The resource-specific properties for this resource. */
   properties?: CryptoCertificate;
 }
+const CryptoCertificateResource = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CryptoCertificateResource>;
+
 /** The CryptoCertificateResource items on this page */
 export type CryptoCertificateResourceListResultValueList = Array<CryptoCertificateResource>;
+const CryptoCertificateResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CryptoCertificateResourceListResultValueList>;
+
 /** The response of a CryptoCertificateResource list operation. */
 export interface CryptoCertificateResourceListResult {
   /** The CryptoCertificateResource items on this page */
@@ -519,6 +708,11 @@ export interface CryptoCertificateResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const CryptoCertificateResourceListResult = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CryptoCertificateResourceListResult>;
+
 export interface ListCryptoKeyByFirmwareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -529,12 +723,24 @@ export interface ListCryptoKeyByFirmwareRequest {
   /** The id of the firmware. */
   firmwareId: string;
 }
+const ListCryptoKeyByFirmwareRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListCryptoKeyByFirmwareRequest>;
+
 /** Different types of cryptographic keys. */
 export type CryptoKeyType = "Public" | "Private";
+const CryptoKeyType = S.String;
+
 /** Functions the key can fulfill. */
 export type CryptoKeyUsageList = Array<string>;
+const CryptoKeyUsageList = CryptoCertificateFilePathsList as any as S.Schema<CryptoKeyUsageList>;
+
 /** List of files where this key was found. */
 export type CryptoKeyFilePathsList = Array<string>;
+const CryptoKeyFilePathsList =
+  CryptoCertificateFilePathsList as any as S.Schema<CryptoKeyFilePathsList>;
+
 /** Crypto key properties */
 export interface CryptoKey {
   /** ID for the key result. */
@@ -556,6 +762,8 @@ export interface CryptoKey {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
+const CryptoKey = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<CryptoKey>;
+
 /** The object representing a firmware analysis crypto key resource */
 export interface CryptoKeyResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -569,8 +777,15 @@ export interface CryptoKeyResource {
   /** The resource-specific properties for this resource. */
   properties?: CryptoKey;
 }
+const CryptoKeyResource = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<CryptoKeyResource>;
+
 /** The CryptoKeyResource items on this page */
 export type CryptoKeyResourceListResultValueList = Array<CryptoKeyResource>;
+const CryptoKeyResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CryptoKeyResourceListResultValueList>;
+
 /** The response of a CryptoKeyResource list operation. */
 export interface CryptoKeyResourceListResult {
   /** The CryptoKeyResource items on this page */
@@ -578,6 +793,11 @@ export interface CryptoKeyResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const CryptoKeyResourceListResult = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<CryptoKeyResourceListResult>;
+
 export interface ListCveByFirmwareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -588,6 +808,11 @@ export interface ListCveByFirmwareRequest {
   /** The id of the firmware. */
   firmwareId: string;
 }
+const ListCveByFirmwareRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ListCveByFirmwareRequest>;
+
 /** Legacy component of a CVE result. */
 export interface CveComponent {
   /** ID of the SBOM component. */
@@ -597,6 +822,8 @@ export interface CveComponent {
   /** Version of the SBOM component. */
   version?: string;
 }
+const CveComponent = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<CveComponent>;
+
 /** Common Vulnerability Scoring System values. */
 export interface CvssScore {
   /** The version of the Common Vulnerability Scoring System (CVSS). */
@@ -604,8 +831,15 @@ export interface CvssScore {
   /** The score of the CVE according to the CVSS specified. */
   score?: number;
 }
+const CvssScore = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<CvssScore>;
+
 /** All known CVSS scores for the CVE. */
 export type CveResultCvssScoresList = Array<CvssScore>;
+const CveResultCvssScoresList = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CveResultCvssScoresList>;
+
 /** Properties of a reference link for a CVE. */
 export interface CveLink {
   /** The destination of the reference link. */
@@ -613,8 +847,12 @@ export interface CveLink {
   /** The label of the reference link. */
   label?: string;
 }
+const CveLink = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<CveLink>;
+
 /** The list of reference links for the CVE. */
 export type CveResultLinksList = Array<CveLink>;
+const CveResultLinksList = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<CveResultLinksList>;
+
 /** Details of a CVE detected in firmware. */
 export interface CveResult {
   /** ID of the CVE result. */
@@ -652,6 +890,8 @@ export interface CveResult {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
+const CveResult = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<CveResult>;
+
 /** The object representing a firmware analysis CVE result resource */
 export interface CveResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -665,8 +905,15 @@ export interface CveResource {
   /** The resource-specific properties for this resource. */
   properties?: CveResult;
 }
+const CveResource = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<CveResource>;
+
 /** The CveResource items on this page */
 export type CveResourceListResultValueList = Array<CveResource>;
+const CveResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<CveResourceListResultValueList>;
+
 /** The response of a CveResource list operation. */
 export interface CveResourceListResult {
   /** The CveResource items on this page */
@@ -674,6 +921,11 @@ export interface CveResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const CveResourceListResult = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<CveResourceListResult>;
+
 export interface ListFirmwareByWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -682,6 +934,11 @@ export interface ListFirmwareByWorkspaceRequest {
   /** The name of the firmware analysis workspace. */
   workspaceName: string;
 }
+const ListFirmwareByWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ListFirmwareByWorkspaceRequest>;
+
 /** Firmware definition */
 export interface Firmware {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -695,8 +952,15 @@ export interface Firmware {
   /** The resource-specific properties for this resource. */
   properties?: FirmwareProperties;
 }
+const Firmware = CreateFirmwareResponse as any as S.Schema<Firmware>;
+
 /** The Firmware items on this page */
 export type FirmwareListResultValueList = Array<Firmware>;
+const FirmwareListResultValueList = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<FirmwareListResultValueList>;
+
 /** The response of a Firmware list operation. */
 export interface FirmwareListResult {
   /** The Firmware items on this page */
@@ -704,7 +968,14 @@ export interface FirmwareListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const FirmwareListResult = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<FirmwareListResult>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -716,10 +987,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -733,14 +1010,26 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListPasswordHashByFirmwareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -751,6 +1040,11 @@ export interface ListPasswordHashByFirmwareRequest {
   /** The id of the firmware. */
   firmwareId: string;
 }
+const ListPasswordHashByFirmwareRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListPasswordHashByFirmwareRequest>;
+
 /** Password hash properties */
 export interface PasswordHash {
   /** ID for password hash */
@@ -770,6 +1064,8 @@ export interface PasswordHash {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
+const PasswordHash = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<PasswordHash>;
+
 /** The object representing a firmware analysis password hash result resource */
 export interface PasswordHashResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -783,8 +1079,15 @@ export interface PasswordHashResource {
   /** The resource-specific properties for this resource. */
   properties?: PasswordHash;
 }
+const PasswordHashResource = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<PasswordHashResource>;
+
 /** The PasswordHashResource items on this page */
 export type PasswordHashResourceListResultValueList = Array<PasswordHashResource>;
+const PasswordHashResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<PasswordHashResourceListResultValueList>;
+
 /** The response of a PasswordHashResource list operation. */
 export interface PasswordHashResourceListResult {
   /** The PasswordHashResource items on this page */
@@ -792,6 +1095,11 @@ export interface PasswordHashResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PasswordHashResourceListResult = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<PasswordHashResourceListResult>;
+
 export interface ListSbomComponentByFirmwareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -802,8 +1110,16 @@ export interface ListSbomComponentByFirmwareRequest {
   /** The id of the firmware. */
   firmwareId: string;
 }
+const ListSbomComponentByFirmwareRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ListSbomComponentByFirmwareRequest>;
+
 /** File paths related to the component. Note, relatedFiles should be used instead of this property. */
 export type SbomComponentFilePathsList = Array<string>;
+const SbomComponentFilePathsList =
+  CryptoCertificateFilePathsList as any as S.Schema<SbomComponentFilePathsList>;
+
 /** SBOM component of a firmware. */
 export interface SbomComponent {
   /** ID for the component. */
@@ -819,6 +1135,8 @@ export interface SbomComponent {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
+const SbomComponent = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<SbomComponent>;
+
 /** The object representing a firmware analysis SBOM component result resource */
 export interface SbomComponentResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -832,8 +1150,18 @@ export interface SbomComponentResource {
   /** The resource-specific properties for this resource. */
   properties?: SbomComponent;
 }
+const SbomComponentResource = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<SbomComponentResource>;
+
 /** The SbomComponentResource items on this page */
 export type SbomComponentResourceListResultValueList = Array<SbomComponentResource>;
+const SbomComponentResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<SbomComponentResourceListResultValueList>;
+
 /** The response of a SbomComponentResource list operation. */
 export interface SbomComponentResourceListResult {
   /** The SbomComponentResource items on this page */
@@ -841,6 +1169,11 @@ export interface SbomComponentResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SbomComponentResourceListResult = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<SbomComponentResourceListResult>;
+
 export interface ListSummaryByFirmwareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -851,6 +1184,11 @@ export interface ListSummaryByFirmwareRequest {
   /** The id of the firmware. */
   firmwareId: string;
 }
+const ListSummaryByFirmwareRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListSummaryByFirmwareRequest>;
+
 /** The object representing a firmware analysis summary resource. */
 export interface SummaryResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -864,8 +1202,15 @@ export interface SummaryResource {
   /** The resource-specific properties for this resource. */
   properties?: SummaryResourceProperties;
 }
+const SummaryResource = GetSummaryResponse as any as S.Schema<SummaryResource>;
+
 /** The SummaryResource items on this page */
 export type SummaryResourceListResultValueList = Array<SummaryResource>;
+const SummaryResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<SummaryResourceListResultValueList>;
+
 /** The response of a SummaryResource list operation. */
 export interface SummaryResourceListResult {
   /** The SummaryResource items on this page */
@@ -873,6 +1218,11 @@ export interface SummaryResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SummaryResourceListResult = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<SummaryResourceListResult>;
+
 export interface ListUsageMetricsByWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -881,6 +1231,11 @@ export interface ListUsageMetricsByWorkspaceRequest {
   /** The name of the firmware analysis workspace. */
   workspaceName: string;
 }
+const ListUsageMetricsByWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListUsageMetricsByWorkspaceRequest>;
+
 /** The object representing how many firmwares the user has uploaded to the workspace. */
 export interface UsageMetric {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -894,8 +1249,15 @@ export interface UsageMetric {
   /** The resource-specific properties for this resource. */
   properties?: UsageMetricProperties;
 }
+const UsageMetric = GetUsageMetricsResponse as any as S.Schema<UsageMetric>;
+
 /** The UsageMetric items on this page */
 export type UsageMetricListResultValueList = Array<UsageMetric>;
+const UsageMetricListResultValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<UsageMetricListResultValueList>;
+
 /** The response of a UsageMetric list operation. */
 export interface UsageMetricListResult {
   /** The UsageMetric items on this page */
@@ -903,12 +1265,22 @@ export interface UsageMetricListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const UsageMetricListResult = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<UsageMetricListResult>;
+
 export interface ListWorkspaceByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListWorkspaceByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ListWorkspaceByResourceGroupRequest>;
+
 /** Resource tags. */
 export type WorkspaceTagsMap = { [key: string]: string | undefined };
 /** The resource model definition representing SKU */
@@ -932,8 +1304,15 @@ export interface Workspace {
   /** The resource model definition representing SKU */
   sku?: CreateWorkspaceResponseSku;
 }
+const Workspace = CreateWorkspaceResponse as any as S.Schema<Workspace>;
+
 /** The Workspace items on this page */
 export type WorkspaceListResultValueList = Array<Workspace>;
+const WorkspaceListResultValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<WorkspaceListResultValueList>;
+
 /** The response of a Workspace list operation. */
 export interface WorkspaceListResult {
   /** The Workspace items on this page */
@@ -941,10 +1320,17 @@ export interface WorkspaceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const WorkspaceListResult = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<WorkspaceListResult>;
+
 export interface ListWorkspaceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListWorkspaceBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListWorkspaceBySubscriptionRequest>;
+
 export interface UpdateFirmwareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -957,6 +1343,11 @@ export interface UpdateFirmwareRequest {
   /** The editable properties of a firmware */
   properties?: FirmwarePropertiesInput;
 }
+const UpdateFirmwareRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<UpdateFirmwareRequest>;
+
 export interface UpdateFirmwareResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -969,12 +1360,16 @@ export interface UpdateFirmwareResponse {
   /** The resource-specific properties for this resource. */
   properties?: FirmwareProperties;
 }
+const UpdateFirmwareResponse = CreateFirmwareResponse as any as S.Schema<UpdateFirmwareResponse>;
+
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
 export type AzureResourceManagerCommonTypesSkuUpdateTier =
   | "Free"
   | "Basic"
   | "Standard"
   | "Premium";
+const AzureResourceManagerCommonTypesSkuUpdateTier = S.String;
+
 /** The resource model definition representing SKU */
 export interface AzureResourceManagerCommonTypesSkuUpdate {
   /** The name of the SKU. Ex - P3. It is typically a letter+number code */
@@ -988,8 +1383,16 @@ export interface AzureResourceManagerCommonTypesSkuUpdate {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
+const AzureResourceManagerCommonTypesSkuUpdate = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<AzureResourceManagerCommonTypesSkuUpdate>;
+
 /** Resource tags. */
 export type UpdateWorkspaceRequestTagsMap = { [key: string]: string | undefined };
+const UpdateWorkspaceRequestTagsMap =
+  CreateWorkspaceRequestTagsMap as any as S.Schema<UpdateWorkspaceRequestTagsMap>;
+
 export interface UpdateWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1002,6 +1405,11 @@ export interface UpdateWorkspaceRequest {
   /** Resource tags. */
   tags?: UpdateWorkspaceRequestTagsMap;
 }
+const UpdateWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<UpdateWorkspaceRequest>;
+
 /** Resource tags. */
 export type UpdateWorkspaceResponseTagsMap = { [key: string]: string | undefined };
 /** The resource model definition representing SKU */
@@ -1024,6 +1432,8 @@ export interface UpdateWorkspaceResponse {
   /** The resource model definition representing SKU */
   sku?: CreateWorkspaceResponseSku;
 }
+const UpdateWorkspaceResponse = CreateWorkspaceResponse as any as S.Schema<UpdateWorkspaceResponse>;
+
 export interface WorkspacesGenerateUploadUrlRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1034,11 +1444,18 @@ export interface WorkspacesGenerateUploadUrlRequest {
   /** A unique ID for the firmware to be uploaded. */
   firmwareId?: string;
 }
+const WorkspacesGenerateUploadUrlRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<WorkspacesGenerateUploadUrlRequest>;
+
 /** Url data for creating or accessing a blob file. */
 export interface UrlToken {
   /** SAS URL for creating or accessing a blob file. */
   url?: string;
 }
+const UrlToken = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<UrlToken>;
+
 export type CreateFirmwareError = AzureOpError;
 /** The operation to create a firmware. */
 export const CreateFirmware: API.OperationMethod<
@@ -1047,8 +1464,8 @@ export const CreateFirmware: API.OperationMethod<
   CreateFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateFirmwareRequest>,
-  output: __S(6) as any as S.Schema<CreateFirmwareResponse>,
+  input: CreateFirmwareRequest,
+  output: CreateFirmwareResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1062,8 +1479,8 @@ export const CreateWorkspace: API.OperationMethod<
   CreateWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CreateWorkspaceRequest>,
-  output: __S(12) as any as S.Schema<CreateWorkspaceResponse>,
+  input: CreateWorkspaceRequest,
+  output: CreateWorkspaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1077,8 +1494,8 @@ export const DeleteFirmware: API.OperationMethod<
   DeleteFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<DeleteFirmwareRequest>,
-  output: __S(8) as any as S.Schema<DeleteFirmwareResponse>,
+  input: DeleteFirmwareRequest,
+  output: DeleteFirmwareResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1092,8 +1509,8 @@ export const DeleteWorkspace: API.OperationMethod<
   DeleteWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<DeleteWorkspaceRequest>,
-  output: __S(8) as any as S.Schema<DeleteWorkspaceResponse>,
+  input: DeleteWorkspaceRequest,
+  output: DeleteWorkspaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1107,8 +1524,8 @@ export const GetFirmware: API.OperationMethod<
   GetFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<GetFirmwareRequest>,
-  output: __S(6) as any as S.Schema<GetFirmwareResponse>,
+  input: GetFirmwareRequest,
+  output: GetFirmwareResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1122,8 +1539,8 @@ export const GetSummary: API.OperationMethod<
   GetSummaryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetSummaryRequest>,
-  output: __S(18) as any as S.Schema<GetSummaryResponse>,
+  input: GetSummaryRequest,
+  output: GetSummaryResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1137,8 +1554,8 @@ export const GetUsageMetrics: API.OperationMethod<
   GetUsageMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetUsageMetricsRequest>,
-  output: __S(21) as any as S.Schema<GetUsageMetricsResponse>,
+  input: GetUsageMetricsRequest,
+  output: GetUsageMetricsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1152,8 +1569,8 @@ export const GetWorkspace: API.OperationMethod<
   GetWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<GetWorkspaceRequest>,
-  output: __S(12) as any as S.Schema<GetWorkspaceResponse>,
+  input: GetWorkspaceRequest,
+  output: GetWorkspaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1167,8 +1584,8 @@ export const ListBinaryHardeningByFirmware: API.OperationMethod<
   ListBinaryHardeningByFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<ListBinaryHardeningByFirmwareRequest>,
-  output: __S(28) as any as S.Schema<BinaryHardeningResourceListResult>,
+  input: ListBinaryHardeningByFirmwareRequest,
+  output: BinaryHardeningResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1182,8 +1599,8 @@ export const ListCryptoCertificateByFirmware: API.OperationMethod<
   ListCryptoCertificateByFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<ListCryptoCertificateByFirmwareRequest>,
-  output: __S(37) as any as S.Schema<CryptoCertificateResourceListResult>,
+  input: ListCryptoCertificateByFirmwareRequest,
+  output: CryptoCertificateResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1197,8 +1614,8 @@ export const ListCryptoKeyByFirmware: API.OperationMethod<
   ListCryptoKeyByFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<ListCryptoKeyByFirmwareRequest>,
-  output: __S(42) as any as S.Schema<CryptoKeyResourceListResult>,
+  input: ListCryptoKeyByFirmwareRequest,
+  output: CryptoKeyResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1212,8 +1629,8 @@ export const ListCveByFirmware: API.OperationMethod<
   ListCveByFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<ListCveByFirmwareRequest>,
-  output: __S(52) as any as S.Schema<CveResourceListResult>,
+  input: ListCveByFirmwareRequest,
+  output: CveResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1227,8 +1644,8 @@ export const ListFirmwareByWorkspace: API.OperationMethod<
   ListFirmwareByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<ListFirmwareByWorkspaceRequest>,
-  output: __S(55) as any as S.Schema<FirmwareListResult>,
+  input: ListFirmwareByWorkspaceRequest,
+  output: FirmwareListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1242,8 +1659,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<ListOperationsRequest>,
-  output: __S(60) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1257,8 +1674,8 @@ export const ListPasswordHashByFirmware: API.OperationMethod<
   ListPasswordHashByFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<ListPasswordHashByFirmwareRequest>,
-  output: __S(65) as any as S.Schema<PasswordHashResourceListResult>,
+  input: ListPasswordHashByFirmwareRequest,
+  output: PasswordHashResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1272,8 +1689,8 @@ export const ListSbomComponentByFirmware: API.OperationMethod<
   ListSbomComponentByFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<ListSbomComponentByFirmwareRequest>,
-  output: __S(70) as any as S.Schema<SbomComponentResourceListResult>,
+  input: ListSbomComponentByFirmwareRequest,
+  output: SbomComponentResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1287,8 +1704,8 @@ export const ListSummaryByFirmware: API.OperationMethod<
   ListSummaryByFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<ListSummaryByFirmwareRequest>,
-  output: __S(73) as any as S.Schema<SummaryResourceListResult>,
+  input: ListSummaryByFirmwareRequest,
+  output: SummaryResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1302,8 +1719,8 @@ export const ListUsageMetricsByWorkspace: API.OperationMethod<
   ListUsageMetricsByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<ListUsageMetricsByWorkspaceRequest>,
-  output: __S(76) as any as S.Schema<UsageMetricListResult>,
+  input: ListUsageMetricsByWorkspaceRequest,
+  output: UsageMetricListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1317,8 +1734,8 @@ export const ListWorkspaceByResourceGroup: API.OperationMethod<
   ListWorkspaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
-  output: __S(79) as any as S.Schema<WorkspaceListResult>,
+  input: ListWorkspaceByResourceGroupRequest,
+  output: WorkspaceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1332,8 +1749,8 @@ export const ListWorkspaceBySubscription: API.OperationMethod<
   ListWorkspaceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<ListWorkspaceBySubscriptionRequest>,
-  output: __S(79) as any as S.Schema<WorkspaceListResult>,
+  input: ListWorkspaceBySubscriptionRequest,
+  output: WorkspaceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1347,8 +1764,8 @@ export const UpdateFirmware: API.OperationMethod<
   UpdateFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<UpdateFirmwareRequest>,
-  output: __S(6) as any as S.Schema<UpdateFirmwareResponse>,
+  input: UpdateFirmwareRequest,
+  output: UpdateFirmwareResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1362,8 +1779,8 @@ export const UpdateWorkspace: API.OperationMethod<
   UpdateWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<UpdateWorkspaceRequest>,
-  output: __S(12) as any as S.Schema<UpdateWorkspaceResponse>,
+  input: UpdateWorkspaceRequest,
+  output: UpdateWorkspaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1377,8 +1794,8 @@ export const WorkspacesGenerateUploadUrl: API.OperationMethod<
   WorkspacesGenerateUploadUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<WorkspacesGenerateUploadUrlRequest>,
-  output: __S(85) as any as S.Schema<UrlToken>,
+  input: WorkspacesGenerateUploadUrlRequest,
+  output: UrlToken,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1395,7 +1812,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "StatusMessage" });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(StatusMessage);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1405,8 +1822,8 @@ function __c0(j: number): any {
           version: S.optional(S.String),
           description: S.optional(S.String),
           fileSize: S.optional(S.Number),
-          status: S.optional(S.String),
-          statusMessages: S.optional(__S(1)),
+          status: S.optional(Status),
+          statusMessages: S.optional(FirmwarePropertiesInputStatusMessagesList),
         }),
       ).annotate({ identifier: "FirmwarePropertiesInput" });
     case 3:
@@ -1416,7 +1833,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           firmwareId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2)),
+          properties: S.optional(FirmwarePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1430,10 +1847,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -1446,9 +1863,9 @@ function __c0(j: number): any {
           version: S.optional(S.String),
           description: S.optional(S.String),
           fileSize: S.optional(S.Number),
-          status: S.optional(S.String),
-          statusMessages: S.optional(__S(1)),
-          provisioningState: S.optional(S.String),
+          status: S.optional(Status),
+          statusMessages: S.optional(FirmwarePropertiesStatusMessagesList),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "FirmwareProperties" });
     case 6:
@@ -1457,8 +1874,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          properties: S.optional(__S(5)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(FirmwareProperties),
         }),
       ).annotate({ identifier: "CreateFirmwareResponse" });
     case 7:
@@ -1475,7 +1892,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          tier: S.optional(S.String),
+          tier: S.optional(SkuTier),
           size: S.optional(S.String),
           family: S.optional(S.String),
           capacity: S.optional(S.Number),
@@ -1489,10 +1906,10 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(7)),
+          tags: S.optional(CreateWorkspaceRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(8)),
-          sku: S.optional(__S(9)),
+          properties: S.optional(WorkspacePropertiesInput),
+          sku: S.optional(CreateWorkspaceRequestSku),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1505,7 +1922,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "WorkspaceProperties" });
     case 4:
@@ -1514,11 +1931,11 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateWorkspaceResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(11)),
-          sku: S.optional(__S(9)),
+          properties: S.optional(WorkspaceProperties),
+          sku: S.optional(CreateWorkspaceResponseSku),
         }),
       ).annotate({ identifier: "CreateWorkspaceResponse" });
     case 5:
@@ -1579,7 +1996,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           firmwareId: S.String.pipe(T.Label()),
-          summaryType: S.String.pipe(T.Label()),
+          summaryType: GetSummaryRequestSummaryType.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1592,8 +2009,8 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          summaryType: S.String,
-          provisioningState: S.optional(S.String),
+          summaryType: SummaryType,
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "SummaryResourceProperties",
@@ -1604,8 +2021,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          properties: S.optional(__S(17)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SummaryResourceProperties),
         }),
       ).annotate({ identifier: "GetSummaryResponse" });
     case 3:
@@ -1629,7 +2046,7 @@ function __c2(j: number): any {
         S.Struct({
           monthlyFirmwareUploadCount: S.Number,
           totalFirmwareCount: S.Number,
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "UsageMetricProperties" });
     case 5:
@@ -1638,8 +2055,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          properties: S.optional(__S(20)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(UsageMetricProperties),
         }),
       ).annotate({ identifier: "GetUsageMetricsResponse" });
     case 6:
@@ -1693,13 +2110,13 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           binaryHardeningId: S.optional(S.String),
-          securityHardeningFeatures: S.optional(__S(24)),
+          securityHardeningFeatures: S.optional(BinaryHardeningFeatures),
           executableArchitecture: S.optional(S.String),
           filePath: S.optional(S.String),
-          executableClass: S.optional(S.String),
+          executableClass: S.optional(ExecutableClass),
           runpath: S.optional(S.String),
           rpath: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "BinaryHardeningResult" });
     case 2:
@@ -1708,16 +2125,16 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          properties: S.optional(__S(25)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BinaryHardeningResult),
         }),
       ).annotate({ identifier: "BinaryHardeningResource" });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(BinaryHardeningResource);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(27),
+          value: BinaryHardeningResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1752,7 +2169,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "CryptoCertificateEntity" });
     case 7:
-      return S.Array(S.String);
+      return S.Array(CertificateUsage);
   }
 }
 function __c4(j: number): any {
@@ -1771,8 +2188,8 @@ function __c4(j: number): any {
         S.Struct({
           cryptoCertId: S.optional(S.String),
           certificateName: S.optional(S.String),
-          subject: S.optional(__S(30)),
-          issuer: S.optional(__S(30)),
+          subject: S.optional(CryptoCertificateEntity),
+          issuer: S.optional(CryptoCertificateEntity),
           issuedDate: S.optional(S.String),
           expirationDate: S.optional(S.String),
           certificateRole: S.optional(S.String),
@@ -1782,14 +2199,14 @@ function __c4(j: number): any {
           encoding: S.optional(S.String),
           serialNumber: S.optional(S.String),
           fingerprint: S.optional(S.String),
-          certificateUsage: S.optional(__S(31)),
-          filePaths: S.optional(__S(32)),
-          pairedKey: S.optional(__S(33)),
+          certificateUsage: S.optional(CryptoCertificateCertificateUsageList),
+          filePaths: S.optional(CryptoCertificateFilePathsList),
+          pairedKey: S.optional(PairedKey),
           isExpired: S.optional(S.Boolean),
           isSelfSigned: S.optional(S.Boolean),
           isWeakSignature: S.optional(S.Boolean),
           isShortKeySize: S.optional(S.Boolean),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "CryptoCertificate" });
     case 3:
@@ -1798,18 +2215,18 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          properties: S.optional(__S(34)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CryptoCertificate),
         }),
       ).annotate({
         identifier: "CryptoCertificateResource",
       });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(CryptoCertificateResource);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(36),
+          value: CryptoCertificateResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1837,14 +2254,14 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           cryptoKeyId: S.optional(S.String),
-          keyType: S.optional(S.String),
+          keyType: S.optional(CryptoKeyType),
           cryptoKeySize: S.optional(S.Number),
           keyAlgorithm: S.optional(S.String),
-          usage: S.optional(__S(32)),
-          filePaths: S.optional(__S(32)),
-          pairedKey: S.optional(__S(33)),
+          usage: S.optional(CryptoKeyUsageList),
+          filePaths: S.optional(CryptoKeyFilePathsList),
+          pairedKey: S.optional(PairedKey),
           isShortKeySize: S.optional(S.Boolean),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "CryptoKey" });
   }
@@ -1857,16 +2274,16 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          properties: S.optional(__S(39)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CryptoKey),
         }),
       ).annotate({ identifier: "CryptoKeyResource" });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(CryptoKeyResource);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(41),
+          value: CryptoKeyResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1904,7 +2321,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "CvssScore" });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(CvssScore);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1917,7 +2334,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(CveLink);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1927,17 +2344,17 @@ function __c6(j: number): any {
           componentVersion: S.optional(S.String),
           severity: S.optional(S.String),
           cveName: S.optional(S.String),
-          component: S.optional(__S(44)),
+          component: S.optional(CveComponent),
           cvssScore: S.optional(S.String),
           cvssV2Score: S.optional(S.String),
           cvssV3Score: S.optional(S.String),
           cvssVersion: S.optional(S.String),
           effectiveCvssScore: S.optional(S.Number),
           effectiveCvssVersion: S.optional(S.Number),
-          cvssScores: S.optional(__S(46)),
-          links: S.optional(__S(48)),
+          cvssScores: S.optional(CveResultCvssScoresList),
+          links: S.optional(CveResultLinksList),
           description: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "CveResult" });
     case 2:
@@ -1946,16 +2363,16 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          properties: S.optional(__S(49)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CveResult),
         }),
       ).annotate({ identifier: "CveResource" });
     case 3:
-      return S.Array(__S(50));
+      return S.Array(CveResource);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(51),
+          value: CveResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CveResourceListResult" });
@@ -1977,11 +2394,11 @@ function __c6(j: number): any {
         identifier: "ListFirmwareByWorkspaceRequest",
       });
     case 6:
-      return S.Array(__S(6));
+      return S.Array(Firmware);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(54),
+          value: FirmwareListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FirmwareListResult" });
@@ -2014,17 +2431,17 @@ function __c7(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(57)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(Operation);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(59)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -2056,7 +2473,7 @@ function __c7(j: number): any {
           context: S.optional(S.String),
           username: S.optional(S.String),
           algorithm: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "PasswordHash" });
     case 7:
@@ -2065,8 +2482,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          properties: S.optional(__S(62)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PasswordHash),
         }),
       ).annotate({ identifier: "PasswordHashResource" });
   }
@@ -2074,11 +2491,11 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(PasswordHashResource);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(64),
+          value: PasswordHashResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2109,8 +2526,8 @@ function __c8(j: number): any {
           componentName: S.optional(S.String),
           version: S.optional(S.String),
           license: S.optional(S.String),
-          filePaths: S.optional(__S(32)),
-          provisioningState: S.optional(S.String),
+          filePaths: S.optional(SbomComponentFilePathsList),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "SbomComponent" });
     case 4:
@@ -2119,16 +2536,16 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          properties: S.optional(__S(67)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SbomComponent),
         }),
       ).annotate({ identifier: "SbomComponentResource" });
     case 5:
-      return S.Array(__S(68));
+      return S.Array(SbomComponentResource);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(69),
+          value: SbomComponentResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2157,11 +2574,11 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(18));
+      return S.Array(SummaryResource);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(72),
+          value: SummaryResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2185,11 +2602,11 @@ function __c9(j: number): any {
         identifier: "ListUsageMetricsByWorkspaceRequest",
       });
     case 3:
-      return S.Array(__S(21));
+      return S.Array(UsageMetric);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(75),
+          value: UsageMetricListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageMetricListResult" });
@@ -2210,11 +2627,11 @@ function __c9(j: number): any {
         identifier: "ListWorkspaceByResourceGroupRequest",
       });
     case 6:
-      return S.Array(__S(12));
+      return S.Array(Workspace);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(78),
+          value: WorkspaceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceListResult" });
@@ -2244,7 +2661,7 @@ function __c10(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           firmwareId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2)),
+          properties: S.optional(FirmwarePropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2258,7 +2675,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          tier: S.optional(S.String),
+          tier: S.optional(AzureResourceManagerCommonTypesSkuUpdateTier),
           size: S.optional(S.String),
           family: S.optional(S.String),
           capacity: S.optional(S.Number),
@@ -2272,8 +2689,8 @@ function __c10(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          sku: S.optional(__S(82)),
-          tags: S.optional(__S(7)),
+          sku: S.optional(AzureResourceManagerCommonTypesSkuUpdate),
+          tags: S.optional(UpdateWorkspaceRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2307,36 +2724,5 @@ function __c10(j: number): any {
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "UrlToken" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
   }
 }

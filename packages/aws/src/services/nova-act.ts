@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Nova Act",
   serviceShapeName: "AmazonNovaAgentsDataPlane",
@@ -101,7 +99,7 @@ export class InternalServerException
         /*@__PURE__*/ T.HttpHeader("Retry-After"),
       ),
       reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
+        /*@__PURE__*/ S.suspend(() => InternalServerExceptionReason).annotate({
           identifier: "InternalServerExceptionReason",
         }),
       ),
@@ -151,11 +149,11 @@ export class ValidationException
     "ValidationException",
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-      reason: /*@__PURE__*/ S.suspend(() => S.String).annotate({
+      reason: /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(57)).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -169,12 +167,15 @@ export type ToolName = string;
 export type ToolDescription = string | redacted.Redacted<string>;
 export type ToolInputSchemaDocument = unknown;
 export type ToolInputSchema = { json: any };
+const ToolInputSchema = /*@__PURE__*/ __L.at(__c0, 0);
 export interface ToolSpec {
   name: string;
   description: string | redacted.Redacted<string>;
   inputSchema: ToolInputSchema;
 }
+const ToolSpec = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ToolSpec>;
 export type ToolSpecs = ToolSpec[];
+const ToolSpecs = /*@__PURE__*/ __L.at(__c0, 2);
 export type ClientToken = string;
 export interface CreateActRequest {
   workflowDefinitionName: string;
@@ -184,6 +185,7 @@ export interface CreateActRequest {
   toolSpecs?: ToolSpec[];
   clientToken?: string;
 }
+const CreateActRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateActRequest>;
 export type ActStatus =
   | "RUNNING"
   | "PENDING_CLIENT_ACTION"
@@ -192,18 +194,26 @@ export type ActStatus =
   | "FAILED"
   | "TIMED_OUT"
   | (string & {});
+const ActStatus = S.String;
+
 export interface CreateActResponse {
   actId: string;
   status: ActStatus;
 }
+const CreateActResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateActResponse>;
 export interface CreateSessionRequest {
   workflowDefinitionName: string;
   workflowRunId: string;
   clientToken?: string;
 }
+const CreateSessionRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateSessionRequest>;
 export interface CreateSessionResponse {
   sessionId: string;
 }
+const CreateSessionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateSessionResponse>;
 export type WorkflowDescription = string | redacted.Redacted<string>;
 export type S3BucketName = string;
 export type S3KeyPrefix = string;
@@ -211,16 +221,27 @@ export interface WorkflowExportConfig {
   s3BucketName: string;
   s3KeyPrefix?: string;
 }
+const WorkflowExportConfig = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<WorkflowExportConfig>;
 export interface CreateWorkflowDefinitionRequest {
   name: string;
   description?: string | redacted.Redacted<string>;
   exportConfig?: WorkflowExportConfig;
   clientToken?: string;
 }
+const CreateWorkflowDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateWorkflowDefinitionRequest>;
 export type WorkflowDefinitionStatus = "ACTIVE" | "DELETING" | (string & {});
+const WorkflowDefinitionStatus = S.String;
+
 export interface CreateWorkflowDefinitionResponse {
   status: WorkflowDefinitionStatus;
 }
+const CreateWorkflowDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateWorkflowDefinitionResponse>;
 export type ModelId = string;
 export type CloudWatchLogGroupName = string;
 export type NonBlankString = string;
@@ -228,6 +249,7 @@ export interface ClientInfo {
   compatibilityVersion: number;
   sdkVersion?: string;
 }
+const ClientInfo = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ClientInfo>;
 export interface CreateWorkflowRunRequest {
   workflowDefinitionName: string;
   modelId: string;
@@ -235,6 +257,10 @@ export interface CreateWorkflowRunRequest {
   logGroupName?: string;
   clientInfo: ClientInfo;
 }
+const CreateWorkflowRunRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateWorkflowRunRequest>;
 export type WorkflowRunStatus =
   | "RUNNING"
   | "SUCCEEDED"
@@ -242,26 +268,48 @@ export type WorkflowRunStatus =
   | "TIMED_OUT"
   | "DELETING"
   | (string & {});
+const WorkflowRunStatus = S.String;
+
 export interface CreateWorkflowRunResponse {
   workflowRunId: string;
   status: WorkflowRunStatus;
 }
+const CreateWorkflowRunResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateWorkflowRunResponse>;
 export interface DeleteWorkflowDefinitionRequest {
   workflowDefinitionName: string;
 }
+const DeleteWorkflowDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteWorkflowDefinitionRequest>;
 export interface DeleteWorkflowDefinitionResponse {
   status: WorkflowDefinitionStatus;
 }
+const DeleteWorkflowDefinitionResponse =
+  CreateWorkflowDefinitionResponse as any as S.Schema<DeleteWorkflowDefinitionResponse>;
 export interface DeleteWorkflowRunRequest {
   workflowDefinitionName: string;
   workflowRunId: string;
 }
+const DeleteWorkflowRunRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DeleteWorkflowRunRequest>;
 export interface DeleteWorkflowRunResponse {
   status: WorkflowRunStatus;
 }
+const DeleteWorkflowRunResponse =
+  CreateWorkflowDefinitionResponse as any as S.Schema<DeleteWorkflowRunResponse>;
 export interface GetWorkflowDefinitionRequest {
   workflowDefinitionName: string;
 }
+const GetWorkflowDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetWorkflowDefinitionRequest>;
 export type WorkflowDefinitionArn = string;
 export interface GetWorkflowDefinitionResponse {
   name: string;
@@ -271,10 +319,18 @@ export interface GetWorkflowDefinitionResponse {
   exportConfig?: WorkflowExportConfig;
   status: WorkflowDefinitionStatus;
 }
+const GetWorkflowDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetWorkflowDefinitionResponse>;
 export interface GetWorkflowRunRequest {
   workflowDefinitionName: string;
   workflowRunId: string;
 }
+const GetWorkflowRunRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetWorkflowRunRequest>;
 export type WorkflowRunArn = string;
 export interface GetWorkflowRunResponse {
   workflowRunArn: string;
@@ -285,14 +341,22 @@ export interface GetWorkflowRunResponse {
   modelId: string;
   logGroupName?: string;
 }
+const GetWorkflowRunResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetWorkflowRunResponse>;
 export type CallId = string;
 export type CallResultContent = { text: string };
+const CallResultContent = /*@__PURE__*/ __L.at(__c2, 3);
 export type CallResultContents = CallResultContent[];
+const CallResultContents = /*@__PURE__*/ __L.at(__c2, 4);
 export interface CallResult {
   callId?: string;
   content: CallResultContent[];
 }
+const CallResult = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<CallResult>;
 export type CallResults = CallResult[];
+const CallResults = /*@__PURE__*/ __L.at(__c2, 6);
 export interface InvokeActStepRequest {
   workflowDefinitionName: string;
   workflowRunId: string;
@@ -301,20 +365,29 @@ export interface InvokeActStepRequest {
   callResults: CallResult[];
   previousStepId?: string;
 }
+const InvokeActStepRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<InvokeActStepRequest>;
 export type SensitiveDocument = unknown;
 export interface Call {
   callId: string;
   input: any;
   name: string;
 }
+const Call = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Call>;
 export type Calls = Call[];
+const Calls = /*@__PURE__*/ __L.at(__c3, 1);
 export interface InvokeActStepResponse {
   calls: Call[];
   stepId: string;
 }
+const InvokeActStepResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<InvokeActStepResponse>;
 export type MaxResults = number;
 export type NextToken = string;
 export type SortOrder = "Ascending" | "Descending" | (string & {});
+const SortOrder = S.String;
+
 export interface ListActsRequest {
   workflowDefinitionName: string;
   workflowRunId?: string;
@@ -323,11 +396,15 @@ export interface ListActsRequest {
   nextToken?: string;
   sortOrder?: SortOrder;
 }
+const ListActsRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ListActsRequest>;
 export type TraceLocationType = "S3" | (string & {});
+const TraceLocationType = S.String;
+
 export interface TraceLocation {
   locationType: TraceLocationType;
   location: string;
 }
+const TraceLocation = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<TraceLocation>;
 export interface ActSummary {
   workflowRunId: string;
   sessionId: string;
@@ -337,41 +414,58 @@ export interface ActSummary {
   endedAt?: Date;
   traceLocation?: TraceLocation;
 }
+const ActSummary = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ActSummary>;
 export type ActSummaries = ActSummary[];
+const ActSummaries = /*@__PURE__*/ __L.at(__c3, 6);
 export interface ListActsResponse {
   actSummaries: ActSummary[];
   nextToken?: string;
 }
+const ListActsResponse = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ListActsResponse>;
 export interface ListModelsRequest {
   clientCompatibilityVersion: number;
 }
+const ListModelsRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ListModelsRequest>;
 export type ModelStatus = "ACTIVE" | "LEGACY" | "DEPRECATED" | "PREVIEW" | (string & {});
+const ModelStatus = S.String;
+
 export interface ModelLifecycle {
   status: ModelStatus;
 }
+const ModelLifecycle = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ModelLifecycle>;
 export interface ModelSummary {
   modelId: string;
   modelLifecycle: ModelLifecycle;
   minimumCompatibilityVersion: number;
 }
+const ModelSummary = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ModelSummary>;
 export type ModelSummaries = ModelSummary[];
+const ModelSummaries = /*@__PURE__*/ __L.at(__c4, 3);
 export interface ModelAlias {
   aliasName: string;
   latestModelId: string;
   resolvedModelId?: string;
 }
+const ModelAlias = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ModelAlias>;
 export type ModelAliases = ModelAlias[];
+const ModelAliases = /*@__PURE__*/ __L.at(__c4, 5);
 export type ModelIdList = string[];
+const ModelIdList = /*@__PURE__*/ __L.at(__c4, 6);
 export interface CompatibilityInformation {
   clientCompatibilityVersion: number;
   supportedModelIds: string[];
   message?: string;
 }
+const CompatibilityInformation = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CompatibilityInformation>;
 export interface ListModelsResponse {
   modelSummaries: ModelSummary[];
   modelAliases: ModelAlias[];
   compatibilityInformation: CompatibilityInformation;
 }
+const ListModelsResponse = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ListModelsResponse>;
 export interface ListSessionsRequest {
   workflowDefinitionName: string;
   workflowRunId: string;
@@ -379,36 +473,57 @@ export interface ListSessionsRequest {
   nextToken?: string;
   sortOrder?: SortOrder;
 }
+const ListSessionsRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ListSessionsRequest>;
 export interface SessionSummary {
   sessionId: string;
 }
+const SessionSummary = CreateSessionResponse as any as S.Schema<SessionSummary>;
 export type SessionSummaries = SessionSummary[];
+const SessionSummaries = /*@__PURE__*/ __L.at(__c5, 2);
 export interface ListSessionsResponse {
   sessionSummaries: SessionSummary[];
   nextToken?: string;
 }
+const ListSessionsResponse = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ListSessionsResponse>;
 export interface ListWorkflowDefinitionsRequest {
   maxResults?: number;
   nextToken?: string;
   sortOrder?: SortOrder;
 }
+const ListWorkflowDefinitionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListWorkflowDefinitionsRequest>;
 export interface WorkflowDefinitionSummary {
   workflowDefinitionArn: string;
   workflowDefinitionName: string;
   createdAt: Date;
   status: WorkflowDefinitionStatus;
 }
+const WorkflowDefinitionSummary = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<WorkflowDefinitionSummary>;
 export type WorkflowDefinitionSummaries = WorkflowDefinitionSummary[];
+const WorkflowDefinitionSummaries = /*@__PURE__*/ __L.at(__c5, 6);
 export interface ListWorkflowDefinitionsResponse {
   workflowDefinitionSummaries: WorkflowDefinitionSummary[];
   nextToken?: string;
 }
+const ListWorkflowDefinitionsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListWorkflowDefinitionsResponse>;
 export interface ListWorkflowRunsRequest {
   workflowDefinitionName: string;
   maxResults?: number;
   nextToken?: string;
   sortOrder?: SortOrder;
 }
+const ListWorkflowRunsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListWorkflowRunsRequest>;
 export interface WorkflowRunSummary {
   workflowRunArn: string;
   workflowRunId: string;
@@ -417,16 +532,23 @@ export interface WorkflowRunSummary {
   endedAt?: Date;
   traceLocation?: TraceLocation;
 }
+const WorkflowRunSummary = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<WorkflowRunSummary>;
 export type WorkflowRunSummaries = WorkflowRunSummary[];
+const WorkflowRunSummaries = /*@__PURE__*/ __L.at(__c6, 2);
 export interface ListWorkflowRunsResponse {
   workflowRunSummaries: WorkflowRunSummary[];
   nextToken?: string;
 }
+const ListWorkflowRunsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ListWorkflowRunsResponse>;
 export type SensitiveString = string | redacted.Redacted<string>;
 export interface ActError {
   message: string | redacted.Redacted<string>;
   type?: string;
 }
+const ActError = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ActError>;
 export interface UpdateActRequest {
   workflowDefinitionName: string;
   workflowRunId: string;
@@ -435,27 +557,43 @@ export interface UpdateActRequest {
   status: ActStatus;
   error?: ActError;
 }
+const UpdateActRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<UpdateActRequest>;
 export interface UpdateActResponse {}
+const UpdateActResponse = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<UpdateActResponse>;
 export interface UpdateWorkflowRunRequest {
   workflowDefinitionName: string;
   workflowRunId: string;
   status: WorkflowRunStatus;
 }
+const UpdateWorkflowRunRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<UpdateWorkflowRunRequest>;
 export interface UpdateWorkflowRunResponse {}
+const UpdateWorkflowRunResponse = UpdateActResponse as any as S.Schema<UpdateWorkflowRunResponse>;
 export type InternalServerExceptionReason =
   | "InvalidModelGeneration"
   | "RequestTokenLimitExceeded"
   | (string & {});
+const InternalServerExceptionReason = S.String;
+
 export type ValidationExceptionReason =
   | "FieldValidationFailed"
   | "InvalidStatus"
   | "GuardrailIntervened"
   | (string & {});
+const ValidationExceptionReason = S.String;
+
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c7, 1);
 export type CreateActError =
   | AccessDeniedException
   | ConflictException
@@ -474,8 +612,8 @@ export const createAct: API.OperationMethod<
   CreateActError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateActRequest>,
-  output: __S(4) as any as S.Schema<CreateActResponse>,
+  input: CreateActRequest,
+  output: CreateActResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -508,8 +646,8 @@ export const createSession: API.OperationMethod<
   CreateSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreateSessionRequest>,
-  output: __S(6) as any as S.Schema<CreateSessionResponse>,
+  input: CreateSessionRequest,
+  output: CreateSessionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -541,8 +679,8 @@ export const createWorkflowDefinition: API.OperationMethod<
   CreateWorkflowDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateWorkflowDefinitionRequest>,
-  output: __S(9) as any as S.Schema<CreateWorkflowDefinitionResponse>,
+  input: CreateWorkflowDefinitionRequest,
+  output: CreateWorkflowDefinitionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -573,8 +711,8 @@ export const createWorkflowRun: API.OperationMethod<
   CreateWorkflowRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CreateWorkflowRunRequest>,
-  output: __S(12) as any as S.Schema<CreateWorkflowRunResponse>,
+  input: CreateWorkflowRunRequest,
+  output: CreateWorkflowRunResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -605,8 +743,8 @@ export const deleteWorkflowDefinition: API.OperationMethod<
   DeleteWorkflowDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<DeleteWorkflowDefinitionRequest>,
-  output: __S(9) as any as S.Schema<DeleteWorkflowDefinitionResponse>,
+  input: DeleteWorkflowDefinitionRequest,
+  output: DeleteWorkflowDefinitionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -637,8 +775,8 @@ export const deleteWorkflowRun: API.OperationMethod<
   DeleteWorkflowRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<DeleteWorkflowRunRequest>,
-  output: __S(9) as any as S.Schema<DeleteWorkflowRunResponse>,
+  input: DeleteWorkflowRunRequest,
+  output: DeleteWorkflowRunResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -668,8 +806,8 @@ export const getWorkflowDefinition: API.OperationMethod<
   GetWorkflowDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<GetWorkflowDefinitionRequest>,
-  output: __S(16) as any as S.Schema<GetWorkflowDefinitionResponse>,
+  input: GetWorkflowDefinitionRequest,
+  output: GetWorkflowDefinitionResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -699,8 +837,8 @@ export const getWorkflowRun: API.OperationMethod<
   GetWorkflowRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<GetWorkflowRunRequest>,
-  output: __S(18) as any as S.Schema<GetWorkflowRunResponse>,
+  input: GetWorkflowRunRequest,
+  output: GetWorkflowRunResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -732,8 +870,8 @@ export const invokeActStep: API.OperationMethod<
   InvokeActStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<InvokeActStepRequest>,
-  output: __S(26) as any as S.Schema<InvokeActStepResponse>,
+  input: InvokeActStepRequest,
+  output: InvokeActStepResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -766,8 +904,8 @@ export const listActs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ActSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(27) as any as S.Schema<ListActsRequest>,
-  output: __S(31) as any as S.Schema<ListActsResponse>,
+  input: ListActsRequest,
+  output: ListActsResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -801,8 +939,8 @@ export const listModels: API.OperationMethod<
   ListModelsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<ListModelsRequest>,
-  output: __S(40) as any as S.Schema<ListModelsResponse>,
+  input: ListModelsRequest,
+  output: ListModelsResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -827,8 +965,8 @@ export const listSessions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SessionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(41) as any as S.Schema<ListSessionsRequest>,
-  output: __S(43) as any as S.Schema<ListSessionsResponse>,
+  input: ListSessionsRequest,
+  output: ListSessionsResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -864,8 +1002,8 @@ export const listWorkflowDefinitions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkflowDefinitionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(44) as any as S.Schema<ListWorkflowDefinitionsRequest>,
-  output: __S(47) as any as S.Schema<ListWorkflowDefinitionsResponse>,
+  input: ListWorkflowDefinitionsRequest,
+  output: ListWorkflowDefinitionsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -901,8 +1039,8 @@ export const listWorkflowRuns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkflowRunSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(48) as any as S.Schema<ListWorkflowRunsRequest>,
-  output: __S(51) as any as S.Schema<ListWorkflowRunsResponse>,
+  input: ListWorkflowRunsRequest,
+  output: ListWorkflowRunsResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -939,8 +1077,8 @@ export const updateAct: API.OperationMethod<
   UpdateActError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<UpdateActRequest>,
-  output: __S(54) as any as S.Schema<UpdateActResponse>,
+  input: UpdateActRequest,
+  output: UpdateActResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -971,8 +1109,8 @@ export const updateWorkflowRun: API.OperationMethod<
   UpdateWorkflowRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<UpdateWorkflowRunRequest>,
-  output: __S(54) as any as S.Schema<UpdateWorkflowRunResponse>,
+  input: UpdateWorkflowRunRequest,
+  output: UpdateWorkflowRunResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -993,10 +1131,10 @@ function __c0(j: number): any {
       return S.Union([/*@__PURE__*/ S.Struct({ json: S.Any })]);
     case 1:
       return S.suspend(() =>
-        S.Struct({ name: S.String, description: SensitiveString, inputSchema: __S(0) }),
+        S.Struct({ name: S.String, description: SensitiveString, inputSchema: ToolInputSchema }),
       ).annotate({ identifier: "ToolSpec" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(ToolSpec);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1004,7 +1142,7 @@ function __c0(j: number): any {
           workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
           sessionId: S.String.pipe(T.HttpLabel("sessionId")),
           task: SensitiveString,
-          toolSpecs: S.optional(__S(2)),
+          toolSpecs: S.optional(ToolSpecs),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -1021,7 +1159,7 @@ function __c0(j: number): any {
         ),
       ).annotate({ identifier: "CreateActRequest" });
     case 4:
-      return S.suspend(() => S.Struct({ actId: S.String, status: S.String })).annotate({
+      return S.suspend(() => S.Struct({ actId: S.String, status: ActStatus })).annotate({
         identifier: "CreateActResponse",
       });
     case 5:
@@ -1061,7 +1199,7 @@ function __c1(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(SensitiveString),
-          exportConfig: S.optional(__S(7)),
+          exportConfig: S.optional(WorkflowExportConfig),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -1077,7 +1215,7 @@ function __c1(j: number): any {
         identifier: "CreateWorkflowDefinitionRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ status: S.String })).annotate({
+      return S.suspend(() => S.Struct({ status: WorkflowDefinitionStatus })).annotate({
         identifier: "CreateWorkflowDefinitionResponse",
       });
     case 2:
@@ -1091,7 +1229,7 @@ function __c1(j: number): any {
           modelId: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           logGroupName: S.optional(S.String),
-          clientInfo: __S(10),
+          clientInfo: ClientInfo,
         }).pipe(
           T.all(
             T.Http({
@@ -1107,7 +1245,9 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "CreateWorkflowRunRequest" });
     case 4:
-      return S.suspend(() => S.Struct({ workflowRunId: S.String, status: S.String })).annotate({
+      return S.suspend(() =>
+        S.Struct({ workflowRunId: S.String, status: WorkflowRunStatus }),
+      ).annotate({
         identifier: "CreateWorkflowRunResponse",
       });
     case 5:
@@ -1174,8 +1314,8 @@ function __c2(j: number): any {
           arn: S.String,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           description: S.optional(SensitiveString),
-          exportConfig: S.optional(__S(7)),
-          status: S.String,
+          exportConfig: S.optional(WorkflowExportConfig),
+          status: WorkflowDefinitionStatus,
         }),
       ).annotate({
         identifier: "GetWorkflowDefinitionResponse",
@@ -1204,7 +1344,7 @@ function __c2(j: number): any {
         S.Struct({
           workflowRunArn: S.String,
           workflowRunId: S.String,
-          status: S.String,
+          status: WorkflowRunStatus,
           startedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           endedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           modelId: S.String,
@@ -1214,13 +1354,13 @@ function __c2(j: number): any {
     case 3:
       return S.Union([/*@__PURE__*/ S.Struct({ text: S.String })]);
     case 4:
-      return S.Array(__S(19));
+      return S.Array(CallResultContent);
     case 5:
-      return S.suspend(() => S.Struct({ callId: S.optional(S.String), content: __S(20) })).annotate(
-        { identifier: "CallResult" },
-      );
+      return S.suspend(() =>
+        S.Struct({ callId: S.optional(S.String), content: CallResultContents }),
+      ).annotate({ identifier: "CallResult" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(CallResult);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1228,7 +1368,7 @@ function __c2(j: number): any {
           workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
           sessionId: S.String.pipe(T.HttpLabel("sessionId")),
           actId: S.String.pipe(T.HttpLabel("actId")),
-          callResults: __S(22),
+          callResults: CallResults,
           previousStepId: S.optional(S.String),
         }).pipe(
           T.all(
@@ -1253,9 +1393,9 @@ function __c3(j: number): any {
         { identifier: "Call" },
       );
     case 1:
-      return S.Array(__S(24));
+      return S.Array(Call);
     case 2:
-      return S.suspend(() => S.Struct({ calls: __S(25), stepId: S.String })).annotate({
+      return S.suspend(() => S.Struct({ calls: Calls, stepId: S.String })).annotate({
         identifier: "InvokeActStepResponse",
       });
     case 3:
@@ -1266,7 +1406,7 @@ function __c3(j: number): any {
           sessionId: S.optional(S.String).pipe(T.HttpQuery("sessionId")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          sortOrder: S.optional(S.String),
+          sortOrder: S.optional(SortOrder),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/workflow-definitions/{workflowDefinitionName}/acts" }),
@@ -1279,26 +1419,26 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListActsRequest" });
     case 4:
-      return S.suspend(() => S.Struct({ locationType: S.String, location: S.String })).annotate({
-        identifier: "TraceLocation",
-      });
+      return S.suspend(() =>
+        S.Struct({ locationType: TraceLocationType, location: S.String }),
+      ).annotate({ identifier: "TraceLocation" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           workflowRunId: S.String,
           sessionId: S.String,
           actId: S.String,
-          status: S.String,
+          status: ActStatus,
           startedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           endedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          traceLocation: S.optional(__S(28)),
+          traceLocation: S.optional(TraceLocation),
         }),
       ).annotate({ identifier: "ActSummary" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(ActSummary);
     case 7:
       return S.suspend(() =>
-        S.Struct({ actSummaries: __S(30), nextToken: S.optional(S.String) }),
+        S.Struct({ actSummaries: ActSummaries, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListActsResponse" });
   }
 }
@@ -1311,19 +1451,19 @@ function __c4(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/models" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListModelsRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ status: S.String })).annotate({
+      return S.suspend(() => S.Struct({ status: ModelStatus })).annotate({
         identifier: "ModelLifecycle",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           modelId: S.String,
-          modelLifecycle: __S(33),
+          modelLifecycle: ModelLifecycle,
           minimumCompatibilityVersion: S.Number,
         }),
       ).annotate({ identifier: "ModelSummary" });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(ModelSummary);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1333,14 +1473,14 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "ModelAlias" });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(ModelAlias);
     case 6:
       return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
           clientCompatibilityVersion: S.Number,
-          supportedModelIds: __S(38),
+          supportedModelIds: ModelIdList,
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "CompatibilityInformation" });
@@ -1351,9 +1491,9 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          modelSummaries: __S(35),
-          modelAliases: __S(37),
-          compatibilityInformation: __S(39),
+          modelSummaries: ModelSummaries,
+          modelAliases: ModelAliases,
+          compatibilityInformation: CompatibilityInformation,
         }),
       ).annotate({ identifier: "ListModelsResponse" });
     case 1:
@@ -1363,7 +1503,7 @@ function __c5(j: number): any {
           workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          sortOrder: S.optional(S.String),
+          sortOrder: S.optional(SortOrder),
         }).pipe(
           T.all(
             T.Http({
@@ -1379,17 +1519,17 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListSessionsRequest" });
     case 2:
-      return S.Array(__S(6));
+      return S.Array(SessionSummary);
     case 3:
       return S.suspend(() =>
-        S.Struct({ sessionSummaries: __S(42), nextToken: S.optional(S.String) }),
+        S.Struct({ sessionSummaries: SessionSummaries, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListSessionsResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          sortOrder: S.optional(S.String),
+          sortOrder: S.optional(SortOrder),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/workflow-definitions" }),
@@ -1409,17 +1549,17 @@ function __c5(j: number): any {
           workflowDefinitionArn: S.String,
           workflowDefinitionName: S.String,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          status: S.String,
+          status: WorkflowDefinitionStatus,
         }),
       ).annotate({
         identifier: "WorkflowDefinitionSummary",
       });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(WorkflowDefinitionSummary);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          workflowDefinitionSummaries: __S(46),
+          workflowDefinitionSummaries: WorkflowDefinitionSummaries,
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1435,7 +1575,7 @@ function __c6(j: number): any {
           workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          sortOrder: S.optional(S.String),
+          sortOrder: S.optional(SortOrder),
         }).pipe(
           T.all(
             T.Http({
@@ -1455,17 +1595,17 @@ function __c6(j: number): any {
         S.Struct({
           workflowRunArn: S.String,
           workflowRunId: S.String,
-          status: S.String,
+          status: WorkflowRunStatus,
           startedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           endedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          traceLocation: S.optional(__S(28)),
+          traceLocation: S.optional(TraceLocation),
         }),
       ).annotate({ identifier: "WorkflowRunSummary" });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(WorkflowRunSummary);
     case 3:
       return S.suspend(() =>
-        S.Struct({ workflowRunSummaries: __S(50), nextToken: S.optional(S.String) }),
+        S.Struct({ workflowRunSummaries: WorkflowRunSummaries, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListWorkflowRunsResponse" });
     case 4:
       return S.suspend(() =>
@@ -1478,8 +1618,8 @@ function __c6(j: number): any {
           workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
           sessionId: S.String.pipe(T.HttpLabel("sessionId")),
           actId: S.String.pipe(T.HttpLabel("actId")),
-          status: S.String,
-          error: S.optional(__S(52)),
+          status: ActStatus,
+          error: S.optional(ActError),
         }).pipe(
           T.all(
             T.Http({
@@ -1503,7 +1643,7 @@ function __c6(j: number): any {
         S.Struct({
           workflowDefinitionName: S.String.pipe(T.HttpLabel("workflowDefinitionName")),
           workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
-          status: S.String,
+          status: WorkflowRunStatus,
         }).pipe(
           T.all(
             T.Http({
@@ -1527,31 +1667,6 @@ function __c7(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 1:
-      return S.Array(__S(56));
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
+      return S.Array(ValidationExceptionField);
   }
 }

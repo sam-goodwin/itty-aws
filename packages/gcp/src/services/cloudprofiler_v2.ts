@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -65,6 +63,8 @@ export class NotFound
   ) {}
 
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringMap>;
+
 export type ProfileProfileTypeEnum =
   | "PROFILE_TYPE_UNSPECIFIED"
   | "CPU"
@@ -74,6 +74,8 @@ export type ProfileProfileTypeEnum =
   | "CONTENTION"
   | "PEAK_HEAP"
   | "HEAP_ALLOC";
+const ProfileProfileTypeEnum = S.String;
+
 /** Deployment contains the deployment identification information. */
 export interface Deployment {
   /** Project ID is the ID of a cloud project. Validation regex: `^a-z{4,61}[a-z0-9]$`. */
@@ -83,6 +85,8 @@ export interface Deployment {
   /** Labels identify the deployment within the user universe and same target. Validation regex for label names: `^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$`. Value for an individual label must be <= 512 bytes, the total size of all label names and values must be <= 1024 bytes. Label named "language" can be used to record the programming language of the profiled deployment. The standard choices for the value include "java", "go", "python", "ruby", "nodejs", "php", "dotnet". For deployments running on Google Cloud Platform, "zone" or "region" label should be present describing the deployment location. An example of a zone is "us-central1-a", an example of a region is "us-central1" or "us-central". */
   labels?: StringMap;
 }
+const Deployment = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Deployment>;
+
 /** Profile resource. */
 export interface Profile {
   /** Input only. Labels associated to this specific profile. These labels will get merged with the deployment labels for the final data set. See documentation on deployment labels for validation rules and limits. */
@@ -100,12 +104,19 @@ export interface Profile {
   /** Output only. Opaque, server-assigned, unique ID for this profile. */
   name?: string;
 }
+const Profile = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Profile>;
+
 export interface CreateOfflineProjectsProfilesRequest {
   /** Parent project to create the profile in. */
   parent: string;
   /** Request body */
   body?: Profile;
 }
+const CreateOfflineProjectsProfilesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateOfflineProjectsProfilesRequest>;
+
 export type CreateProfileRequestProfileTypeItemEnum =
   | "PROFILE_TYPE_UNSPECIFIED"
   | "CPU"
@@ -115,9 +126,16 @@ export type CreateProfileRequestProfileTypeItemEnum =
   | "CONTENTION"
   | "PEAK_HEAP"
   | "HEAP_ALLOC";
+const CreateProfileRequestProfileTypeItemEnum = S.String;
+
 export type CreateProfileRequestProfileTypeItemEnumList = Array<
   CreateProfileRequestProfileTypeItemEnum | (string & {})
 >;
+const CreateProfileRequestProfileTypeItemEnumList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateProfileRequestProfileTypeItemEnumList>;
+
 /** CreateProfileRequest describes a profile resource online creation request. The deployment field must be populated. The profile_type specifies the list of profile types supported by the agent. The creation call will hang until a profile of one of these types needs to be collected. */
 export interface CreateProfileRequest {
   /** One or more profile types that the agent is capable of providing. */
@@ -125,12 +143,19 @@ export interface CreateProfileRequest {
   /** Deployment details. */
   deployment?: Deployment;
 }
+const CreateProfileRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateProfileRequest>;
+
 export interface CreateProjectsProfilesRequest {
   /** Parent project to create the profile in. */
   parent: string;
   /** Request body */
   body?: CreateProfileRequest;
 }
+const CreateProjectsProfilesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateProjectsProfilesRequest>;
+
 export interface ListProjectsProfilesRequest {
   /** Optional. The maximum number of items to return. Default page_size is 1000. Max limit is 1000. */
   pageSize?: number;
@@ -139,7 +164,14 @@ export interface ListProjectsProfilesRequest {
   /** Optional. The token to continue pagination and get profiles from a particular page. When paginating, all other parameters provided to `ListProfiles` must match the call that provided the page token. */
   pageToken?: string;
 }
+const ListProjectsProfilesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListProjectsProfilesRequest>;
+
 export type ProfileList = Array<Profile>;
+const ProfileList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ProfileList>;
+
 /** ListProfileResponse contains the list of collected profiles for deployments in projects which the user has permissions to view. */
 export interface ListProfilesResponse {
   /** List of profiles fetched. */
@@ -149,6 +181,8 @@ export interface ListProfilesResponse {
   /** Number of profiles that were skipped in the current page since they were not able to be fetched successfully. This should typically be zero. A non-zero value may indicate a transient failure, in which case if the number is too high for your use case, the call may be retried. */
   skippedProfiles?: number;
 }
+const ListProfilesResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ListProfilesResponse>;
+
 export interface PatchProjectsProfilesRequest {
   /** Field mask used to specify the fields to be overwritten. Currently only profile_bytes and labels fields are supported by UpdateProfile, so only those fields can be specified in the mask. When no mask is provided, all fields are overwritten. */
   updateMask?: string;
@@ -157,6 +191,11 @@ export interface PatchProjectsProfilesRequest {
   /** Request body */
   body?: Profile;
 }
+const PatchProjectsProfilesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<PatchProjectsProfilesRequest>;
+
 export type CreateOfflineProjectsProfilesError =
   | NotFound
   | Forbidden
@@ -170,8 +209,8 @@ export const createOfflineProjectsProfiles: API.OperationMethod<
   CreateOfflineProjectsProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateOfflineProjectsProfilesRequest>,
-  output: __S(2) as any as S.Schema<Profile>,
+  input: CreateOfflineProjectsProfilesRequest,
+  output: Profile,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -185,8 +224,8 @@ export const createProjectsProfiles: API.OperationMethod<
   CreateProjectsProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateProjectsProfilesRequest>,
-  output: __S(2) as any as S.Schema<Profile>,
+  input: CreateProjectsProfilesRequest,
+  output: Profile,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -201,8 +240,8 @@ export const listProjectsProfiles: API.PaginatedOperationMethod<
   GcpOpContext,
   ListProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(7) as any as S.Schema<ListProjectsProfilesRequest>,
-  output: __S(9) as any as S.Schema<ListProfilesResponse>,
+  input: ListProjectsProfilesRequest,
+  output: ListProfilesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -217,8 +256,8 @@ export const patchProjectsProfiles: API.OperationMethod<
   PatchProjectsProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<PatchProjectsProfilesRequest>,
-  output: __S(2) as any as S.Schema<Profile>,
+  input: PatchProjectsProfilesRequest,
+  output: Profile,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -234,18 +273,18 @@ function __c0(j: number): any {
         S.Struct({
           projectId: S.optional(S.String),
           target: S.optional(S.String),
-          labels: S.optional(__S(0)),
+          labels: S.optional(StringMap),
         }),
       ).annotate({ identifier: "Deployment" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(0)),
-          profileType: S.optional(S.String),
+          labels: S.optional(StringMap),
+          profileType: S.optional(ProfileProfileTypeEnum),
           duration: S.optional(S.String),
           profileBytes: S.optional(S.String),
           startTime: S.optional(S.String),
-          deployment: S.optional(__S(1)),
+          deployment: S.optional(Deployment),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Profile" });
@@ -253,7 +292,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(2).pipe(T.HttpBody())),
+          body: S.optional(Profile.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -265,19 +304,19 @@ function __c0(j: number): any {
         identifier: "CreateOfflineProjectsProfilesRequest",
       });
     case 4:
-      return S.Array(S.String);
+      return S.Array(CreateProfileRequestProfileTypeItemEnum);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          profileType: S.optional(__S(4)),
-          deployment: S.optional(__S(1)),
+          profileType: S.optional(CreateProfileRequestProfileTypeItemEnumList),
+          deployment: S.optional(Deployment),
         }),
       ).annotate({ identifier: "CreateProfileRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(5).pipe(T.HttpBody())),
+          body: S.optional(CreateProfileRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -309,11 +348,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2));
+      return S.Array(Profile);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          profiles: S.optional(__S(8)),
+          profiles: S.optional(ProfileList),
           nextPageToken: S.optional(S.String),
           skippedProfiles: S.optional(S.Number),
         }),
@@ -323,7 +362,7 @@ function __c1(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(2).pipe(T.HttpBody())),
+          body: S.optional(Profile.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -334,18 +373,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "PatchProjectsProfilesRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

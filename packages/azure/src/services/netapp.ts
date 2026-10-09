@@ -7,8 +7,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -19,9 +17,19 @@ export interface KeyVaultPrivateEndpoint {
   /** Identifier of the private endpoint to reach the Azure Key Vault */
   privateEndpointId?: string;
 }
+const KeyVaultPrivateEndpoint = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<KeyVaultPrivateEndpoint>;
+
 /** Pairs of virtual network ID and private endpoint ID. Every virtual network that has volumes encrypted with customer-managed keys needs its own key vault private endpoint. */
 export type AccountsChangeKeyVaultRequestKeyVaultPrivateEndpointsList =
   Array<KeyVaultPrivateEndpoint>;
+const AccountsChangeKeyVaultRequestKeyVaultPrivateEndpointsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AccountsChangeKeyVaultRequestKeyVaultPrivateEndpointsList>;
+
 export interface AccountsChangeKeyVaultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -38,15 +46,41 @@ export interface AccountsChangeKeyVaultRequest {
   /** Pairs of virtual network ID and private endpoint ID. Every virtual network that has volumes encrypted with customer-managed keys needs its own key vault private endpoint. */
   keyVaultPrivateEndpoints: AccountsChangeKeyVaultRequestKeyVaultPrivateEndpointsList;
 }
+const AccountsChangeKeyVaultRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AccountsChangeKeyVaultRequest>;
+
 export interface AccountsChangeKeyVaultResponse {}
+const AccountsChangeKeyVaultResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AccountsChangeKeyVaultResponse>;
+
 /** Resource tags. */
 export type AccountsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const AccountsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AccountsCreateOrUpdateRequestTagsMap>;
+
 /** Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier */
 export type ActiveDirectoryInputBackupOperatorsList = Array<string>;
+const ActiveDirectoryInputBackupOperatorsList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ActiveDirectoryInputBackupOperatorsList>;
+
 /** Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier */
 export type ActiveDirectoryInputAdministratorsList = Array<string>;
+const ActiveDirectoryInputAdministratorsList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<ActiveDirectoryInputAdministratorsList>;
+
 /** Domain Users in the Active directory to be given SeSecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier */
 export type ActiveDirectoryInputSecurityOperatorsList = Array<string>;
+const ActiveDirectoryInputSecurityOperatorsList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<ActiveDirectoryInputSecurityOperatorsList>;
+
 /** LDAP search scope */
 export interface LdapSearchScopeOpt {
   /** This specifies the user DN, which overrides the base DN for user lookups. */
@@ -56,6 +90,8 @@ export interface LdapSearchScopeOpt {
   /** This specifies the custom LDAP search filter to be used when looking up group membership from LDAP server. */
   groupMembershipFilter?: string;
 }
+const LdapSearchScopeOpt = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<LdapSearchScopeOpt>;
+
 /** Active Directory */
 export interface ActiveDirectoryInput {
   /** Id of the Active Directory */
@@ -101,10 +137,19 @@ export interface ActiveDirectoryInput {
   /** Comma separated list of IPv4 addresses of preferred servers for LDAP client. At most two comma separated IPv4 addresses can be passed. */
   preferredServersForLdapClient?: string;
 }
+const ActiveDirectoryInput = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ActiveDirectoryInput>;
+
 /** Active Directories */
 export type AccountPropertiesInputActiveDirectoriesList = Array<ActiveDirectoryInput>;
+const AccountPropertiesInputActiveDirectoriesList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AccountPropertiesInputActiveDirectoriesList>;
+
 /** The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault */
 export type AccountEncryptionInputKeySource = "Microsoft.NetApp" | "Microsoft.KeyVault";
+const AccountEncryptionInputKeySource = S.String;
+
 /** Properties of key vault. */
 export interface KeyVaultPropertiesInput {
   /** The Uri of KeyVault. */
@@ -114,6 +159,11 @@ export interface KeyVaultPropertiesInput {
   /** The resource ID of KeyVault. */
   keyVaultResourceId?: string;
 }
+const KeyVaultPropertiesInput = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<KeyVaultPropertiesInput>;
+
 /** Identity used to authenticate with key vault. */
 export interface EncryptionIdentityInput {
   /** The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities. */
@@ -121,6 +171,11 @@ export interface EncryptionIdentityInput {
   /** ClientId of the multi-tenant Entra ID Application. Used to access cross-tenant keyvaults. */
   federatedClientId?: string;
 }
+const EncryptionIdentityInput = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<EncryptionIdentityInput>;
+
 /** Encryption settings */
 export interface AccountEncryptionInput {
   /** The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault */
@@ -130,6 +185,11 @@ export interface AccountEncryptionInput {
   /** Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'. */
   identity?: EncryptionIdentityInput;
 }
+const AccountEncryptionInput = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<AccountEncryptionInput>;
+
 /** NetApp account properties */
 export interface AccountPropertiesInput {
   /** Active Directories */
@@ -139,24 +199,44 @@ export interface AccountPropertiesInput {
   /** Domain for NFSv4 user ID mapping. This property will be set for all NetApp accounts in the subscription and region and only affect non ldap NFSv4 volumes. */
   nfsV4IDDomain?: string | null;
 }
+const AccountPropertiesInput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<AccountPropertiesInput>;
+
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
+const ManagedServiceIdentityType = S.String;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
+const UserAssignedIdentityInput =
+  AccountsChangeKeyVaultResponse as any as S.Schema<UserAssignedIdentityInput>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type AccountsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
+const AccountsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<AccountsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface AccountsCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: AccountsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
+const AccountsCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<AccountsCreateOrUpdateRequestIdentity>;
+
 export interface AccountsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -173,10 +253,19 @@ export interface AccountsCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: AccountsCreateOrUpdateRequestIdentity;
 }
+const AccountsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<AccountsCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -192,16 +281,32 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<SystemData>;
+
 /** Resource tags. */
 export type AccountsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const AccountsCreateOrUpdateResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<AccountsCreateOrUpdateResponseTagsMap>;
+
 /** Status of the Active Directory */
 export type ActiveDirectoryStatus = "Created" | "InUse" | "Deleted" | "Error" | "Updating";
+const ActiveDirectoryStatus = S.String;
+
 /** Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier */
 export type ActiveDirectoryBackupOperatorsList = Array<string>;
+const ActiveDirectoryBackupOperatorsList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<ActiveDirectoryBackupOperatorsList>;
+
 /** Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier */
 export type ActiveDirectoryAdministratorsList = Array<string>;
+const ActiveDirectoryAdministratorsList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<ActiveDirectoryAdministratorsList>;
+
 /** Domain Users in the Active directory to be given SeSecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier */
 export type ActiveDirectorySecurityOperatorsList = Array<string>;
+const ActiveDirectorySecurityOperatorsList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<ActiveDirectorySecurityOperatorsList>;
+
 /** Active Directory */
 export interface ActiveDirectory {
   /** Id of the Active Directory */
@@ -251,12 +356,23 @@ export interface ActiveDirectory {
   /** Comma separated list of IPv4 addresses of preferred servers for LDAP client. At most two comma separated IPv4 addresses can be passed. */
   preferredServersForLdapClient?: string;
 }
+const ActiveDirectory = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ActiveDirectory>;
+
 /** Active Directories */
 export type AccountPropertiesActiveDirectoriesList = Array<ActiveDirectory>;
+const AccountPropertiesActiveDirectoriesList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<AccountPropertiesActiveDirectoriesList>;
+
 /** The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault */
 export type AccountEncryptionKeySource = "Microsoft.NetApp" | "Microsoft.KeyVault";
+const AccountEncryptionKeySource = S.String;
+
 /** Status of the KeyVault connection. */
 export type KeyVaultStatus = "Created" | "InUse" | "Deleted" | "Error" | "Updating";
+const KeyVaultStatus = S.String;
+
 /** Properties of key vault. */
 export interface KeyVaultProperties {
   /** UUID v4 used to identify the Azure Key Vault configuration */
@@ -270,6 +386,8 @@ export interface KeyVaultProperties {
   /** Status of the KeyVault connection. */
   status?: KeyVaultStatus;
 }
+const KeyVaultProperties = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<KeyVaultProperties>;
+
 /** Identity used to authenticate with key vault. */
 export interface EncryptionIdentity {
   /** The principal ID (object ID) of the identity used to authenticate with key vault. Read-only. */
@@ -279,6 +397,8 @@ export interface EncryptionIdentity {
   /** ClientId of the multi-tenant Entra ID Application. Used to access cross-tenant keyvaults. */
   federatedClientId?: string;
 }
+const EncryptionIdentity = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<EncryptionIdentity>;
+
 /** Encryption settings */
 export interface AccountEncryption {
   /** The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault */
@@ -288,8 +408,12 @@ export interface AccountEncryption {
   /** Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'. */
   identity?: EncryptionIdentity;
 }
+const AccountEncryption = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<AccountEncryption>;
+
 /** MultiAD Status for the account */
 export type MultiAdStatus = "Disabled" | "Enabled";
+const MultiAdStatus = S.String;
+
 /** NetApp account properties */
 export interface AccountProperties {
   /** Azure lifecycle management */
@@ -305,6 +429,8 @@ export interface AccountProperties {
   /** MultiAD Status for the account */
   multiAdStatus?: MultiAdStatus;
 }
+const AccountProperties = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<AccountProperties>;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -312,10 +438,17 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
+const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<UserAssignedIdentity>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type AccountsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
+const AccountsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<AccountsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface AccountsCreateOrUpdateResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -326,6 +459,11 @@ export interface AccountsCreateOrUpdateResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: AccountsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap;
 }
+const AccountsCreateOrUpdateResponseIdentity = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<AccountsCreateOrUpdateResponseIdentity>;
+
 export interface AccountsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -346,6 +484,11 @@ export interface AccountsCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: AccountsCreateOrUpdateResponseIdentity;
 }
+const AccountsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<AccountsCreateOrUpdateResponse>;
+
 export interface AccountsTransitionToCmkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -358,7 +501,17 @@ export interface AccountsTransitionToCmkRequest {
   /** Identifier of the private endpoint to reach the Azure Key Vault */
   privateEndpointId: string;
 }
+const AccountsTransitionToCmkRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<AccountsTransitionToCmkRequest>;
+
 export interface AccountsTransitionToCmkResponse {}
+const AccountsTransitionToCmkResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<AccountsTransitionToCmkResponse>;
+
 export interface AuthorizeVolumeExternalReplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -371,16 +524,31 @@ export interface AuthorizeVolumeExternalReplicationRequest {
   /** The name of the volume */
   volumeName: string;
 }
+const AuthorizeVolumeExternalReplicationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<AuthorizeVolumeExternalReplicationRequest>;
+
 /** Properties of the SVM peer command response. */
 export interface SvmPeerCommandResponseProperties {
   /** A command that needs to be run on the external ONTAP to accept svm peering. Will only be present if <code>svmPeeringStatus</code> is <code>pending</code> */
   svmPeeringCommand?: string;
 }
+const SvmPeerCommandResponseProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<SvmPeerCommandResponseProperties>;
+
 /** Information about svm peering process */
 export interface SvmPeerCommandResponse {
   /** Represents the properties of the SVM peer command response. */
   properties?: SvmPeerCommandResponseProperties;
 }
+const SvmPeerCommandResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<SvmPeerCommandResponse>;
+
 export interface AuthorizeVolumeReplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -395,7 +563,17 @@ export interface AuthorizeVolumeReplicationRequest {
   /** Resource id of the remote volume */
   remoteVolumeResourceId?: string;
 }
+const AuthorizeVolumeReplicationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<AuthorizeVolumeReplicationRequest>;
+
 export interface AuthorizeVolumeReplicationResponse {}
+const AuthorizeVolumeReplicationResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<AuthorizeVolumeReplicationResponse>;
+
 export interface BackupsGetVolumeLatestRestoreStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -408,10 +586,19 @@ export interface BackupsGetVolumeLatestRestoreStatusRequest {
   /** The name of the volume */
   volumeName: string;
 }
+const BackupsGetVolumeLatestRestoreStatusRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<BackupsGetVolumeLatestRestoreStatusRequest>;
+
 /** Status of the volume restore relationship */
 export type VolumeRestoreRelationshipStatus = "Idle" | "Transferring" | "Failed" | "Unknown";
+const VolumeRestoreRelationshipStatus = S.String;
+
 /** The status of the replication */
 export type MirrorState = "Uninitialized" | "Mirrored" | "Broken";
+const MirrorState = S.String;
+
 /** Restore status */
 export interface RestoreStatus {
   /** Restore health status */
@@ -427,8 +614,13 @@ export interface RestoreStatus {
   /** Displays the total bytes transferred */
   totalTransferBytes?: number;
 }
+const RestoreStatus = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<RestoreStatus>;
+
 /** Resource tags. */
 export type BackupVaultsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const BackupVaultsCreateOrUpdateRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<BackupVaultsCreateOrUpdateRequestTagsMap>;
+
 /** Backup Vault properties */
 export type BackupVaultPropertiesInput = UserAssignedIdentityInput;
 export interface BackupVaultsCreateOrUpdateRequest {
@@ -447,13 +639,26 @@ export interface BackupVaultsCreateOrUpdateRequest {
   /** Backup Vault Properties */
   properties?: UserAssignedIdentityInput;
 }
+const BackupVaultsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<BackupVaultsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type BackupVaultsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const BackupVaultsCreateOrUpdateResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<BackupVaultsCreateOrUpdateResponseTagsMap>;
+
 /** Backup Vault properties */
 export interface BackupVaultProperties {
   /** Azure lifecycle management */
   provisioningState?: string;
 }
+const BackupVaultProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<BackupVaultProperties>;
+
 export interface BackupVaultsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -470,6 +675,11 @@ export interface BackupVaultsCreateOrUpdateResponse {
   /** Backup Vault Properties */
   properties?: BackupVaultProperties;
 }
+const BackupVaultsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<BackupVaultsCreateOrUpdateResponse>;
+
 /** The effective NFS User ID and Group ID when accessing the volume data. */
 export interface NfsUser {
   /** The NFS user's UID */
@@ -477,11 +687,15 @@ export interface NfsUser {
   /** The NFS user's GID */
   groupId?: number;
 }
+const NfsUser = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<NfsUser>;
+
 /** The effective CIFS username when accessing the volume data. */
 export interface CifsUser {
   /** The CIFS user's username */
   username?: string;
 }
+const CifsUser = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<CifsUser>;
+
 /** File System user having access to volume data. For Unix, this is the user's uid and gid. For Windows, this is the user's username. Note that the Unix and Windows user details are mutually exclusive, meaning one or other must be supplied, but not both. */
 export interface FileSystemUser {
   /** The effective NFS User ID and Group ID when accessing the volume data. */
@@ -489,8 +703,12 @@ export interface FileSystemUser {
   /** The effective CIFS username when accessing the volume data. */
   cifsUser?: CifsUser;
 }
+const FileSystemUser = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<FileSystemUser>;
+
 /** This action is triggered when a certificate conflict occurs. A conflict arises if you try to create a new bucket while one or more already exist on the server, or if you update a bucket when multiple buckets are present. This happens because a single certificate is shared among all buckets on the same server. Note: This applies both to certificates provided directly via the certificateObject property and to those retrieved from Azure Key Vault. Details for the latter case are specified in the akvDetails.certificateAkvDetails section. */
 export type OnCertificateConflictAction = "Update" | "Fail";
+const OnCertificateConflictAction = S.String;
+
 /** Properties of the server managing the lifecycle of volume buckets */
 export interface BucketServerPropertiesInput {
   /** The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate. */
@@ -500,8 +718,15 @@ export interface BucketServerPropertiesInput {
   /** Action to take when there is a certificate conflict. Possible values include: 'Update', 'Fail' */
   onCertificateConflictAction?: OnCertificateConflictAction | (string & {});
 }
+const BucketServerPropertiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<BucketServerPropertiesInput>;
+
 /** Access permissions for the bucket. Either ReadOnly or ReadWrite. The default is ReadOnly if no value is provided during bucket creation. */
 export type BucketPropertiesInputPermissions = "ReadOnly" | "ReadWrite";
+const BucketPropertiesInputPermissions = S.String;
+
 /** Specifies the Azure Key Vault settings for retrieving the bucket server certificate. */
 export interface CertificateAkvDetails {
   /** The base URI of the Azure Key Vault that is used when retrieving the bucket certificate. */
@@ -509,6 +734,11 @@ export interface CertificateAkvDetails {
   /** The name of the bucket server certificate stored in the Azure Key Vault. */
   certificateName?: string;
 }
+const CertificateAkvDetails = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CertificateAkvDetails>;
+
 /** Specifies the Azure Key Vault settings for storing the bucket credentials. */
 export interface CredentialsAkvDetails {
   /** The base URI of the Azure Key Vault that is used when storing the bucket credentials. */
@@ -516,6 +746,11 @@ export interface CredentialsAkvDetails {
   /** The name of the secret stored in Azure Key Vault. The associated key pair has the following structure: { "access_key_id": "<REDACTED>", "secret_access_key": "<REDACTED>" } */
   secretName?: string;
 }
+const CredentialsAkvDetails = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CredentialsAkvDetails>;
+
 /** Specifies the Azure Key Vault settings. These are used when a) retrieving the bucket server certificate, and b) storing the bucket credentials Notes: 1. If a bucket certificate was previously provided directly using the certificateObject property, it is possible to subsequently use the Azure Key Vault for certificate management by using these 'akvDetails' properties. However, once Azure Key Vault is configured, it is no longer possible to provide the certificate directly via the certificateObject property. 2. These properties are mutually exclusive with the server.certificateObject property. */
 export interface AzureKeyVaultDetails {
   /** Specifies the Azure Key Vault settings for retrieving the bucket server certificate. */
@@ -523,6 +758,8 @@ export interface AzureKeyVaultDetails {
   /** Specifies the Azure Key Vault settings for storing the bucket credentials. */
   credentialsAkvDetails?: CredentialsAkvDetails;
 }
+const AzureKeyVaultDetails = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<AzureKeyVaultDetails>;
+
 /** Bucket resource properties */
 export interface BucketPropertiesInput {
   /** The volume path mounted inside the bucket. The default is the root path '/' if no value is provided when the bucket is created. */
@@ -536,6 +773,11 @@ export interface BucketPropertiesInput {
   /** Specifies the Azure Key Vault settings. These are used when a) retrieving the bucket server certificate, and b) storing the bucket credentials Notes: 1. If a bucket certificate was previously provided directly using the certificateObject property, it is possible to subsequently use the Azure Key Vault for certificate management by using these 'akvDetails' properties. However, once Azure Key Vault is configured, it is no longer possible to provide the certificate directly via the certificateObject property. 2. These properties are mutually exclusive with the server.certificateObject property. */
   akvDetails?: AzureKeyVaultDetails;
 }
+const BucketPropertiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<BucketPropertiesInput>;
+
 export interface BucketsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -552,6 +794,11 @@ export interface BucketsCreateOrUpdateRequest {
   /** Bucket properties */
   properties?: BucketPropertiesInput;
 }
+const BucketsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<BucketsCreateOrUpdateRequest>;
+
 /** Gets the status of the VolumeQuotaRule at the time the operation was called. */
 export type NetAppProvisioningState =
   | "Accepted"
@@ -562,8 +809,12 @@ export type NetAppProvisioningState =
   | "Moving"
   | "Failed"
   | "Succeeded";
+const NetAppProvisioningState = S.String;
+
 /** The bucket credentials status. There states: "NoCredentialsSet": Access and Secret key pair have not been generated. "CredentialsExpired": Access and Secret key pair have expired. "Active": The certificate has been installed and credentials are unexpired. */
 export type CredentialsStatus = "NoCredentialsSet" | "CredentialsExpired" | "Active";
+const CredentialsStatus = S.String;
+
 /** Properties of the server managing the lifecycle of volume buckets */
 export interface BucketServerProperties {
   /** The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate. */
@@ -579,8 +830,15 @@ export interface BucketServerProperties {
   /** Action to take when there is a certificate conflict. Possible values include: 'Update', 'Fail' */
   onCertificateConflictAction?: OnCertificateConflictAction;
 }
+const BucketServerProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<BucketServerProperties>;
+
 /** Access permissions for the bucket. Either ReadOnly or ReadWrite. The default is ReadOnly if no value is provided during bucket creation. */
 export type BucketPropertiesPermissions = "ReadOnly" | "ReadWrite";
+const BucketPropertiesPermissions = S.String;
+
 /** Bucket resource properties */
 export interface BucketProperties {
   /** The volume path mounted inside the bucket. The default is the root path '/' if no value is provided when the bucket is created. */
@@ -598,6 +856,8 @@ export interface BucketProperties {
   /** Specifies the Azure Key Vault settings. These are used when a) retrieving the bucket server certificate, and b) storing the bucket credentials Notes: 1. If a bucket certificate was previously provided directly using the certificateObject property, it is possible to subsequently use the Azure Key Vault for certificate management by using these 'akvDetails' properties. However, once Azure Key Vault is configured, it is no longer possible to provide the certificate directly via the certificateObject property. 2. These properties are mutually exclusive with the server.certificateObject property. */
   akvDetails?: AzureKeyVaultDetails;
 }
+const BucketProperties = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<BucketProperties>;
+
 export interface BucketsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -610,10 +870,20 @@ export interface BucketsCreateOrUpdateResponse {
   /** Bucket properties */
   properties?: BucketProperties;
 }
+const BucketsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<BucketsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type CachesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const CachesCreateOrUpdateRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CachesCreateOrUpdateRequestTagsMap>;
+
 /** This parameter specifies who is authorized to change the ownership of a file. restricted - Only root user can change the ownership of the file. unrestricted - Non-root users can change ownership of files that they own. */
 export type ExportPolicyRuleChownMode = "Restricted" | "Unrestricted";
+const ExportPolicyRuleChownMode = S.String;
+
 /** Volume Export Policy Rule */
 export interface ExportPolicyRule {
   /** Order index */
@@ -647,25 +917,52 @@ export interface ExportPolicyRule {
   /** This parameter specifies who is authorized to change the ownership of a file. restricted - Only root user can change the ownership of the file. unrestricted - Non-root users can change ownership of files that they own. */
   chownMode?: ExportPolicyRuleChownMode | (string & {});
 }
+const ExportPolicyRule = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ExportPolicyRule>;
+
 /** Export policy rule */
 export type CachePropertiesExportPolicyRulesList = Array<ExportPolicyRule>;
+const CachePropertiesExportPolicyRulesList = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<CachePropertiesExportPolicyRulesList>;
+
 /** Set of export policy rules */
 export interface CachePropertiesExportPolicy {
   /** Export policy rule */
   rules?: CachePropertiesExportPolicyRulesList;
 }
+const CachePropertiesExportPolicy = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<CachePropertiesExportPolicy>;
+
 /** Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol */
 export type ProtocolTypes = "NFSv3" | "NFSv4" | "SMB";
+const ProtocolTypes = S.String;
+
 /** Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol */
 export type CachePropertiesInputProtocolTypesList = Array<ProtocolTypes | (string & {})>;
+const CachePropertiesInputProtocolTypesList = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CachePropertiesInputProtocolTypesList>;
+
 /** Describe if a cache is Kerberos enabled. */
 export type KerberosState = "Disabled" | "Enabled";
+const KerberosState = S.String;
+
 /** Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol cache */
 export type SmbEncryptionState = "Disabled" | "Enabled";
+const SmbEncryptionState = S.String;
+
 /** Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume */
 export type SmbAccessBasedEnumeration = "Disabled" | "Enabled";
+const SmbAccessBasedEnumeration = S.String;
+
 /** Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume */
 export type SmbNonBrowsable = "Disabled" | "Enabled";
+const SmbNonBrowsable = S.String;
+
 /** SMB settings for the cache */
 export interface SmbSettings {
   /** Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol cache. */
@@ -675,14 +972,25 @@ export interface SmbSettings {
   /** Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume */
   smbNonBrowsable?: SmbNonBrowsable | (string & {});
 }
+const SmbSettings = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<SmbSettings>;
+
 /** Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault' */
 export type EncryptionKeySource = "Microsoft.NetApp" | "Microsoft.KeyVault";
+const EncryptionKeySource = S.String;
+
 /** Specifies whether LDAP is enabled or not. */
 export type LdapState = "Disabled" | "Enabled";
+const LdapState = S.String;
+
 /** The type of the LDAP server */
 export type LdapServerType = "ActiveDirectory" | "OpenLDAP";
+const LdapServerType = S.String;
+
 /** ONTAP Intercluster LIF IP addresses. One IP address per cluster node is required */
 export type OriginClusterInformationPeerAddressesList = Array<string>;
+const OriginClusterInformationPeerAddressesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<OriginClusterInformationPeerAddressesList>;
+
 /** Stores the origin cluster information associated to a cache. */
 export interface OriginClusterInformation {
   /** ONTAP cluster name of external cluster hosting the origin volume. Must match the exact cluster name. */
@@ -694,12 +1002,23 @@ export interface OriginClusterInformation {
   /** External origin volume name associated to this cache */
   peerVolumeName: string;
 }
+const OriginClusterInformation = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<OriginClusterInformation>;
+
 /** Flag indicating whether a CIFS change notification is enabled for the cache. */
 export type CifsChangeNotifyState = "Disabled" | "Enabled";
+const CifsChangeNotifyState = S.String;
+
 /** Flag indicating whether the global file lock is enabled for the cache. */
 export type GlobalFileLockingState = "Disabled" | "Enabled";
+const GlobalFileLockingState = S.String;
+
 /** Flag indicating whether writeback is enabled for the cache. */
 export type EnableWriteBackState = "Disabled" | "Enabled";
+const EnableWriteBackState = S.String;
+
 /** Cache resource properties */
 export interface CachePropertiesInput {
   /** The file path of the Cache. */
@@ -737,8 +1056,13 @@ export interface CachePropertiesInput {
   /** Flag indicating whether writeback is enabled for the cache. */
   writeBack?: EnableWriteBackState | (string & {});
 }
+const CachePropertiesInput = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<CachePropertiesInput>;
+
 /** The availability zones. */
 export type CachesCreateOrUpdateRequestZonesList = Array<string>;
+const CachesCreateOrUpdateRequestZonesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<CachesCreateOrUpdateRequestZonesList>;
+
 export interface CachesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -759,10 +1083,21 @@ export interface CachesCreateOrUpdateRequest {
   /** The availability zones. */
   zones?: CachesCreateOrUpdateRequestZonesList;
 }
+const CachesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<CachesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type CachesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const CachesCreateOrUpdateResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CachesCreateOrUpdateResponseTagsMap>;
+
 /** Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol */
 export type CachePropertiesProtocolTypesList = Array<ProtocolTypes>;
+const CachePropertiesProtocolTypesList =
+  CachePropertiesInputProtocolTypesList as any as S.Schema<CachePropertiesProtocolTypesList>;
+
 /** Azure lifecycle management */
 export type CacheProvisioningState =
   | "Creating"
@@ -771,6 +1106,8 @@ export type CacheProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Canceled";
+const CacheProvisioningState = S.String;
+
 /** Azure NetApp Files Cache lifecycle management */
 export type CacheLifeCycleState =
   | "ClusterPeeringOfferSent"
@@ -778,6 +1115,8 @@ export type CacheLifeCycleState =
   | "Creating"
   | "Succeeded"
   | "Failed";
+const CacheLifeCycleState = S.String;
+
 /** Contains all the information needed to mount a cache */
 export interface CacheMountTargetProperties {
   /** UUID v4 used to identify the MountTarget */
@@ -787,10 +1126,22 @@ export interface CacheMountTargetProperties {
   /** The SMB server's Fully Qualified Domain Name, FQDN */
   smbServerFqdn?: string;
 }
+const CacheMountTargetProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<CacheMountTargetProperties>;
+
 /** List of mount targets that can be used to mount this cache */
 export type CachePropertiesMountTargetsList = Array<CacheMountTargetProperties>;
+const CachePropertiesMountTargetsList = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<CachePropertiesMountTargetsList>;
+
 /** Specifies if the cache is encryption or not. */
 export type EncryptionState = "Disabled" | "Enabled";
+const EncryptionState = S.String;
+
 /** Language supported for volume. */
 export type VolumeLanguage =
   | "c.utf-8"
@@ -862,8 +1213,12 @@ export type VolumeLanguage =
   | "tr.utf-8"
   | "en-us"
   | "en-us.utf-8";
+const VolumeLanguage = S.String;
+
 /** Flag indicating whether file access logs are enabled for the Cache, based on active diagnostic settings present on the Cache. */
 export type CacheFileAccessLogs = "Enabled" | "Disabled";
+const CacheFileAccessLogs = S.String;
+
 /** Cache resource properties */
 export interface CacheProperties {
   /** The file path of the Cache. */
@@ -917,8 +1272,13 @@ export interface CacheProperties {
   /** Flag indicating whether file access logs are enabled for the Cache, based on active diagnostic settings present on the Cache. */
   fileAccessLogs?: CacheFileAccessLogs;
 }
+const CacheProperties = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<CacheProperties>;
+
 /** The availability zones. */
 export type CachesCreateOrUpdateResponseZonesList = Array<string>;
+const CachesCreateOrUpdateResponseZonesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<CachesCreateOrUpdateResponseZonesList>;
+
 export interface CachesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -939,6 +1299,11 @@ export interface CachesCreateOrUpdateResponse {
   /** The availability zones. */
   zones?: CachesCreateOrUpdateResponseZonesList;
 }
+const CachesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<CachesCreateOrUpdateResponse>;
+
 export interface CachesPoolChangeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -953,10 +1318,21 @@ export interface CachesPoolChangeRequest {
   /** Resource id of the pool to move volume to */
   newPoolResourceId: string;
 }
+const CachesPoolChangeRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<CachesPoolChangeRequest>;
+
 /** Resource tags. */
 export type CachesPoolChangeResponseTagsMap = { [key: string]: string | undefined };
+const CachesPoolChangeResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CachesPoolChangeResponseTagsMap>;
+
 /** The availability zones. */
 export type CachesPoolChangeResponseZonesList = Array<string>;
+const CachesPoolChangeResponseZonesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<CachesPoolChangeResponseZonesList>;
+
 export interface CachesPoolChangeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -977,6 +1353,11 @@ export interface CachesPoolChangeResponse {
   /** The availability zones. */
   zones?: CachesPoolChangeResponseZonesList;
 }
+const CachesPoolChangeResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<CachesPoolChangeResponse>;
+
 export interface CheckNetAppResourceFilePathAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -989,8 +1370,15 @@ export interface CheckNetAppResourceFilePathAvailabilityRequest {
   /** The Azure Resource logical availability zone which is used within zone mapping lookup for the subscription and region. The lookup will retrieve the physical zone where volume is placed. */
   availabilityZone?: string | null;
 }
+const CheckNetAppResourceFilePathAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<CheckNetAppResourceFilePathAvailabilityRequest>;
+
 /** <code>Invalid</code> indicates the name provided does not match Azure App Service naming requirements. <code>AlreadyExists</code> indicates that the name is already in use and is therefore unavailable. */
 export type InAvailabilityReasonType = "Invalid" | "AlreadyExists";
+const InAvailabilityReasonType = S.String;
+
 /** Information regarding availability of a resource. */
 export interface CheckAvailabilityResponse {
   /** <code>true</code> indicates name is valid and available. <code>false</code> indicates the name is invalid, unavailable, or both. */
@@ -1000,6 +1388,11 @@ export interface CheckAvailabilityResponse {
   /** If reason == invalid, provide the user with the reason why the given name is invalid, and provide the resource naming requirements so that the user can select a valid name. If reason == AlreadyExists, explain that resource name is already in use, and direct them to select a different name. */
   message?: string;
 }
+const CheckAvailabilityResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<CheckAvailabilityResponse>;
+
 /** Resource type used for verification. */
 export type CheckNameResourceTypes =
   | "Microsoft.NetApp/netAppAccounts"
@@ -1008,6 +1401,8 @@ export type CheckNameResourceTypes =
   | "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots"
   | "Microsoft.NetApp/netAppAccounts/backupVaults/backups"
   | "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups";
+const CheckNameResourceTypes = S.String;
+
 export interface CheckNetAppResourceNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1020,6 +1415,11 @@ export interface CheckNetAppResourceNameAvailabilityRequest {
   /** Resource group name. */
   resourceGroup: string;
 }
+const CheckNetAppResourceNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<CheckNetAppResourceNameAvailabilityRequest>;
+
 /** Resource type used for verification. */
 export type CheckQuotaNameResourceTypes =
   | "Microsoft.NetApp/netAppAccounts"
@@ -1028,6 +1428,8 @@ export type CheckQuotaNameResourceTypes =
   | "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots"
   | "Microsoft.NetApp/netAppAccounts/backupVaults/backups"
   | "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups";
+const CheckQuotaNameResourceTypes = S.String;
+
 export interface CheckNetAppResourceQuotaAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1040,10 +1442,20 @@ export interface CheckNetAppResourceQuotaAvailabilityRequest {
   /** Resource group name. */
   resourceGroup: string;
 }
+const CheckNetAppResourceQuotaAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<CheckNetAppResourceQuotaAvailabilityRequest>;
+
 /** ARP report suspect resolution */
 export type RansomwareSuspectResolution = "PotentialThreat" | "FalsePositive";
+const RansomwareSuspectResolution = S.String;
+
 /** List of file extensions resolved (PotentialThreat or FalsePositive) */
 export type ClearRansomwareReportSuspectsRequestExtensionsList = Array<string>;
+const ClearRansomwareReportSuspectsRequestExtensionsList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<ClearRansomwareReportSuspectsRequestExtensionsList>;
+
 export interface ClearRansomwareReportSuspectsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1062,7 +1474,15 @@ export interface ClearRansomwareReportSuspectsRequest {
   /** List of file extensions resolved (PotentialThreat or FalsePositive) */
   extensions: ClearRansomwareReportSuspectsRequestExtensionsList;
 }
+const ClearRansomwareReportSuspectsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ClearRansomwareReportSuspectsRequest>;
+
 export interface ClearRansomwareReportSuspectsResponse {}
+const ClearRansomwareReportSuspectsResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<ClearRansomwareReportSuspectsResponse>;
+
 /** Backup properties */
 export interface BackupPropertiesInput {
   /** Label for backup */
@@ -1074,6 +1494,11 @@ export interface BackupPropertiesInput {
   /** The name of the snapshot */
   snapshotName?: string;
 }
+const BackupPropertiesInput = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<BackupPropertiesInput>;
+
 export interface CreateBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1088,8 +1513,12 @@ export interface CreateBackupRequest {
   /** Backup Properties */
   properties: BackupPropertiesInput;
 }
+const CreateBackupRequest = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<CreateBackupRequest>;
+
 /** Type of backup Manual or Scheduled */
 export type BackupType = "Manual" | "Scheduled";
+const BackupType = S.String;
+
 /** Backup properties */
 export interface BackupProperties {
   /** UUID v4 used to identify the Backup */
@@ -1121,6 +1550,8 @@ export interface BackupProperties {
   /** Specifies if the backup is for a large volume. */
   isLargeVolume?: boolean;
 }
+const BackupProperties = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<BackupProperties>;
+
 export interface CreateBackupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1133,8 +1564,13 @@ export interface CreateBackupResponse {
   /** Backup Properties */
   properties: BackupProperties;
 }
+const CreateBackupResponse = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<CreateBackupResponse>;
+
 /** Resource tags. */
 export type CreateBackupPolicyRequestTagsMap = { [key: string]: string | undefined };
+const CreateBackupPolicyRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CreateBackupPolicyRequestTagsMap>;
+
 /** Backup policy properties */
 export interface BackupPolicyPropertiesInput {
   /** Daily backups count to keep */
@@ -1146,6 +1582,11 @@ export interface BackupPolicyPropertiesInput {
   /** The property to decide policy is enabled or not */
   enabled?: boolean;
 }
+const BackupPolicyPropertiesInput = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<BackupPolicyPropertiesInput>;
+
 export interface CreateBackupPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1162,8 +1603,16 @@ export interface CreateBackupPolicyRequest {
   /** Backup policy Properties */
   properties: BackupPolicyPropertiesInput;
 }
+const CreateBackupPolicyRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<CreateBackupPolicyRequest>;
+
 /** Resource tags. */
 export type CreateBackupPolicyResponseTagsMap = { [key: string]: string | undefined };
+const CreateBackupPolicyResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CreateBackupPolicyResponseTagsMap>;
+
 /** Volume details using the backup policy */
 export interface VolumeBackups {
   /** Volume name */
@@ -1175,8 +1624,15 @@ export interface VolumeBackups {
   /** Policy enabled */
   policyEnabled?: boolean;
 }
+const VolumeBackups = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<VolumeBackups>;
+
 /** A list of volumes assigned to this policy */
 export type BackupPolicyPropertiesVolumeBackupsList = Array<VolumeBackups>;
+const BackupPolicyPropertiesVolumeBackupsList = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<BackupPolicyPropertiesVolumeBackupsList>;
+
 /** Backup policy properties */
 export interface BackupPolicyProperties {
   /** Backup Policy GUID ID */
@@ -1196,6 +1652,11 @@ export interface BackupPolicyProperties {
   /** A list of volumes assigned to this policy */
   volumeBackups?: BackupPolicyPropertiesVolumeBackupsList;
 }
+const BackupPolicyProperties = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<BackupPolicyProperties>;
+
 export interface CreateBackupPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1214,6 +1675,11 @@ export interface CreateBackupPolicyResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const CreateBackupPolicyResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<CreateBackupPolicyResponse>;
+
 /** Snapshot properties */
 export type SnapshotPropertiesInput = UserAssignedIdentityInput;
 export interface CreateSnapshotRequest {
@@ -1234,6 +1700,11 @@ export interface CreateSnapshotRequest {
   /** Resource location */
   location: string;
 }
+const CreateSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<CreateSnapshotRequest>;
+
 /** Snapshot properties */
 export interface SnapshotProperties {
   /** UUID v4 used to identify the Snapshot */
@@ -1243,6 +1714,8 @@ export interface SnapshotProperties {
   /** Azure lifecycle management */
   provisioningState?: string;
 }
+const SnapshotProperties = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<SnapshotProperties>;
+
 export interface CreateSnapshotResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1257,8 +1730,16 @@ export interface CreateSnapshotResponse {
   /** Resource location */
   location: string;
 }
+const CreateSnapshotResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<CreateSnapshotResponse>;
+
 /** Resource tags. */
 export type CreateSnapshotPolicyRequestTagsMap = { [key: string]: string | undefined };
+const CreateSnapshotPolicyRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CreateSnapshotPolicyRequestTagsMap>;
+
 /** Hourly Schedule properties */
 export interface HourlySchedule {
   /** Hourly snapshot count to keep */
@@ -1268,6 +1749,8 @@ export interface HourlySchedule {
   /** Resource size in bytes, current storage usage for the volume in bytes */
   usedBytes?: number;
 }
+const HourlySchedule = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<HourlySchedule>;
+
 /** Daily Schedule properties */
 export interface DailySchedule {
   /** Daily snapshot count to keep */
@@ -1279,6 +1762,8 @@ export interface DailySchedule {
   /** Resource size in bytes, current storage usage for the volume in bytes */
   usedBytes?: number;
 }
+const DailySchedule = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<DailySchedule>;
+
 /** Weekly Schedule properties, make a snapshot every week at a specific day or days */
 export interface WeeklySchedule {
   /** Weekly snapshot count to keep */
@@ -1292,6 +1777,8 @@ export interface WeeklySchedule {
   /** Resource size in bytes, current storage usage for the volume in bytes */
   usedBytes?: number;
 }
+const WeeklySchedule = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<WeeklySchedule>;
+
 /** Monthly Schedule properties */
 export interface MonthlySchedule {
   /** Monthly snapshot count to keep */
@@ -1305,6 +1792,8 @@ export interface MonthlySchedule {
   /** Resource size in bytes, current storage usage for the volume in bytes */
   usedBytes?: number;
 }
+const MonthlySchedule = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<MonthlySchedule>;
+
 /** Snapshot policy properties */
 export interface SnapshotPolicyPropertiesInput {
   /** Schedule for hourly snapshots */
@@ -1318,6 +1807,11 @@ export interface SnapshotPolicyPropertiesInput {
   /** The property to decide policy is enabled or not */
   enabled?: boolean;
 }
+const SnapshotPolicyPropertiesInput = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<SnapshotPolicyPropertiesInput>;
+
 export interface CreateSnapshotPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1334,8 +1828,16 @@ export interface CreateSnapshotPolicyRequest {
   /** Snapshot policy Properties */
   properties: SnapshotPolicyPropertiesInput;
 }
+const CreateSnapshotPolicyRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<CreateSnapshotPolicyRequest>;
+
 /** Resource tags. */
 export type CreateSnapshotPolicyResponseTagsMap = { [key: string]: string | undefined };
+const CreateSnapshotPolicyResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CreateSnapshotPolicyResponseTagsMap>;
+
 /** Snapshot policy properties */
 export interface SnapshotPolicyProperties {
   /** Schedule for hourly snapshots */
@@ -1351,6 +1853,11 @@ export interface SnapshotPolicyProperties {
   /** Azure lifecycle management */
   provisioningState?: string;
 }
+const SnapshotPolicyProperties = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<SnapshotPolicyProperties>;
+
 export interface CreateSnapshotPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1369,8 +1876,15 @@ export interface CreateSnapshotPolicyResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const CreateSnapshotPolicyResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<CreateSnapshotPolicyResponse>;
+
 /** Application Type */
 export type ApplicationType = "SAP-HANA" | "ORACLE";
+const ApplicationType = S.String;
+
 /** Application specific parameters for the placement of volumes in the volume group */
 export interface PlacementKeyValuePairs {
   /** Key for an application specific parameter for the placement of volumes in the volume group */
@@ -1378,8 +1892,18 @@ export interface PlacementKeyValuePairs {
   /** Value for an application specific parameter for the placement of volumes in the volume group */
   value: string;
 }
+const PlacementKeyValuePairs = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<PlacementKeyValuePairs>;
+
 /** Application specific placement rules for the volume group */
 export type VolumeGroupMetaDataInputGlobalPlacementRulesList = Array<PlacementKeyValuePairs>;
+const VolumeGroupMetaDataInputGlobalPlacementRulesList = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<VolumeGroupMetaDataInputGlobalPlacementRulesList>;
+
 /** Volume group properties */
 export interface VolumeGroupMetaDataInput {
   /** Group Description */
@@ -1391,10 +1915,21 @@ export interface VolumeGroupMetaDataInput {
   /** Application specific placement rules for the volume group */
   globalPlacementRules?: VolumeGroupMetaDataInputGlobalPlacementRulesList;
 }
+const VolumeGroupMetaDataInput = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<VolumeGroupMetaDataInput>;
+
 /** Resource tags */
 export type VolumeGroupVolumePropertiesInputTagsMap = { [key: string]: string | undefined };
+const VolumeGroupVolumePropertiesInputTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<VolumeGroupVolumePropertiesInputTagsMap>;
+
 /** Availability Zone */
 export type VolumeGroupVolumePropertiesInputZonesList = Array<string>;
+const VolumeGroupVolumePropertiesInputZonesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<VolumeGroupVolumePropertiesInputZonesList>;
+
 /** The service level of the file system */
 export type VolumePropertiesInputServiceLevel =
   | "Standard"
@@ -1402,6 +1937,8 @@ export type VolumePropertiesInputServiceLevel =
   | "Ultra"
   | "StandardZRS"
   | "Flexible";
+const VolumePropertiesInputServiceLevel = S.String;
+
 /** Export policy rule */
 export type VolumePropertiesExportPolicyRulesList = Array<ExportPolicyRule>;
 /** Set of export policy rules */
@@ -1409,14 +1946,22 @@ export interface VolumePropertiesExportPolicy {
   /** Export policy rule */
   rules?: VolumePropertiesExportPolicyRulesList;
 }
+const VolumePropertiesExportPolicy =
+  CachePropertiesExportPolicy as any as S.Schema<VolumePropertiesExportPolicy>;
+
 /** Specify the protocol types for the volume. Supported values are NFSv3, NFSv4.1, and CIFS. For SMB volumes, specify CIFS. The value SMB isn't supported in the protocolTypes property. Default: NFSv3 */
 export type VolumePropertiesInputProtocolTypesList = Array<string>;
+const VolumePropertiesInputProtocolTypesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<VolumePropertiesInputProtocolTypesList>;
+
 /** The original value of the network features type available to the volume at the time it was created. */
 export type VolumePropertiesInputNetworkFeatures =
   | "Basic"
   | "Standard"
   | "Basic_Standard"
   | "Standard_Basic";
+const VolumePropertiesInputNetworkFeatures = S.String;
+
 /** Volume Backup Properties */
 export interface VolumeBackupProperties {
   /** Backup Policy Resource ID */
@@ -1426,8 +1971,15 @@ export interface VolumeBackupProperties {
   /** Backup Vault Resource ID */
   backupVaultId?: string;
 }
+const VolumeBackupProperties = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<VolumeBackupProperties>;
+
 /** Schedule */
 export type ReplicationSchedule = "_10minutely" | "hourly" | "daily";
+const ReplicationSchedule = S.String;
+
 /** The full path to a volume that is to be migrated into ANF. Required for Migration volumes */
 export interface RemotePath {
   /** The Path to a ONTAP Host */
@@ -1437,6 +1989,8 @@ export interface RemotePath {
   /** The name of a volume on the server */
   volumeName: string;
 }
+const RemotePath = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<RemotePath>;
+
 /** Replication properties */
 export interface ReplicationObjectInput {
   /** Schedule */
@@ -1448,20 +2002,39 @@ export interface ReplicationObjectInput {
   /** The remote region for the other end of the Volume Replication. */
   remoteVolumeRegion?: string;
 }
+const ReplicationObjectInput = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ReplicationObjectInput>;
+
 /** Volume Snapshot Properties */
 export interface VolumeSnapshotProperties {
   /** Snapshot Policy ResourceId */
   snapshotPolicyId?: string;
 }
+const VolumeSnapshotProperties = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<VolumeSnapshotProperties>;
+
 /** Volume relocation properties */
 export interface VolumeRelocationPropertiesInput {
   /** Has relocation been requested for this volume */
   relocationRequested?: boolean;
 }
+const VolumeRelocationPropertiesInput = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<VolumeRelocationPropertiesInput>;
+
 /** The desired state of the Advanced Ransomware Protection feature */
 export type DesiredRansomwareProtectionState = "Disabled" | "Enabled";
+const DesiredRansomwareProtectionState = S.String;
+
 /** The actual state of the Advanced Ransomware Protection feature */
 export type ActualRansomwareProtectionState = "Disabled" | "Enabled" | "Learning" | "Paused";
+const ActualRansomwareProtectionState = S.String;
+
 /** Advanced Ransomware Protection reports (ARP) settings */
 export interface RansomwareProtectionSettings {
   /** The desired value of the Advanced Ransomware Protection feature state available to the volume */
@@ -1469,6 +2042,11 @@ export interface RansomwareProtectionSettings {
   /** The actual state of the Advanced Ransomware Protection feature currently active on the volume */
   actualRansomwareProtectionState?: ActualRansomwareProtectionState | (string & {});
 }
+const RansomwareProtectionSettings = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<RansomwareProtectionSettings>;
+
 /** DataProtection type volumes include an object containing details of the replication */
 export interface VolumePropertiesDataProtectionInput {
   /** Backup Properties */
@@ -1482,24 +2060,48 @@ export interface VolumePropertiesDataProtectionInput {
   /** Advanced Ransomware Protection settings */
   ransomwareProtection?: RansomwareProtectionSettings;
 }
+const VolumePropertiesDataProtectionInput = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<VolumePropertiesDataProtectionInput>;
+
 /** While auto splitting the short term clone volume, if the parent pool does not have enough space to accommodate the volume after split, it will be automatically resized, which will lead to increased billing. To accept capacity pool size auto grow and create a short term clone volume, set the property as accepted. */
 export type AcceptGrowCapacityPoolForShortTermCloneSplit = "Accepted" | "Declined";
+const AcceptGrowCapacityPoolForShortTermCloneSplit = S.String;
+
 /** The security style of volume, default unix, defaults to ntfs for dual protocol or CIFS protocol */
 export type VolumePropertiesInputSecurityStyle = "ntfs" | "unix";
+const VolumePropertiesInputSecurityStyle = S.String;
+
 /** Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault' */
 export type VolumePropertiesInputEncryptionKeySource = "Microsoft.NetApp" | "Microsoft.KeyVault";
+const VolumePropertiesInputEncryptionKeySource = S.String;
+
 /** coolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are: Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default. OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads. Never - No client-driven data is pulled from cool tier to standard storage. */
 export type CoolAccessRetrievalPolicy = "Default" | "OnRead" | "Never";
+const CoolAccessRetrievalPolicy = S.String;
+
 /** coolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default. SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier. */
 export type CoolAccessTieringPolicy = "Auto" | "SnapshotOnly";
+const CoolAccessTieringPolicy = S.String;
+
 /** Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose */
 export type VolumePropertiesInputAvsDataStore = "Enabled" | "Disabled";
+const VolumePropertiesInputAvsDataStore = S.String;
+
 /** Application specific placement rules for the particular volume */
 export type VolumePropertiesInputPlacementRulesList = Array<PlacementKeyValuePairs>;
+const VolumePropertiesInputPlacementRulesList =
+  VolumeGroupMetaDataInputGlobalPlacementRulesList as any as S.Schema<VolumePropertiesInputPlacementRulesList>;
+
 /** Flag indicating whether subvolume operations are enabled on the volume Deprecated. Subvolume operations and this flag will be removed in a future API version. */
 export type VolumePropertiesInputEnableSubvolumes = "Enabled" | "Disabled";
+const VolumePropertiesInputEnableSubvolumes = S.String;
+
 /** Specifies whether the volume operates in Breakthrough Mode. When set to 'Enabled', the volume runs on the resources configured for this mode, delivering improved performance and higher throughput. If set to 'Disabled' or omitted, the volume uses the basic configuration. This feature is available only in regions where it's been configured and first-time users must finish onboarding prior to using Breakthrough Mode. */
 export type BreakthroughMode = "Enabled" | "Disabled";
+const BreakthroughMode = S.String;
+
 /** Volume properties */
 export interface VolumePropertiesInput {
   /** A unique file path for the volume. Used when creating mount targets */
@@ -1585,6 +2187,11 @@ export interface VolumePropertiesInput {
   /** Specifies whether the volume operates in Breakthrough Mode. */
   breakthroughMode?: BreakthroughMode | (string & {});
 }
+const VolumePropertiesInput = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<VolumePropertiesInput>;
+
 /** Volume resource */
 export interface VolumeGroupVolumePropertiesInput {
   /** Resource name */
@@ -1596,8 +2203,18 @@ export interface VolumeGroupVolumePropertiesInput {
   /** Volume properties */
   properties: VolumePropertiesInput;
 }
+const VolumeGroupVolumePropertiesInput = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<VolumeGroupVolumePropertiesInput>;
+
 /** List of volumes from group */
 export type VolumeGroupPropertiesInputVolumesList = Array<VolumeGroupVolumePropertiesInput>;
+const VolumeGroupPropertiesInputVolumesList = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<VolumeGroupPropertiesInputVolumesList>;
+
 /** Volume group properties */
 export interface VolumeGroupPropertiesInput {
   /** Volume group details */
@@ -1605,6 +2222,11 @@ export interface VolumeGroupPropertiesInput {
   /** List of volumes from group */
   volumes?: VolumeGroupPropertiesInputVolumesList;
 }
+const VolumeGroupPropertiesInput = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<VolumeGroupPropertiesInput>;
+
 export interface CreateVolumeGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1619,8 +2241,16 @@ export interface CreateVolumeGroupRequest {
   /** Resource location */
   location?: string;
 }
+const CreateVolumeGroupRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<CreateVolumeGroupRequest>;
+
 /** Application specific placement rules for the volume group */
 export type VolumeGroupMetaDataGlobalPlacementRulesList = Array<PlacementKeyValuePairs>;
+const VolumeGroupMetaDataGlobalPlacementRulesList =
+  VolumeGroupMetaDataInputGlobalPlacementRulesList as any as S.Schema<VolumeGroupMetaDataGlobalPlacementRulesList>;
+
 /** Volume group properties */
 export interface VolumeGroupMetaData {
   /** Group Description */
@@ -1634,10 +2264,18 @@ export interface VolumeGroupMetaData {
   /** Number of volumes in volume group */
   volumesCount?: number;
 }
+const VolumeGroupMetaData = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<VolumeGroupMetaData>;
+
 /** Resource tags */
 export type VolumeGroupVolumePropertiesTagsMap = { [key: string]: string | undefined };
+const VolumeGroupVolumePropertiesTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<VolumeGroupVolumePropertiesTagsMap>;
+
 /** Availability Zone */
 export type VolumeGroupVolumePropertiesZonesList = Array<string>;
+const VolumeGroupVolumePropertiesZonesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<VolumeGroupVolumePropertiesZonesList>;
+
 /** The service level of the file system */
 export type VolumePropertiesServiceLevel =
   | "Standard"
@@ -1645,22 +2283,33 @@ export type VolumePropertiesServiceLevel =
   | "Ultra"
   | "StandardZRS"
   | "Flexible";
+const VolumePropertiesServiceLevel = S.String;
+
 /** Specify the protocol types for the volume. Supported values are NFSv3, NFSv4.1, and CIFS. For SMB volumes, specify CIFS. The value SMB isn't supported in the protocolTypes property. Default: NFSv3 */
 export type VolumePropertiesProtocolTypesList = Array<string>;
+const VolumePropertiesProtocolTypesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<VolumePropertiesProtocolTypesList>;
+
 /** The original value of the network features type available to the volume at the time it was created. */
 export type VolumePropertiesNetworkFeatures =
   | "Basic"
   | "Standard"
   | "Basic_Standard"
   | "Standard_Basic";
+const VolumePropertiesNetworkFeatures = S.String;
+
 /** The effective value of the network features type available to the volume, or current effective state of update. */
 export type VolumePropertiesEffectiveNetworkFeatures =
   | "Basic"
   | "Standard"
   | "Basic_Standard"
   | "Standard_Basic";
+const VolumePropertiesEffectiveNetworkFeatures = S.String;
+
 /** Provides storage to network proximity information for the volume. */
 export type VolumeStorageToNetworkProximity = "Default" | "T1" | "T2" | "AcrossT2";
+const VolumeStorageToNetworkProximity = S.String;
+
 /** Mount target properties */
 export interface MountTargetProperties {
   /** UUID v4 used to identify the MountTarget */
@@ -1672,12 +2321,26 @@ export interface MountTargetProperties {
   /** The SMB server's Fully Qualified Domain Name, FQDN */
   smbServerFqdn?: string;
 }
+const MountTargetProperties = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<MountTargetProperties>;
+
 /** List of mount targets */
 export type VolumePropertiesMountTargetsList = Array<MountTargetProperties>;
+const VolumePropertiesMountTargetsList = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<VolumePropertiesMountTargetsList>;
+
 /** Indicates whether the local volume is the source or destination for the Volume Replication */
 export type EndpointType = "src" | "dst";
+const EndpointType = S.String;
+
 /** Indicates whether the replication is cross zone or cross region. */
 export type ReplicationType = "CrossRegionReplication" | "CrossZoneReplication";
+const ReplicationType = S.String;
+
 /** Destination replication properties */
 export interface DestinationReplication {
   /** The resource ID of the remote volume */
@@ -1689,8 +2352,18 @@ export interface DestinationReplication {
   /** The remote zone for the destination volume. */
   zone?: string;
 }
+const DestinationReplication = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<DestinationReplication>;
+
 /** A list of destination replications */
 export type ReplicationObjectDestinationReplicationsList = Array<DestinationReplication>;
+const ReplicationObjectDestinationReplicationsList = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ReplicationObjectDestinationReplicationsList>;
+
 /** Property that only applies to external replications. Provides a machine-readable value for the status of the external replication setup. */
 export type ExternalReplicationSetupStatus =
   | "ClusterPeerRequired"
@@ -1698,8 +2371,12 @@ export type ExternalReplicationSetupStatus =
   | "VServerPeerRequired"
   | "ReplicationCreateRequired"
   | "NoActionRequired";
+const ExternalReplicationSetupStatus = S.String;
+
 /** Status of the volume replication relationship */
 export type VolumeReplicationRelationshipStatus = "Idle" | "Transferring";
+const VolumeReplicationRelationshipStatus = S.String;
+
 /** Replication properties */
 export interface ReplicationObject {
   /** Id */
@@ -1725,6 +2402,8 @@ export interface ReplicationObject {
   /** The status of the Volume Replication */
   relationshipStatus?: VolumeReplicationRelationshipStatus;
 }
+const ReplicationObject = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<ReplicationObject>;
+
 /** Volume relocation properties */
 export interface VolumeRelocationProperties {
   /** Has relocation been requested for this volume */
@@ -1732,6 +2411,11 @@ export interface VolumeRelocationProperties {
   /** Has relocation finished and is ready to be cleaned up */
   readyToBeFinalized?: boolean;
 }
+const VolumeRelocationProperties = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<VolumeRelocationProperties>;
+
 /** DataProtection type volumes include an object containing details of the replication */
 export interface VolumePropertiesDataProtection {
   /** Backup Properties */
@@ -1745,20 +2429,41 @@ export interface VolumePropertiesDataProtection {
   /** Advanced Ransomware Protection settings */
   ransomwareProtection?: RansomwareProtectionSettings;
 }
+const VolumePropertiesDataProtection = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<VolumePropertiesDataProtection>;
+
 /** The security style of volume, default unix, defaults to ntfs for dual protocol or CIFS protocol */
 export type VolumePropertiesSecurityStyle = "ntfs" | "unix";
+const VolumePropertiesSecurityStyle = S.String;
+
 /** Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault' */
 export type VolumePropertiesEncryptionKeySource = "Microsoft.NetApp" | "Microsoft.KeyVault";
+const VolumePropertiesEncryptionKeySource = S.String;
+
 /** Flag indicating whether file access logs are enabled for the volume, based on active diagnostic settings present on the volume. */
 export type VolumePropertiesFileAccessLogs = "Enabled" | "Disabled";
+const VolumePropertiesFileAccessLogs = S.String;
+
 /** Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose */
 export type VolumePropertiesAvsDataStore = "Enabled" | "Disabled";
+const VolumePropertiesAvsDataStore = S.String;
+
 /** Data store resource unique identifier */
 export type VolumePropertiesDataStoreResourceIdList = Array<string>;
+const VolumePropertiesDataStoreResourceIdList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<VolumePropertiesDataStoreResourceIdList>;
+
 /** Application specific placement rules for the particular volume */
 export type VolumePropertiesPlacementRulesList = Array<PlacementKeyValuePairs>;
+const VolumePropertiesPlacementRulesList =
+  VolumeGroupMetaDataInputGlobalPlacementRulesList as any as S.Schema<VolumePropertiesPlacementRulesList>;
+
 /** Flag indicating whether subvolume operations are enabled on the volume Deprecated. Subvolume operations and this flag will be removed in a future API version. */
 export type VolumePropertiesEnableSubvolumes = "Enabled" | "Disabled";
+const VolumePropertiesEnableSubvolumes = S.String;
+
 /** Volume properties */
 export interface VolumeProperties {
   /** Unique FileSystem Identifier. */
@@ -1880,6 +2585,8 @@ export interface VolumeProperties {
   /** Specifies whether the volume operates in Breakthrough Mode. */
   breakthroughMode?: BreakthroughMode;
 }
+const VolumeProperties = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<VolumeProperties>;
+
 /** Volume resource */
 export interface VolumeGroupVolumeProperties {
   /** Resource Id */
@@ -1895,8 +2602,18 @@ export interface VolumeGroupVolumeProperties {
   /** Volume properties */
   properties: VolumeProperties;
 }
+const VolumeGroupVolumeProperties = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<VolumeGroupVolumeProperties>;
+
 /** List of volumes from group */
 export type VolumeGroupPropertiesVolumesList = Array<VolumeGroupVolumeProperties>;
+const VolumeGroupPropertiesVolumesList = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<VolumeGroupPropertiesVolumesList>;
+
 /** Volume group properties */
 export interface VolumeGroupProperties {
   /** Azure lifecycle management */
@@ -1906,6 +2623,11 @@ export interface VolumeGroupProperties {
   /** List of volumes from group */
   volumes?: VolumeGroupPropertiesVolumesList;
 }
+const VolumeGroupProperties = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<VolumeGroupProperties>;
+
 export interface CreateVolumeGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1920,14 +2642,24 @@ export interface CreateVolumeGroupResponse {
   /** Resource location */
   location?: string;
 }
+const CreateVolumeGroupResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<CreateVolumeGroupResponse>;
+
 /** Resource tags. */
 export type CreateVolumeQuotaRuleRequestTagsMap = { [key: string]: string | undefined };
+const CreateVolumeQuotaRuleRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CreateVolumeQuotaRuleRequestTagsMap>;
+
 /** Type of quota */
 export type QuotaType =
   | "DefaultUserQuota"
   | "DefaultGroupQuota"
   | "IndividualUserQuota"
   | "IndividualGroupQuota";
+const QuotaType = S.String;
+
 /** Volume Quota Rule properties */
 export interface VolumeQuotaRulesPropertiesInput {
   /** Size of quota */
@@ -1937,6 +2669,11 @@ export interface VolumeQuotaRulesPropertiesInput {
   /** UserID/GroupID/SID based on the quota target type. UserID and groupID can be found by running 'id' or 'getent' command for the user or group and SID can be found by running <wmic useraccount where name='user-name' get sid> */
   quotaTarget?: string;
 }
+const VolumeQuotaRulesPropertiesInput = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<VolumeQuotaRulesPropertiesInput>;
+
 export interface CreateVolumeQuotaRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1957,8 +2694,16 @@ export interface CreateVolumeQuotaRuleRequest {
   /** Volume Quota Rule Properties */
   properties?: VolumeQuotaRulesPropertiesInput;
 }
+const CreateVolumeQuotaRuleRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<CreateVolumeQuotaRuleRequest>;
+
 /** Resource tags. */
 export type CreateVolumeQuotaRuleResponseTagsMap = { [key: string]: string | undefined };
+const CreateVolumeQuotaRuleResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CreateVolumeQuotaRuleResponseTagsMap>;
+
 /** Volume Quota Rule properties */
 export interface VolumeQuotaRulesProperties {
   /** Gets the status of the VolumeQuotaRule at the time the operation was called. */
@@ -1970,6 +2715,11 @@ export interface VolumeQuotaRulesProperties {
   /** UserID/GroupID/SID based on the quota target type. UserID and groupID can be found by running 'id' or 'getent' command for the user or group and SID can be found by running <wmic useraccount where name='user-name' get sid> */
   quotaTarget?: string;
 }
+const VolumeQuotaRulesProperties = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<VolumeQuotaRulesProperties>;
+
 export interface CreateVolumeQuotaRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1986,6 +2736,11 @@ export interface CreateVolumeQuotaRuleResponse {
   /** Volume Quota Rule Properties */
   properties?: VolumeQuotaRulesProperties;
 }
+const CreateVolumeQuotaRuleResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<CreateVolumeQuotaRuleResponse>;
+
 export interface DeleteAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1994,7 +2749,15 @@ export interface DeleteAccountRequest {
   /** The name of the NetApp account */
   accountName: string;
 }
+const DeleteAccountRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<DeleteAccountRequest>;
+
 export interface DeleteAccountResponse {}
+const DeleteAccountResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<DeleteAccountResponse>;
+
 export interface DeleteBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2007,7 +2770,12 @@ export interface DeleteBackupRequest {
   /** The name of the backup */
   backupName: string;
 }
+const DeleteBackupRequest = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<DeleteBackupRequest>;
+
 export interface DeleteBackupResponse {}
+const DeleteBackupResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<DeleteBackupResponse>;
+
 export interface DeleteBackupPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2018,7 +2786,15 @@ export interface DeleteBackupPolicyRequest {
   /** Backup policy Name which uniquely identify backup policy. */
   backupPolicyName: string;
 }
+const DeleteBackupPolicyRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<DeleteBackupPolicyRequest>;
+
 export interface DeleteBackupPolicyResponse {}
+const DeleteBackupPolicyResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<DeleteBackupPolicyResponse>;
+
 export interface DeleteBackupVaultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2029,7 +2805,15 @@ export interface DeleteBackupVaultRequest {
   /** The name of the Backup Vault */
   backupVaultName: string;
 }
+const DeleteBackupVaultRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<DeleteBackupVaultRequest>;
+
 export interface DeleteBackupVaultResponse {}
+const DeleteBackupVaultResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<DeleteBackupVaultResponse>;
+
 export interface DeleteBucketRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2044,7 +2828,12 @@ export interface DeleteBucketRequest {
   /** The name of the bucket */
   bucketName: string;
 }
+const DeleteBucketRequest = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<DeleteBucketRequest>;
+
 export interface DeleteBucketResponse {}
+const DeleteBucketResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<DeleteBucketResponse>;
+
 export interface DeleteCachRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2057,7 +2846,11 @@ export interface DeleteCachRequest {
   /** The name of the cache resource. */
   cacheName: string;
 }
+const DeleteCachRequest = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<DeleteCachRequest>;
+
 export interface DeleteCachResponse {}
+const DeleteCachResponse = AccountsChangeKeyVaultResponse as any as S.Schema<DeleteCachResponse>;
+
 export interface DeletePoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2068,7 +2861,11 @@ export interface DeletePoolRequest {
   /** The name of the capacity pool */
   poolName: string;
 }
+const DeletePoolRequest = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<DeletePoolRequest>;
+
 export interface DeletePoolResponse {}
+const DeletePoolResponse = AccountsChangeKeyVaultResponse as any as S.Schema<DeletePoolResponse>;
+
 export interface DeleteSnapshotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2083,7 +2880,15 @@ export interface DeleteSnapshotRequest {
   /** The name of the snapshot */
   snapshotName: string;
 }
+const DeleteSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<DeleteSnapshotRequest>;
+
 export interface DeleteSnapshotResponse {}
+const DeleteSnapshotResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<DeleteSnapshotResponse>;
+
 export interface DeleteSnapshotPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2094,7 +2899,15 @@ export interface DeleteSnapshotPolicyRequest {
   /** The name of the snapshot policy */
   snapshotPolicyName: string;
 }
+const DeleteSnapshotPolicyRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<DeleteSnapshotPolicyRequest>;
+
 export interface DeleteSnapshotPolicyResponse {}
+const DeleteSnapshotPolicyResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<DeleteSnapshotPolicyResponse>;
+
 export interface DeleteVolumeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2109,7 +2922,12 @@ export interface DeleteVolumeRequest {
   /** An option to force delete the volume. Will cleanup resources connected to the particular volume */
   forceDelete?: boolean;
 }
+const DeleteVolumeRequest = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<DeleteVolumeRequest>;
+
 export interface DeleteVolumeResponse {}
+const DeleteVolumeResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<DeleteVolumeResponse>;
+
 export interface DeleteVolumeGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2120,7 +2938,15 @@ export interface DeleteVolumeGroupRequest {
   /** The name of the volumeGroup */
   volumeGroupName: string;
 }
+const DeleteVolumeGroupRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<DeleteVolumeGroupRequest>;
+
 export interface DeleteVolumeGroupResponse {}
+const DeleteVolumeGroupResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<DeleteVolumeGroupResponse>;
+
 export interface DeleteVolumeQuotaRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2135,7 +2961,15 @@ export interface DeleteVolumeQuotaRuleRequest {
   /** The name of volume quota rule */
   volumeQuotaRuleName: string;
 }
+const DeleteVolumeQuotaRuleRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<DeleteVolumeQuotaRuleRequest>;
+
 export interface DeleteVolumeQuotaRuleResponse {}
+const DeleteVolumeQuotaRuleResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<DeleteVolumeQuotaRuleResponse>;
+
 export interface DeleteVolumeReplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2148,7 +2982,15 @@ export interface DeleteVolumeReplicationRequest {
   /** The name of the volume */
   volumeName: string;
 }
+const DeleteVolumeReplicationRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<DeleteVolumeReplicationRequest>;
+
 export interface DeleteVolumeReplicationResponse {}
+const DeleteVolumeReplicationResponse =
+  AccountsTransitionToCmkResponse as any as S.Schema<DeleteVolumeReplicationResponse>;
+
 export interface FinalizeVolumeExternalReplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2161,7 +3003,15 @@ export interface FinalizeVolumeExternalReplicationRequest {
   /** The name of the volume */
   volumeName: string;
 }
+const FinalizeVolumeExternalReplicationRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<FinalizeVolumeExternalReplicationRequest>;
+
 export interface FinalizeVolumeExternalReplicationResponse {}
+const FinalizeVolumeExternalReplicationResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<FinalizeVolumeExternalReplicationResponse>;
+
 export interface FinalizeVolumeRelocationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2174,7 +3024,15 @@ export interface FinalizeVolumeRelocationRequest {
   /** The name of the volume */
   volumeName: string;
 }
+const FinalizeVolumeRelocationRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<FinalizeVolumeRelocationRequest>;
+
 export interface FinalizeVolumeRelocationResponse {}
+const FinalizeVolumeRelocationResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<FinalizeVolumeRelocationResponse>;
+
 export interface GenerateBucketAkvCredentialsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2191,7 +3049,15 @@ export interface GenerateBucketAkvCredentialsRequest {
   /** The number of days from now until the newly generated Access and Secret key pair will expire. */
   keyPairExpiryDays?: number;
 }
+const GenerateBucketAkvCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<GenerateBucketAkvCredentialsRequest>;
+
 export interface GenerateBucketAkvCredentialsResponse {}
+const GenerateBucketAkvCredentialsResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<GenerateBucketAkvCredentialsResponse>;
+
 export interface GenerateBucketCredentialsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2208,6 +3074,11 @@ export interface GenerateBucketCredentialsRequest {
   /** The number of days from now until the newly generated Access and Secret key pair will expire. */
   keyPairExpiryDays?: number;
 }
+const GenerateBucketCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<GenerateBucketCredentialsRequest>;
+
 /** Bucket Access Key, Secret Key, and Expiry date and time of the key pair */
 export interface BucketGenerateCredentials {
   /** The Access Key that is required along with the Secret Key to access the bucket. */
@@ -2217,6 +3088,11 @@ export interface BucketGenerateCredentials {
   /** The bucket's Access and Secret key pair expiry date and time (in UTC). */
   keyPairExpiry?: string;
 }
+const BucketGenerateCredentials = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<BucketGenerateCredentials>;
+
 export interface GetAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2225,12 +3101,22 @@ export interface GetAccountRequest {
   /** The name of the NetApp account */
   accountName: string;
 }
+const GetAccountRequest = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<GetAccountRequest>;
+
 /** Resource tags. */
 export type GetAccountResponseTagsMap = { [key: string]: string | undefined };
+const GetAccountResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetAccountResponseTagsMap>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetAccountResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
+const GetAccountResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<GetAccountResponseIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetAccountResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -2241,6 +3127,11 @@ export interface GetAccountResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetAccountResponseIdentityUserAssignedIdentitiesMap;
 }
+const GetAccountResponseIdentity = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<GetAccountResponseIdentity>;
+
 export interface GetAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2261,6 +3152,8 @@ export interface GetAccountResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetAccountResponseIdentity;
 }
+const GetAccountResponse = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<GetAccountResponse>;
+
 export interface GetAccountChangeKeyVaultInformationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2269,9 +3162,19 @@ export interface GetAccountChangeKeyVaultInformationRequest {
   /** The name of the NetApp account */
   accountName: string;
 }
+const GetAccountChangeKeyVaultInformationRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<GetAccountChangeKeyVaultInformationRequest>;
+
 /** Pairs of virtual network ID and private endpoint ID. Every virtual network that has volumes encrypted with customer-managed keys needs its own key vault private endpoint. */
 export type GetKeyVaultStatusResponsePropertiesKeyVaultPrivateEndpointsList =
   Array<KeyVaultPrivateEndpoint>;
+const GetKeyVaultStatusResponsePropertiesKeyVaultPrivateEndpointsList = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<GetKeyVaultStatusResponsePropertiesKeyVaultPrivateEndpointsList>;
+
 /** Properties which represents Change key vault status. */
 export interface GetKeyVaultStatusResponseProperties {
   /** The URI of the key vault/managed HSM that should be used for encryption. */
@@ -2283,11 +3186,21 @@ export interface GetKeyVaultStatusResponseProperties {
   /** Pairs of virtual network ID and private endpoint ID. Every virtual network that has volumes encrypted with customer-managed keys needs its own key vault private endpoint. */
   keyVaultPrivateEndpoints?: GetKeyVaultStatusResponsePropertiesKeyVaultPrivateEndpointsList;
 }
+const GetKeyVaultStatusResponseProperties = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<GetKeyVaultStatusResponseProperties>;
+
 /** Result of getKeyVaultStatus with information about how volumes under NetApp account are encrypted. */
 export interface GetKeyVaultStatusResponse {
   /** Represents the properties of the getKeyVaultStatus. */
   properties?: GetKeyVaultStatusResponseProperties;
 }
+const GetKeyVaultStatusResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<GetKeyVaultStatusResponse>;
+
 export interface GetBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2300,6 +3213,8 @@ export interface GetBackupRequest {
   /** The name of the backup */
   backupName: string;
 }
+const GetBackupRequest = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<GetBackupRequest>;
+
 export interface GetBackupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2312,6 +3227,8 @@ export interface GetBackupResponse {
   /** Backup Properties */
   properties: BackupProperties;
 }
+const GetBackupResponse = CreateBackupResponse as any as S.Schema<GetBackupResponse>;
+
 export interface GetBackupLatestStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2324,8 +3241,15 @@ export interface GetBackupLatestStatusRequest {
   /** The name of the volume */
   volumeName: string;
 }
+const GetBackupLatestStatusRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<GetBackupLatestStatusRequest>;
+
 /** Status of the volume backup relationship */
 export type VolumeBackupRelationshipStatus = "Idle" | "Transferring" | "Failed" | "Unknown";
+const VolumeBackupRelationshipStatus = S.String;
+
 /** Backup status */
 export interface BackupStatus {
   /** Backup health status */
@@ -2347,6 +3271,8 @@ export interface BackupStatus {
   /** Displays the total number of bytes transferred for the ongoing operation */
   transferProgressBytes?: number;
 }
+const BackupStatus = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<BackupStatus>;
+
 export interface GetBackupPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2357,8 +3283,16 @@ export interface GetBackupPolicyRequest {
   /** Backup policy Name which uniquely identify backup policy. */
   backupPolicyName: string;
 }
+const GetBackupPolicyRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<GetBackupPolicyRequest>;
+
 /** Resource tags. */
 export type GetBackupPolicyResponseTagsMap = { [key: string]: string | undefined };
+const GetBackupPolicyResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetBackupPolicyResponseTagsMap>;
+
 export interface GetBackupPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2377,6 +3311,11 @@ export interface GetBackupPolicyResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const GetBackupPolicyResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<GetBackupPolicyResponse>;
+
 export interface GetBackupVaultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2387,8 +3326,16 @@ export interface GetBackupVaultRequest {
   /** The name of the Backup Vault */
   backupVaultName: string;
 }
+const GetBackupVaultRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<GetBackupVaultRequest>;
+
 /** Resource tags. */
 export type GetBackupVaultResponseTagsMap = { [key: string]: string | undefined };
+const GetBackupVaultResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetBackupVaultResponseTagsMap>;
+
 export interface GetBackupVaultResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2405,6 +3352,11 @@ export interface GetBackupVaultResponse {
   /** Backup Vault Properties */
   properties?: BackupVaultProperties;
 }
+const GetBackupVaultResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<GetBackupVaultResponse>;
+
 export interface GetBucketRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2419,6 +3371,8 @@ export interface GetBucketRequest {
   /** The name of the bucket */
   bucketName: string;
 }
+const GetBucketRequest = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<GetBucketRequest>;
+
 export interface GetBucketResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2431,6 +3385,8 @@ export interface GetBucketResponse {
   /** Bucket properties */
   properties?: BucketProperties;
 }
+const GetBucketResponse = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<GetBucketResponse>;
+
 export interface GetCachRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2443,6 +3399,8 @@ export interface GetCachRequest {
   /** The name of the cache resource. */
   cacheName: string;
 }
+const GetCachRequest = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<GetCachRequest>;
+
 /** Resource tags. */
 export type GetCachResponseTagsMap = { [key: string]: string | undefined };
 /** The availability zones. */
@@ -2467,6 +3425,8 @@ export interface GetCachResponse {
   /** The availability zones. */
   zones?: GetCachResponseZonesList;
 }
+const GetCachResponse = CachesPoolChangeResponse as any as S.Schema<GetCachResponse>;
+
 export interface GetNetAppResourceQuotaLimitRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2475,6 +3435,11 @@ export interface GetNetAppResourceQuotaLimitRequest {
   /** The name of the Quota Limit */
   quotaLimitName: string;
 }
+const GetNetAppResourceQuotaLimitRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<GetNetAppResourceQuotaLimitRequest>;
+
 /** QuotaItem Properties */
 export interface QuotaItemProperties {
   /** The current quota value. */
@@ -2484,6 +3449,8 @@ export interface QuotaItemProperties {
   /** The usage quota value. */
   usage?: number | null;
 }
+const QuotaItemProperties = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<QuotaItemProperties>;
+
 export interface GetNetAppResourceQuotaLimitResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2496,6 +3463,11 @@ export interface GetNetAppResourceQuotaLimitResponse {
   /** QuotaItem properties */
   properties?: QuotaItemProperties;
 }
+const GetNetAppResourceQuotaLimitResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<GetNetAppResourceQuotaLimitResponse>;
+
 export interface GetNetAppResourceQuotaLimitsAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2506,6 +3478,11 @@ export interface GetNetAppResourceQuotaLimitsAccountRequest {
   /** The name of the Quota Limit */
   quotaLimitName: string;
 }
+const GetNetAppResourceQuotaLimitsAccountRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<GetNetAppResourceQuotaLimitsAccountRequest>;
+
 export interface GetNetAppResourceQuotaLimitsAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2518,12 +3495,20 @@ export interface GetNetAppResourceQuotaLimitsAccountResponse {
   /** QuotaItem properties */
   properties?: QuotaItemProperties;
 }
+const GetNetAppResourceQuotaLimitsAccountResponse =
+  GetNetAppResourceQuotaLimitResponse as any as S.Schema<GetNetAppResourceQuotaLimitsAccountResponse>;
+
 export interface GetNetAppResourceRegionInfosRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
 }
+const GetNetAppResourceRegionInfosRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<GetNetAppResourceRegionInfosRequest>;
+
 /** Provides storage to network proximity information in the region. */
 export type RegionStorageToNetworkProximity =
   | "Default"
@@ -2534,14 +3519,26 @@ export type RegionStorageToNetworkProximity =
   | "T1AndAcrossT2"
   | "T2AndAcrossT2"
   | "T1AndT2AndAcrossT2";
+const RegionStorageToNetworkProximity = S.String;
+
 export interface RegionInfoAvailabilityZoneMappingsItem {
   /** Logical availability zone. */
   availabilityZone?: string;
   /** Available availability zone */
   isAvailable?: boolean;
 }
+const RegionInfoAvailabilityZoneMappingsItem = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<RegionInfoAvailabilityZoneMappingsItem>;
+
 /** Provides logical availability zone mappings for the subscription for a region. */
 export type RegionInfoAvailabilityZoneMappingsList = Array<RegionInfoAvailabilityZoneMappingsItem>;
+const RegionInfoAvailabilityZoneMappingsList = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<RegionInfoAvailabilityZoneMappingsList>;
+
 /** Provides region specific information. */
 export interface RegionInfo {
   /** Provides storage to network proximity information in the region. */
@@ -2549,6 +3546,8 @@ export interface RegionInfo {
   /** Provides logical availability zone mappings for the subscription for a region. */
   availabilityZoneMappings?: RegionInfoAvailabilityZoneMappingsList;
 }
+const RegionInfo = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<RegionInfo>;
+
 export interface GetNetAppResourceRegionInfosResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2561,6 +3560,11 @@ export interface GetNetAppResourceRegionInfosResponse {
   /** regionInfo properties */
   properties?: RegionInfo;
 }
+const GetNetAppResourceRegionInfosResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<GetNetAppResourceRegionInfosResponse>;
+
 export interface GetNetAppResourceUsageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2569,6 +3573,11 @@ export interface GetNetAppResourceUsageRequest {
   /** The type of usage */
   usageType: string;
 }
+const GetNetAppResourceUsageRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<GetNetAppResourceUsageRequest>;
+
 /** The name of the usage. */
 export interface UsageName {
   /** The name of the usage. */
@@ -2576,6 +3585,8 @@ export interface UsageName {
   /** The localized name of the usage. */
   localizedValue?: string;
 }
+const UsageName = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<UsageName>;
+
 /** Usage properties */
 export interface UsageProperties {
   /** The current usage value for the subscription. */
@@ -2585,6 +3596,8 @@ export interface UsageProperties {
   /** The unit of the usage. */
   unit?: string;
 }
+const UsageProperties = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<UsageProperties>;
+
 /** Usages entity model */
 export interface UsageResult {
   /** The id of the usage. */
@@ -2594,6 +3607,8 @@ export interface UsageResult {
   /** Usage properties */
   properties?: UsageProperties;
 }
+const UsageResult = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<UsageResult>;
+
 export interface GetPoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2604,8 +3619,13 @@ export interface GetPoolRequest {
   /** The name of the capacity pool */
   poolName: string;
 }
+const GetPoolRequest = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<GetPoolRequest>;
+
 /** Resource tags. */
 export type GetPoolResponseTagsMap = { [key: string]: string | undefined };
+const GetPoolResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetPoolResponseTagsMap>;
+
 /** The service level of the file system */
 export type PoolPropertiesServiceLevel =
   | "Standard"
@@ -2613,10 +3633,16 @@ export type PoolPropertiesServiceLevel =
   | "Ultra"
   | "StandardZRS"
   | "Flexible";
+const PoolPropertiesServiceLevel = S.String;
+
 /** The qos type of the pool */
 export type PoolPropertiesQosType = "Auto" | "Manual";
+const PoolPropertiesQosType = S.String;
+
 /** Encryption type of the capacity pool, set encryption type for data at rest for this pool and all volumes in it. This value can only be set when creating new pool. */
 export type PoolPropertiesEncryptionType = "Single" | "Double";
+const PoolPropertiesEncryptionType = S.String;
+
 /** Pool properties */
 export interface PoolProperties {
   /** UUID v4 used to identify the Pool */
@@ -2640,6 +3666,8 @@ export interface PoolProperties {
   /** Encryption type of the capacity pool, set encryption type for data at rest for this pool and all volumes in it. This value can only be set when creating new pool. */
   encryptionType?: PoolPropertiesEncryptionType | null;
 }
+const PoolProperties = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<PoolProperties>;
+
 export interface GetPoolResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2658,6 +3686,8 @@ export interface GetPoolResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const GetPoolResponse = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<GetPoolResponse>;
+
 export interface GetRansomwareReportRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2672,10 +3702,19 @@ export interface GetRansomwareReportRequest {
   /** The name of the ransomware report */
   ransomwareReportName: string;
 }
+const GetRansomwareReportRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<GetRansomwareReportRequest>;
+
 /** State of the Advanced Ransomware Protection (ARP) report */
 export type RansomwareReportState = "Active" | "Resolved";
+const RansomwareReportState = S.String;
+
 /** Severity of the Advanced Ransomware Protection (ARP) report */
 export type RansomwareReportSeverity = "None" | "Low" | "Moderate" | "High";
+const RansomwareReportSeverity = S.String;
+
 /** Suspect file information */
 export interface SuspectFile {
   /** Suspect filename */
@@ -2683,8 +3722,15 @@ export interface SuspectFile {
   /** The creation date and time of the file */
   fileTimestamp?: string;
 }
+const SuspectFile = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<SuspectFile>;
+
 /** Suspect files */
 export type RansomwareSuspectsSuspectFilesList = Array<SuspectFile>;
+const RansomwareSuspectsSuspectFilesList = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<RansomwareSuspectsSuspectFilesList>;
+
 /** List of suspects identified in an Advanced Ransomware Protection (ARP) report */
 export interface RansomwareSuspects {
   /** Suspect File extension */
@@ -2696,8 +3742,15 @@ export interface RansomwareSuspects {
   /** Suspect files */
   suspectFiles?: RansomwareSuspectsSuspectFilesList;
 }
+const RansomwareSuspects = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<RansomwareSuspects>;
+
 /** Suspects identified in an ARP report */
 export type RansomwareReportPropertiesSuspectsList = Array<RansomwareSuspects>;
+const RansomwareReportPropertiesSuspectsList = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<RansomwareReportPropertiesSuspectsList>;
+
 /** Advanced Ransomware Protection (ARP) report properties. Evaluate the report to determine whether the activity is acceptable (false positive) or whether an attack seems malicious using the ClearSuspects operation. Advanced Ransomware Protection (ARP) creates snapshots named Anti_ransomware_backup when it detects a potential ransomware threat. You can use one of the ARP snapshots or another snapshot of your volume to restore data. */
 export interface RansomwareReportProperties {
   /** The creation date and time of the report */
@@ -2715,6 +3768,11 @@ export interface RansomwareReportProperties {
   /** Azure lifecycle management */
   provisioningState?: string;
 }
+const RansomwareReportProperties = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<RansomwareReportProperties>;
+
 export interface GetRansomwareReportResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2727,6 +3785,11 @@ export interface GetRansomwareReportResponse {
   /** Advanced Ransomware Protection reports Properties */
   properties?: RansomwareReportProperties;
 }
+const GetRansomwareReportResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<GetRansomwareReportResponse>;
+
 export interface GetSnapshotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2741,6 +3804,8 @@ export interface GetSnapshotRequest {
   /** The name of the snapshot */
   snapshotName: string;
 }
+const GetSnapshotRequest = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<GetSnapshotRequest>;
+
 export interface GetSnapshotResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2755,6 +3820,8 @@ export interface GetSnapshotResponse {
   /** Resource location */
   location: string;
 }
+const GetSnapshotResponse = CreateSnapshotResponse as any as S.Schema<GetSnapshotResponse>;
+
 export interface GetSnapshotPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2765,6 +3832,11 @@ export interface GetSnapshotPolicyRequest {
   /** The name of the snapshot policy */
   snapshotPolicyName: string;
 }
+const GetSnapshotPolicyRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<GetSnapshotPolicyRequest>;
+
 /** Resource tags. */
 export type GetSnapshotPolicyResponseTagsMap = { [key: string]: string | undefined };
 export interface GetSnapshotPolicyResponse {
@@ -2785,6 +3857,9 @@ export interface GetSnapshotPolicyResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const GetSnapshotPolicyResponse =
+  CreateSnapshotPolicyResponse as any as S.Schema<GetSnapshotPolicyResponse>;
+
 export interface GetVolumeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2797,10 +3872,18 @@ export interface GetVolumeRequest {
   /** The name of the volume */
   volumeName: string;
 }
+const GetVolumeRequest = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<GetVolumeRequest>;
+
 /** Resource tags. */
 export type GetVolumeResponseTagsMap = { [key: string]: string | undefined };
+const GetVolumeResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetVolumeResponseTagsMap>;
+
 /** The availability zones. */
 export type GetVolumeResponseZonesList = Array<string>;
+const GetVolumeResponseZonesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<GetVolumeResponseZonesList>;
+
 export interface GetVolumeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2821,6 +3904,8 @@ export interface GetVolumeResponse {
   /** The availability zones. */
   zones?: GetVolumeResponseZonesList;
 }
+const GetVolumeResponse = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<GetVolumeResponse>;
+
 export interface GetVolumeGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2831,6 +3916,11 @@ export interface GetVolumeGroupRequest {
   /** The name of the volumeGroup */
   volumeGroupName: string;
 }
+const GetVolumeGroupRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<GetVolumeGroupRequest>;
+
 export interface GetVolumeGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2845,6 +3935,11 @@ export interface GetVolumeGroupResponse {
   /** Resource location */
   location?: string;
 }
+const GetVolumeGroupResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<GetVolumeGroupResponse>;
+
 export interface GetVolumeQuotaRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2859,6 +3954,11 @@ export interface GetVolumeQuotaRuleRequest {
   /** The name of volume quota rule */
   volumeQuotaRuleName: string;
 }
+const GetVolumeQuotaRuleRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<GetVolumeQuotaRuleRequest>;
+
 /** Resource tags. */
 export type GetVolumeQuotaRuleResponseTagsMap = { [key: string]: string | undefined };
 export interface GetVolumeQuotaRuleResponse {
@@ -2877,16 +3977,30 @@ export interface GetVolumeQuotaRuleResponse {
   /** Volume Quota Rule Properties */
   properties?: VolumeQuotaRulesProperties;
 }
+const GetVolumeQuotaRuleResponse =
+  CreateVolumeQuotaRuleResponse as any as S.Schema<GetVolumeQuotaRuleResponse>;
+
 export interface ListAccountBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListAccountBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<ListAccountBySubscriptionRequest>;
+
 /** Resource tags. */
 export type NetAppAccountTagsMap = { [key: string]: string | undefined };
+const NetAppAccountTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<NetAppAccountTagsMap>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type NetAppAccountIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
+const NetAppAccountIdentityUserAssignedIdentitiesMap =
+  GetAccountResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<NetAppAccountIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface NetAppAccountIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -2897,6 +4011,11 @@ export interface NetAppAccountIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: NetAppAccountIdentityUserAssignedIdentitiesMap;
 }
+const NetAppAccountIdentity = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<NetAppAccountIdentity>;
+
 /** NetApp account resource */
 export interface NetAppAccount {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2918,8 +4037,15 @@ export interface NetAppAccount {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: NetAppAccountIdentity;
 }
+const NetAppAccount = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<NetAppAccount>;
+
 /** The NetAppAccount items on this page */
 export type NetAppAccountListValueList = Array<NetAppAccount>;
+const NetAppAccountListValueList = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<NetAppAccountListValueList>;
+
 /** List of NetApp account resources */
 export interface NetAppAccountList {
   /** The NetAppAccount items on this page */
@@ -2927,12 +4053,16 @@ export interface NetAppAccountList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const NetAppAccountList = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<NetAppAccountList>;
+
 export interface ListAccountsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListAccountsRequest = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<ListAccountsRequest>;
+
 export interface ListBackupByVaultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2945,6 +4075,11 @@ export interface ListBackupByVaultRequest {
   /** An option to specify the VolumeResourceId. If present, then only returns the backups under the specified volume */
   _filter?: string;
 }
+const ListBackupByVaultRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<ListBackupByVaultRequest>;
+
 /** Backup under a Backup Vault */
 export interface Backup {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2958,8 +4093,15 @@ export interface Backup {
   /** Backup Properties */
   properties: BackupProperties;
 }
+const Backup = CreateBackupResponse as any as S.Schema<Backup>;
+
 /** The Backup items on this page */
 export type BackupsListValueList = Array<Backup>;
+const BackupsListValueList = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<BackupsListValueList>;
+
 /** List of Backups */
 export interface BackupsList {
   /** The Backup items on this page */
@@ -2967,6 +4109,8 @@ export interface BackupsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const BackupsList = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<BackupsList>;
+
 export interface ListBackupPoliciesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2975,6 +4119,11 @@ export interface ListBackupPoliciesRequest {
   /** The name of the NetApp account */
   accountName: string;
 }
+const ListBackupPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<ListBackupPoliciesRequest>;
+
 /** Resource tags. */
 export type BackupPolicyTagsMap = { [key: string]: string | undefined };
 /** Backup policy information */
@@ -2996,8 +4145,15 @@ export interface BackupPolicy {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const BackupPolicy = GetBackupPolicyResponse as any as S.Schema<BackupPolicy>;
+
 /** The BackupPolicy items on this page */
 export type BackupPoliciesListValueList = Array<BackupPolicy>;
+const BackupPoliciesListValueList = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<BackupPoliciesListValueList>;
+
 /** List of Backup Policies */
 export interface BackupPoliciesList {
   /** The BackupPolicy items on this page */
@@ -3005,6 +4161,8 @@ export interface BackupPoliciesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const BackupPoliciesList = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<BackupPoliciesList>;
+
 export interface ListBackupVaultByNetAppAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3013,6 +4171,11 @@ export interface ListBackupVaultByNetAppAccountRequest {
   /** The name of the NetApp account */
   accountName: string;
 }
+const ListBackupVaultByNetAppAccountRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<ListBackupVaultByNetAppAccountRequest>;
+
 /** Resource tags. */
 export type BackupVaultTagsMap = { [key: string]: string | undefined };
 /** Backup Vault information */
@@ -3032,8 +4195,15 @@ export interface BackupVault {
   /** Backup Vault Properties */
   properties?: BackupVaultProperties;
 }
+const BackupVault = GetBackupVaultResponse as any as S.Schema<BackupVault>;
+
 /** The BackupVault items on this page */
 export type BackupVaultsListValueList = Array<BackupVault>;
+const BackupVaultsListValueList = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<BackupVaultsListValueList>;
+
 /** List of Backup Vaults */
 export interface BackupVaultsList {
   /** The BackupVault items on this page */
@@ -3041,6 +4211,8 @@ export interface BackupVaultsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const BackupVaultsList = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<BackupVaultsList>;
+
 export interface ListBucketsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3053,6 +4225,8 @@ export interface ListBucketsRequest {
   /** The name of the volume */
   volumeName: string;
 }
+const ListBucketsRequest = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<ListBucketsRequest>;
+
 /** Bucket resource */
 export interface Bucket {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3066,8 +4240,12 @@ export interface Bucket {
   /** Bucket properties */
   properties?: BucketProperties;
 }
+const Bucket = GetBucketResponse as any as S.Schema<Bucket>;
+
 /** The Bucket items on this page */
 export type BucketListValueList = Array<Bucket>;
+const BucketListValueList = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<BucketListValueList>;
+
 /** List of volume bucket resources */
 export interface BucketList {
   /** The Bucket items on this page */
@@ -3075,6 +4253,8 @@ export interface BucketList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const BucketList = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<BucketList>;
+
 export interface ListCachesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3085,10 +4265,16 @@ export interface ListCachesRequest {
   /** The name of the capacity pool */
   poolName: string;
 }
+const ListCachesRequest = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<ListCachesRequest>;
+
 /** Resource tags. */
 export type CacheTagsMap = { [key: string]: string | undefined };
+const CacheTagsMap = AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<CacheTagsMap>;
+
 /** The availability zones. */
 export type CacheZonesList = Array<string>;
+const CacheZonesList = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<CacheZonesList>;
+
 /** Cache resource */
 export interface Cache {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3110,8 +4296,12 @@ export interface Cache {
   /** The availability zones. */
   zones?: CacheZonesList;
 }
+const Cache = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<Cache>;
+
 /** The Cache items on this page */
 export type CacheListValueList = Array<Cache>;
+const CacheListValueList = /*@__PURE__*/ __L.at(__c26, 2) as any as S.Schema<CacheListValueList>;
+
 /** List of Cache resources */
 export interface CacheList {
   /** The Cache items on this page */
@@ -3119,6 +4309,8 @@ export interface CacheList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const CacheList = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<CacheList>;
+
 export interface ListCachPeeringPassphrasesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3131,6 +4323,11 @@ export interface ListCachPeeringPassphrasesRequest {
   /** The name of the cache resource. */
   cacheName: string;
 }
+const ListCachPeeringPassphrasesRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<ListCachPeeringPassphrasesRequest>;
+
 /** The response containing peering passphrases and commands for cluster and vserver peering. */
 export interface PeeringPassphrases {
   /** The cluster peering command. */
@@ -3142,12 +4339,19 @@ export interface PeeringPassphrases {
   /** Warnings that are critical for the cluster peering and vserver peering processes. */
   criticalWarning?: string;
 }
+const PeeringPassphrases = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<PeeringPassphrases>;
+
 export interface ListNetAppResourceQuotaLimitsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
 }
+const ListNetAppResourceQuotaLimitsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<ListNetAppResourceQuotaLimitsRequest>;
+
 /** Information regarding Quota Item. */
 export interface QuotaItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3161,8 +4365,15 @@ export interface QuotaItem {
   /** QuotaItem properties */
   properties?: QuotaItemProperties;
 }
+const QuotaItem = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<QuotaItem>;
+
 /** The QuotaItem items on this page */
 export type QuotaItemListValueList = Array<QuotaItem>;
+const QuotaItemListValueList = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<QuotaItemListValueList>;
+
 /** List of Quota Items */
 export interface QuotaItemList {
   /** The QuotaItem items on this page */
@@ -3170,6 +4381,8 @@ export interface QuotaItemList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const QuotaItemList = /*@__PURE__*/ __L.at(__c27, 1) as any as S.Schema<QuotaItemList>;
+
 export interface ListNetAppResourceQuotaLimitsAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3178,12 +4391,22 @@ export interface ListNetAppResourceQuotaLimitsAccountRequest {
   /** The name of the NetApp account */
   accountName: string;
 }
+const ListNetAppResourceQuotaLimitsAccountRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<ListNetAppResourceQuotaLimitsAccountRequest>;
+
 export interface ListNetAppResourceRegionInfosRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
 }
+const ListNetAppResourceRegionInfosRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<ListNetAppResourceRegionInfosRequest>;
+
 /** Information regarding regionInfo Item. */
 export interface RegionInfoResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3197,8 +4420,15 @@ export interface RegionInfoResource {
   /** regionInfo properties */
   properties?: RegionInfo;
 }
+const RegionInfoResource = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<RegionInfoResource>;
+
 /** The RegionInfoResource items on this page */
 export type RegionInfosListValueList = Array<RegionInfoResource>;
+const RegionInfosListValueList = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<RegionInfosListValueList>;
+
 /** List of regionInfo resources */
 export interface RegionInfosList {
   /** The RegionInfoResource items on this page */
@@ -3206,14 +4436,26 @@ export interface RegionInfosList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const RegionInfosList = /*@__PURE__*/ __L.at(__c27, 6) as any as S.Schema<RegionInfosList>;
+
 export interface ListNetAppResourceUsagesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
 }
+const ListNetAppResourceUsagesRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<ListNetAppResourceUsagesRequest>;
+
 /** The UsageResult items on this page */
 export type UsagesListResultValueList = Array<UsageResult>;
+const UsagesListResultValueList = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<UsagesListResultValueList>;
+
 /** Usages result */
 export interface UsagesListResult {
   /** The UsageResult items on this page */
@@ -3221,7 +4463,14 @@ export interface UsagesListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const UsagesListResult = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<UsagesListResult>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Display metadata associated with the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft NetApp. */
@@ -3233,11 +4482,19 @@ export interface OperationDisplay {
   /** Operation description. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<OperationDisplay>;
+
 export type MetricAggregationType = "Average";
 /** Support metric aggregation type. */
 export type MetricSpecificationSupportedAggregationTypesList = Array<MetricAggregationType>;
+const MetricSpecificationSupportedAggregationTypesList =
+  CachePropertiesInputProtocolTypesList as any as S.Schema<MetricSpecificationSupportedAggregationTypesList>;
+
 /** The supported time grain types for the metrics. */
 export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
+const MetricSpecificationSupportedTimeGrainTypesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
+
 /** Dimension of blobs, possibly be blob type or access tier. */
 export interface Dimension {
   /** Display name of dimension. */
@@ -3245,8 +4502,15 @@ export interface Dimension {
   /** Display name of dimension. */
   displayName?: string;
 }
+const Dimension = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<Dimension>;
+
 /** Dimensions of blobs, including blob type and access tier. */
 export type MetricSpecificationDimensionsList = Array<Dimension>;
+const MetricSpecificationDimensionsList = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<MetricSpecificationDimensionsList>;
+
 /** Metric specification of operation. */
 export interface MetricSpecification {
   /** Name of metric specification. */
@@ -3282,8 +4546,15 @@ export interface MetricSpecification {
   /** Whether the metric is internal. */
   isInternal?: boolean;
 }
+const MetricSpecification = /*@__PURE__*/ __L.at(__c28, 6) as any as S.Schema<MetricSpecification>;
+
 /** Metric specifications of operation. */
 export type ServiceSpecificationMetricSpecificationsList = Array<MetricSpecification>;
+const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
+
 /** Log Definition of a single resource metric. */
 export interface LogSpecification {
   /** Name of log specification. */
@@ -3293,6 +4564,9 @@ export interface LogSpecification {
 }
 /** Log specification of operation. */
 export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
+const ServiceSpecificationLogSpecificationsList =
+  MetricSpecificationDimensionsList as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
+
 /** One property of operation, include metric specifications. */
 export interface ServiceSpecification {
   /** Metric specifications of operation. */
@@ -3300,11 +4574,18 @@ export interface ServiceSpecification {
   /** Log specification of operation. */
   logSpecifications?: ServiceSpecificationLogSpecificationsList;
 }
+const ServiceSpecification = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<ServiceSpecification>;
+
 /** Properties of operation, include metric specifications. */
 export interface OperationProperties {
   /** One property of operation, include metric specifications. */
   serviceSpecification?: ServiceSpecification;
 }
+const OperationProperties = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<OperationProperties>;
+
 /** Microsoft.NetApp REST API operation definition. */
 export interface Operation {
   /** Operation name: {provider}/{resource}/{operation} */
@@ -3316,8 +4597,15 @@ export interface Operation {
   /** Properties of operation, include metric specifications. */
   properties?: OperationProperties;
 }
+const Operation = /*@__PURE__*/ __L.at(__c29, 2) as any as S.Schema<Operation>;
+
 /** The Operation items on this page */
 export type OperationListResultValueList = Array<Operation>;
+const OperationListResultValueList = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<OperationListResultValueList>;
+
 /** A list of REST API operations supported by an Azure Resource Provider. It contains an URL link to get the next set of results. */
 export interface OperationListResult {
   /** The Operation items on this page */
@@ -3325,6 +4613,8 @@ export interface OperationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const OperationListResult = /*@__PURE__*/ __L.at(__c29, 4) as any as S.Schema<OperationListResult>;
+
 export interface ListPoolsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3333,6 +4623,8 @@ export interface ListPoolsRequest {
   /** The name of the NetApp account */
   accountName: string;
 }
+const ListPoolsRequest = /*@__PURE__*/ __L.at(__c29, 5) as any as S.Schema<ListPoolsRequest>;
+
 /** Resource tags. */
 export type CapacityPoolTagsMap = { [key: string]: string | undefined };
 /** Capacity pool resource */
@@ -3354,8 +4646,15 @@ export interface CapacityPool {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const CapacityPool = GetPoolResponse as any as S.Schema<CapacityPool>;
+
 /** The CapacityPool items on this page */
 export type CapacityPoolListValueList = Array<CapacityPool>;
+const CapacityPoolListValueList = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<CapacityPoolListValueList>;
+
 /** List of capacity pool resources */
 export interface CapacityPoolList {
   /** The CapacityPool items on this page */
@@ -3363,6 +4662,8 @@ export interface CapacityPoolList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const CapacityPoolList = /*@__PURE__*/ __L.at(__c29, 7) as any as S.Schema<CapacityPoolList>;
+
 export interface ListRansomwareReportsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3375,6 +4676,11 @@ export interface ListRansomwareReportsRequest {
   /** The name of the volume */
   volumeName: string;
 }
+const ListRansomwareReportsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<ListRansomwareReportsRequest>;
+
 /** Advanced Ransomware Protection (ARP) report Get details of the specified Advanced Ransomware Protection report (ARP). ARP reports are created with a list of suspected files when it detects any combination of high data entropy, abnormal volume activity with data encryption, and unusual file extensions. ARP creates snapshots named Anti_ransomware_backup when it detects a potential ransomware threat. You can use one of these ARP snapshots or another snapshot of your volume to restore data. */
 export interface RansomwareReport {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3388,8 +4694,15 @@ export interface RansomwareReport {
   /** Advanced Ransomware Protection reports Properties */
   properties?: RansomwareReportProperties;
 }
+const RansomwareReport = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<RansomwareReport>;
+
 /** The RansomwareReport items on this page */
 export type RansomwareReportsListValueList = Array<RansomwareReport>;
+const RansomwareReportsListValueList = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<RansomwareReportsListValueList>;
+
 /** List of Advanced Ransomware Protection (ARP) reports */
 export interface RansomwareReportsList {
   /** The RansomwareReport items on this page */
@@ -3397,6 +4710,11 @@ export interface RansomwareReportsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const RansomwareReportsList = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<RansomwareReportsList>;
+
 export interface ListSnapshotPoliciesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3405,8 +4723,16 @@ export interface ListSnapshotPoliciesRequest {
   /** The name of the NetApp account */
   accountName: string;
 }
+const ListSnapshotPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<ListSnapshotPoliciesRequest>;
+
 /** Resource tags. */
 export type SnapshotPolicyTagsMap = { [key: string]: string | undefined };
+const SnapshotPolicyTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<SnapshotPolicyTagsMap>;
+
 /** Snapshot policy information */
 export interface SnapshotPolicy {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3426,8 +4752,15 @@ export interface SnapshotPolicy {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const SnapshotPolicy = /*@__PURE__*/ __L.at(__c30, 5) as any as S.Schema<SnapshotPolicy>;
+
 /** The SnapshotPolicy items on this page */
 export type SnapshotPoliciesListValueList = Array<SnapshotPolicy>;
+const SnapshotPoliciesListValueList = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<SnapshotPoliciesListValueList>;
+
 /** List of Snapshot Policies */
 export interface SnapshotPoliciesList {
   /** The SnapshotPolicy items on this page */
@@ -3435,6 +4768,11 @@ export interface SnapshotPoliciesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SnapshotPoliciesList = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<SnapshotPoliciesList>;
+
 export interface ListSnapshotPolicyVolumesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3445,10 +4783,19 @@ export interface ListSnapshotPolicyVolumesRequest {
   /** The name of the snapshot policy */
   snapshotPolicyName: string;
 }
+const ListSnapshotPolicyVolumesRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<ListSnapshotPolicyVolumesRequest>;
+
 /** Resource tags. */
 export type VolumeTagsMap = { [key: string]: string | undefined };
+const VolumeTagsMap = AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<VolumeTagsMap>;
+
 /** The availability zones. */
 export type VolumeZonesList = Array<string>;
+const VolumeZonesList = CacheZonesList as any as S.Schema<VolumeZonesList>;
+
 /** Volume resource */
 export interface Volume {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3470,8 +4817,15 @@ export interface Volume {
   /** The availability zones. */
   zones?: VolumeZonesList;
 }
+const Volume = /*@__PURE__*/ __L.at(__c31, 1) as any as S.Schema<Volume>;
+
 /** The Volume items on this page */
 export type SnapshotPolicyVolumeListValueList = Array<Volume>;
+const SnapshotPolicyVolumeListValueList = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<SnapshotPolicyVolumeListValueList>;
+
 /** Volumes associated with snapshot policy */
 export interface SnapshotPolicyVolumeList {
   /** The Volume items on this page */
@@ -3479,6 +4833,11 @@ export interface SnapshotPolicyVolumeList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SnapshotPolicyVolumeList = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<SnapshotPolicyVolumeList>;
+
 export interface ListSnapshotsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3491,6 +4850,11 @@ export interface ListSnapshotsRequest {
   /** The name of the volume */
   volumeName: string;
 }
+const ListSnapshotsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<ListSnapshotsRequest>;
+
 /** Snapshot of a Volume */
 export interface Snapshot {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3506,8 +4870,15 @@ export interface Snapshot {
   /** Resource location */
   location: string;
 }
+const Snapshot = CreateSnapshotResponse as any as S.Schema<Snapshot>;
+
 /** The Snapshot items on this page */
 export type SnapshotsListValueList = Array<Snapshot>;
+const SnapshotsListValueList = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<SnapshotsListValueList>;
+
 /** List of Snapshots */
 export interface SnapshotsList {
   /** The Snapshot items on this page */
@@ -3515,6 +4886,8 @@ export interface SnapshotsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SnapshotsList = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<SnapshotsList>;
+
 export interface ListVolumeGroupByNetAppAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3523,6 +4896,11 @@ export interface ListVolumeGroupByNetAppAccountRequest {
   /** The name of the NetApp account */
   accountName: string;
 }
+const ListVolumeGroupByNetAppAccountRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<ListVolumeGroupByNetAppAccountRequest>;
+
 /** Volume group properties */
 export interface VolumeGroupListProperties {
   /** Azure lifecycle management */
@@ -3530,6 +4908,11 @@ export interface VolumeGroupListProperties {
   /** Volume group details */
   groupMetaData?: VolumeGroupMetaData;
 }
+const VolumeGroupListProperties = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<VolumeGroupListProperties>;
+
 /** Volume group resource */
 export interface VolumeGroup {
   /** Resource location */
@@ -3543,8 +4926,15 @@ export interface VolumeGroup {
   /** Volume group properties */
   properties?: VolumeGroupListProperties;
 }
+const VolumeGroup = /*@__PURE__*/ __L.at(__c32, 1) as any as S.Schema<VolumeGroup>;
+
 /** The VolumeGroup items on this page */
 export type VolumeGroupListValueList = Array<VolumeGroup>;
+const VolumeGroupListValueList = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<VolumeGroupListValueList>;
+
 /** List of volume group resources */
 export interface VolumeGroupList {
   /** The VolumeGroup items on this page */
@@ -3552,6 +4942,8 @@ export interface VolumeGroupList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const VolumeGroupList = /*@__PURE__*/ __L.at(__c32, 3) as any as S.Schema<VolumeGroupList>;
+
 export interface ListVolumeQuotaReportRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3570,6 +4962,11 @@ export interface ListVolumeQuotaReportRequest {
   /** The usageThresholdPercentage filter takes the usage threshold percentage and returns records where the usage is greater than or equal to the input value. This is an optional property. */
   usageThresholdPercentage?: number;
 }
+const ListVolumeQuotaReportRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<ListVolumeQuotaReportRequest>;
+
 /** Quota report record properties */
 export interface QuotaReport {
   /** Type of quota */
@@ -3585,18 +4982,35 @@ export interface QuotaReport {
   /** Flag to indicate whether the quota is derived from default quota. */
   isDerivedQuota?: boolean;
 }
+const QuotaReport = /*@__PURE__*/ __L.at(__c32, 5) as any as S.Schema<QuotaReport>;
+
 /** List of quota reports */
 export type ListQuotaReportResponseQuotaReportRecordsList = Array<QuotaReport>;
+const ListQuotaReportResponseQuotaReportRecordsList = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<ListQuotaReportResponseQuotaReportRecordsList>;
+
 /** Quota Report for volume */
 export interface ListQuotaReportResponse {
   /** List of quota reports */
   quotaReportRecords?: ListQuotaReportResponseQuotaReportRecordsList;
 }
+const ListQuotaReportResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<ListQuotaReportResponse>;
+
 /** * Result of ListQuotaReportResponse */
 export interface ListQuotaReportResult {
   /** Represents the properties of the ListQuotaReport. */
   properties?: ListQuotaReportResponse;
 }
+const ListQuotaReportResult = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<ListQuotaReportResult>;
+
 export interface ListVolumeQuotaRuleByVolumeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3609,8 +5023,16 @@ export interface ListVolumeQuotaRuleByVolumeRequest {
   /** The name of the volume */
   volumeName: string;
 }
+const ListVolumeQuotaRuleByVolumeRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<ListVolumeQuotaRuleByVolumeRequest>;
+
 /** Resource tags. */
 export type VolumeQuotaRuleTagsMap = { [key: string]: string | undefined };
+const VolumeQuotaRuleTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<VolumeQuotaRuleTagsMap>;
+
 /** Quota Rule of a Volume */
 export interface VolumeQuotaRule {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3628,8 +5050,15 @@ export interface VolumeQuotaRule {
   /** Volume Quota Rule Properties */
   properties?: VolumeQuotaRulesProperties;
 }
+const VolumeQuotaRule = /*@__PURE__*/ __L.at(__c33, 2) as any as S.Schema<VolumeQuotaRule>;
+
 /** The VolumeQuotaRule items on this page */
 export type VolumeQuotaRulesListValueList = Array<VolumeQuotaRule>;
+const VolumeQuotaRulesListValueList = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<VolumeQuotaRulesListValueList>;
+
 /** List of Volume Quota Rules */
 export interface VolumeQuotaRulesList {
   /** The VolumeQuotaRule items on this page */
@@ -3637,8 +5066,15 @@ export interface VolumeQuotaRulesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const VolumeQuotaRulesList = /*@__PURE__*/ __L.at(
+  __c33,
+  4,
+) as any as S.Schema<VolumeQuotaRulesList>;
+
 /** Exclude Replications filter. 'None' returns all replications, 'Deleted' excludes deleted replications. Default is 'None' */
 export type ListVolumeReplicationsRequestExclude = "None" | "Deleted";
+const ListVolumeReplicationsRequestExclude = S.String;
+
 export interface ListVolumeReplicationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3653,8 +5089,15 @@ export interface ListVolumeReplicationsRequest {
   /** Exclude Replications filter. 'None' returns all replications, 'Deleted' excludes deleted replications. Default is 'None' */
   exclude?: ListVolumeReplicationsRequestExclude | (string & {});
 }
+const ListVolumeReplicationsRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<ListVolumeReplicationsRequest>;
+
 /** The status of the replication */
 export type ReplicationMirrorState = "Uninitialized" | "Mirrored" | "Broken";
+const ReplicationMirrorState = S.String;
+
 /** Replication properties */
 export interface Replication {
   /** UUID v4 used to identify the replication. */
@@ -3674,8 +5117,15 @@ export interface Replication {
   /** Replication deletion time */
   replicationDeletionTime?: string;
 }
+const Replication = /*@__PURE__*/ __L.at(__c33, 6) as any as S.Schema<Replication>;
+
 /** The Replication items on this page */
 export type ListReplicationsValueList = Array<Replication>;
+const ListReplicationsValueList = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<ListReplicationsValueList>;
+
 /** List Replications */
 export interface ListReplications {
   /** The Replication items on this page */
@@ -3683,6 +5133,8 @@ export interface ListReplications {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ListReplications = /*@__PURE__*/ __L.at(__c34, 0) as any as S.Schema<ListReplications>;
+
 export interface ListVolumesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3693,6 +5145,8 @@ export interface ListVolumesRequest {
   /** The name of the capacity pool */
   poolName: string;
 }
+const ListVolumesRequest = /*@__PURE__*/ __L.at(__c34, 1) as any as S.Schema<ListVolumesRequest>;
+
 /** The Volume items on this page */
 export type VolumeListValueList = Array<Volume>;
 /** List of volume resources */
@@ -3702,6 +5156,8 @@ export interface VolumeList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const VolumeList = SnapshotPolicyVolumeList as any as S.Schema<VolumeList>;
+
 export interface MigrateBackupsUnderAccountBackupsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3712,7 +5168,15 @@ export interface MigrateBackupsUnderAccountBackupsRequest {
   /** The ResourceId of the Backup Vault */
   backupVaultId: string;
 }
+const MigrateBackupsUnderAccountBackupsRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<MigrateBackupsUnderAccountBackupsRequest>;
+
 export interface MigrateBackupsUnderAccountBackupsResponse {}
+const MigrateBackupsUnderAccountBackupsResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<MigrateBackupsUnderAccountBackupsResponse>;
+
 export interface MigrateBackupsUnderVolumeBackupsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3727,15 +5191,31 @@ export interface MigrateBackupsUnderVolumeBackupsRequest {
   /** The ResourceId of the Backup Vault */
   backupVaultId: string;
 }
+const MigrateBackupsUnderVolumeBackupsRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<MigrateBackupsUnderVolumeBackupsRequest>;
+
 export interface MigrateBackupsUnderVolumeBackupsResponse {}
+const MigrateBackupsUnderVolumeBackupsResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<MigrateBackupsUnderVolumeBackupsResponse>;
+
 export interface NetAppResourceQueryRegionInfoRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
 }
+const NetAppResourceQueryRegionInfoRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<NetAppResourceQueryRegionInfoRequest>;
+
 /** Resource tags. */
 export type PoolsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const PoolsCreateOrUpdateRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<PoolsCreateOrUpdateRequestTagsMap>;
+
 /** The service level of the file system */
 export type PoolPropertiesInputServiceLevel =
   | "Standard"
@@ -3743,10 +5223,16 @@ export type PoolPropertiesInputServiceLevel =
   | "Ultra"
   | "StandardZRS"
   | "Flexible";
+const PoolPropertiesInputServiceLevel = S.String;
+
 /** The qos type of the pool */
 export type PoolPropertiesInputQosType = "Auto" | "Manual";
+const PoolPropertiesInputQosType = S.String;
+
 /** Encryption type of the capacity pool, set encryption type for data at rest for this pool and all volumes in it. This value can only be set when creating new pool. */
 export type PoolPropertiesInputEncryptionType = "Single" | "Double";
+const PoolPropertiesInputEncryptionType = S.String;
+
 /** Pool properties */
 export interface PoolPropertiesInput {
   /** Provisioned size of the pool (in bytes). Allowed values are in 1TiB chunks (value must be multiple of 1099511627776). */
@@ -3762,6 +5248,8 @@ export interface PoolPropertiesInput {
   /** Encryption type of the capacity pool, set encryption type for data at rest for this pool and all volumes in it. This value can only be set when creating new pool. */
   encryptionType?: PoolPropertiesInputEncryptionType | (string & {}) | null;
 }
+const PoolPropertiesInput = /*@__PURE__*/ __L.at(__c34, 5) as any as S.Schema<PoolPropertiesInput>;
+
 export interface PoolsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3778,8 +5266,16 @@ export interface PoolsCreateOrUpdateRequest {
   /** Capacity pool properties */
   properties: PoolPropertiesInput;
 }
+const PoolsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<PoolsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type PoolsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const PoolsCreateOrUpdateResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<PoolsCreateOrUpdateResponseTagsMap>;
+
 export interface PoolsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3798,6 +5294,11 @@ export interface PoolsCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const PoolsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<PoolsCreateOrUpdateResponse>;
+
 export interface RefreshBucketCertificateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3812,7 +5313,15 @@ export interface RefreshBucketCertificateRequest {
   /** The name of the bucket */
   bucketName: string;
 }
+const RefreshBucketCertificateRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<RefreshBucketCertificateRequest>;
+
 export interface RefreshBucketCertificateResponse {}
+const RefreshBucketCertificateResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<RefreshBucketCertificateResponse>;
+
 export interface RenewAccountCredentialsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3821,7 +5330,15 @@ export interface RenewAccountCredentialsRequest {
   /** The name of the NetApp account */
   accountName: string;
 }
+const RenewAccountCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<RenewAccountCredentialsRequest>;
+
 export interface RenewAccountCredentialsResponse {}
+const RenewAccountCredentialsResponse =
+  AccountsTransitionToCmkResponse as any as S.Schema<RenewAccountCredentialsResponse>;
+
 export interface ResetCachSmbPasswordRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3834,6 +5351,11 @@ export interface ResetCachSmbPasswordRequest {
   /** The name of the cache resource. */
   cacheName: string;
 }
+const ResetCachSmbPasswordRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<ResetCachSmbPasswordRequest>;
+
 /** Resource tags. */
 export type ResetCachSmbPasswordResponseTagsMap = { [key: string]: string | undefined };
 /** The availability zones. */
@@ -3858,6 +5380,9 @@ export interface ResetCachSmbPasswordResponse {
   /** The availability zones. */
   zones?: ResetCachSmbPasswordResponseZonesList;
 }
+const ResetCachSmbPasswordResponse =
+  CachesCreateOrUpdateResponse as any as S.Schema<ResetCachSmbPasswordResponse>;
+
 export interface ResetVolumeCifsPasswordRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3870,9 +5395,20 @@ export interface ResetVolumeCifsPasswordRequest {
   /** The name of the volume */
   volumeName: string;
 }
+const ResetVolumeCifsPasswordRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<ResetVolumeCifsPasswordRequest>;
+
 export interface ResetVolumeCifsPasswordResponse {}
+const ResetVolumeCifsPasswordResponse =
+  AccountsTransitionToCmkResponse as any as S.Schema<ResetVolumeCifsPasswordResponse>;
+
 /** List of files to be restored */
 export type RestoreBackupsUnderBackupVaultFilesRequestFileListList = Array<string>;
+const RestoreBackupsUnderBackupVaultFilesRequestFileListList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<RestoreBackupsUnderBackupVaultFilesRequestFileListList>;
+
 export interface RestoreBackupsUnderBackupVaultFilesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3891,9 +5427,20 @@ export interface RestoreBackupsUnderBackupVaultFilesRequest {
   /** Resource Id of the destination volume on which the files need to be restored */
   destinationVolumeId: string;
 }
+const RestoreBackupsUnderBackupVaultFilesRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<RestoreBackupsUnderBackupVaultFilesRequest>;
+
 export interface RestoreBackupsUnderBackupVaultFilesResponse {}
+const RestoreBackupsUnderBackupVaultFilesResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<RestoreBackupsUnderBackupVaultFilesResponse>;
+
 /** List of files to be restored */
 export type RestoreSnapshotFilesRequestFilePathsList = Array<string>;
+const RestoreSnapshotFilesRequestFilePathsList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<RestoreSnapshotFilesRequestFilePathsList>;
+
 export interface RestoreSnapshotFilesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3912,7 +5459,15 @@ export interface RestoreSnapshotFilesRequest {
   /** Destination folder where the files will be restored */
   destinationPath?: string;
 }
+const RestoreSnapshotFilesRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<RestoreSnapshotFilesRequest>;
+
 export interface RestoreSnapshotFilesResponse {}
+const RestoreSnapshotFilesResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<RestoreSnapshotFilesResponse>;
+
 export interface SetNetAppResourceQueryNetworkSiblingRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3923,16 +5478,28 @@ export interface SetNetAppResourceQueryNetworkSiblingRequest {
   /** The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/volumes. Example /subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Network/virtualNetworks/testVnet/subnets/{mySubnet} */
   subnetId: string;
 }
+const SetNetAppResourceQueryNetworkSiblingRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  6,
+) as any as S.Schema<SetNetAppResourceQueryNetworkSiblingRequest>;
+
 /** Network features available to the volume, or current state of update. */
 export type NetworkSiblingSetNetworkFeatures =
   | "Basic"
   | "Standard"
   | "Basic_Standard"
   | "Standard_Basic";
+const NetworkSiblingSetNetworkFeatures = S.String;
+
 /** Gets the status of the NetworkSiblingSet at the time the operation was called. */
 export type NetworkSiblingSetProvisioningState = "Succeeded" | "Failed" | "Canceled" | "Updating";
+const NetworkSiblingSetProvisioningState = S.String;
+
 /** Volume resource Ids */
 export type NicInfoVolumeResourceIdsList = Array<string>;
+const NicInfoVolumeResourceIdsList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<NicInfoVolumeResourceIdsList>;
+
 /** NIC information and list of volumes for which the NIC has the primary mount IP Address. */
 export interface NicInfo {
   /** IP Address */
@@ -3940,8 +5507,15 @@ export interface NicInfo {
   /** Volume resource Ids */
   volumeResourceIds?: NicInfoVolumeResourceIdsList;
 }
+const NicInfo = /*@__PURE__*/ __L.at(__c35, 7) as any as S.Schema<NicInfo>;
+
 /** List of NIC information */
 export type NetworkSiblingSetNicInfoListList = Array<NicInfo>;
+const NetworkSiblingSetNicInfoListList = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<NetworkSiblingSetNicInfoListList>;
+
 /** Describes the contents of a network sibling set. */
 export interface NetworkSiblingSet {
   /** Network Sibling Set ID for a group of volumes sharing networking resources in a subnet. */
@@ -3957,6 +5531,8 @@ export interface NetworkSiblingSet {
   /** List of NIC information */
   nicInfoList?: NetworkSiblingSetNicInfoListList;
 }
+const NetworkSiblingSet = /*@__PURE__*/ __L.at(__c36, 1) as any as S.Schema<NetworkSiblingSet>;
+
 export interface TransferVolumesPerformReplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3969,19 +5545,40 @@ export interface TransferVolumesPerformReplicationRequest {
   /** The name of the volume */
   volumeName: string;
 }
+const TransferVolumesPerformReplicationRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  2,
+) as any as S.Schema<TransferVolumesPerformReplicationRequest>;
+
 export interface TransferVolumesPerformReplicationResponse {}
+const TransferVolumesPerformReplicationResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<TransferVolumesPerformReplicationResponse>;
+
 /** Resource tags */
 export type UpdateAccountRequestTagsMap = { [key: string]: string | undefined };
+const UpdateAccountRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccountRequestTagsMap>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateAccountRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
+const UpdateAccountRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<UpdateAccountRequestIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateAccountRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateAccountRequestIdentityUserAssignedIdentitiesMap;
 }
+const UpdateAccountRequestIdentity = /*@__PURE__*/ __L.at(
+  __c36,
+  4,
+) as any as S.Schema<UpdateAccountRequestIdentity>;
+
 export interface UpdateAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3998,6 +5595,11 @@ export interface UpdateAccountRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: UpdateAccountRequestIdentity;
 }
+const UpdateAccountRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<UpdateAccountRequest>;
+
 /** Resource tags. */
 export type UpdateAccountResponseTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -4034,11 +5636,18 @@ export interface UpdateAccountResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: UpdateAccountResponseIdentity;
 }
+const UpdateAccountResponse = GetAccountResponse as any as S.Schema<UpdateAccountResponse>;
+
 /** Backup patch properties */
 export interface BackupPatchProperties {
   /** Label for backup */
   label?: string;
 }
+const BackupPatchProperties = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<BackupPatchProperties>;
+
 export interface UpdateBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4053,6 +5662,8 @@ export interface UpdateBackupRequest {
   /** Backup Patch Properties */
   properties?: BackupPatchProperties;
 }
+const UpdateBackupRequest = /*@__PURE__*/ __L.at(__c36, 7) as any as S.Schema<UpdateBackupRequest>;
+
 export interface UpdateBackupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4065,8 +5676,13 @@ export interface UpdateBackupResponse {
   /** Backup Properties */
   properties: BackupProperties;
 }
+const UpdateBackupResponse = CreateBackupResponse as any as S.Schema<UpdateBackupResponse>;
+
 /** Resource tags */
 export type UpdateBackupPolicyRequestTagsMap = { [key: string]: string | undefined };
+const UpdateBackupPolicyRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateBackupPolicyRequestTagsMap>;
+
 export interface UpdateBackupPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4083,6 +5699,11 @@ export interface UpdateBackupPolicyRequest {
   /** Backup policy Properties */
   properties?: BackupPolicyPropertiesInput;
 }
+const UpdateBackupPolicyRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<UpdateBackupPolicyRequest>;
+
 /** Resource tags. */
 export type UpdateBackupPolicyResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateBackupPolicyResponse {
@@ -4103,8 +5724,14 @@ export interface UpdateBackupPolicyResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const UpdateBackupPolicyResponse =
+  CreateBackupPolicyResponse as any as S.Schema<UpdateBackupPolicyResponse>;
+
 /** Resource tags */
 export type UpdateBackupVaultRequestTagsMap = { [key: string]: string | undefined };
+const UpdateBackupVaultRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateBackupVaultRequestTagsMap>;
+
 export interface UpdateBackupVaultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4117,6 +5744,11 @@ export interface UpdateBackupVaultRequest {
   /** Resource tags */
   tags?: UpdateBackupVaultRequestTagsMap;
 }
+const UpdateBackupVaultRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  1,
+) as any as S.Schema<UpdateBackupVaultRequest>;
+
 /** Resource tags. */
 export type UpdateBackupVaultResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateBackupVaultResponse {
@@ -4135,10 +5767,15 @@ export interface UpdateBackupVaultResponse {
   /** Backup Vault Properties */
   properties?: BackupVaultProperties;
 }
+const UpdateBackupVaultResponse =
+  BackupVaultsCreateOrUpdateResponse as any as S.Schema<UpdateBackupVaultResponse>;
+
 /** Properties of the server managing the lifecycle of volume buckets */
 export type BucketServerPatchProperties = BucketServerPropertiesInput;
 /** Access permissions for the bucket. Either ReadOnly or ReadWrite. */
 export type BucketPatchPermissions = "ReadOnly" | "ReadWrite";
+const BucketPatchPermissions = S.String;
+
 /** Bucket resource properties for a Patch operation */
 export interface BucketPatchPropertiesInput {
   /** File System user having access to volume data. For Unix, this is the user's uid and gid. For Windows, this is the user's username. Note that the Unix and Windows user details are mutually exclusive, meaning one or other must be supplied, but not both. */
@@ -4150,6 +5787,11 @@ export interface BucketPatchPropertiesInput {
   /** Specifies the Azure Key Vault settings. These are used when a) retrieving the bucket server certificate, and b) storing the bucket credentials Notes: 1. If a bucket certificate was previously provided directly using the certificateObject property, it is possible to subsequently use the Azure Key Vault for certificate management by using these 'akvDetails' properties. However, once Azure Key Vault is configured, it is no longer possible to provide the certificate directly via the certificateObject property. 2. These properties are mutually exclusive with the server.certificateObject property. */
   akvDetails?: AzureKeyVaultDetails;
 }
+const BucketPatchPropertiesInput = /*@__PURE__*/ __L.at(
+  __c37,
+  2,
+) as any as S.Schema<BucketPatchPropertiesInput>;
+
 export interface UpdateBucketRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4166,6 +5808,8 @@ export interface UpdateBucketRequest {
   /** Bucket properties */
   properties?: BucketPatchPropertiesInput;
 }
+const UpdateBucketRequest = /*@__PURE__*/ __L.at(__c37, 3) as any as S.Schema<UpdateBucketRequest>;
+
 export interface UpdateBucketResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4178,10 +5822,18 @@ export interface UpdateBucketResponse {
   /** Bucket properties */
   properties?: BucketProperties;
 }
+const UpdateBucketResponse = GetBucketResponse as any as S.Schema<UpdateBucketResponse>;
+
 /** Resource tags. */
 export type UpdateCachRequestTagsMap = { [key: string]: string | undefined };
+const UpdateCachRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCachRequestTagsMap>;
+
 /** Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol */
 export type CacheUpdatePropertiesProtocolTypesList = Array<ProtocolTypes | (string & {})>;
+const CacheUpdatePropertiesProtocolTypesList =
+  CachePropertiesInputProtocolTypesList as any as S.Schema<CacheUpdatePropertiesProtocolTypesList>;
+
 /** The updatable properties of the Cache. */
 export interface CacheUpdateProperties {
   /** Maximum storage quota allowed for a file system in bytes. Valid values are in the range 50GiB to 1PiB. Values expressed in bytes as multiples of 1GiB. */
@@ -4201,6 +5853,11 @@ export interface CacheUpdateProperties {
   /** Flag indicating whether writeback is enabled for the cache. */
   writeBack?: EnableWriteBackState | (string & {});
 }
+const CacheUpdateProperties = /*@__PURE__*/ __L.at(
+  __c37,
+  4,
+) as any as S.Schema<CacheUpdateProperties>;
+
 export interface UpdateCachRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4217,6 +5874,8 @@ export interface UpdateCachRequest {
   /** The resource-specific properties for this resource. */
   properties?: CacheUpdateProperties;
 }
+const UpdateCachRequest = /*@__PURE__*/ __L.at(__c37, 5) as any as S.Schema<UpdateCachRequest>;
+
 /** Resource tags. */
 export type UpdateCachResponseTagsMap = { [key: string]: string | undefined };
 /** The availability zones. */
@@ -4241,12 +5900,16 @@ export interface UpdateCachResponse {
   /** The availability zones. */
   zones?: UpdateCachResponseZonesList;
 }
+const UpdateCachResponse = CachesPoolChangeResponse as any as S.Schema<UpdateCachResponse>;
+
 /** Network features available to the volume. */
 export type UpdateNetAppResourceNetworkSiblingSetRequestNetworkFeatures =
   | "Basic"
   | "Standard"
   | "Basic_Standard"
   | "Standard_Basic";
+const UpdateNetAppResourceNetworkSiblingSetRequestNetworkFeatures = S.String;
+
 export interface UpdateNetAppResourceNetworkSiblingSetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4261,10 +5924,20 @@ export interface UpdateNetAppResourceNetworkSiblingSetRequest {
   /** Network features available to the volume. */
   networkFeatures: UpdateNetAppResourceNetworkSiblingSetRequestNetworkFeatures | (string & {});
 }
+const UpdateNetAppResourceNetworkSiblingSetRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<UpdateNetAppResourceNetworkSiblingSetRequest>;
+
 /** Resource tags */
 export type UpdatePoolRequestTagsMap = { [key: string]: string | undefined };
+const UpdatePoolRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePoolRequestTagsMap>;
+
 /** The qos type of the pool */
 export type QosType = "Auto" | "Manual";
+const QosType = S.String;
+
 /** Patchable pool properties */
 export interface PoolPatchProperties {
   /** Provisioned size of the pool (in bytes). Allowed values are in 1TiB chunks (value must be multiple of 1099511627776). */
@@ -4276,6 +5949,8 @@ export interface PoolPatchProperties {
   /** Maximum throughput in MiB/s that can be achieved by this pool and this will be accepted as input only for manual qosType pool with Flexible service level */
   customThroughputMibps?: number | null;
 }
+const PoolPatchProperties = /*@__PURE__*/ __L.at(__c37, 7) as any as S.Schema<PoolPatchProperties>;
+
 export interface UpdatePoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4292,6 +5967,8 @@ export interface UpdatePoolRequest {
   /** Capacity pool properties */
   properties?: PoolPatchProperties;
 }
+const UpdatePoolRequest = /*@__PURE__*/ __L.at(__c38, 0) as any as S.Schema<UpdatePoolRequest>;
+
 /** Resource tags. */
 export type UpdatePoolResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdatePoolResponse {
@@ -4312,6 +5989,8 @@ export interface UpdatePoolResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const UpdatePoolResponse = GetPoolResponse as any as S.Schema<UpdatePoolResponse>;
+
 export interface UpdateSnapshotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4326,6 +6005,11 @@ export interface UpdateSnapshotRequest {
   /** The name of the snapshot */
   snapshotName: string;
 }
+const UpdateSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  1,
+) as any as S.Schema<UpdateSnapshotRequest>;
+
 export interface UpdateSnapshotResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4340,8 +6024,13 @@ export interface UpdateSnapshotResponse {
   /** Resource location */
   location: string;
 }
+const UpdateSnapshotResponse = CreateSnapshotResponse as any as S.Schema<UpdateSnapshotResponse>;
+
 /** Resource tags */
 export type UpdateSnapshotPolicyRequestTagsMap = { [key: string]: string | undefined };
+const UpdateSnapshotPolicyRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSnapshotPolicyRequestTagsMap>;
+
 export interface UpdateSnapshotPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4358,6 +6047,11 @@ export interface UpdateSnapshotPolicyRequest {
   /** Snapshot Policy properties */
   properties?: SnapshotPolicyPropertiesInput;
 }
+const UpdateSnapshotPolicyRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<UpdateSnapshotPolicyRequest>;
+
 /** Resource tags. */
 export type UpdateSnapshotPolicyResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateSnapshotPolicyResponse {
@@ -4378,10 +6072,18 @@ export interface UpdateSnapshotPolicyResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const UpdateSnapshotPolicyResponse =
+  CreateSnapshotPolicyResponse as any as S.Schema<UpdateSnapshotPolicyResponse>;
+
 /** Resource tags */
 export type UpdateVolumeRequestTagsMap = { [key: string]: string | undefined };
+const UpdateVolumeRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVolumeRequestTagsMap>;
+
 /** The service level of the file system */
 export type ServiceLevel = "Standard" | "Premium" | "Ultra" | "StandardZRS" | "Flexible";
+const ServiceLevel = S.String;
+
 /** Export policy rule */
 export type VolumePatchPropertiesExportPolicyRulesList = Array<ExportPolicyRule>;
 /** Set of export policy rules */
@@ -4389,13 +6091,24 @@ export interface VolumePatchPropertiesExportPolicy {
   /** Export policy rule */
   rules?: VolumePatchPropertiesExportPolicyRulesList;
 }
+const VolumePatchPropertiesExportPolicy =
+  CachePropertiesExportPolicy as any as S.Schema<VolumePatchPropertiesExportPolicy>;
+
 /** Specify the protocol types for the volume. Supported values are NFSv3, NFSv4.1, and CIFS. For SMB volumes, specify CIFS. The value SMB isn't supported in the protocolTypes property. Default: NFSv3 */
 export type VolumePatchPropertiesProtocolTypesList = Array<string>;
+const VolumePatchPropertiesProtocolTypesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<VolumePatchPropertiesProtocolTypesList>;
+
 /** Advanced Ransomware Protection reports (ARP) updatable settings */
 export interface RansomwareProtectionPatchSettings {
   /** The desired value of the ARP feature state available to the volume */
   desiredRansomwareProtectionState?: DesiredRansomwareProtectionState | (string & {});
 }
+const RansomwareProtectionPatchSettings = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<RansomwareProtectionPatchSettings>;
+
 /** DataProtection type volumes include an object containing details of the replication */
 export interface VolumePatchPropertiesDataProtection {
   /** Backup Properties */
@@ -4405,6 +6118,11 @@ export interface VolumePatchPropertiesDataProtection {
   /** Advanced Ransomware Protection updatable settings */
   ransomwareProtection?: RansomwareProtectionPatchSettings;
 }
+const VolumePatchPropertiesDataProtection = /*@__PURE__*/ __L.at(
+  __c38,
+  4,
+) as any as S.Schema<VolumePatchPropertiesDataProtection>;
+
 /** Patchable volume properties */
 export interface VolumePatchProperties {
   /** The service level of the file system */
@@ -4442,6 +6160,11 @@ export interface VolumePatchProperties {
   /** Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume */
   smbNonBrowsable?: SmbNonBrowsable | (string & {});
 }
+const VolumePatchProperties = /*@__PURE__*/ __L.at(
+  __c38,
+  5,
+) as any as S.Schema<VolumePatchProperties>;
+
 export interface UpdateVolumeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4460,6 +6183,8 @@ export interface UpdateVolumeRequest {
   /** Patchable volume properties */
   properties?: VolumePatchProperties;
 }
+const UpdateVolumeRequest = /*@__PURE__*/ __L.at(__c38, 6) as any as S.Schema<UpdateVolumeRequest>;
+
 /** Resource tags. */
 export type UpdateVolumeResponseTagsMap = { [key: string]: string | undefined };
 /** The availability zones. */
@@ -4484,8 +6209,13 @@ export interface UpdateVolumeResponse {
   /** The availability zones. */
   zones?: UpdateVolumeResponseZonesList;
 }
+const UpdateVolumeResponse = GetVolumeResponse as any as S.Schema<UpdateVolumeResponse>;
+
 /** Resource tags */
 export type UpdateVolumeQuotaRuleRequestTagsMap = { [key: string]: string | undefined };
+const UpdateVolumeQuotaRuleRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVolumeQuotaRuleRequestTagsMap>;
+
 export interface UpdateVolumeQuotaRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4504,6 +6234,11 @@ export interface UpdateVolumeQuotaRuleRequest {
   /** Volume Quota Rule Properties */
   properties?: VolumeQuotaRulesPropertiesInput;
 }
+const UpdateVolumeQuotaRuleRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  7,
+) as any as S.Schema<UpdateVolumeQuotaRuleRequest>;
+
 /** Resource tags. */
 export type UpdateVolumeQuotaRuleResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateVolumeQuotaRuleResponse {
@@ -4522,6 +6257,9 @@ export interface UpdateVolumeQuotaRuleResponse {
   /** Volume Quota Rule Properties */
   properties?: VolumeQuotaRulesProperties;
 }
+const UpdateVolumeQuotaRuleResponse =
+  CreateVolumeQuotaRuleResponse as any as S.Schema<UpdateVolumeQuotaRuleResponse>;
+
 export interface VolumesBreakFileLocksRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4538,7 +6276,15 @@ export interface VolumesBreakFileLocksRequest {
   /** Break File locks could be a disruptive operation for application as locks on the volume will be broken, if want to process, set to true. */
   confirmRunningDisruptiveOperation?: boolean;
 }
+const VolumesBreakFileLocksRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<VolumesBreakFileLocksRequest>;
+
 export interface VolumesBreakFileLocksResponse {}
+const VolumesBreakFileLocksResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<VolumesBreakFileLocksResponse>;
+
 export interface VolumesBreakReplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4553,11 +6299,25 @@ export interface VolumesBreakReplicationRequest {
   /** If replication is in status transferring and you want to force break the replication, set to true */
   forceBreakReplication?: boolean;
 }
+const VolumesBreakReplicationRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  1,
+) as any as S.Schema<VolumesBreakReplicationRequest>;
+
 export interface VolumesBreakReplicationResponse {}
+const VolumesBreakReplicationResponse =
+  AccountsTransitionToCmkResponse as any as S.Schema<VolumesBreakReplicationResponse>;
+
 /** Resource tags. */
 export type VolumesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const VolumesCreateOrUpdateRequestTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<VolumesCreateOrUpdateRequestTagsMap>;
+
 /** The availability zones. */
 export type VolumesCreateOrUpdateRequestZonesList = Array<string>;
+const VolumesCreateOrUpdateRequestZonesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<VolumesCreateOrUpdateRequestZonesList>;
+
 export interface VolumesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4578,10 +6338,21 @@ export interface VolumesCreateOrUpdateRequest {
   /** The availability zones. */
   zones?: VolumesCreateOrUpdateRequestZonesList;
 }
+const VolumesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  2,
+) as any as S.Schema<VolumesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type VolumesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const VolumesCreateOrUpdateResponseTagsMap =
+  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<VolumesCreateOrUpdateResponseTagsMap>;
+
 /** The availability zones. */
 export type VolumesCreateOrUpdateResponseZonesList = Array<string>;
+const VolumesCreateOrUpdateResponseZonesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<VolumesCreateOrUpdateResponseZonesList>;
+
 export interface VolumesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4602,6 +6373,11 @@ export interface VolumesCreateOrUpdateResponse {
   /** The availability zones. */
   zones?: VolumesCreateOrUpdateResponseZonesList;
 }
+const VolumesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<VolumesCreateOrUpdateResponse>;
+
 export interface VolumesListGetGroupIdListForLdapUserRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4616,15 +6392,31 @@ export interface VolumesListGetGroupIdListForLdapUserRequest {
   /** username is required to fetch the group to which user is part of */
   username: string;
 }
+const VolumesListGetGroupIdListForLdapUserRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  4,
+) as any as S.Schema<VolumesListGetGroupIdListForLdapUserRequest>;
+
 /** Group Id list */
 export type GetGroupIdListForLdapUserResponseGroupIdsForLdapUserList = Array<string>;
+const GetGroupIdListForLdapUserResponseGroupIdsForLdapUserList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<GetGroupIdListForLdapUserResponseGroupIdsForLdapUserList>;
+
 /** Group Id list for Ldap user */
 export interface GetGroupIdListForLdapUserResponse {
   /** Group Id list */
   groupIdsForLdapUser?: GetGroupIdListForLdapUserResponseGroupIdsForLdapUserList;
 }
+const GetGroupIdListForLdapUserResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  5,
+) as any as S.Schema<GetGroupIdListForLdapUserResponse>;
+
 /** A list of IC-LIF IPs that can be used to connect to the On-prem cluster */
 export type VolumesPeerExternalClusterRequestPeerIpAddressesList = Array<string>;
+const VolumesPeerExternalClusterRequestPeerIpAddressesList =
+  ActiveDirectoryInputBackupOperatorsList as any as S.Schema<VolumesPeerExternalClusterRequestPeerIpAddressesList>;
+
 export interface VolumesPeerExternalClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4639,6 +6431,11 @@ export interface VolumesPeerExternalClusterRequest {
   /** A list of IC-LIF IPs that can be used to connect to the On-prem cluster */
   peerIpAddresses: VolumesPeerExternalClusterRequestPeerIpAddressesList;
 }
+const VolumesPeerExternalClusterRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  6,
+) as any as S.Schema<VolumesPeerExternalClusterRequest>;
+
 /** Properties of the cluster peer command response. */
 export interface ClusterPeerCommandResponseProperties {
   /** ClusterPeeringCommand to run to accept cluster peer. Will only be present if <code>clusterPeeringStatus</code> is <code>pending</code>. */
@@ -4646,11 +6443,21 @@ export interface ClusterPeerCommandResponseProperties {
   /** Passphrase for use with cluster peer command */
   passphrase?: string;
 }
+const ClusterPeerCommandResponseProperties = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<ClusterPeerCommandResponseProperties>;
+
 /** Information about cluster peering process */
 export interface ClusterPeerCommandResponse {
   /** Represents the properties of the cluster peer command response. */
   properties?: ClusterPeerCommandResponseProperties;
 }
+const ClusterPeerCommandResponse = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<ClusterPeerCommandResponse>;
+
 export interface VolumesPoolChangeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4665,7 +6472,15 @@ export interface VolumesPoolChangeRequest {
   /** Resource id of the pool to move volume to */
   newPoolResourceId: string;
 }
+const VolumesPoolChangeRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  1,
+) as any as S.Schema<VolumesPoolChangeRequest>;
+
 export interface VolumesPoolChangeResponse {}
+const VolumesPoolChangeResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<VolumesPoolChangeResponse>;
+
 export interface VolumesPopulateAvailabilityZoneRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4678,6 +6493,11 @@ export interface VolumesPopulateAvailabilityZoneRequest {
   /** The name of the volume */
   volumeName: string;
 }
+const VolumesPopulateAvailabilityZoneRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<VolumesPopulateAvailabilityZoneRequest>;
+
 /** Resource tags. */
 export type VolumesPopulateAvailabilityZoneResponseTagsMap = { [key: string]: string | undefined };
 /** The availability zones. */
@@ -4702,6 +6522,9 @@ export interface VolumesPopulateAvailabilityZoneResponse {
   /** The availability zones. */
   zones?: VolumesPopulateAvailabilityZoneResponseZonesList;
 }
+const VolumesPopulateAvailabilityZoneResponse =
+  VolumesCreateOrUpdateResponse as any as S.Schema<VolumesPopulateAvailabilityZoneResponse>;
+
 export interface VolumesReestablishReplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4716,7 +6539,15 @@ export interface VolumesReestablishReplicationRequest {
   /** Resource id of the source volume for the replication */
   sourceVolumeId?: string;
 }
+const VolumesReestablishReplicationRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  3,
+) as any as S.Schema<VolumesReestablishReplicationRequest>;
+
 export interface VolumesReestablishReplicationResponse {}
+const VolumesReestablishReplicationResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<VolumesReestablishReplicationResponse>;
+
 export interface VolumesReInitializeReplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4729,7 +6560,15 @@ export interface VolumesReInitializeReplicationRequest {
   /** The name of the volume */
   volumeName: string;
 }
+const VolumesReInitializeReplicationRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  4,
+) as any as S.Schema<VolumesReInitializeReplicationRequest>;
+
 export interface VolumesReInitializeReplicationResponse {}
+const VolumesReInitializeReplicationResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<VolumesReInitializeReplicationResponse>;
+
 export interface VolumesRelocateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4744,7 +6583,15 @@ export interface VolumesRelocateRequest {
   /** New creation token for the volume that controls the mount point name */
   creationToken?: string;
 }
+const VolumesRelocateRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  5,
+) as any as S.Schema<VolumesRelocateRequest>;
+
 export interface VolumesRelocateResponse {}
+const VolumesRelocateResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<VolumesRelocateResponse>;
+
 export interface VolumesReplicationStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4757,6 +6604,11 @@ export interface VolumesReplicationStatusRequest {
   /** The name of the volume */
   volumeName: string;
 }
+const VolumesReplicationStatusRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  6,
+) as any as S.Schema<VolumesReplicationStatusRequest>;
+
 /** Replication status */
 export interface ReplicationStatus {
   /** Replication health check */
@@ -4770,6 +6622,8 @@ export interface ReplicationStatus {
   /** Displays error message if the replication is in an error state */
   errorMessage?: string;
 }
+const ReplicationStatus = /*@__PURE__*/ __L.at(__c40, 7) as any as S.Schema<ReplicationStatus>;
+
 export interface VolumesResyncReplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4782,7 +6636,15 @@ export interface VolumesResyncReplicationRequest {
   /** The name of the volume */
   volumeName: string;
 }
+const VolumesResyncReplicationRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<VolumesResyncReplicationRequest>;
+
 export interface VolumesResyncReplicationResponse {}
+const VolumesResyncReplicationResponse =
+  AuthorizeVolumeReplicationResponse as any as S.Schema<VolumesResyncReplicationResponse>;
+
 export interface VolumesRevertRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4797,7 +6659,15 @@ export interface VolumesRevertRequest {
   /** Resource id of the snapshot */
   snapshotId?: string;
 }
+const VolumesRevertRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  1,
+) as any as S.Schema<VolumesRevertRequest>;
+
 export interface VolumesRevertResponse {}
+const VolumesRevertResponse =
+  AccountsChangeKeyVaultResponse as any as S.Schema<VolumesRevertResponse>;
+
 export interface VolumesRevertRelocationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4810,7 +6680,15 @@ export interface VolumesRevertRelocationRequest {
   /** The name of the volume */
   volumeName: string;
 }
+const VolumesRevertRelocationRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  2,
+) as any as S.Schema<VolumesRevertRelocationRequest>;
+
 export interface VolumesRevertRelocationResponse {}
+const VolumesRevertRelocationResponse =
+  AccountsTransitionToCmkResponse as any as S.Schema<VolumesRevertRelocationResponse>;
+
 export interface VolumesSplitCloneFromParentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4823,6 +6701,11 @@ export interface VolumesSplitCloneFromParentRequest {
   /** The name of the volume */
   volumeName: string;
 }
+const VolumesSplitCloneFromParentRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  3,
+) as any as S.Schema<VolumesSplitCloneFromParentRequest>;
+
 /** Resource tags. */
 export type VolumesSplitCloneFromParentResponseTagsMap = { [key: string]: string | undefined };
 /** The availability zones. */
@@ -4847,6 +6730,9 @@ export interface VolumesSplitCloneFromParentResponse {
   /** The availability zones. */
   zones?: VolumesSplitCloneFromParentResponseZonesList;
 }
+const VolumesSplitCloneFromParentResponse =
+  VolumesCreateOrUpdateResponse as any as S.Schema<VolumesSplitCloneFromParentResponse>;
+
 export type AccountsChangeKeyVaultError = AzureOpError;
 /** Affects existing volumes that are encrypted with Key Vault/Managed HSM, and new volumes. Supports HSM to Key Vault, Key Vault to HSM, HSM to HSM and Key Vault to Key Vault. */
 export const AccountsChangeKeyVault: API.OperationMethod<
@@ -4855,8 +6741,8 @@ export const AccountsChangeKeyVault: API.OperationMethod<
   AccountsChangeKeyVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<AccountsChangeKeyVaultRequest>,
-  output: __S(3) as any as S.Schema<AccountsChangeKeyVaultResponse>,
+  input: AccountsChangeKeyVaultRequest,
+  output: AccountsChangeKeyVaultResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4870,8 +6756,8 @@ export const AccountsCreateOrUpdate: API.OperationMethod<
   AccountsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<AccountsCreateOrUpdateRequest>,
-  output: __S(26) as any as S.Schema<AccountsCreateOrUpdateResponse>,
+  input: AccountsCreateOrUpdateRequest,
+  output: AccountsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4885,8 +6771,8 @@ export const AccountsTransitionToCmk: API.OperationMethod<
   AccountsTransitionToCmkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<AccountsTransitionToCmkRequest>,
-  output: __S(28) as any as S.Schema<AccountsTransitionToCmkResponse>,
+  input: AccountsTransitionToCmkRequest,
+  output: AccountsTransitionToCmkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4900,8 +6786,8 @@ export const AuthorizeVolumeExternalReplication: API.OperationMethod<
   AuthorizeVolumeExternalReplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<AuthorizeVolumeExternalReplicationRequest>,
-  output: __S(31) as any as S.Schema<SvmPeerCommandResponse>,
+  input: AuthorizeVolumeExternalReplicationRequest,
+  output: SvmPeerCommandResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4915,8 +6801,8 @@ export const AuthorizeVolumeReplication: API.OperationMethod<
   AuthorizeVolumeReplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<AuthorizeVolumeReplicationRequest>,
-  output: __S(33) as any as S.Schema<AuthorizeVolumeReplicationResponse>,
+  input: AuthorizeVolumeReplicationRequest,
+  output: AuthorizeVolumeReplicationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4930,8 +6816,8 @@ export const BackupsGetVolumeLatestRestoreStatus: API.OperationMethod<
   BackupsGetVolumeLatestRestoreStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<BackupsGetVolumeLatestRestoreStatusRequest>,
-  output: __S(35) as any as S.Schema<RestoreStatus>,
+  input: BackupsGetVolumeLatestRestoreStatusRequest,
+  output: RestoreStatus,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4945,8 +6831,8 @@ export const BackupVaultsCreateOrUpdate: API.OperationMethod<
   BackupVaultsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<BackupVaultsCreateOrUpdateRequest>,
-  output: __S(38) as any as S.Schema<BackupVaultsCreateOrUpdateResponse>,
+  input: BackupVaultsCreateOrUpdateRequest,
+  output: BackupVaultsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4960,8 +6846,8 @@ export const BucketsCreateOrUpdate: API.OperationMethod<
   BucketsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<BucketsCreateOrUpdateRequest>,
-  output: __S(50) as any as S.Schema<BucketsCreateOrUpdateResponse>,
+  input: BucketsCreateOrUpdateRequest,
+  output: BucketsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4975,8 +6861,8 @@ export const CachesCreateOrUpdate: API.OperationMethod<
   CachesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<CachesCreateOrUpdateRequest>,
-  output: __S(62) as any as S.Schema<CachesCreateOrUpdateResponse>,
+  input: CachesCreateOrUpdateRequest,
+  output: CachesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4990,8 +6876,8 @@ export const CachesPoolChange: API.OperationMethod<
   CachesPoolChangeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<CachesPoolChangeRequest>,
-  output: __S(64) as any as S.Schema<CachesPoolChangeResponse>,
+  input: CachesPoolChangeRequest,
+  output: CachesPoolChangeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5005,8 +6891,8 @@ export const CheckNetAppResourceFilePathAvailability: API.OperationMethod<
   CheckNetAppResourceFilePathAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<CheckNetAppResourceFilePathAvailabilityRequest>,
-  output: __S(66) as any as S.Schema<CheckAvailabilityResponse>,
+  input: CheckNetAppResourceFilePathAvailabilityRequest,
+  output: CheckAvailabilityResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5020,8 +6906,8 @@ export const CheckNetAppResourceNameAvailability: API.OperationMethod<
   CheckNetAppResourceNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<CheckNetAppResourceNameAvailabilityRequest>,
-  output: __S(66) as any as S.Schema<CheckAvailabilityResponse>,
+  input: CheckNetAppResourceNameAvailabilityRequest,
+  output: CheckAvailabilityResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5035,8 +6921,8 @@ export const CheckNetAppResourceQuotaAvailability: API.OperationMethod<
   CheckNetAppResourceQuotaAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<CheckNetAppResourceQuotaAvailabilityRequest>,
-  output: __S(66) as any as S.Schema<CheckAvailabilityResponse>,
+  input: CheckNetAppResourceQuotaAvailabilityRequest,
+  output: CheckAvailabilityResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5050,8 +6936,8 @@ export const ClearRansomwareReportSuspects: API.OperationMethod<
   ClearRansomwareReportSuspectsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<ClearRansomwareReportSuspectsRequest>,
-  output: __S(33) as any as S.Schema<ClearRansomwareReportSuspectsResponse>,
+  input: ClearRansomwareReportSuspectsRequest,
+  output: ClearRansomwareReportSuspectsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5065,8 +6951,8 @@ export const CreateBackup: API.OperationMethod<
   CreateBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<CreateBackupRequest>,
-  output: __S(73) as any as S.Schema<CreateBackupResponse>,
+  input: CreateBackupRequest,
+  output: CreateBackupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5080,8 +6966,8 @@ export const CreateBackupPolicy: API.OperationMethod<
   CreateBackupPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<CreateBackupPolicyRequest>,
-  output: __S(79) as any as S.Schema<CreateBackupPolicyResponse>,
+  input: CreateBackupPolicyRequest,
+  output: CreateBackupPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5095,8 +6981,8 @@ export const CreateSnapshot: API.OperationMethod<
   CreateSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<CreateSnapshotRequest>,
-  output: __S(82) as any as S.Schema<CreateSnapshotResponse>,
+  input: CreateSnapshotRequest,
+  output: CreateSnapshotResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5110,8 +6996,8 @@ export const CreateSnapshotPolicy: API.OperationMethod<
   CreateSnapshotPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<CreateSnapshotPolicyRequest>,
-  output: __S(90) as any as S.Schema<CreateSnapshotPolicyResponse>,
+  input: CreateSnapshotPolicyRequest,
+  output: CreateSnapshotPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5125,8 +7011,8 @@ export const CreateVolumeGroup: API.OperationMethod<
   CreateVolumeGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<CreateVolumeGroupRequest>,
-  output: __S(118) as any as S.Schema<CreateVolumeGroupResponse>,
+  input: CreateVolumeGroupRequest,
+  output: CreateVolumeGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5140,8 +7026,8 @@ export const CreateVolumeQuotaRule: API.OperationMethod<
   CreateVolumeQuotaRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<CreateVolumeQuotaRuleRequest>,
-  output: __S(122) as any as S.Schema<CreateVolumeQuotaRuleResponse>,
+  input: CreateVolumeQuotaRuleRequest,
+  output: CreateVolumeQuotaRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5155,8 +7041,8 @@ export const DeleteAccount: API.OperationMethod<
   DeleteAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<DeleteAccountRequest>,
-  output: __S(3) as any as S.Schema<DeleteAccountResponse>,
+  input: DeleteAccountRequest,
+  output: DeleteAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5170,8 +7056,8 @@ export const DeleteBackup: API.OperationMethod<
   DeleteBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<DeleteBackupRequest>,
-  output: __S(3) as any as S.Schema<DeleteBackupResponse>,
+  input: DeleteBackupRequest,
+  output: DeleteBackupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5185,8 +7071,8 @@ export const DeleteBackupPolicy: API.OperationMethod<
   DeleteBackupPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<DeleteBackupPolicyRequest>,
-  output: __S(3) as any as S.Schema<DeleteBackupPolicyResponse>,
+  input: DeleteBackupPolicyRequest,
+  output: DeleteBackupPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5200,8 +7086,8 @@ export const DeleteBackupVault: API.OperationMethod<
   DeleteBackupVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<DeleteBackupVaultRequest>,
-  output: __S(3) as any as S.Schema<DeleteBackupVaultResponse>,
+  input: DeleteBackupVaultRequest,
+  output: DeleteBackupVaultResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5215,8 +7101,8 @@ export const DeleteBucket: API.OperationMethod<
   DeleteBucketError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<DeleteBucketRequest>,
-  output: __S(3) as any as S.Schema<DeleteBucketResponse>,
+  input: DeleteBucketRequest,
+  output: DeleteBucketResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5230,8 +7116,8 @@ export const DeleteCach: API.OperationMethod<
   DeleteCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128) as any as S.Schema<DeleteCachRequest>,
-  output: __S(3) as any as S.Schema<DeleteCachResponse>,
+  input: DeleteCachRequest,
+  output: DeleteCachResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5245,8 +7131,8 @@ export const DeletePool: API.OperationMethod<
   DeletePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<DeletePoolRequest>,
-  output: __S(3) as any as S.Schema<DeletePoolResponse>,
+  input: DeletePoolRequest,
+  output: DeletePoolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5260,8 +7146,8 @@ export const DeleteSnapshot: API.OperationMethod<
   DeleteSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130) as any as S.Schema<DeleteSnapshotRequest>,
-  output: __S(3) as any as S.Schema<DeleteSnapshotResponse>,
+  input: DeleteSnapshotRequest,
+  output: DeleteSnapshotResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5275,8 +7161,8 @@ export const DeleteSnapshotPolicy: API.OperationMethod<
   DeleteSnapshotPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<DeleteSnapshotPolicyRequest>,
-  output: __S(3) as any as S.Schema<DeleteSnapshotPolicyResponse>,
+  input: DeleteSnapshotPolicyRequest,
+  output: DeleteSnapshotPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5290,8 +7176,8 @@ export const DeleteVolume: API.OperationMethod<
   DeleteVolumeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<DeleteVolumeRequest>,
-  output: __S(3) as any as S.Schema<DeleteVolumeResponse>,
+  input: DeleteVolumeRequest,
+  output: DeleteVolumeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5305,8 +7191,8 @@ export const DeleteVolumeGroup: API.OperationMethod<
   DeleteVolumeGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133) as any as S.Schema<DeleteVolumeGroupRequest>,
-  output: __S(3) as any as S.Schema<DeleteVolumeGroupResponse>,
+  input: DeleteVolumeGroupRequest,
+  output: DeleteVolumeGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5320,8 +7206,8 @@ export const DeleteVolumeQuotaRule: API.OperationMethod<
   DeleteVolumeQuotaRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134) as any as S.Schema<DeleteVolumeQuotaRuleRequest>,
-  output: __S(3) as any as S.Schema<DeleteVolumeQuotaRuleResponse>,
+  input: DeleteVolumeQuotaRuleRequest,
+  output: DeleteVolumeQuotaRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5335,8 +7221,8 @@ export const DeleteVolumeReplication: API.OperationMethod<
   DeleteVolumeReplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<DeleteVolumeReplicationRequest>,
-  output: __S(28) as any as S.Schema<DeleteVolumeReplicationResponse>,
+  input: DeleteVolumeReplicationRequest,
+  output: DeleteVolumeReplicationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5350,8 +7236,8 @@ export const FinalizeVolumeExternalReplication: API.OperationMethod<
   FinalizeVolumeExternalReplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<FinalizeVolumeExternalReplicationRequest>,
-  output: __S(33) as any as S.Schema<FinalizeVolumeExternalReplicationResponse>,
+  input: FinalizeVolumeExternalReplicationRequest,
+  output: FinalizeVolumeExternalReplicationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5365,8 +7251,8 @@ export const FinalizeVolumeRelocation: API.OperationMethod<
   FinalizeVolumeRelocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<FinalizeVolumeRelocationRequest>,
-  output: __S(33) as any as S.Schema<FinalizeVolumeRelocationResponse>,
+  input: FinalizeVolumeRelocationRequest,
+  output: FinalizeVolumeRelocationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5380,8 +7266,8 @@ export const GenerateBucketAkvCredentials: API.OperationMethod<
   GenerateBucketAkvCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<GenerateBucketAkvCredentialsRequest>,
-  output: __S(33) as any as S.Schema<GenerateBucketAkvCredentialsResponse>,
+  input: GenerateBucketAkvCredentialsRequest,
+  output: GenerateBucketAkvCredentialsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5395,8 +7281,8 @@ export const GenerateBucketCredentials: API.OperationMethod<
   GenerateBucketCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<GenerateBucketCredentialsRequest>,
-  output: __S(140) as any as S.Schema<BucketGenerateCredentials>,
+  input: GenerateBucketCredentialsRequest,
+  output: BucketGenerateCredentials,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5410,8 +7296,8 @@ export const GetAccount: API.OperationMethod<
   GetAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141) as any as S.Schema<GetAccountRequest>,
-  output: __S(144) as any as S.Schema<GetAccountResponse>,
+  input: GetAccountRequest,
+  output: GetAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5425,8 +7311,8 @@ export const GetAccountChangeKeyVaultInformation: API.OperationMethod<
   GetAccountChangeKeyVaultInformationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<GetAccountChangeKeyVaultInformationRequest>,
-  output: __S(148) as any as S.Schema<GetKeyVaultStatusResponse>,
+  input: GetAccountChangeKeyVaultInformationRequest,
+  output: GetKeyVaultStatusResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5440,8 +7326,8 @@ export const GetBackup: API.OperationMethod<
   GetBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<GetBackupRequest>,
-  output: __S(73) as any as S.Schema<GetBackupResponse>,
+  input: GetBackupRequest,
+  output: GetBackupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5455,8 +7341,8 @@ export const GetBackupLatestStatus: API.OperationMethod<
   GetBackupLatestStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<GetBackupLatestStatusRequest>,
-  output: __S(151) as any as S.Schema<BackupStatus>,
+  input: GetBackupLatestStatusRequest,
+  output: BackupStatus,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5470,8 +7356,8 @@ export const GetBackupPolicy: API.OperationMethod<
   GetBackupPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152) as any as S.Schema<GetBackupPolicyRequest>,
-  output: __S(153) as any as S.Schema<GetBackupPolicyResponse>,
+  input: GetBackupPolicyRequest,
+  output: GetBackupPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5485,8 +7371,8 @@ export const GetBackupVault: API.OperationMethod<
   GetBackupVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<GetBackupVaultRequest>,
-  output: __S(155) as any as S.Schema<GetBackupVaultResponse>,
+  input: GetBackupVaultRequest,
+  output: GetBackupVaultResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5500,8 +7386,8 @@ export const GetBucket: API.OperationMethod<
   GetBucketError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156) as any as S.Schema<GetBucketRequest>,
-  output: __S(157) as any as S.Schema<GetBucketResponse>,
+  input: GetBucketRequest,
+  output: GetBucketResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5515,8 +7401,8 @@ export const GetCach: API.OperationMethod<
   GetCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158) as any as S.Schema<GetCachRequest>,
-  output: __S(64) as any as S.Schema<GetCachResponse>,
+  input: GetCachRequest,
+  output: GetCachResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5530,8 +7416,8 @@ export const GetNetAppResourceQuotaLimit: API.OperationMethod<
   GetNetAppResourceQuotaLimitError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159) as any as S.Schema<GetNetAppResourceQuotaLimitRequest>,
-  output: __S(161) as any as S.Schema<GetNetAppResourceQuotaLimitResponse>,
+  input: GetNetAppResourceQuotaLimitRequest,
+  output: GetNetAppResourceQuotaLimitResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5545,8 +7431,8 @@ export const GetNetAppResourceQuotaLimitsAccount: API.OperationMethod<
   GetNetAppResourceQuotaLimitsAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162) as any as S.Schema<GetNetAppResourceQuotaLimitsAccountRequest>,
-  output: __S(161) as any as S.Schema<GetNetAppResourceQuotaLimitsAccountResponse>,
+  input: GetNetAppResourceQuotaLimitsAccountRequest,
+  output: GetNetAppResourceQuotaLimitsAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5560,8 +7446,8 @@ export const GetNetAppResourceRegionInfos: API.OperationMethod<
   GetNetAppResourceRegionInfosError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<GetNetAppResourceRegionInfosRequest>,
-  output: __S(167) as any as S.Schema<GetNetAppResourceRegionInfosResponse>,
+  input: GetNetAppResourceRegionInfosRequest,
+  output: GetNetAppResourceRegionInfosResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5575,8 +7461,8 @@ export const GetNetAppResourceUsage: API.OperationMethod<
   GetNetAppResourceUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<GetNetAppResourceUsageRequest>,
-  output: __S(171) as any as S.Schema<UsageResult>,
+  input: GetNetAppResourceUsageRequest,
+  output: UsageResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5590,8 +7476,8 @@ export const GetPool: API.OperationMethod<
   GetPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172) as any as S.Schema<GetPoolRequest>,
-  output: __S(174) as any as S.Schema<GetPoolResponse>,
+  input: GetPoolRequest,
+  output: GetPoolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5605,8 +7491,8 @@ export const GetRansomwareReport: API.OperationMethod<
   GetRansomwareReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<GetRansomwareReportRequest>,
-  output: __S(181) as any as S.Schema<GetRansomwareReportResponse>,
+  input: GetRansomwareReportRequest,
+  output: GetRansomwareReportResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5620,8 +7506,8 @@ export const GetSnapshot: API.OperationMethod<
   GetSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<GetSnapshotRequest>,
-  output: __S(82) as any as S.Schema<GetSnapshotResponse>,
+  input: GetSnapshotRequest,
+  output: GetSnapshotResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5635,8 +7521,8 @@ export const GetSnapshotPolicy: API.OperationMethod<
   GetSnapshotPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183) as any as S.Schema<GetSnapshotPolicyRequest>,
-  output: __S(90) as any as S.Schema<GetSnapshotPolicyResponse>,
+  input: GetSnapshotPolicyRequest,
+  output: GetSnapshotPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5650,8 +7536,8 @@ export const GetVolume: API.OperationMethod<
   GetVolumeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184) as any as S.Schema<GetVolumeRequest>,
-  output: __S(185) as any as S.Schema<GetVolumeResponse>,
+  input: GetVolumeRequest,
+  output: GetVolumeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5665,8 +7551,8 @@ export const GetVolumeGroup: API.OperationMethod<
   GetVolumeGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<GetVolumeGroupRequest>,
-  output: __S(187) as any as S.Schema<GetVolumeGroupResponse>,
+  input: GetVolumeGroupRequest,
+  output: GetVolumeGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5680,8 +7566,8 @@ export const GetVolumeQuotaRule: API.OperationMethod<
   GetVolumeQuotaRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188) as any as S.Schema<GetVolumeQuotaRuleRequest>,
-  output: __S(122) as any as S.Schema<GetVolumeQuotaRuleResponse>,
+  input: GetVolumeQuotaRuleRequest,
+  output: GetVolumeQuotaRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5695,8 +7581,8 @@ export const ListAccountBySubscription: API.OperationMethod<
   ListAccountBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189) as any as S.Schema<ListAccountBySubscriptionRequest>,
-  output: __S(193) as any as S.Schema<NetAppAccountList>,
+  input: ListAccountBySubscriptionRequest,
+  output: NetAppAccountList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5710,8 +7596,8 @@ export const ListAccounts: API.OperationMethod<
   ListAccountsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194) as any as S.Schema<ListAccountsRequest>,
-  output: __S(193) as any as S.Schema<NetAppAccountList>,
+  input: ListAccountsRequest,
+  output: NetAppAccountList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5725,8 +7611,8 @@ export const ListBackupByVault: API.OperationMethod<
   ListBackupByVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195) as any as S.Schema<ListBackupByVaultRequest>,
-  output: __S(197) as any as S.Schema<BackupsList>,
+  input: ListBackupByVaultRequest,
+  output: BackupsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5740,8 +7626,8 @@ export const ListBackupPolicies: API.OperationMethod<
   ListBackupPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198) as any as S.Schema<ListBackupPoliciesRequest>,
-  output: __S(200) as any as S.Schema<BackupPoliciesList>,
+  input: ListBackupPoliciesRequest,
+  output: BackupPoliciesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5755,8 +7641,8 @@ export const ListBackupVaultByNetAppAccount: API.OperationMethod<
   ListBackupVaultByNetAppAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201) as any as S.Schema<ListBackupVaultByNetAppAccountRequest>,
-  output: __S(203) as any as S.Schema<BackupVaultsList>,
+  input: ListBackupVaultByNetAppAccountRequest,
+  output: BackupVaultsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5770,8 +7656,8 @@ export const ListBuckets: API.OperationMethod<
   ListBucketsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204) as any as S.Schema<ListBucketsRequest>,
-  output: __S(206) as any as S.Schema<BucketList>,
+  input: ListBucketsRequest,
+  output: BucketList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5785,8 +7671,8 @@ export const ListCaches: API.OperationMethod<
   ListCachesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207) as any as S.Schema<ListCachesRequest>,
-  output: __S(211) as any as S.Schema<CacheList>,
+  input: ListCachesRequest,
+  output: CacheList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5800,8 +7686,8 @@ export const ListCachPeeringPassphrases: API.OperationMethod<
   ListCachPeeringPassphrasesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212) as any as S.Schema<ListCachPeeringPassphrasesRequest>,
-  output: __S(213) as any as S.Schema<PeeringPassphrases>,
+  input: ListCachPeeringPassphrasesRequest,
+  output: PeeringPassphrases,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5815,8 +7701,8 @@ export const ListNetAppResourceQuotaLimits: API.OperationMethod<
   ListNetAppResourceQuotaLimitsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214) as any as S.Schema<ListNetAppResourceQuotaLimitsRequest>,
-  output: __S(217) as any as S.Schema<QuotaItemList>,
+  input: ListNetAppResourceQuotaLimitsRequest,
+  output: QuotaItemList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5830,8 +7716,8 @@ export const ListNetAppResourceQuotaLimitsAccount: API.OperationMethod<
   ListNetAppResourceQuotaLimitsAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218) as any as S.Schema<ListNetAppResourceQuotaLimitsAccountRequest>,
-  output: __S(217) as any as S.Schema<QuotaItemList>,
+  input: ListNetAppResourceQuotaLimitsAccountRequest,
+  output: QuotaItemList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5845,8 +7731,8 @@ export const ListNetAppResourceRegionInfos: API.OperationMethod<
   ListNetAppResourceRegionInfosError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219) as any as S.Schema<ListNetAppResourceRegionInfosRequest>,
-  output: __S(222) as any as S.Schema<RegionInfosList>,
+  input: ListNetAppResourceRegionInfosRequest,
+  output: RegionInfosList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5860,8 +7746,8 @@ export const ListNetAppResourceUsages: API.OperationMethod<
   ListNetAppResourceUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223) as any as S.Schema<ListNetAppResourceUsagesRequest>,
-  output: __S(225) as any as S.Schema<UsagesListResult>,
+  input: ListNetAppResourceUsagesRequest,
+  output: UsagesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5875,8 +7761,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226) as any as S.Schema<ListOperationsRequest>,
-  output: __S(236) as any as S.Schema<OperationListResult>,
+  input: ListOperationsRequest,
+  output: OperationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5890,8 +7776,8 @@ export const ListPools: API.OperationMethod<
   ListPoolsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237) as any as S.Schema<ListPoolsRequest>,
-  output: __S(239) as any as S.Schema<CapacityPoolList>,
+  input: ListPoolsRequest,
+  output: CapacityPoolList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5905,8 +7791,8 @@ export const ListRansomwareReports: API.OperationMethod<
   ListRansomwareReportsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240) as any as S.Schema<ListRansomwareReportsRequest>,
-  output: __S(243) as any as S.Schema<RansomwareReportsList>,
+  input: ListRansomwareReportsRequest,
+  output: RansomwareReportsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5920,8 +7806,8 @@ export const ListSnapshotPolicies: API.OperationMethod<
   ListSnapshotPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244) as any as S.Schema<ListSnapshotPoliciesRequest>,
-  output: __S(247) as any as S.Schema<SnapshotPoliciesList>,
+  input: ListSnapshotPoliciesRequest,
+  output: SnapshotPoliciesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5935,8 +7821,8 @@ export const ListSnapshotPolicyVolumes: API.OperationMethod<
   ListSnapshotPolicyVolumesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248) as any as S.Schema<ListSnapshotPolicyVolumesRequest>,
-  output: __S(251) as any as S.Schema<SnapshotPolicyVolumeList>,
+  input: ListSnapshotPolicyVolumesRequest,
+  output: SnapshotPolicyVolumeList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5950,8 +7836,8 @@ export const ListSnapshots: API.OperationMethod<
   ListSnapshotsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252) as any as S.Schema<ListSnapshotsRequest>,
-  output: __S(254) as any as S.Schema<SnapshotsList>,
+  input: ListSnapshotsRequest,
+  output: SnapshotsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5965,8 +7851,8 @@ export const ListVolumeGroupByNetAppAccount: API.OperationMethod<
   ListVolumeGroupByNetAppAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255) as any as S.Schema<ListVolumeGroupByNetAppAccountRequest>,
-  output: __S(259) as any as S.Schema<VolumeGroupList>,
+  input: ListVolumeGroupByNetAppAccountRequest,
+  output: VolumeGroupList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5980,8 +7866,8 @@ export const ListVolumeQuotaReport: API.OperationMethod<
   ListVolumeQuotaReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260) as any as S.Schema<ListVolumeQuotaReportRequest>,
-  output: __S(264) as any as S.Schema<ListQuotaReportResult>,
+  input: ListVolumeQuotaReportRequest,
+  output: ListQuotaReportResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5995,8 +7881,8 @@ export const ListVolumeQuotaRuleByVolume: API.OperationMethod<
   ListVolumeQuotaRuleByVolumeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265) as any as S.Schema<ListVolumeQuotaRuleByVolumeRequest>,
-  output: __S(268) as any as S.Schema<VolumeQuotaRulesList>,
+  input: ListVolumeQuotaRuleByVolumeRequest,
+  output: VolumeQuotaRulesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6010,8 +7896,8 @@ export const ListVolumeReplications: API.OperationMethod<
   ListVolumeReplicationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269) as any as S.Schema<ListVolumeReplicationsRequest>,
-  output: __S(272) as any as S.Schema<ListReplications>,
+  input: ListVolumeReplicationsRequest,
+  output: ListReplications,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6025,8 +7911,8 @@ export const ListVolumes: API.OperationMethod<
   ListVolumesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273) as any as S.Schema<ListVolumesRequest>,
-  output: __S(251) as any as S.Schema<VolumeList>,
+  input: ListVolumesRequest,
+  output: VolumeList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6040,8 +7926,8 @@ export const MigrateBackupsUnderAccountBackups: API.OperationMethod<
   MigrateBackupsUnderAccountBackupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274) as any as S.Schema<MigrateBackupsUnderAccountBackupsRequest>,
-  output: __S(33) as any as S.Schema<MigrateBackupsUnderAccountBackupsResponse>,
+  input: MigrateBackupsUnderAccountBackupsRequest,
+  output: MigrateBackupsUnderAccountBackupsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6055,8 +7941,8 @@ export const MigrateBackupsUnderVolumeBackups: API.OperationMethod<
   MigrateBackupsUnderVolumeBackupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275) as any as S.Schema<MigrateBackupsUnderVolumeBackupsRequest>,
-  output: __S(33) as any as S.Schema<MigrateBackupsUnderVolumeBackupsResponse>,
+  input: MigrateBackupsUnderVolumeBackupsRequest,
+  output: MigrateBackupsUnderVolumeBackupsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6070,8 +7956,8 @@ export const NetAppResourceQueryRegionInfo: API.OperationMethod<
   NetAppResourceQueryRegionInfoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276) as any as S.Schema<NetAppResourceQueryRegionInfoRequest>,
-  output: __S(166) as any as S.Schema<RegionInfo>,
+  input: NetAppResourceQueryRegionInfoRequest,
+  output: RegionInfo,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6085,8 +7971,8 @@ export const PoolsCreateOrUpdate: API.OperationMethod<
   PoolsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278) as any as S.Schema<PoolsCreateOrUpdateRequest>,
-  output: __S(279) as any as S.Schema<PoolsCreateOrUpdateResponse>,
+  input: PoolsCreateOrUpdateRequest,
+  output: PoolsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6100,8 +7986,8 @@ export const RefreshBucketCertificate: API.OperationMethod<
   RefreshBucketCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280) as any as S.Schema<RefreshBucketCertificateRequest>,
-  output: __S(33) as any as S.Schema<RefreshBucketCertificateResponse>,
+  input: RefreshBucketCertificateRequest,
+  output: RefreshBucketCertificateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6115,8 +8001,8 @@ export const RenewAccountCredentials: API.OperationMethod<
   RenewAccountCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281) as any as S.Schema<RenewAccountCredentialsRequest>,
-  output: __S(28) as any as S.Schema<RenewAccountCredentialsResponse>,
+  input: RenewAccountCredentialsRequest,
+  output: RenewAccountCredentialsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6130,8 +8016,8 @@ export const ResetCachSmbPassword: API.OperationMethod<
   ResetCachSmbPasswordError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282) as any as S.Schema<ResetCachSmbPasswordRequest>,
-  output: __S(62) as any as S.Schema<ResetCachSmbPasswordResponse>,
+  input: ResetCachSmbPasswordRequest,
+  output: ResetCachSmbPasswordResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6145,8 +8031,8 @@ export const ResetVolumeCifsPassword: API.OperationMethod<
   ResetVolumeCifsPasswordError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283) as any as S.Schema<ResetVolumeCifsPasswordRequest>,
-  output: __S(28) as any as S.Schema<ResetVolumeCifsPasswordResponse>,
+  input: ResetVolumeCifsPasswordRequest,
+  output: ResetVolumeCifsPasswordResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6160,8 +8046,8 @@ export const RestoreBackupsUnderBackupVaultFiles: API.OperationMethod<
   RestoreBackupsUnderBackupVaultFilesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284) as any as S.Schema<RestoreBackupsUnderBackupVaultFilesRequest>,
-  output: __S(33) as any as S.Schema<RestoreBackupsUnderBackupVaultFilesResponse>,
+  input: RestoreBackupsUnderBackupVaultFilesRequest,
+  output: RestoreBackupsUnderBackupVaultFilesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6175,8 +8061,8 @@ export const RestoreSnapshotFiles: API.OperationMethod<
   RestoreSnapshotFilesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285) as any as S.Schema<RestoreSnapshotFilesRequest>,
-  output: __S(3) as any as S.Schema<RestoreSnapshotFilesResponse>,
+  input: RestoreSnapshotFilesRequest,
+  output: RestoreSnapshotFilesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6190,8 +8076,8 @@ export const SetNetAppResourceQueryNetworkSibling: API.OperationMethod<
   SetNetAppResourceQueryNetworkSiblingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286) as any as S.Schema<SetNetAppResourceQueryNetworkSiblingRequest>,
-  output: __S(289) as any as S.Schema<NetworkSiblingSet>,
+  input: SetNetAppResourceQueryNetworkSiblingRequest,
+  output: NetworkSiblingSet,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6205,8 +8091,8 @@ export const TransferVolumesPerformReplication: API.OperationMethod<
   TransferVolumesPerformReplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290) as any as S.Schema<TransferVolumesPerformReplicationRequest>,
-  output: __S(33) as any as S.Schema<TransferVolumesPerformReplicationResponse>,
+  input: TransferVolumesPerformReplicationRequest,
+  output: TransferVolumesPerformReplicationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6220,8 +8106,8 @@ export const UpdateAccount: API.OperationMethod<
   UpdateAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293) as any as S.Schema<UpdateAccountRequest>,
-  output: __S(144) as any as S.Schema<UpdateAccountResponse>,
+  input: UpdateAccountRequest,
+  output: UpdateAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6235,8 +8121,8 @@ export const UpdateBackup: API.OperationMethod<
   UpdateBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295) as any as S.Schema<UpdateBackupRequest>,
-  output: __S(73) as any as S.Schema<UpdateBackupResponse>,
+  input: UpdateBackupRequest,
+  output: UpdateBackupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6250,8 +8136,8 @@ export const UpdateBackupPolicy: API.OperationMethod<
   UpdateBackupPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296) as any as S.Schema<UpdateBackupPolicyRequest>,
-  output: __S(79) as any as S.Schema<UpdateBackupPolicyResponse>,
+  input: UpdateBackupPolicyRequest,
+  output: UpdateBackupPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6265,8 +8151,8 @@ export const UpdateBackupVault: API.OperationMethod<
   UpdateBackupVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297) as any as S.Schema<UpdateBackupVaultRequest>,
-  output: __S(38) as any as S.Schema<UpdateBackupVaultResponse>,
+  input: UpdateBackupVaultRequest,
+  output: UpdateBackupVaultResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6280,8 +8166,8 @@ export const UpdateBucket: API.OperationMethod<
   UpdateBucketError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299) as any as S.Schema<UpdateBucketRequest>,
-  output: __S(157) as any as S.Schema<UpdateBucketResponse>,
+  input: UpdateBucketRequest,
+  output: UpdateBucketResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6295,8 +8181,8 @@ export const UpdateCach: API.OperationMethod<
   UpdateCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301) as any as S.Schema<UpdateCachRequest>,
-  output: __S(64) as any as S.Schema<UpdateCachResponse>,
+  input: UpdateCachRequest,
+  output: UpdateCachResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6310,8 +8196,8 @@ export const UpdateNetAppResourceNetworkSiblingSet: API.OperationMethod<
   UpdateNetAppResourceNetworkSiblingSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302) as any as S.Schema<UpdateNetAppResourceNetworkSiblingSetRequest>,
-  output: __S(289) as any as S.Schema<NetworkSiblingSet>,
+  input: UpdateNetAppResourceNetworkSiblingSetRequest,
+  output: NetworkSiblingSet,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6325,8 +8211,8 @@ export const UpdatePool: API.OperationMethod<
   UpdatePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304) as any as S.Schema<UpdatePoolRequest>,
-  output: __S(174) as any as S.Schema<UpdatePoolResponse>,
+  input: UpdatePoolRequest,
+  output: UpdatePoolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6340,8 +8226,8 @@ export const UpdateSnapshot: API.OperationMethod<
   UpdateSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305) as any as S.Schema<UpdateSnapshotRequest>,
-  output: __S(82) as any as S.Schema<UpdateSnapshotResponse>,
+  input: UpdateSnapshotRequest,
+  output: UpdateSnapshotResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6355,8 +8241,8 @@ export const UpdateSnapshotPolicy: API.OperationMethod<
   UpdateSnapshotPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306) as any as S.Schema<UpdateSnapshotPolicyRequest>,
-  output: __S(90) as any as S.Schema<UpdateSnapshotPolicyResponse>,
+  input: UpdateSnapshotPolicyRequest,
+  output: UpdateSnapshotPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6370,8 +8256,8 @@ export const UpdateVolume: API.OperationMethod<
   UpdateVolumeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310) as any as S.Schema<UpdateVolumeRequest>,
-  output: __S(185) as any as S.Schema<UpdateVolumeResponse>,
+  input: UpdateVolumeRequest,
+  output: UpdateVolumeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6385,8 +8271,8 @@ export const UpdateVolumeQuotaRule: API.OperationMethod<
   UpdateVolumeQuotaRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311) as any as S.Schema<UpdateVolumeQuotaRuleRequest>,
-  output: __S(122) as any as S.Schema<UpdateVolumeQuotaRuleResponse>,
+  input: UpdateVolumeQuotaRuleRequest,
+  output: UpdateVolumeQuotaRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6400,8 +8286,8 @@ export const VolumesBreakFileLocks: API.OperationMethod<
   VolumesBreakFileLocksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312) as any as S.Schema<VolumesBreakFileLocksRequest>,
-  output: __S(3) as any as S.Schema<VolumesBreakFileLocksResponse>,
+  input: VolumesBreakFileLocksRequest,
+  output: VolumesBreakFileLocksResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6415,8 +8301,8 @@ export const VolumesBreakReplication: API.OperationMethod<
   VolumesBreakReplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313) as any as S.Schema<VolumesBreakReplicationRequest>,
-  output: __S(28) as any as S.Schema<VolumesBreakReplicationResponse>,
+  input: VolumesBreakReplicationRequest,
+  output: VolumesBreakReplicationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6430,8 +8316,8 @@ export const VolumesCreateOrUpdate: API.OperationMethod<
   VolumesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314) as any as S.Schema<VolumesCreateOrUpdateRequest>,
-  output: __S(315) as any as S.Schema<VolumesCreateOrUpdateResponse>,
+  input: VolumesCreateOrUpdateRequest,
+  output: VolumesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6445,8 +8331,8 @@ export const VolumesListGetGroupIdListForLdapUser: API.OperationMethod<
   VolumesListGetGroupIdListForLdapUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316) as any as S.Schema<VolumesListGetGroupIdListForLdapUserRequest>,
-  output: __S(317) as any as S.Schema<GetGroupIdListForLdapUserResponse>,
+  input: VolumesListGetGroupIdListForLdapUserRequest,
+  output: GetGroupIdListForLdapUserResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6460,8 +8346,8 @@ export const VolumesPeerExternalCluster: API.OperationMethod<
   VolumesPeerExternalClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318) as any as S.Schema<VolumesPeerExternalClusterRequest>,
-  output: __S(320) as any as S.Schema<ClusterPeerCommandResponse>,
+  input: VolumesPeerExternalClusterRequest,
+  output: ClusterPeerCommandResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6475,8 +8361,8 @@ export const VolumesPoolChange: API.OperationMethod<
   VolumesPoolChangeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321) as any as S.Schema<VolumesPoolChangeRequest>,
-  output: __S(3) as any as S.Schema<VolumesPoolChangeResponse>,
+  input: VolumesPoolChangeRequest,
+  output: VolumesPoolChangeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6490,8 +8376,8 @@ export const VolumesPopulateAvailabilityZone: API.OperationMethod<
   VolumesPopulateAvailabilityZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322) as any as S.Schema<VolumesPopulateAvailabilityZoneRequest>,
-  output: __S(315) as any as S.Schema<VolumesPopulateAvailabilityZoneResponse>,
+  input: VolumesPopulateAvailabilityZoneRequest,
+  output: VolumesPopulateAvailabilityZoneResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6505,8 +8391,8 @@ export const VolumesReestablishReplication: API.OperationMethod<
   VolumesReestablishReplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323) as any as S.Schema<VolumesReestablishReplicationRequest>,
-  output: __S(33) as any as S.Schema<VolumesReestablishReplicationResponse>,
+  input: VolumesReestablishReplicationRequest,
+  output: VolumesReestablishReplicationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6520,8 +8406,8 @@ export const VolumesReInitializeReplication: API.OperationMethod<
   VolumesReInitializeReplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(324) as any as S.Schema<VolumesReInitializeReplicationRequest>,
-  output: __S(33) as any as S.Schema<VolumesReInitializeReplicationResponse>,
+  input: VolumesReInitializeReplicationRequest,
+  output: VolumesReInitializeReplicationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6535,8 +8421,8 @@ export const VolumesRelocate: API.OperationMethod<
   VolumesRelocateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325) as any as S.Schema<VolumesRelocateRequest>,
-  output: __S(3) as any as S.Schema<VolumesRelocateResponse>,
+  input: VolumesRelocateRequest,
+  output: VolumesRelocateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6550,8 +8436,8 @@ export const VolumesReplicationStatus: API.OperationMethod<
   VolumesReplicationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326) as any as S.Schema<VolumesReplicationStatusRequest>,
-  output: __S(327) as any as S.Schema<ReplicationStatus>,
+  input: VolumesReplicationStatusRequest,
+  output: ReplicationStatus,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6565,8 +8451,8 @@ export const VolumesResyncReplication: API.OperationMethod<
   VolumesResyncReplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328) as any as S.Schema<VolumesResyncReplicationRequest>,
-  output: __S(33) as any as S.Schema<VolumesResyncReplicationResponse>,
+  input: VolumesResyncReplicationRequest,
+  output: VolumesResyncReplicationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6580,8 +8466,8 @@ export const VolumesRevert: API.OperationMethod<
   VolumesRevertError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329) as any as S.Schema<VolumesRevertRequest>,
-  output: __S(3) as any as S.Schema<VolumesRevertResponse>,
+  input: VolumesRevertRequest,
+  output: VolumesRevertResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6595,8 +8481,8 @@ export const VolumesRevertRelocation: API.OperationMethod<
   VolumesRevertRelocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330) as any as S.Schema<VolumesRevertRelocationRequest>,
-  output: __S(28) as any as S.Schema<VolumesRevertRelocationResponse>,
+  input: VolumesRevertRelocationRequest,
+  output: VolumesRevertRelocationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6610,8 +8496,8 @@ export const VolumesSplitCloneFromParent: API.OperationMethod<
   VolumesSplitCloneFromParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331) as any as S.Schema<VolumesSplitCloneFromParentRequest>,
-  output: __S(315) as any as S.Schema<VolumesSplitCloneFromParentResponse>,
+  input: VolumesSplitCloneFromParentRequest,
+  output: VolumesSplitCloneFromParentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6628,7 +8514,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "KeyVaultPrivateEndpoint" });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(KeyVaultPrivateEndpoint);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6638,7 +8524,7 @@ function __c0(j: number): any {
           keyVaultUri: S.String,
           keyName: S.String,
           keyVaultResourceId: S.optional(S.String),
-          keyVaultPrivateEndpoints: __S(1),
+          keyVaultPrivateEndpoints: AccountsChangeKeyVaultRequestKeyVaultPrivateEndpointsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -6677,18 +8563,18 @@ function __c0(j: number): any {
           smbServerName: S.optional(S.String),
           organizationalUnit: S.optional(S.String),
           site: S.optional(S.String),
-          backupOperators: S.optional(__S(5)),
-          administrators: S.optional(__S(5)),
+          backupOperators: S.optional(ActiveDirectoryInputBackupOperatorsList),
+          administrators: S.optional(ActiveDirectoryInputAdministratorsList),
           kdcIP: S.optional(S.String),
           adName: S.optional(S.String),
           serverRootCACertificate: S.optional(S.String),
           aesEncryption: S.optional(S.Boolean),
           ldapSigning: S.optional(S.Boolean),
-          securityOperators: S.optional(__S(5)),
+          securityOperators: S.optional(ActiveDirectoryInputSecurityOperatorsList),
           ldapOverTLS: S.optional(S.Boolean),
           allowLocalNfsUsersWithLdap: S.optional(S.Boolean),
           encryptDCConnections: S.optional(S.Boolean),
-          ldapSearchScope: S.optional(__S(6)),
+          ldapSearchScope: S.optional(LdapSearchScopeOpt),
           preferredServersForLdapClient: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActiveDirectoryInput" });
@@ -6697,7 +8583,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(ActiveDirectoryInput);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6716,26 +8602,28 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          keySource: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(9)),
-          identity: S.optional(__S(10)),
+          keySource: S.optional(AccountEncryptionInputKeySource),
+          keyVaultProperties: S.optional(KeyVaultPropertiesInput),
+          identity: S.optional(EncryptionIdentityInput),
         }),
       ).annotate({ identifier: "AccountEncryptionInput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          activeDirectories: S.optional(__S(8)),
-          encryption: S.optional(__S(11)),
+          activeDirectories: S.optional(AccountPropertiesInputActiveDirectoriesList),
+          encryption: S.optional(AccountEncryptionInput),
           nfsV4IDDomain: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "AccountPropertiesInput" });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(3)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(13)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(
+            AccountsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap,
+          ),
         }),
       ).annotate({
         identifier: "AccountsCreateOrUpdateRequestIdentity",
@@ -6746,10 +8634,10 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4)),
+          tags: S.optional(AccountsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(12)),
-          identity: S.optional(__S(14)),
+          properties: S.optional(AccountPropertiesInput),
+          identity: S.optional(AccountsCreateOrUpdateRequestIdentity),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6769,10 +8657,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -6784,28 +8672,28 @@ function __c2(j: number): any {
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           domain: S.optional(S.String),
           dns: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(ActiveDirectoryStatus),
           statusDetails: S.optional(S.String),
           smbServerName: S.optional(S.String),
           organizationalUnit: S.optional(S.String),
           site: S.optional(S.String),
-          backupOperators: S.optional(__S(5)),
-          administrators: S.optional(__S(5)),
+          backupOperators: S.optional(ActiveDirectoryBackupOperatorsList),
+          administrators: S.optional(ActiveDirectoryAdministratorsList),
           kdcIP: S.optional(S.String),
           adName: S.optional(S.String),
           serverRootCACertificate: S.optional(S.String),
           aesEncryption: S.optional(S.Boolean),
           ldapSigning: S.optional(S.Boolean),
-          securityOperators: S.optional(__S(5)),
+          securityOperators: S.optional(ActiveDirectorySecurityOperatorsList),
           ldapOverTLS: S.optional(S.Boolean),
           allowLocalNfsUsersWithLdap: S.optional(S.Boolean),
           encryptDCConnections: S.optional(S.Boolean),
-          ldapSearchScope: S.optional(__S(6)),
+          ldapSearchScope: S.optional(LdapSearchScopeOpt),
           preferredServersForLdapClient: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActiveDirectory" });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(ActiveDirectory);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6813,7 +8701,7 @@ function __c2(j: number): any {
           keyVaultUri: S.String,
           keyName: S.String,
           keyVaultResourceId: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(KeyVaultStatus),
         }),
       ).annotate({ identifier: "KeyVaultProperties" });
     case 4:
@@ -6827,20 +8715,20 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          keySource: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(19)),
-          identity: S.optional(__S(20)),
+          keySource: S.optional(AccountEncryptionKeySource),
+          keyVaultProperties: S.optional(KeyVaultProperties),
+          identity: S.optional(EncryptionIdentity),
         }),
       ).annotate({ identifier: "AccountEncryption" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          activeDirectories: S.optional(__S(18)),
-          encryption: S.optional(__S(21)),
+          activeDirectories: S.optional(AccountPropertiesActiveDirectoriesList),
+          encryption: S.optional(AccountEncryption),
           disableShowmount: S.optional(S.NullOr(S.Boolean)),
           nfsV4IDDomain: S.optional(S.NullOr(S.String)),
-          multiAdStatus: S.optional(S.String),
+          multiAdStatus: S.optional(MultiAdStatus),
         }),
       ).annotate({ identifier: "AccountProperties" });
     case 7:
@@ -6855,14 +8743,16 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(23)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
     case 1:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(24)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(
+            AccountsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap,
+          ),
         }),
       ).annotate({
         identifier: "AccountsCreateOrUpdateResponseIdentity",
@@ -6873,12 +8763,12 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(AccountsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(22)),
+          properties: S.optional(AccountProperties),
           etag: S.optional(S.String),
-          identity: S.optional(__S(25)),
+          identity: S.optional(AccountsCreateOrUpdateResponseIdentity),
         }),
       ).annotate({
         identifier: "AccountsCreateOrUpdateResponse",
@@ -6936,7 +8826,7 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(30)),
+          properties: S.optional(SvmPeerCommandResponseProperties),
         }),
       ).annotate({ identifier: "SvmPeerCommandResponse" });
   }
@@ -6990,8 +8880,8 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           healthy: S.optional(S.Boolean),
-          relationshipStatus: S.optional(S.String),
-          mirrorState: S.optional(S.String),
+          relationshipStatus: S.optional(VolumeRestoreRelationshipStatus),
+          mirrorState: S.optional(MirrorState),
           unhealthyReason: S.optional(S.String),
           errorMessage: S.optional(S.String),
           totalTransferBytes: S.optional(S.Number),
@@ -7004,9 +8894,9 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           backupVaultName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4)),
+          tags: S.optional(BackupVaultsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(3)),
+          properties: S.optional(UserAssignedIdentityInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7030,10 +8920,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(BackupVaultsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(37)),
+          properties: S.optional(BackupVaultProperties),
         }),
       ).annotate({
         identifier: "BackupVaultsCreateOrUpdateResponse",
@@ -7058,8 +8948,8 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          nfsUser: S.optional(__S(39)),
-          cifsUser: S.optional(__S(40)),
+          nfsUser: S.optional(NfsUser),
+          cifsUser: S.optional(CifsUser),
         }),
       ).annotate({ identifier: "FileSystemUser" });
     case 2:
@@ -7067,7 +8957,7 @@ function __c5(j: number): any {
         S.Struct({
           fqdn: S.optional(S.String),
           certificateObject: S.optional(S.String),
-          onCertificateConflictAction: S.optional(S.String),
+          onCertificateConflictAction: S.optional(OnCertificateConflictAction),
         }),
       ).annotate({
         identifier: "BucketServerPropertiesInput",
@@ -7089,18 +8979,18 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          certificateAkvDetails: S.optional(__S(43)),
-          credentialsAkvDetails: S.optional(__S(44)),
+          certificateAkvDetails: S.optional(CertificateAkvDetails),
+          credentialsAkvDetails: S.optional(CredentialsAkvDetails),
         }),
       ).annotate({ identifier: "AzureKeyVaultDetails" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
-          fileSystemUser: S.optional(__S(41)),
-          server: S.optional(__S(42)),
-          permissions: S.optional(S.String),
-          akvDetails: S.optional(__S(45)),
+          fileSystemUser: S.optional(FileSystemUser),
+          server: S.optional(BucketServerPropertiesInput),
+          permissions: S.optional(BucketPropertiesInputPermissions),
+          akvDetails: S.optional(AzureKeyVaultDetails),
         }),
       ).annotate({ identifier: "BucketPropertiesInput" });
     case 7:
@@ -7112,7 +9002,7 @@ function __c5(j: number): any {
           poolName: S.String.pipe(T.Label()),
           volumeName: S.String.pipe(T.Label()),
           bucketName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(46)),
+          properties: S.optional(BucketPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7136,19 +9026,19 @@ function __c6(j: number): any {
           certificateExpiryDate: S.optional(S.String),
           ipAddress: S.optional(S.String),
           certificateObject: S.optional(S.String),
-          onCertificateConflictAction: S.optional(S.String),
+          onCertificateConflictAction: S.optional(OnCertificateConflictAction),
         }),
       ).annotate({ identifier: "BucketServerProperties" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
-          fileSystemUser: S.optional(__S(41)),
-          provisioningState: S.optional(S.String),
-          status: S.optional(S.String),
-          server: S.optional(__S(48)),
-          permissions: S.optional(S.String),
-          akvDetails: S.optional(__S(45)),
+          fileSystemUser: S.optional(FileSystemUser),
+          provisioningState: S.optional(NetAppProvisioningState),
+          status: S.optional(CredentialsStatus),
+          server: S.optional(BucketServerProperties),
+          permissions: S.optional(BucketPropertiesPermissions),
+          akvDetails: S.optional(AzureKeyVaultDetails),
         }),
       ).annotate({ identifier: "BucketProperties" });
     case 2:
@@ -7157,8 +9047,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          properties: S.optional(__S(49)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BucketProperties),
         }),
       ).annotate({
         identifier: "BucketsCreateOrUpdateResponse",
@@ -7180,27 +9070,27 @@ function __c6(j: number): any {
           nfsv41: S.optional(S.Boolean),
           allowedClients: S.optional(S.String),
           hasRootAccess: S.optional(S.Boolean),
-          chownMode: S.optional(S.String),
+          chownMode: S.optional(ExportPolicyRuleChownMode),
         }),
       ).annotate({ identifier: "ExportPolicyRule" });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(ExportPolicyRule);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(52)),
+          rules: S.optional(CachePropertiesExportPolicyRulesList),
         }),
       ).annotate({
         identifier: "CachePropertiesExportPolicy",
       });
     case 6:
-      return S.Array(S.String);
+      return S.Array(ProtocolTypes);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          smbEncryption: S.optional(S.String),
-          smbAccessBasedEnumeration: S.optional(S.String),
-          smbNonBrowsable: S.optional(S.String),
+          smbEncryption: S.optional(SmbEncryptionState),
+          smbAccessBasedEnumeration: S.optional(SmbAccessBasedEnumeration),
+          smbNonBrowsable: S.optional(SmbNonBrowsable),
         }),
       ).annotate({ identifier: "SmbSettings" });
   }
@@ -7211,7 +9101,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           peerClusterName: S.String,
-          peerAddresses: __S(5),
+          peerAddresses: OriginClusterInformationPeerAddressesList,
           peerVserverName: S.String,
           peerVolumeName: S.String,
         }),
@@ -7221,21 +9111,21 @@ function __c7(j: number): any {
         S.Struct({
           filePath: S.String,
           size: S.Number,
-          exportPolicy: S.optional(__S(53)),
-          protocolTypes: S.optional(__S(54)),
+          exportPolicy: S.optional(CachePropertiesExportPolicy),
+          protocolTypes: S.optional(CachePropertiesInputProtocolTypesList),
           cacheSubnetResourceId: S.String,
           peeringSubnetResourceId: S.String,
-          kerberos: S.optional(S.String),
-          smbSettings: S.optional(__S(55)),
+          kerberos: S.optional(KerberosState),
+          smbSettings: S.optional(SmbSettings),
           throughputMibps: S.optional(S.Number),
-          encryptionKeySource: S.String,
+          encryptionKeySource: EncryptionKeySource,
           keyVaultPrivateEndpointResourceId: S.optional(S.String),
-          ldap: S.optional(S.String),
-          ldapServerType: S.optional(S.String),
-          originClusterInformation: __S(56),
-          cifsChangeNotifications: S.optional(S.String),
-          globalFileLocking: S.optional(S.String),
-          writeBack: S.optional(S.String),
+          ldap: S.optional(LdapState),
+          ldapServerType: S.optional(LdapServerType),
+          originClusterInformation: OriginClusterInformation,
+          cifsChangeNotifications: S.optional(CifsChangeNotifyState),
+          globalFileLocking: S.optional(GlobalFileLockingState),
+          writeBack: S.optional(EnableWriteBackState),
         }),
       ).annotate({ identifier: "CachePropertiesInput" });
     case 2:
@@ -7246,10 +9136,10 @@ function __c7(j: number): any {
           accountName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
           cacheName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4)),
+          tags: S.optional(CachesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: __S(57),
-          zones: S.optional(__S(5)),
+          properties: CachePropertiesInput,
+          zones: S.optional(CachesCreateOrUpdateRequestZonesList),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7272,35 +9162,35 @@ function __c7(j: number): any {
         identifier: "CacheMountTargetProperties",
       });
     case 4:
-      return S.Array(__S(59));
+      return S.Array(CacheMountTargetProperties);
     case 5:
       return S.suspend(() =>
         S.Struct({
           filePath: S.String,
           size: S.Number,
-          exportPolicy: S.optional(__S(53)),
-          protocolTypes: S.optional(__S(54)),
-          provisioningState: S.optional(S.String),
-          cacheState: S.optional(S.String),
+          exportPolicy: S.optional(CachePropertiesExportPolicy),
+          protocolTypes: S.optional(CachePropertiesProtocolTypesList),
+          provisioningState: S.optional(CacheProvisioningState),
+          cacheState: S.optional(CacheLifeCycleState),
           cacheSubnetResourceId: S.String,
           peeringSubnetResourceId: S.String,
-          mountTargets: S.optional(__S(60)),
-          kerberos: S.optional(S.String),
-          smbSettings: S.optional(__S(55)),
+          mountTargets: S.optional(CachePropertiesMountTargetsList),
+          kerberos: S.optional(KerberosState),
+          smbSettings: S.optional(SmbSettings),
           throughputMibps: S.optional(S.Number),
           actualThroughputMibps: S.optional(S.Number),
-          encryptionKeySource: S.String,
+          encryptionKeySource: EncryptionKeySource,
           keyVaultPrivateEndpointResourceId: S.optional(S.String),
           maximumNumberOfFiles: S.optional(S.Number),
-          encryption: S.optional(S.String),
-          language: S.optional(S.String),
-          ldap: S.optional(S.String),
-          ldapServerType: S.optional(S.String),
-          originClusterInformation: __S(56),
-          cifsChangeNotifications: S.optional(S.String),
-          globalFileLocking: S.optional(S.String),
-          writeBack: S.optional(S.String),
-          fileAccessLogs: S.optional(S.String),
+          encryption: S.optional(EncryptionState),
+          language: S.optional(VolumeLanguage),
+          ldap: S.optional(LdapState),
+          ldapServerType: S.optional(LdapServerType),
+          originClusterInformation: OriginClusterInformation,
+          cifsChangeNotifications: S.optional(CifsChangeNotifyState),
+          globalFileLocking: S.optional(GlobalFileLockingState),
+          writeBack: S.optional(EnableWriteBackState),
+          fileAccessLogs: S.optional(CacheFileAccessLogs),
         }),
       ).annotate({ identifier: "CacheProperties" });
     case 6:
@@ -7309,12 +9199,12 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CachesCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: __S(61),
+          properties: CacheProperties,
           etag: S.optional(S.String),
-          zones: S.optional(__S(5)),
+          zones: S.optional(CachesCreateOrUpdateResponseZonesList),
         }),
       ).annotate({
         identifier: "CachesCreateOrUpdateResponse",
@@ -7347,12 +9237,12 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CachesPoolChangeResponseTagsMap),
           location: S.String,
-          properties: __S(61),
+          properties: CacheProperties,
           etag: S.optional(S.String),
-          zones: S.optional(__S(5)),
+          zones: S.optional(CachesPoolChangeResponseZonesList),
         }),
       ).annotate({ identifier: "CachesPoolChangeResponse" });
     case 1:
@@ -7378,7 +9268,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           isAvailable: S.optional(S.Boolean),
-          reason: S.optional(S.String),
+          reason: S.optional(InAvailabilityReasonType),
           message: S.optional(S.String),
         }),
       ).annotate({
@@ -7390,7 +9280,7 @@ function __c8(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           name: S.String,
-          type: S.String,
+          type: CheckNameResourceTypes,
           resourceGroup: S.String,
         }).pipe(
           T.Http({
@@ -7409,7 +9299,7 @@ function __c8(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           name: S.String,
-          type: S.String,
+          type: CheckQuotaNameResourceTypes,
           resourceGroup: S.String,
         }).pipe(
           T.Http({
@@ -7431,8 +9321,8 @@ function __c8(j: number): any {
           poolName: S.String.pipe(T.Label()),
           volumeName: S.String.pipe(T.Label()),
           ransomwareReportName: S.String.pipe(T.Label()),
-          resolution: S.String,
-          extensions: __S(5),
+          resolution: RansomwareSuspectResolution,
+          extensions: ClearRansomwareReportSuspectsRequestExtensionsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -7461,7 +9351,7 @@ function __c8(j: number): any {
           accountName: S.String.pipe(T.Label()),
           backupVaultName: S.String.pipe(T.Label()),
           backupName: S.String.pipe(T.Label()),
-          properties: __S(70),
+          properties: BackupPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7485,7 +9375,7 @@ function __c9(j: number): any {
           provisioningState: S.optional(S.String),
           size: S.optional(S.Number),
           label: S.optional(S.String),
-          backupType: S.optional(S.String),
+          backupType: S.optional(BackupType),
           failureReason: S.optional(S.String),
           volumeResourceId: S.String,
           useExistingSnapshot: S.optional(S.Boolean),
@@ -7500,8 +9390,8 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          properties: __S(72),
+          systemData: S.optional(SystemData),
+          properties: BackupProperties,
         }),
       ).annotate({ identifier: "CreateBackupResponse" });
     case 2:
@@ -7522,9 +9412,9 @@ function __c9(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           backupPolicyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4)),
+          tags: S.optional(CreateBackupPolicyRequestTagsMap),
           location: S.String,
-          properties: __S(74),
+          properties: BackupPolicyPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7546,7 +9436,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "VolumeBackups" });
     case 5:
-      return S.Array(__S(76));
+      return S.Array(VolumeBackups);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -7557,7 +9447,7 @@ function __c9(j: number): any {
           monthlyBackupsToKeep: S.optional(S.Number),
           volumesAssigned: S.optional(S.Number),
           enabled: S.optional(S.Boolean),
-          volumeBackups: S.optional(__S(77)),
+          volumeBackups: S.optional(BackupPolicyPropertiesVolumeBackupsList),
         }),
       ).annotate({ identifier: "BackupPolicyProperties" });
     case 7:
@@ -7566,10 +9456,10 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateBackupPolicyResponseTagsMap),
           location: S.String,
-          properties: __S(78),
+          properties: BackupPolicyProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -7588,7 +9478,7 @@ function __c10(j: number): any {
           poolName: S.String.pipe(T.Label()),
           volumeName: S.String.pipe(T.Label()),
           snapshotName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(3)),
+          properties: S.optional(UserAssignedIdentityInput),
           location: S.String,
         }).pipe(
           T.Http({
@@ -7613,8 +9503,8 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          properties: S.optional(__S(81)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SnapshotProperties),
           location: S.String,
         }),
       ).annotate({ identifier: "CreateSnapshotResponse" });
@@ -7658,10 +9548,10 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          hourlySchedule: S.optional(__S(83)),
-          dailySchedule: S.optional(__S(84)),
-          weeklySchedule: S.optional(__S(85)),
-          monthlySchedule: S.optional(__S(86)),
+          hourlySchedule: S.optional(HourlySchedule),
+          dailySchedule: S.optional(DailySchedule),
+          weeklySchedule: S.optional(WeeklySchedule),
+          monthlySchedule: S.optional(MonthlySchedule),
           enabled: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -7678,9 +9568,9 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           snapshotPolicyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4)),
+          tags: S.optional(CreateSnapshotPolicyRequestTagsMap),
           location: S.String,
-          properties: __S(87),
+          properties: SnapshotPolicyPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7695,10 +9585,10 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          hourlySchedule: S.optional(__S(83)),
-          dailySchedule: S.optional(__S(84)),
-          weeklySchedule: S.optional(__S(85)),
-          monthlySchedule: S.optional(__S(86)),
+          hourlySchedule: S.optional(HourlySchedule),
+          dailySchedule: S.optional(DailySchedule),
+          weeklySchedule: S.optional(WeeklySchedule),
+          monthlySchedule: S.optional(MonthlySchedule),
           enabled: S.optional(S.Boolean),
           provisioningState: S.optional(S.String),
         }),
@@ -7709,10 +9599,10 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateSnapshotPolicyResponseTagsMap),
           location: S.String,
-          properties: __S(89),
+          properties: SnapshotPolicyProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -7726,14 +9616,14 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "PlacementKeyValuePairs" });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(PlacementKeyValuePairs);
     case 5:
       return S.suspend(() =>
         S.Struct({
           groupDescription: S.optional(S.String),
-          applicationType: S.optional(S.String),
+          applicationType: S.optional(ApplicationType),
           applicationIdentifier: S.optional(S.String),
-          globalPlacementRules: S.optional(__S(92)),
+          globalPlacementRules: S.optional(VolumeGroupMetaDataInputGlobalPlacementRulesList),
         }),
       ).annotate({ identifier: "VolumeGroupMetaDataInput" });
     case 6:
@@ -7759,9 +9649,9 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          replicationSchedule: S.optional(S.String),
+          replicationSchedule: S.optional(ReplicationSchedule),
           remoteVolumeResourceId: S.optional(S.String),
-          remotePath: S.optional(__S(95)),
+          remotePath: S.optional(RemotePath),
           remoteVolumeRegion: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicationObjectInput" });
@@ -7782,8 +9672,8 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          desiredRansomwareProtectionState: S.optional(S.String),
-          actualRansomwareProtectionState: S.optional(S.String),
+          desiredRansomwareProtectionState: S.optional(DesiredRansomwareProtectionState),
+          actualRansomwareProtectionState: S.optional(ActualRansomwareProtectionState),
         }),
       ).annotate({
         identifier: "RansomwareProtectionSettings",
@@ -7791,11 +9681,11 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          backup: S.optional(__S(94)),
-          replication: S.optional(__S(96)),
-          snapshot: S.optional(__S(97)),
-          volumeRelocation: S.optional(__S(98)),
-          ransomwareProtection: S.optional(__S(99)),
+          backup: S.optional(VolumeBackupProperties),
+          replication: S.optional(ReplicationObjectInput),
+          snapshot: S.optional(VolumeSnapshotProperties),
+          volumeRelocation: S.optional(VolumeRelocationPropertiesInput),
+          ransomwareProtection: S.optional(RansomwareProtectionSettings),
         }),
       ).annotate({
         identifier: "VolumePropertiesDataProtectionInput",
@@ -7804,60 +9694,62 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           creationToken: S.String,
-          serviceLevel: S.optional(S.String),
+          serviceLevel: S.optional(VolumePropertiesInputServiceLevel),
           usageThreshold: S.Number,
-          exportPolicy: S.optional(__S(53)),
-          protocolTypes: S.optional(__S(5)),
+          exportPolicy: S.optional(VolumePropertiesExportPolicy),
+          protocolTypes: S.optional(VolumePropertiesInputProtocolTypesList),
           snapshotId: S.optional(S.NullOr(S.String)),
           deleteBaseSnapshot: S.optional(S.Boolean),
           backupId: S.optional(S.NullOr(S.String)),
           subnetId: S.String,
-          networkFeatures: S.optional(S.String),
+          networkFeatures: S.optional(VolumePropertiesInputNetworkFeatures),
           volumeType: S.optional(S.String),
-          dataProtection: S.optional(__S(100)),
-          acceptGrowCapacityPoolForShortTermCloneSplit: S.optional(S.String),
+          dataProtection: S.optional(VolumePropertiesDataProtectionInput),
+          acceptGrowCapacityPoolForShortTermCloneSplit: S.optional(
+            AcceptGrowCapacityPoolForShortTermCloneSplit,
+          ),
           snapshotDirectoryVisible: S.optional(S.Boolean),
           kerberosEnabled: S.optional(S.Boolean),
-          securityStyle: S.optional(S.String),
+          securityStyle: S.optional(VolumePropertiesInputSecurityStyle),
           smbEncryption: S.optional(S.Boolean),
-          smbAccessBasedEnumeration: S.optional(S.NullOr(S.String)),
-          smbNonBrowsable: S.optional(S.String),
+          smbAccessBasedEnumeration: S.optional(S.NullOr(SmbAccessBasedEnumeration)),
+          smbNonBrowsable: S.optional(SmbNonBrowsable),
           smbContinuouslyAvailable: S.optional(S.Boolean),
           throughputMibps: S.optional(S.NullOr(S.Number)),
-          encryptionKeySource: S.optional(S.String),
+          encryptionKeySource: S.optional(VolumePropertiesInputEncryptionKeySource),
           keyVaultPrivateEndpointResourceId: S.optional(S.String),
           ldapEnabled: S.optional(S.Boolean),
           coolAccess: S.optional(S.Boolean),
           coolnessPeriod: S.optional(S.Number),
-          coolAccessRetrievalPolicy: S.optional(S.String),
-          coolAccessTieringPolicy: S.optional(S.String),
+          coolAccessRetrievalPolicy: S.optional(CoolAccessRetrievalPolicy),
+          coolAccessTieringPolicy: S.optional(CoolAccessTieringPolicy),
           unixPermissions: S.optional(S.NullOr(S.String)),
-          avsDataStore: S.optional(S.String),
+          avsDataStore: S.optional(VolumePropertiesInputAvsDataStore),
           isDefaultQuotaEnabled: S.optional(S.Boolean),
           defaultUserQuotaInKiBs: S.optional(S.Number),
           defaultGroupQuotaInKiBs: S.optional(S.Number),
           capacityPoolResourceId: S.optional(S.String),
           proximityPlacementGroup: S.optional(S.String),
           volumeSpecName: S.optional(S.String),
-          placementRules: S.optional(__S(92)),
-          enableSubvolumes: S.optional(S.String),
+          placementRules: S.optional(VolumePropertiesInputPlacementRulesList),
+          enableSubvolumes: S.optional(VolumePropertiesInputEnableSubvolumes),
           isLargeVolume: S.optional(S.Boolean),
-          breakthroughMode: S.optional(S.String),
+          breakthroughMode: S.optional(BreakthroughMode),
         }),
       ).annotate({ identifier: "VolumePropertiesInput" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          tags: S.optional(__S(4)),
-          zones: S.optional(__S(5)),
-          properties: __S(101),
+          tags: S.optional(VolumeGroupVolumePropertiesInputTagsMap),
+          zones: S.optional(VolumeGroupVolumePropertiesInputZonesList),
+          properties: VolumePropertiesInput,
         }),
       ).annotate({
         identifier: "VolumeGroupVolumePropertiesInput",
       });
     case 7:
-      return S.Array(__S(102));
+      return S.Array(VolumeGroupVolumePropertiesInput);
   }
 }
 function __c13(j: number): any {
@@ -7865,8 +9757,8 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          groupMetaData: S.optional(__S(93)),
-          volumes: S.optional(__S(103)),
+          groupMetaData: S.optional(VolumeGroupMetaDataInput),
+          volumes: S.optional(VolumeGroupPropertiesInputVolumesList),
         }),
       ).annotate({
         identifier: "VolumeGroupPropertiesInput",
@@ -7878,7 +9770,7 @@ function __c13(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           volumeGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(104)),
+          properties: S.optional(VolumeGroupPropertiesInput),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -7893,9 +9785,9 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupDescription: S.optional(S.String),
-          applicationType: S.optional(S.String),
+          applicationType: S.optional(ApplicationType),
           applicationIdentifier: S.optional(S.String),
-          globalPlacementRules: S.optional(__S(92)),
+          globalPlacementRules: S.optional(VolumeGroupMetaDataGlobalPlacementRulesList),
           volumesCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "VolumeGroupMetaData" });
@@ -7909,32 +9801,32 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "MountTargetProperties" });
     case 4:
-      return S.Array(__S(107));
+      return S.Array(MountTargetProperties);
     case 5:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.optional(S.String),
-          replicationType: S.optional(S.String),
+          replicationType: S.optional(ReplicationType),
           region: S.optional(S.String),
           zone: S.optional(S.String),
         }),
       ).annotate({ identifier: "DestinationReplication" });
     case 6:
-      return S.Array(__S(109));
+      return S.Array(DestinationReplication);
     case 7:
       return S.suspend(() =>
         S.Struct({
           replicationId: S.optional(S.String),
-          endpointType: S.optional(S.String),
-          replicationSchedule: S.optional(S.String),
+          endpointType: S.optional(EndpointType),
+          replicationSchedule: S.optional(ReplicationSchedule),
           remoteVolumeResourceId: S.optional(S.String),
-          remotePath: S.optional(__S(95)),
+          remotePath: S.optional(RemotePath),
           remoteVolumeRegion: S.optional(S.String),
-          destinationReplications: S.optional(__S(110)),
-          externalReplicationSetupStatus: S.optional(S.String),
+          destinationReplications: S.optional(ReplicationObjectDestinationReplicationsList),
+          externalReplicationSetupStatus: S.optional(ExternalReplicationSetupStatus),
           externalReplicationSetupInfo: S.optional(S.String),
-          mirrorState: S.optional(S.String),
-          relationshipStatus: S.optional(S.String),
+          mirrorState: S.optional(MirrorState),
+          relationshipStatus: S.optional(VolumeReplicationRelationshipStatus),
         }),
       ).annotate({ identifier: "ReplicationObject" });
   }
@@ -7953,11 +9845,11 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          backup: S.optional(__S(94)),
-          replication: S.optional(__S(111)),
-          snapshot: S.optional(__S(97)),
-          volumeRelocation: S.optional(__S(112)),
-          ransomwareProtection: S.optional(__S(99)),
+          backup: S.optional(VolumeBackupProperties),
+          replication: S.optional(ReplicationObject),
+          snapshot: S.optional(VolumeSnapshotProperties),
+          volumeRelocation: S.optional(VolumeRelocationProperties),
+          ransomwareProtection: S.optional(RansomwareProtectionSettings),
         }),
       ).annotate({
         identifier: "VolumePropertiesDataProtection",
@@ -7967,46 +9859,48 @@ function __c14(j: number): any {
         S.Struct({
           fileSystemId: S.optional(S.String),
           creationToken: S.String,
-          serviceLevel: S.optional(S.String),
+          serviceLevel: S.optional(VolumePropertiesServiceLevel),
           usageThreshold: S.Number,
-          exportPolicy: S.optional(__S(53)),
-          protocolTypes: S.optional(__S(5)),
+          exportPolicy: S.optional(VolumePropertiesExportPolicy),
+          protocolTypes: S.optional(VolumePropertiesProtocolTypesList),
           provisioningState: S.optional(S.String),
           snapshotId: S.optional(S.NullOr(S.String)),
           deleteBaseSnapshot: S.optional(S.Boolean),
           backupId: S.optional(S.NullOr(S.String)),
           baremetalTenantId: S.optional(S.String),
           subnetId: S.String,
-          networkFeatures: S.optional(S.String),
-          effectiveNetworkFeatures: S.optional(S.String),
+          networkFeatures: S.optional(VolumePropertiesNetworkFeatures),
+          effectiveNetworkFeatures: S.optional(VolumePropertiesEffectiveNetworkFeatures),
           networkSiblingSetId: S.optional(S.String),
-          storageToNetworkProximity: S.optional(S.String),
-          mountTargets: S.optional(__S(108)),
+          storageToNetworkProximity: S.optional(VolumeStorageToNetworkProximity),
+          mountTargets: S.optional(VolumePropertiesMountTargetsList),
           volumeType: S.optional(S.String),
-          dataProtection: S.optional(__S(113)),
-          acceptGrowCapacityPoolForShortTermCloneSplit: S.optional(S.String),
+          dataProtection: S.optional(VolumePropertiesDataProtection),
+          acceptGrowCapacityPoolForShortTermCloneSplit: S.optional(
+            AcceptGrowCapacityPoolForShortTermCloneSplit,
+          ),
           isRestoring: S.optional(S.Boolean),
           snapshotDirectoryVisible: S.optional(S.Boolean),
           kerberosEnabled: S.optional(S.Boolean),
-          securityStyle: S.optional(S.String),
+          securityStyle: S.optional(VolumePropertiesSecurityStyle),
           smbEncryption: S.optional(S.Boolean),
-          smbAccessBasedEnumeration: S.optional(S.NullOr(S.String)),
-          smbNonBrowsable: S.optional(S.String),
+          smbAccessBasedEnumeration: S.optional(S.NullOr(SmbAccessBasedEnumeration)),
+          smbNonBrowsable: S.optional(SmbNonBrowsable),
           smbContinuouslyAvailable: S.optional(S.Boolean),
           throughputMibps: S.optional(S.NullOr(S.Number)),
           actualThroughputMibps: S.optional(S.Number),
-          encryptionKeySource: S.optional(S.String),
+          encryptionKeySource: S.optional(VolumePropertiesEncryptionKeySource),
           keyVaultPrivateEndpointResourceId: S.optional(S.String),
           ldapEnabled: S.optional(S.Boolean),
           coolAccess: S.optional(S.Boolean),
           coolnessPeriod: S.optional(S.Number),
-          coolAccessRetrievalPolicy: S.optional(S.String),
-          coolAccessTieringPolicy: S.optional(S.String),
+          coolAccessRetrievalPolicy: S.optional(CoolAccessRetrievalPolicy),
+          coolAccessTieringPolicy: S.optional(CoolAccessTieringPolicy),
           unixPermissions: S.optional(S.NullOr(S.String)),
           cloneProgress: S.optional(S.NullOr(S.Number)),
-          fileAccessLogs: S.optional(S.String),
-          avsDataStore: S.optional(S.String),
-          dataStoreResourceId: S.optional(__S(5)),
+          fileAccessLogs: S.optional(VolumePropertiesFileAccessLogs),
+          avsDataStore: S.optional(VolumePropertiesAvsDataStore),
+          dataStoreResourceId: S.optional(VolumePropertiesDataStoreResourceIdList),
           isDefaultQuotaEnabled: S.optional(S.Boolean),
           defaultUserQuotaInKiBs: S.optional(S.Number),
           defaultGroupQuotaInKiBs: S.optional(S.Number),
@@ -8017,13 +9911,13 @@ function __c14(j: number): any {
           t2Network: S.optional(S.String),
           volumeSpecName: S.optional(S.String),
           encrypted: S.optional(S.Boolean),
-          placementRules: S.optional(__S(92)),
-          enableSubvolumes: S.optional(S.String),
+          placementRules: S.optional(VolumePropertiesPlacementRulesList),
+          enableSubvolumes: S.optional(VolumePropertiesEnableSubvolumes),
           provisionedAvailabilityZone: S.optional(S.NullOr(S.String)),
           isLargeVolume: S.optional(S.Boolean),
           originatingResourceId: S.optional(S.NullOr(S.String)),
           inheritedSizeInBytes: S.optional(S.NullOr(S.Number)),
-          breakthroughMode: S.optional(S.String),
+          breakthroughMode: S.optional(BreakthroughMode),
         }),
       ).annotate({ identifier: "VolumeProperties" });
     case 3:
@@ -8032,21 +9926,21 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(4)),
-          zones: S.optional(__S(5)),
-          properties: __S(114),
+          tags: S.optional(VolumeGroupVolumePropertiesTagsMap),
+          zones: S.optional(VolumeGroupVolumePropertiesZonesList),
+          properties: VolumeProperties,
         }),
       ).annotate({
         identifier: "VolumeGroupVolumeProperties",
       });
     case 4:
-      return S.Array(__S(115));
+      return S.Array(VolumeGroupVolumeProperties);
     case 5:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          groupMetaData: S.optional(__S(106)),
-          volumes: S.optional(__S(116)),
+          groupMetaData: S.optional(VolumeGroupMetaData),
+          volumes: S.optional(VolumeGroupPropertiesVolumesList),
         }),
       ).annotate({ identifier: "VolumeGroupProperties" });
     case 6:
@@ -8055,8 +9949,8 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          properties: S.optional(__S(117)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(VolumeGroupProperties),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -8066,7 +9960,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           quotaSizeInKiBs: S.optional(S.Number),
-          quotaType: S.optional(S.String),
+          quotaType: S.optional(QuotaType),
           quotaTarget: S.optional(S.String),
         }),
       ).annotate({
@@ -8085,9 +9979,9 @@ function __c15(j: number): any {
           poolName: S.String.pipe(T.Label()),
           volumeName: S.String.pipe(T.Label()),
           volumeQuotaRuleName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4)),
+          tags: S.optional(CreateVolumeQuotaRuleRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(119)),
+          properties: S.optional(VolumeQuotaRulesPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8102,9 +9996,9 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(NetAppProvisioningState),
           quotaSizeInKiBs: S.optional(S.Number),
-          quotaType: S.optional(S.String),
+          quotaType: S.optional(QuotaType),
           quotaTarget: S.optional(S.String),
         }),
       ).annotate({
@@ -8116,10 +10010,10 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateVolumeQuotaRuleResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(121)),
+          properties: S.optional(VolumeQuotaRulesProperties),
         }),
       ).annotate({
         identifier: "CreateVolumeQuotaRuleResponse",
@@ -8464,14 +10358,14 @@ function __c17(j: number): any {
         ),
       ).annotate({ identifier: "GetAccountRequest" });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(23)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
     case 7:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(142)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(GetAccountResponseIdentityUserAssignedIdentitiesMap),
         }),
       ).annotate({
         identifier: "GetAccountResponseIdentity",
@@ -8486,12 +10380,12 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetAccountResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(22)),
+          properties: S.optional(AccountProperties),
           etag: S.optional(S.String),
-          identity: S.optional(__S(143)),
+          identity: S.optional(GetAccountResponseIdentity),
         }),
       ).annotate({ identifier: "GetAccountResponse" });
     case 1:
@@ -8512,14 +10406,16 @@ function __c18(j: number): any {
         identifier: "GetAccountChangeKeyVaultInformationRequest",
       });
     case 2:
-      return S.Array(__S(0));
+      return S.Array(KeyVaultPrivateEndpoint);
     case 3:
       return S.suspend(() =>
         S.Struct({
           keyVaultUri: S.optional(S.String),
           keyName: S.optional(S.String),
           keyVaultResourceId: S.optional(S.String),
-          keyVaultPrivateEndpoints: S.optional(__S(146)),
+          keyVaultPrivateEndpoints: S.optional(
+            GetKeyVaultStatusResponsePropertiesKeyVaultPrivateEndpointsList,
+          ),
         }),
       ).annotate({
         identifier: "GetKeyVaultStatusResponseProperties",
@@ -8527,7 +10423,7 @@ function __c18(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(147)),
+          properties: S.optional(GetKeyVaultStatusResponseProperties),
         }),
       ).annotate({
         identifier: "GetKeyVaultStatusResponse",
@@ -8572,8 +10468,8 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           healthy: S.optional(S.Boolean),
-          relationshipStatus: S.optional(S.String),
-          mirrorState: S.optional(S.String),
+          relationshipStatus: S.optional(VolumeBackupRelationshipStatus),
+          mirrorState: S.optional(MirrorState),
           unhealthyReason: S.optional(S.String),
           errorMessage: S.optional(S.String),
           lastTransferSize: S.optional(S.Number),
@@ -8608,10 +10504,10 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetBackupPolicyResponseTagsMap),
           location: S.String,
-          properties: __S(78),
+          properties: BackupPolicyProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetBackupPolicyResponse" });
@@ -8637,10 +10533,10 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetBackupVaultResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(37)),
+          properties: S.optional(BackupVaultProperties),
         }),
       ).annotate({ identifier: "GetBackupVaultResponse" });
     case 4:
@@ -8667,8 +10563,8 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          properties: S.optional(__S(49)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BucketProperties),
         }),
       ).annotate({ identifier: "GetBucketResponse" });
     case 6:
@@ -8723,8 +10619,8 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          properties: S.optional(__S(160)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(QuotaItemProperties),
         }),
       ).annotate({
         identifier: "GetNetAppResourceQuotaLimitResponse",
@@ -8773,12 +10669,12 @@ function __c20(j: number): any {
         identifier: "RegionInfoAvailabilityZoneMappingsItem",
       });
     case 5:
-      return S.Array(__S(164));
+      return S.Array(RegionInfoAvailabilityZoneMappingsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          storageToNetworkProximity: S.optional(S.String),
-          availabilityZoneMappings: S.optional(__S(165)),
+          storageToNetworkProximity: S.optional(RegionStorageToNetworkProximity),
+          availabilityZoneMappings: S.optional(RegionInfoAvailabilityZoneMappingsList),
         }),
       ).annotate({ identifier: "RegionInfo" });
     case 7:
@@ -8787,8 +10683,8 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          properties: S.optional(__S(166)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(RegionInfo),
         }),
       ).annotate({
         identifier: "GetNetAppResourceRegionInfosResponse",
@@ -8833,8 +10729,8 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          name: S.optional(__S(169)),
-          properties: S.optional(__S(170)),
+          name: S.optional(UsageName),
+          properties: S.optional(UsageProperties),
         }),
       ).annotate({ identifier: "UsageResult" });
     case 4:
@@ -8858,14 +10754,14 @@ function __c21(j: number): any {
         S.Struct({
           poolId: S.optional(S.String),
           size: S.Number,
-          serviceLevel: S.String,
+          serviceLevel: PoolPropertiesServiceLevel,
           provisioningState: S.optional(S.String),
           totalThroughputMibps: S.optional(S.Number),
           utilizedThroughputMibps: S.optional(S.Number),
           customThroughputMibps: S.optional(S.NullOr(S.Number)),
-          qosType: S.optional(S.String),
+          qosType: S.optional(PoolPropertiesQosType),
           coolAccess: S.optional(S.Boolean),
-          encryptionType: S.optional(S.NullOr(S.String)),
+          encryptionType: S.optional(S.NullOr(PoolPropertiesEncryptionType)),
         }),
       ).annotate({ identifier: "PoolProperties" });
     case 6:
@@ -8874,10 +10770,10 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetPoolResponseTagsMap),
           location: S.String,
-          properties: __S(173),
+          properties: PoolProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetPoolResponse" });
@@ -8913,27 +10809,27 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "SuspectFile" });
     case 1:
-      return S.Array(__S(176));
+      return S.Array(SuspectFile);
     case 2:
       return S.suspend(() =>
         S.Struct({
           extension: S.optional(S.String),
-          resolution: S.optional(S.String),
+          resolution: S.optional(RansomwareSuspectResolution),
           fileCount: S.optional(S.Number),
-          suspectFiles: S.optional(__S(177)),
+          suspectFiles: S.optional(RansomwareSuspectsSuspectFilesList),
         }),
       ).annotate({ identifier: "RansomwareSuspects" });
     case 3:
-      return S.Array(__S(178));
+      return S.Array(RansomwareSuspects);
     case 4:
       return S.suspend(() =>
         S.Struct({
           eventTime: S.optional(S.String),
-          state: S.optional(S.String),
-          severity: S.optional(S.String),
+          state: S.optional(RansomwareReportState),
+          severity: S.optional(RansomwareReportSeverity),
           clearedCount: S.optional(S.Number),
           reportedCount: S.optional(S.Number),
-          suspects: S.optional(__S(179)),
+          suspects: S.optional(RansomwareReportPropertiesSuspectsList),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
@@ -8945,8 +10841,8 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          properties: S.optional(__S(180)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(RansomwareReportProperties),
         }),
       ).annotate({
         identifier: "GetRansomwareReportResponse",
@@ -9012,12 +10908,12 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetVolumeResponseTagsMap),
           location: S.String,
-          properties: __S(114),
+          properties: VolumeProperties,
           etag: S.optional(S.String),
-          zones: S.optional(__S(5)),
+          zones: S.optional(GetVolumeResponseZonesList),
         }),
       ).annotate({ identifier: "GetVolumeResponse" });
     case 2:
@@ -9042,8 +10938,8 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          properties: S.optional(__S(117)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(VolumeGroupProperties),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetVolumeGroupResponse" });
@@ -9087,8 +10983,8 @@ function __c23(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(142)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(NetAppAccountIdentityUserAssignedIdentitiesMap),
         }),
       ).annotate({ identifier: "NetAppAccountIdentity" });
     case 7:
@@ -9097,12 +10993,12 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(NetAppAccountTagsMap),
           location: S.String,
-          properties: S.optional(__S(22)),
+          properties: S.optional(AccountProperties),
           etag: S.optional(S.String),
-          identity: S.optional(__S(190)),
+          identity: S.optional(NetAppAccountIdentity),
         }),
       ).annotate({ identifier: "NetAppAccount" });
   }
@@ -9110,11 +11006,11 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(191));
+      return S.Array(NetAppAccount);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(192),
+          value: NetAppAccountListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetAppAccountList" });
@@ -9150,11 +11046,11 @@ function __c24(j: number): any {
         ),
       ).annotate({ identifier: "ListBackupByVaultRequest" });
     case 4:
-      return S.Array(__S(73));
+      return S.Array(Backup);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(196),
+          value: BackupsListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackupsList" });
@@ -9176,7 +11072,7 @@ function __c24(j: number): any {
         identifier: "ListBackupPoliciesRequest",
       });
     case 7:
-      return S.Array(__S(153));
+      return S.Array(BackupPolicy);
   }
 }
 function __c25(j: number): any {
@@ -9184,7 +11080,7 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(199),
+          value: BackupPoliciesListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackupPoliciesList" });
@@ -9206,11 +11102,11 @@ function __c25(j: number): any {
         identifier: "ListBackupVaultByNetAppAccountRequest",
       });
     case 2:
-      return S.Array(__S(155));
+      return S.Array(BackupVault);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(202),
+          value: BackupVaultsListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackupVaultsList" });
@@ -9232,11 +11128,11 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "ListBucketsRequest" });
     case 5:
-      return S.Array(__S(157));
+      return S.Array(Bucket);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(205),
+          value: BucketListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BucketList" });
@@ -9268,20 +11164,20 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CacheTagsMap),
           location: S.String,
-          properties: __S(61),
+          properties: CacheProperties,
           etag: S.optional(S.String),
-          zones: S.optional(__S(208)),
+          zones: S.optional(CacheZonesList),
         }),
       ).annotate({ identifier: "Cache" });
     case 2:
-      return S.Array(__S(209));
+      return S.Array(Cache);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(210),
+          value: CacheListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CacheList" });
@@ -9335,8 +11231,8 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          properties: S.optional(__S(160)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(QuotaItemProperties),
         }),
       ).annotate({ identifier: "QuotaItem" });
   }
@@ -9344,11 +11240,11 @@ function __c26(j: number): any {
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(215));
+      return S.Array(QuotaItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(216),
+          value: QuotaItemListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotaItemList" });
@@ -9391,16 +11287,16 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          properties: S.optional(__S(166)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(RegionInfo),
         }),
       ).annotate({ identifier: "RegionInfoResource" });
     case 5:
-      return S.Array(__S(220));
+      return S.Array(RegionInfoResource);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(221),
+          value: RegionInfosListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegionInfosList" });
@@ -9425,11 +11321,11 @@ function __c27(j: number): any {
 function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(171));
+      return S.Array(UsageResult);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(224),
+          value: UsagesListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsagesListResult" });
@@ -9461,7 +11357,7 @@ function __c28(j: number): any {
         }),
       ).annotate({ identifier: "Dimension" });
     case 5:
-      return S.Array(__S(228));
+      return S.Array(Dimension);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -9469,13 +11365,13 @@ function __c28(j: number): any {
           displayName: S.optional(S.String),
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
-          supportedAggregationTypes: S.optional(__S(54)),
-          supportedTimeGrainTypes: S.optional(__S(5)),
+          supportedAggregationTypes: S.optional(MetricSpecificationSupportedAggregationTypesList),
+          supportedTimeGrainTypes: S.optional(MetricSpecificationSupportedTimeGrainTypesList),
           internalMetricName: S.optional(S.String),
           enableRegionalMdmAccount: S.optional(S.Boolean),
           sourceMdmAccount: S.optional(S.String),
           sourceMdmNamespace: S.optional(S.String),
-          dimensions: S.optional(__S(229)),
+          dimensions: S.optional(MetricSpecificationDimensionsList),
           aggregationType: S.optional(S.String),
           fillGapWithZero: S.optional(S.Boolean),
           category: S.optional(S.String),
@@ -9484,7 +11380,7 @@ function __c28(j: number): any {
         }),
       ).annotate({ identifier: "MetricSpecification" });
     case 7:
-      return S.Array(__S(230));
+      return S.Array(MetricSpecification);
   }
 }
 function __c29(j: number): any {
@@ -9492,31 +11388,31 @@ function __c29(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(__S(231)),
-          logSpecifications: S.optional(__S(229)),
+          metricSpecifications: S.optional(ServiceSpecificationMetricSpecificationsList),
+          logSpecifications: S.optional(ServiceSpecificationLogSpecificationsList),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(232)),
+          serviceSpecification: S.optional(ServiceSpecification),
         }),
       ).annotate({ identifier: "OperationProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(227)),
+          display: S.optional(OperationDisplay),
           origin: S.optional(S.String),
-          properties: S.optional(__S(233)),
+          properties: S.optional(OperationProperties),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(234));
+      return S.Array(Operation);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(235),
+          value: OperationListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -9536,11 +11432,11 @@ function __c29(j: number): any {
         ),
       ).annotate({ identifier: "ListPoolsRequest" });
     case 6:
-      return S.Array(__S(174));
+      return S.Array(CapacityPool);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(238),
+          value: CapacityPoolListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CapacityPoolList" });
@@ -9573,16 +11469,16 @@ function __c30(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          properties: S.optional(__S(180)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(RansomwareReportProperties),
         }),
       ).annotate({ identifier: "RansomwareReport" });
     case 2:
-      return S.Array(__S(241));
+      return S.Array(RansomwareReport);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(242),
+          value: RansomwareReportsListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RansomwareReportsList" });
@@ -9609,19 +11505,19 @@ function __c30(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(SnapshotPolicyTagsMap),
           location: S.String,
-          properties: __S(89),
+          properties: SnapshotPolicyProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnapshotPolicy" });
     case 6:
-      return S.Array(__S(245));
+      return S.Array(SnapshotPolicy);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(246),
+          value: SnapshotPoliciesListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnapshotPoliciesList" });
@@ -9653,20 +11549,20 @@ function __c31(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(VolumeTagsMap),
           location: S.String,
-          properties: __S(114),
+          properties: VolumeProperties,
           etag: S.optional(S.String),
-          zones: S.optional(__S(208)),
+          zones: S.optional(VolumeZonesList),
         }),
       ).annotate({ identifier: "Volume" });
     case 2:
-      return S.Array(__S(249));
+      return S.Array(Volume);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(250),
+          value: SnapshotPolicyVolumeListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnapshotPolicyVolumeList" });
@@ -9688,11 +11584,11 @@ function __c31(j: number): any {
         ),
       ).annotate({ identifier: "ListSnapshotsRequest" });
     case 5:
-      return S.Array(__S(82));
+      return S.Array(Snapshot);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(253),
+          value: SnapshotsListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnapshotsList" });
@@ -9721,7 +11617,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          groupMetaData: S.optional(__S(106)),
+          groupMetaData: S.optional(VolumeGroupMetaData),
         }),
       ).annotate({
         identifier: "VolumeGroupListProperties",
@@ -9733,15 +11629,15 @@ function __c32(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(256)),
+          properties: S.optional(VolumeGroupListProperties),
         }),
       ).annotate({ identifier: "VolumeGroup" });
     case 2:
-      return S.Array(__S(257));
+      return S.Array(VolumeGroup);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(258),
+          value: VolumeGroupListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VolumeGroupList" });
@@ -9753,7 +11649,7 @@ function __c32(j: number): any {
           accountName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
           volumeName: S.String.pipe(T.Label()),
-          quotaType: S.optional(S.String),
+          quotaType: S.optional(QuotaType),
           quotaTarget: S.optional(S.String),
           usageThresholdPercentage: S.optional(S.Number),
         }).pipe(
@@ -9770,7 +11666,7 @@ function __c32(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          quotaType: S.optional(S.String),
+          quotaType: S.optional(QuotaType),
           quotaTarget: S.optional(S.String),
           quotaLimitUsedInKiBs: S.optional(S.Number),
           quotaLimitTotalInKiBs: S.optional(S.Number),
@@ -9779,11 +11675,11 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "QuotaReport" });
     case 6:
-      return S.Array(__S(261));
+      return S.Array(QuotaReport);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          quotaReportRecords: S.optional(__S(262)),
+          quotaReportRecords: S.optional(ListQuotaReportResponseQuotaReportRecordsList),
         }),
       ).annotate({ identifier: "ListQuotaReportResponse" });
   }
@@ -9793,7 +11689,7 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(263)),
+          properties: S.optional(ListQuotaReportResponse),
         }),
       ).annotate({ identifier: "ListQuotaReportResult" });
     case 1:
@@ -9821,18 +11717,18 @@ function __c33(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(VolumeQuotaRuleTagsMap),
           location: S.String,
-          properties: S.optional(__S(121)),
+          properties: S.optional(VolumeQuotaRulesProperties),
         }),
       ).annotate({ identifier: "VolumeQuotaRule" });
     case 3:
-      return S.Array(__S(266));
+      return S.Array(VolumeQuotaRule);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(267),
+          value: VolumeQuotaRulesListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VolumeQuotaRulesList" });
@@ -9844,7 +11740,7 @@ function __c33(j: number): any {
           accountName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
           volumeName: S.String.pipe(T.Label()),
-          exclude: S.optional(S.String),
+          exclude: S.optional(ListVolumeReplicationsRequestExclude),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9860,17 +11756,17 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           replicationId: S.optional(S.String),
-          endpointType: S.optional(S.String),
-          replicationSchedule: S.optional(S.String),
+          endpointType: S.optional(EndpointType),
+          replicationSchedule: S.optional(ReplicationSchedule),
           remoteVolumeResourceId: S.optional(S.String),
           remoteVolumeRegion: S.optional(S.String),
-          mirrorState: S.optional(S.String),
+          mirrorState: S.optional(ReplicationMirrorState),
           replicationCreationTime: S.optional(S.String),
           replicationDeletionTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Replication" });
     case 7:
-      return S.Array(__S(270));
+      return S.Array(Replication);
   }
 }
 function __c34(j: number): any {
@@ -9878,7 +11774,7 @@ function __c34(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(271),
+          value: ListReplicationsValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListReplications" });
@@ -9956,11 +11852,11 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           size: S.Number,
-          serviceLevel: S.String,
+          serviceLevel: PoolPropertiesInputServiceLevel,
           customThroughputMibps: S.optional(S.NullOr(S.Number)),
-          qosType: S.optional(S.String),
+          qosType: S.optional(PoolPropertiesInputQosType),
           coolAccess: S.optional(S.Boolean),
-          encryptionType: S.optional(S.NullOr(S.String)),
+          encryptionType: S.optional(S.NullOr(PoolPropertiesInputEncryptionType)),
         }),
       ).annotate({ identifier: "PoolPropertiesInput" });
     case 6:
@@ -9970,9 +11866,9 @@ function __c34(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4)),
+          tags: S.optional(PoolsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: __S(277),
+          properties: PoolPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9990,10 +11886,10 @@ function __c34(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(PoolsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: __S(173),
+          properties: PoolProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -10086,7 +11982,7 @@ function __c35(j: number): any {
           accountName: S.String.pipe(T.Label()),
           backupVaultName: S.String.pipe(T.Label()),
           backupName: S.String.pipe(T.Label()),
-          fileList: __S(5),
+          fileList: RestoreBackupsUnderBackupVaultFilesRequestFileListList,
           restoreFilePath: S.optional(S.String),
           destinationVolumeId: S.String,
         }).pipe(
@@ -10109,7 +12005,7 @@ function __c35(j: number): any {
           poolName: S.String.pipe(T.Label()),
           volumeName: S.String.pipe(T.Label()),
           snapshotName: S.String.pipe(T.Label()),
-          filePaths: __S(5),
+          filePaths: RestoreSnapshotFilesRequestFilePathsList,
           destinationPath: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -10144,7 +12040,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ipAddress: S.optional(S.String),
-          volumeResourceIds: S.optional(__S(5)),
+          volumeResourceIds: S.optional(NicInfoVolumeResourceIdsList),
         }),
       ).annotate({ identifier: "NicInfo" });
   }
@@ -10152,16 +12048,16 @@ function __c35(j: number): any {
 function __c36(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(287));
+      return S.Array(NicInfo);
     case 1:
       return S.suspend(() =>
         S.Struct({
           networkSiblingSetId: S.optional(S.String),
           subnetId: S.optional(S.String),
           networkSiblingSetStateId: S.optional(S.String),
-          networkFeatures: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          nicInfoList: S.optional(__S(288)),
+          networkFeatures: S.optional(NetworkSiblingSetNetworkFeatures),
+          provisioningState: S.optional(NetworkSiblingSetProvisioningState),
+          nicInfoList: S.optional(NetworkSiblingSetNicInfoListList),
         }),
       ).annotate({ identifier: "NetworkSiblingSet" });
     case 2:
@@ -10184,12 +12080,12 @@ function __c36(j: number): any {
         identifier: "TransferVolumesPerformReplicationRequest",
       });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(3)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(291)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(UpdateAccountRequestIdentityUserAssignedIdentitiesMap),
         }),
       ).annotate({
         identifier: "UpdateAccountRequestIdentity",
@@ -10201,9 +12097,9 @@ function __c36(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(4)),
-          properties: S.optional(__S(12)),
-          identity: S.optional(__S(292)),
+          tags: S.optional(UpdateAccountRequestTagsMap),
+          properties: S.optional(AccountPropertiesInput),
+          identity: S.optional(UpdateAccountRequestIdentity),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10227,7 +12123,7 @@ function __c36(j: number): any {
           accountName: S.String.pipe(T.Label()),
           backupVaultName: S.String.pipe(T.Label()),
           backupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(294)),
+          properties: S.optional(BackupPatchProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10249,8 +12145,8 @@ function __c37(j: number): any {
           accountName: S.String.pipe(T.Label()),
           backupPolicyName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(4)),
-          properties: S.optional(__S(74)),
+          tags: S.optional(UpdateBackupPolicyRequestTagsMap),
+          properties: S.optional(BackupPolicyPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10269,7 +12165,7 @@ function __c37(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           backupVaultName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4)),
+          tags: S.optional(UpdateBackupVaultRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10282,10 +12178,10 @@ function __c37(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          fileSystemUser: S.optional(__S(41)),
-          server: S.optional(__S(42)),
-          permissions: S.optional(S.String),
-          akvDetails: S.optional(__S(45)),
+          fileSystemUser: S.optional(FileSystemUser),
+          server: S.optional(BucketServerPropertiesInput),
+          permissions: S.optional(BucketPatchPermissions),
+          akvDetails: S.optional(AzureKeyVaultDetails),
         }),
       ).annotate({
         identifier: "BucketPatchPropertiesInput",
@@ -10299,7 +12195,7 @@ function __c37(j: number): any {
           poolName: S.String.pipe(T.Label()),
           volumeName: S.String.pipe(T.Label()),
           bucketName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(298)),
+          properties: S.optional(BucketPatchPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10313,13 +12209,13 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           size: S.optional(S.Number),
-          exportPolicy: S.optional(__S(53)),
-          protocolTypes: S.optional(__S(54)),
-          smbSettings: S.optional(__S(55)),
+          exportPolicy: S.optional(CachePropertiesExportPolicy),
+          protocolTypes: S.optional(CacheUpdatePropertiesProtocolTypesList),
+          smbSettings: S.optional(SmbSettings),
           throughputMibps: S.optional(S.Number),
           keyVaultPrivateEndpointResourceId: S.optional(S.String),
-          cifsChangeNotifications: S.optional(S.String),
-          writeBack: S.optional(S.String),
+          cifsChangeNotifications: S.optional(CifsChangeNotifyState),
+          writeBack: S.optional(EnableWriteBackState),
         }),
       ).annotate({ identifier: "CacheUpdateProperties" });
     case 5:
@@ -10330,8 +12226,8 @@ function __c37(j: number): any {
           accountName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
           cacheName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4)),
-          properties: S.optional(__S(300)),
+          tags: S.optional(UpdateCachRequestTagsMap),
+          properties: S.optional(CacheUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10349,7 +12245,7 @@ function __c37(j: number): any {
           networkSiblingSetId: S.String,
           subnetId: S.String,
           networkSiblingSetStateId: S.String,
-          networkFeatures: S.String,
+          networkFeatures: UpdateNetAppResourceNetworkSiblingSetRequestNetworkFeatures,
         }).pipe(
           T.Http({
             method: "POST",
@@ -10365,7 +12261,7 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           size: S.optional(S.Number),
-          qosType: S.optional(S.String),
+          qosType: S.optional(QosType),
           coolAccess: S.optional(S.Boolean),
           customThroughputMibps: S.optional(S.NullOr(S.Number)),
         }),
@@ -10382,8 +12278,8 @@ function __c38(j: number): any {
           accountName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(4)),
-          properties: S.optional(__S(303)),
+          tags: S.optional(UpdatePoolRequestTagsMap),
+          properties: S.optional(PoolPatchProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10419,8 +12315,8 @@ function __c38(j: number): any {
           accountName: S.String.pipe(T.Label()),
           snapshotPolicyName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(4)),
-          properties: S.optional(__S(87)),
+          tags: S.optional(UpdateSnapshotPolicyRequestTagsMap),
+          properties: S.optional(SnapshotPolicyPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10435,7 +12331,7 @@ function __c38(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          desiredRansomwareProtectionState: S.optional(S.String),
+          desiredRansomwareProtectionState: S.optional(DesiredRansomwareProtectionState),
         }),
       ).annotate({
         identifier: "RansomwareProtectionPatchSettings",
@@ -10443,9 +12339,9 @@ function __c38(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          backup: S.optional(__S(94)),
-          snapshot: S.optional(__S(97)),
-          ransomwareProtection: S.optional(__S(307)),
+          backup: S.optional(VolumeBackupProperties),
+          snapshot: S.optional(VolumeSnapshotProperties),
+          ransomwareProtection: S.optional(RansomwareProtectionPatchSettings),
         }),
       ).annotate({
         identifier: "VolumePatchPropertiesDataProtection",
@@ -10453,23 +12349,23 @@ function __c38(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          serviceLevel: S.optional(S.String),
+          serviceLevel: S.optional(ServiceLevel),
           usageThreshold: S.optional(S.Number),
-          exportPolicy: S.optional(__S(53)),
-          protocolTypes: S.optional(__S(5)),
+          exportPolicy: S.optional(VolumePatchPropertiesExportPolicy),
+          protocolTypes: S.optional(VolumePatchPropertiesProtocolTypesList),
           throughputMibps: S.optional(S.Number),
-          dataProtection: S.optional(__S(308)),
+          dataProtection: S.optional(VolumePatchPropertiesDataProtection),
           isDefaultQuotaEnabled: S.optional(S.Boolean),
           defaultUserQuotaInKiBs: S.optional(S.Number),
           defaultGroupQuotaInKiBs: S.optional(S.Number),
           unixPermissions: S.optional(S.NullOr(S.String)),
           coolAccess: S.optional(S.Boolean),
           coolnessPeriod: S.optional(S.Number),
-          coolAccessRetrievalPolicy: S.optional(S.String),
-          coolAccessTieringPolicy: S.optional(S.String),
+          coolAccessRetrievalPolicy: S.optional(CoolAccessRetrievalPolicy),
+          coolAccessTieringPolicy: S.optional(CoolAccessTieringPolicy),
           snapshotDirectoryVisible: S.optional(S.Boolean),
-          smbAccessBasedEnumeration: S.optional(S.NullOr(S.String)),
-          smbNonBrowsable: S.optional(S.String),
+          smbAccessBasedEnumeration: S.optional(S.NullOr(SmbAccessBasedEnumeration)),
+          smbNonBrowsable: S.optional(SmbNonBrowsable),
         }),
       ).annotate({ identifier: "VolumePatchProperties" });
     case 6:
@@ -10481,8 +12377,8 @@ function __c38(j: number): any {
           poolName: S.String.pipe(T.Label()),
           volumeName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(4)),
-          properties: S.optional(__S(309)),
+          tags: S.optional(UpdateVolumeRequestTagsMap),
+          properties: S.optional(VolumePatchProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10501,8 +12397,8 @@ function __c38(j: number): any {
           poolName: S.String.pipe(T.Label()),
           volumeName: S.String.pipe(T.Label()),
           volumeQuotaRuleName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4)),
-          properties: S.optional(__S(119)),
+          tags: S.optional(UpdateVolumeQuotaRuleRequestTagsMap),
+          properties: S.optional(VolumeQuotaRulesPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10567,10 +12463,10 @@ function __c39(j: number): any {
           accountName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
           volumeName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4)),
+          tags: S.optional(VolumesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: __S(101),
-          zones: S.optional(__S(5)),
+          properties: VolumePropertiesInput,
+          zones: S.optional(VolumesCreateOrUpdateRequestZonesList),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10588,12 +12484,12 @@ function __c39(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(VolumesCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: __S(114),
+          properties: VolumeProperties,
           etag: S.optional(S.String),
-          zones: S.optional(__S(5)),
+          zones: S.optional(VolumesCreateOrUpdateResponseZonesList),
         }),
       ).annotate({
         identifier: "VolumesCreateOrUpdateResponse",
@@ -10621,7 +12517,7 @@ function __c39(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          groupIdsForLdapUser: S.optional(__S(5)),
+          groupIdsForLdapUser: S.optional(GetGroupIdListForLdapUserResponseGroupIdsForLdapUserList),
         }),
       ).annotate({
         identifier: "GetGroupIdListForLdapUserResponse",
@@ -10634,7 +12530,7 @@ function __c39(j: number): any {
           accountName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
           volumeName: S.String.pipe(T.Label()),
-          peerIpAddresses: __S(5),
+          peerIpAddresses: VolumesPeerExternalClusterRequestPeerIpAddressesList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -10662,7 +12558,7 @@ function __c40(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(319)),
+          properties: S.optional(ClusterPeerCommandResponseProperties),
         }),
       ).annotate({
         identifier: "ClusterPeerCommandResponse",
@@ -10784,8 +12680,8 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           healthy: S.optional(S.Boolean),
-          relationshipStatus: S.optional(S.String),
-          mirrorState: S.optional(S.String),
+          relationshipStatus: S.optional(VolumeReplicationRelationshipStatus),
+          mirrorState: S.optional(MirrorState),
           totalProgress: S.optional(S.String),
           errorMessage: S.optional(S.String),
         }),
@@ -10869,98 +12765,5 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "VolumesSplitCloneFromParentRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
-    case 41:
-      return __c41(i & 7);
   }
 }

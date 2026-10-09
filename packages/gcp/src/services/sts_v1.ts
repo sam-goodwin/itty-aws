@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -68,6 +66,11 @@ export interface GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest
   /** Required. The name of the pool whose JWKs need to be retrieved. Format: 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example(s): 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog' */
   name: string;
 }
+const GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest>;
+
 /** A JSON web key set (JWK) See also https://datatracker.ietf.org/doc/html/rfc7517 and https://github.com/spiffe/spiffe/blob/main/standards/JWT-SVID.md#6-representation-in-the-spiffe-bundle. */
 export interface GoogleIdentityStsV1Jwk {
   /** Key type. Currently "RSA". */
@@ -83,21 +86,49 @@ export interface GoogleIdentityStsV1Jwk {
   /** Key ID. */
   kid?: string;
 }
+const GoogleIdentityStsV1Jwk = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GoogleIdentityStsV1Jwk>;
+
 export type GoogleIdentityStsV1JwkList = Array<GoogleIdentityStsV1Jwk>;
+const GoogleIdentityStsV1JwkList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GoogleIdentityStsV1JwkList>;
+
 /** Response message for GetJwks. */
 export interface GoogleIdentityStsV1Jwks {
   /** The JWKs for this OP. */
   keys?: GoogleIdentityStsV1JwkList;
 }
+const GoogleIdentityStsV1Jwks = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GoogleIdentityStsV1Jwks>;
+
 export interface GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest {
   /** Required. The name of the pool whose JWKs need to be retrieved. Format: 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example(s): 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog' */
   name: string;
 }
+const GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest>;
+
 export interface GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest {
   /** Required. The name of the pool whose OpenID provider configuration to retrieve. Format: 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example: 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog' */
   name: string;
 }
+const GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest =
+  /*@__PURE__*/ __L.at(
+    __c0,
+    5,
+  ) as any as S.Schema<GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StringList>;
+
 /** Response message for GetOpenIdProviderConfig. Message fields are defined in https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse. */
 export interface GoogleIdentityStsV1OpenIdProviderConfig {
   /** URL using the https scheme with no query or fragment components that the OP asserts as its issuer identifier. */
@@ -115,10 +146,21 @@ export interface GoogleIdentityStsV1OpenIdProviderConfig {
   /** URL pointing to a token endpoint under this issuer. Note: Currently this endpoint returns a 404. */
   token_endpoint?: string;
 }
+const GoogleIdentityStsV1OpenIdProviderConfig = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GoogleIdentityStsV1OpenIdProviderConfig>;
+
 export interface GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest {
   /** Required. The name of the pool whose OpenID provider configuration to retrieve. Format: 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example: 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog' */
   name: string;
 }
+const GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest =
+  /*@__PURE__*/ __L.at(
+    __c1,
+    0,
+  ) as any as S.Schema<GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest>;
+
 /** Request message for ExchangeToken. */
 export interface GoogleIdentityStsV1ExchangeTokenRequest {
   /** A set of features that Security Token Service supports, in addition to the standard OAuth 2.0 token exchange, formatted as a serialized JSON object of Options. The size of the parameter value must not exceed 4 * 1024 * 1024 characters (4 MB). */
@@ -136,10 +178,17 @@ export interface GoogleIdentityStsV1ExchangeTokenRequest {
   /** Required. An identifier for the type of requested security token. Can be `urn:ietf:params:oauth:token-type:access_token` or `urn:ietf:params:oauth:token-type:access_boundary_intermediary_token`. */
   requestedTokenType?: string;
 }
+const GoogleIdentityStsV1ExchangeTokenRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GoogleIdentityStsV1ExchangeTokenRequest>;
+
 export interface TokenV1Request {
   /** Request body */
   body?: GoogleIdentityStsV1ExchangeTokenRequest;
 }
+const TokenV1Request = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<TokenV1Request>;
+
 /** Response message for ExchangeToken. */
 export interface GoogleIdentityStsV1ExchangeTokenResponse {
   /** The access boundary session key. This key is used along with the access boundary intermediary token to generate Credential Access Boundary tokens at client side. This field is absent when the `requested_token_type` from the request is not `urn:ietf:params:oauth:token-type:access_boundary_intermediary_token`. */
@@ -153,6 +202,11 @@ export interface GoogleIdentityStsV1ExchangeTokenResponse {
   /** An OAuth 2.0 security token, issued by Google, in response to the token exchange request. Tokens can vary in size, depending in part on the size of mapped claims, up to a maximum of 12288 bytes (12 KB). Google reserves the right to change the token size and the maximum length at any time. */
   access_token?: string;
 }
+const GoogleIdentityStsV1ExchangeTokenResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GoogleIdentityStsV1ExchangeTokenResponse>;
+
 export type GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidError =
   | NotFound
   | Forbidden
@@ -164,8 +218,8 @@ export const getJwksOrganizationsLocationsWorkloadIdentityPoolsOpenid: API.Opera
   GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest>,
-  output: __S(3) as any as S.Schema<GoogleIdentityStsV1Jwks>,
+  input: GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest,
+  output: GoogleIdentityStsV1Jwks,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -182,8 +236,8 @@ export const getJwksProjectsLocationsWorkloadIdentityPoolsOpenid: API.OperationM
   GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest>,
-  output: __S(3) as any as S.Schema<GoogleIdentityStsV1Jwks>,
+  input: GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest,
+  output: GoogleIdentityStsV1Jwks,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -200,10 +254,8 @@ export const getOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsW
   GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    5,
-  ) as any as S.Schema<GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest>,
-  output: __S(7) as any as S.Schema<GoogleIdentityStsV1OpenIdProviderConfig>,
+  input: GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest,
+  output: GoogleIdentityStsV1OpenIdProviderConfig,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -220,10 +272,8 @@ export const getOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_k
   GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    8,
-  ) as any as S.Schema<GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest>,
-  output: __S(7) as any as S.Schema<GoogleIdentityStsV1OpenIdProviderConfig>,
+  input: GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest,
+  output: GoogleIdentityStsV1OpenIdProviderConfig,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -237,8 +287,8 @@ export const tokenV1: API.OperationMethod<
   TokenV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<TokenV1Request>,
-  output: __S(11) as any as S.Schema<GoogleIdentityStsV1ExchangeTokenResponse>,
+  input: TokenV1Request,
+  output: GoogleIdentityStsV1ExchangeTokenResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -273,11 +323,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "GoogleIdentityStsV1Jwk" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(GoogleIdentityStsV1Jwk);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(__S(2)),
+          keys: S.optional(GoogleIdentityStsV1JwkList),
         }),
       ).annotate({ identifier: "GoogleIdentityStsV1Jwks" });
     case 4:
@@ -316,9 +366,9 @@ function __c0(j: number): any {
         S.Struct({
           issuer: S.optional(S.String),
           jwks_uri: S.optional(S.String),
-          response_types_supported: S.optional(__S(6)),
-          subject_types_supported: S.optional(__S(6)),
-          id_token_signing_alg_values_supported: S.optional(__S(6)),
+          response_types_supported: S.optional(StringList),
+          subject_types_supported: S.optional(StringList),
+          id_token_signing_alg_values_supported: S.optional(StringList),
           authorization_endpoint: S.optional(S.String),
           token_endpoint: S.optional(S.String),
         }),
@@ -361,7 +411,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(9).pipe(T.HttpBody())),
+          body: S.optional(GoogleIdentityStsV1ExchangeTokenRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "POST", uri: "v1/token", baseUrl: "https://sts.googleapis.com/" }),
         ),
@@ -378,18 +428,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleIdentityStsV1ExchangeTokenResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

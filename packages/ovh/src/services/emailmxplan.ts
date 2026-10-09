@@ -7,8 +7,6 @@ import { UnknownOvhError } from "../errors.ts";
 import { OvhProtocol, type OvhOpError, type OvhOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { OvhOpError, OvhOpContext };
 
@@ -20,6 +18,11 @@ export interface CreateEmailMxplanAccountAliasRequest {
   /** Alias */
   alias: string;
 }
+const CreateEmailMxplanAccountAliasRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateEmailMxplanAccountAliasRequest>;
+
 /** function enumeration for task */
 export type EmailProTaskFunctionEnum =
   | "addAccount"
@@ -71,8 +74,12 @@ export type EmailProTaskFunctionEnum =
   | "unknown"
   | "unsuspendAccount"
   | "unsuspendService";
+const EmailProTaskFunctionEnum = S.String;
+
 /** Task status */
 export type EmailProTaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo";
+const EmailProTaskStatusEnum = S.String;
+
 /** Organization task details */
 export interface EmailProTask {
   /** Completion date */
@@ -86,6 +93,8 @@ export interface EmailProTask {
   /** Creation date */
   todoDate?: string;
 }
+const EmailProTask = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<EmailProTask>;
+
 export interface CreateEmailMxplanAccountChangePasswordRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -94,6 +103,11 @@ export interface CreateEmailMxplanAccountChangePasswordRequest {
   /** new password */
   password: string | Redacted.Redacted<string>;
 }
+const CreateEmailMxplanAccountChangePasswordRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateEmailMxplanAccountChangePasswordRequest>;
+
 export interface CreateEmailMxplanAccountDiagnosticRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -102,6 +116,11 @@ export interface CreateEmailMxplanAccountDiagnosticRequest {
   /** Account password */
   password: string | Redacted.Redacted<string>;
 }
+const CreateEmailMxplanAccountDiagnosticRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateEmailMxplanAccountDiagnosticRequest>;
+
 export interface CreateEmailMxplanAccountFullAccessRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -110,6 +129,11 @@ export interface CreateEmailMxplanAccountFullAccessRequest {
   /** User to give full access */
   allowedAccountId: number;
 }
+const CreateEmailMxplanAccountFullAccessRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateEmailMxplanAccountFullAccessRequest>;
+
 export interface CreateEmailMxplanDomainDisclaimerRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -120,6 +144,11 @@ export interface CreateEmailMxplanDomainDisclaimerRequest {
   /** Activate the disclaimer only for external emails */
   outsideOnly?: boolean;
 }
+const CreateEmailMxplanDomainDisclaimerRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateEmailMxplanDomainDisclaimerRequest>;
+
 export interface CreateEmailMxplanExternalContactRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -136,12 +165,22 @@ export interface CreateEmailMxplanExternalContactRequest {
   /** Contact last name */
   lastName?: string;
 }
+const CreateEmailMxplanExternalContactRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateEmailMxplanExternalContactRequest>;
+
 export interface DeleteEmailMxplanAccountRequest {
   /** The internal name of your mxplan organization */
   service: string;
   /** Default email for this mailbox */
   email: string;
 }
+const DeleteEmailMxplanAccountRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteEmailMxplanAccountRequest>;
+
 export interface DeleteEmailMxplanAccountAliasRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -150,6 +189,11 @@ export interface DeleteEmailMxplanAccountAliasRequest {
   /** Alias */
   alias: string;
 }
+const DeleteEmailMxplanAccountAliasRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteEmailMxplanAccountAliasRequest>;
+
 export interface DeleteEmailMxplanAccountFullAccessRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -158,6 +202,11 @@ export interface DeleteEmailMxplanAccountFullAccessRequest {
   /** Account id to give full access */
   allowedAccountId: number;
 }
+const DeleteEmailMxplanAccountFullAccessRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteEmailMxplanAccountFullAccessRequest>;
+
 export interface DeleteEmailMxplanAccountSendAsRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -166,6 +215,11 @@ export interface DeleteEmailMxplanAccountSendAsRequest {
   /** Account id to give send as */
   allowedAccountId: number;
 }
+const DeleteEmailMxplanAccountSendAsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteEmailMxplanAccountSendAsRequest>;
+
 export interface DeleteEmailMxplanAccountSendOnBehalfToRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -174,24 +228,49 @@ export interface DeleteEmailMxplanAccountSendOnBehalfToRequest {
   /** Account id to give send on behalf to */
   allowedAccountId: number;
 }
+const DeleteEmailMxplanAccountSendOnBehalfToRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DeleteEmailMxplanAccountSendOnBehalfToRequest>;
+
 export interface DeleteEmailMxplanDomainDisclaimerRequest {
   /** The internal name of your mxplan organization */
   service: string;
   /** Domain name */
   domainName: string;
 }
+const DeleteEmailMxplanDomainDisclaimerRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeleteEmailMxplanDomainDisclaimerRequest>;
+
 export interface DeleteEmailMxplanExternalContactRequest {
   /** The internal name of your mxplan organization */
   service: string;
   /** Contact email */
   externalEmailAddress: string;
 }
+const DeleteEmailMxplanExternalContactRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteEmailMxplanExternalContactRequest>;
+
 export interface GetEmailMxplanRequest {
   /** The internal name of your mxplan organization */
   service: string;
 }
+const GetEmailMxplanRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetEmailMxplanRequest>;
+
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
+const IamResourceMetadataTagsMap = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<IamResourceMetadataTagsMap>;
+
 /** IAM resource metadata embedded in services models */
 export interface IamResourceMetadata {
   /** Resource display name */
@@ -203,8 +282,12 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
+const IamResourceMetadata = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<IamResourceMetadata>;
+
 /** Service Offer name */
 export type EmailMxplanServiceOfferEnum = "MXPLAN";
+const EmailMxplanServiceOfferEnum = S.String;
+
 /** Spam and Antyvirus configuration */
 export interface EmailProSpamAndVirusConfiguration {
   /** Check DKIM of message */
@@ -222,6 +305,11 @@ export interface EmailProSpamAndVirusConfiguration {
   /** If message is a virus change its subject */
   tagVirus?: boolean;
 }
+const EmailProSpamAndVirusConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<EmailProSpamAndVirusConfiguration>;
+
 /** Service State */
 export type EmailProServiceStateEnum =
   | "creating"
@@ -231,6 +319,8 @@ export type EmailProServiceStateEnum =
   | "reopening"
   | "suspended"
   | "suspending";
+const EmailProServiceStateEnum = S.String;
+
 /** MXPlan service */
 export interface EmailMxplanServiceWithIAM {
   /** enable policy for strong and secure passwords */
@@ -274,18 +364,37 @@ export interface EmailMxplanServiceWithIAM {
   /** URL for web interface */
   webUrl?: string | null;
 }
+const EmailMxplanServiceWithIAM = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<EmailMxplanServiceWithIAM>;
+
 export interface GetEmailMxplanAccountRequest {
   /** The internal name of your mxplan organization */
   service: string;
   /** Default email for this mailbox */
   email: string;
 }
+const GetEmailMxplanAccountRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetEmailMxplanAccountRequest>;
+
 /** Mailing filter options availlable */
 export type EmailProMailingFilterEnum = "vaderetro";
+const EmailProMailingFilterEnum = S.String;
+
 /** Enable or disable anti-virus and anti-spam */
 export type EmailMxplanAccountMailingFilterList = Array<EmailProMailingFilterEnum>;
+const EmailMxplanAccountMailingFilterList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<EmailMxplanAccountMailingFilterList>;
+
 /** Renew period */
 export type EmailProRenewPeriodEnum = "monthly" | "yearly";
+const EmailProRenewPeriodEnum = S.String;
+
 /** Current object state */
 export type EmailProObjectStateEnum =
   | "creating"
@@ -295,6 +404,8 @@ export type EmailProObjectStateEnum =
   | "suspended"
   | "suspending"
   | "unknown";
+const EmailProObjectStateEnum = S.String;
+
 /** Mailbox */
 export interface EmailMxplanAccount {
   /** SAM account name */
@@ -354,6 +465,8 @@ export interface EmailMxplanAccount {
   /** Pending tasks for this account */
   taskPendingId?: number | null;
 }
+const EmailMxplanAccount = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<EmailMxplanAccount>;
+
 export interface GetEmailMxplanAccountAliasRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -362,6 +475,11 @@ export interface GetEmailMxplanAccountAliasRequest {
   /** Alias */
   alias: string;
 }
+const GetEmailMxplanAccountAliasRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetEmailMxplanAccountAliasRequest>;
+
 /** Aliases on this mailbox */
 export interface EmailMxplanAccountAlias {
   /** Alias */
@@ -371,12 +489,22 @@ export interface EmailMxplanAccountAlias {
   /** Pending task id */
   taskPendingId?: number;
 }
+const EmailMxplanAccountAlias = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<EmailMxplanAccountAlias>;
+
 export interface GetEmailMxplanAccountDiagnosticRequest {
   /** The internal name of your mxplan organization */
   service: string;
   /** Default email for this mailbox */
   email: string;
 }
+const GetEmailMxplanAccountDiagnosticRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetEmailMxplanAccountDiagnosticRequest>;
+
 /** Account Diagnosis */
 export interface EmailMxplanAccountDiagnosis {
   /** Determines if ingoing message has been received */
@@ -398,6 +526,11 @@ export interface EmailMxplanAccountDiagnosis {
   /** Last performed diagnostics date */
   lastCheck?: string;
 }
+const EmailMxplanAccountDiagnosis = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<EmailMxplanAccountDiagnosis>;
+
 export interface GetEmailMxplanAccountFullAccessRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -406,6 +539,11 @@ export interface GetEmailMxplanAccountFullAccessRequest {
   /** Account id to give full access */
   allowedAccountId: number;
 }
+const GetEmailMxplanAccountFullAccessRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetEmailMxplanAccountFullAccessRequest>;
+
 /** Users having full access on this mailbox */
 export interface EmailMxplanAccountFullAccess {
   /** Account id to give full access */
@@ -415,6 +553,11 @@ export interface EmailMxplanAccountFullAccess {
   /** Pending task id */
   taskPendingId?: number;
 }
+const EmailMxplanAccountFullAccess = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<EmailMxplanAccountFullAccess>;
+
 export interface GetEmailMxplanAccountSendAsRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -423,6 +566,11 @@ export interface GetEmailMxplanAccountSendAsRequest {
   /** Account id to give send as */
   allowedAccountId: number;
 }
+const GetEmailMxplanAccountSendAsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetEmailMxplanAccountSendAsRequest>;
+
 /** Users authorized to send mails from this mailbox */
 export interface EmailMxplanAccountSendAs {
   /** Account id to give send as */
@@ -432,6 +580,11 @@ export interface EmailMxplanAccountSendAs {
   /** Pending task id */
   taskPendingId?: number;
 }
+const EmailMxplanAccountSendAs = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<EmailMxplanAccountSendAs>;
+
 export interface GetEmailMxplanAccountSendOnBehalfToRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -440,6 +593,11 @@ export interface GetEmailMxplanAccountSendOnBehalfToRequest {
   /** Account id to give send on behalf to */
   allowedAccountId: number;
 }
+const GetEmailMxplanAccountSendOnBehalfToRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetEmailMxplanAccountSendOnBehalfToRequest>;
+
 /** Get users authorized to Send On Behalf To mails from this mailbox */
 export interface EmailMxplanAccountSendOnBehalfTo {
   /** Account id to give send on behalf to */
@@ -449,6 +607,9 @@ export interface EmailMxplanAccountSendOnBehalfTo {
   /** Pending task id */
   taskPendingId?: number;
 }
+const EmailMxplanAccountSendOnBehalfTo =
+  EmailMxplanAccountFullAccess as any as S.Schema<EmailMxplanAccountSendOnBehalfTo>;
+
 export interface GetEmailMxplanAccountTaskRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -457,22 +618,48 @@ export interface GetEmailMxplanAccountTaskRequest {
   /** Task id */
   id: number;
 }
+const GetEmailMxplanAccountTaskRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetEmailMxplanAccountTaskRequest>;
+
 export interface GetEmailMxplanDomainRequest {
   /** The internal name of your mxplan organization */
   service: string;
   /** Domain name */
   domainName: string;
 }
+const GetEmailMxplanDomainRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetEmailMxplanDomainRequest>;
+
 /** List of aliases for this domain */
 export type EmailMxplanDomainDomainAliasesList = Array<string>;
+const EmailMxplanDomainDomainAliasesList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<EmailMxplanDomainDomainAliasesList>;
+
 /** Expected MX record(s) on this domain */
 export type EmailMxplanDomainExpectedMXList = Array<string>;
+const EmailMxplanDomainExpectedMXList =
+  EmailMxplanDomainDomainAliasesList as any as S.Schema<EmailMxplanDomainExpectedMXList>;
+
 /** Domain MX record configured in DNS */
 export type EmailMxplanDomainMxRecordList = Array<string>;
+const EmailMxplanDomainMxRecordList =
+  EmailMxplanDomainDomainAliasesList as any as S.Schema<EmailMxplanDomainMxRecordList>;
+
 /** Domain SRV record configured in DNS */
 export type EmailMxplanDomainSrvRecordList = Array<string>;
+const EmailMxplanDomainSrvRecordList =
+  EmailMxplanDomainDomainAliasesList as any as S.Schema<EmailMxplanDomainSrvRecordList>;
+
 /** Domain type */
 export type EmailProDomainTypeEnum = "authoritative" | "nonAuthoritative";
+const EmailProDomainTypeEnum = S.String;
+
 /** Domain */
 export interface EmailMxplanDomain {
   /** Cname that will be checked to prove the domain ownership */
@@ -504,12 +691,19 @@ export interface EmailMxplanDomain {
   /** Domain type */
   type?: EmailProDomainTypeEnum;
 }
+const EmailMxplanDomain = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<EmailMxplanDomain>;
+
 export interface GetEmailMxplanDomainDisclaimerRequest {
   /** The internal name of your mxplan organization */
   service: string;
   /** Domain name */
   domainName: string;
 }
+const GetEmailMxplanDomainDisclaimerRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetEmailMxplanDomainDisclaimerRequest>;
+
 /** disclaimer */
 export interface EmailProDisclaimer {
   /** Signature, added at the bottom of your organization emails */
@@ -523,12 +717,19 @@ export interface EmailProDisclaimer {
   /** task pending id */
   taskPendingId?: number;
 }
+const EmailProDisclaimer = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<EmailProDisclaimer>;
+
 export interface GetEmailMxplanExternalContactRequest {
   /** The internal name of your mxplan organization */
   service: string;
   /** Contact email */
   externalEmailAddress: string;
 }
+const GetEmailMxplanExternalContactRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetEmailMxplanExternalContactRequest>;
+
 /** External contact for this mxplan service */
 export interface EmailMxplanExternalContact {
   /** Creation date */
@@ -552,12 +753,24 @@ export interface EmailMxplanExternalContact {
   /** Task pending id */
   taskPendingId?: number;
 }
+const EmailMxplanExternalContact = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<EmailMxplanExternalContact>;
+
 export interface GetEmailMxplanServerRequest {
   /** The internal name of your mxplan organization */
   service: string;
 }
+const GetEmailMxplanServerRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<GetEmailMxplanServerRequest>;
+
 /** Server State */
 export type EmailProServerStateEnum = "configurationPending" | "notConfigured" | "ok";
+const EmailProServerStateEnum = S.String;
+
 /** Server */
 export interface EmailMxplanServer {
   /** Current disk usage in MB */
@@ -583,24 +796,59 @@ export interface EmailMxplanServer {
   /** Server version */
   version?: number | null;
 }
+const EmailMxplanServer = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<EmailMxplanServer>;
+
 export interface GetEmailMxplanTaskRequest {
   /** The internal name of your mxplan organization */
   service: string;
   /** Task id */
   id: number;
 }
+const GetEmailMxplanTaskRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetEmailMxplanTaskRequest>;
+
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
+const IamResourceTagFilterInput = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<IamResourceTagFilterInput>;
+
 export type ListEmailMxplanRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
+const ListEmailMxplanRequestIamTagsValueList = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ListEmailMxplanRequestIamTagsValueList>;
+
 export type ListEmailMxplanRequestIamTagsMap = {
   [key: string]: ListEmailMxplanRequestIamTagsValueList | undefined;
 };
+const ListEmailMxplanRequestIamTagsMap = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListEmailMxplanRequestIamTagsMap>;
+
 export interface ListEmailMxplanRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListEmailMxplanRequestIamTagsMap;
 }
+const ListEmailMxplanRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListEmailMxplanRequest>;
+
 export type ListEmailMxplanResponseBodyList = Array<string>;
+const ListEmailMxplanResponseBodyList =
+  EmailMxplanDomainDomainAliasesList as any as S.Schema<ListEmailMxplanResponseBodyList>;
+
 export type ListEmailMxplanResponse = ListEmailMxplanResponseBodyList;
+const ListEmailMxplanResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ListEmailMxplanResponse>;
+
 export interface ListEmailMxplanAccountRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -609,77 +857,163 @@ export interface ListEmailMxplanAccountRequest {
   /** Filter the value of primaryEmailAddress property (like) */
   primaryEmailAddress?: string;
 }
+const ListEmailMxplanAccountRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListEmailMxplanAccountRequest>;
+
 export type ListEmailMxplanAccountResponseBodyList = Array<string>;
+const ListEmailMxplanAccountResponseBodyList =
+  EmailMxplanDomainDomainAliasesList as any as S.Schema<ListEmailMxplanAccountResponseBodyList>;
+
 export type ListEmailMxplanAccountResponse = ListEmailMxplanAccountResponseBodyList;
+const ListEmailMxplanAccountResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListEmailMxplanAccountResponse>;
+
 export interface ListEmailMxplanAccountAliasRequest {
   /** The internal name of your mxplan organization */
   service: string;
   /** Default email for this mailbox */
   email: string;
 }
+const ListEmailMxplanAccountAliasRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ListEmailMxplanAccountAliasRequest>;
+
 export type ListEmailMxplanAccountAliasResponseBodyList = Array<string>;
 export type ListEmailMxplanAccountAliasResponse = ListEmailMxplanAccountAliasResponseBodyList;
+const ListEmailMxplanAccountAliasResponse =
+  ListEmailMxplanAccountResponse as any as S.Schema<ListEmailMxplanAccountAliasResponse>;
+
 export interface ListEmailMxplanAccountCapabilitiesRequest {
   /** The internal name of your mxplan organization */
   service: string;
   /** Default email for this mailbox */
   email: string;
 }
+const ListEmailMxplanAccountCapabilitiesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListEmailMxplanAccountCapabilitiesRequest>;
+
 /** List of allowed quotas (no constraint if null) */
 export type EmailMxplanAccountCapabilitiesQuotasList = Array<number>;
+const EmailMxplanAccountCapabilitiesQuotasList = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<EmailMxplanAccountCapabilitiesQuotasList>;
+
 /** Account capabilities */
 export interface EmailMxplanAccountCapabilities {
   /** List of allowed quotas (no constraint if null) */
   quotas?: EmailMxplanAccountCapabilitiesQuotasList | null;
 }
+const EmailMxplanAccountCapabilities = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<EmailMxplanAccountCapabilities>;
+
 export interface ListEmailMxplanAccountFullAccessRequest {
   /** The internal name of your mxplan organization */
   service: string;
   /** Default email for this mailbox */
   email: string;
 }
+const ListEmailMxplanAccountFullAccessRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ListEmailMxplanAccountFullAccessRequest>;
+
 export type ListEmailMxplanAccountFullAccessResponseBodyList = Array<number>;
+const ListEmailMxplanAccountFullAccessResponseBodyList =
+  EmailMxplanAccountCapabilitiesQuotasList as any as S.Schema<ListEmailMxplanAccountFullAccessResponseBodyList>;
+
 export type ListEmailMxplanAccountFullAccessResponse =
   ListEmailMxplanAccountFullAccessResponseBodyList;
+const ListEmailMxplanAccountFullAccessResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListEmailMxplanAccountFullAccessResponse>;
+
 export interface ListEmailMxplanAccountSendAsRequest {
   /** The internal name of your mxplan organization */
   service: string;
   /** Default email for this mailbox */
   email: string;
 }
+const ListEmailMxplanAccountSendAsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListEmailMxplanAccountSendAsRequest>;
+
 export type ListEmailMxplanAccountSendAsResponseBodyList = Array<number>;
 export type ListEmailMxplanAccountSendAsResponse = ListEmailMxplanAccountSendAsResponseBodyList;
+const ListEmailMxplanAccountSendAsResponse =
+  ListEmailMxplanAccountFullAccessResponse as any as S.Schema<ListEmailMxplanAccountSendAsResponse>;
+
 export interface ListEmailMxplanAccountSendOnBehalfToRequest {
   /** The internal name of your mxplan organization */
   service: string;
   /** Default email for this mailbox */
   email: string;
 }
+const ListEmailMxplanAccountSendOnBehalfToRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ListEmailMxplanAccountSendOnBehalfToRequest>;
+
 export type ListEmailMxplanAccountSendOnBehalfToResponseBodyList = Array<number>;
 export type ListEmailMxplanAccountSendOnBehalfToResponse =
   ListEmailMxplanAccountSendOnBehalfToResponseBodyList;
+const ListEmailMxplanAccountSendOnBehalfToResponse =
+  ListEmailMxplanAccountFullAccessResponse as any as S.Schema<ListEmailMxplanAccountSendOnBehalfToResponse>;
+
 export interface ListEmailMxplanAccountTaskRequest {
   /** The internal name of your mxplan organization */
   service: string;
   /** Default email for this mailbox */
   email: string;
 }
+const ListEmailMxplanAccountTaskRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ListEmailMxplanAccountTaskRequest>;
+
 export type ListEmailMxplanAccountTaskResponseBodyList = Array<number>;
 export type ListEmailMxplanAccountTaskResponse = ListEmailMxplanAccountTaskResponseBodyList;
+const ListEmailMxplanAccountTaskResponse =
+  ListEmailMxplanAccountFullAccessResponse as any as S.Schema<ListEmailMxplanAccountTaskResponse>;
+
 export interface ListEmailMxplanDomainRequest {
   /** The internal name of your mxplan organization */
   service: string;
   /** Filter the value of state property (=) */
   state?: EmailProObjectStateEnum | (string & {});
 }
+const ListEmailMxplanDomainRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListEmailMxplanDomainRequest>;
+
 export type ListEmailMxplanDomainResponseBodyList = Array<string>;
 export type ListEmailMxplanDomainResponse = ListEmailMxplanDomainResponseBodyList;
+const ListEmailMxplanDomainResponse =
+  ListEmailMxplanAccountResponse as any as S.Schema<ListEmailMxplanDomainResponse>;
+
 export interface ListEmailMxplanDomainDisclaimerAttributeRequest {
   /** The internal name of your mxplan organization */
   service: string;
   /** Domain name */
   domainName: string;
 }
+const ListEmailMxplanDomainDisclaimerAttributeRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListEmailMxplanDomainDisclaimerAttributeRequest>;
+
 /** Disclaimer attributes list */
 export type EmailProDisclaimerAttributeEnum =
   | "City"
@@ -709,8 +1043,16 @@ export type EmailProDisclaimerAttributeEnum =
   | "ZipCode";
 export type ListEmailMxplanDomainDisclaimerAttributeResponseBodyList =
   Array<EmailProDisclaimerAttributeEnum>;
+const ListEmailMxplanDomainDisclaimerAttributeResponseBodyList =
+  EmailMxplanAccountMailingFilterList as any as S.Schema<ListEmailMxplanDomainDisclaimerAttributeResponseBodyList>;
+
 export type ListEmailMxplanDomainDisclaimerAttributeResponse =
   ListEmailMxplanDomainDisclaimerAttributeResponseBodyList;
+const ListEmailMxplanDomainDisclaimerAttributeResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ListEmailMxplanDomainDisclaimerAttributeResponse>;
+
 export interface ListEmailMxplanExternalContactRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -725,14 +1067,30 @@ export interface ListEmailMxplanExternalContactRequest {
   /** Filter the value of lastName property (like) */
   lastName?: string;
 }
+const ListEmailMxplanExternalContactRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListEmailMxplanExternalContactRequest>;
+
 export type ListEmailMxplanExternalContactResponseBodyList = Array<string>;
 export type ListEmailMxplanExternalContactResponse = ListEmailMxplanExternalContactResponseBodyList;
+const ListEmailMxplanExternalContactResponse =
+  ListEmailMxplanAccountResponse as any as S.Schema<ListEmailMxplanExternalContactResponse>;
+
 export interface ListEmailMxplanTaskRequest {
   /** The internal name of your mxplan organization */
   service: string;
 }
+const ListEmailMxplanTaskRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListEmailMxplanTaskRequest>;
+
 export type ListEmailMxplanTaskResponseBodyList = Array<number>;
 export type ListEmailMxplanTaskResponse = ListEmailMxplanTaskResponseBodyList;
+const ListEmailMxplanTaskResponse =
+  ListEmailMxplanAccountFullAccessResponse as any as S.Schema<ListEmailMxplanTaskResponse>;
+
 export interface PutEmailMxplanRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -759,11 +1117,21 @@ export interface PutEmailMxplanRequest {
   /** Spam and Antivirus configuration */
   spamAndVirusConfiguration?: EmailProSpamAndVirusConfiguration;
 }
+const PutEmailMxplanRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<PutEmailMxplanRequest>;
+
 export interface PutEmailMxplanResponse {}
+const PutEmailMxplanResponse = IamResourceTagFilterInput as any as S.Schema<PutEmailMxplanResponse>;
+
 /** Enable or disable anti-virus and anti-spam */
 export type PutEmailMxplanAccountRequestMailingFilterList = Array<
   EmailProMailingFilterEnum | (string & {})
 >;
+const PutEmailMxplanAccountRequestMailingFilterList =
+  EmailMxplanAccountMailingFilterList as any as S.Schema<PutEmailMxplanAccountRequestMailingFilterList>;
+
 export interface PutEmailMxplanAccountRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -794,7 +1162,15 @@ export interface PutEmailMxplanAccountRequest {
   /** Spam and Antivirus configuration */
   spamAndVirusConfiguration?: EmailProSpamAndVirusConfiguration;
 }
+const PutEmailMxplanAccountRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<PutEmailMxplanAccountRequest>;
+
 export interface PutEmailMxplanAccountResponse {}
+const PutEmailMxplanAccountResponse =
+  IamResourceTagFilterInput as any as S.Schema<PutEmailMxplanAccountResponse>;
+
 export interface PutEmailMxplanDomainRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -805,7 +1181,15 @@ export interface PutEmailMxplanDomainRequest {
   /** Domain type */
   type?: EmailProDomainTypeEnum | (string & {});
 }
+const PutEmailMxplanDomainRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<PutEmailMxplanDomainRequest>;
+
 export interface PutEmailMxplanDomainResponse {}
+const PutEmailMxplanDomainResponse =
+  IamResourceTagFilterInput as any as S.Schema<PutEmailMxplanDomainResponse>;
+
 export interface PutEmailMxplanDomainDisclaimerRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -816,7 +1200,17 @@ export interface PutEmailMxplanDomainDisclaimerRequest {
   /** Activate the disclaimer only for external emails */
   outsideOnly?: boolean;
 }
+const PutEmailMxplanDomainDisclaimerRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<PutEmailMxplanDomainDisclaimerRequest>;
+
 export interface PutEmailMxplanDomainDisclaimerResponse {}
+const PutEmailMxplanDomainDisclaimerResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<PutEmailMxplanDomainDisclaimerResponse>;
+
 export interface PutEmailMxplanExternalContactRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -833,7 +1227,15 @@ export interface PutEmailMxplanExternalContactRequest {
   /** Contact last name */
   lastName?: string | null;
 }
+const PutEmailMxplanExternalContactRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<PutEmailMxplanExternalContactRequest>;
+
 export interface PutEmailMxplanExternalContactResponse {}
+const PutEmailMxplanExternalContactResponse =
+  PutEmailMxplanDomainDisclaimerResponse as any as S.Schema<PutEmailMxplanExternalContactResponse>;
+
 export interface SendEmailMxplanAccountAsRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -842,6 +1244,11 @@ export interface SendEmailMxplanAccountAsRequest {
   /** Account id to allow to send mails from this mailbox */
   allowAccountId: number;
 }
+const SendEmailMxplanAccountAsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<SendEmailMxplanAccountAsRequest>;
+
 export interface SendEmailMxplanAccountOnBehalfToRequest {
   /** The internal name of your mxplan organization */
   service: string;
@@ -850,11 +1257,24 @@ export interface SendEmailMxplanAccountOnBehalfToRequest {
   /** Account id to allow to send On Behalf To mails from this mailbox */
   allowAccountId: number;
 }
+const SendEmailMxplanAccountOnBehalfToRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<SendEmailMxplanAccountOnBehalfToRequest>;
+
 export interface UpdateEmailMxplanFlagsOnAllAccountsRequest {
   /** The internal name of your mxplan organization */
   service: string;
 }
+const UpdateEmailMxplanFlagsOnAllAccountsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<UpdateEmailMxplanFlagsOnAllAccountsRequest>;
+
 export interface UpdateEmailMxplanFlagsOnAllAccountsResponse {}
+const UpdateEmailMxplanFlagsOnAllAccountsResponse =
+  PutEmailMxplanDomainDisclaimerResponse as any as S.Schema<UpdateEmailMxplanFlagsOnAllAccountsResponse>;
+
 export type CreateEmailMxplanAccountAliasError = OvhOpError;
 /** Create new alias */
 export const createEmailMxplanAccountAlias: API.OperationMethod<
@@ -863,8 +1283,8 @@ export const createEmailMxplanAccountAlias: API.OperationMethod<
   CreateEmailMxplanAccountAliasError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateEmailMxplanAccountAliasRequest>,
-  output: __S(1) as any as S.Schema<EmailProTask>,
+  input: CreateEmailMxplanAccountAliasRequest,
+  output: EmailProTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -878,8 +1298,8 @@ export const createEmailMxplanAccountChangePassword: API.OperationMethod<
   CreateEmailMxplanAccountChangePasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateEmailMxplanAccountChangePasswordRequest>,
-  output: __S(1) as any as S.Schema<EmailProTask>,
+  input: CreateEmailMxplanAccountChangePasswordRequest,
+  output: EmailProTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -893,8 +1313,8 @@ export const createEmailMxplanAccountDiagnostic: API.OperationMethod<
   CreateEmailMxplanAccountDiagnosticError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateEmailMxplanAccountDiagnosticRequest>,
-  output: __S(1) as any as S.Schema<EmailProTask>,
+  input: CreateEmailMxplanAccountDiagnosticRequest,
+  output: EmailProTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -908,8 +1328,8 @@ export const createEmailMxplanAccountFullAccess: API.OperationMethod<
   CreateEmailMxplanAccountFullAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateEmailMxplanAccountFullAccessRequest>,
-  output: __S(1) as any as S.Schema<EmailProTask>,
+  input: CreateEmailMxplanAccountFullAccessRequest,
+  output: EmailProTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -923,8 +1343,8 @@ export const createEmailMxplanDomainDisclaimer: API.OperationMethod<
   CreateEmailMxplanDomainDisclaimerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreateEmailMxplanDomainDisclaimerRequest>,
-  output: __S(1) as any as S.Schema<EmailProTask>,
+  input: CreateEmailMxplanDomainDisclaimerRequest,
+  output: EmailProTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -938,8 +1358,8 @@ export const createEmailMxplanExternalContact: API.OperationMethod<
   CreateEmailMxplanExternalContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateEmailMxplanExternalContactRequest>,
-  output: __S(1) as any as S.Schema<EmailProTask>,
+  input: CreateEmailMxplanExternalContactRequest,
+  output: EmailProTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -953,8 +1373,8 @@ export const deleteEmailMxplanAccount: API.OperationMethod<
   DeleteEmailMxplanAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DeleteEmailMxplanAccountRequest>,
-  output: __S(1) as any as S.Schema<EmailProTask>,
+  input: DeleteEmailMxplanAccountRequest,
+  output: EmailProTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -968,8 +1388,8 @@ export const deleteEmailMxplanAccountAlias: API.OperationMethod<
   DeleteEmailMxplanAccountAliasError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<DeleteEmailMxplanAccountAliasRequest>,
-  output: __S(1) as any as S.Schema<EmailProTask>,
+  input: DeleteEmailMxplanAccountAliasRequest,
+  output: EmailProTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -983,8 +1403,8 @@ export const deleteEmailMxplanAccountFullAccess: API.OperationMethod<
   DeleteEmailMxplanAccountFullAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeleteEmailMxplanAccountFullAccessRequest>,
-  output: __S(1) as any as S.Schema<EmailProTask>,
+  input: DeleteEmailMxplanAccountFullAccessRequest,
+  output: EmailProTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -998,8 +1418,8 @@ export const deleteEmailMxplanAccountSendAs: API.OperationMethod<
   DeleteEmailMxplanAccountSendAsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeleteEmailMxplanAccountSendAsRequest>,
-  output: __S(1) as any as S.Schema<EmailProTask>,
+  input: DeleteEmailMxplanAccountSendAsRequest,
+  output: EmailProTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1013,8 +1433,8 @@ export const deleteEmailMxplanAccountSendOnBehalfTo: API.OperationMethod<
   DeleteEmailMxplanAccountSendOnBehalfToError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<DeleteEmailMxplanAccountSendOnBehalfToRequest>,
-  output: __S(1) as any as S.Schema<EmailProTask>,
+  input: DeleteEmailMxplanAccountSendOnBehalfToRequest,
+  output: EmailProTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1028,8 +1448,8 @@ export const deleteEmailMxplanDomainDisclaimer: API.OperationMethod<
   DeleteEmailMxplanDomainDisclaimerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DeleteEmailMxplanDomainDisclaimerRequest>,
-  output: __S(1) as any as S.Schema<EmailProTask>,
+  input: DeleteEmailMxplanDomainDisclaimerRequest,
+  output: EmailProTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1043,8 +1463,8 @@ export const deleteEmailMxplanExternalContact: API.OperationMethod<
   DeleteEmailMxplanExternalContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<DeleteEmailMxplanExternalContactRequest>,
-  output: __S(1) as any as S.Schema<EmailProTask>,
+  input: DeleteEmailMxplanExternalContactRequest,
+  output: EmailProTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1058,8 +1478,8 @@ export const getEmailMxplan: API.OperationMethod<
   GetEmailMxplanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetEmailMxplanRequest>,
-  output: __S(18) as any as S.Schema<EmailMxplanServiceWithIAM>,
+  input: GetEmailMxplanRequest,
+  output: EmailMxplanServiceWithIAM,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1073,8 +1493,8 @@ export const getEmailMxplanAccount: API.OperationMethod<
   GetEmailMxplanAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetEmailMxplanAccountRequest>,
-  output: __S(21) as any as S.Schema<EmailMxplanAccount>,
+  input: GetEmailMxplanAccountRequest,
+  output: EmailMxplanAccount,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1088,8 +1508,8 @@ export const getEmailMxplanAccountAlias: API.OperationMethod<
   GetEmailMxplanAccountAliasError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<GetEmailMxplanAccountAliasRequest>,
-  output: __S(23) as any as S.Schema<EmailMxplanAccountAlias>,
+  input: GetEmailMxplanAccountAliasRequest,
+  output: EmailMxplanAccountAlias,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1103,8 +1523,8 @@ export const getEmailMxplanAccountDiagnostic: API.OperationMethod<
   GetEmailMxplanAccountDiagnosticError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetEmailMxplanAccountDiagnosticRequest>,
-  output: __S(25) as any as S.Schema<EmailMxplanAccountDiagnosis>,
+  input: GetEmailMxplanAccountDiagnosticRequest,
+  output: EmailMxplanAccountDiagnosis,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1118,8 +1538,8 @@ export const getEmailMxplanAccountFullAccess: API.OperationMethod<
   GetEmailMxplanAccountFullAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<GetEmailMxplanAccountFullAccessRequest>,
-  output: __S(27) as any as S.Schema<EmailMxplanAccountFullAccess>,
+  input: GetEmailMxplanAccountFullAccessRequest,
+  output: EmailMxplanAccountFullAccess,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1133,8 +1553,8 @@ export const getEmailMxplanAccountSendAs: API.OperationMethod<
   GetEmailMxplanAccountSendAsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<GetEmailMxplanAccountSendAsRequest>,
-  output: __S(29) as any as S.Schema<EmailMxplanAccountSendAs>,
+  input: GetEmailMxplanAccountSendAsRequest,
+  output: EmailMxplanAccountSendAs,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1148,8 +1568,8 @@ export const getEmailMxplanAccountSendOnBehalfTo: API.OperationMethod<
   GetEmailMxplanAccountSendOnBehalfToError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<GetEmailMxplanAccountSendOnBehalfToRequest>,
-  output: __S(27) as any as S.Schema<EmailMxplanAccountSendOnBehalfTo>,
+  input: GetEmailMxplanAccountSendOnBehalfToRequest,
+  output: EmailMxplanAccountSendOnBehalfTo,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1163,8 +1583,8 @@ export const getEmailMxplanAccountTask: API.OperationMethod<
   GetEmailMxplanAccountTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GetEmailMxplanAccountTaskRequest>,
-  output: __S(1) as any as S.Schema<EmailProTask>,
+  input: GetEmailMxplanAccountTaskRequest,
+  output: EmailProTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1178,8 +1598,8 @@ export const getEmailMxplanDomain: API.OperationMethod<
   GetEmailMxplanDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<GetEmailMxplanDomainRequest>,
-  output: __S(34) as any as S.Schema<EmailMxplanDomain>,
+  input: GetEmailMxplanDomainRequest,
+  output: EmailMxplanDomain,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1193,8 +1613,8 @@ export const getEmailMxplanDomainDisclaimer: API.OperationMethod<
   GetEmailMxplanDomainDisclaimerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<GetEmailMxplanDomainDisclaimerRequest>,
-  output: __S(36) as any as S.Schema<EmailProDisclaimer>,
+  input: GetEmailMxplanDomainDisclaimerRequest,
+  output: EmailProDisclaimer,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1208,8 +1628,8 @@ export const getEmailMxplanExternalContact: API.OperationMethod<
   GetEmailMxplanExternalContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<GetEmailMxplanExternalContactRequest>,
-  output: __S(38) as any as S.Schema<EmailMxplanExternalContact>,
+  input: GetEmailMxplanExternalContactRequest,
+  output: EmailMxplanExternalContact,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1223,8 +1643,8 @@ export const getEmailMxplanServer: API.OperationMethod<
   GetEmailMxplanServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<GetEmailMxplanServerRequest>,
-  output: __S(40) as any as S.Schema<EmailMxplanServer>,
+  input: GetEmailMxplanServerRequest,
+  output: EmailMxplanServer,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1238,8 +1658,8 @@ export const getEmailMxplanTask: API.OperationMethod<
   GetEmailMxplanTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<GetEmailMxplanTaskRequest>,
-  output: __S(1) as any as S.Schema<EmailProTask>,
+  input: GetEmailMxplanTaskRequest,
+  output: EmailProTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1253,8 +1673,8 @@ export const listEmailMxplan: API.OperationMethod<
   ListEmailMxplanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<ListEmailMxplanRequest>,
-  output: __S(46) as any as S.Schema<ListEmailMxplanResponse>,
+  input: ListEmailMxplanRequest,
+  output: ListEmailMxplanResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1268,8 +1688,8 @@ export const listEmailMxplanAccount: API.OperationMethod<
   ListEmailMxplanAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<ListEmailMxplanAccountRequest>,
-  output: __S(48) as any as S.Schema<ListEmailMxplanAccountResponse>,
+  input: ListEmailMxplanAccountRequest,
+  output: ListEmailMxplanAccountResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1283,8 +1703,8 @@ export const listEmailMxplanAccountAlias: API.OperationMethod<
   ListEmailMxplanAccountAliasError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<ListEmailMxplanAccountAliasRequest>,
-  output: __S(48) as any as S.Schema<ListEmailMxplanAccountAliasResponse>,
+  input: ListEmailMxplanAccountAliasRequest,
+  output: ListEmailMxplanAccountAliasResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1298,8 +1718,8 @@ export const listEmailMxplanAccountCapabilities: API.OperationMethod<
   ListEmailMxplanAccountCapabilitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<ListEmailMxplanAccountCapabilitiesRequest>,
-  output: __S(52) as any as S.Schema<EmailMxplanAccountCapabilities>,
+  input: ListEmailMxplanAccountCapabilitiesRequest,
+  output: EmailMxplanAccountCapabilities,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1313,8 +1733,8 @@ export const listEmailMxplanAccountFullAccess: API.OperationMethod<
   ListEmailMxplanAccountFullAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<ListEmailMxplanAccountFullAccessRequest>,
-  output: __S(54) as any as S.Schema<ListEmailMxplanAccountFullAccessResponse>,
+  input: ListEmailMxplanAccountFullAccessRequest,
+  output: ListEmailMxplanAccountFullAccessResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1328,8 +1748,8 @@ export const listEmailMxplanAccountSendAs: API.OperationMethod<
   ListEmailMxplanAccountSendAsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<ListEmailMxplanAccountSendAsRequest>,
-  output: __S(54) as any as S.Schema<ListEmailMxplanAccountSendAsResponse>,
+  input: ListEmailMxplanAccountSendAsRequest,
+  output: ListEmailMxplanAccountSendAsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1343,8 +1763,8 @@ export const listEmailMxplanAccountSendOnBehalfTo: API.OperationMethod<
   ListEmailMxplanAccountSendOnBehalfToError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<ListEmailMxplanAccountSendOnBehalfToRequest>,
-  output: __S(54) as any as S.Schema<ListEmailMxplanAccountSendOnBehalfToResponse>,
+  input: ListEmailMxplanAccountSendOnBehalfToRequest,
+  output: ListEmailMxplanAccountSendOnBehalfToResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1358,8 +1778,8 @@ export const listEmailMxplanAccountTask: API.OperationMethod<
   ListEmailMxplanAccountTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<ListEmailMxplanAccountTaskRequest>,
-  output: __S(54) as any as S.Schema<ListEmailMxplanAccountTaskResponse>,
+  input: ListEmailMxplanAccountTaskRequest,
+  output: ListEmailMxplanAccountTaskResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1373,8 +1793,8 @@ export const listEmailMxplanDomain: API.OperationMethod<
   ListEmailMxplanDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<ListEmailMxplanDomainRequest>,
-  output: __S(48) as any as S.Schema<ListEmailMxplanDomainResponse>,
+  input: ListEmailMxplanDomainRequest,
+  output: ListEmailMxplanDomainResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1388,8 +1808,8 @@ export const listEmailMxplanDomainDisclaimerAttribute: API.OperationMethod<
   ListEmailMxplanDomainDisclaimerAttributeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<ListEmailMxplanDomainDisclaimerAttributeRequest>,
-  output: __S(60) as any as S.Schema<ListEmailMxplanDomainDisclaimerAttributeResponse>,
+  input: ListEmailMxplanDomainDisclaimerAttributeRequest,
+  output: ListEmailMxplanDomainDisclaimerAttributeResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1403,8 +1823,8 @@ export const listEmailMxplanExternalContact: API.OperationMethod<
   ListEmailMxplanExternalContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<ListEmailMxplanExternalContactRequest>,
-  output: __S(48) as any as S.Schema<ListEmailMxplanExternalContactResponse>,
+  input: ListEmailMxplanExternalContactRequest,
+  output: ListEmailMxplanExternalContactResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1418,8 +1838,8 @@ export const listEmailMxplanTask: API.OperationMethod<
   ListEmailMxplanTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<ListEmailMxplanTaskRequest>,
-  output: __S(54) as any as S.Schema<ListEmailMxplanTaskResponse>,
+  input: ListEmailMxplanTaskRequest,
+  output: ListEmailMxplanTaskResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1433,8 +1853,8 @@ export const putEmailMxplan: API.OperationMethod<
   PutEmailMxplanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<PutEmailMxplanRequest>,
-  output: __S(42) as any as S.Schema<PutEmailMxplanResponse>,
+  input: PutEmailMxplanRequest,
+  output: PutEmailMxplanResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1448,8 +1868,8 @@ export const putEmailMxplanAccount: API.OperationMethod<
   PutEmailMxplanAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<PutEmailMxplanAccountRequest>,
-  output: __S(42) as any as S.Schema<PutEmailMxplanAccountResponse>,
+  input: PutEmailMxplanAccountRequest,
+  output: PutEmailMxplanAccountResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1463,8 +1883,8 @@ export const putEmailMxplanDomain: API.OperationMethod<
   PutEmailMxplanDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<PutEmailMxplanDomainRequest>,
-  output: __S(42) as any as S.Schema<PutEmailMxplanDomainResponse>,
+  input: PutEmailMxplanDomainRequest,
+  output: PutEmailMxplanDomainResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1478,8 +1898,8 @@ export const putEmailMxplanDomainDisclaimer: API.OperationMethod<
   PutEmailMxplanDomainDisclaimerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<PutEmailMxplanDomainDisclaimerRequest>,
-  output: __S(67) as any as S.Schema<PutEmailMxplanDomainDisclaimerResponse>,
+  input: PutEmailMxplanDomainDisclaimerRequest,
+  output: PutEmailMxplanDomainDisclaimerResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1493,8 +1913,8 @@ export const putEmailMxplanExternalContact: API.OperationMethod<
   PutEmailMxplanExternalContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<PutEmailMxplanExternalContactRequest>,
-  output: __S(67) as any as S.Schema<PutEmailMxplanExternalContactResponse>,
+  input: PutEmailMxplanExternalContactRequest,
+  output: PutEmailMxplanExternalContactResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1508,8 +1928,8 @@ export const sendEmailMxplanAccountAs: API.OperationMethod<
   SendEmailMxplanAccountAsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<SendEmailMxplanAccountAsRequest>,
-  output: __S(1) as any as S.Schema<EmailProTask>,
+  input: SendEmailMxplanAccountAsRequest,
+  output: EmailProTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1523,8 +1943,8 @@ export const sendEmailMxplanAccountOnBehalfTo: API.OperationMethod<
   SendEmailMxplanAccountOnBehalfToError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<SendEmailMxplanAccountOnBehalfToRequest>,
-  output: __S(1) as any as S.Schema<EmailProTask>,
+  input: SendEmailMxplanAccountOnBehalfToRequest,
+  output: EmailProTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1538,8 +1958,8 @@ export const updateEmailMxplanFlagsOnAllAccounts: API.OperationMethod<
   UpdateEmailMxplanFlagsOnAllAccountsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<UpdateEmailMxplanFlagsOnAllAccountsRequest>,
-  output: __S(67) as any as S.Schema<UpdateEmailMxplanFlagsOnAllAccountsResponse>,
+  input: UpdateEmailMxplanFlagsOnAllAccountsRequest,
+  output: UpdateEmailMxplanFlagsOnAllAccountsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1568,9 +1988,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           finishDate: S.optional(S.NullOr(S.String)),
-          function: S.optional(S.String),
+          function: S.optional(EmailProTaskFunctionEnum),
           id: S.optional(S.Number),
-          status: S.optional(S.String),
+          status: S.optional(EmailProTaskStatusEnum),
           todoDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailProTask" });
@@ -1781,7 +2201,7 @@ function __c2(j: number): any {
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(15))),
+          tags: S.optional(S.NullOr(IamResourceMetadataTagsMap)),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
@@ -1806,7 +2226,7 @@ function __c2(j: number): any {
           displayName: S.optional(S.NullOr(S.String)),
           domain: S.optional(S.String),
           hostname: S.optional(S.NullOr(S.String)),
-          iam: S.optional(S.NullOr(__S(16))),
+          iam: S.optional(S.NullOr(IamResourceMetadata)),
           isZimbra: S.optional(S.Boolean),
           lastUpdateDate: S.optional(S.NullOr(S.String)),
           lockoutDuration: S.optional(S.Number),
@@ -1817,9 +2237,9 @@ function __c2(j: number): any {
           maxSendSize: S.optional(S.Number),
           minPasswordAge: S.optional(S.NullOr(S.Number)),
           minPasswordLength: S.optional(S.NullOr(S.Number)),
-          offer: S.optional(S.String),
-          spamAndVirusConfiguration: S.optional(__S(17)),
-          state: S.optional(S.String),
+          offer: S.optional(EmailMxplanServiceOfferEnum),
+          spamAndVirusConfiguration: S.optional(EmailProSpamAndVirusConfiguration),
+          state: S.optional(EmailProServiceStateEnum),
           taskPendingId: S.optional(S.Number),
           webUrl: S.optional(S.NullOr(S.String)),
         }),
@@ -1838,7 +2258,7 @@ function __c2(j: number): any {
         identifier: "GetEmailMxplanAccountRequest",
       });
     case 4:
-      return S.Array(S.String);
+      return S.Array(EmailProMailingFilterEnum);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1860,15 +2280,15 @@ function __c2(j: number): any {
           lastName: S.optional(S.NullOr(S.String)),
           lastUpdateDate: S.optional(S.NullOr(S.String)),
           login: S.optional(S.String),
-          mailingFilter: S.optional(S.NullOr(__S(20))),
+          mailingFilter: S.optional(S.NullOr(EmailMxplanAccountMailingFilterList)),
           passwordLastUpdate: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           primaryEmailAddress: S.optional(S.String),
           quota: S.optional(S.Number),
-          renewPeriod: S.optional(S.NullOr(S.String)),
-          spamAndVirusConfiguration: S.optional(__S(17)),
+          renewPeriod: S.optional(S.NullOr(EmailProRenewPeriodEnum)),
+          spamAndVirusConfiguration: S.optional(EmailProSpamAndVirusConfiguration),
           spamDetected: S.optional(S.Boolean),
           spamTicketNumber: S.optional(S.NullOr(S.Number)),
-          state: S.optional(S.String),
+          state: S.optional(EmailProObjectStateEnum),
           taskPendingId: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "EmailMxplanAccount" });
@@ -2034,19 +2454,19 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           cnameToCheck: S.optional(S.NullOr(S.String)),
-          domainAliases: S.optional(__S(33)),
+          domainAliases: S.optional(EmailMxplanDomainDomainAliasesList),
           domainValidated: S.optional(S.Boolean),
-          expectedMX: S.optional(__S(33)),
+          expectedMX: S.optional(EmailMxplanDomainExpectedMXList),
           isAliasDomain: S.optional(S.Boolean),
           mxIsValid: S.optional(S.Boolean),
-          mxRecord: S.optional(__S(33)),
+          mxRecord: S.optional(EmailMxplanDomainMxRecordList),
           mxRelay: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
           srvIsValid: S.optional(S.Boolean),
-          srvRecord: S.optional(__S(33)),
-          state: S.optional(S.String),
+          srvRecord: S.optional(EmailMxplanDomainSrvRecordList),
+          state: S.optional(EmailProObjectStateEnum),
           taskPendingId: S.optional(S.Number),
-          type: S.optional(S.String),
+          type: S.optional(EmailProDomainTypeEnum),
         }),
       ).annotate({ identifier: "EmailMxplanDomain" });
     case 3:
@@ -2100,7 +2520,7 @@ function __c4(j: number): any {
           id: S.optional(S.Number),
           initials: S.optional(S.NullOr(S.String)),
           lastName: S.optional(S.NullOr(S.String)),
-          state: S.optional(S.String),
+          state: S.optional(EmailProObjectStateEnum),
           taskPendingId: S.optional(S.Number),
         }),
       ).annotate({
@@ -2129,7 +2549,7 @@ function __c5(j: number): any {
           isAaaaValid: S.optional(S.Boolean),
           isPtrV6Valid: S.optional(S.Boolean),
           isPtrValid: S.optional(S.Boolean),
-          state: S.optional(S.String),
+          state: S.optional(EmailProServerStateEnum),
           taskPendingId: S.optional(S.Number),
           version: S.optional(S.NullOr(S.Number)),
         }),
@@ -2148,17 +2568,17 @@ function __c5(j: number): any {
         identifier: "IamResourceTagFilterInput",
       });
     case 3:
-      return S.Array(__S(42));
+      return S.Array(IamResourceTagFilterInput);
     case 4:
-      return S.Record(S.String, __S(43));
+      return S.Record(S.String, ListEmailMxplanRequestIamTagsValueList);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(__S(44).pipe(T.Query())),
+          iamTags: S.optional(ListEmailMxplanRequestIamTagsMap.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/email/mxplan", code: 200 })),
       ).annotate({ identifier: "ListEmailMxplanRequest" });
     case 6:
-      return S.suspend(() => __S(33).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListEmailMxplanResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListEmailMxplanResponse",
       });
     case 7:
@@ -2176,7 +2596,9 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(33).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListEmailMxplanAccountResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListEmailMxplanAccountResponse",
       });
     case 1:
@@ -2214,7 +2636,7 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          quotas: S.optional(S.NullOr(__S(51))),
+          quotas: S.optional(S.NullOr(EmailMxplanAccountCapabilitiesQuotasList)),
         }),
       ).annotate({
         identifier: "EmailMxplanAccountCapabilities",
@@ -2235,7 +2657,9 @@ function __c6(j: number): any {
         identifier: "ListEmailMxplanAccountFullAccessRequest",
       });
     case 6:
-      return S.suspend(() => __S(51).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListEmailMxplanAccountFullAccessResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListEmailMxplanAccountFullAccessResponse",
       });
     case 7:
@@ -2287,7 +2711,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
-          state: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(EmailProObjectStateEnum.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/email/mxplan/{service}/domain", code: 200 })),
       ).annotate({
         identifier: "ListEmailMxplanDomainRequest",
@@ -2308,7 +2732,9 @@ function __c7(j: number): any {
         identifier: "ListEmailMxplanDomainDisclaimerAttributeRequest",
       });
     case 4:
-      return S.suspend(() => __S(20).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListEmailMxplanDomainDisclaimerAttributeResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListEmailMxplanDomainDisclaimerAttributeResponse",
       });
     case 5:
@@ -2348,7 +2774,7 @@ function __c7(j: number): any {
           maxSendSize: S.optional(S.Number),
           minPasswordAge: S.optional(S.NullOr(S.Number)),
           minPasswordLength: S.optional(S.NullOr(S.Number)),
-          spamAndVirusConfiguration: S.optional(__S(17)),
+          spamAndVirusConfiguration: S.optional(EmailProSpamAndVirusConfiguration),
         }).pipe(T.Http({ method: "PUT", uri: "/email/mxplan/{service}", code: 200 })),
       ).annotate({ identifier: "PutEmailMxplanRequest" });
   }
@@ -2368,10 +2794,10 @@ function __c8(j: number): any {
           initial: S.optional(S.NullOr(S.String)),
           lastName: S.optional(S.NullOr(S.String)),
           login: S.optional(S.String),
-          mailingFilter: S.optional(S.NullOr(__S(20))),
+          mailingFilter: S.optional(S.NullOr(PutEmailMxplanAccountRequestMailingFilterList)),
           quota: S.optional(S.Number),
-          renewPeriod: S.optional(S.NullOr(S.String)),
-          spamAndVirusConfiguration: S.optional(__S(17)),
+          renewPeriod: S.optional(S.NullOr(EmailProRenewPeriodEnum)),
+          spamAndVirusConfiguration: S.optional(EmailProSpamAndVirusConfiguration),
         }).pipe(
           T.Http({ method: "PUT", uri: "/email/mxplan/{service}/account/{email}", code: 200 }),
         ),
@@ -2384,7 +2810,7 @@ function __c8(j: number): any {
           service: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
           mxRelay: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
+          type: S.optional(EmailProDomainTypeEnum),
         }).pipe(
           T.Http({ method: "PUT", uri: "/email/mxplan/{service}/domain/{domainName}", code: 200 }),
         ),
@@ -2478,32 +2904,5 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateEmailMxplanFlagsOnAllAccountsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
   }
 }

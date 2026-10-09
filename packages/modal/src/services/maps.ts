@@ -6,8 +6,6 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
@@ -19,6 +17,8 @@ export interface MapAwaitRequest {
   /** Used for waypoints. */
   timeout?: number;
 }
+const MapAwaitRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<MapAwaitRequest>;
+
 /** Used for both tasks and function outputs */
 export type GenericResultGenericStatus =
   | "GENERIC_STATUS_UNSPECIFIED"
@@ -30,6 +30,8 @@ export type GenericResultGenericStatus =
   | "GENERIC_STATUS_INTERNAL_FAILURE"
   | "GENERIC_STATUS_IDLE_TIMEOUT"
   | "GENERIC_STATUS_MEMORY_MANAGER_EVICTION";
+const GenericResultGenericStatus = S.String;
+
 /** sub-type for generic types like lists */
 export interface GenericResult {
   status?: GenericResultGenericStatus;
@@ -50,6 +52,8 @@ export interface GenericResult {
   /** Blob ID for large data. */
   propagationReason?: string;
 }
+const GenericResult = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<GenericResult>;
+
 /** Which data format a binary message is encoded with. */
 export type DataFormat =
   | "DATA_FORMAT_UNSPECIFIED"
@@ -57,6 +61,8 @@ export type DataFormat =
   | "DATA_FORMAT_ASGI"
   | "DATA_FORMAT_GENERATOR_DONE"
   | "DATA_FORMAT_CBOR";
+const DataFormat = S.String;
+
 /** How long to sleep before requesting another input. */
 export interface FunctionGetOutputsItem {
   result?: GenericResult;
@@ -70,21 +76,47 @@ export interface FunctionGetOutputsItem {
   retryCount?: number;
   fcTraceTag?: string;
 }
+const FunctionGetOutputsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<FunctionGetOutputsItem>;
+
 export type FunctionGetOutputsItemList = Array<FunctionGetOutputsItem>;
+const FunctionGetOutputsItemList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<FunctionGetOutputsItemList>;
+
 export interface MapAwaitResponse {
   outputs?: FunctionGetOutputsItemList;
   lastEntryId?: string;
 }
+const MapAwaitResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<MapAwaitResponse>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StringList>;
+
 export interface MapCheckInputsRequest {
   lastEntryId?: string;
   timeout?: number;
   attemptTokens?: StringList;
 }
+const MapCheckInputsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<MapCheckInputsRequest>;
+
 export type BooleanList = Array<boolean>;
+const BooleanList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<BooleanList>;
+
 export interface MapCheckInputsResponse {
   lost?: BooleanList;
 }
+const MapCheckInputsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<MapCheckInputsResponse>;
+
 export interface FunctionInput {
   /** serialized (args, kwargs). */
   args?: string;
@@ -94,14 +126,22 @@ export interface FunctionInput {
   /** For args_oneof. */
   methodName?: string;
 }
+const FunctionInput = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<FunctionInput>;
+
 export type BlobUploadResultOutcome = "OUTCOME_UNSPECIFIED" | "OUTCOME_SUCCESS" | "OUTCOME_FAILURE";
+const BlobUploadResultOutcome = S.String;
+
 export interface BlobUploadResult {
   blobId?: string;
   /** The blob id (from BlobCreateResponse) that this upload attempt targeted. */
   outcome?: BlobUploadResultOutcome | (string & {});
   throughputBytesS?: string;
 }
+const BlobUploadResult = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<BlobUploadResult>;
+
 export type BlobUploadResultList = Array<BlobUploadResult>;
+const BlobUploadResultList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<BlobUploadResultList>;
+
 export interface FunctionPutInputsItem {
   idx?: number;
   input?: FunctionInput;
@@ -110,11 +150,26 @@ export interface FunctionPutInputsItem {
   r2ThroughputBytesS?: string;
   blobUploadResults?: BlobUploadResultList;
 }
+const FunctionPutInputsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<FunctionPutInputsItem>;
+
 export interface MapStartOrContinueItem {
   input?: FunctionPutInputsItem;
   attemptToken?: string;
 }
+const MapStartOrContinueItem = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<MapStartOrContinueItem>;
+
 export type MapStartOrContinueItemList = Array<MapStartOrContinueItem>;
+const MapStartOrContinueItemList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<MapStartOrContinueItemList>;
+
 export interface MapStartOrContinueRequest {
   functionId?: string;
   parentInputId?: string;
@@ -124,6 +179,11 @@ export interface MapStartOrContinueRequest {
   items?: MapStartOrContinueItemList;
   proxied?: boolean;
 }
+const MapStartOrContinueRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<MapStartOrContinueRequest>;
+
 export interface FunctionRetryPolicy {
   backoffCoefficient?: number;
   initialDelayMs?: number;
@@ -131,6 +191,8 @@ export interface FunctionRetryPolicy {
   /** NOTE: two-byte field number not used for special reason. copy-paste error. Ref: PR #2542 */
   retries?: number;
 }
+const FunctionRetryPolicy = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<FunctionRetryPolicy>;
+
 export interface MapStartOrContinueResponse {
   /** function_id and function_call_id are not necessary if map_token is provided. All 3 will be sent until it is safe to only send map_token. */
   mapToken?: string;
@@ -140,6 +202,11 @@ export interface MapStartOrContinueResponse {
   attemptTokens?: StringList;
   retryPolicy?: FunctionRetryPolicy;
 }
+const MapStartOrContinueResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<MapStartOrContinueResponse>;
+
 export type MapAwaitError = ModalOpError;
 /** Input Plane Map */
 export const mapAwait: API.OperationMethod<
@@ -148,8 +215,8 @@ export const mapAwait: API.OperationMethod<
   MapAwaitError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<MapAwaitRequest>,
-  output: __S(4) as any as S.Schema<MapAwaitResponse>,
+  input: MapAwaitRequest,
+  output: MapAwaitResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -162,8 +229,8 @@ export const mapCheckInputs: API.OperationMethod<
   MapCheckInputsError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<MapCheckInputsRequest>,
-  output: __S(8) as any as S.Schema<MapCheckInputsResponse>,
+  input: MapCheckInputsRequest,
+  output: MapCheckInputsResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -176,8 +243,8 @@ export const mapStartOrContinue: API.OperationMethod<
   MapStartOrContinueError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<MapStartOrContinueRequest>,
-  output: __S(17) as any as S.Schema<MapStartOrContinueResponse>,
+  input: MapStartOrContinueRequest,
+  output: MapStartOrContinueResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -199,7 +266,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(GenericResultGenericStatus),
           exception: S.optional(S.String),
           exitcode: S.optional(S.Number),
           traceback: S.optional(S.String),
@@ -213,10 +280,10 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(__S(1)),
+          result: S.optional(GenericResult),
           idx: S.optional(S.Number),
           inputId: S.optional(S.String),
-          dataFormat: S.optional(S.String),
+          dataFormat: S.optional(DataFormat),
           taskId: S.optional(S.String),
           inputStartedAt: S.optional(S.Number),
           outputCreatedAt: S.optional(S.Number),
@@ -225,11 +292,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "FunctionGetOutputsItem" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(FunctionGetOutputsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          outputs: S.optional(__S(3)),
+          outputs: S.optional(FunctionGetOutputsItemList),
           lastEntryId: S.optional(S.String),
         }),
       ).annotate({ identifier: "MapAwaitResponse" });
@@ -240,7 +307,7 @@ function __c0(j: number): any {
         S.Struct({
           lastEntryId: S.optional(S.String),
           timeout: S.optional(S.Number),
-          attemptTokens: S.optional(__S(5)),
+          attemptTokens: S.optional(StringList),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/MapCheckInputs", code: 200 }),
         ),
@@ -254,7 +321,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          lost: S.optional(__S(7)),
+          lost: S.optional(BooleanList),
         }),
       ).annotate({ identifier: "MapCheckInputsResponse" });
     case 1:
@@ -263,7 +330,7 @@ function __c1(j: number): any {
           args: S.optional(S.String),
           argsBlobId: S.optional(S.String),
           finalInput: S.optional(S.Boolean),
-          dataFormat: S.optional(S.String),
+          dataFormat: S.optional(DataFormat),
           methodName: S.optional(S.String),
         }),
       ).annotate({ identifier: "FunctionInput" });
@@ -271,31 +338,31 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           blobId: S.optional(S.String),
-          outcome: S.optional(S.String),
+          outcome: S.optional(BlobUploadResultOutcome),
           throughputBytesS: S.optional(S.String),
         }),
       ).annotate({ identifier: "BlobUploadResult" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(BlobUploadResult);
     case 4:
       return S.suspend(() =>
         S.Struct({
           idx: S.optional(S.Number),
-          input: S.optional(__S(9)),
+          input: S.optional(FunctionInput),
           r2Failed: S.optional(S.Boolean),
           r2ThroughputBytesS: S.optional(S.String),
-          blobUploadResults: S.optional(__S(11)),
+          blobUploadResults: S.optional(BlobUploadResultList),
         }),
       ).annotate({ identifier: "FunctionPutInputsItem" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          input: S.optional(__S(12)),
+          input: S.optional(FunctionPutInputsItem),
           attemptToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "MapStartOrContinueItem" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(MapStartOrContinueItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -303,7 +370,7 @@ function __c1(j: number): any {
           parentInputId: S.optional(S.String),
           functionCallId: S.optional(S.String),
           mapToken: S.optional(S.String),
-          items: S.optional(__S(14)),
+          items: S.optional(MapStartOrContinueItemList),
           proxied: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -335,26 +402,11 @@ function __c2(j: number): any {
           functionId: S.optional(S.String),
           functionCallId: S.optional(S.String),
           maxInputsOutstanding: S.optional(S.Number),
-          attemptTokens: S.optional(__S(5)),
-          retryPolicy: S.optional(__S(16)),
+          attemptTokens: S.optional(StringList),
+          retryPolicy: S.optional(FunctionRetryPolicy),
         }),
       ).annotate({
         identifier: "MapStartOrContinueResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

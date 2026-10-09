@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Signin", serviceShapeName: "Signin" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "signin" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2023-01-01");
@@ -295,7 +293,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
 
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()("AccessDeniedException", {
-    error: /*@__PURE__*/ S.suspend(() => S.String).annotate({
+    error: /*@__PURE__*/ S.suspend(() => OAuth2ErrorCode).annotate({
       identifier: "OAuth2ErrorCode",
     }),
     message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
@@ -304,7 +302,7 @@ export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(
     "ConflictException",
     {
-      error: /*@__PURE__*/ S.suspend(() => S.String).annotate({
+      error: /*@__PURE__*/ S.suspend(() => OAuth2ErrorCode).annotate({
         identifier: "OAuth2ErrorCode",
       }),
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
@@ -315,7 +313,7 @@ export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
     {
-      error: /*@__PURE__*/ S.suspend(() => S.String).annotate({
+      error: /*@__PURE__*/ S.suspend(() => OAuth2ErrorCode).annotate({
         identifier: "OAuth2ErrorCode",
       }),
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
@@ -326,7 +324,7 @@ export class ResourceNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ResourceNotFoundException>()(
     "ResourceNotFoundException",
     {
-      error: /*@__PURE__*/ S.suspend(() => S.String).annotate({
+      error: /*@__PURE__*/ S.suspend(() => OAuth2ErrorCode).annotate({
         identifier: "OAuth2ErrorCode",
       }),
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
@@ -337,7 +335,7 @@ export class ServiceQuotaExceededException
   extends /*@__PURE__*/ S.TaggedError<ServiceQuotaExceededException>()(
     "ServiceQuotaExceededException",
     {
-      error: /*@__PURE__*/ S.suspend(() => S.String).annotate({
+      error: /*@__PURE__*/ S.suspend(() => OAuth2ErrorCode).annotate({
         identifier: "OAuth2ErrorCode",
       }),
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
@@ -348,7 +346,7 @@ export class TooManyRequestsError
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsError>()(
     "TooManyRequestsError",
     {
-      error: /*@__PURE__*/ S.suspend(() => S.String).annotate({
+      error: /*@__PURE__*/ S.suspend(() => OAuth2ErrorCode).annotate({
         identifier: "OAuth2ErrorCode",
       }),
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
@@ -359,7 +357,7 @@ export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
     {
-      error: /*@__PURE__*/ S.suspend(() => S.String).annotate({
+      error: /*@__PURE__*/ S.suspend(() => OAuth2ErrorCode).annotate({
         identifier: "OAuth2ErrorCode",
       }),
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
@@ -380,14 +378,23 @@ export interface CreateOAuth2TokenRequestBody {
   codeVerifier?: string;
   refreshToken?: string | redacted.Redacted<string>;
 }
+const CreateOAuth2TokenRequestBody = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateOAuth2TokenRequestBody>;
 export interface CreateOAuth2TokenRequest {
   tokenInput: CreateOAuth2TokenRequestBody;
 }
+const CreateOAuth2TokenRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateOAuth2TokenRequest>;
 export interface AccessToken {
   accessKeyId: string;
   secretAccessKey: string;
   sessionToken: string;
 }
+const AccessToken = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AccessToken>;
 export type TokenType = string;
 export type ExpiresIn = number;
 export type IdToken = string;
@@ -398,14 +405,26 @@ export interface CreateOAuth2TokenResponseBody {
   refreshToken: string | redacted.Redacted<string>;
   idToken?: string;
 }
+const CreateOAuth2TokenResponseBody = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateOAuth2TokenResponseBody>;
 export interface CreateOAuth2TokenResponse {
   tokenOutput: CreateOAuth2TokenResponseBody;
 }
+const CreateOAuth2TokenResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateOAuth2TokenResponse>;
 export type ClientCredentialsGrantType = string;
 export interface CreateOAuth2TokenWithIAMRequest {
   grantType: string;
   resource: string;
 }
+const CreateOAuth2TokenWithIAMRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateOAuth2TokenWithIAMRequest>;
 export type OAuthAccessToken = string | redacted.Redacted<string>;
 export type BearerTokenType = string;
 export type TokenExpiresIn = number;
@@ -414,37 +433,72 @@ export interface CreateOAuth2TokenWithIAMResponse {
   tokenType: string;
   expiresIn: number;
 }
+const CreateOAuth2TokenWithIAMResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateOAuth2TokenWithIAMResponse>;
 export type TargetId = string;
 export interface DeleteConsoleAuthorizationConfigurationInput {
   targetId?: string;
 }
+const DeleteConsoleAuthorizationConfigurationInput = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteConsoleAuthorizationConfigurationInput>;
 export interface DeleteConsoleAuthorizationConfigurationOutput {
   targetId: string;
   scope: string;
   consoleAuthorizationEnabled: boolean;
 }
+const DeleteConsoleAuthorizationConfigurationOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteConsoleAuthorizationConfigurationOutput>;
 export type StatementId = string;
 export type ClientToken = string;
 export interface DeleteResourcePermissionStatementInput {
   statementId: string;
   clientToken?: string;
 }
+const DeleteResourcePermissionStatementInput = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteResourcePermissionStatementInput>;
 export interface DeleteResourcePermissionStatementOutput {}
+const DeleteResourcePermissionStatementOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteResourcePermissionStatementOutput>;
 export interface GetConsoleAuthorizationConfigurationInput {
   targetId?: string;
 }
+const GetConsoleAuthorizationConfigurationInput = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetConsoleAuthorizationConfigurationInput>;
 export interface GetConsoleAuthorizationConfigurationOutput {
   targetId: string;
   scope: string;
   consoleAuthorizationEnabled: boolean;
 }
+const GetConsoleAuthorizationConfigurationOutput =
+  DeleteConsoleAuthorizationConfigurationOutput as any as S.Schema<GetConsoleAuthorizationConfigurationOutput>;
 export interface GetResourcePolicyInput {}
+const GetResourcePolicyInput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetResourcePolicyInput>;
 export type Principal = { [key: string]: string | undefined };
+const Principal = /*@__PURE__*/ __L.at(__c1, 5);
 export type PolicyActions = string[];
+const PolicyActions = /*@__PURE__*/ __L.at(__c1, 6);
 export type ConditionType = string;
 export type ConditionValues = string[];
+const ConditionValues = PolicyActions as any as S.Schema<ConditionValues>;
 export type Condition = { [key: string]: string[] | undefined };
+const Condition = /*@__PURE__*/ __L.at(__c1, 7);
 export type ConditionBlock = { [key: string]: { [key: string]: string[] | undefined } | undefined };
+const ConditionBlock = /*@__PURE__*/ __L.at(__c2, 0);
 export interface PolicyStatement {
   effect?: string;
   principal?: { [key: string]: string | undefined };
@@ -452,20 +506,34 @@ export interface PolicyStatement {
   resource?: string;
   condition?: { [key: string]: { [key: string]: string[] | undefined } | undefined };
 }
+const PolicyStatement = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<PolicyStatement>;
 export type PolicyStatements = PolicyStatement[];
+const PolicyStatements = /*@__PURE__*/ __L.at(__c2, 2);
 export interface SigninResourceBasedPolicy {
   version?: string;
   statement?: PolicyStatement[];
 }
+const SigninResourceBasedPolicy = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<SigninResourceBasedPolicy>;
 export interface GetResourcePolicyOutput {
   signinResourceBasedPolicy: SigninResourceBasedPolicy;
 }
+const GetResourcePolicyOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetResourcePolicyOutput>;
 export type IntrospectionToken = string | redacted.Redacted<string>;
 export type TokenTypeHint = string;
 export interface IntrospectOAuth2TokenWithIAMRequest {
   token: string | redacted.Redacted<string>;
   tokenTypeHint?: string;
 }
+const IntrospectOAuth2TokenWithIAMRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<IntrospectOAuth2TokenWithIAMRequest>;
 export type IntrospectedTokenType = string;
 export type AccountId = string;
 export interface IntrospectOAuth2TokenWithIAMResponse {
@@ -484,29 +552,52 @@ export interface IntrospectOAuth2TokenWithIAMResponse {
   signinSession?: string;
   resource?: string;
 }
+const IntrospectOAuth2TokenWithIAMResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<IntrospectOAuth2TokenWithIAMResponse>;
 export type ConsolePermissionMaxResults = number;
 export type NextToken = string;
 export interface ListResourcePermissionStatementsInput {
   maxResults?: number;
   nextToken?: string;
 }
+const ListResourcePermissionStatementsInput = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListResourcePermissionStatementsInput>;
 export interface PermissionStatementSummary {
   sid: string;
   condition?: { [key: string]: { [key: string]: string[] | undefined } | undefined };
 }
+const PermissionStatementSummary = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<PermissionStatementSummary>;
 export type PermissionStatementSummaries = PermissionStatementSummary[];
+const PermissionStatementSummaries = /*@__PURE__*/ __L.at(__c3, 1);
 export interface ListResourcePermissionStatementsOutput {
   permissionStatements: PermissionStatementSummary[];
   nextToken?: string;
 }
+const ListResourcePermissionStatementsOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListResourcePermissionStatementsOutput>;
 export interface PutConsoleAuthorizationConfigurationInput {
   targetId?: string;
 }
+const PutConsoleAuthorizationConfigurationInput = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<PutConsoleAuthorizationConfigurationInput>;
 export interface PutConsoleAuthorizationConfigurationOutput {
   targetId: string;
   scope: string;
   consoleAuthorizationEnabled: boolean;
 }
+const PutConsoleAuthorizationConfigurationOutput =
+  DeleteConsoleAuthorizationConfigurationOutput as any as S.Schema<PutConsoleAuthorizationConfigurationOutput>;
 export type SourceVpc = string;
 export type SourceVpce = string;
 export type VpcSourceIp = string;
@@ -523,14 +614,28 @@ export interface PutResourcePermissionStatementInput {
   excludedPrincipal?: string;
   clientToken?: string;
 }
+const PutResourcePermissionStatementInput = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<PutResourcePermissionStatementInput>;
 export interface PutResourcePermissionStatementOutput {
   statementId: string;
 }
+const PutResourcePermissionStatementOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<PutResourcePermissionStatementOutput>;
 export type RevocationToken = string | redacted.Redacted<string>;
 export interface RevokeOAuth2TokenWithIAMRequest {
   token: string | redacted.Redacted<string>;
 }
+const RevokeOAuth2TokenWithIAMRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<RevokeOAuth2TokenWithIAMRequest>;
 export interface RevokeOAuth2TokenWithIAMResponse {}
+const RevokeOAuth2TokenWithIAMResponse =
+  DeleteResourcePermissionStatementOutput as any as S.Schema<RevokeOAuth2TokenWithIAMResponse>;
 export type OAuth2ErrorCode =
   | "TOKEN_EXPIRED"
   | "USER_CREDENTIALS_CHANGED"
@@ -542,6 +647,8 @@ export type OAuth2ErrorCode =
   | "CONFLICT"
   | "SERVICE_QUOTA_EXCEEDED"
   | (string & {});
+const OAuth2ErrorCode = S.String;
+
 export type CreateOAuth2TokenError =
   | AccessDeniedException
   | InternalServerException
@@ -584,8 +691,8 @@ export const createOAuth2Token: API.OperationMethod<
   CreateOAuth2TokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateOAuth2TokenRequest>,
-  output: __S(4) as any as S.Schema<CreateOAuth2TokenResponse>,
+  input: CreateOAuth2TokenRequest,
+  output: CreateOAuth2TokenResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -613,8 +720,8 @@ export const createOAuth2TokenWithIAM: API.OperationMethod<
   CreateOAuth2TokenWithIAMError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreateOAuth2TokenWithIAMRequest>,
-  output: __S(6) as any as S.Schema<CreateOAuth2TokenWithIAMResponse>,
+  input: CreateOAuth2TokenWithIAMRequest,
+  output: CreateOAuth2TokenWithIAMResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -642,8 +749,8 @@ export const deleteConsoleAuthorizationConfiguration: API.OperationMethod<
   DeleteConsoleAuthorizationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DeleteConsoleAuthorizationConfigurationInput>,
-  output: __S(8) as any as S.Schema<DeleteConsoleAuthorizationConfigurationOutput>,
+  input: DeleteConsoleAuthorizationConfigurationInput,
+  output: DeleteConsoleAuthorizationConfigurationOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -672,8 +779,8 @@ export const deleteResourcePermissionStatement: API.OperationMethod<
   DeleteResourcePermissionStatementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeleteResourcePermissionStatementInput>,
-  output: __S(10) as any as S.Schema<DeleteResourcePermissionStatementOutput>,
+  input: DeleteResourcePermissionStatementInput,
+  output: DeleteResourcePermissionStatementOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -702,8 +809,8 @@ export const getConsoleAuthorizationConfiguration: API.OperationMethod<
   GetConsoleAuthorizationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetConsoleAuthorizationConfigurationInput>,
-  output: __S(8) as any as S.Schema<GetConsoleAuthorizationConfigurationOutput>,
+  input: GetConsoleAuthorizationConfigurationInput,
+  output: GetConsoleAuthorizationConfigurationOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -731,8 +838,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<GetResourcePolicyInput>,
-  output: __S(20) as any as S.Schema<GetResourcePolicyOutput>,
+  input: GetResourcePolicyInput,
+  output: GetResourcePolicyOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -769,8 +876,8 @@ export const introspectOAuth2TokenWithIAM: API.OperationMethod<
   IntrospectOAuth2TokenWithIAMError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<IntrospectOAuth2TokenWithIAMRequest>,
-  output: __S(22) as any as S.Schema<IntrospectOAuth2TokenWithIAMResponse>,
+  input: IntrospectOAuth2TokenWithIAMRequest,
+  output: IntrospectOAuth2TokenWithIAMResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -799,8 +906,8 @@ export const listResourcePermissionStatements: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PermissionStatementSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(23) as any as S.Schema<ListResourcePermissionStatementsInput>,
-  output: __S(26) as any as S.Schema<ListResourcePermissionStatementsOutput>,
+  input: ListResourcePermissionStatementsInput,
+  output: ListResourcePermissionStatementsOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -836,8 +943,8 @@ export const putConsoleAuthorizationConfiguration: API.OperationMethod<
   PutConsoleAuthorizationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<PutConsoleAuthorizationConfigurationInput>,
-  output: __S(8) as any as S.Schema<PutConsoleAuthorizationConfigurationOutput>,
+  input: PutConsoleAuthorizationConfigurationInput,
+  output: PutConsoleAuthorizationConfigurationOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -868,8 +975,8 @@ export const putResourcePermissionStatement: API.OperationMethod<
   PutResourcePermissionStatementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<PutResourcePermissionStatementInput>,
-  output: __S(29) as any as S.Schema<PutResourcePermissionStatementOutput>,
+  input: PutResourcePermissionStatementInput,
+  output: PutResourcePermissionStatementOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -904,8 +1011,8 @@ export const revokeOAuth2TokenWithIAM: API.OperationMethod<
   RevokeOAuth2TokenWithIAMError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<RevokeOAuth2TokenWithIAMRequest>,
-  output: __S(10) as any as S.Schema<RevokeOAuth2TokenWithIAMResponse>,
+  input: RevokeOAuth2TokenWithIAMRequest,
+  output: RevokeOAuth2TokenWithIAMResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -936,7 +1043,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          tokenInput: __S(0).pipe(T.HttpPayload()).annotate({
+          tokenInput: CreateOAuth2TokenRequestBody.pipe(T.HttpPayload()).annotate({
             identifier: "CreateOAuth2TokenRequestBody",
           }),
         }).pipe(
@@ -958,7 +1065,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          accessToken: __S(2),
+          accessToken: AccessToken,
           tokenType: S.String,
           expiresIn: S.Number,
           refreshToken: SensitiveString,
@@ -970,7 +1077,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          tokenOutput: __S(3).pipe(T.HttpPayload()).annotate({
+          tokenOutput: CreateOAuth2TokenResponseBody.pipe(T.HttpPayload()).annotate({
             identifier: "CreateOAuth2TokenResponseBody",
           }),
         }),
@@ -1091,21 +1198,21 @@ function __c1(j: number): any {
     case 6:
       return S.Array(S.String);
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(14).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ ConditionValues.pipe(S.optional));
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ __S(15).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ Condition.pipe(S.optional));
     case 1:
       return S.suspend(() =>
         S.Struct({
           effect: S.optional(S.String),
-          principal: S.optional(__S(13)),
-          action: S.optional(__S(14)),
+          principal: S.optional(Principal),
+          action: S.optional(PolicyActions),
           resource: S.optional(S.String),
-          condition: S.optional(__S(16)),
+          condition: S.optional(ConditionBlock),
         }).pipe(
           S.encodeKeys({
             effect: "Effect",
@@ -1117,19 +1224,19 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "PolicyStatement" });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(PolicyStatement);
     case 3:
       return S.suspend(() =>
-        S.Struct({ version: S.optional(S.String), statement: S.optional(__S(18)) }).pipe(
+        S.Struct({ version: S.optional(S.String), statement: S.optional(PolicyStatements) }).pipe(
           S.encodeKeys({ version: "Version", statement: "Statement" }),
         ),
       ).annotate({
         identifier: "SigninResourceBasedPolicy",
       });
     case 4:
-      return S.suspend(() => S.Struct({ signinResourceBasedPolicy: __S(19) })).annotate({
-        identifier: "GetResourcePolicyOutput",
-      });
+      return S.suspend(() =>
+        S.Struct({ signinResourceBasedPolicy: SigninResourceBasedPolicy }),
+      ).annotate({ identifier: "GetResourcePolicyOutput" });
     case 5:
       return S.suspend(() =>
         S.Struct({ token: SensitiveString, tokenTypeHint: S.optional(S.String) })
@@ -1198,15 +1305,17 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ sid: S.String, condition: S.optional(__S(16)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ sid: S.String, condition: S.optional(ConditionBlock) }),
+      ).annotate({
         identifier: "PermissionStatementSummary",
       });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(PermissionStatementSummary);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          permissionStatements: __S(25),
+          permissionStatements: PermissionStatementSummaries,
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1273,22 +1382,5 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "RevokeOAuth2TokenWithIAMRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -32,6 +30,8 @@ export interface ReturnAddress {
   /** Email address of the recipient of the returned drives. */
   email: string;
 }
+const ReturnAddress = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ReturnAddress>;
+
 /** Specifies the return carrier and customer's account with the carrier. */
 export interface ReturnShipping {
   /** The carrier's name. */
@@ -39,6 +39,8 @@ export interface ReturnShipping {
   /** The customer's account number with the carrier. */
   carrierAccountNumber: string;
 }
+const ReturnShipping = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ReturnShipping>;
+
 /** Contains information about the Microsoft datacenter to which the drives should be shipped. */
 export interface ShippingInformationInput {
   /** The name of the recipient who will receive the hard drives when they are returned. */
@@ -58,6 +60,11 @@ export interface ShippingInformationInput {
   /** Phone number of the recipient of the returned drives. */
   phone?: string;
 }
+const ShippingInformationInput = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ShippingInformationInput>;
+
 /** Contains information about the delivery package being shipped by the customer to the Microsoft data center. */
 export interface DeliveryPackageInformation {
   /** The name of the carrier that is used to ship the import or export drives. */
@@ -69,6 +76,11 @@ export interface DeliveryPackageInformation {
   /** The date when the package is shipped. */
   shipDate?: string;
 }
+const DeliveryPackageInformation = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeliveryPackageInformation>;
+
 /** Contains information about the package being shipped by the customer to the Microsoft data center. */
 export interface PackageInformation {
   /** The name of the carrier that is used to ship the import or export drives. */
@@ -80,6 +92,8 @@ export interface PackageInformation {
   /** The date when the package is shipped. */
   shipDate: string;
 }
+const PackageInformation = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<PackageInformation>;
+
 /** The drive's current state. */
 export type DriveStatusState =
   | "Specified"
@@ -89,6 +103,8 @@ export type DriveStatusState =
   | "Completed"
   | "CompletedMoreInfo"
   | "ShippedBack";
+const DriveStatusState = S.String;
+
 /** Provides information about the drive's status */
 export interface DriveStatus {
   /** The drive's hardware serial number, without spaces. */
@@ -116,12 +132,27 @@ export interface DriveStatus {
   /** Bytes successfully transferred for the drive. */
   bytesSucceeded?: number;
 }
+const DriveStatus = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DriveStatus>;
+
 /** List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified for export jobs. */
 export type JobDetailsInputDriveListList = Array<DriveStatus>;
+const JobDetailsInputDriveListList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<JobDetailsInputDriveListList>;
+
 /** A collection of blob-path strings. */
 export type ExportBlobListBlobPathList = Array<string>;
+const ExportBlobListBlobPathList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ExportBlobListBlobPathList>;
+
 /** A collection of blob-prefix strings. */
 export type ExportBlobListBlobPathPrefixList = Array<string>;
+const ExportBlobListBlobPathPrefixList =
+  ExportBlobListBlobPathList as any as S.Schema<ExportBlobListBlobPathPrefixList>;
+
 /** A list of the blobs to be exported. */
 export interface ExportBlobList {
   /** A collection of blob-path strings. */
@@ -129,6 +160,8 @@ export interface ExportBlobList {
   /** A collection of blob-prefix strings. */
   blobPathPrefix?: ExportBlobListBlobPathPrefixList;
 }
+const ExportBlobList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ExportBlobList>;
+
 /** A property containing information about the blobs to be exported for an export job. This property is required for export jobs, but must not be specified for import jobs. */
 export interface Export {
   /** A list of the blobs to be exported. */
@@ -136,8 +169,12 @@ export interface Export {
   /** The relative URI to the block blob that contains the list of blob paths or blob path prefixes as defined above, beginning with the container name. If the blob is in root container, the URI must begin with $root. */
   blobListBlobPath?: string;
 }
+const Export = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Export>;
+
 /** The type of kek encryption key */
 export type EncryptionKeyDetailsKekType = "MicrosoftManaged" | "CustomerManaged";
+const EncryptionKeyDetailsKekType = S.String;
+
 /** Specifies the encryption key properties */
 export interface EncryptionKeyDetails {
   /** The type of kek encryption key */
@@ -147,6 +184,8 @@ export interface EncryptionKeyDetails {
   /** Specifies the keyvault resource id for kek encryption key. */
   kekVaultResourceID?: string;
 }
+const EncryptionKeyDetails = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<EncryptionKeyDetails>;
+
 /** Specifies the job properties */
 export interface JobDetailsInput {
   /** The resource identifier of the storage account where data will be imported to or exported from. */
@@ -186,6 +225,8 @@ export interface JobDetailsInput {
   /** Contains information about the encryption key. */
   encryptionKey?: EncryptionKeyDetails;
 }
+const JobDetailsInput = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<JobDetailsInput>;
+
 export interface CreateJobRequest {
   /** The subscription ID for the Azure user. */
   subscriptionId: string;
@@ -200,14 +241,20 @@ export interface CreateJobRequest {
   /** Specifies the job properties */
   properties?: JobDetailsInput;
 }
+const CreateJobRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CreateJobRequest>;
+
 /** The type of identity that created the resource. */
 export type JobResponseSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const JobResponseSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type JobResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const JobResponseSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface JobResponseSystemData {
   /** The identity that created the resource. */
@@ -223,6 +270,11 @@ export interface JobResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const JobResponseSystemData = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<JobResponseSystemData>;
+
 /** Contains information about the Microsoft datacenter to which the drives should be shipped. */
 export interface ShippingInformation {
   /** The name of the recipient who will receive the hard drives when they are returned. */
@@ -244,8 +296,13 @@ export interface ShippingInformation {
   /** Additional shipping information for customer, specific to datacenter to which customer should send their disks. */
   additionalInformation?: string;
 }
+const ShippingInformation = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ShippingInformation>;
+
 /** List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified for export jobs. */
 export type JobDetailsDriveListList = Array<DriveStatus>;
+const JobDetailsDriveListList =
+  JobDetailsInputDriveListList as any as S.Schema<JobDetailsDriveListList>;
+
 /** Specifies the job properties */
 export interface JobDetails {
   /** The resource identifier of the storage account where data will be imported to or exported from. */
@@ -285,8 +342,12 @@ export interface JobDetails {
   /** Contains information about the encryption key. */
   encryptionKey?: EncryptionKeyDetails;
 }
+const JobDetails = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<JobDetails>;
+
 /** The type of identity */
 export type IdentityDetailsType = "None" | "SystemAssigned" | "UserAssigned";
+const IdentityDetailsType = S.String;
+
 /** Specifies the identity properties. */
 export interface IdentityDetails {
   /** The type of identity */
@@ -296,6 +357,8 @@ export interface IdentityDetails {
   /** Specifies the tenant id for the identity for the job. */
   tenantId?: string;
 }
+const IdentityDetails = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<IdentityDetails>;
+
 /** Contains the job information. */
 export interface JobResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
@@ -315,6 +378,8 @@ export interface JobResponse {
   /** Specifies the job identity details */
   identity?: IdentityDetails;
 }
+const JobResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<JobResponse>;
+
 export interface DeleteJobRequest {
   /** The subscription ID for the Azure user. */
   subscriptionId: string;
@@ -323,7 +388,11 @@ export interface DeleteJobRequest {
   /** The name of the import/export job. */
   jobName: string;
 }
+const DeleteJobRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DeleteJobRequest>;
+
 export interface DeleteJobResponse {}
+const DeleteJobResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DeleteJobResponse>;
+
 export interface GetJobRequest {
   /** The subscription ID for the Azure user. */
   subscriptionId: string;
@@ -332,14 +401,24 @@ export interface GetJobRequest {
   /** The name of the import/export job. */
   jobName: string;
 }
+const GetJobRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GetJobRequest>;
+
 export interface GetLocationRequest {
   /** The name of the location. For example, West US or westus. */
   locationName: string;
 }
+const GetLocationRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GetLocationRequest>;
+
 /** A list of carriers that are supported at this location. */
 export type LocationPropertiesSupportedCarriersList = Array<string>;
+const LocationPropertiesSupportedCarriersList =
+  ExportBlobListBlobPathList as any as S.Schema<LocationPropertiesSupportedCarriersList>;
+
 /** A list of location IDs that should be used to ship shipping drives to for jobs created against the current location. If the current location is active, it will be part of the list. If it is temporarily closed due to maintenance, this list may contain other locations. */
 export type LocationPropertiesAlternateLocationsList = Array<string>;
+const LocationPropertiesAlternateLocationsList =
+  ExportBlobListBlobPathList as any as S.Schema<LocationPropertiesAlternateLocationsList>;
+
 /** location properties */
 export interface LocationProperties {
   /** The recipient name to use when shipping the drives to the Azure data center. */
@@ -365,6 +444,8 @@ export interface LocationProperties {
   /** A list of location IDs that should be used to ship shipping drives to for jobs created against the current location. If the current location is active, it will be part of the list. If it is temporarily closed due to maintenance, this list may contain other locations. */
   alternateLocations?: LocationPropertiesAlternateLocationsList;
 }
+const LocationProperties = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<LocationProperties>;
+
 /** Provides information about an Azure data center location. */
 export interface Location {
   /** Specifies the resource identifier of the location. */
@@ -376,6 +457,8 @@ export interface Location {
   /** location properties */
   properties?: LocationProperties;
 }
+const Location = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Location>;
+
 export interface ListBitLockerKeysRequest {
   /** The subscription ID for the Azure user. */
   subscriptionId: string;
@@ -384,6 +467,11 @@ export interface ListBitLockerKeysRequest {
   /** The name of the import/export job. */
   jobName: string;
 }
+const ListBitLockerKeysRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListBitLockerKeysRequest>;
+
 /** BitLocker recovery key or password to the specified drive */
 export interface DriveBitLockerKey {
   /** BitLocker recovery key or password */
@@ -391,13 +479,25 @@ export interface DriveBitLockerKey {
   /** Drive ID */
   driveId?: string;
 }
+const DriveBitLockerKey = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<DriveBitLockerKey>;
+
 /** drive status */
 export type GetBitLockerKeysResponseValueList = Array<DriveBitLockerKey>;
+const GetBitLockerKeysResponseValueList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetBitLockerKeysResponseValueList>;
+
 /** GetBitLockerKeys response */
 export interface GetBitLockerKeysResponse {
   /** drive status */
   value?: GetBitLockerKeysResponseValueList;
 }
+const GetBitLockerKeysResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetBitLockerKeysResponse>;
+
 export interface ListJobByResourceGroupRequest {
   /** The subscription ID for the Azure user. */
   subscriptionId: string;
@@ -408,8 +508,18 @@ export interface ListJobByResourceGroupRequest {
   /** Can be used to restrict the results to certain conditions. */
   _filter?: string;
 }
+const ListJobByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ListJobByResourceGroupRequest>;
+
 /** Job list */
 export type ListJobsResponseValueList = Array<JobResponse>;
+const ListJobsResponseValueList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListJobsResponseValueList>;
+
 /** List jobs response */
 export interface ListJobsResponse {
   /** link to next batch of jobs */
@@ -417,6 +527,8 @@ export interface ListJobsResponse {
   /** Job list */
   value?: ListJobsResponseValueList;
 }
+const ListJobsResponse = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<ListJobsResponse>;
+
 export interface ListJobBySubscriptionRequest {
   /** The subscription ID for the Azure user. */
   subscriptionId: string;
@@ -425,15 +537,34 @@ export interface ListJobBySubscriptionRequest {
   /** Can be used to restrict the results to certain conditions. */
   _filter?: string;
 }
+const ListJobBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ListJobBySubscriptionRequest>;
+
 export interface ListLocationsRequest {}
+const ListLocationsRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ListLocationsRequest>;
+
 /** locations */
 export type LocationsResponseValueList = Array<Location>;
+const LocationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<LocationsResponseValueList>;
+
 /** Locations response */
 export interface LocationsResponse {
   /** locations */
   value?: LocationsResponseValueList;
 }
+const LocationsResponse = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<LocationsResponse>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** operation display properties */
 export interface OperationDisplay {
   /** The resource provider name to which the operation belongs. */
@@ -445,6 +576,8 @@ export interface OperationDisplay {
   /** Short description of the operation. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<OperationDisplay>;
+
 /** Describes a supported operation by the Storage Import/Export job API. */
 export interface Operation {
   /** Name of the operation. */
@@ -452,15 +585,30 @@ export interface Operation {
   /** operation display properties */
   display: OperationDisplay;
 }
+const Operation = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Operation>;
+
 /** operations */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 /** List operations response */
 export interface ListOperationsResponse {
   /** operations */
   value?: ListOperationsResponseValueList;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListOperationsResponse>;
+
 /** List of drives that comprise the job. */
 export type UpdateJobRequestPropertiesDriveListList = Array<DriveStatus>;
+const UpdateJobRequestPropertiesDriveListList =
+  JobDetailsInputDriveListList as any as S.Schema<UpdateJobRequestPropertiesDriveListList>;
+
 /** Specifies the properties of a UpdateJob. */
 export interface UpdateJobRequestProperties {
   /** If specified, the value must be true. The service will attempt to cancel the job. */
@@ -480,6 +628,11 @@ export interface UpdateJobRequestProperties {
   /** List of drives that comprise the job. */
   driveList?: UpdateJobRequestPropertiesDriveListList;
 }
+const UpdateJobRequestProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<UpdateJobRequestProperties>;
+
 export interface UpdateJobRequest {
   /** The subscription ID for the Azure user. */
   subscriptionId: string;
@@ -492,6 +645,8 @@ export interface UpdateJobRequest {
   /** Specifies the properties of a UpdateJob. */
   properties?: UpdateJobRequestProperties;
 }
+const UpdateJobRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<UpdateJobRequest>;
+
 export type CreateJobError = AzureOpError;
 /** Creates a new job or updates an existing job in the specified subscription. */
 export const CreateJob: API.OperationMethod<
@@ -500,8 +655,8 @@ export const CreateJob: API.OperationMethod<
   CreateJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CreateJobRequest>,
-  output: __S(17) as any as S.Schema<JobResponse>,
+  input: CreateJobRequest,
+  output: JobResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -515,8 +670,8 @@ export const DeleteJob: API.OperationMethod<
   DeleteJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<DeleteJobRequest>,
-  output: __S(19) as any as S.Schema<DeleteJobResponse>,
+  input: DeleteJobRequest,
+  output: DeleteJobResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -526,8 +681,8 @@ export type GetJobError = AzureOpError;
 /** Gets information about an existing job. */
 export const GetJob: API.OperationMethod<GetJobRequest, JobResponse, GetJobError, AzureOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(20) as any as S.Schema<GetJobRequest>,
-    output: __S(17) as any as S.Schema<JobResponse>,
+    input: GetJobRequest,
+    output: JobResponse,
     errors: [UnknownAzureError],
     protocol: AzureProtocol,
     retry: Retry.Retry,
@@ -541,8 +696,8 @@ export const GetLocation: API.OperationMethod<
   GetLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetLocationRequest>,
-  output: __S(23) as any as S.Schema<Location>,
+  input: GetLocationRequest,
+  output: Location,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -556,8 +711,8 @@ export const ListBitLockerKeys: API.OperationMethod<
   ListBitLockerKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<ListBitLockerKeysRequest>,
-  output: __S(27) as any as S.Schema<GetBitLockerKeysResponse>,
+  input: ListBitLockerKeysRequest,
+  output: GetBitLockerKeysResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -571,8 +726,8 @@ export const ListJobByResourceGroup: API.OperationMethod<
   ListJobByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<ListJobByResourceGroupRequest>,
-  output: __S(30) as any as S.Schema<ListJobsResponse>,
+  input: ListJobByResourceGroupRequest,
+  output: ListJobsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -586,8 +741,8 @@ export const ListJobBySubscription: API.OperationMethod<
   ListJobBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<ListJobBySubscriptionRequest>,
-  output: __S(30) as any as S.Schema<ListJobsResponse>,
+  input: ListJobBySubscriptionRequest,
+  output: ListJobsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -601,8 +756,8 @@ export const ListLocations: API.OperationMethod<
   ListLocationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<ListLocationsRequest>,
-  output: __S(34) as any as S.Schema<LocationsResponse>,
+  input: ListLocationsRequest,
+  output: LocationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -616,8 +771,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<ListOperationsRequest>,
-  output: __S(39) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -631,8 +786,8 @@ export const UpdateJob: API.OperationMethod<
   UpdateJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<UpdateJobRequest>,
-  output: __S(17) as any as S.Schema<JobResponse>,
+  input: UpdateJobRequest,
+  output: JobResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -703,7 +858,7 @@ function __c0(j: number): any {
           manifestFile: S.optional(S.String),
           manifestHash: S.optional(S.String),
           driveHeaderHash: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(DriveStatusState),
           copyStatus: S.optional(S.String),
           percentComplete: S.optional(S.Number),
           verboseLogUri: S.optional(S.String),
@@ -713,7 +868,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "DriveStatus" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(DriveStatus);
     case 7:
       return S.Array(S.String);
   }
@@ -723,21 +878,21 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          blobPath: S.optional(__S(7)),
-          blobPathPrefix: S.optional(__S(7)),
+          blobPath: S.optional(ExportBlobListBlobPathList),
+          blobPathPrefix: S.optional(ExportBlobListBlobPathPrefixList),
         }),
       ).annotate({ identifier: "ExportBlobList" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          blobList: S.optional(__S(8)),
+          blobList: S.optional(ExportBlobList),
           blobListBlobPath: S.optional(S.String),
         }),
       ).annotate({ identifier: "Export" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          kekType: S.optional(S.String),
+          kekType: S.optional(EncryptionKeyDetailsKekType),
           kekUrl: S.optional(S.String),
           kekVaultResourceID: S.optional(S.String),
         }),
@@ -747,11 +902,11 @@ function __c1(j: number): any {
         S.Struct({
           storageAccountId: S.optional(S.String),
           jobType: S.optional(S.String),
-          returnAddress: S.optional(__S(0)),
-          returnShipping: S.optional(__S(1)),
-          shippingInformation: S.optional(__S(2)),
-          deliveryPackage: S.optional(__S(3)),
-          returnPackage: S.optional(__S(4)),
+          returnAddress: S.optional(ReturnAddress),
+          returnShipping: S.optional(ReturnShipping),
+          shippingInformation: S.optional(ShippingInformationInput),
+          deliveryPackage: S.optional(DeliveryPackageInformation),
+          returnPackage: S.optional(PackageInformation),
           diagnosticsPath: S.optional(S.String),
           logLevel: S.optional(S.String),
           backupDriveManifest: S.optional(S.Boolean),
@@ -759,10 +914,10 @@ function __c1(j: number): any {
           cancelRequested: S.optional(S.Boolean),
           percentComplete: S.optional(S.Number),
           incompleteBlobListUri: S.optional(S.String),
-          driveList: S.optional(__S(6)),
-          export: S.optional(__S(9)),
+          driveList: S.optional(JobDetailsInputDriveListList),
+          export: S.optional(Export),
           provisioningState: S.optional(S.String),
-          encryptionKey: S.optional(__S(10)),
+          encryptionKey: S.optional(EncryptionKeyDetails),
         }),
       ).annotate({ identifier: "JobDetailsInput" });
     case 4:
@@ -773,7 +928,7 @@ function __c1(j: number): any {
           jobName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(S.Unknown),
-          properties: S.optional(__S(11)),
+          properties: S.optional(JobDetailsInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -787,10 +942,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(JobResponseSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(JobResponseSystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobResponseSystemData" });
@@ -813,11 +968,11 @@ function __c1(j: number): any {
         S.Struct({
           storageAccountId: S.optional(S.String),
           jobType: S.optional(S.String),
-          returnAddress: S.optional(__S(0)),
-          returnShipping: S.optional(__S(1)),
-          shippingInformation: S.optional(__S(14)),
-          deliveryPackage: S.optional(__S(3)),
-          returnPackage: S.optional(__S(4)),
+          returnAddress: S.optional(ReturnAddress),
+          returnShipping: S.optional(ReturnShipping),
+          shippingInformation: S.optional(ShippingInformation),
+          deliveryPackage: S.optional(DeliveryPackageInformation),
+          returnPackage: S.optional(PackageInformation),
           diagnosticsPath: S.optional(S.String),
           logLevel: S.optional(S.String),
           backupDriveManifest: S.optional(S.Boolean),
@@ -825,10 +980,10 @@ function __c1(j: number): any {
           cancelRequested: S.optional(S.Boolean),
           percentComplete: S.optional(S.Number),
           incompleteBlobListUri: S.optional(S.String),
-          driveList: S.optional(__S(6)),
-          export: S.optional(__S(9)),
+          driveList: S.optional(JobDetailsDriveListList),
+          export: S.optional(Export),
           provisioningState: S.optional(S.String),
-          encryptionKey: S.optional(__S(10)),
+          encryptionKey: S.optional(EncryptionKeyDetails),
         }),
       ).annotate({ identifier: "JobDetails" });
   }
@@ -838,7 +993,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(IdentityDetailsType),
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
         }),
@@ -846,14 +1001,14 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          systemData: S.optional(__S(13)),
+          systemData: S.optional(JobResponseSystemData),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
           tags: S.optional(S.Unknown),
-          properties: S.optional(__S(15)),
-          identity: S.optional(__S(16)),
+          properties: S.optional(JobDetails),
+          identity: S.optional(IdentityDetails),
         }),
       ).annotate({ identifier: "JobResponse" });
     case 2:
@@ -915,8 +1070,8 @@ function __c2(j: number): any {
           countryOrRegion: S.optional(S.String),
           phone: S.optional(S.String),
           additionalShippingInformation: S.optional(S.String),
-          supportedCarriers: S.optional(__S(7)),
-          alternateLocations: S.optional(__S(7)),
+          supportedCarriers: S.optional(LocationPropertiesSupportedCarriersList),
+          alternateLocations: S.optional(LocationPropertiesAlternateLocationsList),
         }),
       ).annotate({ identifier: "LocationProperties" });
     case 7:
@@ -925,7 +1080,7 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(22)),
+          properties: S.optional(LocationProperties),
         }),
       ).annotate({ identifier: "Location" });
   }
@@ -955,11 +1110,11 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "DriveBitLockerKey" });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(DriveBitLockerKey);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(26)),
+          value: S.optional(GetBitLockerKeysResponseValueList),
         }),
       ).annotate({ identifier: "GetBitLockerKeysResponse" });
     case 4:
@@ -981,12 +1136,12 @@ function __c3(j: number): any {
         identifier: "ListJobByResourceGroupRequest",
       });
     case 5:
-      return S.Array(__S(17));
+      return S.Array(JobResponse);
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(29)),
+          value: S.optional(ListJobsResponseValueList),
         }),
       ).annotate({ identifier: "ListJobsResponse" });
     case 7:
@@ -1022,11 +1177,11 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "ListLocationsRequest" });
     case 1:
-      return S.Array(__S(23));
+      return S.Array(Location);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(33)),
+          value: S.optional(LocationsResponseValueList),
         }),
       ).annotate({ identifier: "LocationsResponse" });
     case 3:
@@ -1053,15 +1208,15 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          display: __S(36),
+          display: OperationDisplay,
         }),
       ).annotate({ identifier: "Operation" });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(Operation);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(38)),
+          value: S.optional(ListOperationsResponseValueList),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
@@ -1073,12 +1228,12 @@ function __c5(j: number): any {
         S.Struct({
           cancelRequested: S.optional(S.Boolean),
           state: S.optional(S.String),
-          returnAddress: S.optional(__S(0)),
-          returnShipping: S.optional(__S(1)),
-          deliveryPackage: S.optional(__S(3)),
+          returnAddress: S.optional(ReturnAddress),
+          returnShipping: S.optional(ReturnShipping),
+          deliveryPackage: S.optional(DeliveryPackageInformation),
           logLevel: S.optional(S.String),
           backupDriveManifest: S.optional(S.Boolean),
-          driveList: S.optional(__S(6)),
+          driveList: S.optional(UpdateJobRequestPropertiesDriveListList),
         }),
       ).annotate({
         identifier: "UpdateJobRequestProperties",
@@ -1090,7 +1245,7 @@ function __c5(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           jobName: S.String.pipe(T.Label()),
           tags: S.optional(S.Unknown),
-          properties: S.optional(__S(40)),
+          properties: S.optional(UpdateJobRequestProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1100,26 +1255,5 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateJobRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

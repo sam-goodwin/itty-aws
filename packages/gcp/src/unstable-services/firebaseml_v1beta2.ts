@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -73,9 +71,17 @@ export interface TfLiteModel {
   /** The TfLite file containing the model. (Stored in Google Cloud). The gcs_tflite_uri should have form: gs://some-bucket/some-model.tflite Note: If you update the file in the original location, it is necessary to call UpdateModel for ML to pick up and validate the updated file. */
   gcsTfliteUri?: string;
 }
+const TfLiteModel = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<TfLiteModel>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<StringList>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -85,6 +91,8 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
+const Status = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Status>;
+
 /** State common to all model types. Includes publishing and validation information. */
 export interface ModelState {
   /** Indicates if this model has been published. */
@@ -92,6 +100,8 @@ export interface ModelState {
   /** Output only. Indicates the latest validation error on the model if any. A model may have validation errors if there were problems during the model creation/update. e.g. in the case of a TfLiteModel, if a tflite model file was missing or in the wrong format. This field will be empty for valid models. */
   validationError?: Status;
 }
+const ModelState = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ModelState>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -105,7 +115,11 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
+const Operation = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Operation>;
+
 export type OperationList = Array<Operation>;
+const OperationList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<OperationList>;
+
 /** An ML model hosted in Firebase ML */
 export interface Model {
   /** A TFLite Model */
@@ -129,23 +143,44 @@ export interface Model {
   /** Output only. The model_hash will change if a new file is available for download. */
   modelHash?: string;
 }
+const Model = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Model>;
+
 export interface CreateProjectsModelsRequest {
   /** Required. The parent project resource where the model is to be created. The parent must have the form `projects/{project_id}` */
   parent: string;
   /** Request body */
   body?: Model;
 }
+const CreateProjectsModelsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateProjectsModelsRequest>;
+
 export interface DeleteProjectsModelsRequest {
   /** Required. The name of the model to delete. The name must have the form `projects/{project_id}/models/{model_id}` */
   name: string;
 }
+const DeleteProjectsModelsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteProjectsModelsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Empty>;
+
 export interface DownloadProjectsModelsRequest {
   /** Required. The name of the model to download. The name must have the form `projects/{project}/models/{model}` */
   name: string;
 }
+const DownloadProjectsModelsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DownloadProjectsModelsRequest>;
+
 export type DownloadModelResponseModelFormatEnum = "MODEL_FORMAT_UNSPECIFIED" | "TFLITE";
+const DownloadModelResponseModelFormatEnum = S.String;
+
 /** The response for downloading a model to device. */
 export interface DownloadModelResponse {
   /** Output only. The time that the download URI link expires. If the link has expired, the REST call must be repeated. */
@@ -157,14 +192,29 @@ export interface DownloadModelResponse {
   /** Output only. The size of the file(s), if this information is available. */
   sizeBytes?: string;
 }
+const DownloadModelResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DownloadModelResponse>;
+
 export interface GetProjectsModelsRequest {
   /** Required. The name of the model to get. The name must have the form `projects/{project_id}/models/{model_id}` */
   name: string;
 }
+const GetProjectsModelsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetProjectsModelsRequest>;
+
 export interface GetProjectsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetProjectsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetProjectsOperationsRequest>;
+
 export interface ListProjectsModelsRequest {
   /** The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
@@ -175,7 +225,14 @@ export interface ListProjectsModelsRequest {
   /** Required. The name of the parent to list models for. The parent must have the form `projects/{project_id}' */
   parent: string;
 }
+const ListProjectsModelsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListProjectsModelsRequest>;
+
 export type ModelList = Array<Model>;
+const ModelList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ModelList>;
+
 /** The response for list models */
 export interface ListModelsResponse {
   /** The list of models */
@@ -183,6 +240,8 @@ export interface ListModelsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
+const ListModelsResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ListModelsResponse>;
+
 export interface PatchProjectsModelsRequest {
   /** The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model. */
   name: string;
@@ -191,6 +250,11 @@ export interface PatchProjectsModelsRequest {
   /** Request body */
   body?: Model;
 }
+const PatchProjectsModelsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<PatchProjectsModelsRequest>;
+
 export type CreateProjectsModelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a model in Firebase ML. The longrunning operation will eventually return a Model */
 export const createProjectsModels: API.OperationMethod<
@@ -199,8 +263,8 @@ export const createProjectsModels: API.OperationMethod<
   CreateProjectsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CreateProjectsModelsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: CreateProjectsModelsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -214,8 +278,8 @@ export const deleteProjectsModels: API.OperationMethod<
   DeleteProjectsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeleteProjectsModelsRequest>,
-  output: __S(11) as any as S.Schema<Empty>,
+  input: DeleteProjectsModelsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -229,8 +293,8 @@ export const downloadProjectsModels: API.OperationMethod<
   DownloadProjectsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DownloadProjectsModelsRequest>,
-  output: __S(13) as any as S.Schema<DownloadModelResponse>,
+  input: DownloadProjectsModelsRequest,
+  output: DownloadModelResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -244,8 +308,8 @@ export const getProjectsModels: API.OperationMethod<
   GetProjectsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetProjectsModelsRequest>,
-  output: __S(8) as any as S.Schema<Model>,
+  input: GetProjectsModelsRequest,
+  output: Model,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -259,8 +323,8 @@ export const getProjectsOperations: API.OperationMethod<
   GetProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<GetProjectsOperationsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: GetProjectsOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -275,8 +339,8 @@ export const listProjectsModels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListModelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(16) as any as S.Schema<ListProjectsModelsRequest>,
-  output: __S(18) as any as S.Schema<ListModelsResponse>,
+  input: ListProjectsModelsRequest,
+  output: ListModelsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -291,8 +355,8 @@ export const patchProjectsModels: API.OperationMethod<
   PatchProjectsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<PatchProjectsModelsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: PatchProjectsModelsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -314,12 +378,12 @@ function __c0(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(__S(2));
+      return S.Array(DocumentMap);
     case 4:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(__S(3)),
+          details: S.optional(DocumentMapList),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
@@ -327,21 +391,21 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           published: S.optional(S.Boolean),
-          validationError: S.optional(__S(4)),
+          validationError: S.optional(Status),
         }),
       ).annotate({ identifier: "ModelState" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(__S(2)),
+          response: S.optional(DocumentMap),
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
-          error: S.optional(__S(4)),
-          metadata: S.optional(__S(2)),
+          error: S.optional(Status),
+          metadata: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "Operation" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(Operation);
   }
 }
 function __c1(j: number): any {
@@ -349,15 +413,15 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tfliteModel: S.optional(__S(0)),
+          tfliteModel: S.optional(TfLiteModel),
           createTime: S.optional(S.String),
           displayName: S.optional(S.String),
           etag: S.optional(S.String),
-          tags: S.optional(__S(1)),
+          tags: S.optional(StringList),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
-          state: S.optional(__S(5)),
-          activeOperations: S.optional(__S(7)),
+          state: S.optional(ModelState),
+          activeOperations: S.optional(OperationList),
           modelHash: S.optional(S.String),
         }),
       ).annotate({ identifier: "Model" });
@@ -365,7 +429,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(8).pipe(T.HttpBody())),
+          body: S.optional(Model.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -413,7 +477,7 @@ function __c1(j: number): any {
         S.Struct({
           expireTime: S.optional(S.String),
           downloadUri: S.optional(S.String),
-          modelFormat: S.optional(S.String),
+          modelFormat: S.optional(DownloadModelResponseModelFormatEnum),
           sizeBytes: S.optional(S.String),
         }),
       ).annotate({ identifier: "DownloadModelResponse" });
@@ -465,11 +529,11 @@ function __c2(j: number): any {
         identifier: "ListProjectsModelsRequest",
       });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(Model);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          models: S.optional(__S(17)),
+          models: S.optional(ModelList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListModelsResponse" });
@@ -478,7 +542,7 @@ function __c2(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(8).pipe(T.HttpBody())),
+          body: S.optional(Model.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -489,20 +553,5 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "PatchProjectsModelsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

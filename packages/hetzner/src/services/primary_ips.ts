@@ -7,8 +7,6 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
@@ -24,12 +22,23 @@ export class PrimaryIpLimitExceeded
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreatePrimaryIpRequestLabelsMap = { [key: string]: string | undefined };
+const CreatePrimaryIpRequestLabelsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreatePrimaryIpRequestLabelsMap>;
+
 /** [Primary IP](#tag/primary-ips) type. */
 export type CreatePrimaryIpRequestType = "ipv4" | "ipv6";
+const CreatePrimaryIpRequestType = S.String;
+
 /** [Location](#tag/locations) ID or name the [Primary IP](#tag/primary-ips) will be bound to. Omit if `assignee_id`/`assignee_type` or `datacenter` are provided. */
 export type CreatePrimaryIpRequestLocation = string | number;
+const CreatePrimaryIpRequestLocation = S.Unknown as any as S.Schema<CreatePrimaryIpRequestLocation>;
+
 /** Type of resource to assign the [Primary IP](#tag/primary-ips) to. Omitted if the [Primary IP](#tag/primary-ips) should not get assigned. */
 export type CreatePrimaryIpRequestAssigneeType = "server" | "unassigned";
+const CreatePrimaryIpRequestAssigneeType = S.String;
+
 export interface CreatePrimaryIpRequest {
   /** Name of the Resource. Must be unique per Project. */
   name: string;
@@ -46,8 +55,16 @@ export interface CreatePrimaryIpRequest {
   /** Auto deletion state. If enabled the [Primary IP](#tag/primary-ips) will be deleted once the assigned resource gets deleted. */
   auto_delete?: boolean;
 }
+const CreatePrimaryIpRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreatePrimaryIpRequest>;
+
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreatePrimaryIpResponsePrimaryIpLabelsMap = { [key: string]: string | undefined };
+const CreatePrimaryIpResponsePrimaryIpLabelsMap =
+  CreatePrimaryIpRequestLabelsMap as any as S.Schema<CreatePrimaryIpResponsePrimaryIpLabelsMap>;
+
 /** [Location](#tag/locations) of the [Primary IP](#tag/primary-ips). */
 export interface CreatePrimaryIpResponsePrimaryIpLocation {
   /** ID of the [Location](#tag/locations). */
@@ -67,24 +84,48 @@ export interface CreatePrimaryIpResponsePrimaryIpLocation {
   /** Name of the Network Zone this [Location](#tag/locations) resides in. */
   network_zone: string;
 }
+const CreatePrimaryIpResponsePrimaryIpLocation = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreatePrimaryIpResponsePrimaryIpLocation>;
+
 export interface CreatePrimaryIpResponsePrimaryIpDnsPtrItem {
   /** Single IPv4 or IPv6 address of the record. */
   ip: string;
   /** Domain Name to point to. PTR record content used for reverse DNS. */
   dns_ptr: string;
 }
+const CreatePrimaryIpResponsePrimaryIpDnsPtrItem = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreatePrimaryIpResponsePrimaryIpDnsPtrItem>;
+
 /** List of reverse DNS records. */
 export type CreatePrimaryIpResponsePrimaryIpDnsPtrList =
   Array<CreatePrimaryIpResponsePrimaryIpDnsPtrItem>;
+const CreatePrimaryIpResponsePrimaryIpDnsPtrList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreatePrimaryIpResponsePrimaryIpDnsPtrList>;
+
 /** Protection configuration for the Resource. */
 export interface CreatePrimaryIpResponsePrimaryIpProtection {
   /** Prevent the Resource from being deleted. */
   delete: boolean;
 }
+const CreatePrimaryIpResponsePrimaryIpProtection = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreatePrimaryIpResponsePrimaryIpProtection>;
+
 /** [Primary IP](#tag/primary-ips) type. */
 export type CreatePrimaryIpResponsePrimaryIpType = "ipv4" | "ipv6";
+const CreatePrimaryIpResponsePrimaryIpType = S.String;
+
 /** Type of resource the [Primary IP](#tag/primary-ips) is assigned to. As of 23 September 2026 `unassigned` is returned if the [Primary IP](#tag/primary-ips) is not assigned. */
 export type CreatePrimaryIpResponsePrimaryIpAssigneeType = "server" | "unassigned";
+const CreatePrimaryIpResponsePrimaryIpAssigneeType = S.String;
+
 export interface CreatePrimaryIpResponsePrimaryIp {
   /** ID of the [Primary IP](#tag/primary-ips). */
   id: number;
@@ -113,17 +154,34 @@ export interface CreatePrimaryIpResponsePrimaryIp {
   /** ID of resource the [Primary IP](#tag/primary-ips) is assigned to. `null` if the [Primary IP](#tag/primary-ips) is not assigned. */
   assignee_id: number | null;
 }
+const CreatePrimaryIpResponsePrimaryIp = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreatePrimaryIpResponsePrimaryIp>;
+
 /** Status of the Action. */
 export type CreatePrimaryIpResponseActionStatus = "running" | "success" | "error";
+const CreatePrimaryIpResponseActionStatus = S.String;
+
 export interface CreatePrimaryIpResponseActionResourcesItem {
   /** ID of the Resource. */
   id: number;
   /** Type of the Resource. */
   type: string;
 }
+const CreatePrimaryIpResponseActionResourcesItem = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreatePrimaryIpResponseActionResourcesItem>;
+
 /** Resources the Action relates to. */
 export type CreatePrimaryIpResponseActionResourcesList =
   Array<CreatePrimaryIpResponseActionResourcesItem>;
+const CreatePrimaryIpResponseActionResourcesList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreatePrimaryIpResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface CreatePrimaryIpResponseActionError {
   /** Fixed error code for machines. */
@@ -131,6 +189,11 @@ export interface CreatePrimaryIpResponseActionError {
   /** Error message for humans. */
   message: string;
 }
+const CreatePrimaryIpResponseActionError = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreatePrimaryIpResponseActionError>;
+
 /** Action will only be returned if the [Primary IP](#tag/primary-ips) is getting assigned. */
 export interface CreatePrimaryIpResponseAction {
   /** ID of the [Action](#description/actions). */
@@ -150,34 +213,66 @@ export interface CreatePrimaryIpResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: CreatePrimaryIpResponseActionError | null;
 }
+const CreatePrimaryIpResponseAction = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreatePrimaryIpResponseAction>;
+
 export interface CreatePrimaryIpResponse {
   primary_ip: CreatePrimaryIpResponsePrimaryIp;
   /** Action will only be returned if the [Primary IP](#tag/primary-ips) is getting assigned. */
   action?: CreatePrimaryIpResponseAction | null;
 }
+const CreatePrimaryIpResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreatePrimaryIpResponse>;
+
 export interface DeletePrimaryIpRequest {
   /** ID of the Primary IP. */
   id: number;
 }
+const DeletePrimaryIpRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeletePrimaryIpRequest>;
+
 export interface DeletePrimaryIpResponse {}
+const DeletePrimaryIpResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeletePrimaryIpResponse>;
+
 export interface GetPrimaryIpRequest {
   /** ID of the Primary IP. */
   id: number;
 }
+const GetPrimaryIpRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetPrimaryIpRequest>;
+
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetPrimaryIpResponsePrimaryIpLabelsMap = { [key: string]: string | undefined };
+const GetPrimaryIpResponsePrimaryIpLabelsMap =
+  CreatePrimaryIpRequestLabelsMap as any as S.Schema<GetPrimaryIpResponsePrimaryIpLabelsMap>;
+
 /** [Location](#tag/locations) of the [Primary IP](#tag/primary-ips). */
 export type GetPrimaryIpResponsePrimaryIpLocation = CreatePrimaryIpResponsePrimaryIpLocation;
 export type GetPrimaryIpResponsePrimaryIpDnsPtrItem = CreatePrimaryIpResponsePrimaryIpDnsPtrItem;
 /** List of reverse DNS records. */
 export type GetPrimaryIpResponsePrimaryIpDnsPtrList =
   Array<CreatePrimaryIpResponsePrimaryIpDnsPtrItem>;
+const GetPrimaryIpResponsePrimaryIpDnsPtrList =
+  CreatePrimaryIpResponsePrimaryIpDnsPtrList as any as S.Schema<GetPrimaryIpResponsePrimaryIpDnsPtrList>;
+
 /** Protection configuration for the Resource. */
 export type GetPrimaryIpResponsePrimaryIpProtection = CreatePrimaryIpResponsePrimaryIpProtection;
 /** [Primary IP](#tag/primary-ips) type. */
 export type GetPrimaryIpResponsePrimaryIpType = "ipv4" | "ipv6";
+const GetPrimaryIpResponsePrimaryIpType = S.String;
+
 /** Type of resource the [Primary IP](#tag/primary-ips) is assigned to. As of 23 September 2026 `unassigned` is returned if the [Primary IP](#tag/primary-ips) is not assigned. */
 export type GetPrimaryIpResponsePrimaryIpAssigneeType = "server" | "unassigned";
+const GetPrimaryIpResponsePrimaryIpAssigneeType = S.String;
+
 export interface GetPrimaryIpResponsePrimaryIp {
   /** ID of the [Primary IP](#tag/primary-ips). */
   id: number;
@@ -206,9 +301,16 @@ export interface GetPrimaryIpResponsePrimaryIp {
   /** ID of resource the [Primary IP](#tag/primary-ips) is assigned to. `null` if the [Primary IP](#tag/primary-ips) is not assigned. */
   assignee_id: number | null;
 }
+const GetPrimaryIpResponsePrimaryIp = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetPrimaryIpResponsePrimaryIp>;
+
 export interface GetPrimaryIpResponse {
   primary_ip: GetPrimaryIpResponsePrimaryIp;
 }
+const GetPrimaryIpResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetPrimaryIpResponse>;
+
 export type ListPrimaryIpsRequestSortItem =
   | "id"
   | "id:asc"
@@ -216,7 +318,14 @@ export type ListPrimaryIpsRequestSortItem =
   | "created"
   | "created:asc"
   | "created:desc";
+const ListPrimaryIpsRequestSortItem = S.String;
+
 export type ListPrimaryIpsRequestSortList = Array<ListPrimaryIpsRequestSortItem | (string & {})>;
+const ListPrimaryIpsRequestSortList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListPrimaryIpsRequestSortList>;
+
 export interface ListPrimaryIpsRequest {
   /** Filter resources by their name. The response will only contain the resources matching exactly the specified name. */
   name?: string;
@@ -231,8 +340,16 @@ export interface ListPrimaryIpsRequest {
   /** Sort resources by field and direction. May be used multiple times. For more information, see "[Sorting](#description/sorting)". */
   sort?: ListPrimaryIpsRequestSortList;
 }
+const ListPrimaryIpsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListPrimaryIpsRequest>;
+
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListPrimaryIpsResponsePrimaryIpsItemLabelsMap = { [key: string]: string | undefined };
+const ListPrimaryIpsResponsePrimaryIpsItemLabelsMap =
+  CreatePrimaryIpRequestLabelsMap as any as S.Schema<ListPrimaryIpsResponsePrimaryIpsItemLabelsMap>;
+
 /** [Location](#tag/locations) of the [Primary IP](#tag/primary-ips). */
 export type ListPrimaryIpsResponsePrimaryIpsItemLocation = CreatePrimaryIpResponsePrimaryIpLocation;
 export type ListPrimaryIpsResponsePrimaryIpsItemDnsPtrItem =
@@ -240,13 +357,20 @@ export type ListPrimaryIpsResponsePrimaryIpsItemDnsPtrItem =
 /** List of reverse DNS records. */
 export type ListPrimaryIpsResponsePrimaryIpsItemDnsPtrList =
   Array<CreatePrimaryIpResponsePrimaryIpDnsPtrItem>;
+const ListPrimaryIpsResponsePrimaryIpsItemDnsPtrList =
+  CreatePrimaryIpResponsePrimaryIpDnsPtrList as any as S.Schema<ListPrimaryIpsResponsePrimaryIpsItemDnsPtrList>;
+
 /** Protection configuration for the Resource. */
 export type ListPrimaryIpsResponsePrimaryIpsItemProtection =
   CreatePrimaryIpResponsePrimaryIpProtection;
 /** [Primary IP](#tag/primary-ips) type. */
 export type ListPrimaryIpsResponsePrimaryIpsItemType = "ipv4" | "ipv6";
+const ListPrimaryIpsResponsePrimaryIpsItemType = S.String;
+
 /** Type of resource the [Primary IP](#tag/primary-ips) is assigned to. As of 23 September 2026 `unassigned` is returned if the [Primary IP](#tag/primary-ips) is not assigned. */
 export type ListPrimaryIpsResponsePrimaryIpsItemAssigneeType = "server" | "unassigned";
+const ListPrimaryIpsResponsePrimaryIpsItemAssigneeType = S.String;
+
 export interface ListPrimaryIpsResponsePrimaryIpsItem {
   /** ID of the [Primary IP](#tag/primary-ips). */
   id: number;
@@ -275,7 +399,17 @@ export interface ListPrimaryIpsResponsePrimaryIpsItem {
   /** ID of resource the [Primary IP](#tag/primary-ips) is assigned to. `null` if the [Primary IP](#tag/primary-ips) is not assigned. */
   assignee_id: number | null;
 }
+const ListPrimaryIpsResponsePrimaryIpsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListPrimaryIpsResponsePrimaryIpsItem>;
+
 export type ListPrimaryIpsResponsePrimaryIpsList = Array<ListPrimaryIpsResponsePrimaryIpsItem>;
+const ListPrimaryIpsResponsePrimaryIpsList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListPrimaryIpsResponsePrimaryIpsList>;
+
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListPrimaryIpsResponseMetaPagination {
   /** Current page number. */
@@ -291,16 +425,34 @@ export interface ListPrimaryIpsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
+const ListPrimaryIpsResponseMetaPagination = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ListPrimaryIpsResponseMetaPagination>;
+
 export interface ListPrimaryIpsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListPrimaryIpsResponseMetaPagination;
 }
+const ListPrimaryIpsResponseMeta = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListPrimaryIpsResponseMeta>;
+
 export interface ListPrimaryIpsResponse {
   primary_ips: ListPrimaryIpsResponsePrimaryIpsList;
   meta: ListPrimaryIpsResponseMeta;
 }
+const ListPrimaryIpsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListPrimaryIpsResponse>;
+
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdatePrimaryIpRequestLabelsMap = { [key: string]: string | undefined };
+const UpdatePrimaryIpRequestLabelsMap =
+  CreatePrimaryIpRequestLabelsMap as any as S.Schema<UpdatePrimaryIpRequestLabelsMap>;
+
 export interface UpdatePrimaryIpRequest {
   /** ID of the Primary IP. */
   id: number;
@@ -311,20 +463,35 @@ export interface UpdatePrimaryIpRequest {
   /** Auto deletion state. If enabled the [Primary IP](#tag/primary-ips) will be deleted once the assigned resource gets deleted. */
   auto_delete?: boolean;
 }
+const UpdatePrimaryIpRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<UpdatePrimaryIpRequest>;
+
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdatePrimaryIpResponsePrimaryIpLabelsMap = { [key: string]: string | undefined };
+const UpdatePrimaryIpResponsePrimaryIpLabelsMap =
+  CreatePrimaryIpRequestLabelsMap as any as S.Schema<UpdatePrimaryIpResponsePrimaryIpLabelsMap>;
+
 /** [Location](#tag/locations) of the [Primary IP](#tag/primary-ips). */
 export type UpdatePrimaryIpResponsePrimaryIpLocation = CreatePrimaryIpResponsePrimaryIpLocation;
 export type UpdatePrimaryIpResponsePrimaryIpDnsPtrItem = CreatePrimaryIpResponsePrimaryIpDnsPtrItem;
 /** List of reverse DNS records. */
 export type UpdatePrimaryIpResponsePrimaryIpDnsPtrList =
   Array<CreatePrimaryIpResponsePrimaryIpDnsPtrItem>;
+const UpdatePrimaryIpResponsePrimaryIpDnsPtrList =
+  CreatePrimaryIpResponsePrimaryIpDnsPtrList as any as S.Schema<UpdatePrimaryIpResponsePrimaryIpDnsPtrList>;
+
 /** Protection configuration for the Resource. */
 export type UpdatePrimaryIpResponsePrimaryIpProtection = CreatePrimaryIpResponsePrimaryIpProtection;
 /** [Primary IP](#tag/primary-ips) type. */
 export type UpdatePrimaryIpResponsePrimaryIpType = "ipv4" | "ipv6";
+const UpdatePrimaryIpResponsePrimaryIpType = S.String;
+
 /** Type of resource the [Primary IP](#tag/primary-ips) is assigned to. As of 23 September 2026 `unassigned` is returned if the [Primary IP](#tag/primary-ips) is not assigned. */
 export type UpdatePrimaryIpResponsePrimaryIpAssigneeType = "server" | "unassigned";
+const UpdatePrimaryIpResponsePrimaryIpAssigneeType = S.String;
+
 export interface UpdatePrimaryIpResponsePrimaryIp {
   /** ID of the [Primary IP](#tag/primary-ips). */
   id: number;
@@ -353,9 +520,19 @@ export interface UpdatePrimaryIpResponsePrimaryIp {
   /** ID of resource the [Primary IP](#tag/primary-ips) is assigned to. `null` if the [Primary IP](#tag/primary-ips) is not assigned. */
   assignee_id: number | null;
 }
+const UpdatePrimaryIpResponsePrimaryIp = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<UpdatePrimaryIpResponsePrimaryIp>;
+
 export interface UpdatePrimaryIpResponse {
   primary_ip: UpdatePrimaryIpResponsePrimaryIp;
 }
+const UpdatePrimaryIpResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<UpdatePrimaryIpResponse>;
+
 export type CreatePrimaryIpError = PrimaryIpLimitExceeded | HetznerOpError;
 /** Create a Primary IP Create a new [Primary IP](#tag/primary-ips). Can optionally be assigned to a resource by providing an `assignee_id` and `assignee_type`. If not assigned to a resource the `location` key needs to be provided. This can be either the ID or the name of the [Location](#tag/locations) this [Primary IP](#tag/primary-ips) shall be created in. A [Primary IP](#tag/primary-ips) can only be assigned to resource in the same [Location](#tag/locations) later on. #### Operation specific errors */
 export const createPrimaryIp: API.OperationMethod<
@@ -364,8 +541,8 @@ export const createPrimaryIp: API.OperationMethod<
   CreatePrimaryIpError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreatePrimaryIpRequest>,
-  output: __S(11) as any as S.Schema<CreatePrimaryIpResponse>,
+  input: CreatePrimaryIpRequest,
+  output: CreatePrimaryIpResponse,
   errors: [PrimaryIpLimitExceeded, UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -379,8 +556,8 @@ export const deletePrimaryIp: API.OperationMethod<
   DeletePrimaryIpError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DeletePrimaryIpRequest>,
-  output: __S(13) as any as S.Schema<DeletePrimaryIpResponse>,
+  input: DeletePrimaryIpRequest,
+  output: DeletePrimaryIpResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -394,8 +571,8 @@ export const getPrimaryIp: API.OperationMethod<
   GetPrimaryIpError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetPrimaryIpRequest>,
-  output: __S(16) as any as S.Schema<GetPrimaryIpResponse>,
+  input: GetPrimaryIpRequest,
+  output: GetPrimaryIpResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -411,8 +588,8 @@ export const listPrimaryIps: API.PaginatedOperationMethod<
   ListPrimaryIpsResponsePrimaryIpsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(18) as any as S.Schema<ListPrimaryIpsRequest>,
-    output: __S(23) as any as S.Schema<ListPrimaryIpsResponse>,
+    input: ListPrimaryIpsRequest,
+    output: ListPrimaryIpsResponse,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -435,8 +612,8 @@ export const updatePrimaryIp: API.OperationMethod<
   UpdatePrimaryIpError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<UpdatePrimaryIpRequest>,
-  output: __S(26) as any as S.Schema<UpdatePrimaryIpResponse>,
+  input: UpdatePrimaryIpRequest,
+  output: UpdatePrimaryIpResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -451,10 +628,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          labels: S.optional(__S(0)),
-          type: S.String,
-          location: S.optional(S.Unknown),
-          assignee_type: S.optional(S.String),
+          labels: S.optional(CreatePrimaryIpRequestLabelsMap),
+          type: CreatePrimaryIpRequestType,
+          location: S.optional(CreatePrimaryIpRequestLocation),
+          assignee_type: S.optional(CreatePrimaryIpRequestAssigneeType),
           assignee_id: S.optional(S.NullOr(S.Number)),
           auto_delete: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/primary_ips", code: 200 })),
@@ -484,7 +661,7 @@ function __c0(j: number): any {
         identifier: "CreatePrimaryIpResponsePrimaryIpDnsPtrItem",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(CreatePrimaryIpResponsePrimaryIpDnsPtrItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -498,16 +675,16 @@ function __c0(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: __S(0),
+          labels: CreatePrimaryIpResponsePrimaryIpLabelsMap,
           created: S.String,
           blocked: S.Boolean,
-          location: __S(2),
+          location: CreatePrimaryIpResponsePrimaryIpLocation,
           ip: S.String,
-          dns_ptr: __S(4),
-          protection: __S(5),
-          type: S.String,
+          dns_ptr: CreatePrimaryIpResponsePrimaryIpDnsPtrList,
+          protection: CreatePrimaryIpResponsePrimaryIpProtection,
+          type: CreatePrimaryIpResponsePrimaryIpType,
           auto_delete: S.Boolean,
-          assignee_type: S.String,
+          assignee_type: CreatePrimaryIpResponsePrimaryIpAssigneeType,
           assignee_id: S.NullOr(S.Number),
         }),
       ).annotate({
@@ -527,7 +704,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(CreatePrimaryIpResponseActionResourcesItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -542,12 +719,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: CreatePrimaryIpResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(8),
-          error: S.NullOr(__S(9)),
+          resources: CreatePrimaryIpResponseActionResourcesList,
+          error: S.NullOr(CreatePrimaryIpResponseActionError),
         }),
       ).annotate({
         identifier: "CreatePrimaryIpResponseAction",
@@ -555,8 +732,8 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          primary_ip: __S(6),
-          action: S.optional(S.NullOr(__S(10))),
+          primary_ip: CreatePrimaryIpResponsePrimaryIp,
+          action: S.optional(S.NullOr(CreatePrimaryIpResponseAction)),
         }),
       ).annotate({ identifier: "CreatePrimaryIpResponse" });
     case 4:
@@ -580,16 +757,16 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: __S(0),
+          labels: GetPrimaryIpResponsePrimaryIpLabelsMap,
           created: S.String,
           blocked: S.Boolean,
-          location: __S(2),
+          location: CreatePrimaryIpResponsePrimaryIpLocation,
           ip: S.String,
-          dns_ptr: __S(4),
-          protection: __S(5),
-          type: S.String,
+          dns_ptr: GetPrimaryIpResponsePrimaryIpDnsPtrList,
+          protection: CreatePrimaryIpResponsePrimaryIpProtection,
+          type: GetPrimaryIpResponsePrimaryIpType,
           auto_delete: S.Boolean,
-          assignee_type: S.String,
+          assignee_type: GetPrimaryIpResponsePrimaryIpAssigneeType,
           assignee_id: S.NullOr(S.Number),
         }),
       ).annotate({
@@ -602,11 +779,11 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          primary_ip: __S(15),
+          primary_ip: GetPrimaryIpResponsePrimaryIp,
         }),
       ).annotate({ identifier: "GetPrimaryIpResponse" });
     case 1:
-      return S.Array(S.String);
+      return S.Array(ListPrimaryIpsRequestSortItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -615,7 +792,7 @@ function __c2(j: number): any {
           ip: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          sort: S.optional(__S(17).pipe(T.Query())),
+          sort: S.optional(ListPrimaryIpsRequestSortList.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/primary_ips", code: 200 })),
       ).annotate({ identifier: "ListPrimaryIpsRequest" });
     case 3:
@@ -623,23 +800,23 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: __S(0),
+          labels: ListPrimaryIpsResponsePrimaryIpsItemLabelsMap,
           created: S.String,
           blocked: S.Boolean,
-          location: __S(2),
+          location: CreatePrimaryIpResponsePrimaryIpLocation,
           ip: S.String,
-          dns_ptr: __S(4),
-          protection: __S(5),
-          type: S.String,
+          dns_ptr: ListPrimaryIpsResponsePrimaryIpsItemDnsPtrList,
+          protection: CreatePrimaryIpResponsePrimaryIpProtection,
+          type: ListPrimaryIpsResponsePrimaryIpsItemType,
           auto_delete: S.Boolean,
-          assignee_type: S.String,
+          assignee_type: ListPrimaryIpsResponsePrimaryIpsItemAssigneeType,
           assignee_id: S.NullOr(S.Number),
         }),
       ).annotate({
         identifier: "ListPrimaryIpsResponsePrimaryIpsItem",
       });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(ListPrimaryIpsResponsePrimaryIpsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -656,7 +833,7 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(21),
+          pagination: ListPrimaryIpsResponseMetaPagination,
         }),
       ).annotate({
         identifier: "ListPrimaryIpsResponseMeta",
@@ -664,8 +841,8 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          primary_ips: __S(20),
-          meta: __S(22),
+          primary_ips: ListPrimaryIpsResponsePrimaryIpsList,
+          meta: ListPrimaryIpsResponseMeta,
         }),
       ).annotate({ identifier: "ListPrimaryIpsResponse" });
   }
@@ -677,7 +854,7 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
-          labels: S.optional(__S(0)),
+          labels: S.optional(UpdatePrimaryIpRequestLabelsMap),
           auto_delete: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "PUT", uri: "/primary_ips/{id}", code: 200 })),
       ).annotate({ identifier: "UpdatePrimaryIpRequest" });
@@ -686,16 +863,16 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: __S(0),
+          labels: UpdatePrimaryIpResponsePrimaryIpLabelsMap,
           created: S.String,
           blocked: S.Boolean,
-          location: __S(2),
+          location: CreatePrimaryIpResponsePrimaryIpLocation,
           ip: S.String,
-          dns_ptr: __S(4),
-          protection: __S(5),
-          type: S.String,
+          dns_ptr: UpdatePrimaryIpResponsePrimaryIpDnsPtrList,
+          protection: CreatePrimaryIpResponsePrimaryIpProtection,
+          type: UpdatePrimaryIpResponsePrimaryIpType,
           auto_delete: S.Boolean,
-          assignee_type: S.String,
+          assignee_type: UpdatePrimaryIpResponsePrimaryIpAssigneeType,
           assignee_id: S.NullOr(S.Number),
         }),
       ).annotate({
@@ -704,25 +881,8 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          primary_ip: __S(25),
+          primary_ip: UpdatePrimaryIpResponsePrimaryIp,
         }),
       ).annotate({ identifier: "UpdatePrimaryIpResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

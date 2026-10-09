@@ -12,8 +12,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -45,12 +43,19 @@ export class Forbidden
   ) {}
 
 export type CreateRequestValue = "enabled" | "disabled";
+const CreateRequestValue = S.String;
+
 export interface CreateContentScanningRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** The status value for Content Scanning. */
   value: CreateRequestValue | (string & {});
 }
+const CreateContentScanningRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateContentScanningRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateContentScanningResponse {
   /** Defines the last modification date (ISO 8601) of the Content Scanning status. */
@@ -58,35 +63,69 @@ export interface CreateContentScanningResponse {
   /** Defines the status of Content Scanning. */
   value?: string | null;
 }
+const CreateContentScanningResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateContentScanningResponse>;
+
 export interface PayloadsCreateRequestBodyItem {
   /** Defines the custom content extraction expression used to reach content objects in the request. */
   payload: string;
 }
+const PayloadsCreateRequestBodyItem = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<PayloadsCreateRequestBodyItem>;
+
 export type PayloadsCreateRequestBodyList = Array<PayloadsCreateRequestBodyItem>;
+const PayloadsCreateRequestBodyList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<PayloadsCreateRequestBodyList>;
+
 export interface CreatePayloadRequest {
   /** Defines an identifier. */
   zoneId: string;
   body: PayloadsCreateRequestBodyList;
 }
+const CreatePayloadRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreatePayloadRequest>;
+
 export interface PayloadsCreateResultItem {
   /** Defines the unique ID for this Content Scanning custom expression. */
   id?: string | null;
   /** Defines the custom content extraction expression used to reach content objects in the request. */
   payload?: string | null;
 }
+const PayloadsCreateResultItem = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<PayloadsCreateResultItem>;
+
 export type PayloadsCreateResultList = Array<PayloadsCreateResultItem>;
+const PayloadsCreateResultList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<PayloadsCreateResultList>;
+
 export interface CreatePayloadResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: PayloadsCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const CreatePayloadResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreatePayloadResponse>;
+
 export interface DeletePayloadRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** Defines the unique ID for this Content Scanning custom expression. */
   expressionId: string;
 }
+const DeletePayloadRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DeletePayloadRequest>;
+
 export type PayloadsDeleteResultItem = PayloadsCreateResultItem;
 export type PayloadsDeleteResultList = Array<PayloadsCreateResultItem>;
 export interface DeletePayloadResponse {
@@ -95,20 +134,45 @@ export interface DeletePayloadResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const DeletePayloadResponse = CreatePayloadResponse as any as S.Schema<DeletePayloadResponse>;
+
 export interface DisableContentScanningRequest {
   /** Defines an identifier. */
   zoneId: string;
 }
+const DisableContentScanningRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DisableContentScanningRequest>;
+
 export type DisableContentScanningResponse = unknown;
+const DisableContentScanningResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DisableContentScanningResponse>;
+
 export interface EnableContentScanningRequest {
   /** Defines an identifier. */
   zoneId: string;
 }
+const EnableContentScanningRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<EnableContentScanningRequest>;
+
 export type EnableContentScanningResponse = unknown;
+const EnableContentScanningResponse =
+  DisableContentScanningResponse as any as S.Schema<EnableContentScanningResponse>;
+
 export interface GetContentScanningRequest {
   /** Defines an identifier. */
   zoneId: string;
 }
+const GetContentScanningRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetContentScanningRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetContentScanningResponse {
   /** Defines the last modification date (ISO 8601) of the Content Scanning status. */
@@ -116,10 +180,15 @@ export interface GetContentScanningResponse {
   /** Defines the status of Content Scanning. */
   value?: string | null;
 }
+const GetContentScanningResponse =
+  CreateContentScanningResponse as any as S.Schema<GetContentScanningResponse>;
+
 export interface GetSettingsRequest {
   /** Defines an identifier. */
   zoneId: string;
 }
+const GetSettingsRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetSettingsRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSettingsResponse {
   /** Defines the last modification date (ISO 8601) of the Content Scanning status. */
@@ -127,10 +196,14 @@ export interface GetSettingsResponse {
   /** Defines the status of Content Scanning. */
   value?: string | null;
 }
+const GetSettingsResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetSettingsResponse>;
+
 export interface ListPayloadsRequest {
   /** Defines an identifier. */
   zoneId: string;
 }
+const ListPayloadsRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ListPayloadsRequest>;
+
 export type PayloadsListResultItem = PayloadsCreateResultItem;
 export type PayloadsListResultList = Array<PayloadsCreateResultItem>;
 export interface ListPayloadsResponse {
@@ -139,13 +212,19 @@ export interface ListPayloadsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListPayloadsResponse = CreatePayloadResponse as any as S.Schema<ListPayloadsResponse>;
+
 export type UpdateRequestValue = "enabled" | "disabled";
+const UpdateRequestValue = S.String;
+
 export interface UpdateRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** The status value for Content Scanning. */
   value: UpdateRequestValue | (string & {});
 }
+const UpdateRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<UpdateRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
   /** Defines the last modification date (ISO 8601) of the Content Scanning status. */
@@ -153,6 +232,8 @@ export interface UpdateResponse {
   /** Defines the status of Content Scanning. */
   value?: string | null;
 }
+const UpdateResponse = GetSettingsResponse as any as S.Schema<UpdateResponse>;
+
 export interface UpdatePayloadRequest {
   /** Defines an identifier. */
   zoneId: string;
@@ -161,9 +242,19 @@ export interface UpdatePayloadRequest {
   /** Defines the custom content extraction expression used to reach content objects in the request. */
   payload: string;
 }
+const UpdatePayloadRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<UpdatePayloadRequest>;
+
 export type UpdatePayloadResultItem = PayloadsCreateResultItem;
 export type UpdatePayloadResultList = Array<PayloadsCreateResultItem>;
+const UpdatePayloadResultList =
+  PayloadsCreateResultList as any as S.Schema<UpdatePayloadResultList>;
+
 export type UpdatePayloadResponse = UpdatePayloadResultList;
+const UpdatePayloadResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<UpdatePayloadResponse>;
+
 export type CreateContentScanningError = ContentScanningNotEntitled | Forbidden | CloudflareOpError;
 /** Update the Content Scanning status by setting the status value to `enabled` or `disabled`. This is equivalent to calling the dedicated enable and disable endpoints. */
 export const createContentScanning: API.OperationMethod<
@@ -172,8 +263,8 @@ export const createContentScanning: API.OperationMethod<
   CreateContentScanningError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateContentScanningRequest>,
-  output: __S(1) as any as S.Schema<CreateContentScanningResponse>,
+  input: CreateContentScanningRequest,
+  output: CreateContentScanningResponse,
   errors: [ContentScanningNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -193,8 +284,8 @@ export const createPayload: API.PaginatedOperationMethod<
   PayloadsCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(4) as any as S.Schema<CreatePayloadRequest>,
-    output: __S(7) as any as S.Schema<CreatePayloadResponse>,
+    input: CreatePayloadRequest,
+    output: CreatePayloadResponse,
     errors: [
       ContentScanningNotEnabled,
       ContentScanningNotEntitled,
@@ -219,8 +310,8 @@ export const deletePayload: API.PaginatedOperationMethod<
   PayloadsCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(8) as any as S.Schema<DeletePayloadRequest>,
-    output: __S(7) as any as S.Schema<DeletePayloadResponse>,
+    input: DeletePayloadRequest,
+    output: DeletePayloadResponse,
     errors: [ContentScanningNotEnabled, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -237,8 +328,8 @@ export const disableContentScanning: API.OperationMethod<
   DisableContentScanningError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DisableContentScanningRequest>,
-  output: __S(10) as any as S.Schema<DisableContentScanningResponse>,
+  input: DisableContentScanningRequest,
+  output: DisableContentScanningResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -252,8 +343,8 @@ export const enableContentScanning: API.OperationMethod<
   EnableContentScanningError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<EnableContentScanningRequest>,
-  output: __S(10) as any as S.Schema<EnableContentScanningResponse>,
+  input: EnableContentScanningRequest,
+  output: EnableContentScanningResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -267,8 +358,8 @@ export const getContentScanning: API.OperationMethod<
   GetContentScanningError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<GetContentScanningRequest>,
-  output: __S(1) as any as S.Schema<GetContentScanningResponse>,
+  input: GetContentScanningRequest,
+  output: GetContentScanningResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -282,8 +373,8 @@ export const getSettings: API.OperationMethod<
   GetSettingsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<GetSettingsRequest>,
-  output: __S(14) as any as S.Schema<GetSettingsResponse>,
+  input: GetSettingsRequest,
+  output: GetSettingsResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -299,8 +390,8 @@ export const listPayloads: API.PaginatedOperationMethod<
   PayloadsCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(15) as any as S.Schema<ListPayloadsRequest>,
-    output: __S(7) as any as S.Schema<ListPayloadsResponse>,
+    input: ListPayloadsRequest,
+    output: ListPayloadsResponse,
     errors: [ContentScanningNotEnabled, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -317,8 +408,8 @@ export const update: API.OperationMethod<
   UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<UpdateRequest>,
-  output: __S(14) as any as S.Schema<UpdateResponse>,
+  input: UpdateRequest,
+  output: UpdateResponse,
   errors: [ContentScanningNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -332,8 +423,8 @@ export const updatePayload: API.OperationMethod<
   UpdatePayloadError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<UpdatePayloadRequest>,
-  output: __S(18) as any as S.Schema<UpdatePayloadResponse>,
+  input: UpdatePayloadRequest,
+  output: UpdatePayloadResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -356,7 +447,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          value: S.String,
+          value: CreateRequestValue,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -385,12 +476,12 @@ function __c0(j: number): any {
         identifier: "PayloadsCreateRequestBodyItem",
       });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(PayloadsCreateRequestBodyItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          body: __S(3).pipe(T.HttpBody()),
+          body: PayloadsCreateRequestBodyList.pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -407,11 +498,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "PayloadsCreateResultItem" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(PayloadsCreateResultItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: __S(6).pipe(T.EnvelopePayload()),
+          result: PayloadsCreateResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }),
       ).annotate({ identifier: "CreatePayloadResponse" });
@@ -513,7 +604,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          value: S.String,
+          value: UpdateRequestValue,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -537,23 +628,8 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "UpdatePayloadRequest" });
     case 2:
-      return S.suspend(() => __S(6).pipe(T.EnvelopePayloadRoot())).annotate({
+      return S.suspend(() => UpdatePayloadResultList.pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "UpdatePayloadResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

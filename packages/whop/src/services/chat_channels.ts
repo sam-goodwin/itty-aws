@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -52,8 +50,18 @@ export interface GetChatChannelRequest {
   /** The unique identifier of the chat channel or experience to retrieve. */
   id: string;
 }
+const GetChatChannelRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetChatChannelRequest>;
+
 /** A list of words that are automatically filtered from messages in this chat. Empty unless the caller has permission to moderate this chat. */
 export type ChatChannelBannedWordsList = Array<string>;
+const ChatChannelBannedWordsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ChatChannelBannedWordsList>;
+
 /** The experience this chat feed is attached to. */
 export interface ChatChannelExperience {
   /** The unique identifier for the experience. */
@@ -61,10 +69,19 @@ export interface ChatChannelExperience {
   /** The display name of this experience shown to users in the product navigation. Maximum 255 characters. */
   name: string;
 }
+const ChatChannelExperience = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ChatChannelExperience>;
+
 /** Who can post on a chat feed */
 export type WhoCanPostTypes = "everyone" | "admins";
+const WhoCanPostTypes = S.String;
+
 /** Who can react on a chat feed */
 export type WhoCanReactTypes = "everyone" | "no_one";
+const WhoCanReactTypes = S.String;
+
 /** A real-time chat feed attached to an experience, with configurable moderation and posting permissions. */
 export interface ChatChannel {
   /** Whether media uploads such as images and videos are blocked in this chat. */
@@ -84,6 +101,8 @@ export interface ChatChannel {
   /** The permission level controlling which users can add reactions in this chat. */
   who_can_react: WhoCanReactTypes;
 }
+const ChatChannel = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ChatChannel>;
+
 export interface ListChatChannelRequest {
   after?: string;
   before?: string;
@@ -92,6 +111,11 @@ export interface ListChatChannelRequest {
   product_id?: string;
   account_id: string;
 }
+const ListChatChannelRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ListChatChannelRequest>;
+
 /** A list of words that are automatically filtered from messages in this chat. Empty unless the caller has permission to moderate this chat. */
 export type ChatChannelListItemBannedWordsList = Array<string>;
 /** The experience this chat feed is attached to. */
@@ -115,8 +139,15 @@ export interface ChatChannelListItem {
   /** The permission level controlling which users can add reactions in this chat. */
   who_can_react: WhoCanReactTypes;
 }
+const ChatChannelListItem = ChatChannel as any as S.Schema<ChatChannelListItem>;
+
 /** A list of nodes. */
 export type ListChatChannelResponseDataList = Array<ChatChannelListItem>;
+const ListChatChannelResponseDataList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListChatChannelResponseDataList>;
+
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -128,14 +159,24 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
+const PageInfo = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<PageInfo>;
+
 export interface ListChatChannelResponse {
   /** A list of nodes. */
   data: ListChatChannelResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
+const ListChatChannelResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListChatChannelResponse>;
+
 /** A list of words that are automatically blocked from messages in this chat channel. For example, ['spam', 'scam']. */
 export type UpdateChatChannelRequestBannedWordsList = Array<string>;
+const UpdateChatChannelRequestBannedWordsList =
+  ChatChannelBannedWordsList as any as S.Schema<UpdateChatChannelRequestBannedWordsList>;
+
 export interface UpdateChatChannelRequest {
   /** The unique identifier of the chat channel to update. Accepts either an experience ID (e.g. 'exp_xxxxx') or a chat channel ID. */
   id: string;
@@ -152,6 +193,11 @@ export interface UpdateChatChannelRequest {
   /** Controls which roles are allowed to add reactions to messages in this chat channel. */
   who_can_react?: WhoCanReactTypes | (string & {}) | null;
 }
+const UpdateChatChannelRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<UpdateChatChannelRequest>;
+
 export type GetChatChannelError =
   | BadRequest
   | Forbidden
@@ -165,8 +211,8 @@ export const getChatChannel: API.OperationMethod<
   GetChatChannelError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetChatChannelRequest>,
-  output: __S(3) as any as S.Schema<ChatChannel>,
+  input: GetChatChannelRequest,
+  output: ChatChannel,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -187,8 +233,8 @@ export const listChatChannel: API.PaginatedOperationMethod<
   ChatChannelListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(4) as any as S.Schema<ListChatChannelRequest>,
-    output: __S(7) as any as S.Schema<ListChatChannelResponse>,
+    input: ListChatChannelRequest,
+    output: ListChatChannelResponse,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -217,8 +263,8 @@ export const updateChatChannel: API.OperationMethod<
   UpdateChatChannelError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<UpdateChatChannelRequest>,
-  output: __S(3) as any as S.Schema<ChatChannel>,
+  input: UpdateChatChannelRequest,
+  output: ChatChannel,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -247,12 +293,12 @@ function __c0(j: number): any {
         S.Struct({
           ban_media: S.Boolean,
           ban_urls: S.Boolean,
-          banned_words: __S(1),
-          experience: __S(2),
+          banned_words: ChatChannelBannedWordsList,
+          experience: ChatChannelExperience,
           id: S.String,
           user_posts_cooldown_seconds: S.NullOr(S.Number),
-          who_can_post: S.String,
-          who_can_react: S.String,
+          who_can_post: WhoCanPostTypes,
+          who_can_react: WhoCanReactTypes,
         }),
       ).annotate({ identifier: "ChatChannel" });
     case 4:
@@ -267,7 +313,7 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/chat_channels", code: 200 })),
       ).annotate({ identifier: "ListChatChannelRequest" });
     case 5:
-      return S.Array(__S(3));
+      return S.Array(ChatChannelListItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -280,8 +326,8 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(5),
-          page_info: __S(6),
+          data: ListChatChannelResponseDataList,
+          page_info: PageInfo,
         }),
       ).annotate({ identifier: "ListChatChannelResponse" });
   }
@@ -294,24 +340,11 @@ function __c1(j: number): any {
           id: S.String.pipe(T.Label()),
           ban_media: S.optional(S.NullOr(S.Boolean)),
           ban_urls: S.optional(S.NullOr(S.Boolean)),
-          banned_words: S.optional(S.NullOr(__S(1))),
+          banned_words: S.optional(S.NullOr(UpdateChatChannelRequestBannedWordsList)),
           user_posts_cooldown_seconds: S.optional(S.NullOr(S.Number)),
-          who_can_post: S.optional(S.NullOr(S.String)),
-          who_can_react: S.optional(S.NullOr(S.String)),
+          who_can_post: S.optional(S.NullOr(WhoCanPostTypes)),
+          who_can_react: S.optional(S.NullOr(WhoCanReactTypes)),
         }).pipe(T.Http({ method: "PATCH", uri: "/chat_channels/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateChatChannelRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

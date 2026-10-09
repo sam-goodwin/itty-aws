@@ -7,20 +7,27 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
 /** Mode of the [Zone](#tag/zones). For more information, see [Zone Modes](#tag/zones/zone-modes). */
 export type CreateZoneRequestMode = "primary" | "secondary";
+const CreateZoneRequestMode = S.String;
+
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateZoneRequestLabelsMap = { [key: string]: string | undefined };
+const CreateZoneRequestLabelsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateZoneRequestLabelsMap>;
+
 /** [Transaction signature (TSIG)](https://en.wikipedia.org/wiki/TSIG) algorithm used to generate the TSIG key. */
 export type CreateZoneRequestPrimaryNameserversItemTsigAlgorithm =
   | "hmac-md5"
   | "hmac-sha1"
   | "hmac-sha256";
+const CreateZoneRequestPrimaryNameserversItemTsigAlgorithm = S.String;
+
 /** Primary nameserver that returns [Zones](#tag/zones) via `AXFR`. Must allow queries from and may send `NOTIFY` queries to [Hetzner's secondary nameservers](https://docs.hetzner.com/dns-console/dns/general/authoritative-name-servers#secondary-dns-servers-old-name-servers-for-robot-customers). */
 export interface CreateZoneRequestPrimaryNameserversItem {
   /** Public IPv4 or IPv6 address of the primary nameserver. Must be unique across all primary nameservers of this zone. */
@@ -32,9 +39,19 @@ export interface CreateZoneRequestPrimaryNameserversItem {
   /** [Transaction signature (TSIG)](https://en.wikipedia.org/wiki/TSIG) algorithm used to generate the TSIG key. */
   tsig_algorithm?: CreateZoneRequestPrimaryNameserversItemTsigAlgorithm | (string & {});
 }
+const CreateZoneRequestPrimaryNameserversItem = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateZoneRequestPrimaryNameserversItem>;
+
 /** Primary nameservers of the [Zone](#tag/zones). Only applicable for [Zones](#tag/zones) in secondary mode. Ignored for [Zones](#tag/zones) in primary mode. */
 export type CreateZoneRequestPrimaryNameserversList =
   Array<CreateZoneRequestPrimaryNameserversItem>;
+const CreateZoneRequestPrimaryNameserversList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateZoneRequestPrimaryNameserversList>;
+
 /** Type of the [RRSet](#tag/zone-rrsets). */
 export type CreateZoneRequestRrsetsItemType =
   | "A"
@@ -53,6 +70,8 @@ export type CreateZoneRequestRrsetsItemType =
   | "SVCB"
   | "TLSA"
   | "TXT";
+const CreateZoneRequestRrsetsItemType = S.String;
+
 /** Record of a [RRSet](#tag/zone-rrsets). The `value` is used to identify the record in an [RRSet](#tag/zone-rrsets). */
 export interface CreateZoneRequestRrsetsItemRecordsItem {
   /** Value of the record. For details about accepted values, see the [DNS record types documentation](https://docs.hetzner.com/networking/dns/record-types/overview/). */
@@ -60,10 +79,23 @@ export interface CreateZoneRequestRrsetsItemRecordsItem {
   /** Comment of the record. */
   comment?: string;
 }
+const CreateZoneRequestRrsetsItemRecordsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateZoneRequestRrsetsItemRecordsItem>;
+
 /** Records of the [RRSet](#tag/zone-rrsets). Must not be empty and must only contain distinct record values. The order of records returned in responses is not guaranteed to be consistent. */
 export type CreateZoneRequestRrsetsItemRecordsList = Array<CreateZoneRequestRrsetsItemRecordsItem>;
+const CreateZoneRequestRrsetsItemRecordsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateZoneRequestRrsetsItemRecordsList>;
+
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateZoneRequestRrsetsItemLabelsMap = { [key: string]: string | undefined };
+const CreateZoneRequestRrsetsItemLabelsMap =
+  CreateZoneRequestLabelsMap as any as S.Schema<CreateZoneRequestRrsetsItemLabelsMap>;
+
 export interface CreateZoneRequestRrsetsItem {
   /** Name of the [RRSet](#tag/zone-rrsets). The name must be in lower case, and must not end with a dot or the [Zone](#tag/zones) name. Names containing non-ASCII characters must be transcribed to [Punycode](https://wikipedia.org/wiki/Punycode) representation with ACE prefix, e.g. `xn--4bi` (U+2709). For the [Zone](#tag/zones) apex, use `@`. */
   name: string;
@@ -76,8 +108,18 @@ export interface CreateZoneRequestRrsetsItem {
   /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
   labels?: CreateZoneRequestRrsetsItemLabelsMap;
 }
+const CreateZoneRequestRrsetsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateZoneRequestRrsetsItem>;
+
 /** [RRSets](#tag/zone-rrsets) to be added to the [Zone](#tag/zones). Only applicable for [Zones](#tag/zones) in primary mode. Ignored for [Zones](#tag/zones) in secondary mode. */
 export type CreateZoneRequestRrsetsList = Array<CreateZoneRequestRrsetsItem>;
+const CreateZoneRequestRrsetsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateZoneRequestRrsetsList>;
+
 export interface CreateZoneRequest {
   /** Name of the [Zone](#tag/zones). All names with [well-known public suffixes](https://publicsuffix.org/) (e.g. `.de`, `.com`, `.co.uk`) are supported. Subdomains are not supported. The name must be in lower case and must not end with a dot. [Internationalized domain names](https://en.wikipedia.org/wiki/Internationalized_domain_name) must be transcribed to [Punycode](https://wikipedia.org/wiki/Punycode) representation with ACE prefix, e.g. `xn--mnchen-3ya.de` (`münchen.de`). */
   name: string;
@@ -94,6 +136,8 @@ export interface CreateZoneRequest {
   /** Zone file to import. Only applicable for [Zones](#tag/zones) in primary mode. Ignored for [Zones](#tag/zones) in secondary mode. If provided, `rrsets` must be empty. See [Zone file import](#tag/zones/zone-file-import) for more details. */
   zonefile?: string;
 }
+const CreateZoneRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateZoneRequest>;
+
 /** [Transaction signature (TSIG)](https://en.wikipedia.org/wiki/TSIG) algorithm used to generate the TSIG key. */
 export type ZonePrimaryPrimaryNameserversItemTsigAlgorithm =
   | "hmac-md5"
@@ -248,16 +292,30 @@ export interface ZoneSecondary {
   mode: ZoneSecondaryMode;
 }
 export type CreateZoneResponseZone = ZonePrimary | ZoneSecondary;
+const CreateZoneResponseZone = S.Unknown as any as S.Schema<CreateZoneResponseZone>;
+
 /** Status of the Action. */
 export type CreateZoneResponseActionStatus = "running" | "success" | "error";
+const CreateZoneResponseActionStatus = S.String;
+
 export interface CreateZoneResponseActionResourcesItem {
   /** ID of the Resource. */
   id: number;
   /** Type of the Resource. */
   type: string;
 }
+const CreateZoneResponseActionResourcesItem = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateZoneResponseActionResourcesItem>;
+
 /** Resources the Action relates to. */
 export type CreateZoneResponseActionResourcesList = Array<CreateZoneResponseActionResourcesItem>;
+const CreateZoneResponseActionResourcesList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateZoneResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface CreateZoneResponseActionError {
   /** Fixed error code for machines. */
@@ -265,6 +323,11 @@ export interface CreateZoneResponseActionError {
   /** Error message for humans. */
   message: string;
 }
+const CreateZoneResponseActionError = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateZoneResponseActionError>;
+
 export interface CreateZoneResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -283,19 +346,33 @@ export interface CreateZoneResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: CreateZoneResponseActionError | null;
 }
+const CreateZoneResponseAction = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateZoneResponseAction>;
+
 export interface CreateZoneResponse {
   zone: CreateZoneResponseZone;
   action: CreateZoneResponseAction;
 }
+const CreateZoneResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CreateZoneResponse>;
+
 export interface DeleteZoneRequest {
   /** ID or Name of the Zone. */
   id_or_name: string;
 }
+const DeleteZoneRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DeleteZoneRequest>;
+
 /** Status of the Action. */
 export type DeleteZoneResponseActionStatus = "running" | "success" | "error";
+const DeleteZoneResponseActionStatus = S.String;
+
 export type DeleteZoneResponseActionResourcesItem = CreateZoneResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type DeleteZoneResponseActionResourcesList = Array<CreateZoneResponseActionResourcesItem>;
+const DeleteZoneResponseActionResourcesList =
+  CreateZoneResponseActionResourcesList as any as S.Schema<DeleteZoneResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DeleteZoneResponseActionError = CreateZoneResponseActionError;
 export interface DeleteZoneResponseAction {
@@ -316,27 +393,52 @@ export interface DeleteZoneResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: CreateZoneResponseActionError | null;
 }
+const DeleteZoneResponseAction = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DeleteZoneResponseAction>;
+
 export interface DeleteZoneResponse {
   action: DeleteZoneResponseAction;
 }
+const DeleteZoneResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DeleteZoneResponse>;
+
 export interface GetZoneRequest {
   /** ID or Name of the Zone. */
   id_or_name: string;
 }
+const GetZoneRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetZoneRequest>;
+
 export type GetZoneResponseZone = ZonePrimary | ZoneSecondary;
+const GetZoneResponseZone = S.Unknown as any as S.Schema<GetZoneResponseZone>;
+
 export interface GetZoneResponse {
   zone: GetZoneResponseZone;
 }
+const GetZoneResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetZoneResponse>;
+
 export interface GetZoneZonefileRequest {
   /** ID or Name of the Zone. */
   id_or_name: string;
 }
+const GetZoneZonefileRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetZoneZonefileRequest>;
+
 export interface GetZoneZonefileResponse {
   /** Generated zone file. Example: ```dns $ORIGIN example.com. $TTL 3600 @ IN SOA hydrogen.ns.hetzner.com. dns.hetzner.com. 2024010100 86400 10800 3600000 3600 @ IN 10800 NS hydrogen.ns.hetzner.com. ; Some comment. @ IN 10800 NS oxygen.ns.hetzner.com. @ IN 10800 NS helium.ns.hetzner.de. ``` */
   zonefile: string;
 }
+const GetZoneZonefileResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetZoneZonefileResponse>;
+
 /** Mode of the [Zone](#tag/zones). For more information, see [Zone Modes](#tag/zones/zone-modes). */
 export type ListZonesRequestMode = "primary" | "secondary";
+const ListZonesRequestMode = S.String;
+
 export type ListZonesRequestSortItem =
   | "id"
   | "id:asc"
@@ -347,7 +449,14 @@ export type ListZonesRequestSortItem =
   | "created"
   | "created:asc"
   | "created:desc";
+const ListZonesRequestSortItem = S.String;
+
 export type ListZonesRequestSortList = Array<ListZonesRequestSortItem | (string & {})>;
+const ListZonesRequestSortList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListZonesRequestSortList>;
+
 export interface ListZonesRequest {
   /** Filter resources by their name. The response will only contain the resources matching exactly the specified name. */
   name?: string;
@@ -362,8 +471,17 @@ export interface ListZonesRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
+const ListZonesRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ListZonesRequest>;
+
 export type ListZonesResponseZonesItem = ZonePrimary | ZoneSecondary;
+const ListZonesResponseZonesItem = S.Unknown as any as S.Schema<ListZonesResponseZonesItem>;
+
 export type ListZonesResponseZonesList = Array<ListZonesResponseZonesItem>;
+const ListZonesResponseZonesList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListZonesResponseZonesList>;
+
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListZonesResponseMetaPagination {
   /** Current page number. */
@@ -379,26 +497,47 @@ export interface ListZonesResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
+const ListZonesResponseMetaPagination = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListZonesResponseMetaPagination>;
+
 export interface ListZonesResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListZonesResponseMetaPagination;
 }
+const ListZonesResponseMeta = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListZonesResponseMeta>;
+
 export interface ListZonesResponse {
   zones: ListZonesResponseZonesList;
   meta: ListZonesResponseMeta;
 }
+const ListZonesResponse = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ListZonesResponse>;
+
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdateZoneRequestLabelsMap = { [key: string]: string | undefined };
+const UpdateZoneRequestLabelsMap =
+  CreateZoneRequestLabelsMap as any as S.Schema<UpdateZoneRequestLabelsMap>;
+
 export interface UpdateZoneRequest {
   /** ID or Name of the Zone. */
   id_or_name: string;
   /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
   labels?: UpdateZoneRequestLabelsMap;
 }
+const UpdateZoneRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<UpdateZoneRequest>;
+
 export type UpdateZoneResponseZone = ZonePrimary | ZoneSecondary;
+const UpdateZoneResponseZone = S.Unknown as any as S.Schema<UpdateZoneResponseZone>;
+
 export interface UpdateZoneResponse {
   zone: UpdateZoneResponseZone;
 }
+const UpdateZoneResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<UpdateZoneResponse>;
+
 export type CreateZoneError = HetznerOpError;
 /** Create a Zone Creates a [Zone](#tag/zones). A default `SOA` and three `NS` resource records with the assigned Hetzner nameservers are created automatically. */
 export const createZone: API.OperationMethod<
@@ -407,8 +546,8 @@ export const createZone: API.OperationMethod<
   CreateZoneError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<CreateZoneRequest>,
-  output: __S(12) as any as S.Schema<CreateZoneResponse>,
+  input: CreateZoneRequest,
+  output: CreateZoneResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -422,8 +561,8 @@ export const deleteZone: API.OperationMethod<
   DeleteZoneError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<DeleteZoneRequest>,
-  output: __S(15) as any as S.Schema<DeleteZoneResponse>,
+  input: DeleteZoneRequest,
+  output: DeleteZoneResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -437,8 +576,8 @@ export const getZone: API.OperationMethod<
   GetZoneError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetZoneRequest>,
-  output: __S(17) as any as S.Schema<GetZoneResponse>,
+  input: GetZoneRequest,
+  output: GetZoneResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -452,8 +591,8 @@ export const getZoneZonefile: API.OperationMethod<
   GetZoneZonefileError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<GetZoneZonefileRequest>,
-  output: __S(19) as any as S.Schema<GetZoneZonefileResponse>,
+  input: GetZoneZonefileRequest,
+  output: GetZoneZonefileResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -469,8 +608,8 @@ export const listZones: API.PaginatedOperationMethod<
   ListZonesResponseZonesItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(21) as any as S.Schema<ListZonesRequest>,
-    output: __S(25) as any as S.Schema<ListZonesResponse>,
+    input: ListZonesRequest,
+    output: ListZonesResponse,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -493,8 +632,8 @@ export const updateZone: API.OperationMethod<
   UpdateZoneError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<UpdateZoneRequest>,
-  output: __S(27) as any as S.Schema<UpdateZoneResponse>,
+  input: UpdateZoneRequest,
+  output: UpdateZoneResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -511,13 +650,13 @@ function __c0(j: number): any {
           address: S.String,
           port: S.optional(S.Number),
           tsig_key: S.optional(S.String),
-          tsig_algorithm: S.optional(S.String),
+          tsig_algorithm: S.optional(CreateZoneRequestPrimaryNameserversItemTsigAlgorithm),
         }),
       ).annotate({
         identifier: "CreateZoneRequestPrimaryNameserversItem",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(CreateZoneRequestPrimaryNameserversItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -528,30 +667,30 @@ function __c0(j: number): any {
         identifier: "CreateZoneRequestRrsetsItemRecordsItem",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(CreateZoneRequestRrsetsItemRecordsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: S.String,
+          type: CreateZoneRequestRrsetsItemType,
           ttl: S.optional(S.NullOr(S.Number)),
-          records: __S(4),
-          labels: S.optional(__S(0)),
+          records: CreateZoneRequestRrsetsItemRecordsList,
+          labels: S.optional(CreateZoneRequestRrsetsItemLabelsMap),
         }),
       ).annotate({
         identifier: "CreateZoneRequestRrsetsItem",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(CreateZoneRequestRrsetsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          mode: S.String,
+          mode: CreateZoneRequestMode,
           ttl: S.optional(S.Number),
-          labels: S.optional(__S(0)),
-          primary_nameservers: S.optional(__S(2)),
-          rrsets: S.optional(__S(6)),
+          labels: S.optional(CreateZoneRequestLabelsMap),
+          primary_nameservers: S.optional(CreateZoneRequestPrimaryNameserversList),
+          rrsets: S.optional(CreateZoneRequestRrsetsList),
           zonefile: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/zones", code: 200 })),
       ).annotate({ identifier: "CreateZoneRequest" });
@@ -569,7 +708,7 @@ function __c1(j: number): any {
         identifier: "CreateZoneResponseActionResourcesItem",
       });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(CreateZoneResponseActionResourcesItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -584,19 +723,19 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: CreateZoneResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(9),
-          error: S.NullOr(__S(10)),
+          resources: CreateZoneResponseActionResourcesList,
+          error: S.NullOr(CreateZoneResponseActionError),
         }),
       ).annotate({ identifier: "CreateZoneResponseAction" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          zone: S.Unknown,
-          action: __S(11),
+          zone: CreateZoneResponseZone,
+          action: CreateZoneResponseAction,
         }),
       ).annotate({ identifier: "CreateZoneResponse" });
     case 5:
@@ -610,18 +749,18 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: DeleteZoneResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(9),
-          error: S.NullOr(__S(10)),
+          resources: DeleteZoneResponseActionResourcesList,
+          error: S.NullOr(CreateZoneResponseActionError),
         }),
       ).annotate({ identifier: "DeleteZoneResponseAction" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          action: __S(14),
+          action: DeleteZoneResponseAction,
         }),
       ).annotate({ identifier: "DeleteZoneResponse" });
   }
@@ -637,7 +776,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          zone: S.Unknown,
+          zone: GetZoneResponseZone,
         }),
       ).annotate({ identifier: "GetZoneResponse" });
     case 2:
@@ -653,20 +792,20 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "GetZoneZonefileResponse" });
     case 4:
-      return S.Array(S.String);
+      return S.Array(ListZonesRequestSortItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String.pipe(T.Query())),
-          mode: S.optional(S.String.pipe(T.Query())),
+          mode: S.optional(ListZonesRequestMode.pipe(T.Query())),
           label_selector: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(__S(20).pipe(T.Query())),
+          sort: S.optional(ListZonesRequestSortList.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/zones", code: 200 })),
       ).annotate({ identifier: "ListZonesRequest" });
     case 6:
-      return S.Array(S.Unknown);
+      return S.Array(ListZonesResponseZonesItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -687,45 +826,28 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(23),
+          pagination: ListZonesResponseMetaPagination,
         }),
       ).annotate({ identifier: "ListZonesResponseMeta" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          zones: __S(22),
-          meta: __S(24),
+          zones: ListZonesResponseZonesList,
+          meta: ListZonesResponseMeta,
         }),
       ).annotate({ identifier: "ListZonesResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           id_or_name: S.String.pipe(T.Label()),
-          labels: S.optional(__S(0)),
+          labels: S.optional(UpdateZoneRequestLabelsMap),
         }).pipe(T.Http({ method: "PUT", uri: "/zones/{id_or_name}", code: 200 })),
       ).annotate({ identifier: "UpdateZoneRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          zone: S.Unknown,
+          zone: UpdateZoneResponseZone,
         }),
       ).annotate({ identifier: "UpdateZoneResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

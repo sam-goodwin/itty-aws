@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -48,6 +46,8 @@ export type ExportedAssetCreateExportFormatEnum =
   | "video/mp4"
   | "image/gif"
   | "application/json";
+const ExportedAssetCreateExportFormatEnum = S.String;
+
 export interface CreateExportRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -57,6 +57,8 @@ export interface CreateExportRequest {
   export_format: ExportedAssetCreateExportFormatEnum | (string & {});
   export_context?: unknown;
 }
+const CreateExportRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateExportRequest>;
+
 /** Standard ExportedAsset serializer that doesn't return content. */
 export interface ExportedAssetCreate {
   id: number;
@@ -74,12 +76,16 @@ export interface ExportedAssetCreate {
   /** The effective access level the user has for this object */
   user_access_level: string | null;
 }
+const ExportedAssetCreate = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ExportedAssetCreate>;
+
 export interface GetExportRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this exported asset. */
   id: number;
 }
+const GetExportRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetExportRequest>;
+
 /** * `image/png` - image/png * `application/pdf` - application/pdf * `text/csv` - text/csv * `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet * `video/webm` - video/webm * `video/mp4` - video/mp4 * `image/gif` - image/gif * `application/json` - application/json * `application/x-ndjson` - application/x-ndjson */
 export type ExportedAssetExportFormatEnum =
   | "image/png"
@@ -91,6 +97,8 @@ export type ExportedAssetExportFormatEnum =
   | "image/gif"
   | "application/json"
   | "application/x-ndjson";
+const ExportedAssetExportFormatEnum = S.String;
+
 /** Standard ExportedAsset serializer that doesn't return content. */
 export interface ExportedAsset {
   id?: number;
@@ -108,13 +116,25 @@ export interface ExportedAsset {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
+const ExportedAsset = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ExportedAsset>;
+
 export interface GetExportsContentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this exported asset. */
   id: number;
 }
+const GetExportsContentRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetExportsContentRequest>;
+
 export interface GetExportsContentResponse {}
+const GetExportsContentResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetExportsContentResponse>;
+
 export interface ListExportsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -123,13 +143,25 @@ export interface ListExportsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListExportsRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ListExportsRequest>;
+
 export type PaginatedExportedAssetListResultsList = Array<ExportedAsset>;
+const PaginatedExportedAssetListResultsList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<PaginatedExportedAssetListResultsList>;
+
 export interface PaginatedExportedAssetList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedExportedAssetListResultsList;
 }
+const PaginatedExportedAssetList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<PaginatedExportedAssetList>;
+
 export type CreateExportError = BadRequest | Forbidden | NotFound | PosthogOpError;
 export const createExport: API.OperationMethod<
   CreateExportRequest,
@@ -137,8 +169,8 @@ export const createExport: API.OperationMethod<
   CreateExportError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateExportRequest>,
-  output: __S(1) as any as S.Schema<ExportedAssetCreate>,
+  input: CreateExportRequest,
+  output: ExportedAssetCreate,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -151,8 +183,8 @@ export const getExport: API.OperationMethod<
   GetExportError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetExportRequest>,
-  output: __S(3) as any as S.Schema<ExportedAsset>,
+  input: GetExportRequest,
+  output: ExportedAsset,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -165,8 +197,8 @@ export const getExportsContent: API.OperationMethod<
   GetExportsContentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetExportsContentRequest>,
-  output: __S(5) as any as S.Schema<GetExportsContentResponse>,
+  input: GetExportsContentRequest,
+  output: GetExportsContentResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -179,8 +211,8 @@ export const listExports: API.OperationMethod<
   ListExportsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<ListExportsRequest>,
-  output: __S(8) as any as S.Schema<PaginatedExportedAssetList>,
+  input: ListExportsRequest,
+  output: PaginatedExportedAssetList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -195,7 +227,7 @@ function __c0(j: number): any {
           project_id: S.String.pipe(T.Label()),
           dashboard: S.optional(S.NullOr(S.Number)),
           insight: S.optional(S.NullOr(S.Number)),
-          export_format: S.String,
+          export_format: ExportedAssetCreateExportFormatEnum,
           export_context: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/exports/", code: 200 })),
       ).annotate({ identifier: "CreateExportRequest" });
@@ -205,7 +237,7 @@ function __c0(j: number): any {
           id: S.Number,
           dashboard: S.optional(S.NullOr(S.Number)),
           insight: S.optional(S.NullOr(S.Number)),
-          export_format: S.String,
+          export_format: ExportedAssetCreateExportFormatEnum,
           created_at: S.String,
           has_content: S.Boolean,
           export_context: S.optional(S.Unknown),
@@ -230,7 +262,7 @@ function __c0(j: number): any {
           id: S.optional(S.Number),
           dashboard: S.optional(S.NullOr(S.Number)),
           insight: S.optional(S.NullOr(S.Number)),
-          export_format: S.optional(S.String),
+          export_format: S.optional(ExportedAssetExportFormatEnum),
           created_at: S.optional(S.String),
           has_content: S.optional(S.Boolean),
           export_context: S.optional(S.Unknown),
@@ -266,7 +298,7 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/exports/", code: 200 })),
       ).annotate({ identifier: "ListExportsRequest" });
     case 7:
-      return S.Array(__S(3));
+      return S.Array(ExportedAsset);
   }
 }
 function __c1(j: number): any {
@@ -277,23 +309,10 @@ function __c1(j: number): any {
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(7)),
+          results: S.optional(PaginatedExportedAssetListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedExportedAssetList",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

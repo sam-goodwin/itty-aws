@@ -7,8 +7,6 @@ import { UnknownPaypalError } from "../errors.ts";
 import { PaypalProtocol, type PaypalOpError, type PaypalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PaypalOpError, PaypalOpContext };
 
@@ -43,6 +41,11 @@ export interface CancelPayoutsItemRequest {
   /** The ID of the payout item to cancel. */
   payout_item_id: string;
 }
+const CancelPayoutsItemRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CancelPayoutsItemRequest>;
+
 /** The item transaction status.<blockquote><strong>Note:</strong> For <code>POST/v1/payments/payouts-item/{payout_item_id}/cancel</code>, the only possible <code>transaction_status</code> value is <code>RETURNED</code>.</blockquote> */
 export type TransactionEnum =
   | "SUCCESS"
@@ -54,6 +57,8 @@ export type TransactionEnum =
   | "BLOCKED"
   | "REFUNDED"
   | "REVERSED";
+const TransactionEnum = S.String;
+
 /** The currency and amount for a financial transaction, such as a balance or payment due. */
 export interface Currency {
   /** The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/). */
@@ -61,8 +66,12 @@ export interface Currency {
   /** The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency codes - ISO 4217](https://www.iso.org/iso-4217-currency-codes.html). */
   value: string;
 }
+const Currency = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Currency>;
+
 /** The ID type that identifies the payment receiver. */
 export type RecipientEnum = "EMAIL" | "PHONE" | "PAYPAL_ID";
+const RecipientEnum = S.String;
+
 /** The name of the party. */
 export interface Name {
   /** The prefix, or title, to the party's name. */
@@ -80,8 +89,12 @@ export interface Name {
   /** When the party is a person, the party's full name. */
   full_name?: string;
 }
+const Name = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Name>;
+
 /** The wallet where the recipient receives the payout. Payouts to Venmo recipients require a 'note' string and a US mobile phone number. */
 export type RecipientWalletEnum = "PAYPAL" | "VENMO";
+const RecipientWalletEnum = S.String;
+
 /** The purpose of the transaction. */
 export type PurposeEnum =
   | "AWARDS"
@@ -93,6 +106,8 @@ export type PurposeEnum =
   | "CASHBACK"
   | "DISCOUNTS"
   | "NON_GOODS_OR_SERVICES";
+const PurposeEnum = S.String;
+
 /** The details for a sender-created payout to a single recipient. */
 export interface PayoutItemDetail {
   recipient_type?: RecipientEnum;
@@ -111,6 +126,8 @@ export interface PayoutItemDetail {
   /** The purpose of the transaction. */
   purpose?: PurposeEnum;
 }
+const PayoutItemDetail = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<PayoutItemDetail>;
+
 /** The currency conversion resource. */
 export interface PayoutCurrencyConversion {
   /** The amount that is converted from. */
@@ -120,6 +137,11 @@ export interface PayoutCurrencyConversion {
   /** The exchange rate that is applied for this payout. */
   exchange_rate?: string;
 }
+const PayoutCurrencyConversion = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<PayoutCurrencyConversion>;
+
 /** The error details. Required for client-side `4XX` errors. */
 export interface ErrorDetails2 {
   /** The field that caused the error. If this field is in the body, set this value to the field's JSON pointer value. Required for client-side errors. */
@@ -133,8 +155,12 @@ export interface ErrorDetails2 {
   /** The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value. */
   description?: string;
 }
+const ErrorDetails2 = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ErrorDetails2>;
+
 /** An array of additional details about the error. */
 export type ErrorDetailsList = Array<ErrorDetails2>;
+const ErrorDetailsList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ErrorDetailsList>;
+
 /** The HTTP method required to make the related call. */
 export type LinkDescriptionMethod =
   | "GET"
@@ -145,6 +171,8 @@ export type LinkDescriptionMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
+const LinkDescriptionMethod = S.String;
+
 /** The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information. */
 export interface LinkDescription {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -154,8 +182,12 @@ export interface LinkDescription {
   /** The HTTP method required to make the related call. */
   method?: LinkDescriptionMethod;
 }
+const LinkDescription = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<LinkDescription>;
+
 /** An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type LinkDescriptionList = Array<LinkDescription>;
+const LinkDescriptionList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<LinkDescriptionList>;
+
 /** The error details. */
 export interface Error {
   /** The human-readable, unique name of the error. */
@@ -169,8 +201,13 @@ export interface Error {
   details?: ErrorDetailsList;
   links?: LinkDescriptionList;
 }
+const Error = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Error>;
+
 /** An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links). */
 export type PayoutItemDefinitionsLinkDescriptionList = Array<LinkDescription>;
+const PayoutItemDefinitionsLinkDescriptionList =
+  LinkDescriptionList as any as S.Schema<PayoutItemDefinitionsLinkDescriptionList>;
+
 /** The payout item status and other details. A <code>payout_item_id</code> helps you identify denied payments. If a payment is denied, you can use the <code>payout_item_id</code> to identify the payment even if it lacks a <code>transaction_id</code>. */
 export interface PayoutItem {
   /** The ID for the payout item. Visible when you show details for a payout. */
@@ -196,6 +233,8 @@ export interface PayoutItem {
   errors?: Error;
   links?: PayoutItemDefinitionsLinkDescriptionList;
 }
+const PayoutItem = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<PayoutItem>;
+
 export interface GetPayoutRequest {
   /** The ID of the payout for which to show details. */
   id: string;
@@ -208,8 +247,12 @@ export interface GetPayoutRequest {
   /** Indicates whether to show the total items and total pages count in the response. */
   total_required?: boolean;
 }
+const GetPayoutRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetPayoutRequest>;
+
 /** The payouts status. */
 export type BatchEnum = "DENIED" | "PENDING" | "PROCESSING" | "SUCCESS" | "CANCELED";
+const BatchEnum = S.String;
+
 /** The sender-provided header for a payout request. */
 export interface PayoutSenderBatchHeader {
   /** The sender-specified ID number. Tracks the payout in an accounting system.<blockquote><strong>Note:</strong> <p>PayPal does not process duplicate payouts. If you specify a <code>sender_batch_id</code> that was used in the last 30 days, the API rejects the request with an error message that shows the duplicate <code>sender_batch_id</code> and includes a HATEOAS link to the original payout with the same <code>sender_batch_id</code>.</p><p>If you receive an HTTP <code>5<i>nn</i></code> status code, you can safely retry the request with the same <code>sender_batch_id</code>. The API completes a payment only once for a <code>sender_batch_id</code> that is used within 30 days.</p></blockquote> */
@@ -220,8 +263,15 @@ export interface PayoutSenderBatchHeader {
   /** The email message that PayPal sends when the payout item completes. The message is the same for all recipients. */
   email_message?: string;
 }
+const PayoutSenderBatchHeader = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<PayoutSenderBatchHeader>;
+
 /** Identifies a funding source type. */
 export type FundingSource = "BALANCE";
+const FundingSource = S.String;
+
 /** The payout header that is returned in response to a payout header request. Shows details for an entire payout request. */
 export interface PayoutBatchHeader {
   /** The PayPal-generated ID for a payout. */
@@ -243,8 +293,13 @@ export interface PayoutBatchHeader {
   /** The currency and amount of the total estimate for the applicable payouts fees. Initially, the fee is `0`. The fee is populated after the payout moves to the `PROCESSING` state. */
   fees?: Currency;
 }
+const PayoutBatchHeader = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<PayoutBatchHeader>;
+
 /** An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links). */
 export type PayoutBatchItemsDefinitionsLinkDescriptionList = Array<LinkDescription>;
+const PayoutBatchItemsDefinitionsLinkDescriptionList =
+  LinkDescriptionList as any as S.Schema<PayoutBatchItemsDefinitionsLinkDescriptionList>;
+
 /** The payout item status and other details. */
 export interface PayoutBatchItems {
   /** The ID for the payout item. Viewable when you show details for a payout. */
@@ -267,10 +322,17 @@ export interface PayoutBatchItems {
   errors?: Error;
   links?: PayoutBatchItemsDefinitionsLinkDescriptionList;
 }
+const PayoutBatchItems = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<PayoutBatchItems>;
+
 /** An array of individual items. */
 export type PayoutBatchItemsList = Array<PayoutBatchItems>;
+const PayoutBatchItemsList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<PayoutBatchItemsList>;
+
 /** An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links). */
 export type PayoutBatchDefinitionsLinkDescriptionList = Array<LinkDescription>;
+const PayoutBatchDefinitionsLinkDescriptionList =
+  LinkDescriptionList as any as S.Schema<PayoutBatchDefinitionsLinkDescriptionList>;
+
 /** The PayPal-generated batch status. */
 export interface PayoutBatch {
   /** The total number of items in the full result list. */
@@ -282,10 +344,17 @@ export interface PayoutBatch {
   items?: PayoutBatchItemsList;
   links?: PayoutBatchDefinitionsLinkDescriptionList;
 }
+const PayoutBatch = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<PayoutBatch>;
+
 export interface GetPayoutsItemRequest {
   /** The ID of the payout item to cancel. */
   payout_item_id: string;
 }
+const GetPayoutsItemRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetPayoutsItemRequest>;
+
 /** The sender-provided payout header for a payout request. */
 export interface SenderBatchHeader {
   /** A sender-specified ID number. Tracks the payout in an accounting system.<blockquote><strong>Note:</strong> <p>PayPal does not process duplicate payouts. If you specify a <code>sender_batch_id</code> that was used in the last 30 days, the API rejects the request with an error message that shows the duplicate <code>sender_batch_id</code> and includes a HATEOAS link to the original payout with the same <code>sender_batch_id</code>.</p><p>If you receive an HTTP <code>5<i>nn</i></code> status code, you can safely retry the request with the same <code>sender_batch_id</code>. The API completes a payment only once for a <code>sender_batch_id</code> that is used within 30 days.</p></blockquote> */
@@ -299,6 +368,8 @@ export interface SenderBatchHeader {
   /** The payouts and item-level notes are concatenated in the email. The maximum combined length of the notes is 1000 characters. */
   note?: string;
 }
+const SenderBatchHeader = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<SenderBatchHeader>;
+
 /** The phone number in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). */
 export interface Phone {
   /** The country calling code (CC), in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). The combined length of the CC and the national number must not be greater than 15 digits. The national number consists of a national destination code (NDC) and subscriber number (SN). */
@@ -308,11 +379,18 @@ export interface Phone {
   /** The extension number. */
   extension_number?: string;
 }
+const Phone = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Phone>;
+
 /** Captures additional notification modes to reach out to the receiver regarding this payment. */
 export interface AlternateNotificationMethod {
   /** The mobile phone number of the receiver. */
   phone?: Phone;
 }
+const AlternateNotificationMethod = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<AlternateNotificationMethod>;
+
 /** Metadata for Venmo transactions. */
 export interface ApplicationContext {
   /** This attribute controls the privacy of a payout transaction in recipient's feed. PUBLIC, FRIENDS_ONLY & PRIVATE are the values that can be used. PUBLIC - The payment displays on the recipient's public Venmo feed. FRIENDS_ONLY - The payment displays only to the recipient's Venmo friends. PRIVATE - The payment displays only on the recipient's personal feed. Defaults to `PRIVATE` if left blank. */
@@ -322,6 +400,8 @@ export interface ApplicationContext {
   /** Link to a logo that displays as the sender's profile image in the recipient's Venmo feed. Used to add or update the business profile image. Max image size: 1024 x 1024 pixels. The image should be square and maximum URL length is 2000. */
   logo_url?: string;
 }
+const ApplicationContext = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ApplicationContext>;
+
 /** The sender-created payout to a recipient. */
 export interface PayoutItemRequest {
   /** The recipient type. Value is:<ul><li><p><code>EMAIL</code>. The unencrypted email. Value is a string of up to 127 single-byte characters.</p></li><li><p><code>PHONE</code>. The unencrypted phone number.</p><blockquote><strong>Note:</strong> The PayPal sandbox does not support the <code>PHONE</code> recipient type.</blockquote></li><li><p><code>PAYPAL_ID</code>. The encrypted PayPal account number.</p></li><li><p><code>USER_HANDLE</code>. User handle (or) Username associated with Venmo account.</p></li></ul><br/>If the <code>sender_batch_header</code> includes the <code>recipient_type</code> attribute, payout items use the <code>recipient_type</code> of the <code>sender_batch_header</code>, unless a payout item has its own <code>recipient_type</code> attribute. If the <code>sender_batch_header</code> omits the <code>recipient_type</code> attribute, each payout item must include its own <code>recipient_type</code> value. */
@@ -345,8 +425,15 @@ export interface PayoutItemRequest {
   /** The purpose of the transaction. */
   purpose?: PurposeEnum | (string & {});
 }
+const PayoutItemRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<PayoutItemRequest>;
+
 /** An array of individual payout items. */
 export type PayoutItemRequestList = Array<PayoutItemRequest>;
+const PayoutItemRequestList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<PayoutItemRequestList>;
+
 export interface PostPayoutRequest {
   /** The server stores keys for 30 days. */
   payPalRequestId?: string;
@@ -354,6 +441,8 @@ export interface PostPayoutRequest {
   sender_batch_header: SenderBatchHeader;
   items: PayoutItemRequestList;
 }
+const PostPayoutRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<PostPayoutRequest>;
+
 /** The payout header that is returned in response to a payout header request. Shows details for an entire payout request. */
 export interface PayoutHeader {
   /** The PayPal-generated ID for a payout. */
@@ -365,14 +454,21 @@ export interface PayoutHeader {
   /** The original payout header, as provided by the payment sender. */
   sender_batch_header: PayoutSenderBatchHeader;
 }
+const PayoutHeader = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<PayoutHeader>;
+
 /** An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links). */
 export type DefinitionsLinkDescriptionList = Array<LinkDescription>;
+const DefinitionsLinkDescriptionList =
+  LinkDescriptionList as any as S.Schema<DefinitionsLinkDescriptionList>;
+
 /** The create payout response. */
 export interface Payout {
   /** The payout header. */
   batch_header?: PayoutHeader;
   links?: DefinitionsLinkDescriptionList;
 }
+const Payout = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Payout>;
+
 export type CancelPayoutsItemError = BadRequest | NotFound | PaypalOpError;
 /** Cancel unclaimed payout item Cancels an unclaimed payout item, by ID. If no one claims the unclaimed item within 30 days, the API automatically returns the funds to the sender. Use this call to cancel the unclaimed item before the automatic 30-day refund. You can cancel payout items with a <code>transaction_status</code> of <code>UNCLAIMED</code>. */
 export const cancelPayoutsItem: API.OperationMethod<
@@ -381,8 +477,8 @@ export const cancelPayoutsItem: API.OperationMethod<
   CancelPayoutsItemError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CancelPayoutsItemRequest>,
-  output: __S(10) as any as S.Schema<PayoutItem>,
+  input: CancelPayoutsItemRequest,
+  output: PayoutItem,
   errors: [BadRequest, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -396,8 +492,8 @@ export const getPayout: API.OperationMethod<
   GetPayoutError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetPayoutRequest>,
-  output: __S(16) as any as S.Schema<PayoutBatch>,
+  input: GetPayoutRequest,
+  output: PayoutBatch,
   errors: [NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -411,8 +507,8 @@ export const getPayoutsItem: API.OperationMethod<
   GetPayoutsItemError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<GetPayoutsItemRequest>,
-  output: __S(10) as any as S.Schema<PayoutItem>,
+  input: GetPayoutsItemRequest,
+  output: PayoutItem,
   errors: [NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -426,8 +522,8 @@ export const postPayout: API.OperationMethod<
   PostPayoutError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<PostPayoutRequest>,
-  output: __S(26) as any as S.Schema<Payout>,
+  input: PostPayoutRequest,
+  output: Payout,
   errors: [BadRequest, Forbidden, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -470,21 +566,21 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          recipient_type: S.optional(S.String),
-          amount: __S(1),
+          recipient_type: S.optional(RecipientEnum),
+          amount: Currency,
           note: S.optional(S.String),
           receiver: S.String,
           sender_item_id: S.optional(S.String),
-          recipient_name: S.optional(__S(2)),
-          recipient_wallet: S.optional(S.String),
-          purpose: S.optional(S.String),
+          recipient_name: S.optional(Name),
+          recipient_wallet: S.optional(RecipientWalletEnum),
+          purpose: S.optional(PurposeEnum),
         }),
       ).annotate({ identifier: "PayoutItemDetail" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          from_amount: S.optional(__S(1)),
-          to_amount: S.optional(__S(1)),
+          from_amount: S.optional(Currency),
+          to_amount: S.optional(Currency),
           exchange_rate: S.optional(S.String),
         }),
       ).annotate({ identifier: "PayoutCurrencyConversion" });
@@ -499,13 +595,13 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ErrorDetails2" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(ErrorDetails2);
     case 7:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(S.String),
+          method: S.optional(LinkDescriptionMethod),
         }),
       ).annotate({ identifier: "LinkDescription" });
   }
@@ -513,7 +609,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(LinkDescription);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -521,8 +617,8 @@ function __c1(j: number): any {
           message: S.String,
           debug_id: S.String,
           information_link: S.optional(S.String),
-          details: S.optional(__S(6)),
-          links: S.optional(__S(8)),
+          details: S.optional(ErrorDetailsList),
+          links: S.optional(LinkDescriptionList),
         }),
       ).annotate({ identifier: "Error" });
     case 2:
@@ -531,15 +627,15 @@ function __c1(j: number): any {
           payout_item_id: S.String,
           transaction_id: S.optional(S.String),
           activity_id: S.optional(S.String),
-          transaction_status: S.optional(S.String),
-          payout_item_fee: S.optional(__S(1)),
+          transaction_status: S.optional(TransactionEnum),
+          payout_item_fee: S.optional(Currency),
           payout_batch_id: S.String,
           sender_batch_id: S.optional(S.String),
-          payout_item: __S(3),
-          currency_conversion: S.optional(__S(4)),
+          payout_item: PayoutItemDetail,
+          currency_conversion: S.optional(PayoutCurrencyConversion),
           time_processed: S.optional(S.String),
-          errors: S.optional(__S(9)),
-          links: S.optional(__S(8)),
+          errors: S.optional(Error),
+          links: S.optional(PayoutItemDefinitionsLinkDescriptionList),
         }),
       ).annotate({ identifier: "PayoutItem" });
     case 3:
@@ -556,7 +652,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sender_batch_id: S.optional(S.String),
-          recipient_type: S.optional(S.String),
+          recipient_type: S.optional(RecipientEnum),
           email_subject: S.optional(S.String),
           email_message: S.optional(S.String),
         }),
@@ -565,14 +661,14 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           payout_batch_id: S.String,
-          batch_status: S.String,
+          batch_status: BatchEnum,
           time_created: S.optional(S.String),
           time_completed: S.optional(S.String),
           time_closed: S.optional(S.String),
-          sender_batch_header: __S(12),
-          funding_source: S.optional(S.String),
-          amount: S.optional(__S(1)),
-          fees: S.optional(__S(1)),
+          sender_batch_header: PayoutSenderBatchHeader,
+          funding_source: S.optional(FundingSource),
+          amount: S.optional(Currency),
+          fees: S.optional(Currency),
         }),
       ).annotate({ identifier: "PayoutBatchHeader" });
     case 6:
@@ -581,18 +677,18 @@ function __c1(j: number): any {
           payout_item_id: S.String,
           transaction_id: S.optional(S.String),
           activity_id: S.optional(S.String),
-          transaction_status: S.optional(S.String),
-          payout_item_fee: S.optional(__S(1)),
+          transaction_status: S.optional(TransactionEnum),
+          payout_item_fee: S.optional(Currency),
           payout_batch_id: S.String,
-          payout_item: __S(3),
-          currency_conversion: S.optional(__S(4)),
+          payout_item: PayoutItemDetail,
+          currency_conversion: S.optional(PayoutCurrencyConversion),
           time_processed: S.optional(S.String),
-          errors: S.optional(__S(9)),
-          links: S.optional(__S(8)),
+          errors: S.optional(Error),
+          links: S.optional(PayoutBatchItemsDefinitionsLinkDescriptionList),
         }),
       ).annotate({ identifier: "PayoutBatchItems" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(PayoutBatchItems);
   }
 }
 function __c2(j: number): any {
@@ -602,9 +698,9 @@ function __c2(j: number): any {
         S.Struct({
           total_items: S.optional(S.Number),
           total_pages: S.optional(S.Number),
-          batch_header: S.optional(__S(13)),
-          items: S.optional(__S(15)),
-          links: S.optional(__S(8)),
+          batch_header: S.optional(PayoutBatchHeader),
+          items: S.optional(PayoutBatchItemsList),
+          links: S.optional(PayoutBatchDefinitionsLinkDescriptionList),
         }),
       ).annotate({ identifier: "PayoutBatch" });
     case 1:
@@ -636,7 +732,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          phone: S.optional(__S(19)),
+          phone: S.optional(Phone),
         }),
       ).annotate({
         identifier: "AlternateNotificationMethod",
@@ -653,19 +749,19 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           recipient_type: S.optional(S.String),
-          amount: __S(1),
+          amount: Currency,
           note: S.optional(S.String),
           receiver: S.String,
           sender_item_id: S.optional(S.String),
           recipient_wallet: S.optional(S.String),
-          alternate_notification_method: S.optional(__S(20)),
+          alternate_notification_method: S.optional(AlternateNotificationMethod),
           notification_language: S.optional(S.String),
-          application_context: S.optional(__S(21)),
-          purpose: S.optional(S.String),
+          application_context: S.optional(ApplicationContext),
+          purpose: S.optional(PurposeEnum),
         }),
       ).annotate({ identifier: "PayoutItemRequest" });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(PayoutItemRequest);
   }
 }
 function __c3(j: number): any {
@@ -674,42 +770,25 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           payPalRequestId: S.optional(S.String.pipe(T.Header("PayPal-Request-Id"))),
-          sender_batch_header: __S(18),
-          items: __S(23),
+          sender_batch_header: SenderBatchHeader,
+          items: PayoutItemRequestList,
         }).pipe(T.Http({ method: "POST", uri: "/v1/payments/payouts", code: 200 })),
       ).annotate({ identifier: "PostPayoutRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           payout_batch_id: S.String,
-          batch_status: S.String,
+          batch_status: BatchEnum,
           time_created: S.optional(S.String),
-          sender_batch_header: __S(12),
+          sender_batch_header: PayoutSenderBatchHeader,
         }),
       ).annotate({ identifier: "PayoutHeader" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          batch_header: S.optional(__S(25)),
-          links: S.optional(__S(8)),
+          batch_header: S.optional(PayoutHeader),
+          links: S.optional(DefinitionsLinkDescriptionList),
         }),
       ).annotate({ identifier: "Payout" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

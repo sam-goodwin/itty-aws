@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "identitystore",
   serviceShapeName: "AWSIdentityStore",
@@ -88,7 +86,7 @@ export class ConflictException
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       RequestId: /*@__PURE__*/ S.optional(S.String),
       Reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
+        /*@__PURE__*/ S.suspend(() => ConflictExceptionReason).annotate({
           identifier: "ConflictExceptionReason",
         }),
       ),
@@ -100,11 +98,11 @@ export class ResourceNotFoundException
     "ResourceNotFoundException",
     {
       ResourceType: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ResourceType" }),
+        /*@__PURE__*/ S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
       ),
       ResourceId: /*@__PURE__*/ S.optional(S.String),
       Reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
+        /*@__PURE__*/ S.suspend(() => ResourceNotFoundExceptionReason).annotate({
           identifier: "ResourceNotFoundExceptionReason",
         }),
       ),
@@ -129,7 +127,7 @@ export class ValidationException
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       RequestId: /*@__PURE__*/ S.optional(S.String),
       Reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
@@ -144,6 +142,7 @@ export interface CreateGroupRequest {
   DisplayName?: string | redacted.Redacted<string>;
   Description?: string | redacted.Redacted<string>;
 }
+const CreateGroupRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateGroupRequest>;
 export type ResourceId = string;
 export type ResourceArn = string;
 export type ResourceRevision = string;
@@ -153,17 +152,27 @@ export interface CreateGroupResponse {
   GroupArn: string;
   Revision: string;
 }
+const CreateGroupResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateGroupResponse>;
 export type MemberId = { UserId: string };
+const MemberId = /*@__PURE__*/ __L.at(__c0, 2);
 export interface CreateGroupMembershipRequest {
   IdentityStoreId: string;
   GroupId: string;
   MemberId: MemberId;
 }
+const CreateGroupMembershipRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateGroupMembershipRequest>;
 export interface CreateGroupMembershipResponse {
   IdentityStoreId: string;
   MembershipId: string;
   MembershipArn: string;
 }
+const CreateGroupMembershipResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateGroupMembershipResponse>;
 export type UserName = string | redacted.Redacted<string>;
 export interface Name {
   Formatted?: string | redacted.Redacted<string>;
@@ -173,12 +182,15 @@ export interface Name {
   HonorificPrefix?: string | redacted.Redacted<string>;
   HonorificSuffix?: string | redacted.Redacted<string>;
 }
+const Name = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Name>;
 export interface Email {
   Value?: string | redacted.Redacted<string>;
   Type?: string | redacted.Redacted<string>;
   Primary?: boolean;
 }
+const Email = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Email>;
 export type Emails = Email[];
+const Emails = /*@__PURE__*/ __L.at(__c0, 7);
 export interface Address {
   StreetAddress?: string | redacted.Redacted<string>;
   Locality?: string | redacted.Redacted<string>;
@@ -189,29 +201,36 @@ export interface Address {
   Type?: string | redacted.Redacted<string>;
   Primary?: boolean;
 }
+const Address = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Address>;
 export type Addresses = Address[];
+const Addresses = /*@__PURE__*/ __L.at(__c1, 1);
 export interface PhoneNumber {
   Value?: string | redacted.Redacted<string>;
   Type?: string | redacted.Redacted<string>;
   Primary?: boolean;
 }
 export type PhoneNumbers = PhoneNumber[];
+const PhoneNumbers = Emails as any as S.Schema<PhoneNumbers>;
 export interface Photo {
   Value: string | redacted.Redacted<string>;
   Type?: string | redacted.Redacted<string>;
   Display?: string | redacted.Redacted<string>;
   Primary?: boolean;
 }
+const Photo = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Photo>;
 export type Photos = Photo[];
+const Photos = /*@__PURE__*/ __L.at(__c1, 3);
 export interface Role {
   Value?: string | redacted.Redacted<string>;
   Type?: string | redacted.Redacted<string>;
   Primary?: boolean;
 }
 export type Roles = Role[];
+const Roles = Emails as any as S.Schema<Roles>;
 export type ExtensionName = string;
 export type AttributeValue = unknown;
 export type Extensions = { [key: string]: any | undefined };
+const Extensions = /*@__PURE__*/ __L.at(__c1, 4);
 export interface CreateUserRequest {
   IdentityStoreId: string;
   UserName?: string | redacted.Redacted<string>;
@@ -233,40 +252,55 @@ export interface CreateUserRequest {
   Roles?: Role[];
   Extensions?: { [key: string]: any | undefined };
 }
+const CreateUserRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CreateUserRequest>;
 export interface CreateUserResponse {
   IdentityStoreId: string;
   UserId: string;
   UserArn: string;
   Revision: string;
 }
+const CreateUserResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CreateUserResponse>;
 export interface DeleteGroupRequest {
   IdentityStoreId: string;
   GroupId: string;
   Revision?: string;
 }
+const DeleteGroupRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DeleteGroupRequest>;
 export interface DeleteGroupResponse {}
+const DeleteGroupResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DeleteGroupResponse>;
 export interface DeleteGroupMembershipRequest {
   IdentityStoreId: string;
   MembershipId: string;
 }
+const DeleteGroupMembershipRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DeleteGroupMembershipRequest>;
 export interface DeleteGroupMembershipResponse {}
+const DeleteGroupMembershipResponse =
+  DeleteGroupResponse as any as S.Schema<DeleteGroupMembershipResponse>;
 export interface DeleteUserRequest {
   IdentityStoreId: string;
   UserId: string;
   Revision?: string;
 }
+const DeleteUserRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DeleteUserRequest>;
 export interface DeleteUserResponse {}
+const DeleteUserResponse = DeleteGroupResponse as any as S.Schema<DeleteUserResponse>;
 export interface DescribeGroupRequest {
   IdentityStoreId: string;
   GroupId: string;
 }
+const DescribeGroupRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DescribeGroupRequest>;
 export type ExternalIdIssuer = string | redacted.Redacted<string>;
 export type ExternalIdIdentifier = string | redacted.Redacted<string>;
 export interface ExternalId {
   Issuer: string | redacted.Redacted<string>;
   Id: string | redacted.Redacted<string>;
 }
+const ExternalId = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ExternalId>;
 export type ExternalIds = ExternalId[];
+const ExternalIds = /*@__PURE__*/ __L.at(__c2, 5);
 export type StringType = string;
 export interface DescribeGroupResponse {
   IdentityStoreId: string;
@@ -281,10 +315,18 @@ export interface DescribeGroupResponse {
   CreatedBy?: string;
   UpdatedBy?: string;
 }
+const DescribeGroupResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DescribeGroupResponse>;
 export interface DescribeGroupMembershipRequest {
   IdentityStoreId: string;
   MembershipId: string;
 }
+const DescribeGroupMembershipRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DescribeGroupMembershipRequest>;
 export interface DescribeGroupMembershipResponse {
   IdentityStoreId: string;
   MembershipId: string;
@@ -296,32 +338,54 @@ export interface DescribeGroupMembershipResponse {
   CreatedBy?: string;
   UpdatedBy?: string;
 }
+const DescribeGroupMembershipResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DescribeGroupMembershipResponse>;
 export interface DescribeIdentityStoreRequest {
   IdentityStoreId: string;
 }
+const DescribeIdentityStoreRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DescribeIdentityStoreRequest>;
 export type IdentityStoreArn = string;
 export type VpcIdType = string;
 export type VpcIdList = string[];
+const VpcIdList = /*@__PURE__*/ __L.at(__c3, 2);
 export type IpCidrType = string;
 export type IpCidrList = string[];
+const IpCidrList = VpcIdList as any as S.Schema<IpCidrList>;
 export interface NetworkConfigurationDetails {
   VpceAccessRequired: boolean;
   ApiRestrictSourceVpcs?: string[];
   ApiAllowSourceIps?: string[];
   ScimAllowSourceIps?: string[];
 }
+const NetworkConfigurationDetails = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<NetworkConfigurationDetails>;
 export interface DescribeIdentityStoreResponse {
   IdentityStoreId: string;
   IdentityStoreArn: string;
   NetworkConfiguration?: NetworkConfigurationDetails;
 }
+const DescribeIdentityStoreResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DescribeIdentityStoreResponse>;
 export type ExtensionNames = string[];
+const ExtensionNames = VpcIdList as any as S.Schema<ExtensionNames>;
 export interface DescribeUserRequest {
   IdentityStoreId: string;
   UserId: string;
   Extensions?: string[];
 }
+const DescribeUserRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<DescribeUserRequest>;
 export type UserStatus = "ENABLED" | "DISABLED" | (string & {});
+const UserStatus = S.String;
+
 export interface DescribeUserResponse {
   IdentityStoreId: string;
   UserId: string;
@@ -352,57 +416,84 @@ export interface DescribeUserResponse {
   UpdatedBy?: string;
   Extensions?: { [key: string]: any | undefined };
 }
+const DescribeUserResponse = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<DescribeUserResponse>;
 export type AttributePath = string;
 export interface UniqueAttribute {
   AttributePath: string;
   AttributeValue: any;
 }
+const UniqueAttribute = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<UniqueAttribute>;
 export type AlternateIdentifier =
   | { ExternalId: ExternalId; UniqueAttribute?: never }
   | { ExternalId?: never; UniqueAttribute: UniqueAttribute };
+const AlternateIdentifier = /*@__PURE__*/ __L.at(__c4, 0);
 export interface GetGroupIdRequest {
   IdentityStoreId: string;
   AlternateIdentifier: AlternateIdentifier;
 }
+const GetGroupIdRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<GetGroupIdRequest>;
 export interface GetGroupIdResponse {
   IdentityStoreId: string;
   GroupId: string;
   GroupArn: string;
 }
+const GetGroupIdResponse = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<GetGroupIdResponse>;
 export interface GetGroupMembershipIdRequest {
   IdentityStoreId: string;
   GroupId: string;
   MemberId: MemberId;
 }
+const GetGroupMembershipIdRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetGroupMembershipIdRequest>;
 export interface GetGroupMembershipIdResponse {
   IdentityStoreId: string;
   MembershipId: string;
   MembershipArn: string;
 }
+const GetGroupMembershipIdResponse =
+  CreateGroupMembershipResponse as any as S.Schema<GetGroupMembershipIdResponse>;
 export interface GetUserIdRequest {
   IdentityStoreId: string;
   AlternateIdentifier: AlternateIdentifier;
 }
+const GetUserIdRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<GetUserIdRequest>;
 export interface GetUserIdResponse {
   IdentityStoreId: string;
   UserId: string;
   UserArn: string;
 }
+const GetUserIdResponse = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<GetUserIdResponse>;
 export type GroupIds = string[];
+const GroupIds = VpcIdList as any as S.Schema<GroupIds>;
 export interface IsMemberInGroupsRequest {
   IdentityStoreId: string;
   MemberId: MemberId;
   GroupIds: string[];
 }
+const IsMemberInGroupsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<IsMemberInGroupsRequest>;
 export interface GroupMembershipExistenceResult {
   GroupId?: string;
   MemberId?: MemberId;
   MembershipExists?: boolean;
 }
+const GroupMembershipExistenceResult = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<GroupMembershipExistenceResult>;
 export type GroupMembershipExistenceResults = GroupMembershipExistenceResult[];
+const GroupMembershipExistenceResults = /*@__PURE__*/ __L.at(__c5, 0);
 export interface IsMemberInGroupsResponse {
   Results: GroupMembershipExistenceResult[];
 }
+const IsMemberInGroupsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<IsMemberInGroupsResponse>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListGroupMembershipsRequest {
@@ -411,6 +502,10 @@ export interface ListGroupMembershipsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListGroupMembershipsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListGroupMembershipsRequest>;
 export interface GroupMembership {
   IdentityStoreId: string;
   MembershipId: string;
@@ -422,32 +517,47 @@ export interface GroupMembership {
   CreatedBy?: string;
   UpdatedBy?: string;
 }
+const GroupMembership = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<GroupMembership>;
 export type GroupMemberships = GroupMembership[];
+const GroupMemberships = /*@__PURE__*/ __L.at(__c5, 4);
 export interface ListGroupMembershipsResponse {
   GroupMemberships: GroupMembership[];
   NextToken?: string;
 }
+const ListGroupMembershipsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListGroupMembershipsResponse>;
 export interface ListGroupMembershipsForMemberRequest {
   IdentityStoreId: string;
   MemberId: MemberId;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListGroupMembershipsForMemberRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ListGroupMembershipsForMemberRequest>;
 export interface ListGroupMembershipsForMemberResponse {
   GroupMemberships: GroupMembership[];
   NextToken?: string;
 }
+const ListGroupMembershipsForMemberResponse =
+  ListGroupMembershipsResponse as any as S.Schema<ListGroupMembershipsForMemberResponse>;
 export interface Filter {
   AttributePath: string;
   AttributeValue: string | redacted.Redacted<string>;
 }
+const Filter = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<Filter>;
 export type Filters = Filter[];
+const Filters = /*@__PURE__*/ __L.at(__c6, 0);
 export interface ListGroupsRequest {
   IdentityStoreId: string;
   MaxResults?: number;
   NextToken?: string;
   Filters?: Filter[];
 }
+const ListGroupsRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ListGroupsRequest>;
 export interface Group {
   IdentityStoreId: string;
   GroupId: string;
@@ -461,24 +571,37 @@ export interface Group {
   CreatedBy?: string;
   UpdatedBy?: string;
 }
+const Group = DescribeGroupResponse as any as S.Schema<Group>;
 export type Groups = Group[];
+const Groups = /*@__PURE__*/ __L.at(__c6, 2);
 export interface ListGroupsResponse {
   Groups: Group[];
   NextToken?: string;
 }
+const ListGroupsResponse = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ListGroupsResponse>;
 export interface ListIdentityStoresRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListIdentityStoresRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ListIdentityStoresRequest>;
 export interface IdentityStore {
   IdentityStoreId: string;
   IdentityStoreArn: string;
 }
+const IdentityStore = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<IdentityStore>;
 export type IdentityStores = IdentityStore[];
+const IdentityStores = /*@__PURE__*/ __L.at(__c6, 6);
 export interface ListIdentityStoresResponse {
   IdentityStores: IdentityStore[];
   NextToken?: string;
 }
+const ListIdentityStoresResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListIdentityStoresResponse>;
 export interface ListUsersRequest {
   IdentityStoreId: string;
   Extensions?: string[];
@@ -486,6 +609,7 @@ export interface ListUsersRequest {
   NextToken?: string;
   Filters?: Filter[];
 }
+const ListUsersRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ListUsersRequest>;
 export interface User {
   IdentityStoreId: string;
   UserId: string;
@@ -516,60 +640,80 @@ export interface User {
   UpdatedBy?: string;
   Extensions?: { [key: string]: any | undefined };
 }
+const User = DescribeUserResponse as any as S.Schema<User>;
 export type Users = User[];
+const Users = /*@__PURE__*/ __L.at(__c7, 1);
 export interface ListUsersResponse {
   Users: User[];
   NextToken?: string;
 }
+const ListUsersResponse = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ListUsersResponse>;
 export interface AttributeOperation {
   AttributePath: string;
   AttributeValue?: any;
 }
+const AttributeOperation = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<AttributeOperation>;
 export type AttributeOperations = AttributeOperation[];
+const AttributeOperations = /*@__PURE__*/ __L.at(__c7, 4);
 export interface UpdateGroupRequest {
   IdentityStoreId: string;
   GroupId: string;
   Operations: AttributeOperation[];
   Revision?: string;
 }
+const UpdateGroupRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<UpdateGroupRequest>;
 export interface UpdateGroupResponse {
   IdentityStoreId: string;
   GroupId: string;
   GroupArn: string;
   Revision: string;
 }
+const UpdateGroupResponse = CreateGroupResponse as any as S.Schema<UpdateGroupResponse>;
 export interface NetworkConfiguration {
   VpceAccessRequired: boolean;
   ApiRestrictSourceVpcs?: string[];
   ApiAllowSourceIps?: string[];
   ScimAllowSourceIps?: string[];
 }
+const NetworkConfiguration = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<NetworkConfiguration>;
 export interface UpdateIdentityStoreRequest {
   IdentityStoreId: string;
   NetworkConfiguration?: NetworkConfiguration;
 }
+const UpdateIdentityStoreRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<UpdateIdentityStoreRequest>;
 export interface UpdateIdentityStoreResponse {
   IdentityStoreId: string;
   IdentityStoreArn: string;
 }
+const UpdateIdentityStoreResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<UpdateIdentityStoreResponse>;
 export interface UpdateUserRequest {
   IdentityStoreId: string;
   UserId: string;
   Operations: AttributeOperation[];
   Revision?: string;
 }
+const UpdateUserRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<UpdateUserRequest>;
 export interface UpdateUserResponse {
   IdentityStoreId: string;
   UserId: string;
   UserArn: string;
   Revision: string;
 }
+const UpdateUserResponse = CreateUserResponse as any as S.Schema<UpdateUserResponse>;
 export type ExceptionMessage = string;
 export type RequestId = string;
 export type ConflictExceptionReason =
   | "UNIQUENESS_CONSTRAINT_VIOLATION"
   | "CONCURRENT_MODIFICATION"
   | (string & {});
+const ConflictExceptionReason = S.String;
+
 export type ResourceType =
   | "GROUP"
   | "USER"
@@ -577,13 +721,19 @@ export type ResourceType =
   | "GROUP_MEMBERSHIP"
   | "RESOURCE_POLICY"
   | (string & {});
+const ResourceType = S.String;
+
 export type ResourceNotFoundExceptionReason = "KMS_KEY_NOT_FOUND" | (string & {});
+const ResourceNotFoundExceptionReason = S.String;
+
 export type ValidationExceptionReason =
   | "KMS_INVALID_ARN"
   | "KMS_INVALID_KEY_USAGE"
   | "KMS_INVALID_STATE"
   | "KMS_DISABLED"
   | (string & {});
+const ValidationExceptionReason = S.String;
+
 export type CreateGroupError =
   | ConflictException
   | ResourceNotFoundException
@@ -599,8 +749,8 @@ export const createGroup: API.OperationMethod<
   CreateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateGroupRequest>,
-  output: __S(1) as any as S.Schema<CreateGroupResponse>,
+  input: CreateGroupRequest,
+  output: CreateGroupResponse,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -627,8 +777,8 @@ export const createGroupMembership: API.OperationMethod<
   CreateGroupMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateGroupMembershipRequest>,
-  output: __S(4) as any as S.Schema<CreateGroupMembershipResponse>,
+  input: CreateGroupMembershipRequest,
+  output: CreateGroupMembershipResponse,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -655,8 +805,8 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CreateUserRequest>,
-  output: __S(14) as any as S.Schema<CreateUserResponse>,
+  input: CreateUserRequest,
+  output: CreateUserResponse,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -682,8 +832,8 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DeleteGroupRequest>,
-  output: __S(16) as any as S.Schema<DeleteGroupResponse>,
+  input: DeleteGroupRequest,
+  output: DeleteGroupResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -704,8 +854,8 @@ export const deleteGroupMembership: API.OperationMethod<
   DeleteGroupMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<DeleteGroupMembershipRequest>,
-  output: __S(16) as any as S.Schema<DeleteGroupMembershipResponse>,
+  input: DeleteGroupMembershipRequest,
+  output: DeleteGroupMembershipResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -726,8 +876,8 @@ export const deleteUser: API.OperationMethod<
   DeleteUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<DeleteUserRequest>,
-  output: __S(16) as any as S.Schema<DeleteUserResponse>,
+  input: DeleteUserRequest,
+  output: DeleteUserResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -746,8 +896,8 @@ export const describeGroup: API.OperationMethod<
   DescribeGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<DescribeGroupRequest>,
-  output: __S(22) as any as S.Schema<DescribeGroupResponse>,
+  input: DescribeGroupRequest,
+  output: DescribeGroupResponse,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -769,8 +919,8 @@ export const describeGroupMembership: API.OperationMethod<
   DescribeGroupMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<DescribeGroupMembershipRequest>,
-  output: __S(24) as any as S.Schema<DescribeGroupMembershipResponse>,
+  input: DescribeGroupMembershipRequest,
+  output: DescribeGroupMembershipResponse,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -790,8 +940,8 @@ export const describeIdentityStore: API.OperationMethod<
   DescribeIdentityStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<DescribeIdentityStoreRequest>,
-  output: __S(28) as any as S.Schema<DescribeIdentityStoreResponse>,
+  input: DescribeIdentityStoreRequest,
+  output: DescribeIdentityStoreResponse,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -810,8 +960,8 @@ export const describeUser: API.OperationMethod<
   DescribeUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<DescribeUserRequest>,
-  output: __S(30) as any as S.Schema<DescribeUserResponse>,
+  input: DescribeUserRequest,
+  output: DescribeUserResponse,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -830,8 +980,8 @@ export const getGroupId: API.OperationMethod<
   GetGroupIdError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<GetGroupIdRequest>,
-  output: __S(34) as any as S.Schema<GetGroupIdResponse>,
+  input: GetGroupIdRequest,
+  output: GetGroupIdResponse,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -853,8 +1003,8 @@ export const getGroupMembershipId: API.OperationMethod<
   GetGroupMembershipIdError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<GetGroupMembershipIdRequest>,
-  output: __S(4) as any as S.Schema<GetGroupMembershipIdResponse>,
+  input: GetGroupMembershipIdRequest,
+  output: GetGroupMembershipIdResponse,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -873,8 +1023,8 @@ export const getUserId: API.OperationMethod<
   GetUserIdError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GetUserIdRequest>,
-  output: __S(37) as any as S.Schema<GetUserIdResponse>,
+  input: GetUserIdRequest,
+  output: GetUserIdResponse,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -893,8 +1043,8 @@ export const isMemberInGroups: API.OperationMethod<
   IsMemberInGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<IsMemberInGroupsRequest>,
-  output: __S(41) as any as S.Schema<IsMemberInGroupsResponse>,
+  input: IsMemberInGroupsRequest,
+  output: IsMemberInGroupsResponse,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -917,8 +1067,8 @@ export const listGroupMemberships: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GroupMembership
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(42) as any as S.Schema<ListGroupMembershipsRequest>,
-  output: __S(45) as any as S.Schema<ListGroupMembershipsResponse>,
+  input: ListGroupMembershipsRequest,
+  output: ListGroupMembershipsResponse,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -947,8 +1097,8 @@ export const listGroupMembershipsForMember: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GroupMembership
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(46) as any as S.Schema<ListGroupMembershipsForMemberRequest>,
-  output: __S(45) as any as S.Schema<ListGroupMembershipsForMemberResponse>,
+  input: ListGroupMembershipsForMemberRequest,
+  output: ListGroupMembershipsForMemberResponse,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -974,8 +1124,8 @@ export const listGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Group
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(49) as any as S.Schema<ListGroupsRequest>,
-  output: __S(51) as any as S.Schema<ListGroupsResponse>,
+  input: ListGroupsRequest,
+  output: ListGroupsResponse,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1001,8 +1151,8 @@ export const listIdentityStores: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IdentityStore
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(52) as any as S.Schema<ListIdentityStoresRequest>,
-  output: __S(55) as any as S.Schema<ListIdentityStoresResponse>,
+  input: ListIdentityStoresRequest,
+  output: ListIdentityStoresResponse,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1028,8 +1178,8 @@ export const listUsers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   User
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(56) as any as S.Schema<ListUsersRequest>,
-  output: __S(58) as any as S.Schema<ListUsersResponse>,
+  input: ListUsersRequest,
+  output: ListUsersResponse,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1057,8 +1207,8 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<UpdateGroupRequest>,
-  output: __S(1) as any as S.Schema<UpdateGroupResponse>,
+  input: UpdateGroupRequest,
+  output: UpdateGroupResponse,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -1084,8 +1234,8 @@ export const updateIdentityStore: API.OperationMethod<
   UpdateIdentityStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<UpdateIdentityStoreRequest>,
-  output: __S(64) as any as S.Schema<UpdateIdentityStoreResponse>,
+  input: UpdateIdentityStoreRequest,
+  output: UpdateIdentityStoreResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1107,8 +1257,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<UpdateUserRequest>,
-  output: __S(14) as any as S.Schema<UpdateUserResponse>,
+  input: UpdateUserRequest,
+  output: UpdateUserResponse,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -1144,7 +1294,7 @@ function __c0(j: number): any {
       return S.Union([/*@__PURE__*/ S.Struct({ UserId: S.String })]);
     case 3:
       return S.suspend(() =>
-        S.Struct({ IdentityStoreId: S.String, GroupId: S.String, MemberId: __S(2) }).pipe(
+        S.Struct({ IdentityStoreId: S.String, GroupId: S.String, MemberId: MemberId }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -1176,7 +1326,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Email" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(Email);
   }
 }
 function __c1(j: number): any {
@@ -1195,7 +1345,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Address" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(Address);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1206,7 +1356,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Photo" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(Photo);
     case 4:
       return S.Record(S.String, /*@__PURE__*/ S.Any.pipe(S.optional));
     case 5:
@@ -1214,23 +1364,23 @@ function __c1(j: number): any {
         S.Struct({
           IdentityStoreId: S.String,
           UserName: S.optional(SensitiveString),
-          Name: S.optional(__S(5)),
+          Name: S.optional(Name),
           DisplayName: S.optional(SensitiveString),
           NickName: S.optional(SensitiveString),
           ProfileUrl: S.optional(SensitiveString),
-          Emails: S.optional(__S(7)),
-          Addresses: S.optional(__S(9)),
-          PhoneNumbers: S.optional(__S(7)),
+          Emails: S.optional(Emails),
+          Addresses: S.optional(Addresses),
+          PhoneNumbers: S.optional(PhoneNumbers),
           UserType: S.optional(SensitiveString),
           Title: S.optional(SensitiveString),
           PreferredLanguage: S.optional(SensitiveString),
           Locale: S.optional(SensitiveString),
           Timezone: S.optional(SensitiveString),
-          Photos: S.optional(__S(11)),
+          Photos: S.optional(Photos),
           Website: S.optional(SensitiveString),
           Birthdate: S.optional(SensitiveString),
-          Roles: S.optional(__S(7)),
-          Extensions: S.optional(__S(12)),
+          Roles: S.optional(Roles),
+          Extensions: S.optional(Extensions),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateUserRequest" });
     case 6:
@@ -1285,7 +1435,7 @@ function __c2(j: number): any {
         identifier: "ExternalId",
       });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(ExternalId);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1294,7 +1444,7 @@ function __c2(j: number): any {
           GroupArn: S.String,
           Revision: S.String,
           DisplayName: S.optional(SensitiveString),
-          ExternalIds: S.optional(__S(21)),
+          ExternalIds: S.optional(ExternalIds),
           Description: S.optional(SensitiveString),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -1321,7 +1471,7 @@ function __c3(j: number): any {
           MembershipId: S.String,
           MembershipArn: S.String,
           GroupId: S.String,
-          MemberId: __S(2),
+          MemberId: MemberId,
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedBy: S.optional(S.String),
@@ -1344,9 +1494,9 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           VpceAccessRequired: S.Boolean,
-          ApiRestrictSourceVpcs: S.optional(__S(26)),
-          ApiAllowSourceIps: S.optional(__S(26)),
-          ScimAllowSourceIps: S.optional(__S(26)),
+          ApiRestrictSourceVpcs: S.optional(VpcIdList),
+          ApiAllowSourceIps: S.optional(IpCidrList),
+          ScimAllowSourceIps: S.optional(IpCidrList),
         }),
       ).annotate({
         identifier: "NetworkConfigurationDetails",
@@ -1356,7 +1506,7 @@ function __c3(j: number): any {
         S.Struct({
           IdentityStoreId: S.String,
           IdentityStoreArn: S.String,
-          NetworkConfiguration: S.optional(__S(27)),
+          NetworkConfiguration: S.optional(NetworkConfigurationDetails),
         }),
       ).annotate({
         identifier: "DescribeIdentityStoreResponse",
@@ -1366,7 +1516,7 @@ function __c3(j: number): any {
         S.Struct({
           IdentityStoreId: S.String,
           UserId: S.String,
-          Extensions: S.optional(__S(26)),
+          Extensions: S.optional(ExtensionNames),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeUserRequest" });
     case 6:
@@ -1377,29 +1527,29 @@ function __c3(j: number): any {
           UserArn: S.String,
           Revision: S.String,
           UserName: S.optional(SensitiveString),
-          ExternalIds: S.optional(__S(21)),
-          Name: S.optional(__S(5)),
+          ExternalIds: S.optional(ExternalIds),
+          Name: S.optional(Name),
           DisplayName: S.optional(SensitiveString),
           NickName: S.optional(SensitiveString),
           ProfileUrl: S.optional(SensitiveString),
-          Emails: S.optional(__S(7)),
-          Addresses: S.optional(__S(9)),
-          PhoneNumbers: S.optional(__S(7)),
+          Emails: S.optional(Emails),
+          Addresses: S.optional(Addresses),
+          PhoneNumbers: S.optional(PhoneNumbers),
           UserType: S.optional(SensitiveString),
           Title: S.optional(SensitiveString),
           PreferredLanguage: S.optional(SensitiveString),
           Locale: S.optional(SensitiveString),
           Timezone: S.optional(SensitiveString),
-          UserStatus: S.optional(S.String),
-          Photos: S.optional(__S(11)),
+          UserStatus: S.optional(UserStatus),
+          Photos: S.optional(Photos),
           Website: S.optional(SensitiveString),
           Birthdate: S.optional(SensitiveString),
-          Roles: S.optional(__S(7)),
+          Roles: S.optional(Roles),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedBy: S.optional(S.String),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedBy: S.optional(S.String),
-          Extensions: S.optional(__S(12)),
+          Extensions: S.optional(Extensions),
         }),
       ).annotate({ identifier: "DescribeUserResponse" });
     case 7:
@@ -1412,12 +1562,12 @@ function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ ExternalId: __S(20) }),
-        /*@__PURE__*/ S.Struct({ UniqueAttribute: __S(31) }),
+        /*@__PURE__*/ S.Struct({ ExternalId: ExternalId }),
+        /*@__PURE__*/ S.Struct({ UniqueAttribute: UniqueAttribute }),
       ]);
     case 1:
       return S.suspend(() =>
-        S.Struct({ IdentityStoreId: S.String, AlternateIdentifier: __S(32) }).pipe(
+        S.Struct({ IdentityStoreId: S.String, AlternateIdentifier: AlternateIdentifier }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetGroupIdRequest" });
@@ -1427,7 +1577,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "GetGroupIdResponse" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ IdentityStoreId: S.String, GroupId: S.String, MemberId: __S(2) }).pipe(
+        S.Struct({ IdentityStoreId: S.String, GroupId: S.String, MemberId: MemberId }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -1435,7 +1585,7 @@ function __c4(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ IdentityStoreId: S.String, AlternateIdentifier: __S(32) }).pipe(
+        S.Struct({ IdentityStoreId: S.String, AlternateIdentifier: AlternateIdentifier }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetUserIdRequest" });
@@ -1445,7 +1595,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "GetUserIdResponse" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ IdentityStoreId: S.String, MemberId: __S(2), GroupIds: __S(26) }).pipe(
+        S.Struct({ IdentityStoreId: S.String, MemberId: MemberId, GroupIds: GroupIds }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "IsMemberInGroupsRequest" });
@@ -1453,7 +1603,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           GroupId: S.optional(S.String),
-          MemberId: S.optional(__S(2)),
+          MemberId: S.optional(MemberId),
           MembershipExists: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -1464,9 +1614,9 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39));
+      return S.Array(GroupMembershipExistenceResult);
     case 1:
-      return S.suspend(() => S.Struct({ Results: __S(40) })).annotate({
+      return S.suspend(() => S.Struct({ Results: GroupMembershipExistenceResults })).annotate({
         identifier: "IsMemberInGroupsResponse",
       });
     case 2:
@@ -1487,7 +1637,7 @@ function __c5(j: number): any {
           MembershipId: S.String,
           MembershipArn: S.String,
           GroupId: S.optional(S.String),
-          MemberId: S.optional(__S(2)),
+          MemberId: S.optional(MemberId),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedBy: S.optional(S.String),
@@ -1495,10 +1645,10 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "GroupMembership" });
     case 4:
-      return S.Array(__S(43));
+      return S.Array(GroupMembership);
     case 5:
       return S.suspend(() =>
-        S.Struct({ GroupMemberships: __S(44), NextToken: S.optional(S.String) }),
+        S.Struct({ GroupMemberships: GroupMemberships, NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListGroupMembershipsResponse",
       });
@@ -1506,7 +1656,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IdentityStoreId: S.String,
-          MemberId: __S(2),
+          MemberId: MemberId,
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -1522,21 +1672,21 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(Filter);
     case 1:
       return S.suspend(() =>
         S.Struct({
           IdentityStoreId: S.String,
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filters: S.optional(__S(48)),
+          Filters: S.optional(Filters),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListGroupsRequest" });
     case 2:
-      return S.Array(__S(22));
+      return S.Array(Group);
     case 3:
       return S.suspend(() =>
-        S.Struct({ Groups: __S(50), NextToken: S.optional(S.String) }),
+        S.Struct({ Groups: Groups, NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListGroupsResponse" });
     case 4:
       return S.suspend(() =>
@@ -1551,10 +1701,10 @@ function __c6(j: number): any {
         S.Struct({ IdentityStoreId: S.String, IdentityStoreArn: S.String }),
       ).annotate({ identifier: "IdentityStore" });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(IdentityStore);
     case 7:
       return S.suspend(() =>
-        S.Struct({ IdentityStores: __S(54), NextToken: S.optional(S.String) }),
+        S.Struct({ IdentityStores: IdentityStores, NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListIdentityStoresResponse",
       });
@@ -1566,18 +1716,16 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IdentityStoreId: S.String,
-          Extensions: S.optional(__S(26)),
+          Extensions: S.optional(ExtensionNames),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filters: S.optional(__S(48)),
+          Filters: S.optional(Filters),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListUsersRequest" });
     case 1:
-      return S.Array(__S(30));
+      return S.Array(User);
     case 2:
-      return S.suspend(() =>
-        S.Struct({ Users: __S(57), NextToken: S.optional(S.String) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Users: Users, NextToken: S.optional(S.String) })).annotate({
         identifier: "ListUsersResponse",
       });
     case 3:
@@ -1585,13 +1733,13 @@ function __c7(j: number): any {
         S.Struct({ AttributePath: S.String, AttributeValue: S.optional(S.Any) }),
       ).annotate({ identifier: "AttributeOperation" });
     case 4:
-      return S.Array(__S(59));
+      return S.Array(AttributeOperation);
     case 5:
       return S.suspend(() =>
         S.Struct({
           IdentityStoreId: S.String,
           GroupId: S.String,
-          Operations: __S(60),
+          Operations: AttributeOperations,
           Revision: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateGroupRequest" });
@@ -1599,16 +1747,16 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           VpceAccessRequired: S.Boolean,
-          ApiRestrictSourceVpcs: S.optional(__S(26)),
-          ApiAllowSourceIps: S.optional(__S(26)),
-          ScimAllowSourceIps: S.optional(__S(26)),
+          ApiRestrictSourceVpcs: S.optional(VpcIdList),
+          ApiAllowSourceIps: S.optional(IpCidrList),
+          ScimAllowSourceIps: S.optional(IpCidrList),
         }),
       ).annotate({ identifier: "NetworkConfiguration" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           IdentityStoreId: S.String,
-          NetworkConfiguration: S.optional(__S(62)),
+          NetworkConfiguration: S.optional(NetworkConfiguration),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateIdentityStoreRequest",
@@ -1628,36 +1776,9 @@ function __c8(j: number): any {
         S.Struct({
           IdentityStoreId: S.String,
           UserId: S.String,
-          Operations: __S(60),
+          Operations: AttributeOperations,
           Revision: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateUserRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
   }
 }

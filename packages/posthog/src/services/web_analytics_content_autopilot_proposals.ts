@@ -5,8 +5,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -16,8 +14,15 @@ export interface GetWebAnalyticsContentAutopilotProposalRequest {
   /** A UUID string identifying this content autopilot proposal. */
   id: string;
 }
+const GetWebAnalyticsContentAutopilotProposalRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetWebAnalyticsContentAutopilotProposalRequest>;
+
 /** * `new_content` - New content * `page_improvement` - Page improvement */
 export type ContentAutopilotProposalProposalTypeEnum = "new_content" | "page_improvement";
+const ContentAutopilotProposalProposalTypeEnum = S.String;
+
 /** * `generating` - Generating * `ready_for_review` - Ready for review * `rejected` - Rejected * `exported` - Exported * `failed` - Failed */
 export type ContentAutopilotProposalLifecycleStatusEnum =
   | "generating"
@@ -25,6 +30,8 @@ export type ContentAutopilotProposalLifecycleStatusEnum =
   | "rejected"
   | "exported"
   | "failed";
+const ContentAutopilotProposalLifecycleStatusEnum = S.String;
+
 /** * `poor_ctr` - Poor click-through rate * `content_gap` - Content gap * `organic_decline` - Organic decline * `ai_visibility_gap` - AI visibility gap * `site_hygiene` - Site hygiene */
 export type OpportunityKindEnum =
   | "poor_ctr"
@@ -32,6 +39,8 @@ export type OpportunityKindEnum =
   | "organic_decline"
   | "ai_visibility_gap"
   | "site_hygiene";
+const OpportunityKindEnum = S.String;
+
 export interface ContentAutopilotEvidence {
   /** Reason the opportunity was selected. * `poor_ctr` - Poor click-through rate * `content_gap` - Content gap * `organic_decline` - Organic decline * `ai_visibility_gap` - AI visibility gap * `site_hygiene` - Site hygiene */
   opportunity_kind: OpportunityKindEnum;
@@ -42,8 +51,18 @@ export interface ContentAutopilotEvidence {
   /** Search query supported by this evidence. */
   query?: string;
 }
+const ContentAutopilotEvidence = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ContentAutopilotEvidence>;
+
 /** Performance evidence for this proposal. */
 export type ContentAutopilotProposalEvidenceList = Array<ContentAutopilotEvidence>;
+const ContentAutopilotProposalEvidenceList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ContentAutopilotProposalEvidenceList>;
+
 export interface ContentAutopilotValidationCheck {
   /** Stable identifier for the validation gate. */
   check_key: string;
@@ -56,26 +75,59 @@ export interface ContentAutopilotValidationCheck {
   /** Whether failure prevents export. */
   blocking: boolean;
 }
+const ContentAutopilotValidationCheck = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ContentAutopilotValidationCheck>;
+
 /** Factual, brand, intent, originality, linking, crawlability, and schema checks. */
 export type ContentAutopilotValidationReportChecksList = Array<ContentAutopilotValidationCheck>;
+const ContentAutopilotValidationReportChecksList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ContentAutopilotValidationReportChecksList>;
+
 export interface ContentAutopilotValidationReport {
   /** Whether every blocking validation passed. */
   passed: boolean;
   /** Factual, brand, intent, originality, linking, crawlability, and schema checks. */
   checks: ContentAutopilotValidationReportChecksList;
 }
+const ContentAutopilotValidationReport = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ContentAutopilotValidationReport>;
+
 export interface ContentAutopilotFrontmatterEntry {
   /** Frontmatter field name. */
   key: string;
   /** Serialized frontmatter value. */
   value: string;
 }
+const ContentAutopilotFrontmatterEntry = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ContentAutopilotFrontmatterEntry>;
+
 /** Ordered frontmatter entries. */
 export type ContentAutopilotPackageFrontmatterList = Array<ContentAutopilotFrontmatterEntry>;
+const ContentAutopilotPackageFrontmatterList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ContentAutopilotPackageFrontmatterList>;
+
 /** Validated same-origin internal links included in the content. */
 export type ContentAutopilotPackageInternalLinksList = Array<string>;
+const ContentAutopilotPackageInternalLinksList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ContentAutopilotPackageInternalLinksList>;
+
 /** Portable source notes included with the export. */
 export type ContentAutopilotPackageSourceNotesList = Array<string>;
+const ContentAutopilotPackageSourceNotesList =
+  ContentAutopilotPackageInternalLinksList as any as S.Schema<ContentAutopilotPackageSourceNotesList>;
+
 export interface ContentAutopilotPackage {
   /** Repository-relative Markdown or MDX file path. */
   file_path: string;
@@ -96,22 +148,49 @@ export interface ContentAutopilotPackage {
   /** Suggested llms.txt entry for the page. */
   llms_txt_line?: string;
 }
+const ContentAutopilotPackage = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ContentAutopilotPackage>;
+
 /** Site pages the brief asked to read for facts. */
 export type ContentAutopilotBriefSitePagesToReadList = Array<string>;
+const ContentAutopilotBriefSitePagesToReadList =
+  ContentAutopilotPackageInternalLinksList as any as S.Schema<ContentAutopilotBriefSitePagesToReadList>;
+
 export interface ContentAutopilotBriefCompetitor {
   /** Product to compare against. */
   name: string;
   /** The product's own page to research. */
   url: string;
 }
+const ContentAutopilotBriefCompetitor = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ContentAutopilotBriefCompetitor>;
+
 /** Products the brief asked to research for a comparison. */
 export type ContentAutopilotBriefCompetitorsToResearchList = Array<ContentAutopilotBriefCompetitor>;
+const ContentAutopilotBriefCompetitorsToResearchList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ContentAutopilotBriefCompetitorsToResearchList>;
+
 /** Planned sections, in order. */
 export type ContentAutopilotBriefOutlineList = Array<string>;
+const ContentAutopilotBriefOutlineList =
+  ContentAutopilotPackageInternalLinksList as any as S.Schema<ContentAutopilotBriefOutlineList>;
+
 /** Questions the page must answer. */
 export type ContentAutopilotBriefQuestionsToAnswerList = Array<string>;
+const ContentAutopilotBriefQuestionsToAnswerList =
+  ContentAutopilotPackageInternalLinksList as any as S.Schema<ContentAutopilotBriefQuestionsToAnswerList>;
+
 /** Topics the cited competitor pages cover that the site's pages don't. */
 export type ContentAutopilotBriefCompetitorCoverageList = Array<string>;
+const ContentAutopilotBriefCompetitorCoverageList =
+  ContentAutopilotPackageInternalLinksList as any as S.Schema<ContentAutopilotBriefCompetitorCoverageList>;
+
 export interface ContentAutopilotBrief {
   /** What the person asking wants to know or decide. */
   intent?: string;
@@ -138,8 +217,15 @@ export interface ContentAutopilotBrief {
   /** What the question means, when AI answer engines misread which product or company it asks about. */
   disambiguation?: string;
 }
+const ContentAutopilotBrief = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ContentAutopilotBrief>;
+
 /** * `site` - site * `competitor` - competitor */
 export type ContentAutopilotSourceLedgerEntryKindEnum = "site" | "competitor";
+const ContentAutopilotSourceLedgerEntryKindEnum = S.String;
+
 export interface ContentAutopilotSourceLedgerEntry {
   /** Factual claim the draft makes. */
   claim: string;
@@ -150,8 +236,18 @@ export interface ContentAutopilotSourceLedgerEntry {
   /** Whether the source is one of the site's pages or a competitor's own page. * `site` - site * `competitor` - competitor */
   kind?: ContentAutopilotSourceLedgerEntryKindEnum;
 }
+const ContentAutopilotSourceLedgerEntry = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ContentAutopilotSourceLedgerEntry>;
+
 /** Factual claims in the draft and the site pages that support them. */
 export type ContentAutopilotProposalSourceLedgerList = Array<ContentAutopilotSourceLedgerEntry>;
+const ContentAutopilotProposalSourceLedgerList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ContentAutopilotProposalSourceLedgerList>;
+
 export interface ContentAutopilotProposal {
   id: string;
   /** Run that generated this proposal. */
@@ -183,6 +279,11 @@ export interface ContentAutopilotProposal {
   created_at: string;
   updated_at: string;
 }
+const ContentAutopilotProposal = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ContentAutopilotProposal>;
+
 export interface ListWebAnalyticsContentAutopilotProposalsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -195,8 +296,16 @@ export interface ListWebAnalyticsContentAutopilotProposalsRequest {
   /** Only return proposals from this content run. */
   run_id?: string;
 }
+const ListWebAnalyticsContentAutopilotProposalsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListWebAnalyticsContentAutopilotProposalsRequest>;
+
 /** Performance evidence for this proposal. */
 export type ContentAutopilotProposalListEvidenceList = Array<ContentAutopilotEvidence>;
+const ContentAutopilotProposalListEvidenceList =
+  ContentAutopilotProposalEvidenceList as any as S.Schema<ContentAutopilotProposalListEvidenceList>;
+
 export interface ContentAutopilotProposalList {
   id: string;
   run_id: string;
@@ -213,14 +322,29 @@ export interface ContentAutopilotProposalList {
   created_at: string;
   updated_at: string;
 }
+const ContentAutopilotProposalList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ContentAutopilotProposalList>;
+
 export type PaginatedContentAutopilotProposalListListResultsList =
   Array<ContentAutopilotProposalList>;
+const PaginatedContentAutopilotProposalListListResultsList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<PaginatedContentAutopilotProposalListListResultsList>;
+
 export interface PaginatedContentAutopilotProposalListList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedContentAutopilotProposalListListResultsList;
 }
+const PaginatedContentAutopilotProposalListList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<PaginatedContentAutopilotProposalListList>;
+
 export type GetWebAnalyticsContentAutopilotProposalError = PosthogOpError;
 export const getWebAnalyticsContentAutopilotProposal: API.OperationMethod<
   GetWebAnalyticsContentAutopilotProposalRequest,
@@ -228,8 +352,8 @@ export const getWebAnalyticsContentAutopilotProposal: API.OperationMethod<
   GetWebAnalyticsContentAutopilotProposalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetWebAnalyticsContentAutopilotProposalRequest>,
-  output: __S(15) as any as S.Schema<ContentAutopilotProposal>,
+  input: GetWebAnalyticsContentAutopilotProposalRequest,
+  output: ContentAutopilotProposal,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -242,8 +366,8 @@ export const listWebAnalyticsContentAutopilotProposals: API.OperationMethod<
   ListWebAnalyticsContentAutopilotProposalsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<ListWebAnalyticsContentAutopilotProposalsRequest>,
-  output: __S(19) as any as S.Schema<PaginatedContentAutopilotProposalListList>,
+  input: ListWebAnalyticsContentAutopilotProposalsRequest,
+  output: PaginatedContentAutopilotProposalListList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -270,14 +394,14 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          opportunity_kind: S.String,
+          opportunity_kind: OpportunityKindEnum,
           explanation: S.String,
           page_url: S.optional(S.String),
           query: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContentAutopilotEvidence" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(ContentAutopilotEvidence);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -291,12 +415,12 @@ function __c0(j: number): any {
         identifier: "ContentAutopilotValidationCheck",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(ContentAutopilotValidationCheck);
     case 5:
       return S.suspend(() =>
         S.Struct({
           passed: S.Boolean,
-          checks: __S(4),
+          checks: ContentAutopilotValidationReportChecksList,
         }),
       ).annotate({
         identifier: "ContentAutopilotValidationReport",
@@ -311,7 +435,7 @@ function __c0(j: number): any {
         identifier: "ContentAutopilotFrontmatterEntry",
       });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(ContentAutopilotFrontmatterEntry);
   }
 }
 function __c1(j: number): any {
@@ -325,9 +449,9 @@ function __c1(j: number): any {
           title: S.String,
           description: S.String,
           slug: S.String,
-          frontmatter: __S(7),
-          internal_links: __S(8),
-          source_notes: __S(8),
+          frontmatter: ContentAutopilotPackageFrontmatterList,
+          internal_links: ContentAutopilotPackageInternalLinksList,
+          source_notes: ContentAutopilotPackageSourceNotesList,
           json_ld: S.optional(S.String),
           llms_txt_line: S.optional(S.String),
         }),
@@ -342,7 +466,7 @@ function __c1(j: number): any {
         identifier: "ContentAutopilotBriefCompetitor",
       });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(ContentAutopilotBriefCompetitor);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -350,12 +474,12 @@ function __c1(j: number): any {
           audience: S.optional(S.String),
           recommended_type: S.optional(S.String),
           target_page: S.optional(S.String),
-          site_pages_to_read: S.optional(__S(8)),
-          competitors_to_research: S.optional(__S(11)),
+          site_pages_to_read: S.optional(ContentAutopilotBriefSitePagesToReadList),
+          competitors_to_research: S.optional(ContentAutopilotBriefCompetitorsToResearchList),
           working_title: S.optional(S.String),
-          outline: S.optional(__S(8)),
-          questions_to_answer: S.optional(__S(8)),
-          competitor_coverage: S.optional(__S(8)),
+          outline: S.optional(ContentAutopilotBriefOutlineList),
+          questions_to_answer: S.optional(ContentAutopilotBriefQuestionsToAnswerList),
+          competitor_coverage: S.optional(ContentAutopilotBriefCompetitorCoverageList),
           engine_answer_summary: S.optional(S.String),
           disambiguation: S.optional(S.String),
         }),
@@ -366,30 +490,30 @@ function __c1(j: number): any {
           claim: S.String,
           source_url: S.String,
           quote: S.String,
-          kind: S.optional(S.String),
+          kind: S.optional(ContentAutopilotSourceLedgerEntryKindEnum),
         }),
       ).annotate({
         identifier: "ContentAutopilotSourceLedgerEntry",
       });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(ContentAutopilotSourceLedgerEntry);
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           run_id: S.String,
-          proposal_type: S.String,
-          lifecycle_status: S.String,
+          proposal_type: ContentAutopilotProposalProposalTypeEnum,
+          lifecycle_status: ContentAutopilotProposalLifecycleStatusEnum,
           title: S.String,
           target_query: S.String,
           target_url: S.String,
-          evidence: __S(2),
-          validation_report: __S(5),
-          content_package: __S(9),
+          evidence: ContentAutopilotProposalEvidenceList,
+          validation_report: ContentAutopilotValidationReport,
+          content_package: ContentAutopilotPackage,
           original_markdown: S.String,
           proposed_markdown: S.String,
-          brief: __S(12),
-          source_ledger: __S(14),
+          brief: ContentAutopilotBrief,
+          source_ledger: ContentAutopilotProposalSourceLedgerList,
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -421,12 +545,12 @@ function __c2(j: number): any {
         S.Struct({
           id: S.String,
           run_id: S.String,
-          proposal_type: S.String,
-          lifecycle_status: S.String,
+          proposal_type: ContentAutopilotProposalProposalTypeEnum,
+          lifecycle_status: ContentAutopilotProposalLifecycleStatusEnum,
           title: S.String,
           target_query: S.String,
-          evidence: __S(2),
-          validation_report: __S(5),
+          evidence: ContentAutopilotProposalListEvidenceList,
+          validation_report: ContentAutopilotValidationReport,
           file_path: S.String,
           created_at: S.String,
           updated_at: S.String,
@@ -435,32 +559,17 @@ function __c2(j: number): any {
         identifier: "ContentAutopilotProposalList",
       });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(ContentAutopilotProposalList);
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(18),
+          results: PaginatedContentAutopilotProposalListListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedContentAutopilotProposalListList",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

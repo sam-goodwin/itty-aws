@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { ForgejoProtocol, type ForgejoOpError, type ForgejoOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { ForgejoOpError, ForgejoOpContext };
 
@@ -68,6 +66,8 @@ export class UnprocessableEntity
 
 /** possible values are `public` (default), `limited` or `private` */
 export type CreateOrgRequestVisibility = "public" | "limited" | "private";
+const CreateOrgRequestVisibility = S.String;
+
 export interface CreateOrgRequest {
   description?: string;
   email?: string;
@@ -79,6 +79,8 @@ export interface CreateOrgRequest {
   visibility?: CreateOrgRequestVisibility | (string & {});
   website?: string;
 }
+const CreateOrgRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateOrgRequest>;
+
 /** Organization represents an organization */
 export interface Organization {
   avatar_url?: string;
@@ -95,14 +97,20 @@ export interface Organization {
   visibility?: string;
   website?: string;
 }
+const Organization = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Organization>;
+
 /** ObjectFormatName of the underlying git repository */
 export type CreateOrgRepoRequestObjectFormatName = "sha1" | "sha256";
+const CreateOrgRepoRequestObjectFormatName = S.String;
+
 /** TrustModel of the repository */
 export type CreateOrgRepoRequestTrustModel =
   | "default"
   | "collaborator"
   | "committer"
   | "collaboratorcommitter";
+const CreateOrgRepoRequestTrustModel = S.String;
+
 export interface CreateOrgRepoRequest {
   /** name of organization */
   org: string;
@@ -131,6 +139,8 @@ export interface CreateOrgRepoRequest {
   /** TrustModel of the repository */
   trust_model?: CreateOrgRepoRequestTrustModel | (string & {});
 }
+const CreateOrgRepoRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateOrgRepoRequest>;
+
 /** ExternalTracker represents settings for external tracker */
 export interface ExternalTracker {
   /** External Issue Tracker URL Format. Use the placeholders {user}, {repo} and {index} for the username, repository name and issue index. */
@@ -142,11 +152,15 @@ export interface ExternalTracker {
   /** URL of external issue tracker. */
   external_tracker_url?: string;
 }
+const ExternalTracker = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ExternalTracker>;
+
 /** ExternalWiki represents setting for external wiki */
 export interface ExternalWiki {
   /** URL of external wiki. */
   external_wiki_url?: string;
 }
+const ExternalWiki = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ExternalWiki>;
+
 /** InternalTracker represents settings for internal tracker */
 export interface InternalTracker {
   /** Let only contributors track time (Built-in issue tracker) */
@@ -156,8 +170,12 @@ export interface InternalTracker {
   /** Enable time tracking (Built-in issue tracker) */
   enable_time_tracker?: boolean;
 }
+const InternalTracker = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<InternalTracker>;
+
 /** ObjectFormatName of the underlying git repository */
 export type RepositoryObjectFormatName = "sha1" | "sha256";
+const RepositoryObjectFormatName = S.String;
+
 /** User represents a user */
 export interface User {
   /** Is user active */
@@ -202,15 +220,25 @@ export interface User {
   /** the user's website */
   website?: string;
 }
+const User = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<User>;
+
 /** Permission represents a set of permissions */
 export interface Permission {
   admin?: boolean;
   pull?: boolean;
   push?: boolean;
 }
+const Permission = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Permission>;
+
 export type TeamPermission = "none" | "read" | "write" | "admin" | "owner";
+const TeamPermission = S.String;
+
 export type TeamUnitsList = Array<string>;
+const TeamUnitsList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<TeamUnitsList>;
+
 export type TeamUnitsMapMap = { [key: string]: string | undefined };
+const TeamUnitsMapMap = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<TeamUnitsMapMap>;
+
 /** Team represents a team in an organization */
 export interface Team {
   can_create_org_repo?: boolean;
@@ -223,14 +251,25 @@ export interface Team {
   units?: TeamUnitsList;
   units_map?: TeamUnitsMapMap;
 }
+const Team = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Team>;
+
 export type RepoTransferTeamsList = Array<Team>;
+const RepoTransferTeamsList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<RepoTransferTeamsList>;
+
 /** RepoTransfer represents a pending repo transfer */
 export interface RepoTransfer {
   doer?: User;
   recipient?: User;
   teams?: RepoTransferTeamsList;
 }
+const RepoTransfer = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<RepoTransfer>;
+
 export type RepositoryTopicsList = Array<string>;
+const RepositoryTopicsList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<RepositoryTopicsList>;
+
 /** Repository represents a repository */
 export interface Repository {
   allow_fast_forward_only_merge?: boolean;
@@ -303,6 +342,8 @@ export interface Repository {
   wiki_clone_url?: string;
   wiki_ssh_url?: string;
 }
+const Repository = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Repository>;
+
 export interface CreateOrgVariableRequest {
   /** name of the organization */
   org: string;
@@ -311,35 +352,75 @@ export interface CreateOrgVariableRequest {
   /** Value of the variable to create. Special characters will be retained. Line endings will be normalized to LF to match the behaviour of browsers. Encode the data with Base64 if line endings should be retained. */
   value: string;
 }
+const CreateOrgVariableRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateOrgVariableRequest>;
+
 export interface CreateOrgVariableResponse {}
+const CreateOrgVariableResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateOrgVariableResponse>;
+
 export interface DeleteOrgRequest {
   /** organization that is to be deleted */
   org: string;
 }
+const DeleteOrgRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DeleteOrgRequest>;
+
 export interface DeleteOrgResponse {}
+const DeleteOrgResponse = CreateOrgVariableResponse as any as S.Schema<DeleteOrgResponse>;
+
 export interface DeleteOrgRunnerRequest {
   /** name of the organization */
   org: string;
   /** ID of the runner */
   runner_id: string;
 }
+const DeleteOrgRunnerRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DeleteOrgRunnerRequest>;
+
 export interface DeleteOrgRunnerResponse {}
+const DeleteOrgRunnerResponse =
+  CreateOrgVariableResponse as any as S.Schema<DeleteOrgRunnerResponse>;
+
 export interface DeleteOrgSecretRequest {
   /** name of organization */
   org: string;
   /** name of the secret */
   secretname: string;
 }
+const DeleteOrgSecretRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DeleteOrgSecretRequest>;
+
 export interface DeleteOrgSecretResponse {}
+const DeleteOrgSecretResponse =
+  CreateOrgVariableResponse as any as S.Schema<DeleteOrgSecretResponse>;
+
 export interface DeleteOrgVariableRequest {
   /** name of the organization */
   org: string;
   /** name of the variable */
   variablename: string;
 }
+const DeleteOrgVariableRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DeleteOrgVariableRequest>;
+
 export interface DeleteOrgVariableResponse {}
+const DeleteOrgVariableResponse =
+  CreateOrgVariableResponse as any as S.Schema<DeleteOrgVariableResponse>;
+
 /** possible values are `public`, `limited` or `private` */
 export type EditOrgRequestVisibility = "public" | "limited" | "private";
+const EditOrgRequestVisibility = S.String;
+
 export interface EditOrgRequest {
   /** name of the organization to edit */
   org: string;
@@ -352,20 +433,30 @@ export interface EditOrgRequest {
   visibility?: EditOrgRequestVisibility | (string & {});
   website?: string;
 }
+const EditOrgRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<EditOrgRequest>;
+
 export interface GetOrgRequest {
   /** name of the organization to get */
   org: string;
 }
+const GetOrgRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GetOrgRequest>;
+
 export interface GetOrgRunnerRequest {
   /** name of the organization */
   org: string;
   /** ID of the runner */
   runner_id: string;
 }
+const GetOrgRunnerRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GetOrgRunnerRequest>;
+
 /** Labels is a list of labels attached to this runner. */
 export type ActionRunnerLabelsList = Array<string>;
+const ActionRunnerLabelsList = RepositoryTopicsList as any as S.Schema<ActionRunnerLabelsList>;
+
 /** Status indicates whether this runner is offline, or active, for example. */
 export type ActionRunnerStatus = "offline" | "idle" | "active";
+const ActionRunnerStatus = S.String;
+
 /** ActionRunner represents a runner */
 export interface ActionRunner {
   /** Description provides optional details about this runner. */
@@ -389,6 +480,8 @@ export interface ActionRunner {
   /** Version is the self-reported version string of Forgejo Runner. */
   version?: string;
 }
+const ActionRunner = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ActionRunner>;
+
 export interface GetOrgRunnersRequest {
   /** name of the organization */
   org: string;
@@ -399,14 +492,31 @@ export interface GetOrgRunnersRequest {
   /** page size of results */
   limit?: number;
 }
+const GetOrgRunnersRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<GetOrgRunnersRequest>;
+
 export type GetOrgRunnersResponseBodyList = Array<ActionRunner>;
+const GetOrgRunnersResponseBodyList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetOrgRunnersResponseBodyList>;
+
 export type GetOrgRunnersResponse = GetOrgRunnersResponseBodyList;
+const GetOrgRunnersResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetOrgRunnersResponse>;
+
 export interface GetOrgVariableRequest {
   /** name of the organization */
   org: string;
   /** name of the variable */
   variablename: string;
 }
+const GetOrgVariableRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetOrgVariableRequest>;
+
 /** ActionVariable return value of the query API */
 export interface ActionVariable {
   /** the value of the variable */
@@ -418,6 +528,8 @@ export interface ActionVariable {
   /** the repository to which the variable belongs */
   repo_id?: number;
 }
+const ActionVariable = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ActionVariable>;
+
 export interface GetOrgVariablesListRequest {
   /** name of the organization */
   org: string;
@@ -426,15 +538,38 @@ export interface GetOrgVariablesListRequest {
   /** page size of results */
   limit?: number;
 }
+const GetOrgVariablesListRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetOrgVariablesListRequest>;
+
 export type GetOrgVariablesListResponseBodyList = Array<ActionVariable>;
+const GetOrgVariablesListResponseBodyList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetOrgVariablesListResponseBodyList>;
+
 export type GetOrgVariablesListResponse = GetOrgVariablesListResponseBodyList;
+const GetOrgVariablesListResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetOrgVariablesListResponse>;
+
 export interface OrgAddTeamMemberRequest {
   /** id of the team */
   id: number;
   /** username of the user to add */
   username: string;
 }
+const OrgAddTeamMemberRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<OrgAddTeamMemberRequest>;
+
 export interface OrgAddTeamMemberResponse {}
+const OrgAddTeamMemberResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgAddTeamMemberResponse>;
+
 export interface OrgAddTeamRepositoryRequest {
   /** id of the team */
   id: number;
@@ -443,31 +578,63 @@ export interface OrgAddTeamRepositoryRequest {
   /** name of the repo to add */
   repo: string;
 }
+const OrgAddTeamRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<OrgAddTeamRepositoryRequest>;
+
 export interface OrgAddTeamRepositoryResponse {}
+const OrgAddTeamRepositoryResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgAddTeamRepositoryResponse>;
+
 export interface OrgBlockUserRequest {
   /** name of the org */
   org: string;
   /** username of the user */
   username: string;
 }
+const OrgBlockUserRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<OrgBlockUserRequest>;
+
 export interface OrgBlockUserResponse {}
+const OrgBlockUserResponse = CreateOrgVariableResponse as any as S.Schema<OrgBlockUserResponse>;
+
 export interface OrgCheckQuotaRequest {
   /** name of the organization */
   org: string;
   /** subject of the quota */
   subject: string;
 }
+const OrgCheckQuotaRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<OrgCheckQuotaRequest>;
+
 export type OrgCheckQuotaResponse = boolean;
+const OrgCheckQuotaResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<OrgCheckQuotaResponse>;
+
 export interface OrgConcealMemberRequest {
   /** name of the organization */
   org: string;
   /** username of the user */
   username: string;
 }
+const OrgConcealMemberRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<OrgConcealMemberRequest>;
+
 export interface OrgConcealMemberResponse {}
+const OrgConcealMemberResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgConcealMemberResponse>;
+
 /** CreateHookOptionConfig has all config options in it required are "content_type" and "url" Required */
 export type CreateHookOptionConfig = { [key: string]: string | undefined };
+const CreateHookOptionConfig = TeamUnitsMapMap as any as S.Schema<CreateHookOptionConfig>;
+
 export type OrgCreateHookRequestEventsList = Array<string>;
+const OrgCreateHookRequestEventsList =
+  RepositoryTopicsList as any as S.Schema<OrgCreateHookRequestEventsList>;
+
 export type OrgCreateHookRequestType =
   | "forgejo"
   | "dingtalk"
@@ -480,6 +647,8 @@ export type OrgCreateHookRequestType =
   | "feishu"
   | "wechatwork"
   | "packagist";
+const OrgCreateHookRequestType = S.String;
+
 export interface OrgCreateHookRequest {
   /** name of the organization */
   org: string;
@@ -490,9 +659,15 @@ export interface OrgCreateHookRequest {
   events?: OrgCreateHookRequestEventsList;
   type: OrgCreateHookRequestType | (string & {});
 }
+const OrgCreateHookRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<OrgCreateHookRequest>;
+
 /** Deprecated: use Metadata instead */
 export type HookConfigMap = { [key: string]: string | undefined };
+const HookConfigMap = TeamUnitsMapMap as any as S.Schema<HookConfigMap>;
+
 export type HookEventsList = Array<string>;
+const HookEventsList = TeamUnitsList as any as S.Schema<HookEventsList>;
+
 /** Hook a hook is a web hook when one repository changed */
 export interface Hook {
   active: boolean;
@@ -509,6 +684,8 @@ export interface Hook {
   updated_at: string;
   url: string;
 }
+const Hook = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Hook>;
+
 export interface OrgCreateLabelRequest {
   /** name of the organization */
   org: string;
@@ -518,6 +695,11 @@ export interface OrgCreateLabelRequest {
   is_archived?: boolean;
   name: string;
 }
+const OrgCreateLabelRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<OrgCreateLabelRequest>;
+
 /** Label a label to an issue or a pr */
 export interface Label {
   color: string;
@@ -528,9 +710,19 @@ export interface Label {
   name: string;
   url?: string;
 }
+const Label = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Label>;
+
 export type OrgCreateTeamRequestPermission = "read" | "write" | "admin";
+const OrgCreateTeamRequestPermission = S.String;
+
 export type OrgCreateTeamRequestUnitsList = Array<string>;
+const OrgCreateTeamRequestUnitsList =
+  RepositoryTopicsList as any as S.Schema<OrgCreateTeamRequestUnitsList>;
+
 export type OrgCreateTeamRequestUnitsMapMap = { [key: string]: string | undefined };
+const OrgCreateTeamRequestUnitsMapMap =
+  TeamUnitsMapMap as any as S.Schema<OrgCreateTeamRequestUnitsMapMap>;
+
 export interface OrgCreateTeamRequest {
   /** name of the organization */
   org: string;
@@ -542,39 +734,77 @@ export interface OrgCreateTeamRequest {
   units?: OrgCreateTeamRequestUnitsList;
   units_map?: OrgCreateTeamRequestUnitsMapMap;
 }
+const OrgCreateTeamRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<OrgCreateTeamRequest>;
+
 export interface OrgDeleteAvatarRequest {
   /** name of the organization */
   org: string;
 }
+const OrgDeleteAvatarRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<OrgDeleteAvatarRequest>;
+
 export interface OrgDeleteAvatarResponse {}
+const OrgDeleteAvatarResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgDeleteAvatarResponse>;
+
 export interface OrgDeleteHookRequest {
   /** name of the organization */
   org: string;
   /** id of the hook to delete */
   id: number;
 }
+const OrgDeleteHookRequest = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<OrgDeleteHookRequest>;
+
 export interface OrgDeleteHookResponse {}
+const OrgDeleteHookResponse = CreateOrgVariableResponse as any as S.Schema<OrgDeleteHookResponse>;
+
 export interface OrgDeleteLabelRequest {
   /** name of the organization */
   org: string;
   /** id of the label to delete */
   id: number;
 }
+const OrgDeleteLabelRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<OrgDeleteLabelRequest>;
+
 export interface OrgDeleteLabelResponse {}
+const OrgDeleteLabelResponse = CreateOrgVariableResponse as any as S.Schema<OrgDeleteLabelResponse>;
+
 export interface OrgDeleteMemberRequest {
   /** name of the organization */
   org: string;
   /** username of the user */
   username: string;
 }
+const OrgDeleteMemberRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<OrgDeleteMemberRequest>;
+
 export interface OrgDeleteMemberResponse {}
+const OrgDeleteMemberResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgDeleteMemberResponse>;
+
 export interface OrgDeleteTeamRequest {
   /** id of the team to delete */
   id: number;
 }
+const OrgDeleteTeamRequest = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<OrgDeleteTeamRequest>;
+
 export interface OrgDeleteTeamResponse {}
+const OrgDeleteTeamResponse = CreateOrgVariableResponse as any as S.Schema<OrgDeleteTeamResponse>;
+
 export type OrgEditHookRequestConfigMap = { [key: string]: string | undefined };
+const OrgEditHookRequestConfigMap = TeamUnitsMapMap as any as S.Schema<OrgEditHookRequestConfigMap>;
+
 export type OrgEditHookRequestEventsList = Array<string>;
+const OrgEditHookRequestEventsList =
+  RepositoryTopicsList as any as S.Schema<OrgEditHookRequestEventsList>;
+
 export interface OrgEditHookRequest {
   /** name of the organization */
   org: string;
@@ -586,6 +816,8 @@ export interface OrgEditHookRequest {
   config?: OrgEditHookRequestConfigMap;
   events?: OrgEditHookRequestEventsList;
 }
+const OrgEditHookRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<OrgEditHookRequest>;
+
 export interface OrgEditLabelRequest {
   /** name of the organization */
   org: string;
@@ -597,9 +829,19 @@ export interface OrgEditLabelRequest {
   is_archived?: boolean;
   name?: string;
 }
+const OrgEditLabelRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<OrgEditLabelRequest>;
+
 export type OrgEditTeamRequestPermission = "read" | "write" | "admin";
+const OrgEditTeamRequestPermission = S.String;
+
 export type OrgEditTeamRequestUnitsList = Array<string>;
+const OrgEditTeamRequestUnitsList =
+  RepositoryTopicsList as any as S.Schema<OrgEditTeamRequestUnitsList>;
+
 export type OrgEditTeamRequestUnitsMapMap = { [key: string]: string | undefined };
+const OrgEditTeamRequestUnitsMapMap =
+  TeamUnitsMapMap as any as S.Schema<OrgEditTeamRequestUnitsMapMap>;
+
 export interface OrgEditTeamRequest {
   /** id of the team to edit */
   id: number;
@@ -611,32 +853,52 @@ export interface OrgEditTeamRequest {
   units?: OrgEditTeamRequestUnitsList;
   units_map?: OrgEditTeamRequestUnitsMapMap;
 }
+const OrgEditTeamRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<OrgEditTeamRequest>;
+
 export interface OrgGetAllRequest {
   /** page number of results to return (1-based) */
   page?: number;
   /** page size of results */
   limit?: number;
 }
+const OrgGetAllRequest = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<OrgGetAllRequest>;
+
 export type OrgGetAllResponseBodyList = Array<Organization>;
+const OrgGetAllResponseBodyList = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<OrgGetAllResponseBodyList>;
+
 export type OrgGetAllResponse = OrgGetAllResponseBodyList;
+const OrgGetAllResponse = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<OrgGetAllResponse>;
+
 export interface OrgGetHookRequest {
   /** name of the organization */
   org: string;
   /** id of the hook to get */
   id: number;
 }
+const OrgGetHookRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<OrgGetHookRequest>;
+
 export interface OrgGetLabelRequest {
   /** name of the organization */
   org: string;
   /** id of the label to get */
   id: number;
 }
+const OrgGetLabelRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<OrgGetLabelRequest>;
+
 export interface OrgGetQuotaRequest {
   /** name of the organization */
   org: string;
 }
+const OrgGetQuotaRequest = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<OrgGetQuotaRequest>;
+
 /** Subjects the rule affects */
 export type QuotaRuleInfoSubjectsList = Array<string>;
+const QuotaRuleInfoSubjectsList =
+  RepositoryTopicsList as any as S.Schema<QuotaRuleInfoSubjectsList>;
+
 /** QuotaRuleInfo contains information about a quota rule */
 export interface QuotaRuleInfo {
   /** The limit set by the rule */
@@ -646,8 +908,12 @@ export interface QuotaRuleInfo {
   /** Subjects the rule affects */
   subjects?: QuotaRuleInfoSubjectsList;
 }
+const QuotaRuleInfo = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<QuotaRuleInfo>;
+
 /** Rules associated with the group */
 export type QuotaGroupRulesList = Array<QuotaRuleInfo>;
+const QuotaGroupRulesList = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<QuotaGroupRulesList>;
+
 /** QuotaGroup represents a quota group */
 export interface QuotaGroup {
   /** Name of the group */
@@ -655,8 +921,12 @@ export interface QuotaGroup {
   /** Rules associated with the group */
   rules?: QuotaGroupRulesList;
 }
+const QuotaGroup = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<QuotaGroup>;
+
 /** QuotaGroupList represents a list of quota groups */
 export type QuotaGroupList = Array<QuotaGroup>;
+const QuotaGroupList = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<QuotaGroupList>;
+
 /** QuotaUsedSizeAssetsAttachments represents the size-based attachment quota usage of a user */
 export interface QuotaUsedSizeAssetsAttachments {
   /** Storage size used for the user's issue & comment attachments */
@@ -664,11 +934,21 @@ export interface QuotaUsedSizeAssetsAttachments {
   /** Storage size used for the user's release attachments */
   releases?: number;
 }
+const QuotaUsedSizeAssetsAttachments = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<QuotaUsedSizeAssetsAttachments>;
+
 /** QuotaUsedSizeAssetsPackages represents the size-based package quota usage of a user */
 export interface QuotaUsedSizeAssetsPackages {
   /** Storage suze used for the user's packages */
   all?: number;
 }
+const QuotaUsedSizeAssetsPackages = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<QuotaUsedSizeAssetsPackages>;
+
 /** QuotaUsedSizeAssets represents the size-based asset usage of a user */
 export interface QuotaUsedSizeAssets {
   /** Storage size used for the user's artifacts */
@@ -676,11 +956,15 @@ export interface QuotaUsedSizeAssets {
   attachments?: QuotaUsedSizeAssetsAttachments;
   packages?: QuotaUsedSizeAssetsPackages;
 }
+const QuotaUsedSizeAssets = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<QuotaUsedSizeAssets>;
+
 /** QuotaUsedSizeGit represents the size-based git (lfs) quota usage of a user */
 export interface QuotaUsedSizeGit {
   /** Storage size of the user's Git LFS objects */
   LFS?: number;
 }
+const QuotaUsedSizeGit = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<QuotaUsedSizeGit>;
+
 /** QuotaUsedSizeRepos represents the size-based repository quota usage of a user */
 export interface QuotaUsedSizeRepos {
   /** Storage size of the user's private repositories */
@@ -688,31 +972,46 @@ export interface QuotaUsedSizeRepos {
   /** Storage size of the user's public repositories */
   public?: number;
 }
+const QuotaUsedSizeRepos = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<QuotaUsedSizeRepos>;
+
 /** QuotaUsedSize represents the size-based quota usage of a user */
 export interface QuotaUsedSize {
   assets?: QuotaUsedSizeAssets;
   git?: QuotaUsedSizeGit;
   repos?: QuotaUsedSizeRepos;
 }
+const QuotaUsedSize = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<QuotaUsedSize>;
+
 /** QuotaUsed represents the quota usage of a user */
 export interface QuotaUsed {
   size?: QuotaUsedSize;
 }
+const QuotaUsed = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<QuotaUsed>;
+
 /** QuotaInfo represents information about a user's quota */
 export interface QuotaInfo {
   groups?: QuotaGroupList;
   used?: QuotaUsed;
 }
+const QuotaInfo = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<QuotaInfo>;
+
 export interface OrgGetTeamRequest {
   /** id of the team to get */
   id: number;
 }
+const OrgGetTeamRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<OrgGetTeamRequest>;
+
 export interface OrgGetUserPermissionsRequest {
   /** username of user */
   username: string;
   /** name of the organization */
   org: string;
 }
+const OrgGetUserPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<OrgGetUserPermissionsRequest>;
+
 /** OrganizationPermissions list different users permissions on an organization */
 export interface OrganizationPermissions {
   can_create_repository?: boolean;
@@ -721,20 +1020,37 @@ export interface OrganizationPermissions {
   is_admin?: boolean;
   is_owner?: boolean;
 }
+const OrganizationPermissions = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<OrganizationPermissions>;
+
 export interface OrgIsMemberRequest {
   /** name of the organization */
   org: string;
   /** username of the user */
   username: string;
 }
+const OrgIsMemberRequest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<OrgIsMemberRequest>;
+
 export interface OrgIsMemberResponse {}
+const OrgIsMemberResponse = CreateOrgVariableResponse as any as S.Schema<OrgIsMemberResponse>;
+
 export interface OrgIsPublicMemberRequest {
   /** name of the organization */
   org: string;
   /** username of the user */
   username: string;
 }
+const OrgIsPublicMemberRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<OrgIsPublicMemberRequest>;
+
 export interface OrgIsPublicMemberResponse {}
+const OrgIsPublicMemberResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgIsPublicMemberResponse>;
+
 export interface OrgListActionsSecretsRequest {
   /** name of the organization */
   org: string;
@@ -743,14 +1059,31 @@ export interface OrgListActionsSecretsRequest {
   /** page size of results */
   limit?: number;
 }
+const OrgListActionsSecretsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<OrgListActionsSecretsRequest>;
+
 /** Secret represents a secret */
 export interface Secret {
   created_at: string;
   /** the secret's name */
   name: string;
 }
+const Secret = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<Secret>;
+
 export type OrgListActionsSecretsResponseBodyList = Array<Secret>;
+const OrgListActionsSecretsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<OrgListActionsSecretsResponseBodyList>;
+
 export type OrgListActionsSecretsResponse = OrgListActionsSecretsResponseBodyList;
+const OrgListActionsSecretsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<OrgListActionsSecretsResponse>;
+
 export interface OrgListActivityFeedsRequest {
   /** name of the org */
   org: string;
@@ -761,7 +1094,14 @@ export interface OrgListActivityFeedsRequest {
   /** page size of results */
   limit?: number;
 }
+const OrgListActivityFeedsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<OrgListActivityFeedsRequest>;
+
 export type AttachmentType = "attachment" | "external";
+const AttachmentType = S.String;
+
 /** Attachment a generic attachment */
 export interface Attachment {
   browser_download_url?: string;
@@ -773,8 +1113,12 @@ export interface Attachment {
   type?: AttachmentType;
   uuid?: string;
 }
+const Attachment = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<Attachment>;
+
 /** The attachments to the comment */
 export type CommentAssetsList = Array<Attachment>;
+const CommentAssetsList = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<CommentAssetsList>;
+
 /** Comment represents a comment on a commit or issue */
 export interface Comment {
   /** The attachments to the comment */
@@ -799,6 +1143,8 @@ export interface Comment {
   updated_at?: string;
   user?: User;
 }
+const Comment = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<Comment>;
+
 /** the type of action */
 export type ActivityOpType =
   | "create_repo"
@@ -828,6 +1174,8 @@ export type ActivityOpType =
   | "pull_review_dismissed"
   | "pull_request_ready_for_review"
   | "auto_merge_pull_request";
+const ActivityOpType = S.String;
+
 export interface Activity {
   act_user?: User;
   act_user_id?: number;
@@ -844,8 +1192,20 @@ export interface Activity {
   repo_id?: number;
   user_id?: number;
 }
+const Activity = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<Activity>;
+
 export type OrgListActivityFeedsResponseBodyList = Array<Activity>;
+const OrgListActivityFeedsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<OrgListActivityFeedsResponseBodyList>;
+
 export type OrgListActivityFeedsResponse = OrgListActivityFeedsResponseBodyList;
+const OrgListActivityFeedsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<OrgListActivityFeedsResponse>;
+
 export interface OrgListBlockedUsersRequest {
   /** name of the org */
   org: string;
@@ -854,20 +1214,50 @@ export interface OrgListBlockedUsersRequest {
   /** page size of results */
   limit?: number;
 }
+const OrgListBlockedUsersRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<OrgListBlockedUsersRequest>;
+
 export interface BlockedUser {
   block_id?: number;
   created_at?: string;
 }
+const BlockedUser = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<BlockedUser>;
+
 export type OrgListBlockedUsersResponseBodyList = Array<BlockedUser>;
+const OrgListBlockedUsersResponseBodyList = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<OrgListBlockedUsersResponseBodyList>;
+
 export type OrgListBlockedUsersResponse = OrgListBlockedUsersResponseBodyList;
+const OrgListBlockedUsersResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<OrgListBlockedUsersResponse>;
+
 export interface OrgListCurrentUserOrgsRequest {
   /** page number of results to return (1-based) */
   page?: number;
   /** page size of results */
   limit?: number;
 }
+const OrgListCurrentUserOrgsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<OrgListCurrentUserOrgsRequest>;
+
 export type OrgListCurrentUserOrgsResponseBodyList = Array<Organization>;
+const OrgListCurrentUserOrgsResponseBodyList =
+  OrgGetAllResponseBodyList as any as S.Schema<OrgListCurrentUserOrgsResponseBodyList>;
+
 export type OrgListCurrentUserOrgsResponse = OrgListCurrentUserOrgsResponseBodyList;
+const OrgListCurrentUserOrgsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<OrgListCurrentUserOrgsResponse>;
+
 export interface OrgListHooksRequest {
   /** name of the organization */
   org: string;
@@ -876,9 +1266,23 @@ export interface OrgListHooksRequest {
   /** page size of results */
   limit?: number;
 }
+const OrgListHooksRequest = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<OrgListHooksRequest>;
+
 export type OrgListHooksResponseBodyList = Array<Hook>;
+const OrgListHooksResponseBodyList = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<OrgListHooksResponseBodyList>;
+
 export type OrgListHooksResponse = OrgListHooksResponseBodyList;
+const OrgListHooksResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<OrgListHooksResponse>;
+
 export type OrgListLabelsRequestSort = "mostissues" | "leastissues" | "reversealphabetically";
+const OrgListLabelsRequestSort = S.String;
+
 export interface OrgListLabelsRequest {
   /** name of the organization */
   org: string;
@@ -889,8 +1293,23 @@ export interface OrgListLabelsRequest {
   /** page size of results */
   limit?: number;
 }
+const OrgListLabelsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<OrgListLabelsRequest>;
+
 export type OrgListLabelsResponseBodyList = Array<Label>;
+const OrgListLabelsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<OrgListLabelsResponseBodyList>;
+
 export type OrgListLabelsResponse = OrgListLabelsResponseBodyList;
+const OrgListLabelsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<OrgListLabelsResponse>;
+
 export interface OrgListMembersRequest {
   /** name of the organization */
   org: string;
@@ -899,8 +1318,23 @@ export interface OrgListMembersRequest {
   /** page size of results */
   limit?: number;
 }
+const OrgListMembersRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<OrgListMembersRequest>;
+
 export type OrgListMembersResponseBodyList = Array<User>;
+const OrgListMembersResponseBodyList = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<OrgListMembersResponseBodyList>;
+
 export type OrgListMembersResponse = OrgListMembersResponseBodyList;
+const OrgListMembersResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<OrgListMembersResponse>;
+
 export interface OrgListPublicMembersRequest {
   /** name of the organization */
   org: string;
@@ -909,8 +1343,21 @@ export interface OrgListPublicMembersRequest {
   /** page size of results */
   limit?: number;
 }
+const OrgListPublicMembersRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<OrgListPublicMembersRequest>;
+
 export type OrgListPublicMembersResponseBodyList = Array<User>;
+const OrgListPublicMembersResponseBodyList =
+  OrgListMembersResponseBodyList as any as S.Schema<OrgListPublicMembersResponseBodyList>;
+
 export type OrgListPublicMembersResponse = OrgListPublicMembersResponseBodyList;
+const OrgListPublicMembersResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<OrgListPublicMembersResponse>;
+
 export interface OrgListQuotaArtifactsRequest {
   /** name of the organization */
   org: string;
@@ -919,6 +1366,11 @@ export interface OrgListQuotaArtifactsRequest {
   /** page size of results */
   limit?: number;
 }
+const OrgListQuotaArtifactsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<OrgListQuotaArtifactsRequest>;
+
 /** QuotaUsedArtifact represents an artifact counting towards a user's quota */
 export interface QuotaUsedArtifact {
   /** HTML URL to the action run containing the artifact */
@@ -928,9 +1380,21 @@ export interface QuotaUsedArtifact {
   /** Size of the artifact (compressed) */
   size?: number;
 }
+const QuotaUsedArtifact = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<QuotaUsedArtifact>;
+
 /** QuotaUsedArtifactList represents a list of artifacts counting towards a user's quota */
 export type QuotaUsedArtifactList = Array<QuotaUsedArtifact>;
+const QuotaUsedArtifactList = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<QuotaUsedArtifactList>;
+
 export type OrgListQuotaArtifactsResponse = QuotaUsedArtifactList;
+const OrgListQuotaArtifactsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<OrgListQuotaArtifactsResponse>;
+
 export interface OrgListQuotaAttachmentsRequest {
   /** name of the organization */
   org: string;
@@ -939,6 +1403,11 @@ export interface OrgListQuotaAttachmentsRequest {
   /** page size of results */
   limit?: number;
 }
+const OrgListQuotaAttachmentsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<OrgListQuotaAttachmentsRequest>;
+
 /** Context for the attachment: URLs to the containing object */
 export interface QuotaUsedAttachmentContainedIn {
   /** API URL for the object that contains this attachment */
@@ -946,6 +1415,11 @@ export interface QuotaUsedAttachmentContainedIn {
   /** HTML URL for the object that contains this attachment */
   html_url?: string;
 }
+const QuotaUsedAttachmentContainedIn = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<QuotaUsedAttachmentContainedIn>;
+
 /** QuotaUsedAttachment represents an attachment counting towards a user's quota */
 export interface QuotaUsedAttachment {
   /** API URL for the attachment */
@@ -957,9 +1431,21 @@ export interface QuotaUsedAttachment {
   /** Size of the attachment (in bytes) */
   size?: number;
 }
+const QuotaUsedAttachment = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<QuotaUsedAttachment>;
+
 /** QuotaUsedAttachmentList represents a list of attachment counting towards a user's quota */
 export type QuotaUsedAttachmentList = Array<QuotaUsedAttachment>;
+const QuotaUsedAttachmentList = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<QuotaUsedAttachmentList>;
+
 export type OrgListQuotaAttachmentsResponse = QuotaUsedAttachmentList;
+const OrgListQuotaAttachmentsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<OrgListQuotaAttachmentsResponse>;
+
 export interface OrgListQuotaPackagesRequest {
   /** name of the organization */
   org: string;
@@ -968,6 +1454,11 @@ export interface OrgListQuotaPackagesRequest {
   /** page size of results */
   limit?: number;
 }
+const OrgListQuotaPackagesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<OrgListQuotaPackagesRequest>;
+
 /** QuotaUsedPackage represents a package counting towards a user's quota */
 export interface QuotaUsedPackage {
   /** HTML URL to the package version */
@@ -981,9 +1472,21 @@ export interface QuotaUsedPackage {
   /** Version of the package */
   version?: string;
 }
+const QuotaUsedPackage = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<QuotaUsedPackage>;
+
 /** QuotaUsedPackageList represents a list of packages counting towards a user's quota */
 export type QuotaUsedPackageList = Array<QuotaUsedPackage>;
+const QuotaUsedPackageList = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<QuotaUsedPackageList>;
+
 export type OrgListQuotaPackagesResponse = QuotaUsedPackageList;
+const OrgListQuotaPackagesResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<OrgListQuotaPackagesResponse>;
+
 export interface OrgListReposRequest {
   /** name of the organization */
   org: string;
@@ -992,8 +1495,20 @@ export interface OrgListReposRequest {
   /** page size of results */
   limit?: number;
 }
+const OrgListReposRequest = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<OrgListReposRequest>;
+
 export type OrgListReposResponseBodyList = Array<Repository>;
+const OrgListReposResponseBodyList = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<OrgListReposResponseBodyList>;
+
 export type OrgListReposResponse = OrgListReposResponseBodyList;
+const OrgListReposResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<OrgListReposResponse>;
+
 export interface OrgListTeamActivityFeedsRequest {
   /** id of the team */
   id: number;
@@ -1004,14 +1519,27 @@ export interface OrgListTeamActivityFeedsRequest {
   /** page size of results */
   limit?: number;
 }
+const OrgListTeamActivityFeedsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<OrgListTeamActivityFeedsRequest>;
+
 export type OrgListTeamActivityFeedsResponseBodyList = Array<Activity>;
 export type OrgListTeamActivityFeedsResponse = OrgListTeamActivityFeedsResponseBodyList;
+const OrgListTeamActivityFeedsResponse =
+  OrgListActivityFeedsResponse as any as S.Schema<OrgListTeamActivityFeedsResponse>;
+
 export interface OrgListTeamMemberRequest {
   /** id of the team */
   id: number;
   /** username of the member to list */
   username: string;
 }
+const OrgListTeamMemberRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<OrgListTeamMemberRequest>;
+
 export interface OrgListTeamMembersRequest {
   /** id of the team */
   id: number;
@@ -1020,8 +1548,16 @@ export interface OrgListTeamMembersRequest {
   /** page size of results */
   limit?: number;
 }
+const OrgListTeamMembersRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<OrgListTeamMembersRequest>;
+
 export type OrgListTeamMembersResponseBodyList = Array<User>;
 export type OrgListTeamMembersResponse = OrgListTeamMembersResponseBodyList;
+const OrgListTeamMembersResponse =
+  OrgListPublicMembersResponse as any as S.Schema<OrgListTeamMembersResponse>;
+
 export interface OrgListTeamRepoRequest {
   /** id of the team */
   id: number;
@@ -1030,6 +1566,11 @@ export interface OrgListTeamRepoRequest {
   /** name of the repo to list */
   repo: string;
 }
+const OrgListTeamRepoRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<OrgListTeamRepoRequest>;
+
 export interface OrgListTeamReposRequest {
   /** id of the team */
   id: number;
@@ -1038,8 +1579,15 @@ export interface OrgListTeamReposRequest {
   /** page size of results */
   limit?: number;
 }
+const OrgListTeamReposRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<OrgListTeamReposRequest>;
+
 export type OrgListTeamReposResponseBodyList = Array<Repository>;
 export type OrgListTeamReposResponse = OrgListTeamReposResponseBodyList;
+const OrgListTeamReposResponse = OrgListReposResponse as any as S.Schema<OrgListTeamReposResponse>;
+
 export interface OrgListTeamsRequest {
   /** name of the organization */
   org: string;
@@ -1048,8 +1596,18 @@ export interface OrgListTeamsRequest {
   /** page size of results */
   limit?: number;
 }
+const OrgListTeamsRequest = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<OrgListTeamsRequest>;
+
 export type OrgListTeamsResponseBodyList = Array<Team>;
+const OrgListTeamsResponseBodyList =
+  RepoTransferTeamsList as any as S.Schema<OrgListTeamsResponseBodyList>;
+
 export type OrgListTeamsResponse = OrgListTeamsResponseBodyList;
+const OrgListTeamsResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<OrgListTeamsResponse>;
+
 export interface OrgListUserOrgsRequest {
   /** username of user */
   username: string;
@@ -1058,22 +1616,45 @@ export interface OrgListUserOrgsRequest {
   /** page size of results */
   limit?: number;
 }
+const OrgListUserOrgsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<OrgListUserOrgsRequest>;
+
 export type OrgListUserOrgsResponseBodyList = Array<Organization>;
 export type OrgListUserOrgsResponse = OrgListUserOrgsResponseBodyList;
+const OrgListUserOrgsResponse = OrgGetAllResponse as any as S.Schema<OrgListUserOrgsResponse>;
+
 export interface OrgPublicizeMemberRequest {
   /** name of the organization */
   org: string;
   /** username of the user */
   username: string;
 }
+const OrgPublicizeMemberRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<OrgPublicizeMemberRequest>;
+
 export interface OrgPublicizeMemberResponse {}
+const OrgPublicizeMemberResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgPublicizeMemberResponse>;
+
 export interface OrgRemoveTeamMemberRequest {
   /** id of the team */
   id: number;
   /** username of the user to remove */
   username: string;
 }
+const OrgRemoveTeamMemberRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<OrgRemoveTeamMemberRequest>;
+
 export interface OrgRemoveTeamMemberResponse {}
+const OrgRemoveTeamMemberResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgRemoveTeamMemberResponse>;
+
 export interface OrgRemoveTeamRepositoryRequest {
   /** id of the team */
   id: number;
@@ -1082,17 +1663,36 @@ export interface OrgRemoveTeamRepositoryRequest {
   /** name of the repo to remove */
   repo: string;
 }
+const OrgRemoveTeamRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<OrgRemoveTeamRepositoryRequest>;
+
 export interface OrgRemoveTeamRepositoryResponse {}
+const OrgRemoveTeamRepositoryResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<OrgRemoveTeamRepositoryResponse>;
+
 export interface OrgSearchRunJobsRequest {
   /** name of the organization */
   org: string;
   /** a comma separated list of run job labels to search for */
   labels?: string;
 }
+const OrgSearchRunJobsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<OrgSearchRunJobsRequest>;
+
 /** the action run job needed ids */
 export type ActionRunJobNeedsList = Array<string>;
+const ActionRunJobNeedsList = RepositoryTopicsList as any as S.Schema<ActionRunJobNeedsList>;
+
 /** the action run job labels to run on */
 export type ActionRunJobRunsOnList = Array<string>;
+const ActionRunJobRunsOnList = RepositoryTopicsList as any as S.Schema<ActionRunJobRunsOnList>;
+
 /** ActionRunJob represents a job of a run */
 export interface ActionRunJob {
   /** How many times the job has been attempted including the current attempt. */
@@ -1118,22 +1718,49 @@ export interface ActionRunJob {
   /** the action run job latest task id */
   task_id?: number;
 }
+const ActionRunJob = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<ActionRunJob>;
+
 export type OrgSearchRunJobsResponseBodyList = Array<ActionRunJob>;
+const OrgSearchRunJobsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<OrgSearchRunJobsResponseBodyList>;
+
 export type OrgSearchRunJobsResponse = OrgSearchRunJobsResponseBodyList;
+const OrgSearchRunJobsResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<OrgSearchRunJobsResponse>;
+
 export interface OrgUnblockUserRequest {
   /** name of the org */
   org: string;
   /** username of the user */
   username: string;
 }
+const OrgUnblockUserRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<OrgUnblockUserRequest>;
+
 export interface OrgUnblockUserResponse {}
+const OrgUnblockUserResponse = CreateOrgVariableResponse as any as S.Schema<OrgUnblockUserResponse>;
+
 export interface OrgUpdateAvatarRequest {
   /** name of the organization */
   org: string;
   /** image must be base64 encoded */
   image?: string;
 }
+const OrgUpdateAvatarRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<OrgUpdateAvatarRequest>;
+
 export interface OrgUpdateAvatarResponse {}
+const OrgUpdateAvatarResponse =
+  CreateOrgVariableResponse as any as S.Schema<OrgUpdateAvatarResponse>;
+
 export interface RegisterOrgRunnerRequest {
   /** name of the organization */
   org: string;
@@ -1144,18 +1771,32 @@ export interface RegisterOrgRunnerRequest {
   /** Name of the runner to register. The name of the runner does not have to be unique. */
   name: string;
 }
+const RegisterOrgRunnerRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<RegisterOrgRunnerRequest>;
+
 export interface RegisterRunnerResponse {
   id?: number;
   token?: string;
   uuid?: string;
 }
+const RegisterRunnerResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<RegisterRunnerResponse>;
+
 export interface RenameOrgRequest {
   /** existing org name */
   org: string;
   /** New username for this org. This name cannot be in use yet by any other user. */
   new_name: string;
 }
+const RenameOrgRequest = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<RenameOrgRequest>;
+
 export interface RenameOrgResponse {}
+const RenameOrgResponse = CreateOrgVariableResponse as any as S.Schema<RenameOrgResponse>;
+
 export interface SearchTeamRequest {
   /** name of the organization */
   org: string;
@@ -1168,11 +1809,18 @@ export interface SearchTeamRequest {
   /** page size of results */
   limit?: number;
 }
+const SearchTeamRequest = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<SearchTeamRequest>;
+
 export type SearchTeamResponseDataList = Array<Team>;
+const SearchTeamResponseDataList =
+  RepoTransferTeamsList as any as S.Schema<SearchTeamResponseDataList>;
+
 export interface SearchTeamResponse {
   data?: SearchTeamResponseDataList;
   ok?: boolean;
 }
+const SearchTeamResponse = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<SearchTeamResponse>;
+
 export interface UpdateOrgSecretRequest {
   /** name of organization */
   org: string;
@@ -1181,7 +1829,15 @@ export interface UpdateOrgSecretRequest {
   /** Data of the secret. Special characters will be retained. Line endings will be normalized to LF to match the behaviour of browsers. Encode the data with Base64 if line endings should be retained. */
   data: string;
 }
+const UpdateOrgSecretRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<UpdateOrgSecretRequest>;
+
 export interface UpdateOrgSecretResponse {}
+const UpdateOrgSecretResponse =
+  CreateOrgVariableResponse as any as S.Schema<UpdateOrgSecretResponse>;
+
 export interface UpdateOrgVariableRequest {
   /** name of the organization */
   org: string;
@@ -1192,7 +1848,15 @@ export interface UpdateOrgVariableRequest {
   /** Value of the variable to update. Special characters will be retained. Line endings will be normalized to LF to match the behaviour of browsers. Encode the data with Base64 if line endings should be retained. */
   value: string;
 }
+const UpdateOrgVariableRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<UpdateOrgVariableRequest>;
+
 export interface UpdateOrgVariableResponse {}
+const UpdateOrgVariableResponse =
+  CreateOrgVariableResponse as any as S.Schema<UpdateOrgVariableResponse>;
+
 export type CreateOrgError = Forbidden | UnprocessableEntity | ForgejoOpError;
 /** Create an organization */
 export const createOrg: API.OperationMethod<
@@ -1201,8 +1865,8 @@ export const createOrg: API.OperationMethod<
   CreateOrgError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateOrgRequest>,
-  output: __S(1) as any as S.Schema<Organization>,
+  input: CreateOrgRequest,
+  output: Organization,
   errors: [Forbidden, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1216,8 +1880,8 @@ export const createOrgRepo: API.OperationMethod<
   CreateOrgRepoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateOrgRepoRequest>,
-  output: __S(14) as any as S.Schema<Repository>,
+  input: CreateOrgRepoRequest,
+  output: Repository,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1231,8 +1895,8 @@ export const createOrgVariable: API.OperationMethod<
   CreateOrgVariableError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<CreateOrgVariableRequest>,
-  output: __S(16) as any as S.Schema<CreateOrgVariableResponse>,
+  input: CreateOrgVariableRequest,
+  output: CreateOrgVariableResponse,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1246,8 +1910,8 @@ export const deleteOrg: API.OperationMethod<
   DeleteOrgError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<DeleteOrgRequest>,
-  output: __S(16) as any as S.Schema<DeleteOrgResponse>,
+  input: DeleteOrgRequest,
+  output: DeleteOrgResponse,
   errors: [NotFound, OrganizationOwnsRepositories],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1261,8 +1925,8 @@ export const deleteOrgRunner: API.OperationMethod<
   DeleteOrgRunnerError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<DeleteOrgRunnerRequest>,
-  output: __S(16) as any as S.Schema<DeleteOrgRunnerResponse>,
+  input: DeleteOrgRunnerRequest,
+  output: DeleteOrgRunnerResponse,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1276,8 +1940,8 @@ export const deleteOrgSecret: API.OperationMethod<
   DeleteOrgSecretError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<DeleteOrgSecretRequest>,
-  output: __S(16) as any as S.Schema<DeleteOrgSecretResponse>,
+  input: DeleteOrgSecretRequest,
+  output: DeleteOrgSecretResponse,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1291,8 +1955,8 @@ export const deleteOrgVariable: API.OperationMethod<
   DeleteOrgVariableError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<DeleteOrgVariableRequest>,
-  output: __S(16) as any as S.Schema<DeleteOrgVariableResponse>,
+  input: DeleteOrgVariableRequest,
+  output: DeleteOrgVariableResponse,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1306,8 +1970,8 @@ export const editOrg: API.OperationMethod<
   EditOrgError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<EditOrgRequest>,
-  output: __S(1) as any as S.Schema<Organization>,
+  input: EditOrgRequest,
+  output: Organization,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1321,8 +1985,8 @@ export const getOrg: API.OperationMethod<
   GetOrgError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<GetOrgRequest>,
-  output: __S(1) as any as S.Schema<Organization>,
+  input: GetOrgRequest,
+  output: Organization,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1336,8 +2000,8 @@ export const getOrgRunner: API.OperationMethod<
   GetOrgRunnerError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<GetOrgRunnerRequest>,
-  output: __S(24) as any as S.Schema<ActionRunner>,
+  input: GetOrgRunnerRequest,
+  output: ActionRunner,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1351,8 +2015,8 @@ export const getOrgRunners: API.OperationMethod<
   GetOrgRunnersError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<GetOrgRunnersRequest>,
-  output: __S(27) as any as S.Schema<GetOrgRunnersResponse>,
+  input: GetOrgRunnersRequest,
+  output: GetOrgRunnersResponse,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1366,8 +2030,8 @@ export const getOrgVariable: API.OperationMethod<
   GetOrgVariableError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<GetOrgVariableRequest>,
-  output: __S(29) as any as S.Schema<ActionVariable>,
+  input: GetOrgVariableRequest,
+  output: ActionVariable,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1381,8 +2045,8 @@ export const getOrgVariablesList: API.OperationMethod<
   GetOrgVariablesListError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<GetOrgVariablesListRequest>,
-  output: __S(32) as any as S.Schema<GetOrgVariablesListResponse>,
+  input: GetOrgVariablesListRequest,
+  output: GetOrgVariablesListResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1396,8 +2060,8 @@ export const orgAddTeamMember: API.OperationMethod<
   OrgAddTeamMemberError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<OrgAddTeamMemberRequest>,
-  output: __S(16) as any as S.Schema<OrgAddTeamMemberResponse>,
+  input: OrgAddTeamMemberRequest,
+  output: OrgAddTeamMemberResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1411,8 +2075,8 @@ export const orgAddTeamRepository: API.OperationMethod<
   OrgAddTeamRepositoryError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<OrgAddTeamRepositoryRequest>,
-  output: __S(16) as any as S.Schema<OrgAddTeamRepositoryResponse>,
+  input: OrgAddTeamRepositoryRequest,
+  output: OrgAddTeamRepositoryResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1426,8 +2090,8 @@ export const orgBlockUser: API.OperationMethod<
   OrgBlockUserError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<OrgBlockUserRequest>,
-  output: __S(16) as any as S.Schema<OrgBlockUserResponse>,
+  input: OrgBlockUserRequest,
+  output: OrgBlockUserResponse,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1441,8 +2105,8 @@ export const orgCheckQuota: API.OperationMethod<
   OrgCheckQuotaError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<OrgCheckQuotaRequest>,
-  output: __S(37) as any as S.Schema<OrgCheckQuotaResponse>,
+  input: OrgCheckQuotaRequest,
+  output: OrgCheckQuotaResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1456,8 +2120,8 @@ export const orgConcealMember: API.OperationMethod<
   OrgConcealMemberError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<OrgConcealMemberRequest>,
-  output: __S(16) as any as S.Schema<OrgConcealMemberResponse>,
+  input: OrgConcealMemberRequest,
+  output: OrgConcealMemberResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1471,8 +2135,8 @@ export const orgCreateHook: API.OperationMethod<
   OrgCreateHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<OrgCreateHookRequest>,
-  output: __S(40) as any as S.Schema<Hook>,
+  input: OrgCreateHookRequest,
+  output: Hook,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1486,8 +2150,8 @@ export const orgCreateLabel: API.OperationMethod<
   OrgCreateLabelError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<OrgCreateLabelRequest>,
-  output: __S(42) as any as S.Schema<Label>,
+  input: OrgCreateLabelRequest,
+  output: Label,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1501,8 +2165,8 @@ export const orgCreateTeam: API.OperationMethod<
   OrgCreateTeamError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<OrgCreateTeamRequest>,
-  output: __S(10) as any as S.Schema<Team>,
+  input: OrgCreateTeamRequest,
+  output: Team,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1516,8 +2180,8 @@ export const orgDeleteAvatar: API.OperationMethod<
   OrgDeleteAvatarError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<OrgDeleteAvatarRequest>,
-  output: __S(16) as any as S.Schema<OrgDeleteAvatarResponse>,
+  input: OrgDeleteAvatarRequest,
+  output: OrgDeleteAvatarResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1531,8 +2195,8 @@ export const orgDeleteHook: API.OperationMethod<
   OrgDeleteHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<OrgDeleteHookRequest>,
-  output: __S(16) as any as S.Schema<OrgDeleteHookResponse>,
+  input: OrgDeleteHookRequest,
+  output: OrgDeleteHookResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1546,8 +2210,8 @@ export const orgDeleteLabel: API.OperationMethod<
   OrgDeleteLabelError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<OrgDeleteLabelRequest>,
-  output: __S(16) as any as S.Schema<OrgDeleteLabelResponse>,
+  input: OrgDeleteLabelRequest,
+  output: OrgDeleteLabelResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1561,8 +2225,8 @@ export const orgDeleteMember: API.OperationMethod<
   OrgDeleteMemberError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<OrgDeleteMemberRequest>,
-  output: __S(16) as any as S.Schema<OrgDeleteMemberResponse>,
+  input: OrgDeleteMemberRequest,
+  output: OrgDeleteMemberResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1576,8 +2240,8 @@ export const orgDeleteTeam: API.OperationMethod<
   OrgDeleteTeamError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<OrgDeleteTeamRequest>,
-  output: __S(16) as any as S.Schema<OrgDeleteTeamResponse>,
+  input: OrgDeleteTeamRequest,
+  output: OrgDeleteTeamResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1591,8 +2255,8 @@ export const orgEditHook: API.OperationMethod<
   OrgEditHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<OrgEditHookRequest>,
-  output: __S(40) as any as S.Schema<Hook>,
+  input: OrgEditHookRequest,
+  output: Hook,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1606,8 +2270,8 @@ export const orgEditLabel: API.OperationMethod<
   OrgEditLabelError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<OrgEditLabelRequest>,
-  output: __S(42) as any as S.Schema<Label>,
+  input: OrgEditLabelRequest,
+  output: Label,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1621,8 +2285,8 @@ export const orgEditTeam: API.OperationMethod<
   OrgEditTeamError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<OrgEditTeamRequest>,
-  output: __S(10) as any as S.Schema<Team>,
+  input: OrgEditTeamRequest,
+  output: Team,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1636,8 +2300,8 @@ export const orgGetAll: API.OperationMethod<
   OrgGetAllError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<OrgGetAllRequest>,
-  output: __S(54) as any as S.Schema<OrgGetAllResponse>,
+  input: OrgGetAllRequest,
+  output: OrgGetAllResponse,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1651,8 +2315,8 @@ export const orgGetHook: API.OperationMethod<
   OrgGetHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<OrgGetHookRequest>,
-  output: __S(40) as any as S.Schema<Hook>,
+  input: OrgGetHookRequest,
+  output: Hook,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1666,8 +2330,8 @@ export const orgGetLabel: API.OperationMethod<
   OrgGetLabelError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<OrgGetLabelRequest>,
-  output: __S(42) as any as S.Schema<Label>,
+  input: OrgGetLabelRequest,
+  output: Label,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1681,8 +2345,8 @@ export const orgGetQuota: API.OperationMethod<
   OrgGetQuotaError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<OrgGetQuotaRequest>,
-  output: __S(69) as any as S.Schema<QuotaInfo>,
+  input: OrgGetQuotaRequest,
+  output: QuotaInfo,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1696,8 +2360,8 @@ export const orgGetTeam: API.OperationMethod<
   OrgGetTeamError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<OrgGetTeamRequest>,
-  output: __S(10) as any as S.Schema<Team>,
+  input: OrgGetTeamRequest,
+  output: Team,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1711,8 +2375,8 @@ export const orgGetUserPermissions: API.OperationMethod<
   OrgGetUserPermissionsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<OrgGetUserPermissionsRequest>,
-  output: __S(72) as any as S.Schema<OrganizationPermissions>,
+  input: OrgGetUserPermissionsRequest,
+  output: OrganizationPermissions,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1726,8 +2390,8 @@ export const orgIsMember: API.OperationMethod<
   OrgIsMemberError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<OrgIsMemberRequest>,
-  output: __S(16) as any as S.Schema<OrgIsMemberResponse>,
+  input: OrgIsMemberRequest,
+  output: OrgIsMemberResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1741,8 +2405,8 @@ export const orgIsPublicMember: API.OperationMethod<
   OrgIsPublicMemberError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<OrgIsPublicMemberRequest>,
-  output: __S(16) as any as S.Schema<OrgIsPublicMemberResponse>,
+  input: OrgIsPublicMemberRequest,
+  output: OrgIsPublicMemberResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1756,8 +2420,8 @@ export const orgListActionsSecrets: API.OperationMethod<
   OrgListActionsSecretsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<OrgListActionsSecretsRequest>,
-  output: __S(78) as any as S.Schema<OrgListActionsSecretsResponse>,
+  input: OrgListActionsSecretsRequest,
+  output: OrgListActionsSecretsResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1771,8 +2435,8 @@ export const orgListActivityFeeds: API.OperationMethod<
   OrgListActivityFeedsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<OrgListActivityFeedsRequest>,
-  output: __S(85) as any as S.Schema<OrgListActivityFeedsResponse>,
+  input: OrgListActivityFeedsRequest,
+  output: OrgListActivityFeedsResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1786,8 +2450,8 @@ export const orgListBlockedUsers: API.OperationMethod<
   OrgListBlockedUsersError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<OrgListBlockedUsersRequest>,
-  output: __S(89) as any as S.Schema<OrgListBlockedUsersResponse>,
+  input: OrgListBlockedUsersRequest,
+  output: OrgListBlockedUsersResponse,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1801,8 +2465,8 @@ export const orgListCurrentUserOrgs: API.OperationMethod<
   OrgListCurrentUserOrgsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<OrgListCurrentUserOrgsRequest>,
-  output: __S(91) as any as S.Schema<OrgListCurrentUserOrgsResponse>,
+  input: OrgListCurrentUserOrgsRequest,
+  output: OrgListCurrentUserOrgsResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1816,8 +2480,8 @@ export const orgListHooks: API.OperationMethod<
   OrgListHooksError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<OrgListHooksRequest>,
-  output: __S(94) as any as S.Schema<OrgListHooksResponse>,
+  input: OrgListHooksRequest,
+  output: OrgListHooksResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1831,8 +2495,8 @@ export const orgListLabels: API.OperationMethod<
   OrgListLabelsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<OrgListLabelsRequest>,
-  output: __S(97) as any as S.Schema<OrgListLabelsResponse>,
+  input: OrgListLabelsRequest,
+  output: OrgListLabelsResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1846,8 +2510,8 @@ export const orgListMembers: API.OperationMethod<
   OrgListMembersError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<OrgListMembersRequest>,
-  output: __S(100) as any as S.Schema<OrgListMembersResponse>,
+  input: OrgListMembersRequest,
+  output: OrgListMembersResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1861,8 +2525,8 @@ export const orgListPublicMembers: API.OperationMethod<
   OrgListPublicMembersError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<OrgListPublicMembersRequest>,
-  output: __S(102) as any as S.Schema<OrgListPublicMembersResponse>,
+  input: OrgListPublicMembersRequest,
+  output: OrgListPublicMembersResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1876,8 +2540,8 @@ export const orgListQuotaArtifacts: API.OperationMethod<
   OrgListQuotaArtifactsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<OrgListQuotaArtifactsRequest>,
-  output: __S(106) as any as S.Schema<OrgListQuotaArtifactsResponse>,
+  input: OrgListQuotaArtifactsRequest,
+  output: OrgListQuotaArtifactsResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1891,8 +2555,8 @@ export const orgListQuotaAttachments: API.OperationMethod<
   OrgListQuotaAttachmentsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<OrgListQuotaAttachmentsRequest>,
-  output: __S(111) as any as S.Schema<OrgListQuotaAttachmentsResponse>,
+  input: OrgListQuotaAttachmentsRequest,
+  output: OrgListQuotaAttachmentsResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1906,8 +2570,8 @@ export const orgListQuotaPackages: API.OperationMethod<
   OrgListQuotaPackagesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<OrgListQuotaPackagesRequest>,
-  output: __S(115) as any as S.Schema<OrgListQuotaPackagesResponse>,
+  input: OrgListQuotaPackagesRequest,
+  output: OrgListQuotaPackagesResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1921,8 +2585,8 @@ export const orgListRepos: API.OperationMethod<
   OrgListReposError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<OrgListReposRequest>,
-  output: __S(118) as any as S.Schema<OrgListReposResponse>,
+  input: OrgListReposRequest,
+  output: OrgListReposResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1936,8 +2600,8 @@ export const orgListTeamActivityFeeds: API.OperationMethod<
   OrgListTeamActivityFeedsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<OrgListTeamActivityFeedsRequest>,
-  output: __S(85) as any as S.Schema<OrgListTeamActivityFeedsResponse>,
+  input: OrgListTeamActivityFeedsRequest,
+  output: OrgListTeamActivityFeedsResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1951,8 +2615,8 @@ export const orgListTeamMember: API.OperationMethod<
   OrgListTeamMemberError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<OrgListTeamMemberRequest>,
-  output: __S(6) as any as S.Schema<User>,
+  input: OrgListTeamMemberRequest,
+  output: User,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1966,8 +2630,8 @@ export const orgListTeamMembers: API.OperationMethod<
   OrgListTeamMembersError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<OrgListTeamMembersRequest>,
-  output: __S(102) as any as S.Schema<OrgListTeamMembersResponse>,
+  input: OrgListTeamMembersRequest,
+  output: OrgListTeamMembersResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1981,8 +2645,8 @@ export const orgListTeamRepo: API.OperationMethod<
   OrgListTeamRepoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<OrgListTeamRepoRequest>,
-  output: __S(14) as any as S.Schema<Repository>,
+  input: OrgListTeamRepoRequest,
+  output: Repository,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1996,8 +2660,8 @@ export const orgListTeamRepos: API.OperationMethod<
   OrgListTeamReposError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<OrgListTeamReposRequest>,
-  output: __S(118) as any as S.Schema<OrgListTeamReposResponse>,
+  input: OrgListTeamReposRequest,
+  output: OrgListTeamReposResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2011,8 +2675,8 @@ export const orgListTeams: API.OperationMethod<
   OrgListTeamsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<OrgListTeamsRequest>,
-  output: __S(125) as any as S.Schema<OrgListTeamsResponse>,
+  input: OrgListTeamsRequest,
+  output: OrgListTeamsResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2026,8 +2690,8 @@ export const orgListUserOrgs: API.OperationMethod<
   OrgListUserOrgsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<OrgListUserOrgsRequest>,
-  output: __S(54) as any as S.Schema<OrgListUserOrgsResponse>,
+  input: OrgListUserOrgsRequest,
+  output: OrgListUserOrgsResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2041,8 +2705,8 @@ export const orgPublicizeMember: API.OperationMethod<
   OrgPublicizeMemberError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<OrgPublicizeMemberRequest>,
-  output: __S(16) as any as S.Schema<OrgPublicizeMemberResponse>,
+  input: OrgPublicizeMemberRequest,
+  output: OrgPublicizeMemberResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2056,8 +2720,8 @@ export const orgRemoveTeamMember: API.OperationMethod<
   OrgRemoveTeamMemberError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128) as any as S.Schema<OrgRemoveTeamMemberRequest>,
-  output: __S(16) as any as S.Schema<OrgRemoveTeamMemberResponse>,
+  input: OrgRemoveTeamMemberRequest,
+  output: OrgRemoveTeamMemberResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2071,8 +2735,8 @@ export const orgRemoveTeamRepository: API.OperationMethod<
   OrgRemoveTeamRepositoryError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<OrgRemoveTeamRepositoryRequest>,
-  output: __S(130) as any as S.Schema<OrgRemoveTeamRepositoryResponse>,
+  input: OrgRemoveTeamRepositoryRequest,
+  output: OrgRemoveTeamRepositoryResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2086,8 +2750,8 @@ export const orgSearchRunJobs: API.OperationMethod<
   OrgSearchRunJobsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<OrgSearchRunJobsRequest>,
-  output: __S(134) as any as S.Schema<OrgSearchRunJobsResponse>,
+  input: OrgSearchRunJobsRequest,
+  output: OrgSearchRunJobsResponse,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2101,8 +2765,8 @@ export const orgUnblockUser: API.OperationMethod<
   OrgUnblockUserError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<OrgUnblockUserRequest>,
-  output: __S(16) as any as S.Schema<OrgUnblockUserResponse>,
+  input: OrgUnblockUserRequest,
+  output: OrgUnblockUserResponse,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2116,8 +2780,8 @@ export const orgUpdateAvatar: API.OperationMethod<
   OrgUpdateAvatarError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<OrgUpdateAvatarRequest>,
-  output: __S(16) as any as S.Schema<OrgUpdateAvatarResponse>,
+  input: OrgUpdateAvatarRequest,
+  output: OrgUpdateAvatarResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2131,8 +2795,8 @@ export const registerOrgRunner: API.OperationMethod<
   RegisterOrgRunnerError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<RegisterOrgRunnerRequest>,
-  output: __S(138) as any as S.Schema<RegisterRunnerResponse>,
+  input: RegisterOrgRunnerRequest,
+  output: RegisterRunnerResponse,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2146,8 +2810,8 @@ export const renameOrg: API.OperationMethod<
   RenameOrgError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<RenameOrgRequest>,
-  output: __S(16) as any as S.Schema<RenameOrgResponse>,
+  input: RenameOrgRequest,
+  output: RenameOrgResponse,
   errors: [Forbidden, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2161,8 +2825,8 @@ export const searchTeam: API.OperationMethod<
   SearchTeamError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<SearchTeamRequest>,
-  output: __S(141) as any as S.Schema<SearchTeamResponse>,
+  input: SearchTeamRequest,
+  output: SearchTeamResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2176,8 +2840,8 @@ export const updateOrgSecret: API.OperationMethod<
   UpdateOrgSecretError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<UpdateOrgSecretRequest>,
-  output: __S(16) as any as S.Schema<UpdateOrgSecretResponse>,
+  input: UpdateOrgSecretRequest,
+  output: UpdateOrgSecretResponse,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2191,8 +2855,8 @@ export const updateOrgVariable: API.OperationMethod<
   UpdateOrgVariableError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143) as any as S.Schema<UpdateOrgVariableRequest>,
-  output: __S(16) as any as S.Schema<UpdateOrgVariableResponse>,
+  input: UpdateOrgVariableRequest,
+  output: UpdateOrgVariableResponse,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2210,7 +2874,7 @@ function __c0(j: number): any {
           location: S.optional(S.String),
           repo_admin_change_team_access: S.optional(S.Boolean),
           username: S.String,
-          visibility: S.optional(S.String),
+          visibility: S.optional(CreateOrgRequestVisibility),
           website: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/orgs", code: 200 })),
       ).annotate({ identifier: "CreateOrgRequest" });
@@ -2242,11 +2906,11 @@ function __c0(j: number): any {
           issue_labels: S.optional(S.String),
           license: S.optional(S.String),
           name: S.String,
-          object_format_name: S.optional(S.String),
+          object_format_name: S.optional(CreateOrgRepoRequestObjectFormatName),
           private: S.optional(S.Boolean),
           readme: S.optional(S.String),
           template: S.optional(S.Boolean),
-          trust_model: S.optional(S.String),
+          trust_model: S.optional(CreateOrgRepoRequestTrustModel),
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/repos", code: 200 })),
       ).annotate({ identifier: "CreateOrgRepoRequest" });
     case 3:
@@ -2324,20 +2988,20 @@ function __c1(j: number): any {
           id: S.Number,
           includes_all_repositories: S.optional(S.Boolean),
           name: S.String,
-          organization: S.optional(__S(1)),
-          permission: S.optional(S.String),
-          units: S.optional(__S(8)),
-          units_map: S.optional(__S(9)),
+          organization: S.optional(Organization),
+          permission: S.optional(TeamPermission),
+          units: S.optional(TeamUnitsList),
+          units_map: S.optional(TeamUnitsMapMap),
         }),
       ).annotate({ identifier: "Team" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(Team);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          doer: S.optional(__S(6)),
-          recipient: S.optional(__S(6)),
-          teams: S.optional(__S(11)),
+          doer: S.optional(User),
+          recipient: S.optional(User),
+          teams: S.optional(RepoTransferTeamsList),
         }),
       ).annotate({ identifier: "RepoTransfer" });
     case 5:
@@ -2363,8 +3027,8 @@ function __c1(j: number): any {
           default_update_style: S.optional(S.String),
           description: S.optional(S.String),
           empty: S.optional(S.Boolean),
-          external_tracker: S.optional(__S(3)),
-          external_wiki: S.optional(__S(4)),
+          external_tracker: S.optional(ExternalTracker),
+          external_wiki: S.optional(ExternalWiki),
           fork: S.optional(S.Boolean),
           forks_count: S.optional(S.Number),
           full_name: S.String,
@@ -2381,7 +3045,7 @@ function __c1(j: number): any {
           id: S.Number,
           ignore_whitespace_conflicts: S.optional(S.Boolean),
           internal: S.optional(S.Boolean),
-          internal_tracker: S.optional(__S(5)),
+          internal_tracker: S.optional(InternalTracker),
           language: S.optional(S.String),
           languages_url: S.optional(S.String),
           link: S.optional(S.String),
@@ -2389,21 +3053,21 @@ function __c1(j: number): any {
           mirror_interval: S.optional(S.String),
           mirror_updated: S.optional(S.String),
           name: S.String,
-          object_format_name: S.optional(S.String),
+          object_format_name: S.optional(RepositoryObjectFormatName),
           open_issues_count: S.optional(S.Number),
           open_pr_counter: S.optional(S.Number),
           original_url: S.optional(S.String),
-          owner: __S(6),
-          parent: S.optional(__S(14)),
-          permissions: S.optional(__S(7)),
+          owner: User,
+          parent: S.optional(Repository),
+          permissions: S.optional(Permission),
           private: S.optional(S.Boolean),
           release_counter: S.optional(S.Number),
-          repo_transfer: S.optional(__S(12)),
+          repo_transfer: S.optional(RepoTransfer),
           size: S.optional(S.Number),
           ssh_url: S.String,
           stars_count: S.optional(S.Number),
           template: S.optional(S.Boolean),
-          topics: S.optional(__S(13)),
+          topics: S.optional(RepositoryTopicsList),
           updated_at: S.String,
           url: S.optional(S.String),
           watchers_count: S.optional(S.Number),
@@ -2481,7 +3145,7 @@ function __c2(j: number): any {
           full_name: S.optional(S.String),
           location: S.optional(S.String),
           repo_admin_change_team_access: S.optional(S.Boolean),
-          visibility: S.optional(S.String),
+          visibility: S.optional(EditOrgRequestVisibility),
           website: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/orgs/{org}", code: 200 })),
       ).annotate({ identifier: "EditOrgRequest" });
@@ -2510,11 +3174,11 @@ function __c3(j: number): any {
           description: S.optional(S.String),
           ephemeral: S.optional(S.Boolean),
           id: S.optional(S.Number),
-          labels: S.optional(__S(13)),
+          labels: S.optional(ActionRunnerLabelsList),
           name: S.optional(S.String),
           owner_id: S.optional(S.Number),
           repo_id: S.optional(S.Number),
-          status: S.optional(S.String),
+          status: S.optional(ActionRunnerStatus),
           uuid: S.optional(S.String),
           version: S.optional(S.String),
         }),
@@ -2529,9 +3193,9 @@ function __c3(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/actions/runners", code: 200 })),
       ).annotate({ identifier: "GetOrgRunnersRequest" });
     case 2:
-      return S.Array(__S(24));
+      return S.Array(ActionRunner);
     case 3:
-      return S.suspend(() => __S(26).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetOrgRunnersResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetOrgRunnersResponse",
       });
     case 4:
@@ -2563,13 +3227,15 @@ function __c3(j: number): any {
         identifier: "GetOrgVariablesListRequest",
       });
     case 7:
-      return S.Array(__S(29));
+      return S.Array(ActionVariable);
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(31).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetOrgVariablesListResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetOrgVariablesListResponse",
       });
     case 1:
@@ -2623,9 +3289,9 @@ function __c4(j: number): any {
           active: S.optional(S.Boolean),
           authorization_header: S.optional(S.String),
           branch_filter: S.optional(S.String),
-          config: __S(9),
-          events: S.optional(__S(13)),
-          type: S.String,
+          config: CreateHookOptionConfig,
+          events: S.optional(OrgCreateHookRequestEventsList),
+          type: OrgCreateHookRequestType,
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/hooks", code: 200 })),
       ).annotate({ identifier: "OrgCreateHookRequest" });
   }
@@ -2638,10 +3304,10 @@ function __c5(j: number): any {
           active: S.Boolean,
           authorization_header: S.optional(S.String),
           branch_filter: S.optional(S.String),
-          config: S.optional(__S(9)),
+          config: S.optional(HookConfigMap),
           content_type: S.optional(S.String),
           created_at: S.String,
-          events: S.optional(__S(8)),
+          events: S.optional(HookEventsList),
           id: S.Number,
           metadata: S.optional(S.Unknown),
           type: S.String,
@@ -2680,9 +3346,9 @@ function __c5(j: number): any {
           description: S.optional(S.String),
           includes_all_repositories: S.optional(S.Boolean),
           name: S.String,
-          permission: S.optional(S.String),
-          units: S.optional(__S(13)),
-          units_map: S.optional(__S(9)),
+          permission: S.optional(OrgCreateTeamRequestPermission),
+          units: S.optional(OrgCreateTeamRequestUnitsList),
+          units_map: S.optional(OrgCreateTeamRequestUnitsMapMap),
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/teams", code: 200 })),
       ).annotate({ identifier: "OrgCreateTeamRequest" });
     case 4:
@@ -2730,8 +3396,8 @@ function __c6(j: number): any {
           active: S.optional(S.Boolean),
           authorization_header: S.optional(S.String),
           branch_filter: S.optional(S.String),
-          config: S.optional(__S(9)),
-          events: S.optional(__S(13)),
+          config: S.optional(OrgEditHookRequestConfigMap),
+          events: S.optional(OrgEditHookRequestEventsList),
         }).pipe(T.Http({ method: "PATCH", uri: "/orgs/{org}/hooks/{id}", code: 200 })),
       ).annotate({ identifier: "OrgEditHookRequest" });
     case 2:
@@ -2754,9 +3420,9 @@ function __c6(j: number): any {
           description: S.optional(S.String),
           includes_all_repositories: S.optional(S.Boolean),
           name: S.String,
-          permission: S.optional(S.String),
-          units: S.optional(__S(13)),
-          units_map: S.optional(__S(9)),
+          permission: S.optional(OrgEditTeamRequestPermission),
+          units: S.optional(OrgEditTeamRequestUnitsList),
+          units_map: S.optional(OrgEditTeamRequestUnitsMapMap),
         }).pipe(T.Http({ method: "PATCH", uri: "/teams/{id}", code: 200 })),
       ).annotate({ identifier: "OrgEditTeamRequest" });
     case 4:
@@ -2767,9 +3433,9 @@ function __c6(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/orgs", code: 200 })),
       ).annotate({ identifier: "OrgGetAllRequest" });
     case 5:
-      return S.Array(__S(1));
+      return S.Array(Organization);
     case 6:
-      return S.suspend(() => __S(53).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => OrgGetAllResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "OrgGetAllResponse",
       });
     case 7:
@@ -2801,20 +3467,20 @@ function __c7(j: number): any {
         S.Struct({
           limit: S.optional(S.Number),
           name: S.optional(S.String),
-          subjects: S.optional(__S(13)),
+          subjects: S.optional(QuotaRuleInfoSubjectsList),
         }),
       ).annotate({ identifier: "QuotaRuleInfo" });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(QuotaRuleInfo);
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          rules: S.optional(__S(59)),
+          rules: S.optional(QuotaGroupRulesList),
         }),
       ).annotate({ identifier: "QuotaGroup" });
     case 5:
-      return S.Array(__S(60));
+      return S.Array(QuotaGroup);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2840,8 +3506,8 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           artifacts: S.optional(S.Number),
-          attachments: S.optional(__S(62)),
-          packages: S.optional(__S(63)),
+          attachments: S.optional(QuotaUsedSizeAssetsAttachments),
+          packages: S.optional(QuotaUsedSizeAssetsPackages),
         }),
       ).annotate({ identifier: "QuotaUsedSizeAssets" });
     case 1:
@@ -2860,22 +3526,22 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          assets: S.optional(__S(64)),
-          git: S.optional(__S(65)),
-          repos: S.optional(__S(66)),
+          assets: S.optional(QuotaUsedSizeAssets),
+          git: S.optional(QuotaUsedSizeGit),
+          repos: S.optional(QuotaUsedSizeRepos),
         }),
       ).annotate({ identifier: "QuotaUsedSize" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          size: S.optional(__S(67)),
+          size: S.optional(QuotaUsedSize),
         }),
       ).annotate({ identifier: "QuotaUsed" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          groups: S.optional(__S(61)),
-          used: S.optional(__S(68)),
+          groups: S.optional(QuotaGroupList),
+          used: S.optional(QuotaUsed),
         }),
       ).annotate({ identifier: "QuotaInfo" });
     case 6:
@@ -2941,9 +3607,11 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "Secret" });
     case 5:
-      return S.Array(__S(76));
+      return S.Array(Secret);
     case 6:
-      return S.suspend(() => __S(77).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        OrgListActionsSecretsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "OrgListActionsSecretsResponse",
       });
     case 7:
@@ -2970,16 +3638,16 @@ function __c10(j: number): any {
           id: S.optional(S.Number),
           name: S.optional(S.String),
           size: S.optional(S.Number),
-          type: S.optional(S.String),
+          type: S.optional(AttachmentType),
           uuid: S.optional(S.String),
         }),
       ).annotate({ identifier: "Attachment" });
     case 1:
-      return S.Array(__S(80));
+      return S.Array(Attachment);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          assets: S.optional(__S(81)),
+          assets: S.optional(CommentAssetsList),
           body: S.optional(S.String),
           created_at: S.optional(S.String),
           html_url: S.optional(S.String),
@@ -2989,31 +3657,33 @@ function __c10(j: number): any {
           original_author_id: S.optional(S.Number),
           pull_request_url: S.optional(S.String),
           updated_at: S.optional(S.String),
-          user: S.optional(__S(6)),
+          user: S.optional(User),
         }),
       ).annotate({ identifier: "Comment" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          act_user: S.optional(__S(6)),
+          act_user: S.optional(User),
           act_user_id: S.optional(S.Number),
-          comment: S.optional(__S(82)),
+          comment: S.optional(Comment),
           comment_id: S.optional(S.Number),
           content: S.optional(S.String),
           created: S.optional(S.String),
           id: S.optional(S.Number),
           is_private: S.optional(S.Boolean),
-          op_type: S.optional(S.String),
+          op_type: S.optional(ActivityOpType),
           ref_name: S.optional(S.String),
-          repo: S.optional(__S(14)),
+          repo: S.optional(Repository),
           repo_id: S.optional(S.Number),
           user_id: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Activity" });
     case 4:
-      return S.Array(__S(83));
+      return S.Array(Activity);
     case 5:
-      return S.suspend(() => __S(84).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        OrgListActivityFeedsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "OrgListActivityFeedsResponse",
       });
     case 6:
@@ -3038,9 +3708,11 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87));
+      return S.Array(BlockedUser);
     case 1:
-      return S.suspend(() => __S(88).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        OrgListBlockedUsersResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "OrgListBlockedUsersResponse",
       });
     case 2:
@@ -3053,7 +3725,9 @@ function __c11(j: number): any {
         identifier: "OrgListCurrentUserOrgsRequest",
       });
     case 3:
-      return S.suspend(() => __S(53).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        OrgListCurrentUserOrgsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "OrgListCurrentUserOrgsResponse",
       });
     case 4:
@@ -3065,16 +3739,16 @@ function __c11(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/hooks", code: 200 })),
       ).annotate({ identifier: "OrgListHooksRequest" });
     case 5:
-      return S.Array(__S(40));
+      return S.Array(Hook);
     case 6:
-      return S.suspend(() => __S(93).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => OrgListHooksResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "OrgListHooksResponse",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          sort: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(OrgListLabelsRequestSort.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/labels", code: 200 })),
@@ -3084,9 +3758,9 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(42));
+      return S.Array(Label);
     case 1:
-      return S.suspend(() => __S(96).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => OrgListLabelsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "OrgListLabelsResponse",
       });
     case 2:
@@ -3098,9 +3772,9 @@ function __c12(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/members", code: 200 })),
       ).annotate({ identifier: "OrgListMembersRequest" });
     case 3:
-      return S.Array(__S(6));
+      return S.Array(User);
     case 4:
-      return S.suspend(() => __S(99).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => OrgListMembersResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "OrgListMembersResponse",
       });
     case 5:
@@ -3114,7 +3788,9 @@ function __c12(j: number): any {
         identifier: "OrgListPublicMembersRequest",
       });
     case 6:
-      return S.suspend(() => __S(99).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        OrgListPublicMembersResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "OrgListPublicMembersResponse",
       });
     case 7:
@@ -3140,9 +3816,9 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "QuotaUsedArtifact" });
     case 1:
-      return S.Array(__S(104));
+      return S.Array(QuotaUsedArtifact);
     case 2:
-      return S.suspend(() => __S(105).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => QuotaUsedArtifactList.pipe(T.RawResponseRoot())).annotate({
         identifier: "OrgListQuotaArtifactsResponse",
       });
     case 3:
@@ -3168,15 +3844,15 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           api_url: S.optional(S.String),
-          contained_in: S.optional(__S(108)),
+          contained_in: S.optional(QuotaUsedAttachmentContainedIn),
           name: S.optional(S.String),
           size: S.optional(S.Number),
         }),
       ).annotate({ identifier: "QuotaUsedAttachment" });
     case 6:
-      return S.Array(__S(109));
+      return S.Array(QuotaUsedAttachment);
     case 7:
-      return S.suspend(() => __S(110).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => QuotaUsedAttachmentList.pipe(T.RawResponseRoot())).annotate({
         identifier: "OrgListQuotaAttachmentsResponse",
       });
   }
@@ -3204,9 +3880,9 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "QuotaUsedPackage" });
     case 2:
-      return S.Array(__S(113));
+      return S.Array(QuotaUsedPackage);
     case 3:
-      return S.suspend(() => __S(114).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => QuotaUsedPackageList.pipe(T.RawResponseRoot())).annotate({
         identifier: "OrgListQuotaPackagesResponse",
       });
     case 4:
@@ -3218,9 +3894,9 @@ function __c14(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/repos", code: 200 })),
       ).annotate({ identifier: "OrgListReposRequest" });
     case 5:
-      return S.Array(__S(14));
+      return S.Array(Repository);
     case 6:
-      return S.suspend(() => __S(117).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => OrgListReposResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "OrgListReposResponse",
       });
     case 7:
@@ -3280,7 +3956,7 @@ function __c15(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/teams", code: 200 })),
       ).annotate({ identifier: "OrgListTeamsRequest" });
     case 5:
-      return S.suspend(() => __S(11).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => OrgListTeamsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "OrgListTeamsResponse",
       });
     case 6:
@@ -3341,19 +4017,19 @@ function __c16(j: number): any {
           handle: S.optional(S.String),
           id: S.optional(S.Number),
           name: S.optional(S.String),
-          needs: S.optional(__S(13)),
+          needs: S.optional(ActionRunJobNeedsList),
           owner_id: S.optional(S.Number),
           repo_id: S.optional(S.Number),
           run_id: S.optional(S.Number),
-          runs_on: S.optional(__S(13)),
+          runs_on: S.optional(ActionRunJobRunsOnList),
           status: S.optional(S.String),
           task_id: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ActionRunJob" });
     case 5:
-      return S.Array(__S(132));
+      return S.Array(ActionRunJob);
     case 6:
-      return S.suspend(() => __S(133).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => OrgSearchRunJobsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "OrgSearchRunJobsResponse",
       });
     case 7:
@@ -3411,7 +4087,7 @@ function __c17(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(11)),
+          data: S.optional(SearchTeamResponseDataList),
           ok: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SearchTeamResponse" });
@@ -3436,50 +4112,5 @@ function __c17(j: number): any {
           T.Http({ method: "PUT", uri: "/orgs/{org}/actions/variables/{variablename}", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateOrgVariableRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
   }
 }

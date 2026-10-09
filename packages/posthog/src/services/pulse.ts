@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -22,14 +20,26 @@ export class Conflict
 
 /** IDs of the dashboards this brief is anchored on. */
 export type BriefAnchorsDashboardsList = Array<number>;
+const BriefAnchorsDashboardsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<BriefAnchorsDashboardsList>;
+
 /** Short IDs of the insights this brief is anchored on. */
 export type BriefAnchorsInsightsList = Array<string>;
+const BriefAnchorsInsightsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BriefAnchorsInsightsList>;
+
 export interface BriefAnchors {
   /** IDs of the dashboards this brief is anchored on. */
   dashboards?: BriefAnchorsDashboardsList;
   /** Short IDs of the insights this brief is anchored on. */
   insights?: BriefAnchorsInsightsList;
 }
+const BriefAnchors = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<BriefAnchors>;
+
 export interface BriefSettings {
   /** Minimum absolute percent change for a movement to count as significant. Default 20. */
   min_abs_change_pct?: number;
@@ -46,6 +56,8 @@ export interface BriefSettings {
   /** Maximum annotations gathered as context per brief. Default 20. */
   max_annotations?: number;
 }
+const BriefSettings = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<BriefSettings>;
+
 export interface CreatePulseBriefConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -62,7 +74,17 @@ export interface CreatePulseBriefConfigRequest {
   /** Soft-delete flag. Deleted configs are hidden from lists but recoverable by patching this back to false. */
   deleted?: boolean;
 }
+const CreatePulseBriefConfigRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreatePulseBriefConfigRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -76,6 +98,8 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -87,6 +111,8 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<UserBasic>;
+
 export interface BriefConfig {
   id: string;
   /** Human-readable name for this brief focus. */
@@ -106,24 +132,36 @@ export interface BriefConfig {
   created_by: UserBasic | null;
   updated_at: string | null;
 }
+const BriefConfig = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<BriefConfig>;
+
 export interface GetPulseBriefRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this product brief. */
   id: string;
 }
+const GetPulseBriefRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetPulseBriefRequest>;
+
 /** * `generating` - Generating * `ready` - Ready * `quiet` - Quiet * `failed` - Failed */
 export type ProductBriefStatusEnum = "generating" | "ready" | "quiet" | "failed";
+const ProductBriefStatusEnum = S.String;
+
 /** * `on_demand` - On Demand * `scheduled` - Scheduled */
 export type ProductBriefTriggerEnum = "on_demand" | "scheduled";
+const ProductBriefTriggerEnum = S.String;
+
 /** * `last_n_days` - last_n_days * `since_last_run` - since_last_run */
 export type PeriodTypeEnum = "last_n_days" | "since_last_run";
+const PeriodTypeEnum = S.String;
+
 export interface Period {
   /** How the brief window is chosen: a fixed lookback (last_n_days) or since the last ready brief. * `last_n_days` - last_n_days * `since_last_run` - since_last_run */
   period_type: PeriodTypeEnum | (string & {});
   /** Lookback length in days. Required and used only when period_type is last_n_days. */
   days?: number;
 }
+const Period = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Period>;
+
 export interface BriefSectionCitation {
   /** Cited resource type, e.g. insight or dashboard. */
   type: string;
@@ -134,8 +172,15 @@ export interface BriefSectionCitation {
   /** Deep link into the app, or empty when the resource has no navigable target. */
   url: string;
 }
+const BriefSectionCitation = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<BriefSectionCitation>;
+
 /** PostHog resources this section cites as evidence. */
 export type BriefSectionCitationsList = Array<BriefSectionCitation>;
+const BriefSectionCitationsList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<BriefSectionCitationsList>;
+
 export interface BriefSection {
   /** Section kind, e.g. what_happened or what_to_build_next. */
   kind: string;
@@ -148,10 +193,20 @@ export interface BriefSection {
   /** Model confidence in this section, 0.0-1.0. */
   confidence: number;
 }
+const BriefSection = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<BriefSection>;
+
 /** Generated brief sections, most important first. */
 export type ProductBriefSectionsList = Array<BriefSection>;
+const ProductBriefSectionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ProductBriefSectionsList>;
+
 /** Names of the brief sources that contributed items. */
 export type ProductBriefSourcesUsedList = Array<string>;
+const ProductBriefSourcesUsedList =
+  BriefAnchorsInsightsList as any as S.Schema<ProductBriefSourcesUsedList>;
+
 export interface ProductBrief {
   id: string;
   /** The brief config this brief was generated for, if any. */
@@ -173,12 +228,19 @@ export interface ProductBrief {
   created_by: UserBasic | null;
   updated_at: string | null;
 }
+const ProductBrief = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ProductBrief>;
+
 export interface GetPulseBriefConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this brief config. */
   id: string;
 }
+const GetPulseBriefConfigRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetPulseBriefConfigRequest>;
+
 export interface ListPulseBriefConfigsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -187,13 +249,28 @@ export interface ListPulseBriefConfigsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListPulseBriefConfigsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListPulseBriefConfigsRequest>;
+
 export type PaginatedBriefConfigListResultsList = Array<BriefConfig>;
+const PaginatedBriefConfigListResultsList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<PaginatedBriefConfigListResultsList>;
+
 export interface PaginatedBriefConfigList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedBriefConfigListResultsList;
 }
+const PaginatedBriefConfigList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<PaginatedBriefConfigList>;
+
 export interface ListPulseBriefsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -202,8 +279,16 @@ export interface ListPulseBriefsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListPulseBriefsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListPulseBriefsRequest>;
+
 /** Names of the brief sources that contributed items. */
 export type ProductBriefListSourcesUsedList = Array<string>;
+const ProductBriefListSourcesUsedList =
+  BriefAnchorsInsightsList as any as S.Schema<ProductBriefListSourcesUsedList>;
+
 export interface ProductBriefList {
   id: string;
   /** The brief config this brief was generated for, if any. */
@@ -223,20 +308,42 @@ export interface ProductBriefList {
   created_by: UserBasic | null;
   updated_at: string | null;
 }
+const ProductBriefList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ProductBriefList>;
+
 export type PaginatedProductBriefListListResultsList = Array<ProductBriefList>;
+const PaginatedProductBriefListListResultsList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<PaginatedProductBriefListListResultsList>;
+
 export interface PaginatedProductBriefListList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedProductBriefListListResultsList;
 }
+const PaginatedProductBriefListList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<PaginatedProductBriefListList>;
+
 export interface PulseBriefConfigsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this brief config. */
   id: string;
 }
+const PulseBriefConfigsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<PulseBriefConfigsDestroyRequest>;
+
 export interface PulseBriefConfigsDestroyResponse {}
+const PulseBriefConfigsDestroyResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<PulseBriefConfigsDestroyResponse>;
+
 export interface PulseBriefsGenerateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -245,6 +352,11 @@ export interface PulseBriefsGenerateCreateRequest {
   /** Period the brief should cover. Defaults to the last 7 days. */
   period?: Period;
 }
+const PulseBriefsGenerateCreateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<PulseBriefsGenerateCreateRequest>;
+
 export interface UpdatePulseBriefConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -263,6 +375,11 @@ export interface UpdatePulseBriefConfigRequest {
   /** Soft-delete flag. Deleted configs are hidden from lists but recoverable by patching this back to false. */
   deleted?: boolean;
 }
+const UpdatePulseBriefConfigRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<UpdatePulseBriefConfigRequest>;
+
 export interface UpdatePulseBriefConfigsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -281,6 +398,11 @@ export interface UpdatePulseBriefConfigsPartialRequest {
   /** Soft-delete flag. Deleted configs are hidden from lists but recoverable by patching this back to false. */
   deleted?: boolean;
 }
+const UpdatePulseBriefConfigsPartialRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<UpdatePulseBriefConfigsPartialRequest>;
+
 export type CreatePulseBriefConfigError = PosthogOpError;
 export const createPulseBriefConfig: API.OperationMethod<
   CreatePulseBriefConfigRequest,
@@ -288,8 +410,8 @@ export const createPulseBriefConfig: API.OperationMethod<
   CreatePulseBriefConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreatePulseBriefConfigRequest>,
-  output: __S(7) as any as S.Schema<BriefConfig>,
+  input: CreatePulseBriefConfigRequest,
+  output: BriefConfig,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -302,8 +424,8 @@ export const getPulseBrief: API.OperationMethod<
   GetPulseBriefError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<GetPulseBriefRequest>,
-  output: __S(14) as any as S.Schema<ProductBrief>,
+  input: GetPulseBriefRequest,
+  output: ProductBrief,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -316,8 +438,8 @@ export const getPulseBriefConfig: API.OperationMethod<
   GetPulseBriefConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<GetPulseBriefConfigRequest>,
-  output: __S(7) as any as S.Schema<BriefConfig>,
+  input: GetPulseBriefConfigRequest,
+  output: BriefConfig,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -330,8 +452,8 @@ export const listPulseBriefConfigs: API.OperationMethod<
   ListPulseBriefConfigsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<ListPulseBriefConfigsRequest>,
-  output: __S(18) as any as S.Schema<PaginatedBriefConfigList>,
+  input: ListPulseBriefConfigsRequest,
+  output: PaginatedBriefConfigList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -344,8 +466,8 @@ export const listPulseBriefs: API.OperationMethod<
   ListPulseBriefsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<ListPulseBriefsRequest>,
-  output: __S(22) as any as S.Schema<PaginatedProductBriefListList>,
+  input: ListPulseBriefsRequest,
+  output: PaginatedProductBriefListList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -358,8 +480,8 @@ export const pulseBriefConfigsDestroy: API.OperationMethod<
   PulseBriefConfigsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<PulseBriefConfigsDestroyRequest>,
-  output: __S(24) as any as S.Schema<PulseBriefConfigsDestroyResponse>,
+  input: PulseBriefConfigsDestroyRequest,
+  output: PulseBriefConfigsDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -372,8 +494,8 @@ export const pulseBriefsGenerateCreate: API.OperationMethod<
   PulseBriefsGenerateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<PulseBriefsGenerateCreateRequest>,
-  output: __S(14) as any as S.Schema<ProductBrief>,
+  input: PulseBriefsGenerateCreateRequest,
+  output: ProductBrief,
   errors: [Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -386,8 +508,8 @@ export const updatePulseBriefConfig: API.OperationMethod<
   UpdatePulseBriefConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<UpdatePulseBriefConfigRequest>,
-  output: __S(7) as any as S.Schema<BriefConfig>,
+  input: UpdatePulseBriefConfigRequest,
+  output: BriefConfig,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -400,8 +522,8 @@ export const updatePulseBriefConfigsPartial: API.OperationMethod<
   UpdatePulseBriefConfigsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<UpdatePulseBriefConfigsPartialRequest>,
-  output: __S(7) as any as S.Schema<BriefConfig>,
+  input: UpdatePulseBriefConfigsPartialRequest,
+  output: BriefConfig,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -417,8 +539,8 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dashboards: S.optional(__S(0)),
-          insights: S.optional(__S(1)),
+          dashboards: S.optional(BriefAnchorsDashboardsList),
+          insights: S.optional(BriefAnchorsInsightsList),
         }),
       ).annotate({ identifier: "BriefAnchors" });
     case 3:
@@ -439,8 +561,8 @@ function __c0(j: number): any {
           project_id: S.String.pipe(T.Label()),
           name: S.String,
           focus_prompt: S.optional(S.String),
-          anchors: S.optional(__S(2)),
-          settings: S.optional(__S(3)),
+          anchors: S.optional(BriefAnchors),
+          settings: S.optional(BriefSettings),
           enabled: S.optional(S.Boolean),
           deleted: S.optional(S.Boolean),
         }).pipe(
@@ -465,8 +587,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(5))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 7:
@@ -475,12 +597,12 @@ function __c0(j: number): any {
           id: S.String,
           name: S.String,
           focus_prompt: S.optional(S.String),
-          anchors: S.optional(__S(2)),
-          settings: S.optional(__S(3)),
+          anchors: S.optional(BriefAnchors),
+          settings: S.optional(BriefSettings),
           enabled: S.optional(S.Boolean),
           deleted: S.optional(S.Boolean),
           created_at: S.String,
-          created_by: S.NullOr(__S(6)),
+          created_by: S.NullOr(UserBasic),
           updated_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "BriefConfig" });
@@ -504,7 +626,7 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          period_type: S.String,
+          period_type: PeriodTypeEnum,
           days: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Period" });
@@ -518,32 +640,32 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "BriefSectionCitation" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(BriefSectionCitation);
     case 4:
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
           title: S.String,
           markdown: S.String,
-          citations: __S(11),
+          citations: BriefSectionCitationsList,
           confidence: S.Number,
         }),
       ).annotate({ identifier: "BriefSection" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(BriefSection);
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           config: S.NullOr(S.String),
-          status: S.String,
-          trigger: S.String,
-          period: __S(9),
-          sections: __S(13),
-          sources_used: __S(1),
+          status: ProductBriefStatusEnum,
+          trigger: ProductBriefTriggerEnum,
+          period: Period,
+          sections: ProductBriefSectionsList,
+          sources_used: ProductBriefSourcesUsedList,
           error: S.NullOr(S.String),
           created_at: S.String,
-          created_by: S.NullOr(__S(6)),
+          created_by: S.NullOr(UserBasic),
           updated_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ProductBrief" });
@@ -583,14 +705,14 @@ function __c2(j: number): any {
         identifier: "ListPulseBriefConfigsRequest",
       });
     case 1:
-      return S.Array(__S(7));
+      return S.Array(BriefConfig);
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(17),
+          results: PaginatedBriefConfigListResultsList,
         }),
       ).annotate({ identifier: "PaginatedBriefConfigList" });
     case 3:
@@ -608,25 +730,25 @@ function __c2(j: number): any {
         S.Struct({
           id: S.String,
           config: S.NullOr(S.String),
-          status: S.String,
-          trigger: S.String,
-          period: __S(9),
-          sources_used: __S(1),
+          status: ProductBriefStatusEnum,
+          trigger: ProductBriefTriggerEnum,
+          period: Period,
+          sources_used: ProductBriefListSourcesUsedList,
           error: S.NullOr(S.String),
           created_at: S.String,
-          created_by: S.NullOr(__S(6)),
+          created_by: S.NullOr(UserBasic),
           updated_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ProductBriefList" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(ProductBriefList);
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(21),
+          results: PaginatedProductBriefListListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedProductBriefListList",
@@ -659,7 +781,7 @@ function __c3(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           config_id: S.optional(S.NullOr(S.String)),
-          period: S.optional(__S(9)),
+          period: S.optional(Period),
         }).pipe(
           T.Http({
             method: "POST",
@@ -677,8 +799,8 @@ function __c3(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.String,
           focus_prompt: S.optional(S.String),
-          anchors: S.optional(__S(2)),
-          settings: S.optional(__S(3)),
+          anchors: S.optional(BriefAnchors),
+          settings: S.optional(BriefSettings),
           enabled: S.optional(S.Boolean),
           deleted: S.optional(S.Boolean),
         }).pipe(
@@ -698,8 +820,8 @@ function __c3(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           focus_prompt: S.optional(S.String),
-          anchors: S.optional(__S(2)),
-          settings: S.optional(__S(3)),
+          anchors: S.optional(BriefAnchors),
+          settings: S.optional(BriefSettings),
           enabled: S.optional(S.Boolean),
           deleted: S.optional(S.Boolean),
         }).pipe(
@@ -712,22 +834,5 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UpdatePulseBriefConfigsPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

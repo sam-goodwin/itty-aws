@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -38,7 +36,17 @@ export interface CreateWarehouseViewLinkRequest {
   /** Optional join configuration, for example experiments optimization flags. */
   configuration?: unknown;
 }
+const CreateWarehouseViewLinkRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateWarehouseViewLinkRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -52,6 +60,8 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -63,6 +73,8 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<UserBasic>;
+
 export interface ViewLink {
   id: string;
   /** Whether this join has been soft-deleted. */
@@ -82,12 +94,19 @@ export interface ViewLink {
   /** Optional join configuration, for example experiments optimization flags. */
   configuration?: unknown;
 }
+const ViewLink = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ViewLink>;
+
 export interface GetWarehouseViewLinkRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this data warehouse join. */
   id: string;
 }
+const GetWarehouseViewLinkRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetWarehouseViewLinkRequest>;
+
 export interface ListWarehouseViewLinksRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -98,13 +117,28 @@ export interface ListWarehouseViewLinksRequest {
   /** A search term. */
   search?: string;
 }
+const ListWarehouseViewLinksRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListWarehouseViewLinksRequest>;
+
 export type PaginatedViewLinkListResultsList = Array<ViewLink>;
+const PaginatedViewLinkListResultsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<PaginatedViewLinkListResultsList>;
+
 export interface PaginatedViewLinkList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedViewLinkListResultsList;
 }
+const PaginatedViewLinkList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<PaginatedViewLinkList>;
+
 export interface UpdateWarehouseViewLinkRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -125,6 +159,11 @@ export interface UpdateWarehouseViewLinkRequest {
   /** Optional join configuration, for example experiments optimization flags. */
   configuration?: unknown;
 }
+const UpdateWarehouseViewLinkRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<UpdateWarehouseViewLinkRequest>;
+
 export interface UpdateWarehouseViewLinksPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -145,13 +184,28 @@ export interface UpdateWarehouseViewLinksPartialRequest {
   /** Optional join configuration, for example experiments optimization flags. */
   configuration?: unknown;
 }
+const UpdateWarehouseViewLinksPartialRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<UpdateWarehouseViewLinksPartialRequest>;
+
 export interface WarehouseViewLinksDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this data warehouse join. */
   id: string;
 }
+const WarehouseViewLinksDestroyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<WarehouseViewLinksDestroyRequest>;
+
 export interface WarehouseViewLinksDestroyResponse {}
+const WarehouseViewLinksDestroyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<WarehouseViewLinksDestroyResponse>;
+
 export interface WarehouseViewLinksValidateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -164,12 +218,32 @@ export interface WarehouseViewLinksValidateCreateRequest {
   /** Column or HogQL expression on the source table used as the join key. */
   source_table_key: string;
 }
+const WarehouseViewLinksValidateCreateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<WarehouseViewLinksValidateCreateRequest>;
+
 /** Column names for each row in results. */
 export type ViewLinkValidationResponseColumnsList = Array<string>;
+const ViewLinkValidationResponseColumnsList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ViewLinkValidationResponseColumnsList>;
+
 export type ViewLinkValidationResponseResultsItemList = Array<unknown>;
+const ViewLinkValidationResponseResultsItemList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ViewLinkValidationResponseResultsItemList>;
+
 /** Distinct source and joining key pairs from the joined result, at most 5. */
 export type ViewLinkValidationResponseResultsList =
   Array<ViewLinkValidationResponseResultsItemList>;
+const ViewLinkValidationResponseResultsList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ViewLinkValidationResponseResultsList>;
+
 export interface ViewLinkValidationResponse {
   /** Whether the join compiled and returned rows when executed against a sample of the source table. */
   is_valid: boolean;
@@ -188,6 +262,11 @@ export interface ViewLinkValidationResponse {
   /** matched_rows divided by total_rows, between 0 and 1. Null when the match-rate query failed or no rows were sampled. */
   match_rate: number | null;
 }
+const ViewLinkValidationResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ViewLinkValidationResponse>;
+
 export type CreateWarehouseViewLinkError = PosthogOpError;
 /** Create, Read, Update and Delete View Columns. */
 export const createWarehouseViewLink: API.OperationMethod<
@@ -196,8 +275,8 @@ export const createWarehouseViewLink: API.OperationMethod<
   CreateWarehouseViewLinkError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateWarehouseViewLinkRequest>,
-  output: __S(3) as any as S.Schema<ViewLink>,
+  input: CreateWarehouseViewLinkRequest,
+  output: ViewLink,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -211,8 +290,8 @@ export const getWarehouseViewLink: API.OperationMethod<
   GetWarehouseViewLinkError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetWarehouseViewLinkRequest>,
-  output: __S(3) as any as S.Schema<ViewLink>,
+  input: GetWarehouseViewLinkRequest,
+  output: ViewLink,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -226,8 +305,8 @@ export const listWarehouseViewLinks: API.OperationMethod<
   ListWarehouseViewLinksError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<ListWarehouseViewLinksRequest>,
-  output: __S(7) as any as S.Schema<PaginatedViewLinkList>,
+  input: ListWarehouseViewLinksRequest,
+  output: PaginatedViewLinkList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -241,8 +320,8 @@ export const updateWarehouseViewLink: API.OperationMethod<
   UpdateWarehouseViewLinkError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<UpdateWarehouseViewLinkRequest>,
-  output: __S(3) as any as S.Schema<ViewLink>,
+  input: UpdateWarehouseViewLinkRequest,
+  output: ViewLink,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -256,8 +335,8 @@ export const updateWarehouseViewLinksPartial: API.OperationMethod<
   UpdateWarehouseViewLinksPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<UpdateWarehouseViewLinksPartialRequest>,
-  output: __S(3) as any as S.Schema<ViewLink>,
+  input: UpdateWarehouseViewLinksPartialRequest,
+  output: ViewLink,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -271,8 +350,8 @@ export const warehouseViewLinksDestroy: API.OperationMethod<
   WarehouseViewLinksDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<WarehouseViewLinksDestroyRequest>,
-  output: __S(11) as any as S.Schema<WarehouseViewLinksDestroyResponse>,
+  input: WarehouseViewLinksDestroyRequest,
+  output: WarehouseViewLinksDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -286,8 +365,8 @@ export const warehouseViewLinksValidateCreate: API.OperationMethod<
   WarehouseViewLinksValidateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<WarehouseViewLinksValidateCreateRequest>,
-  output: __S(16) as any as S.Schema<ViewLinkValidationResponse>,
+  input: WarehouseViewLinksValidateCreateRequest,
+  output: ViewLinkValidationResponse,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -329,8 +408,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 3:
@@ -338,7 +417,7 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           deleted: S.optional(S.NullOr(S.Boolean)),
-          created_by: __S(2),
+          created_by: UserBasic,
           created_at: S.String,
           source_table_name: S.String,
           source_table_key: S.String,
@@ -381,14 +460,14 @@ function __c0(j: number): any {
         identifier: "ListWarehouseViewLinksRequest",
       });
     case 6:
-      return S.Array(__S(3));
+      return S.Array(ViewLink);
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(6),
+          results: PaginatedViewLinkListResultsList,
         }),
       ).annotate({ identifier: "PaginatedViewLinkList" });
   }
@@ -481,7 +560,7 @@ function __c1(j: number): any {
     case 6:
       return S.Array(S.Unknown);
     case 7:
-      return S.Array(__S(14));
+      return S.Array(ViewLinkValidationResponseResultsItemList);
   }
 }
 function __c2(j: number): any {
@@ -492,8 +571,8 @@ function __c2(j: number): any {
           is_valid: S.Boolean,
           msg: S.NullOr(S.String),
           hogql: S.NullOr(S.String),
-          columns: __S(13),
-          results: __S(15),
+          columns: ViewLinkValidationResponseColumnsList,
+          results: ViewLinkValidationResponseResultsList,
           total_rows: S.NullOr(S.Number),
           matched_rows: S.NullOr(S.Number),
           match_rate: S.NullOr(S.Number),
@@ -501,20 +580,5 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ViewLinkValidationResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

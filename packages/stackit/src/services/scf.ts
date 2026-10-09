@@ -8,8 +8,6 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -46,6 +44,11 @@ export interface ApplyOrganizationQuotaRequest {
   organizationId: string;
   quotaId: string;
 }
+const ApplyOrganizationQuotaRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ApplyOrganizationQuotaRequest>;
+
 export interface OrganizationQuota {
   orgId: string;
   platformId: string;
@@ -53,23 +56,40 @@ export interface OrganizationQuota {
   quotaId: string;
   region: string;
 }
+const OrganizationQuota = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<OrganizationQuota>;
+
 export interface CreateOrganizationRequest {
   projectId: string;
   region: string;
   name: string;
   platformId?: string;
 }
+const CreateOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateOrganizationRequest>;
+
 export interface OrganizationCreateResponse {
   guid: string;
   platformId: string;
   projectId: string;
   region: string;
 }
+const OrganizationCreateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<OrganizationCreateResponse>;
+
 export interface CreateOrgManagerRequest {
   projectId: string;
   region: string;
   organizationId: string;
 }
+const CreateOrgManagerRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateOrgManagerRequest>;
+
 export interface OrgManagerResponse {
   createdAt: string;
   guid: string;
@@ -81,11 +101,15 @@ export interface OrgManagerResponse {
   updatedAt: string;
   username: string;
 }
+const OrgManagerResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<OrgManagerResponse>;
+
 export type OrgRoleType =
   | "organization_user"
   | "organization_auditor"
   | "organization_manager"
   | "organization_billing_manager";
+const OrgRoleType = S.String;
+
 export interface CreateOrgRoleRequest {
   projectId: string;
   region: string;
@@ -94,6 +118,8 @@ export interface CreateOrgRoleRequest {
   userGuid?: string;
   userName?: string;
 }
+const CreateOrgRoleRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateOrgRoleRequest>;
+
 export interface OrgRoleResponse {
   guid: string;
   orgId: string;
@@ -102,12 +128,16 @@ export interface OrgRoleResponse {
   region: string;
   type: OrgRoleType;
 }
+const OrgRoleResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<OrgRoleResponse>;
+
 export interface CreateSpaceRequest {
   projectId: string;
   region: string;
   organizationId: string;
   name: string;
 }
+const CreateSpaceRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateSpaceRequest>;
+
 export interface Space {
   createdAt: string;
   guid: string;
@@ -118,11 +148,15 @@ export interface Space {
   region: string;
   updatedAt: string;
 }
+const Space = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Space>;
+
 export type SpaceRoleType =
   | "space_auditor"
   | "space_developer"
   | "space_manager"
   | "space_supporter";
+const SpaceRoleType = S.String;
+
 export interface CreateSpaceRoleRequest {
   projectId: string;
   region: string;
@@ -132,6 +166,11 @@ export interface CreateSpaceRoleRequest {
   userGuid?: string;
   userName?: string;
 }
+const CreateSpaceRoleRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateSpaceRoleRequest>;
+
 export interface SpaceRoleCreateResponse {
   guid: string;
   orgId: string;
@@ -141,39 +180,71 @@ export interface SpaceRoleCreateResponse {
   spaceId: string;
   type: SpaceRoleType;
 }
+const SpaceRoleCreateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<SpaceRoleCreateResponse>;
+
 export interface DeleteOrganizationRequest {
   projectId: string;
   region: string;
   organizationId: string;
 }
+const DeleteOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeleteOrganizationRequest>;
+
 export interface OrganizationDeleteResponse {
   guid: string;
   platformId: string;
   projectId: string;
   region: string;
 }
+const OrganizationDeleteResponse =
+  OrganizationCreateResponse as any as S.Schema<OrganizationDeleteResponse>;
+
 export interface DeleteOrgManagerRequest {
   projectId: string;
   region: string;
   organizationId: string;
 }
+const DeleteOrgManagerRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteOrgManagerRequest>;
+
 export interface OrgManagerDeleteResponse {
   message: string;
 }
+const OrgManagerDeleteResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<OrgManagerDeleteResponse>;
+
 export interface DeleteSpaceRequest {
   projectId: string;
   region: string;
   organizationId: string;
   spaceId: string;
 }
+const DeleteSpaceRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DeleteSpaceRequest>;
+
 export interface SpaceDeleteResponse {
   message: string;
 }
+const SpaceDeleteResponse = OrgManagerDeleteResponse as any as S.Schema<SpaceDeleteResponse>;
+
 export interface GetOrganizationRequest {
   projectId: string;
   region: string;
   organizationId: string;
 }
+const GetOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetOrganizationRequest>;
+
 export interface Organization {
   createdAt: string;
   guid: string;
@@ -186,12 +257,19 @@ export interface Organization {
   suspended: boolean;
   updatedAt: string;
 }
+const Organization = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Organization>;
+
 export interface GetOrganizationQuotaRequest {
   projectId: string;
   region: string;
   organizationId: string;
   quotaId: string;
 }
+const GetOrganizationQuotaRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetOrganizationQuotaRequest>;
+
 export interface QuotaApps {
   /** The value `null` means `unlimited`. */
   logRateLimitInBytesPerSecond: number | null;
@@ -204,16 +282,22 @@ export interface QuotaApps {
   /** The value `null` means `unlimited`. */
   totalMemoryInMb: number | null;
 }
+const QuotaApps = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<QuotaApps>;
+
 export interface QuotaDomains {
   /** The value `null` means `unlimited`. */
   totalDomains: number | null;
 }
+const QuotaDomains = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<QuotaDomains>;
+
 export interface QuotaRoutes {
   /** The value `null` means `unlimited`. */
   totalReservedPorts: number | null;
   /** The value `null` means `unlimited`. */
   totalRoutes: number | null;
 }
+const QuotaRoutes = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<QuotaRoutes>;
+
 export interface QuotaServices {
   paidServicesAllowed: boolean;
   /** The value `null` means `unlimited`. */
@@ -221,6 +305,8 @@ export interface QuotaServices {
   /** The value `null` means `unlimited`. */
   totalServiceKeys: number | null;
 }
+const QuotaServices = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<QuotaServices>;
+
 export interface Quota {
   apps: QuotaApps;
   createdAt: string;
@@ -235,11 +321,18 @@ export interface Quota {
   services: QuotaServices;
   updatedAt: string;
 }
+const Quota = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Quota>;
+
 export interface GetOrganizationUsageSummaryRequest {
   projectId: string;
   region: string;
   organizationId: string;
 }
+const GetOrganizationUsageSummaryRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetOrganizationUsageSummaryRequest>;
+
 export interface UsageSummary {
   domains: number;
   memoryInMb: number;
@@ -250,6 +343,8 @@ export interface UsageSummary {
   serviceKeys: number;
   startedInstances: number;
 }
+const UsageSummary = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<UsageSummary>;
+
 export interface OrganizationUsageSummary {
   orgId: string;
   platformId: string;
@@ -257,11 +352,18 @@ export interface OrganizationUsageSummary {
   region: string;
   usageSummary: UsageSummary;
 }
+const OrganizationUsageSummary = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<OrganizationUsageSummary>;
+
 export interface GetOrgManagerRequest {
   projectId: string;
   region: string;
   organizationId: string;
 }
+const GetOrgManagerRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GetOrgManagerRequest>;
+
 export interface OrgManager {
   createdAt: string;
   guid: string;
@@ -272,11 +374,15 @@ export interface OrgManager {
   updatedAt: string;
   username: string;
 }
+const OrgManager = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<OrgManager>;
+
 export interface GetPlatformRequest {
   projectId: string;
   region: string;
   platformId: string;
 }
+const GetPlatformRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetPlatformRequest>;
+
 export interface Platforms {
   apiUrl: string;
   consoleUrl?: string;
@@ -285,25 +391,49 @@ export interface Platforms {
   region: string;
   systemId: string;
 }
+const Platforms = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Platforms>;
+
 export interface GetPlatformQuotaRequest {
   projectId: string;
   region: string;
   platformId: string;
   quotaId: string;
 }
+const GetPlatformQuotaRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetPlatformQuotaRequest>;
+
 export interface GetSpaceRequest {
   projectId: string;
   region: string;
   organizationId: string;
   spaceId: string;
 }
+const GetSpaceRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GetSpaceRequest>;
+
 export interface ListOrganizationQuotasRequest {
   projectId: string;
   region: string;
   organizationId: string;
 }
+const ListOrganizationQuotasRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListOrganizationQuotasRequest>;
+
 export type ListOrganizationQuotasResponseBodyList = Array<Quota>;
+const ListOrganizationQuotasResponseBodyList = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListOrganizationQuotasResponseBodyList>;
+
 export type ListOrganizationQuotasResponse = ListOrganizationQuotasResponseBodyList;
+const ListOrganizationQuotasResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListOrganizationQuotasResponse>;
+
 export interface ListOrganizationsRequest {
   projectId: string;
   region: string;
@@ -316,10 +446,17 @@ export interface ListOrganizationsRequest {
   /** Elements to be returned per page */
   perPage?: number;
 }
+const ListOrganizationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListOrganizationsRequest>;
+
 export interface Pagination {
   totalPages?: number;
   totalResults?: number;
 }
+const Pagination = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Pagination>;
+
 export interface OrganizationsListItem {
   createdAt?: string;
   guid: string;
@@ -332,18 +469,38 @@ export interface OrganizationsListItem {
   suspended?: boolean;
   updatedAt?: string;
 }
+const OrganizationsListItem = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<OrganizationsListItem>;
+
 export type OrganizationsListResourcesList = Array<OrganizationsListItem>;
+const OrganizationsListResourcesList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<OrganizationsListResourcesList>;
+
 export interface OrganizationsList {
   pagination: Pagination;
   resources: OrganizationsListResourcesList;
 }
+const OrganizationsList = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<OrganizationsList>;
+
 export interface ListPlatformQuotasRequest {
   projectId: string;
   region: string;
   platformId: string;
 }
+const ListPlatformQuotasRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ListPlatformQuotasRequest>;
+
 export type ListPlatformQuotasResponseBodyList = Array<Quota>;
 export type ListPlatformQuotasResponse = ListPlatformQuotasResponseBodyList;
+const ListPlatformQuotasResponse =
+  ListOrganizationQuotasResponse as any as S.Schema<ListPlatformQuotasResponse>;
+
 export interface ListPlatformsRequest {
   projectId: string;
   region: string;
@@ -352,11 +509,20 @@ export interface ListPlatformsRequest {
   /** Elements to be returned per page */
   perPage?: number;
 }
+const ListPlatformsRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ListPlatformsRequest>;
+
 export type PlatformListResourcesList = Array<Platforms>;
+const PlatformListResourcesList = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<PlatformListResourcesList>;
+
 export interface PlatformList {
   pagination: Pagination;
   resources: PlatformListResourcesList;
 }
+const PlatformList = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<PlatformList>;
+
 export interface ListSpacesRequest {
   projectId: string;
   region: string;
@@ -366,11 +532,20 @@ export interface ListSpacesRequest {
   /** Elements to be returned per page */
   perPage?: number;
 }
+const ListSpacesRequest = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ListSpacesRequest>;
+
 export type SpacesListResourcesList = Array<Space>;
+const SpacesListResourcesList = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<SpacesListResourcesList>;
+
 export interface SpacesList {
   pagination: Pagination;
   resources: SpacesListResourcesList;
 }
+const SpacesList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<SpacesList>;
+
 export interface UpdateOrganizationRequest {
   projectId: string;
   region: string;
@@ -378,6 +553,11 @@ export interface UpdateOrganizationRequest {
   name?: string;
   suspended?: boolean;
 }
+const UpdateOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<UpdateOrganizationRequest>;
+
 export interface UpdateSpaceRequest {
   projectId: string;
   region: string;
@@ -385,6 +565,8 @@ export interface UpdateSpaceRequest {
   spaceId: string;
   name: string;
 }
+const UpdateSpaceRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<UpdateSpaceRequest>;
+
 export type ApplyOrganizationQuotaError = BadRequest | Forbidden | NotFound | StackitOpError;
 /** Apply an organization quota Change the organization quota of an organization. */
 export const applyOrganizationQuota: API.OperationMethod<
@@ -393,8 +575,8 @@ export const applyOrganizationQuota: API.OperationMethod<
   ApplyOrganizationQuotaError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ApplyOrganizationQuotaRequest>,
-  output: __S(1) as any as S.Schema<OrganizationQuota>,
+  input: ApplyOrganizationQuotaRequest,
+  output: OrganizationQuota,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -408,8 +590,8 @@ export const createOrganization: API.OperationMethod<
   CreateOrganizationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateOrganizationRequest>,
-  output: __S(3) as any as S.Schema<OrganizationCreateResponse>,
+  input: CreateOrganizationRequest,
+  output: OrganizationCreateResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -423,8 +605,8 @@ export const createOrgManager: API.OperationMethod<
   CreateOrgManagerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateOrgManagerRequest>,
-  output: __S(5) as any as S.Schema<OrgManagerResponse>,
+  input: CreateOrgManagerRequest,
+  output: OrgManagerResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -438,8 +620,8 @@ export const createOrgRole: API.OperationMethod<
   CreateOrgRoleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateOrgRoleRequest>,
-  output: __S(7) as any as S.Schema<OrgRoleResponse>,
+  input: CreateOrgRoleRequest,
+  output: OrgRoleResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -453,8 +635,8 @@ export const createSpace: API.OperationMethod<
   CreateSpaceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateSpaceRequest>,
-  output: __S(9) as any as S.Schema<Space>,
+  input: CreateSpaceRequest,
+  output: Space,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -468,8 +650,8 @@ export const createSpaceRole: API.OperationMethod<
   CreateSpaceRoleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CreateSpaceRoleRequest>,
-  output: __S(11) as any as S.Schema<SpaceRoleCreateResponse>,
+  input: CreateSpaceRoleRequest,
+  output: SpaceRoleCreateResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -483,8 +665,8 @@ export const deleteOrganization: API.OperationMethod<
   DeleteOrganizationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DeleteOrganizationRequest>,
-  output: __S(3) as any as S.Schema<OrganizationDeleteResponse>,
+  input: DeleteOrganizationRequest,
+  output: OrganizationDeleteResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -498,8 +680,8 @@ export const deleteOrgManager: API.OperationMethod<
   DeleteOrgManagerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<DeleteOrgManagerRequest>,
-  output: __S(14) as any as S.Schema<OrgManagerDeleteResponse>,
+  input: DeleteOrgManagerRequest,
+  output: OrgManagerDeleteResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -513,8 +695,8 @@ export const deleteSpace: API.OperationMethod<
   DeleteSpaceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DeleteSpaceRequest>,
-  output: __S(14) as any as S.Schema<SpaceDeleteResponse>,
+  input: DeleteSpaceRequest,
+  output: SpaceDeleteResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -528,8 +710,8 @@ export const getOrganization: API.OperationMethod<
   GetOrganizationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetOrganizationRequest>,
-  output: __S(17) as any as S.Schema<Organization>,
+  input: GetOrganizationRequest,
+  output: Organization,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -543,8 +725,8 @@ export const getOrganizationQuota: API.OperationMethod<
   GetOrganizationQuotaError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<GetOrganizationQuotaRequest>,
-  output: __S(23) as any as S.Schema<Quota>,
+  input: GetOrganizationQuotaRequest,
+  output: Quota,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -558,8 +740,8 @@ export const getOrganizationUsageSummary: API.OperationMethod<
   GetOrganizationUsageSummaryError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetOrganizationUsageSummaryRequest>,
-  output: __S(26) as any as S.Schema<OrganizationUsageSummary>,
+  input: GetOrganizationUsageSummaryRequest,
+  output: OrganizationUsageSummary,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -573,8 +755,8 @@ export const getOrgManager: API.OperationMethod<
   GetOrgManagerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<GetOrgManagerRequest>,
-  output: __S(28) as any as S.Schema<OrgManager>,
+  input: GetOrgManagerRequest,
+  output: OrgManager,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -588,8 +770,8 @@ export const getPlatform: API.OperationMethod<
   GetPlatformError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<GetPlatformRequest>,
-  output: __S(30) as any as S.Schema<Platforms>,
+  input: GetPlatformRequest,
+  output: Platforms,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -603,8 +785,8 @@ export const getPlatformQuota: API.OperationMethod<
   GetPlatformQuotaError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GetPlatformQuotaRequest>,
-  output: __S(23) as any as S.Schema<Quota>,
+  input: GetPlatformQuotaRequest,
+  output: Quota,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -618,8 +800,8 @@ export const getSpace: API.OperationMethod<
   GetSpaceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<GetSpaceRequest>,
-  output: __S(9) as any as S.Schema<Space>,
+  input: GetSpaceRequest,
+  output: Space,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -633,8 +815,8 @@ export const listOrganizationQuotas: API.OperationMethod<
   ListOrganizationQuotasError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<ListOrganizationQuotasRequest>,
-  output: __S(35) as any as S.Schema<ListOrganizationQuotasResponse>,
+  input: ListOrganizationQuotasRequest,
+  output: ListOrganizationQuotasResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -648,8 +830,8 @@ export const listOrganizations: API.OperationMethod<
   ListOrganizationsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<ListOrganizationsRequest>,
-  output: __S(40) as any as S.Schema<OrganizationsList>,
+  input: ListOrganizationsRequest,
+  output: OrganizationsList,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -663,8 +845,8 @@ export const listPlatformQuotas: API.OperationMethod<
   ListPlatformQuotasError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<ListPlatformQuotasRequest>,
-  output: __S(35) as any as S.Schema<ListPlatformQuotasResponse>,
+  input: ListPlatformQuotasRequest,
+  output: ListPlatformQuotasResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -678,8 +860,8 @@ export const listPlatforms: API.OperationMethod<
   ListPlatformsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<ListPlatformsRequest>,
-  output: __S(44) as any as S.Schema<PlatformList>,
+  input: ListPlatformsRequest,
+  output: PlatformList,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -693,8 +875,8 @@ export const listSpaces: API.OperationMethod<
   ListSpacesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<ListSpacesRequest>,
-  output: __S(47) as any as S.Schema<SpacesList>,
+  input: ListSpacesRequest,
+  output: SpacesList,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -708,8 +890,8 @@ export const updateOrganization: API.OperationMethod<
   UpdateOrganizationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<UpdateOrganizationRequest>,
-  output: __S(17) as any as S.Schema<Organization>,
+  input: UpdateOrganizationRequest,
+  output: Organization,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -723,8 +905,8 @@ export const updateSpace: API.OperationMethod<
   UpdateSpaceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<UpdateSpaceRequest>,
-  output: __S(9) as any as S.Schema<Space>,
+  input: UpdateSpaceRequest,
+  output: Space,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -825,7 +1007,7 @@ function __c0(j: number): any {
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           organizationId: S.String.pipe(T.Label()),
-          type: S.String,
+          type: OrgRoleType,
           userGuid: S.optional(S.String),
           userName: S.optional(S.String),
         }).pipe(
@@ -845,7 +1027,7 @@ function __c0(j: number): any {
           platformId: S.String,
           projectId: S.String,
           region: S.String,
-          type: S.String,
+          type: OrgRoleType,
         }),
       ).annotate({ identifier: "OrgRoleResponse" });
   }
@@ -888,7 +1070,7 @@ function __c1(j: number): any {
           region: S.String.pipe(T.Label()),
           organizationId: S.String.pipe(T.Label()),
           spaceId: S.String.pipe(T.Label()),
-          type: S.String,
+          type: SpaceRoleType,
           userGuid: S.optional(S.String),
           userName: S.optional(S.String),
         }).pipe(
@@ -909,7 +1091,7 @@ function __c1(j: number): any {
           projectId: S.String,
           region: S.String,
           spaceId: S.String,
-          type: S.String,
+          type: SpaceRoleType,
         }),
       ).annotate({ identifier: "SpaceRoleCreateResponse" });
     case 4:
@@ -1052,17 +1234,17 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          apps: __S(19),
+          apps: QuotaApps,
           createdAt: S.String,
-          domains: __S(20),
+          domains: QuotaDomains,
           guid: S.String,
           name: S.String,
           orgId: S.optional(S.String),
           platformId: S.String,
           projectId: S.String,
           region: S.String,
-          routes: __S(21),
-          services: __S(22),
+          routes: QuotaRoutes,
+          services: QuotaServices,
           updatedAt: S.String,
         }),
       ).annotate({ identifier: "Quota" });
@@ -1107,7 +1289,7 @@ function __c3(j: number): any {
           platformId: S.String,
           projectId: S.String,
           region: S.String,
-          usageSummary: __S(25),
+          usageSummary: UsageSummary,
         }),
       ).annotate({ identifier: "OrganizationUsageSummary" });
     case 3:
@@ -1218,9 +1400,11 @@ function __c4(j: number): any {
         identifier: "ListOrganizationQuotasRequest",
       });
     case 2:
-      return S.Array(__S(23));
+      return S.Array(Quota);
     case 3:
-      return S.suspend(() => __S(34).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListOrganizationQuotasResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListOrganizationQuotasResponse",
       });
     case 4:
@@ -1264,7 +1448,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "OrganizationsListItem" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(OrganizationsListItem);
   }
 }
 function __c5(j: number): any {
@@ -1272,8 +1456,8 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(37),
-          resources: __S(39),
+          pagination: Pagination,
+          resources: OrganizationsListResourcesList,
         }),
       ).annotate({ identifier: "OrganizationsList" });
     case 1:
@@ -1310,12 +1494,12 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListPlatformsRequest" });
     case 3:
-      return S.Array(__S(30));
+      return S.Array(Platforms);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(37),
-          resources: __S(43),
+          pagination: Pagination,
+          resources: PlatformListResourcesList,
         }),
       ).annotate({ identifier: "PlatformList" });
     case 5:
@@ -1336,12 +1520,12 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListSpacesRequest" });
     case 6:
-      return S.Array(__S(9));
+      return S.Array(Space);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(37),
-          resources: __S(46),
+          pagination: Pagination,
+          resources: SpacesListResourcesList,
         }),
       ).annotate({ identifier: "SpacesList" });
   }
@@ -1384,28 +1568,5 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSpaceRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

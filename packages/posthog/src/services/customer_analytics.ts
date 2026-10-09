@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -45,7 +43,17 @@ export interface AccountsNotebooksDestroyRequest {
   account_id: string;
   short_id: string;
 }
+const AccountsNotebooksDestroyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AccountsNotebooksDestroyRequest>;
+
 export interface AccountsNotebooksDestroyResponse {}
+const AccountsNotebooksDestroyResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AccountsNotebooksDestroyResponse>;
+
 export interface AccountsRelationshipsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -53,9 +61,20 @@ export interface AccountsRelationshipsDestroyRequest {
   account_id: string;
   id: string;
 }
+const AccountsRelationshipsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AccountsRelationshipsDestroyRequest>;
+
 export interface AccountsRelationshipsDestroyResponse {}
+const AccountsRelationshipsDestroyResponse =
+  AccountsNotebooksDestroyResponse as any as S.Schema<AccountsRelationshipsDestroyResponse>;
+
 /** Value to store, matching the definition's type: a number for number/currency/percent, a boolean for boolean, an ISO-8601 string for date/datetime, an HTTP or HTTPS URL for link properties, or text for text properties. Null clears the current value while preserving its history. */
 export type CreateAccountsCustomPropertyValueRequestValue = string | number | boolean;
+const CreateAccountsCustomPropertyValueRequestValue =
+  S.Unknown as any as S.Schema<CreateAccountsCustomPropertyValueRequestValue>;
+
 export interface CreateAccountsCustomPropertyValueRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -66,8 +85,15 @@ export interface CreateAccountsCustomPropertyValueRequest {
   /** Value to store, matching the definition's type: a number for number/currency/percent, a boolean for boolean, an ISO-8601 string for date/datetime, an HTTP or HTTPS URL for link properties, or text for text properties. Null clears the current value while preserving its history. */
   value: CreateAccountsCustomPropertyValueRequestValue | null;
 }
+const CreateAccountsCustomPropertyValueRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateAccountsCustomPropertyValueRequest>;
+
 /** The stored value, typed per the property's data type. */
 export type CustomPropertyValueValue = string | number | boolean;
+const CustomPropertyValueValue = S.Unknown as any as S.Schema<CustomPropertyValueValue>;
+
 /** An account's current value for a custom property (read shape). */
 export interface CustomPropertyValue {
   /** Unique id of this value record. */
@@ -83,6 +109,8 @@ export interface CustomPropertyValue {
   /** Id of the user who set this value, if known. */
   created_by_id: number | null;
 }
+const CustomPropertyValue = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CustomPropertyValue>;
+
 export interface CreateAccountsNotebookRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -95,7 +123,17 @@ export interface CreateAccountsNotebookRequest {
   /** Plain text representation of the notebook content for search. */
   text_content?: string | null;
 }
+const CreateAccountsNotebookRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateAccountsNotebookRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -109,6 +147,8 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -120,6 +160,8 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<UserBasic>;
+
 export interface AccountNotebook {
   id: string;
   short_id: string;
@@ -134,6 +176,8 @@ export interface AccountNotebook {
   last_modified_at: string;
   last_modified_by: UserBasic;
 }
+const AccountNotebook = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AccountNotebook>;
+
 export interface CreateAccountsRelationshipRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -144,6 +188,11 @@ export interface CreateAccountsRelationshipRequest {
   /** PostHog user id of the assignee. Must be a member of the account's organization. */
   user: number;
 }
+const CreateAccountsRelationshipRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateAccountsRelationshipRequest>;
+
 /** A team-defined account relationship type (CSM, Onboarding manager, ...). */
 export interface AccountRelationshipDefinition {
   /** Relationship definition UUID. */
@@ -157,6 +206,11 @@ export interface AccountRelationshipDefinition {
   /** Whether customer analytics can take control of this relationship per account. Rows under a controlled relationship can't be deleted. On an account where control has started, only a person can change the relationship and an empty relationship is a deliberate decision. Set by project operators, not through this API. */
   is_controlled: boolean;
 }
+const AccountRelationshipDefinition = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<AccountRelationshipDefinition>;
+
 /** A user assigned to an account relationship (read shape). */
 export interface AccountAssignment {
   /** PostHog user id of the assignee. */
@@ -164,6 +218,8 @@ export interface AccountAssignment {
   /** Email of the assignee. */
   email: string;
 }
+const AccountAssignment = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<AccountAssignment>;
+
 /** * `human` - Human * `workflow` - Workflow * `ai` - AI * `salesforce_claim` - Salesforce claim * `migration` - Migration */
 export type AccountRelationshipSourceEnum =
   | "human"
@@ -171,6 +227,8 @@ export type AccountRelationshipSourceEnum =
   | "ai"
   | "salesforce_claim"
   | "migration";
+const AccountRelationshipSourceEnum = S.String;
+
 /** One assignment of a user to an account relationship, with its effective range. */
 export interface AccountRelationship {
   /** Unique id of this assignment row. */
@@ -186,6 +244,8 @@ export interface AccountRelationship {
   /** Which kind of writer made this assignment; null on rows older than provenance tracking. * `human` - Human * `workflow` - Workflow * `ai` - AI * `salesforce_claim` - Salesforce claim * `migration` - Migration */
   source: AccountRelationshipSourceEnum | null;
 }
+const AccountRelationship = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<AccountRelationship>;
+
 export interface CreateAccountsRelationshipsEndRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -193,10 +253,24 @@ export interface CreateAccountsRelationshipsEndRequest {
   account_id: string;
   id: string;
 }
+const CreateAccountsRelationshipsEndRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateAccountsRelationshipsEndRequest>;
+
 /** Email domains owned by this account's company, used to match inbound touchpoints to the account. */
 export type CreateCustomerAnalyticsExternalAccountRequestPropertiesEmailDomainsList = Array<string>;
+const CreateCustomerAnalyticsExternalAccountRequestPropertiesEmailDomainsList =
+  /*@__PURE__*/ __L.at(
+    __c1,
+    6,
+  ) as any as S.Schema<CreateCustomerAnalyticsExternalAccountRequestPropertiesEmailDomainsList>;
+
 /** Individual email addresses pinned to this account, matched before the domain fallback. */
 export type CreateCustomerAnalyticsExternalAccountRequestPropertiesKnownEmailsList = Array<string>;
+const CreateCustomerAnalyticsExternalAccountRequestPropertiesKnownEmailsList =
+  CreateCustomerAnalyticsExternalAccountRequestPropertiesEmailDomainsList as any as S.Schema<CreateCustomerAnalyticsExternalAccountRequestPropertiesKnownEmailsList>;
+
 /** Typed properties for a new account: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), email_domains and known_emails. Unknown keys are rejected. Ignored when the account already exists. */
 export interface CreateCustomerAnalyticsExternalAccountRequestProperties {
   /** Primary company website hostname used for account identity and logo lookup. */
@@ -214,6 +288,11 @@ export interface CreateCustomerAnalyticsExternalAccountRequestProperties {
   usage_dashboard_link?: string | null;
   metabase_link?: string | null;
 }
+const CreateCustomerAnalyticsExternalAccountRequestProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateCustomerAnalyticsExternalAccountRequestProperties>;
+
 export interface CreateCustomerAnalyticsExternalAccountRequest {
   /** External ID (group key) for the account. An account with this ID already existing is a no-op. Without a `name`, the account name is derived from the matching group's `name` property, falling back to this ID. */
   external_id: string;
@@ -222,10 +301,20 @@ export interface CreateCustomerAnalyticsExternalAccountRequest {
   /** Typed properties for a new account: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), email_domains and known_emails. Unknown keys are rejected. Ignored when the account already exists. */
   properties?: CreateCustomerAnalyticsExternalAccountRequestProperties | null;
 }
+const CreateCustomerAnalyticsExternalAccountRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateCustomerAnalyticsExternalAccountRequest>;
+
 /** Typed account properties: external-system ids. Role assignments live under `relationships`. */
 export type ExternalAccountPropertiesMap = { [key: string]: unknown | undefined };
+const ExternalAccountPropertiesMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<ExternalAccountPropertiesMap>;
+
 /** * `unmanaged` - Unmanaged * `assigned` - Assigned * `cleared` - Cleared * `blocked` - Blocked */
 export type OwnershipRoleStateEnum = "unmanaged" | "assigned" | "cleared" | "blocked";
+const OwnershipRoleStateEnum = S.String;
+
 export interface ExternalAccountOwnershipHolder {
   /** PostHog user id of the holder. */
   user_id: number;
@@ -238,14 +327,26 @@ export interface ExternalAccountOwnershipHolder {
   /** Whether the holder's PostHog user account is active. */
   is_active: boolean;
 }
+const ExternalAccountOwnershipHolder = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ExternalAccountOwnershipHolder>;
+
 /** * `holder_missing` - The active relationship has no user * `holder_inactive` - The holder's user account is deactivated * `holder_not_in_organization` - The holder is not a member of the organization * `multiple_active_holders` - More than one active relationship holds the role */
 export type OwnershipRoleDiagnosticEnum =
   | "holder_missing"
   | "holder_inactive"
   | "holder_not_in_organization"
   | "multiple_active_holders";
+const OwnershipRoleDiagnosticEnum = S.String;
+
 /** Why a managed relationship is blocked. Informational on an unmanaged one. */
 export type ExternalAccountRoleOwnershipDiagnosticsList = Array<OwnershipRoleDiagnosticEnum>;
+const ExternalAccountRoleOwnershipDiagnosticsList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ExternalAccountRoleOwnershipDiagnosticsList>;
+
 export interface ExternalAccountRoleOwnership {
   /** The controlled relationship definition. Map it to the role you project; it does not change. */
   definition_id: string;
@@ -262,8 +363,18 @@ export interface ExternalAccountRoleOwnership {
   /** Why a managed relationship is blocked. Informational on an unmanaged one. */
   diagnostics: ExternalAccountRoleOwnershipDiagnosticsList;
 }
+const ExternalAccountRoleOwnership = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ExternalAccountRoleOwnership>;
+
 /** One entry per controlled relationship definition of the project, in name order, whether or not this account is managed under it. Empty when the project controls no relationship. */
 export type ExternalAccountOwnershipRolesList = Array<ExternalAccountRoleOwnership>;
+const ExternalAccountOwnershipRolesList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ExternalAccountOwnershipRolesList>;
+
 export interface ExternalAccountOwnership {
   /** Account UUID, the canonical identity within this project. */
   account_id: string;
@@ -274,21 +385,49 @@ export interface ExternalAccountOwnership {
   /** One entry per controlled relationship definition of the project, in name order, whether or not this account is managed under it. Empty when the project controls no relationship. */
   roles: ExternalAccountOwnershipRolesList;
 }
+const ExternalAccountOwnership = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ExternalAccountOwnership>;
+
 /** Tag names on the account, sorted alphabetically. */
 export type ExternalAccountTagsList = Array<string>;
+const ExternalAccountTagsList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ExternalAccountTagsList>;
+
 export interface ExternalAccountAssignment {
   /** PostHog user id of the assigned user. */
   user_id: number;
   /** Email address of the assigned user. */
   email: string;
 }
+const ExternalAccountAssignment = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ExternalAccountAssignment>;
+
 export type ExternalAccountRelationshipsValueList = Array<ExternalAccountAssignment>;
+const ExternalAccountRelationshipsValueList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ExternalAccountRelationshipsValueList>;
+
 /** Active relationship assignments keyed by definition name (e.g. 'CSM'). Definitions with no active assignment are omitted. */
 export type ExternalAccountRelationshipsMap = {
   [key: string]: ExternalAccountRelationshipsValueList | undefined;
 };
+const ExternalAccountRelationshipsMap = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ExternalAccountRelationshipsMap>;
+
 /** Every team custom property definition keyed by name, with the account's active value or null. */
 export type ExternalAccountCustomPropertiesMap = { [key: string]: unknown | undefined };
+const ExternalAccountCustomPropertiesMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<ExternalAccountCustomPropertiesMap>;
+
 export interface ExternalAccount {
   /** Account UUID. */
   id: string;
@@ -311,8 +450,13 @@ export interface ExternalAccount {
   /** Every team custom property definition keyed by name, with the account's active value or null. */
   custom_properties: ExternalAccountCustomPropertiesMap;
 }
+const ExternalAccount = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ExternalAccount>;
+
 /** Names of the events to stream (matched exactly). Duplicates and blanks are dropped. */
 export type CreateEventStreamRequestEventNamesList = Array<string>;
+const CreateEventStreamRequestEventNamesList =
+  ExternalAccountTagsList as any as S.Schema<CreateEventStreamRequestEventNamesList>;
+
 export interface CreateEventStreamRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -327,10 +471,21 @@ export interface CreateEventStreamRequest {
   /** Display name of the Slack channel (e.g. #customer-events). Informational only. */
   slack_channel_name?: string;
 }
+const CreateEventStreamRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateEventStreamRequest>;
+
 /** Names of the events to stream (matched exactly). Duplicates and blanks are dropped. */
 export type EventStreamEventNamesList = Array<string>;
+const EventStreamEventNamesList =
+  ExternalAccountTagsList as any as S.Schema<EventStreamEventNamesList>;
+
 /** UUIDs of the member accounts whose users' events are streamed. Managed via the add_account/remove_account endpoints. */
 export type EventStreamAccountIdsList = Array<string>;
+const EventStreamAccountIdsList =
+  ExternalAccountTagsList as any as S.Schema<EventStreamAccountIdsList>;
+
 /** The caller's event stream -- a live feed of selected accounts' events posted to a Slack channel of their choice. One stream per user per project. */
 export interface EventStream {
   id: string;
@@ -350,6 +505,8 @@ export interface EventStream {
   created_by: number | null;
   updated_at: string | null;
 }
+const EventStream = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<EventStream>;
+
 export interface EventStreamsAddAccountCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -358,13 +515,28 @@ export interface EventStreamsAddAccountCreateRequest {
   /** UUID of the account to add to or remove from the stream. */
   account_id: string;
 }
+const EventStreamsAddAccountCreateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<EventStreamsAddAccountCreateRequest>;
+
 export interface EventStreamsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this event stream. */
   id: string;
 }
+const EventStreamsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<EventStreamsDestroyRequest>;
+
 export interface EventStreamsDestroyResponse {}
+const EventStreamsDestroyResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<EventStreamsDestroyResponse>;
+
 export interface EventStreamsRemoveAccountCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -373,17 +545,32 @@ export interface EventStreamsRemoveAccountCreateRequest {
   /** UUID of the account to add to or remove from the stream. */
   account_id: string;
 }
+const EventStreamsRemoveAccountCreateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<EventStreamsRemoveAccountCreateRequest>;
+
 export interface EventStreamsSendTestMessageCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this event stream. */
   id: string;
 }
+const EventStreamsSendTestMessageCreateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<EventStreamsSendTestMessageCreateRequest>;
+
 /** Result of posting an event-stream test message to Slack. */
 export interface EventStreamTestMessage {
   /** Slack channel ID the test message was posted to (e.g. C0123ABC). */
   channel_id: string;
 }
+const EventStreamTestMessage = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<EventStreamTestMessage>;
+
 export interface GetAccountsNotebookRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -391,10 +578,20 @@ export interface GetAccountsNotebookRequest {
   account_id: string;
   short_id: string;
 }
+const GetAccountsNotebookRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetAccountsNotebookRequest>;
+
 export interface GetCustomerAnalyticsExternalAccountRequest {
   /** External account key: the group key the account is linked to. */
   external_id: string;
 }
+const GetCustomerAnalyticsExternalAccountRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetCustomerAnalyticsExternalAccountRequest>;
+
 export interface GetCustomerAnalyticsExternalAccountRequest2 {
   /** When true, return only accounts with at least one active relationship assignment to a current member of the project's organization. */
   assigned_only?: boolean;
@@ -409,6 +606,11 @@ export interface GetCustomerAnalyticsExternalAccountRequest2 {
   /** Project ID. Required for personal API keys. Project secret API keys use their bound project. */
   project_id?: number;
 }
+const GetCustomerAnalyticsExternalAccountRequest2 = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetCustomerAnalyticsExternalAccountRequest2>;
+
 export interface ExternalAccountListAssignment {
   /** PostHog user id of the assigned user. */
   user_id: number;
@@ -417,11 +619,26 @@ export interface ExternalAccountListAssignment {
   /** Current display name of the assigned user, or null when the user has no name set. */
   name: string | null;
 }
+const ExternalAccountListAssignment = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ExternalAccountListAssignment>;
+
 export type ExternalAccountListItemRelationshipsValueList = Array<ExternalAccountListAssignment>;
+const ExternalAccountListItemRelationshipsValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ExternalAccountListItemRelationshipsValueList>;
+
 /** Active relationship assignments to current organization members, keyed by relationship definition name (e.g. 'CSM', 'Account executive'). Definitions with no active assignment are omitted. */
 export type ExternalAccountListItemRelationshipsMap = {
   [key: string]: ExternalAccountListItemRelationshipsValueList | undefined;
 };
+const ExternalAccountListItemRelationshipsMap = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ExternalAccountListItemRelationshipsMap>;
+
 export interface ExternalAccountListItem {
   /** External account key used by downstream systems. */
   external_id: string;
@@ -436,16 +653,39 @@ export interface ExternalAccountListItem {
   /** Active relationship assignments to current organization members, keyed by relationship definition name (e.g. 'CSM', 'Account executive'). Definitions with no active assignment are omitted. */
   relationships: ExternalAccountListItemRelationshipsMap;
 }
+const ExternalAccountListItem = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ExternalAccountListItem>;
+
 /** Accounts in this page, ordered by account id. */
 export type ExternalAccountListPageResultsList = Array<ExternalAccountListItem>;
+const ExternalAccountListPageResultsList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ExternalAccountListPageResultsList>;
+
 export interface ExternalAccountListPage {
   /** Accounts in this page, ordered by account id. */
   results: ExternalAccountListPageResultsList;
   /** Account UUID to pass as `cursor` for the next page, or null when the list is exhausted. */
   next_cursor: string | null;
 }
+const ExternalAccountListPage = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ExternalAccountListPage>;
+
 export type ListAccountNotesRequestAssignedToList = Array<number>;
+const ListAccountNotesRequestAssignedToList = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListAccountNotesRequestAssignedToList>;
+
 export type ListAccountNotesRequestCreatedByList = Array<number>;
+const ListAccountNotesRequestCreatedByList =
+  ListAccountNotesRequestAssignedToList as any as S.Schema<ListAccountNotesRequestCreatedByList>;
+
 export interface ListAccountNotesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -462,6 +702,11 @@ export interface ListAccountNotesRequest {
   /** Full-text search across note title and content, plus substring match on account name. */
   search?: string;
 }
+const ListAccountNotesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListAccountNotesRequest>;
+
 /** A team-wide account note -- an internal notebook linked to a Customer analytics account. */
 export interface AccountNote {
   /** URL-safe short ID of the notebook. */
@@ -479,27 +724,56 @@ export interface AccountNote {
   /** User who created the note, if known. */
   created_by: UserBasic | null;
 }
+const AccountNote = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<AccountNote>;
+
 export type PaginatedAccountNoteListResultsList = Array<AccountNote>;
+const PaginatedAccountNoteListResultsList = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<PaginatedAccountNoteListResultsList>;
+
 export interface PaginatedAccountNoteList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedAccountNoteListResultsList;
 }
+const PaginatedAccountNoteList = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<PaginatedAccountNoteList>;
+
 export interface ListAccountsCustomPropertyValuesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** UUID of the parent account. */
   account_id: string;
 }
+const ListAccountsCustomPropertyValuesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ListAccountsCustomPropertyValuesRequest>;
+
 export type ListAccountsCustomPropertyValuesResponseBodyList = Array<CustomPropertyValue>;
+const ListAccountsCustomPropertyValuesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListAccountsCustomPropertyValuesResponseBodyList>;
+
 export type ListAccountsCustomPropertyValuesResponse =
   ListAccountsCustomPropertyValuesResponseBodyList;
+const ListAccountsCustomPropertyValuesResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ListAccountsCustomPropertyValuesResponse>;
+
 export type ListAccountsNotebooksRequestOrdering =
   | "-created_at"
   | "-created_by"
   | "created_at"
   | "created_by";
+const ListAccountsNotebooksRequestOrdering = S.String;
+
 export interface ListAccountsNotebooksRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -514,13 +788,28 @@ export interface ListAccountsNotebooksRequest {
   /** Full-text search across notebook title and content. */
   search?: string;
 }
+const ListAccountsNotebooksRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ListAccountsNotebooksRequest>;
+
 export type PaginatedAccountNotebookListResultsList = Array<AccountNotebook>;
+const PaginatedAccountNotebookListResultsList = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<PaginatedAccountNotebookListResultsList>;
+
 export interface PaginatedAccountNotebookList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedAccountNotebookListResultsList;
 }
+const PaginatedAccountNotebookList = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<PaginatedAccountNotebookList>;
+
 export interface ListAccountsRelationshipsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -529,16 +818,49 @@ export interface ListAccountsRelationshipsRequest {
   /** Include ended assignments (the full timeline), not just active ones. */
   include_history?: boolean;
 }
+const ListAccountsRelationshipsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListAccountsRelationshipsRequest>;
+
 export type ListAccountsRelationshipsResponseBodyList = Array<AccountRelationship>;
+const ListAccountsRelationshipsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ListAccountsRelationshipsResponseBodyList>;
+
 export type ListAccountsRelationshipsResponse = ListAccountsRelationshipsResponseBodyList;
+const ListAccountsRelationshipsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ListAccountsRelationshipsResponse>;
+
 export interface ListEventStreamsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const ListEventStreamsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListEventStreamsRequest>;
+
 export type ListEventStreamsResponseBodyList = Array<EventStream>;
+const ListEventStreamsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListEventStreamsResponseBodyList>;
+
 export type ListEventStreamsResponse = ListEventStreamsResponseBodyList;
+const ListEventStreamsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ListEventStreamsResponse>;
+
 /** Names of the events to stream (matched exactly). Duplicates and blanks are dropped. */
 export type UpdateEventStreamRequestEventNamesList = Array<string>;
+const UpdateEventStreamRequestEventNamesList =
+  ExternalAccountTagsList as any as S.Schema<UpdateEventStreamRequestEventNamesList>;
+
 export interface UpdateEventStreamRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -555,8 +877,16 @@ export interface UpdateEventStreamRequest {
   /** Display name of the Slack channel (e.g. #customer-events). Informational only. */
   slack_channel_name?: string;
 }
+const UpdateEventStreamRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<UpdateEventStreamRequest>;
+
 /** Names of the events to stream (matched exactly). Duplicates and blanks are dropped. */
 export type UpdateEventStreamsPartialRequestEventNamesList = Array<string>;
+const UpdateEventStreamsPartialRequestEventNamesList =
+  ExternalAccountTagsList as any as S.Schema<UpdateEventStreamsPartialRequestEventNamesList>;
+
 export interface UpdateEventStreamsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -573,6 +903,11 @@ export interface UpdateEventStreamsPartialRequest {
   /** Display name of the Slack channel (e.g. #customer-events). Informational only. */
   slack_channel_name?: string;
 }
+const UpdateEventStreamsPartialRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<UpdateEventStreamsPartialRequest>;
+
 export type AccountsNotebooksDestroyError = PosthogOpError;
 export const accountsNotebooksDestroy: API.OperationMethod<
   AccountsNotebooksDestroyRequest,
@@ -580,8 +915,8 @@ export const accountsNotebooksDestroy: API.OperationMethod<
   AccountsNotebooksDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AccountsNotebooksDestroyRequest>,
-  output: __S(1) as any as S.Schema<AccountsNotebooksDestroyResponse>,
+  input: AccountsNotebooksDestroyRequest,
+  output: AccountsNotebooksDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -594,8 +929,8 @@ export const accountsRelationshipsDestroy: API.OperationMethod<
   AccountsRelationshipsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<AccountsRelationshipsDestroyRequest>,
-  output: __S(1) as any as S.Schema<AccountsRelationshipsDestroyResponse>,
+  input: AccountsRelationshipsDestroyRequest,
+  output: AccountsRelationshipsDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -608,8 +943,8 @@ export const createAccountsCustomPropertyValue: API.OperationMethod<
   CreateAccountsCustomPropertyValueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateAccountsCustomPropertyValueRequest>,
-  output: __S(4) as any as S.Schema<CustomPropertyValue>,
+  input: CreateAccountsCustomPropertyValueRequest,
+  output: CustomPropertyValue,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -622,8 +957,8 @@ export const createAccountsNotebook: API.OperationMethod<
   CreateAccountsNotebookError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreateAccountsNotebookRequest>,
-  output: __S(8) as any as S.Schema<AccountNotebook>,
+  input: CreateAccountsNotebookRequest,
+  output: AccountNotebook,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -636,8 +971,8 @@ export const createAccountsRelationship: API.OperationMethod<
   CreateAccountsRelationshipError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CreateAccountsRelationshipRequest>,
-  output: __S(12) as any as S.Schema<AccountRelationship>,
+  input: CreateAccountsRelationshipRequest,
+  output: AccountRelationship,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -650,8 +985,8 @@ export const createAccountsRelationshipsEnd: API.OperationMethod<
   CreateAccountsRelationshipsEndError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CreateAccountsRelationshipsEndRequest>,
-  output: __S(12) as any as S.Schema<AccountRelationship>,
+  input: CreateAccountsRelationshipsEndRequest,
+  output: AccountRelationship,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -665,8 +1000,8 @@ export const createCustomerAnalyticsExternalAccount: API.OperationMethod<
   CreateCustomerAnalyticsExternalAccountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CreateCustomerAnalyticsExternalAccountRequest>,
-  output: __S(26) as any as S.Schema<ExternalAccount>,
+  input: CreateCustomerAnalyticsExternalAccountRequest,
+  output: ExternalAccount,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -680,8 +1015,8 @@ export const createEventStream: API.OperationMethod<
   CreateEventStreamError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<CreateEventStreamRequest>,
-  output: __S(28) as any as S.Schema<EventStream>,
+  input: CreateEventStreamRequest,
+  output: EventStream,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -695,8 +1030,8 @@ export const eventStreamsAddAccountCreate: API.OperationMethod<
   EventStreamsAddAccountCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<EventStreamsAddAccountCreateRequest>,
-  output: __S(28) as any as S.Schema<EventStream>,
+  input: EventStreamsAddAccountCreateRequest,
+  output: EventStream,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -710,8 +1045,8 @@ export const eventStreamsDestroy: API.OperationMethod<
   EventStreamsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<EventStreamsDestroyRequest>,
-  output: __S(31) as any as S.Schema<EventStreamsDestroyResponse>,
+  input: EventStreamsDestroyRequest,
+  output: EventStreamsDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -725,8 +1060,8 @@ export const eventStreamsRemoveAccountCreate: API.OperationMethod<
   EventStreamsRemoveAccountCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<EventStreamsRemoveAccountCreateRequest>,
-  output: __S(28) as any as S.Schema<EventStream>,
+  input: EventStreamsRemoveAccountCreateRequest,
+  output: EventStream,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -740,8 +1075,8 @@ export const eventStreamsSendTestMessageCreate: API.OperationMethod<
   EventStreamsSendTestMessageCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<EventStreamsSendTestMessageCreateRequest>,
-  output: __S(34) as any as S.Schema<EventStreamTestMessage>,
+  input: EventStreamsSendTestMessageCreateRequest,
+  output: EventStreamTestMessage,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -754,8 +1089,8 @@ export const getAccountsNotebook: API.OperationMethod<
   GetAccountsNotebookError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<GetAccountsNotebookRequest>,
-  output: __S(8) as any as S.Schema<AccountNotebook>,
+  input: GetAccountsNotebookRequest,
+  output: AccountNotebook,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -773,8 +1108,8 @@ export const getCustomerAnalyticsExternalAccount: API.OperationMethod<
   GetCustomerAnalyticsExternalAccountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GetCustomerAnalyticsExternalAccountRequest>,
-  output: __S(26) as any as S.Schema<ExternalAccount>,
+  input: GetCustomerAnalyticsExternalAccountRequest,
+  output: ExternalAccount,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -792,8 +1127,8 @@ export const getCustomerAnalyticsExternalAccount2: API.OperationMethod<
   GetCustomerAnalyticsExternalAccount2Error,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<GetCustomerAnalyticsExternalAccountRequest2>,
-  output: __S(43) as any as S.Schema<ExternalAccountListPage>,
+  input: GetCustomerAnalyticsExternalAccountRequest2,
+  output: ExternalAccountListPage,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -806,8 +1141,8 @@ export const listAccountNotes: API.OperationMethod<
   ListAccountNotesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<ListAccountNotesRequest>,
-  output: __S(48) as any as S.Schema<PaginatedAccountNoteList>,
+  input: ListAccountNotesRequest,
+  output: PaginatedAccountNoteList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -820,8 +1155,8 @@ export const listAccountsCustomPropertyValues: API.OperationMethod<
   ListAccountsCustomPropertyValuesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<ListAccountsCustomPropertyValuesRequest>,
-  output: __S(51) as any as S.Schema<ListAccountsCustomPropertyValuesResponse>,
+  input: ListAccountsCustomPropertyValuesRequest,
+  output: ListAccountsCustomPropertyValuesResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -834,8 +1169,8 @@ export const listAccountsNotebooks: API.OperationMethod<
   ListAccountsNotebooksError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<ListAccountsNotebooksRequest>,
-  output: __S(54) as any as S.Schema<PaginatedAccountNotebookList>,
+  input: ListAccountsNotebooksRequest,
+  output: PaginatedAccountNotebookList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -848,8 +1183,8 @@ export const listAccountsRelationships: API.OperationMethod<
   ListAccountsRelationshipsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<ListAccountsRelationshipsRequest>,
-  output: __S(57) as any as S.Schema<ListAccountsRelationshipsResponse>,
+  input: ListAccountsRelationshipsRequest,
+  output: ListAccountsRelationshipsResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -863,8 +1198,8 @@ export const listEventStreams: API.OperationMethod<
   ListEventStreamsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<ListEventStreamsRequest>,
-  output: __S(60) as any as S.Schema<ListEventStreamsResponse>,
+  input: ListEventStreamsRequest,
+  output: ListEventStreamsResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -878,8 +1213,8 @@ export const updateEventStream: API.OperationMethod<
   UpdateEventStreamError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<UpdateEventStreamRequest>,
-  output: __S(28) as any as S.Schema<EventStream>,
+  input: UpdateEventStreamRequest,
+  output: EventStream,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -893,8 +1228,8 @@ export const updateEventStreamsPartial: API.OperationMethod<
   UpdateEventStreamsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<UpdateEventStreamsPartialRequest>,
-  output: __S(28) as any as S.Schema<EventStream>,
+  input: UpdateEventStreamsPartialRequest,
+  output: EventStream,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -945,7 +1280,7 @@ function __c0(j: number): any {
           project_id: S.String.pipe(T.Label()),
           account_id: S.String.pipe(T.Label()),
           definition: S.String,
-          value: S.NullOr(S.Unknown),
+          value: S.NullOr(CreateAccountsCustomPropertyValueRequestValue),
         }).pipe(
           T.Http({
             method: "POST",
@@ -962,7 +1297,7 @@ function __c0(j: number): any {
           id: S.String,
           account_id: S.String,
           definition_id: S.String,
-          value: S.Unknown,
+          value: CustomPropertyValueValue,
           created_at: S.String,
           created_by_id: S.NullOr(S.Number),
         }),
@@ -997,8 +1332,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(6))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
   }
@@ -1014,9 +1349,9 @@ function __c1(j: number): any {
           content: S.optional(S.Unknown),
           text_content: S.optional(S.NullOr(S.String)),
           created_at: S.String,
-          created_by: __S(7),
+          created_by: UserBasic,
           last_modified_at: S.String,
-          last_modified_by: __S(7),
+          last_modified_by: UserBasic,
         }),
       ).annotate({ identifier: "AccountNotebook" });
     case 1:
@@ -1059,11 +1394,11 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          definition: __S(10),
-          user: S.NullOr(__S(11)),
+          definition: AccountRelationshipDefinition,
+          user: S.NullOr(AccountAssignment),
           started_at: S.String,
           ended_at: S.NullOr(S.String),
-          source: S.NullOr(S.String),
+          source: S.NullOr(AccountRelationshipSourceEnum),
         }),
       ).annotate({ identifier: "AccountRelationship" });
     case 5:
@@ -1088,8 +1423,12 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           website_domain: S.optional(S.NullOr(S.String)),
-          email_domains: S.optional(__S(14)),
-          known_emails: S.optional(__S(14)),
+          email_domains: S.optional(
+            CreateCustomerAnalyticsExternalAccountRequestPropertiesEmailDomainsList,
+          ),
+          known_emails: S.optional(
+            CreateCustomerAnalyticsExternalAccountRequestPropertiesKnownEmailsList,
+          ),
           stripe_customer_id: S.optional(S.NullOr(S.String)),
           hubspot_deal_id: S.optional(S.NullOr(S.String)),
           billing_id: S.optional(S.NullOr(S.String)),
@@ -1111,7 +1450,7 @@ function __c2(j: number): any {
         S.Struct({
           external_id: S.String,
           name: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(__S(15))),
+          properties: S.optional(S.NullOr(CreateCustomerAnalyticsExternalAccountRequestProperties)),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/customer_analytics/external/account", code: 200 }),
         ),
@@ -1131,30 +1470,30 @@ function __c2(j: number): any {
         identifier: "ExternalAccountOwnershipHolder",
       });
     case 2:
-      return S.Array(S.String);
+      return S.Array(OwnershipRoleDiagnosticEnum);
     case 3:
       return S.suspend(() =>
         S.Struct({
           definition_id: S.String,
           definition_name: S.String,
-          state: S.String,
+          state: OwnershipRoleStateEnum,
           controlled_at: S.NullOr(S.String),
           relationship_id: S.NullOr(S.String),
-          holder: S.NullOr(__S(17)),
-          diagnostics: __S(18),
+          holder: S.NullOr(ExternalAccountOwnershipHolder),
+          diagnostics: ExternalAccountRoleOwnershipDiagnosticsList,
         }),
       ).annotate({
         identifier: "ExternalAccountRoleOwnership",
       });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(ExternalAccountRoleOwnership);
     case 5:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
           external_id: S.NullOr(S.String),
           region: S.NullOr(S.String),
-          roles: __S(20),
+          roles: ExternalAccountOwnershipRolesList,
         }),
       ).annotate({ identifier: "ExternalAccountOwnership" });
     case 6:
@@ -1173,9 +1512,9 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(ExternalAccountAssignment);
     case 1:
-      return S.Record(S.String, __S(24));
+      return S.Record(S.String, ExternalAccountRelationshipsValueList);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1184,11 +1523,11 @@ function __c3(j: number): any {
           name: S.String,
           churned_at: S.NullOr(S.String),
           ignored_at: S.NullOr(S.String),
-          properties: __S(6),
-          ownership: __S(21),
-          tags: __S(22),
-          relationships: __S(25),
-          custom_properties: __S(6),
+          properties: ExternalAccountPropertiesMap,
+          ownership: ExternalAccountOwnership,
+          tags: ExternalAccountTagsList,
+          relationships: ExternalAccountRelationshipsMap,
+          custom_properties: ExternalAccountCustomPropertiesMap,
         }),
       ).annotate({ identifier: "ExternalAccount" });
     case 3:
@@ -1196,7 +1535,7 @@ function __c3(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           enabled: S.optional(S.Boolean),
-          event_names: S.optional(__S(22)),
+          event_names: S.optional(CreateEventStreamRequestEventNamesList),
           slack_integration: S.optional(S.NullOr(S.Number)),
           slack_channel_id: S.optional(S.String),
           slack_channel_name: S.optional(S.String),
@@ -1209,11 +1548,11 @@ function __c3(j: number): any {
         S.Struct({
           id: S.String,
           enabled: S.optional(S.Boolean),
-          event_names: S.optional(__S(22)),
+          event_names: S.optional(EventStreamEventNamesList),
           slack_integration: S.optional(S.NullOr(S.Number)),
           slack_channel_id: S.optional(S.String),
           slack_channel_name: S.optional(S.String),
-          account_ids: __S(22),
+          account_ids: EventStreamAccountIdsList,
           created_at: S.String,
           created_by: S.NullOr(S.Number),
           updated_at: S.NullOr(S.String),
@@ -1347,13 +1686,13 @@ function __c4(j: number): any {
         identifier: "ExternalAccountListAssignment",
       });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(ExternalAccountListAssignment);
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(39));
+      return S.Record(S.String, ExternalAccountListItemRelationshipsValueList);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1361,16 +1700,16 @@ function __c5(j: number): any {
           name: S.String,
           churned_at: S.NullOr(S.String),
           ignored_at: S.NullOr(S.String),
-          ownership: __S(21),
-          relationships: __S(40),
+          ownership: ExternalAccountOwnership,
+          relationships: ExternalAccountListItemRelationshipsMap,
         }),
       ).annotate({ identifier: "ExternalAccountListItem" });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(ExternalAccountListItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(42),
+          results: ExternalAccountListPageResultsList,
           next_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ExternalAccountListPage" });
@@ -1381,8 +1720,8 @@ function __c5(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           account_id: S.optional(S.String.pipe(T.Query())),
-          assigned_to: S.optional(__S(44).pipe(T.Query())),
-          created_by: S.optional(__S(44).pipe(T.Query())),
+          assigned_to: S.optional(ListAccountNotesRequestAssignedToList.pipe(T.Query())),
+          created_by: S.optional(ListAccountNotesRequestCreatedByList.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
@@ -1399,11 +1738,11 @@ function __c5(j: number): any {
           last_modified_at: S.String,
           account_id: S.String,
           account_name: S.String,
-          created_by: S.NullOr(__S(7)),
+          created_by: S.NullOr(UserBasic),
         }),
       ).annotate({ identifier: "AccountNote" });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(AccountNote);
   }
 }
 function __c6(j: number): any {
@@ -1414,7 +1753,7 @@ function __c6(j: number): any {
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(47),
+          results: PaginatedAccountNoteListResultsList,
         }),
       ).annotate({ identifier: "PaginatedAccountNoteList" });
     case 1:
@@ -1433,9 +1772,11 @@ function __c6(j: number): any {
         identifier: "ListAccountsCustomPropertyValuesRequest",
       });
     case 2:
-      return S.Array(__S(4));
+      return S.Array(CustomPropertyValue);
     case 3:
-      return S.suspend(() => __S(50).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListAccountsCustomPropertyValuesResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListAccountsCustomPropertyValuesResponse",
       });
     case 4:
@@ -1445,7 +1786,7 @@ function __c6(j: number): any {
           account_id: S.String.pipe(T.Label()),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          ordering: S.optional(S.String.pipe(T.Query())),
+          ordering: S.optional(ListAccountsNotebooksRequestOrdering.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -1458,14 +1799,14 @@ function __c6(j: number): any {
         identifier: "ListAccountsNotebooksRequest",
       });
     case 5:
-      return S.Array(__S(8));
+      return S.Array(AccountNotebook);
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(53),
+          results: PaginatedAccountNotebookListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedAccountNotebookList",
@@ -1491,9 +1832,11 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(12));
+      return S.Array(AccountRelationship);
     case 1:
-      return S.suspend(() => __S(56).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListAccountsRelationshipsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListAccountsRelationshipsResponse",
       });
     case 2:
@@ -1505,9 +1848,9 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "ListEventStreamsRequest" });
     case 3:
-      return S.Array(__S(28));
+      return S.Array(EventStream);
     case 4:
-      return S.suspend(() => __S(59).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListEventStreamsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListEventStreamsResponse",
       });
     case 5:
@@ -1516,7 +1859,7 @@ function __c7(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           enabled: S.optional(S.Boolean),
-          event_names: S.optional(__S(22)),
+          event_names: S.optional(UpdateEventStreamRequestEventNamesList),
           slack_integration: S.optional(S.NullOr(S.Number)),
           slack_channel_id: S.optional(S.String),
           slack_channel_name: S.optional(S.String),
@@ -1534,7 +1877,7 @@ function __c7(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           enabled: S.optional(S.Boolean),
-          event_names: S.optional(__S(22)),
+          event_names: S.optional(UpdateEventStreamsPartialRequestEventNamesList),
           slack_integration: S.optional(S.NullOr(S.Number)),
           slack_channel_id: S.optional(S.String),
           slack_channel_name: S.optional(S.String),
@@ -1548,30 +1891,5 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateEventStreamsPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
   }
 }

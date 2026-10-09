@@ -5,8 +5,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -20,7 +18,17 @@ export interface ListTaskMentionsRequest {
   /** Only return mentions created after this ISO 8601 timestamp. */
   since?: string;
 }
+const ListTaskMentionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ListTaskMentionsRequest>;
+
 export type TaskUserBasicInfoHedgehogConfigMap = { [key: string]: unknown | undefined };
+const TaskUserBasicInfoHedgehogConfigMap = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
+
 /** Response shape for a task creator, mirroring core ``UserBasicSerializer`` output. */
 export interface TaskUserBasicInfo {
   id: number;
@@ -33,6 +41,8 @@ export interface TaskUserBasicInfo {
   hedgehog_config?: TaskUserBasicInfoHedgehogConfigMap | null;
   role_at_organization?: string | null;
 }
+const TaskUserBasicInfo = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<TaskUserBasicInfo>;
+
 /** Response shape for one @-mention of the requester in a task's thread. */
 export interface TaskMentionDTO {
   id: string;
@@ -45,13 +55,25 @@ export interface TaskMentionDTO {
   content: string;
   created_at: string;
 }
+const TaskMentionDTO = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<TaskMentionDTO>;
+
 export type PaginatedTaskMentionDTOListResultsList = Array<TaskMentionDTO>;
+const PaginatedTaskMentionDTOListResultsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<PaginatedTaskMentionDTOListResultsList>;
+
 export interface PaginatedTaskMentionDTOList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedTaskMentionDTOListResultsList;
 }
+const PaginatedTaskMentionDTOList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<PaginatedTaskMentionDTOList>;
+
 export type ListTaskMentionsError = PosthogOpError;
 /** List mentions of the requester Thread messages that @-mention the requester, newest first, restricted to tasks they can see. */
 export const listTaskMentions: API.OperationMethod<
@@ -60,8 +82,8 @@ export const listTaskMentions: API.OperationMethod<
   ListTaskMentionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ListTaskMentionsRequest>,
-  output: __S(5) as any as S.Schema<PaginatedTaskMentionDTOList>,
+  input: ListTaskMentionsRequest,
+  output: PaginatedTaskMentionDTOList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -93,7 +115,7 @@ function __c0(j: number): any {
           last_name: S.String,
           email: S.String,
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1))),
+          hedgehog_config: S.optional(S.NullOr(TaskUserBasicInfoHedgehogConfigMap)),
           role_at_organization: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TaskUserBasicInfo" });
@@ -106,34 +128,23 @@ function __c0(j: number): any {
           task_title: S.String,
           channel_id: S.NullOr(S.String),
           channel_name: S.NullOr(S.String),
-          author: S.optional(S.NullOr(__S(2))),
+          author: S.optional(S.NullOr(TaskUserBasicInfo)),
           content: S.String,
           created_at: S.String,
         }),
       ).annotate({ identifier: "TaskMentionDTO" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(TaskMentionDTO);
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(4),
+          results: PaginatedTaskMentionDTOListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedTaskMentionDTOList",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

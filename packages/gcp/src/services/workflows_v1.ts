@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -69,9 +67,17 @@ export type WorkflowCallLogLevelEnum =
   | "LOG_ALL_CALLS"
   | "LOG_ERRORS_ONLY"
   | "LOG_NONE";
+const WorkflowCallLogLevelEnum = S.String;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<StringMap>;
+
 export type StateErrorTypeEnum = "TYPE_UNSPECIFIED" | "KMS_ERROR";
+const StateErrorTypeEnum = S.String;
+
 /** Describes an error related to the current state of the workflow. */
 export interface StateError {
   /** Provides specifics about the error. */
@@ -79,11 +85,17 @@ export interface StateError {
   /** The type of this state error. */
   type?: StateErrorTypeEnum | (string & {});
 }
+const StateError = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StateError>;
+
 export type WorkflowStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "UNAVAILABLE";
+const WorkflowStateEnum = S.String;
+
 export type WorkflowExecutionHistoryLevelEnum =
   | "EXECUTION_HISTORY_LEVEL_UNSPECIFIED"
   | "EXECUTION_HISTORY_BASIC"
   | "EXECUTION_HISTORY_DETAILED";
+const WorkflowExecutionHistoryLevelEnum = S.String;
+
 /** Workflow program to be executed by Workflows. */
 export interface Workflow {
   /** Optional. The resource name of a KMS crypto key used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. If not provided, data associated with the workflow will not be CMEK-encrypted. */
@@ -125,6 +137,8 @@ export interface Workflow {
   /** Output only. The resource name of a KMS crypto key version used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}/cryptoKeyVersions/{cryptoKeyVersion} */
   cryptoKeyVersion?: string;
 }
+const Workflow = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Workflow>;
+
 export interface CreateProjectsLocationsWorkflowsRequest {
   /** Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location. */
   workflowId?: string;
@@ -133,8 +147,17 @@ export interface CreateProjectsLocationsWorkflowsRequest {
   /** Request body */
   body?: Workflow;
 }
+const CreateProjectsLocationsWorkflowsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateProjectsLocationsWorkflowsRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -144,6 +167,8 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
+const Status = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Status>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -157,20 +182,39 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
+const Operation = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Operation>;
+
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Empty>;
+
 export interface DeleteProjectsLocationsWorkflowsRequest {
   /** Required. Name of the workflow to be deleted. Format: projects/{project}/locations/{location}/workflows/{workflow} */
   name: string;
 }
+const DeleteProjectsLocationsWorkflowsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DeleteProjectsLocationsWorkflowsRequest>;
+
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
+const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetProjectsLocationsRequest>;
+
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
@@ -184,16 +228,28 @@ export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
 }
+const Location = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Location>;
+
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+
 export interface GetProjectsLocationsWorkflowsRequest {
   /** Optional. The revision of the workflow to retrieve. If the revision_id is empty, the latest revision is retrieved. The format is "000001-a4d", where the first six characters define the zero-padded decimal revision number. They are followed by a hyphen and three hexadecimal characters. */
   revisionId?: string;
   /** Required. Name of the workflow for which information should be retrieved. Format: projects/{project}/locations/{location}/workflows/{workflow} */
   name: string;
 }
+const GetProjectsLocationsWorkflowsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetProjectsLocationsWorkflowsRequest>;
+
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
@@ -206,7 +262,14 @@ export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
+const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListProjectsLocationsRequest>;
+
 export type LocationList = Array<Location>;
+const LocationList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<LocationList>;
+
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -214,6 +277,11 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
+const ListLocationsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListLocationsResponse>;
+
 export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
@@ -226,7 +294,14 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+
 export type OperationList = Array<Operation>;
+const OperationList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<OperationList>;
+
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -236,6 +311,11 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListProjectsLocationsWorkflowsRequest {
   /** Maximum number of workflows to return per call. The service might return fewer than this value even if not at the end of the collection. If a value is not specified, a default value of 500 is used. The maximum permitted value is 1000 and values greater than 1000 are coerced down to 1000. */
   pageSize?: number;
@@ -248,7 +328,14 @@ export interface ListProjectsLocationsWorkflowsRequest {
   /** Required. Project and location from which the workflows should be listed. Format: projects/{project}/locations/{location} */
   parent: string;
 }
+const ListProjectsLocationsWorkflowsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListProjectsLocationsWorkflowsRequest>;
+
 export type WorkflowList = Array<Workflow>;
+const WorkflowList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<WorkflowList>;
+
 /** Response for the ListWorkflows method. */
 export interface ListWorkflowsResponse {
   /** Unreachable resources. */
@@ -258,6 +345,11 @@ export interface ListWorkflowsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListWorkflowsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListWorkflowsResponse>;
+
 export interface ListRevisionsProjectsLocationsWorkflowsRequest {
   /** The maximum number of revisions to return per page. If a value is not specified, a default value of 20 is used. The maximum permitted value is 100. Values greater than 100 are coerced down to 100. */
   pageSize?: number;
@@ -266,6 +358,11 @@ export interface ListRevisionsProjectsLocationsWorkflowsRequest {
   /** Required. Workflow for which the revisions should be listed. Format: projects/{project}/locations/{location}/workflows/{workflow} */
   name: string;
 }
+const ListRevisionsProjectsLocationsWorkflowsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListRevisionsProjectsLocationsWorkflowsRequest>;
+
 /** Response for the ListWorkflowRevisions method. */
 export interface ListWorkflowRevisionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -273,6 +370,11 @@ export interface ListWorkflowRevisionsResponse {
   /** The revisions of the workflow, ordered in reverse chronological order. */
   workflows?: WorkflowList;
 }
+const ListWorkflowRevisionsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListWorkflowRevisionsResponse>;
+
 export interface PatchProjectsLocationsWorkflowsRequest {
   /** List of fields to be updated. If not present, the entire workflow will be updated. */
   updateMask?: string;
@@ -281,6 +383,11 @@ export interface PatchProjectsLocationsWorkflowsRequest {
   /** Request body */
   body?: Workflow;
 }
+const PatchProjectsLocationsWorkflowsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<PatchProjectsLocationsWorkflowsRequest>;
+
 export type CreateProjectsLocationsWorkflowsError =
   | NotFound
   | Forbidden
@@ -294,8 +401,8 @@ export const createProjectsLocationsWorkflows: API.OperationMethod<
   CreateProjectsLocationsWorkflowsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateProjectsLocationsWorkflowsRequest>,
-  output: __S(8) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsWorkflowsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -314,8 +421,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(10) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -334,8 +441,8 @@ export const deleteProjectsLocationsWorkflows: API.OperationMethod<
   DeleteProjectsLocationsWorkflowsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<DeleteProjectsLocationsWorkflowsRequest>,
-  output: __S(8) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsWorkflowsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -349,8 +456,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(13) as any as S.Schema<Location>,
+  input: GetProjectsLocationsRequest,
+  output: Location,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -364,8 +471,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(8) as any as S.Schema<Operation>,
+  input: GetProjectsLocationsOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -379,8 +486,8 @@ export const getProjectsLocationsWorkflows: API.OperationMethod<
   GetProjectsLocationsWorkflowsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<GetProjectsLocationsWorkflowsRequest>,
-  output: __S(3) as any as S.Schema<Workflow>,
+  input: GetProjectsLocationsWorkflowsRequest,
+  output: Workflow,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -395,8 +502,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(16) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(18) as any as S.Schema<ListLocationsResponse>,
+  input: ListProjectsLocationsRequest,
+  output: ListLocationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -412,8 +519,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(19) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(21) as any as S.Schema<ListOperationsResponse>,
+  input: ListProjectsLocationsOperationsRequest,
+  output: ListOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -429,8 +536,8 @@ export const listProjectsLocationsWorkflows: API.PaginatedOperationMethod<
   GcpOpContext,
   ListWorkflowsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(22) as any as S.Schema<ListProjectsLocationsWorkflowsRequest>,
-  output: __S(24) as any as S.Schema<ListWorkflowsResponse>,
+  input: ListProjectsLocationsWorkflowsRequest,
+  output: ListWorkflowsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -446,8 +553,8 @@ export const listRevisionsProjectsLocationsWorkflows: API.PaginatedOperationMeth
   GcpOpContext,
   ListWorkflowRevisionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(25) as any as S.Schema<ListRevisionsProjectsLocationsWorkflowsRequest>,
-  output: __S(26) as any as S.Schema<ListWorkflowRevisionsResponse>,
+  input: ListRevisionsProjectsLocationsWorkflowsRequest,
+  output: ListWorkflowRevisionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -467,8 +574,8 @@ export const patchProjectsLocationsWorkflows: API.OperationMethod<
   PatchProjectsLocationsWorkflowsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<PatchProjectsLocationsWorkflowsRequest>,
-  output: __S(8) as any as S.Schema<Operation>,
+  input: PatchProjectsLocationsWorkflowsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -485,30 +592,30 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           details: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(StateErrorTypeEnum),
         }),
       ).annotate({ identifier: "StateError" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           cryptoKeyName: S.optional(S.String),
-          callLogLevel: S.optional(S.String),
+          callLogLevel: S.optional(WorkflowCallLogLevelEnum),
           sourceContents: S.optional(S.String),
-          allKmsKeys: S.optional(__S(0)),
+          allKmsKeys: S.optional(StringList),
           name: S.optional(S.String),
           serviceAccount: S.optional(S.String),
-          userEnvVars: S.optional(__S(1)),
-          tags: S.optional(__S(1)),
+          userEnvVars: S.optional(StringMap),
+          tags: S.optional(StringMap),
           description: S.optional(S.String),
-          stateError: S.optional(__S(2)),
+          stateError: S.optional(StateError),
           revisionId: S.optional(S.String),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
-          allKmsKeysVersions: S.optional(__S(0)),
-          state: S.optional(S.String),
+          allKmsKeysVersions: S.optional(StringList),
+          state: S.optional(WorkflowStateEnum),
           revisionCreateTime: S.optional(S.String),
-          labels: S.optional(__S(1)),
-          executionHistoryLevel: S.optional(S.String),
+          labels: S.optional(StringMap),
+          executionHistoryLevel: S.optional(WorkflowExecutionHistoryLevelEnum),
           cryptoKeyVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "Workflow" });
@@ -517,7 +624,7 @@ function __c0(j: number): any {
         S.Struct({
           workflowId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(3).pipe(T.HttpBody())),
+          body: S.optional(Workflow.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -531,13 +638,13 @@ function __c0(j: number): any {
     case 5:
       return S.Record(S.String, S.Unknown);
     case 6:
-      return S.Array(__S(5));
+      return S.Array(DocumentMap);
     case 7:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
           message: S.optional(S.String),
-          details: S.optional(__S(6)),
+          details: S.optional(DocumentMapList),
         }),
       ).annotate({ identifier: "Status" });
   }
@@ -547,10 +654,10 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(5)),
+          metadata: S.optional(DocumentMap),
           done: S.optional(S.Boolean),
-          response: S.optional(__S(5)),
-          error: S.optional(__S(7)),
+          response: S.optional(DocumentMap),
+          error: S.optional(Status),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
@@ -604,9 +711,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           locationId: S.optional(S.String),
-          metadata: S.optional(__S(5)),
+          metadata: S.optional(DocumentMap),
           name: S.optional(S.String),
-          labels: S.optional(__S(1)),
+          labels: S.optional(StringMap),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
@@ -649,7 +756,7 @@ function __c2(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(0).pipe(T.Query())),
+          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -662,11 +769,11 @@ function __c2(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 1:
-      return S.Array(__S(13));
+      return S.Array(Location);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(17)),
+          locations: S.optional(LocationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
@@ -689,13 +796,13 @@ function __c2(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 4:
-      return S.Array(__S(8));
+      return S.Array(Operation);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(0)),
-          operations: S.optional(__S(20)),
+          unreachable: S.optional(StringList),
+          operations: S.optional(OperationList),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 6:
@@ -717,7 +824,7 @@ function __c2(j: number): any {
         identifier: "ListProjectsLocationsWorkflowsRequest",
       });
     case 7:
-      return S.Array(__S(3));
+      return S.Array(Workflow);
   }
 }
 function __c3(j: number): any {
@@ -725,8 +832,8 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(0)),
-          workflows: S.optional(__S(23)),
+          unreachable: S.optional(StringList),
+          workflows: S.optional(WorkflowList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListWorkflowsResponse" });
@@ -750,7 +857,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          workflows: S.optional(__S(23)),
+          workflows: S.optional(WorkflowList),
         }),
       ).annotate({
         identifier: "ListWorkflowRevisionsResponse",
@@ -760,7 +867,7 @@ function __c3(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(3).pipe(T.HttpBody())),
+          body: S.optional(Workflow.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -771,22 +878,5 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsWorkflowsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Payment Cryptography Data",
   serviceShapeName: "PaymentCryptographyDataPlane",
@@ -111,7 +109,7 @@ export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()("ValidationException", {
     message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
     fieldList: /*@__PURE__*/ S.optional(
-      /*@__PURE__*/ S.suspend(() => __S(92)).annotate({
+      /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
         identifier: "ValidationExceptionFieldList",
       }),
     ),
@@ -134,18 +132,32 @@ export type EncryptionMode =
   | "CFB128"
   | "OFB"
   | (string & {});
+const EncryptionMode = S.String;
+
 export type InitializationVectorType = string | redacted.Redacted<string>;
 export type PaddingType = "PKCS1" | "OAEP_SHA1" | "OAEP_SHA256" | "OAEP_SHA512" | (string & {});
+const PaddingType = S.String;
+
 export interface SymmetricEncryptionAttributes {
   Mode: EncryptionMode;
   InitializationVector?: string | redacted.Redacted<string>;
   PaddingType?: PaddingType;
 }
+const SymmetricEncryptionAttributes = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<SymmetricEncryptionAttributes>;
 export interface AsymmetricEncryptionAttributes {
   PaddingType?: PaddingType;
 }
+const AsymmetricEncryptionAttributes = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AsymmetricEncryptionAttributes>;
 export type HexLength16Or20Or24 = string;
 export type DukptEncryptionMode = "ECB" | "CBC" | (string & {});
+const DukptEncryptionMode = S.String;
+
 export type DukptDerivationType =
   | "TDES_2KEY"
   | "TDES_3KEY"
@@ -153,7 +165,11 @@ export type DukptDerivationType =
   | "AES_192"
   | "AES_256"
   | (string & {});
+const DukptDerivationType = S.String;
+
 export type DukptKeyVariant = "BIDIRECTIONAL" | "REQUEST" | "RESPONSE" | (string & {});
+const DukptKeyVariant = S.String;
+
 export interface DukptEncryptionAttributes {
   KeySerialNumber: string;
   Mode?: DukptEncryptionMode;
@@ -161,11 +177,19 @@ export interface DukptEncryptionAttributes {
   DukptKeyVariant?: DukptKeyVariant;
   InitializationVector?: string | redacted.Redacted<string>;
 }
+const DukptEncryptionAttributes = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DukptEncryptionAttributes>;
 export type EmvMajorKeyDerivationMode = "EMV_OPTION_A" | "EMV_OPTION_B" | (string & {});
+const EmvMajorKeyDerivationMode = S.String;
+
 export type PrimaryAccountNumberType = string | redacted.Redacted<string>;
 export type NumberLengthEquals2 = string;
 export type SessionDerivationDataType = string | redacted.Redacted<string>;
 export type EmvEncryptionMode = "ECB" | "CBC" | (string & {});
+const EmvEncryptionMode = S.String;
+
 export interface EmvEncryptionAttributes {
   MajorKeyDerivationMode: EmvMajorKeyDerivationMode;
   PrimaryAccountNumber: string | redacted.Redacted<string>;
@@ -174,11 +198,16 @@ export interface EmvEncryptionAttributes {
   Mode?: EmvEncryptionMode;
   InitializationVector?: string | redacted.Redacted<string>;
 }
+const EmvEncryptionAttributes = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<EmvEncryptionAttributes>;
 export type EncryptionDecryptionAttributes =
   | { Symmetric: SymmetricEncryptionAttributes; Asymmetric?: never; Dukpt?: never; Emv?: never }
   | { Symmetric?: never; Asymmetric: AsymmetricEncryptionAttributes; Dukpt?: never; Emv?: never }
   | { Symmetric?: never; Asymmetric?: never; Dukpt: DukptEncryptionAttributes; Emv?: never }
   | { Symmetric?: never; Asymmetric?: never; Dukpt?: never; Emv: EmvEncryptionAttributes };
+const EncryptionDecryptionAttributes = /*@__PURE__*/ __L.at(__c0, 4);
 export type Tr31WrappedKeyBlock = string | redacted.Redacted<string>;
 export type CertificateType = string;
 export type SymmetricKeyAlgorithm =
@@ -192,8 +221,14 @@ export type SymmetricKeyAlgorithm =
   | "HMAC_SHA512"
   | "HMAC_SHA224"
   | (string & {});
+const SymmetricKeyAlgorithm = S.String;
+
 export type KeyDerivationFunction = "NIST_SP800" | "ANSI_X963" | (string & {});
+const KeyDerivationFunction = S.String;
+
 export type KeyDerivationHashAlgorithm = "SHA_256" | "SHA_384" | "SHA_512" | (string & {});
+const KeyDerivationHashAlgorithm = S.String;
+
 export type SharedInformation = string;
 export interface EcdhDerivationAttributes {
   CertificateAuthorityPublicKeyIdentifier: string;
@@ -203,20 +238,27 @@ export interface EcdhDerivationAttributes {
   KeyDerivationHashAlgorithm: KeyDerivationHashAlgorithm;
   SharedInformation: string;
 }
+const EcdhDerivationAttributes = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<EcdhDerivationAttributes>;
 export type WrappedKeyMaterial =
   | { Tr31KeyBlock: string | redacted.Redacted<string>; DiffieHellmanSymmetricKey?: never }
   | { Tr31KeyBlock?: never; DiffieHellmanSymmetricKey: EcdhDerivationAttributes };
+const WrappedKeyMaterial = /*@__PURE__*/ __L.at(__c0, 6);
 export type KeyCheckValueAlgorithm = string;
 export interface WrappedKey {
   WrappedKeyMaterial: WrappedKeyMaterial;
   KeyCheckValueAlgorithm?: string;
 }
+const WrappedKey = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<WrappedKey>;
 export interface DecryptDataInput {
   KeyIdentifier: string;
   CipherText: string | redacted.Redacted<string>;
   DecryptionAttributes: EncryptionDecryptionAttributes;
   WrappedKey?: WrappedKey;
 }
+const DecryptDataInput = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DecryptDataInput>;
 export type KeyArn = string;
 export type KeyCheckValue = string;
 export type PlainTextOutputType = string | redacted.Redacted<string>;
@@ -225,6 +267,7 @@ export interface DecryptDataOutput {
   KeyCheckValue: string;
   PlainText: string | redacted.Redacted<string>;
 }
+const DecryptDataOutput = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DecryptDataOutput>;
 export type PlainTextType = string | redacted.Redacted<string>;
 export interface EncryptDataInput {
   KeyIdentifier: string;
@@ -232,43 +275,66 @@ export interface EncryptDataInput {
   EncryptionAttributes: EncryptionDecryptionAttributes;
   WrappedKey?: WrappedKey;
 }
+const EncryptDataInput = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<EncryptDataInput>;
 export interface EncryptDataOutput {
   KeyArn: string;
   KeyCheckValue?: string;
   CipherText: string | redacted.Redacted<string>;
 }
+const EncryptDataOutput = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<EncryptDataOutput>;
 export type RandomKeyMaxLength = "BYTES_8" | "BYTES_16" | "BYTES_24" | (string & {});
+const RandomKeyMaxLength = S.String;
+
 export interface KekValidationRequest {
   DeriveKeyAlgorithm: SymmetricKeyAlgorithm;
   RandomKeyMaxLength?: RandomKeyMaxLength;
 }
+const KekValidationRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<KekValidationRequest>;
 export type As2805RandomKeyMaterial = string | redacted.Redacted<string>;
 export interface KekValidationResponse {
   RandomKeySend: string | redacted.Redacted<string>;
 }
+const KekValidationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<KekValidationResponse>;
 export type As2805KekValidationType =
   | { KekValidationRequest: KekValidationRequest; KekValidationResponse?: never }
   | { KekValidationRequest?: never; KekValidationResponse: KekValidationResponse };
+const As2805KekValidationType = /*@__PURE__*/ __L.at(__c1, 6);
 export type RandomKeySendVariantMask = "VARIANT_MASK_82C0" | "VARIANT_MASK_82" | (string & {});
+const RandomKeySendVariantMask = S.String;
+
 export interface GenerateAs2805KekValidationInput {
   KeyIdentifier: string;
   KekValidationType: As2805KekValidationType;
   RandomKeySendVariantMask: RandomKeySendVariantMask;
 }
+const GenerateAs2805KekValidationInput = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GenerateAs2805KekValidationInput>;
 export interface GenerateAs2805KekValidationOutput {
   KeyArn: string;
   KeyCheckValue: string;
   RandomKeySend: string | redacted.Redacted<string>;
   RandomKeyReceive: string | redacted.Redacted<string>;
 }
+const GenerateAs2805KekValidationOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GenerateAs2805KekValidationOutput>;
 export type TransactionDataType = string | redacted.Redacted<string>;
 export type MajorKeyDerivationMode = "EMV_OPTION_A" | "EMV_OPTION_B" | (string & {});
+const MajorKeyDerivationMode = S.String;
+
 export type HexLengthEquals4 = string;
 export interface SessionKeyEmvCommon {
   PrimaryAccountNumber: string | redacted.Redacted<string>;
   PanSequenceNumber: string;
   ApplicationTransactionCounter: string;
 }
+const SessionKeyEmvCommon = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<SessionKeyEmvCommon>;
 export type HexLengthEquals8 = string;
 export interface SessionKeyMastercard {
   PrimaryAccountNumber: string | redacted.Redacted<string>;
@@ -276,24 +342,29 @@ export interface SessionKeyMastercard {
   ApplicationTransactionCounter: string;
   UnpredictableNumber: string;
 }
+const SessionKeyMastercard = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<SessionKeyMastercard>;
 export interface SessionKeyEmv2000 {
   PrimaryAccountNumber: string | redacted.Redacted<string>;
   PanSequenceNumber: string;
   ApplicationTransactionCounter: string;
 }
+const SessionKeyEmv2000 = SessionKeyEmvCommon as any as S.Schema<SessionKeyEmv2000>;
 export interface SessionKeyAmex {
   PrimaryAccountNumber: string | redacted.Redacted<string>;
   PanSequenceNumber: string;
 }
+const SessionKeyAmex = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<SessionKeyAmex>;
 export interface SessionKeyVisa {
   PrimaryAccountNumber: string | redacted.Redacted<string>;
   PanSequenceNumber: string;
 }
+const SessionKeyVisa = SessionKeyAmex as any as S.Schema<SessionKeyVisa>;
 export interface SessionKeyUnionPay {
   PrimaryAccountNumber: string | redacted.Redacted<string>;
   PanSequenceNumber: string;
   ApplicationTransactionCounter: string;
 }
+const SessionKeyUnionPay = SessionKeyEmvCommon as any as S.Schema<SessionKeyUnionPay>;
 export type SessionKeyDerivation =
   | {
       EmvCommon: SessionKeyEmvCommon;
@@ -343,34 +414,59 @@ export type SessionKeyDerivation =
       Visa?: never;
       UnionPay: SessionKeyUnionPay;
     };
+const SessionKeyDerivation = /*@__PURE__*/ __L.at(__c2, 4);
 export interface GenerateAuthRequestCryptogramInput {
   KeyIdentifier: string;
   TransactionData: string | redacted.Redacted<string>;
   MajorKeyDerivationMode: MajorKeyDerivationMode;
   SessionKeyDerivationAttributes: SessionKeyDerivation;
 }
+const GenerateAuthRequestCryptogramInput = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GenerateAuthRequestCryptogramInput>;
 export type AuthRequestCryptogramType = string | redacted.Redacted<string>;
 export interface GenerateAuthRequestCryptogramOutput {
   KeyArn: string;
   KeyCheckValue: string;
   AuthRequestCryptogram: string | redacted.Redacted<string>;
 }
+const GenerateAuthRequestCryptogramOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GenerateAuthRequestCryptogramOutput>;
 export type CardExpiryDateType = string | redacted.Redacted<string>;
 export interface AmexCardSecurityCodeVersion1 {
   CardExpiryDate: string | redacted.Redacted<string>;
 }
+const AmexCardSecurityCodeVersion1 = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<AmexCardSecurityCodeVersion1>;
 export type ServiceCodeType = string | redacted.Redacted<string>;
 export interface AmexCardSecurityCodeVersion2 {
   CardExpiryDate: string | redacted.Redacted<string>;
   ServiceCode: string | redacted.Redacted<string>;
 }
+const AmexCardSecurityCodeVersion2 = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<AmexCardSecurityCodeVersion2>;
 export interface CardVerificationValue1 {
   CardExpiryDate: string | redacted.Redacted<string>;
   ServiceCode: string | redacted.Redacted<string>;
 }
+const CardVerificationValue1 = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CardVerificationValue1>;
 export interface CardVerificationValue2 {
   CardExpiryDate: string | redacted.Redacted<string>;
 }
+const CardVerificationValue2 = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CardVerificationValue2>;
 export type HexLengthBetween2And8 = string;
 export type HexLengthBetween2And4 = string;
 export interface CardHolderVerificationValue {
@@ -378,6 +474,10 @@ export interface CardHolderVerificationValue {
   PanSequenceNumber: string;
   ApplicationTransactionCounter: string;
 }
+const CardHolderVerificationValue = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CardHolderVerificationValue>;
 export type TrackDataType = string | redacted.Redacted<string>;
 export interface DynamicCardVerificationCode {
   UnpredictableNumber: string;
@@ -385,12 +485,20 @@ export interface DynamicCardVerificationCode {
   ApplicationTransactionCounter: string;
   TrackData: string | redacted.Redacted<string>;
 }
+const DynamicCardVerificationCode = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DynamicCardVerificationCode>;
 export interface DynamicCardVerificationValue {
   PanSequenceNumber: string;
   CardExpiryDate: string | redacted.Redacted<string>;
   ServiceCode: string | redacted.Redacted<string>;
   ApplicationTransactionCounter: string;
 }
+const DynamicCardVerificationValue = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DynamicCardVerificationValue>;
 export type CardGenerationAttributes =
   | {
       AmexCardSecurityCodeVersion1: AmexCardSecurityCodeVersion1;
@@ -455,6 +563,7 @@ export type CardGenerationAttributes =
       DynamicCardVerificationCode?: never;
       DynamicCardVerificationValue: DynamicCardVerificationValue;
     };
+const CardGenerationAttributes = /*@__PURE__*/ __L.at(__c3, 6);
 export type IntegerRangeBetween3And5Type = number;
 export interface GenerateCardValidationDataInput {
   KeyIdentifier: string;
@@ -462,12 +571,20 @@ export interface GenerateCardValidationDataInput {
   GenerationAttributes: CardGenerationAttributes;
   ValidationDataLength?: number;
 }
+const GenerateCardValidationDataInput = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GenerateCardValidationDataInput>;
 export type ValidationDataType = string | redacted.Redacted<string>;
 export interface GenerateCardValidationDataOutput {
   KeyArn: string;
   KeyCheckValue: string;
   ValidationData: string | redacted.Redacted<string>;
 }
+const GenerateCardValidationDataOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GenerateCardValidationDataOutput>;
 export type MessageDataType = string | redacted.Redacted<string>;
 export type MacAlgorithm =
   | "ISO9797_ALGORITHM1"
@@ -480,6 +597,8 @@ export type MacAlgorithm =
   | "HMAC_SHA512"
   | "AS2805_4_1"
   | (string & {});
+const MacAlgorithm = S.String;
+
 export type SessionKeyDerivationMode =
   | "EMV_COMMON_SESSION_KEY"
   | "EMV2000"
@@ -488,6 +607,8 @@ export type SessionKeyDerivationMode =
   | "VISA"
   | "UNION_PAY"
   | (string & {});
+const SessionKeyDerivationMode = S.String;
+
 export type ApplicationCryptogramType = string | redacted.Redacted<string>;
 export type SessionKeyDerivationValue =
   | {
@@ -495,6 +616,7 @@ export type SessionKeyDerivationValue =
       ApplicationTransactionCounter?: never;
     }
   | { ApplicationCryptogram?: never; ApplicationTransactionCounter: string };
+const SessionKeyDerivationValue = /*@__PURE__*/ __L.at(__c4, 1);
 export interface MacAlgorithmEmv {
   MajorKeyDerivationMode: MajorKeyDerivationMode;
   PrimaryAccountNumber: string | redacted.Redacted<string>;
@@ -502,11 +624,13 @@ export interface MacAlgorithmEmv {
   SessionKeyDerivationMode: SessionKeyDerivationMode;
   SessionKeyDerivationValue: SessionKeyDerivationValue;
 }
+const MacAlgorithmEmv = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<MacAlgorithmEmv>;
 export interface MacAlgorithmDukpt {
   KeySerialNumber: string;
   DukptKeyVariant: DukptKeyVariant;
   DukptDerivationType?: DukptDerivationType;
 }
+const MacAlgorithmDukpt = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<MacAlgorithmDukpt>;
 export type MacAttributes =
   | {
       Algorithm: MacAlgorithm;
@@ -543,6 +667,7 @@ export type MacAttributes =
       DukptIso9797Algorithm3?: never;
       DukptCmac: MacAlgorithmDukpt;
     };
+const MacAttributes = /*@__PURE__*/ __L.at(__c4, 4);
 export type IntegerRangeBetween4And32 = number;
 export interface GenerateMacInput {
   KeyIdentifier: string;
@@ -550,21 +675,29 @@ export interface GenerateMacInput {
   GenerationAttributes: MacAttributes;
   MacLength?: number;
 }
+const GenerateMacInput = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<GenerateMacInput>;
 export type MacOutputType = string | redacted.Redacted<string>;
 export interface GenerateMacOutput {
   KeyArn: string;
   KeyCheckValue: string;
   Mac: string | redacted.Redacted<string>;
 }
+const GenerateMacOutput = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<GenerateMacOutput>;
 export type PinBlockLengthEquals16 = string | redacted.Redacted<string>;
 export type PinBlockFormatForEmvPinChange =
   | "ISO_FORMAT_0"
   | "ISO_FORMAT_1"
   | "ISO_FORMAT_3"
   | (string & {});
+const PinBlockFormatForEmvPinChange = S.String;
+
 export type CommandMessageDataType = string | redacted.Redacted<string>;
 export type PinBlockPaddingType = "NO_PADDING" | "ISO_IEC_7816_4" | (string & {});
+const PinBlockPaddingType = S.String;
+
 export type PinBlockLengthPosition = "NONE" | "FRONT_OF_PIN_BLOCK" | (string & {});
+const PinBlockLengthPosition = S.String;
+
 export interface EmvCommonAttributes {
   MajorKeyDerivationMode: MajorKeyDerivationMode;
   PrimaryAccountNumber: string | redacted.Redacted<string>;
@@ -574,10 +707,12 @@ export interface EmvCommonAttributes {
   PinBlockPaddingType: PinBlockPaddingType;
   PinBlockLengthPosition: PinBlockLengthPosition;
 }
+const EmvCommonAttributes = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<EmvCommonAttributes>;
 export interface CurrentPinAttributes {
   CurrentPinPekIdentifier: string;
   CurrentEncryptedPinBlock: string | redacted.Redacted<string>;
 }
+const CurrentPinAttributes = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<CurrentPinAttributes>;
 export interface AmexAttributes {
   MajorKeyDerivationMode: MajorKeyDerivationMode;
   PrimaryAccountNumber: string | redacted.Redacted<string>;
@@ -586,6 +721,7 @@ export interface AmexAttributes {
   AuthorizationRequestKeyIdentifier: string;
   CurrentPinAttributes?: CurrentPinAttributes;
 }
+const AmexAttributes = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<AmexAttributes>;
 export interface VisaAttributes {
   MajorKeyDerivationMode: MajorKeyDerivationMode;
   PrimaryAccountNumber: string | redacted.Redacted<string>;
@@ -594,18 +730,21 @@ export interface VisaAttributes {
   AuthorizationRequestKeyIdentifier: string;
   CurrentPinAttributes?: CurrentPinAttributes;
 }
+const VisaAttributes = AmexAttributes as any as S.Schema<VisaAttributes>;
 export interface Emv2000Attributes {
   MajorKeyDerivationMode: MajorKeyDerivationMode;
   PrimaryAccountNumber: string | redacted.Redacted<string>;
   PanSequenceNumber: string;
   ApplicationTransactionCounter: string;
 }
+const Emv2000Attributes = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Emv2000Attributes>;
 export interface MasterCardAttributes {
   MajorKeyDerivationMode: MajorKeyDerivationMode;
   PrimaryAccountNumber: string | redacted.Redacted<string>;
   PanSequenceNumber: string;
   ApplicationCryptogram: string | redacted.Redacted<string>;
 }
+const MasterCardAttributes = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<MasterCardAttributes>;
 export type DerivationMethodAttributes =
   | {
       EmvCommon: EmvCommonAttributes;
@@ -630,6 +769,7 @@ export type DerivationMethodAttributes =
       Emv2000?: never;
       Mastercard: MasterCardAttributes;
     };
+const DerivationMethodAttributes = /*@__PURE__*/ __L.at(__c5, 4);
 export interface GenerateMacEmvPinChangeInput {
   NewPinPekIdentifier: string;
   NewEncryptedPinBlock: string | redacted.Redacted<string>;
@@ -639,6 +779,10 @@ export interface GenerateMacEmvPinChangeInput {
   MessageData: string | redacted.Redacted<string>;
   DerivationMethodAttributes: DerivationMethodAttributes;
 }
+const GenerateMacEmvPinChangeInput = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GenerateMacEmvPinChangeInput>;
 export type PinChangeMacOutputType = string | redacted.Redacted<string>;
 export type EncryptedPinBlockType = string | redacted.Redacted<string>;
 export interface VisaAmexDerivationOutputs {
@@ -647,6 +791,10 @@ export interface VisaAmexDerivationOutputs {
   CurrentPinPekArn?: string;
   CurrentPinPekKeyCheckValue?: string;
 }
+const VisaAmexDerivationOutputs = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<VisaAmexDerivationOutputs>;
 export interface GenerateMacEmvPinChangeOutput {
   NewPinPekArn: string;
   SecureMessagingIntegrityKeyArn: string;
@@ -658,14 +806,23 @@ export interface GenerateMacEmvPinChangeOutput {
   SecureMessagingConfidentialityKeyCheckValue: string;
   VisaAmexDerivationOutputs?: VisaAmexDerivationOutputs;
 }
+const GenerateMacEmvPinChangeOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GenerateMacEmvPinChangeOutput>;
 export type IntegerRangeBetween0And6 = number;
 export interface VisaPin {
   PinVerificationKeyIndex: number;
 }
+const VisaPin = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<VisaPin>;
 export interface VisaPinVerificationValue {
   EncryptedPinBlock: string | redacted.Redacted<string>;
   PinVerificationKeyIndex: number;
 }
+const VisaPinVerificationValue = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<VisaPinVerificationValue>;
 export type DecimalizationTableType = string | redacted.Redacted<string>;
 export type HexLengthEquals1 = string;
 export type PinValidationDataType = string | redacted.Redacted<string>;
@@ -675,16 +832,19 @@ export interface Ibm3624PinOffset {
   PinValidationDataPadCharacter: string;
   PinValidationData: string | redacted.Redacted<string>;
 }
+const Ibm3624PinOffset = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<Ibm3624PinOffset>;
 export interface Ibm3624NaturalPin {
   DecimalizationTable: string | redacted.Redacted<string>;
   PinValidationDataPadCharacter: string;
   PinValidationData: string | redacted.Redacted<string>;
 }
+const Ibm3624NaturalPin = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<Ibm3624NaturalPin>;
 export interface Ibm3624RandomPin {
   DecimalizationTable: string | redacted.Redacted<string>;
   PinValidationDataPadCharacter: string;
   PinValidationData: string | redacted.Redacted<string>;
 }
+const Ibm3624RandomPin = Ibm3624NaturalPin as any as S.Schema<Ibm3624RandomPin>;
 export type PinOffsetType = string | redacted.Redacted<string>;
 export interface Ibm3624PinFromOffset {
   DecimalizationTable: string | redacted.Redacted<string>;
@@ -692,6 +852,7 @@ export interface Ibm3624PinFromOffset {
   PinValidationData: string | redacted.Redacted<string>;
   PinOffset: string | redacted.Redacted<string>;
 }
+const Ibm3624PinFromOffset = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<Ibm3624PinFromOffset>;
 export type PinGenerationAttributes =
   | {
       VisaPin: VisaPin;
@@ -741,6 +902,7 @@ export type PinGenerationAttributes =
       Ibm3624RandomPin?: never;
       Ibm3624PinFromOffset: Ibm3624PinFromOffset;
     };
+const PinGenerationAttributes = /*@__PURE__*/ __L.at(__c6, 5);
 export type IntegerRangeBetween4And12 = number;
 export type PinBlockFormatForPinData =
   | "ISO_FORMAT_0"
@@ -748,6 +910,8 @@ export type PinBlockFormatForPinData =
   | "ISO_FORMAT_3"
   | "ISO_FORMAT_4"
   | (string & {});
+const PinBlockFormatForPinData = S.String;
+
 export interface GeneratePinDataInput {
   GenerationKeyIdentifier: string;
   EncryptionKeyIdentifier: string;
@@ -757,10 +921,12 @@ export interface GeneratePinDataInput {
   PinBlockFormat: PinBlockFormatForPinData;
   EncryptionWrappedKey?: WrappedKey;
 }
+const GeneratePinDataInput = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<GeneratePinDataInput>;
 export type VerificationValueType = string | redacted.Redacted<string>;
 export type PinData =
   | { PinOffset: string | redacted.Redacted<string>; VerificationValue?: never }
   | { PinOffset?: never; VerificationValue: string | redacted.Redacted<string> };
+const PinData = /*@__PURE__*/ __L.at(__c6, 7);
 export interface GeneratePinDataOutput {
   GenerationKeyArn: string;
   GenerationKeyCheckValue: string;
@@ -769,10 +935,15 @@ export interface GeneratePinDataOutput {
   EncryptedPinBlock: string | redacted.Redacted<string>;
   PinData: PinData;
 }
+const GeneratePinDataOutput = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<GeneratePinDataOutput>;
 export type ReEncryptionAttributes =
   | { Symmetric: SymmetricEncryptionAttributes; Asymmetric?: never; Dukpt?: never }
   | { Symmetric?: never; Asymmetric: AsymmetricEncryptionAttributes; Dukpt?: never }
   | { Symmetric?: never; Asymmetric?: never; Dukpt: DukptEncryptionAttributes };
+const ReEncryptionAttributes = /*@__PURE__*/ __L.at(__c7, 1);
 export interface ReEncryptDataInput {
   IncomingKeyIdentifier: string;
   OutgoingKeyIdentifier: string;
@@ -782,12 +953,15 @@ export interface ReEncryptDataInput {
   IncomingWrappedKey?: WrappedKey;
   OutgoingWrappedKey?: WrappedKey;
 }
+const ReEncryptDataInput = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ReEncryptDataInput>;
 export interface ReEncryptDataOutput {
   KeyArn: string;
   KeyCheckValue: string;
   CipherText: string | redacted.Redacted<string>;
 }
+const ReEncryptDataOutput = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<ReEncryptDataOutput>;
 export type DiffieHellmanDerivationData = { SharedInformation: string };
+const DiffieHellmanDerivationData = /*@__PURE__*/ __L.at(__c7, 4);
 export interface IncomingDiffieHellmanTr31KeyBlock {
   PrivateKeyIdentifier: string;
   CertificateAuthorityPublicKeyIdentifier: string;
@@ -798,16 +972,27 @@ export interface IncomingDiffieHellmanTr31KeyBlock {
   DerivationData: DiffieHellmanDerivationData;
   WrappedKeyBlock: string | redacted.Redacted<string>;
 }
+const IncomingDiffieHellmanTr31KeyBlock = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<IncomingDiffieHellmanTr31KeyBlock>;
 export type IncomingKeyMaterial = { DiffieHellmanTr31KeyBlock: IncomingDiffieHellmanTr31KeyBlock };
+const IncomingKeyMaterial = /*@__PURE__*/ __L.at(__c7, 6);
 export interface OutgoingTr31KeyBlock {
   WrappingKeyIdentifier: string;
 }
+const OutgoingTr31KeyBlock = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<OutgoingTr31KeyBlock>;
 export type OutgoingKeyMaterial = { Tr31KeyBlock: OutgoingTr31KeyBlock };
+const OutgoingKeyMaterial = /*@__PURE__*/ __L.at(__c8, 0);
 export interface TranslateKeyMaterialInput {
   IncomingKeyMaterial: IncomingKeyMaterial;
   OutgoingKeyMaterial: OutgoingKeyMaterial;
   KeyCheckValueAlgorithm?: string;
 }
+const TranslateKeyMaterialInput = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<TranslateKeyMaterialInput>;
 export type KeyMaterial = string | redacted.Redacted<string>;
 export type WrappedKeyMaterialFormat = string;
 export interface WrappedWorkingKey {
@@ -815,16 +1000,31 @@ export interface WrappedWorkingKey {
   KeyCheckValue: string;
   WrappedKeyMaterialFormat: string;
 }
+const WrappedWorkingKey = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<WrappedWorkingKey>;
 export interface TranslateKeyMaterialOutput {
   WrappedKey: WrappedWorkingKey;
 }
+const TranslateKeyMaterialOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<TranslateKeyMaterialOutput>;
 export interface TranslationPinDataIsoFormat034 {
   PrimaryAccountNumber: string | redacted.Redacted<string>;
 }
+const TranslationPinDataIsoFormat034 = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<TranslationPinDataIsoFormat034>;
 export interface TranslationPinDataIsoFormat1 {}
+const TranslationPinDataIsoFormat1 = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<TranslationPinDataIsoFormat1>;
 export interface TranslationPinDataAs2805Format0 {
   PrimaryAccountNumber: string | redacted.Redacted<string>;
 }
+const TranslationPinDataAs2805Format0 =
+  TranslationPinDataIsoFormat034 as any as S.Schema<TranslationPinDataAs2805Format0>;
 export type TranslationIsoFormats =
   | {
       IsoFormat0: TranslationPinDataIsoFormat034;
@@ -861,18 +1061,27 @@ export type TranslationIsoFormats =
       IsoFormat4?: never;
       As2805Format0: TranslationPinDataAs2805Format0;
     };
+const TranslationIsoFormats = /*@__PURE__*/ __L.at(__c8, 6);
 export type HexEvenLengthBetween16And32 = string | redacted.Redacted<string>;
 export interface DukptDerivationAttributes {
   KeySerialNumber: string;
   DukptKeyDerivationType?: DukptDerivationType;
   DukptKeyVariant?: DukptKeyVariant;
 }
+const DukptDerivationAttributes = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DukptDerivationAttributes>;
 export type SystemTraceAuditNumberType = string;
 export type TransactionAmountType = string;
 export interface As2805PekDerivationAttributes {
   SystemTraceAuditNumber: string;
   TransactionAmount: string;
 }
+const As2805PekDerivationAttributes = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<As2805PekDerivationAttributes>;
 export interface TranslatePinDataInput {
   IncomingKeyIdentifier: string;
   OutgoingKeyIdentifier: string;
@@ -885,22 +1094,39 @@ export interface TranslatePinDataInput {
   OutgoingWrappedKey?: WrappedKey;
   IncomingAs2805Attributes?: As2805PekDerivationAttributes;
 }
+const TranslatePinDataInput = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<TranslatePinDataInput>;
 export interface TranslatePinDataOutput {
   PinBlock: string | redacted.Redacted<string>;
   KeyArn: string;
   KeyCheckValue: string;
 }
+const TranslatePinDataOutput = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<TranslatePinDataOutput>;
 export interface CryptogramVerificationArpcMethod1 {
   AuthResponseCode: string;
 }
+const CryptogramVerificationArpcMethod1 = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<CryptogramVerificationArpcMethod1>;
 export type ProprietaryAuthenticationDataType = string | redacted.Redacted<string>;
 export interface CryptogramVerificationArpcMethod2 {
   CardStatusUpdate: string;
   ProprietaryAuthenticationData?: string | redacted.Redacted<string>;
 }
+const CryptogramVerificationArpcMethod2 = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<CryptogramVerificationArpcMethod2>;
 export type CryptogramAuthResponse =
   | { ArpcMethod1: CryptogramVerificationArpcMethod1; ArpcMethod2?: never }
   | { ArpcMethod1?: never; ArpcMethod2: CryptogramVerificationArpcMethod2 };
+const CryptogramAuthResponse = /*@__PURE__*/ __L.at(__c9, 5);
 export interface VerifyAuthRequestCryptogramInput {
   KeyIdentifier: string;
   TransactionData: string | redacted.Redacted<string>;
@@ -909,17 +1135,29 @@ export interface VerifyAuthRequestCryptogramInput {
   SessionKeyDerivationAttributes: SessionKeyDerivation;
   AuthResponseAttributes?: CryptogramAuthResponse;
 }
+const VerifyAuthRequestCryptogramInput = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<VerifyAuthRequestCryptogramInput>;
 export type AuthResponseValueType = string | redacted.Redacted<string>;
 export interface VerifyAuthRequestCryptogramOutput {
   KeyArn: string;
   KeyCheckValue: string;
   AuthResponseValue?: string | redacted.Redacted<string>;
 }
+const VerifyAuthRequestCryptogramOutput = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<VerifyAuthRequestCryptogramOutput>;
 export interface DiscoverDynamicCardVerificationCode {
   CardExpiryDate: string | redacted.Redacted<string>;
   UnpredictableNumber: string;
   ApplicationTransactionCounter: string;
 }
+const DiscoverDynamicCardVerificationCode = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<DiscoverDynamicCardVerificationCode>;
 export type CardVerificationAttributes =
   | {
       AmexCardSecurityCodeVersion1: AmexCardSecurityCodeVersion1;
@@ -1001,16 +1239,25 @@ export type CardVerificationAttributes =
       DynamicCardVerificationValue?: never;
       DiscoverDynamicCardVerificationCode: DiscoverDynamicCardVerificationCode;
     };
+const CardVerificationAttributes = /*@__PURE__*/ __L.at(__c10, 1);
 export interface VerifyCardValidationDataInput {
   KeyIdentifier: string;
   PrimaryAccountNumber: string | redacted.Redacted<string>;
   VerificationAttributes: CardVerificationAttributes;
   ValidationData: string | redacted.Redacted<string>;
 }
+const VerifyCardValidationDataInput = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<VerifyCardValidationDataInput>;
 export interface VerifyCardValidationDataOutput {
   KeyArn: string;
   KeyCheckValue: string;
 }
+const VerifyCardValidationDataOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<VerifyCardValidationDataOutput>;
 export type MacType = string | redacted.Redacted<string>;
 export interface VerifyMacInput {
   KeyIdentifier: string;
@@ -1019,27 +1266,33 @@ export interface VerifyMacInput {
   VerificationAttributes: MacAttributes;
   MacLength?: number;
 }
+const VerifyMacInput = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<VerifyMacInput>;
 export interface VerifyMacOutput {
   KeyArn: string;
   KeyCheckValue: string;
 }
+const VerifyMacOutput = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<VerifyMacOutput>;
 export interface VisaPinVerification {
   PinVerificationKeyIndex: number;
   VerificationValue: string | redacted.Redacted<string>;
 }
+const VisaPinVerification = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<VisaPinVerification>;
 export interface Ibm3624PinVerification {
   DecimalizationTable: string | redacted.Redacted<string>;
   PinValidationDataPadCharacter: string;
   PinValidationData: string | redacted.Redacted<string>;
   PinOffset: string | redacted.Redacted<string>;
 }
+const Ibm3624PinVerification = Ibm3624PinFromOffset as any as S.Schema<Ibm3624PinVerification>;
 export type PinVerificationAttributes =
   | { VisaPin: VisaPinVerification; Ibm3624Pin?: never }
   | { VisaPin?: never; Ibm3624Pin: Ibm3624PinVerification };
+const PinVerificationAttributes = /*@__PURE__*/ __L.at(__c10, 7);
 export interface DukptAttributes {
   KeySerialNumber: string;
   DukptDerivationType: DukptDerivationType;
 }
+const DukptAttributes = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<DukptAttributes>;
 export interface VerifyPinDataInput {
   VerificationKeyIdentifier: string;
   EncryptionKeyIdentifier: string;
@@ -1051,17 +1304,24 @@ export interface VerifyPinDataInput {
   DukptAttributes?: DukptAttributes;
   EncryptionWrappedKey?: WrappedKey;
 }
+const VerifyPinDataInput = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<VerifyPinDataInput>;
 export interface VerifyPinDataOutput {
   VerificationKeyArn: string;
   VerificationKeyCheckValue: string;
   EncryptionKeyArn: string;
   EncryptionKeyCheckValue: string;
 }
+const VerifyPinDataOutput = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<VerifyPinDataOutput>;
 export interface ValidationExceptionField {
   path: string;
   message: string;
 }
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c11, 4);
 export type VerificationFailedReason = string;
 export type DecryptDataError =
   | AccessDeniedException
@@ -1099,8 +1359,8 @@ export const decryptData: API.OperationMethod<
   DecryptDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<DecryptDataInput>,
-  output: __S(9) as any as S.Schema<DecryptDataOutput>,
+  input: DecryptDataInput,
+  output: DecryptDataOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1155,8 +1415,8 @@ export const encryptData: API.OperationMethod<
   EncryptDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<EncryptDataInput>,
-  output: __S(11) as any as S.Schema<EncryptDataOutput>,
+  input: EncryptDataInput,
+  output: EncryptDataOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1195,8 +1455,8 @@ export const generateAs2805KekValidation: API.OperationMethod<
   GenerateAs2805KekValidationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<GenerateAs2805KekValidationInput>,
-  output: __S(16) as any as S.Schema<GenerateAs2805KekValidationOutput>,
+  input: GenerateAs2805KekValidationInput,
+  output: GenerateAs2805KekValidationOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1237,8 +1497,8 @@ export const generateAuthRequestCryptogram: API.OperationMethod<
   GenerateAuthRequestCryptogramError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GenerateAuthRequestCryptogramInput>,
-  output: __S(22) as any as S.Schema<GenerateAuthRequestCryptogramOutput>,
+  input: GenerateAuthRequestCryptogramInput,
+  output: GenerateAuthRequestCryptogramOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1279,8 +1539,8 @@ export const generateCardValidationData: API.OperationMethod<
   GenerateCardValidationDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GenerateCardValidationDataInput>,
-  output: __S(32) as any as S.Schema<GenerateCardValidationDataOutput>,
+  input: GenerateCardValidationDataInput,
+  output: GenerateCardValidationDataOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1321,8 +1581,8 @@ export const generateMac: API.OperationMethod<
   GenerateMacError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<GenerateMacInput>,
-  output: __S(38) as any as S.Schema<GenerateMacOutput>,
+  input: GenerateMacInput,
+  output: GenerateMacOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1369,8 +1629,8 @@ export const generateMacEmvPinChange: API.OperationMethod<
   GenerateMacEmvPinChangeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<GenerateMacEmvPinChangeInput>,
-  output: __S(47) as any as S.Schema<GenerateMacEmvPinChangeOutput>,
+  input: GenerateMacEmvPinChangeInput,
+  output: GenerateMacEmvPinChangeOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1415,8 +1675,8 @@ export const generatePinData: API.OperationMethod<
   GeneratePinDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<GeneratePinDataInput>,
-  output: __S(56) as any as S.Schema<GeneratePinDataOutput>,
+  input: GeneratePinDataInput,
+  output: GeneratePinDataOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1471,8 +1731,8 @@ export const reEncryptData: API.OperationMethod<
   ReEncryptDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<ReEncryptDataInput>,
-  output: __S(59) as any as S.Schema<ReEncryptDataOutput>,
+  input: ReEncryptDataInput,
+  output: ReEncryptDataOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1517,8 +1777,8 @@ export const translateKeyMaterial: API.OperationMethod<
   TranslateKeyMaterialError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<TranslateKeyMaterialInput>,
-  output: __S(67) as any as S.Schema<TranslateKeyMaterialOutput>,
+  input: TranslateKeyMaterialInput,
+  output: TranslateKeyMaterialOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1569,8 +1829,8 @@ export const translatePinData: API.OperationMethod<
   TranslatePinDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<TranslatePinDataInput>,
-  output: __S(74) as any as S.Schema<TranslatePinDataOutput>,
+  input: TranslatePinDataInput,
+  output: TranslatePinDataOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1612,8 +1872,8 @@ export const verifyAuthRequestCryptogram: API.OperationMethod<
   VerifyAuthRequestCryptogramError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<VerifyAuthRequestCryptogramInput>,
-  output: __S(79) as any as S.Schema<VerifyAuthRequestCryptogramOutput>,
+  input: VerifyAuthRequestCryptogramInput,
+  output: VerifyAuthRequestCryptogramOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1658,8 +1918,8 @@ export const verifyCardValidationData: API.OperationMethod<
   VerifyCardValidationDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<VerifyCardValidationDataInput>,
-  output: __S(83) as any as S.Schema<VerifyCardValidationDataOutput>,
+  input: VerifyCardValidationDataInput,
+  output: VerifyCardValidationDataOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1700,8 +1960,8 @@ export const verifyMac: API.OperationMethod<
   VerifyMacError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<VerifyMacInput>,
-  output: __S(85) as any as S.Schema<VerifyMacOutput>,
+  input: VerifyMacInput,
+  output: VerifyMacOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1744,8 +2004,8 @@ export const verifyPinData: API.OperationMethod<
   VerifyPinDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<VerifyPinDataInput>,
-  output: __S(90) as any as S.Schema<VerifyPinDataOutput>,
+  input: VerifyPinDataInput,
+  output: VerifyPinDataOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1765,24 +2025,24 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Mode: S.String,
+          Mode: EncryptionMode,
           InitializationVector: S.optional(SensitiveString),
-          PaddingType: S.optional(S.String),
+          PaddingType: S.optional(PaddingType),
         }),
       ).annotate({
         identifier: "SymmetricEncryptionAttributes",
       });
     case 1:
-      return S.suspend(() => S.Struct({ PaddingType: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ PaddingType: S.optional(PaddingType) })).annotate({
         identifier: "AsymmetricEncryptionAttributes",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           KeySerialNumber: S.String,
-          Mode: S.optional(S.String),
-          DukptKeyDerivationType: S.optional(S.String),
-          DukptKeyVariant: S.optional(S.String),
+          Mode: S.optional(DukptEncryptionMode),
+          DukptKeyDerivationType: S.optional(DukptDerivationType),
+          DukptKeyVariant: S.optional(DukptKeyVariant),
           InitializationVector: S.optional(SensitiveString),
         }),
       ).annotate({
@@ -1791,41 +2051,41 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          MajorKeyDerivationMode: S.String,
+          MajorKeyDerivationMode: EmvMajorKeyDerivationMode,
           PrimaryAccountNumber: SensitiveString,
           PanSequenceNumber: S.String,
           SessionDerivationData: SensitiveString,
-          Mode: S.optional(S.String),
+          Mode: S.optional(EmvEncryptionMode),
           InitializationVector: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "EmvEncryptionAttributes" });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ Symmetric: __S(0) }),
-        /*@__PURE__*/ S.Struct({ Asymmetric: __S(1) }),
-        /*@__PURE__*/ S.Struct({ Dukpt: __S(2) }),
-        /*@__PURE__*/ S.Struct({ Emv: __S(3) }),
+        /*@__PURE__*/ S.Struct({ Symmetric: SymmetricEncryptionAttributes }),
+        /*@__PURE__*/ S.Struct({ Asymmetric: AsymmetricEncryptionAttributes }),
+        /*@__PURE__*/ S.Struct({ Dukpt: DukptEncryptionAttributes }),
+        /*@__PURE__*/ S.Struct({ Emv: EmvEncryptionAttributes }),
       ]);
     case 5:
       return S.suspend(() =>
         S.Struct({
           CertificateAuthorityPublicKeyIdentifier: S.String,
           PublicKeyCertificate: S.String,
-          KeyAlgorithm: S.String,
-          KeyDerivationFunction: S.String,
-          KeyDerivationHashAlgorithm: S.String,
+          KeyAlgorithm: SymmetricKeyAlgorithm,
+          KeyDerivationFunction: KeyDerivationFunction,
+          KeyDerivationHashAlgorithm: KeyDerivationHashAlgorithm,
           SharedInformation: S.String,
         }),
       ).annotate({ identifier: "EcdhDerivationAttributes" });
     case 6:
       return S.Union([
         /*@__PURE__*/ S.Struct({ Tr31KeyBlock: SensitiveString }),
-        /*@__PURE__*/ S.Struct({ DiffieHellmanSymmetricKey: __S(5) }),
+        /*@__PURE__*/ S.Struct({ DiffieHellmanSymmetricKey: EcdhDerivationAttributes }),
       ]);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          WrappedKeyMaterial: __S(6),
+          WrappedKeyMaterial: WrappedKeyMaterial,
           KeyCheckValueAlgorithm: S.optional(S.String),
         }),
       ).annotate({ identifier: "WrappedKey" });
@@ -1838,8 +2098,8 @@ function __c1(j: number): any {
         S.Struct({
           KeyIdentifier: S.String.pipe(T.HttpLabel("KeyIdentifier")),
           CipherText: SensitiveString,
-          DecryptionAttributes: __S(4),
-          WrappedKey: S.optional(__S(7)),
+          DecryptionAttributes: EncryptionDecryptionAttributes,
+          WrappedKey: S.optional(WrappedKey),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/keys/{KeyIdentifier}/decrypt" }),
@@ -1860,8 +2120,8 @@ function __c1(j: number): any {
         S.Struct({
           KeyIdentifier: S.String.pipe(T.HttpLabel("KeyIdentifier")),
           PlainText: SensitiveString,
-          EncryptionAttributes: __S(4),
-          WrappedKey: S.optional(__S(7)),
+          EncryptionAttributes: EncryptionDecryptionAttributes,
+          WrappedKey: S.optional(WrappedKey),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/keys/{KeyIdentifier}/encrypt" }),
@@ -1884,8 +2144,8 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          DeriveKeyAlgorithm: S.String,
-          RandomKeyMaxLength: S.optional(S.String),
+          DeriveKeyAlgorithm: SymmetricKeyAlgorithm,
+          RandomKeyMaxLength: S.optional(RandomKeyMaxLength),
         }),
       ).annotate({ identifier: "KekValidationRequest" });
     case 5:
@@ -1894,15 +2154,15 @@ function __c1(j: number): any {
       });
     case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ KekValidationRequest: __S(12) }),
-        /*@__PURE__*/ S.Struct({ KekValidationResponse: __S(13) }),
+        /*@__PURE__*/ S.Struct({ KekValidationRequest: KekValidationRequest }),
+        /*@__PURE__*/ S.Struct({ KekValidationResponse: KekValidationResponse }),
       ]);
     case 7:
       return S.suspend(() =>
         S.Struct({
           KeyIdentifier: S.String,
-          KekValidationType: __S(14),
-          RandomKeySendVariantMask: S.String,
+          KekValidationType: As2805KekValidationType,
+          RandomKeySendVariantMask: RandomKeySendVariantMask,
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/as2805kekvalidation/generate" }),
@@ -1954,20 +2214,20 @@ function __c2(j: number): any {
       ).annotate({ identifier: "SessionKeyAmex" });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ EmvCommon: __S(17) }),
-        /*@__PURE__*/ S.Struct({ Mastercard: __S(18) }),
-        /*@__PURE__*/ S.Struct({ Emv2000: __S(17) }),
-        /*@__PURE__*/ S.Struct({ Amex: __S(19) }),
-        /*@__PURE__*/ S.Struct({ Visa: __S(19) }),
-        /*@__PURE__*/ S.Struct({ UnionPay: __S(17) }),
+        /*@__PURE__*/ S.Struct({ EmvCommon: SessionKeyEmvCommon }),
+        /*@__PURE__*/ S.Struct({ Mastercard: SessionKeyMastercard }),
+        /*@__PURE__*/ S.Struct({ Emv2000: SessionKeyEmv2000 }),
+        /*@__PURE__*/ S.Struct({ Amex: SessionKeyAmex }),
+        /*@__PURE__*/ S.Struct({ Visa: SessionKeyVisa }),
+        /*@__PURE__*/ S.Struct({ UnionPay: SessionKeyUnionPay }),
       ]);
     case 5:
       return S.suspend(() =>
         S.Struct({
           KeyIdentifier: S.String,
           TransactionData: SensitiveString,
-          MajorKeyDerivationMode: S.String,
-          SessionKeyDerivationAttributes: __S(20),
+          MajorKeyDerivationMode: MajorKeyDerivationMode,
+          SessionKeyDerivationAttributes: SessionKeyDerivation,
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/cryptogram/generate" }),
@@ -2047,20 +2307,20 @@ function __c3(j: number): any {
       });
     case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ AmexCardSecurityCodeVersion1: __S(23) }),
-        /*@__PURE__*/ S.Struct({ AmexCardSecurityCodeVersion2: __S(24) }),
-        /*@__PURE__*/ S.Struct({ CardVerificationValue1: __S(25) }),
-        /*@__PURE__*/ S.Struct({ CardVerificationValue2: __S(26) }),
-        /*@__PURE__*/ S.Struct({ CardHolderVerificationValue: __S(27) }),
-        /*@__PURE__*/ S.Struct({ DynamicCardVerificationCode: __S(28) }),
-        /*@__PURE__*/ S.Struct({ DynamicCardVerificationValue: __S(29) }),
+        /*@__PURE__*/ S.Struct({ AmexCardSecurityCodeVersion1: AmexCardSecurityCodeVersion1 }),
+        /*@__PURE__*/ S.Struct({ AmexCardSecurityCodeVersion2: AmexCardSecurityCodeVersion2 }),
+        /*@__PURE__*/ S.Struct({ CardVerificationValue1: CardVerificationValue1 }),
+        /*@__PURE__*/ S.Struct({ CardVerificationValue2: CardVerificationValue2 }),
+        /*@__PURE__*/ S.Struct({ CardHolderVerificationValue: CardHolderVerificationValue }),
+        /*@__PURE__*/ S.Struct({ DynamicCardVerificationCode: DynamicCardVerificationCode }),
+        /*@__PURE__*/ S.Struct({ DynamicCardVerificationValue: DynamicCardVerificationValue }),
       ]);
     case 7:
       return S.suspend(() =>
         S.Struct({
           KeyIdentifier: S.String,
           PrimaryAccountNumber: SensitiveString,
-          GenerationAttributes: __S(30),
+          GenerationAttributes: CardGenerationAttributes,
           ValidationDataLength: S.optional(S.Number),
         }).pipe(
           T.all(
@@ -2093,35 +2353,35 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          MajorKeyDerivationMode: S.String,
+          MajorKeyDerivationMode: MajorKeyDerivationMode,
           PrimaryAccountNumber: SensitiveString,
           PanSequenceNumber: S.String,
-          SessionKeyDerivationMode: S.String,
-          SessionKeyDerivationValue: __S(33),
+          SessionKeyDerivationMode: SessionKeyDerivationMode,
+          SessionKeyDerivationValue: SessionKeyDerivationValue,
         }),
       ).annotate({ identifier: "MacAlgorithmEmv" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           KeySerialNumber: S.String,
-          DukptKeyVariant: S.String,
-          DukptDerivationType: S.optional(S.String),
+          DukptKeyVariant: DukptKeyVariant,
+          DukptDerivationType: S.optional(DukptDerivationType),
         }),
       ).annotate({ identifier: "MacAlgorithmDukpt" });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ Algorithm: S.String }),
-        /*@__PURE__*/ S.Struct({ EmvMac: __S(34) }),
-        /*@__PURE__*/ S.Struct({ DukptIso9797Algorithm1: __S(35) }),
-        /*@__PURE__*/ S.Struct({ DukptIso9797Algorithm3: __S(35) }),
-        /*@__PURE__*/ S.Struct({ DukptCmac: __S(35) }),
+        /*@__PURE__*/ S.Struct({ Algorithm: MacAlgorithm }),
+        /*@__PURE__*/ S.Struct({ EmvMac: MacAlgorithmEmv }),
+        /*@__PURE__*/ S.Struct({ DukptIso9797Algorithm1: MacAlgorithmDukpt }),
+        /*@__PURE__*/ S.Struct({ DukptIso9797Algorithm3: MacAlgorithmDukpt }),
+        /*@__PURE__*/ S.Struct({ DukptCmac: MacAlgorithmDukpt }),
       ]);
     case 5:
       return S.suspend(() =>
         S.Struct({
           KeyIdentifier: S.String,
           MessageData: SensitiveString,
-          GenerationAttributes: __S(36),
+          GenerationAttributes: MacAttributes,
           MacLength: S.optional(S.Number),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/mac/generate" }), svc, auth, proto, ver, rules),
@@ -2134,13 +2394,13 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          MajorKeyDerivationMode: S.String,
+          MajorKeyDerivationMode: MajorKeyDerivationMode,
           PrimaryAccountNumber: SensitiveString,
           PanSequenceNumber: S.String,
           ApplicationCryptogram: SensitiveString,
-          Mode: S.String,
-          PinBlockPaddingType: S.String,
-          PinBlockLengthPosition: S.String,
+          Mode: EmvEncryptionMode,
+          PinBlockPaddingType: PinBlockPaddingType,
+          PinBlockLengthPosition: PinBlockLengthPosition,
         }),
       ).annotate({ identifier: "EmvCommonAttributes" });
   }
@@ -2154,18 +2414,18 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          MajorKeyDerivationMode: S.String,
+          MajorKeyDerivationMode: MajorKeyDerivationMode,
           PrimaryAccountNumber: SensitiveString,
           PanSequenceNumber: S.String,
           ApplicationTransactionCounter: S.String,
           AuthorizationRequestKeyIdentifier: S.String,
-          CurrentPinAttributes: S.optional(__S(40)),
+          CurrentPinAttributes: S.optional(CurrentPinAttributes),
         }),
       ).annotate({ identifier: "AmexAttributes" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          MajorKeyDerivationMode: S.String,
+          MajorKeyDerivationMode: MajorKeyDerivationMode,
           PrimaryAccountNumber: SensitiveString,
           PanSequenceNumber: S.String,
           ApplicationTransactionCounter: S.String,
@@ -2174,7 +2434,7 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          MajorKeyDerivationMode: S.String,
+          MajorKeyDerivationMode: MajorKeyDerivationMode,
           PrimaryAccountNumber: SensitiveString,
           PanSequenceNumber: S.String,
           ApplicationCryptogram: SensitiveString,
@@ -2182,22 +2442,22 @@ function __c5(j: number): any {
       ).annotate({ identifier: "MasterCardAttributes" });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ EmvCommon: __S(39) }),
-        /*@__PURE__*/ S.Struct({ Amex: __S(41) }),
-        /*@__PURE__*/ S.Struct({ Visa: __S(41) }),
-        /*@__PURE__*/ S.Struct({ Emv2000: __S(42) }),
-        /*@__PURE__*/ S.Struct({ Mastercard: __S(43) }),
+        /*@__PURE__*/ S.Struct({ EmvCommon: EmvCommonAttributes }),
+        /*@__PURE__*/ S.Struct({ Amex: AmexAttributes }),
+        /*@__PURE__*/ S.Struct({ Visa: VisaAttributes }),
+        /*@__PURE__*/ S.Struct({ Emv2000: Emv2000Attributes }),
+        /*@__PURE__*/ S.Struct({ Mastercard: MasterCardAttributes }),
       ]);
     case 5:
       return S.suspend(() =>
         S.Struct({
           NewPinPekIdentifier: S.String,
           NewEncryptedPinBlock: SensitiveString,
-          PinBlockFormat: S.String,
+          PinBlockFormat: PinBlockFormatForEmvPinChange,
           SecureMessagingIntegrityKeyIdentifier: S.String,
           SecureMessagingConfidentialityKeyIdentifier: S.String,
           MessageData: SensitiveString,
-          DerivationMethodAttributes: __S(44),
+          DerivationMethodAttributes: DerivationMethodAttributes,
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/macemvpinchange/generate" }),
@@ -2233,7 +2493,7 @@ function __c5(j: number): any {
           NewPinPekKeyCheckValue: S.String,
           SecureMessagingIntegrityKeyCheckValue: S.String,
           SecureMessagingConfidentialityKeyCheckValue: S.String,
-          VisaAmexDerivationOutputs: S.optional(__S(46)),
+          VisaAmexDerivationOutputs: S.optional(VisaAmexDerivationOutputs),
         }),
       ).annotate({
         identifier: "GenerateMacEmvPinChangeOutput",
@@ -2278,23 +2538,23 @@ function __c6(j: number): any {
       ).annotate({ identifier: "Ibm3624PinFromOffset" });
     case 5:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ VisaPin: __S(48) }),
-        /*@__PURE__*/ S.Struct({ VisaPinVerificationValue: __S(49) }),
-        /*@__PURE__*/ S.Struct({ Ibm3624PinOffset: __S(50) }),
-        /*@__PURE__*/ S.Struct({ Ibm3624NaturalPin: __S(51) }),
-        /*@__PURE__*/ S.Struct({ Ibm3624RandomPin: __S(51) }),
-        /*@__PURE__*/ S.Struct({ Ibm3624PinFromOffset: __S(52) }),
+        /*@__PURE__*/ S.Struct({ VisaPin: VisaPin }),
+        /*@__PURE__*/ S.Struct({ VisaPinVerificationValue: VisaPinVerificationValue }),
+        /*@__PURE__*/ S.Struct({ Ibm3624PinOffset: Ibm3624PinOffset }),
+        /*@__PURE__*/ S.Struct({ Ibm3624NaturalPin: Ibm3624NaturalPin }),
+        /*@__PURE__*/ S.Struct({ Ibm3624RandomPin: Ibm3624RandomPin }),
+        /*@__PURE__*/ S.Struct({ Ibm3624PinFromOffset: Ibm3624PinFromOffset }),
       ]);
     case 6:
       return S.suspend(() =>
         S.Struct({
           GenerationKeyIdentifier: S.String,
           EncryptionKeyIdentifier: S.String,
-          GenerationAttributes: __S(53),
+          GenerationAttributes: PinGenerationAttributes,
           PinDataLength: S.optional(S.Number),
           PrimaryAccountNumber: S.optional(SensitiveString),
-          PinBlockFormat: S.String,
-          EncryptionWrappedKey: S.optional(__S(7)),
+          PinBlockFormat: PinBlockFormatForPinData,
+          EncryptionWrappedKey: S.optional(WrappedKey),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/pindata/generate" }), svc, auth, proto, ver, rules),
         ),
@@ -2316,14 +2576,14 @@ function __c7(j: number): any {
           EncryptionKeyArn: S.String,
           EncryptionKeyCheckValue: S.String,
           EncryptedPinBlock: SensitiveString,
-          PinData: __S(55),
+          PinData: PinData,
         }),
       ).annotate({ identifier: "GeneratePinDataOutput" });
     case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ Symmetric: __S(0) }),
-        /*@__PURE__*/ S.Struct({ Asymmetric: __S(1) }),
-        /*@__PURE__*/ S.Struct({ Dukpt: __S(2) }),
+        /*@__PURE__*/ S.Struct({ Symmetric: SymmetricEncryptionAttributes }),
+        /*@__PURE__*/ S.Struct({ Asymmetric: AsymmetricEncryptionAttributes }),
+        /*@__PURE__*/ S.Struct({ Dukpt: DukptEncryptionAttributes }),
       ]);
     case 2:
       return S.suspend(() =>
@@ -2331,10 +2591,10 @@ function __c7(j: number): any {
           IncomingKeyIdentifier: S.String.pipe(T.HttpLabel("IncomingKeyIdentifier")),
           OutgoingKeyIdentifier: S.String,
           CipherText: SensitiveString,
-          IncomingEncryptionAttributes: __S(57),
-          OutgoingEncryptionAttributes: __S(57),
-          IncomingWrappedKey: S.optional(__S(7)),
-          OutgoingWrappedKey: S.optional(__S(7)),
+          IncomingEncryptionAttributes: ReEncryptionAttributes,
+          OutgoingEncryptionAttributes: ReEncryptionAttributes,
+          IncomingWrappedKey: S.optional(WrappedKey),
+          OutgoingWrappedKey: S.optional(WrappedKey),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/keys/{IncomingKeyIdentifier}/reencrypt" }),
@@ -2358,17 +2618,19 @@ function __c7(j: number): any {
           PrivateKeyIdentifier: S.String,
           CertificateAuthorityPublicKeyIdentifier: S.String,
           PublicKeyCertificate: S.String,
-          DeriveKeyAlgorithm: S.String,
-          KeyDerivationFunction: S.String,
-          KeyDerivationHashAlgorithm: S.String,
-          DerivationData: __S(60),
+          DeriveKeyAlgorithm: SymmetricKeyAlgorithm,
+          KeyDerivationFunction: KeyDerivationFunction,
+          KeyDerivationHashAlgorithm: KeyDerivationHashAlgorithm,
+          DerivationData: DiffieHellmanDerivationData,
           WrappedKeyBlock: SensitiveString,
         }),
       ).annotate({
         identifier: "IncomingDiffieHellmanTr31KeyBlock",
       });
     case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ DiffieHellmanTr31KeyBlock: __S(61) })]);
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ DiffieHellmanTr31KeyBlock: IncomingDiffieHellmanTr31KeyBlock }),
+      ]);
     case 7:
       return S.suspend(() => S.Struct({ WrappingKeyIdentifier: S.String })).annotate({
         identifier: "OutgoingTr31KeyBlock",
@@ -2378,12 +2640,12 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ Tr31KeyBlock: __S(63) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ Tr31KeyBlock: OutgoingTr31KeyBlock })]);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          IncomingKeyMaterial: __S(62),
-          OutgoingKeyMaterial: __S(64),
+          IncomingKeyMaterial: IncomingKeyMaterial,
+          OutgoingKeyMaterial: OutgoingKeyMaterial,
           KeyCheckValueAlgorithm: S.optional(S.String),
         }).pipe(
           T.all(
@@ -2407,7 +2669,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "WrappedWorkingKey" });
     case 3:
-      return S.suspend(() => S.Struct({ WrappedKey: __S(66) })).annotate({
+      return S.suspend(() => S.Struct({ WrappedKey: WrappedWorkingKey })).annotate({
         identifier: "TranslateKeyMaterialOutput",
       });
     case 4:
@@ -2420,18 +2682,18 @@ function __c8(j: number): any {
       });
     case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ IsoFormat0: __S(68) }),
-        /*@__PURE__*/ S.Struct({ IsoFormat1: __S(69) }),
-        /*@__PURE__*/ S.Struct({ IsoFormat3: __S(68) }),
-        /*@__PURE__*/ S.Struct({ IsoFormat4: __S(68) }),
-        /*@__PURE__*/ S.Struct({ As2805Format0: __S(68) }),
+        /*@__PURE__*/ S.Struct({ IsoFormat0: TranslationPinDataIsoFormat034 }),
+        /*@__PURE__*/ S.Struct({ IsoFormat1: TranslationPinDataIsoFormat1 }),
+        /*@__PURE__*/ S.Struct({ IsoFormat3: TranslationPinDataIsoFormat034 }),
+        /*@__PURE__*/ S.Struct({ IsoFormat4: TranslationPinDataIsoFormat034 }),
+        /*@__PURE__*/ S.Struct({ As2805Format0: TranslationPinDataAs2805Format0 }),
       ]);
     case 7:
       return S.suspend(() =>
         S.Struct({
           KeySerialNumber: S.String,
-          DukptKeyDerivationType: S.optional(S.String),
-          DukptKeyVariant: S.optional(S.String),
+          DukptKeyDerivationType: S.optional(DukptDerivationType),
+          DukptKeyVariant: S.optional(DukptKeyVariant),
         }),
       ).annotate({
         identifier: "DukptDerivationAttributes",
@@ -2451,14 +2713,14 @@ function __c9(j: number): any {
         S.Struct({
           IncomingKeyIdentifier: S.String,
           OutgoingKeyIdentifier: S.String,
-          IncomingTranslationAttributes: __S(70),
-          OutgoingTranslationAttributes: __S(70),
+          IncomingTranslationAttributes: TranslationIsoFormats,
+          OutgoingTranslationAttributes: TranslationIsoFormats,
           EncryptedPinBlock: SensitiveString,
-          IncomingDukptAttributes: S.optional(__S(71)),
-          OutgoingDukptAttributes: S.optional(__S(71)),
-          IncomingWrappedKey: S.optional(__S(7)),
-          OutgoingWrappedKey: S.optional(__S(7)),
-          IncomingAs2805Attributes: S.optional(__S(72)),
+          IncomingDukptAttributes: S.optional(DukptDerivationAttributes),
+          OutgoingDukptAttributes: S.optional(DukptDerivationAttributes),
+          IncomingWrappedKey: S.optional(WrappedKey),
+          OutgoingWrappedKey: S.optional(WrappedKey),
+          IncomingAs2805Attributes: S.optional(As2805PekDerivationAttributes),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/pindata/translate" }),
@@ -2489,8 +2751,8 @@ function __c9(j: number): any {
       });
     case 5:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ ArpcMethod1: __S(75) }),
-        /*@__PURE__*/ S.Struct({ ArpcMethod2: __S(76) }),
+        /*@__PURE__*/ S.Struct({ ArpcMethod1: CryptogramVerificationArpcMethod1 }),
+        /*@__PURE__*/ S.Struct({ ArpcMethod2: CryptogramVerificationArpcMethod2 }),
       ]);
     case 6:
       return S.suspend(() =>
@@ -2498,9 +2760,9 @@ function __c9(j: number): any {
           KeyIdentifier: S.String,
           TransactionData: SensitiveString,
           AuthRequestCryptogram: SensitiveString,
-          MajorKeyDerivationMode: S.String,
-          SessionKeyDerivationAttributes: __S(20),
-          AuthResponseAttributes: S.optional(__S(77)),
+          MajorKeyDerivationMode: MajorKeyDerivationMode,
+          SessionKeyDerivationAttributes: SessionKeyDerivation,
+          AuthResponseAttributes: S.optional(CryptogramAuthResponse),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/cryptogram/verify" }),
@@ -2540,15 +2802,15 @@ function __c10(j: number): any {
       });
     case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ AmexCardSecurityCodeVersion1: __S(23) }),
-        /*@__PURE__*/ S.Struct({ AmexCardSecurityCodeVersion2: __S(24) }),
-        /*@__PURE__*/ S.Struct({ CardVerificationValue1: __S(25) }),
-        /*@__PURE__*/ S.Struct({ CardVerificationValue2: __S(26) }),
-        /*@__PURE__*/ S.Struct({ CardHolderVerificationValue: __S(27) }),
-        /*@__PURE__*/ S.Struct({ DynamicCardVerificationCode: __S(28) }),
-        /*@__PURE__*/ S.Struct({ DynamicCardVerificationValue: __S(29) }),
+        /*@__PURE__*/ S.Struct({ AmexCardSecurityCodeVersion1: AmexCardSecurityCodeVersion1 }),
+        /*@__PURE__*/ S.Struct({ AmexCardSecurityCodeVersion2: AmexCardSecurityCodeVersion2 }),
+        /*@__PURE__*/ S.Struct({ CardVerificationValue1: CardVerificationValue1 }),
+        /*@__PURE__*/ S.Struct({ CardVerificationValue2: CardVerificationValue2 }),
+        /*@__PURE__*/ S.Struct({ CardHolderVerificationValue: CardHolderVerificationValue }),
+        /*@__PURE__*/ S.Struct({ DynamicCardVerificationCode: DynamicCardVerificationCode }),
+        /*@__PURE__*/ S.Struct({ DynamicCardVerificationValue: DynamicCardVerificationValue }),
         /*@__PURE__*/ S.Struct({
-          DiscoverDynamicCardVerificationCode: __S(80),
+          DiscoverDynamicCardVerificationCode: DiscoverDynamicCardVerificationCode,
         }),
       ]);
     case 2:
@@ -2556,7 +2818,7 @@ function __c10(j: number): any {
         S.Struct({
           KeyIdentifier: S.String,
           PrimaryAccountNumber: SensitiveString,
-          VerificationAttributes: __S(81),
+          VerificationAttributes: CardVerificationAttributes,
           ValidationData: SensitiveString,
         }).pipe(
           T.all(
@@ -2581,7 +2843,7 @@ function __c10(j: number): any {
           KeyIdentifier: S.String,
           MessageData: SensitiveString,
           Mac: SensitiveString,
-          VerificationAttributes: __S(36),
+          VerificationAttributes: MacAttributes,
           MacLength: S.optional(S.Number),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/mac/verify" }), svc, auth, proto, ver, rules),
@@ -2597,8 +2859,8 @@ function __c10(j: number): any {
       ).annotate({ identifier: "VisaPinVerification" });
     case 7:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ VisaPin: __S(86) }),
-        /*@__PURE__*/ S.Struct({ Ibm3624Pin: __S(52) }),
+        /*@__PURE__*/ S.Struct({ VisaPin: VisaPinVerification }),
+        /*@__PURE__*/ S.Struct({ Ibm3624Pin: Ibm3624PinVerification }),
       ]);
   }
 }
@@ -2606,20 +2868,20 @@ function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ KeySerialNumber: S.String, DukptDerivationType: S.String }),
+        S.Struct({ KeySerialNumber: S.String, DukptDerivationType: DukptDerivationType }),
       ).annotate({ identifier: "DukptAttributes" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           VerificationKeyIdentifier: S.String,
           EncryptionKeyIdentifier: S.String,
-          VerificationAttributes: __S(87),
+          VerificationAttributes: PinVerificationAttributes,
           EncryptedPinBlock: SensitiveString,
           PrimaryAccountNumber: S.optional(SensitiveString),
-          PinBlockFormat: S.String,
+          PinBlockFormat: PinBlockFormatForPinData,
           PinDataLength: S.optional(S.Number),
-          DukptAttributes: S.optional(__S(88)),
-          EncryptionWrappedKey: S.optional(__S(7)),
+          DukptAttributes: S.optional(DukptAttributes),
+          EncryptionWrappedKey: S.optional(WrappedKey),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/pindata/verify" }), svc, auth, proto, ver, rules),
         ),
@@ -2638,39 +2900,6 @@ function __c11(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 4:
-      return S.Array(__S(91));
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
+      return S.Array(ValidationExceptionField);
   }
 }

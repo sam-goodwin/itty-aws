@@ -7,8 +7,6 @@ import { UnknownArgocdError } from "../errors.ts";
 import { ArgocdProtocol, type ArgocdOpError, type ArgocdOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { ArgocdOpError, ArgocdOpContext };
 
@@ -17,9 +15,16 @@ export interface AccountServiceCanIRequest {
   action: string;
   subresource: string;
 }
+const AccountServiceCanIRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AccountServiceCanIRequest>;
+
 export interface AccountCanIResponse {
   value?: string;
 }
+const AccountCanIResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AccountCanIResponse>;
+
 export interface ApplicationServiceManagedResourcesRequest {
   applicationName: string;
   namespace?: string;
@@ -30,6 +35,11 @@ export interface ApplicationServiceManagedResourcesRequest {
   appNamespace?: string;
   project?: string;
 }
+const ApplicationServiceManagedResourcesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ApplicationServiceManagedResourcesRequest>;
+
 /** ResourceDiff holds the diff between a live and target resource object in Argo CD. It is used to compare the desired state (from Git/Helm) with the actual state in the cluster. */
 export interface V1alpha1ResourceDiff {
   /** Diff contains the JSON patch representing the difference between the live and target resource. Deprecated: Use NormalizedLiveState and PredictedLiveState instead to compute differences. */
@@ -57,10 +67,22 @@ export interface V1alpha1ResourceDiff {
   /** TargetState contains the JSON-serialized resource manifest as defined in the Git/Helm repository. */
   targetState?: string;
 }
+const V1alpha1ResourceDiff = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<V1alpha1ResourceDiff>;
+
 export type ApplicationManagedResourcesResponseItemsList = Array<V1alpha1ResourceDiff>;
+const ApplicationManagedResourcesResponseItemsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ApplicationManagedResourcesResponseItemsList>;
+
 export interface ApplicationManagedResourcesResponse {
   items?: ApplicationManagedResourcesResponseItemsList;
 }
+const ApplicationManagedResourcesResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ApplicationManagedResourcesResponse>;
+
 export interface ApplicationServicePodLogsRequest {
   name: string;
   podName: string;
@@ -83,11 +105,23 @@ export interface ApplicationServicePodLogsRequest {
   project?: string;
   matchCase?: boolean;
 }
+const ApplicationServicePodLogsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ApplicationServicePodLogsRequest>;
+
 export interface ProtobufAny {
   type_url?: string;
   value?: string;
 }
+const ProtobufAny = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ProtobufAny>;
+
 export type RuntimeStreamErrorDetailsList = Array<ProtobufAny>;
+const RuntimeStreamErrorDetailsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<RuntimeStreamErrorDetailsList>;
+
 export interface RuntimeStreamError {
   details?: RuntimeStreamErrorDetailsList;
   grpc_code?: number;
@@ -95,6 +129,8 @@ export interface RuntimeStreamError {
   http_status?: string;
   message?: string;
 }
+const RuntimeStreamError = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<RuntimeStreamError>;
+
 export interface ApplicationLogEntry {
   content?: string;
   last?: boolean;
@@ -102,10 +138,17 @@ export interface ApplicationLogEntry {
   timeStamp?: string;
   timeStampStr?: string;
 }
+const ApplicationLogEntry = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ApplicationLogEntry>;
+
 export interface ApplicationServicePodLogsResponse {
   error?: RuntimeStreamError;
   result?: ApplicationLogEntry;
 }
+const ApplicationServicePodLogsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ApplicationServicePodLogsResponse>;
+
 export interface ApplicationServicePodLogs2Request {
   name: string;
   namespace?: string;
@@ -128,10 +171,18 @@ export interface ApplicationServicePodLogs2Request {
   project?: string;
   matchCase?: boolean;
 }
+const ApplicationServicePodLogs2Request = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ApplicationServicePodLogs2Request>;
+
 export interface ApplicationServicePodLogs2Response {
   error?: RuntimeStreamError;
   result?: ApplicationLogEntry;
 }
+const ApplicationServicePodLogs2Response =
+  ApplicationServicePodLogsResponse as any as S.Schema<ApplicationServicePodLogs2Response>;
+
 export interface ApplicationServiceResourceTreeRequest {
   applicationName: string;
   namespace?: string;
@@ -142,8 +193,18 @@ export interface ApplicationServiceResourceTreeRequest {
   appNamespace?: string;
   project?: string;
 }
+const ApplicationServiceResourceTreeRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ApplicationServiceResourceTreeRequest>;
+
 /** Labels holds the labels attached to the host. */
 export type V1alpha1HostInfoLabelsMap = { [key: string]: string | undefined };
+const V1alpha1HostInfoLabelsMap = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<V1alpha1HostInfoLabelsMap>;
+
 /** HostResourceInfo represents resource usage details for a specific resource type on a host. */
 export interface V1alpha1HostResourceInfo {
   /** Capacity represents the total available capacity of this resource on the host. */
@@ -155,12 +216,24 @@ export interface V1alpha1HostResourceInfo {
   /** ResourceName specifies the type of resource (e.g., CPU, memory, storage). */
   resourceName?: string;
 }
+const V1alpha1HostResourceInfo = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<V1alpha1HostResourceInfo>;
+
 /** ResourcesInfo provides a list of resource usage details for different resource types on this host. */
 export type V1alpha1HostInfoResourcesInfoList = Array<V1alpha1HostResourceInfo>;
+const V1alpha1HostInfoResourcesInfoList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<V1alpha1HostInfoResourcesInfoList>;
+
 /** NodeSwapStatus represents swap memory information. */
 export interface V1NodeSwapStatus {
   capacity?: number;
 }
+const V1NodeSwapStatus = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<V1NodeSwapStatus>;
+
 /** NodeSystemInfo is a set of ids/uuids to uniquely identify the node. */
 export interface V1NodeSystemInfo {
   architecture?: string;
@@ -182,6 +255,8 @@ export interface V1NodeSystemInfo {
   swap?: V1NodeSwapStatus;
   systemUUID?: string;
 }
+const V1NodeSystemInfo = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<V1NodeSystemInfo>;
+
 /** HostInfo holds metadata and resource usage metrics for a specific host in the cluster. */
 export interface V1alpha1HostInfo {
   /** Labels holds the labels attached to the host. */
@@ -192,31 +267,62 @@ export interface V1alpha1HostInfo {
   resourcesInfo?: V1alpha1HostInfoResourcesInfoList;
   systemInfo?: V1NodeSystemInfo;
 }
+const V1alpha1HostInfo = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<V1alpha1HostInfo>;
+
 /** Hosts provides a list of Kubernetes nodes that are running pods related to the application. */
 export type V1alpha1ApplicationTreeHostsList = Array<V1alpha1HostInfo>;
+const V1alpha1ApplicationTreeHostsList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<V1alpha1ApplicationTreeHostsList>;
+
 export interface V1alpha1HealthStatus {
   lastTransitionTime?: string;
   message?: string;
   status?: string;
 }
+const V1alpha1HealthStatus = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<V1alpha1HealthStatus>;
+
 /** Images lists container images associated with the resource. This is primarily useful for pods and other workload resources. */
 export type V1alpha1ResourceNodeImagesList = Array<string>;
+const V1alpha1ResourceNodeImagesList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<V1alpha1ResourceNodeImagesList>;
+
 export interface V1alpha1InfoItem {
   /** Name is a human readable title for this piece of information. */
   name?: string;
   /** Value is human readable content. */
   value?: string;
 }
+const V1alpha1InfoItem = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<V1alpha1InfoItem>;
+
 /** Info provides additional metadata or annotations about the resource. */
 export type V1alpha1ResourceNodeInfoList = Array<V1alpha1InfoItem>;
+const V1alpha1ResourceNodeInfoList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<V1alpha1ResourceNodeInfoList>;
+
 /** ExternalURLs holds a list of URLs that should be accessible externally. This field is typically populated for Ingress resources based on their hostname rules. */
 export type V1alpha1ResourceNetworkingInfoExternalURLsList = Array<string>;
+const V1alpha1ResourceNetworkingInfoExternalURLsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ResourceNetworkingInfoExternalURLsList>;
+
 export interface V1PortStatus {
   error?: string;
   port?: number;
   protocol?: string;
 }
+const V1PortStatus = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<V1PortStatus>;
+
 export type V1LoadBalancerIngressPortsList = Array<V1PortStatus>;
+const V1LoadBalancerIngressPortsList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<V1LoadBalancerIngressPortsList>;
+
 /** LoadBalancerIngress represents the status of a load-balancer ingress point: traffic intended for the service should be sent to an ingress point. */
 export interface V1LoadBalancerIngress {
   hostname?: string;
@@ -224,12 +330,28 @@ export interface V1LoadBalancerIngress {
   ipMode?: string;
   ports?: V1LoadBalancerIngressPortsList;
 }
+const V1LoadBalancerIngress = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<V1LoadBalancerIngress>;
+
 /** Ingress provides information about external access points (e.g., load balancer ingress) for this resource. */
 export type V1alpha1ResourceNetworkingInfoIngressList = Array<V1LoadBalancerIngress>;
+const V1alpha1ResourceNetworkingInfoIngressList = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<V1alpha1ResourceNetworkingInfoIngressList>;
+
 /** Labels holds the labels associated with this networking resource. */
 export type V1alpha1ResourceNetworkingInfoLabelsMap = { [key: string]: string | undefined };
+const V1alpha1ResourceNetworkingInfoLabelsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ResourceNetworkingInfoLabelsMap>;
+
 /** TargetLabels represents labels associated with the target resources that this resource communicates with. */
 export type V1alpha1ResourceNetworkingInfoTargetLabelsMap = { [key: string]: string | undefined };
+const V1alpha1ResourceNetworkingInfoTargetLabelsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ResourceNetworkingInfoTargetLabelsMap>;
+
 export interface V1alpha1ResourceRef {
   group?: string;
   kind?: string;
@@ -238,8 +360,15 @@ export interface V1alpha1ResourceRef {
   uid?: string;
   version?: string;
 }
+const V1alpha1ResourceRef = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<V1alpha1ResourceRef>;
+
 /** TargetRefs contains references to other resources that this resource interacts with, such as Services or Pods. */
 export type V1alpha1ResourceNetworkingInfoTargetRefsList = Array<V1alpha1ResourceRef>;
+const V1alpha1ResourceNetworkingInfoTargetRefsList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<V1alpha1ResourceNetworkingInfoTargetRefsList>;
+
 /** ResourceNetworkingInfo holds networking-related information for a resource. */
 export interface V1alpha1ResourceNetworkingInfo {
   /** ExternalURLs holds a list of URLs that should be accessible externally. This field is typically populated for Ingress resources based on their hostname rules. */
@@ -253,8 +382,16 @@ export interface V1alpha1ResourceNetworkingInfo {
   /** TargetRefs contains references to other resources that this resource interacts with, such as Services or Pods. */
   targetRefs?: V1alpha1ResourceNetworkingInfoTargetRefsList;
 }
+const V1alpha1ResourceNetworkingInfo = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<V1alpha1ResourceNetworkingInfo>;
+
 /** ParentRefs lists the parent resources that reference this resource. This helps in understanding ownership and hierarchical relationships. */
 export type V1alpha1ResourceNodeParentRefsList = Array<V1alpha1ResourceRef>;
+const V1alpha1ResourceNodeParentRefsList =
+  V1alpha1ResourceNetworkingInfoTargetRefsList as any as S.Schema<V1alpha1ResourceNodeParentRefsList>;
+
 /** ResourceNode contains information about a live Kubernetes resource and its relationships with other resources. */
 export interface V1alpha1ResourceNode {
   group?: string;
@@ -275,10 +412,20 @@ export interface V1alpha1ResourceNode {
   /** ResourceVersion indicates the version of the resource, used to track changes. */
   resourceVersion?: string;
 }
+const V1alpha1ResourceNode = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<V1alpha1ResourceNode>;
+
 /** Nodes contains a list of resources that are either directly managed by the application or are children of directly managed resources. */
 export type V1alpha1ApplicationTreeNodesList = Array<V1alpha1ResourceNode>;
+const V1alpha1ApplicationTreeNodesList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<V1alpha1ApplicationTreeNodesList>;
+
 /** OrphanedNodes contains resources that exist in the same namespace as the application but are not managed by it. This list is populated only if orphaned resource tracking is enabled in the application's project settings. */
 export type V1alpha1ApplicationTreeOrphanedNodesList = Array<V1alpha1ResourceNode>;
+const V1alpha1ApplicationTreeOrphanedNodesList =
+  V1alpha1ApplicationTreeNodesList as any as S.Schema<V1alpha1ApplicationTreeOrphanedNodesList>;
+
 /** ApplicationTree represents the hierarchical structure of resources associated with an Argo CD application. */
 export interface V1alpha1ApplicationTree {
   /** Hosts provides a list of Kubernetes nodes that are running pods related to the application. */
@@ -290,6 +437,11 @@ export interface V1alpha1ApplicationTree {
   /** ShardsCount represents the total number of shards the application tree is split into. This is used to distribute resource processing across multiple shards. */
   shardsCount?: number;
 }
+const V1alpha1ApplicationTree = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<V1alpha1ApplicationTree>;
+
 export interface ApplicationServiceRevisionChartDetailsRequest {
   /** the application's name */
   name: string;
@@ -303,12 +455,22 @@ export interface ApplicationServiceRevisionChartDetailsRequest {
   /** versionId from historical data (for multi source apps). */
   versionId?: number;
 }
+const ApplicationServiceRevisionChartDetailsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ApplicationServiceRevisionChartDetailsRequest>;
+
 export type V1alpha1ChartDetailsMaintainersList = Array<string>;
+const V1alpha1ChartDetailsMaintainersList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ChartDetailsMaintainersList>;
+
 export interface V1alpha1ChartDetails {
   description?: string;
   home?: string;
   maintainers?: V1alpha1ChartDetailsMaintainersList;
 }
+const V1alpha1ChartDetails = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<V1alpha1ChartDetails>;
+
 export interface ApplicationServiceRevisionMetadataRequest {
   /** the application's name */
   name: string;
@@ -322,6 +484,11 @@ export interface ApplicationServiceRevisionMetadataRequest {
   /** versionId from historical data (for multi source apps). */
   versionId?: number;
 }
+const ApplicationServiceRevisionMetadataRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ApplicationServiceRevisionMetadataRequest>;
+
 /** CommitMetadata contains metadata about a commit that is related in some way to another commit. */
 export interface V1alpha1CommitMetadata {
   /** Author is the author of the commit, i.e. `git show -s --format=%an <%ae>`. Must be formatted according to RFC 5322 (mail.Address.String()). Comes from the Argocd-reference-commit-author trailer. */
@@ -337,29 +504,65 @@ export interface V1alpha1CommitMetadata {
   /** Subject is the commit message subject line, i.e. `git show -s --format=%s`. Comes from the Argocd-reference-commit-subject trailer. */
   subject?: string;
 }
+const V1alpha1CommitMetadata = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<V1alpha1CommitMetadata>;
+
 /** RevisionReference contains a reference to a some information that is related in some way to another commit. For now, it supports only references to a commit. In the future, it may support other types of references. */
 export interface V1alpha1RevisionReference {
   commit?: V1alpha1CommitMetadata;
 }
+const V1alpha1RevisionReference = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<V1alpha1RevisionReference>;
+
 /** References contains references to information that's related to this commit in some way. */
 export type V1alpha1RevisionMetadataReferencesList = Array<V1alpha1RevisionReference>;
+const V1alpha1RevisionMetadataReferencesList = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<V1alpha1RevisionMetadataReferencesList>;
+
 /** Problems is a list of messages explaining why the check failed. Empty list means the check has succeeded. */
 export type V1alpha1SourceIntegrityCheckResultItemProblemsList = Array<string>;
+const V1alpha1SourceIntegrityCheckResultItemProblemsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1SourceIntegrityCheckResultItemProblemsList>;
+
 export interface V1alpha1SourceIntegrityCheckResultItem {
   /** Name of the check that is human-understandable pointing out to the kind of verification performed. */
   name?: string;
   /** Problems is a list of messages explaining why the check failed. Empty list means the check has succeeded. */
   problems?: V1alpha1SourceIntegrityCheckResultItemProblemsList;
 }
+const V1alpha1SourceIntegrityCheckResultItem = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<V1alpha1SourceIntegrityCheckResultItem>;
+
 /** Checks holds a list of checks performed, with their eventual problems. If a check is not specified here, it means it was not performed. */
 export type V1alpha1SourceIntegrityCheckResultChecksList =
   Array<V1alpha1SourceIntegrityCheckResultItem>;
+const V1alpha1SourceIntegrityCheckResultChecksList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<V1alpha1SourceIntegrityCheckResultChecksList>;
+
 /** SourceIntegrityCheckResult represents a conclusion of the SourceIntegrity evaluation. Each check performed on a source(es), holds a check item representing all checks performed. */
 export interface V1alpha1SourceIntegrityCheckResult {
   /** Checks holds a list of checks performed, with their eventual problems. If a check is not specified here, it means it was not performed. */
   checks?: V1alpha1SourceIntegrityCheckResultChecksList;
 }
+const V1alpha1SourceIntegrityCheckResult = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<V1alpha1SourceIntegrityCheckResult>;
+
 export type V1alpha1RevisionMetadataTagsList = Array<string>;
+const V1alpha1RevisionMetadataTagsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1RevisionMetadataTagsList>;
+
 /** RevisionMetadata contains metadata for a specific revision in a Git repository. This field is used by the Source Hydrator feature which may be removed in the future. */
 export interface V1alpha1RevisionMetadata {
   author?: string;
@@ -373,6 +576,11 @@ export interface V1alpha1RevisionMetadata {
   sourceIntegrityResult?: V1alpha1SourceIntegrityCheckResult;
   tags?: V1alpha1RevisionMetadataTagsList;
 }
+const V1alpha1RevisionMetadata = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<V1alpha1RevisionMetadata>;
+
 export interface ApplicationServiceRollbackRequest {
   name: string;
   appNamespace?: string;
@@ -381,14 +589,29 @@ export interface ApplicationServiceRollbackRequest {
   project?: string;
   prune?: boolean;
 }
+const ApplicationServiceRollbackRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ApplicationServiceRollbackRequest>;
+
 export type V1ObjectMetaAnnotationsMap = { [key: string]: string | undefined };
+const V1ObjectMetaAnnotationsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1ObjectMetaAnnotationsMap>;
+
 export type V1ObjectMetaFinalizersList = Array<string>;
+const V1ObjectMetaFinalizersList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1ObjectMetaFinalizersList>;
+
 export type V1ObjectMetaLabelsMap = { [key: string]: string | undefined };
+const V1ObjectMetaLabelsMap = V1alpha1HostInfoLabelsMap as any as S.Schema<V1ObjectMetaLabelsMap>;
+
 /** FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format. Each key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set. The exact format is defined in sigs.k8s.io/structured-merge-diff +k8s:deepcopy-gen=false +protobuf.options.marshal=false +protobuf.options.(gogoproto.goproto_stringer)=false */
 export interface V1FieldsV1 {
   /** Raw is the underlying serialization of this object. Deprecated: Direct access to this field is deprecated. Use GetRawBytes, GetRawString, SetRawBytes, SetRawString, GetRawReader, NewFieldsV1 instead. */
   Raw?: string;
 }
+const V1FieldsV1 = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<V1FieldsV1>;
+
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface V1ManagedFieldsEntry {
   /** APIVersion defines the version of this resource that this field set applies to. The format is "group/version" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted. */
@@ -402,8 +625,15 @@ export interface V1ManagedFieldsEntry {
   subresource?: string;
   time?: string;
 }
+const V1ManagedFieldsEntry = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<V1ManagedFieldsEntry>;
+
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. +optional +listType=atomic +k8s:alpha(since: "1.37")=+k8s:optional */
 export type V1ObjectMetaManagedFieldsList = Array<V1ManagedFieldsEntry>;
+const V1ObjectMetaManagedFieldsList = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<V1ObjectMetaManagedFieldsList>;
+
 export interface V1OwnerReference {
   apiVersion?: string;
   blockOwnerDeletion?: boolean;
@@ -412,7 +642,14 @@ export interface V1OwnerReference {
   name?: string;
   uid?: string;
 }
+const V1OwnerReference = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<V1OwnerReference>;
+
 export type V1ObjectMetaOwnerReferencesList = Array<V1OwnerReference>;
+const V1ObjectMetaOwnerReferencesList = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<V1ObjectMetaOwnerReferencesList>;
+
 /** ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create. */
 export interface V1ObjectMeta {
   annotations?: V1ObjectMetaAnnotationsMap;
@@ -436,28 +673,50 @@ export interface V1ObjectMeta {
   /** UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids +optional +k8s:alpha(since: "1.37")=+k8s:optional +k8s:alpha(since: "1.37")=+k8s:immutable */
   uid?: string;
 }
+const V1ObjectMeta = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<V1ObjectMeta>;
+
 export interface V1alpha1Info {
   name?: string;
   value?: string;
 }
+const V1alpha1Info = V1alpha1InfoItem as any as S.Schema<V1alpha1Info>;
+
 export type V1alpha1OperationInfoList = Array<V1alpha1Info>;
+const V1alpha1OperationInfoList =
+  V1alpha1ResourceNodeInfoList as any as S.Schema<V1alpha1OperationInfoList>;
+
 export interface V1alpha1OperationInitiator {
   /** Automated is set to true if operation was initiated automatically by the application controller. */
   automated?: boolean;
   username?: string;
 }
+const V1alpha1OperationInitiator = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<V1alpha1OperationInitiator>;
+
 export interface V1alpha1Backoff {
   duration?: string;
   factor?: number;
   maxDuration?: string;
 }
+const V1alpha1Backoff = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<V1alpha1Backoff>;
+
 export interface V1alpha1RetryStrategy {
   backoff?: V1alpha1Backoff;
   /** Limit is the maximum number of attempts for retrying a failed sync. If set to 0, no retries will be performed. */
   limit?: number;
   refresh?: boolean;
 }
+const V1alpha1RetryStrategy = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<V1alpha1RetryStrategy>;
+
 export type V1alpha1SyncOperationManifestsList = Array<string>;
+const V1alpha1SyncOperationManifestsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1SyncOperationManifestsList>;
+
 /** SyncOperationResource contains resources to sync. */
 export interface V1alpha1SyncOperationResource {
   group?: string;
@@ -465,22 +724,53 @@ export interface V1alpha1SyncOperationResource {
   name?: string;
   namespace?: string;
 }
+const V1alpha1SyncOperationResource = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<V1alpha1SyncOperationResource>;
+
 export type V1alpha1SyncOperationResourcesList = Array<V1alpha1SyncOperationResource>;
+const V1alpha1SyncOperationResourcesList = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<V1alpha1SyncOperationResourcesList>;
+
 /** Revisions is the list of revision (Git) or chart version (Helm) which to sync each source in sources field for the application to If omitted, will use the revision specified in app spec. */
 export type V1alpha1SyncOperationRevisionsList = Array<string>;
+const V1alpha1SyncOperationRevisionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1SyncOperationRevisionsList>;
+
 export interface V1alpha1JsonnetVar {
   code?: boolean;
   name?: string;
   value?: string;
 }
+const V1alpha1JsonnetVar = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<V1alpha1JsonnetVar>;
+
 export type V1alpha1ApplicationSourceJsonnetExtVarsList = Array<V1alpha1JsonnetVar>;
+const V1alpha1ApplicationSourceJsonnetExtVarsList = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<V1alpha1ApplicationSourceJsonnetExtVarsList>;
+
 export type V1alpha1ApplicationSourceJsonnetLibsList = Array<string>;
+const V1alpha1ApplicationSourceJsonnetLibsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSourceJsonnetLibsList>;
+
 export type V1alpha1ApplicationSourceJsonnetTlasList = Array<V1alpha1JsonnetVar>;
+const V1alpha1ApplicationSourceJsonnetTlasList =
+  V1alpha1ApplicationSourceJsonnetExtVarsList as any as S.Schema<V1alpha1ApplicationSourceJsonnetTlasList>;
+
 export interface V1alpha1ApplicationSourceJsonnet {
   extVars?: V1alpha1ApplicationSourceJsonnetExtVarsList;
   libs?: V1alpha1ApplicationSourceJsonnetLibsList;
   tlas?: V1alpha1ApplicationSourceJsonnetTlasList;
 }
+const V1alpha1ApplicationSourceJsonnet = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<V1alpha1ApplicationSourceJsonnet>;
+
 export interface V1alpha1ApplicationSourceDirectory {
   /** DisableExtensionFilter controls whether the built-in file-extension filter is skipped during manifest generation. When false (the default), only files with a .yaml, .yml, .json, or .jsonnet extension are considered as potential manifests. Set it to true to disable the filter so that files with custom extensions (e.g. *.yaml.sealed) can be matched by the include/exclude glob patterns instead. */
   disableExtensionFilter?: boolean;
@@ -489,25 +779,58 @@ export interface V1alpha1ApplicationSourceDirectory {
   jsonnet?: V1alpha1ApplicationSourceJsonnet;
   recurse?: boolean;
 }
+const V1alpha1ApplicationSourceDirectory = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<V1alpha1ApplicationSourceDirectory>;
+
 /** APIVersions specifies the Kubernetes resource API versions to pass to Helm when templating manifests. By default, Argo CD uses the API versions of the target cluster. The format is [group/]version/kind. */
 export type V1alpha1ApplicationSourceHelmApiVersionsList = Array<string>;
+const V1alpha1ApplicationSourceHelmApiVersionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSourceHelmApiVersionsList>;
+
 export interface V1alpha1HelmFileParameter {
   name?: string;
   path?: string;
 }
+const V1alpha1HelmFileParameter = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<V1alpha1HelmFileParameter>;
+
 export type V1alpha1ApplicationSourceHelmFileParametersList = Array<V1alpha1HelmFileParameter>;
+const V1alpha1ApplicationSourceHelmFileParametersList = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<V1alpha1ApplicationSourceHelmFileParametersList>;
+
 export interface V1alpha1HelmParameter {
   forceString?: boolean;
   name?: string;
   value?: string;
 }
+const V1alpha1HelmParameter = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<V1alpha1HelmParameter>;
+
 export type V1alpha1ApplicationSourceHelmParametersList = Array<V1alpha1HelmParameter>;
+const V1alpha1ApplicationSourceHelmParametersList = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<V1alpha1ApplicationSourceHelmParametersList>;
+
 export type V1alpha1ApplicationSourceHelmValueFilesList = Array<string>;
+const V1alpha1ApplicationSourceHelmValueFilesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSourceHelmValueFilesList>;
+
 /** RawExtension is used to hold extensions in external versions. To use this, make a field which has RawExtension as its type in your external, versioned struct, and Object in your internal struct. You also need to register your various plugin types. // Internal package: type MyAPIObject struct { runtime.TypeMeta `json:""` MyPlugin runtime.Object `json:"myPlugin"` } type PluginA struct { AOption string `json:"aOption"` } // External package: type MyAPIObject struct { runtime.TypeMeta `json:""` MyPlugin runtime.RawExtension `json:"myPlugin"` } type PluginA struct { AOption string `json:"aOption"` } // On the wire, the JSON will look something like this: { "kind":"MyAPIObject", "apiVersion":"v1", "myPlugin": { "kind":"PluginA", "aOption":"foo", }, } So what happens? Decode first uses json or yaml to unmarshal the serialized data into your external MyAPIObject. That causes the raw JSON to be stored, but not unpacked. The next step is to copy (using pkg/conversion) into the internal struct. The runtime package's DefaultScheme has conversion functions installed which will unpack the JSON stored in RawExtension, turning it into the correct object type, and storing it in the Object. (TODO: In the case where the object is of an unknown type, a runtime.Unknown object will be created and stored.) +k8s:deepcopy-gen=true +protobuf=true +k8s:openapi-gen=true */
 export interface RuntimeRawExtension {
   /** Raw is the underlying serialization of this object. TODO: Determine how to detect ContentType and ContentEncoding of 'Raw' data. */
   raw?: string;
 }
+const RuntimeRawExtension = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<RuntimeRawExtension>;
+
 export interface V1alpha1ApplicationSourceHelm {
   /** APIVersions specifies the Kubernetes resource API versions to pass to Helm when templating manifests. By default, Argo CD uses the API versions of the target cluster. The format is [group/]version/kind. */
   apiVersions?: V1alpha1ApplicationSourceHelmApiVersionsList;
@@ -529,50 +852,109 @@ export interface V1alpha1ApplicationSourceHelm {
   valuesObject?: RuntimeRawExtension;
   version?: string;
 }
+const V1alpha1ApplicationSourceHelm = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<V1alpha1ApplicationSourceHelm>;
+
 /** APIVersions specifies the Kubernetes resource API versions to pass to Helm when templating manifests. By default, Argo CD uses the API versions of the target cluster. The format is [group/]version/kind. */
 export type V1alpha1ApplicationSourceKustomizeApiVersionsList = Array<string>;
+const V1alpha1ApplicationSourceKustomizeApiVersionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSourceKustomizeApiVersionsList>;
+
 export type V1alpha1ApplicationSourceKustomizeCommonAnnotationsMap = {
   [key: string]: string | undefined;
 };
+const V1alpha1ApplicationSourceKustomizeCommonAnnotationsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ApplicationSourceKustomizeCommonAnnotationsMap>;
+
 export type V1alpha1ApplicationSourceKustomizeCommonLabelsMap = {
   [key: string]: string | undefined;
 };
+const V1alpha1ApplicationSourceKustomizeCommonLabelsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ApplicationSourceKustomizeCommonLabelsMap>;
+
 export type V1alpha1ApplicationSourceKustomizeComponentsList = Array<string>;
+const V1alpha1ApplicationSourceKustomizeComponentsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSourceKustomizeComponentsList>;
+
 export type V1alpha1ApplicationSourceKustomizeImagesList = Array<string>;
+const V1alpha1ApplicationSourceKustomizeImagesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSourceKustomizeImagesList>;
+
 export type V1alpha1KustomizePatchOptionsMap = { [key: string]: boolean | undefined };
+const V1alpha1KustomizePatchOptionsMap = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<V1alpha1KustomizePatchOptionsMap>;
+
 export interface V1alpha1KustomizeGvk {
   group?: string;
   kind?: string;
   version?: string;
 }
+const V1alpha1KustomizeGvk = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<V1alpha1KustomizeGvk>;
+
 export interface V1alpha1KustomizeResId {
   gvk?: V1alpha1KustomizeGvk;
   name?: string;
   namespace?: string;
 }
+const V1alpha1KustomizeResId = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<V1alpha1KustomizeResId>;
+
 export interface V1alpha1KustomizeSelector {
   annotationSelector?: string;
   labelSelector?: string;
   resId?: V1alpha1KustomizeResId;
 }
+const V1alpha1KustomizeSelector = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<V1alpha1KustomizeSelector>;
+
 export interface V1alpha1KustomizePatch {
   options?: V1alpha1KustomizePatchOptionsMap;
   patch?: string;
   path?: string;
   target?: V1alpha1KustomizeSelector;
 }
+const V1alpha1KustomizePatch = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<V1alpha1KustomizePatch>;
+
 export type V1alpha1ApplicationSourceKustomizePatchesList = Array<V1alpha1KustomizePatch>;
+const V1alpha1ApplicationSourceKustomizePatchesList = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<V1alpha1ApplicationSourceKustomizePatchesList>;
+
 /** +protobuf=true +protobuf.options.(gogoproto.goproto_stringer)=false +k8s:openapi-gen=true +k8s:openapi-model-package=io.k8s.apimachinery.pkg.util.intstr */
 export interface IntstrIntOrString {
   intVal?: number;
   strVal?: string;
   type?: number;
 }
+const IntstrIntOrString = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<IntstrIntOrString>;
+
 export interface V1alpha1KustomizeReplica {
   count?: IntstrIntOrString;
   name?: string;
 }
+const V1alpha1KustomizeReplica = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<V1alpha1KustomizeReplica>;
+
 export type V1alpha1ApplicationSourceKustomizeReplicasList = Array<V1alpha1KustomizeReplica>;
+const V1alpha1ApplicationSourceKustomizeReplicasList = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<V1alpha1ApplicationSourceKustomizeReplicasList>;
+
 export interface V1alpha1ApplicationSourceKustomize {
   /** APIVersions specifies the Kubernetes resource API versions to pass to Helm when templating manifests. By default, Argo CD uses the API versions of the target cluster. The format is [group/]version/kind. */
   apiVersions?: V1alpha1ApplicationSourceKustomizeApiVersionsList;
@@ -595,12 +977,26 @@ export interface V1alpha1ApplicationSourceKustomize {
   replicas?: V1alpha1ApplicationSourceKustomizeReplicasList;
   version?: string;
 }
+const V1alpha1ApplicationSourceKustomize = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<V1alpha1ApplicationSourceKustomize>;
+
 export type Applicationv1alpha1EnvEntry = V1alpha1Info;
 export type V1alpha1ApplicationSourcePluginEnvList = Array<V1alpha1Info>;
+const V1alpha1ApplicationSourcePluginEnvList =
+  V1alpha1ResourceNodeInfoList as any as S.Schema<V1alpha1ApplicationSourcePluginEnvList>;
+
 /** Array is the value of an array type parameter. */
 export type V1alpha1ApplicationSourcePluginParameterArrayList = Array<string>;
+const V1alpha1ApplicationSourcePluginParameterArrayList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSourcePluginParameterArrayList>;
+
 /** Map is the value of a map type parameter. */
 export type V1alpha1ApplicationSourcePluginParameterMapMap = { [key: string]: string | undefined };
+const V1alpha1ApplicationSourcePluginParameterMapMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ApplicationSourcePluginParameterMapMap>;
+
 export interface V1alpha1ApplicationSourcePluginParameter {
   /** Array is the value of an array type parameter. */
   array?: V1alpha1ApplicationSourcePluginParameterArrayList;
@@ -611,13 +1007,28 @@ export interface V1alpha1ApplicationSourcePluginParameter {
   /** String_ is the value of a string type parameter. */
   string?: string;
 }
+const V1alpha1ApplicationSourcePluginParameter = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<V1alpha1ApplicationSourcePluginParameter>;
+
 export type V1alpha1ApplicationSourcePluginParametersList =
   Array<V1alpha1ApplicationSourcePluginParameter>;
+const V1alpha1ApplicationSourcePluginParametersList = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<V1alpha1ApplicationSourcePluginParametersList>;
+
 export interface V1alpha1ApplicationSourcePlugin {
   env?: V1alpha1ApplicationSourcePluginEnvList;
   name?: string;
   parameters?: V1alpha1ApplicationSourcePluginParametersList;
 }
+const V1alpha1ApplicationSourcePlugin = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<V1alpha1ApplicationSourcePlugin>;
+
 export interface V1alpha1ApplicationSource {
   /** Chart is a Helm chart name, and must be specified for applications sourced from a Helm repo. */
   chart?: string;
@@ -637,20 +1048,48 @@ export interface V1alpha1ApplicationSource {
   /** TargetRevision defines the revision of the source to sync the application to. In case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag for the Chart's version. */
   targetRevision?: string;
 }
+const V1alpha1ApplicationSource = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<V1alpha1ApplicationSource>;
+
 export type V1alpha1SyncOperationSourcesList = Array<V1alpha1ApplicationSource>;
+const V1alpha1SyncOperationSourcesList = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<V1alpha1SyncOperationSourcesList>;
+
 export type V1alpha1SyncOperationSyncOptionsList = Array<string>;
+const V1alpha1SyncOperationSyncOptionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1SyncOperationSyncOptionsList>;
+
 export interface V1alpha1SyncStrategyApply {
   /** Force indicates whether or not to supply the --force flag to `kubectl apply`. The --force flag deletes and re-create the resource, when PATCH encounters conflict and has retried for 5 times. */
   force?: boolean;
 }
+const V1alpha1SyncStrategyApply = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<V1alpha1SyncStrategyApply>;
+
 /** SyncStrategyHook will perform a sync using hooks annotations. If no hook annotation is specified falls back to `kubectl apply`. */
 export interface V1alpha1SyncStrategyHook {
   syncStrategyApply?: V1alpha1SyncStrategyApply;
 }
+const V1alpha1SyncStrategyHook = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<V1alpha1SyncStrategyHook>;
+
 export interface V1alpha1SyncStrategy {
   apply?: V1alpha1SyncStrategyApply;
   hook?: V1alpha1SyncStrategyHook;
 }
+const V1alpha1SyncStrategy = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<V1alpha1SyncStrategy>;
+
 /** SyncOperation contains details about a sync operation. */
 export interface V1alpha1SyncOperation {
   autoHealAttemptsCount?: number;
@@ -667,12 +1106,19 @@ export interface V1alpha1SyncOperation {
   syncOptions?: V1alpha1SyncOperationSyncOptionsList;
   syncStrategy?: V1alpha1SyncStrategy;
 }
+const V1alpha1SyncOperation = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<V1alpha1SyncOperation>;
+
 export interface V1alpha1Operation {
   info?: V1alpha1OperationInfoList;
   initiatedBy?: V1alpha1OperationInitiator;
   retry?: V1alpha1RetryStrategy;
   sync?: V1alpha1SyncOperation;
 }
+const V1alpha1Operation = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<V1alpha1Operation>;
+
 export interface V1alpha1ApplicationDestination {
   /** Name is an alternate way of specifying the target cluster by its symbolic name. This must be set if Server is not set. */
   name?: string;
@@ -680,9 +1126,23 @@ export interface V1alpha1ApplicationDestination {
   /** Server specifies the URL of the target cluster's Kubernetes control plane API. This must be set if Name is not set. */
   server?: string;
 }
+const V1alpha1ApplicationDestination = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<V1alpha1ApplicationDestination>;
+
 export type V1alpha1ResourceIgnoreDifferencesJqPathExpressionsList = Array<string>;
+const V1alpha1ResourceIgnoreDifferencesJqPathExpressionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ResourceIgnoreDifferencesJqPathExpressionsList>;
+
 export type V1alpha1ResourceIgnoreDifferencesJsonPointersList = Array<string>;
+const V1alpha1ResourceIgnoreDifferencesJsonPointersList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ResourceIgnoreDifferencesJsonPointersList>;
+
 export type V1alpha1ResourceIgnoreDifferencesManagedFieldsManagersList = Array<string>;
+const V1alpha1ResourceIgnoreDifferencesManagedFieldsManagersList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ResourceIgnoreDifferencesManagedFieldsManagersList>;
+
 /** ResourceIgnoreDifferences contains resource filter and list of json paths which should be ignored during comparison with live state. */
 export interface V1alpha1ResourceIgnoreDifferences {
   group?: string;
@@ -693,8 +1153,21 @@ export interface V1alpha1ResourceIgnoreDifferences {
   name?: string;
   namespace?: string;
 }
+const V1alpha1ResourceIgnoreDifferences = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<V1alpha1ResourceIgnoreDifferences>;
+
 export type V1alpha1ApplicationSpecIgnoreDifferencesList = Array<V1alpha1ResourceIgnoreDifferences>;
+const V1alpha1ApplicationSpecIgnoreDifferencesList = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<V1alpha1ApplicationSpecIgnoreDifferencesList>;
+
 export type V1alpha1ApplicationSpecInfoList = Array<V1alpha1Info>;
+const V1alpha1ApplicationSpecInfoList =
+  V1alpha1ResourceNodeInfoList as any as S.Schema<V1alpha1ApplicationSpecInfoList>;
+
 /** DrySource specifies a location for dry "don't repeat yourself" manifest source information. */
 export interface V1alpha1DrySource {
   directory?: V1alpha1ApplicationSourceDirectory;
@@ -705,10 +1178,14 @@ export interface V1alpha1DrySource {
   repoURL?: string;
   targetRevision?: string;
 }
+const V1alpha1DrySource = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<V1alpha1DrySource>;
+
 /** HydrateTo specifies a branch to which hydrated manifests should be pushed as a "staging area" before being moved to the SyncSource. The repository and path are inherited from SyncSource. */
 export interface V1alpha1HydrateTo {
   targetBranch?: string;
 }
+const V1alpha1HydrateTo = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<V1alpha1HydrateTo>;
+
 /** SyncSource specifies a location from which hydrated manifests may be synced. If RepoURL is not set, it is assumed to be the same as the associated DrySource config in the SourceHydrator. */
 export interface V1alpha1SyncSource {
   /** Path is a directory path within the git repository where hydrated manifests should be committed to and synced from. The Path should never point to the root of the repo. If hydrateTo is set, this is just the path from which hydrated manifests will be synced. +kubebuilder:validation:Required +kubebuilder:validation:MinLength=1 +kubebuilder:validation:Pattern=`^.{2,}|[^./]$` */
@@ -718,32 +1195,63 @@ export interface V1alpha1SyncSource {
   /** TargetBranch is the branch from which hydrated manifests will be synced. If HydrateTo is not set, this is also the branch to which hydrated manifests are committed. */
   targetBranch?: string;
 }
+const V1alpha1SyncSource = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<V1alpha1SyncSource>;
+
 /** SourceHydrator specifies a dry "don't repeat yourself" source for manifests, a sync source from which to sync hydrated manifests, and an optional hydrateTo location to act as a "staging" aread for hydrated manifests. */
 export interface V1alpha1SourceHydrator {
   drySource?: V1alpha1DrySource;
   hydrateTo?: V1alpha1HydrateTo;
   syncSource?: V1alpha1SyncSource;
 }
+const V1alpha1SourceHydrator = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<V1alpha1SourceHydrator>;
+
 export type V1alpha1ApplicationSpecSourcesList = Array<V1alpha1ApplicationSource>;
+const V1alpha1ApplicationSpecSourcesList =
+  V1alpha1SyncOperationSourcesList as any as S.Schema<V1alpha1ApplicationSpecSourcesList>;
+
 export interface V1alpha1SyncPolicyAutomated {
   allowEmpty?: boolean;
   enabled?: boolean;
   prune?: boolean;
   selfHeal?: boolean;
 }
+const V1alpha1SyncPolicyAutomated = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<V1alpha1SyncPolicyAutomated>;
+
 export type V1alpha1ManagedNamespaceMetadataAnnotationsMap = { [key: string]: string | undefined };
+const V1alpha1ManagedNamespaceMetadataAnnotationsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ManagedNamespaceMetadataAnnotationsMap>;
+
 export type V1alpha1ManagedNamespaceMetadataLabelsMap = { [key: string]: string | undefined };
+const V1alpha1ManagedNamespaceMetadataLabelsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ManagedNamespaceMetadataLabelsMap>;
+
 export interface V1alpha1ManagedNamespaceMetadata {
   annotations?: V1alpha1ManagedNamespaceMetadataAnnotationsMap;
   labels?: V1alpha1ManagedNamespaceMetadataLabelsMap;
 }
+const V1alpha1ManagedNamespaceMetadata = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<V1alpha1ManagedNamespaceMetadata>;
+
 export type V1alpha1SyncPolicySyncOptionsList = Array<string>;
+const V1alpha1SyncPolicySyncOptionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1SyncPolicySyncOptionsList>;
+
 export interface V1alpha1SyncPolicy {
   automated?: V1alpha1SyncPolicyAutomated;
   managedNamespaceMetadata?: V1alpha1ManagedNamespaceMetadata;
   retry?: V1alpha1RetryStrategy;
   syncOptions?: V1alpha1SyncPolicySyncOptionsList;
 }
+const V1alpha1SyncPolicy = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<V1alpha1SyncPolicy>;
+
 /** ApplicationSpec represents desired application state. Contains link to repository with application definition and additional parameters link definition revision. */
 export interface V1alpha1ApplicationSpec {
   destination?: V1alpha1ApplicationDestination;
@@ -758,15 +1266,36 @@ export interface V1alpha1ApplicationSpec {
   sources?: V1alpha1ApplicationSpecSourcesList;
   syncPolicy?: V1alpha1SyncPolicy;
 }
+const V1alpha1ApplicationSpec = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<V1alpha1ApplicationSpec>;
+
 export interface V1alpha1ApplicationCondition {
   lastTransitionTime?: string;
   message?: string;
   type?: string;
 }
+const V1alpha1ApplicationCondition = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<V1alpha1ApplicationCondition>;
+
 export type V1alpha1ApplicationStatusConditionsList = Array<V1alpha1ApplicationCondition>;
+const V1alpha1ApplicationStatusConditionsList = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<V1alpha1ApplicationStatusConditionsList>;
+
 export type V1alpha1AppHealthStatus = V1alpha1HealthStatus;
 export type V1alpha1RevisionHistoryRevisionsList = Array<string>;
+const V1alpha1RevisionHistoryRevisionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1RevisionHistoryRevisionsList>;
+
 export type V1alpha1RevisionHistorySourcesList = Array<V1alpha1ApplicationSource>;
+const V1alpha1RevisionHistorySourcesList =
+  V1alpha1SyncOperationSourcesList as any as S.Schema<V1alpha1RevisionHistorySourcesList>;
+
 export interface V1alpha1RevisionHistory {
   deployStartedAt?: string;
   deployedAt?: string;
@@ -777,8 +1306,21 @@ export interface V1alpha1RevisionHistory {
   source?: V1alpha1ApplicationSource;
   sources?: V1alpha1RevisionHistorySourcesList;
 }
+const V1alpha1RevisionHistory = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<V1alpha1RevisionHistory>;
+
 export type V1alpha1ApplicationStatusHistoryList = Array<V1alpha1RevisionHistory>;
+const V1alpha1ApplicationStatusHistoryList = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<V1alpha1ApplicationStatusHistoryList>;
+
 export type V1alpha1ResourceResultImagesList = Array<string>;
+const V1alpha1ResourceResultImagesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ResourceResultImagesList>;
+
 export interface V1alpha1ResourceResult {
   group?: string;
   /** HookPhase contains the state of any operation associated with this resource OR hook This can also contain values for non-hook resources. */
@@ -793,9 +1335,25 @@ export interface V1alpha1ResourceResult {
   syncPhase?: string;
   version?: string;
 }
+const V1alpha1ResourceResult = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<V1alpha1ResourceResult>;
+
 export type V1alpha1SyncOperationResultResourcesList = Array<V1alpha1ResourceResult>;
+const V1alpha1SyncOperationResultResourcesList = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<V1alpha1SyncOperationResultResourcesList>;
+
 export type V1alpha1SyncOperationResultRevisionsList = Array<string>;
+const V1alpha1SyncOperationResultRevisionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1SyncOperationResultRevisionsList>;
+
 export type V1alpha1SyncOperationResultSourcesList = Array<V1alpha1ApplicationSource>;
+const V1alpha1SyncOperationResultSourcesList =
+  V1alpha1SyncOperationSourcesList as any as S.Schema<V1alpha1SyncOperationResultSourcesList>;
+
 export interface V1alpha1SyncOperationResult {
   managedNamespaceMetadata?: V1alpha1ManagedNamespaceMetadata;
   resources?: V1alpha1SyncOperationResultResourcesList;
@@ -804,6 +1362,11 @@ export interface V1alpha1SyncOperationResult {
   source?: V1alpha1ApplicationSource;
   sources?: V1alpha1SyncOperationResultSourcesList;
 }
+const V1alpha1SyncOperationResult = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<V1alpha1SyncOperationResult>;
+
 export interface V1alpha1OperationState {
   finishedAt?: string;
   /** Message holds any pertinent messages when attempting to perform operation (typically errors). */
@@ -814,6 +1377,11 @@ export interface V1alpha1OperationState {
   startedAt?: string;
   syncResult?: V1alpha1SyncOperationResult;
 }
+const V1alpha1OperationState = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<V1alpha1OperationState>;
+
 /** ResourceStatus holds the current synchronization and health status of a Kubernetes resource. */
 export interface Applicationv1alpha1ResourceStatus {
   /** Group represents the API group of the resource (e.g., "apps" for Deployments). */
@@ -838,7 +1406,17 @@ export interface Applicationv1alpha1ResourceStatus {
   /** Version indicates the API version of the resource (e.g., "v1", "v1beta1"). */
   version?: string;
 }
+const Applicationv1alpha1ResourceStatus = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<Applicationv1alpha1ResourceStatus>;
+
 export type V1alpha1ApplicationStatusResourcesList = Array<Applicationv1alpha1ResourceStatus>;
+const V1alpha1ApplicationStatusResourcesList = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<V1alpha1ApplicationStatusResourcesList>;
+
 export interface V1alpha1HydrateOperation {
   drySHA?: string;
   finishedAt?: string;
@@ -848,22 +1426,46 @@ export interface V1alpha1HydrateOperation {
   sourceHydrator?: V1alpha1SourceHydrator;
   startedAt?: string;
 }
+const V1alpha1HydrateOperation = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<V1alpha1HydrateOperation>;
+
 export interface V1alpha1SuccessfulHydrateOperation {
   drySHA?: string;
   hydratedSHA?: string;
   sourceHydrator?: V1alpha1SourceHydrator;
 }
+const V1alpha1SuccessfulHydrateOperation = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<V1alpha1SuccessfulHydrateOperation>;
+
 export interface V1alpha1SourceHydratorStatus {
   currentOperation?: V1alpha1HydrateOperation;
   /** LastComparedDryRevision holds the resolved revision from the most recent dry source comparison. This is updated on every evaluation, even when hydration is skipped due to no changes. */
   lastComparedDryRevision?: string;
   lastSuccessfulOperation?: V1alpha1SuccessfulHydrateOperation;
 }
+const V1alpha1SourceHydratorStatus = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<V1alpha1SourceHydratorStatus>;
+
 export type V1alpha1ApplicationStatusSourceTypesList = Array<string>;
+const V1alpha1ApplicationStatusSourceTypesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationStatusSourceTypesList>;
+
 /** ExternalURLs holds all external URLs of application child resources. */
 export type V1alpha1ApplicationSummaryExternalURLsList = Array<string>;
+const V1alpha1ApplicationSummaryExternalURLsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSummaryExternalURLsList>;
+
 /** Images holds all images of application child resources. */
 export type V1alpha1ApplicationSummaryImagesList = Array<string>;
+const V1alpha1ApplicationSummaryImagesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSummaryImagesList>;
+
 export interface V1alpha1ApplicationSummary {
   /** ExternalURLs holds all external URLs of application child resources. */
   externalURLs?: V1alpha1ApplicationSummaryExternalURLsList;
@@ -872,21 +1474,39 @@ export interface V1alpha1ApplicationSummary {
   /** IsAppOfApps holds true if the application has any application for child resource. */
   isAppOfApps?: boolean;
 }
+const V1alpha1ApplicationSummary = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<V1alpha1ApplicationSummary>;
+
 export type V1alpha1ComparedToIgnoreDifferencesList = Array<V1alpha1ResourceIgnoreDifferences>;
+const V1alpha1ComparedToIgnoreDifferencesList =
+  V1alpha1ApplicationSpecIgnoreDifferencesList as any as S.Schema<V1alpha1ComparedToIgnoreDifferencesList>;
+
 export type V1alpha1ComparedToSourcesList = Array<V1alpha1ApplicationSource>;
+const V1alpha1ComparedToSourcesList =
+  V1alpha1SyncOperationSourcesList as any as S.Schema<V1alpha1ComparedToSourcesList>;
+
 export interface V1alpha1ComparedTo {
   destination?: V1alpha1ApplicationDestination;
   ignoreDifferences?: V1alpha1ComparedToIgnoreDifferencesList;
   source?: V1alpha1ApplicationSource;
   sources?: V1alpha1ComparedToSourcesList;
 }
+const V1alpha1ComparedTo = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<V1alpha1ComparedTo>;
+
 export type V1alpha1SyncStatusRevisionsList = Array<string>;
+const V1alpha1SyncStatusRevisionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1SyncStatusRevisionsList>;
+
 export interface V1alpha1SyncStatus {
   comparedTo?: V1alpha1ComparedTo;
   revision?: string;
   revisions?: V1alpha1SyncStatusRevisionsList;
   status?: string;
 }
+const V1alpha1SyncStatus = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<V1alpha1SyncStatus>;
+
 export interface V1alpha1ApplicationStatus {
   conditions?: V1alpha1ApplicationStatusConditionsList;
   controllerNamespace?: string;
@@ -903,41 +1523,87 @@ export interface V1alpha1ApplicationStatus {
   summary?: V1alpha1ApplicationSummary;
   sync?: V1alpha1SyncStatus;
 }
+const V1alpha1ApplicationStatus = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<V1alpha1ApplicationStatus>;
+
 export interface V1alpha1Application {
   metadata?: V1ObjectMeta;
   operation?: V1alpha1Operation;
   spec?: V1alpha1ApplicationSpec;
   status?: V1alpha1ApplicationStatus;
 }
+const V1alpha1Application = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<V1alpha1Application>;
+
 export type ApplicationServiceServerSideDiffRequestTargetManifestsList = Array<string>;
+const ApplicationServiceServerSideDiffRequestTargetManifestsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<ApplicationServiceServerSideDiffRequestTargetManifestsList>;
+
 export interface ApplicationServiceServerSideDiffRequest {
   appName: string;
   appNamespace?: string;
   project?: string;
   targetManifests?: ApplicationServiceServerSideDiffRequestTargetManifestsList;
 }
+const ApplicationServiceServerSideDiffRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<ApplicationServiceServerSideDiffRequest>;
+
 export type ApplicationApplicationServerSideDiffResponseItemsList = Array<V1alpha1ResourceDiff>;
+const ApplicationApplicationServerSideDiffResponseItemsList =
+  ApplicationManagedResourcesResponseItemsList as any as S.Schema<ApplicationApplicationServerSideDiffResponseItemsList>;
+
 export interface ApplicationApplicationServerSideDiffResponse {
   items?: ApplicationApplicationServerSideDiffResponseItemsList;
   modified?: boolean;
 }
+const ApplicationApplicationServerSideDiffResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ApplicationApplicationServerSideDiffResponse>;
+
 export interface ApplicationSetServiceResourceTreeRequest {
   name: string;
   /** The application set namespace. Default empty is argocd control plane namespace. */
   appsetNamespace?: string;
 }
+const ApplicationSetServiceResourceTreeRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<ApplicationSetServiceResourceTreeRequest>;
+
 export type V1alpha1ApplicationSetTreeNodesList = Array<V1alpha1ResourceNode>;
+const V1alpha1ApplicationSetTreeNodesList =
+  V1alpha1ApplicationTreeNodesList as any as S.Schema<V1alpha1ApplicationSetTreeNodesList>;
+
 export interface V1alpha1ApplicationSetTree {
   nodes?: V1alpha1ApplicationSetTreeNodesList;
 }
+const V1alpha1ApplicationSetTree = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<V1alpha1ApplicationSetTree>;
+
 export interface CreateAccountServiceTokenRequest {
   name: string;
   expiresIn?: number;
   id?: string;
 }
+const CreateAccountServiceTokenRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<CreateAccountServiceTokenRequest>;
+
 export interface AccountCreateTokenResponse {
   token?: string;
 }
+const AccountCreateTokenResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<AccountCreateTokenResponse>;
+
 export interface CreateApplicationServiceRequest {
   upsert?: boolean;
   validate?: boolean;
@@ -946,7 +1612,15 @@ export interface CreateApplicationServiceRequest {
   spec?: V1alpha1ApplicationSpec;
   status?: V1alpha1ApplicationStatus;
 }
+const CreateApplicationServiceRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<CreateApplicationServiceRequest>;
+
 export type V1LabelSelectorRequirementValuesList = Array<string>;
+const V1LabelSelectorRequirementValuesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1LabelSelectorRequirementValuesList>;
+
 /** A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values. */
 export interface V1LabelSelectorRequirement {
   /** key is the label key that the selector applies to. */
@@ -955,17 +1629,41 @@ export interface V1LabelSelectorRequirement {
   operator?: string;
   values?: V1LabelSelectorRequirementValuesList;
 }
+const V1LabelSelectorRequirement = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<V1LabelSelectorRequirement>;
+
 export type V1LabelSelectorMatchExpressionsList = Array<V1LabelSelectorRequirement>;
+const V1LabelSelectorMatchExpressionsList = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<V1LabelSelectorMatchExpressionsList>;
+
 export type V1LabelSelectorMatchLabelsMap = { [key: string]: string | undefined };
+const V1LabelSelectorMatchLabelsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1LabelSelectorMatchLabelsMap>;
+
 export interface V1LabelSelector {
   matchExpressions?: V1LabelSelectorMatchExpressionsList;
   matchLabels?: V1LabelSelectorMatchLabelsMap;
 }
+const V1LabelSelector = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<V1LabelSelector>;
+
 export type V1alpha1ApplicationSetTemplateMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
+const V1alpha1ApplicationSetTemplateMetaAnnotationsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ApplicationSetTemplateMetaAnnotationsMap>;
+
 export type V1alpha1ApplicationSetTemplateMetaFinalizersList = Array<string>;
+const V1alpha1ApplicationSetTemplateMetaFinalizersList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSetTemplateMetaFinalizersList>;
+
 export type V1alpha1ApplicationSetTemplateMetaLabelsMap = { [key: string]: string | undefined };
+const V1alpha1ApplicationSetTemplateMetaLabelsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ApplicationSetTemplateMetaLabelsMap>;
+
 export interface V1alpha1ApplicationSetTemplateMeta {
   annotations?: V1alpha1ApplicationSetTemplateMetaAnnotationsMap;
   finalizers?: V1alpha1ApplicationSetTemplateMetaFinalizersList;
@@ -973,11 +1671,24 @@ export interface V1alpha1ApplicationSetTemplateMeta {
   name?: string;
   namespace?: string;
 }
+const V1alpha1ApplicationSetTemplateMeta = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<V1alpha1ApplicationSetTemplateMeta>;
+
 export interface V1alpha1ApplicationSetTemplate {
   metadata?: V1alpha1ApplicationSetTemplateMeta;
   spec?: V1alpha1ApplicationSpec;
 }
+const V1alpha1ApplicationSetTemplate = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<V1alpha1ApplicationSetTemplate>;
+
 export type V1alpha1DuckTypeGeneratorValuesMap = { [key: string]: string | undefined };
+const V1alpha1DuckTypeGeneratorValuesMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1DuckTypeGeneratorValuesMap>;
+
 /** DuckType defines a generator to match against clusters registered with ArgoCD. */
 export interface V1alpha1DuckTypeGenerator {
   configMapRef?: string;
@@ -987,7 +1698,15 @@ export interface V1alpha1DuckTypeGenerator {
   template?: V1alpha1ApplicationSetTemplate;
   values?: V1alpha1DuckTypeGeneratorValuesMap;
 }
+const V1alpha1DuckTypeGenerator = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<V1alpha1DuckTypeGenerator>;
+
 export type V1alpha1ClusterGeneratorValuesMap = { [key: string]: string | undefined };
+const V1alpha1ClusterGeneratorValuesMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ClusterGeneratorValuesMap>;
+
 /** ClusterGenerator defines a generator to match against clusters registered with ArgoCD. */
 export interface V1alpha1ClusterGenerator {
   flatList?: boolean;
@@ -995,14 +1714,35 @@ export interface V1alpha1ClusterGenerator {
   template?: V1alpha1ApplicationSetTemplate;
   values?: V1alpha1ClusterGeneratorValuesMap;
 }
+const V1alpha1ClusterGenerator = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<V1alpha1ClusterGenerator>;
+
 export interface V1alpha1GitDirectoryGeneratorItem {
   exclude?: boolean;
   path?: string;
 }
+const V1alpha1GitDirectoryGeneratorItem = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<V1alpha1GitDirectoryGeneratorItem>;
+
 export type V1alpha1GitGeneratorDirectoriesList = Array<V1alpha1GitDirectoryGeneratorItem>;
+const V1alpha1GitGeneratorDirectoriesList = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<V1alpha1GitGeneratorDirectoriesList>;
+
 export type V1alpha1GitFileGeneratorItem = V1alpha1GitDirectoryGeneratorItem;
 export type V1alpha1GitGeneratorFilesList = Array<V1alpha1GitDirectoryGeneratorItem>;
+const V1alpha1GitGeneratorFilesList =
+  V1alpha1GitGeneratorDirectoriesList as any as S.Schema<V1alpha1GitGeneratorFilesList>;
+
 export type V1alpha1GitGeneratorValuesMap = { [key: string]: string | undefined };
+const V1alpha1GitGeneratorValuesMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1GitGeneratorValuesMap>;
+
 export interface V1alpha1GitGenerator {
   directories?: V1alpha1GitGeneratorDirectoriesList;
   files?: V1alpha1GitGeneratorFilesList;
@@ -1013,16 +1753,33 @@ export interface V1alpha1GitGenerator {
   template?: V1alpha1ApplicationSetTemplate;
   values?: V1alpha1GitGeneratorValuesMap;
 }
+const V1alpha1GitGenerator = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<V1alpha1GitGenerator>;
+
 /** JSON represents any valid JSON value. These types are supported: bool, int64, float64, string, []interface{}, map[string]interface{} and nil. */
 export interface V1JSON {
   raw?: string;
 }
+const V1JSON = RuntimeRawExtension as any as S.Schema<V1JSON>;
+
 export type V1alpha1ListGeneratorElementsList = Array<V1JSON>;
+const V1alpha1ListGeneratorElementsList = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<V1alpha1ListGeneratorElementsList>;
+
 export interface V1alpha1ListGenerator {
   elements?: V1alpha1ListGeneratorElementsList;
   elementsYaml?: string;
   template?: V1alpha1ApplicationSetTemplate;
 }
+const V1alpha1ListGenerator = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<V1alpha1ListGenerator>;
+
 export type V1alpha1OciDirectoryGeneratorItem = V1alpha1GitDirectoryGeneratorItem;
 export type V1alpha1OciGeneratorDirectoriesList = Array<V1alpha1GitDirectoryGeneratorItem>;
 export type V1alpha1OciFileGeneratorItem = V1alpha1GitDirectoryGeneratorItem;
@@ -1038,17 +1795,34 @@ export interface V1alpha1OciGenerator {
   template?: V1alpha1ApplicationSetTemplate;
   values?: V1alpha1OciGeneratorValuesMap;
 }
+const V1alpha1OciGenerator = V1alpha1GitGenerator as any as S.Schema<V1alpha1OciGenerator>;
+
 export interface V1alpha1PluginConfigMapRef {
   name?: string;
 }
+const V1alpha1PluginConfigMapRef = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<V1alpha1PluginConfigMapRef>;
+
 /** Parameters contains the information to pass to the plugin. It is a map. The keys must be strings, and the values can be any type. */
 export type V1alpha1PluginInputParametersMap = { [key: string]: V1JSON | undefined };
+const V1alpha1PluginInputParametersMap = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<V1alpha1PluginInputParametersMap>;
+
 export interface V1alpha1PluginInput {
   /** Parameters contains the information to pass to the plugin. It is a map. The keys must be strings, and the values can be any type. */
   parameters?: V1alpha1PluginInputParametersMap;
 }
+const V1alpha1PluginInput = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<V1alpha1PluginInput>;
+
 /** Values contains key/value pairs which are passed directly as parameters to the template. These values will not be sent as parameters to the plugin. */
 export type V1alpha1PluginGeneratorValuesMap = { [key: string]: string | undefined };
+const V1alpha1PluginGeneratorValuesMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1PluginGeneratorValuesMap>;
+
 /** PluginGenerator defines connection info specific to Plugin. */
 export interface V1alpha1PluginGenerator {
   configMapRef?: V1alpha1PluginConfigMapRef;
@@ -1059,12 +1833,22 @@ export interface V1alpha1PluginGenerator {
   /** Values contains key/value pairs which are passed directly as parameters to the template. These values will not be sent as parameters to the plugin. */
   values?: V1alpha1PluginGeneratorValuesMap;
 }
+const V1alpha1PluginGenerator = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<V1alpha1PluginGenerator>;
+
 export type V1alpha1PullRequestGeneratorAzureDevOpsLabelsList = Array<string>;
+const V1alpha1PullRequestGeneratorAzureDevOpsLabelsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1PullRequestGeneratorAzureDevOpsLabelsList>;
+
 /** SecretRef struct for a reference to a secret key. */
 export interface V1alpha1SecretRef {
   key?: string;
   secretName?: string;
 }
+const V1alpha1SecretRef = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<V1alpha1SecretRef>;
+
 /** PullRequestGeneratorAzureDevOps defines connection info specific to AzureDevOps. */
 export interface V1alpha1PullRequestGeneratorAzureDevOps {
   /** The Azure DevOps API URL to talk to. If blank, use https://dev.azure.com/. */
@@ -1078,15 +1862,30 @@ export interface V1alpha1PullRequestGeneratorAzureDevOps {
   repo?: string;
   tokenRef?: V1alpha1SecretRef;
 }
+const V1alpha1PullRequestGeneratorAzureDevOps = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<V1alpha1PullRequestGeneratorAzureDevOps>;
+
 /** BasicAuthBitbucketServer defines the username/(password or personal access token) for Basic auth. */
 export interface V1alpha1BasicAuthBitbucketServer {
   passwordRef?: V1alpha1SecretRef;
   username?: string;
 }
+const V1alpha1BasicAuthBitbucketServer = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<V1alpha1BasicAuthBitbucketServer>;
+
 /** BearerTokenBitbucketCloud defines the Bearer token for BitBucket AppToken auth. */
 export interface V1alpha1BearerTokenBitbucketCloud {
   tokenRef?: V1alpha1SecretRef;
 }
+const V1alpha1BearerTokenBitbucketCloud = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<V1alpha1BearerTokenBitbucketCloud>;
+
 /** PullRequestGeneratorBitbucket defines connection info specific to Bitbucket. */
 export interface V1alpha1PullRequestGeneratorBitbucket {
   /** The Bitbucket REST API URL to talk to. If blank, uses https://api.bitbucket.org/2.0. */
@@ -1098,6 +1897,11 @@ export interface V1alpha1PullRequestGeneratorBitbucket {
   /** Repo name to scan. Required. */
   repo?: string;
 }
+const V1alpha1PullRequestGeneratorBitbucket = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<V1alpha1PullRequestGeneratorBitbucket>;
+
 /** BearerTokenBitbucket defines the Bearer token for BitBucket AppToken auth. */
 export type V1alpha1BearerTokenBitbucket = V1alpha1BearerTokenBitbucketCloud;
 /** ConfigMapKeyRef struct for a reference to a configmap key. */
@@ -1105,6 +1909,11 @@ export interface V1alpha1ConfigMapKeyRef {
   configMapName?: string;
   key?: string;
 }
+const V1alpha1ConfigMapKeyRef = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<V1alpha1ConfigMapKeyRef>;
+
 /** PullRequestGeneratorBitbucketServer defines connection info specific to BitbucketServer. */
 export interface V1alpha1PullRequestGeneratorBitbucketServer {
   /** The Bitbucket REST API URL to talk to e.g. https://bitbucket.org/rest Required. */
@@ -1118,15 +1927,33 @@ export interface V1alpha1PullRequestGeneratorBitbucketServer {
   /** Repo name to scan. Required. */
   repo?: string;
 }
+const V1alpha1PullRequestGeneratorBitbucketServer = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<V1alpha1PullRequestGeneratorBitbucketServer>;
+
 /** PullRequestGeneratorFilter is a single pull request filter. If multiple filter types are set on a single struct, they will be AND'd together. All filters must pass for a pull request to be included. */
 export interface V1alpha1PullRequestGeneratorFilter {
   branchMatch?: string;
   targetBranchMatch?: string;
   titleMatch?: string;
 }
+const V1alpha1PullRequestGeneratorFilter = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<V1alpha1PullRequestGeneratorFilter>;
+
 /** Filters for which pull requests should be considered. */
 export type V1alpha1PullRequestGeneratorFiltersList = Array<V1alpha1PullRequestGeneratorFilter>;
+const V1alpha1PullRequestGeneratorFiltersList = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<V1alpha1PullRequestGeneratorFiltersList>;
+
 export type V1alpha1PullRequestGeneratorGiteaLabelsList = Array<string>;
+const V1alpha1PullRequestGeneratorGiteaLabelsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1PullRequestGeneratorGiteaLabelsList>;
+
 /** PullRequestGeneratorGitea defines connection info specific to Gitea. */
 export interface V1alpha1PullRequestGeneratorGitea {
   api?: string;
@@ -1139,7 +1966,15 @@ export interface V1alpha1PullRequestGeneratorGitea {
   repo?: string;
   tokenRef?: V1alpha1SecretRef;
 }
+const V1alpha1PullRequestGeneratorGitea = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<V1alpha1PullRequestGeneratorGitea>;
+
 export type V1alpha1PullRequestGeneratorGithubLabelsList = Array<string>;
+const V1alpha1PullRequestGeneratorGithubLabelsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1PullRequestGeneratorGithubLabelsList>;
+
 /** PullRequestGeneratorGithub defines connection info specific to GitHub. */
 export interface V1alpha1PullRequestGeneratorGithub {
   /** The GitHub API URL to talk to. If blank, use https://api.github.com/. */
@@ -1153,7 +1988,15 @@ export interface V1alpha1PullRequestGeneratorGithub {
   repo?: string;
   tokenRef?: V1alpha1SecretRef;
 }
+const V1alpha1PullRequestGeneratorGithub = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<V1alpha1PullRequestGeneratorGithub>;
+
 export type V1alpha1PullRequestGeneratorGitLabLabelsList = Array<string>;
+const V1alpha1PullRequestGeneratorGitLabLabelsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1PullRequestGeneratorGitLabLabelsList>;
+
 /** PullRequestGeneratorGitLab defines connection info specific to GitLab. */
 export interface V1alpha1PullRequestGeneratorGitLab {
   /** The GitLab API URL to talk to. If blank, uses https://gitlab.com/. */
@@ -1167,7 +2010,15 @@ export interface V1alpha1PullRequestGeneratorGitLab {
   pullRequestState?: string;
   tokenRef?: V1alpha1SecretRef;
 }
+const V1alpha1PullRequestGeneratorGitLab = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<V1alpha1PullRequestGeneratorGitLab>;
+
 export type V1alpha1PullRequestGeneratorValuesMap = { [key: string]: string | undefined };
+const V1alpha1PullRequestGeneratorValuesMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1PullRequestGeneratorValuesMap>;
+
 /** PullRequestGenerator defines a generator that scrapes a PullRequest API to find candidate pull requests. */
 export interface V1alpha1PullRequestGenerator {
   azuredevops?: V1alpha1PullRequestGeneratorAzureDevOps;
@@ -1185,11 +2036,23 @@ export interface V1alpha1PullRequestGenerator {
   template?: V1alpha1ApplicationSetTemplate;
   values?: V1alpha1PullRequestGeneratorValuesMap;
 }
+const V1alpha1PullRequestGenerator = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<V1alpha1PullRequestGenerator>;
+
 export interface V1alpha1TagFilter {
   key?: string;
   value?: string;
 }
+const V1alpha1TagFilter = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<V1alpha1TagFilter>;
+
 export type V1alpha1SCMProviderGeneratorAWSCodeCommitTagFiltersList = Array<V1alpha1TagFilter>;
+const V1alpha1SCMProviderGeneratorAWSCodeCommitTagFiltersList = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<V1alpha1SCMProviderGeneratorAWSCodeCommitTagFiltersList>;
+
 /** SCMProviderGeneratorAWSCodeCommit defines connection info specific to AWS CodeCommit. */
 export interface V1alpha1SCMProviderGeneratorAWSCodeCommit {
   /** Scan all branches instead of just the default branch. */
@@ -1200,6 +2063,11 @@ export interface V1alpha1SCMProviderGeneratorAWSCodeCommit {
   role?: string;
   tagFilters?: V1alpha1SCMProviderGeneratorAWSCodeCommitTagFiltersList;
 }
+const V1alpha1SCMProviderGeneratorAWSCodeCommit = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<V1alpha1SCMProviderGeneratorAWSCodeCommit>;
+
 /** SCMProviderGeneratorAzureDevOps defines connection info specific to Azure DevOps. */
 export interface V1alpha1SCMProviderGeneratorAzureDevOps {
   accessTokenRef?: V1alpha1SecretRef;
@@ -1212,6 +2080,11 @@ export interface V1alpha1SCMProviderGeneratorAzureDevOps {
   /** Azure Devops team project. Required. E.g. "my-team". */
   teamProject?: string;
 }
+const V1alpha1SCMProviderGeneratorAzureDevOps = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<V1alpha1SCMProviderGeneratorAzureDevOps>;
+
 /** SCMProviderGeneratorBitbucket defines connection info specific to Bitbucket Cloud (API version 2). */
 export interface V1alpha1SCMProviderGeneratorBitbucket {
   /** Scan all branches instead of just the main branch. */
@@ -1221,6 +2094,11 @@ export interface V1alpha1SCMProviderGeneratorBitbucket {
   owner?: string;
   user?: string;
 }
+const V1alpha1SCMProviderGeneratorBitbucket = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<V1alpha1SCMProviderGeneratorBitbucket>;
+
 /** SCMProviderGeneratorBitbucketServer defines connection info specific to Bitbucket Server. */
 export interface V1alpha1SCMProviderGeneratorBitbucketServer {
   /** Scan all branches instead of just the default branch. */
@@ -1234,10 +2112,21 @@ export interface V1alpha1SCMProviderGeneratorBitbucketServer {
   /** Project to scan. Required. */
   project?: string;
 }
+const V1alpha1SCMProviderGeneratorBitbucketServer = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<V1alpha1SCMProviderGeneratorBitbucketServer>;
+
 /** An array of paths, all of which must not exist. */
 export type V1alpha1SCMProviderGeneratorFilterPathsDoNotExistList = Array<string>;
+const V1alpha1SCMProviderGeneratorFilterPathsDoNotExistList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1SCMProviderGeneratorFilterPathsDoNotExistList>;
+
 /** An array of paths, all of which must exist. */
 export type V1alpha1SCMProviderGeneratorFilterPathsExistList = Array<string>;
+const V1alpha1SCMProviderGeneratorFilterPathsExistList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1SCMProviderGeneratorFilterPathsExistList>;
+
 /** SCMProviderGeneratorFilter is a single repository filter. If multiple filter types are set on a single struct, they will be AND'd together. All filters must pass for a repo to be included. */
 export interface V1alpha1SCMProviderGeneratorFilter {
   /** A regex which must match the branch name. */
@@ -1251,8 +2140,18 @@ export interface V1alpha1SCMProviderGeneratorFilter {
   /** A regex for repo names. */
   repositoryMatch?: string;
 }
+const V1alpha1SCMProviderGeneratorFilter = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<V1alpha1SCMProviderGeneratorFilter>;
+
 /** Filters for which repos should be considered. */
 export type V1alpha1SCMProviderGeneratorFiltersList = Array<V1alpha1SCMProviderGeneratorFilter>;
+const V1alpha1SCMProviderGeneratorFiltersList = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<V1alpha1SCMProviderGeneratorFiltersList>;
+
 /** SCMProviderGeneratorGitea defines a connection info specific to Gitea. */
 export interface V1alpha1SCMProviderGeneratorGitea {
   /** Scan all branches instead of just the default branch. */
@@ -1266,6 +2165,11 @@ export interface V1alpha1SCMProviderGeneratorGitea {
   owner?: string;
   tokenRef?: V1alpha1SecretRef;
 }
+const V1alpha1SCMProviderGeneratorGitea = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<V1alpha1SCMProviderGeneratorGitea>;
+
 /** SCMProviderGeneratorGithub defines connection info specific to GitHub. */
 export interface V1alpha1SCMProviderGeneratorGithub {
   /** Scan all branches instead of just the default branch. */
@@ -1280,6 +2184,11 @@ export interface V1alpha1SCMProviderGeneratorGithub {
   organization?: string;
   tokenRef?: V1alpha1SecretRef;
 }
+const V1alpha1SCMProviderGeneratorGithub = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<V1alpha1SCMProviderGeneratorGithub>;
+
 /** SCMProviderGeneratorGitlab defines connection info specific to Gitlab. */
 export interface V1alpha1SCMProviderGeneratorGitlab {
   /** Scan all branches instead of just the default branch. */
@@ -1298,7 +2207,15 @@ export interface V1alpha1SCMProviderGeneratorGitlab {
   /** Filter repos list based on Gitlab Topic. */
   topic?: string;
 }
+const V1alpha1SCMProviderGeneratorGitlab = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<V1alpha1SCMProviderGeneratorGitlab>;
+
 export type V1alpha1SCMProviderGeneratorValuesMap = { [key: string]: string | undefined };
+const V1alpha1SCMProviderGeneratorValuesMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1SCMProviderGeneratorValuesMap>;
+
 /** SCMProviderGenerator defines a generator that scrapes a SCMaaS API to find candidate repos. */
 export interface V1alpha1SCMProviderGenerator {
   awsCodeCommit?: V1alpha1SCMProviderGeneratorAWSCodeCommit;
@@ -1317,6 +2234,11 @@ export interface V1alpha1SCMProviderGenerator {
   template?: V1alpha1ApplicationSetTemplate;
   values?: V1alpha1SCMProviderGeneratorValuesMap;
 }
+const V1alpha1SCMProviderGenerator = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<V1alpha1SCMProviderGenerator>;
+
 /** ApplicationSetNestedGenerator represents a generator nested within a combination-type generator (MatrixGenerator or MergeGenerator). */
 export interface V1alpha1ApplicationSetNestedGenerator {
   clusterDecisionResource?: V1alpha1DuckTypeGenerator;
@@ -1331,20 +2253,46 @@ export interface V1alpha1ApplicationSetNestedGenerator {
   scmProvider?: V1alpha1SCMProviderGenerator;
   selector?: V1LabelSelector;
 }
+const V1alpha1ApplicationSetNestedGenerator = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<V1alpha1ApplicationSetNestedGenerator>;
+
 export type V1alpha1MatrixGeneratorGeneratorsList = Array<V1alpha1ApplicationSetNestedGenerator>;
+const V1alpha1MatrixGeneratorGeneratorsList = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<V1alpha1MatrixGeneratorGeneratorsList>;
+
 /** MatrixGenerator generates the cartesian product of two sets of parameters. The parameters are defined by two nested generators. */
 export interface V1alpha1MatrixGenerator {
   generators?: V1alpha1MatrixGeneratorGeneratorsList;
   template?: V1alpha1ApplicationSetTemplate;
 }
+const V1alpha1MatrixGenerator = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<V1alpha1MatrixGenerator>;
+
 export type V1alpha1MergeGeneratorGeneratorsList = Array<V1alpha1ApplicationSetNestedGenerator>;
+const V1alpha1MergeGeneratorGeneratorsList =
+  V1alpha1MatrixGeneratorGeneratorsList as any as S.Schema<V1alpha1MergeGeneratorGeneratorsList>;
+
 export type V1alpha1MergeGeneratorMergeKeysList = Array<string>;
+const V1alpha1MergeGeneratorMergeKeysList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1MergeGeneratorMergeKeysList>;
+
 /** MergeGenerator merges the output of two or more generators. Where the values for all specified merge keys are equal between two sets of generated parameters, the parameter sets will be merged with the parameters from the latter generator taking precedence. Parameter sets with merge keys not present in the base generator's params will be ignored. For example, if the first generator produced [{a: '1', b: '2'}, {c: '1', d: '1'}] and the second generator produced [{'a': 'override'}], the united parameters for merge keys = ['a'] would be [{a: 'override', b: '1'}, {c: '1', d: '1'}]. MergeGenerator supports template overriding. If a MergeGenerator is one of multiple top-level generators, its template will be merged with the top-level generator before the parameters are applied. */
 export interface V1alpha1MergeGenerator {
   generators?: V1alpha1MergeGeneratorGeneratorsList;
   mergeKeys?: V1alpha1MergeGeneratorMergeKeysList;
   template?: V1alpha1ApplicationSetTemplate;
 }
+const V1alpha1MergeGenerator = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<V1alpha1MergeGenerator>;
+
 /** ApplicationSetGenerator represents a generator at the top level of an ApplicationSet. */
 export interface V1alpha1ApplicationSetGenerator {
   clusterDecisionResource?: V1alpha1DuckTypeGenerator;
@@ -1359,12 +2307,33 @@ export interface V1alpha1ApplicationSetGenerator {
   scmProvider?: V1alpha1SCMProviderGenerator;
   selector?: V1LabelSelector;
 }
+const V1alpha1ApplicationSetGenerator = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<V1alpha1ApplicationSetGenerator>;
+
 export type V1alpha1ApplicationSetSpecGeneratorsList = Array<V1alpha1ApplicationSetGenerator>;
+const V1alpha1ApplicationSetSpecGeneratorsList = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<V1alpha1ApplicationSetSpecGeneratorsList>;
+
 export type V1alpha1ApplicationSetSpecGoTemplateOptionsList = Array<string>;
+const V1alpha1ApplicationSetSpecGoTemplateOptionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSetSpecGoTemplateOptionsList>;
+
 /** JQPathExpressions is a list of JQ path expressions to fields to ignore differences for. */
 export type V1alpha1ApplicationSetResourceIgnoreDifferencesJqPathExpressionsList = Array<string>;
+const V1alpha1ApplicationSetResourceIgnoreDifferencesJqPathExpressionsList = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<V1alpha1ApplicationSetResourceIgnoreDifferencesJqPathExpressionsList>;
+
 /** JSONPointers is a list of JSON pointers to fields to ignore differences for. */
 export type V1alpha1ApplicationSetResourceIgnoreDifferencesJsonPointersList = Array<string>;
+const V1alpha1ApplicationSetResourceIgnoreDifferencesJsonPointersList =
+  V1alpha1ApplicationSetResourceIgnoreDifferencesJqPathExpressionsList as any as S.Schema<V1alpha1ApplicationSetResourceIgnoreDifferencesJsonPointersList>;
+
 /** ApplicationSetResourceIgnoreDifferences configures how the ApplicationSet controller will ignore differences in live applications when applying changes from generated applications. */
 export interface V1alpha1ApplicationSetResourceIgnoreDifferences {
   /** JQPathExpressions is a list of JQ path expressions to fields to ignore differences for. */
@@ -1374,14 +2343,35 @@ export interface V1alpha1ApplicationSetResourceIgnoreDifferences {
   /** Name is the name of the application to ignore differences for. If not specified, the rule applies to all applications. */
   name?: string;
 }
+const V1alpha1ApplicationSetResourceIgnoreDifferences = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<V1alpha1ApplicationSetResourceIgnoreDifferences>;
+
 export type V1alpha1ApplicationSetSpecIgnoreApplicationDifferencesList =
   Array<V1alpha1ApplicationSetResourceIgnoreDifferences>;
+const V1alpha1ApplicationSetSpecIgnoreApplicationDifferencesList = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<V1alpha1ApplicationSetSpecIgnoreApplicationDifferencesList>;
+
 export type V1alpha1ApplicationPreservedFieldsAnnotationsList = Array<string>;
+const V1alpha1ApplicationPreservedFieldsAnnotationsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationPreservedFieldsAnnotationsList>;
+
 export type V1alpha1ApplicationPreservedFieldsLabelsList = Array<string>;
+const V1alpha1ApplicationPreservedFieldsLabelsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationPreservedFieldsLabelsList>;
+
 export interface V1alpha1ApplicationPreservedFields {
   annotations?: V1alpha1ApplicationPreservedFieldsAnnotationsList;
   labels?: V1alpha1ApplicationPreservedFieldsLabelsList;
 }
+const V1alpha1ApplicationPreservedFields = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<V1alpha1ApplicationPreservedFields>;
+
 export type V1alpha1ApplicationMatchExpressionValuesList = Array<string>;
 export interface V1alpha1ApplicationMatchExpression {
   key?: string;
@@ -1390,27 +2380,55 @@ export interface V1alpha1ApplicationMatchExpression {
 }
 export type V1alpha1ApplicationSetRolloutStepMatchExpressionsList =
   Array<V1alpha1ApplicationMatchExpression>;
+const V1alpha1ApplicationSetRolloutStepMatchExpressionsList =
+  V1LabelSelectorMatchExpressionsList as any as S.Schema<V1alpha1ApplicationSetRolloutStepMatchExpressionsList>;
+
 export interface V1alpha1ApplicationSetRolloutStep {
   matchExpressions?: V1alpha1ApplicationSetRolloutStepMatchExpressionsList;
   maxUpdate?: IntstrIntOrString;
 }
+const V1alpha1ApplicationSetRolloutStep = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<V1alpha1ApplicationSetRolloutStep>;
+
 export type V1alpha1ApplicationSetRolloutStrategyStepsList =
   Array<V1alpha1ApplicationSetRolloutStep>;
+const V1alpha1ApplicationSetRolloutStrategyStepsList = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<V1alpha1ApplicationSetRolloutStrategyStepsList>;
+
 export interface V1alpha1ApplicationSetRolloutStrategy {
   steps?: V1alpha1ApplicationSetRolloutStrategyStepsList;
 }
+const V1alpha1ApplicationSetRolloutStrategy = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<V1alpha1ApplicationSetRolloutStrategy>;
+
 /** ApplicationSetStrategy configures how generated Applications are updated in sequence. */
 export interface V1alpha1ApplicationSetStrategy {
   deletionOrder?: string;
   rollingSync?: V1alpha1ApplicationSetRolloutStrategy;
   type?: string;
 }
+const V1alpha1ApplicationSetStrategy = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<V1alpha1ApplicationSetStrategy>;
+
 /** ApplicationSetSyncPolicy configures how generated Applications will relate to their ApplicationSet. */
 export interface V1alpha1ApplicationSetSyncPolicy {
   applicationsSync?: string;
   /** PreserveResourcesOnDeletion will preserve resources on deletion. If PreserveResourcesOnDeletion is set to true, these Applications will not be deleted. */
   preserveResourcesOnDeletion?: boolean;
 }
+const V1alpha1ApplicationSetSyncPolicy = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<V1alpha1ApplicationSetSyncPolicy>;
+
 /** ApplicationSetSpec represents a class of application set state. */
 export interface V1alpha1ApplicationSetSpec {
   /** ApplyNestedSelectors enables selectors defined within the generators of two level-nested matrix or merge generators. Deprecated: This field is ignored, and the behavior is always enabled. The field will be removed in a future version of the ApplicationSet CRD. */
@@ -1425,8 +2443,16 @@ export interface V1alpha1ApplicationSetSpec {
   template?: V1alpha1ApplicationSetTemplate;
   templatePatch?: string;
 }
+const V1alpha1ApplicationSetSpec = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<V1alpha1ApplicationSetSpec>;
+
 /** TargetRevision tracks the desired revisions the Application should be synced to. */
 export type V1alpha1ApplicationSetApplicationStatusTargetrevisionsList = Array<string>;
+const V1alpha1ApplicationSetApplicationStatusTargetrevisionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ApplicationSetApplicationStatusTargetrevisionsList>;
+
 export interface V1alpha1ApplicationSetApplicationStatus {
   application?: string;
   lastTransitionTime?: string;
@@ -1436,8 +2462,18 @@ export interface V1alpha1ApplicationSetApplicationStatus {
   /** TargetRevision tracks the desired revisions the Application should be synced to. */
   targetrevisions?: V1alpha1ApplicationSetApplicationStatusTargetrevisionsList;
 }
+const V1alpha1ApplicationSetApplicationStatus = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<V1alpha1ApplicationSetApplicationStatus>;
+
 export type V1alpha1ApplicationSetStatusApplicationStatusList =
   Array<V1alpha1ApplicationSetApplicationStatus>;
+const V1alpha1ApplicationSetStatusApplicationStatusList = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<V1alpha1ApplicationSetStatusApplicationStatusList>;
+
 export interface V1alpha1ApplicationSetCondition {
   lastTransitionTime?: string;
   message?: string;
@@ -1445,9 +2481,22 @@ export interface V1alpha1ApplicationSetCondition {
   status?: string;
   type?: string;
 }
+const V1alpha1ApplicationSetCondition = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<V1alpha1ApplicationSetCondition>;
+
 export type V1alpha1ApplicationSetStatusConditionsList = Array<V1alpha1ApplicationSetCondition>;
+const V1alpha1ApplicationSetStatusConditionsList = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<V1alpha1ApplicationSetStatusConditionsList>;
+
 /** Resources is a list of Applications resources managed by this application set. */
 export type V1alpha1ApplicationSetStatusResourcesList = Array<Applicationv1alpha1ResourceStatus>;
+const V1alpha1ApplicationSetStatusResourcesList =
+  V1alpha1ApplicationStatusResourcesList as any as S.Schema<V1alpha1ApplicationSetStatusResourcesList>;
+
 export interface V1alpha1ApplicationSetStatus {
   applicationStatus?: V1alpha1ApplicationSetStatusApplicationStatusList;
   conditions?: V1alpha1ApplicationSetStatusConditionsList;
@@ -1457,6 +2506,11 @@ export interface V1alpha1ApplicationSetStatus {
   /** ResourcesCount is the total number of resources managed by this application set. The count may be higher than actual number of items in the Resources field when the number of managed resources exceeds the limit imposed by the controller (to avoid making the status field too large). */
   resourcesCount?: number;
 }
+const V1alpha1ApplicationSetStatus = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<V1alpha1ApplicationSetStatus>;
+
 export interface CreateApplicationSetServiceRequest {
   upsert?: boolean;
   dryRun?: boolean;
@@ -1464,11 +2518,21 @@ export interface CreateApplicationSetServiceRequest {
   spec?: V1alpha1ApplicationSetSpec;
   status?: V1alpha1ApplicationSetStatus;
 }
+const CreateApplicationSetServiceRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<CreateApplicationSetServiceRequest>;
+
 export interface V1alpha1ApplicationSet {
   metadata?: V1ObjectMeta;
   spec?: V1alpha1ApplicationSetSpec;
   status?: V1alpha1ApplicationSetStatus;
 }
+const V1alpha1ApplicationSet = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<V1alpha1ApplicationSet>;
+
 export interface V1alpha1RepositoryCertificate {
   certData?: string;
   certInfo?: string;
@@ -1476,12 +2540,24 @@ export interface V1alpha1RepositoryCertificate {
   certType?: string;
   serverName?: string;
 }
+const V1alpha1RepositoryCertificate = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<V1alpha1RepositoryCertificate>;
+
 export type CreateCertificateServiceCertificateRequestItemsList =
   Array<V1alpha1RepositoryCertificate>;
+const CreateCertificateServiceCertificateRequestItemsList = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<CreateCertificateServiceCertificateRequestItemsList>;
+
 /** ShardInfo describes the shard selector that was applied to produce a list response. Its presence on a list response indicates the list is a filtered subset. */
 export interface V1ShardInfo {
   selector?: string;
 }
+const V1ShardInfo = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<V1ShardInfo>;
+
 /** ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}. */
 export interface V1ListMeta {
   /** continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message. */
@@ -1491,18 +2567,36 @@ export interface V1ListMeta {
   selfLink?: string;
   shardInfo?: V1ShardInfo;
 }
+const V1ListMeta = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<V1ListMeta>;
+
 export interface CreateCertificateServiceCertificateRequest {
   /** Whether to upsert already existing certificates. */
   upsert?: boolean;
   items?: CreateCertificateServiceCertificateRequestItemsList;
   metadata?: V1ListMeta;
 }
+const CreateCertificateServiceCertificateRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<CreateCertificateServiceCertificateRequest>;
+
 export type V1alpha1RepositoryCertificateListItemsList = Array<V1alpha1RepositoryCertificate>;
+const V1alpha1RepositoryCertificateListItemsList =
+  CreateCertificateServiceCertificateRequestItemsList as any as S.Schema<V1alpha1RepositoryCertificateListItemsList>;
+
 export interface V1alpha1RepositoryCertificateList {
   items?: V1alpha1RepositoryCertificateListItemsList;
   metadata?: V1ListMeta;
 }
+const V1alpha1RepositoryCertificateList = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<V1alpha1RepositoryCertificateList>;
+
 export type CreateClusterServiceRequestAnnotationsMap = { [key: string]: string | undefined };
+const CreateClusterServiceRequestAnnotationsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<CreateClusterServiceRequestAnnotationsMap>;
+
 export interface V1alpha1AWSAuthConfig {
   clusterName?: string;
   /** Profile contains optional role ARN. If set then AWS IAM Authenticator uses the profile to perform cluster operations instead of the default AWS credential provider chain. */
@@ -1510,8 +2604,19 @@ export interface V1alpha1AWSAuthConfig {
   /** RoleARN contains optional role ARN. If set then AWS IAM Authenticator assume a role to perform cluster operations instead of the default AWS credential provider chain. */
   roleARN?: string;
 }
+const V1alpha1AWSAuthConfig = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<V1alpha1AWSAuthConfig>;
+
 export type V1alpha1ExecProviderConfigArgsList = Array<string>;
+const V1alpha1ExecProviderConfigArgsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ExecProviderConfigArgsList>;
+
 export type V1alpha1ExecProviderConfigEnvMap = { [key: string]: string | undefined };
+const V1alpha1ExecProviderConfigEnvMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ExecProviderConfigEnvMap>;
+
 export interface V1alpha1ExecProviderConfig {
   apiVersion?: string;
   args?: V1alpha1ExecProviderConfigArgsList;
@@ -1521,6 +2626,11 @@ export interface V1alpha1ExecProviderConfig {
   installHint?: string;
   provideClusterInfo?: boolean;
 }
+const V1alpha1ExecProviderConfig = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<V1alpha1ExecProviderConfig>;
+
 export interface V1alpha1TLSClientConfig {
   caData?: string;
   certData?: string;
@@ -1530,6 +2640,11 @@ export interface V1alpha1TLSClientConfig {
   /** ServerName is passed to the server for SNI and is used in the client to check server certificates against. If ServerName is empty, the hostname used to contact the server is used. */
   serverName?: string;
 }
+const V1alpha1TLSClientConfig = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<V1alpha1TLSClientConfig>;
+
 /** ClusterConfig is the configuration attributes. This structure is subset of the go-client rest.Config with annotations added for marshalling. */
 export interface V1alpha1ClusterConfig {
   awsAuthConfig?: V1alpha1AWSAuthConfig;
@@ -1547,17 +2662,35 @@ export interface V1alpha1ClusterConfig {
   tlsClientConfig?: V1alpha1TLSClientConfig;
   username?: string;
 }
+const V1alpha1ClusterConfig = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<V1alpha1ClusterConfig>;
+
 export interface V1alpha1ConnectionState {
   attemptedAt?: string;
   message?: string;
   status?: string;
 }
+const V1alpha1ConnectionState = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<V1alpha1ConnectionState>;
+
 export type V1alpha1ClusterInfoApiVersionsList = Array<string>;
+const V1alpha1ClusterInfoApiVersionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ClusterInfoApiVersionsList>;
+
 export interface V1alpha1ClusterCacheInfo {
   apisCount?: number;
   lastCacheSyncTime?: string;
   resourcesCount?: number;
 }
+const V1alpha1ClusterCacheInfo = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<V1alpha1ClusterCacheInfo>;
+
 export interface V1alpha1ClusterInfo {
   apiVersions?: V1alpha1ClusterInfoApiVersionsList;
   applicationsCount?: number;
@@ -1565,9 +2698,17 @@ export interface V1alpha1ClusterInfo {
   connectionState?: V1alpha1ConnectionState;
   serverVersion?: string;
 }
+const V1alpha1ClusterInfo = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<V1alpha1ClusterInfo>;
+
 export type CreateClusterServiceRequestLabelsMap = { [key: string]: string | undefined };
+const CreateClusterServiceRequestLabelsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<CreateClusterServiceRequestLabelsMap>;
+
 /** Holds list of namespaces which are accessible in that cluster. Cluster level resources will be ignored if namespace list is not empty. */
 export type CreateClusterServiceRequestNamespacesList = Array<string>;
+const CreateClusterServiceRequestNamespacesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<CreateClusterServiceRequestNamespacesList>;
+
 export interface CreateClusterServiceRequest {
   upsert?: boolean;
   annotations?: CreateClusterServiceRequestAnnotationsMap;
@@ -1588,10 +2729,24 @@ export interface CreateClusterServiceRequest {
   /** Shard contains optional shard number. Calculated on the fly by the application controller if not specified. */
   shard?: number;
 }
+const CreateClusterServiceRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<CreateClusterServiceRequest>;
+
 export type V1alpha1ClusterAnnotationsMap = { [key: string]: string | undefined };
+const V1alpha1ClusterAnnotationsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ClusterAnnotationsMap>;
+
 export type V1alpha1ClusterLabelsMap = { [key: string]: string | undefined };
+const V1alpha1ClusterLabelsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<V1alpha1ClusterLabelsMap>;
+
 /** Holds list of namespaces which are accessible in that cluster. Cluster level resources will be ignored if namespace list is not empty. */
 export type V1alpha1ClusterNamespacesList = Array<string>;
+const V1alpha1ClusterNamespacesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ClusterNamespacesList>;
+
 export interface V1alpha1Cluster {
   annotations?: V1alpha1ClusterAnnotationsMap;
   /** Indicates if cluster level resources should be managed. This setting is used only if cluster is connected in a namespaced mode. */
@@ -1611,6 +2766,8 @@ export interface V1alpha1Cluster {
   /** Shard contains optional shard number. Calculated on the fly by the application controller if not specified. */
   shard?: number;
 }
+const V1alpha1Cluster = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<V1alpha1Cluster>;
+
 export interface CreateGPGKeyServiceRequest {
   /** Whether to upsert already existing public keys. */
   upsert?: boolean;
@@ -1621,6 +2778,11 @@ export interface CreateGPGKeyServiceRequest {
   subType?: string;
   trust?: string;
 }
+const CreateGPGKeyServiceRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<CreateGPGKeyServiceRequest>;
+
 export interface V1alpha1GnuPGPublicKey {
   fingerprint?: string;
   keyData?: string;
@@ -1629,26 +2791,62 @@ export interface V1alpha1GnuPGPublicKey {
   subType?: string;
   trust?: string;
 }
+const V1alpha1GnuPGPublicKey = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<V1alpha1GnuPGPublicKey>;
+
 export type V1alpha1GnuPGPublicKeyListItemsList = Array<V1alpha1GnuPGPublicKey>;
+const V1alpha1GnuPGPublicKeyListItemsList = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<V1alpha1GnuPGPublicKeyListItemsList>;
+
 export interface V1alpha1GnuPGPublicKeyList {
   items?: V1alpha1GnuPGPublicKeyListItemsList;
   metadata?: V1ListMeta;
 }
+const V1alpha1GnuPGPublicKeyList = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<V1alpha1GnuPGPublicKeyList>;
+
 export type GpgkeyGnuPGPublicKeyCreateResponseSkippedList = Array<string>;
+const GpgkeyGnuPGPublicKeyCreateResponseSkippedList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<GpgkeyGnuPGPublicKeyCreateResponseSkippedList>;
+
 export interface GpgkeyGnuPGPublicKeyCreateResponse {
   created?: V1alpha1GnuPGPublicKeyList;
   skipped?: GpgkeyGnuPGPublicKeyCreateResponseSkippedList;
 }
+const GpgkeyGnuPGPublicKeyCreateResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<GpgkeyGnuPGPublicKeyCreateResponse>;
+
 export interface V1alpha1ClusterResourceRestrictionItem {
   group?: string;
   kind?: string;
   /** Name is the name of the restricted resource. Glob patterns using Go's filepath.Match syntax are supported. Unlike the group and kind fields, if no name is specified, all resources of the specified group/kind are matched. */
   name?: string;
 }
+const V1alpha1ClusterResourceRestrictionItem = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<V1alpha1ClusterResourceRestrictionItem>;
+
 export type V1alpha1AppProjectSpecClusterResourceBlacklistList =
   Array<V1alpha1ClusterResourceRestrictionItem>;
+const V1alpha1AppProjectSpecClusterResourceBlacklistList = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<V1alpha1AppProjectSpecClusterResourceBlacklistList>;
+
 export type V1alpha1AppProjectSpecClusterResourceWhitelistList =
   Array<V1alpha1ClusterResourceRestrictionItem>;
+const V1alpha1AppProjectSpecClusterResourceWhitelistList =
+  V1alpha1AppProjectSpecClusterResourceBlacklistList as any as S.Schema<V1alpha1AppProjectSpecClusterResourceWhitelistList>;
+
 /** ApplicationDestinationServiceAccount holds information about the service account to be impersonated for the application sync operation. */
 export interface V1alpha1ApplicationDestinationServiceAccount {
   defaultServiceAccount?: string;
@@ -1657,35 +2855,81 @@ export interface V1alpha1ApplicationDestinationServiceAccount {
   /** Server specifies the URL of the target cluster's Kubernetes control plane API. */
   server?: string;
 }
+const V1alpha1ApplicationDestinationServiceAccount = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<V1alpha1ApplicationDestinationServiceAccount>;
+
 /** DestinationServiceAccounts holds information about the service accounts to be impersonated for the application sync operation for each destination. */
 export type V1alpha1AppProjectSpecDestinationServiceAccountsList =
   Array<V1alpha1ApplicationDestinationServiceAccount>;
+const V1alpha1AppProjectSpecDestinationServiceAccountsList = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<V1alpha1AppProjectSpecDestinationServiceAccountsList>;
+
 export type V1alpha1AppProjectSpecDestinationsList = Array<V1alpha1ApplicationDestination>;
+const V1alpha1AppProjectSpecDestinationsList = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<V1alpha1AppProjectSpecDestinationsList>;
+
 /** +protobuf.options.(gogoproto.goproto_stringer)=false */
 export interface V1GroupKind {
   group?: string;
   kind?: string;
 }
+const V1GroupKind = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<V1GroupKind>;
+
 export type V1alpha1AppProjectSpecNamespaceResourceBlacklistList = Array<V1GroupKind>;
+const V1alpha1AppProjectSpecNamespaceResourceBlacklistList = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<V1alpha1AppProjectSpecNamespaceResourceBlacklistList>;
+
 export type V1alpha1AppProjectSpecNamespaceResourceWhitelistList = Array<V1GroupKind>;
+const V1alpha1AppProjectSpecNamespaceResourceWhitelistList =
+  V1alpha1AppProjectSpecNamespaceResourceBlacklistList as any as S.Schema<V1alpha1AppProjectSpecNamespaceResourceWhitelistList>;
+
 export interface V1alpha1OrphanedResourceKey {
   group?: string;
   kind?: string;
   name?: string;
 }
 export type V1alpha1OrphanedResourcesMonitorSettingsIgnoreList = Array<V1alpha1OrphanedResourceKey>;
+const V1alpha1OrphanedResourcesMonitorSettingsIgnoreList =
+  V1alpha1AppProjectSpecClusterResourceBlacklistList as any as S.Schema<V1alpha1OrphanedResourcesMonitorSettingsIgnoreList>;
+
 export interface V1alpha1OrphanedResourcesMonitorSettings {
   ignore?: V1alpha1OrphanedResourcesMonitorSettingsIgnoreList;
   warn?: boolean;
 }
+const V1alpha1OrphanedResourcesMonitorSettings = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<V1alpha1OrphanedResourcesMonitorSettings>;
+
 export type V1alpha1ProjectRoleGroupsList = Array<string>;
+const V1alpha1ProjectRoleGroupsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ProjectRoleGroupsList>;
+
 export interface V1alpha1JWTToken {
   exp?: number;
   iat?: number;
   id?: string;
 }
+const V1alpha1JWTToken = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<V1alpha1JWTToken>;
+
 export type V1alpha1ProjectRoleJwtTokensList = Array<V1alpha1JWTToken>;
+const V1alpha1ProjectRoleJwtTokensList = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<V1alpha1ProjectRoleJwtTokensList>;
+
 export type V1alpha1ProjectRolePoliciesList = Array<string>;
+const V1alpha1ProjectRolePoliciesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1ProjectRolePoliciesList>;
+
 export interface V1alpha1ProjectRole {
   description?: string;
   groups?: V1alpha1ProjectRoleGroupsList;
@@ -1693,42 +2937,112 @@ export interface V1alpha1ProjectRole {
   name?: string;
   policies?: V1alpha1ProjectRolePoliciesList;
 }
+const V1alpha1ProjectRole = /*@__PURE__*/ __L.at(__c27, 1) as any as S.Schema<V1alpha1ProjectRole>;
+
 export type V1alpha1AppProjectSpecRolesList = Array<V1alpha1ProjectRole>;
+const V1alpha1AppProjectSpecRolesList = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<V1alpha1AppProjectSpecRolesList>;
+
 /** Deprecated: Use SourceIntegrity instead. SignatureKeys will be removed with the next major version. */
 export interface V1alpha1SignatureKey {
   keyID?: string;
 }
+const V1alpha1SignatureKey = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<V1alpha1SignatureKey>;
+
 /** Deprecated: Use SourceIntegrity instead. SignatureKeys will be removed with the next major version. */
 export type V1alpha1AppProjectSpecSignatureKeysList = Array<V1alpha1SignatureKey>;
+const V1alpha1AppProjectSpecSignatureKeysList = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<V1alpha1AppProjectSpecSignatureKeysList>;
+
 /** List of key IDs to trust. The keys need to be in the repository server keyring. */
 export type V1alpha1SourceIntegrityGitPolicyGPGKeysList = Array<string>;
+const V1alpha1SourceIntegrityGitPolicyGPGKeysList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1SourceIntegrityGitPolicyGPGKeysList>;
+
 /** SourceIntegrityGitPolicyGPG verifies that the commit(s) are both correctly signed by a key in the repo-server keyring, and that they are signed by one of the key listed in Keys. This policy can be deactivated through the ARGOCD_GPG_ENABLED environment variable. Note the listing of problematic commits/signatures reported when "strict" mode validation fails may not be complete. This means that a user that has addressed all problems reported by source integrity check can run into further problematic signatures on a subsequent attempt. That happens namely when history contains seal commits signed with gpg keys that are in the keyring, but not listed in Keys. */
 export interface V1alpha1SourceIntegrityGitPolicyGPG {
   /** List of key IDs to trust. The keys need to be in the repository server keyring. */
   keys?: V1alpha1SourceIntegrityGitPolicyGPGKeysList;
   mode?: string;
 }
+const V1alpha1SourceIntegrityGitPolicyGPG = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<V1alpha1SourceIntegrityGitPolicyGPG>;
+
 export interface V1alpha1SourceIntegrityGitPolicyRepo {
   /** URL specifier, glob. */
   url?: string;
 }
+const V1alpha1SourceIntegrityGitPolicyRepo = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<V1alpha1SourceIntegrityGitPolicyRepo>;
+
 export type V1alpha1SourceIntegrityGitPolicyReposList = Array<V1alpha1SourceIntegrityGitPolicyRepo>;
+const V1alpha1SourceIntegrityGitPolicyReposList = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<V1alpha1SourceIntegrityGitPolicyReposList>;
+
 export interface V1alpha1SourceIntegrityGitPolicy {
   gpg?: V1alpha1SourceIntegrityGitPolicyGPG;
   repos?: V1alpha1SourceIntegrityGitPolicyReposList;
 }
+const V1alpha1SourceIntegrityGitPolicy = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<V1alpha1SourceIntegrityGitPolicy>;
+
 export type V1alpha1SourceIntegrityGitPoliciesList = Array<V1alpha1SourceIntegrityGitPolicy>;
+const V1alpha1SourceIntegrityGitPoliciesList = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<V1alpha1SourceIntegrityGitPoliciesList>;
+
 export interface V1alpha1SourceIntegrityGit {
   policies?: V1alpha1SourceIntegrityGitPoliciesList;
 }
+const V1alpha1SourceIntegrityGit = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<V1alpha1SourceIntegrityGit>;
+
 export interface V1alpha1SourceIntegrity {
   git?: V1alpha1SourceIntegrityGit;
 }
+const V1alpha1SourceIntegrity = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<V1alpha1SourceIntegrity>;
+
 export type V1alpha1AppProjectSpecSourceNamespacesList = Array<string>;
+const V1alpha1AppProjectSpecSourceNamespacesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1AppProjectSpecSourceNamespacesList>;
+
 export type V1alpha1AppProjectSpecSourceReposList = Array<string>;
+const V1alpha1AppProjectSpecSourceReposList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1AppProjectSpecSourceReposList>;
+
 export type V1alpha1InlineSyncWindowApplicationsList = Array<string>;
+const V1alpha1InlineSyncWindowApplicationsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1InlineSyncWindowApplicationsList>;
+
 export type V1alpha1InlineSyncWindowClustersList = Array<string>;
+const V1alpha1InlineSyncWindowClustersList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1InlineSyncWindowClustersList>;
+
 export type V1alpha1InlineSyncWindowNamespacesList = Array<string>;
+const V1alpha1InlineSyncWindowNamespacesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1InlineSyncWindowNamespacesList>;
+
 export interface V1alpha1InlineSyncWindow {
   andOperator?: boolean;
   applications?: V1alpha1InlineSyncWindowApplicationsList;
@@ -1742,7 +3056,17 @@ export interface V1alpha1InlineSyncWindow {
   syncOverrun?: boolean;
   timeZone?: string;
 }
+const V1alpha1InlineSyncWindow = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<V1alpha1InlineSyncWindow>;
+
 export type V1alpha1AppProjectSpecSyncWindowsList = Array<V1alpha1InlineSyncWindow>;
+const V1alpha1AppProjectSpecSyncWindowsList = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<V1alpha1AppProjectSpecSyncWindowsList>;
+
 export interface V1alpha1AppProjectSpec {
   clusterResourceBlacklist?: V1alpha1AppProjectSpecClusterResourceBlacklistList;
   clusterResourceWhitelist?: V1alpha1AppProjectSpecClusterResourceWhitelistList;
@@ -1762,25 +3086,52 @@ export interface V1alpha1AppProjectSpec {
   sourceRepos?: V1alpha1AppProjectSpecSourceReposList;
   syncWindows?: V1alpha1AppProjectSpecSyncWindowsList;
 }
+const V1alpha1AppProjectSpec = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<V1alpha1AppProjectSpec>;
+
 export type V1alpha1JWTTokensItemsList = Array<V1alpha1JWTToken>;
+const V1alpha1JWTTokensItemsList =
+  V1alpha1ProjectRoleJwtTokensList as any as S.Schema<V1alpha1JWTTokensItemsList>;
+
 export interface V1alpha1JWTTokens {
   items?: V1alpha1JWTTokensItemsList;
 }
+const V1alpha1JWTTokens = /*@__PURE__*/ __L.at(__c28, 7) as any as S.Schema<V1alpha1JWTTokens>;
+
 export type V1alpha1AppProjectStatusJwtTokensByRoleMap = {
   [key: string]: V1alpha1JWTTokens | undefined;
 };
+const V1alpha1AppProjectStatusJwtTokensByRoleMap = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<V1alpha1AppProjectStatusJwtTokensByRoleMap>;
+
 export interface V1alpha1AppProjectStatus {
   jwtTokensByRole?: V1alpha1AppProjectStatusJwtTokensByRoleMap;
 }
+const V1alpha1AppProjectStatus = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<V1alpha1AppProjectStatus>;
+
 export interface V1alpha1AppProject {
   metadata?: V1ObjectMeta;
   spec?: V1alpha1AppProjectSpec;
   status?: V1alpha1AppProjectStatus;
 }
+const V1alpha1AppProject = /*@__PURE__*/ __L.at(__c29, 2) as any as S.Schema<V1alpha1AppProject>;
+
 export interface CreateProjectServiceRequest {
   project?: V1alpha1AppProject;
   upsert?: boolean;
 }
+const CreateProjectServiceRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<CreateProjectServiceRequest>;
+
 export interface CreateProjectServiceTokenRequest {
   project: string;
   role: string;
@@ -1788,10 +3139,18 @@ export interface CreateProjectServiceTokenRequest {
   expiresIn?: number;
   id?: string;
 }
+const CreateProjectServiceTokenRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<CreateProjectServiceTokenRequest>;
+
 /** ProjectTokenResponse wraps the created token or returns an empty string if deleted. */
 export interface ProjectProjectTokenResponse {
   token?: string;
 }
+const ProjectProjectTokenResponse =
+  AccountCreateTokenResponse as any as S.Schema<ProjectProjectTokenResponse>;
+
 export interface CreateRepoCredsServiceRepositoryCredentialsRequest {
   /** Whether to create in upsert mode. */
   upsert?: boolean;
@@ -1821,6 +3180,11 @@ export interface CreateRepoCredsServiceRepositoryCredentialsRequest {
   useAzureWorkloadIdentity?: boolean;
   username?: string;
 }
+const CreateRepoCredsServiceRepositoryCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<CreateRepoCredsServiceRepositoryCredentialsRequest>;
+
 export interface V1alpha1RepoCreds {
   azureActiveDirectoryEndpoint?: string;
   azureServicePrincipalClientId?: string;
@@ -1848,6 +3212,8 @@ export interface V1alpha1RepoCreds {
   useAzureWorkloadIdentity?: boolean;
   username?: string;
 }
+const V1alpha1RepoCreds = /*@__PURE__*/ __L.at(__c29, 6) as any as S.Schema<V1alpha1RepoCreds>;
+
 export interface CreateRepoCredsServiceWriteRepositoryCredentialsRequest {
   /** Whether to create in upsert mode. */
   upsert?: boolean;
@@ -1877,6 +3243,11 @@ export interface CreateRepoCredsServiceWriteRepositoryCredentialsRequest {
   useAzureWorkloadIdentity?: boolean;
   username?: string;
 }
+const CreateRepoCredsServiceWriteRepositoryCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<CreateRepoCredsServiceWriteRepositoryCredentialsRequest>;
+
 export interface CreateRepositoryServiceRepositoryRequest {
   /** Whether to create in upsert mode. */
   upsert?: boolean;
@@ -1921,6 +3292,11 @@ export interface CreateRepositoryServiceRepositoryRequest {
   /** WebhookManifestCacheWarmDisabled disables manifest cache warming during webhook processing for this repository. When set, webhook handlers will only trigger reconciliation for affected applications and skip Redis cache operations for unaffected ones. Recommended for large monorepos with plain YAML manifests. */
   webhookManifestCacheWarmDisabled?: boolean;
 }
+const CreateRepositoryServiceRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<CreateRepositoryServiceRepositoryRequest>;
+
 export interface V1alpha1Repository {
   azureActiveDirectoryEndpoint?: string;
   azureServicePrincipalClientId?: string;
@@ -1961,6 +3337,8 @@ export interface V1alpha1Repository {
   /** WebhookManifestCacheWarmDisabled disables manifest cache warming during webhook processing for this repository. When set, webhook handlers will only trigger reconciliation for affected applications and skip Redis cache operations for unaffected ones. Recommended for large monorepos with plain YAML manifests. */
   webhookManifestCacheWarmDisabled?: boolean;
 }
+const V1alpha1Repository = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<V1alpha1Repository>;
+
 export interface CreateRepositoryServiceWriteRepositoryRequest {
   /** Whether to create in upsert mode. */
   upsert?: boolean;
@@ -2005,20 +3383,45 @@ export interface CreateRepositoryServiceWriteRepositoryRequest {
   /** WebhookManifestCacheWarmDisabled disables manifest cache warming during webhook processing for this repository. When set, webhook handlers will only trigger reconciliation for affected applications and skip Redis cache operations for unaffected ones. Recommended for large monorepos with plain YAML manifests. */
   webhookManifestCacheWarmDisabled?: boolean;
 }
+const CreateRepositoryServiceWriteRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<CreateRepositoryServiceWriteRepositoryRequest>;
+
 export interface CreateSessionServiceRequest {
   password?: string | Redacted.Redacted<string>;
   token?: string;
   username?: string;
 }
+const CreateSessionServiceRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<CreateSessionServiceRequest>;
+
 /** SessionResponse wraps the created token or returns an empty string if deleted. */
 export interface SessionSessionResponse {
   token?: string;
 }
+const SessionSessionResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<SessionSessionResponse>;
+
 export interface DeleteAccountServiceTokenRequest {
   name: string;
   id: string;
 }
+const DeleteAccountServiceTokenRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<DeleteAccountServiceTokenRequest>;
+
 export type DeleteAccountServiceTokenResponse = unknown;
+const DeleteAccountServiceTokenResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<DeleteAccountServiceTokenResponse>;
+
 export interface DeleteApplicationServiceRequest {
   name: string;
   cascade?: boolean;
@@ -2026,7 +3429,15 @@ export interface DeleteApplicationServiceRequest {
   appNamespace?: string;
   project?: string;
 }
+const DeleteApplicationServiceRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<DeleteApplicationServiceRequest>;
+
 export type DeleteApplicationServiceResponse = unknown;
+const DeleteApplicationServiceResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<DeleteApplicationServiceResponse>;
+
 export interface DeleteApplicationServiceResourceRequest {
   name: string;
   namespace?: string;
@@ -2039,16 +3450,34 @@ export interface DeleteApplicationServiceResourceRequest {
   appNamespace?: string;
   project?: string;
 }
+const DeleteApplicationServiceResourceRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<DeleteApplicationServiceResourceRequest>;
+
 export type DeleteApplicationServiceResourceResponse = unknown;
+const DeleteApplicationServiceResourceResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<DeleteApplicationServiceResourceResponse>;
+
 export interface DeleteApplicationSetServiceRequest {
   name: string;
   /** The application set namespace. Default empty is argocd control plane namespace. */
   appsetNamespace?: string;
 }
+const DeleteApplicationSetServiceRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<DeleteApplicationSetServiceRequest>;
+
 export interface ApplicationsetApplicationSetResponse {
   applicationset?: V1alpha1ApplicationSet;
   project?: string;
 }
+const ApplicationsetApplicationSetResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<ApplicationsetApplicationSetResponse>;
+
 export interface DeleteCertificateServiceCertificateRequest {
   /** A file-glob pattern (not regular expression) the host name has to match. */
   hostNamePattern?: string;
@@ -2057,6 +3486,11 @@ export interface DeleteCertificateServiceCertificateRequest {
   /** The sub type of the certificate to match (protocol dependent, usually only used for ssh certs). */
   certSubType?: string;
 }
+const DeleteCertificateServiceCertificateRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<DeleteCertificateServiceCertificateRequest>;
+
 export interface DeleteClusterServiceRequest {
   /** value holds the cluster server URL or cluster name */
   id_value: string;
@@ -2065,31 +3499,81 @@ export interface DeleteClusterServiceRequest {
   /** type is the type of the specified cluster identifier ( "server" - default, "name" ). */
   id_type?: string;
 }
+const DeleteClusterServiceRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<DeleteClusterServiceRequest>;
+
 export type DeleteClusterServiceResponse = unknown;
+const DeleteClusterServiceResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<DeleteClusterServiceResponse>;
+
 export interface DeleteGPGKeyServiceRequest {
   /** The GPG key ID to query for. */
   keyID?: string;
 }
+const DeleteGPGKeyServiceRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<DeleteGPGKeyServiceRequest>;
+
 export type DeleteGPGKeyServiceResponse = unknown;
+const DeleteGPGKeyServiceResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<DeleteGPGKeyServiceResponse>;
+
 export interface DeleteProjectServiceRequest {
   name: string;
 }
+const DeleteProjectServiceRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<DeleteProjectServiceRequest>;
+
 export type DeleteProjectServiceResponse = unknown;
+const DeleteProjectServiceResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<DeleteProjectServiceResponse>;
+
 export interface DeleteProjectServiceTokenRequest {
   project: string;
   role: string;
   iat: string;
   id?: string;
 }
+const DeleteProjectServiceTokenRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<DeleteProjectServiceTokenRequest>;
+
 export type DeleteProjectServiceTokenResponse = unknown;
+const DeleteProjectServiceTokenResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<DeleteProjectServiceTokenResponse>;
+
 export interface DeleteRepoCredsServiceRepositoryCredentialsRequest {
   url: string;
 }
+const DeleteRepoCredsServiceRepositoryCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<DeleteRepoCredsServiceRepositoryCredentialsRequest>;
+
 export type DeleteRepoCredsServiceRepositoryCredentialsResponse = unknown;
+const DeleteRepoCredsServiceRepositoryCredentialsResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<DeleteRepoCredsServiceRepositoryCredentialsResponse>;
+
 export interface DeleteRepoCredsServiceWriteRepositoryCredentialsRequest {
   url: string;
 }
+const DeleteRepoCredsServiceWriteRepositoryCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<DeleteRepoCredsServiceWriteRepositoryCredentialsRequest>;
+
 export type DeleteRepoCredsServiceWriteRepositoryCredentialsResponse = unknown;
+const DeleteRepoCredsServiceWriteRepositoryCredentialsResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<DeleteRepoCredsServiceWriteRepositoryCredentialsResponse>;
+
 export interface DeleteRepositoryServiceRepositoryRequest {
   /** Repo URL for query */
   repo: string;
@@ -2098,7 +3582,15 @@ export interface DeleteRepositoryServiceRepositoryRequest {
   /** App project for query. */
   appProject?: string;
 }
+const DeleteRepositoryServiceRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<DeleteRepositoryServiceRepositoryRequest>;
+
 export type DeleteRepositoryServiceRepositoryResponse = unknown;
+const DeleteRepositoryServiceRepositoryResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<DeleteRepositoryServiceRepositoryResponse>;
+
 export interface DeleteRepositoryServiceWriteRepositoryRequest {
   /** Repo URL for query */
   repo: string;
@@ -2107,35 +3599,89 @@ export interface DeleteRepositoryServiceWriteRepositoryRequest {
   /** App project for query. */
   appProject?: string;
 }
+const DeleteRepositoryServiceWriteRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<DeleteRepositoryServiceWriteRepositoryRequest>;
+
 export type DeleteRepositoryServiceWriteRepositoryResponse = unknown;
+const DeleteRepositoryServiceWriteRepositoryResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<DeleteRepositoryServiceWriteRepositoryResponse>;
+
 export interface DeleteSessionServiceRequest {}
+const DeleteSessionServiceRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<DeleteSessionServiceRequest>;
+
 export interface GenerateApplicationSetServiceRequest {
   applicationSet?: V1alpha1ApplicationSet;
 }
+const GenerateApplicationSetServiceRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<GenerateApplicationSetServiceRequest>;
+
 export type ApplicationsetApplicationSetGenerateResponseApplicationsList =
   Array<V1alpha1Application>;
+const ApplicationsetApplicationSetGenerateResponseApplicationsList = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<ApplicationsetApplicationSetGenerateResponseApplicationsList>;
+
 export interface ApplicationsetApplicationSetGenerateResponse {
   applications?: ApplicationsetApplicationSetGenerateResponseApplicationsList;
 }
+const ApplicationsetApplicationSetGenerateResponse = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<ApplicationsetApplicationSetGenerateResponse>;
+
 export interface GetAccountServiceAccountRequest {
   name: string;
 }
+const GetAccountServiceAccountRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<GetAccountServiceAccountRequest>;
+
 export type AccountAccountCapabilitiesList = Array<string>;
+const AccountAccountCapabilitiesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<AccountAccountCapabilitiesList>;
+
 export interface AccountToken {
   expiresAt?: number;
   id?: string;
   issuedAt?: number;
 }
+const AccountToken = /*@__PURE__*/ __L.at(__c33, 2) as any as S.Schema<AccountToken>;
+
 export type AccountAccountTokensList = Array<AccountToken>;
+const AccountAccountTokensList = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<AccountAccountTokensList>;
+
 export interface AccountAccount {
   capabilities?: AccountAccountCapabilitiesList;
   enabled?: boolean;
   name?: string;
   tokens?: AccountAccountTokensList;
 }
+const AccountAccount = /*@__PURE__*/ __L.at(__c33, 4) as any as S.Schema<AccountAccount>;
+
 export type GetApplicationServiceRequestProjectsList = Array<string>;
+const GetApplicationServiceRequestProjectsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<GetApplicationServiceRequestProjectsList>;
+
 export type GetApplicationServiceRequestProjectList = Array<string>;
+const GetApplicationServiceRequestProjectList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<GetApplicationServiceRequestProjectList>;
+
 export type GetApplicationServiceRequestNamesList = Array<string>;
+const GetApplicationServiceRequestNamesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<GetApplicationServiceRequestNamesList>;
+
 export interface GetApplicationServiceRequest {
   /** the application's name */
   name: string;
@@ -2156,28 +3702,62 @@ export interface GetApplicationServiceRequest {
   /** the application names to restrict returned list applications (used by the UI favorites filter). An entry may be qualified as 'namespace/name' to match only the application in that namespace. */
   names?: GetApplicationServiceRequestNamesList;
 }
+const GetApplicationServiceRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<GetApplicationServiceRequest>;
+
 export interface GetApplicationServiceApplicationSyncWindowsRequest {
   name: string;
   appNamespace?: string;
   project?: string;
 }
+const GetApplicationServiceApplicationSyncWindowsRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  6,
+) as any as S.Schema<GetApplicationServiceApplicationSyncWindowsRequest>;
+
 export interface ApplicationApplicationSyncWindow {
   duration?: string;
   kind?: string;
   manualSync?: boolean;
   schedule?: string;
 }
+const ApplicationApplicationSyncWindow = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<ApplicationApplicationSyncWindow>;
+
 export type ApplicationApplicationSyncWindowsResponseActiveWindowsList =
   Array<ApplicationApplicationSyncWindow>;
+const ApplicationApplicationSyncWindowsResponseActiveWindowsList = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<ApplicationApplicationSyncWindowsResponseActiveWindowsList>;
+
 export type ApplicationApplicationSyncWindowsResponseAssignedWindowsList =
   Array<ApplicationApplicationSyncWindow>;
+const ApplicationApplicationSyncWindowsResponseAssignedWindowsList =
+  ApplicationApplicationSyncWindowsResponseActiveWindowsList as any as S.Schema<ApplicationApplicationSyncWindowsResponseAssignedWindowsList>;
+
 export interface ApplicationApplicationSyncWindowsResponse {
   activeWindows?: ApplicationApplicationSyncWindowsResponseActiveWindowsList;
   assignedWindows?: ApplicationApplicationSyncWindowsResponseAssignedWindowsList;
   canSync?: boolean;
 }
+const ApplicationApplicationSyncWindowsResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<ApplicationApplicationSyncWindowsResponse>;
+
 export type GetApplicationServiceManifestsRequestSourcePositionsList = Array<string>;
+const GetApplicationServiceManifestsRequestSourcePositionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<GetApplicationServiceManifestsRequestSourcePositionsList>;
+
 export type GetApplicationServiceManifestsRequestRevisionsList = Array<string>;
+const GetApplicationServiceManifestsRequestRevisionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<GetApplicationServiceManifestsRequestRevisionsList>;
+
 export interface GetApplicationServiceManifestsRequest {
   name: string;
   revision?: string;
@@ -2187,8 +3767,19 @@ export interface GetApplicationServiceManifestsRequest {
   revisions?: GetApplicationServiceManifestsRequestRevisionsList;
   noCache?: boolean;
 }
+const GetApplicationServiceManifestsRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<GetApplicationServiceManifestsRequest>;
+
 export type RepositoryManifestResponseCommandsList = Array<string>;
+const RepositoryManifestResponseCommandsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<RepositoryManifestResponseCommandsList>;
+
 export type RepositoryManifestResponseManifestsList = Array<string>;
+const RepositoryManifestResponseManifestsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<RepositoryManifestResponseManifestsList>;
+
 export interface RepositoryManifestResponse {
   commands?: RepositoryManifestResponseCommandsList;
   manifests?: RepositoryManifestResponseManifestsList;
@@ -2200,19 +3791,39 @@ export interface RepositoryManifestResponse {
   /** Deprecated: Use sourceIntegrityResult for more detailed information. verifyResult will be removed with the next major version. */
   verifyResult?: string;
 }
+const RepositoryManifestResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<RepositoryManifestResponse>;
+
 export interface ApplicationFileChunk {
   chunk?: string;
 }
+const ApplicationFileChunk = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<ApplicationFileChunk>;
+
 export interface ApplicationApplicationManifestQueryWithFiles {
   appNamespace?: string;
   checksum?: string;
   name?: string;
   project?: string;
 }
+const ApplicationApplicationManifestQueryWithFiles = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<ApplicationApplicationManifestQueryWithFiles>;
+
 export interface GetApplicationServiceManifestsWithFilesRequest {
   chunk?: ApplicationFileChunk;
   query?: ApplicationApplicationManifestQueryWithFiles;
 }
+const GetApplicationServiceManifestsWithFilesRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<GetApplicationServiceManifestsWithFilesRequest>;
+
 export interface GetApplicationServiceOCIMetadataRequest {
   /** the application's name */
   name: string;
@@ -2226,6 +3837,11 @@ export interface GetApplicationServiceOCIMetadataRequest {
   /** versionId from historical data (for multi source apps). */
   versionId?: number;
 }
+const GetApplicationServiceOCIMetadataRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<GetApplicationServiceOCIMetadataRequest>;
+
 export interface V1alpha1OCIMetadata {
   authors?: string;
   createdAt?: string;
@@ -2235,6 +3851,8 @@ export interface V1alpha1OCIMetadata {
   sourceUrl?: string;
   version?: string;
 }
+const V1alpha1OCIMetadata = /*@__PURE__*/ __L.at(__c35, 0) as any as S.Schema<V1alpha1OCIMetadata>;
+
 export interface GetApplicationServiceResourceRequest {
   name: string;
   namespace?: string;
@@ -2245,15 +3863,30 @@ export interface GetApplicationServiceResourceRequest {
   appNamespace?: string;
   project?: string;
 }
+const GetApplicationServiceResourceRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<GetApplicationServiceResourceRequest>;
+
 export interface ApplicationApplicationResourceResponse {
   manifest?: string;
 }
+const ApplicationApplicationResourceResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<ApplicationApplicationResourceResponse>;
+
 export interface GetApplicationSetServiceRequest {
   /** the applicationsets's name */
   name: string;
   /** The application set namespace. Default empty is argocd control plane namespace. */
   appsetNamespace?: string;
 }
+const GetApplicationSetServiceRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<GetApplicationSetServiceRequest>;
+
 export interface GetClusterServiceRequest {
   /** value holds the cluster server URL or cluster name */
   id_value: string;
@@ -2262,39 +3895,105 @@ export interface GetClusterServiceRequest {
   /** type is the type of the specified cluster identifier ( "server" - default, "name" ). */
   id_type?: string;
 }
+const GetClusterServiceRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<GetClusterServiceRequest>;
+
 export interface GetGPGKeyServiceRequest {
   /** The GPG key ID to query for */
   keyID: string;
 }
+const GetGPGKeyServiceRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<GetGPGKeyServiceRequest>;
+
 export interface GetProjectServiceRequest {
   name: string;
 }
+const GetProjectServiceRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  6,
+) as any as S.Schema<GetProjectServiceRequest>;
+
 export interface GetProjectServiceDetailedProjectRequest {
   name: string;
 }
+const GetProjectServiceDetailedProjectRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<GetProjectServiceDetailedProjectRequest>;
+
 export type ProjectDetailedProjectsResponseClustersList = Array<V1alpha1Cluster>;
+const ProjectDetailedProjectsResponseClustersList = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<ProjectDetailedProjectsResponseClustersList>;
+
 export type ProjectDetailedProjectsResponseGlobalProjectsList = Array<V1alpha1AppProject>;
+const ProjectDetailedProjectsResponseGlobalProjectsList = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<ProjectDetailedProjectsResponseGlobalProjectsList>;
+
 export type ProjectDetailedProjectsResponseRepositoriesList = Array<V1alpha1Repository>;
+const ProjectDetailedProjectsResponseRepositoriesList = /*@__PURE__*/ __L.at(
+  __c36,
+  2,
+) as any as S.Schema<ProjectDetailedProjectsResponseRepositoriesList>;
+
 export interface ProjectDetailedProjectsResponse {
   clusters?: ProjectDetailedProjectsResponseClustersList;
   globalProjects?: ProjectDetailedProjectsResponseGlobalProjectsList;
   project?: V1alpha1AppProject;
   repositories?: ProjectDetailedProjectsResponseRepositoriesList;
 }
+const ProjectDetailedProjectsResponse = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<ProjectDetailedProjectsResponse>;
+
 export interface GetProjectServiceGlobalProjectsRequest {
   name: string;
 }
+const GetProjectServiceGlobalProjectsRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  4,
+) as any as S.Schema<GetProjectServiceGlobalProjectsRequest>;
+
 export type ProjectGlobalProjectsResponseItemsList = Array<V1alpha1AppProject>;
+const ProjectGlobalProjectsResponseItemsList =
+  ProjectDetailedProjectsResponseGlobalProjectsList as any as S.Schema<ProjectGlobalProjectsResponseItemsList>;
+
 export interface ProjectGlobalProjectsResponse {
   items?: ProjectGlobalProjectsResponseItemsList;
 }
+const ProjectGlobalProjectsResponse = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<ProjectGlobalProjectsResponse>;
+
 export interface GetProjectServiceSyncWindowsStateRequest {
   name: string;
 }
+const GetProjectServiceSyncWindowsStateRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<GetProjectServiceSyncWindowsStateRequest>;
+
 export type ProjectSyncWindowsResponseWindowsList = Array<V1alpha1InlineSyncWindow>;
+const ProjectSyncWindowsResponseWindowsList =
+  V1alpha1AppProjectSpecSyncWindowsList as any as S.Schema<ProjectSyncWindowsResponseWindowsList>;
+
 export interface ProjectSyncWindowsResponse {
   windows?: ProjectSyncWindowsResponseWindowsList;
 }
+const ProjectSyncWindowsResponse = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<ProjectSyncWindowsResponse>;
+
 export interface GetRepositoryServiceRequest {
   /** Repo URL for query */
   repo: string;
@@ -2303,6 +4002,11 @@ export interface GetRepositoryServiceRequest {
   /** App project for query. */
   appProject?: string;
 }
+const GetRepositoryServiceRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<GetRepositoryServiceRequest>;
+
 export interface GetRepositoryServiceAppDetailsRequest {
   /** RepoURL is the URL to the repository (Git or Helm) that contains the application manifests */
   source_repoURL: string;
@@ -2312,9 +4016,23 @@ export interface GetRepositoryServiceAppDetailsRequest {
   sourceIndex?: number;
   versionId?: number;
 }
+const GetRepositoryServiceAppDetailsRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  1,
+) as any as S.Schema<GetRepositoryServiceAppDetailsRequest>;
+
 export type RepositoryHelmAppSpecFileParametersList = Array<V1alpha1HelmFileParameter>;
+const RepositoryHelmAppSpecFileParametersList =
+  V1alpha1ApplicationSourceHelmFileParametersList as any as S.Schema<RepositoryHelmAppSpecFileParametersList>;
+
 export type RepositoryHelmAppSpecParametersList = Array<V1alpha1HelmParameter>;
+const RepositoryHelmAppSpecParametersList =
+  V1alpha1ApplicationSourceHelmParametersList as any as S.Schema<RepositoryHelmAppSpecParametersList>;
+
 export type RepositoryHelmAppSpecValueFilesList = Array<string>;
+const RepositoryHelmAppSpecValueFilesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<RepositoryHelmAppSpecValueFilesList>;
+
 export interface RepositoryHelmAppSpec {
   fileParameters?: RepositoryHelmAppSpecFileParametersList;
   name?: string;
@@ -2322,16 +4040,35 @@ export interface RepositoryHelmAppSpec {
   valueFiles?: RepositoryHelmAppSpecValueFilesList;
   values?: string;
 }
+const RepositoryHelmAppSpec = /*@__PURE__*/ __L.at(
+  __c37,
+  2,
+) as any as S.Schema<RepositoryHelmAppSpec>;
+
 /** images is a list of available images. */
 export type RepositoryKustomizeAppSpecImagesList = Array<string>;
+const RepositoryKustomizeAppSpecImagesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<RepositoryKustomizeAppSpecImagesList>;
+
 export interface RepositoryKustomizeAppSpec {
   /** images is a list of available images. */
   images?: RepositoryKustomizeAppSpecImagesList;
 }
+const RepositoryKustomizeAppSpec = /*@__PURE__*/ __L.at(
+  __c37,
+  3,
+) as any as S.Schema<RepositoryKustomizeAppSpec>;
+
 /** array is the default value of the parameter if the parameter is an array. */
 export type RepositoryParameterAnnouncementArrayList = Array<string>;
+const RepositoryParameterAnnouncementArrayList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<RepositoryParameterAnnouncementArrayList>;
+
 /** map is the default value of the parameter if the parameter is a map. */
 export type RepositoryParameterAnnouncementMapMap = { [key: string]: string | undefined };
+const RepositoryParameterAnnouncementMapMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<RepositoryParameterAnnouncementMapMap>;
+
 export interface RepositoryParameterAnnouncement {
   /** array is the default value of the parameter if the parameter is an array. */
   array?: RepositoryParameterAnnouncementArrayList;
@@ -2352,11 +4089,26 @@ export interface RepositoryParameterAnnouncement {
   /** tooltip is a human-readable description of the parameter. */
   tooltip?: string;
 }
+const RepositoryParameterAnnouncement = /*@__PURE__*/ __L.at(
+  __c37,
+  4,
+) as any as S.Schema<RepositoryParameterAnnouncement>;
+
 export type RepositoryPluginAppSpecParametersAnnouncementList =
   Array<RepositoryParameterAnnouncement>;
+const RepositoryPluginAppSpecParametersAnnouncementList = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<RepositoryPluginAppSpecParametersAnnouncementList>;
+
 export interface RepositoryPluginAppSpec {
   parametersAnnouncement?: RepositoryPluginAppSpecParametersAnnouncementList;
 }
+const RepositoryPluginAppSpec = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<RepositoryPluginAppSpec>;
+
 export interface RepositoryRepoAppDetailsResponse {
   directory?: unknown;
   helm?: RepositoryHelmAppSpec;
@@ -2364,6 +4116,11 @@ export interface RepositoryRepoAppDetailsResponse {
   plugin?: RepositoryPluginAppSpec;
   type?: string;
 }
+const RepositoryRepoAppDetailsResponse = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<RepositoryRepoAppDetailsResponse>;
+
 export interface GetRepositoryServiceHelmChartsRequest {
   /** Repo URL for query */
   repo: string;
@@ -2372,15 +4129,35 @@ export interface GetRepositoryServiceHelmChartsRequest {
   /** App project for query. */
   appProject?: string;
 }
+const GetRepositoryServiceHelmChartsRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<GetRepositoryServiceHelmChartsRequest>;
+
 export type RepositoryHelmChartVersionsList = Array<string>;
+const RepositoryHelmChartVersionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<RepositoryHelmChartVersionsList>;
+
 export interface RepositoryHelmChart {
   name?: string;
   versions?: RepositoryHelmChartVersionsList;
 }
+const RepositoryHelmChart = /*@__PURE__*/ __L.at(__c38, 1) as any as S.Schema<RepositoryHelmChart>;
+
 export type RepositoryHelmChartsResponseItemsList = Array<RepositoryHelmChart>;
+const RepositoryHelmChartsResponseItemsList = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<RepositoryHelmChartsResponseItemsList>;
+
 export interface RepositoryHelmChartsResponse {
   items?: RepositoryHelmChartsResponseItemsList;
 }
+const RepositoryHelmChartsResponse = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<RepositoryHelmChartsResponse>;
+
 export interface GetRepositoryServiceWriteRequest {
   /** Repo URL for query */
   repo: string;
@@ -2389,57 +4166,130 @@ export interface GetRepositoryServiceWriteRequest {
   /** App project for query. */
   appProject?: string;
 }
+const GetRepositoryServiceWriteRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  4,
+) as any as S.Schema<GetRepositoryServiceWriteRequest>;
+
 export interface GetSessionServiceUserInfoRequest {}
+const GetSessionServiceUserInfoRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  5,
+) as any as S.Schema<GetSessionServiceUserInfoRequest>;
+
 export type SessionGetUserInfoResponseGroupsList = Array<string>;
+const SessionGetUserInfoResponseGroupsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<SessionGetUserInfoResponseGroupsList>;
+
 export interface SessionGetUserInfoResponse {
   groups?: SessionGetUserInfoResponseGroupsList;
   iss?: string;
   loggedIn?: boolean;
   username?: string;
 }
+const SessionGetUserInfoResponse = /*@__PURE__*/ __L.at(
+  __c38,
+  6,
+) as any as S.Schema<SessionGetUserInfoResponse>;
+
 export interface GetSettingsServiceRequest {}
+const GetSettingsServiceRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  7,
+) as any as S.Schema<GetSettingsServiceRequest>;
+
 export type ClusterSettingsAdditionalUrlsList = Array<string>;
+const ClusterSettingsAdditionalUrlsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<ClusterSettingsAdditionalUrlsList>;
+
 export type V1alpha1CommandArgsList = Array<string>;
+const V1alpha1CommandArgsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1CommandArgsList>;
+
 export type V1alpha1CommandCommandList = Array<string>;
+const V1alpha1CommandCommandList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1CommandCommandList>;
+
 export interface V1alpha1Command {
   args?: V1alpha1CommandArgsList;
   command?: V1alpha1CommandCommandList;
 }
+const V1alpha1Command = /*@__PURE__*/ __L.at(__c39, 0) as any as S.Schema<V1alpha1Command>;
+
 export interface V1alpha1ConfigManagementPlugin {
   generate?: V1alpha1Command;
   init?: V1alpha1Command;
   lockRepo?: boolean;
   name?: string;
 }
+const V1alpha1ConfigManagementPlugin = /*@__PURE__*/ __L.at(
+  __c39,
+  1,
+) as any as S.Schema<V1alpha1ConfigManagementPlugin>;
+
 /** Deprecated: use sidecar plugins instead. */
 export type ClusterSettingsConfigManagementPluginsList = Array<V1alpha1ConfigManagementPlugin>;
+const ClusterSettingsConfigManagementPluginsList = /*@__PURE__*/ __L.at(
+  __c39,
+  2,
+) as any as S.Schema<ClusterSettingsConfigManagementPluginsList>;
+
 export interface ClusterConnector {
   id?: string;
   name?: string;
   type?: string;
 }
+const ClusterConnector = /*@__PURE__*/ __L.at(__c39, 3) as any as S.Schema<ClusterConnector>;
+
 export type ClusterDexConfigConnectorsList = Array<ClusterConnector>;
+const ClusterDexConfigConnectorsList = /*@__PURE__*/ __L.at(
+  __c39,
+  4,
+) as any as S.Schema<ClusterDexConfigConnectorsList>;
+
 export interface ClusterDexConfig {
   connectors?: ClusterDexConfigConnectorsList;
   dexAuthConnectorID?: string;
 }
+const ClusterDexConfig = /*@__PURE__*/ __L.at(__c39, 5) as any as S.Schema<ClusterDexConfig>;
+
 export interface ClusterGoogleAnalyticsConfig {
   anonymizeUsers?: boolean;
   trackingID?: string;
 }
+const ClusterGoogleAnalyticsConfig = /*@__PURE__*/ __L.at(
+  __c39,
+  6,
+) as any as S.Schema<ClusterGoogleAnalyticsConfig>;
+
 export type ClusterHelpBinaryUrlsMap = { [key: string]: string | undefined };
+const ClusterHelpBinaryUrlsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<ClusterHelpBinaryUrlsMap>;
+
 export interface ClusterHelp {
   binaryUrls?: ClusterHelpBinaryUrlsMap;
   chatText?: string;
   chatUrl?: string;
 }
+const ClusterHelp = /*@__PURE__*/ __L.at(__c39, 7) as any as S.Schema<ClusterHelp>;
+
 export interface V1alpha1KustomizeVersion {
   buildOptions?: string;
   name?: string;
   path?: string;
 }
+const V1alpha1KustomizeVersion = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<V1alpha1KustomizeVersion>;
+
 /** Versions is a list of Kustomize versions and their corresponding binary paths and build options. */
 export type V1alpha1KustomizeOptionsVersionsList = Array<V1alpha1KustomizeVersion>;
+const V1alpha1KustomizeOptionsVersionsList = /*@__PURE__*/ __L.at(
+  __c40,
+  1,
+) as any as S.Schema<V1alpha1KustomizeOptionsVersionsList>;
+
 export interface V1alpha1KustomizeOptions {
   /** Deprecated: Use settings.Settings instead. See: settings.Settings.KustomizeVersions. If this field is set, it will be used as the Kustomize binary path. Otherwise, Versions is used. */
   binaryPath?: string;
@@ -2447,15 +4297,35 @@ export interface V1alpha1KustomizeOptions {
   /** Versions is a list of Kustomize versions and their corresponding binary paths and build options. */
   versions?: V1alpha1KustomizeOptionsVersionsList;
 }
+const V1alpha1KustomizeOptions = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<V1alpha1KustomizeOptions>;
+
 export type ClusterSettingsKustomizeVersionsList = Array<string>;
+const ClusterSettingsKustomizeVersionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<ClusterSettingsKustomizeVersionsList>;
+
 export type OidcClaimValuesList = Array<string>;
+const OidcClaimValuesList = V1alpha1ResourceNodeImagesList as any as S.Schema<OidcClaimValuesList>;
+
 export interface OidcClaim {
   essential?: boolean;
   value?: string;
   values?: OidcClaimValuesList;
 }
+const OidcClaim = /*@__PURE__*/ __L.at(__c40, 3) as any as S.Schema<OidcClaim>;
+
 export type ClusterOIDCConfigIdTokenClaimsMap = { [key: string]: OidcClaim | undefined };
+const ClusterOIDCConfigIdTokenClaimsMap = /*@__PURE__*/ __L.at(
+  __c40,
+  4,
+) as any as S.Schema<ClusterOIDCConfigIdTokenClaimsMap>;
+
 export type ClusterOIDCConfigScopesList = Array<string>;
+const ClusterOIDCConfigScopesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<ClusterOIDCConfigScopesList>;
+
 export interface ClusterOIDCConfig {
   cliClientID?: string;
   clientID?: string;
@@ -2465,24 +4335,55 @@ export interface ClusterOIDCConfig {
   name?: string;
   scopes?: ClusterOIDCConfigScopesList;
 }
+const ClusterOIDCConfig = /*@__PURE__*/ __L.at(__c40, 5) as any as S.Schema<ClusterOIDCConfig>;
+
 export type ClusterPlugin = V1alpha1PluginConfigMapRef;
 export type ClusterSettingsPluginsList = Array<V1alpha1PluginConfigMapRef>;
+const ClusterSettingsPluginsList = /*@__PURE__*/ __L.at(
+  __c40,
+  6,
+) as any as S.Schema<ClusterSettingsPluginsList>;
+
 export type V1alpha1OverrideIgnoreDiffJSONPointersList = Array<string>;
+const V1alpha1OverrideIgnoreDiffJSONPointersList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1OverrideIgnoreDiffJSONPointersList>;
+
 export type V1alpha1OverrideIgnoreDiffJqPathExpressionsList = Array<string>;
+const V1alpha1OverrideIgnoreDiffJqPathExpressionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1OverrideIgnoreDiffJqPathExpressionsList>;
+
 export type V1alpha1OverrideIgnoreDiffManagedFieldsManagersList = Array<string>;
+const V1alpha1OverrideIgnoreDiffManagedFieldsManagersList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<V1alpha1OverrideIgnoreDiffManagedFieldsManagersList>;
+
 export interface V1alpha1OverrideIgnoreDiff {
   jSONPointers?: V1alpha1OverrideIgnoreDiffJSONPointersList;
   jqPathExpressions?: V1alpha1OverrideIgnoreDiffJqPathExpressionsList;
   managedFieldsManagers?: V1alpha1OverrideIgnoreDiffManagedFieldsManagersList;
 }
+const V1alpha1OverrideIgnoreDiff = /*@__PURE__*/ __L.at(
+  __c40,
+  7,
+) as any as S.Schema<V1alpha1OverrideIgnoreDiff>;
+
 /** KnownTypeField contains a mapping between a Custom Resource Definition (CRD) field and a well-known Kubernetes type. This mapping is primarily used for unit conversions in resources where the type is not explicitly defined (e.g., converting "0.1" to "100m" for CPU requests). */
 export interface V1alpha1KnownTypeField {
   field?: string;
   /** Type specifies the expected Kubernetes type for the field, such as "cpu" or "memory". This helps in converting values between different formats (e.g., "0.1" to "100m" for CPU). */
   type?: string;
 }
+const V1alpha1KnownTypeField = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<V1alpha1KnownTypeField>;
+
 /** KnownTypeFields lists fields for which unit conversions should be applied. */
 export type V1alpha1ResourceOverrideKnownTypeFieldsList = Array<V1alpha1KnownTypeField>;
+const V1alpha1ResourceOverrideKnownTypeFieldsList = /*@__PURE__*/ __L.at(
+  __c41,
+  1,
+) as any as S.Schema<V1alpha1ResourceOverrideKnownTypeFieldsList>;
+
 export interface V1alpha1ResourceOverride {
   /** Actions defines the set of actions that can be performed on the resource, as a Lua script. */
   actions?: string;
@@ -2495,9 +4396,19 @@ export interface V1alpha1ResourceOverride {
   /** UseOpenLibs indicates whether to use open-source libraries for the resource. */
   useOpenLibs?: boolean;
 }
+const V1alpha1ResourceOverride = /*@__PURE__*/ __L.at(
+  __c41,
+  2,
+) as any as S.Schema<V1alpha1ResourceOverride>;
+
 export type ClusterSettingsResourceOverridesMap = {
   [key: string]: V1alpha1ResourceOverride | undefined;
 };
+const ClusterSettingsResourceOverridesMap = /*@__PURE__*/ __L.at(
+  __c41,
+  3,
+) as any as S.Schema<ClusterSettingsResourceOverridesMap>;
+
 export interface ClusterSettings {
   additionalUrls?: ClusterSettingsAdditionalUrlsList;
   appLabelKey?: string;
@@ -2532,23 +4443,64 @@ export interface ClusterSettings {
   url?: string;
   userLoginsDisabled?: boolean;
 }
+const ClusterSettings = /*@__PURE__*/ __L.at(__c41, 4) as any as S.Schema<ClusterSettings>;
+
 export interface GetSettingsServicePluginsRequest {}
+const GetSettingsServicePluginsRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  5,
+) as any as S.Schema<GetSettingsServicePluginsRequest>;
+
 export type ClusterSettingsPluginsResponsePluginsList = Array<V1alpha1PluginConfigMapRef>;
+const ClusterSettingsPluginsResponsePluginsList =
+  ClusterSettingsPluginsList as any as S.Schema<ClusterSettingsPluginsResponsePluginsList>;
+
 export interface ClusterSettingsPluginsResponse {
   plugins?: ClusterSettingsPluginsResponsePluginsList;
 }
+const ClusterSettingsPluginsResponse = /*@__PURE__*/ __L.at(
+  __c41,
+  6,
+) as any as S.Schema<ClusterSettingsPluginsResponse>;
+
 export interface InvalidateClusterServiceCacheRequest {
   /** value holds the cluster server URL or cluster name */
   id_value: string;
 }
+const InvalidateClusterServiceCacheRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  7,
+) as any as S.Schema<InvalidateClusterServiceCacheRequest>;
+
 export interface ListAccountServiceAccountsRequest {}
+const ListAccountServiceAccountsRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  0,
+) as any as S.Schema<ListAccountServiceAccountsRequest>;
+
 export type AccountAccountsListItemsList = Array<AccountAccount>;
+const AccountAccountsListItemsList = /*@__PURE__*/ __L.at(
+  __c42,
+  1,
+) as any as S.Schema<AccountAccountsListItemsList>;
+
 export interface AccountAccountsList {
   items?: AccountAccountsListItemsList;
 }
+const AccountAccountsList = /*@__PURE__*/ __L.at(__c42, 2) as any as S.Schema<AccountAccountsList>;
+
 export type ListApplicationServiceRequestProjectsList = Array<string>;
+const ListApplicationServiceRequestProjectsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<ListApplicationServiceRequestProjectsList>;
+
 export type ListApplicationServiceRequestProjectList = Array<string>;
+const ListApplicationServiceRequestProjectList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<ListApplicationServiceRequestProjectList>;
+
 export type ListApplicationServiceRequestNamesList = Array<string>;
+const ListApplicationServiceRequestNamesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<ListApplicationServiceRequestNamesList>;
+
 export interface ListApplicationServiceRequest {
   /** the application's name. */
   name?: string;
@@ -2569,26 +4521,56 @@ export interface ListApplicationServiceRequest {
   /** the application names to restrict returned list applications (used by the UI favorites filter). An entry may be qualified as 'namespace/name' to match only the application in that namespace. */
   names?: ListApplicationServiceRequestNamesList;
 }
+const ListApplicationServiceRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  3,
+) as any as S.Schema<ListApplicationServiceRequest>;
+
 export type V1alpha1ApplicationListItemsList = Array<V1alpha1Application>;
+const V1alpha1ApplicationListItemsList =
+  ApplicationsetApplicationSetGenerateResponseApplicationsList as any as S.Schema<V1alpha1ApplicationListItemsList>;
+
 export interface V1alpha1ApplicationList {
   items?: V1alpha1ApplicationListItemsList;
   metadata?: V1ListMeta;
 }
+const V1alpha1ApplicationList = /*@__PURE__*/ __L.at(
+  __c42,
+  4,
+) as any as S.Schema<V1alpha1ApplicationList>;
+
 export interface ListApplicationServiceLinksRequest {
   name: string;
   namespace?: string;
   project?: string;
 }
+const ListApplicationServiceLinksRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  5,
+) as any as S.Schema<ListApplicationServiceLinksRequest>;
+
 export interface ApplicationLinkInfo {
   description?: string;
   iconClass?: string;
   title?: string;
   url?: string;
 }
+const ApplicationLinkInfo = /*@__PURE__*/ __L.at(__c42, 6) as any as S.Schema<ApplicationLinkInfo>;
+
 export type ApplicationLinksResponseItemsList = Array<ApplicationLinkInfo>;
+const ApplicationLinksResponseItemsList = /*@__PURE__*/ __L.at(
+  __c42,
+  7,
+) as any as S.Schema<ApplicationLinksResponseItemsList>;
+
 export interface ApplicationLinksResponse {
   items?: ApplicationLinksResponseItemsList;
 }
+const ApplicationLinksResponse = /*@__PURE__*/ __L.at(
+  __c43,
+  0,
+) as any as S.Schema<ApplicationLinksResponse>;
+
 export interface ListApplicationServiceResourceActionsRequest {
   name: string;
   namespace?: string;
@@ -2599,6 +4581,11 @@ export interface ListApplicationServiceResourceActionsRequest {
   appNamespace?: string;
   project?: string;
 }
+const ListApplicationServiceResourceActionsRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  1,
+) as any as S.Schema<ListApplicationServiceResourceActionsRequest>;
+
 /** ResourceActionParam represents a parameter for a resource action. It includes a name, value, type, and an optional default value for the parameter. */
 export interface V1alpha1ResourceActionParam {
   /** Name is the name of the parameter. */
@@ -2606,6 +4593,9 @@ export interface V1alpha1ResourceActionParam {
 }
 /** Params contains the parameters required to execute the action. */
 export type V1alpha1ResourceActionParamsList = Array<V1alpha1ResourceActionParam>;
+const V1alpha1ResourceActionParamsList =
+  ClusterSettingsPluginsList as any as S.Schema<V1alpha1ResourceActionParamsList>;
+
 /** ResourceAction represents an individual action that can be performed on a resource. It includes parameters, an optional disabled flag, an icon for display, and a name for the action. */
 export interface V1alpha1ResourceAction {
   /** Disabled indicates whether the action is disabled. */
@@ -2619,10 +4609,25 @@ export interface V1alpha1ResourceAction {
   /** Params contains the parameters required to execute the action. */
   params?: V1alpha1ResourceActionParamsList;
 }
+const V1alpha1ResourceAction = /*@__PURE__*/ __L.at(
+  __c43,
+  2,
+) as any as S.Schema<V1alpha1ResourceAction>;
+
 export type ApplicationResourceActionsListResponseActionsList = Array<V1alpha1ResourceAction>;
+const ApplicationResourceActionsListResponseActionsList = /*@__PURE__*/ __L.at(
+  __c43,
+  3,
+) as any as S.Schema<ApplicationResourceActionsListResponseActionsList>;
+
 export interface ApplicationResourceActionsListResponse {
   actions?: ApplicationResourceActionsListResponseActionsList;
 }
+const ApplicationResourceActionsListResponse = /*@__PURE__*/ __L.at(
+  __c43,
+  4,
+) as any as S.Schema<ApplicationResourceActionsListResponse>;
+
 export interface ListApplicationServiceResourceEventsRequest {
   name: string;
   resourceNamespace?: string;
@@ -2631,6 +4636,11 @@ export interface ListApplicationServiceResourceEventsRequest {
   appNamespace?: string;
   project?: string;
 }
+const ListApplicationServiceResourceEventsRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  5,
+) as any as S.Schema<ListApplicationServiceResourceEventsRequest>;
+
 /** MicroTime is version of Time with microsecond level precision. +protobuf.options.marshal=false +protobuf.as=Timestamp +protobuf.options.(gogoproto.goproto_stringer)=false */
 export interface V1MicroTime {
   /** Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive. This field may be limited in precision depending on context. */
@@ -2638,6 +4648,8 @@ export interface V1MicroTime {
   /** Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive. */
   seconds?: number;
 }
+const V1MicroTime = /*@__PURE__*/ __L.at(__c43, 6) as any as S.Schema<V1MicroTime>;
+
 /** ObjectReference contains enough information to let you inspect or modify the referred object. */
 export interface EventsObjectReference {
   /** API version of the referent. */
@@ -2655,12 +4667,19 @@ export interface EventsObjectReference {
   /** UID of the referent. */
   uid?: string;
 }
+const EventsObjectReference = /*@__PURE__*/ __L.at(
+  __c43,
+  7,
+) as any as S.Schema<EventsObjectReference>;
+
 /** EventSeries contain information on series of events, i.e. thing that was/is happening continuously for some time. */
 export interface EventsEventSeries {
   /** Number of occurrences in this series up to the last heartbeat time. */
   count?: number;
   lastObservedTime?: V1MicroTime;
 }
+const EventsEventSeries = /*@__PURE__*/ __L.at(__c44, 0) as any as S.Schema<EventsEventSeries>;
+
 /** EventSource contains information for an event. */
 export interface EventsEventSource {
   /** Component from which the event is generated. */
@@ -2668,6 +4687,8 @@ export interface EventsEventSource {
   /** Node name on which the event is generated. */
   host?: string;
 }
+const EventsEventSource = /*@__PURE__*/ __L.at(__c44, 1) as any as S.Schema<EventsEventSource>;
+
 /** Event mirrors corev1.Event and exposes the fields consumed by the Argo CD API and UI. Event is a report of an event somewhere in the cluster. Events have a limited retention time and triggers and messages may evolve with time. Event consumers should not rely on the timing of an event with a given Reason reflecting a consistent underlying trigger, or the continued existence of events with that Reason. Events should be treated as informative, best-effort, supplemental data. */
 export interface EventsEvent {
   /** What action was taken/failed regarding to the Regarding object. */
@@ -2693,14 +4714,23 @@ export interface EventsEvent {
   /** Type of this event (Normal, Warning), new types could be added in the future. */
   type?: string;
 }
+const EventsEvent = /*@__PURE__*/ __L.at(__c44, 2) as any as S.Schema<EventsEvent>;
+
 /** List of events. */
 export type EventsEventListItemsList = Array<EventsEvent>;
+const EventsEventListItemsList = /*@__PURE__*/ __L.at(
+  __c44,
+  3,
+) as any as S.Schema<EventsEventListItemsList>;
+
 /** EventList is a list of Argo CD Event messages. It mirrors corev1.EventList field-for-field but is defined in Argo CD's apiclient package to avoid pulling Kubernetes protobuf types into the public gRPC surface. */
 export interface EventsEventList {
   /** List of events. */
   items?: EventsEventListItemsList;
   metadata?: V1ListMeta;
 }
+const EventsEventList = /*@__PURE__*/ __L.at(__c44, 4) as any as S.Schema<EventsEventList>;
+
 export interface ListApplicationServiceResourceLinksRequest {
   name: string;
   namespace?: string;
@@ -2711,7 +4741,15 @@ export interface ListApplicationServiceResourceLinksRequest {
   appNamespace?: string;
   project?: string;
 }
+const ListApplicationServiceResourceLinksRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  5,
+) as any as S.Schema<ListApplicationServiceResourceLinksRequest>;
+
 export type ListApplicationSetServiceRequestProjectsList = Array<string>;
+const ListApplicationSetServiceRequestProjectsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<ListApplicationSetServiceRequestProjectsList>;
+
 export interface ListApplicationSetServiceRequest {
   /** the project names to restrict returned list applicationsets. */
   projects?: ListApplicationSetServiceRequestProjectsList;
@@ -2720,17 +4758,37 @@ export interface ListApplicationSetServiceRequest {
   /** The application set namespace. Default empty is argocd control plane namespace. */
   appsetNamespace?: string;
 }
+const ListApplicationSetServiceRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  6,
+) as any as S.Schema<ListApplicationSetServiceRequest>;
+
 export type V1alpha1ApplicationSetListItemsList = Array<V1alpha1ApplicationSet>;
+const V1alpha1ApplicationSetListItemsList = /*@__PURE__*/ __L.at(
+  __c44,
+  7,
+) as any as S.Schema<V1alpha1ApplicationSetListItemsList>;
+
 export interface V1alpha1ApplicationSetList {
   items?: V1alpha1ApplicationSetListItemsList;
   metadata?: V1ListMeta;
 }
+const V1alpha1ApplicationSetList = /*@__PURE__*/ __L.at(
+  __c45,
+  0,
+) as any as S.Schema<V1alpha1ApplicationSetList>;
+
 export interface ListApplicationSetServiceResourceEventsRequest {
   /** the applicationsets's name */
   name: string;
   /** The application set namespace. Default empty is argocd control plane namespace. */
   appsetNamespace?: string;
 }
+const ListApplicationSetServiceResourceEventsRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  1,
+) as any as S.Schema<ListApplicationSetServiceResourceEventsRequest>;
+
 export interface ListCertificateServiceCertificatesRequest {
   /** A file-glob pattern (not regular expression) the host name has to match. */
   hostNamePattern?: string;
@@ -2739,6 +4797,11 @@ export interface ListCertificateServiceCertificatesRequest {
   /** The sub type of the certificate to match (protocol dependent, usually only used for ssh certs). */
   certSubType?: string;
 }
+const ListCertificateServiceCertificatesRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  2,
+) as any as S.Schema<ListCertificateServiceCertificatesRequest>;
+
 export interface ListClusterServiceRequest {
   server?: string;
   name?: string;
@@ -2747,76 +4810,179 @@ export interface ListClusterServiceRequest {
   /** value holds the cluster server URL or cluster name. */
   id_value?: string;
 }
+const ListClusterServiceRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  3,
+) as any as S.Schema<ListClusterServiceRequest>;
+
 export type V1alpha1ClusterListItemsList = Array<V1alpha1Cluster>;
+const V1alpha1ClusterListItemsList =
+  ProjectDetailedProjectsResponseClustersList as any as S.Schema<V1alpha1ClusterListItemsList>;
+
 /** ClusterList is a collection of Clusters. */
 export interface V1alpha1ClusterList {
   items?: V1alpha1ClusterListItemsList;
   metadata?: V1ListMeta;
 }
+const V1alpha1ClusterList = /*@__PURE__*/ __L.at(__c45, 4) as any as S.Schema<V1alpha1ClusterList>;
+
 export interface ListGPGKeyServiceRequest {
   /** The GPG key ID to query for. */
   keyID?: string;
 }
+const ListGPGKeyServiceRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  5,
+) as any as S.Schema<ListGPGKeyServiceRequest>;
+
 export interface ListNotificationServiceServicesRequest {}
+const ListNotificationServiceServicesRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  6,
+) as any as S.Schema<ListNotificationServiceServicesRequest>;
+
 export type NotificationService = V1alpha1PluginConfigMapRef;
 export type NotificationServiceListItemsList = Array<V1alpha1PluginConfigMapRef>;
+const NotificationServiceListItemsList =
+  ClusterSettingsPluginsList as any as S.Schema<NotificationServiceListItemsList>;
+
 export interface NotificationServiceList {
   items?: NotificationServiceListItemsList;
 }
+const NotificationServiceList = /*@__PURE__*/ __L.at(
+  __c45,
+  7,
+) as any as S.Schema<NotificationServiceList>;
+
 export interface ListNotificationServiceTemplatesRequest {}
+const ListNotificationServiceTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  0,
+) as any as S.Schema<ListNotificationServiceTemplatesRequest>;
+
 export type NotificationTemplate = V1alpha1PluginConfigMapRef;
 export type NotificationTemplateListItemsList = Array<V1alpha1PluginConfigMapRef>;
 export interface NotificationTemplateList {
   items?: NotificationTemplateListItemsList;
 }
+const NotificationTemplateList =
+  NotificationServiceList as any as S.Schema<NotificationTemplateList>;
+
 export interface ListNotificationServiceTriggersRequest {}
+const ListNotificationServiceTriggersRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  1,
+) as any as S.Schema<ListNotificationServiceTriggersRequest>;
+
 export type NotificationTrigger = V1alpha1PluginConfigMapRef;
 export type NotificationTriggerListItemsList = Array<V1alpha1PluginConfigMapRef>;
 export interface NotificationTriggerList {
   items?: NotificationTriggerListItemsList;
 }
+const NotificationTriggerList = NotificationServiceList as any as S.Schema<NotificationTriggerList>;
+
 export interface ListProjectServiceRequest {
   name?: string;
 }
+const ListProjectServiceRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  2,
+) as any as S.Schema<ListProjectServiceRequest>;
+
 export type V1alpha1AppProjectListItemsList = Array<V1alpha1AppProject>;
+const V1alpha1AppProjectListItemsList =
+  ProjectDetailedProjectsResponseGlobalProjectsList as any as S.Schema<V1alpha1AppProjectListItemsList>;
+
 export interface V1alpha1AppProjectList {
   items?: V1alpha1AppProjectListItemsList;
   metadata?: V1ListMeta;
 }
+const V1alpha1AppProjectList = /*@__PURE__*/ __L.at(
+  __c46,
+  3,
+) as any as S.Schema<V1alpha1AppProjectList>;
+
 export interface ListProjectServiceEventsRequest {
   name: string;
 }
+const ListProjectServiceEventsRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  4,
+) as any as S.Schema<ListProjectServiceEventsRequest>;
+
 export interface ListProjectServiceLinksRequest {
   name: string;
 }
+const ListProjectServiceLinksRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  5,
+) as any as S.Schema<ListProjectServiceLinksRequest>;
+
 export interface ListRepoCredsServiceRepositoryCredentialsRequest {
   /** Repo URL for query. */
   url?: string;
 }
+const ListRepoCredsServiceRepositoryCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  6,
+) as any as S.Schema<ListRepoCredsServiceRepositoryCredentialsRequest>;
+
 export type V1alpha1RepoCredsListItemsList = Array<V1alpha1RepoCreds>;
+const V1alpha1RepoCredsListItemsList = /*@__PURE__*/ __L.at(
+  __c46,
+  7,
+) as any as S.Schema<V1alpha1RepoCredsListItemsList>;
+
 /** RepositoryList is a collection of Repositories. */
 export interface V1alpha1RepoCredsList {
   items?: V1alpha1RepoCredsListItemsList;
   metadata?: V1ListMeta;
 }
+const V1alpha1RepoCredsList = /*@__PURE__*/ __L.at(
+  __c47,
+  0,
+) as any as S.Schema<V1alpha1RepoCredsList>;
+
 export interface ListRepoCredsServiceWriteRepositoryCredentialsRequest {
   /** Repo URL for query. */
   url?: string;
 }
+const ListRepoCredsServiceWriteRepositoryCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  1,
+) as any as S.Schema<ListRepoCredsServiceWriteRepositoryCredentialsRequest>;
+
 export interface ListRepositoryServiceAppsRequest {
   repo: string;
   revision?: string;
   appName?: string;
   appProject?: string;
 }
+const ListRepositoryServiceAppsRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  2,
+) as any as S.Schema<ListRepositoryServiceAppsRequest>;
+
 export interface RepositoryAppInfo {
   path?: string;
   type?: string;
 }
+const RepositoryAppInfo = /*@__PURE__*/ __L.at(__c47, 3) as any as S.Schema<RepositoryAppInfo>;
+
 export type RepositoryRepoAppsResponseItemsList = Array<RepositoryAppInfo>;
+const RepositoryRepoAppsResponseItemsList = /*@__PURE__*/ __L.at(
+  __c47,
+  4,
+) as any as S.Schema<RepositoryRepoAppsResponseItemsList>;
+
 export interface RepositoryRepoAppsResponse {
   items?: RepositoryRepoAppsResponseItemsList;
 }
+const RepositoryRepoAppsResponse = /*@__PURE__*/ __L.at(
+  __c47,
+  5,
+) as any as S.Schema<RepositoryRepoAppsResponse>;
+
 export interface ListRepositoryServiceOCITagsRequest {
   /** Repo URL for query */
   repo: string;
@@ -2825,12 +4991,25 @@ export interface ListRepositoryServiceOCITagsRequest {
   /** App project for query. */
   appProject?: string;
 }
+const ListRepositoryServiceOCITagsRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  6,
+) as any as S.Schema<ListRepositoryServiceOCITagsRequest>;
+
 export type RepositoryRefsBranchesList = Array<string>;
+const RepositoryRefsBranchesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<RepositoryRefsBranchesList>;
+
 export type RepositoryRefsTagsList = Array<string>;
+const RepositoryRefsTagsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<RepositoryRefsTagsList>;
+
 export interface RepositoryRefs {
   branches?: RepositoryRefsBranchesList;
   tags?: RepositoryRefsTagsList;
 }
+const RepositoryRefs = /*@__PURE__*/ __L.at(__c47, 7) as any as S.Schema<RepositoryRefs>;
+
 export interface ListRepositoryServiceRefsRequest {
   /** Repo URL for query */
   repo: string;
@@ -2839,6 +5018,11 @@ export interface ListRepositoryServiceRefsRequest {
   /** App project for query. */
   appProject?: string;
 }
+const ListRepositoryServiceRefsRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  0,
+) as any as S.Schema<ListRepositoryServiceRefsRequest>;
+
 export interface ListRepositoryServiceRepositoriesRequest {
   /** Repo URL for query. */
   repo?: string;
@@ -2847,12 +5031,25 @@ export interface ListRepositoryServiceRepositoriesRequest {
   /** App project for query. */
   appProject?: string;
 }
+const ListRepositoryServiceRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  1,
+) as any as S.Schema<ListRepositoryServiceRepositoriesRequest>;
+
 export type V1alpha1RepositoryListItemsList = Array<V1alpha1Repository>;
+const V1alpha1RepositoryListItemsList =
+  ProjectDetailedProjectsResponseRepositoriesList as any as S.Schema<V1alpha1RepositoryListItemsList>;
+
 /** RepositoryList is a collection of Repositories. */
 export interface V1alpha1RepositoryList {
   items?: V1alpha1RepositoryListItemsList;
   metadata?: V1ListMeta;
 }
+const V1alpha1RepositoryList = /*@__PURE__*/ __L.at(
+  __c48,
+  2,
+) as any as S.Schema<V1alpha1RepositoryList>;
+
 export interface ListRepositoryServiceWriteRepositoriesRequest {
   /** Repo URL for query. */
   repo?: string;
@@ -2861,6 +5058,11 @@ export interface ListRepositoryServiceWriteRepositoriesRequest {
   /** App project for query. */
   appProject?: string;
 }
+const ListRepositoryServiceWriteRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  3,
+) as any as S.Schema<ListRepositoryServiceWriteRepositoriesRequest>;
+
 export interface PatchApplicationServiceRequest {
   name: string;
   appNamespace?: string;
@@ -2868,6 +5070,11 @@ export interface PatchApplicationServiceRequest {
   patchType?: string;
   project?: string;
 }
+const PatchApplicationServiceRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  4,
+) as any as S.Schema<PatchApplicationServiceRequest>;
+
 export interface PatchApplicationServiceResourceRequest {
   name: string;
   namespace?: string;
@@ -2880,11 +5087,24 @@ export interface PatchApplicationServiceResourceRequest {
   project?: string;
   body: string;
 }
+const PatchApplicationServiceResourceRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  5,
+) as any as S.Schema<PatchApplicationServiceResourceRequest>;
+
 export interface RotateClusterServiceAuthRequest {
   /** value holds the cluster server URL or cluster name */
   id_value: string;
 }
+const RotateClusterServiceAuthRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  6,
+) as any as S.Schema<RotateClusterServiceAuthRequest>;
+
 export type RotateClusterServiceAuthResponse = unknown;
+const RotateClusterServiceAuthResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<RotateClusterServiceAuthResponse>;
+
 export interface RunApplicationServiceResourceActionRequest {
   name: string;
   namespace?: string;
@@ -2896,10 +5116,24 @@ export interface RunApplicationServiceResourceActionRequest {
   project?: string;
   body: string;
 }
+const RunApplicationServiceResourceActionRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  7,
+) as any as S.Schema<RunApplicationServiceResourceActionRequest>;
+
 export type RunApplicationServiceResourceActionResponse = unknown;
+const RunApplicationServiceResourceActionResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<RunApplicationServiceResourceActionResponse>;
+
 export type ApplicationResourceActionParameters = V1alpha1Info;
 export type RunApplicationServiceResourceActionV2RequestResourceActionParametersList =
   Array<V1alpha1Info>;
+const RunApplicationServiceResourceActionV2RequestResourceActionParametersList =
+  /*@__PURE__*/ __L.at(
+    __c49,
+    0,
+  ) as any as S.Schema<RunApplicationServiceResourceActionV2RequestResourceActionParametersList>;
+
 export interface RunApplicationServiceResourceActionV2Request {
   name: string;
   action?: string;
@@ -2912,16 +5146,47 @@ export interface RunApplicationServiceResourceActionV2Request {
   resourceName?: string;
   version?: string;
 }
+const RunApplicationServiceResourceActionV2Request = /*@__PURE__*/ __L.at(
+  __c49,
+  1,
+) as any as S.Schema<RunApplicationServiceResourceActionV2Request>;
+
 export type RunApplicationServiceResourceActionV2Response = unknown;
+const RunApplicationServiceResourceActionV2Response =
+  DeleteAccountServiceTokenResponse as any as S.Schema<RunApplicationServiceResourceActionV2Response>;
+
 export type SyncApplicationServiceRequestInfosList = Array<V1alpha1Info>;
+const SyncApplicationServiceRequestInfosList =
+  V1alpha1ResourceNodeInfoList as any as S.Schema<SyncApplicationServiceRequestInfosList>;
+
 export type SyncApplicationServiceRequestManifestsList = Array<string>;
+const SyncApplicationServiceRequestManifestsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<SyncApplicationServiceRequestManifestsList>;
+
 export type SyncApplicationServiceRequestResourcesList = Array<V1alpha1SyncOperationResource>;
+const SyncApplicationServiceRequestResourcesList =
+  V1alpha1SyncOperationResourcesList as any as S.Schema<SyncApplicationServiceRequestResourcesList>;
+
 export type SyncApplicationServiceRequestRevisionsList = Array<string>;
+const SyncApplicationServiceRequestRevisionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<SyncApplicationServiceRequestRevisionsList>;
+
 export type SyncApplicationServiceRequestSourcePositionsList = Array<string>;
+const SyncApplicationServiceRequestSourcePositionsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<SyncApplicationServiceRequestSourcePositionsList>;
+
 export type ApplicationSyncOptionsItemsList = Array<string>;
+const ApplicationSyncOptionsItemsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<ApplicationSyncOptionsItemsList>;
+
 export interface ApplicationSyncOptions {
   items?: ApplicationSyncOptionsItemsList;
 }
+const ApplicationSyncOptions = /*@__PURE__*/ __L.at(
+  __c49,
+  2,
+) as any as S.Schema<ApplicationSyncOptions>;
+
 export interface SyncApplicationServiceRequest {
   name: string;
   appNamespace?: string;
@@ -2938,18 +5203,39 @@ export interface SyncApplicationServiceRequest {
   strategy?: V1alpha1SyncStrategy;
   syncOptions?: ApplicationSyncOptions;
 }
+const SyncApplicationServiceRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  3,
+) as any as S.Schema<SyncApplicationServiceRequest>;
+
 export interface TerminateApplicationServiceOperationRequest {
   name: string;
   appNamespace?: string;
   project?: string;
 }
+const TerminateApplicationServiceOperationRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  4,
+) as any as S.Schema<TerminateApplicationServiceOperationRequest>;
+
 export type TerminateApplicationServiceOperationResponse = unknown;
+const TerminateApplicationServiceOperationResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<TerminateApplicationServiceOperationResponse>;
+
 export interface UpdateAccountServicePasswordRequest {
   currentPassword?: string | Redacted.Redacted<string>;
   name?: string;
   newPassword?: string | Redacted.Redacted<string>;
 }
+const UpdateAccountServicePasswordRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  5,
+) as any as S.Schema<UpdateAccountServicePasswordRequest>;
+
 export type UpdateAccountServicePasswordResponse = unknown;
+const UpdateAccountServicePasswordResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<UpdateAccountServicePasswordResponse>;
+
 export interface UpdateApplicationServiceRequest {
   /** Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names +optional */
   application_metadata_name: string;
@@ -2960,10 +5246,24 @@ export interface UpdateApplicationServiceRequest {
   spec?: V1alpha1ApplicationSpec;
   status?: V1alpha1ApplicationStatus;
 }
+const UpdateApplicationServiceRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  6,
+) as any as S.Schema<UpdateApplicationServiceRequest>;
+
 export type UpdateApplicationServiceSpecRequestIgnoreDifferencesList =
   Array<V1alpha1ResourceIgnoreDifferences>;
+const UpdateApplicationServiceSpecRequestIgnoreDifferencesList =
+  V1alpha1ApplicationSpecIgnoreDifferencesList as any as S.Schema<UpdateApplicationServiceSpecRequestIgnoreDifferencesList>;
+
 export type UpdateApplicationServiceSpecRequestInfoList = Array<V1alpha1Info>;
+const UpdateApplicationServiceSpecRequestInfoList =
+  V1alpha1ResourceNodeInfoList as any as S.Schema<UpdateApplicationServiceSpecRequestInfoList>;
+
 export type UpdateApplicationServiceSpecRequestSourcesList = Array<V1alpha1ApplicationSource>;
+const UpdateApplicationServiceSpecRequestSourcesList =
+  V1alpha1SyncOperationSourcesList as any as S.Schema<UpdateApplicationServiceSpecRequestSourcesList>;
+
 export interface UpdateApplicationServiceSpecRequest {
   name: string;
   validate?: boolean;
@@ -2979,11 +5279,28 @@ export interface UpdateApplicationServiceSpecRequest {
   sources?: UpdateApplicationServiceSpecRequestSourcesList;
   syncPolicy?: V1alpha1SyncPolicy;
 }
+const UpdateApplicationServiceSpecRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  7,
+) as any as S.Schema<UpdateApplicationServiceSpecRequest>;
+
 export type UpdateClusterServiceRequestUpdatedFieldsList = Array<string>;
+const UpdateClusterServiceRequestUpdatedFieldsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<UpdateClusterServiceRequestUpdatedFieldsList>;
+
 export type UpdateClusterServiceRequestAnnotationsMap = { [key: string]: string | undefined };
+const UpdateClusterServiceRequestAnnotationsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<UpdateClusterServiceRequestAnnotationsMap>;
+
 export type UpdateClusterServiceRequestLabelsMap = { [key: string]: string | undefined };
+const UpdateClusterServiceRequestLabelsMap =
+  V1alpha1HostInfoLabelsMap as any as S.Schema<UpdateClusterServiceRequestLabelsMap>;
+
 /** Holds list of namespaces which are accessible in that cluster. Cluster level resources will be ignored if namespace list is not empty. */
 export type UpdateClusterServiceRequestNamespacesList = Array<string>;
+const UpdateClusterServiceRequestNamespacesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<UpdateClusterServiceRequestNamespacesList>;
+
 export interface UpdateClusterServiceRequest {
   /** value holds the cluster server URL or cluster name */
   id_value: string;
@@ -3008,11 +5325,21 @@ export interface UpdateClusterServiceRequest {
   /** Shard contains optional shard number. Calculated on the fly by the application controller if not specified. */
   shard?: number;
 }
+const UpdateClusterServiceRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  0,
+) as any as S.Schema<UpdateClusterServiceRequest>;
+
 export interface UpdateProjectServiceRequest {
   /** Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names +optional */
   project_metadata_name: string;
   project?: V1alpha1AppProject;
 }
+const UpdateProjectServiceRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  1,
+) as any as S.Schema<UpdateProjectServiceRequest>;
+
 export interface UpdateRepoCredsServiceRepositoryCredentialsRequest {
   /** URL is the URL to which these credentials match */
   creds_url: string;
@@ -3042,6 +5369,11 @@ export interface UpdateRepoCredsServiceRepositoryCredentialsRequest {
   useAzureWorkloadIdentity?: boolean;
   username?: string;
 }
+const UpdateRepoCredsServiceRepositoryCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  2,
+) as any as S.Schema<UpdateRepoCredsServiceRepositoryCredentialsRequest>;
+
 export interface UpdateRepoCredsServiceWriteRepositoryCredentialsRequest {
   /** URL is the URL to which these credentials match */
   creds_url: string;
@@ -3071,6 +5403,11 @@ export interface UpdateRepoCredsServiceWriteRepositoryCredentialsRequest {
   useAzureWorkloadIdentity?: boolean;
   username?: string;
 }
+const UpdateRepoCredsServiceWriteRepositoryCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  3,
+) as any as S.Schema<UpdateRepoCredsServiceWriteRepositoryCredentialsRequest>;
+
 export interface UpdateRepositoryServiceRepositoryRequest {
   /** Repo contains the URL to the remote repository */
   repo_repo: string;
@@ -3113,6 +5450,11 @@ export interface UpdateRepositoryServiceRepositoryRequest {
   /** WebhookManifestCacheWarmDisabled disables manifest cache warming during webhook processing for this repository. When set, webhook handlers will only trigger reconciliation for affected applications and skip Redis cache operations for unaffected ones. Recommended for large monorepos with plain YAML manifests. */
   webhookManifestCacheWarmDisabled?: boolean;
 }
+const UpdateRepositoryServiceRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  4,
+) as any as S.Schema<UpdateRepositoryServiceRepositoryRequest>;
+
 export interface UpdateRepositoryServiceWriteRepositoryRequest {
   /** Repo contains the URL to the remote repository */
   repo_repo: string;
@@ -3155,6 +5497,11 @@ export interface UpdateRepositoryServiceWriteRepositoryRequest {
   /** WebhookManifestCacheWarmDisabled disables manifest cache warming during webhook processing for this repository. When set, webhook handlers will only trigger reconciliation for affected applications and skip Redis cache operations for unaffected ones. Recommended for large monorepos with plain YAML manifests. */
   webhookManifestCacheWarmDisabled?: boolean;
 }
+const UpdateRepositoryServiceWriteRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  5,
+) as any as S.Schema<UpdateRepositoryServiceWriteRepositoryRequest>;
+
 export interface ValidateRepositoryServiceAccessRequest {
   /** The URL to the repo */
   repo: string;
@@ -3208,7 +5555,15 @@ export interface ValidateRepositoryServiceAccessRequest {
   azureActiveDirectoryEndpoint?: string;
   body: string;
 }
+const ValidateRepositoryServiceAccessRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  6,
+) as any as S.Schema<ValidateRepositoryServiceAccessRequest>;
+
 export type ValidateRepositoryServiceAccessResponse = unknown;
+const ValidateRepositoryServiceAccessResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<ValidateRepositoryServiceAccessResponse>;
+
 export interface ValidateRepositoryServiceWriteAccessRequest {
   /** The URL to the repo */
   repo: string;
@@ -3262,8 +5617,21 @@ export interface ValidateRepositoryServiceWriteAccessRequest {
   azureActiveDirectoryEndpoint?: string;
   body: string;
 }
+const ValidateRepositoryServiceWriteAccessRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  7,
+) as any as S.Schema<ValidateRepositoryServiceWriteAccessRequest>;
+
 export type ValidateRepositoryServiceWriteAccessResponse = unknown;
+const ValidateRepositoryServiceWriteAccessResponse =
+  DeleteAccountServiceTokenResponse as any as S.Schema<ValidateRepositoryServiceWriteAccessResponse>;
+
 export interface VersionServiceVersionRequest {}
+const VersionServiceVersionRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  0,
+) as any as S.Schema<VersionServiceVersionRequest>;
+
 export interface VersionVersionMessage {
   BuildDate?: string;
   Compiler?: string;
@@ -3279,9 +5647,23 @@ export interface VersionVersionMessage {
   Platform?: string;
   Version?: string;
 }
+const VersionVersionMessage = /*@__PURE__*/ __L.at(
+  __c51,
+  1,
+) as any as S.Schema<VersionVersionMessage>;
+
 export type WatchApplicationServiceRequestProjectsList = Array<string>;
+const WatchApplicationServiceRequestProjectsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<WatchApplicationServiceRequestProjectsList>;
+
 export type WatchApplicationServiceRequestProjectList = Array<string>;
+const WatchApplicationServiceRequestProjectList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<WatchApplicationServiceRequestProjectList>;
+
 export type WatchApplicationServiceRequestNamesList = Array<string>;
+const WatchApplicationServiceRequestNamesList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<WatchApplicationServiceRequestNamesList>;
+
 export interface WatchApplicationServiceRequest {
   /** the application's name. */
   name?: string;
@@ -3302,15 +5684,30 @@ export interface WatchApplicationServiceRequest {
   /** the application names to restrict returned list applications (used by the UI favorites filter). An entry may be qualified as 'namespace/name' to match only the application in that namespace. */
   names?: WatchApplicationServiceRequestNamesList;
 }
+const WatchApplicationServiceRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  2,
+) as any as S.Schema<WatchApplicationServiceRequest>;
+
 /** ApplicationWatchEvent contains information about application change. */
 export interface V1alpha1ApplicationWatchEvent {
   application?: V1alpha1Application;
   type?: string;
 }
+const V1alpha1ApplicationWatchEvent = /*@__PURE__*/ __L.at(
+  __c51,
+  3,
+) as any as S.Schema<V1alpha1ApplicationWatchEvent>;
+
 export interface WatchApplicationServiceResponse {
   error?: RuntimeStreamError;
   result?: V1alpha1ApplicationWatchEvent;
 }
+const WatchApplicationServiceResponse = /*@__PURE__*/ __L.at(
+  __c51,
+  4,
+) as any as S.Schema<WatchApplicationServiceResponse>;
+
 export interface WatchApplicationServiceResourceTreeRequest {
   applicationName: string;
   namespace?: string;
@@ -3321,11 +5718,24 @@ export interface WatchApplicationServiceResourceTreeRequest {
   appNamespace?: string;
   project?: string;
 }
+const WatchApplicationServiceResourceTreeRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  5,
+) as any as S.Schema<WatchApplicationServiceResourceTreeRequest>;
+
 export interface WatchApplicationServiceResourceTreeResponse {
   error?: RuntimeStreamError;
   result?: V1alpha1ApplicationTree;
 }
+const WatchApplicationServiceResourceTreeResponse = /*@__PURE__*/ __L.at(
+  __c51,
+  6,
+) as any as S.Schema<WatchApplicationServiceResourceTreeResponse>;
+
 export type WatchApplicationSetServiceRequestProjectsList = Array<string>;
+const WatchApplicationSetServiceRequestProjectsList =
+  V1alpha1ResourceNodeImagesList as any as S.Schema<WatchApplicationSetServiceRequestProjectsList>;
+
 export interface WatchApplicationSetServiceRequest {
   name?: string;
   projects?: WatchApplicationSetServiceRequestProjectsList;
@@ -3334,15 +5744,30 @@ export interface WatchApplicationSetServiceRequest {
   /** when specified with a watch call, shows changes that occur after that particular version of a resource. */
   resourceVersion?: string;
 }
+const WatchApplicationSetServiceRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  7,
+) as any as S.Schema<WatchApplicationSetServiceRequest>;
+
 /** ApplicationSetWatchEvent contains information about application change. */
 export interface V1alpha1ApplicationSetWatchEvent {
   applicationSet?: V1alpha1ApplicationSet;
   type?: string;
 }
+const V1alpha1ApplicationSetWatchEvent = /*@__PURE__*/ __L.at(
+  __c52,
+  0,
+) as any as S.Schema<V1alpha1ApplicationSetWatchEvent>;
+
 export interface WatchApplicationSetServiceResponse {
   error?: RuntimeStreamError;
   result?: V1alpha1ApplicationSetWatchEvent;
 }
+const WatchApplicationSetServiceResponse = /*@__PURE__*/ __L.at(
+  __c52,
+  1,
+) as any as S.Schema<WatchApplicationSetServiceResponse>;
+
 export type AccountServiceCanIError = ArgocdOpError;
 /** CanI checks if the current account has permission to perform an action */
 export const accountServiceCanI: API.OperationMethod<
@@ -3351,8 +5776,8 @@ export const accountServiceCanI: API.OperationMethod<
   AccountServiceCanIError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AccountServiceCanIRequest>,
-  output: __S(1) as any as S.Schema<AccountCanIResponse>,
+  input: AccountServiceCanIRequest,
+  output: AccountCanIResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3366,8 +5791,8 @@ export const applicationServiceManagedResources: API.OperationMethod<
   ApplicationServiceManagedResourcesError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<ApplicationServiceManagedResourcesRequest>,
-  output: __S(5) as any as S.Schema<ApplicationManagedResourcesResponse>,
+  input: ApplicationServiceManagedResourcesRequest,
+  output: ApplicationManagedResourcesResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3381,8 +5806,8 @@ export const applicationServicePodLogs: API.OperationMethod<
   ApplicationServicePodLogsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<ApplicationServicePodLogsRequest>,
-  output: __S(11) as any as S.Schema<ApplicationServicePodLogsResponse>,
+  input: ApplicationServicePodLogsRequest,
+  output: ApplicationServicePodLogsResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3396,8 +5821,8 @@ export const applicationServicePodLogs2: API.OperationMethod<
   ApplicationServicePodLogs2Error,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<ApplicationServicePodLogs2Request>,
-  output: __S(11) as any as S.Schema<ApplicationServicePodLogs2Response>,
+  input: ApplicationServicePodLogs2Request,
+  output: ApplicationServicePodLogs2Response,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3411,8 +5836,8 @@ export const applicationServiceResourceTree: API.OperationMethod<
   ApplicationServiceResourceTreeError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<ApplicationServiceResourceTreeRequest>,
-  output: __S(34) as any as S.Schema<V1alpha1ApplicationTree>,
+  input: ApplicationServiceResourceTreeRequest,
+  output: V1alpha1ApplicationTree,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3426,8 +5851,8 @@ export const applicationServiceRevisionChartDetails: API.OperationMethod<
   ApplicationServiceRevisionChartDetailsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<ApplicationServiceRevisionChartDetailsRequest>,
-  output: __S(36) as any as S.Schema<V1alpha1ChartDetails>,
+  input: ApplicationServiceRevisionChartDetailsRequest,
+  output: V1alpha1ChartDetails,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3441,8 +5866,8 @@ export const applicationServiceRevisionMetadata: API.OperationMethod<
   ApplicationServiceRevisionMetadataError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<ApplicationServiceRevisionMetadataRequest>,
-  output: __S(44) as any as S.Schema<V1alpha1RevisionMetadata>,
+  input: ApplicationServiceRevisionMetadataRequest,
+  output: V1alpha1RevisionMetadata,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3456,8 +5881,8 @@ export const applicationServiceRollback: API.OperationMethod<
   ApplicationServiceRollbackError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<ApplicationServiceRollbackRequest>,
-  output: __S(115) as any as S.Schema<V1alpha1Application>,
+  input: ApplicationServiceRollbackRequest,
+  output: V1alpha1Application,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3471,8 +5896,8 @@ export const applicationServiceServerSideDiff: API.OperationMethod<
   ApplicationServiceServerSideDiffError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<ApplicationServiceServerSideDiffRequest>,
-  output: __S(117) as any as S.Schema<ApplicationApplicationServerSideDiffResponse>,
+  input: ApplicationServiceServerSideDiffRequest,
+  output: ApplicationApplicationServerSideDiffResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3486,8 +5911,8 @@ export const applicationSetServiceResourceTree: API.OperationMethod<
   ApplicationSetServiceResourceTreeError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<ApplicationSetServiceResourceTreeRequest>,
-  output: __S(119) as any as S.Schema<V1alpha1ApplicationSetTree>,
+  input: ApplicationSetServiceResourceTreeRequest,
+  output: V1alpha1ApplicationSetTree,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3501,8 +5926,8 @@ export const createAccountServiceToken: API.OperationMethod<
   CreateAccountServiceTokenError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<CreateAccountServiceTokenRequest>,
-  output: __S(121) as any as S.Schema<AccountCreateTokenResponse>,
+  input: CreateAccountServiceTokenRequest,
+  output: AccountCreateTokenResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3516,8 +5941,8 @@ export const createApplicationService: API.OperationMethod<
   CreateApplicationServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<CreateApplicationServiceRequest>,
-  output: __S(115) as any as S.Schema<V1alpha1Application>,
+  input: CreateApplicationServiceRequest,
+  output: V1alpha1Application,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3531,8 +5956,8 @@ export const createApplicationSetService: API.OperationMethod<
   CreateApplicationSetServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<CreateApplicationSetServiceRequest>,
-  output: __S(186) as any as S.Schema<V1alpha1ApplicationSet>,
+  input: CreateApplicationSetServiceRequest,
+  output: V1alpha1ApplicationSet,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3546,8 +5971,8 @@ export const createCertificateServiceCertificate: API.OperationMethod<
   CreateCertificateServiceCertificateError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191) as any as S.Schema<CreateCertificateServiceCertificateRequest>,
-  output: __S(192) as any as S.Schema<V1alpha1RepositoryCertificateList>,
+  input: CreateCertificateServiceCertificateRequest,
+  output: V1alpha1RepositoryCertificateList,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3561,8 +5986,8 @@ export const createClusterService: API.OperationMethod<
   CreateClusterServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200) as any as S.Schema<CreateClusterServiceRequest>,
-  output: __S(201) as any as S.Schema<V1alpha1Cluster>,
+  input: CreateClusterServiceRequest,
+  output: V1alpha1Cluster,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3576,8 +6001,8 @@ export const createGPGKeyService: API.OperationMethod<
   CreateGPGKeyServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202) as any as S.Schema<CreateGPGKeyServiceRequest>,
-  output: __S(206) as any as S.Schema<GpgkeyGnuPGPublicKeyCreateResponse>,
+  input: CreateGPGKeyServiceRequest,
+  output: GpgkeyGnuPGPublicKeyCreateResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3591,8 +6016,8 @@ export const createProjectService: API.OperationMethod<
   CreateProjectServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235) as any as S.Schema<CreateProjectServiceRequest>,
-  output: __S(234) as any as S.Schema<V1alpha1AppProject>,
+  input: CreateProjectServiceRequest,
+  output: V1alpha1AppProject,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3606,8 +6031,8 @@ export const createProjectServiceToken: API.OperationMethod<
   CreateProjectServiceTokenError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236) as any as S.Schema<CreateProjectServiceTokenRequest>,
-  output: __S(121) as any as S.Schema<ProjectProjectTokenResponse>,
+  input: CreateProjectServiceTokenRequest,
+  output: ProjectProjectTokenResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3621,8 +6046,8 @@ export const createRepoCredsServiceRepositoryCredentials: API.OperationMethod<
   CreateRepoCredsServiceRepositoryCredentialsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237) as any as S.Schema<CreateRepoCredsServiceRepositoryCredentialsRequest>,
-  output: __S(238) as any as S.Schema<V1alpha1RepoCreds>,
+  input: CreateRepoCredsServiceRepositoryCredentialsRequest,
+  output: V1alpha1RepoCreds,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3636,8 +6061,8 @@ export const createRepoCredsServiceWriteRepositoryCredentials: API.OperationMeth
   CreateRepoCredsServiceWriteRepositoryCredentialsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239) as any as S.Schema<CreateRepoCredsServiceWriteRepositoryCredentialsRequest>,
-  output: __S(238) as any as S.Schema<V1alpha1RepoCreds>,
+  input: CreateRepoCredsServiceWriteRepositoryCredentialsRequest,
+  output: V1alpha1RepoCreds,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3651,8 +6076,8 @@ export const createRepositoryServiceRepository: API.OperationMethod<
   CreateRepositoryServiceRepositoryError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240) as any as S.Schema<CreateRepositoryServiceRepositoryRequest>,
-  output: __S(241) as any as S.Schema<V1alpha1Repository>,
+  input: CreateRepositoryServiceRepositoryRequest,
+  output: V1alpha1Repository,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3666,8 +6091,8 @@ export const createRepositoryServiceWriteRepository: API.OperationMethod<
   CreateRepositoryServiceWriteRepositoryError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242) as any as S.Schema<CreateRepositoryServiceWriteRepositoryRequest>,
-  output: __S(241) as any as S.Schema<V1alpha1Repository>,
+  input: CreateRepositoryServiceWriteRepositoryRequest,
+  output: V1alpha1Repository,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3681,8 +6106,8 @@ export const createSessionService: API.OperationMethod<
   CreateSessionServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243) as any as S.Schema<CreateSessionServiceRequest>,
-  output: __S(244) as any as S.Schema<SessionSessionResponse>,
+  input: CreateSessionServiceRequest,
+  output: SessionSessionResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3696,8 +6121,8 @@ export const deleteAccountServiceToken: API.OperationMethod<
   DeleteAccountServiceTokenError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245) as any as S.Schema<DeleteAccountServiceTokenRequest>,
-  output: __S(246) as any as S.Schema<DeleteAccountServiceTokenResponse>,
+  input: DeleteAccountServiceTokenRequest,
+  output: DeleteAccountServiceTokenResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3711,8 +6136,8 @@ export const deleteApplicationService: API.OperationMethod<
   DeleteApplicationServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247) as any as S.Schema<DeleteApplicationServiceRequest>,
-  output: __S(246) as any as S.Schema<DeleteApplicationServiceResponse>,
+  input: DeleteApplicationServiceRequest,
+  output: DeleteApplicationServiceResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3726,8 +6151,8 @@ export const deleteApplicationServiceResource: API.OperationMethod<
   DeleteApplicationServiceResourceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248) as any as S.Schema<DeleteApplicationServiceResourceRequest>,
-  output: __S(246) as any as S.Schema<DeleteApplicationServiceResourceResponse>,
+  input: DeleteApplicationServiceResourceRequest,
+  output: DeleteApplicationServiceResourceResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3741,8 +6166,8 @@ export const deleteApplicationSetService: API.OperationMethod<
   DeleteApplicationSetServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249) as any as S.Schema<DeleteApplicationSetServiceRequest>,
-  output: __S(250) as any as S.Schema<ApplicationsetApplicationSetResponse>,
+  input: DeleteApplicationSetServiceRequest,
+  output: ApplicationsetApplicationSetResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3756,8 +6181,8 @@ export const deleteCertificateServiceCertificate: API.OperationMethod<
   DeleteCertificateServiceCertificateError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251) as any as S.Schema<DeleteCertificateServiceCertificateRequest>,
-  output: __S(192) as any as S.Schema<V1alpha1RepositoryCertificateList>,
+  input: DeleteCertificateServiceCertificateRequest,
+  output: V1alpha1RepositoryCertificateList,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3771,8 +6196,8 @@ export const deleteClusterService: API.OperationMethod<
   DeleteClusterServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252) as any as S.Schema<DeleteClusterServiceRequest>,
-  output: __S(246) as any as S.Schema<DeleteClusterServiceResponse>,
+  input: DeleteClusterServiceRequest,
+  output: DeleteClusterServiceResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3786,8 +6211,8 @@ export const deleteGPGKeyService: API.OperationMethod<
   DeleteGPGKeyServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253) as any as S.Schema<DeleteGPGKeyServiceRequest>,
-  output: __S(246) as any as S.Schema<DeleteGPGKeyServiceResponse>,
+  input: DeleteGPGKeyServiceRequest,
+  output: DeleteGPGKeyServiceResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3801,8 +6226,8 @@ export const deleteProjectService: API.OperationMethod<
   DeleteProjectServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254) as any as S.Schema<DeleteProjectServiceRequest>,
-  output: __S(246) as any as S.Schema<DeleteProjectServiceResponse>,
+  input: DeleteProjectServiceRequest,
+  output: DeleteProjectServiceResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3816,8 +6241,8 @@ export const deleteProjectServiceToken: API.OperationMethod<
   DeleteProjectServiceTokenError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255) as any as S.Schema<DeleteProjectServiceTokenRequest>,
-  output: __S(246) as any as S.Schema<DeleteProjectServiceTokenResponse>,
+  input: DeleteProjectServiceTokenRequest,
+  output: DeleteProjectServiceTokenResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3831,8 +6256,8 @@ export const deleteRepoCredsServiceRepositoryCredentials: API.OperationMethod<
   DeleteRepoCredsServiceRepositoryCredentialsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256) as any as S.Schema<DeleteRepoCredsServiceRepositoryCredentialsRequest>,
-  output: __S(246) as any as S.Schema<DeleteRepoCredsServiceRepositoryCredentialsResponse>,
+  input: DeleteRepoCredsServiceRepositoryCredentialsRequest,
+  output: DeleteRepoCredsServiceRepositoryCredentialsResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3846,8 +6271,8 @@ export const deleteRepoCredsServiceWriteRepositoryCredentials: API.OperationMeth
   DeleteRepoCredsServiceWriteRepositoryCredentialsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257) as any as S.Schema<DeleteRepoCredsServiceWriteRepositoryCredentialsRequest>,
-  output: __S(258) as any as S.Schema<DeleteRepoCredsServiceWriteRepositoryCredentialsResponse>,
+  input: DeleteRepoCredsServiceWriteRepositoryCredentialsRequest,
+  output: DeleteRepoCredsServiceWriteRepositoryCredentialsResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3861,8 +6286,8 @@ export const deleteRepositoryServiceRepository: API.OperationMethod<
   DeleteRepositoryServiceRepositoryError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259) as any as S.Schema<DeleteRepositoryServiceRepositoryRequest>,
-  output: __S(246) as any as S.Schema<DeleteRepositoryServiceRepositoryResponse>,
+  input: DeleteRepositoryServiceRepositoryRequest,
+  output: DeleteRepositoryServiceRepositoryResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3876,8 +6301,8 @@ export const deleteRepositoryServiceWriteRepository: API.OperationMethod<
   DeleteRepositoryServiceWriteRepositoryError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260) as any as S.Schema<DeleteRepositoryServiceWriteRepositoryRequest>,
-  output: __S(246) as any as S.Schema<DeleteRepositoryServiceWriteRepositoryResponse>,
+  input: DeleteRepositoryServiceWriteRepositoryRequest,
+  output: DeleteRepositoryServiceWriteRepositoryResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3891,8 +6316,8 @@ export const deleteSessionService: API.OperationMethod<
   DeleteSessionServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261) as any as S.Schema<DeleteSessionServiceRequest>,
-  output: __S(244) as any as S.Schema<SessionSessionResponse>,
+  input: DeleteSessionServiceRequest,
+  output: SessionSessionResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3906,8 +6331,8 @@ export const generateApplicationSetService: API.OperationMethod<
   GenerateApplicationSetServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262) as any as S.Schema<GenerateApplicationSetServiceRequest>,
-  output: __S(264) as any as S.Schema<ApplicationsetApplicationSetGenerateResponse>,
+  input: GenerateApplicationSetServiceRequest,
+  output: ApplicationsetApplicationSetGenerateResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3921,8 +6346,8 @@ export const getAccountServiceAccount: API.OperationMethod<
   GetAccountServiceAccountError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265) as any as S.Schema<GetAccountServiceAccountRequest>,
-  output: __S(268) as any as S.Schema<AccountAccount>,
+  input: GetAccountServiceAccountRequest,
+  output: AccountAccount,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3936,8 +6361,8 @@ export const getApplicationService: API.OperationMethod<
   GetApplicationServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269) as any as S.Schema<GetApplicationServiceRequest>,
-  output: __S(115) as any as S.Schema<V1alpha1Application>,
+  input: GetApplicationServiceRequest,
+  output: V1alpha1Application,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3951,8 +6376,8 @@ export const getApplicationServiceApplicationSyncWindows: API.OperationMethod<
   GetApplicationServiceApplicationSyncWindowsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270) as any as S.Schema<GetApplicationServiceApplicationSyncWindowsRequest>,
-  output: __S(273) as any as S.Schema<ApplicationApplicationSyncWindowsResponse>,
+  input: GetApplicationServiceApplicationSyncWindowsRequest,
+  output: ApplicationApplicationSyncWindowsResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3966,8 +6391,8 @@ export const getApplicationServiceManifests: API.OperationMethod<
   GetApplicationServiceManifestsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274) as any as S.Schema<GetApplicationServiceManifestsRequest>,
-  output: __S(275) as any as S.Schema<RepositoryManifestResponse>,
+  input: GetApplicationServiceManifestsRequest,
+  output: RepositoryManifestResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3981,8 +6406,8 @@ export const getApplicationServiceManifestsWithFiles: API.OperationMethod<
   GetApplicationServiceManifestsWithFilesError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278) as any as S.Schema<GetApplicationServiceManifestsWithFilesRequest>,
-  output: __S(275) as any as S.Schema<RepositoryManifestResponse>,
+  input: GetApplicationServiceManifestsWithFilesRequest,
+  output: RepositoryManifestResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -3996,8 +6421,8 @@ export const getApplicationServiceOCIMetadata: API.OperationMethod<
   GetApplicationServiceOCIMetadataError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279) as any as S.Schema<GetApplicationServiceOCIMetadataRequest>,
-  output: __S(280) as any as S.Schema<V1alpha1OCIMetadata>,
+  input: GetApplicationServiceOCIMetadataRequest,
+  output: V1alpha1OCIMetadata,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4011,8 +6436,8 @@ export const getApplicationServiceResource: API.OperationMethod<
   GetApplicationServiceResourceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281) as any as S.Schema<GetApplicationServiceResourceRequest>,
-  output: __S(282) as any as S.Schema<ApplicationApplicationResourceResponse>,
+  input: GetApplicationServiceResourceRequest,
+  output: ApplicationApplicationResourceResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4026,8 +6451,8 @@ export const getApplicationSetService: API.OperationMethod<
   GetApplicationSetServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283) as any as S.Schema<GetApplicationSetServiceRequest>,
-  output: __S(186) as any as S.Schema<V1alpha1ApplicationSet>,
+  input: GetApplicationSetServiceRequest,
+  output: V1alpha1ApplicationSet,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4041,8 +6466,8 @@ export const getClusterService: API.OperationMethod<
   GetClusterServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284) as any as S.Schema<GetClusterServiceRequest>,
-  output: __S(201) as any as S.Schema<V1alpha1Cluster>,
+  input: GetClusterServiceRequest,
+  output: V1alpha1Cluster,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4056,8 +6481,8 @@ export const getGPGKeyService: API.OperationMethod<
   GetGPGKeyServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285) as any as S.Schema<GetGPGKeyServiceRequest>,
-  output: __S(203) as any as S.Schema<V1alpha1GnuPGPublicKey>,
+  input: GetGPGKeyServiceRequest,
+  output: V1alpha1GnuPGPublicKey,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4071,8 +6496,8 @@ export const getProjectService: API.OperationMethod<
   GetProjectServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286) as any as S.Schema<GetProjectServiceRequest>,
-  output: __S(234) as any as S.Schema<V1alpha1AppProject>,
+  input: GetProjectServiceRequest,
+  output: V1alpha1AppProject,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4086,8 +6511,8 @@ export const getProjectServiceDetailedProject: API.OperationMethod<
   GetProjectServiceDetailedProjectError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287) as any as S.Schema<GetProjectServiceDetailedProjectRequest>,
-  output: __S(291) as any as S.Schema<ProjectDetailedProjectsResponse>,
+  input: GetProjectServiceDetailedProjectRequest,
+  output: ProjectDetailedProjectsResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4101,8 +6526,8 @@ export const getProjectServiceGlobalProjects: API.OperationMethod<
   GetProjectServiceGlobalProjectsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292) as any as S.Schema<GetProjectServiceGlobalProjectsRequest>,
-  output: __S(293) as any as S.Schema<ProjectGlobalProjectsResponse>,
+  input: GetProjectServiceGlobalProjectsRequest,
+  output: ProjectGlobalProjectsResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4116,8 +6541,8 @@ export const getProjectServiceSyncWindowsState: API.OperationMethod<
   GetProjectServiceSyncWindowsStateError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294) as any as S.Schema<GetProjectServiceSyncWindowsStateRequest>,
-  output: __S(295) as any as S.Schema<ProjectSyncWindowsResponse>,
+  input: GetProjectServiceSyncWindowsStateRequest,
+  output: ProjectSyncWindowsResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4131,8 +6556,8 @@ export const getRepositoryService: API.OperationMethod<
   GetRepositoryServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296) as any as S.Schema<GetRepositoryServiceRequest>,
-  output: __S(241) as any as S.Schema<V1alpha1Repository>,
+  input: GetRepositoryServiceRequest,
+  output: V1alpha1Repository,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4146,8 +6571,8 @@ export const getRepositoryServiceAppDetails: API.OperationMethod<
   GetRepositoryServiceAppDetailsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297) as any as S.Schema<GetRepositoryServiceAppDetailsRequest>,
-  output: __S(303) as any as S.Schema<RepositoryRepoAppDetailsResponse>,
+  input: GetRepositoryServiceAppDetailsRequest,
+  output: RepositoryRepoAppDetailsResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4161,8 +6586,8 @@ export const getRepositoryServiceHelmCharts: API.OperationMethod<
   GetRepositoryServiceHelmChartsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304) as any as S.Schema<GetRepositoryServiceHelmChartsRequest>,
-  output: __S(307) as any as S.Schema<RepositoryHelmChartsResponse>,
+  input: GetRepositoryServiceHelmChartsRequest,
+  output: RepositoryHelmChartsResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4176,8 +6601,8 @@ export const getRepositoryServiceWrite: API.OperationMethod<
   GetRepositoryServiceWriteError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308) as any as S.Schema<GetRepositoryServiceWriteRequest>,
-  output: __S(241) as any as S.Schema<V1alpha1Repository>,
+  input: GetRepositoryServiceWriteRequest,
+  output: V1alpha1Repository,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4191,8 +6616,8 @@ export const getSessionServiceUserInfo: API.OperationMethod<
   GetSessionServiceUserInfoError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309) as any as S.Schema<GetSessionServiceUserInfoRequest>,
-  output: __S(310) as any as S.Schema<SessionGetUserInfoResponse>,
+  input: GetSessionServiceUserInfoRequest,
+  output: SessionGetUserInfoResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4206,8 +6631,8 @@ export const getSettingsService: API.OperationMethod<
   GetSettingsServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311) as any as S.Schema<GetSettingsServiceRequest>,
-  output: __S(332) as any as S.Schema<ClusterSettings>,
+  input: GetSettingsServiceRequest,
+  output: ClusterSettings,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4221,8 +6646,8 @@ export const getSettingsServicePlugins: API.OperationMethod<
   GetSettingsServicePluginsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333) as any as S.Schema<GetSettingsServicePluginsRequest>,
-  output: __S(334) as any as S.Schema<ClusterSettingsPluginsResponse>,
+  input: GetSettingsServicePluginsRequest,
+  output: ClusterSettingsPluginsResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4236,8 +6661,8 @@ export const invalidateClusterServiceCache: API.OperationMethod<
   InvalidateClusterServiceCacheError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335) as any as S.Schema<InvalidateClusterServiceCacheRequest>,
-  output: __S(201) as any as S.Schema<V1alpha1Cluster>,
+  input: InvalidateClusterServiceCacheRequest,
+  output: V1alpha1Cluster,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4251,8 +6676,8 @@ export const listAccountServiceAccounts: API.OperationMethod<
   ListAccountServiceAccountsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336) as any as S.Schema<ListAccountServiceAccountsRequest>,
-  output: __S(338) as any as S.Schema<AccountAccountsList>,
+  input: ListAccountServiceAccountsRequest,
+  output: AccountAccountsList,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4266,8 +6691,8 @@ export const listApplicationService: API.OperationMethod<
   ListApplicationServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339) as any as S.Schema<ListApplicationServiceRequest>,
-  output: __S(340) as any as S.Schema<V1alpha1ApplicationList>,
+  input: ListApplicationServiceRequest,
+  output: V1alpha1ApplicationList,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4281,8 +6706,8 @@ export const listApplicationServiceLinks: API.OperationMethod<
   ListApplicationServiceLinksError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341) as any as S.Schema<ListApplicationServiceLinksRequest>,
-  output: __S(344) as any as S.Schema<ApplicationLinksResponse>,
+  input: ListApplicationServiceLinksRequest,
+  output: ApplicationLinksResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4296,8 +6721,8 @@ export const listApplicationServiceResourceActions: API.OperationMethod<
   ListApplicationServiceResourceActionsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345) as any as S.Schema<ListApplicationServiceResourceActionsRequest>,
-  output: __S(348) as any as S.Schema<ApplicationResourceActionsListResponse>,
+  input: ListApplicationServiceResourceActionsRequest,
+  output: ApplicationResourceActionsListResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4311,8 +6736,8 @@ export const listApplicationServiceResourceEvents: API.OperationMethod<
   ListApplicationServiceResourceEventsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349) as any as S.Schema<ListApplicationServiceResourceEventsRequest>,
-  output: __S(356) as any as S.Schema<EventsEventList>,
+  input: ListApplicationServiceResourceEventsRequest,
+  output: EventsEventList,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4326,8 +6751,8 @@ export const listApplicationServiceResourceLinks: API.OperationMethod<
   ListApplicationServiceResourceLinksError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357) as any as S.Schema<ListApplicationServiceResourceLinksRequest>,
-  output: __S(344) as any as S.Schema<ApplicationLinksResponse>,
+  input: ListApplicationServiceResourceLinksRequest,
+  output: ApplicationLinksResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4341,8 +6766,8 @@ export const listApplicationSetService: API.OperationMethod<
   ListApplicationSetServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358) as any as S.Schema<ListApplicationSetServiceRequest>,
-  output: __S(360) as any as S.Schema<V1alpha1ApplicationSetList>,
+  input: ListApplicationSetServiceRequest,
+  output: V1alpha1ApplicationSetList,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4356,8 +6781,8 @@ export const listApplicationSetServiceResourceEvents: API.OperationMethod<
   ListApplicationSetServiceResourceEventsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361) as any as S.Schema<ListApplicationSetServiceResourceEventsRequest>,
-  output: __S(356) as any as S.Schema<EventsEventList>,
+  input: ListApplicationSetServiceResourceEventsRequest,
+  output: EventsEventList,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4371,8 +6796,8 @@ export const listCertificateServiceCertificates: API.OperationMethod<
   ListCertificateServiceCertificatesError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362) as any as S.Schema<ListCertificateServiceCertificatesRequest>,
-  output: __S(192) as any as S.Schema<V1alpha1RepositoryCertificateList>,
+  input: ListCertificateServiceCertificatesRequest,
+  output: V1alpha1RepositoryCertificateList,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4386,8 +6811,8 @@ export const listClusterService: API.OperationMethod<
   ListClusterServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(363) as any as S.Schema<ListClusterServiceRequest>,
-  output: __S(364) as any as S.Schema<V1alpha1ClusterList>,
+  input: ListClusterServiceRequest,
+  output: V1alpha1ClusterList,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4401,8 +6826,8 @@ export const listGPGKeyService: API.OperationMethod<
   ListGPGKeyServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(365) as any as S.Schema<ListGPGKeyServiceRequest>,
-  output: __S(205) as any as S.Schema<V1alpha1GnuPGPublicKeyList>,
+  input: ListGPGKeyServiceRequest,
+  output: V1alpha1GnuPGPublicKeyList,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4416,8 +6841,8 @@ export const listNotificationServiceServices: API.OperationMethod<
   ListNotificationServiceServicesError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(366) as any as S.Schema<ListNotificationServiceServicesRequest>,
-  output: __S(367) as any as S.Schema<NotificationServiceList>,
+  input: ListNotificationServiceServicesRequest,
+  output: NotificationServiceList,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4431,8 +6856,8 @@ export const listNotificationServiceTemplates: API.OperationMethod<
   ListNotificationServiceTemplatesError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368) as any as S.Schema<ListNotificationServiceTemplatesRequest>,
-  output: __S(367) as any as S.Schema<NotificationTemplateList>,
+  input: ListNotificationServiceTemplatesRequest,
+  output: NotificationTemplateList,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4446,8 +6871,8 @@ export const listNotificationServiceTriggers: API.OperationMethod<
   ListNotificationServiceTriggersError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(369) as any as S.Schema<ListNotificationServiceTriggersRequest>,
-  output: __S(367) as any as S.Schema<NotificationTriggerList>,
+  input: ListNotificationServiceTriggersRequest,
+  output: NotificationTriggerList,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4461,8 +6886,8 @@ export const listProjectService: API.OperationMethod<
   ListProjectServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(370) as any as S.Schema<ListProjectServiceRequest>,
-  output: __S(371) as any as S.Schema<V1alpha1AppProjectList>,
+  input: ListProjectServiceRequest,
+  output: V1alpha1AppProjectList,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4476,8 +6901,8 @@ export const listProjectServiceEvents: API.OperationMethod<
   ListProjectServiceEventsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(372) as any as S.Schema<ListProjectServiceEventsRequest>,
-  output: __S(356) as any as S.Schema<EventsEventList>,
+  input: ListProjectServiceEventsRequest,
+  output: EventsEventList,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4491,8 +6916,8 @@ export const listProjectServiceLinks: API.OperationMethod<
   ListProjectServiceLinksError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(373) as any as S.Schema<ListProjectServiceLinksRequest>,
-  output: __S(344) as any as S.Schema<ApplicationLinksResponse>,
+  input: ListProjectServiceLinksRequest,
+  output: ApplicationLinksResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4506,8 +6931,8 @@ export const listRepoCredsServiceRepositoryCredentials: API.OperationMethod<
   ListRepoCredsServiceRepositoryCredentialsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374) as any as S.Schema<ListRepoCredsServiceRepositoryCredentialsRequest>,
-  output: __S(376) as any as S.Schema<V1alpha1RepoCredsList>,
+  input: ListRepoCredsServiceRepositoryCredentialsRequest,
+  output: V1alpha1RepoCredsList,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4521,8 +6946,8 @@ export const listRepoCredsServiceWriteRepositoryCredentials: API.OperationMethod
   ListRepoCredsServiceWriteRepositoryCredentialsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(377) as any as S.Schema<ListRepoCredsServiceWriteRepositoryCredentialsRequest>,
-  output: __S(376) as any as S.Schema<V1alpha1RepoCredsList>,
+  input: ListRepoCredsServiceWriteRepositoryCredentialsRequest,
+  output: V1alpha1RepoCredsList,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4536,8 +6961,8 @@ export const listRepositoryServiceApps: API.OperationMethod<
   ListRepositoryServiceAppsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378) as any as S.Schema<ListRepositoryServiceAppsRequest>,
-  output: __S(381) as any as S.Schema<RepositoryRepoAppsResponse>,
+  input: ListRepositoryServiceAppsRequest,
+  output: RepositoryRepoAppsResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4550,8 +6975,8 @@ export const listRepositoryServiceOCITags: API.OperationMethod<
   ListRepositoryServiceOCITagsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(382) as any as S.Schema<ListRepositoryServiceOCITagsRequest>,
-  output: __S(383) as any as S.Schema<RepositoryRefs>,
+  input: ListRepositoryServiceOCITagsRequest,
+  output: RepositoryRefs,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4564,8 +6989,8 @@ export const listRepositoryServiceRefs: API.OperationMethod<
   ListRepositoryServiceRefsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384) as any as S.Schema<ListRepositoryServiceRefsRequest>,
-  output: __S(383) as any as S.Schema<RepositoryRefs>,
+  input: ListRepositoryServiceRefsRequest,
+  output: RepositoryRefs,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4579,8 +7004,8 @@ export const listRepositoryServiceRepositories: API.OperationMethod<
   ListRepositoryServiceRepositoriesError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(385) as any as S.Schema<ListRepositoryServiceRepositoriesRequest>,
-  output: __S(386) as any as S.Schema<V1alpha1RepositoryList>,
+  input: ListRepositoryServiceRepositoriesRequest,
+  output: V1alpha1RepositoryList,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4594,8 +7019,8 @@ export const listRepositoryServiceWriteRepositories: API.OperationMethod<
   ListRepositoryServiceWriteRepositoriesError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(387) as any as S.Schema<ListRepositoryServiceWriteRepositoriesRequest>,
-  output: __S(386) as any as S.Schema<V1alpha1RepositoryList>,
+  input: ListRepositoryServiceWriteRepositoriesRequest,
+  output: V1alpha1RepositoryList,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4609,8 +7034,8 @@ export const patchApplicationService: API.OperationMethod<
   PatchApplicationServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(388) as any as S.Schema<PatchApplicationServiceRequest>,
-  output: __S(115) as any as S.Schema<V1alpha1Application>,
+  input: PatchApplicationServiceRequest,
+  output: V1alpha1Application,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4624,8 +7049,8 @@ export const patchApplicationServiceResource: API.OperationMethod<
   PatchApplicationServiceResourceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(389) as any as S.Schema<PatchApplicationServiceResourceRequest>,
-  output: __S(282) as any as S.Schema<ApplicationApplicationResourceResponse>,
+  input: PatchApplicationServiceResourceRequest,
+  output: ApplicationApplicationResourceResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4639,8 +7064,8 @@ export const rotateClusterServiceAuth: API.OperationMethod<
   RotateClusterServiceAuthError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(390) as any as S.Schema<RotateClusterServiceAuthRequest>,
-  output: __S(246) as any as S.Schema<RotateClusterServiceAuthResponse>,
+  input: RotateClusterServiceAuthRequest,
+  output: RotateClusterServiceAuthResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4654,8 +7079,8 @@ export const runApplicationServiceResourceAction: API.OperationMethod<
   RunApplicationServiceResourceActionError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391) as any as S.Schema<RunApplicationServiceResourceActionRequest>,
-  output: __S(246) as any as S.Schema<RunApplicationServiceResourceActionResponse>,
+  input: RunApplicationServiceResourceActionRequest,
+  output: RunApplicationServiceResourceActionResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4669,8 +7094,8 @@ export const runApplicationServiceResourceActionV2: API.OperationMethod<
   RunApplicationServiceResourceActionV2Error,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(393) as any as S.Schema<RunApplicationServiceResourceActionV2Request>,
-  output: __S(246) as any as S.Schema<RunApplicationServiceResourceActionV2Response>,
+  input: RunApplicationServiceResourceActionV2Request,
+  output: RunApplicationServiceResourceActionV2Response,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4684,8 +7109,8 @@ export const syncApplicationService: API.OperationMethod<
   SyncApplicationServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395) as any as S.Schema<SyncApplicationServiceRequest>,
-  output: __S(115) as any as S.Schema<V1alpha1Application>,
+  input: SyncApplicationServiceRequest,
+  output: V1alpha1Application,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4699,8 +7124,8 @@ export const terminateApplicationServiceOperation: API.OperationMethod<
   TerminateApplicationServiceOperationError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(396) as any as S.Schema<TerminateApplicationServiceOperationRequest>,
-  output: __S(246) as any as S.Schema<TerminateApplicationServiceOperationResponse>,
+  input: TerminateApplicationServiceOperationRequest,
+  output: TerminateApplicationServiceOperationResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4714,8 +7139,8 @@ export const updateAccountServicePassword: API.OperationMethod<
   UpdateAccountServicePasswordError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(397) as any as S.Schema<UpdateAccountServicePasswordRequest>,
-  output: __S(246) as any as S.Schema<UpdateAccountServicePasswordResponse>,
+  input: UpdateAccountServicePasswordRequest,
+  output: UpdateAccountServicePasswordResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4729,8 +7154,8 @@ export const updateApplicationService: API.OperationMethod<
   UpdateApplicationServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398) as any as S.Schema<UpdateApplicationServiceRequest>,
-  output: __S(115) as any as S.Schema<V1alpha1Application>,
+  input: UpdateApplicationServiceRequest,
+  output: V1alpha1Application,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4744,8 +7169,8 @@ export const updateApplicationServiceSpec: API.OperationMethod<
   UpdateApplicationServiceSpecError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(399) as any as S.Schema<UpdateApplicationServiceSpecRequest>,
-  output: __S(97) as any as S.Schema<V1alpha1ApplicationSpec>,
+  input: UpdateApplicationServiceSpecRequest,
+  output: V1alpha1ApplicationSpec,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4759,8 +7184,8 @@ export const updateClusterService: API.OperationMethod<
   UpdateClusterServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400) as any as S.Schema<UpdateClusterServiceRequest>,
-  output: __S(201) as any as S.Schema<V1alpha1Cluster>,
+  input: UpdateClusterServiceRequest,
+  output: V1alpha1Cluster,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4774,8 +7199,8 @@ export const updateProjectService: API.OperationMethod<
   UpdateProjectServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401) as any as S.Schema<UpdateProjectServiceRequest>,
-  output: __S(234) as any as S.Schema<V1alpha1AppProject>,
+  input: UpdateProjectServiceRequest,
+  output: V1alpha1AppProject,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4789,8 +7214,8 @@ export const updateRepoCredsServiceRepositoryCredentials: API.OperationMethod<
   UpdateRepoCredsServiceRepositoryCredentialsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(402) as any as S.Schema<UpdateRepoCredsServiceRepositoryCredentialsRequest>,
-  output: __S(238) as any as S.Schema<V1alpha1RepoCreds>,
+  input: UpdateRepoCredsServiceRepositoryCredentialsRequest,
+  output: V1alpha1RepoCreds,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4804,8 +7229,8 @@ export const updateRepoCredsServiceWriteRepositoryCredentials: API.OperationMeth
   UpdateRepoCredsServiceWriteRepositoryCredentialsError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(403) as any as S.Schema<UpdateRepoCredsServiceWriteRepositoryCredentialsRequest>,
-  output: __S(238) as any as S.Schema<V1alpha1RepoCreds>,
+  input: UpdateRepoCredsServiceWriteRepositoryCredentialsRequest,
+  output: V1alpha1RepoCreds,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4819,8 +7244,8 @@ export const updateRepositoryServiceRepository: API.OperationMethod<
   UpdateRepositoryServiceRepositoryError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(404) as any as S.Schema<UpdateRepositoryServiceRepositoryRequest>,
-  output: __S(241) as any as S.Schema<V1alpha1Repository>,
+  input: UpdateRepositoryServiceRepositoryRequest,
+  output: V1alpha1Repository,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4834,8 +7259,8 @@ export const updateRepositoryServiceWriteRepository: API.OperationMethod<
   UpdateRepositoryServiceWriteRepositoryError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405) as any as S.Schema<UpdateRepositoryServiceWriteRepositoryRequest>,
-  output: __S(241) as any as S.Schema<V1alpha1Repository>,
+  input: UpdateRepositoryServiceWriteRepositoryRequest,
+  output: V1alpha1Repository,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4849,8 +7274,8 @@ export const validateRepositoryServiceAccess: API.OperationMethod<
   ValidateRepositoryServiceAccessError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(406) as any as S.Schema<ValidateRepositoryServiceAccessRequest>,
-  output: __S(246) as any as S.Schema<ValidateRepositoryServiceAccessResponse>,
+  input: ValidateRepositoryServiceAccessRequest,
+  output: ValidateRepositoryServiceAccessResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4864,8 +7289,8 @@ export const validateRepositoryServiceWriteAccess: API.OperationMethod<
   ValidateRepositoryServiceWriteAccessError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407) as any as S.Schema<ValidateRepositoryServiceWriteAccessRequest>,
-  output: __S(246) as any as S.Schema<ValidateRepositoryServiceWriteAccessResponse>,
+  input: ValidateRepositoryServiceWriteAccessRequest,
+  output: ValidateRepositoryServiceWriteAccessResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4879,8 +7304,8 @@ export const versionServiceVersion: API.OperationMethod<
   VersionServiceVersionError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408) as any as S.Schema<VersionServiceVersionRequest>,
-  output: __S(409) as any as S.Schema<VersionVersionMessage>,
+  input: VersionServiceVersionRequest,
+  output: VersionVersionMessage,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4894,8 +7319,8 @@ export const watchApplicationService: API.OperationMethod<
   WatchApplicationServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(410) as any as S.Schema<WatchApplicationServiceRequest>,
-  output: __S(412) as any as S.Schema<WatchApplicationServiceResponse>,
+  input: WatchApplicationServiceRequest,
+  output: WatchApplicationServiceResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4909,8 +7334,8 @@ export const watchApplicationServiceResourceTree: API.OperationMethod<
   WatchApplicationServiceResourceTreeError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(413) as any as S.Schema<WatchApplicationServiceResourceTreeRequest>,
-  output: __S(414) as any as S.Schema<WatchApplicationServiceResourceTreeResponse>,
+  input: WatchApplicationServiceResourceTreeRequest,
+  output: WatchApplicationServiceResourceTreeResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4923,8 +7348,8 @@ export const watchApplicationSetService: API.OperationMethod<
   WatchApplicationSetServiceError,
   ArgocdOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(415) as any as S.Schema<WatchApplicationSetServiceRequest>,
-  output: __S(417) as any as S.Schema<WatchApplicationSetServiceResponse>,
+  input: WatchApplicationSetServiceRequest,
+  output: WatchApplicationSetServiceResponse,
   errors: [UnknownArgocdError],
   protocol: ArgocdProtocol,
   retry: Retry.Retry,
@@ -4994,11 +7419,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "V1alpha1ResourceDiff" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(V1alpha1ResourceDiff);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(4)),
+          items: S.optional(ApplicationManagedResourcesResponseItemsList),
         }),
       ).annotate({
         identifier: "ApplicationManagedResourcesResponse",
@@ -5046,11 +7471,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(ProtobufAny);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(8)),
+          details: S.optional(RuntimeStreamErrorDetailsList),
           grpc_code: S.optional(S.Number),
           http_code: S.optional(S.Number),
           http_status: S.optional(S.String),
@@ -5070,8 +7495,8 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(9)),
-          result: S.optional(__S(10)),
+          error: S.optional(RuntimeStreamError),
+          result: S.optional(ApplicationLogEntry),
         }),
       ).annotate({
         identifier: "ApplicationServicePodLogsResponse",
@@ -5138,7 +7563,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(V1alpha1HostResourceInfo);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5158,21 +7583,21 @@ function __c2(j: number): any {
           operatingSystem: S.optional(S.String),
           osImage: S.optional(S.String),
           runningInUserNamespace: S.optional(S.Boolean),
-          swap: S.optional(__S(17)),
+          swap: S.optional(V1NodeSwapStatus),
           systemUUID: S.optional(S.String),
         }),
       ).annotate({ identifier: "V1NodeSystemInfo" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(14)),
+          labels: S.optional(V1alpha1HostInfoLabelsMap),
           name: S.optional(S.String),
-          resourcesInfo: S.optional(__S(16)),
-          systemInfo: S.optional(__S(18)),
+          resourcesInfo: S.optional(V1alpha1HostInfoResourcesInfoList),
+          systemInfo: S.optional(V1NodeSystemInfo),
         }),
       ).annotate({ identifier: "V1alpha1HostInfo" });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(V1alpha1HostInfo);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5195,7 +7620,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(V1alpha1InfoItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5205,18 +7630,18 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "V1PortStatus" });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(V1PortStatus);
     case 3:
       return S.suspend(() =>
         S.Struct({
           hostname: S.optional(S.String),
           ip: S.optional(S.String),
           ipMode: S.optional(S.String),
-          ports: S.optional(__S(26)),
+          ports: S.optional(V1LoadBalancerIngressPortsList),
         }),
       ).annotate({ identifier: "V1LoadBalancerIngress" });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(V1LoadBalancerIngress);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5229,15 +7654,15 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "V1alpha1ResourceRef" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(V1alpha1ResourceRef);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          externalURLs: S.optional(__S(22)),
-          ingress: S.optional(__S(28)),
-          labels: S.optional(__S(14)),
-          targetLabels: S.optional(__S(14)),
-          targetRefs: S.optional(__S(30)),
+          externalURLs: S.optional(V1alpha1ResourceNetworkingInfoExternalURLsList),
+          ingress: S.optional(V1alpha1ResourceNetworkingInfoIngressList),
+          labels: S.optional(V1alpha1ResourceNetworkingInfoLabelsMap),
+          targetLabels: S.optional(V1alpha1ResourceNetworkingInfoTargetLabelsMap),
+          targetRefs: S.optional(V1alpha1ResourceNetworkingInfoTargetRefsList),
         }),
       ).annotate({
         identifier: "V1alpha1ResourceNetworkingInfo",
@@ -5256,22 +7681,22 @@ function __c4(j: number): any {
           uid: S.optional(S.String),
           version: S.optional(S.String),
           createdAt: S.optional(S.String),
-          health: S.optional(__S(21)),
-          images: S.optional(__S(22)),
-          info: S.optional(__S(24)),
-          networkingInfo: S.optional(__S(31)),
-          parentRefs: S.optional(__S(30)),
+          health: S.optional(V1alpha1HealthStatus),
+          images: S.optional(V1alpha1ResourceNodeImagesList),
+          info: S.optional(V1alpha1ResourceNodeInfoList),
+          networkingInfo: S.optional(V1alpha1ResourceNetworkingInfo),
+          parentRefs: S.optional(V1alpha1ResourceNodeParentRefsList),
           resourceVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "V1alpha1ResourceNode" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(V1alpha1ResourceNode);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          hosts: S.optional(__S(20)),
-          nodes: S.optional(__S(33)),
-          orphanedNodes: S.optional(__S(33)),
+          hosts: S.optional(V1alpha1ApplicationTreeHostsList),
+          nodes: S.optional(V1alpha1ApplicationTreeNodesList),
+          orphanedNodes: S.optional(V1alpha1ApplicationTreeOrphanedNodesList),
           shardsCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "V1alpha1ApplicationTree" });
@@ -5299,7 +7724,7 @@ function __c4(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           home: S.optional(S.String),
-          maintainers: S.optional(__S(22)),
+          maintainers: S.optional(V1alpha1ChartDetailsMaintainersList),
         }),
       ).annotate({ identifier: "V1alpha1ChartDetails" });
     case 5:
@@ -5335,7 +7760,7 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          commit: S.optional(__S(38)),
+          commit: S.optional(V1alpha1CommitMetadata),
         }),
       ).annotate({
         identifier: "V1alpha1RevisionReference",
@@ -5345,22 +7770,22 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39));
+      return S.Array(V1alpha1RevisionReference);
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          problems: S.optional(__S(22)),
+          problems: S.optional(V1alpha1SourceIntegrityCheckResultItemProblemsList),
         }),
       ).annotate({
         identifier: "V1alpha1SourceIntegrityCheckResultItem",
       });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(V1alpha1SourceIntegrityCheckResultItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          checks: S.optional(__S(42)),
+          checks: S.optional(V1alpha1SourceIntegrityCheckResultChecksList),
         }),
       ).annotate({
         identifier: "V1alpha1SourceIntegrityCheckResult",
@@ -5371,10 +7796,10 @@ function __c5(j: number): any {
           author: S.optional(S.String),
           date: S.optional(S.String),
           message: S.optional(S.String),
-          references: S.optional(__S(40)),
+          references: S.optional(V1alpha1RevisionMetadataReferencesList),
           signatureInfo: S.optional(S.String),
-          sourceIntegrityResult: S.optional(__S(43)),
-          tags: S.optional(__S(22)),
+          sourceIntegrityResult: S.optional(V1alpha1SourceIntegrityCheckResult),
+          tags: S.optional(V1alpha1RevisionMetadataTagsList),
         }),
       ).annotate({ identifier: "V1alpha1RevisionMetadata" });
     case 5:
@@ -5401,7 +7826,7 @@ function __c5(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           fieldsType: S.optional(S.String),
-          fieldsV1: S.optional(__S(46)),
+          fieldsV1: S.optional(V1FieldsV1),
           manager: S.optional(S.String),
           operation: S.optional(S.String),
           subresource: S.optional(S.String),
@@ -5413,7 +7838,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(V1ManagedFieldsEntry);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5426,22 +7851,22 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "V1OwnerReference" });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(V1OwnerReference);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(__S(14)),
+          annotations: S.optional(V1ObjectMetaAnnotationsMap),
           creationTimestamp: S.optional(S.String),
           deletionGracePeriodSeconds: S.optional(S.Number),
           deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(__S(22)),
+          finalizers: S.optional(V1ObjectMetaFinalizersList),
           generateName: S.optional(S.String),
           generation: S.optional(S.Number),
-          labels: S.optional(__S(14)),
-          managedFields: S.optional(__S(48)),
+          labels: S.optional(V1ObjectMetaLabelsMap),
+          managedFields: S.optional(V1ObjectMetaManagedFieldsList),
           name: S.optional(S.String),
           namespace: S.optional(S.String),
-          ownerReferences: S.optional(__S(50)),
+          ownerReferences: S.optional(V1ObjectMetaOwnerReferencesList),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
           uid: S.optional(S.String),
@@ -5467,7 +7892,7 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          backoff: S.optional(__S(53)),
+          backoff: S.optional(V1alpha1Backoff),
           limit: S.optional(S.Number),
           refresh: S.optional(S.Boolean),
         }),
@@ -5488,7 +7913,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55));
+      return S.Array(V1alpha1SyncOperationResource);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5498,13 +7923,13 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "V1alpha1JsonnetVar" });
     case 2:
-      return S.Array(__S(57));
+      return S.Array(V1alpha1JsonnetVar);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          extVars: S.optional(__S(58)),
-          libs: S.optional(__S(22)),
-          tlas: S.optional(__S(58)),
+          extVars: S.optional(V1alpha1ApplicationSourceJsonnetExtVarsList),
+          libs: S.optional(V1alpha1ApplicationSourceJsonnetLibsList),
+          tlas: S.optional(V1alpha1ApplicationSourceJsonnetTlasList),
         }),
       ).annotate({
         identifier: "V1alpha1ApplicationSourceJsonnet",
@@ -5515,7 +7940,7 @@ function __c7(j: number): any {
           disableExtensionFilter: S.optional(S.Boolean),
           exclude: S.optional(S.String),
           include: S.optional(S.String),
-          jsonnet: S.optional(__S(59)),
+          jsonnet: S.optional(V1alpha1ApplicationSourceJsonnet),
           recurse: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -5531,7 +7956,7 @@ function __c7(j: number): any {
         identifier: "V1alpha1HelmFileParameter",
       });
     case 6:
-      return S.Array(__S(61));
+      return S.Array(V1alpha1HelmFileParameter);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -5545,7 +7970,7 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(V1alpha1HelmParameter);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5555,20 +7980,20 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          apiVersions: S.optional(__S(22)),
-          fileParameters: S.optional(__S(62)),
+          apiVersions: S.optional(V1alpha1ApplicationSourceHelmApiVersionsList),
+          fileParameters: S.optional(V1alpha1ApplicationSourceHelmFileParametersList),
           ignoreMissingValueFiles: S.optional(S.Boolean),
           kubeVersion: S.optional(S.String),
           namespace: S.optional(S.String),
-          parameters: S.optional(__S(64)),
+          parameters: S.optional(V1alpha1ApplicationSourceHelmParametersList),
           passCredentials: S.optional(S.Boolean),
           releaseName: S.optional(S.String),
           skipCrds: S.optional(S.Boolean),
           skipSchemaValidation: S.optional(S.Boolean),
           skipTests: S.optional(S.Boolean),
-          valueFiles: S.optional(__S(22)),
+          valueFiles: S.optional(V1alpha1ApplicationSourceHelmValueFilesList),
           values: S.optional(S.String),
-          valuesObject: S.optional(__S(65)),
+          valuesObject: S.optional(RuntimeRawExtension),
           version: S.optional(S.String),
         }),
       ).annotate({
@@ -5587,7 +8012,7 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          gvk: S.optional(__S(68)),
+          gvk: S.optional(V1alpha1KustomizeGvk),
           name: S.optional(S.String),
           namespace: S.optional(S.String),
         }),
@@ -5597,7 +8022,7 @@ function __c8(j: number): any {
         S.Struct({
           annotationSelector: S.optional(S.String),
           labelSelector: S.optional(S.String),
-          resId: S.optional(__S(69)),
+          resId: S.optional(V1alpha1KustomizeResId),
         }),
       ).annotate({
         identifier: "V1alpha1KustomizeSelector",
@@ -5605,10 +8030,10 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(__S(67)),
+          options: S.optional(V1alpha1KustomizePatchOptionsMap),
           patch: S.optional(S.String),
           path: S.optional(S.String),
-          target: S.optional(__S(70)),
+          target: S.optional(V1alpha1KustomizeSelector),
         }),
       ).annotate({ identifier: "V1alpha1KustomizePatch" });
   }
@@ -5616,7 +8041,7 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71));
+      return S.Array(V1alpha1KustomizePatch);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5628,32 +8053,32 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          count: S.optional(__S(73)),
+          count: S.optional(IntstrIntOrString),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "V1alpha1KustomizeReplica" });
     case 3:
-      return S.Array(__S(74));
+      return S.Array(V1alpha1KustomizeReplica);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          apiVersions: S.optional(__S(22)),
-          commonAnnotations: S.optional(__S(14)),
+          apiVersions: S.optional(V1alpha1ApplicationSourceKustomizeApiVersionsList),
+          commonAnnotations: S.optional(V1alpha1ApplicationSourceKustomizeCommonAnnotationsMap),
           commonAnnotationsEnvsubst: S.optional(S.Boolean),
-          commonLabels: S.optional(__S(14)),
-          components: S.optional(__S(22)),
+          commonLabels: S.optional(V1alpha1ApplicationSourceKustomizeCommonLabelsMap),
+          components: S.optional(V1alpha1ApplicationSourceKustomizeComponentsList),
           forceCommonAnnotations: S.optional(S.Boolean),
           forceCommonLabels: S.optional(S.Boolean),
           ignoreMissingComponents: S.optional(S.Boolean),
-          images: S.optional(__S(22)),
+          images: S.optional(V1alpha1ApplicationSourceKustomizeImagesList),
           kubeVersion: S.optional(S.String),
           labelIncludeTemplates: S.optional(S.Boolean),
           labelWithoutSelector: S.optional(S.Boolean),
           namePrefix: S.optional(S.String),
           nameSuffix: S.optional(S.String),
           namespace: S.optional(S.String),
-          patches: S.optional(__S(72)),
-          replicas: S.optional(__S(75)),
+          patches: S.optional(V1alpha1ApplicationSourceKustomizePatchesList),
+          replicas: S.optional(V1alpha1ApplicationSourceKustomizeReplicasList),
           version: S.optional(S.String),
         }),
       ).annotate({
@@ -5662,8 +8087,8 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          array: S.optional(__S(22)),
-          map: S.optional(__S(14)),
+          array: S.optional(V1alpha1ApplicationSourcePluginParameterArrayList),
+          map: S.optional(V1alpha1ApplicationSourcePluginParameterMapMap),
           name: S.optional(S.String),
           string: S.optional(S.String),
         }),
@@ -5671,13 +8096,13 @@ function __c9(j: number): any {
         identifier: "V1alpha1ApplicationSourcePluginParameter",
       });
     case 6:
-      return S.Array(__S(77));
+      return S.Array(V1alpha1ApplicationSourcePluginParameter);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          env: S.optional(__S(24)),
+          env: S.optional(V1alpha1ApplicationSourcePluginEnvList),
           name: S.optional(S.String),
-          parameters: S.optional(__S(78)),
+          parameters: S.optional(V1alpha1ApplicationSourcePluginParametersList),
         }),
       ).annotate({
         identifier: "V1alpha1ApplicationSourcePlugin",
@@ -5690,12 +8115,12 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           chart: S.optional(S.String),
-          directory: S.optional(__S(60)),
-          helm: S.optional(__S(66)),
-          kustomize: S.optional(__S(76)),
+          directory: S.optional(V1alpha1ApplicationSourceDirectory),
+          helm: S.optional(V1alpha1ApplicationSourceHelm),
+          kustomize: S.optional(V1alpha1ApplicationSourceKustomize),
           name: S.optional(S.String),
           path: S.optional(S.String),
-          plugin: S.optional(__S(79)),
+          plugin: S.optional(V1alpha1ApplicationSourcePlugin),
           ref: S.optional(S.String),
           repoURL: S.optional(S.String),
           tagPrefix: S.optional(S.String),
@@ -5705,7 +8130,7 @@ function __c10(j: number): any {
         identifier: "V1alpha1ApplicationSource",
       });
     case 1:
-      return S.Array(__S(80));
+      return S.Array(V1alpha1ApplicationSource);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5717,14 +8142,14 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          syncStrategyApply: S.optional(__S(82)),
+          syncStrategyApply: S.optional(V1alpha1SyncStrategyApply),
         }),
       ).annotate({ identifier: "V1alpha1SyncStrategyHook" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          apply: S.optional(__S(82)),
-          hook: S.optional(__S(83)),
+          apply: S.optional(V1alpha1SyncStrategyApply),
+          hook: S.optional(V1alpha1SyncStrategyHook),
         }),
       ).annotate({ identifier: "V1alpha1SyncStrategy" });
     case 5:
@@ -5732,24 +8157,24 @@ function __c10(j: number): any {
         S.Struct({
           autoHealAttemptsCount: S.optional(S.Number),
           dryRun: S.optional(S.Boolean),
-          manifests: S.optional(__S(22)),
+          manifests: S.optional(V1alpha1SyncOperationManifestsList),
           prune: S.optional(S.Boolean),
-          resources: S.optional(__S(56)),
+          resources: S.optional(V1alpha1SyncOperationResourcesList),
           revision: S.optional(S.String),
-          revisions: S.optional(__S(22)),
-          source: S.optional(__S(80)),
-          sources: S.optional(__S(81)),
-          syncOptions: S.optional(__S(22)),
-          syncStrategy: S.optional(__S(84)),
+          revisions: S.optional(V1alpha1SyncOperationRevisionsList),
+          source: S.optional(V1alpha1ApplicationSource),
+          sources: S.optional(V1alpha1SyncOperationSourcesList),
+          syncOptions: S.optional(V1alpha1SyncOperationSyncOptionsList),
+          syncStrategy: S.optional(V1alpha1SyncStrategy),
         }),
       ).annotate({ identifier: "V1alpha1SyncOperation" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          info: S.optional(__S(24)),
-          initiatedBy: S.optional(__S(52)),
-          retry: S.optional(__S(54)),
-          sync: S.optional(__S(85)),
+          info: S.optional(V1alpha1OperationInfoList),
+          initiatedBy: S.optional(V1alpha1OperationInitiator),
+          retry: S.optional(V1alpha1RetryStrategy),
+          sync: S.optional(V1alpha1SyncOperation),
         }),
       ).annotate({ identifier: "V1alpha1Operation" });
     case 7:
@@ -5770,10 +8195,12 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           group: S.optional(S.String),
-          jqPathExpressions: S.optional(__S(22)),
-          jsonPointers: S.optional(__S(22)),
+          jqPathExpressions: S.optional(V1alpha1ResourceIgnoreDifferencesJqPathExpressionsList),
+          jsonPointers: S.optional(V1alpha1ResourceIgnoreDifferencesJsonPointersList),
           kind: S.optional(S.String),
-          managedFieldsManagers: S.optional(__S(22)),
+          managedFieldsManagers: S.optional(
+            V1alpha1ResourceIgnoreDifferencesManagedFieldsManagersList,
+          ),
           name: S.optional(S.String),
           namespace: S.optional(S.String),
         }),
@@ -5781,15 +8208,15 @@ function __c11(j: number): any {
         identifier: "V1alpha1ResourceIgnoreDifferences",
       });
     case 1:
-      return S.Array(__S(88));
+      return S.Array(V1alpha1ResourceIgnoreDifferences);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          directory: S.optional(__S(60)),
-          helm: S.optional(__S(66)),
-          kustomize: S.optional(__S(76)),
+          directory: S.optional(V1alpha1ApplicationSourceDirectory),
+          helm: S.optional(V1alpha1ApplicationSourceHelm),
+          kustomize: S.optional(V1alpha1ApplicationSourceKustomize),
           path: S.optional(S.String),
-          plugin: S.optional(__S(79)),
+          plugin: S.optional(V1alpha1ApplicationSourcePlugin),
           repoURL: S.optional(S.String),
           targetRevision: S.optional(S.String),
         }),
@@ -5811,9 +8238,9 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          drySource: S.optional(__S(90)),
-          hydrateTo: S.optional(__S(91)),
-          syncSource: S.optional(__S(92)),
+          drySource: S.optional(V1alpha1DrySource),
+          hydrateTo: S.optional(V1alpha1HydrateTo),
+          syncSource: S.optional(V1alpha1SyncSource),
         }),
       ).annotate({ identifier: "V1alpha1SourceHydrator" });
     case 6:
@@ -5830,8 +8257,8 @@ function __c11(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(__S(14)),
-          labels: S.optional(__S(14)),
+          annotations: S.optional(V1alpha1ManagedNamespaceMetadataAnnotationsMap),
+          labels: S.optional(V1alpha1ManagedNamespaceMetadataLabelsMap),
         }),
       ).annotate({
         identifier: "V1alpha1ManagedNamespaceMetadata",
@@ -5843,24 +8270,24 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          automated: S.optional(__S(94)),
-          managedNamespaceMetadata: S.optional(__S(95)),
-          retry: S.optional(__S(54)),
-          syncOptions: S.optional(__S(22)),
+          automated: S.optional(V1alpha1SyncPolicyAutomated),
+          managedNamespaceMetadata: S.optional(V1alpha1ManagedNamespaceMetadata),
+          retry: S.optional(V1alpha1RetryStrategy),
+          syncOptions: S.optional(V1alpha1SyncPolicySyncOptionsList),
         }),
       ).annotate({ identifier: "V1alpha1SyncPolicy" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          destination: S.optional(__S(87)),
-          ignoreDifferences: S.optional(__S(89)),
-          info: S.optional(__S(24)),
+          destination: S.optional(V1alpha1ApplicationDestination),
+          ignoreDifferences: S.optional(V1alpha1ApplicationSpecIgnoreDifferencesList),
+          info: S.optional(V1alpha1ApplicationSpecInfoList),
           project: S.optional(S.String),
           revisionHistoryLimit: S.optional(S.Number),
-          source: S.optional(__S(80)),
-          sourceHydrator: S.optional(__S(93)),
-          sources: S.optional(__S(81)),
-          syncPolicy: S.optional(__S(96)),
+          source: S.optional(V1alpha1ApplicationSource),
+          sourceHydrator: S.optional(V1alpha1SourceHydrator),
+          sources: S.optional(V1alpha1ApplicationSpecSourcesList),
+          syncPolicy: S.optional(V1alpha1SyncPolicy),
         }),
       ).annotate({ identifier: "V1alpha1ApplicationSpec" });
     case 2:
@@ -5874,29 +8301,29 @@ function __c12(j: number): any {
         identifier: "V1alpha1ApplicationCondition",
       });
     case 3:
-      return S.Array(__S(98));
+      return S.Array(V1alpha1ApplicationCondition);
     case 4:
       return S.suspend(() =>
         S.Struct({
           deployStartedAt: S.optional(S.String),
           deployedAt: S.optional(S.String),
           id: S.optional(S.Number),
-          initiatedBy: S.optional(__S(52)),
+          initiatedBy: S.optional(V1alpha1OperationInitiator),
           revision: S.optional(S.String),
-          revisions: S.optional(__S(22)),
-          source: S.optional(__S(80)),
-          sources: S.optional(__S(81)),
+          revisions: S.optional(V1alpha1RevisionHistoryRevisionsList),
+          source: S.optional(V1alpha1ApplicationSource),
+          sources: S.optional(V1alpha1RevisionHistorySourcesList),
         }),
       ).annotate({ identifier: "V1alpha1RevisionHistory" });
     case 5:
-      return S.Array(__S(100));
+      return S.Array(V1alpha1RevisionHistory);
     case 6:
       return S.suspend(() =>
         S.Struct({
           group: S.optional(S.String),
           hookPhase: S.optional(S.String),
           hookType: S.optional(S.String),
-          images: S.optional(__S(22)),
+          images: S.optional(V1alpha1ResourceResultImagesList),
           kind: S.optional(S.String),
           message: S.optional(S.String),
           name: S.optional(S.String),
@@ -5907,7 +8334,7 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "V1alpha1ResourceResult" });
     case 7:
-      return S.Array(__S(102));
+      return S.Array(V1alpha1ResourceResult);
   }
 }
 function __c13(j: number): any {
@@ -5915,12 +8342,12 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          managedNamespaceMetadata: S.optional(__S(95)),
-          resources: S.optional(__S(103)),
+          managedNamespaceMetadata: S.optional(V1alpha1ManagedNamespaceMetadata),
+          resources: S.optional(V1alpha1SyncOperationResultResourcesList),
           revision: S.optional(S.String),
-          revisions: S.optional(__S(22)),
-          source: S.optional(__S(80)),
-          sources: S.optional(__S(81)),
+          revisions: S.optional(V1alpha1SyncOperationResultRevisionsList),
+          source: S.optional(V1alpha1ApplicationSource),
+          sources: S.optional(V1alpha1SyncOperationResultSourcesList),
         }),
       ).annotate({
         identifier: "V1alpha1SyncOperationResult",
@@ -5930,18 +8357,18 @@ function __c13(j: number): any {
         S.Struct({
           finishedAt: S.optional(S.String),
           message: S.optional(S.String),
-          operation: S.optional(__S(86)),
+          operation: S.optional(V1alpha1Operation),
           phase: S.optional(S.String),
           retryCount: S.optional(S.Number),
           startedAt: S.optional(S.String),
-          syncResult: S.optional(__S(104)),
+          syncResult: S.optional(V1alpha1SyncOperationResult),
         }),
       ).annotate({ identifier: "V1alpha1OperationState" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           group: S.optional(S.String),
-          health: S.optional(__S(21)),
+          health: S.optional(V1alpha1HealthStatus),
           hook: S.optional(S.Boolean),
           kind: S.optional(S.String),
           name: S.optional(S.String),
@@ -5956,7 +8383,7 @@ function __c13(j: number): any {
         identifier: "Applicationv1alpha1ResourceStatus",
       });
     case 3:
-      return S.Array(__S(106));
+      return S.Array(Applicationv1alpha1ResourceStatus);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -5965,7 +8392,7 @@ function __c13(j: number): any {
           hydratedSHA: S.optional(S.String),
           message: S.optional(S.String),
           phase: S.optional(S.String),
-          sourceHydrator: S.optional(__S(93)),
+          sourceHydrator: S.optional(V1alpha1SourceHydrator),
           startedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "V1alpha1HydrateOperation" });
@@ -5974,7 +8401,7 @@ function __c13(j: number): any {
         S.Struct({
           drySHA: S.optional(S.String),
           hydratedSHA: S.optional(S.String),
-          sourceHydrator: S.optional(__S(93)),
+          sourceHydrator: S.optional(V1alpha1SourceHydrator),
         }),
       ).annotate({
         identifier: "V1alpha1SuccessfulHydrateOperation",
@@ -5982,9 +8409,9 @@ function __c13(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          currentOperation: S.optional(__S(108)),
+          currentOperation: S.optional(V1alpha1HydrateOperation),
           lastComparedDryRevision: S.optional(S.String),
-          lastSuccessfulOperation: S.optional(__S(109)),
+          lastSuccessfulOperation: S.optional(V1alpha1SuccessfulHydrateOperation),
         }),
       ).annotate({
         identifier: "V1alpha1SourceHydratorStatus",
@@ -5992,8 +8419,8 @@ function __c13(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          externalURLs: S.optional(__S(22)),
-          images: S.optional(__S(22)),
+          externalURLs: S.optional(V1alpha1ApplicationSummaryExternalURLsList),
+          images: S.optional(V1alpha1ApplicationSummaryImagesList),
           isAppOfApps: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -6006,38 +8433,38 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          destination: S.optional(__S(87)),
-          ignoreDifferences: S.optional(__S(89)),
-          source: S.optional(__S(80)),
-          sources: S.optional(__S(81)),
+          destination: S.optional(V1alpha1ApplicationDestination),
+          ignoreDifferences: S.optional(V1alpha1ComparedToIgnoreDifferencesList),
+          source: S.optional(V1alpha1ApplicationSource),
+          sources: S.optional(V1alpha1ComparedToSourcesList),
         }),
       ).annotate({ identifier: "V1alpha1ComparedTo" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          comparedTo: S.optional(__S(112)),
+          comparedTo: S.optional(V1alpha1ComparedTo),
           revision: S.optional(S.String),
-          revisions: S.optional(__S(22)),
+          revisions: S.optional(V1alpha1SyncStatusRevisionsList),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "V1alpha1SyncStatus" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          conditions: S.optional(__S(99)),
+          conditions: S.optional(V1alpha1ApplicationStatusConditionsList),
           controllerNamespace: S.optional(S.String),
-          health: S.optional(__S(21)),
-          history: S.optional(__S(101)),
+          health: S.optional(V1alpha1HealthStatus),
+          history: S.optional(V1alpha1ApplicationStatusHistoryList),
           observedAt: S.optional(S.String),
-          operationState: S.optional(__S(105)),
+          operationState: S.optional(V1alpha1OperationState),
           reconciledAt: S.optional(S.String),
           resourceHealthSource: S.optional(S.String),
-          resources: S.optional(__S(107)),
-          sourceHydrator: S.optional(__S(110)),
+          resources: S.optional(V1alpha1ApplicationStatusResourcesList),
+          sourceHydrator: S.optional(V1alpha1SourceHydratorStatus),
           sourceType: S.optional(S.String),
-          sourceTypes: S.optional(__S(22)),
-          summary: S.optional(__S(111)),
-          sync: S.optional(__S(113)),
+          sourceTypes: S.optional(V1alpha1ApplicationStatusSourceTypesList),
+          summary: S.optional(V1alpha1ApplicationSummary),
+          sync: S.optional(V1alpha1SyncStatus),
         }),
       ).annotate({
         identifier: "V1alpha1ApplicationStatus",
@@ -6045,10 +8472,10 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(51)),
-          operation: S.optional(__S(86)),
-          spec: S.optional(__S(97)),
-          status: S.optional(__S(114)),
+          metadata: S.optional(V1ObjectMeta),
+          operation: S.optional(V1alpha1Operation),
+          spec: S.optional(V1alpha1ApplicationSpec),
+          status: S.optional(V1alpha1ApplicationStatus),
         }),
       ).annotate({ identifier: "V1alpha1Application" });
     case 4:
@@ -6057,7 +8484,9 @@ function __c14(j: number): any {
           appName: S.String.pipe(T.Label()),
           appNamespace: S.optional(S.String.pipe(T.Query())),
           project: S.optional(S.String.pipe(T.Query())),
-          targetManifests: S.optional(__S(22).pipe(T.Query())),
+          targetManifests: S.optional(
+            ApplicationServiceServerSideDiffRequestTargetManifestsList.pipe(T.Query()),
+          ),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6071,7 +8500,7 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(4)),
+          items: S.optional(ApplicationApplicationServerSideDiffResponseItemsList),
           modified: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -6091,7 +8520,7 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          nodes: S.optional(__S(33)),
+          nodes: S.optional(V1alpha1ApplicationSetTreeNodesList),
         }),
       ).annotate({
         identifier: "V1alpha1ApplicationSetTree",
@@ -6123,10 +8552,10 @@ function __c15(j: number): any {
         S.Struct({
           upsert: S.optional(S.Boolean.pipe(T.Query())),
           validate: S.optional(S.Boolean.pipe(T.Query())),
-          metadata: S.optional(__S(51)),
-          operation: S.optional(__S(86)),
-          spec: S.optional(__S(97)),
-          status: S.optional(__S(114)),
+          metadata: S.optional(V1ObjectMeta),
+          operation: S.optional(V1alpha1Operation),
+          spec: S.optional(V1alpha1ApplicationSpec),
+          status: S.optional(V1alpha1ApplicationStatus),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/applications", code: 200 })),
       ).annotate({
         identifier: "CreateApplicationServiceRequest",
@@ -6136,26 +8565,26 @@ function __c15(j: number): any {
         S.Struct({
           key: S.optional(S.String),
           operator: S.optional(S.String),
-          values: S.optional(__S(22)),
+          values: S.optional(V1LabelSelectorRequirementValuesList),
         }),
       ).annotate({
         identifier: "V1LabelSelectorRequirement",
       });
     case 4:
-      return S.Array(__S(123));
+      return S.Array(V1LabelSelectorRequirement);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          matchExpressions: S.optional(__S(124)),
-          matchLabels: S.optional(__S(14)),
+          matchExpressions: S.optional(V1LabelSelectorMatchExpressionsList),
+          matchLabels: S.optional(V1LabelSelectorMatchLabelsMap),
         }),
       ).annotate({ identifier: "V1LabelSelector" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(__S(14)),
-          finalizers: S.optional(__S(22)),
-          labels: S.optional(__S(14)),
+          annotations: S.optional(V1alpha1ApplicationSetTemplateMetaAnnotationsMap),
+          finalizers: S.optional(V1alpha1ApplicationSetTemplateMetaFinalizersList),
+          labels: S.optional(V1alpha1ApplicationSetTemplateMetaLabelsMap),
           name: S.optional(S.String),
           namespace: S.optional(S.String),
         }),
@@ -6165,8 +8594,8 @@ function __c15(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(126)),
-          spec: S.optional(__S(97)),
+          metadata: S.optional(V1alpha1ApplicationSetTemplateMeta),
+          spec: S.optional(V1alpha1ApplicationSpec),
         }),
       ).annotate({
         identifier: "V1alpha1ApplicationSetTemplate",
@@ -6179,11 +8608,11 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           configMapRef: S.optional(S.String),
-          labelSelector: S.optional(__S(125)),
+          labelSelector: S.optional(V1LabelSelector),
           name: S.optional(S.String),
           requeueAfterSeconds: S.optional(S.Number),
-          template: S.optional(__S(127)),
-          values: S.optional(__S(14)),
+          template: S.optional(V1alpha1ApplicationSetTemplate),
+          values: S.optional(V1alpha1DuckTypeGeneratorValuesMap),
         }),
       ).annotate({
         identifier: "V1alpha1DuckTypeGenerator",
@@ -6192,9 +8621,9 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           flatList: S.optional(S.Boolean),
-          selector: S.optional(__S(125)),
-          template: S.optional(__S(127)),
-          values: S.optional(__S(14)),
+          selector: S.optional(V1LabelSelector),
+          template: S.optional(V1alpha1ApplicationSetTemplate),
+          values: S.optional(V1alpha1ClusterGeneratorValuesMap),
         }),
       ).annotate({ identifier: "V1alpha1ClusterGenerator" });
     case 2:
@@ -6207,28 +8636,28 @@ function __c16(j: number): any {
         identifier: "V1alpha1GitDirectoryGeneratorItem",
       });
     case 3:
-      return S.Array(__S(130));
+      return S.Array(V1alpha1GitDirectoryGeneratorItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          directories: S.optional(__S(131)),
-          files: S.optional(__S(131)),
+          directories: S.optional(V1alpha1GitGeneratorDirectoriesList),
+          files: S.optional(V1alpha1GitGeneratorFilesList),
           pathParamPrefix: S.optional(S.String),
           repoURL: S.optional(S.String),
           requeueAfterSeconds: S.optional(S.Number),
           revision: S.optional(S.String),
-          template: S.optional(__S(127)),
-          values: S.optional(__S(14)),
+          template: S.optional(V1alpha1ApplicationSetTemplate),
+          values: S.optional(V1alpha1GitGeneratorValuesMap),
         }),
       ).annotate({ identifier: "V1alpha1GitGenerator" });
     case 5:
-      return S.Array(__S(65));
+      return S.Array(V1JSON);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          elements: S.optional(__S(133)),
+          elements: S.optional(V1alpha1ListGeneratorElementsList),
           elementsYaml: S.optional(S.String),
-          template: S.optional(__S(127)),
+          template: S.optional(V1alpha1ApplicationSetTemplate),
         }),
       ).annotate({ identifier: "V1alpha1ListGenerator" });
     case 7:
@@ -6244,21 +8673,21 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(65));
+      return S.Record(S.String, V1JSON);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(136)),
+          parameters: S.optional(V1alpha1PluginInputParametersMap),
         }),
       ).annotate({ identifier: "V1alpha1PluginInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          configMapRef: S.optional(__S(135)),
-          input: S.optional(__S(137)),
+          configMapRef: S.optional(V1alpha1PluginConfigMapRef),
+          input: S.optional(V1alpha1PluginInput),
           requeueAfterSeconds: S.optional(S.Number),
-          template: S.optional(__S(127)),
-          values: S.optional(__S(14)),
+          template: S.optional(V1alpha1ApplicationSetTemplate),
+          values: S.optional(V1alpha1PluginGeneratorValuesMap),
         }),
       ).annotate({ identifier: "V1alpha1PluginGenerator" });
     case 3:
@@ -6272,11 +8701,11 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           api: S.optional(S.String),
-          labels: S.optional(__S(22)),
+          labels: S.optional(V1alpha1PullRequestGeneratorAzureDevOpsLabelsList),
           organization: S.optional(S.String),
           project: S.optional(S.String),
           repo: S.optional(S.String),
-          tokenRef: S.optional(__S(139)),
+          tokenRef: S.optional(V1alpha1SecretRef),
         }),
       ).annotate({
         identifier: "V1alpha1PullRequestGeneratorAzureDevOps",
@@ -6284,7 +8713,7 @@ function __c17(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          passwordRef: S.optional(__S(139)),
+          passwordRef: S.optional(V1alpha1SecretRef),
           username: S.optional(S.String),
         }),
       ).annotate({
@@ -6293,7 +8722,7 @@ function __c17(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          tokenRef: S.optional(__S(139)),
+          tokenRef: S.optional(V1alpha1SecretRef),
         }),
       ).annotate({
         identifier: "V1alpha1BearerTokenBitbucketCloud",
@@ -6302,8 +8731,8 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           api: S.optional(S.String),
-          basicAuth: S.optional(__S(141)),
-          bearerToken: S.optional(__S(142)),
+          basicAuth: S.optional(V1alpha1BasicAuthBitbucketServer),
+          bearerToken: S.optional(V1alpha1BearerTokenBitbucketCloud),
           owner: S.optional(S.String),
           repo: S.optional(S.String),
         }),
@@ -6325,9 +8754,9 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           api: S.optional(S.String),
-          basicAuth: S.optional(__S(141)),
-          bearerToken: S.optional(__S(142)),
-          caRef: S.optional(__S(144)),
+          basicAuth: S.optional(V1alpha1BasicAuthBitbucketServer),
+          bearerToken: S.optional(V1alpha1BearerTokenBitbucketCloud),
+          caRef: S.optional(V1alpha1ConfigMapKeyRef),
           insecure: S.optional(S.Boolean),
           project: S.optional(S.String),
           repo: S.optional(S.String),
@@ -6346,16 +8775,16 @@ function __c18(j: number): any {
         identifier: "V1alpha1PullRequestGeneratorFilter",
       });
     case 3:
-      return S.Array(__S(146));
+      return S.Array(V1alpha1PullRequestGeneratorFilter);
     case 4:
       return S.suspend(() =>
         S.Struct({
           api: S.optional(S.String),
           insecure: S.optional(S.Boolean),
-          labels: S.optional(__S(22)),
+          labels: S.optional(V1alpha1PullRequestGeneratorGiteaLabelsList),
           owner: S.optional(S.String),
           repo: S.optional(S.String),
-          tokenRef: S.optional(__S(139)),
+          tokenRef: S.optional(V1alpha1SecretRef),
         }),
       ).annotate({
         identifier: "V1alpha1PullRequestGeneratorGitea",
@@ -6365,10 +8794,10 @@ function __c18(j: number): any {
         S.Struct({
           api: S.optional(S.String),
           appSecretName: S.optional(S.String),
-          labels: S.optional(__S(22)),
+          labels: S.optional(V1alpha1PullRequestGeneratorGithubLabelsList),
           owner: S.optional(S.String),
           repo: S.optional(S.String),
-          tokenRef: S.optional(__S(139)),
+          tokenRef: S.optional(V1alpha1SecretRef),
         }),
       ).annotate({
         identifier: "V1alpha1PullRequestGeneratorGithub",
@@ -6377,12 +8806,12 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           api: S.optional(S.String),
-          caRef: S.optional(__S(144)),
+          caRef: S.optional(V1alpha1ConfigMapKeyRef),
           insecure: S.optional(S.Boolean),
-          labels: S.optional(__S(22)),
+          labels: S.optional(V1alpha1PullRequestGeneratorGitLabLabelsList),
           project: S.optional(S.String),
           pullRequestState: S.optional(S.String),
-          tokenRef: S.optional(__S(139)),
+          tokenRef: S.optional(V1alpha1SecretRef),
         }),
       ).annotate({
         identifier: "V1alpha1PullRequestGeneratorGitLab",
@@ -6390,17 +8819,17 @@ function __c18(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          azuredevops: S.optional(__S(140)),
-          bitbucket: S.optional(__S(143)),
-          bitbucketServer: S.optional(__S(145)),
+          azuredevops: S.optional(V1alpha1PullRequestGeneratorAzureDevOps),
+          bitbucket: S.optional(V1alpha1PullRequestGeneratorBitbucket),
+          bitbucketServer: S.optional(V1alpha1PullRequestGeneratorBitbucketServer),
           continueOnRepoNotFoundError: S.optional(S.Boolean),
-          filters: S.optional(__S(147)),
-          gitea: S.optional(__S(148)),
-          github: S.optional(__S(149)),
-          gitlab: S.optional(__S(150)),
+          filters: S.optional(V1alpha1PullRequestGeneratorFiltersList),
+          gitea: S.optional(V1alpha1PullRequestGeneratorGitea),
+          github: S.optional(V1alpha1PullRequestGeneratorGithub),
+          gitlab: S.optional(V1alpha1PullRequestGeneratorGitLab),
           requeueAfterSeconds: S.optional(S.Number),
-          template: S.optional(__S(127)),
-          values: S.optional(__S(14)),
+          template: S.optional(V1alpha1ApplicationSetTemplate),
+          values: S.optional(V1alpha1PullRequestGeneratorValuesMap),
         }),
       ).annotate({
         identifier: "V1alpha1PullRequestGenerator",
@@ -6417,14 +8846,14 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "V1alpha1TagFilter" });
     case 1:
-      return S.Array(__S(152));
+      return S.Array(V1alpha1TagFilter);
     case 2:
       return S.suspend(() =>
         S.Struct({
           allBranches: S.optional(S.Boolean),
           region: S.optional(S.String),
           role: S.optional(S.String),
-          tagFilters: S.optional(__S(153)),
+          tagFilters: S.optional(V1alpha1SCMProviderGeneratorAWSCodeCommitTagFiltersList),
         }),
       ).annotate({
         identifier: "V1alpha1SCMProviderGeneratorAWSCodeCommit",
@@ -6432,7 +8861,7 @@ function __c19(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          accessTokenRef: S.optional(__S(139)),
+          accessTokenRef: S.optional(V1alpha1SecretRef),
           allBranches: S.optional(S.Boolean),
           api: S.optional(S.String),
           organization: S.optional(S.String),
@@ -6445,7 +8874,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           allBranches: S.optional(S.Boolean),
-          appPasswordRef: S.optional(__S(139)),
+          appPasswordRef: S.optional(V1alpha1SecretRef),
           owner: S.optional(S.String),
           user: S.optional(S.String),
         }),
@@ -6457,9 +8886,9 @@ function __c19(j: number): any {
         S.Struct({
           allBranches: S.optional(S.Boolean),
           api: S.optional(S.String),
-          basicAuth: S.optional(__S(141)),
-          bearerToken: S.optional(__S(142)),
-          caRef: S.optional(__S(144)),
+          basicAuth: S.optional(V1alpha1BasicAuthBitbucketServer),
+          bearerToken: S.optional(V1alpha1BearerTokenBitbucketCloud),
+          caRef: S.optional(V1alpha1ConfigMapKeyRef),
           insecure: S.optional(S.Boolean),
           project: S.optional(S.String),
         }),
@@ -6471,15 +8900,15 @@ function __c19(j: number): any {
         S.Struct({
           branchMatch: S.optional(S.String),
           labelMatch: S.optional(S.String),
-          pathsDoNotExist: S.optional(__S(22)),
-          pathsExist: S.optional(__S(22)),
+          pathsDoNotExist: S.optional(V1alpha1SCMProviderGeneratorFilterPathsDoNotExistList),
+          pathsExist: S.optional(V1alpha1SCMProviderGeneratorFilterPathsExistList),
           repositoryMatch: S.optional(S.String),
         }),
       ).annotate({
         identifier: "V1alpha1SCMProviderGeneratorFilter",
       });
     case 7:
-      return S.Array(__S(158));
+      return S.Array(V1alpha1SCMProviderGeneratorFilter);
   }
 }
 function __c20(j: number): any {
@@ -6492,7 +8921,7 @@ function __c20(j: number): any {
           excludeArchivedRepos: S.optional(S.Boolean),
           insecure: S.optional(S.Boolean),
           owner: S.optional(S.String),
-          tokenRef: S.optional(__S(139)),
+          tokenRef: S.optional(V1alpha1SecretRef),
         }),
       ).annotate({
         identifier: "V1alpha1SCMProviderGeneratorGitea",
@@ -6505,7 +8934,7 @@ function __c20(j: number): any {
           appSecretName: S.optional(S.String),
           excludeArchivedRepos: S.optional(S.Boolean),
           organization: S.optional(S.String),
-          tokenRef: S.optional(__S(139)),
+          tokenRef: S.optional(V1alpha1SecretRef),
         }),
       ).annotate({
         identifier: "V1alpha1SCMProviderGeneratorGithub",
@@ -6515,13 +8944,13 @@ function __c20(j: number): any {
         S.Struct({
           allBranches: S.optional(S.Boolean),
           api: S.optional(S.String),
-          caRef: S.optional(__S(144)),
+          caRef: S.optional(V1alpha1ConfigMapKeyRef),
           group: S.optional(S.String),
           includeArchivedRepos: S.optional(S.Boolean),
           includeSharedProjects: S.optional(S.Boolean),
           includeSubgroups: S.optional(S.Boolean),
           insecure: S.optional(S.Boolean),
-          tokenRef: S.optional(__S(139)),
+          tokenRef: S.optional(V1alpha1SecretRef),
           topic: S.optional(S.String),
         }),
       ).annotate({
@@ -6530,18 +8959,18 @@ function __c20(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          awsCodeCommit: S.optional(__S(154)),
-          azureDevOps: S.optional(__S(155)),
-          bitbucket: S.optional(__S(156)),
-          bitbucketServer: S.optional(__S(157)),
+          awsCodeCommit: S.optional(V1alpha1SCMProviderGeneratorAWSCodeCommit),
+          azureDevOps: S.optional(V1alpha1SCMProviderGeneratorAzureDevOps),
+          bitbucket: S.optional(V1alpha1SCMProviderGeneratorBitbucket),
+          bitbucketServer: S.optional(V1alpha1SCMProviderGeneratorBitbucketServer),
           cloneProtocol: S.optional(S.String),
-          filters: S.optional(__S(159)),
-          gitea: S.optional(__S(160)),
-          github: S.optional(__S(161)),
-          gitlab: S.optional(__S(162)),
+          filters: S.optional(V1alpha1SCMProviderGeneratorFiltersList),
+          gitea: S.optional(V1alpha1SCMProviderGeneratorGitea),
+          github: S.optional(V1alpha1SCMProviderGeneratorGithub),
+          gitlab: S.optional(V1alpha1SCMProviderGeneratorGitlab),
           requeueAfterSeconds: S.optional(S.Number),
-          template: S.optional(__S(127)),
-          values: S.optional(__S(14)),
+          template: S.optional(V1alpha1ApplicationSetTemplate),
+          values: S.optional(V1alpha1SCMProviderGeneratorValuesMap),
         }),
       ).annotate({
         identifier: "V1alpha1SCMProviderGenerator",
@@ -6549,36 +8978,36 @@ function __c20(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          clusterDecisionResource: S.optional(__S(128)),
-          clusters: S.optional(__S(129)),
-          git: S.optional(__S(132)),
-          list: S.optional(__S(134)),
-          matrix: S.optional(__S(65)),
-          merge: S.optional(__S(65)),
-          oci: S.optional(__S(132)),
-          plugin: S.optional(__S(138)),
-          pullRequest: S.optional(__S(151)),
-          scmProvider: S.optional(__S(163)),
-          selector: S.optional(__S(125)),
+          clusterDecisionResource: S.optional(V1alpha1DuckTypeGenerator),
+          clusters: S.optional(V1alpha1ClusterGenerator),
+          git: S.optional(V1alpha1GitGenerator),
+          list: S.optional(V1alpha1ListGenerator),
+          matrix: S.optional(V1JSON),
+          merge: S.optional(V1JSON),
+          oci: S.optional(V1alpha1OciGenerator),
+          plugin: S.optional(V1alpha1PluginGenerator),
+          pullRequest: S.optional(V1alpha1PullRequestGenerator),
+          scmProvider: S.optional(V1alpha1SCMProviderGenerator),
+          selector: S.optional(V1LabelSelector),
         }),
       ).annotate({
         identifier: "V1alpha1ApplicationSetNestedGenerator",
       });
     case 5:
-      return S.Array(__S(164));
+      return S.Array(V1alpha1ApplicationSetNestedGenerator);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          generators: S.optional(__S(165)),
-          template: S.optional(__S(127)),
+          generators: S.optional(V1alpha1MatrixGeneratorGeneratorsList),
+          template: S.optional(V1alpha1ApplicationSetTemplate),
         }),
       ).annotate({ identifier: "V1alpha1MatrixGenerator" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          generators: S.optional(__S(165)),
-          mergeKeys: S.optional(__S(22)),
-          template: S.optional(__S(127)),
+          generators: S.optional(V1alpha1MergeGeneratorGeneratorsList),
+          mergeKeys: S.optional(V1alpha1MergeGeneratorMergeKeysList),
+          template: S.optional(V1alpha1ApplicationSetTemplate),
         }),
       ).annotate({ identifier: "V1alpha1MergeGenerator" });
   }
@@ -6588,42 +9017,44 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          clusterDecisionResource: S.optional(__S(128)),
-          clusters: S.optional(__S(129)),
-          git: S.optional(__S(132)),
-          list: S.optional(__S(134)),
-          matrix: S.optional(__S(166)),
-          merge: S.optional(__S(167)),
-          oci: S.optional(__S(132)),
-          plugin: S.optional(__S(138)),
-          pullRequest: S.optional(__S(151)),
-          scmProvider: S.optional(__S(163)),
-          selector: S.optional(__S(125)),
+          clusterDecisionResource: S.optional(V1alpha1DuckTypeGenerator),
+          clusters: S.optional(V1alpha1ClusterGenerator),
+          git: S.optional(V1alpha1GitGenerator),
+          list: S.optional(V1alpha1ListGenerator),
+          matrix: S.optional(V1alpha1MatrixGenerator),
+          merge: S.optional(V1alpha1MergeGenerator),
+          oci: S.optional(V1alpha1OciGenerator),
+          plugin: S.optional(V1alpha1PluginGenerator),
+          pullRequest: S.optional(V1alpha1PullRequestGenerator),
+          scmProvider: S.optional(V1alpha1SCMProviderGenerator),
+          selector: S.optional(V1LabelSelector),
         }),
       ).annotate({
         identifier: "V1alpha1ApplicationSetGenerator",
       });
     case 1:
-      return S.Array(__S(168));
+      return S.Array(V1alpha1ApplicationSetGenerator);
     case 2:
       return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          jqPathExpressions: S.optional(__S(170)),
-          jsonPointers: S.optional(__S(170)),
+          jqPathExpressions: S.optional(
+            V1alpha1ApplicationSetResourceIgnoreDifferencesJqPathExpressionsList,
+          ),
+          jsonPointers: S.optional(V1alpha1ApplicationSetResourceIgnoreDifferencesJsonPointersList),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "V1alpha1ApplicationSetResourceIgnoreDifferences",
       });
     case 4:
-      return S.Array(__S(171));
+      return S.Array(V1alpha1ApplicationSetResourceIgnoreDifferences);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(__S(22)),
-          labels: S.optional(__S(22)),
+          annotations: S.optional(V1alpha1ApplicationPreservedFieldsAnnotationsList),
+          labels: S.optional(V1alpha1ApplicationPreservedFieldsLabelsList),
         }),
       ).annotate({
         identifier: "V1alpha1ApplicationPreservedFields",
@@ -6631,14 +9062,14 @@ function __c21(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          matchExpressions: S.optional(__S(124)),
-          maxUpdate: S.optional(__S(73)),
+          matchExpressions: S.optional(V1alpha1ApplicationSetRolloutStepMatchExpressionsList),
+          maxUpdate: S.optional(IntstrIntOrString),
         }),
       ).annotate({
         identifier: "V1alpha1ApplicationSetRolloutStep",
       });
     case 7:
-      return S.Array(__S(174));
+      return S.Array(V1alpha1ApplicationSetRolloutStep);
   }
 }
 function __c22(j: number): any {
@@ -6646,7 +9077,7 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          steps: S.optional(__S(175)),
+          steps: S.optional(V1alpha1ApplicationSetRolloutStrategyStepsList),
         }),
       ).annotate({
         identifier: "V1alpha1ApplicationSetRolloutStrategy",
@@ -6655,7 +9086,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           deletionOrder: S.optional(S.String),
-          rollingSync: S.optional(__S(176)),
+          rollingSync: S.optional(V1alpha1ApplicationSetRolloutStrategy),
           type: S.optional(S.String),
         }),
       ).annotate({
@@ -6674,14 +9105,16 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           applyNestedSelectors: S.optional(S.Boolean),
-          generators: S.optional(__S(169)),
+          generators: S.optional(V1alpha1ApplicationSetSpecGeneratorsList),
           goTemplate: S.optional(S.Boolean),
-          goTemplateOptions: S.optional(__S(22)),
-          ignoreApplicationDifferences: S.optional(__S(172)),
-          preservedFields: S.optional(__S(173)),
-          strategy: S.optional(__S(177)),
-          syncPolicy: S.optional(__S(178)),
-          template: S.optional(__S(127)),
+          goTemplateOptions: S.optional(V1alpha1ApplicationSetSpecGoTemplateOptionsList),
+          ignoreApplicationDifferences: S.optional(
+            V1alpha1ApplicationSetSpecIgnoreApplicationDifferencesList,
+          ),
+          preservedFields: S.optional(V1alpha1ApplicationPreservedFields),
+          strategy: S.optional(V1alpha1ApplicationSetStrategy),
+          syncPolicy: S.optional(V1alpha1ApplicationSetSyncPolicy),
+          template: S.optional(V1alpha1ApplicationSetTemplate),
           templatePatch: S.optional(S.String),
         }),
       ).annotate({
@@ -6695,13 +9128,13 @@ function __c22(j: number): any {
           message: S.optional(S.String),
           status: S.optional(S.String),
           step: S.optional(S.String),
-          targetrevisions: S.optional(__S(22)),
+          targetrevisions: S.optional(V1alpha1ApplicationSetApplicationStatusTargetrevisionsList),
         }),
       ).annotate({
         identifier: "V1alpha1ApplicationSetApplicationStatus",
       });
     case 5:
-      return S.Array(__S(180));
+      return S.Array(V1alpha1ApplicationSetApplicationStatus);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -6715,7 +9148,7 @@ function __c22(j: number): any {
         identifier: "V1alpha1ApplicationSetCondition",
       });
     case 7:
-      return S.Array(__S(182));
+      return S.Array(V1alpha1ApplicationSetCondition);
   }
 }
 function __c23(j: number): any {
@@ -6723,10 +9156,10 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          applicationStatus: S.optional(__S(181)),
-          conditions: S.optional(__S(183)),
-          health: S.optional(__S(21)),
-          resources: S.optional(__S(107)),
+          applicationStatus: S.optional(V1alpha1ApplicationSetStatusApplicationStatusList),
+          conditions: S.optional(V1alpha1ApplicationSetStatusConditionsList),
+          health: S.optional(V1alpha1HealthStatus),
+          resources: S.optional(V1alpha1ApplicationSetStatusResourcesList),
           resourcesCount: S.optional(S.Number),
         }),
       ).annotate({
@@ -6737,9 +9170,9 @@ function __c23(j: number): any {
         S.Struct({
           upsert: S.optional(S.Boolean.pipe(T.Query())),
           dryRun: S.optional(S.Boolean.pipe(T.Query())),
-          metadata: S.optional(__S(51)),
-          spec: S.optional(__S(179)),
-          status: S.optional(__S(184)),
+          metadata: S.optional(V1ObjectMeta),
+          spec: S.optional(V1alpha1ApplicationSetSpec),
+          status: S.optional(V1alpha1ApplicationSetStatus),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/applicationsets", code: 200 })),
       ).annotate({
         identifier: "CreateApplicationSetServiceRequest",
@@ -6747,9 +9180,9 @@ function __c23(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(51)),
-          spec: S.optional(__S(179)),
-          status: S.optional(__S(184)),
+          metadata: S.optional(V1ObjectMeta),
+          spec: S.optional(V1alpha1ApplicationSetSpec),
+          status: S.optional(V1alpha1ApplicationSetStatus),
         }),
       ).annotate({ identifier: "V1alpha1ApplicationSet" });
     case 3:
@@ -6765,7 +9198,7 @@ function __c23(j: number): any {
         identifier: "V1alpha1RepositoryCertificate",
       });
     case 4:
-      return S.Array(__S(187));
+      return S.Array(V1alpha1RepositoryCertificate);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -6779,15 +9212,15 @@ function __c23(j: number): any {
           remainingItemCount: S.optional(S.Number),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
-          shardInfo: S.optional(__S(189)),
+          shardInfo: S.optional(V1ShardInfo),
         }),
       ).annotate({ identifier: "V1ListMeta" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           upsert: S.optional(S.Boolean.pipe(T.Query())),
-          items: S.optional(__S(188)),
-          metadata: S.optional(__S(190)),
+          items: S.optional(CreateCertificateServiceCertificateRequestItemsList),
+          metadata: S.optional(V1ListMeta),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/certificates", code: 200 })),
       ).annotate({
         identifier: "CreateCertificateServiceCertificateRequest",
@@ -6799,8 +9232,8 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(188)),
-          metadata: S.optional(__S(190)),
+          items: S.optional(V1alpha1RepositoryCertificateListItemsList),
+          metadata: S.optional(V1ListMeta),
         }),
       ).annotate({
         identifier: "V1alpha1RepositoryCertificateList",
@@ -6817,10 +9250,10 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          args: S.optional(__S(22)),
+          args: S.optional(V1alpha1ExecProviderConfigArgsList),
           command: S.optional(S.String),
-          config: S.optional(__S(65)),
-          env: S.optional(__S(14)),
+          config: S.optional(RuntimeRawExtension),
+          env: S.optional(V1alpha1ExecProviderConfigEnvMap),
           installHint: S.optional(S.String),
           provideClusterInfo: S.optional(S.Boolean),
         }),
@@ -6840,15 +9273,15 @@ function __c24(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          awsAuthConfig: S.optional(__S(193)),
+          awsAuthConfig: S.optional(V1alpha1AWSAuthConfig),
           bearerToken: S.optional(S.String),
           burst: S.optional(S.Number),
           disableCompression: S.optional(S.Boolean),
-          execProviderConfig: S.optional(__S(194)),
+          execProviderConfig: S.optional(V1alpha1ExecProviderConfig),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           proxyUrl: S.optional(S.String),
           qps: S.optional(S.Number),
-          tlsClientConfig: S.optional(__S(195)),
+          tlsClientConfig: S.optional(V1alpha1TLSClientConfig),
           username: S.optional(S.String),
         }),
       ).annotate({ identifier: "V1alpha1ClusterConfig" });
@@ -6871,10 +9304,10 @@ function __c24(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          apiVersions: S.optional(__S(22)),
+          apiVersions: S.optional(V1alpha1ClusterInfoApiVersionsList),
           applicationsCount: S.optional(S.Number),
-          cacheInfo: S.optional(__S(198)),
-          connectionState: S.optional(__S(197)),
+          cacheInfo: S.optional(V1alpha1ClusterCacheInfo),
+          connectionState: S.optional(V1alpha1ConnectionState),
           serverVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "V1alpha1ClusterInfo" });
@@ -6886,15 +9319,15 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           upsert: S.optional(S.Boolean.pipe(T.Query())),
-          annotations: S.optional(__S(14)),
+          annotations: S.optional(CreateClusterServiceRequestAnnotationsMap),
           clusterResources: S.optional(S.Boolean),
-          config: S.optional(__S(196)),
+          config: S.optional(V1alpha1ClusterConfig),
           configHash: S.optional(S.String),
-          connectionState: S.optional(__S(197)),
-          info: S.optional(__S(199)),
-          labels: S.optional(__S(14)),
+          connectionState: S.optional(V1alpha1ConnectionState),
+          info: S.optional(V1alpha1ClusterInfo),
+          labels: S.optional(CreateClusterServiceRequestLabelsMap),
           name: S.optional(S.String),
-          namespaces: S.optional(__S(22)),
+          namespaces: S.optional(CreateClusterServiceRequestNamespacesList),
           project: S.optional(S.String),
           refreshRequestedAt: S.optional(S.String),
           server: S.optional(S.String),
@@ -6907,15 +9340,15 @@ function __c25(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(__S(14)),
+          annotations: S.optional(V1alpha1ClusterAnnotationsMap),
           clusterResources: S.optional(S.Boolean),
-          config: S.optional(__S(196)),
+          config: S.optional(V1alpha1ClusterConfig),
           configHash: S.optional(S.String),
-          connectionState: S.optional(__S(197)),
-          info: S.optional(__S(199)),
-          labels: S.optional(__S(14)),
+          connectionState: S.optional(V1alpha1ConnectionState),
+          info: S.optional(V1alpha1ClusterInfo),
+          labels: S.optional(V1alpha1ClusterLabelsMap),
           name: S.optional(S.String),
-          namespaces: S.optional(__S(22)),
+          namespaces: S.optional(V1alpha1ClusterNamespacesList),
           project: S.optional(S.String),
           refreshRequestedAt: S.optional(S.String),
           server: S.optional(S.String),
@@ -6949,12 +9382,12 @@ function __c25(j: number): any {
         }),
       ).annotate({ identifier: "V1alpha1GnuPGPublicKey" });
     case 4:
-      return S.Array(__S(203));
+      return S.Array(V1alpha1GnuPGPublicKey);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(204)),
-          metadata: S.optional(__S(190)),
+          items: S.optional(V1alpha1GnuPGPublicKeyListItemsList),
+          metadata: S.optional(V1ListMeta),
         }),
       ).annotate({
         identifier: "V1alpha1GnuPGPublicKeyList",
@@ -6962,8 +9395,8 @@ function __c25(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          created: S.optional(__S(205)),
-          skipped: S.optional(__S(22)),
+          created: S.optional(V1alpha1GnuPGPublicKeyList),
+          skipped: S.optional(GpgkeyGnuPGPublicKeyCreateResponseSkippedList),
         }),
       ).annotate({
         identifier: "GpgkeyGnuPGPublicKeyCreateResponse",
@@ -6983,7 +9416,7 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(207));
+      return S.Array(V1alpha1ClusterResourceRestrictionItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6995,9 +9428,9 @@ function __c26(j: number): any {
         identifier: "V1alpha1ApplicationDestinationServiceAccount",
       });
     case 2:
-      return S.Array(__S(209));
+      return S.Array(V1alpha1ApplicationDestinationServiceAccount);
     case 3:
-      return S.Array(__S(87));
+      return S.Array(V1alpha1ApplicationDestination);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -7006,11 +9439,11 @@ function __c26(j: number): any {
         }),
       ).annotate({ identifier: "V1GroupKind" });
     case 5:
-      return S.Array(__S(212));
+      return S.Array(V1GroupKind);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ignore: S.optional(__S(208)),
+          ignore: S.optional(V1alpha1OrphanedResourcesMonitorSettingsIgnoreList),
           warn: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -7029,19 +9462,19 @@ function __c26(j: number): any {
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(215));
+      return S.Array(V1alpha1JWTToken);
     case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          groups: S.optional(__S(22)),
-          jwtTokens: S.optional(__S(216)),
+          groups: S.optional(V1alpha1ProjectRoleGroupsList),
+          jwtTokens: S.optional(V1alpha1ProjectRoleJwtTokensList),
           name: S.optional(S.String),
-          policies: S.optional(__S(22)),
+          policies: S.optional(V1alpha1ProjectRolePoliciesList),
         }),
       ).annotate({ identifier: "V1alpha1ProjectRole" });
     case 2:
-      return S.Array(__S(217));
+      return S.Array(V1alpha1ProjectRole);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -7049,11 +9482,11 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "V1alpha1SignatureKey" });
     case 4:
-      return S.Array(__S(219));
+      return S.Array(V1alpha1SignatureKey);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(__S(22)),
+          keys: S.optional(V1alpha1SourceIntegrityGitPolicyGPGKeysList),
           mode: S.optional(S.String),
         }),
       ).annotate({
@@ -7068,7 +9501,7 @@ function __c27(j: number): any {
         identifier: "V1alpha1SourceIntegrityGitPolicyRepo",
       });
     case 7:
-      return S.Array(__S(222));
+      return S.Array(V1alpha1SourceIntegrityGitPolicyRepo);
   }
 }
 function __c28(j: number): any {
@@ -7076,18 +9509,18 @@ function __c28(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          gpg: S.optional(__S(221)),
-          repos: S.optional(__S(223)),
+          gpg: S.optional(V1alpha1SourceIntegrityGitPolicyGPG),
+          repos: S.optional(V1alpha1SourceIntegrityGitPolicyReposList),
         }),
       ).annotate({
         identifier: "V1alpha1SourceIntegrityGitPolicy",
       });
     case 1:
-      return S.Array(__S(224));
+      return S.Array(V1alpha1SourceIntegrityGitPolicy);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          policies: S.optional(__S(225)),
+          policies: S.optional(V1alpha1SourceIntegrityGitPoliciesList),
         }),
       ).annotate({
         identifier: "V1alpha1SourceIntegrityGit",
@@ -7095,51 +9528,57 @@ function __c28(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          git: S.optional(__S(226)),
+          git: S.optional(V1alpha1SourceIntegrityGit),
         }),
       ).annotate({ identifier: "V1alpha1SourceIntegrity" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           andOperator: S.optional(S.Boolean),
-          applications: S.optional(__S(22)),
-          clusters: S.optional(__S(22)),
+          applications: S.optional(V1alpha1InlineSyncWindowApplicationsList),
+          clusters: S.optional(V1alpha1InlineSyncWindowClustersList),
           description: S.optional(S.String),
           duration: S.optional(S.String),
           kind: S.optional(S.String),
           manualSync: S.optional(S.Boolean),
-          namespaces: S.optional(__S(22)),
+          namespaces: S.optional(V1alpha1InlineSyncWindowNamespacesList),
           schedule: S.optional(S.String),
           syncOverrun: S.optional(S.Boolean),
           timeZone: S.optional(S.String),
         }),
       ).annotate({ identifier: "V1alpha1InlineSyncWindow" });
     case 5:
-      return S.Array(__S(228));
+      return S.Array(V1alpha1InlineSyncWindow);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          clusterResourceBlacklist: S.optional(__S(208)),
-          clusterResourceWhitelist: S.optional(__S(208)),
+          clusterResourceBlacklist: S.optional(V1alpha1AppProjectSpecClusterResourceBlacklistList),
+          clusterResourceWhitelist: S.optional(V1alpha1AppProjectSpecClusterResourceWhitelistList),
           description: S.optional(S.String),
-          destinationServiceAccounts: S.optional(__S(210)),
-          destinations: S.optional(__S(211)),
-          namespaceResourceBlacklist: S.optional(__S(213)),
-          namespaceResourceWhitelist: S.optional(__S(213)),
-          orphanedResources: S.optional(__S(214)),
+          destinationServiceAccounts: S.optional(
+            V1alpha1AppProjectSpecDestinationServiceAccountsList,
+          ),
+          destinations: S.optional(V1alpha1AppProjectSpecDestinationsList),
+          namespaceResourceBlacklist: S.optional(
+            V1alpha1AppProjectSpecNamespaceResourceBlacklistList,
+          ),
+          namespaceResourceWhitelist: S.optional(
+            V1alpha1AppProjectSpecNamespaceResourceWhitelistList,
+          ),
+          orphanedResources: S.optional(V1alpha1OrphanedResourcesMonitorSettings),
           permitOnlyProjectScopedClusters: S.optional(S.Boolean),
-          roles: S.optional(__S(218)),
-          signatureKeys: S.optional(__S(220)),
-          sourceIntegrity: S.optional(__S(227)),
-          sourceNamespaces: S.optional(__S(22)),
-          sourceRepos: S.optional(__S(22)),
-          syncWindows: S.optional(__S(229)),
+          roles: S.optional(V1alpha1AppProjectSpecRolesList),
+          signatureKeys: S.optional(V1alpha1AppProjectSpecSignatureKeysList),
+          sourceIntegrity: S.optional(V1alpha1SourceIntegrity),
+          sourceNamespaces: S.optional(V1alpha1AppProjectSpecSourceNamespacesList),
+          sourceRepos: S.optional(V1alpha1AppProjectSpecSourceReposList),
+          syncWindows: S.optional(V1alpha1AppProjectSpecSyncWindowsList),
         }),
       ).annotate({ identifier: "V1alpha1AppProjectSpec" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(216)),
+          items: S.optional(V1alpha1JWTTokensItemsList),
         }),
       ).annotate({ identifier: "V1alpha1JWTTokens" });
   }
@@ -7147,25 +9586,25 @@ function __c28(j: number): any {
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(231));
+      return S.Record(S.String, V1alpha1JWTTokens);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          jwtTokensByRole: S.optional(__S(232)),
+          jwtTokensByRole: S.optional(V1alpha1AppProjectStatusJwtTokensByRoleMap),
         }),
       ).annotate({ identifier: "V1alpha1AppProjectStatus" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(51)),
-          spec: S.optional(__S(230)),
-          status: S.optional(__S(233)),
+          metadata: S.optional(V1ObjectMeta),
+          spec: S.optional(V1alpha1AppProjectSpec),
+          status: S.optional(V1alpha1AppProjectStatus),
         }),
       ).annotate({ identifier: "V1alpha1AppProject" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          project: S.optional(__S(234)),
+          project: S.optional(V1alpha1AppProject),
           upsert: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/projects", code: 200 })),
       ).annotate({
@@ -7293,7 +9732,7 @@ function __c30(j: number): any {
           azureServicePrincipalClientSecret: S.optional(S.String),
           azureServicePrincipalTenantId: S.optional(S.String),
           bearerToken: S.optional(S.String),
-          connectionState: S.optional(__S(197)),
+          connectionState: S.optional(V1alpha1ConnectionState),
           depth: S.optional(S.Number),
           enableLfs: S.optional(S.Boolean),
           enableOCI: S.optional(S.Boolean),
@@ -7332,7 +9771,7 @@ function __c30(j: number): any {
           azureServicePrincipalClientSecret: S.optional(S.String),
           azureServicePrincipalTenantId: S.optional(S.String),
           bearerToken: S.optional(S.String),
-          connectionState: S.optional(__S(197)),
+          connectionState: S.optional(V1alpha1ConnectionState),
           depth: S.optional(S.Number),
           enableLfs: S.optional(S.Boolean),
           enableOCI: S.optional(S.Boolean),
@@ -7371,7 +9810,7 @@ function __c30(j: number): any {
           azureServicePrincipalClientSecret: S.optional(S.String),
           azureServicePrincipalTenantId: S.optional(S.String),
           bearerToken: S.optional(S.String),
-          connectionState: S.optional(__S(197)),
+          connectionState: S.optional(V1alpha1ConnectionState),
           depth: S.optional(S.Number),
           enableLfs: S.optional(S.Boolean),
           enableOCI: S.optional(S.Boolean),
@@ -7478,7 +9917,7 @@ function __c31(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          applicationset: S.optional(__S(186)),
+          applicationset: S.optional(V1alpha1ApplicationSet),
           project: S.optional(S.String),
         }),
       ).annotate({
@@ -7591,13 +10030,13 @@ function __c32(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          applicationSet: S.optional(__S(186)),
+          applicationSet: S.optional(V1alpha1ApplicationSet),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/applicationsets/generate", code: 200 })),
       ).annotate({
         identifier: "GenerateApplicationSetServiceRequest",
       });
     case 7:
-      return S.Array(__S(115));
+      return S.Array(V1alpha1Application);
   }
 }
 function __c33(j: number): any {
@@ -7605,7 +10044,7 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          applications: S.optional(__S(263)),
+          applications: S.optional(ApplicationsetApplicationSetGenerateResponseApplicationsList),
         }),
       ).annotate({
         identifier: "ApplicationsetApplicationSetGenerateResponse",
@@ -7627,14 +10066,14 @@ function __c33(j: number): any {
         }),
       ).annotate({ identifier: "AccountToken" });
     case 3:
-      return S.Array(__S(266));
+      return S.Array(AccountToken);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          capabilities: S.optional(__S(22)),
+          capabilities: S.optional(AccountAccountCapabilitiesList),
           enabled: S.optional(S.Boolean),
           name: S.optional(S.String),
-          tokens: S.optional(__S(267)),
+          tokens: S.optional(AccountAccountTokensList),
         }),
       ).annotate({ identifier: "AccountAccount" });
     case 5:
@@ -7642,13 +10081,13 @@ function __c33(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           refresh: S.optional(S.String.pipe(T.Query())),
-          projects: S.optional(__S(22).pipe(T.Query())),
+          projects: S.optional(GetApplicationServiceRequestProjectsList.pipe(T.Query())),
           resourceVersion: S.optional(S.String.pipe(T.Query())),
           selector: S.optional(S.String.pipe(T.Query())),
           repo: S.optional(S.String.pipe(T.Query())),
           appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(__S(22).pipe(T.Query())),
-          names: S.optional(__S(22).pipe(T.Query())),
+          project: S.optional(GetApplicationServiceRequestProjectList.pipe(T.Query())),
+          names: S.optional(GetApplicationServiceRequestNamesList.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/applications/{name}", code: 200 })),
       ).annotate({
         identifier: "GetApplicationServiceRequest",
@@ -7681,12 +10120,12 @@ function __c33(j: number): any {
 function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(271));
+      return S.Array(ApplicationApplicationSyncWindow);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          activeWindows: S.optional(__S(272)),
-          assignedWindows: S.optional(__S(272)),
+          activeWindows: S.optional(ApplicationApplicationSyncWindowsResponseActiveWindowsList),
+          assignedWindows: S.optional(ApplicationApplicationSyncWindowsResponseAssignedWindowsList),
           canSync: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -7699,8 +10138,10 @@ function __c34(j: number): any {
           revision: S.optional(S.String.pipe(T.Query())),
           appNamespace: S.optional(S.String.pipe(T.Query())),
           project: S.optional(S.String.pipe(T.Query())),
-          sourcePositions: S.optional(__S(22).pipe(T.Query())),
-          revisions: S.optional(__S(22).pipe(T.Query())),
+          sourcePositions: S.optional(
+            GetApplicationServiceManifestsRequestSourcePositionsList.pipe(T.Query()),
+          ),
+          revisions: S.optional(GetApplicationServiceManifestsRequestRevisionsList.pipe(T.Query())),
           noCache: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/applications/{name}/manifests", code: 200 })),
       ).annotate({
@@ -7709,12 +10150,12 @@ function __c34(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          commands: S.optional(__S(22)),
-          manifests: S.optional(__S(22)),
+          commands: S.optional(RepositoryManifestResponseCommandsList),
+          manifests: S.optional(RepositoryManifestResponseManifestsList),
           namespace: S.optional(S.String),
           revision: S.optional(S.String),
           server: S.optional(S.String),
-          sourceIntegrityResult: S.optional(__S(43)),
+          sourceIntegrityResult: S.optional(V1alpha1SourceIntegrityCheckResult),
           sourceType: S.optional(S.String),
           verifyResult: S.optional(S.String),
         }),
@@ -7741,8 +10182,8 @@ function __c34(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          chunk: S.optional(__S(276)),
-          query: S.optional(__S(277)),
+          chunk: S.optional(ApplicationFileChunk),
+          query: S.optional(ApplicationApplicationManifestQueryWithFiles),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/v1/applications/manifestsWithFiles", code: 200 }),
         ),
@@ -7850,18 +10291,18 @@ function __c35(j: number): any {
 function __c36(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(201));
+      return S.Array(V1alpha1Cluster);
     case 1:
-      return S.Array(__S(234));
+      return S.Array(V1alpha1AppProject);
     case 2:
-      return S.Array(__S(241));
+      return S.Array(V1alpha1Repository);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          clusters: S.optional(__S(288)),
-          globalProjects: S.optional(__S(289)),
-          project: S.optional(__S(234)),
-          repositories: S.optional(__S(290)),
+          clusters: S.optional(ProjectDetailedProjectsResponseClustersList),
+          globalProjects: S.optional(ProjectDetailedProjectsResponseGlobalProjectsList),
+          project: S.optional(V1alpha1AppProject),
+          repositories: S.optional(ProjectDetailedProjectsResponseRepositoriesList),
         }),
       ).annotate({
         identifier: "ProjectDetailedProjectsResponse",
@@ -7879,7 +10320,7 @@ function __c36(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(289)),
+          items: S.optional(ProjectGlobalProjectsResponseItemsList),
         }),
       ).annotate({
         identifier: "ProjectGlobalProjectsResponse",
@@ -7895,7 +10336,7 @@ function __c36(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          windows: S.optional(__S(229)),
+          windows: S.optional(ProjectSyncWindowsResponseWindowsList),
         }),
       ).annotate({
         identifier: "ProjectSyncWindowsResponse",
@@ -7920,7 +10361,7 @@ function __c37(j: number): any {
           source_repoURL: S.String.pipe(T.Label()),
           appName: S.optional(S.String),
           appProject: S.optional(S.String),
-          source: S.optional(__S(80)),
+          source: S.optional(V1alpha1ApplicationSource),
           sourceIndex: S.optional(S.Number),
           versionId: S.optional(S.Number),
         }).pipe(
@@ -7936,17 +10377,17 @@ function __c37(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          fileParameters: S.optional(__S(62)),
+          fileParameters: S.optional(RepositoryHelmAppSpecFileParametersList),
           name: S.optional(S.String),
-          parameters: S.optional(__S(64)),
-          valueFiles: S.optional(__S(22)),
+          parameters: S.optional(RepositoryHelmAppSpecParametersList),
+          valueFiles: S.optional(RepositoryHelmAppSpecValueFilesList),
           values: S.optional(S.String),
         }),
       ).annotate({ identifier: "RepositoryHelmAppSpec" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          images: S.optional(__S(22)),
+          images: S.optional(RepositoryKustomizeAppSpecImagesList),
         }),
       ).annotate({
         identifier: "RepositoryKustomizeAppSpec",
@@ -7954,10 +10395,10 @@ function __c37(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          array: S.optional(__S(22)),
+          array: S.optional(RepositoryParameterAnnouncementArrayList),
           collectionType: S.optional(S.String),
           itemType: S.optional(S.String),
-          map: S.optional(__S(14)),
+          map: S.optional(RepositoryParameterAnnouncementMapMap),
           name: S.optional(S.String),
           required: S.optional(S.Boolean),
           string: S.optional(S.String),
@@ -7968,20 +10409,20 @@ function __c37(j: number): any {
         identifier: "RepositoryParameterAnnouncement",
       });
     case 5:
-      return S.Array(__S(300));
+      return S.Array(RepositoryParameterAnnouncement);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          parametersAnnouncement: S.optional(__S(301)),
+          parametersAnnouncement: S.optional(RepositoryPluginAppSpecParametersAnnouncementList),
         }),
       ).annotate({ identifier: "RepositoryPluginAppSpec" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           directory: S.optional(S.Unknown),
-          helm: S.optional(__S(298)),
-          kustomize: S.optional(__S(299)),
-          plugin: S.optional(__S(302)),
+          helm: S.optional(RepositoryHelmAppSpec),
+          kustomize: S.optional(RepositoryKustomizeAppSpec),
+          plugin: S.optional(RepositoryPluginAppSpec),
           type: S.optional(S.String),
         }),
       ).annotate({
@@ -8007,15 +10448,15 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          versions: S.optional(__S(22)),
+          versions: S.optional(RepositoryHelmChartVersionsList),
         }),
       ).annotate({ identifier: "RepositoryHelmChart" });
     case 2:
-      return S.Array(__S(305));
+      return S.Array(RepositoryHelmChart);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(306)),
+          items: S.optional(RepositoryHelmChartsResponseItemsList),
         }),
       ).annotate({
         identifier: "RepositoryHelmChartsResponse",
@@ -8039,7 +10480,7 @@ function __c38(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          groups: S.optional(__S(22)),
+          groups: S.optional(SessionGetUserInfoResponseGroupsList),
           iss: S.optional(S.String),
           loggedIn: S.optional(S.Boolean),
           username: S.optional(S.String),
@@ -8060,15 +10501,15 @@ function __c39(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          args: S.optional(__S(22)),
-          command: S.optional(__S(22)),
+          args: S.optional(V1alpha1CommandArgsList),
+          command: S.optional(V1alpha1CommandCommandList),
         }),
       ).annotate({ identifier: "V1alpha1Command" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          generate: S.optional(__S(312)),
-          init: S.optional(__S(312)),
+          generate: S.optional(V1alpha1Command),
+          init: S.optional(V1alpha1Command),
           lockRepo: S.optional(S.Boolean),
           name: S.optional(S.String),
         }),
@@ -8076,7 +10517,7 @@ function __c39(j: number): any {
         identifier: "V1alpha1ConfigManagementPlugin",
       });
     case 2:
-      return S.Array(__S(313));
+      return S.Array(V1alpha1ConfigManagementPlugin);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -8086,11 +10527,11 @@ function __c39(j: number): any {
         }),
       ).annotate({ identifier: "ClusterConnector" });
     case 4:
-      return S.Array(__S(315));
+      return S.Array(ClusterConnector);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          connectors: S.optional(__S(316)),
+          connectors: S.optional(ClusterDexConfigConnectorsList),
           dexAuthConnectorID: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterDexConfig" });
@@ -8106,7 +10547,7 @@ function __c39(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          binaryUrls: S.optional(__S(14)),
+          binaryUrls: S.optional(ClusterHelpBinaryUrlsMap),
           chatText: S.optional(S.String),
           chatUrl: S.optional(S.String),
         }),
@@ -8124,13 +10565,13 @@ function __c40(j: number): any {
         }),
       ).annotate({ identifier: "V1alpha1KustomizeVersion" });
     case 1:
-      return S.Array(__S(320));
+      return S.Array(V1alpha1KustomizeVersion);
     case 2:
       return S.suspend(() =>
         S.Struct({
           binaryPath: S.optional(S.String),
           buildOptions: S.optional(S.String),
-          versions: S.optional(__S(321)),
+          versions: S.optional(V1alpha1KustomizeOptionsVersionsList),
         }),
       ).annotate({ identifier: "V1alpha1KustomizeOptions" });
     case 3:
@@ -8138,31 +10579,31 @@ function __c40(j: number): any {
         S.Struct({
           essential: S.optional(S.Boolean),
           value: S.optional(S.String),
-          values: S.optional(__S(22)),
+          values: S.optional(OidcClaimValuesList),
         }),
       ).annotate({ identifier: "OidcClaim" });
     case 4:
-      return S.Record(S.String, __S(323));
+      return S.Record(S.String, OidcClaim);
     case 5:
       return S.suspend(() =>
         S.Struct({
           cliClientID: S.optional(S.String),
           clientID: S.optional(S.String),
           enablePKCEAuthentication: S.optional(S.Boolean),
-          idTokenClaims: S.optional(__S(324)),
+          idTokenClaims: S.optional(ClusterOIDCConfigIdTokenClaimsMap),
           issuer: S.optional(S.String),
           name: S.optional(S.String),
-          scopes: S.optional(__S(22)),
+          scopes: S.optional(ClusterOIDCConfigScopesList),
         }),
       ).annotate({ identifier: "ClusterOIDCConfig" });
     case 6:
-      return S.Array(__S(135));
+      return S.Array(V1alpha1PluginConfigMapRef);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          jSONPointers: S.optional(__S(22)),
-          jqPathExpressions: S.optional(__S(22)),
-          managedFieldsManagers: S.optional(__S(22)),
+          jSONPointers: S.optional(V1alpha1OverrideIgnoreDiffJSONPointersList),
+          jqPathExpressions: S.optional(V1alpha1OverrideIgnoreDiffJqPathExpressionsList),
+          managedFieldsManagers: S.optional(V1alpha1OverrideIgnoreDiffManagedFieldsManagersList),
         }),
       ).annotate({
         identifier: "V1alpha1OverrideIgnoreDiff",
@@ -8179,41 +10620,41 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "V1alpha1KnownTypeField" });
     case 1:
-      return S.Array(__S(328));
+      return S.Array(V1alpha1KnownTypeField);
     case 2:
       return S.suspend(() =>
         S.Struct({
           actions: S.optional(S.String),
           healthLua: S.optional(S.String),
-          ignoreDifferences: S.optional(__S(327)),
-          ignoreResourceUpdates: S.optional(__S(327)),
-          knownTypeFields: S.optional(__S(329)),
+          ignoreDifferences: S.optional(V1alpha1OverrideIgnoreDiff),
+          ignoreResourceUpdates: S.optional(V1alpha1OverrideIgnoreDiff),
+          knownTypeFields: S.optional(V1alpha1ResourceOverrideKnownTypeFieldsList),
           useOpenLibs: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "V1alpha1ResourceOverride" });
     case 3:
-      return S.Record(S.String, __S(330));
+      return S.Record(S.String, V1alpha1ResourceOverride);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          additionalUrls: S.optional(__S(22)),
+          additionalUrls: S.optional(ClusterSettingsAdditionalUrlsList),
           appLabelKey: S.optional(S.String),
           appsInAnyNamespaceEnabled: S.optional(S.Boolean),
-          configManagementPlugins: S.optional(__S(314)),
+          configManagementPlugins: S.optional(ClusterSettingsConfigManagementPluginsList),
           controllerNamespace: S.optional(S.String),
-          dexConfig: S.optional(__S(317)),
+          dexConfig: S.optional(ClusterDexConfig),
           execEnabled: S.optional(S.Boolean),
-          googleAnalytics: S.optional(__S(318)),
-          help: S.optional(__S(319)),
+          googleAnalytics: S.optional(ClusterGoogleAnalyticsConfig),
+          help: S.optional(ClusterHelp),
           hydratorEnabled: S.optional(S.Boolean),
           impersonationEnabled: S.optional(S.Boolean),
           installationID: S.optional(S.String),
-          kustomizeOptions: S.optional(__S(322)),
-          kustomizeVersions: S.optional(__S(22)),
-          oidcConfig: S.optional(__S(325)),
+          kustomizeOptions: S.optional(V1alpha1KustomizeOptions),
+          kustomizeVersions: S.optional(ClusterSettingsKustomizeVersionsList),
+          oidcConfig: S.optional(ClusterOIDCConfig),
           passwordPattern: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          plugins: S.optional(__S(326)),
-          resourceOverrides: S.optional(__S(331)),
+          plugins: S.optional(ClusterSettingsPluginsList),
+          resourceOverrides: S.optional(ClusterSettingsResourceOverridesMap),
           resourceViewEnabled: S.optional(S.Boolean),
           statusBadgeEnabled: S.optional(S.Boolean),
           statusBadgeRootUrl: S.optional(S.String),
@@ -8238,7 +10679,7 @@ function __c41(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          plugins: S.optional(__S(326)),
+          plugins: S.optional(ClusterSettingsPluginsResponsePluginsList),
         }),
       ).annotate({
         identifier: "ClusterSettingsPluginsResponse",
@@ -8268,11 +10709,11 @@ function __c42(j: number): any {
         identifier: "ListAccountServiceAccountsRequest",
       });
     case 1:
-      return S.Array(__S(268));
+      return S.Array(AccountAccount);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(337)),
+          items: S.optional(AccountAccountsListItemsList),
         }),
       ).annotate({ identifier: "AccountAccountsList" });
     case 3:
@@ -8280,13 +10721,13 @@ function __c42(j: number): any {
         S.Struct({
           name: S.optional(S.String.pipe(T.Query())),
           refresh: S.optional(S.String.pipe(T.Query())),
-          projects: S.optional(__S(22).pipe(T.Query())),
+          projects: S.optional(ListApplicationServiceRequestProjectsList.pipe(T.Query())),
           resourceVersion: S.optional(S.String.pipe(T.Query())),
           selector: S.optional(S.String.pipe(T.Query())),
           repo: S.optional(S.String.pipe(T.Query())),
           appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(__S(22).pipe(T.Query())),
-          names: S.optional(__S(22).pipe(T.Query())),
+          project: S.optional(ListApplicationServiceRequestProjectList.pipe(T.Query())),
+          names: S.optional(ListApplicationServiceRequestNamesList.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/applications", code: 200 })),
       ).annotate({
         identifier: "ListApplicationServiceRequest",
@@ -8294,8 +10735,8 @@ function __c42(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(263)),
-          metadata: S.optional(__S(190)),
+          items: S.optional(V1alpha1ApplicationListItemsList),
+          metadata: S.optional(V1ListMeta),
         }),
       ).annotate({ identifier: "V1alpha1ApplicationList" });
     case 5:
@@ -8318,7 +10759,7 @@ function __c42(j: number): any {
         }),
       ).annotate({ identifier: "ApplicationLinkInfo" });
     case 7:
-      return S.Array(__S(342));
+      return S.Array(ApplicationLinkInfo);
   }
 }
 function __c43(j: number): any {
@@ -8326,7 +10767,7 @@ function __c43(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(343)),
+          items: S.optional(ApplicationLinksResponseItemsList),
         }),
       ).annotate({ identifier: "ApplicationLinksResponse" });
     case 1:
@@ -8353,15 +10794,15 @@ function __c43(j: number): any {
           displayName: S.optional(S.String),
           iconClass: S.optional(S.String),
           name: S.optional(S.String),
-          params: S.optional(__S(326)),
+          params: S.optional(V1alpha1ResourceActionParamsList),
         }),
       ).annotate({ identifier: "V1alpha1ResourceAction" });
     case 3:
-      return S.Array(__S(346));
+      return S.Array(V1alpha1ResourceAction);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(__S(347)),
+          actions: S.optional(ApplicationResourceActionsListResponseActionsList),
         }),
       ).annotate({
         identifier: "ApplicationResourceActionsListResponse",
@@ -8406,7 +10847,7 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          lastObservedTime: S.optional(__S(350)),
+          lastObservedTime: S.optional(V1MicroTime),
         }),
       ).annotate({ identifier: "EventsEventSeries" });
     case 1:
@@ -8421,28 +10862,28 @@ function __c44(j: number): any {
         S.Struct({
           action: S.optional(S.String),
           count: S.optional(S.Number),
-          eventTime: S.optional(__S(350)),
+          eventTime: S.optional(V1MicroTime),
           firstTimestamp: S.optional(S.String),
-          involvedObject: S.optional(__S(351)),
+          involvedObject: S.optional(EventsObjectReference),
           lastTimestamp: S.optional(S.String),
           message: S.optional(S.String),
-          metadata: S.optional(__S(51)),
+          metadata: S.optional(V1ObjectMeta),
           reason: S.optional(S.String),
-          related: S.optional(__S(351)),
+          related: S.optional(EventsObjectReference),
           reportingComponent: S.optional(S.String),
           reportingInstance: S.optional(S.String),
-          series: S.optional(__S(352)),
-          source: S.optional(__S(353)),
+          series: S.optional(EventsEventSeries),
+          source: S.optional(EventsEventSource),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventsEvent" });
     case 3:
-      return S.Array(__S(354));
+      return S.Array(EventsEvent);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(355)),
-          metadata: S.optional(__S(190)),
+          items: S.optional(EventsEventListItemsList),
+          metadata: S.optional(V1ListMeta),
         }),
       ).annotate({ identifier: "EventsEventList" });
     case 5:
@@ -8465,7 +10906,7 @@ function __c44(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          projects: S.optional(__S(22).pipe(T.Query())),
+          projects: S.optional(ListApplicationSetServiceRequestProjectsList.pipe(T.Query())),
           selector: S.optional(S.String.pipe(T.Query())),
           appsetNamespace: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/applicationsets", code: 200 })),
@@ -8473,7 +10914,7 @@ function __c44(j: number): any {
         identifier: "ListApplicationSetServiceRequest",
       });
     case 7:
-      return S.Array(__S(186));
+      return S.Array(V1alpha1ApplicationSet);
   }
 }
 function __c45(j: number): any {
@@ -8481,8 +10922,8 @@ function __c45(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(359)),
-          metadata: S.optional(__S(190)),
+          items: S.optional(V1alpha1ApplicationSetListItemsList),
+          metadata: S.optional(V1ListMeta),
         }),
       ).annotate({
         identifier: "V1alpha1ApplicationSetList",
@@ -8520,8 +10961,8 @@ function __c45(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(288)),
-          metadata: S.optional(__S(190)),
+          items: S.optional(V1alpha1ClusterListItemsList),
+          metadata: S.optional(V1ListMeta),
         }),
       ).annotate({ identifier: "V1alpha1ClusterList" });
     case 5:
@@ -8541,7 +10982,7 @@ function __c45(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(326)),
+          items: S.optional(NotificationServiceListItemsList),
         }),
       ).annotate({ identifier: "NotificationServiceList" });
   }
@@ -8575,8 +11016,8 @@ function __c46(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(289)),
-          metadata: S.optional(__S(190)),
+          items: S.optional(V1alpha1AppProjectListItemsList),
+          metadata: S.optional(V1ListMeta),
         }),
       ).annotate({ identifier: "V1alpha1AppProjectList" });
     case 4:
@@ -8604,7 +11045,7 @@ function __c46(j: number): any {
         identifier: "ListRepoCredsServiceRepositoryCredentialsRequest",
       });
     case 7:
-      return S.Array(__S(238));
+      return S.Array(V1alpha1RepoCreds);
   }
 }
 function __c47(j: number): any {
@@ -8612,8 +11053,8 @@ function __c47(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(375)),
-          metadata: S.optional(__S(190)),
+          items: S.optional(V1alpha1RepoCredsListItemsList),
+          metadata: S.optional(V1ListMeta),
         }),
       ).annotate({ identifier: "V1alpha1RepoCredsList" });
     case 1:
@@ -8643,11 +11084,11 @@ function __c47(j: number): any {
         }),
       ).annotate({ identifier: "RepositoryAppInfo" });
     case 4:
-      return S.Array(__S(379));
+      return S.Array(RepositoryAppInfo);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(380)),
+          items: S.optional(RepositoryRepoAppsResponseItemsList),
         }),
       ).annotate({
         identifier: "RepositoryRepoAppsResponse",
@@ -8665,8 +11106,8 @@ function __c47(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          branches: S.optional(__S(22)),
-          tags: S.optional(__S(22)),
+          branches: S.optional(RepositoryRefsBranchesList),
+          tags: S.optional(RepositoryRefsTagsList),
         }),
       ).annotate({ identifier: "RepositoryRefs" });
   }
@@ -8696,8 +11137,8 @@ function __c48(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(290)),
-          metadata: S.optional(__S(190)),
+          items: S.optional(V1alpha1RepositoryListItemsList),
+          metadata: S.optional(V1ListMeta),
         }),
       ).annotate({ identifier: "V1alpha1RepositoryList" });
     case 3:
@@ -8776,7 +11217,7 @@ function __c48(j: number): any {
 function __c49(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(V1alpha1Info);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8787,7 +11228,9 @@ function __c49(j: number): any {
           kind: S.optional(S.String),
           namespace: S.optional(S.String),
           project: S.optional(S.String),
-          resourceActionParameters: S.optional(__S(392)),
+          resourceActionParameters: S.optional(
+            RunApplicationServiceResourceActionV2RequestResourceActionParametersList,
+          ),
           resourceName: S.optional(S.String),
           version: S.optional(S.String),
         }).pipe(
@@ -8803,7 +11246,7 @@ function __c49(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(22)),
+          items: S.optional(ApplicationSyncOptionsItemsList),
         }),
       ).annotate({ identifier: "ApplicationSyncOptions" });
     case 3:
@@ -8812,17 +11255,17 @@ function __c49(j: number): any {
           name: S.String.pipe(T.Label()),
           appNamespace: S.optional(S.String),
           dryRun: S.optional(S.Boolean),
-          infos: S.optional(__S(24)),
-          manifests: S.optional(__S(22)),
+          infos: S.optional(SyncApplicationServiceRequestInfosList),
+          manifests: S.optional(SyncApplicationServiceRequestManifestsList),
           project: S.optional(S.String),
           prune: S.optional(S.Boolean),
-          resources: S.optional(__S(56)),
-          retryStrategy: S.optional(__S(54)),
+          resources: S.optional(SyncApplicationServiceRequestResourcesList),
+          retryStrategy: S.optional(V1alpha1RetryStrategy),
           revision: S.optional(S.String),
-          revisions: S.optional(__S(22)),
-          sourcePositions: S.optional(__S(22)),
-          strategy: S.optional(__S(84)),
-          syncOptions: S.optional(__S(394)),
+          revisions: S.optional(SyncApplicationServiceRequestRevisionsList),
+          sourcePositions: S.optional(SyncApplicationServiceRequestSourcePositionsList),
+          strategy: S.optional(V1alpha1SyncStrategy),
+          syncOptions: S.optional(ApplicationSyncOptions),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/applications/{name}/sync", code: 200 })),
       ).annotate({
         identifier: "SyncApplicationServiceRequest",
@@ -8855,10 +11298,10 @@ function __c49(j: number): any {
           application_metadata_name: S.String.pipe(T.Label()),
           validate: S.optional(S.Boolean.pipe(T.Query())),
           project: S.optional(S.String.pipe(T.Query())),
-          metadata: S.optional(__S(51)),
-          operation: S.optional(__S(86)),
-          spec: S.optional(__S(97)),
-          status: S.optional(__S(114)),
+          metadata: S.optional(V1ObjectMeta),
+          operation: S.optional(V1alpha1Operation),
+          spec: S.optional(V1alpha1ApplicationSpec),
+          status: S.optional(V1alpha1ApplicationStatus),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8876,14 +11319,14 @@ function __c49(j: number): any {
           validate: S.optional(S.Boolean.pipe(T.Query())),
           appNamespace: S.optional(S.String.pipe(T.Query())),
           project: S.optional(S.String.pipe(T.Query())),
-          destination: S.optional(__S(87)),
-          ignoreDifferences: S.optional(__S(89)),
-          info: S.optional(__S(24)),
+          destination: S.optional(V1alpha1ApplicationDestination),
+          ignoreDifferences: S.optional(UpdateApplicationServiceSpecRequestIgnoreDifferencesList),
+          info: S.optional(UpdateApplicationServiceSpecRequestInfoList),
           revisionHistoryLimit: S.optional(S.Number),
-          source: S.optional(__S(80)),
-          sourceHydrator: S.optional(__S(93)),
-          sources: S.optional(__S(81)),
-          syncPolicy: S.optional(__S(96)),
+          source: S.optional(V1alpha1ApplicationSource),
+          sourceHydrator: S.optional(V1alpha1SourceHydrator),
+          sources: S.optional(UpdateApplicationServiceSpecRequestSourcesList),
+          syncPolicy: S.optional(V1alpha1SyncPolicy),
         }).pipe(T.Http({ method: "PUT", uri: "/api/v1/applications/{name}/spec", code: 200 })),
       ).annotate({
         identifier: "UpdateApplicationServiceSpecRequest",
@@ -8896,17 +11339,17 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id_value: S.String.pipe(T.Label()),
-          updatedFields: S.optional(__S(22).pipe(T.Query())),
+          updatedFields: S.optional(UpdateClusterServiceRequestUpdatedFieldsList.pipe(T.Query())),
           id_type: S.optional(S.String.pipe(T.Query("id.type"))),
-          annotations: S.optional(__S(14)),
+          annotations: S.optional(UpdateClusterServiceRequestAnnotationsMap),
           clusterResources: S.optional(S.Boolean),
-          config: S.optional(__S(196)),
+          config: S.optional(V1alpha1ClusterConfig),
           configHash: S.optional(S.String),
-          connectionState: S.optional(__S(197)),
-          info: S.optional(__S(199)),
-          labels: S.optional(__S(14)),
+          connectionState: S.optional(V1alpha1ConnectionState),
+          info: S.optional(V1alpha1ClusterInfo),
+          labels: S.optional(UpdateClusterServiceRequestLabelsMap),
           name: S.optional(S.String),
-          namespaces: S.optional(__S(22)),
+          namespaces: S.optional(UpdateClusterServiceRequestNamespacesList),
           project: S.optional(S.String),
           refreshRequestedAt: S.optional(S.String),
           server: S.optional(S.String),
@@ -8920,7 +11363,7 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_metadata_name: S.String.pipe(T.Label()),
-          project: S.optional(__S(234)),
+          project: S.optional(V1alpha1AppProject),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/v1/projects/{project_metadata_name}", code: 200 }),
         ),
@@ -8998,7 +11441,7 @@ function __c50(j: number): any {
           azureServicePrincipalClientSecret: S.optional(S.String),
           azureServicePrincipalTenantId: S.optional(S.String),
           bearerToken: S.optional(S.String),
-          connectionState: S.optional(__S(197)),
+          connectionState: S.optional(V1alpha1ConnectionState),
           depth: S.optional(S.Number),
           enableLfs: S.optional(S.Boolean),
           enableOCI: S.optional(S.Boolean),
@@ -9038,7 +11481,7 @@ function __c50(j: number): any {
           azureServicePrincipalClientSecret: S.optional(S.String),
           azureServicePrincipalTenantId: S.optional(S.String),
           bearerToken: S.optional(S.String),
-          connectionState: S.optional(__S(197)),
+          connectionState: S.optional(V1alpha1ConnectionState),
           depth: S.optional(S.Number),
           enableLfs: S.optional(S.Boolean),
           enableOCI: S.optional(S.Boolean),
@@ -9172,13 +11615,13 @@ function __c51(j: number): any {
         S.Struct({
           name: S.optional(S.String.pipe(T.Query())),
           refresh: S.optional(S.String.pipe(T.Query())),
-          projects: S.optional(__S(22).pipe(T.Query())),
+          projects: S.optional(WatchApplicationServiceRequestProjectsList.pipe(T.Query())),
           resourceVersion: S.optional(S.String.pipe(T.Query())),
           selector: S.optional(S.String.pipe(T.Query())),
           repo: S.optional(S.String.pipe(T.Query())),
           appNamespace: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(__S(22).pipe(T.Query())),
-          names: S.optional(__S(22).pipe(T.Query())),
+          project: S.optional(WatchApplicationServiceRequestProjectList.pipe(T.Query())),
+          names: S.optional(WatchApplicationServiceRequestNamesList.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/stream/applications", code: 200 })),
       ).annotate({
         identifier: "WatchApplicationServiceRequest",
@@ -9186,7 +11629,7 @@ function __c51(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          application: S.optional(__S(115)),
+          application: S.optional(V1alpha1Application),
           type: S.optional(S.String),
         }),
       ).annotate({
@@ -9195,8 +11638,8 @@ function __c51(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(9)),
-          result: S.optional(__S(411)),
+          error: S.optional(RuntimeStreamError),
+          result: S.optional(V1alpha1ApplicationWatchEvent),
         }),
       ).annotate({
         identifier: "WatchApplicationServiceResponse",
@@ -9225,8 +11668,8 @@ function __c51(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(9)),
-          result: S.optional(__S(34)),
+          error: S.optional(RuntimeStreamError),
+          result: S.optional(V1alpha1ApplicationTree),
         }),
       ).annotate({
         identifier: "WatchApplicationServiceResourceTreeResponse",
@@ -9235,7 +11678,7 @@ function __c51(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String.pipe(T.Query())),
-          projects: S.optional(__S(22).pipe(T.Query())),
+          projects: S.optional(WatchApplicationSetServiceRequestProjectsList.pipe(T.Query())),
           selector: S.optional(S.String.pipe(T.Query())),
           appSetNamespace: S.optional(S.String.pipe(T.Query())),
           resourceVersion: S.optional(S.String.pipe(T.Query())),
@@ -9250,7 +11693,7 @@ function __c52(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          applicationSet: S.optional(__S(186)),
+          applicationSet: S.optional(V1alpha1ApplicationSet),
           type: S.optional(S.String),
         }),
       ).annotate({
@@ -9259,126 +11702,11 @@ function __c52(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(9)),
-          result: S.optional(__S(416)),
+          error: S.optional(RuntimeStreamError),
+          result: S.optional(V1alpha1ApplicationSetWatchEvent),
         }),
       ).annotate({
         identifier: "WatchApplicationSetServiceResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
-    case 41:
-      return __c41(i & 7);
-    case 42:
-      return __c42(i & 7);
-    case 43:
-      return __c43(i & 7);
-    case 44:
-      return __c44(i & 7);
-    case 45:
-      return __c45(i & 7);
-    case 46:
-      return __c46(i & 7);
-    case 47:
-      return __c47(i & 7);
-    case 48:
-      return __c48(i & 7);
-    case 49:
-      return __c49(i & 7);
-    case 50:
-      return __c50(i & 7);
-    case 51:
-      return __c51(i & 7);
-    case 52:
-      return __c52(i & 7);
   }
 }

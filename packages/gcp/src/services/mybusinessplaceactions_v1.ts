@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -68,6 +66,8 @@ export type PlaceActionLinkProviderTypeEnum =
   | "PROVIDER_TYPE_UNSPECIFIED"
   | "MERCHANT"
   | "AGGREGATOR_3P";
+const PlaceActionLinkProviderTypeEnum = S.String;
+
 export type PlaceActionLinkPlaceActionTypeEnum =
   | "PLACE_ACTION_TYPE_UNSPECIFIED"
   | "APPOINTMENT"
@@ -78,6 +78,8 @@ export type PlaceActionLinkPlaceActionTypeEnum =
   | "FOOD_TAKEOUT"
   | "SHOP_ONLINE"
   | "SOLOPRENEUR_APPOINTMENT";
+const PlaceActionLinkPlaceActionTypeEnum = S.String;
+
 /** Represents a place action link and its attributes. */
 export interface PlaceActionLink {
   /** Output only. Specifies the provider type. */
@@ -97,22 +99,41 @@ export interface PlaceActionLink {
   /** Optional. Whether this link is preferred by the merchant. Only one link can be marked as preferred per place action type at a location. If a future request marks a different link as preferred for the same place action type, then the current preferred link (if any exists) will lose its preference. */
   isPreferred?: boolean;
 }
+const PlaceActionLink = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<PlaceActionLink>;
+
 export interface CreateLocationsPlaceActionLinksRequest {
   /** Required. The resource name of the location where to create this place action link. `locations/{location_id}`. */
   parent: string;
   /** Request body */
   body?: PlaceActionLink;
 }
+const CreateLocationsPlaceActionLinksRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateLocationsPlaceActionLinksRequest>;
+
 export interface DeleteLocationsPlaceActionLinksRequest {
   /** Required. The resource name of the place action link to remove from the location. */
   name: string;
 }
+const DeleteLocationsPlaceActionLinksRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteLocationsPlaceActionLinksRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Empty>;
+
 export interface GetLocationsPlaceActionLinksRequest {
   /** Required. The name of the place action link to fetch. */
   name: string;
 }
+const GetLocationsPlaceActionLinksRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetLocationsPlaceActionLinksRequest>;
+
 export interface ListLocationsPlaceActionLinksRequest {
   /** Optional. A filter constraining the place action links to return. The response includes entries that match the filter. We support only the following filter: 1. place_action_type=XYZ where XYZ is a valid PlaceActionType. */
   filter?: string;
@@ -123,7 +144,14 @@ export interface ListLocationsPlaceActionLinksRequest {
   /** Optional. If specified, returns the next page of place action links. */
   pageToken?: string;
 }
+const ListLocationsPlaceActionLinksRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListLocationsPlaceActionLinksRequest>;
+
 export type PlaceActionLinkList = Array<PlaceActionLink>;
+const PlaceActionLinkList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<PlaceActionLinkList>;
+
 /** Response message for PlaceActions.ListPlaceActionLinks. */
 export interface ListPlaceActionLinksResponse {
   /** If there are more place action links than the requested page size, then this field is populated with a token to fetch the next page of results. */
@@ -131,6 +159,11 @@ export interface ListPlaceActionLinksResponse {
   /** The returned list of place action links. */
   placeActionLinks?: PlaceActionLinkList;
 }
+const ListPlaceActionLinksResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListPlaceActionLinksResponse>;
+
 export interface ListPlaceActionTypeMetadataRequest {
   /** Optional. How many action types to include per page. Default is 10, minimum is 1. */
   pageSize?: number;
@@ -141,6 +174,11 @@ export interface ListPlaceActionTypeMetadataRequest {
   /** Optional. The IETF BCP-47 code of language to get display names in. If this language is not available, they will be provided in English. */
   languageCode?: string;
 }
+const ListPlaceActionTypeMetadataRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListPlaceActionTypeMetadataRequest>;
+
 export type PlaceActionTypeMetadataPlaceActionTypeEnum =
   | "PLACE_ACTION_TYPE_UNSPECIFIED"
   | "APPOINTMENT"
@@ -151,6 +189,8 @@ export type PlaceActionTypeMetadataPlaceActionTypeEnum =
   | "FOOD_TAKEOUT"
   | "SHOP_ONLINE"
   | "SOLOPRENEUR_APPOINTMENT";
+const PlaceActionTypeMetadataPlaceActionTypeEnum = S.String;
+
 /** Metadata for supported place action types. */
 export interface PlaceActionTypeMetadata {
   /** The place action type. */
@@ -158,7 +198,17 @@ export interface PlaceActionTypeMetadata {
   /** The localized display name for the attribute, if available; otherwise, the English display name. */
   displayName?: string;
 }
+const PlaceActionTypeMetadata = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<PlaceActionTypeMetadata>;
+
 export type PlaceActionTypeMetadataList = Array<PlaceActionTypeMetadata>;
+const PlaceActionTypeMetadataList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<PlaceActionTypeMetadataList>;
+
 /** Response message for PlaceActions.ListPlaceActionTypeMetadata. */
 export interface ListPlaceActionTypeMetadataResponse {
   /** If the number of action types exceeded the requested page size, this field will be populated with a token to fetch the next page on a subsequent call to `placeActionTypeMetadata.list`. If there are no more results, this field will not be present in the response. */
@@ -166,6 +216,11 @@ export interface ListPlaceActionTypeMetadataResponse {
   /** A collection of metadata for the available place action types. */
   placeActionTypeMetadata?: PlaceActionTypeMetadataList;
 }
+const ListPlaceActionTypeMetadataResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListPlaceActionTypeMetadataResponse>;
+
 export interface PatchLocationsPlaceActionLinksRequest {
   /** Optional. The resource name, in the format `locations/{location_id}/placeActionLinks/{place_action_link_id}`. The name field will only be considered in UpdatePlaceActionLink and DeletePlaceActionLink requests for updating and deleting links respectively. However, it will be ignored in CreatePlaceActionLink request, where `place_action_link_id` will be assigned by the server on successful creation of a new link and returned as part of the response. */
   name: string;
@@ -174,6 +229,11 @@ export interface PatchLocationsPlaceActionLinksRequest {
   /** Request body */
   body?: PlaceActionLink;
 }
+const PatchLocationsPlaceActionLinksRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<PatchLocationsPlaceActionLinksRequest>;
+
 export type CreateLocationsPlaceActionLinksError =
   | NotFound
   | Forbidden
@@ -187,8 +247,8 @@ export const createLocationsPlaceActionLinks: API.OperationMethod<
   CreateLocationsPlaceActionLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateLocationsPlaceActionLinksRequest>,
-  output: __S(0) as any as S.Schema<PlaceActionLink>,
+  input: CreateLocationsPlaceActionLinksRequest,
+  output: PlaceActionLink,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -207,8 +267,8 @@ export const deleteLocationsPlaceActionLinks: API.OperationMethod<
   DeleteLocationsPlaceActionLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteLocationsPlaceActionLinksRequest>,
-  output: __S(3) as any as S.Schema<Empty>,
+  input: DeleteLocationsPlaceActionLinksRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -222,8 +282,8 @@ export const getLocationsPlaceActionLinks: API.OperationMethod<
   GetLocationsPlaceActionLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetLocationsPlaceActionLinksRequest>,
-  output: __S(0) as any as S.Schema<PlaceActionLink>,
+  input: GetLocationsPlaceActionLinksRequest,
+  output: PlaceActionLink,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -238,8 +298,8 @@ export const listLocationsPlaceActionLinks: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPlaceActionLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(5) as any as S.Schema<ListLocationsPlaceActionLinksRequest>,
-  output: __S(7) as any as S.Schema<ListPlaceActionLinksResponse>,
+  input: ListLocationsPlaceActionLinksRequest,
+  output: ListPlaceActionLinksResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -255,8 +315,8 @@ export const listPlaceActionTypeMetadata: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPlaceActionTypeMetadataResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(8) as any as S.Schema<ListPlaceActionTypeMetadataRequest>,
-  output: __S(11) as any as S.Schema<ListPlaceActionTypeMetadataResponse>,
+  input: ListPlaceActionTypeMetadataRequest,
+  output: ListPlaceActionTypeMetadataResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -276,8 +336,8 @@ export const patchLocationsPlaceActionLinks: API.OperationMethod<
   PatchLocationsPlaceActionLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<PatchLocationsPlaceActionLinksRequest>,
-  output: __S(0) as any as S.Schema<PlaceActionLink>,
+  input: PatchLocationsPlaceActionLinksRequest,
+  output: PlaceActionLink,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -289,8 +349,8 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          providerType: S.optional(S.String),
-          placeActionType: S.optional(S.String),
+          providerType: S.optional(PlaceActionLinkProviderTypeEnum),
+          placeActionType: S.optional(PlaceActionLinkPlaceActionTypeEnum),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
           isEditable: S.optional(S.Boolean),
@@ -303,7 +363,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(PlaceActionLink.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -364,12 +424,12 @@ function __c0(j: number): any {
         identifier: "ListLocationsPlaceActionLinksRequest",
       });
     case 6:
-      return S.Array(__S(0));
+      return S.Array(PlaceActionLink);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          placeActionLinks: S.optional(__S(6)),
+          placeActionLinks: S.optional(PlaceActionLinkList),
         }),
       ).annotate({
         identifier: "ListPlaceActionLinksResponse",
@@ -398,17 +458,17 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          placeActionType: S.optional(S.String),
+          placeActionType: S.optional(PlaceActionTypeMetadataPlaceActionTypeEnum),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlaceActionTypeMetadata" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(PlaceActionTypeMetadata);
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          placeActionTypeMetadata: S.optional(__S(10)),
+          placeActionTypeMetadata: S.optional(PlaceActionTypeMetadataList),
         }),
       ).annotate({
         identifier: "ListPlaceActionTypeMetadataResponse",
@@ -418,7 +478,7 @@ function __c1(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(PlaceActionLink.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -429,18 +489,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "PatchLocationsPlaceActionLinksRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

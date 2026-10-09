@@ -5,17 +5,27 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
 /** The hosted compute service to use for the network configuration. */
 export type CreateNetworkConfigurationForOrgRequestComputeService = "none" | "actions";
+const CreateNetworkConfigurationForOrgRequestComputeService = S.String;
+
 /** A list of identifiers of the network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list. */
 export type CreateNetworkConfigurationForOrgRequestNetworkSettingsIdsList = Array<string>;
+const CreateNetworkConfigurationForOrgRequestNetworkSettingsIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateNetworkConfigurationForOrgRequestNetworkSettingsIdsList>;
+
 /** A list of identifiers of the failover network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list. */
 export type CreateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList = Array<string>;
+const CreateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList>;
+
 export interface CreateNetworkConfigurationForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -30,12 +40,25 @@ export interface CreateNetworkConfigurationForOrgRequest {
   /** Indicates whether the failover network resource is enabled. */
   failover_network_enabled?: boolean;
 }
+const CreateNetworkConfigurationForOrgRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateNetworkConfigurationForOrgRequest>;
+
 /** The hosted compute service the network configuration supports. */
 export type NetworkConfigurationComputeService = "none" | "actions" | "codespaces";
+const NetworkConfigurationComputeService = S.String;
+
 /** The unique identifier of each network settings in the configuration. */
 export type NetworkConfigurationNetworkSettingsIdsList = Array<string>;
+const NetworkConfigurationNetworkSettingsIdsList =
+  CreateNetworkConfigurationForOrgRequestNetworkSettingsIdsList as any as S.Schema<NetworkConfigurationNetworkSettingsIdsList>;
+
 /** The unique identifier of each failover network settings in the configuration. */
 export type NetworkConfigurationFailoverNetworkSettingsIdsList = Array<string>;
+const NetworkConfigurationFailoverNetworkSettingsIdsList =
+  CreateNetworkConfigurationForOrgRequestNetworkSettingsIdsList as any as S.Schema<NetworkConfigurationFailoverNetworkSettingsIdsList>;
+
 /** A hosted compute network configuration. */
 export interface NetworkConfiguration {
   /** The unique identifier of the network configuration. */
@@ -53,25 +76,47 @@ export interface NetworkConfiguration {
   /** The time at which the network configuration was created, in ISO 8601 format. */
   created_on: string | null;
 }
+const NetworkConfiguration = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<NetworkConfiguration>;
+
 export interface DeleteNetworkConfigurationFromOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** Unique identifier of the hosted compute network configuration. */
   network_configuration_id: string;
 }
+const DeleteNetworkConfigurationFromOrgRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeleteNetworkConfigurationFromOrgRequest>;
+
 export interface DeleteNetworkConfigurationFromOrgResponse {}
+const DeleteNetworkConfigurationFromOrgResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteNetworkConfigurationFromOrgResponse>;
+
 export interface GetNetworkConfigurationForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** Unique identifier of the hosted compute network configuration. */
   network_configuration_id: string;
 }
+const GetNetworkConfigurationForOrgRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetNetworkConfigurationForOrgRequest>;
+
 export interface GetNetworkSettingsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** Unique identifier of the hosted compute network settings. */
   network_settings_id: string;
 }
+const GetNetworkSettingsForOrgRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetNetworkSettingsForOrgRequest>;
+
 /** A hosted compute network settings resource. */
 export interface NetworkSettings {
   /** The unique identifier of the network settings resource. */
@@ -85,6 +130,8 @@ export interface NetworkSettings {
   /** The location of the subnet this network settings resource is configured for. */
   region: string;
 }
+const NetworkSettings = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<NetworkSettings>;
+
 export interface ListNetworkConfigurationsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -93,18 +140,41 @@ export interface ListNetworkConfigurationsForOrgRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListNetworkConfigurationsForOrgRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListNetworkConfigurationsForOrgRequest>;
+
 export type ListNetworkConfigurationsForOrgResponseNetworkConfigurationsList =
   Array<NetworkConfiguration>;
+const ListNetworkConfigurationsForOrgResponseNetworkConfigurationsList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListNetworkConfigurationsForOrgResponseNetworkConfigurationsList>;
+
 export interface ListNetworkConfigurationsForOrgResponse {
   total_count: number;
   network_configurations: ListNetworkConfigurationsForOrgResponseNetworkConfigurationsList;
 }
+const ListNetworkConfigurationsForOrgResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListNetworkConfigurationsForOrgResponse>;
+
 /** The hosted compute service to use for the network configuration. */
 export type UpdateNetworkConfigurationForOrgRequestComputeService = "none" | "actions";
+const UpdateNetworkConfigurationForOrgRequestComputeService = S.String;
+
 /** A list of identifiers of the network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list. */
 export type UpdateNetworkConfigurationForOrgRequestNetworkSettingsIdsList = Array<string>;
+const UpdateNetworkConfigurationForOrgRequestNetworkSettingsIdsList =
+  CreateNetworkConfigurationForOrgRequestNetworkSettingsIdsList as any as S.Schema<UpdateNetworkConfigurationForOrgRequestNetworkSettingsIdsList>;
+
 /** A list of identifiers of the failover network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list. */
 export type UpdateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList = Array<string>;
+const UpdateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList =
+  CreateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList as any as S.Schema<UpdateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList>;
+
 export interface UpdateNetworkConfigurationForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -121,6 +191,11 @@ export interface UpdateNetworkConfigurationForOrgRequest {
   /** Indicates whether the failover network resource is enabled. */
   failover_network_enabled?: boolean;
 }
+const UpdateNetworkConfigurationForOrgRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<UpdateNetworkConfigurationForOrgRequest>;
+
 export type CreateNetworkConfigurationForOrgError = GithubOpError;
 /** Create a hosted compute network configuration for an organization Creates a hosted compute network configuration for an organization. OAuth app tokens and personal access tokens (classic) need the `write:network_configurations` scope to use this endpoint. */
 export const createNetworkConfigurationForOrg: API.OperationMethod<
@@ -129,8 +204,8 @@ export const createNetworkConfigurationForOrg: API.OperationMethod<
   CreateNetworkConfigurationForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateNetworkConfigurationForOrgRequest>,
-  output: __S(3) as any as S.Schema<NetworkConfiguration>,
+  input: CreateNetworkConfigurationForOrgRequest,
+  output: NetworkConfiguration,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -144,8 +219,8 @@ export const deleteNetworkConfigurationFromOrg: API.OperationMethod<
   DeleteNetworkConfigurationFromOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DeleteNetworkConfigurationFromOrgRequest>,
-  output: __S(5) as any as S.Schema<DeleteNetworkConfigurationFromOrgResponse>,
+  input: DeleteNetworkConfigurationFromOrgRequest,
+  output: DeleteNetworkConfigurationFromOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -159,8 +234,8 @@ export const getNetworkConfigurationForOrg: API.OperationMethod<
   GetNetworkConfigurationForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetNetworkConfigurationForOrgRequest>,
-  output: __S(3) as any as S.Schema<NetworkConfiguration>,
+  input: GetNetworkConfigurationForOrgRequest,
+  output: NetworkConfiguration,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -174,8 +249,8 @@ export const getNetworkSettingsForOrg: API.OperationMethod<
   GetNetworkSettingsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<GetNetworkSettingsForOrgRequest>,
-  output: __S(8) as any as S.Schema<NetworkSettings>,
+  input: GetNetworkSettingsForOrgRequest,
+  output: NetworkSettings,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -189,8 +264,8 @@ export const listNetworkConfigurationsForOrg: API.OperationMethod<
   ListNetworkConfigurationsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<ListNetworkConfigurationsForOrgRequest>,
-  output: __S(11) as any as S.Schema<ListNetworkConfigurationsForOrgResponse>,
+  input: ListNetworkConfigurationsForOrgRequest,
+  output: ListNetworkConfigurationsForOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -204,8 +279,8 @@ export const updateNetworkConfigurationForOrg: API.OperationMethod<
   UpdateNetworkConfigurationForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<UpdateNetworkConfigurationForOrgRequest>,
-  output: __S(3) as any as S.Schema<NetworkConfiguration>,
+  input: UpdateNetworkConfigurationForOrgRequest,
+  output: NetworkConfiguration,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -223,9 +298,11 @@ function __c0(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           name: S.String,
-          compute_service: S.optional(S.String),
-          network_settings_ids: __S(0),
-          failover_network_settings_ids: S.optional(__S(1)),
+          compute_service: S.optional(CreateNetworkConfigurationForOrgRequestComputeService),
+          network_settings_ids: CreateNetworkConfigurationForOrgRequestNetworkSettingsIdsList,
+          failover_network_settings_ids: S.optional(
+            CreateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList,
+          ),
           failover_network_enabled: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "POST", uri: "/orgs/{org}/settings/network-configurations", code: 200 }),
@@ -238,9 +315,11 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          compute_service: S.optional(S.String),
-          network_settings_ids: S.optional(__S(0)),
-          failover_network_settings_ids: S.optional(__S(0)),
+          compute_service: S.optional(NetworkConfigurationComputeService),
+          network_settings_ids: S.optional(NetworkConfigurationNetworkSettingsIdsList),
+          failover_network_settings_ids: S.optional(
+            NetworkConfigurationFailoverNetworkSettingsIdsList,
+          ),
           failover_network_enabled: S.optional(S.Boolean),
           created_on: S.NullOr(S.String),
         }),
@@ -321,12 +400,12 @@ function __c1(j: number): any {
         identifier: "ListNetworkConfigurationsForOrgRequest",
       });
     case 2:
-      return S.Array(__S(3));
+      return S.Array(NetworkConfiguration);
     case 3:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          network_configurations: __S(10),
+          network_configurations: ListNetworkConfigurationsForOrgResponseNetworkConfigurationsList,
         }),
       ).annotate({
         identifier: "ListNetworkConfigurationsForOrgResponse",
@@ -337,9 +416,13 @@ function __c1(j: number): any {
           org: S.String.pipe(T.Label()),
           network_configuration_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          compute_service: S.optional(S.String),
-          network_settings_ids: S.optional(__S(0)),
-          failover_network_settings_ids: S.optional(__S(1)),
+          compute_service: S.optional(UpdateNetworkConfigurationForOrgRequestComputeService),
+          network_settings_ids: S.optional(
+            UpdateNetworkConfigurationForOrgRequestNetworkSettingsIdsList,
+          ),
+          failover_network_settings_ids: S.optional(
+            UpdateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList,
+          ),
           failover_network_enabled: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -351,18 +434,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateNetworkConfigurationForOrgRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

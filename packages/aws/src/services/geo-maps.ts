@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Geo Maps", serviceShapeName: "MapsService" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "geo-maps" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2020-11-19");
@@ -166,10 +164,10 @@ export class ValidationException
     "ValidationException",
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-      Reason: /*@__PURE__*/ S.suspend(() => S.String).annotate({
+      Reason: /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),
-      FieldList: /*@__PURE__*/ S.suspend(() => __S(10)).annotate({
+      FieldList: /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
         identifier: "ValidationExceptionFieldList",
       }),
     },
@@ -179,27 +177,37 @@ export interface GetGlyphsRequest {
   FontStack: string;
   FontUnicodeRange: string;
 }
+const GetGlyphsRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetGlyphsRequest>;
 export interface GetGlyphsResponse {
   Blob?: Uint8Array;
   ContentType?: string;
   CacheControl?: string;
   ETag?: string;
 }
+const GetGlyphsResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<GetGlyphsResponse>;
 export type MapStyle = "Standard" | "Monochrome" | "Hybrid" | "Satellite" | (string & {});
+const MapStyle = S.String;
+
 export type ColorScheme = "Light" | "Dark" | (string & {});
+const ColorScheme = S.String;
+
 export type Variant = "Default" | (string & {});
+const Variant = S.String;
+
 export interface GetSpritesRequest {
   FileName: string;
   Style: MapStyle;
   ColorScheme: ColorScheme;
   Variant: Variant;
 }
+const GetSpritesRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetSpritesRequest>;
 export interface GetSpritesResponse {
   Blob?: Uint8Array;
   ContentType?: string;
   CacheControl?: string;
   ETag?: string;
 }
+const GetSpritesResponse = GetGlyphsResponse as any as S.Schema<GetSpritesResponse>;
 export type PositionListString = string | redacted.Redacted<string>;
 export type PositionString = string | redacted.Redacted<string>;
 export type CompactOverlay = string | redacted.Redacted<string>;
@@ -207,9 +215,13 @@ export type GeoJsonOverlay = string | redacted.Redacted<string>;
 export type SensitiveInteger = number;
 export type ApiKey = string | redacted.Redacted<string>;
 export type LabelSize = "Small" | "Large" | (string & {});
+const LabelSize = S.String;
+
 export type LanguageTag = string;
 export type CountryCode = string | redacted.Redacted<string>;
 export type MapFeatureMode = "Enabled" | "Disabled" | (string & {});
+const MapFeatureMode = S.String;
+
 export type DistanceMeters = number;
 export type ScaleBarUnit =
   | "Kilometers"
@@ -217,7 +229,11 @@ export type ScaleBarUnit =
   | "Miles"
   | "MilesKilometers"
   | (string & {});
+const ScaleBarUnit = S.String;
+
 export type StaticMapStyle = "Satellite" | "Standard" | (string & {});
+const StaticMapStyle = S.String;
+
 export type SensitiveFloat = number;
 export interface GetStaticMapRequest {
   BoundingBox?: string | redacted.Redacted<string>;
@@ -241,6 +257,7 @@ export interface GetStaticMapRequest {
   Width: number;
   Zoom?: number;
 }
+const GetStaticMapRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GetStaticMapRequest>;
 export interface GetStaticMapResponse {
   Blob?: Uint8Array;
   ContentType?: string;
@@ -248,12 +265,24 @@ export interface GetStaticMapResponse {
   ETag?: string;
   PricingBucket: string;
 }
+const GetStaticMapResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetStaticMapResponse>;
 export type Terrain = "Hillshade" | "Terrain3D" | (string & {});
+const Terrain = S.String;
+
 export type ContourDensity = "Low" | "Medium" | "High" | (string & {});
+const ContourDensity = S.String;
+
 export type Traffic = "All" | "Congestion" | (string & {});
+const Traffic = S.String;
+
 export type TravelMode = "Transit" | "Truck" | (string & {});
+const TravelMode = S.String;
+
 export type TravelModeList = TravelMode[];
+const TravelModeList = /*@__PURE__*/ __L.at(__c0, 5);
 export type Buildings = "Buildings3D" | (string & {});
+const Buildings = S.String;
+
 export type PoiDensity =
   | "Off"
   | "VerySparse"
@@ -262,6 +291,8 @@ export type PoiDensity =
   | "Dense"
   | "VeryDense"
   | (string & {});
+const PoiDensity = S.String;
+
 export type PoiCategory =
   | "FoodAndDrink"
   | "Entertainment"
@@ -274,6 +305,7 @@ export type PoiCategory =
   | "FacilitiesAndBuildings"
   | (string & {});
 export type PoiCategoryList = PoiCategory[];
+const PoiCategoryList = TravelModeList as any as S.Schema<PoiCategoryList>;
 export interface GetStyleDescriptorRequest {
   Style: MapStyle;
   ColorScheme?: ColorScheme;
@@ -287,12 +319,20 @@ export interface GetStyleDescriptorRequest {
   PoiCategories?: PoiCategory[];
   Key?: string | redacted.Redacted<string>;
 }
+const GetStyleDescriptorRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetStyleDescriptorRequest>;
 export interface GetStyleDescriptorResponse {
   Blob?: Uint8Array;
   ContentType?: string;
   CacheControl?: string;
   ETag?: string;
 }
+const GetStyleDescriptorResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetStyleDescriptorResponse>;
 export type TileAdditionalFeature =
   | "ContourLines"
   | "Hillshade"
@@ -300,6 +340,7 @@ export type TileAdditionalFeature =
   | "Transit"
   | (string & {});
 export type TileAdditionalFeatureList = TileAdditionalFeature[];
+const TileAdditionalFeatureList = TravelModeList as any as S.Schema<TileAdditionalFeatureList>;
 export type Tileset = string;
 export type SensitiveString = string | redacted.Redacted<string>;
 export interface GetTileRequest {
@@ -310,6 +351,7 @@ export interface GetTileRequest {
   Y: string | redacted.Redacted<string>;
   Key?: string | redacted.Redacted<string>;
 }
+const GetTileRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetTileRequest>;
 export interface GetTileResponse {
   Blob?: Uint8Array;
   ContentType?: string;
@@ -317,6 +359,7 @@ export interface GetTileResponse {
   ETag?: string;
   PricingBucket: string;
 }
+const GetTileResponse = GetStaticMapResponse as any as S.Schema<GetTileResponse>;
 export type ValidationExceptionReason =
   | "UnknownOperation"
   | "Missing"
@@ -325,11 +368,18 @@ export type ValidationExceptionReason =
   | "Other"
   | "UnknownField"
   | (string & {});
+const ValidationExceptionReason = S.String;
+
 export interface ValidationExceptionField {
   Name: string;
   Message: string;
 }
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c1, 2);
 export type GetGlyphsError = CommonErrors;
 /**
  * `GetGlyphs` returns the map's glyphs.
@@ -342,8 +392,8 @@ export const getGlyphs: API.OperationMethod<
   GetGlyphsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetGlyphsRequest>,
-  output: __S(1) as any as S.Schema<GetGlyphsResponse>,
+  input: GetGlyphsRequest,
+  output: GetGlyphsResponse,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -362,8 +412,8 @@ export const getSprites: API.OperationMethod<
   GetSpritesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetSpritesRequest>,
-  output: __S(1) as any as S.Schema<GetSpritesResponse>,
+  input: GetSpritesRequest,
+  output: GetSpritesResponse,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -393,8 +443,8 @@ export const getStaticMap: API.OperationMethod<
   GetStaticMapError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<GetStaticMapRequest>,
-  output: __S(4) as any as S.Schema<GetStaticMapResponse>,
+  input: GetStaticMapRequest,
+  output: GetStaticMapResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -418,8 +468,8 @@ export const getStyleDescriptor: API.OperationMethod<
   GetStyleDescriptorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetStyleDescriptorRequest>,
-  output: __S(7) as any as S.Schema<GetStyleDescriptorResponse>,
+  input: GetStyleDescriptorRequest,
+  output: GetStyleDescriptorResponse,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -444,8 +494,8 @@ export const getTile: API.OperationMethod<
   GetTileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<GetTileRequest>,
-  output: __S(4) as any as S.Schema<GetTileResponse>,
+  input: GetTileRequest,
+  output: GetTileResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -490,9 +540,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           FileName: S.String.pipe(T.HttpLabel("FileName")),
-          Style: S.String.pipe(T.HttpLabel("Style")),
-          ColorScheme: S.String.pipe(T.HttpLabel("ColorScheme")),
-          Variant: S.String.pipe(T.HttpLabel("Variant")),
+          Style: MapStyle.pipe(T.HttpLabel("Style")),
+          ColorScheme: ColorScheme.pipe(T.HttpLabel("ColorScheme")),
+          Variant: Variant.pipe(T.HttpLabel("Variant")),
         }).pipe(
           T.all(
             T.Http({
@@ -513,21 +563,21 @@ function __c0(j: number): any {
           BoundingBox: S.optional(SensitiveString).pipe(T.HttpQuery("bounding-box")),
           BoundedPositions: S.optional(SensitiveString).pipe(T.HttpQuery("bounded-positions")),
           Center: S.optional(SensitiveString).pipe(T.HttpQuery("center")),
-          ColorScheme: S.optional(S.String).pipe(T.HttpQuery("color-scheme")),
+          ColorScheme: S.optional(ColorScheme).pipe(T.HttpQuery("color-scheme")),
           CompactOverlay: S.optional(SensitiveString).pipe(T.HttpQuery("compact-overlay")),
           CropLabels: S.optional(S.Boolean).pipe(T.HttpQuery("crop-labels")),
           GeoJsonOverlay: S.optional(SensitiveString).pipe(T.HttpQuery("geojson-overlay")),
           Height: S.Number.pipe(T.HttpQuery("height")),
           Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
-          LabelSize: S.optional(S.String).pipe(T.HttpQuery("label-size")),
+          LabelSize: S.optional(LabelSize).pipe(T.HttpQuery("label-size")),
           Language: S.optional(S.String).pipe(T.HttpQuery("lang")),
           Padding: S.optional(S.Number).pipe(T.HttpQuery("padding")),
           PoliticalView: S.optional(SensitiveString).pipe(T.HttpQuery("political-view")),
-          PointsOfInterests: S.optional(S.String).pipe(T.HttpQuery("pois")),
+          PointsOfInterests: S.optional(MapFeatureMode).pipe(T.HttpQuery("pois")),
           Radius: S.optional(S.Number).pipe(T.HttpQuery("radius")),
           FileName: S.String.pipe(T.HttpLabel("FileName")),
-          ScaleBarUnit: S.optional(S.String).pipe(T.HttpQuery("scale-unit")),
-          Style: S.optional(S.String).pipe(T.HttpQuery("style")),
+          ScaleBarUnit: S.optional(ScaleBarUnit).pipe(T.HttpQuery("scale-unit")),
+          Style: S.optional(StaticMapStyle).pipe(T.HttpQuery("style")),
           Width: S.Number.pipe(T.HttpQuery("width")),
           Zoom: S.optional(S.Number).pipe(T.HttpQuery("zoom")),
         }).pipe(
@@ -552,20 +602,20 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "GetStaticMapResponse" });
     case 5:
-      return S.Array(S.String);
+      return S.Array(TravelMode);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Style: S.String.pipe(T.HttpLabel("Style")),
-          ColorScheme: S.optional(S.String).pipe(T.HttpQuery("color-scheme")),
+          Style: MapStyle.pipe(T.HttpLabel("Style")),
+          ColorScheme: S.optional(ColorScheme).pipe(T.HttpQuery("color-scheme")),
           PoliticalView: S.optional(SensitiveString).pipe(T.HttpQuery("political-view")),
-          Terrain: S.optional(S.String).pipe(T.HttpQuery("terrain")),
-          ContourDensity: S.optional(S.String).pipe(T.HttpQuery("contour-density")),
-          Traffic: S.optional(S.String).pipe(T.HttpQuery("traffic")),
-          TravelModes: S.optional(__S(5)).pipe(T.HttpQuery("travel-modes")),
-          Buildings: S.optional(S.String).pipe(T.HttpQuery("buildings")),
-          PoiDensity: S.optional(S.String).pipe(T.HttpQuery("poi-density")),
-          PoiCategories: S.optional(__S(5)).pipe(T.HttpQuery("poi-categories")),
+          Terrain: S.optional(Terrain).pipe(T.HttpQuery("terrain")),
+          ContourDensity: S.optional(ContourDensity).pipe(T.HttpQuery("contour-density")),
+          Traffic: S.optional(Traffic).pipe(T.HttpQuery("traffic")),
+          TravelModes: S.optional(TravelModeList).pipe(T.HttpQuery("travel-modes")),
+          Buildings: S.optional(Buildings).pipe(T.HttpQuery("buildings")),
+          PoiDensity: S.optional(PoiDensity).pipe(T.HttpQuery("poi-density")),
+          PoiCategories: S.optional(PoiCategoryList).pipe(T.HttpQuery("poi-categories")),
           Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
         }).pipe(
           T.all(
@@ -598,7 +648,9 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AdditionalFeatures: S.optional(__S(5)).pipe(T.HttpQuery("additional-features")),
+          AdditionalFeatures: S.optional(TileAdditionalFeatureList).pipe(
+            T.HttpQuery("additional-features"),
+          ),
           Tileset: S.String.pipe(T.HttpLabel("Tileset")),
           Z: SensitiveString.pipe(T.HttpLabel("Z")),
           X: SensitiveString.pipe(T.HttpLabel("X")),
@@ -622,19 +674,6 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ValidationExceptionField" });
     case 2:
-      return S.Array(__S(9));
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
+      return S.Array(ValidationExceptionField);
   }
 }

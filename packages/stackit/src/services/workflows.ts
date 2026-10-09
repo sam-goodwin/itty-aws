@@ -8,8 +8,6 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -64,6 +62,8 @@ export interface NoAuth {
 }
 /** Authentication for Git repositories */
 export type GitAuth = BasicAuth | NoAuth;
+const GitAuth = /*@__PURE__*/ S.Unknown as any as S.Schema<GitAuth>;
+
 /** Bundle type identifier. */
 export type GitDagBundleType = "git";
 /** A Git-based DAG bundle. Maps to airflow.providers.git.bundles.git.GitDagBundle. */
@@ -115,6 +115,8 @@ export interface S3DagBundle {
 }
 /** A DAG bundle configuration. Discriminated by the "type" field. Supported types are "git" and "s3". */
 export type CreateDagBundlePayload = GitDagBundle | S3DagBundle;
+const CreateDagBundlePayload = /*@__PURE__*/ S.Unknown as any as S.Schema<CreateDagBundlePayload>;
+
 export interface CreateDagBundleRequest {
   /** The STACKIT portal project UUID the STACKIT Workflows instance is part of. */
   projectId: string;
@@ -124,6 +126,11 @@ export interface CreateDagBundleRequest {
   instanceId: string;
   body: CreateDagBundlePayload;
 }
+const CreateDagBundleRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateDagBundleRequest>;
+
 /** Basic authentication as returned in API responses. The password field is always masked ("**********") and never contains the real value. */
 export interface BasicAuthResponseOutput {
   /** Type of authentication */
@@ -184,11 +191,25 @@ export interface S3DagBundleResponse {
 }
 /** A DAG bundle as returned by the API. Auth structure (type, username) is included but credentials (passwords, secret keys) are masked. Discriminated by the "type" field. */
 export type DagBundleResponseOutput = GitDagBundleResponseOutput | S3DagBundleResponse;
+const DagBundleResponseOutput = /*@__PURE__*/ S.Unknown as any as S.Schema<DagBundleResponseOutput>;
+
 export type CreateDagBundleResponse = DagBundleResponseOutput;
+const CreateDagBundleResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateDagBundleResponse>;
+
 /** A DAG bundle configuration. Discriminated by the "type" field. Supported types are "git" and "s3". */
 export type DagBundle = GitDagBundle | S3DagBundle;
+const DagBundle = /*@__PURE__*/ S.Unknown as any as S.Schema<DagBundle>;
+
 /** List of DAG bundles to configure. Supports Git and S3 sources. If provided, this takes precedence over dagsRepository. At least one bundle must be specified. Maximum 10 bundles. Only supported for Airflow 3 versions. */
 export type CreateInstanceRequestDagBundlesList = Array<DagBundle>;
+const CreateInstanceRequestDagBundlesList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateInstanceRequestDagBundlesList>;
+
 export interface GitRepository {
   auth: GitAuth;
   /** The branch in the repository to use */
@@ -196,6 +217,8 @@ export interface GitRepository {
   /** The URL of the Git repository. */
   url: string;
 }
+const GitRepository = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GitRepository>;
+
 export type StackITIdentityProviderType = "stackit";
 /** The default STACKIT identity provider. */
 export interface StackITIdentityProvider {
@@ -226,9 +249,13 @@ export interface OAuth2IdentityProvider {
 }
 /** Configuration for the identity provider used. */
 export type IdentityProvider = StackITIdentityProvider | OAuth2IdentityProvider;
+const IdentityProvider = /*@__PURE__*/ S.Unknown as any as S.Schema<IdentityProvider>;
+
 export interface Network {
   id?: string;
 }
+const Network = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Network>;
+
 export interface CreateInstanceRequest {
   /** The STACKIT portal project UUID the STACKIT Workflows instance is part of. */
   projectId: string;
@@ -252,8 +279,16 @@ export interface CreateInstanceRequest {
   /** The version of the STACKIT Workflows to use. For valid versions please take a look at [provider-options](#tag/provider-options/operation/get-provider-options) */
   version: string;
 }
+const CreateInstanceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateInstanceRequest>;
+
 /** All configured DAG bundles. This is the canonical source of truth for DAG sources. Available for Airflow 3 instances. */
 export type InstanceDagBundlesList = Array<DagBundle>;
+const InstanceDagBundlesList =
+  CreateInstanceRequestDagBundlesList as any as S.Schema<InstanceDagBundlesList>;
+
 /** A collection of endpoints offered by the Workflows instance. */
 export interface Endpoints {
   /** The authentication callback URL. */
@@ -261,8 +296,12 @@ export interface Endpoints {
   /** The URL for the UI of the Workflows instance. */
   url: string;
 }
+const Endpoints = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Endpoints>;
+
 /** The current status of the STACKIT Workflows instance. */
 export type InstanceStatus = "creating" | "active" | "updating" | "deleting" | "failed";
+const InstanceStatus = S.String;
+
 export interface Instance {
   /** The date and time the creation of the STACKIT Workflows instance was triggered. */
   createdAt: string;
@@ -295,6 +334,8 @@ export interface Instance {
   /** The currently configured STACKIT Workflows instance version. */
   version: string;
 }
+const Instance = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Instance>;
+
 export interface DeleteDagBundleRequest {
   /** The STACKIT portal project UUID the STACKIT Workflows instance is part of. */
   projectId: string;
@@ -305,7 +346,17 @@ export interface DeleteDagBundleRequest {
   /** The unique name of the DAG bundle. Must be a valid DNS label (lowercase alphanumeric and hyphens, max 63 characters). */
   bundleName: string;
 }
+const DeleteDagBundleRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteDagBundleRequest>;
+
 export interface DeleteDagBundleResponse {}
+const DeleteDagBundleResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteDagBundleResponse>;
+
 export interface DeleteInstanceRequest {
   /** The STACKIT portal project UUID the STACKIT Workflows instance is part of. */
   projectId: string;
@@ -314,7 +365,14 @@ export interface DeleteInstanceRequest {
   /** The STACKIT Workflows instance UUID. */
   instanceId: string;
 }
+const DeleteInstanceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteInstanceRequest>;
+
 export interface DeleteInstanceResponse {}
+const DeleteInstanceResponse = DeleteDagBundleResponse as any as S.Schema<DeleteInstanceResponse>;
+
 export interface GetDagBundleRequest {
   /** The STACKIT portal project UUID the STACKIT Workflows instance is part of. */
   projectId: string;
@@ -325,7 +383,11 @@ export interface GetDagBundleRequest {
   /** The unique name of the DAG bundle. Must be a valid DNS label (lowercase alphanumeric and hyphens, max 63 characters). */
   bundleName: string;
 }
+const GetDagBundleRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetDagBundleRequest>;
+
 export type GetDagBundleResponse = DagBundleResponseOutput;
+const GetDagBundleResponse = CreateDagBundleResponse as any as S.Schema<GetDagBundleResponse>;
+
 export interface GetInstanceRequest {
   /** The STACKIT portal project UUID the STACKIT Workflows instance is part of. */
   projectId: string;
@@ -334,19 +396,35 @@ export interface GetInstanceRequest {
   /** The STACKIT Workflows instance UUID. */
   instanceId: string;
 }
+const GetInstanceRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetInstanceRequest>;
+
 export interface GetProviderOptionsRequest {
   /** The STACKIT region the STACKIT Workflows instance is part of. */
   regionId: string;
 }
+const GetProviderOptionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetProviderOptionsRequest>;
+
 export interface SupportedVersion {
   expirationDate?: string;
   state: string;
   version: string;
 }
+const SupportedVersion = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<SupportedVersion>;
+
 export type ProviderOptionsVersionsList = Array<SupportedVersion>;
+const ProviderOptionsVersionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ProviderOptionsVersionsList>;
+
 export interface ProviderOptions {
   versions: ProviderOptionsVersionsList;
 }
+const ProviderOptions = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ProviderOptions>;
+
 export interface ListDagBundlesRequest {
   /** The STACKIT portal project UUID the STACKIT Workflows instance is part of. */
   projectId: string;
@@ -355,22 +433,49 @@ export interface ListDagBundlesRequest {
   /** The STACKIT Workflows instance UUID. */
   instanceId: string;
 }
+const ListDagBundlesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListDagBundlesRequest>;
+
 /** List of all configured DAG bundles. Authentication type and username are returned for informational purposes; passwords and secrets are always masked. */
 export type ListDagBundlesResponseOutputDagBundlesList = Array<DagBundleResponseOutput>;
+const ListDagBundlesResponseOutputDagBundlesList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListDagBundlesResponseOutputDagBundlesList>;
+
 export interface ListDagBundlesResponseOutput {
   /** List of all configured DAG bundles. Authentication type and username are returned for informational purposes; passwords and secrets are always masked. */
   dagBundles: ListDagBundlesResponseOutputDagBundlesList;
 }
+const ListDagBundlesResponseOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListDagBundlesResponseOutput>;
+
 export interface ListInstancesRequest {
   /** The STACKIT portal project UUID the STACKIT Workflows instance is part of. */
   projectId: string;
   /** The STACKIT region the STACKIT Workflows instance is part of. */
   regionId: string;
 }
+const ListInstancesRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ListInstancesRequest>;
+
 export type ListInstancesResponseInstancesList = Array<Instance>;
+const ListInstancesResponseInstancesList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ListInstancesResponseInstancesList>;
+
 export interface ListInstancesResponse {
   instances: ListInstancesResponseInstancesList;
 }
+const ListInstancesResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListInstancesResponse>;
+
 /** Bundle type identifier -- must match the existing bundle's type. */
 export type UpdateGitDagBundlePayloadType = "git";
 /** Partial update payload for a Git DAG bundle. All fields except "type" are optional; only the provided fields will be updated. */
@@ -405,6 +510,8 @@ export interface UpdateS3DagBundlePayload {
 }
 /** Partial update payload for a DAG bundle. The "type" field must be provided and must match the existing bundle's type ("git" or "s3"). Only the provided fields will be updated. Supplying fields that belong to the wrong type will be rejected. */
 export type UpdateDagBundlePayload = UpdateGitDagBundlePayload | UpdateS3DagBundlePayload;
+const UpdateDagBundlePayload = /*@__PURE__*/ S.Unknown as any as S.Schema<UpdateDagBundlePayload>;
+
 export interface UpdateDagBundleRequest {
   /** The STACKIT portal project UUID the STACKIT Workflows instance is part of. */
   projectId: string;
@@ -416,7 +523,14 @@ export interface UpdateDagBundleRequest {
   bundleName: string;
   body: UpdateDagBundlePayload;
 }
+const UpdateDagBundleRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<UpdateDagBundleRequest>;
+
 export type UpdateDagBundleResponse = DagBundleResponseOutput;
+const UpdateDagBundleResponse = CreateDagBundleResponse as any as S.Schema<UpdateDagBundleResponse>;
+
 export interface UpdateDagsRepositoryRequest {
   /** The STACKIT portal project UUID the STACKIT Workflows instance is part of. */
   projectId: string;
@@ -430,6 +544,11 @@ export interface UpdateDagsRepositoryRequest {
   /** The URL of the Git repository. */
   url?: string;
 }
+const UpdateDagsRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<UpdateDagsRepositoryRequest>;
+
 /** Updated expected audience(s) for API token validation. Set to empty array to disable audience validation. */
 export type OAuth2IdentityProviderPatchApiAudienceList = Array<string>;
 /** Request to update an OAuth2 identity provider configuration */
@@ -453,6 +572,9 @@ export interface OAuth2IdentityProviderPatch {
 }
 /** Request to update an identity provider configuration */
 export type UpdateIdentityProviderPayload = StackITIdentityProvider | OAuth2IdentityProviderPatch;
+const UpdateIdentityProviderPayload =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<UpdateIdentityProviderPayload>;
+
 export interface UpdateIdentityProviderRequest {
   /** The STACKIT portal project UUID the STACKIT Workflows instance is part of. */
   projectId: string;
@@ -462,6 +584,11 @@ export interface UpdateIdentityProviderRequest {
   instanceId: string;
   body: UpdateIdentityProviderPayload;
 }
+const UpdateIdentityProviderRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<UpdateIdentityProviderRequest>;
+
 export interface UpdateInstanceRequest {
   /** The STACKIT portal project UUID the STACKIT Workflows instance is part of. */
   projectId: string;
@@ -480,6 +607,11 @@ export interface UpdateInstanceRequest {
   /** The STACKIT Workflows version to use. For valid versions please take a look at [provider-options](#tag/provider-options/operation/get-provider-options) If not provided, the version won't be updated. */
   version?: string;
 }
+const UpdateInstanceRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<UpdateInstanceRequest>;
+
 export interface UpdateObservabilityRequest {
   /** The STACKIT portal project UUID the STACKIT Workflows instance is part of. */
   projectId: string;
@@ -490,6 +622,11 @@ export interface UpdateObservabilityRequest {
   /** Unique identifier of the customer's observability instance. */
   observabilityId?: string;
 }
+const UpdateObservabilityRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<UpdateObservabilityRequest>;
+
 export type CreateDagBundleError = BadRequest | Forbidden | NotFound | Conflict | StackitOpError;
 /** Adds a new DAG bundle to this STACKIT Workflows instance. Only supported for Airflow 3 instances. Maximum 10 bundles per instance. */
 export const createDagBundle: API.OperationMethod<
@@ -498,8 +635,8 @@ export const createDagBundle: API.OperationMethod<
   CreateDagBundleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateDagBundleRequest>,
-  output: __S(1) as any as S.Schema<CreateDagBundleResponse>,
+  input: CreateDagBundleRequest,
+  output: CreateDagBundleResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -513,8 +650,8 @@ export const createInstance: API.OperationMethod<
   CreateInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreateInstanceRequest>,
-  output: __S(7) as any as S.Schema<Instance>,
+  input: CreateInstanceRequest,
+  output: Instance,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -528,8 +665,8 @@ export const deleteDagBundle: API.OperationMethod<
   DeleteDagBundleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<DeleteDagBundleRequest>,
-  output: __S(9) as any as S.Schema<DeleteDagBundleResponse>,
+  input: DeleteDagBundleRequest,
+  output: DeleteDagBundleResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -543,8 +680,8 @@ export const deleteInstance: API.OperationMethod<
   DeleteInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeleteInstanceRequest>,
-  output: __S(9) as any as S.Schema<DeleteInstanceResponse>,
+  input: DeleteInstanceRequest,
+  output: DeleteInstanceResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -558,8 +695,8 @@ export const getDagBundle: API.OperationMethod<
   GetDagBundleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetDagBundleRequest>,
-  output: __S(1) as any as S.Schema<GetDagBundleResponse>,
+  input: GetDagBundleRequest,
+  output: GetDagBundleResponse,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -573,8 +710,8 @@ export const getInstance: API.OperationMethod<
   GetInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<GetInstanceRequest>,
-  output: __S(7) as any as S.Schema<Instance>,
+  input: GetInstanceRequest,
+  output: Instance,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -588,8 +725,8 @@ export const getProviderOptions: API.OperationMethod<
   GetProviderOptionsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<GetProviderOptionsRequest>,
-  output: __S(16) as any as S.Schema<ProviderOptions>,
+  input: GetProviderOptionsRequest,
+  output: ProviderOptions,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -603,8 +740,8 @@ export const listDagBundles: API.OperationMethod<
   ListDagBundlesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<ListDagBundlesRequest>,
-  output: __S(19) as any as S.Schema<ListDagBundlesResponseOutput>,
+  input: ListDagBundlesRequest,
+  output: ListDagBundlesResponseOutput,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -618,8 +755,8 @@ export const listInstances: API.OperationMethod<
   ListInstancesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<ListInstancesRequest>,
-  output: __S(22) as any as S.Schema<ListInstancesResponse>,
+  input: ListInstancesRequest,
+  output: ListInstancesResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -633,8 +770,8 @@ export const updateDagBundle: API.OperationMethod<
   UpdateDagBundleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<UpdateDagBundleRequest>,
-  output: __S(1) as any as S.Schema<UpdateDagBundleResponse>,
+  input: UpdateDagBundleRequest,
+  output: UpdateDagBundleResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -648,8 +785,8 @@ export const updateDagsRepository: API.OperationMethod<
   UpdateDagsRepositoryError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<UpdateDagsRepositoryRequest>,
-  output: __S(7) as any as S.Schema<Instance>,
+  input: UpdateDagsRepositoryRequest,
+  output: Instance,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -663,8 +800,8 @@ export const updateIdentityProvider: API.OperationMethod<
   UpdateIdentityProviderError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<UpdateIdentityProviderRequest>,
-  output: __S(7) as any as S.Schema<Instance>,
+  input: UpdateIdentityProviderRequest,
+  output: Instance,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -678,8 +815,8 @@ export const updateInstance: API.OperationMethod<
   UpdateInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<UpdateInstanceRequest>,
-  output: __S(7) as any as S.Schema<Instance>,
+  input: UpdateInstanceRequest,
+  output: Instance,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -693,8 +830,8 @@ export const updateObservability: API.OperationMethod<
   UpdateObservabilityError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<UpdateObservabilityRequest>,
-  output: __S(7) as any as S.Schema<Instance>,
+  input: UpdateObservabilityRequest,
+  output: Instance,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -709,7 +846,7 @@ function __c0(j: number): any {
           projectId: S.String.pipe(T.Label()),
           regionId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          body: S.Unknown.pipe(T.HttpBody()),
+          body: CreateDagBundlePayload.pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -720,15 +857,15 @@ function __c0(j: number): any {
         ),
       ).annotate({ identifier: "CreateDagBundleRequest" });
     case 1:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => DagBundleResponseOutput.pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateDagBundleResponse",
       });
     case 2:
-      return S.Array(S.Unknown);
+      return S.Array(DagBundle);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          auth: S.Unknown,
+          auth: GitAuth,
           branch: S.String,
           url: S.String,
         }),
@@ -744,14 +881,14 @@ function __c0(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           regionId: S.String.pipe(T.Label()),
-          dagBundles: S.optional(__S(2)),
-          dagsRepository: S.optional(__S(3)),
+          dagBundles: S.optional(CreateInstanceRequestDagBundlesList),
+          dagsRepository: S.optional(GitRepository),
           description: S.optional(S.String),
           displayName: S.String,
           enableAirflowExampleDags: S.optional(S.Boolean),
           enableStackitExampleDags: S.optional(S.Boolean),
-          identityProvider: S.optional(S.Unknown),
-          network: S.optional(__S(4)),
+          identityProvider: S.optional(IdentityProvider),
+          network: S.optional(Network),
           observabilityId: S.optional(S.String),
           version: S.String,
         }).pipe(
@@ -774,20 +911,20 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdAt: S.String,
-          dagBundles: S.optional(__S(2)),
-          dagsRepository: S.optional(__S(3)),
+          dagBundles: S.optional(InstanceDagBundlesList),
+          dagsRepository: S.optional(GitRepository),
           description: S.optional(S.String),
           displayName: S.String,
           enableAirflowExampleDags: S.optional(S.Boolean),
           enableStackitExampleDags: S.optional(S.Boolean),
-          endpoints: __S(6),
+          endpoints: Endpoints,
           id: S.String,
-          identityProvider: S.Unknown,
-          network: S.optional(__S(4)),
+          identityProvider: IdentityProvider,
+          network: S.optional(Network),
           observabilityId: S.optional(S.String),
           projectId: S.String,
           regionId: S.String,
-          status: S.String,
+          status: InstanceStatus,
           statusMessage: S.optional(S.String),
           version: S.String,
         }),
@@ -886,7 +1023,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "SupportedVersion" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(SupportedVersion);
   }
 }
 function __c2(j: number): any {
@@ -894,7 +1031,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          versions: __S(15),
+          versions: ProviderOptionsVersionsList,
         }),
       ).annotate({ identifier: "ProviderOptions" });
     case 1:
@@ -913,11 +1050,11 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListDagBundlesRequest" });
     case 2:
-      return S.Array(S.Unknown);
+      return S.Array(DagBundleResponseOutput);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dagBundles: __S(18),
+          dagBundles: ListDagBundlesResponseOutputDagBundlesList,
         }),
       ).annotate({
         identifier: "ListDagBundlesResponseOutput",
@@ -937,11 +1074,11 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListInstancesRequest" });
     case 5:
-      return S.Array(__S(7));
+      return S.Array(Instance);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          instances: __S(21),
+          instances: ListInstancesResponseInstancesList,
         }),
       ).annotate({ identifier: "ListInstancesResponse" });
     case 7:
@@ -951,7 +1088,7 @@ function __c2(j: number): any {
           regionId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           bundleName: S.String.pipe(T.Label()),
-          body: S.Unknown.pipe(T.HttpBody()),
+          body: UpdateDagBundlePayload.pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -971,7 +1108,7 @@ function __c3(j: number): any {
           projectId: S.String.pipe(T.Label()),
           regionId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          auth: S.optional(S.Unknown),
+          auth: S.optional(GitAuth),
           branch: S.optional(S.String),
           url: S.optional(S.String),
         }).pipe(
@@ -991,7 +1128,7 @@ function __c3(j: number): any {
           projectId: S.String.pipe(T.Label()),
           regionId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          body: S.Unknown.pipe(T.HttpBody()),
+          body: UpdateIdentityProviderPayload.pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1041,22 +1178,5 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UpdateObservabilityRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

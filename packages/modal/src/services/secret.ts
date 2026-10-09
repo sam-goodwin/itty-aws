@@ -6,36 +6,48 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
 export interface DeleteSecretRequest {
   secretId?: string;
 }
+const DeleteSecretRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DeleteSecretRequest>;
+
 export interface DeleteSecretResponse {}
+const DeleteSecretResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DeleteSecretResponse>;
+
 export interface ListPagination {
   maxObjects?: number;
   createdBefore?: number;
 }
+const ListPagination = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ListPagination>;
+
 export interface ListSecretRequest {
   environmentName?: string;
   pagination?: ListPagination;
 }
+const ListSecretRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ListSecretRequest>;
+
 export interface CreationInfo {
   /** This message is used in metadata for resource objects like Dict, Queue, Volume, etc. */
   createdAt?: number;
   /** Timestamp of resource creation */
   createdBy?: string;
 }
+const CreationInfo = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreationInfo>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StringList>;
+
 export interface SecretMetadata {
   name?: string;
   creationInfo?: CreationInfo;
   keys?: StringList;
   environmentName?: string;
 }
+const SecretMetadata = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<SecretMetadata>;
+
 export interface SecretListItem {
   label?: string;
   createdAt?: number;
@@ -46,17 +58,30 @@ export interface SecretListItem {
   secretId?: string;
   metadata?: SecretMetadata;
 }
+const SecretListItem = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SecretListItem>;
+
 export type SecretListItemList = Array<SecretListItem>;
+const SecretListItemList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<SecretListItemList>;
+
 export interface ListSecretResponse {
   items?: SecretListItemList;
   environmentName?: string;
 }
+const ListSecretResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ListSecretResponse>;
+
 export interface SecretGetInfoRequest {
   secretId?: string;
 }
+const SecretGetInfoRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SecretGetInfoRequest>;
+
 export interface SecretGetInfoResponse {
   metadata?: SecretMetadata;
 }
+const SecretGetInfoResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<SecretGetInfoResponse>;
+
 export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_UNSPECIFIED"
   | "OBJECT_CREATION_TYPE_CREATE_IF_MISSING"
@@ -64,7 +89,11 @@ export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_CREATE_OVERWRITE_IF_EXISTS"
   | "OBJECT_CREATION_TYPE_ANONYMOUS_OWNED_BY_APP"
   | "OBJECT_CREATION_TYPE_EPHEMERAL";
+const ObjectCreationType = S.String;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<StringMap>;
+
 export interface SecretGetOrCreateRequest {
   deploymentName?: string;
   /** removed namespace */
@@ -76,21 +105,45 @@ export interface SecretGetOrCreateRequest {
   /** only used with OBJECT_CREATION_TYPE_ANONYMOUS_OWNED_BY_APP */
   requiredKeys?: StringList;
 }
+const SecretGetOrCreateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<SecretGetOrCreateRequest>;
+
 export interface SecretGetOrCreateResponse {
   secretId?: string;
   metadata?: SecretMetadata;
 }
+const SecretGetOrCreateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<SecretGetOrCreateResponse>;
+
 export interface UpdateSecretRequestUpdate {
   key?: string;
   value?: string;
 }
+const UpdateSecretRequestUpdate = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<UpdateSecretRequestUpdate>;
+
 export type UpdateSecretRequestUpdateList = Array<UpdateSecretRequestUpdate>;
+const UpdateSecretRequestUpdateList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<UpdateSecretRequestUpdateList>;
+
 export interface UpdateSecretRequest {
   /** If not set, the key is removed. */
   secretId?: string;
   updates?: UpdateSecretRequestUpdateList;
 }
+const UpdateSecretRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<UpdateSecretRequest>;
+
 export interface UpdateSecretResponse {}
+const UpdateSecretResponse = DeleteSecretResponse as any as S.Schema<UpdateSecretResponse>;
+
 export type DeleteSecretError = ModalOpError;
 /** Secrets */
 export const deleteSecret: API.OperationMethod<
@@ -99,8 +152,8 @@ export const deleteSecret: API.OperationMethod<
   DeleteSecretError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeleteSecretRequest>,
-  output: __S(1) as any as S.Schema<DeleteSecretResponse>,
+  input: DeleteSecretRequest,
+  output: DeleteSecretResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -113,8 +166,8 @@ export const listSecret: API.OperationMethod<
   ListSecretError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<ListSecretRequest>,
-  output: __S(9) as any as S.Schema<ListSecretResponse>,
+  input: ListSecretRequest,
+  output: ListSecretResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -127,8 +180,8 @@ export const secretGetInfo: API.OperationMethod<
   SecretGetInfoError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<SecretGetInfoRequest>,
-  output: __S(11) as any as S.Schema<SecretGetInfoResponse>,
+  input: SecretGetInfoRequest,
+  output: SecretGetInfoResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -141,8 +194,8 @@ export const secretGetOrCreate: API.OperationMethod<
   SecretGetOrCreateError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<SecretGetOrCreateRequest>,
-  output: __S(14) as any as S.Schema<SecretGetOrCreateResponse>,
+  input: SecretGetOrCreateRequest,
+  output: SecretGetOrCreateResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -155,8 +208,8 @@ export const updateSecret: API.OperationMethod<
   UpdateSecretError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<UpdateSecretRequest>,
-  output: __S(1) as any as S.Schema<UpdateSecretResponse>,
+  input: UpdateSecretRequest,
+  output: UpdateSecretResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -188,7 +241,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           environmentName: S.optional(S.String),
-          pagination: S.optional(__S(2)),
+          pagination: S.optional(ListPagination),
         }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/SecretList", code: 200 })),
       ).annotate({ identifier: "ListSecretRequest" });
     case 4:
@@ -204,8 +257,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          creationInfo: S.optional(__S(4)),
-          keys: S.optional(__S(5)),
+          creationInfo: S.optional(CreationInfo),
+          keys: S.optional(StringList),
           environmentName: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecretMetadata" });
@@ -217,7 +270,7 @@ function __c0(j: number): any {
           lastUsedAt: S.optional(S.Number),
           environmentName: S.optional(S.String),
           secretId: S.optional(S.String),
-          metadata: S.optional(__S(6)),
+          metadata: S.optional(SecretMetadata),
         }),
       ).annotate({ identifier: "SecretListItem" });
   }
@@ -225,11 +278,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(SecretListItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(8)),
+          items: S.optional(SecretListItemList),
           environmentName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSecretResponse" });
@@ -244,7 +297,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(6)),
+          metadata: S.optional(SecretMetadata),
         }),
       ).annotate({ identifier: "SecretGetInfoResponse" });
     case 4:
@@ -254,10 +307,10 @@ function __c1(j: number): any {
         S.Struct({
           deploymentName: S.optional(S.String),
           environmentName: S.optional(S.String),
-          objectCreationType: S.optional(S.String),
-          envDict: S.optional(__S(12)),
+          objectCreationType: S.optional(ObjectCreationType),
+          envDict: S.optional(StringMap),
           appId: S.optional(S.String),
-          requiredKeys: S.optional(__S(5)),
+          requiredKeys: S.optional(StringList),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/SecretGetOrCreate", code: 200 }),
         ),
@@ -266,7 +319,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           secretId: S.optional(S.String),
-          metadata: S.optional(__S(6)),
+          metadata: S.optional(SecretMetadata),
         }),
       ).annotate({
         identifier: "SecretGetOrCreateResponse",
@@ -285,30 +338,15 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(UpdateSecretRequestUpdate);
     case 1:
       return S.suspend(() =>
         S.Struct({
           secretId: S.optional(S.String),
-          updates: S.optional(__S(16)),
+          updates: S.optional(UpdateSecretRequestUpdateList),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/SecretUpdate", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateSecretRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

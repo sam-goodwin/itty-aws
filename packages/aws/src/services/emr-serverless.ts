@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "EMR Serverless",
   serviceShapeName: "AwsToledoWebService",
@@ -116,10 +114,12 @@ export interface CancelJobRunRequest {
   jobRunId: string;
   shutdownGracePeriodInSeconds?: number;
 }
+const CancelJobRunRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CancelJobRunRequest>;
 export interface CancelJobRunResponse {
   applicationId: string;
   jobRunId: string;
 }
+const CancelJobRunResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CancelJobRunResponse>;
 export type ApplicationName = string;
 export type ReleaseLabel = string;
 export type EngineType = string;
@@ -136,71 +136,109 @@ export interface WorkerResourceConfig {
   disk?: string;
   diskType?: string;
 }
+const WorkerResourceConfig = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<WorkerResourceConfig>;
 export interface InitialCapacityConfig {
   workerCount: number;
   workerConfiguration?: WorkerResourceConfig;
 }
+const InitialCapacityConfig = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<InitialCapacityConfig>;
 export type InitialCapacityConfigMap = { [key: string]: InitialCapacityConfig | undefined };
+const InitialCapacityConfigMap = /*@__PURE__*/ __L.at(__c0, 4);
 export interface MaximumAllowedResources {
   cpu: string;
   memory: string;
   disk?: string;
 }
+const MaximumAllowedResources = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<MaximumAllowedResources>;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
+const TagMap = /*@__PURE__*/ __L.at(__c0, 6);
 export interface AutoStartConfig {
   enabled?: boolean;
 }
+const AutoStartConfig = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<AutoStartConfig>;
 export interface AutoStopConfig {
   enabled?: boolean;
   idleTimeoutMinutes?: number;
 }
+const AutoStopConfig = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AutoStopConfig>;
 export type SubnetString = string;
 export type SubnetIds = string[];
+const SubnetIds = /*@__PURE__*/ __L.at(__c1, 1);
 export type SecurityGroupString = string;
 export type SecurityGroupIds = string[];
+const SecurityGroupIds = SubnetIds as any as S.Schema<SecurityGroupIds>;
 export interface NetworkConfiguration {
   subnetIds?: string[];
   securityGroupIds?: string[];
 }
+const NetworkConfiguration = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<NetworkConfiguration>;
 export type Architecture = string;
 export type ImageUri = string;
 export interface ImageConfigurationInput {
   imageUri?: string;
   applicationLevelDigestResolution?: boolean;
 }
+const ImageConfigurationInput = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ImageConfigurationInput>;
 export interface WorkerTypeSpecificationInput {
   imageConfiguration?: ImageConfigurationInput;
 }
+const WorkerTypeSpecificationInput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<WorkerTypeSpecificationInput>;
 export type WorkerTypeSpecificationInputMap = {
   [key: string]: WorkerTypeSpecificationInput | undefined;
 };
+const WorkerTypeSpecificationInputMap = /*@__PURE__*/ __L.at(__c1, 5);
 export type String1024 = string;
 export type ConfigurationPropertyKey = string;
 export type ConfigurationPropertyValue = string;
 export type SensitivePropertiesMap = { [key: string]: string | undefined };
+const SensitivePropertiesMap = /*@__PURE__*/ __L.at(__c1, 6);
 export interface Configuration {
   classification: string;
   properties?: { [key: string]: string | undefined };
   configurations?: Configuration[];
 }
+const Configuration = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Configuration>;
 export type ConfigurationList = Configuration[];
+const ConfigurationList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ConfigurationList>;
 export type UriString = string;
 export type EncryptionKeyArn = string;
 export interface S3MonitoringConfiguration {
   logUri?: string;
   encryptionKeyArn?: string;
 }
+const S3MonitoringConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<S3MonitoringConfiguration>;
 export interface ManagedPersistenceMonitoringConfiguration {
   enabled?: boolean;
   encryptionKeyArn?: string;
 }
+const ManagedPersistenceMonitoringConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ManagedPersistenceMonitoringConfiguration>;
 export type LogGroupName = string;
 export type LogStreamNamePrefix = string;
 export type LogTypeString = string;
 export type LogTypeList = string[];
+const LogTypeList = SubnetIds as any as S.Schema<LogTypeList>;
 export type LogTypeMap = { [key: string]: string[] | undefined };
+const LogTypeMap = /*@__PURE__*/ __L.at(__c2, 3);
 export interface CloudWatchLoggingConfiguration {
   enabled: boolean;
   logGroupName?: string;
@@ -208,40 +246,73 @@ export interface CloudWatchLoggingConfiguration {
   encryptionKeyArn?: string;
   logTypes?: { [key: string]: string[] | undefined };
 }
+const CloudWatchLoggingConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CloudWatchLoggingConfiguration>;
 export type PrometheusUrlString = string;
 export interface PrometheusMonitoringConfiguration {
   remoteWriteUrl?: string;
 }
+const PrometheusMonitoringConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<PrometheusMonitoringConfiguration>;
 export interface MonitoringConfiguration {
   s3MonitoringConfiguration?: S3MonitoringConfiguration;
   managedPersistenceMonitoringConfiguration?: ManagedPersistenceMonitoringConfiguration;
   cloudWatchLoggingConfiguration?: CloudWatchLoggingConfiguration;
   prometheusMonitoringConfiguration?: PrometheusMonitoringConfiguration;
 }
+const MonitoringConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<MonitoringConfiguration>;
 export type EncryptionContextKey = string;
 export type EncryptionContextValue = string;
 export type EncryptionContext = { [key: string]: string | undefined };
+const EncryptionContext = SensitivePropertiesMap as any as S.Schema<EncryptionContext>;
 export interface DiskEncryptionConfiguration {
   encryptionContext?: { [key: string]: string | undefined };
   encryptionKeyArn?: string;
 }
+const DiskEncryptionConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DiskEncryptionConfiguration>;
 export interface InteractiveConfiguration {
   studioEnabled?: boolean;
   livyEndpointEnabled?: boolean;
   sessionEnabled?: boolean;
 }
+const InteractiveConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<InteractiveConfiguration>;
 export interface SchedulerConfiguration {
   queueTimeoutMinutes?: number;
   maxConcurrentRuns?: number;
 }
+const SchedulerConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<SchedulerConfiguration>;
 export type IdentityCenterInstanceArn = string;
 export interface IdentityCenterConfigurationInput {
   identityCenterInstanceArn?: string;
   userBackgroundSessionsEnabled?: boolean;
 }
+const IdentityCenterConfigurationInput = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<IdentityCenterConfigurationInput>;
 export interface JobLevelCostAllocationConfiguration {
   enabled?: boolean;
 }
+const JobLevelCostAllocationConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<JobLevelCostAllocationConfiguration>;
 export interface CreateApplicationRequest {
   name?: string;
   releaseLabel: string;
@@ -264,19 +335,39 @@ export interface CreateApplicationRequest {
   identityCenterConfiguration?: IdentityCenterConfigurationInput;
   jobLevelCostAllocationConfiguration?: JobLevelCostAllocationConfiguration;
 }
+const CreateApplicationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateApplicationRequest>;
 export type ApplicationArn = string;
 export interface CreateApplicationResponse {
   applicationId: string;
   name?: string;
   arn: string;
 }
+const CreateApplicationResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateApplicationResponse>;
 export interface DeleteApplicationRequest {
   applicationId: string;
 }
+const DeleteApplicationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DeleteApplicationRequest>;
 export interface DeleteApplicationResponse {}
+const DeleteApplicationResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DeleteApplicationResponse>;
 export interface GetApplicationRequest {
   applicationId: string;
 }
+const GetApplicationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetApplicationRequest>;
 export type ApplicationState = string;
 export type String256 = string;
 export type ImageDigest = string;
@@ -285,16 +376,26 @@ export interface ImageConfiguration {
   resolvedImageDigest?: string;
   applicationLevelDigestResolution?: boolean;
 }
+const ImageConfiguration = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ImageConfiguration>;
 export interface WorkerTypeSpecification {
   imageConfiguration?: ImageConfiguration;
 }
+const WorkerTypeSpecification = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<WorkerTypeSpecification>;
 export type WorkerTypeSpecificationMap = { [key: string]: WorkerTypeSpecification | undefined };
+const WorkerTypeSpecificationMap = /*@__PURE__*/ __L.at(__c4, 3);
 export type IdentityCenterApplicationArn = string;
 export interface IdentityCenterConfiguration {
   identityCenterInstanceArn?: string;
   identityCenterApplicationArn?: string;
   userBackgroundSessionsEnabled?: boolean;
 }
+const IdentityCenterConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<IdentityCenterConfiguration>;
 export interface Application {
   applicationId: string;
   name?: string;
@@ -322,9 +423,14 @@ export interface Application {
   identityCenterConfiguration?: IdentityCenterConfiguration;
   jobLevelCostAllocationConfiguration?: JobLevelCostAllocationConfiguration;
 }
+const Application = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Application>;
 export interface GetApplicationResponse {
   application: Application;
 }
+const GetApplicationResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetApplicationResponse>;
 export type AttemptNumber = number;
 export interface GetDashboardForJobRunRequest {
   applicationId: string;
@@ -332,40 +438,60 @@ export interface GetDashboardForJobRunRequest {
   attempt?: number;
   accessSystemProfileLogs?: boolean;
 }
+const GetDashboardForJobRunRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<GetDashboardForJobRunRequest>;
 export type Url = string;
 export interface GetDashboardForJobRunResponse {
   url?: string;
 }
+const GetDashboardForJobRunResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GetDashboardForJobRunResponse>;
 export interface GetJobRunRequest {
   applicationId: string;
   jobRunId: string;
   attempt?: number;
 }
+const GetJobRunRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<GetJobRunRequest>;
 export type JobArn = string;
 export type RequestIdentityUserArn = string;
 export type IAMRoleArn = string;
 export type PolicyDocument = string;
 export type Arn = string;
 export type PolicyArnList = string[];
+const PolicyArnList = SubnetIds as any as S.Schema<PolicyArnList>;
 export interface JobRunExecutionIamPolicy {
   policy?: string;
   policyArns?: string[];
 }
+const JobRunExecutionIamPolicy = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<JobRunExecutionIamPolicy>;
 export type JobRunState = string;
 export interface ConfigurationOverrides {
   applicationConfiguration?: Configuration[];
   monitoringConfiguration?: MonitoringConfiguration;
   diskEncryptionConfiguration?: DiskEncryptionConfiguration;
 }
+const ConfigurationOverrides = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ConfigurationOverrides>;
 export type EntryPointPath = string | redacted.Redacted<string>;
 export type EntryPointArgument = string | redacted.Redacted<string>;
 export type EntryPointArguments = (string | redacted.Redacted<string>)[];
+const EntryPointArguments = /*@__PURE__*/ __L.at(__c5, 4);
 export type SparkSubmitParameters = string | redacted.Redacted<string>;
 export interface SparkSubmit {
   entryPoint: string | redacted.Redacted<string>;
   entryPointArguments?: (string | redacted.Redacted<string>)[];
   sparkSubmitParameters?: string | redacted.Redacted<string>;
 }
+const SparkSubmit = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<SparkSubmit>;
 export type Query = string | redacted.Redacted<string>;
 export type InitScriptPath = string | redacted.Redacted<string>;
 export type HiveCliParameters = string | redacted.Redacted<string>;
@@ -374,25 +500,33 @@ export interface Hive {
   initQueryFile?: string | redacted.Redacted<string>;
   parameters?: string | redacted.Redacted<string>;
 }
+const Hive = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Hive>;
 export type JobDriver =
   | { sparkSubmit: SparkSubmit; hive?: never }
   | { sparkSubmit?: never; hive: Hive };
+const JobDriver = /*@__PURE__*/ __L.at(__c5, 7);
 export interface TotalResourceUtilization {
   vCPUHour?: number;
   memoryGBHour?: number;
   storageGBHour?: number;
 }
+const TotalResourceUtilization = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<TotalResourceUtilization>;
 export type Duration = number;
 export interface ResourceUtilization {
   vCPUHour?: number;
   memoryGBHour?: number;
   storageGBHour?: number;
 }
+const ResourceUtilization = TotalResourceUtilization as any as S.Schema<ResourceUtilization>;
 export type JobRunMode = string;
 export interface RetryPolicy {
   maxAttempts?: number;
   maxFailedAttemptsPerHour?: number;
 }
+const RetryPolicy = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<RetryPolicy>;
 export interface JobRun {
   applicationId: string;
   jobRunId: string;
@@ -425,9 +559,11 @@ export interface JobRun {
   imageConfiguration?: ImageConfiguration;
   workerTypeSpecifications?: { [key: string]: WorkerTypeSpecification | undefined };
 }
+const JobRun = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<JobRun>;
 export interface GetJobRunResponse {
   jobRun: JobRun;
 }
+const GetJobRunResponse = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<GetJobRunResponse>;
 export type ResourceId = string;
 export type ResourceType = string;
 export interface GetResourceDashboardRequest {
@@ -435,19 +571,30 @@ export interface GetResourceDashboardRequest {
   resourceId: string;
   resourceType: string;
 }
+const GetResourceDashboardRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GetResourceDashboardRequest>;
 export interface GetResourceDashboardResponse {
   url?: string;
 }
+const GetResourceDashboardResponse =
+  GetDashboardForJobRunResponse as any as S.Schema<GetResourceDashboardResponse>;
 export type SessionId = string;
 export interface GetSessionRequest {
   applicationId: string;
   sessionId: string;
 }
+const GetSessionRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<GetSessionRequest>;
 export type SessionArn = string;
 export type SessionState = string;
 export interface SessionConfigurationOverrides {
   runtimeConfiguration?: Configuration[];
 }
+const SessionConfigurationOverrides = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<SessionConfigurationOverrides>;
 export interface Session {
   applicationId: string;
   sessionId: string;
@@ -471,13 +618,19 @@ export interface Session {
   billedResourceUtilization?: ResourceUtilization;
   totalExecutionDurationSeconds?: number;
 }
+const Session = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<Session>;
 export interface GetSessionResponse {
   session: Session;
 }
+const GetSessionResponse = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<GetSessionResponse>;
 export interface GetSessionEndpointRequest {
   applicationId: string;
   sessionId: string;
 }
+const GetSessionEndpointRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GetSessionEndpointRequest>;
 export type EndpointUrl = string;
 export type SessionAuthToken = string | redacted.Redacted<string>;
 export interface GetSessionEndpointResponse {
@@ -487,13 +640,22 @@ export interface GetSessionEndpointResponse {
   authToken: string | redacted.Redacted<string>;
   authTokenExpiresAt: Date;
 }
+const GetSessionEndpointResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<GetSessionEndpointResponse>;
 export type NextToken = string;
 export type ApplicationStateSet = string[];
+const ApplicationStateSet = SubnetIds as any as S.Schema<ApplicationStateSet>;
 export interface ListApplicationsRequest {
   nextToken?: string;
   maxResults?: number;
   states?: string[];
 }
+const ListApplicationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListApplicationsRequest>;
 export interface ApplicationSummary {
   id: string;
   name?: string;
@@ -506,17 +668,27 @@ export interface ApplicationSummary {
   updatedAt: Date;
   architecture?: string;
 }
+const ApplicationSummary = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<ApplicationSummary>;
 export type ApplicationList = ApplicationSummary[];
+const ApplicationList = /*@__PURE__*/ __L.at(__c7, 5);
 export interface ListApplicationsResponse {
   applications: ApplicationSummary[];
   nextToken?: string;
 }
+const ListApplicationsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListApplicationsResponse>;
 export interface ListJobRunAttemptsRequest {
   applicationId: string;
   jobRunId: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListJobRunAttemptsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListJobRunAttemptsRequest>;
 export type JobRunType = string;
 export interface JobRunAttemptSummary {
   applicationId: string;
@@ -535,12 +707,19 @@ export interface JobRunAttemptSummary {
   type?: string;
   attempt?: number;
 }
+const JobRunAttemptSummary = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<JobRunAttemptSummary>;
 export type JobRunAttempts = JobRunAttemptSummary[];
+const JobRunAttempts = /*@__PURE__*/ __L.at(__c8, 1);
 export interface ListJobRunAttemptsResponse {
   jobRunAttempts: JobRunAttemptSummary[];
   nextToken?: string;
 }
+const ListJobRunAttemptsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ListJobRunAttemptsResponse>;
 export type JobRunStateSet = string[];
+const JobRunStateSet = SubnetIds as any as S.Schema<JobRunStateSet>;
 export interface ListJobRunsRequest {
   applicationId: string;
   nextToken?: string;
@@ -550,6 +729,7 @@ export interface ListJobRunsRequest {
   states?: string[];
   mode?: string;
 }
+const ListJobRunsRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ListJobRunsRequest>;
 export interface JobRunSummary {
   applicationId: string;
   id: string;
@@ -568,12 +748,16 @@ export interface JobRunSummary {
   attemptCreatedAt?: Date;
   attemptUpdatedAt?: Date;
 }
+const JobRunSummary = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<JobRunSummary>;
 export type JobRuns = JobRunSummary[];
+const JobRuns = /*@__PURE__*/ __L.at(__c8, 5);
 export interface ListJobRunsResponse {
   jobRuns: JobRunSummary[];
   nextToken?: string;
 }
+const ListJobRunsResponse = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<ListJobRunsResponse>;
 export type SessionStateSet = string[];
+const SessionStateSet = SubnetIds as any as S.Schema<SessionStateSet>;
 export interface ListSessionsRequest {
   applicationId: string;
   nextToken?: string;
@@ -582,6 +766,7 @@ export interface ListSessionsRequest {
   createdAtAfter?: Date;
   createdAtBefore?: Date;
 }
+const ListSessionsRequest = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<ListSessionsRequest>;
 export interface SessionSummary {
   applicationId: string;
   sessionId: string;
@@ -595,22 +780,39 @@ export interface SessionSummary {
   createdAt: Date;
   updatedAt: Date;
 }
+const SessionSummary = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<SessionSummary>;
 export type Sessions = SessionSummary[];
+const Sessions = /*@__PURE__*/ __L.at(__c9, 1);
 export interface ListSessionsResponse {
   sessions: SessionSummary[];
   nextToken?: string;
 }
+const ListSessionsResponse = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ListSessionsResponse>;
 export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface StartApplicationRequest {
   applicationId: string;
 }
+const StartApplicationRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<StartApplicationRequest>;
 export interface StartApplicationResponse {}
+const StartApplicationResponse =
+  DeleteApplicationResponse as any as S.Schema<StartApplicationResponse>;
 export interface StartJobRunRequest {
   applicationId: string;
   clientToken: string;
@@ -624,11 +826,13 @@ export interface StartJobRunRequest {
   mode?: string;
   retryPolicy?: RetryPolicy;
 }
+const StartJobRunRequest = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<StartJobRunRequest>;
 export interface StartJobRunResponse {
   applicationId: string;
   jobRunId: string;
   arn: string;
 }
+const StartJobRunResponse = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<StartJobRunResponse>;
 export interface StartSessionRequest {
   applicationId: string;
   clientToken: string;
@@ -638,34 +842,61 @@ export interface StartSessionRequest {
   idleTimeoutMinutes?: number;
   name?: string;
 }
+const StartSessionRequest = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<StartSessionRequest>;
 export interface StartSessionResponse {
   applicationId: string;
   sessionId: string;
   arn: string;
 }
+const StartSessionResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<StartSessionResponse>;
 export interface StopApplicationRequest {
   applicationId: string;
 }
+const StopApplicationRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<StopApplicationRequest>;
 export interface StopApplicationResponse {}
+const StopApplicationResponse =
+  DeleteApplicationResponse as any as S.Schema<StopApplicationResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = DeleteApplicationResponse as any as S.Schema<TagResourceResponse>;
 export interface TerminateSessionRequest {
   applicationId: string;
   sessionId: string;
 }
+const TerminateSessionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<TerminateSessionRequest>;
 export interface TerminateSessionResponse {
   applicationId: string;
   sessionId: string;
 }
+const TerminateSessionResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<TerminateSessionResponse>;
 export type TagKeyList = string[];
+const TagKeyList = SubnetIds as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = DeleteApplicationResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateApplicationRequest {
   applicationId: string;
   clientToken: string;
@@ -686,9 +917,17 @@ export interface UpdateApplicationRequest {
   identityCenterConfiguration?: IdentityCenterConfigurationInput;
   jobLevelCostAllocationConfiguration?: JobLevelCostAllocationConfiguration;
 }
+const UpdateApplicationRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<UpdateApplicationRequest>;
 export interface UpdateApplicationResponse {
   application: Application;
 }
+const UpdateApplicationResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<UpdateApplicationResponse>;
 export type CancelJobRunError =
   | InternalServerException
   | ResourceNotFoundException
@@ -703,8 +942,8 @@ export const cancelJobRun: API.OperationMethod<
   CancelJobRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CancelJobRunRequest>,
-  output: __S(1) as any as S.Schema<CancelJobRunResponse>,
+  input: CancelJobRunRequest,
+  output: CancelJobRunResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -726,8 +965,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(29) as any as S.Schema<CreateApplicationResponse>,
+  input: CreateApplicationRequest,
+  output: CreateApplicationResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -753,8 +992,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(31) as any as S.Schema<DeleteApplicationResponse>,
+  input: DeleteApplicationRequest,
+  output: DeleteApplicationResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -775,8 +1014,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<GetApplicationRequest>,
-  output: __S(38) as any as S.Schema<GetApplicationResponse>,
+  input: GetApplicationRequest,
+  output: GetApplicationResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -801,8 +1040,8 @@ export const getDashboardForJobRun: API.OperationMethod<
   GetDashboardForJobRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<GetDashboardForJobRunRequest>,
-  output: __S(40) as any as S.Schema<GetDashboardForJobRunResponse>,
+  input: GetDashboardForJobRunRequest,
+  output: GetDashboardForJobRunResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -823,8 +1062,8 @@ export const getJobRun: API.OperationMethod<
   GetJobRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<GetJobRunRequest>,
-  output: __S(51) as any as S.Schema<GetJobRunResponse>,
+  input: GetJobRunRequest,
+  output: GetJobRunResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -849,8 +1088,8 @@ export const getResourceDashboard: API.OperationMethod<
   GetResourceDashboardError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<GetResourceDashboardRequest>,
-  output: __S(40) as any as S.Schema<GetResourceDashboardResponse>,
+  input: GetResourceDashboardRequest,
+  output: GetResourceDashboardResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -871,8 +1110,8 @@ export const getSession: API.OperationMethod<
   GetSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<GetSessionRequest>,
-  output: __S(56) as any as S.Schema<GetSessionResponse>,
+  input: GetSessionRequest,
+  output: GetSessionResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -893,8 +1132,8 @@ export const getSessionEndpoint: API.OperationMethod<
   GetSessionEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<GetSessionEndpointRequest>,
-  output: __S(58) as any as S.Schema<GetSessionEndpointResponse>,
+  input: GetSessionEndpointRequest,
+  output: GetSessionEndpointResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -912,8 +1151,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(62) as any as S.Schema<ListApplicationsResponse>,
+  input: ListApplicationsRequest,
+  output: ListApplicationsResponse,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -941,8 +1180,8 @@ export const listJobRunAttempts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   JobRunAttemptSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(63) as any as S.Schema<ListJobRunAttemptsRequest>,
-  output: __S(66) as any as S.Schema<ListJobRunAttemptsResponse>,
+  input: ListJobRunAttemptsRequest,
+  output: ListJobRunAttemptsResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -966,8 +1205,8 @@ export const listJobRuns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   JobRunSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(67) as any as S.Schema<ListJobRunsRequest>,
-  output: __S(70) as any as S.Schema<ListJobRunsResponse>,
+  input: ListJobRunsRequest,
+  output: ListJobRunsResponse,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -995,8 +1234,8 @@ export const listSessions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SessionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(71) as any as S.Schema<ListSessionsRequest>,
-  output: __S(74) as any as S.Schema<ListSessionsResponse>,
+  input: ListSessionsRequest,
+  output: ListSessionsResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1023,8 +1262,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(76) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1046,8 +1285,8 @@ export const startApplication: API.OperationMethod<
   StartApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<StartApplicationRequest>,
-  output: __S(31) as any as S.Schema<StartApplicationResponse>,
+  input: StartApplicationRequest,
+  output: StartApplicationResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1074,8 +1313,8 @@ export const startJobRun: API.OperationMethod<
   StartJobRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<StartJobRunRequest>,
-  output: __S(79) as any as S.Schema<StartJobRunResponse>,
+  input: StartJobRunRequest,
+  output: StartJobRunResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1103,8 +1342,8 @@ export const startSession: API.OperationMethod<
   StartSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<StartSessionRequest>,
-  output: __S(81) as any as S.Schema<StartSessionResponse>,
+  input: StartSessionRequest,
+  output: StartSessionResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1131,8 +1370,8 @@ export const stopApplication: API.OperationMethod<
   StopApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<StopApplicationRequest>,
-  output: __S(31) as any as S.Schema<StopApplicationResponse>,
+  input: StopApplicationRequest,
+  output: StopApplicationResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1153,8 +1392,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<TagResourceRequest>,
-  output: __S(31) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1175,8 +1414,8 @@ export const terminateSession: API.OperationMethod<
   TerminateSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<TerminateSessionRequest>,
-  output: __S(85) as any as S.Schema<TerminateSessionResponse>,
+  input: TerminateSessionRequest,
+  output: TerminateSessionResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1197,8 +1436,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<UntagResourceRequest>,
-  output: __S(31) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1219,8 +1458,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(88) as any as S.Schema<UpdateApplicationResponse>,
+  input: UpdateApplicationRequest,
+  output: UpdateApplicationResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1264,10 +1503,10 @@ function __c0(j: number): any {
       ).annotate({ identifier: "WorkerResourceConfig" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ workerCount: S.Number, workerConfiguration: S.optional(__S(2)) }),
+        S.Struct({ workerCount: S.Number, workerConfiguration: S.optional(WorkerResourceConfig) }),
       ).annotate({ identifier: "InitialCapacityConfig" });
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(3).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ InitialCapacityConfig.pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({ cpu: S.String, memory: S.String, disk: S.optional(S.String) }),
@@ -1291,8 +1530,8 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          subnetIds: S.optional(__S(9)),
-          securityGroupIds: S.optional(__S(9)),
+          subnetIds: S.optional(SubnetIds),
+          securityGroupIds: S.optional(SecurityGroupIds),
         }),
       ).annotate({ identifier: "NetworkConfiguration" });
     case 3:
@@ -1303,20 +1542,22 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ImageConfigurationInput" });
     case 4:
-      return S.suspend(() => S.Struct({ imageConfiguration: S.optional(__S(11)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ imageConfiguration: S.optional(ImageConfigurationInput) }),
+      ).annotate({
         identifier: "WorkerTypeSpecificationInput",
       });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(12).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ WorkerTypeSpecificationInput.pipe(S.optional));
     case 6:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 7:
       return S.suspend(() =>
         S.Struct({
           classification: S.String,
-          properties: S.optional(__S(14)),
+          properties: S.optional(SensitivePropertiesMap),
           configurations: S.optional(
-            S.suspend(() => __S(16)).annotate({ identifier: "ConfigurationList" }),
+            S.suspend(() => ConfigurationList).annotate({ identifier: "ConfigurationList" }),
           ),
         }),
       ).annotate({ identifier: "Configuration" });
@@ -1326,7 +1567,7 @@ function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<Configuration> => __S(15)).annotate({
+        /*@__PURE__*/ S.suspend((): S.Schema<Configuration> => Configuration).annotate({
           identifier: "Configuration",
         }),
       );
@@ -1343,7 +1584,7 @@ function __c2(j: number): any {
         identifier: "ManagedPersistenceMonitoringConfiguration",
       });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(9).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ LogTypeList.pipe(S.optional));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1351,7 +1592,7 @@ function __c2(j: number): any {
           logGroupName: S.optional(S.String),
           logStreamNamePrefix: S.optional(S.String),
           encryptionKeyArn: S.optional(S.String),
-          logTypes: S.optional(__S(19)),
+          logTypes: S.optional(LogTypeMap),
         }),
       ).annotate({
         identifier: "CloudWatchLoggingConfiguration",
@@ -1363,16 +1604,18 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          s3MonitoringConfiguration: S.optional(__S(17)),
-          managedPersistenceMonitoringConfiguration: S.optional(__S(18)),
-          cloudWatchLoggingConfiguration: S.optional(__S(20)),
-          prometheusMonitoringConfiguration: S.optional(__S(21)),
+          s3MonitoringConfiguration: S.optional(S3MonitoringConfiguration),
+          managedPersistenceMonitoringConfiguration: S.optional(
+            ManagedPersistenceMonitoringConfiguration,
+          ),
+          cloudWatchLoggingConfiguration: S.optional(CloudWatchLoggingConfiguration),
+          prometheusMonitoringConfiguration: S.optional(PrometheusMonitoringConfiguration),
         }),
       ).annotate({ identifier: "MonitoringConfiguration" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          encryptionContext: S.optional(__S(14)),
+          encryptionContext: S.optional(EncryptionContext),
           encryptionKeyArn: S.optional(S.String),
         }),
       ).annotate({
@@ -1417,22 +1660,22 @@ function __c3(j: number): any {
           releaseLabel: S.String,
           type: S.String,
           clientToken: S.String.pipe(T.IdempotencyToken()),
-          initialCapacity: S.optional(__S(4)),
-          maximumCapacity: S.optional(__S(5)),
-          tags: S.optional(__S(6)),
-          autoStartConfiguration: S.optional(__S(7)),
-          autoStopConfiguration: S.optional(__S(8)),
-          networkConfiguration: S.optional(__S(10)),
+          initialCapacity: S.optional(InitialCapacityConfigMap),
+          maximumCapacity: S.optional(MaximumAllowedResources),
+          tags: S.optional(TagMap),
+          autoStartConfiguration: S.optional(AutoStartConfig),
+          autoStopConfiguration: S.optional(AutoStopConfig),
+          networkConfiguration: S.optional(NetworkConfiguration),
           architecture: S.optional(S.String),
-          imageConfiguration: S.optional(__S(11)),
-          workerTypeSpecifications: S.optional(__S(13)),
-          runtimeConfiguration: S.optional(__S(16)),
-          monitoringConfiguration: S.optional(__S(22)),
-          diskEncryptionConfiguration: S.optional(__S(23)),
-          interactiveConfiguration: S.optional(__S(24)),
-          schedulerConfiguration: S.optional(__S(25)),
-          identityCenterConfiguration: S.optional(__S(26)),
-          jobLevelCostAllocationConfiguration: S.optional(__S(27)),
+          imageConfiguration: S.optional(ImageConfigurationInput),
+          workerTypeSpecifications: S.optional(WorkerTypeSpecificationInputMap),
+          runtimeConfiguration: S.optional(ConfigurationList),
+          monitoringConfiguration: S.optional(MonitoringConfiguration),
+          diskEncryptionConfiguration: S.optional(DiskEncryptionConfiguration),
+          interactiveConfiguration: S.optional(InteractiveConfiguration),
+          schedulerConfiguration: S.optional(SchedulerConfiguration),
+          identityCenterConfiguration: S.optional(IdentityCenterConfigurationInput),
+          jobLevelCostAllocationConfiguration: S.optional(JobLevelCostAllocationConfiguration),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules),
         ),
@@ -1486,11 +1729,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "ImageConfiguration" });
     case 2:
-      return S.suspend(() => S.Struct({ imageConfiguration: S.optional(__S(33)) })).annotate({
-        identifier: "WorkerTypeSpecification",
-      });
+      return S.suspend(() =>
+        S.Struct({ imageConfiguration: S.optional(ImageConfiguration) }),
+      ).annotate({ identifier: "WorkerTypeSpecification" });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(34).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ WorkerTypeSpecification.pipe(S.optional));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1511,28 +1754,28 @@ function __c4(j: number): any {
           type: S.String,
           state: S.String,
           stateDetails: S.optional(S.String),
-          initialCapacity: S.optional(__S(4)),
-          maximumCapacity: S.optional(__S(5)),
+          initialCapacity: S.optional(InitialCapacityConfigMap),
+          maximumCapacity: S.optional(MaximumAllowedResources),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          tags: S.optional(__S(6)),
-          autoStartConfiguration: S.optional(__S(7)),
-          autoStopConfiguration: S.optional(__S(8)),
-          networkConfiguration: S.optional(__S(10)),
+          tags: S.optional(TagMap),
+          autoStartConfiguration: S.optional(AutoStartConfig),
+          autoStopConfiguration: S.optional(AutoStopConfig),
+          networkConfiguration: S.optional(NetworkConfiguration),
           architecture: S.optional(S.String),
-          imageConfiguration: S.optional(__S(33)),
-          workerTypeSpecifications: S.optional(__S(35)),
-          runtimeConfiguration: S.optional(__S(16)),
-          monitoringConfiguration: S.optional(__S(22)),
-          diskEncryptionConfiguration: S.optional(__S(23)),
-          interactiveConfiguration: S.optional(__S(24)),
-          schedulerConfiguration: S.optional(__S(25)),
-          identityCenterConfiguration: S.optional(__S(36)),
-          jobLevelCostAllocationConfiguration: S.optional(__S(27)),
+          imageConfiguration: S.optional(ImageConfiguration),
+          workerTypeSpecifications: S.optional(WorkerTypeSpecificationMap),
+          runtimeConfiguration: S.optional(ConfigurationList),
+          monitoringConfiguration: S.optional(MonitoringConfiguration),
+          diskEncryptionConfiguration: S.optional(DiskEncryptionConfiguration),
+          interactiveConfiguration: S.optional(InteractiveConfiguration),
+          schedulerConfiguration: S.optional(SchedulerConfiguration),
+          identityCenterConfiguration: S.optional(IdentityCenterConfiguration),
+          jobLevelCostAllocationConfiguration: S.optional(JobLevelCostAllocationConfiguration),
         }),
       ).annotate({ identifier: "Application" });
     case 6:
-      return S.suspend(() => S.Struct({ application: __S(37) })).annotate({
+      return S.suspend(() => S.Struct({ application: Application })).annotate({
         identifier: "GetApplicationResponse",
       });
     case 7:
@@ -1587,14 +1830,14 @@ function __c5(j: number): any {
       ).annotate({ identifier: "GetJobRunRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ policy: S.optional(S.String), policyArns: S.optional(__S(9)) }),
+        S.Struct({ policy: S.optional(S.String), policyArns: S.optional(PolicyArnList) }),
       ).annotate({ identifier: "JobRunExecutionIamPolicy" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          applicationConfiguration: S.optional(__S(16)),
-          monitoringConfiguration: S.optional(__S(22)),
-          diskEncryptionConfiguration: S.optional(__S(23)),
+          applicationConfiguration: S.optional(ConfigurationList),
+          monitoringConfiguration: S.optional(MonitoringConfiguration),
+          diskEncryptionConfiguration: S.optional(DiskEncryptionConfiguration),
         }),
       ).annotate({ identifier: "ConfigurationOverrides" });
     case 4:
@@ -1603,7 +1846,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           entryPoint: SensitiveString,
-          entryPointArguments: S.optional(__S(44)),
+          entryPointArguments: S.optional(EntryPointArguments),
           sparkSubmitParameters: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "SparkSubmit" });
@@ -1617,8 +1860,8 @@ function __c5(j: number): any {
       ).annotate({ identifier: "Hive" });
     case 7:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ sparkSubmit: __S(45) }),
-        /*@__PURE__*/ S.Struct({ hive: __S(46) }),
+        /*@__PURE__*/ S.Struct({ sparkSubmit: SparkSubmit }),
+        /*@__PURE__*/ S.Struct({ hive: Hive }),
       ]);
   }
 }
@@ -1650,32 +1893,32 @@ function __c6(j: number): any {
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           executionRole: S.String,
-          executionIamPolicy: S.optional(__S(42)),
+          executionIamPolicy: S.optional(JobRunExecutionIamPolicy),
           state: S.String,
           stateDetails: S.String,
           releaseLabel: S.String,
-          configurationOverrides: S.optional(__S(43)),
-          jobDriver: __S(47),
-          tags: S.optional(__S(6)),
-          totalResourceUtilization: S.optional(__S(48)),
-          networkConfiguration: S.optional(__S(10)),
+          configurationOverrides: S.optional(ConfigurationOverrides),
+          jobDriver: JobDriver,
+          tags: S.optional(TagMap),
+          totalResourceUtilization: S.optional(TotalResourceUtilization),
+          networkConfiguration: S.optional(NetworkConfiguration),
           totalExecutionDurationSeconds: S.optional(S.Number),
           executionTimeoutMinutes: S.optional(S.Number),
-          billedResourceUtilization: S.optional(__S(48)),
+          billedResourceUtilization: S.optional(ResourceUtilization),
           mode: S.optional(S.String),
-          retryPolicy: S.optional(__S(49)),
+          retryPolicy: S.optional(RetryPolicy),
           attempt: S.optional(S.Number),
           attemptCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           attemptUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           queuedDurationMilliseconds: S.optional(S.Number),
-          imageConfiguration: S.optional(__S(33)),
-          workerTypeSpecifications: S.optional(__S(35)),
+          imageConfiguration: S.optional(ImageConfiguration),
+          workerTypeSpecifications: S.optional(WorkerTypeSpecificationMap),
         }),
       ).annotate({ identifier: "JobRun" });
     case 3:
-      return S.suspend(() => S.Struct({ jobRun: __S(50) })).annotate({
+      return S.suspend(() => S.Struct({ jobRun: JobRun })).annotate({
         identifier: "GetJobRunResponse",
       });
     case 4:
@@ -1714,7 +1957,9 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "GetSessionRequest" });
     case 6:
-      return S.suspend(() => S.Struct({ runtimeConfiguration: S.optional(__S(16)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ runtimeConfiguration: S.optional(ConfigurationList) }),
+      ).annotate({
         identifier: "SessionConfigurationOverrides",
       });
     case 7:
@@ -1734,12 +1979,12 @@ function __c6(j: number): any {
           startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           idleSince: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          configurationOverrides: S.optional(__S(54)),
-          networkConfiguration: S.optional(__S(10)),
+          configurationOverrides: S.optional(SessionConfigurationOverrides),
+          networkConfiguration: S.optional(NetworkConfiguration),
           idleTimeoutMinutes: S.optional(S.Number),
-          tags: S.optional(__S(6)),
-          totalResourceUtilization: S.optional(__S(48)),
-          billedResourceUtilization: S.optional(__S(48)),
+          tags: S.optional(TagMap),
+          totalResourceUtilization: S.optional(TotalResourceUtilization),
+          billedResourceUtilization: S.optional(ResourceUtilization),
           totalExecutionDurationSeconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Session" });
@@ -1748,7 +1993,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ session: __S(55) })).annotate({
+      return S.suspend(() => S.Struct({ session: Session })).annotate({
         identifier: "GetSessionResponse",
       });
     case 1:
@@ -1789,7 +2034,7 @@ function __c7(j: number): any {
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          states: S.optional(__S(9)).pipe(T.HttpQuery("states")),
+          states: S.optional(ApplicationStateSet).pipe(T.HttpQuery("states")),
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/applications" }), svc, auth, proto, ver, rules),
         ),
@@ -1810,10 +2055,10 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "ApplicationSummary" });
     case 5:
-      return S.Array(__S(60));
+      return S.Array(ApplicationSummary);
     case 6:
       return S.suspend(() =>
-        S.Struct({ applications: __S(61), nextToken: S.optional(S.String) }),
+        S.Struct({ applications: ApplicationList, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListApplicationsResponse" });
     case 7:
       return S.suspend(() =>
@@ -1863,10 +2108,10 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "JobRunAttemptSummary" });
     case 1:
-      return S.Array(__S(64));
+      return S.Array(JobRunAttemptSummary);
     case 2:
       return S.suspend(() =>
-        S.Struct({ jobRunAttempts: __S(65), nextToken: S.optional(S.String) }),
+        S.Struct({ jobRunAttempts: JobRunAttempts, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListJobRunAttemptsResponse",
       });
@@ -1882,7 +2127,7 @@ function __c8(j: number): any {
           createdAtBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
             T.HttpQuery("createdAtBefore"),
           ),
-          states: S.optional(__S(9)).pipe(T.HttpQuery("states")),
+          states: S.optional(JobRunStateSet).pipe(T.HttpQuery("states")),
           mode: S.optional(S.String).pipe(T.HttpQuery("mode")),
         }).pipe(
           T.all(
@@ -1917,10 +2162,10 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "JobRunSummary" });
     case 5:
-      return S.Array(__S(68));
+      return S.Array(JobRunSummary);
     case 6:
       return S.suspend(() =>
-        S.Struct({ jobRuns: __S(69), nextToken: S.optional(S.String) }),
+        S.Struct({ jobRuns: JobRuns, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListJobRunsResponse" });
     case 7:
       return S.suspend(() =>
@@ -1928,7 +2173,7 @@ function __c8(j: number): any {
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          states: S.optional(__S(9)).pipe(T.HttpQuery("states")),
+          states: S.optional(SessionStateSet).pipe(T.HttpQuery("states")),
           createdAtAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
             T.HttpQuery("createdAtAfter"),
           ),
@@ -1967,10 +2212,10 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "SessionSummary" });
     case 1:
-      return S.Array(__S(72));
+      return S.Array(SessionSummary);
     case 2:
       return S.suspend(() =>
-        S.Struct({ sessions: __S(73), nextToken: S.optional(S.String) }),
+        S.Struct({ sessions: Sessions, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListSessionsResponse" });
     case 3:
       return S.suspend(() =>
@@ -1988,7 +2233,7 @@ function __c9(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(6)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 5:
@@ -2010,14 +2255,14 @@ function __c9(j: number): any {
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           clientToken: S.String.pipe(T.IdempotencyToken()),
           executionRoleArn: S.String,
-          executionIamPolicy: S.optional(__S(42)),
-          jobDriver: S.optional(__S(47)),
-          configurationOverrides: S.optional(__S(43)),
-          tags: S.optional(__S(6)),
+          executionIamPolicy: S.optional(JobRunExecutionIamPolicy),
+          jobDriver: S.optional(JobDriver),
+          configurationOverrides: S.optional(ConfigurationOverrides),
+          tags: S.optional(TagMap),
           executionTimeoutMinutes: S.optional(S.Number),
           name: S.optional(S.String),
           mode: S.optional(S.String),
-          retryPolicy: S.optional(__S(49)),
+          retryPolicy: S.optional(RetryPolicy),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/applications/{applicationId}/jobruns" }),
@@ -2043,8 +2288,8 @@ function __c10(j: number): any {
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           clientToken: S.String.pipe(T.IdempotencyToken()),
           executionRoleArn: S.String,
-          configurationOverrides: S.optional(__S(54)),
-          tags: S.optional(__S(6)),
+          configurationOverrides: S.optional(SessionConfigurationOverrides),
+          tags: S.optional(TagMap),
           idleTimeoutMinutes: S.optional(S.Number),
           name: S.optional(S.String),
         }).pipe(
@@ -2077,7 +2322,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "StopApplicationRequest" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: __S(6) }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -2112,7 +2357,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(9).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -2129,22 +2374,22 @@ function __c10(j: number): any {
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           clientToken: S.String.pipe(T.IdempotencyToken()),
-          initialCapacity: S.optional(__S(4)),
-          maximumCapacity: S.optional(__S(5)),
-          autoStartConfiguration: S.optional(__S(7)),
-          autoStopConfiguration: S.optional(__S(8)),
-          networkConfiguration: S.optional(__S(10)),
+          initialCapacity: S.optional(InitialCapacityConfigMap),
+          maximumCapacity: S.optional(MaximumAllowedResources),
+          autoStartConfiguration: S.optional(AutoStartConfig),
+          autoStopConfiguration: S.optional(AutoStopConfig),
+          networkConfiguration: S.optional(NetworkConfiguration),
           architecture: S.optional(S.String),
-          imageConfiguration: S.optional(__S(11)),
-          workerTypeSpecifications: S.optional(__S(13)),
-          interactiveConfiguration: S.optional(__S(24)),
+          imageConfiguration: S.optional(ImageConfigurationInput),
+          workerTypeSpecifications: S.optional(WorkerTypeSpecificationInputMap),
+          interactiveConfiguration: S.optional(InteractiveConfiguration),
           releaseLabel: S.optional(S.String),
-          runtimeConfiguration: S.optional(__S(16)),
-          monitoringConfiguration: S.optional(__S(22)),
-          diskEncryptionConfiguration: S.optional(__S(23)),
-          schedulerConfiguration: S.optional(__S(25)),
-          identityCenterConfiguration: S.optional(__S(26)),
-          jobLevelCostAllocationConfiguration: S.optional(__S(27)),
+          runtimeConfiguration: S.optional(ConfigurationList),
+          monitoringConfiguration: S.optional(MonitoringConfiguration),
+          diskEncryptionConfiguration: S.optional(DiskEncryptionConfiguration),
+          schedulerConfiguration: S.optional(SchedulerConfiguration),
+          identityCenterConfiguration: S.optional(IdentityCenterConfigurationInput),
+          jobLevelCostAllocationConfiguration: S.optional(JobLevelCostAllocationConfiguration),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/applications/{applicationId}" }),
@@ -2161,41 +2406,8 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ application: __S(37) })).annotate({
+      return S.suspend(() => S.Struct({ application: Application })).annotate({
         identifier: "UpdateApplicationResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
   }
 }

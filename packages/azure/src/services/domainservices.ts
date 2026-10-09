@@ -7,8 +7,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -28,20 +26,34 @@ export interface CreateOuContainerRequest {
   /** The account password */
   password?: string | Redacted.Redacted<string>;
 }
+const CreateOuContainerRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateOuContainerRequest>;
+
 /** Resource tags */
 export type CreateOuContainerResponseTagsMap = { [key: string]: string | undefined };
+const CreateOuContainerResponseTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateOuContainerResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type CreateOuContainerResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const CreateOuContainerResponseSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type CreateOuContainerResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const CreateOuContainerResponseSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface CreateOuContainerResponseSystemData {
   /** The identity that created the resource. */
@@ -57,6 +69,11 @@ export interface CreateOuContainerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const CreateOuContainerResponseSystemData = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateOuContainerResponseSystemData>;
+
 /** Container Account Description */
 export interface ContainerAccount {
   /** The account name */
@@ -66,8 +83,15 @@ export interface ContainerAccount {
   /** The account password */
   password?: string | Redacted.Redacted<string>;
 }
+const ContainerAccount = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ContainerAccount>;
+
 /** The list of container accounts */
 export type OuContainerPropertiesAccountsList = Array<ContainerAccount>;
+const OuContainerPropertiesAccountsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<OuContainerPropertiesAccountsList>;
+
 /** Properties of the OuContainer. */
 export interface OuContainerProperties {
   /** Azure Active Directory tenant id */
@@ -87,6 +111,11 @@ export interface OuContainerProperties {
   /** The current deployment or provisioning state, which only appears in the response. */
   provisioningState?: string;
 }
+const OuContainerProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<OuContainerProperties>;
+
 export interface CreateOuContainerResponse {
   /** Resource Id */
   id?: string;
@@ -105,6 +134,11 @@ export interface CreateOuContainerResponse {
   /** OuContainer properties */
   properties?: OuContainerProperties;
 }
+const CreateOuContainerResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateOuContainerResponse>;
+
 export interface DeleteDomainServiceRequest {
   /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -113,7 +147,17 @@ export interface DeleteDomainServiceRequest {
   /** The name of the domain service. */
   domainServiceName: string;
 }
+const DeleteDomainServiceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteDomainServiceRequest>;
+
 export interface DeleteDomainServiceResponse {}
+const DeleteDomainServiceResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteDomainServiceResponse>;
+
 export interface DeleteOuContainerRequest {
   /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -124,9 +168,20 @@ export interface DeleteOuContainerRequest {
   /** The name of the OuContainer. */
   ouContainerName: string;
 }
+const DeleteOuContainerRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteOuContainerRequest>;
+
 export interface DeleteOuContainerResponse {}
+const DeleteOuContainerResponse =
+  DeleteDomainServiceResponse as any as S.Schema<DeleteOuContainerResponse>;
+
 /** Resource tags */
 export type DomainServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const DomainServicesCreateOrUpdateRequestTagsMap =
+  CreateOuContainerResponseTagsMap as any as S.Schema<DomainServicesCreateOrUpdateRequestTagsMap>;
+
 /** Replica Set Definition */
 export interface ReplicaSetInput {
   /** Virtual network location */
@@ -134,12 +189,23 @@ export interface ReplicaSetInput {
   /** The name of the virtual network that Domain Services will be deployed on. The id of the subnet that Domain Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName. */
   subnetId?: string;
 }
+const ReplicaSetInput = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ReplicaSetInput>;
+
 /** List of ReplicaSets */
 export type DomainServicePropertiesInputReplicaSetsList = Array<ReplicaSetInput>;
+const DomainServicePropertiesInputReplicaSetsList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DomainServicePropertiesInputReplicaSetsList>;
+
 /** A flag to determine whether or not Secure LDAP is enabled or disabled. */
 export type LdapsSettingsInputLdaps = "Enabled" | "Disabled";
+const LdapsSettingsInputLdaps = S.String;
+
 /** A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled. */
 export type LdapsSettingsInputExternalAccess = "Enabled" | "Disabled";
+const LdapsSettingsInputExternalAccess = S.String;
+
 /** Secure LDAP Settings */
 export interface LdapsSettingsInput {
   /** A flag to determine whether or not Secure LDAP is enabled or disabled. */
@@ -151,6 +217,8 @@ export interface LdapsSettingsInput {
   /** A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled. */
   externalAccess?: LdapsSettingsInputExternalAccess | (string & {});
 }
+const LdapsSettingsInput = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<LdapsSettingsInput>;
+
 /** Forest Trust Setting */
 export interface ForestTrust {
   /** Trusted Domain FQDN */
@@ -164,8 +232,15 @@ export interface ForestTrust {
   /** Trust Password */
   trustPassword?: string | Redacted.Redacted<string>;
 }
+const ForestTrust = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ForestTrust>;
+
 /** List of settings for Resource Forest */
 export type ResourceForestSettingsSettingsList = Array<ForestTrust>;
+const ResourceForestSettingsSettingsList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ResourceForestSettingsSettingsList>;
+
 /** Settings for Resource Forest */
 export interface ResourceForestSettings {
   /** List of settings for Resource Forest */
@@ -173,24 +248,47 @@ export interface ResourceForestSettings {
   /** Resource Forest */
   resourceForest?: string;
 }
+const ResourceForestSettings = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ResourceForestSettings>;
+
 /** A flag to determine whether or not NtlmV1 is enabled or disabled. */
 export type DomainSecuritySettingsNtlmV1 = "Enabled" | "Disabled";
+const DomainSecuritySettingsNtlmV1 = S.String;
+
 /** A flag to determine whether or not TlsV1 is enabled or disabled. */
 export type DomainSecuritySettingsTlsV1 = "Enabled" | "Disabled";
+const DomainSecuritySettingsTlsV1 = S.String;
+
 /** A flag to determine whether or not SyncNtlmPasswords is enabled or disabled. */
 export type DomainSecuritySettingsSyncNtlmPasswords = "Enabled" | "Disabled";
+const DomainSecuritySettingsSyncNtlmPasswords = S.String;
+
 /** A flag to determine whether or not SyncKerberosPasswords is enabled or disabled. */
 export type DomainSecuritySettingsSyncKerberosPasswords = "Enabled" | "Disabled";
+const DomainSecuritySettingsSyncKerberosPasswords = S.String;
+
 /** A flag to determine whether or not SyncOnPremPasswords is enabled or disabled. */
 export type DomainSecuritySettingsSyncOnPremPasswords = "Enabled" | "Disabled";
+const DomainSecuritySettingsSyncOnPremPasswords = S.String;
+
 /** A flag to determine whether or not KerberosRc4Encryption is enabled or disabled. */
 export type DomainSecuritySettingsKerberosRc4Encryption = "Enabled" | "Disabled";
+const DomainSecuritySettingsKerberosRc4Encryption = S.String;
+
 /** A flag to determine whether or not KerberosArmoring is enabled or disabled. */
 export type DomainSecuritySettingsKerberosArmoring = "Enabled" | "Disabled";
+const DomainSecuritySettingsKerberosArmoring = S.String;
+
 /** A flag to determine whether or not LdapSigning is enabled or disabled. */
 export type DomainSecuritySettingsLdapSigning = "Enabled" | "Disabled";
+const DomainSecuritySettingsLdapSigning = S.String;
+
 /** A flag to determine whether or not ChannelBinding is enabled or disabled. */
 export type DomainSecuritySettingsChannelBinding = "Enabled" | "Disabled";
+const DomainSecuritySettingsChannelBinding = S.String;
+
 /** Domain Security Settings */
 export interface DomainSecuritySettings {
   /** A flag to determine whether or not NtlmV1 is enabled or disabled. */
@@ -212,16 +310,34 @@ export interface DomainSecuritySettings {
   /** A flag to determine whether or not ChannelBinding is enabled or disabled. */
   channelBinding?: DomainSecuritySettingsChannelBinding | (string & {});
 }
+const DomainSecuritySettings = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DomainSecuritySettings>;
+
 /** Enabled or Disabled flag to turn on Group-based filtered sync */
 export type DomainServicePropertiesInputFilteredSync = "Enabled" | "Disabled";
+const DomainServicePropertiesInputFilteredSync = S.String;
+
 /** All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud */
 export type DomainServicePropertiesInputSyncScope = "All" | "CloudOnly";
+const DomainServicePropertiesInputSyncScope = S.String;
+
 /** Should global admins be notified */
 export type NotificationSettingsNotifyGlobalAdmins = "Enabled" | "Disabled";
+const NotificationSettingsNotifyGlobalAdmins = S.String;
+
 /** Should domain controller admins be notified */
 export type NotificationSettingsNotifyDcAdmins = "Enabled" | "Disabled";
+const NotificationSettingsNotifyDcAdmins = S.String;
+
 /** The list of additional recipients */
 export type NotificationSettingsAdditionalRecipientsList = Array<string>;
+const NotificationSettingsAdditionalRecipientsList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<NotificationSettingsAdditionalRecipientsList>;
+
 /** Settings for notification */
 export interface NotificationSettings {
   /** Should global admins be notified */
@@ -231,6 +347,8 @@ export interface NotificationSettings {
   /** The list of additional recipients */
   additionalRecipients?: NotificationSettingsAdditionalRecipientsList;
 }
+const NotificationSettings = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<NotificationSettings>;
+
 /** Status for individual validator after running diagnostics. */
 export type ConfigDiagnosticsValidatorResultStatus =
   | "None"
@@ -239,8 +357,13 @@ export type ConfigDiagnosticsValidatorResultStatus =
   | "Failure"
   | "Warning"
   | "Skipped";
+const ConfigDiagnosticsValidatorResultStatus = S.String;
+
 /** List of domain resource property name or values used to compose a rich description. */
 export type ConfigDiagnosticsValidatorResultIssueDescriptionParamsList = Array<string>;
+const ConfigDiagnosticsValidatorResultIssueDescriptionParamsList =
+  NotificationSettingsAdditionalRecipientsList as any as S.Schema<ConfigDiagnosticsValidatorResultIssueDescriptionParamsList>;
+
 /** Specific issue for a particular config diagnostics validator */
 export interface ConfigDiagnosticsValidatorResultIssue {
   /** Validation issue identifier. */
@@ -248,9 +371,19 @@ export interface ConfigDiagnosticsValidatorResultIssue {
   /** List of domain resource property name or values used to compose a rich description. */
   descriptionParams?: ConfigDiagnosticsValidatorResultIssueDescriptionParamsList;
 }
+const ConfigDiagnosticsValidatorResultIssue = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ConfigDiagnosticsValidatorResultIssue>;
+
 /** List of resource config validation issues. */
 export type ConfigDiagnosticsValidatorResultIssuesList =
   Array<ConfigDiagnosticsValidatorResultIssue>;
+const ConfigDiagnosticsValidatorResultIssuesList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ConfigDiagnosticsValidatorResultIssuesList>;
+
 /** Config Diagnostics validator result data */
 export interface ConfigDiagnosticsValidatorResult {
   /** Validator identifier */
@@ -262,8 +395,18 @@ export interface ConfigDiagnosticsValidatorResult {
   /** List of resource config validation issues. */
   issues?: ConfigDiagnosticsValidatorResultIssuesList;
 }
+const ConfigDiagnosticsValidatorResult = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ConfigDiagnosticsValidatorResult>;
+
 /** List of Configuration Diagnostics validator results. */
 export type ConfigDiagnosticsValidatorResultsList = Array<ConfigDiagnosticsValidatorResult>;
+const ConfigDiagnosticsValidatorResultsList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ConfigDiagnosticsValidatorResultsList>;
+
 /** Configuration Diagnostics */
 export interface ConfigDiagnostics {
   /** Last domain configuration diagnostics DateTime */
@@ -271,6 +414,8 @@ export interface ConfigDiagnostics {
   /** List of Configuration Diagnostics validator results. */
   validatorResults?: ConfigDiagnosticsValidatorResultsList;
 }
+const ConfigDiagnostics = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ConfigDiagnostics>;
+
 /** Properties of the Domain Service. */
 export interface DomainServicePropertiesInput {
   /** The name of the Azure domain that the user would like to deploy Domain Services to. */
@@ -296,6 +441,11 @@ export interface DomainServicePropertiesInput {
   /** Configuration diagnostics data containing latest execution from client. */
   configDiagnostics?: ConfigDiagnostics;
 }
+const DomainServicePropertiesInput = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DomainServicePropertiesInput>;
+
 export interface DomainServicesCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -312,20 +462,32 @@ export interface DomainServicesCreateOrUpdateRequest {
   /** Domain service properties */
   properties?: DomainServicePropertiesInput;
 }
+const DomainServicesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DomainServicesCreateOrUpdateRequest>;
+
 /** Resource tags */
 export type DomainServicesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const DomainServicesCreateOrUpdateResponseTagsMap =
+  CreateOuContainerResponseTagsMap as any as S.Schema<DomainServicesCreateOrUpdateResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type DomainServicesCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const DomainServicesCreateOrUpdateResponseSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type DomainServicesCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const DomainServicesCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface DomainServicesCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -341,8 +503,16 @@ export interface DomainServicesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const DomainServicesCreateOrUpdateResponseSystemData = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DomainServicesCreateOrUpdateResponseSystemData>;
+
 /** List of Domain Controller IP Address */
 export type ReplicaSetDomainControllerIpAddressList = Array<string>;
+const ReplicaSetDomainControllerIpAddressList =
+  NotificationSettingsAdditionalRecipientsList as any as S.Schema<ReplicaSetDomainControllerIpAddressList>;
+
 /** Health Monitor Description */
 export interface HealthMonitor {
   /** Health Monitor Id */
@@ -352,8 +522,15 @@ export interface HealthMonitor {
   /** Health Monitor Details */
   details?: string;
 }
+const HealthMonitor = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<HealthMonitor>;
+
 /** List of Domain Health Monitors */
 export type ReplicaSetHealthMonitorsList = Array<HealthMonitor>;
+const ReplicaSetHealthMonitorsList = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ReplicaSetHealthMonitorsList>;
+
 /** Health Alert Description */
 export interface HealthAlert {
   /** Health Alert Id */
@@ -371,8 +548,15 @@ export interface HealthAlert {
   /** Health Alert TSG Link */
   resolutionUri?: string;
 }
+const HealthAlert = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<HealthAlert>;
+
 /** List of Domain Health Alerts */
 export type ReplicaSetHealthAlertsList = Array<HealthAlert>;
+const ReplicaSetHealthAlertsList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ReplicaSetHealthAlertsList>;
+
 /** Replica Set Definition */
 export interface ReplicaSet {
   /** ReplicaSet Id */
@@ -396,12 +580,23 @@ export interface ReplicaSet {
   /** List of Domain Health Alerts */
   healthAlerts?: ReplicaSetHealthAlertsList;
 }
+const ReplicaSet = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ReplicaSet>;
+
 /** List of ReplicaSets */
 export type DomainServicePropertiesReplicaSetsList = Array<ReplicaSet>;
+const DomainServicePropertiesReplicaSetsList = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<DomainServicePropertiesReplicaSetsList>;
+
 /** A flag to determine whether or not Secure LDAP is enabled or disabled. */
 export type LdapsSettingsLdaps = "Enabled" | "Disabled";
+const LdapsSettingsLdaps = S.String;
+
 /** A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled. */
 export type LdapsSettingsExternalAccess = "Enabled" | "Disabled";
+const LdapsSettingsExternalAccess = S.String;
+
 /** Secure LDAP Settings */
 export interface LdapsSettings {
   /** A flag to determine whether or not Secure LDAP is enabled or disabled. */
@@ -419,10 +614,16 @@ export interface LdapsSettings {
   /** A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled. */
   externalAccess?: LdapsSettingsExternalAccess;
 }
+const LdapsSettings = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<LdapsSettings>;
+
 /** Enabled or Disabled flag to turn on Group-based filtered sync */
 export type DomainServicePropertiesFilteredSync = "Enabled" | "Disabled";
+const DomainServicePropertiesFilteredSync = S.String;
+
 /** All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud */
 export type DomainServicePropertiesSyncScope = "All" | "CloudOnly";
+const DomainServicePropertiesSyncScope = S.String;
+
 /** Migration Progress */
 export interface MigrationProgress {
   /** Completion Percentage */
@@ -430,6 +631,8 @@ export interface MigrationProgress {
   /** Progress Message */
   progressMessage?: string;
 }
+const MigrationProgress = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<MigrationProgress>;
+
 /** Migration Properties */
 export interface MigrationProperties {
   /** Old Subnet Id */
@@ -439,6 +642,8 @@ export interface MigrationProperties {
   /** Migration Progress */
   migrationProgress?: MigrationProgress;
 }
+const MigrationProperties = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<MigrationProperties>;
+
 /** Properties of the Domain Service. */
 export interface DomainServiceProperties {
   /** Data Model Version */
@@ -478,6 +683,11 @@ export interface DomainServiceProperties {
   /** Configuration diagnostics data containing latest execution from client. */
   configDiagnostics?: ConfigDiagnostics;
 }
+const DomainServiceProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DomainServiceProperties>;
+
 export interface DomainServicesCreateOrUpdateResponse {
   /** Resource Id */
   id?: string;
@@ -496,6 +706,11 @@ export interface DomainServicesCreateOrUpdateResponse {
   /** Domain service properties */
   properties?: DomainServiceProperties;
 }
+const DomainServicesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DomainServicesCreateOrUpdateResponse>;
+
 export interface GetDomainServiceRequest {
   /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -504,8 +719,16 @@ export interface GetDomainServiceRequest {
   /** The name of the domain service. */
   domainServiceName: string;
 }
+const GetDomainServiceRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetDomainServiceRequest>;
+
 /** Resource tags */
 export type GetDomainServiceResponseTagsMap = { [key: string]: string | undefined };
+const GetDomainServiceResponseTagsMap =
+  CreateOuContainerResponseTagsMap as any as S.Schema<GetDomainServiceResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type GetDomainServiceResponseSystemDataCreatedByType =
   | "User"
@@ -533,6 +756,9 @@ export interface GetDomainServiceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetDomainServiceResponseSystemData =
+  CreateOuContainerResponseSystemData as any as S.Schema<GetDomainServiceResponseSystemData>;
+
 export interface GetDomainServiceResponse {
   /** Resource Id */
   id?: string;
@@ -551,6 +777,11 @@ export interface GetDomainServiceResponse {
   /** Domain service properties */
   properties?: DomainServiceProperties;
 }
+const GetDomainServiceResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<GetDomainServiceResponse>;
+
 export interface GetOuContainerRequest {
   /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -561,8 +792,16 @@ export interface GetOuContainerRequest {
   /** The name of the OuContainer. */
   ouContainerName: string;
 }
+const GetOuContainerRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GetOuContainerRequest>;
+
 /** Resource tags */
 export type GetOuContainerResponseTagsMap = { [key: string]: string | undefined };
+const GetOuContainerResponseTagsMap =
+  CreateOuContainerResponseTagsMap as any as S.Schema<GetOuContainerResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type GetOuContainerResponseSystemDataCreatedByType =
   | "User"
@@ -590,6 +829,9 @@ export interface GetOuContainerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetOuContainerResponseSystemData =
+  CreateOuContainerResponseSystemData as any as S.Schema<GetOuContainerResponseSystemData>;
+
 export interface GetOuContainerResponse {
   /** Resource Id */
   id?: string;
@@ -608,26 +850,43 @@ export interface GetOuContainerResponse {
   /** OuContainer properties */
   properties?: OuContainerProperties;
 }
+const GetOuContainerResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetOuContainerResponse>;
+
 export interface ListDomainServiceByResourceGroupRequest {
   /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the resource group within the user's subscription. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListDomainServiceByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListDomainServiceByResourceGroupRequest>;
+
 /** Resource tags */
 export type DomainServiceTagsMap = { [key: string]: string | undefined };
+const DomainServiceTagsMap =
+  CreateOuContainerResponseTagsMap as any as S.Schema<DomainServiceTagsMap>;
+
 /** The type of identity that created the resource. */
 export type DomainServiceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const DomainServiceSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type DomainServiceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const DomainServiceSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface DomainServiceSystemData {
   /** The identity that created the resource. */
@@ -643,6 +902,11 @@ export interface DomainServiceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const DomainServiceSystemData = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DomainServiceSystemData>;
+
 /** Domain service. */
 export interface DomainService {
   /** Resource Id */
@@ -662,8 +926,15 @@ export interface DomainService {
   /** Domain service properties */
   properties?: DomainServiceProperties;
 }
+const DomainService = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<DomainService>;
+
 /** the list of domain services. */
 export type DomainServiceListResultValueList = Array<DomainService>;
+const DomainServiceListResultValueList = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DomainServiceListResultValueList>;
+
 /** The response from the List Domain Services operation. */
 export interface DomainServiceListResult {
   /** the list of domain services. */
@@ -671,7 +942,17 @@ export interface DomainServiceListResult {
   /** The continuation token for the next page of results. */
   nextLink?: string;
 }
+const DomainServiceListResult = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DomainServiceListResult>;
+
 export interface ListDomainServiceOperationsRequest {}
+const ListDomainServiceOperationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListDomainServiceOperationsRequest>;
+
 /** The operation supported by Domain Services. */
 export interface OperationDisplayInfo {
   /** The description of the operation. */
@@ -683,6 +964,8 @@ export interface OperationDisplayInfo {
   /** Resource on which the operation is performed. */
   resource?: string;
 }
+const OperationDisplayInfo = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<OperationDisplayInfo>;
+
 /** The operation supported by Domain Services. */
 export interface OperationEntity {
   /** Operation name: {provider}/{resource}/{operation}. */
@@ -692,8 +975,15 @@ export interface OperationEntity {
   /** The origin of the operation. */
   origin?: string;
 }
+const OperationEntity = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<OperationEntity>;
+
 /** The list of operations. */
 export type OperationEntityListResultValueList = Array<OperationEntity>;
+const OperationEntityListResultValueList = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<OperationEntityListResultValueList>;
+
 /** The list of domain service operation response. */
 export interface OperationEntityListResult {
   /** The list of operations. */
@@ -701,10 +991,20 @@ export interface OperationEntityListResult {
   /** The continuation token for the next page of results. */
   nextLink?: string;
 }
+const OperationEntityListResult = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<OperationEntityListResult>;
+
 export interface ListDomainServicesRequest {
   /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
 }
+const ListDomainServicesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ListDomainServicesRequest>;
+
 export interface ListOuContainerRequest {
   /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -713,8 +1013,15 @@ export interface ListOuContainerRequest {
   /** The name of the domain service. */
   domainServiceName: string;
 }
+const ListOuContainerRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ListOuContainerRequest>;
+
 /** Resource tags */
 export type OuContainerTagsMap = { [key: string]: string | undefined };
+const OuContainerTagsMap = CreateOuContainerResponseTagsMap as any as S.Schema<OuContainerTagsMap>;
+
 /** The type of identity that created the resource. */
 export type OuContainerSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
 /** The type of identity that last modified the resource. */
@@ -738,6 +1045,8 @@ export interface OuContainerSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const OuContainerSystemData = DomainServiceSystemData as any as S.Schema<OuContainerSystemData>;
+
 /** Resource for OuContainer. */
 export interface OuContainer {
   /** Resource Id */
@@ -757,8 +1066,15 @@ export interface OuContainer {
   /** OuContainer properties */
   properties?: OuContainerProperties;
 }
+const OuContainer = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<OuContainer>;
+
 /** The list of OuContainer. */
 export type OuContainerListResultValueList = Array<OuContainer>;
+const OuContainerListResultValueList = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<OuContainerListResultValueList>;
+
 /** The response from the List OuContainer operation. */
 export interface OuContainerListResult {
   /** The list of OuContainer. */
@@ -766,9 +1082,22 @@ export interface OuContainerListResult {
   /** The continuation token for the next page of results. */
   nextLink?: string;
 }
+const OuContainerListResult = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<OuContainerListResult>;
+
 export interface ListOuContainerOperationsRequest {}
+const ListOuContainerOperationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ListOuContainerOperationsRequest>;
+
 /** Resource tags */
 export type UpdateDomainServiceRequestTagsMap = { [key: string]: string | undefined };
+const UpdateDomainServiceRequestTagsMap =
+  CreateOuContainerResponseTagsMap as any as S.Schema<UpdateDomainServiceRequestTagsMap>;
+
 export interface UpdateDomainServiceRequest {
   /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -785,8 +1114,16 @@ export interface UpdateDomainServiceRequest {
   /** Domain service properties */
   properties?: DomainServicePropertiesInput;
 }
+const UpdateDomainServiceRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<UpdateDomainServiceRequest>;
+
 /** Resource tags */
 export type UpdateDomainServiceResponseTagsMap = { [key: string]: string | undefined };
+const UpdateDomainServiceResponseTagsMap =
+  CreateOuContainerResponseTagsMap as any as S.Schema<UpdateDomainServiceResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type UpdateDomainServiceResponseSystemDataCreatedByType =
   | "User"
@@ -814,6 +1151,9 @@ export interface UpdateDomainServiceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const UpdateDomainServiceResponseSystemData =
+  CreateOuContainerResponseSystemData as any as S.Schema<UpdateDomainServiceResponseSystemData>;
+
 export interface UpdateDomainServiceResponse {
   /** Resource Id */
   id?: string;
@@ -832,6 +1172,11 @@ export interface UpdateDomainServiceResponse {
   /** Domain service properties */
   properties?: DomainServiceProperties;
 }
+const UpdateDomainServiceResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<UpdateDomainServiceResponse>;
+
 export interface UpdateOuContainerRequest {
   /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -848,8 +1193,16 @@ export interface UpdateOuContainerRequest {
   /** The account password */
   password?: string | Redacted.Redacted<string>;
 }
+const UpdateOuContainerRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<UpdateOuContainerRequest>;
+
 /** Resource tags */
 export type UpdateOuContainerResponseTagsMap = { [key: string]: string | undefined };
+const UpdateOuContainerResponseTagsMap =
+  CreateOuContainerResponseTagsMap as any as S.Schema<UpdateOuContainerResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type UpdateOuContainerResponseSystemDataCreatedByType =
   | "User"
@@ -877,6 +1230,9 @@ export interface UpdateOuContainerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const UpdateOuContainerResponseSystemData =
+  CreateOuContainerResponseSystemData as any as S.Schema<UpdateOuContainerResponseSystemData>;
+
 export interface UpdateOuContainerResponse {
   /** Resource Id */
   id?: string;
@@ -895,6 +1251,11 @@ export interface UpdateOuContainerResponse {
   /** OuContainer properties */
   properties?: OuContainerProperties;
 }
+const UpdateOuContainerResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<UpdateOuContainerResponse>;
+
 export type CreateOuContainerError = AzureOpError;
 /** Create OuContainer The Create OuContainer operation creates a new OuContainer under the specified Domain Service instance. */
 export const CreateOuContainer: API.OperationMethod<
@@ -903,8 +1264,8 @@ export const CreateOuContainer: API.OperationMethod<
   CreateOuContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateOuContainerRequest>,
-  output: __S(6) as any as S.Schema<CreateOuContainerResponse>,
+  input: CreateOuContainerRequest,
+  output: CreateOuContainerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -918,8 +1279,8 @@ export const DeleteDomainService: API.OperationMethod<
   DeleteDomainServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DeleteDomainServiceRequest>,
-  output: __S(8) as any as S.Schema<DeleteDomainServiceResponse>,
+  input: DeleteDomainServiceRequest,
+  output: DeleteDomainServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -933,8 +1294,8 @@ export const DeleteOuContainer: API.OperationMethod<
   DeleteOuContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeleteOuContainerRequest>,
-  output: __S(8) as any as S.Schema<DeleteOuContainerResponse>,
+  input: DeleteOuContainerRequest,
+  output: DeleteOuContainerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -948,8 +1309,8 @@ export const DomainServicesCreateOrUpdate: API.OperationMethod<
   DomainServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<DomainServicesCreateOrUpdateRequest>,
-  output: __S(37) as any as S.Schema<DomainServicesCreateOrUpdateResponse>,
+  input: DomainServicesCreateOrUpdateRequest,
+  output: DomainServicesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -963,8 +1324,8 @@ export const GetDomainService: API.OperationMethod<
   GetDomainServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<GetDomainServiceRequest>,
-  output: __S(39) as any as S.Schema<GetDomainServiceResponse>,
+  input: GetDomainServiceRequest,
+  output: GetDomainServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -978,8 +1339,8 @@ export const GetOuContainer: API.OperationMethod<
   GetOuContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<GetOuContainerRequest>,
-  output: __S(41) as any as S.Schema<GetOuContainerResponse>,
+  input: GetOuContainerRequest,
+  output: GetOuContainerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -993,8 +1354,8 @@ export const ListDomainServiceByResourceGroup: API.OperationMethod<
   ListDomainServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<ListDomainServiceByResourceGroupRequest>,
-  output: __S(46) as any as S.Schema<DomainServiceListResult>,
+  input: ListDomainServiceByResourceGroupRequest,
+  output: DomainServiceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1008,8 +1369,8 @@ export const ListDomainServiceOperations: API.OperationMethod<
   ListDomainServiceOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<ListDomainServiceOperationsRequest>,
-  output: __S(51) as any as S.Schema<OperationEntityListResult>,
+  input: ListDomainServiceOperationsRequest,
+  output: OperationEntityListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1023,8 +1384,8 @@ export const ListDomainServices: API.OperationMethod<
   ListDomainServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<ListDomainServicesRequest>,
-  output: __S(46) as any as S.Schema<DomainServiceListResult>,
+  input: ListDomainServicesRequest,
+  output: DomainServiceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1038,8 +1399,8 @@ export const ListOuContainer: API.OperationMethod<
   ListOuContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<ListOuContainerRequest>,
-  output: __S(56) as any as S.Schema<OuContainerListResult>,
+  input: ListOuContainerRequest,
+  output: OuContainerListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1053,8 +1414,8 @@ export const ListOuContainerOperations: API.OperationMethod<
   ListOuContainerOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<ListOuContainerOperationsRequest>,
-  output: __S(51) as any as S.Schema<OperationEntityListResult>,
+  input: ListOuContainerOperationsRequest,
+  output: OperationEntityListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1068,8 +1429,8 @@ export const UpdateDomainService: API.OperationMethod<
   UpdateDomainServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<UpdateDomainServiceRequest>,
-  output: __S(59) as any as S.Schema<UpdateDomainServiceResponse>,
+  input: UpdateDomainServiceRequest,
+  output: UpdateDomainServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1083,8 +1444,8 @@ export const UpdateOuContainer: API.OperationMethod<
   UpdateOuContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<UpdateOuContainerRequest>,
-  output: __S(61) as any as S.Schema<UpdateOuContainerResponse>,
+  input: UpdateOuContainerRequest,
+  output: UpdateOuContainerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1118,10 +1479,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(CreateOuContainerResponseSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(CreateOuContainerResponseSystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -1136,7 +1497,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ContainerAccount" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(ContainerAccount);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1144,7 +1505,7 @@ function __c0(j: number): any {
           domainName: S.optional(S.String),
           deploymentId: S.optional(S.String),
           containerId: S.optional(S.String),
-          accounts: S.optional(__S(4)),
+          accounts: S.optional(OuContainerPropertiesAccountsList),
           serviceStatus: S.optional(S.String),
           distinguishedName: S.optional(S.String),
           provisioningState: S.optional(S.String),
@@ -1157,10 +1518,10 @@ function __c0(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(1)),
+          tags: S.optional(CreateOuContainerResponseTagsMap),
           etag: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(5)),
+          systemData: S.optional(CreateOuContainerResponseSystemData),
+          properties: S.optional(OuContainerProperties),
         }),
       ).annotate({
         identifier: "CreateOuContainerResponse",
@@ -1214,14 +1575,14 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ReplicaSetInput" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(ReplicaSetInput);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ldaps: S.optional(S.String),
+          ldaps: S.optional(LdapsSettingsInputLdaps),
           pfxCertificate: S.optional(S.String),
           pfxCertificatePassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          externalAccess: S.optional(S.String),
+          externalAccess: S.optional(LdapsSettingsInputExternalAccess),
         }),
       ).annotate({ identifier: "LdapsSettingsInput" });
     case 5:
@@ -1235,11 +1596,11 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ForestTrust" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(ForestTrust);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          settings: S.optional(__S(14)),
+          settings: S.optional(ResourceForestSettingsSettingsList),
           resourceForest: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceForestSettings" });
@@ -1250,15 +1611,15 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ntlmV1: S.optional(S.String),
-          tlsV1: S.optional(S.String),
-          syncNtlmPasswords: S.optional(S.String),
-          syncKerberosPasswords: S.optional(S.String),
-          syncOnPremPasswords: S.optional(S.String),
-          kerberosRc4Encryption: S.optional(S.String),
-          kerberosArmoring: S.optional(S.String),
-          ldapSigning: S.optional(S.String),
-          channelBinding: S.optional(S.String),
+          ntlmV1: S.optional(DomainSecuritySettingsNtlmV1),
+          tlsV1: S.optional(DomainSecuritySettingsTlsV1),
+          syncNtlmPasswords: S.optional(DomainSecuritySettingsSyncNtlmPasswords),
+          syncKerberosPasswords: S.optional(DomainSecuritySettingsSyncKerberosPasswords),
+          syncOnPremPasswords: S.optional(DomainSecuritySettingsSyncOnPremPasswords),
+          kerberosRc4Encryption: S.optional(DomainSecuritySettingsKerberosRc4Encryption),
+          kerberosArmoring: S.optional(DomainSecuritySettingsKerberosArmoring),
+          ldapSigning: S.optional(DomainSecuritySettingsLdapSigning),
+          channelBinding: S.optional(DomainSecuritySettingsChannelBinding),
         }),
       ).annotate({ identifier: "DomainSecuritySettings" });
     case 1:
@@ -1266,40 +1627,40 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          notifyGlobalAdmins: S.optional(S.String),
-          notifyDcAdmins: S.optional(S.String),
-          additionalRecipients: S.optional(__S(17)),
+          notifyGlobalAdmins: S.optional(NotificationSettingsNotifyGlobalAdmins),
+          notifyDcAdmins: S.optional(NotificationSettingsNotifyDcAdmins),
+          additionalRecipients: S.optional(NotificationSettingsAdditionalRecipientsList),
         }),
       ).annotate({ identifier: "NotificationSettings" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          descriptionParams: S.optional(__S(17)),
+          descriptionParams: S.optional(ConfigDiagnosticsValidatorResultIssueDescriptionParamsList),
         }),
       ).annotate({
         identifier: "ConfigDiagnosticsValidatorResultIssue",
       });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(ConfigDiagnosticsValidatorResultIssue);
     case 5:
       return S.suspend(() =>
         S.Struct({
           validatorId: S.optional(S.String),
           replicaSetSubnetDisplayName: S.optional(S.String),
-          status: S.optional(S.String),
-          issues: S.optional(__S(20)),
+          status: S.optional(ConfigDiagnosticsValidatorResultStatus),
+          issues: S.optional(ConfigDiagnosticsValidatorResultIssuesList),
         }),
       ).annotate({
         identifier: "ConfigDiagnosticsValidatorResult",
       });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(ConfigDiagnosticsValidatorResult);
     case 7:
       return S.suspend(() =>
         S.Struct({
           lastExecuted: S.optional(S.String),
-          validatorResults: S.optional(__S(22)),
+          validatorResults: S.optional(ConfigDiagnosticsValidatorResultsList),
         }),
       ).annotate({ identifier: "ConfigDiagnostics" });
   }
@@ -1310,16 +1671,16 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
-          replicaSets: S.optional(__S(11)),
-          ldapsSettings: S.optional(__S(12)),
-          resourceForestSettings: S.optional(__S(15)),
-          domainSecuritySettings: S.optional(__S(16)),
+          replicaSets: S.optional(DomainServicePropertiesInputReplicaSetsList),
+          ldapsSettings: S.optional(LdapsSettingsInput),
+          resourceForestSettings: S.optional(ResourceForestSettings),
+          domainSecuritySettings: S.optional(DomainSecuritySettings),
           domainConfigurationType: S.optional(S.String),
           sku: S.optional(S.String),
-          filteredSync: S.optional(S.String),
-          syncScope: S.optional(S.String),
-          notificationSettings: S.optional(__S(18)),
-          configDiagnostics: S.optional(__S(23)),
+          filteredSync: S.optional(DomainServicePropertiesInputFilteredSync),
+          syncScope: S.optional(DomainServicePropertiesInputSyncScope),
+          notificationSettings: S.optional(NotificationSettings),
+          configDiagnostics: S.optional(ConfigDiagnostics),
         }),
       ).annotate({
         identifier: "DomainServicePropertiesInput",
@@ -1331,9 +1692,9 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           domainServiceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(1)),
+          tags: S.optional(DomainServicesCreateOrUpdateRequestTagsMap),
           etag: S.optional(S.String),
-          properties: S.optional(__S(24)),
+          properties: S.optional(DomainServicePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1349,10 +1710,12 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(DomainServicesCreateOrUpdateResponseSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(
+            DomainServicesCreateOrUpdateResponseSystemDataLastModifiedByType,
+          ),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -1367,7 +1730,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "HealthMonitor" });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(HealthMonitor);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1381,7 +1744,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "HealthAlert" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(HealthAlert);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1389,12 +1752,12 @@ function __c3(j: number): any {
           location: S.optional(S.String),
           vnetSiteId: S.optional(S.String),
           subnetId: S.optional(S.String),
-          domainControllerIpAddress: S.optional(__S(17)),
+          domainControllerIpAddress: S.optional(ReplicaSetDomainControllerIpAddressList),
           externalAccessIpAddress: S.optional(S.String),
           serviceStatus: S.optional(S.String),
           healthLastEvaluated: S.optional(S.String),
-          healthMonitors: S.optional(__S(28)),
-          healthAlerts: S.optional(__S(30)),
+          healthMonitors: S.optional(ReplicaSetHealthMonitorsList),
+          healthAlerts: S.optional(ReplicaSetHealthAlertsList),
         }),
       ).annotate({ identifier: "ReplicaSet" });
   }
@@ -1402,17 +1765,17 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(ReplicaSet);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ldaps: S.optional(S.String),
+          ldaps: S.optional(LdapsSettingsLdaps),
           pfxCertificate: S.optional(S.String),
           pfxCertificatePassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
           publicCertificate: S.optional(S.String),
           certificateThumbprint: S.optional(S.String),
           certificateNotAfter: S.optional(S.String),
-          externalAccess: S.optional(S.String),
+          externalAccess: S.optional(LdapsSettingsExternalAccess),
         }),
       ).annotate({ identifier: "LdapsSettings" });
     case 2:
@@ -1427,7 +1790,7 @@ function __c4(j: number): any {
         S.Struct({
           oldSubnetId: S.optional(S.String),
           oldVnetSiteId: S.optional(S.String),
-          migrationProgress: S.optional(__S(34)),
+          migrationProgress: S.optional(MigrationProgress),
         }),
       ).annotate({ identifier: "MigrationProperties" });
     case 4:
@@ -1439,18 +1802,18 @@ function __c4(j: number): any {
           deploymentId: S.optional(S.String),
           syncOwner: S.optional(S.String),
           syncApplicationId: S.optional(S.String),
-          replicaSets: S.optional(__S(32)),
-          ldapsSettings: S.optional(__S(33)),
-          resourceForestSettings: S.optional(__S(15)),
-          domainSecuritySettings: S.optional(__S(16)),
+          replicaSets: S.optional(DomainServicePropertiesReplicaSetsList),
+          ldapsSettings: S.optional(LdapsSettings),
+          resourceForestSettings: S.optional(ResourceForestSettings),
+          domainSecuritySettings: S.optional(DomainSecuritySettings),
           domainConfigurationType: S.optional(S.String),
           sku: S.optional(S.String),
-          filteredSync: S.optional(S.String),
-          syncScope: S.optional(S.String),
-          notificationSettings: S.optional(__S(18)),
-          migrationProperties: S.optional(__S(35)),
+          filteredSync: S.optional(DomainServicePropertiesFilteredSync),
+          syncScope: S.optional(DomainServicePropertiesSyncScope),
+          notificationSettings: S.optional(NotificationSettings),
+          migrationProperties: S.optional(MigrationProperties),
           provisioningState: S.optional(S.String),
-          configDiagnostics: S.optional(__S(23)),
+          configDiagnostics: S.optional(ConfigDiagnostics),
         }),
       ).annotate({ identifier: "DomainServiceProperties" });
     case 5:
@@ -1460,10 +1823,10 @@ function __c4(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(1)),
+          tags: S.optional(DomainServicesCreateOrUpdateResponseTagsMap),
           etag: S.optional(S.String),
-          systemData: S.optional(__S(26)),
-          properties: S.optional(__S(36)),
+          systemData: S.optional(DomainServicesCreateOrUpdateResponseSystemData),
+          properties: S.optional(DomainServiceProperties),
         }),
       ).annotate({
         identifier: "DomainServicesCreateOrUpdateResponse",
@@ -1490,10 +1853,10 @@ function __c4(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(1)),
+          tags: S.optional(GetDomainServiceResponseTagsMap),
           etag: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(36)),
+          systemData: S.optional(GetDomainServiceResponseSystemData),
+          properties: S.optional(DomainServiceProperties),
         }),
       ).annotate({ identifier: "GetDomainServiceResponse" });
   }
@@ -1523,10 +1886,10 @@ function __c5(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(1)),
+          tags: S.optional(GetOuContainerResponseTagsMap),
           etag: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(5)),
+          systemData: S.optional(GetOuContainerResponseSystemData),
+          properties: S.optional(OuContainerProperties),
         }),
       ).annotate({ identifier: "GetOuContainerResponse" });
     case 2:
@@ -1549,10 +1912,10 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(DomainServiceSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(DomainServiceSystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainServiceSystemData" });
@@ -1563,18 +1926,18 @@ function __c5(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(1)),
+          tags: S.optional(DomainServiceTagsMap),
           etag: S.optional(S.String),
-          systemData: S.optional(__S(43)),
-          properties: S.optional(__S(36)),
+          systemData: S.optional(DomainServiceSystemData),
+          properties: S.optional(DomainServiceProperties),
         }),
       ).annotate({ identifier: "DomainService" });
     case 5:
-      return S.Array(__S(44));
+      return S.Array(DomainService);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(45)),
+          value: S.optional(DomainServiceListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainServiceListResult" });
@@ -1608,16 +1971,16 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(48)),
+          display: S.optional(OperationDisplayInfo),
           origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationEntity" });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(OperationEntity);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(50)),
+          value: S.optional(OperationEntityListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1660,14 +2023,14 @@ function __c6(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(1)),
+          tags: S.optional(OuContainerTagsMap),
           etag: S.optional(S.String),
-          systemData: S.optional(__S(43)),
-          properties: S.optional(__S(5)),
+          systemData: S.optional(OuContainerSystemData),
+          properties: S.optional(OuContainerProperties),
         }),
       ).annotate({ identifier: "OuContainer" });
     case 7:
-      return S.Array(__S(54));
+      return S.Array(OuContainer);
   }
 }
 function __c7(j: number): any {
@@ -1675,7 +2038,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(55)),
+          value: S.optional(OuContainerListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OuContainerListResult" });
@@ -1699,9 +2062,9 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           domainServiceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(1)),
+          tags: S.optional(UpdateDomainServiceRequestTagsMap),
           etag: S.optional(S.String),
-          properties: S.optional(__S(24)),
+          properties: S.optional(DomainServicePropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1720,10 +2083,10 @@ function __c7(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(1)),
+          tags: S.optional(UpdateDomainServiceResponseTagsMap),
           etag: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(36)),
+          systemData: S.optional(UpdateDomainServiceResponseSystemData),
+          properties: S.optional(DomainServiceProperties),
         }),
       ).annotate({
         identifier: "UpdateDomainServiceResponse",
@@ -1754,38 +2117,13 @@ function __c7(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(1)),
+          tags: S.optional(UpdateOuContainerResponseTagsMap),
           etag: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(5)),
+          systemData: S.optional(UpdateOuContainerResponseSystemData),
+          properties: S.optional(OuContainerProperties),
         }),
       ).annotate({
         identifier: "UpdateOuContainerResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
   }
 }

@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -55,8 +53,15 @@ export interface CreateAppBuildRequestAttachment {
   /** The tag of an already-uploaded file. */
   id?: string;
 }
+const CreateAppBuildRequestAttachment = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateAppBuildRequestAttachment>;
+
 /** The target platform for the build. */
 export type CreateAppBuildRequestPlatform = "ios" | "android" | "web";
+const CreateAppBuildRequestPlatform = S.String;
+
 /** An optional compressed archive (.zip or .gz) of the source code that produced this build, stored alongside the build so it can be downloaded later. Referenced like `attachment`, and must be a different file. */
 export type CreateAppBuildRequestSourceAttachment = CreateAppBuildRequestAttachment;
 export type CreateAppBuildRequestSupportedAppViewTypesItem =
@@ -67,10 +72,17 @@ export type CreateAppBuildRequestSupportedAppViewTypesItem =
   | "analytics"
   | "skills"
   | "openapi";
+const CreateAppBuildRequestSupportedAppViewTypesItem = S.String;
+
 /** The view types this build supports. Only list the ones its code implements. */
 export type CreateAppBuildRequestSupportedAppViewTypesList = Array<
   CreateAppBuildRequestSupportedAppViewTypesItem | (string & {})
 >;
+const CreateAppBuildRequestSupportedAppViewTypesList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateAppBuildRequestSupportedAppViewTypesList>;
+
 export interface CreateAppBuildRequest {
   /** The AI prompt that generated this build, if applicable. */
   ai_prompt_id?: string;
@@ -89,10 +101,19 @@ export interface CreateAppBuildRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const CreateAppBuildRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateAppBuildRequest>;
+
 /** The target platform for this build. */
 export type AppBuildPlatform = "ios" | "android" | "web";
+const AppBuildPlatform = S.String;
+
 /** The build's review status. */
 export type AppBuildStatus = "draft" | "pending" | "approved" | "rejected";
+const AppBuildStatus = S.String;
+
 /** The view types this build supports, as declared by the developer. */
 export type AppBuildSupportedAppViewTypesItem =
   | "hub"
@@ -103,6 +124,9 @@ export type AppBuildSupportedAppViewTypesItem =
   | "skills"
   | "openapi";
 export type AppBuildSupportedAppViewTypesList = Array<AppBuildSupportedAppViewTypesItem>;
+const AppBuildSupportedAppViewTypesList =
+  CreateAppBuildRequestSupportedAppViewTypesList as any as S.Schema<AppBuildSupportedAppViewTypesList>;
+
 export interface AppBuild {
   /** Client-generated checksum of the build file, used to verify file integrity. */
   checksum: string;
@@ -124,12 +148,20 @@ export interface AppBuild {
   status: AppBuildStatus;
   supported_app_view_types: AppBuildSupportedAppViewTypesList;
 }
+const AppBuild = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AppBuild>;
+
 export interface GetAppBuildRequest {
   /** App build ID, prefixed `abld_`. */
   id: string;
 }
+const GetAppBuildRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetAppBuildRequest>;
+
 export type ListAppBuildsRequestPlatform = "ios" | "android" | "web";
+const ListAppBuildsRequestPlatform = S.String;
+
 export type ListAppBuildsRequestStatus = "draft" | "pending" | "approved" | "rejected";
+const ListAppBuildsRequestStatus = S.String;
+
 export interface ListAppBuildsRequest {
   /** The app to list builds for, prefixed `app_`. */
   app_id: string;
@@ -150,23 +182,45 @@ export interface ListAppBuildsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
+const ListAppBuildsRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ListAppBuildsRequest>;
+
 export type ListAppBuildsResponseDataList = Array<AppBuild>;
+const ListAppBuildsResponseDataList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListAppBuildsResponseDataList>;
+
 export interface ListAppBuildsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
+const ListAppBuildsResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListAppBuildsResponsePageInfo>;
+
 export interface ListAppBuildsResponse {
   data: ListAppBuildsResponseDataList;
   page_info: ListAppBuildsResponsePageInfo;
 }
+const ListAppBuildsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListAppBuildsResponse>;
+
 export interface PromoteAppBuildRequest {
   /** App build ID, prefixed `abld_`. */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const PromoteAppBuildRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<PromoteAppBuildRequest>;
+
 export type CreateAppBuildError = BadRequest | Forbidden | Conflict | WhopOpError;
 /** Create App Build Uploads a new build artifact for an app. Upload the file first (POST /files or a direct upload), then reference it here; iOS and Android take a .zip bundle, web takes a JavaScript file or a .zip archive of the hosted site. */
 export const createAppBuild: API.OperationMethod<
@@ -175,8 +229,8 @@ export const createAppBuild: API.OperationMethod<
   CreateAppBuildError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateAppBuildRequest>,
-  output: __S(3) as any as S.Schema<AppBuild>,
+  input: CreateAppBuildRequest,
+  output: AppBuild,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -190,8 +244,8 @@ export const getAppBuild: API.OperationMethod<
   GetAppBuildError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetAppBuildRequest>,
-  output: __S(3) as any as S.Schema<AppBuild>,
+  input: GetAppBuildRequest,
+  output: AppBuild,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -207,8 +261,8 @@ export const listAppBuilds: API.PaginatedOperationMethod<
   AppBuild
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(5) as any as S.Schema<ListAppBuildsRequest>,
-    output: __S(8) as any as S.Schema<ListAppBuildsResponse>,
+    input: ListAppBuildsRequest,
+    output: ListAppBuildsResponse,
     errors: [BadRequest, Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -232,8 +286,8 @@ export const promoteAppBuild: API.OperationMethod<
   PromoteAppBuildError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<PromoteAppBuildRequest>,
-  output: __S(3) as any as S.Schema<AppBuild>,
+  input: PromoteAppBuildRequest,
+  output: AppBuild,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -252,17 +306,17 @@ function __c0(j: number): any {
         identifier: "CreateAppBuildRequestAttachment",
       });
     case 1:
-      return S.Array(S.String);
+      return S.Array(CreateAppBuildRequestSupportedAppViewTypesItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           ai_prompt_id: S.optional(S.String),
           app_id: S.optional(S.String),
-          attachment: __S(0),
+          attachment: CreateAppBuildRequestAttachment,
           checksum: S.String,
-          platform: S.String,
-          source_attachment: S.optional(__S(0)),
-          supported_app_view_types: S.optional(__S(1)),
+          platform: CreateAppBuildRequestPlatform,
+          source_attachment: S.optional(CreateAppBuildRequestAttachment),
+          supported_app_view_types: S.optional(CreateAppBuildRequestSupportedAppViewTypesList),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/app_builds", code: 200 })),
       ).annotate({ identifier: "CreateAppBuildRequest" });
@@ -274,11 +328,11 @@ function __c0(j: number): any {
           file_url: S.NullOr(S.String),
           id: S.String,
           is_production: S.Boolean,
-          platform: S.String,
+          platform: AppBuildPlatform,
           review_message: S.NullOr(S.String),
           source_url: S.NullOr(S.String),
-          status: S.String,
-          supported_app_view_types: __S(1),
+          status: AppBuildStatus,
+          supported_app_view_types: AppBuildSupportedAppViewTypesList,
         }),
       ).annotate({ identifier: "AppBuild" });
     case 4:
@@ -291,8 +345,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           app_id: S.String.pipe(T.Query()),
-          platform: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          platform: S.optional(ListAppBuildsRequestPlatform.pipe(T.Query())),
+          status: S.optional(ListAppBuildsRequestStatus.pipe(T.Query())),
           created_before: S.optional(S.Unknown.pipe(T.Query())),
           created_after: S.optional(S.Unknown.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
@@ -302,7 +356,7 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/app_builds", code: 200 })),
       ).annotate({ identifier: "ListAppBuildsRequest" });
     case 6:
-      return S.Array(__S(3));
+      return S.Array(AppBuild);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -321,8 +375,8 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: __S(6),
-          page_info: __S(7),
+          data: ListAppBuildsResponseDataList,
+          page_info: ListAppBuildsResponsePageInfo,
         }),
       ).annotate({ identifier: "ListAppBuildsResponse" });
     case 1:
@@ -332,18 +386,5 @@ function __c1(j: number): any {
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/app_builds/{id}/promote", code: 200 })),
       ).annotate({ identifier: "PromoteAppBuildRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

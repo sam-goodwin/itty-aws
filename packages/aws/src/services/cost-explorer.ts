@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Cost Explorer",
   serviceShapeName: "AWSInsightsIndexService",
@@ -283,13 +281,18 @@ export class UnresolvableUsageUnitException
   ) {}
 export type YearMonthDay = string;
 export type MonitorType = "DIMENSIONAL" | "CUSTOM" | (string & {});
+const MonitorType = S.String;
+
 export type MonitorDimension =
   | "SERVICE"
   | "LINKED_ACCOUNT"
   | "TAG"
   | "COST_CATEGORY"
   | (string & {});
+const MonitorDimension = S.String;
+
 export type Expressions = Expression[];
+const Expressions = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Expressions>;
 export type Dimension =
   | "AZ"
   | "INSTANCE_TYPE"
@@ -327,8 +330,11 @@ export type Dimension =
   | "ANOMALY_TOTAL_IMPACT_ABSOLUTE"
   | "ANOMALY_TOTAL_IMPACT_PERCENTAGE"
   | (string & {});
+const Dimension = S.String;
+
 export type Value = string;
 export type Values = string[];
+const Values = /*@__PURE__*/ __L.at(__c0, 1);
 export type MatchOption =
   | "EQUALS"
   | "ABSENT"
@@ -339,24 +345,30 @@ export type MatchOption =
   | "CASE_INSENSITIVE"
   | "GREATER_THAN_OR_EQUAL"
   | (string & {});
+const MatchOption = S.String;
+
 export type MatchOptions = MatchOption[];
+const MatchOptions = /*@__PURE__*/ __L.at(__c0, 2);
 export interface DimensionValues {
   Key?: Dimension;
   Values?: string[];
   MatchOptions?: MatchOption[];
 }
+const DimensionValues = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DimensionValues>;
 export type TagKey = string;
 export interface TagValues {
   Key?: string;
   Values?: string[];
   MatchOptions?: MatchOption[];
 }
+const TagValues = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<TagValues>;
 export type CostCategoryName = string;
 export interface CostCategoryValues {
   Key?: string;
   Values?: string[];
   MatchOptions?: MatchOption[];
 }
+const CostCategoryValues = TagValues as any as S.Schema<CostCategoryValues>;
 export interface Expression {
   Or?: Expression[];
   And?: Expression[];
@@ -365,6 +377,7 @@ export interface Expression {
   Tags?: TagValues;
   CostCategories?: CostCategoryValues;
 }
+const Expression = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Expression>;
 export type NonNegativeInteger = number;
 export interface AnomalyMonitor {
   MonitorArn?: string;
@@ -377,33 +390,53 @@ export interface AnomalyMonitor {
   MonitorSpecification?: Expression;
   DimensionalValueCount?: number;
 }
+const AnomalyMonitor = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AnomalyMonitor>;
 export type ResourceTagKey = string;
 export type ResourceTagValue = string;
 export interface ResourceTag {
   Key: string;
   Value: string;
 }
+const ResourceTag = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ResourceTag>;
 export type ResourceTagList = ResourceTag[];
+const ResourceTagList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface CreateAnomalyMonitorRequest {
   AnomalyMonitor: AnomalyMonitor;
   ResourceTags?: ResourceTag[];
 }
+const CreateAnomalyMonitorRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateAnomalyMonitorRequest>;
 export interface CreateAnomalyMonitorResponse {
   MonitorArn: string;
 }
+const CreateAnomalyMonitorResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateAnomalyMonitorResponse>;
 export type Arn = string;
 export type MonitorArnList = string[];
+const MonitorArnList = Values as any as S.Schema<MonitorArnList>;
 export type SubscriberAddress = string;
 export type SubscriberType = "EMAIL" | "SNS" | (string & {});
+const SubscriberType = S.String;
+
 export type SubscriberStatus = "CONFIRMED" | "DECLINED" | (string & {});
+const SubscriberStatus = S.String;
+
 export interface Subscriber {
   Address?: string;
   Type?: SubscriberType;
   Status?: SubscriberStatus;
 }
+const Subscriber = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Subscriber>;
 export type Subscribers = Subscriber[];
+const Subscribers = /*@__PURE__*/ __L.at(__c1, 4);
 export type NullableNonNegativeDouble = number;
 export type AnomalySubscriptionFrequency = "DAILY" | "IMMEDIATE" | "WEEKLY" | (string & {});
+const AnomalySubscriptionFrequency = S.String;
+
 export interface AnomalySubscription {
   SubscriptionArn?: string;
   AccountId?: string;
@@ -414,45 +447,84 @@ export interface AnomalySubscription {
   SubscriptionName: string;
   ThresholdExpression?: Expression;
 }
+const AnomalySubscription = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AnomalySubscription>;
 export interface CreateAnomalySubscriptionRequest {
   AnomalySubscription: AnomalySubscription;
   ResourceTags?: ResourceTag[];
 }
+const CreateAnomalySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateAnomalySubscriptionRequest>;
 export interface CreateAnomalySubscriptionResponse {
   SubscriptionArn: string;
 }
+const CreateAnomalySubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateAnomalySubscriptionResponse>;
 export type ZonedDateTime = string;
 export type CostCategoryRuleVersion = "CostCategoryExpression.v1" | (string & {});
+const CostCategoryRuleVersion = S.String;
+
 export type CostCategoryValue = string;
 export type CostCategoryInheritedValueDimensionName = "LINKED_ACCOUNT_NAME" | "TAG" | (string & {});
+const CostCategoryInheritedValueDimensionName = S.String;
+
 export interface CostCategoryInheritedValueDimension {
   DimensionName?: CostCategoryInheritedValueDimensionName;
   DimensionKey?: string;
 }
+const CostCategoryInheritedValueDimension = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CostCategoryInheritedValueDimension>;
 export type CostCategoryRuleType = "REGULAR" | "INHERITED_VALUE" | (string & {});
+const CostCategoryRuleType = S.String;
+
 export interface CostCategoryRule {
   Value?: string;
   Rule?: Expression;
   InheritedValue?: CostCategoryInheritedValueDimension;
   Type?: CostCategoryRuleType;
 }
+const CostCategoryRule = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<CostCategoryRule>;
 export type CostCategoryRulesList = CostCategoryRule[];
+const CostCategoryRulesList = /*@__PURE__*/ __L.at(__c2, 2);
 export type CostCategorySplitChargeRuleTargetsList = string[];
+const CostCategorySplitChargeRuleTargetsList =
+  Values as any as S.Schema<CostCategorySplitChargeRuleTargetsList>;
 export type CostCategorySplitChargeMethod = "FIXED" | "PROPORTIONAL" | "EVEN" | (string & {});
+const CostCategorySplitChargeMethod = S.String;
+
 export type CostCategorySplitChargeRuleParameterType = "ALLOCATION_PERCENTAGES" | (string & {});
+const CostCategorySplitChargeRuleParameterType = S.String;
+
 export type CostCategorySplitChargeRuleParameterValuesList = string[];
+const CostCategorySplitChargeRuleParameterValuesList =
+  Values as any as S.Schema<CostCategorySplitChargeRuleParameterValuesList>;
 export interface CostCategorySplitChargeRuleParameter {
   Type: CostCategorySplitChargeRuleParameterType;
   Values: string[];
 }
+const CostCategorySplitChargeRuleParameter = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CostCategorySplitChargeRuleParameter>;
 export type CostCategorySplitChargeRuleParametersList = CostCategorySplitChargeRuleParameter[];
+const CostCategorySplitChargeRuleParametersList = /*@__PURE__*/ __L.at(__c2, 4);
 export interface CostCategorySplitChargeRule {
   Source: string;
   Targets: string[];
   Method: CostCategorySplitChargeMethod;
   Parameters?: CostCategorySplitChargeRuleParameter[];
 }
+const CostCategorySplitChargeRule = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CostCategorySplitChargeRule>;
 export type CostCategorySplitChargeRulesList = CostCategorySplitChargeRule[];
+const CostCategorySplitChargeRulesList = /*@__PURE__*/ __L.at(__c2, 6);
 export interface CreateCostCategoryDefinitionRequest {
   Name: string;
   EffectiveStart?: string;
@@ -462,36 +534,81 @@ export interface CreateCostCategoryDefinitionRequest {
   SplitChargeRules?: CostCategorySplitChargeRule[];
   ResourceTags?: ResourceTag[];
 }
+const CreateCostCategoryDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateCostCategoryDefinitionRequest>;
 export interface CreateCostCategoryDefinitionResponse {
   CostCategoryArn?: string;
   EffectiveStart?: string;
 }
+const CreateCostCategoryDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateCostCategoryDefinitionResponse>;
 export interface DeleteAnomalyMonitorRequest {
   MonitorArn: string;
 }
+const DeleteAnomalyMonitorRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DeleteAnomalyMonitorRequest>;
 export interface DeleteAnomalyMonitorResponse {}
+const DeleteAnomalyMonitorResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DeleteAnomalyMonitorResponse>;
 export interface DeleteAnomalySubscriptionRequest {
   SubscriptionArn: string;
 }
+const DeleteAnomalySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DeleteAnomalySubscriptionRequest>;
 export interface DeleteAnomalySubscriptionResponse {}
+const DeleteAnomalySubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DeleteAnomalySubscriptionResponse>;
 export interface DeleteCostCategoryDefinitionRequest {
   CostCategoryArn: string;
 }
+const DeleteCostCategoryDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DeleteCostCategoryDefinitionRequest>;
 export interface DeleteCostCategoryDefinitionResponse {
   CostCategoryArn?: string;
   EffectiveEnd?: string;
 }
+const DeleteCostCategoryDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DeleteCostCategoryDefinitionResponse>;
 export interface DescribeCostCategoryDefinitionRequest {
   CostCategoryArn: string;
   EffectiveOn?: string;
 }
+const DescribeCostCategoryDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DescribeCostCategoryDefinitionRequest>;
 export type CostCategoryStatusComponent = "COST_EXPLORER" | (string & {});
+const CostCategoryStatusComponent = S.String;
+
 export type CostCategoryStatus = "PROCESSING" | "APPLIED" | (string & {});
+const CostCategoryStatus = S.String;
+
 export interface CostCategoryProcessingStatus {
   Component?: CostCategoryStatusComponent;
   Status?: CostCategoryStatus;
 }
+const CostCategoryProcessingStatus = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CostCategoryProcessingStatus>;
 export type CostCategoryProcessingStatusList = CostCategoryProcessingStatus[];
+const CostCategoryProcessingStatusList = /*@__PURE__*/ __L.at(__c4, 1);
 export interface CostCategory {
   CostCategoryArn: string;
   EffectiveStart: string;
@@ -503,14 +620,22 @@ export interface CostCategory {
   ProcessingStatus?: CostCategoryProcessingStatus[];
   DefaultValue?: string;
 }
+const CostCategory = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<CostCategory>;
 export interface DescribeCostCategoryDefinitionResponse {
   CostCategory?: CostCategory;
 }
+const DescribeCostCategoryDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<DescribeCostCategoryDefinitionResponse>;
 export interface AnomalyDateInterval {
   StartDate: string;
   EndDate?: string;
 }
+const AnomalyDateInterval = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<AnomalyDateInterval>;
 export type AnomalyFeedbackType = "YES" | "NO" | "PLANNED_ACTIVITY" | (string & {});
+const AnomalyFeedbackType = S.String;
+
 export type NumericOperator =
   | "EQUAL"
   | "GREATER_THAN_OR_EQUAL"
@@ -519,11 +644,14 @@ export type NumericOperator =
   | "LESS_THAN"
   | "BETWEEN"
   | (string & {});
+const NumericOperator = S.String;
+
 export interface TotalImpactFilter {
   NumericOperator: NumericOperator;
   StartValue: number;
   EndValue?: number;
 }
+const TotalImpactFilter = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<TotalImpactFilter>;
 export type NextPageToken = string;
 export type PageSize = number;
 export interface GetAnomaliesRequest {
@@ -534,9 +662,11 @@ export interface GetAnomaliesRequest {
   NextPageToken?: string;
   MaxResults?: number;
 }
+const GetAnomaliesRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<GetAnomaliesRequest>;
 export interface RootCauseImpact {
   Contribution: number;
 }
+const RootCauseImpact = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<RootCauseImpact>;
 export interface RootCause {
   Service?: string;
   Region?: string;
@@ -545,11 +675,14 @@ export interface RootCause {
   UsageType?: string;
   Impact?: RootCauseImpact;
 }
+const RootCause = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<RootCause>;
 export type RootCauses = RootCause[];
+const RootCauses = /*@__PURE__*/ __L.at(__c5, 1);
 export interface AnomalyScore {
   MaxScore: number;
   CurrentScore: number;
 }
+const AnomalyScore = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<AnomalyScore>;
 export interface Impact {
   MaxImpact: number;
   TotalImpact?: number;
@@ -557,6 +690,7 @@ export interface Impact {
   TotalExpectedSpend?: number;
   TotalImpactPercentage?: number;
 }
+const Impact = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Impact>;
 export interface Anomaly {
   AnomalyId: string;
   AnomalyStartDate?: string;
@@ -568,56 +702,98 @@ export interface Anomaly {
   MonitorArn: string;
   Feedback?: AnomalyFeedbackType;
 }
+const Anomaly = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<Anomaly>;
 export type Anomalies = Anomaly[];
+const Anomalies = /*@__PURE__*/ __L.at(__c5, 5);
 export interface GetAnomaliesResponse {
   Anomalies: Anomaly[];
   NextPageToken?: string;
 }
+const GetAnomaliesResponse = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<GetAnomaliesResponse>;
 export interface GetAnomalyMonitorsRequest {
   MonitorArnList?: string[];
   NextPageToken?: string;
   MaxResults?: number;
 }
+const GetAnomalyMonitorsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetAnomalyMonitorsRequest>;
 export type AnomalyMonitors = AnomalyMonitor[];
+const AnomalyMonitors = /*@__PURE__*/ __L.at(__c6, 0);
 export interface GetAnomalyMonitorsResponse {
   AnomalyMonitors: AnomalyMonitor[];
   NextPageToken?: string;
 }
+const GetAnomalyMonitorsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetAnomalyMonitorsResponse>;
 export interface GetAnomalySubscriptionsRequest {
   SubscriptionArnList?: string[];
   MonitorArn?: string;
   NextPageToken?: string;
   MaxResults?: number;
 }
+const GetAnomalySubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<GetAnomalySubscriptionsRequest>;
 export type AnomalySubscriptions = AnomalySubscription[];
+const AnomalySubscriptions = /*@__PURE__*/ __L.at(__c6, 3);
 export interface GetAnomalySubscriptionsResponse {
   AnomalySubscriptions: AnomalySubscription[];
   NextPageToken?: string;
 }
+const GetAnomalySubscriptionsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GetAnomalySubscriptionsResponse>;
 export type Granularity = "DAILY" | "MONTHLY" | "HOURLY" | (string & {});
+const Granularity = S.String;
+
 export type UsageServices = string[];
+const UsageServices = Values as any as S.Schema<UsageServices>;
 export type ApproximationDimension = "SERVICE" | "RESOURCE" | (string & {});
+const ApproximationDimension = S.String;
+
 export interface GetApproximateUsageRecordsRequest {
   Granularity: Granularity;
   Services?: string[];
   ApproximationDimension: ApproximationDimension;
 }
+const GetApproximateUsageRecordsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GetApproximateUsageRecordsRequest>;
 export type NonNegativeLong = number;
 export type ApproximateUsageRecordsPerService = { [key: string]: number | undefined };
+const ApproximateUsageRecordsPerService = /*@__PURE__*/ __L.at(__c6, 6);
 export interface DateInterval {
   Start: string;
   End: string;
 }
+const DateInterval = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<DateInterval>;
 export interface GetApproximateUsageRecordsResponse {
   Services?: { [key: string]: number | undefined };
   TotalRecords?: number;
   LookbackPeriod?: DateInterval;
 }
+const GetApproximateUsageRecordsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<GetApproximateUsageRecordsResponse>;
 export type AnalysisId = string;
 export interface GetCommitmentPurchaseAnalysisRequest {
   AnalysisId: string;
 }
+const GetCommitmentPurchaseAnalysisRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GetCommitmentPurchaseAnalysisRequest>;
 export type AnalysisStatus = "SUCCEEDED" | "PROCESSING" | "FAILED" | (string & {});
+const AnalysisStatus = S.String;
+
 export type ErrorCode =
   | "NO_USAGE_FOUND"
   | "INTERNAL_FAILURE"
@@ -625,6 +801,8 @@ export type ErrorCode =
   | "INVALID_SAVINGS_PLANS_TO_EXCLUDE"
   | "INVALID_ACCOUNT_ID"
   | (string & {});
+const ErrorCode = S.String;
+
 export interface RecommendationDetailHourlyMetrics {
   StartTime?: string;
   EstimatedOnDemandCost?: string;
@@ -632,7 +810,12 @@ export interface RecommendationDetailHourlyMetrics {
   EstimatedCoverage?: string;
   EstimatedNewCommitmentUtilization?: string;
 }
+const RecommendationDetailHourlyMetrics = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<RecommendationDetailHourlyMetrics>;
 export type MetricsOverLookbackPeriod = RecommendationDetailHourlyMetrics[];
+const MetricsOverLookbackPeriod = /*@__PURE__*/ __L.at(__c7, 3);
 export interface SavingsPlansPurchaseAnalysisDetails {
   CurrencyCode?: string;
   LookbackPeriodInHours?: string;
@@ -657,16 +840,25 @@ export interface SavingsPlansPurchaseAnalysisDetails {
   AdditionalMetadata?: string;
   MetricsOverLookbackPeriod?: RecommendationDetailHourlyMetrics[];
 }
+const SavingsPlansPurchaseAnalysisDetails = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<SavingsPlansPurchaseAnalysisDetails>;
 export interface AnalysisDetails {
   SavingsPlansPurchaseAnalysisDetails?: SavingsPlansPurchaseAnalysisDetails;
 }
+const AnalysisDetails = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<AnalysisDetails>;
 export type AccountScope = "PAYER" | "LINKED" | (string & {});
+const AccountScope = S.String;
+
 export type AccountId = string;
 export type AnalysisType =
   | "MAX_SAVINGS"
   | "CUSTOM_COMMITMENT"
   | "TARGET_AVERAGE_COVERAGE"
   | (string & {});
+const AnalysisType = S.String;
+
 export type PaymentOption =
   | "NO_UPFRONT"
   | "PARTIAL_UPFRONT"
@@ -675,13 +867,19 @@ export type PaymentOption =
   | "MEDIUM_UTILIZATION"
   | "HEAVY_UTILIZATION"
   | (string & {});
+const PaymentOption = S.String;
+
 export type SupportedSavingsPlansType =
   | "COMPUTE_SP"
   | "EC2_INSTANCE_SP"
   | "SAGEMAKER_SP"
   | "DATABASE_SP"
   | (string & {});
+const SupportedSavingsPlansType = S.String;
+
 export type TermInYears = "ONE_YEAR" | "THREE_YEARS" | (string & {});
+const TermInYears = S.String;
+
 export type SavingsPlansCommitment = number;
 export interface SavingsPlans {
   PaymentOption?: PaymentOption;
@@ -692,9 +890,12 @@ export interface SavingsPlans {
   SavingsPlansCommitment?: number;
   OfferingId?: string;
 }
+const SavingsPlans = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<SavingsPlans>;
 export type SavingsPlansToAdd = SavingsPlans[];
+const SavingsPlansToAdd = /*@__PURE__*/ __L.at(__c7, 7);
 export type SavingsPlansId = string;
 export type SavingsPlansToExclude = string[];
+const SavingsPlansToExclude = Values as any as S.Schema<SavingsPlansToExclude>;
 export type SavingsPlansTargetCoverage = number;
 export interface SavingsPlansPurchaseAnalysisConfiguration {
   AccountScope?: AccountScope;
@@ -705,9 +906,17 @@ export interface SavingsPlansPurchaseAnalysisConfiguration {
   LookBackTimePeriod: DateInterval;
   SavingsPlansTargetCoverage?: number;
 }
+const SavingsPlansPurchaseAnalysisConfiguration = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<SavingsPlansPurchaseAnalysisConfiguration>;
 export interface CommitmentPurchaseAnalysisConfiguration {
   SavingsPlansPurchaseAnalysisConfiguration?: SavingsPlansPurchaseAnalysisConfiguration;
 }
+const CommitmentPurchaseAnalysisConfiguration = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<CommitmentPurchaseAnalysisConfiguration>;
 export interface GetCommitmentPurchaseAnalysisResponse {
   EstimatedCompletionTime: string;
   AnalysisCompletionTime?: string;
@@ -718,15 +927,24 @@ export interface GetCommitmentPurchaseAnalysisResponse {
   AnalysisDetails?: AnalysisDetails;
   CommitmentPurchaseAnalysisConfiguration: CommitmentPurchaseAnalysisConfiguration;
 }
+const GetCommitmentPurchaseAnalysisResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetCommitmentPurchaseAnalysisResponse>;
 export type MetricName = string;
 export type MetricNames = string[];
+const MetricNames = Values as any as S.Schema<MetricNames>;
 export type GroupDefinitionType = "DIMENSION" | "TAG" | "COST_CATEGORY" | (string & {});
+const GroupDefinitionType = S.String;
+
 export type GroupDefinitionKey = string;
 export interface GroupDefinition {
   Type?: GroupDefinitionType;
   Key?: string;
 }
+const GroupDefinition = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<GroupDefinition>;
 export type GroupDefinitions = GroupDefinition[];
+const GroupDefinitions = /*@__PURE__*/ __L.at(__c8, 4);
 export type BillingViewArn = string;
 export interface GetCostAndUsageRequest {
   TimePeriod: DateInterval;
@@ -737,20 +955,29 @@ export interface GetCostAndUsageRequest {
   BillingViewArn?: string;
   NextPageToken?: string;
 }
+const GetCostAndUsageRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetCostAndUsageRequest>;
 export type MetricAmount = string;
 export type MetricUnit = string;
 export interface MetricValue {
   Amount?: string;
   Unit?: string;
 }
+const MetricValue = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<MetricValue>;
 export type Metrics = { [key: string]: MetricValue | undefined };
+const Metrics = /*@__PURE__*/ __L.at(__c8, 7);
 export type Key = string;
 export type Keys = string[];
+const Keys = Values as any as S.Schema<Keys>;
 export interface Group {
   Keys?: string[];
   Metrics?: { [key: string]: MetricValue | undefined };
 }
+const Group = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<Group>;
 export type Groups = Group[];
+const Groups = /*@__PURE__*/ __L.at(__c9, 1);
 export type Estimated = boolean;
 export interface ResultByTime {
   TimePeriod?: DateInterval;
@@ -758,21 +985,33 @@ export interface ResultByTime {
   Groups?: Group[];
   Estimated?: boolean;
 }
+const ResultByTime = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ResultByTime>;
 export type ResultsByTime = ResultByTime[];
+const ResultsByTime = /*@__PURE__*/ __L.at(__c9, 3);
 export type AttributeType = string;
 export type AttributeValue = string;
 export type Attributes = { [key: string]: string | undefined };
+const Attributes = /*@__PURE__*/ __L.at(__c9, 4);
 export interface DimensionValuesWithAttributes {
   Value?: string;
   Attributes?: { [key: string]: string | undefined };
 }
+const DimensionValuesWithAttributes = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DimensionValuesWithAttributes>;
 export type DimensionValuesWithAttributesList = DimensionValuesWithAttributes[];
+const DimensionValuesWithAttributesList = /*@__PURE__*/ __L.at(__c9, 6);
 export interface GetCostAndUsageResponse {
   NextPageToken?: string;
   GroupDefinitions?: GroupDefinition[];
   ResultsByTime?: ResultByTime[];
   DimensionValueAttributes?: DimensionValuesWithAttributes[];
 }
+const GetCostAndUsageResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<GetCostAndUsageResponse>;
 export type CostAndUsageComparisonsMaxResults = number;
 export interface GetCostAndUsageComparisonsRequest {
   BillingViewArn?: string;
@@ -784,23 +1023,41 @@ export interface GetCostAndUsageComparisonsRequest {
   MaxResults?: number;
   NextPageToken?: string;
 }
+const GetCostAndUsageComparisonsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<GetCostAndUsageComparisonsRequest>;
 export interface ComparisonMetricValue {
   BaselineTimePeriodAmount?: string;
   ComparisonTimePeriodAmount?: string;
   Difference?: string;
   Unit?: string;
 }
+const ComparisonMetricValue = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ComparisonMetricValue>;
 export type ComparisonMetrics = { [key: string]: ComparisonMetricValue | undefined };
+const ComparisonMetrics = /*@__PURE__*/ __L.at(__c10, 2);
 export interface CostAndUsageComparison {
   CostAndUsageSelector?: Expression;
   Metrics?: { [key: string]: ComparisonMetricValue | undefined };
 }
+const CostAndUsageComparison = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<CostAndUsageComparison>;
 export type CostAndUsageComparisons = CostAndUsageComparison[];
+const CostAndUsageComparisons = /*@__PURE__*/ __L.at(__c10, 4);
 export interface GetCostAndUsageComparisonsResponse {
   CostAndUsageComparisons?: CostAndUsageComparison[];
   TotalCostAndUsage?: { [key: string]: ComparisonMetricValue | undefined };
   NextPageToken?: string;
 }
+const GetCostAndUsageComparisonsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GetCostAndUsageComparisonsResponse>;
 export interface GetCostAndUsageWithResourcesRequest {
   TimePeriod: DateInterval;
   Granularity: Granularity;
@@ -810,20 +1067,32 @@ export interface GetCostAndUsageWithResourcesRequest {
   BillingViewArn?: string;
   NextPageToken?: string;
 }
+const GetCostAndUsageWithResourcesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<GetCostAndUsageWithResourcesRequest>;
 export interface GetCostAndUsageWithResourcesResponse {
   NextPageToken?: string;
   GroupDefinitions?: GroupDefinition[];
   ResultsByTime?: ResultByTime[];
   DimensionValueAttributes?: DimensionValuesWithAttributes[];
 }
+const GetCostAndUsageWithResourcesResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GetCostAndUsageWithResourcesResponse>;
 export type SearchString = string;
 export type SortDefinitionKey = string;
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
+const SortOrder = S.String;
+
 export interface SortDefinition {
   Key: string;
   SortOrder?: SortOrder;
 }
+const SortDefinition = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<SortDefinition>;
 export type SortDefinitions = SortDefinition[];
+const SortDefinitions = /*@__PURE__*/ __L.at(__c11, 1);
 export type MaxResults = number;
 export interface GetCostCategoriesRequest {
   SearchString?: string;
@@ -835,8 +1104,14 @@ export interface GetCostCategoriesRequest {
   MaxResults?: number;
   NextPageToken?: string;
 }
+const GetCostCategoriesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<GetCostCategoriesRequest>;
 export type CostCategoryNamesList = string[];
+const CostCategoryNamesList = Values as any as S.Schema<CostCategoryNamesList>;
 export type CostCategoryValuesList = string[];
+const CostCategoryValuesList = Values as any as S.Schema<CostCategoryValuesList>;
 export interface GetCostCategoriesResponse {
   NextPageToken?: string;
   CostCategoryNames?: string[];
@@ -844,6 +1119,10 @@ export interface GetCostCategoriesResponse {
   ReturnSize: number;
   TotalSize: number;
 }
+const GetCostCategoriesResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<GetCostCategoriesResponse>;
 export type CostComparisonDriversMaxResults = number;
 export interface GetCostComparisonDriversRequest {
   BillingViewArn?: string;
@@ -855,22 +1134,37 @@ export interface GetCostComparisonDriversRequest {
   MaxResults?: number;
   NextPageToken?: string;
 }
+const GetCostComparisonDriversRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<GetCostComparisonDriversRequest>;
 export interface CostDriver {
   Type?: string;
   Name?: string;
   Metrics?: { [key: string]: ComparisonMetricValue | undefined };
 }
+const CostDriver = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<CostDriver>;
 export type CostDrivers = CostDriver[];
+const CostDrivers = /*@__PURE__*/ __L.at(__c11, 6);
 export interface CostComparisonDriver {
   CostSelector?: Expression;
   Metrics?: { [key: string]: ComparisonMetricValue | undefined };
   CostDrivers?: CostDriver[];
 }
+const CostComparisonDriver = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<CostComparisonDriver>;
 export type CostComparisonDrivers = CostComparisonDriver[];
+const CostComparisonDrivers = /*@__PURE__*/ __L.at(__c12, 0);
 export interface GetCostComparisonDriversResponse {
   CostComparisonDrivers?: CostComparisonDriver[];
   NextPageToken?: string;
 }
+const GetCostComparisonDriversResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<GetCostComparisonDriversResponse>;
 export type Metric =
   | "BLENDED_COST"
   | "UNBLENDED_COST"
@@ -880,6 +1174,8 @@ export type Metric =
   | "USAGE_QUANTITY"
   | "NORMALIZED_USAGE_AMOUNT"
   | (string & {});
+const Metric = S.String;
+
 export type PredictionIntervalLevel = number;
 export interface GetCostForecastRequest {
   TimePeriod: DateInterval;
@@ -889,18 +1185,30 @@ export interface GetCostForecastRequest {
   BillingViewArn?: string;
   PredictionIntervalLevel?: number;
 }
+const GetCostForecastRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<GetCostForecastRequest>;
 export interface ForecastResult {
   TimePeriod?: DateInterval;
   MeanValue?: string;
   PredictionIntervalLowerBound?: string;
   PredictionIntervalUpperBound?: string;
 }
+const ForecastResult = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<ForecastResult>;
 export type ForecastResultsByTime = ForecastResult[];
+const ForecastResultsByTime = /*@__PURE__*/ __L.at(__c12, 4);
 export interface GetCostForecastResponse {
   Total?: MetricValue;
   ForecastResultsByTime?: ForecastResult[];
 }
+const GetCostForecastResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GetCostForecastResponse>;
 export type Context = "COST_AND_USAGE" | "RESERVATIONS" | "SAVINGS_PLANS" | (string & {});
+const Context = S.String;
+
 export interface GetDimensionValuesRequest {
   SearchString?: string;
   TimePeriod: DateInterval;
@@ -912,12 +1220,20 @@ export interface GetDimensionValuesRequest {
   MaxResults?: number;
   NextPageToken?: string;
 }
+const GetDimensionValuesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<GetDimensionValuesRequest>;
 export interface GetDimensionValuesResponse {
   DimensionValues: DimensionValuesWithAttributes[];
   ReturnSize: number;
   TotalSize: number;
   NextPageToken?: string;
 }
+const GetDimensionValuesResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<GetDimensionValuesResponse>;
 export interface GetReservationCoverageRequest {
   TimePeriod: DateInterval;
   GroupBy?: GroupDefinition[];
@@ -928,6 +1244,10 @@ export interface GetReservationCoverageRequest {
   SortBy?: SortDefinition;
   MaxResults?: number;
 }
+const GetReservationCoverageRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<GetReservationCoverageRequest>;
 export type OnDemandHours = string;
 export type ReservedHours = string;
 export type TotalRunningHours = string;
@@ -938,6 +1258,7 @@ export interface CoverageHours {
   TotalRunningHours?: string;
   CoverageHoursPercentage?: string;
 }
+const CoverageHours = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<CoverageHours>;
 export type OnDemandNormalizedUnits = string;
 export type ReservedNormalizedUnits = string;
 export type TotalRunningNormalizedUnits = string;
@@ -948,39 +1269,65 @@ export interface CoverageNormalizedUnits {
   TotalRunningNormalizedUnits?: string;
   CoverageNormalizedUnitsPercentage?: string;
 }
+const CoverageNormalizedUnits = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<CoverageNormalizedUnits>;
 export type OnDemandCost = string;
 export interface CoverageCost {
   OnDemandCost?: string;
 }
+const CoverageCost = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<CoverageCost>;
 export interface Coverage {
   CoverageHours?: CoverageHours;
   CoverageNormalizedUnits?: CoverageNormalizedUnits;
   CoverageCost?: CoverageCost;
 }
+const Coverage = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<Coverage>;
 export interface ReservationCoverageGroup {
   Attributes?: { [key: string]: string | undefined };
   Coverage?: Coverage;
 }
+const ReservationCoverageGroup = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ReservationCoverageGroup>;
 export type ReservationCoverageGroups = ReservationCoverageGroup[];
+const ReservationCoverageGroups = /*@__PURE__*/ __L.at(__c13, 6);
 export interface CoverageByTime {
   TimePeriod?: DateInterval;
   Groups?: ReservationCoverageGroup[];
   Total?: Coverage;
 }
+const CoverageByTime = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<CoverageByTime>;
 export type CoveragesByTime = CoverageByTime[];
+const CoveragesByTime = /*@__PURE__*/ __L.at(__c14, 0);
 export interface GetReservationCoverageResponse {
   CoveragesByTime: CoverageByTime[];
   Total?: Coverage;
   NextPageToken?: string;
 }
+const GetReservationCoverageResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<GetReservationCoverageResponse>;
 export type LookbackPeriodInDays = "SEVEN_DAYS" | "THIRTY_DAYS" | "SIXTY_DAYS" | (string & {});
+const LookbackPeriodInDays = S.String;
+
 export type OfferingClass = "STANDARD" | "CONVERTIBLE" | (string & {});
+const OfferingClass = S.String;
+
 export interface EC2Specification {
   OfferingClass?: OfferingClass;
 }
+const EC2Specification = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<EC2Specification>;
 export interface ServiceSpecification {
   EC2Specification?: EC2Specification;
 }
+const ServiceSpecification = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ServiceSpecification>;
 export type RecommendationsPageSize = number;
 export interface GetReservationPurchaseRecommendationRequest {
   AccountId?: string;
@@ -994,11 +1341,19 @@ export interface GetReservationPurchaseRecommendationRequest {
   PageSize?: number;
   NextPageToken?: string;
 }
+const GetReservationPurchaseRecommendationRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<GetReservationPurchaseRecommendationRequest>;
 export interface ReservationPurchaseRecommendationMetadata {
   RecommendationId?: string;
   GenerationTimestamp?: string;
   AdditionalMetadata?: string;
 }
+const ReservationPurchaseRecommendationMetadata = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ReservationPurchaseRecommendationMetadata>;
 export interface EC2InstanceDetails {
   Family?: string;
   InstanceType?: string;
@@ -1009,6 +1364,7 @@ export interface EC2InstanceDetails {
   CurrentGeneration?: boolean;
   SizeFlexEligible?: boolean;
 }
+const EC2InstanceDetails = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<EC2InstanceDetails>;
 export interface RDSInstanceDetails {
   Family?: string;
   InstanceType?: string;
@@ -1021,6 +1377,7 @@ export interface RDSInstanceDetails {
   SizeFlexEligible?: boolean;
   DeploymentModel?: string;
 }
+const RDSInstanceDetails = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<RDSInstanceDetails>;
 export interface RedshiftInstanceDetails {
   Family?: string;
   NodeType?: string;
@@ -1028,6 +1385,10 @@ export interface RedshiftInstanceDetails {
   CurrentGeneration?: boolean;
   SizeFlexEligible?: boolean;
 }
+const RedshiftInstanceDetails = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<RedshiftInstanceDetails>;
 export interface ElastiCacheInstanceDetails {
   Family?: string;
   NodeType?: string;
@@ -1036,6 +1397,10 @@ export interface ElastiCacheInstanceDetails {
   CurrentGeneration?: boolean;
   SizeFlexEligible?: boolean;
 }
+const ElastiCacheInstanceDetails = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ElastiCacheInstanceDetails>;
 export interface ESInstanceDetails {
   InstanceClass?: string;
   InstanceSize?: string;
@@ -1043,6 +1408,7 @@ export interface ESInstanceDetails {
   CurrentGeneration?: boolean;
   SizeFlexEligible?: boolean;
 }
+const ESInstanceDetails = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<ESInstanceDetails>;
 export interface MemoryDBInstanceDetails {
   Family?: string;
   NodeType?: string;
@@ -1050,6 +1416,7 @@ export interface MemoryDBInstanceDetails {
   CurrentGeneration?: boolean;
   SizeFlexEligible?: boolean;
 }
+const MemoryDBInstanceDetails = RedshiftInstanceDetails as any as S.Schema<MemoryDBInstanceDetails>;
 export interface InstanceDetails {
   EC2InstanceDetails?: EC2InstanceDetails;
   RDSInstanceDetails?: RDSInstanceDetails;
@@ -1058,13 +1425,22 @@ export interface InstanceDetails {
   ESInstanceDetails?: ESInstanceDetails;
   MemoryDBInstanceDetails?: MemoryDBInstanceDetails;
 }
+const InstanceDetails = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<InstanceDetails>;
 export interface DynamoDBCapacityDetails {
   CapacityUnits?: string;
   Region?: string;
 }
+const DynamoDBCapacityDetails = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<DynamoDBCapacityDetails>;
 export interface ReservedCapacityDetails {
   DynamoDBCapacityDetails?: DynamoDBCapacityDetails;
 }
+const ReservedCapacityDetails = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ReservedCapacityDetails>;
 export interface ReservationPurchaseRecommendationDetail {
   AccountId?: string;
   InstanceDetails?: InstanceDetails;
@@ -1091,12 +1467,21 @@ export interface ReservationPurchaseRecommendationDetail {
   MaximumNumberOfCapacityUnitsUsedPerHour?: string;
   AverageNumberOfCapacityUnitsUsedPerHour?: string;
 }
+const ReservationPurchaseRecommendationDetail = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<ReservationPurchaseRecommendationDetail>;
 export type ReservationPurchaseRecommendationDetails = ReservationPurchaseRecommendationDetail[];
+const ReservationPurchaseRecommendationDetails = /*@__PURE__*/ __L.at(__c15, 7);
 export interface ReservationPurchaseRecommendationSummary {
   TotalEstimatedMonthlySavingsAmount?: string;
   TotalEstimatedMonthlySavingsPercentage?: string;
   CurrencyCode?: string;
 }
+const ReservationPurchaseRecommendationSummary = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ReservationPurchaseRecommendationSummary>;
 export interface ReservationPurchaseRecommendation {
   AccountScope?: AccountScope;
   LookbackPeriodInDays?: LookbackPeriodInDays;
@@ -1106,12 +1491,21 @@ export interface ReservationPurchaseRecommendation {
   RecommendationDetails?: ReservationPurchaseRecommendationDetail[];
   RecommendationSummary?: ReservationPurchaseRecommendationSummary;
 }
+const ReservationPurchaseRecommendation = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ReservationPurchaseRecommendation>;
 export type ReservationPurchaseRecommendations = ReservationPurchaseRecommendation[];
+const ReservationPurchaseRecommendations = /*@__PURE__*/ __L.at(__c16, 2);
 export interface GetReservationPurchaseRecommendationResponse {
   Metadata?: ReservationPurchaseRecommendationMetadata;
   Recommendations?: ReservationPurchaseRecommendation[];
   NextPageToken?: string;
 }
+const GetReservationPurchaseRecommendationResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<GetReservationPurchaseRecommendationResponse>;
 export interface GetReservationUtilizationRequest {
   TimePeriod: DateInterval;
   GroupBy?: GroupDefinition[];
@@ -1121,6 +1515,10 @@ export interface GetReservationUtilizationRequest {
   NextPageToken?: string;
   MaxResults?: number;
 }
+const GetReservationUtilizationRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<GetReservationUtilizationRequest>;
 export type ReservationGroupKey = string;
 export type ReservationGroupValue = string;
 export type UtilizationPercentage = string;
@@ -1159,29 +1557,50 @@ export interface ReservationAggregates {
   RealizedSavings?: string;
   UnrealizedSavings?: string;
 }
+const ReservationAggregates = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ReservationAggregates>;
 export interface ReservationUtilizationGroup {
   Key?: string;
   Value?: string;
   Attributes?: { [key: string]: string | undefined };
   Utilization?: ReservationAggregates;
 }
+const ReservationUtilizationGroup = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ReservationUtilizationGroup>;
 export type ReservationUtilizationGroups = ReservationUtilizationGroup[];
+const ReservationUtilizationGroups = /*@__PURE__*/ __L.at(__c16, 7);
 export interface UtilizationByTime {
   TimePeriod?: DateInterval;
   Groups?: ReservationUtilizationGroup[];
   Total?: ReservationAggregates;
 }
+const UtilizationByTime = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<UtilizationByTime>;
 export type UtilizationsByTime = UtilizationByTime[];
+const UtilizationsByTime = /*@__PURE__*/ __L.at(__c17, 1);
 export interface GetReservationUtilizationResponse {
   UtilizationsByTime: UtilizationByTime[];
   Total?: ReservationAggregates;
   NextPageToken?: string;
 }
+const GetReservationUtilizationResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<GetReservationUtilizationResponse>;
 export type RecommendationTarget = "SAME_INSTANCE_FAMILY" | "CROSS_INSTANCE_FAMILY" | (string & {});
+const RecommendationTarget = S.String;
+
 export interface RightsizingRecommendationConfiguration {
   RecommendationTarget: RecommendationTarget;
   BenefitsConsidered: boolean;
 }
+const RightsizingRecommendationConfiguration = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<RightsizingRecommendationConfiguration>;
 export interface GetRightsizingRecommendationRequest {
   Filter?: Expression;
   Configuration?: RightsizingRecommendationConfiguration;
@@ -1189,19 +1608,32 @@ export interface GetRightsizingRecommendationRequest {
   PageSize?: number;
   NextPageToken?: string;
 }
+const GetRightsizingRecommendationRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<GetRightsizingRecommendationRequest>;
 export interface RightsizingRecommendationMetadata {
   RecommendationId?: string;
   GenerationTimestamp?: string;
   LookbackPeriodInDays?: LookbackPeriodInDays;
   AdditionalMetadata?: string;
 }
+const RightsizingRecommendationMetadata = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<RightsizingRecommendationMetadata>;
 export interface RightsizingRecommendationSummary {
   TotalRecommendationCount?: string;
   EstimatedTotalMonthlySavingsAmount?: string;
   SavingsCurrencyCode?: string;
   SavingsPercentage?: string;
 }
+const RightsizingRecommendationSummary = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<RightsizingRecommendationSummary>;
 export type TagValuesList = TagValues[];
+const TagValuesList = /*@__PURE__*/ __L.at(__c17, 7);
 export interface EC2ResourceDetails {
   HourlyOnDemandRate?: string;
   InstanceType?: string;
@@ -1213,27 +1645,41 @@ export interface EC2ResourceDetails {
   Storage?: string;
   Vcpu?: string;
 }
+const EC2ResourceDetails = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<EC2ResourceDetails>;
 export interface ResourceDetails {
   EC2ResourceDetails?: EC2ResourceDetails;
 }
+const ResourceDetails = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<ResourceDetails>;
 export interface EBSResourceUtilization {
   EbsReadOpsPerSecond?: string;
   EbsWriteOpsPerSecond?: string;
   EbsReadBytesPerSecond?: string;
   EbsWriteBytesPerSecond?: string;
 }
+const EBSResourceUtilization = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<EBSResourceUtilization>;
 export interface DiskResourceUtilization {
   DiskReadOpsPerSecond?: string;
   DiskWriteOpsPerSecond?: string;
   DiskReadBytesPerSecond?: string;
   DiskWriteBytesPerSecond?: string;
 }
+const DiskResourceUtilization = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<DiskResourceUtilization>;
 export interface NetworkResourceUtilization {
   NetworkInBytesPerSecond?: string;
   NetworkOutBytesPerSecond?: string;
   NetworkPacketsInPerSecond?: string;
   NetworkPacketsOutPerSecond?: string;
 }
+const NetworkResourceUtilization = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<NetworkResourceUtilization>;
 export interface EC2ResourceUtilization {
   MaxCpuUtilizationPercentage?: string;
   MaxMemoryUtilizationPercentage?: string;
@@ -1242,9 +1688,14 @@ export interface EC2ResourceUtilization {
   DiskResourceUtilization?: DiskResourceUtilization;
   NetworkResourceUtilization?: NetworkResourceUtilization;
 }
+const EC2ResourceUtilization = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<EC2ResourceUtilization>;
 export interface ResourceUtilization {
   EC2ResourceUtilization?: EC2ResourceUtilization;
 }
+const ResourceUtilization = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<ResourceUtilization>;
 export interface CurrentInstance {
   ResourceId?: string;
   InstanceName?: string;
@@ -1258,7 +1709,10 @@ export interface CurrentInstance {
   MonthlyCost?: string;
   CurrencyCode?: string;
 }
+const CurrentInstance = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<CurrentInstance>;
 export type RightsizingType = "TERMINATE" | "MODIFY" | (string & {});
+const RightsizingType = S.String;
+
 export type PlatformDifference =
   | "HYPERVISOR"
   | "NETWORK_INTERFACE"
@@ -1267,6 +1721,7 @@ export type PlatformDifference =
   | "VIRTUALIZATION_TYPE"
   | (string & {});
 export type PlatformDifferences = PlatformDifference[];
+const PlatformDifferences = MatchOptions as any as S.Schema<PlatformDifferences>;
 export interface TargetInstance {
   EstimatedMonthlyCost?: string;
   EstimatedMonthlySavings?: string;
@@ -1276,14 +1731,24 @@ export interface TargetInstance {
   ExpectedResourceUtilization?: ResourceUtilization;
   PlatformDifferences?: PlatformDifference[];
 }
+const TargetInstance = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<TargetInstance>;
 export type TargetInstancesList = TargetInstance[];
+const TargetInstancesList = /*@__PURE__*/ __L.at(__c19, 1);
 export interface ModifyRecommendationDetail {
   TargetInstances?: TargetInstance[];
 }
+const ModifyRecommendationDetail = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ModifyRecommendationDetail>;
 export interface TerminateRecommendationDetail {
   EstimatedMonthlySavings?: string;
   CurrencyCode?: string;
 }
+const TerminateRecommendationDetail = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<TerminateRecommendationDetail>;
 export type FindingReasonCode =
   | "CPU_OVER_PROVISIONED"
   | "CPU_UNDER_PROVISIONED"
@@ -1303,6 +1768,7 @@ export type FindingReasonCode =
   | "DISK_THROUGHPUT_UNDER_PROVISIONED"
   | (string & {});
 export type FindingReasonCodes = FindingReasonCode[];
+const FindingReasonCodes = MatchOptions as any as S.Schema<FindingReasonCodes>;
 export interface RightsizingRecommendation {
   AccountId?: string;
   CurrentInstance?: CurrentInstance;
@@ -1311,7 +1777,12 @@ export interface RightsizingRecommendation {
   TerminateRecommendationDetail?: TerminateRecommendationDetail;
   FindingReasonCodes?: FindingReasonCode[];
 }
+const RightsizingRecommendation = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<RightsizingRecommendation>;
 export type RightsizingRecommendationList = RightsizingRecommendation[];
+const RightsizingRecommendationList = /*@__PURE__*/ __L.at(__c19, 5);
 export interface GetRightsizingRecommendationResponse {
   Metadata?: RightsizingRecommendationMetadata;
   Summary?: RightsizingRecommendationSummary;
@@ -1319,10 +1790,18 @@ export interface GetRightsizingRecommendationResponse {
   NextPageToken?: string;
   Configuration?: RightsizingRecommendationConfiguration;
 }
+const GetRightsizingRecommendationResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<GetRightsizingRecommendationResponse>;
 export type RecommendationDetailId = string;
 export interface GetSavingsPlanPurchaseRecommendationDetailsRequest {
   RecommendationDetailId: string;
 }
+const GetSavingsPlanPurchaseRecommendationDetailsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<GetSavingsPlanPurchaseRecommendationDetailsRequest>;
 export interface RecommendationDetailData {
   AccountScope?: AccountScope;
   LookbackPeriodInDays?: LookbackPeriodInDays;
@@ -1354,10 +1833,18 @@ export interface RecommendationDetailData {
   EstimatedAverageCoverage?: string;
   MetricsOverLookbackPeriod?: RecommendationDetailHourlyMetrics[];
 }
+const RecommendationDetailData = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<RecommendationDetailData>;
 export interface GetSavingsPlanPurchaseRecommendationDetailsResponse {
   RecommendationDetailId?: string;
   RecommendationDetailData?: RecommendationDetailData;
 }
+const GetSavingsPlanPurchaseRecommendationDetailsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<GetSavingsPlanPurchaseRecommendationDetailsResponse>;
 export interface GetSavingsPlansCoverageRequest {
   TimePeriod: DateInterval;
   GroupBy?: GroupDefinition[];
@@ -1368,22 +1855,39 @@ export interface GetSavingsPlansCoverageRequest {
   MaxResults?: number;
   SortBy?: SortDefinition;
 }
+const GetSavingsPlansCoverageRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<GetSavingsPlansCoverageRequest>;
 export interface SavingsPlansCoverageData {
   SpendCoveredBySavingsPlans?: string;
   OnDemandCost?: string;
   TotalCost?: string;
   CoveragePercentage?: string;
 }
+const SavingsPlansCoverageData = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<SavingsPlansCoverageData>;
 export interface SavingsPlansCoverage {
   Attributes?: { [key: string]: string | undefined };
   Coverage?: SavingsPlansCoverageData;
   TimePeriod?: DateInterval;
 }
+const SavingsPlansCoverage = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<SavingsPlansCoverage>;
 export type SavingsPlansCoverages = SavingsPlansCoverage[];
+const SavingsPlansCoverages = /*@__PURE__*/ __L.at(__c20, 5);
 export interface GetSavingsPlansCoverageResponse {
   SavingsPlansCoverages: SavingsPlansCoverage[];
   NextToken?: string;
 }
+const GetSavingsPlansCoverageResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<GetSavingsPlansCoverageResponse>;
 export interface GetSavingsPlansPurchaseRecommendationRequest {
   SavingsPlansType: SupportedSavingsPlansType;
   TermInYears: TermInYears;
@@ -1394,16 +1898,23 @@ export interface GetSavingsPlansPurchaseRecommendationRequest {
   LookbackPeriodInDays: LookbackPeriodInDays;
   Filter?: Expression;
 }
+const GetSavingsPlansPurchaseRecommendationRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<GetSavingsPlansPurchaseRecommendationRequest>;
 export interface SavingsPlansPurchaseRecommendationMetadata {
   RecommendationId?: string;
   GenerationTimestamp?: string;
   AdditionalMetadata?: string;
 }
+const SavingsPlansPurchaseRecommendationMetadata =
+  ReservationPurchaseRecommendationMetadata as any as S.Schema<SavingsPlansPurchaseRecommendationMetadata>;
 export interface SavingsPlansDetails {
   Region?: string;
   InstanceFamily?: string;
   OfferingId?: string;
 }
+const SavingsPlansDetails = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<SavingsPlansDetails>;
 export interface SavingsPlansPurchaseRecommendationDetail {
   SavingsPlansDetails?: SavingsPlansDetails;
   AccountId?: string;
@@ -1423,8 +1934,13 @@ export interface SavingsPlansPurchaseRecommendationDetail {
   CurrentAverageHourlyOnDemandSpend?: string;
   RecommendationDetailId?: string;
 }
+const SavingsPlansPurchaseRecommendationDetail = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<SavingsPlansPurchaseRecommendationDetail>;
 export type SavingsPlansPurchaseRecommendationDetailList =
   SavingsPlansPurchaseRecommendationDetail[];
+const SavingsPlansPurchaseRecommendationDetailList = /*@__PURE__*/ __L.at(__c21, 2);
 export interface SavingsPlansPurchaseRecommendationSummary {
   EstimatedROI?: string;
   CurrencyCode?: string;
@@ -1438,6 +1954,10 @@ export interface SavingsPlansPurchaseRecommendationSummary {
   EstimatedMonthlySavingsAmount?: string;
   EstimatedOnDemandCostWithCurrentCommitment?: string;
 }
+const SavingsPlansPurchaseRecommendationSummary = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<SavingsPlansPurchaseRecommendationSummary>;
 export interface SavingsPlansPurchaseRecommendation {
   AccountScope?: AccountScope;
   SavingsPlansType?: SupportedSavingsPlansType;
@@ -1447,48 +1967,82 @@ export interface SavingsPlansPurchaseRecommendation {
   SavingsPlansPurchaseRecommendationDetails?: SavingsPlansPurchaseRecommendationDetail[];
   SavingsPlansPurchaseRecommendationSummary?: SavingsPlansPurchaseRecommendationSummary;
 }
+const SavingsPlansPurchaseRecommendation = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<SavingsPlansPurchaseRecommendation>;
 export interface GetSavingsPlansPurchaseRecommendationResponse {
   Metadata?: SavingsPlansPurchaseRecommendationMetadata;
   SavingsPlansPurchaseRecommendation?: SavingsPlansPurchaseRecommendation;
   NextPageToken?: string;
 }
+const GetSavingsPlansPurchaseRecommendationResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<GetSavingsPlansPurchaseRecommendationResponse>;
 export interface GetSavingsPlansUtilizationRequest {
   TimePeriod: DateInterval;
   Granularity?: Granularity;
   Filter?: Expression;
   SortBy?: SortDefinition;
 }
+const GetSavingsPlansUtilizationRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<GetSavingsPlansUtilizationRequest>;
 export interface SavingsPlansUtilization {
   TotalCommitment?: string;
   UsedCommitment?: string;
   UnusedCommitment?: string;
   UtilizationPercentage?: string;
 }
+const SavingsPlansUtilization = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<SavingsPlansUtilization>;
 export interface SavingsPlansSavings {
   NetSavings?: string;
   OnDemandCostEquivalent?: string;
 }
+const SavingsPlansSavings = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<SavingsPlansSavings>;
 export interface SavingsPlansAmortizedCommitment {
   AmortizedRecurringCommitment?: string;
   AmortizedUpfrontCommitment?: string;
   TotalAmortizedCommitment?: string;
 }
+const SavingsPlansAmortizedCommitment = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<SavingsPlansAmortizedCommitment>;
 export interface SavingsPlansUtilizationByTime {
   TimePeriod: DateInterval;
   Utilization: SavingsPlansUtilization;
   Savings?: SavingsPlansSavings;
   AmortizedCommitment?: SavingsPlansAmortizedCommitment;
 }
+const SavingsPlansUtilizationByTime = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<SavingsPlansUtilizationByTime>;
 export type SavingsPlansUtilizationsByTime = SavingsPlansUtilizationByTime[];
+const SavingsPlansUtilizationsByTime = /*@__PURE__*/ __L.at(__c22, 3);
 export interface SavingsPlansUtilizationAggregates {
   Utilization: SavingsPlansUtilization;
   Savings?: SavingsPlansSavings;
   AmortizedCommitment?: SavingsPlansAmortizedCommitment;
 }
+const SavingsPlansUtilizationAggregates = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<SavingsPlansUtilizationAggregates>;
 export interface GetSavingsPlansUtilizationResponse {
   SavingsPlansUtilizationsByTime?: SavingsPlansUtilizationByTime[];
   Total: SavingsPlansUtilizationAggregates;
 }
+const GetSavingsPlansUtilizationResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<GetSavingsPlansUtilizationResponse>;
 export type SavingsPlansDataType =
   | "ATTRIBUTES"
   | "UTILIZATION"
@@ -1496,6 +2050,7 @@ export type SavingsPlansDataType =
   | "SAVINGS"
   | (string & {});
 export type SavingsPlansDataTypes = SavingsPlansDataType[];
+const SavingsPlansDataTypes = MatchOptions as any as S.Schema<SavingsPlansDataTypes>;
 export interface GetSavingsPlansUtilizationDetailsRequest {
   TimePeriod: DateInterval;
   Filter?: Expression;
@@ -1504,6 +2059,10 @@ export interface GetSavingsPlansUtilizationDetailsRequest {
   MaxResults?: number;
   SortBy?: SortDefinition;
 }
+const GetSavingsPlansUtilizationDetailsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<GetSavingsPlansUtilizationDetailsRequest>;
 export type SavingsPlanArn = string;
 export interface SavingsPlansUtilizationDetail {
   SavingsPlanArn?: string;
@@ -1512,13 +2071,22 @@ export interface SavingsPlansUtilizationDetail {
   Savings?: SavingsPlansSavings;
   AmortizedCommitment?: SavingsPlansAmortizedCommitment;
 }
+const SavingsPlansUtilizationDetail = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<SavingsPlansUtilizationDetail>;
 export type SavingsPlansUtilizationDetails = SavingsPlansUtilizationDetail[];
+const SavingsPlansUtilizationDetails = /*@__PURE__*/ __L.at(__c23, 0);
 export interface GetSavingsPlansUtilizationDetailsResponse {
   SavingsPlansUtilizationDetails: SavingsPlansUtilizationDetail[];
   Total?: SavingsPlansUtilizationAggregates;
   TimePeriod: DateInterval;
   NextToken?: string;
 }
+const GetSavingsPlansUtilizationDetailsResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<GetSavingsPlansUtilizationDetailsResponse>;
 export interface GetTagsRequest {
   SearchString?: string;
   TimePeriod: DateInterval;
@@ -1529,14 +2097,17 @@ export interface GetTagsRequest {
   MaxResults?: number;
   NextPageToken?: string;
 }
+const GetTagsRequest = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<GetTagsRequest>;
 export type Entity = string;
 export type TagList = string[];
+const TagList = Values as any as S.Schema<TagList>;
 export interface GetTagsResponse {
   NextPageToken?: string;
   Tags: string[];
   ReturnSize: number;
   TotalSize: number;
 }
+const GetTagsResponse = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<GetTagsResponse>;
 export interface GetUsageForecastRequest {
   TimePeriod: DateInterval;
   Metric: Metric;
@@ -1545,18 +2116,29 @@ export interface GetUsageForecastRequest {
   BillingViewArn?: string;
   PredictionIntervalLevel?: number;
 }
+const GetUsageForecastRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<GetUsageForecastRequest>;
 export interface GetUsageForecastResponse {
   Total?: MetricValue;
   ForecastResultsByTime?: ForecastResult[];
 }
+const GetUsageForecastResponse =
+  GetCostForecastResponse as any as S.Schema<GetUsageForecastResponse>;
 export type AnalysesPageSize = number;
 export type AnalysisIds = string[];
+const AnalysisIds = Values as any as S.Schema<AnalysisIds>;
 export interface ListCommitmentPurchaseAnalysesRequest {
   AnalysisStatus?: AnalysisStatus;
   NextPageToken?: string;
   PageSize?: number;
   AnalysisIds?: string[];
 }
+const ListCommitmentPurchaseAnalysesRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<ListCommitmentPurchaseAnalysesRequest>;
 export interface AnalysisSummary {
   EstimatedCompletionTime?: string;
   AnalysisCompletionTime?: string;
@@ -1566,17 +2148,29 @@ export interface AnalysisSummary {
   AnalysisId?: string;
   CommitmentPurchaseAnalysisConfiguration?: CommitmentPurchaseAnalysisConfiguration;
 }
+const AnalysisSummary = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<AnalysisSummary>;
 export type AnalysisSummaryList = AnalysisSummary[];
+const AnalysisSummaryList = /*@__PURE__*/ __L.at(__c23, 7);
 export interface ListCommitmentPurchaseAnalysesResponse {
   AnalysisSummaryList?: AnalysisSummary[];
   NextPageToken?: string;
 }
+const ListCommitmentPurchaseAnalysesResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<ListCommitmentPurchaseAnalysesResponse>;
 export type CostAllocationTagsMaxResults = number;
 export interface ListCostAllocationTagBackfillHistoryRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListCostAllocationTagBackfillHistoryRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<ListCostAllocationTagBackfillHistoryRequest>;
 export type CostAllocationTagBackfillStatus = "SUCCEEDED" | "PROCESSING" | "FAILED" | (string & {});
+const CostAllocationTagBackfillStatus = S.String;
+
 export interface CostAllocationTagBackfillRequest {
   BackfillFrom?: string;
   RequestedAt?: string;
@@ -1584,14 +2178,28 @@ export interface CostAllocationTagBackfillRequest {
   BackfillStatus?: CostAllocationTagBackfillStatus;
   LastUpdatedAt?: string;
 }
+const CostAllocationTagBackfillRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<CostAllocationTagBackfillRequest>;
 export type CostAllocationTagBackfillRequestList = CostAllocationTagBackfillRequest[];
+const CostAllocationTagBackfillRequestList = /*@__PURE__*/ __L.at(__c24, 3);
 export interface ListCostAllocationTagBackfillHistoryResponse {
   BackfillRequests?: CostAllocationTagBackfillRequest[];
   NextToken?: string;
 }
+const ListCostAllocationTagBackfillHistoryResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<ListCostAllocationTagBackfillHistoryResponse>;
 export type CostAllocationTagStatus = "Active" | "Inactive" | (string & {});
+const CostAllocationTagStatus = S.String;
+
 export type CostAllocationTagKeyList = string[];
+const CostAllocationTagKeyList = Values as any as S.Schema<CostAllocationTagKeyList>;
 export type CostAllocationTagType = "AWSGenerated" | "UserDefined" | (string & {});
+const CostAllocationTagType = S.String;
+
 export interface ListCostAllocationTagsRequest {
   Status?: CostAllocationTagStatus;
   TagKeys?: string[];
@@ -1599,6 +2207,10 @@ export interface ListCostAllocationTagsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListCostAllocationTagsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<ListCostAllocationTagsRequest>;
 export interface CostAllocationTag {
   TagKey: string;
   Type: CostAllocationTagType;
@@ -1606,21 +2218,33 @@ export interface CostAllocationTag {
   LastUpdatedDate?: string;
   LastUsedDate?: string;
 }
+const CostAllocationTag = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<CostAllocationTag>;
 export type CostAllocationTagList = CostAllocationTag[];
+const CostAllocationTagList = /*@__PURE__*/ __L.at(__c24, 7);
 export interface ListCostAllocationTagsResponse {
   CostAllocationTags?: CostAllocationTag[];
   NextToken?: string;
 }
+const ListCostAllocationTagsResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<ListCostAllocationTagsResponse>;
 export type CostCategoryMaxResults = number;
 export type ResourceType = string;
 export type ResourceTypesFilterInput = string[];
+const ResourceTypesFilterInput = Values as any as S.Schema<ResourceTypesFilterInput>;
 export interface ListCostCategoryDefinitionsRequest {
   EffectiveOn?: string;
   NextToken?: string;
   MaxResults?: number;
   SupportedResourceTypes?: string[];
 }
+const ListCostCategoryDefinitionsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<ListCostCategoryDefinitionsRequest>;
 export type ResourceTypes = string[];
+const ResourceTypes = Values as any as S.Schema<ResourceTypes>;
 export interface CostCategoryReference {
   CostCategoryArn?: string;
   Name?: string;
@@ -1632,36 +2256,65 @@ export interface CostCategoryReference {
   DefaultValue?: string;
   SupportedResourceTypes?: string[];
 }
+const CostCategoryReference = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<CostCategoryReference>;
 export type CostCategoryReferencesList = CostCategoryReference[];
+const CostCategoryReferencesList = /*@__PURE__*/ __L.at(__c25, 3);
 export interface ListCostCategoryDefinitionsResponse {
   CostCategoryReferences?: CostCategoryReference[];
   NextToken?: string;
 }
+const ListCostCategoryDefinitionsResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<ListCostCategoryDefinitionsResponse>;
 export interface ListCostCategoryResourceAssociationsRequest {
   CostCategoryArn?: string;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListCostCategoryResourceAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<ListCostCategoryResourceAssociationsRequest>;
 export type GenericArn = string;
 export interface CostCategoryResourceAssociation {
   ResourceArn?: string;
   CostCategoryName?: string;
   CostCategoryArn?: string;
 }
+const CostCategoryResourceAssociation = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<CostCategoryResourceAssociation>;
 export type CostCategoryResourceAssociations = CostCategoryResourceAssociation[];
+const CostCategoryResourceAssociations = /*@__PURE__*/ __L.at(__c25, 7);
 export interface ListCostCategoryResourceAssociationsResponse {
   CostCategoryResourceAssociations?: CostCategoryResourceAssociation[];
   NextToken?: string;
 }
+const ListCostCategoryResourceAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<ListCostCategoryResourceAssociationsResponse>;
 export type GenerationStatus = "SUCCEEDED" | "PROCESSING" | "FAILED" | (string & {});
+const GenerationStatus = S.String;
+
 export type RecommendationId = string;
 export type RecommendationIdList = string[];
+const RecommendationIdList = Values as any as S.Schema<RecommendationIdList>;
 export interface ListSavingsPlansPurchaseRecommendationGenerationRequest {
   GenerationStatus?: GenerationStatus;
   RecommendationIds?: string[];
   PageSize?: number;
   NextPageToken?: string;
 }
+const ListSavingsPlansPurchaseRecommendationGenerationRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<ListSavingsPlansPurchaseRecommendationGenerationRequest>;
 export interface GenerationSummary {
   RecommendationId?: string;
   GenerationStatus?: GenerationStatus;
@@ -1669,62 +2322,123 @@ export interface GenerationSummary {
   GenerationCompletionTime?: string;
   EstimatedCompletionTime?: string;
 }
+const GenerationSummary = /*@__PURE__*/ __L.at(__c26, 2) as any as S.Schema<GenerationSummary>;
 export type GenerationSummaryList = GenerationSummary[];
+const GenerationSummaryList = /*@__PURE__*/ __L.at(__c26, 3);
 export interface ListSavingsPlansPurchaseRecommendationGenerationResponse {
   GenerationSummaryList?: GenerationSummary[];
   NextPageToken?: string;
 }
+const ListSavingsPlansPurchaseRecommendationGenerationResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<ListSavingsPlansPurchaseRecommendationGenerationResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   ResourceTags?: ResourceTag[];
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ProvideAnomalyFeedbackRequest {
   AnomalyId: string;
   Feedback: AnomalyFeedbackType;
 }
+const ProvideAnomalyFeedbackRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<ProvideAnomalyFeedbackRequest>;
 export interface ProvideAnomalyFeedbackResponse {
   AnomalyId: string;
 }
+const ProvideAnomalyFeedbackResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<ProvideAnomalyFeedbackResponse>;
 export interface StartCommitmentPurchaseAnalysisRequest {
   CommitmentPurchaseAnalysisConfiguration: CommitmentPurchaseAnalysisConfiguration;
 }
+const StartCommitmentPurchaseAnalysisRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<StartCommitmentPurchaseAnalysisRequest>;
 export interface StartCommitmentPurchaseAnalysisResponse {
   AnalysisId: string;
   AnalysisStartedTime: string;
   EstimatedCompletionTime: string;
 }
+const StartCommitmentPurchaseAnalysisResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<StartCommitmentPurchaseAnalysisResponse>;
 export interface StartCostAllocationTagBackfillRequest {
   BackfillFrom: string;
 }
+const StartCostAllocationTagBackfillRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<StartCostAllocationTagBackfillRequest>;
 export interface StartCostAllocationTagBackfillResponse {
   BackfillRequest?: CostAllocationTagBackfillRequest;
 }
+const StartCostAllocationTagBackfillResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<StartCostAllocationTagBackfillResponse>;
 export interface StartSavingsPlansPurchaseRecommendationGenerationRequest {}
+const StartSavingsPlansPurchaseRecommendationGenerationRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<StartSavingsPlansPurchaseRecommendationGenerationRequest>;
 export interface StartSavingsPlansPurchaseRecommendationGenerationResponse {
   RecommendationId?: string;
   GenerationStartedTime?: string;
   EstimatedCompletionTime?: string;
 }
+const StartSavingsPlansPurchaseRecommendationGenerationResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<StartSavingsPlansPurchaseRecommendationGenerationResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   ResourceTags: ResourceTag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = DeleteAnomalyMonitorResponse as any as S.Schema<TagResourceResponse>;
 export type ResourceTagKeyList = string[];
+const ResourceTagKeyList = Values as any as S.Schema<ResourceTagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   ResourceTagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse =
+  DeleteAnomalyMonitorResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAnomalyMonitorRequest {
   MonitorArn: string;
   MonitorName?: string;
 }
+const UpdateAnomalyMonitorRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<UpdateAnomalyMonitorRequest>;
 export interface UpdateAnomalyMonitorResponse {
   MonitorArn: string;
 }
+const UpdateAnomalyMonitorResponse =
+  CreateAnomalyMonitorResponse as any as S.Schema<UpdateAnomalyMonitorResponse>;
 export interface UpdateAnomalySubscriptionRequest {
   SubscriptionArn: string;
   Threshold?: number;
@@ -1734,27 +2448,51 @@ export interface UpdateAnomalySubscriptionRequest {
   SubscriptionName?: string;
   ThresholdExpression?: Expression;
 }
+const UpdateAnomalySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<UpdateAnomalySubscriptionRequest>;
 export interface UpdateAnomalySubscriptionResponse {
   SubscriptionArn: string;
 }
+const UpdateAnomalySubscriptionResponse =
+  CreateAnomalySubscriptionResponse as any as S.Schema<UpdateAnomalySubscriptionResponse>;
 export interface CostAllocationTagStatusEntry {
   TagKey: string;
   Status: CostAllocationTagStatus;
 }
+const CostAllocationTagStatusEntry = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<CostAllocationTagStatusEntry>;
 export type CostAllocationTagStatusList = CostAllocationTagStatusEntry[];
+const CostAllocationTagStatusList = /*@__PURE__*/ __L.at(__c28, 4);
 export interface UpdateCostAllocationTagsStatusRequest {
   CostAllocationTagsStatus: CostAllocationTagStatusEntry[];
 }
+const UpdateCostAllocationTagsStatusRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<UpdateCostAllocationTagsStatusRequest>;
 export type ErrorMessage = string;
 export interface UpdateCostAllocationTagsStatusError_ {
   TagKey?: string;
   Code?: string;
   Message?: string;
 }
+const UpdateCostAllocationTagsStatusError_ = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<UpdateCostAllocationTagsStatusError_>;
 export type UpdateCostAllocationTagsStatusErrors = UpdateCostAllocationTagsStatusError_[];
+const UpdateCostAllocationTagsStatusErrors = /*@__PURE__*/ __L.at(__c28, 7);
 export interface UpdateCostAllocationTagsStatusResponse {
   Errors?: UpdateCostAllocationTagsStatusError_[];
 }
+const UpdateCostAllocationTagsStatusResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<UpdateCostAllocationTagsStatusResponse>;
 export interface UpdateCostCategoryDefinitionRequest {
   CostCategoryArn: string;
   EffectiveStart?: string;
@@ -1763,10 +2501,16 @@ export interface UpdateCostCategoryDefinitionRequest {
   DefaultValue?: string;
   SplitChargeRules?: CostCategorySplitChargeRule[];
 }
+const UpdateCostCategoryDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<UpdateCostCategoryDefinitionRequest>;
 export interface UpdateCostCategoryDefinitionResponse {
   CostCategoryArn?: string;
   EffectiveStart?: string;
 }
+const UpdateCostCategoryDefinitionResponse =
+  CreateCostCategoryDefinitionResponse as any as S.Schema<UpdateCostCategoryDefinitionResponse>;
 export type CreateAnomalyMonitorError =
   | LimitExceededException
   | AnomalyMonitorAlreadyExists
@@ -1781,8 +2525,8 @@ export const createAnomalyMonitor: API.OperationMethod<
   CreateAnomalyMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CreateAnomalyMonitorRequest>,
-  output: __S(10) as any as S.Schema<CreateAnomalyMonitorResponse>,
+  input: CreateAnomalyMonitorRequest,
+  output: CreateAnomalyMonitorResponse,
   errors: [LimitExceededException, AnomalyMonitorAlreadyExists],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1805,8 +2549,8 @@ export const createAnomalySubscription: API.OperationMethod<
   CreateAnomalySubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<CreateAnomalySubscriptionRequest>,
-  output: __S(15) as any as S.Schema<CreateAnomalySubscriptionResponse>,
+  input: CreateAnomalySubscriptionRequest,
+  output: CreateAnomalySubscriptionResponse,
   errors: [LimitExceededException, UnknownMonitorException, AnomalySubscriptionAlreadyExists],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1826,8 +2570,8 @@ export const createCostCategoryDefinition: API.OperationMethod<
   CreateCostCategoryDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateCostCategoryDefinitionRequest>,
-  output: __S(24) as any as S.Schema<CreateCostCategoryDefinitionResponse>,
+  input: CreateCostCategoryDefinitionRequest,
+  output: CreateCostCategoryDefinitionResponse,
   errors: [LimitExceededException, ServiceQuotaExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1847,8 +2591,8 @@ export const deleteAnomalyMonitor: API.OperationMethod<
   DeleteAnomalyMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<DeleteAnomalyMonitorRequest>,
-  output: __S(26) as any as S.Schema<DeleteAnomalyMonitorResponse>,
+  input: DeleteAnomalyMonitorRequest,
+  output: DeleteAnomalyMonitorResponse,
   errors: [LimitExceededException, UnknownMonitorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1868,8 +2612,8 @@ export const deleteAnomalySubscription: API.OperationMethod<
   DeleteAnomalySubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<DeleteAnomalySubscriptionRequest>,
-  output: __S(28) as any as S.Schema<DeleteAnomalySubscriptionResponse>,
+  input: DeleteAnomalySubscriptionRequest,
+  output: DeleteAnomalySubscriptionResponse,
   errors: [LimitExceededException, UnknownSubscriptionException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1890,8 +2634,8 @@ export const deleteCostCategoryDefinition: API.OperationMethod<
   DeleteCostCategoryDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<DeleteCostCategoryDefinitionRequest>,
-  output: __S(30) as any as S.Schema<DeleteCostCategoryDefinitionResponse>,
+  input: DeleteCostCategoryDefinitionRequest,
+  output: DeleteCostCategoryDefinitionResponse,
   errors: [LimitExceededException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1917,8 +2661,8 @@ export const describeCostCategoryDefinition: API.OperationMethod<
   DescribeCostCategoryDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<DescribeCostCategoryDefinitionRequest>,
-  output: __S(35) as any as S.Schema<DescribeCostCategoryDefinitionResponse>,
+  input: DescribeCostCategoryDefinitionRequest,
+  output: DescribeCostCategoryDefinitionResponse,
   errors: [LimitExceededException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1938,8 +2682,8 @@ export const getAnomalies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Anomaly
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(38) as any as S.Schema<GetAnomaliesRequest>,
-  output: __S(46) as any as S.Schema<GetAnomaliesResponse>,
+  input: GetAnomaliesRequest,
+  output: GetAnomaliesResponse,
   errors: [InvalidNextTokenException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1968,8 +2712,8 @@ export const getAnomalyMonitors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AnomalyMonitor
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(47) as any as S.Schema<GetAnomalyMonitorsRequest>,
-  output: __S(49) as any as S.Schema<GetAnomalyMonitorsResponse>,
+  input: GetAnomalyMonitorsRequest,
+  output: GetAnomalyMonitorsResponse,
   errors: [InvalidNextTokenException, LimitExceededException, UnknownMonitorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1998,8 +2742,8 @@ export const getAnomalySubscriptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AnomalySubscription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(50) as any as S.Schema<GetAnomalySubscriptionsRequest>,
-  output: __S(52) as any as S.Schema<GetAnomalySubscriptionsResponse>,
+  input: GetAnomalySubscriptionsRequest,
+  output: GetAnomalySubscriptionsResponse,
   errors: [InvalidNextTokenException, LimitExceededException, UnknownSubscriptionException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2026,8 +2770,8 @@ export const getApproximateUsageRecords: API.OperationMethod<
   GetApproximateUsageRecordsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<GetApproximateUsageRecordsRequest>,
-  output: __S(56) as any as S.Schema<GetApproximateUsageRecordsResponse>,
+  input: GetApproximateUsageRecordsRequest,
+  output: GetApproximateUsageRecordsResponse,
   errors: [DataUnavailableException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2049,8 +2793,8 @@ export const getCommitmentPurchaseAnalysis: API.OperationMethod<
   GetCommitmentPurchaseAnalysisError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<GetCommitmentPurchaseAnalysisRequest>,
-  output: __S(66) as any as S.Schema<GetCommitmentPurchaseAnalysisResponse>,
+  input: GetCommitmentPurchaseAnalysisRequest,
+  output: GetCommitmentPurchaseAnalysisResponse,
   errors: [AnalysisNotFoundException, DataUnavailableException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2082,8 +2826,8 @@ export const getCostAndUsage: API.OperationMethod<
   GetCostAndUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<GetCostAndUsageRequest>,
-  output: __S(79) as any as S.Schema<GetCostAndUsageResponse>,
+  input: GetCostAndUsageRequest,
+  output: GetCostAndUsageResponse,
   errors: [
     BillExpirationException,
     BillingViewHealthStatusException,
@@ -2117,8 +2861,8 @@ export const getCostAndUsageComparisons: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CostAndUsageComparison
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(80) as any as S.Schema<GetCostAndUsageComparisonsRequest>,
-  output: __S(85) as any as S.Schema<GetCostAndUsageComparisonsResponse>,
+  input: GetCostAndUsageComparisonsRequest,
+  output: GetCostAndUsageComparisonsResponse,
   errors: [
     BillingViewHealthStatusException,
     DataUnavailableException,
@@ -2168,8 +2912,8 @@ export const getCostAndUsageWithResources: API.OperationMethod<
   GetCostAndUsageWithResourcesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<GetCostAndUsageWithResourcesRequest>,
-  output: __S(87) as any as S.Schema<GetCostAndUsageWithResourcesResponse>,
+  input: GetCostAndUsageWithResourcesRequest,
+  output: GetCostAndUsageWithResourcesResponse,
   errors: [
     BillExpirationException,
     BillingViewHealthStatusException,
@@ -2205,8 +2949,8 @@ export const getCostCategories: API.OperationMethod<
   GetCostCategoriesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<GetCostCategoriesRequest>,
-  output: __S(91) as any as S.Schema<GetCostCategoriesResponse>,
+  input: GetCostCategoriesRequest,
+  output: GetCostCategoriesResponse,
   errors: [
     BillExpirationException,
     BillingViewHealthStatusException,
@@ -2240,8 +2984,8 @@ export const getCostComparisonDrivers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CostComparisonDriver
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(92) as any as S.Schema<GetCostComparisonDriversRequest>,
-  output: __S(97) as any as S.Schema<GetCostComparisonDriversResponse>,
+  input: GetCostComparisonDriversRequest,
+  output: GetCostComparisonDriversResponse,
   errors: [
     BillingViewHealthStatusException,
     DataUnavailableException,
@@ -2276,8 +3020,8 @@ export const getCostForecast: API.OperationMethod<
   GetCostForecastError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<GetCostForecastRequest>,
-  output: __S(101) as any as S.Schema<GetCostForecastResponse>,
+  input: GetCostForecastRequest,
+  output: GetCostForecastResponse,
   errors: [
     BillingViewHealthStatusException,
     DataUnavailableException,
@@ -2308,8 +3052,8 @@ export const getDimensionValues: API.OperationMethod<
   GetDimensionValuesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<GetDimensionValuesRequest>,
-  output: __S(103) as any as S.Schema<GetDimensionValuesResponse>,
+  input: GetDimensionValuesRequest,
+  output: GetDimensionValuesResponse,
   errors: [
     BillExpirationException,
     BillingViewHealthStatusException,
@@ -2370,8 +3114,8 @@ export const getReservationCoverage: API.OperationMethod<
   GetReservationCoverageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<GetReservationCoverageRequest>,
-  output: __S(113) as any as S.Schema<GetReservationCoverageResponse>,
+  input: GetReservationCoverageRequest,
+  output: GetReservationCoverageResponse,
   errors: [DataUnavailableException, InvalidNextTokenException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2410,8 +3154,8 @@ export const getReservationPurchaseRecommendation: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReservationPurchaseRecommendation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(116) as any as S.Schema<GetReservationPurchaseRecommendationRequest>,
-  output: __S(131) as any as S.Schema<GetReservationPurchaseRecommendationResponse>,
+  input: GetReservationPurchaseRecommendationRequest,
+  output: GetReservationPurchaseRecommendationResponse,
   errors: [DataUnavailableException, InvalidNextTokenException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2441,8 +3185,8 @@ export const getReservationUtilization: API.OperationMethod<
   GetReservationUtilizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<GetReservationUtilizationRequest>,
-  output: __S(138) as any as S.Schema<GetReservationUtilizationResponse>,
+  input: GetReservationUtilizationRequest,
+  output: GetReservationUtilizationResponse,
   errors: [DataUnavailableException, InvalidNextTokenException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2469,8 +3213,8 @@ export const getRightsizingRecommendation: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RightsizingRecommendation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(140) as any as S.Schema<GetRightsizingRecommendationRequest>,
-  output: __S(158) as any as S.Schema<GetRightsizingRecommendationResponse>,
+  input: GetRightsizingRecommendationRequest,
+  output: GetRightsizingRecommendationResponse,
   errors: [InvalidNextTokenException, LimitExceededException, RightsizingRecommendationNotEnabled],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2497,8 +3241,8 @@ export const getSavingsPlanPurchaseRecommendationDetails: API.OperationMethod<
   GetSavingsPlanPurchaseRecommendationDetailsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159) as any as S.Schema<GetSavingsPlanPurchaseRecommendationDetailsRequest>,
-  output: __S(161) as any as S.Schema<GetSavingsPlanPurchaseRecommendationDetailsResponse>,
+  input: GetSavingsPlanPurchaseRecommendationDetailsRequest,
+  output: GetSavingsPlanPurchaseRecommendationDetailsResponse,
   errors: [DataUnavailableException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2535,8 +3279,8 @@ export const getSavingsPlansCoverage: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(162) as any as S.Schema<GetSavingsPlansCoverageRequest>,
-  output: __S(166) as any as S.Schema<GetSavingsPlansCoverageResponse>,
+  input: GetSavingsPlansCoverageRequest,
+  output: GetSavingsPlansCoverageResponse,
   errors: [DataUnavailableException, InvalidNextTokenException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2564,8 +3308,8 @@ export const getSavingsPlansPurchaseRecommendation: API.OperationMethod<
   GetSavingsPlansPurchaseRecommendationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<GetSavingsPlansPurchaseRecommendationRequest>,
-  output: __S(173) as any as S.Schema<GetSavingsPlansPurchaseRecommendationResponse>,
+  input: GetSavingsPlansPurchaseRecommendationRequest,
+  output: GetSavingsPlansPurchaseRecommendationResponse,
   errors: [InvalidNextTokenException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2591,8 +3335,8 @@ export const getSavingsPlansUtilization: API.OperationMethod<
   GetSavingsPlansUtilizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174) as any as S.Schema<GetSavingsPlansUtilizationRequest>,
-  output: __S(181) as any as S.Schema<GetSavingsPlansUtilizationResponse>,
+  input: GetSavingsPlansUtilizationRequest,
+  output: GetSavingsPlansUtilizationResponse,
   errors: [DataUnavailableException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2623,8 +3367,8 @@ export const getSavingsPlansUtilizationDetails: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(182) as any as S.Schema<GetSavingsPlansUtilizationDetailsRequest>,
-  output: __S(185) as any as S.Schema<GetSavingsPlansUtilizationDetailsResponse>,
+  input: GetSavingsPlansUtilizationDetailsRequest,
+  output: GetSavingsPlansUtilizationDetailsResponse,
   errors: [DataUnavailableException, InvalidNextTokenException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2655,8 +3399,8 @@ export const getTags: API.OperationMethod<
   GetTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<GetTagsRequest>,
-  output: __S(187) as any as S.Schema<GetTagsResponse>,
+  input: GetTagsRequest,
+  output: GetTagsResponse,
   errors: [
     BillExpirationException,
     BillingViewHealthStatusException,
@@ -2688,8 +3432,8 @@ export const getUsageForecast: API.OperationMethod<
   GetUsageForecastError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188) as any as S.Schema<GetUsageForecastRequest>,
-  output: __S(101) as any as S.Schema<GetUsageForecastResponse>,
+  input: GetUsageForecastRequest,
+  output: GetUsageForecastResponse,
   errors: [
     BillingViewHealthStatusException,
     DataUnavailableException,
@@ -2717,8 +3461,8 @@ export const listCommitmentPurchaseAnalyses: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AnalysisSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(189) as any as S.Schema<ListCommitmentPurchaseAnalysesRequest>,
-  output: __S(192) as any as S.Schema<ListCommitmentPurchaseAnalysesResponse>,
+  input: ListCommitmentPurchaseAnalysesRequest,
+  output: ListCommitmentPurchaseAnalysesResponse,
   errors: [DataUnavailableException, InvalidNextTokenException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2745,8 +3489,8 @@ export const listCostAllocationTagBackfillHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CostAllocationTagBackfillRequest
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(193) as any as S.Schema<ListCostAllocationTagBackfillHistoryRequest>,
-  output: __S(196) as any as S.Schema<ListCostAllocationTagBackfillHistoryResponse>,
+  input: ListCostAllocationTagBackfillHistoryRequest,
+  output: ListCostAllocationTagBackfillHistoryResponse,
   errors: [InvalidNextTokenException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2774,8 +3518,8 @@ export const listCostAllocationTags: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CostAllocationTag
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(197) as any as S.Schema<ListCostAllocationTagsRequest>,
-  output: __S(200) as any as S.Schema<ListCostAllocationTagsResponse>,
+  input: ListCostAllocationTagsRequest,
+  output: ListCostAllocationTagsResponse,
   errors: [InvalidNextTokenException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2805,8 +3549,8 @@ export const listCostCategoryDefinitions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CostCategoryReference
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(201) as any as S.Schema<ListCostCategoryDefinitionsRequest>,
-  output: __S(204) as any as S.Schema<ListCostCategoryDefinitionsResponse>,
+  input: ListCostCategoryDefinitionsRequest,
+  output: ListCostCategoryDefinitionsResponse,
   errors: [LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2833,8 +3577,8 @@ export const listCostCategoryResourceAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CostCategoryResourceAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(205) as any as S.Schema<ListCostCategoryResourceAssociationsRequest>,
-  output: __S(208) as any as S.Schema<ListCostCategoryResourceAssociationsResponse>,
+  input: ListCostCategoryResourceAssociationsRequest,
+  output: ListCostCategoryResourceAssociationsResponse,
   errors: [LimitExceededException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2863,8 +3607,8 @@ export const listSavingsPlansPurchaseRecommendationGeneration: API.PaginatedOper
   Credentials | HttpClient.HttpClient,
   GenerationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(209) as any as S.Schema<ListSavingsPlansPurchaseRecommendationGenerationRequest>,
-  output: __S(212) as any as S.Schema<ListSavingsPlansPurchaseRecommendationGenerationResponse>,
+  input: ListSavingsPlansPurchaseRecommendationGenerationRequest,
+  output: ListSavingsPlansPurchaseRecommendationGenerationResponse,
   errors: [DataUnavailableException, InvalidNextTokenException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2891,8 +3635,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(214) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [LimitExceededException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2909,8 +3653,8 @@ export const provideAnomalyFeedback: API.OperationMethod<
   ProvideAnomalyFeedbackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215) as any as S.Schema<ProvideAnomalyFeedbackRequest>,
-  output: __S(216) as any as S.Schema<ProvideAnomalyFeedbackResponse>,
+  input: ProvideAnomalyFeedbackRequest,
+  output: ProvideAnomalyFeedbackResponse,
   errors: [LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2934,8 +3678,8 @@ export const startCommitmentPurchaseAnalysis: API.OperationMethod<
   StartCommitmentPurchaseAnalysisError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217) as any as S.Schema<StartCommitmentPurchaseAnalysisRequest>,
-  output: __S(218) as any as S.Schema<StartCommitmentPurchaseAnalysisResponse>,
+  input: StartCommitmentPurchaseAnalysisRequest,
+  output: StartCommitmentPurchaseAnalysisResponse,
   errors: [
     DataUnavailableException,
     GenerationExistsException,
@@ -2962,8 +3706,8 @@ export const startCostAllocationTagBackfill: API.OperationMethod<
   StartCostAllocationTagBackfillError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219) as any as S.Schema<StartCostAllocationTagBackfillRequest>,
-  output: __S(220) as any as S.Schema<StartCostAllocationTagBackfillResponse>,
+  input: StartCostAllocationTagBackfillRequest,
+  output: StartCostAllocationTagBackfillResponse,
   errors: [BackfillLimitExceededException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2991,8 +3735,8 @@ export const startSavingsPlansPurchaseRecommendationGeneration: API.OperationMet
   StartSavingsPlansPurchaseRecommendationGenerationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221) as any as S.Schema<StartSavingsPlansPurchaseRecommendationGenerationRequest>,
-  output: __S(222) as any as S.Schema<StartSavingsPlansPurchaseRecommendationGenerationResponse>,
+  input: StartSavingsPlansPurchaseRecommendationGenerationRequest,
+  output: StartSavingsPlansPurchaseRecommendationGenerationResponse,
   errors: [
     DataUnavailableException,
     GenerationExistsException,
@@ -3026,8 +3770,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223) as any as S.Schema<TagResourceRequest>,
-  output: __S(26) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [LimitExceededException, ResourceNotFoundException, TooManyTagsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3045,8 +3789,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224) as any as S.Schema<UntagResourceRequest>,
-  output: __S(26) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [LimitExceededException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3067,8 +3811,8 @@ export const updateAnomalyMonitor: API.OperationMethod<
   UpdateAnomalyMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225) as any as S.Schema<UpdateAnomalyMonitorRequest>,
-  output: __S(10) as any as S.Schema<UpdateAnomalyMonitorResponse>,
+  input: UpdateAnomalyMonitorRequest,
+  output: UpdateAnomalyMonitorResponse,
   errors: [LimitExceededException, UnknownMonitorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3093,8 +3837,8 @@ export const updateAnomalySubscription: API.OperationMethod<
   UpdateAnomalySubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226) as any as S.Schema<UpdateAnomalySubscriptionRequest>,
-  output: __S(15) as any as S.Schema<UpdateAnomalySubscriptionResponse>,
+  input: UpdateAnomalySubscriptionRequest,
+  output: UpdateAnomalySubscriptionResponse,
   errors: [LimitExceededException, UnknownMonitorException, UnknownSubscriptionException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3114,8 +3858,8 @@ export const updateCostAllocationTagsStatus: API.OperationMethod<
   UpdateCostAllocationTagsStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229) as any as S.Schema<UpdateCostAllocationTagsStatusRequest>,
-  output: __S(232) as any as S.Schema<UpdateCostAllocationTagsStatusResponse>,
+  input: UpdateCostAllocationTagsStatusRequest,
+  output: UpdateCostAllocationTagsStatusResponse,
   errors: [LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3138,8 +3882,8 @@ export const updateCostCategoryDefinition: API.OperationMethod<
   UpdateCostCategoryDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233) as any as S.Schema<UpdateCostCategoryDefinitionRequest>,
-  output: __S(24) as any as S.Schema<UpdateCostCategoryDefinitionResponse>,
+  input: UpdateCostCategoryDefinitionRequest,
+  output: UpdateCostCategoryDefinitionResponse,
   errors: [LimitExceededException, ResourceNotFoundException, ServiceQuotaExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3151,43 +3895,43 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<Expression> => __S(5)).annotate({
+        /*@__PURE__*/ S.suspend((): S.Schema<Expression> => Expression).annotate({
           identifier: "Expression",
         }),
       );
     case 1:
       return S.Array(S.String);
     case 2:
-      return S.Array(S.String);
+      return S.Array(MatchOption);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Key: S.optional(S.String),
-          Values: S.optional(__S(1)),
-          MatchOptions: S.optional(__S(2)),
+          Key: S.optional(Dimension),
+          Values: S.optional(Values),
+          MatchOptions: S.optional(MatchOptions),
         }),
       ).annotate({ identifier: "DimensionValues" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           Key: S.optional(S.String),
-          Values: S.optional(__S(1)),
-          MatchOptions: S.optional(__S(2)),
+          Values: S.optional(Values),
+          MatchOptions: S.optional(MatchOptions),
         }),
       ).annotate({ identifier: "TagValues" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Or: S.optional(S.suspend(() => __S(0)).annotate({ identifier: "Expressions" })),
-          And: S.optional(S.suspend(() => __S(0)).annotate({ identifier: "Expressions" })),
+          Or: S.optional(S.suspend(() => Expressions).annotate({ identifier: "Expressions" })),
+          And: S.optional(S.suspend(() => Expressions).annotate({ identifier: "Expressions" })),
           Not: S.optional(
-            S.suspend((): S.Schema<Expression> => __S(5)).annotate({
+            S.suspend((): S.Schema<Expression> => Expression).annotate({
               identifier: "Expression",
             }),
           ),
-          Dimensions: S.optional(__S(3)),
-          Tags: S.optional(__S(4)),
-          CostCategories: S.optional(__S(4)),
+          Dimensions: S.optional(DimensionValues),
+          Tags: S.optional(TagValues),
+          CostCategories: S.optional(CostCategoryValues),
         }),
       ).annotate({ identifier: "Expression" });
     case 6:
@@ -3198,9 +3942,9 @@ function __c0(j: number): any {
           CreationDate: S.optional(S.String),
           LastUpdatedDate: S.optional(S.String),
           LastEvaluatedDate: S.optional(S.String),
-          MonitorType: S.String,
-          MonitorDimension: S.optional(S.String),
-          MonitorSpecification: S.optional(__S(5)),
+          MonitorType: MonitorType,
+          MonitorDimension: S.optional(MonitorDimension),
+          MonitorSpecification: S.optional(Expression),
           DimensionalValueCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AnomalyMonitor" });
@@ -3213,12 +3957,12 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(ResourceTag);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AnomalyMonitor: __S(6),
-          ResourceTags: S.optional(__S(8)),
+          AnomalyMonitor: AnomalyMonitor,
+          ResourceTags: S.optional(ResourceTagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateAnomalyMonitorRequest",
@@ -3231,30 +3975,30 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Address: S.optional(S.String),
-          Type: S.optional(S.String),
-          Status: S.optional(S.String),
+          Type: S.optional(SubscriberType),
+          Status: S.optional(SubscriberStatus),
         }),
       ).annotate({ identifier: "Subscriber" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(Subscriber);
     case 5:
       return S.suspend(() =>
         S.Struct({
           SubscriptionArn: S.optional(S.String),
           AccountId: S.optional(S.String),
-          MonitorArnList: __S(1),
-          Subscribers: __S(12),
+          MonitorArnList: MonitorArnList,
+          Subscribers: Subscribers,
           Threshold: S.optional(S.Number),
-          Frequency: S.String,
+          Frequency: AnomalySubscriptionFrequency,
           SubscriptionName: S.String,
-          ThresholdExpression: S.optional(__S(5)),
+          ThresholdExpression: S.optional(Expression),
         }),
       ).annotate({ identifier: "AnomalySubscription" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          AnomalySubscription: __S(13),
-          ResourceTags: S.optional(__S(8)),
+          AnomalySubscription: AnomalySubscription,
+          ResourceTags: S.optional(ResourceTagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateAnomalySubscriptionRequest",
@@ -3270,7 +4014,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          DimensionName: S.optional(S.String),
+          DimensionName: S.optional(CostCategoryInheritedValueDimensionName),
           DimensionKey: S.optional(S.String),
         }),
       ).annotate({
@@ -3280,47 +4024,47 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Value: S.optional(S.String),
-          Rule: S.optional(__S(5)),
-          InheritedValue: S.optional(__S(16)),
-          Type: S.optional(S.String),
+          Rule: S.optional(Expression),
+          InheritedValue: S.optional(CostCategoryInheritedValueDimension),
+          Type: S.optional(CostCategoryRuleType),
         }),
       ).annotate({ identifier: "CostCategoryRule" });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(CostCategoryRule);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Type: S.String,
-          Values: __S(1),
+          Type: CostCategorySplitChargeRuleParameterType,
+          Values: CostCategorySplitChargeRuleParameterValuesList,
         }),
       ).annotate({
         identifier: "CostCategorySplitChargeRuleParameter",
       });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(CostCategorySplitChargeRuleParameter);
     case 5:
       return S.suspend(() =>
         S.Struct({
           Source: S.String,
-          Targets: __S(1),
-          Method: S.String,
-          Parameters: S.optional(__S(20)),
+          Targets: CostCategorySplitChargeRuleTargetsList,
+          Method: CostCategorySplitChargeMethod,
+          Parameters: S.optional(CostCategorySplitChargeRuleParametersList),
         }),
       ).annotate({
         identifier: "CostCategorySplitChargeRule",
       });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(CostCategorySplitChargeRule);
     case 7:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           EffectiveStart: S.optional(S.String),
-          RuleVersion: S.String,
-          Rules: __S(18),
+          RuleVersion: CostCategoryRuleVersion,
+          Rules: CostCategoryRulesList,
           DefaultValue: S.optional(S.String),
-          SplitChargeRules: S.optional(__S(22)),
-          ResourceTags: S.optional(__S(8)),
+          SplitChargeRules: S.optional(CostCategorySplitChargeRulesList),
+          ResourceTags: S.optional(ResourceTagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateCostCategoryDefinitionRequest",
@@ -3388,14 +4132,14 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Component: S.optional(S.String),
-          Status: S.optional(S.String),
+          Component: S.optional(CostCategoryStatusComponent),
+          Status: S.optional(CostCategoryStatus),
         }),
       ).annotate({
         identifier: "CostCategoryProcessingStatus",
       });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(CostCategoryProcessingStatus);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3403,15 +4147,15 @@ function __c4(j: number): any {
           EffectiveStart: S.String,
           EffectiveEnd: S.optional(S.String),
           Name: S.String,
-          RuleVersion: S.String,
-          Rules: __S(18),
-          SplitChargeRules: S.optional(__S(22)),
-          ProcessingStatus: S.optional(__S(33)),
+          RuleVersion: CostCategoryRuleVersion,
+          Rules: CostCategoryRulesList,
+          SplitChargeRules: S.optional(CostCategorySplitChargeRulesList),
+          ProcessingStatus: S.optional(CostCategoryProcessingStatusList),
           DefaultValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "CostCategory" });
     case 3:
-      return S.suspend(() => S.Struct({ CostCategory: S.optional(__S(34)) })).annotate({
+      return S.suspend(() => S.Struct({ CostCategory: S.optional(CostCategory) })).annotate({
         identifier: "DescribeCostCategoryDefinitionResponse",
       });
     case 4:
@@ -3421,7 +4165,7 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          NumericOperator: S.String,
+          NumericOperator: NumericOperator,
           StartValue: S.Number,
           EndValue: S.optional(S.Number),
         }),
@@ -3430,9 +4174,9 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           MonitorArn: S.optional(S.String),
-          DateInterval: __S(36),
-          Feedback: S.optional(S.String),
-          TotalImpact: S.optional(__S(37)),
+          DateInterval: AnomalyDateInterval,
+          Feedback: S.optional(AnomalyFeedbackType),
+          TotalImpact: S.optional(TotalImpactFilter),
           NextPageToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -3453,11 +4197,11 @@ function __c5(j: number): any {
           LinkedAccount: S.optional(S.String),
           LinkedAccountName: S.optional(S.String),
           UsageType: S.optional(S.String),
-          Impact: S.optional(__S(39)),
+          Impact: S.optional(RootCauseImpact),
         }),
       ).annotate({ identifier: "RootCause" });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(RootCause);
     case 2:
       return S.suspend(() => S.Struct({ MaxScore: S.Number, CurrentScore: S.Number })).annotate({
         identifier: "AnomalyScore",
@@ -3479,23 +4223,23 @@ function __c5(j: number): any {
           AnomalyStartDate: S.optional(S.String),
           AnomalyEndDate: S.optional(S.String),
           DimensionValue: S.optional(S.String),
-          RootCauses: S.optional(__S(41)),
-          AnomalyScore: __S(42),
-          Impact: __S(43),
+          RootCauses: S.optional(RootCauses),
+          AnomalyScore: AnomalyScore,
+          Impact: Impact,
           MonitorArn: S.String,
-          Feedback: S.optional(S.String),
+          Feedback: S.optional(AnomalyFeedbackType),
         }),
       ).annotate({ identifier: "Anomaly" });
     case 5:
-      return S.Array(__S(44));
+      return S.Array(Anomaly);
     case 6:
       return S.suspend(() =>
-        S.Struct({ Anomalies: __S(45), NextPageToken: S.optional(S.String) }),
+        S.Struct({ Anomalies: Anomalies, NextPageToken: S.optional(S.String) }),
       ).annotate({ identifier: "GetAnomaliesResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          MonitorArnList: S.optional(__S(1)),
+          MonitorArnList: S.optional(Values),
           NextPageToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -3507,17 +4251,17 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(6));
+      return S.Array(AnomalyMonitor);
     case 1:
       return S.suspend(() =>
-        S.Struct({ AnomalyMonitors: __S(48), NextPageToken: S.optional(S.String) }),
+        S.Struct({ AnomalyMonitors: AnomalyMonitors, NextPageToken: S.optional(S.String) }),
       ).annotate({
         identifier: "GetAnomalyMonitorsResponse",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          SubscriptionArnList: S.optional(__S(1)),
+          SubscriptionArnList: S.optional(Values),
           MonitorArn: S.optional(S.String),
           NextPageToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
@@ -3526,11 +4270,11 @@ function __c6(j: number): any {
         identifier: "GetAnomalySubscriptionsRequest",
       });
     case 3:
-      return S.Array(__S(13));
+      return S.Array(AnomalySubscription);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          AnomalySubscriptions: __S(51),
+          AnomalySubscriptions: AnomalySubscriptions,
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3539,9 +4283,9 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Granularity: S.String,
-          Services: S.optional(__S(1)),
-          ApproximationDimension: S.String,
+          Granularity: Granularity,
+          Services: S.optional(UsageServices),
+          ApproximationDimension: ApproximationDimension,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetApproximateUsageRecordsRequest",
@@ -3559,9 +4303,9 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Services: S.optional(__S(54)),
+          Services: S.optional(ApproximateUsageRecordsPerService),
           TotalRecords: S.optional(S.Number),
-          LookbackPeriod: S.optional(__S(55)),
+          LookbackPeriod: S.optional(DateInterval),
         }),
       ).annotate({
         identifier: "GetApproximateUsageRecordsResponse",
@@ -3587,7 +4331,7 @@ function __c7(j: number): any {
         identifier: "RecommendationDetailHourlyMetrics",
       });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(RecommendationDetailHourlyMetrics);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3612,7 +4356,7 @@ function __c7(j: number): any {
           LatestUsageTimestamp: S.optional(S.String),
           UpfrontCost: S.optional(S.String),
           AdditionalMetadata: S.optional(S.String),
-          MetricsOverLookbackPeriod: S.optional(__S(59)),
+          MetricsOverLookbackPeriod: S.optional(MetricsOverLookbackPeriod),
         }),
       ).annotate({
         identifier: "SavingsPlansPurchaseAnalysisDetails",
@@ -3620,23 +4364,23 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          SavingsPlansPurchaseAnalysisDetails: S.optional(__S(60)),
+          SavingsPlansPurchaseAnalysisDetails: S.optional(SavingsPlansPurchaseAnalysisDetails),
         }),
       ).annotate({ identifier: "AnalysisDetails" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          PaymentOption: S.optional(S.String),
-          SavingsPlansType: S.optional(S.String),
+          PaymentOption: S.optional(PaymentOption),
+          SavingsPlansType: S.optional(SupportedSavingsPlansType),
           Region: S.optional(S.String),
           InstanceFamily: S.optional(S.String),
-          TermInYears: S.optional(S.String),
+          TermInYears: S.optional(TermInYears),
           SavingsPlansCommitment: S.optional(S.Number),
           OfferingId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SavingsPlans" });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(SavingsPlans);
   }
 }
 function __c8(j: number): any {
@@ -3644,12 +4388,12 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AccountScope: S.optional(S.String),
+          AccountScope: S.optional(AccountScope),
           AccountId: S.optional(S.String),
-          AnalysisType: S.String,
-          SavingsPlansToAdd: __S(63),
-          SavingsPlansToExclude: S.optional(__S(1)),
-          LookBackTimePeriod: __S(55),
+          AnalysisType: AnalysisType,
+          SavingsPlansToAdd: SavingsPlansToAdd,
+          SavingsPlansToExclude: S.optional(SavingsPlansToExclude),
+          LookBackTimePeriod: DateInterval,
           SavingsPlansTargetCoverage: S.optional(S.Number),
         }),
       ).annotate({
@@ -3658,7 +4402,9 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          SavingsPlansPurchaseAnalysisConfiguration: S.optional(__S(64)),
+          SavingsPlansPurchaseAnalysisConfiguration: S.optional(
+            SavingsPlansPurchaseAnalysisConfiguration,
+          ),
         }),
       ).annotate({
         identifier: "CommitmentPurchaseAnalysisConfiguration",
@@ -3670,28 +4416,28 @@ function __c8(j: number): any {
           AnalysisCompletionTime: S.optional(S.String),
           AnalysisStartedTime: S.String,
           AnalysisId: S.String,
-          AnalysisStatus: S.String,
-          ErrorCode: S.optional(S.String),
-          AnalysisDetails: S.optional(__S(61)),
-          CommitmentPurchaseAnalysisConfiguration: __S(65),
+          AnalysisStatus: AnalysisStatus,
+          ErrorCode: S.optional(ErrorCode),
+          AnalysisDetails: S.optional(AnalysisDetails),
+          CommitmentPurchaseAnalysisConfiguration: CommitmentPurchaseAnalysisConfiguration,
         }),
       ).annotate({
         identifier: "GetCommitmentPurchaseAnalysisResponse",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ Type: S.optional(S.String), Key: S.optional(S.String) }),
+        S.Struct({ Type: S.optional(GroupDefinitionType), Key: S.optional(S.String) }),
       ).annotate({ identifier: "GroupDefinition" });
     case 4:
-      return S.Array(__S(67));
+      return S.Array(GroupDefinition);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          TimePeriod: __S(55),
-          Granularity: S.String,
-          Filter: S.optional(__S(5)),
-          Metrics: __S(1),
-          GroupBy: S.optional(__S(68)),
+          TimePeriod: DateInterval,
+          Granularity: Granularity,
+          Filter: S.optional(Expression),
+          Metrics: MetricNames,
+          GroupBy: S.optional(GroupDefinitions),
           BillingViewArn: S.optional(S.String),
           NextPageToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -3701,45 +4447,45 @@ function __c8(j: number): any {
         S.Struct({ Amount: S.optional(S.String), Unit: S.optional(S.String) }),
       ).annotate({ identifier: "MetricValue" });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(70).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ MetricValue.pipe(S.optional));
   }
 }
 function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Keys: S.optional(__S(1)), Metrics: S.optional(__S(71)) }),
+        S.Struct({ Keys: S.optional(Keys), Metrics: S.optional(Metrics) }),
       ).annotate({ identifier: "Group" });
     case 1:
-      return S.Array(__S(72));
+      return S.Array(Group);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          TimePeriod: S.optional(__S(55)),
-          Total: S.optional(__S(71)),
-          Groups: S.optional(__S(73)),
+          TimePeriod: S.optional(DateInterval),
+          Total: S.optional(Metrics),
+          Groups: S.optional(Groups),
           Estimated: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ResultByTime" });
     case 3:
-      return S.Array(__S(74));
+      return S.Array(ResultByTime);
     case 4:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 5:
       return S.suspend(() =>
-        S.Struct({ Value: S.optional(S.String), Attributes: S.optional(__S(76)) }),
+        S.Struct({ Value: S.optional(S.String), Attributes: S.optional(Attributes) }),
       ).annotate({
         identifier: "DimensionValuesWithAttributes",
       });
     case 6:
-      return S.Array(__S(77));
+      return S.Array(DimensionValuesWithAttributes);
     case 7:
       return S.suspend(() =>
         S.Struct({
           NextPageToken: S.optional(S.String),
-          GroupDefinitions: S.optional(__S(68)),
-          ResultsByTime: S.optional(__S(75)),
-          DimensionValueAttributes: S.optional(__S(78)),
+          GroupDefinitions: S.optional(GroupDefinitions),
+          ResultsByTime: S.optional(ResultsByTime),
+          DimensionValueAttributes: S.optional(DimensionValuesWithAttributesList),
         }),
       ).annotate({ identifier: "GetCostAndUsageResponse" });
   }
@@ -3750,11 +4496,11 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           BillingViewArn: S.optional(S.String),
-          BaselineTimePeriod: __S(55),
-          ComparisonTimePeriod: __S(55),
+          BaselineTimePeriod: DateInterval,
+          ComparisonTimePeriod: DateInterval,
           MetricForComparison: S.String,
-          Filter: S.optional(__S(5)),
-          GroupBy: S.optional(__S(68)),
+          Filter: S.optional(Expression),
+          GroupBy: S.optional(GroupDefinitions),
           MaxResults: S.optional(S.Number),
           NextPageToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -3771,21 +4517,21 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "ComparisonMetricValue" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(81).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ ComparisonMetricValue.pipe(S.optional));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          CostAndUsageSelector: S.optional(__S(5)),
-          Metrics: S.optional(__S(82)),
+          CostAndUsageSelector: S.optional(Expression),
+          Metrics: S.optional(ComparisonMetrics),
         }),
       ).annotate({ identifier: "CostAndUsageComparison" });
     case 4:
-      return S.Array(__S(83));
+      return S.Array(CostAndUsageComparison);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          CostAndUsageComparisons: S.optional(__S(84)),
-          TotalCostAndUsage: S.optional(__S(82)),
+          CostAndUsageComparisons: S.optional(CostAndUsageComparisons),
+          TotalCostAndUsage: S.optional(ComparisonMetrics),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3794,11 +4540,11 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          TimePeriod: __S(55),
-          Granularity: S.String,
-          Filter: __S(5),
-          Metrics: S.optional(__S(1)),
-          GroupBy: S.optional(__S(68)),
+          TimePeriod: DateInterval,
+          Granularity: Granularity,
+          Filter: Expression,
+          Metrics: S.optional(MetricNames),
+          GroupBy: S.optional(GroupDefinitions),
           BillingViewArn: S.optional(S.String),
           NextPageToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -3809,9 +4555,9 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextPageToken: S.optional(S.String),
-          GroupDefinitions: S.optional(__S(68)),
-          ResultsByTime: S.optional(__S(75)),
-          DimensionValueAttributes: S.optional(__S(78)),
+          GroupDefinitions: S.optional(GroupDefinitions),
+          ResultsByTime: S.optional(ResultsByTime),
+          DimensionValueAttributes: S.optional(DimensionValuesWithAttributesList),
         }),
       ).annotate({
         identifier: "GetCostAndUsageWithResourcesResponse",
@@ -3821,19 +4567,19 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Key: S.String, SortOrder: S.optional(S.String) })).annotate(
-        { identifier: "SortDefinition" },
-      );
+      return S.suspend(() =>
+        S.Struct({ Key: S.String, SortOrder: S.optional(SortOrder) }),
+      ).annotate({ identifier: "SortDefinition" });
     case 1:
-      return S.Array(__S(88));
+      return S.Array(SortDefinition);
     case 2:
       return S.suspend(() =>
         S.Struct({
           SearchString: S.optional(S.String),
-          TimePeriod: __S(55),
+          TimePeriod: DateInterval,
           CostCategoryName: S.optional(S.String),
-          Filter: S.optional(__S(5)),
-          SortBy: S.optional(__S(89)),
+          Filter: S.optional(Expression),
+          SortBy: S.optional(SortDefinitions),
           BillingViewArn: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           NextPageToken: S.optional(S.String),
@@ -3843,8 +4589,8 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextPageToken: S.optional(S.String),
-          CostCategoryNames: S.optional(__S(1)),
-          CostCategoryValues: S.optional(__S(1)),
+          CostCategoryNames: S.optional(CostCategoryNamesList),
+          CostCategoryValues: S.optional(CostCategoryValuesList),
           ReturnSize: S.Number,
           TotalSize: S.Number,
         }),
@@ -3855,11 +4601,11 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           BillingViewArn: S.optional(S.String),
-          BaselineTimePeriod: __S(55),
-          ComparisonTimePeriod: __S(55),
+          BaselineTimePeriod: DateInterval,
+          ComparisonTimePeriod: DateInterval,
           MetricForComparison: S.String,
-          Filter: S.optional(__S(5)),
-          GroupBy: S.optional(__S(68)),
+          Filter: S.optional(Expression),
+          GroupBy: S.optional(GroupDefinitions),
           MaxResults: S.optional(S.Number),
           NextPageToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -3871,17 +4617,17 @@ function __c11(j: number): any {
         S.Struct({
           Type: S.optional(S.String),
           Name: S.optional(S.String),
-          Metrics: S.optional(__S(82)),
+          Metrics: S.optional(ComparisonMetrics),
         }),
       ).annotate({ identifier: "CostDriver" });
     case 6:
-      return S.Array(__S(93));
+      return S.Array(CostDriver);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          CostSelector: S.optional(__S(5)),
-          Metrics: S.optional(__S(82)),
-          CostDrivers: S.optional(__S(94)),
+          CostSelector: S.optional(Expression),
+          Metrics: S.optional(ComparisonMetrics),
+          CostDrivers: S.optional(CostDrivers),
         }),
       ).annotate({ identifier: "CostComparisonDriver" });
   }
@@ -3889,11 +4635,11 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95));
+      return S.Array(CostComparisonDriver);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          CostComparisonDrivers: S.optional(__S(96)),
+          CostComparisonDrivers: S.optional(CostComparisonDrivers),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3902,10 +4648,10 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          TimePeriod: __S(55),
-          Metric: S.String,
-          Granularity: S.String,
-          Filter: S.optional(__S(5)),
+          TimePeriod: DateInterval,
+          Metric: Metric,
+          Granularity: Granularity,
+          Filter: S.optional(Expression),
           BillingViewArn: S.optional(S.String),
           PredictionIntervalLevel: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -3913,30 +4659,30 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          TimePeriod: S.optional(__S(55)),
+          TimePeriod: S.optional(DateInterval),
           MeanValue: S.optional(S.String),
           PredictionIntervalLowerBound: S.optional(S.String),
           PredictionIntervalUpperBound: S.optional(S.String),
         }),
       ).annotate({ identifier: "ForecastResult" });
     case 4:
-      return S.Array(__S(99));
+      return S.Array(ForecastResult);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Total: S.optional(__S(70)),
-          ForecastResultsByTime: S.optional(__S(100)),
+          Total: S.optional(MetricValue),
+          ForecastResultsByTime: S.optional(ForecastResultsByTime),
         }),
       ).annotate({ identifier: "GetCostForecastResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           SearchString: S.optional(S.String),
-          TimePeriod: __S(55),
-          Dimension: S.String,
-          Context: S.optional(S.String),
-          Filter: S.optional(__S(5)),
-          SortBy: S.optional(__S(89)),
+          TimePeriod: DateInterval,
+          Dimension: Dimension,
+          Context: S.optional(Context),
+          Filter: S.optional(Expression),
+          SortBy: S.optional(SortDefinitions),
           BillingViewArn: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           NextPageToken: S.optional(S.String),
@@ -3947,7 +4693,7 @@ function __c12(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          DimensionValues: __S(78),
+          DimensionValues: DimensionValuesWithAttributesList,
           ReturnSize: S.Number,
           TotalSize: S.Number,
           NextPageToken: S.optional(S.String),
@@ -3962,13 +4708,13 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          TimePeriod: __S(55),
-          GroupBy: S.optional(__S(68)),
-          Granularity: S.optional(S.String),
-          Filter: S.optional(__S(5)),
-          Metrics: S.optional(__S(1)),
+          TimePeriod: DateInterval,
+          GroupBy: S.optional(GroupDefinitions),
+          Granularity: S.optional(Granularity),
+          Filter: S.optional(Expression),
+          Metrics: S.optional(MetricNames),
           NextPageToken: S.optional(S.String),
-          SortBy: S.optional(__S(88)),
+          SortBy: S.optional(SortDefinition),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -3999,23 +4745,23 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          CoverageHours: S.optional(__S(105)),
-          CoverageNormalizedUnits: S.optional(__S(106)),
-          CoverageCost: S.optional(__S(107)),
+          CoverageHours: S.optional(CoverageHours),
+          CoverageNormalizedUnits: S.optional(CoverageNormalizedUnits),
+          CoverageCost: S.optional(CoverageCost),
         }),
       ).annotate({ identifier: "Coverage" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Attributes: S.optional(__S(76)), Coverage: S.optional(__S(108)) }),
+        S.Struct({ Attributes: S.optional(Attributes), Coverage: S.optional(Coverage) }),
       ).annotate({ identifier: "ReservationCoverageGroup" });
     case 6:
-      return S.Array(__S(109));
+      return S.Array(ReservationCoverageGroup);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          TimePeriod: S.optional(__S(55)),
-          Groups: S.optional(__S(110)),
-          Total: S.optional(__S(108)),
+          TimePeriod: S.optional(DateInterval),
+          Groups: S.optional(ReservationCoverageGroups),
+          Total: S.optional(Coverage),
         }),
       ).annotate({ identifier: "CoverageByTime" });
   }
@@ -4023,36 +4769,36 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(111));
+      return S.Array(CoverageByTime);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          CoveragesByTime: __S(112),
-          Total: S.optional(__S(108)),
+          CoveragesByTime: CoveragesByTime,
+          Total: S.optional(Coverage),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetReservationCoverageResponse",
       });
     case 2:
-      return S.suspend(() => S.Struct({ OfferingClass: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ OfferingClass: S.optional(OfferingClass) })).annotate({
         identifier: "EC2Specification",
       });
     case 3:
-      return S.suspend(() => S.Struct({ EC2Specification: S.optional(__S(114)) })).annotate({
-        identifier: "ServiceSpecification",
-      });
+      return S.suspend(() => S.Struct({ EC2Specification: S.optional(EC2Specification) })).annotate(
+        { identifier: "ServiceSpecification" },
+      );
     case 4:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.optional(S.String),
           Service: S.String,
-          Filter: S.optional(__S(5)),
-          AccountScope: S.optional(S.String),
-          LookbackPeriodInDays: S.optional(S.String),
-          TermInYears: S.optional(S.String),
-          PaymentOption: S.optional(S.String),
-          ServiceSpecification: S.optional(__S(115)),
+          Filter: S.optional(Expression),
+          AccountScope: S.optional(AccountScope),
+          LookbackPeriodInDays: S.optional(LookbackPeriodInDays),
+          TermInYears: S.optional(TermInYears),
+          PaymentOption: S.optional(PaymentOption),
+          ServiceSpecification: S.optional(ServiceSpecification),
           PageSize: S.optional(S.Number),
           NextPageToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -4137,12 +4883,12 @@ function __c15(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          EC2InstanceDetails: S.optional(__S(118)),
-          RDSInstanceDetails: S.optional(__S(119)),
-          RedshiftInstanceDetails: S.optional(__S(120)),
-          ElastiCacheInstanceDetails: S.optional(__S(121)),
-          ESInstanceDetails: S.optional(__S(122)),
-          MemoryDBInstanceDetails: S.optional(__S(120)),
+          EC2InstanceDetails: S.optional(EC2InstanceDetails),
+          RDSInstanceDetails: S.optional(RDSInstanceDetails),
+          RedshiftInstanceDetails: S.optional(RedshiftInstanceDetails),
+          ElastiCacheInstanceDetails: S.optional(ElastiCacheInstanceDetails),
+          ESInstanceDetails: S.optional(ESInstanceDetails),
+          MemoryDBInstanceDetails: S.optional(MemoryDBInstanceDetails),
         }),
       ).annotate({ identifier: "InstanceDetails" });
     case 4:
@@ -4150,14 +4896,14 @@ function __c15(j: number): any {
         S.Struct({ CapacityUnits: S.optional(S.String), Region: S.optional(S.String) }),
       ).annotate({ identifier: "DynamoDBCapacityDetails" });
     case 5:
-      return S.suspend(() => S.Struct({ DynamoDBCapacityDetails: S.optional(__S(124)) })).annotate({
-        identifier: "ReservedCapacityDetails",
-      });
+      return S.suspend(() =>
+        S.Struct({ DynamoDBCapacityDetails: S.optional(DynamoDBCapacityDetails) }),
+      ).annotate({ identifier: "ReservedCapacityDetails" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.optional(S.String),
-          InstanceDetails: S.optional(__S(123)),
+          InstanceDetails: S.optional(InstanceDetails),
           RecommendedNumberOfInstancesToPurchase: S.optional(S.String),
           RecommendedNormalizedUnitsToPurchase: S.optional(S.String),
           MinimumNumberOfInstancesUsedPerHour: S.optional(S.String),
@@ -4175,7 +4921,7 @@ function __c15(j: number): any {
           EstimatedReservationCostForLookbackPeriod: S.optional(S.String),
           UpfrontCost: S.optional(S.String),
           RecurringStandardMonthlyCost: S.optional(S.String),
-          ReservedCapacityDetails: S.optional(__S(125)),
+          ReservedCapacityDetails: S.optional(ReservedCapacityDetails),
           RecommendedNumberOfCapacityUnitsToPurchase: S.optional(S.String),
           MinimumNumberOfCapacityUnitsUsedPerHour: S.optional(S.String),
           MaximumNumberOfCapacityUnitsUsedPerHour: S.optional(S.String),
@@ -4185,7 +4931,7 @@ function __c15(j: number): any {
         identifier: "ReservationPurchaseRecommendationDetail",
       });
     case 7:
-      return S.Array(__S(126));
+      return S.Array(ReservationPurchaseRecommendationDetail);
   }
 }
 function __c16(j: number): any {
@@ -4203,24 +4949,24 @@ function __c16(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AccountScope: S.optional(S.String),
-          LookbackPeriodInDays: S.optional(S.String),
-          TermInYears: S.optional(S.String),
-          PaymentOption: S.optional(S.String),
-          ServiceSpecification: S.optional(__S(115)),
-          RecommendationDetails: S.optional(__S(127)),
-          RecommendationSummary: S.optional(__S(128)),
+          AccountScope: S.optional(AccountScope),
+          LookbackPeriodInDays: S.optional(LookbackPeriodInDays),
+          TermInYears: S.optional(TermInYears),
+          PaymentOption: S.optional(PaymentOption),
+          ServiceSpecification: S.optional(ServiceSpecification),
+          RecommendationDetails: S.optional(ReservationPurchaseRecommendationDetails),
+          RecommendationSummary: S.optional(ReservationPurchaseRecommendationSummary),
         }),
       ).annotate({
         identifier: "ReservationPurchaseRecommendation",
       });
     case 2:
-      return S.Array(__S(129));
+      return S.Array(ReservationPurchaseRecommendation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Metadata: S.optional(__S(117)),
-          Recommendations: S.optional(__S(130)),
+          Metadata: S.optional(ReservationPurchaseRecommendationMetadata),
+          Recommendations: S.optional(ReservationPurchaseRecommendations),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4229,11 +4975,11 @@ function __c16(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          TimePeriod: __S(55),
-          GroupBy: S.optional(__S(68)),
-          Granularity: S.optional(S.String),
-          Filter: S.optional(__S(5)),
-          SortBy: S.optional(__S(88)),
+          TimePeriod: DateInterval,
+          GroupBy: S.optional(GroupDefinitions),
+          Granularity: S.optional(Granularity),
+          Filter: S.optional(Expression),
+          SortBy: S.optional(SortDefinition),
           NextPageToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -4267,14 +5013,14 @@ function __c16(j: number): any {
         S.Struct({
           Key: S.optional(S.String),
           Value: S.optional(S.String),
-          Attributes: S.optional(__S(76)),
-          Utilization: S.optional(__S(133)),
+          Attributes: S.optional(Attributes),
+          Utilization: S.optional(ReservationAggregates),
         }),
       ).annotate({
         identifier: "ReservationUtilizationGroup",
       });
     case 7:
-      return S.Array(__S(134));
+      return S.Array(ReservationUtilizationGroup);
   }
 }
 function __c17(j: number): any {
@@ -4282,18 +5028,18 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          TimePeriod: S.optional(__S(55)),
-          Groups: S.optional(__S(135)),
-          Total: S.optional(__S(133)),
+          TimePeriod: S.optional(DateInterval),
+          Groups: S.optional(ReservationUtilizationGroups),
+          Total: S.optional(ReservationAggregates),
         }),
       ).annotate({ identifier: "UtilizationByTime" });
     case 1:
-      return S.Array(__S(136));
+      return S.Array(UtilizationByTime);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          UtilizationsByTime: __S(137),
-          Total: S.optional(__S(133)),
+          UtilizationsByTime: UtilizationsByTime,
+          Total: S.optional(ReservationAggregates),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4301,15 +5047,15 @@ function __c17(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ RecommendationTarget: S.String, BenefitsConsidered: S.Boolean }),
+        S.Struct({ RecommendationTarget: RecommendationTarget, BenefitsConsidered: S.Boolean }),
       ).annotate({
         identifier: "RightsizingRecommendationConfiguration",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(5)),
-          Configuration: S.optional(__S(139)),
+          Filter: S.optional(Expression),
+          Configuration: S.optional(RightsizingRecommendationConfiguration),
           Service: S.String,
           PageSize: S.optional(S.Number),
           NextPageToken: S.optional(S.String),
@@ -4322,7 +5068,7 @@ function __c17(j: number): any {
         S.Struct({
           RecommendationId: S.optional(S.String),
           GenerationTimestamp: S.optional(S.String),
-          LookbackPeriodInDays: S.optional(S.String),
+          LookbackPeriodInDays: S.optional(LookbackPeriodInDays),
           AdditionalMetadata: S.optional(S.String),
         }),
       ).annotate({
@@ -4340,7 +5086,7 @@ function __c17(j: number): any {
         identifier: "RightsizingRecommendationSummary",
       });
     case 7:
-      return S.Array(__S(4));
+      return S.Array(TagValues);
   }
 }
 function __c18(j: number): any {
@@ -4360,9 +5106,9 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "EC2ResourceDetails" });
     case 1:
-      return S.suspend(() => S.Struct({ EC2ResourceDetails: S.optional(__S(144)) })).annotate({
-        identifier: "ResourceDetails",
-      });
+      return S.suspend(() =>
+        S.Struct({ EC2ResourceDetails: S.optional(EC2ResourceDetails) }),
+      ).annotate({ identifier: "ResourceDetails" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4398,23 +5144,23 @@ function __c18(j: number): any {
           MaxCpuUtilizationPercentage: S.optional(S.String),
           MaxMemoryUtilizationPercentage: S.optional(S.String),
           MaxStorageUtilizationPercentage: S.optional(S.String),
-          EBSResourceUtilization: S.optional(__S(146)),
-          DiskResourceUtilization: S.optional(__S(147)),
-          NetworkResourceUtilization: S.optional(__S(148)),
+          EBSResourceUtilization: S.optional(EBSResourceUtilization),
+          DiskResourceUtilization: S.optional(DiskResourceUtilization),
+          NetworkResourceUtilization: S.optional(NetworkResourceUtilization),
         }),
       ).annotate({ identifier: "EC2ResourceUtilization" });
     case 6:
-      return S.suspend(() => S.Struct({ EC2ResourceUtilization: S.optional(__S(149)) })).annotate({
-        identifier: "ResourceUtilization",
-      });
+      return S.suspend(() =>
+        S.Struct({ EC2ResourceUtilization: S.optional(EC2ResourceUtilization) }),
+      ).annotate({ identifier: "ResourceUtilization" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           ResourceId: S.optional(S.String),
           InstanceName: S.optional(S.String),
-          Tags: S.optional(__S(143)),
-          ResourceDetails: S.optional(__S(145)),
-          ResourceUtilization: S.optional(__S(150)),
+          Tags: S.optional(TagValuesList),
+          ResourceDetails: S.optional(ResourceDetails),
+          ResourceUtilization: S.optional(ResourceUtilization),
           ReservationCoveredHoursInLookbackPeriod: S.optional(S.String),
           SavingsPlansCoveredHoursInLookbackPeriod: S.optional(S.String),
           OnDemandHoursInLookbackPeriod: S.optional(S.String),
@@ -4434,15 +5180,17 @@ function __c19(j: number): any {
           EstimatedMonthlySavings: S.optional(S.String),
           CurrencyCode: S.optional(S.String),
           DefaultTargetInstance: S.optional(S.Boolean),
-          ResourceDetails: S.optional(__S(145)),
-          ExpectedResourceUtilization: S.optional(__S(150)),
-          PlatformDifferences: S.optional(__S(2)),
+          ResourceDetails: S.optional(ResourceDetails),
+          ExpectedResourceUtilization: S.optional(ResourceUtilization),
+          PlatformDifferences: S.optional(PlatformDifferences),
         }),
       ).annotate({ identifier: "TargetInstance" });
     case 1:
-      return S.Array(__S(152));
+      return S.Array(TargetInstance);
     case 2:
-      return S.suspend(() => S.Struct({ TargetInstances: S.optional(__S(153)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ TargetInstances: S.optional(TargetInstancesList) }),
+      ).annotate({
         identifier: "ModifyRecommendationDetail",
       });
     case 3:
@@ -4458,25 +5206,25 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AccountId: S.optional(S.String),
-          CurrentInstance: S.optional(__S(151)),
-          RightsizingType: S.optional(S.String),
-          ModifyRecommendationDetail: S.optional(__S(154)),
-          TerminateRecommendationDetail: S.optional(__S(155)),
-          FindingReasonCodes: S.optional(__S(2)),
+          CurrentInstance: S.optional(CurrentInstance),
+          RightsizingType: S.optional(RightsizingType),
+          ModifyRecommendationDetail: S.optional(ModifyRecommendationDetail),
+          TerminateRecommendationDetail: S.optional(TerminateRecommendationDetail),
+          FindingReasonCodes: S.optional(FindingReasonCodes),
         }),
       ).annotate({
         identifier: "RightsizingRecommendation",
       });
     case 5:
-      return S.Array(__S(156));
+      return S.Array(RightsizingRecommendation);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Metadata: S.optional(__S(141)),
-          Summary: S.optional(__S(142)),
-          RightsizingRecommendations: S.optional(__S(157)),
+          Metadata: S.optional(RightsizingRecommendationMetadata),
+          Summary: S.optional(RightsizingRecommendationSummary),
+          RightsizingRecommendations: S.optional(RightsizingRecommendationList),
           NextPageToken: S.optional(S.String),
-          Configuration: S.optional(__S(139)),
+          Configuration: S.optional(RightsizingRecommendationConfiguration),
         }),
       ).annotate({
         identifier: "GetRightsizingRecommendationResponse",
@@ -4496,11 +5244,11 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AccountScope: S.optional(S.String),
-          LookbackPeriodInDays: S.optional(S.String),
-          SavingsPlansType: S.optional(S.String),
-          TermInYears: S.optional(S.String),
-          PaymentOption: S.optional(S.String),
+          AccountScope: S.optional(AccountScope),
+          LookbackPeriodInDays: S.optional(LookbackPeriodInDays),
+          SavingsPlansType: S.optional(SupportedSavingsPlansType),
+          TermInYears: S.optional(TermInYears),
+          PaymentOption: S.optional(PaymentOption),
           AccountId: S.optional(S.String),
           CurrencyCode: S.optional(S.String),
           InstanceFamily: S.optional(S.String),
@@ -4524,14 +5272,14 @@ function __c20(j: number): any {
           UpfrontCost: S.optional(S.String),
           CurrentAverageCoverage: S.optional(S.String),
           EstimatedAverageCoverage: S.optional(S.String),
-          MetricsOverLookbackPeriod: S.optional(__S(59)),
+          MetricsOverLookbackPeriod: S.optional(MetricsOverLookbackPeriod),
         }),
       ).annotate({ identifier: "RecommendationDetailData" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           RecommendationDetailId: S.optional(S.String),
-          RecommendationDetailData: S.optional(__S(160)),
+          RecommendationDetailData: S.optional(RecommendationDetailData),
         }),
       ).annotate({
         identifier: "GetSavingsPlanPurchaseRecommendationDetailsResponse",
@@ -4539,14 +5287,14 @@ function __c20(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          TimePeriod: __S(55),
-          GroupBy: S.optional(__S(68)),
-          Granularity: S.optional(S.String),
-          Filter: S.optional(__S(5)),
-          Metrics: S.optional(__S(1)),
+          TimePeriod: DateInterval,
+          GroupBy: S.optional(GroupDefinitions),
+          Granularity: S.optional(Granularity),
+          Filter: S.optional(Expression),
+          Metrics: S.optional(MetricNames),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          SortBy: S.optional(__S(88)),
+          SortBy: S.optional(SortDefinition),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetSavingsPlansCoverageRequest",
@@ -4563,30 +5311,30 @@ function __c20(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Attributes: S.optional(__S(76)),
-          Coverage: S.optional(__S(163)),
-          TimePeriod: S.optional(__S(55)),
+          Attributes: S.optional(Attributes),
+          Coverage: S.optional(SavingsPlansCoverageData),
+          TimePeriod: S.optional(DateInterval),
         }),
       ).annotate({ identifier: "SavingsPlansCoverage" });
     case 5:
-      return S.Array(__S(164));
+      return S.Array(SavingsPlansCoverage);
     case 6:
       return S.suspend(() =>
-        S.Struct({ SavingsPlansCoverages: __S(165), NextToken: S.optional(S.String) }),
+        S.Struct({ SavingsPlansCoverages: SavingsPlansCoverages, NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "GetSavingsPlansCoverageResponse",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          SavingsPlansType: S.String,
-          TermInYears: S.String,
-          PaymentOption: S.String,
-          AccountScope: S.optional(S.String),
+          SavingsPlansType: SupportedSavingsPlansType,
+          TermInYears: TermInYears,
+          PaymentOption: PaymentOption,
+          AccountScope: S.optional(AccountScope),
           NextPageToken: S.optional(S.String),
           PageSize: S.optional(S.Number),
-          LookbackPeriodInDays: S.String,
-          Filter: S.optional(__S(5)),
+          LookbackPeriodInDays: LookbackPeriodInDays,
+          Filter: S.optional(Expression),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetSavingsPlansPurchaseRecommendationRequest",
@@ -4606,7 +5354,7 @@ function __c21(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          SavingsPlansDetails: S.optional(__S(168)),
+          SavingsPlansDetails: S.optional(SavingsPlansDetails),
           AccountId: S.optional(S.String),
           UpfrontCost: S.optional(S.String),
           EstimatedROI: S.optional(S.String),
@@ -4628,7 +5376,7 @@ function __c21(j: number): any {
         identifier: "SavingsPlansPurchaseRecommendationDetail",
       });
     case 2:
-      return S.Array(__S(169));
+      return S.Array(SavingsPlansPurchaseRecommendationDetail);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4650,13 +5398,17 @@ function __c21(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          AccountScope: S.optional(S.String),
-          SavingsPlansType: S.optional(S.String),
-          TermInYears: S.optional(S.String),
-          PaymentOption: S.optional(S.String),
-          LookbackPeriodInDays: S.optional(S.String),
-          SavingsPlansPurchaseRecommendationDetails: S.optional(__S(170)),
-          SavingsPlansPurchaseRecommendationSummary: S.optional(__S(171)),
+          AccountScope: S.optional(AccountScope),
+          SavingsPlansType: S.optional(SupportedSavingsPlansType),
+          TermInYears: S.optional(TermInYears),
+          PaymentOption: S.optional(PaymentOption),
+          LookbackPeriodInDays: S.optional(LookbackPeriodInDays),
+          SavingsPlansPurchaseRecommendationDetails: S.optional(
+            SavingsPlansPurchaseRecommendationDetailList,
+          ),
+          SavingsPlansPurchaseRecommendationSummary: S.optional(
+            SavingsPlansPurchaseRecommendationSummary,
+          ),
         }),
       ).annotate({
         identifier: "SavingsPlansPurchaseRecommendation",
@@ -4664,8 +5416,8 @@ function __c21(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Metadata: S.optional(__S(117)),
-          SavingsPlansPurchaseRecommendation: S.optional(__S(172)),
+          Metadata: S.optional(SavingsPlansPurchaseRecommendationMetadata),
+          SavingsPlansPurchaseRecommendation: S.optional(SavingsPlansPurchaseRecommendation),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4674,10 +5426,10 @@ function __c21(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          TimePeriod: __S(55),
-          Granularity: S.optional(S.String),
-          Filter: S.optional(__S(5)),
-          SortBy: S.optional(__S(88)),
+          TimePeriod: DateInterval,
+          Granularity: S.optional(Granularity),
+          Filter: S.optional(Expression),
+          SortBy: S.optional(SortDefinition),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetSavingsPlansUtilizationRequest",
@@ -4715,22 +5467,22 @@ function __c22(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          TimePeriod: __S(55),
-          Utilization: __S(175),
-          Savings: S.optional(__S(176)),
-          AmortizedCommitment: S.optional(__S(177)),
+          TimePeriod: DateInterval,
+          Utilization: SavingsPlansUtilization,
+          Savings: S.optional(SavingsPlansSavings),
+          AmortizedCommitment: S.optional(SavingsPlansAmortizedCommitment),
         }),
       ).annotate({
         identifier: "SavingsPlansUtilizationByTime",
       });
     case 3:
-      return S.Array(__S(178));
+      return S.Array(SavingsPlansUtilizationByTime);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Utilization: __S(175),
-          Savings: S.optional(__S(176)),
-          AmortizedCommitment: S.optional(__S(177)),
+          Utilization: SavingsPlansUtilization,
+          Savings: S.optional(SavingsPlansSavings),
+          AmortizedCommitment: S.optional(SavingsPlansAmortizedCommitment),
         }),
       ).annotate({
         identifier: "SavingsPlansUtilizationAggregates",
@@ -4738,8 +5490,8 @@ function __c22(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          SavingsPlansUtilizationsByTime: S.optional(__S(179)),
-          Total: __S(180),
+          SavingsPlansUtilizationsByTime: S.optional(SavingsPlansUtilizationsByTime),
+          Total: SavingsPlansUtilizationAggregates,
         }),
       ).annotate({
         identifier: "GetSavingsPlansUtilizationResponse",
@@ -4747,12 +5499,12 @@ function __c22(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          TimePeriod: __S(55),
-          Filter: S.optional(__S(5)),
-          DataType: S.optional(__S(2)),
+          TimePeriod: DateInterval,
+          Filter: S.optional(Expression),
+          DataType: S.optional(SavingsPlansDataTypes),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          SortBy: S.optional(__S(88)),
+          SortBy: S.optional(SortDefinition),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetSavingsPlansUtilizationDetailsRequest",
@@ -4761,10 +5513,10 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SavingsPlanArn: S.optional(S.String),
-          Attributes: S.optional(__S(76)),
-          Utilization: S.optional(__S(175)),
-          Savings: S.optional(__S(176)),
-          AmortizedCommitment: S.optional(__S(177)),
+          Attributes: S.optional(Attributes),
+          Utilization: S.optional(SavingsPlansUtilization),
+          Savings: S.optional(SavingsPlansSavings),
+          AmortizedCommitment: S.optional(SavingsPlansAmortizedCommitment),
         }),
       ).annotate({
         identifier: "SavingsPlansUtilizationDetail",
@@ -4774,13 +5526,13 @@ function __c22(j: number): any {
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(183));
+      return S.Array(SavingsPlansUtilizationDetail);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          SavingsPlansUtilizationDetails: __S(184),
-          Total: S.optional(__S(180)),
-          TimePeriod: __S(55),
+          SavingsPlansUtilizationDetails: SavingsPlansUtilizationDetails,
+          Total: S.optional(SavingsPlansUtilizationAggregates),
+          TimePeriod: DateInterval,
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4790,10 +5542,10 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SearchString: S.optional(S.String),
-          TimePeriod: __S(55),
+          TimePeriod: DateInterval,
           TagKey: S.optional(S.String),
-          Filter: S.optional(__S(5)),
-          SortBy: S.optional(__S(89)),
+          Filter: S.optional(Expression),
+          SortBy: S.optional(SortDefinitions),
           BillingViewArn: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           NextPageToken: S.optional(S.String),
@@ -4803,7 +5555,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextPageToken: S.optional(S.String),
-          Tags: __S(1),
+          Tags: TagList,
           ReturnSize: S.Number,
           TotalSize: S.Number,
         }),
@@ -4811,10 +5563,10 @@ function __c23(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          TimePeriod: __S(55),
-          Metric: S.String,
-          Granularity: S.String,
-          Filter: S.optional(__S(5)),
+          TimePeriod: DateInterval,
+          Metric: Metric,
+          Granularity: Granularity,
+          Filter: S.optional(Expression),
           BillingViewArn: S.optional(S.String),
           PredictionIntervalLevel: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -4822,10 +5574,10 @@ function __c23(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          AnalysisStatus: S.optional(S.String),
+          AnalysisStatus: S.optional(AnalysisStatus),
           NextPageToken: S.optional(S.String),
           PageSize: S.optional(S.Number),
-          AnalysisIds: S.optional(__S(1)),
+          AnalysisIds: S.optional(AnalysisIds),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListCommitmentPurchaseAnalysesRequest",
@@ -4836,14 +5588,16 @@ function __c23(j: number): any {
           EstimatedCompletionTime: S.optional(S.String),
           AnalysisCompletionTime: S.optional(S.String),
           AnalysisStartedTime: S.optional(S.String),
-          AnalysisStatus: S.optional(S.String),
-          ErrorCode: S.optional(S.String),
+          AnalysisStatus: S.optional(AnalysisStatus),
+          ErrorCode: S.optional(ErrorCode),
           AnalysisId: S.optional(S.String),
-          CommitmentPurchaseAnalysisConfiguration: S.optional(__S(65)),
+          CommitmentPurchaseAnalysisConfiguration: S.optional(
+            CommitmentPurchaseAnalysisConfiguration,
+          ),
         }),
       ).annotate({ identifier: "AnalysisSummary" });
     case 7:
-      return S.Array(__S(190));
+      return S.Array(AnalysisSummary);
   }
 }
 function __c24(j: number): any {
@@ -4851,7 +5605,7 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AnalysisSummaryList: S.optional(__S(191)),
+          AnalysisSummaryList: S.optional(AnalysisSummaryList),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4871,18 +5625,18 @@ function __c24(j: number): any {
           BackfillFrom: S.optional(S.String),
           RequestedAt: S.optional(S.String),
           CompletedAt: S.optional(S.String),
-          BackfillStatus: S.optional(S.String),
+          BackfillStatus: S.optional(CostAllocationTagBackfillStatus),
           LastUpdatedAt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CostAllocationTagBackfillRequest",
       });
     case 3:
-      return S.Array(__S(194));
+      return S.Array(CostAllocationTagBackfillRequest);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          BackfillRequests: S.optional(__S(195)),
+          BackfillRequests: S.optional(CostAllocationTagBackfillRequestList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4891,9 +5645,9 @@ function __c24(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(S.String),
-          TagKeys: S.optional(__S(1)),
-          Type: S.optional(S.String),
+          Status: S.optional(CostAllocationTagStatus),
+          TagKeys: S.optional(CostAllocationTagKeyList),
+          Type: S.optional(CostAllocationTagType),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -4904,14 +5658,14 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TagKey: S.String,
-          Type: S.String,
-          Status: S.String,
+          Type: CostAllocationTagType,
+          Status: CostAllocationTagStatus,
           LastUpdatedDate: S.optional(S.String),
           LastUsedDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "CostAllocationTag" });
     case 7:
-      return S.Array(__S(198));
+      return S.Array(CostAllocationTag);
   }
 }
 function __c25(j: number): any {
@@ -4919,7 +5673,7 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          CostAllocationTags: S.optional(__S(199)),
+          CostAllocationTags: S.optional(CostAllocationTagList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4931,7 +5685,7 @@ function __c25(j: number): any {
           EffectiveOn: S.optional(S.String),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          SupportedResourceTypes: S.optional(__S(1)),
+          SupportedResourceTypes: S.optional(ResourceTypesFilterInput),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListCostCategoryDefinitionsRequest",
@@ -4944,18 +5698,18 @@ function __c25(j: number): any {
           EffectiveStart: S.optional(S.String),
           EffectiveEnd: S.optional(S.String),
           NumberOfRules: S.optional(S.Number),
-          ProcessingStatus: S.optional(__S(33)),
-          Values: S.optional(__S(1)),
+          ProcessingStatus: S.optional(CostCategoryProcessingStatusList),
+          Values: S.optional(CostCategoryValuesList),
           DefaultValue: S.optional(S.String),
-          SupportedResourceTypes: S.optional(__S(1)),
+          SupportedResourceTypes: S.optional(ResourceTypes),
         }),
       ).annotate({ identifier: "CostCategoryReference" });
     case 3:
-      return S.Array(__S(202));
+      return S.Array(CostCategoryReference);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          CostCategoryReferences: S.optional(__S(203)),
+          CostCategoryReferences: S.optional(CostCategoryReferencesList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4982,7 +5736,7 @@ function __c25(j: number): any {
         identifier: "CostCategoryResourceAssociation",
       });
     case 7:
-      return S.Array(__S(206));
+      return S.Array(CostCategoryResourceAssociation);
   }
 }
 function __c26(j: number): any {
@@ -4990,7 +5744,7 @@ function __c26(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          CostCategoryResourceAssociations: S.optional(__S(207)),
+          CostCategoryResourceAssociations: S.optional(CostCategoryResourceAssociations),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4999,8 +5753,8 @@ function __c26(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          GenerationStatus: S.optional(S.String),
-          RecommendationIds: S.optional(__S(1)),
+          GenerationStatus: S.optional(GenerationStatus),
+          RecommendationIds: S.optional(RecommendationIdList),
           PageSize: S.optional(S.Number),
           NextPageToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -5011,18 +5765,18 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RecommendationId: S.optional(S.String),
-          GenerationStatus: S.optional(S.String),
+          GenerationStatus: S.optional(GenerationStatus),
           GenerationStartedTime: S.optional(S.String),
           GenerationCompletionTime: S.optional(S.String),
           EstimatedCompletionTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "GenerationSummary" });
     case 3:
-      return S.Array(__S(210));
+      return S.Array(GenerationSummary);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          GenerationSummaryList: S.optional(__S(211)),
+          GenerationSummaryList: S.optional(GenerationSummaryList),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5037,12 +5791,12 @@ function __c26(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 6:
-      return S.suspend(() => S.Struct({ ResourceTags: S.optional(__S(8)) })).annotate({
+      return S.suspend(() => S.Struct({ ResourceTags: S.optional(ResourceTagList) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ AnomalyId: S.String, Feedback: S.String }).pipe(
+        S.Struct({ AnomalyId: S.String, Feedback: AnomalyFeedbackType }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -5059,7 +5813,7 @@ function __c27(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          CommitmentPurchaseAnalysisConfiguration: __S(65),
+          CommitmentPurchaseAnalysisConfiguration: CommitmentPurchaseAnalysisConfiguration,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartCommitmentPurchaseAnalysisRequest",
@@ -5083,7 +5837,9 @@ function __c27(j: number): any {
         identifier: "StartCostAllocationTagBackfillRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ BackfillRequest: S.optional(__S(194)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ BackfillRequest: S.optional(CostAllocationTagBackfillRequest) }),
+      ).annotate({
         identifier: "StartCostAllocationTagBackfillResponse",
       });
     case 5:
@@ -5106,7 +5862,7 @@ function __c27(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, ResourceTags: __S(8) }).pipe(
+        S.Struct({ ResourceArn: S.String, ResourceTags: ResourceTagList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -5116,7 +5872,7 @@ function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, ResourceTagKeys: __S(1) }).pipe(
+        S.Struct({ ResourceArn: S.String, ResourceTagKeys: ResourceTagKeyList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -5133,24 +5889,26 @@ function __c28(j: number): any {
         S.Struct({
           SubscriptionArn: S.String,
           Threshold: S.optional(S.Number),
-          Frequency: S.optional(S.String),
-          MonitorArnList: S.optional(__S(1)),
-          Subscribers: S.optional(__S(12)),
+          Frequency: S.optional(AnomalySubscriptionFrequency),
+          MonitorArnList: S.optional(MonitorArnList),
+          Subscribers: S.optional(Subscribers),
           SubscriptionName: S.optional(S.String),
-          ThresholdExpression: S.optional(__S(5)),
+          ThresholdExpression: S.optional(Expression),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateAnomalySubscriptionRequest",
       });
     case 3:
-      return S.suspend(() => S.Struct({ TagKey: S.String, Status: S.String })).annotate({
+      return S.suspend(() =>
+        S.Struct({ TagKey: S.String, Status: CostAllocationTagStatus }),
+      ).annotate({
         identifier: "CostAllocationTagStatusEntry",
       });
     case 4:
-      return S.Array(__S(227));
+      return S.Array(CostAllocationTagStatusEntry);
     case 5:
       return S.suspend(() =>
-        S.Struct({ CostAllocationTagsStatus: __S(228) }).pipe(
+        S.Struct({ CostAllocationTagsStatus: CostAllocationTagStatusList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -5167,13 +5925,15 @@ function __c28(j: number): any {
         identifier: "UpdateCostAllocationTagsStatusError",
       });
     case 7:
-      return S.Array(__S(230));
+      return S.Array(UpdateCostAllocationTagsStatusError_);
   }
 }
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Errors: S.optional(__S(231)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ Errors: S.optional(UpdateCostAllocationTagsStatusErrors) }),
+      ).annotate({
         identifier: "UpdateCostAllocationTagsStatusResponse",
       });
     case 1:
@@ -5181,82 +5941,13 @@ function __c29(j: number): any {
         S.Struct({
           CostCategoryArn: S.String,
           EffectiveStart: S.optional(S.String),
-          RuleVersion: S.String,
-          Rules: __S(18),
+          RuleVersion: CostCategoryRuleVersion,
+          Rules: CostCategoryRulesList,
           DefaultValue: S.optional(S.String),
-          SplitChargeRules: S.optional(__S(22)),
+          SplitChargeRules: S.optional(CostCategorySplitChargeRulesList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateCostCategoryDefinitionRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
   }
 }

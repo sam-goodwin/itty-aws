@@ -12,8 +12,6 @@ import { paginateRelay } from "../pagination.ts";
 import { FlyGraphqlProtocol, type FlyIoOpError, type FlyIoOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { FlyIoOpError, FlyIoOpContext };
 
@@ -22,7 +20,14 @@ export interface AddOnRequest {
   name?: string | null;
   provider?: string | null;
 }
+const AddOnRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AddOnRequest>;
+
 export type AddOnResponseReadRegionsList = Array<string>;
+const AddOnResponseReadRegionsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AddOnResponseReadRegionsList>;
+
 export interface AddOnResponseAddOnPlan {
   id: string;
   name: string | null;
@@ -31,6 +36,11 @@ export interface AddOnResponseAddOnPlan {
   maxDataSize: string | null;
   pricePerMonth: number | null;
 }
+const AddOnResponseAddOnPlan = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AddOnResponseAddOnPlan>;
+
 export interface AddOnResponseAddOnProvider {
   id: string;
   name: string | null;
@@ -49,6 +59,11 @@ export interface AddOnResponseAddOnProvider {
   nameSuffix: string | null;
   provisioningInstructions: string | null;
 }
+const AddOnResponseAddOnProvider = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AddOnResponseAddOnProvider>;
+
 export interface AddOnResponseOrganization {
   id: string;
   name: string;
@@ -58,10 +73,17 @@ export interface AddOnResponseOrganization {
   billable: boolean;
   provisionsBetaExtensions: boolean;
 }
+const AddOnResponseOrganization = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AddOnResponseOrganization>;
+
 export interface AddOnResponseApp {
   id: string;
   name: string;
 }
+const AddOnResponseApp = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<AddOnResponseApp>;
+
 /** Selection set for `addOn` (unwrapped from the GraphQL `data` envelope). */
 export interface AddOnResponse {
   id: string;
@@ -85,6 +107,8 @@ export interface AddOnResponse {
   organization: AddOnResponseOrganization;
   app: AddOnResponseApp | null;
 }
+const AddOnResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AddOnResponse>;
+
 export type AddOnType =
   | "redis"
   | "upstash_redis"
@@ -98,6 +122,8 @@ export type AddOnType =
   | "wafris"
   | "arcjet"
   | "fly_mysql";
+const AddOnType = S.String;
+
 export interface AddOnPlansRequest {
   /** Returns the elements in the list that come after the specified cursor. */
   after?: string | null;
@@ -109,20 +135,42 @@ export interface AddOnPlansRequest {
   last?: number | null;
   type?: AddOnType | (string & {}) | null;
 }
+const AddOnPlansRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<AddOnPlansRequest>;
+
 export type AddOnPlansResponseEdgesItemNode = AddOnResponseAddOnPlan;
 export interface AddOnPlansResponseEdgesItem {
   cursor: string;
   node: AddOnResponseAddOnPlan | null;
 }
+const AddOnPlansResponseEdgesItem = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AddOnPlansResponseEdgesItem>;
+
 export type AddOnPlansResponseEdgesList = (AddOnPlansResponseEdgesItem | null)[];
+const AddOnPlansResponseEdgesList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<AddOnPlansResponseEdgesList>;
+
 export type AddOnPlansResponseNodesItem = AddOnResponseAddOnPlan;
 export type AddOnPlansResponseNodesList = (AddOnResponseAddOnPlan | null)[];
+const AddOnPlansResponseNodesList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<AddOnPlansResponseNodesList>;
+
 export interface AddOnPlansResponsePageInfo {
   hasNextPage: boolean;
   hasPreviousPage: boolean;
   startCursor: string | null;
   endCursor: string | null;
 }
+const AddOnPlansResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<AddOnPlansResponsePageInfo>;
+
 /** Selection set for `addOnPlans` (unwrapped from the GraphQL `data` envelope). */
 export interface AddOnPlansResponse {
   edges: AddOnPlansResponseEdgesList | null;
@@ -130,9 +178,13 @@ export interface AddOnPlansResponse {
   pageInfo: AddOnPlansResponsePageInfo;
   totalCount: number;
 }
+const AddOnPlansResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<AddOnPlansResponse>;
+
 export interface AddOnProviderRequest {
   name: string;
 }
+const AddOnProviderRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AddOnProviderRequest>;
+
 /** Selection set for `addOnProvider` (unwrapped from the GraphQL `data` envelope). */
 export interface AddOnProviderResponse {
   id: string;
@@ -152,6 +204,11 @@ export interface AddOnProviderResponse {
   nameSuffix: string | null;
   provisioningInstructions: string | null;
 }
+const AddOnProviderResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<AddOnProviderResponse>;
+
 export interface AddOnsRequest {
   /** Returns the elements in the list that come after the specified cursor. */
   after?: string | null;
@@ -163,7 +220,12 @@ export interface AddOnsRequest {
   last?: number | null;
   type?: AddOnType | (string & {}) | null;
 }
+const AddOnsRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<AddOnsRequest>;
+
 export type AddOnsResponseEdgesItemNodeReadRegionsList = Array<string>;
+const AddOnsResponseEdgesItemNodeReadRegionsList =
+  AddOnResponseReadRegionsList as any as S.Schema<AddOnsResponseEdgesItemNodeReadRegionsList>;
+
 export type AddOnsResponseEdgesItemNodeAddOnPlan = AddOnResponseAddOnPlan;
 export type AddOnsResponseEdgesItemNodeAddOnProvider = AddOnResponseAddOnProvider;
 export type AddOnsResponseEdgesItemNodeOrganization = AddOnResponseOrganization;
@@ -190,12 +252,30 @@ export interface AddOnsResponseEdgesItemNode {
   organization: AddOnResponseOrganization;
   app: AddOnResponseApp | null;
 }
+const AddOnsResponseEdgesItemNode = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<AddOnsResponseEdgesItemNode>;
+
 export interface AddOnsResponseEdgesItem {
   cursor: string;
   node: AddOnsResponseEdgesItemNode | null;
 }
+const AddOnsResponseEdgesItem = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<AddOnsResponseEdgesItem>;
+
 export type AddOnsResponseEdgesList = (AddOnsResponseEdgesItem | null)[];
+const AddOnsResponseEdgesList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<AddOnsResponseEdgesList>;
+
 export type AddOnsResponseNodesItemReadRegionsList = Array<string>;
+const AddOnsResponseNodesItemReadRegionsList =
+  AddOnResponseReadRegionsList as any as S.Schema<AddOnsResponseNodesItemReadRegionsList>;
+
 export interface AddOnsResponseNodesItem {
   id: string;
   name: string | null;
@@ -214,7 +294,17 @@ export interface AddOnsResponseNodesItem {
   updatedAt: string;
   addOnPlanName: string | null;
 }
+const AddOnsResponseNodesItem = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<AddOnsResponseNodesItem>;
+
 export type AddOnsResponseNodesList = (AddOnsResponseNodesItem | null)[];
+const AddOnsResponseNodesList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<AddOnsResponseNodesList>;
+
 export type AddOnsResponsePageInfo = AddOnPlansResponsePageInfo;
 /** Selection set for `addOns` (unwrapped from the GraphQL `data` envelope). */
 export interface AddOnsResponse {
@@ -223,12 +313,26 @@ export interface AddOnsResponse {
   pageInfo: AddOnPlansResponsePageInfo;
   totalCount: number;
 }
+const AddOnsResponse = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<AddOnsResponse>;
+
 export interface AgreedToProviderTosRequest {
   slug: string;
   providerName: string;
 }
+const AgreedToProviderTosRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<AgreedToProviderTosRequest>;
+
 export type AgreedToProviderTosResponse = boolean | null;
+const AgreedToProviderTosResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<AgreedToProviderTosResponse>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<StringList>;
+
 /** Autogenerated input type of CreateAddOn */
 export interface CreateAddOnInput {
   /** The add-on type to provision */
@@ -252,10 +356,14 @@ export interface CreateAddOnInput {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: string | null;
 }
+const CreateAddOnInput = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<CreateAddOnInput>;
+
 export interface CreateAddOnRequest {
   /** Parameters for CreateAddOn */
   input: CreateAddOnInput;
 }
+const CreateAddOnRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<CreateAddOnRequest>;
+
 export type CreateAddOnResponseAddOnReadRegionsList = Array<string>;
 export interface CreateAddOnResponseAddOn {
   id: string;
@@ -275,11 +383,16 @@ export interface CreateAddOnResponseAddOn {
   updatedAt: string;
   addOnPlanName: string | null;
 }
+const CreateAddOnResponseAddOn =
+  AddOnsResponseNodesItem as any as S.Schema<CreateAddOnResponseAddOn>;
+
 /** Selection set for `createAddOn` (unwrapped from the GraphQL `data` envelope). */
 export interface CreateAddOnResponse {
   addOn: CreateAddOnResponseAddOn;
   clientMutationId: string | null;
 }
+const CreateAddOnResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<CreateAddOnResponse>;
+
 /** Autogenerated input type of CreateExtensionTosAgreement */
 export interface CreateExtensionTosAgreementInput {
   /** The add-on provider name */
@@ -289,14 +402,29 @@ export interface CreateExtensionTosAgreementInput {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: string | null;
 }
+const CreateExtensionTosAgreementInput = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateExtensionTosAgreementInput>;
+
 export interface CreateExtensionTosAgreementRequest {
   /** Parameters for CreateExtensionTosAgreement */
   input: CreateExtensionTosAgreementInput;
 }
+const CreateExtensionTosAgreementRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateExtensionTosAgreementRequest>;
+
 /** Selection set for `createExtensionTosAgreement` (unwrapped from the GraphQL `data` envelope). */
 export interface CreateExtensionTosAgreementResponse {
   clientMutationId: string | null;
 }
+const CreateExtensionTosAgreementResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateExtensionTosAgreementResponse>;
+
 /** Autogenerated input type of DeleteAddOn */
 export interface DeleteAddOnInput {
   /** The ID of the add-on to delete */
@@ -308,21 +436,32 @@ export interface DeleteAddOnInput {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: string | null;
 }
+const DeleteAddOnInput = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<DeleteAddOnInput>;
+
 export interface DeleteAddOnRequest {
   /** Parameters for DeleteAddOn */
   input: DeleteAddOnInput;
 }
+const DeleteAddOnRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DeleteAddOnRequest>;
+
 /** Selection set for `deleteAddOn` (unwrapped from the GraphQL `data` envelope). */
 export interface DeleteAddOnResponse {
   deletedAddOnName: string | null;
   clientMutationId: string | null;
 }
+const DeleteAddOnResponse = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<DeleteAddOnResponse>;
+
 export interface OrganizationRequest {
   id?: string | null;
   name?: string | null;
   slug?: string | null;
 }
+const OrganizationRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<OrganizationRequest>;
+
 export type OrganizationResponseAddOnsEdgesItemNodeReadRegionsList = Array<string>;
+const OrganizationResponseAddOnsEdgesItemNodeReadRegionsList =
+  AddOnResponseReadRegionsList as any as S.Schema<OrganizationResponseAddOnsEdgesItemNodeReadRegionsList>;
+
 export interface OrganizationResponseAddOnsEdgesItemNode {
   id: string;
   name: string | null;
@@ -341,17 +480,37 @@ export interface OrganizationResponseAddOnsEdgesItemNode {
   updatedAt: string;
   addOnPlanName: string | null;
 }
+const OrganizationResponseAddOnsEdgesItemNode = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<OrganizationResponseAddOnsEdgesItemNode>;
+
 export interface OrganizationResponseAddOnsEdgesItem {
   cursor: string;
   node: OrganizationResponseAddOnsEdgesItemNode | null;
 }
+const OrganizationResponseAddOnsEdgesItem = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<OrganizationResponseAddOnsEdgesItem>;
+
 export type OrganizationResponseAddOnsEdgesList = (OrganizationResponseAddOnsEdgesItem | null)[];
+const OrganizationResponseAddOnsEdgesList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<OrganizationResponseAddOnsEdgesList>;
+
 export type OrganizationResponseAddOnsPageInfo = AddOnPlansResponsePageInfo;
 export interface OrganizationResponseAddOns {
   edges: OrganizationResponseAddOnsEdgesList | null;
   pageInfo: AddOnPlansResponsePageInfo;
   totalCount: number;
 }
+const OrganizationResponseAddOns = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<OrganizationResponseAddOns>;
+
 /** Selection set for `organization` (unwrapped from the GraphQL `data` envelope). */
 export interface OrganizationResponse {
   id: string;
@@ -363,6 +522,8 @@ export interface OrganizationResponse {
   provisionsBetaExtensions: boolean;
   addOns: OrganizationResponseAddOns;
 }
+const OrganizationResponse = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<OrganizationResponse>;
+
 /** Autogenerated input type of ResetAddOnPassword */
 export interface ResetAddOnPasswordInput {
   /** The ID of the add-on whose password should be reset */
@@ -370,10 +531,20 @@ export interface ResetAddOnPasswordInput {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: string | null;
 }
+const ResetAddOnPasswordInput = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ResetAddOnPasswordInput>;
+
 export interface ResetAddOnPasswordRequest {
   /** Parameters for ResetAddOnPassword */
   input: ResetAddOnPasswordInput;
 }
+const ResetAddOnPasswordRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ResetAddOnPasswordRequest>;
+
 export type ResetAddOnPasswordResponseAddOnReadRegionsList = Array<string>;
 export interface ResetAddOnPasswordResponseAddOn {
   id: string;
@@ -393,11 +564,19 @@ export interface ResetAddOnPasswordResponseAddOn {
   updatedAt: string;
   addOnPlanName: string | null;
 }
+const ResetAddOnPasswordResponseAddOn =
+  OrganizationResponseAddOnsEdgesItemNode as any as S.Schema<ResetAddOnPasswordResponseAddOn>;
+
 /** Selection set for `resetAddOnPassword` (unwrapped from the GraphQL `data` envelope). */
 export interface ResetAddOnPasswordResponse {
   addOn: ResetAddOnPasswordResponseAddOn;
   clientMutationId: string | null;
 }
+const ResetAddOnPasswordResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ResetAddOnPasswordResponse>;
+
 /** Autogenerated input type of UpdateAddOn */
 export interface UpdateAddOnInput {
   /** The add-on ID to update */
@@ -419,10 +598,14 @@ export interface UpdateAddOnInput {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: string | null;
 }
+const UpdateAddOnInput = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<UpdateAddOnInput>;
+
 export interface UpdateAddOnRequest {
   /** Parameters for UpdateAddOn */
   input: UpdateAddOnInput;
 }
+const UpdateAddOnRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<UpdateAddOnRequest>;
+
 export type UpdateAddOnResponseAddOnReadRegionsList = Array<string>;
 export interface UpdateAddOnResponseAddOn {
   id: string;
@@ -442,17 +625,22 @@ export interface UpdateAddOnResponseAddOn {
   updatedAt: string;
   addOnPlanName: string | null;
 }
+const UpdateAddOnResponseAddOn =
+  AddOnsResponseNodesItem as any as S.Schema<UpdateAddOnResponseAddOn>;
+
 /** Selection set for `updateAddOn` (unwrapped from the GraphQL `data` envelope). */
 export interface UpdateAddOnResponse {
   addOn: UpdateAddOnResponseAddOn;
   clientMutationId: string | null;
 }
+const UpdateAddOnResponse = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<UpdateAddOnResponse>;
+
 export type AddOnError = FlyIoOpError;
 /** Find an add-on by ID or name */
 export const addOn: API.OperationMethod<AddOnRequest, AddOnResponse, AddOnError, FlyIoOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(0) as any as S.Schema<AddOnRequest>,
-    output: __S(6) as any as S.Schema<AddOnResponse>,
+    input: AddOnRequest,
+    output: AddOnResponse,
     errors: [UnknownFlyIoError, FlyIoParseError],
     protocol: FlyGraphqlProtocol,
     retry: Retry.Retry,
@@ -468,8 +656,8 @@ export const addOnPlans: API.PaginatedOperationMethod<
   AddOnResponseAddOnPlan
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(7) as any as S.Schema<AddOnPlansRequest>,
-    output: __S(12) as any as S.Schema<AddOnPlansResponse>,
+    input: AddOnPlansRequest,
+    output: AddOnPlansResponse,
     errors: [UnknownFlyIoError, FlyIoParseError],
     protocol: FlyGraphqlProtocol,
     retry: Retry.Retry,
@@ -492,8 +680,8 @@ export const addOnProvider: API.OperationMethod<
   AddOnProviderError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<AddOnProviderRequest>,
-  output: __S(14) as any as S.Schema<AddOnProviderResponse>,
+  input: AddOnProviderRequest,
+  output: AddOnProviderResponse,
   errors: [UnknownFlyIoError, FlyIoParseError],
   protocol: FlyGraphqlProtocol,
   retry: Retry.Retry,
@@ -509,8 +697,8 @@ export const addOns: API.PaginatedOperationMethod<
   AddOnsResponseEdgesItemNode
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(15) as any as S.Schema<AddOnsRequest>,
-    output: __S(21) as any as S.Schema<AddOnsResponse>,
+    input: AddOnsRequest,
+    output: AddOnsResponse,
     errors: [UnknownFlyIoError, FlyIoParseError],
     protocol: FlyGraphqlProtocol,
     retry: Retry.Retry,
@@ -534,8 +722,8 @@ export const agreedToProviderTos: API.OperationMethod<
   AgreedToProviderTosError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<AgreedToProviderTosRequest>,
-  output: __S(23) as any as S.Schema<AgreedToProviderTosResponse>,
+  input: AgreedToProviderTosRequest,
+  output: AgreedToProviderTosResponse,
   errors: [UnknownFlyIoError, FlyIoParseError],
   protocol: FlyGraphqlProtocol,
   retry: Retry.Retry,
@@ -548,8 +736,8 @@ export const createAddOn: API.OperationMethod<
   CreateAddOnError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<CreateAddOnRequest>,
-  output: __S(27) as any as S.Schema<CreateAddOnResponse>,
+  input: CreateAddOnRequest,
+  output: CreateAddOnResponse,
   errors: [UnknownFlyIoError, FlyIoParseError],
   protocol: FlyGraphqlProtocol,
   retry: Retry.Retry,
@@ -564,8 +752,8 @@ export const createExtensionTosAgreement: API.OperationMethod<
   CreateExtensionTosAgreementError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<CreateExtensionTosAgreementRequest>,
-  output: __S(30) as any as S.Schema<CreateExtensionTosAgreementResponse>,
+  input: CreateExtensionTosAgreementRequest,
+  output: CreateExtensionTosAgreementResponse,
   errors: [CreateExtensionTosAgreementNotAuthorized, UnknownFlyIoError, FlyIoParseError],
   protocol: FlyGraphqlProtocol,
   retry: Retry.Retry,
@@ -578,8 +766,8 @@ export const deleteAddOn: API.OperationMethod<
   DeleteAddOnError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<DeleteAddOnRequest>,
-  output: __S(33) as any as S.Schema<DeleteAddOnResponse>,
+  input: DeleteAddOnRequest,
+  output: DeleteAddOnResponse,
   errors: [UnknownFlyIoError, FlyIoParseError],
   protocol: FlyGraphqlProtocol,
   retry: Retry.Retry,
@@ -593,8 +781,8 @@ export const organization: API.OperationMethod<
   OrganizationError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<OrganizationRequest>,
-  output: __S(39) as any as S.Schema<OrganizationResponse>,
+  input: OrganizationRequest,
+  output: OrganizationResponse,
   errors: [UnknownFlyIoError, FlyIoParseError],
   protocol: FlyGraphqlProtocol,
   retry: Retry.Retry,
@@ -607,8 +795,8 @@ export const resetAddOnPassword: API.OperationMethod<
   ResetAddOnPasswordError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<ResetAddOnPasswordRequest>,
-  output: __S(42) as any as S.Schema<ResetAddOnPasswordResponse>,
+  input: ResetAddOnPasswordRequest,
+  output: ResetAddOnPasswordResponse,
   errors: [UnknownFlyIoError, FlyIoParseError],
   protocol: FlyGraphqlProtocol,
   retry: Retry.Retry,
@@ -621,8 +809,8 @@ export const updateAddOn: API.OperationMethod<
   UpdateAddOnError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<UpdateAddOnRequest>,
-  output: __S(45) as any as S.Schema<UpdateAddOnResponse>,
+  input: UpdateAddOnRequest,
+  output: UpdateAddOnResponse,
   errors: [UnknownFlyIoError, FlyIoParseError],
   protocol: FlyGraphqlProtocol,
   retry: Retry.Retry,
@@ -711,7 +899,7 @@ function __c0(j: number): any {
           id: S.String,
           name: S.NullOr(S.String),
           primaryRegion: S.NullOr(S.String),
-          readRegions: S.NullOr(__S(1)),
+          readRegions: S.NullOr(AddOnResponseReadRegionsList),
           status: S.NullOr(S.String),
           errorMessage: S.NullOr(S.String),
           publicUrl: S.NullOr(S.String).pipe(T.SensitiveValue({})),
@@ -723,11 +911,11 @@ function __c0(j: number): any {
           metadata: S.NullOr(S.Unknown),
           createdAt: S.String,
           updatedAt: S.String,
-          addOnPlan: S.NullOr(__S(2)),
+          addOnPlan: S.NullOr(AddOnResponseAddOnPlan),
           addOnPlanName: S.NullOr(S.String),
-          addOnProvider: S.NullOr(__S(3)),
-          organization: __S(4),
-          app: S.NullOr(__S(5)),
+          addOnProvider: S.NullOr(AddOnResponseAddOnProvider),
+          organization: AddOnResponseOrganization,
+          app: S.NullOr(AddOnResponseApp),
         }).pipe(T.ResponsePath("addOn")),
       ).annotate({ identifier: "AddOnResponse" });
     case 7:
@@ -737,7 +925,7 @@ function __c0(j: number): any {
           before: S.optional(S.NullOr(S.String)),
           first: S.optional(S.NullOr(S.Number)),
           last: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(AddOnType)),
         })
           .pipe(T.Http({ method: "POST", uri: "/graphql", code: 200 }))
           .pipe(
@@ -757,15 +945,15 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           cursor: S.String,
-          node: S.NullOr(__S(2)),
+          node: S.NullOr(AddOnResponseAddOnPlan),
         }),
       ).annotate({
         identifier: "AddOnPlansResponseEdgesItem",
       });
     case 1:
-      return S.Array(/*@__PURE__*/ S.NullOr(__S(8)));
+      return S.Array(/*@__PURE__*/ S.NullOr(AddOnPlansResponseEdgesItem));
     case 2:
-      return S.Array(/*@__PURE__*/ S.NullOr(__S(2)));
+      return S.Array(/*@__PURE__*/ S.NullOr(AddOnResponseAddOnPlan));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -780,9 +968,9 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          edges: S.NullOr(__S(9)),
-          nodes: S.NullOr(__S(10)),
-          pageInfo: __S(11),
+          edges: S.NullOr(AddOnPlansResponseEdgesList),
+          nodes: S.NullOr(AddOnPlansResponseNodesList),
+          pageInfo: AddOnPlansResponsePageInfo,
           totalCount: S.Number,
         }).pipe(T.ResponsePath("addOnPlans")),
       ).annotate({ identifier: "AddOnPlansResponse" });
@@ -829,7 +1017,7 @@ function __c1(j: number): any {
           before: S.optional(S.NullOr(S.String)),
           first: S.optional(S.NullOr(S.Number)),
           last: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(AddOnType)),
         })
           .pipe(T.Http({ method: "POST", uri: "/graphql", code: 200 }))
           .pipe(
@@ -851,7 +1039,7 @@ function __c2(j: number): any {
           id: S.String,
           name: S.NullOr(S.String),
           primaryRegion: S.NullOr(S.String),
-          readRegions: S.NullOr(__S(1)),
+          readRegions: S.NullOr(AddOnsResponseEdgesItemNodeReadRegionsList),
           status: S.NullOr(S.String),
           errorMessage: S.NullOr(S.String),
           publicUrl: S.NullOr(S.String).pipe(T.SensitiveValue({})),
@@ -863,11 +1051,11 @@ function __c2(j: number): any {
           metadata: S.NullOr(S.Unknown),
           createdAt: S.String,
           updatedAt: S.String,
-          addOnPlan: S.NullOr(__S(2)),
+          addOnPlan: S.NullOr(AddOnResponseAddOnPlan),
           addOnPlanName: S.NullOr(S.String),
-          addOnProvider: S.NullOr(__S(3)),
-          organization: __S(4),
-          app: S.NullOr(__S(5)),
+          addOnProvider: S.NullOr(AddOnResponseAddOnProvider),
+          organization: AddOnResponseOrganization,
+          app: S.NullOr(AddOnResponseApp),
         }),
       ).annotate({
         identifier: "AddOnsResponseEdgesItemNode",
@@ -876,18 +1064,18 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           cursor: S.String,
-          node: S.NullOr(__S(16)),
+          node: S.NullOr(AddOnsResponseEdgesItemNode),
         }),
       ).annotate({ identifier: "AddOnsResponseEdgesItem" });
     case 2:
-      return S.Array(/*@__PURE__*/ S.NullOr(__S(17)));
+      return S.Array(/*@__PURE__*/ S.NullOr(AddOnsResponseEdgesItem));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.NullOr(S.String),
           primaryRegion: S.NullOr(S.String),
-          readRegions: S.NullOr(__S(1)),
+          readRegions: S.NullOr(AddOnsResponseNodesItemReadRegionsList),
           status: S.NullOr(S.String),
           errorMessage: S.NullOr(S.String),
           publicUrl: S.NullOr(S.String).pipe(T.SensitiveValue({})),
@@ -903,13 +1091,13 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "AddOnsResponseNodesItem" });
     case 4:
-      return S.Array(/*@__PURE__*/ S.NullOr(__S(19)));
+      return S.Array(/*@__PURE__*/ S.NullOr(AddOnsResponseNodesItem));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          edges: S.NullOr(__S(18)),
-          nodes: S.NullOr(__S(20)),
-          pageInfo: __S(11),
+          edges: S.NullOr(AddOnsResponseEdgesList),
+          nodes: S.NullOr(AddOnsResponseNodesList),
+          pageInfo: AddOnPlansResponsePageInfo,
           totalCount: S.Number,
         }).pipe(T.ResponsePath("addOns")),
       ).annotate({ identifier: "AddOnsResponse" });
@@ -949,13 +1137,13 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: AddOnType,
           name: S.optional(S.NullOr(S.String)),
           organizationId: S.optional(S.NullOr(S.String)),
           appId: S.optional(S.NullOr(S.String)),
           planId: S.optional(S.NullOr(S.String)),
           primaryRegion: S.optional(S.NullOr(S.String)),
-          readRegions: S.optional(S.NullOr(__S(24))),
+          readRegions: S.optional(S.NullOr(StringList)),
           options: S.optional(S.NullOr(S.Unknown)),
           organizationPlanId: S.optional(S.NullOr(S.String)),
           clientMutationId: S.optional(S.NullOr(S.String)),
@@ -964,7 +1152,7 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          input: __S(25) as any as S.Schema<CreateAddOnInput>,
+          input: CreateAddOnInput,
         })
           .pipe(T.Http({ method: "POST", uri: "/graphql", code: 200 }))
           .pipe(
@@ -979,7 +1167,7 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          addOn: __S(19),
+          addOn: CreateAddOnResponseAddOn,
           clientMutationId: S.NullOr(S.String),
         }).pipe(T.ResponsePath("createAddOn")),
       ).annotate({ identifier: "CreateAddOnResponse" });
@@ -996,7 +1184,7 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          input: __S(28) as any as S.Schema<CreateExtensionTosAgreementInput>,
+          input: CreateExtensionTosAgreementInput,
         })
           .pipe(T.Http({ method: "POST", uri: "/graphql", code: 200 }))
           .pipe(
@@ -1034,7 +1222,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          input: __S(31) as any as S.Schema<DeleteAddOnInput>,
+          input: DeleteAddOnInput,
         })
           .pipe(T.Http({ method: "POST", uri: "/graphql", code: 200 }))
           .pipe(
@@ -1076,7 +1264,7 @@ function __c4(j: number): any {
           id: S.String,
           name: S.NullOr(S.String),
           primaryRegion: S.NullOr(S.String),
-          readRegions: S.NullOr(__S(1)),
+          readRegions: S.NullOr(OrganizationResponseAddOnsEdgesItemNodeReadRegionsList),
           status: S.NullOr(S.String),
           errorMessage: S.NullOr(S.String),
           publicUrl: S.NullOr(S.String).pipe(T.SensitiveValue({})),
@@ -1097,18 +1285,18 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           cursor: S.String,
-          node: S.NullOr(__S(35)),
+          node: S.NullOr(OrganizationResponseAddOnsEdgesItemNode),
         }),
       ).annotate({
         identifier: "OrganizationResponseAddOnsEdgesItem",
       });
     case 5:
-      return S.Array(/*@__PURE__*/ S.NullOr(__S(36)));
+      return S.Array(/*@__PURE__*/ S.NullOr(OrganizationResponseAddOnsEdgesItem));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          edges: S.NullOr(__S(37)),
-          pageInfo: __S(11),
+          edges: S.NullOr(OrganizationResponseAddOnsEdgesList),
+          pageInfo: AddOnPlansResponsePageInfo,
           totalCount: S.Number,
         }),
       ).annotate({
@@ -1124,7 +1312,7 @@ function __c4(j: number): any {
           paidPlan: S.Boolean,
           billable: S.Boolean,
           provisionsBetaExtensions: S.Boolean,
-          addOns: __S(38),
+          addOns: OrganizationResponseAddOns,
         }).pipe(T.ResponsePath("organization")),
       ).annotate({ identifier: "OrganizationResponse" });
   }
@@ -1141,7 +1329,7 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          input: __S(40) as any as S.Schema<ResetAddOnPasswordInput>,
+          input: ResetAddOnPasswordInput,
         })
           .pipe(T.Http({ method: "POST", uri: "/graphql", code: 200 }))
           .pipe(
@@ -1158,7 +1346,7 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          addOn: __S(35),
+          addOn: ResetAddOnPasswordResponseAddOn,
           clientMutationId: S.NullOr(S.String),
         }).pipe(T.ResponsePath("resetAddOnPassword")),
       ).annotate({
@@ -1171,7 +1359,7 @@ function __c5(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           provider: S.optional(S.NullOr(S.String)),
           planId: S.optional(S.NullOr(S.String)),
-          readRegions: S.optional(S.NullOr(__S(24))),
+          readRegions: S.optional(S.NullOr(StringList)),
           options: S.optional(S.NullOr(S.Unknown)),
           metadata: S.optional(S.NullOr(S.Unknown)),
           prodPack: S.optional(S.NullOr(S.Boolean)),
@@ -1181,7 +1369,7 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          input: __S(43) as any as S.Schema<UpdateAddOnInput>,
+          input: UpdateAddOnInput,
         })
           .pipe(T.Http({ method: "POST", uri: "/graphql", code: 200 }))
           .pipe(
@@ -1196,30 +1384,9 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          addOn: __S(19),
+          addOn: UpdateAddOnResponseAddOn,
           clientMutationId: S.NullOr(S.String),
         }).pipe(T.ResponsePath("updateAddOn")),
       ).annotate({ identifier: "UpdateAddOnResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

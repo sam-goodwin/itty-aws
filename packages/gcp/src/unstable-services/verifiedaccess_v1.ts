@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -66,10 +64,17 @@ export class NotFound
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Empty>;
+
 export interface CreateChallengeRequest {
   /** Request body */
   body?: Empty;
 }
+const CreateChallengeRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateChallengeRequest>;
+
 /** The wrapper message of any data and its signature. */
 export interface SignedData {
   /** The signature of the data field. */
@@ -77,6 +82,8 @@ export interface SignedData {
   /** The data to be signed. */
   data?: string;
 }
+const SignedData = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SignedData>;
+
 /** Result message for VerifiedAccess.CreateChallenge. */
 export interface Challenge {
   /** Challenge generated with the old signing key (this will only be present during key rotation) */
@@ -84,6 +91,8 @@ export interface Challenge {
   /** Generated challenge */
   challenge?: SignedData;
 }
+const Challenge = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Challenge>;
+
 /** signed ChallengeResponse */
 export interface VerifyChallengeResponseRequest {
   /** The generated response to the challenge */
@@ -91,10 +100,20 @@ export interface VerifyChallengeResponseRequest {
   /** Service can optionally provide identity information about the device or user associated with the key. For an EMK, this value is the enrolled domain. For an EUK, this value is the user's email address. If present, this value will be checked against contents of the response, and verification will fail if there is no match. */
   expectedIdentity?: string;
 }
+const VerifyChallengeResponseRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<VerifyChallengeResponseRequest>;
+
 export interface VerifyChallengeRequest {
   /** Request body */
   body?: VerifyChallengeResponseRequest;
 }
+const VerifyChallengeRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<VerifyChallengeRequest>;
+
 /** Result message for VerifiedAccess.VerifyChallengeResponse. */
 export interface VerifyChallengeResponseResult {
   /** Device permanent id is returned in this field (for the machine response only). */
@@ -108,6 +127,11 @@ export interface VerifyChallengeResponseResult {
   /** Device enrollment id is returned in this field (for the machine response only). */
   deviceEnrollmentId?: string;
 }
+const VerifyChallengeResponseResult = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<VerifyChallengeResponseResult>;
+
 export type CreateChallengeError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** CreateChallenge API */
 export const createChallenge: API.OperationMethod<
@@ -116,8 +140,8 @@ export const createChallenge: API.OperationMethod<
   CreateChallengeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateChallengeRequest>,
-  output: __S(3) as any as S.Schema<Challenge>,
+  input: CreateChallengeRequest,
+  output: Challenge,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -131,8 +155,8 @@ export const verifyChallenge: API.OperationMethod<
   VerifyChallengeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<VerifyChallengeRequest>,
-  output: __S(6) as any as S.Schema<VerifyChallengeResponseResult>,
+  input: VerifyChallengeRequest,
+  output: VerifyChallengeResponseResult,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -148,7 +172,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(Empty.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -167,14 +191,14 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          alternativeChallenge: S.optional(__S(2)),
-          challenge: S.optional(__S(2)),
+          alternativeChallenge: S.optional(SignedData),
+          challenge: S.optional(SignedData),
         }),
       ).annotate({ identifier: "Challenge" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          challengeResponse: S.optional(__S(2)),
+          challengeResponse: S.optional(SignedData),
           expectedIdentity: S.optional(S.String),
         }),
       ).annotate({
@@ -183,7 +207,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(4).pipe(T.HttpBody())),
+          body: S.optional(VerifyChallengeResponseRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -204,16 +228,5 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "VerifyChallengeResponseResult",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

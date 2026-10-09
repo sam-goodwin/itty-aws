@@ -5,8 +5,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -17,6 +15,11 @@ export interface CreateCustomerJourneyRequest {
   name?: string;
   description?: string | null;
 }
+const CreateCustomerJourneyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateCustomerJourneyRequest>;
+
 export interface CustomerJourney {
   id?: string;
   insight?: number;
@@ -26,17 +29,34 @@ export interface CustomerJourney {
   created_by?: number | null;
   updated_at?: string | null;
 }
+const CustomerJourney = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CustomerJourney>;
+
 export interface CustomerJourneysDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const CustomerJourneysDestroyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CustomerJourneysDestroyRequest>;
+
 export interface CustomerJourneysDestroyResponse {}
+const CustomerJourneysDestroyResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CustomerJourneysDestroyResponse>;
+
 export interface GetCustomerJourneyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const GetCustomerJourneyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetCustomerJourneyRequest>;
+
 export interface ListCustomerJourneysRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -45,13 +65,28 @@ export interface ListCustomerJourneysRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListCustomerJourneysRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListCustomerJourneysRequest>;
+
 export type PaginatedCustomerJourneyListResultsList = Array<CustomerJourney>;
+const PaginatedCustomerJourneyListResultsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<PaginatedCustomerJourneyListResultsList>;
+
 export interface PaginatedCustomerJourneyList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedCustomerJourneyListResultsList;
 }
+const PaginatedCustomerJourneyList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<PaginatedCustomerJourneyList>;
+
 export interface UpdateCustomerJourneyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -60,6 +95,11 @@ export interface UpdateCustomerJourneyRequest {
   name?: string;
   description?: string | null;
 }
+const UpdateCustomerJourneyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<UpdateCustomerJourneyRequest>;
+
 export interface UpdateCustomerJourneysPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -68,6 +108,11 @@ export interface UpdateCustomerJourneysPartialRequest {
   name?: string;
   description?: string | null;
 }
+const UpdateCustomerJourneysPartialRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<UpdateCustomerJourneysPartialRequest>;
+
 export type CreateCustomerJourneyError = PosthogOpError;
 export const createCustomerJourney: API.OperationMethod<
   CreateCustomerJourneyRequest,
@@ -75,8 +120,8 @@ export const createCustomerJourney: API.OperationMethod<
   CreateCustomerJourneyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateCustomerJourneyRequest>,
-  output: __S(1) as any as S.Schema<CustomerJourney>,
+  input: CreateCustomerJourneyRequest,
+  output: CustomerJourney,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -89,8 +134,8 @@ export const customerJourneysDestroy: API.OperationMethod<
   CustomerJourneysDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CustomerJourneysDestroyRequest>,
-  output: __S(3) as any as S.Schema<CustomerJourneysDestroyResponse>,
+  input: CustomerJourneysDestroyRequest,
+  output: CustomerJourneysDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -103,8 +148,8 @@ export const getCustomerJourney: API.OperationMethod<
   GetCustomerJourneyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetCustomerJourneyRequest>,
-  output: __S(1) as any as S.Schema<CustomerJourney>,
+  input: GetCustomerJourneyRequest,
+  output: CustomerJourney,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -117,8 +162,8 @@ export const listCustomerJourneys: API.OperationMethod<
   ListCustomerJourneysError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<ListCustomerJourneysRequest>,
-  output: __S(7) as any as S.Schema<PaginatedCustomerJourneyList>,
+  input: ListCustomerJourneysRequest,
+  output: PaginatedCustomerJourneyList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -131,8 +176,8 @@ export const updateCustomerJourney: API.OperationMethod<
   UpdateCustomerJourneyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<UpdateCustomerJourneyRequest>,
-  output: __S(1) as any as S.Schema<CustomerJourney>,
+  input: UpdateCustomerJourneyRequest,
+  output: CustomerJourney,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -145,8 +190,8 @@ export const updateCustomerJourneysPartial: API.OperationMethod<
   UpdateCustomerJourneysPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<UpdateCustomerJourneysPartialRequest>,
-  output: __S(1) as any as S.Schema<CustomerJourney>,
+  input: UpdateCustomerJourneysPartialRequest,
+  output: CustomerJourney,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -235,14 +280,14 @@ function __c0(j: number): any {
         identifier: "ListCustomerJourneysRequest",
       });
     case 6:
-      return S.Array(__S(1));
+      return S.Array(CustomerJourney);
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(6)),
+          results: S.optional(PaginatedCustomerJourneyListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedCustomerJourneyList",
@@ -287,18 +332,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateCustomerJourneysPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

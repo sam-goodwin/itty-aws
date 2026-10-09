@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -128,6 +126,8 @@ export type CapacityCommitmentRenewalPlanEnum =
   | "ANNUAL_FLAT_RATE"
   | "THREE_YEAR"
   | "NONE";
+const CapacityCommitmentRenewalPlanEnum = S.String;
+
 export type CapacityCommitmentPlanEnum =
   | "COMMITMENT_PLAN_UNSPECIFIED"
   | "FLEX"
@@ -139,14 +139,24 @@ export type CapacityCommitmentPlanEnum =
   | "ANNUAL_FLAT_RATE"
   | "THREE_YEAR"
   | "NONE";
+const CapacityCommitmentPlanEnum = S.String;
+
 export type CapacityCommitmentStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "ACTIVE" | "FAILED";
+const CapacityCommitmentStateEnum = S.String;
+
 export type CapacityCommitmentEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "STANDARD"
   | "ENTERPRISE"
   | "ENTERPRISE_PLUS";
+const CapacityCommitmentEditionEnum = S.String;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -156,6 +166,8 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
+const Status = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Status>;
+
 /** Capacity commitment is a way to purchase compute capacity for BigQuery jobs (in the form of slots) with some committed period of usage. Annual commitments renew by default. Commitments can be removed after their commitment end time passes. In order to remove annual commitment, its plan needs to be changed to monthly or flex first. A capacity commitment resource exists as a child resource of the admin project. */
 export interface CapacityCommitment {
   /** Output only. The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` The commitment_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters. */
@@ -181,6 +193,8 @@ export interface CapacityCommitment {
   /** Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field. */
   multiRegionAuxiliary?: boolean;
 }
+const CapacityCommitment = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CapacityCommitment>;
+
 export interface CreateProjectsLocationsCapacityCommitmentsRequest {
   /** If true, fail the request if another project in the organization has a capacity commitment. */
   enforceSingleAdminProjectPerOrg?: boolean;
@@ -191,6 +205,11 @@ export interface CreateProjectsLocationsCapacityCommitmentsRequest {
   /** Request body */
   body?: CapacityCommitment;
 }
+const CreateProjectsLocationsCapacityCommitmentsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateProjectsLocationsCapacityCommitmentsRequest>;
+
 /** A reservation group is a container for reservations. */
 export interface ReservationGroup {
   /** Output only. Creation time of the reservation group. */
@@ -202,6 +221,8 @@ export interface ReservationGroup {
   /** Identifier. The resource name of the reservation group, e.g., `projects/*\/locations/*\/reservationGroups/team1-prod`. The reservation_group_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters. */
   name?: string;
 }
+const ReservationGroup = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ReservationGroup>;
+
 export interface CreateProjectsLocationsReservationGroupsRequest {
   /** Required. The reservation group ID. It must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters. */
   reservationGroupId?: string;
@@ -210,11 +231,18 @@ export interface CreateProjectsLocationsReservationGroupsRequest {
   /** Request body */
   body?: ReservationGroup;
 }
+const CreateProjectsLocationsReservationGroupsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateProjectsLocationsReservationGroupsRequest>;
+
 export type ReservationEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "STANDARD"
   | "ENTERPRISE"
   | "ENTERPRISE_PLUS";
+const ReservationEditionEnum = S.String;
+
 /** Disaster Recovery(DR) replication status of the reservation. */
 export interface ReplicationStatus {
   /** Output only. The time at which the last error was encountered while trying to replicate changes from the primary to the secondary. This field is only available if the replication has not succeeded since. */
@@ -226,7 +254,11 @@ export interface ReplicationStatus {
   /** Output only. The time at which a soft failover for the reservation and its associated datasets was initiated. After this field is set, all subsequent changes to the reservation will be rejected unless a hard failover overrides this operation. This field will be cleared once the failover is complete. */
   softFailoverStartTime?: string;
 }
+const ReplicationStatus = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ReplicationStatus>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<StringMap>;
+
 /** Auto scaling settings. */
 export interface Autoscale {
   /** Output only. The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots]. Note: after users reduce max_slots, it may take a while before it can be propagated, so current_slots may stay in the original value and could be larger than max_slots for that brief period (less than one minute) */
@@ -234,12 +266,18 @@ export interface Autoscale {
   /** Optional. Number of slots to be scaled when needed. */
   maxSlots?: string;
 }
+const Autoscale = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Autoscale>;
+
 export type ReservationScalingModeEnum =
   | "SCALING_MODE_UNSPECIFIED"
   | "AUTOSCALE_ONLY"
   | "IDLE_SLOTS_ONLY"
   | "ALL_SLOTS";
+const ReservationScalingModeEnum = S.String;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<StringList>;
+
 /** The scheduling policy controls how a reservation's resources are distributed. */
 export interface SchedulingPolicy {
   /** Optional. If present and > 0, the reservation will attempt to limit the concurrency of jobs running for any particular project within it to the given value. This feature is not yet generally available. */
@@ -247,6 +285,8 @@ export interface SchedulingPolicy {
   /** Optional. If present and > 0, the reservation will attempt to limit the slot consumption of queries running for any particular project within it to the given value. This feature is not yet generally available. */
   maxSlots?: string;
 }
+const SchedulingPolicy = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<SchedulingPolicy>;
+
 /** A reservation is a mechanism used to guarantee slots to users. */
 export interface Reservation {
   /** Optional. Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as target job concurrency in the Information Schema, DDL and BigQuery CLI. */
@@ -288,6 +328,8 @@ export interface Reservation {
   /** Optional. The scheduling policy to use for jobs and queries running under this reservation. The scheduling policy controls how the reservation's resources are distributed. This feature is not yet generally available. */
   schedulingPolicy?: SchedulingPolicy;
 }
+const Reservation = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Reservation>;
+
 export interface CreateProjectsLocationsReservationsRequest {
   /** The reservation ID. It must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters. */
   reservationId?: string;
@@ -296,6 +338,11 @@ export interface CreateProjectsLocationsReservationsRequest {
   /** Request body */
   body?: Reservation;
 }
+const CreateProjectsLocationsReservationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateProjectsLocationsReservationsRequest>;
+
 export type AssignmentJobTypeEnum =
   | "JOB_TYPE_UNSPECIFIED"
   | "PIPELINE"
@@ -307,6 +354,8 @@ export type AssignmentJobTypeEnum =
   | "BACKGROUND_COLUMN_METADATA_INDEX"
   | "BACKGROUND_SEARCH_INDEX_REFRESH"
   | "AUTOMATIC_MATERIALIZED_VIEW_REFRESH";
+const AssignmentJobTypeEnum = S.String;
+
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
@@ -318,7 +367,11 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
+const Expr = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Expr>;
+
 export type AssignmentStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "ACTIVE";
+const AssignmentStateEnum = S.String;
+
 /** An assignment allows a project to submit jobs of a certain type using slots from the specified reservation. */
 export interface Assignment {
   /** Optional. Which type of jobs will use the reservation. */
@@ -340,6 +393,8 @@ export interface Assignment {
   /** Output only. State of the assignment. */
   state?: AssignmentStateEnum | (string & {});
 }
+const Assignment = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Assignment>;
+
 export interface CreateProjectsLocationsReservationsAssignmentsRequest {
   /** Required. The parent resource name of the assignment E.g. `projects/myproject/locations/US/reservations/team1-prod` */
   parent: string;
@@ -348,45 +403,89 @@ export interface CreateProjectsLocationsReservationsAssignmentsRequest {
   /** Request body */
   body?: Assignment;
 }
+const CreateProjectsLocationsReservationsAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateProjectsLocationsReservationsAssignmentsRequest>;
+
 export interface DeleteProjectsLocationsCapacityCommitmentsRequest {
   /** Required. Resource name of the capacity commitment to delete. E.g., `projects/myproject/locations/US/capacityCommitments/123` */
   name: string;
   /** Can be used to force delete commitments even if assignments exist. Deleting commitments with assignments may cause queries to fail if they no longer have access to slots. */
   force?: boolean;
 }
+const DeleteProjectsLocationsCapacityCommitmentsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DeleteProjectsLocationsCapacityCommitmentsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Empty>;
+
 export interface DeleteProjectsLocationsReservationGroupsRequest {
   /** Required. Resource name of the reservation group to retrieve. E.g., `projects/myproject/locations/US/reservationGroups/team1-prod` */
   name: string;
 }
+const DeleteProjectsLocationsReservationGroupsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DeleteProjectsLocationsReservationGroupsRequest>;
+
 export interface DeleteProjectsLocationsReservationsRequest {
   /** Required. Resource name of the reservation to retrieve. E.g., `projects/myproject/locations/US/reservations/team1-prod` */
   name: string;
 }
+const DeleteProjectsLocationsReservationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DeleteProjectsLocationsReservationsRequest>;
+
 export interface DeleteProjectsLocationsReservationsAssignmentsRequest {
   /** Required. Name of the resource, e.g. `projects/myproject/locations/US/reservations/team1-prod/assignments/123` */
   name: string;
 }
+const DeleteProjectsLocationsReservationsAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DeleteProjectsLocationsReservationsAssignmentsRequest>;
+
 export type FailoverReservationRequestFailoverModeEnum =
   | "FAILOVER_MODE_UNSPECIFIED"
   | "SOFT"
   | "HARD";
+const FailoverReservationRequestFailoverModeEnum = S.String;
+
 /** The request for ReservationService.FailoverReservation. */
 export interface FailoverReservationRequest {
   /** Optional. A parameter that determines how writes that are pending replication are handled after a failover is initiated. If not specified, HARD failover mode is used by default. */
   failoverMode?: FailoverReservationRequestFailoverModeEnum | (string & {});
 }
+const FailoverReservationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<FailoverReservationRequest>;
+
 export interface FailoverReservationProjectsLocationsReservationsRequest {
   /** Required. Resource name of the reservation to failover. E.g., `projects/myproject/locations/US/reservations/team1-prod` */
   name: string;
   /** Request body */
   body?: FailoverReservationRequest;
 }
+const FailoverReservationProjectsLocationsReservationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<FailoverReservationProjectsLocationsReservationsRequest>;
+
 export interface GetBiReservationProjectsLocationsRequest {
   /** Required. Name of the requested reservation, for example: `projects/{project_id}/locations/{location_id}/biReservation` */
   name: string;
 }
+const GetBiReservationProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetBiReservationProjectsLocationsRequest>;
+
 /** Fully qualified reference to BigQuery table. Internally stored as google.cloud.bi.v1.BqTableReference. */
 export interface TableReference {
   /** Optional. The ID of the dataset in the above project. */
@@ -396,7 +495,11 @@ export interface TableReference {
   /** Optional. The assigned project ID of the project. */
   projectId?: string;
 }
+const TableReference = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<TableReference>;
+
 export type TableReferenceList = Array<TableReference>;
+const TableReferenceList = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<TableReferenceList>;
+
 /** Represents a BI Reservation. */
 export interface BiReservation {
   /** Output only. The last update timestamp of a reservation. */
@@ -408,17 +511,26 @@ export interface BiReservation {
   /** Optional. Size of a reservation, in bytes. */
   size?: string;
 }
+const BiReservation = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<BiReservation>;
+
 export interface GetIamPolicyProjectsLocationsReservationsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
+const GetIamPolicyProjectsLocationsReservationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetIamPolicyProjectsLocationsReservationsRequest>;
+
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
+const AuditLogConfigLogTypeEnum = S.String;
+
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -426,7 +538,11 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
+const AuditLogConfig = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<AuditLogConfig>;
+
 export type AuditLogConfigList = Array<AuditLogConfig>;
+const AuditLogConfigList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<AuditLogConfigList>;
+
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -434,7 +550,11 @@ export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: AuditLogConfigList;
 }
+const AuditConfig = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<AuditConfig>;
+
 export type AuditConfigList = Array<AuditConfig>;
+const AuditConfigList = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<AuditConfigList>;
+
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -444,7 +564,11 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
+const Binding = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Binding>;
+
 export type BindingList = Array<Binding>;
+const BindingList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<BindingList>;
+
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** Specifies cloud audit logging configuration for this policy. */
@@ -456,24 +580,46 @@ export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
+const Policy = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<Policy>;
+
 export interface GetIamPolicyProjectsLocationsReservationsAssignmentsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
+const GetIamPolicyProjectsLocationsReservationsAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetIamPolicyProjectsLocationsReservationsAssignmentsRequest>;
+
 export interface GetProjectsLocationsCapacityCommitmentsRequest {
   /** Required. Resource name of the capacity commitment to retrieve. E.g., `projects/myproject/locations/US/capacityCommitments/123` */
   name: string;
 }
+const GetProjectsLocationsCapacityCommitmentsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetProjectsLocationsCapacityCommitmentsRequest>;
+
 export interface GetProjectsLocationsReservationGroupsRequest {
   /** Required. Resource name of the reservation group to retrieve. E.g., `projects/myproject/locations/US/reservationGroups/team1-prod` */
   name: string;
 }
+const GetProjectsLocationsReservationGroupsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetProjectsLocationsReservationGroupsRequest>;
+
 export interface GetProjectsLocationsReservationsRequest {
   /** Required. Resource name of the reservation to retrieve. E.g., `projects/myproject/locations/US/reservations/team1-prod` */
   name: string;
 }
+const GetProjectsLocationsReservationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<GetProjectsLocationsReservationsRequest>;
+
 export interface ListProjectsLocationsCapacityCommitmentsRequest {
   /** Required. Resource name of the parent reservation. E.g., `projects/myproject/locations/US` */
   parent: string;
@@ -482,7 +628,17 @@ export interface ListProjectsLocationsCapacityCommitmentsRequest {
   /** The maximum number of items to return. */
   pageSize?: number;
 }
+const ListProjectsLocationsCapacityCommitmentsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListProjectsLocationsCapacityCommitmentsRequest>;
+
 export type CapacityCommitmentList = Array<CapacityCommitment>;
+const CapacityCommitmentList = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CapacityCommitmentList>;
+
 /** The response for ReservationService.ListCapacityCommitments. */
 export interface ListCapacityCommitmentsResponse {
   /** List of capacity commitments visible to the user. */
@@ -490,6 +646,11 @@ export interface ListCapacityCommitmentsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
+const ListCapacityCommitmentsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListCapacityCommitmentsResponse>;
+
 export interface ListProjectsLocationsReservationGroupsRequest {
   /** Required. The parent resource name containing project and location, e.g.: `projects/myproject/locations/US` */
   parent: string;
@@ -498,7 +659,14 @@ export interface ListProjectsLocationsReservationGroupsRequest {
   /** The maximum number of items to return per page. */
   pageSize?: number;
 }
+const ListProjectsLocationsReservationGroupsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ListProjectsLocationsReservationGroupsRequest>;
+
 export type ReservationGroupList = Array<ReservationGroup>;
+const ReservationGroupList = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ReservationGroupList>;
+
 /** The response for ReservationService.ListReservationGroups. */
 export interface ListReservationGroupsResponse {
   /** List of reservations visible to the user. */
@@ -506,6 +674,11 @@ export interface ListReservationGroupsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
+const ListReservationGroupsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListReservationGroupsResponse>;
+
 export interface ListProjectsLocationsReservationsRequest {
   /** Required. The parent resource name containing project and location, e.g.: `projects/myproject/locations/US` */
   parent: string;
@@ -514,7 +687,14 @@ export interface ListProjectsLocationsReservationsRequest {
   /** The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
 }
+const ListProjectsLocationsReservationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ListProjectsLocationsReservationsRequest>;
+
 export type ReservationList = Array<Reservation>;
+const ReservationList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ReservationList>;
+
 /** The response for ReservationService.ListReservations. */
 export interface ListReservationsResponse {
   /** List of reservations visible to the user. */
@@ -522,6 +702,11 @@ export interface ListReservationsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
+const ListReservationsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListReservationsResponse>;
+
 export interface ListProjectsLocationsReservationsAssignmentsRequest {
   /** Required. The parent resource name e.g.: `projects/myproject/locations/US/reservations/team1-prod` Or: `projects/myproject/locations/US/reservations/-` */
   parent: string;
@@ -530,7 +715,14 @@ export interface ListProjectsLocationsReservationsAssignmentsRequest {
   /** The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
 }
+const ListProjectsLocationsReservationsAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ListProjectsLocationsReservationsAssignmentsRequest>;
+
 export type AssignmentList = Array<Assignment>;
+const AssignmentList = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<AssignmentList>;
+
 /** The response for ReservationService.ListAssignments. */
 export interface ListAssignmentsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -538,6 +730,11 @@ export interface ListAssignmentsResponse {
   /** List of assignments visible to the user. */
   assignments?: AssignmentList;
 }
+const ListAssignmentsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ListAssignmentsResponse>;
+
 /** The request for ReservationService.MergeCapacityCommitments. */
 export interface MergeCapacityCommitmentsRequest {
   /** Ids of capacity commitments to merge. These capacity commitments must exist under admin project and location specified in the parent. ID is the last portion of capacity commitment name e.g., 'abc' for projects/myproject/locations/US/capacityCommitments/abc */
@@ -545,12 +742,22 @@ export interface MergeCapacityCommitmentsRequest {
   /** Optional. The optional resulting capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. */
   capacityCommitmentId?: string;
 }
+const MergeCapacityCommitmentsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<MergeCapacityCommitmentsRequest>;
+
 export interface MergeProjectsLocationsCapacityCommitmentsRequest {
   /** Parent resource that identifies admin project and location e.g., `projects/myproject/locations/us` */
   parent: string;
   /** Request body */
   body?: MergeCapacityCommitmentsRequest;
 }
+const MergeProjectsLocationsCapacityCommitmentsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<MergeProjectsLocationsCapacityCommitmentsRequest>;
+
 /** The request for ReservationService.MoveAssignment. **Note**: "bigquery.reservationAssignments.create" permission is required on the destination_id. **Note**: "bigquery.reservationAssignments.create" and "bigquery.reservationAssignments.delete" permission are required on the related assignee. */
 export interface MoveAssignmentRequest {
   /** The new reservation ID, e.g.: `projects/myotherproject/locations/US/reservations/team2-prod` */
@@ -558,12 +765,22 @@ export interface MoveAssignmentRequest {
   /** The optional assignment ID. A new assignment name is generated if this field is empty. This field can contain only lowercase alphanumeric characters or dashes. Max length is 64 characters. */
   assignmentId?: string;
 }
+const MoveAssignmentRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<MoveAssignmentRequest>;
+
 export interface MoveProjectsLocationsReservationsAssignmentsRequest {
   /** Required. The resource name of the assignment, e.g. `projects/myproject/locations/US/reservations/team1-prod/assignments/123` */
   name: string;
   /** Request body */
   body?: MoveAssignmentRequest;
 }
+const MoveProjectsLocationsReservationsAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<MoveProjectsLocationsReservationsAssignmentsRequest>;
+
 export interface PatchProjectsLocationsCapacityCommitmentsRequest {
   /** Standard field mask for the set of fields to be updated. */
   updateMask?: string;
@@ -572,6 +789,11 @@ export interface PatchProjectsLocationsCapacityCommitmentsRequest {
   /** Request body */
   body?: CapacityCommitment;
 }
+const PatchProjectsLocationsCapacityCommitmentsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<PatchProjectsLocationsCapacityCommitmentsRequest>;
+
 export interface PatchProjectsLocationsReservationGroupsRequest {
   /** Identifier. The resource name of the reservation group, e.g., `projects/*\/locations/*\/reservationGroups/team1-prod`. The reservation_group_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters. */
   name: string;
@@ -580,6 +802,11 @@ export interface PatchProjectsLocationsReservationGroupsRequest {
   /** Request body */
   body?: ReservationGroup;
 }
+const PatchProjectsLocationsReservationGroupsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<PatchProjectsLocationsReservationGroupsRequest>;
+
 export interface PatchProjectsLocationsReservationsRequest {
   /** Identifier. The resource name of the reservation, e.g., `projects/*\/locations/*\/reservations/team1-prod`. The reservation_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters. */
   name: string;
@@ -588,6 +815,11 @@ export interface PatchProjectsLocationsReservationsRequest {
   /** Request body */
   body?: Reservation;
 }
+const PatchProjectsLocationsReservationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<PatchProjectsLocationsReservationsRequest>;
+
 export interface PatchProjectsLocationsReservationsAssignmentsRequest {
   /** Output only. Name of the resource. E.g.: `projects/myproject/locations/US/reservations/team1-prod/assignments/123`. The assignment_id must only contain lower case alphanumeric characters or dashes and the max length is 64 characters. */
   name: string;
@@ -596,6 +828,11 @@ export interface PatchProjectsLocationsReservationsAssignmentsRequest {
   /** Request body */
   body?: Assignment;
 }
+const PatchProjectsLocationsReservationsAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<PatchProjectsLocationsReservationsAssignmentsRequest>;
+
 export interface SearchAllAssignmentsProjectsLocationsRequest {
   /** Please specify resource name as assignee in the query. Examples: * `assignee=projects/myproject` * `assignee=folders/123` * `assignee=organizations/456` */
   query?: string;
@@ -606,6 +843,11 @@ export interface SearchAllAssignmentsProjectsLocationsRequest {
   /** The maximum number of items to return per page. */
   pageSize?: number;
 }
+const SearchAllAssignmentsProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<SearchAllAssignmentsProjectsLocationsRequest>;
+
 /** The response for ReservationService.SearchAllAssignments. */
 export interface SearchAllAssignmentsResponse {
   /** List of assignments visible to the user. */
@@ -613,6 +855,11 @@ export interface SearchAllAssignmentsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
+const SearchAllAssignmentsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<SearchAllAssignmentsResponse>;
+
 export interface SearchAssignmentsProjectsLocationsRequest {
   /** The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
@@ -623,6 +870,11 @@ export interface SearchAssignmentsProjectsLocationsRequest {
   /** The maximum number of items to return per page. */
   pageSize?: number;
 }
+const SearchAssignmentsProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<SearchAssignmentsProjectsLocationsRequest>;
+
 /** The response for ReservationService.SearchAssignments. */
 export interface SearchAssignmentsResponse {
   /** List of assignments visible to the user. */
@@ -630,6 +882,9 @@ export interface SearchAssignmentsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
+const SearchAssignmentsResponse =
+  SearchAllAssignmentsResponse as any as S.Schema<SearchAssignmentsResponse>;
+
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -637,29 +892,51 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
+const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<SetIamPolicyRequest>;
+
 export interface SetIamPolicyProjectsLocationsReservationsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsReservationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<SetIamPolicyProjectsLocationsReservationsRequest>;
+
 export interface SetIamPolicyProjectsLocationsReservationsAssignmentsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsReservationsAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<SetIamPolicyProjectsLocationsReservationsAssignmentsRequest>;
+
 /** The request for ReservationService.SplitCapacityCommitment. */
 export interface SplitCapacityCommitmentRequest {
   /** Number of slots in the capacity commitment after the split. */
   slotCount?: string;
 }
+const SplitCapacityCommitmentRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<SplitCapacityCommitmentRequest>;
+
 export interface SplitProjectsLocationsCapacityCommitmentsRequest {
   /** Required. The resource name e.g.,: `projects/myproject/locations/US/capacityCommitments/123` */
   name: string;
   /** Request body */
   body?: SplitCapacityCommitmentRequest;
 }
+const SplitProjectsLocationsCapacityCommitmentsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<SplitProjectsLocationsCapacityCommitmentsRequest>;
+
 /** The response for ReservationService.SplitCapacityCommitment. */
 export interface SplitCapacityCommitmentResponse {
   /** Second capacity commitment, result of a split. */
@@ -667,28 +944,51 @@ export interface SplitCapacityCommitmentResponse {
   /** First capacity commitment, result of a split. */
   first?: CapacityCommitment;
 }
+const SplitCapacityCommitmentResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<SplitCapacityCommitmentResponse>;
+
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
+const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<TestIamPermissionsRequest>;
+
 export interface TestIamPermissionsProjectsLocationsReservationsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsReservationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsReservationsRequest>;
+
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
+const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
+
 export interface TestIamPermissionsProjectsLocationsReservationsAssignmentsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsReservationsAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsReservationsAssignmentsRequest>;
+
 export interface UpdateBiReservationProjectsLocationsRequest {
   /** Identifier. The resource name of the singleton BI reservation. Reservation names have the form `projects/{project_id}/locations/{location_id}/biReservation`. */
   name: string;
@@ -697,6 +997,11 @@ export interface UpdateBiReservationProjectsLocationsRequest {
   /** Request body */
   body?: BiReservation;
 }
+const UpdateBiReservationProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<UpdateBiReservationProjectsLocationsRequest>;
+
 export type CreateProjectsLocationsCapacityCommitmentsError =
   | NotFound
   | Forbidden
@@ -711,8 +1016,8 @@ export const createProjectsLocationsCapacityCommitments: API.OperationMethod<
   CreateProjectsLocationsCapacityCommitmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateProjectsLocationsCapacityCommitmentsRequest>,
-  output: __S(3) as any as S.Schema<CapacityCommitment>,
+  input: CreateProjectsLocationsCapacityCommitmentsRequest,
+  output: CapacityCommitment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, CommitmentPlanNotSupported, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -732,8 +1037,8 @@ export const createProjectsLocationsReservationGroups: API.OperationMethod<
   CreateProjectsLocationsReservationGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateProjectsLocationsReservationGroupsRequest>,
-  output: __S(5) as any as S.Schema<ReservationGroup>,
+  input: CreateProjectsLocationsReservationGroupsRequest,
+  output: ReservationGroup,
   errors: [
     NotFound,
     Forbidden,
@@ -759,8 +1064,8 @@ export const createProjectsLocationsReservations: API.OperationMethod<
   CreateProjectsLocationsReservationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CreateProjectsLocationsReservationsRequest>,
-  output: __S(12) as any as S.Schema<Reservation>,
+  input: CreateProjectsLocationsReservationsRequest,
+  output: Reservation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -779,8 +1084,8 @@ export const createProjectsLocationsReservationsAssignments: API.OperationMethod
   CreateProjectsLocationsReservationsAssignmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CreateProjectsLocationsReservationsAssignmentsRequest>,
-  output: __S(15) as any as S.Schema<Assignment>,
+  input: CreateProjectsLocationsReservationsAssignmentsRequest,
+  output: Assignment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -800,8 +1105,8 @@ export const deleteProjectsLocationsCapacityCommitments: API.OperationMethod<
   DeleteProjectsLocationsCapacityCommitmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<DeleteProjectsLocationsCapacityCommitmentsRequest>,
-  output: __S(18) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsCapacityCommitmentsRequest,
+  output: Empty,
   errors: [
     NotFound,
     Forbidden,
@@ -827,8 +1132,8 @@ export const deleteProjectsLocationsReservationGroups: API.OperationMethod<
   DeleteProjectsLocationsReservationGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<DeleteProjectsLocationsReservationGroupsRequest>,
-  output: __S(18) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsReservationGroupsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -847,8 +1152,8 @@ export const deleteProjectsLocationsReservations: API.OperationMethod<
   DeleteProjectsLocationsReservationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<DeleteProjectsLocationsReservationsRequest>,
-  output: __S(18) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsReservationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -867,8 +1172,8 @@ export const deleteProjectsLocationsReservationsAssignments: API.OperationMethod
   DeleteProjectsLocationsReservationsAssignmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<DeleteProjectsLocationsReservationsAssignmentsRequest>,
-  output: __S(18) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsReservationsAssignmentsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -887,8 +1192,8 @@ export const failoverReservationProjectsLocationsReservations: API.OperationMeth
   FailoverReservationProjectsLocationsReservationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<FailoverReservationProjectsLocationsReservationsRequest>,
-  output: __S(12) as any as S.Schema<Reservation>,
+  input: FailoverReservationProjectsLocationsReservationsRequest,
+  output: Reservation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -902,8 +1207,8 @@ export const getBiReservationProjectsLocations: API.OperationMethod<
   GetBiReservationProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetBiReservationProjectsLocationsRequest>,
-  output: __S(27) as any as S.Schema<BiReservation>,
+  input: GetBiReservationProjectsLocationsRequest,
+  output: BiReservation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -917,8 +1222,8 @@ export const getIamPolicyProjectsLocationsReservations: API.OperationMethod<
   GetIamPolicyProjectsLocationsReservationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<GetIamPolicyProjectsLocationsReservationsRequest>,
-  output: __S(35) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsReservationsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -935,8 +1240,8 @@ export const getIamPolicyProjectsLocationsReservationsAssignments: API.Operation
   GetIamPolicyProjectsLocationsReservationsAssignmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GetIamPolicyProjectsLocationsReservationsAssignmentsRequest>,
-  output: __S(35) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsReservationsAssignmentsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -950,8 +1255,8 @@ export const getProjectsLocationsCapacityCommitments: API.OperationMethod<
   GetProjectsLocationsCapacityCommitmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<GetProjectsLocationsCapacityCommitmentsRequest>,
-  output: __S(3) as any as S.Schema<CapacityCommitment>,
+  input: GetProjectsLocationsCapacityCommitmentsRequest,
+  output: CapacityCommitment,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -965,8 +1270,8 @@ export const getProjectsLocationsReservationGroups: API.OperationMethod<
   GetProjectsLocationsReservationGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<GetProjectsLocationsReservationGroupsRequest>,
-  output: __S(5) as any as S.Schema<ReservationGroup>,
+  input: GetProjectsLocationsReservationGroupsRequest,
+  output: ReservationGroup,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -980,8 +1285,8 @@ export const getProjectsLocationsReservations: API.OperationMethod<
   GetProjectsLocationsReservationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<GetProjectsLocationsReservationsRequest>,
-  output: __S(12) as any as S.Schema<Reservation>,
+  input: GetProjectsLocationsReservationsRequest,
+  output: Reservation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -996,8 +1301,8 @@ export const listProjectsLocationsCapacityCommitments: API.PaginatedOperationMet
   GcpOpContext,
   ListCapacityCommitmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(40) as any as S.Schema<ListProjectsLocationsCapacityCommitmentsRequest>,
-  output: __S(42) as any as S.Schema<ListCapacityCommitmentsResponse>,
+  input: ListProjectsLocationsCapacityCommitmentsRequest,
+  output: ListCapacityCommitmentsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1013,8 +1318,8 @@ export const listProjectsLocationsReservationGroups: API.PaginatedOperationMetho
   GcpOpContext,
   ListReservationGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(43) as any as S.Schema<ListProjectsLocationsReservationGroupsRequest>,
-  output: __S(45) as any as S.Schema<ListReservationGroupsResponse>,
+  input: ListProjectsLocationsReservationGroupsRequest,
+  output: ListReservationGroupsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1030,8 +1335,8 @@ export const listProjectsLocationsReservations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReservationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(46) as any as S.Schema<ListProjectsLocationsReservationsRequest>,
-  output: __S(48) as any as S.Schema<ListReservationsResponse>,
+  input: ListProjectsLocationsReservationsRequest,
+  output: ListReservationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1047,8 +1352,8 @@ export const listProjectsLocationsReservationsAssignments: API.PaginatedOperatio
   GcpOpContext,
   ListAssignmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(49) as any as S.Schema<ListProjectsLocationsReservationsAssignmentsRequest>,
-  output: __S(51) as any as S.Schema<ListAssignmentsResponse>,
+  input: ListProjectsLocationsReservationsAssignmentsRequest,
+  output: ListAssignmentsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1068,8 +1373,8 @@ export const mergeProjectsLocationsCapacityCommitments: API.OperationMethod<
   MergeProjectsLocationsCapacityCommitmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<MergeProjectsLocationsCapacityCommitmentsRequest>,
-  output: __S(3) as any as S.Schema<CapacityCommitment>,
+  input: MergeProjectsLocationsCapacityCommitmentsRequest,
+  output: CapacityCommitment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1088,8 +1393,8 @@ export const moveProjectsLocationsReservationsAssignments: API.OperationMethod<
   MoveProjectsLocationsReservationsAssignmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<MoveProjectsLocationsReservationsAssignmentsRequest>,
-  output: __S(15) as any as S.Schema<Assignment>,
+  input: MoveProjectsLocationsReservationsAssignmentsRequest,
+  output: Assignment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1108,8 +1413,8 @@ export const patchProjectsLocationsCapacityCommitments: API.OperationMethod<
   PatchProjectsLocationsCapacityCommitmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<PatchProjectsLocationsCapacityCommitmentsRequest>,
-  output: __S(3) as any as S.Schema<CapacityCommitment>,
+  input: PatchProjectsLocationsCapacityCommitmentsRequest,
+  output: CapacityCommitment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1128,8 +1433,8 @@ export const patchProjectsLocationsReservationGroups: API.OperationMethod<
   PatchProjectsLocationsReservationGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<PatchProjectsLocationsReservationGroupsRequest>,
-  output: __S(5) as any as S.Schema<ReservationGroup>,
+  input: PatchProjectsLocationsReservationGroupsRequest,
+  output: ReservationGroup,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1148,8 +1453,8 @@ export const patchProjectsLocationsReservations: API.OperationMethod<
   PatchProjectsLocationsReservationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<PatchProjectsLocationsReservationsRequest>,
-  output: __S(12) as any as S.Schema<Reservation>,
+  input: PatchProjectsLocationsReservationsRequest,
+  output: Reservation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1168,8 +1473,8 @@ export const patchProjectsLocationsReservationsAssignments: API.OperationMethod<
   PatchProjectsLocationsReservationsAssignmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<PatchProjectsLocationsReservationsAssignmentsRequest>,
-  output: __S(15) as any as S.Schema<Assignment>,
+  input: PatchProjectsLocationsReservationsAssignmentsRequest,
+  output: Assignment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1184,8 +1489,8 @@ export const searchAllAssignmentsProjectsLocations: API.PaginatedOperationMethod
   GcpOpContext,
   SearchAllAssignmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(60) as any as S.Schema<SearchAllAssignmentsProjectsLocationsRequest>,
-  output: __S(61) as any as S.Schema<SearchAllAssignmentsResponse>,
+  input: SearchAllAssignmentsProjectsLocationsRequest,
+  output: SearchAllAssignmentsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1201,8 +1506,8 @@ export const searchAssignmentsProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   SearchAssignmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(62) as any as S.Schema<SearchAssignmentsProjectsLocationsRequest>,
-  output: __S(61) as any as S.Schema<SearchAssignmentsResponse>,
+  input: SearchAssignmentsProjectsLocationsRequest,
+  output: SearchAssignmentsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1222,8 +1527,8 @@ export const setIamPolicyProjectsLocationsReservations: API.OperationMethod<
   SetIamPolicyProjectsLocationsReservationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<SetIamPolicyProjectsLocationsReservationsRequest>,
-  output: __S(35) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsReservationsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1242,8 +1547,8 @@ export const setIamPolicyProjectsLocationsReservationsAssignments: API.Operation
   SetIamPolicyProjectsLocationsReservationsAssignmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<SetIamPolicyProjectsLocationsReservationsAssignmentsRequest>,
-  output: __S(35) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsReservationsAssignmentsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1262,8 +1567,8 @@ export const splitProjectsLocationsCapacityCommitments: API.OperationMethod<
   SplitProjectsLocationsCapacityCommitmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<SplitProjectsLocationsCapacityCommitmentsRequest>,
-  output: __S(68) as any as S.Schema<SplitCapacityCommitmentResponse>,
+  input: SplitProjectsLocationsCapacityCommitmentsRequest,
+  output: SplitCapacityCommitmentResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1282,8 +1587,8 @@ export const testIamPermissionsProjectsLocationsReservations: API.OperationMetho
   TestIamPermissionsProjectsLocationsReservationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<TestIamPermissionsProjectsLocationsReservationsRequest>,
-  output: __S(69) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsReservationsRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1302,10 +1607,8 @@ export const testIamPermissionsProjectsLocationsReservationsAssignments: API.Ope
   TestIamPermissionsProjectsLocationsReservationsAssignmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    71,
-  ) as any as S.Schema<TestIamPermissionsProjectsLocationsReservationsAssignmentsRequest>,
-  output: __S(69) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsReservationsAssignmentsRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1324,8 +1627,8 @@ export const updateBiReservationProjectsLocations: API.OperationMethod<
   UpdateBiReservationProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<UpdateBiReservationProjectsLocationsRequest>,
-  output: __S(27) as any as S.Schema<BiReservation>,
+  input: UpdateBiReservationProjectsLocationsRequest,
+  output: BiReservation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1337,12 +1640,12 @@ function __c0(j: number): any {
     case 0:
       return S.Record(S.String, S.Unknown);
     case 1:
-      return S.Array(__S(0));
+      return S.Array(DocumentMap);
     case 2:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(__S(1)),
+          details: S.optional(DocumentMapList),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
@@ -1351,14 +1654,14 @@ function __c0(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           slotCount: S.optional(S.String),
-          renewalPlan: S.optional(S.String),
-          plan: S.optional(S.String),
-          state: S.optional(S.String),
+          renewalPlan: S.optional(CapacityCommitmentRenewalPlanEnum),
+          plan: S.optional(CapacityCommitmentPlanEnum),
+          state: S.optional(CapacityCommitmentStateEnum),
           isFlatRate: S.optional(S.Boolean),
-          edition: S.optional(S.String),
+          edition: S.optional(CapacityCommitmentEditionEnum),
           commitmentStartTime: S.optional(S.String),
           commitmentEndTime: S.optional(S.String),
-          failureStatus: S.optional(__S(2)),
+          failureStatus: S.optional(Status),
           multiRegionAuxiliary: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CapacityCommitment" });
@@ -1368,7 +1671,7 @@ function __c0(j: number): any {
           enforceSingleAdminProjectPerOrg: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           capacityCommitmentId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(3).pipe(T.HttpBody())),
+          body: S.optional(CapacityCommitment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1393,7 +1696,7 @@ function __c0(j: number): any {
         S.Struct({
           reservationGroupId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(5).pipe(T.HttpBody())),
+          body: S.optional(ReservationGroup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1409,7 +1712,7 @@ function __c0(j: number): any {
         S.Struct({
           lastErrorTime: S.optional(S.String),
           lastReplicationTime: S.optional(S.String),
-          error: S.optional(__S(2)),
+          error: S.optional(Status),
           softFailoverStartTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicationStatus" });
@@ -1440,14 +1743,14 @@ function __c1(j: number): any {
         S.Struct({
           concurrency: S.optional(S.String),
           name: S.optional(S.String),
-          edition: S.optional(S.String),
+          edition: S.optional(ReservationEditionEnum),
           updateTime: S.optional(S.String),
-          replicationStatus: S.optional(__S(7)),
+          replicationStatus: S.optional(ReplicationStatus),
           creationTime: S.optional(S.String),
           reservationGroup: S.optional(S.String),
-          labels: S.optional(__S(8)),
-          autoscale: S.optional(__S(9)),
-          scalingMode: S.optional(S.String),
+          labels: S.optional(StringMap),
+          autoscale: S.optional(Autoscale),
+          scalingMode: S.optional(ReservationScalingModeEnum),
           originalPrimaryLocation: S.optional(S.String),
           ignoreIdleSlots: S.optional(S.Boolean),
           primaryLocation: S.optional(S.String),
@@ -1455,8 +1758,8 @@ function __c1(j: number): any {
           maxSlots: S.optional(S.String),
           secondaryLocation: S.optional(S.String),
           slotCapacity: S.optional(S.String),
-          reservationGroupPath: S.optional(__S(10)),
-          schedulingPolicy: S.optional(__S(11)),
+          reservationGroupPath: S.optional(StringList),
+          schedulingPolicy: S.optional(SchedulingPolicy),
         }),
       ).annotate({ identifier: "Reservation" });
     case 5:
@@ -1464,7 +1767,7 @@ function __c1(j: number): any {
         S.Struct({
           reservationId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(12).pipe(T.HttpBody())),
+          body: S.optional(Reservation.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1487,15 +1790,15 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          jobType: S.optional(S.String),
-          condition: S.optional(__S(14)),
+          jobType: S.optional(AssignmentJobTypeEnum),
+          condition: S.optional(Expr),
           name: S.optional(S.String),
           principal: S.optional(S.String),
           enableGeminiInBigquery: S.optional(S.Boolean),
           precedence: S.optional(S.String),
-          schedulingPolicy: S.optional(__S(11)),
+          schedulingPolicy: S.optional(SchedulingPolicy),
           assignee: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(AssignmentStateEnum),
         }),
       ).annotate({ identifier: "Assignment" });
   }
@@ -1507,7 +1810,7 @@ function __c2(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           assignmentId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(15).pipe(T.HttpBody())),
+          body: S.optional(Assignment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1582,7 +1885,7 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          failoverMode: S.optional(S.String),
+          failoverMode: S.optional(FailoverReservationRequestFailoverModeEnum),
         }),
       ).annotate({
         identifier: "FailoverReservationRequest",
@@ -1591,7 +1894,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(22).pipe(T.HttpBody())),
+          body: S.optional(FailoverReservationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1629,12 +1932,12 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "TableReference" });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(TableReference);
     case 3:
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          preferredTables: S.optional(__S(26)),
+          preferredTables: S.optional(TableReferenceList),
           name: S.optional(S.String),
           size: S.optional(S.String),
         }),
@@ -1657,17 +1960,17 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(10)),
+          logType: S.optional(AuditLogConfigLogTypeEnum),
+          exemptedMembers: S.optional(StringList),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(AuditLogConfig);
     case 7:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(__S(30)),
+          auditLogConfigs: S.optional(AuditLogConfigList),
         }),
       ).annotate({ identifier: "AuditConfig" });
   }
@@ -1675,22 +1978,22 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(AuditConfig);
     case 1:
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          condition: S.optional(__S(14)),
-          members: S.optional(__S(10)),
+          condition: S.optional(Expr),
+          members: S.optional(StringList),
         }),
       ).annotate({ identifier: "Binding" });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(Binding);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          auditConfigs: S.optional(__S(32)),
-          bindings: S.optional(__S(34)),
+          auditConfigs: S.optional(AuditConfigList),
+          bindings: S.optional(BindingList),
           version: S.optional(S.Number),
           etag: S.optional(S.String),
         }),
@@ -1773,11 +2076,11 @@ function __c5(j: number): any {
         identifier: "ListProjectsLocationsCapacityCommitmentsRequest",
       });
     case 1:
-      return S.Array(__S(3));
+      return S.Array(CapacityCommitment);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          capacityCommitments: S.optional(__S(41)),
+          capacityCommitments: S.optional(CapacityCommitmentList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1800,11 +2103,11 @@ function __c5(j: number): any {
         identifier: "ListProjectsLocationsReservationGroupsRequest",
       });
     case 4:
-      return S.Array(__S(5));
+      return S.Array(ReservationGroup);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          reservationGroups: S.optional(__S(44)),
+          reservationGroups: S.optional(ReservationGroupList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1827,7 +2130,7 @@ function __c5(j: number): any {
         identifier: "ListProjectsLocationsReservationsRequest",
       });
     case 7:
-      return S.Array(__S(12));
+      return S.Array(Reservation);
   }
 }
 function __c6(j: number): any {
@@ -1835,7 +2138,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          reservations: S.optional(__S(47)),
+          reservations: S.optional(ReservationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListReservationsResponse" });
@@ -1856,18 +2159,18 @@ function __c6(j: number): any {
         identifier: "ListProjectsLocationsReservationsAssignmentsRequest",
       });
     case 2:
-      return S.Array(__S(15));
+      return S.Array(Assignment);
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          assignments: S.optional(__S(50)),
+          assignments: S.optional(AssignmentList),
         }),
       ).annotate({ identifier: "ListAssignmentsResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          capacityCommitmentIds: S.optional(__S(10)),
+          capacityCommitmentIds: S.optional(StringList),
           capacityCommitmentId: S.optional(S.String),
         }),
       ).annotate({
@@ -1877,7 +2180,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(52).pipe(T.HttpBody())),
+          body: S.optional(MergeCapacityCommitmentsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1899,7 +2202,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(54).pipe(T.HttpBody())),
+          body: S.optional(MoveAssignmentRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1919,7 +2222,7 @@ function __c7(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(3).pipe(T.HttpBody())),
+          body: S.optional(CapacityCommitment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1935,7 +2238,7 @@ function __c7(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(5).pipe(T.HttpBody())),
+          body: S.optional(ReservationGroup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1951,7 +2254,7 @@ function __c7(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(12).pipe(T.HttpBody())),
+          body: S.optional(Reservation.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1967,7 +2270,7 @@ function __c7(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(15).pipe(T.HttpBody())),
+          body: S.optional(Assignment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1998,7 +2301,7 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          assignments: S.optional(__S(50)),
+          assignments: S.optional(AssignmentList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2024,7 +2327,7 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(35)),
+          policy: S.optional(Policy),
           updateMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
@@ -2036,7 +2339,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(63).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2051,7 +2354,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(63).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2074,7 +2377,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(66).pipe(T.HttpBody())),
+          body: S.optional(SplitCapacityCommitmentRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2088,8 +2391,8 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          second: S.optional(__S(3)),
-          first: S.optional(__S(3)),
+          second: S.optional(CapacityCommitment),
+          first: S.optional(CapacityCommitment),
         }),
       ).annotate({
         identifier: "SplitCapacityCommitmentResponse",
@@ -2097,7 +2400,7 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(10)),
+          permissions: S.optional(StringList),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -2106,7 +2409,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(69).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2121,7 +2424,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(69).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2141,7 +2444,7 @@ function __c9(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(27).pipe(T.HttpBody())),
+          body: S.optional(BiReservation.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2152,34 +2455,5 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateBiReservationProjectsLocationsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
   }
 }

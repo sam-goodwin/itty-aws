@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "IoT Events",
   serviceShapeName: "IotColumboService",
@@ -141,7 +139,9 @@ export interface Tag {
   key: string;
   value: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Tag>;
 export type Tags = Tag[];
+const Tags = /*@__PURE__*/ __L.at(__c0, 1);
 export type AttributeJsonPath = string;
 export type Severity = number;
 export type InputProperty = string;
@@ -153,28 +153,40 @@ export type ComparisonOperator =
   | "EQUAL"
   | "NOT_EQUAL"
   | (string & {});
+const ComparisonOperator = /*@__PURE__*/ S.String;
+
 export type Threshold = string;
 export interface SimpleRule {
   inputProperty: string;
   comparisonOperator: ComparisonOperator;
   threshold: string;
 }
+const SimpleRule = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SimpleRule>;
 export interface AlarmRule {
   simpleRule?: SimpleRule;
 }
+const AlarmRule = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AlarmRule>;
 export type ContentExpression = string;
 export type PayloadType = "STRING" | "JSON" | (string & {});
+const PayloadType = /*@__PURE__*/ S.String;
+
 export interface Payload {
   contentExpression: string;
   type: PayloadType;
 }
+const Payload = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Payload>;
 export interface LambdaAction {
   functionArn: string;
   payload?: Payload;
 }
+const LambdaAction = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<LambdaAction>;
 export interface NotificationTargetActions {
   lambdaAction?: LambdaAction;
 }
+const NotificationTargetActions = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<NotificationTargetActions>;
 export type SMSSenderId = string;
 export type NotificationAdditionalMessage = string;
 export type IdentityStoreId = string;
@@ -183,54 +195,75 @@ export interface SSOIdentity {
   identityStoreId: string;
   userId?: string;
 }
+const SSOIdentity = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SSOIdentity>;
 export interface RecipientDetail {
   ssoIdentity?: SSOIdentity;
 }
+const RecipientDetail = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<RecipientDetail>;
 export type RecipientDetails = RecipientDetail[];
+const RecipientDetails = /*@__PURE__*/ __L.at(__c1, 1);
 export interface SMSConfiguration {
   senderId?: string;
   additionalMessage?: string;
   recipients: RecipientDetail[];
 }
+const SMSConfiguration = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SMSConfiguration>;
 export type SMSConfigurations = SMSConfiguration[];
+const SMSConfigurations = /*@__PURE__*/ __L.at(__c1, 3);
 export type FromEmail = string;
 export type EmailSubject = string;
 export interface EmailContent {
   subject?: string;
   additionalMessage?: string;
 }
+const EmailContent = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<EmailContent>;
 export interface EmailRecipients {
   to?: RecipientDetail[];
 }
+const EmailRecipients = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<EmailRecipients>;
 export interface EmailConfiguration {
   from: string;
   content?: EmailContent;
   recipients: EmailRecipients;
 }
+const EmailConfiguration = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<EmailConfiguration>;
 export type EmailConfigurations = EmailConfiguration[];
+const EmailConfigurations = /*@__PURE__*/ __L.at(__c1, 7);
 export interface NotificationAction {
   action: NotificationTargetActions;
   smsConfigurations?: SMSConfiguration[];
   emailConfigurations?: EmailConfiguration[];
 }
+const NotificationAction = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<NotificationAction>;
 export type NotificationActions = NotificationAction[];
+const NotificationActions = /*@__PURE__*/ __L.at(__c2, 1);
 export interface AlarmNotification {
   notificationActions?: NotificationAction[];
 }
+const AlarmNotification = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<AlarmNotification>;
 export interface SNSTopicPublishAction {
   targetArn: string;
   payload?: Payload;
 }
+const SNSTopicPublishAction = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<SNSTopicPublishAction>;
 export type MQTTTopic = string;
 export interface IotTopicPublishAction {
   mqttTopic: string;
   payload?: Payload;
 }
+const IotTopicPublishAction = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<IotTopicPublishAction>;
 export type InputName = string;
 export interface IotEventsAction {
   inputName: string;
   payload?: Payload;
 }
+const IotEventsAction = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<IotEventsAction>;
 export type QueueUrl = string;
 export type UseBase64 = boolean;
 export interface SqsAction {
@@ -238,6 +271,7 @@ export interface SqsAction {
   useBase64?: boolean;
   payload?: Payload;
 }
+const SqsAction = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<SqsAction>;
 export type DeliveryStreamName = string;
 export type FirehoseSeparator = string;
 export interface FirehoseAction {
@@ -245,6 +279,7 @@ export interface FirehoseAction {
   separator?: string;
   payload?: Payload;
 }
+const FirehoseAction = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<FirehoseAction>;
 export type DynamoKeyType = string;
 export type DynamoKeyField = string;
 export type DynamoKeyValue = string;
@@ -262,10 +297,12 @@ export interface DynamoDBAction {
   tableName: string;
   payload?: Payload;
 }
+const DynamoDBAction = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<DynamoDBAction>;
 export interface DynamoDBv2Action {
   tableName: string;
   payload?: Payload;
 }
+const DynamoDBv2Action = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<DynamoDBv2Action>;
 export type AssetPropertyEntryId = string;
 export type AssetId = string;
 export type AssetPropertyId = string;
@@ -280,18 +317,24 @@ export interface AssetPropertyVariant {
   doubleValue?: string;
   booleanValue?: string;
 }
+const AssetPropertyVariant = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<AssetPropertyVariant>;
 export type AssetPropertyTimeInSeconds = string;
 export type AssetPropertyOffsetInNanos = string;
 export interface AssetPropertyTimestamp {
   timeInSeconds: string;
   offsetInNanos?: string;
 }
+const AssetPropertyTimestamp = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<AssetPropertyTimestamp>;
 export type AssetPropertyQuality = string;
 export interface AssetPropertyValue {
   value?: AssetPropertyVariant;
   timestamp?: AssetPropertyTimestamp;
   quality?: string;
 }
+const AssetPropertyValue = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<AssetPropertyValue>;
 export interface IotSiteWiseAction {
   entryId?: string;
   assetId?: string;
@@ -299,6 +342,7 @@ export interface IotSiteWiseAction {
   propertyAlias?: string;
   propertyValue?: AssetPropertyValue;
 }
+const IotSiteWiseAction = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<IotSiteWiseAction>;
 export interface AlarmAction {
   sns?: SNSTopicPublishAction;
   iotTopicPublish?: IotTopicPublishAction;
@@ -310,22 +354,31 @@ export interface AlarmAction {
   dynamoDBv2?: DynamoDBv2Action;
   iotSiteWise?: IotSiteWiseAction;
 }
+const AlarmAction = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<AlarmAction>;
 export type AlarmActions = AlarmAction[];
+const AlarmActions = /*@__PURE__*/ __L.at(__c3, 7);
 export interface AlarmEventActions {
   alarmActions?: AlarmAction[];
 }
+const AlarmEventActions = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<AlarmEventActions>;
 export type DisabledOnInitialization = boolean;
 export interface InitializationConfiguration {
   disabledOnInitialization: boolean;
 }
+const InitializationConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<InitializationConfiguration>;
 export type AcknowledgeFlowEnabled = boolean;
 export interface AcknowledgeFlow {
   enabled: boolean;
 }
+const AcknowledgeFlow = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<AcknowledgeFlow>;
 export interface AlarmCapabilities {
   initializationConfiguration?: InitializationConfiguration;
   acknowledgeFlow?: AcknowledgeFlow;
 }
+const AlarmCapabilities = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<AlarmCapabilities>;
 export interface CreateAlarmModelRequest {
   alarmModelName: string;
   alarmModelDescription?: string;
@@ -338,6 +391,10 @@ export interface CreateAlarmModelRequest {
   alarmEventActions?: AlarmEventActions;
   alarmCapabilities?: AlarmCapabilities;
 }
+const CreateAlarmModelRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateAlarmModelRequest>;
 export type AlarmModelArn = string;
 export type AlarmModelVersion = string;
 export type AlarmModelVersionStatus =
@@ -346,6 +403,8 @@ export type AlarmModelVersionStatus =
   | "INACTIVE"
   | "FAILED"
   | (string & {});
+const AlarmModelVersionStatus = /*@__PURE__*/ S.String;
+
 export interface CreateAlarmModelResponse {
   creationTime?: Date;
   alarmModelArn?: string;
@@ -353,6 +412,10 @@ export interface CreateAlarmModelResponse {
   lastUpdateTime?: Date;
   status?: AlarmModelVersionStatus;
 }
+const CreateAlarmModelResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateAlarmModelResponse>;
 export type DetectorModelName = string;
 export type StateName = string;
 export type EventName = string;
@@ -363,6 +426,7 @@ export interface SetVariableAction {
   variableName: string;
   value: string;
 }
+const SetVariableAction = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<SetVariableAction>;
 export type TimerName = string;
 export type Seconds = number;
 export interface SetTimerAction {
@@ -370,12 +434,15 @@ export interface SetTimerAction {
   seconds?: number;
   durationExpression?: string;
 }
+const SetTimerAction = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<SetTimerAction>;
 export interface ClearTimerAction {
   timerName: string;
 }
+const ClearTimerAction = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ClearTimerAction>;
 export interface ResetTimerAction {
   timerName: string;
 }
+const ResetTimerAction = ClearTimerAction as any as S.Schema<ResetTimerAction>;
 export interface Action {
   setVariable?: SetVariableAction;
   sns?: SNSTopicPublishAction;
@@ -391,43 +458,60 @@ export interface Action {
   dynamoDBv2?: DynamoDBv2Action;
   iotSiteWise?: IotSiteWiseAction;
 }
+const Action = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Action>;
 export type Actions = Action[];
+const Actions = /*@__PURE__*/ __L.at(__c5, 2);
 export interface Event {
   eventName: string;
   condition?: string;
   actions?: Action[];
 }
+const Event = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Event>;
 export type Events = Event[];
+const Events = /*@__PURE__*/ __L.at(__c5, 4);
 export interface TransitionEvent {
   eventName: string;
   condition: string;
   actions?: Action[];
   nextState: string;
 }
+const TransitionEvent = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<TransitionEvent>;
 export type TransitionEvents = TransitionEvent[];
+const TransitionEvents = /*@__PURE__*/ __L.at(__c5, 6);
 export interface OnInputLifecycle {
   events?: Event[];
   transitionEvents?: TransitionEvent[];
 }
+const OnInputLifecycle = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<OnInputLifecycle>;
 export interface OnEnterLifecycle {
   events?: Event[];
 }
+const OnEnterLifecycle = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<OnEnterLifecycle>;
 export interface OnExitLifecycle {
   events?: Event[];
 }
+const OnExitLifecycle = OnEnterLifecycle as any as S.Schema<OnExitLifecycle>;
 export interface State {
   stateName: string;
   onInput?: OnInputLifecycle;
   onEnter?: OnEnterLifecycle;
   onExit?: OnExitLifecycle;
 }
+const State = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<State>;
 export type States = State[];
+const States = /*@__PURE__*/ __L.at(__c6, 2);
 export interface DetectorModelDefinition {
   states: State[];
   initialStateName: string;
 }
+const DetectorModelDefinition = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DetectorModelDefinition>;
 export type DetectorModelDescription = string;
 export type EvaluationMethod = "BATCH" | "SERIAL" | (string & {});
+const EvaluationMethod = /*@__PURE__*/ S.String;
+
 export interface CreateDetectorModelRequest {
   detectorModelName: string;
   detectorModelDefinition: DetectorModelDefinition;
@@ -437,6 +521,10 @@ export interface CreateDetectorModelRequest {
   tags?: Tag[];
   evaluationMethod?: EvaluationMethod;
 }
+const CreateDetectorModelRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<CreateDetectorModelRequest>;
 export type DetectorModelVersion = string;
 export type DetectorModelArn = string;
 export type DetectorModelVersionStatus =
@@ -448,6 +536,8 @@ export type DetectorModelVersionStatus =
   | "PAUSED"
   | "FAILED"
   | (string & {});
+const DetectorModelVersionStatus = /*@__PURE__*/ S.String;
+
 export interface DetectorModelConfiguration {
   detectorModelName?: string;
   detectorModelVersion?: string;
@@ -460,25 +550,39 @@ export interface DetectorModelConfiguration {
   key?: string;
   evaluationMethod?: EvaluationMethod;
 }
+const DetectorModelConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DetectorModelConfiguration>;
 export interface CreateDetectorModelResponse {
   detectorModelConfiguration?: DetectorModelConfiguration;
 }
+const CreateDetectorModelResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreateDetectorModelResponse>;
 export type InputDescription = string;
 export interface Attribute {
   jsonPath: string;
 }
+const Attribute = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<Attribute>;
 export type Attributes = Attribute[];
+const Attributes = /*@__PURE__*/ __L.at(__c7, 0);
 export interface InputDefinition {
   attributes: Attribute[];
 }
+const InputDefinition = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<InputDefinition>;
 export interface CreateInputRequest {
   inputName: string;
   inputDescription?: string;
   inputDefinition: InputDefinition;
   tags?: Tag[];
 }
+const CreateInputRequest = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<CreateInputRequest>;
 export type InputArn = string;
 export type InputStatus = "CREATING" | "UPDATING" | "ACTIVE" | "DELETING" | (string & {});
+const InputStatus = /*@__PURE__*/ S.String;
+
 export interface InputConfiguration {
   inputName: string;
   inputDescription?: string;
@@ -487,25 +591,47 @@ export interface InputConfiguration {
   lastUpdateTime: Date;
   status: InputStatus;
 }
+const InputConfiguration = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<InputConfiguration>;
 export interface CreateInputResponse {
   inputConfiguration?: InputConfiguration;
 }
+const CreateInputResponse = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<CreateInputResponse>;
 export interface DeleteAlarmModelRequest {
   alarmModelName: string;
 }
+const DeleteAlarmModelRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<DeleteAlarmModelRequest>;
 export interface DeleteAlarmModelResponse {}
+const DeleteAlarmModelResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DeleteAlarmModelResponse>;
 export interface DeleteDetectorModelRequest {
   detectorModelName: string;
 }
+const DeleteDetectorModelRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<DeleteDetectorModelRequest>;
 export interface DeleteDetectorModelResponse {}
+const DeleteDetectorModelResponse =
+  DeleteAlarmModelResponse as any as S.Schema<DeleteDetectorModelResponse>;
 export interface DeleteInputRequest {
   inputName: string;
 }
+const DeleteInputRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<DeleteInputRequest>;
 export interface DeleteInputResponse {}
+const DeleteInputResponse = DeleteAlarmModelResponse as any as S.Schema<DeleteInputResponse>;
 export interface DescribeAlarmModelRequest {
   alarmModelName: string;
   alarmModelVersion?: string;
 }
+const DescribeAlarmModelRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DescribeAlarmModelRequest>;
 export type StatusMessage = string;
 export interface DescribeAlarmModelResponse {
   creationTime?: Date;
@@ -524,53 +650,95 @@ export interface DescribeAlarmModelResponse {
   alarmEventActions?: AlarmEventActions;
   alarmCapabilities?: AlarmCapabilities;
 }
+const DescribeAlarmModelResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<DescribeAlarmModelResponse>;
 export interface DescribeDetectorModelRequest {
   detectorModelName: string;
   detectorModelVersion?: string;
 }
+const DescribeDetectorModelRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DescribeDetectorModelRequest>;
 export interface DetectorModel {
   detectorModelDefinition?: DetectorModelDefinition;
   detectorModelConfiguration?: DetectorModelConfiguration;
 }
+const DetectorModel = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<DetectorModel>;
 export interface DescribeDetectorModelResponse {
   detectorModel?: DetectorModel;
 }
+const DescribeDetectorModelResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DescribeDetectorModelResponse>;
 export type AnalysisId = string;
 export interface DescribeDetectorModelAnalysisRequest {
   analysisId: string;
 }
+const DescribeDetectorModelAnalysisRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DescribeDetectorModelAnalysisRequest>;
 export type AnalysisStatus = "RUNNING" | "COMPLETE" | "FAILED" | (string & {});
+const AnalysisStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeDetectorModelAnalysisResponse {
   status?: AnalysisStatus;
 }
+const DescribeDetectorModelAnalysisResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DescribeDetectorModelAnalysisResponse>;
 export interface DescribeInputRequest {
   inputName: string;
 }
+const DescribeInputRequest = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<DescribeInputRequest>;
 export interface Input {
   inputConfiguration?: InputConfiguration;
   inputDefinition?: InputDefinition;
 }
+const Input = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<Input>;
 export interface DescribeInputResponse {
   input?: Input;
 }
+const DescribeInputResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DescribeInputResponse>;
 export interface DescribeLoggingOptionsRequest {}
+const DescribeLoggingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<DescribeLoggingOptionsRequest>;
 export type LoggingLevel = "ERROR" | "INFO" | "DEBUG" | (string & {});
+const LoggingLevel = /*@__PURE__*/ S.String;
+
 export type LoggingEnabled = boolean;
 export type KeyValue = string;
 export interface DetectorDebugOption {
   detectorModelName: string;
   keyValue?: string;
 }
+const DetectorDebugOption = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<DetectorDebugOption>;
 export type DetectorDebugOptions = DetectorDebugOption[];
+const DetectorDebugOptions = /*@__PURE__*/ __L.at(__c9, 5);
 export interface LoggingOptions {
   roleArn: string;
   level: LoggingLevel;
   enabled: boolean;
   detectorDebugOptions?: DetectorDebugOption[];
 }
+const LoggingOptions = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<LoggingOptions>;
 export interface DescribeLoggingOptionsResponse {
   loggingOptions?: LoggingOptions;
 }
+const DescribeLoggingOptionsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<DescribeLoggingOptionsResponse>;
 export type NextToken = string;
 export type MaxAnalysisResults = number;
 export interface GetDetectorModelAnalysisResultsRequest {
@@ -578,45 +746,76 @@ export interface GetDetectorModelAnalysisResultsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const GetDetectorModelAnalysisResultsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<GetDetectorModelAnalysisResultsRequest>;
 export type AnalysisType = string;
 export type AnalysisResultLevel = "INFO" | "WARNING" | "ERROR" | (string & {});
+const AnalysisResultLevel = /*@__PURE__*/ S.String;
+
 export type AnalysisMessage = string;
 export type AnalysisResultLocationPath = string;
 export interface AnalysisResultLocation {
   path?: string;
 }
+const AnalysisResultLocation = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<AnalysisResultLocation>;
 export type AnalysisResultLocations = AnalysisResultLocation[];
+const AnalysisResultLocations = /*@__PURE__*/ __L.at(__c10, 2);
 export interface AnalysisResult {
   type?: string;
   level?: AnalysisResultLevel;
   message?: string;
   locations?: AnalysisResultLocation[];
 }
+const AnalysisResult = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<AnalysisResult>;
 export type AnalysisResults = AnalysisResult[];
+const AnalysisResults = /*@__PURE__*/ __L.at(__c10, 4);
 export interface GetDetectorModelAnalysisResultsResponse {
   analysisResults?: AnalysisResult[];
   nextToken?: string;
 }
+const GetDetectorModelAnalysisResultsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GetDetectorModelAnalysisResultsResponse>;
 export type MaxResults = number;
 export interface ListAlarmModelsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListAlarmModelsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ListAlarmModelsRequest>;
 export interface AlarmModelSummary {
   creationTime?: Date;
   alarmModelDescription?: string;
   alarmModelName?: string;
 }
+const AlarmModelSummary = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<AlarmModelSummary>;
 export type AlarmModelSummaries = AlarmModelSummary[];
+const AlarmModelSummaries = /*@__PURE__*/ __L.at(__c11, 0);
 export interface ListAlarmModelsResponse {
   alarmModelSummaries?: AlarmModelSummary[];
   nextToken?: string;
 }
+const ListAlarmModelsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ListAlarmModelsResponse>;
 export interface ListAlarmModelVersionsRequest {
   alarmModelName: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListAlarmModelVersionsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ListAlarmModelVersionsRequest>;
 export interface AlarmModelVersionSummary {
   alarmModelName?: string;
   alarmModelArn?: string;
@@ -627,30 +826,56 @@ export interface AlarmModelVersionSummary {
   status?: AlarmModelVersionStatus;
   statusMessage?: string;
 }
+const AlarmModelVersionSummary = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<AlarmModelVersionSummary>;
 export type AlarmModelVersionSummaries = AlarmModelVersionSummary[];
+const AlarmModelVersionSummaries = /*@__PURE__*/ __L.at(__c11, 4);
 export interface ListAlarmModelVersionsResponse {
   alarmModelVersionSummaries?: AlarmModelVersionSummary[];
   nextToken?: string;
 }
+const ListAlarmModelVersionsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ListAlarmModelVersionsResponse>;
 export interface ListDetectorModelsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListDetectorModelsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ListDetectorModelsRequest>;
 export interface DetectorModelSummary {
   detectorModelName?: string;
   detectorModelDescription?: string;
   creationTime?: Date;
 }
+const DetectorModelSummary = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<DetectorModelSummary>;
 export type DetectorModelSummaries = DetectorModelSummary[];
+const DetectorModelSummaries = /*@__PURE__*/ __L.at(__c12, 0);
 export interface ListDetectorModelsResponse {
   detectorModelSummaries?: DetectorModelSummary[];
   nextToken?: string;
 }
+const ListDetectorModelsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ListDetectorModelsResponse>;
 export interface ListDetectorModelVersionsRequest {
   detectorModelName: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListDetectorModelVersionsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ListDetectorModelVersionsRequest>;
 export interface DetectorModelVersionSummary {
   detectorModelName?: string;
   detectorModelVersion?: string;
@@ -661,45 +886,78 @@ export interface DetectorModelVersionSummary {
   status?: DetectorModelVersionStatus;
   evaluationMethod?: EvaluationMethod;
 }
+const DetectorModelVersionSummary = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<DetectorModelVersionSummary>;
 export type DetectorModelVersionSummaries = DetectorModelVersionSummary[];
+const DetectorModelVersionSummaries = /*@__PURE__*/ __L.at(__c12, 4);
 export interface ListDetectorModelVersionsResponse {
   detectorModelVersionSummaries?: DetectorModelVersionSummary[];
   nextToken?: string;
 }
+const ListDetectorModelVersionsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ListDetectorModelVersionsResponse>;
 export interface IotEventsInputIdentifier {
   inputName: string;
 }
+const IotEventsInputIdentifier = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<IotEventsInputIdentifier>;
 export type AssetModelId = string;
 export interface IotSiteWiseAssetModelPropertyIdentifier {
   assetModelId: string;
   propertyId: string;
 }
+const IotSiteWiseAssetModelPropertyIdentifier = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<IotSiteWiseAssetModelPropertyIdentifier>;
 export interface IotSiteWiseInputIdentifier {
   iotSiteWiseAssetModelPropertyIdentifier?: IotSiteWiseAssetModelPropertyIdentifier;
 }
+const IotSiteWiseInputIdentifier = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<IotSiteWiseInputIdentifier>;
 export interface InputIdentifier {
   iotEventsInputIdentifier?: IotEventsInputIdentifier;
   iotSiteWiseInputIdentifier?: IotSiteWiseInputIdentifier;
 }
+const InputIdentifier = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<InputIdentifier>;
 export interface ListInputRoutingsRequest {
   inputIdentifier: InputIdentifier;
   maxResults?: number;
   nextToken?: string;
 }
+const ListInputRoutingsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ListInputRoutingsRequest>;
 export type ResourceName = string;
 export interface RoutedResource {
   name?: string;
   arn?: string;
 }
+const RoutedResource = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<RoutedResource>;
 export type RoutedResources = RoutedResource[];
+const RoutedResources = /*@__PURE__*/ __L.at(__c13, 4);
 export interface ListInputRoutingsResponse {
   routedResources?: RoutedResource[];
   nextToken?: string;
 }
+const ListInputRoutingsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ListInputRoutingsResponse>;
 export interface ListInputsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListInputsRequest = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<ListInputsRequest>;
 export interface InputSummary {
   inputName?: string;
   inputDescription?: string;
@@ -708,38 +966,71 @@ export interface InputSummary {
   lastUpdateTime?: Date;
   status?: InputStatus;
 }
+const InputSummary = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<InputSummary>;
 export type InputSummaries = InputSummary[];
+const InputSummaries = /*@__PURE__*/ __L.at(__c14, 0);
 export interface ListInputsResponse {
   inputSummaries?: InputSummary[];
   nextToken?: string;
 }
+const ListInputsResponse = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<ListInputsResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutLoggingOptionsRequest {
   loggingOptions: LoggingOptions;
 }
+const PutLoggingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<PutLoggingOptionsRequest>;
 export interface PutLoggingOptionsResponse {}
+const PutLoggingOptionsResponse =
+  DeleteAlarmModelResponse as any as S.Schema<PutLoggingOptionsResponse>;
 export interface StartDetectorModelAnalysisRequest {
   detectorModelDefinition: DetectorModelDefinition;
 }
+const StartDetectorModelAnalysisRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<StartDetectorModelAnalysisRequest>;
 export interface StartDetectorModelAnalysisResponse {
   analysisId?: string;
 }
+const StartDetectorModelAnalysisResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<StartDetectorModelAnalysisResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = DeleteAlarmModelResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
+const TagKeys = /*@__PURE__*/ __L.at(__c15, 0);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = DeleteAlarmModelResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAlarmModelRequest {
   alarmModelName: string;
   alarmModelDescription?: string;
@@ -750,6 +1041,10 @@ export interface UpdateAlarmModelRequest {
   alarmEventActions?: AlarmEventActions;
   alarmCapabilities?: AlarmCapabilities;
 }
+const UpdateAlarmModelRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<UpdateAlarmModelRequest>;
 export interface UpdateAlarmModelResponse {
   creationTime?: Date;
   alarmModelArn?: string;
@@ -757,6 +1052,8 @@ export interface UpdateAlarmModelResponse {
   lastUpdateTime?: Date;
   status?: AlarmModelVersionStatus;
 }
+const UpdateAlarmModelResponse =
+  CreateAlarmModelResponse as any as S.Schema<UpdateAlarmModelResponse>;
 export interface UpdateDetectorModelRequest {
   detectorModelName: string;
   detectorModelDefinition: DetectorModelDefinition;
@@ -764,17 +1061,25 @@ export interface UpdateDetectorModelRequest {
   roleArn: string;
   evaluationMethod?: EvaluationMethod;
 }
+const UpdateDetectorModelRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<UpdateDetectorModelRequest>;
 export interface UpdateDetectorModelResponse {
   detectorModelConfiguration?: DetectorModelConfiguration;
 }
+const UpdateDetectorModelResponse =
+  CreateDetectorModelResponse as any as S.Schema<UpdateDetectorModelResponse>;
 export interface UpdateInputRequest {
   inputName: string;
   inputDescription?: string;
   inputDefinition: InputDefinition;
 }
+const UpdateInputRequest = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<UpdateInputRequest>;
 export interface UpdateInputResponse {
   inputConfiguration?: InputConfiguration;
 }
+const UpdateInputResponse = CreateInputResponse as any as S.Schema<UpdateInputResponse>;
 export type ErrorMessage = string;
 export type ResourceId = string;
 export type ResourceArn = string;
@@ -798,8 +1103,8 @@ export const createAlarmModel: API.OperationMethod<
   CreateAlarmModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<CreateAlarmModelRequest>,
-  output: __S(37) as any as S.Schema<CreateAlarmModelResponse>,
+  input: CreateAlarmModelRequest,
+  output: CreateAlarmModelResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -832,8 +1137,8 @@ export const createDetectorModel: API.OperationMethod<
   CreateDetectorModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<CreateDetectorModelRequest>,
-  output: __S(54) as any as S.Schema<CreateDetectorModelResponse>,
+  input: CreateDetectorModelRequest,
+  output: CreateDetectorModelResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -864,8 +1169,8 @@ export const createInput: API.OperationMethod<
   CreateInputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<CreateInputRequest>,
-  output: __S(60) as any as S.Schema<CreateInputResponse>,
+  input: CreateInputRequest,
+  output: CreateInputResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -896,8 +1201,8 @@ export const deleteAlarmModel: API.OperationMethod<
   DeleteAlarmModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<DeleteAlarmModelRequest>,
-  output: __S(62) as any as S.Schema<DeleteAlarmModelResponse>,
+  input: DeleteAlarmModelRequest,
+  output: DeleteAlarmModelResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -929,8 +1234,8 @@ export const deleteDetectorModel: API.OperationMethod<
   DeleteDetectorModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<DeleteDetectorModelRequest>,
-  output: __S(62) as any as S.Schema<DeleteDetectorModelResponse>,
+  input: DeleteDetectorModelRequest,
+  output: DeleteDetectorModelResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -961,8 +1266,8 @@ export const deleteInput: API.OperationMethod<
   DeleteInputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<DeleteInputRequest>,
-  output: __S(62) as any as S.Schema<DeleteInputResponse>,
+  input: DeleteInputRequest,
+  output: DeleteInputResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -993,8 +1298,8 @@ export const describeAlarmModel: API.OperationMethod<
   DescribeAlarmModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<DescribeAlarmModelRequest>,
-  output: __S(66) as any as S.Schema<DescribeAlarmModelResponse>,
+  input: DescribeAlarmModelRequest,
+  output: DescribeAlarmModelResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1024,8 +1329,8 @@ export const describeDetectorModel: API.OperationMethod<
   DescribeDetectorModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<DescribeDetectorModelRequest>,
-  output: __S(69) as any as S.Schema<DescribeDetectorModelResponse>,
+  input: DescribeDetectorModelRequest,
+  output: DescribeDetectorModelResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1056,8 +1361,8 @@ export const describeDetectorModelAnalysis: API.OperationMethod<
   DescribeDetectorModelAnalysisError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<DescribeDetectorModelAnalysisRequest>,
-  output: __S(71) as any as S.Schema<DescribeDetectorModelAnalysisResponse>,
+  input: DescribeDetectorModelAnalysisRequest,
+  output: DescribeDetectorModelAnalysisResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1086,8 +1391,8 @@ export const describeInput: API.OperationMethod<
   DescribeInputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<DescribeInputRequest>,
-  output: __S(74) as any as S.Schema<DescribeInputResponse>,
+  input: DescribeInputRequest,
+  output: DescribeInputResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1117,8 +1422,8 @@ export const describeLoggingOptions: API.OperationMethod<
   DescribeLoggingOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<DescribeLoggingOptionsRequest>,
-  output: __S(79) as any as S.Schema<DescribeLoggingOptionsResponse>,
+  input: DescribeLoggingOptionsRequest,
+  output: DescribeLoggingOptionsResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1150,8 +1455,8 @@ export const getDetectorModelAnalysisResults: API.OperationMethod<
   GetDetectorModelAnalysisResultsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<GetDetectorModelAnalysisResultsRequest>,
-  output: __S(85) as any as S.Schema<GetDetectorModelAnalysisResultsResponse>,
+  input: GetDetectorModelAnalysisResultsRequest,
+  output: GetDetectorModelAnalysisResultsResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1180,8 +1485,8 @@ export const listAlarmModels: API.OperationMethod<
   ListAlarmModelsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<ListAlarmModelsRequest>,
-  output: __S(89) as any as S.Schema<ListAlarmModelsResponse>,
+  input: ListAlarmModelsRequest,
+  output: ListAlarmModelsResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1210,8 +1515,8 @@ export const listAlarmModelVersions: API.OperationMethod<
   ListAlarmModelVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<ListAlarmModelVersionsRequest>,
-  output: __S(93) as any as S.Schema<ListAlarmModelVersionsResponse>,
+  input: ListAlarmModelVersionsRequest,
+  output: ListAlarmModelVersionsResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1240,8 +1545,8 @@ export const listDetectorModels: API.OperationMethod<
   ListDetectorModelsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<ListDetectorModelsRequest>,
-  output: __S(97) as any as S.Schema<ListDetectorModelsResponse>,
+  input: ListDetectorModelsRequest,
+  output: ListDetectorModelsResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1270,8 +1575,8 @@ export const listDetectorModelVersions: API.OperationMethod<
   ListDetectorModelVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<ListDetectorModelVersionsRequest>,
-  output: __S(101) as any as S.Schema<ListDetectorModelVersionsResponse>,
+  input: ListDetectorModelVersionsRequest,
+  output: ListDetectorModelVersionsResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1300,8 +1605,8 @@ export const listInputRoutings: API.OperationMethod<
   ListInputRoutingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<ListInputRoutingsRequest>,
-  output: __S(109) as any as S.Schema<ListInputRoutingsResponse>,
+  input: ListInputRoutingsRequest,
+  output: ListInputRoutingsResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1329,8 +1634,8 @@ export const listInputs: API.OperationMethod<
   ListInputsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<ListInputsRequest>,
-  output: __S(113) as any as S.Schema<ListInputsResponse>,
+  input: ListInputsRequest,
+  output: ListInputsResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1358,8 +1663,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(115) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1394,8 +1699,8 @@ export const putLoggingOptions: API.OperationMethod<
   PutLoggingOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<PutLoggingOptionsRequest>,
-  output: __S(62) as any as S.Schema<PutLoggingOptionsResponse>,
+  input: PutLoggingOptionsRequest,
+  output: PutLoggingOptionsResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1427,8 +1732,8 @@ export const startDetectorModelAnalysis: API.OperationMethod<
   StartDetectorModelAnalysisError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<StartDetectorModelAnalysisRequest>,
-  output: __S(118) as any as S.Schema<StartDetectorModelAnalysisResponse>,
+  input: StartDetectorModelAnalysisRequest,
+  output: StartDetectorModelAnalysisResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1459,8 +1764,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<TagResourceRequest>,
-  output: __S(62) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1490,8 +1795,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<UntagResourceRequest>,
-  output: __S(62) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1522,8 +1827,8 @@ export const updateAlarmModel: API.OperationMethod<
   UpdateAlarmModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<UpdateAlarmModelRequest>,
-  output: __S(37) as any as S.Schema<UpdateAlarmModelResponse>,
+  input: UpdateAlarmModelRequest,
+  output: UpdateAlarmModelResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1555,8 +1860,8 @@ export const updateDetectorModel: API.OperationMethod<
   UpdateDetectorModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<UpdateDetectorModelRequest>,
-  output: __S(54) as any as S.Schema<UpdateDetectorModelResponse>,
+  input: UpdateDetectorModelRequest,
+  output: UpdateDetectorModelResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1587,8 +1892,8 @@ export const updateInput: API.OperationMethod<
   UpdateInputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<UpdateInputRequest>,
-  output: __S(60) as any as S.Schema<UpdateInputResponse>,
+  input: UpdateInputRequest,
+  output: UpdateInputResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1610,29 +1915,29 @@ function __c0(j: number): any {
         identifier: "Tag",
       });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(Tag);
     case 2:
       return S.suspend(() =>
         S.Struct({
           inputProperty: S.String,
-          comparisonOperator: S.String,
+          comparisonOperator: ComparisonOperator,
           threshold: S.String,
         }),
       ).annotate({ identifier: "SimpleRule" });
     case 3:
-      return S.suspend(() => S.Struct({ simpleRule: S.optional(__S(2)) })).annotate({
+      return S.suspend(() => S.Struct({ simpleRule: S.optional(SimpleRule) })).annotate({
         identifier: "AlarmRule",
       });
     case 4:
-      return S.suspend(() => S.Struct({ contentExpression: S.String, type: S.String })).annotate({
-        identifier: "Payload",
-      });
+      return S.suspend(() => S.Struct({ contentExpression: S.String, type: PayloadType })).annotate(
+        { identifier: "Payload" },
+      );
     case 5:
       return S.suspend(() =>
-        S.Struct({ functionArn: S.String, payload: S.optional(__S(4)) }),
+        S.Struct({ functionArn: S.String, payload: S.optional(Payload) }),
       ).annotate({ identifier: "LambdaAction" });
     case 6:
-      return S.suspend(() => S.Struct({ lambdaAction: S.optional(__S(5)) })).annotate({
+      return S.suspend(() => S.Struct({ lambdaAction: S.optional(LambdaAction) })).annotate({
         identifier: "NotificationTargetActions",
       });
     case 7:
@@ -1644,23 +1949,23 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ ssoIdentity: S.optional(__S(7)) })).annotate({
+      return S.suspend(() => S.Struct({ ssoIdentity: S.optional(SSOIdentity) })).annotate({
         identifier: "RecipientDetail",
       });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(RecipientDetail);
     case 2:
       return S.suspend(() =>
         S.Struct({
           senderId: S.optional(S.String),
           additionalMessage: S.optional(S.String),
-          recipients: __S(9),
+          recipients: RecipientDetails,
         }),
       ).annotate({
         identifier: "SMSConfiguration",
       });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(SMSConfiguration);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1669,21 +1974,21 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "EmailContent" });
     case 5:
-      return S.suspend(() => S.Struct({ to: S.optional(__S(9)) })).annotate({
+      return S.suspend(() => S.Struct({ to: S.optional(RecipientDetails) })).annotate({
         identifier: "EmailRecipients",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
           from: S.String,
-          content: S.optional(__S(12)),
-          recipients: __S(13),
+          content: S.optional(EmailContent),
+          recipients: EmailRecipients,
         }),
       ).annotate({
         identifier: "EmailConfiguration",
       });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(EmailConfiguration);
   }
 }
 function __c2(j: number): any {
@@ -1691,34 +1996,36 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: __S(6),
-          smsConfigurations: S.optional(__S(11)),
-          emailConfigurations: S.optional(__S(15)),
+          action: NotificationTargetActions,
+          smsConfigurations: S.optional(SMSConfigurations),
+          emailConfigurations: S.optional(EmailConfigurations),
         }),
       ).annotate({
         identifier: "NotificationAction",
       });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(NotificationAction);
     case 2:
-      return S.suspend(() => S.Struct({ notificationActions: S.optional(__S(17)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ notificationActions: S.optional(NotificationActions) }),
+      ).annotate({
         identifier: "AlarmNotification",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ targetArn: S.String, payload: S.optional(__S(4)) }),
+        S.Struct({ targetArn: S.String, payload: S.optional(Payload) }),
       ).annotate({
         identifier: "SNSTopicPublishAction",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ mqttTopic: S.String, payload: S.optional(__S(4)) }),
+        S.Struct({ mqttTopic: S.String, payload: S.optional(Payload) }),
       ).annotate({
         identifier: "IotTopicPublishAction",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ inputName: S.String, payload: S.optional(__S(4)) }),
+        S.Struct({ inputName: S.String, payload: S.optional(Payload) }),
       ).annotate({
         identifier: "IotEventsAction",
       });
@@ -1727,7 +2034,7 @@ function __c2(j: number): any {
         S.Struct({
           queueUrl: S.String,
           useBase64: S.optional(S.Boolean),
-          payload: S.optional(__S(4)),
+          payload: S.optional(Payload),
         }),
       ).annotate({ identifier: "SqsAction" });
     case 7:
@@ -1735,7 +2042,7 @@ function __c2(j: number): any {
         S.Struct({
           deliveryStreamName: S.String,
           separator: S.optional(S.String),
-          payload: S.optional(__S(4)),
+          payload: S.optional(Payload),
         }),
       ).annotate({ identifier: "FirehoseAction" });
   }
@@ -1754,12 +2061,12 @@ function __c3(j: number): any {
           operation: S.optional(S.String),
           payloadField: S.optional(S.String),
           tableName: S.String,
-          payload: S.optional(__S(4)),
+          payload: S.optional(Payload),
         }),
       ).annotate({ identifier: "DynamoDBAction" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ tableName: S.String, payload: S.optional(__S(4)) }),
+        S.Struct({ tableName: S.String, payload: S.optional(Payload) }),
       ).annotate({
         identifier: "DynamoDBv2Action",
       });
@@ -1783,8 +2090,8 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(26)),
-          timestamp: S.optional(__S(27)),
+          value: S.optional(AssetPropertyVariant),
+          timestamp: S.optional(AssetPropertyTimestamp),
           quality: S.optional(S.String),
         }),
       ).annotate({
@@ -1797,7 +2104,7 @@ function __c3(j: number): any {
           assetId: S.optional(S.String),
           propertyId: S.optional(S.String),
           propertyAlias: S.optional(S.String),
-          propertyValue: S.optional(__S(28)),
+          propertyValue: S.optional(AssetPropertyValue),
         }),
       ).annotate({
         identifier: "IotSiteWiseAction",
@@ -1805,25 +2112,25 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sns: S.optional(__S(19)),
-          iotTopicPublish: S.optional(__S(20)),
-          lambda: S.optional(__S(5)),
-          iotEvents: S.optional(__S(21)),
-          sqs: S.optional(__S(22)),
-          firehose: S.optional(__S(23)),
-          dynamoDB: S.optional(__S(24)),
-          dynamoDBv2: S.optional(__S(25)),
-          iotSiteWise: S.optional(__S(29)),
+          sns: S.optional(SNSTopicPublishAction),
+          iotTopicPublish: S.optional(IotTopicPublishAction),
+          lambda: S.optional(LambdaAction),
+          iotEvents: S.optional(IotEventsAction),
+          sqs: S.optional(SqsAction),
+          firehose: S.optional(FirehoseAction),
+          dynamoDB: S.optional(DynamoDBAction),
+          dynamoDBv2: S.optional(DynamoDBv2Action),
+          iotSiteWise: S.optional(IotSiteWiseAction),
         }),
       ).annotate({ identifier: "AlarmAction" });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(AlarmAction);
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ alarmActions: S.optional(__S(31)) })).annotate({
+      return S.suspend(() => S.Struct({ alarmActions: S.optional(AlarmActions) })).annotate({
         identifier: "AlarmEventActions",
       });
     case 1:
@@ -1837,8 +2144,8 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          initializationConfiguration: S.optional(__S(33)),
-          acknowledgeFlow: S.optional(__S(34)),
+          initializationConfiguration: S.optional(InitializationConfiguration),
+          acknowledgeFlow: S.optional(AcknowledgeFlow),
         }),
       ).annotate({
         identifier: "AlarmCapabilities",
@@ -1849,13 +2156,13 @@ function __c4(j: number): any {
           alarmModelName: S.String,
           alarmModelDescription: S.optional(S.String),
           roleArn: S.String,
-          tags: S.optional(__S(1)),
+          tags: S.optional(Tags),
           key: S.optional(S.String),
           severity: S.optional(S.Number),
-          alarmRule: __S(3),
-          alarmNotification: S.optional(__S(18)),
-          alarmEventActions: S.optional(__S(32)),
-          alarmCapabilities: S.optional(__S(35)),
+          alarmRule: AlarmRule,
+          alarmNotification: S.optional(AlarmNotification),
+          alarmEventActions: S.optional(AlarmEventActions),
+          alarmCapabilities: S.optional(AlarmCapabilities),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/alarm-models" }), svc, auth, proto, ver, rules),
         ),
@@ -1869,7 +2176,7 @@ function __c4(j: number): any {
           alarmModelArn: S.optional(S.String),
           alarmModelVersion: S.optional(S.String),
           lastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(S.String),
+          status: S.optional(AlarmModelVersionStatus),
         }),
       ).annotate({
         identifier: "CreateAlarmModelResponse",
@@ -1897,51 +2204,51 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          setVariable: S.optional(__S(38)),
-          sns: S.optional(__S(19)),
-          iotTopicPublish: S.optional(__S(20)),
-          setTimer: S.optional(__S(39)),
-          clearTimer: S.optional(__S(40)),
-          resetTimer: S.optional(__S(40)),
-          lambda: S.optional(__S(5)),
-          iotEvents: S.optional(__S(21)),
-          sqs: S.optional(__S(22)),
-          firehose: S.optional(__S(23)),
-          dynamoDB: S.optional(__S(24)),
-          dynamoDBv2: S.optional(__S(25)),
-          iotSiteWise: S.optional(__S(29)),
+          setVariable: S.optional(SetVariableAction),
+          sns: S.optional(SNSTopicPublishAction),
+          iotTopicPublish: S.optional(IotTopicPublishAction),
+          setTimer: S.optional(SetTimerAction),
+          clearTimer: S.optional(ClearTimerAction),
+          resetTimer: S.optional(ResetTimerAction),
+          lambda: S.optional(LambdaAction),
+          iotEvents: S.optional(IotEventsAction),
+          sqs: S.optional(SqsAction),
+          firehose: S.optional(FirehoseAction),
+          dynamoDB: S.optional(DynamoDBAction),
+          dynamoDBv2: S.optional(DynamoDBv2Action),
+          iotSiteWise: S.optional(IotSiteWiseAction),
         }),
       ).annotate({ identifier: "Action" });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(Action);
     case 3:
       return S.suspend(() =>
         S.Struct({
           eventName: S.String,
           condition: S.optional(S.String),
-          actions: S.optional(__S(42)),
+          actions: S.optional(Actions),
         }),
       ).annotate({ identifier: "Event" });
     case 4:
-      return S.Array(__S(43));
+      return S.Array(Event);
     case 5:
       return S.suspend(() =>
         S.Struct({
           eventName: S.String,
           condition: S.String,
-          actions: S.optional(__S(42)),
+          actions: S.optional(Actions),
           nextState: S.String,
         }),
       ).annotate({
         identifier: "TransitionEvent",
       });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(TransitionEvent);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          events: S.optional(__S(44)),
-          transitionEvents: S.optional(__S(46)),
+          events: S.optional(Events),
+          transitionEvents: S.optional(TransitionEvents),
         }),
       ).annotate({
         identifier: "OnInputLifecycle",
@@ -1951,34 +2258,34 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ events: S.optional(__S(44)) })).annotate({
+      return S.suspend(() => S.Struct({ events: S.optional(Events) })).annotate({
         identifier: "OnEnterLifecycle",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
           stateName: S.String,
-          onInput: S.optional(__S(47)),
-          onEnter: S.optional(__S(48)),
-          onExit: S.optional(__S(48)),
+          onInput: S.optional(OnInputLifecycle),
+          onEnter: S.optional(OnEnterLifecycle),
+          onExit: S.optional(OnExitLifecycle),
         }),
       ).annotate({ identifier: "State" });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(State);
     case 3:
-      return S.suspend(() => S.Struct({ states: __S(50), initialStateName: S.String })).annotate({
+      return S.suspend(() => S.Struct({ states: States, initialStateName: S.String })).annotate({
         identifier: "DetectorModelDefinition",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
           detectorModelName: S.String,
-          detectorModelDefinition: __S(51),
+          detectorModelDefinition: DetectorModelDefinition,
           detectorModelDescription: S.optional(S.String),
           key: S.optional(S.String),
           roleArn: S.String,
-          tags: S.optional(__S(1)),
-          evaluationMethod: S.optional(S.String),
+          tags: S.optional(Tags),
+          evaluationMethod: S.optional(EvaluationMethod),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/detector-models" }), svc, auth, proto, ver, rules),
         ),
@@ -1995,9 +2302,9 @@ function __c6(j: number): any {
           roleArn: S.optional(S.String),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(S.String),
+          status: S.optional(DetectorModelVersionStatus),
           key: S.optional(S.String),
-          evaluationMethod: S.optional(S.String),
+          evaluationMethod: S.optional(EvaluationMethod),
         }),
       ).annotate({
         identifier: "DetectorModelConfiguration",
@@ -2005,7 +2312,7 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          detectorModelConfiguration: S.optional(__S(53)),
+          detectorModelConfiguration: S.optional(DetectorModelConfiguration),
         }),
       ).annotate({
         identifier: "CreateDetectorModelResponse",
@@ -2019,9 +2326,9 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55));
+      return S.Array(Attribute);
     case 1:
-      return S.suspend(() => S.Struct({ attributes: __S(56) })).annotate({
+      return S.suspend(() => S.Struct({ attributes: Attributes })).annotate({
         identifier: "InputDefinition",
       });
     case 2:
@@ -2029,8 +2336,8 @@ function __c7(j: number): any {
         S.Struct({
           inputName: S.String,
           inputDescription: S.optional(S.String),
-          inputDefinition: __S(57),
-          tags: S.optional(__S(1)),
+          inputDefinition: InputDefinition,
+          tags: S.optional(Tags),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/inputs" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateInputRequest",
@@ -2043,13 +2350,15 @@ function __c7(j: number): any {
           inputArn: S.String,
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastUpdateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          status: S.String,
+          status: InputStatus,
         }),
       ).annotate({
         identifier: "InputConfiguration",
       });
     case 4:
-      return S.suspend(() => S.Struct({ inputConfiguration: S.optional(__S(59)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ inputConfiguration: S.optional(InputConfiguration) }),
+      ).annotate({
         identifier: "CreateInputResponse",
       });
     case 5:
@@ -2134,17 +2443,17 @@ function __c8(j: number): any {
           alarmModelArn: S.optional(S.String),
           alarmModelVersion: S.optional(S.String),
           lastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(S.String),
+          status: S.optional(AlarmModelVersionStatus),
           statusMessage: S.optional(S.String),
           alarmModelName: S.optional(S.String),
           alarmModelDescription: S.optional(S.String),
           roleArn: S.optional(S.String),
           key: S.optional(S.String),
           severity: S.optional(S.Number),
-          alarmRule: S.optional(__S(3)),
-          alarmNotification: S.optional(__S(18)),
-          alarmEventActions: S.optional(__S(32)),
-          alarmCapabilities: S.optional(__S(35)),
+          alarmRule: S.optional(AlarmRule),
+          alarmNotification: S.optional(AlarmNotification),
+          alarmEventActions: S.optional(AlarmEventActions),
+          alarmCapabilities: S.optional(AlarmCapabilities),
         }),
       ).annotate({
         identifier: "DescribeAlarmModelResponse",
@@ -2170,12 +2479,12 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          detectorModelDefinition: S.optional(__S(51)),
-          detectorModelConfiguration: S.optional(__S(53)),
+          detectorModelDefinition: S.optional(DetectorModelDefinition),
+          detectorModelConfiguration: S.optional(DetectorModelConfiguration),
         }),
       ).annotate({ identifier: "DetectorModel" });
     case 5:
-      return S.suspend(() => S.Struct({ detectorModel: S.optional(__S(68)) })).annotate({
+      return S.suspend(() => S.Struct({ detectorModel: S.optional(DetectorModel) })).annotate({
         identifier: "DescribeDetectorModelResponse",
       });
     case 6:
@@ -2197,7 +2506,7 @@ function __c8(j: number): any {
         identifier: "DescribeDetectorModelAnalysisRequest",
       });
     case 7:
-      return S.suspend(() => S.Struct({ status: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ status: S.optional(AnalysisStatus) })).annotate({
         identifier: "DescribeDetectorModelAnalysisResponse",
       });
   }
@@ -2222,12 +2531,12 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          inputConfiguration: S.optional(__S(59)),
-          inputDefinition: S.optional(__S(57)),
+          inputConfiguration: S.optional(InputConfiguration),
+          inputDefinition: S.optional(InputDefinition),
         }),
       ).annotate({ identifier: "Input" });
     case 2:
-      return S.suspend(() => S.Struct({ input: S.optional(__S(73)) })).annotate({
+      return S.suspend(() => S.Struct({ input: S.optional(Input) })).annotate({
         identifier: "DescribeInputResponse",
       });
     case 3:
@@ -2245,18 +2554,18 @@ function __c9(j: number): any {
         identifier: "DetectorDebugOption",
       });
     case 5:
-      return S.Array(__S(76));
+      return S.Array(DetectorDebugOption);
     case 6:
       return S.suspend(() =>
         S.Struct({
           roleArn: S.String,
-          level: S.String,
+          level: LoggingLevel,
           enabled: S.Boolean,
-          detectorDebugOptions: S.optional(__S(77)),
+          detectorDebugOptions: S.optional(DetectorDebugOptions),
         }),
       ).annotate({ identifier: "LoggingOptions" });
     case 7:
-      return S.suspend(() => S.Struct({ loggingOptions: S.optional(__S(78)) })).annotate({
+      return S.suspend(() => S.Struct({ loggingOptions: S.optional(LoggingOptions) })).annotate({
         identifier: "DescribeLoggingOptionsResponse",
       });
   }
@@ -2290,22 +2599,22 @@ function __c10(j: number): any {
         identifier: "AnalysisResultLocation",
       });
     case 2:
-      return S.Array(__S(81));
+      return S.Array(AnalysisResultLocation);
     case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          level: S.optional(S.String),
+          level: S.optional(AnalysisResultLevel),
           message: S.optional(S.String),
-          locations: S.optional(__S(82)),
+          locations: S.optional(AnalysisResultLocations),
         }),
       ).annotate({ identifier: "AnalysisResult" });
     case 4:
-      return S.Array(__S(83));
+      return S.Array(AnalysisResult);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          analysisResults: S.optional(__S(84)),
+          analysisResults: S.optional(AnalysisResults),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2337,11 +2646,11 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87));
+      return S.Array(AlarmModelSummary);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          alarmModelSummaries: S.optional(__S(88)),
+          alarmModelSummaries: S.optional(AlarmModelSummaries),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2375,18 +2684,18 @@ function __c11(j: number): any {
           roleArn: S.optional(S.String),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(S.String),
+          status: S.optional(AlarmModelVersionStatus),
           statusMessage: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AlarmModelVersionSummary",
       });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(AlarmModelVersionSummary);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          alarmModelVersionSummaries: S.optional(__S(92)),
+          alarmModelVersionSummaries: S.optional(AlarmModelVersionSummaries),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2418,11 +2727,11 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95));
+      return S.Array(DetectorModelSummary);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          detectorModelSummaries: S.optional(__S(96)),
+          detectorModelSummaries: S.optional(DetectorModelSummaries),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2459,18 +2768,18 @@ function __c12(j: number): any {
           roleArn: S.optional(S.String),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(S.String),
-          evaluationMethod: S.optional(S.String),
+          status: S.optional(DetectorModelVersionStatus),
+          evaluationMethod: S.optional(EvaluationMethod),
         }),
       ).annotate({
         identifier: "DetectorModelVersionSummary",
       });
     case 4:
-      return S.Array(__S(99));
+      return S.Array(DetectorModelVersionSummary);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          detectorModelVersionSummaries: S.optional(__S(100)),
+          detectorModelVersionSummaries: S.optional(DetectorModelVersionSummaries),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2491,7 +2800,9 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          iotSiteWiseAssetModelPropertyIdentifier: S.optional(__S(103)),
+          iotSiteWiseAssetModelPropertyIdentifier: S.optional(
+            IotSiteWiseAssetModelPropertyIdentifier,
+          ),
         }),
       ).annotate({
         identifier: "IotSiteWiseInputIdentifier",
@@ -2499,8 +2810,8 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          iotEventsInputIdentifier: S.optional(__S(102)),
-          iotSiteWiseInputIdentifier: S.optional(__S(104)),
+          iotEventsInputIdentifier: S.optional(IotEventsInputIdentifier),
+          iotSiteWiseInputIdentifier: S.optional(IotSiteWiseInputIdentifier),
         }),
       ).annotate({
         identifier: "InputIdentifier",
@@ -2508,7 +2819,7 @@ function __c13(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          inputIdentifier: __S(105),
+          inputIdentifier: InputIdentifier,
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -2522,11 +2833,11 @@ function __c13(j: number): any {
         S.Struct({ name: S.optional(S.String), arn: S.optional(S.String) }),
       ).annotate({ identifier: "RoutedResource" });
     case 4:
-      return S.Array(__S(107));
+      return S.Array(RoutedResource);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          routedResources: S.optional(__S(108)),
+          routedResources: S.optional(RoutedResources),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2549,7 +2860,7 @@ function __c13(j: number): any {
           inputArn: S.optional(S.String),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(S.String),
+          status: S.optional(InputStatus),
         }),
       ).annotate({ identifier: "InputSummary" });
   }
@@ -2557,11 +2868,11 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(111));
+      return S.Array(InputSummary);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          inputSummaries: S.optional(__S(112)),
+          inputSummaries: S.optional(InputSummaries),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2576,12 +2887,12 @@ function __c14(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 3:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(1)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ loggingOptions: __S(78) }).pipe(
+        S.Struct({ loggingOptions: LoggingOptions }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/logging" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -2589,7 +2900,7 @@ function __c14(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ detectorModelDefinition: __S(51) }).pipe(
+        S.Struct({ detectorModelDefinition: DetectorModelDefinition }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/analysis/detector-models" }),
             svc,
@@ -2610,7 +2921,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
-          tags: __S(1),
+          tags: Tags,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/tags" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "TagResourceRequest",
@@ -2625,7 +2936,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
-          tagKeys: __S(120).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
         }).pipe(T.all(T.Http({ method: "DELETE", uri: "/tags" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UntagResourceRequest",
@@ -2637,10 +2948,10 @@ function __c15(j: number): any {
           alarmModelDescription: S.optional(S.String),
           roleArn: S.String,
           severity: S.optional(S.Number),
-          alarmRule: __S(3),
-          alarmNotification: S.optional(__S(18)),
-          alarmEventActions: S.optional(__S(32)),
-          alarmCapabilities: S.optional(__S(35)),
+          alarmRule: AlarmRule,
+          alarmNotification: S.optional(AlarmNotification),
+          alarmEventActions: S.optional(AlarmEventActions),
+          alarmCapabilities: S.optional(AlarmCapabilities),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/alarm-models/{alarmModelName}" }),
@@ -2658,10 +2969,10 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           detectorModelName: S.String.pipe(T.HttpLabel("detectorModelName")),
-          detectorModelDefinition: __S(51),
+          detectorModelDefinition: DetectorModelDefinition,
           detectorModelDescription: S.optional(S.String),
           roleArn: S.String,
-          evaluationMethod: S.optional(S.String),
+          evaluationMethod: S.optional(EvaluationMethod),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/detector-models/{detectorModelName}" }),
@@ -2680,7 +2991,7 @@ function __c15(j: number): any {
         S.Struct({
           inputName: S.String.pipe(T.HttpLabel("inputName")),
           inputDescription: S.optional(S.String),
-          inputDefinition: __S(57),
+          inputDefinition: InputDefinition,
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/inputs/{inputName}" }),
@@ -2694,46 +3005,5 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "UpdateInputRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
   }
 }

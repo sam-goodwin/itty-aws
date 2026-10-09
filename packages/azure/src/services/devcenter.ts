@@ -7,8 +7,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -21,11 +19,15 @@ export type AttachedNetworkConnectionPropertiesInputHealthCheckStatus =
   | "Warning"
   | "Failed"
   | "Informational";
+const AttachedNetworkConnectionPropertiesInputHealthCheckStatus = S.String;
+
 /** Active Directory join type */
 export type AttachedNetworkConnectionPropertiesInputDomainJoinType =
   | "HybridAzureADJoin"
   | "AzureADJoin"
   | "None";
+const AttachedNetworkConnectionPropertiesInputDomainJoinType = S.String;
+
 /** Properties of an attached NetworkConnection. */
 export interface AttachedNetworkConnectionPropertiesInput {
   /** The resource ID of the NetworkConnection you want to attach. */
@@ -35,6 +37,11 @@ export interface AttachedNetworkConnectionPropertiesInput {
   /** Active Directory join type */
   domainJoinType?: AttachedNetworkConnectionPropertiesInputDomainJoinType | (string & {});
 }
+const AttachedNetworkConnectionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AttachedNetworkConnectionPropertiesInput>;
+
 export interface AttachedNetworksCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -47,10 +54,19 @@ export interface AttachedNetworksCreateOrUpdateRequest {
   /** Attached NetworkConnection properties. */
   properties?: AttachedNetworkConnectionPropertiesInput;
 }
+const AttachedNetworksCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AttachedNetworksCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -66,6 +82,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SystemData>;
+
 /** Provisioning state of the resource. */
 export type AttachedNetworkConnectionPropertiesProvisioningState =
   | "NotSpecified"
@@ -84,6 +102,8 @@ export type AttachedNetworkConnectionPropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
+const AttachedNetworkConnectionPropertiesProvisioningState = S.String;
+
 /** Health check status values */
 export type AttachedNetworkConnectionPropertiesHealthCheckStatus =
   | "Unknown"
@@ -93,11 +113,15 @@ export type AttachedNetworkConnectionPropertiesHealthCheckStatus =
   | "Warning"
   | "Failed"
   | "Informational";
+const AttachedNetworkConnectionPropertiesHealthCheckStatus = S.String;
+
 /** Active Directory join type */
 export type AttachedNetworkConnectionPropertiesDomainJoinType =
   | "HybridAzureADJoin"
   | "AzureADJoin"
   | "None";
+const AttachedNetworkConnectionPropertiesDomainJoinType = S.String;
+
 /** Properties of an attached NetworkConnection. */
 export interface AttachedNetworkConnectionProperties {
   /** Provisioning state of the resource. */
@@ -111,6 +135,11 @@ export interface AttachedNetworkConnectionProperties {
   /** Active Directory join type */
   domainJoinType?: AttachedNetworkConnectionPropertiesDomainJoinType;
 }
+const AttachedNetworkConnectionProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AttachedNetworkConnectionProperties>;
+
 export interface AttachedNetworksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -123,6 +152,11 @@ export interface AttachedNetworksCreateOrUpdateResponse {
   /** Attached NetworkConnection properties. */
   properties?: AttachedNetworkConnectionProperties;
 }
+const AttachedNetworksCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AttachedNetworksCreateOrUpdateResponse>;
+
 export interface CancelProjectCatalogImageDefinitionBuildRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -137,7 +171,17 @@ export interface CancelProjectCatalogImageDefinitionBuildRequest {
   /** The ID of the Image Definition Build. */
   buildName: string;
 }
+const CancelProjectCatalogImageDefinitionBuildRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CancelProjectCatalogImageDefinitionBuildRequest>;
+
 export interface CancelProjectCatalogImageDefinitionBuildResponse {}
+const CancelProjectCatalogImageDefinitionBuildResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CancelProjectCatalogImageDefinitionBuildResponse>;
+
 /** Properties for a Git repository catalog. */
 export interface GitCatalog {
   /** Git URI. */
@@ -149,10 +193,19 @@ export interface GitCatalog {
   /** The folder where the catalog items can be found inside the repository. */
   path?: string;
 }
+const GitCatalog = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GitCatalog>;
+
 /** Indicates the type of sync that is configured for the catalog. */
 export type CatalogPropertiesInputSyncType = "Manual" | "Scheduled";
+const CatalogPropertiesInputSyncType = S.String;
+
 /** Resource tags. */
 export type CatalogPropertiesInputTagsMap = { [key: string]: string | undefined };
+const CatalogPropertiesInputTagsMap = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CatalogPropertiesInputTagsMap>;
+
 /** Properties of a catalog. */
 export interface CatalogPropertiesInput {
   /** Properties for a GitHub catalog type. */
@@ -164,6 +217,11 @@ export interface CatalogPropertiesInput {
   /** Resource tags. */
   tags?: CatalogPropertiesInputTagsMap;
 }
+const CatalogPropertiesInput = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CatalogPropertiesInput>;
+
 export interface CatalogsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -176,10 +234,20 @@ export interface CatalogsCreateOrUpdateRequest {
   /** Catalog properties. */
   properties?: CatalogPropertiesInput;
 }
+const CatalogsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CatalogsCreateOrUpdateRequest>;
+
 /** Indicates the type of sync that is configured for the catalog. */
 export type CatalogPropertiesSyncType = "Manual" | "Scheduled";
+const CatalogPropertiesSyncType = S.String;
+
 /** Resource tags. */
 export type CatalogPropertiesTagsMap = { [key: string]: string | undefined };
+const CatalogPropertiesTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<CatalogPropertiesTagsMap>;
+
 /** Provisioning state of the resource. */
 export type CatalogPropertiesProvisioningState =
   | "NotSpecified"
@@ -198,12 +266,23 @@ export type CatalogPropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
+const CatalogPropertiesProvisioningState = S.String;
+
 /** The synchronization state of the catalog. */
 export type CatalogPropertiesSyncState = "Succeeded" | "InProgress" | "Failed" | "Canceled";
+const CatalogPropertiesSyncState = S.String;
+
 /** Indicates catalog item types. */
 export type CatalogItemType = "EnvironmentDefinition" | "ImageDefinition";
+const CatalogItemType = S.String;
+
 /** Indicates catalog item types that were synced. */
 export type SyncStatsSyncedCatalogItemTypesList = Array<CatalogItemType>;
+const SyncStatsSyncedCatalogItemTypesList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<SyncStatsSyncedCatalogItemTypesList>;
+
 /** Stats of the synchronization. */
 export interface SyncStats {
   /** Count of catalog items added during synchronization. */
@@ -221,8 +300,12 @@ export interface SyncStats {
   /** Indicates catalog item types that were synced. */
   syncedCatalogItemTypes?: SyncStatsSyncedCatalogItemTypesList;
 }
+const SyncStats = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<SyncStats>;
+
 /** The connection state of the catalog. */
 export type CatalogPropertiesConnectionState = "Connected" | "Disconnected";
+const CatalogPropertiesConnectionState = S.String;
+
 /** Properties of a catalog. */
 export interface CatalogProperties {
   /** Properties for a GitHub catalog type. */
@@ -246,6 +329,8 @@ export interface CatalogProperties {
   /** When the catalog was last synced. */
   lastSyncTime?: string;
 }
+const CatalogProperties = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CatalogProperties>;
+
 export interface CatalogsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -258,6 +343,11 @@ export interface CatalogsCreateOrUpdateResponse {
   /** Catalog properties. */
   properties?: CatalogProperties;
 }
+const CatalogsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CatalogsCreateOrUpdateResponse>;
+
 export interface ConnectCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -268,7 +358,17 @@ export interface ConnectCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
+const ConnectCatalogRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ConnectCatalogRequest>;
+
 export interface ConnectCatalogResponse {}
+const ConnectCatalogResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ConnectCatalogResponse>;
+
 export interface ConnectProjectCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -279,7 +379,15 @@ export interface ConnectProjectCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
+const ConnectProjectCatalogRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ConnectProjectCatalogRequest>;
+
 export interface ConnectProjectCatalogResponse {}
+const ConnectProjectCatalogResponse =
+  ConnectCatalogResponse as any as S.Schema<ConnectProjectCatalogResponse>;
+
 export interface DeleteAttachedNetworkRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -290,7 +398,15 @@ export interface DeleteAttachedNetworkRequest {
   /** The name of the attached NetworkConnection. */
   attachedNetworkConnectionName: string;
 }
+const DeleteAttachedNetworkRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DeleteAttachedNetworkRequest>;
+
 export interface DeleteAttachedNetworkResponse {}
+const DeleteAttachedNetworkResponse =
+  ConnectCatalogResponse as any as S.Schema<DeleteAttachedNetworkResponse>;
+
 export interface DeleteCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -301,7 +417,11 @@ export interface DeleteCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
+const DeleteCatalogRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DeleteCatalogRequest>;
+
 export interface DeleteCatalogResponse {}
+const DeleteCatalogResponse = ConnectCatalogResponse as any as S.Schema<DeleteCatalogResponse>;
+
 export interface DeleteDevBoxDefinitionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -312,7 +432,15 @@ export interface DeleteDevBoxDefinitionRequest {
   /** The name of the Dev Box definition. */
   devBoxDefinitionName: string;
 }
+const DeleteDevBoxDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DeleteDevBoxDefinitionRequest>;
+
 export interface DeleteDevBoxDefinitionResponse {}
+const DeleteDevBoxDefinitionResponse =
+  ConnectCatalogResponse as any as S.Schema<DeleteDevBoxDefinitionResponse>;
+
 export interface DeleteDevCenterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -321,7 +449,14 @@ export interface DeleteDevCenterRequest {
   /** The name of the devcenter. */
   devCenterName: string;
 }
+const DeleteDevCenterRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DeleteDevCenterRequest>;
+
 export interface DeleteDevCenterResponse {}
+const DeleteDevCenterResponse = ConnectCatalogResponse as any as S.Schema<DeleteDevCenterResponse>;
+
 export interface DeleteEnvironmentTypeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -332,7 +467,15 @@ export interface DeleteEnvironmentTypeRequest {
   /** The name of the environment type. */
   environmentTypeName: string;
 }
+const DeleteEnvironmentTypeRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DeleteEnvironmentTypeRequest>;
+
 export interface DeleteEnvironmentTypeResponse {}
+const DeleteEnvironmentTypeResponse =
+  ConnectCatalogResponse as any as S.Schema<DeleteEnvironmentTypeResponse>;
+
 export interface DeleteGalleryRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -343,7 +486,11 @@ export interface DeleteGalleryRequest {
   /** The name of the gallery. */
   galleryName: string;
 }
+const DeleteGalleryRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DeleteGalleryRequest>;
+
 export interface DeleteGalleryResponse {}
+const DeleteGalleryResponse = ConnectCatalogResponse as any as S.Schema<DeleteGalleryResponse>;
+
 export interface DeleteNetworkConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -352,7 +499,17 @@ export interface DeleteNetworkConnectionRequest {
   /** Name of the Network Connection that can be applied to a Pool. */
   networkConnectionName: string;
 }
+const DeleteNetworkConnectionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DeleteNetworkConnectionRequest>;
+
 export interface DeleteNetworkConnectionResponse {}
+const DeleteNetworkConnectionResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DeleteNetworkConnectionResponse>;
+
 export interface DeletePoolRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -363,7 +520,11 @@ export interface DeletePoolRequest {
   /** Name of the pool. */
   poolName: string;
 }
+const DeletePoolRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DeletePoolRequest>;
+
 export interface DeletePoolResponse {}
+const DeletePoolResponse = ConnectCatalogResponse as any as S.Schema<DeletePoolResponse>;
+
 export interface DeleteProjectRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -372,7 +533,11 @@ export interface DeleteProjectRequest {
   /** The name of the project. */
   projectName: string;
 }
+const DeleteProjectRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<DeleteProjectRequest>;
+
 export interface DeleteProjectResponse {}
+const DeleteProjectResponse = ConnectCatalogResponse as any as S.Schema<DeleteProjectResponse>;
+
 export interface DeleteProjectCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -383,7 +548,15 @@ export interface DeleteProjectCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
+const DeleteProjectCatalogRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DeleteProjectCatalogRequest>;
+
 export interface DeleteProjectCatalogResponse {}
+const DeleteProjectCatalogResponse =
+  ConnectCatalogResponse as any as S.Schema<DeleteProjectCatalogResponse>;
+
 export interface DeleteProjectEnvironmentTypeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -394,7 +567,15 @@ export interface DeleteProjectEnvironmentTypeRequest {
   /** The name of the environment type. */
   environmentTypeName: string;
 }
+const DeleteProjectEnvironmentTypeRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DeleteProjectEnvironmentTypeRequest>;
+
 export interface DeleteProjectEnvironmentTypeResponse {}
+const DeleteProjectEnvironmentTypeResponse =
+  CancelProjectCatalogImageDefinitionBuildResponse as any as S.Schema<DeleteProjectEnvironmentTypeResponse>;
+
 export interface DeleteProjectPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -405,7 +586,15 @@ export interface DeleteProjectPolicyRequest {
   /** The name of the project policy. */
   projectPolicyName: string;
 }
+const DeleteProjectPolicyRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DeleteProjectPolicyRequest>;
+
 export interface DeleteProjectPolicyResponse {}
+const DeleteProjectPolicyResponse =
+  ConnectCatalogResponse as any as S.Schema<DeleteProjectPolicyResponse>;
+
 export interface DeleteScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -420,16 +609,33 @@ export interface DeleteScheduleRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const DeleteScheduleRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DeleteScheduleRequest>;
+
 export interface DeleteScheduleResponse {}
+const DeleteScheduleResponse = ConnectCatalogResponse as any as S.Schema<DeleteScheduleResponse>;
+
 /** Resource tags. */
 export type DevBoxDefinitionsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const DevBoxDefinitionsCreateOrUpdateRequestTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<DevBoxDefinitionsCreateOrUpdateRequestTagsMap>;
+
 /** Image reference information */
 export interface DevBoxDefinitionPropertiesInputImageReference {
   /** Image ID, or Image version ID. When Image ID is provided, its latest version will be used. */
   id?: string;
 }
+const DevBoxDefinitionPropertiesInputImageReference = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<DevBoxDefinitionPropertiesInputImageReference>;
+
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
 export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
+const SkuTier = S.String;
+
 /** The resource model definition representing SKU */
 export interface DevBoxDefinitionPropertiesInputSku {
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
@@ -442,8 +648,15 @@ export interface DevBoxDefinitionPropertiesInputSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
+const DevBoxDefinitionPropertiesInputSku = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<DevBoxDefinitionPropertiesInputSku>;
+
 /** Indicates whether hibernate is enabled/disabled. */
 export type HibernateSupport = "Disabled" | "Enabled";
+const HibernateSupport = S.String;
+
 /** Image validation status */
 export type DevBoxDefinitionPropertiesInputImageValidationStatus =
   | "Unknown"
@@ -451,6 +664,8 @@ export type DevBoxDefinitionPropertiesInputImageValidationStatus =
   | "Succeeded"
   | "Failed"
   | "TimedOut";
+const DevBoxDefinitionPropertiesInputImageValidationStatus = S.String;
+
 /** Image validation error details */
 export interface DevBoxDefinitionPropertiesInputImageValidationErrorDetails {
   /** An identifier for the error. */
@@ -458,12 +673,19 @@ export interface DevBoxDefinitionPropertiesInputImageValidationErrorDetails {
   /** A message describing the error. */
   message?: string;
 }
+const DevBoxDefinitionPropertiesInputImageValidationErrorDetails = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<DevBoxDefinitionPropertiesInputImageValidationErrorDetails>;
+
 /** Catalog resource validation status */
 export type DevBoxDefinitionPropertiesInputValidationStatus =
   | "Unknown"
   | "Pending"
   | "Succeeded"
   | "Failed";
+const DevBoxDefinitionPropertiesInputValidationStatus = S.String;
+
 /** Image reference information */
 export type DevBoxDefinitionPropertiesInputActiveImageReference =
   DevBoxDefinitionPropertiesInputImageReference;
@@ -486,6 +708,11 @@ export interface DevBoxDefinitionPropertiesInput {
   /** Image reference information */
   activeImageReference?: DevBoxDefinitionPropertiesInputImageReference;
 }
+const DevBoxDefinitionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<DevBoxDefinitionPropertiesInput>;
+
 export interface DevBoxDefinitionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -502,8 +729,16 @@ export interface DevBoxDefinitionsCreateOrUpdateRequest {
   /** Dev Box definition properties */
   properties?: DevBoxDefinitionPropertiesInput;
 }
+const DevBoxDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DevBoxDefinitionsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type DevBoxDefinitionsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const DevBoxDefinitionsCreateOrUpdateResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<DevBoxDefinitionsCreateOrUpdateResponseTagsMap>;
+
 /** Image reference information */
 export interface DevBoxDefinitionPropertiesImageReference {
   /** Image ID, or Image version ID. When Image ID is provided, its latest version will be used. */
@@ -511,6 +746,11 @@ export interface DevBoxDefinitionPropertiesImageReference {
   /** The actual version of the image after use. When id references a gallery image latest version, this will indicate the actual version in use. */
   exactVersion?: string;
 }
+const DevBoxDefinitionPropertiesImageReference = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DevBoxDefinitionPropertiesImageReference>;
+
 /** The resource model definition representing SKU */
 export interface DevBoxDefinitionPropertiesSku {
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
@@ -523,6 +763,9 @@ export interface DevBoxDefinitionPropertiesSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
+const DevBoxDefinitionPropertiesSku =
+  DevBoxDefinitionPropertiesInputSku as any as S.Schema<DevBoxDefinitionPropertiesSku>;
+
 /** Provisioning state of the resource. */
 export type DevBoxDefinitionPropertiesProvisioningState =
   | "NotSpecified"
@@ -541,6 +784,8 @@ export type DevBoxDefinitionPropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
+const DevBoxDefinitionPropertiesProvisioningState = S.String;
+
 /** Image validation status */
 export type DevBoxDefinitionPropertiesImageValidationStatus =
   | "Unknown"
@@ -548,6 +793,8 @@ export type DevBoxDefinitionPropertiesImageValidationStatus =
   | "Succeeded"
   | "Failed"
   | "TimedOut";
+const DevBoxDefinitionPropertiesImageValidationStatus = S.String;
+
 /** Image validation error details */
 export type DevBoxDefinitionPropertiesImageValidationErrorDetails =
   DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
@@ -557,6 +804,8 @@ export type DevBoxDefinitionPropertiesValidationStatus =
   | "Pending"
   | "Succeeded"
   | "Failed";
+const DevBoxDefinitionPropertiesValidationStatus = S.String;
+
 /** Image reference information */
 export type DevBoxDefinitionPropertiesActiveImageReference =
   DevBoxDefinitionPropertiesImageReference;
@@ -581,6 +830,11 @@ export interface DevBoxDefinitionProperties {
   /** Image reference information */
   activeImageReference?: DevBoxDefinitionPropertiesImageReference;
 }
+const DevBoxDefinitionProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<DevBoxDefinitionProperties>;
+
 export interface DevBoxDefinitionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -597,13 +851,23 @@ export interface DevBoxDefinitionsCreateOrUpdateResponse {
   /** Dev Box definition properties */
   properties?: DevBoxDefinitionProperties;
 }
+const DevBoxDefinitionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<DevBoxDefinitionsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type DevCentersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const DevCentersCreateOrUpdateRequestTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<DevCentersCreateOrUpdateRequestTagsMap>;
+
 /** Values can be systemAssignedIdentity or userAssignedIdentity */
 export type EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
   | "systemAssignedIdentity"
   | "userAssignedIdentity"
   | "delegatedResourceIdentity";
+const EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType = S.String;
+
 /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
 export interface EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity {
   /** Values can be systemAssignedIdentity or userAssignedIdentity */
@@ -615,6 +879,11 @@ export interface EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity 
   /** delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only. */
   delegatedIdentityClientId?: string;
 }
+const EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity>;
+
 /** All Customer-managed key encryption properties for the resource. */
 export interface EncryptionCustomerManagedKeyEncryption {
   /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
@@ -622,30 +891,58 @@ export interface EncryptionCustomerManagedKeyEncryption {
   /** key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek. */
   keyEncryptionKeyUrl?: string;
 }
+const EncryptionCustomerManagedKeyEncryption = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<EncryptionCustomerManagedKeyEncryption>;
+
 export interface Encryption {
   /** All Customer-managed key encryption properties for the resource. */
   customerManagedKeyEncryption?: EncryptionCustomerManagedKeyEncryption;
 }
+const Encryption = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Encryption>;
+
 /** Catalog item sync types enable or disable status. Indicates whether project catalogs are allowed to sync catalog items under projects associated to this dev center. */
 export type CatalogItemSyncEnableStatus = "Enabled" | "Disabled";
+const CatalogItemSyncEnableStatus = S.String;
+
 /** Project catalog settings for project catalogs under a project associated to this dev center. */
 export interface DevCenterProjectCatalogSettings {
   /** Whether project catalogs associated with projects in this dev center can be configured to sync catalog items. */
   catalogItemSyncEnableStatus?: CatalogItemSyncEnableStatus | (string & {});
 }
+const DevCenterProjectCatalogSettings = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DevCenterProjectCatalogSettings>;
+
 /** Indicates whether pools in this Dev Center can use Microsoft Hosted Networks. Defaults to Enabled if not set. */
 export type MicrosoftHostedNetworkEnableStatus = "Enabled" | "Disabled";
+const MicrosoftHostedNetworkEnableStatus = S.String;
+
 /** Network settings for the Dev Center. */
 export interface DevCenterNetworkSettings {
   microsoftHostedNetworkEnableStatus?: MicrosoftHostedNetworkEnableStatus | (string & {});
 }
+const DevCenterNetworkSettings = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<DevCenterNetworkSettings>;
+
 /** Setting to be used when determining whether to install the Azure Monitor Agent service on Dev Boxes that belong to this dev center. */
 export type InstallAzureMonitorAgentEnableStatus = "Enabled" | "Disabled";
+const InstallAzureMonitorAgentEnableStatus = S.String;
+
 /** Provisioning settings that apply to all Dev Boxes created in this dev center */
 export interface DevBoxProvisioningSettings {
   /** Whether project catalogs associated with projects in this dev center can be configured to sync catalog items. */
   installAzureMonitorAgentEnableStatus?: InstallAzureMonitorAgentEnableStatus | (string & {});
 }
+const DevBoxProvisioningSettings = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DevBoxProvisioningSettings>;
+
 /** Properties of the devcenter. */
 export interface DevCenterPropertiesInput {
   /** Encryption settings to be used for server-side encryption for proprietary content (such as catalogs, logs, customizations). */
@@ -659,21 +956,41 @@ export interface DevCenterPropertiesInput {
   /** Settings to be used in the provisioning of all Dev Boxes that belong to this dev center. */
   devBoxProvisioningSettings?: DevBoxProvisioningSettings;
 }
+const DevCenterPropertiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DevCenterPropertiesInput>;
+
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned";
+const ManagedServiceIdentityType = S.String;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
+const UserAssignedIdentityInput =
+  ConnectCatalogResponse as any as S.Schema<UserAssignedIdentityInput>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = { [key: string]: UserAssignedIdentityInput | undefined };
+const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface DevCentersCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
+const DevCentersCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DevCentersCreateOrUpdateRequestIdentity>;
+
 export interface DevCentersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -690,8 +1007,16 @@ export interface DevCentersCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateRequestIdentity;
 }
+const DevCentersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<DevCentersCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type DevCentersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const DevCentersCreateOrUpdateResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<DevCentersCreateOrUpdateResponseTagsMap>;
+
 /** Provisioning state of the resource. */
 export type DevCenterPropertiesProvisioningState =
   | "NotSpecified"
@@ -710,6 +1035,8 @@ export type DevCenterPropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
+const DevCenterPropertiesProvisioningState = S.String;
+
 /** Properties of the devcenter. */
 export interface DevCenterProperties {
   /** Encryption settings to be used for server-side encryption for proprietary content (such as catalogs, logs, customizations). */
@@ -727,6 +1054,8 @@ export interface DevCenterProperties {
   /** The URI of the Dev Center. */
   devCenterUri?: string;
 }
+const DevCenterProperties = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<DevCenterProperties>;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -734,8 +1063,15 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
+const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<UserAssignedIdentity>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | undefined };
+const UserAssignedIdentities = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<UserAssignedIdentities>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface DevCentersCreateOrUpdateResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -745,6 +1081,11 @@ export interface DevCentersCreateOrUpdateResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
+const DevCentersCreateOrUpdateResponseIdentity = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DevCentersCreateOrUpdateResponseIdentity>;
+
 export interface DevCentersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -763,13 +1104,26 @@ export interface DevCentersCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
+const DevCentersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<DevCentersCreateOrUpdateResponse>;
+
 /** Properties of an environment type. */
 export interface EnvironmentTypePropertiesInput {
   /** The display name of the environment type. */
   displayName?: string;
 }
+const EnvironmentTypePropertiesInput = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<EnvironmentTypePropertiesInput>;
+
 /** Resource tags. */
 export type EnvironmentTypesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const EnvironmentTypesCreateOrUpdateRequestTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<EnvironmentTypesCreateOrUpdateRequestTagsMap>;
+
 export interface EnvironmentTypesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -784,6 +1138,11 @@ export interface EnvironmentTypesCreateOrUpdateRequest {
   /** Resource tags. */
   tags?: EnvironmentTypesCreateOrUpdateRequestTagsMap;
 }
+const EnvironmentTypesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<EnvironmentTypesCreateOrUpdateRequest>;
+
 /** Provisioning state of the resource. */
 export type EnvironmentTypePropertiesProvisioningState =
   | "NotSpecified"
@@ -802,6 +1161,8 @@ export type EnvironmentTypePropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
+const EnvironmentTypePropertiesProvisioningState = S.String;
+
 /** Properties of an environment type. */
 export interface EnvironmentTypeProperties {
   /** The display name of the environment type. */
@@ -809,8 +1170,16 @@ export interface EnvironmentTypeProperties {
   /** Provisioning state of the resource. */
   provisioningState?: EnvironmentTypePropertiesProvisioningState;
 }
+const EnvironmentTypeProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<EnvironmentTypeProperties>;
+
 /** Resource tags. */
 export type EnvironmentTypesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const EnvironmentTypesCreateOrUpdateResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<EnvironmentTypesCreateOrUpdateResponseTagsMap>;
+
 export interface EnvironmentTypesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -825,6 +1194,11 @@ export interface EnvironmentTypesCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: EnvironmentTypesCreateOrUpdateResponseTagsMap;
 }
+const EnvironmentTypesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<EnvironmentTypesCreateOrUpdateResponse>;
+
 export interface ExecuteCheckNameAvailabilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -833,8 +1207,15 @@ export interface ExecuteCheckNameAvailabilityRequest {
   /** The resource type. */
   type?: string;
 }
+const ExecuteCheckNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ExecuteCheckNameAvailabilityRequest>;
+
 /** The reason why the given name is not available. */
 export type ExecuteCheckNameAvailabilityResponseReason = "Invalid" | "AlreadyExists";
+const ExecuteCheckNameAvailabilityResponseReason = S.String;
+
 export interface ExecuteCheckNameAvailabilityResponse {
   /** Indicates if the resource name is available. */
   nameAvailable?: boolean;
@@ -843,6 +1224,11 @@ export interface ExecuteCheckNameAvailabilityResponse {
   /** Detailed reason why the given name is available. */
   message?: string;
 }
+const ExecuteCheckNameAvailabilityResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ExecuteCheckNameAvailabilityResponse>;
+
 export interface ExecuteCheckScopedNameAvailabilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -853,6 +1239,11 @@ export interface ExecuteCheckScopedNameAvailabilityRequest {
   /** The resource id to scope the name check. */
   scope?: string;
 }
+const ExecuteCheckScopedNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ExecuteCheckScopedNameAvailabilityRequest>;
+
 /** The reason why the given name is not available. */
 export type ExecuteCheckScopedNameAvailabilityResponseReason = "Invalid" | "AlreadyExists";
 export interface ExecuteCheckScopedNameAvailabilityResponse {
@@ -863,11 +1254,19 @@ export interface ExecuteCheckScopedNameAvailabilityResponse {
   /** Detailed reason why the given name is available. */
   message?: string;
 }
+const ExecuteCheckScopedNameAvailabilityResponse =
+  ExecuteCheckNameAvailabilityResponse as any as S.Schema<ExecuteCheckScopedNameAvailabilityResponse>;
+
 /** Properties of a gallery. */
 export interface GalleryPropertiesInput {
   /** The resource ID of the backing Azure Compute Gallery. */
   galleryResourceId: string;
 }
+const GalleryPropertiesInput = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GalleryPropertiesInput>;
+
 export interface GalleriesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -880,6 +1279,11 @@ export interface GalleriesCreateOrUpdateRequest {
   /** Gallery properties. */
   properties?: GalleryPropertiesInput;
 }
+const GalleriesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GalleriesCreateOrUpdateRequest>;
+
 /** Provisioning state of the resource. */
 export type GalleryPropertiesProvisioningState =
   | "NotSpecified"
@@ -898,6 +1302,8 @@ export type GalleryPropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
+const GalleryPropertiesProvisioningState = S.String;
+
 /** Properties of a gallery. */
 export interface GalleryProperties {
   /** Provisioning state of the resource. */
@@ -905,6 +1311,8 @@ export interface GalleryProperties {
   /** The resource ID of the backing Azure Compute Gallery. */
   galleryResourceId: string;
 }
+const GalleryProperties = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<GalleryProperties>;
+
 export interface GalleriesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -917,6 +1325,11 @@ export interface GalleriesCreateOrUpdateResponse {
   /** Gallery properties. */
   properties?: GalleryProperties;
 }
+const GalleriesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<GalleriesCreateOrUpdateResponse>;
+
 export interface GetAttachedNetworkByDevCenterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -927,6 +1340,11 @@ export interface GetAttachedNetworkByDevCenterRequest {
   /** The name of the attached NetworkConnection. */
   attachedNetworkConnectionName: string;
 }
+const GetAttachedNetworkByDevCenterRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetAttachedNetworkByDevCenterRequest>;
+
 export interface GetAttachedNetworkByDevCenterResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -939,6 +1357,9 @@ export interface GetAttachedNetworkByDevCenterResponse {
   /** Attached NetworkConnection properties. */
   properties?: AttachedNetworkConnectionProperties;
 }
+const GetAttachedNetworkByDevCenterResponse =
+  AttachedNetworksCreateOrUpdateResponse as any as S.Schema<GetAttachedNetworkByDevCenterResponse>;
+
 export interface GetAttachedNetworkByProjectRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -949,6 +1370,11 @@ export interface GetAttachedNetworkByProjectRequest {
   /** The name of the attached NetworkConnection. */
   attachedNetworkConnectionName: string;
 }
+const GetAttachedNetworkByProjectRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GetAttachedNetworkByProjectRequest>;
+
 export interface GetAttachedNetworkByProjectResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -961,6 +1387,9 @@ export interface GetAttachedNetworkByProjectResponse {
   /** Attached NetworkConnection properties. */
   properties?: AttachedNetworkConnectionProperties;
 }
+const GetAttachedNetworkByProjectResponse =
+  AttachedNetworksCreateOrUpdateResponse as any as S.Schema<GetAttachedNetworkByProjectResponse>;
+
 export interface GetCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -971,6 +1400,8 @@ export interface GetCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
+const GetCatalogRequest = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<GetCatalogRequest>;
+
 export interface GetCatalogResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -983,6 +1414,8 @@ export interface GetCatalogResponse {
   /** Catalog properties. */
   properties?: CatalogProperties;
 }
+const GetCatalogResponse = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<GetCatalogResponse>;
+
 export interface GetCatalogSyncErrorDetailsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -993,6 +1426,11 @@ export interface GetCatalogSyncErrorDetailsRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
+const GetCatalogSyncErrorDetailsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<GetCatalogSyncErrorDetailsRequest>;
+
 /** Catalog error details */
 export type SyncErrorDetailsOperationError =
   DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
@@ -1003,14 +1441,26 @@ export interface CatalogConflictError {
   /** Name of the conflicting catalog item. */
   name?: string;
 }
+const CatalogConflictError = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<CatalogConflictError>;
+
 /** Catalog items that have conflicting names. */
 export type SyncErrorDetailsConflictsList = Array<CatalogConflictError>;
+const SyncErrorDetailsConflictsList = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<SyncErrorDetailsConflictsList>;
+
 /** Catalog error details */
 export type CatalogSyncErrorErrorDetailsItem =
   DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
 /** Errors associated with the file. */
 export type CatalogSyncErrorErrorDetailsList =
   Array<DevBoxDefinitionPropertiesInputImageValidationErrorDetails>;
+const CatalogSyncErrorErrorDetailsList = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<CatalogSyncErrorErrorDetailsList>;
+
 /** An individual synchronization error. */
 export interface CatalogSyncError {
   /** The path of the file the error is associated with. */
@@ -1018,8 +1468,15 @@ export interface CatalogSyncError {
   /** Errors associated with the file. */
   errorDetails?: CatalogSyncErrorErrorDetailsList;
 }
+const CatalogSyncError = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<CatalogSyncError>;
+
 /** Errors that occured during synchronization. */
 export type SyncErrorDetailsErrorsList = Array<CatalogSyncError>;
+const SyncErrorDetailsErrorsList = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<SyncErrorDetailsErrorsList>;
+
 /** Synchronization error details. */
 export interface SyncErrorDetails {
   /** Catalog error details */
@@ -1029,6 +1486,8 @@ export interface SyncErrorDetails {
   /** Errors that occured during synchronization. */
   errors?: SyncErrorDetailsErrorsList;
 }
+const SyncErrorDetails = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<SyncErrorDetails>;
+
 export interface GetCustomizationTaskRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1041,8 +1500,15 @@ export interface GetCustomizationTaskRequest {
   /** The name of the Task. */
   taskName: string;
 }
+const GetCustomizationTaskRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<GetCustomizationTaskRequest>;
+
 /** Type of the input. */
 export type CustomizationTaskInputType = "string" | "number" | "boolean";
+const CustomizationTaskInputType = S.String;
+
 /** Input for a Task. */
 export interface CustomizationTaskInput {
   /** Description of the input. */
@@ -1052,16 +1518,28 @@ export interface CustomizationTaskInput {
   /** Whether or not the input is required. */
   required?: boolean;
 }
+const CustomizationTaskInput = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<CustomizationTaskInput>;
+
 /** Inputs to the task. */
 export type CustomizationTaskPropertiesInputsMap = {
   [key: string]: CustomizationTaskInput | undefined;
 };
+const CustomizationTaskPropertiesInputsMap = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<CustomizationTaskPropertiesInputsMap>;
+
 /** Catalog resource validation status */
 export type CustomizationTaskPropertiesValidationStatus =
   | "Unknown"
   | "Pending"
   | "Succeeded"
   | "Failed";
+const CustomizationTaskPropertiesValidationStatus = S.String;
+
 /** Properties of a Task. */
 export interface CustomizationTaskProperties {
   /** Inputs to the task. */
@@ -1071,6 +1549,11 @@ export interface CustomizationTaskProperties {
   /** Catalog resource validation status */
   validationStatus?: CustomizationTaskPropertiesValidationStatus;
 }
+const CustomizationTaskProperties = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<CustomizationTaskProperties>;
+
 export interface GetCustomizationTaskResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1083,6 +1566,11 @@ export interface GetCustomizationTaskResponse {
   /** Task properties */
   properties?: CustomizationTaskProperties;
 }
+const GetCustomizationTaskResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<GetCustomizationTaskResponse>;
+
 export interface GetCustomizationTaskErrorDetailsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1095,15 +1583,28 @@ export interface GetCustomizationTaskErrorDetailsRequest {
   /** The name of the Task. */
   taskName: string;
 }
+const GetCustomizationTaskErrorDetailsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<GetCustomizationTaskErrorDetailsRequest>;
+
 /** Catalog error details */
 export type CatalogErrorDetails = DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
 /** Errors associated with resources synchronized from the catalog. */
 export type GetCustomizationTaskErrorDetailsResponseErrorsList =
   Array<DevBoxDefinitionPropertiesInputImageValidationErrorDetails>;
+const GetCustomizationTaskErrorDetailsResponseErrorsList =
+  CatalogSyncErrorErrorDetailsList as any as S.Schema<GetCustomizationTaskErrorDetailsResponseErrorsList>;
+
 export interface GetCustomizationTaskErrorDetailsResponse {
   /** Errors associated with resources synchronized from the catalog. */
   errors?: GetCustomizationTaskErrorDetailsResponseErrorsList;
 }
+const GetCustomizationTaskErrorDetailsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<GetCustomizationTaskErrorDetailsResponse>;
+
 export interface GetDevBoxDefinitionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1114,6 +1615,11 @@ export interface GetDevBoxDefinitionRequest {
   /** The name of the Dev Box definition. */
   devBoxDefinitionName: string;
 }
+const GetDevBoxDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<GetDevBoxDefinitionRequest>;
+
 /** Resource tags. */
 export type GetDevBoxDefinitionResponseTagsMap = { [key: string]: string | undefined };
 export interface GetDevBoxDefinitionResponse {
@@ -1132,6 +1638,9 @@ export interface GetDevBoxDefinitionResponse {
   /** Dev Box definition properties */
   properties?: DevBoxDefinitionProperties;
 }
+const GetDevBoxDefinitionResponse =
+  DevBoxDefinitionsCreateOrUpdateResponse as any as S.Schema<GetDevBoxDefinitionResponse>;
+
 export interface GetDevBoxDefinitionByProjectRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1142,6 +1651,11 @@ export interface GetDevBoxDefinitionByProjectRequest {
   /** The name of the Dev Box definition. */
   devBoxDefinitionName: string;
 }
+const GetDevBoxDefinitionByProjectRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GetDevBoxDefinitionByProjectRequest>;
+
 /** Resource tags. */
 export type GetDevBoxDefinitionByProjectResponseTagsMap = { [key: string]: string | undefined };
 export interface GetDevBoxDefinitionByProjectResponse {
@@ -1160,6 +1674,9 @@ export interface GetDevBoxDefinitionByProjectResponse {
   /** Dev Box definition properties */
   properties?: DevBoxDefinitionProperties;
 }
+const GetDevBoxDefinitionByProjectResponse =
+  DevBoxDefinitionsCreateOrUpdateResponse as any as S.Schema<GetDevBoxDefinitionByProjectResponse>;
+
 export interface GetDevCenterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1168,8 +1685,13 @@ export interface GetDevCenterRequest {
   /** The name of the devcenter. */
   devCenterName: string;
 }
+const GetDevCenterRequest = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<GetDevCenterRequest>;
+
 /** Resource tags. */
 export type GetDevCenterResponseTagsMap = { [key: string]: string | undefined };
+const GetDevCenterResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<GetDevCenterResponseTagsMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetDevCenterResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
 export interface GetDevCenterResponse {
@@ -1190,6 +1712,11 @@ export interface GetDevCenterResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
+const GetDevCenterResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GetDevCenterResponse>;
+
 export interface GetEnvironmentDefinitionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1202,8 +1729,15 @@ export interface GetEnvironmentDefinitionRequest {
   /** The name of the Environment Definition. */
   environmentDefinitionName: string;
 }
+const GetEnvironmentDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GetEnvironmentDefinitionRequest>;
+
 /** The type of data a parameter accepts. */
 export type ParameterType = "array" | "boolean" | "integer" | "number" | "object" | "string";
+const ParameterType = S.String;
+
 /** Properties of an Environment Definition parameter */
 export interface EnvironmentDefinitionParameter {
   /** Unique ID of the parameter */
@@ -1219,14 +1753,26 @@ export interface EnvironmentDefinitionParameter {
   /** Whether or not this parameter is required */
   required?: boolean;
 }
+const EnvironmentDefinitionParameter = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<EnvironmentDefinitionParameter>;
+
 /** Input parameters passed to an environment. */
 export type EnvironmentDefinitionPropertiesParametersList = Array<EnvironmentDefinitionParameter>;
+const EnvironmentDefinitionPropertiesParametersList = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<EnvironmentDefinitionPropertiesParametersList>;
+
 /** Catalog resource validation status */
 export type EnvironmentDefinitionPropertiesValidationStatus =
   | "Unknown"
   | "Pending"
   | "Succeeded"
   | "Failed";
+const EnvironmentDefinitionPropertiesValidationStatus = S.String;
+
 /** Properties of an environment definition. */
 export interface EnvironmentDefinitionProperties {
   /** A short description of the environment definition. */
@@ -1238,6 +1784,11 @@ export interface EnvironmentDefinitionProperties {
   /** Catalog resource validation status */
   validationStatus?: EnvironmentDefinitionPropertiesValidationStatus;
 }
+const EnvironmentDefinitionProperties = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<EnvironmentDefinitionProperties>;
+
 export interface GetEnvironmentDefinitionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1250,6 +1801,11 @@ export interface GetEnvironmentDefinitionResponse {
   /** Environment definition properties. */
   properties?: EnvironmentDefinitionProperties;
 }
+const GetEnvironmentDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<GetEnvironmentDefinitionResponse>;
+
 export interface GetEnvironmentDefinitionByProjectCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1262,6 +1818,11 @@ export interface GetEnvironmentDefinitionByProjectCatalogRequest {
   /** The name of the Environment Definition. */
   environmentDefinitionName: string;
 }
+const GetEnvironmentDefinitionByProjectCatalogRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GetEnvironmentDefinitionByProjectCatalogRequest>;
+
 export interface GetEnvironmentDefinitionByProjectCatalogResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1274,6 +1835,9 @@ export interface GetEnvironmentDefinitionByProjectCatalogResponse {
   /** Environment definition properties. */
   properties?: EnvironmentDefinitionProperties;
 }
+const GetEnvironmentDefinitionByProjectCatalogResponse =
+  GetEnvironmentDefinitionResponse as any as S.Schema<GetEnvironmentDefinitionByProjectCatalogResponse>;
+
 export interface GetEnvironmentDefinitionErrorDetailsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1286,6 +1850,11 @@ export interface GetEnvironmentDefinitionErrorDetailsRequest {
   /** The name of the Environment Definition. */
   environmentDefinitionName: string;
 }
+const GetEnvironmentDefinitionErrorDetailsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<GetEnvironmentDefinitionErrorDetailsRequest>;
+
 /** Errors associated with resources synchronized from the catalog. */
 export type GetEnvironmentDefinitionErrorDetailsResponseErrorsList =
   Array<DevBoxDefinitionPropertiesInputImageValidationErrorDetails>;
@@ -1293,6 +1862,9 @@ export interface GetEnvironmentDefinitionErrorDetailsResponse {
   /** Errors associated with resources synchronized from the catalog. */
   errors?: GetEnvironmentDefinitionErrorDetailsResponseErrorsList;
 }
+const GetEnvironmentDefinitionErrorDetailsResponse =
+  GetCustomizationTaskErrorDetailsResponse as any as S.Schema<GetEnvironmentDefinitionErrorDetailsResponse>;
+
 export interface GetEnvironmentTypeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1303,6 +1875,11 @@ export interface GetEnvironmentTypeRequest {
   /** The name of the environment type. */
   environmentTypeName: string;
 }
+const GetEnvironmentTypeRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GetEnvironmentTypeRequest>;
+
 /** Resource tags. */
 export type GetEnvironmentTypeResponseTagsMap = { [key: string]: string | undefined };
 export interface GetEnvironmentTypeResponse {
@@ -1319,6 +1896,9 @@ export interface GetEnvironmentTypeResponse {
   /** Resource tags. */
   tags?: GetEnvironmentTypeResponseTagsMap;
 }
+const GetEnvironmentTypeResponse =
+  EnvironmentTypesCreateOrUpdateResponse as any as S.Schema<GetEnvironmentTypeResponse>;
+
 export interface GetGalleryRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1329,6 +1909,8 @@ export interface GetGalleryRequest {
   /** The name of the gallery. */
   galleryName: string;
 }
+const GetGalleryRequest = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<GetGalleryRequest>;
+
 export interface GetGalleryResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1341,6 +1923,8 @@ export interface GetGalleryResponse {
   /** Gallery properties. */
   properties?: GalleryProperties;
 }
+const GetGalleryResponse = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<GetGalleryResponse>;
+
 export interface GetImageRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1353,6 +1937,8 @@ export interface GetImageRequest {
   /** The name of the image. */
   imageName: string;
 }
+const GetImageRequest = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<GetImageRequest>;
+
 /** Properties for a range of values. */
 export interface ResourceRange {
   /** Minimum value. */
@@ -1360,6 +1946,8 @@ export interface ResourceRange {
   /** Maximum value. */
   max?: number;
 }
+const ResourceRange = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<ResourceRange>;
+
 /** Properties for a recommended machine configuration. */
 export interface RecommendedMachineConfiguration {
   /** Recommended memory range. */
@@ -1367,6 +1955,11 @@ export interface RecommendedMachineConfiguration {
   /** Recommended vCPU range. */
   vCPUs?: ResourceRange;
 }
+const RecommendedMachineConfiguration = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<RecommendedMachineConfiguration>;
+
 /** Provisioning state of the resource. */
 export type ImagePropertiesProvisioningState =
   | "NotSpecified"
@@ -1385,6 +1978,8 @@ export type ImagePropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
+const ImagePropertiesProvisioningState = S.String;
+
 /** Properties of an image. */
 export interface ImageProperties {
   /** The description of the image. */
@@ -1402,6 +1997,8 @@ export interface ImageProperties {
   /** Indicates whether this image has hibernate enabled. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate */
   hibernateSupport?: HibernateSupport;
 }
+const ImageProperties = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<ImageProperties>;
+
 export interface GetImageResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1414,6 +2011,8 @@ export interface GetImageResponse {
   /** Image properties. */
   properties?: ImageProperties;
 }
+const GetImageResponse = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<GetImageResponse>;
+
 export interface GetImageByProjectRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1424,6 +2023,11 @@ export interface GetImageByProjectRequest {
   /** The name of the image. */
   imageName: string;
 }
+const GetImageByProjectRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<GetImageByProjectRequest>;
+
 export interface GetImageByProjectResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1436,6 +2040,11 @@ export interface GetImageByProjectResponse {
   /** Image properties. */
   properties?: ImageProperties;
 }
+const GetImageByProjectResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<GetImageByProjectResponse>;
+
 export interface GetImageVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1450,6 +2059,11 @@ export interface GetImageVersionRequest {
   /** The version of the image. */
   versionName: string;
 }
+const GetImageVersionRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<GetImageVersionRequest>;
+
 /** Provisioning state of the resource. */
 export type ImageVersionPropertiesProvisioningState =
   | "NotSpecified"
@@ -1468,6 +2082,8 @@ export type ImageVersionPropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
+const ImageVersionPropertiesProvisioningState = S.String;
+
 /** Properties of an image version. */
 export interface ImageVersionProperties {
   /** The semantic version string. */
@@ -1481,6 +2097,11 @@ export interface ImageVersionProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ImageVersionPropertiesProvisioningState;
 }
+const ImageVersionProperties = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ImageVersionProperties>;
+
 export interface GetImageVersionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1493,6 +2114,11 @@ export interface GetImageVersionResponse {
   /** Image version properties. */
   properties?: ImageVersionProperties;
 }
+const GetImageVersionResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<GetImageVersionResponse>;
+
 export interface GetImageVersionByProjectRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1505,6 +2131,11 @@ export interface GetImageVersionByProjectRequest {
   /** The version of the image. */
   versionName: string;
 }
+const GetImageVersionByProjectRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<GetImageVersionByProjectRequest>;
+
 export interface GetImageVersionByProjectResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1517,6 +2148,11 @@ export interface GetImageVersionByProjectResponse {
   /** Image version properties. */
   properties?: ImageVersionProperties;
 }
+const GetImageVersionByProjectResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<GetImageVersionByProjectResponse>;
+
 export interface GetNetworkConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1525,8 +2161,16 @@ export interface GetNetworkConnectionRequest {
   /** Name of the Network Connection that can be applied to a Pool. */
   networkConnectionName: string;
 }
+const GetNetworkConnectionRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<GetNetworkConnectionRequest>;
+
 /** Resource tags. */
 export type GetNetworkConnectionResponseTagsMap = { [key: string]: string | undefined };
+const GetNetworkConnectionResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<GetNetworkConnectionResponseTagsMap>;
+
 /** Provisioning state of the resource. */
 export type NetworkPropertiesProvisioningState =
   | "NotSpecified"
@@ -1545,6 +2189,8 @@ export type NetworkPropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
+const NetworkPropertiesProvisioningState = S.String;
+
 /** Health check status values */
 export type NetworkPropertiesHealthCheckStatus =
   | "Unknown"
@@ -1554,8 +2200,12 @@ export type NetworkPropertiesHealthCheckStatus =
   | "Warning"
   | "Failed"
   | "Informational";
+const NetworkPropertiesHealthCheckStatus = S.String;
+
 /** Active Directory join type */
 export type NetworkPropertiesDomainJoinType = "HybridAzureADJoin" | "AzureADJoin" | "None";
+const NetworkPropertiesDomainJoinType = S.String;
+
 /** Network properties */
 export interface NetworkProperties {
   /** The subnet to attach Virtual Machines to */
@@ -1577,6 +2227,8 @@ export interface NetworkProperties {
   /** Active Directory join type */
   domainJoinType: NetworkPropertiesDomainJoinType;
 }
+const NetworkProperties = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<NetworkProperties>;
+
 export interface GetNetworkConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1593,6 +2245,11 @@ export interface GetNetworkConnectionResponse {
   /** Properties of a Network Connection */
   properties?: NetworkProperties;
 }
+const GetNetworkConnectionResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<GetNetworkConnectionResponse>;
+
 export interface GetNetworkConnectionHealthDetailsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1601,6 +2258,11 @@ export interface GetNetworkConnectionHealthDetailsRequest {
   /** Name of the Network Connection that can be applied to a Pool. */
   networkConnectionName: string;
 }
+const GetNetworkConnectionHealthDetailsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<GetNetworkConnectionHealthDetailsRequest>;
+
 /** Health check status values */
 export type HealthCheckStatus =
   | "Unknown"
@@ -1610,6 +2272,8 @@ export type HealthCheckStatus =
   | "Warning"
   | "Failed"
   | "Informational";
+const HealthCheckStatus = S.String;
+
 /** An individual health check item */
 export interface HealthCheck {
   /** Health check status values */
@@ -1627,8 +2291,15 @@ export interface HealthCheck {
   /** Additional details about the health check or the recommended action. */
   additionalDetails?: string;
 }
+const HealthCheck = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<HealthCheck>;
+
 /** Details for each health check item. */
 export type HealthCheckStatusDetailsPropertiesHealthChecksList = Array<HealthCheck>;
+const HealthCheckStatusDetailsPropertiesHealthChecksList = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<HealthCheckStatusDetailsPropertiesHealthChecksList>;
+
 /** Health Check properties. */
 export interface HealthCheckStatusDetailsProperties {
   /** Start time of last execution of the health checks. */
@@ -1638,6 +2309,11 @@ export interface HealthCheckStatusDetailsProperties {
   /** Details for each health check item. */
   healthChecks?: HealthCheckStatusDetailsPropertiesHealthChecksList;
 }
+const HealthCheckStatusDetailsProperties = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<HealthCheckStatusDetailsProperties>;
+
 export interface GetNetworkConnectionHealthDetailsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1650,6 +2326,11 @@ export interface GetNetworkConnectionHealthDetailsResponse {
   /** Health check status details properties. */
   properties?: HealthCheckStatusDetailsProperties;
 }
+const GetNetworkConnectionHealthDetailsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<GetNetworkConnectionHealthDetailsResponse>;
+
 export interface GetOperationStatusRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1658,10 +2339,25 @@ export interface GetOperationStatusRequest {
   /** The ID of an ongoing async operation */
   operationId: string;
 }
+const GetOperationStatusRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GetOperationStatusRequest>;
+
 /** The operations list. */
 export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
+const OperationStatusResultOperationsList = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<OperationStatusResultOperationsList>;
+
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
+const ErrorDetailDetailsList = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<ErrorDetailDetailsList>;
+
 /** The resource management error additional info. */
 export interface ErrorAdditionalInfo {
   /** The additional info type. */
@@ -1669,8 +2365,15 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
+const ErrorAdditionalInfo = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<ErrorAdditionalInfo>;
+
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
+const ErrorDetailAdditionalInfoList = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ErrorDetailAdditionalInfoList>;
+
 /** The error detail. */
 export interface ErrorDetail {
   /** The error code. */
@@ -1684,6 +2387,8 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
+const ErrorDetail = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<ErrorDetail>;
+
 /** The current status of an async operation. */
 export interface OperationStatusResult {
   /** Fully qualified ID for the async operation. */
@@ -1705,8 +2410,18 @@ export interface OperationStatusResult {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
+const OperationStatusResult = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<OperationStatusResult>;
+
 /** The operations list. */
 export type GetOperationStatusResponseOperationsList = Array<OperationStatusResult>;
+const GetOperationStatusResponseOperationsList = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<GetOperationStatusResponseOperationsList>;
+
 export interface GetOperationStatusResponse {
   /** Fully qualified ID for the async operation. */
   id?: string;
@@ -1729,6 +2444,11 @@ export interface GetOperationStatusResponse {
   /** Custom operation properties, populated only for a successful operation. */
   properties?: unknown;
 }
+const GetOperationStatusResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<GetOperationStatusResponse>;
+
 export interface GetPoolRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1739,10 +2459,17 @@ export interface GetPoolRequest {
   /** Name of the pool. */
   poolName: string;
 }
+const GetPoolRequest = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<GetPoolRequest>;
+
 /** Resource tags. */
 export type GetPoolResponseTagsMap = { [key: string]: string | undefined };
+const GetPoolResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<GetPoolResponseTagsMap>;
+
 /** Indicates if the pool is created from an existing Dev Box Definition or if one is provided directly. */
 export type PoolDevBoxDefinitionType = "Reference" | "Value";
+const PoolDevBoxDefinitionType = S.String;
+
 /** Image reference information */
 export type PoolDevBoxDefinitionImageReference = DevBoxDefinitionPropertiesImageReference;
 /** The resource model definition representing SKU */
@@ -1758,12 +2485,23 @@ export interface PoolDevBoxDefinition {
   /** Image reference information */
   activeImageReference?: DevBoxDefinitionPropertiesImageReference;
 }
+const PoolDevBoxDefinition = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<PoolDevBoxDefinition>;
+
 /** License Types */
 export type LicenseType = "Windows_Client";
+const LicenseType = S.String;
+
 /** Local Administrator enable or disable status. Indicates whether owners of Dev Boxes are added as local administrators on the Dev Box. */
 export type LocalAdminStatus = "Disabled" | "Enabled";
+const LocalAdminStatus = S.String;
+
 /** Stop on disconnect enable or disable status. Indicates whether stop on disconnect to is either enabled or disabled. */
 export type StopOnDisconnectEnableStatus = "Enabled" | "Disabled";
+const StopOnDisconnectEnableStatus = S.String;
+
 /** Stop on disconnect configuration settings for Dev Boxes created in this pool. */
 export interface StopOnDisconnectConfiguration {
   /** Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled. */
@@ -1771,6 +2509,11 @@ export interface StopOnDisconnectConfiguration {
   /** The specified time in minutes to wait before stopping a Dev Box once disconnect is detected. */
   gracePeriodMinutes?: number;
 }
+const StopOnDisconnectConfiguration = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<StopOnDisconnectConfiguration>;
+
 /** Stop on no connect enable or disable status. */
 export type StopOnNoConnectEnableStatus = "Enabled" | "Disabled";
 /** Stop on no connect configuration settings for Dev Boxes created in this pool. */
@@ -1780,14 +2523,28 @@ export interface StopOnNoConnectConfiguration {
   /** The specified time in minutes to wait before stopping a Dev Box if no connection is made. */
   gracePeriodMinutes?: number;
 }
+const StopOnNoConnectConfiguration =
+  StopOnDisconnectConfiguration as any as S.Schema<StopOnNoConnectConfiguration>;
+
 /** SingleSignOn (SSO) enable or disable status. Indicates whether Dev Boxes in the Pool will have SSO enabled or disabled. */
 export type SingleSignOnStatus = "Disabled" | "Enabled";
+const SingleSignOnStatus = S.String;
+
 /** Indicates a pool uses a Virtual Network managed by Microsoft (Managed), or a customer provided Network (Unmanaged). */
 export type VirtualNetworkType = "Managed" | "Unmanaged";
+const VirtualNetworkType = S.String;
+
 /** The regions of the managed virtual network (required when managedNetworkType is Managed). */
 export type PoolPropertiesManagedVirtualNetworkRegionsList = Array<string>;
+const PoolPropertiesManagedVirtualNetworkRegionsList = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<PoolPropertiesManagedVirtualNetworkRegionsList>;
+
 /** Health status indicating whether a pool is available to create Dev Boxes. */
 export type HealthStatus = "Unknown" | "Pending" | "Healthy" | "Warning" | "Unhealthy";
+const HealthStatus = S.String;
+
 /** Pool health status detail. */
 export interface HealthStatusDetail {
   /** An identifier for the issue. */
@@ -1795,8 +2552,15 @@ export interface HealthStatusDetail {
   /** A message describing the issue, intended to be suitable for display in a user interface */
   message?: string;
 }
+const HealthStatusDetail = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<HealthStatusDetail>;
+
 /** Details on the Pool health status to help diagnose issues. This is only populated when the pool status indicates the pool is in a non-healthy state */
 export type PoolPropertiesHealthStatusDetailsList = Array<HealthStatusDetail>;
+const PoolPropertiesHealthStatusDetailsList = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<PoolPropertiesHealthStatusDetailsList>;
+
 /** Provisioning state of the resource. */
 export type PoolPropertiesProvisioningState =
   | "NotSpecified"
@@ -1815,6 +2579,8 @@ export type PoolPropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
+const PoolPropertiesProvisioningState = S.String;
+
 /** Properties of a Pool */
 export interface PoolProperties {
   /** Indicates if the pool is created from an existing Dev Box Definition or if one is provided directly. */
@@ -1850,6 +2616,8 @@ export interface PoolProperties {
   /** Provisioning state of the resource. */
   provisioningState?: PoolPropertiesProvisioningState;
 }
+const PoolProperties = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<PoolProperties>;
+
 export interface GetPoolResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1866,6 +2634,8 @@ export interface GetPoolResponse {
   /** Pool properties */
   properties?: PoolProperties;
 }
+const GetPoolResponse = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<GetPoolResponse>;
+
 export interface GetProjectRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1874,15 +2644,28 @@ export interface GetProjectRequest {
   /** The name of the project. */
   projectName: string;
 }
+const GetProjectRequest = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<GetProjectRequest>;
+
 /** Resource tags. */
 export type GetProjectResponseTagsMap = { [key: string]: string | undefined };
+const GetProjectResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<GetProjectResponseTagsMap>;
+
 /** Indicates catalog item types that can be synced. */
 export type ProjectCatalogSettingsCatalogItemSyncTypesList = Array<CatalogItemType | (string & {})>;
+const ProjectCatalogSettingsCatalogItemSyncTypesList =
+  SyncStatsSyncedCatalogItemTypesList as any as S.Schema<ProjectCatalogSettingsCatalogItemSyncTypesList>;
+
 /** Settings to be used when associating a project with a catalog. */
 export interface ProjectCatalogSettings {
   /** Indicates catalog item types that can be synced. */
   catalogItemSyncTypes?: ProjectCatalogSettingsCatalogItemSyncTypesList;
 }
+const ProjectCatalogSettings = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<ProjectCatalogSettings>;
+
 /** Provisioning state of the resource. */
 export type ProjectPropertiesProvisioningState =
   | "NotSpecified"
@@ -1901,6 +2684,8 @@ export type ProjectPropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
+const ProjectPropertiesProvisioningState = S.String;
+
 /** Properties of a project. */
 export interface ProjectProperties {
   /** Resource Id of an associated DevCenter */
@@ -1918,6 +2703,8 @@ export interface ProjectProperties {
   /** The URI of the Dev Center resource this project is associated with. */
   devCenterUri?: string;
 }
+const ProjectProperties = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<ProjectProperties>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetProjectResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
 export interface GetProjectResponse {
@@ -1938,6 +2725,8 @@ export interface GetProjectResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
+const GetProjectResponse = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<GetProjectResponse>;
+
 export interface GetProjectAllowedEnvironmentTypeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1948,6 +2737,11 @@ export interface GetProjectAllowedEnvironmentTypeRequest {
   /** The name of the environment type. */
   environmentTypeName: string;
 }
+const GetProjectAllowedEnvironmentTypeRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<GetProjectAllowedEnvironmentTypeRequest>;
+
 /** Provisioning state of the resource. */
 export type AllowedEnvironmentTypePropertiesProvisioningState =
   | "NotSpecified"
@@ -1966,6 +2760,8 @@ export type AllowedEnvironmentTypePropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
+const AllowedEnvironmentTypePropertiesProvisioningState = S.String;
+
 /** Properties of an allowed environment type. */
 export interface AllowedEnvironmentTypeProperties {
   /** Provisioning state of the resource. */
@@ -1973,6 +2769,11 @@ export interface AllowedEnvironmentTypeProperties {
   /** The display name of the allowed environment type. */
   displayName?: string;
 }
+const AllowedEnvironmentTypeProperties = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<AllowedEnvironmentTypeProperties>;
+
 export interface GetProjectAllowedEnvironmentTypeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1985,6 +2786,11 @@ export interface GetProjectAllowedEnvironmentTypeResponse {
   /** Properties of an allowed environment type. */
   properties?: AllowedEnvironmentTypeProperties;
 }
+const GetProjectAllowedEnvironmentTypeResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<GetProjectAllowedEnvironmentTypeResponse>;
+
 export interface GetProjectCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1995,6 +2801,11 @@ export interface GetProjectCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
+const GetProjectCatalogRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<GetProjectCatalogRequest>;
+
 export interface GetProjectCatalogResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2007,6 +2818,9 @@ export interface GetProjectCatalogResponse {
   /** Catalog properties. */
   properties?: CatalogProperties;
 }
+const GetProjectCatalogResponse =
+  CatalogsCreateOrUpdateResponse as any as S.Schema<GetProjectCatalogResponse>;
+
 export interface GetProjectCatalogEnvironmentDefinitionErrorDetailsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2019,13 +2833,28 @@ export interface GetProjectCatalogEnvironmentDefinitionErrorDetailsRequest {
   /** The name of the Environment Definition. */
   environmentDefinitionName: string;
 }
+const GetProjectCatalogEnvironmentDefinitionErrorDetailsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<GetProjectCatalogEnvironmentDefinitionErrorDetailsRequest>;
+
 /** Errors associated with resources synchronized from the catalog. */
 export type GetProjectCatalogEnvironmentDefinitionErrorDetailsResponseErrorsList =
   Array<DevBoxDefinitionPropertiesInputImageValidationErrorDetails>;
+const GetProjectCatalogEnvironmentDefinitionErrorDetailsResponseErrorsList = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<GetProjectCatalogEnvironmentDefinitionErrorDetailsResponseErrorsList>;
+
 export interface GetProjectCatalogEnvironmentDefinitionErrorDetailsResponse {
   /** Errors associated with resources synchronized from the catalog. */
   errors?: GetProjectCatalogEnvironmentDefinitionErrorDetailsResponseErrorsList;
 }
+const GetProjectCatalogEnvironmentDefinitionErrorDetailsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<GetProjectCatalogEnvironmentDefinitionErrorDetailsResponse>;
+
 export interface GetProjectCatalogImageDefinitionBuildRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2040,6 +2869,11 @@ export interface GetProjectCatalogImageDefinitionBuildRequest {
   /** The ID of the Image Definition Build. */
   buildName: string;
 }
+const GetProjectCatalogImageDefinitionBuildRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<GetProjectCatalogImageDefinitionBuildRequest>;
+
 /** Image reference information */
 export type ImageDefinitionBuildPropertiesImageReference = DevBoxDefinitionPropertiesImageReference;
 /** The state of an Image Definition Build. */
@@ -2050,6 +2884,8 @@ export type ImageDefinitionBuildStatus =
   | "Failed"
   | "Cancelled"
   | "TimedOut";
+const ImageDefinitionBuildStatus = S.String;
+
 /** Image creation error details */
 export type ImageCreationErrorDetails = DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
 /** Properties of an Image Definition Build. */
@@ -2065,6 +2901,11 @@ export interface ImageDefinitionBuildProperties {
   /** Details for image creation error. Populated when the image creation is not successful. */
   errorDetails?: DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
 }
+const ImageDefinitionBuildProperties = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<ImageDefinitionBuildProperties>;
+
 export interface GetProjectCatalogImageDefinitionBuildResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2077,6 +2918,11 @@ export interface GetProjectCatalogImageDefinitionBuildResponse {
   /** Image Definition Build properties */
   properties?: ImageDefinitionBuildProperties;
 }
+const GetProjectCatalogImageDefinitionBuildResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<GetProjectCatalogImageDefinitionBuildResponse>;
+
 export interface GetProjectCatalogImageDefinitionBuildBuildDetailsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2091,6 +2937,11 @@ export interface GetProjectCatalogImageDefinitionBuildBuildDetailsRequest {
   /** The ID of the Image Definition Build. */
   buildName: string;
 }
+const GetProjectCatalogImageDefinitionBuildBuildDetailsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<GetProjectCatalogImageDefinitionBuildBuildDetailsRequest>;
+
 /** Image reference information */
 export type GetProjectCatalogImageDefinitionBuildBuildDetailsResponseImageReference =
   DevBoxDefinitionPropertiesImageReference;
@@ -2098,8 +2949,18 @@ export interface ImageDefinitionBuildTaskParametersItem {
   key: string;
   value: string;
 }
+const ImageDefinitionBuildTaskParametersItem = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<ImageDefinitionBuildTaskParametersItem>;
+
 /** Parameters for the task. */
 export type ImageDefinitionBuildTaskParametersList = Array<ImageDefinitionBuildTaskParametersItem>;
+const ImageDefinitionBuildTaskParametersList = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<ImageDefinitionBuildTaskParametersList>;
+
 /** A task executed during the image definition build. */
 export interface ImageDefinitionBuildTask {
   /** The name of the task. */
@@ -2119,8 +2980,18 @@ export interface ImageDefinitionBuildTask {
   /** The URI for retrieving logs for the task execution. */
   logUri?: string;
 }
+const ImageDefinitionBuildTask = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ImageDefinitionBuildTask>;
+
 /** The list of tasks executed during the task group. */
 export type ImageDefinitionBuildTaskGroupTasksList = Array<ImageDefinitionBuildTask>;
+const ImageDefinitionBuildTaskGroupTasksList = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ImageDefinitionBuildTaskGroupTasksList>;
+
 /** A task group executed during the image definition build. */
 export interface ImageDefinitionBuildTaskGroup {
   /** The name of the task group. */
@@ -2134,9 +3005,20 @@ export interface ImageDefinitionBuildTaskGroup {
   /** The list of tasks executed during the task group. */
   tasks?: ImageDefinitionBuildTaskGroupTasksList;
 }
+const ImageDefinitionBuildTaskGroup = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ImageDefinitionBuildTaskGroup>;
+
 /** The list of task groups executed during the image definition build. */
 export type GetProjectCatalogImageDefinitionBuildBuildDetailsResponseTaskGroupsList =
   Array<ImageDefinitionBuildTaskGroup>;
+const GetProjectCatalogImageDefinitionBuildBuildDetailsResponseTaskGroupsList =
+  /*@__PURE__*/ __L.at(
+    __c19,
+    3,
+  ) as any as S.Schema<GetProjectCatalogImageDefinitionBuildBuildDetailsResponseTaskGroupsList>;
+
 export interface GetProjectCatalogImageDefinitionBuildBuildDetailsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2159,6 +3041,11 @@ export interface GetProjectCatalogImageDefinitionBuildBuildDetailsResponse {
   /** The list of task groups executed during the image definition build. */
   taskGroups?: GetProjectCatalogImageDefinitionBuildBuildDetailsResponseTaskGroupsList;
 }
+const GetProjectCatalogImageDefinitionBuildBuildDetailsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<GetProjectCatalogImageDefinitionBuildBuildDetailsResponse>;
+
 export interface GetProjectCatalogImageDefinitionByProjectCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2171,6 +3058,11 @@ export interface GetProjectCatalogImageDefinitionByProjectCatalogRequest {
   /** The name of the Image Definition. */
   imageDefinitionName: string;
 }
+const GetProjectCatalogImageDefinitionByProjectCatalogRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<GetProjectCatalogImageDefinitionByProjectCatalogRequest>;
+
 /** Image reference information */
 export type ImageDefinitionPropertiesImageReference = DevBoxDefinitionPropertiesImageReference;
 /** Details about the latest build. */
@@ -2184,6 +3076,8 @@ export interface LatestImageBuild {
   /** The state of an Image Definition Build. */
   status?: ImageDefinitionBuildStatus;
 }
+const LatestImageBuild = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<LatestImageBuild>;
+
 /** Image validation status */
 export type ImageDefinitionPropertiesImageValidationStatus =
   | "Unknown"
@@ -2191,6 +3085,8 @@ export type ImageDefinitionPropertiesImageValidationStatus =
   | "Succeeded"
   | "Failed"
   | "TimedOut";
+const ImageDefinitionPropertiesImageValidationStatus = S.String;
+
 /** Image validation error details */
 export type ImageDefinitionPropertiesImageValidationErrorDetails =
   DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
@@ -2200,11 +3096,15 @@ export type ImageDefinitionPropertiesValidationStatus =
   | "Pending"
   | "Succeeded"
   | "Failed";
+const ImageDefinitionPropertiesValidationStatus = S.String;
+
 /** Image reference information */
 export type ImageDefinitionPropertiesActiveImageReference =
   DevBoxDefinitionPropertiesImageReference;
 /** Indicates whether auto image build is enabled/disabled. */
 export type AutoImageBuildStatus = "Disabled" | "Enabled";
+const AutoImageBuildStatus = S.String;
+
 /** Properties of an Image Definition. */
 export interface ImageDefinitionProperties {
   /** Image reference information */
@@ -2224,6 +3124,11 @@ export interface ImageDefinitionProperties {
   /** Indicates if automatic image builds will be triggered for image definition updates */
   autoImageBuild?: AutoImageBuildStatus;
 }
+const ImageDefinitionProperties = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<ImageDefinitionProperties>;
+
 export interface GetProjectCatalogImageDefinitionByProjectCatalogResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2236,6 +3141,11 @@ export interface GetProjectCatalogImageDefinitionByProjectCatalogResponse {
   /** Image Definition properties */
   properties?: ImageDefinitionProperties;
 }
+const GetProjectCatalogImageDefinitionByProjectCatalogResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<GetProjectCatalogImageDefinitionByProjectCatalogResponse>;
+
 export interface GetProjectCatalogImageDefinitionErrorDetailsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2248,6 +3158,11 @@ export interface GetProjectCatalogImageDefinitionErrorDetailsRequest {
   /** The name of the Image Definition. */
   imageDefinitionName: string;
 }
+const GetProjectCatalogImageDefinitionErrorDetailsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<GetProjectCatalogImageDefinitionErrorDetailsRequest>;
+
 /** Errors associated with resources synchronized from the catalog. */
 export type GetProjectCatalogImageDefinitionErrorDetailsResponseErrorsList =
   Array<DevBoxDefinitionPropertiesInputImageValidationErrorDetails>;
@@ -2255,6 +3170,9 @@ export interface GetProjectCatalogImageDefinitionErrorDetailsResponse {
   /** Errors associated with resources synchronized from the catalog. */
   errors?: GetProjectCatalogImageDefinitionErrorDetailsResponseErrorsList;
 }
+const GetProjectCatalogImageDefinitionErrorDetailsResponse =
+  GetCustomizationTaskErrorDetailsResponse as any as S.Schema<GetProjectCatalogImageDefinitionErrorDetailsResponse>;
+
 export interface GetProjectCatalogSyncErrorDetailsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2265,6 +3183,11 @@ export interface GetProjectCatalogSyncErrorDetailsRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
+const GetProjectCatalogSyncErrorDetailsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<GetProjectCatalogSyncErrorDetailsRequest>;
+
 export interface GetProjectEnvironmentTypeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2275,8 +3198,15 @@ export interface GetProjectEnvironmentTypeRequest {
   /** The name of the environment type. */
   environmentTypeName: string;
 }
+const GetProjectEnvironmentTypeRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<GetProjectEnvironmentTypeRequest>;
+
 /** Indicates whether the environment type is either enabled or disabled. */
 export type EnvironmentTypeEnableStatus = "Enabled" | "Disabled";
+const EnvironmentTypeEnableStatus = S.String;
+
 /** A role that can be assigned to a user. */
 export interface EnvironmentRole {
   /** The common name of the Role Assignment. This is a descriptive name such as 'AcrPush'. */
@@ -2284,26 +3214,48 @@ export interface EnvironmentRole {
   /** This is a description of the Role Assignment. */
   description?: string;
 }
+const EnvironmentRole = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<EnvironmentRole>;
+
 /** A map of roles to assign to the environment creator. */
 export type ProjectEnvironmentTypePropertiesCreatorRoleAssignmentRolesMap = {
   [key: string]: EnvironmentRole | undefined;
 };
+const ProjectEnvironmentTypePropertiesCreatorRoleAssignmentRolesMap = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ProjectEnvironmentTypePropertiesCreatorRoleAssignmentRolesMap>;
+
 /** The role definition assigned to the environment creator on backing resources. */
 export interface ProjectEnvironmentTypePropertiesCreatorRoleAssignment {
   /** A map of roles to assign to the environment creator. */
   roles?: ProjectEnvironmentTypePropertiesCreatorRoleAssignmentRolesMap;
 }
+const ProjectEnvironmentTypePropertiesCreatorRoleAssignment = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<ProjectEnvironmentTypePropertiesCreatorRoleAssignment>;
+
 /** A map of roles to assign to the parent user. */
 export type UserRoleAssignmentRolesMap = { [key: string]: EnvironmentRole | undefined };
+const UserRoleAssignmentRolesMap =
+  ProjectEnvironmentTypePropertiesCreatorRoleAssignmentRolesMap as any as S.Schema<UserRoleAssignmentRolesMap>;
+
 /** Mapping of user object ID to role assignments. */
 export interface UserRoleAssignment {
   /** A map of roles to assign to the parent user. */
   roles?: UserRoleAssignmentRolesMap;
 }
+const UserRoleAssignment = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<UserRoleAssignment>;
+
 /** Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs. */
 export type ProjectEnvironmentTypePropertiesUserRoleAssignmentsMap = {
   [key: string]: UserRoleAssignment | undefined;
 };
+const ProjectEnvironmentTypePropertiesUserRoleAssignmentsMap = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<ProjectEnvironmentTypePropertiesUserRoleAssignmentsMap>;
+
 /** Provisioning state of the resource. */
 export type ProjectEnvironmentTypePropertiesProvisioningState =
   | "NotSpecified"
@@ -2322,6 +3274,8 @@ export type ProjectEnvironmentTypePropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
+const ProjectEnvironmentTypePropertiesProvisioningState = S.String;
+
 /** Properties of a project environment type. */
 export interface ProjectEnvironmentTypeProperties {
   /** Id of a subscription that the environment type will be mapped to. The environment's resources will be deployed into this subscription. */
@@ -2339,8 +3293,16 @@ export interface ProjectEnvironmentTypeProperties {
   /** The number of environments of this type. */
   environmentCount?: number;
 }
+const ProjectEnvironmentTypeProperties = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<ProjectEnvironmentTypeProperties>;
+
 /** Resource tags. */
 export type GetProjectEnvironmentTypeResponseTagsMap = { [key: string]: string | undefined };
+const GetProjectEnvironmentTypeResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<GetProjectEnvironmentTypeResponseTagsMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetProjectEnvironmentTypeResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
 export interface GetProjectEnvironmentTypeResponse {
@@ -2361,6 +3323,11 @@ export interface GetProjectEnvironmentTypeResponse {
   /** The geo-location for the environment type */
   location?: string;
 }
+const GetProjectEnvironmentTypeResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<GetProjectEnvironmentTypeResponse>;
+
 export interface GetProjectInheritedSettingsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2369,10 +3336,17 @@ export interface GetProjectInheritedSettingsRequest {
   /** The name of the project. */
   projectName: string;
 }
+const GetProjectInheritedSettingsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<GetProjectInheritedSettingsRequest>;
+
 /** Network settings for the project. */
 export interface ProjectNetworkSettings {
   microsoftHostedNetworkEnableStatus?: MicrosoftHostedNetworkEnableStatus;
 }
+const ProjectNetworkSettings = DevCenterNetworkSettings as any as S.Schema<ProjectNetworkSettings>;
+
 /** Applicable inherited settings for a project. */
 export interface InheritedSettingsForProject {
   /** Dev Center settings to be used when associating a project with a catalog. */
@@ -2380,6 +3354,11 @@ export interface InheritedSettingsForProject {
   /** Network settings that will be enforced on this project. */
   networkSettings?: ProjectNetworkSettings;
 }
+const InheritedSettingsForProject = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<InheritedSettingsForProject>;
+
 export interface GetProjectPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2390,10 +3369,19 @@ export interface GetProjectPolicyRequest {
   /** The name of the project policy. */
   projectPolicyName: string;
 }
+const GetProjectPolicyRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<GetProjectPolicyRequest>;
+
 /** Indicates what action to perform for the policy. */
 export type PolicyAction = "Allow" | "Deny";
+const PolicyAction = S.String;
+
 /** Indicates dev center resource types. */
 export type DevCenterResourceType = "Images" | "AttachedNetworks" | "Skus";
+const DevCenterResourceType = S.String;
+
 /** A resource policy. */
 export interface ResourcePolicy {
   /** Resources that are included and shared as a part of a project policy. */
@@ -2405,10 +3393,20 @@ export interface ResourcePolicy {
   /** Optional. The resource type being restricted or allowed by a project policy. Used with a given action to restrict or allow access to a resource type. */
   resourceType?: DevCenterResourceType | (string & {});
 }
+const ResourcePolicy = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<ResourcePolicy>;
+
 /** Resource policies that are a part of this project policy. */
 export type ProjectPolicyPropertiesResourcePoliciesList = Array<ResourcePolicy>;
+const ProjectPolicyPropertiesResourcePoliciesList = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<ProjectPolicyPropertiesResourcePoliciesList>;
+
 /** Resources that have access to the shared resources that are a part of this project policy. */
 export type ProjectPolicyPropertiesScopesList = Array<string>;
+const ProjectPolicyPropertiesScopesList =
+  PoolPropertiesManagedVirtualNetworkRegionsList as any as S.Schema<ProjectPolicyPropertiesScopesList>;
+
 /** Provisioning state of the resource. */
 export type ProjectPolicyPropertiesProvisioningState =
   | "NotSpecified"
@@ -2427,6 +3425,8 @@ export type ProjectPolicyPropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
+const ProjectPolicyPropertiesProvisioningState = S.String;
+
 /** Properties of an project policy. */
 export interface ProjectPolicyProperties {
   /** Resource policies that are a part of this project policy. */
@@ -2436,6 +3436,11 @@ export interface ProjectPolicyProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProjectPolicyPropertiesProvisioningState;
 }
+const ProjectPolicyProperties = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<ProjectPolicyProperties>;
+
 export interface GetProjectPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2448,6 +3453,11 @@ export interface GetProjectPolicyResponse {
   /** Properties of an project policy. */
   properties?: ProjectPolicyProperties;
 }
+const GetProjectPolicyResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<GetProjectPolicyResponse>;
+
 export interface GetScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2462,14 +3472,24 @@ export interface GetScheduleRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const GetScheduleRequest = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<GetScheduleRequest>;
+
 /** Resource tags. */
 export type Tags = { [key: string]: string | undefined };
+const Tags = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<Tags>;
+
 /** The supported types for a scheduled task. */
 export type ScheduledType = "StopDevBox";
+const ScheduledType = S.String;
+
 /** The frequency of task execution. */
 export type ScheduledFrequency = "Daily";
+const ScheduledFrequency = S.String;
+
 /** Schedule enable or disable status. Indicates whether the schedule applied to is either enabled or disabled. */
 export type ScheduleEnableStatus = "Enabled" | "Disabled";
+const ScheduleEnableStatus = S.String;
+
 /** Provisioning state of the resource. */
 export type SchedulePropertiesProvisioningState =
   | "NotSpecified"
@@ -2488,6 +3508,8 @@ export type SchedulePropertiesProvisioningState =
   | "TransientFailure"
   | "RolloutInProgress"
   | "StorageProvisioningFailed";
+const SchedulePropertiesProvisioningState = S.String;
+
 /** The Schedule properties defining when and what to execute. */
 export interface ScheduleProperties {
   /** Resource tags. */
@@ -2507,6 +3529,8 @@ export interface ScheduleProperties {
   /** Provisioning state of the resource. */
   provisioningState?: SchedulePropertiesProvisioningState;
 }
+const ScheduleProperties = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<ScheduleProperties>;
+
 export interface GetScheduleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2519,6 +3543,8 @@ export interface GetScheduleResponse {
   /** Properties of a Schedule resource */
   properties?: ScheduleProperties;
 }
+const GetScheduleResponse = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<GetScheduleResponse>;
+
 export interface ListAttachedNetworkByDevCenterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2529,6 +3555,11 @@ export interface ListAttachedNetworkByDevCenterRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListAttachedNetworkByDevCenterRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<ListAttachedNetworkByDevCenterRequest>;
+
 /** Represents an attached NetworkConnection. */
 export interface AttachedNetworkConnection {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2542,8 +3573,16 @@ export interface AttachedNetworkConnection {
   /** Attached NetworkConnection properties. */
   properties?: AttachedNetworkConnectionProperties;
 }
+const AttachedNetworkConnection =
+  AttachedNetworksCreateOrUpdateResponse as any as S.Schema<AttachedNetworkConnection>;
+
 /** Current page of results. */
 export type AttachedNetworkListResultValueList = Array<AttachedNetworkConnection>;
+const AttachedNetworkListResultValueList = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<AttachedNetworkListResultValueList>;
+
 /** Results of the Attached Networks list operation. */
 export interface AttachedNetworkListResult {
   /** Current page of results. */
@@ -2551,6 +3590,11 @@ export interface AttachedNetworkListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
+const AttachedNetworkListResult = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<AttachedNetworkListResult>;
+
 export interface ListAttachedNetworkByProjectRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2561,6 +3605,11 @@ export interface ListAttachedNetworkByProjectRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListAttachedNetworkByProjectRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<ListAttachedNetworkByProjectRequest>;
+
 export interface ListCatalogByDevCenterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2571,6 +3620,11 @@ export interface ListCatalogByDevCenterRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListCatalogByDevCenterRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<ListCatalogByDevCenterRequest>;
+
 /** Represents a catalog. */
 export interface Catalog {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2584,8 +3638,15 @@ export interface Catalog {
   /** Catalog properties. */
   properties?: CatalogProperties;
 }
+const Catalog = GetCatalogResponse as any as S.Schema<Catalog>;
+
 /** Current page of results. */
 export type CatalogListResultValueList = Array<Catalog>;
+const CatalogListResultValueList = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<CatalogListResultValueList>;
+
 /** Results of the catalog list operation. */
 export interface CatalogListResult {
   /** Current page of results. */
@@ -2593,6 +3654,8 @@ export interface CatalogListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
+const CatalogListResult = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<CatalogListResult>;
+
 export interface ListCustomizationTaskByCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2605,6 +3668,11 @@ export interface ListCustomizationTaskByCatalogRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListCustomizationTaskByCatalogRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<ListCustomizationTaskByCatalogRequest>;
+
 /** Represents a Task to be used in customizing a Dev Box. */
 export interface CustomizationTask {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2618,8 +3686,15 @@ export interface CustomizationTask {
   /** Task properties */
   properties?: CustomizationTaskProperties;
 }
+const CustomizationTask = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<CustomizationTask>;
+
 /** Current page of results. */
 export type CustomizationTaskListResultValueList = Array<CustomizationTask>;
+const CustomizationTaskListResultValueList = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<CustomizationTaskListResultValueList>;
+
 /** Results of the Task list operation. */
 export interface CustomizationTaskListResult {
   /** Current page of results. */
@@ -2627,6 +3702,11 @@ export interface CustomizationTaskListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
+const CustomizationTaskListResult = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<CustomizationTaskListResult>;
+
 export interface ListDevBoxDefinitionByDevCenterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2637,8 +3717,16 @@ export interface ListDevBoxDefinitionByDevCenterRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListDevBoxDefinitionByDevCenterRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<ListDevBoxDefinitionByDevCenterRequest>;
+
 /** Resource tags. */
 export type DevBoxDefinitionTagsMap = { [key: string]: string | undefined };
+const DevBoxDefinitionTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<DevBoxDefinitionTagsMap>;
+
 /** Represents a definition for a Developer Machine. */
 export interface DevBoxDefinition {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2656,8 +3744,15 @@ export interface DevBoxDefinition {
   /** Dev Box definition properties */
   properties?: DevBoxDefinitionProperties;
 }
+const DevBoxDefinition = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<DevBoxDefinition>;
+
 /** Current page of results. */
 export type DevBoxDefinitionListResultValueList = Array<DevBoxDefinition>;
+const DevBoxDefinitionListResultValueList = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<DevBoxDefinitionListResultValueList>;
+
 /** Results of the Dev Box definition list operation. */
 export interface DevBoxDefinitionListResult {
   /** Current page of results. */
@@ -2665,6 +3760,11 @@ export interface DevBoxDefinitionListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
+const DevBoxDefinitionListResult = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<DevBoxDefinitionListResult>;
+
 export interface ListDevBoxDefinitionByProjectRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2675,6 +3775,11 @@ export interface ListDevBoxDefinitionByProjectRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListDevBoxDefinitionByProjectRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<ListDevBoxDefinitionByProjectRequest>;
+
 export interface ListDevCenterByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2683,6 +3788,11 @@ export interface ListDevCenterByResourceGroupRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListDevCenterByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<ListDevCenterByResourceGroupRequest>;
+
 /** Resource tags. */
 export type DevCenterTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2706,8 +3816,15 @@ export interface DevCenter {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
+const DevCenter = GetDevCenterResponse as any as S.Schema<DevCenter>;
+
 /** Current page of results. */
 export type DevCenterListResultValueList = Array<DevCenter>;
+const DevCenterListResultValueList = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<DevCenterListResultValueList>;
+
 /** Result of the list devcenters operation */
 export interface DevCenterListResult {
   /** Current page of results. */
@@ -2715,12 +3832,19 @@ export interface DevCenterListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
+const DevCenterListResult = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<DevCenterListResult>;
+
 export interface ListDevCenterBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListDevCenterBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<ListDevCenterBySubscriptionRequest>;
+
 export interface ListEnvironmentDefinitionByCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2733,6 +3857,11 @@ export interface ListEnvironmentDefinitionByCatalogRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListEnvironmentDefinitionByCatalogRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<ListEnvironmentDefinitionByCatalogRequest>;
+
 /** Represents an environment definition catalog item. */
 export interface EnvironmentDefinition {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2746,8 +3875,18 @@ export interface EnvironmentDefinition {
   /** Environment definition properties. */
   properties?: EnvironmentDefinitionProperties;
 }
+const EnvironmentDefinition = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<EnvironmentDefinition>;
+
 /** Current page of results. */
 export type EnvironmentDefinitionListResultValueList = Array<EnvironmentDefinition>;
+const EnvironmentDefinitionListResultValueList = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<EnvironmentDefinitionListResultValueList>;
+
 /** Results of the environment definition list operation. */
 export interface EnvironmentDefinitionListResult {
   /** Current page of results. */
@@ -2755,6 +3894,11 @@ export interface EnvironmentDefinitionListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
+const EnvironmentDefinitionListResult = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<EnvironmentDefinitionListResult>;
+
 export interface ListEnvironmentDefinitionByProjectCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2765,6 +3909,11 @@ export interface ListEnvironmentDefinitionByProjectCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
+const ListEnvironmentDefinitionByProjectCatalogRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<ListEnvironmentDefinitionByProjectCatalogRequest>;
+
 export interface ListEnvironmentTypeByDevCenterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2775,8 +3924,16 @@ export interface ListEnvironmentTypeByDevCenterRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListEnvironmentTypeByDevCenterRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<ListEnvironmentTypeByDevCenterRequest>;
+
 /** Resource tags. */
 export type EnvironmentTypeTagsMap = { [key: string]: string | undefined };
+const EnvironmentTypeTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<EnvironmentTypeTagsMap>;
+
 /** Represents an environment type. */
 export interface EnvironmentType {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2792,8 +3949,15 @@ export interface EnvironmentType {
   /** Resource tags. */
   tags?: EnvironmentTypeTagsMap;
 }
+const EnvironmentType = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<EnvironmentType>;
+
 /** Current page of results. */
 export type EnvironmentTypeListResultValueList = Array<EnvironmentType>;
+const EnvironmentTypeListResultValueList = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<EnvironmentTypeListResultValueList>;
+
 /** Result of the environment type list operation. */
 export interface EnvironmentTypeListResult {
   /** Current page of results. */
@@ -2801,6 +3965,11 @@ export interface EnvironmentTypeListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
+const EnvironmentTypeListResult = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<EnvironmentTypeListResult>;
+
 export interface ListGalleryByDevCenterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2811,6 +3980,11 @@ export interface ListGalleryByDevCenterRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListGalleryByDevCenterRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<ListGalleryByDevCenterRequest>;
+
 /** Represents a gallery. */
 export interface Gallery {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2824,8 +3998,15 @@ export interface Gallery {
   /** Gallery properties. */
   properties?: GalleryProperties;
 }
+const Gallery = GetGalleryResponse as any as S.Schema<Gallery>;
+
 /** Current page of results. */
 export type GalleryListResultValueList = Array<Gallery>;
+const GalleryListResultValueList = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<GalleryListResultValueList>;
+
 /** Results of the gallery list operation. */
 export interface GalleryListResult {
   /** Current page of results. */
@@ -2833,6 +4014,8 @@ export interface GalleryListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
+const GalleryListResult = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<GalleryListResult>;
+
 export interface ListImageByDevCenterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2843,6 +4026,11 @@ export interface ListImageByDevCenterRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListImageByDevCenterRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<ListImageByDevCenterRequest>;
+
 /** Represents an image. */
 export interface Image {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2856,8 +4044,15 @@ export interface Image {
   /** Image properties. */
   properties?: ImageProperties;
 }
+const Image = GetImageResponse as any as S.Schema<Image>;
+
 /** Current page of results. */
 export type ImageListResultValueList = Array<Image>;
+const ImageListResultValueList = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<ImageListResultValueList>;
+
 /** Results of the image list operation. */
 export interface ImageListResult {
   /** Current page of results. */
@@ -2865,6 +4060,8 @@ export interface ImageListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
+const ImageListResult = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<ImageListResult>;
+
 export interface ListImageByGalleryRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2877,6 +4074,11 @@ export interface ListImageByGalleryRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListImageByGalleryRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<ListImageByGalleryRequest>;
+
 export interface ListImageByProjectRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2885,6 +4087,11 @@ export interface ListImageByProjectRequest {
   /** The name of the project. */
   projectName: string;
 }
+const ListImageByProjectRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<ListImageByProjectRequest>;
+
 export interface ListImageVersionByImageRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2897,6 +4104,11 @@ export interface ListImageVersionByImageRequest {
   /** The name of the image. */
   imageName: string;
 }
+const ListImageVersionByImageRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<ListImageVersionByImageRequest>;
+
 /** Represents an image version. */
 export interface ImageVersion {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2910,8 +4122,15 @@ export interface ImageVersion {
   /** Image version properties. */
   properties?: ImageVersionProperties;
 }
+const ImageVersion = GetImageVersionResponse as any as S.Schema<ImageVersion>;
+
 /** Current page of results. */
 export type ImageVersionListResultValueList = Array<ImageVersion>;
+const ImageVersionListResultValueList = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<ImageVersionListResultValueList>;
+
 /** Results of the image version list operation. */
 export interface ImageVersionListResult {
   /** Current page of results. */
@@ -2919,6 +4138,11 @@ export interface ImageVersionListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
+const ImageVersionListResult = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<ImageVersionListResult>;
+
 export interface ListImageVersionByProjectRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2929,6 +4153,11 @@ export interface ListImageVersionByProjectRequest {
   /** The name of the image. */
   imageName: string;
 }
+const ListImageVersionByProjectRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<ListImageVersionByProjectRequest>;
+
 export interface ListNetworkConnectionByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2937,8 +4166,16 @@ export interface ListNetworkConnectionByResourceGroupRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListNetworkConnectionByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<ListNetworkConnectionByResourceGroupRequest>;
+
 /** Resource tags. */
 export type NetworkConnectionTagsMap = { [key: string]: string | undefined };
+const NetworkConnectionTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<NetworkConnectionTagsMap>;
+
 /** Network related settings */
 export interface NetworkConnection {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2956,8 +4193,15 @@ export interface NetworkConnection {
   /** Properties of a Network Connection */
   properties?: NetworkProperties;
 }
+const NetworkConnection = /*@__PURE__*/ __L.at(__c28, 0) as any as S.Schema<NetworkConnection>;
+
 /** Current page of results. */
 export type NetworkConnectionListResultValueList = Array<NetworkConnection>;
+const NetworkConnectionListResultValueList = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<NetworkConnectionListResultValueList>;
+
 /** Result of the network connection list operation. */
 export interface NetworkConnectionListResult {
   /** Current page of results. */
@@ -2965,12 +4209,22 @@ export interface NetworkConnectionListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
+const NetworkConnectionListResult = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<NetworkConnectionListResult>;
+
 export interface ListNetworkConnectionBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListNetworkConnectionBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<ListNetworkConnectionBySubscriptionRequest>;
+
 export interface ListNetworkConnectionHealthDetailsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2981,6 +4235,11 @@ export interface ListNetworkConnectionHealthDetailsRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListNetworkConnectionHealthDetailsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<ListNetworkConnectionHealthDetailsRequest>;
+
 /** Health Check details. */
 export interface HealthCheckStatusDetails {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2994,8 +4253,18 @@ export interface HealthCheckStatusDetails {
   /** Health check status details properties. */
   properties?: HealthCheckStatusDetailsProperties;
 }
+const HealthCheckStatusDetails = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<HealthCheckStatusDetails>;
+
 /** Current page of results. */
 export type HealthCheckStatusDetailsListResultValueList = Array<HealthCheckStatusDetails>;
+const HealthCheckStatusDetailsListResultValueList = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<HealthCheckStatusDetailsListResultValueList>;
+
 /** Result of the network health check list operation. */
 export interface HealthCheckStatusDetailsListResult {
   /** Current page of results. */
@@ -3003,6 +4272,11 @@ export interface HealthCheckStatusDetailsListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
+const HealthCheckStatusDetailsListResult = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<HealthCheckStatusDetailsListResult>;
+
 export interface ListNetworkConnectionOutboundNetworkDependenciesEndpointsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3013,13 +4287,25 @@ export interface ListNetworkConnectionOutboundNetworkDependenciesEndpointsReques
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListNetworkConnectionOutboundNetworkDependenciesEndpointsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<ListNetworkConnectionOutboundNetworkDependenciesEndpointsRequest>;
+
 /** Details about the connection between the Batch service and the endpoint. */
 export interface EndpointDetail {
   /** The port an endpoint is connected to. */
   port?: number;
 }
+const EndpointDetail = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<EndpointDetail>;
+
 /** The list of connection details for this endpoint. */
 export type EndpointDependencyEndpointDetailsList = Array<EndpointDetail>;
+const EndpointDependencyEndpointDetailsList = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<EndpointDependencyEndpointDetailsList>;
+
 /** A domain name and connection details used to access a dependency. */
 export interface EndpointDependency {
   /** The domain name of the dependency. Domain names may be fully qualified or may contain a * wildcard. */
@@ -3029,8 +4315,15 @@ export interface EndpointDependency {
   /** The list of connection details for this endpoint. */
   endpointDetails?: EndpointDependencyEndpointDetailsList;
 }
+const EndpointDependency = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<EndpointDependency>;
+
 /** The endpoints for this service for which the agent requires outbound access. */
 export type OutboundEnvironmentEndpointEndpointsList = Array<EndpointDependency>;
+const OutboundEnvironmentEndpointEndpointsList = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<OutboundEnvironmentEndpointEndpointsList>;
+
 /** A collection of related endpoints from the same service for which the agent requires outbound access. */
 export interface OutboundEnvironmentEndpoint {
   /** The type of service that the agent connects to. */
@@ -3038,8 +4331,18 @@ export interface OutboundEnvironmentEndpoint {
   /** The endpoints for this service for which the agent requires outbound access. */
   endpoints?: OutboundEnvironmentEndpointEndpointsList;
 }
+const OutboundEnvironmentEndpoint = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<OutboundEnvironmentEndpoint>;
+
 /** The collection of outbound network dependency endpoints returned by the listing operation. */
 export type OutboundEnvironmentEndpointCollectionValueList = Array<OutboundEnvironmentEndpoint>;
+const OutboundEnvironmentEndpointCollectionValueList = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<OutboundEnvironmentEndpointCollectionValueList>;
+
 /** Values returned by the List operation. */
 export interface OutboundEnvironmentEndpointCollection {
   /** The collection of outbound network dependency endpoints returned by the listing operation. */
@@ -3047,7 +4350,17 @@ export interface OutboundEnvironmentEndpointCollection {
   /** The continuation token. */
   nextLink?: string;
 }
+const OutboundEnvironmentEndpointCollection = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<OutboundEnvironmentEndpointCollection>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -3059,10 +4372,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -3076,14 +4395,26 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListPoolByProjectRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3094,6 +4425,11 @@ export interface ListPoolByProjectRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListPoolByProjectRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<ListPoolByProjectRequest>;
+
 /** Resource tags. */
 export type PoolTagsMap = { [key: string]: string | undefined };
 /** A pool of Virtual Machines. */
@@ -3113,8 +4449,15 @@ export interface Pool {
   /** Pool properties */
   properties?: PoolProperties;
 }
+const Pool = GetPoolResponse as any as S.Schema<Pool>;
+
 /** Current page of results. */
 export type PoolListResultValueList = Array<Pool>;
+const PoolListResultValueList = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<PoolListResultValueList>;
+
 /** Results of the machine pool list operation. */
 export interface PoolListResult {
   /** Current page of results. */
@@ -3122,6 +4465,8 @@ export interface PoolListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
+const PoolListResult = /*@__PURE__*/ __L.at(__c30, 7) as any as S.Schema<PoolListResult>;
+
 export interface ListProjectAllowedEnvironmentTypesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3132,6 +4477,11 @@ export interface ListProjectAllowedEnvironmentTypesRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListProjectAllowedEnvironmentTypesRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<ListProjectAllowedEnvironmentTypesRequest>;
+
 /** Represents an allowed environment type. */
 export interface AllowedEnvironmentType {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3145,8 +4495,18 @@ export interface AllowedEnvironmentType {
   /** Properties of an allowed environment type. */
   properties?: AllowedEnvironmentTypeProperties;
 }
+const AllowedEnvironmentType = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<AllowedEnvironmentType>;
+
 /** Current page of results. */
 export type AllowedEnvironmentTypeListResultValueList = Array<AllowedEnvironmentType>;
+const AllowedEnvironmentTypeListResultValueList = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<AllowedEnvironmentTypeListResultValueList>;
+
 /** Result of the allowed environment type list operation. */
 export interface AllowedEnvironmentTypeListResult {
   /** Current page of results. */
@@ -3154,6 +4514,11 @@ export interface AllowedEnvironmentTypeListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
+const AllowedEnvironmentTypeListResult = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<AllowedEnvironmentTypeListResult>;
+
 export interface ListProjectByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3162,6 +4527,11 @@ export interface ListProjectByResourceGroupRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListProjectByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<ListProjectByResourceGroupRequest>;
+
 /** Resource tags. */
 export type ProjectTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -3185,8 +4555,15 @@ export interface Project {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
+const Project = GetProjectResponse as any as S.Schema<Project>;
+
 /** Current page of results. */
 export type ProjectListResultValueList = Array<Project>;
+const ProjectListResultValueList = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<ProjectListResultValueList>;
+
 /** Results of the project list operation. */
 export interface ProjectListResult {
   /** Current page of results. */
@@ -3194,12 +4571,19 @@ export interface ProjectListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
+const ProjectListResult = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<ProjectListResult>;
+
 export interface ListProjectBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListProjectBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<ListProjectBySubscriptionRequest>;
+
 export interface ListProjectCatalogImageDefinitionBuildByImageDefinitionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3212,6 +4596,11 @@ export interface ListProjectCatalogImageDefinitionBuildByImageDefinitionRequest 
   /** The name of the Image Definition. */
   imageDefinitionName: string;
 }
+const ListProjectCatalogImageDefinitionBuildByImageDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<ListProjectCatalogImageDefinitionBuildByImageDefinitionRequest>;
+
 /** Represents a specific build of an Image Definition. */
 export interface ImageDefinitionBuild {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3225,8 +4614,18 @@ export interface ImageDefinitionBuild {
   /** Image Definition Build properties */
   properties?: ImageDefinitionBuildProperties;
 }
+const ImageDefinitionBuild = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<ImageDefinitionBuild>;
+
 /** Current page of results. */
 export type ImageDefinitionBuildListResultValueList = Array<ImageDefinitionBuild>;
+const ImageDefinitionBuildListResultValueList = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<ImageDefinitionBuildListResultValueList>;
+
 /** Results of the Image Definition Build list operation. */
 export interface ImageDefinitionBuildListResult {
   /** Current page of results. */
@@ -3234,6 +4633,11 @@ export interface ImageDefinitionBuildListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
+const ImageDefinitionBuildListResult = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<ImageDefinitionBuildListResult>;
+
 export interface ListProjectCatalogImageDefinitionByProjectCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3246,6 +4650,11 @@ export interface ListProjectCatalogImageDefinitionByProjectCatalogRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListProjectCatalogImageDefinitionByProjectCatalogRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<ListProjectCatalogImageDefinitionByProjectCatalogRequest>;
+
 /** Represents a definition for an Image. */
 export interface ImageDefinition {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3259,8 +4668,15 @@ export interface ImageDefinition {
   /** Image Definition properties */
   properties?: ImageDefinitionProperties;
 }
+const ImageDefinition = /*@__PURE__*/ __L.at(__c32, 5) as any as S.Schema<ImageDefinition>;
+
 /** Current page of results. */
 export type ImageDefinitionListResultValueList = Array<ImageDefinition>;
+const ImageDefinitionListResultValueList = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<ImageDefinitionListResultValueList>;
+
 /** Results of the Image Definition list operation. */
 export interface ImageDefinitionListResult {
   /** Current page of results. */
@@ -3268,6 +4684,11 @@ export interface ImageDefinitionListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
+const ImageDefinitionListResult = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<ImageDefinitionListResult>;
+
 export interface ListProjectCatalogsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3278,6 +4699,11 @@ export interface ListProjectCatalogsRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListProjectCatalogsRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<ListProjectCatalogsRequest>;
+
 export interface ListProjectEnvironmentTypesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3288,8 +4714,16 @@ export interface ListProjectEnvironmentTypesRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListProjectEnvironmentTypesRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<ListProjectEnvironmentTypesRequest>;
+
 /** Resource tags. */
 export type ProjectEnvironmentTypeTagsMap = { [key: string]: string | undefined };
+const ProjectEnvironmentTypeTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<ProjectEnvironmentTypeTagsMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ProjectEnvironmentTypeIdentity = DevCentersCreateOrUpdateResponseIdentity;
 /** Represents an environment type. */
@@ -3311,8 +4745,18 @@ export interface ProjectEnvironmentType {
   /** The geo-location for the environment type */
   location?: string;
 }
+const ProjectEnvironmentType = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<ProjectEnvironmentType>;
+
 /** Current page of results. */
 export type ProjectEnvironmentTypeListResultValueList = Array<ProjectEnvironmentType>;
+const ProjectEnvironmentTypeListResultValueList = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<ProjectEnvironmentTypeListResultValueList>;
+
 /** Result of the project environment type list operation. */
 export interface ProjectEnvironmentTypeListResult {
   /** Current page of results. */
@@ -3320,6 +4764,11 @@ export interface ProjectEnvironmentTypeListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
+const ProjectEnvironmentTypeListResult = /*@__PURE__*/ __L.at(
+  __c33,
+  4,
+) as any as S.Schema<ProjectEnvironmentTypeListResult>;
+
 export interface ListProjectPolicyByDevCenterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3330,6 +4779,11 @@ export interface ListProjectPolicyByDevCenterRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListProjectPolicyByDevCenterRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<ListProjectPolicyByDevCenterRequest>;
+
 /** Represents an project policy resource. */
 export interface ProjectPolicy {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3343,8 +4797,15 @@ export interface ProjectPolicy {
   /** Properties of an project policy. */
   properties?: ProjectPolicyProperties;
 }
+const ProjectPolicy = GetProjectPolicyResponse as any as S.Schema<ProjectPolicy>;
+
 /** Current page of results. */
 export type ProjectPolicyListResultValueList = Array<ProjectPolicy>;
+const ProjectPolicyListResultValueList = /*@__PURE__*/ __L.at(
+  __c33,
+  6,
+) as any as S.Schema<ProjectPolicyListResultValueList>;
+
 /** Results of the project policy list operation. */
 export interface ProjectPolicyListResult {
   /** Current page of results. */
@@ -3352,6 +4813,11 @@ export interface ProjectPolicyListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
+const ProjectPolicyListResult = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<ProjectPolicyListResult>;
+
 export interface ListScheduleByPoolRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3364,6 +4830,11 @@ export interface ListScheduleByPoolRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListScheduleByPoolRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<ListScheduleByPoolRequest>;
+
 /** Represents a Schedule to execute a task. */
 export interface Schedule {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3377,8 +4848,15 @@ export interface Schedule {
   /** Properties of a Schedule resource */
   properties?: ScheduleProperties;
 }
+const Schedule = GetScheduleResponse as any as S.Schema<Schedule>;
+
 /** Current page of results. */
 export type ScheduleListResultValueList = Array<Schedule>;
+const ScheduleListResultValueList = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<ScheduleListResultValueList>;
+
 /** Result of the schedule list operation. */
 export interface ScheduleListResult {
   /** Current page of results. */
@@ -3386,6 +4864,8 @@ export interface ScheduleListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
+const ScheduleListResult = /*@__PURE__*/ __L.at(__c34, 2) as any as S.Schema<ScheduleListResult>;
+
 export interface ListSkusByProjectRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3394,8 +4874,16 @@ export interface ListSkusByProjectRequest {
   /** The name of the project. */
   projectName: string;
 }
+const ListSkusByProjectRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<ListSkusByProjectRequest>;
+
 /** SKU supported locations. */
 export type ListSkusByProjectResponseValueItemLocationsList = Array<string>;
+const ListSkusByProjectResponseValueItemLocationsList =
+  PoolPropertiesManagedVirtualNetworkRegionsList as any as S.Schema<ListSkusByProjectResponseValueItemLocationsList>;
+
 /** A name/value pair to describe a capability. */
 export interface Capability {
   /** Name of the capability. */
@@ -3403,8 +4891,15 @@ export interface Capability {
   /** Value of the capability. */
   value?: string;
 }
+const Capability = /*@__PURE__*/ __L.at(__c34, 4) as any as S.Schema<Capability>;
+
 /** Collection of name/value pairs to describe the SKU capabilities. */
 export type ListSkusByProjectResponseValueItemCapabilitiesList = Array<Capability>;
+const ListSkusByProjectResponseValueItemCapabilitiesList = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<ListSkusByProjectResponseValueItemCapabilitiesList>;
+
 /** The resource model definition representing SKU for DevCenter resources */
 export interface ListSkusByProjectResponseValueItem {
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
@@ -3423,24 +4918,50 @@ export interface ListSkusByProjectResponseValueItem {
   /** Collection of name/value pairs to describe the SKU capabilities. */
   capabilities?: ListSkusByProjectResponseValueItemCapabilitiesList;
 }
+const ListSkusByProjectResponseValueItem = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<ListSkusByProjectResponseValueItem>;
+
 /** Current page of results. */
 export type ListSkusByProjectResponseValueList = Array<ListSkusByProjectResponseValueItem>;
+const ListSkusByProjectResponseValueList = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<ListSkusByProjectResponseValueList>;
+
 export interface ListSkusByProjectResponse {
   /** Current page of results. */
   value?: ListSkusByProjectResponseValueList;
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
+const ListSkusByProjectResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<ListSkusByProjectResponse>;
+
 export interface ListSkusBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
+const ListSkusBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<ListSkusBySubscriptionRequest>;
+
 /** SKU supported locations. */
 export type SkuListResultValueItemLocationsList = Array<string>;
+const SkuListResultValueItemLocationsList =
+  PoolPropertiesManagedVirtualNetworkRegionsList as any as S.Schema<SkuListResultValueItemLocationsList>;
+
 /** Collection of name/value pairs to describe the SKU capabilities. */
 export type SkuListResultValueItemCapabilitiesList = Array<Capability>;
+const SkuListResultValueItemCapabilitiesList =
+  ListSkusByProjectResponseValueItemCapabilitiesList as any as S.Schema<SkuListResultValueItemCapabilitiesList>;
+
 /** The resource model definition representing SKU for DevCenter resources */
 export interface SkuListResultValueItem {
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
@@ -3459,8 +4980,18 @@ export interface SkuListResultValueItem {
   /** Collection of name/value pairs to describe the SKU capabilities. */
   capabilities?: SkuListResultValueItemCapabilitiesList;
 }
+const SkuListResultValueItem = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<SkuListResultValueItem>;
+
 /** Current page of results. */
 export type SkuListResultValueList = Array<SkuListResultValueItem>;
+const SkuListResultValueList = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<SkuListResultValueList>;
+
 /** Results of the Microsoft.DevCenter SKU list operation. */
 export interface SkuListResult {
   /** Current page of results. */
@@ -3468,14 +4999,23 @@ export interface SkuListResult {
   /** URL to get the next set of results if there are any. */
   nextLink?: string;
 }
+const SkuListResult = /*@__PURE__*/ __L.at(__c35, 4) as any as S.Schema<SkuListResult>;
+
 export interface ListUsageByLocationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The Azure region */
   location: string;
 }
+const ListUsageByLocationRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<ListUsageByLocationRequest>;
+
 /** The unit details. */
 export type UsageUnit = "Count";
+const UsageUnit = S.String;
+
 /** The Usage Names. */
 export interface UsageName {
   /** The localized name of the resource. */
@@ -3483,6 +5023,8 @@ export interface UsageName {
   /** The name of the resource. */
   value?: string;
 }
+const UsageName = /*@__PURE__*/ __L.at(__c35, 6) as any as S.Schema<UsageName>;
+
 /** The core usage details. */
 export interface Usage {
   /** The current usage. */
@@ -3496,8 +5038,15 @@ export interface Usage {
   /** The fully qualified arm resource id. */
   id?: string;
 }
+const Usage = /*@__PURE__*/ __L.at(__c35, 7) as any as S.Schema<Usage>;
+
 /** The array page of Usages. */
 export type ListUsagesResultValueList = Array<Usage>;
+const ListUsagesResultValueList = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<ListUsagesResultValueList>;
+
 /** List of Core Usages. */
 export interface ListUsagesResult {
   /** The array page of Usages. */
@@ -3505,8 +5054,13 @@ export interface ListUsagesResult {
   /** The link to get the next page of Usage result. */
   nextLink?: string;
 }
+const ListUsagesResult = /*@__PURE__*/ __L.at(__c36, 1) as any as S.Schema<ListUsagesResult>;
+
 /** Resource tags. */
 export type NetworkConnectionsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const NetworkConnectionsCreateOrUpdateRequestTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<NetworkConnectionsCreateOrUpdateRequestTagsMap>;
+
 /** Health check status values */
 export type NetworkPropertiesInputHealthCheckStatus =
   | "Unknown"
@@ -3516,8 +5070,12 @@ export type NetworkPropertiesInputHealthCheckStatus =
   | "Warning"
   | "Failed"
   | "Informational";
+const NetworkPropertiesInputHealthCheckStatus = S.String;
+
 /** Active Directory join type */
 export type NetworkPropertiesInputDomainJoinType = "HybridAzureADJoin" | "AzureADJoin" | "None";
+const NetworkPropertiesInputDomainJoinType = S.String;
+
 /** Network properties */
 export interface NetworkPropertiesInput {
   /** The subnet to attach Virtual Machines to */
@@ -3537,6 +5095,11 @@ export interface NetworkPropertiesInput {
   /** Active Directory join type */
   domainJoinType: NetworkPropertiesInputDomainJoinType | (string & {});
 }
+const NetworkPropertiesInput = /*@__PURE__*/ __L.at(
+  __c36,
+  2,
+) as any as S.Schema<NetworkPropertiesInput>;
+
 export interface NetworkConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3551,6 +5114,11 @@ export interface NetworkConnectionsCreateOrUpdateRequest {
   /** Properties of a Network Connection */
   properties?: NetworkPropertiesInput;
 }
+const NetworkConnectionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<NetworkConnectionsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type NetworkConnectionsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface NetworkConnectionsCreateOrUpdateResponse {
@@ -3569,10 +5137,18 @@ export interface NetworkConnectionsCreateOrUpdateResponse {
   /** Properties of a Network Connection */
   properties?: NetworkProperties;
 }
+const NetworkConnectionsCreateOrUpdateResponse =
+  GetNetworkConnectionResponse as any as S.Schema<NetworkConnectionsCreateOrUpdateResponse>;
+
 /** Indicates the type of sync that is configured for the catalog. */
 export type CatalogUpdatePropertiesSyncType = "Manual" | "Scheduled";
+const CatalogUpdatePropertiesSyncType = S.String;
+
 /** Resource tags. */
 export type CatalogUpdatePropertiesTagsMap = { [key: string]: string | undefined };
+const CatalogUpdatePropertiesTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<CatalogUpdatePropertiesTagsMap>;
+
 /** Properties of a catalog. These properties can be updated after the resource has been created. */
 export interface CatalogUpdateProperties {
   /** Properties for a GitHub catalog type. */
@@ -3584,6 +5160,11 @@ export interface CatalogUpdateProperties {
   /** Resource tags. */
   tags?: CatalogUpdatePropertiesTagsMap;
 }
+const CatalogUpdateProperties = /*@__PURE__*/ __L.at(
+  __c36,
+  4,
+) as any as S.Schema<CatalogUpdateProperties>;
+
 export interface PatchProjectCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3596,6 +5177,11 @@ export interface PatchProjectCatalogRequest {
   /** Catalog properties for update. */
   properties?: CatalogUpdateProperties;
 }
+const PatchProjectCatalogRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<PatchProjectCatalogRequest>;
+
 export interface PatchProjectCatalogResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3608,8 +5194,14 @@ export interface PatchProjectCatalogResponse {
   /** Catalog properties. */
   properties?: CatalogProperties;
 }
+const PatchProjectCatalogResponse =
+  CatalogsCreateOrUpdateResponse as any as S.Schema<PatchProjectCatalogResponse>;
+
 /** Resource tags. */
 export type PoolsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const PoolsCreateOrUpdateRequestTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<PoolsCreateOrUpdateRequestTagsMap>;
+
 /** Image reference information */
 export type PoolDevBoxDefinitionInputImageReference = DevBoxDefinitionPropertiesInputImageReference;
 /** The resource model definition representing SKU */
@@ -3626,8 +5218,16 @@ export interface PoolDevBoxDefinitionInput {
   /** Image reference information */
   activeImageReference?: DevBoxDefinitionPropertiesInputImageReference;
 }
+const PoolDevBoxDefinitionInput = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<PoolDevBoxDefinitionInput>;
+
 /** The regions of the managed virtual network (required when managedNetworkType is Managed). */
 export type PoolPropertiesInputManagedVirtualNetworkRegionsList = Array<string>;
+const PoolPropertiesInputManagedVirtualNetworkRegionsList =
+  PoolPropertiesManagedVirtualNetworkRegionsList as any as S.Schema<PoolPropertiesInputManagedVirtualNetworkRegionsList>;
+
 /** Properties of a Pool */
 export interface PoolPropertiesInput {
   /** Indicates if the pool is created from an existing Dev Box Definition or if one is provided directly. */
@@ -3655,6 +5255,8 @@ export interface PoolPropertiesInput {
   /** The regions of the managed virtual network (required when managedNetworkType is Managed). */
   managedVirtualNetworkRegions?: PoolPropertiesInputManagedVirtualNetworkRegionsList;
 }
+const PoolPropertiesInput = /*@__PURE__*/ __L.at(__c36, 7) as any as S.Schema<PoolPropertiesInput>;
+
 export interface PoolsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3671,8 +5273,16 @@ export interface PoolsCreateOrUpdateRequest {
   /** Pool properties */
   properties?: PoolPropertiesInput;
 }
+const PoolsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<PoolsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type PoolsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const PoolsCreateOrUpdateResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<PoolsCreateOrUpdateResponseTagsMap>;
+
 export interface PoolsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3689,6 +5299,11 @@ export interface PoolsCreateOrUpdateResponse {
   /** Pool properties */
   properties?: PoolProperties;
 }
+const PoolsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c37,
+  1,
+) as any as S.Schema<PoolsCreateOrUpdateResponse>;
+
 export interface ProjectCatalogImageDefinitionsBuildImageRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3701,7 +5316,15 @@ export interface ProjectCatalogImageDefinitionsBuildImageRequest {
   /** The name of the Image Definition. */
   imageDefinitionName: string;
 }
+const ProjectCatalogImageDefinitionsBuildImageRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  2,
+) as any as S.Schema<ProjectCatalogImageDefinitionsBuildImageRequest>;
+
 export interface ProjectCatalogImageDefinitionsBuildImageResponse {}
+const ProjectCatalogImageDefinitionsBuildImageResponse =
+  CancelProjectCatalogImageDefinitionBuildResponse as any as S.Schema<ProjectCatalogImageDefinitionsBuildImageResponse>;
+
 export interface ProjectCatalogsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3714,6 +5337,11 @@ export interface ProjectCatalogsCreateOrUpdateRequest {
   /** Catalog properties. */
   properties?: CatalogPropertiesInput;
 }
+const ProjectCatalogsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  3,
+) as any as S.Schema<ProjectCatalogsCreateOrUpdateRequest>;
+
 export interface ProjectCatalogsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3726,30 +5354,56 @@ export interface ProjectCatalogsCreateOrUpdateResponse {
   /** Catalog properties. */
   properties?: CatalogProperties;
 }
+const ProjectCatalogsCreateOrUpdateResponse =
+  CatalogsCreateOrUpdateResponse as any as S.Schema<ProjectCatalogsCreateOrUpdateResponse>;
+
 /** A role that can be assigned to a user. */
 export type EnvironmentRoleInput = UserAssignedIdentityInput;
 /** A map of roles to assign to the environment creator. */
 export type ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
+const ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap = /*@__PURE__*/ __L.at(
+  __c37,
+  4,
+) as any as S.Schema<ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap>;
+
 /** The role definition assigned to the environment creator on backing resources. */
 export interface ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment {
   /** A map of roles to assign to the environment creator. */
   roles?: ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap;
 }
+const ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment>;
+
 /** A map of roles to assign to the parent user. */
 export type UserRoleAssignmentInputRolesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
+const UserRoleAssignmentInputRolesMap =
+  UserAssignedIdentitiesInput as any as S.Schema<UserRoleAssignmentInputRolesMap>;
+
 /** Mapping of user object ID to role assignments. */
 export interface UserRoleAssignmentInput {
   /** A map of roles to assign to the parent user. */
   roles?: UserRoleAssignmentInputRolesMap;
 }
+const UserRoleAssignmentInput = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<UserRoleAssignmentInput>;
+
 /** Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs. */
 export type ProjectEnvironmentTypePropertiesInputUserRoleAssignmentsMap = {
   [key: string]: UserRoleAssignmentInput | undefined;
 };
+const ProjectEnvironmentTypePropertiesInputUserRoleAssignmentsMap = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<ProjectEnvironmentTypePropertiesInputUserRoleAssignmentsMap>;
+
 /** Properties of a project environment type. */
 export interface ProjectEnvironmentTypePropertiesInput {
   /** Id of a subscription that the environment type will be mapped to. The environment's resources will be deployed into this subscription. */
@@ -3763,10 +5417,18 @@ export interface ProjectEnvironmentTypePropertiesInput {
   /** Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs. */
   userRoleAssignments?: ProjectEnvironmentTypePropertiesInputUserRoleAssignmentsMap;
 }
+const ProjectEnvironmentTypePropertiesInput = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<ProjectEnvironmentTypePropertiesInput>;
+
 /** Resource tags. */
 export type ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ProjectEnvironmentTypesCreateOrUpdateRequestIdentity =
   DevCentersCreateOrUpdateRequestIdentity;
@@ -3788,6 +5450,11 @@ export interface ProjectEnvironmentTypesCreateOrUpdateRequest {
   /** The geo-location for the environment type */
   location?: string;
 }
+const ProjectEnvironmentTypesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  1,
+) as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type ProjectEnvironmentTypesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -3813,10 +5480,19 @@ export interface ProjectEnvironmentTypesCreateOrUpdateResponse {
   /** The geo-location for the environment type */
   location?: string;
 }
+const ProjectEnvironmentTypesCreateOrUpdateResponse =
+  GetProjectEnvironmentTypeResponse as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateResponse>;
+
 /** Resource policies that are a part of this project policy. */
 export type ProjectPolicyPropertiesInputResourcePoliciesList = Array<ResourcePolicy>;
+const ProjectPolicyPropertiesInputResourcePoliciesList =
+  ProjectPolicyPropertiesResourcePoliciesList as any as S.Schema<ProjectPolicyPropertiesInputResourcePoliciesList>;
+
 /** Resources that have access to the shared resources that are a part of this project policy. */
 export type ProjectPolicyPropertiesInputScopesList = Array<string>;
+const ProjectPolicyPropertiesInputScopesList =
+  PoolPropertiesManagedVirtualNetworkRegionsList as any as S.Schema<ProjectPolicyPropertiesInputScopesList>;
+
 /** Properties of an project policy. */
 export interface ProjectPolicyPropertiesInput {
   /** Resource policies that are a part of this project policy. */
@@ -3824,6 +5500,11 @@ export interface ProjectPolicyPropertiesInput {
   /** Resources that have access to the shared resources that are a part of this project policy. */
   scopes?: ProjectPolicyPropertiesInputScopesList;
 }
+const ProjectPolicyPropertiesInput = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<ProjectPolicyPropertiesInput>;
+
 export interface ProjectPoliciesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3836,6 +5517,11 @@ export interface ProjectPoliciesCreateOrUpdateRequest {
   /** Properties of an project policy. */
   properties?: ProjectPolicyPropertiesInput;
 }
+const ProjectPoliciesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<ProjectPoliciesCreateOrUpdateRequest>;
+
 export interface ProjectPoliciesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3848,8 +5534,16 @@ export interface ProjectPoliciesCreateOrUpdateResponse {
   /** Properties of an project policy. */
   properties?: ProjectPolicyProperties;
 }
+const ProjectPoliciesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c38,
+  4,
+) as any as S.Schema<ProjectPoliciesCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type ProjectsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const ProjectsCreateOrUpdateRequestTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<ProjectsCreateOrUpdateRequestTagsMap>;
+
 /** Properties of a project. */
 export interface ProjectPropertiesInput {
   /** Resource Id of an associated DevCenter */
@@ -3863,6 +5557,11 @@ export interface ProjectPropertiesInput {
   /** Settings to be used when associating a project with a catalog. */
   catalogSettings?: ProjectCatalogSettings;
 }
+const ProjectPropertiesInput = /*@__PURE__*/ __L.at(
+  __c38,
+  5,
+) as any as S.Schema<ProjectPropertiesInput>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ProjectsCreateOrUpdateRequestIdentity = DevCentersCreateOrUpdateRequestIdentity;
 export interface ProjectsCreateOrUpdateRequest {
@@ -3881,8 +5580,16 @@ export interface ProjectsCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateRequestIdentity;
 }
+const ProjectsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  6,
+) as any as S.Schema<ProjectsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type ProjectsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const ProjectsCreateOrUpdateResponseTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<ProjectsCreateOrUpdateResponseTagsMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ProjectsCreateOrUpdateResponseIdentity = DevCentersCreateOrUpdateResponseIdentity;
 export interface ProjectsCreateOrUpdateResponse {
@@ -3903,6 +5610,11 @@ export interface ProjectsCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
+const ProjectsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c38,
+  7,
+) as any as S.Schema<ProjectsCreateOrUpdateResponse>;
+
 export interface RunNetworkConnectionHealthChecksRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3911,7 +5623,15 @@ export interface RunNetworkConnectionHealthChecksRequest {
   /** Name of the Network Connection that can be applied to a Pool. */
   networkConnectionName: string;
 }
+const RunNetworkConnectionHealthChecksRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<RunNetworkConnectionHealthChecksRequest>;
+
 export interface RunNetworkConnectionHealthChecksResponse {}
+const RunNetworkConnectionHealthChecksResponse =
+  CancelProjectCatalogImageDefinitionBuildResponse as any as S.Schema<RunNetworkConnectionHealthChecksResponse>;
+
 export interface RunPoolHealthChecksRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3922,7 +5642,15 @@ export interface RunPoolHealthChecksRequest {
   /** Name of the pool. */
   poolName: string;
 }
+const RunPoolHealthChecksRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  1,
+) as any as S.Schema<RunPoolHealthChecksRequest>;
+
 export interface RunPoolHealthChecksResponse {}
+const RunPoolHealthChecksResponse =
+  ConnectCatalogResponse as any as S.Schema<RunPoolHealthChecksResponse>;
+
 /** The Schedule properties defining when and what to execute. */
 export interface SchedulePropertiesInput {
   /** Resource tags. */
@@ -3940,6 +5668,11 @@ export interface SchedulePropertiesInput {
   /** Indicates whether or not this scheduled task is enabled. */
   state?: ScheduleEnableStatus | (string & {});
 }
+const SchedulePropertiesInput = /*@__PURE__*/ __L.at(
+  __c39,
+  2,
+) as any as S.Schema<SchedulePropertiesInput>;
+
 export interface SchedulesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3956,6 +5689,11 @@ export interface SchedulesCreateOrUpdateRequest {
   /** Properties of a Schedule resource */
   properties?: SchedulePropertiesInput;
 }
+const SchedulesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<SchedulesCreateOrUpdateRequest>;
+
 export interface SchedulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3968,6 +5706,11 @@ export interface SchedulesCreateOrUpdateResponse {
   /** Properties of a Schedule resource */
   properties?: ScheduleProperties;
 }
+const SchedulesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  4,
+) as any as S.Schema<SchedulesCreateOrUpdateResponse>;
+
 export interface SyncCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3978,7 +5721,11 @@ export interface SyncCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
+const SyncCatalogRequest = /*@__PURE__*/ __L.at(__c39, 5) as any as S.Schema<SyncCatalogRequest>;
+
 export interface SyncCatalogResponse {}
+const SyncCatalogResponse = ConnectCatalogResponse as any as S.Schema<SyncCatalogResponse>;
+
 export interface SyncProjectCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3989,7 +5736,15 @@ export interface SyncProjectCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
+const SyncProjectCatalogRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  6,
+) as any as S.Schema<SyncProjectCatalogRequest>;
+
 export interface SyncProjectCatalogResponse {}
+const SyncProjectCatalogResponse =
+  ConnectCatalogResponse as any as S.Schema<SyncProjectCatalogResponse>;
+
 export interface UpdateCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4002,6 +5757,11 @@ export interface UpdateCatalogRequest {
   /** Catalog properties for update. */
   properties?: CatalogUpdateProperties;
 }
+const UpdateCatalogRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<UpdateCatalogRequest>;
+
 export interface UpdateCatalogResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4014,6 +5774,8 @@ export interface UpdateCatalogResponse {
   /** Catalog properties. */
   properties?: CatalogProperties;
 }
+const UpdateCatalogResponse = GetCatalogResponse as any as S.Schema<UpdateCatalogResponse>;
+
 /** Image reference information */
 export type DevBoxDefinitionUpdatePropertiesInputImageReference =
   DevBoxDefinitionPropertiesInputImageReference;
@@ -4030,6 +5792,11 @@ export interface DevBoxDefinitionUpdatePropertiesInput {
   /** Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate */
   hibernateSupport?: HibernateSupport | (string & {});
 }
+const DevBoxDefinitionUpdatePropertiesInput = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<DevBoxDefinitionUpdatePropertiesInput>;
+
 export interface UpdateDevBoxDefinitionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4046,6 +5813,11 @@ export interface UpdateDevBoxDefinitionRequest {
   /** Properties of a Dev Box definition to be updated. */
   properties?: DevBoxDefinitionUpdatePropertiesInput;
 }
+const UpdateDevBoxDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  1,
+) as any as S.Schema<UpdateDevBoxDefinitionRequest>;
+
 /** Resource tags. */
 export type UpdateDevBoxDefinitionResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateDevBoxDefinitionResponse {
@@ -4064,6 +5836,9 @@ export interface UpdateDevBoxDefinitionResponse {
   /** Dev Box definition properties */
   properties?: DevBoxDefinitionProperties;
 }
+const UpdateDevBoxDefinitionResponse =
+  DevBoxDefinitionsCreateOrUpdateResponse as any as S.Schema<UpdateDevBoxDefinitionResponse>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateDevCenterRequestIdentity = DevCentersCreateOrUpdateRequestIdentity;
 /** Properties of the devcenter. These properties can be updated after the resource has been created. */
@@ -4084,6 +5859,11 @@ export interface UpdateDevCenterRequest {
   /** Properties of a Dev Center to be updated. */
   properties?: DevCenterPropertiesInput;
 }
+const UpdateDevCenterRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<UpdateDevCenterRequest>;
+
 /** Resource tags. */
 export type UpdateDevCenterResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -4106,10 +5886,15 @@ export interface UpdateDevCenterResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
+const UpdateDevCenterResponse = GetDevCenterResponse as any as S.Schema<UpdateDevCenterResponse>;
+
 /** Properties of an environment type. These properties can be updated after the resource has been created. */
 export type EnvironmentTypeUpdateProperties = EnvironmentTypePropertiesInput;
 /** Resource tags. */
 export type UpdateEnvironmentTypeRequestTagsMap = { [key: string]: string | undefined };
+const UpdateEnvironmentTypeRequestTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<UpdateEnvironmentTypeRequestTagsMap>;
+
 export interface UpdateEnvironmentTypeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4124,6 +5909,11 @@ export interface UpdateEnvironmentTypeRequest {
   /** Resource tags. */
   tags?: UpdateEnvironmentTypeRequestTagsMap;
 }
+const UpdateEnvironmentTypeRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  3,
+) as any as S.Schema<UpdateEnvironmentTypeRequest>;
+
 /** Resource tags. */
 export type UpdateEnvironmentTypeResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateEnvironmentTypeResponse {
@@ -4140,6 +5930,9 @@ export interface UpdateEnvironmentTypeResponse {
   /** Resource tags. */
   tags?: UpdateEnvironmentTypeResponseTagsMap;
 }
+const UpdateEnvironmentTypeResponse =
+  EnvironmentTypesCreateOrUpdateResponse as any as S.Schema<UpdateEnvironmentTypeResponse>;
+
 /** Properties of network connection. These properties can be updated after the resource has been created. */
 export interface NetworkConnectionUpdateProperties {
   /** The subnet to attach Virtual Machines to */
@@ -4153,6 +5946,11 @@ export interface NetworkConnectionUpdateProperties {
   /** The password for the account used to join domain */
   domainPassword?: string | Redacted.Redacted<string>;
 }
+const NetworkConnectionUpdateProperties = /*@__PURE__*/ __L.at(
+  __c40,
+  4,
+) as any as S.Schema<NetworkConnectionUpdateProperties>;
+
 export interface UpdateNetworkConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4167,6 +5965,11 @@ export interface UpdateNetworkConnectionRequest {
   /** Properties of a network connection resource to be updated. */
   properties?: NetworkConnectionUpdateProperties;
 }
+const UpdateNetworkConnectionRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  5,
+) as any as S.Schema<UpdateNetworkConnectionRequest>;
+
 /** Resource tags. */
 export type UpdateNetworkConnectionResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateNetworkConnectionResponse {
@@ -4185,8 +5988,14 @@ export interface UpdateNetworkConnectionResponse {
   /** Properties of a Network Connection */
   properties?: NetworkProperties;
 }
+const UpdateNetworkConnectionResponse =
+  GetNetworkConnectionResponse as any as S.Schema<UpdateNetworkConnectionResponse>;
+
 /** The regions of the managed virtual network (required when managedNetworkType is Managed). */
 export type PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList = Array<string>;
+const PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList =
+  PoolPropertiesManagedVirtualNetworkRegionsList as any as S.Schema<PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList>;
+
 /** Properties of a Pool. These properties can be updated after the resource has been created. */
 export interface PoolUpdatePropertiesInput {
   /** Indicates if the pool is created from an existing Dev Box Definition or if one is provided directly. */
@@ -4214,6 +6023,11 @@ export interface PoolUpdatePropertiesInput {
   /** The regions of the managed virtual network (required when managedNetworkType is Managed). */
   managedVirtualNetworkRegions?: PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList;
 }
+const PoolUpdatePropertiesInput = /*@__PURE__*/ __L.at(
+  __c40,
+  6,
+) as any as S.Schema<PoolUpdatePropertiesInput>;
+
 export interface UpdatePoolRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4230,6 +6044,8 @@ export interface UpdatePoolRequest {
   /** Properties of a pool to be updated. */
   properties?: PoolUpdatePropertiesInput;
 }
+const UpdatePoolRequest = /*@__PURE__*/ __L.at(__c40, 7) as any as S.Schema<UpdatePoolRequest>;
+
 /** Resource tags. */
 export type UpdatePoolResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdatePoolResponse {
@@ -4248,6 +6064,8 @@ export interface UpdatePoolResponse {
   /** Pool properties */
   properties?: PoolProperties;
 }
+const UpdatePoolResponse = GetPoolResponse as any as S.Schema<UpdatePoolResponse>;
+
 /** Properties of a project. These properties can be updated after the resource has been created. */
 export type ProjectUpdateProperties = ProjectPropertiesInput;
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -4268,6 +6086,11 @@ export interface UpdateProjectRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateRequestIdentity;
 }
+const UpdateProjectRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<UpdateProjectRequest>;
+
 /** Resource tags. */
 export type UpdateProjectResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -4290,19 +6113,34 @@ export interface UpdateProjectResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
+const UpdateProjectResponse = GetProjectResponse as any as S.Schema<UpdateProjectResponse>;
+
 /** A map of roles to assign to the environment creator. */
 export type ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
+const ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap =
+  ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap as any as S.Schema<ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap>;
+
 /** The role definition assigned to the environment creator on backing resources. */
 export interface ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignment {
   /** A map of roles to assign to the environment creator. */
   roles?: ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap;
 }
+const ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignment = /*@__PURE__*/ __L.at(
+  __c41,
+  1,
+) as any as S.Schema<ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignment>;
+
 /** Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs. */
 export type ProjectEnvironmentTypeUpdatePropertiesInputUserRoleAssignmentsMap = {
   [key: string]: UserRoleAssignmentInput | undefined;
 };
+const ProjectEnvironmentTypeUpdatePropertiesInputUserRoleAssignmentsMap = /*@__PURE__*/ __L.at(
+  __c41,
+  2,
+) as any as S.Schema<ProjectEnvironmentTypeUpdatePropertiesInputUserRoleAssignmentsMap>;
+
 /** Properties of a project environment type. These properties can be updated after the resource has been created. */
 export interface ProjectEnvironmentTypeUpdatePropertiesInput {
   /** Id of a subscription that the environment type will be mapped to. The environment's resources will be deployed into this subscription. */
@@ -4316,8 +6154,16 @@ export interface ProjectEnvironmentTypeUpdatePropertiesInput {
   /** Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs. */
   userRoleAssignments?: ProjectEnvironmentTypeUpdatePropertiesInputUserRoleAssignmentsMap;
 }
+const ProjectEnvironmentTypeUpdatePropertiesInput = /*@__PURE__*/ __L.at(
+  __c41,
+  3,
+) as any as S.Schema<ProjectEnvironmentTypeUpdatePropertiesInput>;
+
 /** Resource tags. */
 export type UpdateProjectEnvironmentTypeRequestTagsMap = { [key: string]: string | undefined };
+const UpdateProjectEnvironmentTypeRequestTagsMap =
+  CatalogPropertiesInputTagsMap as any as S.Schema<UpdateProjectEnvironmentTypeRequestTagsMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateProjectEnvironmentTypeRequestIdentity = DevCentersCreateOrUpdateRequestIdentity;
 export interface UpdateProjectEnvironmentTypeRequest {
@@ -4336,6 +6182,11 @@ export interface UpdateProjectEnvironmentTypeRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateRequestIdentity;
 }
+const UpdateProjectEnvironmentTypeRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  4,
+) as any as S.Schema<UpdateProjectEnvironmentTypeRequest>;
+
 /** Resource tags. */
 export type UpdateProjectEnvironmentTypeResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -4358,6 +6209,9 @@ export interface UpdateProjectEnvironmentTypeResponse {
   /** The geo-location for the environment type */
   location?: string;
 }
+const UpdateProjectEnvironmentTypeResponse =
+  GetProjectEnvironmentTypeResponse as any as S.Schema<UpdateProjectEnvironmentTypeResponse>;
+
 /** Resource policies that are a part of this project policy. */
 export type ProjectPolicyUpdatePropertiesResourcePoliciesList = Array<ResourcePolicy>;
 /** Resources that have access to the shared resources that are a part of this project policy. */
@@ -4369,6 +6223,9 @@ export interface ProjectPolicyUpdateProperties {
   /** Resources that have access to the shared resources that are a part of this project policy. */
   scopes?: ProjectPolicyUpdatePropertiesScopesList;
 }
+const ProjectPolicyUpdateProperties =
+  ProjectPolicyPropertiesInput as any as S.Schema<ProjectPolicyUpdateProperties>;
+
 export interface UpdateProjectPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4381,6 +6238,11 @@ export interface UpdateProjectPolicyRequest {
   /** Properties of an project policy to be updated. */
   properties?: ProjectPolicyUpdateProperties;
 }
+const UpdateProjectPolicyRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  5,
+) as any as S.Schema<UpdateProjectPolicyRequest>;
+
 export interface UpdateProjectPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4393,6 +6255,9 @@ export interface UpdateProjectPolicyResponse {
   /** Properties of an project policy. */
   properties?: ProjectPolicyProperties;
 }
+const UpdateProjectPolicyResponse =
+  ProjectPoliciesCreateOrUpdateResponse as any as S.Schema<UpdateProjectPolicyResponse>;
+
 /** Updatable properties of a Schedule. */
 export interface ScheduleUpdateProperties {
   /** Resource tags. */
@@ -4410,6 +6275,11 @@ export interface ScheduleUpdateProperties {
   /** Indicates whether or not this scheduled task is enabled. */
   state?: ScheduleEnableStatus | (string & {});
 }
+const ScheduleUpdateProperties = /*@__PURE__*/ __L.at(
+  __c41,
+  6,
+) as any as S.Schema<ScheduleUpdateProperties>;
+
 export interface UpdateScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4426,6 +6296,11 @@ export interface UpdateScheduleRequest {
   /** Properties of a schedule resource to be updated. */
   properties?: ScheduleUpdateProperties;
 }
+const UpdateScheduleRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  7,
+) as any as S.Schema<UpdateScheduleRequest>;
+
 export interface UpdateScheduleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4438,6 +6313,8 @@ export interface UpdateScheduleResponse {
   /** Properties of a Schedule resource */
   properties?: ScheduleProperties;
 }
+const UpdateScheduleResponse = GetScheduleResponse as any as S.Schema<UpdateScheduleResponse>;
+
 export type AttachedNetworksCreateOrUpdateError = AzureOpError;
 /** Creates or updates an attached NetworkConnection. */
 export const AttachedNetworksCreateOrUpdate: API.OperationMethod<
@@ -4446,8 +6323,8 @@ export const AttachedNetworksCreateOrUpdate: API.OperationMethod<
   AttachedNetworksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AttachedNetworksCreateOrUpdateRequest>,
-  output: __S(4) as any as S.Schema<AttachedNetworksCreateOrUpdateResponse>,
+  input: AttachedNetworksCreateOrUpdateRequest,
+  output: AttachedNetworksCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4461,8 +6338,8 @@ export const CancelProjectCatalogImageDefinitionBuild: API.OperationMethod<
   CancelProjectCatalogImageDefinitionBuildError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CancelProjectCatalogImageDefinitionBuildRequest>,
-  output: __S(6) as any as S.Schema<CancelProjectCatalogImageDefinitionBuildResponse>,
+  input: CancelProjectCatalogImageDefinitionBuildRequest,
+  output: CancelProjectCatalogImageDefinitionBuildResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4476,8 +6353,8 @@ export const CatalogsCreateOrUpdate: API.OperationMethod<
   CatalogsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CatalogsCreateOrUpdateRequest>,
-  output: __S(14) as any as S.Schema<CatalogsCreateOrUpdateResponse>,
+  input: CatalogsCreateOrUpdateRequest,
+  output: CatalogsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4491,8 +6368,8 @@ export const ConnectCatalog: API.OperationMethod<
   ConnectCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<ConnectCatalogRequest>,
-  output: __S(16) as any as S.Schema<ConnectCatalogResponse>,
+  input: ConnectCatalogRequest,
+  output: ConnectCatalogResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4506,8 +6383,8 @@ export const ConnectProjectCatalog: API.OperationMethod<
   ConnectProjectCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<ConnectProjectCatalogRequest>,
-  output: __S(16) as any as S.Schema<ConnectProjectCatalogResponse>,
+  input: ConnectProjectCatalogRequest,
+  output: ConnectProjectCatalogResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4521,8 +6398,8 @@ export const DeleteAttachedNetwork: API.OperationMethod<
   DeleteAttachedNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<DeleteAttachedNetworkRequest>,
-  output: __S(16) as any as S.Schema<DeleteAttachedNetworkResponse>,
+  input: DeleteAttachedNetworkRequest,
+  output: DeleteAttachedNetworkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4536,8 +6413,8 @@ export const DeleteCatalog: API.OperationMethod<
   DeleteCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<DeleteCatalogRequest>,
-  output: __S(16) as any as S.Schema<DeleteCatalogResponse>,
+  input: DeleteCatalogRequest,
+  output: DeleteCatalogResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4551,8 +6428,8 @@ export const DeleteDevBoxDefinition: API.OperationMethod<
   DeleteDevBoxDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<DeleteDevBoxDefinitionRequest>,
-  output: __S(16) as any as S.Schema<DeleteDevBoxDefinitionResponse>,
+  input: DeleteDevBoxDefinitionRequest,
+  output: DeleteDevBoxDefinitionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4566,8 +6443,8 @@ export const DeleteDevCenter: API.OperationMethod<
   DeleteDevCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<DeleteDevCenterRequest>,
-  output: __S(16) as any as S.Schema<DeleteDevCenterResponse>,
+  input: DeleteDevCenterRequest,
+  output: DeleteDevCenterResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4581,8 +6458,8 @@ export const DeleteEnvironmentType: API.OperationMethod<
   DeleteEnvironmentTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<DeleteEnvironmentTypeRequest>,
-  output: __S(16) as any as S.Schema<DeleteEnvironmentTypeResponse>,
+  input: DeleteEnvironmentTypeRequest,
+  output: DeleteEnvironmentTypeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4596,8 +6473,8 @@ export const DeleteGallery: API.OperationMethod<
   DeleteGalleryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<DeleteGalleryRequest>,
-  output: __S(16) as any as S.Schema<DeleteGalleryResponse>,
+  input: DeleteGalleryRequest,
+  output: DeleteGalleryResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4611,8 +6488,8 @@ export const DeleteNetworkConnection: API.OperationMethod<
   DeleteNetworkConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<DeleteNetworkConnectionRequest>,
-  output: __S(25) as any as S.Schema<DeleteNetworkConnectionResponse>,
+  input: DeleteNetworkConnectionRequest,
+  output: DeleteNetworkConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4626,8 +6503,8 @@ export const DeletePool: API.OperationMethod<
   DeletePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<DeletePoolRequest>,
-  output: __S(16) as any as S.Schema<DeletePoolResponse>,
+  input: DeletePoolRequest,
+  output: DeletePoolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4641,8 +6518,8 @@ export const DeleteProject: API.OperationMethod<
   DeleteProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<DeleteProjectRequest>,
-  output: __S(16) as any as S.Schema<DeleteProjectResponse>,
+  input: DeleteProjectRequest,
+  output: DeleteProjectResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4656,8 +6533,8 @@ export const DeleteProjectCatalog: API.OperationMethod<
   DeleteProjectCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<DeleteProjectCatalogRequest>,
-  output: __S(16) as any as S.Schema<DeleteProjectCatalogResponse>,
+  input: DeleteProjectCatalogRequest,
+  output: DeleteProjectCatalogResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4671,8 +6548,8 @@ export const DeleteProjectEnvironmentType: API.OperationMethod<
   DeleteProjectEnvironmentTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<DeleteProjectEnvironmentTypeRequest>,
-  output: __S(6) as any as S.Schema<DeleteProjectEnvironmentTypeResponse>,
+  input: DeleteProjectEnvironmentTypeRequest,
+  output: DeleteProjectEnvironmentTypeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4686,8 +6563,8 @@ export const DeleteProjectPolicy: API.OperationMethod<
   DeleteProjectPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<DeleteProjectPolicyRequest>,
-  output: __S(16) as any as S.Schema<DeleteProjectPolicyResponse>,
+  input: DeleteProjectPolicyRequest,
+  output: DeleteProjectPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4701,8 +6578,8 @@ export const DeleteSchedule: API.OperationMethod<
   DeleteScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<DeleteScheduleRequest>,
-  output: __S(16) as any as S.Schema<DeleteScheduleResponse>,
+  input: DeleteScheduleRequest,
+  output: DeleteScheduleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4716,8 +6593,8 @@ export const DevBoxDefinitionsCreateOrUpdate: API.OperationMethod<
   DevBoxDefinitionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<DevBoxDefinitionsCreateOrUpdateRequest>,
-  output: __S(39) as any as S.Schema<DevBoxDefinitionsCreateOrUpdateResponse>,
+  input: DevBoxDefinitionsCreateOrUpdateRequest,
+  output: DevBoxDefinitionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4731,8 +6608,8 @@ export const DevCentersCreateOrUpdate: API.OperationMethod<
   DevCentersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<DevCentersCreateOrUpdateRequest>,
-  output: __S(54) as any as S.Schema<DevCentersCreateOrUpdateResponse>,
+  input: DevCentersCreateOrUpdateRequest,
+  output: DevCentersCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4746,8 +6623,8 @@ export const EnvironmentTypesCreateOrUpdate: API.OperationMethod<
   EnvironmentTypesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<EnvironmentTypesCreateOrUpdateRequest>,
-  output: __S(58) as any as S.Schema<EnvironmentTypesCreateOrUpdateResponse>,
+  input: EnvironmentTypesCreateOrUpdateRequest,
+  output: EnvironmentTypesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4761,8 +6638,8 @@ export const ExecuteCheckNameAvailability: API.OperationMethod<
   ExecuteCheckNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<ExecuteCheckNameAvailabilityRequest>,
-  output: __S(60) as any as S.Schema<ExecuteCheckNameAvailabilityResponse>,
+  input: ExecuteCheckNameAvailabilityRequest,
+  output: ExecuteCheckNameAvailabilityResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4776,8 +6653,8 @@ export const ExecuteCheckScopedNameAvailability: API.OperationMethod<
   ExecuteCheckScopedNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<ExecuteCheckScopedNameAvailabilityRequest>,
-  output: __S(60) as any as S.Schema<ExecuteCheckScopedNameAvailabilityResponse>,
+  input: ExecuteCheckScopedNameAvailabilityRequest,
+  output: ExecuteCheckScopedNameAvailabilityResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4791,8 +6668,8 @@ export const GalleriesCreateOrUpdate: API.OperationMethod<
   GalleriesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<GalleriesCreateOrUpdateRequest>,
-  output: __S(65) as any as S.Schema<GalleriesCreateOrUpdateResponse>,
+  input: GalleriesCreateOrUpdateRequest,
+  output: GalleriesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4806,8 +6683,8 @@ export const GetAttachedNetworkByDevCenter: API.OperationMethod<
   GetAttachedNetworkByDevCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<GetAttachedNetworkByDevCenterRequest>,
-  output: __S(4) as any as S.Schema<GetAttachedNetworkByDevCenterResponse>,
+  input: GetAttachedNetworkByDevCenterRequest,
+  output: GetAttachedNetworkByDevCenterResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4821,8 +6698,8 @@ export const GetAttachedNetworkByProject: API.OperationMethod<
   GetAttachedNetworkByProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<GetAttachedNetworkByProjectRequest>,
-  output: __S(4) as any as S.Schema<GetAttachedNetworkByProjectResponse>,
+  input: GetAttachedNetworkByProjectRequest,
+  output: GetAttachedNetworkByProjectResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4836,8 +6713,8 @@ export const GetCatalog: API.OperationMethod<
   GetCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<GetCatalogRequest>,
-  output: __S(69) as any as S.Schema<GetCatalogResponse>,
+  input: GetCatalogRequest,
+  output: GetCatalogResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4851,8 +6728,8 @@ export const GetCatalogSyncErrorDetails: API.OperationMethod<
   GetCatalogSyncErrorDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<GetCatalogSyncErrorDetailsRequest>,
-  output: __S(76) as any as S.Schema<SyncErrorDetails>,
+  input: GetCatalogSyncErrorDetailsRequest,
+  output: SyncErrorDetails,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4866,8 +6743,8 @@ export const GetCustomizationTask: API.OperationMethod<
   GetCustomizationTaskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<GetCustomizationTaskRequest>,
-  output: __S(81) as any as S.Schema<GetCustomizationTaskResponse>,
+  input: GetCustomizationTaskRequest,
+  output: GetCustomizationTaskResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4881,8 +6758,8 @@ export const GetCustomizationTaskErrorDetails: API.OperationMethod<
   GetCustomizationTaskErrorDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<GetCustomizationTaskErrorDetailsRequest>,
-  output: __S(83) as any as S.Schema<GetCustomizationTaskErrorDetailsResponse>,
+  input: GetCustomizationTaskErrorDetailsRequest,
+  output: GetCustomizationTaskErrorDetailsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4896,8 +6773,8 @@ export const GetDevBoxDefinition: API.OperationMethod<
   GetDevBoxDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<GetDevBoxDefinitionRequest>,
-  output: __S(39) as any as S.Schema<GetDevBoxDefinitionResponse>,
+  input: GetDevBoxDefinitionRequest,
+  output: GetDevBoxDefinitionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4911,8 +6788,8 @@ export const GetDevBoxDefinitionByProject: API.OperationMethod<
   GetDevBoxDefinitionByProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<GetDevBoxDefinitionByProjectRequest>,
-  output: __S(39) as any as S.Schema<GetDevBoxDefinitionByProjectResponse>,
+  input: GetDevBoxDefinitionByProjectRequest,
+  output: GetDevBoxDefinitionByProjectResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4926,8 +6803,8 @@ export const GetDevCenter: API.OperationMethod<
   GetDevCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<GetDevCenterRequest>,
-  output: __S(87) as any as S.Schema<GetDevCenterResponse>,
+  input: GetDevCenterRequest,
+  output: GetDevCenterResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4941,8 +6818,8 @@ export const GetEnvironmentDefinition: API.OperationMethod<
   GetEnvironmentDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<GetEnvironmentDefinitionRequest>,
-  output: __S(92) as any as S.Schema<GetEnvironmentDefinitionResponse>,
+  input: GetEnvironmentDefinitionRequest,
+  output: GetEnvironmentDefinitionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4956,8 +6833,8 @@ export const GetEnvironmentDefinitionByProjectCatalog: API.OperationMethod<
   GetEnvironmentDefinitionByProjectCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<GetEnvironmentDefinitionByProjectCatalogRequest>,
-  output: __S(92) as any as S.Schema<GetEnvironmentDefinitionByProjectCatalogResponse>,
+  input: GetEnvironmentDefinitionByProjectCatalogRequest,
+  output: GetEnvironmentDefinitionByProjectCatalogResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4971,8 +6848,8 @@ export const GetEnvironmentDefinitionErrorDetails: API.OperationMethod<
   GetEnvironmentDefinitionErrorDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<GetEnvironmentDefinitionErrorDetailsRequest>,
-  output: __S(83) as any as S.Schema<GetEnvironmentDefinitionErrorDetailsResponse>,
+  input: GetEnvironmentDefinitionErrorDetailsRequest,
+  output: GetEnvironmentDefinitionErrorDetailsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4986,8 +6863,8 @@ export const GetEnvironmentType: API.OperationMethod<
   GetEnvironmentTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<GetEnvironmentTypeRequest>,
-  output: __S(58) as any as S.Schema<GetEnvironmentTypeResponse>,
+  input: GetEnvironmentTypeRequest,
+  output: GetEnvironmentTypeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5001,8 +6878,8 @@ export const GetGallery: API.OperationMethod<
   GetGalleryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<GetGalleryRequest>,
-  output: __S(97) as any as S.Schema<GetGalleryResponse>,
+  input: GetGalleryRequest,
+  output: GetGalleryResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5016,8 +6893,8 @@ export const GetImage: API.OperationMethod<
   GetImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<GetImageRequest>,
-  output: __S(102) as any as S.Schema<GetImageResponse>,
+  input: GetImageRequest,
+  output: GetImageResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5031,8 +6908,8 @@ export const GetImageByProject: API.OperationMethod<
   GetImageByProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<GetImageByProjectRequest>,
-  output: __S(104) as any as S.Schema<GetImageByProjectResponse>,
+  input: GetImageByProjectRequest,
+  output: GetImageByProjectResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5046,8 +6923,8 @@ export const GetImageVersion: API.OperationMethod<
   GetImageVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<GetImageVersionRequest>,
-  output: __S(107) as any as S.Schema<GetImageVersionResponse>,
+  input: GetImageVersionRequest,
+  output: GetImageVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5061,8 +6938,8 @@ export const GetImageVersionByProject: API.OperationMethod<
   GetImageVersionByProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<GetImageVersionByProjectRequest>,
-  output: __S(109) as any as S.Schema<GetImageVersionByProjectResponse>,
+  input: GetImageVersionByProjectRequest,
+  output: GetImageVersionByProjectResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5076,8 +6953,8 @@ export const GetNetworkConnection: API.OperationMethod<
   GetNetworkConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<GetNetworkConnectionRequest>,
-  output: __S(112) as any as S.Schema<GetNetworkConnectionResponse>,
+  input: GetNetworkConnectionRequest,
+  output: GetNetworkConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5091,8 +6968,8 @@ export const GetNetworkConnectionHealthDetails: API.OperationMethod<
   GetNetworkConnectionHealthDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<GetNetworkConnectionHealthDetailsRequest>,
-  output: __S(117) as any as S.Schema<GetNetworkConnectionHealthDetailsResponse>,
+  input: GetNetworkConnectionHealthDetailsRequest,
+  output: GetNetworkConnectionHealthDetailsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5106,8 +6983,8 @@ export const GetOperationStatus: API.OperationMethod<
   GetOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<GetOperationStatusRequest>,
-  output: __S(126) as any as S.Schema<GetOperationStatusResponse>,
+  input: GetOperationStatusRequest,
+  output: GetOperationStatusResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5121,8 +6998,8 @@ export const GetPool: API.OperationMethod<
   GetPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<GetPoolRequest>,
-  output: __S(134) as any as S.Schema<GetPoolResponse>,
+  input: GetPoolRequest,
+  output: GetPoolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5136,8 +7013,8 @@ export const GetProject: API.OperationMethod<
   GetProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<GetProjectRequest>,
-  output: __S(138) as any as S.Schema<GetProjectResponse>,
+  input: GetProjectRequest,
+  output: GetProjectResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5151,8 +7028,8 @@ export const GetProjectAllowedEnvironmentType: API.OperationMethod<
   GetProjectAllowedEnvironmentTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<GetProjectAllowedEnvironmentTypeRequest>,
-  output: __S(141) as any as S.Schema<GetProjectAllowedEnvironmentTypeResponse>,
+  input: GetProjectAllowedEnvironmentTypeRequest,
+  output: GetProjectAllowedEnvironmentTypeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5166,8 +7043,8 @@ export const GetProjectCatalog: API.OperationMethod<
   GetProjectCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<GetProjectCatalogRequest>,
-  output: __S(14) as any as S.Schema<GetProjectCatalogResponse>,
+  input: GetProjectCatalogRequest,
+  output: GetProjectCatalogResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5181,8 +7058,8 @@ export const GetProjectCatalogEnvironmentDefinitionErrorDetails: API.OperationMe
   GetProjectCatalogEnvironmentDefinitionErrorDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143) as any as S.Schema<GetProjectCatalogEnvironmentDefinitionErrorDetailsRequest>,
-  output: __S(145) as any as S.Schema<GetProjectCatalogEnvironmentDefinitionErrorDetailsResponse>,
+  input: GetProjectCatalogEnvironmentDefinitionErrorDetailsRequest,
+  output: GetProjectCatalogEnvironmentDefinitionErrorDetailsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5196,8 +7073,8 @@ export const GetProjectCatalogImageDefinitionBuild: API.OperationMethod<
   GetProjectCatalogImageDefinitionBuildError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<GetProjectCatalogImageDefinitionBuildRequest>,
-  output: __S(148) as any as S.Schema<GetProjectCatalogImageDefinitionBuildResponse>,
+  input: GetProjectCatalogImageDefinitionBuildRequest,
+  output: GetProjectCatalogImageDefinitionBuildResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5211,8 +7088,8 @@ export const GetProjectCatalogImageDefinitionBuildBuildDetails: API.OperationMet
   GetProjectCatalogImageDefinitionBuildBuildDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<GetProjectCatalogImageDefinitionBuildBuildDetailsRequest>,
-  output: __S(156) as any as S.Schema<GetProjectCatalogImageDefinitionBuildBuildDetailsResponse>,
+  input: GetProjectCatalogImageDefinitionBuildBuildDetailsRequest,
+  output: GetProjectCatalogImageDefinitionBuildBuildDetailsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5226,8 +7103,8 @@ export const GetProjectCatalogImageDefinitionByProjectCatalog: API.OperationMeth
   GetProjectCatalogImageDefinitionByProjectCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157) as any as S.Schema<GetProjectCatalogImageDefinitionByProjectCatalogRequest>,
-  output: __S(160) as any as S.Schema<GetProjectCatalogImageDefinitionByProjectCatalogResponse>,
+  input: GetProjectCatalogImageDefinitionByProjectCatalogRequest,
+  output: GetProjectCatalogImageDefinitionByProjectCatalogResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5241,8 +7118,8 @@ export const GetProjectCatalogImageDefinitionErrorDetails: API.OperationMethod<
   GetProjectCatalogImageDefinitionErrorDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161) as any as S.Schema<GetProjectCatalogImageDefinitionErrorDetailsRequest>,
-  output: __S(83) as any as S.Schema<GetProjectCatalogImageDefinitionErrorDetailsResponse>,
+  input: GetProjectCatalogImageDefinitionErrorDetailsRequest,
+  output: GetProjectCatalogImageDefinitionErrorDetailsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5256,8 +7133,8 @@ export const GetProjectCatalogSyncErrorDetails: API.OperationMethod<
   GetProjectCatalogSyncErrorDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162) as any as S.Schema<GetProjectCatalogSyncErrorDetailsRequest>,
-  output: __S(76) as any as S.Schema<SyncErrorDetails>,
+  input: GetProjectCatalogSyncErrorDetailsRequest,
+  output: SyncErrorDetails,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5271,8 +7148,8 @@ export const GetProjectEnvironmentType: API.OperationMethod<
   GetProjectEnvironmentTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<GetProjectEnvironmentTypeRequest>,
-  output: __S(170) as any as S.Schema<GetProjectEnvironmentTypeResponse>,
+  input: GetProjectEnvironmentTypeRequest,
+  output: GetProjectEnvironmentTypeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5286,8 +7163,8 @@ export const GetProjectInheritedSettings: API.OperationMethod<
   GetProjectInheritedSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171) as any as S.Schema<GetProjectInheritedSettingsRequest>,
-  output: __S(172) as any as S.Schema<InheritedSettingsForProject>,
+  input: GetProjectInheritedSettingsRequest,
+  output: InheritedSettingsForProject,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5301,8 +7178,8 @@ export const GetProjectPolicy: API.OperationMethod<
   GetProjectPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173) as any as S.Schema<GetProjectPolicyRequest>,
-  output: __S(177) as any as S.Schema<GetProjectPolicyResponse>,
+  input: GetProjectPolicyRequest,
+  output: GetProjectPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5316,8 +7193,8 @@ export const GetSchedule: API.OperationMethod<
   GetScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178) as any as S.Schema<GetScheduleRequest>,
-  output: __S(181) as any as S.Schema<GetScheduleResponse>,
+  input: GetScheduleRequest,
+  output: GetScheduleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5331,8 +7208,8 @@ export const ListAttachedNetworkByDevCenter: API.OperationMethod<
   ListAttachedNetworkByDevCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<ListAttachedNetworkByDevCenterRequest>,
-  output: __S(184) as any as S.Schema<AttachedNetworkListResult>,
+  input: ListAttachedNetworkByDevCenterRequest,
+  output: AttachedNetworkListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5346,8 +7223,8 @@ export const ListAttachedNetworkByProject: API.OperationMethod<
   ListAttachedNetworkByProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<ListAttachedNetworkByProjectRequest>,
-  output: __S(184) as any as S.Schema<AttachedNetworkListResult>,
+  input: ListAttachedNetworkByProjectRequest,
+  output: AttachedNetworkListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5361,8 +7238,8 @@ export const ListCatalogByDevCenter: API.OperationMethod<
   ListCatalogByDevCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<ListCatalogByDevCenterRequest>,
-  output: __S(188) as any as S.Schema<CatalogListResult>,
+  input: ListCatalogByDevCenterRequest,
+  output: CatalogListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5376,8 +7253,8 @@ export const ListCustomizationTaskByCatalog: API.OperationMethod<
   ListCustomizationTaskByCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189) as any as S.Schema<ListCustomizationTaskByCatalogRequest>,
-  output: __S(192) as any as S.Schema<CustomizationTaskListResult>,
+  input: ListCustomizationTaskByCatalogRequest,
+  output: CustomizationTaskListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5391,8 +7268,8 @@ export const ListDevBoxDefinitionByDevCenter: API.OperationMethod<
   ListDevBoxDefinitionByDevCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<ListDevBoxDefinitionByDevCenterRequest>,
-  output: __S(196) as any as S.Schema<DevBoxDefinitionListResult>,
+  input: ListDevBoxDefinitionByDevCenterRequest,
+  output: DevBoxDefinitionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5406,8 +7283,8 @@ export const ListDevBoxDefinitionByProject: API.OperationMethod<
   ListDevBoxDefinitionByProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197) as any as S.Schema<ListDevBoxDefinitionByProjectRequest>,
-  output: __S(196) as any as S.Schema<DevBoxDefinitionListResult>,
+  input: ListDevBoxDefinitionByProjectRequest,
+  output: DevBoxDefinitionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5421,8 +7298,8 @@ export const ListDevCenterByResourceGroup: API.OperationMethod<
   ListDevCenterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198) as any as S.Schema<ListDevCenterByResourceGroupRequest>,
-  output: __S(200) as any as S.Schema<DevCenterListResult>,
+  input: ListDevCenterByResourceGroupRequest,
+  output: DevCenterListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5436,8 +7313,8 @@ export const ListDevCenterBySubscription: API.OperationMethod<
   ListDevCenterBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201) as any as S.Schema<ListDevCenterBySubscriptionRequest>,
-  output: __S(200) as any as S.Schema<DevCenterListResult>,
+  input: ListDevCenterBySubscriptionRequest,
+  output: DevCenterListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5451,8 +7328,8 @@ export const ListEnvironmentDefinitionByCatalog: API.OperationMethod<
   ListEnvironmentDefinitionByCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202) as any as S.Schema<ListEnvironmentDefinitionByCatalogRequest>,
-  output: __S(205) as any as S.Schema<EnvironmentDefinitionListResult>,
+  input: ListEnvironmentDefinitionByCatalogRequest,
+  output: EnvironmentDefinitionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5466,8 +7343,8 @@ export const ListEnvironmentDefinitionByProjectCatalog: API.OperationMethod<
   ListEnvironmentDefinitionByProjectCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206) as any as S.Schema<ListEnvironmentDefinitionByProjectCatalogRequest>,
-  output: __S(205) as any as S.Schema<EnvironmentDefinitionListResult>,
+  input: ListEnvironmentDefinitionByProjectCatalogRequest,
+  output: EnvironmentDefinitionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5481,8 +7358,8 @@ export const ListEnvironmentTypeByDevCenter: API.OperationMethod<
   ListEnvironmentTypeByDevCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207) as any as S.Schema<ListEnvironmentTypeByDevCenterRequest>,
-  output: __S(210) as any as S.Schema<EnvironmentTypeListResult>,
+  input: ListEnvironmentTypeByDevCenterRequest,
+  output: EnvironmentTypeListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5496,8 +7373,8 @@ export const ListGalleryByDevCenter: API.OperationMethod<
   ListGalleryByDevCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211) as any as S.Schema<ListGalleryByDevCenterRequest>,
-  output: __S(213) as any as S.Schema<GalleryListResult>,
+  input: ListGalleryByDevCenterRequest,
+  output: GalleryListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5511,8 +7388,8 @@ export const ListImageByDevCenter: API.OperationMethod<
   ListImageByDevCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214) as any as S.Schema<ListImageByDevCenterRequest>,
-  output: __S(216) as any as S.Schema<ImageListResult>,
+  input: ListImageByDevCenterRequest,
+  output: ImageListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5526,8 +7403,8 @@ export const ListImageByGallery: API.OperationMethod<
   ListImageByGalleryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217) as any as S.Schema<ListImageByGalleryRequest>,
-  output: __S(216) as any as S.Schema<ImageListResult>,
+  input: ListImageByGalleryRequest,
+  output: ImageListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5541,8 +7418,8 @@ export const ListImageByProject: API.OperationMethod<
   ListImageByProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218) as any as S.Schema<ListImageByProjectRequest>,
-  output: __S(216) as any as S.Schema<ImageListResult>,
+  input: ListImageByProjectRequest,
+  output: ImageListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5556,8 +7433,8 @@ export const ListImageVersionByImage: API.OperationMethod<
   ListImageVersionByImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219) as any as S.Schema<ListImageVersionByImageRequest>,
-  output: __S(221) as any as S.Schema<ImageVersionListResult>,
+  input: ListImageVersionByImageRequest,
+  output: ImageVersionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5571,8 +7448,8 @@ export const ListImageVersionByProject: API.OperationMethod<
   ListImageVersionByProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222) as any as S.Schema<ListImageVersionByProjectRequest>,
-  output: __S(221) as any as S.Schema<ImageVersionListResult>,
+  input: ListImageVersionByProjectRequest,
+  output: ImageVersionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5586,8 +7463,8 @@ export const ListNetworkConnectionByResourceGroup: API.OperationMethod<
   ListNetworkConnectionByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223) as any as S.Schema<ListNetworkConnectionByResourceGroupRequest>,
-  output: __S(226) as any as S.Schema<NetworkConnectionListResult>,
+  input: ListNetworkConnectionByResourceGroupRequest,
+  output: NetworkConnectionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5601,8 +7478,8 @@ export const ListNetworkConnectionBySubscription: API.OperationMethod<
   ListNetworkConnectionBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227) as any as S.Schema<ListNetworkConnectionBySubscriptionRequest>,
-  output: __S(226) as any as S.Schema<NetworkConnectionListResult>,
+  input: ListNetworkConnectionBySubscriptionRequest,
+  output: NetworkConnectionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5616,8 +7493,8 @@ export const ListNetworkConnectionHealthDetails: API.OperationMethod<
   ListNetworkConnectionHealthDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228) as any as S.Schema<ListNetworkConnectionHealthDetailsRequest>,
-  output: __S(231) as any as S.Schema<HealthCheckStatusDetailsListResult>,
+  input: ListNetworkConnectionHealthDetailsRequest,
+  output: HealthCheckStatusDetailsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5631,10 +7508,8 @@ export const ListNetworkConnectionOutboundNetworkDependenciesEndpoints: API.Oper
   ListNetworkConnectionOutboundNetworkDependenciesEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    232,
-  ) as any as S.Schema<ListNetworkConnectionOutboundNetworkDependenciesEndpointsRequest>,
-  output: __S(239) as any as S.Schema<OutboundEnvironmentEndpointCollection>,
+  input: ListNetworkConnectionOutboundNetworkDependenciesEndpointsRequest,
+  output: OutboundEnvironmentEndpointCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5648,8 +7523,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240) as any as S.Schema<ListOperationsRequest>,
-  output: __S(244) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5663,8 +7538,8 @@ export const ListPoolByProject: API.OperationMethod<
   ListPoolByProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245) as any as S.Schema<ListPoolByProjectRequest>,
-  output: __S(247) as any as S.Schema<PoolListResult>,
+  input: ListPoolByProjectRequest,
+  output: PoolListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5678,8 +7553,8 @@ export const ListProjectAllowedEnvironmentTypes: API.OperationMethod<
   ListProjectAllowedEnvironmentTypesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248) as any as S.Schema<ListProjectAllowedEnvironmentTypesRequest>,
-  output: __S(251) as any as S.Schema<AllowedEnvironmentTypeListResult>,
+  input: ListProjectAllowedEnvironmentTypesRequest,
+  output: AllowedEnvironmentTypeListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5693,8 +7568,8 @@ export const ListProjectByResourceGroup: API.OperationMethod<
   ListProjectByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252) as any as S.Schema<ListProjectByResourceGroupRequest>,
-  output: __S(254) as any as S.Schema<ProjectListResult>,
+  input: ListProjectByResourceGroupRequest,
+  output: ProjectListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5708,8 +7583,8 @@ export const ListProjectBySubscription: API.OperationMethod<
   ListProjectBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255) as any as S.Schema<ListProjectBySubscriptionRequest>,
-  output: __S(254) as any as S.Schema<ProjectListResult>,
+  input: ListProjectBySubscriptionRequest,
+  output: ProjectListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5723,10 +7598,8 @@ export const ListProjectCatalogImageDefinitionBuildByImageDefinition: API.Operat
   ListProjectCatalogImageDefinitionBuildByImageDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    256,
-  ) as any as S.Schema<ListProjectCatalogImageDefinitionBuildByImageDefinitionRequest>,
-  output: __S(259) as any as S.Schema<ImageDefinitionBuildListResult>,
+  input: ListProjectCatalogImageDefinitionBuildByImageDefinitionRequest,
+  output: ImageDefinitionBuildListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5740,8 +7613,8 @@ export const ListProjectCatalogImageDefinitionByProjectCatalog: API.OperationMet
   ListProjectCatalogImageDefinitionByProjectCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260) as any as S.Schema<ListProjectCatalogImageDefinitionByProjectCatalogRequest>,
-  output: __S(263) as any as S.Schema<ImageDefinitionListResult>,
+  input: ListProjectCatalogImageDefinitionByProjectCatalogRequest,
+  output: ImageDefinitionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5755,8 +7628,8 @@ export const ListProjectCatalogs: API.OperationMethod<
   ListProjectCatalogsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264) as any as S.Schema<ListProjectCatalogsRequest>,
-  output: __S(188) as any as S.Schema<CatalogListResult>,
+  input: ListProjectCatalogsRequest,
+  output: CatalogListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5770,8 +7643,8 @@ export const ListProjectEnvironmentTypes: API.OperationMethod<
   ListProjectEnvironmentTypesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265) as any as S.Schema<ListProjectEnvironmentTypesRequest>,
-  output: __S(268) as any as S.Schema<ProjectEnvironmentTypeListResult>,
+  input: ListProjectEnvironmentTypesRequest,
+  output: ProjectEnvironmentTypeListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5785,8 +7658,8 @@ export const ListProjectPolicyByDevCenter: API.OperationMethod<
   ListProjectPolicyByDevCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269) as any as S.Schema<ListProjectPolicyByDevCenterRequest>,
-  output: __S(271) as any as S.Schema<ProjectPolicyListResult>,
+  input: ListProjectPolicyByDevCenterRequest,
+  output: ProjectPolicyListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5800,8 +7673,8 @@ export const ListScheduleByPool: API.OperationMethod<
   ListScheduleByPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272) as any as S.Schema<ListScheduleByPoolRequest>,
-  output: __S(274) as any as S.Schema<ScheduleListResult>,
+  input: ListScheduleByPoolRequest,
+  output: ScheduleListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5815,8 +7688,8 @@ export const ListSkusByProject: API.OperationMethod<
   ListSkusByProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275) as any as S.Schema<ListSkusByProjectRequest>,
-  output: __S(280) as any as S.Schema<ListSkusByProjectResponse>,
+  input: ListSkusByProjectRequest,
+  output: ListSkusByProjectResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5830,8 +7703,8 @@ export const ListSkusBySubscription: API.OperationMethod<
   ListSkusBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281) as any as S.Schema<ListSkusBySubscriptionRequest>,
-  output: __S(284) as any as S.Schema<SkuListResult>,
+  input: ListSkusBySubscriptionRequest,
+  output: SkuListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5845,8 +7718,8 @@ export const ListUsageByLocation: API.OperationMethod<
   ListUsageByLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285) as any as S.Schema<ListUsageByLocationRequest>,
-  output: __S(289) as any as S.Schema<ListUsagesResult>,
+  input: ListUsageByLocationRequest,
+  output: ListUsagesResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5860,8 +7733,8 @@ export const NetworkConnectionsCreateOrUpdate: API.OperationMethod<
   NetworkConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291) as any as S.Schema<NetworkConnectionsCreateOrUpdateRequest>,
-  output: __S(112) as any as S.Schema<NetworkConnectionsCreateOrUpdateResponse>,
+  input: NetworkConnectionsCreateOrUpdateRequest,
+  output: NetworkConnectionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5875,8 +7748,8 @@ export const PatchProjectCatalog: API.OperationMethod<
   PatchProjectCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293) as any as S.Schema<PatchProjectCatalogRequest>,
-  output: __S(14) as any as S.Schema<PatchProjectCatalogResponse>,
+  input: PatchProjectCatalogRequest,
+  output: PatchProjectCatalogResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5890,8 +7763,8 @@ export const PoolsCreateOrUpdate: API.OperationMethod<
   PoolsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296) as any as S.Schema<PoolsCreateOrUpdateRequest>,
-  output: __S(297) as any as S.Schema<PoolsCreateOrUpdateResponse>,
+  input: PoolsCreateOrUpdateRequest,
+  output: PoolsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5905,8 +7778,8 @@ export const ProjectCatalogImageDefinitionsBuildImage: API.OperationMethod<
   ProjectCatalogImageDefinitionsBuildImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298) as any as S.Schema<ProjectCatalogImageDefinitionsBuildImageRequest>,
-  output: __S(6) as any as S.Schema<ProjectCatalogImageDefinitionsBuildImageResponse>,
+  input: ProjectCatalogImageDefinitionsBuildImageRequest,
+  output: ProjectCatalogImageDefinitionsBuildImageResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5920,8 +7793,8 @@ export const ProjectCatalogsCreateOrUpdate: API.OperationMethod<
   ProjectCatalogsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299) as any as S.Schema<ProjectCatalogsCreateOrUpdateRequest>,
-  output: __S(14) as any as S.Schema<ProjectCatalogsCreateOrUpdateResponse>,
+  input: ProjectCatalogsCreateOrUpdateRequest,
+  output: ProjectCatalogsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5935,8 +7808,8 @@ export const ProjectEnvironmentTypesCreateOrUpdate: API.OperationMethod<
   ProjectEnvironmentTypesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305) as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateRequest>,
-  output: __S(170) as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateResponse>,
+  input: ProjectEnvironmentTypesCreateOrUpdateRequest,
+  output: ProjectEnvironmentTypesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5950,8 +7823,8 @@ export const ProjectPoliciesCreateOrUpdate: API.OperationMethod<
   ProjectPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307) as any as S.Schema<ProjectPoliciesCreateOrUpdateRequest>,
-  output: __S(308) as any as S.Schema<ProjectPoliciesCreateOrUpdateResponse>,
+  input: ProjectPoliciesCreateOrUpdateRequest,
+  output: ProjectPoliciesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5965,8 +7838,8 @@ export const ProjectsCreateOrUpdate: API.OperationMethod<
   ProjectsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310) as any as S.Schema<ProjectsCreateOrUpdateRequest>,
-  output: __S(311) as any as S.Schema<ProjectsCreateOrUpdateResponse>,
+  input: ProjectsCreateOrUpdateRequest,
+  output: ProjectsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5980,8 +7853,8 @@ export const RunNetworkConnectionHealthChecks: API.OperationMethod<
   RunNetworkConnectionHealthChecksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312) as any as S.Schema<RunNetworkConnectionHealthChecksRequest>,
-  output: __S(6) as any as S.Schema<RunNetworkConnectionHealthChecksResponse>,
+  input: RunNetworkConnectionHealthChecksRequest,
+  output: RunNetworkConnectionHealthChecksResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5995,8 +7868,8 @@ export const RunPoolHealthChecks: API.OperationMethod<
   RunPoolHealthChecksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313) as any as S.Schema<RunPoolHealthChecksRequest>,
-  output: __S(16) as any as S.Schema<RunPoolHealthChecksResponse>,
+  input: RunPoolHealthChecksRequest,
+  output: RunPoolHealthChecksResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6010,8 +7883,8 @@ export const SchedulesCreateOrUpdate: API.OperationMethod<
   SchedulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315) as any as S.Schema<SchedulesCreateOrUpdateRequest>,
-  output: __S(316) as any as S.Schema<SchedulesCreateOrUpdateResponse>,
+  input: SchedulesCreateOrUpdateRequest,
+  output: SchedulesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6025,8 +7898,8 @@ export const SyncCatalog: API.OperationMethod<
   SyncCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317) as any as S.Schema<SyncCatalogRequest>,
-  output: __S(16) as any as S.Schema<SyncCatalogResponse>,
+  input: SyncCatalogRequest,
+  output: SyncCatalogResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6040,8 +7913,8 @@ export const SyncProjectCatalog: API.OperationMethod<
   SyncProjectCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318) as any as S.Schema<SyncProjectCatalogRequest>,
-  output: __S(16) as any as S.Schema<SyncProjectCatalogResponse>,
+  input: SyncProjectCatalogRequest,
+  output: SyncProjectCatalogResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6055,8 +7928,8 @@ export const UpdateCatalog: API.OperationMethod<
   UpdateCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319) as any as S.Schema<UpdateCatalogRequest>,
-  output: __S(69) as any as S.Schema<UpdateCatalogResponse>,
+  input: UpdateCatalogRequest,
+  output: UpdateCatalogResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6070,8 +7943,8 @@ export const UpdateDevBoxDefinition: API.OperationMethod<
   UpdateDevBoxDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321) as any as S.Schema<UpdateDevBoxDefinitionRequest>,
-  output: __S(39) as any as S.Schema<UpdateDevBoxDefinitionResponse>,
+  input: UpdateDevBoxDefinitionRequest,
+  output: UpdateDevBoxDefinitionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6085,8 +7958,8 @@ export const UpdateDevCenter: API.OperationMethod<
   UpdateDevCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322) as any as S.Schema<UpdateDevCenterRequest>,
-  output: __S(87) as any as S.Schema<UpdateDevCenterResponse>,
+  input: UpdateDevCenterRequest,
+  output: UpdateDevCenterResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6100,8 +7973,8 @@ export const UpdateEnvironmentType: API.OperationMethod<
   UpdateEnvironmentTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323) as any as S.Schema<UpdateEnvironmentTypeRequest>,
-  output: __S(58) as any as S.Schema<UpdateEnvironmentTypeResponse>,
+  input: UpdateEnvironmentTypeRequest,
+  output: UpdateEnvironmentTypeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6115,8 +7988,8 @@ export const UpdateNetworkConnection: API.OperationMethod<
   UpdateNetworkConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325) as any as S.Schema<UpdateNetworkConnectionRequest>,
-  output: __S(112) as any as S.Schema<UpdateNetworkConnectionResponse>,
+  input: UpdateNetworkConnectionRequest,
+  output: UpdateNetworkConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6130,8 +8003,8 @@ export const UpdatePool: API.OperationMethod<
   UpdatePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(327) as any as S.Schema<UpdatePoolRequest>,
-  output: __S(134) as any as S.Schema<UpdatePoolResponse>,
+  input: UpdatePoolRequest,
+  output: UpdatePoolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6145,8 +8018,8 @@ export const UpdateProject: API.OperationMethod<
   UpdateProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328) as any as S.Schema<UpdateProjectRequest>,
-  output: __S(138) as any as S.Schema<UpdateProjectResponse>,
+  input: UpdateProjectRequest,
+  output: UpdateProjectResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6160,8 +8033,8 @@ export const UpdateProjectEnvironmentType: API.OperationMethod<
   UpdateProjectEnvironmentTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(332) as any as S.Schema<UpdateProjectEnvironmentTypeRequest>,
-  output: __S(170) as any as S.Schema<UpdateProjectEnvironmentTypeResponse>,
+  input: UpdateProjectEnvironmentTypeRequest,
+  output: UpdateProjectEnvironmentTypeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6175,8 +8048,8 @@ export const UpdateProjectPolicy: API.OperationMethod<
   UpdateProjectPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333) as any as S.Schema<UpdateProjectPolicyRequest>,
-  output: __S(308) as any as S.Schema<UpdateProjectPolicyResponse>,
+  input: UpdateProjectPolicyRequest,
+  output: UpdateProjectPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6190,8 +8063,8 @@ export const UpdateSchedule: API.OperationMethod<
   UpdateScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335) as any as S.Schema<UpdateScheduleRequest>,
-  output: __S(181) as any as S.Schema<UpdateScheduleResponse>,
+  input: UpdateScheduleRequest,
+  output: UpdateScheduleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6204,8 +8077,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           networkConnectionId: S.String,
-          healthCheckStatus: S.optional(S.String),
-          domainJoinType: S.optional(S.String),
+          healthCheckStatus: S.optional(AttachedNetworkConnectionPropertiesInputHealthCheckStatus),
+          domainJoinType: S.optional(AttachedNetworkConnectionPropertiesInputDomainJoinType),
         }),
       ).annotate({
         identifier: "AttachedNetworkConnectionPropertiesInput",
@@ -6217,7 +8090,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           devCenterName: S.String.pipe(T.Label()),
           attachedNetworkConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(0)),
+          properties: S.optional(AttachedNetworkConnectionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6233,21 +8106,21 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(AttachedNetworkConnectionPropertiesProvisioningState),
           networkConnectionId: S.String,
           networkConnectionLocation: S.optional(S.String),
-          healthCheckStatus: S.optional(S.String),
-          domainJoinType: S.optional(S.String),
+          healthCheckStatus: S.optional(AttachedNetworkConnectionPropertiesHealthCheckStatus),
+          domainJoinType: S.optional(AttachedNetworkConnectionPropertiesDomainJoinType),
         }),
       ).annotate({
         identifier: "AttachedNetworkConnectionProperties",
@@ -6258,8 +8131,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AttachedNetworkConnectionProperties),
         }),
       ).annotate({
         identifier: "AttachedNetworksCreateOrUpdateResponse",
@@ -6306,10 +8179,10 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          gitHub: S.optional(__S(7)),
-          adoGit: S.optional(__S(7)),
-          syncType: S.optional(S.String),
-          tags: S.optional(__S(8)),
+          gitHub: S.optional(GitCatalog),
+          adoGit: S.optional(GitCatalog),
+          syncType: S.optional(CatalogPropertiesInputSyncType),
+          tags: S.optional(CatalogPropertiesInputTagsMap),
         }),
       ).annotate({ identifier: "CatalogPropertiesInput" });
     case 2:
@@ -6319,7 +8192,7 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           devCenterName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(9)),
+          properties: S.optional(CatalogPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6332,7 +8205,7 @@ function __c1(j: number): any {
         identifier: "CatalogsCreateOrUpdateRequest",
       });
     case 3:
-      return S.Array(S.String);
+      return S.Array(CatalogItemType);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -6342,20 +8215,20 @@ function __c1(j: number): any {
           removed: S.optional(S.Number),
           validationErrors: S.optional(S.Number),
           synchronizationErrors: S.optional(S.Number),
-          syncedCatalogItemTypes: S.optional(__S(11)),
+          syncedCatalogItemTypes: S.optional(SyncStatsSyncedCatalogItemTypesList),
         }),
       ).annotate({ identifier: "SyncStats" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          gitHub: S.optional(__S(7)),
-          adoGit: S.optional(__S(7)),
-          syncType: S.optional(S.String),
-          tags: S.optional(__S(8)),
-          provisioningState: S.optional(S.String),
-          syncState: S.optional(S.String),
-          lastSyncStats: S.optional(__S(12)),
-          connectionState: S.optional(S.String),
+          gitHub: S.optional(GitCatalog),
+          adoGit: S.optional(GitCatalog),
+          syncType: S.optional(CatalogPropertiesSyncType),
+          tags: S.optional(CatalogPropertiesTagsMap),
+          provisioningState: S.optional(CatalogPropertiesProvisioningState),
+          syncState: S.optional(CatalogPropertiesSyncState),
+          lastSyncStats: S.optional(SyncStats),
+          connectionState: S.optional(CatalogPropertiesConnectionState),
           lastConnectionTime: S.optional(S.String),
           lastSyncTime: S.optional(S.String),
         }),
@@ -6366,8 +8239,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(13)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CatalogProperties),
         }),
       ).annotate({
         identifier: "CatalogsCreateOrUpdateResponse",
@@ -6659,7 +8532,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          tier: S.optional(S.String),
+          tier: S.optional(SkuTier),
           size: S.optional(S.String),
           family: S.optional(S.String),
           capacity: S.optional(S.Number),
@@ -6679,14 +8552,16 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          imageReference: __S(32),
-          sku: __S(33),
+          imageReference: DevBoxDefinitionPropertiesInputImageReference,
+          sku: DevBoxDefinitionPropertiesInputSku,
           osStorageType: S.optional(S.String),
-          hibernateSupport: S.optional(S.String),
-          imageValidationStatus: S.optional(S.String),
-          imageValidationErrorDetails: S.optional(__S(34)),
-          validationStatus: S.optional(S.String),
-          activeImageReference: S.optional(__S(32)),
+          hibernateSupport: S.optional(HibernateSupport),
+          imageValidationStatus: S.optional(DevBoxDefinitionPropertiesInputImageValidationStatus),
+          imageValidationErrorDetails: S.optional(
+            DevBoxDefinitionPropertiesInputImageValidationErrorDetails,
+          ),
+          validationStatus: S.optional(DevBoxDefinitionPropertiesInputValidationStatus),
+          activeImageReference: S.optional(DevBoxDefinitionPropertiesInputImageReference),
         }),
       ).annotate({
         identifier: "DevBoxDefinitionPropertiesInput",
@@ -6698,9 +8573,9 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           devCenterName: S.String.pipe(T.Label()),
           devBoxDefinitionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8)),
+          tags: S.optional(DevBoxDefinitionsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(35)),
+          properties: S.optional(DevBoxDefinitionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6724,15 +8599,17 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          imageReference: __S(37),
-          sku: __S(33),
+          imageReference: DevBoxDefinitionPropertiesImageReference,
+          sku: DevBoxDefinitionPropertiesSku,
           osStorageType: S.optional(S.String),
-          hibernateSupport: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          imageValidationStatus: S.optional(S.String),
-          imageValidationErrorDetails: S.optional(__S(34)),
-          validationStatus: S.optional(S.String),
-          activeImageReference: S.optional(__S(37)),
+          hibernateSupport: S.optional(HibernateSupport),
+          provisioningState: S.optional(DevBoxDefinitionPropertiesProvisioningState),
+          imageValidationStatus: S.optional(DevBoxDefinitionPropertiesImageValidationStatus),
+          imageValidationErrorDetails: S.optional(
+            DevBoxDefinitionPropertiesInputImageValidationErrorDetails,
+          ),
+          validationStatus: S.optional(DevBoxDefinitionPropertiesValidationStatus),
+          activeImageReference: S.optional(DevBoxDefinitionPropertiesImageReference),
         }),
       ).annotate({
         identifier: "DevBoxDefinitionProperties",
@@ -6743,10 +8620,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(8)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(DevBoxDefinitionsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(38)),
+          properties: S.optional(DevBoxDefinitionProperties),
         }),
       ).annotate({
         identifier: "DevBoxDefinitionsCreateOrUpdateResponse",
@@ -6758,7 +8635,9 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          identityType: S.optional(S.String),
+          identityType: S.optional(
+            EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType,
+          ),
           userAssignedIdentityResourceId: S.optional(S.String),
           delegatedIdentityClientId: S.optional(S.String),
         }),
@@ -6768,7 +8647,9 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          keyEncryptionKeyIdentity: S.optional(__S(40)),
+          keyEncryptionKeyIdentity: S.optional(
+            EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentity,
+          ),
           keyEncryptionKeyUrl: S.optional(S.String),
         }),
       ).annotate({
@@ -6777,13 +8658,13 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          customerManagedKeyEncryption: S.optional(__S(41)),
+          customerManagedKeyEncryption: S.optional(EncryptionCustomerManagedKeyEncryption),
         }),
       ).annotate({ identifier: "Encryption" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          catalogItemSyncEnableStatus: S.optional(S.String),
+          catalogItemSyncEnableStatus: S.optional(CatalogItemSyncEnableStatus),
         }),
       ).annotate({
         identifier: "DevCenterProjectCatalogSettings",
@@ -6791,13 +8672,13 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          microsoftHostedNetworkEnableStatus: S.optional(S.String),
+          microsoftHostedNetworkEnableStatus: S.optional(MicrosoftHostedNetworkEnableStatus),
         }),
       ).annotate({ identifier: "DevCenterNetworkSettings" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          installAzureMonitorAgentEnableStatus: S.optional(S.String),
+          installAzureMonitorAgentEnableStatus: S.optional(InstallAzureMonitorAgentEnableStatus),
         }),
       ).annotate({
         identifier: "DevBoxProvisioningSettings",
@@ -6805,15 +8686,15 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          encryption: S.optional(__S(42)),
+          encryption: S.optional(Encryption),
           displayName: S.optional(S.String),
-          projectCatalogSettings: S.optional(__S(43)),
-          networkSettings: S.optional(__S(44)),
-          devBoxProvisioningSettings: S.optional(__S(45)),
+          projectCatalogSettings: S.optional(DevCenterProjectCatalogSettings),
+          networkSettings: S.optional(DevCenterNetworkSettings),
+          devBoxProvisioningSettings: S.optional(DevBoxProvisioningSettings),
         }),
       ).annotate({ identifier: "DevCenterPropertiesInput" });
     case 7:
-      return S.Record(S.String, __S(16));
+      return S.Record(S.String, UserAssignedIdentityInput);
   }
 }
 function __c6(j: number): any {
@@ -6821,8 +8702,8 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(47)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
         }),
       ).annotate({
         identifier: "DevCentersCreateOrUpdateRequestIdentity",
@@ -6833,10 +8714,10 @@ function __c6(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           devCenterName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8)),
+          tags: S.optional(DevCentersCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(46)),
-          identity: S.optional(__S(48)),
+          properties: S.optional(DevCenterPropertiesInput),
+          identity: S.optional(DevCentersCreateOrUpdateRequestIdentity),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6851,12 +8732,12 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          encryption: S.optional(__S(42)),
+          encryption: S.optional(Encryption),
           displayName: S.optional(S.String),
-          projectCatalogSettings: S.optional(__S(43)),
-          networkSettings: S.optional(__S(44)),
-          devBoxProvisioningSettings: S.optional(__S(45)),
-          provisioningState: S.optional(S.String),
+          projectCatalogSettings: S.optional(DevCenterProjectCatalogSettings),
+          networkSettings: S.optional(DevCenterNetworkSettings),
+          devBoxProvisioningSettings: S.optional(DevBoxProvisioningSettings),
+          provisioningState: S.optional(DevCenterPropertiesProvisioningState),
           devCenterUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "DevCenterProperties" });
@@ -6868,14 +8749,14 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 4:
-      return S.Record(S.String, __S(51));
+      return S.Record(S.String, UserAssignedIdentity);
     case 5:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(52)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(UserAssignedIdentities),
         }),
       ).annotate({
         identifier: "DevCentersCreateOrUpdateResponseIdentity",
@@ -6886,11 +8767,11 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(8)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(DevCentersCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(50)),
-          identity: S.optional(__S(53)),
+          properties: S.optional(DevCenterProperties),
+          identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
         }),
       ).annotate({
         identifier: "DevCentersCreateOrUpdateResponse",
@@ -6914,8 +8795,8 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           devCenterName: S.String.pipe(T.Label()),
           environmentTypeName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(55)),
-          tags: S.optional(__S(8)),
+          properties: S.optional(EnvironmentTypePropertiesInput),
+          tags: S.optional(EnvironmentTypesCreateOrUpdateRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6931,7 +8812,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(EnvironmentTypePropertiesProvisioningState),
         }),
       ).annotate({
         identifier: "EnvironmentTypeProperties",
@@ -6942,9 +8823,9 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(57)),
-          tags: S.optional(__S(8)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(EnvironmentTypeProperties),
+          tags: S.optional(EnvironmentTypesCreateOrUpdateResponseTagsMap),
         }),
       ).annotate({
         identifier: "EnvironmentTypesCreateOrUpdateResponse",
@@ -6970,7 +8851,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.optional(S.Boolean),
-          reason: S.optional(S.String),
+          reason: S.optional(ExecuteCheckNameAvailabilityResponseReason),
           message: S.optional(S.String),
         }),
       ).annotate({
@@ -7007,7 +8888,7 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           devCenterName: S.String.pipe(T.Label()),
           galleryName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(62)),
+          properties: S.optional(GalleryPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7026,7 +8907,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(GalleryPropertiesProvisioningState),
           galleryResourceId: S.String,
         }),
       ).annotate({ identifier: "GalleryProperties" });
@@ -7036,8 +8917,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(64)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(GalleryProperties),
         }),
       ).annotate({
         identifier: "GalleriesCreateOrUpdateResponse",
@@ -7100,8 +8981,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(13)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CatalogProperties),
         }),
       ).annotate({ identifier: "GetCatalogResponse" });
     case 6:
@@ -7134,24 +9015,24 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71));
+      return S.Array(CatalogConflictError);
     case 1:
-      return S.Array(__S(34));
+      return S.Array(DevBoxDefinitionPropertiesInputImageValidationErrorDetails);
     case 2:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
-          errorDetails: S.optional(__S(73)),
+          errorDetails: S.optional(CatalogSyncErrorErrorDetailsList),
         }),
       ).annotate({ identifier: "CatalogSyncError" });
     case 3:
-      return S.Array(__S(74));
+      return S.Array(CatalogSyncError);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          operationError: S.optional(__S(34)),
-          conflicts: S.optional(__S(72)),
-          errors: S.optional(__S(75)),
+          operationError: S.optional(DevBoxDefinitionPropertiesInputImageValidationErrorDetails),
+          conflicts: S.optional(SyncErrorDetailsConflictsList),
+          errors: S.optional(SyncErrorDetailsErrorsList),
         }),
       ).annotate({ identifier: "SyncErrorDetails" });
     case 5:
@@ -7177,12 +9058,12 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(CustomizationTaskInputType),
           required: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CustomizationTaskInput" });
     case 7:
-      return S.Record(S.String, __S(78));
+      return S.Record(S.String, CustomizationTaskInput);
   }
 }
 function __c10(j: number): any {
@@ -7190,9 +9071,9 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          inputs: S.optional(__S(79)),
+          inputs: S.optional(CustomizationTaskPropertiesInputsMap),
           timeout: S.optional(S.Number),
-          validationStatus: S.optional(S.String),
+          validationStatus: S.optional(CustomizationTaskPropertiesValidationStatus),
         }),
       ).annotate({
         identifier: "CustomizationTaskProperties",
@@ -7203,8 +9084,8 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(80)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CustomizationTaskProperties),
         }),
       ).annotate({
         identifier: "GetCustomizationTaskResponse",
@@ -7231,7 +9112,7 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(__S(73)),
+          errors: S.optional(GetCustomizationTaskErrorDetailsResponseErrorsList),
         }),
       ).annotate({
         identifier: "GetCustomizationTaskErrorDetailsResponse",
@@ -7293,11 +9174,11 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(8)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetDevCenterResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(50)),
-          identity: S.optional(__S(53)),
+          properties: S.optional(DevCenterProperties),
+          identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
         }),
       ).annotate({ identifier: "GetDevCenterResponse" });
   }
@@ -7329,7 +9210,7 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(ParameterType),
           readOnly: S.optional(S.Boolean),
           required: S.optional(S.Boolean),
         }),
@@ -7337,14 +9218,14 @@ function __c11(j: number): any {
         identifier: "EnvironmentDefinitionParameter",
       });
     case 2:
-      return S.Array(__S(89));
+      return S.Array(EnvironmentDefinitionParameter);
     case 3:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          parameters: S.optional(__S(90)),
+          parameters: S.optional(EnvironmentDefinitionPropertiesParametersList),
           templatePath: S.optional(S.String),
-          validationStatus: S.optional(S.String),
+          validationStatus: S.optional(EnvironmentDefinitionPropertiesValidationStatus),
         }),
       ).annotate({
         identifier: "EnvironmentDefinitionProperties",
@@ -7355,8 +9236,8 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(91)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(EnvironmentDefinitionProperties),
         }),
       ).annotate({
         identifier: "GetEnvironmentDefinitionResponse",
@@ -7443,8 +9324,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(64)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(GalleryProperties),
         }),
       ).annotate({ identifier: "GetGalleryResponse" });
     case 2:
@@ -7474,8 +9355,8 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          memory: S.optional(__S(99)),
-          vCPUs: S.optional(__S(99)),
+          memory: S.optional(ResourceRange),
+          vCPUs: S.optional(ResourceRange),
         }),
       ).annotate({
         identifier: "RecommendedMachineConfiguration",
@@ -7487,9 +9368,9 @@ function __c12(j: number): any {
           publisher: S.optional(S.String),
           offer: S.optional(S.String),
           sku: S.optional(S.String),
-          recommendedMachineConfiguration: S.optional(__S(100)),
-          provisioningState: S.optional(S.String),
-          hibernateSupport: S.optional(S.String),
+          recommendedMachineConfiguration: S.optional(RecommendedMachineConfiguration),
+          provisioningState: S.optional(ImagePropertiesProvisioningState),
+          hibernateSupport: S.optional(HibernateSupport),
         }),
       ).annotate({ identifier: "ImageProperties" });
     case 6:
@@ -7498,8 +9379,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(101)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ImageProperties),
         }),
       ).annotate({ identifier: "GetImageResponse" });
     case 7:
@@ -7528,8 +9409,8 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(101)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ImageProperties),
         }),
       ).annotate({
         identifier: "GetImageByProjectResponse",
@@ -7559,7 +9440,7 @@ function __c13(j: number): any {
           publishedDate: S.optional(S.String),
           excludeFromLatest: S.optional(S.Boolean),
           osDiskImageSizeInGb: S.optional(S.Number),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ImageVersionPropertiesProvisioningState),
         }),
       ).annotate({ identifier: "ImageVersionProperties" });
     case 3:
@@ -7568,8 +9449,8 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(106)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ImageVersionProperties),
         }),
       ).annotate({ identifier: "GetImageVersionResponse" });
     case 4:
@@ -7597,8 +9478,8 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(106)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ImageVersionProperties),
         }),
       ).annotate({
         identifier: "GetImageVersionByProjectResponse",
@@ -7628,10 +9509,10 @@ function __c13(j: number): any {
           organizationUnit: S.optional(S.String),
           domainUsername: S.optional(S.String),
           domainPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          provisioningState: S.optional(S.String),
-          healthCheckStatus: S.optional(S.String),
+          provisioningState: S.optional(NetworkPropertiesProvisioningState),
+          healthCheckStatus: S.optional(NetworkPropertiesHealthCheckStatus),
           networkingResourceGroupName: S.optional(S.String),
-          domainJoinType: S.String,
+          domainJoinType: NetworkPropertiesDomainJoinType,
         }),
       ).annotate({ identifier: "NetworkProperties" });
   }
@@ -7644,10 +9525,10 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(8)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetNetworkConnectionResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(111)),
+          properties: S.optional(NetworkProperties),
         }),
       ).annotate({
         identifier: "GetNetworkConnectionResponse",
@@ -7672,7 +9553,7 @@ function __c14(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(HealthCheckStatus),
           displayName: S.optional(S.String),
           startDateTime: S.optional(S.String),
           endDateTime: S.optional(S.String),
@@ -7682,13 +9563,13 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "HealthCheck" });
     case 3:
-      return S.Array(__S(114));
+      return S.Array(HealthCheck);
     case 4:
       return S.suspend(() =>
         S.Struct({
           startDateTime: S.optional(S.String),
           endDateTime: S.optional(S.String),
-          healthChecks: S.optional(__S(115)),
+          healthChecks: S.optional(HealthCheckStatusDetailsPropertiesHealthChecksList),
         }),
       ).annotate({
         identifier: "HealthCheckStatusDetailsProperties",
@@ -7699,8 +9580,8 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(116)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(HealthCheckStatusDetailsProperties),
         }),
       ).annotate({
         identifier: "GetNetworkConnectionHealthDetailsResponse",
@@ -7723,13 +9604,13 @@ function __c14(j: number): any {
         identifier: "GetOperationStatusRequest",
       });
     case 7:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(124)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => OperationStatusResult));
   }
 }
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(123)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => ErrorDetail));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7738,15 +9619,15 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
     case 2:
-      return S.Array(__S(121));
+      return S.Array(ErrorAdditionalInfo);
     case 3:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(120)),
-          additionalInfo: S.optional(__S(122)),
+          details: S.optional(ErrorDetailDetailsList),
+          additionalInfo: S.optional(ErrorDetailAdditionalInfoList),
         }),
       ).annotate({ identifier: "ErrorDetail" });
     case 4:
@@ -7759,12 +9640,12 @@ function __c15(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(119)),
-          error: S.optional(__S(123)),
+          operations: S.optional(OperationStatusResultOperationsList),
+          error: S.optional(ErrorDetail),
         }),
       ).annotate({ identifier: "OperationStatusResult" });
     case 5:
-      return S.Array(__S(124));
+      return S.Array(OperationStatusResult);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -7775,8 +9656,8 @@ function __c15(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(125)),
-          error: S.optional(__S(123)),
+          operations: S.optional(GetOperationStatusResponseOperationsList),
+          error: S.optional(ErrorDetail),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({
@@ -7805,15 +9686,15 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          imageReference: S.optional(__S(37)),
-          sku: S.optional(__S(33)),
-          activeImageReference: S.optional(__S(37)),
+          imageReference: S.optional(DevBoxDefinitionPropertiesImageReference),
+          sku: S.optional(DevBoxDefinitionPropertiesSku),
+          activeImageReference: S.optional(DevBoxDefinitionPropertiesImageReference),
         }),
       ).annotate({ identifier: "PoolDevBoxDefinition" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(StopOnDisconnectEnableStatus),
           gracePeriodMinutes: S.optional(S.Number),
         }),
       ).annotate({
@@ -7829,26 +9710,26 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "HealthStatusDetail" });
     case 4:
-      return S.Array(__S(131));
+      return S.Array(HealthStatusDetail);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          devBoxDefinitionType: S.optional(S.String),
+          devBoxDefinitionType: S.optional(PoolDevBoxDefinitionType),
           devBoxDefinitionName: S.String,
-          devBoxDefinition: S.optional(__S(128)),
+          devBoxDefinition: S.optional(PoolDevBoxDefinition),
           networkConnectionName: S.String,
-          licenseType: S.String,
-          localAdministrator: S.String,
-          stopOnDisconnect: S.optional(__S(129)),
-          stopOnNoConnect: S.optional(__S(129)),
-          singleSignOnStatus: S.optional(S.String),
+          licenseType: LicenseType,
+          localAdministrator: LocalAdminStatus,
+          stopOnDisconnect: S.optional(StopOnDisconnectConfiguration),
+          stopOnNoConnect: S.optional(StopOnNoConnectConfiguration),
+          singleSignOnStatus: S.optional(SingleSignOnStatus),
           displayName: S.optional(S.String),
-          virtualNetworkType: S.optional(S.String),
-          managedVirtualNetworkRegions: S.optional(__S(130)),
-          healthStatus: S.optional(S.String),
-          healthStatusDetails: S.optional(__S(132)),
+          virtualNetworkType: S.optional(VirtualNetworkType),
+          managedVirtualNetworkRegions: S.optional(PoolPropertiesManagedVirtualNetworkRegionsList),
+          healthStatus: S.optional(HealthStatus),
+          healthStatusDetails: S.optional(PoolPropertiesHealthStatusDetailsList),
           devBoxCount: S.optional(S.Number),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(PoolPropertiesProvisioningState),
         }),
       ).annotate({ identifier: "PoolProperties" });
     case 6:
@@ -7857,10 +9738,10 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(8)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetPoolResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(133)),
+          properties: S.optional(PoolProperties),
         }),
       ).annotate({ identifier: "GetPoolResponse" });
     case 7:
@@ -7885,7 +9766,7 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          catalogItemSyncTypes: S.optional(__S(11)),
+          catalogItemSyncTypes: S.optional(ProjectCatalogSettingsCatalogItemSyncTypesList),
         }),
       ).annotate({ identifier: "ProjectCatalogSettings" });
     case 1:
@@ -7895,8 +9776,8 @@ function __c17(j: number): any {
           description: S.optional(S.String),
           maxDevBoxesPerUser: S.optional(S.Number),
           displayName: S.optional(S.String),
-          catalogSettings: S.optional(__S(136)),
-          provisioningState: S.optional(S.String),
+          catalogSettings: S.optional(ProjectCatalogSettings),
+          provisioningState: S.optional(ProjectPropertiesProvisioningState),
           devCenterUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectProperties" });
@@ -7906,11 +9787,11 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(8)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetProjectResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(137)),
-          identity: S.optional(__S(53)),
+          properties: S.optional(ProjectProperties),
+          identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
         }),
       ).annotate({ identifier: "GetProjectResponse" });
     case 3:
@@ -7934,7 +9815,7 @@ function __c17(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(AllowedEnvironmentTypePropertiesProvisioningState),
           displayName: S.optional(S.String),
         }),
       ).annotate({
@@ -7946,8 +9827,8 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(140)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AllowedEnvironmentTypeProperties),
         }),
       ).annotate({
         identifier: "GetProjectAllowedEnvironmentTypeResponse",
@@ -7992,11 +9873,11 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(34));
+      return S.Array(DevBoxDefinitionPropertiesInputImageValidationErrorDetails);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(__S(144)),
+          errors: S.optional(GetProjectCatalogEnvironmentDefinitionErrorDetailsResponseErrorsList),
         }),
       ).annotate({
         identifier: "GetProjectCatalogEnvironmentDefinitionErrorDetailsResponse",
@@ -8024,11 +9905,11 @@ function __c18(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          imageReference: S.optional(__S(37)),
-          status: S.optional(S.String),
+          imageReference: S.optional(DevBoxDefinitionPropertiesImageReference),
+          status: S.optional(ImageDefinitionBuildStatus),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          errorDetails: S.optional(__S(34)),
+          errorDetails: S.optional(DevBoxDefinitionPropertiesInputImageValidationErrorDetails),
         }),
       ).annotate({
         identifier: "ImageDefinitionBuildProperties",
@@ -8039,8 +9920,8 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(147)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ImageDefinitionBuildProperties),
         }),
       ).annotate({
         identifier: "GetProjectCatalogImageDefinitionBuildResponse",
@@ -8075,7 +9956,7 @@ function __c18(j: number): any {
         identifier: "ImageDefinitionBuildTaskParametersItem",
       });
     case 7:
-      return S.Array(__S(150));
+      return S.Array(ImageDefinitionBuildTaskParametersItem);
   }
 }
 function __c19(j: number): any {
@@ -8084,44 +9965,46 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          parameters: S.optional(__S(151)),
+          parameters: S.optional(ImageDefinitionBuildTaskParametersList),
           displayName: S.optional(S.String),
           id: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(ImageDefinitionBuildStatus),
           logUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageDefinitionBuildTask" });
     case 1:
-      return S.Array(__S(152));
+      return S.Array(ImageDefinitionBuildTask);
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(ImageDefinitionBuildStatus),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          tasks: S.optional(__S(153)),
+          tasks: S.optional(ImageDefinitionBuildTaskGroupTasksList),
         }),
       ).annotate({
         identifier: "ImageDefinitionBuildTaskGroup",
       });
     case 3:
-      return S.Array(__S(154));
+      return S.Array(ImageDefinitionBuildTaskGroup);
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          imageReference: S.optional(__S(37)),
-          status: S.optional(S.String),
+          systemData: S.optional(SystemData),
+          imageReference: S.optional(DevBoxDefinitionPropertiesImageReference),
+          status: S.optional(ImageDefinitionBuildStatus),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          errorDetails: S.optional(__S(34)),
-          taskGroups: S.optional(__S(155)),
+          errorDetails: S.optional(DevBoxDefinitionPropertiesInputImageValidationErrorDetails),
+          taskGroups: S.optional(
+            GetProjectCatalogImageDefinitionBuildBuildDetailsResponseTaskGroupsList,
+          ),
         }),
       ).annotate({
         identifier: "GetProjectCatalogImageDefinitionBuildBuildDetailsResponse",
@@ -8151,20 +10034,22 @@ function __c19(j: number): any {
           name: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(ImageDefinitionBuildStatus),
         }),
       ).annotate({ identifier: "LatestImageBuild" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          imageReference: S.optional(__S(37)),
+          imageReference: S.optional(DevBoxDefinitionPropertiesImageReference),
           fileUrl: S.optional(S.String),
-          latestBuild: S.optional(__S(158)),
-          imageValidationStatus: S.optional(S.String),
-          imageValidationErrorDetails: S.optional(__S(34)),
-          validationStatus: S.optional(S.String),
-          activeImageReference: S.optional(__S(37)),
-          autoImageBuild: S.optional(S.String),
+          latestBuild: S.optional(LatestImageBuild),
+          imageValidationStatus: S.optional(ImageDefinitionPropertiesImageValidationStatus),
+          imageValidationErrorDetails: S.optional(
+            DevBoxDefinitionPropertiesInputImageValidationErrorDetails,
+          ),
+          validationStatus: S.optional(ImageDefinitionPropertiesValidationStatus),
+          activeImageReference: S.optional(DevBoxDefinitionPropertiesImageReference),
+          autoImageBuild: S.optional(AutoImageBuildStatus),
         }),
       ).annotate({
         identifier: "ImageDefinitionProperties",
@@ -8179,8 +10064,8 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(159)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ImageDefinitionProperties),
         }),
       ).annotate({
         identifier: "GetProjectCatalogImageDefinitionByProjectCatalogResponse",
@@ -8248,11 +10133,11 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "EnvironmentRole" });
     case 5:
-      return S.Record(S.String, __S(164));
+      return S.Record(S.String, EnvironmentRole);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          roles: S.optional(__S(165)),
+          roles: S.optional(ProjectEnvironmentTypePropertiesCreatorRoleAssignmentRolesMap),
         }),
       ).annotate({
         identifier: "ProjectEnvironmentTypePropertiesCreatorRoleAssignment",
@@ -8260,7 +10145,7 @@ function __c20(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          roles: S.optional(__S(165)),
+          roles: S.optional(UserRoleAssignmentRolesMap),
         }),
       ).annotate({ identifier: "UserRoleAssignment" });
   }
@@ -8268,16 +10153,16 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(167));
+      return S.Record(S.String, UserRoleAssignment);
     case 1:
       return S.suspend(() =>
         S.Struct({
           deploymentTargetId: S.optional(S.String),
           displayName: S.optional(S.String),
-          status: S.optional(S.String),
-          creatorRoleAssignment: S.optional(__S(166)),
-          userRoleAssignments: S.optional(__S(168)),
-          provisioningState: S.optional(S.String),
+          status: S.optional(EnvironmentTypeEnableStatus),
+          creatorRoleAssignment: S.optional(ProjectEnvironmentTypePropertiesCreatorRoleAssignment),
+          userRoleAssignments: S.optional(ProjectEnvironmentTypePropertiesUserRoleAssignmentsMap),
+          provisioningState: S.optional(ProjectEnvironmentTypePropertiesProvisioningState),
           environmentCount: S.optional(S.Number),
         }),
       ).annotate({
@@ -8289,10 +10174,10 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(169)),
-          tags: S.optional(__S(8)),
-          identity: S.optional(__S(53)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ProjectEnvironmentTypeProperties),
+          tags: S.optional(GetProjectEnvironmentTypeResponseTagsMap),
+          identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -8318,8 +10203,8 @@ function __c21(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          projectCatalogSettings: S.optional(__S(43)),
-          networkSettings: S.optional(__S(44)),
+          projectCatalogSettings: S.optional(DevCenterProjectCatalogSettings),
+          networkSettings: S.optional(ProjectNetworkSettings),
         }),
       ).annotate({
         identifier: "InheritedSettingsForProject",
@@ -8345,12 +10230,12 @@ function __c21(j: number): any {
         S.Struct({
           resources: S.optional(S.String),
           filter: S.optional(S.String),
-          action: S.optional(S.String),
-          resourceType: S.optional(S.String),
+          action: S.optional(PolicyAction),
+          resourceType: S.optional(DevCenterResourceType),
         }),
       ).annotate({ identifier: "ResourcePolicy" });
     case 7:
-      return S.Array(__S(174));
+      return S.Array(ResourcePolicy);
   }
 }
 function __c22(j: number): any {
@@ -8358,9 +10243,9 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resourcePolicies: S.optional(__S(175)),
-          scopes: S.optional(__S(130)),
-          provisioningState: S.optional(S.String),
+          resourcePolicies: S.optional(ProjectPolicyPropertiesResourcePoliciesList),
+          scopes: S.optional(ProjectPolicyPropertiesScopesList),
+          provisioningState: S.optional(ProjectPolicyPropertiesProvisioningState),
         }),
       ).annotate({ identifier: "ProjectPolicyProperties" });
     case 1:
@@ -8369,8 +10254,8 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(176)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ProjectPolicyProperties),
         }),
       ).annotate({ identifier: "GetProjectPolicyResponse" });
     case 2:
@@ -8396,14 +10281,14 @@ function __c22(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(179)),
+          tags: S.optional(Tags),
           location: S.optional(S.String),
-          type: S.String,
-          frequency: S.String,
+          type: ScheduledType,
+          frequency: ScheduledFrequency,
           time: S.String,
           timeZone: S.String,
-          state: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          state: S.optional(ScheduleEnableStatus),
+          provisioningState: S.optional(SchedulePropertiesProvisioningState),
         }),
       ).annotate({ identifier: "ScheduleProperties" });
     case 5:
@@ -8412,8 +10297,8 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(180)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ScheduleProperties),
         }),
       ).annotate({ identifier: "GetScheduleResponse" });
     case 6:
@@ -8435,7 +10320,7 @@ function __c22(j: number): any {
         identifier: "ListAttachedNetworkByDevCenterRequest",
       });
     case 7:
-      return S.Array(__S(4));
+      return S.Array(AttachedNetworkConnection);
   }
 }
 function __c23(j: number): any {
@@ -8443,7 +10328,7 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(183)),
+          value: S.optional(AttachedNetworkListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -8486,11 +10371,11 @@ function __c23(j: number): any {
         identifier: "ListCatalogByDevCenterRequest",
       });
     case 3:
-      return S.Array(__S(69));
+      return S.Array(Catalog);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(187)),
+          value: S.optional(CatalogListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CatalogListResult" });
@@ -8519,12 +10404,12 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(80)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CustomizationTaskProperties),
         }),
       ).annotate({ identifier: "CustomizationTask" });
     case 7:
-      return S.Array(__S(190));
+      return S.Array(CustomizationTask);
   }
 }
 function __c24(j: number): any {
@@ -8532,7 +10417,7 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(191)),
+          value: S.optional(CustomizationTaskListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -8562,18 +10447,18 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(8)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(DevBoxDefinitionTagsMap),
           location: S.String,
-          properties: S.optional(__S(38)),
+          properties: S.optional(DevBoxDefinitionProperties),
         }),
       ).annotate({ identifier: "DevBoxDefinition" });
     case 3:
-      return S.Array(__S(194));
+      return S.Array(DevBoxDefinition);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(195)),
+          value: S.optional(DevBoxDefinitionListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -8615,7 +10500,7 @@ function __c24(j: number): any {
         identifier: "ListDevCenterByResourceGroupRequest",
       });
     case 7:
-      return S.Array(__S(87));
+      return S.Array(DevCenter);
   }
 }
 function __c25(j: number): any {
@@ -8623,7 +10508,7 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(199)),
+          value: S.optional(DevCenterListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DevCenterListResult" });
@@ -8668,16 +10553,16 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(91)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(EnvironmentDefinitionProperties),
         }),
       ).annotate({ identifier: "EnvironmentDefinition" });
     case 4:
-      return S.Array(__S(203));
+      return S.Array(EnvironmentDefinition);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(204)),
+          value: S.optional(EnvironmentDefinitionListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -8729,17 +10614,17 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(57)),
-          tags: S.optional(__S(8)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(EnvironmentTypeProperties),
+          tags: S.optional(EnvironmentTypeTagsMap),
         }),
       ).annotate({ identifier: "EnvironmentType" });
     case 1:
-      return S.Array(__S(208));
+      return S.Array(EnvironmentType);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(209)),
+          value: S.optional(EnvironmentTypeListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -8764,11 +10649,11 @@ function __c26(j: number): any {
         identifier: "ListGalleryByDevCenterRequest",
       });
     case 4:
-      return S.Array(__S(97));
+      return S.Array(Gallery);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(212)),
+          value: S.optional(GalleryListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GalleryListResult" });
@@ -8791,7 +10676,7 @@ function __c26(j: number): any {
         identifier: "ListImageByDevCenterRequest",
       });
     case 7:
-      return S.Array(__S(102));
+      return S.Array(Image);
   }
 }
 function __c27(j: number): any {
@@ -8799,7 +10684,7 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(215)),
+          value: S.optional(ImageListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageListResult" });
@@ -8859,11 +10744,11 @@ function __c27(j: number): any {
         identifier: "ListImageVersionByImageRequest",
       });
     case 4:
-      return S.Array(__S(107));
+      return S.Array(ImageVersion);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(220)),
+          value: S.optional(ImageVersionListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageVersionListResult" });
@@ -8912,18 +10797,18 @@ function __c28(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(8)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(NetworkConnectionTagsMap),
           location: S.String,
-          properties: S.optional(__S(111)),
+          properties: S.optional(NetworkProperties),
         }),
       ).annotate({ identifier: "NetworkConnection" });
     case 1:
-      return S.Array(__S(224));
+      return S.Array(NetworkConnection);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(225)),
+          value: S.optional(NetworkConnectionListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -8969,16 +10854,16 @@ function __c28(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(116)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(HealthCheckStatusDetailsProperties),
         }),
       ).annotate({ identifier: "HealthCheckStatusDetails" });
     case 6:
-      return S.Array(__S(229));
+      return S.Array(HealthCheckStatusDetails);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(230)),
+          value: S.optional(HealthCheckStatusDetailsListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9013,32 +10898,32 @@ function __c29(j: number): any {
         }),
       ).annotate({ identifier: "EndpointDetail" });
     case 2:
-      return S.Array(__S(233));
+      return S.Array(EndpointDetail);
     case 3:
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
           description: S.optional(S.String),
-          endpointDetails: S.optional(__S(234)),
+          endpointDetails: S.optional(EndpointDependencyEndpointDetailsList),
         }),
       ).annotate({ identifier: "EndpointDependency" });
     case 4:
-      return S.Array(__S(235));
+      return S.Array(EndpointDependency);
     case 5:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.String),
-          endpoints: S.optional(__S(236)),
+          endpoints: S.optional(OutboundEnvironmentEndpointEndpointsList),
         }),
       ).annotate({
         identifier: "OutboundEnvironmentEndpoint",
       });
     case 6:
-      return S.Array(__S(237));
+      return S.Array(OutboundEnvironmentEndpoint);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(238)),
+          value: S.optional(OutboundEnvironmentEndpointCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9073,17 +10958,17 @@ function __c30(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(241)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(242));
+      return S.Array(Operation);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(243)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -9104,11 +10989,11 @@ function __c30(j: number): any {
         ),
       ).annotate({ identifier: "ListPoolByProjectRequest" });
     case 6:
-      return S.Array(__S(134));
+      return S.Array(Pool);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(246)),
+          value: S.optional(PoolListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PoolListResult" });
@@ -9140,16 +11025,16 @@ function __c31(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(140)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AllowedEnvironmentTypeProperties),
         }),
       ).annotate({ identifier: "AllowedEnvironmentType" });
     case 2:
-      return S.Array(__S(249));
+      return S.Array(AllowedEnvironmentType);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(250)),
+          value: S.optional(AllowedEnvironmentTypeListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9173,11 +11058,11 @@ function __c31(j: number): any {
         identifier: "ListProjectByResourceGroupRequest",
       });
     case 5:
-      return S.Array(__S(138));
+      return S.Array(Project);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(253)),
+          value: S.optional(ProjectListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectListResult" });
@@ -9226,16 +11111,16 @@ function __c32(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(147)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ImageDefinitionBuildProperties),
         }),
       ).annotate({ identifier: "ImageDefinitionBuild" });
     case 2:
-      return S.Array(__S(257));
+      return S.Array(ImageDefinitionBuild);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(258)),
+          value: S.optional(ImageDefinitionBuildListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9266,16 +11151,16 @@ function __c32(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(159)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ImageDefinitionProperties),
         }),
       ).annotate({ identifier: "ImageDefinition" });
     case 6:
-      return S.Array(__S(261));
+      return S.Array(ImageDefinition);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(262)),
+          value: S.optional(ImageDefinitionListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9327,19 +11212,19 @@ function __c33(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(169)),
-          tags: S.optional(__S(8)),
-          identity: S.optional(__S(53)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ProjectEnvironmentTypeProperties),
+          tags: S.optional(ProjectEnvironmentTypeTagsMap),
+          identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectEnvironmentType" });
     case 3:
-      return S.Array(__S(266));
+      return S.Array(ProjectEnvironmentType);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(267)),
+          value: S.optional(ProjectEnvironmentTypeListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9364,11 +11249,11 @@ function __c33(j: number): any {
         identifier: "ListProjectPolicyByDevCenterRequest",
       });
     case 6:
-      return S.Array(__S(177));
+      return S.Array(ProjectPolicy);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(270)),
+          value: S.optional(ProjectPolicyListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectPolicyListResult" });
@@ -9396,11 +11281,11 @@ function __c34(j: number): any {
         identifier: "ListScheduleByPoolRequest",
       });
     case 1:
-      return S.Array(__S(181));
+      return S.Array(Schedule);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(273)),
+          value: S.optional(ScheduleListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScheduleListResult" });
@@ -9427,24 +11312,24 @@ function __c34(j: number): any {
         }),
       ).annotate({ identifier: "Capability" });
     case 5:
-      return S.Array(__S(276));
+      return S.Array(Capability);
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          tier: S.optional(S.String),
+          tier: S.optional(SkuTier),
           size: S.optional(S.String),
           family: S.optional(S.String),
           capacity: S.optional(S.Number),
           resourceType: S.optional(S.String),
-          locations: S.optional(__S(130)),
-          capabilities: S.optional(__S(277)),
+          locations: S.optional(ListSkusByProjectResponseValueItemLocationsList),
+          capabilities: S.optional(ListSkusByProjectResponseValueItemCapabilitiesList),
         }),
       ).annotate({
         identifier: "ListSkusByProjectResponseValueItem",
       });
     case 7:
-      return S.Array(__S(278));
+      return S.Array(ListSkusByProjectResponseValueItem);
   }
 }
 function __c35(j: number): any {
@@ -9452,7 +11337,7 @@ function __c35(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(279)),
+          value: S.optional(ListSkusByProjectResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9478,21 +11363,21 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          tier: S.optional(S.String),
+          tier: S.optional(SkuTier),
           size: S.optional(S.String),
           family: S.optional(S.String),
           capacity: S.optional(S.Number),
           resourceType: S.optional(S.String),
-          locations: S.optional(__S(130)),
-          capabilities: S.optional(__S(277)),
+          locations: S.optional(SkuListResultValueItemLocationsList),
+          capabilities: S.optional(SkuListResultValueItemCapabilitiesList),
         }),
       ).annotate({ identifier: "SkuListResultValueItem" });
     case 3:
-      return S.Array(__S(282));
+      return S.Array(SkuListResultValueItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(283)),
+          value: S.optional(SkuListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuListResult" });
@@ -9524,8 +11409,8 @@ function __c35(j: number): any {
         S.Struct({
           currentValue: S.optional(S.Number),
           limit: S.optional(S.Number),
-          unit: S.optional(S.String),
-          name: S.optional(__S(286)),
+          unit: S.optional(UsageUnit),
+          name: S.optional(UsageName),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "Usage" });
@@ -9534,11 +11419,11 @@ function __c35(j: number): any {
 function __c36(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(287));
+      return S.Array(Usage);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(288)),
+          value: S.optional(ListUsagesResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListUsagesResult" });
@@ -9550,9 +11435,9 @@ function __c36(j: number): any {
           organizationUnit: S.optional(S.String),
           domainUsername: S.optional(S.String),
           domainPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          healthCheckStatus: S.optional(S.String),
+          healthCheckStatus: S.optional(NetworkPropertiesInputHealthCheckStatus),
           networkingResourceGroupName: S.optional(S.String),
-          domainJoinType: S.String,
+          domainJoinType: NetworkPropertiesInputDomainJoinType,
         }),
       ).annotate({ identifier: "NetworkPropertiesInput" });
     case 3:
@@ -9561,9 +11446,9 @@ function __c36(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkConnectionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8)),
+          tags: S.optional(NetworkConnectionsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(290)),
+          properties: S.optional(NetworkPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9578,10 +11463,10 @@ function __c36(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          gitHub: S.optional(__S(7)),
-          adoGit: S.optional(__S(7)),
-          syncType: S.optional(S.String),
-          tags: S.optional(__S(8)),
+          gitHub: S.optional(GitCatalog),
+          adoGit: S.optional(GitCatalog),
+          syncType: S.optional(CatalogUpdatePropertiesSyncType),
+          tags: S.optional(CatalogUpdatePropertiesTagsMap),
         }),
       ).annotate({ identifier: "CatalogUpdateProperties" });
     case 5:
@@ -9591,7 +11476,7 @@ function __c36(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(292)),
+          properties: S.optional(CatalogUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9606,9 +11491,9 @@ function __c36(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          imageReference: S.optional(__S(32)),
-          sku: S.optional(__S(33)),
-          activeImageReference: S.optional(__S(32)),
+          imageReference: S.optional(DevBoxDefinitionPropertiesInputImageReference),
+          sku: S.optional(DevBoxDefinitionPropertiesInputSku),
+          activeImageReference: S.optional(DevBoxDefinitionPropertiesInputImageReference),
         }),
       ).annotate({
         identifier: "PoolDevBoxDefinitionInput",
@@ -9616,18 +11501,20 @@ function __c36(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          devBoxDefinitionType: S.optional(S.String),
+          devBoxDefinitionType: S.optional(PoolDevBoxDefinitionType),
           devBoxDefinitionName: S.String,
-          devBoxDefinition: S.optional(__S(294)),
+          devBoxDefinition: S.optional(PoolDevBoxDefinitionInput),
           networkConnectionName: S.String,
-          licenseType: S.String,
-          localAdministrator: S.String,
-          stopOnDisconnect: S.optional(__S(129)),
-          stopOnNoConnect: S.optional(__S(129)),
-          singleSignOnStatus: S.optional(S.String),
+          licenseType: LicenseType,
+          localAdministrator: LocalAdminStatus,
+          stopOnDisconnect: S.optional(StopOnDisconnectConfiguration),
+          stopOnNoConnect: S.optional(StopOnNoConnectConfiguration),
+          singleSignOnStatus: S.optional(SingleSignOnStatus),
           displayName: S.optional(S.String),
-          virtualNetworkType: S.optional(S.String),
-          managedVirtualNetworkRegions: S.optional(__S(130)),
+          virtualNetworkType: S.optional(VirtualNetworkType),
+          managedVirtualNetworkRegions: S.optional(
+            PoolPropertiesInputManagedVirtualNetworkRegionsList,
+          ),
         }),
       ).annotate({ identifier: "PoolPropertiesInput" });
   }
@@ -9641,9 +11528,9 @@ function __c37(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8)),
+          tags: S.optional(PoolsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(295)),
+          properties: S.optional(PoolPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9661,10 +11548,10 @@ function __c37(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(8)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(PoolsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(133)),
+          properties: S.optional(PoolProperties),
         }),
       ).annotate({
         identifier: "PoolsCreateOrUpdateResponse",
@@ -9695,7 +11582,7 @@ function __c37(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(9)),
+          properties: S.optional(CatalogPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9708,11 +11595,11 @@ function __c37(j: number): any {
         identifier: "ProjectCatalogsCreateOrUpdateRequest",
       });
     case 4:
-      return S.Record(S.String, __S(16));
+      return S.Record(S.String, UserAssignedIdentityInput);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          roles: S.optional(__S(300)),
+          roles: S.optional(ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap),
         }),
       ).annotate({
         identifier: "ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment",
@@ -9720,11 +11607,11 @@ function __c37(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          roles: S.optional(__S(47)),
+          roles: S.optional(UserRoleAssignmentInputRolesMap),
         }),
       ).annotate({ identifier: "UserRoleAssignmentInput" });
     case 7:
-      return S.Record(S.String, __S(302));
+      return S.Record(S.String, UserRoleAssignmentInput);
   }
 }
 function __c38(j: number): any {
@@ -9734,9 +11621,13 @@ function __c38(j: number): any {
         S.Struct({
           deploymentTargetId: S.optional(S.String),
           displayName: S.optional(S.String),
-          status: S.optional(S.String),
-          creatorRoleAssignment: S.optional(__S(301)),
-          userRoleAssignments: S.optional(__S(303)),
+          status: S.optional(EnvironmentTypeEnableStatus),
+          creatorRoleAssignment: S.optional(
+            ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment,
+          ),
+          userRoleAssignments: S.optional(
+            ProjectEnvironmentTypePropertiesInputUserRoleAssignmentsMap,
+          ),
         }),
       ).annotate({
         identifier: "ProjectEnvironmentTypePropertiesInput",
@@ -9748,9 +11639,9 @@ function __c38(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           environmentTypeName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(304)),
-          tags: S.optional(__S(8)),
-          identity: S.optional(__S(48)),
+          properties: S.optional(ProjectEnvironmentTypePropertiesInput),
+          tags: S.optional(ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap),
+          identity: S.optional(DevCentersCreateOrUpdateRequestIdentity),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -9766,8 +11657,8 @@ function __c38(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resourcePolicies: S.optional(__S(175)),
-          scopes: S.optional(__S(130)),
+          resourcePolicies: S.optional(ProjectPolicyPropertiesInputResourcePoliciesList),
+          scopes: S.optional(ProjectPolicyPropertiesInputScopesList),
         }),
       ).annotate({
         identifier: "ProjectPolicyPropertiesInput",
@@ -9779,7 +11670,7 @@ function __c38(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           devCenterName: S.String.pipe(T.Label()),
           projectPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(306)),
+          properties: S.optional(ProjectPolicyPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9797,8 +11688,8 @@ function __c38(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(176)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ProjectPolicyProperties),
         }),
       ).annotate({
         identifier: "ProjectPoliciesCreateOrUpdateResponse",
@@ -9810,7 +11701,7 @@ function __c38(j: number): any {
           description: S.optional(S.String),
           maxDevBoxesPerUser: S.optional(S.Number),
           displayName: S.optional(S.String),
-          catalogSettings: S.optional(__S(136)),
+          catalogSettings: S.optional(ProjectCatalogSettings),
         }),
       ).annotate({ identifier: "ProjectPropertiesInput" });
     case 6:
@@ -9819,10 +11710,10 @@ function __c38(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8)),
+          tags: S.optional(ProjectsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(309)),
-          identity: S.optional(__S(48)),
+          properties: S.optional(ProjectPropertiesInput),
+          identity: S.optional(DevCentersCreateOrUpdateRequestIdentity),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9840,11 +11731,11 @@ function __c38(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(8)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(ProjectsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(137)),
-          identity: S.optional(__S(53)),
+          properties: S.optional(ProjectProperties),
+          identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
         }),
       ).annotate({
         identifier: "ProjectsCreateOrUpdateResponse",
@@ -9891,13 +11782,13 @@ function __c39(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(179)),
+          tags: S.optional(Tags),
           location: S.optional(S.String),
-          type: S.String,
-          frequency: S.String,
+          type: ScheduledType,
+          frequency: ScheduledFrequency,
           time: S.String,
           timeZone: S.String,
-          state: S.optional(S.String),
+          state: S.optional(ScheduleEnableStatus),
         }),
       ).annotate({ identifier: "SchedulePropertiesInput" });
     case 3:
@@ -9909,7 +11800,7 @@ function __c39(j: number): any {
           poolName: S.String.pipe(T.Label()),
           scheduleName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
-          properties: S.optional(__S(314)),
+          properties: S.optional(SchedulePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9927,8 +11818,8 @@ function __c39(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(180)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ScheduleProperties),
         }),
       ).annotate({
         identifier: "SchedulesCreateOrUpdateResponse",
@@ -9974,7 +11865,7 @@ function __c39(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           devCenterName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(292)),
+          properties: S.optional(CatalogUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9991,10 +11882,10 @@ function __c40(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          imageReference: S.optional(__S(32)),
-          sku: S.optional(__S(33)),
+          imageReference: S.optional(DevBoxDefinitionPropertiesInputImageReference),
+          sku: S.optional(DevBoxDefinitionPropertiesInputSku),
           osStorageType: S.optional(S.String),
-          hibernateSupport: S.optional(S.String),
+          hibernateSupport: S.optional(HibernateSupport),
         }),
       ).annotate({
         identifier: "DevBoxDefinitionUpdatePropertiesInput",
@@ -10006,9 +11897,9 @@ function __c40(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           devCenterName: S.String.pipe(T.Label()),
           devBoxDefinitionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(179)),
+          tags: S.optional(Tags),
           location: S.optional(S.String),
-          properties: S.optional(__S(320)),
+          properties: S.optional(DevBoxDefinitionUpdatePropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10026,10 +11917,10 @@ function __c40(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           devCenterName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(179)),
+          tags: S.optional(Tags),
           location: S.optional(S.String),
-          identity: S.optional(__S(48)),
-          properties: S.optional(__S(46)),
+          identity: S.optional(DevCentersCreateOrUpdateRequestIdentity),
+          properties: S.optional(DevCenterPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10046,8 +11937,8 @@ function __c40(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           devCenterName: S.String.pipe(T.Label()),
           environmentTypeName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(55)),
-          tags: S.optional(__S(8)),
+          properties: S.optional(EnvironmentTypePropertiesInput),
+          tags: S.optional(UpdateEnvironmentTypeRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10077,9 +11968,9 @@ function __c40(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkConnectionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(179)),
+          tags: S.optional(Tags),
           location: S.optional(S.String),
-          properties: S.optional(__S(324)),
+          properties: S.optional(NetworkConnectionUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10094,18 +11985,20 @@ function __c40(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          devBoxDefinitionType: S.optional(S.String),
+          devBoxDefinitionType: S.optional(PoolDevBoxDefinitionType),
           devBoxDefinitionName: S.optional(S.String),
-          devBoxDefinition: S.optional(__S(294)),
+          devBoxDefinition: S.optional(PoolDevBoxDefinitionInput),
           networkConnectionName: S.optional(S.String),
-          licenseType: S.optional(S.String),
-          localAdministrator: S.optional(S.String),
-          stopOnDisconnect: S.optional(__S(129)),
-          stopOnNoConnect: S.optional(__S(129)),
-          singleSignOnStatus: S.optional(S.String),
+          licenseType: S.optional(LicenseType),
+          localAdministrator: S.optional(LocalAdminStatus),
+          stopOnDisconnect: S.optional(StopOnDisconnectConfiguration),
+          stopOnNoConnect: S.optional(StopOnNoConnectConfiguration),
+          singleSignOnStatus: S.optional(SingleSignOnStatus),
           displayName: S.optional(S.String),
-          virtualNetworkType: S.optional(S.String),
-          managedVirtualNetworkRegions: S.optional(__S(130)),
+          virtualNetworkType: S.optional(VirtualNetworkType),
+          managedVirtualNetworkRegions: S.optional(
+            PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList,
+          ),
         }),
       ).annotate({
         identifier: "PoolUpdatePropertiesInput",
@@ -10117,9 +12010,9 @@ function __c40(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(179)),
+          tags: S.optional(Tags),
           location: S.optional(S.String),
-          properties: S.optional(__S(326)),
+          properties: S.optional(PoolUpdatePropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10139,10 +12032,10 @@ function __c41(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(179)),
+          tags: S.optional(Tags),
           location: S.optional(S.String),
-          properties: S.optional(__S(309)),
-          identity: S.optional(__S(48)),
+          properties: S.optional(ProjectPropertiesInput),
+          identity: S.optional(DevCentersCreateOrUpdateRequestIdentity),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10155,21 +12048,27 @@ function __c41(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          roles: S.optional(__S(300)),
+          roles: S.optional(
+            ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap,
+          ),
         }),
       ).annotate({
         identifier: "ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignment",
       });
     case 2:
-      return S.Record(S.String, __S(302));
+      return S.Record(S.String, UserRoleAssignmentInput);
     case 3:
       return S.suspend(() =>
         S.Struct({
           deploymentTargetId: S.optional(S.String),
           displayName: S.optional(S.String),
-          status: S.optional(S.String),
-          creatorRoleAssignment: S.optional(__S(329)),
-          userRoleAssignments: S.optional(__S(330)),
+          status: S.optional(EnvironmentTypeEnableStatus),
+          creatorRoleAssignment: S.optional(
+            ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignment,
+          ),
+          userRoleAssignments: S.optional(
+            ProjectEnvironmentTypeUpdatePropertiesInputUserRoleAssignmentsMap,
+          ),
         }),
       ).annotate({
         identifier: "ProjectEnvironmentTypeUpdatePropertiesInput",
@@ -10181,9 +12080,9 @@ function __c41(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           environmentTypeName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(331)),
-          tags: S.optional(__S(8)),
-          identity: S.optional(__S(48)),
+          properties: S.optional(ProjectEnvironmentTypeUpdatePropertiesInput),
+          tags: S.optional(UpdateProjectEnvironmentTypeRequestTagsMap),
+          identity: S.optional(DevCentersCreateOrUpdateRequestIdentity),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10202,7 +12101,7 @@ function __c41(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           devCenterName: S.String.pipe(T.Label()),
           projectPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(306)),
+          properties: S.optional(ProjectPolicyUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10217,13 +12116,13 @@ function __c41(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(179)),
+          tags: S.optional(Tags),
           location: S.optional(S.String),
-          type: S.optional(S.String),
-          frequency: S.optional(S.String),
+          type: S.optional(ScheduledType),
+          frequency: S.optional(ScheduledFrequency),
           time: S.optional(S.String),
           timeZone: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(ScheduleEnableStatus),
         }),
       ).annotate({ identifier: "ScheduleUpdateProperties" });
     case 7:
@@ -10235,7 +12134,7 @@ function __c41(j: number): any {
           poolName: S.String.pipe(T.Label()),
           scheduleName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
-          properties: S.optional(__S(334)),
+          properties: S.optional(ScheduleUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10245,98 +12144,5 @@ function __c41(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateScheduleRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
-    case 41:
-      return __c41(i & 7);
   }
 }

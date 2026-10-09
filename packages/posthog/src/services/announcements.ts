@@ -5,15 +5,20 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `bot` - SupportHog * `user` - The person who created it */
 export type AnnouncementSendAsEnum = "bot" | "user";
+const AnnouncementSendAsEnum = S.String;
+
 /** Slack channel IDs to send to. Each must be a channel the SupportHog bot is a member of; names are resolved server-side. */
 export type CreateAnnouncementRequestChannelsList = Array<string>;
+const CreateAnnouncementRequestChannelsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateAnnouncementRequestChannelsList>;
+
 export interface CreateAnnouncementRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -24,9 +29,21 @@ export interface CreateAnnouncementRequest {
   /** Slack channel IDs to send to. Each must be a channel the SupportHog bot is a member of; names are resolved server-side. */
   channels: CreateAnnouncementRequestChannelsList;
 }
+const CreateAnnouncementRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateAnnouncementRequest>;
+
 /** * `pending` - Pending * `sending` - Sending * `sent` - Sent * `partially_failed` - Partially failed * `failed` - Failed */
 export type AnnouncementStatusEnum = "pending" | "sending" | "sent" | "partially_failed" | "failed";
+const AnnouncementStatusEnum = S.String;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -40,6 +57,8 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -51,8 +70,12 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<UserBasic>;
+
 /** * `pending` - Pending * `sent` - Sent * `failed` - Failed */
 export type AnnouncementDeliveryStatusEnum = "pending" | "sent" | "failed";
+const AnnouncementDeliveryStatusEnum = S.String;
+
 export interface AnnouncementDelivery {
   id: string;
   /** Slack channel ID the message was sent to (e.g. C0123ABCD). */
@@ -68,8 +91,15 @@ export interface AnnouncementDelivery {
   /** When the message was delivered to this channel. Null until sent. */
   sent_at: string | null;
 }
+const AnnouncementDelivery = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AnnouncementDelivery>;
+
 /** Per-channel delivery rows, one per selected Slack channel. */
 export type AnnouncementOutputDeliveriesList = Array<AnnouncementDelivery>;
+const AnnouncementOutputDeliveriesList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AnnouncementOutputDeliveriesList>;
+
 export interface AnnouncementOutput {
   id: string;
   /** Short human-friendly identifier for the announcement. */
@@ -96,11 +126,18 @@ export interface AnnouncementOutput {
   /** Per-channel delivery rows, one per selected Slack channel. */
   deliveries: AnnouncementOutputDeliveriesList;
 }
+const AnnouncementOutput = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AnnouncementOutput>;
+
 export interface GetAnnouncementRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
 }
+const GetAnnouncementRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetAnnouncementRequest>;
+
 export interface ListAnnouncementsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -109,17 +146,37 @@ export interface ListAnnouncementsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListAnnouncementsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListAnnouncementsRequest>;
+
 export type PaginatedAnnouncementListOutputResultsList = Array<AnnouncementOutput>;
+const PaginatedAnnouncementListOutputResultsList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<PaginatedAnnouncementListOutputResultsList>;
+
 export interface PaginatedAnnouncementListOutput {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedAnnouncementListOutputResultsList;
 }
+const PaginatedAnnouncementListOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<PaginatedAnnouncementListOutput>;
+
 export interface ListAnnouncementsChannelsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const ListAnnouncementsChannelsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListAnnouncementsChannelsRequest>;
+
 export interface AnnouncementChannel {
   /** Slack channel ID (e.g. C0123ABCD). */
   id: string;
@@ -130,8 +187,20 @@ export interface AnnouncementChannel {
   /** Name of the customer account whose slack_channel_id points at this channel, or null if unmapped. */
   customer_name: string | null;
 }
+const AnnouncementChannel = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<AnnouncementChannel>;
+
 export type ListAnnouncementsChannelsResponseBodyList = Array<AnnouncementChannel>;
+const ListAnnouncementsChannelsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ListAnnouncementsChannelsResponseBodyList>;
+
 export type ListAnnouncementsChannelsResponse = ListAnnouncementsChannelsResponseBodyList;
+const ListAnnouncementsChannelsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ListAnnouncementsChannelsResponse>;
+
 export type CreateAnnouncementError = PosthogOpError;
 export const createAnnouncement: API.OperationMethod<
   CreateAnnouncementRequest,
@@ -139,8 +208,8 @@ export const createAnnouncement: API.OperationMethod<
   CreateAnnouncementError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateAnnouncementRequest>,
-  output: __S(6) as any as S.Schema<AnnouncementOutput>,
+  input: CreateAnnouncementRequest,
+  output: AnnouncementOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -153,8 +222,8 @@ export const getAnnouncement: API.OperationMethod<
   GetAnnouncementError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<GetAnnouncementRequest>,
-  output: __S(6) as any as S.Schema<AnnouncementOutput>,
+  input: GetAnnouncementRequest,
+  output: AnnouncementOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -167,8 +236,8 @@ export const listAnnouncements: API.OperationMethod<
   ListAnnouncementsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<ListAnnouncementsRequest>,
-  output: __S(10) as any as S.Schema<PaginatedAnnouncementListOutput>,
+  input: ListAnnouncementsRequest,
+  output: PaginatedAnnouncementListOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -182,8 +251,8 @@ export const listAnnouncementsChannels: API.OperationMethod<
   ListAnnouncementsChannelsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<ListAnnouncementsChannelsRequest>,
-  output: __S(14) as any as S.Schema<ListAnnouncementsChannelsResponse>,
+  input: ListAnnouncementsChannelsRequest,
+  output: ListAnnouncementsChannelsResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -199,8 +268,8 @@ function __c0(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           message: S.String,
-          send_as: S.optional(S.String),
-          channels: __S(0),
+          send_as: S.optional(AnnouncementSendAsEnum),
+          channels: CreateAnnouncementRequestChannelsList,
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/announcements/", code: 200 }),
         ),
@@ -219,8 +288,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(2))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 4:
@@ -229,30 +298,30 @@ function __c0(j: number): any {
           id: S.String,
           slack_channel_id: S.String,
           slack_channel_name: S.String,
-          status: S.String,
+          status: AnnouncementDeliveryStatusEnum,
           error: S.String,
           slack_message_ts: S.String,
           sent_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "AnnouncementDelivery" });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(AnnouncementDelivery);
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           short_id: S.String,
           message: S.String,
-          status: S.String,
-          send_as: S.optional(S.String),
+          status: AnnouncementStatusEnum,
+          send_as: S.optional(AnnouncementSendAsEnum),
           sender_display_name: S.String,
           total_channels: S.Number,
           sent_count: S.Number,
           failed_count: S.Number,
           sent_at: S.NullOr(S.String),
           created_at: S.String,
-          created_by: __S(3),
-          deliveries: __S(5),
+          created_by: UserBasic,
+          deliveries: AnnouncementOutputDeliveriesList,
         }),
       ).annotate({ identifier: "AnnouncementOutput" });
     case 7:
@@ -283,14 +352,14 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListAnnouncementsRequest" });
     case 1:
-      return S.Array(__S(6));
+      return S.Array(AnnouncementOutput);
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(9),
+          results: PaginatedAnnouncementListOutputResultsList,
         }),
       ).annotate({
         identifier: "PaginatedAnnouncementListOutput",
@@ -319,23 +388,12 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "AnnouncementChannel" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(AnnouncementChannel);
     case 6:
-      return S.suspend(() => __S(13).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListAnnouncementsChannelsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListAnnouncementsChannelsResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

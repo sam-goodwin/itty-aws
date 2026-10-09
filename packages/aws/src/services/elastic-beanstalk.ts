@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://elasticbeanstalk.amazonaws.com/docs/2010-12-01/");
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Elastic Beanstalk",
@@ -279,44 +277,83 @@ export interface AbortEnvironmentUpdateMessage {
   EnvironmentId?: string;
   EnvironmentName?: string;
 }
+const AbortEnvironmentUpdateMessage = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AbortEnvironmentUpdateMessage>;
 export interface AbortEnvironmentUpdateResponse {}
+const AbortEnvironmentUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AbortEnvironmentUpdateResponse>;
 export interface ApplyEnvironmentManagedActionRequest {
   EnvironmentName?: string;
   EnvironmentId?: string;
   ActionId: string;
 }
+const ApplyEnvironmentManagedActionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ApplyEnvironmentManagedActionRequest>;
 export type ActionType = "InstanceRefresh" | "PlatformUpdate" | "Unknown" | (string & {});
+const ActionType = S.String;
+
 export interface ApplyEnvironmentManagedActionResult {
   ActionId?: string;
   ActionDescription?: string;
   ActionType?: ActionType;
   Status?: string;
 }
+const ApplyEnvironmentManagedActionResult = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ApplyEnvironmentManagedActionResult>;
 export type OperationsRole = string;
 export interface AssociateEnvironmentOperationsRoleMessage {
   EnvironmentName: string;
   OperationsRole: string;
 }
+const AssociateEnvironmentOperationsRoleMessage = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AssociateEnvironmentOperationsRoleMessage>;
 export interface AssociateEnvironmentOperationsRoleResponse {}
+const AssociateEnvironmentOperationsRoleResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AssociateEnvironmentOperationsRoleResponse>;
 export type DNSCnamePrefix = string;
 export interface CheckDNSAvailabilityMessage {
   CNAMEPrefix: string;
 }
+const CheckDNSAvailabilityMessage = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CheckDNSAvailabilityMessage>;
 export type CnameAvailability = boolean;
 export type DNSCname = string;
 export interface CheckDNSAvailabilityResultMessage {
   Available?: boolean;
   FullyQualifiedCNAME?: string;
 }
+const CheckDNSAvailabilityResultMessage = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CheckDNSAvailabilityResultMessage>;
 export type ApplicationName = string;
 export type GroupName = string;
 export type VersionLabel = string;
 export type VersionLabels = string[];
+const VersionLabels = /*@__PURE__*/ __L.at(__c1, 0);
 export interface ComposeEnvironmentsMessage {
   ApplicationName?: string;
   GroupName?: string;
   VersionLabels?: string[];
 }
+const ComposeEnvironmentsMessage = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ComposeEnvironmentsMessage>;
 export type SolutionStackName = string;
 export type PlatformArn = string;
 export type ConfigurationTemplateName = string;
@@ -334,8 +371,12 @@ export type EnvironmentStatus =
   | "Terminating"
   | "Terminated"
   | (string & {});
+const EnvironmentStatus = S.String;
+
 export type AbortableOperationInProgress = boolean;
 export type EnvironmentHealth = "Green" | "Yellow" | "Red" | "Grey" | (string & {});
+const EnvironmentHealth = S.String;
+
 export type EnvironmentHealthStatus =
   | "NoData"
   | "Unknown"
@@ -347,29 +388,44 @@ export type EnvironmentHealthStatus =
   | "Severe"
   | "Suspended"
   | (string & {});
+const EnvironmentHealthStatus = S.String;
+
 export interface Listener {
   Protocol?: string;
   Port?: number;
 }
+const Listener = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Listener>;
 export type LoadBalancerListenersDescription = Listener[];
+const LoadBalancerListenersDescription = /*@__PURE__*/ __L.at(__c1, 3);
 export interface LoadBalancerDescription {
   LoadBalancerName?: string;
   Domain?: string;
   Listeners?: Listener[];
 }
+const LoadBalancerDescription = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<LoadBalancerDescription>;
 export interface EnvironmentResourcesDescription {
   LoadBalancer?: LoadBalancerDescription;
 }
+const EnvironmentResourcesDescription = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<EnvironmentResourcesDescription>;
 export interface EnvironmentTier {
   Name?: string;
   Type?: string;
   Version?: string;
 }
+const EnvironmentTier = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<EnvironmentTier>;
 export interface EnvironmentLink {
   LinkName?: string;
   EnvironmentName?: string;
 }
+const EnvironmentLink = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<EnvironmentLink>;
 export type EnvironmentLinks = EnvironmentLink[];
+const EnvironmentLinks = /*@__PURE__*/ __L.at(__c2, 0);
 export type EnvironmentArn = string;
 export interface EnvironmentDescription {
   EnvironmentName?: string;
@@ -394,12 +450,21 @@ export interface EnvironmentDescription {
   EnvironmentArn?: string;
   OperationsRole?: string;
 }
+const EnvironmentDescription = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<EnvironmentDescription>;
 export type EnvironmentDescriptionsList = EnvironmentDescription[];
+const EnvironmentDescriptionsList = /*@__PURE__*/ __L.at(__c2, 2);
 export type Token = string;
 export interface EnvironmentDescriptionsMessage {
   Environments?: EnvironmentDescription[];
   NextToken?: string;
 }
+const EnvironmentDescriptionsMessage = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<EnvironmentDescriptionsMessage>;
 export type BoxedBoolean = boolean;
 export type BoxedInt = number;
 export interface MaxCountRule {
@@ -407,35 +472,53 @@ export interface MaxCountRule {
   MaxCount?: number;
   DeleteSourceFromS3?: boolean;
 }
+const MaxCountRule = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<MaxCountRule>;
 export interface MaxAgeRule {
   Enabled: boolean;
   MaxAgeInDays?: number;
   DeleteSourceFromS3?: boolean;
 }
+const MaxAgeRule = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<MaxAgeRule>;
 export interface ApplicationVersionLifecycleConfig {
   MaxCountRule?: MaxCountRule;
   MaxAgeRule?: MaxAgeRule;
 }
+const ApplicationVersionLifecycleConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ApplicationVersionLifecycleConfig>;
 export interface ApplicationResourceLifecycleConfig {
   ServiceRole?: string;
   VersionLifecycleConfig?: ApplicationVersionLifecycleConfig;
 }
+const ApplicationResourceLifecycleConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ApplicationResourceLifecycleConfig>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   Key?: string;
   Value?: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Tag>;
 export type Tags = Tag[];
+const Tags = /*@__PURE__*/ __L.at(__c3, 1);
 export interface CreateApplicationMessage {
   ApplicationName: string;
   Description?: string;
   ResourceLifecycleConfig?: ApplicationResourceLifecycleConfig;
   Tags?: Tag[];
 }
+const CreateApplicationMessage = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateApplicationMessage>;
 export type ApplicationArn = string;
 export type VersionLabelsList = string[];
+const VersionLabelsList = /*@__PURE__*/ __L.at(__c3, 3);
 export type ConfigurationTemplateNamesList = string[];
+const ConfigurationTemplateNamesList = /*@__PURE__*/ __L.at(__c3, 4);
 export interface ApplicationDescription {
   ApplicationArn?: string;
   ApplicationName?: string;
@@ -446,29 +529,48 @@ export interface ApplicationDescription {
   ConfigurationTemplates?: string[];
   ResourceLifecycleConfig?: ApplicationResourceLifecycleConfig;
 }
+const ApplicationDescription = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ApplicationDescription>;
 export interface ApplicationDescriptionMessage {
   Application?: ApplicationDescription;
 }
+const ApplicationDescriptionMessage = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ApplicationDescriptionMessage>;
 export type SourceType = "Git" | "Zip" | (string & {});
+const SourceType = S.String;
+
 export type SourceRepository = "CodeCommit" | "S3" | (string & {});
+const SourceRepository = S.String;
+
 export type SourceLocation = string;
 export interface SourceBuildInformation {
   SourceType: SourceType;
   SourceRepository: SourceRepository;
   SourceLocation: string;
 }
+const SourceBuildInformation = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<SourceBuildInformation>;
 export type S3Bucket = string;
 export type S3Key = string;
 export interface S3Location {
   S3Bucket?: string;
   S3Key?: string;
 }
+const S3Location = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<S3Location>;
 export type NonEmptyString = string;
 export type ComputeType =
   | "BUILD_GENERAL1_SMALL"
   | "BUILD_GENERAL1_MEDIUM"
   | "BUILD_GENERAL1_LARGE"
   | (string & {});
+const ComputeType = S.String;
+
 export interface BuildConfiguration {
   ArtifactName?: string;
   CodeBuildServiceRole: string;
@@ -476,13 +578,19 @@ export interface BuildConfiguration {
   Image: string;
   TimeoutInMinutes?: number;
 }
+const BuildConfiguration = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<BuildConfiguration>;
 export type AutoCreateApplication = boolean;
 export type ApplicationVersionProccess = boolean;
 export interface ImageSource {
   Uri?: string;
 }
+const ImageSource = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ImageSource>;
 export type ImageBuildType = "docker" | "buildpack" | (string & {});
+const ImageBuildType = S.String;
+
 export type ArchitectureType = "amd64" | "arm64" | (string & {});
+const ArchitectureType = S.String;
+
 export interface ImageBuildConfiguration {
   Type?: ImageBuildType;
   DockerfileLocation?: string;
@@ -492,10 +600,15 @@ export interface ImageBuildConfiguration {
   ComputeType?: ComputeType;
   TimeoutInMinutes?: number;
 }
+const ImageBuildConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ImageBuildConfiguration>;
 export interface ImageConfiguration {
   Source?: ImageSource;
   Build?: ImageBuildConfiguration;
 }
+const ImageConfiguration = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ImageConfiguration>;
 export interface CreateApplicationVersionMessage {
   ApplicationName: string;
   VersionLabel: string;
@@ -508,6 +621,10 @@ export interface CreateApplicationVersionMessage {
   Tags?: Tag[];
   ImageConfiguration?: ImageConfiguration;
 }
+const CreateApplicationVersionMessage = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateApplicationVersionMessage>;
 export type ApplicationVersionArn = string;
 export type ApplicationVersionStatus =
   | "Processed"
@@ -516,6 +633,8 @@ export type ApplicationVersionStatus =
   | "Processing"
   | "Building"
   | (string & {});
+const ApplicationVersionStatus = S.String;
+
 export interface ApplicationVersionDescription {
   ApplicationVersionArn?: string;
   ApplicationName?: string;
@@ -531,13 +650,22 @@ export interface ApplicationVersionDescription {
   DateUpdated?: Date;
   Status?: ApplicationVersionStatus;
 }
+const ApplicationVersionDescription = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ApplicationVersionDescription>;
 export interface ApplicationVersionDescriptionMessage {
   ApplicationVersion?: ApplicationVersionDescription;
 }
+const ApplicationVersionDescriptionMessage = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ApplicationVersionDescriptionMessage>;
 export interface SourceConfiguration {
   ApplicationName?: string;
   TemplateName?: string;
 }
+const SourceConfiguration = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<SourceConfiguration>;
 export type ResourceName = string;
 export type OptionNamespace = string;
 export type ConfigurationOptionName = string;
@@ -548,7 +676,12 @@ export interface ConfigurationOptionSetting {
   OptionName?: string;
   Value?: string;
 }
+const ConfigurationOptionSetting = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ConfigurationOptionSetting>;
 export type ConfigurationOptionSettingsList = ConfigurationOptionSetting[];
+const ConfigurationOptionSettingsList = /*@__PURE__*/ __L.at(__c5, 2);
 export interface CreateConfigurationTemplateMessage {
   ApplicationName: string;
   TemplateName: string;
@@ -560,7 +693,13 @@ export interface CreateConfigurationTemplateMessage {
   OptionSettings?: ConfigurationOptionSetting[];
   Tags?: Tag[];
 }
+const CreateConfigurationTemplateMessage = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateConfigurationTemplateMessage>;
 export type ConfigurationDeploymentStatus = "deployed" | "pending" | "failed" | (string & {});
+const ConfigurationDeploymentStatus = S.String;
+
 export interface ConfigurationSettingsDescription {
   SolutionStackName?: string;
   PlatformArn?: string;
@@ -573,12 +712,18 @@ export interface ConfigurationSettingsDescription {
   DateUpdated?: Date;
   OptionSettings?: ConfigurationOptionSetting[];
 }
+const ConfigurationSettingsDescription = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ConfigurationSettingsDescription>;
 export interface OptionSpecification {
   ResourceName?: string;
   Namespace?: string;
   OptionName?: string;
 }
+const OptionSpecification = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<OptionSpecification>;
 export type OptionsSpecifierList = OptionSpecification[];
+const OptionsSpecifierList = /*@__PURE__*/ __L.at(__c5, 6);
 export interface CreateEnvironmentMessage {
   ApplicationName: string;
   EnvironmentName?: string;
@@ -595,6 +740,10 @@ export interface CreateEnvironmentMessage {
   OptionsToRemove?: OptionSpecification[];
   OperationsRole?: string;
 }
+const CreateEnvironmentMessage = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreateEnvironmentMessage>;
 export type PlatformName = string;
 export type PlatformVersion = string;
 export interface CreatePlatformVersionRequest {
@@ -605,6 +754,10 @@ export interface CreatePlatformVersionRequest {
   OptionSettings?: ConfigurationOptionSetting[];
   Tags?: Tag[];
 }
+const CreatePlatformVersionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreatePlatformVersionRequest>;
 export type PlatformOwner = string;
 export type PlatformStatus =
   | "Creating"
@@ -613,13 +766,17 @@ export type PlatformStatus =
   | "Deleting"
   | "Deleted"
   | (string & {});
+const PlatformStatus = S.String;
+
 export type PlatformCategory = string;
 export type OperatingSystemName = string;
 export type OperatingSystemVersion = string;
 export type SupportedTier = string;
 export type SupportedTierList = string[];
+const SupportedTierList = /*@__PURE__*/ __L.at(__c6, 1);
 export type SupportedAddon = string;
 export type SupportedAddonList = string[];
+const SupportedAddonList = /*@__PURE__*/ __L.at(__c6, 2);
 export type PlatformLifecycleState = string;
 export type BranchName = string;
 export type PlatformBranchLifecycleState = string;
@@ -637,51 +794,110 @@ export interface PlatformSummary {
   PlatformBranchName?: string;
   PlatformBranchLifecycleState?: string;
 }
+const PlatformSummary = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<PlatformSummary>;
 export type ARN = string;
 export interface Builder {
   ARN?: string;
 }
+const Builder = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<Builder>;
 export interface CreatePlatformVersionResult {
   PlatformSummary?: PlatformSummary;
   Builder?: Builder;
 }
+const CreatePlatformVersionResult = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<CreatePlatformVersionResult>;
 export interface CreateStorageLocationRequest {}
+const CreateStorageLocationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreateStorageLocationRequest>;
 export interface CreateStorageLocationResultMessage {
   S3Bucket?: string;
 }
+const CreateStorageLocationResultMessage = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<CreateStorageLocationResultMessage>;
 export type TerminateEnvForce = boolean;
 export interface DeleteApplicationMessage {
   ApplicationName: string;
   TerminateEnvByForce?: boolean;
 }
+const DeleteApplicationMessage = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DeleteApplicationMessage>;
 export interface DeleteApplicationResponse {}
+const DeleteApplicationResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DeleteApplicationResponse>;
 export type DeleteSourceBundle = boolean;
 export interface DeleteApplicationVersionMessage {
   ApplicationName: string;
   VersionLabel: string;
   DeleteSourceBundle?: boolean;
 }
+const DeleteApplicationVersionMessage = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<DeleteApplicationVersionMessage>;
 export interface DeleteApplicationVersionResponse {}
+const DeleteApplicationVersionResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<DeleteApplicationVersionResponse>;
 export interface DeleteConfigurationTemplateMessage {
   ApplicationName: string;
   TemplateName: string;
 }
+const DeleteConfigurationTemplateMessage = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<DeleteConfigurationTemplateMessage>;
 export interface DeleteConfigurationTemplateResponse {}
+const DeleteConfigurationTemplateResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<DeleteConfigurationTemplateResponse>;
 export interface DeleteEnvironmentConfigurationMessage {
   ApplicationName: string;
   EnvironmentName: string;
 }
+const DeleteEnvironmentConfigurationMessage = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DeleteEnvironmentConfigurationMessage>;
 export interface DeleteEnvironmentConfigurationResponse {}
+const DeleteEnvironmentConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<DeleteEnvironmentConfigurationResponse>;
 export interface DeletePlatformVersionRequest {
   PlatformArn?: string;
 }
+const DeletePlatformVersionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DeletePlatformVersionRequest>;
 export interface DeletePlatformVersionResult {
   PlatformSummary?: PlatformSummary;
 }
+const DeletePlatformVersionResult = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DeletePlatformVersionResult>;
 export interface DescribeAccountAttributesRequest {}
+const DescribeAccountAttributesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<DescribeAccountAttributesRequest>;
 export interface ResourceQuota {
   Maximum?: number;
 }
+const ResourceQuota = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ResourceQuota>;
 export interface ResourceQuotas {
   ApplicationQuota?: ResourceQuota;
   ApplicationVersionQuota?: ResourceQuota;
@@ -689,17 +905,32 @@ export interface ResourceQuotas {
   ConfigurationTemplateQuota?: ResourceQuota;
   CustomPlatformQuota?: ResourceQuota;
 }
+const ResourceQuotas = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<ResourceQuotas>;
 export interface DescribeAccountAttributesResult {
   ResourceQuotas?: ResourceQuotas;
 }
+const DescribeAccountAttributesResult = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DescribeAccountAttributesResult>;
 export type ApplicationNamesList = string[];
+const ApplicationNamesList = /*@__PURE__*/ __L.at(__c8, 6);
 export interface DescribeApplicationsMessage {
   ApplicationNames?: string[];
 }
+const DescribeApplicationsMessage = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DescribeApplicationsMessage>;
 export type ApplicationDescriptionList = ApplicationDescription[];
+const ApplicationDescriptionList = /*@__PURE__*/ __L.at(__c9, 0);
 export interface ApplicationDescriptionsMessage {
   Applications?: ApplicationDescription[];
 }
+const ApplicationDescriptionsMessage = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ApplicationDescriptionsMessage>;
 export type MaxRecords = number;
 export interface DescribeApplicationVersionsMessage {
   ApplicationName?: string;
@@ -707,11 +938,20 @@ export interface DescribeApplicationVersionsMessage {
   MaxRecords?: number;
   NextToken?: string;
 }
+const DescribeApplicationVersionsMessage = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DescribeApplicationVersionsMessage>;
 export type ApplicationVersionDescriptionList = ApplicationVersionDescription[];
+const ApplicationVersionDescriptionList = /*@__PURE__*/ __L.at(__c9, 3);
 export interface ApplicationVersionDescriptionsMessage {
   ApplicationVersions?: ApplicationVersionDescription[];
   NextToken?: string;
 }
+const ApplicationVersionDescriptionsMessage = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ApplicationVersionDescriptionsMessage>;
 export interface DescribeConfigurationOptionsMessage {
   ApplicationName?: string;
   TemplateName?: string;
@@ -720,12 +960,19 @@ export interface DescribeConfigurationOptionsMessage {
   PlatformArn?: string;
   Options?: OptionSpecification[];
 }
+const DescribeConfigurationOptionsMessage = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DescribeConfigurationOptionsMessage>;
 export type ConfigurationOptionDefaultValue = string;
 export type ConfigurationOptionSeverity = string;
 export type UserDefinedOption = boolean;
 export type ConfigurationOptionValueType = "Scalar" | "List" | (string & {});
+const ConfigurationOptionValueType = S.String;
+
 export type ConfigurationOptionPossibleValue = string;
 export type ConfigurationOptionPossibleValues = string[];
+const ConfigurationOptionPossibleValues = /*@__PURE__*/ __L.at(__c9, 6);
 export type OptionRestrictionMinValue = number;
 export type OptionRestrictionMaxValue = number;
 export type OptionRestrictionMaxLength = number;
@@ -735,6 +982,10 @@ export interface OptionRestrictionRegex {
   Pattern?: string;
   Label?: string;
 }
+const OptionRestrictionRegex = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<OptionRestrictionRegex>;
 export interface ConfigurationOptionDescription {
   Namespace?: string;
   Name?: string;
@@ -748,21 +999,39 @@ export interface ConfigurationOptionDescription {
   MaxLength?: number;
   Regex?: OptionRestrictionRegex;
 }
+const ConfigurationOptionDescription = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ConfigurationOptionDescription>;
 export type ConfigurationOptionDescriptionsList = ConfigurationOptionDescription[];
+const ConfigurationOptionDescriptionsList = /*@__PURE__*/ __L.at(__c10, 1);
 export interface ConfigurationOptionsDescription {
   SolutionStackName?: string;
   PlatformArn?: string;
   Options?: ConfigurationOptionDescription[];
 }
+const ConfigurationOptionsDescription = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ConfigurationOptionsDescription>;
 export interface DescribeConfigurationSettingsMessage {
   ApplicationName: string;
   TemplateName?: string;
   EnvironmentName?: string;
 }
+const DescribeConfigurationSettingsMessage = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<DescribeConfigurationSettingsMessage>;
 export type ConfigurationSettingsDescriptionList = ConfigurationSettingsDescription[];
+const ConfigurationSettingsDescriptionList = /*@__PURE__*/ __L.at(__c10, 4);
 export interface ConfigurationSettingsDescriptions {
   ConfigurationSettings?: ConfigurationSettingsDescription[];
 }
+const ConfigurationSettingsDescriptions = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ConfigurationSettingsDescriptions>;
 export type EnvironmentHealthAttribute =
   | "Status"
   | "Color"
@@ -773,14 +1042,22 @@ export type EnvironmentHealthAttribute =
   | "HealthStatus"
   | "RefreshedAt"
   | (string & {});
+const EnvironmentHealthAttribute = S.String;
+
 export type EnvironmentHealthAttributes = EnvironmentHealthAttribute[];
+const EnvironmentHealthAttributes = /*@__PURE__*/ __L.at(__c10, 6);
 export interface DescribeEnvironmentHealthRequest {
   EnvironmentName?: string;
   EnvironmentId?: string;
   AttributeNames?: EnvironmentHealthAttribute[];
 }
+const DescribeEnvironmentHealthRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<DescribeEnvironmentHealthRequest>;
 export type Cause = string;
 export type Causes = string[];
+const Causes = /*@__PURE__*/ __L.at(__c11, 0);
 export type RequestCount = number;
 export interface StatusCodes {
   Status2xx?: number;
@@ -788,6 +1065,7 @@ export interface StatusCodes {
   Status4xx?: number;
   Status5xx?: number;
 }
+const StatusCodes = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<StatusCodes>;
 export interface Latency {
   P999?: number;
   P99?: number;
@@ -798,12 +1076,14 @@ export interface Latency {
   P50?: number;
   P10?: number;
 }
+const Latency = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<Latency>;
 export interface ApplicationMetrics {
   Duration?: number;
   RequestCount?: number;
   StatusCodes?: StatusCodes;
   Latency?: Latency;
 }
+const ApplicationMetrics = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<ApplicationMetrics>;
 export interface InstanceHealthSummary {
   NoData?: number;
   Unknown?: number;
@@ -814,6 +1094,10 @@ export interface InstanceHealthSummary {
   Degraded?: number;
   Severe?: number;
 }
+const InstanceHealthSummary = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<InstanceHealthSummary>;
 export type RefreshedAt = Date;
 export interface DescribeEnvironmentHealthResult {
   EnvironmentName?: string;
@@ -825,6 +1109,10 @@ export interface DescribeEnvironmentHealthResult {
   InstancesHealth?: InstanceHealthSummary;
   RefreshedAt?: Date;
 }
+const DescribeEnvironmentHealthResult = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<DescribeEnvironmentHealthResult>;
 export type ManagedActionHistoryMaxItems = number;
 export interface DescribeEnvironmentManagedActionHistoryRequest {
   EnvironmentId?: string;
@@ -832,6 +1120,10 @@ export interface DescribeEnvironmentManagedActionHistoryRequest {
   NextToken?: string;
   MaxItems?: number;
 }
+const DescribeEnvironmentManagedActionHistoryRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<DescribeEnvironmentManagedActionHistoryRequest>;
 export type FailureType =
   | "UpdateCancelled"
   | "CancellationFailed"
@@ -841,7 +1133,11 @@ export type FailureType =
   | "InvalidEnvironmentState"
   | "PermissionsError"
   | (string & {});
+const FailureType = S.String;
+
 export type ActionHistoryStatus = "Completed" | "Failed" | "Unknown" | (string & {});
+const ActionHistoryStatus = S.String;
+
 export interface ManagedActionHistoryItem {
   ActionId?: string;
   ActionType?: ActionType;
@@ -852,17 +1148,32 @@ export interface ManagedActionHistoryItem {
   ExecutedTime?: Date;
   FinishedTime?: Date;
 }
+const ManagedActionHistoryItem = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ManagedActionHistoryItem>;
 export type ManagedActionHistoryItems = ManagedActionHistoryItem[];
+const ManagedActionHistoryItems = /*@__PURE__*/ __L.at(__c12, 0);
 export interface DescribeEnvironmentManagedActionHistoryResult {
   ManagedActionHistoryItems?: ManagedActionHistoryItem[];
   NextToken?: string;
 }
+const DescribeEnvironmentManagedActionHistoryResult = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<DescribeEnvironmentManagedActionHistoryResult>;
 export type ActionStatus = "Scheduled" | "Pending" | "Running" | "Unknown" | (string & {});
+const ActionStatus = S.String;
+
 export interface DescribeEnvironmentManagedActionsRequest {
   EnvironmentName?: string;
   EnvironmentId?: string;
   Status?: ActionStatus;
 }
+const DescribeEnvironmentManagedActionsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<DescribeEnvironmentManagedActionsRequest>;
 export interface ManagedAction {
   ActionId?: string;
   ActionDescription?: string;
@@ -870,47 +1181,72 @@ export interface ManagedAction {
   Status?: ActionStatus;
   WindowStartTime?: Date;
 }
+const ManagedAction = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<ManagedAction>;
 export type ManagedActions = ManagedAction[];
+const ManagedActions = /*@__PURE__*/ __L.at(__c12, 4);
 export interface DescribeEnvironmentManagedActionsResult {
   ManagedActions?: ManagedAction[];
 }
+const DescribeEnvironmentManagedActionsResult = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<DescribeEnvironmentManagedActionsResult>;
 export interface DescribeEnvironmentResourcesMessage {
   EnvironmentId?: string;
   EnvironmentName?: string;
 }
+const DescribeEnvironmentResourcesMessage = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<DescribeEnvironmentResourcesMessage>;
 export type ResourceId = string;
 export interface AutoScalingGroup {
   Name?: string;
 }
+const AutoScalingGroup = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<AutoScalingGroup>;
 export type AutoScalingGroupList = AutoScalingGroup[];
+const AutoScalingGroupList = /*@__PURE__*/ __L.at(__c13, 0);
 export interface Cluster {
   ClusterArn?: string;
 }
+const Cluster = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<Cluster>;
 export interface Instance {
   Id?: string;
 }
+const Instance = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<Instance>;
 export type InstanceList = Instance[];
+const InstanceList = /*@__PURE__*/ __L.at(__c13, 3);
 export interface LaunchConfiguration {
   Name?: string;
 }
+const LaunchConfiguration = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<LaunchConfiguration>;
 export type LaunchConfigurationList = LaunchConfiguration[];
+const LaunchConfigurationList = /*@__PURE__*/ __L.at(__c13, 5);
 export interface LaunchTemplate {
   Id?: string;
 }
+const LaunchTemplate = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<LaunchTemplate>;
 export type LaunchTemplateList = LaunchTemplate[];
+const LaunchTemplateList = /*@__PURE__*/ __L.at(__c13, 7);
 export interface LoadBalancer {
   Name?: string;
 }
+const LoadBalancer = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<LoadBalancer>;
 export type LoadBalancerList = LoadBalancer[];
+const LoadBalancerList = /*@__PURE__*/ __L.at(__c14, 1);
 export interface Trigger {
   Name?: string;
 }
+const Trigger = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<Trigger>;
 export type TriggerList = Trigger[];
+const TriggerList = /*@__PURE__*/ __L.at(__c14, 3);
 export interface Queue {
   Name?: string;
   URL?: string;
 }
+const Queue = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<Queue>;
 export type QueueList = Queue[];
+const QueueList = /*@__PURE__*/ __L.at(__c14, 5);
 export interface EnvironmentResourceDescription {
   EnvironmentName?: string;
   AutoScalingGroups?: AutoScalingGroup[];
@@ -922,11 +1258,21 @@ export interface EnvironmentResourceDescription {
   Triggers?: Trigger[];
   Queues?: Queue[];
 }
+const EnvironmentResourceDescription = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<EnvironmentResourceDescription>;
 export interface EnvironmentResourceDescriptionsMessage {
   EnvironmentResources?: EnvironmentResourceDescription;
 }
+const EnvironmentResourceDescriptionsMessage = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<EnvironmentResourceDescriptionsMessage>;
 export type EnvironmentIdList = string[];
+const EnvironmentIdList = /*@__PURE__*/ __L.at(__c15, 0);
 export type EnvironmentNamesList = string[];
+const EnvironmentNamesList = /*@__PURE__*/ __L.at(__c15, 1);
 export type IncludeDeleted = boolean;
 export type IncludeDeletedBackTo = Date;
 export interface DescribeEnvironmentsMessage {
@@ -939,8 +1285,14 @@ export interface DescribeEnvironmentsMessage {
   MaxRecords?: number;
   NextToken?: string;
 }
+const DescribeEnvironmentsMessage = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<DescribeEnvironmentsMessage>;
 export type RequestId = string;
 export type EventSeverity = "TRACE" | "DEBUG" | "INFO" | "WARN" | "ERROR" | "FATAL" | (string & {});
+const EventSeverity = S.String;
+
 export type TimeFilterStart = Date;
 export type TimeFilterEnd = Date;
 export interface DescribeEventsMessage {
@@ -957,6 +1309,10 @@ export interface DescribeEventsMessage {
   MaxRecords?: number;
   NextToken?: string;
 }
+const DescribeEventsMessage = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<DescribeEventsMessage>;
 export type EventDate = Date;
 export type EventMessage = string;
 export interface EventDescription {
@@ -970,11 +1326,17 @@ export interface EventDescription {
   RequestId?: string;
   Severity?: EventSeverity;
 }
+const EventDescription = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<EventDescription>;
 export type EventDescriptionList = EventDescription[];
+const EventDescriptionList = /*@__PURE__*/ __L.at(__c15, 5);
 export interface EventDescriptionsMessage {
   Events?: EventDescription[];
   NextToken?: string;
 }
+const EventDescriptionsMessage = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<EventDescriptionsMessage>;
 export type InstancesHealthAttribute =
   | "HealthStatus"
   | "Color"
@@ -988,7 +1350,10 @@ export type InstancesHealthAttribute =
   | "InstanceType"
   | "All"
   | (string & {});
+const InstancesHealthAttribute = S.String;
+
 export type InstancesHealthAttributes = InstancesHealthAttribute[];
+const InstancesHealthAttributes = /*@__PURE__*/ __L.at(__c15, 7);
 export type NextToken = string;
 export interface DescribeInstancesHealthRequest {
   EnvironmentName?: string;
@@ -996,6 +1361,10 @@ export interface DescribeInstancesHealthRequest {
   AttributeNames?: InstancesHealthAttribute[];
   NextToken?: string;
 }
+const DescribeInstancesHealthRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<DescribeInstancesHealthRequest>;
 export type InstanceId = string;
 export type LaunchedAt = Date;
 export interface CPUUtilization {
@@ -1008,12 +1377,15 @@ export interface CPUUtilization {
   SoftIRQ?: number;
   Privileged?: number;
 }
+const CPUUtilization = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<CPUUtilization>;
 export type LoadAverageValue = number;
 export type LoadAverage = number[];
+const LoadAverage = /*@__PURE__*/ __L.at(__c16, 2);
 export interface SystemStatus {
   CPUUtilization?: CPUUtilization;
   LoadAverage?: number[];
 }
+const SystemStatus = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<SystemStatus>;
 export type DeploymentTimestamp = Date;
 export interface Deployment {
   VersionLabel?: string;
@@ -1021,6 +1393,7 @@ export interface Deployment {
   Status?: string;
   DeploymentTime?: Date;
 }
+const Deployment = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<Deployment>;
 export interface SingleInstanceHealth {
   InstanceId?: string;
   HealthStatus?: string;
@@ -1033,33 +1406,55 @@ export interface SingleInstanceHealth {
   AvailabilityZone?: string;
   InstanceType?: string;
 }
+const SingleInstanceHealth = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<SingleInstanceHealth>;
 export type InstanceHealthList = SingleInstanceHealth[];
+const InstanceHealthList = /*@__PURE__*/ __L.at(__c16, 6);
 export interface DescribeInstancesHealthResult {
   InstanceHealthList?: SingleInstanceHealth[];
   RefreshedAt?: Date;
   NextToken?: string;
 }
+const DescribeInstancesHealthResult = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<DescribeInstancesHealthResult>;
 export interface DescribePlatformVersionRequest {
   PlatformArn?: string;
 }
+const DescribePlatformVersionRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<DescribePlatformVersionRequest>;
 export type Maintainer = string;
 export interface PlatformProgrammingLanguage {
   Name?: string;
   Version?: string;
 }
+const PlatformProgrammingLanguage = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<PlatformProgrammingLanguage>;
 export type PlatformProgrammingLanguages = PlatformProgrammingLanguage[];
+const PlatformProgrammingLanguages = /*@__PURE__*/ __L.at(__c17, 2);
 export interface PlatformFramework {
   Name?: string;
   Version?: string;
 }
+const PlatformFramework = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<PlatformFramework>;
 export type PlatformFrameworks = PlatformFramework[];
+const PlatformFrameworks = /*@__PURE__*/ __L.at(__c17, 4);
 export type VirtualizationType = string;
 export type ImageId = string;
 export interface CustomAmi {
   VirtualizationType?: string;
   ImageId?: string;
 }
+const CustomAmi = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<CustomAmi>;
 export type CustomAmiList = CustomAmi[];
+const CustomAmiList = /*@__PURE__*/ __L.at(__c17, 6);
 export interface PlatformDescription {
   PlatformArn?: string;
   PlatformOwner?: string;
@@ -1083,42 +1478,77 @@ export interface PlatformDescription {
   PlatformBranchName?: string;
   PlatformBranchLifecycleState?: string;
 }
+const PlatformDescription = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<PlatformDescription>;
 export interface DescribePlatformVersionResult {
   PlatformDescription?: PlatformDescription;
 }
+const DescribePlatformVersionResult = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<DescribePlatformVersionResult>;
 export interface DisassociateEnvironmentOperationsRoleMessage {
   EnvironmentName: string;
 }
+const DisassociateEnvironmentOperationsRoleMessage = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<DisassociateEnvironmentOperationsRoleMessage>;
 export interface DisassociateEnvironmentOperationsRoleResponse {}
+const DisassociateEnvironmentOperationsRoleResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<DisassociateEnvironmentOperationsRoleResponse>;
 export interface ListAvailableSolutionStacksRequest {}
+const ListAvailableSolutionStacksRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<ListAvailableSolutionStacksRequest>;
 export type AvailableSolutionStackNamesList = string[];
+const AvailableSolutionStackNamesList = /*@__PURE__*/ __L.at(__c18, 4);
 export type FileTypeExtension = string;
 export type SolutionStackFileTypeList = string[];
+const SolutionStackFileTypeList = /*@__PURE__*/ __L.at(__c18, 5);
 export interface SolutionStackDescription {
   SolutionStackName?: string;
   PermittedFileTypes?: string[];
 }
+const SolutionStackDescription = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<SolutionStackDescription>;
 export type AvailableSolutionStackDetailsList = SolutionStackDescription[];
+const AvailableSolutionStackDetailsList = /*@__PURE__*/ __L.at(__c18, 7);
 export interface ListAvailableSolutionStacksResultMessage {
   SolutionStacks?: string[];
   SolutionStackDetails?: SolutionStackDescription[];
 }
+const ListAvailableSolutionStacksResultMessage = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ListAvailableSolutionStacksResultMessage>;
 export type SearchFilterAttribute = string;
 export type SearchFilterOperator = string;
 export type SearchFilterValue = string;
 export type SearchFilterValues = string[];
+const SearchFilterValues = /*@__PURE__*/ __L.at(__c19, 1);
 export interface SearchFilter {
   Attribute?: string;
   Operator?: string;
   Values?: string[];
 }
+const SearchFilter = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<SearchFilter>;
 export type SearchFilters = SearchFilter[];
+const SearchFilters = /*@__PURE__*/ __L.at(__c19, 3);
 export type PlatformBranchMaxRecords = number;
 export interface ListPlatformBranchesRequest {
   Filters?: SearchFilter[];
   MaxRecords?: number;
   NextToken?: string;
 }
+const ListPlatformBranchesRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ListPlatformBranchesRequest>;
 export type BranchOrder = number;
 export interface PlatformBranchSummary {
   PlatformName?: string;
@@ -1127,63 +1557,123 @@ export interface PlatformBranchSummary {
   BranchOrder?: number;
   SupportedTierList?: string[];
 }
+const PlatformBranchSummary = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<PlatformBranchSummary>;
 export type PlatformBranchSummaryList = PlatformBranchSummary[];
+const PlatformBranchSummaryList = /*@__PURE__*/ __L.at(__c19, 6);
 export interface ListPlatformBranchesResult {
   PlatformBranchSummaryList?: PlatformBranchSummary[];
   NextToken?: string;
 }
+const ListPlatformBranchesResult = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<ListPlatformBranchesResult>;
 export type PlatformFilterType = string;
 export type PlatformFilterOperator = string;
 export type PlatformFilterValue = string;
 export type PlatformFilterValueList = string[];
+const PlatformFilterValueList = /*@__PURE__*/ __L.at(__c20, 0);
 export interface PlatformFilter {
   Type?: string;
   Operator?: string;
   Values?: string[];
 }
+const PlatformFilter = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<PlatformFilter>;
 export type PlatformFilters = PlatformFilter[];
+const PlatformFilters = /*@__PURE__*/ __L.at(__c20, 2);
 export type PlatformMaxRecords = number;
 export interface ListPlatformVersionsRequest {
   Filters?: PlatformFilter[];
   MaxRecords?: number;
   NextToken?: string;
 }
+const ListPlatformVersionsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<ListPlatformVersionsRequest>;
 export type PlatformSummaryList = PlatformSummary[];
+const PlatformSummaryList = /*@__PURE__*/ __L.at(__c20, 4);
 export interface ListPlatformVersionsResult {
   PlatformSummaryList?: PlatformSummary[];
   NextToken?: string;
 }
+const ListPlatformVersionsResult = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ListPlatformVersionsResult>;
 export type ResourceArn = string;
 export interface ListTagsForResourceMessage {
   ResourceArn: string;
 }
+const ListTagsForResourceMessage = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<ListTagsForResourceMessage>;
 export type TagList = Tag[];
+const TagList = /*@__PURE__*/ __L.at(__c20, 7);
 export interface ResourceTagsDescriptionMessage {
   ResourceArn?: string;
   ResourceTags?: Tag[];
 }
+const ResourceTagsDescriptionMessage = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<ResourceTagsDescriptionMessage>;
 export interface RebuildEnvironmentMessage {
   EnvironmentId?: string;
   EnvironmentName?: string;
 }
+const RebuildEnvironmentMessage = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<RebuildEnvironmentMessage>;
 export interface RebuildEnvironmentResponse {}
+const RebuildEnvironmentResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<RebuildEnvironmentResponse>;
 export type EnvironmentInfoType = "tail" | "bundle" | "analyze" | (string & {});
+const EnvironmentInfoType = S.String;
+
 export interface RequestEnvironmentInfoMessage {
   EnvironmentId?: string;
   EnvironmentName?: string;
   InfoType: EnvironmentInfoType;
 }
+const RequestEnvironmentInfoMessage = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<RequestEnvironmentInfoMessage>;
 export interface RequestEnvironmentInfoResponse {}
+const RequestEnvironmentInfoResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<RequestEnvironmentInfoResponse>;
 export interface RestartAppServerMessage {
   EnvironmentId?: string;
   EnvironmentName?: string;
 }
+const RestartAppServerMessage = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<RestartAppServerMessage>;
 export interface RestartAppServerResponse {}
+const RestartAppServerResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<RestartAppServerResponse>;
 export interface RetrieveEnvironmentInfoMessage {
   EnvironmentId?: string;
   EnvironmentName?: string;
   InfoType: EnvironmentInfoType;
 }
+const RetrieveEnvironmentInfoMessage = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<RetrieveEnvironmentInfoMessage>;
 export type Ec2InstanceId = string;
 export type SampleTimestamp = Date;
 export type Message = string;
@@ -1193,17 +1683,34 @@ export interface EnvironmentInfoDescription {
   SampleTimestamp?: Date;
   Message?: string;
 }
+const EnvironmentInfoDescription = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<EnvironmentInfoDescription>;
 export type EnvironmentInfoDescriptionList = EnvironmentInfoDescription[];
+const EnvironmentInfoDescriptionList = /*@__PURE__*/ __L.at(__c22, 1);
 export interface RetrieveEnvironmentInfoResultMessage {
   EnvironmentInfo?: EnvironmentInfoDescription[];
 }
+const RetrieveEnvironmentInfoResultMessage = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<RetrieveEnvironmentInfoResultMessage>;
 export interface SwapEnvironmentCNAMEsMessage {
   SourceEnvironmentId?: string;
   SourceEnvironmentName?: string;
   DestinationEnvironmentId?: string;
   DestinationEnvironmentName?: string;
 }
+const SwapEnvironmentCNAMEsMessage = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<SwapEnvironmentCNAMEsMessage>;
 export interface SwapEnvironmentCNAMEsResponse {}
+const SwapEnvironmentCNAMEsResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<SwapEnvironmentCNAMEsResponse>;
 export type TerminateEnvironmentResources = boolean;
 export type ForceTerminate = boolean;
 export interface TerminateEnvironmentMessage {
@@ -1212,23 +1719,43 @@ export interface TerminateEnvironmentMessage {
   TerminateResources?: boolean;
   ForceTerminate?: boolean;
 }
+const TerminateEnvironmentMessage = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<TerminateEnvironmentMessage>;
 export interface UpdateApplicationMessage {
   ApplicationName: string;
   Description?: string;
 }
+const UpdateApplicationMessage = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<UpdateApplicationMessage>;
 export interface UpdateApplicationResourceLifecycleMessage {
   ApplicationName: string;
   ResourceLifecycleConfig: ApplicationResourceLifecycleConfig;
 }
+const UpdateApplicationResourceLifecycleMessage = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<UpdateApplicationResourceLifecycleMessage>;
 export interface ApplicationResourceLifecycleDescriptionMessage {
   ApplicationName?: string;
   ResourceLifecycleConfig?: ApplicationResourceLifecycleConfig;
 }
+const ApplicationResourceLifecycleDescriptionMessage = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<ApplicationResourceLifecycleDescriptionMessage>;
 export interface UpdateApplicationVersionMessage {
   ApplicationName: string;
   VersionLabel: string;
   Description?: string;
 }
+const UpdateApplicationVersionMessage = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<UpdateApplicationVersionMessage>;
 export interface UpdateConfigurationTemplateMessage {
   ApplicationName: string;
   TemplateName: string;
@@ -1236,6 +1763,10 @@ export interface UpdateConfigurationTemplateMessage {
   OptionSettings?: ConfigurationOptionSetting[];
   OptionsToRemove?: OptionSpecification[];
 }
+const UpdateConfigurationTemplateMessage = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<UpdateConfigurationTemplateMessage>;
 export interface UpdateEnvironmentMessage {
   ApplicationName?: string;
   EnvironmentId?: string;
@@ -1250,31 +1781,56 @@ export interface UpdateEnvironmentMessage {
   OptionSettings?: ConfigurationOptionSetting[];
   OptionsToRemove?: OptionSpecification[];
 }
+const UpdateEnvironmentMessage = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<UpdateEnvironmentMessage>;
 export type TagKeyList = string[];
+const TagKeyList = /*@__PURE__*/ __L.at(__c23, 4);
 export interface UpdateTagsForResourceMessage {
   ResourceArn: string;
   TagsToAdd?: Tag[];
   TagsToRemove?: string[];
 }
+const UpdateTagsForResourceMessage = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<UpdateTagsForResourceMessage>;
 export interface UpdateTagsForResourceResponse {}
+const UpdateTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<UpdateTagsForResourceResponse>;
 export interface ValidateConfigurationSettingsMessage {
   ApplicationName: string;
   TemplateName?: string;
   EnvironmentName?: string;
   OptionSettings: ConfigurationOptionSetting[];
 }
+const ValidateConfigurationSettingsMessage = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<ValidateConfigurationSettingsMessage>;
 export type ValidationMessageString = string;
 export type ValidationSeverity = "error" | "warning" | (string & {});
+const ValidationSeverity = S.String;
+
 export interface ValidationMessage {
   Message?: string;
   Severity?: ValidationSeverity;
   Namespace?: string;
   OptionName?: string;
 }
+const ValidationMessage = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<ValidationMessage>;
 export type ValidationMessagesList = ValidationMessage[];
+const ValidationMessagesList = /*@__PURE__*/ __L.at(__c24, 1);
 export interface ConfigurationSettingsValidationMessages {
   Messages?: ValidationMessage[];
 }
+const ConfigurationSettingsValidationMessages = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<ConfigurationSettingsValidationMessages>;
 export type ExceptionMessage = string;
 export type AbortEnvironmentUpdateError = InsufficientPrivilegesException | CommonErrors;
 /**
@@ -1286,8 +1842,8 @@ export const abortEnvironmentUpdate: API.OperationMethod<
   AbortEnvironmentUpdateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AbortEnvironmentUpdateMessage>,
-  output: __S(1) as any as S.Schema<AbortEnvironmentUpdateResponse>,
+  input: AbortEnvironmentUpdateMessage,
+  output: AbortEnvironmentUpdateResponse,
   errors: [InsufficientPrivilegesException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1308,8 +1864,8 @@ export const applyEnvironmentManagedAction: API.OperationMethod<
   ApplyEnvironmentManagedActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<ApplyEnvironmentManagedActionRequest>,
-  output: __S(3) as any as S.Schema<ApplyEnvironmentManagedActionResult>,
+  input: ApplyEnvironmentManagedActionRequest,
+  output: ApplyEnvironmentManagedActionResult,
   errors: [ElasticBeanstalkServiceException, ManagedActionInvalidStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1331,8 +1887,8 @@ export const associateEnvironmentOperationsRole: API.OperationMethod<
   AssociateEnvironmentOperationsRoleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<AssociateEnvironmentOperationsRoleMessage>,
-  output: __S(5) as any as S.Schema<AssociateEnvironmentOperationsRoleResponse>,
+  input: AssociateEnvironmentOperationsRoleMessage,
+  output: AssociateEnvironmentOperationsRoleResponse,
   errors: [InsufficientPrivilegesException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1349,8 +1905,8 @@ export const checkDNSAvailability: API.OperationMethod<
   CheckDNSAvailabilityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CheckDNSAvailabilityMessage>,
-  output: __S(7) as any as S.Schema<CheckDNSAvailabilityResultMessage>,
+  input: CheckDNSAvailabilityMessage,
+  output: CheckDNSAvailabilityResultMessage,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1372,8 +1928,8 @@ export const composeEnvironments: API.OperationMethod<
   ComposeEnvironmentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<ComposeEnvironmentsMessage>,
-  output: __S(19) as any as S.Schema<EnvironmentDescriptionsMessage>,
+  input: ComposeEnvironmentsMessage,
+  output: EnvironmentDescriptionsMessage,
   errors: [InsufficientPrivilegesException, TooManyEnvironmentsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1391,8 +1947,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<CreateApplicationMessage>,
-  output: __S(30) as any as S.Schema<ApplicationDescriptionMessage>,
+  input: CreateApplicationMessage,
+  output: ApplicationDescriptionMessage,
   errors: [TooManyApplicationsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1427,8 +1983,8 @@ export const createApplicationVersion: API.OperationMethod<
   CreateApplicationVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<CreateApplicationVersionMessage>,
-  output: __S(39) as any as S.Schema<ApplicationVersionDescriptionMessage>,
+  input: CreateApplicationVersionMessage,
+  output: ApplicationVersionDescriptionMessage,
   errors: [
     CodeBuildNotInServiceRegionException,
     InsufficientPrivilegesException,
@@ -1469,8 +2025,8 @@ export const createConfigurationTemplate: API.OperationMethod<
   CreateConfigurationTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<CreateConfigurationTemplateMessage>,
-  output: __S(44) as any as S.Schema<ConfigurationSettingsDescription>,
+  input: CreateConfigurationTemplateMessage,
+  output: ConfigurationSettingsDescription,
   errors: [
     InsufficientPrivilegesException,
     TooManyBucketsException,
@@ -1494,8 +2050,8 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<CreateEnvironmentMessage>,
-  output: __S(17) as any as S.Schema<EnvironmentDescription>,
+  input: CreateEnvironmentMessage,
+  output: EnvironmentDescription,
   errors: [InsufficientPrivilegesException, TooManyEnvironmentsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1516,8 +2072,8 @@ export const createPlatformVersion: API.OperationMethod<
   CreatePlatformVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<CreatePlatformVersionRequest>,
-  output: __S(53) as any as S.Schema<CreatePlatformVersionResult>,
+  input: CreatePlatformVersionRequest,
+  output: CreatePlatformVersionResult,
   errors: [
     ElasticBeanstalkServiceException,
     InsufficientPrivilegesException,
@@ -1544,8 +2100,8 @@ export const createStorageLocation: API.OperationMethod<
   CreateStorageLocationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<CreateStorageLocationRequest>,
-  output: __S(55) as any as S.Schema<CreateStorageLocationResultMessage>,
+  input: CreateStorageLocationRequest,
+  output: CreateStorageLocationResultMessage,
   errors: [
     InsufficientPrivilegesException,
     S3SubscriptionRequiredException,
@@ -1569,8 +2125,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<DeleteApplicationMessage>,
-  output: __S(57) as any as S.Schema<DeleteApplicationResponse>,
+  input: DeleteApplicationMessage,
+  output: DeleteApplicationResponse,
   errors: [OperationInProgressException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1594,8 +2150,8 @@ export const deleteApplicationVersion: API.OperationMethod<
   DeleteApplicationVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<DeleteApplicationVersionMessage>,
-  output: __S(59) as any as S.Schema<DeleteApplicationVersionResponse>,
+  input: DeleteApplicationVersionMessage,
+  output: DeleteApplicationVersionResponse,
   errors: [
     InsufficientPrivilegesException,
     OperationInProgressException,
@@ -1621,8 +2177,8 @@ export const deleteConfigurationTemplate: API.OperationMethod<
   DeleteConfigurationTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<DeleteConfigurationTemplateMessage>,
-  output: __S(61) as any as S.Schema<DeleteConfigurationTemplateResponse>,
+  input: DeleteConfigurationTemplateMessage,
+  output: DeleteConfigurationTemplateResponse,
   errors: [OperationInProgressException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1645,8 +2201,8 @@ export const deleteEnvironmentConfiguration: API.OperationMethod<
   DeleteEnvironmentConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<DeleteEnvironmentConfigurationMessage>,
-  output: __S(63) as any as S.Schema<DeleteEnvironmentConfigurationResponse>,
+  input: DeleteEnvironmentConfigurationMessage,
+  output: DeleteEnvironmentConfigurationResponse,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1668,8 +2224,8 @@ export const deletePlatformVersion: API.OperationMethod<
   DeletePlatformVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<DeletePlatformVersionRequest>,
-  output: __S(65) as any as S.Schema<DeletePlatformVersionResult>,
+  input: DeletePlatformVersionRequest,
+  output: DeletePlatformVersionResult,
   errors: [
     ElasticBeanstalkServiceException,
     InsufficientPrivilegesException,
@@ -1702,8 +2258,8 @@ export const describeAccountAttributes: API.OperationMethod<
   DescribeAccountAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<DescribeAccountAttributesRequest>,
-  output: __S(69) as any as S.Schema<DescribeAccountAttributesResult>,
+  input: DescribeAccountAttributesRequest,
+  output: DescribeAccountAttributesResult,
   errors: [InsufficientPrivilegesException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1733,8 +2289,8 @@ export const describeApplications: API.OperationMethod<
   DescribeApplicationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<DescribeApplicationsMessage>,
-  output: __S(73) as any as S.Schema<ApplicationDescriptionsMessage>,
+  input: DescribeApplicationsMessage,
+  output: ApplicationDescriptionsMessage,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1760,8 +2316,8 @@ export const describeApplicationVersions: API.OperationMethod<
   DescribeApplicationVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<DescribeApplicationVersionsMessage>,
-  output: __S(76) as any as S.Schema<ApplicationVersionDescriptionsMessage>,
+  input: DescribeApplicationVersionsMessage,
+  output: ApplicationVersionDescriptionsMessage,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1793,8 +2349,8 @@ export const describeConfigurationOptions: API.OperationMethod<
   DescribeConfigurationOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<DescribeConfigurationOptionsMessage>,
-  output: __S(82) as any as S.Schema<ConfigurationOptionsDescription>,
+  input: DescribeConfigurationOptionsMessage,
+  output: ConfigurationOptionsDescription,
   errors: [TooManyBucketsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1834,8 +2390,8 @@ export const describeConfigurationSettings: API.OperationMethod<
   DescribeConfigurationSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<DescribeConfigurationSettingsMessage>,
-  output: __S(85) as any as S.Schema<ConfigurationSettingsDescriptions>,
+  input: DescribeConfigurationSettingsMessage,
+  output: ConfigurationSettingsDescriptions,
   errors: [TooManyBucketsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1866,8 +2422,8 @@ export const describeEnvironmentHealth: API.OperationMethod<
   DescribeEnvironmentHealthError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<DescribeEnvironmentHealthRequest>,
-  output: __S(93) as any as S.Schema<DescribeEnvironmentHealthResult>,
+  input: DescribeEnvironmentHealthRequest,
+  output: DescribeEnvironmentHealthResult,
   errors: [ElasticBeanstalkServiceException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1887,8 +2443,8 @@ export const describeEnvironmentManagedActionHistory: API.PaginatedOperationMeth
   Credentials | HttpClient.HttpClient,
   ManagedActionHistoryItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(94) as any as S.Schema<DescribeEnvironmentManagedActionHistoryRequest>,
-  output: __S(97) as any as S.Schema<DescribeEnvironmentManagedActionHistoryResult>,
+  input: DescribeEnvironmentManagedActionHistoryRequest,
+  output: DescribeEnvironmentManagedActionHistoryResult,
   errors: [ElasticBeanstalkServiceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1923,8 +2479,8 @@ export const describeEnvironmentManagedActions: API.OperationMethod<
   DescribeEnvironmentManagedActionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<DescribeEnvironmentManagedActionsRequest>,
-  output: __S(101) as any as S.Schema<DescribeEnvironmentManagedActionsResult>,
+  input: DescribeEnvironmentManagedActionsRequest,
+  output: DescribeEnvironmentManagedActionsResult,
   errors: [ElasticBeanstalkServiceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1941,8 +2497,8 @@ export const describeEnvironmentResources: API.OperationMethod<
   DescribeEnvironmentResourcesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<DescribeEnvironmentResourcesMessage>,
-  output: __S(119) as any as S.Schema<EnvironmentResourceDescriptionsMessage>,
+  input: DescribeEnvironmentResourcesMessage,
+  output: EnvironmentResourceDescriptionsMessage,
   errors: [InsufficientPrivilegesException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1969,8 +2525,8 @@ export const describeEnvironments: API.OperationMethod<
   DescribeEnvironmentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<DescribeEnvironmentsMessage>,
-  output: __S(19) as any as S.Schema<EnvironmentDescriptionsMessage>,
+  input: DescribeEnvironmentsMessage,
+  output: EnvironmentDescriptionsMessage,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1999,8 +2555,8 @@ export const describeEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(123) as any as S.Schema<DescribeEventsMessage>,
-  output: __S(126) as any as S.Schema<EventDescriptionsMessage>,
+  input: DescribeEventsMessage,
+  output: EventDescriptionsMessage,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2036,8 +2592,8 @@ export const describeInstancesHealth: API.OperationMethod<
   DescribeInstancesHealthError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128) as any as S.Schema<DescribeInstancesHealthRequest>,
-  output: __S(135) as any as S.Schema<DescribeInstancesHealthResult>,
+  input: DescribeInstancesHealthRequest,
+  output: DescribeInstancesHealthResult,
   errors: [ElasticBeanstalkServiceException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2069,8 +2625,8 @@ export const describePlatformVersion: API.OperationMethod<
   DescribePlatformVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<DescribePlatformVersionRequest>,
-  output: __S(144) as any as S.Schema<DescribePlatformVersionResult>,
+  input: DescribePlatformVersionRequest,
+  output: DescribePlatformVersionResult,
   errors: [ElasticBeanstalkServiceException, InsufficientPrivilegesException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2092,8 +2648,8 @@ export const disassociateEnvironmentOperationsRole: API.OperationMethod<
   DisassociateEnvironmentOperationsRoleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<DisassociateEnvironmentOperationsRoleMessage>,
-  output: __S(146) as any as S.Schema<DisassociateEnvironmentOperationsRoleResponse>,
+  input: DisassociateEnvironmentOperationsRoleMessage,
+  output: DisassociateEnvironmentOperationsRoleResponse,
   errors: [InsufficientPrivilegesException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2119,8 +2675,8 @@ export const listAvailableSolutionStacks: API.OperationMethod<
   ListAvailableSolutionStacksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147) as any as S.Schema<ListAvailableSolutionStacksRequest>,
-  output: __S(152) as any as S.Schema<ListAvailableSolutionStacksResultMessage>,
+  input: ListAvailableSolutionStacksRequest,
+  output: ListAvailableSolutionStacksResultMessage,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2149,8 +2705,8 @@ export const listPlatformBranches: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(156) as any as S.Schema<ListPlatformBranchesRequest>,
-  output: __S(159) as any as S.Schema<ListPlatformBranchesResult>,
+  input: ListPlatformBranchesRequest,
+  output: ListPlatformBranchesResult,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2189,8 +2745,8 @@ export const listPlatformVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PlatformSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(163) as any as S.Schema<ListPlatformVersionsRequest>,
-  output: __S(165) as any as S.Schema<ListPlatformVersionsResult>,
+  input: ListPlatformVersionsRequest,
+  output: ListPlatformVersionsResult,
   errors: [ElasticBeanstalkServiceException, InsufficientPrivilegesException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2228,8 +2784,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<ListTagsForResourceMessage>,
-  output: __S(168) as any as S.Schema<ResourceTagsDescriptionMessage>,
+  input: ListTagsForResourceMessage,
+  output: ResourceTagsDescriptionMessage,
   errors: [
     InsufficientPrivilegesException,
     ResourceNotFoundException,
@@ -2251,8 +2807,8 @@ export const rebuildEnvironment: API.OperationMethod<
   RebuildEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<RebuildEnvironmentMessage>,
-  output: __S(170) as any as S.Schema<RebuildEnvironmentResponse>,
+  input: RebuildEnvironmentMessage,
+  output: RebuildEnvironmentResponse,
   errors: [InsufficientPrivilegesException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2284,8 +2840,8 @@ export const requestEnvironmentInfo: API.OperationMethod<
   RequestEnvironmentInfoError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171) as any as S.Schema<RequestEnvironmentInfoMessage>,
-  output: __S(172) as any as S.Schema<RequestEnvironmentInfoResponse>,
+  input: RequestEnvironmentInfoMessage,
+  output: RequestEnvironmentInfoResponse,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2302,8 +2858,8 @@ export const restartAppServer: API.OperationMethod<
   RestartAppServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173) as any as S.Schema<RestartAppServerMessage>,
-  output: __S(174) as any as S.Schema<RestartAppServerResponse>,
+  input: RestartAppServerMessage,
+  output: RestartAppServerResponse,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2324,8 +2880,8 @@ export const retrieveEnvironmentInfo: API.OperationMethod<
   RetrieveEnvironmentInfoError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<RetrieveEnvironmentInfoMessage>,
-  output: __S(178) as any as S.Schema<RetrieveEnvironmentInfoResultMessage>,
+  input: RetrieveEnvironmentInfoMessage,
+  output: RetrieveEnvironmentInfoResultMessage,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2342,8 +2898,8 @@ export const swapEnvironmentCNAMEs: API.OperationMethod<
   SwapEnvironmentCNAMEsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<SwapEnvironmentCNAMEsMessage>,
-  output: __S(180) as any as S.Schema<SwapEnvironmentCNAMEsResponse>,
+  input: SwapEnvironmentCNAMEsMessage,
+  output: SwapEnvironmentCNAMEsResponse,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2360,8 +2916,8 @@ export const terminateEnvironment: API.OperationMethod<
   TerminateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<TerminateEnvironmentMessage>,
-  output: __S(17) as any as S.Schema<EnvironmentDescription>,
+  input: TerminateEnvironmentMessage,
+  output: EnvironmentDescription,
   errors: [InsufficientPrivilegesException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2381,8 +2937,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<UpdateApplicationMessage>,
-  output: __S(30) as any as S.Schema<ApplicationDescriptionMessage>,
+  input: UpdateApplicationMessage,
+  output: ApplicationDescriptionMessage,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2401,8 +2957,8 @@ export const updateApplicationResourceLifecycle: API.OperationMethod<
   UpdateApplicationResourceLifecycleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183) as any as S.Schema<UpdateApplicationResourceLifecycleMessage>,
-  output: __S(184) as any as S.Schema<ApplicationResourceLifecycleDescriptionMessage>,
+  input: UpdateApplicationResourceLifecycleMessage,
+  output: ApplicationResourceLifecycleDescriptionMessage,
   errors: [InsufficientPrivilegesException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2422,8 +2978,8 @@ export const updateApplicationVersion: API.OperationMethod<
   UpdateApplicationVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<UpdateApplicationVersionMessage>,
-  output: __S(39) as any as S.Schema<ApplicationVersionDescriptionMessage>,
+  input: UpdateApplicationVersionMessage,
+  output: ApplicationVersionDescriptionMessage,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2451,8 +3007,8 @@ export const updateConfigurationTemplate: API.OperationMethod<
   UpdateConfigurationTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<UpdateConfigurationTemplateMessage>,
-  output: __S(44) as any as S.Schema<ConfigurationSettingsDescription>,
+  input: UpdateConfigurationTemplateMessage,
+  output: ConfigurationSettingsDescription,
   errors: [InsufficientPrivilegesException, TooManyBucketsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2477,8 +3033,8 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<UpdateEnvironmentMessage>,
-  output: __S(17) as any as S.Schema<EnvironmentDescription>,
+  input: UpdateEnvironmentMessage,
+  output: EnvironmentDescription,
   errors: [InsufficientPrivilegesException, TooManyBucketsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2518,8 +3074,8 @@ export const updateTagsForResource: API.OperationMethod<
   UpdateTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189) as any as S.Schema<UpdateTagsForResourceMessage>,
-  output: __S(190) as any as S.Schema<UpdateTagsForResourceResponse>,
+  input: UpdateTagsForResourceMessage,
+  output: UpdateTagsForResourceResponse,
   errors: [
     InsufficientPrivilegesException,
     OperationInProgressException,
@@ -2549,8 +3105,8 @@ export const validateConfigurationSettings: API.OperationMethod<
   ValidateConfigurationSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191) as any as S.Schema<ValidateConfigurationSettingsMessage>,
-  output: __S(194) as any as S.Schema<ConfigurationSettingsValidationMessages>,
+  input: ValidateConfigurationSettingsMessage,
+  output: ConfigurationSettingsValidationMessages,
   errors: [InsufficientPrivilegesException, TooManyBucketsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2588,7 +3144,7 @@ function __c0(j: number): any {
         S.Struct({
           ActionId: S.optional(S.String),
           ActionDescription: S.optional(S.String),
-          ActionType: S.optional(S.String),
+          ActionType: S.optional(ActionType),
           Status: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -2634,7 +3190,7 @@ function __c1(j: number): any {
         S.Struct({
           ApplicationName: S.optional(S.String),
           GroupName: S.optional(S.String),
-          VersionLabels: S.optional(__S(8)),
+          VersionLabels: S.optional(VersionLabels),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ComposeEnvironmentsMessage",
@@ -2644,17 +3200,19 @@ function __c1(j: number): any {
         S.Struct({ Protocol: S.optional(S.String), Port: S.optional(S.Number) }),
       ).annotate({ identifier: "Listener" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(Listener);
     case 4:
       return S.suspend(() =>
         S.Struct({
           LoadBalancerName: S.optional(S.String),
           Domain: S.optional(S.String),
-          Listeners: S.optional(__S(11)),
+          Listeners: S.optional(LoadBalancerListenersDescription),
         }),
       ).annotate({ identifier: "LoadBalancerDescription" });
     case 5:
-      return S.suspend(() => S.Struct({ LoadBalancer: S.optional(__S(12)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ LoadBalancer: S.optional(LoadBalancerDescription) }),
+      ).annotate({
         identifier: "EnvironmentResourcesDescription",
       });
     case 6:
@@ -2674,7 +3232,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(EnvironmentLink);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2690,23 +3248,23 @@ function __c2(j: number): any {
           CNAME: S.optional(S.String),
           DateCreated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           DateUpdated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Status: S.optional(S.String),
+          Status: S.optional(EnvironmentStatus),
           AbortableOperationInProgress: S.optional(S.Boolean),
-          Health: S.optional(S.String),
-          HealthStatus: S.optional(S.String),
-          Resources: S.optional(__S(13)),
-          Tier: S.optional(__S(14)),
-          EnvironmentLinks: S.optional(__S(16)),
+          Health: S.optional(EnvironmentHealth),
+          HealthStatus: S.optional(EnvironmentHealthStatus),
+          Resources: S.optional(EnvironmentResourcesDescription),
+          Tier: S.optional(EnvironmentTier),
+          EnvironmentLinks: S.optional(EnvironmentLinks),
           EnvironmentArn: S.optional(S.String),
           OperationsRole: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "EnvironmentDescription" });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(EnvironmentDescription);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Environments: S.optional(__S(18)),
+          Environments: S.optional(EnvironmentDescriptionsList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -2730,7 +3288,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "MaxAgeRule" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ MaxCountRule: S.optional(__S(20)), MaxAgeRule: S.optional(__S(21)) }),
+        S.Struct({ MaxCountRule: S.optional(MaxCountRule), MaxAgeRule: S.optional(MaxAgeRule) }),
       ).annotate({
         identifier: "ApplicationVersionLifecycleConfig",
       });
@@ -2738,7 +3296,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ServiceRole: S.optional(S.String),
-          VersionLifecycleConfig: S.optional(__S(22)),
+          VersionLifecycleConfig: S.optional(ApplicationVersionLifecycleConfig),
         }),
       ).annotate({
         identifier: "ApplicationResourceLifecycleConfig",
@@ -2752,14 +3310,14 @@ function __c3(j: number): any {
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "Tag" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(Tag);
     case 2:
       return S.suspend(() =>
         S.Struct({
           ApplicationName: S.String,
           Description: S.optional(S.String),
-          ResourceLifecycleConfig: S.optional(__S(23)),
-          Tags: S.optional(__S(25)),
+          ResourceLifecycleConfig: S.optional(ApplicationResourceLifecycleConfig),
+          Tags: S.optional(Tags),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateApplicationMessage" });
     case 3:
@@ -2774,20 +3332,22 @@ function __c3(j: number): any {
           Description: S.optional(S.String),
           DateCreated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           DateUpdated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Versions: S.optional(__S(27)),
-          ConfigurationTemplates: S.optional(__S(28)),
-          ResourceLifecycleConfig: S.optional(__S(23)),
+          Versions: S.optional(VersionLabelsList),
+          ConfigurationTemplates: S.optional(ConfigurationTemplateNamesList),
+          ResourceLifecycleConfig: S.optional(ApplicationResourceLifecycleConfig),
         }),
       ).annotate({ identifier: "ApplicationDescription" });
     case 6:
-      return S.suspend(() => S.Struct({ Application: S.optional(__S(29)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Application: S.optional(ApplicationDescription) }).pipe(ns),
+      ).annotate({
         identifier: "ApplicationDescriptionMessage",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          SourceType: S.String,
-          SourceRepository: S.String,
+          SourceType: SourceType,
+          SourceRepository: SourceRepository,
           SourceLocation: S.String,
         }),
       ).annotate({ identifier: "SourceBuildInformation" });
@@ -2804,7 +3364,7 @@ function __c4(j: number): any {
         S.Struct({
           ArtifactName: S.optional(S.String),
           CodeBuildServiceRole: S.String,
-          ComputeType: S.optional(S.String),
+          ComputeType: S.optional(ComputeType),
           Image: S.String,
           TimeoutInMinutes: S.optional(S.Number),
         }),
@@ -2816,18 +3376,18 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Type: S.optional(S.String),
+          Type: S.optional(ImageBuildType),
           DockerfileLocation: S.optional(S.String),
           Buildpack: S.optional(S.String),
-          Architecture: S.optional(S.String),
+          Architecture: S.optional(ArchitectureType),
           CodeBuildServiceRole: S.optional(S.String),
-          ComputeType: S.optional(S.String),
+          ComputeType: S.optional(ComputeType),
           TimeoutInMinutes: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ImageBuildConfiguration" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Source: S.optional(__S(34)), Build: S.optional(__S(35)) }),
+        S.Struct({ Source: S.optional(ImageSource), Build: S.optional(ImageBuildConfiguration) }),
       ).annotate({ identifier: "ImageConfiguration" });
     case 5:
       return S.suspend(() =>
@@ -2835,13 +3395,13 @@ function __c4(j: number): any {
           ApplicationName: S.String,
           VersionLabel: S.String,
           Description: S.optional(S.String),
-          SourceBuildInformation: S.optional(__S(31)),
-          SourceBundle: S.optional(__S(32)),
-          BuildConfiguration: S.optional(__S(33)),
+          SourceBuildInformation: S.optional(SourceBuildInformation),
+          SourceBundle: S.optional(S3Location),
+          BuildConfiguration: S.optional(BuildConfiguration),
           AutoCreateApplication: S.optional(S.Boolean),
           Process: S.optional(S.Boolean),
-          Tags: S.optional(__S(25)),
-          ImageConfiguration: S.optional(__S(36)),
+          Tags: S.optional(Tags),
+          ImageConfiguration: S.optional(ImageConfiguration),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateApplicationVersionMessage",
@@ -2853,22 +3413,22 @@ function __c4(j: number): any {
           ApplicationName: S.optional(S.String),
           Description: S.optional(S.String),
           VersionLabel: S.optional(S.String),
-          SourceBuildInformation: S.optional(__S(31)),
+          SourceBuildInformation: S.optional(SourceBuildInformation),
           BuildArn: S.optional(S.String),
-          SourceBundle: S.optional(__S(32)),
-          ImageSource: S.optional(__S(34)),
-          ImageBuildConfiguration: S.optional(__S(35)),
+          SourceBundle: S.optional(S3Location),
+          ImageSource: S.optional(ImageSource),
+          ImageBuildConfiguration: S.optional(ImageBuildConfiguration),
           Process: S.optional(S.Boolean),
           DateCreated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           DateUpdated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Status: S.optional(S.String),
+          Status: S.optional(ApplicationVersionStatus),
         }),
       ).annotate({
         identifier: "ApplicationVersionDescription",
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ ApplicationVersion: S.optional(__S(38)) }).pipe(ns),
+        S.Struct({ ApplicationVersion: S.optional(ApplicationVersionDescription) }).pipe(ns),
       ).annotate({
         identifier: "ApplicationVersionDescriptionMessage",
       });
@@ -2892,7 +3452,7 @@ function __c5(j: number): any {
         identifier: "ConfigurationOptionSetting",
       });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(ConfigurationOptionSetting);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2900,11 +3460,11 @@ function __c5(j: number): any {
           TemplateName: S.String,
           SolutionStackName: S.optional(S.String),
           PlatformArn: S.optional(S.String),
-          SourceConfiguration: S.optional(__S(40)),
+          SourceConfiguration: S.optional(SourceConfiguration),
           EnvironmentId: S.optional(S.String),
           Description: S.optional(S.String),
-          OptionSettings: S.optional(__S(42)),
-          Tags: S.optional(__S(25)),
+          OptionSettings: S.optional(ConfigurationOptionSettingsList),
+          Tags: S.optional(Tags),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateConfigurationTemplateMessage",
@@ -2918,10 +3478,10 @@ function __c5(j: number): any {
           TemplateName: S.optional(S.String),
           Description: S.optional(S.String),
           EnvironmentName: S.optional(S.String),
-          DeploymentStatus: S.optional(S.String),
+          DeploymentStatus: S.optional(ConfigurationDeploymentStatus),
           DateCreated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           DateUpdated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          OptionSettings: S.optional(__S(42)),
+          OptionSettings: S.optional(ConfigurationOptionSettingsList),
         }).pipe(ns),
       ).annotate({
         identifier: "ConfigurationSettingsDescription",
@@ -2935,7 +3495,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "OptionSpecification" });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(OptionSpecification);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2944,14 +3504,14 @@ function __c5(j: number): any {
           GroupName: S.optional(S.String),
           Description: S.optional(S.String),
           CNAMEPrefix: S.optional(S.String),
-          Tier: S.optional(__S(14)),
-          Tags: S.optional(__S(25)),
+          Tier: S.optional(EnvironmentTier),
+          Tags: S.optional(Tags),
           VersionLabel: S.optional(S.String),
           TemplateName: S.optional(S.String),
           SolutionStackName: S.optional(S.String),
           PlatformArn: S.optional(S.String),
-          OptionSettings: S.optional(__S(42)),
-          OptionsToRemove: S.optional(__S(46)),
+          OptionSettings: S.optional(ConfigurationOptionSettingsList),
+          OptionsToRemove: S.optional(OptionsSpecifierList),
           OperationsRole: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateEnvironmentMessage" });
@@ -2964,10 +3524,10 @@ function __c6(j: number): any {
         S.Struct({
           PlatformName: S.String,
           PlatformVersion: S.String,
-          PlatformDefinitionBundle: __S(32),
+          PlatformDefinitionBundle: S3Location,
           EnvironmentName: S.optional(S.String),
-          OptionSettings: S.optional(__S(42)),
-          Tags: S.optional(__S(25)),
+          OptionSettings: S.optional(ConfigurationOptionSettingsList),
+          Tags: S.optional(Tags),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreatePlatformVersionRequest",
@@ -2981,12 +3541,12 @@ function __c6(j: number): any {
         S.Struct({
           PlatformArn: S.optional(S.String),
           PlatformOwner: S.optional(S.String),
-          PlatformStatus: S.optional(S.String),
+          PlatformStatus: S.optional(PlatformStatus),
           PlatformCategory: S.optional(S.String),
           OperatingSystemName: S.optional(S.String),
           OperatingSystemVersion: S.optional(S.String),
-          SupportedTierList: S.optional(__S(49)),
-          SupportedAddonList: S.optional(__S(50)),
+          SupportedTierList: S.optional(SupportedTierList),
+          SupportedAddonList: S.optional(SupportedAddonList),
           PlatformLifecycleState: S.optional(S.String),
           PlatformVersion: S.optional(S.String),
           PlatformBranchName: S.optional(S.String),
@@ -3000,8 +3560,8 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          PlatformSummary: S.optional(__S(51)),
-          Builder: S.optional(__S(52)),
+          PlatformSummary: S.optional(PlatformSummary),
+          Builder: S.optional(Builder),
         }).pipe(ns),
       ).annotate({
         identifier: "CreatePlatformVersionResult",
@@ -3083,7 +3643,9 @@ function __c8(j: number): any {
         identifier: "DeletePlatformVersionRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ PlatformSummary: S.optional(__S(51)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ PlatformSummary: S.optional(PlatformSummary) }).pipe(ns),
+      ).annotate({
         identifier: "DeletePlatformVersionResult",
       });
     case 2:
@@ -3101,22 +3663,24 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ApplicationQuota: S.optional(__S(67)),
-          ApplicationVersionQuota: S.optional(__S(67)),
-          EnvironmentQuota: S.optional(__S(67)),
-          ConfigurationTemplateQuota: S.optional(__S(67)),
-          CustomPlatformQuota: S.optional(__S(67)),
+          ApplicationQuota: S.optional(ResourceQuota),
+          ApplicationVersionQuota: S.optional(ResourceQuota),
+          EnvironmentQuota: S.optional(ResourceQuota),
+          ConfigurationTemplateQuota: S.optional(ResourceQuota),
+          CustomPlatformQuota: S.optional(ResourceQuota),
         }),
       ).annotate({ identifier: "ResourceQuotas" });
     case 5:
-      return S.suspend(() => S.Struct({ ResourceQuotas: S.optional(__S(68)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ ResourceQuotas: S.optional(ResourceQuotas) }).pipe(ns),
+      ).annotate({
         identifier: "DescribeAccountAttributesResult",
       });
     case 6:
       return S.Array(S.String);
     case 7:
       return S.suspend(() =>
-        S.Struct({ ApplicationNames: S.optional(__S(70)) }).pipe(
+        S.Struct({ ApplicationNames: S.optional(ApplicationNamesList) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -3127,16 +3691,18 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(29));
+      return S.Array(ApplicationDescription);
     case 1:
-      return S.suspend(() => S.Struct({ Applications: S.optional(__S(72)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Applications: S.optional(ApplicationDescriptionList) }).pipe(ns),
+      ).annotate({
         identifier: "ApplicationDescriptionsMessage",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           ApplicationName: S.optional(S.String),
-          VersionLabels: S.optional(__S(27)),
+          VersionLabels: S.optional(VersionLabelsList),
           MaxRecords: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -3144,11 +3710,11 @@ function __c9(j: number): any {
         identifier: "DescribeApplicationVersionsMessage",
       });
     case 3:
-      return S.Array(__S(38));
+      return S.Array(ApplicationVersionDescription);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ApplicationVersions: S.optional(__S(75)),
+          ApplicationVersions: S.optional(ApplicationVersionDescriptionList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -3162,7 +3728,7 @@ function __c9(j: number): any {
           EnvironmentName: S.optional(S.String),
           SolutionStackName: S.optional(S.String),
           PlatformArn: S.optional(S.String),
-          Options: S.optional(__S(46)),
+          Options: S.optional(OptionsSpecifierList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeConfigurationOptionsMessage",
@@ -3185,24 +3751,24 @@ function __c10(j: number): any {
           DefaultValue: S.optional(S.String),
           ChangeSeverity: S.optional(S.String),
           UserDefined: S.optional(S.Boolean),
-          ValueType: S.optional(S.String),
-          ValueOptions: S.optional(__S(78)),
+          ValueType: S.optional(ConfigurationOptionValueType),
+          ValueOptions: S.optional(ConfigurationOptionPossibleValues),
           MinValue: S.optional(S.Number),
           MaxValue: S.optional(S.Number),
           MaxLength: S.optional(S.Number),
-          Regex: S.optional(__S(79)),
+          Regex: S.optional(OptionRestrictionRegex),
         }),
       ).annotate({
         identifier: "ConfigurationOptionDescription",
       });
     case 1:
-      return S.Array(__S(80));
+      return S.Array(ConfigurationOptionDescription);
     case 2:
       return S.suspend(() =>
         S.Struct({
           SolutionStackName: S.optional(S.String),
           PlatformArn: S.optional(S.String),
-          Options: S.optional(__S(81)),
+          Options: S.optional(ConfigurationOptionDescriptionsList),
         }).pipe(ns),
       ).annotate({
         identifier: "ConfigurationOptionsDescription",
@@ -3218,21 +3784,23 @@ function __c10(j: number): any {
         identifier: "DescribeConfigurationSettingsMessage",
       });
     case 4:
-      return S.Array(__S(44));
+      return S.Array(ConfigurationSettingsDescription);
     case 5:
       return S.suspend(() =>
-        S.Struct({ ConfigurationSettings: S.optional(__S(84)) }).pipe(ns),
+        S.Struct({ ConfigurationSettings: S.optional(ConfigurationSettingsDescriptionList) }).pipe(
+          ns,
+        ),
       ).annotate({
         identifier: "ConfigurationSettingsDescriptions",
       });
     case 6:
-      return S.Array(S.String);
+      return S.Array(EnvironmentHealthAttribute);
     case 7:
       return S.suspend(() =>
         S.Struct({
           EnvironmentName: S.optional(S.String),
           EnvironmentId: S.optional(S.String),
-          AttributeNames: S.optional(__S(86)),
+          AttributeNames: S.optional(EnvironmentHealthAttributes),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeEnvironmentHealthRequest",
@@ -3270,8 +3838,8 @@ function __c11(j: number): any {
         S.Struct({
           Duration: S.optional(S.Number),
           RequestCount: S.optional(S.Number),
-          StatusCodes: S.optional(__S(89)),
-          Latency: S.optional(__S(90)),
+          StatusCodes: S.optional(StatusCodes),
+          Latency: S.optional(Latency),
         }),
       ).annotate({ identifier: "ApplicationMetrics" });
     case 4:
@@ -3292,11 +3860,11 @@ function __c11(j: number): any {
         S.Struct({
           EnvironmentName: S.optional(S.String),
           HealthStatus: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(EnvironmentHealth),
           Color: S.optional(S.String),
-          Causes: S.optional(__S(88)),
-          ApplicationMetrics: S.optional(__S(91)),
-          InstancesHealth: S.optional(__S(92)),
+          Causes: S.optional(Causes),
+          ApplicationMetrics: S.optional(ApplicationMetrics),
+          InstancesHealth: S.optional(InstanceHealthSummary),
           RefreshedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }).pipe(ns),
       ).annotate({
@@ -3317,10 +3885,10 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ActionId: S.optional(S.String),
-          ActionType: S.optional(S.String),
+          ActionType: S.optional(ActionType),
           ActionDescription: S.optional(S.String),
-          FailureType: S.optional(S.String),
-          Status: S.optional(S.String),
+          FailureType: S.optional(FailureType),
+          Status: S.optional(ActionHistoryStatus),
           FailureDescription: S.optional(S.String),
           ExecutedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           FinishedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -3331,11 +3899,11 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95));
+      return S.Array(ManagedActionHistoryItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ManagedActionHistoryItems: S.optional(__S(96)),
+          ManagedActionHistoryItems: S.optional(ManagedActionHistoryItems),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -3346,7 +3914,7 @@ function __c12(j: number): any {
         S.Struct({
           EnvironmentName: S.optional(S.String),
           EnvironmentId: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(ActionStatus),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeEnvironmentManagedActionsRequest",
@@ -3356,15 +3924,17 @@ function __c12(j: number): any {
         S.Struct({
           ActionId: S.optional(S.String),
           ActionDescription: S.optional(S.String),
-          ActionType: S.optional(S.String),
-          Status: S.optional(S.String),
+          ActionType: S.optional(ActionType),
+          Status: S.optional(ActionStatus),
           WindowStartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "ManagedAction" });
     case 4:
-      return S.Array(__S(99));
+      return S.Array(ManagedAction);
     case 5:
-      return S.suspend(() => S.Struct({ ManagedActions: S.optional(__S(100)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ ManagedActions: S.optional(ManagedActions) }).pipe(ns),
+      ).annotate({
         identifier: "DescribeEnvironmentManagedActionsResult",
       });
     case 6:
@@ -3385,7 +3955,7 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(103));
+      return S.Array(AutoScalingGroup);
     case 1:
       return S.suspend(() => S.Struct({ ClusterArn: S.optional(S.String) })).annotate({
         identifier: "Cluster",
@@ -3395,19 +3965,19 @@ function __c13(j: number): any {
         identifier: "Instance",
       });
     case 3:
-      return S.Array(__S(106));
+      return S.Array(Instance);
     case 4:
       return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
         identifier: "LaunchConfiguration",
       });
     case 5:
-      return S.Array(__S(108));
+      return S.Array(LaunchConfiguration);
     case 6:
       return S.suspend(() => S.Struct({ Id: S.optional(S.String) })).annotate({
         identifier: "LaunchTemplate",
       });
     case 7:
-      return S.Array(__S(110));
+      return S.Array(LaunchTemplate);
   }
 }
 function __c14(j: number): any {
@@ -3417,38 +3987,38 @@ function __c14(j: number): any {
         identifier: "LoadBalancer",
       });
     case 1:
-      return S.Array(__S(112));
+      return S.Array(LoadBalancer);
     case 2:
       return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
         identifier: "Trigger",
       });
     case 3:
-      return S.Array(__S(114));
+      return S.Array(Trigger);
     case 4:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), URL: S.optional(S.String) }),
       ).annotate({ identifier: "Queue" });
     case 5:
-      return S.Array(__S(116));
+      return S.Array(Queue);
     case 6:
       return S.suspend(() =>
         S.Struct({
           EnvironmentName: S.optional(S.String),
-          AutoScalingGroups: S.optional(__S(104)),
-          Cluster: S.optional(__S(105)),
-          Instances: S.optional(__S(107)),
-          LaunchConfigurations: S.optional(__S(109)),
-          LaunchTemplates: S.optional(__S(111)),
-          LoadBalancers: S.optional(__S(113)),
-          Triggers: S.optional(__S(115)),
-          Queues: S.optional(__S(117)),
+          AutoScalingGroups: S.optional(AutoScalingGroupList),
+          Cluster: S.optional(Cluster),
+          Instances: S.optional(InstanceList),
+          LaunchConfigurations: S.optional(LaunchConfigurationList),
+          LaunchTemplates: S.optional(LaunchTemplateList),
+          LoadBalancers: S.optional(LoadBalancerList),
+          Triggers: S.optional(TriggerList),
+          Queues: S.optional(QueueList),
         }),
       ).annotate({
         identifier: "EnvironmentResourceDescription",
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ EnvironmentResources: S.optional(__S(118)) }).pipe(ns),
+        S.Struct({ EnvironmentResources: S.optional(EnvironmentResourceDescription) }).pipe(ns),
       ).annotate({
         identifier: "EnvironmentResourceDescriptionsMessage",
       });
@@ -3465,8 +4035,8 @@ function __c15(j: number): any {
         S.Struct({
           ApplicationName: S.optional(S.String),
           VersionLabel: S.optional(S.String),
-          EnvironmentIds: S.optional(__S(120)),
-          EnvironmentNames: S.optional(__S(121)),
+          EnvironmentIds: S.optional(EnvironmentIdList),
+          EnvironmentNames: S.optional(EnvironmentNamesList),
           IncludeDeleted: S.optional(S.Boolean),
           IncludedDeletedBackTo: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           MaxRecords: S.optional(S.Number),
@@ -3485,7 +4055,7 @@ function __c15(j: number): any {
           EnvironmentName: S.optional(S.String),
           PlatformArn: S.optional(S.String),
           RequestId: S.optional(S.String),
-          Severity: S.optional(S.String),
+          Severity: S.optional(EventSeverity),
           StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           MaxRecords: S.optional(S.Number),
@@ -3503,20 +4073,20 @@ function __c15(j: number): any {
           EnvironmentName: S.optional(S.String),
           PlatformArn: S.optional(S.String),
           RequestId: S.optional(S.String),
-          Severity: S.optional(S.String),
+          Severity: S.optional(EventSeverity),
         }),
       ).annotate({ identifier: "EventDescription" });
     case 5:
-      return S.Array(__S(124));
+      return S.Array(EventDescription);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Events: S.optional(__S(125)),
+          Events: S.optional(EventDescriptionList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "EventDescriptionsMessage" });
     case 7:
-      return S.Array(S.String);
+      return S.Array(InstancesHealthAttribute);
   }
 }
 function __c16(j: number): any {
@@ -3526,7 +4096,7 @@ function __c16(j: number): any {
         S.Struct({
           EnvironmentName: S.optional(S.String),
           EnvironmentId: S.optional(S.String),
-          AttributeNames: S.optional(__S(127)),
+          AttributeNames: S.optional(InstancesHealthAttributes),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -3550,8 +4120,8 @@ function __c16(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          CPUUtilization: S.optional(__S(129)),
-          LoadAverage: S.optional(__S(130)),
+          CPUUtilization: S.optional(CPUUtilization),
+          LoadAverage: S.optional(LoadAverage),
         }),
       ).annotate({ identifier: "SystemStatus" });
     case 4:
@@ -3569,21 +4139,21 @@ function __c16(j: number): any {
           InstanceId: S.optional(S.String),
           HealthStatus: S.optional(S.String),
           Color: S.optional(S.String),
-          Causes: S.optional(__S(88)),
+          Causes: S.optional(Causes),
           LaunchedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          ApplicationMetrics: S.optional(__S(91)),
-          System: S.optional(__S(131)),
-          Deployment: S.optional(__S(132)),
+          ApplicationMetrics: S.optional(ApplicationMetrics),
+          System: S.optional(SystemStatus),
+          Deployment: S.optional(Deployment),
           AvailabilityZone: S.optional(S.String),
           InstanceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SingleInstanceHealth" });
     case 6:
-      return S.Array(__S(133));
+      return S.Array(SingleInstanceHealth);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          InstanceHealthList: S.optional(__S(134)),
+          InstanceHealthList: S.optional(InstanceHealthList),
           RefreshedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           NextToken: S.optional(S.String),
         }).pipe(ns),
@@ -3609,19 +4179,19 @@ function __c17(j: number): any {
         identifier: "PlatformProgrammingLanguage",
       });
     case 2:
-      return S.Array(__S(137));
+      return S.Array(PlatformProgrammingLanguage);
     case 3:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), Version: S.optional(S.String) }),
       ).annotate({ identifier: "PlatformFramework" });
     case 4:
-      return S.Array(__S(139));
+      return S.Array(PlatformFramework);
     case 5:
       return S.suspend(() =>
         S.Struct({ VirtualizationType: S.optional(S.String), ImageId: S.optional(S.String) }),
       ).annotate({ identifier: "CustomAmi" });
     case 6:
-      return S.Array(__S(141));
+      return S.Array(CustomAmi);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -3630,7 +4200,7 @@ function __c17(j: number): any {
           PlatformName: S.optional(S.String),
           PlatformVersion: S.optional(S.String),
           SolutionStackName: S.optional(S.String),
-          PlatformStatus: S.optional(S.String),
+          PlatformStatus: S.optional(PlatformStatus),
           DateCreated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           DateUpdated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           PlatformCategory: S.optional(S.String),
@@ -3638,11 +4208,11 @@ function __c17(j: number): any {
           Maintainer: S.optional(S.String),
           OperatingSystemName: S.optional(S.String),
           OperatingSystemVersion: S.optional(S.String),
-          ProgrammingLanguages: S.optional(__S(138)),
-          Frameworks: S.optional(__S(140)),
-          CustomAmiList: S.optional(__S(142)),
-          SupportedTierList: S.optional(__S(49)),
-          SupportedAddonList: S.optional(__S(50)),
+          ProgrammingLanguages: S.optional(PlatformProgrammingLanguages),
+          Frameworks: S.optional(PlatformFrameworks),
+          CustomAmiList: S.optional(CustomAmiList),
+          SupportedTierList: S.optional(SupportedTierList),
+          SupportedAddonList: S.optional(SupportedAddonList),
           PlatformLifecycleState: S.optional(S.String),
           PlatformBranchName: S.optional(S.String),
           PlatformBranchLifecycleState: S.optional(S.String),
@@ -3654,7 +4224,7 @@ function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ PlatformDescription: S.optional(__S(143)) }).pipe(ns),
+        S.Struct({ PlatformDescription: S.optional(PlatformDescription) }).pipe(ns),
       ).annotate({
         identifier: "DescribePlatformVersionResult",
       });
@@ -3686,11 +4256,11 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SolutionStackName: S.optional(S.String),
-          PermittedFileTypes: S.optional(__S(149)),
+          PermittedFileTypes: S.optional(SolutionStackFileTypeList),
         }),
       ).annotate({ identifier: "SolutionStackDescription" });
     case 7:
-      return S.Array(__S(150));
+      return S.Array(SolutionStackDescription);
   }
 }
 function __c19(j: number): any {
@@ -3698,8 +4268,8 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          SolutionStacks: S.optional(__S(148)),
-          SolutionStackDetails: S.optional(__S(151)),
+          SolutionStacks: S.optional(AvailableSolutionStackNamesList),
+          SolutionStackDetails: S.optional(AvailableSolutionStackDetailsList),
         }).pipe(ns),
       ).annotate({
         identifier: "ListAvailableSolutionStacksResultMessage",
@@ -3711,15 +4281,15 @@ function __c19(j: number): any {
         S.Struct({
           Attribute: S.optional(S.String),
           Operator: S.optional(S.String),
-          Values: S.optional(__S(153)),
+          Values: S.optional(SearchFilterValues),
         }),
       ).annotate({ identifier: "SearchFilter" });
     case 3:
-      return S.Array(__S(154));
+      return S.Array(SearchFilter);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(155)),
+          Filters: S.optional(SearchFilters),
           MaxRecords: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -3733,15 +4303,15 @@ function __c19(j: number): any {
           BranchName: S.optional(S.String),
           LifecycleState: S.optional(S.String),
           BranchOrder: S.optional(S.Number),
-          SupportedTierList: S.optional(__S(49)),
+          SupportedTierList: S.optional(SupportedTierList),
         }),
       ).annotate({ identifier: "PlatformBranchSummary" });
     case 6:
-      return S.Array(__S(157));
+      return S.Array(PlatformBranchSummary);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          PlatformBranchSummaryList: S.optional(__S(158)),
+          PlatformBranchSummaryList: S.optional(PlatformBranchSummaryList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -3758,15 +4328,15 @@ function __c20(j: number): any {
         S.Struct({
           Type: S.optional(S.String),
           Operator: S.optional(S.String),
-          Values: S.optional(__S(160)),
+          Values: S.optional(PlatformFilterValueList),
         }),
       ).annotate({ identifier: "PlatformFilter" });
     case 2:
-      return S.Array(__S(161));
+      return S.Array(PlatformFilter);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(162)),
+          Filters: S.optional(PlatformFilters),
           MaxRecords: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -3774,11 +4344,11 @@ function __c20(j: number): any {
         identifier: "ListPlatformVersionsRequest",
       });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(PlatformSummary);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          PlatformSummaryList: S.optional(__S(164)),
+          PlatformSummaryList: S.optional(PlatformSummaryList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -3793,16 +4363,14 @@ function __c20(j: number): any {
         identifier: "ListTagsForResourceMessage",
       });
     case 7:
-      return S.Array(__S(24));
+      return S.Array(Tag);
   }
 }
 function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.optional(S.String), ResourceTags: S.optional(__S(167)) }).pipe(
-          ns,
-        ),
+        S.Struct({ ResourceArn: S.optional(S.String), ResourceTags: S.optional(TagList) }).pipe(ns),
       ).annotate({
         identifier: "ResourceTagsDescriptionMessage",
       });
@@ -3824,7 +4392,7 @@ function __c21(j: number): any {
         S.Struct({
           EnvironmentId: S.optional(S.String),
           EnvironmentName: S.optional(S.String),
-          InfoType: S.String,
+          InfoType: EnvironmentInfoType,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "RequestEnvironmentInfoMessage",
@@ -3849,7 +4417,7 @@ function __c21(j: number): any {
         S.Struct({
           EnvironmentId: S.optional(S.String),
           EnvironmentName: S.optional(S.String),
-          InfoType: S.String,
+          InfoType: EnvironmentInfoType,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "RetrieveEnvironmentInfoMessage",
@@ -3861,7 +4429,7 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          InfoType: S.optional(S.String),
+          InfoType: S.optional(EnvironmentInfoType),
           Ec2InstanceId: S.optional(S.String),
           SampleTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Message: S.optional(S.String),
@@ -3870,13 +4438,13 @@ function __c22(j: number): any {
         identifier: "EnvironmentInfoDescription",
       });
     case 1:
-      return S.Array(__S(176));
+      return S.Array(EnvironmentInfoDescription);
     case 2:
-      return S.suspend(() => S.Struct({ EnvironmentInfo: S.optional(__S(177)) }).pipe(ns)).annotate(
-        {
-          identifier: "RetrieveEnvironmentInfoResultMessage",
-        },
-      );
+      return S.suspend(() =>
+        S.Struct({ EnvironmentInfo: S.optional(EnvironmentInfoDescriptionList) }).pipe(ns),
+      ).annotate({
+        identifier: "RetrieveEnvironmentInfoResultMessage",
+      });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3913,7 +4481,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationName: S.String,
-          ResourceLifecycleConfig: __S(23),
+          ResourceLifecycleConfig: ApplicationResourceLifecycleConfig,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateApplicationResourceLifecycleMessage",
@@ -3926,7 +4494,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationName: S.optional(S.String),
-          ResourceLifecycleConfig: S.optional(__S(23)),
+          ResourceLifecycleConfig: S.optional(ApplicationResourceLifecycleConfig),
         }).pipe(ns),
       ).annotate({
         identifier: "ApplicationResourceLifecycleDescriptionMessage",
@@ -3947,8 +4515,8 @@ function __c23(j: number): any {
           ApplicationName: S.String,
           TemplateName: S.String,
           Description: S.optional(S.String),
-          OptionSettings: S.optional(__S(42)),
-          OptionsToRemove: S.optional(__S(46)),
+          OptionSettings: S.optional(ConfigurationOptionSettingsList),
+          OptionsToRemove: S.optional(OptionsSpecifierList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateConfigurationTemplateMessage",
@@ -3961,13 +4529,13 @@ function __c23(j: number): any {
           EnvironmentName: S.optional(S.String),
           GroupName: S.optional(S.String),
           Description: S.optional(S.String),
-          Tier: S.optional(__S(14)),
+          Tier: S.optional(EnvironmentTier),
           VersionLabel: S.optional(S.String),
           TemplateName: S.optional(S.String),
           SolutionStackName: S.optional(S.String),
           PlatformArn: S.optional(S.String),
-          OptionSettings: S.optional(__S(42)),
-          OptionsToRemove: S.optional(__S(46)),
+          OptionSettings: S.optional(ConfigurationOptionSettingsList),
+          OptionsToRemove: S.optional(OptionsSpecifierList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateEnvironmentMessage" });
     case 4:
@@ -3976,8 +4544,8 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String,
-          TagsToAdd: S.optional(__S(167)),
-          TagsToRemove: S.optional(__S(188)),
+          TagsToAdd: S.optional(TagList),
+          TagsToRemove: S.optional(TagKeyList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateTagsForResourceMessage",
@@ -3992,7 +4560,7 @@ function __c23(j: number): any {
           ApplicationName: S.String,
           TemplateName: S.optional(S.String),
           EnvironmentName: S.optional(S.String),
-          OptionSettings: __S(42),
+          OptionSettings: ConfigurationOptionSettingsList,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ValidateConfigurationSettingsMessage",
@@ -4005,75 +4573,18 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Message: S.optional(S.String),
-          Severity: S.optional(S.String),
+          Severity: S.optional(ValidationSeverity),
           Namespace: S.optional(S.String),
           OptionName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ValidationMessage" });
     case 1:
-      return S.Array(__S(192));
+      return S.Array(ValidationMessage);
     case 2:
-      return S.suspend(() => S.Struct({ Messages: S.optional(__S(193)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Messages: S.optional(ValidationMessagesList) }).pipe(ns),
+      ).annotate({
         identifier: "ConfigurationSettingsValidationMessages",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
   }
 }

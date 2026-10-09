@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -46,6 +44,8 @@ export type EarlyAccessFeatureStageEnum =
   | "beta"
   | "general-availability"
   | "archived";
+const EarlyAccessFeatureStageEnum = S.String;
+
 export interface CreateEarlyAccessFeatureRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -63,7 +63,17 @@ export interface CreateEarlyAccessFeatureRequest {
   feature_flag_id?: number;
   _create_in_folder?: string;
 }
+const CreateEarlyAccessFeatureRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateEarlyAccessFeatureRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -77,6 +87,8 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -88,23 +100,49 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<UserBasic>;
+
 export type EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeType = "user" | "role";
+const EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeType = S.String;
+
 export type EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeId = number | string;
+const EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeId =
+  S.Unknown as any as S.Schema<EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeId>;
+
 /** The person or role responsible for this feature, e.g. {"type": "user", "id": 123} or {"type": "role", "id": "<role uuid>"}. Defaults to the creator. Send null to unassign. */
 export interface EarlyAccessFeatureSerializerCreateOnlyOutputAssignee {
   type?: EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeType;
   id?: EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeId;
 }
+const EarlyAccessFeatureSerializerCreateOnlyOutputAssignee = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<EarlyAccessFeatureSerializerCreateOnlyOutputAssignee>;
+
 export type MinimalFeatureFlagFiltersMap = { [key: string]: unknown | undefined };
+const MinimalFeatureFlagFiltersMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<MinimalFeatureFlagFiltersMap>;
+
 /** * `server` - Server * `client` - Client * `all` - All */
 export type EvaluationRuntimeEnum = "server" | "client" | "all";
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
 export type MinimalFeatureFlagEvaluationRuntime = EvaluationRuntimeEnum | BlankEnum;
+const MinimalFeatureFlagEvaluationRuntime =
+  S.Unknown as any as S.Schema<MinimalFeatureFlagEvaluationRuntime>;
+
 /** * `distinct_id` - User ID (default) * `device_id` - Device ID */
 export type BucketingIdentifierEnum = "distinct_id" | "device_id";
 /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
 export type MinimalFeatureFlagBucketingIdentifier = BucketingIdentifierEnum | BlankEnum;
+const MinimalFeatureFlagBucketingIdentifier =
+  S.Unknown as any as S.Schema<MinimalFeatureFlagBucketingIdentifier>;
+
 export type MinimalFeatureFlagEvaluationContextsList = Array<string>;
+const MinimalFeatureFlagEvaluationContextsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<MinimalFeatureFlagEvaluationContextsList>;
+
 export interface MinimalFeatureFlag {
   id?: number;
   team_id?: number;
@@ -121,6 +159,8 @@ export interface MinimalFeatureFlag {
   bucketing_identifier?: MinimalFeatureFlagBucketingIdentifier | null;
   evaluation_contexts?: MinimalFeatureFlagEvaluationContextsList;
 }
+const MinimalFeatureFlag = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<MinimalFeatureFlag>;
+
 /** Mixin for serializers to add user access control fields */
 export interface EarlyAccessFeatureSerializerCreateOnlyOutput {
   id?: string;
@@ -143,28 +183,60 @@ export interface EarlyAccessFeatureSerializerCreateOnlyOutput {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
+const EarlyAccessFeatureSerializerCreateOnlyOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<EarlyAccessFeatureSerializerCreateOnlyOutput>;
+
 export interface EarlyAccessFeatureDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this early access feature. */
   id: string;
 }
+const EarlyAccessFeatureDestroyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<EarlyAccessFeatureDestroyRequest>;
+
 export interface EarlyAccessFeatureDestroyResponse {}
+const EarlyAccessFeatureDestroyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<EarlyAccessFeatureDestroyResponse>;
+
 export interface GetEarlyAccessFeatureRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this early access feature. */
   id: string;
 }
+const GetEarlyAccessFeatureRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetEarlyAccessFeatureRequest>;
+
 /** Feature flag payload for this early access feature */
 export type EarlyAccessFeaturePayloadMap = { [key: string]: unknown | undefined };
+const EarlyAccessFeaturePayloadMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<EarlyAccessFeaturePayloadMap>;
+
 export type EarlyAccessFeatureAssigneeType = "user" | "role";
+const EarlyAccessFeatureAssigneeType = S.String;
+
 export type EarlyAccessFeatureAssigneeId = number | string;
+const EarlyAccessFeatureAssigneeId = S.Unknown as any as S.Schema<EarlyAccessFeatureAssigneeId>;
+
 /** The person or role responsible for this feature, e.g. {"type": "user", "id": 123} or {"type": "role", "id": "<role uuid>"}. Defaults to the creator. Send null to unassign. */
 export interface EarlyAccessFeatureAssignee {
   type?: EarlyAccessFeatureAssigneeType;
   id?: EarlyAccessFeatureAssigneeId;
 }
+const EarlyAccessFeatureAssignee = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<EarlyAccessFeatureAssignee>;
+
 /** Mixin for serializers to add user access control fields */
 export interface EarlyAccessFeature2 {
   id?: string;
@@ -187,6 +259,8 @@ export interface EarlyAccessFeature2 {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
+const EarlyAccessFeature2 = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<EarlyAccessFeature2>;
+
 export interface ListEarlyAccessFeatureRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -195,13 +269,28 @@ export interface ListEarlyAccessFeatureRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListEarlyAccessFeatureRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ListEarlyAccessFeatureRequest>;
+
 export type PaginatedEarlyAccessFeatureListResultsList = Array<EarlyAccessFeature2>;
+const PaginatedEarlyAccessFeatureListResultsList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<PaginatedEarlyAccessFeatureListResultsList>;
+
 export interface PaginatedEarlyAccessFeatureList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedEarlyAccessFeatureListResultsList;
 }
+const PaginatedEarlyAccessFeatureList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<PaginatedEarlyAccessFeatureList>;
+
 export interface UpdateEarlyAccessFeatureRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -216,6 +305,11 @@ export interface UpdateEarlyAccessFeatureRequest {
   /** URL to external documentation for this feature. Shown to users in the opt-in UI. */
   documentation_url?: string;
 }
+const UpdateEarlyAccessFeatureRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<UpdateEarlyAccessFeatureRequest>;
+
 export interface UpdateEarlyAccessFeaturePartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -230,6 +324,11 @@ export interface UpdateEarlyAccessFeaturePartialRequest {
   /** URL to external documentation for this feature. Shown to users in the opt-in UI. */
   documentation_url?: string;
 }
+const UpdateEarlyAccessFeaturePartialRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<UpdateEarlyAccessFeaturePartialRequest>;
+
 export type CreateEarlyAccessFeatureError = BadRequest | Forbidden | NotFound | PosthogOpError;
 export const createEarlyAccessFeature: API.OperationMethod<
   CreateEarlyAccessFeatureRequest,
@@ -237,8 +336,8 @@ export const createEarlyAccessFeature: API.OperationMethod<
   CreateEarlyAccessFeatureError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateEarlyAccessFeatureRequest>,
-  output: __S(6) as any as S.Schema<EarlyAccessFeatureSerializerCreateOnlyOutput>,
+  input: CreateEarlyAccessFeatureRequest,
+  output: EarlyAccessFeatureSerializerCreateOnlyOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -251,8 +350,8 @@ export const earlyAccessFeatureDestroy: API.OperationMethod<
   EarlyAccessFeatureDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<EarlyAccessFeatureDestroyRequest>,
-  output: __S(8) as any as S.Schema<EarlyAccessFeatureDestroyResponse>,
+  input: EarlyAccessFeatureDestroyRequest,
+  output: EarlyAccessFeatureDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -265,8 +364,8 @@ export const getEarlyAccessFeature: API.OperationMethod<
   GetEarlyAccessFeatureError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<GetEarlyAccessFeatureRequest>,
-  output: __S(11) as any as S.Schema<EarlyAccessFeature2>,
+  input: GetEarlyAccessFeatureRequest,
+  output: EarlyAccessFeature2,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -279,8 +378,8 @@ export const listEarlyAccessFeature: API.OperationMethod<
   ListEarlyAccessFeatureError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<ListEarlyAccessFeatureRequest>,
-  output: __S(14) as any as S.Schema<PaginatedEarlyAccessFeatureList>,
+  input: ListEarlyAccessFeatureRequest,
+  output: PaginatedEarlyAccessFeatureList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -293,8 +392,8 @@ export const updateEarlyAccessFeature: API.OperationMethod<
   UpdateEarlyAccessFeatureError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<UpdateEarlyAccessFeatureRequest>,
-  output: __S(11) as any as S.Schema<EarlyAccessFeature2>,
+  input: UpdateEarlyAccessFeatureRequest,
+  output: EarlyAccessFeature2,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -311,8 +410,8 @@ export const updateEarlyAccessFeaturePartial: API.OperationMethod<
   UpdateEarlyAccessFeaturePartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<UpdateEarlyAccessFeaturePartialRequest>,
-  output: __S(11) as any as S.Schema<EarlyAccessFeature2>,
+  input: UpdateEarlyAccessFeaturePartialRequest,
+  output: EarlyAccessFeature2,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -327,7 +426,7 @@ function __c0(j: number): any {
           project_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          stage: S.optional(S.String),
+          stage: S.optional(EarlyAccessFeatureStageEnum),
           documentation_url: S.optional(S.String),
           payload: S.optional(S.Unknown),
           feature_flag_id: S.optional(S.Number),
@@ -354,15 +453,15 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          id: S.optional(S.Unknown),
+          type: S.optional(EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeType),
+          id: S.optional(EarlyAccessFeatureSerializerCreateOnlyOutputAssigneeId),
         }),
       ).annotate({
         identifier: "EarlyAccessFeatureSerializerCreateOnlyOutputAssignee",
@@ -376,14 +475,14 @@ function __c0(j: number): any {
           team_id: S.optional(S.Number),
           name: S.optional(S.String),
           key: S.optional(S.String),
-          filters: S.optional(__S(1)),
+          filters: S.optional(MinimalFeatureFlagFiltersMap),
           deleted: S.optional(S.Boolean),
           active: S.optional(S.Boolean),
           ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
           version: S.optional(S.NullOr(S.Number)),
-          evaluation_runtime: S.optional(S.NullOr(S.Unknown)),
-          bucketing_identifier: S.optional(S.NullOr(S.Unknown)),
-          evaluation_contexts: S.optional(__S(4)),
+          evaluation_runtime: S.optional(S.NullOr(MinimalFeatureFlagEvaluationRuntime)),
+          bucketing_identifier: S.optional(S.NullOr(MinimalFeatureFlagBucketingIdentifier)),
+          evaluation_contexts: S.optional(MinimalFeatureFlagEvaluationContextsList),
         }),
       ).annotate({ identifier: "MinimalFeatureFlag" });
     case 6:
@@ -392,13 +491,13 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          stage: S.optional(S.String),
+          stage: S.optional(EarlyAccessFeatureStageEnum),
           documentation_url: S.optional(S.String),
           payload: S.optional(S.Unknown),
           created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(2))),
-          assignee: S.optional(S.NullOr(__S(3))),
-          feature_flag: S.optional(__S(5)),
+          created_by: S.optional(S.NullOr(UserBasic)),
+          assignee: S.optional(S.NullOr(EarlyAccessFeatureSerializerCreateOnlyOutputAssignee)),
+          feature_flag: S.optional(MinimalFeatureFlag),
           user_access_level: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -445,8 +544,8 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          id: S.optional(S.Unknown),
+          type: S.optional(EarlyAccessFeatureAssigneeType),
+          id: S.optional(EarlyAccessFeatureAssigneeId),
         }),
       ).annotate({
         identifier: "EarlyAccessFeatureAssignee",
@@ -455,15 +554,15 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          feature_flag: S.optional(__S(5)),
+          feature_flag: S.optional(MinimalFeatureFlag),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          stage: S.optional(S.String),
+          stage: S.optional(EarlyAccessFeatureStageEnum),
           documentation_url: S.optional(S.String),
-          payload: S.optional(__S(1)),
+          payload: S.optional(EarlyAccessFeaturePayloadMap),
           created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(2))),
-          assignee: S.optional(S.NullOr(__S(10))),
+          created_by: S.optional(S.NullOr(UserBasic)),
+          assignee: S.optional(S.NullOr(EarlyAccessFeatureAssignee)),
           user_access_level: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "EarlyAccessFeature2" });
@@ -484,14 +583,14 @@ function __c1(j: number): any {
         identifier: "ListEarlyAccessFeatureRequest",
       });
     case 5:
-      return S.Array(__S(11));
+      return S.Array(EarlyAccessFeature2);
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(13)),
+          results: S.optional(PaginatedEarlyAccessFeatureListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedEarlyAccessFeatureList",
@@ -503,7 +602,7 @@ function __c1(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          stage: S.optional(S.String),
+          stage: S.optional(EarlyAccessFeatureStageEnum),
           documentation_url: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -526,7 +625,7 @@ function __c2(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          stage: S.optional(S.String),
+          stage: S.optional(EarlyAccessFeatureStageEnum),
           documentation_url: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -538,20 +637,5 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdateEarlyAccessFeaturePartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

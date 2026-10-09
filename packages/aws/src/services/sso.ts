@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "SSO", serviceShapeName: "SWBPortalService" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "awsssoportal" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2019-06-10");
@@ -110,6 +108,10 @@ export interface GetRoleCredentialsRequest {
   accountId: string;
   accessToken: string | redacted.Redacted<string>;
 }
+const GetRoleCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetRoleCredentialsRequest>;
 export type AccessKeyType = string;
 export type SecretAccessKeyType = string | redacted.Redacted<string>;
 export type SessionTokenType = string | redacted.Redacted<string>;
@@ -120,9 +122,14 @@ export interface RoleCredentials {
   sessionToken?: string | redacted.Redacted<string>;
   expiration?: number;
 }
+const RoleCredentials = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<RoleCredentials>;
 export interface GetRoleCredentialsResponse {
   roleCredentials?: RoleCredentials;
 }
+const GetRoleCredentialsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetRoleCredentialsResponse>;
 export type NextTokenType = string;
 export type MaxResultType = number;
 export interface ListAccountRolesRequest {
@@ -131,20 +138,31 @@ export interface ListAccountRolesRequest {
   accessToken: string | redacted.Redacted<string>;
   accountId: string;
 }
+const ListAccountRolesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ListAccountRolesRequest>;
 export interface RoleInfo {
   roleName?: string;
   accountId?: string;
 }
+const RoleInfo = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<RoleInfo>;
 export type RoleListType = RoleInfo[];
+const RoleListType = /*@__PURE__*/ __L.at(__c0, 5);
 export interface ListAccountRolesResponse {
   nextToken?: string;
   roleList?: RoleInfo[];
 }
+const ListAccountRolesResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListAccountRolesResponse>;
 export interface ListAccountsRequest {
   nextToken?: string;
   maxResults?: number;
   accessToken: string | redacted.Redacted<string>;
 }
+const ListAccountsRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ListAccountsRequest>;
 export type AccountNameType = string;
 export type EmailAddressType = string;
 export interface AccountInfo {
@@ -152,15 +170,20 @@ export interface AccountInfo {
   accountName?: string;
   emailAddress?: string;
 }
+const AccountInfo = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AccountInfo>;
 export type AccountListType = AccountInfo[];
+const AccountListType = /*@__PURE__*/ __L.at(__c1, 1);
 export interface ListAccountsResponse {
   nextToken?: string;
   accountList?: AccountInfo[];
 }
+const ListAccountsResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ListAccountsResponse>;
 export interface LogoutRequest {
   accessToken: string | redacted.Redacted<string>;
 }
+const LogoutRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<LogoutRequest>;
 export interface LogoutResponse {}
+const LogoutResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<LogoutResponse>;
 export type ErrorDescription = string;
 export type GetRoleCredentialsError =
   | InvalidRequestException
@@ -178,8 +201,8 @@ export const getRoleCredentials: API.OperationMethod<
   GetRoleCredentialsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetRoleCredentialsRequest>,
-  output: __S(2) as any as S.Schema<GetRoleCredentialsResponse>,
+  input: GetRoleCredentialsRequest,
+  output: GetRoleCredentialsResponse,
   errors: [
     InvalidRequestException,
     ResourceNotFoundException,
@@ -207,8 +230,8 @@ export const listAccountRoles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RoleInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3) as any as S.Schema<ListAccountRolesRequest>,
-  output: __S(6) as any as S.Schema<ListAccountRolesResponse>,
+  input: ListAccountRolesRequest,
+  output: ListAccountRolesResponse,
   errors: [
     InvalidRequestException,
     ResourceNotFoundException,
@@ -244,8 +267,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccountInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(7) as any as S.Schema<ListAccountsRequest>,
-  output: __S(10) as any as S.Schema<ListAccountsResponse>,
+  input: ListAccountsRequest,
+  output: ListAccountsResponse,
   errors: [
     InvalidRequestException,
     ResourceNotFoundException,
@@ -290,8 +313,8 @@ export const logout: API.OperationMethod<
   LogoutError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<LogoutRequest>,
-  output: __S(12) as any as S.Schema<LogoutResponse>,
+  input: LogoutRequest,
+  output: LogoutResponse,
   errors: [InvalidRequestException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -330,7 +353,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "RoleCredentials" });
     case 2:
-      return S.suspend(() => S.Struct({ roleCredentials: S.optional(__S(1)) })).annotate({
+      return S.suspend(() => S.Struct({ roleCredentials: S.optional(RoleCredentials) })).annotate({
         identifier: "GetRoleCredentialsResponse",
       });
     case 3:
@@ -349,10 +372,10 @@ function __c0(j: number): any {
         S.Struct({ roleName: S.optional(S.String), accountId: S.optional(S.String) }),
       ).annotate({ identifier: "RoleInfo" });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(RoleInfo);
     case 6:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), roleList: S.optional(__S(5)) }),
+        S.Struct({ nextToken: S.optional(S.String), roleList: S.optional(RoleListType) }),
       ).annotate({ identifier: "ListAccountRolesResponse" });
     case 7:
       return S.suspend(() =>
@@ -384,10 +407,10 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "AccountInfo" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(AccountInfo);
     case 2:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), accountList: S.optional(__S(9)) }),
+        S.Struct({ nextToken: S.optional(S.String), accountList: S.optional(AccountListType) }),
       ).annotate({ identifier: "ListAccountsResponse" });
     case 3:
       return S.suspend(() =>
@@ -399,18 +422,5 @@ function __c1(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "LogoutResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

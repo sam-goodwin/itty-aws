@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -65,7 +63,11 @@ export class NotFound
   ) {}
 
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringMap>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<StringList>;
+
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface GoogleTypeExpr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -77,6 +79,8 @@ export interface GoogleTypeExpr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
+const GoogleTypeExpr = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GoogleTypeExpr>;
+
 /** A deny rule in an IAM deny policy. */
 export interface GoogleIamV2DenyRule {
   /** The identities that are excluded from the deny rule, even if they are listed in the `denied_principals`. For example, you could add a Google group to the `denied_principals`, then exclude specific users who belong to that group. This field can contain the same values as the `denied_principals` field, excluding `principalSet://goog/public:all`, which represents all users on the internet. */
@@ -90,6 +94,8 @@ export interface GoogleIamV2DenyRule {
   /** Specifies the permissions that this rule excludes from the set of denied permissions given by `denied_permissions`. If a permission appears in `denied_permissions` _and_ in `exception_permissions` then it will _not_ be denied. The excluded permissions can be specified using the same syntax as `denied_permissions`. */
   exceptionPermissions?: StringList;
 }
+const GoogleIamV2DenyRule = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GoogleIamV2DenyRule>;
+
 /** A single rule in a `Policy`. */
 export interface GoogleIamV2PolicyRule {
   /** A user-specified description of the rule. This value can be up to 256 characters. */
@@ -97,7 +103,17 @@ export interface GoogleIamV2PolicyRule {
   /** A rule for a deny policy. */
   denyRule?: GoogleIamV2DenyRule;
 }
+const GoogleIamV2PolicyRule = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GoogleIamV2PolicyRule>;
+
 export type GoogleIamV2PolicyRuleList = Array<GoogleIamV2PolicyRule>;
+const GoogleIamV2PolicyRuleList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GoogleIamV2PolicyRuleList>;
+
 /** Data for an IAM policy. */
 export interface GoogleIamV2Policy {
   /** A user-specified description of the `Policy`. This value can be up to 63 characters. */
@@ -121,6 +137,8 @@ export interface GoogleIamV2Policy {
   /** Immutable. The resource name of the `Policy`, which must be unique. Format: `policies/{attachment_point}/denypolicies/{policy_id}` The attachment point is identified by its URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-deny-policy`. For organizations and folders, use the numeric ID in the full resource name. For projects, requests can use the alphanumeric or the numeric ID. Responses always contain the numeric ID. */
   name?: string;
 }
+const GoogleIamV2Policy = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GoogleIamV2Policy>;
+
 export interface CreatePolicyPoliciesRequest {
   /** Required. The resource that the policy is attached to, along with the kind of policy to create. Format: `policies/{attachment_point}/denypolicies` The attachment point is identified by its URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies`. For organizations and folders, use the numeric ID in the full resource name. For projects, you can use the alphanumeric or the numeric ID. */
   parent: string;
@@ -129,8 +147,17 @@ export interface CreatePolicyPoliciesRequest {
   /** Request body */
   body?: GoogleIamV2Policy;
 }
+const CreatePolicyPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreatePolicyPoliciesRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -140,6 +167,8 @@ export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
+const GoogleRpcStatus = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GoogleRpcStatus>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -153,20 +182,37 @@ export interface GoogleLongrunningOperation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: GoogleRpcStatus;
 }
+const GoogleLongrunningOperation = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GoogleLongrunningOperation>;
+
 export interface DeletePoliciesRequest {
   /** Required. The resource name of the policy to delete. Format: `policies/{attachment_point}/denypolicies/{policy_id}` Use the URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-policy`. For organizations and folders, use the numeric ID in the full resource name. For projects, you can use the alphanumeric or the numeric ID. */
   name: string;
   /** Optional. The expected `etag` of the policy to delete. If the value does not match the value that is stored in IAM, the request fails with a `409` error code and `ABORTED` status. If you omit this field, the policy is deleted regardless of its current `etag`. */
   etag?: string;
 }
+const DeletePoliciesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeletePoliciesRequest>;
+
 export interface GetPoliciesRequest {
   /** Required. The resource name of the policy to retrieve. Format: `policies/{attachment_point}/denypolicies/{policy_id}` Use the URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-policy`. For organizations and folders, use the numeric ID in the full resource name. For projects, you can use the alphanumeric or the numeric ID. */
   name: string;
 }
+const GetPoliciesRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetPoliciesRequest>;
+
 export interface GetPoliciesOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetPoliciesOperationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetPoliciesOperationsRequest>;
+
 export interface ListPoliciesPoliciesRequest {
   /** The maximum number of policies to return. IAM ignores this value and uses the value 1000. */
   pageSize?: number;
@@ -175,7 +221,17 @@ export interface ListPoliciesPoliciesRequest {
   /** Required. The resource that the policy is attached to, along with the kind of policy to list. Format: `policies/{attachment_point}/denypolicies` The attachment point is identified by its URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies`. For organizations and folders, use the numeric ID in the full resource name. For projects, you can use the alphanumeric or the numeric ID. */
   parent: string;
 }
+const ListPoliciesPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListPoliciesPoliciesRequest>;
+
 export type GoogleIamV2PolicyList = Array<GoogleIamV2Policy>;
+const GoogleIamV2PolicyList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GoogleIamV2PolicyList>;
+
 /** Response message for `ListPolicies`. */
 export interface GoogleIamV2ListPoliciesResponse {
   /** A page token that you can use in a ListPoliciesRequest to retrieve the next page. If this field is omitted, there are no additional pages. */
@@ -183,12 +239,22 @@ export interface GoogleIamV2ListPoliciesResponse {
   /** Metadata for the policies that are attached to the resource. */
   policies?: GoogleIamV2PolicyList;
 }
+const GoogleIamV2ListPoliciesResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GoogleIamV2ListPoliciesResponse>;
+
 export interface UpdatePoliciesRequest {
   /** Immutable. The resource name of the `Policy`, which must be unique. Format: `policies/{attachment_point}/denypolicies/{policy_id}` The attachment point is identified by its URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-deny-policy`. For organizations and folders, use the numeric ID in the full resource name. For projects, requests can use the alphanumeric or the numeric ID. Responses always contain the numeric ID. */
   name: string;
   /** Request body */
   body?: GoogleIamV2Policy;
 }
+const UpdatePoliciesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<UpdatePoliciesRequest>;
+
 export type CreatePolicyPoliciesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a policy. */
 export const createPolicyPolicies: API.OperationMethod<
@@ -197,8 +263,8 @@ export const createPolicyPolicies: API.OperationMethod<
   CreatePolicyPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<CreatePolicyPoliciesRequest>,
-  output: __S(11) as any as S.Schema<GoogleLongrunningOperation>,
+  input: CreatePolicyPoliciesRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -212,8 +278,8 @@ export const deletePolicies: API.OperationMethod<
   DeletePoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DeletePoliciesRequest>,
-  output: __S(11) as any as S.Schema<GoogleLongrunningOperation>,
+  input: DeletePoliciesRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -227,8 +293,8 @@ export const getPolicies: API.OperationMethod<
   GetPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<GetPoliciesRequest>,
-  output: __S(6) as any as S.Schema<GoogleIamV2Policy>,
+  input: GetPoliciesRequest,
+  output: GoogleIamV2Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -242,8 +308,8 @@ export const getPoliciesOperations: API.OperationMethod<
   GetPoliciesOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetPoliciesOperationsRequest>,
-  output: __S(11) as any as S.Schema<GoogleLongrunningOperation>,
+  input: GetPoliciesOperationsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -258,8 +324,8 @@ export const listPoliciesPolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleIamV2ListPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(15) as any as S.Schema<ListPoliciesPoliciesRequest>,
-  output: __S(17) as any as S.Schema<GoogleIamV2ListPoliciesResponse>,
+  input: ListPoliciesPoliciesRequest,
+  output: GoogleIamV2ListPoliciesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -274,8 +340,8 @@ export const updatePolicies: API.OperationMethod<
   UpdatePoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<UpdatePoliciesRequest>,
-  output: __S(11) as any as S.Schema<GoogleLongrunningOperation>,
+  input: UpdatePoliciesRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -300,33 +366,33 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          exceptionPrincipals: S.optional(__S(1)),
-          denialCondition: S.optional(__S(2)),
-          deniedPermissions: S.optional(__S(1)),
-          deniedPrincipals: S.optional(__S(1)),
-          exceptionPermissions: S.optional(__S(1)),
+          exceptionPrincipals: S.optional(StringList),
+          denialCondition: S.optional(GoogleTypeExpr),
+          deniedPermissions: S.optional(StringList),
+          deniedPrincipals: S.optional(StringList),
+          exceptionPermissions: S.optional(StringList),
         }),
       ).annotate({ identifier: "GoogleIamV2DenyRule" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          denyRule: S.optional(__S(3)),
+          denyRule: S.optional(GoogleIamV2DenyRule),
         }),
       ).annotate({ identifier: "GoogleIamV2PolicyRule" });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(GoogleIamV2PolicyRule);
     case 6:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          annotations: S.optional(__S(0)),
+          annotations: S.optional(StringMap),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
           uid: S.optional(S.String),
-          rules: S.optional(__S(5)),
+          rules: S.optional(GoogleIamV2PolicyRuleList),
           deleteTime: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -336,7 +402,7 @@ function __c0(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           policyId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(6).pipe(T.HttpBody())),
+          body: S.optional(GoogleIamV2Policy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "POST", uri: "v2/{+parent}", baseUrl: "https://iam.googleapis.com/" }),
         ),
@@ -350,23 +416,23 @@ function __c1(j: number): any {
     case 0:
       return S.Record(S.String, S.Unknown);
     case 1:
-      return S.Array(__S(8));
+      return S.Array(DocumentMap);
     case 2:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
           message: S.optional(S.String),
-          details: S.optional(__S(9)),
+          details: S.optional(DocumentMapList),
         }),
       ).annotate({ identifier: "GoogleRpcStatus" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(8)),
+          metadata: S.optional(DocumentMap),
           done: S.optional(S.Boolean),
-          response: S.optional(__S(8)),
+          response: S.optional(DocumentMap),
           name: S.optional(S.String),
-          error: S.optional(__S(10)),
+          error: S.optional(GoogleRpcStatus),
         }),
       ).annotate({
         identifier: "GoogleLongrunningOperation",
@@ -415,12 +481,12 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(6));
+      return S.Array(GoogleIamV2Policy);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          policies: S.optional(__S(16)),
+          policies: S.optional(GoogleIamV2PolicyList),
         }),
       ).annotate({
         identifier: "GoogleIamV2ListPoliciesResponse",
@@ -429,25 +495,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6).pipe(T.HttpBody())),
+          body: S.optional(GoogleIamV2Policy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v2/{+name}", baseUrl: "https://iam.googleapis.com/" }),
         ),
       ).annotate({ identifier: "UpdatePoliciesRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

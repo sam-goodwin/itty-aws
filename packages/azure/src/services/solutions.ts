@@ -7,8 +7,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -16,6 +14,11 @@ export type { AzureOpError, AzureOpContext };
 export type ApplicationDefinitionsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const ApplicationDefinitionsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateRequestTagsMap>;
+
 /** SKU for the resource. */
 export interface Sku {
   /** The SKU name. */
@@ -31,8 +34,12 @@ export interface Sku {
   /** The SKU capacity. */
   capacity?: number;
 }
+const Sku = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Sku>;
+
 /** The managed application lock level. */
 export type ApplicationLockLevel = "CanNotDelete" | "ReadOnly" | "None";
+const ApplicationLockLevel = S.String;
+
 /** The managed application provider authorization. */
 export interface ApplicationAuthorization {
   /** The provider's principal identifier. This is the identity that the provider will use to call ARM to manage the managed application resources. */
@@ -40,16 +47,30 @@ export interface ApplicationAuthorization {
   /** The provider's role definition identifier. This role will define all the permissions that the provider must have on the managed application's container resource group. This role definition cannot have permission to delete the resource group. */
   roleDefinitionId: string;
 }
+const ApplicationAuthorization = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ApplicationAuthorization>;
+
 /** The managed application provider authorizations. */
 export type ApplicationDefinitionPropertiesAuthorizationsList = Array<ApplicationAuthorization>;
+const ApplicationDefinitionPropertiesAuthorizationsList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ApplicationDefinitionPropertiesAuthorizationsList>;
+
 /** The managed application artifact name. */
 export type ApplicationDefinitionArtifactName =
   | "NotSpecified"
   | "ApplicationResourceTemplate"
   | "CreateUiDefinition"
   | "MainTemplateParameters";
+const ApplicationDefinitionArtifactName = S.String;
+
 /** The managed application artifact type. */
 export type ApplicationArtifactType = "NotSpecified" | "Template" | "Custom";
+const ApplicationArtifactType = S.String;
+
 /** Application definition artifact. */
 export interface ApplicationDefinitionArtifact {
   /** The managed application definition artifact name. */
@@ -59,25 +80,60 @@ export interface ApplicationDefinitionArtifact {
   /** The managed application definition artifact type. */
   type: ApplicationArtifactType | (string & {});
 }
+const ApplicationDefinitionArtifact = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ApplicationDefinitionArtifact>;
+
 /** The collection of managed application artifacts. The portal will use the files specified as artifacts to construct the user experience of creating a managed application from a managed application definition. */
 export type ApplicationDefinitionPropertiesArtifactsList = Array<ApplicationDefinitionArtifact>;
+const ApplicationDefinitionPropertiesArtifactsList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ApplicationDefinitionPropertiesArtifactsList>;
+
 /** Managed application notification endpoint. */
 export interface ApplicationNotificationEndpoint {
   /** The managed application notification endpoint uri. */
   uri: string;
 }
+const ApplicationNotificationEndpoint = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ApplicationNotificationEndpoint>;
+
 /** The managed application notification endpoint. */
 export type ApplicationNotificationPolicyNotificationEndpointsList =
   Array<ApplicationNotificationEndpoint>;
+const ApplicationNotificationPolicyNotificationEndpointsList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ApplicationNotificationPolicyNotificationEndpointsList>;
+
 /** Managed application notification policy. */
 export interface ApplicationNotificationPolicy {
   /** The managed application notification endpoint. */
   notificationEndpoints: ApplicationNotificationPolicyNotificationEndpointsList;
 }
+const ApplicationNotificationPolicy = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ApplicationNotificationPolicy>;
+
 /** The deny assignment excluded actions. */
 export type ApplicationPackageLockingPolicyDefinitionAllowedActionsList = Array<string>;
+const ApplicationPackageLockingPolicyDefinitionAllowedActionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ApplicationPackageLockingPolicyDefinitionAllowedActionsList>;
+
 /** The deny assignment excluded data actions. */
 export type ApplicationPackageLockingPolicyDefinitionAllowedDataActionsList = Array<string>;
+const ApplicationPackageLockingPolicyDefinitionAllowedDataActionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ApplicationPackageLockingPolicyDefinitionAllowedDataActionsList>;
+
 /** Managed application locking policy. */
 export interface ApplicationPackageLockingPolicyDefinition {
   /** The deny assignment excluded actions. */
@@ -85,20 +141,39 @@ export interface ApplicationPackageLockingPolicyDefinition {
   /** The deny assignment excluded data actions. */
   allowedDataActions?: ApplicationPackageLockingPolicyDefinitionAllowedDataActionsList;
 }
+const ApplicationPackageLockingPolicyDefinition = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ApplicationPackageLockingPolicyDefinition>;
+
 /** The deployment mode. */
 export type DeploymentMode = "NotSpecified" | "Incremental" | "Complete";
+const DeploymentMode = S.String;
+
 /** Managed application deployment policy. */
 export interface ApplicationDeploymentPolicy {
   /** The managed application deployment mode. */
   deploymentMode: DeploymentMode | (string & {});
 }
+const ApplicationDeploymentPolicy = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ApplicationDeploymentPolicy>;
+
 /** The management mode. */
 export type ApplicationManagementMode = "NotSpecified" | "Unmanaged" | "Managed";
+const ApplicationManagementMode = S.String;
+
 /** Managed application management policy. */
 export interface ApplicationManagementPolicy {
   /** The managed application management mode. */
   mode?: ApplicationManagementMode | (string & {});
 }
+const ApplicationManagementPolicy = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ApplicationManagementPolicy>;
+
 /** Managed application policy. */
 export interface ApplicationPolicy {
   /** The policy name */
@@ -108,8 +183,15 @@ export interface ApplicationPolicy {
   /** The policy parameters. */
   parameters?: string;
 }
+const ApplicationPolicy = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ApplicationPolicy>;
+
 /** The managed application provider policies. */
 export type ApplicationDefinitionPropertiesPoliciesList = Array<ApplicationPolicy>;
+const ApplicationDefinitionPropertiesPoliciesList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ApplicationDefinitionPropertiesPoliciesList>;
+
 /** The managed application definition properties. */
 export interface ApplicationDefinitionProperties {
   /** The managed application lock level. */
@@ -143,6 +225,11 @@ export interface ApplicationDefinitionProperties {
   /** The managed application provider policies. */
   policies?: ApplicationDefinitionPropertiesPoliciesList;
 }
+const ApplicationDefinitionProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ApplicationDefinitionProperties>;
+
 export interface ApplicationDefinitionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -161,22 +248,34 @@ export interface ApplicationDefinitionsCreateOrUpdateRequest {
   /** The managed application definition properties. */
   properties: ApplicationDefinitionProperties;
 }
+const ApplicationDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateRequest>;
+
 /** Resource tags */
 export type ApplicationDefinitionsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
+const ApplicationDefinitionsCreateOrUpdateResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationDefinitionsCreateOrUpdateResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type ApplicationDefinitionsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const ApplicationDefinitionsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type ApplicationDefinitionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const ApplicationDefinitionsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ApplicationDefinitionsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -192,6 +291,11 @@ export interface ApplicationDefinitionsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const ApplicationDefinitionsCreateOrUpdateResponseSystemData = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateResponseSystemData>;
+
 export interface ApplicationDefinitionsCreateOrUpdateResponse {
   /** Resource ID */
   id?: string;
@@ -212,12 +316,24 @@ export interface ApplicationDefinitionsCreateOrUpdateResponse {
   /** The managed application definition properties. */
   properties: ApplicationDefinitionProperties;
 }
+const ApplicationDefinitionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateResponse>;
+
 /** Resource tags */
 export type ApplicationsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const ApplicationsCreateOrUpdateRequestTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationsCreateOrUpdateRequestTagsMap>;
+
 /** The Jit approval mode. */
 export type JitApprovalMode = "NotSpecified" | "AutoApprove" | "ManualApprove";
+const JitApprovalMode = S.String;
+
 /** The approver type. */
 export type JitApproverDefinitionType = "user" | "group";
+const JitApproverDefinitionType = S.String;
+
 /** JIT approver definition. */
 export interface JitApproverDefinition {
   /** The approver service principal Id. */
@@ -227,8 +343,18 @@ export interface JitApproverDefinition {
   /** The approver display name. */
   displayName?: string;
 }
+const JitApproverDefinition = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<JitApproverDefinition>;
+
 /** The JIT approvers */
 export type ApplicationJitAccessPolicyJitApproversList = Array<JitApproverDefinition>;
+const ApplicationJitAccessPolicyJitApproversList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ApplicationJitAccessPolicyJitApproversList>;
+
 /** Managed application Jit access policy. */
 export interface ApplicationJitAccessPolicy {
   /** Whether the JIT access is enabled. */
@@ -240,6 +366,11 @@ export interface ApplicationJitAccessPolicy {
   /** The maximum duration JIT access is granted. This is an ISO8601 time period value. */
   maximumJitAccessDuration?: string;
 }
+const ApplicationJitAccessPolicy = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ApplicationJitAccessPolicy>;
+
 /** The managed application properties. */
 export interface ApplicationPropertiesInput {
   /** The managed resource group Id. */
@@ -251,6 +382,11 @@ export interface ApplicationPropertiesInput {
   /** The managed application Jit access policy. */
   jitAccessPolicy?: ApplicationJitAccessPolicy;
 }
+const ApplicationPropertiesInput = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ApplicationPropertiesInput>;
+
 /** Plan for the managed application. */
 export interface Plan {
   /** The plan name. */
@@ -264,18 +400,32 @@ export interface Plan {
   /** The plan's version. */
   version: string;
 }
+const Plan = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Plan>;
+
 /** The identity type. */
 export type IdentityInputType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
   | "None";
+const IdentityInputType = S.String;
+
 /** Represents the user assigned identity that is contained within the UserAssignedIdentities dictionary on ResourceIdentity */
 export interface UserAssignedResourceIdentityInput {}
+const UserAssignedResourceIdentityInput = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<UserAssignedResourceIdentityInput>;
+
 /** The list of user identities associated with the resource. The user identity dictionary key references will be resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type IdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedResourceIdentityInput | undefined;
 };
+const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap>;
+
 /** Identity for the resource. */
 export interface IdentityInput {
   /** The identity type. */
@@ -283,6 +433,8 @@ export interface IdentityInput {
   /** The list of user identities associated with the resource. The user identity dictionary key references will be resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
 }
+const IdentityInput = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<IdentityInput>;
+
 export interface ApplicationsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -307,20 +459,32 @@ export interface ApplicationsCreateOrUpdateRequest {
   /** The identity of the resource. */
   identity?: IdentityInput;
 }
+const ApplicationsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ApplicationsCreateOrUpdateRequest>;
+
 /** Resource tags */
 export type ApplicationsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const ApplicationsCreateOrUpdateResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationsCreateOrUpdateResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type ApplicationsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const ApplicationsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type ApplicationsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const ApplicationsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ApplicationsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -336,6 +500,11 @@ export interface ApplicationsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const ApplicationsCreateOrUpdateResponseSystemData = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ApplicationsCreateOrUpdateResponseSystemData>;
+
 /** Provisioning status of the managed application. */
 export type ProvisioningState =
   | "NotSpecified"
@@ -347,13 +516,23 @@ export type ProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Updating";
+const ProvisioningState = S.String;
+
 /** Managed application billing details definition. */
 export interface ApplicationBillingDetailsDefinition {
   /** The managed application resource usage Id. */
   resourceUsageId?: string;
 }
+const ApplicationBillingDetailsDefinition = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ApplicationBillingDetailsDefinition>;
+
 /** The read-only authorizations property that is retrieved from the application package. */
 export type ApplicationPropertiesAuthorizationsList = Array<ApplicationAuthorization>;
+const ApplicationPropertiesAuthorizationsList =
+  ApplicationDefinitionPropertiesAuthorizationsList as any as S.Schema<ApplicationPropertiesAuthorizationsList>;
+
 /** The application package contact information. */
 export interface ApplicationPackageContact {
   /** The contact name. */
@@ -363,6 +542,11 @@ export interface ApplicationPackageContact {
   /** The contact phone number. */
   phone: string;
 }
+const ApplicationPackageContact = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ApplicationPackageContact>;
+
 /** The appliance package support URLs. */
 export interface ApplicationPackageSupportUrls {
   /** The public azure support URL. */
@@ -370,12 +554,19 @@ export interface ApplicationPackageSupportUrls {
   /** The government cloud support URL. */
   governmentCloud?: string;
 }
+const ApplicationPackageSupportUrls = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ApplicationPackageSupportUrls>;
+
 /** The managed application artifact name. */
 export type ApplicationArtifactName =
   | "NotSpecified"
   | "ViewDefinition"
   | "Authorizations"
   | "CustomRoleDefinition";
+const ApplicationArtifactName = S.String;
+
 /** Managed application artifact. */
 export interface ApplicationArtifact {
   /** The managed application artifact name. */
@@ -385,8 +576,15 @@ export interface ApplicationArtifact {
   /** The managed application artifact type. */
   type: ApplicationArtifactType;
 }
+const ApplicationArtifact = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ApplicationArtifact>;
+
 /** The collection of managed application artifacts. */
 export type ApplicationPropertiesArtifactsList = Array<ApplicationArtifact>;
+const ApplicationPropertiesArtifactsList = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ApplicationPropertiesArtifactsList>;
+
 /** The application client details to track the entity creating/updating the managed app resource. */
 export interface ApplicationClientDetails {
   /** The client Oid. */
@@ -396,6 +594,11 @@ export interface ApplicationClientDetails {
   /** The client application Id. */
   applicationId?: string;
 }
+const ApplicationClientDetails = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ApplicationClientDetails>;
+
 /** The managed application properties. */
 export interface ApplicationProperties {
   /** The managed resource group Id. */
@@ -429,12 +632,19 @@ export interface ApplicationProperties {
   /** The client entity that last updated the JIT request. */
   updatedBy?: ApplicationClientDetails;
 }
+const ApplicationProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ApplicationProperties>;
+
 /** The identity type. */
 export type IdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
   | "None";
+const IdentityType = S.String;
+
 /** Represents the user assigned identity that is contained within the UserAssignedIdentities dictionary on ResourceIdentity */
 export interface UserAssignedResourceIdentity {
   /** The principal id of user assigned identity. */
@@ -442,10 +652,20 @@ export interface UserAssignedResourceIdentity {
   /** The tenant id of user assigned identity. */
   tenantId?: string;
 }
+const UserAssignedResourceIdentity = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<UserAssignedResourceIdentity>;
+
 /** The list of user identities associated with the resource. The user identity dictionary key references will be resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type IdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedResourceIdentity | undefined;
 };
+const IdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<IdentityUserAssignedIdentitiesMap>;
+
 /** Identity for the resource. */
 export interface Identity {
   /** The principal ID of resource identity. */
@@ -457,6 +677,8 @@ export interface Identity {
   /** The list of user identities associated with the resource. The user identity dictionary key references will be resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: IdentityUserAssignedIdentitiesMap;
 }
+const Identity = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Identity>;
+
 export interface ApplicationsCreateOrUpdateResponse {
   /** Resource ID */
   id?: string;
@@ -483,8 +705,16 @@ export interface ApplicationsCreateOrUpdateResponse {
   /** The identity of the resource. */
   identity?: Identity;
 }
+const ApplicationsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ApplicationsCreateOrUpdateResponse>;
+
 /** Resource tags */
 export type ApplicationsCreateOrUpdateByIdRequestTagsMap = { [key: string]: string | undefined };
+const ApplicationsCreateOrUpdateByIdRequestTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationsCreateOrUpdateByIdRequestTagsMap>;
+
 export interface ApplicationsCreateOrUpdateByIdRequest {
   /** The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name} */
   applicationId: string;
@@ -505,8 +735,16 @@ export interface ApplicationsCreateOrUpdateByIdRequest {
   /** The identity of the resource. */
   identity?: IdentityInput;
 }
+const ApplicationsCreateOrUpdateByIdRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ApplicationsCreateOrUpdateByIdRequest>;
+
 /** Resource tags */
 export type ApplicationsCreateOrUpdateByIdResponseTagsMap = { [key: string]: string | undefined };
+const ApplicationsCreateOrUpdateByIdResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationsCreateOrUpdateByIdResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type ApplicationsCreateOrUpdateByIdResponseSystemDataCreatedByType =
   | "User"
@@ -534,6 +772,9 @@ export interface ApplicationsCreateOrUpdateByIdResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const ApplicationsCreateOrUpdateByIdResponseSystemData =
+  ApplicationDefinitionsCreateOrUpdateResponseSystemData as any as S.Schema<ApplicationsCreateOrUpdateByIdResponseSystemData>;
+
 export interface ApplicationsCreateOrUpdateByIdResponse {
   /** Resource ID */
   id?: string;
@@ -560,6 +801,11 @@ export interface ApplicationsCreateOrUpdateByIdResponse {
   /** The identity of the resource. */
   identity?: Identity;
 }
+const ApplicationsCreateOrUpdateByIdResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ApplicationsCreateOrUpdateByIdResponse>;
+
 export interface DeleteApplicationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -568,12 +814,30 @@ export interface DeleteApplicationRequest {
   /** The name of the managed application. */
   applicationName: string;
 }
+const DeleteApplicationRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DeleteApplicationRequest>;
+
 export interface DeleteApplicationResponse {}
+const DeleteApplicationResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<DeleteApplicationResponse>;
+
 export interface DeleteApplicationByIdRequest {
   /** The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name} */
   applicationId: string;
 }
+const DeleteApplicationByIdRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DeleteApplicationByIdRequest>;
+
 export interface DeleteApplicationByIdResponse {}
+const DeleteApplicationByIdResponse =
+  DeleteApplicationResponse as any as S.Schema<DeleteApplicationByIdResponse>;
+
 export interface DeleteApplicationDefinitionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -582,7 +846,15 @@ export interface DeleteApplicationDefinitionRequest {
   /** The name of the managed application definition. */
   applicationDefinitionName: string;
 }
+const DeleteApplicationDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DeleteApplicationDefinitionRequest>;
+
 export interface DeleteApplicationDefinitionResponse {}
+const DeleteApplicationDefinitionResponse =
+  UserAssignedResourceIdentityInput as any as S.Schema<DeleteApplicationDefinitionResponse>;
+
 export interface DeleteJitRequestRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -591,7 +863,15 @@ export interface DeleteJitRequestRequest {
   /** The name of the JIT request. */
   jitRequestName: string;
 }
+const DeleteJitRequestRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DeleteJitRequestRequest>;
+
 export interface DeleteJitRequestResponse {}
+const DeleteJitRequestResponse =
+  DeleteApplicationResponse as any as S.Schema<DeleteJitRequestResponse>;
+
 export interface GetApplicationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -600,8 +880,16 @@ export interface GetApplicationRequest {
   /** The name of the managed application. */
   applicationName: string;
 }
+const GetApplicationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetApplicationRequest>;
+
 /** Resource tags */
 export type GetApplicationResponseTagsMap = { [key: string]: string | undefined };
+const GetApplicationResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<GetApplicationResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type GetApplicationResponseSystemDataCreatedByType =
   | "User"
@@ -629,6 +917,9 @@ export interface GetApplicationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetApplicationResponseSystemData =
+  ApplicationsCreateOrUpdateResponseSystemData as any as S.Schema<GetApplicationResponseSystemData>;
+
 export interface GetApplicationResponse {
   /** Resource ID */
   id?: string;
@@ -655,12 +946,25 @@ export interface GetApplicationResponse {
   /** The identity of the resource. */
   identity?: Identity;
 }
+const GetApplicationResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetApplicationResponse>;
+
 export interface GetApplicationByIdRequest {
   /** The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name} */
   applicationId: string;
 }
+const GetApplicationByIdRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<GetApplicationByIdRequest>;
+
 /** Resource tags */
 export type GetApplicationByIdResponseTagsMap = { [key: string]: string | undefined };
+const GetApplicationByIdResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<GetApplicationByIdResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type GetApplicationByIdResponseSystemDataCreatedByType =
   | "User"
@@ -688,6 +992,9 @@ export interface GetApplicationByIdResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetApplicationByIdResponseSystemData =
+  ApplicationsCreateOrUpdateResponseSystemData as any as S.Schema<GetApplicationByIdResponseSystemData>;
+
 export interface GetApplicationByIdResponse {
   /** Resource ID */
   id?: string;
@@ -714,6 +1021,11 @@ export interface GetApplicationByIdResponse {
   /** The identity of the resource. */
   identity?: Identity;
 }
+const GetApplicationByIdResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GetApplicationByIdResponse>;
+
 export interface GetApplicationDefinitionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -722,8 +1034,16 @@ export interface GetApplicationDefinitionRequest {
   /** The name of the managed application definition. */
   applicationDefinitionName: string;
 }
+const GetApplicationDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GetApplicationDefinitionRequest>;
+
 /** Resource tags */
 export type GetApplicationDefinitionResponseTagsMap = { [key: string]: string | undefined };
+const GetApplicationDefinitionResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<GetApplicationDefinitionResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type GetApplicationDefinitionResponseSystemDataCreatedByType =
   | "User"
@@ -751,6 +1071,9 @@ export interface GetApplicationDefinitionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetApplicationDefinitionResponseSystemData =
+  ApplicationsCreateOrUpdateResponseSystemData as any as S.Schema<GetApplicationDefinitionResponseSystemData>;
+
 export interface GetApplicationDefinitionResponse {
   /** Resource ID */
   id?: string;
@@ -771,6 +1094,11 @@ export interface GetApplicationDefinitionResponse {
   /** The managed application definition properties. */
   properties: ApplicationDefinitionProperties;
 }
+const GetApplicationDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GetApplicationDefinitionResponse>;
+
 export interface GetJitRequestRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -779,8 +1107,13 @@ export interface GetJitRequestRequest {
   /** The name of the JIT request. */
   jitRequestName: string;
 }
+const GetJitRequestRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<GetJitRequestRequest>;
+
 /** Resource tags */
 export type GetJitRequestResponseTagsMap = { [key: string]: string | undefined };
+const GetJitRequestResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<GetJitRequestResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type GetJitRequestResponseSystemDataCreatedByType =
   | "User"
@@ -808,6 +1141,9 @@ export interface GetJitRequestResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetJitRequestResponseSystemData =
+  ApplicationsCreateOrUpdateResponseSystemData as any as S.Schema<GetJitRequestResponseSystemData>;
+
 /** The JIT authorization policies. */
 export interface JitAuthorizationPolicies {
   /** The the principal id that will be granted JIT access. */
@@ -817,8 +1153,13 @@ export interface JitAuthorizationPolicies {
 }
 /** The JIT authorization policies. */
 export type JitRequestPropertiesJitAuthorizationPoliciesList = Array<JitAuthorizationPolicies>;
+const JitRequestPropertiesJitAuthorizationPoliciesList =
+  ApplicationDefinitionPropertiesAuthorizationsList as any as S.Schema<JitRequestPropertiesJitAuthorizationPoliciesList>;
+
 /** The JIT request scheduling type. */
 export type JitSchedulingType = "NotSpecified" | "Once" | "Recurring";
+const JitSchedulingType = S.String;
+
 /** The JIT scheduling policies. */
 export interface JitSchedulingPolicy {
   /** The type of JIT schedule. */
@@ -827,6 +1168,8 @@ export interface JitSchedulingPolicy {
   /** The start time of the request. */
   startTime: string;
 }
+const JitSchedulingPolicy = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<JitSchedulingPolicy>;
+
 /** The JIT request state. */
 export type JitRequestState =
   | "NotSpecified"
@@ -837,6 +1180,8 @@ export type JitRequestState =
   | "Canceled"
   | "Expired"
   | "Timeout";
+const JitRequestState = S.String;
+
 /** Information about JIT request properties */
 export interface JitRequestProperties {
   /** The parent application id. */
@@ -856,6 +1201,8 @@ export interface JitRequestProperties {
   /** The client entity that last updated the JIT request. */
   updatedBy?: ApplicationClientDetails;
 }
+const JitRequestProperties = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<JitRequestProperties>;
+
 export interface GetJitRequestResponse {
   /** Resource ID */
   id?: string;
@@ -872,10 +1219,21 @@ export interface GetJitRequestResponse {
   /** The JIT request properties. */
   properties?: JitRequestProperties;
 }
+const GetJitRequestResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GetJitRequestResponse>;
+
 /** Resource tags */
 export type JitRequestsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const JitRequestsCreateOrUpdateRequestTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<JitRequestsCreateOrUpdateRequestTagsMap>;
+
 /** The JIT authorization policies. */
 export type JitRequestPropertiesInputJitAuthorizationPoliciesList = Array<JitAuthorizationPolicies>;
+const JitRequestPropertiesInputJitAuthorizationPoliciesList =
+  ApplicationDefinitionPropertiesAuthorizationsList as any as S.Schema<JitRequestPropertiesInputJitAuthorizationPoliciesList>;
+
 /** Information about JIT request properties */
 export interface JitRequestPropertiesInput {
   /** The parent application id. */
@@ -885,6 +1243,11 @@ export interface JitRequestPropertiesInput {
   /** The JIT request properties. */
   jitSchedulingPolicy: JitSchedulingPolicy;
 }
+const JitRequestPropertiesInput = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<JitRequestPropertiesInput>;
+
 export interface JitRequestsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -899,8 +1262,16 @@ export interface JitRequestsCreateOrUpdateRequest {
   /** The JIT request properties. */
   properties?: JitRequestPropertiesInput;
 }
+const JitRequestsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<JitRequestsCreateOrUpdateRequest>;
+
 /** Resource tags */
 export type JitRequestsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const JitRequestsCreateOrUpdateResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<JitRequestsCreateOrUpdateResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type JitRequestsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -928,6 +1299,9 @@ export interface JitRequestsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const JitRequestsCreateOrUpdateResponseSystemData =
+  ApplicationsCreateOrUpdateResponseSystemData as any as S.Schema<JitRequestsCreateOrUpdateResponseSystemData>;
+
 export interface JitRequestsCreateOrUpdateResponse {
   /** Resource ID */
   id?: string;
@@ -944,6 +1318,11 @@ export interface JitRequestsCreateOrUpdateResponse {
   /** The JIT request properties. */
   properties?: JitRequestProperties;
 }
+const JitRequestsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<JitRequestsCreateOrUpdateResponse>;
+
 export interface ListApplicationAllowedUpgradePlansRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -952,29 +1331,56 @@ export interface ListApplicationAllowedUpgradePlansRequest {
   /** The name of the managed application. */
   applicationName: string;
 }
+const ListApplicationAllowedUpgradePlansRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListApplicationAllowedUpgradePlansRequest>;
+
 /** The array of plans. */
 export type AllowedUpgradePlansResultValueList = Array<Plan>;
+const AllowedUpgradePlansResultValueList = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<AllowedUpgradePlansResultValueList>;
+
 /** The array of plan. */
 export interface AllowedUpgradePlansResult {
   /** The array of plans. */
   value?: AllowedUpgradePlansResultValueList;
 }
+const AllowedUpgradePlansResult = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<AllowedUpgradePlansResult>;
+
 export interface ListApplicationByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListApplicationByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListApplicationByResourceGroupRequest>;
+
 /** Resource tags */
 export type ApplicationTagsMap = { [key: string]: string | undefined };
+const ApplicationTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationTagsMap>;
+
 /** The type of identity that created the resource. */
 export type ApplicationSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const ApplicationSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type ApplicationSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const ApplicationSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ApplicationSystemData {
   /** The identity that created the resource. */
@@ -990,6 +1396,11 @@ export interface ApplicationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const ApplicationSystemData = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ApplicationSystemData>;
+
 /** Information about managed application. */
 export interface Application {
   /** Resource ID */
@@ -1017,8 +1428,15 @@ export interface Application {
   /** The identity of the resource. */
   identity?: Identity;
 }
+const Application = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<Application>;
+
 /** The array of managed applications. */
 export type ApplicationListResultValueList = Array<Application>;
+const ApplicationListResultValueList = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ApplicationListResultValueList>;
+
 /** List of managed applications. */
 export interface ApplicationListResult {
   /** The array of managed applications. */
@@ -1026,18 +1444,36 @@ export interface ApplicationListResult {
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
+const ApplicationListResult = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ApplicationListResult>;
+
 export interface ListApplicationBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListApplicationBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ListApplicationBySubscriptionRequest>;
+
 export interface ListApplicationDefinitionByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListApplicationDefinitionByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListApplicationDefinitionByResourceGroupRequest>;
+
 /** Resource tags */
 export type ApplicationDefinitionTagsMap = { [key: string]: string | undefined };
+const ApplicationDefinitionTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationDefinitionTagsMap>;
+
 /** The type of identity that created the resource. */
 export type ApplicationDefinitionSystemDataCreatedByType =
   | "User"
@@ -1065,6 +1501,9 @@ export interface ApplicationDefinitionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const ApplicationDefinitionSystemData =
+  ApplicationsCreateOrUpdateResponseSystemData as any as S.Schema<ApplicationDefinitionSystemData>;
+
 /** Information about managed application definition. */
 export interface ApplicationDefinition {
   /** Resource ID */
@@ -1086,8 +1525,18 @@ export interface ApplicationDefinition {
   /** The managed application definition properties. */
   properties: ApplicationDefinitionProperties;
 }
+const ApplicationDefinition = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ApplicationDefinition>;
+
 /** The array of managed application definitions. */
 export type ApplicationDefinitionListResultValueList = Array<ApplicationDefinition>;
+const ApplicationDefinitionListResultValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ApplicationDefinitionListResultValueList>;
+
 /** List of managed application definitions. */
 export interface ApplicationDefinitionListResult {
   /** The array of managed application definitions. */
@@ -1095,12 +1544,25 @@ export interface ApplicationDefinitionListResult {
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
+const ApplicationDefinitionListResult = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ApplicationDefinitionListResult>;
+
 export interface ListApplicationDefinitionBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListApplicationDefinitionBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListApplicationDefinitionBySubscriptionRequest>;
+
 /** The user assigned identities. */
 export type ListApplicationTokensRequestUserAssignedIdentitiesList = Array<string>;
+const ListApplicationTokensRequestUserAssignedIdentitiesList =
+  ApplicationPackageLockingPolicyDefinitionAllowedActionsList as any as S.Schema<ListApplicationTokensRequestUserAssignedIdentitiesList>;
+
 export interface ListApplicationTokensRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1113,6 +1575,11 @@ export interface ListApplicationTokensRequest {
   /** The user assigned identities. */
   userAssignedIdentities?: ListApplicationTokensRequestUserAssignedIdentitiesList;
 }
+const ListApplicationTokensRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ListApplicationTokensRequest>;
+
 /** The managed identity token for the managed app resource. */
 export interface ManagedIdentityToken {
   /** The requested access token. */
@@ -1130,21 +1597,41 @@ export interface ManagedIdentityToken {
   /** The type of the token. */
   tokenType?: string;
 }
+const ManagedIdentityToken = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<ManagedIdentityToken>;
+
 /** The array of managed identity tokens. */
 export type ManagedIdentityTokenResultValueList = Array<ManagedIdentityToken>;
+const ManagedIdentityTokenResultValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ManagedIdentityTokenResultValueList>;
+
 /** The array of managed identity tokens. */
 export interface ManagedIdentityTokenResult {
   /** The array of managed identity tokens. */
   value?: ManagedIdentityTokenResultValueList;
 }
+const ManagedIdentityTokenResult = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ManagedIdentityTokenResult>;
+
 export interface ListJitRequestByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListJitRequestByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ListJitRequestByResourceGroupRequest>;
+
 /** Resource tags */
 export type JitRequestDefinitionTagsMap = { [key: string]: string | undefined };
+const JitRequestDefinitionTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<JitRequestDefinitionTagsMap>;
+
 /** The type of identity that created the resource. */
 export type JitRequestDefinitionSystemDataCreatedByType =
   | "User"
@@ -1172,6 +1659,9 @@ export interface JitRequestDefinitionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const JitRequestDefinitionSystemData =
+  ApplicationsCreateOrUpdateResponseSystemData as any as S.Schema<JitRequestDefinitionSystemData>;
+
 /** Information about JIT request definition. */
 export interface JitRequestDefinition {
   /** Resource ID */
@@ -1189,8 +1679,18 @@ export interface JitRequestDefinition {
   /** The JIT request properties. */
   properties?: JitRequestProperties;
 }
+const JitRequestDefinition = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<JitRequestDefinition>;
+
 /** The array of Jit request definition. */
 export type JitRequestDefinitionListResultValueList = Array<JitRequestDefinition>;
+const JitRequestDefinitionListResultValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<JitRequestDefinitionListResultValueList>;
+
 /** List of JIT requests. */
 export interface JitRequestDefinitionListResult {
   /** The array of Jit request definition. */
@@ -1198,11 +1698,26 @@ export interface JitRequestDefinitionListResult {
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
+const JitRequestDefinitionListResult = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<JitRequestDefinitionListResult>;
+
 export interface ListJitRequestBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListJitRequestBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ListJitRequestBySubscriptionRequest>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -1214,10 +1729,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -1231,14 +1752,26 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface RefreshApplicationPermissionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1247,9 +1780,20 @@ export interface RefreshApplicationPermissionsRequest {
   /** The name of the managed application. */
   applicationName: string;
 }
+const RefreshApplicationPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<RefreshApplicationPermissionsRequest>;
+
 export interface RefreshApplicationPermissionsResponse {}
+const RefreshApplicationPermissionsResponse =
+  UserAssignedResourceIdentityInput as any as S.Schema<RefreshApplicationPermissionsResponse>;
+
 /** Resource tags */
 export type UpdateApplicationRequestTagsMap = { [key: string]: string | undefined };
+const UpdateApplicationRequestTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateApplicationRequestTagsMap>;
+
 /** Plan for the managed application. */
 export interface PlanPatchable {
   /** The plan name. */
@@ -1263,6 +1807,8 @@ export interface PlanPatchable {
   /** The plan's version. */
   version?: string;
 }
+const PlanPatchable = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<PlanPatchable>;
+
 export interface UpdateApplicationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1287,8 +1833,16 @@ export interface UpdateApplicationRequest {
   /** The identity of the resource. */
   identity?: IdentityInput;
 }
+const UpdateApplicationRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<UpdateApplicationRequest>;
+
 /** Resource tags */
 export type UpdateApplicationResponseTagsMap = { [key: string]: string | undefined };
+const UpdateApplicationResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateApplicationResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type UpdateApplicationResponseSystemDataCreatedByType =
   | "User"
@@ -1316,6 +1870,9 @@ export interface UpdateApplicationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const UpdateApplicationResponseSystemData =
+  ApplicationsCreateOrUpdateResponseSystemData as any as S.Schema<UpdateApplicationResponseSystemData>;
+
 export interface UpdateApplicationResponse {
   /** Resource ID */
   id?: string;
@@ -1342,6 +1899,11 @@ export interface UpdateApplicationResponse {
   /** The identity of the resource. */
   identity?: Identity;
 }
+const UpdateApplicationResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<UpdateApplicationResponse>;
+
 /** The JIT request metadata. */
 export interface JitRequestMetadata {
   /** The origin request id. */
@@ -1353,10 +1915,16 @@ export interface JitRequestMetadata {
   /** The subject display name. */
   subjectDisplayName?: string;
 }
+const JitRequestMetadata = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<JitRequestMetadata>;
+
 /** The JIT status. */
 export type Status = "NotSpecified" | "Elevate" | "Remove";
+const Status = S.String;
+
 /** The sub status. */
 export type SubStatus = "NotSpecified" | "Approved" | "Denied" | "Failed" | "Expired" | "Timeout";
+const SubStatus = S.String;
+
 export interface UpdateApplicationAccessRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1373,9 +1941,22 @@ export interface UpdateApplicationAccessRequest {
   /** The JIT status. */
   subStatus: SubStatus | (string & {});
 }
+const UpdateApplicationAccessRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<UpdateApplicationAccessRequest>;
+
 export interface UpdateApplicationAccessResponse {}
+const UpdateApplicationAccessResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<UpdateApplicationAccessResponse>;
+
 /** Resource tags */
 export type UpdateApplicationByIdRequestTagsMap = { [key: string]: string | undefined };
+const UpdateApplicationByIdRequestTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateApplicationByIdRequestTagsMap>;
+
 export interface UpdateApplicationByIdRequest {
   /** The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name} */
   applicationId: string;
@@ -1396,8 +1977,16 @@ export interface UpdateApplicationByIdRequest {
   /** The identity of the resource. */
   identity?: IdentityInput;
 }
+const UpdateApplicationByIdRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<UpdateApplicationByIdRequest>;
+
 /** Resource tags */
 export type UpdateApplicationByIdResponseTagsMap = { [key: string]: string | undefined };
+const UpdateApplicationByIdResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateApplicationByIdResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type UpdateApplicationByIdResponseSystemDataCreatedByType =
   | "User"
@@ -1425,6 +2014,9 @@ export interface UpdateApplicationByIdResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const UpdateApplicationByIdResponseSystemData =
+  ApplicationsCreateOrUpdateResponseSystemData as any as S.Schema<UpdateApplicationByIdResponseSystemData>;
+
 export interface UpdateApplicationByIdResponse {
   /** Resource ID */
   id?: string;
@@ -1451,8 +2043,16 @@ export interface UpdateApplicationByIdResponse {
   /** The identity of the resource. */
   identity?: Identity;
 }
+const UpdateApplicationByIdResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<UpdateApplicationByIdResponse>;
+
 /** Application definition tags */
 export type UpdateApplicationDefinitionRequestTagsMap = { [key: string]: string | undefined };
+const UpdateApplicationDefinitionRequestTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateApplicationDefinitionRequestTagsMap>;
+
 export interface UpdateApplicationDefinitionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1463,8 +2063,16 @@ export interface UpdateApplicationDefinitionRequest {
   /** Application definition tags */
   tags?: UpdateApplicationDefinitionRequestTagsMap;
 }
+const UpdateApplicationDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<UpdateApplicationDefinitionRequest>;
+
 /** Resource tags */
 export type UpdateApplicationDefinitionResponseTagsMap = { [key: string]: string | undefined };
+const UpdateApplicationDefinitionResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateApplicationDefinitionResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type UpdateApplicationDefinitionResponseSystemDataCreatedByType =
   | "User"
@@ -1492,6 +2100,9 @@ export interface UpdateApplicationDefinitionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const UpdateApplicationDefinitionResponseSystemData =
+  ApplicationsCreateOrUpdateResponseSystemData as any as S.Schema<UpdateApplicationDefinitionResponseSystemData>;
+
 export interface UpdateApplicationDefinitionResponse {
   /** Resource ID */
   id?: string;
@@ -1512,8 +2123,16 @@ export interface UpdateApplicationDefinitionResponse {
   /** The managed application definition properties. */
   properties: ApplicationDefinitionProperties;
 }
+const UpdateApplicationDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<UpdateApplicationDefinitionResponse>;
+
 /** Jit request tags */
 export type UpdateJitRequestRequestTagsMap = { [key: string]: string | undefined };
+const UpdateJitRequestRequestTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateJitRequestRequestTagsMap>;
+
 export interface UpdateJitRequestRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1524,8 +2143,16 @@ export interface UpdateJitRequestRequest {
   /** Jit request tags */
   tags?: UpdateJitRequestRequestTagsMap;
 }
+const UpdateJitRequestRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<UpdateJitRequestRequest>;
+
 /** Resource tags */
 export type UpdateJitRequestResponseTagsMap = { [key: string]: string | undefined };
+const UpdateJitRequestResponseTagsMap =
+  ApplicationDefinitionsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateJitRequestResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type UpdateJitRequestResponseSystemDataCreatedByType =
   | "User"
@@ -1553,6 +2180,9 @@ export interface UpdateJitRequestResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const UpdateJitRequestResponseSystemData =
+  ApplicationsCreateOrUpdateResponseSystemData as any as S.Schema<UpdateJitRequestResponseSystemData>;
+
 export interface UpdateJitRequestResponse {
   /** Resource ID */
   id?: string;
@@ -1569,6 +2199,11 @@ export interface UpdateJitRequestResponse {
   /** The JIT request properties. */
   properties?: JitRequestProperties;
 }
+const UpdateJitRequestResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<UpdateJitRequestResponse>;
+
 export type ApplicationDefinitionsCreateOrUpdateError = AzureOpError;
 /** Creates or updates a managed application definition. */
 export const ApplicationDefinitionsCreateOrUpdate: API.OperationMethod<
@@ -1577,8 +2212,8 @@ export const ApplicationDefinitionsCreateOrUpdate: API.OperationMethod<
   ApplicationDefinitionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateRequest>,
-  output: __S(19) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateResponse>,
+  input: ApplicationDefinitionsCreateOrUpdateRequest,
+  output: ApplicationDefinitionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1592,8 +2227,8 @@ export const ApplicationsCreateOrUpdate: API.OperationMethod<
   ApplicationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<ApplicationsCreateOrUpdateRequest>,
-  output: __S(40) as any as S.Schema<ApplicationsCreateOrUpdateResponse>,
+  input: ApplicationsCreateOrUpdateRequest,
+  output: ApplicationsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1607,8 +2242,8 @@ export const ApplicationsCreateOrUpdateById: API.OperationMethod<
   ApplicationsCreateOrUpdateByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<ApplicationsCreateOrUpdateByIdRequest>,
-  output: __S(42) as any as S.Schema<ApplicationsCreateOrUpdateByIdResponse>,
+  input: ApplicationsCreateOrUpdateByIdRequest,
+  output: ApplicationsCreateOrUpdateByIdResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1622,8 +2257,8 @@ export const DeleteApplication: API.OperationMethod<
   DeleteApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(44) as any as S.Schema<DeleteApplicationResponse>,
+  input: DeleteApplicationRequest,
+  output: DeleteApplicationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1637,8 +2272,8 @@ export const DeleteApplicationById: API.OperationMethod<
   DeleteApplicationByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<DeleteApplicationByIdRequest>,
-  output: __S(44) as any as S.Schema<DeleteApplicationByIdResponse>,
+  input: DeleteApplicationByIdRequest,
+  output: DeleteApplicationByIdResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1652,8 +2287,8 @@ export const DeleteApplicationDefinition: API.OperationMethod<
   DeleteApplicationDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<DeleteApplicationDefinitionRequest>,
-  output: __S(25) as any as S.Schema<DeleteApplicationDefinitionResponse>,
+  input: DeleteApplicationDefinitionRequest,
+  output: DeleteApplicationDefinitionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1667,8 +2302,8 @@ export const DeleteJitRequest: API.OperationMethod<
   DeleteJitRequestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<DeleteJitRequestRequest>,
-  output: __S(44) as any as S.Schema<DeleteJitRequestResponse>,
+  input: DeleteJitRequestRequest,
+  output: DeleteJitRequestResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1682,8 +2317,8 @@ export const GetApplication: API.OperationMethod<
   GetApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<GetApplicationRequest>,
-  output: __S(49) as any as S.Schema<GetApplicationResponse>,
+  input: GetApplicationRequest,
+  output: GetApplicationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1697,8 +2332,8 @@ export const GetApplicationById: API.OperationMethod<
   GetApplicationByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<GetApplicationByIdRequest>,
-  output: __S(51) as any as S.Schema<GetApplicationByIdResponse>,
+  input: GetApplicationByIdRequest,
+  output: GetApplicationByIdResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1712,8 +2347,8 @@ export const GetApplicationDefinition: API.OperationMethod<
   GetApplicationDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<GetApplicationDefinitionRequest>,
-  output: __S(53) as any as S.Schema<GetApplicationDefinitionResponse>,
+  input: GetApplicationDefinitionRequest,
+  output: GetApplicationDefinitionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1727,8 +2362,8 @@ export const GetJitRequest: API.OperationMethod<
   GetJitRequestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<GetJitRequestRequest>,
-  output: __S(57) as any as S.Schema<GetJitRequestResponse>,
+  input: GetJitRequestRequest,
+  output: GetJitRequestResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1742,8 +2377,8 @@ export const JitRequestsCreateOrUpdate: API.OperationMethod<
   JitRequestsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<JitRequestsCreateOrUpdateRequest>,
-  output: __S(60) as any as S.Schema<JitRequestsCreateOrUpdateResponse>,
+  input: JitRequestsCreateOrUpdateRequest,
+  output: JitRequestsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1757,8 +2392,8 @@ export const ListApplicationAllowedUpgradePlans: API.OperationMethod<
   ListApplicationAllowedUpgradePlansError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<ListApplicationAllowedUpgradePlansRequest>,
-  output: __S(63) as any as S.Schema<AllowedUpgradePlansResult>,
+  input: ListApplicationAllowedUpgradePlansRequest,
+  output: AllowedUpgradePlansResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1772,8 +2407,8 @@ export const ListApplicationByResourceGroup: API.OperationMethod<
   ListApplicationByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<ListApplicationByResourceGroupRequest>,
-  output: __S(68) as any as S.Schema<ApplicationListResult>,
+  input: ListApplicationByResourceGroupRequest,
+  output: ApplicationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1787,8 +2422,8 @@ export const ListApplicationBySubscription: API.OperationMethod<
   ListApplicationBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<ListApplicationBySubscriptionRequest>,
-  output: __S(68) as any as S.Schema<ApplicationListResult>,
+  input: ListApplicationBySubscriptionRequest,
+  output: ApplicationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1802,8 +2437,8 @@ export const ListApplicationDefinitionByResourceGroup: API.OperationMethod<
   ListApplicationDefinitionByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<ListApplicationDefinitionByResourceGroupRequest>,
-  output: __S(73) as any as S.Schema<ApplicationDefinitionListResult>,
+  input: ListApplicationDefinitionByResourceGroupRequest,
+  output: ApplicationDefinitionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1817,8 +2452,8 @@ export const ListApplicationDefinitionBySubscription: API.OperationMethod<
   ListApplicationDefinitionBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<ListApplicationDefinitionBySubscriptionRequest>,
-  output: __S(73) as any as S.Schema<ApplicationDefinitionListResult>,
+  input: ListApplicationDefinitionBySubscriptionRequest,
+  output: ApplicationDefinitionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1832,8 +2467,8 @@ export const ListApplicationTokens: API.OperationMethod<
   ListApplicationTokensError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<ListApplicationTokensRequest>,
-  output: __S(78) as any as S.Schema<ManagedIdentityTokenResult>,
+  input: ListApplicationTokensRequest,
+  output: ManagedIdentityTokenResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1847,8 +2482,8 @@ export const ListJitRequestByResourceGroup: API.OperationMethod<
   ListJitRequestByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<ListJitRequestByResourceGroupRequest>,
-  output: __S(82) as any as S.Schema<JitRequestDefinitionListResult>,
+  input: ListJitRequestByResourceGroupRequest,
+  output: JitRequestDefinitionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1862,8 +2497,8 @@ export const ListJitRequestBySubscription: API.OperationMethod<
   ListJitRequestBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<ListJitRequestBySubscriptionRequest>,
-  output: __S(82) as any as S.Schema<JitRequestDefinitionListResult>,
+  input: ListJitRequestBySubscriptionRequest,
+  output: JitRequestDefinitionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1877,8 +2512,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<ListOperationsRequest>,
-  output: __S(88) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1892,8 +2527,8 @@ export const RefreshApplicationPermissions: API.OperationMethod<
   RefreshApplicationPermissionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<RefreshApplicationPermissionsRequest>,
-  output: __S(25) as any as S.Schema<RefreshApplicationPermissionsResponse>,
+  input: RefreshApplicationPermissionsRequest,
+  output: RefreshApplicationPermissionsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1907,8 +2542,8 @@ export const UpdateApplication: API.OperationMethod<
   UpdateApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(92) as any as S.Schema<UpdateApplicationResponse>,
+  input: UpdateApplicationRequest,
+  output: UpdateApplicationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1922,8 +2557,8 @@ export const UpdateApplicationAccess: API.OperationMethod<
   UpdateApplicationAccessError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<UpdateApplicationAccessRequest>,
-  output: __S(95) as any as S.Schema<UpdateApplicationAccessResponse>,
+  input: UpdateApplicationAccessRequest,
+  output: UpdateApplicationAccessResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1937,8 +2572,8 @@ export const UpdateApplicationById: API.OperationMethod<
   UpdateApplicationByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<UpdateApplicationByIdRequest>,
-  output: __S(97) as any as S.Schema<UpdateApplicationByIdResponse>,
+  input: UpdateApplicationByIdRequest,
+  output: UpdateApplicationByIdResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1952,8 +2587,8 @@ export const UpdateApplicationDefinition: API.OperationMethod<
   UpdateApplicationDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<UpdateApplicationDefinitionRequest>,
-  output: __S(99) as any as S.Schema<UpdateApplicationDefinitionResponse>,
+  input: UpdateApplicationDefinitionRequest,
+  output: UpdateApplicationDefinitionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1967,8 +2602,8 @@ export const UpdateJitRequest: API.OperationMethod<
   UpdateJitRequestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<UpdateJitRequestRequest>,
-  output: __S(101) as any as S.Schema<UpdateJitRequestResponse>,
+  input: UpdateJitRequestRequest,
+  output: UpdateJitRequestResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1998,19 +2633,19 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ApplicationAuthorization" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(ApplicationAuthorization);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
+          name: ApplicationDefinitionArtifactName,
           uri: S.String,
-          type: S.String,
+          type: ApplicationArtifactType,
         }),
       ).annotate({
         identifier: "ApplicationDefinitionArtifact",
       });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(ApplicationDefinitionArtifact);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2020,7 +2655,7 @@ function __c0(j: number): any {
         identifier: "ApplicationNotificationEndpoint",
       });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(ApplicationNotificationEndpoint);
   }
 }
 function __c1(j: number): any {
@@ -2028,7 +2663,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          notificationEndpoints: __S(7),
+          notificationEndpoints: ApplicationNotificationPolicyNotificationEndpointsList,
         }),
       ).annotate({
         identifier: "ApplicationNotificationPolicy",
@@ -2040,8 +2675,10 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          allowedActions: S.optional(__S(9)),
-          allowedDataActions: S.optional(__S(10)),
+          allowedActions: S.optional(ApplicationPackageLockingPolicyDefinitionAllowedActionsList),
+          allowedDataActions: S.optional(
+            ApplicationPackageLockingPolicyDefinitionAllowedDataActionsList,
+          ),
         }),
       ).annotate({
         identifier: "ApplicationPackageLockingPolicyDefinition",
@@ -2049,7 +2686,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          deploymentMode: S.String,
+          deploymentMode: DeploymentMode,
         }),
       ).annotate({
         identifier: "ApplicationDeploymentPolicy",
@@ -2057,7 +2694,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(S.String),
+          mode: S.optional(ApplicationManagementMode),
         }),
       ).annotate({
         identifier: "ApplicationManagementPolicy",
@@ -2071,7 +2708,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ApplicationPolicy" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(ApplicationPolicy);
   }
 }
 function __c2(j: number): any {
@@ -2079,21 +2716,21 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          lockLevel: S.String,
+          lockLevel: ApplicationLockLevel,
           displayName: S.optional(S.String),
           isEnabled: S.optional(S.Boolean),
-          authorizations: S.optional(__S(3)),
-          artifacts: S.optional(__S(5)),
+          authorizations: S.optional(ApplicationDefinitionPropertiesAuthorizationsList),
+          artifacts: S.optional(ApplicationDefinitionPropertiesArtifactsList),
           description: S.optional(S.String),
           packageFileUri: S.optional(S.String),
           storageAccountId: S.optional(S.String),
           mainTemplate: S.optional(S.Unknown),
           createUiDefinition: S.optional(S.Unknown),
-          notificationPolicy: S.optional(__S(8)),
-          lockingPolicy: S.optional(__S(11)),
-          deploymentPolicy: S.optional(__S(12)),
-          managementPolicy: S.optional(__S(13)),
-          policies: S.optional(__S(15)),
+          notificationPolicy: S.optional(ApplicationNotificationPolicy),
+          lockingPolicy: S.optional(ApplicationPackageLockingPolicyDefinition),
+          deploymentPolicy: S.optional(ApplicationDeploymentPolicy),
+          managementPolicy: S.optional(ApplicationManagementPolicy),
+          policies: S.optional(ApplicationDefinitionPropertiesPoliciesList),
         }),
       ).annotate({
         identifier: "ApplicationDefinitionProperties",
@@ -2105,10 +2742,10 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           applicationDefinitionName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(ApplicationDefinitionsCreateOrUpdateRequestTagsMap),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1)),
-          properties: __S(16),
+          sku: S.optional(Sku),
+          properties: ApplicationDefinitionProperties,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2124,10 +2761,14 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(
+            ApplicationDefinitionsCreateOrUpdateResponseSystemDataCreatedByType,
+          ),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(
+            ApplicationDefinitionsCreateOrUpdateResponseSystemDataLastModifiedByType,
+          ),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -2140,11 +2781,11 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          systemData: S.optional(__S(18)),
+          tags: S.optional(ApplicationDefinitionsCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(ApplicationDefinitionsCreateOrUpdateResponseSystemData),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1)),
-          properties: __S(16),
+          sku: S.optional(Sku),
+          properties: ApplicationDefinitionProperties,
         }),
       ).annotate({
         identifier: "ApplicationDefinitionsCreateOrUpdateResponse",
@@ -2153,18 +2794,18 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: S.optional(S.String),
+          type: S.optional(JitApproverDefinitionType),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "JitApproverDefinition" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(JitApproverDefinition);
     case 6:
       return S.suspend(() =>
         S.Struct({
           jitAccessEnabled: S.Boolean,
-          jitApprovalMode: S.optional(S.String),
-          jitApprovers: S.optional(__S(21)),
+          jitApprovalMode: S.optional(JitApprovalMode),
+          jitApprovers: S.optional(ApplicationJitAccessPolicyJitApproversList),
           maximumJitAccessDuration: S.optional(S.String),
         }),
       ).annotate({
@@ -2176,7 +2817,7 @@ function __c2(j: number): any {
           managedResourceGroupId: S.optional(S.String),
           applicationDefinitionId: S.optional(S.String),
           parameters: S.optional(S.Unknown),
-          jitAccessPolicy: S.optional(__S(22)),
+          jitAccessPolicy: S.optional(ApplicationJitAccessPolicy),
         }),
       ).annotate({
         identifier: "ApplicationPropertiesInput",
@@ -2200,12 +2841,12 @@ function __c3(j: number): any {
         identifier: "UserAssignedResourceIdentityInput",
       });
     case 2:
-      return S.Record(S.String, __S(25));
+      return S.Record(S.String, UserAssignedResourceIdentityInput);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(26)),
+          type: S.optional(IdentityInputType),
+          userAssignedIdentities: S.optional(IdentityInputUserAssignedIdentitiesMap),
         }),
       ).annotate({ identifier: "IdentityInput" });
     case 4:
@@ -2215,13 +2856,13 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           applicationName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(ApplicationsCreateOrUpdateRequestTagsMap),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1)),
-          properties: __S(23),
-          plan: S.optional(__S(24)),
+          sku: S.optional(Sku),
+          properties: ApplicationPropertiesInput,
+          plan: S.optional(Plan),
           kind: S.String,
-          identity: S.optional(__S(27)),
+          identity: S.optional(IdentityInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2237,10 +2878,12 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(ApplicationsCreateOrUpdateResponseSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(
+            ApplicationsCreateOrUpdateResponseSystemDataLastModifiedByType,
+          ),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -2280,13 +2923,13 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
+          name: ApplicationArtifactName,
           uri: S.String,
-          type: S.String,
+          type: ApplicationArtifactType,
         }),
       ).annotate({ identifier: "ApplicationArtifact" });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(ApplicationArtifact);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2302,17 +2945,17 @@ function __c4(j: number): any {
           applicationDefinitionId: S.optional(S.String),
           parameters: S.optional(S.Unknown),
           outputs: S.optional(S.Unknown),
-          provisioningState: S.optional(S.String),
-          billingDetails: S.optional(__S(30)),
-          jitAccessPolicy: S.optional(__S(22)),
+          provisioningState: S.optional(ProvisioningState),
+          billingDetails: S.optional(ApplicationBillingDetailsDefinition),
+          jitAccessPolicy: S.optional(ApplicationJitAccessPolicy),
           publisherTenantId: S.optional(S.String),
-          authorizations: S.optional(__S(3)),
-          managementMode: S.optional(S.String),
-          customerSupport: S.optional(__S(31)),
-          supportUrls: S.optional(__S(32)),
-          artifacts: S.optional(__S(34)),
-          createdBy: S.optional(__S(35)),
-          updatedBy: S.optional(__S(35)),
+          authorizations: S.optional(ApplicationPropertiesAuthorizationsList),
+          managementMode: S.optional(ApplicationManagementMode),
+          customerSupport: S.optional(ApplicationPackageContact),
+          supportUrls: S.optional(ApplicationPackageSupportUrls),
+          artifacts: S.optional(ApplicationPropertiesArtifactsList),
+          createdBy: S.optional(ApplicationClientDetails),
+          updatedBy: S.optional(ApplicationClientDetails),
         }),
       ).annotate({ identifier: "ApplicationProperties" });
     case 5:
@@ -2325,14 +2968,14 @@ function __c4(j: number): any {
         identifier: "UserAssignedResourceIdentity",
       });
     case 6:
-      return S.Record(S.String, __S(37));
+      return S.Record(S.String, UserAssignedResourceIdentity);
     case 7:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(38)),
+          type: S.optional(IdentityType),
+          userAssignedIdentities: S.optional(IdentityUserAssignedIdentitiesMap),
         }),
       ).annotate({ identifier: "Identity" });
   }
@@ -2346,14 +2989,14 @@ function __c5(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          systemData: S.optional(__S(29)),
+          tags: S.optional(ApplicationsCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(ApplicationsCreateOrUpdateResponseSystemData),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1)),
-          properties: __S(36),
-          plan: S.optional(__S(24)),
+          sku: S.optional(Sku),
+          properties: ApplicationProperties,
+          plan: S.optional(Plan),
           kind: S.String,
-          identity: S.optional(__S(39)),
+          identity: S.optional(Identity),
         }),
       ).annotate({
         identifier: "ApplicationsCreateOrUpdateResponse",
@@ -2363,13 +3006,13 @@ function __c5(j: number): any {
         S.Struct({
           applicationId: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(ApplicationsCreateOrUpdateByIdRequestTagsMap),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1)),
-          properties: __S(23),
-          plan: S.optional(__S(24)),
+          sku: S.optional(Sku),
+          properties: ApplicationPropertiesInput,
+          plan: S.optional(Plan),
           kind: S.String,
-          identity: S.optional(__S(27)),
+          identity: S.optional(IdentityInput),
         }).pipe(
           T.Http({ method: "PUT", uri: "/{applicationId+}", code: 200, apiVersion: "2021-07-01" }),
         ),
@@ -2383,14 +3026,14 @@ function __c5(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          systemData: S.optional(__S(18)),
+          tags: S.optional(ApplicationsCreateOrUpdateByIdResponseTagsMap),
+          systemData: S.optional(ApplicationsCreateOrUpdateByIdResponseSystemData),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1)),
-          properties: __S(36),
-          plan: S.optional(__S(24)),
+          sku: S.optional(Sku),
+          properties: ApplicationProperties,
+          plan: S.optional(Plan),
           kind: S.String,
-          identity: S.optional(__S(39)),
+          identity: S.optional(Identity),
         }),
       ).annotate({
         identifier: "ApplicationsCreateOrUpdateByIdResponse",
@@ -2487,14 +3130,14 @@ function __c6(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          systemData: S.optional(__S(29)),
+          tags: S.optional(GetApplicationResponseTagsMap),
+          systemData: S.optional(GetApplicationResponseSystemData),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1)),
-          properties: __S(36),
-          plan: S.optional(__S(24)),
+          sku: S.optional(Sku),
+          properties: ApplicationProperties,
+          plan: S.optional(Plan),
           kind: S.String,
-          identity: S.optional(__S(39)),
+          identity: S.optional(Identity),
         }),
       ).annotate({ identifier: "GetApplicationResponse" });
     case 2:
@@ -2514,14 +3157,14 @@ function __c6(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          systemData: S.optional(__S(29)),
+          tags: S.optional(GetApplicationByIdResponseTagsMap),
+          systemData: S.optional(GetApplicationByIdResponseSystemData),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1)),
-          properties: __S(36),
-          plan: S.optional(__S(24)),
+          sku: S.optional(Sku),
+          properties: ApplicationProperties,
+          plan: S.optional(Plan),
           kind: S.String,
-          identity: S.optional(__S(39)),
+          identity: S.optional(Identity),
         }),
       ).annotate({
         identifier: "GetApplicationByIdResponse",
@@ -2550,11 +3193,11 @@ function __c6(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          systemData: S.optional(__S(29)),
+          tags: S.optional(GetApplicationDefinitionResponseTagsMap),
+          systemData: S.optional(GetApplicationDefinitionResponseSystemData),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1)),
-          properties: __S(16),
+          sku: S.optional(Sku),
+          properties: ApplicationDefinitionProperties,
         }),
       ).annotate({
         identifier: "GetApplicationDefinitionResponse",
@@ -2577,7 +3220,7 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: JitSchedulingType,
           duration: S.String,
           startTime: S.String,
         }),
@@ -2591,12 +3234,12 @@ function __c7(j: number): any {
         S.Struct({
           applicationResourceId: S.String,
           publisherTenantId: S.optional(S.String),
-          jitAuthorizationPolicies: __S(3),
-          jitSchedulingPolicy: __S(55),
-          provisioningState: S.optional(S.String),
-          jitRequestState: S.optional(S.String),
-          createdBy: S.optional(__S(35)),
-          updatedBy: S.optional(__S(35)),
+          jitAuthorizationPolicies: JitRequestPropertiesJitAuthorizationPoliciesList,
+          jitSchedulingPolicy: JitSchedulingPolicy,
+          provisioningState: S.optional(ProvisioningState),
+          jitRequestState: S.optional(JitRequestState),
+          createdBy: S.optional(ApplicationClientDetails),
+          updatedBy: S.optional(ApplicationClientDetails),
         }),
       ).annotate({ identifier: "JitRequestProperties" });
     case 1:
@@ -2606,17 +3249,17 @@ function __c7(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          systemData: S.optional(__S(29)),
-          properties: S.optional(__S(56)),
+          tags: S.optional(GetJitRequestResponseTagsMap),
+          systemData: S.optional(GetJitRequestResponseSystemData),
+          properties: S.optional(JitRequestProperties),
         }),
       ).annotate({ identifier: "GetJitRequestResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           applicationResourceId: S.String,
-          jitAuthorizationPolicies: __S(3),
-          jitSchedulingPolicy: __S(55),
+          jitAuthorizationPolicies: JitRequestPropertiesInputJitAuthorizationPoliciesList,
+          jitSchedulingPolicy: JitSchedulingPolicy,
         }),
       ).annotate({
         identifier: "JitRequestPropertiesInput",
@@ -2628,8 +3271,8 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           jitRequestName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          properties: S.optional(__S(58)),
+          tags: S.optional(JitRequestsCreateOrUpdateRequestTagsMap),
+          properties: S.optional(JitRequestPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2648,9 +3291,9 @@ function __c7(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          systemData: S.optional(__S(29)),
-          properties: S.optional(__S(56)),
+          tags: S.optional(JitRequestsCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(JitRequestsCreateOrUpdateResponseSystemData),
+          properties: S.optional(JitRequestProperties),
         }),
       ).annotate({
         identifier: "JitRequestsCreateOrUpdateResponse",
@@ -2673,11 +3316,11 @@ function __c7(j: number): any {
         identifier: "ListApplicationAllowedUpgradePlansRequest",
       });
     case 6:
-      return S.Array(__S(24));
+      return S.Array(Plan);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(62)),
+          value: S.optional(AllowedUpgradePlansResultValueList),
         }),
       ).annotate({
         identifier: "AllowedUpgradePlansResult",
@@ -2706,10 +3349,10 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(ApplicationSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(ApplicationSystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationSystemData" });
@@ -2720,22 +3363,22 @@ function __c8(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          systemData: S.optional(__S(65)),
+          tags: S.optional(ApplicationTagsMap),
+          systemData: S.optional(ApplicationSystemData),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1)),
-          properties: __S(36),
-          plan: S.optional(__S(24)),
+          sku: S.optional(Sku),
+          properties: ApplicationProperties,
+          plan: S.optional(Plan),
           kind: S.String,
-          identity: S.optional(__S(39)),
+          identity: S.optional(Identity),
         }),
       ).annotate({ identifier: "Application" });
     case 3:
-      return S.Array(__S(66));
+      return S.Array(Application);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(67)),
+          value: S.optional(ApplicationListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationListResult" });
@@ -2777,11 +3420,11 @@ function __c8(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          systemData: S.optional(__S(29)),
+          tags: S.optional(ApplicationDefinitionTagsMap),
+          systemData: S.optional(ApplicationDefinitionSystemData),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1)),
-          properties: __S(16),
+          sku: S.optional(Sku),
+          properties: ApplicationDefinitionProperties,
         }),
       ).annotate({ identifier: "ApplicationDefinition" });
   }
@@ -2789,11 +3432,11 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71));
+      return S.Array(ApplicationDefinition);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(72)),
+          value: S.optional(ApplicationDefinitionListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2821,7 +3464,9 @@ function __c9(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           applicationName: S.String.pipe(T.Label()),
           authorizationAudience: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(9)),
+          userAssignedIdentities: S.optional(
+            ListApplicationTokensRequestUserAssignedIdentitiesList,
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2846,11 +3491,11 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "ManagedIdentityToken" });
     case 5:
-      return S.Array(__S(76));
+      return S.Array(ManagedIdentityToken);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(77)),
+          value: S.optional(ManagedIdentityTokenResultValueList),
         }),
       ).annotate({
         identifier: "ManagedIdentityTokenResult",
@@ -2882,17 +3527,17 @@ function __c10(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          systemData: S.optional(__S(29)),
-          properties: S.optional(__S(56)),
+          tags: S.optional(JitRequestDefinitionTagsMap),
+          systemData: S.optional(JitRequestDefinitionSystemData),
+          properties: S.optional(JitRequestProperties),
         }),
       ).annotate({ identifier: "JitRequestDefinition" });
     case 1:
-      return S.Array(__S(80));
+      return S.Array(JitRequestDefinition);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(81)),
+          value: S.optional(JitRequestDefinitionListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2938,13 +3583,13 @@ function __c10(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(85)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 7:
-      return S.Array(__S(86));
+      return S.Array(Operation);
   }
 }
 function __c11(j: number): any {
@@ -2952,7 +3597,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(87)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -2990,13 +3635,13 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           applicationName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateApplicationRequestTagsMap),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1)),
-          properties: S.optional(__S(23)),
-          plan: S.optional(__S(90)),
+          sku: S.optional(Sku),
+          properties: S.optional(ApplicationPropertiesInput),
+          plan: S.optional(PlanPatchable),
           kind: S.optional(S.String),
-          identity: S.optional(__S(27)),
+          identity: S.optional(IdentityInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3013,14 +3658,14 @@ function __c11(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          systemData: S.optional(__S(29)),
+          tags: S.optional(UpdateApplicationResponseTagsMap),
+          systemData: S.optional(UpdateApplicationResponseSystemData),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1)),
-          properties: S.optional(__S(36)),
-          plan: S.optional(__S(90)),
+          sku: S.optional(Sku),
+          properties: S.optional(ApplicationProperties),
+          plan: S.optional(PlanPatchable),
           kind: S.optional(S.String),
-          identity: S.optional(__S(39)),
+          identity: S.optional(Identity),
         }),
       ).annotate({
         identifier: "UpdateApplicationResponse",
@@ -3041,9 +3686,9 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           applicationName: S.String.pipe(T.Label()),
           approver: S.optional(S.String),
-          metadata: __S(93),
-          status: S.String,
-          subStatus: S.String,
+          metadata: JitRequestMetadata,
+          status: Status,
+          subStatus: SubStatus,
         }).pipe(
           T.Http({
             method: "POST",
@@ -3068,13 +3713,13 @@ function __c12(j: number): any {
         S.Struct({
           applicationId: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateApplicationByIdRequestTagsMap),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1)),
-          properties: S.optional(__S(23)),
-          plan: S.optional(__S(90)),
+          sku: S.optional(Sku),
+          properties: S.optional(ApplicationPropertiesInput),
+          plan: S.optional(PlanPatchable),
           kind: S.optional(S.String),
-          identity: S.optional(__S(27)),
+          identity: S.optional(IdentityInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3093,14 +3738,14 @@ function __c12(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          systemData: S.optional(__S(29)),
+          tags: S.optional(UpdateApplicationByIdResponseTagsMap),
+          systemData: S.optional(UpdateApplicationByIdResponseSystemData),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1)),
-          properties: S.optional(__S(36)),
-          plan: S.optional(__S(90)),
+          sku: S.optional(Sku),
+          properties: S.optional(ApplicationProperties),
+          plan: S.optional(PlanPatchable),
           kind: S.optional(S.String),
-          identity: S.optional(__S(39)),
+          identity: S.optional(Identity),
         }),
       ).annotate({
         identifier: "UpdateApplicationByIdResponse",
@@ -3111,7 +3756,7 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           applicationDefinitionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateApplicationDefinitionRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3130,11 +3775,11 @@ function __c12(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          systemData: S.optional(__S(29)),
+          tags: S.optional(UpdateApplicationDefinitionResponseTagsMap),
+          systemData: S.optional(UpdateApplicationDefinitionResponseSystemData),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1)),
-          properties: __S(16),
+          sku: S.optional(Sku),
+          properties: ApplicationDefinitionProperties,
         }),
       ).annotate({
         identifier: "UpdateApplicationDefinitionResponse",
@@ -3145,7 +3790,7 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           jitRequestName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateJitRequestRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3162,45 +3807,10 @@ function __c12(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          systemData: S.optional(__S(29)),
-          properties: S.optional(__S(56)),
+          tags: S.optional(UpdateJitRequestResponseTagsMap),
+          systemData: S.optional(UpdateJitRequestResponseSystemData),
+          properties: S.optional(JitRequestProperties),
         }),
       ).annotate({ identifier: "UpdateJitRequestResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
   }
 }

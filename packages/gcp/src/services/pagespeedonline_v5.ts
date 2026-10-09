@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -46,10 +44,19 @@ export type RunpagespeedPagespeedapiCategoryEnum =
   | "PWA"
   | "SEO"
   | "AGENTIC_BROWSING";
+const RunpagespeedPagespeedapiCategoryEnum = S.String;
+
 export type RunpagespeedPagespeedapiCategoryEnumList = Array<
   RunpagespeedPagespeedapiCategoryEnum | (string & {})
 >;
+const RunpagespeedPagespeedapiCategoryEnumList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<RunpagespeedPagespeedapiCategoryEnumList>;
+
 export type RunpagespeedPagespeedapiStrategyEnum = "STRATEGY_UNSPECIFIED" | "DESKTOP" | "MOBILE";
+const RunpagespeedPagespeedapiStrategyEnum = S.String;
+
 export interface RunpagespeedPagespeedapiRequest {
   /** The captcha token passed when filling out a captcha. */
   captchaToken?: string;
@@ -66,6 +73,11 @@ export interface RunpagespeedPagespeedapiRequest {
   /** Campaign source for analytics. */
   utm_source?: string;
 }
+const RunpagespeedPagespeedapiRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<RunpagespeedPagespeedapiRequest>;
+
 /** The Pagespeed Version object. */
 export interface PagespeedVersion {
   /** The minor version number of PageSpeed used to generate these results. */
@@ -73,12 +85,18 @@ export interface PagespeedVersion {
   /** The major version number of PageSpeed used to generate these results. */
   major?: string;
 }
+const PagespeedVersion = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<PagespeedVersion>;
+
 /** Message containing the performance timing data for the Lighthouse run. */
 export interface Timing {
   /** The total duration of Lighthouse's run. */
   total?: number;
 }
+const Timing = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Timing>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<StringList>;
+
 /** A light reference to an audit by id, used to group and weight audits in a given category. */
 export interface AuditRefs {
   /** The category group that the audit belongs to (optional). */
@@ -92,11 +110,17 @@ export interface AuditRefs {
   /** The weight this audit's score has on the overall category score. */
   weight?: number;
 }
+const AuditRefs = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<AuditRefs>;
+
 export type AuditRefsList = Array<AuditRefs>;
+const AuditRefsList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AuditRefsList>;
+
 export type LighthouseCategoryV5CategoryScoreDisplayModeEnum =
   | "CATEGORY_SCORE_DISPLAY_MODE_UNSPECIFIED"
   | "GAUGE"
   | "FRACTION";
+const LighthouseCategoryV5CategoryScoreDisplayModeEnum = S.String;
+
 /** A Lighthouse category. */
 export interface LighthouseCategoryV5 {
   /** An array of references to all the audit members of this category. */
@@ -114,6 +138,8 @@ export interface LighthouseCategoryV5 {
   /** The human-friendly name of the category. */
   title?: string;
 }
+const LighthouseCategoryV5 = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<LighthouseCategoryV5>;
+
 /** The categories in a Lighthouse run. */
 export interface Categories {
   /** The best practices category, containing all best practices related audits. */
@@ -129,7 +155,11 @@ export interface Categories {
   /** The Progressive-Web-App (PWA) category, containing all pwa related audits. This is deprecated in Lighthouse's 12.0 release. */
   pwa?: LighthouseCategoryV5;
 }
+const Categories = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Categories>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DocumentMap>;
+
 /** The metric savings of the audit. */
 export interface MetricSavings {
   /** Optional. Optional numeric value representing the audit's savings for the LCP metric. */
@@ -143,6 +173,8 @@ export interface MetricSavings {
   /** Optional. Optional numeric value representing the audit's savings for the CLS metric. */
   CLS?: number;
 }
+const MetricSavings = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<MetricSavings>;
+
 /** An audit's result object in a Lighthouse result. */
 export interface LighthouseAuditResultV5 {
   /** The value that should be displayed on the UI for this audit. */
@@ -172,8 +204,20 @@ export interface LighthouseAuditResultV5 {
   /** An error message from a thrown error inside the audit. */
   errorMessage?: string;
 }
+const LighthouseAuditResultV5 = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<LighthouseAuditResultV5>;
+
 export type LighthouseAuditResultV5Map = { [key: string]: LighthouseAuditResultV5 | undefined };
+const LighthouseAuditResultV5Map = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<LighthouseAuditResultV5Map>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<StringMap>;
+
 /** Message containing Stack Pack information. */
 export interface StackPack {
   /** The stack pack title. */
@@ -185,7 +229,11 @@ export interface StackPack {
   /** The stack pack id. */
   id?: string;
 }
+const StackPack = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<StackPack>;
+
 export type StackPackList = Array<StackPack>;
+const StackPackList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<StackPackList>;
+
 /** Message containing environment configuration for a Lighthouse run. */
 export interface Environment {
   /** The benchmark index number that indicates rough device class. */
@@ -197,6 +245,8 @@ export interface Environment {
   /** The version of libraries with which these results were generated. Ex: axe-core. */
   credits?: StringMap;
 }
+const Environment = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Environment>;
+
 /** Message containing a category */
 export interface CategoryGroupV5 {
   /** The human readable title of the group */
@@ -204,8 +254,14 @@ export interface CategoryGroupV5 {
   /** The description of what the category is grouping */
   description?: string;
 }
+const CategoryGroupV5 = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<CategoryGroupV5>;
+
 export type CategoryGroupV5Map = { [key: string]: CategoryGroupV5 | undefined };
+const CategoryGroupV5Map = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CategoryGroupV5Map>;
+
 export type DocumentList = Array<unknown>;
+const DocumentList = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DocumentList>;
+
 /** Message containing an Entity. */
 export interface LhrEntity {
   /** Optional. An optional flag indicating if the entity is the first party. */
@@ -221,7 +277,11 @@ export interface LhrEntity {
   /** Required. A list of URL origin strings that belong to this entity. */
   origins?: StringList;
 }
+const LhrEntity = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<LhrEntity>;
+
 export type LhrEntityList = Array<LhrEntity>;
+const LhrEntityList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<LhrEntityList>;
+
 /** Message containing the configuration settings for the Lighthouse run. */
 export interface ConfigSettings {
   /** The locale setting. */
@@ -235,6 +295,8 @@ export interface ConfigSettings {
   /** The form factor the emulation should use. This field is deprecated, form_factor should be used instead. */
   emulatedFormFactor?: string;
 }
+const ConfigSettings = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ConfigSettings>;
+
 /** Message holding the formatted strings used in the renderer. */
 export interface RendererFormattedStrings {
   /** The label for the initial request in a critical request chain. */
@@ -334,11 +396,18 @@ export interface RendererFormattedStrings {
   /** Text link pointing to the Lighthouse scoring calculator. This link immediately follows a sentence stating the performance score is calculated from the perf metrics. */
   calculatorLink?: string;
 }
+const RendererFormattedStrings = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<RendererFormattedStrings>;
+
 /** Message containing the i18n data for the LHR - Version 1. */
 export interface I18n {
   /** Internationalized strings that are formatted to the locale in configSettings. */
   rendererFormattedStrings?: RendererFormattedStrings;
 }
+const I18n = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<I18n>;
+
 /** Message containing a runtime error config. */
 export interface RuntimeError {
   /** A human readable message explaining the error code. */
@@ -346,6 +415,8 @@ export interface RuntimeError {
   /** The enumerated Lighthouse Error code. */
   code?: string;
 }
+const RuntimeError = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<RuntimeError>;
+
 /** The Lighthouse result object. */
 export interface LighthouseResultV5 {
   /** Timing information for this LHR. */
@@ -387,6 +458,8 @@ export interface LighthouseResultV5 {
   /** URL displayed on the page after Lighthouse finishes. */
   finalDisplayedUrl?: string;
 }
+const LighthouseResultV5 = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<LighthouseResultV5>;
+
 /** A proportion of data in the total distribution, bucketed by a min/max percentage. Each bucket's range is bounded by min <= x < max, In millisecond. */
 export interface Bucket {
   /** The proportion of data in this bucket. */
@@ -396,7 +469,11 @@ export interface Bucket {
   /** Lower bound for a bucket's range. */
   min?: number;
 }
+const Bucket = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Bucket>;
+
 export type BucketList = Array<Bucket>;
+const BucketList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<BucketList>;
+
 /** A CrUX metric object for a single metric and form factor. */
 export interface UserPageLoadMetricV5 {
   /** Metric distributions. Proportions should sum up to 1. */
@@ -412,7 +489,14 @@ export interface UserPageLoadMetricV5 {
   /** Identifies the form factor of the metric being collected. */
   formFactor?: string;
 }
+const UserPageLoadMetricV5 = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<UserPageLoadMetricV5>;
+
 export type UserPageLoadMetricV5Map = { [key: string]: UserPageLoadMetricV5 | undefined };
+const UserPageLoadMetricV5Map = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<UserPageLoadMetricV5Map>;
+
 /** The CrUX loading experience object that contains CrUX data breakdowns. */
 export interface PagespeedApiLoadingExperienceV5 {
   /** True if the result is an origin fallback from a page, false otherwise. */
@@ -426,6 +510,11 @@ export interface PagespeedApiLoadingExperienceV5 {
   /** The map of . */
   metrics?: UserPageLoadMetricV5Map;
 }
+const PagespeedApiLoadingExperienceV5 = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<PagespeedApiLoadingExperienceV5>;
+
 /** The Pagespeed API response object. */
 export interface PagespeedApiPagespeedResponseV5 {
   /** The version of PageSpeed used to generate these results. */
@@ -445,6 +534,11 @@ export interface PagespeedApiPagespeedResponseV5 {
   /** Metrics of end users' page loading experience. */
   loadingExperience?: PagespeedApiLoadingExperienceV5;
 }
+const PagespeedApiPagespeedResponseV5 = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<PagespeedApiPagespeedResponseV5>;
+
 export type RunpagespeedPagespeedapiError = NotFound | Forbidden | GcpOpError;
 /** Runs PageSpeed analysis on the page at the specified URL, and returns PageSpeed scores, a list of suggestions to make that page faster, and other information. */
 export const runpagespeedPagespeedapi: API.OperationMethod<
@@ -453,8 +547,8 @@ export const runpagespeedPagespeedapi: API.OperationMethod<
   RunpagespeedPagespeedapiError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<RunpagespeedPagespeedapiRequest>,
-  output: __S(32) as any as S.Schema<PagespeedApiPagespeedResponseV5>,
+  input: RunpagespeedPagespeedapiRequest,
+  output: PagespeedApiPagespeedResponseV5,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -464,15 +558,15 @@ export const runpagespeedPagespeedapi: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(RunpagespeedPagespeedapiCategoryEnum);
     case 1:
       return S.suspend(() =>
         S.Struct({
           captchaToken: S.optional(S.String.pipe(T.Query())),
           url: S.String.pipe(T.Query()),
-          category: S.optional(__S(0).pipe(T.Query())),
+          category: S.optional(RunpagespeedPagespeedapiCategoryEnumList.pipe(T.Query())),
           locale: S.optional(S.String.pipe(T.Query())),
-          strategy: S.optional(S.String.pipe(T.Query())),
+          strategy: S.optional(RunpagespeedPagespeedapiStrategyEnum.pipe(T.Query())),
           utm_campaign: S.optional(S.String.pipe(T.Query())),
           utm_source: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -505,18 +599,18 @@ function __c0(j: number): any {
         S.Struct({
           group: S.optional(S.String),
           acronym: S.optional(S.String),
-          relevantAudits: S.optional(__S(4)),
+          relevantAudits: S.optional(StringList),
           id: S.optional(S.String),
           weight: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AuditRefs" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(AuditRefs);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          auditRefs: S.optional(__S(6)),
-          categoryScoreDisplayMode: S.optional(S.String),
+          auditRefs: S.optional(AuditRefsList),
+          categoryScoreDisplayMode: S.optional(LighthouseCategoryV5CategoryScoreDisplayModeEnum),
           description: S.optional(S.String),
           score: S.optional(S.Unknown),
           manualDescription: S.optional(S.String),
@@ -531,12 +625,12 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          "best-practices": S.optional(__S(7)),
-          "agentic-browsing": S.optional(__S(7)),
-          performance: S.optional(__S(7)),
-          seo: S.optional(__S(7)),
-          accessibility: S.optional(__S(7)),
-          pwa: S.optional(__S(7)),
+          "best-practices": S.optional(LighthouseCategoryV5),
+          "agentic-browsing": S.optional(LighthouseCategoryV5),
+          performance: S.optional(LighthouseCategoryV5),
+          seo: S.optional(LighthouseCategoryV5),
+          accessibility: S.optional(LighthouseCategoryV5),
+          pwa: S.optional(LighthouseCategoryV5),
         }),
       ).annotate({ identifier: "Categories" });
     case 1:
@@ -556,10 +650,10 @@ function __c1(j: number): any {
         S.Struct({
           displayValue: S.optional(S.String),
           warnings: S.optional(S.Unknown),
-          details: S.optional(__S(9)),
+          details: S.optional(DocumentMap),
           title: S.optional(S.String),
           scoreDisplayMode: S.optional(S.String),
-          metricSavings: S.optional(__S(10)),
+          metricSavings: S.optional(MetricSavings),
           numericUnit: S.optional(S.String),
           explanation: S.optional(S.String),
           score: S.optional(S.Unknown),
@@ -570,20 +664,20 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "LighthouseAuditResultV5" });
     case 4:
-      return S.Record(S.String, __S(11));
+      return S.Record(S.String, LighthouseAuditResultV5);
     case 5:
       return S.Record(S.String, S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
-          descriptions: S.optional(__S(13)),
+          descriptions: S.optional(StringMap),
           iconDataURL: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "StackPack" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(StackPack);
   }
 }
 function __c2(j: number): any {
@@ -594,7 +688,7 @@ function __c2(j: number): any {
           benchmarkIndex: S.optional(S.Number),
           networkUserAgent: S.optional(S.String),
           hostUserAgent: S.optional(S.String),
-          credits: S.optional(__S(13)),
+          credits: S.optional(StringMap),
         }),
       ).annotate({ identifier: "Environment" });
     case 1:
@@ -605,7 +699,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "CategoryGroupV5" });
     case 2:
-      return S.Record(S.String, __S(17));
+      return S.Record(S.String, CategoryGroupV5);
     case 3:
       return S.Array(S.Unknown);
     case 4:
@@ -616,11 +710,11 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           isUnrecognized: S.optional(S.Boolean),
           homepage: S.optional(S.String),
-          origins: S.optional(__S(4)),
+          origins: S.optional(StringList),
         }),
       ).annotate({ identifier: "LhrEntity" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(LhrEntity);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -691,7 +785,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          rendererFormattedStrings: S.optional(__S(23)),
+          rendererFormattedStrings: S.optional(RendererFormattedStrings),
         }),
       ).annotate({ identifier: "I18n" });
     case 1:
@@ -704,23 +798,23 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          timing: S.optional(__S(3)),
-          categories: S.optional(__S(8)),
-          audits: S.optional(__S(12)),
+          timing: S.optional(Timing),
+          categories: S.optional(Categories),
+          audits: S.optional(LighthouseAuditResultV5Map),
           lighthouseVersion: S.optional(S.String),
-          stackPacks: S.optional(__S(15)),
+          stackPacks: S.optional(StackPackList),
           fullPageScreenshot: S.optional(S.Unknown),
-          environment: S.optional(__S(16)),
+          environment: S.optional(Environment),
           mainDocumentUrl: S.optional(S.String),
-          categoryGroups: S.optional(__S(18)),
+          categoryGroups: S.optional(CategoryGroupV5Map),
           userAgent: S.optional(S.String),
-          runWarnings: S.optional(__S(19)),
-          entities: S.optional(__S(21)),
+          runWarnings: S.optional(DocumentList),
+          entities: S.optional(LhrEntityList),
           requestedUrl: S.optional(S.String),
           finalUrl: S.optional(S.String),
-          configSettings: S.optional(__S(22)),
-          i18n: S.optional(__S(24)),
-          runtimeError: S.optional(__S(25)),
+          configSettings: S.optional(ConfigSettings),
+          i18n: S.optional(I18n),
+          runtimeError: S.optional(RuntimeError),
           fetchTime: S.optional(S.String),
           finalDisplayedUrl: S.optional(S.String),
         }),
@@ -734,11 +828,11 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "Bucket" });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(Bucket);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          distributions: S.optional(__S(28)),
+          distributions: S.optional(BucketList),
           median: S.optional(S.Number),
           percentile: S.optional(S.Number),
           metricId: S.optional(S.String),
@@ -747,7 +841,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "UserPageLoadMetricV5" });
     case 6:
-      return S.Record(S.String, __S(29));
+      return S.Record(S.String, UserPageLoadMetricV5);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -755,7 +849,7 @@ function __c3(j: number): any {
           initial_url: S.optional(S.String),
           id: S.optional(S.String),
           overall_category: S.optional(S.String),
-          metrics: S.optional(__S(30)),
+          metrics: S.optional(UserPageLoadMetricV5Map),
         }),
       ).annotate({
         identifier: "PagespeedApiLoadingExperienceV5",
@@ -767,36 +861,17 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          version: S.optional(__S(2)),
+          version: S.optional(PagespeedVersion),
           analysisUTCTimestamp: S.optional(S.String),
           id: S.optional(S.String),
           captchaResult: S.optional(S.String),
-          lighthouseResult: S.optional(__S(26)),
-          originLoadingExperience: S.optional(__S(31)),
+          lighthouseResult: S.optional(LighthouseResultV5),
+          originLoadingExperience: S.optional(PagespeedApiLoadingExperienceV5),
           kind: S.optional(S.String),
-          loadingExperience: S.optional(__S(31)),
+          loadingExperience: S.optional(PagespeedApiLoadingExperienceV5),
         }),
       ).annotate({
         identifier: "PagespeedApiPagespeedResponseV5",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -19,8 +17,15 @@ export interface CheckNameAvailabilityRequest {
   /** The resource type. */
   type?: string;
 }
+const CheckNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CheckNameAvailabilityRequest>;
+
 /** The reason why the given name is not available. */
 export type CheckNameAvailabilityResponseReason = "Invalid" | "AlreadyExists";
+const CheckNameAvailabilityResponseReason = S.String;
+
 export interface CheckNameAvailabilityResponse {
   /** Indicates if the resource name is available. */
   nameAvailable?: boolean;
@@ -29,16 +34,34 @@ export interface CheckNameAvailabilityResponse {
   /** Detailed reason why the given name is available. */
   message?: string;
 }
+const CheckNameAvailabilityResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CheckNameAvailabilityResponse>;
+
 /** Resource tags. */
 export type CreateLedgerRequestTagsMap = { [key: string]: string | undefined };
+const CreateLedgerRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateLedgerRequestTagsMap>;
+
 /** Object representing RunningState for Confidential Ledger. */
 export type RunningState = "Active" | "Paused" | "Unknown" | "Pausing" | "Resuming";
+const RunningState = S.String;
+
 /** Type of the ledger. Private means transaction data is encrypted. */
 export type LedgerType = "Unknown" | "Public" | "Private";
+const LedgerType = S.String;
+
 /** SKU associated with the ledger resource */
 export type LedgerSku = "Standard" | "Basic" | "Unknown";
+const LedgerSku = S.String;
+
 /** LedgerRole associated with the Security Principal of Ledger */
 export type LedgerRoleName = "Reader" | "Contributor" | "Administrator";
+const LedgerRoleName = S.String;
+
 /** AAD based security principal with associated Ledger RoleName */
 export interface AADBasedSecurityPrincipal {
   /** UUID/GUID based Principal Id of the Security Principal */
@@ -48,8 +71,18 @@ export interface AADBasedSecurityPrincipal {
   /** LedgerRole associated with the Security Principal of Ledger */
   ledgerRoleName?: LedgerRoleName | (string & {});
 }
+const AADBasedSecurityPrincipal = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AADBasedSecurityPrincipal>;
+
 /** Array of all AAD based Security Principals. */
 export type LedgerPropertiesInputAadBasedSecurityPrincipalsList = Array<AADBasedSecurityPrincipal>;
+const LedgerPropertiesInputAadBasedSecurityPrincipalsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<LedgerPropertiesInputAadBasedSecurityPrincipalsList>;
+
 /** Cert based security principal with Ledger RoleName */
 export interface CertBasedSecurityPrincipal {
   /** Public key of the user cert (.pem or .cer) */
@@ -57,11 +90,23 @@ export interface CertBasedSecurityPrincipal {
   /** LedgerRole associated with the Security Principal of Ledger */
   ledgerRoleName?: LedgerRoleName | (string & {});
 }
+const CertBasedSecurityPrincipal = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CertBasedSecurityPrincipal>;
+
 /** Array of all cert based Security Principals. */
 export type LedgerPropertiesInputCertBasedSecurityPrincipalsList =
   Array<CertBasedSecurityPrincipal>;
+const LedgerPropertiesInputCertBasedSecurityPrincipalsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<LedgerPropertiesInputCertBasedSecurityPrincipalsList>;
+
 /** Object representing the application type of the Confidential Ledger. Defaults to ConfidentialLedger. */
 export type ApplicationType = "ConfidentialLedger" | "CodeTransparency";
+const ApplicationType = S.String;
+
 /** Additional Confidential Ledger properties. */
 export interface LedgerPropertiesInput {
   /** Object representing RunningState for Ledger. */
@@ -91,6 +136,11 @@ export interface LedgerPropertiesInput {
   /** The SCITT Configuration that needs to be set for the Confidential Ledger. */
   scittConfiguration?: string;
 }
+const LedgerPropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<LedgerPropertiesInput>;
+
 export interface CreateLedgerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -105,10 +155,16 @@ export interface CreateLedgerRequest {
   /** Properties of Confidential Ledger Resource. */
   properties?: LedgerPropertiesInput;
 }
+const CreateLedgerRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateLedgerRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -124,8 +180,13 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<SystemData>;
+
 /** Resource tags. */
 export type CreateLedgerResponseTagsMap = { [key: string]: string | undefined };
+const CreateLedgerResponseTagsMap =
+  CreateLedgerRequestTagsMap as any as S.Schema<CreateLedgerResponseTagsMap>;
+
 /** Object representing ProvisioningState for Confidential Ledger. */
 export type ProvisioningState =
   | "Unknown"
@@ -135,12 +196,22 @@ export type ProvisioningState =
   | "Creating"
   | "Deleting"
   | "Updating";
+const ProvisioningState = S.String;
+
 /** Array of all AAD based Security Principals. */
 export type LedgerPropertiesAadBasedSecurityPrincipalsList = Array<AADBasedSecurityPrincipal>;
+const LedgerPropertiesAadBasedSecurityPrincipalsList =
+  LedgerPropertiesInputAadBasedSecurityPrincipalsList as any as S.Schema<LedgerPropertiesAadBasedSecurityPrincipalsList>;
+
 /** Array of all cert based Security Principals. */
 export type LedgerPropertiesCertBasedSecurityPrincipalsList = Array<CertBasedSecurityPrincipal>;
+const LedgerPropertiesCertBasedSecurityPrincipalsList =
+  LedgerPropertiesInputCertBasedSecurityPrincipalsList as any as S.Schema<LedgerPropertiesCertBasedSecurityPrincipalsList>;
+
 /** Object representing the enclave platform for the Confidential Ledger application. Defaults to IntelSgx. */
 export type EnclavePlatform = "IntelSgx" | "AmdSevSnp";
+const EnclavePlatform = S.String;
+
 /** Additional Confidential Ledger properties. */
 export interface LedgerProperties {
   /** Unique name for the Confidential Ledger. */
@@ -182,6 +253,8 @@ export interface LedgerProperties {
   /** The SCITT Configuration that needs to be set for the Confidential Ledger. */
   scittConfiguration?: string;
 }
+const LedgerProperties = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<LedgerProperties>;
+
 export interface CreateLedgerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -198,6 +271,8 @@ export interface CreateLedgerResponse {
   /** Properties of Confidential Ledger Resource. */
   properties?: LedgerProperties;
 }
+const CreateLedgerResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CreateLedgerResponse>;
+
 export interface DeleteLedgerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -206,7 +281,11 @@ export interface DeleteLedgerRequest {
   /** Name of the Confidential Ledger */
   ledgerName: string;
 }
+const DeleteLedgerRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DeleteLedgerRequest>;
+
 export interface DeleteLedgerResponse {}
+const DeleteLedgerResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DeleteLedgerResponse>;
+
 export interface ExportLedgerFileRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -219,11 +298,21 @@ export interface ExportLedgerFileRequest {
   /** SAS URI used to access the Fileshare for exporting ledger files. */
   uri: string;
 }
+const ExportLedgerFileRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ExportLedgerFileRequest>;
+
 /** Object representing the files export response of a Confidential Ledger Resource. */
 export interface ConfidentialLedgerFilesExportResponse {
   /** Response body stating if the ledger files are being exported. */
   message?: string;
 }
+const ConfidentialLedgerFilesExportResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ConfidentialLedgerFilesExportResponse>;
+
 export interface GetLedgerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -232,6 +321,8 @@ export interface GetLedgerRequest {
   /** Name of the Confidential Ledger */
   ledgerName: string;
 }
+const GetLedgerRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetLedgerRequest>;
+
 /** Resource tags. */
 export type GetLedgerResponseTagsMap = { [key: string]: string | undefined };
 export interface GetLedgerResponse {
@@ -250,6 +341,8 @@ export interface GetLedgerResponse {
   /** Properties of Confidential Ledger Resource. */
   properties?: LedgerProperties;
 }
+const GetLedgerResponse = CreateLedgerResponse as any as S.Schema<GetLedgerResponse>;
+
 export interface ListLedgerByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -258,6 +351,11 @@ export interface ListLedgerByResourceGroupRequest {
   /** The filter to apply on the list operation. eg. $filter=ledgerType eq 'Public' */
   _filter?: string;
 }
+const ListLedgerByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListLedgerByResourceGroupRequest>;
+
 /** Resource tags. */
 export type ConfidentialLedgerTagsMap = { [key: string]: string | undefined };
 /** Confidential Ledger. Contains the properties of Confidential Ledger Resource. */
@@ -277,8 +375,15 @@ export interface ConfidentialLedger {
   /** Properties of Confidential Ledger Resource. */
   properties?: LedgerProperties;
 }
+const ConfidentialLedger = CreateLedgerResponse as any as S.Schema<ConfidentialLedger>;
+
 /** The ConfidentialLedger items on this page */
 export type ConfidentialLedgerListValueList = Array<ConfidentialLedger>;
+const ConfidentialLedgerListValueList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ConfidentialLedgerListValueList>;
+
 /** Object that includes an array of Confidential Ledgers and a possible link for next set. */
 export interface ConfidentialLedgerList {
   /** The ConfidentialLedger items on this page */
@@ -286,13 +391,28 @@ export interface ConfidentialLedgerList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ConfidentialLedgerList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ConfidentialLedgerList>;
+
 export interface ListLedgerBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The filter to apply on the list operation. eg. $filter=ledgerType eq 'Public' */
   _filter?: string;
 }
+const ListLedgerBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListLedgerBySubscriptionRequest>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Describes the properties of the Operation. */
 export interface ResourceProviderOperationDisplay {
   /** Name of the resource provider. */
@@ -304,6 +424,11 @@ export interface ResourceProviderOperationDisplay {
   /** Description of the resource provider operation. */
   description?: string;
 }
+const ResourceProviderOperationDisplay = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ResourceProviderOperationDisplay>;
+
 /** Describes the Resource Provider Operation. */
 export interface ResourceProviderOperationDefinition {
   /** Resource provider operation name. */
@@ -313,8 +438,18 @@ export interface ResourceProviderOperationDefinition {
   /** Details about the operations */
   display?: ResourceProviderOperationDisplay;
 }
+const ResourceProviderOperationDefinition = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ResourceProviderOperationDefinition>;
+
 /** The list of operations. */
 export type ResourceProviderOperationListValueList = Array<ResourceProviderOperationDefinition>;
+const ResourceProviderOperationListValueList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ResourceProviderOperationListValueList>;
+
 /** List containing this Resource Provider's available operations. */
 export interface ResourceProviderOperationList {
   /** The list of operations. */
@@ -322,8 +457,16 @@ export interface ResourceProviderOperationList {
   /** The URL to get the next set of results, if any. */
   nextLink?: string;
 }
+const ResourceProviderOperationList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ResourceProviderOperationList>;
+
 /** Resource tags. */
 export type UpdateLedgerRequestTagsMap = { [key: string]: string | undefined };
+const UpdateLedgerRequestTagsMap =
+  CreateLedgerRequestTagsMap as any as S.Schema<UpdateLedgerRequestTagsMap>;
+
 export interface UpdateLedgerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -338,6 +481,8 @@ export interface UpdateLedgerRequest {
   /** Properties of Confidential Ledger Resource. */
   properties?: LedgerPropertiesInput;
 }
+const UpdateLedgerRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<UpdateLedgerRequest>;
+
 /** Resource tags. */
 export type UpdateLedgerResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateLedgerResponse {
@@ -356,6 +501,8 @@ export interface UpdateLedgerResponse {
   /** Properties of Confidential Ledger Resource. */
   properties?: LedgerProperties;
 }
+const UpdateLedgerResponse = CreateLedgerResponse as any as S.Schema<UpdateLedgerResponse>;
+
 export type CheckNameAvailabilityError = AzureOpError;
 /** To check whether a resource name is available. */
 export const CheckNameAvailability: API.OperationMethod<
@@ -364,8 +511,8 @@ export const CheckNameAvailability: API.OperationMethod<
   CheckNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CheckNameAvailabilityRequest>,
-  output: __S(1) as any as S.Schema<CheckNameAvailabilityResponse>,
+  input: CheckNameAvailabilityRequest,
+  output: CheckNameAvailabilityResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -379,8 +526,8 @@ export const CreateLedger: API.OperationMethod<
   CreateLedgerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateLedgerRequest>,
-  output: __S(11) as any as S.Schema<CreateLedgerResponse>,
+  input: CreateLedgerRequest,
+  output: CreateLedgerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -394,8 +541,8 @@ export const DeleteLedger: API.OperationMethod<
   DeleteLedgerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DeleteLedgerRequest>,
-  output: __S(13) as any as S.Schema<DeleteLedgerResponse>,
+  input: DeleteLedgerRequest,
+  output: DeleteLedgerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -409,8 +556,8 @@ export const ExportLedgerFile: API.OperationMethod<
   ExportLedgerFileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<ExportLedgerFileRequest>,
-  output: __S(15) as any as S.Schema<ConfidentialLedgerFilesExportResponse>,
+  input: ExportLedgerFileRequest,
+  output: ConfidentialLedgerFilesExportResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -424,8 +571,8 @@ export const GetLedger: API.OperationMethod<
   GetLedgerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetLedgerRequest>,
-  output: __S(11) as any as S.Schema<GetLedgerResponse>,
+  input: GetLedgerRequest,
+  output: GetLedgerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -439,8 +586,8 @@ export const ListLedgerByResourceGroup: API.OperationMethod<
   ListLedgerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<ListLedgerByResourceGroupRequest>,
-  output: __S(19) as any as S.Schema<ConfidentialLedgerList>,
+  input: ListLedgerByResourceGroupRequest,
+  output: ConfidentialLedgerList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -454,8 +601,8 @@ export const ListLedgerBySubscription: API.OperationMethod<
   ListLedgerBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<ListLedgerBySubscriptionRequest>,
-  output: __S(19) as any as S.Schema<ConfidentialLedgerList>,
+  input: ListLedgerBySubscriptionRequest,
+  output: ConfidentialLedgerList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -469,8 +616,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<ListOperationsRequest>,
-  output: __S(25) as any as S.Schema<ResourceProviderOperationList>,
+  input: ListOperationsRequest,
+  output: ResourceProviderOperationList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -484,8 +631,8 @@ export const UpdateLedger: API.OperationMethod<
   UpdateLedgerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<UpdateLedgerRequest>,
-  output: __S(11) as any as S.Schema<UpdateLedgerResponse>,
+  input: UpdateLedgerRequest,
+  output: UpdateLedgerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -515,7 +662,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.optional(S.Boolean),
-          reason: S.optional(S.String),
+          reason: S.optional(CheckNameAvailabilityResponseReason),
           message: S.optional(S.String),
         }),
       ).annotate({
@@ -528,39 +675,43 @@ function __c0(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          ledgerRoleName: S.optional(S.String),
+          ledgerRoleName: S.optional(LedgerRoleName),
         }),
       ).annotate({
         identifier: "AADBasedSecurityPrincipal",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(AADBasedSecurityPrincipal);
     case 5:
       return S.suspend(() =>
         S.Struct({
           cert: S.optional(S.String),
-          ledgerRoleName: S.optional(S.String),
+          ledgerRoleName: S.optional(LedgerRoleName),
         }),
       ).annotate({
         identifier: "CertBasedSecurityPrincipal",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(CertBasedSecurityPrincipal);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          runningState: S.optional(S.String),
-          ledgerType: S.optional(S.String),
-          ledgerSku: S.optional(S.String),
-          aadBasedSecurityPrincipals: S.optional(__S(4)),
-          certBasedSecurityPrincipals: S.optional(__S(6)),
+          runningState: S.optional(RunningState),
+          ledgerType: S.optional(LedgerType),
+          ledgerSku: S.optional(LedgerSku),
+          aadBasedSecurityPrincipals: S.optional(
+            LedgerPropertiesInputAadBasedSecurityPrincipalsList,
+          ),
+          certBasedSecurityPrincipals: S.optional(
+            LedgerPropertiesInputCertBasedSecurityPrincipalsList,
+          ),
           hostLevel: S.optional(S.String),
           maxBodySizeInMb: S.optional(S.Number),
           subjectName: S.optional(S.String),
           nodeCount: S.optional(S.Number),
           writeLBAddressPrefix: S.optional(S.String),
           workerThreads: S.optional(S.Number),
-          applicationType: S.optional(S.String),
+          applicationType: S.optional(ApplicationType),
           scittConfiguration: S.optional(S.String),
         }),
       ).annotate({ identifier: "LedgerPropertiesInput" });
@@ -574,9 +725,9 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ledgerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2)),
+          tags: S.optional(CreateLedgerRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(7)),
+          properties: S.optional(LedgerPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -590,10 +741,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -604,20 +755,20 @@ function __c1(j: number): any {
           ledgerUri: S.optional(S.String),
           identityServiceUri: S.optional(S.String),
           ledgerInternalNamespace: S.optional(S.String),
-          runningState: S.optional(S.String),
-          ledgerType: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          ledgerSku: S.optional(S.String),
-          aadBasedSecurityPrincipals: S.optional(__S(4)),
-          certBasedSecurityPrincipals: S.optional(__S(6)),
+          runningState: S.optional(RunningState),
+          ledgerType: S.optional(LedgerType),
+          provisioningState: S.optional(ProvisioningState),
+          ledgerSku: S.optional(LedgerSku),
+          aadBasedSecurityPrincipals: S.optional(LedgerPropertiesAadBasedSecurityPrincipalsList),
+          certBasedSecurityPrincipals: S.optional(LedgerPropertiesCertBasedSecurityPrincipalsList),
           hostLevel: S.optional(S.String),
           maxBodySizeInMb: S.optional(S.Number),
           subjectName: S.optional(S.String),
           nodeCount: S.optional(S.Number),
           writeLBAddressPrefix: S.optional(S.String),
           workerThreads: S.optional(S.Number),
-          enclavePlatform: S.optional(S.String),
-          applicationType: S.optional(S.String),
+          enclavePlatform: S.optional(EnclavePlatform),
+          applicationType: S.optional(ApplicationType),
           scittConfiguration: S.optional(S.String),
         }),
       ).annotate({ identifier: "LedgerProperties" });
@@ -627,10 +778,10 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateLedgerResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(10)),
+          properties: S.optional(LedgerProperties),
         }),
       ).annotate({ identifier: "CreateLedgerResponse" });
     case 4:
@@ -714,11 +865,11 @@ function __c2(j: number): any {
         identifier: "ListLedgerByResourceGroupRequest",
       });
     case 2:
-      return S.Array(__S(11));
+      return S.Array(ConfidentialLedger);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(18),
+          value: ConfidentialLedgerListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfidentialLedgerList" });
@@ -765,7 +916,7 @@ function __c2(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(22)),
+          display: S.optional(ResourceProviderOperationDisplay),
         }),
       ).annotate({
         identifier: "ResourceProviderOperationDefinition",
@@ -775,11 +926,11 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(ResourceProviderOperationDefinition);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(24)),
+          value: S.optional(ResourceProviderOperationListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -791,9 +942,9 @@ function __c3(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ledgerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2)),
+          tags: S.optional(UpdateLedgerRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(7)),
+          properties: S.optional(LedgerPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -803,22 +954,5 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateLedgerRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

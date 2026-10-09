@@ -6,8 +6,6 @@ import { UnknownOvhError } from "../errors.ts";
 import { OvhProtocol, type OvhOpError, type OvhOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { OvhOpError, OvhOpContext };
 
@@ -17,12 +15,30 @@ export interface AuthorizeOverTheBoxRemoteAccessRequest {
   /** The id of the remote access */
   remoteAccessId: string;
 }
+const AuthorizeOverTheBoxRemoteAccessRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AuthorizeOverTheBoxRemoteAccessRequest>;
+
 export interface AuthorizeOverTheBoxRemoteAccessResponse {}
+const AuthorizeOverTheBoxRemoteAccessResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AuthorizeOverTheBoxRemoteAccessResponse>;
+
 export interface CancelOverTheBoxResiliationRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
 }
+const CancelOverTheBoxResiliationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CancelOverTheBoxResiliationRequest>;
+
 export interface CancelOverTheBoxResiliationResponse {}
+const CancelOverTheBoxResiliationResponse =
+  AuthorizeOverTheBoxRemoteAccessResponse as any as S.Schema<CancelOverTheBoxResiliationResponse>;
+
 export interface CreateOverTheBoxChangeContactRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
@@ -33,9 +49,29 @@ export interface CreateOverTheBoxChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
+const CreateOverTheBoxChangeContactRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateOverTheBoxChangeContactRequest>;
+
 export type CreateOverTheBoxChangeContactResponseBodyList = Array<number>;
+const CreateOverTheBoxChangeContactResponseBodyList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateOverTheBoxChangeContactResponseBodyList>;
+
 export type CreateOverTheBoxChangeContactResponse = CreateOverTheBoxChangeContactResponseBodyList;
+const CreateOverTheBoxChangeContactResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateOverTheBoxChangeContactResponse>;
+
 export interface CreateOverTheBoxDeviceRequest {}
+const CreateOverTheBoxDeviceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateOverTheBoxDeviceRequest>;
+
 /** A device for registration */
 export interface OverTheBoxDeviceForRegistration {
   /** Whether or not this device is actived */
@@ -44,16 +80,38 @@ export interface OverTheBoxDeviceForRegistration {
   /** The last time this device was seen on the provisionning servers */
   lastSeen?: string;
 }
+const OverTheBoxDeviceForRegistration = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<OverTheBoxDeviceForRegistration>;
+
 export type CreateOverTheBoxDeviceResponseBodyList = Array<OverTheBoxDeviceForRegistration>;
+const CreateOverTheBoxDeviceResponseBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateOverTheBoxDeviceResponseBodyList>;
+
 export type CreateOverTheBoxDeviceResponse = CreateOverTheBoxDeviceResponseBodyList;
+const CreateOverTheBoxDeviceResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateOverTheBoxDeviceResponse>;
+
 export interface CreateOverTheBoxDeviceActionRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
   /** Name of the action */
   name: string;
 }
+const CreateOverTheBoxDeviceActionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateOverTheBoxDeviceActionRequest>;
+
 /** Status of a task. */
 export type OverTheBoxActionStatusEnum = "doing" | "done" | "error" | "todo";
+const OverTheBoxActionStatusEnum = S.String;
+
 /** Device action */
 export interface OverTheBoxDeviceAction {
   /** The id of the action */
@@ -71,14 +129,29 @@ export interface OverTheBoxDeviceAction {
   /** Last time the action was updated */
   updatedAt?: string;
 }
+const OverTheBoxDeviceAction = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<OverTheBoxDeviceAction>;
+
 export interface CreateOverTheBoxDeviceBackupRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
 }
+const CreateOverTheBoxDeviceBackupRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateOverTheBoxDeviceBackupRequest>;
+
 export interface CreateOverTheBoxDeviceLogRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
 }
+const CreateOverTheBoxDeviceLogRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateOverTheBoxDeviceLogRequest>;
+
 /** Temporary url informations */
 export interface OverTheBoxTemporaryLogsLink {
   /** Temporary url expiration date */
@@ -86,20 +159,41 @@ export interface OverTheBoxTemporaryLogsLink {
   /** Temporary url */
   url?: string;
 }
+const OverTheBoxTemporaryLogsLink = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<OverTheBoxTemporaryLogsLink>;
+
 export interface CreateOverTheBoxLinkDeviceRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
   /** The id of the device */
   deviceId: string;
 }
+const CreateOverTheBoxLinkDeviceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateOverTheBoxLinkDeviceRequest>;
+
 export interface CreateOverTheBoxLinkDeviceResponse {}
+const CreateOverTheBoxLinkDeviceResponse =
+  AuthorizeOverTheBoxRemoteAccessResponse as any as S.Schema<CreateOverTheBoxLinkDeviceResponse>;
+
 export interface CreateOverTheBoxLinkHardwareRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
   /** The internal name of your hardware */
   hardwareName: string;
 }
+const CreateOverTheBoxLinkHardwareRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateOverTheBoxLinkHardwareRequest>;
+
 export interface CreateOverTheBoxLinkHardwareResponse {}
+const CreateOverTheBoxLinkHardwareResponse =
+  AuthorizeOverTheBoxRemoteAccessResponse as any as S.Schema<CreateOverTheBoxLinkHardwareResponse>;
+
 export interface CreateOverTheBoxMigrationChangeOfferRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
@@ -110,6 +204,11 @@ export interface CreateOverTheBoxMigrationChangeOfferRequest {
   /** In case of hardware and if a shipping custom address is desired */
   shippingContactID?: string;
 }
+const CreateOverTheBoxMigrationChangeOfferRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateOverTheBoxMigrationChangeOfferRequest>;
+
 /** Migration order */
 export interface OverTheBoxOrderMigration {
   /** Id of the migration order */
@@ -117,6 +216,11 @@ export interface OverTheBoxOrderMigration {
   /** URL of the migration order */
   orderUrl?: string;
 }
+const OverTheBoxOrderMigration = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<OverTheBoxOrderMigration>;
+
 export interface CreateOverTheBoxRemoteAccessRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
@@ -129,6 +233,11 @@ export interface CreateOverTheBoxRemoteAccessRequest {
   /** The remote user public key authorized on the device (for SSH purpose) */
   publicKey?: string;
 }
+const CreateOverTheBoxRemoteAccessRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateOverTheBoxRemoteAccessRequest>;
+
 /** All the infos needed to connect yourself to your OTB */
 export interface OverTheBoxRemoteAccessConnectionInfos {
   /** IP to connect to when accessing the device remotely */
@@ -136,6 +245,11 @@ export interface OverTheBoxRemoteAccessConnectionInfos {
   /** Port to connect to when accessing the device remotely */
   port?: number | null;
 }
+const OverTheBoxRemoteAccessConnectionInfos = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<OverTheBoxRemoteAccessConnectionInfos>;
+
 /** Infos about the remote user */
 export interface OverTheBoxRemoteAccessUserInfos {
   /** IP from which the remote access will be allowed */
@@ -145,6 +259,11 @@ export interface OverTheBoxRemoteAccessUserInfos {
   /** The user that will access the device remotely */
   user?: string;
 }
+const OverTheBoxRemoteAccessUserInfos = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<OverTheBoxRemoteAccessUserInfos>;
+
 /** Status of the remote access. */
 export type OverTheBoxRemoteAccessStatusEnum =
   | "active"
@@ -155,6 +274,8 @@ export type OverTheBoxRemoteAccessStatusEnum =
   | "recreating"
   | "toDelete"
   | "toRecreate";
+const OverTheBoxRemoteAccessStatusEnum = S.String;
+
 /** If authorized, a remote access will expose a port, allowing an access to the device remotely */
 export interface OverTheBoxRemoteAccess {
   /** If the remote access was accepted by the remote user */
@@ -180,38 +301,83 @@ export interface OverTheBoxRemoteAccess {
   /** Status of the remote access */
   status?: OverTheBoxRemoteAccessStatusEnum;
 }
+const OverTheBoxRemoteAccess = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<OverTheBoxRemoteAccess>;
+
 export interface DeleteOverTheBoxRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
 }
+const DeleteOverTheBoxRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DeleteOverTheBoxRequest>;
+
 export interface DeleteOverTheBoxResponse {}
+const DeleteOverTheBoxResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DeleteOverTheBoxResponse>;
+
 export interface DeleteOverTheBoxBackupRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
   /** The id of the backup */
   backupId: string;
 }
+const DeleteOverTheBoxBackupRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DeleteOverTheBoxBackupRequest>;
+
 export interface DeleteOverTheBoxBackupResponse {}
+const DeleteOverTheBoxBackupResponse =
+  DeleteOverTheBoxResponse as any as S.Schema<DeleteOverTheBoxBackupResponse>;
+
 export interface DeleteOverTheBoxDeviceRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
 }
+const DeleteOverTheBoxDeviceRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DeleteOverTheBoxDeviceRequest>;
+
 export interface DeleteOverTheBoxDeviceResponse {}
+const DeleteOverTheBoxDeviceResponse =
+  DeleteOverTheBoxResponse as any as S.Schema<DeleteOverTheBoxDeviceResponse>;
+
 export interface DeleteOverTheBoxRemoteAccessRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
   /** The id of the remote access */
   remoteAccessId: string;
 }
+const DeleteOverTheBoxRemoteAccessRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DeleteOverTheBoxRemoteAccessRequest>;
+
 export interface DeleteOverTheBoxRemoteAccessResponse {}
+const DeleteOverTheBoxRemoteAccessResponse =
+  AuthorizeOverTheBoxRemoteAccessResponse as any as S.Schema<DeleteOverTheBoxRemoteAccessResponse>;
+
 export interface GetOverTheBoxRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
 }
+const GetOverTheBoxRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GetOverTheBoxRequest>;
+
 /** Status of the service */
 export type OverTheBoxAvailableStatusEnum = "disabled" | "enabled";
+const OverTheBoxAvailableStatusEnum = S.String;
+
 /** Configuration mode of the service */
 export type OverTheBoxServiceConfigurationModeEnum = "autoconfigure" | "local";
+const OverTheBoxServiceConfigurationModeEnum = S.String;
+
 /** Parameters required to query metrics from OpenTSDB */
 export interface OverTheBoxGraphEndpoint {
   /** The OpenTSDB host */
@@ -221,8 +387,18 @@ export interface OverTheBoxGraphEndpoint {
   /** The read-only token ID */
   readTokenID?: string;
 }
+const OverTheBoxGraphEndpoint = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<OverTheBoxGraphEndpoint>;
+
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
+const IamResourceMetadataTagsMap = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<IamResourceMetadataTagsMap>;
+
 /** IAM resource metadata embedded in services models */
 export interface IamResourceMetadata {
   /** Resource display name */
@@ -234,6 +410,8 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
+const IamResourceMetadata = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<IamResourceMetadata>;
+
 /** Status of the service. */
 export type OverTheBoxServiceStatusEnum =
   | "active"
@@ -242,8 +420,12 @@ export type OverTheBoxServiceStatusEnum =
   | "suspended"
   | "toCreate"
   | "toDelete";
+const OverTheBoxServiceStatusEnum = S.String;
+
 /** Tunnel mode of the service. */
 export type OverTheBoxTunnelModeEnum = "glorytun" | "glorytun_hybrid" | "glorytun_mud";
+const OverTheBoxTunnelModeEnum = S.String;
+
 /** Service */
 export interface OverTheBoxServiceWithIAM {
   /** If the socks proxy is enabled */
@@ -277,12 +459,22 @@ export interface OverTheBoxServiceWithIAM {
   /** The tunnel mode of the service */
   tunnelMode?: OverTheBoxTunnelModeEnum;
 }
+const OverTheBoxServiceWithIAM = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<OverTheBoxServiceWithIAM>;
+
 export interface GetOverTheBoxBackupRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
   /** The id of the backup */
   backupId: string;
 }
+const GetOverTheBoxBackupRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetOverTheBoxBackupRequest>;
+
 /** Backup */
 export interface OverTheBoxBackup {
   /** The id of the backup */
@@ -292,14 +484,28 @@ export interface OverTheBoxBackup {
   /** The id of the device action that triggered the backup */
   deviceActionId?: string | null;
 }
+const OverTheBoxBackup = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<OverTheBoxBackup>;
+
 export interface GetOverTheBoxDeviceRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
 }
+const GetOverTheBoxDeviceRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetOverTheBoxDeviceRequest>;
+
 /** The DNS servers of this interface */
 export type OverTheBoxDeviceInterfaceDnsServersList = Array<string>;
+const OverTheBoxDeviceInterfaceDnsServersList = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<OverTheBoxDeviceInterfaceDnsServersList>;
+
 /** Status of a MPTCP Interface. */
 export type OverTheBoxMultipathStatusEnum = "backup" | "handover" | "master" | "off" | "on";
+const OverTheBoxMultipathStatusEnum = S.String;
+
 /** Infos about a network interface */
 export interface OverTheBoxDeviceInterface {
   /** Device of the interface */
@@ -319,8 +525,18 @@ export interface OverTheBoxDeviceInterface {
   /** Public IP of the interface */
   publicIp?: string | null;
 }
+const OverTheBoxDeviceInterface = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<OverTheBoxDeviceInterface>;
+
 /** Network interfaces of the device */
 export type OverTheBoxDeviceNetworkInterfacesList = Array<OverTheBoxDeviceInterface>;
+const OverTheBoxDeviceNetworkInterfacesList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<OverTheBoxDeviceNetworkInterfacesList>;
+
 /** Infos about a device system */
 export interface OverTheBoxDeviceSystem {
   /** Device CPU */
@@ -340,6 +556,11 @@ export interface OverTheBoxDeviceSystem {
   /** OVH name of the device board */
   ovhName?: string | null;
 }
+const OverTheBoxDeviceSystem = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<OverTheBoxDeviceSystem>;
+
 /** Device */
 export interface OverTheBoxDevice {
   /** Whether or not this device is associated to a service */
@@ -361,16 +582,28 @@ export interface OverTheBoxDevice {
   /** Version of the device */
   version?: string;
 }
+const OverTheBoxDevice = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<OverTheBoxDevice>;
+
 export interface GetOverTheBoxDeviceActionRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
   /** The id of the action */
   actionId: string;
 }
+const GetOverTheBoxDeviceActionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetOverTheBoxDeviceActionRequest>;
+
 export interface GetOverTheBoxDeviceHardwareRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
 }
+const GetOverTheBoxDeviceHardwareRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GetOverTheBoxDeviceHardwareRequest>;
+
 /** Hardware properties */
 export interface OverTheBoxHardware {
   /** True if hardware can be linked to a service without deviceID */
@@ -386,10 +619,17 @@ export interface OverTheBoxHardware {
   /** Hardware serial */
   serial?: string;
 }
+const OverTheBoxHardware = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<OverTheBoxHardware>;
+
 export interface GetOverTheBoxHardwareRequest {
   /** The internal name of your hardware */
   hardwareName: string;
 }
+const GetOverTheBoxHardwareRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GetOverTheBoxHardwareRequest>;
+
 /** Hardware properties */
 export interface OverTheBoxHardwareWithIAM {
   /** True if hardware can be linked to a service without deviceID */
@@ -407,18 +647,34 @@ export interface OverTheBoxHardwareWithIAM {
   /** Hardware serial */
   serial?: string;
 }
+const OverTheBoxHardwareWithIAM = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<OverTheBoxHardwareWithIAM>;
+
 export interface GetOverTheBoxIpsRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
   /** Ip */
   ip: string;
 }
+const GetOverTheBoxIpsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<GetOverTheBoxIpsRequest>;
+
 /** IP geolocation */
 export type OtbServiceIpGeolocationEnum = "fr";
+const OtbServiceIpGeolocationEnum = S.String;
+
 /** IP status */
 export type OtbServiceIpStatusEnum = "active" | "free" | "pendingRelease" | "released" | "reserved";
+const OtbServiceIpStatusEnum = S.String;
+
 /** IP version */
 export type OtbServiceIpVersionEnum = "v4" | "v6";
+const OtbServiceIpVersionEnum = S.String;
+
 /** Service IP details */
 export interface OtbServiceIp {
   /** IP geolocation */
@@ -432,18 +688,33 @@ export interface OtbServiceIp {
   /** IP version */
   version?: OtbServiceIpVersionEnum;
 }
+const OtbServiceIp = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<OtbServiceIp>;
+
 export interface GetOverTheBoxRemoteAccessRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
   /** The id of the remote access */
   remoteAccessId: string;
 }
+const GetOverTheBoxRemoteAccessRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetOverTheBoxRemoteAccessRequest>;
+
 export interface GetOverTheBoxServiceInfosRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
 }
+const GetOverTheBoxServiceInfosRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetOverTheBoxServiceInfosRequest>;
+
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
+const ServicesServicePossibleRenewPeriodList =
+  CreateOverTheBoxChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
+
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
   /** The service is automatically renewed */
@@ -457,6 +728,8 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
+const ServiceRenewType = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ServiceRenewType>;
+
 /** Detailed renewal type of a service */
 export type ServiceRenewalTypeEnum =
   | "automaticForcedProduct"
@@ -467,6 +740,8 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
+const ServiceRenewalTypeEnum = S.String;
+
 export type ServiceStateEnum =
   | "autorenewInProgress"
   | "expired"
@@ -474,6 +749,8 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
+const ServiceStateEnum = S.String;
+
 /** Details about a Service */
 export interface ServicesService {
   /** Indicates that the service can be set up to be deleted at expiration */
@@ -493,14 +770,23 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
+const ServicesService = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ServicesService>;
+
 export interface GetOverTheBoxTaskRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
   /** The id of the task */
   taskId: string;
 }
+const GetOverTheBoxTaskRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GetOverTheBoxTaskRequest>;
+
 /** Status of a task. */
 export type OverTheBoxTaskStatusEnum = "doing" | "done" | "error" | "todo";
+const OverTheBoxTaskStatusEnum = S.String;
+
 /** Task */
 export interface OverTheBoxTask {
   /** The name of the task */
@@ -510,36 +796,102 @@ export interface OverTheBoxTask {
   /** The id of the task */
   taskId?: string;
 }
+const OverTheBoxTask = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<OverTheBoxTask>;
+
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
+const IamResourceTagFilterInput =
+  DeleteOverTheBoxResponse as any as S.Schema<IamResourceTagFilterInput>;
+
 export type ListOverTheBoxRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
+const ListOverTheBoxRequestIamTagsValueList = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListOverTheBoxRequestIamTagsValueList>;
+
 export type ListOverTheBoxRequestIamTagsMap = {
   [key: string]: ListOverTheBoxRequestIamTagsValueList | undefined;
 };
+const ListOverTheBoxRequestIamTagsMap = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListOverTheBoxRequestIamTagsMap>;
+
 export interface ListOverTheBoxRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListOverTheBoxRequestIamTagsMap;
 }
+const ListOverTheBoxRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ListOverTheBoxRequest>;
+
 export type ListOverTheBoxResponseBodyList = Array<string>;
+const ListOverTheBoxResponseBodyList =
+  OverTheBoxDeviceInterfaceDnsServersList as any as S.Schema<ListOverTheBoxResponseBodyList>;
+
 export type ListOverTheBoxResponse = ListOverTheBoxResponseBodyList;
+const ListOverTheBoxResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ListOverTheBoxResponse>;
+
 export interface ListOverTheBoxAvailableOffersRequest {}
+const ListOverTheBoxAvailableOffersRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListOverTheBoxAvailableOffersRequest>;
+
 /** Enum of Offers */
 export type PriceOverTheBoxOfferEnum = "business.v1" | "plus.v1" | "starter.v1";
+const PriceOverTheBoxOfferEnum = S.String;
+
 export type ListOverTheBoxAvailableOffersResponseBodyList = Array<PriceOverTheBoxOfferEnum>;
+const ListOverTheBoxAvailableOffersResponseBodyList = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListOverTheBoxAvailableOffersResponseBodyList>;
+
 export type ListOverTheBoxAvailableOffersResponse = ListOverTheBoxAvailableOffersResponseBodyList;
+const ListOverTheBoxAvailableOffersResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ListOverTheBoxAvailableOffersResponse>;
+
 export interface ListOverTheBoxAvailableReleaseChannelsRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
 }
+const ListOverTheBoxAvailableReleaseChannelsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListOverTheBoxAvailableReleaseChannelsRequest>;
+
 export type ListOverTheBoxAvailableReleaseChannelsResponseBodyList = Array<string>;
+const ListOverTheBoxAvailableReleaseChannelsResponseBodyList =
+  OverTheBoxDeviceInterfaceDnsServersList as any as S.Schema<ListOverTheBoxAvailableReleaseChannelsResponseBodyList>;
+
 export type ListOverTheBoxAvailableReleaseChannelsResponse =
   ListOverTheBoxAvailableReleaseChannelsResponseBodyList;
+const ListOverTheBoxAvailableReleaseChannelsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListOverTheBoxAvailableReleaseChannelsResponse>;
+
 export interface ListOverTheBoxBackupsRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
 }
+const ListOverTheBoxBackupsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListOverTheBoxBackupsRequest>;
+
 export type ListOverTheBoxBackupsResponseBodyList = Array<string>;
 export type ListOverTheBoxBackupsResponse = ListOverTheBoxBackupsResponseBodyList;
+const ListOverTheBoxBackupsResponse =
+  ListOverTheBoxAvailableReleaseChannelsResponse as any as S.Schema<ListOverTheBoxBackupsResponse>;
+
 export interface ListOverTheBoxDeviceActionsRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
@@ -548,12 +900,25 @@ export interface ListOverTheBoxDeviceActionsRequest {
   /** Filter the value of status property (=) */
   status?: OverTheBoxActionStatusEnum | (string & {});
 }
+const ListOverTheBoxDeviceActionsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListOverTheBoxDeviceActionsRequest>;
+
 export type ListOverTheBoxDeviceActionsResponseBodyList = Array<string>;
 export type ListOverTheBoxDeviceActionsResponse = ListOverTheBoxDeviceActionsResponseBodyList;
+const ListOverTheBoxDeviceActionsResponse =
+  ListOverTheBoxAvailableReleaseChannelsResponse as any as S.Schema<ListOverTheBoxDeviceActionsResponse>;
+
 export interface ListOverTheBoxDeviceAvailableActionsRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
 }
+const ListOverTheBoxDeviceAvailableActionsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ListOverTheBoxDeviceAvailableActionsRequest>;
+
 /** Device action */
 export interface OverTheBoxAvailableDeviceAction {
   /** Description of the action */
@@ -561,34 +926,81 @@ export interface OverTheBoxAvailableDeviceAction {
   /** Name of the action */
   name?: string;
 }
+const OverTheBoxAvailableDeviceAction = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<OverTheBoxAvailableDeviceAction>;
+
 export type ListOverTheBoxDeviceAvailableActionsResponseBodyList =
   Array<OverTheBoxAvailableDeviceAction>;
+const ListOverTheBoxDeviceAvailableActionsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ListOverTheBoxDeviceAvailableActionsResponseBodyList>;
+
 export type ListOverTheBoxDeviceAvailableActionsResponse =
   ListOverTheBoxDeviceAvailableActionsResponseBodyList;
+const ListOverTheBoxDeviceAvailableActionsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ListOverTheBoxDeviceAvailableActionsResponse>;
+
 export type ListOverTheBoxHardwareRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
 export type ListOverTheBoxHardwareRequestIamTagsMap = {
   [key: string]: ListOverTheBoxHardwareRequestIamTagsValueList | undefined;
 };
+const ListOverTheBoxHardwareRequestIamTagsMap =
+  ListOverTheBoxRequestIamTagsMap as any as S.Schema<ListOverTheBoxHardwareRequestIamTagsMap>;
+
 export interface ListOverTheBoxHardwareRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListOverTheBoxHardwareRequestIamTagsMap;
 }
+const ListOverTheBoxHardwareRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ListOverTheBoxHardwareRequest>;
+
 export type ListOverTheBoxHardwareResponseBodyList = Array<string>;
 export type ListOverTheBoxHardwareResponse = ListOverTheBoxHardwareResponseBodyList;
+const ListOverTheBoxHardwareResponse =
+  ListOverTheBoxAvailableReleaseChannelsResponse as any as S.Schema<ListOverTheBoxHardwareResponse>;
+
 export interface ListOverTheBoxHardwareAvailableRequest {}
+const ListOverTheBoxHardwareAvailableRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListOverTheBoxHardwareAvailableRequest>;
+
 export type ListOverTheBoxHardwareAvailableResponseBodyList = Array<string>;
 export type ListOverTheBoxHardwareAvailableResponse =
   ListOverTheBoxHardwareAvailableResponseBodyList;
+const ListOverTheBoxHardwareAvailableResponse =
+  ListOverTheBoxAvailableReleaseChannelsResponse as any as S.Schema<ListOverTheBoxHardwareAvailableResponse>;
+
 export interface ListOverTheBoxIpsRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
 }
+const ListOverTheBoxIpsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListOverTheBoxIpsRequest>;
+
 export type ListOverTheBoxIpsResponseBodyList = Array<string>;
 export type ListOverTheBoxIpsResponse = ListOverTheBoxIpsResponseBodyList;
+const ListOverTheBoxIpsResponse =
+  ListOverTheBoxAvailableReleaseChannelsResponse as any as S.Schema<ListOverTheBoxIpsResponse>;
+
 export interface ListOverTheBoxMigrationOffersRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
 }
+const ListOverTheBoxMigrationOffersRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ListOverTheBoxMigrationOffersRequest>;
+
 export type OrderCurrencyCodeEnum =
   | "AUD"
   | "CAD"
@@ -605,12 +1017,16 @@ export type OrderCurrencyCodeEnum =
   | "USD"
   | "XOF"
   | "points";
+const OrderCurrencyCodeEnum = S.String;
+
 /** Price with it's currency and textual representation */
 export interface OrderPrice {
   currencyCode?: OrderCurrencyCodeEnum;
   text?: string;
   value?: number;
 }
+const OrderPrice = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<OrderPrice>;
+
 /** Details of available hardwares */
 export interface OverTheBoxHardwareDetails {
   /** Pretty hardware model name */
@@ -620,8 +1036,18 @@ export interface OverTheBoxHardwareDetails {
   /** Hardware purchase price */
   hardwarePrice?: OrderPrice | null;
 }
+const OverTheBoxHardwareDetails = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<OverTheBoxHardwareDetails>;
+
 /** Details of available hardwares */
 export type OverTheBoxAvailableMigrationOfferHardwaresList = Array<OverTheBoxHardwareDetails>;
+const OverTheBoxAvailableMigrationOfferHardwaresList = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<OverTheBoxAvailableMigrationOfferHardwaresList>;
+
 /** Migration offer */
 export interface OverTheBoxAvailableMigrationOffer {
   /** Monthly price of the current offer */
@@ -643,19 +1069,46 @@ export interface OverTheBoxAvailableMigrationOffer {
   /** Monthly price of the new offer */
   price?: OrderPrice;
 }
+const OverTheBoxAvailableMigrationOffer = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<OverTheBoxAvailableMigrationOffer>;
+
 export type ListOverTheBoxMigrationOffersResponseBodyList =
   Array<OverTheBoxAvailableMigrationOffer>;
+const ListOverTheBoxMigrationOffersResponseBodyList = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ListOverTheBoxMigrationOffersResponseBodyList>;
+
 export type ListOverTheBoxMigrationOffersResponse = ListOverTheBoxMigrationOffersResponseBodyList;
+const ListOverTheBoxMigrationOffersResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ListOverTheBoxMigrationOffersResponse>;
+
 export interface ListOverTheBoxRemoteAccessesRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
 }
+const ListOverTheBoxRemoteAccessesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ListOverTheBoxRemoteAccessesRequest>;
+
 export type ListOverTheBoxRemoteAccessesResponseBodyList = Array<string>;
 export type ListOverTheBoxRemoteAccessesResponse = ListOverTheBoxRemoteAccessesResponseBodyList;
+const ListOverTheBoxRemoteAccessesResponse =
+  ListOverTheBoxAvailableReleaseChannelsResponse as any as S.Schema<ListOverTheBoxRemoteAccessesResponse>;
+
 /** Serie Name */
 export type OtbDeviceStatisticsTypeEnum = "load" | "memory_free" | "traffic";
+const OtbDeviceStatisticsTypeEnum = S.String;
+
 /** Statistics Period */
 export type OtbDeviceStatisticsPeriodEnum = "daily" | "hourly" | "monthly" | "weekly";
+const OtbDeviceStatisticsPeriodEnum = S.String;
+
 export interface ListOverTheBoxStatisticsRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
@@ -664,6 +1117,11 @@ export interface ListOverTheBoxStatisticsRequest {
   /** Period (default is daily) */
   period?: OtbDeviceStatisticsPeriodEnum | (string & {});
 }
+const ListOverTheBoxStatisticsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListOverTheBoxStatisticsRequest>;
+
 /** Statistics Datapoint */
 export interface OtbDeviceStatisticsPoint {
   /** Timestamp */
@@ -671,8 +1129,18 @@ export interface OtbDeviceStatisticsPoint {
   /** Datapoint value */
   value?: number | null;
 }
+const OtbDeviceStatisticsPoint = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<OtbDeviceStatisticsPoint>;
+
 /** List of point */
 export type OtbDeviceStatisticsPointsList = Array<OtbDeviceStatisticsPoint>;
+const OtbDeviceStatisticsPointsList = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<OtbDeviceStatisticsPointsList>;
+
 /** Tags for the metrics */
 export interface OtbDeviceStatisticsTag {
   /** Name of tag */
@@ -680,10 +1148,22 @@ export interface OtbDeviceStatisticsTag {
   /** Value of tag */
   value?: string | null;
 }
+const OtbDeviceStatisticsTag = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<OtbDeviceStatisticsTag>;
+
 /** List of tags */
 export type OtbDeviceStatisticsTagsList = Array<OtbDeviceStatisticsTag>;
+const OtbDeviceStatisticsTagsList = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<OtbDeviceStatisticsTagsList>;
+
 /** Serie Unit */
 export type OtbDeviceStatisticsUnitEnum = "bps" | "byte" | "n/a";
+const OtbDeviceStatisticsUnitEnum = S.String;
+
 /** Device Statistics Datapoints */
 export interface OtbDeviceStatistics {
   /** Name of the serie */
@@ -695,8 +1175,20 @@ export interface OtbDeviceStatistics {
   /** Unit of the serie */
   unit?: OtbDeviceStatisticsUnitEnum;
 }
+const OtbDeviceStatistics = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<OtbDeviceStatistics>;
+
 export type ListOverTheBoxStatisticsResponseBodyList = Array<OtbDeviceStatistics>;
+const ListOverTheBoxStatisticsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ListOverTheBoxStatisticsResponseBodyList>;
+
 export type ListOverTheBoxStatisticsResponse = ListOverTheBoxStatisticsResponseBodyList;
+const ListOverTheBoxStatisticsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ListOverTheBoxStatisticsResponse>;
+
 export interface ListOverTheBoxTasksRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
@@ -705,8 +1197,16 @@ export interface ListOverTheBoxTasksRequest {
   /** Filter the value of status property (=) */
   status?: OverTheBoxTaskStatusEnum | (string & {});
 }
+const ListOverTheBoxTasksRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ListOverTheBoxTasksRequest>;
+
 export type ListOverTheBoxTasksResponseBodyList = Array<string>;
 export type ListOverTheBoxTasksResponse = ListOverTheBoxTasksResponseBodyList;
+const ListOverTheBoxTasksResponse =
+  ListOverTheBoxAvailableReleaseChannelsResponse as any as S.Schema<ListOverTheBoxTasksResponse>;
+
 export interface PutOverTheBoxRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
@@ -717,35 +1217,78 @@ export interface PutOverTheBoxRequest {
   /** Release channel of the service */
   releaseChannel?: string;
 }
+const PutOverTheBoxRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<PutOverTheBoxRequest>;
+
 export interface PutOverTheBoxResponse {}
+const PutOverTheBoxResponse = DeleteOverTheBoxResponse as any as S.Schema<PutOverTheBoxResponse>;
+
 export interface PutOverTheBoxAutoMTURequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
   /** Enable or disable autoMTU */
   mtuAuto: OverTheBoxAvailableStatusEnum | (string & {});
 }
+const PutOverTheBoxAutoMTURequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<PutOverTheBoxAutoMTURequest>;
+
 export interface PutOverTheBoxAutoMTUResponse {}
+const PutOverTheBoxAutoMTUResponse =
+  DeleteOverTheBoxResponse as any as S.Schema<PutOverTheBoxAutoMTUResponse>;
+
 export interface PutOverTheBoxIpv6Request {
   /** The internal name of your overTheBox offer */
   serviceName: string;
   /** Enabled/disabled IPv6 */
   enabled: boolean;
 }
+const PutOverTheBoxIpv6Request = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<PutOverTheBoxIpv6Request>;
+
 export interface PutOverTheBoxServiceInfosRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
+const PutOverTheBoxServiceInfosRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<PutOverTheBoxServiceInfosRequest>;
+
 export interface PutOverTheBoxServiceInfosResponse {}
+const PutOverTheBoxServiceInfosResponse =
+  AuthorizeOverTheBoxRemoteAccessResponse as any as S.Schema<PutOverTheBoxServiceInfosResponse>;
+
 export interface RestoreOverTheBoxDeviceBackupRequest {
   /** The internal name of your overTheBox offer */
   serviceName: string;
   /** The id of the backup to restore */
   backupId: string;
 }
+const RestoreOverTheBoxDeviceBackupRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<RestoreOverTheBoxDeviceBackupRequest>;
+
 export type RestoreOverTheBoxDeviceBackupResponseBodyList = Array<OverTheBoxDeviceAction>;
+const RestoreOverTheBoxDeviceBackupResponseBodyList = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<RestoreOverTheBoxDeviceBackupResponseBodyList>;
+
 export type RestoreOverTheBoxDeviceBackupResponse = RestoreOverTheBoxDeviceBackupResponseBodyList;
+const RestoreOverTheBoxDeviceBackupResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<RestoreOverTheBoxDeviceBackupResponse>;
+
 export type AuthorizeOverTheBoxRemoteAccessError = OvhOpError;
 /** Authorize the remote access */
 export const authorizeOverTheBoxRemoteAccess: API.OperationMethod<
@@ -754,8 +1297,8 @@ export const authorizeOverTheBoxRemoteAccess: API.OperationMethod<
   AuthorizeOverTheBoxRemoteAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AuthorizeOverTheBoxRemoteAccessRequest>,
-  output: __S(1) as any as S.Schema<AuthorizeOverTheBoxRemoteAccessResponse>,
+  input: AuthorizeOverTheBoxRemoteAccessRequest,
+  output: AuthorizeOverTheBoxRemoteAccessResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -769,8 +1312,8 @@ export const cancelOverTheBoxResiliation: API.OperationMethod<
   CancelOverTheBoxResiliationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CancelOverTheBoxResiliationRequest>,
-  output: __S(1) as any as S.Schema<CancelOverTheBoxResiliationResponse>,
+  input: CancelOverTheBoxResiliationRequest,
+  output: CancelOverTheBoxResiliationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -784,8 +1327,8 @@ export const createOverTheBoxChangeContact: API.OperationMethod<
   CreateOverTheBoxChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateOverTheBoxChangeContactRequest>,
-  output: __S(5) as any as S.Schema<CreateOverTheBoxChangeContactResponse>,
+  input: CreateOverTheBoxChangeContactRequest,
+  output: CreateOverTheBoxChangeContactResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -799,8 +1342,8 @@ export const createOverTheBoxDevice: API.OperationMethod<
   CreateOverTheBoxDeviceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateOverTheBoxDeviceRequest>,
-  output: __S(9) as any as S.Schema<CreateOverTheBoxDeviceResponse>,
+  input: CreateOverTheBoxDeviceRequest,
+  output: CreateOverTheBoxDeviceResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -814,8 +1357,8 @@ export const createOverTheBoxDeviceAction: API.OperationMethod<
   CreateOverTheBoxDeviceActionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CreateOverTheBoxDeviceActionRequest>,
-  output: __S(11) as any as S.Schema<OverTheBoxDeviceAction>,
+  input: CreateOverTheBoxDeviceActionRequest,
+  output: OverTheBoxDeviceAction,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -829,8 +1372,8 @@ export const createOverTheBoxDeviceBackup: API.OperationMethod<
   CreateOverTheBoxDeviceBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CreateOverTheBoxDeviceBackupRequest>,
-  output: __S(11) as any as S.Schema<OverTheBoxDeviceAction>,
+  input: CreateOverTheBoxDeviceBackupRequest,
+  output: OverTheBoxDeviceAction,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -844,8 +1387,8 @@ export const createOverTheBoxDeviceLog: API.OperationMethod<
   CreateOverTheBoxDeviceLogError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CreateOverTheBoxDeviceLogRequest>,
-  output: __S(14) as any as S.Schema<OverTheBoxTemporaryLogsLink>,
+  input: CreateOverTheBoxDeviceLogRequest,
+  output: OverTheBoxTemporaryLogsLink,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -859,8 +1402,8 @@ export const createOverTheBoxLinkDevice: API.OperationMethod<
   CreateOverTheBoxLinkDeviceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<CreateOverTheBoxLinkDeviceRequest>,
-  output: __S(1) as any as S.Schema<CreateOverTheBoxLinkDeviceResponse>,
+  input: CreateOverTheBoxLinkDeviceRequest,
+  output: CreateOverTheBoxLinkDeviceResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -874,8 +1417,8 @@ export const createOverTheBoxLinkHardware: API.OperationMethod<
   CreateOverTheBoxLinkHardwareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CreateOverTheBoxLinkHardwareRequest>,
-  output: __S(1) as any as S.Schema<CreateOverTheBoxLinkHardwareResponse>,
+  input: CreateOverTheBoxLinkHardwareRequest,
+  output: CreateOverTheBoxLinkHardwareResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -889,8 +1432,8 @@ export const createOverTheBoxMigrationChangeOffer: API.OperationMethod<
   CreateOverTheBoxMigrationChangeOfferError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<CreateOverTheBoxMigrationChangeOfferRequest>,
-  output: __S(18) as any as S.Schema<OverTheBoxOrderMigration>,
+  input: CreateOverTheBoxMigrationChangeOfferRequest,
+  output: OverTheBoxOrderMigration,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -904,8 +1447,8 @@ export const createOverTheBoxRemoteAccess: API.OperationMethod<
   CreateOverTheBoxRemoteAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<CreateOverTheBoxRemoteAccessRequest>,
-  output: __S(22) as any as S.Schema<OverTheBoxRemoteAccess>,
+  input: CreateOverTheBoxRemoteAccessRequest,
+  output: OverTheBoxRemoteAccess,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -919,8 +1462,8 @@ export const deleteOverTheBox: API.OperationMethod<
   DeleteOverTheBoxError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<DeleteOverTheBoxRequest>,
-  output: __S(24) as any as S.Schema<DeleteOverTheBoxResponse>,
+  input: DeleteOverTheBoxRequest,
+  output: DeleteOverTheBoxResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -934,8 +1477,8 @@ export const deleteOverTheBoxBackup: API.OperationMethod<
   DeleteOverTheBoxBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<DeleteOverTheBoxBackupRequest>,
-  output: __S(24) as any as S.Schema<DeleteOverTheBoxBackupResponse>,
+  input: DeleteOverTheBoxBackupRequest,
+  output: DeleteOverTheBoxBackupResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -949,8 +1492,8 @@ export const deleteOverTheBoxDevice: API.OperationMethod<
   DeleteOverTheBoxDeviceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<DeleteOverTheBoxDeviceRequest>,
-  output: __S(24) as any as S.Schema<DeleteOverTheBoxDeviceResponse>,
+  input: DeleteOverTheBoxDeviceRequest,
+  output: DeleteOverTheBoxDeviceResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -964,8 +1507,8 @@ export const deleteOverTheBoxRemoteAccess: API.OperationMethod<
   DeleteOverTheBoxRemoteAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<DeleteOverTheBoxRemoteAccessRequest>,
-  output: __S(1) as any as S.Schema<DeleteOverTheBoxRemoteAccessResponse>,
+  input: DeleteOverTheBoxRemoteAccessRequest,
+  output: DeleteOverTheBoxRemoteAccessResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -979,8 +1522,8 @@ export const getOverTheBox: API.OperationMethod<
   GetOverTheBoxError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<GetOverTheBoxRequest>,
-  output: __S(32) as any as S.Schema<OverTheBoxServiceWithIAM>,
+  input: GetOverTheBoxRequest,
+  output: OverTheBoxServiceWithIAM,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -994,8 +1537,8 @@ export const getOverTheBoxBackup: API.OperationMethod<
   GetOverTheBoxBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<GetOverTheBoxBackupRequest>,
-  output: __S(34) as any as S.Schema<OverTheBoxBackup>,
+  input: GetOverTheBoxBackupRequest,
+  output: OverTheBoxBackup,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1009,8 +1552,8 @@ export const getOverTheBoxDevice: API.OperationMethod<
   GetOverTheBoxDeviceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<GetOverTheBoxDeviceRequest>,
-  output: __S(40) as any as S.Schema<OverTheBoxDevice>,
+  input: GetOverTheBoxDeviceRequest,
+  output: OverTheBoxDevice,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1024,8 +1567,8 @@ export const getOverTheBoxDeviceAction: API.OperationMethod<
   GetOverTheBoxDeviceActionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<GetOverTheBoxDeviceActionRequest>,
-  output: __S(11) as any as S.Schema<OverTheBoxDeviceAction>,
+  input: GetOverTheBoxDeviceActionRequest,
+  output: OverTheBoxDeviceAction,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1039,8 +1582,8 @@ export const getOverTheBoxDeviceHardware: API.OperationMethod<
   GetOverTheBoxDeviceHardwareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<GetOverTheBoxDeviceHardwareRequest>,
-  output: __S(43) as any as S.Schema<OverTheBoxHardware>,
+  input: GetOverTheBoxDeviceHardwareRequest,
+  output: OverTheBoxHardware,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1054,8 +1597,8 @@ export const getOverTheBoxHardware: API.OperationMethod<
   GetOverTheBoxHardwareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<GetOverTheBoxHardwareRequest>,
-  output: __S(45) as any as S.Schema<OverTheBoxHardwareWithIAM>,
+  input: GetOverTheBoxHardwareRequest,
+  output: OverTheBoxHardwareWithIAM,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1069,8 +1612,8 @@ export const getOverTheBoxIps: API.OperationMethod<
   GetOverTheBoxIpsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<GetOverTheBoxIpsRequest>,
-  output: __S(47) as any as S.Schema<OtbServiceIp>,
+  input: GetOverTheBoxIpsRequest,
+  output: OtbServiceIp,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1084,8 +1627,8 @@ export const getOverTheBoxRemoteAccess: API.OperationMethod<
   GetOverTheBoxRemoteAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<GetOverTheBoxRemoteAccessRequest>,
-  output: __S(22) as any as S.Schema<OverTheBoxRemoteAccess>,
+  input: GetOverTheBoxRemoteAccessRequest,
+  output: OverTheBoxRemoteAccess,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1099,8 +1642,8 @@ export const getOverTheBoxServiceInfos: API.OperationMethod<
   GetOverTheBoxServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetOverTheBoxServiceInfosRequest>,
-  output: __S(51) as any as S.Schema<ServicesService>,
+  input: GetOverTheBoxServiceInfosRequest,
+  output: ServicesService,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1114,8 +1657,8 @@ export const getOverTheBoxTask: API.OperationMethod<
   GetOverTheBoxTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<GetOverTheBoxTaskRequest>,
-  output: __S(53) as any as S.Schema<OverTheBoxTask>,
+  input: GetOverTheBoxTaskRequest,
+  output: OverTheBoxTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1129,8 +1672,8 @@ export const listOverTheBox: API.OperationMethod<
   ListOverTheBoxError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<ListOverTheBoxRequest>,
-  output: __S(57) as any as S.Schema<ListOverTheBoxResponse>,
+  input: ListOverTheBoxRequest,
+  output: ListOverTheBoxResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1144,8 +1687,8 @@ export const listOverTheBoxAvailableOffers: API.OperationMethod<
   ListOverTheBoxAvailableOffersError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<ListOverTheBoxAvailableOffersRequest>,
-  output: __S(60) as any as S.Schema<ListOverTheBoxAvailableOffersResponse>,
+  input: ListOverTheBoxAvailableOffersRequest,
+  output: ListOverTheBoxAvailableOffersResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1159,8 +1702,8 @@ export const listOverTheBoxAvailableReleaseChannels: API.OperationMethod<
   ListOverTheBoxAvailableReleaseChannelsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<ListOverTheBoxAvailableReleaseChannelsRequest>,
-  output: __S(62) as any as S.Schema<ListOverTheBoxAvailableReleaseChannelsResponse>,
+  input: ListOverTheBoxAvailableReleaseChannelsRequest,
+  output: ListOverTheBoxAvailableReleaseChannelsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1174,8 +1717,8 @@ export const listOverTheBoxBackups: API.OperationMethod<
   ListOverTheBoxBackupsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<ListOverTheBoxBackupsRequest>,
-  output: __S(62) as any as S.Schema<ListOverTheBoxBackupsResponse>,
+  input: ListOverTheBoxBackupsRequest,
+  output: ListOverTheBoxBackupsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1189,8 +1732,8 @@ export const listOverTheBoxDeviceActions: API.OperationMethod<
   ListOverTheBoxDeviceActionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<ListOverTheBoxDeviceActionsRequest>,
-  output: __S(62) as any as S.Schema<ListOverTheBoxDeviceActionsResponse>,
+  input: ListOverTheBoxDeviceActionsRequest,
+  output: ListOverTheBoxDeviceActionsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1204,8 +1747,8 @@ export const listOverTheBoxDeviceAvailableActions: API.OperationMethod<
   ListOverTheBoxDeviceAvailableActionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<ListOverTheBoxDeviceAvailableActionsRequest>,
-  output: __S(68) as any as S.Schema<ListOverTheBoxDeviceAvailableActionsResponse>,
+  input: ListOverTheBoxDeviceAvailableActionsRequest,
+  output: ListOverTheBoxDeviceAvailableActionsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1219,8 +1762,8 @@ export const listOverTheBoxHardware: API.OperationMethod<
   ListOverTheBoxHardwareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<ListOverTheBoxHardwareRequest>,
-  output: __S(62) as any as S.Schema<ListOverTheBoxHardwareResponse>,
+  input: ListOverTheBoxHardwareRequest,
+  output: ListOverTheBoxHardwareResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1234,8 +1777,8 @@ export const listOverTheBoxHardwareAvailable: API.OperationMethod<
   ListOverTheBoxHardwareAvailableError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<ListOverTheBoxHardwareAvailableRequest>,
-  output: __S(62) as any as S.Schema<ListOverTheBoxHardwareAvailableResponse>,
+  input: ListOverTheBoxHardwareAvailableRequest,
+  output: ListOverTheBoxHardwareAvailableResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1249,8 +1792,8 @@ export const listOverTheBoxIps: API.OperationMethod<
   ListOverTheBoxIpsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<ListOverTheBoxIpsRequest>,
-  output: __S(62) as any as S.Schema<ListOverTheBoxIpsResponse>,
+  input: ListOverTheBoxIpsRequest,
+  output: ListOverTheBoxIpsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1264,8 +1807,8 @@ export const listOverTheBoxMigrationOffers: API.OperationMethod<
   ListOverTheBoxMigrationOffersError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<ListOverTheBoxMigrationOffersRequest>,
-  output: __S(78) as any as S.Schema<ListOverTheBoxMigrationOffersResponse>,
+  input: ListOverTheBoxMigrationOffersRequest,
+  output: ListOverTheBoxMigrationOffersResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1279,8 +1822,8 @@ export const listOverTheBoxRemoteAccesses: API.OperationMethod<
   ListOverTheBoxRemoteAccessesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<ListOverTheBoxRemoteAccessesRequest>,
-  output: __S(62) as any as S.Schema<ListOverTheBoxRemoteAccessesResponse>,
+  input: ListOverTheBoxRemoteAccessesRequest,
+  output: ListOverTheBoxRemoteAccessesResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1294,8 +1837,8 @@ export const listOverTheBoxStatistics: API.OperationMethod<
   ListOverTheBoxStatisticsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<ListOverTheBoxStatisticsRequest>,
-  output: __S(87) as any as S.Schema<ListOverTheBoxStatisticsResponse>,
+  input: ListOverTheBoxStatisticsRequest,
+  output: ListOverTheBoxStatisticsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1309,8 +1852,8 @@ export const listOverTheBoxTasks: API.OperationMethod<
   ListOverTheBoxTasksError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<ListOverTheBoxTasksRequest>,
-  output: __S(62) as any as S.Schema<ListOverTheBoxTasksResponse>,
+  input: ListOverTheBoxTasksRequest,
+  output: ListOverTheBoxTasksResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1324,8 +1867,8 @@ export const putOverTheBox: API.OperationMethod<
   PutOverTheBoxError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<PutOverTheBoxRequest>,
-  output: __S(24) as any as S.Schema<PutOverTheBoxResponse>,
+  input: PutOverTheBoxRequest,
+  output: PutOverTheBoxResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1339,8 +1882,8 @@ export const putOverTheBoxAutoMTU: API.OperationMethod<
   PutOverTheBoxAutoMTUError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<PutOverTheBoxAutoMTURequest>,
-  output: __S(24) as any as S.Schema<PutOverTheBoxAutoMTUResponse>,
+  input: PutOverTheBoxAutoMTURequest,
+  output: PutOverTheBoxAutoMTUResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1354,8 +1897,8 @@ export const putOverTheBoxIpv6: API.OperationMethod<
   PutOverTheBoxIpv6Error,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<PutOverTheBoxIpv6Request>,
-  output: __S(53) as any as S.Schema<OverTheBoxTask>,
+  input: PutOverTheBoxIpv6Request,
+  output: OverTheBoxTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1369,8 +1912,8 @@ export const putOverTheBoxServiceInfos: API.OperationMethod<
   PutOverTheBoxServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<PutOverTheBoxServiceInfosRequest>,
-  output: __S(1) as any as S.Schema<PutOverTheBoxServiceInfosResponse>,
+  input: PutOverTheBoxServiceInfosRequest,
+  output: PutOverTheBoxServiceInfosResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1384,8 +1927,8 @@ export const restoreOverTheBoxDeviceBackup: API.OperationMethod<
   RestoreOverTheBoxDeviceBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<RestoreOverTheBoxDeviceBackupRequest>,
-  output: __S(95) as any as S.Schema<RestoreOverTheBoxDeviceBackupResponse>,
+  input: RestoreOverTheBoxDeviceBackupRequest,
+  output: RestoreOverTheBoxDeviceBackupResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1439,7 +1982,9 @@ function __c0(j: number): any {
     case 4:
       return S.Array(S.Number);
     case 5:
-      return S.suspend(() => __S(4).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        CreateOverTheBoxChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "CreateOverTheBoxChangeContactResponse",
       });
     case 6:
@@ -1463,9 +2008,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(OverTheBoxDeviceForRegistration);
     case 1:
-      return S.suspend(() => __S(8).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        CreateOverTheBoxDeviceResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "CreateOverTheBoxDeviceResponse",
       });
     case 2:
@@ -1486,7 +2033,7 @@ function __c1(j: number): any {
           createdAt: S.optional(S.String),
           details: S.optional(S.String),
           name: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(OverTheBoxActionStatusEnum),
           todoDate: S.optional(S.String),
           updatedAt: S.optional(S.String),
         }),
@@ -1607,14 +2154,14 @@ function __c2(j: number): any {
           accepted: S.optional(S.Boolean),
           askDate: S.optional(S.String),
           authorizedBy: S.optional(S.NullOr(S.String)),
-          connectionInfos: S.optional(__S(20)),
+          connectionInfos: S.optional(OverTheBoxRemoteAccessConnectionInfos),
           deletedAt: S.optional(S.NullOr(S.String)),
           dockerVersion: S.optional(S.String),
           expirationDate: S.optional(S.String),
           exposedPort: S.optional(S.Number),
           remoteAccessId: S.optional(S.String),
-          remoteUserInfos: S.optional(__S(21)),
-          status: S.optional(S.String),
+          remoteUserInfos: S.optional(OverTheBoxRemoteAccessUserInfos),
+          status: S.optional(OverTheBoxRemoteAccessStatusEnum),
         }),
       ).annotate({ identifier: "OverTheBoxRemoteAccess" });
     case 7:
@@ -1690,7 +2237,7 @@ function __c3(j: number): any {
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(30))),
+          tags: S.optional(S.NullOr(IamResourceMetadataTagsMap)),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
@@ -1702,20 +2249,20 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SOCKSProxyEnabled: S.optional(S.Boolean),
-          autoMTU: S.optional(S.String),
+          autoMTU: S.optional(OverTheBoxAvailableStatusEnum),
           autoUpgrade: S.optional(S.Boolean),
           bandwidth: S.optional(S.Number),
-          configurationMode: S.optional(S.String),
+          configurationMode: S.optional(OverTheBoxServiceConfigurationModeEnum),
           customerDescription: S.optional(S.NullOr(S.String)),
-          graphEndpoint: S.optional(S.NullOr(__S(29))),
-          iam: S.optional(S.NullOr(__S(31))),
+          graphEndpoint: S.optional(S.NullOr(OverTheBoxGraphEndpoint)),
+          iam: S.optional(S.NullOr(IamResourceMetadata)),
           ipv6Enabled: S.optional(S.Boolean),
           offer: S.optional(S.String),
           prettyOfferName: S.optional(S.String),
           releaseChannel: S.optional(S.String),
           serviceName: S.optional(S.String),
-          status: S.optional(S.String),
-          tunnelMode: S.optional(S.String),
+          status: S.optional(OverTheBoxServiceStatusEnum),
+          tunnelMode: S.optional(OverTheBoxTunnelModeEnum),
         }),
       ).annotate({ identifier: "OverTheBoxServiceWithIAM" });
     case 1:
@@ -1751,10 +2298,10 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           device: S.optional(S.NullOr(S.String)),
-          dnsServers: S.optional(S.NullOr(__S(36))),
+          dnsServers: S.optional(S.NullOr(OverTheBoxDeviceInterfaceDnsServersList)),
           gateway: S.optional(S.NullOr(S.String)),
           ip: S.optional(S.NullOr(S.String)),
-          multipathStatus: S.optional(S.String),
+          multipathStatus: S.optional(OverTheBoxMultipathStatusEnum),
           name: S.optional(S.String),
           netmask: S.optional(S.NullOr(S.String)),
           publicIp: S.optional(S.NullOr(S.String)),
@@ -1763,7 +2310,7 @@ function __c4(j: number): any {
         identifier: "OverTheBoxDeviceInterface",
       });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(OverTheBoxDeviceInterface);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1788,9 +2335,9 @@ function __c5(j: number): any {
           availableUpdate: S.optional(S.Boolean),
           deviceId: S.optional(S.String),
           lastSeen: S.optional(S.String),
-          networkInterfaces: S.optional(__S(38)),
+          networkInterfaces: S.optional(OverTheBoxDeviceNetworkInterfacesList),
           publicIp: S.optional(S.String),
-          system: S.optional(S.NullOr(__S(39))),
+          system: S.optional(S.NullOr(OverTheBoxDeviceSystem)),
           systemVersion: S.optional(S.String),
           version: S.optional(S.String),
         }),
@@ -1843,7 +2390,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           canBeLinkedToService: S.optional(S.Boolean),
-          iam: S.optional(S.NullOr(__S(31))),
+          iam: S.optional(S.NullOr(IamResourceMetadata)),
           mac: S.optional(S.NullOr(S.String)),
           model: S.optional(S.String),
           name: S.optional(S.String),
@@ -1863,11 +2410,11 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          geolocation: S.optional(S.String),
+          geolocation: S.optional(OtbServiceIpGeolocationEnum),
           ip: S.optional(S.String),
           range: S.optional(S.Number),
-          status: S.optional(S.String),
-          version: S.optional(S.String),
+          status: S.optional(OtbServiceIpStatusEnum),
+          version: S.optional(OtbServiceIpVersionEnum),
         }),
       ).annotate({ identifier: "OtbServiceIp" });
   }
@@ -1920,11 +2467,11 @@ function __c6(j: number): any {
           domain: S.optional(S.String),
           engagedUpTo: S.optional(S.NullOr(S.String)),
           expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(__S(4))),
-          renew: S.optional(S.NullOr(__S(50))),
-          renewalType: S.optional(S.String),
+          possibleRenewPeriod: S.optional(S.NullOr(ServicesServicePossibleRenewPeriodList)),
+          renew: S.optional(S.NullOr(ServiceRenewType)),
+          renewalType: S.optional(ServiceRenewalTypeEnum),
           serviceId: S.optional(S.Number),
-          status: S.optional(S.String),
+          status: S.optional(ServiceStateEnum),
         }),
       ).annotate({ identifier: "ServicesService" });
     case 4:
@@ -1940,14 +2487,14 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(OverTheBoxTaskStatusEnum),
           taskId: S.optional(S.String),
         }),
       ).annotate({ identifier: "OverTheBoxTask" });
     case 6:
-      return S.Array(__S(24));
+      return S.Array(IamResourceTagFilterInput);
     case 7:
-      return S.Record(S.String, __S(54));
+      return S.Record(S.String, ListOverTheBoxRequestIamTagsValueList);
   }
 }
 function __c7(j: number): any {
@@ -1955,11 +2502,11 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(__S(55).pipe(T.Query())),
+          iamTags: S.optional(ListOverTheBoxRequestIamTagsMap.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/overTheBox", code: 200 })),
       ).annotate({ identifier: "ListOverTheBoxRequest" });
     case 1:
-      return S.suspend(() => __S(36).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListOverTheBoxResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOverTheBoxResponse",
       });
     case 2:
@@ -1969,9 +2516,11 @@ function __c7(j: number): any {
         identifier: "ListOverTheBoxAvailableOffersRequest",
       });
     case 3:
-      return S.Array(S.String);
+      return S.Array(PriceOverTheBoxOfferEnum);
     case 4:
-      return S.suspend(() => __S(59).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListOverTheBoxAvailableOffersResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListOverTheBoxAvailableOffersResponse",
       });
     case 5:
@@ -1989,7 +2538,9 @@ function __c7(j: number): any {
         identifier: "ListOverTheBoxAvailableReleaseChannelsRequest",
       });
     case 6:
-      return S.suspend(() => __S(36).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListOverTheBoxAvailableReleaseChannelsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListOverTheBoxAvailableReleaseChannelsResponse",
       });
     case 7:
@@ -2009,7 +2560,7 @@ function __c8(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           name: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(OverTheBoxActionStatusEnum.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/overTheBox/{serviceName}/device/actions", code: 200 }),
         ),
@@ -2040,15 +2591,17 @@ function __c8(j: number): any {
         identifier: "OverTheBoxAvailableDeviceAction",
       });
     case 3:
-      return S.Array(__S(66));
+      return S.Array(OverTheBoxAvailableDeviceAction);
     case 4:
-      return S.suspend(() => __S(67).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListOverTheBoxDeviceAvailableActionsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListOverTheBoxDeviceAvailableActionsResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(__S(55).pipe(T.Query())),
+          iamTags: S.optional(ListOverTheBoxHardwareRequestIamTagsMap.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/overTheBox/hardware", code: 200 })),
       ).annotate({
         identifier: "ListOverTheBoxHardwareRequest",
@@ -2084,7 +2637,7 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          currencyCode: S.optional(S.String),
+          currencyCode: S.optional(OrderCurrencyCodeEnum),
           text: S.optional(S.String),
           value: S.optional(S.Number),
         }),
@@ -2094,33 +2647,35 @@ function __c9(j: number): any {
         S.Struct({
           hardwareDisplayName: S.optional(S.NullOr(S.String)),
           hardwareName: S.optional(S.NullOr(S.String)),
-          hardwarePrice: S.optional(S.NullOr(__S(73))),
+          hardwarePrice: S.optional(S.NullOr(OrderPrice)),
         }),
       ).annotate({
         identifier: "OverTheBoxHardwareDetails",
       });
     case 3:
-      return S.Array(__S(74));
+      return S.Array(OverTheBoxHardwareDetails);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          currentOfferPrice: S.optional(__S(73)),
+          currentOfferPrice: S.optional(OrderPrice),
           description: S.optional(S.String),
           engagementMonths: S.optional(S.Number),
           hardwareAvailable: S.optional(S.Boolean),
           hardwareName: S.optional(S.NullOr(S.String)),
-          hardwarePrice: S.optional(S.NullOr(__S(73))),
-          hardwares: S.optional(__S(75)),
+          hardwarePrice: S.optional(S.NullOr(OrderPrice)),
+          hardwares: S.optional(OverTheBoxAvailableMigrationOfferHardwaresList),
           offer: S.optional(S.String),
-          price: S.optional(__S(73)),
+          price: S.optional(OrderPrice),
         }),
       ).annotate({
         identifier: "OverTheBoxAvailableMigrationOffer",
       });
     case 5:
-      return S.Array(__S(76));
+      return S.Array(OverTheBoxAvailableMigrationOffer);
     case 6:
-      return S.suspend(() => __S(77).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListOverTheBoxMigrationOffersResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListOverTheBoxMigrationOffersResponse",
       });
     case 7:
@@ -2141,8 +2696,8 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          metricsType: S.String.pipe(T.Query()),
-          period: S.optional(S.String.pipe(T.Query())),
+          metricsType: OtbDeviceStatisticsTypeEnum.pipe(T.Query()),
+          period: S.optional(OtbDeviceStatisticsPeriodEnum.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/overTheBox/{serviceName}/statistics", code: 200 })),
       ).annotate({
         identifier: "ListOverTheBoxStatisticsRequest",
@@ -2155,7 +2710,7 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "OtbDeviceStatisticsPoint" });
     case 2:
-      return S.Array(__S(81));
+      return S.Array(OtbDeviceStatisticsPoint);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2164,20 +2719,22 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "OtbDeviceStatisticsTag" });
     case 4:
-      return S.Array(__S(83));
+      return S.Array(OtbDeviceStatisticsTag);
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          points: S.optional(__S(82)),
-          tags: S.optional(__S(84)),
-          unit: S.optional(S.String),
+          points: S.optional(OtbDeviceStatisticsPointsList),
+          tags: S.optional(OtbDeviceStatisticsTagsList),
+          unit: S.optional(OtbDeviceStatisticsUnitEnum),
         }),
       ).annotate({ identifier: "OtbDeviceStatistics" });
     case 6:
-      return S.Array(__S(85));
+      return S.Array(OtbDeviceStatistics);
     case 7:
-      return S.suspend(() => __S(86).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListOverTheBoxStatisticsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListOverTheBoxStatisticsResponse",
       });
   }
@@ -2189,7 +2746,7 @@ function __c11(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           name: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(OverTheBoxTaskStatusEnum.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/overTheBox/{serviceName}/tasks", code: 200 })),
       ).annotate({
         identifier: "ListOverTheBoxTasksRequest",
@@ -2207,7 +2764,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          mtuAuto: S.String,
+          mtuAuto: OverTheBoxAvailableStatusEnum,
         }).pipe(T.Http({ method: "PUT", uri: "/overTheBox/{serviceName}/autoMTU", code: 200 })),
       ).annotate({
         identifier: "PutOverTheBoxAutoMTURequest",
@@ -2223,7 +2780,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(__S(50))),
+          renew: S.optional(S.NullOr(ServiceRenewType)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/overTheBox/{serviceName}/serviceInfos", code: 200 }),
         ),
@@ -2246,43 +2803,12 @@ function __c11(j: number): any {
         identifier: "RestoreOverTheBoxDeviceBackupRequest",
       });
     case 6:
-      return S.Array(__S(11));
+      return S.Array(OverTheBoxDeviceAction);
     case 7:
-      return S.suspend(() => __S(94).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        RestoreOverTheBoxDeviceBackupResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "RestoreOverTheBoxDeviceBackupResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
   }
 }

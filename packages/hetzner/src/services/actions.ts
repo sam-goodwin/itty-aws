@@ -6,8 +6,6 @@ import { UnknownHetznerError } from "../errors.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
@@ -15,16 +13,30 @@ export interface GetActionRequest {
   /** ID of the Action. */
   id: number;
 }
+const GetActionRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetActionRequest>;
+
 /** Status of the Action. */
 export type GetActionResponseActionStatus = "running" | "success" | "error";
+const GetActionResponseActionStatus = S.String;
+
 export interface GetActionResponseActionResourcesItem {
   /** ID of the Resource. */
   id: number;
   /** Type of the Resource. */
   type: string;
 }
+const GetActionResponseActionResourcesItem = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GetActionResponseActionResourcesItem>;
+
 /** Resources the Action relates to. */
 export type GetActionResponseActionResourcesList = Array<GetActionResponseActionResourcesItem>;
+const GetActionResponseActionResourcesList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetActionResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface GetActionResponseActionError {
   /** Fixed error code for machines. */
@@ -32,6 +44,11 @@ export interface GetActionResponseActionError {
   /** Error message for humans. */
   message: string;
 }
+const GetActionResponseActionError = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GetActionResponseActionError>;
+
 export interface GetActionResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -50,20 +67,39 @@ export interface GetActionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: GetActionResponseActionError | null;
 }
+const GetActionResponseAction = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetActionResponseAction>;
+
 export interface GetActionResponse {
   action: GetActionResponseAction;
 }
+const GetActionResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetActionResponse>;
+
 export type GetActionsRequestIdList = Array<number>;
+const GetActionsRequestIdList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetActionsRequestIdList>;
+
 export interface GetActionsRequest {
   /** Filter the actions by ID. May be used multiple times. The response will only contain actions matching the specified IDs. */
   id: GetActionsRequestIdList;
 }
+const GetActionsRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetActionsRequest>;
+
 /** Status of the Action. */
 export type GetActionsResponseActionsItemStatus = "running" | "success" | "error";
+const GetActionsResponseActionsItemStatus = S.String;
+
 export type GetActionsResponseActionsItemResourcesItem = GetActionResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type GetActionsResponseActionsItemResourcesList =
   Array<GetActionResponseActionResourcesItem>;
+const GetActionsResponseActionsItemResourcesList =
+  GetActionResponseActionResourcesList as any as S.Schema<GetActionsResponseActionsItemResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetActionsResponseActionsItemError = GetActionResponseActionError;
 export interface GetActionsResponseActionsItem {
@@ -84,10 +120,22 @@ export interface GetActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: GetActionResponseActionError | null;
 }
+const GetActionsResponseActionsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetActionsResponseActionsItem>;
+
 export type GetActionsResponseActionsList = Array<GetActionsResponseActionsItem>;
+const GetActionsResponseActionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetActionsResponseActionsList>;
+
 export interface GetActionsResponse {
   actions: GetActionsResponseActionsList;
 }
+const GetActionsResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetActionsResponse>;
+
 export type GetActionError = HetznerOpError;
 /** Get an Action Returns a specific Action object. */
 export const getAction: API.OperationMethod<
@@ -96,8 +144,8 @@ export const getAction: API.OperationMethod<
   GetActionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetActionRequest>,
-  output: __S(5) as any as S.Schema<GetActionResponse>,
+  input: GetActionRequest,
+  output: GetActionResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -111,8 +159,8 @@ export const getActions: API.OperationMethod<
   GetActionsError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<GetActionsRequest>,
-  output: __S(10) as any as S.Schema<GetActionsResponse>,
+  input: GetActionsRequest,
+  output: GetActionsResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -137,7 +185,7 @@ function __c0(j: number): any {
         identifier: "GetActionResponseActionResourcesItem",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(GetActionResponseActionResourcesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -152,18 +200,18 @@ function __c0(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: GetActionResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: GetActionResponseActionResourcesList,
+          error: S.NullOr(GetActionResponseActionError),
         }),
       ).annotate({ identifier: "GetActionResponseAction" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: __S(4),
+          action: GetActionResponseAction,
         }),
       ).annotate({ identifier: "GetActionResponse" });
     case 6:
@@ -171,7 +219,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          id: __S(6).pipe(T.Query()),
+          id: GetActionsRequestIdList.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/actions", code: 200 })),
       ).annotate({ identifier: "GetActionsRequest" });
   }
@@ -183,36 +231,23 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: GetActionsResponseActionsItemStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: GetActionsResponseActionsItemResourcesList,
+          error: S.NullOr(GetActionResponseActionError),
         }),
       ).annotate({
         identifier: "GetActionsResponseActionsItem",
       });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(GetActionsResponseActionsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(9),
+          actions: GetActionsResponseActionsList,
         }),
       ).annotate({ identifier: "GetActionsResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -65,7 +63,11 @@ export class NotFound
   ) {}
 
 export type TrustTrustTypeEnum = "TRUST_TYPE_UNSPECIFIED" | "FOREST" | "EXTERNAL";
+const TrustTrustTypeEnum = S.String;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
+
 export type TrustStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -73,11 +75,15 @@ export type TrustStateEnum =
   | "DELETING"
   | "CONNECTED"
   | "DISCONNECTED";
+const TrustStateEnum = S.String;
+
 export type TrustTrustDirectionEnum =
   | "TRUST_DIRECTION_UNSPECIFIED"
   | "INBOUND"
   | "OUTBOUND"
   | "BIDIRECTIONAL";
+const TrustTrustDirectionEnum = S.String;
+
 /** Represents a relationship between two domains. This allows a controller in one domain to authenticate a user in another domain. */
 export interface Trust {
   /** Output only. The last update time. */
@@ -103,19 +109,32 @@ export interface Trust {
   /** Output only. The last heartbeat time when the trust was known to be connected. */
   lastTrustHeartbeatTime?: string;
 }
+const Trust = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Trust>;
+
 /** Request message for AttachTrust */
 export interface AttachTrustRequest {
   /** Required. The domain trust resource. */
   trust?: Trust;
 }
+const AttachTrustRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AttachTrustRequest>;
+
 export interface AttachTrustProjectsLocationsGlobalDomainsRequest {
   /** Required. The resource domain name, project name and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
   name: string;
   /** Request body */
   body?: AttachTrustRequest;
 }
+const AttachTrustProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AttachTrustProjectsLocationsGlobalDomainsRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -125,6 +144,8 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
+const Status = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Status>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -138,16 +159,30 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
+const Operation = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Operation>;
+
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
+const CancelOperationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CancelOperationRequest>;
+
 export interface CancelProjectsLocationsGlobalOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
+const CancelProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CancelProjectsLocationsGlobalOperationsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+
 /** CheckMigrationPermissionRequest is the request message for CheckMigrationPermission method. */
 export type CheckMigrationPermissionRequest = CancelOperationRequest;
 export interface CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest {
@@ -156,10 +191,17 @@ export interface CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
+const CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest>;
+
 export type OnPremDomainSIDDetailsSidFilteringStateEnum =
   | "SID_FILTERING_STATE_UNSPECIFIED"
   | "ENABLED"
   | "DISABLED";
+const OnPremDomainSIDDetailsSidFilteringStateEnum = S.String;
+
 /** OnPremDomainDetails is the message which contains details of on-prem domain which is trusted and needs to be migrated. */
 export interface OnPremDomainSIDDetails {
   /** FQDN of the on-prem domain being migrated. */
@@ -167,12 +209,24 @@ export interface OnPremDomainSIDDetails {
   /** Current SID filtering state. */
   sidFilteringState?: OnPremDomainSIDDetailsSidFilteringStateEnum;
 }
+const OnPremDomainSIDDetails = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<OnPremDomainSIDDetails>;
+
 export type OnPremDomainSIDDetailsList = Array<OnPremDomainSIDDetails>;
+const OnPremDomainSIDDetailsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<OnPremDomainSIDDetailsList>;
+
 export type CheckMigrationPermissionResponseStateEnum =
   | "STATE_UNSPECIFIED"
   | "DISABLED"
   | "ENABLED"
   | "NEEDS_MAINTENANCE";
+const CheckMigrationPermissionResponseStateEnum = S.String;
+
 /** CheckMigrationPermissionResponse is the response message for CheckMigrationPermission method. */
 export interface CheckMigrationPermissionResponse {
   /** The state of SID filtering of all the domains which has trust established. */
@@ -180,7 +234,14 @@ export interface CheckMigrationPermissionResponse {
   /** The state of DomainMigration. */
   state?: CheckMigrationPermissionResponseStateEnum;
 }
+const CheckMigrationPermissionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CheckMigrationPermissionResponse>;
+
 export type TrustList = Array<Trust>;
+const TrustList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<TrustList>;
+
 export type DomainStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -190,7 +251,11 @@ export type DomainStateEnum =
   | "REPAIRING"
   | "PERFORMING_MAINTENANCE"
   | "UNAVAILABLE";
+const DomainStateEnum = S.String;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<StringMap>;
+
 /** Represents a managed Microsoft Active Directory domain. If the domain is being changed, it will be placed into the UPDATING state, which indicates that the resource is being reconciled. At this point, Get will reflect an intermediate state. */
 export interface Domain {
   /** Output only. The current trusts associated with the domain. */
@@ -220,6 +285,8 @@ export interface Domain {
   /** Output only. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`. */
   name?: string;
 }
+const Domain = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Domain>;
+
 export interface CreateProjectsLocationsGlobalDomainsRequest {
   /** Required. The resource project name and location using the form: `projects/{project_id}/locations/global` */
   parent: string;
@@ -228,8 +295,17 @@ export interface CreateProjectsLocationsGlobalDomainsRequest {
   /** Request body */
   body?: Domain;
 }
+const CreateProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateProjectsLocationsGlobalDomainsRequest>;
+
 export type BackupTypeEnum = "TYPE_UNSPECIFIED" | "ON_DEMAND" | "SCHEDULED" | "SCHEMA_EXTENSION";
+const BackupTypeEnum = S.String;
+
 export type BackupStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "FAILED" | "DELETING";
+const BackupStateEnum = S.String;
+
 /** Represents a Managed Microsoft Identities backup. */
 export interface Backup {
   /** Output only. Indicates whether it's an on-demand backup or scheduled. */
@@ -249,6 +325,8 @@ export interface Backup {
   /** Optional. Resource labels to represent user provided metadata. */
   labels?: StringMap;
 }
+const Backup = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Backup>;
+
 export interface CreateProjectsLocationsGlobalDomainsBackupsRequest {
   /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
   parent: string;
@@ -257,12 +335,19 @@ export interface CreateProjectsLocationsGlobalDomainsBackupsRequest {
   /** Request body */
   body?: Backup;
 }
+const CreateProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateProjectsLocationsGlobalDomainsBackupsRequest>;
+
 export type PeeringStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "CONNECTED"
   | "DISCONNECTED"
   | "DELETING";
+const PeeringStateEnum = S.String;
+
 /** Represents a Managed Microsoft Identities Peering. */
 export interface Peering {
   /** Output only. Unique name of the peering in this scope including projects and location using the form: `projects/{project_id}/locations/global/peerings/{peering_id}`. */
@@ -282,6 +367,8 @@ export interface Peering {
   /** Output only. The time the instance was created. */
   createTime?: string;
 }
+const Peering = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Peering>;
+
 export interface CreateProjectsLocationsGlobalPeeringsRequest {
   /** Required. Resource project name and location using the form: `projects/{project_id}/locations/global` */
   parent: string;
@@ -290,33 +377,65 @@ export interface CreateProjectsLocationsGlobalPeeringsRequest {
   /** Request body */
   body?: Peering;
 }
+const CreateProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateProjectsLocationsGlobalPeeringsRequest>;
+
 export interface DeleteProjectsLocationsGlobalDomainsRequest {
   /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
   name: string;
 }
+const DeleteProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DeleteProjectsLocationsGlobalDomainsRequest>;
+
 export interface DeleteProjectsLocationsGlobalDomainsBackupsRequest {
   /** Required. The backup resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}/backups/{backup_id}` */
   name: string;
 }
+const DeleteProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DeleteProjectsLocationsGlobalDomainsBackupsRequest>;
+
 export interface DeleteProjectsLocationsGlobalOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
+const DeleteProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DeleteProjectsLocationsGlobalOperationsRequest>;
+
 export interface DeleteProjectsLocationsGlobalPeeringsRequest {
   /** Required. Peering resource name using the form: `projects/{project_id}/locations/global/peerings/{peering_id}` */
   name: string;
 }
+const DeleteProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DeleteProjectsLocationsGlobalPeeringsRequest>;
+
 /** Request message for DetachTrust */
 export interface DetachTrustRequest {
   /** Required. The domain trust resource to removed. */
   trust?: Trust;
 }
+const DetachTrustRequest = AttachTrustRequest as any as S.Schema<DetachTrustRequest>;
+
 export interface DetachTrustProjectsLocationsGlobalDomainsRequest {
   /** Required. The resource domain name, project name, and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
   name: string;
   /** Request body */
   body?: DetachTrustRequest;
 }
+const DetachTrustProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DetachTrustProjectsLocationsGlobalDomainsRequest>;
+
 /** DisableMigrationRequest is the request message for DisableMigration method. */
 export type DisableMigrationRequest = CancelOperationRequest;
 export interface DisableMigrationProjectsLocationsGlobalDomainsRequest {
@@ -325,6 +444,11 @@ export interface DisableMigrationProjectsLocationsGlobalDomainsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
+const DisableMigrationProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DisableMigrationProjectsLocationsGlobalDomainsRequest>;
+
 /** DomainJoinMachineRequest is the request message for DomainJoinMachine method */
 export interface DomainJoinMachineRequest {
   /** Optional. OU name to which the VM needs to be domain joined. If the field is not provided, the VM is joined to the default OU which is created. The default OU for the domain join api is created as GCE Instances under the Cloud OU. Example - OU=GCE Instances,OU=Cloud,DC=ad,DC=test,DC=com If the field is provided, then the custom OU is searched for under GCE Instances OU. Example - if ou_name=test_ou then the VM is domain joined to the following OU: OU=test_ou,OU=GCE Instances,OU=Cloud,DC=ad,DC=test,DC=com if present. If OU is not present under GCE Instances, then error is returned. */
@@ -334,17 +458,32 @@ export interface DomainJoinMachineRequest {
   /** Optional. force if True, forces domain join even if the computer account already exists. */
   force?: boolean;
 }
+const DomainJoinMachineRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DomainJoinMachineRequest>;
+
 export interface DomainJoinMachineProjectsLocationsGlobalDomainsRequest {
   /** Required. The domain resource name using the form: projects/{project_id}/locations/global/domains/{domain_name} */
   domain: string;
   /** Request body */
   body?: DomainJoinMachineRequest;
 }
+const DomainJoinMachineProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DomainJoinMachineProjectsLocationsGlobalDomainsRequest>;
+
 /** DomainJoinMachineResponse is the response message for DomainJoinMachine method */
 export interface DomainJoinMachineResponse {
   /** The response is the offline domain join blob that is returned after running the djoin command. To correctly use the response of the API, please refer to the sample usage. */
   domainJoinBlob?: string;
 }
+const DomainJoinMachineResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DomainJoinMachineResponse>;
+
 /** OnPremDomainDetails is the message which contains details of on-prem domain which is trusted and needs to be migrated. */
 export interface OnPremDomainDetails {
   /** Required. FQDN of the on-prem domain being migrated. */
@@ -352,7 +491,14 @@ export interface OnPremDomainDetails {
   /** Optional. Option to disable SID filtering. */
   disableSidFiltering?: boolean;
 }
+const OnPremDomainDetails = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<OnPremDomainDetails>;
+
 export type OnPremDomainDetailsList = Array<OnPremDomainDetails>;
+const OnPremDomainDetailsList = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<OnPremDomainDetailsList>;
+
 /** EnableMigrationRequest is the request message for EnableMigration method. */
 export interface EnableMigrationRequest {
   /** Required. List of the on-prem domains to be migrated. */
@@ -360,12 +506,22 @@ export interface EnableMigrationRequest {
   /** Optional. Period after which the migration would be auto disabled. If unspecified, a default timeout of 48h is used. */
   enableDuration?: string;
 }
+const EnableMigrationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<EnableMigrationRequest>;
+
 export interface EnableMigrationProjectsLocationsGlobalDomainsRequest {
   /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
   domain: string;
   /** Request body */
   body?: EnableMigrationRequest;
 }
+const EnableMigrationProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<EnableMigrationProjectsLocationsGlobalDomainsRequest>;
+
 /** ExtendSchemaRequest is the request message for ExtendSchema method. */
 export interface ExtendSchemaRequest {
   /** File stored in Cloud Storage bucket and represented in the form projects/{project_id}/buckets/{bucket_name}/objects/{object_name} File should be in the same project as the domain. */
@@ -375,18 +531,30 @@ export interface ExtendSchemaRequest {
   /** File uploaded as a byte stream input. */
   fileContents?: string;
 }
+const ExtendSchemaRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<ExtendSchemaRequest>;
+
 export interface ExtendSchemaProjectsLocationsGlobalDomainsRequest {
   /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
   domain: string;
   /** Request body */
   body?: ExtendSchemaRequest;
 }
+const ExtendSchemaProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ExtendSchemaProjectsLocationsGlobalDomainsRequest>;
+
 export interface GetIamPolicyProjectsLocationsGlobalDomainsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
+const GetIamPolicyProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetIamPolicyProjectsLocationsGlobalDomainsRequest>;
+
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
@@ -398,6 +566,8 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
+const Expr = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Expr>;
+
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -407,7 +577,11 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
+const Binding = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Binding>;
+
 export type BindingList = Array<Binding>;
+const BindingList = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<BindingList>;
+
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -417,23 +591,42 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
+const Policy = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Policy>;
+
 export interface GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
+const GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest>;
+
 export interface GetIamPolicyProjectsLocationsGlobalPeeringsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
+const GetIamPolicyProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetIamPolicyProjectsLocationsGlobalPeeringsRequest>;
+
 export interface GetLdapssettingsProjectsLocationsGlobalDomainsRequest {
   /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
   name: string;
 }
+const GetLdapssettingsProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GetLdapssettingsProjectsLocationsGlobalDomainsRequest>;
+
 export type LDAPSSettingsStateEnum = "STATE_UNSPECIFIED" | "UPDATING" | "ACTIVE" | "FAILED";
+const LDAPSSettingsStateEnum = S.String;
+
 /** Certificate used to configure LDAPS. */
 export interface Certificate {
   /** The certificate expire time. */
@@ -447,6 +640,8 @@ export interface Certificate {
   /** The additional hostnames for the domain. */
   subjectAlternativeName?: StringList;
 }
+const Certificate = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<Certificate>;
+
 /** LDAPSSettings represents the ldaps settings for domain resource. LDAP is the Lightweight Directory Access Protocol, defined in https://tools.ietf.org/html/rfc4511. The settings object configures LDAP over SSL/TLS, whether it is over port 636 or the StartTLS operation. If LDAPSSettings is being changed, it will be placed into the UPDATING state, which indicates that the resource is being reconciled. At this point, Get will reflect an intermediate state. */
 export interface LDAPSSettings {
   /** Output only. Last update time. */
@@ -462,10 +657,17 @@ export interface LDAPSSettings {
   /** Output only. The certificate used to configure LDAPS. Certificates can be chained with a maximum length of 15. */
   certificate?: Certificate;
 }
+const LDAPSSettings = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<LDAPSSettings>;
+
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
+const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetProjectsLocationsRequest>;
+
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
@@ -479,19 +681,38 @@ export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
 }
+const Location = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Location>;
+
 export interface GetProjectsLocationsGlobalDomainsRequest {
   /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
   name: string;
 }
+const GetProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetProjectsLocationsGlobalDomainsRequest>;
+
 export interface GetProjectsLocationsGlobalDomainsBackupsRequest {
   /** Required. The backup resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}/backups/{backup_id}` */
   name: string;
 }
+const GetProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<GetProjectsLocationsGlobalDomainsBackupsRequest>;
+
 export interface GetProjectsLocationsGlobalDomainsSqlIntegrationsRequest {
   /** Required. SqlIntegration resource name using the form: `projects/{project_id}/locations/global/domains/*\/sqlIntegrations/{name}` */
   name: string;
 }
+const GetProjectsLocationsGlobalDomainsSqlIntegrationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GetProjectsLocationsGlobalDomainsSqlIntegrationsRequest>;
+
 export type SqlIntegrationStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "DELETING" | "READY";
+const SqlIntegrationStateEnum = S.String;
+
 /** Represents the Sql instance integrated with AD. */
 export interface SqlIntegration {
   /** Output only. The current state of the sql integration. */
@@ -505,14 +726,26 @@ export interface SqlIntegration {
   /** The unique name of the sql integration in the form of `projects/{project_id}/locations/global/domains/{domain_name}/sqlIntegrations/{sql_integration}` */
   name?: string;
 }
+const SqlIntegration = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<SqlIntegration>;
+
 export interface GetProjectsLocationsGlobalOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GetProjectsLocationsGlobalOperationsRequest>;
+
 export interface GetProjectsLocationsGlobalPeeringsRequest {
   /** Required. Peering resource name using the form: `projects/{project_id}/locations/global/peerings/{peering_id}` */
   name: string;
 }
+const GetProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<GetProjectsLocationsGlobalPeeringsRequest>;
+
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
@@ -525,7 +758,14 @@ export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
+const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListProjectsLocationsRequest>;
+
 export type LocationList = Array<Location>;
+const LocationList = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<LocationList>;
+
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -533,6 +773,11 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
+const ListLocationsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ListLocationsResponse>;
+
 export interface ListProjectsLocationsGlobalDomainsRequest {
   /** Optional. A filter specifying constraints of a list operation. For example, `Domain.fqdn="mydomain.myorginization"`. */
   filter?: string;
@@ -545,7 +790,14 @@ export interface ListProjectsLocationsGlobalDomainsRequest {
   /** The `next_page_token` value returned from a previous ListDomainsRequest request, if any. */
   pageToken?: string;
 }
+const ListProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListProjectsLocationsGlobalDomainsRequest>;
+
 export type DomainList = Array<Domain>;
+const DomainList = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<DomainList>;
+
 /** Response message for ListDomains */
 export interface ListDomainsResponse {
   /** A list of Managed Identities Service domains in the project. */
@@ -555,6 +807,8 @@ export interface ListDomainsResponse {
   /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
+const ListDomainsResponse = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<ListDomainsResponse>;
+
 export interface ListProjectsLocationsGlobalDomainsBackupsRequest {
   /** Optional. Specifies the ordering of results following syntax at https://cloud.google.com/apis/design/design_patterns#sorting_order. */
   orderBy?: string;
@@ -567,7 +821,14 @@ export interface ListProjectsLocationsGlobalDomainsBackupsRequest {
   /** Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
   pageSize?: number;
 }
+const ListProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListProjectsLocationsGlobalDomainsBackupsRequest>;
+
 export type BackupList = Array<Backup>;
+const BackupList = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<BackupList>;
+
 /** ListBackupsResponse is the response message for ListBackups method. */
 export interface ListBackupsResponse {
   /** Locations that could not be reached. */
@@ -577,6 +838,8 @@ export interface ListBackupsResponse {
   /** A list of Cloud AD backups in the domain. */
   backups?: BackupList;
 }
+const ListBackupsResponse = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<ListBackupsResponse>;
+
 export interface ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest {
   /** Optional. Filter specifying constraints of a list operation. For example, `SqlIntegration.name="sql"`. */
   filter?: string;
@@ -589,7 +852,14 @@ export interface ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest {
   /** Optional. Specifies the ordering of results following syntax at https://cloud.google.com/apis/design/design_patterns#sorting_order. */
   orderBy?: string;
 }
+const ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest>;
+
 export type SqlIntegrationList = Array<SqlIntegration>;
+const SqlIntegrationList = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<SqlIntegrationList>;
+
 /** ListSqlIntegrationsResponse is the response message for ListSqlIntegrations method. */
 export interface ListSqlIntegrationsResponse {
   /** A list of locations that could not be reached. */
@@ -599,6 +869,11 @@ export interface ListSqlIntegrationsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
+const ListSqlIntegrationsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ListSqlIntegrationsResponse>;
+
 export interface ListProjectsLocationsGlobalOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
@@ -611,7 +886,14 @@ export interface ListProjectsLocationsGlobalOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
+const ListProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ListProjectsLocationsGlobalOperationsRequest>;
+
 export type OperationList = Array<Operation>;
+const OperationList = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<OperationList>;
+
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -621,6 +903,11 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListProjectsLocationsGlobalPeeringsRequest {
   /** Optional. Filter specifying constraints of a list operation. For example, `peering.authoized_network ="/projects/myprojectid"`. */
   filter?: string;
@@ -633,7 +920,14 @@ export interface ListProjectsLocationsGlobalPeeringsRequest {
   /** Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
   pageSize?: number;
 }
+const ListProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListProjectsLocationsGlobalPeeringsRequest>;
+
 export type PeeringList = Array<Peering>;
+const PeeringList = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<PeeringList>;
+
 /** ListPeeringsResponse is the response message for ListPeerings method. */
 export interface ListPeeringsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -643,6 +937,8 @@ export interface ListPeeringsResponse {
   /** A list of Managed Identities Service Peerings in the project. */
   peerings?: PeeringList;
 }
+const ListPeeringsResponse = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ListPeeringsResponse>;
+
 export interface PatchProjectsLocationsGlobalDomainsRequest {
   /** Required. Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include fields from Domain: * `labels` * `locations` * `authorized_networks` * `audit_logs_enabled` */
   updateMask?: string;
@@ -651,6 +947,11 @@ export interface PatchProjectsLocationsGlobalDomainsRequest {
   /** Request body */
   body?: Domain;
 }
+const PatchProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<PatchProjectsLocationsGlobalDomainsRequest>;
+
 export interface PatchProjectsLocationsGlobalDomainsBackupsRequest {
   /** Required. Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields from Backup: * `labels` */
   updateMask?: string;
@@ -659,6 +960,11 @@ export interface PatchProjectsLocationsGlobalDomainsBackupsRequest {
   /** Request body */
   body?: Backup;
 }
+const PatchProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<PatchProjectsLocationsGlobalDomainsBackupsRequest>;
+
 export interface PatchProjectsLocationsGlobalPeeringsRequest {
   /** Output only. Unique name of the peering in this scope including projects and location using the form: `projects/{project_id}/locations/global/peerings/{peering_id}`. */
   name: string;
@@ -667,6 +973,11 @@ export interface PatchProjectsLocationsGlobalPeeringsRequest {
   /** Request body */
   body?: Peering;
 }
+const PatchProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<PatchProjectsLocationsGlobalPeeringsRequest>;
+
 /** Request message for ReconfigureTrust */
 export interface ReconfigureTrustRequest {
   /** Required. The fully-qualified target domain name which will be in trust with current domain. */
@@ -674,12 +985,22 @@ export interface ReconfigureTrustRequest {
   /** Required. The target DNS server IP addresses to resolve the remote domain involved in the trust. */
   targetDnsIpAddresses?: StringList;
 }
+const ReconfigureTrustRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ReconfigureTrustRequest>;
+
 export interface ReconfigureTrustProjectsLocationsGlobalDomainsRequest {
   /** Required. The resource domain name, project name and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
   name: string;
   /** Request body */
   body?: ReconfigureTrustRequest;
 }
+const ReconfigureTrustProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ReconfigureTrustProjectsLocationsGlobalDomainsRequest>;
+
 /** Request message for ResetAdminPassword */
 export type ResetAdminPasswordRequest = CancelOperationRequest;
 export interface ResetAdminPasswordProjectsLocationsGlobalDomainsRequest {
@@ -688,73 +1009,133 @@ export interface ResetAdminPasswordProjectsLocationsGlobalDomainsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
+const ResetAdminPasswordProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ResetAdminPasswordProjectsLocationsGlobalDomainsRequest>;
+
 /** Response message for ResetAdminPassword */
 export interface ResetAdminPasswordResponse {
   /** A random password. See admin for more information. */
   password?: string;
 }
+const ResetAdminPasswordResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ResetAdminPasswordResponse>;
+
 /** RestoreDomainRequest is the request received by RestoreDomain rpc */
 export interface RestoreDomainRequest {
   /** Required. ID of the backup to be restored */
   backupId?: string;
 }
+const RestoreDomainRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<RestoreDomainRequest>;
+
 export interface RestoreProjectsLocationsGlobalDomainsRequest {
   /** Required. resource name for the domain to which the backup belongs */
   name: string;
   /** Request body */
   body?: RestoreDomainRequest;
 }
+const RestoreProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<RestoreProjectsLocationsGlobalDomainsRequest>;
+
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
+const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<SetIamPolicyRequest>;
+
 export interface SetIamPolicyProjectsLocationsGlobalDomainsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<SetIamPolicyProjectsLocationsGlobalDomainsRequest>;
+
 export interface SetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<SetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest>;
+
 export interface SetIamPolicyProjectsLocationsGlobalPeeringsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<SetIamPolicyProjectsLocationsGlobalPeeringsRequest>;
+
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
+const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<TestIamPermissionsRequest>;
+
 export interface TestIamPermissionsProjectsLocationsGlobalDomainsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsGlobalDomainsRequest>;
+
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
+const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
+
 export interface TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest>;
+
 export interface TestIamPermissionsProjectsLocationsGlobalPeeringsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsGlobalPeeringsRequest>;
+
 export interface UpdateLdapssettingsProjectsLocationsGlobalDomainsRequest {
   /** The resource name of the LDAPS settings. Uses the form: `projects/{project}/locations/{location}/domains/{domain}`. */
   name: string;
@@ -763,17 +1144,29 @@ export interface UpdateLdapssettingsProjectsLocationsGlobalDomainsRequest {
   /** Request body */
   body?: LDAPSSettings;
 }
+const UpdateLdapssettingsProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<UpdateLdapssettingsProjectsLocationsGlobalDomainsRequest>;
+
 /** Request message for ValidateTrust */
 export interface ValidateTrustRequest {
   /** Required. The domain trust to validate trust state for. */
   trust?: Trust;
 }
+const ValidateTrustRequest = AttachTrustRequest as any as S.Schema<ValidateTrustRequest>;
+
 export interface ValidateTrustProjectsLocationsGlobalDomainsRequest {
   /** Required. The resource domain name, project name, and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
   name: string;
   /** Request body */
   body?: ValidateTrustRequest;
 }
+const ValidateTrustProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ValidateTrustProjectsLocationsGlobalDomainsRequest>;
+
 export type AttachTrustProjectsLocationsGlobalDomainsError =
   | NotFound
   | Forbidden
@@ -787,8 +1180,8 @@ export const attachTrustProjectsLocationsGlobalDomains: API.OperationMethod<
   AttachTrustProjectsLocationsGlobalDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<AttachTrustProjectsLocationsGlobalDomainsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: AttachTrustProjectsLocationsGlobalDomainsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -807,8 +1200,8 @@ export const cancelProjectsLocationsGlobalOperations: API.OperationMethod<
   CancelProjectsLocationsGlobalOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CancelProjectsLocationsGlobalOperationsRequest>,
-  output: __S(8) as any as S.Schema<Empty>,
+  input: CancelProjectsLocationsGlobalOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -827,8 +1220,8 @@ export const checkMigrationPermissionProjectsLocationsGlobalDomains: API.Operati
   CheckMigrationPermissionProjectsLocationsGlobalDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest>,
-  output: __S(13) as any as S.Schema<CheckMigrationPermissionResponse>,
+  input: CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest,
+  output: CheckMigrationPermissionResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -847,8 +1240,8 @@ export const createProjectsLocationsGlobalDomains: API.OperationMethod<
   CreateProjectsLocationsGlobalDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<CreateProjectsLocationsGlobalDomainsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsGlobalDomainsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -867,8 +1260,8 @@ export const createProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
   CreateProjectsLocationsGlobalDomainsBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<CreateProjectsLocationsGlobalDomainsBackupsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsGlobalDomainsBackupsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -887,8 +1280,8 @@ export const createProjectsLocationsGlobalPeerings: API.OperationMethod<
   CreateProjectsLocationsGlobalPeeringsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<CreateProjectsLocationsGlobalPeeringsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsGlobalPeeringsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -907,8 +1300,8 @@ export const deleteProjectsLocationsGlobalDomains: API.OperationMethod<
   DeleteProjectsLocationsGlobalDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<DeleteProjectsLocationsGlobalDomainsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsGlobalDomainsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -927,8 +1320,8 @@ export const deleteProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
   DeleteProjectsLocationsGlobalDomainsBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<DeleteProjectsLocationsGlobalDomainsBackupsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsGlobalDomainsBackupsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -947,8 +1340,8 @@ export const deleteProjectsLocationsGlobalOperations: API.OperationMethod<
   DeleteProjectsLocationsGlobalOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<DeleteProjectsLocationsGlobalOperationsRequest>,
-  output: __S(8) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsGlobalOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -967,8 +1360,8 @@ export const deleteProjectsLocationsGlobalPeerings: API.OperationMethod<
   DeleteProjectsLocationsGlobalPeeringsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<DeleteProjectsLocationsGlobalPeeringsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsGlobalPeeringsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -987,8 +1380,8 @@ export const detachTrustProjectsLocationsGlobalDomains: API.OperationMethod<
   DetachTrustProjectsLocationsGlobalDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<DetachTrustProjectsLocationsGlobalDomainsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: DetachTrustProjectsLocationsGlobalDomainsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1007,8 +1400,8 @@ export const disableMigrationProjectsLocationsGlobalDomains: API.OperationMethod
   DisableMigrationProjectsLocationsGlobalDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<DisableMigrationProjectsLocationsGlobalDomainsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: DisableMigrationProjectsLocationsGlobalDomainsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1027,8 +1420,8 @@ export const domainJoinMachineProjectsLocationsGlobalDomains: API.OperationMetho
   DomainJoinMachineProjectsLocationsGlobalDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<DomainJoinMachineProjectsLocationsGlobalDomainsRequest>,
-  output: __S(30) as any as S.Schema<DomainJoinMachineResponse>,
+  input: DomainJoinMachineProjectsLocationsGlobalDomainsRequest,
+  output: DomainJoinMachineResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1047,8 +1440,8 @@ export const enableMigrationProjectsLocationsGlobalDomains: API.OperationMethod<
   EnableMigrationProjectsLocationsGlobalDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<EnableMigrationProjectsLocationsGlobalDomainsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: EnableMigrationProjectsLocationsGlobalDomainsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1067,8 +1460,8 @@ export const extendSchemaProjectsLocationsGlobalDomains: API.OperationMethod<
   ExtendSchemaProjectsLocationsGlobalDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<ExtendSchemaProjectsLocationsGlobalDomainsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: ExtendSchemaProjectsLocationsGlobalDomainsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1082,8 +1475,8 @@ export const getIamPolicyProjectsLocationsGlobalDomains: API.OperationMethod<
   GetIamPolicyProjectsLocationsGlobalDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<GetIamPolicyProjectsLocationsGlobalDomainsRequest>,
-  output: __S(41) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsGlobalDomainsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1100,8 +1493,8 @@ export const getIamPolicyProjectsLocationsGlobalDomainsBackups: API.OperationMet
   GetIamPolicyProjectsLocationsGlobalDomainsBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest>,
-  output: __S(41) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1115,8 +1508,8 @@ export const getIamPolicyProjectsLocationsGlobalPeerings: API.OperationMethod<
   GetIamPolicyProjectsLocationsGlobalPeeringsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<GetIamPolicyProjectsLocationsGlobalPeeringsRequest>,
-  output: __S(41) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsGlobalPeeringsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1130,8 +1523,8 @@ export const getLdapssettingsProjectsLocationsGlobalDomains: API.OperationMethod
   GetLdapssettingsProjectsLocationsGlobalDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<GetLdapssettingsProjectsLocationsGlobalDomainsRequest>,
-  output: __S(46) as any as S.Schema<LDAPSSettings>,
+  input: GetLdapssettingsProjectsLocationsGlobalDomainsRequest,
+  output: LDAPSSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1145,8 +1538,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(48) as any as S.Schema<Location>,
+  input: GetProjectsLocationsRequest,
+  output: Location,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1160,8 +1553,8 @@ export const getProjectsLocationsGlobalDomains: API.OperationMethod<
   GetProjectsLocationsGlobalDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetProjectsLocationsGlobalDomainsRequest>,
-  output: __S(16) as any as S.Schema<Domain>,
+  input: GetProjectsLocationsGlobalDomainsRequest,
+  output: Domain,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1175,8 +1568,8 @@ export const getProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
   GetProjectsLocationsGlobalDomainsBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<GetProjectsLocationsGlobalDomainsBackupsRequest>,
-  output: __S(18) as any as S.Schema<Backup>,
+  input: GetProjectsLocationsGlobalDomainsBackupsRequest,
+  output: Backup,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1193,8 +1586,8 @@ export const getProjectsLocationsGlobalDomainsSqlIntegrations: API.OperationMeth
   GetProjectsLocationsGlobalDomainsSqlIntegrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<GetProjectsLocationsGlobalDomainsSqlIntegrationsRequest>,
-  output: __S(52) as any as S.Schema<SqlIntegration>,
+  input: GetProjectsLocationsGlobalDomainsSqlIntegrationsRequest,
+  output: SqlIntegration,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1208,8 +1601,8 @@ export const getProjectsLocationsGlobalOperations: API.OperationMethod<
   GetProjectsLocationsGlobalOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<GetProjectsLocationsGlobalOperationsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: GetProjectsLocationsGlobalOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1223,8 +1616,8 @@ export const getProjectsLocationsGlobalPeerings: API.OperationMethod<
   GetProjectsLocationsGlobalPeeringsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<GetProjectsLocationsGlobalPeeringsRequest>,
-  output: __S(20) as any as S.Schema<Peering>,
+  input: GetProjectsLocationsGlobalPeeringsRequest,
+  output: Peering,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1239,8 +1632,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(55) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(57) as any as S.Schema<ListLocationsResponse>,
+  input: ListProjectsLocationsRequest,
+  output: ListLocationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1256,8 +1649,8 @@ export const listProjectsLocationsGlobalDomains: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(58) as any as S.Schema<ListProjectsLocationsGlobalDomainsRequest>,
-  output: __S(60) as any as S.Schema<ListDomainsResponse>,
+  input: ListProjectsLocationsGlobalDomainsRequest,
+  output: ListDomainsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1273,8 +1666,8 @@ export const listProjectsLocationsGlobalDomainsBackups: API.PaginatedOperationMe
   GcpOpContext,
   ListBackupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(61) as any as S.Schema<ListProjectsLocationsGlobalDomainsBackupsRequest>,
-  output: __S(63) as any as S.Schema<ListBackupsResponse>,
+  input: ListProjectsLocationsGlobalDomainsBackupsRequest,
+  output: ListBackupsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1293,8 +1686,8 @@ export const listProjectsLocationsGlobalDomainsSqlIntegrations: API.PaginatedOpe
   GcpOpContext,
   ListSqlIntegrationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(64) as any as S.Schema<ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest>,
-  output: __S(66) as any as S.Schema<ListSqlIntegrationsResponse>,
+  input: ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest,
+  output: ListSqlIntegrationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1310,8 +1703,8 @@ export const listProjectsLocationsGlobalOperations: API.PaginatedOperationMethod
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(67) as any as S.Schema<ListProjectsLocationsGlobalOperationsRequest>,
-  output: __S(69) as any as S.Schema<ListOperationsResponse>,
+  input: ListProjectsLocationsGlobalOperationsRequest,
+  output: ListOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1327,8 +1720,8 @@ export const listProjectsLocationsGlobalPeerings: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPeeringsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(70) as any as S.Schema<ListProjectsLocationsGlobalPeeringsRequest>,
-  output: __S(72) as any as S.Schema<ListPeeringsResponse>,
+  input: ListProjectsLocationsGlobalPeeringsRequest,
+  output: ListPeeringsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1348,8 +1741,8 @@ export const patchProjectsLocationsGlobalDomains: API.OperationMethod<
   PatchProjectsLocationsGlobalDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<PatchProjectsLocationsGlobalDomainsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: PatchProjectsLocationsGlobalDomainsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1368,8 +1761,8 @@ export const patchProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
   PatchProjectsLocationsGlobalDomainsBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<PatchProjectsLocationsGlobalDomainsBackupsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: PatchProjectsLocationsGlobalDomainsBackupsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1388,8 +1781,8 @@ export const patchProjectsLocationsGlobalPeerings: API.OperationMethod<
   PatchProjectsLocationsGlobalPeeringsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<PatchProjectsLocationsGlobalPeeringsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: PatchProjectsLocationsGlobalPeeringsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1408,8 +1801,8 @@ export const reconfigureTrustProjectsLocationsGlobalDomains: API.OperationMethod
   ReconfigureTrustProjectsLocationsGlobalDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<ReconfigureTrustProjectsLocationsGlobalDomainsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: ReconfigureTrustProjectsLocationsGlobalDomainsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1428,8 +1821,8 @@ export const resetAdminPasswordProjectsLocationsGlobalDomains: API.OperationMeth
   ResetAdminPasswordProjectsLocationsGlobalDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<ResetAdminPasswordProjectsLocationsGlobalDomainsRequest>,
-  output: __S(79) as any as S.Schema<ResetAdminPasswordResponse>,
+  input: ResetAdminPasswordProjectsLocationsGlobalDomainsRequest,
+  output: ResetAdminPasswordResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1448,8 +1841,8 @@ export const restoreProjectsLocationsGlobalDomains: API.OperationMethod<
   RestoreProjectsLocationsGlobalDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<RestoreProjectsLocationsGlobalDomainsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: RestoreProjectsLocationsGlobalDomainsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1468,8 +1861,8 @@ export const setIamPolicyProjectsLocationsGlobalDomains: API.OperationMethod<
   SetIamPolicyProjectsLocationsGlobalDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<SetIamPolicyProjectsLocationsGlobalDomainsRequest>,
-  output: __S(41) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsGlobalDomainsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1488,8 +1881,8 @@ export const setIamPolicyProjectsLocationsGlobalDomainsBackups: API.OperationMet
   SetIamPolicyProjectsLocationsGlobalDomainsBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<SetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest>,
-  output: __S(41) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1508,8 +1901,8 @@ export const setIamPolicyProjectsLocationsGlobalPeerings: API.OperationMethod<
   SetIamPolicyProjectsLocationsGlobalPeeringsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<SetIamPolicyProjectsLocationsGlobalPeeringsRequest>,
-  output: __S(41) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsGlobalPeeringsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1528,8 +1921,8 @@ export const testIamPermissionsProjectsLocationsGlobalDomains: API.OperationMeth
   TestIamPermissionsProjectsLocationsGlobalDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<TestIamPermissionsProjectsLocationsGlobalDomainsRequest>,
-  output: __S(86) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsGlobalDomainsRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1548,8 +1941,8 @@ export const testIamPermissionsProjectsLocationsGlobalDomainsBackups: API.Operat
   TestIamPermissionsProjectsLocationsGlobalDomainsBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest>,
-  output: __S(86) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1568,8 +1961,8 @@ export const testIamPermissionsProjectsLocationsGlobalPeerings: API.OperationMet
   TestIamPermissionsProjectsLocationsGlobalPeeringsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<TestIamPermissionsProjectsLocationsGlobalPeeringsRequest>,
-  output: __S(86) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsGlobalPeeringsRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1588,8 +1981,8 @@ export const updateLdapssettingsProjectsLocationsGlobalDomains: API.OperationMet
   UpdateLdapssettingsProjectsLocationsGlobalDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<UpdateLdapssettingsProjectsLocationsGlobalDomainsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: UpdateLdapssettingsProjectsLocationsGlobalDomainsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1608,8 +2001,8 @@ export const validateTrustProjectsLocationsGlobalDomains: API.OperationMethod<
   ValidateTrustProjectsLocationsGlobalDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<ValidateTrustProjectsLocationsGlobalDomainsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: ValidateTrustProjectsLocationsGlobalDomainsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1624,29 +2017,29 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          trustType: S.optional(S.String),
+          trustType: S.optional(TrustTrustTypeEnum),
           stateDescription: S.optional(S.String),
           targetDomainName: S.optional(S.String),
           selectiveAuthentication: S.optional(S.Boolean),
           trustHandshakeSecret: S.optional(S.String),
           createTime: S.optional(S.String),
-          targetDnsIpAddresses: S.optional(__S(0)),
-          state: S.optional(S.String),
-          trustDirection: S.optional(S.String),
+          targetDnsIpAddresses: S.optional(StringList),
+          state: S.optional(TrustStateEnum),
+          trustDirection: S.optional(TrustTrustDirectionEnum),
           lastTrustHeartbeatTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Trust" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          trust: S.optional(__S(1)),
+          trust: S.optional(Trust),
         }),
       ).annotate({ identifier: "AttachTrustRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(2).pipe(T.HttpBody())),
+          body: S.optional(AttachTrustRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1660,23 +2053,23 @@ function __c0(j: number): any {
     case 4:
       return S.Record(S.String, S.Unknown);
     case 5:
-      return S.Array(__S(4));
+      return S.Array(DocumentMap);
     case 6:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
-          details: S.optional(__S(5)),
+          details: S.optional(DocumentMapList),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Status" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(__S(4)),
+          response: S.optional(DocumentMap),
           name: S.optional(S.String),
-          error: S.optional(__S(6)),
+          error: S.optional(Status),
           done: S.optional(S.Boolean),
-          metadata: S.optional(__S(4)),
+          metadata: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "Operation" });
   }
@@ -1691,7 +2084,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1706,7 +2099,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
-          body: S.optional(__S(8).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1721,22 +2114,22 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          sidFilteringState: S.optional(S.String),
+          sidFilteringState: S.optional(OnPremDomainSIDDetailsSidFilteringStateEnum),
         }),
       ).annotate({ identifier: "OnPremDomainSIDDetails" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(OnPremDomainSIDDetails);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          onpremDomains: S.optional(__S(12)),
-          state: S.optional(S.String),
+          onpremDomains: S.optional(OnPremDomainSIDDetailsList),
+          state: S.optional(CheckMigrationPermissionResponseStateEnum),
         }),
       ).annotate({
         identifier: "CheckMigrationPermissionResponse",
       });
     case 6:
-      return S.Array(__S(1));
+      return S.Array(Trust);
     case 7:
       return S.Record(S.String, S.String);
   }
@@ -1746,17 +2139,17 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          trusts: S.optional(__S(14)),
-          authorizedNetworks: S.optional(__S(0)),
+          trusts: S.optional(TrustList),
+          authorizedNetworks: S.optional(StringList),
           statusMessage: S.optional(S.String),
           admin: S.optional(S.String),
           fqdn: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(DomainStateEnum),
           reservedIpRange: S.optional(S.String),
           auditLogsEnabled: S.optional(S.Boolean),
           updateTime: S.optional(S.String),
-          locations: S.optional(__S(0)),
-          labels: S.optional(__S(15)),
+          locations: S.optional(StringList),
+          labels: S.optional(StringMap),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -1766,7 +2159,7 @@ function __c2(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           domainName: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(16).pipe(T.HttpBody())),
+          body: S.optional(Domain.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1780,14 +2173,14 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(BackupTypeEnum),
           statusMessage: S.optional(S.String),
           name: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(BackupStateEnum),
           description: S.optional(S.String),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
-          labels: S.optional(__S(15)),
+          labels: S.optional(StringMap),
         }),
       ).annotate({ identifier: "Backup" });
     case 3:
@@ -1795,7 +2188,7 @@ function __c2(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           backupId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(18).pipe(T.HttpBody())),
+          body: S.optional(Backup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1811,9 +2204,9 @@ function __c2(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           authorizedNetwork: S.optional(S.String),
-          labels: S.optional(__S(15)),
+          labels: S.optional(StringMap),
           domainResource: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(PeeringStateEnum),
           statusMessage: S.optional(S.String),
           updateTime: S.optional(S.String),
           createTime: S.optional(S.String),
@@ -1824,7 +2217,7 @@ function __c2(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           peeringId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(20).pipe(T.HttpBody())),
+          body: S.optional(Peering.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1899,7 +2292,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(2).pipe(T.HttpBody())),
+          body: S.optional(DetachTrustRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1914,7 +2307,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
-          body: S.optional(__S(8).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1937,7 +2330,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
-          body: S.optional(__S(28).pipe(T.HttpBody())),
+          body: S.optional(DomainJoinMachineRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1968,11 +2361,11 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(OnPremDomainDetails);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          migratingDomains: S.optional(__S(32)),
+          migratingDomains: S.optional(OnPremDomainDetailsList),
           enableDuration: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnableMigrationRequest" });
@@ -1980,7 +2373,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
-          body: S.optional(__S(33).pipe(T.HttpBody())),
+          body: S.optional(EnableMigrationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2003,7 +2396,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
-          body: S.optional(__S(35).pipe(T.HttpBody())),
+          body: S.optional(ExtendSchemaRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2041,8 +2434,8 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(__S(38)),
-          members: S.optional(__S(0)),
+          condition: S.optional(Expr),
+          members: S.optional(StringList),
           role: S.optional(S.String),
         }),
       ).annotate({ identifier: "Binding" });
@@ -2051,13 +2444,13 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39));
+      return S.Array(Binding);
     case 1:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.Number),
           etag: S.optional(S.String),
-          bindings: S.optional(__S(40)),
+          bindings: S.optional(BindingList),
         }),
       ).annotate({ identifier: "Policy" });
     case 2:
@@ -2109,9 +2502,9 @@ function __c5(j: number): any {
         S.Struct({
           expireTime: S.optional(S.String),
           subject: S.optional(S.String),
-          issuingCertificate: S.optional(__S(45)),
+          issuingCertificate: S.optional(Certificate),
           thumbprint: S.optional(S.String),
-          subjectAlternativeName: S.optional(__S(0)),
+          subjectAlternativeName: S.optional(StringList),
         }),
       ).annotate({ identifier: "Certificate" });
     case 6:
@@ -2120,9 +2513,9 @@ function __c5(j: number): any {
           updateTime: S.optional(S.String),
           certificatePfx: S.optional(S.String),
           name: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(LDAPSSettingsStateEnum),
           certificatePassword: S.optional(S.String),
-          certificate: S.optional(__S(45)),
+          certificate: S.optional(Certificate),
         }),
       ).annotate({ identifier: "LDAPSSettings" });
     case 7:
@@ -2147,10 +2540,10 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          labels: S.optional(__S(15)),
+          labels: S.optional(StringMap),
           name: S.optional(S.String),
           locationId: S.optional(S.String),
-          metadata: S.optional(__S(4)),
+          metadata: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "Location" });
     case 1:
@@ -2198,7 +2591,7 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(SqlIntegrationStateEnum),
           sqlInstance: S.optional(S.String),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
@@ -2239,7 +2632,7 @@ function __c6(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          extraLocationTypes: S.optional(__S(0).pipe(T.Query())),
+          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -2256,12 +2649,12 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(48));
+      return S.Array(Location);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(56)),
+          locations: S.optional(LocationList),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
     case 2:
@@ -2283,12 +2676,12 @@ function __c7(j: number): any {
         identifier: "ListProjectsLocationsGlobalDomainsRequest",
       });
     case 3:
-      return S.Array(__S(16));
+      return S.Array(Domain);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          domains: S.optional(__S(59)),
-          unreachable: S.optional(__S(0)),
+          domains: S.optional(DomainList),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDomainsResponse" });
@@ -2311,13 +2704,13 @@ function __c7(j: number): any {
         identifier: "ListProjectsLocationsGlobalDomainsBackupsRequest",
       });
     case 6:
-      return S.Array(__S(18));
+      return S.Array(Backup);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(0)),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
-          backups: S.optional(__S(62)),
+          backups: S.optional(BackupList),
         }),
       ).annotate({ identifier: "ListBackupsResponse" });
   }
@@ -2343,12 +2736,12 @@ function __c8(j: number): any {
         identifier: "ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest",
       });
     case 1:
-      return S.Array(__S(52));
+      return S.Array(SqlIntegration);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(0)),
-          sqlIntegrations: S.optional(__S(65)),
+          unreachable: S.optional(StringList),
+          sqlIntegrations: S.optional(SqlIntegrationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2373,13 +2766,13 @@ function __c8(j: number): any {
         identifier: "ListProjectsLocationsGlobalOperationsRequest",
       });
     case 4:
-      return S.Array(__S(7));
+      return S.Array(Operation);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(68)),
-          unreachable: S.optional(__S(0)),
+          operations: S.optional(OperationList),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 6:
@@ -2401,7 +2794,7 @@ function __c8(j: number): any {
         identifier: "ListProjectsLocationsGlobalPeeringsRequest",
       });
     case 7:
-      return S.Array(__S(20));
+      return S.Array(Peering);
   }
 }
 function __c9(j: number): any {
@@ -2410,8 +2803,8 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(0)),
-          peerings: S.optional(__S(71)),
+          unreachable: S.optional(StringList),
+          peerings: S.optional(PeeringList),
         }),
       ).annotate({ identifier: "ListPeeringsResponse" });
     case 1:
@@ -2419,7 +2812,7 @@ function __c9(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(16).pipe(T.HttpBody())),
+          body: S.optional(Domain.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2435,7 +2828,7 @@ function __c9(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(18).pipe(T.HttpBody())),
+          body: S.optional(Backup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2451,7 +2844,7 @@ function __c9(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(20).pipe(T.HttpBody())),
+          body: S.optional(Peering.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2466,14 +2859,14 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           targetDomainName: S.optional(S.String),
-          targetDnsIpAddresses: S.optional(__S(0)),
+          targetDnsIpAddresses: S.optional(StringList),
         }),
       ).annotate({ identifier: "ReconfigureTrustRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(76).pipe(T.HttpBody())),
+          body: S.optional(ReconfigureTrustRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2488,7 +2881,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2521,7 +2914,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(80).pipe(T.HttpBody())),
+          body: S.optional(RestoreDomainRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2535,14 +2928,14 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(41)),
+          policy: S.optional(Policy),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(82).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2557,7 +2950,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(82).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2572,7 +2965,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(82).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2586,7 +2979,7 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(0)),
+          permissions: S.optional(StringList),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -2595,7 +2988,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(86).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2614,7 +3007,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(86).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2629,7 +3022,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(86).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2645,7 +3038,7 @@ function __c11(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(46).pipe(T.HttpBody())),
+          body: S.optional(LDAPSSettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2660,7 +3053,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(2).pipe(T.HttpBody())),
+          body: S.optional(ValidateTrustRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2671,38 +3064,5 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ValidateTrustProjectsLocationsGlobalDomainsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
   }
 }

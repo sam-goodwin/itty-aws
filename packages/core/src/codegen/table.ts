@@ -7,10 +7,9 @@
  *   const Status = S.String;
  *   ... S.optional(Customer2) ... S.optional(Status) ...
  * becomes
- *   ... S.optional(__S(99)) ... S.optional(S.String) ...
+ *   ... S.optional(__S(99, __c12, 3)) ... S.optional(S.String) ...
  *   const __s: any[] = [];
- *   function __S(i: number): any { return (__s[i] ??= __L.at(__b, i)); }
- *   function __b(i: number): any { switch (i >> 3) { case 12: return __c12(i & 7); ... } }
+ *   function __S(i: number, f: (j: number) => unknown, j: number): any { return (__s[i] ??= __L.at(f, j)); }
  *
  * A top-level const costs memory at import even when its schema is never
  * built: a context slot, its name in the module's scope info, bytecode in
@@ -160,7 +159,8 @@ export const tableSchemas = (
     const e = resolve(name);
     if (!e) return undefined;
     if (e.kind === "leaf") return e.text;
-    if (e.kind === "at") return `__S(${(e.chunk << shift) | e.j})`;
+    // The builder is named at the call site, so a bundler keeps only the builders a program reaches.
+    if (e.kind === "at") return `__S(${(e.chunk << shift) | e.j}, __c${e.chunk}, ${e.j})`;
     return undefined;
   };
 
@@ -242,21 +242,13 @@ export const tableSchemas = (
     if (t === "") while (out[end] === "\n") end++;
     out = out.slice(0, s) + t + out.slice(end);
   }
-  const chunks = [
-    ...new Set(
-      [...entries.values()]
-        .filter((e) => e.kind === "at")
-        .map((e) => (e as { chunk: number }).chunk),
-    ),
-  ].sort((a, b) => a - b);
   // The table array goes right after the imports: error classes reach schemas while the module evaluates.
   const lastImport = [...body].reverse().find((st) => st.type === "ImportDeclaration");
   const importEnd = lastImport ? lastImport.end : 0;
   // Edits only shift text after their position; the imports precede every edit.
   out = `${out.slice(0, importEnd)}\n// Schema table, filled on first reach (see __S at the end).\nconst __s: any[] = [];${out.slice(importEnd)}`;
   out +=
-    "\n// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.\n" +
-    `function __S(i: number): any {\n  return (__s[i] ??= __L.at(__b, i));\n}\n` +
-    `function __b(i: number): any {\n  switch (i >> ${shift}) {\n${chunks.map((c) => `    case ${c}:\n      return __c${c}(i & ${(1 << shift) - 1});`).join("\n")}\n  }\n}\n`;
+    "\n// Schema table: entry i is schema j of builder f, made on first reach.\n" +
+    `function __S(i: number, f: (j: number) => unknown, j: number): any {\n  return (__s[i] ??= __L.at(f, j));\n}\n`;
   return { code: out, tabled: entries.size };
 };

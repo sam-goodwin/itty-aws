@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -19,12 +17,24 @@ export interface AbortProfilesMigrationRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
+const AbortProfilesMigrationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AbortProfilesMigrationRequest>;
+
 export interface AbortProfilesMigrationResponse {}
+const AbortProfilesMigrationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AbortProfilesMigrationResponse>;
+
 /** Reference to another resource. */
 export interface ResourceReference {
   /** Resource ID. */
   id?: string;
 }
+const ResourceReference = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ResourceReference>;
+
 /** Parameters required for profile upgrade. */
 export interface ProfileChangeSkuWafMapping {
   /** The security policy name. */
@@ -32,8 +42,18 @@ export interface ProfileChangeSkuWafMapping {
   /** The new waf resource for the security policy to use. */
   changeToWafPolicy: ResourceReference;
 }
+const ProfileChangeSkuWafMapping = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ProfileChangeSkuWafMapping>;
+
 /** Web Application Firewall (WAF) and security policy mapping for the profile upgrade */
 export type AFDProfilesUpgradeRequestWafMappingListList = Array<ProfileChangeSkuWafMapping>;
+const AFDProfilesUpgradeRequestWafMappingListList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AFDProfilesUpgradeRequestWafMappingListList>;
+
 export interface AFDProfilesUpgradeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -44,10 +64,19 @@ export interface AFDProfilesUpgradeRequest {
   /** Web Application Firewall (WAF) and security policy mapping for the profile upgrade */
   wafMappingList: AFDProfilesUpgradeRequestWafMappingListList;
 }
+const AFDProfilesUpgradeRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AFDProfilesUpgradeRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -63,8 +92,15 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<SystemData>;
+
 /** Resource tags. */
 export type AFDProfilesUpgradeResponseTagsMap = { [key: string]: string | undefined };
+const AFDProfilesUpgradeResponseTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AFDProfilesUpgradeResponseTagsMap>;
+
 /** Resource status of the profile. */
 export type ProfileResourceState =
   | "Creating"
@@ -76,6 +112,8 @@ export type ProfileResourceState =
   | "PendingMigrationCommit"
   | "CommittingMigration"
   | "AbortingMigration";
+const ProfileResourceState = S.String;
+
 /** Provisioning status of the profile. */
 export type ProfileProvisioningState =
   | "Succeeded"
@@ -83,19 +121,32 @@ export type ProfileProvisioningState =
   | "Updating"
   | "Deleting"
   | "Creating";
+const ProfileProvisioningState = S.String;
+
 /** Key-Value pair representing additional properties for profiles. */
 export type ProfilePropertiesExtendedPropertiesMap = { [key: string]: string | undefined };
+const ProfilePropertiesExtendedPropertiesMap =
+  AFDProfilesUpgradeResponseTagsMap as any as S.Schema<ProfilePropertiesExtendedPropertiesMap>;
+
 /** State of the log scrubbing config. Default value is Enabled. */
 export type ProfileScrubbingState = "Enabled" | "Disabled";
+const ProfileScrubbingState = S.String;
+
 /** The variable to be scrubbed from the logs. */
 export type ScrubbingRuleEntryMatchVariable =
   | "RequestIPAddress"
   | "RequestUri"
   | "QueryStringArgNames";
+const ScrubbingRuleEntryMatchVariable = S.String;
+
 /** When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to. */
 export type ScrubbingRuleEntryMatchOperator = "EqualsAny";
+const ScrubbingRuleEntryMatchOperator = S.String;
+
 /** Defines the state of a log scrubbing rule. Default value is enabled. */
 export type ScrubbingRuleEntryState = "Enabled" | "Disabled";
+const ScrubbingRuleEntryState = S.String;
+
 /** Defines the contents of the log scrubbing rules. */
 export interface ProfileScrubbingRules {
   /** The variable to be scrubbed from the logs. */
@@ -107,8 +158,18 @@ export interface ProfileScrubbingRules {
   /** Defines the state of a log scrubbing rule. Default value is enabled. */
   state?: ScrubbingRuleEntryState | (string & {});
 }
+const ProfileScrubbingRules = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ProfileScrubbingRules>;
+
 /** List of log scrubbing rules applied to the Azure Front Door profile logs. */
 export type ProfileLogScrubbingScrubbingRulesList = Array<ProfileScrubbingRules>;
+const ProfileLogScrubbingScrubbingRulesList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ProfileLogScrubbingScrubbingRulesList>;
+
 /** Defines rules that scrub sensitive fields in the Azure Front Door profile logs. */
 export interface ProfileLogScrubbing {
   /** State of the log scrubbing config. Default value is Enabled. */
@@ -116,6 +177,8 @@ export interface ProfileLogScrubbing {
   /** List of log scrubbing rules applied to the Azure Front Door profile logs. */
   scrubbingRules?: ProfileLogScrubbingScrubbingRulesList;
 }
+const ProfileLogScrubbing = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ProfileLogScrubbing>;
+
 /** The JSON object that contains the properties required to create a profile. */
 export interface ProfileProperties {
   /** Resource status of the profile. */
@@ -131,6 +194,8 @@ export interface ProfileProperties {
   /** Defines rules that scrub sensitive fields in the Azure Front Door profile logs. */
   logScrubbing?: ProfileLogScrubbing;
 }
+const ProfileProperties = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ProfileProperties>;
+
 /** Name of the pricing tier. */
 export type SkuName =
   | "Standard_Verizon"
@@ -146,17 +211,23 @@ export type SkuName =
   | "StandardPlus_ChinaCdn"
   | "StandardPlus_955BandWidth_ChinaCdn"
   | "StandardPlus_AvgBandWidth_ChinaCdn";
+const SkuName = S.String;
+
 /** Standard_Verizon = The SKU name for a Standard Verizon CDN profile. Premium_Verizon = The SKU name for a Premium Verizon CDN profile. Custom_Verizon = The SKU name for a Custom Verizon CDN profile. Standard_Akamai = The SKU name for an Akamai CDN profile. Standard_ChinaCdn = The SKU name for a China CDN profile for VOD, Web and download scenarios using GB based billing model. Standard_Microsoft = The SKU name for a Standard Microsoft CDN profile. Standard_AzureFrontDoor = The SKU name for an Azure Front Door Standard profile. Premium_AzureFrontDoor = The SKU name for an Azure Front Door Premium profile. Standard_955BandWidth_ChinaCdn = The SKU name for a China CDN profile for VOD, Web and download scenarios using 95-5 peak bandwidth billing model. Standard_AvgBandWidth_ChinaCdn = The SKU name for a China CDN profile for VOD, Web and download scenarios using monthly average peak bandwidth billing model. StandardPlus_ChinaCdn = The SKU name for a China CDN profile for live-streaming using GB based billing model. StandardPlus_955BandWidth_ChinaCdn = The SKU name for a China CDN live-streaming profile using 95-5 peak bandwidth billing model. StandardPlus_AvgBandWidth_ChinaCdn = The SKU name for a China CDN live-streaming profile using monthly average peak bandwidth billing model. */
 export interface Sku {
   /** Name of the pricing tier. */
   name?: SkuName | (string & {});
 }
+const Sku = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Sku>;
+
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
+const ManagedServiceIdentityType = S.String;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -164,10 +235,17 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
+const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<UserAssignedIdentity>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type AFDProfilesUpgradeResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
+const AFDProfilesUpgradeResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<AFDProfilesUpgradeResponseIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface AFDProfilesUpgradeResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -178,6 +256,11 @@ export interface AFDProfilesUpgradeResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: AFDProfilesUpgradeResponseIdentityUserAssignedIdentitiesMap;
 }
+const AFDProfilesUpgradeResponseIdentity = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<AFDProfilesUpgradeResponseIdentity>;
+
 export interface AFDProfilesUpgradeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -200,16 +283,25 @@ export interface AFDProfilesUpgradeResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: AFDProfilesUpgradeResponseIdentity;
 }
+const AFDProfilesUpgradeResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<AFDProfilesUpgradeResponse>;
+
 /** Type of CDN resource used in CheckNameAvailability. */
 export type ResourceType =
   | "Microsoft.Cdn/Profiles/Endpoints"
   | "Microsoft.Cdn/Profiles/AfdEndpoints";
+const ResourceType = S.String;
+
 /** Indicates the endpoint name reuse scope. The default value is TenantReuse. */
 export type AutoGeneratedDomainNameLabelScope =
   | "TenantReuse"
   | "SubscriptionReuse"
   | "ResourceGroupReuse"
   | "NoReuse";
+const AutoGeneratedDomainNameLabelScope = S.String;
+
 export interface CheckAFDProfileEndpointNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -224,6 +316,11 @@ export interface CheckAFDProfileEndpointNameAvailabilityRequest {
   /** Indicates the endpoint name reuse scope. The default value is TenantReuse. */
   autoGeneratedDomainNameLabelScope?: AutoGeneratedDomainNameLabelScope | (string & {});
 }
+const CheckAFDProfileEndpointNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CheckAFDProfileEndpointNameAvailabilityRequest>;
+
 /** Output of check name availability API. */
 export interface CheckEndpointNameAvailabilityOutput {
   /** Indicates whether the name is available. */
@@ -235,6 +332,11 @@ export interface CheckEndpointNameAvailabilityOutput {
   /** The detailed error message describing why the name is not available. */
   message?: string;
 }
+const CheckEndpointNameAvailabilityOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CheckEndpointNameAvailabilityOutput>;
+
 export interface CheckAFDProfileHostNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -245,6 +347,11 @@ export interface CheckAFDProfileHostNameAvailabilityRequest {
   /** The host name to validate. */
   hostName: string;
 }
+const CheckAFDProfileHostNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CheckAFDProfileHostNameAvailabilityRequest>;
+
 /** Output of check name availability API. */
 export interface CheckNameAvailabilityOutput {
   /** Indicates whether the name is available. */
@@ -254,6 +361,11 @@ export interface CheckNameAvailabilityOutput {
   /** The detailed error message describing why the name is not available. */
   message?: string;
 }
+const CheckNameAvailabilityOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CheckNameAvailabilityOutput>;
+
 export interface CheckEndpointNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -266,12 +378,22 @@ export interface CheckEndpointNameAvailabilityRequest {
   /** Indicates the endpoint name reuse scope. The default value is TenantReuse. */
   autoGeneratedDomainNameLabelScope?: AutoGeneratedDomainNameLabelScope | (string & {});
 }
+const CheckEndpointNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CheckEndpointNameAvailabilityRequest>;
+
 export interface CheckNameAvailabilityRequest {
   /** The resource name to validate. */
   name: string;
   /** The type of the resource whose name is to be validated. */
   type: ResourceType | (string & {});
 }
+const CheckNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CheckNameAvailabilityRequest>;
+
 export interface CheckNameAvailabilityWithSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -280,6 +402,11 @@ export interface CheckNameAvailabilityWithSubscriptionRequest {
   /** The type of the resource whose name is to be validated. */
   type: ResourceType | (string & {});
 }
+const CheckNameAvailabilityWithSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CheckNameAvailabilityWithSubscriptionRequest>;
+
 export interface CommitProfilesMigrationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -288,16 +415,32 @@ export interface CommitProfilesMigrationRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
+const CommitProfilesMigrationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CommitProfilesMigrationRequest>;
+
 export interface CommitProfilesMigrationResponse {}
+const CommitProfilesMigrationResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CommitProfilesMigrationResponse>;
+
 /** Defines the source of the SSL certificate. */
 export type AfdCertificateType =
   | "CustomerCertificate"
   | "ManagedCertificate"
   | "AzureFirstPartyManagedCertificate";
+const AfdCertificateType = S.String;
+
 /** cipher suite set type that will be used for Https */
 export type AfdCipherSuiteSetType = "Customized" | "TLS10_2019" | "TLS12_2022" | "TLS12_2023";
+const AfdCipherSuiteSetType = S.String;
+
 /** TLS protocol version that will be used for Https when cipherSuiteSetType is Customized. */
 export type AfdMinimumTlsVersion = "TLS10" | "TLS12" | "TLS13";
+const AfdMinimumTlsVersion = S.String;
+
 export type AfdCustomizedCipherSuiteForTls12 =
   | "ECDHE_RSA_AES128_GCM_SHA256"
   | "ECDHE_RSA_AES256_GCM_SHA384"
@@ -305,15 +448,25 @@ export type AfdCustomizedCipherSuiteForTls12 =
   | "DHE_RSA_AES128_GCM_SHA256"
   | "ECDHE_RSA_AES128_SHA256"
   | "ECDHE_RSA_AES256_SHA384";
+const AfdCustomizedCipherSuiteForTls12 = S.String;
+
 /** Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2. */
 export type AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls12List = Array<
   AfdCustomizedCipherSuiteForTls12 | (string & {})
 >;
+const AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls12List = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls12List>;
+
 export type AfdCustomizedCipherSuiteForTls13 = "TLS_AES_128_GCM_SHA256" | "TLS_AES_256_GCM_SHA384";
 /** Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3. */
 export type AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls13List = Array<
   AfdCustomizedCipherSuiteForTls13 | (string & {})
 >;
+const AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls13List =
+  AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls12List as any as S.Schema<AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls13List>;
+
 /** Customized cipher suite set object that will be used for Https when cipherSuiteSetType is Customized. */
 export interface AFDDomainHttpsCustomizedCipherSuiteSet {
   /** Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2. */
@@ -321,8 +474,15 @@ export interface AFDDomainHttpsCustomizedCipherSuiteSet {
   /** Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3. */
   cipherSuiteSetForTls13?: AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls13List;
 }
+const AFDDomainHttpsCustomizedCipherSuiteSet = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<AFDDomainHttpsCustomizedCipherSuiteSet>;
+
 /** Server TLS group policy that will be used for Https. Standard and Enhanced are service-managed sets; Custom allows specifying serverTlsGroups explicitly. */
 export type AfdServerTlsGroupPolicy = "Standard" | "Enhanced" | "Custom";
+const AfdServerTlsGroupPolicy = S.String;
+
 /** Supported key-exchange groups and curves. The ML-KEM groups are hybrid post-quantum groups. */
 export type AfdServerTlsGroup =
   | "SecP256r1MLKEM768"
@@ -332,8 +492,15 @@ export type AfdServerTlsGroup =
   | "X25519"
   | "secp384r1"
   | "secp521r1";
+const AfdServerTlsGroup = S.String;
+
 /** Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom. */
 export type AFDDomainHttpsParametersServerTlsGroupsList = Array<AfdServerTlsGroup | (string & {})>;
+const AFDDomainHttpsParametersServerTlsGroupsList = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<AFDDomainHttpsParametersServerTlsGroupsList>;
+
 /** The JSON object that contains the properties to secure a domain. */
 export interface AFDDomainHttpsParameters {
   /** Defines the source of the SSL certificate. */
@@ -351,19 +518,34 @@ export interface AFDDomainHttpsParameters {
   /** Resource reference to the secret. ie. subs/rg/profile/secret */
   secret?: ResourceReference;
 }
+const AFDDomainHttpsParameters = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<AFDDomainHttpsParameters>;
+
 /** Supported scenarios for establishing mTLS connection. */
 export type MtlsScenarioType =
   | "ClientCertificateRequiredAndValidated"
   | "ClientCertificateRequiredAndOriginValidates"
   | "ClientCertificateValidatedIfPresented"
   | "CompleteMtlsPassthroughToOrigin";
+const MtlsScenarioType = S.String;
+
 /** Contains the properties to configure mutual TLS for a custom domain with FQDN. Mutual TLS cannot be configured for custom domains with wildcard host names. */
 export interface AFDDomainMtlsParameters {
   /** Supported scenarios for establishing mTLS connection. */
   scenario: MtlsScenarioType | (string & {});
 }
+const AFDDomainMtlsParameters = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<AFDDomainMtlsParameters>;
+
 /** Key-Value pair representing migration properties for domains. */
 export type AFDDomainPropertiesInputExtendedPropertiesMap = { [key: string]: string | undefined };
+const AFDDomainPropertiesInputExtendedPropertiesMap =
+  AFDProfilesUpgradeResponseTagsMap as any as S.Schema<AFDDomainPropertiesInputExtendedPropertiesMap>;
+
 /** The JSON object that contains the properties of the domain to create. */
 export interface AFDDomainPropertiesInput {
   /** The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default. */
@@ -379,6 +561,11 @@ export interface AFDDomainPropertiesInput {
   /** Key-Value pair representing migration properties for domains. */
   extendedProperties?: AFDDomainPropertiesInputExtendedPropertiesMap;
 }
+const AFDDomainPropertiesInput = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<AFDDomainPropertiesInput>;
+
 export interface CreateAFDCustomDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -391,9 +578,18 @@ export interface CreateAFDCustomDomainRequest {
   /** The JSON object that contains the properties of the domain to create. */
   properties?: AFDDomainPropertiesInput;
 }
+const CreateAFDCustomDomainRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateAFDCustomDomainRequest>;
+
 /** Provisioning status */
 export type AfdProvisioningState = "Succeeded" | "Failed" | "Updating" | "Deleting" | "Creating";
+const AfdProvisioningState = S.String;
+
 export type DeploymentStatus = "NotStarted" | "InProgress" | "Succeeded" | "Failed";
+const DeploymentStatus = S.String;
+
 /** Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step. DCV stands for DomainControlValidation. */
 export type DomainValidationState =
   | "Unknown"
@@ -405,8 +601,13 @@ export type DomainValidationState =
   | "Approved"
   | "RefreshingValidationToken"
   | "InternalError";
+const DomainValidationState = S.String;
+
 /** Key-Value pair representing migration properties for domains. */
 export type AFDDomainPropertiesExtendedPropertiesMap = { [key: string]: string | undefined };
+const AFDDomainPropertiesExtendedPropertiesMap =
+  AFDProfilesUpgradeResponseTagsMap as any as S.Schema<AFDDomainPropertiesExtendedPropertiesMap>;
+
 /** The JSON object that contains the properties to validate a domain. */
 export interface DomainValidationProperties {
   /** Challenge used for DNS TXT record or file based validation */
@@ -414,6 +615,11 @@ export interface DomainValidationProperties {
   /** The date time that the token expires */
   expirationDate?: string;
 }
+const DomainValidationProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<DomainValidationProperties>;
+
 /** The JSON object that contains the properties of the domain to create. */
 export interface AFDDomainProperties {
   /** The name of the profile which holds the domain. */
@@ -438,6 +644,8 @@ export interface AFDDomainProperties {
   /** Values the customer needs to validate domain ownership */
   validationProperties?: DomainValidationProperties;
 }
+const AFDDomainProperties = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<AFDDomainProperties>;
+
 export interface CreateAFDCustomDomainResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -450,12 +658,24 @@ export interface CreateAFDCustomDomainResponse {
   /** The JSON object that contains the properties of the domain to create. */
   properties?: AFDDomainProperties;
 }
+const CreateAFDCustomDomainResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateAFDCustomDomainResponse>;
+
 /** Resource tags. */
 export type CreateAFDEndpointRequestTagsMap = { [key: string]: string | undefined };
+const CreateAFDEndpointRequestTagsMap =
+  AFDProfilesUpgradeResponseTagsMap as any as S.Schema<CreateAFDEndpointRequestTagsMap>;
+
 /** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
 export type EnabledState = "Enabled" | "Disabled";
+const EnabledState = S.String;
+
 /** Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources. */
 export type EnforceMtlsEnabledState = "Enabled" | "Disabled";
+const EnforceMtlsEnabledState = S.String;
+
 /** The JSON object that contains the properties required to create an endpoint. */
 export interface AFDEndpointPropertiesInput {
   /** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
@@ -465,6 +685,11 @@ export interface AFDEndpointPropertiesInput {
   /** Indicates the endpoint name reuse scope. The default value is TenantReuse. */
   autoGeneratedDomainNameLabelScope?: AutoGeneratedDomainNameLabelScope | (string & {});
 }
+const AFDEndpointPropertiesInput = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<AFDEndpointPropertiesInput>;
+
 export interface CreateAFDEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -481,8 +706,16 @@ export interface CreateAFDEndpointRequest {
   /** The JSON object that contains the properties required to create an endpoint. */
   properties?: AFDEndpointPropertiesInput;
 }
+const CreateAFDEndpointRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateAFDEndpointRequest>;
+
 /** Resource tags. */
 export type CreateAFDEndpointResponseTagsMap = { [key: string]: string | undefined };
+const CreateAFDEndpointResponseTagsMap =
+  AFDProfilesUpgradeResponseTagsMap as any as S.Schema<CreateAFDEndpointResponseTagsMap>;
+
 /** The JSON object that contains the properties required to create an endpoint. */
 export interface AFDEndpointProperties {
   /** The name of the profile which holds the endpoint. */
@@ -499,6 +732,11 @@ export interface AFDEndpointProperties {
   /** Indicates the endpoint name reuse scope. The default value is TenantReuse. */
   autoGeneratedDomainNameLabelScope?: AutoGeneratedDomainNameLabelScope;
 }
+const AFDEndpointProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<AFDEndpointProperties>;
+
 export interface CreateAFDEndpointResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -515,6 +753,11 @@ export interface CreateAFDEndpointResponse {
   /** The JSON object that contains the properties required to create an endpoint. */
   properties?: AFDEndpointProperties;
 }
+const CreateAFDEndpointResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreateAFDEndpointResponse>;
+
 /** Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout. */
 export type SharedPrivateLinkResourceStatus =
   | "Pending"
@@ -522,6 +765,8 @@ export type SharedPrivateLinkResourceStatus =
   | "Rejected"
   | "Disconnected"
   | "Timeout";
+const SharedPrivateLinkResourceStatus = S.String;
+
 /** Describes the properties of an existing Shared Private Link Resource to use when connecting to a private origin. */
 export interface SharedPrivateLinkResourceProperties {
   /** The resource id of the resource the shared private link resource is for. */
@@ -535,13 +780,25 @@ export interface SharedPrivateLinkResourceProperties {
   /** Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout. */
   status?: SharedPrivateLinkResourceStatus | (string & {});
 }
+const SharedPrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<SharedPrivateLinkResourceProperties>;
+
 /** The validation mode for certificate name check at origin level. Only applicable when enforceCertificateNameCheck is true. */
 export type CertificateNameCheckValidationMode =
   | "OriginHostname"
   | "CustomCertificateSubject"
   | "IncomingHostHeader";
+const CertificateNameCheckValidationMode = S.String;
+
 /** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
 export type AFDOriginPropertiesInputCustomCertificateSubjectsList = Array<string>;
+const AFDOriginPropertiesInputCustomCertificateSubjectsList = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<AFDOriginPropertiesInputCustomCertificateSubjectsList>;
+
 /** The JSON object that contains the properties of the origin. */
 export interface AFDOriginPropertiesInput {
   /** Resource reference to the Azure origin resource. */
@@ -569,6 +826,11 @@ export interface AFDOriginPropertiesInput {
   /** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
   customCertificateSubjects?: AFDOriginPropertiesInputCustomCertificateSubjectsList;
 }
+const AFDOriginPropertiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<AFDOriginPropertiesInput>;
+
 export interface CreateAFDOriginRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -583,8 +845,16 @@ export interface CreateAFDOriginRequest {
   /** The JSON object that contains the properties of the origin. */
   properties?: AFDOriginPropertiesInput;
 }
+const CreateAFDOriginRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateAFDOriginRequest>;
+
 /** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
 export type AFDOriginPropertiesCustomCertificateSubjectsList = Array<string>;
+const AFDOriginPropertiesCustomCertificateSubjectsList =
+  AFDOriginPropertiesInputCustomCertificateSubjectsList as any as S.Schema<AFDOriginPropertiesCustomCertificateSubjectsList>;
+
 /** The JSON object that contains the properties of the origin. */
 export interface AFDOriginProperties {
   /** The name of the origin group which contains this origin. */
@@ -617,6 +887,8 @@ export interface AFDOriginProperties {
   provisioningState?: AfdProvisioningState;
   deploymentStatus?: DeploymentStatus;
 }
+const AFDOriginProperties = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<AFDOriginProperties>;
+
 export interface CreateAFDOriginResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -629,6 +901,11 @@ export interface CreateAFDOriginResponse {
   /** The JSON object that contains the properties of the origin. */
   properties?: AFDOriginProperties;
 }
+const CreateAFDOriginResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreateAFDOriginResponse>;
+
 /** Round-Robin load balancing settings for a backend pool */
 export interface LoadBalancingSettingsParameters {
   /** The number of samples to consider for load balancing decisions */
@@ -638,10 +915,19 @@ export interface LoadBalancingSettingsParameters {
   /** The additional latency in milliseconds for probes to fall into the lowest latency bucket */
   additionalLatencyInMilliseconds?: number;
 }
+const LoadBalancingSettingsParameters = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<LoadBalancingSettingsParameters>;
+
 /** The type of health probe request that is made. */
 export type HealthProbeRequestType = "NotSet" | "GET" | "HEAD";
+const HealthProbeRequestType = S.String;
+
 /** Protocol to use for health probe. */
 export type ProbeProtocol = "NotSet" | "Http" | "Https";
+const ProbeProtocol = S.String;
+
 /** The JSON object that contains the properties to send health probes to origin. */
 export interface HealthProbeParameters {
   /** The path relative to the origin that is used to determine the health of the origin. */
@@ -653,10 +939,19 @@ export interface HealthProbeParameters {
   /** The number of seconds between health probes.Default is 240sec. */
   probeIntervalInSeconds?: number;
 }
+const HealthProbeParameters = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<HealthProbeParameters>;
+
 /** The type of the authentication for the origin. */
 export type OriginAuthenticationType = "SystemAssignedIdentity" | "UserAssignedIdentity";
+const OriginAuthenticationType = S.String;
+
 /** The HTTP request header where the origin authentication token is placed when forwarding the request to the origin. */
 export type OriginAuthenticationTokenDestinationHeader = "Authorization" | "X-Azure-Authorization";
+const OriginAuthenticationTokenDestinationHeader = S.String;
+
 /** The JSON object that contains the properties of the origin authentication settings. */
 export interface OriginAuthenticationProperties {
   /** The type of the authentication for the origin. */
@@ -668,6 +963,11 @@ export interface OriginAuthenticationProperties {
   /** The HTTP request header where the origin authentication token will be placed when forwarding the request to the origin. If not specified, the service will use the `Authorization` header for backward compatibility. */
   tokenDestinationHeader?: OriginAuthenticationTokenDestinationHeader | (string & {});
 }
+const OriginAuthenticationProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<OriginAuthenticationProperties>;
+
 /** The JSON object that contains the properties of the origin group. */
 export interface AFDOriginGroupPropertiesInput {
   /** Load balancing settings for a backend pool */
@@ -681,6 +981,11 @@ export interface AFDOriginGroupPropertiesInput {
   /** Authentication settings for origin in origin group. */
   authentication?: OriginAuthenticationProperties;
 }
+const AFDOriginGroupPropertiesInput = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<AFDOriginGroupPropertiesInput>;
+
 export interface CreateAFDOriginGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -693,6 +998,11 @@ export interface CreateAFDOriginGroupRequest {
   /** The JSON object that contains the properties of the origin group. */
   properties?: AFDOriginGroupPropertiesInput;
 }
+const CreateAFDOriginGroupRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<CreateAFDOriginGroupRequest>;
+
 /** The JSON object that contains the properties of the origin group. */
 export interface AFDOriginGroupProperties {
   /** The name of the profile which holds the origin group. */
@@ -711,6 +1021,11 @@ export interface AFDOriginGroupProperties {
   provisioningState?: AfdProvisioningState;
   deploymentStatus?: DeploymentStatus;
 }
+const AFDOriginGroupProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<AFDOriginGroupProperties>;
+
 export interface CreateAFDOriginGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -723,11 +1038,21 @@ export interface CreateAFDOriginGroupResponse {
   /** The JSON object that contains the properties of the origin group. */
   properties?: AFDOriginGroupProperties;
 }
+const CreateAFDOriginGroupResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<CreateAFDOriginGroupResponse>;
+
 /** The JSON object that contains the properties of the custom domain to create. */
 export interface CustomDomainPropertiesParameters {
   /** The host name of the custom domain. Must be a domain name. */
   hostName: string;
 }
+const CustomDomainPropertiesParameters = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<CustomDomainPropertiesParameters>;
+
 export interface CreateCustomDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -742,8 +1067,15 @@ export interface CreateCustomDomainRequest {
   /** The JSON object that contains the properties of the custom domain to create. */
   properties?: CustomDomainPropertiesParameters;
 }
+const CreateCustomDomainRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreateCustomDomainRequest>;
+
 /** Resource status of the custom domain. */
 export type CustomDomainResourceState = "Creating" | "Active" | "Deleting";
+const CustomDomainResourceState = S.String;
+
 /** Provisioning status of the custom domain. */
 export type CustomHttpsProvisioningState =
   | "Enabling"
@@ -751,6 +1083,8 @@ export type CustomHttpsProvisioningState =
   | "Disabling"
   | "Disabled"
   | "Failed";
+const CustomHttpsProvisioningState = S.String;
+
 /** Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step. */
 export type CustomHttpsProvisioningSubstate =
   | "SubmittingDomainControlValidationRequest"
@@ -763,12 +1097,20 @@ export type CustomHttpsProvisioningSubstate =
   | "CertificateDeployed"
   | "DeletingCertificate"
   | "CertificateDeleted";
+const CustomHttpsProvisioningSubstate = S.String;
+
 /** Defines the source of the SSL certificate. */
 export type CertificateSource = "AzureKeyVault" | "Cdn";
+const CertificateSource = S.String;
+
 /** Defines the TLS extension protocol that is used for secure delivery. */
 export type ProtocolType = "ServerNameIndication" | "IPBased";
+const ProtocolType = S.String;
+
 /** TLS protocol version that will be used for Https */
 export type MinimumTlsVersion = "None" | "TLS10" | "TLS12";
+const MinimumTlsVersion = S.String;
+
 /** The JSON object that contains the properties to secure a custom domain. */
 export interface CustomDomainHttpsParameters {
   /** Defines the source of the SSL certificate. */
@@ -778,6 +1120,11 @@ export interface CustomDomainHttpsParameters {
   /** TLS protocol version that will be used for Https */
   minimumTlsVersion?: MinimumTlsVersion;
 }
+const CustomDomainHttpsParameters = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<CustomDomainHttpsParameters>;
+
 /** The JSON object that contains the properties of the custom domain to create. */
 export interface CustomDomainProperties {
   /** The host name of the custom domain. Must be a domain name. */
@@ -795,6 +1142,11 @@ export interface CustomDomainProperties {
   /** Provisioning status of Custom Https of the custom domain. */
   provisioningState?: CustomHttpsProvisioningState;
 }
+const CustomDomainProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<CustomDomainProperties>;
+
 export interface CreateCustomDomainResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -807,16 +1159,29 @@ export interface CreateCustomDomainResponse {
   /** The JSON object that contains the properties of the custom domain to create. */
   properties?: CustomDomainProperties;
 }
+const CreateCustomDomainResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<CreateCustomDomainResponse>;
+
 /** Resource tags. */
 export type CreateEndpointRequestTagsMap = { [key: string]: string | undefined };
+const CreateEndpointRequestTagsMap =
+  AFDProfilesUpgradeResponseTagsMap as any as S.Schema<CreateEndpointRequestTagsMap>;
+
 /** List of content types on which compression applies. The value should be a valid MIME type. */
 export type EndpointPropertiesInputContentTypesToCompressList = Array<string>;
+const EndpointPropertiesInputContentTypesToCompressList =
+  AFDOriginPropertiesInputCustomCertificateSubjectsList as any as S.Schema<EndpointPropertiesInputContentTypesToCompressList>;
+
 /** Defines how CDN caches requests that include query strings. You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL. */
 export type EndpointPropertiesInputQueryStringCachingBehavior =
   | "IgnoreQueryString"
   | "BypassCaching"
   | "UseQueryString"
   | "NotSet";
+const EndpointPropertiesInputQueryStringCachingBehavior = S.String;
+
 /** Specifies what scenario the customer wants this CDN endpoint to optimize, e.g. Download, Media services. With this information we can apply scenario driven optimization. */
 export type OptimizationType =
   | "GeneralWebDelivery"
@@ -824,10 +1189,17 @@ export type OptimizationType =
   | "VideoOnDemandMediaStreaming"
   | "LargeFileDownload"
   | "DynamicSiteAcceleration";
+const OptimizationType = S.String;
+
 /** Action of the geo filter, i.e. allow or block access. */
 export type GeoFilterActions = "Block" | "Allow";
+const GeoFilterActions = S.String;
+
 /** Two letter country or region codes defining user country or region access in a geo filter, e.g. AU, MX, US. */
 export type GeoFilterCountryCodesList = Array<string>;
+const GeoFilterCountryCodesList =
+  AFDOriginPropertiesInputCustomCertificateSubjectsList as any as S.Schema<GeoFilterCountryCodesList>;
+
 /** Rules defining user's geo access within a CDN endpoint. */
 export interface GeoFilter {
   /** Relative path applicable to geo filter. (e.g. '/mypictures', '/mypicture/kitty.jpg', and etc.) */
@@ -837,9 +1209,18 @@ export interface GeoFilter {
   /** Two letter country or region codes defining user country or region access in a geo filter, e.g. AU, MX, US. */
   countryCodes: GeoFilterCountryCodesList;
 }
+const GeoFilter = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<GeoFilter>;
+
 /** List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/ */
 export type EndpointPropertiesInputGeoFiltersList = Array<GeoFilter>;
+const EndpointPropertiesInputGeoFiltersList = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<EndpointPropertiesInputGeoFiltersList>;
+
 export type KeyVaultSigningKeyParametersType = "KeyVaultSigningKeyParameters";
+const KeyVaultSigningKeyParametersType = S.String;
+
 /** Describes the parameters for using a user's KeyVault for URL Signing Key. */
 export interface KeyVaultSigningKeyParameters {
   typeName: KeyVaultSigningKeyParametersType | (string & {});
@@ -854,6 +1235,11 @@ export interface KeyVaultSigningKeyParameters {
   /** The version(GUID) of secret in Key Vault. */
   secretVersion: string;
 }
+const KeyVaultSigningKeyParameters = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<KeyVaultSigningKeyParameters>;
+
 /** Url signing key */
 export interface UrlSigningKey {
   /** Defines the customer defined key Id. This id will exist in the incoming request to indicate the key used to form the hash. */
@@ -861,8 +1247,15 @@ export interface UrlSigningKey {
   /** Defines the parameters for using customer key vault for Url Signing Key. */
   keySourceParameters: KeyVaultSigningKeyParameters;
 }
+const UrlSigningKey = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<UrlSigningKey>;
+
 /** List of keys used to validate the signed URL hashes. */
 export type EndpointPropertiesInputUrlSigningKeysList = Array<UrlSigningKey>;
+const EndpointPropertiesInputUrlSigningKeysList = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<EndpointPropertiesInputUrlSigningKeysList>;
+
 /** Request variable to compare with. */
 export type MatchVariable =
   | "RemoteAddress"
@@ -884,6 +1277,8 @@ export type MatchVariable =
   | "ServerPort"
   | "HostName"
   | "SslProtocol";
+const MatchVariable = S.String;
+
 /** A condition for the delivery rule. */
 export interface DeliveryRuleCondition {
   /** The name of the condition for the delivery rule. */
@@ -891,8 +1286,18 @@ export interface DeliveryRuleCondition {
   /** Condition parameters (polymorphic on `name`, discriminated by `parameters.typeName`). */
   parameters?: unknown;
 }
+const DeliveryRuleCondition = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<DeliveryRuleCondition>;
+
 /** A list of conditions that must be matched for the actions to be executed */
 export type DeliveryRuleConditionsList = Array<DeliveryRuleCondition>;
+const DeliveryRuleConditionsList = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DeliveryRuleConditionsList>;
+
 /** The name of the action for the delivery rule. */
 export type DeliveryRuleActionName =
   | "CacheExpiration"
@@ -915,6 +1320,9 @@ export interface DeliveryRuleAction {
 }
 /** A list of actions that are executed when all the conditions of a rule are satisfied. */
 export type DeliveryRuleActionsList = Array<DeliveryRuleAction>;
+const DeliveryRuleActionsList =
+  DeliveryRuleConditionsList as any as S.Schema<DeliveryRuleActionsList>;
+
 /** A rule that specifies a set of actions and conditions */
 export interface DeliveryRule {
   /** Name of the rule */
@@ -926,8 +1334,15 @@ export interface DeliveryRule {
   /** A list of actions that are executed when all the conditions of a rule are satisfied. */
   actions: DeliveryRuleActionsList;
 }
+const DeliveryRule = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<DeliveryRule>;
+
 /** A list of the delivery rules. */
 export type EndpointPropertiesUpdateParametersDeliveryPolicyRulesList = Array<DeliveryRule>;
+const EndpointPropertiesUpdateParametersDeliveryPolicyRulesList = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<EndpointPropertiesUpdateParametersDeliveryPolicyRulesList>;
+
 /** A policy that specifies the delivery rules to be used for an endpoint. */
 export interface EndpointPropertiesUpdateParametersDeliveryPolicy {
   /** User-friendly description of the policy. */
@@ -935,6 +1350,11 @@ export interface EndpointPropertiesUpdateParametersDeliveryPolicy {
   /** A list of the delivery rules. */
   rules: EndpointPropertiesUpdateParametersDeliveryPolicyRulesList;
 }
+const EndpointPropertiesUpdateParametersDeliveryPolicy = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<EndpointPropertiesUpdateParametersDeliveryPolicy>;
+
 /** Defines the Web Application Firewall policy for the endpoint (if applicable) */
 export type EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink = ResourceReference;
 /** The approval status for the connection to the Private Link */
@@ -944,6 +1364,8 @@ export type PrivateEndpointStatus =
   | "Rejected"
   | "Disconnected"
   | "Timeout";
+const PrivateEndpointStatus = S.String;
+
 /** Properties of the origin created on the CDN endpoint. */
 export interface DeepCreatedOriginProperties {
   /** The address of the origin. It can be a domain name, IPv4 address, or IPv6 address. This should be unique across all origins in an endpoint. */
@@ -971,6 +1393,11 @@ export interface DeepCreatedOriginProperties {
   /** The approval status for the connection to the Private Link */
   privateEndpointStatus?: PrivateEndpointStatus | (string & {});
 }
+const DeepCreatedOriginProperties = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<DeepCreatedOriginProperties>;
+
 /** The main origin of CDN content which is added when creating a CDN endpoint. */
 export interface DeepCreatedOrigin {
   /** Origin name which must be unique within the endpoint. */
@@ -978,12 +1405,26 @@ export interface DeepCreatedOrigin {
   /** Properties of the origin created on the CDN endpoint. */
   properties?: DeepCreatedOriginProperties;
 }
+const DeepCreatedOrigin = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<DeepCreatedOrigin>;
+
 /** The source of the content being delivered via CDN. */
 export type EndpointPropertiesInputOriginsList = Array<DeepCreatedOrigin>;
+const EndpointPropertiesInputOriginsList = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<EndpointPropertiesInputOriginsList>;
+
 /** The source of the content being delivered via CDN within given origin group. */
 export type DeepCreatedOriginGroupPropertiesOriginsList = Array<ResourceReference>;
+const DeepCreatedOriginGroupPropertiesOriginsList = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DeepCreatedOriginGroupPropertiesOriginsList>;
+
 /** Type of response errors for real user requests for which origin will be deemed unhealthy */
 export type ResponseBasedDetectedErrorTypes = "None" | "TcpErrorsOnly" | "TcpAndHttpErrors";
+const ResponseBasedDetectedErrorTypes = S.String;
+
 /** The JSON object that represents the range for http status codes */
 export interface HttpErrorRangeParameters {
   /** The inclusive start of the http status code range. */
@@ -991,9 +1432,19 @@ export interface HttpErrorRangeParameters {
   /** The inclusive end of the http status code range. */
   end?: number;
 }
+const HttpErrorRangeParameters = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<HttpErrorRangeParameters>;
+
 /** The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy. */
 export type ResponseBasedOriginErrorDetectionParametersHttpErrorRangesList =
   Array<HttpErrorRangeParameters>;
+const ResponseBasedOriginErrorDetectionParametersHttpErrorRangesList = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ResponseBasedOriginErrorDetectionParametersHttpErrorRangesList>;
+
 /** The JSON object that contains the properties to determine origin health using real requests/responses. */
 export interface ResponseBasedOriginErrorDetectionParameters {
   /** Type of response errors for real user requests for which origin will be deemed unhealthy */
@@ -1003,6 +1454,11 @@ export interface ResponseBasedOriginErrorDetectionParameters {
   /** The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy. */
   httpErrorRanges?: ResponseBasedOriginErrorDetectionParametersHttpErrorRangesList;
 }
+const ResponseBasedOriginErrorDetectionParameters = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ResponseBasedOriginErrorDetectionParameters>;
+
 /** Properties of the origin group created on the CDN endpoint. */
 export interface DeepCreatedOriginGroupProperties {
   /** Health probe settings to the origin that is used to determine the health of the origin. */
@@ -1014,6 +1470,11 @@ export interface DeepCreatedOriginGroupProperties {
   /** The JSON object that contains the properties to determine origin health using real requests/responses.This property is currently not supported. */
   responseBasedOriginErrorDetectionSettings?: ResponseBasedOriginErrorDetectionParameters;
 }
+const DeepCreatedOriginGroupProperties = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<DeepCreatedOriginGroupProperties>;
+
 /** The origin group for CDN content which is added when creating a CDN endpoint. Traffic is sent to the origins within the origin group based on origin health. */
 export interface DeepCreatedOriginGroup {
   /** Origin group name which must be unique within the endpoint. */
@@ -1021,8 +1482,18 @@ export interface DeepCreatedOriginGroup {
   /** Properties of the origin group created on the CDN endpoint. */
   properties?: DeepCreatedOriginGroupProperties;
 }
+const DeepCreatedOriginGroup = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DeepCreatedOriginGroup>;
+
 /** The origin groups comprising of origins that are used for load balancing the traffic based on availability. */
 export type EndpointPropertiesInputOriginGroupsList = Array<DeepCreatedOriginGroup>;
+const EndpointPropertiesInputOriginGroupsList = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<EndpointPropertiesInputOriginGroupsList>;
+
 /** The JSON object that contains the properties required to create an endpoint. */
 export interface EndpointPropertiesInput {
   /** A directory path on the origin that CDN can use to retrieve content from, e.g. contoso.cloudapp.net/originpath. */
@@ -1058,6 +1529,11 @@ export interface EndpointPropertiesInput {
   /** The origin groups comprising of origins that are used for load balancing the traffic based on availability. */
   originGroups?: EndpointPropertiesInputOriginGroupsList;
 }
+const EndpointPropertiesInput = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<EndpointPropertiesInput>;
+
 export interface CreateEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1074,24 +1550,49 @@ export interface CreateEndpointRequest {
   /** The JSON object that contains the properties required to create an endpoint. */
   properties?: EndpointPropertiesInput;
 }
+const CreateEndpointRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<CreateEndpointRequest>;
+
 /** Resource tags. */
 export type CreateEndpointResponseTagsMap = { [key: string]: string | undefined };
+const CreateEndpointResponseTagsMap =
+  AFDProfilesUpgradeResponseTagsMap as any as S.Schema<CreateEndpointResponseTagsMap>;
+
 /** List of content types on which compression applies. The value should be a valid MIME type. */
 export type EndpointPropertiesContentTypesToCompressList = Array<string>;
+const EndpointPropertiesContentTypesToCompressList =
+  AFDOriginPropertiesInputCustomCertificateSubjectsList as any as S.Schema<EndpointPropertiesContentTypesToCompressList>;
+
 /** Defines how CDN caches requests that include query strings. You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL. */
 export type EndpointPropertiesQueryStringCachingBehavior =
   | "IgnoreQueryString"
   | "BypassCaching"
   | "UseQueryString"
   | "NotSet";
+const EndpointPropertiesQueryStringCachingBehavior = S.String;
+
 /** List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/ */
 export type EndpointPropertiesGeoFiltersList = Array<GeoFilter>;
+const EndpointPropertiesGeoFiltersList =
+  EndpointPropertiesInputGeoFiltersList as any as S.Schema<EndpointPropertiesGeoFiltersList>;
+
 /** List of keys used to validate the signed URL hashes. */
 export type EndpointPropertiesUrlSigningKeysList = Array<UrlSigningKey>;
+const EndpointPropertiesUrlSigningKeysList =
+  EndpointPropertiesInputUrlSigningKeysList as any as S.Schema<EndpointPropertiesUrlSigningKeysList>;
+
 /** The source of the content being delivered via CDN. */
 export type EndpointPropertiesOriginsList = Array<DeepCreatedOrigin>;
+const EndpointPropertiesOriginsList =
+  EndpointPropertiesInputOriginsList as any as S.Schema<EndpointPropertiesOriginsList>;
+
 /** The origin groups comprising of origins that are used for load balancing the traffic based on availability. */
 export type EndpointPropertiesOriginGroupsList = Array<DeepCreatedOriginGroup>;
+const EndpointPropertiesOriginGroupsList =
+  EndpointPropertiesInputOriginGroupsList as any as S.Schema<EndpointPropertiesOriginGroupsList>;
+
 /** Properties of the custom domain created on the CDN endpoint. */
 export interface DeepCreatedCustomDomainProperties {
   /** The host name of the custom domain. Must be a domain name. */
@@ -1099,6 +1600,11 @@ export interface DeepCreatedCustomDomainProperties {
   /** Special validation or data may be required when delivering CDN to some regions due to local compliance reasons. E.g. ICP license number of a custom domain is required to deliver content in China. */
   validationData?: string;
 }
+const DeepCreatedCustomDomainProperties = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<DeepCreatedCustomDomainProperties>;
+
 /** Custom domains created on the CDN endpoint. */
 export interface DeepCreatedCustomDomain {
   /** Custom domain name. */
@@ -1106,8 +1612,18 @@ export interface DeepCreatedCustomDomain {
   /** Properties of the custom domain created on the CDN endpoint. */
   properties?: DeepCreatedCustomDomainProperties;
 }
+const DeepCreatedCustomDomain = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<DeepCreatedCustomDomain>;
+
 /** The custom domains under the endpoint. */
 export type EndpointPropertiesCustomDomainsList = Array<DeepCreatedCustomDomain>;
+const EndpointPropertiesCustomDomainsList = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<EndpointPropertiesCustomDomainsList>;
+
 /** Resource status of the endpoint. */
 export type EndpointResourceState =
   | "Creating"
@@ -1116,6 +1632,8 @@ export type EndpointResourceState =
   | "Starting"
   | "Stopped"
   | "Stopping";
+const EndpointResourceState = S.String;
+
 /** Provisioning status of the endpoint. */
 export type EndpointProvisioningState =
   | "Succeeded"
@@ -1123,6 +1641,8 @@ export type EndpointProvisioningState =
   | "Updating"
   | "Deleting"
   | "Creating";
+const EndpointProvisioningState = S.String;
+
 /** The JSON object that contains the properties required to create an endpoint. */
 export interface EndpointProperties {
   /** A directory path on the origin that CDN can use to retrieve content from, e.g. contoso.cloudapp.net/originpath. */
@@ -1166,6 +1686,8 @@ export interface EndpointProperties {
   /** Provisioning status of the endpoint. */
   provisioningState?: EndpointProvisioningState;
 }
+const EndpointProperties = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<EndpointProperties>;
+
 export interface CreateEndpointResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1182,10 +1704,19 @@ export interface CreateEndpointResponse {
   /** The JSON object that contains the properties required to create an endpoint. */
   properties?: EndpointProperties;
 }
+const CreateEndpointResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<CreateEndpointResponse>;
+
 /** Resource status of the origin. */
 export type OriginResourceState = "Creating" | "Active" | "Deleting";
+const OriginResourceState = S.String;
+
 /** Provisioning status of the origin. */
 export type OriginProvisioningState = "Succeeded" | "Failed" | "Updating" | "Deleting" | "Creating";
+const OriginProvisioningState = S.String;
+
 /** The JSON object that contains the properties of the origin. */
 export interface OriginProperties {
   /** The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint. */
@@ -1217,6 +1748,8 @@ export interface OriginProperties {
   /** The approval status for the connection to the Private Link */
   privateEndpointStatus?: PrivateEndpointStatus | (string & {});
 }
+const OriginProperties = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<OriginProperties>;
+
 export interface CreateOriginRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1231,6 +1764,8 @@ export interface CreateOriginRequest {
   /** The JSON object that contains the properties of the origin. */
   properties?: OriginProperties;
 }
+const CreateOriginRequest = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<CreateOriginRequest>;
+
 export interface CreateOriginResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1243,10 +1778,20 @@ export interface CreateOriginResponse {
   /** The JSON object that contains the properties of the origin. */
   properties?: OriginProperties;
 }
+const CreateOriginResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<CreateOriginResponse>;
+
 /** The source of the content being delivered via CDN within given origin group. */
 export type OriginGroupPropertiesOriginsList = Array<ResourceReference>;
+const OriginGroupPropertiesOriginsList =
+  DeepCreatedOriginGroupPropertiesOriginsList as any as S.Schema<OriginGroupPropertiesOriginsList>;
+
 /** Resource status of the origin group. */
 export type OriginGroupResourceState = "Creating" | "Active" | "Deleting";
+const OriginGroupResourceState = S.String;
+
 /** Provisioning status of the origin group. */
 export type OriginGroupProvisioningState =
   | "Succeeded"
@@ -1254,6 +1799,8 @@ export type OriginGroupProvisioningState =
   | "Updating"
   | "Deleting"
   | "Creating";
+const OriginGroupProvisioningState = S.String;
+
 /** The JSON object that contains the properties of the origin group. */
 export interface OriginGroupProperties {
   /** Health probe settings to the origin that is used to determine the health of the origin. */
@@ -1269,6 +1816,11 @@ export interface OriginGroupProperties {
   /** Provisioning status of the origin group. */
   provisioningState?: OriginGroupProvisioningState | (string & {});
 }
+const OriginGroupProperties = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<OriginGroupProperties>;
+
 export interface CreateOriginGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1283,6 +1835,11 @@ export interface CreateOriginGroupRequest {
   /** The JSON object that contains the properties of the origin group. */
   properties?: OriginGroupProperties;
 }
+const CreateOriginGroupRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<CreateOriginGroupRequest>;
+
 export interface CreateOriginGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1295,8 +1852,16 @@ export interface CreateOriginGroupResponse {
   /** The JSON object that contains the properties of the origin group. */
   properties?: OriginGroupProperties;
 }
+const CreateOriginGroupResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<CreateOriginGroupResponse>;
+
 /** Resource tags. */
 export type CreateProfileRequestTagsMap = { [key: string]: string | undefined };
+const CreateProfileRequestTagsMap =
+  AFDProfilesUpgradeResponseTagsMap as any as S.Schema<CreateProfileRequestTagsMap>;
+
 /** The JSON object that contains the properties required to create a profile. */
 export interface ProfilePropertiesInput {
   /** Send and receive timeout on forwarding request to the origin. When timeout is reached, the request fails and returns. */
@@ -1304,18 +1869,36 @@ export interface ProfilePropertiesInput {
   /** Defines rules that scrub sensitive fields in the Azure Front Door profile logs. */
   logScrubbing?: ProfileLogScrubbing;
 }
+const ProfilePropertiesInput = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ProfilePropertiesInput>;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
+const UserAssignedIdentityInput =
+  AbortProfilesMigrationResponse as any as S.Schema<UserAssignedIdentityInput>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateProfileRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
+const CreateProfileRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<CreateProfileRequestIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateProfileRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateProfileRequestIdentityUserAssignedIdentitiesMap;
 }
+const CreateProfileRequestIdentity = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<CreateProfileRequestIdentity>;
+
 export interface CreateProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1334,8 +1917,16 @@ export interface CreateProfileRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateProfileRequestIdentity;
 }
+const CreateProfileRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<CreateProfileRequest>;
+
 /** Resource tags. */
 export type CreateProfileResponseTagsMap = { [key: string]: string | undefined };
+const CreateProfileResponseTagsMap =
+  AFDProfilesUpgradeResponseTagsMap as any as S.Schema<CreateProfileResponseTagsMap>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateProfileResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
@@ -1350,6 +1941,9 @@ export interface CreateProfileResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateProfileResponseIdentityUserAssignedIdentitiesMap;
 }
+const CreateProfileResponseIdentity =
+  AFDProfilesUpgradeResponseIdentity as any as S.Schema<CreateProfileResponseIdentity>;
+
 export interface CreateProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1372,28 +1966,50 @@ export interface CreateProfileResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateProfileResponseIdentity;
 }
+const CreateProfileResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<CreateProfileResponse>;
+
 /** Reference to another resource along with its state. */
 export type ActivatedResourceReferenceInput = ResourceReference;
 /** Domains referenced by this endpoint. */
 export type RoutePropertiesInputCustomDomainsList = Array<ResourceReference>;
+const RoutePropertiesInputCustomDomainsList =
+  DeepCreatedOriginGroupPropertiesOriginsList as any as S.Schema<RoutePropertiesInputCustomDomainsList>;
+
 /** rule sets referenced by this endpoint. */
 export type RoutePropertiesInputRuleSetsList = Array<ResourceReference>;
+const RoutePropertiesInputRuleSetsList =
+  DeepCreatedOriginGroupPropertiesOriginsList as any as S.Schema<RoutePropertiesInputRuleSetsList>;
+
 /** Supported protocols for the customer's endpoint. */
 export type AFDEndpointProtocols = "Http" | "Https";
 /** List of supported protocols for this route. */
 export type RoutePropertiesInputSupportedProtocolsList = Array<
   AFDEndpointProtocols | (string & {})
 >;
+const RoutePropertiesInputSupportedProtocolsList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<RoutePropertiesInputSupportedProtocolsList>;
+
 /** The route patterns of the rule. */
 export type RoutePropertiesInputPatternsToMatchList = Array<string>;
+const RoutePropertiesInputPatternsToMatchList =
+  AFDOriginPropertiesInputCustomCertificateSubjectsList as any as S.Schema<RoutePropertiesInputPatternsToMatchList>;
+
 /** Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings. */
 export type AfdQueryStringCachingBehavior =
   | "IgnoreQueryString"
   | "UseQueryString"
   | "IgnoreSpecifiedQueryStrings"
   | "IncludeSpecifiedQueryStrings";
+const AfdQueryStringCachingBehavior = S.String;
+
 /** List of content types on which compression applies. The value should be a valid MIME type. */
 export type CompressionSettingsContentTypesToCompressList = Array<string>;
+const CompressionSettingsContentTypesToCompressList =
+  AFDOriginPropertiesInputCustomCertificateSubjectsList as any as S.Schema<CompressionSettingsContentTypesToCompressList>;
+
 /** settings for compression. */
 export interface CompressionSettings {
   /** List of content types on which compression applies. The value should be a valid MIME type. */
@@ -1401,6 +2017,8 @@ export interface CompressionSettings {
   /** Indicates whether content compression is enabled on AzureFrontDoor. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on AzureFrontDoor when requested content is smaller than 1 byte or larger than 1 MB. */
   isCompressionEnabled?: boolean;
 }
+const CompressionSettings = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<CompressionSettings>;
+
 /** Caching settings for a caching-type route. To disable caching, do not provide a cacheConfiguration object. */
 export interface AfdRouteCacheConfiguration {
   /** Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings. */
@@ -1410,12 +2028,23 @@ export interface AfdRouteCacheConfiguration {
   /** compression settings. */
   compressionSettings?: CompressionSettings;
 }
+const AfdRouteCacheConfiguration = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<AfdRouteCacheConfiguration>;
+
 /** Protocol this rule will use when forwarding traffic to backends. */
 export type RoutePropertiesInputForwardingProtocol = "HttpOnly" | "HttpsOnly" | "MatchRequest";
+const RoutePropertiesInputForwardingProtocol = S.String;
+
 /** whether this route will be linked to the default endpoint domain. */
 export type RoutePropertiesInputLinkToDefaultDomain = "Enabled" | "Disabled";
+const RoutePropertiesInputLinkToDefaultDomain = S.String;
+
 /** Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed. */
 export type RoutePropertiesInputHttpsRedirect = "Enabled" | "Disabled";
+const RoutePropertiesInputHttpsRedirect = S.String;
+
 /** The JSON object that contains the properties of the Routes to create. */
 export interface RoutePropertiesInput {
   /** Domains referenced by this endpoint. */
@@ -1441,6 +2070,11 @@ export interface RoutePropertiesInput {
   /** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
   enabledState?: EnabledState | (string & {});
 }
+const RoutePropertiesInput = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<RoutePropertiesInput>;
+
 export interface CreateRouteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1455,6 +2089,8 @@ export interface CreateRouteRequest {
   /** The JSON object that contains the properties of the Routes to create. */
   properties?: RoutePropertiesInput;
 }
+const CreateRouteRequest = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<CreateRouteRequest>;
+
 /** Reference to another resource along with its state. */
 export interface ActivatedResourceReference {
   /** Resource ID. */
@@ -1462,20 +2098,45 @@ export interface ActivatedResourceReference {
   /** Whether the resource is active or inactive */
   isActive?: boolean;
 }
+const ActivatedResourceReference = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ActivatedResourceReference>;
+
 /** Domains referenced by this endpoint. */
 export type RoutePropertiesCustomDomainsList = Array<ActivatedResourceReference>;
+const RoutePropertiesCustomDomainsList = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<RoutePropertiesCustomDomainsList>;
+
 /** rule sets referenced by this endpoint. */
 export type RoutePropertiesRuleSetsList = Array<ResourceReference>;
+const RoutePropertiesRuleSetsList =
+  DeepCreatedOriginGroupPropertiesOriginsList as any as S.Schema<RoutePropertiesRuleSetsList>;
+
 /** List of supported protocols for this route. */
 export type RoutePropertiesSupportedProtocolsList = Array<AFDEndpointProtocols>;
+const RoutePropertiesSupportedProtocolsList =
+  RoutePropertiesInputSupportedProtocolsList as any as S.Schema<RoutePropertiesSupportedProtocolsList>;
+
 /** The route patterns of the rule. */
 export type RoutePropertiesPatternsToMatchList = Array<string>;
+const RoutePropertiesPatternsToMatchList =
+  AFDOriginPropertiesInputCustomCertificateSubjectsList as any as S.Schema<RoutePropertiesPatternsToMatchList>;
+
 /** Protocol this rule will use when forwarding traffic to backends. */
 export type RoutePropertiesForwardingProtocol = "HttpOnly" | "HttpsOnly" | "MatchRequest";
+const RoutePropertiesForwardingProtocol = S.String;
+
 /** whether this route will be linked to the default endpoint domain. */
 export type RoutePropertiesLinkToDefaultDomain = "Enabled" | "Disabled";
+const RoutePropertiesLinkToDefaultDomain = S.String;
+
 /** Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed. */
 export type RoutePropertiesHttpsRedirect = "Enabled" | "Disabled";
+const RoutePropertiesHttpsRedirect = S.String;
+
 /** The JSON object that contains the properties of the Routes to create. */
 export interface RouteProperties {
   /** The name of the endpoint which holds the route. */
@@ -1506,6 +2167,8 @@ export interface RouteProperties {
   provisioningState?: AfdProvisioningState;
   deploymentStatus?: DeploymentStatus;
 }
+const RouteProperties = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<RouteProperties>;
+
 export interface CreateRouteResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1518,12 +2181,22 @@ export interface CreateRouteResponse {
   /** The JSON object that contains the properties of the Routes to create. */
   properties?: RouteProperties;
 }
+const CreateRouteResponse = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<CreateRouteResponse>;
+
 /** A list of conditions that must be matched for the actions to be executed */
 export type RulePropertiesInputConditionsList = Array<DeliveryRuleCondition>;
+const RulePropertiesInputConditionsList =
+  DeliveryRuleConditionsList as any as S.Schema<RulePropertiesInputConditionsList>;
+
 /** A list of actions that are executed when all the conditions of a rule are satisfied. */
 export type RulePropertiesInputActionsList = Array<DeliveryRuleAction>;
+const RulePropertiesInputActionsList =
+  DeliveryRuleActionsList as any as S.Schema<RulePropertiesInputActionsList>;
+
 /** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
 export type RulePropertiesInputMatchProcessingBehavior = "Continue" | "Stop";
+const RulePropertiesInputMatchProcessingBehavior = S.String;
+
 /** The JSON object that contains the properties of the Rules to create. */
 export interface RulePropertiesInput {
   /** The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,.........}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied. */
@@ -1535,6 +2208,8 @@ export interface RulePropertiesInput {
   /** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
   matchProcessingBehavior?: RulePropertiesInputMatchProcessingBehavior | (string & {});
 }
+const RulePropertiesInput = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<RulePropertiesInput>;
+
 export interface CreateRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1549,12 +2224,22 @@ export interface CreateRuleRequest {
   /** The JSON object that contains the properties of the Rules to create. */
   properties?: RulePropertiesInput;
 }
+const CreateRuleRequest = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<CreateRuleRequest>;
+
 /** A list of conditions that must be matched for the actions to be executed */
 export type RulePropertiesConditionsList = Array<DeliveryRuleCondition>;
+const RulePropertiesConditionsList =
+  DeliveryRuleConditionsList as any as S.Schema<RulePropertiesConditionsList>;
+
 /** A list of actions that are executed when all the conditions of a rule are satisfied. */
 export type RulePropertiesActionsList = Array<DeliveryRuleAction>;
+const RulePropertiesActionsList =
+  DeliveryRuleActionsList as any as S.Schema<RulePropertiesActionsList>;
+
 /** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
 export type RulePropertiesMatchProcessingBehavior = "Continue" | "Stop";
+const RulePropertiesMatchProcessingBehavior = S.String;
+
 /** The JSON object that contains the properties of the Rules to create. */
 export interface RuleProperties {
   /** The name of the rule set containing the rule. */
@@ -1571,6 +2256,8 @@ export interface RuleProperties {
   provisioningState?: AfdProvisioningState;
   deploymentStatus?: DeploymentStatus;
 }
+const RuleProperties = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<RuleProperties>;
+
 export interface CreateRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1583,12 +2270,22 @@ export interface CreateRuleResponse {
   /** The JSON object that contains the properties of the Rules to create. */
   properties?: RuleProperties;
 }
+const CreateRuleResponse = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<CreateRuleResponse>;
+
 /** A list of conditions that must be matched for the actions to be executed */
 export type BatchRulePropertiesInputConditionsList = Array<DeliveryRuleCondition>;
+const BatchRulePropertiesInputConditionsList =
+  DeliveryRuleConditionsList as any as S.Schema<BatchRulePropertiesInputConditionsList>;
+
 /** A list of actions that are executed when all the conditions of a rule are satisfied. */
 export type BatchRulePropertiesInputActionsList = Array<DeliveryRuleAction>;
+const BatchRulePropertiesInputActionsList =
+  DeliveryRuleActionsList as any as S.Schema<BatchRulePropertiesInputActionsList>;
+
 /** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
 export type BatchRulePropertiesInputMatchProcessingBehavior = "Continue" | "Stop";
+const BatchRulePropertiesInputMatchProcessingBehavior = S.String;
+
 /** The JSON object that contains a rule with its name for batch mode operations. */
 export interface BatchRulePropertiesInput {
   /** Name of the rule. */
@@ -1602,8 +2299,18 @@ export interface BatchRulePropertiesInput {
   /** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
   matchProcessingBehavior?: BatchRulePropertiesInputMatchProcessingBehavior | (string & {});
 }
+const BatchRulePropertiesInput = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<BatchRulePropertiesInput>;
+
 /** A list of rules that are part of this rule set provided the rule set is in batch mode. This property will be ignored if the rule set is not in batch mode. */
 export type RuleSetPropertiesInputRulesList = Array<BatchRulePropertiesInput>;
+const RuleSetPropertiesInputRulesList = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<RuleSetPropertiesInputRulesList>;
+
 /** The JSON object that contains the properties of the Rule Set to create. */
 export interface RuleSetPropertiesInput {
   /** Indicates whether rule set is in batch mode. When batch mode is enabled, rules will be processed in a batch along with the rule set. When batch mode is disabled, rules would need to be processed independently. This property can only be set during rule set creation and cannot be updated later. For switching modes, a new rule set needs to be created with the desired mode and rules need to be migrated to the new rule set. */
@@ -1611,6 +2318,11 @@ export interface RuleSetPropertiesInput {
   /** A list of rules that are part of this rule set provided the rule set is in batch mode. This property will be ignored if the rule set is not in batch mode. */
   rules?: RuleSetPropertiesInputRulesList;
 }
+const RuleSetPropertiesInput = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<RuleSetPropertiesInput>;
+
 export interface CreateRuleSetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1623,12 +2335,25 @@ export interface CreateRuleSetRequest {
   /** The JSON object that contains the properties of the Rule Set to create. */
   properties?: RuleSetPropertiesInput;
 }
+const CreateRuleSetRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<CreateRuleSetRequest>;
+
 /** A list of conditions that must be matched for the actions to be executed */
 export type BatchRulePropertiesConditionsList = Array<DeliveryRuleCondition>;
+const BatchRulePropertiesConditionsList =
+  DeliveryRuleConditionsList as any as S.Schema<BatchRulePropertiesConditionsList>;
+
 /** A list of actions that are executed when all the conditions of a rule are satisfied. */
 export type BatchRulePropertiesActionsList = Array<DeliveryRuleAction>;
+const BatchRulePropertiesActionsList =
+  DeliveryRuleActionsList as any as S.Schema<BatchRulePropertiesActionsList>;
+
 /** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
 export type BatchRulePropertiesMatchProcessingBehavior = "Continue" | "Stop";
+const BatchRulePropertiesMatchProcessingBehavior = S.String;
+
 /** The JSON object that contains a rule with its name for batch mode operations. */
 export interface BatchRuleProperties {
   /** Name of the rule. */
@@ -1644,8 +2369,15 @@ export interface BatchRuleProperties {
   /** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
   matchProcessingBehavior?: BatchRulePropertiesMatchProcessingBehavior;
 }
+const BatchRuleProperties = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<BatchRuleProperties>;
+
 /** A list of rules that are part of this rule set provided the rule set is in batch mode. This property will be ignored if the rule set is not in batch mode. */
 export type RuleSetPropertiesRulesList = Array<BatchRuleProperties>;
+const RuleSetPropertiesRulesList = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<RuleSetPropertiesRulesList>;
+
 /** The JSON object that contains the properties of the Rule Set to create. */
 export interface RuleSetProperties {
   /** Provisioning status */
@@ -1658,6 +2390,8 @@ export interface RuleSetProperties {
   /** A list of rules that are part of this rule set provided the rule set is in batch mode. This property will be ignored if the rule set is not in batch mode. */
   rules?: RuleSetPropertiesRulesList;
 }
+const RuleSetProperties = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<RuleSetProperties>;
+
 export interface CreateRuleSetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1670,6 +2404,11 @@ export interface CreateRuleSetResponse {
   /** The JSON object that contains the properties of the Rule Set to create. */
   properties?: RuleSetProperties;
 }
+const CreateRuleSetResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<CreateRuleSetResponse>;
+
 /** The type of the secret resource. */
 export type SecretType =
   | "UrlSigningKey"
@@ -1677,6 +2416,8 @@ export type SecretType =
   | "ManagedCertificate"
   | "AzureFirstPartyManagedCertificate"
   | "MtlsCertificateChain";
+const SecretType = S.String;
+
 /** The json object containing secret parameters */
 export interface SecretParameters {
   /** The type of the secret resource. */
@@ -1700,11 +2441,18 @@ export interface SecretParameters {
   /** Certificate thumbprint (read-only). */
   thumbprint?: string;
 }
+const SecretParameters = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<SecretParameters>;
+
 /** The JSON object that contains the properties of the Secret to create. */
 export interface SecretPropertiesInput {
   /** object which contains secret parameters */
   parameters?: SecretParameters;
 }
+const SecretPropertiesInput = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<SecretPropertiesInput>;
+
 export interface CreateSecretRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1717,6 +2465,8 @@ export interface CreateSecretRequest {
   /** The JSON object that contains the properties of the Secret to create. */
   properties?: SecretPropertiesInput;
 }
+const CreateSecretRequest = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<CreateSecretRequest>;
+
 /** The JSON object that contains the properties of the Secret to create. */
 export interface SecretProperties {
   /** Provisioning status */
@@ -1727,6 +2477,8 @@ export interface SecretProperties {
   /** object which contains secret parameters */
   parameters?: SecretParameters;
 }
+const SecretProperties = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<SecretProperties>;
+
 export interface CreateSecretResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1739,8 +2491,15 @@ export interface CreateSecretResponse {
   /** The JSON object that contains the properties of the Secret to create. */
   properties?: SecretProperties;
 }
+const CreateSecretResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<CreateSecretResponse>;
+
 /** The type of the Security policy to create. */
 export type SecurityPolicyType = "WebApplicationFirewall";
+const SecurityPolicyType = S.String;
+
 /** The json object containing security policy parameters */
 export interface SecurityPolicyPropertiesParameters {
   /** The type of the Security policy to create. */
@@ -1750,11 +2509,21 @@ export interface SecurityPolicyPropertiesParameters {
   /** WebApplicationFirewall: domains (`{ domains: [{ id }], patternsToMatch: string[] }[]`) the policy applies to. */
   associations?: unknown;
 }
+const SecurityPolicyPropertiesParameters = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<SecurityPolicyPropertiesParameters>;
+
 /** The json object that contains properties required to create a security policy */
 export interface SecurityPolicyPropertiesInput {
   /** object which contains security policy parameters */
   parameters?: SecurityPolicyPropertiesParameters;
 }
+const SecurityPolicyPropertiesInput = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<SecurityPolicyPropertiesInput>;
+
 export interface CreateSecurityPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1767,6 +2536,11 @@ export interface CreateSecurityPolicyRequest {
   /** The json object that contains properties required to create a security policy */
   properties?: SecurityPolicyPropertiesInput;
 }
+const CreateSecurityPolicyRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<CreateSecurityPolicyRequest>;
+
 /** The json object that contains properties required to create a security policy */
 export interface SecurityPolicyProperties {
   /** Provisioning status */
@@ -1777,6 +2551,11 @@ export interface SecurityPolicyProperties {
   /** object which contains security policy parameters */
   parameters?: SecurityPolicyPropertiesParameters;
 }
+const SecurityPolicyProperties = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<SecurityPolicyProperties>;
+
 export interface CreateSecurityPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1789,6 +2568,11 @@ export interface CreateSecurityPolicyResponse {
   /** The json object that contains properties required to create a security policy */
   properties?: SecurityPolicyProperties;
 }
+const CreateSecurityPolicyResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<CreateSecurityPolicyResponse>;
+
 export interface DeleteAFDCustomDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1799,7 +2583,15 @@ export interface DeleteAFDCustomDomainRequest {
   /** Name of the domain under the profile which is unique globally. */
   customDomainName: string;
 }
+const DeleteAFDCustomDomainRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<DeleteAFDCustomDomainRequest>;
+
 export interface DeleteAFDCustomDomainResponse {}
+const DeleteAFDCustomDomainResponse =
+  AbortProfilesMigrationResponse as any as S.Schema<DeleteAFDCustomDomainResponse>;
+
 export interface DeleteAFDEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1810,7 +2602,15 @@ export interface DeleteAFDEndpointRequest {
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
 }
+const DeleteAFDEndpointRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<DeleteAFDEndpointRequest>;
+
 export interface DeleteAFDEndpointResponse {}
+const DeleteAFDEndpointResponse =
+  AbortProfilesMigrationResponse as any as S.Schema<DeleteAFDEndpointResponse>;
+
 export interface DeleteAFDOriginRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1823,7 +2623,15 @@ export interface DeleteAFDOriginRequest {
   /** Name of the origin which is unique within the profile. */
   originName: string;
 }
+const DeleteAFDOriginRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<DeleteAFDOriginRequest>;
+
 export interface DeleteAFDOriginResponse {}
+const DeleteAFDOriginResponse =
+  AbortProfilesMigrationResponse as any as S.Schema<DeleteAFDOriginResponse>;
+
 export interface DeleteAFDOriginGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1834,7 +2642,15 @@ export interface DeleteAFDOriginGroupRequest {
   /** Name of the origin group which is unique within the endpoint. */
   originGroupName: string;
 }
+const DeleteAFDOriginGroupRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<DeleteAFDOriginGroupRequest>;
+
 export interface DeleteAFDOriginGroupResponse {}
+const DeleteAFDOriginGroupResponse =
+  AbortProfilesMigrationResponse as any as S.Schema<DeleteAFDOriginGroupResponse>;
+
 export interface DeleteCustomDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1847,7 +2663,15 @@ export interface DeleteCustomDomainRequest {
   /** Name of the custom domain within an endpoint. */
   customDomainName: string;
 }
+const DeleteCustomDomainRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<DeleteCustomDomainRequest>;
+
 export interface DeleteCustomDomainResponse {}
+const DeleteCustomDomainResponse =
+  AbortProfilesMigrationResponse as any as S.Schema<DeleteCustomDomainResponse>;
+
 export interface DeleteEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1858,7 +2682,15 @@ export interface DeleteEndpointRequest {
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
 }
+const DeleteEndpointRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<DeleteEndpointRequest>;
+
 export interface DeleteEndpointResponse {}
+const DeleteEndpointResponse =
+  AbortProfilesMigrationResponse as any as S.Schema<DeleteEndpointResponse>;
+
 export interface DeleteOriginRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1871,7 +2703,12 @@ export interface DeleteOriginRequest {
   /** Name of the origin which is unique within the endpoint. */
   originName: string;
 }
+const DeleteOriginRequest = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<DeleteOriginRequest>;
+
 export interface DeleteOriginResponse {}
+const DeleteOriginResponse =
+  AbortProfilesMigrationResponse as any as S.Schema<DeleteOriginResponse>;
+
 export interface DeleteOriginGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1884,7 +2721,15 @@ export interface DeleteOriginGroupRequest {
   /** Name of the origin group which is unique within the endpoint. */
   originGroupName: string;
 }
+const DeleteOriginGroupRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<DeleteOriginGroupRequest>;
+
 export interface DeleteOriginGroupResponse {}
+const DeleteOriginGroupResponse =
+  AbortProfilesMigrationResponse as any as S.Schema<DeleteOriginGroupResponse>;
+
 export interface DeletePolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1893,7 +2738,12 @@ export interface DeletePolicyRequest {
   /** The name of the CdnWebApplicationFirewallPolicy. */
   policyName: string;
 }
+const DeletePolicyRequest = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<DeletePolicyRequest>;
+
 export interface DeletePolicyResponse {}
+const DeletePolicyResponse =
+  AbortProfilesMigrationResponse as any as S.Schema<DeletePolicyResponse>;
+
 export interface DeleteProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1902,7 +2752,15 @@ export interface DeleteProfileRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
+const DeleteProfileRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<DeleteProfileRequest>;
+
 export interface DeleteProfileResponse {}
+const DeleteProfileResponse =
+  AbortProfilesMigrationResponse as any as S.Schema<DeleteProfileResponse>;
+
 export interface DeleteRouteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1915,7 +2773,11 @@ export interface DeleteRouteRequest {
   /** Name of the routing rule. */
   routeName: string;
 }
+const DeleteRouteRequest = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<DeleteRouteRequest>;
+
 export interface DeleteRouteResponse {}
+const DeleteRouteResponse = AbortProfilesMigrationResponse as any as S.Schema<DeleteRouteResponse>;
+
 export interface DeleteRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1928,7 +2790,11 @@ export interface DeleteRuleRequest {
   /** Name of the delivery rule which is unique within the endpoint. */
   ruleName: string;
 }
+const DeleteRuleRequest = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<DeleteRuleRequest>;
+
 export interface DeleteRuleResponse {}
+const DeleteRuleResponse = AbortProfilesMigrationResponse as any as S.Schema<DeleteRuleResponse>;
+
 export interface DeleteRuleSetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1939,7 +2805,15 @@ export interface DeleteRuleSetRequest {
   /** Name of the rule set under the profile which is unique globally. */
   ruleSetName: string;
 }
+const DeleteRuleSetRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<DeleteRuleSetRequest>;
+
 export interface DeleteRuleSetResponse {}
+const DeleteRuleSetResponse =
+  AbortProfilesMigrationResponse as any as S.Schema<DeleteRuleSetResponse>;
+
 export interface DeleteSecretRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1950,7 +2824,12 @@ export interface DeleteSecretRequest {
   /** Name of the Secret under the profile. */
   secretName: string;
 }
+const DeleteSecretRequest = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<DeleteSecretRequest>;
+
 export interface DeleteSecretResponse {}
+const DeleteSecretResponse =
+  AbortProfilesMigrationResponse as any as S.Schema<DeleteSecretResponse>;
+
 export interface DeleteSecurityPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1961,7 +2840,15 @@ export interface DeleteSecurityPolicyRequest {
   /** Name of the security policy under the profile. */
   securityPolicyName: string;
 }
+const DeleteSecurityPolicyRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<DeleteSecurityPolicyRequest>;
+
 export interface DeleteSecurityPolicyResponse {}
+const DeleteSecurityPolicyResponse =
+  AbortProfilesMigrationResponse as any as S.Schema<DeleteSecurityPolicyResponse>;
+
 export interface DisableCustomDomainCustomHttpsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1974,6 +2861,11 @@ export interface DisableCustomDomainCustomHttpsRequest {
   /** Name of the custom domain within an endpoint. */
   customDomainName: string;
 }
+const DisableCustomDomainCustomHttpsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<DisableCustomDomainCustomHttpsRequest>;
+
 export interface DisableCustomDomainCustomHttpsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1986,6 +2878,9 @@ export interface DisableCustomDomainCustomHttpsResponse {
   /** The JSON object that contains the properties of the custom domain to create. */
   properties?: CustomDomainProperties;
 }
+const DisableCustomDomainCustomHttpsResponse =
+  CreateCustomDomainResponse as any as S.Schema<DisableCustomDomainCustomHttpsResponse>;
+
 export interface EnableCustomDomainCustomHttpsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2004,6 +2899,11 @@ export interface EnableCustomDomainCustomHttpsRequest {
   /** TLS protocol version that will be used for Https */
   minimumTlsVersion?: MinimumTlsVersion | (string & {});
 }
+const EnableCustomDomainCustomHttpsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<EnableCustomDomainCustomHttpsRequest>;
+
 export interface EnableCustomDomainCustomHttpsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2016,8 +2916,14 @@ export interface EnableCustomDomainCustomHttpsResponse {
   /** The JSON object that contains the properties of the custom domain to create. */
   properties?: CustomDomainProperties;
 }
+const EnableCustomDomainCustomHttpsResponse =
+  CreateCustomDomainResponse as any as S.Schema<EnableCustomDomainCustomHttpsResponse>;
+
 /** The path to the content to be loaded. Path should be a relative file URL of the origin. */
 export type EndpointsLoadContentRequestContentPathsList = Array<string>;
+const EndpointsLoadContentRequestContentPathsList =
+  AFDOriginPropertiesInputCustomCertificateSubjectsList as any as S.Schema<EndpointsLoadContentRequestContentPathsList>;
+
 export interface EndpointsLoadContentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2030,7 +2936,15 @@ export interface EndpointsLoadContentRequest {
   /** The path to the content to be loaded. Path should be a relative file URL of the origin. */
   contentPaths: EndpointsLoadContentRequestContentPathsList;
 }
+const EndpointsLoadContentRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<EndpointsLoadContentRequest>;
+
 export interface EndpointsLoadContentResponse {}
+const EndpointsLoadContentResponse =
+  AbortProfilesMigrationResponse as any as S.Schema<EndpointsLoadContentResponse>;
+
 export interface GenerateProfileSsoUriRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2039,11 +2953,18 @@ export interface GenerateProfileSsoUriRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
+const GenerateProfileSsoUriRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<GenerateProfileSsoUriRequest>;
+
 /** The URI required to login to the supplemental portal from the Azure portal. */
 export interface SsoUri {
   /** The URI used to login to the supplemental portal. */
   ssoUriValue?: string;
 }
+const SsoUri = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<SsoUri>;
+
 export interface GetAFDCustomDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2054,6 +2975,11 @@ export interface GetAFDCustomDomainRequest {
   /** Name of the domain under the profile which is unique globally. */
   customDomainName: string;
 }
+const GetAFDCustomDomainRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<GetAFDCustomDomainRequest>;
+
 export interface GetAFDCustomDomainResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2066,6 +2992,9 @@ export interface GetAFDCustomDomainResponse {
   /** The JSON object that contains the properties of the domain to create. */
   properties?: AFDDomainProperties;
 }
+const GetAFDCustomDomainResponse =
+  CreateAFDCustomDomainResponse as any as S.Schema<GetAFDCustomDomainResponse>;
+
 export interface GetAFDEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2076,8 +3005,16 @@ export interface GetAFDEndpointRequest {
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
 }
+const GetAFDEndpointRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<GetAFDEndpointRequest>;
+
 /** Resource tags. */
 export type GetAFDEndpointResponseTagsMap = { [key: string]: string | undefined };
+const GetAFDEndpointResponseTagsMap =
+  AFDProfilesUpgradeResponseTagsMap as any as S.Schema<GetAFDEndpointResponseTagsMap>;
+
 export interface GetAFDEndpointResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2094,6 +3031,11 @@ export interface GetAFDEndpointResponse {
   /** The JSON object that contains the properties required to create an endpoint. */
   properties?: AFDEndpointProperties;
 }
+const GetAFDEndpointResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<GetAFDEndpointResponse>;
+
 export interface GetAFDOriginRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2106,6 +3048,8 @@ export interface GetAFDOriginRequest {
   /** Name of the origin which is unique within the profile. */
   originName: string;
 }
+const GetAFDOriginRequest = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<GetAFDOriginRequest>;
+
 export interface GetAFDOriginResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2118,6 +3062,8 @@ export interface GetAFDOriginResponse {
   /** The JSON object that contains the properties of the origin. */
   properties?: AFDOriginProperties;
 }
+const GetAFDOriginResponse = CreateAFDOriginResponse as any as S.Schema<GetAFDOriginResponse>;
+
 export interface GetAFDOriginGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2128,6 +3074,11 @@ export interface GetAFDOriginGroupRequest {
   /** Name of the origin group which is unique within the endpoint. */
   originGroupName: string;
 }
+const GetAFDOriginGroupRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<GetAFDOriginGroupRequest>;
+
 export interface GetAFDOriginGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2140,6 +3091,9 @@ export interface GetAFDOriginGroupResponse {
   /** The JSON object that contains the properties of the origin group. */
   properties?: AFDOriginGroupProperties;
 }
+const GetAFDOriginGroupResponse =
+  CreateAFDOriginGroupResponse as any as S.Schema<GetAFDOriginGroupResponse>;
+
 export interface GetCustomDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2152,6 +3106,11 @@ export interface GetCustomDomainRequest {
   /** Name of the custom domain within an endpoint. */
   customDomainName: string;
 }
+const GetCustomDomainRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<GetCustomDomainRequest>;
+
 export interface GetCustomDomainResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2164,6 +3123,11 @@ export interface GetCustomDomainResponse {
   /** The JSON object that contains the properties of the custom domain to create. */
   properties?: CustomDomainProperties;
 }
+const GetCustomDomainResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<GetCustomDomainResponse>;
+
 export interface GetEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2174,6 +3138,8 @@ export interface GetEndpointRequest {
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
 }
+const GetEndpointRequest = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<GetEndpointRequest>;
+
 /** Resource tags. */
 export type GetEndpointResponseTagsMap = { [key: string]: string | undefined };
 export interface GetEndpointResponse {
@@ -2192,6 +3158,8 @@ export interface GetEndpointResponse {
   /** The JSON object that contains the properties required to create an endpoint. */
   properties?: EndpointProperties;
 }
+const GetEndpointResponse = CreateEndpointResponse as any as S.Schema<GetEndpointResponse>;
+
 export interface GetLogAnalyticsLogAnalyticsLocationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2200,20 +3168,47 @@ export interface GetLogAnalyticsLogAnalyticsLocationsRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
+const GetLogAnalyticsLogAnalyticsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<GetLogAnalyticsLogAnalyticsLocationsRequest>;
+
 export interface ContinentsResponseContinentsItem {
   id?: string;
 }
+const ContinentsResponseContinentsItem = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<ContinentsResponseContinentsItem>;
+
 export type ContinentsResponseContinentsList = Array<ContinentsResponseContinentsItem>;
+const ContinentsResponseContinentsList = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ContinentsResponseContinentsList>;
+
 export interface ContinentsResponseCountryOrRegionsItem {
   id?: string;
   continentId?: string;
 }
+const ContinentsResponseCountryOrRegionsItem = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ContinentsResponseCountryOrRegionsItem>;
+
 export type ContinentsResponseCountryOrRegionsList = Array<ContinentsResponseCountryOrRegionsItem>;
+const ContinentsResponseCountryOrRegionsList = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<ContinentsResponseCountryOrRegionsList>;
+
 /** Continents Response */
 export interface ContinentsResponse {
   continents?: ContinentsResponseContinentsList;
   countryOrRegions?: ContinentsResponseCountryOrRegionsList;
 }
+const ContinentsResponse = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<ContinentsResponse>;
+
 export type GetLogAnalyticsLogAnalyticsMetricsRequestMetricsItem =
   | "clientRequestCount"
   | "clientRequestTraffic"
@@ -2224,7 +3219,12 @@ export type GetLogAnalyticsLogAnalyticsMetricsRequestMetricsItem =
 export type GetLogAnalyticsLogAnalyticsMetricsRequestMetricsList = Array<
   GetLogAnalyticsLogAnalyticsMetricsRequestMetricsItem | (string & {})
 >;
+const GetLogAnalyticsLogAnalyticsMetricsRequestMetricsList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsLogAnalyticsMetricsRequestMetricsList>;
+
 export type GetLogAnalyticsLogAnalyticsMetricsRequestGranularity = "PT5M" | "PT1H" | "P1D";
+const GetLogAnalyticsLogAnalyticsMetricsRequestGranularity = S.String;
+
 export type GetLogAnalyticsLogAnalyticsMetricsRequestGroupByItem =
   | "httpStatusCode"
   | "protocol"
@@ -2234,10 +3234,25 @@ export type GetLogAnalyticsLogAnalyticsMetricsRequestGroupByItem =
 export type GetLogAnalyticsLogAnalyticsMetricsRequestGroupByList = Array<
   GetLogAnalyticsLogAnalyticsMetricsRequestGroupByItem | (string & {})
 >;
+const GetLogAnalyticsLogAnalyticsMetricsRequestGroupByList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsLogAnalyticsMetricsRequestGroupByList>;
+
 export type GetLogAnalyticsLogAnalyticsMetricsRequestContinentsList = Array<string>;
+const GetLogAnalyticsLogAnalyticsMetricsRequestContinentsList =
+  AFDOriginPropertiesInputCustomCertificateSubjectsList as any as S.Schema<GetLogAnalyticsLogAnalyticsMetricsRequestContinentsList>;
+
 export type GetLogAnalyticsLogAnalyticsMetricsRequestCountryOrRegionsList = Array<string>;
+const GetLogAnalyticsLogAnalyticsMetricsRequestCountryOrRegionsList =
+  AFDOriginPropertiesInputCustomCertificateSubjectsList as any as S.Schema<GetLogAnalyticsLogAnalyticsMetricsRequestCountryOrRegionsList>;
+
 export type GetLogAnalyticsLogAnalyticsMetricsRequestCustomDomainsList = Array<string>;
+const GetLogAnalyticsLogAnalyticsMetricsRequestCustomDomainsList =
+  AFDOriginPropertiesInputCustomCertificateSubjectsList as any as S.Schema<GetLogAnalyticsLogAnalyticsMetricsRequestCustomDomainsList>;
+
 export type GetLogAnalyticsLogAnalyticsMetricsRequestProtocolsList = Array<string>;
+const GetLogAnalyticsLogAnalyticsMetricsRequestProtocolsList =
+  AFDOriginPropertiesInputCustomCertificateSubjectsList as any as S.Schema<GetLogAnalyticsLogAnalyticsMetricsRequestProtocolsList>;
+
 export interface GetLogAnalyticsLogAnalyticsMetricsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2255,26 +3270,66 @@ export interface GetLogAnalyticsLogAnalyticsMetricsRequest {
   customDomains: GetLogAnalyticsLogAnalyticsMetricsRequestCustomDomainsList;
   protocols: GetLogAnalyticsLogAnalyticsMetricsRequestProtocolsList;
 }
+const GetLogAnalyticsLogAnalyticsMetricsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<GetLogAnalyticsLogAnalyticsMetricsRequest>;
+
 export type MetricsGranularity = "PT5M" | "PT1H" | "P1D";
+const MetricsGranularity = S.String;
+
 export type MetricsSeriesUnit = "count" | "bytes" | "bitsPerSecond" | "milliSeconds";
+const MetricsSeriesUnit = S.String;
+
 export interface MetricsResponseSeriesPropertiesItemsItem {
   name?: string;
   value?: string;
 }
+const MetricsResponseSeriesPropertiesItemsItem = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<MetricsResponseSeriesPropertiesItemsItem>;
+
 export type MetricsResponseSeriesItemGroupsList = Array<MetricsResponseSeriesPropertiesItemsItem>;
+const MetricsResponseSeriesItemGroupsList = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<MetricsResponseSeriesItemGroupsList>;
+
 export interface Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropertiesDataItems {
   dateTime?: string;
   value?: number;
 }
+const Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropertiesDataItems =
+  /*@__PURE__*/ __L.at(
+    __c20,
+    3,
+  ) as any as S.Schema<Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropertiesDataItems>;
+
 export type MetricsResponseSeriesItemDataList =
   Array<Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropertiesDataItems>;
+const MetricsResponseSeriesItemDataList = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<MetricsResponseSeriesItemDataList>;
+
 export interface MetricsResponseSeriesItem {
   metric?: string;
   unit?: MetricsSeriesUnit;
   groups?: MetricsResponseSeriesItemGroupsList;
   data?: MetricsResponseSeriesItemDataList;
 }
+const MetricsResponseSeriesItem = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<MetricsResponseSeriesItem>;
+
 export type MetricsResponseSeriesList = Array<MetricsResponseSeriesItem>;
+const MetricsResponseSeriesList = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<MetricsResponseSeriesList>;
+
 /** Metrics Response */
 export interface MetricsResponse {
   dateTimeBegin?: string;
@@ -2282,6 +3337,8 @@ export interface MetricsResponse {
   granularity?: MetricsGranularity;
   series?: MetricsResponseSeriesList;
 }
+const MetricsResponse = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<MetricsResponse>;
+
 export type GetLogAnalyticsLogAnalyticsRankingsRequestRankingsItem =
   | "url"
   | "referrer"
@@ -2291,6 +3348,9 @@ export type GetLogAnalyticsLogAnalyticsRankingsRequestRankingsItem =
 export type GetLogAnalyticsLogAnalyticsRankingsRequestRankingsList = Array<
   GetLogAnalyticsLogAnalyticsRankingsRequestRankingsItem | (string & {})
 >;
+const GetLogAnalyticsLogAnalyticsRankingsRequestRankingsList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsLogAnalyticsRankingsRequestRankingsList>;
+
 export type GetLogAnalyticsLogAnalyticsRankingsRequestMetricsItem =
   | "clientRequestCount"
   | "clientRequestTraffic"
@@ -2301,7 +3361,13 @@ export type GetLogAnalyticsLogAnalyticsRankingsRequestMetricsItem =
 export type GetLogAnalyticsLogAnalyticsRankingsRequestMetricsList = Array<
   GetLogAnalyticsLogAnalyticsRankingsRequestMetricsItem | (string & {})
 >;
+const GetLogAnalyticsLogAnalyticsRankingsRequestMetricsList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsLogAnalyticsRankingsRequestMetricsList>;
+
 export type GetLogAnalyticsLogAnalyticsRankingsRequestCustomDomainsList = Array<string>;
+const GetLogAnalyticsLogAnalyticsRankingsRequestCustomDomainsList =
+  AFDOriginPropertiesInputCustomCertificateSubjectsList as any as S.Schema<GetLogAnalyticsLogAnalyticsRankingsRequestCustomDomainsList>;
+
 export interface GetLogAnalyticsLogAnalyticsRankingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2316,29 +3382,66 @@ export interface GetLogAnalyticsLogAnalyticsRankingsRequest {
   dateTimeEnd: string;
   customDomains?: GetLogAnalyticsLogAnalyticsRankingsRequestCustomDomainsList;
 }
+const GetLogAnalyticsLogAnalyticsRankingsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<GetLogAnalyticsLogAnalyticsRankingsRequest>;
+
 export interface RankingsResponseTablesPropertiesItemsMetricsItem {
   metric?: string;
   value?: number;
   percentage?: number;
 }
+const RankingsResponseTablesPropertiesItemsMetricsItem = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<RankingsResponseTablesPropertiesItemsMetricsItem>;
+
 export type RankingsResponseTablesPropertiesItemsItemMetricsList =
   Array<RankingsResponseTablesPropertiesItemsMetricsItem>;
+const RankingsResponseTablesPropertiesItemsItemMetricsList = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<RankingsResponseTablesPropertiesItemsItemMetricsList>;
+
 export interface RankingsResponseTablesPropertiesItemsItem {
   name?: string;
   metrics?: RankingsResponseTablesPropertiesItemsItemMetricsList;
 }
+const RankingsResponseTablesPropertiesItemsItem = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<RankingsResponseTablesPropertiesItemsItem>;
+
 export type RankingsResponseTablesItemDataList = Array<RankingsResponseTablesPropertiesItemsItem>;
+const RankingsResponseTablesItemDataList = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<RankingsResponseTablesItemDataList>;
+
 export interface RankingsResponseTablesItem {
   ranking?: string;
   data?: RankingsResponseTablesItemDataList;
 }
+const RankingsResponseTablesItem = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<RankingsResponseTablesItem>;
+
 export type RankingsResponseTablesList = Array<RankingsResponseTablesItem>;
+const RankingsResponseTablesList = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<RankingsResponseTablesList>;
+
 /** Rankings Response */
 export interface RankingsResponse {
   dateTimeBegin?: string;
   dateTimeEnd?: string;
   tables?: RankingsResponseTablesList;
 }
+const RankingsResponse = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<RankingsResponse>;
+
 export interface GetLogAnalyticsLogAnalyticsResourcesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2347,34 +3450,69 @@ export interface GetLogAnalyticsLogAnalyticsResourcesRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
+const GetLogAnalyticsLogAnalyticsResourcesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<GetLogAnalyticsLogAnalyticsResourcesRequest>;
+
 export interface ResourcesResponseEndpointsPropertiesItemsItem {
   id?: string;
   name?: string;
   endpointId?: string;
   history?: boolean;
 }
+const ResourcesResponseEndpointsPropertiesItemsItem = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<ResourcesResponseEndpointsPropertiesItemsItem>;
+
 export type ResourcesResponseEndpointsItemCustomDomainsList =
   Array<ResourcesResponseEndpointsPropertiesItemsItem>;
+const ResourcesResponseEndpointsItemCustomDomainsList = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<ResourcesResponseEndpointsItemCustomDomainsList>;
+
 export interface ResourcesResponseEndpointsItem {
   id?: string;
   name?: string;
   history?: boolean;
   customDomains?: ResourcesResponseEndpointsItemCustomDomainsList;
 }
+const ResourcesResponseEndpointsItem = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<ResourcesResponseEndpointsItem>;
+
 export type ResourcesResponseEndpointsList = Array<ResourcesResponseEndpointsItem>;
+const ResourcesResponseEndpointsList = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<ResourcesResponseEndpointsList>;
+
 export type ResourcesResponseCustomDomainsItem = ResourcesResponseEndpointsPropertiesItemsItem;
 export type ResourcesResponseCustomDomainsList =
   Array<ResourcesResponseEndpointsPropertiesItemsItem>;
+const ResourcesResponseCustomDomainsList =
+  ResourcesResponseEndpointsItemCustomDomainsList as any as S.Schema<ResourcesResponseCustomDomainsList>;
+
 /** Resources Response */
 export interface ResourcesResponse {
   endpoints?: ResourcesResponseEndpointsList;
   customDomains?: ResourcesResponseCustomDomainsList;
 }
+const ResourcesResponse = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<ResourcesResponse>;
+
 export type GetLogAnalyticsWafLogAnalyticsMetricsRequestMetricsItem = "clientRequestCount";
 export type GetLogAnalyticsWafLogAnalyticsMetricsRequestMetricsList = Array<
   GetLogAnalyticsWafLogAnalyticsMetricsRequestMetricsItem | (string & {})
 >;
+const GetLogAnalyticsWafLogAnalyticsMetricsRequestMetricsList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsWafLogAnalyticsMetricsRequestMetricsList>;
+
 export type GetLogAnalyticsWafLogAnalyticsMetricsRequestGranularity = "PT5M" | "PT1H" | "P1D";
+const GetLogAnalyticsWafLogAnalyticsMetricsRequestGranularity = S.String;
+
 export type GetLogAnalyticsWafLogAnalyticsMetricsRequestActionsItem =
   | "allow"
   | "block"
@@ -2383,12 +3521,18 @@ export type GetLogAnalyticsWafLogAnalyticsMetricsRequestActionsItem =
 export type GetLogAnalyticsWafLogAnalyticsMetricsRequestActionsList = Array<
   GetLogAnalyticsWafLogAnalyticsMetricsRequestActionsItem | (string & {})
 >;
+const GetLogAnalyticsWafLogAnalyticsMetricsRequestActionsList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsWafLogAnalyticsMetricsRequestActionsList>;
+
 export type GetLogAnalyticsWafLogAnalyticsMetricsRequestGroupByItem =
   | "httpStatusCode"
   | "customDomain";
 export type GetLogAnalyticsWafLogAnalyticsMetricsRequestGroupByList = Array<
   GetLogAnalyticsWafLogAnalyticsMetricsRequestGroupByItem | (string & {})
 >;
+const GetLogAnalyticsWafLogAnalyticsMetricsRequestGroupByList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsWafLogAnalyticsMetricsRequestGroupByList>;
+
 export type GetLogAnalyticsWafLogAnalyticsMetricsRequestRuleTypesItem =
   | "managed"
   | "custom"
@@ -2396,6 +3540,9 @@ export type GetLogAnalyticsWafLogAnalyticsMetricsRequestRuleTypesItem =
 export type GetLogAnalyticsWafLogAnalyticsMetricsRequestRuleTypesList = Array<
   GetLogAnalyticsWafLogAnalyticsMetricsRequestRuleTypesItem | (string & {})
 >;
+const GetLogAnalyticsWafLogAnalyticsMetricsRequestRuleTypesList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsWafLogAnalyticsMetricsRequestRuleTypesList>;
+
 export interface GetLogAnalyticsWafLogAnalyticsMetricsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2411,22 +3558,47 @@ export interface GetLogAnalyticsWafLogAnalyticsMetricsRequest {
   groupBy?: GetLogAnalyticsWafLogAnalyticsMetricsRequestGroupByList;
   ruleTypes?: GetLogAnalyticsWafLogAnalyticsMetricsRequestRuleTypesList;
 }
+const GetLogAnalyticsWafLogAnalyticsMetricsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<GetLogAnalyticsWafLogAnalyticsMetricsRequest>;
+
 export type WafMetricsGranularity = "PT5M" | "PT1H" | "P1D";
+const WafMetricsGranularity = S.String;
+
 export type WafMetricsSeriesUnit = "count";
+const WafMetricsSeriesUnit = S.String;
+
 export type WafMetricsResponseSeriesPropertiesItemsItem = MetricsResponseSeriesPropertiesItemsItem;
 export type WafMetricsResponseSeriesItemGroupsList =
   Array<MetricsResponseSeriesPropertiesItemsItem>;
+const WafMetricsResponseSeriesItemGroupsList =
+  MetricsResponseSeriesItemGroupsList as any as S.Schema<WafMetricsResponseSeriesItemGroupsList>;
+
 export type Components18OrqelSchemasWafmetricsresponsePropertiesSeriesItemsPropertiesDataItems =
   Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropertiesDataItems;
 export type WafMetricsResponseSeriesItemDataList =
   Array<Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropertiesDataItems>;
+const WafMetricsResponseSeriesItemDataList =
+  MetricsResponseSeriesItemDataList as any as S.Schema<WafMetricsResponseSeriesItemDataList>;
+
 export interface WafMetricsResponseSeriesItem {
   metric?: string;
   unit?: WafMetricsSeriesUnit;
   groups?: WafMetricsResponseSeriesItemGroupsList;
   data?: WafMetricsResponseSeriesItemDataList;
 }
+const WafMetricsResponseSeriesItem = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<WafMetricsResponseSeriesItem>;
+
 export type WafMetricsResponseSeriesList = Array<WafMetricsResponseSeriesItem>;
+const WafMetricsResponseSeriesList = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<WafMetricsResponseSeriesList>;
+
 /** Waf Metrics Response */
 export interface WafMetricsResponse {
   dateTimeBegin?: string;
@@ -2434,10 +3606,15 @@ export interface WafMetricsResponse {
   granularity?: WafMetricsGranularity;
   series?: WafMetricsResponseSeriesList;
 }
+const WafMetricsResponse = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<WafMetricsResponse>;
+
 export type GetLogAnalyticsWafLogAnalyticsRankingsRequestMetricsItem = "clientRequestCount";
 export type GetLogAnalyticsWafLogAnalyticsRankingsRequestMetricsList = Array<
   GetLogAnalyticsWafLogAnalyticsRankingsRequestMetricsItem | (string & {})
 >;
+const GetLogAnalyticsWafLogAnalyticsRankingsRequestMetricsList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsWafLogAnalyticsRankingsRequestMetricsList>;
+
 export type GetLogAnalyticsWafLogAnalyticsRankingsRequestRankingsItem =
   | "action"
   | "ruleGroup"
@@ -2450,6 +3627,9 @@ export type GetLogAnalyticsWafLogAnalyticsRankingsRequestRankingsItem =
 export type GetLogAnalyticsWafLogAnalyticsRankingsRequestRankingsList = Array<
   GetLogAnalyticsWafLogAnalyticsRankingsRequestRankingsItem | (string & {})
 >;
+const GetLogAnalyticsWafLogAnalyticsRankingsRequestRankingsList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsWafLogAnalyticsRankingsRequestRankingsList>;
+
 export type GetLogAnalyticsWafLogAnalyticsRankingsRequestActionsItem =
   | "allow"
   | "block"
@@ -2458,6 +3638,9 @@ export type GetLogAnalyticsWafLogAnalyticsRankingsRequestActionsItem =
 export type GetLogAnalyticsWafLogAnalyticsRankingsRequestActionsList = Array<
   GetLogAnalyticsWafLogAnalyticsRankingsRequestActionsItem | (string & {})
 >;
+const GetLogAnalyticsWafLogAnalyticsRankingsRequestActionsList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsWafLogAnalyticsRankingsRequestActionsList>;
+
 export type GetLogAnalyticsWafLogAnalyticsRankingsRequestRuleTypesItem =
   | "managed"
   | "custom"
@@ -2465,6 +3648,9 @@ export type GetLogAnalyticsWafLogAnalyticsRankingsRequestRuleTypesItem =
 export type GetLogAnalyticsWafLogAnalyticsRankingsRequestRuleTypesList = Array<
   GetLogAnalyticsWafLogAnalyticsRankingsRequestRuleTypesItem | (string & {})
 >;
+const GetLogAnalyticsWafLogAnalyticsRankingsRequestRuleTypesList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<GetLogAnalyticsWafLogAnalyticsRankingsRequestRuleTypesList>;
+
 export interface GetLogAnalyticsWafLogAnalyticsRankingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2480,17 +3666,41 @@ export interface GetLogAnalyticsWafLogAnalyticsRankingsRequest {
   actions?: GetLogAnalyticsWafLogAnalyticsRankingsRequestActionsList;
   ruleTypes?: GetLogAnalyticsWafLogAnalyticsRankingsRequestRuleTypesList;
 }
+const GetLogAnalyticsWafLogAnalyticsRankingsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<GetLogAnalyticsWafLogAnalyticsRankingsRequest>;
+
 export type WafRankingsResponseGroupsList = Array<string>;
+const WafRankingsResponseGroupsList =
+  AFDOriginPropertiesInputCustomCertificateSubjectsList as any as S.Schema<WafRankingsResponseGroupsList>;
+
 export type WafRankingsResponseDataItemGroupValuesList = Array<string>;
+const WafRankingsResponseDataItemGroupValuesList =
+  AFDOriginPropertiesInputCustomCertificateSubjectsList as any as S.Schema<WafRankingsResponseDataItemGroupValuesList>;
+
 export type ComponentsKpo1PjSchemasWafrankingsresponsePropertiesDataItemsPropertiesMetricsItems =
   RankingsResponseTablesPropertiesItemsMetricsItem;
 export type WafRankingsResponseDataItemMetricsList =
   Array<RankingsResponseTablesPropertiesItemsMetricsItem>;
+const WafRankingsResponseDataItemMetricsList =
+  RankingsResponseTablesPropertiesItemsItemMetricsList as any as S.Schema<WafRankingsResponseDataItemMetricsList>;
+
 export interface WafRankingsResponseDataItem {
   groupValues?: WafRankingsResponseDataItemGroupValuesList;
   metrics?: WafRankingsResponseDataItemMetricsList;
 }
+const WafRankingsResponseDataItem = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<WafRankingsResponseDataItem>;
+
 export type WafRankingsResponseDataList = Array<WafRankingsResponseDataItem>;
+const WafRankingsResponseDataList = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<WafRankingsResponseDataList>;
+
 /** Waf Rankings Response */
 export interface WafRankingsResponse {
   dateTimeBegin?: string;
@@ -2498,6 +3708,8 @@ export interface WafRankingsResponse {
   groups?: WafRankingsResponseGroupsList;
   data?: WafRankingsResponseDataList;
 }
+const WafRankingsResponse = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<WafRankingsResponse>;
+
 export interface GetOriginRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2510,6 +3722,8 @@ export interface GetOriginRequest {
   /** Name of the origin which is unique within the endpoint. */
   originName: string;
 }
+const GetOriginRequest = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<GetOriginRequest>;
+
 export interface GetOriginResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2522,6 +3736,8 @@ export interface GetOriginResponse {
   /** The JSON object that contains the properties of the origin. */
   properties?: OriginProperties;
 }
+const GetOriginResponse = CreateOriginResponse as any as S.Schema<GetOriginResponse>;
+
 export interface GetOriginGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2534,6 +3750,11 @@ export interface GetOriginGroupRequest {
   /** Name of the origin group which is unique within the endpoint. */
   originGroupName: string;
 }
+const GetOriginGroupRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<GetOriginGroupRequest>;
+
 export interface GetOriginGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2546,6 +3767,11 @@ export interface GetOriginGroupResponse {
   /** The JSON object that contains the properties of the origin group. */
   properties?: OriginGroupProperties;
 }
+const GetOriginGroupResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<GetOriginGroupResponse>;
+
 export interface GetPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2554,14 +3780,25 @@ export interface GetPolicyRequest {
   /** The name of the CdnWebApplicationFirewallPolicy. */
   policyName: string;
 }
+const GetPolicyRequest = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<GetPolicyRequest>;
+
 /** Resource tags. */
 export type GetPolicyResponseTagsMap = { [key: string]: string | undefined };
+const GetPolicyResponseTagsMap =
+  AFDProfilesUpgradeResponseTagsMap as any as S.Schema<GetPolicyResponseTagsMap>;
+
 /** Describes if the policy is in enabled or disabled state. Defaults to Enabled if not specified. */
 export type PolicyEnabledState = "Disabled" | "Enabled";
+const PolicyEnabledState = S.String;
+
 /** Describes if it is in detection mode or prevention mode at policy level. */
 export type PolicyMode = "Prevention" | "Detection";
+const PolicyMode = S.String;
+
 /** If the action type is block, this field defines the default customer overridable http response status code. */
 export type PolicySettingsDefaultCustomBlockResponseStatusCode = 200 | 403 | 405 | 406 | 429;
+const PolicySettingsDefaultCustomBlockResponseStatusCode = S.Number;
+
 /** Defines contents of a web application firewall global configuration */
 export interface PolicySettings {
   /** describes if the policy is in enabled state or disabled state */
@@ -2577,8 +3814,12 @@ export interface PolicySettings {
   /** If the action type is block, customer can override the response body. The body must be specified in base64 encoding. */
   defaultCustomBlockResponseBody?: string;
 }
+const PolicySettings = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<PolicySettings>;
+
 /** Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified. */
 export type CustomRuleEnabledState = "Disabled" | "Enabled";
+const CustomRuleEnabledState = S.String;
+
 /** Match variable to compare against. */
 export type WafMatchVariable =
   | "RemoteAddr"
@@ -2590,6 +3831,8 @@ export type WafMatchVariable =
   | "RequestBody"
   | "Cookies"
   | "PostArgs";
+const WafMatchVariable = S.String;
+
 /** Describes operator to be matched */
 export type Operator =
   | "Any"
@@ -2604,8 +3847,13 @@ export type Operator =
   | "BeginsWith"
   | "EndsWith"
   | "RegEx";
+const Operator = S.String;
+
 /** List of possible match values. */
 export type MatchConditionMatchValueList = Array<string>;
+const MatchConditionMatchValueList =
+  AFDOriginPropertiesInputCustomCertificateSubjectsList as any as S.Schema<MatchConditionMatchValueList>;
+
 /** Describes what transforms were applied before matching. */
 export type TransformType =
   | "Lowercase"
@@ -2616,6 +3864,9 @@ export type TransformType =
   | "RemoveNulls";
 /** List of transforms. */
 export type MatchConditionTransformsList = Array<TransformType | (string & {})>;
+const MatchConditionTransformsList =
+  AFDDomainHttpsParametersServerTlsGroupsList as any as S.Schema<MatchConditionTransformsList>;
+
 /** Define match conditions */
 export interface MatchCondition {
   /** Match variable to compare against. */
@@ -2631,10 +3882,19 @@ export interface MatchCondition {
   /** List of transforms. */
   transforms?: MatchConditionTransformsList;
 }
+const MatchCondition = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<MatchCondition>;
+
 /** List of match conditions. */
 export type RateLimitRuleMatchConditionsList = Array<MatchCondition>;
+const RateLimitRuleMatchConditionsList = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<RateLimitRuleMatchConditionsList>;
+
 /** Defines the action to take on rule match. */
 export type ActionType = "Allow" | "Block" | "Log" | "Redirect";
+const ActionType = S.String;
+
 /** Defines a rate limiting rule that can be included in a waf policy */
 export interface RateLimitRule {
   /** Defines the name of the custom rule */
@@ -2652,15 +3912,27 @@ export interface RateLimitRule {
   /** Defines rate limit duration. Default is 1 minute. */
   rateLimitDurationInMinutes: number;
 }
+const RateLimitRule = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<RateLimitRule>;
+
 /** List of rules */
 export type RateLimitRuleListRulesList = Array<RateLimitRule>;
+const RateLimitRuleListRulesList = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<RateLimitRuleListRulesList>;
+
 /** Defines contents of rate limit rules */
 export interface RateLimitRuleList {
   /** List of rules */
   rules?: RateLimitRuleListRulesList;
 }
+const RateLimitRuleList = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<RateLimitRuleList>;
+
 /** List of match conditions. */
 export type CustomRuleMatchConditionsList = Array<MatchCondition>;
+const CustomRuleMatchConditionsList =
+  RateLimitRuleMatchConditionsList as any as S.Schema<CustomRuleMatchConditionsList>;
+
 /** Defines the common attributes for a custom rule that can be included in a waf policy */
 export interface CustomRule {
   /** Defines the name of the custom rule */
@@ -2674,15 +3946,26 @@ export interface CustomRule {
   /** Describes what action to be applied when rule matches */
   action: ActionType | (string & {});
 }
+const CustomRule = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<CustomRule>;
+
 /** List of rules */
 export type CustomRuleListRulesList = Array<CustomRule>;
+const CustomRuleListRulesList = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<CustomRuleListRulesList>;
+
 /** Defines contents of custom rules */
 export interface CustomRuleList {
   /** List of rules */
   rules?: CustomRuleListRulesList;
 }
+const CustomRuleList = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<CustomRuleList>;
+
 /** Describes if the managed rule is in enabled or disabled state. */
 export type ManagedRuleEnabledState = "Disabled" | "Enabled";
+const ManagedRuleEnabledState = S.String;
+
 /** Defines a managed rule group override setting. */
 export interface ManagedRuleOverride {
   /** Identifier for the managed rule. */
@@ -2692,8 +3975,15 @@ export interface ManagedRuleOverride {
   /** Describes the override action to be applied when rule matches. */
   action?: ActionType | (string & {});
 }
+const ManagedRuleOverride = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<ManagedRuleOverride>;
+
 /** List of rules that will be enabled. If none specified, all rules in the group will be disabled. */
 export type ManagedRuleGroupOverrideRulesList = Array<ManagedRuleOverride>;
+const ManagedRuleGroupOverrideRulesList = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<ManagedRuleGroupOverrideRulesList>;
+
 /** Defines a managed rule group override setting. */
 export interface ManagedRuleGroupOverride {
   /** Describes the managed rule group within the rule set to override */
@@ -2701,8 +3991,18 @@ export interface ManagedRuleGroupOverride {
   /** List of rules that will be enabled. If none specified, all rules in the group will be disabled. */
   rules?: ManagedRuleGroupOverrideRulesList;
 }
+const ManagedRuleGroupOverride = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<ManagedRuleGroupOverride>;
+
 /** Defines the rule overrides to apply to the rule set. */
 export type ManagedRuleSetRuleGroupOverridesList = Array<ManagedRuleGroupOverride>;
+const ManagedRuleSetRuleGroupOverridesList = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<ManagedRuleSetRuleGroupOverridesList>;
+
 /** Defines a managed rule set. */
 export interface ManagedRuleSet {
   /** Defines the rule set type to use. */
@@ -2714,13 +4014,22 @@ export interface ManagedRuleSet {
   /** Defines the rule overrides to apply to the rule set. */
   ruleGroupOverrides?: ManagedRuleSetRuleGroupOverridesList;
 }
+const ManagedRuleSet = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<ManagedRuleSet>;
+
 /** List of rule sets. */
 export type ManagedRuleSetListManagedRuleSetsList = Array<ManagedRuleSet>;
+const ManagedRuleSetListManagedRuleSetsList = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<ManagedRuleSetListManagedRuleSetsList>;
+
 /** Defines the list of managed rule sets for the policy. */
 export interface ManagedRuleSetList {
   /** List of rule sets. */
   managedRuleSets?: ManagedRuleSetListManagedRuleSetsList;
 }
+const ManagedRuleSetList = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<ManagedRuleSetList>;
+
 /** Defines the ARM Resource ID for the linked endpoints */
 export interface CdnEndpoint {
   /** ARM Resource ID string. */
@@ -2728,12 +4037,22 @@ export interface CdnEndpoint {
 }
 /** Describes Azure CDN endpoints associated with this Web Application Firewall policy. */
 export type CdnWebApplicationFirewallPolicyPropertiesEndpointLinksList = Array<CdnEndpoint>;
+const CdnWebApplicationFirewallPolicyPropertiesEndpointLinksList =
+  DeepCreatedOriginGroupPropertiesOriginsList as any as S.Schema<CdnWebApplicationFirewallPolicyPropertiesEndpointLinksList>;
+
 /** Key-Value pair representing additional properties for Web Application Firewall policy. */
 export type CdnWebApplicationFirewallPolicyPropertiesExtendedPropertiesMap = {
   [key: string]: string | undefined;
 };
+const CdnWebApplicationFirewallPolicyPropertiesExtendedPropertiesMap = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<CdnWebApplicationFirewallPolicyPropertiesExtendedPropertiesMap>;
+
 /** Provisioning state of the WebApplicationFirewallPolicy. */
 export type ProvisioningState = "Creating" | "Succeeded" | "Failed";
+const ProvisioningState = S.String;
+
 /** Resource status of the policy. */
 export type PolicyResourceState =
   | "Creating"
@@ -2742,6 +4061,8 @@ export type PolicyResourceState =
   | "Disabling"
   | "Disabled"
   | "Deleting";
+const PolicyResourceState = S.String;
+
 /** Defines CDN web application firewall policy properties. */
 export interface CdnWebApplicationFirewallPolicyProperties {
   /** Describes policySettings for policy */
@@ -2761,6 +4082,11 @@ export interface CdnWebApplicationFirewallPolicyProperties {
   /** Resource status of the policy. */
   resourceState?: PolicyResourceState;
 }
+const CdnWebApplicationFirewallPolicyProperties = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<CdnWebApplicationFirewallPolicyProperties>;
+
 export interface GetPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2781,6 +4107,8 @@ export interface GetPolicyResponse {
   /** The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy. */
   sku: Sku;
 }
+const GetPolicyResponse = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<GetPolicyResponse>;
+
 export interface GetProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2789,6 +4117,8 @@ export interface GetProfileRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
+const GetProfileRequest = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<GetProfileRequest>;
+
 /** Resource tags. */
 export type GetProfileResponseTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -2827,6 +4157,8 @@ export interface GetProfileResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetProfileResponseIdentity;
 }
+const GetProfileResponse = CreateProfileResponse as any as S.Schema<GetProfileResponse>;
+
 export interface GetRouteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2839,6 +4171,8 @@ export interface GetRouteRequest {
   /** Name of the routing rule. */
   routeName: string;
 }
+const GetRouteRequest = /*@__PURE__*/ __L.at(__c26, 6) as any as S.Schema<GetRouteRequest>;
+
 export interface GetRouteResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2851,6 +4185,8 @@ export interface GetRouteResponse {
   /** The JSON object that contains the properties of the Routes to create. */
   properties?: RouteProperties;
 }
+const GetRouteResponse = CreateRouteResponse as any as S.Schema<GetRouteResponse>;
+
 export interface GetRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2863,6 +4199,8 @@ export interface GetRuleRequest {
   /** Name of the delivery rule which is unique within the endpoint. */
   ruleName: string;
 }
+const GetRuleRequest = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<GetRuleRequest>;
+
 export interface GetRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2875,6 +4213,8 @@ export interface GetRuleResponse {
   /** The JSON object that contains the properties of the Rules to create. */
   properties?: RuleProperties;
 }
+const GetRuleResponse = CreateRuleResponse as any as S.Schema<GetRuleResponse>;
+
 export interface GetRuleSetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2885,6 +4225,8 @@ export interface GetRuleSetRequest {
   /** Name of the rule set under the profile which is unique globally. */
   ruleSetName: string;
 }
+const GetRuleSetRequest = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<GetRuleSetRequest>;
+
 export interface GetRuleSetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2897,6 +4239,8 @@ export interface GetRuleSetResponse {
   /** The JSON object that contains the properties of the Rule Set to create. */
   properties?: RuleSetProperties;
 }
+const GetRuleSetResponse = CreateRuleSetResponse as any as S.Schema<GetRuleSetResponse>;
+
 export interface GetSecretRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2907,6 +4251,8 @@ export interface GetSecretRequest {
   /** Name of the Secret under the profile. */
   secretName: string;
 }
+const GetSecretRequest = /*@__PURE__*/ __L.at(__c27, 1) as any as S.Schema<GetSecretRequest>;
+
 export interface GetSecretResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2919,6 +4265,8 @@ export interface GetSecretResponse {
   /** The JSON object that contains the properties of the Secret to create. */
   properties?: SecretProperties;
 }
+const GetSecretResponse = CreateSecretResponse as any as S.Schema<GetSecretResponse>;
+
 export interface GetSecurityPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2929,6 +4277,11 @@ export interface GetSecurityPolicyRequest {
   /** Name of the security policy under the profile. */
   securityPolicyName: string;
 }
+const GetSecurityPolicyRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<GetSecurityPolicyRequest>;
+
 export interface GetSecurityPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2941,6 +4294,9 @@ export interface GetSecurityPolicyResponse {
   /** The json object that contains properties required to create a security policy */
   properties?: SecurityPolicyProperties;
 }
+const GetSecurityPolicyResponse =
+  CreateSecurityPolicyResponse as any as S.Schema<GetSecurityPolicyResponse>;
+
 export interface ListAFDCustomDomainByProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2949,6 +4305,11 @@ export interface ListAFDCustomDomainByProfileRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
+const ListAFDCustomDomainByProfileRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<ListAFDCustomDomainByProfileRequest>;
+
 /** Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com. */
 export interface AFDDomain {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2962,8 +4323,15 @@ export interface AFDDomain {
   /** The JSON object that contains the properties of the domain to create. */
   properties?: AFDDomainProperties;
 }
+const AFDDomain = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<AFDDomain>;
+
 /** The AFDDomain items on this page */
 export type AFDDomainListResultValueList = Array<AFDDomain>;
+const AFDDomainListResultValueList = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<AFDDomainListResultValueList>;
+
 /** The response of a AFDDomain list operation. */
 export interface AFDDomainListResult {
   /** The AFDDomain items on this page */
@@ -2971,6 +4339,8 @@ export interface AFDDomainListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const AFDDomainListResult = /*@__PURE__*/ __L.at(__c27, 6) as any as S.Schema<AFDDomainListResult>;
+
 export interface ListAFDEndpointByProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2979,6 +4349,11 @@ export interface ListAFDEndpointByProfileRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
+const ListAFDEndpointByProfileRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<ListAFDEndpointByProfileRequest>;
+
 /** Resource tags. */
 export type AFDEndpointTagsMap = { [key: string]: string | undefined };
 /** Azure Front Door endpoint is the entity within a Azure Front Door profile containing configuration information such as origin, protocol, content caching and delivery behavior. The AzureFrontDoor endpoint uses the URL format <endpointname>.azureedge.net. */
@@ -2998,8 +4373,15 @@ export interface AFDEndpoint {
   /** The JSON object that contains the properties required to create an endpoint. */
   properties?: AFDEndpointProperties;
 }
+const AFDEndpoint = GetAFDEndpointResponse as any as S.Schema<AFDEndpoint>;
+
 /** The AFDEndpoint items on this page */
 export type AFDEndpointListResultValueList = Array<AFDEndpoint>;
+const AFDEndpointListResultValueList = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<AFDEndpointListResultValueList>;
+
 /** The response of a AFDEndpoint list operation. */
 export interface AFDEndpointListResult {
   /** The AFDEndpoint items on this page */
@@ -3007,6 +4389,11 @@ export interface AFDEndpointListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const AFDEndpointListResult = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<AFDEndpointListResult>;
+
 export interface ListAFDEndpointResourceUsageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3017,8 +4404,15 @@ export interface ListAFDEndpointResourceUsageRequest {
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
 }
+const ListAFDEndpointResourceUsageRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<ListAFDEndpointResourceUsageRequest>;
+
 /** An enum describing the unit of measurement. */
 export type UsageUnit = "Count";
+const UsageUnit = S.String;
+
 /** The usage names. */
 export interface UsageName {
   /** A string describing the resource name. */
@@ -3026,6 +4420,8 @@ export interface UsageName {
   /** A localized string describing the resource name. */
   localizedValue?: string;
 }
+const UsageName = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<UsageName>;
+
 /** Describes resource usage. */
 export interface Usage {
   /** Resource identifier. */
@@ -3039,8 +4435,15 @@ export interface Usage {
   /** The name of the type of usage. */
   name: UsageName;
 }
+const Usage = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<Usage>;
+
 /** The Usage items on this page */
 export type UsagesListResultValueList = Array<Usage>;
+const UsagesListResultValueList = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<UsagesListResultValueList>;
+
 /** The list usages operation response. */
 export interface UsagesListResult {
   /** The Usage items on this page */
@@ -3048,6 +4451,8 @@ export interface UsagesListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const UsagesListResult = /*@__PURE__*/ __L.at(__c28, 6) as any as S.Schema<UsagesListResult>;
+
 export interface ListAFDOriginByOriginGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3058,6 +4463,11 @@ export interface ListAFDOriginByOriginGroupRequest {
   /** Name of the origin group which is unique within the endpoint. */
   originGroupName: string;
 }
+const ListAFDOriginByOriginGroupRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<ListAFDOriginByOriginGroupRequest>;
+
 /** Azure Front Door origin is the source of the content being delivered via Azure Front Door. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins. */
 export interface AFDOrigin {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3071,8 +4481,15 @@ export interface AFDOrigin {
   /** The JSON object that contains the properties of the origin. */
   properties?: AFDOriginProperties;
 }
+const AFDOrigin = CreateAFDOriginResponse as any as S.Schema<AFDOrigin>;
+
 /** The AFDOrigin items on this page */
 export type AFDOriginListResultValueList = Array<AFDOrigin>;
+const AFDOriginListResultValueList = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<AFDOriginListResultValueList>;
+
 /** The response of a AFDOrigin list operation. */
 export interface AFDOriginListResult {
   /** The AFDOrigin items on this page */
@@ -3080,6 +4497,8 @@ export interface AFDOriginListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const AFDOriginListResult = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<AFDOriginListResult>;
+
 export interface ListAFDOriginGroupByProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3088,6 +4507,11 @@ export interface ListAFDOriginGroupByProfileRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
+const ListAFDOriginGroupByProfileRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<ListAFDOriginGroupByProfileRequest>;
+
 /** AFDOrigin group comprising of origins is used for load balancing to origins when the content cannot be served from Azure Front Door. */
 export interface AFDOriginGroup {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3101,8 +4525,15 @@ export interface AFDOriginGroup {
   /** The JSON object that contains the properties of the origin group. */
   properties?: AFDOriginGroupProperties;
 }
+const AFDOriginGroup = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<AFDOriginGroup>;
+
 /** The AFDOriginGroup items on this page */
 export type AFDOriginGroupListResultValueList = Array<AFDOriginGroup>;
+const AFDOriginGroupListResultValueList = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<AFDOriginGroupListResultValueList>;
+
 /** The response of a AFDOriginGroup list operation. */
 export interface AFDOriginGroupListResult {
   /** The AFDOriginGroup items on this page */
@@ -3110,6 +4541,11 @@ export interface AFDOriginGroupListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const AFDOriginGroupListResult = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<AFDOriginGroupListResult>;
+
 export interface ListAFDOriginGroupResourceUsageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3120,6 +4556,11 @@ export interface ListAFDOriginGroupResourceUsageRequest {
   /** Name of the origin group which is unique within the endpoint. */
   originGroupName: string;
 }
+const ListAFDOriginGroupResourceUsageRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<ListAFDOriginGroupResourceUsageRequest>;
+
 export interface ListAFDProfileResourceUsageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3128,6 +4569,11 @@ export interface ListAFDProfileResourceUsageRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
+const ListAFDProfileResourceUsageRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<ListAFDProfileResourceUsageRequest>;
+
 export interface ListCustomDomainByEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3138,6 +4584,11 @@ export interface ListCustomDomainByEndpointRequest {
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
 }
+const ListCustomDomainByEndpointRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<ListCustomDomainByEndpointRequest>;
+
 /** Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com. */
 export interface CustomDomain {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3151,8 +4602,15 @@ export interface CustomDomain {
   /** The JSON object that contains the properties of the custom domain to create. */
   properties?: CustomDomainProperties;
 }
+const CustomDomain = GetCustomDomainResponse as any as S.Schema<CustomDomain>;
+
 /** The CustomDomain items on this page */
 export type CustomDomainListResultValueList = Array<CustomDomain>;
+const CustomDomainListResultValueList = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<CustomDomainListResultValueList>;
+
 /** The response of a CustomDomain list operation. */
 export interface CustomDomainListResult {
   /** The CustomDomain items on this page */
@@ -3160,7 +4618,17 @@ export interface CustomDomainListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const CustomDomainListResult = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<CustomDomainListResult>;
+
 export interface ListEdgeNodesRequest {}
+const ListEdgeNodesRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<ListEdgeNodesRequest>;
+
 /** CIDR Ip address */
 export interface CidrIpAddress {
   /** Ip address itself. */
@@ -3168,10 +4636,20 @@ export interface CidrIpAddress {
   /** The length of the prefix of the ip address. */
   prefixLength?: number;
 }
+const CidrIpAddress = /*@__PURE__*/ __L.at(__c30, 4) as any as S.Schema<CidrIpAddress>;
+
 /** The list of ip v4 addresses. */
 export type IpAddressGroupIpv4AddressesList = Array<CidrIpAddress>;
+const IpAddressGroupIpv4AddressesList = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<IpAddressGroupIpv4AddressesList>;
+
 /** The list of ip v6 addresses. */
 export type IpAddressGroupIpv6AddressesList = Array<CidrIpAddress>;
+const IpAddressGroupIpv6AddressesList =
+  IpAddressGroupIpv4AddressesList as any as S.Schema<IpAddressGroupIpv6AddressesList>;
+
 /** CDN Ip address group */
 export interface IpAddressGroup {
   /** The delivery region of the ip address group */
@@ -3181,13 +4659,22 @@ export interface IpAddressGroup {
   /** The list of ip v6 addresses. */
   ipv6Addresses?: IpAddressGroupIpv6AddressesList;
 }
+const IpAddressGroup = /*@__PURE__*/ __L.at(__c30, 6) as any as S.Schema<IpAddressGroup>;
+
 /** List of ip address groups. */
 export type EdgeNodePropertiesIpAddressGroupsList = Array<IpAddressGroup>;
+const EdgeNodePropertiesIpAddressGroupsList = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<EdgeNodePropertiesIpAddressGroupsList>;
+
 /** The JSON object that contains the properties required to create an edgenode. */
 export interface EdgeNodeProperties {
   /** List of ip address groups. */
   ipAddressGroups: EdgeNodePropertiesIpAddressGroupsList;
 }
+const EdgeNodeProperties = /*@__PURE__*/ __L.at(__c31, 0) as any as S.Schema<EdgeNodeProperties>;
+
 /** Edgenode is a global Point of Presence (POP) location used to deliver CDN content to end users. */
 export interface EdgeNode {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3201,8 +4688,15 @@ export interface EdgeNode {
   /** The JSON object that contains the properties required to create an edgenode. */
   properties?: EdgeNodeProperties;
 }
+const EdgeNode = /*@__PURE__*/ __L.at(__c31, 1) as any as S.Schema<EdgeNode>;
+
 /** The EdgeNode items on this page */
 export type EdgenodeResultValueList = Array<EdgeNode>;
+const EdgenodeResultValueList = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<EdgenodeResultValueList>;
+
 /** Result of the request to list CDN edgenodes. It contains a list of ip address group and a URL link to get the next set of results. */
 export interface EdgenodeResult {
   /** The EdgeNode items on this page */
@@ -3210,6 +4704,8 @@ export interface EdgenodeResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const EdgenodeResult = /*@__PURE__*/ __L.at(__c31, 3) as any as S.Schema<EdgenodeResult>;
+
 export interface ListEndpointByProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3218,6 +4714,11 @@ export interface ListEndpointByProfileRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
+const ListEndpointByProfileRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<ListEndpointByProfileRequest>;
+
 /** Resource tags. */
 export type EndpointTagsMap = { [key: string]: string | undefined };
 /** CDN endpoint is the entity within a CDN profile containing configuration information such as origin, protocol, content caching and delivery behavior. The CDN endpoint uses the URL format <endpointname>.azureedge.net. */
@@ -3237,8 +4738,15 @@ export interface Endpoint {
   /** The JSON object that contains the properties required to create an endpoint. */
   properties?: EndpointProperties;
 }
+const Endpoint = CreateEndpointResponse as any as S.Schema<Endpoint>;
+
 /** The Endpoint items on this page */
 export type EndpointListResultValueList = Array<Endpoint>;
+const EndpointListResultValueList = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<EndpointListResultValueList>;
+
 /** The response of a Endpoint list operation. */
 export interface EndpointListResult {
   /** The Endpoint items on this page */
@@ -3246,6 +4754,8 @@ export interface EndpointListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const EndpointListResult = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<EndpointListResult>;
+
 export interface ListEndpointResourceUsageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3256,8 +4766,15 @@ export interface ListEndpointResourceUsageRequest {
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
 }
+const ListEndpointResourceUsageRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<ListEndpointResourceUsageRequest>;
+
 /** Unit of the usage. e.g. count. */
 export type ResourceUsageUnit = "count";
+const ResourceUsageUnit = S.String;
+
 /** Output of check resource usage API. */
 export interface ResourceUsage {
   /** Resource type for which the usage is provided. */
@@ -3269,8 +4786,15 @@ export interface ResourceUsage {
   /** Quota of the specified resource type. */
   limit?: number;
 }
+const ResourceUsage = /*@__PURE__*/ __L.at(__c32, 0) as any as S.Schema<ResourceUsage>;
+
 /** The ResourceUsage items on this page */
 export type ResourceUsageListResultValueList = Array<ResourceUsage>;
+const ResourceUsageListResultValueList = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<ResourceUsageListResultValueList>;
+
 /** Output of check resource usage API. */
 export interface ResourceUsageListResult {
   /** The ResourceUsage items on this page */
@@ -3278,10 +4802,20 @@ export interface ResourceUsageListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ResourceUsageListResult = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<ResourceUsageListResult>;
+
 export interface ListManagedRuleSetsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListManagedRuleSetsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<ListManagedRuleSetsRequest>;
+
 /** Describes a managed rule definition. */
 export interface ManagedRuleDefinition {
   /** Identifier for the managed rule. */
@@ -3289,8 +4823,18 @@ export interface ManagedRuleDefinition {
   /** Describes the functionality of the managed rule. */
   description?: string;
 }
+const ManagedRuleDefinition = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<ManagedRuleDefinition>;
+
 /** List of rules within the managed rule group. */
 export type ManagedRuleGroupDefinitionRulesList = Array<ManagedRuleDefinition>;
+const ManagedRuleGroupDefinitionRulesList = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<ManagedRuleGroupDefinitionRulesList>;
+
 /** Describes a managed rule group. */
 export interface ManagedRuleGroupDefinition {
   /** Name of the managed rule group. */
@@ -3300,8 +4844,18 @@ export interface ManagedRuleGroupDefinition {
   /** List of rules within the managed rule group. */
   rules?: ManagedRuleGroupDefinitionRulesList;
 }
+const ManagedRuleGroupDefinition = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<ManagedRuleGroupDefinition>;
+
 /** Rule groups of the managed rule set. */
 export type ManagedRuleSetDefinitionPropertiesRuleGroupsList = Array<ManagedRuleGroupDefinition>;
+const ManagedRuleSetDefinitionPropertiesRuleGroupsList = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<ManagedRuleSetDefinitionPropertiesRuleGroupsList>;
+
 /** Properties for a managed rule set definition. */
 export interface ManagedRuleSetDefinitionProperties {
   /** Provisioning state of the managed rule set. */
@@ -3313,6 +4867,11 @@ export interface ManagedRuleSetDefinitionProperties {
   /** Rule groups of the managed rule set. */
   ruleGroups?: ManagedRuleSetDefinitionPropertiesRuleGroupsList;
 }
+const ManagedRuleSetDefinitionProperties = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<ManagedRuleSetDefinitionProperties>;
+
 /** Describes a managed rule set definition. */
 export interface ManagedRuleSetDefinition {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3328,8 +4887,18 @@ export interface ManagedRuleSetDefinition {
   /** The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy. */
   sku?: Sku;
 }
+const ManagedRuleSetDefinition = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<ManagedRuleSetDefinition>;
+
 /** The ManagedRuleSetDefinition items on this page */
 export type ManagedRuleSetDefinitionListValueList = Array<ManagedRuleSetDefinition>;
+const ManagedRuleSetDefinitionListValueList = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<ManagedRuleSetDefinitionListValueList>;
+
 /** List of managed rule set definitions available for use in a policy. */
 export interface ManagedRuleSetDefinitionList {
   /** The ManagedRuleSetDefinition items on this page */
@@ -3337,7 +4906,17 @@ export interface ManagedRuleSetDefinitionList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ManagedRuleSetDefinitionList = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<ManagedRuleSetDefinitionList>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  4,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft.Cdn */
@@ -3349,6 +4928,8 @@ export interface OperationDisplay {
   /** Description of operation. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c33, 5) as any as S.Schema<OperationDisplay>;
+
 /** Log specification of operation. */
 export interface LogSpecification {
   /** Name of log specification. */
@@ -3360,17 +4941,34 @@ export interface LogSpecification {
   /** Pattern to filter based on name */
   logFilterPattern?: string;
 }
+const LogSpecification = /*@__PURE__*/ __L.at(__c33, 6) as any as S.Schema<LogSpecification>;
+
 /** Log specifications of operation. */
 export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
+const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
+
 /** Retention policy of a resource metric. */
 export interface MetricAvailability {
   timeGrain?: string;
   blobDuration?: string;
 }
+const MetricAvailability = /*@__PURE__*/ __L.at(__c34, 0) as any as S.Schema<MetricAvailability>;
+
 /** Retention policies of a resource metric. */
 export type MetricSpecificationAvailabilitiesList = Array<MetricAvailability>;
+const MetricSpecificationAvailabilitiesList = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<MetricSpecificationAvailabilitiesList>;
+
 /** The supported time grain types for the metrics. */
 export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
+const MetricSpecificationSupportedTimeGrainTypesList =
+  AFDOriginPropertiesInputCustomCertificateSubjectsList as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
+
 /** Type of operation: get, read, delete, etc. */
 export interface DimensionProperties {
   /** Name of dimension. */
@@ -3380,8 +4978,15 @@ export interface DimensionProperties {
   /** Internal name of dimension. */
   internalName?: string;
 }
+const DimensionProperties = /*@__PURE__*/ __L.at(__c34, 2) as any as S.Schema<DimensionProperties>;
+
 /** The dimensions of metric */
 export type MetricSpecificationDimensionsList = Array<DimensionProperties>;
+const MetricSpecificationDimensionsList = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<MetricSpecificationDimensionsList>;
+
 /** Metric specification of operation. */
 export interface MetricSpecification {
   /** Name of metric specification. */
@@ -3407,8 +5012,15 @@ export interface MetricSpecification {
   /** Property to specify metric is internal or not. */
   isInternal?: boolean;
 }
+const MetricSpecification = /*@__PURE__*/ __L.at(__c34, 4) as any as S.Schema<MetricSpecification>;
+
 /** Metric specifications of operation. */
 export type ServiceSpecificationMetricSpecificationsList = Array<MetricSpecification>;
+const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
+
 /** One property of operation, include log specifications. */
 export interface ServiceSpecification {
   /** Log specifications of operation. */
@@ -3416,11 +5028,18 @@ export interface ServiceSpecification {
   /** Metric specifications of operation. */
   metricSpecifications?: ServiceSpecificationMetricSpecificationsList;
 }
+const ServiceSpecification = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<ServiceSpecification>;
+
 /** Properties of operation, include metric specifications. */
 export interface OperationProperties {
   /** One property of operation, include metric specifications. */
   serviceSpecification?: ServiceSpecification;
 }
+const OperationProperties = /*@__PURE__*/ __L.at(__c34, 7) as any as S.Schema<OperationProperties>;
+
 /** CDN REST API operation */
 export interface Operation {
   /** Operation name: {provider}/{resource}/{operation} */
@@ -3434,8 +5053,15 @@ export interface Operation {
   /** Properties of operation, include metric specifications. */
   properties?: OperationProperties;
 }
+const Operation = /*@__PURE__*/ __L.at(__c35, 0) as any as S.Schema<Operation>;
+
 /** List of CDN operations supported by the CDN resource provider. */
 export type OperationsListResultValueList = Array<Operation>;
+const OperationsListResultValueList = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<OperationsListResultValueList>;
+
 /** Result of the request to list CDN operations. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationsListResult {
   /** List of CDN operations supported by the CDN resource provider. */
@@ -3443,6 +5069,11 @@ export interface OperationsListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
+const OperationsListResult = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<OperationsListResult>;
+
 export interface ListOriginByEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3453,6 +5084,11 @@ export interface ListOriginByEndpointRequest {
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
 }
+const ListOriginByEndpointRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<ListOriginByEndpointRequest>;
+
 /** CDN origin is the source of the content being delivered via CDN. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins. */
 export interface Origin {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3466,8 +5102,15 @@ export interface Origin {
   /** The JSON object that contains the properties of the origin. */
   properties?: OriginProperties;
 }
+const Origin = CreateOriginResponse as any as S.Schema<Origin>;
+
 /** The Origin items on this page */
 export type OriginListResultValueList = Array<Origin>;
+const OriginListResultValueList = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<OriginListResultValueList>;
+
 /** The response of a Origin list operation. */
 export interface OriginListResult {
   /** The Origin items on this page */
@@ -3475,6 +5118,8 @@ export interface OriginListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const OriginListResult = /*@__PURE__*/ __L.at(__c35, 5) as any as S.Schema<OriginListResult>;
+
 export interface ListOriginGroupByEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3485,6 +5130,11 @@ export interface ListOriginGroupByEndpointRequest {
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
 }
+const ListOriginGroupByEndpointRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  6,
+) as any as S.Schema<ListOriginGroupByEndpointRequest>;
+
 /** Origin group comprising of origins is used for load balancing to origins when the content cannot be served from CDN. */
 export interface OriginGroup {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3498,8 +5148,15 @@ export interface OriginGroup {
   /** The JSON object that contains the properties of the origin group. */
   properties?: OriginGroupProperties;
 }
+const OriginGroup = GetOriginGroupResponse as any as S.Schema<OriginGroup>;
+
 /** The OriginGroup items on this page */
 export type OriginGroupListResultValueList = Array<OriginGroup>;
+const OriginGroupListResultValueList = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<OriginGroupListResultValueList>;
+
 /** The response of a OriginGroup list operation. */
 export interface OriginGroupListResult {
   /** The OriginGroup items on this page */
@@ -3507,14 +5164,24 @@ export interface OriginGroupListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const OriginGroupListResult = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<OriginGroupListResult>;
+
 export interface ListPoliciesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListPoliciesRequest = /*@__PURE__*/ __L.at(__c36, 1) as any as S.Schema<ListPoliciesRequest>;
+
 /** Resource tags. */
 export type CdnWebApplicationFirewallPolicyTagsMap = { [key: string]: string | undefined };
+const CdnWebApplicationFirewallPolicyTagsMap =
+  AFDProfilesUpgradeResponseTagsMap as any as S.Schema<CdnWebApplicationFirewallPolicyTagsMap>;
+
 /** Defines web application firewall policy for Azure CDN. */
 export interface CdnWebApplicationFirewallPolicy {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3536,8 +5203,18 @@ export interface CdnWebApplicationFirewallPolicy {
   /** The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy. */
   sku: Sku;
 }
+const CdnWebApplicationFirewallPolicy = /*@__PURE__*/ __L.at(
+  __c36,
+  2,
+) as any as S.Schema<CdnWebApplicationFirewallPolicy>;
+
 /** The CdnWebApplicationFirewallPolicy items on this page */
 export type CdnWebApplicationFirewallPolicyListValueList = Array<CdnWebApplicationFirewallPolicy>;
+const CdnWebApplicationFirewallPolicyListValueList = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<CdnWebApplicationFirewallPolicyListValueList>;
+
 /** Defines a list of WebApplicationFirewallPolicies for Azure CDN. It contains a list of WebApplicationFirewallPolicy objects and a URL link to get the next set of results. */
 export interface CdnWebApplicationFirewallPolicyList {
   /** The CdnWebApplicationFirewallPolicy items on this page */
@@ -3545,18 +5222,33 @@ export interface CdnWebApplicationFirewallPolicyList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const CdnWebApplicationFirewallPolicyList = /*@__PURE__*/ __L.at(
+  __c36,
+  4,
+) as any as S.Schema<CdnWebApplicationFirewallPolicyList>;
+
 export interface ListProfileByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListProfileByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<ListProfileByResourceGroupRequest>;
+
 /** Resource tags. */
 export type ProfileTagsMap = { [key: string]: string | undefined };
+const ProfileTagsMap = AFDProfilesUpgradeResponseTagsMap as any as S.Schema<ProfileTagsMap>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type ProfileIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
+const ProfileIdentityUserAssignedIdentitiesMap =
+  AFDProfilesUpgradeResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<ProfileIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ProfileIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -3567,6 +5259,8 @@ export interface ProfileIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ProfileIdentityUserAssignedIdentitiesMap;
 }
+const ProfileIdentity = /*@__PURE__*/ __L.at(__c36, 6) as any as S.Schema<ProfileIdentity>;
+
 /** A profile is a logical grouping of endpoints that share the same settings. */
 export interface Profile {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3590,8 +5284,15 @@ export interface Profile {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ProfileIdentity;
 }
+const Profile = /*@__PURE__*/ __L.at(__c36, 7) as any as S.Schema<Profile>;
+
 /** The Profile items on this page */
 export type ProfileListResultValueList = Array<Profile>;
+const ProfileListResultValueList = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<ProfileListResultValueList>;
+
 /** The response of a Profile list operation. */
 export interface ProfileListResult {
   /** The Profile items on this page */
@@ -3599,6 +5300,8 @@ export interface ProfileListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ProfileListResult = /*@__PURE__*/ __L.at(__c37, 1) as any as S.Schema<ProfileListResult>;
+
 export interface ListProfileResourceUsageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3607,10 +5310,17 @@ export interface ListProfileResourceUsageRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
+const ListProfileResourceUsageRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  2,
+) as any as S.Schema<ListProfileResourceUsageRequest>;
+
 export interface ListProfilesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListProfilesRequest = /*@__PURE__*/ __L.at(__c37, 3) as any as S.Schema<ListProfilesRequest>;
+
 export interface ListProfileSupportedOptimizationTypesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3619,18 +5329,36 @@ export interface ListProfileSupportedOptimizationTypesRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
+const ListProfileSupportedOptimizationTypesRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  4,
+) as any as S.Schema<ListProfileSupportedOptimizationTypesRequest>;
+
 /** Supported optimization types for a profile. */
 export type SupportedOptimizationTypesListResultSupportedOptimizationTypesList =
   Array<OptimizationType>;
+const SupportedOptimizationTypesListResultSupportedOptimizationTypesList =
+  AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls12List as any as S.Schema<SupportedOptimizationTypesListResultSupportedOptimizationTypesList>;
+
 /** The result of the GetSupportedOptimizationTypes API */
 export interface SupportedOptimizationTypesListResult {
   /** Supported optimization types for a profile. */
   supportedOptimizationTypes?: SupportedOptimizationTypesListResultSupportedOptimizationTypesList;
 }
+const SupportedOptimizationTypesListResult = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<SupportedOptimizationTypesListResult>;
+
 export interface ListResourceUsageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListResourceUsageRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<ListResourceUsageRequest>;
+
 export interface ListRouteByEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3641,6 +5369,11 @@ export interface ListRouteByEndpointRequest {
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
 }
+const ListRouteByEndpointRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<ListRouteByEndpointRequest>;
+
 /** Friendly Routes name mapping to the any Routes or secret related information. */
 export interface Route {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3654,8 +5387,15 @@ export interface Route {
   /** The JSON object that contains the properties of the Routes to create. */
   properties?: RouteProperties;
 }
+const Route = CreateRouteResponse as any as S.Schema<Route>;
+
 /** The Route items on this page */
 export type RouteListResultValueList = Array<Route>;
+const RouteListResultValueList = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<RouteListResultValueList>;
+
 /** The response of a Route list operation. */
 export interface RouteListResult {
   /** The Route items on this page */
@@ -3663,6 +5403,8 @@ export interface RouteListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const RouteListResult = /*@__PURE__*/ __L.at(__c38, 1) as any as S.Schema<RouteListResult>;
+
 export interface ListRuleByRuleSetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3673,6 +5415,11 @@ export interface ListRuleByRuleSetRequest {
   /** Name of the rule set under the profile which is unique globally. */
   ruleSetName: string;
 }
+const ListRuleByRuleSetRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<ListRuleByRuleSetRequest>;
+
 /** Friendly Rules name mapping to the any Rules or secret related information. */
 export interface Rule {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3686,8 +5433,15 @@ export interface Rule {
   /** The JSON object that contains the properties of the Rules to create. */
   properties?: RuleProperties;
 }
+const Rule = CreateRuleResponse as any as S.Schema<Rule>;
+
 /** The Rule items on this page */
 export type RuleListResultValueList = Array<Rule>;
+const RuleListResultValueList = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<RuleListResultValueList>;
+
 /** The response of a Rule list operation. */
 export interface RuleListResult {
   /** The Rule items on this page */
@@ -3695,6 +5449,8 @@ export interface RuleListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const RuleListResult = /*@__PURE__*/ __L.at(__c38, 4) as any as S.Schema<RuleListResult>;
+
 export interface ListRuleSetByProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3703,6 +5459,11 @@ export interface ListRuleSetByProfileRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
+const ListRuleSetByProfileRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  5,
+) as any as S.Schema<ListRuleSetByProfileRequest>;
+
 /** Friendly RuleSet name mapping to the any RuleSet or secret related information. */
 export interface RuleSet {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3716,8 +5477,15 @@ export interface RuleSet {
   /** The JSON object that contains the properties of the Rule Set to create. */
   properties?: RuleSetProperties;
 }
+const RuleSet = CreateRuleSetResponse as any as S.Schema<RuleSet>;
+
 /** The RuleSet items on this page */
 export type RuleSetListResultValueList = Array<RuleSet>;
+const RuleSetListResultValueList = /*@__PURE__*/ __L.at(
+  __c38,
+  6,
+) as any as S.Schema<RuleSetListResultValueList>;
+
 /** The response of a RuleSet list operation. */
 export interface RuleSetListResult {
   /** The RuleSet items on this page */
@@ -3725,6 +5493,8 @@ export interface RuleSetListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const RuleSetListResult = /*@__PURE__*/ __L.at(__c38, 7) as any as S.Schema<RuleSetListResult>;
+
 export interface ListRuleSetResourceUsageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3735,6 +5505,11 @@ export interface ListRuleSetResourceUsageRequest {
   /** Name of the rule set under the profile which is unique globally. */
   ruleSetName: string;
 }
+const ListRuleSetResourceUsageRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<ListRuleSetResourceUsageRequest>;
+
 export interface ListSecretByProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3743,6 +5518,11 @@ export interface ListSecretByProfileRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
+const ListSecretByProfileRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  1,
+) as any as S.Schema<ListSecretByProfileRequest>;
+
 /** Friendly Secret name mapping to the any Secret or secret related information. */
 export interface Secret {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3756,8 +5536,15 @@ export interface Secret {
   /** The JSON object that contains the properties of the Secret to create. */
   properties?: SecretProperties;
 }
+const Secret = CreateSecretResponse as any as S.Schema<Secret>;
+
 /** The Secret items on this page */
 export type SecretListResultValueList = Array<Secret>;
+const SecretListResultValueList = /*@__PURE__*/ __L.at(
+  __c39,
+  2,
+) as any as S.Schema<SecretListResultValueList>;
+
 /** The response of a Secret list operation. */
 export interface SecretListResult {
   /** The Secret items on this page */
@@ -3765,6 +5552,8 @@ export interface SecretListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SecretListResult = /*@__PURE__*/ __L.at(__c39, 3) as any as S.Schema<SecretListResult>;
+
 export interface ListSecurityPolicyByProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3773,6 +5562,11 @@ export interface ListSecurityPolicyByProfileRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
+const ListSecurityPolicyByProfileRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  4,
+) as any as S.Schema<ListSecurityPolicyByProfileRequest>;
+
 /** SecurityPolicy association for AzureFrontDoor profile */
 export interface SecurityPolicy {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3786,8 +5580,15 @@ export interface SecurityPolicy {
   /** The json object that contains properties required to create a security policy */
   properties?: SecurityPolicyProperties;
 }
+const SecurityPolicy = /*@__PURE__*/ __L.at(__c39, 5) as any as S.Schema<SecurityPolicy>;
+
 /** The SecurityPolicy items on this page */
 export type SecurityPolicyListResultValueList = Array<SecurityPolicy>;
+const SecurityPolicyListResultValueList = /*@__PURE__*/ __L.at(
+  __c39,
+  6,
+) as any as S.Schema<SecurityPolicyListResultValueList>;
+
 /** The response of a SecurityPolicy list operation. */
 export interface SecurityPolicyListResult {
   /** The SecurityPolicy items on this page */
@@ -3795,6 +5596,11 @@ export interface SecurityPolicyListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SecurityPolicyListResult = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<SecurityPolicyListResult>;
+
 /** Web Application Firewall Mapping */
 export interface MigrationWebApplicationFirewallMapping {
   /** Migration From Waf policy */
@@ -3802,9 +5608,19 @@ export interface MigrationWebApplicationFirewallMapping {
   /** Migration to Waf policy */
   migratedTo?: ResourceReference;
 }
+const MigrationWebApplicationFirewallMapping = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<MigrationWebApplicationFirewallMapping>;
+
 /** Waf mapping for the migrated profile */
 export type MigrateProfileRequestMigrationWebApplicationFirewallMappingsList =
   Array<MigrationWebApplicationFirewallMapping>;
+const MigrateProfileRequestMigrationWebApplicationFirewallMappingsList = /*@__PURE__*/ __L.at(
+  __c40,
+  1,
+) as any as S.Schema<MigrateProfileRequestMigrationWebApplicationFirewallMappingsList>;
+
 export interface MigrateProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3819,10 +5635,20 @@ export interface MigrateProfileRequest {
   /** Waf mapping for the migrated profile */
   migrationWebApplicationFirewallMappings?: MigrateProfileRequestMigrationWebApplicationFirewallMappingsList;
 }
+const MigrateProfileRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<MigrateProfileRequest>;
+
 export interface MigrateResultProperties {
   /** Arm resource id of the migrated profile */
   migratedProfileResourceId?: ResourceReference;
 }
+const MigrateResultProperties = /*@__PURE__*/ __L.at(
+  __c40,
+  3,
+) as any as S.Schema<MigrateResultProperties>;
+
 /** Result for migrate operation. */
 export interface MigrateResult {
   /** Resource ID. */
@@ -3831,6 +5657,8 @@ export interface MigrateResult {
   type?: string;
   properties?: MigrateResultProperties;
 }
+const MigrateResult = /*@__PURE__*/ __L.at(__c40, 4) as any as S.Schema<MigrateResult>;
+
 export interface MigrateProfilesCanRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3839,8 +5667,15 @@ export interface MigrateProfilesCanRequest {
   /** Resource reference of the classic cdn profile or classic frontdoor that need to be migrated. */
   classicResourceReference: ResourceReference;
 }
+const MigrateProfilesCanRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  5,
+) as any as S.Schema<MigrateProfilesCanRequest>;
+
 /** Recommended sku for the migration */
 export type CanMigrateDefaultSku = "Standard_AzureFrontDoor" | "Premium_AzureFrontDoor";
+const CanMigrateDefaultSku = S.String;
+
 /** Error response indicates CDN service is not able to process the incoming request. The reason is provided in the error message. */
 export interface MigrationErrorType {
   /** Error code. */
@@ -3852,7 +5687,14 @@ export interface MigrationErrorType {
   /** Describes what needs to be done to fix the problem */
   nextSteps?: string;
 }
+const MigrationErrorType = /*@__PURE__*/ __L.at(__c40, 6) as any as S.Schema<MigrationErrorType>;
+
 export type CanMigratePropertiesErrorsList = Array<MigrationErrorType>;
+const CanMigratePropertiesErrorsList = /*@__PURE__*/ __L.at(
+  __c40,
+  7,
+) as any as S.Schema<CanMigratePropertiesErrorsList>;
+
 export interface CanMigrateProperties {
   /** Flag that says if the profile can be migrated */
   canMigrate?: boolean;
@@ -3860,6 +5702,11 @@ export interface CanMigrateProperties {
   defaultSku?: CanMigrateDefaultSku;
   errors?: CanMigratePropertiesErrorsList;
 }
+const CanMigrateProperties = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<CanMigrateProperties>;
+
 /** Result for canMigrate operation. */
 export interface CanMigrateResult {
   /** Resource ID. */
@@ -3868,6 +5715,8 @@ export interface CanMigrateResult {
   type?: string;
   properties?: CanMigrateProperties;
 }
+const CanMigrateResult = /*@__PURE__*/ __L.at(__c41, 1) as any as S.Schema<CanMigrateResult>;
+
 /** The json object that contains properties required to update a security policy */
 export type SecurityPolicyUpdateProperties = SecurityPolicyPropertiesInput;
 export interface PatchSecurityPolicyRequest {
@@ -3882,6 +5731,11 @@ export interface PatchSecurityPolicyRequest {
   /** The json object that contains properties required to update a security policy */
   properties?: SecurityPolicyPropertiesInput;
 }
+const PatchSecurityPolicyRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  2,
+) as any as S.Schema<PatchSecurityPolicyRequest>;
+
 export interface PatchSecurityPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3894,12 +5748,21 @@ export interface PatchSecurityPolicyResponse {
   /** The json object that contains properties required to create a security policy */
   properties?: SecurityPolicyProperties;
 }
+const PatchSecurityPolicyResponse =
+  CreateSecurityPolicyResponse as any as S.Schema<PatchSecurityPolicyResponse>;
+
 /** Resource tags. */
 export type PoliciesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const PoliciesCreateOrUpdateRequestTagsMap =
+  AFDProfilesUpgradeResponseTagsMap as any as S.Schema<PoliciesCreateOrUpdateRequestTagsMap>;
+
 /** Key-Value pair representing additional properties for Web Application Firewall policy. */
 export type CdnWebApplicationFirewallPolicyPropertiesInputExtendedPropertiesMap = {
   [key: string]: string | undefined;
 };
+const CdnWebApplicationFirewallPolicyPropertiesInputExtendedPropertiesMap =
+  CdnWebApplicationFirewallPolicyPropertiesExtendedPropertiesMap as any as S.Schema<CdnWebApplicationFirewallPolicyPropertiesInputExtendedPropertiesMap>;
+
 /** Defines CDN web application firewall policy properties. */
 export interface CdnWebApplicationFirewallPolicyPropertiesInput {
   /** Describes policySettings for policy */
@@ -3913,6 +5776,11 @@ export interface CdnWebApplicationFirewallPolicyPropertiesInput {
   /** Key-Value pair representing additional properties for Web Application Firewall policy. */
   extendedProperties?: CdnWebApplicationFirewallPolicyPropertiesInputExtendedPropertiesMap;
 }
+const CdnWebApplicationFirewallPolicyPropertiesInput = /*@__PURE__*/ __L.at(
+  __c41,
+  3,
+) as any as S.Schema<CdnWebApplicationFirewallPolicyPropertiesInput>;
+
 export interface PoliciesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3931,6 +5799,11 @@ export interface PoliciesCreateOrUpdateRequest {
   /** The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy. */
   sku: Sku;
 }
+const PoliciesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  4,
+) as any as S.Schema<PoliciesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type PoliciesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface PoliciesCreateOrUpdateResponse {
@@ -3953,6 +5826,9 @@ export interface PoliciesCreateOrUpdateResponse {
   /** The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy. */
   sku: Sku;
 }
+const PoliciesCreateOrUpdateResponse =
+  CdnWebApplicationFirewallPolicy as any as S.Schema<PoliciesCreateOrUpdateResponse>;
+
 export interface ProfilesCdnCanMigrateToAfdRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3961,6 +5837,11 @@ export interface ProfilesCdnCanMigrateToAfdRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
+const ProfilesCdnCanMigrateToAfdRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  5,
+) as any as S.Schema<ProfilesCdnCanMigrateToAfdRequest>;
+
 /** CDN Endpoint Mapping. */
 export interface MigrationEndpointMapping {
   /** Name of the classic CDN profile endpoint. */
@@ -3968,9 +5849,19 @@ export interface MigrationEndpointMapping {
   /** Name of the newly created migrated Azure Frontdoor Standard/Premium profile endpoint. This name will replace the name of the classic CDN endpoint resource. */
   migratedTo?: string;
 }
+const MigrationEndpointMapping = /*@__PURE__*/ __L.at(
+  __c41,
+  6,
+) as any as S.Schema<MigrationEndpointMapping>;
+
 /** A name map between classic CDN endpoints and AFD Premium/Standard endpoints. */
 export type ProfilesCdnMigrateToAfdRequestMigrationEndpointMappingsList =
   Array<MigrationEndpointMapping>;
+const ProfilesCdnMigrateToAfdRequestMigrationEndpointMappingsList = /*@__PURE__*/ __L.at(
+  __c41,
+  7,
+) as any as S.Schema<ProfilesCdnMigrateToAfdRequestMigrationEndpointMappingsList>;
+
 export interface ProfilesCdnMigrateToAfdRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3983,10 +5874,21 @@ export interface ProfilesCdnMigrateToAfdRequest {
   /** A name map between classic CDN endpoints and AFD Premium/Standard endpoints. */
   migrationEndpointMappings?: ProfilesCdnMigrateToAfdRequestMigrationEndpointMappingsList;
 }
+const ProfilesCdnMigrateToAfdRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  0,
+) as any as S.Schema<ProfilesCdnMigrateToAfdRequest>;
+
 /** The path to the content to be purged. Can describe a file path or a wild card directory. */
 export type PurgeAFDEndpointContentRequestContentPathsList = Array<string>;
+const PurgeAFDEndpointContentRequestContentPathsList =
+  AFDOriginPropertiesInputCustomCertificateSubjectsList as any as S.Schema<PurgeAFDEndpointContentRequestContentPathsList>;
+
 /** List of domains. */
 export type PurgeAFDEndpointContentRequestDomainsList = Array<string>;
+const PurgeAFDEndpointContentRequestDomainsList =
+  AFDOriginPropertiesInputCustomCertificateSubjectsList as any as S.Schema<PurgeAFDEndpointContentRequestDomainsList>;
+
 export interface PurgeAFDEndpointContentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4001,9 +5903,20 @@ export interface PurgeAFDEndpointContentRequest {
   /** List of domains. */
   domains?: PurgeAFDEndpointContentRequestDomainsList;
 }
+const PurgeAFDEndpointContentRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  1,
+) as any as S.Schema<PurgeAFDEndpointContentRequest>;
+
 export interface PurgeAFDEndpointContentResponse {}
+const PurgeAFDEndpointContentResponse =
+  CommitProfilesMigrationResponse as any as S.Schema<PurgeAFDEndpointContentResponse>;
+
 /** The path to the content to be purged. Can describe a file path or a wild card directory. */
 export type PurgeEndpointContentRequestContentPathsList = Array<string>;
+const PurgeEndpointContentRequestContentPathsList =
+  AFDOriginPropertiesInputCustomCertificateSubjectsList as any as S.Schema<PurgeEndpointContentRequestContentPathsList>;
+
 export interface PurgeEndpointContentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4016,7 +5929,15 @@ export interface PurgeEndpointContentRequest {
   /** The path to the content to be purged. Can describe a file path or a wild card directory. */
   contentPaths: PurgeEndpointContentRequestContentPathsList;
 }
+const PurgeEndpointContentRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  2,
+) as any as S.Schema<PurgeEndpointContentRequest>;
+
 export interface PurgeEndpointContentResponse {}
+const PurgeEndpointContentResponse =
+  AbortProfilesMigrationResponse as any as S.Schema<PurgeEndpointContentResponse>;
+
 export interface RefreshAFDCustomDomainValidationTokenRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4027,7 +5948,17 @@ export interface RefreshAFDCustomDomainValidationTokenRequest {
   /** Name of the domain under the profile which is unique globally. */
   customDomainName: string;
 }
+const RefreshAFDCustomDomainValidationTokenRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  3,
+) as any as S.Schema<RefreshAFDCustomDomainValidationTokenRequest>;
+
 export interface RefreshAFDCustomDomainValidationTokenResponse {}
+const RefreshAFDCustomDomainValidationTokenResponse = /*@__PURE__*/ __L.at(
+  __c42,
+  4,
+) as any as S.Schema<RefreshAFDCustomDomainValidationTokenResponse>;
+
 export interface StartEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4038,6 +5969,11 @@ export interface StartEndpointRequest {
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
 }
+const StartEndpointRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  5,
+) as any as S.Schema<StartEndpointRequest>;
+
 /** Resource tags. */
 export type StartEndpointResponseTagsMap = { [key: string]: string | undefined };
 export interface StartEndpointResponse {
@@ -4056,6 +5992,8 @@ export interface StartEndpointResponse {
   /** The JSON object that contains the properties required to create an endpoint. */
   properties?: EndpointProperties;
 }
+const StartEndpointResponse = CreateEndpointResponse as any as S.Schema<StartEndpointResponse>;
+
 export interface StopEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4066,6 +6004,8 @@ export interface StopEndpointRequest {
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
 }
+const StopEndpointRequest = /*@__PURE__*/ __L.at(__c42, 6) as any as S.Schema<StopEndpointRequest>;
+
 /** Resource tags. */
 export type StopEndpointResponseTagsMap = { [key: string]: string | undefined };
 export interface StopEndpointResponse {
@@ -4084,6 +6024,8 @@ export interface StopEndpointResponse {
   /** The JSON object that contains the properties required to create an endpoint. */
   properties?: EndpointProperties;
 }
+const StopEndpointResponse = CreateEndpointResponse as any as S.Schema<StopEndpointResponse>;
+
 /** The JSON object that contains the properties of the domain to create. */
 export interface AFDDomainUpdatePropertiesParametersInput {
   /** The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default. */
@@ -4095,6 +6037,11 @@ export interface AFDDomainUpdatePropertiesParametersInput {
   /** Resource reference to the Azure resource where custom domain ownership was prevalidated */
   preValidatedCustomDomainResourceId?: ResourceReference;
 }
+const AFDDomainUpdatePropertiesParametersInput = /*@__PURE__*/ __L.at(
+  __c42,
+  7,
+) as any as S.Schema<AFDDomainUpdatePropertiesParametersInput>;
+
 export interface UpdateAFDCustomDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4107,6 +6054,11 @@ export interface UpdateAFDCustomDomainRequest {
   /** The JSON object that contains the properties of the domain to create. */
   properties?: AFDDomainUpdatePropertiesParametersInput;
 }
+const UpdateAFDCustomDomainRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  0,
+) as any as S.Schema<UpdateAFDCustomDomainRequest>;
+
 export interface UpdateAFDCustomDomainResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4119,8 +6071,14 @@ export interface UpdateAFDCustomDomainResponse {
   /** The JSON object that contains the properties of the domain to create. */
   properties?: AFDDomainProperties;
 }
+const UpdateAFDCustomDomainResponse =
+  CreateAFDCustomDomainResponse as any as S.Schema<UpdateAFDCustomDomainResponse>;
+
 /** Endpoint tags. */
 export type UpdateAFDEndpointRequestTagsMap = { [key: string]: string | undefined };
+const UpdateAFDEndpointRequestTagsMap =
+  AFDProfilesUpgradeResponseTagsMap as any as S.Schema<UpdateAFDEndpointRequestTagsMap>;
+
 /** The JSON object containing endpoint update parameters. */
 export interface AFDEndpointPropertiesUpdateParametersInput {
   /** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
@@ -4128,6 +6086,11 @@ export interface AFDEndpointPropertiesUpdateParametersInput {
   /** Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources. */
   enforceMtls?: EnforceMtlsEnabledState | (string & {});
 }
+const AFDEndpointPropertiesUpdateParametersInput = /*@__PURE__*/ __L.at(
+  __c43,
+  1,
+) as any as S.Schema<AFDEndpointPropertiesUpdateParametersInput>;
+
 export interface UpdateAFDEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4142,6 +6105,11 @@ export interface UpdateAFDEndpointRequest {
   /** The JSON object containing endpoint update parameters. */
   properties?: AFDEndpointPropertiesUpdateParametersInput;
 }
+const UpdateAFDEndpointRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  2,
+) as any as S.Schema<UpdateAFDEndpointRequest>;
+
 /** Resource tags. */
 export type UpdateAFDEndpointResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateAFDEndpointResponse {
@@ -4160,8 +6128,16 @@ export interface UpdateAFDEndpointResponse {
   /** The JSON object that contains the properties required to create an endpoint. */
   properties?: AFDEndpointProperties;
 }
+const UpdateAFDEndpointResponse =
+  CreateAFDEndpointResponse as any as S.Schema<UpdateAFDEndpointResponse>;
+
 /** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
 export type AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList = Array<string>;
+const AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList = /*@__PURE__*/ __L.at(
+  __c43,
+  3,
+) as any as S.Schema<AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList>;
+
 /** The JSON object that contains the properties of the origin. */
 export interface AFDOriginUpdatePropertiesParametersInput {
   /** Resource reference to the Azure origin resource. */
@@ -4189,6 +6165,11 @@ export interface AFDOriginUpdatePropertiesParametersInput {
   /** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
   customCertificateSubjects?: AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList;
 }
+const AFDOriginUpdatePropertiesParametersInput = /*@__PURE__*/ __L.at(
+  __c43,
+  4,
+) as any as S.Schema<AFDOriginUpdatePropertiesParametersInput>;
+
 export interface UpdateAFDOriginRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4203,6 +6184,11 @@ export interface UpdateAFDOriginRequest {
   /** The JSON object that contains the properties of the origin. */
   properties?: AFDOriginUpdatePropertiesParametersInput;
 }
+const UpdateAFDOriginRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  5,
+) as any as S.Schema<UpdateAFDOriginRequest>;
+
 export interface UpdateAFDOriginResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4215,6 +6201,8 @@ export interface UpdateAFDOriginResponse {
   /** The JSON object that contains the properties of the origin. */
   properties?: AFDOriginProperties;
 }
+const UpdateAFDOriginResponse = CreateAFDOriginResponse as any as S.Schema<UpdateAFDOriginResponse>;
+
 /** The JSON object that contains the properties of the origin group. */
 export type AFDOriginGroupUpdatePropertiesParametersInput = AFDOriginGroupPropertiesInput;
 export interface UpdateAFDOriginGroupRequest {
@@ -4229,6 +6217,11 @@ export interface UpdateAFDOriginGroupRequest {
   /** The JSON object that contains the properties of the origin group. */
   properties?: AFDOriginGroupPropertiesInput;
 }
+const UpdateAFDOriginGroupRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  6,
+) as any as S.Schema<UpdateAFDOriginGroupRequest>;
+
 export interface UpdateAFDOriginGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4241,20 +6234,37 @@ export interface UpdateAFDOriginGroupResponse {
   /** The JSON object that contains the properties of the origin group. */
   properties?: AFDOriginGroupProperties;
 }
+const UpdateAFDOriginGroupResponse =
+  CreateAFDOriginGroupResponse as any as S.Schema<UpdateAFDOriginGroupResponse>;
+
 /** Endpoint tags. */
 export type UpdateEndpointRequestTagsMap = { [key: string]: string | undefined };
+const UpdateEndpointRequestTagsMap =
+  AFDProfilesUpgradeResponseTagsMap as any as S.Schema<UpdateEndpointRequestTagsMap>;
+
 /** List of content types on which compression applies. The value should be a valid MIME type. */
 export type EndpointPropertiesUpdateParametersContentTypesToCompressList = Array<string>;
+const EndpointPropertiesUpdateParametersContentTypesToCompressList =
+  AFDOriginPropertiesInputCustomCertificateSubjectsList as any as S.Schema<EndpointPropertiesUpdateParametersContentTypesToCompressList>;
+
 /** Defines how CDN caches requests that include query strings. You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL. */
 export type EndpointPropertiesUpdateParametersQueryStringCachingBehavior =
   | "IgnoreQueryString"
   | "BypassCaching"
   | "UseQueryString"
   | "NotSet";
+const EndpointPropertiesUpdateParametersQueryStringCachingBehavior = S.String;
+
 /** List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/ */
 export type EndpointPropertiesUpdateParametersGeoFiltersList = Array<GeoFilter>;
+const EndpointPropertiesUpdateParametersGeoFiltersList =
+  EndpointPropertiesInputGeoFiltersList as any as S.Schema<EndpointPropertiesUpdateParametersGeoFiltersList>;
+
 /** List of keys used to validate the signed URL hashes. */
 export type EndpointPropertiesUpdateParametersUrlSigningKeysList = Array<UrlSigningKey>;
+const EndpointPropertiesUpdateParametersUrlSigningKeysList =
+  EndpointPropertiesInputUrlSigningKeysList as any as S.Schema<EndpointPropertiesUpdateParametersUrlSigningKeysList>;
+
 /** The JSON object containing endpoint update parameters. */
 export interface EndpointPropertiesUpdateParameters {
   /** A directory path on the origin that CDN can use to retrieve content from, e.g. contoso.cloudapp.net/originpath. */
@@ -4288,6 +6298,11 @@ export interface EndpointPropertiesUpdateParameters {
   /** Defines the Web Application Firewall policy for the endpoint (if applicable) */
   webApplicationFirewallPolicyLink?: ResourceReference;
 }
+const EndpointPropertiesUpdateParameters = /*@__PURE__*/ __L.at(
+  __c43,
+  7,
+) as any as S.Schema<EndpointPropertiesUpdateParameters>;
+
 export interface UpdateEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4302,6 +6317,11 @@ export interface UpdateEndpointRequest {
   /** The JSON object containing endpoint update parameters. */
   properties?: EndpointPropertiesUpdateParameters;
 }
+const UpdateEndpointRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  0,
+) as any as S.Schema<UpdateEndpointRequest>;
+
 /** Resource tags. */
 export type UpdateEndpointResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateEndpointResponse {
@@ -4320,6 +6340,8 @@ export interface UpdateEndpointResponse {
   /** The JSON object that contains the properties required to create an endpoint. */
   properties?: EndpointProperties;
 }
+const UpdateEndpointResponse = CreateEndpointResponse as any as S.Schema<UpdateEndpointResponse>;
+
 /** The JSON object that contains the properties of the origin. */
 export interface OriginUpdatePropertiesParameters {
   /** The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint. */
@@ -4345,6 +6367,11 @@ export interface OriginUpdatePropertiesParameters {
   /** A custom message to be included in the approval request to connect to the Private Link. */
   privateLinkApprovalMessage?: string;
 }
+const OriginUpdatePropertiesParameters = /*@__PURE__*/ __L.at(
+  __c44,
+  1,
+) as any as S.Schema<OriginUpdatePropertiesParameters>;
+
 export interface UpdateOriginRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4359,6 +6386,8 @@ export interface UpdateOriginRequest {
   /** The JSON object that contains the properties of the origin. */
   properties?: OriginUpdatePropertiesParameters;
 }
+const UpdateOriginRequest = /*@__PURE__*/ __L.at(__c44, 2) as any as S.Schema<UpdateOriginRequest>;
+
 export interface UpdateOriginResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4371,8 +6400,13 @@ export interface UpdateOriginResponse {
   /** The JSON object that contains the properties of the origin. */
   properties?: OriginProperties;
 }
+const UpdateOriginResponse = CreateOriginResponse as any as S.Schema<UpdateOriginResponse>;
+
 /** The source of the content being delivered via CDN within given origin group. */
 export type OriginGroupUpdatePropertiesParametersOriginsList = Array<ResourceReference>;
+const OriginGroupUpdatePropertiesParametersOriginsList =
+  DeepCreatedOriginGroupPropertiesOriginsList as any as S.Schema<OriginGroupUpdatePropertiesParametersOriginsList>;
+
 /** The JSON object that contains the properties of the origin group. */
 export interface OriginGroupUpdatePropertiesParameters {
   /** Health probe settings to the origin that is used to determine the health of the origin. */
@@ -4384,6 +6418,11 @@ export interface OriginGroupUpdatePropertiesParameters {
   /** The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported. */
   responseBasedOriginErrorDetectionSettings?: ResponseBasedOriginErrorDetectionParameters;
 }
+const OriginGroupUpdatePropertiesParameters = /*@__PURE__*/ __L.at(
+  __c44,
+  3,
+) as any as S.Schema<OriginGroupUpdatePropertiesParameters>;
+
 export interface UpdateOriginGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4398,6 +6437,11 @@ export interface UpdateOriginGroupRequest {
   /** The JSON object that contains the properties of the origin group. */
   properties?: OriginGroupUpdatePropertiesParameters;
 }
+const UpdateOriginGroupRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  4,
+) as any as S.Schema<UpdateOriginGroupRequest>;
+
 export interface UpdateOriginGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4410,8 +6454,14 @@ export interface UpdateOriginGroupResponse {
   /** The JSON object that contains the properties of the origin group. */
   properties?: OriginGroupProperties;
 }
+const UpdateOriginGroupResponse =
+  CreateOriginGroupResponse as any as S.Schema<UpdateOriginGroupResponse>;
+
 /** CdnWebApplicationFirewallPolicy tags */
 export type UpdatePolicyRequestTagsMap = { [key: string]: string | undefined };
+const UpdatePolicyRequestTagsMap =
+  AFDProfilesUpgradeResponseTagsMap as any as S.Schema<UpdatePolicyRequestTagsMap>;
+
 export interface UpdatePolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4422,6 +6472,8 @@ export interface UpdatePolicyRequest {
   /** CdnWebApplicationFirewallPolicy tags */
   tags?: UpdatePolicyRequestTagsMap;
 }
+const UpdatePolicyRequest = /*@__PURE__*/ __L.at(__c44, 5) as any as S.Schema<UpdatePolicyRequest>;
+
 /** Resource tags. */
 export type UpdatePolicyResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdatePolicyResponse {
@@ -4444,8 +6496,13 @@ export interface UpdatePolicyResponse {
   /** The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy. */
   sku: Sku;
 }
+const UpdatePolicyResponse = GetPolicyResponse as any as S.Schema<UpdatePolicyResponse>;
+
 /** Profile tags */
 export type UpdateProfileRequestTagsMap = { [key: string]: string | undefined };
+const UpdateProfileRequestTagsMap =
+  AFDProfilesUpgradeResponseTagsMap as any as S.Schema<UpdateProfileRequestTagsMap>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateProfileRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
@@ -4456,6 +6513,9 @@ export interface UpdateProfileRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateProfileRequestIdentityUserAssignedIdentitiesMap;
 }
+const UpdateProfileRequestIdentity =
+  CreateProfileRequestIdentity as any as S.Schema<UpdateProfileRequestIdentity>;
+
 /** The JSON object containing profile update parameters. */
 export interface ProfilePropertiesUpdateParameters {
   /** Send and receive timeout on forwarding request to the origin. When timeout is reached, the request fails and returns. */
@@ -4463,6 +6523,11 @@ export interface ProfilePropertiesUpdateParameters {
   /** Defines rules to scrub sensitive fields in logs */
   logScrubbing?: ProfileLogScrubbing;
 }
+const ProfilePropertiesUpdateParameters = /*@__PURE__*/ __L.at(
+  __c44,
+  6,
+) as any as S.Schema<ProfilePropertiesUpdateParameters>;
+
 export interface UpdateProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4477,6 +6542,11 @@ export interface UpdateProfileRequest {
   /** The JSON object containing profile update parameters. */
   properties?: ProfilePropertiesUpdateParameters;
 }
+const UpdateProfileRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  7,
+) as any as S.Schema<UpdateProfileRequest>;
+
 /** Resource tags. */
 export type UpdateProfileResponseTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -4515,25 +6585,45 @@ export interface UpdateProfileResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: UpdateProfileResponseIdentity;
 }
+const UpdateProfileResponse = CreateProfileResponse as any as S.Schema<UpdateProfileResponse>;
+
 /** Domains referenced by this endpoint. */
 export type RouteUpdatePropertiesParametersInputCustomDomainsList = Array<ResourceReference>;
+const RouteUpdatePropertiesParametersInputCustomDomainsList =
+  DeepCreatedOriginGroupPropertiesOriginsList as any as S.Schema<RouteUpdatePropertiesParametersInputCustomDomainsList>;
+
 /** rule sets referenced by this endpoint. */
 export type RouteUpdatePropertiesParametersInputRuleSetsList = Array<ResourceReference>;
+const RouteUpdatePropertiesParametersInputRuleSetsList =
+  DeepCreatedOriginGroupPropertiesOriginsList as any as S.Schema<RouteUpdatePropertiesParametersInputRuleSetsList>;
+
 /** List of supported protocols for this route. */
 export type RouteUpdatePropertiesParametersInputSupportedProtocolsList = Array<
   AFDEndpointProtocols | (string & {})
 >;
+const RouteUpdatePropertiesParametersInputSupportedProtocolsList =
+  RoutePropertiesInputSupportedProtocolsList as any as S.Schema<RouteUpdatePropertiesParametersInputSupportedProtocolsList>;
+
 /** The route patterns of the rule. */
 export type RouteUpdatePropertiesParametersInputPatternsToMatchList = Array<string>;
+const RouteUpdatePropertiesParametersInputPatternsToMatchList =
+  AFDOriginPropertiesInputCustomCertificateSubjectsList as any as S.Schema<RouteUpdatePropertiesParametersInputPatternsToMatchList>;
+
 /** Protocol this rule will use when forwarding traffic to backends. */
 export type RouteUpdatePropertiesParametersInputForwardingProtocol =
   | "HttpOnly"
   | "HttpsOnly"
   | "MatchRequest";
+const RouteUpdatePropertiesParametersInputForwardingProtocol = S.String;
+
 /** whether this route will be linked to the default endpoint domain. */
 export type RouteUpdatePropertiesParametersInputLinkToDefaultDomain = "Enabled" | "Disabled";
+const RouteUpdatePropertiesParametersInputLinkToDefaultDomain = S.String;
+
 /** Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed. */
 export type RouteUpdatePropertiesParametersInputHttpsRedirect = "Enabled" | "Disabled";
+const RouteUpdatePropertiesParametersInputHttpsRedirect = S.String;
+
 /** The JSON object that contains the properties of the domain to create. */
 export interface RouteUpdatePropertiesParametersInput {
   /** Domains referenced by this endpoint. */
@@ -4559,6 +6649,11 @@ export interface RouteUpdatePropertiesParametersInput {
   /** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
   enabledState?: EnabledState | (string & {});
 }
+const RouteUpdatePropertiesParametersInput = /*@__PURE__*/ __L.at(
+  __c45,
+  0,
+) as any as S.Schema<RouteUpdatePropertiesParametersInput>;
+
 export interface UpdateRouteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4573,6 +6668,8 @@ export interface UpdateRouteRequest {
   /** The JSON object that contains the properties of the domain to create. */
   properties?: RouteUpdatePropertiesParametersInput;
 }
+const UpdateRouteRequest = /*@__PURE__*/ __L.at(__c45, 1) as any as S.Schema<UpdateRouteRequest>;
+
 export interface UpdateRouteResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4585,12 +6682,22 @@ export interface UpdateRouteResponse {
   /** The JSON object that contains the properties of the Routes to create. */
   properties?: RouteProperties;
 }
+const UpdateRouteResponse = CreateRouteResponse as any as S.Schema<UpdateRouteResponse>;
+
 /** A list of conditions that must be matched for the actions to be executed */
 export type RuleUpdatePropertiesParametersInputConditionsList = Array<DeliveryRuleCondition>;
+const RuleUpdatePropertiesParametersInputConditionsList =
+  DeliveryRuleConditionsList as any as S.Schema<RuleUpdatePropertiesParametersInputConditionsList>;
+
 /** A list of actions that are executed when all the conditions of a rule are satisfied. */
 export type RuleUpdatePropertiesParametersInputActionsList = Array<DeliveryRuleAction>;
+const RuleUpdatePropertiesParametersInputActionsList =
+  DeliveryRuleActionsList as any as S.Schema<RuleUpdatePropertiesParametersInputActionsList>;
+
 /** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
 export type RuleUpdatePropertiesParametersInputMatchProcessingBehavior = "Continue" | "Stop";
+const RuleUpdatePropertiesParametersInputMatchProcessingBehavior = S.String;
+
 /** The JSON object that contains the properties of the rule to update. */
 export interface RuleUpdatePropertiesParametersInput {
   /** The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,.........}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied. */
@@ -4604,6 +6711,11 @@ export interface RuleUpdatePropertiesParametersInput {
     | RuleUpdatePropertiesParametersInputMatchProcessingBehavior
     | (string & {});
 }
+const RuleUpdatePropertiesParametersInput = /*@__PURE__*/ __L.at(
+  __c45,
+  2,
+) as any as S.Schema<RuleUpdatePropertiesParametersInput>;
+
 export interface UpdateRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4618,6 +6730,8 @@ export interface UpdateRuleRequest {
   /** The JSON object that contains the properties of the rule to update. */
   properties?: RuleUpdatePropertiesParametersInput;
 }
+const UpdateRuleRequest = /*@__PURE__*/ __L.at(__c45, 3) as any as S.Schema<UpdateRuleRequest>;
+
 export interface UpdateRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4630,6 +6744,8 @@ export interface UpdateRuleResponse {
   /** The JSON object that contains the properties of the Rules to create. */
   properties?: RuleProperties;
 }
+const UpdateRuleResponse = CreateRuleResponse as any as S.Schema<UpdateRuleResponse>;
+
 export interface ValidateAFDEndpointCustomDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4642,6 +6758,11 @@ export interface ValidateAFDEndpointCustomDomainRequest {
   /** The host name of the custom domain. Must be a domain name. */
   hostName: string;
 }
+const ValidateAFDEndpointCustomDomainRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  4,
+) as any as S.Schema<ValidateAFDEndpointCustomDomainRequest>;
+
 /** Output of custom domain validation. */
 export interface ValidateCustomDomainOutput {
   /** Indicates whether the custom domain is valid or not. */
@@ -4651,6 +6772,11 @@ export interface ValidateCustomDomainOutput {
   /** Error message describing why the custom domain is not valid. */
   message?: string;
 }
+const ValidateCustomDomainOutput = /*@__PURE__*/ __L.at(
+  __c45,
+  5,
+) as any as S.Schema<ValidateCustomDomainOutput>;
+
 export interface ValidateAFDProfileSecretRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4665,8 +6791,15 @@ export interface ValidateAFDProfileSecretRequest {
   /** Secret version, if customer is using a specific version. */
   secretVersion?: string;
 }
+const ValidateAFDProfileSecretRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  6,
+) as any as S.Schema<ValidateAFDProfileSecretRequest>;
+
 /** The validation status. */
 export type Status = "Valid" | "Invalid" | "AccessDenied" | "CertificateExpired";
+const Status = S.String;
+
 /** Output of the validated secret. */
 export interface ValidateSecretOutput {
   /** The validation status. */
@@ -4674,6 +6807,11 @@ export interface ValidateSecretOutput {
   /** Detailed error message */
   message?: string;
 }
+const ValidateSecretOutput = /*@__PURE__*/ __L.at(
+  __c45,
+  7,
+) as any as S.Schema<ValidateSecretOutput>;
+
 export interface ValidateEndpointCustomDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4686,12 +6824,22 @@ export interface ValidateEndpointCustomDomainRequest {
   /** The host name of the custom domain. Must be a domain name. */
   hostName: string;
 }
+const ValidateEndpointCustomDomainRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  0,
+) as any as S.Schema<ValidateEndpointCustomDomainRequest>;
+
 export interface ValidateProbeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The probe URL to validate. */
   probeURL: string;
 }
+const ValidateProbeRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  1,
+) as any as S.Schema<ValidateProbeRequest>;
+
 /** Output of the validate probe API. */
 export interface ValidateProbeOutput {
   /** Indicates whether the probe URL is accepted or not. */
@@ -4701,6 +6849,8 @@ export interface ValidateProbeOutput {
   /** The detailed error message describing why the probe URL is not accepted. */
   message?: string;
 }
+const ValidateProbeOutput = /*@__PURE__*/ __L.at(__c46, 2) as any as S.Schema<ValidateProbeOutput>;
+
 export type AbortProfilesMigrationError = AzureOpError;
 /** Abort the migration to Azure Frontdoor Premium/Standard. */
 export const AbortProfilesMigration: API.OperationMethod<
@@ -4709,8 +6859,8 @@ export const AbortProfilesMigration: API.OperationMethod<
   AbortProfilesMigrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AbortProfilesMigrationRequest>,
-  output: __S(1) as any as S.Schema<AbortProfilesMigrationResponse>,
+  input: AbortProfilesMigrationRequest,
+  output: AbortProfilesMigrationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4724,8 +6874,8 @@ export const AFDProfilesUpgrade: API.OperationMethod<
   AFDProfilesUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<AFDProfilesUpgradeRequest>,
-  output: __S(16) as any as S.Schema<AFDProfilesUpgradeResponse>,
+  input: AFDProfilesUpgradeRequest,
+  output: AFDProfilesUpgradeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4739,8 +6889,8 @@ export const CheckAFDProfileEndpointNameAvailability: API.OperationMethod<
   CheckAFDProfileEndpointNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<CheckAFDProfileEndpointNameAvailabilityRequest>,
-  output: __S(18) as any as S.Schema<CheckEndpointNameAvailabilityOutput>,
+  input: CheckAFDProfileEndpointNameAvailabilityRequest,
+  output: CheckEndpointNameAvailabilityOutput,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4754,8 +6904,8 @@ export const CheckAFDProfileHostNameAvailability: API.OperationMethod<
   CheckAFDProfileHostNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<CheckAFDProfileHostNameAvailabilityRequest>,
-  output: __S(20) as any as S.Schema<CheckNameAvailabilityOutput>,
+  input: CheckAFDProfileHostNameAvailabilityRequest,
+  output: CheckNameAvailabilityOutput,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4769,8 +6919,8 @@ export const CheckEndpointNameAvailability: API.OperationMethod<
   CheckEndpointNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<CheckEndpointNameAvailabilityRequest>,
-  output: __S(18) as any as S.Schema<CheckEndpointNameAvailabilityOutput>,
+  input: CheckEndpointNameAvailabilityRequest,
+  output: CheckEndpointNameAvailabilityOutput,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4784,8 +6934,8 @@ export const CheckNameAvailability: API.OperationMethod<
   CheckNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<CheckNameAvailabilityRequest>,
-  output: __S(20) as any as S.Schema<CheckNameAvailabilityOutput>,
+  input: CheckNameAvailabilityRequest,
+  output: CheckNameAvailabilityOutput,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4799,8 +6949,8 @@ export const CheckNameAvailabilityWithSubscription: API.OperationMethod<
   CheckNameAvailabilityWithSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CheckNameAvailabilityWithSubscriptionRequest>,
-  output: __S(20) as any as S.Schema<CheckNameAvailabilityOutput>,
+  input: CheckNameAvailabilityWithSubscriptionRequest,
+  output: CheckNameAvailabilityOutput,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4814,8 +6964,8 @@ export const CommitProfilesMigration: API.OperationMethod<
   CommitProfilesMigrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<CommitProfilesMigrationRequest>,
-  output: __S(25) as any as S.Schema<CommitProfilesMigrationResponse>,
+  input: CommitProfilesMigrationRequest,
+  output: CommitProfilesMigrationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4829,8 +6979,8 @@ export const CreateAFDCustomDomain: API.OperationMethod<
   CreateAFDCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<CreateAFDCustomDomainRequest>,
-  output: __S(35) as any as S.Schema<CreateAFDCustomDomainResponse>,
+  input: CreateAFDCustomDomainRequest,
+  output: CreateAFDCustomDomainResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4844,8 +6994,8 @@ export const CreateAFDEndpoint: API.OperationMethod<
   CreateAFDEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<CreateAFDEndpointRequest>,
-  output: __S(39) as any as S.Schema<CreateAFDEndpointResponse>,
+  input: CreateAFDEndpointRequest,
+  output: CreateAFDEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4859,8 +7009,8 @@ export const CreateAFDOrigin: API.OperationMethod<
   CreateAFDOriginError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<CreateAFDOriginRequest>,
-  output: __S(45) as any as S.Schema<CreateAFDOriginResponse>,
+  input: CreateAFDOriginRequest,
+  output: CreateAFDOriginResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4874,8 +7024,8 @@ export const CreateAFDOriginGroup: API.OperationMethod<
   CreateAFDOriginGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<CreateAFDOriginGroupRequest>,
-  output: __S(52) as any as S.Schema<CreateAFDOriginGroupResponse>,
+  input: CreateAFDOriginGroupRequest,
+  output: CreateAFDOriginGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4889,8 +7039,8 @@ export const CreateCustomDomain: API.OperationMethod<
   CreateCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<CreateCustomDomainRequest>,
-  output: __S(57) as any as S.Schema<CreateCustomDomainResponse>,
+  input: CreateCustomDomainRequest,
+  output: CreateCustomDomainResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4904,8 +7054,8 @@ export const CreateEndpoint: API.OperationMethod<
   CreateEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<CreateEndpointRequest>,
-  output: __S(84) as any as S.Schema<CreateEndpointResponse>,
+  input: CreateEndpointRequest,
+  output: CreateEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4919,8 +7069,8 @@ export const CreateOrigin: API.OperationMethod<
   CreateOriginError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<CreateOriginRequest>,
-  output: __S(87) as any as S.Schema<CreateOriginResponse>,
+  input: CreateOriginRequest,
+  output: CreateOriginResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4934,8 +7084,8 @@ export const CreateOriginGroup: API.OperationMethod<
   CreateOriginGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<CreateOriginGroupRequest>,
-  output: __S(90) as any as S.Schema<CreateOriginGroupResponse>,
+  input: CreateOriginGroupRequest,
+  output: CreateOriginGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4949,8 +7099,8 @@ export const CreateProfile: API.OperationMethod<
   CreateProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<CreateProfileRequest>,
-  output: __S(95) as any as S.Schema<CreateProfileResponse>,
+  input: CreateProfileRequest,
+  output: CreateProfileResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4964,8 +7114,8 @@ export const CreateRoute: API.OperationMethod<
   CreateRouteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<CreateRouteRequest>,
-  output: __S(103) as any as S.Schema<CreateRouteResponse>,
+  input: CreateRouteRequest,
+  output: CreateRouteResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4979,8 +7129,8 @@ export const CreateRule: API.OperationMethod<
   CreateRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<CreateRuleRequest>,
-  output: __S(107) as any as S.Schema<CreateRuleResponse>,
+  input: CreateRuleRequest,
+  output: CreateRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4994,8 +7144,8 @@ export const CreateRuleSet: API.OperationMethod<
   CreateRuleSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<CreateRuleSetRequest>,
-  output: __S(115) as any as S.Schema<CreateRuleSetResponse>,
+  input: CreateRuleSetRequest,
+  output: CreateRuleSetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5009,8 +7159,8 @@ export const CreateSecret: API.OperationMethod<
   CreateSecretError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<CreateSecretRequest>,
-  output: __S(120) as any as S.Schema<CreateSecretResponse>,
+  input: CreateSecretRequest,
+  output: CreateSecretResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5024,8 +7174,8 @@ export const CreateSecurityPolicy: API.OperationMethod<
   CreateSecurityPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<CreateSecurityPolicyRequest>,
-  output: __S(125) as any as S.Schema<CreateSecurityPolicyResponse>,
+  input: CreateSecurityPolicyRequest,
+  output: CreateSecurityPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5039,8 +7189,8 @@ export const DeleteAFDCustomDomain: API.OperationMethod<
   DeleteAFDCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<DeleteAFDCustomDomainRequest>,
-  output: __S(1) as any as S.Schema<DeleteAFDCustomDomainResponse>,
+  input: DeleteAFDCustomDomainRequest,
+  output: DeleteAFDCustomDomainResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5054,8 +7204,8 @@ export const DeleteAFDEndpoint: API.OperationMethod<
   DeleteAFDEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<DeleteAFDEndpointRequest>,
-  output: __S(1) as any as S.Schema<DeleteAFDEndpointResponse>,
+  input: DeleteAFDEndpointRequest,
+  output: DeleteAFDEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5069,8 +7219,8 @@ export const DeleteAFDOrigin: API.OperationMethod<
   DeleteAFDOriginError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128) as any as S.Schema<DeleteAFDOriginRequest>,
-  output: __S(1) as any as S.Schema<DeleteAFDOriginResponse>,
+  input: DeleteAFDOriginRequest,
+  output: DeleteAFDOriginResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5084,8 +7234,8 @@ export const DeleteAFDOriginGroup: API.OperationMethod<
   DeleteAFDOriginGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<DeleteAFDOriginGroupRequest>,
-  output: __S(1) as any as S.Schema<DeleteAFDOriginGroupResponse>,
+  input: DeleteAFDOriginGroupRequest,
+  output: DeleteAFDOriginGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5099,8 +7249,8 @@ export const DeleteCustomDomain: API.OperationMethod<
   DeleteCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130) as any as S.Schema<DeleteCustomDomainRequest>,
-  output: __S(1) as any as S.Schema<DeleteCustomDomainResponse>,
+  input: DeleteCustomDomainRequest,
+  output: DeleteCustomDomainResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5114,8 +7264,8 @@ export const DeleteEndpoint: API.OperationMethod<
   DeleteEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<DeleteEndpointRequest>,
-  output: __S(1) as any as S.Schema<DeleteEndpointResponse>,
+  input: DeleteEndpointRequest,
+  output: DeleteEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5129,8 +7279,8 @@ export const DeleteOrigin: API.OperationMethod<
   DeleteOriginError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<DeleteOriginRequest>,
-  output: __S(1) as any as S.Schema<DeleteOriginResponse>,
+  input: DeleteOriginRequest,
+  output: DeleteOriginResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5144,8 +7294,8 @@ export const DeleteOriginGroup: API.OperationMethod<
   DeleteOriginGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133) as any as S.Schema<DeleteOriginGroupRequest>,
-  output: __S(1) as any as S.Schema<DeleteOriginGroupResponse>,
+  input: DeleteOriginGroupRequest,
+  output: DeleteOriginGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5159,8 +7309,8 @@ export const DeletePolicy: API.OperationMethod<
   DeletePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134) as any as S.Schema<DeletePolicyRequest>,
-  output: __S(1) as any as S.Schema<DeletePolicyResponse>,
+  input: DeletePolicyRequest,
+  output: DeletePolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5174,8 +7324,8 @@ export const DeleteProfile: API.OperationMethod<
   DeleteProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<DeleteProfileRequest>,
-  output: __S(1) as any as S.Schema<DeleteProfileResponse>,
+  input: DeleteProfileRequest,
+  output: DeleteProfileResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5189,8 +7339,8 @@ export const DeleteRoute: API.OperationMethod<
   DeleteRouteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<DeleteRouteRequest>,
-  output: __S(1) as any as S.Schema<DeleteRouteResponse>,
+  input: DeleteRouteRequest,
+  output: DeleteRouteResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5204,8 +7354,8 @@ export const DeleteRule: API.OperationMethod<
   DeleteRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<DeleteRuleRequest>,
-  output: __S(1) as any as S.Schema<DeleteRuleResponse>,
+  input: DeleteRuleRequest,
+  output: DeleteRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5219,8 +7369,8 @@ export const DeleteRuleSet: API.OperationMethod<
   DeleteRuleSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<DeleteRuleSetRequest>,
-  output: __S(1) as any as S.Schema<DeleteRuleSetResponse>,
+  input: DeleteRuleSetRequest,
+  output: DeleteRuleSetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5234,8 +7384,8 @@ export const DeleteSecret: API.OperationMethod<
   DeleteSecretError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<DeleteSecretRequest>,
-  output: __S(1) as any as S.Schema<DeleteSecretResponse>,
+  input: DeleteSecretRequest,
+  output: DeleteSecretResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5249,8 +7399,8 @@ export const DeleteSecurityPolicy: API.OperationMethod<
   DeleteSecurityPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<DeleteSecurityPolicyRequest>,
-  output: __S(1) as any as S.Schema<DeleteSecurityPolicyResponse>,
+  input: DeleteSecurityPolicyRequest,
+  output: DeleteSecurityPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5264,8 +7414,8 @@ export const DisableCustomDomainCustomHttps: API.OperationMethod<
   DisableCustomDomainCustomHttpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141) as any as S.Schema<DisableCustomDomainCustomHttpsRequest>,
-  output: __S(57) as any as S.Schema<DisableCustomDomainCustomHttpsResponse>,
+  input: DisableCustomDomainCustomHttpsRequest,
+  output: DisableCustomDomainCustomHttpsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5279,8 +7429,8 @@ export const EnableCustomDomainCustomHttps: API.OperationMethod<
   EnableCustomDomainCustomHttpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<EnableCustomDomainCustomHttpsRequest>,
-  output: __S(57) as any as S.Schema<EnableCustomDomainCustomHttpsResponse>,
+  input: EnableCustomDomainCustomHttpsRequest,
+  output: EnableCustomDomainCustomHttpsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5294,8 +7444,8 @@ export const EndpointsLoadContent: API.OperationMethod<
   EndpointsLoadContentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143) as any as S.Schema<EndpointsLoadContentRequest>,
-  output: __S(1) as any as S.Schema<EndpointsLoadContentResponse>,
+  input: EndpointsLoadContentRequest,
+  output: EndpointsLoadContentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5309,8 +7459,8 @@ export const GenerateProfileSsoUri: API.OperationMethod<
   GenerateProfileSsoUriError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144) as any as S.Schema<GenerateProfileSsoUriRequest>,
-  output: __S(145) as any as S.Schema<SsoUri>,
+  input: GenerateProfileSsoUriRequest,
+  output: SsoUri,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5324,8 +7474,8 @@ export const GetAFDCustomDomain: API.OperationMethod<
   GetAFDCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<GetAFDCustomDomainRequest>,
-  output: __S(35) as any as S.Schema<GetAFDCustomDomainResponse>,
+  input: GetAFDCustomDomainRequest,
+  output: GetAFDCustomDomainResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5339,8 +7489,8 @@ export const GetAFDEndpoint: API.OperationMethod<
   GetAFDEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147) as any as S.Schema<GetAFDEndpointRequest>,
-  output: __S(148) as any as S.Schema<GetAFDEndpointResponse>,
+  input: GetAFDEndpointRequest,
+  output: GetAFDEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5354,8 +7504,8 @@ export const GetAFDOrigin: API.OperationMethod<
   GetAFDOriginError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<GetAFDOriginRequest>,
-  output: __S(45) as any as S.Schema<GetAFDOriginResponse>,
+  input: GetAFDOriginRequest,
+  output: GetAFDOriginResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5369,8 +7519,8 @@ export const GetAFDOriginGroup: API.OperationMethod<
   GetAFDOriginGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<GetAFDOriginGroupRequest>,
-  output: __S(52) as any as S.Schema<GetAFDOriginGroupResponse>,
+  input: GetAFDOriginGroupRequest,
+  output: GetAFDOriginGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5384,8 +7534,8 @@ export const GetCustomDomain: API.OperationMethod<
   GetCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<GetCustomDomainRequest>,
-  output: __S(152) as any as S.Schema<GetCustomDomainResponse>,
+  input: GetCustomDomainRequest,
+  output: GetCustomDomainResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5399,8 +7549,8 @@ export const GetEndpoint: API.OperationMethod<
   GetEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<GetEndpointRequest>,
-  output: __S(84) as any as S.Schema<GetEndpointResponse>,
+  input: GetEndpointRequest,
+  output: GetEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5414,8 +7564,8 @@ export const GetLogAnalyticsLogAnalyticsLocations: API.OperationMethod<
   GetLogAnalyticsLogAnalyticsLocationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<GetLogAnalyticsLogAnalyticsLocationsRequest>,
-  output: __S(159) as any as S.Schema<ContinentsResponse>,
+  input: GetLogAnalyticsLogAnalyticsLocationsRequest,
+  output: ContinentsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5429,8 +7579,8 @@ export const GetLogAnalyticsLogAnalyticsMetrics: API.OperationMethod<
   GetLogAnalyticsLogAnalyticsMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160) as any as S.Schema<GetLogAnalyticsLogAnalyticsMetricsRequest>,
-  output: __S(167) as any as S.Schema<MetricsResponse>,
+  input: GetLogAnalyticsLogAnalyticsMetricsRequest,
+  output: MetricsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5444,8 +7594,8 @@ export const GetLogAnalyticsLogAnalyticsRankings: API.OperationMethod<
   GetLogAnalyticsLogAnalyticsRankingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<GetLogAnalyticsLogAnalyticsRankingsRequest>,
-  output: __S(175) as any as S.Schema<RankingsResponse>,
+  input: GetLogAnalyticsLogAnalyticsRankingsRequest,
+  output: RankingsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5459,8 +7609,8 @@ export const GetLogAnalyticsLogAnalyticsResources: API.OperationMethod<
   GetLogAnalyticsLogAnalyticsResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<GetLogAnalyticsLogAnalyticsResourcesRequest>,
-  output: __S(181) as any as S.Schema<ResourcesResponse>,
+  input: GetLogAnalyticsLogAnalyticsResourcesRequest,
+  output: ResourcesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5474,8 +7624,8 @@ export const GetLogAnalyticsWafLogAnalyticsMetrics: API.OperationMethod<
   GetLogAnalyticsWafLogAnalyticsMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<GetLogAnalyticsWafLogAnalyticsMetricsRequest>,
-  output: __S(185) as any as S.Schema<WafMetricsResponse>,
+  input: GetLogAnalyticsWafLogAnalyticsMetricsRequest,
+  output: WafMetricsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5489,8 +7639,8 @@ export const GetLogAnalyticsWafLogAnalyticsRankings: API.OperationMethod<
   GetLogAnalyticsWafLogAnalyticsRankingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<GetLogAnalyticsWafLogAnalyticsRankingsRequest>,
-  output: __S(189) as any as S.Schema<WafRankingsResponse>,
+  input: GetLogAnalyticsWafLogAnalyticsRankingsRequest,
+  output: WafRankingsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5504,8 +7654,8 @@ export const GetOrigin: API.OperationMethod<
   GetOriginError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190) as any as S.Schema<GetOriginRequest>,
-  output: __S(87) as any as S.Schema<GetOriginResponse>,
+  input: GetOriginRequest,
+  output: GetOriginResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5519,8 +7669,8 @@ export const GetOriginGroup: API.OperationMethod<
   GetOriginGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191) as any as S.Schema<GetOriginGroupRequest>,
-  output: __S(192) as any as S.Schema<GetOriginGroupResponse>,
+  input: GetOriginGroupRequest,
+  output: GetOriginGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5534,8 +7684,8 @@ export const GetPolicy: API.OperationMethod<
   GetPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<GetPolicyRequest>,
-  output: __S(212) as any as S.Schema<GetPolicyResponse>,
+  input: GetPolicyRequest,
+  output: GetPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5549,8 +7699,8 @@ export const GetProfile: API.OperationMethod<
   GetProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213) as any as S.Schema<GetProfileRequest>,
-  output: __S(95) as any as S.Schema<GetProfileResponse>,
+  input: GetProfileRequest,
+  output: GetProfileResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5564,8 +7714,8 @@ export const GetRoute: API.OperationMethod<
   GetRouteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214) as any as S.Schema<GetRouteRequest>,
-  output: __S(103) as any as S.Schema<GetRouteResponse>,
+  input: GetRouteRequest,
+  output: GetRouteResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5579,8 +7729,8 @@ export const GetRule: API.OperationMethod<
   GetRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215) as any as S.Schema<GetRuleRequest>,
-  output: __S(107) as any as S.Schema<GetRuleResponse>,
+  input: GetRuleRequest,
+  output: GetRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5594,8 +7744,8 @@ export const GetRuleSet: API.OperationMethod<
   GetRuleSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216) as any as S.Schema<GetRuleSetRequest>,
-  output: __S(115) as any as S.Schema<GetRuleSetResponse>,
+  input: GetRuleSetRequest,
+  output: GetRuleSetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5609,8 +7759,8 @@ export const GetSecret: API.OperationMethod<
   GetSecretError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217) as any as S.Schema<GetSecretRequest>,
-  output: __S(120) as any as S.Schema<GetSecretResponse>,
+  input: GetSecretRequest,
+  output: GetSecretResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5624,8 +7774,8 @@ export const GetSecurityPolicy: API.OperationMethod<
   GetSecurityPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218) as any as S.Schema<GetSecurityPolicyRequest>,
-  output: __S(125) as any as S.Schema<GetSecurityPolicyResponse>,
+  input: GetSecurityPolicyRequest,
+  output: GetSecurityPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5639,8 +7789,8 @@ export const ListAFDCustomDomainByProfile: API.OperationMethod<
   ListAFDCustomDomainByProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219) as any as S.Schema<ListAFDCustomDomainByProfileRequest>,
-  output: __S(222) as any as S.Schema<AFDDomainListResult>,
+  input: ListAFDCustomDomainByProfileRequest,
+  output: AFDDomainListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5654,8 +7804,8 @@ export const ListAFDEndpointByProfile: API.OperationMethod<
   ListAFDEndpointByProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223) as any as S.Schema<ListAFDEndpointByProfileRequest>,
-  output: __S(225) as any as S.Schema<AFDEndpointListResult>,
+  input: ListAFDEndpointByProfileRequest,
+  output: AFDEndpointListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5669,8 +7819,8 @@ export const ListAFDEndpointResourceUsage: API.OperationMethod<
   ListAFDEndpointResourceUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226) as any as S.Schema<ListAFDEndpointResourceUsageRequest>,
-  output: __S(230) as any as S.Schema<UsagesListResult>,
+  input: ListAFDEndpointResourceUsageRequest,
+  output: UsagesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5684,8 +7834,8 @@ export const ListAFDOriginByOriginGroup: API.OperationMethod<
   ListAFDOriginByOriginGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231) as any as S.Schema<ListAFDOriginByOriginGroupRequest>,
-  output: __S(233) as any as S.Schema<AFDOriginListResult>,
+  input: ListAFDOriginByOriginGroupRequest,
+  output: AFDOriginListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5699,8 +7849,8 @@ export const ListAFDOriginGroupByProfile: API.OperationMethod<
   ListAFDOriginGroupByProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234) as any as S.Schema<ListAFDOriginGroupByProfileRequest>,
-  output: __S(237) as any as S.Schema<AFDOriginGroupListResult>,
+  input: ListAFDOriginGroupByProfileRequest,
+  output: AFDOriginGroupListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5714,8 +7864,8 @@ export const ListAFDOriginGroupResourceUsage: API.OperationMethod<
   ListAFDOriginGroupResourceUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238) as any as S.Schema<ListAFDOriginGroupResourceUsageRequest>,
-  output: __S(230) as any as S.Schema<UsagesListResult>,
+  input: ListAFDOriginGroupResourceUsageRequest,
+  output: UsagesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5729,8 +7879,8 @@ export const ListAFDProfileResourceUsage: API.OperationMethod<
   ListAFDProfileResourceUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239) as any as S.Schema<ListAFDProfileResourceUsageRequest>,
-  output: __S(230) as any as S.Schema<UsagesListResult>,
+  input: ListAFDProfileResourceUsageRequest,
+  output: UsagesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5744,8 +7894,8 @@ export const ListCustomDomainByEndpoint: API.OperationMethod<
   ListCustomDomainByEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240) as any as S.Schema<ListCustomDomainByEndpointRequest>,
-  output: __S(242) as any as S.Schema<CustomDomainListResult>,
+  input: ListCustomDomainByEndpointRequest,
+  output: CustomDomainListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5759,8 +7909,8 @@ export const ListEdgeNodes: API.OperationMethod<
   ListEdgeNodesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243) as any as S.Schema<ListEdgeNodesRequest>,
-  output: __S(251) as any as S.Schema<EdgenodeResult>,
+  input: ListEdgeNodesRequest,
+  output: EdgenodeResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5774,8 +7924,8 @@ export const ListEndpointByProfile: API.OperationMethod<
   ListEndpointByProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252) as any as S.Schema<ListEndpointByProfileRequest>,
-  output: __S(254) as any as S.Schema<EndpointListResult>,
+  input: ListEndpointByProfileRequest,
+  output: EndpointListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5789,8 +7939,8 @@ export const ListEndpointResourceUsage: API.OperationMethod<
   ListEndpointResourceUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255) as any as S.Schema<ListEndpointResourceUsageRequest>,
-  output: __S(258) as any as S.Schema<ResourceUsageListResult>,
+  input: ListEndpointResourceUsageRequest,
+  output: ResourceUsageListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5804,8 +7954,8 @@ export const ListManagedRuleSets: API.OperationMethod<
   ListManagedRuleSetsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259) as any as S.Schema<ListManagedRuleSetsRequest>,
-  output: __S(267) as any as S.Schema<ManagedRuleSetDefinitionList>,
+  input: ListManagedRuleSetsRequest,
+  output: ManagedRuleSetDefinitionList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5819,8 +7969,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268) as any as S.Schema<ListOperationsRequest>,
-  output: __S(282) as any as S.Schema<OperationsListResult>,
+  input: ListOperationsRequest,
+  output: OperationsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5834,8 +7984,8 @@ export const ListOriginByEndpoint: API.OperationMethod<
   ListOriginByEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283) as any as S.Schema<ListOriginByEndpointRequest>,
-  output: __S(285) as any as S.Schema<OriginListResult>,
+  input: ListOriginByEndpointRequest,
+  output: OriginListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5849,8 +7999,8 @@ export const ListOriginGroupByEndpoint: API.OperationMethod<
   ListOriginGroupByEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286) as any as S.Schema<ListOriginGroupByEndpointRequest>,
-  output: __S(288) as any as S.Schema<OriginGroupListResult>,
+  input: ListOriginGroupByEndpointRequest,
+  output: OriginGroupListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5864,8 +8014,8 @@ export const ListPolicies: API.OperationMethod<
   ListPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289) as any as S.Schema<ListPoliciesRequest>,
-  output: __S(292) as any as S.Schema<CdnWebApplicationFirewallPolicyList>,
+  input: ListPoliciesRequest,
+  output: CdnWebApplicationFirewallPolicyList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5879,8 +8029,8 @@ export const ListProfileByResourceGroup: API.OperationMethod<
   ListProfileByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293) as any as S.Schema<ListProfileByResourceGroupRequest>,
-  output: __S(297) as any as S.Schema<ProfileListResult>,
+  input: ListProfileByResourceGroupRequest,
+  output: ProfileListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5894,8 +8044,8 @@ export const ListProfileResourceUsage: API.OperationMethod<
   ListProfileResourceUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298) as any as S.Schema<ListProfileResourceUsageRequest>,
-  output: __S(258) as any as S.Schema<ResourceUsageListResult>,
+  input: ListProfileResourceUsageRequest,
+  output: ResourceUsageListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5909,8 +8059,8 @@ export const ListProfiles: API.OperationMethod<
   ListProfilesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299) as any as S.Schema<ListProfilesRequest>,
-  output: __S(297) as any as S.Schema<ProfileListResult>,
+  input: ListProfilesRequest,
+  output: ProfileListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5924,8 +8074,8 @@ export const ListProfileSupportedOptimizationTypes: API.OperationMethod<
   ListProfileSupportedOptimizationTypesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300) as any as S.Schema<ListProfileSupportedOptimizationTypesRequest>,
-  output: __S(301) as any as S.Schema<SupportedOptimizationTypesListResult>,
+  input: ListProfileSupportedOptimizationTypesRequest,
+  output: SupportedOptimizationTypesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5939,8 +8089,8 @@ export const ListResourceUsage: API.OperationMethod<
   ListResourceUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302) as any as S.Schema<ListResourceUsageRequest>,
-  output: __S(258) as any as S.Schema<ResourceUsageListResult>,
+  input: ListResourceUsageRequest,
+  output: ResourceUsageListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5954,8 +8104,8 @@ export const ListRouteByEndpoint: API.OperationMethod<
   ListRouteByEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303) as any as S.Schema<ListRouteByEndpointRequest>,
-  output: __S(305) as any as S.Schema<RouteListResult>,
+  input: ListRouteByEndpointRequest,
+  output: RouteListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5969,8 +8119,8 @@ export const ListRuleByRuleSet: API.OperationMethod<
   ListRuleByRuleSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306) as any as S.Schema<ListRuleByRuleSetRequest>,
-  output: __S(308) as any as S.Schema<RuleListResult>,
+  input: ListRuleByRuleSetRequest,
+  output: RuleListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5984,8 +8134,8 @@ export const ListRuleSetByProfile: API.OperationMethod<
   ListRuleSetByProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309) as any as S.Schema<ListRuleSetByProfileRequest>,
-  output: __S(311) as any as S.Schema<RuleSetListResult>,
+  input: ListRuleSetByProfileRequest,
+  output: RuleSetListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5999,8 +8149,8 @@ export const ListRuleSetResourceUsage: API.OperationMethod<
   ListRuleSetResourceUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312) as any as S.Schema<ListRuleSetResourceUsageRequest>,
-  output: __S(230) as any as S.Schema<UsagesListResult>,
+  input: ListRuleSetResourceUsageRequest,
+  output: UsagesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6014,8 +8164,8 @@ export const ListSecretByProfile: API.OperationMethod<
   ListSecretByProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313) as any as S.Schema<ListSecretByProfileRequest>,
-  output: __S(315) as any as S.Schema<SecretListResult>,
+  input: ListSecretByProfileRequest,
+  output: SecretListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6029,8 +8179,8 @@ export const ListSecurityPolicyByProfile: API.OperationMethod<
   ListSecurityPolicyByProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316) as any as S.Schema<ListSecurityPolicyByProfileRequest>,
-  output: __S(319) as any as S.Schema<SecurityPolicyListResult>,
+  input: ListSecurityPolicyByProfileRequest,
+  output: SecurityPolicyListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6044,8 +8194,8 @@ export const MigrateProfile: API.OperationMethod<
   MigrateProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322) as any as S.Schema<MigrateProfileRequest>,
-  output: __S(324) as any as S.Schema<MigrateResult>,
+  input: MigrateProfileRequest,
+  output: MigrateResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6059,8 +8209,8 @@ export const MigrateProfilesCan: API.OperationMethod<
   MigrateProfilesCanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325) as any as S.Schema<MigrateProfilesCanRequest>,
-  output: __S(329) as any as S.Schema<CanMigrateResult>,
+  input: MigrateProfilesCanRequest,
+  output: CanMigrateResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6074,8 +8224,8 @@ export const PatchSecurityPolicy: API.OperationMethod<
   PatchSecurityPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330) as any as S.Schema<PatchSecurityPolicyRequest>,
-  output: __S(125) as any as S.Schema<PatchSecurityPolicyResponse>,
+  input: PatchSecurityPolicyRequest,
+  output: PatchSecurityPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6089,8 +8239,8 @@ export const PoliciesCreateOrUpdate: API.OperationMethod<
   PoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(332) as any as S.Schema<PoliciesCreateOrUpdateRequest>,
-  output: __S(290) as any as S.Schema<PoliciesCreateOrUpdateResponse>,
+  input: PoliciesCreateOrUpdateRequest,
+  output: PoliciesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6104,8 +8254,8 @@ export const ProfilesCdnCanMigrateToAfd: API.OperationMethod<
   ProfilesCdnCanMigrateToAfdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333) as any as S.Schema<ProfilesCdnCanMigrateToAfdRequest>,
-  output: __S(329) as any as S.Schema<CanMigrateResult>,
+  input: ProfilesCdnCanMigrateToAfdRequest,
+  output: CanMigrateResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6119,8 +8269,8 @@ export const ProfilesCdnMigrateToAfd: API.OperationMethod<
   ProfilesCdnMigrateToAfdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336) as any as S.Schema<ProfilesCdnMigrateToAfdRequest>,
-  output: __S(324) as any as S.Schema<MigrateResult>,
+  input: ProfilesCdnMigrateToAfdRequest,
+  output: MigrateResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6134,8 +8284,8 @@ export const PurgeAFDEndpointContent: API.OperationMethod<
   PurgeAFDEndpointContentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337) as any as S.Schema<PurgeAFDEndpointContentRequest>,
-  output: __S(25) as any as S.Schema<PurgeAFDEndpointContentResponse>,
+  input: PurgeAFDEndpointContentRequest,
+  output: PurgeAFDEndpointContentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6149,8 +8299,8 @@ export const PurgeEndpointContent: API.OperationMethod<
   PurgeEndpointContentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338) as any as S.Schema<PurgeEndpointContentRequest>,
-  output: __S(1) as any as S.Schema<PurgeEndpointContentResponse>,
+  input: PurgeEndpointContentRequest,
+  output: PurgeEndpointContentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6164,8 +8314,8 @@ export const RefreshAFDCustomDomainValidationToken: API.OperationMethod<
   RefreshAFDCustomDomainValidationTokenError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339) as any as S.Schema<RefreshAFDCustomDomainValidationTokenRequest>,
-  output: __S(340) as any as S.Schema<RefreshAFDCustomDomainValidationTokenResponse>,
+  input: RefreshAFDCustomDomainValidationTokenRequest,
+  output: RefreshAFDCustomDomainValidationTokenResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6179,8 +8329,8 @@ export const StartEndpoint: API.OperationMethod<
   StartEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341) as any as S.Schema<StartEndpointRequest>,
-  output: __S(84) as any as S.Schema<StartEndpointResponse>,
+  input: StartEndpointRequest,
+  output: StartEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6194,8 +8344,8 @@ export const StopEndpoint: API.OperationMethod<
   StopEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(342) as any as S.Schema<StopEndpointRequest>,
-  output: __S(84) as any as S.Schema<StopEndpointResponse>,
+  input: StopEndpointRequest,
+  output: StopEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6209,8 +8359,8 @@ export const UpdateAFDCustomDomain: API.OperationMethod<
   UpdateAFDCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344) as any as S.Schema<UpdateAFDCustomDomainRequest>,
-  output: __S(35) as any as S.Schema<UpdateAFDCustomDomainResponse>,
+  input: UpdateAFDCustomDomainRequest,
+  output: UpdateAFDCustomDomainResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6224,8 +8374,8 @@ export const UpdateAFDEndpoint: API.OperationMethod<
   UpdateAFDEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346) as any as S.Schema<UpdateAFDEndpointRequest>,
-  output: __S(39) as any as S.Schema<UpdateAFDEndpointResponse>,
+  input: UpdateAFDEndpointRequest,
+  output: UpdateAFDEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6239,8 +8389,8 @@ export const UpdateAFDOrigin: API.OperationMethod<
   UpdateAFDOriginError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349) as any as S.Schema<UpdateAFDOriginRequest>,
-  output: __S(45) as any as S.Schema<UpdateAFDOriginResponse>,
+  input: UpdateAFDOriginRequest,
+  output: UpdateAFDOriginResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6254,8 +8404,8 @@ export const UpdateAFDOriginGroup: API.OperationMethod<
   UpdateAFDOriginGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350) as any as S.Schema<UpdateAFDOriginGroupRequest>,
-  output: __S(52) as any as S.Schema<UpdateAFDOriginGroupResponse>,
+  input: UpdateAFDOriginGroupRequest,
+  output: UpdateAFDOriginGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6269,8 +8419,8 @@ export const UpdateEndpoint: API.OperationMethod<
   UpdateEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352) as any as S.Schema<UpdateEndpointRequest>,
-  output: __S(84) as any as S.Schema<UpdateEndpointResponse>,
+  input: UpdateEndpointRequest,
+  output: UpdateEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6284,8 +8434,8 @@ export const UpdateOrigin: API.OperationMethod<
   UpdateOriginError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(354) as any as S.Schema<UpdateOriginRequest>,
-  output: __S(87) as any as S.Schema<UpdateOriginResponse>,
+  input: UpdateOriginRequest,
+  output: UpdateOriginResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6299,8 +8449,8 @@ export const UpdateOriginGroup: API.OperationMethod<
   UpdateOriginGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(356) as any as S.Schema<UpdateOriginGroupRequest>,
-  output: __S(90) as any as S.Schema<UpdateOriginGroupResponse>,
+  input: UpdateOriginGroupRequest,
+  output: UpdateOriginGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6314,8 +8464,8 @@ export const UpdatePolicy: API.OperationMethod<
   UpdatePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357) as any as S.Schema<UpdatePolicyRequest>,
-  output: __S(212) as any as S.Schema<UpdatePolicyResponse>,
+  input: UpdatePolicyRequest,
+  output: UpdatePolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6329,8 +8479,8 @@ export const UpdateProfile: API.OperationMethod<
   UpdateProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359) as any as S.Schema<UpdateProfileRequest>,
-  output: __S(95) as any as S.Schema<UpdateProfileResponse>,
+  input: UpdateProfileRequest,
+  output: UpdateProfileResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6344,8 +8494,8 @@ export const UpdateRoute: API.OperationMethod<
   UpdateRouteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361) as any as S.Schema<UpdateRouteRequest>,
-  output: __S(103) as any as S.Schema<UpdateRouteResponse>,
+  input: UpdateRouteRequest,
+  output: UpdateRouteResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6359,8 +8509,8 @@ export const UpdateRule: API.OperationMethod<
   UpdateRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(363) as any as S.Schema<UpdateRuleRequest>,
-  output: __S(107) as any as S.Schema<UpdateRuleResponse>,
+  input: UpdateRuleRequest,
+  output: UpdateRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6374,8 +8524,8 @@ export const ValidateAFDEndpointCustomDomain: API.OperationMethod<
   ValidateAFDEndpointCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(364) as any as S.Schema<ValidateAFDEndpointCustomDomainRequest>,
-  output: __S(365) as any as S.Schema<ValidateCustomDomainOutput>,
+  input: ValidateAFDEndpointCustomDomainRequest,
+  output: ValidateCustomDomainOutput,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6389,8 +8539,8 @@ export const ValidateAFDProfileSecret: API.OperationMethod<
   ValidateAFDProfileSecretError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(366) as any as S.Schema<ValidateAFDProfileSecretRequest>,
-  output: __S(367) as any as S.Schema<ValidateSecretOutput>,
+  input: ValidateAFDProfileSecretRequest,
+  output: ValidateSecretOutput,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6404,8 +8554,8 @@ export const ValidateEndpointCustomDomain: API.OperationMethod<
   ValidateEndpointCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368) as any as S.Schema<ValidateEndpointCustomDomainRequest>,
-  output: __S(365) as any as S.Schema<ValidateCustomDomainOutput>,
+  input: ValidateEndpointCustomDomainRequest,
+  output: ValidateCustomDomainOutput,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6419,8 +8569,8 @@ export const ValidateProbe: API.OperationMethod<
   ValidateProbeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(369) as any as S.Schema<ValidateProbeRequest>,
-  output: __S(370) as any as S.Schema<ValidateProbeOutput>,
+  input: ValidateProbeRequest,
+  output: ValidateProbeOutput,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6460,20 +8610,20 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           securityPolicyName: S.String,
-          changeToWafPolicy: __S(2),
+          changeToWafPolicy: ResourceReference,
         }),
       ).annotate({
         identifier: "ProfileChangeSkuWafMapping",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(ProfileChangeSkuWafMapping);
     case 5:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          wafMappingList: __S(4),
+          wafMappingList: AFDProfilesUpgradeRequestWafMappingListList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -6489,10 +8639,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -6505,36 +8655,36 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          matchVariable: S.String,
-          selectorMatchOperator: S.String,
+          matchVariable: ScrubbingRuleEntryMatchVariable,
+          selectorMatchOperator: ScrubbingRuleEntryMatchOperator,
           selector: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(ScrubbingRuleEntryState),
         }),
       ).annotate({ identifier: "ProfileScrubbingRules" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(ProfileScrubbingRules);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
-          scrubbingRules: S.optional(__S(9)),
+          state: S.optional(ProfileScrubbingState),
+          scrubbingRules: S.optional(ProfileLogScrubbingScrubbingRulesList),
         }),
       ).annotate({ identifier: "ProfileLogScrubbing" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resourceState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          extendedProperties: S.optional(__S(7)),
+          resourceState: S.optional(ProfileResourceState),
+          provisioningState: S.optional(ProfileProvisioningState),
+          extendedProperties: S.optional(ProfilePropertiesExtendedPropertiesMap),
           frontDoorId: S.optional(S.String),
           originResponseTimeoutSeconds: S.optional(S.Number),
-          logScrubbing: S.optional(__S(10)),
+          logScrubbing: S.optional(ProfileLogScrubbing),
         }),
       ).annotate({ identifier: "ProfileProperties" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
+          name: S.optional(SkuName),
         }),
       ).annotate({ identifier: "Sku" });
     case 5:
@@ -6545,14 +8695,16 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(13)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
     case 7:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(14)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(
+            AFDProfilesUpgradeResponseIdentityUserAssignedIdentitiesMap,
+          ),
         }),
       ).annotate({
         identifier: "AFDProfilesUpgradeResponseIdentity",
@@ -6567,13 +8719,13 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          tags: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(AFDProfilesUpgradeResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(11)),
-          sku: __S(12),
+          properties: S.optional(ProfileProperties),
+          sku: Sku,
           kind: S.optional(S.String),
-          identity: S.optional(__S(15)),
+          identity: S.optional(AFDProfilesUpgradeResponseIdentity),
         }),
       ).annotate({
         identifier: "AFDProfilesUpgradeResponse",
@@ -6585,8 +8737,8 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           name: S.String,
-          type: S.String,
-          autoGeneratedDomainNameLabelScope: S.optional(S.String),
+          type: ResourceType,
+          autoGeneratedDomainNameLabelScope: S.optional(AutoGeneratedDomainNameLabelScope),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6643,8 +8795,8 @@ function __c2(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String,
-          type: S.String,
-          autoGeneratedDomainNameLabelScope: S.optional(S.String),
+          type: ResourceType,
+          autoGeneratedDomainNameLabelScope: S.optional(AutoGeneratedDomainNameLabelScope),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6660,7 +8812,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: S.String,
+          type: ResourceType,
         }).pipe(
           T.Http({
             method: "POST",
@@ -6677,7 +8829,7 @@ function __c2(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           name: S.String,
-          type: S.String,
+          type: ResourceType,
         }).pipe(
           T.Http({
             method: "POST",
@@ -6715,45 +8867,49 @@ function __c3(j: number): any {
         identifier: "CommitProfilesMigrationResponse",
       });
     case 2:
-      return S.Array(S.String);
+      return S.Array(AfdCustomizedCipherSuiteForTls12);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cipherSuiteSetForTls12: S.optional(__S(26)),
-          cipherSuiteSetForTls13: S.optional(__S(26)),
+          cipherSuiteSetForTls12: S.optional(
+            AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls12List,
+          ),
+          cipherSuiteSetForTls13: S.optional(
+            AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls13List,
+          ),
         }),
       ).annotate({
         identifier: "AFDDomainHttpsCustomizedCipherSuiteSet",
       });
     case 4:
-      return S.Array(S.String);
+      return S.Array(AfdServerTlsGroup);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          certificateType: S.String,
-          cipherSuiteSetType: S.optional(S.String),
-          minimumTlsVersion: S.optional(S.String),
-          customizedCipherSuiteSet: S.optional(__S(27)),
-          serverTlsGroupPolicy: S.optional(S.String),
-          serverTlsGroups: S.optional(__S(28)),
-          secret: S.optional(__S(2)),
+          certificateType: AfdCertificateType,
+          cipherSuiteSetType: S.optional(AfdCipherSuiteSetType),
+          minimumTlsVersion: S.optional(AfdMinimumTlsVersion),
+          customizedCipherSuiteSet: S.optional(AFDDomainHttpsCustomizedCipherSuiteSet),
+          serverTlsGroupPolicy: S.optional(AfdServerTlsGroupPolicy),
+          serverTlsGroups: S.optional(AFDDomainHttpsParametersServerTlsGroupsList),
+          secret: S.optional(ResourceReference),
         }),
       ).annotate({ identifier: "AFDDomainHttpsParameters" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          scenario: S.String,
+          scenario: MtlsScenarioType,
         }),
       ).annotate({ identifier: "AFDDomainMtlsParameters" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          tlsSettings: S.optional(__S(29)),
-          mtlsSettings: S.optional(__S(30)),
-          azureDnsZone: S.optional(__S(2)),
-          preValidatedCustomDomainResourceId: S.optional(__S(2)),
+          tlsSettings: S.optional(AFDDomainHttpsParameters),
+          mtlsSettings: S.optional(AFDDomainMtlsParameters),
+          azureDnsZone: S.optional(ResourceReference),
+          preValidatedCustomDomainResourceId: S.optional(ResourceReference),
           hostName: S.String,
-          extendedProperties: S.optional(__S(7)),
+          extendedProperties: S.optional(AFDDomainPropertiesInputExtendedPropertiesMap),
         }),
       ).annotate({ identifier: "AFDDomainPropertiesInput" });
   }
@@ -6767,7 +8923,7 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           customDomainName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(31)),
+          properties: S.optional(AFDDomainPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6792,16 +8948,16 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileName: S.optional(S.String),
-          tlsSettings: S.optional(__S(29)),
-          mtlsSettings: S.optional(__S(30)),
-          azureDnsZone: S.optional(__S(2)),
-          preValidatedCustomDomainResourceId: S.optional(__S(2)),
-          provisioningState: S.optional(S.String),
-          deploymentStatus: S.optional(S.String),
-          domainValidationState: S.optional(S.String),
+          tlsSettings: S.optional(AFDDomainHttpsParameters),
+          mtlsSettings: S.optional(AFDDomainMtlsParameters),
+          azureDnsZone: S.optional(ResourceReference),
+          preValidatedCustomDomainResourceId: S.optional(ResourceReference),
+          provisioningState: S.optional(AfdProvisioningState),
+          deploymentStatus: S.optional(DeploymentStatus),
+          domainValidationState: S.optional(DomainValidationState),
           hostName: S.String,
-          extendedProperties: S.optional(__S(7)),
-          validationProperties: S.optional(__S(33)),
+          extendedProperties: S.optional(AFDDomainPropertiesExtendedPropertiesMap),
+          validationProperties: S.optional(DomainValidationProperties),
         }),
       ).annotate({ identifier: "AFDDomainProperties" });
     case 3:
@@ -6810,8 +8966,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(34)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AFDDomainProperties),
         }),
       ).annotate({
         identifier: "CreateAFDCustomDomainResponse",
@@ -6819,9 +8975,9 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          enabledState: S.optional(S.String),
-          enforceMtls: S.optional(S.String),
-          autoGeneratedDomainNameLabelScope: S.optional(S.String),
+          enabledState: S.optional(EnabledState),
+          enforceMtls: S.optional(EnforceMtlsEnabledState),
+          autoGeneratedDomainNameLabelScope: S.optional(AutoGeneratedDomainNameLabelScope),
         }),
       ).annotate({
         identifier: "AFDEndpointPropertiesInput",
@@ -6833,9 +8989,9 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(7)),
+          tags: S.optional(CreateAFDEndpointRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(36)),
+          properties: S.optional(AFDEndpointPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6849,12 +9005,12 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileName: S.optional(S.String),
-          enabledState: S.optional(S.String),
-          enforceMtls: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          deploymentStatus: S.optional(S.String),
+          enabledState: S.optional(EnabledState),
+          enforceMtls: S.optional(EnforceMtlsEnabledState),
+          provisioningState: S.optional(AfdProvisioningState),
+          deploymentStatus: S.optional(DeploymentStatus),
           hostName: S.optional(S.String),
-          autoGeneratedDomainNameLabelScope: S.optional(S.String),
+          autoGeneratedDomainNameLabelScope: S.optional(AutoGeneratedDomainNameLabelScope),
         }),
       ).annotate({ identifier: "AFDEndpointProperties" });
     case 7:
@@ -6863,10 +9019,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          tags: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateAFDEndpointResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(38)),
+          properties: S.optional(AFDEndpointProperties),
         }),
       ).annotate({
         identifier: "CreateAFDEndpointResponse",
@@ -6878,11 +9034,11 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateLink: S.optional(__S(2)),
+          privateLink: S.optional(ResourceReference),
           privateLinkLocation: S.optional(S.String),
           groupId: S.optional(S.String),
           requestMessage: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(SharedPrivateLinkResourceStatus),
         }),
       ).annotate({
         identifier: "SharedPrivateLinkResourceProperties",
@@ -6892,18 +9048,20 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          azureOrigin: S.optional(__S(2)),
+          azureOrigin: S.optional(ResourceReference),
           hostName: S.optional(S.String),
           httpPort: S.optional(S.Number),
           httpsPort: S.optional(S.Number),
           originHostHeader: S.optional(S.String),
           priority: S.optional(S.Number),
           weight: S.optional(S.Number),
-          sharedPrivateLinkResource: S.optional(__S(40)),
-          enabledState: S.optional(S.String),
+          sharedPrivateLinkResource: S.optional(SharedPrivateLinkResourceProperties),
+          enabledState: S.optional(EnabledState),
           enforceCertificateNameCheck: S.optional(S.Boolean),
-          certificateNameCheckValidationMode: S.optional(S.String),
-          customCertificateSubjects: S.optional(__S(41)),
+          certificateNameCheckValidationMode: S.optional(CertificateNameCheckValidationMode),
+          customCertificateSubjects: S.optional(
+            AFDOriginPropertiesInputCustomCertificateSubjectsList,
+          ),
         }),
       ).annotate({ identifier: "AFDOriginPropertiesInput" });
     case 3:
@@ -6914,7 +9072,7 @@ function __c5(j: number): any {
           profileName: S.String.pipe(T.Label()),
           originGroupName: S.String.pipe(T.Label()),
           originName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(42)),
+          properties: S.optional(AFDOriginPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6928,20 +9086,20 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           originGroupName: S.optional(S.String),
-          azureOrigin: S.optional(__S(2)),
+          azureOrigin: S.optional(ResourceReference),
           hostName: S.optional(S.String),
           httpPort: S.optional(S.Number),
           httpsPort: S.optional(S.Number),
           originHostHeader: S.optional(S.String),
           priority: S.optional(S.Number),
           weight: S.optional(S.Number),
-          sharedPrivateLinkResource: S.optional(__S(40)),
-          enabledState: S.optional(S.String),
+          sharedPrivateLinkResource: S.optional(SharedPrivateLinkResourceProperties),
+          enabledState: S.optional(EnabledState),
           enforceCertificateNameCheck: S.optional(S.Boolean),
-          certificateNameCheckValidationMode: S.optional(S.String),
-          customCertificateSubjects: S.optional(__S(41)),
-          provisioningState: S.optional(S.String),
-          deploymentStatus: S.optional(S.String),
+          certificateNameCheckValidationMode: S.optional(CertificateNameCheckValidationMode),
+          customCertificateSubjects: S.optional(AFDOriginPropertiesCustomCertificateSubjectsList),
+          provisioningState: S.optional(AfdProvisioningState),
+          deploymentStatus: S.optional(DeploymentStatus),
         }),
       ).annotate({ identifier: "AFDOriginProperties" });
     case 5:
@@ -6950,8 +9108,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(44)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AFDOriginProperties),
         }),
       ).annotate({ identifier: "CreateAFDOriginResponse" });
     case 6:
@@ -6968,8 +9126,8 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           probePath: S.optional(S.String),
-          probeRequestType: S.optional(S.String),
-          probeProtocol: S.optional(S.String),
+          probeRequestType: S.optional(HealthProbeRequestType),
+          probeProtocol: S.optional(ProbeProtocol),
           probeIntervalInSeconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "HealthProbeParameters" });
@@ -6980,10 +9138,10 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentity: S.optional(__S(2)),
+          type: S.optional(OriginAuthenticationType),
+          userAssignedIdentity: S.optional(ResourceReference),
           scope: S.optional(S.String),
-          tokenDestinationHeader: S.optional(S.String),
+          tokenDestinationHeader: S.optional(OriginAuthenticationTokenDestinationHeader),
         }),
       ).annotate({
         identifier: "OriginAuthenticationProperties",
@@ -6991,11 +9149,11 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          loadBalancingSettings: S.optional(__S(46)),
-          healthProbeSettings: S.optional(__S(47)),
+          loadBalancingSettings: S.optional(LoadBalancingSettingsParameters),
+          healthProbeSettings: S.optional(HealthProbeParameters),
           trafficRestorationTimeToHealedOrNewEndpointsInMinutes: S.optional(S.Number),
-          sessionAffinityState: S.optional(S.String),
-          authentication: S.optional(__S(48)),
+          sessionAffinityState: S.optional(EnabledState),
+          authentication: S.optional(OriginAuthenticationProperties),
         }),
       ).annotate({
         identifier: "AFDOriginGroupPropertiesInput",
@@ -7007,7 +9165,7 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           originGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(49)),
+          properties: S.optional(AFDOriginGroupPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7023,13 +9181,13 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileName: S.optional(S.String),
-          loadBalancingSettings: S.optional(__S(46)),
-          healthProbeSettings: S.optional(__S(47)),
+          loadBalancingSettings: S.optional(LoadBalancingSettingsParameters),
+          healthProbeSettings: S.optional(HealthProbeParameters),
           trafficRestorationTimeToHealedOrNewEndpointsInMinutes: S.optional(S.Number),
-          sessionAffinityState: S.optional(S.String),
-          authentication: S.optional(__S(48)),
-          provisioningState: S.optional(S.String),
-          deploymentStatus: S.optional(S.String),
+          sessionAffinityState: S.optional(EnabledState),
+          authentication: S.optional(OriginAuthenticationProperties),
+          provisioningState: S.optional(AfdProvisioningState),
+          deploymentStatus: S.optional(DeploymentStatus),
         }),
       ).annotate({ identifier: "AFDOriginGroupProperties" });
     case 4:
@@ -7038,8 +9196,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(51)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AFDOriginGroupProperties),
         }),
       ).annotate({
         identifier: "CreateAFDOriginGroupResponse",
@@ -7060,7 +9218,7 @@ function __c6(j: number): any {
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           customDomainName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(53)),
+          properties: S.optional(CustomDomainPropertiesParameters),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7075,9 +9233,9 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          certificateSource: S.String,
-          protocolType: S.String,
-          minimumTlsVersion: S.optional(S.String),
+          certificateSource: CertificateSource,
+          protocolType: ProtocolType,
+          minimumTlsVersion: S.optional(MinimumTlsVersion),
         }),
       ).annotate({
         identifier: "CustomDomainHttpsParameters",
@@ -7090,12 +9248,12 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           hostName: S.String,
-          resourceState: S.optional(S.String),
-          customHttpsProvisioningState: S.optional(S.String),
-          customHttpsProvisioningSubstate: S.optional(S.String),
-          customHttpsParameters: S.optional(__S(55)),
+          resourceState: S.optional(CustomDomainResourceState),
+          customHttpsProvisioningState: S.optional(CustomHttpsProvisioningState),
+          customHttpsProvisioningSubstate: S.optional(CustomHttpsProvisioningSubstate),
+          customHttpsParameters: S.optional(CustomDomainHttpsParameters),
           validationData: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(CustomHttpsProvisioningState),
         }),
       ).annotate({ identifier: "CustomDomainProperties" });
     case 1:
@@ -7104,8 +9262,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(56)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CustomDomainProperties),
         }),
       ).annotate({
         identifier: "CreateCustomDomainResponse",
@@ -7114,16 +9272,16 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           relativePath: S.String,
-          action: S.String,
-          countryCodes: __S(41),
+          action: GeoFilterActions,
+          countryCodes: GeoFilterCountryCodesList,
         }),
       ).annotate({ identifier: "GeoFilter" });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(GeoFilter);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          typeName: S.String,
+          typeName: KeyVaultSigningKeyParametersType,
           subscriptionId: S.String,
           resourceGroupName: S.String,
           vaultName: S.String,
@@ -7137,15 +9295,15 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           keyId: S.String,
-          keySourceParameters: __S(60),
+          keySourceParameters: KeyVaultSigningKeyParameters,
         }),
       ).annotate({ identifier: "UrlSigningKey" });
     case 6:
-      return S.Array(__S(61));
+      return S.Array(UrlSigningKey);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
+          name: MatchVariable,
           parameters: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "DeliveryRuleCondition" });
@@ -7154,23 +9312,23 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(DeliveryRuleCondition);
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           order: S.Number,
-          conditions: S.optional(__S(64)),
-          actions: __S(64),
+          conditions: S.optional(DeliveryRuleConditionsList),
+          actions: DeliveryRuleActionsList,
         }),
       ).annotate({ identifier: "DeliveryRule" });
     case 2:
-      return S.Array(__S(65));
+      return S.Array(DeliveryRule);
     case 3:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          rules: __S(66),
+          rules: EndpointPropertiesUpdateParametersDeliveryPolicyRulesList,
         }),
       ).annotate({
         identifier: "EndpointPropertiesUpdateParametersDeliveryPolicy",
@@ -7189,7 +9347,7 @@ function __c8(j: number): any {
           privateLinkResourceId: S.optional(S.String),
           privateLinkLocation: S.optional(S.String),
           privateLinkApprovalMessage: S.optional(S.String),
-          privateEndpointStatus: S.optional(S.String),
+          privateEndpointStatus: S.optional(PrivateEndpointStatus),
         }),
       ).annotate({
         identifier: "DeepCreatedOriginProperties",
@@ -7198,13 +9356,13 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          properties: S.optional(__S(68)),
+          properties: S.optional(DeepCreatedOriginProperties),
         }),
       ).annotate({ identifier: "DeepCreatedOrigin" });
     case 6:
-      return S.Array(__S(69));
+      return S.Array(DeepCreatedOrigin);
     case 7:
-      return S.Array(__S(2));
+      return S.Array(ResourceReference);
   }
 }
 function __c9(j: number): any {
@@ -7217,13 +9375,15 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "HttpErrorRangeParameters" });
     case 1:
-      return S.Array(__S(72));
+      return S.Array(HttpErrorRangeParameters);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          responseBasedDetectedErrorTypes: S.optional(S.String),
+          responseBasedDetectedErrorTypes: S.optional(ResponseBasedDetectedErrorTypes),
           responseBasedFailoverThresholdPercentage: S.optional(S.Number),
-          httpErrorRanges: S.optional(__S(73)),
+          httpErrorRanges: S.optional(
+            ResponseBasedOriginErrorDetectionParametersHttpErrorRangesList,
+          ),
         }),
       ).annotate({
         identifier: "ResponseBasedOriginErrorDetectionParameters",
@@ -7231,10 +9391,12 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          healthProbeSettings: S.optional(__S(47)),
-          origins: __S(71),
+          healthProbeSettings: S.optional(HealthProbeParameters),
+          origins: DeepCreatedOriginGroupPropertiesOriginsList,
           trafficRestorationTimeToHealedOrNewEndpointsInMinutes: S.optional(S.Number),
-          responseBasedOriginErrorDetectionSettings: S.optional(__S(74)),
+          responseBasedOriginErrorDetectionSettings: S.optional(
+            ResponseBasedOriginErrorDetectionParameters,
+          ),
         }),
       ).annotate({
         identifier: "DeepCreatedOriginGroupProperties",
@@ -7243,30 +9405,30 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          properties: S.optional(__S(75)),
+          properties: S.optional(DeepCreatedOriginGroupProperties),
         }),
       ).annotate({ identifier: "DeepCreatedOriginGroup" });
     case 5:
-      return S.Array(__S(76));
+      return S.Array(DeepCreatedOriginGroup);
     case 6:
       return S.suspend(() =>
         S.Struct({
           originPath: S.optional(S.String),
-          contentTypesToCompress: S.optional(__S(41)),
+          contentTypesToCompress: S.optional(EndpointPropertiesInputContentTypesToCompressList),
           originHostHeader: S.optional(S.String),
           isCompressionEnabled: S.optional(S.Boolean),
           isHttpAllowed: S.optional(S.Boolean),
           isHttpsAllowed: S.optional(S.Boolean),
-          queryStringCachingBehavior: S.optional(S.String),
-          optimizationType: S.optional(S.String),
+          queryStringCachingBehavior: S.optional(EndpointPropertiesInputQueryStringCachingBehavior),
+          optimizationType: S.optional(OptimizationType),
           probePath: S.optional(S.String),
-          geoFilters: S.optional(__S(59)),
-          defaultOriginGroup: S.optional(__S(2)),
-          urlSigningKeys: S.optional(__S(62)),
-          deliveryPolicy: S.optional(__S(67)),
-          webApplicationFirewallPolicyLink: S.optional(__S(2)),
-          origins: __S(70),
-          originGroups: S.optional(__S(77)),
+          geoFilters: S.optional(EndpointPropertiesInputGeoFiltersList),
+          defaultOriginGroup: S.optional(ResourceReference),
+          urlSigningKeys: S.optional(EndpointPropertiesInputUrlSigningKeysList),
+          deliveryPolicy: S.optional(EndpointPropertiesUpdateParametersDeliveryPolicy),
+          webApplicationFirewallPolicyLink: S.optional(ResourceReference),
+          origins: EndpointPropertiesInputOriginsList,
+          originGroups: S.optional(EndpointPropertiesInputOriginGroupsList),
         }),
       ).annotate({ identifier: "EndpointPropertiesInput" });
     case 7:
@@ -7276,9 +9438,9 @@ function __c9(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(7)),
+          tags: S.optional(CreateEndpointRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(78)),
+          properties: S.optional(EndpointPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7305,34 +9467,34 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          properties: S.optional(__S(80)),
+          properties: S.optional(DeepCreatedCustomDomainProperties),
         }),
       ).annotate({ identifier: "DeepCreatedCustomDomain" });
     case 2:
-      return S.Array(__S(81));
+      return S.Array(DeepCreatedCustomDomain);
     case 3:
       return S.suspend(() =>
         S.Struct({
           originPath: S.optional(S.String),
-          contentTypesToCompress: S.optional(__S(41)),
+          contentTypesToCompress: S.optional(EndpointPropertiesContentTypesToCompressList),
           originHostHeader: S.optional(S.String),
           isCompressionEnabled: S.optional(S.Boolean),
           isHttpAllowed: S.optional(S.Boolean),
           isHttpsAllowed: S.optional(S.Boolean),
-          queryStringCachingBehavior: S.optional(S.String),
-          optimizationType: S.optional(S.String),
+          queryStringCachingBehavior: S.optional(EndpointPropertiesQueryStringCachingBehavior),
+          optimizationType: S.optional(OptimizationType),
           probePath: S.optional(S.String),
-          geoFilters: S.optional(__S(59)),
-          defaultOriginGroup: S.optional(__S(2)),
-          urlSigningKeys: S.optional(__S(62)),
-          deliveryPolicy: S.optional(__S(67)),
-          webApplicationFirewallPolicyLink: S.optional(__S(2)),
+          geoFilters: S.optional(EndpointPropertiesGeoFiltersList),
+          defaultOriginGroup: S.optional(ResourceReference),
+          urlSigningKeys: S.optional(EndpointPropertiesUrlSigningKeysList),
+          deliveryPolicy: S.optional(EndpointPropertiesUpdateParametersDeliveryPolicy),
+          webApplicationFirewallPolicyLink: S.optional(ResourceReference),
           hostName: S.optional(S.String),
-          origins: __S(70),
-          originGroups: S.optional(__S(77)),
-          customDomains: S.optional(__S(82)),
-          resourceState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          origins: EndpointPropertiesOriginsList,
+          originGroups: S.optional(EndpointPropertiesOriginGroupsList),
+          customDomains: S.optional(EndpointPropertiesCustomDomainsList),
+          resourceState: S.optional(EndpointResourceState),
+          provisioningState: S.optional(EndpointProvisioningState),
         }),
       ).annotate({ identifier: "EndpointProperties" });
     case 4:
@@ -7341,10 +9503,10 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          tags: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateEndpointResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(83)),
+          properties: S.optional(EndpointProperties),
         }),
       ).annotate({ identifier: "CreateEndpointResponse" });
     case 5:
@@ -7361,9 +9523,9 @@ function __c10(j: number): any {
           privateLinkResourceId: S.optional(S.String),
           privateLinkLocation: S.optional(S.String),
           privateLinkApprovalMessage: S.optional(S.String),
-          resourceState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          privateEndpointStatus: S.optional(S.String),
+          resourceState: S.optional(OriginResourceState),
+          provisioningState: S.optional(OriginProvisioningState),
+          privateEndpointStatus: S.optional(PrivateEndpointStatus),
         }),
       ).annotate({ identifier: "OriginProperties" });
     case 6:
@@ -7374,7 +9536,7 @@ function __c10(j: number): any {
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           originName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(85)),
+          properties: S.optional(OriginProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7390,8 +9552,8 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(85)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(OriginProperties),
         }),
       ).annotate({ identifier: "CreateOriginResponse" });
   }
@@ -7401,12 +9563,14 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          healthProbeSettings: S.optional(__S(47)),
-          origins: S.optional(__S(71)),
+          healthProbeSettings: S.optional(HealthProbeParameters),
+          origins: S.optional(OriginGroupPropertiesOriginsList),
           trafficRestorationTimeToHealedOrNewEndpointsInMinutes: S.optional(S.Number),
-          responseBasedOriginErrorDetectionSettings: S.optional(__S(74)),
-          resourceState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          responseBasedOriginErrorDetectionSettings: S.optional(
+            ResponseBasedOriginErrorDetectionParameters,
+          ),
+          resourceState: S.optional(OriginGroupResourceState),
+          provisioningState: S.optional(OriginGroupProvisioningState),
         }),
       ).annotate({ identifier: "OriginGroupProperties" });
     case 1:
@@ -7417,7 +9581,7 @@ function __c11(j: number): any {
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           originGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(88)),
+          properties: S.optional(OriginGroupProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7433,8 +9597,8 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(88)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(OriginGroupProperties),
         }),
       ).annotate({
         identifier: "CreateOriginGroupResponse",
@@ -7443,16 +9607,16 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           originResponseTimeoutSeconds: S.optional(S.Number),
-          logScrubbing: S.optional(__S(10)),
+          logScrubbing: S.optional(ProfileLogScrubbing),
         }),
       ).annotate({ identifier: "ProfilePropertiesInput" });
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(92)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(CreateProfileRequestIdentityUserAssignedIdentitiesMap),
         }),
       ).annotate({
         identifier: "CreateProfileRequestIdentity",
@@ -7463,11 +9627,11 @@ function __c11(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(7)),
+          tags: S.optional(CreateProfileRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(91)),
-          sku: __S(12),
-          identity: S.optional(__S(93)),
+          properties: S.optional(ProfilePropertiesInput),
+          sku: Sku,
+          identity: S.optional(CreateProfileRequestIdentity),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7483,13 +9647,13 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          tags: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateProfileResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(11)),
-          sku: __S(12),
+          properties: S.optional(ProfileProperties),
+          sku: Sku,
           kind: S.optional(S.String),
-          identity: S.optional(__S(15)),
+          identity: S.optional(CreateProfileResponseIdentity),
         }),
       ).annotate({ identifier: "CreateProfileResponse" });
   }
@@ -7499,16 +9663,16 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          contentTypesToCompress: S.optional(__S(41)),
+          contentTypesToCompress: S.optional(CompressionSettingsContentTypesToCompressList),
           isCompressionEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CompressionSettings" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          queryStringCachingBehavior: S.optional(S.String),
+          queryStringCachingBehavior: S.optional(AfdQueryStringCachingBehavior),
           queryParameters: S.optional(S.String),
-          compressionSettings: S.optional(__S(96)),
+          compressionSettings: S.optional(CompressionSettings),
         }),
       ).annotate({
         identifier: "AfdRouteCacheConfiguration",
@@ -7516,17 +9680,17 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          customDomains: S.optional(__S(71)),
-          originGroup: S.optional(__S(2)),
+          customDomains: S.optional(RoutePropertiesInputCustomDomainsList),
+          originGroup: S.optional(ResourceReference),
           originPath: S.optional(S.String),
-          ruleSets: S.optional(__S(71)),
-          supportedProtocols: S.optional(__S(28)),
-          patternsToMatch: S.optional(__S(41)),
-          cacheConfiguration: S.optional(__S(97)),
-          forwardingProtocol: S.optional(S.String),
-          linkToDefaultDomain: S.optional(S.String),
-          httpsRedirect: S.optional(S.String),
-          enabledState: S.optional(S.String),
+          ruleSets: S.optional(RoutePropertiesInputRuleSetsList),
+          supportedProtocols: S.optional(RoutePropertiesInputSupportedProtocolsList),
+          patternsToMatch: S.optional(RoutePropertiesInputPatternsToMatchList),
+          cacheConfiguration: S.optional(AfdRouteCacheConfiguration),
+          forwardingProtocol: S.optional(RoutePropertiesInputForwardingProtocol),
+          linkToDefaultDomain: S.optional(RoutePropertiesInputLinkToDefaultDomain),
+          httpsRedirect: S.optional(RoutePropertiesInputHttpsRedirect),
+          enabledState: S.optional(EnabledState),
         }),
       ).annotate({ identifier: "RoutePropertiesInput" });
     case 3:
@@ -7537,7 +9701,7 @@ function __c12(j: number): any {
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           routeName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(98)),
+          properties: S.optional(RoutePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7557,24 +9721,24 @@ function __c12(j: number): any {
         identifier: "ActivatedResourceReference",
       });
     case 5:
-      return S.Array(__S(100));
+      return S.Array(ActivatedResourceReference);
     case 6:
       return S.suspend(() =>
         S.Struct({
           endpointName: S.optional(S.String),
-          customDomains: S.optional(__S(101)),
-          originGroup: S.optional(__S(2)),
+          customDomains: S.optional(RoutePropertiesCustomDomainsList),
+          originGroup: S.optional(ResourceReference),
           originPath: S.optional(S.String),
-          ruleSets: S.optional(__S(71)),
-          supportedProtocols: S.optional(__S(28)),
-          patternsToMatch: S.optional(__S(41)),
-          cacheConfiguration: S.optional(__S(97)),
-          forwardingProtocol: S.optional(S.String),
-          linkToDefaultDomain: S.optional(S.String),
-          httpsRedirect: S.optional(S.String),
-          enabledState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          deploymentStatus: S.optional(S.String),
+          ruleSets: S.optional(RoutePropertiesRuleSetsList),
+          supportedProtocols: S.optional(RoutePropertiesSupportedProtocolsList),
+          patternsToMatch: S.optional(RoutePropertiesPatternsToMatchList),
+          cacheConfiguration: S.optional(AfdRouteCacheConfiguration),
+          forwardingProtocol: S.optional(RoutePropertiesForwardingProtocol),
+          linkToDefaultDomain: S.optional(RoutePropertiesLinkToDefaultDomain),
+          httpsRedirect: S.optional(RoutePropertiesHttpsRedirect),
+          enabledState: S.optional(EnabledState),
+          provisioningState: S.optional(AfdProvisioningState),
+          deploymentStatus: S.optional(DeploymentStatus),
         }),
       ).annotate({ identifier: "RouteProperties" });
     case 7:
@@ -7583,8 +9747,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(102)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(RouteProperties),
         }),
       ).annotate({ identifier: "CreateRouteResponse" });
   }
@@ -7595,9 +9759,9 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           order: S.optional(S.Number),
-          conditions: S.optional(__S(64)),
-          actions: S.optional(__S(64)),
-          matchProcessingBehavior: S.optional(S.String),
+          conditions: S.optional(RulePropertiesInputConditionsList),
+          actions: S.optional(RulePropertiesInputActionsList),
+          matchProcessingBehavior: S.optional(RulePropertiesInputMatchProcessingBehavior),
         }),
       ).annotate({ identifier: "RulePropertiesInput" });
     case 1:
@@ -7608,7 +9772,7 @@ function __c13(j: number): any {
           profileName: S.String.pipe(T.Label()),
           ruleSetName: S.String.pipe(T.Label()),
           ruleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(104)),
+          properties: S.optional(RulePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7623,11 +9787,11 @@ function __c13(j: number): any {
         S.Struct({
           ruleSetName: S.optional(S.String),
           order: S.optional(S.Number),
-          conditions: S.optional(__S(64)),
-          actions: S.optional(__S(64)),
-          matchProcessingBehavior: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          deploymentStatus: S.optional(S.String),
+          conditions: S.optional(RulePropertiesConditionsList),
+          actions: S.optional(RulePropertiesActionsList),
+          matchProcessingBehavior: S.optional(RulePropertiesMatchProcessingBehavior),
+          provisioningState: S.optional(AfdProvisioningState),
+          deploymentStatus: S.optional(DeploymentStatus),
         }),
       ).annotate({ identifier: "RuleProperties" });
     case 3:
@@ -7636,8 +9800,8 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(106)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(RuleProperties),
         }),
       ).annotate({ identifier: "CreateRuleResponse" });
     case 4:
@@ -7645,18 +9809,18 @@ function __c13(j: number): any {
         S.Struct({
           ruleName: S.String,
           order: S.optional(S.Number),
-          conditions: S.optional(__S(64)),
-          actions: S.optional(__S(64)),
-          matchProcessingBehavior: S.optional(S.String),
+          conditions: S.optional(BatchRulePropertiesInputConditionsList),
+          actions: S.optional(BatchRulePropertiesInputActionsList),
+          matchProcessingBehavior: S.optional(BatchRulePropertiesInputMatchProcessingBehavior),
         }),
       ).annotate({ identifier: "BatchRulePropertiesInput" });
     case 5:
-      return S.Array(__S(108));
+      return S.Array(BatchRulePropertiesInput);
     case 6:
       return S.suspend(() =>
         S.Struct({
           batchMode: S.optional(S.Boolean),
-          rules: S.optional(__S(109)),
+          rules: S.optional(RuleSetPropertiesInputRulesList),
         }),
       ).annotate({ identifier: "RuleSetPropertiesInput" });
     case 7:
@@ -7666,7 +9830,7 @@ function __c13(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           ruleSetName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(110)),
+          properties: S.optional(RuleSetPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7686,21 +9850,21 @@ function __c14(j: number): any {
           ruleName: S.String,
           ruleSetName: S.optional(S.String),
           order: S.optional(S.Number),
-          conditions: S.optional(__S(64)),
-          actions: S.optional(__S(64)),
-          matchProcessingBehavior: S.optional(S.String),
+          conditions: S.optional(BatchRulePropertiesConditionsList),
+          actions: S.optional(BatchRulePropertiesActionsList),
+          matchProcessingBehavior: S.optional(BatchRulePropertiesMatchProcessingBehavior),
         }),
       ).annotate({ identifier: "BatchRuleProperties" });
     case 1:
-      return S.Array(__S(112));
+      return S.Array(BatchRuleProperties);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          deploymentStatus: S.optional(S.String),
+          provisioningState: S.optional(AfdProvisioningState),
+          deploymentStatus: S.optional(DeploymentStatus),
           profileName: S.optional(S.String),
           batchMode: S.optional(S.Boolean),
-          rules: S.optional(__S(113)),
+          rules: S.optional(RuleSetPropertiesRulesList),
         }),
       ).annotate({ identifier: "RuleSetProperties" });
     case 3:
@@ -7709,15 +9873,15 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(114)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(RuleSetProperties),
         }),
       ).annotate({ identifier: "CreateRuleSetResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          secretSource: S.optional(__S(2)),
+          type: SecretType,
+          secretSource: S.optional(ResourceReference),
           secretVersion: S.optional(S.String),
           useLatestVersion: S.optional(S.Boolean),
           keyId: S.optional(S.String),
@@ -7731,7 +9895,7 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(116)),
+          parameters: S.optional(SecretParameters),
         }),
       ).annotate({ identifier: "SecretPropertiesInput" });
     case 6:
@@ -7741,7 +9905,7 @@ function __c14(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           secretName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(117)),
+          properties: S.optional(SecretPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7754,10 +9918,10 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          deploymentStatus: S.optional(S.String),
+          provisioningState: S.optional(AfdProvisioningState),
+          deploymentStatus: S.optional(DeploymentStatus),
           profileName: S.optional(S.String),
-          parameters: S.optional(__S(116)),
+          parameters: S.optional(SecretParameters),
         }),
       ).annotate({ identifier: "SecretProperties" });
   }
@@ -7770,15 +9934,15 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(119)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SecretProperties),
         }),
       ).annotate({ identifier: "CreateSecretResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          wafPolicy: S.optional(__S(2)),
+          type: SecurityPolicyType,
+          wafPolicy: S.optional(ResourceReference),
           associations: S.optional(S.Unknown),
         }),
       ).annotate({
@@ -7787,7 +9951,7 @@ function __c15(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(121)),
+          parameters: S.optional(SecurityPolicyPropertiesParameters),
         }),
       ).annotate({
         identifier: "SecurityPolicyPropertiesInput",
@@ -7799,7 +9963,7 @@ function __c15(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           securityPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(122)),
+          properties: S.optional(SecurityPolicyPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7814,10 +9978,10 @@ function __c15(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          deploymentStatus: S.optional(S.String),
+          provisioningState: S.optional(AfdProvisioningState),
+          deploymentStatus: S.optional(DeploymentStatus),
           profileName: S.optional(S.String),
-          parameters: S.optional(__S(121)),
+          parameters: S.optional(SecurityPolicyPropertiesParameters),
         }),
       ).annotate({ identifier: "SecurityPolicyProperties" });
     case 5:
@@ -7826,8 +9990,8 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(124)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SecurityPolicyProperties),
         }),
       ).annotate({
         identifier: "CreateSecurityPolicyResponse",
@@ -8119,9 +10283,9 @@ function __c17(j: number): any {
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           customDomainName: S.String.pipe(T.Label()),
-          certificateSource: S.String,
-          protocolType: S.String,
-          minimumTlsVersion: S.optional(S.String),
+          certificateSource: CertificateSource,
+          protocolType: ProtocolType,
+          minimumTlsVersion: S.optional(MinimumTlsVersion),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8140,7 +10304,7 @@ function __c17(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
-          contentPaths: __S(41),
+          contentPaths: EndpointsLoadContentRequestContentPathsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -8219,10 +10383,10 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          tags: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetAFDEndpointResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(38)),
+          properties: S.optional(AFDEndpointProperties),
         }),
       ).annotate({ identifier: "GetAFDEndpointResponse" });
     case 5:
@@ -8285,8 +10449,8 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(56)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CustomDomainProperties),
         }),
       ).annotate({ identifier: "GetCustomDomainResponse" });
     case 1:
@@ -8331,7 +10495,7 @@ function __c19(j: number): any {
         identifier: "ContinentsResponseContinentsItem",
       });
     case 4:
-      return S.Array(__S(155));
+      return S.Array(ContinentsResponseContinentsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -8342,12 +10506,12 @@ function __c19(j: number): any {
         identifier: "ContinentsResponseCountryOrRegionsItem",
       });
     case 6:
-      return S.Array(__S(157));
+      return S.Array(ContinentsResponseCountryOrRegionsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          continents: S.optional(__S(156)),
-          countryOrRegions: S.optional(__S(158)),
+          continents: S.optional(ContinentsResponseContinentsList),
+          countryOrRegions: S.optional(ContinentsResponseCountryOrRegionsList),
         }),
       ).annotate({ identifier: "ContinentsResponse" });
   }
@@ -8360,15 +10524,19 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          metrics: __S(28).pipe(T.Query()),
+          metrics: GetLogAnalyticsLogAnalyticsMetricsRequestMetricsList.pipe(T.Query()),
           dateTimeBegin: S.String.pipe(T.Query()),
           dateTimeEnd: S.String.pipe(T.Query()),
-          granularity: S.String.pipe(T.Query()),
-          groupBy: S.optional(__S(28).pipe(T.Query())),
-          continents: S.optional(__S(41).pipe(T.Query())),
-          countryOrRegions: S.optional(__S(41).pipe(T.Query())),
-          customDomains: __S(41).pipe(T.Query()),
-          protocols: __S(41).pipe(T.Query()),
+          granularity: GetLogAnalyticsLogAnalyticsMetricsRequestGranularity.pipe(T.Query()),
+          groupBy: S.optional(GetLogAnalyticsLogAnalyticsMetricsRequestGroupByList.pipe(T.Query())),
+          continents: S.optional(
+            GetLogAnalyticsLogAnalyticsMetricsRequestContinentsList.pipe(T.Query()),
+          ),
+          countryOrRegions: S.optional(
+            GetLogAnalyticsLogAnalyticsMetricsRequestCountryOrRegionsList.pipe(T.Query()),
+          ),
+          customDomains: GetLogAnalyticsLogAnalyticsMetricsRequestCustomDomainsList.pipe(T.Query()),
+          protocols: GetLogAnalyticsLogAnalyticsMetricsRequestProtocolsList.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8390,7 +10558,7 @@ function __c20(j: number): any {
         identifier: "MetricsResponseSeriesPropertiesItemsItem",
       });
     case 2:
-      return S.Array(__S(161));
+      return S.Array(MetricsResponseSeriesPropertiesItemsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -8402,27 +10570,29 @@ function __c20(j: number): any {
           "Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropertiesDataItems",
       });
     case 4:
-      return S.Array(__S(163));
+      return S.Array(
+        Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropertiesDataItems,
+      );
     case 5:
       return S.suspend(() =>
         S.Struct({
           metric: S.optional(S.String),
-          unit: S.optional(S.String),
-          groups: S.optional(__S(162)),
-          data: S.optional(__S(164)),
+          unit: S.optional(MetricsSeriesUnit),
+          groups: S.optional(MetricsResponseSeriesItemGroupsList),
+          data: S.optional(MetricsResponseSeriesItemDataList),
         }),
       ).annotate({
         identifier: "MetricsResponseSeriesItem",
       });
     case 6:
-      return S.Array(__S(165));
+      return S.Array(MetricsResponseSeriesItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           dateTimeBegin: S.optional(S.String),
           dateTimeEnd: S.optional(S.String),
-          granularity: S.optional(S.String),
-          series: S.optional(__S(166)),
+          granularity: S.optional(MetricsGranularity),
+          series: S.optional(MetricsResponseSeriesList),
         }),
       ).annotate({ identifier: "MetricsResponse" });
   }
@@ -8435,12 +10605,14 @@ function __c21(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          rankings: __S(28).pipe(T.Query()),
-          metrics: __S(28).pipe(T.Query()),
+          rankings: GetLogAnalyticsLogAnalyticsRankingsRequestRankingsList.pipe(T.Query()),
+          metrics: GetLogAnalyticsLogAnalyticsRankingsRequestMetricsList.pipe(T.Query()),
           maxRanking: S.Number.pipe(T.Query()),
           dateTimeBegin: S.String.pipe(T.Query()),
           dateTimeEnd: S.String.pipe(T.Query()),
-          customDomains: S.optional(__S(41).pipe(T.Query())),
+          customDomains: S.optional(
+            GetLogAnalyticsLogAnalyticsRankingsRequestCustomDomainsList.pipe(T.Query()),
+          ),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8463,35 +10635,35 @@ function __c21(j: number): any {
         identifier: "RankingsResponseTablesPropertiesItemsMetricsItem",
       });
     case 2:
-      return S.Array(__S(169));
+      return S.Array(RankingsResponseTablesPropertiesItemsMetricsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          metrics: S.optional(__S(170)),
+          metrics: S.optional(RankingsResponseTablesPropertiesItemsItemMetricsList),
         }),
       ).annotate({
         identifier: "RankingsResponseTablesPropertiesItemsItem",
       });
     case 4:
-      return S.Array(__S(171));
+      return S.Array(RankingsResponseTablesPropertiesItemsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           ranking: S.optional(S.String),
-          data: S.optional(__S(172)),
+          data: S.optional(RankingsResponseTablesItemDataList),
         }),
       ).annotate({
         identifier: "RankingsResponseTablesItem",
       });
     case 6:
-      return S.Array(__S(173));
+      return S.Array(RankingsResponseTablesItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           dateTimeBegin: S.optional(S.String),
           dateTimeEnd: S.optional(S.String),
-          tables: S.optional(__S(174)),
+          tables: S.optional(RankingsResponseTablesList),
         }),
       ).annotate({ identifier: "RankingsResponse" });
   }
@@ -8527,25 +10699,25 @@ function __c22(j: number): any {
         identifier: "ResourcesResponseEndpointsPropertiesItemsItem",
       });
     case 2:
-      return S.Array(__S(177));
+      return S.Array(ResourcesResponseEndpointsPropertiesItemsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           history: S.optional(S.Boolean),
-          customDomains: S.optional(__S(178)),
+          customDomains: S.optional(ResourcesResponseEndpointsItemCustomDomainsList),
         }),
       ).annotate({
         identifier: "ResourcesResponseEndpointsItem",
       });
     case 4:
-      return S.Array(__S(179));
+      return S.Array(ResourcesResponseEndpointsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          endpoints: S.optional(__S(180)),
-          customDomains: S.optional(__S(178)),
+          endpoints: S.optional(ResourcesResponseEndpointsList),
+          customDomains: S.optional(ResourcesResponseCustomDomainsList),
         }),
       ).annotate({ identifier: "ResourcesResponse" });
     case 6:
@@ -8554,13 +10726,19 @@ function __c22(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          metrics: __S(28).pipe(T.Query()),
+          metrics: GetLogAnalyticsWafLogAnalyticsMetricsRequestMetricsList.pipe(T.Query()),
           dateTimeBegin: S.String.pipe(T.Query()),
           dateTimeEnd: S.String.pipe(T.Query()),
-          granularity: S.String.pipe(T.Query()),
-          actions: S.optional(__S(28).pipe(T.Query())),
-          groupBy: S.optional(__S(28).pipe(T.Query())),
-          ruleTypes: S.optional(__S(28).pipe(T.Query())),
+          granularity: GetLogAnalyticsWafLogAnalyticsMetricsRequestGranularity.pipe(T.Query()),
+          actions: S.optional(
+            GetLogAnalyticsWafLogAnalyticsMetricsRequestActionsList.pipe(T.Query()),
+          ),
+          groupBy: S.optional(
+            GetLogAnalyticsWafLogAnalyticsMetricsRequestGroupByList.pipe(T.Query()),
+          ),
+          ruleTypes: S.optional(
+            GetLogAnalyticsWafLogAnalyticsMetricsRequestRuleTypesList.pipe(T.Query()),
+          ),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8576,9 +10754,9 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           metric: S.optional(S.String),
-          unit: S.optional(S.String),
-          groups: S.optional(__S(162)),
-          data: S.optional(__S(164)),
+          unit: S.optional(WafMetricsSeriesUnit),
+          groups: S.optional(WafMetricsResponseSeriesItemGroupsList),
+          data: S.optional(WafMetricsResponseSeriesItemDataList),
         }),
       ).annotate({
         identifier: "WafMetricsResponseSeriesItem",
@@ -8588,14 +10766,14 @@ function __c22(j: number): any {
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(183));
+      return S.Array(WafMetricsResponseSeriesItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           dateTimeBegin: S.optional(S.String),
           dateTimeEnd: S.optional(S.String),
-          granularity: S.optional(S.String),
-          series: S.optional(__S(184)),
+          granularity: S.optional(WafMetricsGranularity),
+          series: S.optional(WafMetricsResponseSeriesList),
         }),
       ).annotate({ identifier: "WafMetricsResponse" });
     case 2:
@@ -8604,13 +10782,17 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          metrics: __S(28).pipe(T.Query()),
+          metrics: GetLogAnalyticsWafLogAnalyticsRankingsRequestMetricsList.pipe(T.Query()),
           dateTimeBegin: S.String.pipe(T.Query()),
           dateTimeEnd: S.String.pipe(T.Query()),
           maxRanking: S.Number.pipe(T.Query()),
-          rankings: __S(28).pipe(T.Query()),
-          actions: S.optional(__S(28).pipe(T.Query())),
-          ruleTypes: S.optional(__S(28).pipe(T.Query())),
+          rankings: GetLogAnalyticsWafLogAnalyticsRankingsRequestRankingsList.pipe(T.Query()),
+          actions: S.optional(
+            GetLogAnalyticsWafLogAnalyticsRankingsRequestActionsList.pipe(T.Query()),
+          ),
+          ruleTypes: S.optional(
+            GetLogAnalyticsWafLogAnalyticsRankingsRequestRuleTypesList.pipe(T.Query()),
+          ),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8625,21 +10807,21 @@ function __c23(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          groupValues: S.optional(__S(41)),
-          metrics: S.optional(__S(170)),
+          groupValues: S.optional(WafRankingsResponseDataItemGroupValuesList),
+          metrics: S.optional(WafRankingsResponseDataItemMetricsList),
         }),
       ).annotate({
         identifier: "WafRankingsResponseDataItem",
       });
     case 4:
-      return S.Array(__S(187));
+      return S.Array(WafRankingsResponseDataItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           dateTimeBegin: S.optional(S.String),
           dateTimeEnd: S.optional(S.String),
-          groups: S.optional(__S(41)),
-          data: S.optional(__S(188)),
+          groups: S.optional(WafRankingsResponseGroupsList),
+          data: S.optional(WafRankingsResponseDataList),
         }),
       ).annotate({ identifier: "WafRankingsResponse" });
     case 6:
@@ -8686,8 +10868,8 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(88)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(OriginGroupProperties),
         }),
       ).annotate({ identifier: "GetOriginGroupResponse" });
     case 1:
@@ -8708,44 +10890,46 @@ function __c24(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          enabledState: S.optional(S.String),
-          mode: S.optional(S.String),
+          enabledState: S.optional(PolicyEnabledState),
+          mode: S.optional(PolicyMode),
           defaultRedirectUrl: S.optional(S.String),
-          defaultCustomBlockResponseStatusCode: S.optional(S.Number),
+          defaultCustomBlockResponseStatusCode: S.optional(
+            PolicySettingsDefaultCustomBlockResponseStatusCode,
+          ),
           defaultCustomBlockResponseBody: S.optional(S.String),
         }),
       ).annotate({ identifier: "PolicySettings" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          matchVariable: S.String,
+          matchVariable: WafMatchVariable,
           selector: S.optional(S.String),
-          operator: S.String,
+          operator: Operator,
           negateCondition: S.optional(S.Boolean),
-          matchValue: __S(41),
-          transforms: S.optional(__S(28)),
+          matchValue: MatchConditionMatchValueList,
+          transforms: S.optional(MatchConditionTransformsList),
         }),
       ).annotate({ identifier: "MatchCondition" });
     case 4:
-      return S.Array(__S(195));
+      return S.Array(MatchCondition);
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          enabledState: S.optional(S.String),
+          enabledState: S.optional(CustomRuleEnabledState),
           priority: S.Number,
-          matchConditions: __S(196),
-          action: S.String,
+          matchConditions: RateLimitRuleMatchConditionsList,
+          action: ActionType,
           rateLimitThreshold: S.Number,
           rateLimitDurationInMinutes: S.Number,
         }),
       ).annotate({ identifier: "RateLimitRule" });
     case 6:
-      return S.Array(__S(197));
+      return S.Array(RateLimitRule);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(198)),
+          rules: S.optional(RateLimitRuleListRulesList),
         }),
       ).annotate({ identifier: "RateLimitRuleList" });
   }
@@ -8756,46 +10940,46 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          enabledState: S.optional(S.String),
+          enabledState: S.optional(CustomRuleEnabledState),
           priority: S.Number,
-          matchConditions: __S(196),
-          action: S.String,
+          matchConditions: CustomRuleMatchConditionsList,
+          action: ActionType,
         }),
       ).annotate({ identifier: "CustomRule" });
     case 1:
-      return S.Array(__S(200));
+      return S.Array(CustomRule);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(201)),
+          rules: S.optional(CustomRuleListRulesList),
         }),
       ).annotate({ identifier: "CustomRuleList" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           ruleId: S.String,
-          enabledState: S.optional(S.String),
-          action: S.optional(S.String),
+          enabledState: S.optional(ManagedRuleEnabledState),
+          action: S.optional(ActionType),
         }),
       ).annotate({ identifier: "ManagedRuleOverride" });
     case 4:
-      return S.Array(__S(203));
+      return S.Array(ManagedRuleOverride);
     case 5:
       return S.suspend(() =>
         S.Struct({
           ruleGroupName: S.String,
-          rules: S.optional(__S(204)),
+          rules: S.optional(ManagedRuleGroupOverrideRulesList),
         }),
       ).annotate({ identifier: "ManagedRuleGroupOverride" });
     case 6:
-      return S.Array(__S(205));
+      return S.Array(ManagedRuleGroupOverride);
     case 7:
       return S.suspend(() =>
         S.Struct({
           ruleSetType: S.String,
           ruleSetVersion: S.String,
           anomalyScore: S.optional(S.Number),
-          ruleGroupOverrides: S.optional(__S(206)),
+          ruleGroupOverrides: S.optional(ManagedRuleSetRuleGroupOverridesList),
         }),
       ).annotate({ identifier: "ManagedRuleSet" });
   }
@@ -8803,11 +10987,11 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(207));
+      return S.Array(ManagedRuleSet);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          managedRuleSets: S.optional(__S(208)),
+          managedRuleSets: S.optional(ManagedRuleSetListManagedRuleSetsList),
         }),
       ).annotate({ identifier: "ManagedRuleSetList" });
     case 2:
@@ -8815,14 +10999,16 @@ function __c26(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          policySettings: S.optional(__S(194)),
-          rateLimitRules: S.optional(__S(199)),
-          customRules: S.optional(__S(202)),
-          managedRules: S.optional(__S(209)),
-          endpointLinks: S.optional(__S(71)),
-          extendedProperties: S.optional(__S(210)),
-          provisioningState: S.optional(S.String),
-          resourceState: S.optional(S.String),
+          policySettings: S.optional(PolicySettings),
+          rateLimitRules: S.optional(RateLimitRuleList),
+          customRules: S.optional(CustomRuleList),
+          managedRules: S.optional(ManagedRuleSetList),
+          endpointLinks: S.optional(CdnWebApplicationFirewallPolicyPropertiesEndpointLinksList),
+          extendedProperties: S.optional(
+            CdnWebApplicationFirewallPolicyPropertiesExtendedPropertiesMap,
+          ),
+          provisioningState: S.optional(ProvisioningState),
+          resourceState: S.optional(PolicyResourceState),
         }),
       ).annotate({
         identifier: "CdnWebApplicationFirewallPolicyProperties",
@@ -8833,12 +11019,12 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          tags: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetPolicyResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(211)),
+          properties: S.optional(CdnWebApplicationFirewallPolicyProperties),
           etag: S.optional(S.String),
-          sku: __S(12),
+          sku: Sku,
         }),
       ).annotate({ identifier: "GetPolicyResponse" });
     case 5:
@@ -8965,16 +11151,16 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(34)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AFDDomainProperties),
         }),
       ).annotate({ identifier: "AFDDomain" });
     case 5:
-      return S.Array(__S(220));
+      return S.Array(AFDDomain);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(221),
+          value: AFDDomainListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AFDDomainListResult" });
@@ -9000,11 +11186,11 @@ function __c27(j: number): any {
 function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(148));
+      return S.Array(AFDEndpoint);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(224),
+          value: AFDEndpointListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AFDEndpointListResult" });
@@ -9037,18 +11223,18 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          unit: S.String,
+          unit: UsageUnit,
           currentValue: S.Number,
           limit: S.Number,
-          name: __S(227),
+          name: UsageName,
         }),
       ).annotate({ identifier: "Usage" });
     case 5:
-      return S.Array(__S(228));
+      return S.Array(Usage);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(229),
+          value: UsagesListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsagesListResult" });
@@ -9075,11 +11261,11 @@ function __c28(j: number): any {
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(45));
+      return S.Array(AFDOrigin);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(232),
+          value: AFDOriginListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AFDOriginListResult" });
@@ -9106,16 +11292,16 @@ function __c29(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(51)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AFDOriginGroupProperties),
         }),
       ).annotate({ identifier: "AFDOriginGroup" });
     case 4:
-      return S.Array(__S(235));
+      return S.Array(AFDOriginGroup);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(236),
+          value: AFDOriginGroupListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AFDOriginGroupListResult" });
@@ -9177,11 +11363,11 @@ function __c30(j: number): any {
         identifier: "ListCustomDomainByEndpointRequest",
       });
     case 1:
-      return S.Array(__S(152));
+      return S.Array(CustomDomain);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(241),
+          value: CustomDomainListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomDomainListResult" });
@@ -9204,17 +11390,17 @@ function __c30(j: number): any {
         }),
       ).annotate({ identifier: "CidrIpAddress" });
     case 5:
-      return S.Array(__S(244));
+      return S.Array(CidrIpAddress);
     case 6:
       return S.suspend(() =>
         S.Struct({
           deliveryRegion: S.optional(S.String),
-          ipv4Addresses: S.optional(__S(245)),
-          ipv6Addresses: S.optional(__S(245)),
+          ipv4Addresses: S.optional(IpAddressGroupIpv4AddressesList),
+          ipv6Addresses: S.optional(IpAddressGroupIpv6AddressesList),
         }),
       ).annotate({ identifier: "IpAddressGroup" });
     case 7:
-      return S.Array(__S(246));
+      return S.Array(IpAddressGroup);
   }
 }
 function __c31(j: number): any {
@@ -9222,7 +11408,7 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ipAddressGroups: __S(247),
+          ipAddressGroups: EdgeNodePropertiesIpAddressGroupsList,
         }),
       ).annotate({ identifier: "EdgeNodeProperties" });
     case 1:
@@ -9231,16 +11417,16 @@ function __c31(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(248)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(EdgeNodeProperties),
         }),
       ).annotate({ identifier: "EdgeNode" });
     case 2:
-      return S.Array(__S(249));
+      return S.Array(EdgeNode);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(250),
+          value: EdgenodeResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EdgenodeResult" });
@@ -9262,11 +11448,11 @@ function __c31(j: number): any {
         identifier: "ListEndpointByProfileRequest",
       });
     case 5:
-      return S.Array(__S(84));
+      return S.Array(Endpoint);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(253),
+          value: EndpointListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EndpointListResult" });
@@ -9296,17 +11482,17 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
-          unit: S.optional(S.String),
+          unit: S.optional(ResourceUsageUnit),
           currentValue: S.optional(S.Number),
           limit: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ResourceUsage" });
     case 1:
-      return S.Array(__S(256));
+      return S.Array(ResourceUsage);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(257),
+          value: ResourceUsageListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceUsageListResult" });
@@ -9333,19 +11519,19 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "ManagedRuleDefinition" });
     case 5:
-      return S.Array(__S(260));
+      return S.Array(ManagedRuleDefinition);
     case 6:
       return S.suspend(() =>
         S.Struct({
           ruleGroupName: S.optional(S.String),
           description: S.optional(S.String),
-          rules: S.optional(__S(261)),
+          rules: S.optional(ManagedRuleGroupDefinitionRulesList),
         }),
       ).annotate({
         identifier: "ManagedRuleGroupDefinition",
       });
     case 7:
-      return S.Array(__S(262));
+      return S.Array(ManagedRuleGroupDefinition);
   }
 }
 function __c33(j: number): any {
@@ -9356,7 +11542,7 @@ function __c33(j: number): any {
           provisioningState: S.optional(S.String),
           ruleSetType: S.optional(S.String),
           ruleSetVersion: S.optional(S.String),
-          ruleGroups: S.optional(__S(263)),
+          ruleGroups: S.optional(ManagedRuleSetDefinitionPropertiesRuleGroupsList),
         }),
       ).annotate({
         identifier: "ManagedRuleSetDefinitionProperties",
@@ -9367,17 +11553,17 @@ function __c33(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(264)),
-          sku: S.optional(__S(12)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ManagedRuleSetDefinitionProperties),
+          sku: S.optional(Sku),
         }),
       ).annotate({ identifier: "ManagedRuleSetDefinition" });
     case 2:
-      return S.Array(__S(265));
+      return S.Array(ManagedRuleSetDefinition);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(266),
+          value: ManagedRuleSetDefinitionListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9413,7 +11599,7 @@ function __c33(j: number): any {
         }),
       ).annotate({ identifier: "LogSpecification" });
     case 7:
-      return S.Array(__S(270));
+      return S.Array(LogSpecification);
   }
 }
 function __c34(j: number): any {
@@ -9426,7 +11612,7 @@ function __c34(j: number): any {
         }),
       ).annotate({ identifier: "MetricAvailability" });
     case 1:
-      return S.Array(__S(272));
+      return S.Array(MetricAvailability);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9436,7 +11622,7 @@ function __c34(j: number): any {
         }),
       ).annotate({ identifier: "DimensionProperties" });
     case 3:
-      return S.Array(__S(274));
+      return S.Array(DimensionProperties);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -9445,27 +11631,27 @@ function __c34(j: number): any {
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          availabilities: S.optional(__S(273)),
-          supportedTimeGrainTypes: S.optional(__S(41)),
-          dimensions: S.optional(__S(275)),
+          availabilities: S.optional(MetricSpecificationAvailabilitiesList),
+          supportedTimeGrainTypes: S.optional(MetricSpecificationSupportedTimeGrainTypesList),
+          dimensions: S.optional(MetricSpecificationDimensionsList),
           fillGapWithZero: S.optional(S.Boolean),
           metricFilterPattern: S.optional(S.String),
           isInternal: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MetricSpecification" });
     case 5:
-      return S.Array(__S(276));
+      return S.Array(MetricSpecification);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          logSpecifications: S.optional(__S(271)),
-          metricSpecifications: S.optional(__S(277)),
+          logSpecifications: S.optional(ServiceSpecificationLogSpecificationsList),
+          metricSpecifications: S.optional(ServiceSpecificationMetricSpecificationsList),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(278)),
+          serviceSpecification: S.optional(ServiceSpecification),
         }),
       ).annotate({ identifier: "OperationProperties" });
   }
@@ -9477,17 +11663,17 @@ function __c35(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(269)),
+          display: S.optional(OperationDisplay),
           origin: S.optional(S.String),
-          properties: S.optional(__S(279)),
+          properties: S.optional(OperationProperties),
         }),
       ).annotate({ identifier: "Operation" });
     case 1:
-      return S.Array(__S(280));
+      return S.Array(Operation);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(281),
+          value: OperationsListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationsListResult" });
@@ -9510,11 +11696,11 @@ function __c35(j: number): any {
         identifier: "ListOriginByEndpointRequest",
       });
     case 4:
-      return S.Array(__S(87));
+      return S.Array(Origin);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(284),
+          value: OriginListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OriginListResult" });
@@ -9537,7 +11723,7 @@ function __c35(j: number): any {
         identifier: "ListOriginGroupByEndpointRequest",
       });
     case 7:
-      return S.Array(__S(192));
+      return S.Array(OriginGroup);
   }
 }
 function __c36(j: number): any {
@@ -9545,7 +11731,7 @@ function __c36(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(287),
+          value: OriginGroupListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OriginGroupListResult" });
@@ -9569,22 +11755,22 @@ function __c36(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          tags: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CdnWebApplicationFirewallPolicyTagsMap),
           location: S.String,
-          properties: S.optional(__S(211)),
+          properties: S.optional(CdnWebApplicationFirewallPolicyProperties),
           etag: S.optional(S.String),
-          sku: __S(12),
+          sku: Sku,
         }),
       ).annotate({
         identifier: "CdnWebApplicationFirewallPolicy",
       });
     case 3:
-      return S.Array(__S(290));
+      return S.Array(CdnWebApplicationFirewallPolicy);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(291),
+          value: CdnWebApplicationFirewallPolicyListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9611,8 +11797,8 @@ function __c36(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(14)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(ProfileIdentityUserAssignedIdentitiesMap),
         }),
       ).annotate({ identifier: "ProfileIdentity" });
     case 7:
@@ -9621,13 +11807,13 @@ function __c36(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          tags: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(ProfileTagsMap),
           location: S.String,
-          properties: S.optional(__S(11)),
-          sku: __S(12),
+          properties: S.optional(ProfileProperties),
+          sku: Sku,
           kind: S.optional(S.String),
-          identity: S.optional(__S(294)),
+          identity: S.optional(ProfileIdentity),
         }),
       ).annotate({ identifier: "Profile" });
   }
@@ -9635,11 +11821,11 @@ function __c36(j: number): any {
 function __c37(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(295));
+      return S.Array(Profile);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(296),
+          value: ProfileListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProfileListResult" });
@@ -9693,7 +11879,9 @@ function __c37(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          supportedOptimizationTypes: S.optional(__S(26)),
+          supportedOptimizationTypes: S.optional(
+            SupportedOptimizationTypesListResultSupportedOptimizationTypesList,
+          ),
         }),
       ).annotate({
         identifier: "SupportedOptimizationTypesListResult",
@@ -9734,11 +11922,11 @@ function __c37(j: number): any {
 function __c38(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(103));
+      return S.Array(Route);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(304),
+          value: RouteListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RouteListResult" });
@@ -9759,11 +11947,11 @@ function __c38(j: number): any {
         ),
       ).annotate({ identifier: "ListRuleByRuleSetRequest" });
     case 3:
-      return S.Array(__S(107));
+      return S.Array(Rule);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(307),
+          value: RuleListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RuleListResult" });
@@ -9785,11 +11973,11 @@ function __c38(j: number): any {
         identifier: "ListRuleSetByProfileRequest",
       });
     case 6:
-      return S.Array(__S(115));
+      return S.Array(RuleSet);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(310),
+          value: RuleSetListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RuleSetListResult" });
@@ -9833,11 +12021,11 @@ function __c39(j: number): any {
         identifier: "ListSecretByProfileRequest",
       });
     case 2:
-      return S.Array(__S(120));
+      return S.Array(Secret);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(314),
+          value: SecretListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecretListResult" });
@@ -9864,16 +12052,16 @@ function __c39(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(124)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SecurityPolicyProperties),
         }),
       ).annotate({ identifier: "SecurityPolicy" });
     case 6:
-      return S.Array(__S(317));
+      return S.Array(SecurityPolicy);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(318),
+          value: SecurityPolicyListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecurityPolicyListResult" });
@@ -9884,23 +12072,25 @@ function __c40(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          migratedFrom: S.optional(__S(2)),
-          migratedTo: S.optional(__S(2)),
+          migratedFrom: S.optional(ResourceReference),
+          migratedTo: S.optional(ResourceReference),
         }),
       ).annotate({
         identifier: "MigrationWebApplicationFirewallMapping",
       });
     case 1:
-      return S.Array(__S(320));
+      return S.Array(MigrationWebApplicationFirewallMapping);
     case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          sku: __S(12),
-          classicResourceReference: __S(2),
+          sku: Sku,
+          classicResourceReference: ResourceReference,
           profileName: S.String,
-          migrationWebApplicationFirewallMappings: S.optional(__S(321)),
+          migrationWebApplicationFirewallMappings: S.optional(
+            MigrateProfileRequestMigrationWebApplicationFirewallMappingsList,
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9913,7 +12103,7 @@ function __c40(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          migratedProfileResourceId: S.optional(__S(2)),
+          migratedProfileResourceId: S.optional(ResourceReference),
         }),
       ).annotate({ identifier: "MigrateResultProperties" });
     case 4:
@@ -9921,7 +12111,7 @@ function __c40(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(323)),
+          properties: S.optional(MigrateResultProperties),
         }),
       ).annotate({ identifier: "MigrateResult" });
     case 5:
@@ -9929,7 +12119,7 @@ function __c40(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          classicResourceReference: __S(2),
+          classicResourceReference: ResourceReference,
         }).pipe(
           T.Http({
             method: "POST",
@@ -9951,7 +12141,7 @@ function __c40(j: number): any {
         }),
       ).annotate({ identifier: "MigrationErrorType" });
     case 7:
-      return S.Array(__S(326));
+      return S.Array(MigrationErrorType);
   }
 }
 function __c41(j: number): any {
@@ -9960,8 +12150,8 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           canMigrate: S.optional(S.Boolean),
-          defaultSku: S.optional(S.String),
-          errors: S.optional(__S(327)),
+          defaultSku: S.optional(CanMigrateDefaultSku),
+          errors: S.optional(CanMigratePropertiesErrorsList),
         }),
       ).annotate({ identifier: "CanMigrateProperties" });
     case 1:
@@ -9969,7 +12159,7 @@ function __c41(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(328)),
+          properties: S.optional(CanMigrateProperties),
         }),
       ).annotate({ identifier: "CanMigrateResult" });
     case 2:
@@ -9979,7 +12169,7 @@ function __c41(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           securityPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(122)),
+          properties: S.optional(SecurityPolicyPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9994,11 +12184,13 @@ function __c41(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          policySettings: S.optional(__S(194)),
-          rateLimitRules: S.optional(__S(199)),
-          customRules: S.optional(__S(202)),
-          managedRules: S.optional(__S(209)),
-          extendedProperties: S.optional(__S(210)),
+          policySettings: S.optional(PolicySettings),
+          rateLimitRules: S.optional(RateLimitRuleList),
+          customRules: S.optional(CustomRuleList),
+          managedRules: S.optional(ManagedRuleSetList),
+          extendedProperties: S.optional(
+            CdnWebApplicationFirewallPolicyPropertiesInputExtendedPropertiesMap,
+          ),
         }),
       ).annotate({
         identifier: "CdnWebApplicationFirewallPolicyPropertiesInput",
@@ -10009,11 +12201,11 @@ function __c41(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           policyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(7)),
+          tags: S.optional(PoliciesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(331)),
+          properties: S.optional(CdnWebApplicationFirewallPolicyPropertiesInput),
           etag: S.optional(S.String),
-          sku: __S(12),
+          sku: Sku,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10050,7 +12242,7 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "MigrationEndpointMapping" });
     case 7:
-      return S.Array(__S(334));
+      return S.Array(MigrationEndpointMapping);
   }
 }
 function __c42(j: number): any {
@@ -10061,8 +12253,10 @@ function __c42(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          sku: __S(12),
-          migrationEndpointMappings: S.optional(__S(335)),
+          sku: Sku,
+          migrationEndpointMappings: S.optional(
+            ProfilesCdnMigrateToAfdRequestMigrationEndpointMappingsList,
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10081,8 +12275,8 @@ function __c42(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
-          contentPaths: __S(41),
-          domains: S.optional(__S(41)),
+          contentPaths: PurgeAFDEndpointContentRequestContentPathsList,
+          domains: S.optional(PurgeAFDEndpointContentRequestDomainsList),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10101,7 +12295,7 @@ function __c42(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
-          contentPaths: __S(41),
+          contentPaths: PurgeEndpointContentRequestContentPathsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -10170,10 +12364,10 @@ function __c42(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          tlsSettings: S.optional(__S(29)),
-          mtlsSettings: S.optional(__S(30)),
-          azureDnsZone: S.optional(__S(2)),
-          preValidatedCustomDomainResourceId: S.optional(__S(2)),
+          tlsSettings: S.optional(AFDDomainHttpsParameters),
+          mtlsSettings: S.optional(AFDDomainMtlsParameters),
+          azureDnsZone: S.optional(ResourceReference),
+          preValidatedCustomDomainResourceId: S.optional(ResourceReference),
         }),
       ).annotate({
         identifier: "AFDDomainUpdatePropertiesParametersInput",
@@ -10189,7 +12383,7 @@ function __c43(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           customDomainName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(343)),
+          properties: S.optional(AFDDomainUpdatePropertiesParametersInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10204,8 +12398,8 @@ function __c43(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          enabledState: S.optional(S.String),
-          enforceMtls: S.optional(S.String),
+          enabledState: S.optional(EnabledState),
+          enforceMtls: S.optional(EnforceMtlsEnabledState),
         }),
       ).annotate({
         identifier: "AFDEndpointPropertiesUpdateParametersInput",
@@ -10217,8 +12411,8 @@ function __c43(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(7)),
-          properties: S.optional(__S(345)),
+          tags: S.optional(UpdateAFDEndpointRequestTagsMap),
+          properties: S.optional(AFDEndpointPropertiesUpdateParametersInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10233,18 +12427,20 @@ function __c43(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          azureOrigin: S.optional(__S(2)),
+          azureOrigin: S.optional(ResourceReference),
           hostName: S.optional(S.String),
           httpPort: S.optional(S.Number),
           httpsPort: S.optional(S.Number),
           originHostHeader: S.optional(S.String),
           priority: S.optional(S.Number),
           weight: S.optional(S.Number),
-          sharedPrivateLinkResource: S.optional(__S(40)),
-          enabledState: S.optional(S.String),
+          sharedPrivateLinkResource: S.optional(SharedPrivateLinkResourceProperties),
+          enabledState: S.optional(EnabledState),
           enforceCertificateNameCheck: S.optional(S.Boolean),
-          certificateNameCheckValidationMode: S.optional(S.String),
-          customCertificateSubjects: S.optional(__S(347)),
+          certificateNameCheckValidationMode: S.optional(CertificateNameCheckValidationMode),
+          customCertificateSubjects: S.optional(
+            AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList,
+          ),
         }),
       ).annotate({
         identifier: "AFDOriginUpdatePropertiesParametersInput",
@@ -10257,7 +12453,7 @@ function __c43(j: number): any {
           profileName: S.String.pipe(T.Label()),
           originGroupName: S.String.pipe(T.Label()),
           originName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(348)),
+          properties: S.optional(AFDOriginUpdatePropertiesParametersInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10274,7 +12470,7 @@ function __c43(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           originGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(49)),
+          properties: S.optional(AFDOriginGroupPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10290,19 +12486,23 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           originPath: S.optional(S.String),
-          contentTypesToCompress: S.optional(__S(41)),
+          contentTypesToCompress: S.optional(
+            EndpointPropertiesUpdateParametersContentTypesToCompressList,
+          ),
           originHostHeader: S.optional(S.String),
           isCompressionEnabled: S.optional(S.Boolean),
           isHttpAllowed: S.optional(S.Boolean),
           isHttpsAllowed: S.optional(S.Boolean),
-          queryStringCachingBehavior: S.optional(S.String),
-          optimizationType: S.optional(S.String),
+          queryStringCachingBehavior: S.optional(
+            EndpointPropertiesUpdateParametersQueryStringCachingBehavior,
+          ),
+          optimizationType: S.optional(OptimizationType),
           probePath: S.optional(S.String),
-          geoFilters: S.optional(__S(59)),
-          defaultOriginGroup: S.optional(__S(2)),
-          urlSigningKeys: S.optional(__S(62)),
-          deliveryPolicy: S.optional(__S(67)),
-          webApplicationFirewallPolicyLink: S.optional(__S(2)),
+          geoFilters: S.optional(EndpointPropertiesUpdateParametersGeoFiltersList),
+          defaultOriginGroup: S.optional(ResourceReference),
+          urlSigningKeys: S.optional(EndpointPropertiesUpdateParametersUrlSigningKeysList),
+          deliveryPolicy: S.optional(EndpointPropertiesUpdateParametersDeliveryPolicy),
+          webApplicationFirewallPolicyLink: S.optional(ResourceReference),
         }),
       ).annotate({
         identifier: "EndpointPropertiesUpdateParameters",
@@ -10318,8 +12518,8 @@ function __c44(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(7)),
-          properties: S.optional(__S(351)),
+          tags: S.optional(UpdateEndpointRequestTagsMap),
+          properties: S.optional(EndpointPropertiesUpdateParameters),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10355,7 +12555,7 @@ function __c44(j: number): any {
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           originName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(353)),
+          properties: S.optional(OriginUpdatePropertiesParameters),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10368,10 +12568,12 @@ function __c44(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          healthProbeSettings: S.optional(__S(47)),
-          origins: S.optional(__S(71)),
+          healthProbeSettings: S.optional(HealthProbeParameters),
+          origins: S.optional(OriginGroupUpdatePropertiesParametersOriginsList),
           trafficRestorationTimeToHealedOrNewEndpointsInMinutes: S.optional(S.Number),
-          responseBasedOriginErrorDetectionSettings: S.optional(__S(74)),
+          responseBasedOriginErrorDetectionSettings: S.optional(
+            ResponseBasedOriginErrorDetectionParameters,
+          ),
         }),
       ).annotate({
         identifier: "OriginGroupUpdatePropertiesParameters",
@@ -10384,7 +12586,7 @@ function __c44(j: number): any {
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           originGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(355)),
+          properties: S.optional(OriginGroupUpdatePropertiesParameters),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10400,7 +12602,7 @@ function __c44(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           policyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(7)),
+          tags: S.optional(UpdatePolicyRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10414,7 +12616,7 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           originResponseTimeoutSeconds: S.optional(S.Number),
-          logScrubbing: S.optional(__S(10)),
+          logScrubbing: S.optional(ProfileLogScrubbing),
         }),
       ).annotate({
         identifier: "ProfilePropertiesUpdateParameters",
@@ -10425,9 +12627,9 @@ function __c44(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(7)),
-          identity: S.optional(__S(93)),
-          properties: S.optional(__S(358)),
+          tags: S.optional(UpdateProfileRequestTagsMap),
+          identity: S.optional(UpdateProfileRequestIdentity),
+          properties: S.optional(ProfilePropertiesUpdateParameters),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10444,17 +12646,19 @@ function __c45(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          customDomains: S.optional(__S(71)),
-          originGroup: S.optional(__S(2)),
+          customDomains: S.optional(RouteUpdatePropertiesParametersInputCustomDomainsList),
+          originGroup: S.optional(ResourceReference),
           originPath: S.optional(S.String),
-          ruleSets: S.optional(__S(71)),
-          supportedProtocols: S.optional(__S(28)),
-          patternsToMatch: S.optional(__S(41)),
-          cacheConfiguration: S.optional(__S(97)),
-          forwardingProtocol: S.optional(S.String),
-          linkToDefaultDomain: S.optional(S.String),
-          httpsRedirect: S.optional(S.String),
-          enabledState: S.optional(S.String),
+          ruleSets: S.optional(RouteUpdatePropertiesParametersInputRuleSetsList),
+          supportedProtocols: S.optional(
+            RouteUpdatePropertiesParametersInputSupportedProtocolsList,
+          ),
+          patternsToMatch: S.optional(RouteUpdatePropertiesParametersInputPatternsToMatchList),
+          cacheConfiguration: S.optional(AfdRouteCacheConfiguration),
+          forwardingProtocol: S.optional(RouteUpdatePropertiesParametersInputForwardingProtocol),
+          linkToDefaultDomain: S.optional(RouteUpdatePropertiesParametersInputLinkToDefaultDomain),
+          httpsRedirect: S.optional(RouteUpdatePropertiesParametersInputHttpsRedirect),
+          enabledState: S.optional(EnabledState),
         }),
       ).annotate({
         identifier: "RouteUpdatePropertiesParametersInput",
@@ -10467,7 +12671,7 @@ function __c45(j: number): any {
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           routeName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(360)),
+          properties: S.optional(RouteUpdatePropertiesParametersInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10481,9 +12685,11 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           order: S.optional(S.Number),
-          conditions: S.optional(__S(64)),
-          actions: S.optional(__S(64)),
-          matchProcessingBehavior: S.optional(S.String),
+          conditions: S.optional(RuleUpdatePropertiesParametersInputConditionsList),
+          actions: S.optional(RuleUpdatePropertiesParametersInputActionsList),
+          matchProcessingBehavior: S.optional(
+            RuleUpdatePropertiesParametersInputMatchProcessingBehavior,
+          ),
         }),
       ).annotate({
         identifier: "RuleUpdatePropertiesParametersInput",
@@ -10496,7 +12702,7 @@ function __c45(j: number): any {
           profileName: S.String.pipe(T.Label()),
           ruleSetName: S.String.pipe(T.Label()),
           ruleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(362)),
+          properties: S.optional(RuleUpdatePropertiesParametersInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10541,8 +12747,8 @@ function __c45(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          secretType: S.String,
-          secretSource: __S(2),
+          secretType: SecretType,
+          secretSource: ResourceReference,
           secretVersion: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -10558,7 +12764,7 @@ function __c45(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(Status),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "ValidateSecretOutput" });
@@ -10607,108 +12813,5 @@ function __c46(j: number): any {
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "ValidateProbeOutput" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
-    case 41:
-      return __c41(i & 7);
-    case 42:
-      return __c42(i & 7);
-    case 43:
-      return __c43(i & 7);
-    case 44:
-      return __c44(i & 7);
-    case 45:
-      return __c45(i & 7);
-    case 46:
-      return __c46(i & 7);
   }
 }

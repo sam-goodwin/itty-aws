@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -46,7 +44,17 @@ export interface GetRuntimeLogsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetRuntimeLogsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetRuntimeLogsRequest>;
+
 export interface GetRuntimeLogsResponse {}
+const GetRuntimeLogsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GetRuntimeLogsResponse>;
+
 export type GetRuntimeLogsError = BadRequest | Forbidden | NotFound | VercelOpError;
 /** Get logs for a deployment Returns a stream of logs for a given deployment. */
 export const getRuntimeLogs: API.OperationMethod<
@@ -55,8 +63,8 @@ export const getRuntimeLogs: API.OperationMethod<
   GetRuntimeLogsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetRuntimeLogsRequest>,
-  output: __S(1) as any as S.Schema<GetRuntimeLogsResponse>,
+  input: GetRuntimeLogsRequest,
+  output: GetRuntimeLogsResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -84,16 +92,5 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GetRuntimeLogsResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 1) {
-    case 0:
-      return __c0(i & 1);
   }
 }

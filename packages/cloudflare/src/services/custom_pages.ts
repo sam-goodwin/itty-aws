@@ -12,8 +12,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -40,6 +38,11 @@ export interface CreateAssetForAccountRequest {
   /** The URL where the asset content is fetched from. */
   url: string;
 }
+const CreateAssetForAccountRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateAssetForAccountRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateAssetResponse {
   /** A short description of the custom asset. */
@@ -52,6 +55,8 @@ export interface CreateAssetResponse {
   /** The URL where the asset content is fetched from. */
   url?: string | null;
 }
+const CreateAssetResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateAssetResponse>;
+
 export interface CreateAssetForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -62,26 +67,54 @@ export interface CreateAssetForZoneRequest {
   /** The URL where the asset content is fetched from. */
   url: string;
 }
+const CreateAssetForZoneRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateAssetForZoneRequest>;
+
 export interface DeleteAssetForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
   assetName: string;
 }
+const DeleteAssetForAccountRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeleteAssetForAccountRequest>;
+
 export interface DeleteAssetForAccountResponse {}
+const DeleteAssetForAccountResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeleteAssetForAccountResponse>;
+
 export interface DeleteAssetForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
   assetName: string;
 }
+const DeleteAssetForZoneRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteAssetForZoneRequest>;
+
 export interface DeleteAssetForZoneResponse {}
+const DeleteAssetForZoneResponse =
+  DeleteAssetForAccountResponse as any as S.Schema<DeleteAssetForZoneResponse>;
+
 export interface GetAssetForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
   assetName: string;
 }
+const GetAssetForAccountRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetAssetForAccountRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAssetResponse {
   /** A short description of the custom asset. */
@@ -94,12 +127,19 @@ export interface GetAssetResponse {
   /** The URL where the asset content is fetched from. */
   url?: string | null;
 }
+const GetAssetResponse = CreateAssetResponse as any as S.Schema<GetAssetResponse>;
+
 export interface GetAssetForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_). */
   assetName: string;
 }
+const GetAssetForZoneRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetAssetForZoneRequest>;
+
 export type GetRequestIdentifier =
   | "1000_errors"
   | "500_errors"
@@ -111,14 +151,28 @@ export type GetRequestIdentifier =
   | "under_attack"
   | "waf_block"
   | "waf_challenge";
+const GetRequestIdentifier = S.String;
+
 export interface GetCustomPageForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** Custom page type. */
   identifier: GetRequestIdentifier | (string & {});
 }
+const GetCustomPageForAccountRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetCustomPageForAccountRequest>;
+
 export type GetResponseRequiredTokensList = Array<string>;
+const GetResponseRequiredTokensList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetResponseRequiredTokensList>;
+
 export type GetResponseState = "default" | "customized";
+const GetResponseState = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCustomPageResponse {
   id?: string | null;
@@ -132,12 +186,22 @@ export interface GetCustomPageResponse {
   /** The URL associated with the custom page. */
   url?: string | null;
 }
+const GetCustomPageResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetCustomPageResponse>;
+
 export interface GetCustomPageForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** Custom page type. */
   identifier: GetRequestIdentifier | (string & {});
 }
+const GetCustomPageForZoneRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetCustomPageForZoneRequest>;
+
 export interface ListAssetsForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -146,6 +210,11 @@ export interface ListAssetsForAccountRequest {
   /** Number of custom assets per page. */
   perPage?: number;
 }
+const ListAssetsForAccountRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ListAssetsForAccountRequest>;
+
 export interface AssetsListResultItem {
   /** A short description of the custom asset. */
   description?: string | null;
@@ -157,13 +226,19 @@ export interface AssetsListResultItem {
   /** The URL where the asset content is fetched from. */
   url?: string | null;
 }
+const AssetsListResultItem = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AssetsListResultItem>;
+
 export type AssetsListResultList = Array<AssetsListResultItem>;
+const AssetsListResultList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<AssetsListResultList>;
+
 export interface ListAssetsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: AssetsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListAssetsResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ListAssetsResponse>;
+
 export interface ListAssetsForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -172,12 +247,27 @@ export interface ListAssetsForZoneRequest {
   /** Number of custom assets per page. */
   perPage?: number;
 }
+const ListAssetsForZoneRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListAssetsForZoneRequest>;
+
 export interface ListCustomPagesForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
 }
+const ListCustomPagesForAccountRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListCustomPagesForAccountRequest>;
+
 export type ListResultItemRequiredTokensList = Array<string>;
+const ListResultItemRequiredTokensList =
+  GetResponseRequiredTokensList as any as S.Schema<ListResultItemRequiredTokensList>;
+
 export type ListResultItemState = "default" | "customized";
+const ListResultItemState = S.String;
+
 export interface ListResultItem {
   id?: string | null;
   createdOn?: string | null;
@@ -190,17 +280,31 @@ export interface ListResultItem {
   /** The URL associated with the custom page. */
   url?: string | null;
 }
+const ListResultItem = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ListResultItem>;
+
 export type ListResultList = Array<ListResultItem>;
+const ListResultList = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ListResultList>;
+
 export interface ListCustomPagesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListCustomPagesResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListCustomPagesResponse>;
+
 export interface ListCustomPagesForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
 }
+const ListCustomPagesForZoneRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ListCustomPagesForZoneRequest>;
+
 export type UpdateRequestIdentifier =
   | "1000_errors"
   | "500_errors"
@@ -212,7 +316,11 @@ export type UpdateRequestIdentifier =
   | "under_attack"
   | "waf_block"
   | "waf_challenge";
+const UpdateRequestIdentifier = S.String;
+
 export type UpdateRequestState = "default" | "customized";
+const UpdateRequestState = S.String;
+
 export interface PutCustomPageForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -223,8 +331,18 @@ export interface PutCustomPageForAccountRequest {
   /** The URL associated with the custom page. */
   url: string;
 }
+const PutCustomPageForAccountRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<PutCustomPageForAccountRequest>;
+
 export type UpdateResponseRequiredTokensList = Array<string>;
+const UpdateResponseRequiredTokensList =
+  GetResponseRequiredTokensList as any as S.Schema<UpdateResponseRequiredTokensList>;
+
 export type UpdateResponseState = "default" | "customized";
+const UpdateResponseState = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutCustomPageResponse {
   id?: string | null;
@@ -238,6 +356,11 @@ export interface PutCustomPageResponse {
   /** The URL associated with the custom page. */
   url?: string | null;
 }
+const PutCustomPageResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<PutCustomPageResponse>;
+
 export interface PutCustomPageForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -248,6 +371,11 @@ export interface PutCustomPageForZoneRequest {
   /** The URL associated with the custom page. */
   url: string;
 }
+const PutCustomPageForZoneRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<PutCustomPageForZoneRequest>;
+
 export interface UpdateAssetForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -258,6 +386,11 @@ export interface UpdateAssetForAccountRequest {
   /** The URL where the asset content is fetched from. */
   url: string;
 }
+const UpdateAssetForAccountRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<UpdateAssetForAccountRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateAssetResponse {
   /** A short description of the custom asset. */
@@ -270,6 +403,8 @@ export interface UpdateAssetResponse {
   /** The URL where the asset content is fetched from. */
   url?: string | null;
 }
+const UpdateAssetResponse = CreateAssetResponse as any as S.Schema<UpdateAssetResponse>;
+
 export interface UpdateAssetForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -280,6 +415,11 @@ export interface UpdateAssetForZoneRequest {
   /** The URL where the asset content is fetched from. */
   url: string;
 }
+const UpdateAssetForZoneRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<UpdateAssetForZoneRequest>;
+
 export type CreateAssetForAccountError = CloudflareOpError;
 /** Creates a custom asset for an account or zone. */
 export const createAssetForAccount: API.OperationMethod<
@@ -288,8 +428,8 @@ export const createAssetForAccount: API.OperationMethod<
   CreateAssetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateAssetForAccountRequest>,
-  output: __S(1) as any as S.Schema<CreateAssetResponse>,
+  input: CreateAssetForAccountRequest,
+  output: CreateAssetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -303,8 +443,8 @@ export const createAssetForZone: API.OperationMethod<
   CreateAssetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateAssetForZoneRequest>,
-  output: __S(1) as any as S.Schema<CreateAssetResponse>,
+  input: CreateAssetForZoneRequest,
+  output: CreateAssetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -318,8 +458,8 @@ export const deleteAssetForAccount: API.OperationMethod<
   DeleteAssetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<DeleteAssetForAccountRequest>,
-  output: __S(4) as any as S.Schema<DeleteAssetForAccountResponse>,
+  input: DeleteAssetForAccountRequest,
+  output: DeleteAssetForAccountResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -333,8 +473,8 @@ export const deleteAssetForZone: API.OperationMethod<
   DeleteAssetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<DeleteAssetForZoneRequest>,
-  output: __S(4) as any as S.Schema<DeleteAssetForZoneResponse>,
+  input: DeleteAssetForZoneRequest,
+  output: DeleteAssetForZoneResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -348,8 +488,8 @@ export const getAssetForAccount: API.OperationMethod<
   GetAssetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetAssetForAccountRequest>,
-  output: __S(1) as any as S.Schema<GetAssetResponse>,
+  input: GetAssetForAccountRequest,
+  output: GetAssetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -363,8 +503,8 @@ export const getAssetForZone: API.OperationMethod<
   GetAssetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<GetAssetForZoneRequest>,
-  output: __S(1) as any as S.Schema<GetAssetResponse>,
+  input: GetAssetForZoneRequest,
+  output: GetAssetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -378,8 +518,8 @@ export const getCustomPageForAccount: API.OperationMethod<
   GetCustomPageForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<GetCustomPageForAccountRequest>,
-  output: __S(10) as any as S.Schema<GetCustomPageResponse>,
+  input: GetCustomPageForAccountRequest,
+  output: GetCustomPageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -393,8 +533,8 @@ export const getCustomPageForZone: API.OperationMethod<
   GetCustomPageForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetCustomPageForZoneRequest>,
-  output: __S(10) as any as S.Schema<GetCustomPageResponse>,
+  input: GetCustomPageForZoneRequest,
+  output: GetCustomPageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -410,8 +550,8 @@ export const listAssetsForAccount: API.PaginatedOperationMethod<
   AssetsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(12) as any as S.Schema<ListAssetsForAccountRequest>,
-    output: __S(15) as any as S.Schema<ListAssetsResponse>,
+    input: ListAssetsForAccountRequest,
+    output: ListAssetsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -436,8 +576,8 @@ export const listAssetsForZone: API.PaginatedOperationMethod<
   AssetsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(16) as any as S.Schema<ListAssetsForZoneRequest>,
-    output: __S(15) as any as S.Schema<ListAssetsResponse>,
+    input: ListAssetsForZoneRequest,
+    output: ListAssetsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -462,8 +602,8 @@ export const listCustomPagesForAccount: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(17) as any as S.Schema<ListCustomPagesForAccountRequest>,
-    output: __S(20) as any as S.Schema<ListCustomPagesResponse>,
+    input: ListCustomPagesForAccountRequest,
+    output: ListCustomPagesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -482,8 +622,8 @@ export const listCustomPagesForZone: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(21) as any as S.Schema<ListCustomPagesForZoneRequest>,
-    output: __S(20) as any as S.Schema<ListCustomPagesResponse>,
+    input: ListCustomPagesForZoneRequest,
+    output: ListCustomPagesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -500,8 +640,8 @@ export const putCustomPageForAccount: API.OperationMethod<
   PutCustomPageForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<PutCustomPageForAccountRequest>,
-  output: __S(23) as any as S.Schema<PutCustomPageResponse>,
+  input: PutCustomPageForAccountRequest,
+  output: PutCustomPageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -515,8 +655,8 @@ export const putCustomPageForZone: API.OperationMethod<
   PutCustomPageForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<PutCustomPageForZoneRequest>,
-  output: __S(23) as any as S.Schema<PutCustomPageResponse>,
+  input: PutCustomPageForZoneRequest,
+  output: PutCustomPageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -530,8 +670,8 @@ export const updateAssetForAccount: API.OperationMethod<
   UpdateAssetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<UpdateAssetForAccountRequest>,
-  output: __S(1) as any as S.Schema<UpdateAssetResponse>,
+  input: UpdateAssetForAccountRequest,
+  output: UpdateAssetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -545,8 +685,8 @@ export const updateAssetForZone: API.OperationMethod<
   UpdateAssetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<UpdateAssetForZoneRequest>,
-  output: __S(1) as any as S.Schema<UpdateAssetResponse>,
+  input: UpdateAssetForZoneRequest,
+  output: UpdateAssetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -675,7 +815,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          identifier: S.String.pipe(T.Label()),
+          identifier: GetRequestIdentifier.pipe(T.Label()),
         })
           .pipe(
             T.Http({
@@ -698,8 +838,10 @@ function __c1(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           previewTarget: S.optional(S.NullOr(S.String).pipe(T.Body("preview_target"))),
-          requiredTokens: S.optional(S.NullOr(__S(9)).pipe(T.Body("required_tokens"))),
-          state: S.optional(S.NullOr(S.String)),
+          requiredTokens: S.optional(
+            S.NullOr(GetResponseRequiredTokensList).pipe(T.Body("required_tokens")),
+          ),
+          state: S.optional(S.NullOr(GetResponseState)),
           url: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetCustomPageResponse" });
@@ -707,7 +849,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          identifier: S.String.pipe(T.Label()),
+          identifier: GetRequestIdentifier.pipe(T.Label()),
         })
           .pipe(
             T.Http({ method: "GET", uri: "/zones/{zone_id}/custom_pages/{identifier}", code: 200 }),
@@ -741,11 +883,11 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "AssetsListResultItem" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(AssetsListResultItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: __S(14).pipe(T.EnvelopePayload()),
+          result: AssetsListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAssetsResponse" });
@@ -781,17 +923,19 @@ function __c2(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           previewTarget: S.optional(S.NullOr(S.String).pipe(T.Body("preview_target"))),
-          requiredTokens: S.optional(S.NullOr(__S(9)).pipe(T.Body("required_tokens"))),
-          state: S.optional(S.NullOr(S.String)),
+          requiredTokens: S.optional(
+            S.NullOr(ListResultItemRequiredTokensList).pipe(T.Body("required_tokens")),
+          ),
+          state: S.optional(S.NullOr(ListResultItemState)),
           url: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ListResultItem" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(ListResultItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(19).pipe(T.EnvelopePayload()),
+          result: ListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListCustomPagesResponse" });
@@ -809,8 +953,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          identifier: S.String.pipe(T.Label()),
-          state: S.String,
+          identifier: UpdateRequestIdentifier.pipe(T.Label()),
+          state: UpdateRequestState,
           url: S.String,
         })
           .pipe(
@@ -832,8 +976,10 @@ function __c2(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           previewTarget: S.optional(S.NullOr(S.String).pipe(T.Body("preview_target"))),
-          requiredTokens: S.optional(S.NullOr(__S(9)).pipe(T.Body("required_tokens"))),
-          state: S.optional(S.NullOr(S.String)),
+          requiredTokens: S.optional(
+            S.NullOr(UpdateResponseRequiredTokensList).pipe(T.Body("required_tokens")),
+          ),
+          state: S.optional(S.NullOr(UpdateResponseState)),
           url: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutCustomPageResponse" });
@@ -845,8 +991,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          identifier: S.String.pipe(T.Label()),
-          state: S.String,
+          identifier: UpdateRequestIdentifier.pipe(T.Label()),
+          state: UpdateRequestState,
           url: S.String,
         })
           .pipe(
@@ -894,22 +1040,5 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UpdateAssetForZoneRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

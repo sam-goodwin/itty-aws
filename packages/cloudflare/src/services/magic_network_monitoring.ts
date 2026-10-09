@@ -12,8 +12,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -95,6 +93,11 @@ export class MnmRuleNotFound
   ) {}
 
 export type ConfigsCreateRequestRouterIpsList = Array<string>;
+const ConfigsCreateRequestRouterIpsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ConfigsCreateRequestRouterIpsList>;
+
 export interface ConfigsCreateRequestWarpDevicesItem {
   /** Unique identifier for the warp device. */
   id: string;
@@ -103,7 +106,17 @@ export interface ConfigsCreateRequestWarpDevicesItem {
   /** IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported. */
   routerIp: string;
 }
+const ConfigsCreateRequestWarpDevicesItem = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ConfigsCreateRequestWarpDevicesItem>;
+
 export type ConfigsCreateRequestWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
+const ConfigsCreateRequestWarpDevicesList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ConfigsCreateRequestWarpDevicesList>;
+
 export interface CreateConfigRequest {
   accountId: string;
   /** Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router. */
@@ -113,9 +126,17 @@ export interface CreateConfigRequest {
   routerIps?: ConfigsCreateRequestRouterIpsList;
   warpDevices?: ConfigsCreateRequestWarpDevicesList;
 }
+const CreateConfigRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateConfigRequest>;
+
 export type ConfigsCreateResponseRouterIpsList = Array<string>;
+const ConfigsCreateResponseRouterIpsList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<ConfigsCreateResponseRouterIpsList>;
+
 export type ConfigsCreateResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 export type ConfigsCreateResponseWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
+const ConfigsCreateResponseWarpDevicesList =
+  ConfigsCreateRequestWarpDevicesList as any as S.Schema<ConfigsCreateResponseWarpDevicesList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateConfigResponse {
   /** Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router. */
@@ -125,8 +146,15 @@ export interface CreateConfigResponse {
   routerIps: ConfigsCreateResponseRouterIpsList;
   warpDevices: ConfigsCreateResponseWarpDevicesList;
 }
+const CreateConfigResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateConfigResponse>;
+
 export type RulesCreateRequestPrefixesList = Array<string>;
+const RulesCreateRequestPrefixesList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesCreateRequestPrefixesList>;
+
 export type RulesCreateRequestType = "threshold" | "zscore" | "advanced_ddos";
+const RulesCreateRequestType = S.String;
+
 export type RulesCreateRequestDuration =
   | "1m"
   | "5m"
@@ -136,9 +164,17 @@ export type RulesCreateRequestDuration =
   | "30m"
   | "45m"
   | "60m";
+const RulesCreateRequestDuration = S.String;
+
 export type RulesCreateRequestPrefixMatch = "exact" | "subnet" | "supernet";
+const RulesCreateRequestPrefixMatch = S.String;
+
 export type RulesCreateRequestZscoreSensitivity = "low" | "medium" | "high";
+const RulesCreateRequestZscoreSensitivity = S.String;
+
 export type RulesCreateRequestZscoreTarget = "bits" | "packets";
+const RulesCreateRequestZscoreTarget = S.String;
+
 export interface CreateRuleRequest {
   accountId: string;
   /** Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit. */
@@ -161,8 +197,15 @@ export interface CreateRuleRequest {
   /** Target of the zscore rule analysis. */
   zscoreTarget?: RulesCreateRequestZscoreTarget | (string & {});
 }
+const CreateRuleRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateRuleRequest>;
+
 export type RulesCreateResponsePrefixesList = Array<string>;
+const RulesCreateResponsePrefixesList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesCreateResponsePrefixesList>;
+
 export type RulesCreateResponseType = "threshold" | "zscore" | "advanced_ddos";
+const RulesCreateResponseType = S.String;
+
 export type RulesCreateResponseDuration =
   | "1m"
   | "5m"
@@ -172,9 +215,17 @@ export type RulesCreateResponseDuration =
   | "30m"
   | "45m"
   | "60m";
+const RulesCreateResponseDuration = S.String;
+
 export type RulesCreateResponsePrefixMatch = "exact" | "subnet" | "supernet";
+const RulesCreateResponsePrefixMatch = S.String;
+
 export type RulesCreateResponseZscoreSensitivity = "low" | "medium" | "high";
+const RulesCreateResponseZscoreSensitivity = S.String;
+
 export type RulesCreateResponseZscoreTarget = "bits" | "packets";
+const RulesCreateResponseZscoreTarget = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRuleResponse {
   /** The id of the rule. Must be unique. */
@@ -199,13 +250,27 @@ export interface CreateRuleResponse {
   /** Target of the zscore rule analysis. */
   zscoreTarget?: RulesCreateResponseZscoreTarget | null;
 }
+const CreateRuleResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateRuleResponse>;
+
 export interface CreateVpcFlowTokenRequest {
   accountId: string;
 }
+const CreateVpcFlowTokenRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateVpcFlowTokenRequest>;
+
 export type CreateVpcFlowTokenResponse = string;
+const CreateVpcFlowTokenResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateVpcFlowTokenResponse>;
+
 export interface DeleteConfigRequest {
   accountId: string;
 }
+const DeleteConfigRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DeleteConfigRequest>;
+
 export type ConfigsDeleteResponseRouterIpsList = Array<string>;
 export type ConfigsDeleteResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 export type ConfigsDeleteResponseWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
@@ -218,13 +283,22 @@ export interface DeleteConfigResponse {
   routerIps: ConfigsDeleteResponseRouterIpsList;
   warpDevices: ConfigsDeleteResponseWarpDevicesList;
 }
+const DeleteConfigResponse = CreateConfigResponse as any as S.Schema<DeleteConfigResponse>;
+
 export interface DeleteRuleRequest {
   accountId: string;
   /** The id of the rule. Must be unique. */
   ruleId: string;
 }
+const DeleteRuleRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DeleteRuleRequest>;
+
 export type RulesDeleteResponsePrefixesList = Array<string>;
+const RulesDeleteResponsePrefixesList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesDeleteResponsePrefixesList>;
+
 export type RulesDeleteResponseType = "threshold" | "zscore" | "advanced_ddos";
+const RulesDeleteResponseType = S.String;
+
 export type RulesDeleteResponseDuration =
   | "1m"
   | "5m"
@@ -234,9 +308,17 @@ export type RulesDeleteResponseDuration =
   | "30m"
   | "45m"
   | "60m";
+const RulesDeleteResponseDuration = S.String;
+
 export type RulesDeleteResponsePrefixMatch = "exact" | "subnet" | "supernet";
+const RulesDeleteResponsePrefixMatch = S.String;
+
 export type RulesDeleteResponseZscoreSensitivity = "low" | "medium" | "high";
+const RulesDeleteResponseZscoreSensitivity = S.String;
+
 export type RulesDeleteResponseZscoreTarget = "bits" | "packets";
+const RulesDeleteResponseZscoreTarget = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteRuleResponse {
   /** The id of the rule. Must be unique. */
@@ -261,9 +343,13 @@ export interface DeleteRuleResponse {
   /** Target of the zscore rule analysis. */
   zscoreTarget?: RulesDeleteResponseZscoreTarget | null;
 }
+const DeleteRuleResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DeleteRuleResponse>;
+
 export interface GetConfigRequest {
   accountId: string;
 }
+const GetConfigRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetConfigRequest>;
+
 export type ConfigsGetResponseRouterIpsList = Array<string>;
 export type ConfigsGetResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 export type ConfigsGetResponseWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
@@ -276,9 +362,13 @@ export interface GetConfigResponse {
   routerIps: ConfigsGetResponseRouterIpsList;
   warpDevices: ConfigsGetResponseWarpDevicesList;
 }
+const GetConfigResponse = CreateConfigResponse as any as S.Schema<GetConfigResponse>;
+
 export interface GetConfigFullRequest {
   accountId: string;
 }
+const GetConfigFullRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetConfigFullRequest>;
+
 export type ConfigsFullGetResponseRouterIpsList = Array<string>;
 export type ConfigsFullGetResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 export type ConfigsFullGetResponseWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
@@ -291,17 +381,34 @@ export interface GetConfigFullResponse {
   routerIps: ConfigsFullGetResponseRouterIpsList;
   warpDevices: ConfigsFullGetResponseWarpDevicesList;
 }
+const GetConfigFullResponse = CreateConfigResponse as any as S.Schema<GetConfigFullResponse>;
+
 export interface GetRuleRequest {
   accountId: string;
   /** The id of the rule. Must be unique. */
   ruleId: string;
 }
+const GetRuleRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetRuleRequest>;
+
 export type RulesGetResponsePrefixesList = Array<string>;
+const RulesGetResponsePrefixesList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesGetResponsePrefixesList>;
+
 export type RulesGetResponseType = "threshold" | "zscore" | "advanced_ddos";
+const RulesGetResponseType = S.String;
+
 export type RulesGetResponseDuration = "1m" | "5m" | "10m" | "15m" | "20m" | "30m" | "45m" | "60m";
+const RulesGetResponseDuration = S.String;
+
 export type RulesGetResponsePrefixMatch = "exact" | "subnet" | "supernet";
+const RulesGetResponsePrefixMatch = S.String;
+
 export type RulesGetResponseZscoreSensitivity = "low" | "medium" | "high";
+const RulesGetResponseZscoreSensitivity = S.String;
+
 export type RulesGetResponseZscoreTarget = "bits" | "packets";
+const RulesGetResponseZscoreTarget = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRuleResponse {
   /** The id of the rule. Must be unique. */
@@ -326,11 +433,20 @@ export interface GetRuleResponse {
   /** Target of the zscore rule analysis. */
   zscoreTarget?: RulesGetResponseZscoreTarget | null;
 }
+const GetRuleResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetRuleResponse>;
+
 export interface ListRulesRequest {
   accountId: string;
 }
+const ListRulesRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ListRulesRequest>;
+
 export type RulesListResultItemPrefixesList = Array<string>;
+const RulesListResultItemPrefixesList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesListResultItemPrefixesList>;
+
 export type RulesListResultItemType = "threshold" | "zscore" | "advanced_ddos";
+const RulesListResultItemType = S.String;
+
 export type RulesListResultItemDuration =
   | "1m"
   | "5m"
@@ -340,9 +456,17 @@ export type RulesListResultItemDuration =
   | "30m"
   | "45m"
   | "60m";
+const RulesListResultItemDuration = S.String;
+
 export type RulesListResultItemPrefixMatch = "exact" | "subnet" | "supernet";
+const RulesListResultItemPrefixMatch = S.String;
+
 export type RulesListResultItemZscoreSensitivity = "low" | "medium" | "high";
+const RulesListResultItemZscoreSensitivity = S.String;
+
 export type RulesListResultItemZscoreTarget = "bits" | "packets";
+const RulesListResultItemZscoreTarget = S.String;
+
 export interface RulesListResultItem {
   /** The id of the rule. Must be unique. */
   id: string;
@@ -366,16 +490,28 @@ export interface RulesListResultItem {
   /** Target of the zscore rule analysis. */
   zscoreTarget?: RulesListResultItemZscoreTarget | null;
 }
+const RulesListResultItem = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<RulesListResultItem>;
+
 export type RulesListResultList = Array<RulesListResultItem>;
+const RulesListResultList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<RulesListResultList>;
+
 export interface ListRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: RulesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListRulesResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ListRulesResponse>;
+
 export type ConfigsEditRequestRouterIpsList = Array<string>;
+const ConfigsEditRequestRouterIpsList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<ConfigsEditRequestRouterIpsList>;
+
 export type ConfigsEditRequestWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 export type ConfigsEditRequestWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
+const ConfigsEditRequestWarpDevicesList =
+  ConfigsCreateRequestWarpDevicesList as any as S.Schema<ConfigsEditRequestWarpDevicesList>;
+
 export interface PatchConfigRequest {
   accountId: string;
   /** Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router. */
@@ -385,6 +521,8 @@ export interface PatchConfigRequest {
   routerIps?: ConfigsEditRequestRouterIpsList;
   warpDevices?: ConfigsEditRequestWarpDevicesList;
 }
+const PatchConfigRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<PatchConfigRequest>;
+
 export type ConfigsEditResponseRouterIpsList = Array<string>;
 export type ConfigsEditResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 export type ConfigsEditResponseWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
@@ -397,12 +535,27 @@ export interface PatchConfigResponse {
   routerIps: ConfigsEditResponseRouterIpsList;
   warpDevices: ConfigsEditResponseWarpDevicesList;
 }
+const PatchConfigResponse = CreateConfigResponse as any as S.Schema<PatchConfigResponse>;
+
 export type RulesEditRequestPrefixesList = Array<string>;
+const RulesEditRequestPrefixesList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesEditRequestPrefixesList>;
+
 export type RulesEditRequestType = "threshold" | "zscore" | "advanced_ddos";
+const RulesEditRequestType = S.String;
+
 export type RulesEditRequestDuration = "1m" | "5m" | "10m" | "15m" | "20m" | "30m" | "45m" | "60m";
+const RulesEditRequestDuration = S.String;
+
 export type RulesEditRequestPrefixMatch = "exact" | "subnet" | "supernet";
+const RulesEditRequestPrefixMatch = S.String;
+
 export type RulesEditRequestZscoreSensitivity = "low" | "medium" | "high";
+const RulesEditRequestZscoreSensitivity = S.String;
+
 export type RulesEditRequestZscoreTarget = "bits" | "packets";
+const RulesEditRequestZscoreTarget = S.String;
+
 export interface PatchRuleRequest {
   accountId: string;
   /** The id of the rule. Must be unique. */
@@ -427,12 +580,27 @@ export interface PatchRuleRequest {
   /** Target of the zscore rule analysis. */
   zscoreTarget?: RulesEditRequestZscoreTarget | (string & {});
 }
+const PatchRuleRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<PatchRuleRequest>;
+
 export type RulesEditResponsePrefixesList = Array<string>;
+const RulesEditResponsePrefixesList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesEditResponsePrefixesList>;
+
 export type RulesEditResponseType = "threshold" | "zscore" | "advanced_ddos";
+const RulesEditResponseType = S.String;
+
 export type RulesEditResponseDuration = "1m" | "5m" | "10m" | "15m" | "20m" | "30m" | "45m" | "60m";
+const RulesEditResponseDuration = S.String;
+
 export type RulesEditResponsePrefixMatch = "exact" | "subnet" | "supernet";
+const RulesEditResponsePrefixMatch = S.String;
+
 export type RulesEditResponseZscoreSensitivity = "low" | "medium" | "high";
+const RulesEditResponseZscoreSensitivity = S.String;
+
 export type RulesEditResponseZscoreTarget = "bits" | "packets";
+const RulesEditResponseZscoreTarget = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchRuleResponse {
   /** The id of the rule. Must be unique. */
@@ -457,19 +625,37 @@ export interface PatchRuleResponse {
   /** Target of the zscore rule analysis. */
   zscoreTarget?: RulesEditResponseZscoreTarget | null;
 }
+const PatchRuleResponse = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<PatchRuleResponse>;
+
 export interface PatchRuleAdvertisementRequest {
   accountId: string;
   /** The id of the rule. Must be unique. */
   ruleId: string;
 }
+const PatchRuleAdvertisementRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<PatchRuleAdvertisementRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchRuleAdvertisementResponse {
   /** Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit. */
   automaticAdvertisement: boolean;
 }
+const PatchRuleAdvertisementResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<PatchRuleAdvertisementResponse>;
+
 export type ConfigsUpdateRequestRouterIpsList = Array<string>;
+const ConfigsUpdateRequestRouterIpsList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<ConfigsUpdateRequestRouterIpsList>;
+
 export type ConfigsUpdateRequestWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 export type ConfigsUpdateRequestWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
+const ConfigsUpdateRequestWarpDevicesList =
+  ConfigsCreateRequestWarpDevicesList as any as S.Schema<ConfigsUpdateRequestWarpDevicesList>;
+
 export interface UpdateConfigRequest {
   accountId: string;
   /** Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router. */
@@ -479,6 +665,8 @@ export interface UpdateConfigRequest {
   routerIps?: ConfigsUpdateRequestRouterIpsList;
   warpDevices?: ConfigsUpdateRequestWarpDevicesList;
 }
+const UpdateConfigRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<UpdateConfigRequest>;
+
 export type ConfigsUpdateResponseRouterIpsList = Array<string>;
 export type ConfigsUpdateResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
 export type ConfigsUpdateResponseWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
@@ -491,8 +679,15 @@ export interface UpdateConfigResponse {
   routerIps: ConfigsUpdateResponseRouterIpsList;
   warpDevices: ConfigsUpdateResponseWarpDevicesList;
 }
+const UpdateConfigResponse = CreateConfigResponse as any as S.Schema<UpdateConfigResponse>;
+
 export type RulesUpdateRequestPrefixesList = Array<string>;
+const RulesUpdateRequestPrefixesList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesUpdateRequestPrefixesList>;
+
 export type RulesUpdateRequestType = "threshold" | "zscore" | "advanced_ddos";
+const RulesUpdateRequestType = S.String;
+
 export type RulesUpdateRequestDuration =
   | "1m"
   | "5m"
@@ -502,9 +697,17 @@ export type RulesUpdateRequestDuration =
   | "30m"
   | "45m"
   | "60m";
+const RulesUpdateRequestDuration = S.String;
+
 export type RulesUpdateRequestPrefixMatch = "exact" | "subnet" | "supernet";
+const RulesUpdateRequestPrefixMatch = S.String;
+
 export type RulesUpdateRequestZscoreSensitivity = "low" | "medium" | "high";
+const RulesUpdateRequestZscoreSensitivity = S.String;
+
 export type RulesUpdateRequestZscoreTarget = "bits" | "packets";
+const RulesUpdateRequestZscoreTarget = S.String;
+
 export interface UpdateRuleRequest {
   accountId: string;
   /** Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit. */
@@ -527,8 +730,15 @@ export interface UpdateRuleRequest {
   /** Target of the zscore rule analysis. */
   zscoreTarget?: RulesUpdateRequestZscoreTarget | (string & {});
 }
+const UpdateRuleRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<UpdateRuleRequest>;
+
 export type RulesUpdateResponsePrefixesList = Array<string>;
+const RulesUpdateResponsePrefixesList =
+  ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesUpdateResponsePrefixesList>;
+
 export type RulesUpdateResponseType = "threshold" | "zscore" | "advanced_ddos";
+const RulesUpdateResponseType = S.String;
+
 export type RulesUpdateResponseDuration =
   | "1m"
   | "5m"
@@ -538,9 +748,17 @@ export type RulesUpdateResponseDuration =
   | "30m"
   | "45m"
   | "60m";
+const RulesUpdateResponseDuration = S.String;
+
 export type RulesUpdateResponsePrefixMatch = "exact" | "subnet" | "supernet";
+const RulesUpdateResponsePrefixMatch = S.String;
+
 export type RulesUpdateResponseZscoreSensitivity = "low" | "medium" | "high";
+const RulesUpdateResponseZscoreSensitivity = S.String;
+
 export type RulesUpdateResponseZscoreTarget = "bits" | "packets";
+const RulesUpdateResponseZscoreTarget = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateRuleResponse {
   /** The id of the rule. Must be unique. */
@@ -565,6 +783,8 @@ export interface UpdateRuleResponse {
   /** Target of the zscore rule analysis. */
   zscoreTarget?: RulesUpdateResponseZscoreTarget | null;
 }
+const UpdateRuleResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<UpdateRuleResponse>;
+
 export type CreateConfigError =
   | MnmConfigAlreadyExists
   | InvalidMnmConfig
@@ -577,8 +797,8 @@ export const createConfig: API.OperationMethod<
   CreateConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateConfigRequest>,
-  output: __S(4) as any as S.Schema<CreateConfigResponse>,
+  input: CreateConfigRequest,
+  output: CreateConfigResponse,
   errors: [
     MnmConfigAlreadyExists,
     InvalidMnmConfig,
@@ -602,8 +822,8 @@ export const createRule: API.OperationMethod<
   CreateRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreateRuleRequest>,
-  output: __S(6) as any as S.Schema<CreateRuleResponse>,
+  input: CreateRuleRequest,
+  output: CreateRuleResponse,
   errors: [
     DuplicateMnmRuleName,
     MnmConfigMissing,
@@ -623,8 +843,8 @@ export const createVpcFlowToken: API.OperationMethod<
   CreateVpcFlowTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<CreateVpcFlowTokenRequest>,
-  output: __S(8) as any as S.Schema<CreateVpcFlowTokenResponse>,
+  input: CreateVpcFlowTokenRequest,
+  output: CreateVpcFlowTokenResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -638,8 +858,8 @@ export const deleteConfig: API.OperationMethod<
   DeleteConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeleteConfigRequest>,
-  output: __S(4) as any as S.Schema<DeleteConfigResponse>,
+  input: DeleteConfigRequest,
+  output: DeleteConfigResponse,
   errors: [MnmConfigNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -653,8 +873,8 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeleteRuleRequest>,
-  output: __S(11) as any as S.Schema<DeleteRuleResponse>,
+  input: DeleteRuleRequest,
+  output: DeleteRuleResponse,
   errors: [MnmRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -668,8 +888,8 @@ export const getConfig: API.OperationMethod<
   GetConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<GetConfigRequest>,
-  output: __S(4) as any as S.Schema<GetConfigResponse>,
+  input: GetConfigRequest,
+  output: GetConfigResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -683,8 +903,8 @@ export const getConfigFull: API.OperationMethod<
   GetConfigFullError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<GetConfigFullRequest>,
-  output: __S(4) as any as S.Schema<GetConfigFullResponse>,
+  input: GetConfigFullRequest,
+  output: GetConfigFullResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -698,8 +918,8 @@ export const getRule: API.OperationMethod<
   GetRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetRuleRequest>,
-  output: __S(15) as any as S.Schema<GetRuleResponse>,
+  input: GetRuleRequest,
+  output: GetRuleResponse,
   errors: [MnmRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -715,8 +935,8 @@ export const listRules: API.PaginatedOperationMethod<
   RulesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(16) as any as S.Schema<ListRulesRequest>,
-    output: __S(19) as any as S.Schema<ListRulesResponse>,
+    input: ListRulesRequest,
+    output: ListRulesResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -733,8 +953,8 @@ export const patchConfig: API.OperationMethod<
   PatchConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<PatchConfigRequest>,
-  output: __S(4) as any as S.Schema<PatchConfigResponse>,
+  input: PatchConfigRequest,
+  output: PatchConfigResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -748,8 +968,8 @@ export const patchRule: API.OperationMethod<
   PatchRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<PatchRuleRequest>,
-  output: __S(22) as any as S.Schema<PatchRuleResponse>,
+  input: PatchRuleRequest,
+  output: PatchRuleResponse,
   errors: [MnmRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -763,8 +983,8 @@ export const patchRuleAdvertisement: API.OperationMethod<
   PatchRuleAdvertisementError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<PatchRuleAdvertisementRequest>,
-  output: __S(24) as any as S.Schema<PatchRuleAdvertisementResponse>,
+  input: PatchRuleAdvertisementRequest,
+  output: PatchRuleAdvertisementResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -778,8 +998,8 @@ export const updateConfig: API.OperationMethod<
   UpdateConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<UpdateConfigRequest>,
-  output: __S(4) as any as S.Schema<UpdateConfigResponse>,
+  input: UpdateConfigRequest,
+  output: UpdateConfigResponse,
   errors: [Forbidden, InvalidMnmConfig, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -793,8 +1013,8 @@ export const updateRule: API.OperationMethod<
   UpdateRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<UpdateRuleRequest>,
-  output: __S(27) as any as S.Schema<UpdateRuleResponse>,
+  input: UpdateRuleRequest,
+  output: UpdateRuleResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -816,15 +1036,15 @@ function __c0(j: number): any {
         identifier: "ConfigsCreateRequestWarpDevicesItem",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(ConfigsCreateRequestWarpDevicesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           defaultSampling: S.Number.pipe(T.Body("default_sampling")),
           name: S.String,
-          routerIps: S.optional(__S(0).pipe(T.Body("router_ips"))),
-          warpDevices: S.optional(__S(2).pipe(T.Body("warp_devices"))),
+          routerIps: S.optional(ConfigsCreateRequestRouterIpsList.pipe(T.Body("router_ips"))),
+          warpDevices: S.optional(ConfigsCreateRequestWarpDevicesList.pipe(T.Body("warp_devices"))),
         })
           .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/mnm/config", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -834,8 +1054,8 @@ function __c0(j: number): any {
         S.Struct({
           defaultSampling: S.Number.pipe(T.Body("default_sampling")),
           name: S.String,
-          routerIps: __S(0).pipe(T.Body("router_ips")),
-          warpDevices: __S(2).pipe(T.Body("warp_devices")),
+          routerIps: ConfigsCreateResponseRouterIpsList.pipe(T.Body("router_ips")),
+          warpDevices: ConfigsCreateResponseWarpDevicesList.pipe(T.Body("warp_devices")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateConfigResponse" });
     case 5:
@@ -844,14 +1064,16 @@ function __c0(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
           name: S.String,
-          prefixes: __S(0),
-          type: S.String,
+          prefixes: RulesCreateRequestPrefixesList,
+          type: RulesCreateRequestType,
           bandwidthThreshold: S.optional(S.Number.pipe(T.Body("bandwidth_threshold"))),
-          duration: S.optional(S.String),
+          duration: S.optional(RulesCreateRequestDuration),
           packetThreshold: S.optional(S.Number.pipe(T.Body("packet_threshold"))),
-          prefixMatch: S.optional(S.String.pipe(T.Body("prefix_match"))),
-          zscoreSensitivity: S.optional(S.String.pipe(T.Body("zscore_sensitivity"))),
-          zscoreTarget: S.optional(S.String.pipe(T.Body("zscore_target"))),
+          prefixMatch: S.optional(RulesCreateRequestPrefixMatch.pipe(T.Body("prefix_match"))),
+          zscoreSensitivity: S.optional(
+            RulesCreateRequestZscoreSensitivity.pipe(T.Body("zscore_sensitivity")),
+          ),
+          zscoreTarget: S.optional(RulesCreateRequestZscoreTarget.pipe(T.Body("zscore_target"))),
         })
           .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/mnm/rules", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -862,14 +1084,20 @@ function __c0(j: number): any {
           id: S.String,
           automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
           name: S.String,
-          prefixes: __S(0),
-          type: S.String,
+          prefixes: RulesCreateResponsePrefixesList,
+          type: RulesCreateResponseType,
           bandwidthThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("bandwidth_threshold"))),
-          duration: S.optional(S.NullOr(S.String)),
+          duration: S.optional(S.NullOr(RulesCreateResponseDuration)),
           packetThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("packet_threshold"))),
-          prefixMatch: S.optional(S.NullOr(S.String).pipe(T.Body("prefix_match"))),
-          zscoreSensitivity: S.optional(S.NullOr(S.String).pipe(T.Body("zscore_sensitivity"))),
-          zscoreTarget: S.optional(S.NullOr(S.String).pipe(T.Body("zscore_target"))),
+          prefixMatch: S.optional(
+            S.NullOr(RulesCreateResponsePrefixMatch).pipe(T.Body("prefix_match")),
+          ),
+          zscoreSensitivity: S.optional(
+            S.NullOr(RulesCreateResponseZscoreSensitivity).pipe(T.Body("zscore_sensitivity")),
+          ),
+          zscoreTarget: S.optional(
+            S.NullOr(RulesCreateResponseZscoreTarget).pipe(T.Body("zscore_target")),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateRuleResponse" });
     case 7:
@@ -927,14 +1155,20 @@ function __c1(j: number): any {
           id: S.String,
           automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
           name: S.String,
-          prefixes: __S(0),
-          type: S.String,
+          prefixes: RulesDeleteResponsePrefixesList,
+          type: RulesDeleteResponseType,
           bandwidthThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("bandwidth_threshold"))),
-          duration: S.optional(S.NullOr(S.String)),
+          duration: S.optional(S.NullOr(RulesDeleteResponseDuration)),
           packetThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("packet_threshold"))),
-          prefixMatch: S.optional(S.NullOr(S.String).pipe(T.Body("prefix_match"))),
-          zscoreSensitivity: S.optional(S.NullOr(S.String).pipe(T.Body("zscore_sensitivity"))),
-          zscoreTarget: S.optional(S.NullOr(S.String).pipe(T.Body("zscore_target"))),
+          prefixMatch: S.optional(
+            S.NullOr(RulesDeleteResponsePrefixMatch).pipe(T.Body("prefix_match")),
+          ),
+          zscoreSensitivity: S.optional(
+            S.NullOr(RulesDeleteResponseZscoreSensitivity).pipe(T.Body("zscore_sensitivity")),
+          ),
+          zscoreTarget: S.optional(
+            S.NullOr(RulesDeleteResponseZscoreTarget).pipe(T.Body("zscore_target")),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteRuleResponse" });
     case 4:
@@ -970,14 +1204,20 @@ function __c1(j: number): any {
           id: S.String,
           automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
           name: S.String,
-          prefixes: __S(0),
-          type: S.String,
+          prefixes: RulesGetResponsePrefixesList,
+          type: RulesGetResponseType,
           bandwidthThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("bandwidth_threshold"))),
-          duration: S.optional(S.NullOr(S.String)),
+          duration: S.optional(S.NullOr(RulesGetResponseDuration)),
           packetThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("packet_threshold"))),
-          prefixMatch: S.optional(S.NullOr(S.String).pipe(T.Body("prefix_match"))),
-          zscoreSensitivity: S.optional(S.NullOr(S.String).pipe(T.Body("zscore_sensitivity"))),
-          zscoreTarget: S.optional(S.NullOr(S.String).pipe(T.Body("zscore_target"))),
+          prefixMatch: S.optional(
+            S.NullOr(RulesGetResponsePrefixMatch).pipe(T.Body("prefix_match")),
+          ),
+          zscoreSensitivity: S.optional(
+            S.NullOr(RulesGetResponseZscoreSensitivity).pipe(T.Body("zscore_sensitivity")),
+          ),
+          zscoreTarget: S.optional(
+            S.NullOr(RulesGetResponseZscoreTarget).pipe(T.Body("zscore_target")),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRuleResponse" });
   }
@@ -998,22 +1238,28 @@ function __c2(j: number): any {
           id: S.String,
           automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
           name: S.String,
-          prefixes: __S(0),
-          type: S.String,
+          prefixes: RulesListResultItemPrefixesList,
+          type: RulesListResultItemType,
           bandwidthThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("bandwidth_threshold"))),
-          duration: S.optional(S.NullOr(S.String)),
+          duration: S.optional(S.NullOr(RulesListResultItemDuration)),
           packetThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("packet_threshold"))),
-          prefixMatch: S.optional(S.NullOr(S.String).pipe(T.Body("prefix_match"))),
-          zscoreSensitivity: S.optional(S.NullOr(S.String).pipe(T.Body("zscore_sensitivity"))),
-          zscoreTarget: S.optional(S.NullOr(S.String).pipe(T.Body("zscore_target"))),
+          prefixMatch: S.optional(
+            S.NullOr(RulesListResultItemPrefixMatch).pipe(T.Body("prefix_match")),
+          ),
+          zscoreSensitivity: S.optional(
+            S.NullOr(RulesListResultItemZscoreSensitivity).pipe(T.Body("zscore_sensitivity")),
+          ),
+          zscoreTarget: S.optional(
+            S.NullOr(RulesListResultItemZscoreTarget).pipe(T.Body("zscore_target")),
+          ),
         }),
       ).annotate({ identifier: "RulesListResultItem" });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(RulesListResultItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(18).pipe(T.EnvelopePayload()),
+          result: RulesListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRulesResponse" });
@@ -1023,8 +1269,8 @@ function __c2(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           defaultSampling: S.optional(S.Number.pipe(T.Body("default_sampling"))),
           name: S.optional(S.String),
-          routerIps: S.optional(__S(0).pipe(T.Body("router_ips"))),
-          warpDevices: S.optional(__S(2).pipe(T.Body("warp_devices"))),
+          routerIps: S.optional(ConfigsEditRequestRouterIpsList.pipe(T.Body("router_ips"))),
+          warpDevices: S.optional(ConfigsEditRequestWarpDevicesList.pipe(T.Body("warp_devices"))),
         })
           .pipe(T.Http({ method: "PATCH", uri: "/accounts/{account_id}/mnm/config", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1036,14 +1282,16 @@ function __c2(j: number): any {
           ruleId: S.String.pipe(T.Label("rule_id")),
           automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
           name: S.String,
-          prefixes: __S(0),
-          type: S.String,
+          prefixes: RulesEditRequestPrefixesList,
+          type: RulesEditRequestType,
           bandwidthThreshold: S.optional(S.Number.pipe(T.Body("bandwidth_threshold"))),
-          duration: S.optional(S.String),
+          duration: S.optional(RulesEditRequestDuration),
           packetThreshold: S.optional(S.Number.pipe(T.Body("packet_threshold"))),
-          prefixMatch: S.optional(S.String.pipe(T.Body("prefix_match"))),
-          zscoreSensitivity: S.optional(S.String.pipe(T.Body("zscore_sensitivity"))),
-          zscoreTarget: S.optional(S.String.pipe(T.Body("zscore_target"))),
+          prefixMatch: S.optional(RulesEditRequestPrefixMatch.pipe(T.Body("prefix_match"))),
+          zscoreSensitivity: S.optional(
+            RulesEditRequestZscoreSensitivity.pipe(T.Body("zscore_sensitivity")),
+          ),
+          zscoreTarget: S.optional(RulesEditRequestZscoreTarget.pipe(T.Body("zscore_target"))),
         })
           .pipe(
             T.Http({
@@ -1060,14 +1308,20 @@ function __c2(j: number): any {
           id: S.String,
           automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
           name: S.String,
-          prefixes: __S(0),
-          type: S.String,
+          prefixes: RulesEditResponsePrefixesList,
+          type: RulesEditResponseType,
           bandwidthThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("bandwidth_threshold"))),
-          duration: S.optional(S.NullOr(S.String)),
+          duration: S.optional(S.NullOr(RulesEditResponseDuration)),
           packetThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("packet_threshold"))),
-          prefixMatch: S.optional(S.NullOr(S.String).pipe(T.Body("prefix_match"))),
-          zscoreSensitivity: S.optional(S.NullOr(S.String).pipe(T.Body("zscore_sensitivity"))),
-          zscoreTarget: S.optional(S.NullOr(S.String).pipe(T.Body("zscore_target"))),
+          prefixMatch: S.optional(
+            S.NullOr(RulesEditResponsePrefixMatch).pipe(T.Body("prefix_match")),
+          ),
+          zscoreSensitivity: S.optional(
+            S.NullOr(RulesEditResponseZscoreSensitivity).pipe(T.Body("zscore_sensitivity")),
+          ),
+          zscoreTarget: S.optional(
+            S.NullOr(RulesEditResponseZscoreTarget).pipe(T.Body("zscore_target")),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchRuleResponse" });
     case 7:
@@ -1105,8 +1359,8 @@ function __c3(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           defaultSampling: S.Number.pipe(T.Body("default_sampling")),
           name: S.String,
-          routerIps: S.optional(__S(0).pipe(T.Body("router_ips"))),
-          warpDevices: S.optional(__S(2).pipe(T.Body("warp_devices"))),
+          routerIps: S.optional(ConfigsUpdateRequestRouterIpsList.pipe(T.Body("router_ips"))),
+          warpDevices: S.optional(ConfigsUpdateRequestWarpDevicesList.pipe(T.Body("warp_devices"))),
         })
           .pipe(T.Http({ method: "PUT", uri: "/accounts/{account_id}/mnm/config", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1117,14 +1371,16 @@ function __c3(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
           name: S.String,
-          prefixes: __S(0),
-          type: S.String,
+          prefixes: RulesUpdateRequestPrefixesList,
+          type: RulesUpdateRequestType,
           bandwidthThreshold: S.optional(S.Number.pipe(T.Body("bandwidth_threshold"))),
-          duration: S.optional(S.String),
+          duration: S.optional(RulesUpdateRequestDuration),
           packetThreshold: S.optional(S.Number.pipe(T.Body("packet_threshold"))),
-          prefixMatch: S.optional(S.String.pipe(T.Body("prefix_match"))),
-          zscoreSensitivity: S.optional(S.String.pipe(T.Body("zscore_sensitivity"))),
-          zscoreTarget: S.optional(S.String.pipe(T.Body("zscore_target"))),
+          prefixMatch: S.optional(RulesUpdateRequestPrefixMatch.pipe(T.Body("prefix_match"))),
+          zscoreSensitivity: S.optional(
+            RulesUpdateRequestZscoreSensitivity.pipe(T.Body("zscore_sensitivity")),
+          ),
+          zscoreTarget: S.optional(RulesUpdateRequestZscoreTarget.pipe(T.Body("zscore_target"))),
         })
           .pipe(T.Http({ method: "PUT", uri: "/accounts/{account_id}/mnm/rules", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1135,32 +1391,21 @@ function __c3(j: number): any {
           id: S.String,
           automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
           name: S.String,
-          prefixes: __S(0),
-          type: S.String,
+          prefixes: RulesUpdateResponsePrefixesList,
+          type: RulesUpdateResponseType,
           bandwidthThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("bandwidth_threshold"))),
-          duration: S.optional(S.NullOr(S.String)),
+          duration: S.optional(S.NullOr(RulesUpdateResponseDuration)),
           packetThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("packet_threshold"))),
-          prefixMatch: S.optional(S.NullOr(S.String).pipe(T.Body("prefix_match"))),
-          zscoreSensitivity: S.optional(S.NullOr(S.String).pipe(T.Body("zscore_sensitivity"))),
-          zscoreTarget: S.optional(S.NullOr(S.String).pipe(T.Body("zscore_target"))),
+          prefixMatch: S.optional(
+            S.NullOr(RulesUpdateResponsePrefixMatch).pipe(T.Body("prefix_match")),
+          ),
+          zscoreSensitivity: S.optional(
+            S.NullOr(RulesUpdateResponseZscoreSensitivity).pipe(T.Body("zscore_sensitivity")),
+          ),
+          zscoreTarget: S.optional(
+            S.NullOr(RulesUpdateResponseZscoreTarget).pipe(T.Body("zscore_target")),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateRuleResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

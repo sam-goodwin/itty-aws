@@ -15,11 +15,11 @@ describe("tableSchemas", () => {
     ].join("\n");
     const out = tableSchemas(code).code;
     expect(out).not.toMatch(/^const (A|B|Status) =/m);
-    expect(out).toContain(`input: (__S(0) as any as S.Schema<A>)`);
+    expect(out).toContain(`input: (__S(0, __c0, 0) as any as S.Schema<A>)`);
     expect(out).toContain(`output: S.String`);
-    expect(out).toContain(`S.Struct({ s: S.String, b: __S(0) })`);
+    expect(out).toContain(`S.Struct({ s: S.String, b: __S(0, __c0, 0) })`);
     expect(out).toContain(`const __s: any[] = [];`);
-    expect(out).toContain(`function __S(i: number)`);
+    expect(out).toContain(`function __S(i: number, f:`);
     // The table array comes before anything that could reach a schema at import.
     expect(out.indexOf("const __s")).toBeLessThan(out.indexOf("export const op"));
   });
@@ -37,6 +37,6 @@ describe("tableSchemas", () => {
     const out = tableSchemas(code).code;
     expect(out).toContain(`const Region = /*@__PURE__*/ __L.at(__c0, 0);`);
     expect(out).toContain(`import type { Region as R }`);
-    expect(out).toContain(`S.Struct({ Other: __S(1) })`);
+    expect(out).toContain(`S.Struct({ Other: __S(1, __c0, 1) })`);
   });
 });

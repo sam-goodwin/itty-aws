@@ -12,8 +12,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -32,26 +30,55 @@ export interface CreateRelayRequest {
   /** Human-readable name for the relay. */
   name: string;
 }
+const CreateRelayRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateRelayRequest>;
+
 export interface RelaysCreateResponseConfigUpstreamsUpstreamsItem {
   /** Upstream MOQT server publisher URL. Must be an absolute URL with a host and a scheme the relay can dial: moqt:// (raw QUIC) or https:// (WebTransport). Validated on update (PUT); rejected with 21013. */
   url: string;
 }
+const RelaysCreateResponseConfigUpstreamsUpstreamsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<RelaysCreateResponseConfigUpstreamsUpstreamsItem>;
+
 export type RelaysCreateResponseConfigUpstreamsUpstreamsList =
   Array<RelaysCreateResponseConfigUpstreamsUpstreamsItem>;
+const RelaysCreateResponseConfigUpstreamsUpstreamsList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<RelaysCreateResponseConfigUpstreamsUpstreamsList>;
+
 export interface RelaysCreateResponseConfigUpstreams {
   enabled?: boolean | null;
   /** Ordered list of upstream MOQT server publishers. Each entry is an object (not a bare string) so per-upstream configuration can be added in the future without another breaking change. */
   upstreams?: RelaysCreateResponseConfigUpstreamsUpstreamsList | null;
 }
+const RelaysCreateResponseConfigUpstreams = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<RelaysCreateResponseConfigUpstreams>;
+
 export interface RelaysCreateResponseConfig {
   /** Upstreams are external MOQT server publishers that a relay falls back to when it has no local publisher for a requested namespace/track. */
   upstreams?: RelaysCreateResponseConfigUpstreams | null;
 }
+const RelaysCreateResponseConfig = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<RelaysCreateResponseConfig>;
+
 export type RelaysCreateResponseIssuersItemCloudflareTokensItemOperationsItem =
   | "publish"
   | "subscribe";
+const RelaysCreateResponseIssuersItemCloudflareTokensItemOperationsItem = S.String;
+
 export type RelaysCreateResponseIssuersItemCloudflareTokensItemOperationsList =
   Array<RelaysCreateResponseIssuersItemCloudflareTokensItemOperationsItem>;
+const RelaysCreateResponseIssuersItemCloudflareTokensItemOperationsList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<RelaysCreateResponseIssuersItemCloudflareTokensItemOperationsList>;
+
 export interface RelaysCreateResponseIssuersItemCloudflareTokensItem {
   created: string;
   /** Mandatory; no more than 1 year after `created`. */
@@ -65,17 +92,41 @@ export interface RelaysCreateResponseIssuersItemCloudflareTokensItem {
   /** The signed JWT. Present ONLY in create / auto-create responses (shown once); never returned by list, never stored. */
   secret?: string | null;
 }
+const RelaysCreateResponseIssuersItemCloudflareTokensItem = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<RelaysCreateResponseIssuersItemCloudflareTokensItem>;
+
 export type RelaysCreateResponseIssuersItemCloudflareTokensList =
   Array<RelaysCreateResponseIssuersItemCloudflareTokensItem>;
+const RelaysCreateResponseIssuersItemCloudflareTokensList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<RelaysCreateResponseIssuersItemCloudflareTokensList>;
+
 export type RelaysCreateResponseIssuersItemIssuer = "cloudflare";
+const RelaysCreateResponseIssuersItemIssuer = S.String;
+
 export type RelaysCreateResponseIssuersItemType = "cloudflare_jwt";
+const RelaysCreateResponseIssuersItemType = S.String;
+
 export interface RelaysCreateResponseIssuersItem {
   /** Always present ([] when empty). */
   cloudflareTokens: RelaysCreateResponseIssuersItemCloudflareTokensList;
   issuer: RelaysCreateResponseIssuersItemIssuer;
   type: RelaysCreateResponseIssuersItemType;
 }
+const RelaysCreateResponseIssuersItem = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<RelaysCreateResponseIssuersItem>;
+
 export type RelaysCreateResponseIssuersList = Array<RelaysCreateResponseIssuersItem>;
+const RelaysCreateResponseIssuersList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<RelaysCreateResponseIssuersList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRelayResponse {
   config: RelaysCreateResponseConfig;
@@ -87,10 +138,19 @@ export interface CreateRelayResponse {
   /** Server-generated unique identifier (32 hex chars). */
   uid: string;
 }
+const CreateRelayResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CreateRelayResponse>;
+
 export type CreateRelaysTokenRequestOperationsItem = "publish" | "subscribe";
+const CreateRelaysTokenRequestOperationsItem = S.String;
+
 export type CreateRelaysTokenRequestOperationsList = Array<
   CreateRelaysTokenRequestOperationsItem | (string & {})
 >;
+const CreateRelaysTokenRequestOperationsList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateRelaysTokenRequestOperationsList>;
+
 export interface CreateRelaysTokenRequest {
   /** Cloudflare account identifier. */
   accountId: string;
@@ -102,11 +162,19 @@ export interface CreateRelaysTokenRequest {
   /** Optional, customer-set label. */
   label?: string;
 }
+const CreateRelaysTokenRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateRelaysTokenRequest>;
+
 export type CreateRelaysTokenResponseIssuersItemCloudflareTokensItemOperationsItem =
   | "publish"
   | "subscribe";
 export type CreateRelaysTokenResponseIssuersItemCloudflareTokensItemOperationsList =
   Array<CreateRelaysTokenResponseIssuersItemCloudflareTokensItemOperationsItem>;
+const CreateRelaysTokenResponseIssuersItemCloudflareTokensItemOperationsList =
+  RelaysCreateResponseIssuersItemCloudflareTokensItemOperationsList as any as S.Schema<CreateRelaysTokenResponseIssuersItemCloudflareTokensItemOperationsList>;
+
 export interface CreateRelaysTokenResponseIssuersItemCloudflareTokensItem {
   created: string;
   /** Mandatory; no more than 1 year after `created`. */
@@ -120,39 +188,84 @@ export interface CreateRelaysTokenResponseIssuersItemCloudflareTokensItem {
   /** The signed JWT. Present ONLY in create / auto-create responses (shown once); never returned by list, never stored. */
   secret?: string | null;
 }
+const CreateRelaysTokenResponseIssuersItemCloudflareTokensItem = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateRelaysTokenResponseIssuersItemCloudflareTokensItem>;
+
 export type CreateRelaysTokenResponseIssuersItemCloudflareTokensList =
   Array<CreateRelaysTokenResponseIssuersItemCloudflareTokensItem>;
+const CreateRelaysTokenResponseIssuersItemCloudflareTokensList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateRelaysTokenResponseIssuersItemCloudflareTokensList>;
+
 export type CreateRelaysTokenResponseIssuersItemIssuer = "cloudflare";
+const CreateRelaysTokenResponseIssuersItemIssuer = S.String;
+
 export type CreateRelaysTokenResponseIssuersItemType = "cloudflare_jwt";
+const CreateRelaysTokenResponseIssuersItemType = S.String;
+
 export interface CreateRelaysTokenResponseIssuersItem {
   /** Always present ([] when empty). */
   cloudflareTokens: CreateRelaysTokenResponseIssuersItemCloudflareTokensList;
   issuer: CreateRelaysTokenResponseIssuersItemIssuer;
   type: CreateRelaysTokenResponseIssuersItemType;
 }
+const CreateRelaysTokenResponseIssuersItem = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateRelaysTokenResponseIssuersItem>;
+
 export type CreateRelaysTokenResponseIssuersList = Array<CreateRelaysTokenResponseIssuersItem>;
+const CreateRelaysTokenResponseIssuersList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateRelaysTokenResponseIssuersList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRelaysTokenResponse {
   issuers: CreateRelaysTokenResponseIssuersList;
 }
+const CreateRelaysTokenResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateRelaysTokenResponse>;
+
 export interface DeleteRelayRequest {
   /** Cloudflare account identifier. */
   accountId: string;
   relayId: string;
 }
+const DeleteRelayRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DeleteRelayRequest>;
+
 export type DeleteRelayResponse = unknown;
+const DeleteRelayResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DeleteRelayResponse>;
+
 export interface DeleteRelaysTokenRequest {
   /** Cloudflare account identifier. */
   accountId: string;
   relayId: string;
   jti: string;
 }
+const DeleteRelaysTokenRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DeleteRelaysTokenRequest>;
+
 export interface DeleteRelaysTokenResponse {}
+const DeleteRelaysTokenResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DeleteRelaysTokenResponse>;
+
 export interface GetRelayRequest {
   /** Cloudflare account identifier. */
   accountId: string;
   relayId: string;
 }
+const GetRelayRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GetRelayRequest>;
+
 export type RelaysGetResponseConfigUpstreamsUpstreamsItem =
   RelaysCreateResponseConfigUpstreamsUpstreamsItem;
 export type RelaysGetResponseConfigUpstreamsUpstreamsList =
@@ -162,11 +275,21 @@ export interface RelaysGetResponseConfigUpstreams {
   /** Ordered list of upstream MOQT server publishers. Each entry is an object (not a bare string) so per-upstream configuration can be added in the future without another breaking change. */
   upstreams?: RelaysGetResponseConfigUpstreamsUpstreamsList | null;
 }
+const RelaysGetResponseConfigUpstreams =
+  RelaysCreateResponseConfigUpstreams as any as S.Schema<RelaysGetResponseConfigUpstreams>;
+
 export interface RelaysGetResponseConfig {
   /** Upstreams are external MOQT server publishers that a relay falls back to when it has no local publisher for a requested namespace/track. */
   upstreams?: RelaysGetResponseConfigUpstreams | null;
 }
+const RelaysGetResponseConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<RelaysGetResponseConfig>;
+
 export type RelaysGetResponseStatus = "connected";
+const RelaysGetResponseStatus = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRelayResponse {
   config: RelaysGetResponseConfig;
@@ -177,6 +300,8 @@ export interface GetRelayResponse {
   /** "connected" when active, omitted otherwise. */
   status?: RelaysGetResponseStatus | null;
 }
+const GetRelayResponse = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GetRelayResponse>;
+
 export interface ListRelaysRequest {
   /** Cloudflare account identifier. */
   accountId: string;
@@ -189,24 +314,37 @@ export interface ListRelaysRequest {
   /** Maximum number of relays to return per page. Values above the maximum are clamped to it rather than rejected. */
   perPage?: number;
 }
+const ListRelaysRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ListRelaysRequest>;
+
 export interface RelaysListResultItem {
   created: string;
   modified: string;
   name: string;
   uid: string;
 }
+const RelaysListResultItem = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<RelaysListResultItem>;
+
 export type RelaysListResultList = Array<RelaysListResultItem>;
+const RelaysListResultList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<RelaysListResultList>;
+
 export interface ListRelaysResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: RelaysListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListRelaysResponse = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ListRelaysResponse>;
+
 export interface ListRelaysTokensRequest {
   /** Cloudflare account identifier. */
   accountId: string;
   relayId: string;
 }
+const ListRelaysTokensRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListRelaysTokensRequest>;
+
 export type ListRelaysTokensResponseIssuersItemCloudflareTokensItemOperationsItem =
   | "publish"
   | "subscribe";
@@ -236,11 +374,21 @@ export interface ListRelaysTokensResponseIssuersItem {
   type: ListRelaysTokensResponseIssuersItemType;
 }
 export type ListRelaysTokensResponseIssuersList = Array<ListRelaysTokensResponseIssuersItem>;
+const ListRelaysTokensResponseIssuersList =
+  RelaysCreateResponseIssuersList as any as S.Schema<ListRelaysTokensResponseIssuersList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListRelaysTokensResponse {
   issuers: ListRelaysTokensResponseIssuersList;
 }
+const ListRelaysTokensResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ListRelaysTokensResponse>;
+
 export type RelaysTokensRotateRequestType = "publish_subscribe" | "subscribe";
+const RelaysTokensRotateRequestType = S.String;
+
 export interface RotateRelayTokenRequest {
   /** Cloudflare account identifier. */
   accountId: string;
@@ -248,26 +396,51 @@ export interface RotateRelayTokenRequest {
   /** Which token type to rotate. */
   type: RelaysTokensRotateRequestType | (string & {});
 }
+const RotateRelayTokenRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<RotateRelayTokenRequest>;
+
 export type RelaysTokensRotateResponseType = "publish_subscribe" | "subscribe";
+const RelaysTokensRotateResponseType = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RotateRelayTokenResponse {
   /** New token value (shown once). Treat as sensitive. */
   token: string;
   type: RelaysTokensRotateResponseType;
 }
+const RotateRelayTokenResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<RotateRelayTokenResponse>;
+
 export type RelaysUpdateRequestConfigUpstreamsUpstreamsItem =
   RelaysCreateResponseConfigUpstreamsUpstreamsItem;
 export type RelaysUpdateRequestConfigUpstreamsUpstreamsList =
   Array<RelaysCreateResponseConfigUpstreamsUpstreamsItem>;
+const RelaysUpdateRequestConfigUpstreamsUpstreamsList =
+  RelaysCreateResponseConfigUpstreamsUpstreamsList as any as S.Schema<RelaysUpdateRequestConfigUpstreamsUpstreamsList>;
+
 export interface RelaysUpdateRequestConfigUpstreams {
   enabled?: boolean;
   /** Ordered list of upstream MOQT server publishers. Each entry is an object (not a bare string) so per-upstream configuration can be added in the future without another breaking change. */
   upstreams?: RelaysUpdateRequestConfigUpstreamsUpstreamsList;
 }
+const RelaysUpdateRequestConfigUpstreams = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<RelaysUpdateRequestConfigUpstreams>;
+
 export interface RelaysUpdateRequestConfig {
   /** Upstreams are external MOQT server publishers that a relay falls back to when it has no local publisher for a requested namespace/track. */
   upstreams?: RelaysUpdateRequestConfigUpstreams;
 }
+const RelaysUpdateRequestConfig = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<RelaysUpdateRequestConfig>;
+
 export interface UpdateRelayRequest {
   /** Cloudflare account identifier. */
   accountId: string;
@@ -275,6 +448,8 @@ export interface UpdateRelayRequest {
   config?: RelaysUpdateRequestConfig;
   name?: string;
 }
+const UpdateRelayRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<UpdateRelayRequest>;
+
 export type RelaysUpdateResponseConfigUpstreamsUpstreamsItem =
   RelaysCreateResponseConfigUpstreamsUpstreamsItem;
 export type RelaysUpdateResponseConfigUpstreamsUpstreamsList =
@@ -288,7 +463,12 @@ export interface RelaysUpdateResponseConfig {
   /** Upstreams are external MOQT server publishers that a relay falls back to when it has no local publisher for a requested namespace/track. */
   upstreams?: RelaysUpdateResponseConfigUpstreams | null;
 }
+const RelaysUpdateResponseConfig =
+  RelaysCreateResponseConfig as any as S.Schema<RelaysUpdateResponseConfig>;
+
 export type RelaysUpdateResponseStatus = "connected";
+const RelaysUpdateResponseStatus = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateRelayResponse {
   config: RelaysUpdateResponseConfig;
@@ -299,6 +479,8 @@ export interface UpdateRelayResponse {
   /** "connected" when active, omitted otherwise. */
   status?: RelaysUpdateResponseStatus | null;
 }
+const UpdateRelayResponse = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<UpdateRelayResponse>;
+
 export type CreateRelayError = CloudflareOpError;
 /** Provisions a new MoQ relay instance. Auto-creates a publish+subscribe token and a subscribe-only token. Token values are included in the response (shown once). Config is always set to defaults (upstreams off) and cannot be supplied here -- sending a non-empty `config` is rejected (21014); `null` or `{}` is accepted as absent. Use PUT to configure the relay after it exists. */
 export const createRelay: API.OperationMethod<
@@ -307,8 +489,8 @@ export const createRelay: API.OperationMethod<
   CreateRelayError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateRelayRequest>,
-  output: __S(10) as any as S.Schema<CreateRelayResponse>,
+  input: CreateRelayRequest,
+  output: CreateRelayResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -322,8 +504,8 @@ export const createRelaysToken: API.OperationMethod<
   CreateRelaysTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CreateRelaysTokenRequest>,
-  output: __S(17) as any as S.Schema<CreateRelaysTokenResponse>,
+  input: CreateRelaysTokenRequest,
+  output: CreateRelaysTokenResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -337,8 +519,8 @@ export const deleteRelay: API.OperationMethod<
   DeleteRelayError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<DeleteRelayRequest>,
-  output: __S(19) as any as S.Schema<DeleteRelayResponse>,
+  input: DeleteRelayRequest,
+  output: DeleteRelayResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -352,8 +534,8 @@ export const deleteRelaysToken: API.OperationMethod<
   DeleteRelaysTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<DeleteRelaysTokenRequest>,
-  output: __S(21) as any as S.Schema<DeleteRelaysTokenResponse>,
+  input: DeleteRelaysTokenRequest,
+  output: DeleteRelaysTokenResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -367,8 +549,8 @@ export const getRelay: API.OperationMethod<
   GetRelayError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<GetRelayRequest>,
-  output: __S(24) as any as S.Schema<GetRelayResponse>,
+  input: GetRelayRequest,
+  output: GetRelayResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -384,8 +566,8 @@ export const listRelays: API.PaginatedOperationMethod<
   RelaysListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(25) as any as S.Schema<ListRelaysRequest>,
-    output: __S(28) as any as S.Schema<ListRelaysResponse>,
+    input: ListRelaysRequest,
+    output: ListRelaysResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -402,8 +584,8 @@ export const listRelaysTokens: API.OperationMethod<
   ListRelaysTokensError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<ListRelaysTokensRequest>,
-  output: __S(30) as any as S.Schema<ListRelaysTokensResponse>,
+  input: ListRelaysTokensRequest,
+  output: ListRelaysTokensResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -417,8 +599,8 @@ export const rotateRelayToken: API.OperationMethod<
   RotateRelayTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<RotateRelayTokenRequest>,
-  output: __S(32) as any as S.Schema<RotateRelayTokenResponse>,
+  input: RotateRelayTokenRequest,
+  output: RotateRelayTokenResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -432,8 +614,8 @@ export const updateRelay: API.OperationMethod<
   UpdateRelayError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<UpdateRelayRequest>,
-  output: __S(36) as any as S.Schema<UpdateRelayResponse>,
+  input: UpdateRelayRequest,
+  output: UpdateRelayResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -460,12 +642,12 @@ function __c0(j: number): any {
         identifier: "RelaysCreateResponseConfigUpstreamsUpstreamsItem",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(RelaysCreateResponseConfigUpstreamsUpstreamsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
-          upstreams: S.optional(S.NullOr(__S(2))),
+          upstreams: S.optional(S.NullOr(RelaysCreateResponseConfigUpstreamsUpstreamsList)),
         }),
       ).annotate({
         identifier: "RelaysCreateResponseConfigUpstreams",
@@ -473,20 +655,20 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          upstreams: S.optional(S.NullOr(__S(3))),
+          upstreams: S.optional(S.NullOr(RelaysCreateResponseConfigUpstreams)),
         }),
       ).annotate({
         identifier: "RelaysCreateResponseConfig",
       });
     case 5:
-      return S.Array(S.String);
+      return S.Array(RelaysCreateResponseIssuersItemCloudflareTokensItemOperationsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           created: S.String,
           expires: S.String,
           jti: S.String,
-          operations: __S(5),
+          operations: RelaysCreateResponseIssuersItemCloudflareTokensItemOperationsList,
           label: S.optional(S.NullOr(S.String)),
           secret: S.optional(S.NullOr(S.String)),
         }),
@@ -494,7 +676,7 @@ function __c0(j: number): any {
         identifier: "RelaysCreateResponseIssuersItemCloudflareTokensItem",
       });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(RelaysCreateResponseIssuersItemCloudflareTokensItem);
   }
 }
 function __c1(j: number): any {
@@ -502,34 +684,36 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          cloudflareTokens: __S(7).pipe(T.Body("cloudflare_tokens")),
-          issuer: S.String,
-          type: S.String,
+          cloudflareTokens: RelaysCreateResponseIssuersItemCloudflareTokensList.pipe(
+            T.Body("cloudflare_tokens"),
+          ),
+          issuer: RelaysCreateResponseIssuersItemIssuer,
+          type: RelaysCreateResponseIssuersItemType,
         }),
       ).annotate({
         identifier: "RelaysCreateResponseIssuersItem",
       });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(RelaysCreateResponseIssuersItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          config: __S(4),
+          config: RelaysCreateResponseConfig,
           created: S.String,
-          issuers: __S(9),
+          issuers: RelaysCreateResponseIssuersList,
           modified: S.String,
           name: S.String,
           uid: S.String,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateRelayResponse" });
     case 3:
-      return S.Array(S.String);
+      return S.Array(CreateRelaysTokenRequestOperationsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           relayId: S.String.pipe(T.Label("relay_id")),
-          operations: __S(11),
+          operations: CreateRelaysTokenRequestOperationsList,
           expires: S.optional(S.String),
           label: S.optional(S.String),
         })
@@ -548,7 +732,7 @@ function __c1(j: number): any {
           created: S.String,
           expires: S.String,
           jti: S.String,
-          operations: __S(5),
+          operations: CreateRelaysTokenResponseIssuersItemCloudflareTokensItemOperationsList,
           label: S.optional(S.NullOr(S.String)),
           secret: S.optional(S.NullOr(S.String)),
         }),
@@ -556,13 +740,15 @@ function __c1(j: number): any {
         identifier: "CreateRelaysTokenResponseIssuersItemCloudflareTokensItem",
       });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(CreateRelaysTokenResponseIssuersItemCloudflareTokensItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          cloudflareTokens: __S(14).pipe(T.Body("cloudflare_tokens")),
-          issuer: S.String,
-          type: S.String,
+          cloudflareTokens: CreateRelaysTokenResponseIssuersItemCloudflareTokensList.pipe(
+            T.Body("cloudflare_tokens"),
+          ),
+          issuer: CreateRelaysTokenResponseIssuersItemIssuer,
+          type: CreateRelaysTokenResponseIssuersItemType,
         }),
       ).annotate({
         identifier: "CreateRelaysTokenResponseIssuersItem",
@@ -572,11 +758,11 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(CreateRelaysTokenResponseIssuersItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          issuers: __S(16),
+          issuers: CreateRelaysTokenResponseIssuersList,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateRelaysTokenResponse",
@@ -638,7 +824,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          upstreams: S.optional(S.NullOr(__S(3))),
+          upstreams: S.optional(S.NullOr(RelaysGetResponseConfigUpstreams)),
         }),
       ).annotate({ identifier: "RelaysGetResponseConfig" });
   }
@@ -648,12 +834,12 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          config: __S(23),
+          config: RelaysGetResponseConfig,
           created: S.String,
           modified: S.String,
           name: S.String,
           uid: S.String,
-          status: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(RelaysGetResponseStatus)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRelayResponse" });
     case 1:
@@ -678,11 +864,11 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "RelaysListResultItem" });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(RelaysListResultItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(27).pipe(T.EnvelopePayload()),
+          result: RelaysListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRelaysResponse" });
@@ -704,7 +890,7 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          issuers: __S(9),
+          issuers: ListRelaysTokensResponseIssuersList,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRelaysTokensResponse" });
     case 7:
@@ -712,7 +898,7 @@ function __c3(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           relayId: S.String.pipe(T.Label("relay_id")),
-          type: S.String,
+          type: RelaysTokensRotateRequestType,
         })
           .pipe(
             T.Http({
@@ -731,14 +917,14 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           token: S.String,
-          type: S.String,
+          type: RelaysTokensRotateResponseType,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "RotateRelayTokenResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          upstreams: S.optional(__S(2)),
+          upstreams: S.optional(RelaysUpdateRequestConfigUpstreamsUpstreamsList),
         }),
       ).annotate({
         identifier: "RelaysUpdateRequestConfigUpstreams",
@@ -746,7 +932,7 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          upstreams: S.optional(__S(33)),
+          upstreams: S.optional(RelaysUpdateRequestConfigUpstreams),
         }),
       ).annotate({
         identifier: "RelaysUpdateRequestConfig",
@@ -756,7 +942,7 @@ function __c4(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           relayId: S.String.pipe(T.Label("relay_id")),
-          config: S.optional(__S(34)),
+          config: S.optional(RelaysUpdateRequestConfig),
           name: S.optional(S.String),
         })
           .pipe(
@@ -771,32 +957,13 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          config: __S(4),
+          config: RelaysUpdateResponseConfig,
           created: S.String,
           modified: S.String,
           name: S.String,
           uid: S.String,
-          status: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(RelaysUpdateResponseStatus)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateRelayResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

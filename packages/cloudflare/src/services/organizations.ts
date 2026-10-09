@@ -12,8 +12,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -95,23 +93,49 @@ export class OrganizationNotFound
 export interface CreateMemberRequestMemberUser {
   email: string;
 }
+const CreateMemberRequestMemberUser = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateMemberRequestMemberUser>;
+
 export type CreateMemberRequestMemberStatus = "active" | "canceled";
+const CreateMemberRequestMemberStatus = S.String;
+
 export interface CreateMemberRequestMember {
   user: CreateMemberRequestMemberUser;
   status?: CreateMemberRequestMemberStatus | (string & {});
 }
+const CreateMemberRequestMember = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateMemberRequestMember>;
+
 export interface CreateMemberRequest {
   organizationId: string;
   member: CreateMemberRequestMember;
 }
+const CreateMemberRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateMemberRequest>;
+
 export type CreateMemberResponseMetaMap = { [key: string]: unknown | undefined };
+const CreateMemberResponseMetaMap = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateMemberResponseMetaMap>;
+
 export type CreateMemberResponseStatus = "active" | "pending" | "rejected" | "canceled";
+const CreateMemberResponseStatus = S.String;
+
 export interface CreateMemberResponseUser {
   id: string;
   email: string;
   name: string;
   twoFactorAuthenticationEnabled: boolean;
 }
+const CreateMemberResponseUser = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateMemberResponseUser>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateMemberResponse {
   /** Organization Member ID */
@@ -122,10 +146,14 @@ export interface CreateMemberResponse {
   updateTime: string;
   user: CreateMemberResponseUser;
 }
+const CreateMemberResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateMemberResponse>;
+
 export interface CreateRequestParent {
   id: string;
   name?: string;
 }
+const CreateRequestParent = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateRequestParent>;
+
 export interface CreateRequestProfile {
   businessAddress: string;
   businessEmail: string;
@@ -133,12 +161,24 @@ export interface CreateRequestProfile {
   businessPhone: string;
   externalMetadata: string;
 }
+const CreateRequestProfile = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateRequestProfile>;
+
 export interface CreateOrganizationRequest {
   name: string;
   parent?: CreateRequestParent;
   profile?: CreateRequestProfile;
 }
+const CreateOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateOrganizationRequest>;
+
 export type CreateResponseMetaHierarchyTagsList = Array<string>;
+const CreateResponseMetaHierarchyTagsList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateResponseMetaHierarchyTagsList>;
+
 export interface CreateResponseMetaTenantFlags {
   accountCreation: string;
   accountCreationAppliesTenantDefaults: string;
@@ -149,6 +189,11 @@ export interface CreateResponseMetaTenantFlags {
   memberManagement: string;
   subOrgCreation: string;
 }
+const CreateResponseMetaTenantFlags = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateResponseMetaTenantFlags>;
+
 export interface CreateResponseMeta {
   /** Ordered chain of organization tags from the root organization down to (and including) this organization itself. Root organizations return a single-element array containing their own tag; sub-organizations return `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for constructing authorization scopes that need to cover every ancestor in the hierarchy. */
   hierarchyTags?: CreateResponseMetaHierarchyTagsList | null;
@@ -156,10 +201,14 @@ export interface CreateResponseMeta {
   /** Enable features for Organizations. */
   tenantFlags?: CreateResponseMetaTenantFlags | null;
 }
+const CreateResponseMeta = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CreateResponseMeta>;
+
 export interface CreateResponseParent {
   id: string;
   name: string;
 }
+const CreateResponseParent = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CreateResponseParent>;
+
 export type CreateResponseProfile = CreateRequestProfile;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateOrganizationResponse {
@@ -170,19 +219,38 @@ export interface CreateOrganizationResponse {
   parent?: CreateResponseParent | null;
   profile?: CreateRequestProfile | null;
 }
+const CreateOrganizationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateOrganizationResponse>;
+
 export interface DeleteMemberRequest {
   organizationId: string;
   /** Organization Member ID */
   memberId: string;
 }
+const DeleteMemberRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<DeleteMemberRequest>;
+
 export interface DeleteMemberResponse {}
+const DeleteMemberResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DeleteMemberResponse>;
+
 export interface DeleteOrganizationRequest {
   organizationId: string;
 }
+const DeleteOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DeleteOrganizationRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteOrganizationResponse {
   id: string;
 }
+const DeleteOrganizationResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DeleteOrganizationResponse>;
+
 export interface GetBillingUsageRequest {
   /** Represents a Cloudflare resource identifier tag. */
   organizationId: string;
@@ -191,13 +259,31 @@ export interface GetBillingUsageRequest {
   /** End date for the usage query (ISO 8601). Required if `from` is set. When omitted along with `from`, defaults to today. Filters by charge period (when consumption happened), not billing period. The maximum date range is 31 days. */
   to?: string;
 }
+const GetBillingUsageRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetBillingUsageRequest>;
+
 export type BillingUsageGetResultItemChargeCategory = "Usage";
+const BillingUsageGetResultItemChargeCategory = S.String;
+
 export type BillingUsageGetResultItemChargeFrequency = "Usage-Based";
+const BillingUsageGetResultItemChargeFrequency = S.String;
+
 export type BillingUsageGetResultItemChargeClass = "Correction";
+const BillingUsageGetResultItemChargeClass = S.String;
+
 export type BillingUsageGetResultItemTagsValue = string | boolean;
+const BillingUsageGetResultItemTagsValue = /*@__PURE__*/ __L.at(__c2, 3);
+
 export type BillingUsageGetResultItemTagsMap = {
   [key: string]: BillingUsageGetResultItemTagsValue | undefined;
 };
+const BillingUsageGetResultItemTagsMap = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<BillingUsageGetResultItemTagsMap>;
+
 export interface BillingUsageGetResultItem {
   /** Highest-level classification of a charge based on the nature of how it gets billed. Currently only "Usage" is supported. */
   chargeCategory: BillingUsageGetResultItemChargeCategory;
@@ -272,15 +358,37 @@ export interface BillingUsageGetResultItem {
   /** The display name of the Cloudflare zone. Omitted when zone is not part of the requested grouping, and for usage measured at contract level. Cloudflare extension. */
   xZoneName?: string | null;
 }
+const BillingUsageGetResultItem = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<BillingUsageGetResultItem>;
+
 export type BillingUsageGetResultList = Array<BillingUsageGetResultItem>;
+const BillingUsageGetResultList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<BillingUsageGetResultList>;
+
 export type GetBillingUsageResponse = BillingUsageGetResultList;
+const GetBillingUsageResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetBillingUsageResponse>;
+
 export interface GetMemberRequest {
   organizationId: string;
   /** Organization Member ID */
   memberId: string;
 }
+const GetMemberRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GetMemberRequest>;
+
 export type GetMemberResponseMetaMap = { [key: string]: unknown | undefined };
+const GetMemberResponseMetaMap =
+  CreateMemberResponseMetaMap as any as S.Schema<GetMemberResponseMetaMap>;
+
 export type GetMemberResponseStatus = "active" | "pending" | "rejected" | "canceled";
+const GetMemberResponseStatus = S.String;
+
 export type GetMemberResponseUser = CreateMemberResponseUser;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetMemberResponse {
@@ -292,9 +400,16 @@ export interface GetMemberResponse {
   updateTime: string;
   user: CreateMemberResponseUser;
 }
+const GetMemberResponse = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<GetMemberResponse>;
+
 export interface GetOrganizationRequest {
   organizationId: string;
 }
+const GetOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetOrganizationRequest>;
+
 export type GetResponseMetaHierarchyTagsList = Array<string>;
 export type GetResponseMetaTenantFlags = CreateResponseMetaTenantFlags;
 export interface GetResponseMeta {
@@ -304,6 +419,8 @@ export interface GetResponseMeta {
   /** Enable features for Organizations. */
   tenantFlags?: CreateResponseMetaTenantFlags | null;
 }
+const GetResponseMeta = CreateResponseMeta as any as S.Schema<GetResponseMeta>;
+
 export type GetResponseParent = CreateResponseParent;
 export type GetResponseProfile = CreateRequestProfile;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -315,6 +432,11 @@ export interface GetOrganizationResponse {
   parent?: CreateResponseParent | null;
   profile?: CreateRequestProfile | null;
 }
+const GetOrganizationResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetOrganizationResponse>;
+
 export interface GetOrganizationAccountRequestAccountPubname {
   /** (case-insensitive) Filter the list of accounts to where the account_pubname contains a particular string. */
   contains?: string;
@@ -323,7 +445,14 @@ export interface GetOrganizationAccountRequestAccountPubname {
   /** (case-insensitive) Filter the list of accounts to where the account_pubname starts with a particular string. */
   startsWith?: string;
 }
+const GetOrganizationAccountRequestAccountPubname = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetOrganizationAccountRequestAccountPubname>;
+
 export type GetOrganizationAccountRequestDirection = "asc" | "desc";
+const GetOrganizationAccountRequestDirection = S.String;
+
 export interface GetOrganizationAccountRequestName {
   /** (case-insensitive) Filter the list of accounts to where the name contains a particular string. */
   contains?: string;
@@ -332,7 +461,12 @@ export interface GetOrganizationAccountRequestName {
   /** (case-insensitive) Filter the list of accounts to where the name starts with a particular string. */
   startsWith?: string;
 }
+const GetOrganizationAccountRequestName =
+  GetOrganizationAccountRequestAccountPubname as any as S.Schema<GetOrganizationAccountRequestName>;
+
 export type GetOrganizationAccountRequestOrderBy = "account_name";
+const GetOrganizationAccountRequestOrderBy = S.String;
+
 export interface GetOrganizationAccountRequest {
   organizationId: string;
   accountPubname?: GetOrganizationAccountRequestAccountPubname;
@@ -350,6 +484,11 @@ export interface GetOrganizationAccountRequest {
   /** An opaque token returned from the last list response that when provided will retrieve the next page. */
   pageToken?: string;
 }
+const GetOrganizationAccountRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetOrganizationAccountRequest>;
+
 export interface GetOrganizationAccountResultItemSettings {
   abuseContactEmail: string;
   accessApprovalExpiry: string;
@@ -360,8 +499,20 @@ export interface GetOrganizationAccountResultItemSettings {
   /** Use [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-list-dns-settings) instead. Deprecated. */
   useAccountCustomNsByDefault: boolean;
 }
+const GetOrganizationAccountResultItemSettings = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetOrganizationAccountResultItemSettings>;
+
 export type GetOrganizationAccountResultItemType = "standard" | "enterprise";
+const GetOrganizationAccountResultItemType = S.String;
+
 export type GetOrganizationAccountResultItemTagsMap = { [key: string]: string | undefined };
+const GetOrganizationAccountResultItemTagsMap = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetOrganizationAccountResultItemTagsMap>;
+
 export interface GetOrganizationAccountResultItem {
   id: string;
   createdOn: string;
@@ -371,11 +522,31 @@ export interface GetOrganizationAccountResultItem {
   /** Account tags, present only when `include_tags=true` is requested. */
   tags?: GetOrganizationAccountResultItemTagsMap | null;
 }
+const GetOrganizationAccountResultItem = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetOrganizationAccountResultItem>;
+
 export type GetOrganizationAccountResultList = Array<GetOrganizationAccountResultItem>;
+const GetOrganizationAccountResultList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetOrganizationAccountResultList>;
+
 export type GetOrganizationAccountResponse = GetOrganizationAccountResultList;
+const GetOrganizationAccountResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetOrganizationAccountResponse>;
+
 export interface GetOrganizationProfileRequest {
   organizationId: string;
 }
+const GetOrganizationProfileRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetOrganizationProfileRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetOrganizationProfileResponse {
   businessAddress: string;
@@ -384,19 +555,44 @@ export interface GetOrganizationProfileResponse {
   businessPhone: string;
   externalMetadata: string;
 }
+const GetOrganizationProfileResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetOrganizationProfileResponse>;
+
 export type LogsAuditListRequestIdNotList = Array<string>;
+const LogsAuditListRequestIdNotList =
+  CreateResponseMetaHierarchyTagsList as any as S.Schema<LogsAuditListRequestIdNotList>;
+
 export interface LogsAuditListRequestId {
   /** Filters out audit logs by their IDs. */
   not?: LogsAuditListRequestIdNotList;
 }
+const LogsAuditListRequestId = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<LogsAuditListRequestId>;
+
 export type LogsAuditListRequestActionResultNotItem = "success" | "failure";
+const LogsAuditListRequestActionResultNotItem = S.String;
+
 export type LogsAuditListRequestActionResultNotList = Array<
   LogsAuditListRequestActionResultNotItem | (string & {})
 >;
+const LogsAuditListRequestActionResultNotList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<LogsAuditListRequestActionResultNotList>;
+
 export interface LogsAuditListRequestActionResult {
   /** Filters out audit logs by whether the action was successful or not. */
   not?: LogsAuditListRequestActionResultNotList;
 }
+const LogsAuditListRequestActionResult = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<LogsAuditListRequestActionResult>;
+
 export type LogsAuditListRequestActionTypeNotItem = "create" | "delete" | "view" | "update";
 export type LogsAuditListRequestActionTypeNotList = Array<
   LogsAuditListRequestActionTypeNotItem | (string & {})
@@ -405,6 +601,9 @@ export interface LogsAuditListRequestActionType {
   /** Filters out audit logs by the action type. */
   not?: LogsAuditListRequestActionTypeNotList;
 }
+const LogsAuditListRequestActionType =
+  LogsAuditListRequestActionResult as any as S.Schema<LogsAuditListRequestActionType>;
+
 export type LogsAuditListRequestActorContextNotItem =
   | "api"
   | "api_key"
@@ -419,31 +618,54 @@ export interface LogsAuditListRequestActorContext {
   /** Filters out audit logs by the actor context. */
   not?: LogsAuditListRequestActorContextNotList;
 }
+const LogsAuditListRequestActorContext =
+  LogsAuditListRequestActionResult as any as S.Schema<LogsAuditListRequestActorContext>;
+
 export type LogsAuditListRequestActorEmailNotList = Array<string>;
+const LogsAuditListRequestActorEmailNotList =
+  CreateResponseMetaHierarchyTagsList as any as S.Schema<LogsAuditListRequestActorEmailNotList>;
+
 export interface LogsAuditListRequestActorEmail {
   /** Filters out audit logs by the actor's email address. */
   not?: LogsAuditListRequestActorEmailNotList;
 }
+const LogsAuditListRequestActorEmail = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<LogsAuditListRequestActorEmail>;
+
 export type LogsAuditListRequestActorIdNotList = Array<string>;
 export interface LogsAuditListRequestActorId {
   /** Filters out audit logs by the actor's user ID. */
   not?: LogsAuditListRequestActorIdNotList;
 }
+const LogsAuditListRequestActorId =
+  LogsAuditListRequestActorEmail as any as S.Schema<LogsAuditListRequestActorId>;
+
 export type LogsAuditListRequestActorIpAddressNotList = Array<string>;
 export interface LogsAuditListRequestActorIpAddress {
   /** Filters out audit logs IP address where the action was initiated. */
   not?: LogsAuditListRequestActorIpAddressNotList;
 }
+const LogsAuditListRequestActorIpAddress =
+  LogsAuditListRequestActorEmail as any as S.Schema<LogsAuditListRequestActorIpAddress>;
+
 export type LogsAuditListRequestActorTokenIdNotList = Array<string>;
 export interface LogsAuditListRequestActorTokenId {
   /** Filters out audit logs by the API token ID when the actor context is an api_token or oauth. */
   not?: LogsAuditListRequestActorTokenIdNotList;
 }
+const LogsAuditListRequestActorTokenId =
+  LogsAuditListRequestActorEmail as any as S.Schema<LogsAuditListRequestActorTokenId>;
+
 export type LogsAuditListRequestActorTokenNameNotList = Array<string>;
 export interface LogsAuditListRequestActorTokenName {
   /** Filters out audit logs by the API token name when the actor context is an api_token or oauth. */
   not?: LogsAuditListRequestActorTokenNameNotList;
 }
+const LogsAuditListRequestActorTokenName =
+  LogsAuditListRequestActorEmail as any as S.Schema<LogsAuditListRequestActorTokenName>;
+
 export type LogsAuditListRequestActorTypeNotItem = "cloudflare_admin" | "system" | "user";
 export type LogsAuditListRequestActorTypeNotList = Array<
   LogsAuditListRequestActorTypeNotItem | (string & {})
@@ -452,37 +674,67 @@ export interface LogsAuditListRequestActorType {
   /** Filters out audit logs by the actor type. */
   not?: LogsAuditListRequestActorTypeNotList;
 }
+const LogsAuditListRequestActorType =
+  LogsAuditListRequestActionResult as any as S.Schema<LogsAuditListRequestActorType>;
+
 export type LogsAuditListRequestDirection = "desc" | "asc";
+const LogsAuditListRequestDirection = S.String;
+
 export type LogsAuditListRequestRawCfRayIdNotList = Array<string>;
 export interface LogsAuditListRequestRawCfRayId {
   /** Filters out audit logs by the response CF Ray ID. */
   not?: LogsAuditListRequestRawCfRayIdNotList;
 }
+const LogsAuditListRequestRawCfRayId =
+  LogsAuditListRequestActorEmail as any as S.Schema<LogsAuditListRequestRawCfRayId>;
+
 export type LogsAuditListRequestRawMethodNotList = Array<string>;
 export interface LogsAuditListRequestRawMethod {
   /** Filters out audit logs by the HTTP method for the API call. */
   not?: LogsAuditListRequestRawMethodNotList;
 }
+const LogsAuditListRequestRawMethod =
+  LogsAuditListRequestActorEmail as any as S.Schema<LogsAuditListRequestRawMethod>;
+
 export type LogsAuditListRequestRawStatusCodeNotList = Array<number>;
+const LogsAuditListRequestRawStatusCodeNotList = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<LogsAuditListRequestRawStatusCodeNotList>;
+
 export interface LogsAuditListRequestRawStatusCode {
   /** Filters out audit logs by the response status code that was returned. */
   not?: LogsAuditListRequestRawStatusCodeNotList;
 }
+const LogsAuditListRequestRawStatusCode = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<LogsAuditListRequestRawStatusCode>;
+
 export type LogsAuditListRequestRawUriNotList = Array<string>;
 export interface LogsAuditListRequestRawUri {
   /** Filters out audit logs by the request URI. */
   not?: LogsAuditListRequestRawUriNotList;
 }
+const LogsAuditListRequestRawUri =
+  LogsAuditListRequestActorEmail as any as S.Schema<LogsAuditListRequestRawUri>;
+
 export type LogsAuditListRequestResourceIdNotList = Array<string>;
 export interface LogsAuditListRequestResourceId {
   /** Filters out audit logs by the resource ID. */
   not?: LogsAuditListRequestResourceIdNotList;
 }
+const LogsAuditListRequestResourceId =
+  LogsAuditListRequestActorEmail as any as S.Schema<LogsAuditListRequestResourceId>;
+
 export type LogsAuditListRequestResourceProductNotList = Array<string>;
 export interface LogsAuditListRequestResourceProduct {
   /** Filters out audit logs by the Cloudflare product associated with the changed resource. */
   not?: LogsAuditListRequestResourceProductNotList;
 }
+const LogsAuditListRequestResourceProduct =
+  LogsAuditListRequestActorEmail as any as S.Schema<LogsAuditListRequestResourceProduct>;
+
 export type LogsAuditListRequestResourceScopeNotItem = "organizations";
 export type LogsAuditListRequestResourceScopeNotList = Array<
   LogsAuditListRequestResourceScopeNotItem | (string & {})
@@ -491,11 +743,17 @@ export interface LogsAuditListRequestResourceScope {
   /** Filters out audit logs by the resource scope, specifying whether the resource is associated with an organization. */
   not?: LogsAuditListRequestResourceScopeNotList;
 }
+const LogsAuditListRequestResourceScope =
+  LogsAuditListRequestActionResult as any as S.Schema<LogsAuditListRequestResourceScope>;
+
 export type LogsAuditListRequestResourceTypeNotList = Array<string>;
 export interface LogsAuditListRequestResourceType {
   /** Filters out audit logs based on the unique type of resource changed by the action. */
   not?: LogsAuditListRequestResourceTypeNotList;
 }
+const LogsAuditListRequestResourceType =
+  LogsAuditListRequestActorEmail as any as S.Schema<LogsAuditListRequestResourceType>;
+
 export interface ListLogAuditsRequest {
   /** The unique id that identifies the organization. */
   organizationId: string;
@@ -528,6 +786,8 @@ export interface ListLogAuditsRequest {
   resourceScope?: LogsAuditListRequestResourceScope;
   resourceType?: LogsAuditListRequestResourceType;
 }
+const ListLogAuditsRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ListLogAuditsRequest>;
+
 export interface LogsAuditListResultItemAction {
   /** A short description of the action performed. */
   description?: string | null;
@@ -538,6 +798,11 @@ export interface LogsAuditListResultItemAction {
   /** A short string that describes the action that was performed. */
   type?: string | null;
 }
+const LogsAuditListResultItemAction = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<LogsAuditListResultItemAction>;
+
 export type LogsAuditListResultItemActorContext =
   | "api"
   | "api_key"
@@ -545,7 +810,11 @@ export type LogsAuditListResultItemActorContext =
   | "dash"
   | "oauth"
   | "origin_ca_key";
+const LogsAuditListResultItemActorContext = S.String;
+
 export type LogsAuditListResultItemActorType = "cloudflare_admin" | "system" | "user";
+const LogsAuditListResultItemActorType = S.String;
+
 export interface LogsAuditListResultItemActor {
   /** The ID of the actor who performed the action. If a user performed the action, this will be their User ID. */
   id?: string | null;
@@ -562,10 +831,20 @@ export interface LogsAuditListResultItemActor {
   /** The type of actor. */
   type?: LogsAuditListResultItemActorType | null;
 }
+const LogsAuditListResultItemActor = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<LogsAuditListResultItemActor>;
+
 export interface LogsAuditListResultItemOrganization {
   /** A unique identifier for the organization. */
   id?: string | null;
 }
+const LogsAuditListResultItemOrganization = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<LogsAuditListResultItemOrganization>;
+
 export interface LogsAuditListResultItemRaw {
   /** The Cloudflare Ray ID for the request. */
   cfRayId?: string | null;
@@ -578,6 +857,11 @@ export interface LogsAuditListResultItemRaw {
   /** The client's user agent string sent with the request. */
   userAgent?: string | null;
 }
+const LogsAuditListResultItemRaw = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<LogsAuditListResultItemRaw>;
+
 export interface LogsAuditListResultItemResource {
   /** The unique identifier for the affected resource. */
   id?: string | null;
@@ -590,6 +874,11 @@ export interface LogsAuditListResultItemResource {
   /** The type of the resource. */
   type?: string | null;
 }
+const LogsAuditListResultItemResource = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<LogsAuditListResultItemResource>;
+
 export interface LogsAuditListResultItem {
   /** A unique identifier for the audit log entry. */
   id?: string | null;
@@ -604,19 +893,42 @@ export interface LogsAuditListResultItem {
   /** Provides details about the affected resource. */
   resource?: LogsAuditListResultItemResource | null;
 }
+const LogsAuditListResultItem = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<LogsAuditListResultItem>;
+
 export type LogsAuditListResultList = Array<LogsAuditListResultItem>;
+const LogsAuditListResultList = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<LogsAuditListResultList>;
+
 export interface ListLogAuditsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: LogsAuditListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListLogAuditsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ListLogAuditsResponse>;
+
 export type ListMembersRequestStatus = "active" | "pending" | "rejected" | "canceled";
 export type ListMembersRequestStatusList = Array<ListMembersRequestStatus | (string & {})>;
+const ListMembersRequestStatusList =
+  LogsAuditListRequestActionResultNotList as any as S.Schema<ListMembersRequestStatusList>;
+
 export interface ListMembersRequestUser {
   /** Filter the list of memberships for a specific email that ends with a substring. */
   email?: string;
 }
+const ListMembersRequestUser = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ListMembersRequestUser>;
+
 export interface ListMembersRequest {
   organizationId: string;
   /** The amount of items to return. Defaults to 10. */
@@ -627,8 +939,15 @@ export interface ListMembersRequest {
   status?: ListMembersRequestStatusList;
   user?: ListMembersRequestUser;
 }
+const ListMembersRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ListMembersRequest>;
+
 export type ListMembersResultItemMetaMap = { [key: string]: unknown | undefined };
+const ListMembersResultItemMetaMap =
+  CreateMemberResponseMetaMap as any as S.Schema<ListMembersResultItemMetaMap>;
+
 export type ListMembersResultItemStatus = "active" | "pending" | "rejected" | "canceled";
+const ListMembersResultItemStatus = S.String;
+
 export type ListMembersResultItemUser = CreateMemberResponseUser;
 export interface ListMembersResultItem {
   /** Organization Member ID */
@@ -639,9 +958,23 @@ export interface ListMembersResultItem {
   updateTime: string;
   user: CreateMemberResponseUser;
 }
+const ListMembersResultItem = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListMembersResultItem>;
+
 export type ListMembersResultList = Array<ListMembersResultItem>;
+const ListMembersResultList = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListMembersResultList>;
+
 export type ListMembersResponse = ListMembersResultList;
+const ListMembersResponse = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ListMembersResponse>;
+
 export type ListRequestIdList = Array<string>;
+const ListRequestIdList = CreateResponseMetaHierarchyTagsList as any as S.Schema<ListRequestIdList>;
+
 export interface ListRequestContaining {
   /** Filter the list of organizations to the ones that contain this particular account. */
   account?: string;
@@ -650,6 +983,11 @@ export interface ListRequestContaining {
   /** Filter the list of organizations to the ones that contain this particular user. */
   user?: string;
 }
+const ListRequestContaining = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ListRequestContaining>;
+
 export interface ListRequestName {
   /** (case-insensitive) Filter the list of organizations to where the name contains a particular string. */
   contains?: string;
@@ -658,10 +996,14 @@ export interface ListRequestName {
   /** (case-insensitive) Filter the list of organizations to where the name starts with a particular string. */
   startsWith?: string;
 }
+const ListRequestName = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ListRequestName>;
+
 export interface ListRequestParent {
   /** Filter the list of organizations to the ones that are a sub-organization of the specified organization. */
   id?: string;
 }
+const ListRequestParent = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<ListRequestParent>;
+
 export interface ListOrganizationsRequest {
   /** Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements by repeating the query value. */
   id?: ListRequestIdList;
@@ -673,6 +1015,11 @@ export interface ListOrganizationsRequest {
   pageToken?: string;
   parent?: ListRequestParent;
 }
+const ListOrganizationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ListOrganizationsRequest>;
+
 export type ListResultItemMetaHierarchyTagsList = Array<string>;
 export type ListResultItemMetaTenantFlags = CreateResponseMetaTenantFlags;
 export interface ListResultItemMeta {
@@ -682,6 +1029,8 @@ export interface ListResultItemMeta {
   /** Enable features for Organizations. */
   tenantFlags?: CreateResponseMetaTenantFlags | null;
 }
+const ListResultItemMeta = CreateResponseMeta as any as S.Schema<ListResultItemMeta>;
+
 export type ListResultItemParent = CreateResponseParent;
 export type ListResultItemProfile = CreateRequestProfile;
 export interface ListResultItem {
@@ -692,14 +1041,25 @@ export interface ListResultItem {
   parent?: CreateResponseParent | null;
   profile?: CreateRequestProfile | null;
 }
+const ListResultItem = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ListResultItem>;
+
 export type ListResultList = Array<ListResultItem>;
+const ListResultList = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<ListResultList>;
+
 export interface ListOrganizationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListOrganizationsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListOrganizationsResponse>;
+
 export type LogsAuditHistoryRequestDirection = "desc" | "asc";
+const LogsAuditHistoryRequestDirection = S.String;
+
 export interface LogsAuditHistoryRequest {
   /** The unique ID that identifies the organization. */
   organizationId: string;
@@ -718,6 +1078,11 @@ export interface LogsAuditHistoryRequest {
   /** The number limits the objects to return. The cursor attribute may be used to iterate over the next batch of objects if there are more than the limit. */
   limit?: number;
 }
+const LogsAuditHistoryRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<LogsAuditHistoryRequest>;
+
 export type LogsAuditHistoryResultItemAction = LogsAuditListResultItemAction;
 export type LogsAuditHistoryResultItemActorContext =
   | "api"
@@ -743,6 +1108,9 @@ export interface LogsAuditHistoryResultItemActor {
   /** The type of actor. */
   type?: LogsAuditHistoryResultItemActorType | null;
 }
+const LogsAuditHistoryResultItemActor =
+  LogsAuditListResultItemActor as any as S.Schema<LogsAuditHistoryResultItemActor>;
+
 export type LogsAuditHistoryResultItemOrganization = LogsAuditListResultItemOrganization;
 export type LogsAuditHistoryResultItemRaw = LogsAuditListResultItemRaw;
 export type LogsAuditHistoryResultItemResource = LogsAuditListResultItemResource;
@@ -760,8 +1128,23 @@ export interface LogsAuditHistoryResultItem {
   /** Provides details about the affected resource. */
   resource?: LogsAuditListResultItemResource | null;
 }
+const LogsAuditHistoryResultItem = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<LogsAuditHistoryResultItem>;
+
 export type LogsAuditHistoryResultList = Array<LogsAuditHistoryResultItem>;
+const LogsAuditHistoryResultList = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<LogsAuditHistoryResultList>;
+
 export type LogsAuditHistoryResponse = LogsAuditHistoryResultList;
+const LogsAuditHistoryResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<LogsAuditHistoryResponse>;
+
 export interface PutOrganizationProfileRequest {
   organizationId: string;
   businessAddress: string;
@@ -770,7 +1153,17 @@ export interface PutOrganizationProfileRequest {
   businessPhone: string;
   externalMetadata: string;
 }
+const PutOrganizationProfileRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<PutOrganizationProfileRequest>;
+
 export interface PutOrganizationProfileResponse {}
+const PutOrganizationProfileResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<PutOrganizationProfileResponse>;
+
 export type UpdateRequestParent = CreateRequestParent;
 export type UpdateRequestProfile = CreateRequestProfile;
 export interface UpdateOrganizationRequest {
@@ -779,6 +1172,11 @@ export interface UpdateOrganizationRequest {
   parent?: CreateRequestParent;
   profile?: CreateRequestProfile;
 }
+const UpdateOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<UpdateOrganizationRequest>;
+
 export type UpdateResponseMetaHierarchyTagsList = Array<string>;
 export type UpdateResponseMetaTenantFlags = CreateResponseMetaTenantFlags;
 export interface UpdateResponseMeta {
@@ -799,6 +1197,9 @@ export interface UpdateOrganizationResponse {
   parent?: CreateResponseParent | null;
   profile?: CreateRequestProfile | null;
 }
+const UpdateOrganizationResponse =
+  CreateOrganizationResponse as any as S.Schema<UpdateOrganizationResponse>;
+
 export type CreateMemberError = CloudflareOpError;
 /** Create a membership that grants access to a specific Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
 export const createMember: API.OperationMethod<
@@ -807,8 +1208,8 @@ export const createMember: API.OperationMethod<
   CreateMemberError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateMemberRequest>,
-  output: __S(5) as any as S.Schema<CreateMemberResponse>,
+  input: CreateMemberRequest,
+  output: CreateMemberResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -822,8 +1223,8 @@ export const createOrganization: API.OperationMethod<
   CreateOrganizationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateOrganizationRequest>,
-  output: __S(13) as any as S.Schema<CreateOrganizationResponse>,
+  input: CreateOrganizationRequest,
+  output: CreateOrganizationResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -837,8 +1238,8 @@ export const deleteMember: API.OperationMethod<
   DeleteMemberError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<DeleteMemberRequest>,
-  output: __S(15) as any as S.Schema<DeleteMemberResponse>,
+  input: DeleteMemberRequest,
+  output: DeleteMemberResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -852,8 +1253,8 @@ export const deleteOrganization: API.OperationMethod<
   DeleteOrganizationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<DeleteOrganizationRequest>,
-  output: __S(17) as any as S.Schema<DeleteOrganizationResponse>,
+  input: DeleteOrganizationRequest,
+  output: DeleteOrganizationResponse,
   errors: [OrganizationNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -867,8 +1268,8 @@ export const getBillingUsage: API.OperationMethod<
   GetBillingUsageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<GetBillingUsageRequest>,
-  output: __S(23) as any as S.Schema<GetBillingUsageResponse>,
+  input: GetBillingUsageRequest,
+  output: GetBillingUsageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -882,8 +1283,8 @@ export const getMember: API.OperationMethod<
   GetMemberError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetMemberRequest>,
-  output: __S(25) as any as S.Schema<GetMemberResponse>,
+  input: GetMemberRequest,
+  output: GetMemberResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -897,8 +1298,8 @@ export const getOrganization: API.OperationMethod<
   GetOrganizationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<GetOrganizationRequest>,
-  output: __S(27) as any as S.Schema<GetOrganizationResponse>,
+  input: GetOrganizationRequest,
+  output: GetOrganizationResponse,
   errors: [OrganizationNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -912,8 +1313,8 @@ export const getOrganizationAccount: API.OperationMethod<
   GetOrganizationAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<GetOrganizationAccountRequest>,
-  output: __S(34) as any as S.Schema<GetOrganizationAccountResponse>,
+  input: GetOrganizationAccountRequest,
+  output: GetOrganizationAccountResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -927,8 +1328,8 @@ export const getOrganizationProfile: API.OperationMethod<
   GetOrganizationProfileError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<GetOrganizationProfileRequest>,
-  output: __S(36) as any as S.Schema<GetOrganizationProfileResponse>,
+  input: GetOrganizationProfileRequest,
+  output: GetOrganizationProfileResponse,
   errors: [OrganizationNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -944,8 +1345,8 @@ export const listLogAudits: API.PaginatedOperationMethod<
   LogsAuditListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(43) as any as S.Schema<ListLogAuditsRequest>,
-    output: __S(51) as any as S.Schema<ListLogAuditsResponse>,
+    input: ListLogAuditsRequest,
+    output: ListLogAuditsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -967,8 +1368,8 @@ export const listMembers: API.OperationMethod<
   ListMembersError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<ListMembersRequest>,
-  output: __S(56) as any as S.Schema<ListMembersResponse>,
+  input: ListMembersRequest,
+  output: ListMembersResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -984,8 +1385,8 @@ export const listOrganizations: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(60) as any as S.Schema<ListOrganizationsRequest>,
-    output: __S(63) as any as S.Schema<ListOrganizationsResponse>,
+    input: ListOrganizationsRequest,
+    output: ListOrganizationsResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1002,8 +1403,8 @@ export const logsAuditHistory: API.OperationMethod<
   LogsAuditHistoryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<LogsAuditHistoryRequest>,
-  output: __S(67) as any as S.Schema<LogsAuditHistoryResponse>,
+  input: LogsAuditHistoryRequest,
+  output: LogsAuditHistoryResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1017,8 +1418,8 @@ export const putOrganizationProfile: API.OperationMethod<
   PutOrganizationProfileError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<PutOrganizationProfileRequest>,
-  output: __S(69) as any as S.Schema<PutOrganizationProfileResponse>,
+  input: PutOrganizationProfileRequest,
+  output: PutOrganizationProfileResponse,
   errors: [OrganizationNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1032,8 +1433,8 @@ export const updateOrganization: API.OperationMethod<
   UpdateOrganizationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<UpdateOrganizationRequest>,
-  output: __S(13) as any as S.Schema<UpdateOrganizationResponse>,
+  input: UpdateOrganizationRequest,
+  output: UpdateOrganizationResponse,
   errors: [OrganizationNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1053,8 +1454,8 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          user: __S(0),
-          status: S.optional(S.String),
+          user: CreateMemberRequestMemberUser,
+          status: S.optional(CreateMemberRequestMemberStatus),
         }),
       ).annotate({
         identifier: "CreateMemberRequestMember",
@@ -1063,7 +1464,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label("organization_id")),
-          member: __S(1),
+          member: CreateMemberRequestMember,
         })
           .pipe(
             T.Http({ method: "POST", uri: "/organizations/{organization_id}/members", code: 200 }),
@@ -1088,10 +1489,10 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           createTime: S.String.pipe(T.Body("create_time")),
-          meta: __S(3),
-          status: S.String,
+          meta: CreateMemberResponseMetaMap,
+          status: CreateMemberResponseStatus,
           updateTime: S.String.pipe(T.Body("update_time")),
-          user: __S(4),
+          user: CreateMemberResponseUser,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateMemberResponse" });
     case 6:
@@ -1119,8 +1520,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          parent: S.optional(__S(6)),
-          profile: S.optional(__S(7)),
+          parent: S.optional(CreateRequestParent),
+          profile: S.optional(CreateRequestProfile),
         })
           .pipe(T.Http({ method: "POST", uri: "/organizations", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1149,9 +1550,13 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          hierarchyTags: S.optional(S.NullOr(__S(9)).pipe(T.Body("hierarchy_tags"))),
+          hierarchyTags: S.optional(
+            S.NullOr(CreateResponseMetaHierarchyTagsList).pipe(T.Body("hierarchy_tags")),
+          ),
           managedBy: S.optional(S.NullOr(S.String).pipe(T.Body("managed_by"))),
-          tenantFlags: S.optional(S.NullOr(__S(10)).pipe(T.Body("tenant_flags"))),
+          tenantFlags: S.optional(
+            S.NullOr(CreateResponseMetaTenantFlags).pipe(T.Body("tenant_flags")),
+          ),
         }),
       ).annotate({ identifier: "CreateResponseMeta" });
     case 4:
@@ -1166,10 +1571,10 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String,
           createTime: S.String.pipe(T.Body("create_time")),
-          meta: __S(11),
+          meta: CreateResponseMeta,
           name: S.String,
-          parent: S.optional(S.NullOr(__S(12))),
-          profile: S.optional(S.NullOr(__S(7))),
+          parent: S.optional(S.NullOr(CreateResponseParent)),
+          profile: S.optional(S.NullOr(CreateRequestProfile)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateOrganizationResponse",
@@ -1234,13 +1639,13 @@ function __c2(j: number): any {
     case 3:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 4:
-      return S.Record(S.String, __S(19));
+      return S.Record(S.String, BillingUsageGetResultItemTagsValue);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          chargeCategory: S.String.pipe(T.Body("ChargeCategory")),
+          chargeCategory: BillingUsageGetResultItemChargeCategory.pipe(T.Body("ChargeCategory")),
           chargeDescription: S.String.pipe(T.Body("ChargeDescription")),
-          chargeFrequency: S.String.pipe(T.Body("ChargeFrequency")),
+          chargeFrequency: BillingUsageGetResultItemChargeFrequency.pipe(T.Body("ChargeFrequency")),
           chargePeriodEnd: S.String.pipe(T.Body("ChargePeriodEnd")),
           chargePeriodStart: S.String.pipe(T.Body("ChargePeriodStart")),
           consumedQuantity: S.Number.pipe(T.Body("ConsumedQuantity")),
@@ -1255,7 +1660,9 @@ function __c2(j: number): any {
           billingCurrency: S.optional(S.NullOr(S.String).pipe(T.Body("BillingCurrency"))),
           billingPeriodEnd: S.optional(S.NullOr(S.String).pipe(T.Body("BillingPeriodEnd"))),
           billingPeriodStart: S.optional(S.NullOr(S.String).pipe(T.Body("BillingPeriodStart"))),
-          chargeClass: S.optional(S.NullOr(S.String).pipe(T.Body("ChargeClass"))),
+          chargeClass: S.optional(
+            S.NullOr(BillingUsageGetResultItemChargeClass).pipe(T.Body("ChargeClass")),
+          ),
           contractedCost: S.optional(S.NullOr(S.Number).pipe(T.Body("ContractedCost"))),
           contractedUnitPrice: S.optional(S.NullOr(S.Number).pipe(T.Body("ContractedUnitPrice"))),
           effectiveCost: S.optional(S.NullOr(S.Number).pipe(T.Body("EffectiveCost"))),
@@ -1267,7 +1674,7 @@ function __c2(j: number): any {
           regionName: S.optional(S.NullOr(S.String).pipe(T.Body("RegionName"))),
           subAccountId: S.optional(S.NullOr(S.String).pipe(T.Body("SubAccountId"))),
           subAccountName: S.optional(S.NullOr(S.String).pipe(T.Body("SubAccountName"))),
-          tags: S.optional(S.NullOr(__S(20)).pipe(T.Body("Tags"))),
+          tags: S.optional(S.NullOr(BillingUsageGetResultItemTagsMap).pipe(T.Body("Tags"))),
           xBillableMetricName: S.optional(S.NullOr(S.String).pipe(T.Body("x_BillableMetricName"))),
           xProductCategoryName: S.optional(
             S.NullOr(S.String).pipe(T.Body("x_ProductCategoryName")),
@@ -1281,10 +1688,10 @@ function __c2(j: number): any {
         identifier: "BillingUsageGetResultItem",
       });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(BillingUsageGetResultItem);
     case 7:
       return S.suspend(() =>
-        __S(22).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        BillingUsageGetResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetBillingUsageResponse" });
   }
 }
@@ -1310,10 +1717,10 @@ function __c3(j: number): any {
         S.Struct({
           id: S.String,
           createTime: S.String.pipe(T.Body("create_time")),
-          meta: __S(3),
-          status: S.String,
+          meta: GetMemberResponseMetaMap,
+          status: GetMemberResponseStatus,
           updateTime: S.String.pipe(T.Body("update_time")),
-          user: __S(4),
+          user: CreateMemberResponseUser,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetMemberResponse" });
     case 2:
@@ -1329,10 +1736,10 @@ function __c3(j: number): any {
         S.Struct({
           id: S.String,
           createTime: S.String.pipe(T.Body("create_time")),
-          meta: __S(11),
+          meta: GetResponseMeta,
           name: S.String,
-          parent: S.optional(S.NullOr(__S(12))),
-          profile: S.optional(S.NullOr(__S(7))),
+          parent: S.optional(S.NullOr(CreateResponseParent)),
+          profile: S.optional(S.NullOr(CreateRequestProfile)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetOrganizationResponse" });
     case 4:
@@ -1350,13 +1757,16 @@ function __c3(j: number): any {
         S.Struct({
           organizationId: S.String.pipe(T.Label("organization_id")),
           accountPubname: S.optional(
-            __S(28).pipe(T.Body("account_pubname"), T.DeepQuery("account_pubname")),
+            GetOrganizationAccountRequestAccountPubname.pipe(
+              T.Body("account_pubname"),
+              T.DeepQuery("account_pubname"),
+            ),
           ),
-          direction: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(GetOrganizationAccountRequestDirection.pipe(T.Query())),
           includeTags: S.optional(S.Boolean.pipe(T.Query("include_tags"))),
           includeTotal: S.optional(S.Boolean.pipe(T.Query("include_total"))),
-          name: S.optional(__S(28).pipe(T.DeepQuery("name"))),
-          orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
+          name: S.optional(GetOrganizationAccountRequestName.pipe(T.DeepQuery("name"))),
+          orderBy: S.optional(GetOrganizationAccountRequestOrderBy.pipe(T.Query("order_by"))),
           pageSize: S.optional(S.Number.pipe(T.Query("page_size"))),
           pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
         })
@@ -1392,18 +1802,21 @@ function __c4(j: number): any {
           id: S.String,
           createdOn: S.String.pipe(T.Body("created_on")),
           name: S.String,
-          settings: __S(30),
-          type: S.String,
-          tags: S.optional(S.NullOr(__S(31))),
+          settings: GetOrganizationAccountResultItemSettings,
+          type: GetOrganizationAccountResultItemType,
+          tags: S.optional(S.NullOr(GetOrganizationAccountResultItemTagsMap)),
         }),
       ).annotate({
         identifier: "GetOrganizationAccountResultItem",
       });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(GetOrganizationAccountResultItem);
     case 2:
       return S.suspend(() =>
-        __S(33).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        GetOrganizationAccountResultList.pipe(
+          T.EnvelopePayloadRoot(),
+          T.KeyDictionary(KEY_DICTIONARY),
+        ),
       ).annotate({
         identifier: "GetOrganizationAccountResponse",
       });
@@ -1434,15 +1847,15 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          not: S.optional(__S(9)),
+          not: S.optional(LogsAuditListRequestIdNotList),
         }),
       ).annotate({ identifier: "LogsAuditListRequestId" });
     case 6:
-      return S.Array(S.String);
+      return S.Array(LogsAuditListRequestActionResultNotItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          not: S.optional(__S(38)),
+          not: S.optional(LogsAuditListRequestActionResultNotList),
         }),
       ).annotate({
         identifier: "LogsAuditListRequestActionResult",
@@ -1454,7 +1867,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          not: S.optional(__S(9)),
+          not: S.optional(LogsAuditListRequestActorEmailNotList),
         }),
       ).annotate({
         identifier: "LogsAuditListRequestActorEmail",
@@ -1464,7 +1877,7 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          not: S.optional(__S(41)),
+          not: S.optional(LogsAuditListRequestRawStatusCodeNotList),
         }),
       ).annotate({
         identifier: "LogsAuditListRequestRawStatusCode",
@@ -1475,46 +1888,90 @@ function __c5(j: number): any {
           organizationId: S.String.pipe(T.Label("organization_id")),
           before: S.String.pipe(T.Query()),
           since: S.String.pipe(T.Query()),
-          id: S.optional(__S(37).pipe(T.DeepQuery("id"))),
+          id: S.optional(LogsAuditListRequestId.pipe(T.DeepQuery("id"))),
           actionResult: S.optional(
-            __S(39).pipe(T.Body("action_result"), T.DeepQuery("action_result")),
+            LogsAuditListRequestActionResult.pipe(
+              T.Body("action_result"),
+              T.DeepQuery("action_result"),
+            ),
           ),
-          actionType: S.optional(__S(39).pipe(T.Body("action_type"), T.DeepQuery("action_type"))),
+          actionType: S.optional(
+            LogsAuditListRequestActionType.pipe(T.Body("action_type"), T.DeepQuery("action_type")),
+          ),
           actorContext: S.optional(
-            __S(39).pipe(T.Body("actor_context"), T.DeepQuery("actor_context")),
+            LogsAuditListRequestActorContext.pipe(
+              T.Body("actor_context"),
+              T.DeepQuery("actor_context"),
+            ),
           ),
-          actorEmail: S.optional(__S(40).pipe(T.Body("actor_email"), T.DeepQuery("actor_email"))),
-          actorId: S.optional(__S(40).pipe(T.Body("actor_id"), T.DeepQuery("actor_id"))),
+          actorEmail: S.optional(
+            LogsAuditListRequestActorEmail.pipe(T.Body("actor_email"), T.DeepQuery("actor_email")),
+          ),
+          actorId: S.optional(
+            LogsAuditListRequestActorId.pipe(T.Body("actor_id"), T.DeepQuery("actor_id")),
+          ),
           actorIpAddress: S.optional(
-            __S(40).pipe(T.Body("actor_ip_address"), T.DeepQuery("actor_ip_address")),
+            LogsAuditListRequestActorIpAddress.pipe(
+              T.Body("actor_ip_address"),
+              T.DeepQuery("actor_ip_address"),
+            ),
           ),
           actorTokenId: S.optional(
-            __S(40).pipe(T.Body("actor_token_id"), T.DeepQuery("actor_token_id")),
+            LogsAuditListRequestActorTokenId.pipe(
+              T.Body("actor_token_id"),
+              T.DeepQuery("actor_token_id"),
+            ),
           ),
           actorTokenName: S.optional(
-            __S(40).pipe(T.Body("actor_token_name"), T.DeepQuery("actor_token_name")),
+            LogsAuditListRequestActorTokenName.pipe(
+              T.Body("actor_token_name"),
+              T.DeepQuery("actor_token_name"),
+            ),
           ),
-          actorType: S.optional(__S(39).pipe(T.Body("actor_type"), T.DeepQuery("actor_type"))),
+          actorType: S.optional(
+            LogsAuditListRequestActorType.pipe(T.Body("actor_type"), T.DeepQuery("actor_type")),
+          ),
           cursor: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(LogsAuditListRequestDirection.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           rawCfRayId: S.optional(
-            __S(40).pipe(T.Body("raw_cf_ray_id"), T.DeepQuery("raw_cf_ray_id")),
+            LogsAuditListRequestRawCfRayId.pipe(
+              T.Body("raw_cf_ray_id"),
+              T.DeepQuery("raw_cf_ray_id"),
+            ),
           ),
-          rawMethod: S.optional(__S(40).pipe(T.Body("raw_method"), T.DeepQuery("raw_method"))),
+          rawMethod: S.optional(
+            LogsAuditListRequestRawMethod.pipe(T.Body("raw_method"), T.DeepQuery("raw_method")),
+          ),
           rawStatusCode: S.optional(
-            __S(42).pipe(T.Body("raw_status_code"), T.DeepQuery("raw_status_code")),
+            LogsAuditListRequestRawStatusCode.pipe(
+              T.Body("raw_status_code"),
+              T.DeepQuery("raw_status_code"),
+            ),
           ),
-          rawUri: S.optional(__S(40).pipe(T.Body("raw_uri"), T.DeepQuery("raw_uri"))),
-          resourceId: S.optional(__S(40).pipe(T.Body("resource_id"), T.DeepQuery("resource_id"))),
+          rawUri: S.optional(
+            LogsAuditListRequestRawUri.pipe(T.Body("raw_uri"), T.DeepQuery("raw_uri")),
+          ),
+          resourceId: S.optional(
+            LogsAuditListRequestResourceId.pipe(T.Body("resource_id"), T.DeepQuery("resource_id")),
+          ),
           resourceProduct: S.optional(
-            __S(40).pipe(T.Body("resource_product"), T.DeepQuery("resource_product")),
+            LogsAuditListRequestResourceProduct.pipe(
+              T.Body("resource_product"),
+              T.DeepQuery("resource_product"),
+            ),
           ),
           resourceScope: S.optional(
-            __S(39).pipe(T.Body("resource_scope"), T.DeepQuery("resource_scope")),
+            LogsAuditListRequestResourceScope.pipe(
+              T.Body("resource_scope"),
+              T.DeepQuery("resource_scope"),
+            ),
           ),
           resourceType: S.optional(
-            __S(40).pipe(T.Body("resource_type"), T.DeepQuery("resource_type")),
+            LogsAuditListRequestResourceType.pipe(
+              T.Body("resource_type"),
+              T.DeepQuery("resource_type"),
+            ),
           ),
         })
           .pipe(
@@ -1541,12 +1998,12 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          context: S.optional(S.NullOr(S.String)),
+          context: S.optional(S.NullOr(LogsAuditListResultItemActorContext)),
           email: S.optional(S.NullOr(S.String)),
           ipAddress: S.optional(S.NullOr(S.String).pipe(T.Body("ip_address"))),
           tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
           tokenName: S.optional(S.NullOr(S.String).pipe(T.Body("token_name"))),
-          type: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(LogsAuditListResultItemActorType)),
         }),
       ).annotate({
         identifier: "LogsAuditListResultItemActor",
@@ -1592,19 +2049,19 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          action: S.optional(S.NullOr(__S(44))),
-          actor: S.optional(S.NullOr(__S(45))),
-          organization: S.optional(S.NullOr(__S(46))),
-          raw: S.optional(S.NullOr(__S(47))),
-          resource: S.optional(S.NullOr(__S(48))),
+          action: S.optional(S.NullOr(LogsAuditListResultItemAction)),
+          actor: S.optional(S.NullOr(LogsAuditListResultItemActor)),
+          organization: S.optional(S.NullOr(LogsAuditListResultItemOrganization)),
+          raw: S.optional(S.NullOr(LogsAuditListResultItemRaw)),
+          resource: S.optional(S.NullOr(LogsAuditListResultItemResource)),
         }),
       ).annotate({ identifier: "LogsAuditListResultItem" });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(LogsAuditListResultItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(50).pipe(T.EnvelopePayload()),
+          result: LogsAuditListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListLogAuditsResponse" });
@@ -1620,8 +2077,8 @@ function __c6(j: number): any {
           organizationId: S.String.pipe(T.Label("organization_id")),
           pageSize: S.optional(S.Number.pipe(T.Query("page_size"))),
           pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
-          status: S.optional(__S(38).pipe(T.Query())),
-          user: S.optional(__S(52).pipe(T.DeepQuery("user"))),
+          status: S.optional(ListMembersRequestStatusList.pipe(T.Query())),
+          user: S.optional(ListMembersRequestUser.pipe(T.DeepQuery("user"))),
         })
           .pipe(
             T.Http({ method: "GET", uri: "/organizations/{organization_id}/members", code: 200 }),
@@ -1633,21 +2090,21 @@ function __c6(j: number): any {
         S.Struct({
           id: S.String,
           createTime: S.String.pipe(T.Body("create_time")),
-          meta: __S(3),
-          status: S.String,
+          meta: ListMembersResultItemMetaMap,
+          status: ListMembersResultItemStatus,
           updateTime: S.String.pipe(T.Body("update_time")),
-          user: __S(4),
+          user: CreateMemberResponseUser,
         }),
       ).annotate({ identifier: "ListMembersResultItem" });
     case 7:
-      return S.Array(__S(54));
+      return S.Array(ListMembersResultItem);
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        __S(55).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        ListMembersResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListMembersResponse" });
     case 1:
       return S.suspend(() =>
@@ -1674,12 +2131,12 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(__S(9).pipe(T.Query())),
-          containing: S.optional(__S(57).pipe(T.DeepQuery("containing"))),
-          name: S.optional(__S(58).pipe(T.DeepQuery("name"))),
+          id: S.optional(ListRequestIdList.pipe(T.Query())),
+          containing: S.optional(ListRequestContaining.pipe(T.DeepQuery("containing"))),
+          name: S.optional(ListRequestName.pipe(T.DeepQuery("name"))),
           pageSize: S.optional(S.Number.pipe(T.Query("page_size"))),
           pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
-          parent: S.optional(__S(59).pipe(T.DeepQuery("parent"))),
+          parent: S.optional(ListRequestParent.pipe(T.DeepQuery("parent"))),
         })
           .pipe(T.Http({ method: "GET", uri: "/organizations", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1689,18 +2146,18 @@ function __c7(j: number): any {
         S.Struct({
           id: S.String,
           createTime: S.String.pipe(T.Body("create_time")),
-          meta: __S(11),
+          meta: ListResultItemMeta,
           name: S.String,
-          parent: S.optional(S.NullOr(__S(12))),
-          profile: S.optional(S.NullOr(__S(7))),
+          parent: S.optional(S.NullOr(CreateResponseParent)),
+          profile: S.optional(S.NullOr(CreateRequestProfile)),
         }),
       ).annotate({ identifier: "ListResultItem" });
     case 6:
-      return S.Array(__S(61));
+      return S.Array(ListResultItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: __S(62).pipe(T.EnvelopePayload()),
+          result: ListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -1719,7 +2176,7 @@ function __c8(j: number): any {
           before: S.String.pipe(T.Query()),
           since: S.String.pipe(T.Query()),
           cursor: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(LogsAuditHistoryRequestDirection.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         })
           .pipe(
@@ -1735,20 +2192,20 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          action: S.optional(S.NullOr(__S(44))),
-          actor: S.optional(S.NullOr(__S(45))),
-          organization: S.optional(S.NullOr(__S(46))),
-          raw: S.optional(S.NullOr(__S(47))),
-          resource: S.optional(S.NullOr(__S(48))),
+          action: S.optional(S.NullOr(LogsAuditListResultItemAction)),
+          actor: S.optional(S.NullOr(LogsAuditHistoryResultItemActor)),
+          organization: S.optional(S.NullOr(LogsAuditListResultItemOrganization)),
+          raw: S.optional(S.NullOr(LogsAuditListResultItemRaw)),
+          resource: S.optional(S.NullOr(LogsAuditListResultItemResource)),
         }),
       ).annotate({
         identifier: "LogsAuditHistoryResultItem",
       });
     case 2:
-      return S.Array(__S(65));
+      return S.Array(LogsAuditHistoryResultItem);
     case 3:
       return S.suspend(() =>
-        __S(66).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        LogsAuditHistoryResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "LogsAuditHistoryResponse" });
     case 4:
       return S.suspend(() =>
@@ -1776,40 +2233,13 @@ function __c8(j: number): any {
         S.Struct({
           organizationId: S.String.pipe(T.Label("organization_id")),
           name: S.String,
-          parent: S.optional(__S(6)),
-          profile: S.optional(__S(7)),
+          parent: S.optional(CreateRequestParent),
+          profile: S.optional(CreateRequestProfile),
         })
           .pipe(T.Http({ method: "PUT", uri: "/organizations/{organization_id}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UpdateOrganizationRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
   }
 }

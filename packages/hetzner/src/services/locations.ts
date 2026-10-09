@@ -7,8 +7,6 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
@@ -16,6 +14,8 @@ export interface GetLocationRequest {
   /** ID of the Location. */
   id: number;
 }
+const GetLocationRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetLocationRequest>;
+
 export interface GetLocationResponseLocation {
   /** ID of the [Location](#tag/locations). */
   id: number;
@@ -34,9 +34,16 @@ export interface GetLocationResponseLocation {
   /** Name of the Network Zone this [Location](#tag/locations) resides in. */
   network_zone: string;
 }
+const GetLocationResponseLocation = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GetLocationResponseLocation>;
+
 export interface GetLocationResponse {
   location: GetLocationResponseLocation;
 }
+const GetLocationResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetLocationResponse>;
+
 export type ListLocationsRequestSortItem =
   | "id"
   | "id:asc"
@@ -44,7 +51,14 @@ export type ListLocationsRequestSortItem =
   | "name"
   | "name:asc"
   | "name:desc";
+const ListLocationsRequestSortItem = S.String;
+
 export type ListLocationsRequestSortList = Array<ListLocationsRequestSortItem | (string & {})>;
+const ListLocationsRequestSortList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ListLocationsRequestSortList>;
+
 export interface ListLocationsRequest {
   /** Filter resources by their name. The response will only contain the resources matching exactly the specified name. */
   name?: string;
@@ -55,9 +69,16 @@ export interface ListLocationsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
+const ListLocationsRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ListLocationsRequest>;
+
 export type ListLocationsResponseLocationsItem = GetLocationResponseLocation;
 /** List of [Locations](#tag/locations). */
 export type ListLocationsResponseLocationsList = Array<GetLocationResponseLocation>;
+const ListLocationsResponseLocationsList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListLocationsResponseLocationsList>;
+
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListLocationsResponseMetaPagination {
   /** Current page number. */
@@ -73,15 +94,30 @@ export interface ListLocationsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
+const ListLocationsResponseMetaPagination = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListLocationsResponseMetaPagination>;
+
 export interface ListLocationsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListLocationsResponseMetaPagination;
 }
+const ListLocationsResponseMeta = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListLocationsResponseMeta>;
+
 export interface ListLocationsResponse {
   /** List of [Locations](#tag/locations). */
   locations: ListLocationsResponseLocationsList;
   meta: ListLocationsResponseMeta;
 }
+const ListLocationsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListLocationsResponse>;
+
 export type GetLocationError = HetznerOpError;
 /** Get a Location Returns a [Location](#tag/locations). */
 export const getLocation: API.OperationMethod<
@@ -90,8 +126,8 @@ export const getLocation: API.OperationMethod<
   GetLocationError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetLocationRequest>,
-  output: __S(2) as any as S.Schema<GetLocationResponse>,
+  input: GetLocationRequest,
+  output: GetLocationResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -107,8 +143,8 @@ export const listLocations: API.PaginatedOperationMethod<
   GetLocationResponseLocation
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(4) as any as S.Schema<ListLocationsRequest>,
-    output: __S(8) as any as S.Schema<ListLocationsResponse>,
+    input: ListLocationsRequest,
+    output: ListLocationsResponse,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -150,22 +186,22 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          location: __S(1),
+          location: GetLocationResponseLocation,
         }),
       ).annotate({ identifier: "GetLocationResponse" });
     case 3:
-      return S.Array(S.String);
+      return S.Array(ListLocationsRequestSortItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(__S(3).pipe(T.Query())),
+          sort: S.optional(ListLocationsRequestSortList.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/locations", code: 200 })),
       ).annotate({ identifier: "ListLocationsRequest" });
     case 5:
-      return S.Array(__S(1));
+      return S.Array(GetLocationResponseLocation);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -182,7 +218,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(6),
+          pagination: ListLocationsResponseMetaPagination,
         }),
       ).annotate({
         identifier: "ListLocationsResponseMeta",
@@ -194,22 +230,9 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          locations: __S(5),
-          meta: __S(7),
+          locations: ListLocationsResponseLocationsList,
+          meta: ListLocationsResponseMeta,
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

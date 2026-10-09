@@ -8,8 +8,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -51,8 +49,16 @@ export class UnprocessableEntity
 
 /** Actions covered by this statement */
 export type CreateApiKeyCompanyRequestPermissionsItemActionsList = Array<string>;
+const CreateApiKeyCompanyRequestPermissionsItemActionsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateApiKeyCompanyRequestPermissionsItemActionsList>;
+
 /** Resource identifiers. Can look like 'biz_xxxx' or 'biz_xxx|pass_*|exp_xxx' or 'biz_xxx|app_xxx' or 'biz_xxx|pass_xxx|exp_xxx' or 'biz_xxx|pass_xxx' or 'biz_xxx|pass_*' */
 export type CreateApiKeyCompanyRequestPermissionsItemResourcesList = Array<string>;
+const CreateApiKeyCompanyRequestPermissionsItemResourcesList =
+  CreateApiKeyCompanyRequestPermissionsItemActionsList as any as S.Schema<CreateApiKeyCompanyRequestPermissionsItemResourcesList>;
+
 /** Input for a single permissions statement */
 export interface CreateApiKeyCompanyRequestPermissionsItem {
   /** Actions covered by this statement */
@@ -62,9 +68,19 @@ export interface CreateApiKeyCompanyRequestPermissionsItem {
   /** Resource identifiers. Can look like 'biz_xxxx' or 'biz_xxx|pass_*|exp_xxx' or 'biz_xxx|app_xxx' or 'biz_xxx|pass_xxx|exp_xxx' or 'biz_xxx|pass_xxx' or 'biz_xxx|pass_*' */
   resources: CreateApiKeyCompanyRequestPermissionsItemResourcesList;
 }
+const CreateApiKeyCompanyRequestPermissionsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateApiKeyCompanyRequestPermissionsItem>;
+
 /** Granular permission statements defining which actions this API key can perform. Either permissions or role must be provided. */
 export type CreateApiKeyCompanyRequestPermissionsList =
   Array<CreateApiKeyCompanyRequestPermissionsItem>;
+const CreateApiKeyCompanyRequestPermissionsList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateApiKeyCompanyRequestPermissionsList>;
+
 /** The different system roles that can be assigned. */
 export type PermissionSystemRoles =
   | "owner"
@@ -72,6 +88,8 @@ export type PermissionSystemRoles =
   | "moderator"
   | "sales_manager"
   | "advertiser";
+const PermissionSystemRoles = S.String;
+
 export interface CreateApiKeyCompanyRequest {
   /** The unique identifier of the parent platform company (e.g. 'biz_xxx'). */
   parent_company_id: string;
@@ -84,6 +102,11 @@ export interface CreateApiKeyCompanyRequest {
   /** A system role to inherit permissions from (e.g. owner, admin, moderator). Either role or permissions must be provided. */
   role?: PermissionSystemRoles | (string & {}) | null;
 }
+const CreateApiKeyCompanyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateApiKeyCompanyRequest>;
+
 export interface CreateApiKeyCompanyResponse {
   /** The unique identifier for the authorized api key. */
   id: string;
@@ -92,6 +115,11 @@ export interface CreateApiKeyCompanyResponse {
   /** The secret key used to authenticate requests. Only returned at creation time. */
   secret_key: string | Redacted.Redacted<string>;
 }
+const CreateApiKeyCompanyResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateApiKeyCompanyResponse>;
+
 /** The available countries on the platform */
 export type Countries =
   | "us"
@@ -336,13 +364,25 @@ export type Countries =
   | "zm"
   | "zw"
   | "sy";
+const Countries = S.String;
+
 /** The company's logo image. Accepts PNG, JPEG, or GIF format. */
 export interface CreateCompanyRequestLogo {
   /** The ID of an existing file object. */
   id: string;
 }
+const CreateCompanyRequestLogo = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateCompanyRequestLogo>;
+
 /** A key-value JSON object of custom metadata to store on the company. */
 export type CreateCompanyRequestMetadataMap = { [key: string]: unknown | undefined };
+const CreateCompanyRequestMetadataMap = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateCompanyRequestMetadataMap>;
+
 export interface CreateCompanyRequest {
   /** The country the company is located in. Defaults to the parent company's country for connected accounts, or the owner's IP-derived country. */
   country?: Countries | (string & {}) | null;
@@ -361,6 +401,8 @@ export interface CreateCompanyRequest {
   /** The display name of the company shown to customers. */
   title: string;
 }
+const CreateCompanyRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateCompanyRequest>;
+
 /** The product featured for affiliates to promote on this company's affiliate page. Null if none is configured. */
 export interface CompanyFeaturedAffiliateProduct {
   /** The unique identifier for the product. */
@@ -368,13 +410,22 @@ export interface CompanyFeaturedAffiliateProduct {
   /** The display name of the product shown to customers. Maximum 50 characters. */
   name: string;
 }
+const CompanyFeaturedAffiliateProduct = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CompanyFeaturedAffiliateProduct>;
+
 /** The company's logo. */
 export interface CompanyLogo {
   /** A pre-optimized URL for rendering this attachment on the client. This should be used for displaying attachments in apps. */
   url: string | null;
 }
+const CompanyLogo = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CompanyLogo>;
+
 /** A key-value JSON object of custom metadata for this company, managed by the platform that created the account. */
 export type CompanyMetadataMap = { [key: string]: unknown | undefined };
+const CompanyMetadataMap = CreateCompanyRequestMetadataMap as any as S.Schema<CompanyMetadataMap>;
+
 /** The user who owns and has full administrative control over this company. */
 export interface CompanyOwnerUser {
   /** The unique identifier for the user. */
@@ -384,6 +435,8 @@ export interface CompanyOwnerUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
+const CompanyOwnerUser = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CompanyOwnerUser>;
+
 /** The different websites you can have social links for */
 export type SocialLinkWebsites =
   | "x"
@@ -395,6 +448,8 @@ export type SocialLinkWebsites =
   | "twitch"
   | "website"
   | "custom";
+const SocialLinkWebsites = S.String;
+
 /** A social link attached to a resource on the site. */
 export interface CompanySocialLinksItem {
   /** The unique identifier for the social link. */
@@ -404,8 +459,18 @@ export interface CompanySocialLinksItem {
   /** The website */
   website: SocialLinkWebsites;
 }
+const CompanySocialLinksItem = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CompanySocialLinksItem>;
+
 /** The list of social media accounts and external links associated with this company. */
 export type CompanySocialLinksList = Array<CompanySocialLinksItem>;
+const CompanySocialLinksList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CompanySocialLinksList>;
+
 /** A company is a seller on Whop. Companies own products, manage members, and receive payouts. */
 export interface Company {
   /** Guidelines and instructions provided to affiliates explaining how to promote this company's products. */
@@ -443,12 +508,18 @@ export interface Company {
   /** Whether this company has been verified by Whop's trust and safety team. */
   verified: boolean;
 }
+const Company = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Company>;
+
 export interface GetCompanyRequest {
   /** The unique identifier or route slug of the company. */
   id: string;
 }
+const GetCompanyRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetCompanyRequest>;
+
 /** The direction of the sort. */
 export type Direction = "asc" | "desc";
+const Direction = S.String;
+
 export interface ListCompanyRequest {
   after?: string;
   before?: string;
@@ -459,10 +530,15 @@ export interface ListCompanyRequest {
   created_before?: string;
   created_after?: string;
 }
+const ListCompanyRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ListCompanyRequest>;
+
 /** The company's logo. */
 export type CompanyListItemLogo = CompanyLogo;
 /** A key-value JSON object of custom metadata for this company, managed by the platform that created the account. */
 export type CompanyListItemMetadataMap = { [key: string]: unknown | undefined };
+const CompanyListItemMetadataMap =
+  CreateCompanyRequestMetadataMap as any as S.Schema<CompanyListItemMetadataMap>;
+
 /** The user who owns and has full administrative control over this company. */
 export type CompanyListItemOwnerUser = CompanyOwnerUser;
 /** A company is a seller on Whop. Companies own products, manage members, and receive payouts. */
@@ -496,8 +572,15 @@ export interface CompanyListItem {
   /** Whether this company has been verified by Whop's trust and safety team. */
   verified: boolean;
 }
+const CompanyListItem = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<CompanyListItem>;
+
 /** A list of nodes. */
 export type ListCompanyResponseDataList = Array<CompanyListItem>;
+const ListCompanyResponseDataList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListCompanyResponseDataList>;
+
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -509,12 +592,16 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
+const PageInfo = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<PageInfo>;
+
 export interface ListCompanyResponse {
   /** A list of nodes. */
   data: ListCompanyResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
+const ListCompanyResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ListCompanyResponse>;
+
 /** The company's banner image. Accepts PNG or JPEG format. */
 export type UpdateCompanyRequestBannerImage = CreateCompanyRequestLogo;
 /** The company's logo image. Accepts PNG, JPEG, or GIF format. */
@@ -536,8 +623,18 @@ export interface UpdateCompanyRequestSocialLinksItem {
   /** The order of the website social link */
   website_order?: string | null;
 }
+const UpdateCompanyRequestSocialLinksItem = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<UpdateCompanyRequestSocialLinksItem>;
+
 /** The social media links to display on the company's store page. Pass the full list of desired social links -- any existing links not included will be removed. */
 export type UpdateCompanyRequestSocialLinksList = Array<UpdateCompanyRequestSocialLinksItem>;
+const UpdateCompanyRequestSocialLinksList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<UpdateCompanyRequestSocialLinksList>;
+
 export interface UpdateCompanyRequest {
   /** The unique identifier of the company to update. */
   id: string;
@@ -564,6 +661,8 @@ export interface UpdateCompanyRequest {
   /** The display name of the company shown to customers. */
   title?: string | null;
 }
+const UpdateCompanyRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<UpdateCompanyRequest>;
+
 export type CreateApiKeyCompanyError =
   | BadRequest
   | Forbidden
@@ -577,8 +676,8 @@ export const createApiKeyCompany: API.OperationMethod<
   CreateApiKeyCompanyError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateApiKeyCompanyRequest>,
-  output: __S(4) as any as S.Schema<CreateApiKeyCompanyResponse>,
+  input: CreateApiKeyCompanyRequest,
+  output: CreateApiKeyCompanyResponse,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -597,8 +696,8 @@ export const createCompany: API.OperationMethod<
   CreateCompanyError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<CreateCompanyRequest>,
-  output: __S(13) as any as S.Schema<Company>,
+  input: CreateCompanyRequest,
+  output: Company,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -612,8 +711,8 @@ export const getCompany: API.OperationMethod<
   GetCompanyError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetCompanyRequest>,
-  output: __S(13) as any as S.Schema<Company>,
+  input: GetCompanyRequest,
+  output: Company,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -634,8 +733,8 @@ export const listCompany: API.PaginatedOperationMethod<
   CompanyListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(15) as any as S.Schema<ListCompanyRequest>,
-    output: __S(19) as any as S.Schema<ListCompanyResponse>,
+    input: ListCompanyRequest,
+    output: ListCompanyResponse,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -664,8 +763,8 @@ export const updateCompany: API.OperationMethod<
   UpdateCompanyError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<UpdateCompanyRequest>,
-  output: __S(13) as any as S.Schema<Company>,
+  input: UpdateCompanyRequest,
+  output: Company,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -679,23 +778,23 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(0),
+          actions: CreateApiKeyCompanyRequestPermissionsItemActionsList,
           grant: S.Boolean,
-          resources: __S(0),
+          resources: CreateApiKeyCompanyRequestPermissionsItemResourcesList,
         }),
       ).annotate({
         identifier: "CreateApiKeyCompanyRequestPermissionsItem",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(CreateApiKeyCompanyRequestPermissionsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           parent_company_id: S.String.pipe(T.Label()),
           child_company_id: S.String,
           name: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(S.NullOr(__S(2))),
-          role: S.optional(S.NullOr(S.String)),
+          permissions: S.optional(S.NullOr(CreateApiKeyCompanyRequestPermissionsList)),
+          role: S.optional(S.NullOr(PermissionSystemRoles)),
         }).pipe(
           T.Http({ method: "POST", uri: "/companies/{parent_company_id}/api_keys", code: 200 }),
         ),
@@ -723,11 +822,11 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          country: S.optional(S.NullOr(S.String)),
+          country: S.optional(S.NullOr(Countries)),
           description: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
-          logo: S.optional(S.NullOr(__S(5))),
-          metadata: S.optional(S.NullOr(__S(6))),
+          logo: S.optional(S.NullOr(CreateCompanyRequestLogo)),
+          metadata: S.optional(S.NullOr(CreateCompanyRequestMetadataMap)),
           parent_company_id: S.optional(S.NullOr(S.String)),
           send_customer_emails: S.optional(S.NullOr(S.Boolean)),
           title: S.String,
@@ -765,27 +864,27 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String,
           url: S.String,
-          website: S.String,
+          website: SocialLinkWebsites,
         }),
       ).annotate({ identifier: "CompanySocialLinksItem" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(CompanySocialLinksItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           affiliate_instructions: S.NullOr(S.String),
           created_at: S.String,
           description: S.NullOr(S.String),
-          featured_affiliate_product: S.NullOr(__S(8)),
+          featured_affiliate_product: S.NullOr(CompanyFeaturedAffiliateProduct),
           id: S.String,
-          logo: S.NullOr(__S(9)),
+          logo: S.NullOr(CompanyLogo),
           member_count: S.Number,
-          metadata: S.NullOr(__S(6)),
-          owner_user: __S(10),
+          metadata: S.NullOr(CompanyMetadataMap),
+          owner_user: CompanyOwnerUser,
           published_reviews_count: S.Number,
           route: S.String,
           send_customer_emails: S.Boolean,
-          social_links: __S(12),
+          social_links: CompanySocialLinksList,
           target_audience: S.NullOr(S.String),
           title: S.String,
           updated_at: S.String,
@@ -806,7 +905,7 @@ function __c1(j: number): any {
           first: S.optional(S.Number.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
           parent_company_id: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(Direction.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/companies", code: 200 })),
@@ -821,10 +920,10 @@ function __c2(j: number): any {
           created_at: S.String,
           description: S.NullOr(S.String),
           id: S.String,
-          logo: S.NullOr(__S(9)),
+          logo: S.NullOr(CompanyLogo),
           member_count: S.Number,
-          metadata: S.NullOr(__S(6)),
-          owner_user: __S(10),
+          metadata: S.NullOr(CompanyListItemMetadataMap),
+          owner_user: CompanyOwnerUser,
           published_reviews_count: S.Number,
           route: S.String,
           send_customer_emails: S.Boolean,
@@ -835,7 +934,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "CompanyListItem" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(CompanyListItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -848,56 +947,41 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(17),
-          page_info: __S(18),
+          data: ListCompanyResponseDataList,
+          page_info: PageInfo,
         }),
       ).annotate({ identifier: "ListCompanyResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          image: S.optional(S.NullOr(__S(5))),
+          image: S.optional(S.NullOr(CreateCompanyRequestLogo)),
           order: S.optional(S.NullOr(S.String)),
           title: S.optional(S.NullOr(S.String)),
           url: S.String,
-          website: S.String,
+          website: SocialLinkWebsites,
           website_order: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "UpdateCompanyRequestSocialLinksItem",
       });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(UpdateCompanyRequestSocialLinksItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           affiliate_application_required: S.optional(S.NullOr(S.Boolean)),
           affiliate_instructions: S.optional(S.NullOr(S.String)),
-          banner_image: S.optional(S.NullOr(__S(5))),
+          banner_image: S.optional(S.NullOr(CreateCompanyRequestLogo)),
           description: S.optional(S.NullOr(S.String)),
           featured_affiliate_product_id: S.optional(S.NullOr(S.String)),
-          logo: S.optional(S.NullOr(__S(5))),
+          logo: S.optional(S.NullOr(CreateCompanyRequestLogo)),
           route: S.optional(S.NullOr(S.String)),
           send_customer_emails: S.optional(S.NullOr(S.Boolean)),
-          social_links: S.optional(S.NullOr(__S(21))),
+          social_links: S.optional(S.NullOr(UpdateCompanyRequestSocialLinksList)),
           target_audience: S.optional(S.NullOr(S.String)),
           title: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/companies/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateCompanyRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Athena", serviceShapeName: "AmazonAthena" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "athena" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2017-05-18");
@@ -122,7 +120,7 @@ export class TooManyRequestsException
   extends /*@__PURE__*/ S.TaggedError<TooManyRequestsException>()("TooManyRequestsException", {
     message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     Reason: /*@__PURE__*/ S.optional(
-      /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ThrottleReason" }),
+      /*@__PURE__*/ S.suspend(() => ThrottleReason).annotate({ identifier: "ThrottleReason" }),
     ),
   }) {}
 export class WorkGroupNotFound
@@ -139,9 +137,14 @@ export class WorkGroupNotFound
   ).pipe(C.withNotFoundError) {}
 export type NamedQueryId = string;
 export type NamedQueryIdList = string[];
+const NamedQueryIdList = /*@__PURE__*/ __L.at(__c0, 0);
 export interface BatchGetNamedQueryInput {
   NamedQueryIds: string[];
 }
+const BatchGetNamedQueryInput = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BatchGetNamedQueryInput>;
 export type NameString = string;
 export type DescriptionString = string;
 export type DatabaseString = string;
@@ -155,7 +158,9 @@ export interface NamedQuery {
   NamedQueryId?: string;
   WorkGroup?: string;
 }
+const NamedQuery = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<NamedQuery>;
 export type NamedQueryList = NamedQuery[];
+const NamedQueryList = /*@__PURE__*/ __L.at(__c0, 3);
 export type ErrorCode = string;
 export type ErrorMessage = string;
 export interface UnprocessedNamedQueryId {
@@ -163,17 +168,31 @@ export interface UnprocessedNamedQueryId {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
+const UnprocessedNamedQueryId = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<UnprocessedNamedQueryId>;
 export type UnprocessedNamedQueryIdList = UnprocessedNamedQueryId[];
+const UnprocessedNamedQueryIdList = /*@__PURE__*/ __L.at(__c0, 5);
 export interface BatchGetNamedQueryOutput {
   NamedQueries?: NamedQuery[];
   UnprocessedNamedQueryIds?: UnprocessedNamedQueryId[];
 }
+const BatchGetNamedQueryOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<BatchGetNamedQueryOutput>;
 export type StatementName = string;
 export type PreparedStatementNameList = string[];
+const PreparedStatementNameList = NamedQueryIdList as any as S.Schema<PreparedStatementNameList>;
 export interface BatchGetPreparedStatementInput {
   PreparedStatementNames: string[];
   WorkGroup: string;
 }
+const BatchGetPreparedStatementInput = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<BatchGetPreparedStatementInput>;
 export interface PreparedStatement {
   StatementName?: string;
   QueryStatement?: string;
@@ -181,61 +200,109 @@ export interface PreparedStatement {
   Description?: string;
   LastModifiedTime?: Date;
 }
+const PreparedStatement = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<PreparedStatement>;
 export type PreparedStatementDetailsList = PreparedStatement[];
+const PreparedStatementDetailsList = /*@__PURE__*/ __L.at(__c1, 1);
 export interface UnprocessedPreparedStatementName {
   StatementName?: string;
   ErrorCode?: string;
   ErrorMessage?: string;
 }
+const UnprocessedPreparedStatementName = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<UnprocessedPreparedStatementName>;
 export type UnprocessedPreparedStatementNameList = UnprocessedPreparedStatementName[];
+const UnprocessedPreparedStatementNameList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface BatchGetPreparedStatementOutput {
   PreparedStatements?: PreparedStatement[];
   UnprocessedPreparedStatementNames?: UnprocessedPreparedStatementName[];
 }
+const BatchGetPreparedStatementOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<BatchGetPreparedStatementOutput>;
 export type QueryExecutionId = string;
 export type QueryExecutionIdList = string[];
+const QueryExecutionIdList = NamedQueryIdList as any as S.Schema<QueryExecutionIdList>;
 export interface BatchGetQueryExecutionInput {
   QueryExecutionIds: string[];
 }
+const BatchGetQueryExecutionInput = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<BatchGetQueryExecutionInput>;
 export type StatementType = "DDL" | "DML" | "UTILITY" | (string & {});
+const StatementType = S.String;
+
 export type KmsKey = string;
 export interface ManagedQueryResultsEncryptionConfiguration {
   KmsKey: string;
 }
+const ManagedQueryResultsEncryptionConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ManagedQueryResultsEncryptionConfiguration>;
 export interface ManagedQueryResultsConfiguration {
   Enabled: boolean;
   EncryptionConfiguration?: ManagedQueryResultsEncryptionConfiguration;
 }
+const ManagedQueryResultsConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ManagedQueryResultsConfiguration>;
 export type ResultOutputLocation = string;
 export type EncryptionOption = "SSE_S3" | "SSE_KMS" | "CSE_KMS" | (string & {});
+const EncryptionOption = S.String;
+
 export interface EncryptionConfiguration {
   EncryptionOption: EncryptionOption;
   KmsKey?: string;
 }
+const EncryptionConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<EncryptionConfiguration>;
 export type AwsAccountId = string;
 export type S3AclOption = "BUCKET_OWNER_FULL_CONTROL" | (string & {});
+const S3AclOption = S.String;
+
 export interface AclConfiguration {
   S3AclOption: S3AclOption;
 }
+const AclConfiguration = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<AclConfiguration>;
 export interface ResultConfiguration {
   OutputLocation?: string;
   EncryptionConfiguration?: EncryptionConfiguration;
   ExpectedBucketOwner?: string;
   AclConfiguration?: AclConfiguration;
 }
+const ResultConfiguration = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ResultConfiguration>;
 export type Age = number;
 export interface ResultReuseByAgeConfiguration {
   Enabled: boolean;
   MaxAgeInMinutes?: number;
 }
+const ResultReuseByAgeConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ResultReuseByAgeConfiguration>;
 export interface ResultReuseConfiguration {
   ResultReuseByAgeConfiguration?: ResultReuseByAgeConfiguration;
 }
+const ResultReuseConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ResultReuseConfiguration>;
 export type CatalogNameString = string;
 export interface QueryExecutionContext {
   Database?: string;
   Catalog?: string;
 }
+const QueryExecutionContext = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<QueryExecutionContext>;
 export type QueryExecutionState =
   | "QUEUED"
   | "RUNNING"
@@ -243,6 +310,8 @@ export type QueryExecutionState =
   | "FAILED"
   | "CANCELLED"
   | (string & {});
+const QueryExecutionState = S.String;
+
 export type ErrorCategory = number;
 export type ErrorType = number;
 export interface AthenaError {
@@ -251,6 +320,7 @@ export interface AthenaError {
   Retryable?: boolean;
   ErrorMessage?: string;
 }
+const AthenaError = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<AthenaError>;
 export interface QueryExecutionStatus {
   State?: QueryExecutionState;
   StateChangeReason?: string;
@@ -258,9 +328,14 @@ export interface QueryExecutionStatus {
   CompletionDateTime?: Date;
   AthenaError?: AthenaError;
 }
+const QueryExecutionStatus = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<QueryExecutionStatus>;
 export interface ResultReuseInformation {
   ReusedPreviousResult: boolean;
 }
+const ResultReuseInformation = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ResultReuseInformation>;
 export type DpuCount = number;
 export interface QueryExecutionStatistics {
   EngineExecutionTimeInMillis?: number;
@@ -274,19 +349,31 @@ export interface QueryExecutionStatistics {
   ResultReuseInformation?: ResultReuseInformation;
   DpuCount?: number;
 }
+const QueryExecutionStatistics = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<QueryExecutionStatistics>;
 export interface EngineVersion {
   SelectedEngineVersion?: string;
   EffectiveEngineVersion?: string;
 }
+const EngineVersion = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<EngineVersion>;
 export type ExecutionParameter = string;
 export type ExecutionParameters = string[];
+const ExecutionParameters = NamedQueryIdList as any as S.Schema<ExecutionParameters>;
 export type BoxedBoolean = boolean;
 export type AuthenticationType = "DIRECTORY_IDENTITY" | (string & {});
+const AuthenticationType = S.String;
+
 export interface QueryResultsS3AccessGrantsConfiguration {
   EnableS3AccessGrants: boolean;
   CreateUserLevelPrefix?: boolean;
   AuthenticationType: AuthenticationType;
 }
+const QueryResultsS3AccessGrantsConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<QueryResultsS3AccessGrantsConfiguration>;
 export interface QueryExecution {
   QueryExecutionId?: string;
   Query?: string;
@@ -303,22 +390,41 @@ export interface QueryExecution {
   SubstatementType?: string;
   QueryResultsS3AccessGrantsConfiguration?: QueryResultsS3AccessGrantsConfiguration;
 }
+const QueryExecution = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<QueryExecution>;
 export type QueryExecutionList = QueryExecution[];
+const QueryExecutionList = /*@__PURE__*/ __L.at(__c3, 5);
 export interface UnprocessedQueryExecutionId {
   QueryExecutionId?: string;
   ErrorCode?: string;
   ErrorMessage?: string;
 }
+const UnprocessedQueryExecutionId = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<UnprocessedQueryExecutionId>;
 export type UnprocessedQueryExecutionIdList = UnprocessedQueryExecutionId[];
+const UnprocessedQueryExecutionIdList = /*@__PURE__*/ __L.at(__c3, 7);
 export interface BatchGetQueryExecutionOutput {
   QueryExecutions?: QueryExecution[];
   UnprocessedQueryExecutionIds?: UnprocessedQueryExecutionId[];
 }
+const BatchGetQueryExecutionOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<BatchGetQueryExecutionOutput>;
 export type CapacityReservationName = string;
 export interface CancelCapacityReservationInput {
   Name: string;
 }
+const CancelCapacityReservationInput = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CancelCapacityReservationInput>;
 export interface CancelCapacityReservationOutput {}
+const CancelCapacityReservationOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CancelCapacityReservationOutput>;
 export type TargetDpusInteger = number;
 export type TagKey = string;
 export type TagValue = string;
@@ -326,17 +432,28 @@ export interface Tag {
   Key?: string;
   Value?: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<Tag>;
 export type TagList = Tag[];
+const TagList = /*@__PURE__*/ __L.at(__c4, 4);
 export interface CreateCapacityReservationInput {
   TargetDpus: number;
   Name: string;
   Tags?: Tag[];
 }
+const CreateCapacityReservationInput = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateCapacityReservationInput>;
 export interface CreateCapacityReservationOutput {}
+const CreateCapacityReservationOutput =
+  CancelCapacityReservationOutput as any as S.Schema<CreateCapacityReservationOutput>;
 export type DataCatalogType = "LAMBDA" | "GLUE" | "HIVE" | "FEDERATED" | (string & {});
+const DataCatalogType = S.String;
+
 export type KeyString = string;
 export type ParametersMapValue = string;
 export type ParametersMap = { [key: string]: string | undefined };
+const ParametersMap = /*@__PURE__*/ __L.at(__c4, 6);
 export interface CreateDataCatalogInput {
   Name: string;
   Type: DataCatalogType;
@@ -344,6 +461,10 @@ export interface CreateDataCatalogInput {
   Parameters?: { [key: string]: string | undefined };
   Tags?: Tag[];
 }
+const CreateDataCatalogInput = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreateDataCatalogInput>;
 export type DataCatalogStatus =
   | "CREATE_IN_PROGRESS"
   | "CREATE_COMPLETE"
@@ -355,6 +476,8 @@ export type DataCatalogStatus =
   | "DELETE_COMPLETE"
   | "DELETE_FAILED"
   | (string & {});
+const DataCatalogStatus = S.String;
+
 export type ConnectionType =
   | "DYNAMODB"
   | "MYSQL"
@@ -377,6 +500,8 @@ export type ConnectionType =
   | "DATALAKEGEN2"
   | "DB2AS400"
   | (string & {});
+const ConnectionType = S.String;
+
 export interface DataCatalog {
   Name: string;
   Description?: string;
@@ -386,9 +511,14 @@ export interface DataCatalog {
   ConnectionType?: ConnectionType;
   Error?: string;
 }
+const DataCatalog = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<DataCatalog>;
 export interface CreateDataCatalogOutput {
   DataCatalog?: DataCatalog;
 }
+const CreateDataCatalogOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CreateDataCatalogOutput>;
 export type IdempotencyToken = string;
 export interface CreateNamedQueryInput {
   Name: string;
@@ -398,9 +528,17 @@ export interface CreateNamedQueryInput {
   ClientRequestToken?: string;
   WorkGroup?: string;
 }
+const CreateNamedQueryInput = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<CreateNamedQueryInput>;
 export interface CreateNamedQueryOutput {
   NamedQueryId?: string;
 }
+const CreateNamedQueryOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateNamedQueryOutput>;
 export type NotebookName = string;
 export type ClientRequestToken = string;
 export interface CreateNotebookInput {
@@ -408,27 +546,45 @@ export interface CreateNotebookInput {
   Name: string;
   ClientRequestToken?: string;
 }
+const CreateNotebookInput = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<CreateNotebookInput>;
 export type NotebookId = string;
 export interface CreateNotebookOutput {
   NotebookId?: string;
 }
+const CreateNotebookOutput = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<CreateNotebookOutput>;
 export interface CreatePreparedStatementInput {
   StatementName: string;
   WorkGroup: string;
   QueryStatement: string;
   Description?: string;
 }
+const CreatePreparedStatementInput = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CreatePreparedStatementInput>;
 export interface CreatePreparedStatementOutput {}
+const CreatePreparedStatementOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreatePreparedStatementOutput>;
 export type SessionId = string;
 export interface CreatePresignedNotebookUrlRequest {
   SessionId: string;
 }
+const CreatePresignedNotebookUrlRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreatePresignedNotebookUrlRequest>;
 export type AuthToken = string;
 export interface CreatePresignedNotebookUrlResponse {
   NotebookUrl: string;
   AuthToken: string;
   AuthTokenExpirationTime: number;
 }
+const CreatePresignedNotebookUrlResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<CreatePresignedNotebookUrlResponse>;
 export type BytesScannedCutoffValue = number;
 export type RoleArn = string;
 export type LogGroupName = string;
@@ -436,28 +592,46 @@ export type LogStreamNamePrefix = string;
 export type LogTypeKey = string;
 export type LogTypeValue = string;
 export type LogTypeValuesList = string[];
+const LogTypeValuesList = NamedQueryIdList as any as S.Schema<LogTypeValuesList>;
 export type LogTypesMap = { [key: string]: string[] | undefined };
+const LogTypesMap = /*@__PURE__*/ __L.at(__c6, 2);
 export interface CloudWatchLoggingConfiguration {
   Enabled: boolean;
   LogGroup?: string;
   LogStreamNamePrefix?: string;
   LogTypes?: { [key: string]: string[] | undefined };
 }
+const CloudWatchLoggingConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<CloudWatchLoggingConfiguration>;
 export interface ManagedLoggingConfiguration {
   Enabled: boolean;
   KmsKey?: string;
 }
+const ManagedLoggingConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ManagedLoggingConfiguration>;
 export type S3OutputLocation = string;
 export interface S3LoggingConfiguration {
   Enabled: boolean;
   KmsKey?: string;
   LogLocation?: string;
 }
+const S3LoggingConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<S3LoggingConfiguration>;
 export interface MonitoringConfiguration {
   CloudWatchLoggingConfiguration?: CloudWatchLoggingConfiguration;
   ManagedLoggingConfiguration?: ManagedLoggingConfiguration;
   S3LoggingConfiguration?: S3LoggingConfiguration;
 }
+const MonitoringConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<MonitoringConfiguration>;
 export type CoordinatorDpuSize = number;
 export type MaxConcurrentDpus = number;
 export type DefaultExecutorDpuSize = number;
@@ -465,7 +639,9 @@ export interface Classification {
   Name?: string;
   Properties?: { [key: string]: string | undefined };
 }
+const Classification = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<Classification>;
 export type ClassificationList = Classification[];
+const ClassificationList = /*@__PURE__*/ __L.at(__c7, 0);
 export interface EngineConfiguration {
   CoordinatorDpuSize?: number;
   MaxConcurrentDpus?: number;
@@ -474,14 +650,21 @@ export interface EngineConfiguration {
   SparkProperties?: { [key: string]: string | undefined };
   Classifications?: Classification[];
 }
+const EngineConfiguration = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<EngineConfiguration>;
 export interface CustomerContentEncryptionConfiguration {
   KmsKey: string;
 }
+const CustomerContentEncryptionConfiguration =
+  ManagedQueryResultsEncryptionConfiguration as any as S.Schema<CustomerContentEncryptionConfiguration>;
 export type IdentityCenterInstanceArn = string;
 export interface IdentityCenterConfiguration {
   EnableIdentityCenter?: boolean;
   IdentityCenterInstanceArn?: string;
 }
+const IdentityCenterConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<IdentityCenterConfiguration>;
 export interface WorkGroupConfiguration {
   ResultConfiguration?: ResultConfiguration;
   ManagedQueryResultsConfiguration?: ManagedQueryResultsConfiguration;
@@ -499,6 +682,10 @@ export interface WorkGroupConfiguration {
   IdentityCenterConfiguration?: IdentityCenterConfiguration;
   QueryResultsS3AccessGrantsConfiguration?: QueryResultsS3AccessGrantsConfiguration;
 }
+const WorkGroupConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<WorkGroupConfiguration>;
 export type WorkGroupDescriptionString = string;
 export interface CreateWorkGroupInput {
   Name: string;
@@ -506,40 +693,74 @@ export interface CreateWorkGroupInput {
   Description?: string;
   Tags?: Tag[];
 }
+const CreateWorkGroupInput = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<CreateWorkGroupInput>;
 export interface CreateWorkGroupOutput {}
+const CreateWorkGroupOutput =
+  CreatePreparedStatementOutput as any as S.Schema<CreateWorkGroupOutput>;
 export interface DeleteCapacityReservationInput {
   Name: string;
 }
+const DeleteCapacityReservationInput = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<DeleteCapacityReservationInput>;
 export interface DeleteCapacityReservationOutput {}
+const DeleteCapacityReservationOutput =
+  CancelCapacityReservationOutput as any as S.Schema<DeleteCapacityReservationOutput>;
 export interface DeleteDataCatalogInput {
   Name: string;
   DeleteCatalogOnly?: boolean;
 }
+const DeleteDataCatalogInput = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DeleteDataCatalogInput>;
 export interface DeleteDataCatalogOutput {
   DataCatalog?: DataCatalog;
 }
+const DeleteDataCatalogOutput = CreateDataCatalogOutput as any as S.Schema<DeleteDataCatalogOutput>;
 export interface DeleteNamedQueryInput {
   NamedQueryId: string;
 }
+const DeleteNamedQueryInput = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<DeleteNamedQueryInput>;
 export interface DeleteNamedQueryOutput {}
+const DeleteNamedQueryOutput =
+  CreatePreparedStatementOutput as any as S.Schema<DeleteNamedQueryOutput>;
 export interface DeleteNotebookInput {
   NotebookId: string;
 }
+const DeleteNotebookInput = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<DeleteNotebookInput>;
 export interface DeleteNotebookOutput {}
+const DeleteNotebookOutput = CreatePreparedStatementOutput as any as S.Schema<DeleteNotebookOutput>;
 export interface DeletePreparedStatementInput {
   StatementName: string;
   WorkGroup: string;
 }
+const DeletePreparedStatementInput = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DeletePreparedStatementInput>;
 export interface DeletePreparedStatementOutput {}
+const DeletePreparedStatementOutput =
+  CreatePreparedStatementOutput as any as S.Schema<DeletePreparedStatementOutput>;
 export interface DeleteWorkGroupInput {
   WorkGroup: string;
   RecursiveDeleteOption?: boolean;
 }
+const DeleteWorkGroupInput = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<DeleteWorkGroupInput>;
 export interface DeleteWorkGroupOutput {}
+const DeleteWorkGroupOutput =
+  CreatePreparedStatementOutput as any as S.Schema<DeleteWorkGroupOutput>;
 export interface ExportNotebookInput {
   NotebookId: string;
 }
+const ExportNotebookInput = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ExportNotebookInput>;
 export type NotebookType = "IPYNB" | (string & {});
+const NotebookType = S.String;
+
 export interface NotebookMetadata {
   NotebookId?: string;
   Name?: string;
@@ -548,15 +769,21 @@ export interface NotebookMetadata {
   Type?: NotebookType;
   LastModifiedTime?: Date;
 }
+const NotebookMetadata = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<NotebookMetadata>;
 export type Payload = string;
 export interface ExportNotebookOutput {
   NotebookMetadata?: NotebookMetadata;
   Payload?: string;
 }
+const ExportNotebookOutput = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ExportNotebookOutput>;
 export type CalculationExecutionId = string;
 export interface GetCalculationExecutionRequest {
   CalculationExecutionId: string;
 }
+const GetCalculationExecutionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<GetCalculationExecutionRequest>;
 export type S3Uri = string;
 export type CalculationExecutionState =
   | "CREATING"
@@ -568,16 +795,23 @@ export type CalculationExecutionState =
   | "COMPLETED"
   | "FAILED"
   | (string & {});
+const CalculationExecutionState = S.String;
+
 export interface CalculationStatus {
   SubmissionDateTime?: Date;
   CompletionDateTime?: Date;
   State?: CalculationExecutionState;
   StateChangeReason?: string;
 }
+const CalculationStatus = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<CalculationStatus>;
 export interface CalculationStatistics {
   DpuExecutionInMillis?: number;
   Progress?: string;
 }
+const CalculationStatistics = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<CalculationStatistics>;
 export type CalculationResultType = string;
 export interface CalculationResult {
   StdOutS3Uri?: string;
@@ -585,6 +819,7 @@ export interface CalculationResult {
   ResultS3Uri?: string;
   ResultType?: string;
 }
+const CalculationResult = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<CalculationResult>;
 export interface GetCalculationExecutionResponse {
   CalculationExecutionId?: string;
   SessionId?: string;
@@ -594,38 +829,77 @@ export interface GetCalculationExecutionResponse {
   Statistics?: CalculationStatistics;
   Result?: CalculationResult;
 }
+const GetCalculationExecutionResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<GetCalculationExecutionResponse>;
 export interface GetCalculationExecutionCodeRequest {
   CalculationExecutionId: string;
 }
+const GetCalculationExecutionCodeRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<GetCalculationExecutionCodeRequest>;
 export type CodeBlock = string;
 export interface GetCalculationExecutionCodeResponse {
   CodeBlock?: string;
 }
+const GetCalculationExecutionCodeResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GetCalculationExecutionCodeResponse>;
 export interface GetCalculationExecutionStatusRequest {
   CalculationExecutionId: string;
 }
+const GetCalculationExecutionStatusRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<GetCalculationExecutionStatusRequest>;
 export interface GetCalculationExecutionStatusResponse {
   Status?: CalculationStatus;
   Statistics?: CalculationStatistics;
 }
+const GetCalculationExecutionStatusResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<GetCalculationExecutionStatusResponse>;
 export interface GetCapacityAssignmentConfigurationInput {
   CapacityReservationName: string;
 }
+const GetCapacityAssignmentConfigurationInput = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<GetCapacityAssignmentConfigurationInput>;
 export type WorkGroupNamesList = string[];
+const WorkGroupNamesList = NamedQueryIdList as any as S.Schema<WorkGroupNamesList>;
 export interface CapacityAssignment {
   WorkGroupNames?: string[];
 }
+const CapacityAssignment = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<CapacityAssignment>;
 export type CapacityAssignmentsList = CapacityAssignment[];
+const CapacityAssignmentsList = /*@__PURE__*/ __L.at(__c10, 1);
 export interface CapacityAssignmentConfiguration {
   CapacityReservationName?: string;
   CapacityAssignments?: CapacityAssignment[];
 }
+const CapacityAssignmentConfiguration = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<CapacityAssignmentConfiguration>;
 export interface GetCapacityAssignmentConfigurationOutput {
   CapacityAssignmentConfiguration: CapacityAssignmentConfiguration;
 }
+const GetCapacityAssignmentConfigurationOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<GetCapacityAssignmentConfigurationOutput>;
 export interface GetCapacityReservationInput {
   Name: string;
 }
+const GetCapacityReservationInput = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<GetCapacityReservationInput>;
 export type CapacityReservationStatus =
   | "PENDING"
   | "ACTIVE"
@@ -634,14 +908,19 @@ export type CapacityReservationStatus =
   | "FAILED"
   | "UPDATE_PENDING"
   | (string & {});
+const CapacityReservationStatus = S.String;
+
 export type AllocatedDpusInteger = number;
 export type CapacityAllocationStatus = "PENDING" | "SUCCEEDED" | "FAILED" | (string & {});
+const CapacityAllocationStatus = S.String;
+
 export interface CapacityAllocation {
   Status: CapacityAllocationStatus;
   StatusMessage?: string;
   RequestTime: Date;
   RequestCompletionTime?: Date;
 }
+const CapacityAllocation = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<CapacityAllocation>;
 export interface CapacityReservation {
   Name: string;
   Status: CapacityReservationStatus;
@@ -651,73 +930,121 @@ export interface CapacityReservation {
   LastSuccessfulAllocationTime?: Date;
   CreationTime: Date;
 }
+const CapacityReservation = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<CapacityReservation>;
 export interface GetCapacityReservationOutput {
   CapacityReservation: CapacityReservation;
 }
+const GetCapacityReservationOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GetCapacityReservationOutput>;
 export interface GetDatabaseInput {
   CatalogName: string;
   DatabaseName: string;
   WorkGroup?: string;
 }
+const GetDatabaseInput = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<GetDatabaseInput>;
 export interface Database {
   Name: string;
   Description?: string;
   Parameters?: { [key: string]: string | undefined };
 }
+const Database = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<Database>;
 export interface GetDatabaseOutput {
   Database?: Database;
 }
+const GetDatabaseOutput = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<GetDatabaseOutput>;
 export interface GetDataCatalogInput {
   Name: string;
   WorkGroup?: string;
 }
+const GetDataCatalogInput = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<GetDataCatalogInput>;
 export interface GetDataCatalogOutput {
   DataCatalog?: DataCatalog;
 }
+const GetDataCatalogOutput = CreateDataCatalogOutput as any as S.Schema<GetDataCatalogOutput>;
 export interface GetNamedQueryInput {
   NamedQueryId: string;
 }
+const GetNamedQueryInput = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<GetNamedQueryInput>;
 export interface GetNamedQueryOutput {
   NamedQuery?: NamedQuery;
 }
+const GetNamedQueryOutput = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<GetNamedQueryOutput>;
 export interface GetNotebookMetadataInput {
   NotebookId: string;
 }
+const GetNotebookMetadataInput = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<GetNotebookMetadataInput>;
 export interface GetNotebookMetadataOutput {
   NotebookMetadata?: NotebookMetadata;
 }
+const GetNotebookMetadataOutput = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GetNotebookMetadataOutput>;
 export interface GetPreparedStatementInput {
   StatementName: string;
   WorkGroup: string;
 }
+const GetPreparedStatementInput = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<GetPreparedStatementInput>;
 export interface GetPreparedStatementOutput {
   PreparedStatement?: PreparedStatement;
 }
+const GetPreparedStatementOutput = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<GetPreparedStatementOutput>;
 export interface GetQueryExecutionInput {
   QueryExecutionId: string;
 }
+const GetQueryExecutionInput = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<GetQueryExecutionInput>;
 export interface GetQueryExecutionOutput {
   QueryExecution?: QueryExecution;
 }
+const GetQueryExecutionOutput = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<GetQueryExecutionOutput>;
 export type Token = string;
 export type MaxQueryResults = number;
 export type QueryResultType = "DATA_MANIFEST" | "DATA_ROWS" | (string & {});
+const QueryResultType = S.String;
+
 export interface GetQueryResultsInput {
   QueryExecutionId: string;
   NextToken?: string;
   MaxResults?: number;
   QueryResultType?: QueryResultType;
 }
+const GetQueryResultsInput = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GetQueryResultsInput>;
 export type DatumString = string;
 export interface Datum {
   VarCharValue?: string;
 }
+const Datum = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<Datum>;
 export type DatumList = Datum[];
+const DatumList = /*@__PURE__*/ __L.at(__c12, 6);
 export interface Row {
   Data?: Datum[];
 }
+const Row = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<Row>;
 export type RowList = Row[];
+const RowList = /*@__PURE__*/ __L.at(__c13, 0);
 export type ColumnNullable = "NOT_NULL" | "NULLABLE" | "UNKNOWN" | (string & {});
+const ColumnNullable = S.String;
+
 export interface ColumnInfo {
   CatalogName?: string;
   SchemaName?: string;
@@ -730,22 +1057,34 @@ export interface ColumnInfo {
   Nullable?: ColumnNullable;
   CaseSensitive?: boolean;
 }
+const ColumnInfo = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<ColumnInfo>;
 export type ColumnInfoList = ColumnInfo[];
+const ColumnInfoList = /*@__PURE__*/ __L.at(__c13, 2);
 export interface ResultSetMetadata {
   ColumnInfo?: ColumnInfo[];
 }
+const ResultSetMetadata = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<ResultSetMetadata>;
 export interface ResultSet {
   Rows?: Row[];
   ResultSetMetadata?: ResultSetMetadata;
 }
+const ResultSet = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<ResultSet>;
 export interface GetQueryResultsOutput {
   UpdateCount?: number;
   ResultSet?: ResultSet;
   NextToken?: string;
 }
+const GetQueryResultsOutput = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<GetQueryResultsOutput>;
 export interface GetQueryRuntimeStatisticsInput {
   QueryExecutionId: string;
 }
+const GetQueryRuntimeStatisticsInput = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<GetQueryRuntimeStatisticsInput>;
 export interface QueryRuntimeStatisticsTimeline {
   QueryQueueTimeInMillis?: number;
   ServicePreProcessingTimeInMillis?: number;
@@ -754,21 +1093,33 @@ export interface QueryRuntimeStatisticsTimeline {
   ServiceProcessingTimeInMillis?: number;
   TotalExecutionTimeInMillis?: number;
 }
+const QueryRuntimeStatisticsTimeline = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<QueryRuntimeStatisticsTimeline>;
 export interface QueryRuntimeStatisticsRows {
   InputRows?: number;
   InputBytes?: number;
   OutputBytes?: number;
   OutputRows?: number;
 }
+const QueryRuntimeStatisticsRows = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<QueryRuntimeStatisticsRows>;
 export type QueryStagePlanNodes = QueryStagePlanNode[];
+const QueryStagePlanNodes = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<QueryStagePlanNodes>;
 export type StringList = string[];
+const StringList = NamedQueryIdList as any as S.Schema<StringList>;
 export interface QueryStagePlanNode {
   Name?: string;
   Identifier?: string;
   Children?: QueryStagePlanNode[];
   RemoteSources?: string[];
 }
+const QueryStagePlanNode = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<QueryStagePlanNode>;
 export type QueryStages = QueryStage[];
+const QueryStages = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<QueryStages>;
 export interface QueryStage {
   StageId?: number;
   State?: string;
@@ -780,24 +1131,42 @@ export interface QueryStage {
   QueryStagePlan?: QueryStagePlanNode;
   SubStages?: QueryStage[];
 }
+const QueryStage = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<QueryStage>;
 export interface QueryRuntimeStatistics {
   Timeline?: QueryRuntimeStatisticsTimeline;
   Rows?: QueryRuntimeStatisticsRows;
   OutputStage?: QueryStage;
 }
+const QueryRuntimeStatistics = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<QueryRuntimeStatistics>;
 export interface GetQueryRuntimeStatisticsOutput {
   QueryRuntimeStatistics?: QueryRuntimeStatistics;
 }
+const GetQueryRuntimeStatisticsOutput = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GetQueryRuntimeStatisticsOutput>;
 export type AmazonResourceName = string;
 export interface GetResourceDashboardRequest {
   ResourceARN: string;
 }
+const GetResourceDashboardRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<GetResourceDashboardRequest>;
 export interface GetResourceDashboardResponse {
   Url: string;
 }
+const GetResourceDashboardResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<GetResourceDashboardResponse>;
 export interface GetSessionRequest {
   SessionId: string;
 }
+const GetSessionRequest = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<GetSessionRequest>;
 export type SessionIdleTimeoutInMinutes = number;
 export interface SessionConfiguration {
   ExecutionRole?: string;
@@ -806,6 +1175,10 @@ export interface SessionConfiguration {
   SessionIdleTimeoutInMinutes?: number;
   EncryptionConfiguration?: EncryptionConfiguration;
 }
+const SessionConfiguration = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<SessionConfiguration>;
 export type SessionState =
   | "CREATING"
   | "CREATED"
@@ -816,6 +1189,8 @@ export type SessionState =
   | "DEGRADED"
   | "FAILED"
   | (string & {});
+const SessionState = S.String;
+
 export interface SessionStatus {
   StartDateTime?: Date;
   LastModifiedDateTime?: Date;
@@ -824,9 +1199,11 @@ export interface SessionStatus {
   State?: SessionState;
   StateChangeReason?: string;
 }
+const SessionStatus = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<SessionStatus>;
 export interface SessionStatistics {
   DpuExecutionInMillis?: number;
 }
+const SessionStatistics = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<SessionStatistics>;
 export interface GetSessionResponse {
   SessionId?: string;
   Description?: string;
@@ -839,27 +1216,48 @@ export interface GetSessionResponse {
   Status?: SessionStatus;
   Statistics?: SessionStatistics;
 }
+const GetSessionResponse = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<GetSessionResponse>;
 export interface GetSessionEndpointRequest {
   SessionId: string;
 }
+const GetSessionEndpointRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<GetSessionEndpointRequest>;
 export interface GetSessionEndpointResponse {
   EndpointUrl: string;
   AuthToken: string;
   AuthTokenExpirationTime: Date;
 }
+const GetSessionEndpointResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<GetSessionEndpointResponse>;
 export interface GetSessionStatusRequest {
   SessionId: string;
 }
+const GetSessionStatusRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<GetSessionStatusRequest>;
 export interface GetSessionStatusResponse {
   SessionId?: string;
   Status?: SessionStatus;
 }
+const GetSessionStatusResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<GetSessionStatusResponse>;
 export interface GetTableMetadataInput {
   CatalogName: string;
   DatabaseName: string;
   TableName: string;
   WorkGroup?: string;
 }
+const GetTableMetadataInput = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<GetTableMetadataInput>;
 export type TableTypeString = string;
 export type TypeString = string;
 export type CommentString = string;
@@ -868,7 +1266,9 @@ export interface Column {
   Type?: string;
   Comment?: string;
 }
+const Column = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<Column>;
 export type ColumnList = Column[];
+const ColumnList = /*@__PURE__*/ __L.at(__c16, 4);
 export interface TableMetadata {
   Name: string;
   CreateTime?: Date;
@@ -878,13 +1278,21 @@ export interface TableMetadata {
   PartitionKeys?: Column[];
   Parameters?: { [key: string]: string | undefined };
 }
+const TableMetadata = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<TableMetadata>;
 export interface GetTableMetadataOutput {
   TableMetadata?: TableMetadata;
 }
+const GetTableMetadataOutput = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<GetTableMetadataOutput>;
 export interface GetWorkGroupInput {
   WorkGroup: string;
 }
+const GetWorkGroupInput = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<GetWorkGroupInput>;
 export type WorkGroupState = "ENABLED" | "DISABLED" | (string & {});
+const WorkGroupState = S.String;
+
 export type IdentityCenterApplicationArn = string;
 export interface WorkGroup {
   Name: string;
@@ -894,9 +1302,11 @@ export interface WorkGroup {
   CreationTime?: Date;
   IdentityCenterApplicationArn?: string;
 }
+const WorkGroup = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<WorkGroup>;
 export interface GetWorkGroupOutput {
   WorkGroup?: WorkGroup;
 }
+const GetWorkGroupOutput = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<GetWorkGroupOutput>;
 export interface ImportNotebookInput {
   WorkGroup: string;
   Name: string;
@@ -905,24 +1315,37 @@ export interface ImportNotebookInput {
   NotebookS3LocationUri?: string;
   ClientRequestToken?: string;
 }
+const ImportNotebookInput = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<ImportNotebookInput>;
 export interface ImportNotebookOutput {
   NotebookId?: string;
 }
+const ImportNotebookOutput = CreateNotebookOutput as any as S.Schema<ImportNotebookOutput>;
 export type MaxApplicationDPUSizesCount = number;
 export interface ListApplicationDPUSizesInput {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListApplicationDPUSizesInput = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ListApplicationDPUSizesInput>;
 export type SupportedDPUSizeList = number[];
+const SupportedDPUSizeList = /*@__PURE__*/ __L.at(__c17, 4);
 export interface ApplicationDPUSizes {
   ApplicationRuntimeId?: string;
   SupportedDPUSizes?: number[];
 }
+const ApplicationDPUSizes = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<ApplicationDPUSizes>;
 export type ApplicationDPUSizesList = ApplicationDPUSizes[];
+const ApplicationDPUSizesList = /*@__PURE__*/ __L.at(__c17, 6);
 export interface ListApplicationDPUSizesOutput {
   ApplicationDPUSizes?: ApplicationDPUSizes[];
   NextToken?: string;
 }
+const ListApplicationDPUSizesOutput = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<ListApplicationDPUSizesOutput>;
 export type MaxCalculationsCount = number;
 export type SessionManagerToken = string;
 export interface ListCalculationExecutionsRequest {
@@ -931,26 +1354,45 @@ export interface ListCalculationExecutionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListCalculationExecutionsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<ListCalculationExecutionsRequest>;
 export interface CalculationSummary {
   CalculationExecutionId?: string;
   Description?: string;
   Status?: CalculationStatus;
 }
+const CalculationSummary = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<CalculationSummary>;
 export type CalculationsList = CalculationSummary[];
+const CalculationsList = /*@__PURE__*/ __L.at(__c18, 2);
 export interface ListCalculationExecutionsResponse {
   NextToken?: string;
   Calculations?: CalculationSummary[];
 }
+const ListCalculationExecutionsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<ListCalculationExecutionsResponse>;
 export type MaxCapacityReservationsCount = number;
 export interface ListCapacityReservationsInput {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListCapacityReservationsInput = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<ListCapacityReservationsInput>;
 export type CapacityReservationsList = CapacityReservation[];
+const CapacityReservationsList = /*@__PURE__*/ __L.at(__c18, 5);
 export interface ListCapacityReservationsOutput {
   NextToken?: string;
   CapacityReservations: CapacityReservation[];
 }
+const ListCapacityReservationsOutput = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<ListCapacityReservationsOutput>;
 export type MaxDatabasesCount = number;
 export interface ListDatabasesInput {
   CatalogName: string;
@@ -958,17 +1400,24 @@ export interface ListDatabasesInput {
   MaxResults?: number;
   WorkGroup?: string;
 }
+const ListDatabasesInput = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<ListDatabasesInput>;
 export type DatabaseList = Database[];
+const DatabaseList = /*@__PURE__*/ __L.at(__c19, 0);
 export interface ListDatabasesOutput {
   DatabaseList?: Database[];
   NextToken?: string;
 }
+const ListDatabasesOutput = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<ListDatabasesOutput>;
 export type MaxDataCatalogsCount = number;
 export interface ListDataCatalogsInput {
   NextToken?: string;
   MaxResults?: number;
   WorkGroup?: string;
 }
+const ListDataCatalogsInput = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ListDataCatalogsInput>;
 export interface DataCatalogSummary {
   CatalogName?: string;
   Type?: DataCatalogType;
@@ -976,21 +1425,36 @@ export interface DataCatalogSummary {
   ConnectionType?: ConnectionType;
   Error?: string;
 }
+const DataCatalogSummary = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<DataCatalogSummary>;
 export type DataCatalogSummaryList = DataCatalogSummary[];
+const DataCatalogSummaryList = /*@__PURE__*/ __L.at(__c19, 4);
 export interface ListDataCatalogsOutput {
   DataCatalogsSummary?: DataCatalogSummary[];
   NextToken?: string;
 }
+const ListDataCatalogsOutput = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ListDataCatalogsOutput>;
 export type MaxEngineVersionsCount = number;
 export interface ListEngineVersionsInput {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListEngineVersionsInput = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<ListEngineVersionsInput>;
 export type EngineVersionsList = EngineVersion[];
+const EngineVersionsList = /*@__PURE__*/ __L.at(__c19, 7);
 export interface ListEngineVersionsOutput {
   EngineVersions?: EngineVersion[];
   NextToken?: string;
 }
+const ListEngineVersionsOutput = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ListEngineVersionsOutput>;
 export type ExecutorState =
   | "CREATING"
   | "CREATED"
@@ -999,6 +1463,8 @@ export type ExecutorState =
   | "TERMINATED"
   | "FAILED"
   | (string & {});
+const ExecutorState = S.String;
+
 export type MaxListExecutorsCount = number;
 export interface ListExecutorsRequest {
   SessionId: string;
@@ -1006,8 +1472,14 @@ export interface ListExecutorsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListExecutorsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<ListExecutorsRequest>;
 export type ExecutorId = string;
 export type ExecutorType = "COORDINATOR" | "GATEWAY" | "WORKER" | (string & {});
+const ExecutorType = S.String;
+
 export interface ExecutorsSummary {
   ExecutorId: string;
   ExecutorType?: ExecutorType;
@@ -1016,25 +1488,40 @@ export interface ExecutorsSummary {
   ExecutorState?: ExecutorState;
   ExecutorSize?: number;
 }
+const ExecutorsSummary = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<ExecutorsSummary>;
 export type ExecutorsSummaryList = ExecutorsSummary[];
+const ExecutorsSummaryList = /*@__PURE__*/ __L.at(__c20, 3);
 export interface ListExecutorsResponse {
   SessionId: string;
   NextToken?: string;
   ExecutorsSummary?: ExecutorsSummary[];
 }
+const ListExecutorsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<ListExecutorsResponse>;
 export type MaxNamedQueriesCount = number;
 export interface ListNamedQueriesInput {
   NextToken?: string;
   MaxResults?: number;
   WorkGroup?: string;
 }
+const ListNamedQueriesInput = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ListNamedQueriesInput>;
 export interface ListNamedQueriesOutput {
   NamedQueryIds?: string[];
   NextToken?: string;
 }
+const ListNamedQueriesOutput = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<ListNamedQueriesOutput>;
 export interface FilterDefinition {
   Name?: string;
 }
+const FilterDefinition = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<FilterDefinition>;
 export type MaxNotebooksCount = number;
 export interface ListNotebookMetadataInput {
   Filters?: FilterDefinition;
@@ -1042,57 +1529,101 @@ export interface ListNotebookMetadataInput {
   MaxResults?: number;
   WorkGroup: string;
 }
+const ListNotebookMetadataInput = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<ListNotebookMetadataInput>;
 export type NotebookMetadataArray = NotebookMetadata[];
+const NotebookMetadataArray = /*@__PURE__*/ __L.at(__c21, 1);
 export interface ListNotebookMetadataOutput {
   NextToken?: string;
   NotebookMetadataList?: NotebookMetadata[];
 }
+const ListNotebookMetadataOutput = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<ListNotebookMetadataOutput>;
 export type MaxSessionsCount = number;
 export interface ListNotebookSessionsRequest {
   NotebookId: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListNotebookSessionsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<ListNotebookSessionsRequest>;
 export interface NotebookSessionSummary {
   SessionId?: string;
   CreationTime?: Date;
 }
+const NotebookSessionSummary = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<NotebookSessionSummary>;
 export type NotebookSessionsList = NotebookSessionSummary[];
+const NotebookSessionsList = /*@__PURE__*/ __L.at(__c21, 5);
 export interface ListNotebookSessionsResponse {
   NotebookSessionsList: NotebookSessionSummary[];
   NextToken?: string;
 }
+const ListNotebookSessionsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<ListNotebookSessionsResponse>;
 export type MaxPreparedStatementsCount = number;
 export interface ListPreparedStatementsInput {
   WorkGroup: string;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListPreparedStatementsInput = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<ListPreparedStatementsInput>;
 export interface PreparedStatementSummary {
   StatementName?: string;
   LastModifiedTime?: Date;
 }
+const PreparedStatementSummary = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<PreparedStatementSummary>;
 export type PreparedStatementsList = PreparedStatementSummary[];
+const PreparedStatementsList = /*@__PURE__*/ __L.at(__c22, 1);
 export interface ListPreparedStatementsOutput {
   PreparedStatements?: PreparedStatementSummary[];
   NextToken?: string;
 }
+const ListPreparedStatementsOutput = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<ListPreparedStatementsOutput>;
 export type MaxQueryExecutionsCount = number;
 export interface ListQueryExecutionsInput {
   NextToken?: string;
   MaxResults?: number;
   WorkGroup?: string;
 }
+const ListQueryExecutionsInput = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<ListQueryExecutionsInput>;
 export interface ListQueryExecutionsOutput {
   QueryExecutionIds?: string[];
   NextToken?: string;
 }
+const ListQueryExecutionsOutput = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<ListQueryExecutionsOutput>;
 export interface ListSessionsRequest {
   WorkGroup: string;
   StateFilter?: SessionState;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListSessionsRequest = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<ListSessionsRequest>;
 export interface SessionSummary {
   SessionId?: string;
   Description?: string;
@@ -1100,11 +1631,17 @@ export interface SessionSummary {
   NotebookVersion?: string;
   Status?: SessionStatus;
 }
+const SessionSummary = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<SessionSummary>;
 export type SessionsList = SessionSummary[];
+const SessionsList = /*@__PURE__*/ __L.at(__c22, 7);
 export interface ListSessionsResponse {
   NextToken?: string;
   Sessions?: SessionSummary[];
 }
+const ListSessionsResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<ListSessionsResponse>;
 export type ExpressionString = string;
 export type MaxTableMetadataCount = number;
 export interface ListTableMetadataInput {
@@ -1115,26 +1652,44 @@ export interface ListTableMetadataInput {
   MaxResults?: number;
   WorkGroup?: string;
 }
+const ListTableMetadataInput = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<ListTableMetadataInput>;
 export type TableMetadataList = TableMetadata[];
+const TableMetadataList = /*@__PURE__*/ __L.at(__c23, 2);
 export interface ListTableMetadataOutput {
   TableMetadataList?: TableMetadata[];
   NextToken?: string;
 }
+const ListTableMetadataOutput = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<ListTableMetadataOutput>;
 export type MaxTagsCount = number;
 export interface ListTagsForResourceInput {
   ResourceARN: string;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   Tags?: Tag[];
   NextToken?: string;
 }
+const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<ListTagsForResourceOutput>;
 export type MaxWorkGroupsCount = number;
 export interface ListWorkGroupsInput {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListWorkGroupsInput = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<ListWorkGroupsInput>;
 export interface WorkGroupSummary {
   Name?: string;
   State?: WorkGroupState;
@@ -1143,19 +1698,37 @@ export interface WorkGroupSummary {
   EngineVersion?: EngineVersion;
   IdentityCenterApplicationArn?: string;
 }
+const WorkGroupSummary = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<WorkGroupSummary>;
 export type WorkGroupsList = WorkGroupSummary[];
+const WorkGroupsList = /*@__PURE__*/ __L.at(__c24, 0);
 export interface ListWorkGroupsOutput {
   WorkGroups?: WorkGroupSummary[];
   NextToken?: string;
 }
+const ListWorkGroupsOutput = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<ListWorkGroupsOutput>;
 export interface PutCapacityAssignmentConfigurationInput {
   CapacityReservationName: string;
   CapacityAssignments: CapacityAssignment[];
 }
+const PutCapacityAssignmentConfigurationInput = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<PutCapacityAssignmentConfigurationInput>;
 export interface PutCapacityAssignmentConfigurationOutput {}
+const PutCapacityAssignmentConfigurationOutput = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<PutCapacityAssignmentConfigurationOutput>;
 export interface CalculationConfiguration {
   CodeBlock?: string;
 }
+const CalculationConfiguration = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<CalculationConfiguration>;
 export interface StartCalculationExecutionRequest {
   SessionId: string;
   Description?: string;
@@ -1163,10 +1736,18 @@ export interface StartCalculationExecutionRequest {
   CodeBlock?: string;
   ClientRequestToken?: string;
 }
+const StartCalculationExecutionRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<StartCalculationExecutionRequest>;
 export interface StartCalculationExecutionResponse {
   CalculationExecutionId?: string;
   State?: CalculationExecutionState;
 }
+const StartCalculationExecutionResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<StartCalculationExecutionResponse>;
 export interface StartQueryExecutionInput {
   QueryString: string;
   ClientRequestToken?: string;
@@ -1177,9 +1758,17 @@ export interface StartQueryExecutionInput {
   ResultReuseConfiguration?: ResultReuseConfiguration;
   EngineConfiguration?: EngineConfiguration;
 }
+const StartQueryExecutionInput = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<StartQueryExecutionInput>;
 export interface StartQueryExecutionOutput {
   QueryExecutionId?: string;
 }
+const StartQueryExecutionOutput = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<StartQueryExecutionOutput>;
 export interface StartSessionRequest {
   Description?: string;
   WorkGroup: string;
@@ -1192,49 +1781,93 @@ export interface StartSessionRequest {
   Tags?: Tag[];
   CopyWorkGroupTags?: boolean;
 }
+const StartSessionRequest = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<StartSessionRequest>;
 export interface StartSessionResponse {
   SessionId?: string;
   State?: SessionState;
 }
+const StartSessionResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<StartSessionResponse>;
 export interface StopCalculationExecutionRequest {
   CalculationExecutionId: string;
 }
+const StopCalculationExecutionRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<StopCalculationExecutionRequest>;
 export interface StopCalculationExecutionResponse {
   State?: CalculationExecutionState;
 }
+const StopCalculationExecutionResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<StopCalculationExecutionResponse>;
 export interface StopQueryExecutionInput {
   QueryExecutionId: string;
 }
+const StopQueryExecutionInput = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<StopQueryExecutionInput>;
 export interface StopQueryExecutionOutput {}
+const StopQueryExecutionOutput =
+  CreatePreparedStatementOutput as any as S.Schema<StopQueryExecutionOutput>;
 export interface TagResourceInput {
   ResourceARN: string;
   Tags: Tag[];
 }
+const TagResourceInput = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
+const TagResourceOutput = CreatePreparedStatementOutput as any as S.Schema<TagResourceOutput>;
 export interface TerminateSessionRequest {
   SessionId: string;
 }
+const TerminateSessionRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<TerminateSessionRequest>;
 export interface TerminateSessionResponse {
   State?: SessionState;
 }
+const TerminateSessionResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<TerminateSessionResponse>;
 export type TagKeyList = string[];
+const TagKeyList = NamedQueryIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   ResourceARN: string;
   TagKeys: string[];
 }
+const UntagResourceInput = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
+const UntagResourceOutput = CreatePreparedStatementOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateCapacityReservationInput {
   TargetDpus: number;
   Name: string;
 }
+const UpdateCapacityReservationInput = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<UpdateCapacityReservationInput>;
 export interface UpdateCapacityReservationOutput {}
+const UpdateCapacityReservationOutput =
+  CancelCapacityReservationOutput as any as S.Schema<UpdateCapacityReservationOutput>;
 export interface UpdateDataCatalogInput {
   Name: string;
   Type: DataCatalogType;
   Description?: string;
   Parameters?: { [key: string]: string | undefined };
 }
+const UpdateDataCatalogInput = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<UpdateDataCatalogInput>;
 export interface UpdateDataCatalogOutput {}
+const UpdateDataCatalogOutput =
+  CreatePreparedStatementOutput as any as S.Schema<UpdateDataCatalogOutput>;
 export type NamedQueryDescriptionString = string;
 export interface UpdateNamedQueryInput {
   NamedQueryId: string;
@@ -1242,7 +1875,13 @@ export interface UpdateNamedQueryInput {
   Description?: string;
   QueryString: string;
 }
+const UpdateNamedQueryInput = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<UpdateNamedQueryInput>;
 export interface UpdateNamedQueryOutput {}
+const UpdateNamedQueryOutput =
+  CreatePreparedStatementOutput as any as S.Schema<UpdateNamedQueryOutput>;
 export interface UpdateNotebookInput {
   NotebookId: string;
   Payload: string;
@@ -1250,20 +1889,34 @@ export interface UpdateNotebookInput {
   SessionId?: string;
   ClientRequestToken?: string;
 }
+const UpdateNotebookInput = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<UpdateNotebookInput>;
 export interface UpdateNotebookOutput {}
+const UpdateNotebookOutput = CreatePreparedStatementOutput as any as S.Schema<UpdateNotebookOutput>;
 export interface UpdateNotebookMetadataInput {
   NotebookId: string;
   ClientRequestToken?: string;
   Name: string;
 }
+const UpdateNotebookMetadataInput = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<UpdateNotebookMetadataInput>;
 export interface UpdateNotebookMetadataOutput {}
+const UpdateNotebookMetadataOutput =
+  CreatePreparedStatementOutput as any as S.Schema<UpdateNotebookMetadataOutput>;
 export interface UpdatePreparedStatementInput {
   StatementName: string;
   WorkGroup: string;
   QueryStatement: string;
   Description?: string;
 }
+const UpdatePreparedStatementInput = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<UpdatePreparedStatementInput>;
 export interface UpdatePreparedStatementOutput {}
+const UpdatePreparedStatementOutput =
+  CreatePreparedStatementOutput as any as S.Schema<UpdatePreparedStatementOutput>;
 export interface ResultConfigurationUpdates {
   OutputLocation?: string;
   RemoveOutputLocation?: boolean;
@@ -1274,11 +1927,19 @@ export interface ResultConfigurationUpdates {
   AclConfiguration?: AclConfiguration;
   RemoveAclConfiguration?: boolean;
 }
+const ResultConfigurationUpdates = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<ResultConfigurationUpdates>;
 export interface ManagedQueryResultsConfigurationUpdates {
   Enabled?: boolean;
   EncryptionConfiguration?: ManagedQueryResultsEncryptionConfiguration;
   RemoveEncryptionConfiguration?: boolean;
 }
+const ManagedQueryResultsConfigurationUpdates = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<ManagedQueryResultsConfigurationUpdates>;
 export interface WorkGroupConfigurationUpdates {
   EnforceWorkGroupConfiguration?: boolean;
   ResultConfigurationUpdates?: ResultConfigurationUpdates;
@@ -1297,14 +1958,26 @@ export interface WorkGroupConfigurationUpdates {
   MonitoringConfiguration?: MonitoringConfiguration;
   EngineConfiguration?: EngineConfiguration;
 }
+const WorkGroupConfigurationUpdates = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<WorkGroupConfigurationUpdates>;
 export interface UpdateWorkGroupInput {
   WorkGroup: string;
   Description?: string;
   ConfigurationUpdates?: WorkGroupConfigurationUpdates;
   State?: WorkGroupState;
 }
+const UpdateWorkGroupInput = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<UpdateWorkGroupInput>;
 export interface UpdateWorkGroupOutput {}
+const UpdateWorkGroupOutput =
+  CreatePreparedStatementOutput as any as S.Schema<UpdateWorkGroupOutput>;
 export type ThrottleReason = "CONCURRENT_QUERY_LIMIT_EXCEEDED" | (string & {});
+const ThrottleReason = S.String;
+
 export type BatchGetNamedQueryError =
   | InternalServerException
   | InvalidRequestException
@@ -1326,8 +1999,8 @@ export const batchGetNamedQuery: API.OperationMethod<
   BatchGetNamedQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<BatchGetNamedQueryInput>,
-  output: __S(6) as any as S.Schema<BatchGetNamedQueryOutput>,
+  input: BatchGetNamedQueryInput,
+  output: BatchGetNamedQueryOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1351,8 +2024,8 @@ export const batchGetPreparedStatement: API.OperationMethod<
   BatchGetPreparedStatementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<BatchGetPreparedStatementInput>,
-  output: __S(12) as any as S.Schema<BatchGetPreparedStatementOutput>,
+  input: BatchGetPreparedStatementInput,
+  output: BatchGetPreparedStatementOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1377,8 +2050,8 @@ export const batchGetQueryExecution: API.OperationMethod<
   BatchGetQueryExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<BatchGetQueryExecutionInput>,
-  output: __S(32) as any as S.Schema<BatchGetQueryExecutionOutput>,
+  input: BatchGetQueryExecutionInput,
+  output: BatchGetQueryExecutionOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1401,8 +2074,8 @@ export const cancelCapacityReservation: API.OperationMethod<
   CancelCapacityReservationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<CancelCapacityReservationInput>,
-  output: __S(34) as any as S.Schema<CancelCapacityReservationOutput>,
+  input: CancelCapacityReservationInput,
+  output: CancelCapacityReservationOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1423,8 +2096,8 @@ export const createCapacityReservation: API.OperationMethod<
   CreateCapacityReservationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<CreateCapacityReservationInput>,
-  output: __S(34) as any as S.Schema<CreateCapacityReservationOutput>,
+  input: CreateCapacityReservationInput,
+  output: CreateCapacityReservationOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1460,8 +2133,8 @@ export const createDataCatalog: API.OperationMethod<
   CreateDataCatalogError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<CreateDataCatalogInput>,
-  output: __S(41) as any as S.Schema<CreateDataCatalogOutput>,
+  input: CreateDataCatalogInput,
+  output: CreateDataCatalogOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1482,8 +2155,8 @@ export const createNamedQuery: API.OperationMethod<
   CreateNamedQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<CreateNamedQueryInput>,
-  output: __S(43) as any as S.Schema<CreateNamedQueryOutput>,
+  input: CreateNamedQueryInput,
+  output: CreateNamedQueryOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1506,8 +2179,8 @@ export const createNotebook: API.OperationMethod<
   CreateNotebookError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<CreateNotebookInput>,
-  output: __S(45) as any as S.Schema<CreateNotebookOutput>,
+  input: CreateNotebookInput,
+  output: CreateNotebookOutput,
   errors: [InternalServerException, InvalidRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1527,8 +2200,8 @@ export const createPreparedStatement: API.OperationMethod<
   CreatePreparedStatementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<CreatePreparedStatementInput>,
-  output: __S(47) as any as S.Schema<CreatePreparedStatementOutput>,
+  input: CreatePreparedStatementInput,
+  output: CreatePreparedStatementOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1553,8 +2226,8 @@ export const createPresignedNotebookUrl: API.OperationMethod<
   CreatePresignedNotebookUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<CreatePresignedNotebookUrlRequest>,
-  output: __S(49) as any as S.Schema<CreatePresignedNotebookUrlResponse>,
+  input: CreatePresignedNotebookUrlRequest,
+  output: CreatePresignedNotebookUrlResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1572,8 +2245,8 @@ export const createWorkGroup: API.OperationMethod<
   CreateWorkGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<CreateWorkGroupInput>,
-  output: __S(47) as any as S.Schema<CreateWorkGroupOutput>,
+  input: CreateWorkGroupInput,
+  output: CreateWorkGroupOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1597,8 +2270,8 @@ export const deleteCapacityReservation: API.OperationMethod<
   DeleteCapacityReservationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<DeleteCapacityReservationInput>,
-  output: __S(34) as any as S.Schema<DeleteCapacityReservationOutput>,
+  input: DeleteCapacityReservationInput,
+  output: DeleteCapacityReservationOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1619,8 +2292,8 @@ export const deleteDataCatalog: API.OperationMethod<
   DeleteDataCatalogError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<DeleteDataCatalogInput>,
-  output: __S(41) as any as S.Schema<DeleteDataCatalogOutput>,
+  input: DeleteDataCatalogInput,
+  output: DeleteDataCatalogOutput,
   errors: [InternalServerException, InvalidRequestException, DataCatalogNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1642,8 +2315,8 @@ export const deleteNamedQuery: API.OperationMethod<
   DeleteNamedQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<DeleteNamedQueryInput>,
-  output: __S(47) as any as S.Schema<DeleteNamedQueryOutput>,
+  input: DeleteNamedQueryInput,
+  output: DeleteNamedQueryOutput,
   errors: [InternalServerException, InvalidRequestException, NamedQueryNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1664,8 +2337,8 @@ export const deleteNotebook: API.OperationMethod<
   DeleteNotebookError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<DeleteNotebookInput>,
-  output: __S(47) as any as S.Schema<DeleteNotebookOutput>,
+  input: DeleteNotebookInput,
+  output: DeleteNotebookOutput,
   errors: [InternalServerException, InvalidRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1688,8 +2361,8 @@ export const deletePreparedStatement: API.OperationMethod<
   DeletePreparedStatementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<DeletePreparedStatementInput>,
-  output: __S(47) as any as S.Schema<DeletePreparedStatementOutput>,
+  input: DeletePreparedStatementInput,
+  output: DeletePreparedStatementOutput,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1712,8 +2385,8 @@ export const deleteWorkGroup: API.OperationMethod<
   DeleteWorkGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<DeleteWorkGroupInput>,
-  output: __S(47) as any as S.Schema<DeleteWorkGroupOutput>,
+  input: DeleteWorkGroupInput,
+  output: DeleteWorkGroupOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1734,8 +2407,8 @@ export const exportNotebook: API.OperationMethod<
   ExportNotebookError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<ExportNotebookInput>,
-  output: __S(69) as any as S.Schema<ExportNotebookOutput>,
+  input: ExportNotebookInput,
+  output: ExportNotebookOutput,
   errors: [InternalServerException, InvalidRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1756,8 +2429,8 @@ export const getCalculationExecution: API.OperationMethod<
   GetCalculationExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<GetCalculationExecutionRequest>,
-  output: __S(74) as any as S.Schema<GetCalculationExecutionResponse>,
+  input: GetCalculationExecutionRequest,
+  output: GetCalculationExecutionResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1778,8 +2451,8 @@ export const getCalculationExecutionCode: API.OperationMethod<
   GetCalculationExecutionCodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<GetCalculationExecutionCodeRequest>,
-  output: __S(76) as any as S.Schema<GetCalculationExecutionCodeResponse>,
+  input: GetCalculationExecutionCodeRequest,
+  output: GetCalculationExecutionCodeResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1800,8 +2473,8 @@ export const getCalculationExecutionStatus: API.OperationMethod<
   GetCalculationExecutionStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<GetCalculationExecutionStatusRequest>,
-  output: __S(78) as any as S.Schema<GetCalculationExecutionStatusResponse>,
+  input: GetCalculationExecutionStatusRequest,
+  output: GetCalculationExecutionStatusResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1822,8 +2495,8 @@ export const getCapacityAssignmentConfiguration: API.OperationMethod<
   GetCapacityAssignmentConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<GetCapacityAssignmentConfigurationInput>,
-  output: __S(83) as any as S.Schema<GetCapacityAssignmentConfigurationOutput>,
+  input: GetCapacityAssignmentConfigurationInput,
+  output: GetCapacityAssignmentConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1843,8 +2516,8 @@ export const getCapacityReservation: API.OperationMethod<
   GetCapacityReservationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<GetCapacityReservationInput>,
-  output: __S(87) as any as S.Schema<GetCapacityReservationOutput>,
+  input: GetCapacityReservationInput,
+  output: GetCapacityReservationOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1865,8 +2538,8 @@ export const getDatabase: API.OperationMethod<
   GetDatabaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<GetDatabaseInput>,
-  output: __S(90) as any as S.Schema<GetDatabaseOutput>,
+  input: GetDatabaseInput,
+  output: GetDatabaseOutput,
   errors: [InternalServerException, InvalidRequestException, MetadataException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1887,8 +2560,8 @@ export const getDataCatalog: API.OperationMethod<
   GetDataCatalogError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<GetDataCatalogInput>,
-  output: __S(41) as any as S.Schema<GetDataCatalogOutput>,
+  input: GetDataCatalogInput,
+  output: GetDataCatalogOutput,
   errors: [InternalServerException, InvalidRequestException, DataCatalogNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1910,8 +2583,8 @@ export const getNamedQuery: API.OperationMethod<
   GetNamedQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<GetNamedQueryInput>,
-  output: __S(93) as any as S.Schema<GetNamedQueryOutput>,
+  input: GetNamedQueryInput,
+  output: GetNamedQueryOutput,
   errors: [InternalServerException, InvalidRequestException, NamedQueryNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1932,8 +2605,8 @@ export const getNotebookMetadata: API.OperationMethod<
   GetNotebookMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<GetNotebookMetadataInput>,
-  output: __S(95) as any as S.Schema<GetNotebookMetadataOutput>,
+  input: GetNotebookMetadataInput,
+  output: GetNotebookMetadataOutput,
   errors: [InternalServerException, InvalidRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1956,8 +2629,8 @@ export const getPreparedStatement: API.OperationMethod<
   GetPreparedStatementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<GetPreparedStatementInput>,
-  output: __S(97) as any as S.Schema<GetPreparedStatementOutput>,
+  input: GetPreparedStatementInput,
+  output: GetPreparedStatementOutput,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1984,8 +2657,8 @@ export const getQueryExecution: API.OperationMethod<
   GetQueryExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<GetQueryExecutionInput>,
-  output: __S(99) as any as S.Schema<GetQueryExecutionOutput>,
+  input: GetQueryExecutionInput,
+  output: GetQueryExecutionOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2022,8 +2695,8 @@ export const getQueryResults: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(100) as any as S.Schema<GetQueryResultsInput>,
-  output: __S(109) as any as S.Schema<GetQueryResultsOutput>,
+  input: GetQueryResultsInput,
+  output: GetQueryResultsOutput,
   errors: [InternalServerException, InvalidRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2054,8 +2727,8 @@ export const getQueryRuntimeStatistics: API.OperationMethod<
   GetQueryRuntimeStatisticsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<GetQueryRuntimeStatisticsInput>,
-  output: __S(118) as any as S.Schema<GetQueryRuntimeStatisticsOutput>,
+  input: GetQueryRuntimeStatisticsInput,
+  output: GetQueryRuntimeStatisticsOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2076,8 +2749,8 @@ export const getResourceDashboard: API.OperationMethod<
   GetResourceDashboardError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<GetResourceDashboardRequest>,
-  output: __S(120) as any as S.Schema<GetResourceDashboardResponse>,
+  input: GetResourceDashboardRequest,
+  output: GetResourceDashboardResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2099,8 +2772,8 @@ export const getSession: API.OperationMethod<
   GetSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<GetSessionRequest>,
-  output: __S(125) as any as S.Schema<GetSessionResponse>,
+  input: GetSessionRequest,
+  output: GetSessionResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2121,8 +2794,8 @@ export const getSessionEndpoint: API.OperationMethod<
   GetSessionEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<GetSessionEndpointRequest>,
-  output: __S(127) as any as S.Schema<GetSessionEndpointResponse>,
+  input: GetSessionEndpointRequest,
+  output: GetSessionEndpointResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2143,8 +2816,8 @@ export const getSessionStatus: API.OperationMethod<
   GetSessionStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128) as any as S.Schema<GetSessionStatusRequest>,
-  output: __S(129) as any as S.Schema<GetSessionStatusResponse>,
+  input: GetSessionStatusRequest,
+  output: GetSessionStatusResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2165,8 +2838,8 @@ export const getTableMetadata: API.OperationMethod<
   GetTableMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130) as any as S.Schema<GetTableMetadataInput>,
-  output: __S(134) as any as S.Schema<GetTableMetadataOutput>,
+  input: GetTableMetadataInput,
+  output: GetTableMetadataOutput,
   errors: [InternalServerException, InvalidRequestException, MetadataException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2187,8 +2860,8 @@ export const getWorkGroup: API.OperationMethod<
   GetWorkGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<GetWorkGroupInput>,
-  output: __S(137) as any as S.Schema<GetWorkGroupOutput>,
+  input: GetWorkGroupInput,
+  output: GetWorkGroupOutput,
   errors: [InternalServerException, InvalidRequestException, WorkGroupNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2214,8 +2887,8 @@ export const importNotebook: API.OperationMethod<
   ImportNotebookError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<ImportNotebookInput>,
-  output: __S(45) as any as S.Schema<ImportNotebookOutput>,
+  input: ImportNotebookInput,
+  output: ImportNotebookOutput,
   errors: [InternalServerException, InvalidRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2238,8 +2911,8 @@ export const listApplicationDPUSizes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(139) as any as S.Schema<ListApplicationDPUSizesInput>,
-  output: __S(143) as any as S.Schema<ListApplicationDPUSizesOutput>,
+  input: ListApplicationDPUSizesInput,
+  output: ListApplicationDPUSizesOutput,
   errors: [InternalServerException, InvalidRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2267,8 +2940,8 @@ export const listCalculationExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(144) as any as S.Schema<ListCalculationExecutionsRequest>,
-  output: __S(147) as any as S.Schema<ListCalculationExecutionsResponse>,
+  input: ListCalculationExecutionsRequest,
+  output: ListCalculationExecutionsResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2294,8 +2967,8 @@ export const listCapacityReservations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(148) as any as S.Schema<ListCapacityReservationsInput>,
-  output: __S(150) as any as S.Schema<ListCapacityReservationsOutput>,
+  input: ListCapacityReservationsInput,
+  output: ListCapacityReservationsOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2322,8 +2995,8 @@ export const listDatabases: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Database
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(151) as any as S.Schema<ListDatabasesInput>,
-  output: __S(153) as any as S.Schema<ListDatabasesOutput>,
+  input: ListDatabasesInput,
+  output: ListDatabasesOutput,
   errors: [InternalServerException, InvalidRequestException, MetadataException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2353,8 +3026,8 @@ export const listDataCatalogs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataCatalogSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(154) as any as S.Schema<ListDataCatalogsInput>,
-  output: __S(157) as any as S.Schema<ListDataCatalogsOutput>,
+  input: ListDataCatalogsInput,
+  output: ListDataCatalogsOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2382,8 +3055,8 @@ export const listEngineVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(158) as any as S.Schema<ListEngineVersionsInput>,
-  output: __S(160) as any as S.Schema<ListEngineVersionsOutput>,
+  input: ListEngineVersionsInput,
+  output: ListEngineVersionsOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2412,8 +3085,8 @@ export const listExecutors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(161) as any as S.Schema<ListExecutorsRequest>,
-  output: __S(164) as any as S.Schema<ListExecutorsResponse>,
+  input: ListExecutorsRequest,
+  output: ListExecutorsResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2441,8 +3114,8 @@ export const listNamedQueries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(165) as any as S.Schema<ListNamedQueriesInput>,
-  output: __S(166) as any as S.Schema<ListNamedQueriesOutput>,
+  input: ListNamedQueriesInput,
+  output: ListNamedQueriesOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2468,8 +3141,8 @@ export const listNotebookMetadata: API.OperationMethod<
   ListNotebookMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<ListNotebookMetadataInput>,
-  output: __S(170) as any as S.Schema<ListNotebookMetadataOutput>,
+  input: ListNotebookMetadataInput,
+  output: ListNotebookMetadataOutput,
   errors: [InternalServerException, InvalidRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2493,8 +3166,8 @@ export const listNotebookSessions: API.OperationMethod<
   ListNotebookSessionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171) as any as S.Schema<ListNotebookSessionsRequest>,
-  output: __S(174) as any as S.Schema<ListNotebookSessionsResponse>,
+  input: ListNotebookSessionsRequest,
+  output: ListNotebookSessionsResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2515,8 +3188,8 @@ export const listPreparedStatements: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(175) as any as S.Schema<ListPreparedStatementsInput>,
-  output: __S(178) as any as S.Schema<ListPreparedStatementsOutput>,
+  input: ListPreparedStatementsInput,
+  output: ListPreparedStatementsOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2545,8 +3218,8 @@ export const listQueryExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(179) as any as S.Schema<ListQueryExecutionsInput>,
-  output: __S(180) as any as S.Schema<ListQueryExecutionsOutput>,
+  input: ListQueryExecutionsInput,
+  output: ListQueryExecutionsOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2576,8 +3249,8 @@ export const listSessions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(181) as any as S.Schema<ListSessionsRequest>,
-  output: __S(184) as any as S.Schema<ListSessionsResponse>,
+  input: ListSessionsRequest,
+  output: ListSessionsResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2604,8 +3277,8 @@ export const listTableMetadata: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TableMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(185) as any as S.Schema<ListTableMetadataInput>,
-  output: __S(187) as any as S.Schema<ListTableMetadataOutput>,
+  input: ListTableMetadataInput,
+  output: ListTableMetadataOutput,
   errors: [InternalServerException, InvalidRequestException, MetadataException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2633,8 +3306,8 @@ export const listTagsForResource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Tag
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(188) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(189) as any as S.Schema<ListTagsForResourceOutput>,
+  input: ListTagsForResourceInput,
+  output: ListTagsForResourceOutput,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2658,8 +3331,8 @@ export const listWorkGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(190) as any as S.Schema<ListWorkGroupsInput>,
-  output: __S(193) as any as S.Schema<ListWorkGroupsOutput>,
+  input: ListWorkGroupsInput,
+  output: ListWorkGroupsOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2686,8 +3359,8 @@ export const putCapacityAssignmentConfiguration: API.OperationMethod<
   PutCapacityAssignmentConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194) as any as S.Schema<PutCapacityAssignmentConfigurationInput>,
-  output: __S(195) as any as S.Schema<PutCapacityAssignmentConfigurationOutput>,
+  input: PutCapacityAssignmentConfigurationInput,
+  output: PutCapacityAssignmentConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2714,8 +3387,8 @@ export const startCalculationExecution: API.OperationMethod<
   StartCalculationExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197) as any as S.Schema<StartCalculationExecutionRequest>,
-  output: __S(198) as any as S.Schema<StartCalculationExecutionResponse>,
+  input: StartCalculationExecutionRequest,
+  output: StartCalculationExecutionResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2741,8 +3414,8 @@ export const startQueryExecution: API.OperationMethod<
   StartQueryExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199) as any as S.Schema<StartQueryExecutionInput>,
-  output: __S(200) as any as S.Schema<StartQueryExecutionOutput>,
+  input: StartQueryExecutionInput,
+  output: StartQueryExecutionOutput,
   errors: [InternalServerException, InvalidRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2766,8 +3439,8 @@ export const startSession: API.OperationMethod<
   StartSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201) as any as S.Schema<StartSessionRequest>,
-  output: __S(202) as any as S.Schema<StartSessionResponse>,
+  input: StartSessionRequest,
+  output: StartSessionResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2802,8 +3475,8 @@ export const stopCalculationExecution: API.OperationMethod<
   StopCalculationExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203) as any as S.Schema<StopCalculationExecutionRequest>,
-  output: __S(204) as any as S.Schema<StopCalculationExecutionResponse>,
+  input: StopCalculationExecutionRequest,
+  output: StopCalculationExecutionResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2824,8 +3497,8 @@ export const stopQueryExecution: API.OperationMethod<
   StopQueryExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205) as any as S.Schema<StopQueryExecutionInput>,
-  output: __S(47) as any as S.Schema<StopQueryExecutionOutput>,
+  input: StopQueryExecutionInput,
+  output: StopQueryExecutionOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2856,8 +3529,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206) as any as S.Schema<TagResourceInput>,
-  output: __S(47) as any as S.Schema<TagResourceOutput>,
+  input: TagResourceInput,
+  output: TagResourceOutput,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2882,8 +3555,8 @@ export const terminateSession: API.OperationMethod<
   TerminateSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207) as any as S.Schema<TerminateSessionRequest>,
-  output: __S(208) as any as S.Schema<TerminateSessionResponse>,
+  input: TerminateSessionRequest,
+  output: TerminateSessionResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2904,8 +3577,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209) as any as S.Schema<UntagResourceInput>,
-  output: __S(47) as any as S.Schema<UntagResourceOutput>,
+  input: UntagResourceInput,
+  output: UntagResourceOutput,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2926,8 +3599,8 @@ export const updateCapacityReservation: API.OperationMethod<
   UpdateCapacityReservationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210) as any as S.Schema<UpdateCapacityReservationInput>,
-  output: __S(34) as any as S.Schema<UpdateCapacityReservationOutput>,
+  input: UpdateCapacityReservationInput,
+  output: UpdateCapacityReservationOutput,
   errors: [InternalServerException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2948,8 +3621,8 @@ export const updateDataCatalog: API.OperationMethod<
   UpdateDataCatalogError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211) as any as S.Schema<UpdateDataCatalogInput>,
-  output: __S(47) as any as S.Schema<UpdateDataCatalogOutput>,
+  input: UpdateDataCatalogInput,
+  output: UpdateDataCatalogOutput,
   errors: [InternalServerException, InvalidRequestException, DataCatalogNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2971,8 +3644,8 @@ export const updateNamedQuery: API.OperationMethod<
   UpdateNamedQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212) as any as S.Schema<UpdateNamedQueryInput>,
-  output: __S(47) as any as S.Schema<UpdateNamedQueryOutput>,
+  input: UpdateNamedQueryInput,
+  output: UpdateNamedQueryOutput,
   errors: [InternalServerException, InvalidRequestException, NamedQueryNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2993,8 +3666,8 @@ export const updateNotebook: API.OperationMethod<
   UpdateNotebookError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213) as any as S.Schema<UpdateNotebookInput>,
-  output: __S(47) as any as S.Schema<UpdateNotebookOutput>,
+  input: UpdateNotebookInput,
+  output: UpdateNotebookOutput,
   errors: [InternalServerException, InvalidRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3015,8 +3688,8 @@ export const updateNotebookMetadata: API.OperationMethod<
   UpdateNotebookMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214) as any as S.Schema<UpdateNotebookMetadataInput>,
-  output: __S(47) as any as S.Schema<UpdateNotebookMetadataOutput>,
+  input: UpdateNotebookMetadataInput,
+  output: UpdateNotebookMetadataOutput,
   errors: [InternalServerException, InvalidRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3037,8 +3710,8 @@ export const updatePreparedStatement: API.OperationMethod<
   UpdatePreparedStatementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215) as any as S.Schema<UpdatePreparedStatementInput>,
-  output: __S(47) as any as S.Schema<UpdatePreparedStatementOutput>,
+  input: UpdatePreparedStatementInput,
+  output: UpdatePreparedStatementOutput,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3060,8 +3733,8 @@ export const updateWorkGroup: API.OperationMethod<
   UpdateWorkGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219) as any as S.Schema<UpdateWorkGroupInput>,
-  output: __S(47) as any as S.Schema<UpdateWorkGroupOutput>,
+  input: UpdateWorkGroupInput,
+  output: UpdateWorkGroupOutput,
   errors: [InternalServerException, InvalidRequestException, WorkGroupNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3075,7 +3748,7 @@ function __c0(j: number): any {
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
-        S.Struct({ NamedQueryIds: __S(0) }).pipe(
+        S.Struct({ NamedQueryIds: NamedQueryIdList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "BatchGetNamedQueryInput" });
@@ -3091,7 +3764,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "NamedQuery" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(NamedQuery);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3101,17 +3774,17 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "UnprocessedNamedQueryId" });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(UnprocessedNamedQueryId);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          NamedQueries: S.optional(__S(3)),
-          UnprocessedNamedQueryIds: S.optional(__S(5)),
+          NamedQueries: S.optional(NamedQueryList),
+          UnprocessedNamedQueryIds: S.optional(UnprocessedNamedQueryIdList),
         }),
       ).annotate({ identifier: "BatchGetNamedQueryOutput" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ PreparedStatementNames: __S(0), WorkGroup: S.String }).pipe(
+        S.Struct({ PreparedStatementNames: PreparedStatementNameList, WorkGroup: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -3132,7 +3805,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "PreparedStatement" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(PreparedStatement);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3144,19 +3817,19 @@ function __c1(j: number): any {
         identifier: "UnprocessedPreparedStatementName",
       });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(UnprocessedPreparedStatementName);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          PreparedStatements: S.optional(__S(9)),
-          UnprocessedPreparedStatementNames: S.optional(__S(11)),
+          PreparedStatements: S.optional(PreparedStatementDetailsList),
+          UnprocessedPreparedStatementNames: S.optional(UnprocessedPreparedStatementNameList),
         }),
       ).annotate({
         identifier: "BatchGetPreparedStatementOutput",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ QueryExecutionIds: __S(0) }).pipe(
+        S.Struct({ QueryExecutionIds: QueryExecutionIdList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -3170,7 +3843,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Enabled: S.Boolean,
-          EncryptionConfiguration: S.optional(__S(14)),
+          EncryptionConfiguration: S.optional(ManagedQueryResultsEncryptionConfiguration),
         }),
       ).annotate({
         identifier: "ManagedQueryResultsConfiguration",
@@ -3181,19 +3854,19 @@ function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ EncryptionOption: S.String, KmsKey: S.optional(S.String) }),
+        S.Struct({ EncryptionOption: EncryptionOption, KmsKey: S.optional(S.String) }),
       ).annotate({ identifier: "EncryptionConfiguration" });
     case 1:
-      return S.suspend(() => S.Struct({ S3AclOption: S.String })).annotate({
+      return S.suspend(() => S.Struct({ S3AclOption: S3AclOption })).annotate({
         identifier: "AclConfiguration",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           OutputLocation: S.optional(S.String),
-          EncryptionConfiguration: S.optional(__S(16)),
+          EncryptionConfiguration: S.optional(EncryptionConfiguration),
           ExpectedBucketOwner: S.optional(S.String),
-          AclConfiguration: S.optional(__S(17)),
+          AclConfiguration: S.optional(AclConfiguration),
         }),
       ).annotate({ identifier: "ResultConfiguration" });
     case 3:
@@ -3204,7 +3877,7 @@ function __c2(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ResultReuseByAgeConfiguration: S.optional(__S(19)) }),
+        S.Struct({ ResultReuseByAgeConfiguration: S.optional(ResultReuseByAgeConfiguration) }),
       ).annotate({ identifier: "ResultReuseConfiguration" });
     case 5:
       return S.suspend(() =>
@@ -3222,11 +3895,11 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          State: S.optional(S.String),
+          State: S.optional(QueryExecutionState),
           StateChangeReason: S.optional(S.String),
           SubmissionDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CompletionDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AthenaError: S.optional(__S(22)),
+          AthenaError: S.optional(AthenaError),
         }),
       ).annotate({ identifier: "QueryExecutionStatus" });
   }
@@ -3248,7 +3921,7 @@ function __c3(j: number): any {
           ServicePreProcessingTimeInMillis: S.optional(S.Number),
           QueryPlanningTimeInMillis: S.optional(S.Number),
           ServiceProcessingTimeInMillis: S.optional(S.Number),
-          ResultReuseInformation: S.optional(__S(24)),
+          ResultReuseInformation: S.optional(ResultReuseInformation),
           DpuCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "QueryExecutionStatistics" });
@@ -3264,7 +3937,7 @@ function __c3(j: number): any {
         S.Struct({
           EnableS3AccessGrants: S.Boolean,
           CreateUserLevelPrefix: S.optional(S.Boolean),
-          AuthenticationType: S.String,
+          AuthenticationType: AuthenticationType,
         }),
       ).annotate({
         identifier: "QueryResultsS3AccessGrantsConfiguration",
@@ -3274,22 +3947,24 @@ function __c3(j: number): any {
         S.Struct({
           QueryExecutionId: S.optional(S.String),
           Query: S.optional(S.String),
-          StatementType: S.optional(S.String),
-          ManagedQueryResultsConfiguration: S.optional(__S(15)),
-          ResultConfiguration: S.optional(__S(18)),
-          ResultReuseConfiguration: S.optional(__S(20)),
-          QueryExecutionContext: S.optional(__S(21)),
-          Status: S.optional(__S(23)),
-          Statistics: S.optional(__S(25)),
+          StatementType: S.optional(StatementType),
+          ManagedQueryResultsConfiguration: S.optional(ManagedQueryResultsConfiguration),
+          ResultConfiguration: S.optional(ResultConfiguration),
+          ResultReuseConfiguration: S.optional(ResultReuseConfiguration),
+          QueryExecutionContext: S.optional(QueryExecutionContext),
+          Status: S.optional(QueryExecutionStatus),
+          Statistics: S.optional(QueryExecutionStatistics),
           WorkGroup: S.optional(S.String),
-          EngineVersion: S.optional(__S(26)),
-          ExecutionParameters: S.optional(__S(0)),
+          EngineVersion: S.optional(EngineVersion),
+          ExecutionParameters: S.optional(ExecutionParameters),
           SubstatementType: S.optional(S.String),
-          QueryResultsS3AccessGrantsConfiguration: S.optional(__S(27)),
+          QueryResultsS3AccessGrantsConfiguration: S.optional(
+            QueryResultsS3AccessGrantsConfiguration,
+          ),
         }),
       ).annotate({ identifier: "QueryExecution" });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(QueryExecution);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3301,7 +3976,7 @@ function __c3(j: number): any {
         identifier: "UnprocessedQueryExecutionId",
       });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(UnprocessedQueryExecutionId);
   }
 }
 function __c4(j: number): any {
@@ -3309,8 +3984,8 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          QueryExecutions: S.optional(__S(29)),
-          UnprocessedQueryExecutionIds: S.optional(__S(31)),
+          QueryExecutions: S.optional(QueryExecutionList),
+          UnprocessedQueryExecutionIds: S.optional(UnprocessedQueryExecutionIdList),
         }),
       ).annotate({
         identifier: "BatchGetQueryExecutionOutput",
@@ -3332,10 +4007,10 @@ function __c4(j: number): any {
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "Tag" });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(Tag);
     case 5:
       return S.suspend(() =>
-        S.Struct({ TargetDpus: S.Number, Name: S.String, Tags: S.optional(__S(36)) }).pipe(
+        S.Struct({ TargetDpus: S.Number, Name: S.String, Tags: S.optional(TagList) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -3347,10 +4022,10 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          Type: S.String,
+          Type: DataCatalogType,
           Description: S.optional(S.String),
-          Parameters: S.optional(__S(38)),
-          Tags: S.optional(__S(36)),
+          Parameters: S.optional(ParametersMap),
+          Tags: S.optional(TagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateDataCatalogInput" });
   }
@@ -3362,15 +4037,15 @@ function __c5(j: number): any {
         S.Struct({
           Name: S.String,
           Description: S.optional(S.String),
-          Type: S.String,
-          Parameters: S.optional(__S(38)),
-          Status: S.optional(S.String),
-          ConnectionType: S.optional(S.String),
+          Type: DataCatalogType,
+          Parameters: S.optional(ParametersMap),
+          Status: S.optional(DataCatalogStatus),
+          ConnectionType: S.optional(ConnectionType),
           Error: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataCatalog" });
     case 1:
-      return S.suspend(() => S.Struct({ DataCatalog: S.optional(__S(40)) })).annotate({
+      return S.suspend(() => S.Struct({ DataCatalog: S.optional(DataCatalog) })).annotate({
         identifier: "CreateDataCatalogOutput",
       });
     case 2:
@@ -3434,14 +4109,14 @@ function __c6(j: number): any {
         identifier: "CreatePresignedNotebookUrlResponse",
       });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ LogTypeValuesList.pipe(S.optional));
     case 3:
       return S.suspend(() =>
         S.Struct({
           Enabled: S.Boolean,
           LogGroup: S.optional(S.String),
           LogStreamNamePrefix: S.optional(S.String),
-          LogTypes: S.optional(__S(50)),
+          LogTypes: S.optional(LogTypesMap),
         }),
       ).annotate({
         identifier: "CloudWatchLoggingConfiguration",
@@ -3463,30 +4138,30 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          CloudWatchLoggingConfiguration: S.optional(__S(51)),
-          ManagedLoggingConfiguration: S.optional(__S(52)),
-          S3LoggingConfiguration: S.optional(__S(53)),
+          CloudWatchLoggingConfiguration: S.optional(CloudWatchLoggingConfiguration),
+          ManagedLoggingConfiguration: S.optional(ManagedLoggingConfiguration),
+          S3LoggingConfiguration: S.optional(S3LoggingConfiguration),
         }),
       ).annotate({ identifier: "MonitoringConfiguration" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Properties: S.optional(__S(38)) }),
+        S.Struct({ Name: S.optional(S.String), Properties: S.optional(ParametersMap) }),
       ).annotate({ identifier: "Classification" });
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55));
+      return S.Array(Classification);
     case 1:
       return S.suspend(() =>
         S.Struct({
           CoordinatorDpuSize: S.optional(S.Number),
           MaxConcurrentDpus: S.optional(S.Number),
           DefaultExecutorDpuSize: S.optional(S.Number),
-          AdditionalConfigs: S.optional(__S(38)),
-          SparkProperties: S.optional(__S(38)),
-          Classifications: S.optional(__S(56)),
+          AdditionalConfigs: S.optional(ParametersMap),
+          SparkProperties: S.optional(ParametersMap),
+          Classifications: S.optional(ClassificationList),
         }),
       ).annotate({ identifier: "EngineConfiguration" });
     case 2:
@@ -3501,30 +4176,34 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ResultConfiguration: S.optional(__S(18)),
-          ManagedQueryResultsConfiguration: S.optional(__S(15)),
+          ResultConfiguration: S.optional(ResultConfiguration),
+          ManagedQueryResultsConfiguration: S.optional(ManagedQueryResultsConfiguration),
           EnforceWorkGroupConfiguration: S.optional(S.Boolean),
           PublishCloudWatchMetricsEnabled: S.optional(S.Boolean),
           BytesScannedCutoffPerQuery: S.optional(S.Number),
           RequesterPaysEnabled: S.optional(S.Boolean),
-          EngineVersion: S.optional(__S(26)),
+          EngineVersion: S.optional(EngineVersion),
           AdditionalConfiguration: S.optional(S.String),
           ExecutionRole: S.optional(S.String),
-          MonitoringConfiguration: S.optional(__S(54)),
-          EngineConfiguration: S.optional(__S(57)),
-          CustomerContentEncryptionConfiguration: S.optional(__S(14)),
+          MonitoringConfiguration: S.optional(MonitoringConfiguration),
+          EngineConfiguration: S.optional(EngineConfiguration),
+          CustomerContentEncryptionConfiguration: S.optional(
+            CustomerContentEncryptionConfiguration,
+          ),
           EnableMinimumEncryptionConfiguration: S.optional(S.Boolean),
-          IdentityCenterConfiguration: S.optional(__S(58)),
-          QueryResultsS3AccessGrantsConfiguration: S.optional(__S(27)),
+          IdentityCenterConfiguration: S.optional(IdentityCenterConfiguration),
+          QueryResultsS3AccessGrantsConfiguration: S.optional(
+            QueryResultsS3AccessGrantsConfiguration,
+          ),
         }),
       ).annotate({ identifier: "WorkGroupConfiguration" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          Configuration: S.optional(__S(59)),
+          Configuration: S.optional(WorkGroupConfiguration),
           Description: S.optional(S.String),
-          Tags: S.optional(__S(36)),
+          Tags: S.optional(TagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateWorkGroupInput" });
     case 5:
@@ -3584,13 +4263,13 @@ function __c8(j: number): any {
           Name: S.optional(S.String),
           WorkGroup: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Type: S.optional(S.String),
+          Type: S.optional(NotebookType),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "NotebookMetadata" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ NotebookMetadata: S.optional(__S(68)), Payload: S.optional(S.String) }),
+        S.Struct({ NotebookMetadata: S.optional(NotebookMetadata), Payload: S.optional(S.String) }),
       ).annotate({ identifier: "ExportNotebookOutput" });
     case 6:
       return S.suspend(() =>
@@ -3605,7 +4284,7 @@ function __c8(j: number): any {
         S.Struct({
           SubmissionDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CompletionDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          State: S.optional(S.String),
+          State: S.optional(CalculationExecutionState),
           StateChangeReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "CalculationStatus" });
@@ -3633,9 +4312,9 @@ function __c9(j: number): any {
           SessionId: S.optional(S.String),
           Description: S.optional(S.String),
           WorkingDirectory: S.optional(S.String),
-          Status: S.optional(__S(71)),
-          Statistics: S.optional(__S(72)),
-          Result: S.optional(__S(73)),
+          Status: S.optional(CalculationStatus),
+          Statistics: S.optional(CalculationStatistics),
+          Result: S.optional(CalculationResult),
         }),
       ).annotate({
         identifier: "GetCalculationExecutionResponse",
@@ -3663,8 +4342,8 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(__S(71)),
-          Statistics: S.optional(__S(72)),
+          Status: S.optional(CalculationStatus),
+          Statistics: S.optional(CalculationStatistics),
         }),
       ).annotate({
         identifier: "GetCalculationExecutionStatusResponse",
@@ -3682,22 +4361,24 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ WorkGroupNames: S.optional(__S(0)) })).annotate({
-        identifier: "CapacityAssignment",
-      });
+      return S.suspend(() => S.Struct({ WorkGroupNames: S.optional(WorkGroupNamesList) })).annotate(
+        { identifier: "CapacityAssignment" },
+      );
     case 1:
-      return S.Array(__S(80));
+      return S.Array(CapacityAssignment);
     case 2:
       return S.suspend(() =>
         S.Struct({
           CapacityReservationName: S.optional(S.String),
-          CapacityAssignments: S.optional(__S(81)),
+          CapacityAssignments: S.optional(CapacityAssignmentsList),
         }),
       ).annotate({
         identifier: "CapacityAssignmentConfiguration",
       });
     case 3:
-      return S.suspend(() => S.Struct({ CapacityAssignmentConfiguration: __S(82) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ CapacityAssignmentConfiguration: CapacityAssignmentConfiguration }),
+      ).annotate({
         identifier: "GetCapacityAssignmentConfigurationOutput",
       });
     case 4:
@@ -3711,7 +4392,7 @@ function __c10(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Status: S.String,
+          Status: CapacityAllocationStatus,
           StatusMessage: S.optional(S.String),
           RequestTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           RequestCompletionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3721,16 +4402,16 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          Status: S.String,
+          Status: CapacityReservationStatus,
           TargetDpus: S.Number,
           AllocatedDpus: S.Number,
-          LastAllocation: S.optional(__S(85)),
+          LastAllocation: S.optional(CapacityAllocation),
           LastSuccessfulAllocationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "CapacityReservation" });
     case 7:
-      return S.suspend(() => S.Struct({ CapacityReservation: __S(86) })).annotate({
+      return S.suspend(() => S.Struct({ CapacityReservation: CapacityReservation })).annotate({
         identifier: "GetCapacityReservationOutput",
       });
   }
@@ -3750,11 +4431,11 @@ function __c11(j: number): any {
         S.Struct({
           Name: S.String,
           Description: S.optional(S.String),
-          Parameters: S.optional(__S(38)),
+          Parameters: S.optional(ParametersMap),
         }),
       ).annotate({ identifier: "Database" });
     case 2:
-      return S.suspend(() => S.Struct({ Database: S.optional(__S(89)) })).annotate({
+      return S.suspend(() => S.Struct({ Database: S.optional(Database) })).annotate({
         identifier: "GetDatabaseOutput",
       });
     case 3:
@@ -3770,7 +4451,7 @@ function __c11(j: number): any {
         ),
       ).annotate({ identifier: "GetNamedQueryInput" });
     case 5:
-      return S.suspend(() => S.Struct({ NamedQuery: S.optional(__S(2)) })).annotate({
+      return S.suspend(() => S.Struct({ NamedQuery: S.optional(NamedQuery) })).annotate({
         identifier: "GetNamedQueryOutput",
       });
     case 6:
@@ -3780,9 +4461,11 @@ function __c11(j: number): any {
         ),
       ).annotate({ identifier: "GetNotebookMetadataInput" });
     case 7:
-      return S.suspend(() => S.Struct({ NotebookMetadata: S.optional(__S(68)) })).annotate({
-        identifier: "GetNotebookMetadataOutput",
-      });
+      return S.suspend(() => S.Struct({ NotebookMetadata: S.optional(NotebookMetadata) })).annotate(
+        {
+          identifier: "GetNotebookMetadataOutput",
+        },
+      );
   }
 }
 function __c12(j: number): any {
@@ -3796,7 +4479,9 @@ function __c12(j: number): any {
         identifier: "GetPreparedStatementInput",
       });
     case 1:
-      return S.suspend(() => S.Struct({ PreparedStatement: S.optional(__S(8)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ PreparedStatement: S.optional(PreparedStatement) }),
+      ).annotate({
         identifier: "GetPreparedStatementOutput",
       });
     case 2:
@@ -3806,7 +4491,7 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "GetQueryExecutionInput" });
     case 3:
-      return S.suspend(() => S.Struct({ QueryExecution: S.optional(__S(28)) })).annotate({
+      return S.suspend(() => S.Struct({ QueryExecution: S.optional(QueryExecution) })).annotate({
         identifier: "GetQueryExecutionOutput",
       });
     case 4:
@@ -3815,7 +4500,7 @@ function __c12(j: number): any {
           QueryExecutionId: S.String,
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          QueryResultType: S.optional(S.String),
+          QueryResultType: S.optional(QueryResultType),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetQueryResultsInput" });
     case 5:
@@ -3823,9 +4508,9 @@ function __c12(j: number): any {
         identifier: "Datum",
       });
     case 6:
-      return S.Array(__S(101));
+      return S.Array(Datum);
     case 7:
-      return S.suspend(() => S.Struct({ Data: S.optional(__S(102)) })).annotate({
+      return S.suspend(() => S.Struct({ Data: S.optional(DatumList) })).annotate({
         identifier: "Row",
       });
   }
@@ -3833,7 +4518,7 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(103));
+      return S.Array(Row);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3845,25 +4530,25 @@ function __c13(j: number): any {
           Type: S.String,
           Precision: S.optional(S.Number),
           Scale: S.optional(S.Number),
-          Nullable: S.optional(S.String),
+          Nullable: S.optional(ColumnNullable),
           CaseSensitive: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ColumnInfo" });
     case 2:
-      return S.Array(__S(105));
+      return S.Array(ColumnInfo);
     case 3:
-      return S.suspend(() => S.Struct({ ColumnInfo: S.optional(__S(106)) })).annotate({
+      return S.suspend(() => S.Struct({ ColumnInfo: S.optional(ColumnInfoList) })).annotate({
         identifier: "ResultSetMetadata",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Rows: S.optional(__S(104)), ResultSetMetadata: S.optional(__S(107)) }),
+        S.Struct({ Rows: S.optional(RowList), ResultSetMetadata: S.optional(ResultSetMetadata) }),
       ).annotate({ identifier: "ResultSet" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           UpdateCount: S.optional(S.Number),
-          ResultSet: S.optional(__S(108)),
+          ResultSet: S.optional(ResultSet),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetQueryResultsOutput" });
@@ -3905,7 +4590,7 @@ function __c14(j: number): any {
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<QueryStagePlanNode> => __S(114)).annotate({
+        /*@__PURE__*/ S.suspend((): S.Schema<QueryStagePlanNode> => QueryStagePlanNode).annotate({
           identifier: "QueryStagePlanNode",
         }),
       );
@@ -3915,14 +4600,14 @@ function __c14(j: number): any {
           Name: S.optional(S.String),
           Identifier: S.optional(S.String),
           Children: S.optional(
-            S.suspend(() => __S(113)).annotate({ identifier: "QueryStagePlanNodes" }),
+            S.suspend(() => QueryStagePlanNodes).annotate({ identifier: "QueryStagePlanNodes" }),
           ),
-          RemoteSources: S.optional(__S(0)),
+          RemoteSources: S.optional(StringList),
         }),
       ).annotate({ identifier: "QueryStagePlanNode" });
     case 3:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<QueryStage> => __S(116)).annotate({
+        /*@__PURE__*/ S.suspend((): S.Schema<QueryStage> => QueryStage).annotate({
           identifier: "QueryStage",
         }),
       );
@@ -3937,23 +4622,27 @@ function __c14(j: number): any {
           InputRows: S.optional(S.Number),
           ExecutionTime: S.optional(S.Number),
           QueryStagePlan: S.optional(
-            S.suspend((): S.Schema<QueryStagePlanNode> => __S(114)).annotate({
+            S.suspend((): S.Schema<QueryStagePlanNode> => QueryStagePlanNode).annotate({
               identifier: "QueryStagePlanNode",
             }),
           ),
-          SubStages: S.optional(S.suspend(() => __S(115)).annotate({ identifier: "QueryStages" })),
+          SubStages: S.optional(
+            S.suspend(() => QueryStages).annotate({ identifier: "QueryStages" }),
+          ),
         }),
       ).annotate({ identifier: "QueryStage" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Timeline: S.optional(__S(111)),
-          Rows: S.optional(__S(112)),
-          OutputStage: S.optional(__S(116)),
+          Timeline: S.optional(QueryRuntimeStatisticsTimeline),
+          Rows: S.optional(QueryRuntimeStatisticsRows),
+          OutputStage: S.optional(QueryStage),
         }),
       ).annotate({ identifier: "QueryRuntimeStatistics" });
     case 6:
-      return S.suspend(() => S.Struct({ QueryRuntimeStatistics: S.optional(__S(117)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ QueryRuntimeStatistics: S.optional(QueryRuntimeStatistics) }),
+      ).annotate({
         identifier: "GetQueryRuntimeStatisticsOutput",
       });
     case 7:
@@ -3985,7 +4674,7 @@ function __c15(j: number): any {
           WorkingDirectory: S.optional(S.String),
           IdleTimeoutSeconds: S.optional(S.Number),
           SessionIdleTimeoutInMinutes: S.optional(S.Number),
-          EncryptionConfiguration: S.optional(__S(16)),
+          EncryptionConfiguration: S.optional(EncryptionConfiguration),
         }),
       ).annotate({ identifier: "SessionConfiguration" });
     case 3:
@@ -3995,7 +4684,7 @@ function __c15(j: number): any {
           LastModifiedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           IdleSinceDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          State: S.optional(S.String),
+          State: S.optional(SessionState),
           StateChangeReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "SessionStatus" });
@@ -4010,12 +4699,12 @@ function __c15(j: number): any {
           Description: S.optional(S.String),
           WorkGroup: S.optional(S.String),
           EngineVersion: S.optional(S.String),
-          EngineConfiguration: S.optional(__S(57)),
+          EngineConfiguration: S.optional(EngineConfiguration),
           NotebookVersion: S.optional(S.String),
-          MonitoringConfiguration: S.optional(__S(54)),
-          SessionConfiguration: S.optional(__S(122)),
-          Status: S.optional(__S(123)),
-          Statistics: S.optional(__S(124)),
+          MonitoringConfiguration: S.optional(MonitoringConfiguration),
+          SessionConfiguration: S.optional(SessionConfiguration),
+          Status: S.optional(SessionStatus),
+          Statistics: S.optional(SessionStatistics),
         }),
       ).annotate({ identifier: "GetSessionResponse" });
     case 6:
@@ -4048,7 +4737,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "GetSessionStatusRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ SessionId: S.optional(S.String), Status: S.optional(__S(123)) }),
+        S.Struct({ SessionId: S.optional(S.String), Status: S.optional(SessionStatus) }),
       ).annotate({ identifier: "GetSessionStatusResponse" });
     case 2:
       return S.suspend(() =>
@@ -4064,7 +4753,7 @@ function __c16(j: number): any {
         S.Struct({ Name: S.String, Type: S.optional(S.String), Comment: S.optional(S.String) }),
       ).annotate({ identifier: "Column" });
     case 4:
-      return S.Array(__S(131));
+      return S.Array(Column);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4072,13 +4761,13 @@ function __c16(j: number): any {
           CreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastAccessTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TableType: S.optional(S.String),
-          Columns: S.optional(__S(132)),
-          PartitionKeys: S.optional(__S(132)),
-          Parameters: S.optional(__S(38)),
+          Columns: S.optional(ColumnList),
+          PartitionKeys: S.optional(ColumnList),
+          Parameters: S.optional(ParametersMap),
         }),
       ).annotate({ identifier: "TableMetadata" });
     case 6:
-      return S.suspend(() => S.Struct({ TableMetadata: S.optional(__S(133)) })).annotate({
+      return S.suspend(() => S.Struct({ TableMetadata: S.optional(TableMetadata) })).annotate({
         identifier: "GetTableMetadataOutput",
       });
     case 7:
@@ -4095,15 +4784,15 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          State: S.optional(S.String),
-          Configuration: S.optional(__S(59)),
+          State: S.optional(WorkGroupState),
+          Configuration: S.optional(WorkGroupConfiguration),
           Description: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           IdentityCenterApplicationArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkGroup" });
     case 1:
-      return S.suspend(() => S.Struct({ WorkGroup: S.optional(__S(136)) })).annotate({
+      return S.suspend(() => S.Struct({ WorkGroup: S.optional(WorkGroup) })).annotate({
         identifier: "GetWorkGroupOutput",
       });
     case 2:
@@ -4112,7 +4801,7 @@ function __c17(j: number): any {
           WorkGroup: S.String,
           Name: S.String,
           Payload: S.optional(S.String),
-          Type: S.String,
+          Type: NotebookType,
           NotebookS3LocationUri: S.optional(S.String),
           ClientRequestToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -4131,15 +4820,15 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationRuntimeId: S.optional(S.String),
-          SupportedDPUSizes: S.optional(__S(140)),
+          SupportedDPUSizes: S.optional(SupportedDPUSizeList),
         }),
       ).annotate({ identifier: "ApplicationDPUSizes" });
     case 6:
-      return S.Array(__S(141));
+      return S.Array(ApplicationDPUSizes);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ApplicationDPUSizes: S.optional(__S(142)),
+          ApplicationDPUSizes: S.optional(ApplicationDPUSizesList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4153,7 +4842,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SessionId: S.String,
-          StateFilter: S.optional(S.String),
+          StateFilter: S.optional(CalculationExecutionState),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -4165,14 +4854,14 @@ function __c18(j: number): any {
         S.Struct({
           CalculationExecutionId: S.optional(S.String),
           Description: S.optional(S.String),
-          Status: S.optional(__S(71)),
+          Status: S.optional(CalculationStatus),
         }),
       ).annotate({ identifier: "CalculationSummary" });
     case 2:
-      return S.Array(__S(145));
+      return S.Array(CalculationSummary);
     case 3:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Calculations: S.optional(__S(146)) }),
+        S.Struct({ NextToken: S.optional(S.String), Calculations: S.optional(CalculationsList) }),
       ).annotate({
         identifier: "ListCalculationExecutionsResponse",
       });
@@ -4185,12 +4874,12 @@ function __c18(j: number): any {
         identifier: "ListCapacityReservationsInput",
       });
     case 5:
-      return S.Array(__S(86));
+      return S.Array(CapacityReservation);
     case 6:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          CapacityReservations: __S(149),
+          CapacityReservations: CapacityReservationsList,
         }),
       ).annotate({
         identifier: "ListCapacityReservationsOutput",
@@ -4209,10 +4898,10 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(89));
+      return S.Array(Database);
     case 1:
       return S.suspend(() =>
-        S.Struct({ DatabaseList: S.optional(__S(152)), NextToken: S.optional(S.String) }),
+        S.Struct({ DatabaseList: S.optional(DatabaseList), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDatabasesOutput" });
     case 2:
       return S.suspend(() =>
@@ -4226,18 +4915,18 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CatalogName: S.optional(S.String),
-          Type: S.optional(S.String),
-          Status: S.optional(S.String),
-          ConnectionType: S.optional(S.String),
+          Type: S.optional(DataCatalogType),
+          Status: S.optional(DataCatalogStatus),
+          ConnectionType: S.optional(ConnectionType),
           Error: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataCatalogSummary" });
     case 4:
-      return S.Array(__S(155));
+      return S.Array(DataCatalogSummary);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          DataCatalogsSummary: S.optional(__S(156)),
+          DataCatalogsSummary: S.optional(DataCatalogSummaryList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDataCatalogsOutput" });
@@ -4248,7 +4937,7 @@ function __c19(j: number): any {
         ),
       ).annotate({ identifier: "ListEngineVersionsInput" });
     case 7:
-      return S.Array(__S(26));
+      return S.Array(EngineVersion);
   }
 }
 function __c20(j: number): any {
@@ -4256,7 +4945,7 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          EngineVersions: S.optional(__S(159)),
+          EngineVersions: S.optional(EngineVersionsList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListEngineVersionsOutput" });
@@ -4264,7 +4953,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SessionId: S.String,
-          ExecutorStateFilter: S.optional(S.String),
+          ExecutorStateFilter: S.optional(ExecutorState),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -4273,21 +4962,21 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ExecutorId: S.String,
-          ExecutorType: S.optional(S.String),
+          ExecutorType: S.optional(ExecutorType),
           StartDateTime: S.optional(S.Number),
           TerminationDateTime: S.optional(S.Number),
-          ExecutorState: S.optional(S.String),
+          ExecutorState: S.optional(ExecutorState),
           ExecutorSize: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ExecutorsSummary" });
     case 3:
-      return S.Array(__S(162));
+      return S.Array(ExecutorsSummary);
     case 4:
       return S.suspend(() =>
         S.Struct({
           SessionId: S.String,
           NextToken: S.optional(S.String),
-          ExecutorsSummary: S.optional(__S(163)),
+          ExecutorsSummary: S.optional(ExecutorsSummaryList),
         }),
       ).annotate({ identifier: "ListExecutorsResponse" });
     case 5:
@@ -4300,7 +4989,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "ListNamedQueriesInput" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ NamedQueryIds: S.optional(__S(0)), NextToken: S.optional(S.String) }),
+        S.Struct({ NamedQueryIds: S.optional(NamedQueryIdList), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListNamedQueriesOutput" });
     case 7:
       return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
@@ -4313,7 +5002,7 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(167)),
+          Filters: S.optional(FilterDefinition),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           WorkGroup: S.String,
@@ -4322,12 +5011,12 @@ function __c21(j: number): any {
         identifier: "ListNotebookMetadataInput",
       });
     case 1:
-      return S.Array(__S(68));
+      return S.Array(NotebookMetadata);
     case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          NotebookMetadataList: S.optional(__S(169)),
+          NotebookMetadataList: S.optional(NotebookMetadataArray),
         }),
       ).annotate({
         identifier: "ListNotebookMetadataOutput",
@@ -4350,10 +5039,10 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "NotebookSessionSummary" });
     case 5:
-      return S.Array(__S(172));
+      return S.Array(NotebookSessionSummary);
     case 6:
       return S.suspend(() =>
-        S.Struct({ NotebookSessionsList: __S(173), NextToken: S.optional(S.String) }),
+        S.Struct({ NotebookSessionsList: NotebookSessionsList, NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListNotebookSessionsResponse",
       });
@@ -4379,11 +5068,11 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "PreparedStatementSummary" });
     case 1:
-      return S.Array(__S(176));
+      return S.Array(PreparedStatementSummary);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          PreparedStatements: S.optional(__S(177)),
+          PreparedStatements: S.optional(PreparedStatementsList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4400,7 +5089,7 @@ function __c22(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          QueryExecutionIds: S.optional(__S(0)),
+          QueryExecutionIds: S.optional(QueryExecutionIdList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4410,7 +5099,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           WorkGroup: S.String,
-          StateFilter: S.optional(S.String),
+          StateFilter: S.optional(SessionState),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -4420,20 +5109,20 @@ function __c22(j: number): any {
         S.Struct({
           SessionId: S.optional(S.String),
           Description: S.optional(S.String),
-          EngineVersion: S.optional(__S(26)),
+          EngineVersion: S.optional(EngineVersion),
           NotebookVersion: S.optional(S.String),
-          Status: S.optional(__S(123)),
+          Status: S.optional(SessionStatus),
         }),
       ).annotate({ identifier: "SessionSummary" });
     case 7:
-      return S.Array(__S(182));
+      return S.Array(SessionSummary);
   }
 }
 function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Sessions: S.optional(__S(183)) }),
+        S.Struct({ NextToken: S.optional(S.String), Sessions: S.optional(SessionsList) }),
       ).annotate({ identifier: "ListSessionsResponse" });
     case 1:
       return S.suspend(() =>
@@ -4447,11 +5136,11 @@ function __c23(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListTableMetadataInput" });
     case 2:
-      return S.Array(__S(133));
+      return S.Array(TableMetadata);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          TableMetadataList: S.optional(__S(186)),
+          TableMetadataList: S.optional(TableMetadataList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTableMetadataOutput" });
@@ -4465,7 +5154,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Tags: S.optional(__S(36)), NextToken: S.optional(S.String) }),
+        S.Struct({ Tags: S.optional(TagList), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListTagsForResourceOutput",
       });
@@ -4479,10 +5168,10 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(WorkGroupState),
           Description: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          EngineVersion: S.optional(__S(26)),
+          EngineVersion: S.optional(EngineVersion),
           IdentityCenterApplicationArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkGroupSummary" });
@@ -4491,16 +5180,16 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(191));
+      return S.Array(WorkGroupSummary);
     case 1:
       return S.suspend(() =>
-        S.Struct({ WorkGroups: S.optional(__S(192)), NextToken: S.optional(S.String) }),
+        S.Struct({ WorkGroups: S.optional(WorkGroupsList), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListWorkGroupsOutput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           CapacityReservationName: S.String,
-          CapacityAssignments: __S(81),
+          CapacityAssignments: CapacityAssignmentsList,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PutCapacityAssignmentConfigurationInput",
@@ -4518,7 +5207,7 @@ function __c24(j: number): any {
         S.Struct({
           SessionId: S.String,
           Description: S.optional(S.String),
-          CalculationConfiguration: S.optional(__S(196)),
+          CalculationConfiguration: S.optional(CalculationConfiguration),
           CodeBlock: S.optional(S.String),
           ClientRequestToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -4529,7 +5218,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CalculationExecutionId: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(CalculationExecutionState),
         }),
       ).annotate({
         identifier: "StartCalculationExecutionResponse",
@@ -4539,12 +5228,12 @@ function __c24(j: number): any {
         S.Struct({
           QueryString: S.String,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          QueryExecutionContext: S.optional(__S(21)),
-          ResultConfiguration: S.optional(__S(18)),
+          QueryExecutionContext: S.optional(QueryExecutionContext),
+          ResultConfiguration: S.optional(ResultConfiguration),
           WorkGroup: S.optional(S.String),
-          ExecutionParameters: S.optional(__S(0)),
-          ResultReuseConfiguration: S.optional(__S(20)),
-          EngineConfiguration: S.optional(__S(57)),
+          ExecutionParameters: S.optional(ExecutionParameters),
+          ResultReuseConfiguration: S.optional(ResultReuseConfiguration),
+          EngineConfiguration: S.optional(EngineConfiguration),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartQueryExecutionInput" });
   }
@@ -4560,19 +5249,19 @@ function __c25(j: number): any {
         S.Struct({
           Description: S.optional(S.String),
           WorkGroup: S.String,
-          EngineConfiguration: __S(57),
+          EngineConfiguration: EngineConfiguration,
           ExecutionRole: S.optional(S.String),
-          MonitoringConfiguration: S.optional(__S(54)),
+          MonitoringConfiguration: S.optional(MonitoringConfiguration),
           NotebookVersion: S.optional(S.String),
           SessionIdleTimeoutInMinutes: S.optional(S.Number),
           ClientRequestToken: S.optional(S.String),
-          Tags: S.optional(__S(36)),
+          Tags: S.optional(TagList),
           CopyWorkGroupTags: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartSessionRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ SessionId: S.optional(S.String), State: S.optional(S.String) }),
+        S.Struct({ SessionId: S.optional(S.String), State: S.optional(SessionState) }),
       ).annotate({ identifier: "StartSessionResponse" });
     case 3:
       return S.suspend(() =>
@@ -4583,7 +5272,7 @@ function __c25(j: number): any {
         identifier: "StopCalculationExecutionRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ State: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ State: S.optional(CalculationExecutionState) })).annotate({
         identifier: "StopCalculationExecutionResponse",
       });
     case 5:
@@ -4594,7 +5283,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "StopQueryExecutionInput" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(36) }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: TagList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceInput" });
@@ -4609,12 +5298,12 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ State: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ State: S.optional(SessionState) })).annotate({
         identifier: "TerminateSessionResponse",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(0) }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
@@ -4630,9 +5319,9 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          Type: S.String,
+          Type: DataCatalogType,
           Description: S.optional(S.String),
-          Parameters: S.optional(__S(38)),
+          Parameters: S.optional(ParametersMap),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateDataCatalogInput" });
     case 4:
@@ -4649,7 +5338,7 @@ function __c26(j: number): any {
         S.Struct({
           NotebookId: S.String,
           Payload: S.String,
-          Type: S.String,
+          Type: NotebookType,
           SessionId: S.optional(S.String),
           ClientRequestToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -4684,11 +5373,11 @@ function __c27(j: number): any {
         S.Struct({
           OutputLocation: S.optional(S.String),
           RemoveOutputLocation: S.optional(S.Boolean),
-          EncryptionConfiguration: S.optional(__S(16)),
+          EncryptionConfiguration: S.optional(EncryptionConfiguration),
           RemoveEncryptionConfiguration: S.optional(S.Boolean),
           ExpectedBucketOwner: S.optional(S.String),
           RemoveExpectedBucketOwner: S.optional(S.Boolean),
-          AclConfiguration: S.optional(__S(17)),
+          AclConfiguration: S.optional(AclConfiguration),
           RemoveAclConfiguration: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -4698,7 +5387,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Enabled: S.optional(S.Boolean),
-          EncryptionConfiguration: S.optional(__S(14)),
+          EncryptionConfiguration: S.optional(ManagedQueryResultsEncryptionConfiguration),
           RemoveEncryptionConfiguration: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -4708,21 +5397,27 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           EnforceWorkGroupConfiguration: S.optional(S.Boolean),
-          ResultConfigurationUpdates: S.optional(__S(216)),
-          ManagedQueryResultsConfigurationUpdates: S.optional(__S(217)),
+          ResultConfigurationUpdates: S.optional(ResultConfigurationUpdates),
+          ManagedQueryResultsConfigurationUpdates: S.optional(
+            ManagedQueryResultsConfigurationUpdates,
+          ),
           PublishCloudWatchMetricsEnabled: S.optional(S.Boolean),
           BytesScannedCutoffPerQuery: S.optional(S.Number),
           RemoveBytesScannedCutoffPerQuery: S.optional(S.Boolean),
           RequesterPaysEnabled: S.optional(S.Boolean),
-          EngineVersion: S.optional(__S(26)),
+          EngineVersion: S.optional(EngineVersion),
           RemoveCustomerContentEncryptionConfiguration: S.optional(S.Boolean),
           AdditionalConfiguration: S.optional(S.String),
           ExecutionRole: S.optional(S.String),
-          CustomerContentEncryptionConfiguration: S.optional(__S(14)),
+          CustomerContentEncryptionConfiguration: S.optional(
+            CustomerContentEncryptionConfiguration,
+          ),
           EnableMinimumEncryptionConfiguration: S.optional(S.Boolean),
-          QueryResultsS3AccessGrantsConfiguration: S.optional(__S(27)),
-          MonitoringConfiguration: S.optional(__S(54)),
-          EngineConfiguration: S.optional(__S(57)),
+          QueryResultsS3AccessGrantsConfiguration: S.optional(
+            QueryResultsS3AccessGrantsConfiguration,
+          ),
+          MonitoringConfiguration: S.optional(MonitoringConfiguration),
+          EngineConfiguration: S.optional(EngineConfiguration),
         }),
       ).annotate({
         identifier: "WorkGroupConfigurationUpdates",
@@ -4732,74 +5427,9 @@ function __c27(j: number): any {
         S.Struct({
           WorkGroup: S.String,
           Description: S.optional(S.String),
-          ConfigurationUpdates: S.optional(__S(218)),
-          State: S.optional(S.String),
+          ConfigurationUpdates: S.optional(WorkGroupConfigurationUpdates),
+          State: S.optional(WorkGroupState),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateWorkGroupInput" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
   }
 }

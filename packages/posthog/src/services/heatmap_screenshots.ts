@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -37,7 +35,17 @@ export interface GetHeatmapScreenshotsContentRequest {
   /** Viewport width (CSS pixels) to fetch. Defaults to 1024. If no exact render exists for this width the closest available one is returned. */
   width?: number;
 }
+const GetHeatmapScreenshotsContentRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetHeatmapScreenshotsContentRequest>;
+
 export interface GetHeatmapScreenshotsContentResponse {}
+const GetHeatmapScreenshotsContentResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GetHeatmapScreenshotsContentResponse>;
+
 export type GetHeatmapScreenshotsContentError = Forbidden | NotFound | PosthogOpError;
 /** Fetch the rendered screenshot image (JPEG bytes) for a saved heatmap at a given viewport width. Returns 202 with the saved-heatmap metadata while the screenshot is still being generated. */
 export const getHeatmapScreenshotsContent: API.OperationMethod<
@@ -46,8 +54,8 @@ export const getHeatmapScreenshotsContent: API.OperationMethod<
   GetHeatmapScreenshotsContentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetHeatmapScreenshotsContentRequest>,
-  output: __S(1) as any as S.Schema<GetHeatmapScreenshotsContentResponse>,
+  input: GetHeatmapScreenshotsContentRequest,
+  output: GetHeatmapScreenshotsContentResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -76,16 +84,5 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GetHeatmapScreenshotsContentResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 1) {
-    case 0:
-      return __c0(i & 1);
   }
 }

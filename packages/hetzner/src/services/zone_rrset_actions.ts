@@ -6,8 +6,6 @@ import { UnknownHetznerError } from "../errors.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
@@ -29,6 +27,8 @@ export type AddZoneRrsetRecordsRequestRrType =
   | "SVCB"
   | "TLSA"
   | "TXT";
+const AddZoneRrsetRecordsRequestRrType = S.String;
+
 /** Record of a [RRSet](#tag/zone-rrsets). The `value` is used to identify the record in an [RRSet](#tag/zone-rrsets). */
 export interface AddZoneRrsetRecordsRequestRecordsItem {
   /** Value of the record. For details about accepted values, see the [DNS record types documentation](https://docs.hetzner.com/networking/dns/record-types/overview/). */
@@ -36,8 +36,18 @@ export interface AddZoneRrsetRecordsRequestRecordsItem {
   /** Comment of the record. */
   comment?: string;
 }
+const AddZoneRrsetRecordsRequestRecordsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddZoneRrsetRecordsRequestRecordsItem>;
+
 /** Records to add to the [RRSet](#tag/zone-rrsets). Must not be empty and must only contain distinct record values. */
 export type AddZoneRrsetRecordsRequestRecordsList = Array<AddZoneRrsetRecordsRequestRecordsItem>;
+const AddZoneRrsetRecordsRequestRecordsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AddZoneRrsetRecordsRequestRecordsList>;
+
 export interface AddZoneRrsetRecordsRequest {
   /** ID or Name of the Zone. */
   id_or_name: string;
@@ -48,17 +58,34 @@ export interface AddZoneRrsetRecordsRequest {
   /** Records to add to the [RRSet](#tag/zone-rrsets). Must not be empty and must only contain distinct record values. */
   records: AddZoneRrsetRecordsRequestRecordsList;
 }
+const AddZoneRrsetRecordsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AddZoneRrsetRecordsRequest>;
+
 /** Status of the Action. */
 export type AddZoneRrsetRecordsResponseActionStatus = "running" | "success" | "error";
+const AddZoneRrsetRecordsResponseActionStatus = S.String;
+
 export interface AddZoneRrsetRecordsResponseActionResourcesItem {
   /** ID of the Resource. */
   id: number;
   /** Type of the Resource. */
   type: string;
 }
+const AddZoneRrsetRecordsResponseActionResourcesItem = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AddZoneRrsetRecordsResponseActionResourcesItem>;
+
 /** Resources the Action relates to. */
 export type AddZoneRrsetRecordsResponseActionResourcesList =
   Array<AddZoneRrsetRecordsResponseActionResourcesItem>;
+const AddZoneRrsetRecordsResponseActionResourcesList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AddZoneRrsetRecordsResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface AddZoneRrsetRecordsResponseActionError {
   /** Fixed error code for machines. */
@@ -66,6 +93,11 @@ export interface AddZoneRrsetRecordsResponseActionError {
   /** Error message for humans. */
   message: string;
 }
+const AddZoneRrsetRecordsResponseActionError = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AddZoneRrsetRecordsResponseActionError>;
+
 export interface AddZoneRrsetRecordsResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -84,9 +116,19 @@ export interface AddZoneRrsetRecordsResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddZoneRrsetRecordsResponseActionError | null;
 }
+const AddZoneRrsetRecordsResponseAction = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AddZoneRrsetRecordsResponseAction>;
+
 export interface AddZoneRrsetRecordsResponse {
   action: AddZoneRrsetRecordsResponseAction;
 }
+const AddZoneRrsetRecordsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AddZoneRrsetRecordsResponse>;
+
 /** Type of the [RRSet](#tag/zone-rrsets). */
 export type ChangeZoneRrsetProtectionRequestRrType =
   | "A"
@@ -105,6 +147,8 @@ export type ChangeZoneRrsetProtectionRequestRrType =
   | "SVCB"
   | "TLSA"
   | "TXT";
+const ChangeZoneRrsetProtectionRequestRrType = S.String;
+
 export interface ChangeZoneRrsetProtectionRequest {
   /** ID or Name of the Zone. */
   id_or_name: string;
@@ -113,13 +157,23 @@ export interface ChangeZoneRrsetProtectionRequest {
   /** Prevent the Resource from being changed. */
   change: boolean;
 }
+const ChangeZoneRrsetProtectionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ChangeZoneRrsetProtectionRequest>;
+
 /** Status of the Action. */
 export type ChangeZoneRrsetProtectionResponseActionStatus = "running" | "success" | "error";
+const ChangeZoneRrsetProtectionResponseActionStatus = S.String;
+
 export type ChangeZoneRrsetProtectionResponseActionResourcesItem =
   AddZoneRrsetRecordsResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ChangeZoneRrsetProtectionResponseActionResourcesList =
   Array<AddZoneRrsetRecordsResponseActionResourcesItem>;
+const ChangeZoneRrsetProtectionResponseActionResourcesList =
+  AddZoneRrsetRecordsResponseActionResourcesList as any as S.Schema<ChangeZoneRrsetProtectionResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeZoneRrsetProtectionResponseActionError = AddZoneRrsetRecordsResponseActionError;
 export interface ChangeZoneRrsetProtectionResponseAction {
@@ -140,9 +194,19 @@ export interface ChangeZoneRrsetProtectionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddZoneRrsetRecordsResponseActionError | null;
 }
+const ChangeZoneRrsetProtectionResponseAction = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ChangeZoneRrsetProtectionResponseAction>;
+
 export interface ChangeZoneRrsetProtectionResponse {
   action: ChangeZoneRrsetProtectionResponseAction;
 }
+const ChangeZoneRrsetProtectionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ChangeZoneRrsetProtectionResponse>;
+
 /** Type of the [RRSet](#tag/zone-rrsets). */
 export type ChangeZoneRrsetTtlRequestRrType =
   | "A"
@@ -161,6 +225,8 @@ export type ChangeZoneRrsetTtlRequestRrType =
   | "SVCB"
   | "TLSA"
   | "TXT";
+const ChangeZoneRrsetTtlRequestRrType = S.String;
+
 export interface ChangeZoneRrsetTtlRequest {
   /** ID or Name of the Zone. */
   id_or_name: string;
@@ -169,13 +235,23 @@ export interface ChangeZoneRrsetTtlRequest {
   /** Time To Live (TTL) of the [RRSet](#tag/zone-rrsets). Must be in between 60s and 2147483647s. If not set, the [Zone's](#tag/zones) Default TTL is used. */
   ttl: number | null;
 }
+const ChangeZoneRrsetTtlRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ChangeZoneRrsetTtlRequest>;
+
 /** Status of the Action. */
 export type ChangeZoneRrsetTtlResponseActionStatus = "running" | "success" | "error";
+const ChangeZoneRrsetTtlResponseActionStatus = S.String;
+
 export type ChangeZoneRrsetTtlResponseActionResourcesItem =
   AddZoneRrsetRecordsResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ChangeZoneRrsetTtlResponseActionResourcesList =
   Array<AddZoneRrsetRecordsResponseActionResourcesItem>;
+const ChangeZoneRrsetTtlResponseActionResourcesList =
+  AddZoneRrsetRecordsResponseActionResourcesList as any as S.Schema<ChangeZoneRrsetTtlResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeZoneRrsetTtlResponseActionError = AddZoneRrsetRecordsResponseActionError;
 export interface ChangeZoneRrsetTtlResponseAction {
@@ -196,9 +272,19 @@ export interface ChangeZoneRrsetTtlResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddZoneRrsetRecordsResponseActionError | null;
 }
+const ChangeZoneRrsetTtlResponseAction = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ChangeZoneRrsetTtlResponseAction>;
+
 export interface ChangeZoneRrsetTtlResponse {
   action: ChangeZoneRrsetTtlResponseAction;
 }
+const ChangeZoneRrsetTtlResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ChangeZoneRrsetTtlResponse>;
+
 /** Type of the [RRSet](#tag/zone-rrsets). */
 export type RemoveZoneRrsetRecordsRequestRrType =
   | "A"
@@ -217,10 +303,15 @@ export type RemoveZoneRrsetRecordsRequestRrType =
   | "SVCB"
   | "TLSA"
   | "TXT";
+const RemoveZoneRrsetRecordsRequestRrType = S.String;
+
 /** Record of a [RRSet](#tag/zone-rrsets). The `value` is used to identify the record in an [RRSet](#tag/zone-rrsets). */
 export type RemoveZoneRrsetRecordsRequestRecordsItem = AddZoneRrsetRecordsRequestRecordsItem;
 /** Records to remove from the [RRSet](#tag/zone-rrsets). Must not be empty and must only contain distinct record values. */
 export type RemoveZoneRrsetRecordsRequestRecordsList = Array<AddZoneRrsetRecordsRequestRecordsItem>;
+const RemoveZoneRrsetRecordsRequestRecordsList =
+  AddZoneRrsetRecordsRequestRecordsList as any as S.Schema<RemoveZoneRrsetRecordsRequestRecordsList>;
+
 export interface RemoveZoneRrsetRecordsRequest {
   /** ID or Name of the Zone. */
   id_or_name: string;
@@ -229,13 +320,23 @@ export interface RemoveZoneRrsetRecordsRequest {
   /** Records to remove from the [RRSet](#tag/zone-rrsets). Must not be empty and must only contain distinct record values. */
   records: RemoveZoneRrsetRecordsRequestRecordsList;
 }
+const RemoveZoneRrsetRecordsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<RemoveZoneRrsetRecordsRequest>;
+
 /** Status of the Action. */
 export type RemoveZoneRrsetRecordsResponseActionStatus = "running" | "success" | "error";
+const RemoveZoneRrsetRecordsResponseActionStatus = S.String;
+
 export type RemoveZoneRrsetRecordsResponseActionResourcesItem =
   AddZoneRrsetRecordsResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type RemoveZoneRrsetRecordsResponseActionResourcesList =
   Array<AddZoneRrsetRecordsResponseActionResourcesItem>;
+const RemoveZoneRrsetRecordsResponseActionResourcesList =
+  AddZoneRrsetRecordsResponseActionResourcesList as any as S.Schema<RemoveZoneRrsetRecordsResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type RemoveZoneRrsetRecordsResponseActionError = AddZoneRrsetRecordsResponseActionError;
 export interface RemoveZoneRrsetRecordsResponseAction {
@@ -256,9 +357,19 @@ export interface RemoveZoneRrsetRecordsResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddZoneRrsetRecordsResponseActionError | null;
 }
+const RemoveZoneRrsetRecordsResponseAction = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<RemoveZoneRrsetRecordsResponseAction>;
+
 export interface RemoveZoneRrsetRecordsResponse {
   action: RemoveZoneRrsetRecordsResponseAction;
 }
+const RemoveZoneRrsetRecordsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<RemoveZoneRrsetRecordsResponse>;
+
 /** Type of the [RRSet](#tag/zone-rrsets). */
 export type SetZoneRrsetRecordsRequestRrType =
   | "A"
@@ -277,10 +388,15 @@ export type SetZoneRrsetRecordsRequestRrType =
   | "SVCB"
   | "TLSA"
   | "TXT";
+const SetZoneRrsetRecordsRequestRrType = S.String;
+
 /** Record of a [RRSet](#tag/zone-rrsets). The `value` is used to identify the record in an [RRSet](#tag/zone-rrsets). */
 export type SetZoneRrsetRecordsRequestRecordsItem = AddZoneRrsetRecordsRequestRecordsItem;
 /** Records to set in the [RRSet](#tag/zone-rrsets). Must not be empty and must only contain distinct record values. */
 export type SetZoneRrsetRecordsRequestRecordsList = Array<AddZoneRrsetRecordsRequestRecordsItem>;
+const SetZoneRrsetRecordsRequestRecordsList =
+  AddZoneRrsetRecordsRequestRecordsList as any as S.Schema<SetZoneRrsetRecordsRequestRecordsList>;
+
 export interface SetZoneRrsetRecordsRequest {
   /** ID or Name of the Zone. */
   id_or_name: string;
@@ -289,13 +405,23 @@ export interface SetZoneRrsetRecordsRequest {
   /** Records to set in the [RRSet](#tag/zone-rrsets). Must not be empty and must only contain distinct record values. */
   records: SetZoneRrsetRecordsRequestRecordsList;
 }
+const SetZoneRrsetRecordsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<SetZoneRrsetRecordsRequest>;
+
 /** Status of the Action. */
 export type SetZoneRrsetRecordsResponseActionStatus = "running" | "success" | "error";
+const SetZoneRrsetRecordsResponseActionStatus = S.String;
+
 export type SetZoneRrsetRecordsResponseActionResourcesItem =
   AddZoneRrsetRecordsResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type SetZoneRrsetRecordsResponseActionResourcesList =
   Array<AddZoneRrsetRecordsResponseActionResourcesItem>;
+const SetZoneRrsetRecordsResponseActionResourcesList =
+  AddZoneRrsetRecordsResponseActionResourcesList as any as S.Schema<SetZoneRrsetRecordsResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type SetZoneRrsetRecordsResponseActionError = AddZoneRrsetRecordsResponseActionError;
 export interface SetZoneRrsetRecordsResponseAction {
@@ -316,9 +442,19 @@ export interface SetZoneRrsetRecordsResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddZoneRrsetRecordsResponseActionError | null;
 }
+const SetZoneRrsetRecordsResponseAction = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<SetZoneRrsetRecordsResponseAction>;
+
 export interface SetZoneRrsetRecordsResponse {
   action: SetZoneRrsetRecordsResponseAction;
 }
+const SetZoneRrsetRecordsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<SetZoneRrsetRecordsResponse>;
+
 /** Type of the [RRSet](#tag/zone-rrsets). */
 export type UpdateZoneRrsetRecordsRequestRrType =
   | "A"
@@ -337,6 +473,8 @@ export type UpdateZoneRrsetRecordsRequestRrType =
   | "SVCB"
   | "TLSA"
   | "TXT";
+const UpdateZoneRrsetRecordsRequestRrType = S.String;
+
 /** Record of a [RRSet](#tag/zone-rrsets). The `value` is used to identify the record in an [RRSet](#tag/zone-rrsets). */
 export interface UpdateZoneRrsetRecordsRequestRecordsItem {
   /** Value of the record to update. */
@@ -344,9 +482,19 @@ export interface UpdateZoneRrsetRecordsRequestRecordsItem {
   /** New comment for the record. */
   comment: string;
 }
+const UpdateZoneRrsetRecordsRequestRecordsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<UpdateZoneRrsetRecordsRequestRecordsItem>;
+
 /** Records to update in the [RRSet](#tag/zone-rrsets). Must not be empty and must only contain distinct record values. */
 export type UpdateZoneRrsetRecordsRequestRecordsList =
   Array<UpdateZoneRrsetRecordsRequestRecordsItem>;
+const UpdateZoneRrsetRecordsRequestRecordsList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<UpdateZoneRrsetRecordsRequestRecordsList>;
+
 export interface UpdateZoneRrsetRecordsRequest {
   /** ID or Name of the Zone. */
   id_or_name: string;
@@ -355,13 +503,23 @@ export interface UpdateZoneRrsetRecordsRequest {
   /** Records to update in the [RRSet](#tag/zone-rrsets). Must not be empty and must only contain distinct record values. */
   records: UpdateZoneRrsetRecordsRequestRecordsList;
 }
+const UpdateZoneRrsetRecordsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<UpdateZoneRrsetRecordsRequest>;
+
 /** Status of the Action. */
 export type UpdateZoneRrsetRecordsResponseActionStatus = "running" | "success" | "error";
+const UpdateZoneRrsetRecordsResponseActionStatus = S.String;
+
 export type UpdateZoneRrsetRecordsResponseActionResourcesItem =
   AddZoneRrsetRecordsResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type UpdateZoneRrsetRecordsResponseActionResourcesList =
   Array<AddZoneRrsetRecordsResponseActionResourcesItem>;
+const UpdateZoneRrsetRecordsResponseActionResourcesList =
+  AddZoneRrsetRecordsResponseActionResourcesList as any as S.Schema<UpdateZoneRrsetRecordsResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type UpdateZoneRrsetRecordsResponseActionError = AddZoneRrsetRecordsResponseActionError;
 export interface UpdateZoneRrsetRecordsResponseAction {
@@ -382,9 +540,19 @@ export interface UpdateZoneRrsetRecordsResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddZoneRrsetRecordsResponseActionError | null;
 }
+const UpdateZoneRrsetRecordsResponseAction = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<UpdateZoneRrsetRecordsResponseAction>;
+
 export interface UpdateZoneRrsetRecordsResponse {
   action: UpdateZoneRrsetRecordsResponseAction;
 }
+const UpdateZoneRrsetRecordsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<UpdateZoneRrsetRecordsResponse>;
+
 export type AddZoneRrsetRecordsError = HetznerOpError;
 /** Add Records to an RRSet Adds resource records (RRs) to an [RRSet](#tag/zone-rrsets) in the [Zone](#tag/zones). For convenience, the [RRSet](#tag/zone-rrsets) will be automatically created if it doesn't exist. Otherwise, the new records are appended to the existing [RRSet](#tag/zone-rrsets). Only applicable for [Zones](#tag/zones) in primary mode. #### Operation specific errors */
 export const addZoneRrsetRecords: API.OperationMethod<
@@ -393,8 +561,8 @@ export const addZoneRrsetRecords: API.OperationMethod<
   AddZoneRrsetRecordsError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<AddZoneRrsetRecordsRequest>,
-  output: __S(7) as any as S.Schema<AddZoneRrsetRecordsResponse>,
+  input: AddZoneRrsetRecordsRequest,
+  output: AddZoneRrsetRecordsResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -408,8 +576,8 @@ export const changeZoneRrsetProtection: API.OperationMethod<
   ChangeZoneRrsetProtectionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<ChangeZoneRrsetProtectionRequest>,
-  output: __S(10) as any as S.Schema<ChangeZoneRrsetProtectionResponse>,
+  input: ChangeZoneRrsetProtectionRequest,
+  output: ChangeZoneRrsetProtectionResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -423,8 +591,8 @@ export const changeZoneRrsetTtl: API.OperationMethod<
   ChangeZoneRrsetTtlError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<ChangeZoneRrsetTtlRequest>,
-  output: __S(13) as any as S.Schema<ChangeZoneRrsetTtlResponse>,
+  input: ChangeZoneRrsetTtlRequest,
+  output: ChangeZoneRrsetTtlResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -438,8 +606,8 @@ export const removeZoneRrsetRecords: API.OperationMethod<
   RemoveZoneRrsetRecordsError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<RemoveZoneRrsetRecordsRequest>,
-  output: __S(16) as any as S.Schema<RemoveZoneRrsetRecordsResponse>,
+  input: RemoveZoneRrsetRecordsRequest,
+  output: RemoveZoneRrsetRecordsResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -453,8 +621,8 @@ export const setZoneRrsetRecords: API.OperationMethod<
   SetZoneRrsetRecordsError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<SetZoneRrsetRecordsRequest>,
-  output: __S(19) as any as S.Schema<SetZoneRrsetRecordsResponse>,
+  input: SetZoneRrsetRecordsRequest,
+  output: SetZoneRrsetRecordsResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -468,8 +636,8 @@ export const updateZoneRrsetRecords: API.OperationMethod<
   UpdateZoneRrsetRecordsError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<UpdateZoneRrsetRecordsRequest>,
-  output: __S(24) as any as S.Schema<UpdateZoneRrsetRecordsResponse>,
+  input: UpdateZoneRrsetRecordsRequest,
+  output: UpdateZoneRrsetRecordsResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -488,15 +656,15 @@ function __c0(j: number): any {
         identifier: "AddZoneRrsetRecordsRequestRecordsItem",
       });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(AddZoneRrsetRecordsRequestRecordsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           id_or_name: S.String.pipe(T.Label()),
           rr_name: S.String.pipe(T.Label()),
-          rr_type: S.String.pipe(T.Label()),
+          rr_type: AddZoneRrsetRecordsRequestRrType.pipe(T.Label()),
           ttl: S.optional(S.NullOr(S.Number)),
-          records: __S(1),
+          records: AddZoneRrsetRecordsRequestRecordsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -517,7 +685,7 @@ function __c0(j: number): any {
         identifier: "AddZoneRrsetRecordsResponseActionResourcesItem",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(AddZoneRrsetRecordsResponseActionResourcesItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -532,12 +700,12 @@ function __c0(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: AddZoneRrsetRecordsResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(4),
-          error: S.NullOr(__S(5)),
+          resources: AddZoneRrsetRecordsResponseActionResourcesList,
+          error: S.NullOr(AddZoneRrsetRecordsResponseActionError),
         }),
       ).annotate({
         identifier: "AddZoneRrsetRecordsResponseAction",
@@ -545,7 +713,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          action: __S(6),
+          action: AddZoneRrsetRecordsResponseAction,
         }),
       ).annotate({
         identifier: "AddZoneRrsetRecordsResponse",
@@ -559,7 +727,7 @@ function __c1(j: number): any {
         S.Struct({
           id_or_name: S.String.pipe(T.Label()),
           rr_name: S.String.pipe(T.Label()),
-          rr_type: S.String.pipe(T.Label()),
+          rr_type: ChangeZoneRrsetProtectionRequestRrType.pipe(T.Label()),
           change: S.Boolean,
         }).pipe(
           T.Http({
@@ -576,12 +744,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ChangeZoneRrsetProtectionResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(4),
-          error: S.NullOr(__S(5)),
+          resources: ChangeZoneRrsetProtectionResponseActionResourcesList,
+          error: S.NullOr(AddZoneRrsetRecordsResponseActionError),
         }),
       ).annotate({
         identifier: "ChangeZoneRrsetProtectionResponseAction",
@@ -589,7 +757,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(9),
+          action: ChangeZoneRrsetProtectionResponseAction,
         }),
       ).annotate({
         identifier: "ChangeZoneRrsetProtectionResponse",
@@ -599,7 +767,7 @@ function __c1(j: number): any {
         S.Struct({
           id_or_name: S.String.pipe(T.Label()),
           rr_name: S.String.pipe(T.Label()),
-          rr_type: S.String.pipe(T.Label()),
+          rr_type: ChangeZoneRrsetTtlRequestRrType.pipe(T.Label()),
           ttl: S.NullOr(S.Number),
         }).pipe(
           T.Http({
@@ -616,12 +784,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ChangeZoneRrsetTtlResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(4),
-          error: S.NullOr(__S(5)),
+          resources: ChangeZoneRrsetTtlResponseActionResourcesList,
+          error: S.NullOr(AddZoneRrsetRecordsResponseActionError),
         }),
       ).annotate({
         identifier: "ChangeZoneRrsetTtlResponseAction",
@@ -629,7 +797,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: __S(12),
+          action: ChangeZoneRrsetTtlResponseAction,
         }),
       ).annotate({
         identifier: "ChangeZoneRrsetTtlResponse",
@@ -639,8 +807,8 @@ function __c1(j: number): any {
         S.Struct({
           id_or_name: S.String.pipe(T.Label()),
           rr_name: S.String.pipe(T.Label()),
-          rr_type: S.String.pipe(T.Label()),
-          records: __S(1),
+          rr_type: RemoveZoneRrsetRecordsRequestRrType.pipe(T.Label()),
+          records: RemoveZoneRrsetRecordsRequestRecordsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -656,12 +824,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: RemoveZoneRrsetRecordsResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(4),
-          error: S.NullOr(__S(5)),
+          resources: RemoveZoneRrsetRecordsResponseActionResourcesList,
+          error: S.NullOr(AddZoneRrsetRecordsResponseActionError),
         }),
       ).annotate({
         identifier: "RemoveZoneRrsetRecordsResponseAction",
@@ -673,7 +841,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: __S(15),
+          action: RemoveZoneRrsetRecordsResponseAction,
         }),
       ).annotate({
         identifier: "RemoveZoneRrsetRecordsResponse",
@@ -683,8 +851,8 @@ function __c2(j: number): any {
         S.Struct({
           id_or_name: S.String.pipe(T.Label()),
           rr_name: S.String.pipe(T.Label()),
-          rr_type: S.String.pipe(T.Label()),
-          records: __S(1),
+          rr_type: SetZoneRrsetRecordsRequestRrType.pipe(T.Label()),
+          records: SetZoneRrsetRecordsRequestRecordsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -700,12 +868,12 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: SetZoneRrsetRecordsResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(4),
-          error: S.NullOr(__S(5)),
+          resources: SetZoneRrsetRecordsResponseActionResourcesList,
+          error: S.NullOr(AddZoneRrsetRecordsResponseActionError),
         }),
       ).annotate({
         identifier: "SetZoneRrsetRecordsResponseAction",
@@ -713,7 +881,7 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          action: __S(18),
+          action: SetZoneRrsetRecordsResponseAction,
         }),
       ).annotate({
         identifier: "SetZoneRrsetRecordsResponse",
@@ -728,14 +896,14 @@ function __c2(j: number): any {
         identifier: "UpdateZoneRrsetRecordsRequestRecordsItem",
       });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(UpdateZoneRrsetRecordsRequestRecordsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           id_or_name: S.String.pipe(T.Label()),
           rr_name: S.String.pipe(T.Label()),
-          rr_type: S.String.pipe(T.Label()),
-          records: __S(21),
+          rr_type: UpdateZoneRrsetRecordsRequestRrType.pipe(T.Label()),
+          records: UpdateZoneRrsetRecordsRequestRecordsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -751,12 +919,12 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: UpdateZoneRrsetRecordsResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(4),
-          error: S.NullOr(__S(5)),
+          resources: UpdateZoneRrsetRecordsResponseActionResourcesList,
+          error: S.NullOr(AddZoneRrsetRecordsResponseActionError),
         }),
       ).annotate({
         identifier: "UpdateZoneRrsetRecordsResponseAction",
@@ -768,27 +936,10 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: __S(23),
+          action: UpdateZoneRrsetRecordsResponseAction,
         }),
       ).annotate({
         identifier: "UpdateZoneRrsetRecordsResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

@@ -7,8 +7,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -17,6 +15,11 @@ export interface ApiPortalCustomDomainProperties {
   /** The thumbprint of bound certificate. */
   thumbprint?: string;
 }
+const ApiPortalCustomDomainProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ApiPortalCustomDomainProperties>;
+
 export interface ApiPortalCustomDomainsCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -30,10 +33,19 @@ export interface ApiPortalCustomDomainsCreateOrUpdateRequest {
   domainName: string;
   properties?: ApiPortalCustomDomainProperties;
 }
+const ApiPortalCustomDomainsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ApiPortalCustomDomainsCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -49,6 +61,8 @@ export interface SystemData {
   /** The timestamp of resource modification (UTC). */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SystemData>;
+
 export interface ApiPortalCustomDomainsCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -59,12 +73,28 @@ export interface ApiPortalCustomDomainsCreateOrUpdateResponse {
   systemData?: SystemData;
   properties?: ApiPortalCustomDomainProperties;
 }
+const ApiPortalCustomDomainsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ApiPortalCustomDomainsCreateOrUpdateResponse>;
+
 /** The array of resource Ids of gateway to integrate with API portal. */
 export type ApiPortalPropertiesInputGatewayIdsList = Array<string>;
+const ApiPortalPropertiesInputGatewayIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ApiPortalPropertiesInputGatewayIdsList>;
+
 /** Collection of OpenAPI source URL locations. */
 export type ApiPortalPropertiesInputSourceUrlsList = Array<string>;
+const ApiPortalPropertiesInputSourceUrlsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<ApiPortalPropertiesInputSourceUrlsList>;
+
 /** It defines the specific actions applications can be allowed to do on a user's behalf */
 export type SsoPropertiesScopeList = Array<string>;
+const SsoPropertiesScopeList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<SsoPropertiesScopeList>;
+
 /** Single sign-on related configuration */
 export interface SsoProperties {
   /** It defines the specific actions applications can be allowed to do on a user's behalf */
@@ -76,8 +106,12 @@ export interface SsoProperties {
   /** The URI of Issuer Identifier */
   issuerUri?: string;
 }
+const SsoProperties = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<SsoProperties>;
+
 /** Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API. */
 export type ApiPortalPropertiesInputApiTryOutEnabledState = "Enabled" | "Disabled";
+const ApiPortalPropertiesInputApiTryOutEnabledState = S.String;
+
 /** API portal properties payload */
 export interface ApiPortalPropertiesInput {
   /** Indicates whether the API portal exposes endpoint. */
@@ -92,6 +126,11 @@ export interface ApiPortalPropertiesInput {
   /** Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API. */
   apiTryOutEnabledState?: ApiPortalPropertiesInputApiTryOutEnabledState | (string & {});
 }
+const ApiPortalPropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ApiPortalPropertiesInput>;
+
 /** Sku of Azure Spring Apps */
 export interface Sku {
   /** Name of the Sku */
@@ -101,6 +140,8 @@ export interface Sku {
   /** Current capacity of the target resource */
   capacity?: number;
 }
+const Sku = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Sku>;
+
 export interface ApiPortalsCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -114,6 +155,11 @@ export interface ApiPortalsCreateOrUpdateRequest {
   /** Sku of the API portal resource */
   sku?: Sku;
 }
+const ApiPortalsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ApiPortalsCreateOrUpdateRequest>;
+
 /** State of the API portal. */
 export type ApiPortalPropertiesProvisioningState =
   | "Creating"
@@ -121,10 +167,18 @@ export type ApiPortalPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting";
+const ApiPortalPropertiesProvisioningState = S.String;
+
 /** The array of resource Ids of gateway to integrate with API portal. */
 export type ApiPortalPropertiesGatewayIdsList = Array<string>;
+const ApiPortalPropertiesGatewayIdsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<ApiPortalPropertiesGatewayIdsList>;
+
 /** Collection of OpenAPI source URL locations. */
 export type ApiPortalPropertiesSourceUrlsList = Array<string>;
+const ApiPortalPropertiesSourceUrlsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<ApiPortalPropertiesSourceUrlsList>;
+
 /** Resource requests of the API portal */
 export interface ApiPortalResourceRequests {
   /** Cpu allocated to each API portal instance */
@@ -132,6 +186,11 @@ export interface ApiPortalResourceRequests {
   /** Memory allocated to each API portal instance */
   memory?: string;
 }
+const ApiPortalResourceRequests = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ApiPortalResourceRequests>;
+
 /** Collection of instances belong to the API portal */
 export interface ApiPortalInstance {
   /** Name of the API portal instance */
@@ -139,10 +198,19 @@ export interface ApiPortalInstance {
   /** Status of the API portal instance */
   status?: string;
 }
+const ApiPortalInstance = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ApiPortalInstance>;
+
 /** Collection of instances belong to API portal. */
 export type ApiPortalPropertiesInstancesList = Array<ApiPortalInstance>;
+const ApiPortalPropertiesInstancesList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ApiPortalPropertiesInstancesList>;
+
 /** Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API. */
 export type ApiPortalPropertiesApiTryOutEnabledState = "Enabled" | "Disabled";
+const ApiPortalPropertiesApiTryOutEnabledState = S.String;
+
 /** API portal properties payload */
 export interface ApiPortalProperties {
   /** State of the API portal. */
@@ -165,6 +233,8 @@ export interface ApiPortalProperties {
   /** Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API. */
   apiTryOutEnabledState?: ApiPortalPropertiesApiTryOutEnabledState;
 }
+const ApiPortalProperties = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ApiPortalProperties>;
+
 export interface ApiPortalsCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -177,10 +247,23 @@ export interface ApiPortalsCreateOrUpdateResponse {
   /** Sku of the API portal resource */
   sku?: Sku;
 }
+const ApiPortalsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ApiPortalsCreateOrUpdateResponse>;
+
 /** Non-sensitive properties for the APM */
 export type ApmPropertiesInputPropertiesMap = { [key: string]: string | undefined };
+const ApmPropertiesInputPropertiesMap = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ApmPropertiesInputPropertiesMap>;
+
 /** Sensitive properties for the APM */
 export type ApmPropertiesInputSecretsMap = { [key: string]: string | undefined };
+const ApmPropertiesInputSecretsMap =
+  ApmPropertiesInputPropertiesMap as any as S.Schema<ApmPropertiesInputSecretsMap>;
+
 /** Properties of an APM */
 export interface ApmPropertiesInput {
   /** APM Type */
@@ -190,6 +273,8 @@ export interface ApmPropertiesInput {
   /** Sensitive properties for the APM */
   secrets?: ApmPropertiesInputSecretsMap;
 }
+const ApmPropertiesInput = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ApmPropertiesInput>;
+
 export interface ApmsCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -202,6 +287,11 @@ export interface ApmsCreateOrUpdateRequest {
   /** Properties of an APM */
   properties?: ApmPropertiesInput;
 }
+const ApmsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ApmsCreateOrUpdateRequest>;
+
 /** State of the APM. */
 export type ApmPropertiesProvisioningState =
   | "Creating"
@@ -210,10 +300,18 @@ export type ApmPropertiesProvisioningState =
   | "Failed"
   | "Deleting"
   | "Canceled";
+const ApmPropertiesProvisioningState = S.String;
+
 /** Non-sensitive properties for the APM */
 export type ApmPropertiesPropertiesMap = { [key: string]: string | undefined };
+const ApmPropertiesPropertiesMap =
+  ApmPropertiesInputPropertiesMap as any as S.Schema<ApmPropertiesPropertiesMap>;
+
 /** Sensitive properties for the APM */
 export type ApmPropertiesSecretsMap = { [key: string]: string | undefined };
+const ApmPropertiesSecretsMap =
+  ApmPropertiesInputPropertiesMap as any as S.Schema<ApmPropertiesSecretsMap>;
+
 /** Properties of an APM */
 export interface ApmProperties {
   /** APM Type */
@@ -225,6 +323,8 @@ export interface ApmProperties {
   /** Sensitive properties for the APM */
   secrets?: ApmPropertiesSecretsMap;
 }
+const ApmProperties = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ApmProperties>;
+
 export interface ApmsCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -236,8 +336,18 @@ export interface ApmsCreateOrUpdateResponse {
   /** Properties of an APM */
   properties?: ApmProperties;
 }
+const ApmsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ApmsCreateOrUpdateResponse>;
+
 /** Application accelerator properties payload */
 export interface ApplicationAcceleratorPropertiesInput {}
+const ApplicationAcceleratorPropertiesInput = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ApplicationAcceleratorPropertiesInput>;
+
 export interface ApplicationAcceleratorsCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -251,6 +361,11 @@ export interface ApplicationAcceleratorsCreateOrUpdateRequest {
   /** Sku of the application accelerator resource */
   sku?: Sku;
 }
+const ApplicationAcceleratorsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ApplicationAcceleratorsCreateOrUpdateRequest>;
+
 /** State of the application accelerator. */
 export type ApplicationAcceleratorPropertiesProvisioningState =
   | "Creating"
@@ -259,6 +374,8 @@ export type ApplicationAcceleratorPropertiesProvisioningState =
   | "Failed"
   | "Deleting"
   | "Canceled";
+const ApplicationAcceleratorPropertiesProvisioningState = S.String;
+
 export interface ApplicationAcceleratorResourceRequests {
   /** Cpu allocated to each application accelerator component. 1 core can be represented by 1 or 1000m */
   cpu?: string;
@@ -267,20 +384,45 @@ export interface ApplicationAcceleratorResourceRequests {
   /** Instance count of the application accelerator component. */
   instanceCount?: number;
 }
+const ApplicationAcceleratorResourceRequests = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ApplicationAcceleratorResourceRequests>;
+
 export interface ApplicationAcceleratorInstance {
   /** Name of the Application Accelerator instance. */
   name?: string;
   /** Status of the Application Accelerator instance. It can be Pending, Running, Succeeded, Failed, Unknown. */
   status?: string;
 }
+const ApplicationAcceleratorInstance = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ApplicationAcceleratorInstance>;
+
 export type ApplicationAcceleratorComponentInstancesList = Array<ApplicationAcceleratorInstance>;
+const ApplicationAcceleratorComponentInstancesList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ApplicationAcceleratorComponentInstancesList>;
+
 export interface ApplicationAcceleratorComponent {
   name?: string;
   resourceRequests?: ApplicationAcceleratorResourceRequests;
   instances?: ApplicationAcceleratorComponentInstancesList;
 }
+const ApplicationAcceleratorComponent = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ApplicationAcceleratorComponent>;
+
 /** Collection of components belong to application accelerator. */
 export type ApplicationAcceleratorPropertiesComponentsList = Array<ApplicationAcceleratorComponent>;
+const ApplicationAcceleratorPropertiesComponentsList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ApplicationAcceleratorPropertiesComponentsList>;
+
 /** Application accelerator properties payload */
 export interface ApplicationAcceleratorProperties {
   /** State of the application accelerator. */
@@ -288,6 +430,11 @@ export interface ApplicationAcceleratorProperties {
   /** Collection of components belong to application accelerator. */
   components?: ApplicationAcceleratorPropertiesComponentsList;
 }
+const ApplicationAcceleratorProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ApplicationAcceleratorProperties>;
+
 export interface ApplicationAcceleratorsCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -300,6 +447,11 @@ export interface ApplicationAcceleratorsCreateOrUpdateResponse {
   /** Sku of the application accelerator resource */
   sku?: Sku;
 }
+const ApplicationAcceleratorsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ApplicationAcceleratorsCreateOrUpdateResponse>;
+
 /** Application Live View properties payload */
 export type ApplicationLiveViewPropertiesInput = ApplicationAcceleratorPropertiesInput;
 export interface ApplicationLiveViewsCreateOrUpdateRequest {
@@ -313,6 +465,11 @@ export interface ApplicationLiveViewsCreateOrUpdateRequest {
   applicationLiveViewName: string;
   properties?: ApplicationAcceleratorPropertiesInput;
 }
+const ApplicationLiveViewsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ApplicationLiveViewsCreateOrUpdateRequest>;
+
 /** State of the Application Live View. */
 export type ApplicationLiveViewPropertiesProvisioningState =
   | "Creating"
@@ -321,6 +478,8 @@ export type ApplicationLiveViewPropertiesProvisioningState =
   | "Failed"
   | "Deleting"
   | "Canceled";
+const ApplicationLiveViewPropertiesProvisioningState = S.String;
+
 /** The resource quantity for required CPU and Memory of Application Live View component */
 export interface ApplicationLiveViewResourceRequests {
   /** Cpu quantity allocated to each Application Live View component instance. 1 core can be represented by 1 or 1000m. */
@@ -330,6 +489,9 @@ export interface ApplicationLiveViewResourceRequests {
   /** Desired instance count of Application Live View component instance. */
   instanceCount?: number;
 }
+const ApplicationLiveViewResourceRequests =
+  ApplicationAcceleratorResourceRequests as any as S.Schema<ApplicationLiveViewResourceRequests>;
+
 /** Collection of instances belong to the Application Live View */
 export interface ApplicationLiveViewInstance {
   /** Name of the Application Live View instance. */
@@ -339,6 +501,9 @@ export interface ApplicationLiveViewInstance {
 }
 /** Collection of instances belong to Application Live View. */
 export type ApplicationLiveViewComponentInstancesList = Array<ApplicationLiveViewInstance>;
+const ApplicationLiveViewComponentInstancesList =
+  ApplicationAcceleratorComponentInstancesList as any as S.Schema<ApplicationLiveViewComponentInstancesList>;
+
 /** Application Live View properties payload */
 export interface ApplicationLiveViewComponent {
   /** Name of the component. */
@@ -348,8 +513,18 @@ export interface ApplicationLiveViewComponent {
   /** Collection of instances belong to Application Live View. */
   instances?: ApplicationLiveViewComponentInstancesList;
 }
+const ApplicationLiveViewComponent = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ApplicationLiveViewComponent>;
+
 /** Component details of Application Live View */
 export type ApplicationLiveViewPropertiesComponentsList = Array<ApplicationLiveViewComponent>;
+const ApplicationLiveViewPropertiesComponentsList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ApplicationLiveViewPropertiesComponentsList>;
+
 /** Application Live View properties payload */
 export interface ApplicationLiveViewProperties {
   /** State of the Application Live View. */
@@ -357,6 +532,11 @@ export interface ApplicationLiveViewProperties {
   /** Component details of Application Live View */
   components?: ApplicationLiveViewPropertiesComponentsList;
 }
+const ApplicationLiveViewProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ApplicationLiveViewProperties>;
+
 export interface ApplicationLiveViewsCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -367,8 +547,18 @@ export interface ApplicationLiveViewsCreateOrUpdateResponse {
   systemData?: SystemData;
   properties?: ApplicationLiveViewProperties;
 }
+const ApplicationLiveViewsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ApplicationLiveViewsCreateOrUpdateResponse>;
+
 /** Collection of addons */
 export type AppResourcePropertiesInputAddonConfigsMap = { [key: string]: unknown | undefined };
+const AppResourcePropertiesInputAddonConfigsMap = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<AppResourcePropertiesInputAddonConfigsMap>;
+
 /** Temporary disk payload */
 export interface TemporaryDisk {
   /** Size of the temporary disk in GB */
@@ -376,6 +566,8 @@ export interface TemporaryDisk {
   /** Mount path of the temporary disk */
   mountPath?: string;
 }
+const TemporaryDisk = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<TemporaryDisk>;
+
 /** Persistent disk payload */
 export interface PersistentDiskInput {
   /** Size of the persistent disk in GB */
@@ -383,10 +575,17 @@ export interface PersistentDiskInput {
   /** Mount path of the persistent disk */
   mountPath?: string;
 }
+const PersistentDiskInput = TemporaryDisk as any as S.Schema<PersistentDiskInput>;
+
 /** The type of the underlying resource to mount as a persistent disk. */
 export type CustomPersistentDiskPropertiesType = "AzureFileVolume";
+const CustomPersistentDiskPropertiesType = S.String;
+
 /** These are the mount options for a persistent disk. */
 export type CustomPersistentDiskPropertiesMountOptionsList = Array<string>;
+const CustomPersistentDiskPropertiesMountOptionsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<CustomPersistentDiskPropertiesMountOptionsList>;
+
 /** Custom persistent disk resource payload. */
 export interface CustomPersistentDiskProperties {
   /** The type of the underlying resource to mount as a persistent disk. */
@@ -400,6 +599,11 @@ export interface CustomPersistentDiskProperties {
   /** These are the mount options for a persistent disk. */
   mountOptions?: CustomPersistentDiskPropertiesMountOptionsList;
 }
+const CustomPersistentDiskProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CustomPersistentDiskProperties>;
+
 /** Custom persistent disk resource payload. */
 export interface CustomPersistentDiskResource {
   /** Properties of the custom persistent disk resource payload. */
@@ -407,8 +611,18 @@ export interface CustomPersistentDiskResource {
   /** The resource id of Azure Spring Apps Storage resource. */
   storageId: string;
 }
+const CustomPersistentDiskResource = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CustomPersistentDiskResource>;
+
 /** Collection of persistent disk resources list and a possible link for next page. */
 export type CustomPersistentDiskCollection = Array<CustomPersistentDiskResource>;
+const CustomPersistentDiskCollection = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CustomPersistentDiskCollection>;
+
 /** Loaded certificate payload */
 export interface LoadedCertificate {
   /** Resource Id of loaded certificate */
@@ -416,24 +630,45 @@ export interface LoadedCertificate {
   /** Indicate whether the certificate will be loaded into default trust store, only work for Java runtime. */
   loadTrustStore?: boolean;
 }
+const LoadedCertificate = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<LoadedCertificate>;
+
 /** Collection of loaded certificate resources list and a possible link for next page. */
 export type LoadedCertificateCollection = Array<LoadedCertificate>;
+const LoadedCertificateCollection = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<LoadedCertificateCollection>;
+
 /** Additional App settings in vnet injection instance */
 export interface AppVNetAddonsInput {
   /** Indicates whether the App in vnet injection instance exposes endpoint which could be accessed from internet. */
   publicEndpoint?: boolean;
 }
+const AppVNetAddonsInput = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<AppVNetAddonsInput>;
+
 /** Type of the affinity, set this to Cookie to enable session affinity. */
 export type IngressSettingsSessionAffinity = "Cookie" | "None";
+const IngressSettingsSessionAffinity = S.String;
+
 /** How ingress should communicate with this app backend service. */
 export type IngressSettingsBackendProtocol = "GRPC" | "Default";
+const IngressSettingsBackendProtocol = S.String;
+
 /** Collection of certificate resource id. */
 export type IngressSettingsClientAuthCertificatesList = Array<string>;
+const IngressSettingsClientAuthCertificatesList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<IngressSettingsClientAuthCertificatesList>;
+
 /** Client-Certification Authentication. */
 export interface IngressSettingsClientAuth {
   /** Collection of certificate resource id. */
   certificates?: IngressSettingsClientAuthCertificatesList;
 }
+const IngressSettingsClientAuth = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<IngressSettingsClientAuth>;
+
 /** App ingress settings payload. */
 export interface IngressSettings {
   /** Ingress read time out in seconds. */
@@ -449,6 +684,8 @@ export interface IngressSettings {
   /** Client-Certification Authentication. */
   clientAuth?: IngressSettingsClientAuth;
 }
+const IngressSettings = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<IngressSettings>;
+
 /** App resource properties payload */
 export interface AppResourcePropertiesInput {
   /** Indicates whether the App exposes public endpoint */
@@ -472,18 +709,30 @@ export interface AppResourcePropertiesInput {
   /** App ingress settings payload. */
   ingressSettings?: IngressSettings;
 }
+const AppResourcePropertiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<AppResourcePropertiesInput>;
+
 /** Type of the managed identity */
 export type ManagedIdentityPropertiesInputType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
+const ManagedIdentityPropertiesInputType = S.String;
+
 /** The details of the user-assigned managed identity assigned to an App. */
 export type UserAssignedManagedIdentityInput = ApplicationAcceleratorPropertiesInput;
 /** User-assigned managed identities in key-value map. The key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type UserAssignedManagedIdentitiesInput = {
   [key: string]: ApplicationAcceleratorPropertiesInput | undefined;
 };
+const UserAssignedManagedIdentitiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<UserAssignedManagedIdentitiesInput>;
+
 /** Managed identity properties retrieved from ARM request headers. */
 export interface ManagedIdentityPropertiesInput {
   /** Type of the managed identity */
@@ -495,6 +744,11 @@ export interface ManagedIdentityPropertiesInput {
   /** Properties of user-assigned managed identities */
   userAssignedIdentities?: UserAssignedManagedIdentitiesInput;
 }
+const ManagedIdentityPropertiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ManagedIdentityPropertiesInput>;
+
 export interface AppsCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -511,8 +765,16 @@ export interface AppsCreateOrUpdateRequest {
   /** The GEO location of the application, always the same with its parent resource */
   location?: string;
 }
+const AppsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<AppsCreateOrUpdateRequest>;
+
 /** Collection of addons */
 export type AppResourcePropertiesAddonConfigsMap = { [key: string]: unknown | undefined };
+const AppResourcePropertiesAddonConfigsMap =
+  AppResourcePropertiesInputAddonConfigsMap as any as S.Schema<AppResourcePropertiesAddonConfigsMap>;
+
 /** Provisioning state of the App */
 export type AppResourcePropertiesProvisioningState =
   | "Succeeded"
@@ -520,6 +782,8 @@ export type AppResourcePropertiesProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting";
+const AppResourcePropertiesProvisioningState = S.String;
+
 /** Persistent disk payload */
 export interface PersistentDisk {
   /** Size of the persistent disk in GB */
@@ -529,6 +793,8 @@ export interface PersistentDisk {
   /** Mount path of the persistent disk */
   mountPath?: string;
 }
+const PersistentDisk = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<PersistentDisk>;
+
 /** Additional App settings in vnet injection instance */
 export interface AppVNetAddons {
   /** Indicates whether the App in vnet injection instance exposes endpoint which could be accessed from internet. */
@@ -536,6 +802,8 @@ export interface AppVNetAddons {
   /** URL of the App in vnet injection instance which could be accessed from internet */
   publicEndpointUrl?: string;
 }
+const AppVNetAddons = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<AppVNetAddons>;
+
 /** App resource properties payload */
 export interface AppResourceProperties {
   /** Indicates whether the App exposes public endpoint */
@@ -565,12 +833,19 @@ export interface AppResourceProperties {
   /** App ingress settings payload. */
   ingressSettings?: IngressSettings;
 }
+const AppResourceProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<AppResourceProperties>;
+
 /** Type of the managed identity */
 export type ManagedIdentityPropertiesType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
+const ManagedIdentityPropertiesType = S.String;
+
 /** The details of the user-assigned managed identity assigned to an App. */
 export interface UserAssignedManagedIdentity {
   /** Principal Id of user-assigned managed identity. */
@@ -578,10 +853,20 @@ export interface UserAssignedManagedIdentity {
   /** Client Id of user-assigned managed identity. */
   clientId?: string;
 }
+const UserAssignedManagedIdentity = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<UserAssignedManagedIdentity>;
+
 /** User-assigned managed identities in key-value map. The key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type UserAssignedManagedIdentities = {
   [key: string]: UserAssignedManagedIdentity | undefined;
 };
+const UserAssignedManagedIdentities = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<UserAssignedManagedIdentities>;
+
 /** Managed identity properties retrieved from ARM request headers. */
 export interface ManagedIdentityProperties {
   /** Type of the managed identity */
@@ -593,6 +878,11 @@ export interface ManagedIdentityProperties {
   /** Properties of user-assigned managed identities */
   userAssignedIdentities?: UserAssignedManagedIdentities;
 }
+const ManagedIdentityProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ManagedIdentityProperties>;
+
 export interface AppsCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -608,6 +898,11 @@ export interface AppsCreateOrUpdateResponse {
   /** The GEO location of the application, always the same with its parent resource */
   location?: string;
 }
+const AppsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<AppsCreateOrUpdateResponse>;
+
 export interface AppsGetResourceUploadUrlRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -618,6 +913,11 @@ export interface AppsGetResourceUploadUrlRequest {
   /** The name of the App resource. */
   appName: string;
 }
+const AppsGetResourceUploadUrlRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<AppsGetResourceUploadUrlRequest>;
+
 /** Resource upload definition payload */
 export interface ResourceUploadDefinition {
   /** Source relative path */
@@ -625,10 +925,18 @@ export interface ResourceUploadDefinition {
   /** Upload URL */
   uploadUrl?: string;
 }
+const ResourceUploadDefinition = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ResourceUploadDefinition>;
+
 /** Binding parameters of the Binding resource */
 export type BindingResourcePropertiesInputBindingParametersMap = {
   [key: string]: string | undefined;
 };
+const BindingResourcePropertiesInputBindingParametersMap =
+  ApmPropertiesInputPropertiesMap as any as S.Schema<BindingResourcePropertiesInputBindingParametersMap>;
+
 /** Binding resource properties payload */
 export interface BindingResourcePropertiesInput {
   /** The Azure resource id of the bound resource */
@@ -638,6 +946,11 @@ export interface BindingResourcePropertiesInput {
   /** Binding parameters of the Binding resource */
   bindingParameters?: BindingResourcePropertiesInputBindingParametersMap;
 }
+const BindingResourcePropertiesInput = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<BindingResourcePropertiesInput>;
+
 export interface BindingsCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -652,8 +965,16 @@ export interface BindingsCreateOrUpdateRequest {
   /** Properties of the Binding resource */
   properties?: BindingResourcePropertiesInput;
 }
+const BindingsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<BindingsCreateOrUpdateRequest>;
+
 /** Binding parameters of the Binding resource */
 export type BindingResourcePropertiesBindingParametersMap = { [key: string]: string | undefined };
+const BindingResourcePropertiesBindingParametersMap =
+  ApmPropertiesInputPropertiesMap as any as S.Schema<BindingResourcePropertiesBindingParametersMap>;
+
 /** Binding resource properties payload */
 export interface BindingResourceProperties {
   /** The name of the bound resource */
@@ -673,6 +994,11 @@ export interface BindingResourceProperties {
   /** Update time of the Binding resource */
   updatedAt?: string;
 }
+const BindingResourceProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<BindingResourceProperties>;
+
 export interface BindingsCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -684,6 +1010,11 @@ export interface BindingsCreateOrUpdateResponse {
   /** Properties of the Binding resource */
   properties?: BindingResourceProperties;
 }
+const BindingsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<BindingsCreateOrUpdateResponse>;
+
 /** Buildpack Binding Type */
 export type BuildpackBindingPropertiesInputBindingType =
   | "ApplicationInsights"
@@ -692,10 +1023,18 @@ export type BuildpackBindingPropertiesInputBindingType =
   | "Dynatrace"
   | "NewRelic"
   | "ElasticAPM";
+const BuildpackBindingPropertiesInputBindingType = S.String;
+
 /** Non-sensitive properties for launchProperties */
 export type BuildpackBindingLaunchPropertiesPropertiesMap = { [key: string]: string | undefined };
+const BuildpackBindingLaunchPropertiesPropertiesMap =
+  ApmPropertiesInputPropertiesMap as any as S.Schema<BuildpackBindingLaunchPropertiesPropertiesMap>;
+
 /** Sensitive properties for launchProperties */
 export type BuildpackBindingLaunchPropertiesSecretsMap = { [key: string]: string | undefined };
+const BuildpackBindingLaunchPropertiesSecretsMap =
+  ApmPropertiesInputPropertiesMap as any as S.Schema<BuildpackBindingLaunchPropertiesSecretsMap>;
+
 /** Buildpack Binding Launch Properties */
 export interface BuildpackBindingLaunchProperties {
   /** Non-sensitive properties for launchProperties */
@@ -703,6 +1042,11 @@ export interface BuildpackBindingLaunchProperties {
   /** Sensitive properties for launchProperties */
   secrets?: BuildpackBindingLaunchPropertiesSecretsMap;
 }
+const BuildpackBindingLaunchProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<BuildpackBindingLaunchProperties>;
+
 /** Properties of a buildpack binding */
 export interface BuildpackBindingPropertiesInput {
   /** Buildpack Binding Type */
@@ -710,6 +1054,11 @@ export interface BuildpackBindingPropertiesInput {
   /** The object describes the buildpack binding launch properties */
   launchProperties?: BuildpackBindingLaunchProperties;
 }
+const BuildpackBindingPropertiesInput = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<BuildpackBindingPropertiesInput>;
+
 export interface BuildpackBindingCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -726,6 +1075,11 @@ export interface BuildpackBindingCreateOrUpdateRequest {
   /** Properties of a buildpack binding */
   properties?: BuildpackBindingPropertiesInput;
 }
+const BuildpackBindingCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<BuildpackBindingCreateOrUpdateRequest>;
+
 /** Buildpack Binding Type */
 export type BuildpackBindingPropertiesBindingType =
   | "ApplicationInsights"
@@ -734,6 +1088,8 @@ export type BuildpackBindingPropertiesBindingType =
   | "Dynatrace"
   | "NewRelic"
   | "ElasticAPM";
+const BuildpackBindingPropertiesBindingType = S.String;
+
 /** State of the Buildpack Binding. */
 export type BuildpackBindingPropertiesProvisioningState =
   | "Creating"
@@ -741,6 +1097,8 @@ export type BuildpackBindingPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting";
+const BuildpackBindingPropertiesProvisioningState = S.String;
+
 /** Properties of a buildpack binding */
 export interface BuildpackBindingProperties {
   /** Buildpack Binding Type */
@@ -750,6 +1108,11 @@ export interface BuildpackBindingProperties {
   /** The object describes the buildpack binding launch properties */
   launchProperties?: BuildpackBindingLaunchProperties;
 }
+const BuildpackBindingProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<BuildpackBindingProperties>;
+
 export interface BuildpackBindingCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -761,16 +1124,31 @@ export interface BuildpackBindingCreateOrUpdateResponse {
   /** Properties of a buildpack binding */
   properties?: BuildpackBindingProperties;
 }
+const BuildpackBindingCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<BuildpackBindingCreateOrUpdateResponse>;
+
 /** Build service agent pool size properties */
 export interface BuildServiceAgentPoolSizePropertiesInput {
   /** The name of build service agent pool size */
   name?: string;
 }
+const BuildServiceAgentPoolSizePropertiesInput = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<BuildServiceAgentPoolSizePropertiesInput>;
+
 /** Build service agent pool properties */
 export interface BuildServiceAgentPoolPropertiesInput {
   /** build service agent pool size properties */
   poolSize?: BuildServiceAgentPoolSizePropertiesInput;
 }
+const BuildServiceAgentPoolPropertiesInput = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<BuildServiceAgentPoolPropertiesInput>;
+
 export interface BuildServiceAgentPoolUpdatePutRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -785,6 +1163,11 @@ export interface BuildServiceAgentPoolUpdatePutRequest {
   /** build service agent pool properties */
   properties?: BuildServiceAgentPoolPropertiesInput;
 }
+const BuildServiceAgentPoolUpdatePutRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<BuildServiceAgentPoolUpdatePutRequest>;
+
 /** Build service agent pool size properties */
 export interface BuildServiceAgentPoolSizeProperties {
   /** The name of build service agent pool size */
@@ -794,6 +1177,11 @@ export interface BuildServiceAgentPoolSizeProperties {
   /** The memory property of build service agent pool size */
   memory?: string;
 }
+const BuildServiceAgentPoolSizeProperties = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<BuildServiceAgentPoolSizeProperties>;
+
 /** Build service agent pool properties */
 export interface BuildServiceAgentPoolProperties {
   /** Provisioning state of the build service agent pool */
@@ -801,6 +1189,11 @@ export interface BuildServiceAgentPoolProperties {
   /** build service agent pool size properties */
   poolSize?: BuildServiceAgentPoolSizeProperties;
 }
+const BuildServiceAgentPoolProperties = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<BuildServiceAgentPoolProperties>;
+
 export interface BuildServiceAgentPoolUpdatePutResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -812,6 +1205,11 @@ export interface BuildServiceAgentPoolUpdatePutResponse {
   /** build service agent pool properties */
   properties?: BuildServiceAgentPoolProperties;
 }
+const BuildServiceAgentPoolUpdatePutResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<BuildServiceAgentPoolUpdatePutResponse>;
+
 /** KPack ClusterStack properties payload */
 export interface StackProperties {
   /** Id of the ClusterStack. */
@@ -819,13 +1217,22 @@ export interface StackProperties {
   /** Version of the ClusterStack */
   version?: string;
 }
+const StackProperties = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<StackProperties>;
+
 /** Buildpack properties payload */
 export interface BuildpackProperties {
   /** Id of the buildpack */
   id?: string;
 }
+const BuildpackProperties = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<BuildpackProperties>;
+
 /** Buildpacks in the buildpack group */
 export type BuildpacksGroupPropertiesBuildpacksList = Array<BuildpackProperties>;
+const BuildpacksGroupPropertiesBuildpacksList = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<BuildpacksGroupPropertiesBuildpacksList>;
+
 /** Buildpack group properties of the Builder */
 export interface BuildpacksGroupProperties {
   /** Buildpack group name */
@@ -833,8 +1240,18 @@ export interface BuildpacksGroupProperties {
   /** Buildpacks in the buildpack group */
   buildpacks?: BuildpacksGroupPropertiesBuildpacksList;
 }
+const BuildpacksGroupProperties = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<BuildpacksGroupProperties>;
+
 /** Builder buildpack groups. */
 export type BuilderPropertiesInputBuildpackGroupsList = Array<BuildpacksGroupProperties>;
+const BuilderPropertiesInputBuildpackGroupsList = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<BuilderPropertiesInputBuildpackGroupsList>;
+
 /** KPack Builder properties payload */
 export interface BuilderPropertiesInput {
   /** Builder cluster stack property. */
@@ -842,6 +1259,11 @@ export interface BuilderPropertiesInput {
   /** Builder buildpack groups. */
   buildpackGroups?: BuilderPropertiesInputBuildpackGroupsList;
 }
+const BuilderPropertiesInput = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<BuilderPropertiesInput>;
+
 export interface BuildServiceBuilderCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -856,6 +1278,11 @@ export interface BuildServiceBuilderCreateOrUpdateRequest {
   /** Property of the Builder resource. */
   properties?: BuilderPropertiesInput;
 }
+const BuildServiceBuilderCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<BuildServiceBuilderCreateOrUpdateRequest>;
+
 /** Builder provision status. */
 export type BuilderPropertiesProvisioningState =
   | "Creating"
@@ -863,8 +1290,13 @@ export type BuilderPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting";
+const BuilderPropertiesProvisioningState = S.String;
+
 /** Builder buildpack groups. */
 export type BuilderPropertiesBuildpackGroupsList = Array<BuildpacksGroupProperties>;
+const BuilderPropertiesBuildpackGroupsList =
+  BuilderPropertiesInputBuildpackGroupsList as any as S.Schema<BuilderPropertiesBuildpackGroupsList>;
+
 /** KPack Builder properties payload */
 export interface BuilderProperties {
   /** Builder provision status. */
@@ -874,6 +1306,8 @@ export interface BuilderProperties {
   /** Builder buildpack groups. */
   buildpackGroups?: BuilderPropertiesBuildpackGroupsList;
 }
+const BuilderProperties = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<BuilderProperties>;
+
 export interface BuildServiceBuilderCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -885,6 +1319,11 @@ export interface BuildServiceBuilderCreateOrUpdateResponse {
   /** Property of the Builder resource. */
   properties?: BuilderProperties;
 }
+const BuildServiceBuilderCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<BuildServiceBuilderCreateOrUpdateResponse>;
+
 /** The runtime resource configuration of this build service. */
 export type BuildServicePropertiesInputResourceRequests = ApplicationAcceleratorPropertiesInput;
 /** Build service resource properties payload */
@@ -894,6 +1333,11 @@ export interface BuildServicePropertiesInput {
   /** The runtime resource configuration of this build service. */
   resourceRequests?: ApplicationAcceleratorPropertiesInput;
 }
+const BuildServicePropertiesInput = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<BuildServicePropertiesInput>;
+
 export interface BuildServiceCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -906,6 +1350,11 @@ export interface BuildServiceCreateOrUpdateRequest {
   /** Properties of the build resource */
   properties?: BuildServicePropertiesInput;
 }
+const BuildServiceCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<BuildServiceCreateOrUpdateRequest>;
+
 /** Provisioning state of the KPack build service */
 export type BuildServicePropertiesProvisioningState =
   | "Creating"
@@ -913,6 +1362,8 @@ export type BuildServicePropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting";
+const BuildServicePropertiesProvisioningState = S.String;
+
 /** The runtime resource configuration of this build service. */
 export interface BuildServicePropertiesResourceRequests {
   /** vCPU allocated to the entire build service node pool. */
@@ -920,6 +1371,9 @@ export interface BuildServicePropertiesResourceRequests {
   /** Memory allocated to the entire build service node pool. */
   memory?: string;
 }
+const BuildServicePropertiesResourceRequests =
+  ApiPortalResourceRequests as any as S.Schema<BuildServicePropertiesResourceRequests>;
+
 /** Build service resource properties payload */
 export interface BuildServiceProperties {
   /** The resource id of the container registry used in this build service. */
@@ -931,6 +1385,11 @@ export interface BuildServiceProperties {
   /** The runtime resource configuration of this build service. */
   resourceRequests?: BuildServicePropertiesResourceRequests;
 }
+const BuildServiceProperties = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<BuildServiceProperties>;
+
 export interface BuildServiceCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -942,15 +1401,30 @@ export interface BuildServiceCreateOrUpdateResponse {
   /** Properties of the build resource */
   properties?: BuildServiceProperties;
 }
+const BuildServiceCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<BuildServiceCreateOrUpdateResponse>;
+
 /** The environment variables for this build */
 export type BuildPropertiesInputEnvMap = { [key: string]: string | undefined };
+const BuildPropertiesInputEnvMap =
+  ApmPropertiesInputPropertiesMap as any as S.Schema<BuildPropertiesInputEnvMap>;
+
 /** A reference to the APM */
 export interface ApmReference {
   /** Resource Id of the APM */
   resourceId: string;
 }
+const ApmReference = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<ApmReference>;
+
 /** Collection of ApmReferences */
 export type ApmReferenceCollection = Array<ApmReference>;
+const ApmReferenceCollection = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ApmReferenceCollection>;
+
 /** A reference to the certificate */
 export interface CertificateReference {
   /** Resource Id of the certificate */
@@ -958,6 +1432,9 @@ export interface CertificateReference {
 }
 /** Collection of CertificateReferences */
 export type CertificateReferenceCollection = Array<CertificateReference>;
+const CertificateReferenceCollection =
+  ApmReferenceCollection as any as S.Schema<CertificateReferenceCollection>;
+
 /** Resource request payload of Build Resource. */
 export interface BuildResourceRequests {
   /** Optional Cpu allocated to the build resource. 1 core can be represented by 1 or 1000m. The default value is 1, this should not exceed build service agent pool cpu size. */
@@ -965,6 +1442,11 @@ export interface BuildResourceRequests {
   /** Optional Memory allocated to the build resource. 1 GB can be represented by 1Gi or 1024Mi. The default value is 2Gi, this should not exceed build service agent pool memory size. */
   memory?: string;
 }
+const BuildResourceRequests = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<BuildResourceRequests>;
+
 /** Build resource properties payload */
 export interface BuildPropertiesInput {
   /** The relative path of source code */
@@ -982,6 +1464,11 @@ export interface BuildPropertiesInput {
   /** The customized build resource for this build */
   resourceRequests?: BuildResourceRequests;
 }
+const BuildPropertiesInput = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<BuildPropertiesInput>;
+
 export interface BuildServiceCreateOrUpdateBuildRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -996,6 +1483,11 @@ export interface BuildServiceCreateOrUpdateBuildRequest {
   /** Properties of the build resource */
   properties?: BuildPropertiesInput;
 }
+const BuildServiceCreateOrUpdateBuildRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<BuildServiceCreateOrUpdateBuildRequest>;
+
 /** Provisioning state of the KPack build result */
 export type BuildPropertiesProvisioningState =
   | "Creating"
@@ -1003,8 +1495,13 @@ export type BuildPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting";
+const BuildPropertiesProvisioningState = S.String;
+
 /** The environment variables for this build */
 export type BuildPropertiesEnvMap = { [key: string]: string | undefined };
+const BuildPropertiesEnvMap =
+  ApmPropertiesInputPropertiesMap as any as S.Schema<BuildPropertiesEnvMap>;
+
 /** The provisioning state of this build result */
 export type TriggeredBuildResultProvisioningState =
   | "Queuing"
@@ -1013,6 +1510,8 @@ export type TriggeredBuildResultProvisioningState =
   | "Failed"
   | "Deleting"
   | "Canceled";
+const TriggeredBuildResultProvisioningState = S.String;
+
 /** The build result triggered by a build */
 export interface TriggeredBuildResult {
   /** The unique build id of this build result */
@@ -1028,6 +1527,11 @@ export interface TriggeredBuildResult {
   /** The last transition status of this build result */
   lastTransitionStatus?: string;
 }
+const TriggeredBuildResult = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<TriggeredBuildResult>;
+
 /** Build resource properties payload */
 export interface BuildProperties {
   /** The relative path of source code */
@@ -1049,6 +1553,8 @@ export interface BuildProperties {
   /** The customized build resource for this build */
   resourceRequests?: BuildResourceRequests;
 }
+const BuildProperties = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<BuildProperties>;
+
 export interface BuildServiceCreateOrUpdateBuildResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -1060,6 +1566,11 @@ export interface BuildServiceCreateOrUpdateBuildResponse {
   /** Properties of the build resource */
   properties?: BuildProperties;
 }
+const BuildServiceCreateOrUpdateBuildResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<BuildServiceCreateOrUpdateBuildResponse>;
+
 export interface BuildServiceGetResourceUploadUrlRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1070,11 +1581,21 @@ export interface BuildServiceGetResourceUploadUrlRequest {
   /** The name of the build service resource. */
   buildServiceName: string;
 }
+const BuildServiceGetResourceUploadUrlRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<BuildServiceGetResourceUploadUrlRequest>;
+
 /** Certificate resource payload. */
 export interface CertificatePropertiesInput {
   /** The type of the certificate source. */
   type: string;
 }
+const CertificatePropertiesInput = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<CertificatePropertiesInput>;
+
 export interface CertificatesCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1087,8 +1608,16 @@ export interface CertificatesCreateOrUpdateRequest {
   /** Properties of the certificate resource payload. */
   properties?: CertificatePropertiesInput;
 }
+const CertificatesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<CertificatesCreateOrUpdateRequest>;
+
 /** The domain list of certificate. */
 export type CertificatePropertiesDnsNamesList = Array<string>;
+const CertificatePropertiesDnsNamesList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<CertificatePropertiesDnsNamesList>;
+
 /** Provisioning state of the Certificate */
 export type CertificatePropertiesProvisioningState =
   | "Creating"
@@ -1096,6 +1625,8 @@ export type CertificatePropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting";
+const CertificatePropertiesProvisioningState = S.String;
+
 /** Certificate resource payload. */
 export interface CertificateProperties {
   /** The type of the certificate source. */
@@ -1117,6 +1648,11 @@ export interface CertificateProperties {
   /** Provisioning state of the Certificate */
   provisioningState?: CertificatePropertiesProvisioningState;
 }
+const CertificateProperties = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<CertificateProperties>;
+
 export interface CertificatesCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -1128,6 +1664,11 @@ export interface CertificatesCreateOrUpdateResponse {
   /** Properties of the certificate resource payload. */
   properties?: CertificateProperties;
 }
+const CertificatesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<CertificatesCreateOrUpdateResponse>;
+
 export interface CheckServiceNameAvailabilityRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1138,6 +1679,11 @@ export interface CheckServiceNameAvailabilityRequest {
   /** Name to be checked */
   name: string;
 }
+const CheckServiceNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<CheckServiceNameAvailabilityRequest>;
+
 /** Name availability result payload */
 export interface NameAvailability {
   /** Indicates whether the name is available */
@@ -1147,6 +1693,8 @@ export interface NameAvailability {
   /** Message why the name is not available */
   message?: string;
 }
+const NameAvailability = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<NameAvailability>;
+
 /** The error code compose of code and message. */
 export interface Error {
   /** The code of error. */
@@ -1154,10 +1702,18 @@ export interface Error {
   /** The message of error. */
   message?: string;
 }
+const Error = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<Error>;
+
 /** Collection of pattern of the repository */
 export type GitPatternRepositoryPatternList = Array<string>;
+const GitPatternRepositoryPatternList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<GitPatternRepositoryPatternList>;
+
 /** Searching path of the repository */
 export type GitPatternRepositorySearchPathsList = Array<string>;
+const GitPatternRepositorySearchPathsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<GitPatternRepositorySearchPathsList>;
+
 /** Git repository property payload for config server */
 export interface GitPatternRepository {
   /** Name of the repository */
@@ -1183,10 +1739,23 @@ export interface GitPatternRepository {
   /** Strict host key checking or not. */
   strictHostKeyChecking?: boolean;
 }
+const GitPatternRepository = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GitPatternRepository>;
+
 /** Repositories of git. */
 export type ConfigServerGitPropertyRepositoriesList = Array<GitPatternRepository>;
+const ConfigServerGitPropertyRepositoriesList = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ConfigServerGitPropertyRepositoriesList>;
+
 /** Searching path of the repository */
 export type ConfigServerGitPropertySearchPathsList = Array<string>;
+const ConfigServerGitPropertySearchPathsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<ConfigServerGitPropertySearchPathsList>;
+
 /** Property of git. */
 export interface ConfigServerGitProperty {
   /** Repositories of git. */
@@ -1210,11 +1779,21 @@ export interface ConfigServerGitProperty {
   /** Strict host key checking or not. */
   strictHostKeyChecking?: boolean;
 }
+const ConfigServerGitProperty = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ConfigServerGitProperty>;
+
 /** The settings of config server. */
 export interface ConfigServerSettings {
   /** Property of git environment. */
   gitProperty?: ConfigServerGitProperty;
 }
+const ConfigServerSettings = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ConfigServerSettings>;
+
 /** Config server git properties payload */
 export interface ConfigServerPropertiesInput {
   /** Error when apply config server settings. */
@@ -1222,6 +1801,11 @@ export interface ConfigServerPropertiesInput {
   /** Settings of config server. */
   configServer?: ConfigServerSettings;
 }
+const ConfigServerPropertiesInput = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ConfigServerPropertiesInput>;
+
 export interface ConfigServersUpdatePatchRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1232,6 +1816,11 @@ export interface ConfigServersUpdatePatchRequest {
   /** Properties of the Config Server resource */
   properties?: ConfigServerPropertiesInput;
 }
+const ConfigServersUpdatePatchRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ConfigServersUpdatePatchRequest>;
+
 /** State of the config server. */
 export type ConfigServerPropertiesProvisioningState =
   | "NotAvailable"
@@ -1239,6 +1828,8 @@ export type ConfigServerPropertiesProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Updating";
+const ConfigServerPropertiesProvisioningState = S.String;
+
 /** Config server git properties payload */
 export interface ConfigServerProperties {
   /** State of the config server. */
@@ -1248,6 +1839,11 @@ export interface ConfigServerProperties {
   /** Settings of config server. */
   configServer?: ConfigServerSettings;
 }
+const ConfigServerProperties = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ConfigServerProperties>;
+
 export interface ConfigServersUpdatePatchResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -1259,6 +1855,11 @@ export interface ConfigServersUpdatePatchResponse {
   /** Properties of the Config Server resource */
   properties?: ConfigServerProperties;
 }
+const ConfigServersUpdatePatchResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ConfigServersUpdatePatchResponse>;
+
 export interface ConfigServersUpdatePutRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1269,6 +1870,11 @@ export interface ConfigServersUpdatePutRequest {
   /** Properties of the Config Server resource */
   properties?: ConfigServerPropertiesInput;
 }
+const ConfigServersUpdatePutRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ConfigServersUpdatePutRequest>;
+
 export interface ConfigServersUpdatePutResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -1280,14 +1886,27 @@ export interface ConfigServersUpdatePutResponse {
   /** Properties of the Config Server resource */
   properties?: ConfigServerProperties;
 }
+const ConfigServersUpdatePutResponse =
+  ConfigServersUpdatePatchResponse as any as S.Schema<ConfigServersUpdatePutResponse>;
+
 /** The generation of the Application Configuration Service. */
 export type ConfigurationServicePropertiesInputGeneration = "Gen1" | "Gen2";
+const ConfigurationServicePropertiesInputGeneration = S.String;
+
 /** Collection of patterns of the repository */
 export type ConfigurationServiceGitRepositoryPatternsList = Array<string>;
+const ConfigurationServiceGitRepositoryPatternsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<ConfigurationServiceGitRepositoryPatternsList>;
+
 /** Searching path of the repository */
 export type ConfigurationServiceGitRepositorySearchPathsList = Array<string>;
+const ConfigurationServiceGitRepositorySearchPathsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<ConfigurationServiceGitRepositorySearchPathsList>;
+
 /** Git libraries used to support various repository providers */
 export type GitImplementation = "go-git" | "libgit2";
+const GitImplementation = S.String;
+
 /** Git repository property payload for Application Configuration Service */
 export interface ConfigurationServiceGitRepository {
   /** Name of the repository */
@@ -1317,22 +1936,47 @@ export interface ConfigurationServiceGitRepository {
   /** Resource Id of CA certificate for https URL of Git repository. */
   caCertResourceId?: string;
 }
+const ConfigurationServiceGitRepository = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ConfigurationServiceGitRepository>;
+
 /** Repositories of Application Configuration Service git property. */
 export type ConfigurationServiceGitPropertyRepository = Array<ConfigurationServiceGitRepository>;
+const ConfigurationServiceGitPropertyRepository = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ConfigurationServiceGitPropertyRepository>;
+
 /** Property of git environment. */
 export interface ConfigurationServiceGitProperty {
   repositories?: ConfigurationServiceGitPropertyRepository;
 }
+const ConfigurationServiceGitProperty = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<ConfigurationServiceGitProperty>;
+
 /** The settings of Application Configuration Service. */
 export interface ConfigurationServiceSettings {
   gitProperty?: ConfigurationServiceGitProperty;
 }
+const ConfigurationServiceSettings = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<ConfigurationServiceSettings>;
+
 /** Application Configuration Service properties payload */
 export interface ConfigurationServicePropertiesInput {
   /** The generation of the Application Configuration Service. */
   generation?: ConfigurationServicePropertiesInputGeneration | (string & {});
   settings?: ConfigurationServiceSettings;
 }
+const ConfigurationServicePropertiesInput = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ConfigurationServicePropertiesInput>;
+
 export interface ConfigurationServicesCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1344,6 +1988,11 @@ export interface ConfigurationServicesCreateOrUpdateRequest {
   configurationServiceName: string;
   properties?: ConfigurationServicePropertiesInput;
 }
+const ConfigurationServicesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ConfigurationServicesCreateOrUpdateRequest>;
+
 /** State of the Application Configuration Service. */
 export type ConfigurationServicePropertiesProvisioningState =
   | "Creating"
@@ -1351,8 +2000,12 @@ export type ConfigurationServicePropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting";
+const ConfigurationServicePropertiesProvisioningState = S.String;
+
 /** The generation of the Application Configuration Service. */
 export type ConfigurationServicePropertiesGeneration = "Gen1" | "Gen2";
+const ConfigurationServicePropertiesGeneration = S.String;
+
 /** Resource request payload of Application Configuration Service */
 export interface ConfigurationServiceResourceRequests {
   /** Cpu allocated to each Application Configuration Service instance */
@@ -1362,6 +2015,9 @@ export interface ConfigurationServiceResourceRequests {
   /** Instance count of the Application Configuration Service */
   instanceCount?: number;
 }
+const ConfigurationServiceResourceRequests =
+  ApplicationAcceleratorResourceRequests as any as S.Schema<ConfigurationServiceResourceRequests>;
+
 /** Collection of instances belong to the Application Configuration Service */
 export interface ConfigurationServiceInstance {
   /** Name of the Application Configuration Service instance */
@@ -1371,6 +2027,9 @@ export interface ConfigurationServiceInstance {
 }
 /** Collection of instances belong to Application Configuration Service. */
 export type ConfigurationServicePropertiesInstancesList = Array<ConfigurationServiceInstance>;
+const ConfigurationServicePropertiesInstancesList =
+  ApplicationAcceleratorComponentInstancesList as any as S.Schema<ConfigurationServicePropertiesInstancesList>;
+
 /** Application Configuration Service properties payload */
 export interface ConfigurationServiceProperties {
   /** State of the Application Configuration Service. */
@@ -1383,6 +2042,11 @@ export interface ConfigurationServiceProperties {
   instances?: ConfigurationServicePropertiesInstancesList;
   settings?: ConfigurationServiceSettings;
 }
+const ConfigurationServiceProperties = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ConfigurationServiceProperties>;
+
 export interface ConfigurationServicesCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -1393,16 +2057,29 @@ export interface ConfigurationServicesCreateOrUpdateResponse {
   systemData?: SystemData;
   properties?: ConfigurationServiceProperties;
 }
+const ConfigurationServicesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<ConfigurationServicesCreateOrUpdateResponse>;
+
 /** The credential for the container registry resource. */
 export interface ContainerRegistryCredentials {
   /** The credential type of the container registry credentials. */
   type: string;
 }
+const ContainerRegistryCredentials =
+  CertificatePropertiesInput as any as S.Schema<ContainerRegistryCredentials>;
+
 /** Container registry resource payload. */
 export interface ContainerRegistryPropertiesInput {
   /** The credentials of the container registry resource. */
   credentials: ContainerRegistryCredentials;
 }
+const ContainerRegistryPropertiesInput = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ContainerRegistryPropertiesInput>;
+
 export interface ContainerRegistriesCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1415,6 +2092,11 @@ export interface ContainerRegistriesCreateOrUpdateRequest {
   /** Properties of the container registry resource payload. */
   properties?: ContainerRegistryPropertiesInput;
 }
+const ContainerRegistriesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<ContainerRegistriesCreateOrUpdateRequest>;
+
 /** State of the Container Registry. */
 export type ContainerRegistryPropertiesProvisioningState =
   | "Creating"
@@ -1423,6 +2105,8 @@ export type ContainerRegistryPropertiesProvisioningState =
   | "Failed"
   | "Deleting"
   | "Canceled";
+const ContainerRegistryPropertiesProvisioningState = S.String;
+
 /** Container registry resource payload. */
 export interface ContainerRegistryProperties {
   /** The credentials of the container registry resource. */
@@ -1430,6 +2114,11 @@ export interface ContainerRegistryProperties {
   /** State of the Container Registry. */
   provisioningState?: ContainerRegistryPropertiesProvisioningState;
 }
+const ContainerRegistryProperties = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ContainerRegistryProperties>;
+
 export interface ContainerRegistriesCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -1441,6 +2130,11 @@ export interface ContainerRegistriesCreateOrUpdateResponse {
   /** Properties of the container registry resource payload. */
   properties?: ContainerRegistryProperties;
 }
+const ContainerRegistriesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<ContainerRegistriesCreateOrUpdateResponse>;
+
 /** Custom domain of app resource payload. */
 export interface CustomDomainPropertiesInput {
   /** The thumbprint of bound certificate. */
@@ -1448,6 +2142,11 @@ export interface CustomDomainPropertiesInput {
   /** The bound certificate name of domain. */
   certName?: string;
 }
+const CustomDomainPropertiesInput = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<CustomDomainPropertiesInput>;
+
 export interface CustomDomainsCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1462,6 +2161,11 @@ export interface CustomDomainsCreateOrUpdateRequest {
   /** Properties of the custom domain resource. */
   properties?: CustomDomainPropertiesInput;
 }
+const CustomDomainsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<CustomDomainsCreateOrUpdateRequest>;
+
 /** Provisioning state of the Domain */
 export type CustomDomainPropertiesProvisioningState =
   | "Creating"
@@ -1469,6 +2173,8 @@ export type CustomDomainPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting";
+const CustomDomainPropertiesProvisioningState = S.String;
+
 /** Custom domain of app resource payload. */
 export interface CustomDomainProperties {
   /** The thumbprint of bound certificate. */
@@ -1480,6 +2186,11 @@ export interface CustomDomainProperties {
   /** Provisioning state of the Domain */
   provisioningState?: CustomDomainPropertiesProvisioningState;
 }
+const CustomDomainProperties = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<CustomDomainProperties>;
+
 export interface CustomDomainsCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -1491,14 +2202,29 @@ export interface CustomDomainsCreateOrUpdateResponse {
   /** Properties of the custom domain resource. */
   properties?: CustomDomainProperties;
 }
+const CustomDomainsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<CustomDomainsCreateOrUpdateResponse>;
+
 /** Type of the customized accelerator. */
 export type CustomizedAcceleratorPropertiesInputAcceleratorType = "Accelerator" | "Fragment";
+const CustomizedAcceleratorPropertiesInputAcceleratorType = S.String;
+
 export type CustomizedAcceleratorPropertiesInputAcceleratorTagsList = Array<string>;
+const CustomizedAcceleratorPropertiesInputAcceleratorTagsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<CustomizedAcceleratorPropertiesInputAcceleratorTagsList>;
+
 /** Auth setting payload. */
 export interface AcceleratorAuthSetting {
   /** The type of the auth setting. */
   authType: string;
 }
+const AcceleratorAuthSetting = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<AcceleratorAuthSetting>;
+
 export interface AcceleratorGitRepository {
   /** Git repository URL for the accelerator. */
   url: string;
@@ -1515,6 +2241,11 @@ export interface AcceleratorGitRepository {
   /** Folder path inside the git repository to consider as the root of the accelerator or fragment. */
   subPath?: string;
 }
+const AcceleratorGitRepository = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<AcceleratorGitRepository>;
+
 /** Customized accelerator properties payload */
 export interface CustomizedAcceleratorPropertiesInput {
   /** Type of the customized accelerator. */
@@ -1525,6 +2256,11 @@ export interface CustomizedAcceleratorPropertiesInput {
   acceleratorTags?: CustomizedAcceleratorPropertiesInputAcceleratorTagsList;
   gitRepository: AcceleratorGitRepository;
 }
+const CustomizedAcceleratorPropertiesInput = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<CustomizedAcceleratorPropertiesInput>;
+
 export interface CustomizedAcceleratorsCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1540,6 +2276,11 @@ export interface CustomizedAcceleratorsCreateOrUpdateRequest {
   /** Sku of the customized accelerator resource */
   sku?: Sku;
 }
+const CustomizedAcceleratorsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<CustomizedAcceleratorsCreateOrUpdateRequest>;
+
 /** State of the customized accelerator. */
 export type CustomizedAcceleratorPropertiesProvisioningState =
   | "Creating"
@@ -1548,11 +2289,21 @@ export type CustomizedAcceleratorPropertiesProvisioningState =
   | "Failed"
   | "Deleting"
   | "Canceled";
+const CustomizedAcceleratorPropertiesProvisioningState = S.String;
+
 /** Type of the customized accelerator. */
 export type CustomizedAcceleratorPropertiesAcceleratorType = "Accelerator" | "Fragment";
+const CustomizedAcceleratorPropertiesAcceleratorType = S.String;
+
 export type CustomizedAcceleratorPropertiesAcceleratorTagsList = Array<string>;
+const CustomizedAcceleratorPropertiesAcceleratorTagsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<CustomizedAcceleratorPropertiesAcceleratorTagsList>;
+
 /** Imports references all imports that this accelerator/fragment depends upon. */
 export type CustomizedAcceleratorPropertiesImportsList = Array<string>;
+const CustomizedAcceleratorPropertiesImportsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<CustomizedAcceleratorPropertiesImportsList>;
+
 /** Customized accelerator properties payload */
 export interface CustomizedAcceleratorProperties {
   /** State of the customized accelerator. */
@@ -1567,6 +2318,11 @@ export interface CustomizedAcceleratorProperties {
   imports?: CustomizedAcceleratorPropertiesImportsList;
   gitRepository: AcceleratorGitRepository;
 }
+const CustomizedAcceleratorProperties = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<CustomizedAcceleratorProperties>;
+
 export interface CustomizedAcceleratorsCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -1579,6 +2335,11 @@ export interface CustomizedAcceleratorsCreateOrUpdateResponse {
   /** Sku of the customized accelerator resource */
   sku?: Sku;
 }
+const CustomizedAcceleratorsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<CustomizedAcceleratorsCreateOrUpdateResponse>;
+
 export interface DeleteApiPortalRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1589,7 +2350,17 @@ export interface DeleteApiPortalRequest {
   /** The name of API portal. */
   apiPortalName: string;
 }
+const DeleteApiPortalRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<DeleteApiPortalRequest>;
+
 export interface DeleteApiPortalResponse {}
+const DeleteApiPortalResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<DeleteApiPortalResponse>;
+
 export interface DeleteApiPortalCustomDomainRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1602,7 +2373,15 @@ export interface DeleteApiPortalCustomDomainRequest {
   /** The name of the API portal custom domain. */
   domainName: string;
 }
+const DeleteApiPortalCustomDomainRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<DeleteApiPortalCustomDomainRequest>;
+
 export interface DeleteApiPortalCustomDomainResponse {}
+const DeleteApiPortalCustomDomainResponse =
+  ApplicationAcceleratorPropertiesInput as any as S.Schema<DeleteApiPortalCustomDomainResponse>;
+
 export interface DeleteApmRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1613,7 +2392,11 @@ export interface DeleteApmRequest {
   /** The name of the APM */
   apmName: string;
 }
+const DeleteApmRequest = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<DeleteApmRequest>;
+
 export interface DeleteApmResponse {}
+const DeleteApmResponse = DeleteApiPortalResponse as any as S.Schema<DeleteApmResponse>;
+
 export interface DeleteAppRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1624,7 +2407,11 @@ export interface DeleteAppRequest {
   /** The name of the App resource. */
   appName: string;
 }
+const DeleteAppRequest = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<DeleteAppRequest>;
+
 export interface DeleteAppResponse {}
+const DeleteAppResponse = DeleteApiPortalResponse as any as S.Schema<DeleteAppResponse>;
+
 export interface DeleteApplicationAcceleratorRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1635,7 +2422,15 @@ export interface DeleteApplicationAcceleratorRequest {
   /** The name of the application accelerator. */
   applicationAcceleratorName: string;
 }
+const DeleteApplicationAcceleratorRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<DeleteApplicationAcceleratorRequest>;
+
 export interface DeleteApplicationAcceleratorResponse {}
+const DeleteApplicationAcceleratorResponse =
+  ApplicationAcceleratorPropertiesInput as any as S.Schema<DeleteApplicationAcceleratorResponse>;
+
 export interface DeleteApplicationLiveViewRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1646,7 +2441,15 @@ export interface DeleteApplicationLiveViewRequest {
   /** The name of Application Live View. */
   applicationLiveViewName: string;
 }
+const DeleteApplicationLiveViewRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<DeleteApplicationLiveViewRequest>;
+
 export interface DeleteApplicationLiveViewResponse {}
+const DeleteApplicationLiveViewResponse =
+  ApplicationAcceleratorPropertiesInput as any as S.Schema<DeleteApplicationLiveViewResponse>;
+
 export interface DeleteBindingRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1659,7 +2462,14 @@ export interface DeleteBindingRequest {
   /** The name of the Binding resource. */
   bindingName: string;
 }
+const DeleteBindingRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<DeleteBindingRequest>;
+
 export interface DeleteBindingResponse {}
+const DeleteBindingResponse = DeleteApiPortalResponse as any as S.Schema<DeleteBindingResponse>;
+
 export interface DeleteBuildpackBindingRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1674,7 +2484,15 @@ export interface DeleteBuildpackBindingRequest {
   /** The name of the Buildpack Binding Name */
   buildpackBindingName: string;
 }
+const DeleteBuildpackBindingRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<DeleteBuildpackBindingRequest>;
+
 export interface DeleteBuildpackBindingResponse {}
+const DeleteBuildpackBindingResponse =
+  DeleteApiPortalResponse as any as S.Schema<DeleteBuildpackBindingResponse>;
+
 export interface DeleteBuildServiceBuildRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1687,7 +2505,17 @@ export interface DeleteBuildServiceBuildRequest {
   /** The name of the build resource. */
   buildName: string;
 }
+const DeleteBuildServiceBuildRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<DeleteBuildServiceBuildRequest>;
+
 export interface DeleteBuildServiceBuildResponse {}
+const DeleteBuildServiceBuildResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<DeleteBuildServiceBuildResponse>;
+
 export interface DeleteBuildServiceBuilderRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1700,7 +2528,15 @@ export interface DeleteBuildServiceBuilderRequest {
   /** The name of the builder resource. */
   builderName: string;
 }
+const DeleteBuildServiceBuilderRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<DeleteBuildServiceBuilderRequest>;
+
 export interface DeleteBuildServiceBuilderResponse {}
+const DeleteBuildServiceBuilderResponse =
+  ApplicationAcceleratorPropertiesInput as any as S.Schema<DeleteBuildServiceBuilderResponse>;
+
 export interface DeleteCertificateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1711,7 +2547,15 @@ export interface DeleteCertificateRequest {
   /** The name of the certificate resource. */
   certificateName: string;
 }
+const DeleteCertificateRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<DeleteCertificateRequest>;
+
 export interface DeleteCertificateResponse {}
+const DeleteCertificateResponse =
+  DeleteApiPortalResponse as any as S.Schema<DeleteCertificateResponse>;
+
 export interface DeleteConfigurationServiceRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1722,7 +2566,15 @@ export interface DeleteConfigurationServiceRequest {
   /** The name of Application Configuration Service. */
   configurationServiceName: string;
 }
+const DeleteConfigurationServiceRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<DeleteConfigurationServiceRequest>;
+
 export interface DeleteConfigurationServiceResponse {}
+const DeleteConfigurationServiceResponse =
+  ApplicationAcceleratorPropertiesInput as any as S.Schema<DeleteConfigurationServiceResponse>;
+
 export interface DeleteContainerRegistryRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1733,7 +2585,15 @@ export interface DeleteContainerRegistryRequest {
   /** The name of the container registry. */
   containerRegistryName: string;
 }
+const DeleteContainerRegistryRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<DeleteContainerRegistryRequest>;
+
 export interface DeleteContainerRegistryResponse {}
+const DeleteContainerRegistryResponse =
+  DeleteBuildServiceBuildResponse as any as S.Schema<DeleteContainerRegistryResponse>;
+
 export interface DeleteCustomDomainRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1746,7 +2606,15 @@ export interface DeleteCustomDomainRequest {
   /** The name of the custom domain resource. */
   domainName: string;
 }
+const DeleteCustomDomainRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<DeleteCustomDomainRequest>;
+
 export interface DeleteCustomDomainResponse {}
+const DeleteCustomDomainResponse =
+  DeleteApiPortalResponse as any as S.Schema<DeleteCustomDomainResponse>;
+
 export interface DeleteCustomizedAcceleratorRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1759,7 +2627,15 @@ export interface DeleteCustomizedAcceleratorRequest {
   /** The name of the customized accelerator. */
   customizedAcceleratorName: string;
 }
+const DeleteCustomizedAcceleratorRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<DeleteCustomizedAcceleratorRequest>;
+
 export interface DeleteCustomizedAcceleratorResponse {}
+const DeleteCustomizedAcceleratorResponse =
+  ApplicationAcceleratorPropertiesInput as any as S.Schema<DeleteCustomizedAcceleratorResponse>;
+
 export interface DeleteDeploymentRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1772,7 +2648,15 @@ export interface DeleteDeploymentRequest {
   /** The name of the Deployment resource. */
   deploymentName: string;
 }
+const DeleteDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<DeleteDeploymentRequest>;
+
 export interface DeleteDeploymentResponse {}
+const DeleteDeploymentResponse =
+  DeleteApiPortalResponse as any as S.Schema<DeleteDeploymentResponse>;
+
 export interface DeleteDevToolPortalRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1783,7 +2667,15 @@ export interface DeleteDevToolPortalRequest {
   /** The name of Dev Tool Portal. */
   devToolPortalName: string;
 }
+const DeleteDevToolPortalRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<DeleteDevToolPortalRequest>;
+
 export interface DeleteDevToolPortalResponse {}
+const DeleteDevToolPortalResponse =
+  DeleteApiPortalResponse as any as S.Schema<DeleteDevToolPortalResponse>;
+
 export interface DeleteGatewayRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1794,7 +2686,14 @@ export interface DeleteGatewayRequest {
   /** The name of Spring Cloud Gateway. */
   gatewayName: string;
 }
+const DeleteGatewayRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<DeleteGatewayRequest>;
+
 export interface DeleteGatewayResponse {}
+const DeleteGatewayResponse = DeleteApiPortalResponse as any as S.Schema<DeleteGatewayResponse>;
+
 export interface DeleteGatewayCustomDomainRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1807,7 +2706,15 @@ export interface DeleteGatewayCustomDomainRequest {
   /** The name of the Spring Cloud Gateway custom domain. */
   domainName: string;
 }
+const DeleteGatewayCustomDomainRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<DeleteGatewayCustomDomainRequest>;
+
 export interface DeleteGatewayCustomDomainResponse {}
+const DeleteGatewayCustomDomainResponse =
+  ApplicationAcceleratorPropertiesInput as any as S.Schema<DeleteGatewayCustomDomainResponse>;
+
 export interface DeleteGatewayRouteConfigRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1820,7 +2727,15 @@ export interface DeleteGatewayRouteConfigRequest {
   /** The name of the Spring Cloud Gateway route config. */
   routeConfigName: string;
 }
+const DeleteGatewayRouteConfigRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<DeleteGatewayRouteConfigRequest>;
+
 export interface DeleteGatewayRouteConfigResponse {}
+const DeleteGatewayRouteConfigResponse =
+  ApplicationAcceleratorPropertiesInput as any as S.Schema<DeleteGatewayRouteConfigResponse>;
+
 export interface DeleteServiceRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1829,7 +2744,14 @@ export interface DeleteServiceRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const DeleteServiceRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<DeleteServiceRequest>;
+
 export interface DeleteServiceResponse {}
+const DeleteServiceResponse = DeleteApiPortalResponse as any as S.Schema<DeleteServiceResponse>;
+
 export interface DeleteServiceRegistryRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1840,7 +2762,15 @@ export interface DeleteServiceRegistryRequest {
   /** The name of Service Registry. */
   serviceRegistryName: string;
 }
+const DeleteServiceRegistryRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<DeleteServiceRegistryRequest>;
+
 export interface DeleteServiceRegistryResponse {}
+const DeleteServiceRegistryResponse =
+  DeleteApiPortalResponse as any as S.Schema<DeleteServiceRegistryResponse>;
+
 export interface DeleteStorageRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1851,7 +2781,14 @@ export interface DeleteStorageRequest {
   /** The name of the storage resource. */
   storageName: string;
 }
+const DeleteStorageRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<DeleteStorageRequest>;
+
 export interface DeleteStorageResponse {}
+const DeleteStorageResponse = DeleteApiPortalResponse as any as S.Schema<DeleteStorageResponse>;
+
 /** Source information for a deployment */
 export interface UserSourceInfo {
   /** Type of the source uploaded */
@@ -1859,6 +2796,8 @@ export interface UserSourceInfo {
   /** Version of the source */
   version?: string;
 }
+const UserSourceInfo = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<UserSourceInfo>;
+
 /** Deployment resource request payload */
 export interface ResourceRequests {
   /** Required CPU. 1 core can be represented by 1 or 1000m. This should be 500m or 1 for Basic tier, and {500m, 1, 2, 3, 4} for Standard tier. */
@@ -1866,17 +2805,29 @@ export interface ResourceRequests {
   /** Required memory. 1 GB can be represented by 1Gi or 1024Mi. This should be {512Mi, 1Gi, 2Gi} for Basic tier, and {512Mi, 1Gi, 2Gi, ..., 8Gi} for Standard tier. */
   memory?: string;
 }
+const ResourceRequests = BuildResourceRequests as any as S.Schema<ResourceRequests>;
+
 /** Collection of environment variables */
 export type DeploymentSettingsEnvironmentVariablesMap = { [key: string]: string | undefined };
+const DeploymentSettingsEnvironmentVariablesMap =
+  ApmPropertiesInputPropertiesMap as any as S.Schema<DeploymentSettingsEnvironmentVariablesMap>;
+
 /** Collection of addons */
 export type DeploymentSettingsAddonConfigsMap = { [key: string]: unknown | undefined };
+const DeploymentSettingsAddonConfigsMap =
+  AppResourcePropertiesInputAddonConfigsMap as any as S.Schema<DeploymentSettingsAddonConfigsMap>;
+
 /** The type of the action to take to perform the health check. */
 export type ProbeActionType = "HTTPGetAction" | "TCPSocketAction" | "ExecAction";
+const ProbeActionType = S.String;
+
 /** The action of the probe. */
 export interface ProbeAction {
   /** The type of the action to take to perform the health check. */
   type: ProbeActionType | (string & {});
 }
+const ProbeAction = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<ProbeAction>;
+
 /** Probe describes a health check to be performed against an App Instance to determine whether it is alive or ready to receive traffic. */
 export interface Probe {
   /** The action of the probe. */
@@ -1894,11 +2845,18 @@ export interface Probe {
   /** Minimum consecutive successes for the probe to be considered successful after having failed. Must be 1 for liveness and startup. Minimum value is 1. */
   successThreshold?: number;
 }
+const Probe = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<Probe>;
+
 /** Container liveness and readiness probe settings */
 export interface ContainerProbeSettings {
   /** Indicates whether disable the liveness and readiness probe */
   disableProbe?: boolean;
 }
+const ContainerProbeSettings = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<ContainerProbeSettings>;
+
 /** Deployment settings payload */
 export interface DeploymentSettings {
   /** The requested resource quantity for required CPU and Memory. It is recommended that using this field to represent the required CPU and Memory, the old field cpu and memoryInGB will be deprecated later. */
@@ -1919,6 +2877,8 @@ export interface DeploymentSettings {
   terminationGracePeriodSeconds?: number;
   containerProbeSettings?: ContainerProbeSettings;
 }
+const DeploymentSettings = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<DeploymentSettings>;
+
 /** Deployment resource properties payload */
 export interface DeploymentResourcePropertiesInput {
   /** Uploaded source information of the deployment. */
@@ -1928,6 +2888,11 @@ export interface DeploymentResourcePropertiesInput {
   /** Indicates whether the Deployment is active */
   active?: boolean;
 }
+const DeploymentResourcePropertiesInput = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<DeploymentResourcePropertiesInput>;
+
 export interface DeploymentsCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1944,14 +2909,23 @@ export interface DeploymentsCreateOrUpdateRequest {
   /** Sku of the Deployment resource */
   sku?: Sku;
 }
+const DeploymentsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<DeploymentsCreateOrUpdateRequest>;
+
 /** Provisioning state of the Deployment */
 export type DeploymentResourcePropertiesProvisioningState =
   | "Creating"
   | "Updating"
   | "Succeeded"
   | "Failed";
+const DeploymentResourcePropertiesProvisioningState = S.String;
+
 /** Status of the Deployment */
 export type DeploymentResourcePropertiesStatus = "Stopped" | "Running";
+const DeploymentResourcePropertiesStatus = S.String;
+
 /** Deployment instance payload */
 export interface DeploymentInstance {
   /** Name of the deployment instance */
@@ -1967,8 +2941,15 @@ export interface DeploymentInstance {
   /** Availability zone information of the deployment instance */
   zone?: string;
 }
+const DeploymentInstance = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<DeploymentInstance>;
+
 /** Collection of instances belong to the Deployment */
 export type DeploymentResourcePropertiesInstancesList = Array<DeploymentInstance>;
+const DeploymentResourcePropertiesInstancesList = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<DeploymentResourcePropertiesInstancesList>;
+
 /** Deployment resource properties payload */
 export interface DeploymentResourceProperties {
   /** Uploaded source information of the deployment. */
@@ -1984,6 +2965,11 @@ export interface DeploymentResourceProperties {
   /** Collection of instances belong to the Deployment */
   instances?: DeploymentResourcePropertiesInstancesList;
 }
+const DeploymentResourceProperties = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<DeploymentResourceProperties>;
+
 export interface DeploymentsCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -1997,8 +2983,16 @@ export interface DeploymentsCreateOrUpdateResponse {
   /** Sku of the Deployment resource */
   sku?: Sku;
 }
+const DeploymentsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<DeploymentsCreateOrUpdateResponse>;
+
 /** It defines the specific actions applications can be allowed to do on a user's behalf */
 export type DevToolPortalSsoPropertiesScopesList = Array<string>;
+const DevToolPortalSsoPropertiesScopesList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<DevToolPortalSsoPropertiesScopesList>;
+
 /** Single sign-on related configuration */
 export interface DevToolPortalSsoProperties {
   /** It defines the specific actions applications can be allowed to do on a user's behalf */
@@ -2010,13 +3004,25 @@ export interface DevToolPortalSsoProperties {
   /** The URI of a JSON file with generic OIDC provider configuration. */
   metadataUrl?: string;
 }
+const DevToolPortalSsoProperties = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<DevToolPortalSsoProperties>;
+
 /** State of the plugin */
 export type DevToolPortalFeatureDetailInputState = "Enabled" | "Disabled";
+const DevToolPortalFeatureDetailInputState = S.String;
+
 /** Detail settings for Dev Tool Portal feature */
 export interface DevToolPortalFeatureDetailInput {
   /** State of the plugin */
   state?: DevToolPortalFeatureDetailInputState | (string & {});
 }
+const DevToolPortalFeatureDetailInput = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<DevToolPortalFeatureDetailInput>;
+
 /** Settings for Dev Tool Portal */
 export interface DevToolPortalFeatureSettingsInput {
   /** Detail of Accelerator plugin */
@@ -2024,6 +3030,11 @@ export interface DevToolPortalFeatureSettingsInput {
   /** Detail of App Live View plugin */
   applicationLiveView?: DevToolPortalFeatureDetailInput;
 }
+const DevToolPortalFeatureSettingsInput = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<DevToolPortalFeatureSettingsInput>;
+
 /** Dev Tool Portal properties payload */
 export interface DevToolPortalPropertiesInput {
   /** Indicates whether the resource exposes public endpoint */
@@ -2033,6 +3044,11 @@ export interface DevToolPortalPropertiesInput {
   /** Settings for Dev Tool Portal */
   features?: DevToolPortalFeatureSettingsInput;
 }
+const DevToolPortalPropertiesInput = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<DevToolPortalPropertiesInput>;
+
 export interface DevToolPortalsCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2044,6 +3060,11 @@ export interface DevToolPortalsCreateOrUpdateRequest {
   devToolPortalName: string;
   properties?: DevToolPortalPropertiesInput;
 }
+const DevToolPortalsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<DevToolPortalsCreateOrUpdateRequest>;
+
 /** State of the Dev Tool Portal. */
 export type DevToolPortalPropertiesProvisioningState =
   | "Creating"
@@ -2052,6 +3073,8 @@ export type DevToolPortalPropertiesProvisioningState =
   | "Failed"
   | "Deleting"
   | "Canceled";
+const DevToolPortalPropertiesProvisioningState = S.String;
+
 /** The resource quantity for required CPU and Memory of Dev Tool Portal */
 export interface DevToolPortalResourceRequests {
   /** Cpu quantity allocated to each Dev Tool Portal instance. 1 core can be represented by 1 or 1000m */
@@ -2061,6 +3084,9 @@ export interface DevToolPortalResourceRequests {
   /** Desired instance count of Dev Tool Portal. */
   instanceCount?: number;
 }
+const DevToolPortalResourceRequests =
+  ApplicationAcceleratorResourceRequests as any as S.Schema<DevToolPortalResourceRequests>;
+
 /** Collection of instances belong to the Dev Tool Portal. */
 export interface DevToolPortalInstance {
   /** Name of the Dev Tool Portal instance. */
@@ -2070,6 +3096,9 @@ export interface DevToolPortalInstance {
 }
 /** Collection of instances belong to Dev Tool Portal. */
 export type DevToolPortalComponentInstancesList = Array<DevToolPortalInstance>;
+const DevToolPortalComponentInstancesList =
+  ApiPortalPropertiesInstancesList as any as S.Schema<DevToolPortalComponentInstancesList>;
+
 export interface DevToolPortalComponent {
   name?: string;
   /** The requested resource quantity for required CPU and Memory. */
@@ -2077,10 +3106,22 @@ export interface DevToolPortalComponent {
   /** Collection of instances belong to Dev Tool Portal. */
   instances?: DevToolPortalComponentInstancesList;
 }
+const DevToolPortalComponent = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<DevToolPortalComponent>;
+
 /** Collection of components belong to Dev Tool Portal. */
 export type DevToolPortalPropertiesComponentsList = Array<DevToolPortalComponent>;
+const DevToolPortalPropertiesComponentsList = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<DevToolPortalPropertiesComponentsList>;
+
 /** State of the plugin */
 export type DevToolPortalFeatureDetailState = "Enabled" | "Disabled";
+const DevToolPortalFeatureDetailState = S.String;
+
 /** Detail settings for Dev Tool Portal feature */
 export interface DevToolPortalFeatureDetail {
   /** State of the plugin */
@@ -2088,6 +3129,11 @@ export interface DevToolPortalFeatureDetail {
   /** Route path to visit the plugin */
   route?: string;
 }
+const DevToolPortalFeatureDetail = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<DevToolPortalFeatureDetail>;
+
 /** Settings for Dev Tool Portal */
 export interface DevToolPortalFeatureSettings {
   /** Detail of Accelerator plugin */
@@ -2095,6 +3141,11 @@ export interface DevToolPortalFeatureSettings {
   /** Detail of App Live View plugin */
   applicationLiveView?: DevToolPortalFeatureDetail;
 }
+const DevToolPortalFeatureSettings = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<DevToolPortalFeatureSettings>;
+
 /** Dev Tool Portal properties payload */
 export interface DevToolPortalProperties {
   /** State of the Dev Tool Portal. */
@@ -2110,6 +3161,11 @@ export interface DevToolPortalProperties {
   /** Settings for Dev Tool Portal */
   features?: DevToolPortalFeatureSettings;
 }
+const DevToolPortalProperties = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<DevToolPortalProperties>;
+
 export interface DevToolPortalsCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -2120,6 +3176,11 @@ export interface DevToolPortalsCreateOrUpdateResponse {
   systemData?: SystemData;
   properties?: DevToolPortalProperties;
 }
+const DevToolPortalsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<DevToolPortalsCreateOrUpdateResponse>;
+
 export interface DisableDeploymentRemoteDebuggingRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2132,6 +3193,11 @@ export interface DisableDeploymentRemoteDebuggingRequest {
   /** The name of the Deployment resource. */
   deploymentName: string;
 }
+const DisableDeploymentRemoteDebuggingRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<DisableDeploymentRemoteDebuggingRequest>;
+
 /** Remote debugging config. */
 export interface RemoteDebugging {
   /** Application debugging port */
@@ -2139,6 +3205,8 @@ export interface RemoteDebugging {
   /** Indicate if remote debugging is enabled */
   enabled?: boolean;
 }
+const RemoteDebugging = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<RemoteDebugging>;
+
 export interface DisablePredefinedAcceleratorRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2151,7 +3219,15 @@ export interface DisablePredefinedAcceleratorRequest {
   /** The name of the predefined accelerator. */
   predefinedAcceleratorName: string;
 }
+const DisablePredefinedAcceleratorRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<DisablePredefinedAcceleratorRequest>;
+
 export interface DisablePredefinedAcceleratorResponse {}
+const DisablePredefinedAcceleratorResponse =
+  ApplicationAcceleratorPropertiesInput as any as S.Schema<DisablePredefinedAcceleratorResponse>;
+
 export interface DisableServiceApmGloballyRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2162,7 +3238,15 @@ export interface DisableServiceApmGloballyRequest {
   /** Resource Id of the APM */
   resourceId: string;
 }
+const DisableServiceApmGloballyRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<DisableServiceApmGloballyRequest>;
+
 export interface DisableServiceApmGloballyResponse {}
+const DisableServiceApmGloballyResponse =
+  ApplicationAcceleratorPropertiesInput as any as S.Schema<DisableServiceApmGloballyResponse>;
+
 export interface DisableServiceTestEndpointRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2171,7 +3255,15 @@ export interface DisableServiceTestEndpointRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const DisableServiceTestEndpointRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<DisableServiceTestEndpointRequest>;
+
 export interface DisableServiceTestEndpointResponse {}
+const DisableServiceTestEndpointResponse =
+  ApplicationAcceleratorPropertiesInput as any as S.Schema<DisableServiceTestEndpointResponse>;
+
 export interface EnableDeploymentRemoteDebuggingRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2186,6 +3278,11 @@ export interface EnableDeploymentRemoteDebuggingRequest {
   /** Application debugging port. */
   port?: number;
 }
+const EnableDeploymentRemoteDebuggingRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<EnableDeploymentRemoteDebuggingRequest>;
+
 export interface EnablePredefinedAcceleratorRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2198,7 +3295,15 @@ export interface EnablePredefinedAcceleratorRequest {
   /** The name of the predefined accelerator. */
   predefinedAcceleratorName: string;
 }
+const EnablePredefinedAcceleratorRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<EnablePredefinedAcceleratorRequest>;
+
 export interface EnablePredefinedAcceleratorResponse {}
+const EnablePredefinedAcceleratorResponse =
+  ApplicationAcceleratorPropertiesInput as any as S.Schema<EnablePredefinedAcceleratorResponse>;
+
 export interface EnableServiceApmGloballyRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2209,7 +3314,15 @@ export interface EnableServiceApmGloballyRequest {
   /** Resource Id of the APM */
   resourceId: string;
 }
+const EnableServiceApmGloballyRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<EnableServiceApmGloballyRequest>;
+
 export interface EnableServiceApmGloballyResponse {}
+const EnableServiceApmGloballyResponse =
+  ApplicationAcceleratorPropertiesInput as any as S.Schema<EnableServiceApmGloballyResponse>;
+
 export interface EnableServiceTestEndpointRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2218,6 +3331,11 @@ export interface EnableServiceTestEndpointRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const EnableServiceTestEndpointRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<EnableServiceTestEndpointRequest>;
+
 /** Test keys payload */
 export interface TestKeys {
   /** Primary key */
@@ -2231,6 +3349,8 @@ export interface TestKeys {
   /** Indicates whether the test endpoint feature enabled or not */
   enabled?: boolean;
 }
+const TestKeys = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<TestKeys>;
+
 export interface FlushServiceVnetDnsSettingRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2239,7 +3359,15 @@ export interface FlushServiceVnetDnsSettingRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const FlushServiceVnetDnsSettingRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<FlushServiceVnetDnsSettingRequest>;
+
 export interface FlushServiceVnetDnsSettingResponse {}
+const FlushServiceVnetDnsSettingResponse =
+  ApplicationAcceleratorPropertiesInput as any as S.Schema<FlushServiceVnetDnsSettingResponse>;
+
 /** The properties of custom domain for Spring Cloud Gateway */
 export type GatewayCustomDomainProperties = ApiPortalCustomDomainProperties;
 export interface GatewayCustomDomainsCreateOrUpdateRequest {
@@ -2255,6 +3383,11 @@ export interface GatewayCustomDomainsCreateOrUpdateRequest {
   domainName: string;
   properties?: ApiPortalCustomDomainProperties;
 }
+const GatewayCustomDomainsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<GatewayCustomDomainsCreateOrUpdateRequest>;
+
 export interface GatewayCustomDomainsCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -2265,19 +3398,38 @@ export interface GatewayCustomDomainsCreateOrUpdateResponse {
   systemData?: SystemData;
   properties?: ApiPortalCustomDomainProperties;
 }
+const GatewayCustomDomainsCreateOrUpdateResponse =
+  ApiPortalCustomDomainsCreateOrUpdateResponse as any as S.Schema<GatewayCustomDomainsCreateOrUpdateResponse>;
+
 /** OpenAPI properties of Spring Cloud Gateway route config. */
 export interface GatewayRouteConfigOpenApiProperties {
   /** The URI of OpenAPI specification. */
   uri?: string;
 }
+const GatewayRouteConfigOpenApiProperties = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<GatewayRouteConfigOpenApiProperties>;
+
 /** Protocol of routed Azure Spring Apps applications. */
 export type GatewayRouteConfigPropertiesInputProtocol = "HTTP" | "HTTPS";
+const GatewayRouteConfigPropertiesInputProtocol = S.String;
+
 /** A number of conditions to evaluate a route for each request. Each predicate may be evaluated against request headers and parameter values. All of the predicates associated with a route must evaluate to true for the route to be matched to the request. */
 export type GatewayApiRoutePredicatesList = Array<string>;
+const GatewayApiRoutePredicatesList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<GatewayApiRoutePredicatesList>;
+
 /** To modify the request before sending it to the target endpoint, or the received response. */
 export type GatewayApiRouteFiltersList = Array<string>;
+const GatewayApiRouteFiltersList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<GatewayApiRouteFiltersList>;
+
 /** Classification tags, will be applied to methods in the generated OpenAPI documentation. */
 export type GatewayApiRouteTagsList = Array<string>;
+const GatewayApiRouteTagsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<GatewayApiRouteTagsList>;
+
 /** API route config of the Spring Cloud Gateway */
 export interface GatewayApiRoute {
   /** A title, will be applied to methods in the generated OpenAPI documentation. */
@@ -2299,12 +3451,25 @@ export interface GatewayApiRoute {
   /** Classification tags, will be applied to methods in the generated OpenAPI documentation. */
   tags?: GatewayApiRouteTagsList;
 }
+const GatewayApiRoute = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<GatewayApiRoute>;
+
 /** Array of API routes, each route contains properties such as `title`, `uri`, `ssoEnabled`, `predicates`, `filters`. */
 export type GatewayRouteConfigPropertiesInputRoutesList = Array<GatewayApiRoute>;
+const GatewayRouteConfigPropertiesInputRoutesList = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<GatewayRouteConfigPropertiesInputRoutesList>;
+
 /** A number of conditions to evaluate a route for each request in app level. Each predicate may be evaluated against request headers and parameter values. All of the predicates associated with a route must evaluate to true for the route to be matched to the request. */
 export type GatewayRouteConfigPropertiesInputPredicatesList = Array<string>;
+const GatewayRouteConfigPropertiesInputPredicatesList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<GatewayRouteConfigPropertiesInputPredicatesList>;
+
 /** To modify the request before sending it to the target endpoint, or the received response in app level. */
 export type GatewayRouteConfigPropertiesInputFiltersList = Array<string>;
+const GatewayRouteConfigPropertiesInputFiltersList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<GatewayRouteConfigPropertiesInputFiltersList>;
+
 /** API route config of the Spring Cloud Gateway */
 export interface GatewayRouteConfigPropertiesInput {
   /** The resource Id of the Azure Spring Apps app, required unless route defines `uri`. */
@@ -2321,6 +3486,11 @@ export interface GatewayRouteConfigPropertiesInput {
   /** To modify the request before sending it to the target endpoint, or the received response in app level. */
   filters?: GatewayRouteConfigPropertiesInputFiltersList;
 }
+const GatewayRouteConfigPropertiesInput = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<GatewayRouteConfigPropertiesInput>;
+
 export interface GatewayRouteConfigsCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2334,6 +3504,11 @@ export interface GatewayRouteConfigsCreateOrUpdateRequest {
   routeConfigName: string;
   properties?: GatewayRouteConfigPropertiesInput;
 }
+const GatewayRouteConfigsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<GatewayRouteConfigsCreateOrUpdateRequest>;
+
 /** State of the Spring Cloud Gateway route config. */
 export type GatewayRouteConfigPropertiesProvisioningState =
   | "Creating"
@@ -2341,14 +3516,27 @@ export type GatewayRouteConfigPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting";
+const GatewayRouteConfigPropertiesProvisioningState = S.String;
+
 /** Protocol of routed Azure Spring Apps applications. */
 export type GatewayRouteConfigPropertiesProtocol = "HTTP" | "HTTPS";
+const GatewayRouteConfigPropertiesProtocol = S.String;
+
 /** Array of API routes, each route contains properties such as `title`, `uri`, `ssoEnabled`, `predicates`, `filters`. */
 export type GatewayRouteConfigPropertiesRoutesList = Array<GatewayApiRoute>;
+const GatewayRouteConfigPropertiesRoutesList =
+  GatewayRouteConfigPropertiesInputRoutesList as any as S.Schema<GatewayRouteConfigPropertiesRoutesList>;
+
 /** A number of conditions to evaluate a route for each request in app level. Each predicate may be evaluated against request headers and parameter values. All of the predicates associated with a route must evaluate to true for the route to be matched to the request. */
 export type GatewayRouteConfigPropertiesPredicatesList = Array<string>;
+const GatewayRouteConfigPropertiesPredicatesList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<GatewayRouteConfigPropertiesPredicatesList>;
+
 /** To modify the request before sending it to the target endpoint, or the received response in app level. */
 export type GatewayRouteConfigPropertiesFiltersList = Array<string>;
+const GatewayRouteConfigPropertiesFiltersList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<GatewayRouteConfigPropertiesFiltersList>;
+
 /** API route config of the Spring Cloud Gateway */
 export interface GatewayRouteConfigProperties {
   /** State of the Spring Cloud Gateway route config. */
@@ -2367,6 +3555,11 @@ export interface GatewayRouteConfigProperties {
   /** To modify the request before sending it to the target endpoint, or the received response in app level. */
   filters?: GatewayRouteConfigPropertiesFiltersList;
 }
+const GatewayRouteConfigProperties = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<GatewayRouteConfigProperties>;
+
 export interface GatewayRouteConfigsCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -2377,6 +3570,11 @@ export interface GatewayRouteConfigsCreateOrUpdateResponse {
   systemData?: SystemData;
   properties?: GatewayRouteConfigProperties;
 }
+const GatewayRouteConfigsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<GatewayRouteConfigsCreateOrUpdateResponse>;
+
 /** API metadata property for Spring Cloud Gateway */
 export interface GatewayApiMetadataProperties {
   /** Title describing the context of the APIs available on the Gateway instance (default: `Spring Cloud Gateway for K8S`) */
@@ -2390,16 +3588,36 @@ export interface GatewayApiMetadataProperties {
   /** Base URL that API consumers will use to access APIs on the Gateway instance. */
   serverUrl?: string;
 }
+const GatewayApiMetadataProperties = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<GatewayApiMetadataProperties>;
+
 /** Allowed origins to make cross-site requests. The special value `*` allows all domains. */
 export type GatewayCorsPropertiesAllowedOriginsList = Array<string>;
+const GatewayCorsPropertiesAllowedOriginsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<GatewayCorsPropertiesAllowedOriginsList>;
+
 /** Allowed origin patterns to make cross-site requests. */
 export type GatewayCorsPropertiesAllowedOriginPatternsList = Array<string>;
+const GatewayCorsPropertiesAllowedOriginPatternsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<GatewayCorsPropertiesAllowedOriginPatternsList>;
+
 /** Allowed HTTP methods on cross-site requests. The special value `*` allows all methods. If not set, `GET` and `HEAD` are allowed by default. */
 export type GatewayCorsPropertiesAllowedMethodsList = Array<string>;
+const GatewayCorsPropertiesAllowedMethodsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<GatewayCorsPropertiesAllowedMethodsList>;
+
 /** Allowed headers in cross-site requests. The special value `*` allows actual requests to send any header. */
 export type GatewayCorsPropertiesAllowedHeadersList = Array<string>;
+const GatewayCorsPropertiesAllowedHeadersList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<GatewayCorsPropertiesAllowedHeadersList>;
+
 /** HTTP response headers to expose for cross-site requests. */
 export type GatewayCorsPropertiesExposedHeadersList = Array<string>;
+const GatewayCorsPropertiesExposedHeadersList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<GatewayCorsPropertiesExposedHeadersList>;
+
 /** Cross-Origin Resource Sharing property */
 export interface GatewayCorsProperties {
   /** Allowed origins to make cross-site requests. The special value `*` allows all domains. */
@@ -2417,10 +3635,20 @@ export interface GatewayCorsProperties {
   /** HTTP response headers to expose for cross-site requests. */
   exposedHeaders?: GatewayCorsPropertiesExposedHeadersList;
 }
+const GatewayCorsProperties = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<GatewayCorsProperties>;
+
 /** Collection of certificate resource Ids in Azure Spring Apps. */
 export type GatewayPropertiesInputClientAuthCertificatesList = Array<string>;
+const GatewayPropertiesInputClientAuthCertificatesList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<GatewayPropertiesInputClientAuthCertificatesList>;
+
 /** Whether to enable certificate verification or not */
 export type GatewayPropertiesInputClientAuthCertificateVerification = "Enabled" | "Disabled";
+const GatewayPropertiesInputClientAuthCertificateVerification = S.String;
+
 /** Client-Certification Authentication. */
 export interface GatewayPropertiesInputClientAuth {
   /** Collection of certificate resource Ids in Azure Spring Apps. */
@@ -2428,6 +3656,11 @@ export interface GatewayPropertiesInputClientAuth {
   /** Whether to enable certificate verification or not */
   certificateVerification?: GatewayPropertiesInputClientAuthCertificateVerification | (string & {});
 }
+const GatewayPropertiesInputClientAuth = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<GatewayPropertiesInputClientAuth>;
+
 /** Non-sensitive properties */
 export type GatewayPropertiesInputEnvironmentVariablesPropertiesMap = {
   [key: string]: string | undefined;
@@ -2443,6 +3676,9 @@ export interface GatewayPropertiesInputEnvironmentVariables {
   /** Sensitive properties */
   secrets?: GatewayPropertiesInputEnvironmentVariablesSecretsMap;
 }
+const GatewayPropertiesInputEnvironmentVariables =
+  BuildpackBindingLaunchProperties as any as S.Schema<GatewayPropertiesInputEnvironmentVariables>;
+
 /** Resource request payload of Spring Cloud Gateway. */
 export interface GatewayResourceRequests {
   /** Cpu allocated to each Spring Cloud Gateway instance. */
@@ -2450,6 +3686,8 @@ export interface GatewayResourceRequests {
   /** Memory allocated to each Spring Cloud Gateway instance. */
   memory?: string;
 }
+const GatewayResourceRequests = BuildResourceRequests as any as S.Schema<GatewayResourceRequests>;
+
 /** Spring Cloud Gateway properties payload */
 export interface GatewayPropertiesInput {
   /** Indicates whether the Spring Cloud Gateway exposes endpoint. */
@@ -2468,6 +3706,11 @@ export interface GatewayPropertiesInput {
   /** The requested resource quantity for required CPU and Memory. */
   resourceRequests?: GatewayResourceRequests;
 }
+const GatewayPropertiesInput = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<GatewayPropertiesInput>;
+
 export interface GatewaysCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2481,6 +3724,11 @@ export interface GatewaysCreateOrUpdateRequest {
   /** Sku of the Spring Cloud Gateway resource */
   sku?: Sku;
 }
+const GatewaysCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<GatewaysCreateOrUpdateRequest>;
+
 /** State of the Spring Cloud Gateway. */
 export type GatewayPropertiesProvisioningState =
   | "Creating"
@@ -2488,10 +3736,17 @@ export type GatewayPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting";
+const GatewayPropertiesProvisioningState = S.String;
+
 /** Collection of certificate resource Ids in Azure Spring Apps. */
 export type GatewayPropertiesClientAuthCertificatesList = Array<string>;
+const GatewayPropertiesClientAuthCertificatesList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<GatewayPropertiesClientAuthCertificatesList>;
+
 /** Whether to enable certificate verification or not */
 export type GatewayPropertiesClientAuthCertificateVerification = "Enabled" | "Disabled";
+const GatewayPropertiesClientAuthCertificateVerification = S.String;
+
 /** Client-Certification Authentication. */
 export interface GatewayPropertiesClientAuth {
   /** Collection of certificate resource Ids in Azure Spring Apps. */
@@ -2499,6 +3754,11 @@ export interface GatewayPropertiesClientAuth {
   /** Whether to enable certificate verification or not */
   certificateVerification?: GatewayPropertiesClientAuthCertificateVerification;
 }
+const GatewayPropertiesClientAuth = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<GatewayPropertiesClientAuth>;
+
 /** Non-sensitive properties */
 export type GatewayPropertiesEnvironmentVariablesPropertiesMap = {
   [key: string]: string | undefined;
@@ -2512,6 +3772,9 @@ export interface GatewayPropertiesEnvironmentVariables {
   /** Sensitive properties */
   secrets?: GatewayPropertiesEnvironmentVariablesSecretsMap;
 }
+const GatewayPropertiesEnvironmentVariables =
+  BuildpackBindingLaunchProperties as any as S.Schema<GatewayPropertiesEnvironmentVariables>;
+
 /** Collection of instances belong to the Spring Cloud Gateway */
 export interface GatewayInstance {
   /** Name of the Spring Cloud Gateway instance */
@@ -2521,6 +3784,9 @@ export interface GatewayInstance {
 }
 /** Collection of instances belong to Spring Cloud Gateway. */
 export type GatewayPropertiesInstancesList = Array<GatewayInstance>;
+const GatewayPropertiesInstancesList =
+  ApiPortalPropertiesInstancesList as any as S.Schema<GatewayPropertiesInstancesList>;
+
 /** Properties of the Spring Cloud Gateway Operator. */
 export interface GatewayOperatorResourceRequests {
   /** Cpu allocated to each Spring Cloud Gateway Operator instance. */
@@ -2530,8 +3796,14 @@ export interface GatewayOperatorResourceRequests {
   /** Instance count of the Spring Cloud Gateway Operator. */
   instanceCount?: number;
 }
+const GatewayOperatorResourceRequests =
+  ApplicationAcceleratorResourceRequests as any as S.Schema<GatewayOperatorResourceRequests>;
+
 /** Collection of instances belong to Spring Cloud Gateway operator. */
 export type GatewayOperatorPropertiesInstancesList = Array<GatewayInstance>;
+const GatewayOperatorPropertiesInstancesList =
+  ApiPortalPropertiesInstancesList as any as S.Schema<GatewayOperatorPropertiesInstancesList>;
+
 /** Properties of the Spring Cloud Gateway Operator. */
 export interface GatewayOperatorProperties {
   /** The requested resource quantity for required CPU and Memory. */
@@ -2539,6 +3811,11 @@ export interface GatewayOperatorProperties {
   /** Collection of instances belong to Spring Cloud Gateway operator. */
   instances?: GatewayOperatorPropertiesInstancesList;
 }
+const GatewayOperatorProperties = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<GatewayOperatorProperties>;
+
 /** Spring Cloud Gateway properties payload */
 export interface GatewayProperties {
   /** State of the Spring Cloud Gateway. */
@@ -2564,6 +3841,8 @@ export interface GatewayProperties {
   instances?: GatewayPropertiesInstancesList;
   operatorProperties?: GatewayOperatorProperties;
 }
+const GatewayProperties = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<GatewayProperties>;
+
 export interface GatewaysCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -2576,6 +3855,11 @@ export interface GatewaysCreateOrUpdateResponse {
   /** Sku of the Spring Cloud Gateway resource */
   sku?: Sku;
 }
+const GatewaysCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<GatewaysCreateOrUpdateResponse>;
+
 export interface GenerateDeploymentHeapDumpRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2594,7 +3878,15 @@ export interface GenerateDeploymentHeapDumpRequest {
   /** Duration of your JFR. 1 min can be represented by 1m or 60s. */
   duration?: string;
 }
+const GenerateDeploymentHeapDumpRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<GenerateDeploymentHeapDumpRequest>;
+
 export interface GenerateDeploymentHeapDumpResponse {}
+const GenerateDeploymentHeapDumpResponse =
+  ApplicationAcceleratorPropertiesInput as any as S.Schema<GenerateDeploymentHeapDumpResponse>;
+
 export interface GenerateDeploymentThreadDumpRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2613,7 +3905,15 @@ export interface GenerateDeploymentThreadDumpRequest {
   /** Duration of your JFR. 1 min can be represented by 1m or 60s. */
   duration?: string;
 }
+const GenerateDeploymentThreadDumpRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<GenerateDeploymentThreadDumpRequest>;
+
 export interface GenerateDeploymentThreadDumpResponse {}
+const GenerateDeploymentThreadDumpResponse =
+  ApplicationAcceleratorPropertiesInput as any as S.Schema<GenerateDeploymentThreadDumpResponse>;
+
 export interface GetApiPortalRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2624,6 +3924,8 @@ export interface GetApiPortalRequest {
   /** The name of API portal. */
   apiPortalName: string;
 }
+const GetApiPortalRequest = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<GetApiPortalRequest>;
+
 export interface GetApiPortalResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -2636,6 +3938,11 @@ export interface GetApiPortalResponse {
   /** Sku of the API portal resource */
   sku?: Sku;
 }
+const GetApiPortalResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<GetApiPortalResponse>;
+
 export interface GetApiPortalCustomDomainRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2648,6 +3955,11 @@ export interface GetApiPortalCustomDomainRequest {
   /** The name of the API portal custom domain. */
   domainName: string;
 }
+const GetApiPortalCustomDomainRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<GetApiPortalCustomDomainRequest>;
+
 export interface GetApiPortalCustomDomainResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -2658,6 +3970,9 @@ export interface GetApiPortalCustomDomainResponse {
   systemData?: SystemData;
   properties?: ApiPortalCustomDomainProperties;
 }
+const GetApiPortalCustomDomainResponse =
+  ApiPortalCustomDomainsCreateOrUpdateResponse as any as S.Schema<GetApiPortalCustomDomainResponse>;
+
 export interface GetApmRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2668,6 +3983,8 @@ export interface GetApmRequest {
   /** The name of the APM */
   apmName: string;
 }
+const GetApmRequest = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<GetApmRequest>;
+
 export interface GetApmResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -2679,6 +3996,8 @@ export interface GetApmResponse {
   /** Properties of an APM */
   properties?: ApmProperties;
 }
+const GetApmResponse = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<GetApmResponse>;
+
 export interface GetAppRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2691,6 +4010,8 @@ export interface GetAppRequest {
   /** Indicates whether sync status */
   syncStatus?: string;
 }
+const GetAppRequest = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<GetAppRequest>;
+
 export interface GetAppResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -2706,6 +4027,8 @@ export interface GetAppResponse {
   /** The GEO location of the application, always the same with its parent resource */
   location?: string;
 }
+const GetAppResponse = /*@__PURE__*/ __L.at(__c26, 6) as any as S.Schema<GetAppResponse>;
+
 export interface GetApplicationAcceleratorRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2716,6 +4039,11 @@ export interface GetApplicationAcceleratorRequest {
   /** The name of the application accelerator. */
   applicationAcceleratorName: string;
 }
+const GetApplicationAcceleratorRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<GetApplicationAcceleratorRequest>;
+
 export interface GetApplicationAcceleratorResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -2728,6 +4056,9 @@ export interface GetApplicationAcceleratorResponse {
   /** Sku of the application accelerator resource */
   sku?: Sku;
 }
+const GetApplicationAcceleratorResponse =
+  ApplicationAcceleratorsCreateOrUpdateResponse as any as S.Schema<GetApplicationAcceleratorResponse>;
+
 export interface GetApplicationLiveViewRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2738,6 +4069,11 @@ export interface GetApplicationLiveViewRequest {
   /** The name of Application Live View. */
   applicationLiveViewName: string;
 }
+const GetApplicationLiveViewRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<GetApplicationLiveViewRequest>;
+
 export interface GetApplicationLiveViewResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -2748,6 +4084,9 @@ export interface GetApplicationLiveViewResponse {
   systemData?: SystemData;
   properties?: ApplicationLiveViewProperties;
 }
+const GetApplicationLiveViewResponse =
+  ApplicationLiveViewsCreateOrUpdateResponse as any as S.Schema<GetApplicationLiveViewResponse>;
+
 export interface GetBindingRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2760,6 +4099,8 @@ export interface GetBindingRequest {
   /** The name of the Binding resource. */
   bindingName: string;
 }
+const GetBindingRequest = /*@__PURE__*/ __L.at(__c27, 1) as any as S.Schema<GetBindingRequest>;
+
 export interface GetBindingResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -2771,6 +4112,8 @@ export interface GetBindingResponse {
   /** Properties of the Binding resource */
   properties?: BindingResourceProperties;
 }
+const GetBindingResponse = /*@__PURE__*/ __L.at(__c27, 2) as any as S.Schema<GetBindingResponse>;
+
 export interface GetBuildpackBindingRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2785,6 +4128,11 @@ export interface GetBuildpackBindingRequest {
   /** The name of the Buildpack Binding Name */
   buildpackBindingName: string;
 }
+const GetBuildpackBindingRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<GetBuildpackBindingRequest>;
+
 export interface GetBuildpackBindingResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -2796,6 +4144,9 @@ export interface GetBuildpackBindingResponse {
   /** Properties of a buildpack binding */
   properties?: BuildpackBindingProperties;
 }
+const GetBuildpackBindingResponse =
+  BuildpackBindingCreateOrUpdateResponse as any as S.Schema<GetBuildpackBindingResponse>;
+
 export interface GetBuildServiceAgentPoolRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2808,6 +4159,11 @@ export interface GetBuildServiceAgentPoolRequest {
   /** The name of the build service agent pool resource. */
   agentPoolName: string;
 }
+const GetBuildServiceAgentPoolRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<GetBuildServiceAgentPoolRequest>;
+
 export interface GetBuildServiceAgentPoolResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -2819,6 +4175,9 @@ export interface GetBuildServiceAgentPoolResponse {
   /** build service agent pool properties */
   properties?: BuildServiceAgentPoolProperties;
 }
+const GetBuildServiceAgentPoolResponse =
+  BuildServiceAgentPoolUpdatePutResponse as any as S.Schema<GetBuildServiceAgentPoolResponse>;
+
 export interface GetBuildServiceBuildRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2831,6 +4190,11 @@ export interface GetBuildServiceBuildRequest {
   /** The name of the build resource. */
   buildName: string;
 }
+const GetBuildServiceBuildRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<GetBuildServiceBuildRequest>;
+
 export interface GetBuildServiceBuildResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -2842,6 +4206,9 @@ export interface GetBuildServiceBuildResponse {
   /** Properties of the build resource */
   properties?: BuildProperties;
 }
+const GetBuildServiceBuildResponse =
+  BuildServiceCreateOrUpdateBuildResponse as any as S.Schema<GetBuildServiceBuildResponse>;
+
 export interface GetBuildServiceBuilderRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2854,6 +4221,11 @@ export interface GetBuildServiceBuilderRequest {
   /** The name of the builder resource. */
   builderName: string;
 }
+const GetBuildServiceBuilderRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<GetBuildServiceBuilderRequest>;
+
 export interface GetBuildServiceBuilderResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -2865,6 +4237,9 @@ export interface GetBuildServiceBuilderResponse {
   /** Property of the Builder resource. */
   properties?: BuilderProperties;
 }
+const GetBuildServiceBuilderResponse =
+  BuildServiceBuilderCreateOrUpdateResponse as any as S.Schema<GetBuildServiceBuilderResponse>;
+
 export interface GetBuildServiceBuildResultRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2879,6 +4254,11 @@ export interface GetBuildServiceBuildResultRequest {
   /** The name of the build result resource. */
   buildResultName: string;
 }
+const GetBuildServiceBuildResultRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<GetBuildServiceBuildResultRequest>;
+
 /** Provisioning state of the KPack build result */
 export type BuildResultPropertiesProvisioningState =
   | "Queuing"
@@ -2886,8 +4266,12 @@ export type BuildResultPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting";
+const BuildResultPropertiesProvisioningState = S.String;
+
 /** The provisioning state of this build stage resource. */
 export type BuildStagePropertiesStatus = "NotStarted" | "Running" | "Succeeded" | "Failed";
+const BuildStagePropertiesStatus = S.String;
+
 /** The build stage (init-container and container) resources in build pod. */
 export interface BuildStageProperties {
   /** The name of this build stage resource. */
@@ -2899,8 +4283,18 @@ export interface BuildStageProperties {
   /** The reason of this build init container. */
   reason?: string;
 }
+const BuildStageProperties = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<BuildStageProperties>;
+
 /** All of the build stage (init-container and container) resources in build pod. */
 export type BuildResultPropertiesBuildStagesList = Array<BuildStageProperties>;
+const BuildResultPropertiesBuildStagesList = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<BuildResultPropertiesBuildStagesList>;
+
 /** Build result resource properties payload */
 export interface BuildResultProperties {
   /** The name of this build result */
@@ -2916,6 +4310,11 @@ export interface BuildResultProperties {
   /** The container registry image of this build result. */
   image?: string;
 }
+const BuildResultProperties = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<BuildResultProperties>;
+
 export interface GetBuildServiceBuildResultResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -2927,6 +4326,11 @@ export interface GetBuildServiceBuildResultResponse {
   /** Properties of the build result resource */
   properties?: BuildResultProperties;
 }
+const GetBuildServiceBuildResultResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<GetBuildServiceBuildResultResponse>;
+
 export interface GetBuildServiceBuildResultLogRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2941,11 +4345,18 @@ export interface GetBuildServiceBuildResultLogRequest {
   /** The name of the build result resource. */
   buildResultName: string;
 }
+const GetBuildServiceBuildResultLogRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<GetBuildServiceBuildResultLogRequest>;
+
 /** Build result log resource properties payload */
 export interface BuildResultLog {
   /** The public download URL of this build result log */
   blobUrl?: string;
 }
+const BuildResultLog = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<BuildResultLog>;
+
 export interface GetBuildServiceBuildServiceRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2956,6 +4367,11 @@ export interface GetBuildServiceBuildServiceRequest {
   /** The name of the build service resource. */
   buildServiceName: string;
 }
+const GetBuildServiceBuildServiceRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<GetBuildServiceBuildServiceRequest>;
+
 export interface GetBuildServiceBuildServiceResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -2967,6 +4383,9 @@ export interface GetBuildServiceBuildServiceResponse {
   /** Properties of the build resource */
   properties?: BuildServiceProperties;
 }
+const GetBuildServiceBuildServiceResponse =
+  BuildServiceCreateOrUpdateResponse as any as S.Schema<GetBuildServiceBuildServiceResponse>;
+
 export interface GetBuildServiceSupportedBuildpackRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2979,11 +4398,21 @@ export interface GetBuildServiceSupportedBuildpackRequest {
   /** The name of the buildpack resource. */
   buildpackName: string;
 }
+const GetBuildServiceSupportedBuildpackRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<GetBuildServiceSupportedBuildpackRequest>;
+
 /** Supported buildpack resource properties */
 export interface SupportedBuildpackResourceProperties {
   /** The id of supported buildpack */
   buildpackId?: string;
 }
+const SupportedBuildpackResourceProperties = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<SupportedBuildpackResourceProperties>;
+
 export interface GetBuildServiceSupportedBuildpackResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -2994,6 +4423,11 @@ export interface GetBuildServiceSupportedBuildpackResponse {
   systemData?: SystemData;
   properties?: SupportedBuildpackResourceProperties;
 }
+const GetBuildServiceSupportedBuildpackResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<GetBuildServiceSupportedBuildpackResponse>;
+
 export interface GetBuildServiceSupportedStackRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3006,6 +4440,11 @@ export interface GetBuildServiceSupportedStackRequest {
   /** The name of the stack resource. */
   stackName: string;
 }
+const GetBuildServiceSupportedStackRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<GetBuildServiceSupportedStackRequest>;
+
 /** Supported stack resource properties */
 export interface SupportedStackResourceProperties {
   /** The id of supported stack */
@@ -3013,6 +4452,11 @@ export interface SupportedStackResourceProperties {
   /** The version of supported stack */
   version?: string;
 }
+const SupportedStackResourceProperties = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<SupportedStackResourceProperties>;
+
 export interface GetBuildServiceSupportedStackResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -3023,6 +4467,11 @@ export interface GetBuildServiceSupportedStackResponse {
   systemData?: SystemData;
   properties?: SupportedStackResourceProperties;
 }
+const GetBuildServiceSupportedStackResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<GetBuildServiceSupportedStackResponse>;
+
 export interface GetCertificateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3033,6 +4482,11 @@ export interface GetCertificateRequest {
   /** The name of the certificate resource. */
   certificateName: string;
 }
+const GetCertificateRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<GetCertificateRequest>;
+
 export interface GetCertificateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -3044,6 +4498,11 @@ export interface GetCertificateResponse {
   /** Properties of the certificate resource payload. */
   properties?: CertificateProperties;
 }
+const GetCertificateResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<GetCertificateResponse>;
+
 export interface GetConfigServerRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3052,6 +4511,11 @@ export interface GetConfigServerRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const GetConfigServerRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<GetConfigServerRequest>;
+
 export interface GetConfigServerResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -3063,6 +4527,11 @@ export interface GetConfigServerResponse {
   /** Properties of the Config Server resource */
   properties?: ConfigServerProperties;
 }
+const GetConfigServerResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<GetConfigServerResponse>;
+
 export interface GetConfigurationServiceRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3073,6 +4542,11 @@ export interface GetConfigurationServiceRequest {
   /** The name of Application Configuration Service. */
   configurationServiceName: string;
 }
+const GetConfigurationServiceRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<GetConfigurationServiceRequest>;
+
 export interface GetConfigurationServiceResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -3083,6 +4557,9 @@ export interface GetConfigurationServiceResponse {
   systemData?: SystemData;
   properties?: ConfigurationServiceProperties;
 }
+const GetConfigurationServiceResponse =
+  ConfigurationServicesCreateOrUpdateResponse as any as S.Schema<GetConfigurationServiceResponse>;
+
 export interface GetContainerRegistryRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3093,6 +4570,11 @@ export interface GetContainerRegistryRequest {
   /** The name of the container registry. */
   containerRegistryName: string;
 }
+const GetContainerRegistryRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<GetContainerRegistryRequest>;
+
 export interface GetContainerRegistryResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -3104,6 +4586,9 @@ export interface GetContainerRegistryResponse {
   /** Properties of the container registry resource payload. */
   properties?: ContainerRegistryProperties;
 }
+const GetContainerRegistryResponse =
+  ContainerRegistriesCreateOrUpdateResponse as any as S.Schema<GetContainerRegistryResponse>;
+
 export interface GetCustomDomainRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3116,6 +4601,11 @@ export interface GetCustomDomainRequest {
   /** The name of the custom domain resource. */
   domainName: string;
 }
+const GetCustomDomainRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<GetCustomDomainRequest>;
+
 export interface GetCustomDomainResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -3127,6 +4617,11 @@ export interface GetCustomDomainResponse {
   /** Properties of the custom domain resource. */
   properties?: CustomDomainProperties;
 }
+const GetCustomDomainResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<GetCustomDomainResponse>;
+
 export interface GetCustomizedAcceleratorRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3139,6 +4634,11 @@ export interface GetCustomizedAcceleratorRequest {
   /** The name of the customized accelerator. */
   customizedAcceleratorName: string;
 }
+const GetCustomizedAcceleratorRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<GetCustomizedAcceleratorRequest>;
+
 export interface GetCustomizedAcceleratorResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -3151,6 +4651,9 @@ export interface GetCustomizedAcceleratorResponse {
   /** Sku of the customized accelerator resource */
   sku?: Sku;
 }
+const GetCustomizedAcceleratorResponse =
+  CustomizedAcceleratorsCreateOrUpdateResponse as any as S.Schema<GetCustomizedAcceleratorResponse>;
+
 export interface GetDeploymentRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3163,6 +4666,11 @@ export interface GetDeploymentRequest {
   /** The name of the Deployment resource. */
   deploymentName: string;
 }
+const GetDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<GetDeploymentRequest>;
+
 export interface GetDeploymentResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -3176,6 +4684,11 @@ export interface GetDeploymentResponse {
   /** Sku of the Deployment resource */
   sku?: Sku;
 }
+const GetDeploymentResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<GetDeploymentResponse>;
+
 export interface GetDeploymentLogFileUrlRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3188,11 +4701,18 @@ export interface GetDeploymentLogFileUrlRequest {
   /** The name of the Deployment resource. */
   deploymentName: string;
 }
+const GetDeploymentLogFileUrlRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<GetDeploymentLogFileUrlRequest>;
+
 /** Log file URL payload */
 export interface LogFileUrlResponse {
   /** URL of the log file */
   url: string;
 }
+const LogFileUrlResponse = /*@__PURE__*/ __L.at(__c31, 1) as any as S.Schema<LogFileUrlResponse>;
+
 export interface GetDeploymentRemoteDebuggingConfigRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3205,6 +4725,11 @@ export interface GetDeploymentRemoteDebuggingConfigRequest {
   /** The name of the Deployment resource. */
   deploymentName: string;
 }
+const GetDeploymentRemoteDebuggingConfigRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<GetDeploymentRemoteDebuggingConfigRequest>;
+
 export interface GetDevToolPortalRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3215,6 +4740,11 @@ export interface GetDevToolPortalRequest {
   /** The name of Dev Tool Portal. */
   devToolPortalName: string;
 }
+const GetDevToolPortalRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<GetDevToolPortalRequest>;
+
 export interface GetDevToolPortalResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -3225,6 +4755,11 @@ export interface GetDevToolPortalResponse {
   systemData?: SystemData;
   properties?: DevToolPortalProperties;
 }
+const GetDevToolPortalResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<GetDevToolPortalResponse>;
+
 export interface GetGatewayRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3235,6 +4770,8 @@ export interface GetGatewayRequest {
   /** The name of Spring Cloud Gateway. */
   gatewayName: string;
 }
+const GetGatewayRequest = /*@__PURE__*/ __L.at(__c31, 5) as any as S.Schema<GetGatewayRequest>;
+
 export interface GetGatewayResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -3247,6 +4784,8 @@ export interface GetGatewayResponse {
   /** Sku of the Spring Cloud Gateway resource */
   sku?: Sku;
 }
+const GetGatewayResponse = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<GetGatewayResponse>;
+
 export interface GetGatewayCustomDomainRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3259,6 +4798,11 @@ export interface GetGatewayCustomDomainRequest {
   /** The name of the Spring Cloud Gateway custom domain. */
   domainName: string;
 }
+const GetGatewayCustomDomainRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<GetGatewayCustomDomainRequest>;
+
 export interface GetGatewayCustomDomainResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -3269,6 +4813,9 @@ export interface GetGatewayCustomDomainResponse {
   systemData?: SystemData;
   properties?: ApiPortalCustomDomainProperties;
 }
+const GetGatewayCustomDomainResponse =
+  ApiPortalCustomDomainsCreateOrUpdateResponse as any as S.Schema<GetGatewayCustomDomainResponse>;
+
 export interface GetGatewayRouteConfigRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3281,6 +4828,11 @@ export interface GetGatewayRouteConfigRequest {
   /** The name of the Spring Cloud Gateway route config. */
   routeConfigName: string;
 }
+const GetGatewayRouteConfigRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<GetGatewayRouteConfigRequest>;
+
 export interface GetGatewayRouteConfigResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -3291,6 +4843,9 @@ export interface GetGatewayRouteConfigResponse {
   systemData?: SystemData;
   properties?: GatewayRouteConfigProperties;
 }
+const GetGatewayRouteConfigResponse =
+  GatewayRouteConfigsCreateOrUpdateResponse as any as S.Schema<GetGatewayRouteConfigResponse>;
+
 export interface GetMonitoringSettingsRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3299,17 +4854,29 @@ export interface GetMonitoringSettingsRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const GetMonitoringSettingsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<GetMonitoringSettingsRequest>;
+
 /** State of the Monitoring Setting. */
 export type MonitoringSettingPropertiesProvisioningState =
   | "NotAvailable"
   | "Failed"
   | "Succeeded"
   | "Updating";
+const MonitoringSettingPropertiesProvisioningState = S.String;
+
 /** Application Insights agent versions properties payload */
 export interface ApplicationInsightsAgentVersions {
   /** Indicates the version of application insight java agent */
   java?: string;
 }
+const ApplicationInsightsAgentVersions = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<ApplicationInsightsAgentVersions>;
+
 /** Monitoring Setting properties payload */
 export interface MonitoringSettingProperties {
   /** State of the Monitoring Setting. */
@@ -3325,6 +4892,11 @@ export interface MonitoringSettingProperties {
   /** Indicates the versions of application insight agent */
   appInsightsAgentVersions?: ApplicationInsightsAgentVersions;
 }
+const MonitoringSettingProperties = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<MonitoringSettingProperties>;
+
 export interface GetMonitoringSettingsResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -3336,6 +4908,11 @@ export interface GetMonitoringSettingsResponse {
   /** Properties of the Monitoring Setting resource */
   properties?: MonitoringSettingProperties;
 }
+const GetMonitoringSettingsResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<GetMonitoringSettingsResponse>;
+
 export interface GetPredefinedAcceleratorRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3348,6 +4925,11 @@ export interface GetPredefinedAcceleratorRequest {
   /** The name of the predefined accelerator. */
   predefinedAcceleratorName: string;
 }
+const GetPredefinedAcceleratorRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<GetPredefinedAcceleratorRequest>;
+
 /** Provisioning state of the predefined accelerator. */
 export type PredefinedAcceleratorPropertiesProvisioningState =
   | "Creating"
@@ -3355,9 +4937,16 @@ export type PredefinedAcceleratorPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled";
+const PredefinedAcceleratorPropertiesProvisioningState = S.String;
+
 export type PredefinedAcceleratorPropertiesAcceleratorTagsList = Array<string>;
+const PredefinedAcceleratorPropertiesAcceleratorTagsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<PredefinedAcceleratorPropertiesAcceleratorTagsList>;
+
 /** State of the predefined accelerator. */
 export type PredefinedAcceleratorPropertiesState = "Enabled" | "Disabled";
+const PredefinedAcceleratorPropertiesState = S.String;
+
 /** Predefined accelerator properties payload */
 export interface PredefinedAcceleratorProperties {
   /** Provisioning state of the predefined accelerator. */
@@ -3369,6 +4958,11 @@ export interface PredefinedAcceleratorProperties {
   /** State of the predefined accelerator. */
   state?: PredefinedAcceleratorPropertiesState;
 }
+const PredefinedAcceleratorProperties = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<PredefinedAcceleratorProperties>;
+
 export interface GetPredefinedAcceleratorResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -3381,6 +4975,11 @@ export interface GetPredefinedAcceleratorResponse {
   /** Sku of the predefined accelerator resource */
   sku?: Sku;
 }
+const GetPredefinedAcceleratorResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<GetPredefinedAcceleratorResponse>;
+
 export interface GetServiceRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3389,8 +4988,13 @@ export interface GetServiceRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const GetServiceRequest = /*@__PURE__*/ __L.at(__c33, 0) as any as S.Schema<GetServiceRequest>;
+
 /** Tags of the service which is a list of key value pairs that describe the resource. */
 export type GetServiceResponseTagsMap = { [key: string]: string | undefined };
+const GetServiceResponseTagsMap =
+  ApmPropertiesInputPropertiesMap as any as S.Schema<GetServiceResponseTagsMap>;
+
 /** Provisioning state of the Service */
 export type ClusterResourcePropertiesProvisioningState =
   | "Creating"
@@ -3404,19 +5008,37 @@ export type ClusterResourcePropertiesProvisioningState =
   | "Moving"
   | "Moved"
   | "MoveFailed";
+const ClusterResourcePropertiesProvisioningState = S.String;
+
 /** A list of public IP addresses. */
 export type NetworkProfileOutboundIPsPublicIPsList = Array<string>;
+const NetworkProfileOutboundIPsPublicIPsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<NetworkProfileOutboundIPsPublicIPsList>;
+
 /** Desired outbound IP resources for Azure Spring Apps resource. */
 export interface NetworkProfileOutboundIPs {
   /** A list of public IP addresses. */
   publicIPs?: NetworkProfileOutboundIPsPublicIPsList;
 }
+const NetworkProfileOutboundIPs = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<NetworkProfileOutboundIPs>;
+
 /** The ip list of required traffic */
 export type RequiredTrafficIpsList = Array<string>;
+const RequiredTrafficIpsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<RequiredTrafficIpsList>;
+
 /** The FQDN list of required traffic */
 export type RequiredTrafficFqdnsList = Array<string>;
+const RequiredTrafficFqdnsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<RequiredTrafficFqdnsList>;
+
 /** The direction of required traffic */
 export type RequiredTrafficDirection = "Inbound" | "Outbound";
+const RequiredTrafficDirection = S.String;
+
 /** Required inbound or outbound traffic for Azure Spring Apps resource. */
 export interface RequiredTraffic {
   /** The protocol of required traffic */
@@ -3430,13 +5052,22 @@ export interface RequiredTraffic {
   /** The direction of required traffic */
   direction?: RequiredTrafficDirection;
 }
+const RequiredTraffic = /*@__PURE__*/ __L.at(__c33, 2) as any as S.Schema<RequiredTraffic>;
+
 /** Required inbound or outbound traffics for Azure Spring Apps resource. */
 export type NetworkProfileRequiredTrafficsList = Array<RequiredTraffic>;
+const NetworkProfileRequiredTrafficsList = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<NetworkProfileRequiredTrafficsList>;
+
 /** Ingress configuration payload for Azure Spring Apps resource. */
 export interface IngressConfig {
   /** Ingress read time out in seconds. */
   readTimeoutInSeconds?: number;
 }
+const IngressConfig = /*@__PURE__*/ __L.at(__c33, 4) as any as S.Schema<IngressConfig>;
+
 /** Service network profile payload */
 export interface NetworkProfile {
   /** Fully qualified resource Id of the subnet to host Azure Spring Apps Service Runtime */
@@ -3458,6 +5089,8 @@ export interface NetworkProfile {
   /** The egress traffic type of Azure Spring Apps VNet instances. */
   outboundType?: string;
 }
+const NetworkProfile = /*@__PURE__*/ __L.at(__c33, 5) as any as S.Schema<NetworkProfile>;
+
 /** Additional Service settings in vnet injection instance */
 export interface ServiceVNetAddons {
   /** Indicates whether the log stream in vnet injection instance could be accessed from internet. */
@@ -3465,8 +5098,12 @@ export interface ServiceVNetAddons {
   /** Indicates whether the data plane components(log stream, app connect, remote debugging) in vnet injection instance could be accessed from internet. */
   dataPlanePublicEndpoint?: boolean;
 }
+const ServiceVNetAddons = /*@__PURE__*/ __L.at(__c33, 6) as any as S.Schema<ServiceVNetAddons>;
+
 /** Power state of the Service */
 export type ClusterResourcePropertiesPowerState = "Running" | "Stopped";
+const ClusterResourcePropertiesPowerState = S.String;
+
 /** Purchasing 3rd Party product for one Azure Spring Apps instance */
 export interface MarketplaceResource {
   /** The plan id of the 3rd Party Artifact that is being procured. */
@@ -3476,6 +5113,8 @@ export interface MarketplaceResource {
   /** The 3rd Party artifact that is being procured. */
   product?: string;
 }
+const MarketplaceResource = /*@__PURE__*/ __L.at(__c33, 7) as any as S.Schema<MarketplaceResource>;
+
 /** Service properties payload */
 export interface ClusterResourceProperties {
   /** Provisioning state of the Service */
@@ -3496,6 +5135,11 @@ export interface ClusterResourceProperties {
   /** Purchasing 3rd party product of the Service resource. */
   marketplaceResource?: MarketplaceResource;
 }
+const ClusterResourceProperties = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<ClusterResourceProperties>;
+
 export interface GetServiceResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -3513,6 +5157,8 @@ export interface GetServiceResponse {
   /** Sku of the Service resource */
   sku?: Sku;
 }
+const GetServiceResponse = /*@__PURE__*/ __L.at(__c34, 1) as any as S.Schema<GetServiceResponse>;
+
 export interface GetServiceRegistryRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3523,6 +5169,11 @@ export interface GetServiceRegistryRequest {
   /** The name of Service Registry. */
   serviceRegistryName: string;
 }
+const GetServiceRegistryRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<GetServiceRegistryRequest>;
+
 /** State of the Service Registry. */
 export type ServiceRegistryPropertiesProvisioningState =
   | "Creating"
@@ -3530,6 +5181,8 @@ export type ServiceRegistryPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting";
+const ServiceRegistryPropertiesProvisioningState = S.String;
+
 /** Resource request payload of Service Registry */
 export interface ServiceRegistryResourceRequests {
   /** Cpu allocated to each Service Registry instance */
@@ -3539,6 +5192,9 @@ export interface ServiceRegistryResourceRequests {
   /** Instance count of the Service Registry */
   instanceCount?: number;
 }
+const ServiceRegistryResourceRequests =
+  ApplicationAcceleratorResourceRequests as any as S.Schema<ServiceRegistryResourceRequests>;
+
 /** Collection of instances belong to the Service Registry */
 export interface ServiceRegistryInstance {
   /** Name of the Service Registry instance */
@@ -3548,6 +5204,9 @@ export interface ServiceRegistryInstance {
 }
 /** Collection of instances belong to Service Registry. */
 export type ServiceRegistryPropertiesInstancesList = Array<ServiceRegistryInstance>;
+const ServiceRegistryPropertiesInstancesList =
+  ApiPortalPropertiesInstancesList as any as S.Schema<ServiceRegistryPropertiesInstancesList>;
+
 /** Service Registry properties payload */
 export interface ServiceRegistryProperties {
   /** State of the Service Registry. */
@@ -3557,6 +5216,11 @@ export interface ServiceRegistryProperties {
   /** Collection of instances belong to Service Registry. */
   instances?: ServiceRegistryPropertiesInstancesList;
 }
+const ServiceRegistryProperties = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<ServiceRegistryProperties>;
+
 export interface GetServiceRegistryResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -3567,6 +5231,11 @@ export interface GetServiceRegistryResponse {
   systemData?: SystemData;
   properties?: ServiceRegistryProperties;
 }
+const GetServiceRegistryResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<GetServiceRegistryResponse>;
+
 export interface GetStorageRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3577,13 +5246,19 @@ export interface GetStorageRequest {
   /** The name of the storage resource. */
   storageName: string;
 }
+const GetStorageRequest = /*@__PURE__*/ __L.at(__c34, 5) as any as S.Schema<GetStorageRequest>;
+
 /** The type of the storage. */
 export type StoragePropertiesStorageType = "StorageAccount";
+const StoragePropertiesStorageType = S.String;
+
 /** Storage resource payload. */
 export interface StorageProperties {
   /** The type of the storage. */
   storageType: StoragePropertiesStorageType | (string & {});
 }
+const StorageProperties = /*@__PURE__*/ __L.at(__c34, 6) as any as S.Schema<StorageProperties>;
+
 export interface GetStorageResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -3595,6 +5270,8 @@ export interface GetStorageResponse {
   /** Properties of the storage resource payload. */
   properties?: StorageProperties;
 }
+const GetStorageResponse = /*@__PURE__*/ __L.at(__c34, 7) as any as S.Schema<GetStorageResponse>;
+
 export interface ListApiPortalCustomDomainsRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3605,6 +5282,11 @@ export interface ListApiPortalCustomDomainsRequest {
   /** The name of API portal. */
   apiPortalName: string;
 }
+const ListApiPortalCustomDomainsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<ListApiPortalCustomDomainsRequest>;
+
 /** Custom domain of the API portal */
 export interface ApiPortalCustomDomainResource {
   /** Fully qualified resource Id for the resource. */
@@ -3616,8 +5298,16 @@ export interface ApiPortalCustomDomainResource {
   systemData?: SystemData;
   properties?: ApiPortalCustomDomainProperties;
 }
+const ApiPortalCustomDomainResource =
+  ApiPortalCustomDomainsCreateOrUpdateResponse as any as S.Schema<ApiPortalCustomDomainResource>;
+
 /** Collection of API portal custom domain resources */
 export type ApiPortalCustomDomainResourceCollectionValueList = Array<ApiPortalCustomDomainResource>;
+const ApiPortalCustomDomainResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<ApiPortalCustomDomainResourceCollectionValueList>;
+
 /** Object that includes an array of API portal custom domain resources and a possible link for next set */
 export interface ApiPortalCustomDomainResourceCollection {
   /** Collection of API portal custom domain resources */
@@ -3625,6 +5315,11 @@ export interface ApiPortalCustomDomainResourceCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const ApiPortalCustomDomainResourceCollection = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<ApiPortalCustomDomainResourceCollection>;
+
 export interface ListApiPortalsRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3633,6 +5328,11 @@ export interface ListApiPortalsRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const ListApiPortalsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<ListApiPortalsRequest>;
+
 /** API portal resource */
 export interface ApiPortalResource {
   /** Fully qualified resource Id for the resource. */
@@ -3646,8 +5346,15 @@ export interface ApiPortalResource {
   /** Sku of the API portal resource */
   sku?: Sku;
 }
+const ApiPortalResource = GetApiPortalResponse as any as S.Schema<ApiPortalResource>;
+
 /** Collection of API portal resources */
 export type ApiPortalResourceCollectionValueList = Array<ApiPortalResource>;
+const ApiPortalResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<ApiPortalResourceCollectionValueList>;
+
 /** Object that includes an array of API portal resources and a possible link for next set */
 export interface ApiPortalResourceCollection {
   /** Collection of API portal resources */
@@ -3655,6 +5362,11 @@ export interface ApiPortalResourceCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const ApiPortalResourceCollection = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<ApiPortalResourceCollection>;
+
 export interface ListApmsRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3663,6 +5375,8 @@ export interface ListApmsRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const ListApmsRequest = /*@__PURE__*/ __L.at(__c35, 6) as any as S.Schema<ListApmsRequest>;
+
 /** APM Resource object */
 export interface ApmResource {
   /** Fully qualified resource Id for the resource. */
@@ -3675,8 +5389,15 @@ export interface ApmResource {
   /** Properties of an APM */
   properties?: ApmProperties;
 }
+const ApmResource = GetApmResponse as any as S.Schema<ApmResource>;
+
 /** Collection of APM resources */
 export type ApmResourceCollectionValueList = Array<ApmResource>;
+const ApmResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<ApmResourceCollectionValueList>;
+
 /** Object that includes an array of APM resources and a possible link for next set */
 export interface ApmResourceCollection {
   /** Collection of APM resources */
@@ -3684,6 +5405,11 @@ export interface ApmResourceCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const ApmResourceCollection = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<ApmResourceCollection>;
+
 export interface ListApmSecretKeysRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3694,13 +5420,23 @@ export interface ListApmSecretKeysRequest {
   /** The name of the APM */
   apmName: string;
 }
+const ListApmSecretKeysRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<ListApmSecretKeysRequest>;
+
 /** Collection of the keys for the APM sensitive properties */
 export type ApmSecretKeysValueList = Array<string>;
+const ApmSecretKeysValueList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<ApmSecretKeysValueList>;
+
 /** Keys of APM sensitive properties */
 export interface ApmSecretKeys {
   /** Collection of the keys for the APM sensitive properties */
   value?: ApmSecretKeysValueList;
 }
+const ApmSecretKeys = /*@__PURE__*/ __L.at(__c36, 2) as any as S.Schema<ApmSecretKeys>;
+
 export interface ListApplicationAcceleratorsRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3709,6 +5445,11 @@ export interface ListApplicationAcceleratorsRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const ListApplicationAcceleratorsRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<ListApplicationAcceleratorsRequest>;
+
 /** Application accelerator resource */
 export interface ApplicationAcceleratorResource {
   /** Fully qualified resource Id for the resource. */
@@ -3722,9 +5463,17 @@ export interface ApplicationAcceleratorResource {
   /** Sku of the application accelerator resource */
   sku?: Sku;
 }
+const ApplicationAcceleratorResource =
+  ApplicationAcceleratorsCreateOrUpdateResponse as any as S.Schema<ApplicationAcceleratorResource>;
+
 /** Collection of application accelerator resources */
 export type ApplicationAcceleratorResourceCollectionValueList =
   Array<ApplicationAcceleratorResource>;
+const ApplicationAcceleratorResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c36,
+  4,
+) as any as S.Schema<ApplicationAcceleratorResourceCollectionValueList>;
+
 /** Object that includes an array of application accelerator resources and a possible link for next set */
 export interface ApplicationAcceleratorResourceCollection {
   /** Collection of application accelerator resources */
@@ -3732,6 +5481,11 @@ export interface ApplicationAcceleratorResourceCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const ApplicationAcceleratorResourceCollection = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<ApplicationAcceleratorResourceCollection>;
+
 export interface ListApplicationLiveViewsRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3740,6 +5494,11 @@ export interface ListApplicationLiveViewsRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const ListApplicationLiveViewsRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<ListApplicationLiveViewsRequest>;
+
 /** Application Live View resource */
 export interface ApplicationLiveViewResource {
   /** Fully qualified resource Id for the resource. */
@@ -3751,8 +5510,16 @@ export interface ApplicationLiveViewResource {
   systemData?: SystemData;
   properties?: ApplicationLiveViewProperties;
 }
+const ApplicationLiveViewResource =
+  ApplicationLiveViewsCreateOrUpdateResponse as any as S.Schema<ApplicationLiveViewResource>;
+
 /** Collection of Application Live View resources */
 export type ApplicationLiveViewResourceCollectionValueList = Array<ApplicationLiveViewResource>;
+const ApplicationLiveViewResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<ApplicationLiveViewResourceCollectionValueList>;
+
 /** Object that includes an array of Application Live View resources and a possible link for next set */
 export interface ApplicationLiveViewResourceCollection {
   /** Collection of Application Live View resources */
@@ -3760,6 +5527,11 @@ export interface ApplicationLiveViewResourceCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const ApplicationLiveViewResourceCollection = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<ApplicationLiveViewResourceCollection>;
+
 export interface ListAppsRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3768,6 +5540,8 @@ export interface ListAppsRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const ListAppsRequest = /*@__PURE__*/ __L.at(__c37, 1) as any as S.Schema<ListAppsRequest>;
+
 /** App resource payload */
 export interface AppResource {
   /** Fully qualified resource Id for the resource. */
@@ -3784,8 +5558,15 @@ export interface AppResource {
   /** The GEO location of the application, always the same with its parent resource */
   location?: string;
 }
+const AppResource = GetAppResponse as any as S.Schema<AppResource>;
+
 /** Collection of App resources */
 export type AppResourceCollectionValueList = Array<AppResource>;
+const AppResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c37,
+  2,
+) as any as S.Schema<AppResourceCollectionValueList>;
+
 /** Object that includes an array of App resources and a possible link for next set */
 export interface AppResourceCollection {
   /** Collection of App resources */
@@ -3793,6 +5574,11 @@ export interface AppResourceCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const AppResourceCollection = /*@__PURE__*/ __L.at(
+  __c37,
+  3,
+) as any as S.Schema<AppResourceCollection>;
+
 export interface ListBindingsRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3803,6 +5589,8 @@ export interface ListBindingsRequest {
   /** The name of the App resource. */
   appName: string;
 }
+const ListBindingsRequest = /*@__PURE__*/ __L.at(__c37, 4) as any as S.Schema<ListBindingsRequest>;
+
 /** Binding resource payload */
 export interface BindingResource {
   /** Fully qualified resource Id for the resource. */
@@ -3815,8 +5603,15 @@ export interface BindingResource {
   /** Properties of the Binding resource */
   properties?: BindingResourceProperties;
 }
+const BindingResource = GetBindingResponse as any as S.Schema<BindingResource>;
+
 /** Collection of Binding resources */
 export type BindingResourceCollectionValueList = Array<BindingResource>;
+const BindingResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<BindingResourceCollectionValueList>;
+
 /** Object that includes an array of Binding resources and a possible link for next set */
 export interface BindingResourceCollection {
   /** Collection of Binding resources */
@@ -3824,6 +5619,11 @@ export interface BindingResourceCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const BindingResourceCollection = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<BindingResourceCollection>;
+
 export interface ListBuildpackBindingRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3836,6 +5636,11 @@ export interface ListBuildpackBindingRequest {
   /** The name of the builder resource. */
   builderName: string;
 }
+const ListBuildpackBindingRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<ListBuildpackBindingRequest>;
+
 /** Buildpack Binding Resource object */
 export interface BuildpackBindingResource {
   /** Fully qualified resource Id for the resource. */
@@ -3848,8 +5653,18 @@ export interface BuildpackBindingResource {
   /** Properties of a buildpack binding */
   properties?: BuildpackBindingProperties;
 }
+const BuildpackBindingResource = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<BuildpackBindingResource>;
+
 /** Collection of BuildpackBinding resources */
 export type BuildpackBindingResourceCollectionValueList = Array<BuildpackBindingResource>;
+const BuildpackBindingResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c38,
+  1,
+) as any as S.Schema<BuildpackBindingResourceCollectionValueList>;
+
 /** Object that includes an array of BuildpackBinding resources and a possible link for next set */
 export interface BuildpackBindingResourceCollection {
   /** Collection of BuildpackBinding resources */
@@ -3857,6 +5672,11 @@ export interface BuildpackBindingResourceCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const BuildpackBindingResourceCollection = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<BuildpackBindingResourceCollection>;
+
 export interface ListBuildpackBindingForClusterRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3865,6 +5685,11 @@ export interface ListBuildpackBindingForClusterRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const ListBuildpackBindingForClusterRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<ListBuildpackBindingForClusterRequest>;
+
 export interface ListBuildServiceAgentPoolRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3875,6 +5700,11 @@ export interface ListBuildServiceAgentPoolRequest {
   /** The name of the build service resource. */
   buildServiceName: string;
 }
+const ListBuildServiceAgentPoolRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  4,
+) as any as S.Schema<ListBuildServiceAgentPoolRequest>;
+
 /** The build service agent pool resource */
 export interface BuildServiceAgentPoolResource {
   /** Fully qualified resource Id for the resource. */
@@ -3887,8 +5717,16 @@ export interface BuildServiceAgentPoolResource {
   /** build service agent pool properties */
   properties?: BuildServiceAgentPoolProperties;
 }
+const BuildServiceAgentPoolResource =
+  BuildServiceAgentPoolUpdatePutResponse as any as S.Schema<BuildServiceAgentPoolResource>;
+
 /** Collection of build service agent pool resource */
 export type BuildServiceAgentPoolResourceCollectionValueList = Array<BuildServiceAgentPoolResource>;
+const BuildServiceAgentPoolResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c38,
+  5,
+) as any as S.Schema<BuildServiceAgentPoolResourceCollectionValueList>;
+
 /** Object that includes an array of build service agent pool resources and a possible link for next set */
 export interface BuildServiceAgentPoolResourceCollection {
   /** Collection of build service agent pool resource */
@@ -3896,6 +5734,11 @@ export interface BuildServiceAgentPoolResourceCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const BuildServiceAgentPoolResourceCollection = /*@__PURE__*/ __L.at(
+  __c38,
+  6,
+) as any as S.Schema<BuildServiceAgentPoolResourceCollection>;
+
 export interface ListBuildServiceBuilderRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3906,6 +5749,11 @@ export interface ListBuildServiceBuilderRequest {
   /** The name of the build service resource. */
   buildServiceName: string;
 }
+const ListBuildServiceBuilderRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  7,
+) as any as S.Schema<ListBuildServiceBuilderRequest>;
+
 /** KPack Builder resource */
 export interface BuilderResource {
   /** Fully qualified resource Id for the resource. */
@@ -3918,8 +5766,15 @@ export interface BuilderResource {
   /** Property of the Builder resource. */
   properties?: BuilderProperties;
 }
+const BuilderResource = /*@__PURE__*/ __L.at(__c39, 0) as any as S.Schema<BuilderResource>;
+
 /** Collection of Builder resources */
 export type BuilderResourceCollectionValueList = Array<BuilderResource>;
+const BuilderResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c39,
+  1,
+) as any as S.Schema<BuilderResourceCollectionValueList>;
+
 /** Object that includes an array of Builder resources and a possible link for next set */
 export interface BuilderResourceCollection {
   /** Collection of Builder resources */
@@ -3927,6 +5782,11 @@ export interface BuilderResourceCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const BuilderResourceCollection = /*@__PURE__*/ __L.at(
+  __c39,
+  2,
+) as any as S.Schema<BuilderResourceCollection>;
+
 export interface ListBuildServiceBuilderDeploymentsRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3939,13 +5799,23 @@ export interface ListBuildServiceBuilderDeploymentsRequest {
   /** The name of the builder resource. */
   builderName: string;
 }
+const ListBuildServiceBuilderDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<ListBuildServiceBuilderDeploymentsRequest>;
+
 /** A list of deployment resource ids. */
 export type DeploymentListDeploymentsList = Array<string>;
+const DeploymentListDeploymentsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<DeploymentListDeploymentsList>;
+
 /** A list of deployments resource ids. */
 export interface DeploymentList {
   /** A list of deployment resource ids. */
   deployments?: DeploymentListDeploymentsList;
 }
+const DeploymentList = /*@__PURE__*/ __L.at(__c39, 4) as any as S.Schema<DeploymentList>;
+
 export interface ListBuildServiceBuildResultsRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3958,6 +5828,11 @@ export interface ListBuildServiceBuildResultsRequest {
   /** The name of the build resource. */
   buildName: string;
 }
+const ListBuildServiceBuildResultsRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  5,
+) as any as S.Schema<ListBuildServiceBuildResultsRequest>;
+
 /** Build result resource payload */
 export interface BuildResult {
   /** Fully qualified resource Id for the resource. */
@@ -3970,8 +5845,15 @@ export interface BuildResult {
   /** Properties of the build result resource */
   properties?: BuildResultProperties;
 }
+const BuildResult = /*@__PURE__*/ __L.at(__c39, 6) as any as S.Schema<BuildResult>;
+
 /** Collection of Build result resources */
 export type BuildResultCollectionValueList = Array<BuildResult>;
+const BuildResultCollectionValueList = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<BuildResultCollectionValueList>;
+
 /** Object that includes an array of Build result resources and a possible link for next set */
 export interface BuildResultCollection {
   /** Collection of Build result resources */
@@ -3979,6 +5861,11 @@ export interface BuildResultCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const BuildResultCollection = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<BuildResultCollection>;
+
 export interface ListBuildServiceBuildsRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3989,6 +5876,11 @@ export interface ListBuildServiceBuildsRequest {
   /** The name of the build service resource. */
   buildServiceName: string;
 }
+const ListBuildServiceBuildsRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  1,
+) as any as S.Schema<ListBuildServiceBuildsRequest>;
+
 /** Build resource payload */
 export interface Build {
   /** Fully qualified resource Id for the resource. */
@@ -4001,8 +5893,15 @@ export interface Build {
   /** Properties of the build resource */
   properties?: BuildProperties;
 }
+const Build = /*@__PURE__*/ __L.at(__c40, 2) as any as S.Schema<Build>;
+
 /** Collection of Build resources */
 export type BuildCollectionValueList = Array<Build>;
+const BuildCollectionValueList = /*@__PURE__*/ __L.at(
+  __c40,
+  3,
+) as any as S.Schema<BuildCollectionValueList>;
+
 /** Object that includes an array of Build resources and a possible link for next set */
 export interface BuildCollection {
   /** Collection of Build resources */
@@ -4010,6 +5909,8 @@ export interface BuildCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const BuildCollection = /*@__PURE__*/ __L.at(__c40, 4) as any as S.Schema<BuildCollection>;
+
 export interface ListBuildServiceBuildServicesRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4018,6 +5919,11 @@ export interface ListBuildServiceBuildServicesRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const ListBuildServiceBuildServicesRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  5,
+) as any as S.Schema<ListBuildServiceBuildServicesRequest>;
+
 /** Build service resource payload */
 export interface BuildService {
   /** Fully qualified resource Id for the resource. */
@@ -4030,8 +5936,15 @@ export interface BuildService {
   /** Properties of the build resource */
   properties?: BuildServiceProperties;
 }
+const BuildService = /*@__PURE__*/ __L.at(__c40, 6) as any as S.Schema<BuildService>;
+
 /** Collection of Build service resources */
 export type BuildServiceCollectionValueList = Array<BuildService>;
+const BuildServiceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c40,
+  7,
+) as any as S.Schema<BuildServiceCollectionValueList>;
+
 /** Object that includes an array of Build service resources and a possible link for next set */
 export interface BuildServiceCollection {
   /** Collection of Build service resources */
@@ -4039,6 +5952,11 @@ export interface BuildServiceCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const BuildServiceCollection = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<BuildServiceCollection>;
+
 export interface ListBuildServiceSupportedBuildpacksRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4049,6 +5967,11 @@ export interface ListBuildServiceSupportedBuildpacksRequest {
   /** The name of the build service resource. */
   buildServiceName: string;
 }
+const ListBuildServiceSupportedBuildpacksRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  1,
+) as any as S.Schema<ListBuildServiceSupportedBuildpacksRequest>;
+
 /** Supported buildpack resource payload */
 export interface SupportedBuildpackResource {
   /** Fully qualified resource Id for the resource. */
@@ -4060,8 +5983,16 @@ export interface SupportedBuildpackResource {
   systemData?: SystemData;
   properties?: SupportedBuildpackResourceProperties;
 }
+const SupportedBuildpackResource =
+  GetBuildServiceSupportedBuildpackResponse as any as S.Schema<SupportedBuildpackResource>;
+
 /** Collection of supported buildpacks resources */
 export type SupportedBuildpacksCollectionValueList = Array<SupportedBuildpackResource>;
+const SupportedBuildpacksCollectionValueList = /*@__PURE__*/ __L.at(
+  __c41,
+  2,
+) as any as S.Schema<SupportedBuildpacksCollectionValueList>;
+
 /** Object that includes an array of supported buildpacks resources and a possible link for next set */
 export interface SupportedBuildpacksCollection {
   /** Collection of supported buildpacks resources */
@@ -4069,6 +6000,11 @@ export interface SupportedBuildpacksCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const SupportedBuildpacksCollection = /*@__PURE__*/ __L.at(
+  __c41,
+  3,
+) as any as S.Schema<SupportedBuildpacksCollection>;
+
 export interface ListBuildServiceSupportedStacksRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4079,6 +6015,11 @@ export interface ListBuildServiceSupportedStacksRequest {
   /** The name of the build service resource. */
   buildServiceName: string;
 }
+const ListBuildServiceSupportedStacksRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  4,
+) as any as S.Schema<ListBuildServiceSupportedStacksRequest>;
+
 /** Supported stack resource payload */
 export interface SupportedStackResource {
   /** Fully qualified resource Id for the resource. */
@@ -4090,8 +6031,18 @@ export interface SupportedStackResource {
   systemData?: SystemData;
   properties?: SupportedStackResourceProperties;
 }
+const SupportedStackResource = /*@__PURE__*/ __L.at(
+  __c41,
+  5,
+) as any as S.Schema<SupportedStackResource>;
+
 /** Collection of supported stacks resources */
 export type SupportedStacksCollectionValueList = Array<SupportedStackResource>;
+const SupportedStacksCollectionValueList = /*@__PURE__*/ __L.at(
+  __c41,
+  6,
+) as any as S.Schema<SupportedStacksCollectionValueList>;
+
 /** Object that includes an array of supported stacks resources and a possible link for next set */
 export interface SupportedStacksCollection {
   /** Collection of supported stacks resources */
@@ -4099,6 +6050,11 @@ export interface SupportedStacksCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const SupportedStacksCollection = /*@__PURE__*/ __L.at(
+  __c41,
+  7,
+) as any as S.Schema<SupportedStacksCollection>;
+
 export interface ListCertificatesRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4107,6 +6063,11 @@ export interface ListCertificatesRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const ListCertificatesRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  0,
+) as any as S.Schema<ListCertificatesRequest>;
+
 /** Certificate resource payload. */
 export interface CertificateResource {
   /** Fully qualified resource Id for the resource. */
@@ -4119,8 +6080,15 @@ export interface CertificateResource {
   /** Properties of the certificate resource payload. */
   properties?: CertificateProperties;
 }
+const CertificateResource = GetCertificateResponse as any as S.Schema<CertificateResource>;
+
 /** The certificate resources list. */
 export type CertificateResourceCollectionValueList = Array<CertificateResource>;
+const CertificateResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c42,
+  1,
+) as any as S.Schema<CertificateResourceCollectionValueList>;
+
 /** Collection compose of certificate resources list and a possible link for next page. */
 export interface CertificateResourceCollection {
   /** The certificate resources list. */
@@ -4128,6 +6096,11 @@ export interface CertificateResourceCollection {
   /** The link to next page of certificate list. */
   nextLink?: string;
 }
+const CertificateResourceCollection = /*@__PURE__*/ __L.at(
+  __c42,
+  2,
+) as any as S.Schema<CertificateResourceCollection>;
+
 export interface ListConfigurationServicesRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4136,6 +6109,11 @@ export interface ListConfigurationServicesRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const ListConfigurationServicesRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  3,
+) as any as S.Schema<ListConfigurationServicesRequest>;
+
 /** Application Configuration Service resource */
 export interface ConfigurationServiceResource {
   /** Fully qualified resource Id for the resource. */
@@ -4147,8 +6125,16 @@ export interface ConfigurationServiceResource {
   systemData?: SystemData;
   properties?: ConfigurationServiceProperties;
 }
+const ConfigurationServiceResource =
+  ConfigurationServicesCreateOrUpdateResponse as any as S.Schema<ConfigurationServiceResource>;
+
 /** Collection of configuration service resources */
 export type ConfigurationServiceResourceCollectionValueList = Array<ConfigurationServiceResource>;
+const ConfigurationServiceResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c42,
+  4,
+) as any as S.Schema<ConfigurationServiceResourceCollectionValueList>;
+
 /** Object that includes an array of configuration service resources and a possible link for next set */
 export interface ConfigurationServiceResourceCollection {
   /** Collection of configuration service resources */
@@ -4156,6 +6142,11 @@ export interface ConfigurationServiceResourceCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const ConfigurationServiceResourceCollection = /*@__PURE__*/ __L.at(
+  __c42,
+  5,
+) as any as S.Schema<ConfigurationServiceResourceCollection>;
+
 export interface ListContainerRegistriesRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4164,6 +6155,11 @@ export interface ListContainerRegistriesRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const ListContainerRegistriesRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  6,
+) as any as S.Schema<ListContainerRegistriesRequest>;
+
 /** Container registry resource payload. */
 export interface ContainerRegistryResource {
   /** Fully qualified resource Id for the resource. */
@@ -4176,8 +6172,16 @@ export interface ContainerRegistryResource {
   /** Properties of the container registry resource payload. */
   properties?: ContainerRegistryProperties;
 }
+const ContainerRegistryResource =
+  ContainerRegistriesCreateOrUpdateResponse as any as S.Schema<ContainerRegistryResource>;
+
 /** The container registry resources list. */
 export type ContainerRegistryResourceCollectionValueList = Array<ContainerRegistryResource>;
+const ContainerRegistryResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c42,
+  7,
+) as any as S.Schema<ContainerRegistryResourceCollectionValueList>;
+
 /** Collection compose of container registry resources list and a possible link for next page. */
 export interface ContainerRegistryResourceCollection {
   /** The container registry resources list. */
@@ -4185,6 +6189,11 @@ export interface ContainerRegistryResourceCollection {
   /** The link to next page of storage list. */
   nextLink?: string;
 }
+const ContainerRegistryResourceCollection = /*@__PURE__*/ __L.at(
+  __c43,
+  0,
+) as any as S.Schema<ContainerRegistryResourceCollection>;
+
 export interface ListCustomDomainsRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4195,6 +6204,11 @@ export interface ListCustomDomainsRequest {
   /** The name of the App resource. */
   appName: string;
 }
+const ListCustomDomainsRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  1,
+) as any as S.Schema<ListCustomDomainsRequest>;
+
 /** Custom domain resource payload. */
 export interface CustomDomainResource {
   /** Fully qualified resource Id for the resource. */
@@ -4207,8 +6221,15 @@ export interface CustomDomainResource {
   /** Properties of the custom domain resource. */
   properties?: CustomDomainProperties;
 }
+const CustomDomainResource = GetCustomDomainResponse as any as S.Schema<CustomDomainResource>;
+
 /** The custom domain resources list. */
 export type CustomDomainResourceCollectionValueList = Array<CustomDomainResource>;
+const CustomDomainResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c43,
+  2,
+) as any as S.Schema<CustomDomainResourceCollectionValueList>;
+
 /** Collection compose of a custom domain resources list and a possible link for next page. */
 export interface CustomDomainResourceCollection {
   /** The custom domain resources list. */
@@ -4216,6 +6237,11 @@ export interface CustomDomainResourceCollection {
   /** The link to next page of custom domain list. */
   nextLink?: string;
 }
+const CustomDomainResourceCollection = /*@__PURE__*/ __L.at(
+  __c43,
+  3,
+) as any as S.Schema<CustomDomainResourceCollection>;
+
 export interface ListCustomizedAcceleratorsRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4226,6 +6252,11 @@ export interface ListCustomizedAcceleratorsRequest {
   /** The name of the application accelerator. */
   applicationAcceleratorName: string;
 }
+const ListCustomizedAcceleratorsRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  4,
+) as any as S.Schema<ListCustomizedAcceleratorsRequest>;
+
 /** Customized accelerator resource */
 export interface CustomizedAcceleratorResource {
   /** Fully qualified resource Id for the resource. */
@@ -4239,12 +6270,28 @@ export interface CustomizedAcceleratorResource {
   /** Sku of the customized accelerator resource */
   sku?: Sku;
 }
+const CustomizedAcceleratorResource =
+  CustomizedAcceleratorsCreateOrUpdateResponse as any as S.Schema<CustomizedAcceleratorResource>;
+
 export type CustomizedAcceleratorResourceCollectionValueList = Array<CustomizedAcceleratorResource>;
+const CustomizedAcceleratorResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c43,
+  5,
+) as any as S.Schema<CustomizedAcceleratorResourceCollectionValueList>;
+
 export interface CustomizedAcceleratorResourceCollection {
   value?: CustomizedAcceleratorResourceCollectionValueList;
   nextLink?: string;
 }
+const CustomizedAcceleratorResourceCollection = /*@__PURE__*/ __L.at(
+  __c43,
+  6,
+) as any as S.Schema<CustomizedAcceleratorResourceCollection>;
+
 export type ListDeploymentForClusterRequestVersionList = Array<string>;
+const ListDeploymentForClusterRequestVersionList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<ListDeploymentForClusterRequestVersionList>;
+
 export interface ListDeploymentForClusterRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4257,6 +6304,11 @@ export interface ListDeploymentForClusterRequest {
   /** The expand expression to apply on the operation. */
   _expand?: string;
 }
+const ListDeploymentForClusterRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  7,
+) as any as S.Schema<ListDeploymentForClusterRequest>;
+
 /** Deployment resource payload */
 export interface DeploymentResource {
   /** Fully qualified resource Id for the resource. */
@@ -4271,8 +6323,15 @@ export interface DeploymentResource {
   /** Sku of the Deployment resource */
   sku?: Sku;
 }
+const DeploymentResource = GetDeploymentResponse as any as S.Schema<DeploymentResource>;
+
 /** Collection of Deployment resources */
 export type DeploymentResourceCollectionValueList = Array<DeploymentResource>;
+const DeploymentResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c44,
+  0,
+) as any as S.Schema<DeploymentResourceCollectionValueList>;
+
 /** Object that includes an array of App resources and a possible link for next set */
 export interface DeploymentResourceCollection {
   /** Collection of Deployment resources */
@@ -4280,7 +6339,15 @@ export interface DeploymentResourceCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const DeploymentResourceCollection = /*@__PURE__*/ __L.at(
+  __c44,
+  1,
+) as any as S.Schema<DeploymentResourceCollection>;
+
 export type ListDeploymentsRequestVersionList = Array<string>;
+const ListDeploymentsRequestVersionList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<ListDeploymentsRequestVersionList>;
+
 export interface ListDeploymentsRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4293,6 +6360,11 @@ export interface ListDeploymentsRequest {
   /** Version of the deployments to be listed */
   version?: ListDeploymentsRequestVersionList;
 }
+const ListDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  2,
+) as any as S.Schema<ListDeploymentsRequest>;
+
 export interface ListDevToolPortalsRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4301,6 +6373,11 @@ export interface ListDevToolPortalsRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const ListDevToolPortalsRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  3,
+) as any as S.Schema<ListDevToolPortalsRequest>;
+
 /** Dev Tool Portal resource */
 export interface DevToolPortalResource {
   /** Fully qualified resource Id for the resource. */
@@ -4312,8 +6389,15 @@ export interface DevToolPortalResource {
   systemData?: SystemData;
   properties?: DevToolPortalProperties;
 }
+const DevToolPortalResource = GetDevToolPortalResponse as any as S.Schema<DevToolPortalResource>;
+
 /** Collection of Dev Tool Portal resources */
 export type DevToolPortalResourceCollectionValueList = Array<DevToolPortalResource>;
+const DevToolPortalResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c44,
+  4,
+) as any as S.Schema<DevToolPortalResourceCollectionValueList>;
+
 /** Object that includes an array of Dev Tool Portal resources and a possible link for next set */
 export interface DevToolPortalResourceCollection {
   /** Collection of Dev Tool Portal resources */
@@ -4321,6 +6405,11 @@ export interface DevToolPortalResourceCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const DevToolPortalResourceCollection = /*@__PURE__*/ __L.at(
+  __c44,
+  5,
+) as any as S.Schema<DevToolPortalResourceCollection>;
+
 export interface ListGatewayCustomDomainsRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4331,6 +6420,11 @@ export interface ListGatewayCustomDomainsRequest {
   /** The name of Spring Cloud Gateway. */
   gatewayName: string;
 }
+const ListGatewayCustomDomainsRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  6,
+) as any as S.Schema<ListGatewayCustomDomainsRequest>;
+
 /** Custom domain of the Spring Cloud Gateway */
 export type GatewayCustomDomainResource = ApiPortalCustomDomainResource;
 /** Collection of Spring Cloud Gateway custom domain resources */
@@ -4342,6 +6436,9 @@ export interface GatewayCustomDomainResourceCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const GatewayCustomDomainResourceCollection =
+  ApiPortalCustomDomainResourceCollection as any as S.Schema<GatewayCustomDomainResourceCollection>;
+
 export interface ListGatewayEnvSecretsRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4352,9 +6449,21 @@ export interface ListGatewayEnvSecretsRequest {
   /** The name of Spring Cloud Gateway. */
   gatewayName: string;
 }
+const ListGatewayEnvSecretsRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  7,
+) as any as S.Schema<ListGatewayEnvSecretsRequest>;
+
 /** Sensitive properties for Spring Cloud Gateway */
 export type GatewayEnvSecrets = { [key: string]: string | undefined };
+const GatewayEnvSecrets = ApmPropertiesInputPropertiesMap as any as S.Schema<GatewayEnvSecrets>;
+
 export type ListGatewayEnvSecretsResponse = GatewayEnvSecrets;
+const ListGatewayEnvSecretsResponse = /*@__PURE__*/ __L.at(
+  __c45,
+  0,
+) as any as S.Schema<ListGatewayEnvSecretsResponse>;
+
 export interface ListGatewayRouteConfigsRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4365,6 +6474,11 @@ export interface ListGatewayRouteConfigsRequest {
   /** The name of Spring Cloud Gateway. */
   gatewayName: string;
 }
+const ListGatewayRouteConfigsRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  1,
+) as any as S.Schema<ListGatewayRouteConfigsRequest>;
+
 /** Spring Cloud Gateway route config resource */
 export interface GatewayRouteConfigResource {
   /** Fully qualified resource Id for the resource. */
@@ -4376,8 +6490,16 @@ export interface GatewayRouteConfigResource {
   systemData?: SystemData;
   properties?: GatewayRouteConfigProperties;
 }
+const GatewayRouteConfigResource =
+  GatewayRouteConfigsCreateOrUpdateResponse as any as S.Schema<GatewayRouteConfigResource>;
+
 /** Collection of Spring Cloud Gateway route config resources */
 export type GatewayRouteConfigResourceCollectionValueList = Array<GatewayRouteConfigResource>;
+const GatewayRouteConfigResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c45,
+  2,
+) as any as S.Schema<GatewayRouteConfigResourceCollectionValueList>;
+
 /** Object that includes an array of Spring Cloud Gateway route config resources and a possible link for next set */
 export interface GatewayRouteConfigResourceCollection {
   /** Collection of Spring Cloud Gateway route config resources */
@@ -4385,6 +6507,11 @@ export interface GatewayRouteConfigResourceCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const GatewayRouteConfigResourceCollection = /*@__PURE__*/ __L.at(
+  __c45,
+  3,
+) as any as S.Schema<GatewayRouteConfigResourceCollection>;
+
 export interface ListGatewaysRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4393,6 +6520,8 @@ export interface ListGatewaysRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const ListGatewaysRequest = /*@__PURE__*/ __L.at(__c45, 4) as any as S.Schema<ListGatewaysRequest>;
+
 /** Spring Cloud Gateway resource */
 export interface GatewayResource {
   /** Fully qualified resource Id for the resource. */
@@ -4406,8 +6535,15 @@ export interface GatewayResource {
   /** Sku of the Spring Cloud Gateway resource */
   sku?: Sku;
 }
+const GatewayResource = GetGatewayResponse as any as S.Schema<GatewayResource>;
+
 /** Collection of gateway resources */
 export type GatewayResourceCollectionValueList = Array<GatewayResource>;
+const GatewayResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c45,
+  5,
+) as any as S.Schema<GatewayResourceCollectionValueList>;
+
 /** Object that includes an array of gateway resources and a possible link for next set */
 export interface GatewayResourceCollection {
   /** Collection of gateway resources */
@@ -4415,7 +6551,17 @@ export interface GatewayResourceCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const GatewayResourceCollection = /*@__PURE__*/ __L.at(
+  __c45,
+  6,
+) as any as S.Schema<GatewayResourceCollection>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  7,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Operation display payload */
 export interface OperationDisplay {
   /** Resource provider of the operation */
@@ -4427,8 +6573,12 @@ export interface OperationDisplay {
   /** Localized friendly description for the operation */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c46, 0) as any as S.Schema<OperationDisplay>;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationDetailActionType = "Internal";
+const OperationDetailActionType = S.String;
+
 /** Specifications of the Log for Azure Monitoring */
 export interface LogSpecification {
   /** Name of the log */
@@ -4438,12 +6588,25 @@ export interface LogSpecification {
   /** Blob duration of the log */
   blobDuration?: string;
 }
+const LogSpecification = /*@__PURE__*/ __L.at(__c46, 1) as any as S.Schema<LogSpecification>;
+
 /** Specifications of the Log for Azure Monitoring */
 export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
+const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ __L.at(
+  __c46,
+  2,
+) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
+
 /** Supported aggregation types */
 export type MetricSpecificationSupportedAggregationTypesList = Array<string>;
+const MetricSpecificationSupportedAggregationTypesList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<MetricSpecificationSupportedAggregationTypesList>;
+
 /** Supported time grain types */
 export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
+const MetricSpecificationSupportedTimeGrainTypesList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
+
 /** Specifications of the Dimension of metrics */
 export interface MetricDimension {
   /** Name of the dimension */
@@ -4453,8 +6616,15 @@ export interface MetricDimension {
   /** Whether this dimension should be included for the Shoebox export scenario */
   toBeExportedForShoebox?: boolean;
 }
+const MetricDimension = /*@__PURE__*/ __L.at(__c46, 3) as any as S.Schema<MetricDimension>;
+
 /** Dimensions of the metric */
 export type MetricSpecificationDimensionsList = Array<MetricDimension>;
+const MetricSpecificationDimensionsList = /*@__PURE__*/ __L.at(
+  __c46,
+  4,
+) as any as S.Schema<MetricSpecificationDimensionsList>;
+
 /** Specifications of the Metrics for Azure Monitoring */
 export interface MetricSpecification {
   /** Name of the metric */
@@ -4480,8 +6650,15 @@ export interface MetricSpecification {
   /** Name of the MDM namespace. Optional. */
   sourceMdmNamespace?: string;
 }
+const MetricSpecification = /*@__PURE__*/ __L.at(__c46, 5) as any as S.Schema<MetricSpecification>;
+
 /** Specifications of the Metrics for Azure Monitoring */
 export type ServiceSpecificationMetricSpecificationsList = Array<MetricSpecification>;
+const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ __L.at(
+  __c46,
+  6,
+) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
+
 /** Service specification payload */
 export interface ServiceSpecification {
   /** Specifications of the Log for Azure Monitoring */
@@ -4489,11 +6666,18 @@ export interface ServiceSpecification {
   /** Specifications of the Metrics for Azure Monitoring */
   metricSpecifications?: ServiceSpecificationMetricSpecificationsList;
 }
+const ServiceSpecification = /*@__PURE__*/ __L.at(
+  __c46,
+  7,
+) as any as S.Schema<ServiceSpecification>;
+
 /** Extra Operation properties */
 export interface OperationProperties {
   /** Service specifications of the operation */
   serviceSpecification?: ServiceSpecification;
 }
+const OperationProperties = /*@__PURE__*/ __L.at(__c47, 0) as any as S.Schema<OperationProperties>;
+
 /** Operation detail payload */
 export interface OperationDetail {
   /** Name of the operation */
@@ -4509,8 +6693,15 @@ export interface OperationDetail {
   /** Properties of the operation */
   properties?: OperationProperties;
 }
+const OperationDetail = /*@__PURE__*/ __L.at(__c47, 1) as any as S.Schema<OperationDetail>;
+
 /** Collection of available operation details */
 export type AvailableOperationsValueList = Array<OperationDetail>;
+const AvailableOperationsValueList = /*@__PURE__*/ __L.at(
+  __c47,
+  2,
+) as any as S.Schema<AvailableOperationsValueList>;
+
 /** Available operations of the service */
 export interface AvailableOperations {
   /** Collection of available operation details */
@@ -4518,6 +6709,8 @@ export interface AvailableOperations {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const AvailableOperations = /*@__PURE__*/ __L.at(__c47, 3) as any as S.Schema<AvailableOperations>;
+
 export interface ListPredefinedAcceleratorsRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4528,6 +6721,11 @@ export interface ListPredefinedAcceleratorsRequest {
   /** The name of the application accelerator. */
   applicationAcceleratorName: string;
 }
+const ListPredefinedAcceleratorsRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  4,
+) as any as S.Schema<ListPredefinedAcceleratorsRequest>;
+
 /** Predefined accelerator resource */
 export interface PredefinedAcceleratorResource {
   /** Fully qualified resource Id for the resource. */
@@ -4541,16 +6739,38 @@ export interface PredefinedAcceleratorResource {
   /** Sku of the predefined accelerator resource */
   sku?: Sku;
 }
+const PredefinedAcceleratorResource =
+  GetPredefinedAcceleratorResponse as any as S.Schema<PredefinedAcceleratorResource>;
+
 export type PredefinedAcceleratorResourceCollectionValueList = Array<PredefinedAcceleratorResource>;
+const PredefinedAcceleratorResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c47,
+  5,
+) as any as S.Schema<PredefinedAcceleratorResourceCollectionValueList>;
+
 export interface PredefinedAcceleratorResourceCollection {
   value?: PredefinedAcceleratorResourceCollectionValueList;
   nextLink?: string;
 }
+const PredefinedAcceleratorResourceCollection = /*@__PURE__*/ __L.at(
+  __c47,
+  6,
+) as any as S.Schema<PredefinedAcceleratorResourceCollection>;
+
 export interface ListRuntimeVersionRuntimeVersionsRequest {}
+const ListRuntimeVersionRuntimeVersionsRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  7,
+) as any as S.Schema<ListRuntimeVersionRuntimeVersionsRequest>;
+
 /** The raw value which could be passed to deployment CRUD operations. */
 export type SupportedRuntimeVersionValue = "Java_8" | "Java_11" | "Java_17" | "NetCore_31";
+const SupportedRuntimeVersionValue = S.String;
+
 /** The platform of this runtime version (possible values: "Java" or ".NET"). */
 export type SupportedRuntimeVersionPlatform = "Java" | ".NET Core";
+const SupportedRuntimeVersionPlatform = S.String;
+
 /** Supported deployment runtime version descriptor. */
 export interface SupportedRuntimeVersion {
   /** The raw value which could be passed to deployment CRUD operations. */
@@ -4560,16 +6780,36 @@ export interface SupportedRuntimeVersion {
   /** The detailed version (major.minor) of the platform. */
   version?: string;
 }
+const SupportedRuntimeVersion = /*@__PURE__*/ __L.at(
+  __c48,
+  0,
+) as any as S.Schema<SupportedRuntimeVersion>;
+
 /** A list of all supported runtime versions. */
 export type AvailableRuntimeVersionsValueList = Array<SupportedRuntimeVersion>;
+const AvailableRuntimeVersionsValueList = /*@__PURE__*/ __L.at(
+  __c48,
+  1,
+) as any as S.Schema<AvailableRuntimeVersionsValueList>;
+
 export interface AvailableRuntimeVersions {
   /** A list of all supported runtime versions. */
   value?: AvailableRuntimeVersionsValueList;
 }
+const AvailableRuntimeVersions = /*@__PURE__*/ __L.at(
+  __c48,
+  2,
+) as any as S.Schema<AvailableRuntimeVersions>;
+
 export interface ListServiceBySubscriptionRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
 }
+const ListServiceBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  3,
+) as any as S.Schema<ListServiceBySubscriptionRequest>;
+
 /** Tags of the service which is a list of key value pairs that describe the resource. */
 export type ServiceResourceTagsMap = { [key: string]: string | undefined };
 /** Service resource */
@@ -4590,8 +6830,15 @@ export interface ServiceResource {
   /** Sku of the Service resource */
   sku?: Sku;
 }
+const ServiceResource = GetServiceResponse as any as S.Schema<ServiceResource>;
+
 /** Collection of Service resources */
 export type ServiceResourceListValueList = Array<ServiceResource>;
+const ServiceResourceListValueList = /*@__PURE__*/ __L.at(
+  __c48,
+  4,
+) as any as S.Schema<ServiceResourceListValueList>;
+
 /** Object that includes an array of Service resources and a possible link for next set */
 export interface ServiceResourceList {
   /** Collection of Service resources */
@@ -4599,6 +6846,8 @@ export interface ServiceResourceList {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const ServiceResourceList = /*@__PURE__*/ __L.at(__c48, 5) as any as S.Schema<ServiceResourceList>;
+
 export interface ListServiceGloballyEnabledApmsRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4607,6 +6856,11 @@ export interface ListServiceGloballyEnabledApmsRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const ListServiceGloballyEnabledApmsRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  6,
+) as any as S.Schema<ListServiceGloballyEnabledApmsRequest>;
+
 /** Collection of the globally enabled APMs */
 export type GloballyEnabledApmsValueList = Array<string>;
 /** Globally enabled APMs payload */
@@ -4614,6 +6868,8 @@ export interface GloballyEnabledApms {
   /** Collection of the globally enabled APMs */
   value?: GloballyEnabledApmsValueList;
 }
+const GloballyEnabledApms = ApmSecretKeys as any as S.Schema<GloballyEnabledApms>;
+
 export interface ListServiceRegistriesRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4622,6 +6878,11 @@ export interface ListServiceRegistriesRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const ListServiceRegistriesRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  7,
+) as any as S.Schema<ListServiceRegistriesRequest>;
+
 /** Service Registry resource */
 export interface ServiceRegistryResource {
   /** Fully qualified resource Id for the resource. */
@@ -4633,8 +6894,18 @@ export interface ServiceRegistryResource {
   systemData?: SystemData;
   properties?: ServiceRegistryProperties;
 }
+const ServiceRegistryResource = /*@__PURE__*/ __L.at(
+  __c49,
+  0,
+) as any as S.Schema<ServiceRegistryResource>;
+
 /** Collection of Service Registry resources */
 export type ServiceRegistryResourceCollectionValueList = Array<ServiceRegistryResource>;
+const ServiceRegistryResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c49,
+  1,
+) as any as S.Schema<ServiceRegistryResourceCollectionValueList>;
+
 /** Object that includes an array of Service Registry resources and a possible link for next set */
 export interface ServiceRegistryResourceCollection {
   /** Collection of Service Registry resources */
@@ -4642,12 +6913,19 @@ export interface ServiceRegistryResourceCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const ServiceRegistryResourceCollection = /*@__PURE__*/ __L.at(
+  __c49,
+  2,
+) as any as S.Schema<ServiceRegistryResourceCollection>;
+
 export interface ListServicesRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
   resourceGroupName: string;
 }
+const ListServicesRequest = /*@__PURE__*/ __L.at(__c49, 3) as any as S.Schema<ListServicesRequest>;
+
 export interface ListServiceSupportedApmTypesRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4656,13 +6934,25 @@ export interface ListServiceSupportedApmTypesRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const ListServiceSupportedApmTypesRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  4,
+) as any as S.Schema<ListServiceSupportedApmTypesRequest>;
+
 /** Supported APM type */
 export interface SupportedApmType {
   /** The name of the supported APM type */
   name?: string;
 }
+const SupportedApmType = /*@__PURE__*/ __L.at(__c49, 5) as any as S.Schema<SupportedApmType>;
+
 /** Collection of the supported APM type */
 export type SupportedApmTypesValueList = Array<SupportedApmType>;
+const SupportedApmTypesValueList = /*@__PURE__*/ __L.at(
+  __c49,
+  6,
+) as any as S.Schema<SupportedApmTypesValueList>;
+
 /** Supported APM types payload */
 export interface SupportedApmTypes {
   /** Collection of the supported APM type */
@@ -4670,6 +6960,8 @@ export interface SupportedApmTypes {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const SupportedApmTypes = /*@__PURE__*/ __L.at(__c49, 7) as any as S.Schema<SupportedApmTypes>;
+
 export interface ListServiceSupportedServerVersionsRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4678,6 +6970,11 @@ export interface ListServiceSupportedServerVersionsRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const ListServiceSupportedServerVersionsRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  0,
+) as any as S.Schema<ListServiceSupportedServerVersionsRequest>;
+
 /** Supported server version. */
 export interface SupportedServerVersion {
   /** The raw server version value which could be passed to deployment CRUD operations. */
@@ -4687,8 +6984,18 @@ export interface SupportedServerVersion {
   /** The Server version. */
   version?: string;
 }
+const SupportedServerVersion = /*@__PURE__*/ __L.at(
+  __c50,
+  1,
+) as any as S.Schema<SupportedServerVersion>;
+
 /** Collection of the supported server versions. */
 export type SupportedServerVersionsValueList = Array<SupportedServerVersion>;
+const SupportedServerVersionsValueList = /*@__PURE__*/ __L.at(
+  __c50,
+  2,
+) as any as S.Schema<SupportedServerVersionsValueList>;
+
 /** Supported server versions. */
 export interface SupportedServerVersions {
   /** Collection of the supported server versions. */
@@ -4696,6 +7003,11 @@ export interface SupportedServerVersions {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const SupportedServerVersions = /*@__PURE__*/ __L.at(
+  __c50,
+  3,
+) as any as S.Schema<SupportedServerVersions>;
+
 export interface ListServiceTestKeysRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4704,12 +7016,21 @@ export interface ListServiceTestKeysRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const ListServiceTestKeysRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  4,
+) as any as S.Schema<ListServiceTestKeysRequest>;
+
 export interface ListSkusRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
 }
+const ListSkusRequest = /*@__PURE__*/ __L.at(__c50, 5) as any as S.Schema<ListSkusRequest>;
+
 /** Gets or sets the type of the scale. */
 export type SkuCapacityScaleType = "None" | "Manual" | "Automatic";
+const SkuCapacityScaleType = S.String;
+
 /** The SKU capacity */
 export interface SkuCapacity {
   /** Gets or sets the minimum. */
@@ -4721,20 +7042,41 @@ export interface SkuCapacity {
   /** Gets or sets the type of the scale. */
   scaleType?: SkuCapacityScaleType;
 }
+const SkuCapacity = /*@__PURE__*/ __L.at(__c50, 6) as any as S.Schema<SkuCapacity>;
+
 /** Gets the set of locations that the SKU is available. */
 export type ResourceSkuLocationsList = Array<string>;
+const ResourceSkuLocationsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<ResourceSkuLocationsList>;
+
 /** Gets list of availability zones where the SKU is supported. */
 export type ResourceSkuLocationInfoZonesList = Array<string>;
+const ResourceSkuLocationInfoZonesList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<ResourceSkuLocationInfoZonesList>;
+
 /** Gets the set of zones that the SKU is available in with the specified capabilities. */
 export type ResourceSkuZoneDetailsNameList = Array<string>;
+const ResourceSkuZoneDetailsNameList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<ResourceSkuZoneDetailsNameList>;
+
 export interface ResourceSkuCapabilities {
   /** Gets an invariant to describe the feature. */
   name?: string;
   /** Gets an invariant if the feature is measured by quantity. */
   value?: string;
 }
+const ResourceSkuCapabilities = /*@__PURE__*/ __L.at(
+  __c50,
+  7,
+) as any as S.Schema<ResourceSkuCapabilities>;
+
 /** Gets a list of capabilities that are available for the SKU in the specified list of zones. */
 export type ResourceSkuZoneDetailsCapabilitiesList = Array<ResourceSkuCapabilities>;
+const ResourceSkuZoneDetailsCapabilitiesList = /*@__PURE__*/ __L.at(
+  __c51,
+  0,
+) as any as S.Schema<ResourceSkuZoneDetailsCapabilitiesList>;
+
 /** Details of capabilities available to a SKU in specific zones */
 export interface ResourceSkuZoneDetails {
   /** Gets the set of zones that the SKU is available in with the specified capabilities. */
@@ -4742,8 +7084,18 @@ export interface ResourceSkuZoneDetails {
   /** Gets a list of capabilities that are available for the SKU in the specified list of zones. */
   capabilities?: ResourceSkuZoneDetailsCapabilitiesList;
 }
+const ResourceSkuZoneDetails = /*@__PURE__*/ __L.at(
+  __c51,
+  1,
+) as any as S.Schema<ResourceSkuZoneDetails>;
+
 /** Gets details of capabilities available to a SKU in specific zones. */
 export type ResourceSkuLocationInfoZoneDetailsList = Array<ResourceSkuZoneDetails>;
+const ResourceSkuLocationInfoZoneDetailsList = /*@__PURE__*/ __L.at(
+  __c51,
+  2,
+) as any as S.Schema<ResourceSkuLocationInfoZoneDetailsList>;
+
 /** Locations and availability zones where the SKU is available */
 export interface ResourceSkuLocationInfo {
   /** Gets location of the SKU */
@@ -4753,16 +7105,37 @@ export interface ResourceSkuLocationInfo {
   /** Gets details of capabilities available to a SKU in specific zones. */
   zoneDetails?: ResourceSkuLocationInfoZoneDetailsList;
 }
+const ResourceSkuLocationInfo = /*@__PURE__*/ __L.at(
+  __c51,
+  3,
+) as any as S.Schema<ResourceSkuLocationInfo>;
+
 /** Gets a list of locations and availability zones in those locations where the SKU is available. */
 export type ResourceSkuLocationInfoList = Array<ResourceSkuLocationInfo>;
+const ResourceSkuLocationInfoList = /*@__PURE__*/ __L.at(
+  __c51,
+  4,
+) as any as S.Schema<ResourceSkuLocationInfoList>;
+
 /** Gets the type of restrictions. Possible values include: 'Location', 'Zone' */
 export type ResourceSkuRestrictionsType = "Location" | "Zone";
+const ResourceSkuRestrictionsType = S.String;
+
 /** Gets the value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
 export type ResourceSkuRestrictionsValuesList = Array<string>;
+const ResourceSkuRestrictionsValuesList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<ResourceSkuRestrictionsValuesList>;
+
 /** Gets locations where the SKU is restricted */
 export type ResourceSkuRestrictionInfoLocationsList = Array<string>;
+const ResourceSkuRestrictionInfoLocationsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<ResourceSkuRestrictionInfoLocationsList>;
+
 /** Gets list of availability zones where the SKU is restricted. */
 export type ResourceSkuRestrictionInfoZonesList = Array<string>;
+const ResourceSkuRestrictionInfoZonesList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<ResourceSkuRestrictionInfoZonesList>;
+
 /** Information about the restriction where the SKU cannot be used */
 export interface ResourceSkuRestrictionInfo {
   /** Gets locations where the SKU is restricted */
@@ -4770,8 +7143,15 @@ export interface ResourceSkuRestrictionInfo {
   /** Gets list of availability zones where the SKU is restricted. */
   zones?: ResourceSkuRestrictionInfoZonesList;
 }
+const ResourceSkuRestrictionInfo = /*@__PURE__*/ __L.at(
+  __c51,
+  5,
+) as any as S.Schema<ResourceSkuRestrictionInfo>;
+
 /** Gets the reason for restriction. Possible values include: 'QuotaId', 'NotAvailableForSubscription' */
 export type ResourceSkuRestrictionsReasonCode = "QuotaId" | "NotAvailableForSubscription";
+const ResourceSkuRestrictionsReasonCode = S.String;
+
 /** Restrictions where the SKU cannot be used */
 export interface ResourceSkuRestrictions {
   /** Gets the type of restrictions. Possible values include: 'Location', 'Zone' */
@@ -4783,8 +7163,18 @@ export interface ResourceSkuRestrictions {
   /** Gets the reason for restriction. Possible values include: 'QuotaId', 'NotAvailableForSubscription' */
   reasonCode?: ResourceSkuRestrictionsReasonCode;
 }
+const ResourceSkuRestrictions = /*@__PURE__*/ __L.at(
+  __c51,
+  6,
+) as any as S.Schema<ResourceSkuRestrictions>;
+
 /** Gets the restrictions because of which SKU cannot be used. This is empty if there are no restrictions. */
 export type ResourceSkuRestrictionsList = Array<ResourceSkuRestrictions>;
+const ResourceSkuRestrictionsList = /*@__PURE__*/ __L.at(
+  __c51,
+  7,
+) as any as S.Schema<ResourceSkuRestrictionsList>;
+
 /** Describes an available Azure Spring Apps SKU. */
 export interface ResourceSku {
   /** Gets the type of resource the SKU applies to. */
@@ -4802,8 +7192,15 @@ export interface ResourceSku {
   /** Gets the restrictions because of which SKU cannot be used. This is empty if there are no restrictions. */
   restrictions?: ResourceSkuRestrictionsList;
 }
+const ResourceSku = /*@__PURE__*/ __L.at(__c52, 0) as any as S.Schema<ResourceSku>;
+
 /** Collection of resource SKU */
 export type ResourceSkuCollectionValueList = Array<ResourceSku>;
+const ResourceSkuCollectionValueList = /*@__PURE__*/ __L.at(
+  __c52,
+  1,
+) as any as S.Schema<ResourceSkuCollectionValueList>;
+
 /** Object that includes an array of Azure Spring Apps SKU and a possible link for next set */
 export interface ResourceSkuCollection {
   /** Collection of resource SKU */
@@ -4811,6 +7208,11 @@ export interface ResourceSkuCollection {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const ResourceSkuCollection = /*@__PURE__*/ __L.at(
+  __c52,
+  2,
+) as any as S.Schema<ResourceSkuCollection>;
+
 export interface ListStoragesRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4819,6 +7221,8 @@ export interface ListStoragesRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const ListStoragesRequest = /*@__PURE__*/ __L.at(__c52, 3) as any as S.Schema<ListStoragesRequest>;
+
 /** Storage resource payload. */
 export interface StorageResource {
   /** Fully qualified resource Id for the resource. */
@@ -4831,8 +7235,15 @@ export interface StorageResource {
   /** Properties of the storage resource payload. */
   properties?: StorageProperties;
 }
+const StorageResource = GetStorageResponse as any as S.Schema<StorageResource>;
+
 /** The storage resources list. */
 export type StorageResourceCollectionValueList = Array<StorageResource>;
+const StorageResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c52,
+  4,
+) as any as S.Schema<StorageResourceCollectionValueList>;
+
 /** Collection compose of storage resources list and a possible link for next page. */
 export interface StorageResourceCollection {
   /** The storage resources list. */
@@ -4840,6 +7251,11 @@ export interface StorageResourceCollection {
   /** The link to next page of storage list. */
   nextLink?: string;
 }
+const StorageResourceCollection = /*@__PURE__*/ __L.at(
+  __c52,
+  5,
+) as any as S.Schema<StorageResourceCollection>;
+
 /** Application Insights agent versions properties payload */
 export type ApplicationInsightsAgentVersionsInput = ApplicationAcceleratorPropertiesInput;
 /** Monitoring Setting properties payload */
@@ -4855,6 +7271,11 @@ export interface MonitoringSettingPropertiesInput {
   /** Indicates the versions of application insight agent */
   appInsightsAgentVersions?: ApplicationAcceleratorPropertiesInput;
 }
+const MonitoringSettingPropertiesInput = /*@__PURE__*/ __L.at(
+  __c52,
+  6,
+) as any as S.Schema<MonitoringSettingPropertiesInput>;
+
 export interface MonitoringSettingsUpdatePatchRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4865,6 +7286,11 @@ export interface MonitoringSettingsUpdatePatchRequest {
   /** Properties of the Monitoring Setting resource */
   properties?: MonitoringSettingPropertiesInput;
 }
+const MonitoringSettingsUpdatePatchRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  7,
+) as any as S.Schema<MonitoringSettingsUpdatePatchRequest>;
+
 export interface MonitoringSettingsUpdatePatchResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -4876,6 +7302,9 @@ export interface MonitoringSettingsUpdatePatchResponse {
   /** Properties of the Monitoring Setting resource */
   properties?: MonitoringSettingProperties;
 }
+const MonitoringSettingsUpdatePatchResponse =
+  GetMonitoringSettingsResponse as any as S.Schema<MonitoringSettingsUpdatePatchResponse>;
+
 export interface MonitoringSettingsUpdatePutRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4886,6 +7315,11 @@ export interface MonitoringSettingsUpdatePutRequest {
   /** Properties of the Monitoring Setting resource */
   properties?: MonitoringSettingPropertiesInput;
 }
+const MonitoringSettingsUpdatePutRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  0,
+) as any as S.Schema<MonitoringSettingsUpdatePutRequest>;
+
 export interface MonitoringSettingsUpdatePutResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -4897,8 +7331,13 @@ export interface MonitoringSettingsUpdatePutResponse {
   /** Properties of the Monitoring Setting resource */
   properties?: MonitoringSettingProperties;
 }
+const MonitoringSettingsUpdatePutResponse =
+  GetMonitoringSettingsResponse as any as S.Schema<MonitoringSettingsUpdatePutResponse>;
+
 /** Type of the test key */
 export type RegenerateServiceTestKeyRequestKeyType = "Primary" | "Secondary";
+const RegenerateServiceTestKeyRequestKeyType = S.String;
+
 export interface RegenerateServiceTestKeyRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4909,6 +7348,11 @@ export interface RegenerateServiceTestKeyRequest {
   /** Type of the test key */
   keyType: RegenerateServiceTestKeyRequestKeyType | (string & {});
 }
+const RegenerateServiceTestKeyRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  1,
+) as any as S.Schema<RegenerateServiceTestKeyRequest>;
+
 export interface RestartDeploymentRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4921,7 +7365,15 @@ export interface RestartDeploymentRequest {
   /** The name of the Deployment resource. */
   deploymentName: string;
 }
+const RestartDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  2,
+) as any as S.Schema<RestartDeploymentRequest>;
+
 export interface RestartDeploymentResponse {}
+const RestartDeploymentResponse =
+  DeleteApiPortalResponse as any as S.Schema<RestartDeploymentResponse>;
+
 export interface RestartGatewayRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4932,7 +7384,14 @@ export interface RestartGatewayRequest {
   /** The name of Spring Cloud Gateway. */
   gatewayName: string;
 }
+const RestartGatewayRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  3,
+) as any as S.Schema<RestartGatewayRequest>;
+
 export interface RestartGatewayResponse {}
+const RestartGatewayResponse = DeleteApiPortalResponse as any as S.Schema<RestartGatewayResponse>;
+
 export interface ServiceRegistriesCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4943,6 +7402,11 @@ export interface ServiceRegistriesCreateOrUpdateRequest {
   /** The name of Service Registry. */
   serviceRegistryName: string;
 }
+const ServiceRegistriesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  4,
+) as any as S.Schema<ServiceRegistriesCreateOrUpdateRequest>;
+
 export interface ServiceRegistriesCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -4953,8 +7417,14 @@ export interface ServiceRegistriesCreateOrUpdateResponse {
   systemData?: SystemData;
   properties?: ServiceRegistryProperties;
 }
+const ServiceRegistriesCreateOrUpdateResponse =
+  GetServiceRegistryResponse as any as S.Schema<ServiceRegistriesCreateOrUpdateResponse>;
+
 /** Tags of the service which is a list of key value pairs that describe the resource. */
 export type ServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const ServicesCreateOrUpdateRequestTagsMap =
+  ApmPropertiesInputPropertiesMap as any as S.Schema<ServicesCreateOrUpdateRequestTagsMap>;
+
 /** Service network profile payload */
 export interface NetworkProfileInput {
   /** Fully qualified resource Id of the subnet to host Azure Spring Apps Service Runtime */
@@ -4972,6 +7442,8 @@ export interface NetworkProfileInput {
   /** The egress traffic type of Azure Spring Apps VNet instances. */
   outboundType?: string;
 }
+const NetworkProfileInput = /*@__PURE__*/ __L.at(__c53, 5) as any as S.Schema<NetworkProfileInput>;
+
 /** Service properties payload */
 export interface ClusterResourcePropertiesInput {
   /** Network profile of the Service */
@@ -4982,6 +7454,11 @@ export interface ClusterResourcePropertiesInput {
   /** Purchasing 3rd party product of the Service resource. */
   marketplaceResource?: MarketplaceResource;
 }
+const ClusterResourcePropertiesInput = /*@__PURE__*/ __L.at(
+  __c53,
+  6,
+) as any as S.Schema<ClusterResourcePropertiesInput>;
+
 export interface ServicesCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4998,8 +7475,16 @@ export interface ServicesCreateOrUpdateRequest {
   /** Sku of the Service resource */
   sku?: Sku;
 }
+const ServicesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  7,
+) as any as S.Schema<ServicesCreateOrUpdateRequest>;
+
 /** Tags of the service which is a list of key value pairs that describe the resource. */
 export type ServicesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const ServicesCreateOrUpdateResponseTagsMap =
+  ApmPropertiesInputPropertiesMap as any as S.Schema<ServicesCreateOrUpdateResponseTagsMap>;
+
 export interface ServicesCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -5017,8 +7502,16 @@ export interface ServicesCreateOrUpdateResponse {
   /** Sku of the Service resource */
   sku?: Sku;
 }
+const ServicesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  0,
+) as any as S.Schema<ServicesCreateOrUpdateResponse>;
+
 /** Collection of Deployment name. */
 export type SetAppActiveDeploymentsRequestActiveDeploymentNamesList = Array<string>;
+const SetAppActiveDeploymentsRequestActiveDeploymentNamesList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<SetAppActiveDeploymentsRequestActiveDeploymentNamesList>;
+
 export interface SetAppActiveDeploymentsRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5031,6 +7524,11 @@ export interface SetAppActiveDeploymentsRequest {
   /** Collection of Deployment name. */
   activeDeploymentNames?: SetAppActiveDeploymentsRequestActiveDeploymentNamesList;
 }
+const SetAppActiveDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  1,
+) as any as S.Schema<SetAppActiveDeploymentsRequest>;
+
 export interface SetAppActiveDeploymentsResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -5046,6 +7544,9 @@ export interface SetAppActiveDeploymentsResponse {
   /** The GEO location of the application, always the same with its parent resource */
   location?: string;
 }
+const SetAppActiveDeploymentsResponse =
+  AppsCreateOrUpdateResponse as any as S.Schema<SetAppActiveDeploymentsResponse>;
+
 export interface StartDeploymentRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5058,7 +7559,14 @@ export interface StartDeploymentRequest {
   /** The name of the Deployment resource. */
   deploymentName: string;
 }
+const StartDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  2,
+) as any as S.Schema<StartDeploymentRequest>;
+
 export interface StartDeploymentResponse {}
+const StartDeploymentResponse = DeleteApiPortalResponse as any as S.Schema<StartDeploymentResponse>;
+
 export interface StartDeploymentJFRRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5077,7 +7585,15 @@ export interface StartDeploymentJFRRequest {
   /** Duration of your JFR. 1 min can be represented by 1m or 60s. */
   duration?: string;
 }
+const StartDeploymentJFRRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  3,
+) as any as S.Schema<StartDeploymentJFRRequest>;
+
 export interface StartDeploymentJFRResponse {}
+const StartDeploymentJFRResponse =
+  DeleteApiPortalResponse as any as S.Schema<StartDeploymentJFRResponse>;
+
 export interface StartServiceRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5086,7 +7602,11 @@ export interface StartServiceRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const StartServiceRequest = /*@__PURE__*/ __L.at(__c54, 4) as any as S.Schema<StartServiceRequest>;
+
 export interface StartServiceResponse {}
+const StartServiceResponse = DeleteApiPortalResponse as any as S.Schema<StartServiceResponse>;
+
 export interface StopDeploymentRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5099,7 +7619,14 @@ export interface StopDeploymentRequest {
   /** The name of the Deployment resource. */
   deploymentName: string;
 }
+const StopDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  5,
+) as any as S.Schema<StopDeploymentRequest>;
+
 export interface StopDeploymentResponse {}
+const StopDeploymentResponse = DeleteApiPortalResponse as any as S.Schema<StopDeploymentResponse>;
+
 export interface StopServiceRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5108,7 +7635,11 @@ export interface StopServiceRequest {
   /** The name of the Service resource. */
   serviceName: string;
 }
+const StopServiceRequest = /*@__PURE__*/ __L.at(__c54, 6) as any as S.Schema<StopServiceRequest>;
+
 export interface StopServiceResponse {}
+const StopServiceResponse = DeleteApiPortalResponse as any as S.Schema<StopServiceResponse>;
+
 export interface StoragesCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5121,6 +7652,11 @@ export interface StoragesCreateOrUpdateRequest {
   /** Properties of the storage resource payload. */
   properties?: StorageProperties;
 }
+const StoragesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  7,
+) as any as S.Schema<StoragesCreateOrUpdateRequest>;
+
 export interface StoragesCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -5132,6 +7668,11 @@ export interface StoragesCreateOrUpdateResponse {
   /** Properties of the storage resource payload. */
   properties?: StorageProperties;
 }
+const StoragesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c55,
+  0,
+) as any as S.Schema<StoragesCreateOrUpdateResponse>;
+
 export interface UpdateAppRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5148,6 +7689,8 @@ export interface UpdateAppRequest {
   /** The GEO location of the application, always the same with its parent resource */
   location?: string;
 }
+const UpdateAppRequest = /*@__PURE__*/ __L.at(__c55, 1) as any as S.Schema<UpdateAppRequest>;
+
 export interface UpdateAppResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -5163,6 +7706,8 @@ export interface UpdateAppResponse {
   /** The GEO location of the application, always the same with its parent resource */
   location?: string;
 }
+const UpdateAppResponse = GetAppResponse as any as S.Schema<UpdateAppResponse>;
+
 export interface UpdateBindingRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5177,6 +7722,11 @@ export interface UpdateBindingRequest {
   /** Properties of the Binding resource */
   properties?: BindingResourcePropertiesInput;
 }
+const UpdateBindingRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  2,
+) as any as S.Schema<UpdateBindingRequest>;
+
 export interface UpdateBindingResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -5188,6 +7738,8 @@ export interface UpdateBindingResponse {
   /** Properties of the Binding resource */
   properties?: BindingResourceProperties;
 }
+const UpdateBindingResponse = GetBindingResponse as any as S.Schema<UpdateBindingResponse>;
+
 export interface UpdateCustomDomainRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5202,6 +7754,11 @@ export interface UpdateCustomDomainRequest {
   /** Properties of the custom domain resource. */
   properties?: CustomDomainPropertiesInput;
 }
+const UpdateCustomDomainRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  3,
+) as any as S.Schema<UpdateCustomDomainRequest>;
+
 export interface UpdateCustomDomainResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -5213,6 +7770,9 @@ export interface UpdateCustomDomainResponse {
   /** Properties of the custom domain resource. */
   properties?: CustomDomainProperties;
 }
+const UpdateCustomDomainResponse =
+  CustomDomainsCreateOrUpdateResponse as any as S.Schema<UpdateCustomDomainResponse>;
+
 export interface UpdateDeploymentRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5229,6 +7789,11 @@ export interface UpdateDeploymentRequest {
   /** Sku of the Deployment resource */
   sku?: Sku;
 }
+const UpdateDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  4,
+) as any as S.Schema<UpdateDeploymentRequest>;
+
 export interface UpdateDeploymentResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -5242,8 +7807,13 @@ export interface UpdateDeploymentResponse {
   /** Sku of the Deployment resource */
   sku?: Sku;
 }
+const UpdateDeploymentResponse = GetDeploymentResponse as any as S.Schema<UpdateDeploymentResponse>;
+
 /** Tags of the service which is a list of key value pairs that describe the resource. */
 export type UpdateServiceRequestTagsMap = { [key: string]: string | undefined };
+const UpdateServiceRequestTagsMap =
+  ApmPropertiesInputPropertiesMap as any as S.Schema<UpdateServiceRequestTagsMap>;
+
 export interface UpdateServiceRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5260,6 +7830,11 @@ export interface UpdateServiceRequest {
   /** Sku of the Service resource */
   sku?: Sku;
 }
+const UpdateServiceRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  5,
+) as any as S.Schema<UpdateServiceRequest>;
+
 /** Tags of the service which is a list of key value pairs that describe the resource. */
 export type UpdateServiceResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateServiceResponse {
@@ -5279,6 +7854,8 @@ export interface UpdateServiceResponse {
   /** Sku of the Service resource */
   sku?: Sku;
 }
+const UpdateServiceResponse = GetServiceResponse as any as S.Schema<UpdateServiceResponse>;
+
 export interface ValidateApiPortalDomainRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5291,6 +7868,11 @@ export interface ValidateApiPortalDomainRequest {
   /** Name to be validated */
   name: string;
 }
+const ValidateApiPortalDomainRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  6,
+) as any as S.Schema<ValidateApiPortalDomainRequest>;
+
 /** Validation result for custom domain. */
 export interface CustomDomainValidateResult {
   /** Indicates if domain name is valid. */
@@ -5298,6 +7880,11 @@ export interface CustomDomainValidateResult {
   /** Message of why domain name is invalid. */
   message?: string;
 }
+const CustomDomainValidateResult = /*@__PURE__*/ __L.at(
+  __c55,
+  7,
+) as any as S.Schema<CustomDomainValidateResult>;
+
 export interface ValidateAppDomainRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5310,6 +7897,11 @@ export interface ValidateAppDomainRequest {
   /** Name to be validated */
   name: string;
 }
+const ValidateAppDomainRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  0,
+) as any as S.Schema<ValidateAppDomainRequest>;
+
 export interface ValidateConfigServerRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5320,8 +7912,16 @@ export interface ValidateConfigServerRequest {
   /** Property of git environment. */
   gitProperty?: ConfigServerGitProperty;
 }
+const ValidateConfigServerRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  1,
+) as any as S.Schema<ValidateConfigServerRequest>;
+
 /** The detail error messages of the record */
 export type ConfigServerSettingsErrorRecordMessagesList = Array<string>;
+const ConfigServerSettingsErrorRecordMessagesList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<ConfigServerSettingsErrorRecordMessagesList>;
+
 /** Error record of the config server settings */
 export interface ConfigServerSettingsErrorRecord {
   /** The name of the config server settings error record */
@@ -5331,8 +7931,18 @@ export interface ConfigServerSettingsErrorRecord {
   /** The detail error messages of the record */
   messages?: ConfigServerSettingsErrorRecordMessagesList;
 }
+const ConfigServerSettingsErrorRecord = /*@__PURE__*/ __L.at(
+  __c56,
+  2,
+) as any as S.Schema<ConfigServerSettingsErrorRecord>;
+
 /** The detail validation results */
 export type ConfigServerSettingsValidateResultDetailsList = Array<ConfigServerSettingsErrorRecord>;
+const ConfigServerSettingsValidateResultDetailsList = /*@__PURE__*/ __L.at(
+  __c56,
+  3,
+) as any as S.Schema<ConfigServerSettingsValidateResultDetailsList>;
+
 /** Validation result for config server settings */
 export interface ConfigServerSettingsValidateResult {
   /** Indicate if the config server settings are valid */
@@ -5340,6 +7950,11 @@ export interface ConfigServerSettingsValidateResult {
   /** The detail validation results */
   details?: ConfigServerSettingsValidateResultDetailsList;
 }
+const ConfigServerSettingsValidateResult = /*@__PURE__*/ __L.at(
+  __c56,
+  4,
+) as any as S.Schema<ConfigServerSettingsValidateResult>;
+
 export interface ValidateConfigurationServiceRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5351,8 +7966,16 @@ export interface ValidateConfigurationServiceRequest {
   configurationServiceName: string;
   gitProperty?: ConfigurationServiceGitProperty;
 }
+const ValidateConfigurationServiceRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  5,
+) as any as S.Schema<ValidateConfigurationServiceRequest>;
+
 /** Detailed validation messages. */
 export type ValidationMessagesMessagesList = Array<string>;
+const ValidationMessagesMessagesList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<ValidationMessagesMessagesList>;
+
 /** Validate messages of the configuration service git repositories */
 export interface ValidationMessages {
   /** The name of the configuration service git repository. */
@@ -5360,9 +7983,17 @@ export interface ValidationMessages {
   /** Detailed validation messages. */
   messages?: ValidationMessagesMessagesList;
 }
+const ValidationMessages = /*@__PURE__*/ __L.at(__c56, 6) as any as S.Schema<ValidationMessages>;
+
 /** The detail validation results */
 export type ConfigurationServiceGitPropertyValidateResultGitReposValidationResultList =
   Array<ValidationMessages>;
+const ConfigurationServiceGitPropertyValidateResultGitReposValidationResultList =
+  /*@__PURE__*/ __L.at(
+    __c56,
+    7,
+  ) as any as S.Schema<ConfigurationServiceGitPropertyValidateResultGitReposValidationResultList>;
+
 /** Validation result for configuration service settings */
 export interface ConfigurationServiceGitPropertyValidateResult {
   /** Indicate if the configuration service settings are valid */
@@ -5370,10 +8001,20 @@ export interface ConfigurationServiceGitPropertyValidateResult {
   /** The detail validation results */
   gitReposValidationResult?: ConfigurationServiceGitPropertyValidateResultGitReposValidationResultList;
 }
+const ConfigurationServiceGitPropertyValidateResult = /*@__PURE__*/ __L.at(
+  __c57,
+  0,
+) as any as S.Schema<ConfigurationServiceGitPropertyValidateResult>;
+
 /** Validation result for configuration service settings */
 export interface ConfigurationServiceSettingsValidateResult {
   gitPropertyValidationResult?: ConfigurationServiceGitPropertyValidateResult;
 }
+const ConfigurationServiceSettingsValidateResult = /*@__PURE__*/ __L.at(
+  __c57,
+  1,
+) as any as S.Schema<ConfigurationServiceSettingsValidateResult>;
+
 export interface ValidateConfigurationServiceResourceRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5385,6 +8026,11 @@ export interface ValidateConfigurationServiceResourceRequest {
   configurationServiceName: string;
   properties?: ConfigurationServicePropertiesInput;
 }
+const ValidateConfigurationServiceResourceRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  2,
+) as any as S.Schema<ValidateConfigurationServiceResourceRequest>;
+
 export interface ValidateContainerRegistryRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5397,6 +8043,11 @@ export interface ValidateContainerRegistryRequest {
   /** The credentials of the container registry resource. */
   credentials: ContainerRegistryCredentials;
 }
+const ValidateContainerRegistryRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  3,
+) as any as S.Schema<ValidateContainerRegistryRequest>;
+
 /** Validation result for container registry properties */
 export interface ContainerRegistryValidateResult {
   /** Indicate if the container registry properties are valid */
@@ -5404,9 +8055,17 @@ export interface ContainerRegistryValidateResult {
   /** Detailed validation messages. */
   message?: string;
 }
+const ContainerRegistryValidateResult =
+  CustomDomainValidateResult as any as S.Schema<ContainerRegistryValidateResult>;
+
 /** Type of the customized accelerator. */
 export type ValidateCustomizedAcceleratorRequestAcceleratorType = "Accelerator" | "Fragment";
+const ValidateCustomizedAcceleratorRequestAcceleratorType = S.String;
+
 export type ValidateCustomizedAcceleratorRequestAcceleratorTagsList = Array<string>;
+const ValidateCustomizedAcceleratorRequestAcceleratorTagsList =
+  ApiPortalPropertiesInputGatewayIdsList as any as S.Schema<ValidateCustomizedAcceleratorRequestAcceleratorTagsList>;
+
 export interface ValidateCustomizedAcceleratorRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5426,8 +8085,15 @@ export interface ValidateCustomizedAcceleratorRequest {
   acceleratorTags?: ValidateCustomizedAcceleratorRequestAcceleratorTagsList;
   gitRepository: AcceleratorGitRepository;
 }
+const ValidateCustomizedAcceleratorRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  4,
+) as any as S.Schema<ValidateCustomizedAcceleratorRequest>;
+
 /** State of the customized accelerator validation result */
 export type CustomizedAcceleratorValidateResultState = "Valid" | "Invalid";
+const CustomizedAcceleratorValidateResultState = S.String;
+
 /** Validation result for customized accelerator properties */
 export interface CustomizedAcceleratorValidateResult {
   /** State of the customized accelerator validation result */
@@ -5435,6 +8101,11 @@ export interface CustomizedAcceleratorValidateResult {
   /** The detail validation results */
   errorMessage?: string;
 }
+const CustomizedAcceleratorValidateResult = /*@__PURE__*/ __L.at(
+  __c57,
+  5,
+) as any as S.Schema<CustomizedAcceleratorValidateResult>;
+
 export interface ValidateGatewayDomainRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5447,6 +8118,11 @@ export interface ValidateGatewayDomainRequest {
   /** Name to be validated */
   name: string;
 }
+const ValidateGatewayDomainRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  6,
+) as any as S.Schema<ValidateGatewayDomainRequest>;
+
 export type ApiPortalCustomDomainsCreateOrUpdateError = AzureOpError;
 /** Create or update the API portal custom domain. */
 export const ApiPortalCustomDomainsCreateOrUpdate: API.OperationMethod<
@@ -5455,8 +8131,8 @@ export const ApiPortalCustomDomainsCreateOrUpdate: API.OperationMethod<
   ApiPortalCustomDomainsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<ApiPortalCustomDomainsCreateOrUpdateRequest>,
-  output: __S(3) as any as S.Schema<ApiPortalCustomDomainsCreateOrUpdateResponse>,
+  input: ApiPortalCustomDomainsCreateOrUpdateRequest,
+  output: ApiPortalCustomDomainsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5470,8 +8146,8 @@ export const ApiPortalsCreateOrUpdate: API.OperationMethod<
   ApiPortalsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<ApiPortalsCreateOrUpdateRequest>,
-  output: __S(13) as any as S.Schema<ApiPortalsCreateOrUpdateResponse>,
+  input: ApiPortalsCreateOrUpdateRequest,
+  output: ApiPortalsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5485,8 +8161,8 @@ export const ApmsCreateOrUpdate: API.OperationMethod<
   ApmsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<ApmsCreateOrUpdateRequest>,
-  output: __S(18) as any as S.Schema<ApmsCreateOrUpdateResponse>,
+  input: ApmsCreateOrUpdateRequest,
+  output: ApmsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5500,8 +8176,8 @@ export const ApplicationAcceleratorsCreateOrUpdate: API.OperationMethod<
   ApplicationAcceleratorsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<ApplicationAcceleratorsCreateOrUpdateRequest>,
-  output: __S(27) as any as S.Schema<ApplicationAcceleratorsCreateOrUpdateResponse>,
+  input: ApplicationAcceleratorsCreateOrUpdateRequest,
+  output: ApplicationAcceleratorsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5515,8 +8191,8 @@ export const ApplicationLiveViewsCreateOrUpdate: API.OperationMethod<
   ApplicationLiveViewsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<ApplicationLiveViewsCreateOrUpdateRequest>,
-  output: __S(32) as any as S.Schema<ApplicationLiveViewsCreateOrUpdateResponse>,
+  input: ApplicationLiveViewsCreateOrUpdateRequest,
+  output: ApplicationLiveViewsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5530,8 +8206,8 @@ export const AppsCreateOrUpdate: API.OperationMethod<
   AppsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<AppsCreateOrUpdateRequest>,
-  output: __S(53) as any as S.Schema<AppsCreateOrUpdateResponse>,
+  input: AppsCreateOrUpdateRequest,
+  output: AppsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5545,8 +8221,8 @@ export const AppsGetResourceUploadUrl: API.OperationMethod<
   AppsGetResourceUploadUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<AppsGetResourceUploadUrlRequest>,
-  output: __S(55) as any as S.Schema<ResourceUploadDefinition>,
+  input: AppsGetResourceUploadUrlRequest,
+  output: ResourceUploadDefinition,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5560,8 +8236,8 @@ export const BindingsCreateOrUpdate: API.OperationMethod<
   BindingsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<BindingsCreateOrUpdateRequest>,
-  output: __S(59) as any as S.Schema<BindingsCreateOrUpdateResponse>,
+  input: BindingsCreateOrUpdateRequest,
+  output: BindingsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5575,8 +8251,8 @@ export const BuildpackBindingCreateOrUpdate: API.OperationMethod<
   BuildpackBindingCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<BuildpackBindingCreateOrUpdateRequest>,
-  output: __S(64) as any as S.Schema<BuildpackBindingCreateOrUpdateResponse>,
+  input: BuildpackBindingCreateOrUpdateRequest,
+  output: BuildpackBindingCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5590,8 +8266,8 @@ export const BuildServiceAgentPoolUpdatePut: API.OperationMethod<
   BuildServiceAgentPoolUpdatePutError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<BuildServiceAgentPoolUpdatePutRequest>,
-  output: __S(70) as any as S.Schema<BuildServiceAgentPoolUpdatePutResponse>,
+  input: BuildServiceAgentPoolUpdatePutRequest,
+  output: BuildServiceAgentPoolUpdatePutResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5605,8 +8281,8 @@ export const BuildServiceBuilderCreateOrUpdate: API.OperationMethod<
   BuildServiceBuilderCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<BuildServiceBuilderCreateOrUpdateRequest>,
-  output: __S(79) as any as S.Schema<BuildServiceBuilderCreateOrUpdateResponse>,
+  input: BuildServiceBuilderCreateOrUpdateRequest,
+  output: BuildServiceBuilderCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5620,8 +8296,8 @@ export const BuildServiceCreateOrUpdate: API.OperationMethod<
   BuildServiceCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<BuildServiceCreateOrUpdateRequest>,
-  output: __S(83) as any as S.Schema<BuildServiceCreateOrUpdateResponse>,
+  input: BuildServiceCreateOrUpdateRequest,
+  output: BuildServiceCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5635,8 +8311,8 @@ export const BuildServiceCreateOrUpdateBuild: API.OperationMethod<
   BuildServiceCreateOrUpdateBuildError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<BuildServiceCreateOrUpdateBuildRequest>,
-  output: __S(91) as any as S.Schema<BuildServiceCreateOrUpdateBuildResponse>,
+  input: BuildServiceCreateOrUpdateBuildRequest,
+  output: BuildServiceCreateOrUpdateBuildResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5650,8 +8326,8 @@ export const BuildServiceGetResourceUploadUrl: API.OperationMethod<
   BuildServiceGetResourceUploadUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<BuildServiceGetResourceUploadUrlRequest>,
-  output: __S(55) as any as S.Schema<ResourceUploadDefinition>,
+  input: BuildServiceGetResourceUploadUrlRequest,
+  output: ResourceUploadDefinition,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5665,8 +8341,8 @@ export const CertificatesCreateOrUpdate: API.OperationMethod<
   CertificatesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<CertificatesCreateOrUpdateRequest>,
-  output: __S(96) as any as S.Schema<CertificatesCreateOrUpdateResponse>,
+  input: CertificatesCreateOrUpdateRequest,
+  output: CertificatesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5680,8 +8356,8 @@ export const CheckServiceNameAvailability: API.OperationMethod<
   CheckServiceNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<CheckServiceNameAvailabilityRequest>,
-  output: __S(98) as any as S.Schema<NameAvailability>,
+  input: CheckServiceNameAvailabilityRequest,
+  output: NameAvailability,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5695,8 +8371,8 @@ export const ConfigServersUpdatePatch: API.OperationMethod<
   ConfigServersUpdatePatchError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<ConfigServersUpdatePatchRequest>,
-  output: __S(107) as any as S.Schema<ConfigServersUpdatePatchResponse>,
+  input: ConfigServersUpdatePatchRequest,
+  output: ConfigServersUpdatePatchResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5710,8 +8386,8 @@ export const ConfigServersUpdatePut: API.OperationMethod<
   ConfigServersUpdatePutError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<ConfigServersUpdatePutRequest>,
-  output: __S(107) as any as S.Schema<ConfigServersUpdatePutResponse>,
+  input: ConfigServersUpdatePutRequest,
+  output: ConfigServersUpdatePutResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5725,8 +8401,8 @@ export const ConfigurationServicesCreateOrUpdate: API.OperationMethod<
   ConfigurationServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<ConfigurationServicesCreateOrUpdateRequest>,
-  output: __S(116) as any as S.Schema<ConfigurationServicesCreateOrUpdateResponse>,
+  input: ConfigurationServicesCreateOrUpdateRequest,
+  output: ConfigurationServicesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5740,8 +8416,8 @@ export const ContainerRegistriesCreateOrUpdate: API.OperationMethod<
   ContainerRegistriesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<ContainerRegistriesCreateOrUpdateRequest>,
-  output: __S(120) as any as S.Schema<ContainerRegistriesCreateOrUpdateResponse>,
+  input: ContainerRegistriesCreateOrUpdateRequest,
+  output: ContainerRegistriesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5755,8 +8431,8 @@ export const CustomDomainsCreateOrUpdate: API.OperationMethod<
   CustomDomainsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<CustomDomainsCreateOrUpdateRequest>,
-  output: __S(124) as any as S.Schema<CustomDomainsCreateOrUpdateResponse>,
+  input: CustomDomainsCreateOrUpdateRequest,
+  output: CustomDomainsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5770,8 +8446,8 @@ export const CustomizedAcceleratorsCreateOrUpdate: API.OperationMethod<
   CustomizedAcceleratorsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128) as any as S.Schema<CustomizedAcceleratorsCreateOrUpdateRequest>,
-  output: __S(130) as any as S.Schema<CustomizedAcceleratorsCreateOrUpdateResponse>,
+  input: CustomizedAcceleratorsCreateOrUpdateRequest,
+  output: CustomizedAcceleratorsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5785,8 +8461,8 @@ export const DeleteApiPortal: API.OperationMethod<
   DeleteApiPortalError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<DeleteApiPortalRequest>,
-  output: __S(132) as any as S.Schema<DeleteApiPortalResponse>,
+  input: DeleteApiPortalRequest,
+  output: DeleteApiPortalResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5800,8 +8476,8 @@ export const DeleteApiPortalCustomDomain: API.OperationMethod<
   DeleteApiPortalCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133) as any as S.Schema<DeleteApiPortalCustomDomainRequest>,
-  output: __S(19) as any as S.Schema<DeleteApiPortalCustomDomainResponse>,
+  input: DeleteApiPortalCustomDomainRequest,
+  output: DeleteApiPortalCustomDomainResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5815,8 +8491,8 @@ export const DeleteApm: API.OperationMethod<
   DeleteApmError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134) as any as S.Schema<DeleteApmRequest>,
-  output: __S(132) as any as S.Schema<DeleteApmResponse>,
+  input: DeleteApmRequest,
+  output: DeleteApmResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5830,8 +8506,8 @@ export const DeleteApp: API.OperationMethod<
   DeleteAppError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<DeleteAppRequest>,
-  output: __S(132) as any as S.Schema<DeleteAppResponse>,
+  input: DeleteAppRequest,
+  output: DeleteAppResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5845,8 +8521,8 @@ export const DeleteApplicationAccelerator: API.OperationMethod<
   DeleteApplicationAcceleratorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<DeleteApplicationAcceleratorRequest>,
-  output: __S(19) as any as S.Schema<DeleteApplicationAcceleratorResponse>,
+  input: DeleteApplicationAcceleratorRequest,
+  output: DeleteApplicationAcceleratorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5860,8 +8536,8 @@ export const DeleteApplicationLiveView: API.OperationMethod<
   DeleteApplicationLiveViewError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<DeleteApplicationLiveViewRequest>,
-  output: __S(19) as any as S.Schema<DeleteApplicationLiveViewResponse>,
+  input: DeleteApplicationLiveViewRequest,
+  output: DeleteApplicationLiveViewResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5875,8 +8551,8 @@ export const DeleteBinding: API.OperationMethod<
   DeleteBindingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<DeleteBindingRequest>,
-  output: __S(132) as any as S.Schema<DeleteBindingResponse>,
+  input: DeleteBindingRequest,
+  output: DeleteBindingResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5890,8 +8566,8 @@ export const DeleteBuildpackBinding: API.OperationMethod<
   DeleteBuildpackBindingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<DeleteBuildpackBindingRequest>,
-  output: __S(132) as any as S.Schema<DeleteBuildpackBindingResponse>,
+  input: DeleteBuildpackBindingRequest,
+  output: DeleteBuildpackBindingResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5905,8 +8581,8 @@ export const DeleteBuildServiceBuild: API.OperationMethod<
   DeleteBuildServiceBuildError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<DeleteBuildServiceBuildRequest>,
-  output: __S(141) as any as S.Schema<DeleteBuildServiceBuildResponse>,
+  input: DeleteBuildServiceBuildRequest,
+  output: DeleteBuildServiceBuildResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5920,8 +8596,8 @@ export const DeleteBuildServiceBuilder: API.OperationMethod<
   DeleteBuildServiceBuilderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<DeleteBuildServiceBuilderRequest>,
-  output: __S(19) as any as S.Schema<DeleteBuildServiceBuilderResponse>,
+  input: DeleteBuildServiceBuilderRequest,
+  output: DeleteBuildServiceBuilderResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5935,8 +8611,8 @@ export const DeleteCertificate: API.OperationMethod<
   DeleteCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143) as any as S.Schema<DeleteCertificateRequest>,
-  output: __S(132) as any as S.Schema<DeleteCertificateResponse>,
+  input: DeleteCertificateRequest,
+  output: DeleteCertificateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5950,8 +8626,8 @@ export const DeleteConfigurationService: API.OperationMethod<
   DeleteConfigurationServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144) as any as S.Schema<DeleteConfigurationServiceRequest>,
-  output: __S(19) as any as S.Schema<DeleteConfigurationServiceResponse>,
+  input: DeleteConfigurationServiceRequest,
+  output: DeleteConfigurationServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5965,8 +8641,8 @@ export const DeleteContainerRegistry: API.OperationMethod<
   DeleteContainerRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<DeleteContainerRegistryRequest>,
-  output: __S(141) as any as S.Schema<DeleteContainerRegistryResponse>,
+  input: DeleteContainerRegistryRequest,
+  output: DeleteContainerRegistryResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5980,8 +8656,8 @@ export const DeleteCustomDomain: API.OperationMethod<
   DeleteCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<DeleteCustomDomainRequest>,
-  output: __S(132) as any as S.Schema<DeleteCustomDomainResponse>,
+  input: DeleteCustomDomainRequest,
+  output: DeleteCustomDomainResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5995,8 +8671,8 @@ export const DeleteCustomizedAccelerator: API.OperationMethod<
   DeleteCustomizedAcceleratorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147) as any as S.Schema<DeleteCustomizedAcceleratorRequest>,
-  output: __S(19) as any as S.Schema<DeleteCustomizedAcceleratorResponse>,
+  input: DeleteCustomizedAcceleratorRequest,
+  output: DeleteCustomizedAcceleratorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6010,8 +8686,8 @@ export const DeleteDeployment: API.OperationMethod<
   DeleteDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148) as any as S.Schema<DeleteDeploymentRequest>,
-  output: __S(132) as any as S.Schema<DeleteDeploymentResponse>,
+  input: DeleteDeploymentRequest,
+  output: DeleteDeploymentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6025,8 +8701,8 @@ export const DeleteDevToolPortal: API.OperationMethod<
   DeleteDevToolPortalError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<DeleteDevToolPortalRequest>,
-  output: __S(132) as any as S.Schema<DeleteDevToolPortalResponse>,
+  input: DeleteDevToolPortalRequest,
+  output: DeleteDevToolPortalResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6040,8 +8716,8 @@ export const DeleteGateway: API.OperationMethod<
   DeleteGatewayError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<DeleteGatewayRequest>,
-  output: __S(132) as any as S.Schema<DeleteGatewayResponse>,
+  input: DeleteGatewayRequest,
+  output: DeleteGatewayResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6055,8 +8731,8 @@ export const DeleteGatewayCustomDomain: API.OperationMethod<
   DeleteGatewayCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<DeleteGatewayCustomDomainRequest>,
-  output: __S(19) as any as S.Schema<DeleteGatewayCustomDomainResponse>,
+  input: DeleteGatewayCustomDomainRequest,
+  output: DeleteGatewayCustomDomainResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6070,8 +8746,8 @@ export const DeleteGatewayRouteConfig: API.OperationMethod<
   DeleteGatewayRouteConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152) as any as S.Schema<DeleteGatewayRouteConfigRequest>,
-  output: __S(19) as any as S.Schema<DeleteGatewayRouteConfigResponse>,
+  input: DeleteGatewayRouteConfigRequest,
+  output: DeleteGatewayRouteConfigResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6085,8 +8761,8 @@ export const DeleteService: API.OperationMethod<
   DeleteServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<DeleteServiceRequest>,
-  output: __S(132) as any as S.Schema<DeleteServiceResponse>,
+  input: DeleteServiceRequest,
+  output: DeleteServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6100,8 +8776,8 @@ export const DeleteServiceRegistry: API.OperationMethod<
   DeleteServiceRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<DeleteServiceRegistryRequest>,
-  output: __S(132) as any as S.Schema<DeleteServiceRegistryResponse>,
+  input: DeleteServiceRegistryRequest,
+  output: DeleteServiceRegistryResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6115,8 +8791,8 @@ export const DeleteStorage: API.OperationMethod<
   DeleteStorageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155) as any as S.Schema<DeleteStorageRequest>,
-  output: __S(132) as any as S.Schema<DeleteStorageResponse>,
+  input: DeleteStorageRequest,
+  output: DeleteStorageResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6130,8 +8806,8 @@ export const DeploymentsCreateOrUpdate: API.OperationMethod<
   DeploymentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162) as any as S.Schema<DeploymentsCreateOrUpdateRequest>,
-  output: __S(166) as any as S.Schema<DeploymentsCreateOrUpdateResponse>,
+  input: DeploymentsCreateOrUpdateRequest,
+  output: DeploymentsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6145,8 +8821,8 @@ export const DevToolPortalsCreateOrUpdate: API.OperationMethod<
   DevToolPortalsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171) as any as S.Schema<DevToolPortalsCreateOrUpdateRequest>,
-  output: __S(177) as any as S.Schema<DevToolPortalsCreateOrUpdateResponse>,
+  input: DevToolPortalsCreateOrUpdateRequest,
+  output: DevToolPortalsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6160,8 +8836,8 @@ export const DisableDeploymentRemoteDebugging: API.OperationMethod<
   DisableDeploymentRemoteDebuggingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178) as any as S.Schema<DisableDeploymentRemoteDebuggingRequest>,
-  output: __S(179) as any as S.Schema<RemoteDebugging>,
+  input: DisableDeploymentRemoteDebuggingRequest,
+  output: RemoteDebugging,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6175,8 +8851,8 @@ export const DisablePredefinedAccelerator: API.OperationMethod<
   DisablePredefinedAcceleratorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180) as any as S.Schema<DisablePredefinedAcceleratorRequest>,
-  output: __S(19) as any as S.Schema<DisablePredefinedAcceleratorResponse>,
+  input: DisablePredefinedAcceleratorRequest,
+  output: DisablePredefinedAcceleratorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6190,8 +8866,8 @@ export const DisableServiceApmGlobally: API.OperationMethod<
   DisableServiceApmGloballyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<DisableServiceApmGloballyRequest>,
-  output: __S(19) as any as S.Schema<DisableServiceApmGloballyResponse>,
+  input: DisableServiceApmGloballyRequest,
+  output: DisableServiceApmGloballyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6205,8 +8881,8 @@ export const DisableServiceTestEndpoint: API.OperationMethod<
   DisableServiceTestEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<DisableServiceTestEndpointRequest>,
-  output: __S(19) as any as S.Schema<DisableServiceTestEndpointResponse>,
+  input: DisableServiceTestEndpointRequest,
+  output: DisableServiceTestEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6220,8 +8896,8 @@ export const EnableDeploymentRemoteDebugging: API.OperationMethod<
   EnableDeploymentRemoteDebuggingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183) as any as S.Schema<EnableDeploymentRemoteDebuggingRequest>,
-  output: __S(179) as any as S.Schema<RemoteDebugging>,
+  input: EnableDeploymentRemoteDebuggingRequest,
+  output: RemoteDebugging,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6235,8 +8911,8 @@ export const EnablePredefinedAccelerator: API.OperationMethod<
   EnablePredefinedAcceleratorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184) as any as S.Schema<EnablePredefinedAcceleratorRequest>,
-  output: __S(19) as any as S.Schema<EnablePredefinedAcceleratorResponse>,
+  input: EnablePredefinedAcceleratorRequest,
+  output: EnablePredefinedAcceleratorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6250,8 +8926,8 @@ export const EnableServiceApmGlobally: API.OperationMethod<
   EnableServiceApmGloballyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<EnableServiceApmGloballyRequest>,
-  output: __S(19) as any as S.Schema<EnableServiceApmGloballyResponse>,
+  input: EnableServiceApmGloballyRequest,
+  output: EnableServiceApmGloballyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6265,8 +8941,8 @@ export const EnableServiceTestEndpoint: API.OperationMethod<
   EnableServiceTestEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<EnableServiceTestEndpointRequest>,
-  output: __S(187) as any as S.Schema<TestKeys>,
+  input: EnableServiceTestEndpointRequest,
+  output: TestKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6280,8 +8956,8 @@ export const FlushServiceVnetDnsSetting: API.OperationMethod<
   FlushServiceVnetDnsSettingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188) as any as S.Schema<FlushServiceVnetDnsSettingRequest>,
-  output: __S(19) as any as S.Schema<FlushServiceVnetDnsSettingResponse>,
+  input: FlushServiceVnetDnsSettingRequest,
+  output: FlushServiceVnetDnsSettingResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6295,8 +8971,8 @@ export const GatewayCustomDomainsCreateOrUpdate: API.OperationMethod<
   GatewayCustomDomainsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189) as any as S.Schema<GatewayCustomDomainsCreateOrUpdateRequest>,
-  output: __S(3) as any as S.Schema<GatewayCustomDomainsCreateOrUpdateResponse>,
+  input: GatewayCustomDomainsCreateOrUpdateRequest,
+  output: GatewayCustomDomainsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6310,8 +8986,8 @@ export const GatewayRouteConfigsCreateOrUpdate: API.OperationMethod<
   GatewayRouteConfigsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194) as any as S.Schema<GatewayRouteConfigsCreateOrUpdateRequest>,
-  output: __S(196) as any as S.Schema<GatewayRouteConfigsCreateOrUpdateResponse>,
+  input: GatewayRouteConfigsCreateOrUpdateRequest,
+  output: GatewayRouteConfigsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6325,8 +9001,8 @@ export const GatewaysCreateOrUpdate: API.OperationMethod<
   GatewaysCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201) as any as S.Schema<GatewaysCreateOrUpdateRequest>,
-  output: __S(205) as any as S.Schema<GatewaysCreateOrUpdateResponse>,
+  input: GatewaysCreateOrUpdateRequest,
+  output: GatewaysCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6340,8 +9016,8 @@ export const GenerateDeploymentHeapDump: API.OperationMethod<
   GenerateDeploymentHeapDumpError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206) as any as S.Schema<GenerateDeploymentHeapDumpRequest>,
-  output: __S(19) as any as S.Schema<GenerateDeploymentHeapDumpResponse>,
+  input: GenerateDeploymentHeapDumpRequest,
+  output: GenerateDeploymentHeapDumpResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6355,8 +9031,8 @@ export const GenerateDeploymentThreadDump: API.OperationMethod<
   GenerateDeploymentThreadDumpError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207) as any as S.Schema<GenerateDeploymentThreadDumpRequest>,
-  output: __S(19) as any as S.Schema<GenerateDeploymentThreadDumpResponse>,
+  input: GenerateDeploymentThreadDumpRequest,
+  output: GenerateDeploymentThreadDumpResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6370,8 +9046,8 @@ export const GetApiPortal: API.OperationMethod<
   GetApiPortalError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208) as any as S.Schema<GetApiPortalRequest>,
-  output: __S(209) as any as S.Schema<GetApiPortalResponse>,
+  input: GetApiPortalRequest,
+  output: GetApiPortalResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6385,8 +9061,8 @@ export const GetApiPortalCustomDomain: API.OperationMethod<
   GetApiPortalCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210) as any as S.Schema<GetApiPortalCustomDomainRequest>,
-  output: __S(3) as any as S.Schema<GetApiPortalCustomDomainResponse>,
+  input: GetApiPortalCustomDomainRequest,
+  output: GetApiPortalCustomDomainResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6400,8 +9076,8 @@ export const GetApm: API.OperationMethod<
   GetApmError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211) as any as S.Schema<GetApmRequest>,
-  output: __S(212) as any as S.Schema<GetApmResponse>,
+  input: GetApmRequest,
+  output: GetApmResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6415,8 +9091,8 @@ export const GetApp: API.OperationMethod<
   GetAppError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213) as any as S.Schema<GetAppRequest>,
-  output: __S(214) as any as S.Schema<GetAppResponse>,
+  input: GetAppRequest,
+  output: GetAppResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6430,8 +9106,8 @@ export const GetApplicationAccelerator: API.OperationMethod<
   GetApplicationAcceleratorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215) as any as S.Schema<GetApplicationAcceleratorRequest>,
-  output: __S(27) as any as S.Schema<GetApplicationAcceleratorResponse>,
+  input: GetApplicationAcceleratorRequest,
+  output: GetApplicationAcceleratorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6445,8 +9121,8 @@ export const GetApplicationLiveView: API.OperationMethod<
   GetApplicationLiveViewError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216) as any as S.Schema<GetApplicationLiveViewRequest>,
-  output: __S(32) as any as S.Schema<GetApplicationLiveViewResponse>,
+  input: GetApplicationLiveViewRequest,
+  output: GetApplicationLiveViewResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6460,8 +9136,8 @@ export const GetBinding: API.OperationMethod<
   GetBindingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217) as any as S.Schema<GetBindingRequest>,
-  output: __S(218) as any as S.Schema<GetBindingResponse>,
+  input: GetBindingRequest,
+  output: GetBindingResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6475,8 +9151,8 @@ export const GetBuildpackBinding: API.OperationMethod<
   GetBuildpackBindingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219) as any as S.Schema<GetBuildpackBindingRequest>,
-  output: __S(64) as any as S.Schema<GetBuildpackBindingResponse>,
+  input: GetBuildpackBindingRequest,
+  output: GetBuildpackBindingResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6490,8 +9166,8 @@ export const GetBuildServiceAgentPool: API.OperationMethod<
   GetBuildServiceAgentPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220) as any as S.Schema<GetBuildServiceAgentPoolRequest>,
-  output: __S(70) as any as S.Schema<GetBuildServiceAgentPoolResponse>,
+  input: GetBuildServiceAgentPoolRequest,
+  output: GetBuildServiceAgentPoolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6505,8 +9181,8 @@ export const GetBuildServiceBuild: API.OperationMethod<
   GetBuildServiceBuildError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221) as any as S.Schema<GetBuildServiceBuildRequest>,
-  output: __S(91) as any as S.Schema<GetBuildServiceBuildResponse>,
+  input: GetBuildServiceBuildRequest,
+  output: GetBuildServiceBuildResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6520,8 +9196,8 @@ export const GetBuildServiceBuilder: API.OperationMethod<
   GetBuildServiceBuilderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222) as any as S.Schema<GetBuildServiceBuilderRequest>,
-  output: __S(79) as any as S.Schema<GetBuildServiceBuilderResponse>,
+  input: GetBuildServiceBuilderRequest,
+  output: GetBuildServiceBuilderResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6535,8 +9211,8 @@ export const GetBuildServiceBuildResult: API.OperationMethod<
   GetBuildServiceBuildResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223) as any as S.Schema<GetBuildServiceBuildResultRequest>,
-  output: __S(227) as any as S.Schema<GetBuildServiceBuildResultResponse>,
+  input: GetBuildServiceBuildResultRequest,
+  output: GetBuildServiceBuildResultResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6550,8 +9226,8 @@ export const GetBuildServiceBuildResultLog: API.OperationMethod<
   GetBuildServiceBuildResultLogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228) as any as S.Schema<GetBuildServiceBuildResultLogRequest>,
-  output: __S(229) as any as S.Schema<BuildResultLog>,
+  input: GetBuildServiceBuildResultLogRequest,
+  output: BuildResultLog,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6565,8 +9241,8 @@ export const GetBuildServiceBuildService: API.OperationMethod<
   GetBuildServiceBuildServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230) as any as S.Schema<GetBuildServiceBuildServiceRequest>,
-  output: __S(83) as any as S.Schema<GetBuildServiceBuildServiceResponse>,
+  input: GetBuildServiceBuildServiceRequest,
+  output: GetBuildServiceBuildServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6580,8 +9256,8 @@ export const GetBuildServiceSupportedBuildpack: API.OperationMethod<
   GetBuildServiceSupportedBuildpackError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231) as any as S.Schema<GetBuildServiceSupportedBuildpackRequest>,
-  output: __S(233) as any as S.Schema<GetBuildServiceSupportedBuildpackResponse>,
+  input: GetBuildServiceSupportedBuildpackRequest,
+  output: GetBuildServiceSupportedBuildpackResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6595,8 +9271,8 @@ export const GetBuildServiceSupportedStack: API.OperationMethod<
   GetBuildServiceSupportedStackError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234) as any as S.Schema<GetBuildServiceSupportedStackRequest>,
-  output: __S(236) as any as S.Schema<GetBuildServiceSupportedStackResponse>,
+  input: GetBuildServiceSupportedStackRequest,
+  output: GetBuildServiceSupportedStackResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6610,8 +9286,8 @@ export const GetCertificate: API.OperationMethod<
   GetCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237) as any as S.Schema<GetCertificateRequest>,
-  output: __S(238) as any as S.Schema<GetCertificateResponse>,
+  input: GetCertificateRequest,
+  output: GetCertificateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6625,8 +9301,8 @@ export const GetConfigServer: API.OperationMethod<
   GetConfigServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239) as any as S.Schema<GetConfigServerRequest>,
-  output: __S(240) as any as S.Schema<GetConfigServerResponse>,
+  input: GetConfigServerRequest,
+  output: GetConfigServerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6640,8 +9316,8 @@ export const GetConfigurationService: API.OperationMethod<
   GetConfigurationServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241) as any as S.Schema<GetConfigurationServiceRequest>,
-  output: __S(116) as any as S.Schema<GetConfigurationServiceResponse>,
+  input: GetConfigurationServiceRequest,
+  output: GetConfigurationServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6655,8 +9331,8 @@ export const GetContainerRegistry: API.OperationMethod<
   GetContainerRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242) as any as S.Schema<GetContainerRegistryRequest>,
-  output: __S(120) as any as S.Schema<GetContainerRegistryResponse>,
+  input: GetContainerRegistryRequest,
+  output: GetContainerRegistryResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6670,8 +9346,8 @@ export const GetCustomDomain: API.OperationMethod<
   GetCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243) as any as S.Schema<GetCustomDomainRequest>,
-  output: __S(244) as any as S.Schema<GetCustomDomainResponse>,
+  input: GetCustomDomainRequest,
+  output: GetCustomDomainResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6685,8 +9361,8 @@ export const GetCustomizedAccelerator: API.OperationMethod<
   GetCustomizedAcceleratorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245) as any as S.Schema<GetCustomizedAcceleratorRequest>,
-  output: __S(130) as any as S.Schema<GetCustomizedAcceleratorResponse>,
+  input: GetCustomizedAcceleratorRequest,
+  output: GetCustomizedAcceleratorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6700,8 +9376,8 @@ export const GetDeployment: API.OperationMethod<
   GetDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246) as any as S.Schema<GetDeploymentRequest>,
-  output: __S(247) as any as S.Schema<GetDeploymentResponse>,
+  input: GetDeploymentRequest,
+  output: GetDeploymentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6715,8 +9391,8 @@ export const GetDeploymentLogFileUrl: API.OperationMethod<
   GetDeploymentLogFileUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248) as any as S.Schema<GetDeploymentLogFileUrlRequest>,
-  output: __S(249) as any as S.Schema<LogFileUrlResponse>,
+  input: GetDeploymentLogFileUrlRequest,
+  output: LogFileUrlResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6730,8 +9406,8 @@ export const GetDeploymentRemoteDebuggingConfig: API.OperationMethod<
   GetDeploymentRemoteDebuggingConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250) as any as S.Schema<GetDeploymentRemoteDebuggingConfigRequest>,
-  output: __S(179) as any as S.Schema<RemoteDebugging>,
+  input: GetDeploymentRemoteDebuggingConfigRequest,
+  output: RemoteDebugging,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6745,8 +9421,8 @@ export const GetDevToolPortal: API.OperationMethod<
   GetDevToolPortalError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251) as any as S.Schema<GetDevToolPortalRequest>,
-  output: __S(252) as any as S.Schema<GetDevToolPortalResponse>,
+  input: GetDevToolPortalRequest,
+  output: GetDevToolPortalResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6760,8 +9436,8 @@ export const GetGateway: API.OperationMethod<
   GetGatewayError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253) as any as S.Schema<GetGatewayRequest>,
-  output: __S(254) as any as S.Schema<GetGatewayResponse>,
+  input: GetGatewayRequest,
+  output: GetGatewayResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6775,8 +9451,8 @@ export const GetGatewayCustomDomain: API.OperationMethod<
   GetGatewayCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255) as any as S.Schema<GetGatewayCustomDomainRequest>,
-  output: __S(3) as any as S.Schema<GetGatewayCustomDomainResponse>,
+  input: GetGatewayCustomDomainRequest,
+  output: GetGatewayCustomDomainResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6790,8 +9466,8 @@ export const GetGatewayRouteConfig: API.OperationMethod<
   GetGatewayRouteConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256) as any as S.Schema<GetGatewayRouteConfigRequest>,
-  output: __S(196) as any as S.Schema<GetGatewayRouteConfigResponse>,
+  input: GetGatewayRouteConfigRequest,
+  output: GetGatewayRouteConfigResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6805,8 +9481,8 @@ export const GetMonitoringSettings: API.OperationMethod<
   GetMonitoringSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257) as any as S.Schema<GetMonitoringSettingsRequest>,
-  output: __S(260) as any as S.Schema<GetMonitoringSettingsResponse>,
+  input: GetMonitoringSettingsRequest,
+  output: GetMonitoringSettingsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6820,8 +9496,8 @@ export const GetPredefinedAccelerator: API.OperationMethod<
   GetPredefinedAcceleratorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261) as any as S.Schema<GetPredefinedAcceleratorRequest>,
-  output: __S(263) as any as S.Schema<GetPredefinedAcceleratorResponse>,
+  input: GetPredefinedAcceleratorRequest,
+  output: GetPredefinedAcceleratorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6835,8 +9511,8 @@ export const GetService: API.OperationMethod<
   GetServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264) as any as S.Schema<GetServiceRequest>,
-  output: __S(273) as any as S.Schema<GetServiceResponse>,
+  input: GetServiceRequest,
+  output: GetServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6850,8 +9526,8 @@ export const GetServiceRegistry: API.OperationMethod<
   GetServiceRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274) as any as S.Schema<GetServiceRegistryRequest>,
-  output: __S(276) as any as S.Schema<GetServiceRegistryResponse>,
+  input: GetServiceRegistryRequest,
+  output: GetServiceRegistryResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6865,8 +9541,8 @@ export const GetStorage: API.OperationMethod<
   GetStorageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277) as any as S.Schema<GetStorageRequest>,
-  output: __S(279) as any as S.Schema<GetStorageResponse>,
+  input: GetStorageRequest,
+  output: GetStorageResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6880,8 +9556,8 @@ export const ListApiPortalCustomDomains: API.OperationMethod<
   ListApiPortalCustomDomainsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280) as any as S.Schema<ListApiPortalCustomDomainsRequest>,
-  output: __S(282) as any as S.Schema<ApiPortalCustomDomainResourceCollection>,
+  input: ListApiPortalCustomDomainsRequest,
+  output: ApiPortalCustomDomainResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6895,8 +9571,8 @@ export const ListApiPortals: API.OperationMethod<
   ListApiPortalsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283) as any as S.Schema<ListApiPortalsRequest>,
-  output: __S(285) as any as S.Schema<ApiPortalResourceCollection>,
+  input: ListApiPortalsRequest,
+  output: ApiPortalResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6910,8 +9586,8 @@ export const ListApms: API.OperationMethod<
   ListApmsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286) as any as S.Schema<ListApmsRequest>,
-  output: __S(288) as any as S.Schema<ApmResourceCollection>,
+  input: ListApmsRequest,
+  output: ApmResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6925,8 +9601,8 @@ export const ListApmSecretKeys: API.OperationMethod<
   ListApmSecretKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289) as any as S.Schema<ListApmSecretKeysRequest>,
-  output: __S(290) as any as S.Schema<ApmSecretKeys>,
+  input: ListApmSecretKeysRequest,
+  output: ApmSecretKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6940,8 +9616,8 @@ export const ListApplicationAccelerators: API.OperationMethod<
   ListApplicationAcceleratorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291) as any as S.Schema<ListApplicationAcceleratorsRequest>,
-  output: __S(293) as any as S.Schema<ApplicationAcceleratorResourceCollection>,
+  input: ListApplicationAcceleratorsRequest,
+  output: ApplicationAcceleratorResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6955,8 +9631,8 @@ export const ListApplicationLiveViews: API.OperationMethod<
   ListApplicationLiveViewsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294) as any as S.Schema<ListApplicationLiveViewsRequest>,
-  output: __S(296) as any as S.Schema<ApplicationLiveViewResourceCollection>,
+  input: ListApplicationLiveViewsRequest,
+  output: ApplicationLiveViewResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6970,8 +9646,8 @@ export const ListApps: API.OperationMethod<
   ListAppsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297) as any as S.Schema<ListAppsRequest>,
-  output: __S(299) as any as S.Schema<AppResourceCollection>,
+  input: ListAppsRequest,
+  output: AppResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6985,8 +9661,8 @@ export const ListBindings: API.OperationMethod<
   ListBindingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300) as any as S.Schema<ListBindingsRequest>,
-  output: __S(302) as any as S.Schema<BindingResourceCollection>,
+  input: ListBindingsRequest,
+  output: BindingResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7000,8 +9676,8 @@ export const ListBuildpackBinding: API.OperationMethod<
   ListBuildpackBindingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303) as any as S.Schema<ListBuildpackBindingRequest>,
-  output: __S(306) as any as S.Schema<BuildpackBindingResourceCollection>,
+  input: ListBuildpackBindingRequest,
+  output: BuildpackBindingResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7015,8 +9691,8 @@ export const ListBuildpackBindingForCluster: API.OperationMethod<
   ListBuildpackBindingForClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307) as any as S.Schema<ListBuildpackBindingForClusterRequest>,
-  output: __S(306) as any as S.Schema<BuildpackBindingResourceCollection>,
+  input: ListBuildpackBindingForClusterRequest,
+  output: BuildpackBindingResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7030,8 +9706,8 @@ export const ListBuildServiceAgentPool: API.OperationMethod<
   ListBuildServiceAgentPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308) as any as S.Schema<ListBuildServiceAgentPoolRequest>,
-  output: __S(310) as any as S.Schema<BuildServiceAgentPoolResourceCollection>,
+  input: ListBuildServiceAgentPoolRequest,
+  output: BuildServiceAgentPoolResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7045,8 +9721,8 @@ export const ListBuildServiceBuilder: API.OperationMethod<
   ListBuildServiceBuilderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311) as any as S.Schema<ListBuildServiceBuilderRequest>,
-  output: __S(314) as any as S.Schema<BuilderResourceCollection>,
+  input: ListBuildServiceBuilderRequest,
+  output: BuilderResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7060,8 +9736,8 @@ export const ListBuildServiceBuilderDeployments: API.OperationMethod<
   ListBuildServiceBuilderDeploymentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315) as any as S.Schema<ListBuildServiceBuilderDeploymentsRequest>,
-  output: __S(316) as any as S.Schema<DeploymentList>,
+  input: ListBuildServiceBuilderDeploymentsRequest,
+  output: DeploymentList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7075,8 +9751,8 @@ export const ListBuildServiceBuildResults: API.OperationMethod<
   ListBuildServiceBuildResultsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317) as any as S.Schema<ListBuildServiceBuildResultsRequest>,
-  output: __S(320) as any as S.Schema<BuildResultCollection>,
+  input: ListBuildServiceBuildResultsRequest,
+  output: BuildResultCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7090,8 +9766,8 @@ export const ListBuildServiceBuilds: API.OperationMethod<
   ListBuildServiceBuildsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321) as any as S.Schema<ListBuildServiceBuildsRequest>,
-  output: __S(324) as any as S.Schema<BuildCollection>,
+  input: ListBuildServiceBuildsRequest,
+  output: BuildCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7105,8 +9781,8 @@ export const ListBuildServiceBuildServices: API.OperationMethod<
   ListBuildServiceBuildServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325) as any as S.Schema<ListBuildServiceBuildServicesRequest>,
-  output: __S(328) as any as S.Schema<BuildServiceCollection>,
+  input: ListBuildServiceBuildServicesRequest,
+  output: BuildServiceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7120,8 +9796,8 @@ export const ListBuildServiceSupportedBuildpacks: API.OperationMethod<
   ListBuildServiceSupportedBuildpacksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329) as any as S.Schema<ListBuildServiceSupportedBuildpacksRequest>,
-  output: __S(331) as any as S.Schema<SupportedBuildpacksCollection>,
+  input: ListBuildServiceSupportedBuildpacksRequest,
+  output: SupportedBuildpacksCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7135,8 +9811,8 @@ export const ListBuildServiceSupportedStacks: API.OperationMethod<
   ListBuildServiceSupportedStacksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(332) as any as S.Schema<ListBuildServiceSupportedStacksRequest>,
-  output: __S(335) as any as S.Schema<SupportedStacksCollection>,
+  input: ListBuildServiceSupportedStacksRequest,
+  output: SupportedStacksCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7150,8 +9826,8 @@ export const ListCertificates: API.OperationMethod<
   ListCertificatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336) as any as S.Schema<ListCertificatesRequest>,
-  output: __S(338) as any as S.Schema<CertificateResourceCollection>,
+  input: ListCertificatesRequest,
+  output: CertificateResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7165,8 +9841,8 @@ export const ListConfigurationServices: API.OperationMethod<
   ListConfigurationServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339) as any as S.Schema<ListConfigurationServicesRequest>,
-  output: __S(341) as any as S.Schema<ConfigurationServiceResourceCollection>,
+  input: ListConfigurationServicesRequest,
+  output: ConfigurationServiceResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7180,8 +9856,8 @@ export const ListContainerRegistries: API.OperationMethod<
   ListContainerRegistriesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(342) as any as S.Schema<ListContainerRegistriesRequest>,
-  output: __S(344) as any as S.Schema<ContainerRegistryResourceCollection>,
+  input: ListContainerRegistriesRequest,
+  output: ContainerRegistryResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7195,8 +9871,8 @@ export const ListCustomDomains: API.OperationMethod<
   ListCustomDomainsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345) as any as S.Schema<ListCustomDomainsRequest>,
-  output: __S(347) as any as S.Schema<CustomDomainResourceCollection>,
+  input: ListCustomDomainsRequest,
+  output: CustomDomainResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7210,8 +9886,8 @@ export const ListCustomizedAccelerators: API.OperationMethod<
   ListCustomizedAcceleratorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348) as any as S.Schema<ListCustomizedAcceleratorsRequest>,
-  output: __S(350) as any as S.Schema<CustomizedAcceleratorResourceCollection>,
+  input: ListCustomizedAcceleratorsRequest,
+  output: CustomizedAcceleratorResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7225,8 +9901,8 @@ export const ListDeploymentForCluster: API.OperationMethod<
   ListDeploymentForClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351) as any as S.Schema<ListDeploymentForClusterRequest>,
-  output: __S(353) as any as S.Schema<DeploymentResourceCollection>,
+  input: ListDeploymentForClusterRequest,
+  output: DeploymentResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7240,8 +9916,8 @@ export const ListDeployments: API.OperationMethod<
   ListDeploymentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(354) as any as S.Schema<ListDeploymentsRequest>,
-  output: __S(353) as any as S.Schema<DeploymentResourceCollection>,
+  input: ListDeploymentsRequest,
+  output: DeploymentResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7255,8 +9931,8 @@ export const ListDevToolPortals: API.OperationMethod<
   ListDevToolPortalsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355) as any as S.Schema<ListDevToolPortalsRequest>,
-  output: __S(357) as any as S.Schema<DevToolPortalResourceCollection>,
+  input: ListDevToolPortalsRequest,
+  output: DevToolPortalResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7270,8 +9946,8 @@ export const ListGatewayCustomDomains: API.OperationMethod<
   ListGatewayCustomDomainsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358) as any as S.Schema<ListGatewayCustomDomainsRequest>,
-  output: __S(282) as any as S.Schema<GatewayCustomDomainResourceCollection>,
+  input: ListGatewayCustomDomainsRequest,
+  output: GatewayCustomDomainResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7285,8 +9961,8 @@ export const ListGatewayEnvSecrets: API.OperationMethod<
   ListGatewayEnvSecretsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359) as any as S.Schema<ListGatewayEnvSecretsRequest>,
-  output: __S(360) as any as S.Schema<ListGatewayEnvSecretsResponse>,
+  input: ListGatewayEnvSecretsRequest,
+  output: ListGatewayEnvSecretsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7300,8 +9976,8 @@ export const ListGatewayRouteConfigs: API.OperationMethod<
   ListGatewayRouteConfigsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361) as any as S.Schema<ListGatewayRouteConfigsRequest>,
-  output: __S(363) as any as S.Schema<GatewayRouteConfigResourceCollection>,
+  input: ListGatewayRouteConfigsRequest,
+  output: GatewayRouteConfigResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7315,8 +9991,8 @@ export const ListGateways: API.OperationMethod<
   ListGatewaysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(364) as any as S.Schema<ListGatewaysRequest>,
-  output: __S(366) as any as S.Schema<GatewayResourceCollection>,
+  input: ListGatewaysRequest,
+  output: GatewayResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7330,8 +10006,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(367) as any as S.Schema<ListOperationsRequest>,
-  output: __S(379) as any as S.Schema<AvailableOperations>,
+  input: ListOperationsRequest,
+  output: AvailableOperations,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7345,8 +10021,8 @@ export const ListPredefinedAccelerators: API.OperationMethod<
   ListPredefinedAcceleratorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(380) as any as S.Schema<ListPredefinedAcceleratorsRequest>,
-  output: __S(382) as any as S.Schema<PredefinedAcceleratorResourceCollection>,
+  input: ListPredefinedAcceleratorsRequest,
+  output: PredefinedAcceleratorResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7360,8 +10036,8 @@ export const ListRuntimeVersionRuntimeVersions: API.OperationMethod<
   ListRuntimeVersionRuntimeVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(383) as any as S.Schema<ListRuntimeVersionRuntimeVersionsRequest>,
-  output: __S(386) as any as S.Schema<AvailableRuntimeVersions>,
+  input: ListRuntimeVersionRuntimeVersionsRequest,
+  output: AvailableRuntimeVersions,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7375,8 +10051,8 @@ export const ListServiceBySubscription: API.OperationMethod<
   ListServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(387) as any as S.Schema<ListServiceBySubscriptionRequest>,
-  output: __S(389) as any as S.Schema<ServiceResourceList>,
+  input: ListServiceBySubscriptionRequest,
+  output: ServiceResourceList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7390,8 +10066,8 @@ export const ListServiceGloballyEnabledApms: API.OperationMethod<
   ListServiceGloballyEnabledApmsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(390) as any as S.Schema<ListServiceGloballyEnabledApmsRequest>,
-  output: __S(290) as any as S.Schema<GloballyEnabledApms>,
+  input: ListServiceGloballyEnabledApmsRequest,
+  output: GloballyEnabledApms,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7405,8 +10081,8 @@ export const ListServiceRegistries: API.OperationMethod<
   ListServiceRegistriesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391) as any as S.Schema<ListServiceRegistriesRequest>,
-  output: __S(394) as any as S.Schema<ServiceRegistryResourceCollection>,
+  input: ListServiceRegistriesRequest,
+  output: ServiceRegistryResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7420,8 +10096,8 @@ export const ListServices: API.OperationMethod<
   ListServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395) as any as S.Schema<ListServicesRequest>,
-  output: __S(389) as any as S.Schema<ServiceResourceList>,
+  input: ListServicesRequest,
+  output: ServiceResourceList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7435,8 +10111,8 @@ export const ListServiceSupportedApmTypes: API.OperationMethod<
   ListServiceSupportedApmTypesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(396) as any as S.Schema<ListServiceSupportedApmTypesRequest>,
-  output: __S(399) as any as S.Schema<SupportedApmTypes>,
+  input: ListServiceSupportedApmTypesRequest,
+  output: SupportedApmTypes,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7450,8 +10126,8 @@ export const ListServiceSupportedServerVersions: API.OperationMethod<
   ListServiceSupportedServerVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400) as any as S.Schema<ListServiceSupportedServerVersionsRequest>,
-  output: __S(403) as any as S.Schema<SupportedServerVersions>,
+  input: ListServiceSupportedServerVersionsRequest,
+  output: SupportedServerVersions,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7465,8 +10141,8 @@ export const ListServiceTestKeys: API.OperationMethod<
   ListServiceTestKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(404) as any as S.Schema<ListServiceTestKeysRequest>,
-  output: __S(187) as any as S.Schema<TestKeys>,
+  input: ListServiceTestKeysRequest,
+  output: TestKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7480,8 +10156,8 @@ export const ListSkus: API.OperationMethod<
   ListSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405) as any as S.Schema<ListSkusRequest>,
-  output: __S(418) as any as S.Schema<ResourceSkuCollection>,
+  input: ListSkusRequest,
+  output: ResourceSkuCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7495,8 +10171,8 @@ export const ListStorages: API.OperationMethod<
   ListStoragesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(419) as any as S.Schema<ListStoragesRequest>,
-  output: __S(421) as any as S.Schema<StorageResourceCollection>,
+  input: ListStoragesRequest,
+  output: StorageResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7510,8 +10186,8 @@ export const MonitoringSettingsUpdatePatch: API.OperationMethod<
   MonitoringSettingsUpdatePatchError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423) as any as S.Schema<MonitoringSettingsUpdatePatchRequest>,
-  output: __S(260) as any as S.Schema<MonitoringSettingsUpdatePatchResponse>,
+  input: MonitoringSettingsUpdatePatchRequest,
+  output: MonitoringSettingsUpdatePatchResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7525,8 +10201,8 @@ export const MonitoringSettingsUpdatePut: API.OperationMethod<
   MonitoringSettingsUpdatePutError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424) as any as S.Schema<MonitoringSettingsUpdatePutRequest>,
-  output: __S(260) as any as S.Schema<MonitoringSettingsUpdatePutResponse>,
+  input: MonitoringSettingsUpdatePutRequest,
+  output: MonitoringSettingsUpdatePutResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7540,8 +10216,8 @@ export const RegenerateServiceTestKey: API.OperationMethod<
   RegenerateServiceTestKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(425) as any as S.Schema<RegenerateServiceTestKeyRequest>,
-  output: __S(187) as any as S.Schema<TestKeys>,
+  input: RegenerateServiceTestKeyRequest,
+  output: TestKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7555,8 +10231,8 @@ export const RestartDeployment: API.OperationMethod<
   RestartDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426) as any as S.Schema<RestartDeploymentRequest>,
-  output: __S(132) as any as S.Schema<RestartDeploymentResponse>,
+  input: RestartDeploymentRequest,
+  output: RestartDeploymentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7570,8 +10246,8 @@ export const RestartGateway: API.OperationMethod<
   RestartGatewayError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(427) as any as S.Schema<RestartGatewayRequest>,
-  output: __S(132) as any as S.Schema<RestartGatewayResponse>,
+  input: RestartGatewayRequest,
+  output: RestartGatewayResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7585,8 +10261,8 @@ export const ServiceRegistriesCreateOrUpdate: API.OperationMethod<
   ServiceRegistriesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(428) as any as S.Schema<ServiceRegistriesCreateOrUpdateRequest>,
-  output: __S(276) as any as S.Schema<ServiceRegistriesCreateOrUpdateResponse>,
+  input: ServiceRegistriesCreateOrUpdateRequest,
+  output: ServiceRegistriesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7600,8 +10276,8 @@ export const ServicesCreateOrUpdate: API.OperationMethod<
   ServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431) as any as S.Schema<ServicesCreateOrUpdateRequest>,
-  output: __S(432) as any as S.Schema<ServicesCreateOrUpdateResponse>,
+  input: ServicesCreateOrUpdateRequest,
+  output: ServicesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7615,8 +10291,8 @@ export const SetAppActiveDeployments: API.OperationMethod<
   SetAppActiveDeploymentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433) as any as S.Schema<SetAppActiveDeploymentsRequest>,
-  output: __S(53) as any as S.Schema<SetAppActiveDeploymentsResponse>,
+  input: SetAppActiveDeploymentsRequest,
+  output: SetAppActiveDeploymentsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7630,8 +10306,8 @@ export const StartDeployment: API.OperationMethod<
   StartDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(434) as any as S.Schema<StartDeploymentRequest>,
-  output: __S(132) as any as S.Schema<StartDeploymentResponse>,
+  input: StartDeploymentRequest,
+  output: StartDeploymentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7645,8 +10321,8 @@ export const StartDeploymentJFR: API.OperationMethod<
   StartDeploymentJFRError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(435) as any as S.Schema<StartDeploymentJFRRequest>,
-  output: __S(132) as any as S.Schema<StartDeploymentJFRResponse>,
+  input: StartDeploymentJFRRequest,
+  output: StartDeploymentJFRResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7660,8 +10336,8 @@ export const StartService: API.OperationMethod<
   StartServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436) as any as S.Schema<StartServiceRequest>,
-  output: __S(132) as any as S.Schema<StartServiceResponse>,
+  input: StartServiceRequest,
+  output: StartServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7675,8 +10351,8 @@ export const StopDeployment: API.OperationMethod<
   StopDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(437) as any as S.Schema<StopDeploymentRequest>,
-  output: __S(132) as any as S.Schema<StopDeploymentResponse>,
+  input: StopDeploymentRequest,
+  output: StopDeploymentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7690,8 +10366,8 @@ export const StopService: API.OperationMethod<
   StopServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(438) as any as S.Schema<StopServiceRequest>,
-  output: __S(132) as any as S.Schema<StopServiceResponse>,
+  input: StopServiceRequest,
+  output: StopServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7705,8 +10381,8 @@ export const StoragesCreateOrUpdate: API.OperationMethod<
   StoragesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(439) as any as S.Schema<StoragesCreateOrUpdateRequest>,
-  output: __S(440) as any as S.Schema<StoragesCreateOrUpdateResponse>,
+  input: StoragesCreateOrUpdateRequest,
+  output: StoragesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7720,8 +10396,8 @@ export const UpdateApp: API.OperationMethod<
   UpdateAppError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(441) as any as S.Schema<UpdateAppRequest>,
-  output: __S(214) as any as S.Schema<UpdateAppResponse>,
+  input: UpdateAppRequest,
+  output: UpdateAppResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7735,8 +10411,8 @@ export const UpdateBinding: API.OperationMethod<
   UpdateBindingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(442) as any as S.Schema<UpdateBindingRequest>,
-  output: __S(218) as any as S.Schema<UpdateBindingResponse>,
+  input: UpdateBindingRequest,
+  output: UpdateBindingResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7750,8 +10426,8 @@ export const UpdateCustomDomain: API.OperationMethod<
   UpdateCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(443) as any as S.Schema<UpdateCustomDomainRequest>,
-  output: __S(124) as any as S.Schema<UpdateCustomDomainResponse>,
+  input: UpdateCustomDomainRequest,
+  output: UpdateCustomDomainResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7765,8 +10441,8 @@ export const UpdateDeployment: API.OperationMethod<
   UpdateDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(444) as any as S.Schema<UpdateDeploymentRequest>,
-  output: __S(247) as any as S.Schema<UpdateDeploymentResponse>,
+  input: UpdateDeploymentRequest,
+  output: UpdateDeploymentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7780,8 +10456,8 @@ export const UpdateService: API.OperationMethod<
   UpdateServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(445) as any as S.Schema<UpdateServiceRequest>,
-  output: __S(273) as any as S.Schema<UpdateServiceResponse>,
+  input: UpdateServiceRequest,
+  output: UpdateServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7795,8 +10471,8 @@ export const ValidateApiPortalDomain: API.OperationMethod<
   ValidateApiPortalDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(446) as any as S.Schema<ValidateApiPortalDomainRequest>,
-  output: __S(447) as any as S.Schema<CustomDomainValidateResult>,
+  input: ValidateApiPortalDomainRequest,
+  output: CustomDomainValidateResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7810,8 +10486,8 @@ export const ValidateAppDomain: API.OperationMethod<
   ValidateAppDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448) as any as S.Schema<ValidateAppDomainRequest>,
-  output: __S(447) as any as S.Schema<CustomDomainValidateResult>,
+  input: ValidateAppDomainRequest,
+  output: CustomDomainValidateResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7825,8 +10501,8 @@ export const ValidateConfigServer: API.OperationMethod<
   ValidateConfigServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(449) as any as S.Schema<ValidateConfigServerRequest>,
-  output: __S(452) as any as S.Schema<ConfigServerSettingsValidateResult>,
+  input: ValidateConfigServerRequest,
+  output: ConfigServerSettingsValidateResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7840,8 +10516,8 @@ export const ValidateConfigurationService: API.OperationMethod<
   ValidateConfigurationServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(453) as any as S.Schema<ValidateConfigurationServiceRequest>,
-  output: __S(457) as any as S.Schema<ConfigurationServiceSettingsValidateResult>,
+  input: ValidateConfigurationServiceRequest,
+  output: ConfigurationServiceSettingsValidateResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7855,8 +10531,8 @@ export const ValidateConfigurationServiceResource: API.OperationMethod<
   ValidateConfigurationServiceResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(458) as any as S.Schema<ValidateConfigurationServiceResourceRequest>,
-  output: __S(457) as any as S.Schema<ConfigurationServiceSettingsValidateResult>,
+  input: ValidateConfigurationServiceResourceRequest,
+  output: ConfigurationServiceSettingsValidateResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7870,8 +10546,8 @@ export const ValidateContainerRegistry: API.OperationMethod<
   ValidateContainerRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(459) as any as S.Schema<ValidateContainerRegistryRequest>,
-  output: __S(447) as any as S.Schema<ContainerRegistryValidateResult>,
+  input: ValidateContainerRegistryRequest,
+  output: ContainerRegistryValidateResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7885,8 +10561,8 @@ export const ValidateCustomizedAccelerator: API.OperationMethod<
   ValidateCustomizedAcceleratorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(460) as any as S.Schema<ValidateCustomizedAcceleratorRequest>,
-  output: __S(461) as any as S.Schema<CustomizedAcceleratorValidateResult>,
+  input: ValidateCustomizedAcceleratorRequest,
+  output: CustomizedAcceleratorValidateResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7900,8 +10576,8 @@ export const ValidateGatewayDomain: API.OperationMethod<
   ValidateGatewayDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(462) as any as S.Schema<ValidateGatewayDomainRequest>,
-  output: __S(447) as any as S.Schema<CustomDomainValidateResult>,
+  input: ValidateGatewayDomainRequest,
+  output: CustomDomainValidateResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7926,7 +10602,7 @@ function __c0(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           apiPortalName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(0)),
+          properties: S.optional(ApiPortalCustomDomainProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7942,10 +10618,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -7955,8 +10631,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ApiPortalCustomDomainProperties),
         }),
       ).annotate({
         identifier: "ApiPortalCustomDomainsCreateOrUpdateResponse",
@@ -7966,7 +10642,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          scope: S.optional(__S(4)),
+          scope: S.optional(SsoPropertiesScopeList),
           clientId: S.optional(S.String),
           clientSecret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           issuerUri: S.optional(S.String),
@@ -7977,10 +10653,10 @@ function __c0(j: number): any {
         S.Struct({
           public: S.optional(S.Boolean),
           httpsOnly: S.optional(S.Boolean),
-          gatewayIds: S.optional(__S(4)),
-          sourceUrls: S.optional(__S(4)),
-          ssoProperties: S.optional(__S(5)),
-          apiTryOutEnabledState: S.optional(S.String),
+          gatewayIds: S.optional(ApiPortalPropertiesInputGatewayIdsList),
+          sourceUrls: S.optional(ApiPortalPropertiesInputSourceUrlsList),
+          ssoProperties: S.optional(SsoProperties),
+          apiTryOutEnabledState: S.optional(ApiPortalPropertiesInputApiTryOutEnabledState),
         }),
       ).annotate({ identifier: "ApiPortalPropertiesInput" });
     case 7:
@@ -8002,8 +10678,8 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           apiPortalName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(6)),
-          sku: S.optional(__S(7)),
+          properties: S.optional(ApiPortalPropertiesInput),
+          sku: S.optional(Sku),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8032,20 +10708,20 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ApiPortalInstance" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(ApiPortalInstance);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ApiPortalPropertiesProvisioningState),
           public: S.optional(S.Boolean),
           url: S.optional(S.String),
           httpsOnly: S.optional(S.Boolean),
-          gatewayIds: S.optional(__S(4)),
-          sourceUrls: S.optional(__S(4)),
-          ssoProperties: S.optional(__S(5)),
-          resourceRequests: S.optional(__S(9)),
-          instances: S.optional(__S(11)),
-          apiTryOutEnabledState: S.optional(S.String),
+          gatewayIds: S.optional(ApiPortalPropertiesGatewayIdsList),
+          sourceUrls: S.optional(ApiPortalPropertiesSourceUrlsList),
+          ssoProperties: S.optional(SsoProperties),
+          resourceRequests: S.optional(ApiPortalResourceRequests),
+          instances: S.optional(ApiPortalPropertiesInstancesList),
+          apiTryOutEnabledState: S.optional(ApiPortalPropertiesApiTryOutEnabledState),
         }),
       ).annotate({ identifier: "ApiPortalProperties" });
     case 5:
@@ -8054,9 +10730,9 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(12)),
-          sku: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ApiPortalProperties),
+          sku: S.optional(Sku),
         }),
       ).annotate({
         identifier: "ApiPortalsCreateOrUpdateResponse",
@@ -8067,8 +10743,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          properties: S.optional(__S(14)),
-          secrets: S.optional(__S(14)),
+          properties: S.optional(ApmPropertiesInputPropertiesMap),
+          secrets: S.optional(ApmPropertiesInputSecretsMap),
         }),
       ).annotate({ identifier: "ApmPropertiesInput" });
   }
@@ -8082,7 +10758,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           apmName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(15)),
+          properties: S.optional(ApmPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8098,9 +10774,9 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          provisioningState: S.optional(S.String),
-          properties: S.optional(__S(14)),
-          secrets: S.optional(__S(14)),
+          provisioningState: S.optional(ApmPropertiesProvisioningState),
+          properties: S.optional(ApmPropertiesPropertiesMap),
+          secrets: S.optional(ApmPropertiesSecretsMap),
         }),
       ).annotate({ identifier: "ApmProperties" });
     case 2:
@@ -8109,8 +10785,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(17)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ApmProperties),
         }),
       ).annotate({
         identifier: "ApmsCreateOrUpdateResponse",
@@ -8126,8 +10802,8 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           applicationAcceleratorName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(19)),
-          sku: S.optional(__S(7)),
+          properties: S.optional(ApplicationAcceleratorPropertiesInput),
+          sku: S.optional(Sku),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8159,7 +10835,7 @@ function __c2(j: number): any {
         identifier: "ApplicationAcceleratorInstance",
       });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(ApplicationAcceleratorInstance);
   }
 }
 function __c3(j: number): any {
@@ -8168,19 +10844,19 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          resourceRequests: S.optional(__S(21)),
-          instances: S.optional(__S(23)),
+          resourceRequests: S.optional(ApplicationAcceleratorResourceRequests),
+          instances: S.optional(ApplicationAcceleratorComponentInstancesList),
         }),
       ).annotate({
         identifier: "ApplicationAcceleratorComponent",
       });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(ApplicationAcceleratorComponent);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          components: S.optional(__S(25)),
+          provisioningState: S.optional(ApplicationAcceleratorPropertiesProvisioningState),
+          components: S.optional(ApplicationAcceleratorPropertiesComponentsList),
         }),
       ).annotate({
         identifier: "ApplicationAcceleratorProperties",
@@ -8191,9 +10867,9 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(26)),
-          sku: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ApplicationAcceleratorProperties),
+          sku: S.optional(Sku),
         }),
       ).annotate({
         identifier: "ApplicationAcceleratorsCreateOrUpdateResponse",
@@ -8205,7 +10881,7 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           applicationLiveViewName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(19)),
+          properties: S.optional(ApplicationAcceleratorPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8221,19 +10897,19 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.Unknown),
-          resourceRequests: S.optional(__S(21)),
-          instances: S.optional(__S(23)),
+          resourceRequests: S.optional(ApplicationLiveViewResourceRequests),
+          instances: S.optional(ApplicationLiveViewComponentInstancesList),
         }),
       ).annotate({
         identifier: "ApplicationLiveViewComponent",
       });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(ApplicationLiveViewComponent);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          components: S.optional(__S(30)),
+          provisioningState: S.optional(ApplicationLiveViewPropertiesProvisioningState),
+          components: S.optional(ApplicationLiveViewPropertiesComponentsList),
         }),
       ).annotate({
         identifier: "ApplicationLiveViewProperties",
@@ -8248,8 +10924,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(31)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ApplicationLiveViewProperties),
         }),
       ).annotate({
         identifier: "ApplicationLiveViewsCreateOrUpdateResponse",
@@ -8266,11 +10942,11 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: CustomPersistentDiskPropertiesType,
           mountPath: S.String,
           readOnly: S.optional(S.Boolean),
           enableSubPath: S.optional(S.Boolean),
-          mountOptions: S.optional(__S(4)),
+          mountOptions: S.optional(CustomPersistentDiskPropertiesMountOptionsList),
         }),
       ).annotate({
         identifier: "CustomPersistentDiskProperties",
@@ -8278,14 +10954,14 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          customPersistentDiskProperties: S.optional(__S(35)),
+          customPersistentDiskProperties: S.optional(CustomPersistentDiskProperties),
           storageId: S.String,
         }),
       ).annotate({
         identifier: "CustomPersistentDiskResource",
       });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(CustomPersistentDiskResource);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -8294,7 +10970,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "LoadedCertificate" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(LoadedCertificate);
   }
 }
 function __c5(j: number): any {
@@ -8308,7 +10984,7 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          certificates: S.optional(__S(4)),
+          certificates: S.optional(IngressSettingsClientAuthCertificatesList),
         }),
       ).annotate({
         identifier: "IngressSettingsClientAuth",
@@ -8318,38 +10994,38 @@ function __c5(j: number): any {
         S.Struct({
           readTimeoutInSeconds: S.optional(S.Number),
           sendTimeoutInSeconds: S.optional(S.Number),
-          sessionAffinity: S.optional(S.String),
+          sessionAffinity: S.optional(IngressSettingsSessionAffinity),
           sessionCookieMaxAge: S.optional(S.Number),
-          backendProtocol: S.optional(S.String),
-          clientAuth: S.optional(__S(41)),
+          backendProtocol: S.optional(IngressSettingsBackendProtocol),
+          clientAuth: S.optional(IngressSettingsClientAuth),
         }),
       ).annotate({ identifier: "IngressSettings" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           public: S.optional(S.Boolean),
-          addonConfigs: S.optional(__S(33)),
+          addonConfigs: S.optional(AppResourcePropertiesInputAddonConfigsMap),
           httpsOnly: S.optional(S.Boolean),
-          temporaryDisk: S.optional(__S(34)),
-          persistentDisk: S.optional(__S(34)),
-          customPersistentDisks: S.optional(__S(37)),
+          temporaryDisk: S.optional(TemporaryDisk),
+          persistentDisk: S.optional(PersistentDiskInput),
+          customPersistentDisks: S.optional(CustomPersistentDiskCollection),
           enableEndToEndTLS: S.optional(S.Boolean),
-          loadedCertificates: S.optional(__S(39)),
-          vnetAddons: S.optional(__S(40)),
-          ingressSettings: S.optional(__S(42)),
+          loadedCertificates: S.optional(LoadedCertificateCollection),
+          vnetAddons: S.optional(AppVNetAddonsInput),
+          ingressSettings: S.optional(IngressSettings),
         }),
       ).annotate({
         identifier: "AppResourcePropertiesInput",
       });
     case 4:
-      return S.Record(S.String, __S(19));
+      return S.Record(S.String, ApplicationAcceleratorPropertiesInput);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(ManagedIdentityPropertiesInputType),
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(44)),
+          userAssignedIdentities: S.optional(UserAssignedManagedIdentitiesInput),
         }),
       ).annotate({
         identifier: "ManagedIdentityPropertiesInput",
@@ -8361,8 +11037,8 @@ function __c5(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           appName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(43)),
-          identity: S.optional(__S(45)),
+          properties: S.optional(AppResourcePropertiesInput),
+          identity: S.optional(ManagedIdentityPropertiesInput),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -8399,17 +11075,17 @@ function __c6(j: number): any {
         S.Struct({
           public: S.optional(S.Boolean),
           url: S.optional(S.String),
-          addonConfigs: S.optional(__S(33)),
-          provisioningState: S.optional(S.String),
+          addonConfigs: S.optional(AppResourcePropertiesAddonConfigsMap),
+          provisioningState: S.optional(AppResourcePropertiesProvisioningState),
           fqdn: S.optional(S.String),
           httpsOnly: S.optional(S.Boolean),
-          temporaryDisk: S.optional(__S(34)),
-          persistentDisk: S.optional(__S(47)),
-          customPersistentDisks: S.optional(__S(37)),
+          temporaryDisk: S.optional(TemporaryDisk),
+          persistentDisk: S.optional(PersistentDisk),
+          customPersistentDisks: S.optional(CustomPersistentDiskCollection),
           enableEndToEndTLS: S.optional(S.Boolean),
-          loadedCertificates: S.optional(__S(39)),
-          vnetAddons: S.optional(__S(48)),
-          ingressSettings: S.optional(__S(42)),
+          loadedCertificates: S.optional(LoadedCertificateCollection),
+          vnetAddons: S.optional(AppVNetAddons),
+          ingressSettings: S.optional(IngressSettings),
         }),
       ).annotate({ identifier: "AppResourceProperties" });
     case 2:
@@ -8422,14 +11098,14 @@ function __c6(j: number): any {
         identifier: "UserAssignedManagedIdentity",
       });
     case 3:
-      return S.Record(S.String, __S(50));
+      return S.Record(S.String, UserAssignedManagedIdentity);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(ManagedIdentityPropertiesType),
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(51)),
+          userAssignedIdentities: S.optional(UserAssignedManagedIdentities),
         }),
       ).annotate({
         identifier: "ManagedIdentityProperties",
@@ -8440,9 +11116,9 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(49)),
-          identity: S.optional(__S(52)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AppResourceProperties),
+          identity: S.optional(ManagedIdentityProperties),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -8482,7 +11158,7 @@ function __c7(j: number): any {
         S.Struct({
           resourceId: S.optional(S.String),
           key: S.optional(S.String),
-          bindingParameters: S.optional(__S(14)),
+          bindingParameters: S.optional(BindingResourcePropertiesInputBindingParametersMap),
         }),
       ).annotate({
         identifier: "BindingResourcePropertiesInput",
@@ -8495,7 +11171,7 @@ function __c7(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           appName: S.String.pipe(T.Label()),
           bindingName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(56)),
+          properties: S.optional(BindingResourcePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8514,7 +11190,7 @@ function __c7(j: number): any {
           resourceType: S.optional(S.String),
           resourceId: S.optional(S.String),
           key: S.optional(S.String),
-          bindingParameters: S.optional(__S(14)),
+          bindingParameters: S.optional(BindingResourcePropertiesBindingParametersMap),
           generatedProperties: S.optional(S.String),
           createdAt: S.optional(S.String),
           updatedAt: S.optional(S.String),
@@ -8528,8 +11204,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(58)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BindingResourceProperties),
         }),
       ).annotate({
         identifier: "BindingsCreateOrUpdateResponse",
@@ -8537,8 +11213,8 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(14)),
-          secrets: S.optional(__S(14)),
+          properties: S.optional(BuildpackBindingLaunchPropertiesPropertiesMap),
+          secrets: S.optional(BuildpackBindingLaunchPropertiesSecretsMap),
         }),
       ).annotate({
         identifier: "BuildpackBindingLaunchProperties",
@@ -8546,8 +11222,8 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          bindingType: S.optional(S.String),
-          launchProperties: S.optional(__S(60)),
+          bindingType: S.optional(BuildpackBindingPropertiesInputBindingType),
+          launchProperties: S.optional(BuildpackBindingLaunchProperties),
         }),
       ).annotate({
         identifier: "BuildpackBindingPropertiesInput",
@@ -8561,7 +11237,7 @@ function __c7(j: number): any {
           buildServiceName: S.String.pipe(T.Label()),
           builderName: S.String.pipe(T.Label()),
           buildpackBindingName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(61)),
+          properties: S.optional(BuildpackBindingPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8576,9 +11252,9 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          bindingType: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          launchProperties: S.optional(__S(60)),
+          bindingType: S.optional(BuildpackBindingPropertiesBindingType),
+          provisioningState: S.optional(BuildpackBindingPropertiesProvisioningState),
+          launchProperties: S.optional(BuildpackBindingLaunchProperties),
         }),
       ).annotate({
         identifier: "BuildpackBindingProperties",
@@ -8593,8 +11269,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(63)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BuildpackBindingProperties),
         }),
       ).annotate({
         identifier: "BuildpackBindingCreateOrUpdateResponse",
@@ -8610,7 +11286,7 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          poolSize: S.optional(__S(65)),
+          poolSize: S.optional(BuildServiceAgentPoolSizePropertiesInput),
         }),
       ).annotate({
         identifier: "BuildServiceAgentPoolPropertiesInput",
@@ -8623,7 +11299,7 @@ function __c8(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           buildServiceName: S.String.pipe(T.Label()),
           agentPoolName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(66)),
+          properties: S.optional(BuildServiceAgentPoolPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8649,7 +11325,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          poolSize: S.optional(__S(68)),
+          poolSize: S.optional(BuildServiceAgentPoolSizeProperties),
         }),
       ).annotate({
         identifier: "BuildServiceAgentPoolProperties",
@@ -8660,8 +11336,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(69)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BuildServiceAgentPoolProperties),
         }),
       ).annotate({
         identifier: "BuildServiceAgentPoolUpdatePutResponse",
@@ -8684,23 +11360,23 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "BuildpackProperties" });
     case 1:
-      return S.Array(__S(72));
+      return S.Array(BuildpackProperties);
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          buildpacks: S.optional(__S(73)),
+          buildpacks: S.optional(BuildpacksGroupPropertiesBuildpacksList),
         }),
       ).annotate({
         identifier: "BuildpacksGroupProperties",
       });
     case 3:
-      return S.Array(__S(74));
+      return S.Array(BuildpacksGroupProperties);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          stack: S.optional(__S(71)),
-          buildpackGroups: S.optional(__S(75)),
+          stack: S.optional(StackProperties),
+          buildpackGroups: S.optional(BuilderPropertiesInputBuildpackGroupsList),
         }),
       ).annotate({ identifier: "BuilderPropertiesInput" });
     case 5:
@@ -8711,7 +11387,7 @@ function __c9(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           buildServiceName: S.String.pipe(T.Label()),
           builderName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(76)),
+          properties: S.optional(BuilderPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8726,9 +11402,9 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          stack: S.optional(__S(71)),
-          buildpackGroups: S.optional(__S(75)),
+          provisioningState: S.optional(BuilderPropertiesProvisioningState),
+          stack: S.optional(StackProperties),
+          buildpackGroups: S.optional(BuilderPropertiesBuildpackGroupsList),
         }),
       ).annotate({ identifier: "BuilderProperties" });
     case 7:
@@ -8737,8 +11413,8 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(78)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BuilderProperties),
         }),
       ).annotate({
         identifier: "BuildServiceBuilderCreateOrUpdateResponse",
@@ -8751,7 +11427,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           containerRegistry: S.optional(S.String),
-          resourceRequests: S.optional(__S(19)),
+          resourceRequests: S.optional(ApplicationAcceleratorPropertiesInput),
         }),
       ).annotate({
         identifier: "BuildServicePropertiesInput",
@@ -8763,7 +11439,7 @@ function __c10(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           buildServiceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(80)),
+          properties: S.optional(BuildServicePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8780,8 +11456,8 @@ function __c10(j: number): any {
         S.Struct({
           containerRegistry: S.optional(S.String),
           kPackVersion: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          resourceRequests: S.optional(__S(9)),
+          provisioningState: S.optional(BuildServicePropertiesProvisioningState),
+          resourceRequests: S.optional(BuildServicePropertiesResourceRequests),
         }),
       ).annotate({ identifier: "BuildServiceProperties" });
     case 3:
@@ -8790,8 +11466,8 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(82)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BuildServiceProperties),
         }),
       ).annotate({
         identifier: "BuildServiceCreateOrUpdateResponse",
@@ -8803,7 +11479,7 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "ApmReference" });
     case 5:
-      return S.Array(__S(84));
+      return S.Array(ApmReference);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -8817,10 +11493,10 @@ function __c10(j: number): any {
           relativePath: S.optional(S.String),
           builder: S.optional(S.String),
           agentPool: S.optional(S.String),
-          env: S.optional(__S(14)),
-          apms: S.optional(__S(85)),
-          certificates: S.optional(__S(85)),
-          resourceRequests: S.optional(__S(86)),
+          env: S.optional(BuildPropertiesInputEnvMap),
+          apms: S.optional(ApmReferenceCollection),
+          certificates: S.optional(CertificateReferenceCollection),
+          resourceRequests: S.optional(BuildResourceRequests),
         }),
       ).annotate({ identifier: "BuildPropertiesInput" });
   }
@@ -8835,7 +11511,7 @@ function __c11(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           buildServiceName: S.String.pipe(T.Label()),
           buildName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(87)),
+          properties: S.optional(BuildPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8851,7 +11527,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(TriggeredBuildResultProvisioningState),
           image: S.optional(S.String),
           lastTransitionTime: S.optional(S.String),
           lastTransitionReason: S.optional(S.String),
@@ -8864,12 +11540,12 @@ function __c11(j: number): any {
           relativePath: S.optional(S.String),
           builder: S.optional(S.String),
           agentPool: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          env: S.optional(__S(14)),
-          apms: S.optional(__S(85)),
-          certificates: S.optional(__S(85)),
-          triggeredBuildResult: S.optional(__S(89)),
-          resourceRequests: S.optional(__S(86)),
+          provisioningState: S.optional(BuildPropertiesProvisioningState),
+          env: S.optional(BuildPropertiesEnvMap),
+          apms: S.optional(ApmReferenceCollection),
+          certificates: S.optional(CertificateReferenceCollection),
+          triggeredBuildResult: S.optional(TriggeredBuildResult),
+          resourceRequests: S.optional(BuildResourceRequests),
         }),
       ).annotate({ identifier: "BuildProperties" });
     case 3:
@@ -8878,8 +11554,8 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(90)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BuildProperties),
         }),
       ).annotate({
         identifier: "BuildServiceCreateOrUpdateBuildResponse",
@@ -8917,7 +11593,7 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           certificateName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(93)),
+          properties: S.optional(CertificatePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8939,8 +11615,8 @@ function __c11(j: number): any {
           expirationDate: S.optional(S.String),
           activateDate: S.optional(S.String),
           subjectName: S.optional(S.String),
-          dnsNames: S.optional(__S(4)),
-          provisioningState: S.optional(S.String),
+          dnsNames: S.optional(CertificatePropertiesDnsNamesList),
+          provisioningState: S.optional(CertificatePropertiesProvisioningState),
         }),
       ).annotate({ identifier: "CertificateProperties" });
   }
@@ -8953,8 +11629,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(95)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CertificateProperties),
         }),
       ).annotate({
         identifier: "CertificatesCreateOrUpdateResponse",
@@ -8996,10 +11672,10 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          pattern: S.optional(__S(4)),
+          pattern: S.optional(GitPatternRepositoryPatternList),
           uri: S.String,
           label: S.optional(S.String),
-          searchPaths: S.optional(__S(4)),
+          searchPaths: S.optional(GitPatternRepositorySearchPathsList),
           username: S.optional(S.String),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           hostKey: S.optional(S.String),
@@ -9009,14 +11685,14 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "GitPatternRepository" });
     case 5:
-      return S.Array(__S(100));
+      return S.Array(GitPatternRepository);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          repositories: S.optional(__S(101)),
+          repositories: S.optional(ConfigServerGitPropertyRepositoriesList),
           uri: S.String,
           label: S.optional(S.String),
-          searchPaths: S.optional(__S(4)),
+          searchPaths: S.optional(ConfigServerGitPropertySearchPathsList),
           username: S.optional(S.String),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           hostKey: S.optional(S.String),
@@ -9028,7 +11704,7 @@ function __c12(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          gitProperty: S.optional(__S(102)),
+          gitProperty: S.optional(ConfigServerGitProperty),
         }),
       ).annotate({ identifier: "ConfigServerSettings" });
   }
@@ -9038,8 +11714,8 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(99)),
-          configServer: S.optional(__S(103)),
+          error: S.optional(Error),
+          configServer: S.optional(ConfigServerSettings),
         }),
       ).annotate({
         identifier: "ConfigServerPropertiesInput",
@@ -9050,7 +11726,7 @@ function __c13(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(104)),
+          properties: S.optional(ConfigServerPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9065,9 +11741,9 @@ function __c13(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          error: S.optional(__S(99)),
-          configServer: S.optional(__S(103)),
+          provisioningState: S.optional(ConfigServerPropertiesProvisioningState),
+          error: S.optional(Error),
+          configServer: S.optional(ConfigServerSettings),
         }),
       ).annotate({ identifier: "ConfigServerProperties" });
     case 3:
@@ -9076,8 +11752,8 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(106)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ConfigServerProperties),
         }),
       ).annotate({
         identifier: "ConfigServersUpdatePatchResponse",
@@ -9088,7 +11764,7 @@ function __c13(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(104)),
+          properties: S.optional(ConfigServerPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9104,28 +11780,28 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          patterns: __S(4),
+          patterns: ConfigurationServiceGitRepositoryPatternsList,
           uri: S.String,
           label: S.String,
-          searchPaths: S.optional(__S(4)),
+          searchPaths: S.optional(ConfigurationServiceGitRepositorySearchPathsList),
           username: S.optional(S.String),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           hostKey: S.optional(S.String),
           hostKeyAlgorithm: S.optional(S.String),
           privateKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
           strictHostKeyChecking: S.optional(S.Boolean),
-          gitImplementation: S.optional(S.String),
+          gitImplementation: S.optional(GitImplementation),
           caCertResourceId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ConfigurationServiceGitRepository",
       });
     case 6:
-      return S.Array(__S(109));
+      return S.Array(ConfigurationServiceGitRepository);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          repositories: S.optional(__S(110)),
+          repositories: S.optional(ConfigurationServiceGitPropertyRepository),
         }),
       ).annotate({
         identifier: "ConfigurationServiceGitProperty",
@@ -9137,7 +11813,7 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          gitProperty: S.optional(__S(111)),
+          gitProperty: S.optional(ConfigurationServiceGitProperty),
         }),
       ).annotate({
         identifier: "ConfigurationServiceSettings",
@@ -9145,8 +11821,8 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          generation: S.optional(S.String),
-          settings: S.optional(__S(112)),
+          generation: S.optional(ConfigurationServicePropertiesInputGeneration),
+          settings: S.optional(ConfigurationServiceSettings),
         }),
       ).annotate({
         identifier: "ConfigurationServicePropertiesInput",
@@ -9158,7 +11834,7 @@ function __c14(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           configurationServiceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(113)),
+          properties: S.optional(ConfigurationServicePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9173,11 +11849,11 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          generation: S.optional(S.String),
-          resourceRequests: S.optional(__S(21)),
-          instances: S.optional(__S(23)),
-          settings: S.optional(__S(112)),
+          provisioningState: S.optional(ConfigurationServicePropertiesProvisioningState),
+          generation: S.optional(ConfigurationServicePropertiesGeneration),
+          resourceRequests: S.optional(ConfigurationServiceResourceRequests),
+          instances: S.optional(ConfigurationServicePropertiesInstancesList),
+          settings: S.optional(ConfigurationServiceSettings),
         }),
       ).annotate({
         identifier: "ConfigurationServiceProperties",
@@ -9188,8 +11864,8 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(115)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ConfigurationServiceProperties),
         }),
       ).annotate({
         identifier: "ConfigurationServicesCreateOrUpdateResponse",
@@ -9197,7 +11873,7 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          credentials: __S(93),
+          credentials: ContainerRegistryCredentials,
         }),
       ).annotate({
         identifier: "ContainerRegistryPropertiesInput",
@@ -9209,7 +11885,7 @@ function __c14(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           containerRegistryName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(117)),
+          properties: S.optional(ContainerRegistryPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9224,8 +11900,8 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          credentials: __S(93),
-          provisioningState: S.optional(S.String),
+          credentials: ContainerRegistryCredentials,
+          provisioningState: S.optional(ContainerRegistryPropertiesProvisioningState),
         }),
       ).annotate({
         identifier: "ContainerRegistryProperties",
@@ -9240,8 +11916,8 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(119)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ContainerRegistryProperties),
         }),
       ).annotate({
         identifier: "ContainerRegistriesCreateOrUpdateResponse",
@@ -9263,7 +11939,7 @@ function __c15(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           appName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(121)),
+          properties: S.optional(CustomDomainPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9281,7 +11957,7 @@ function __c15(j: number): any {
           thumbprint: S.optional(S.String),
           appName: S.optional(S.String),
           certName: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(CustomDomainPropertiesProvisioningState),
         }),
       ).annotate({ identifier: "CustomDomainProperties" });
     case 4:
@@ -9290,8 +11966,8 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(123)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CustomDomainProperties),
         }),
       ).annotate({
         identifier: "CustomDomainsCreateOrUpdateResponse",
@@ -9310,19 +11986,19 @@ function __c15(j: number): any {
           branch: S.optional(S.String),
           commit: S.optional(S.String),
           gitTag: S.optional(S.String),
-          authSetting: __S(125),
+          authSetting: AcceleratorAuthSetting,
           subPath: S.optional(S.String),
         }),
       ).annotate({ identifier: "AcceleratorGitRepository" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          acceleratorType: S.optional(S.String),
+          acceleratorType: S.optional(CustomizedAcceleratorPropertiesInputAcceleratorType),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
           iconUrl: S.optional(S.String),
-          acceleratorTags: S.optional(__S(4)),
-          gitRepository: __S(126),
+          acceleratorTags: S.optional(CustomizedAcceleratorPropertiesInputAcceleratorTagsList),
+          gitRepository: AcceleratorGitRepository,
         }),
       ).annotate({
         identifier: "CustomizedAcceleratorPropertiesInput",
@@ -9339,8 +12015,8 @@ function __c16(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           applicationAcceleratorName: S.String.pipe(T.Label()),
           customizedAcceleratorName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(127)),
-          sku: S.optional(__S(7)),
+          properties: S.optional(CustomizedAcceleratorPropertiesInput),
+          sku: S.optional(Sku),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9355,14 +12031,14 @@ function __c16(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          acceleratorType: S.optional(S.String),
+          provisioningState: S.optional(CustomizedAcceleratorPropertiesProvisioningState),
+          acceleratorType: S.optional(CustomizedAcceleratorPropertiesAcceleratorType),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
           iconUrl: S.optional(S.String),
-          acceleratorTags: S.optional(__S(4)),
-          imports: S.optional(__S(4)),
-          gitRepository: __S(126),
+          acceleratorTags: S.optional(CustomizedAcceleratorPropertiesAcceleratorTagsList),
+          imports: S.optional(CustomizedAcceleratorPropertiesImportsList),
+          gitRepository: AcceleratorGitRepository,
         }),
       ).annotate({
         identifier: "CustomizedAcceleratorProperties",
@@ -9373,9 +12049,9 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(129)),
-          sku: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CustomizedAcceleratorProperties),
+          sku: S.optional(Sku),
         }),
       ).annotate({
         identifier: "CustomizedAcceleratorsCreateOrUpdateResponse",
@@ -9816,13 +12492,13 @@ function __c19(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: ProbeActionType,
         }),
       ).annotate({ identifier: "ProbeAction" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          probeAction: S.optional(__S(157)),
+          probeAction: S.optional(ProbeAction),
           disableProbe: S.Boolean,
           initialDelaySeconds: S.optional(S.Number),
           periodSeconds: S.optional(S.Number),
@@ -9844,22 +12520,22 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resourceRequests: S.optional(__S(86)),
-          environmentVariables: S.optional(__S(14)),
-          apms: S.optional(__S(85)),
-          addonConfigs: S.optional(__S(33)),
-          livenessProbe: S.optional(__S(158)),
-          readinessProbe: S.optional(__S(158)),
-          startupProbe: S.optional(__S(158)),
+          resourceRequests: S.optional(ResourceRequests),
+          environmentVariables: S.optional(DeploymentSettingsEnvironmentVariablesMap),
+          apms: S.optional(ApmReferenceCollection),
+          addonConfigs: S.optional(DeploymentSettingsAddonConfigsMap),
+          livenessProbe: S.optional(Probe),
+          readinessProbe: S.optional(Probe),
+          startupProbe: S.optional(Probe),
           terminationGracePeriodSeconds: S.optional(S.Number),
-          containerProbeSettings: S.optional(__S(159)),
+          containerProbeSettings: S.optional(ContainerProbeSettings),
         }),
       ).annotate({ identifier: "DeploymentSettings" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(__S(156)),
-          deploymentSettings: S.optional(__S(160)),
+          source: S.optional(UserSourceInfo),
+          deploymentSettings: S.optional(DeploymentSettings),
           active: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -9873,8 +12549,8 @@ function __c20(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           appName: S.String.pipe(T.Label()),
           deploymentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(161)),
-          sku: S.optional(__S(7)),
+          properties: S.optional(DeploymentResourcePropertiesInput),
+          sku: S.optional(Sku),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9898,16 +12574,16 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "DeploymentInstance" });
     case 4:
-      return S.Array(__S(163));
+      return S.Array(DeploymentInstance);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(__S(156)),
-          deploymentSettings: S.optional(__S(160)),
-          provisioningState: S.optional(S.String),
-          status: S.optional(S.String),
+          source: S.optional(UserSourceInfo),
+          deploymentSettings: S.optional(DeploymentSettings),
+          provisioningState: S.optional(DeploymentResourcePropertiesProvisioningState),
+          status: S.optional(DeploymentResourcePropertiesStatus),
           active: S.optional(S.Boolean),
-          instances: S.optional(__S(164)),
+          instances: S.optional(DeploymentResourcePropertiesInstancesList),
         }),
       ).annotate({
         identifier: "DeploymentResourceProperties",
@@ -9918,9 +12594,9 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(165)),
-          sku: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DeploymentResourceProperties),
+          sku: S.optional(Sku),
         }),
       ).annotate({
         identifier: "DeploymentsCreateOrUpdateResponse",
@@ -9928,7 +12604,7 @@ function __c20(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          scopes: S.optional(__S(4)),
+          scopes: S.optional(DevToolPortalSsoPropertiesScopesList),
           clientId: S.optional(S.String),
           clientSecret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           metadataUrl: S.optional(S.String),
@@ -9943,7 +12619,7 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(DevToolPortalFeatureDetailInputState),
         }),
       ).annotate({
         identifier: "DevToolPortalFeatureDetailInput",
@@ -9951,8 +12627,8 @@ function __c21(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          applicationAccelerator: S.optional(__S(168)),
-          applicationLiveView: S.optional(__S(168)),
+          applicationAccelerator: S.optional(DevToolPortalFeatureDetailInput),
+          applicationLiveView: S.optional(DevToolPortalFeatureDetailInput),
         }),
       ).annotate({
         identifier: "DevToolPortalFeatureSettingsInput",
@@ -9961,8 +12637,8 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           public: S.optional(S.Boolean),
-          ssoProperties: S.optional(__S(167)),
-          features: S.optional(__S(169)),
+          ssoProperties: S.optional(DevToolPortalSsoProperties),
+          features: S.optional(DevToolPortalFeatureSettingsInput),
         }),
       ).annotate({
         identifier: "DevToolPortalPropertiesInput",
@@ -9974,7 +12650,7 @@ function __c21(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           devToolPortalName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(170)),
+          properties: S.optional(DevToolPortalPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9990,16 +12666,16 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          resourceRequests: S.optional(__S(21)),
-          instances: S.optional(__S(11)),
+          resourceRequests: S.optional(DevToolPortalResourceRequests),
+          instances: S.optional(DevToolPortalComponentInstancesList),
         }),
       ).annotate({ identifier: "DevToolPortalComponent" });
     case 5:
-      return S.Array(__S(172));
+      return S.Array(DevToolPortalComponent);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(DevToolPortalFeatureDetailState),
           route: S.optional(S.String),
         }),
       ).annotate({
@@ -10008,8 +12684,8 @@ function __c21(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          applicationAccelerator: S.optional(__S(174)),
-          applicationLiveView: S.optional(__S(174)),
+          applicationAccelerator: S.optional(DevToolPortalFeatureDetail),
+          applicationLiveView: S.optional(DevToolPortalFeatureDetail),
         }),
       ).annotate({
         identifier: "DevToolPortalFeatureSettings",
@@ -10021,12 +12697,12 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          components: S.optional(__S(173)),
+          provisioningState: S.optional(DevToolPortalPropertiesProvisioningState),
+          components: S.optional(DevToolPortalPropertiesComponentsList),
           public: S.optional(S.Boolean),
           url: S.optional(S.String),
-          ssoProperties: S.optional(__S(167)),
-          features: S.optional(__S(175)),
+          ssoProperties: S.optional(DevToolPortalSsoProperties),
+          features: S.optional(DevToolPortalFeatureSettings),
         }),
       ).annotate({ identifier: "DevToolPortalProperties" });
     case 1:
@@ -10035,8 +12711,8 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(176)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DevToolPortalProperties),
         }),
       ).annotate({
         identifier: "DevToolPortalsCreateOrUpdateResponse",
@@ -10234,7 +12910,7 @@ function __c23(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           gatewayName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(0)),
+          properties: S.optional(ApiPortalCustomDomainProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10262,10 +12938,10 @@ function __c23(j: number): any {
           uri: S.optional(S.String),
           ssoEnabled: S.optional(S.Boolean),
           tokenRelay: S.optional(S.Boolean),
-          predicates: S.optional(__S(4)),
-          filters: S.optional(__S(4)),
+          predicates: S.optional(GatewayApiRoutePredicatesList),
+          filters: S.optional(GatewayApiRouteFiltersList),
           order: S.optional(S.Number),
-          tags: S.optional(__S(4)),
+          tags: S.optional(GatewayApiRouteTagsList),
         }),
       ).annotate({ identifier: "GatewayApiRoute" });
   }
@@ -10273,17 +12949,17 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(191));
+      return S.Array(GatewayApiRoute);
     case 1:
       return S.suspend(() =>
         S.Struct({
           appResourceId: S.optional(S.String),
-          openApi: S.optional(__S(190)),
-          protocol: S.optional(S.String),
-          routes: S.optional(__S(192)),
+          openApi: S.optional(GatewayRouteConfigOpenApiProperties),
+          protocol: S.optional(GatewayRouteConfigPropertiesInputProtocol),
+          routes: S.optional(GatewayRouteConfigPropertiesInputRoutesList),
           ssoEnabled: S.optional(S.Boolean),
-          predicates: S.optional(__S(4)),
-          filters: S.optional(__S(4)),
+          predicates: S.optional(GatewayRouteConfigPropertiesInputPredicatesList),
+          filters: S.optional(GatewayRouteConfigPropertiesInputFiltersList),
         }),
       ).annotate({
         identifier: "GatewayRouteConfigPropertiesInput",
@@ -10296,7 +12972,7 @@ function __c24(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           gatewayName: S.String.pipe(T.Label()),
           routeConfigName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(193)),
+          properties: S.optional(GatewayRouteConfigPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10311,14 +12987,14 @@ function __c24(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(GatewayRouteConfigPropertiesProvisioningState),
           appResourceId: S.optional(S.String),
-          openApi: S.optional(__S(190)),
-          protocol: S.optional(S.String),
-          routes: S.optional(__S(192)),
+          openApi: S.optional(GatewayRouteConfigOpenApiProperties),
+          protocol: S.optional(GatewayRouteConfigPropertiesProtocol),
+          routes: S.optional(GatewayRouteConfigPropertiesRoutesList),
           ssoEnabled: S.optional(S.Boolean),
-          predicates: S.optional(__S(4)),
-          filters: S.optional(__S(4)),
+          predicates: S.optional(GatewayRouteConfigPropertiesPredicatesList),
+          filters: S.optional(GatewayRouteConfigPropertiesFiltersList),
         }),
       ).annotate({
         identifier: "GatewayRouteConfigProperties",
@@ -10329,8 +13005,8 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(195)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(GatewayRouteConfigProperties),
         }),
       ).annotate({
         identifier: "GatewayRouteConfigsCreateOrUpdateResponse",
@@ -10350,20 +13026,22 @@ function __c24(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          allowedOrigins: S.optional(__S(4)),
-          allowedOriginPatterns: S.optional(__S(4)),
-          allowedMethods: S.optional(__S(4)),
-          allowedHeaders: S.optional(__S(4)),
+          allowedOrigins: S.optional(GatewayCorsPropertiesAllowedOriginsList),
+          allowedOriginPatterns: S.optional(GatewayCorsPropertiesAllowedOriginPatternsList),
+          allowedMethods: S.optional(GatewayCorsPropertiesAllowedMethodsList),
+          allowedHeaders: S.optional(GatewayCorsPropertiesAllowedHeadersList),
           maxAge: S.optional(S.Number),
           allowCredentials: S.optional(S.Boolean),
-          exposedHeaders: S.optional(__S(4)),
+          exposedHeaders: S.optional(GatewayCorsPropertiesExposedHeadersList),
         }),
       ).annotate({ identifier: "GatewayCorsProperties" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          certificates: S.optional(__S(4)),
-          certificateVerification: S.optional(S.String),
+          certificates: S.optional(GatewayPropertiesInputClientAuthCertificatesList),
+          certificateVerification: S.optional(
+            GatewayPropertiesInputClientAuthCertificateVerification,
+          ),
         }),
       ).annotate({
         identifier: "GatewayPropertiesInputClientAuth",
@@ -10377,13 +13055,13 @@ function __c25(j: number): any {
         S.Struct({
           public: S.optional(S.Boolean),
           httpsOnly: S.optional(S.Boolean),
-          ssoProperties: S.optional(__S(5)),
-          apiMetadataProperties: S.optional(__S(197)),
-          corsProperties: S.optional(__S(198)),
-          clientAuth: S.optional(__S(199)),
-          apms: S.optional(__S(85)),
-          environmentVariables: S.optional(__S(60)),
-          resourceRequests: S.optional(__S(86)),
+          ssoProperties: S.optional(SsoProperties),
+          apiMetadataProperties: S.optional(GatewayApiMetadataProperties),
+          corsProperties: S.optional(GatewayCorsProperties),
+          clientAuth: S.optional(GatewayPropertiesInputClientAuth),
+          apms: S.optional(ApmReferenceCollection),
+          environmentVariables: S.optional(GatewayPropertiesInputEnvironmentVariables),
+          resourceRequests: S.optional(GatewayResourceRequests),
         }),
       ).annotate({ identifier: "GatewayPropertiesInput" });
     case 1:
@@ -10393,8 +13071,8 @@ function __c25(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           gatewayName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(200)),
-          sku: S.optional(__S(7)),
+          properties: S.optional(GatewayPropertiesInput),
+          sku: S.optional(Sku),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10409,8 +13087,8 @@ function __c25(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          certificates: S.optional(__S(4)),
-          certificateVerification: S.optional(S.String),
+          certificates: S.optional(GatewayPropertiesClientAuthCertificatesList),
+          certificateVerification: S.optional(GatewayPropertiesClientAuthCertificateVerification),
         }),
       ).annotate({
         identifier: "GatewayPropertiesClientAuth",
@@ -10418,8 +13096,8 @@ function __c25(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resourceRequests: S.optional(__S(21)),
-          instances: S.optional(__S(11)),
+          resourceRequests: S.optional(GatewayOperatorResourceRequests),
+          instances: S.optional(GatewayOperatorPropertiesInstancesList),
         }),
       ).annotate({
         identifier: "GatewayOperatorProperties",
@@ -10427,19 +13105,19 @@ function __c25(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(GatewayPropertiesProvisioningState),
           public: S.optional(S.Boolean),
           url: S.optional(S.String),
           httpsOnly: S.optional(S.Boolean),
-          ssoProperties: S.optional(__S(5)),
-          apiMetadataProperties: S.optional(__S(197)),
-          corsProperties: S.optional(__S(198)),
-          clientAuth: S.optional(__S(202)),
-          apms: S.optional(__S(85)),
-          environmentVariables: S.optional(__S(60)),
-          resourceRequests: S.optional(__S(86)),
-          instances: S.optional(__S(11)),
-          operatorProperties: S.optional(__S(203)),
+          ssoProperties: S.optional(SsoProperties),
+          apiMetadataProperties: S.optional(GatewayApiMetadataProperties),
+          corsProperties: S.optional(GatewayCorsProperties),
+          clientAuth: S.optional(GatewayPropertiesClientAuth),
+          apms: S.optional(ApmReferenceCollection),
+          environmentVariables: S.optional(GatewayPropertiesEnvironmentVariables),
+          resourceRequests: S.optional(GatewayResourceRequests),
+          instances: S.optional(GatewayPropertiesInstancesList),
+          operatorProperties: S.optional(GatewayOperatorProperties),
         }),
       ).annotate({ identifier: "GatewayProperties" });
     case 5:
@@ -10448,9 +13126,9 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(204)),
-          sku: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(GatewayProperties),
+          sku: S.optional(Sku),
         }),
       ).annotate({
         identifier: "GatewaysCreateOrUpdateResponse",
@@ -10525,9 +13203,9 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(12)),
-          sku: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ApiPortalProperties),
+          sku: S.optional(Sku),
         }),
       ).annotate({ identifier: "GetApiPortalResponse" });
     case 2:
@@ -10571,8 +13249,8 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(17)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ApmProperties),
         }),
       ).annotate({ identifier: "GetApmResponse" });
     case 5:
@@ -10598,9 +13276,9 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(49)),
-          identity: S.optional(__S(52)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AppResourceProperties),
+          identity: S.optional(ManagedIdentityProperties),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetAppResponse" });
@@ -10667,8 +13345,8 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(58)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BindingResourceProperties),
         }),
       ).annotate({ identifier: "GetBindingResponse" });
     case 3:
@@ -10776,21 +13454,21 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(BuildStagePropertiesStatus),
           exitCode: S.optional(S.String),
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "BuildStageProperties" });
     case 1:
-      return S.Array(__S(224));
+      return S.Array(BuildStageProperties);
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          error: S.optional(__S(99)),
+          provisioningState: S.optional(BuildResultPropertiesProvisioningState),
+          error: S.optional(Error),
           buildPodName: S.optional(S.String),
-          buildStages: S.optional(__S(225)),
+          buildStages: S.optional(BuildResultPropertiesBuildStagesList),
           image: S.optional(S.String),
         }),
       ).annotate({ identifier: "BuildResultProperties" });
@@ -10800,8 +13478,8 @@ function __c28(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(226)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BuildResultProperties),
         }),
       ).annotate({
         identifier: "GetBuildServiceBuildResultResponse",
@@ -10887,8 +13565,8 @@ function __c29(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(232)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SupportedBuildpackResourceProperties),
         }),
       ).annotate({
         identifier: "GetBuildServiceSupportedBuildpackResponse",
@@ -10927,8 +13605,8 @@ function __c29(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(235)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SupportedStackResourceProperties),
         }),
       ).annotate({
         identifier: "GetBuildServiceSupportedStackResponse",
@@ -10955,8 +13633,8 @@ function __c29(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(95)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CertificateProperties),
         }),
       ).annotate({ identifier: "GetCertificateResponse" });
     case 7:
@@ -10984,8 +13662,8 @@ function __c30(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(106)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ConfigServerProperties),
         }),
       ).annotate({ identifier: "GetConfigServerResponse" });
     case 1:
@@ -11047,8 +13725,8 @@ function __c30(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(123)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CustomDomainProperties),
         }),
       ).annotate({ identifier: "GetCustomDomainResponse" });
     case 5:
@@ -11093,9 +13771,9 @@ function __c30(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(165)),
-          sku: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DeploymentResourceProperties),
+          sku: S.optional(Sku),
         }),
       ).annotate({ identifier: "GetDeploymentResponse" });
   }
@@ -11168,8 +13846,8 @@ function __c31(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(176)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DevToolPortalProperties),
         }),
       ).annotate({ identifier: "GetDevToolPortalResponse" });
     case 5:
@@ -11194,9 +13872,9 @@ function __c31(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(204)),
-          sku: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(GatewayProperties),
+          sku: S.optional(Sku),
         }),
       ).annotate({ identifier: "GetGatewayResponse" });
     case 7:
@@ -11269,12 +13947,12 @@ function __c32(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          error: S.optional(__S(99)),
+          provisioningState: S.optional(MonitoringSettingPropertiesProvisioningState),
+          error: S.optional(Error),
           traceEnabled: S.optional(S.Boolean),
           appInsightsInstrumentationKey: S.optional(S.String),
           appInsightsSamplingRate: S.optional(S.Number),
-          appInsightsAgentVersions: S.optional(__S(258)),
+          appInsightsAgentVersions: S.optional(ApplicationInsightsAgentVersions),
         }),
       ).annotate({
         identifier: "MonitoringSettingProperties",
@@ -11285,8 +13963,8 @@ function __c32(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(259)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(MonitoringSettingProperties),
         }),
       ).annotate({
         identifier: "GetMonitoringSettingsResponse",
@@ -11313,12 +13991,12 @@ function __c32(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(PredefinedAcceleratorPropertiesProvisioningState),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
           iconUrl: S.optional(S.String),
-          acceleratorTags: S.optional(__S(4)),
-          state: S.optional(S.String),
+          acceleratorTags: S.optional(PredefinedAcceleratorPropertiesAcceleratorTagsList),
+          state: S.optional(PredefinedAcceleratorPropertiesState),
         }),
       ).annotate({
         identifier: "PredefinedAcceleratorProperties",
@@ -11329,9 +14007,9 @@ function __c32(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(262)),
-          sku: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PredefinedAcceleratorProperties),
+          sku: S.optional(Sku),
         }),
       ).annotate({
         identifier: "GetPredefinedAcceleratorResponse",
@@ -11358,7 +14036,7 @@ function __c33(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          publicIPs: S.optional(__S(4)),
+          publicIPs: S.optional(NetworkProfileOutboundIPsPublicIPsList),
         }),
       ).annotate({
         identifier: "NetworkProfileOutboundIPs",
@@ -11368,13 +14046,13 @@ function __c33(j: number): any {
         S.Struct({
           protocol: S.optional(S.String),
           port: S.optional(S.Number),
-          ips: S.optional(__S(4)),
-          fqdns: S.optional(__S(4)),
-          direction: S.optional(S.String),
+          ips: S.optional(RequiredTrafficIpsList),
+          fqdns: S.optional(RequiredTrafficFqdnsList),
+          direction: S.optional(RequiredTrafficDirection),
         }),
       ).annotate({ identifier: "RequiredTraffic" });
     case 3:
-      return S.Array(__S(266));
+      return S.Array(RequiredTraffic);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -11389,9 +14067,9 @@ function __c33(j: number): any {
           serviceCidr: S.optional(S.String),
           serviceRuntimeNetworkResourceGroup: S.optional(S.String),
           appNetworkResourceGroup: S.optional(S.String),
-          outboundIPs: S.optional(__S(265)),
-          requiredTraffics: S.optional(__S(267)),
-          ingressConfig: S.optional(__S(268)),
+          outboundIPs: S.optional(NetworkProfileOutboundIPs),
+          requiredTraffics: S.optional(NetworkProfileRequiredTrafficsList),
+          ingressConfig: S.optional(IngressConfig),
           outboundType: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkProfile" });
@@ -11417,15 +14095,15 @@ function __c34(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          networkProfile: S.optional(__S(269)),
-          vnetAddons: S.optional(__S(270)),
+          provisioningState: S.optional(ClusterResourcePropertiesProvisioningState),
+          networkProfile: S.optional(NetworkProfile),
+          vnetAddons: S.optional(ServiceVNetAddons),
           version: S.optional(S.Number),
           serviceId: S.optional(S.String),
-          powerState: S.optional(S.String),
+          powerState: S.optional(ClusterResourcePropertiesPowerState),
           zoneRedundant: S.optional(S.Boolean),
           fqdn: S.optional(S.String),
-          marketplaceResource: S.optional(__S(271)),
+          marketplaceResource: S.optional(MarketplaceResource),
         }),
       ).annotate({
         identifier: "ClusterResourceProperties",
@@ -11436,11 +14114,11 @@ function __c34(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
           location: S.optional(S.String),
-          tags: S.optional(__S(14)),
-          properties: S.optional(__S(272)),
-          sku: S.optional(__S(7)),
+          tags: S.optional(GetServiceResponseTagsMap),
+          properties: S.optional(ClusterResourceProperties),
+          sku: S.optional(Sku),
         }),
       ).annotate({ identifier: "GetServiceResponse" });
     case 2:
@@ -11464,9 +14142,9 @@ function __c34(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          resourceRequests: S.optional(__S(21)),
-          instances: S.optional(__S(11)),
+          provisioningState: S.optional(ServiceRegistryPropertiesProvisioningState),
+          resourceRequests: S.optional(ServiceRegistryResourceRequests),
+          instances: S.optional(ServiceRegistryPropertiesInstancesList),
         }),
       ).annotate({
         identifier: "ServiceRegistryProperties",
@@ -11477,8 +14155,8 @@ function __c34(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(275)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ServiceRegistryProperties),
         }),
       ).annotate({
         identifier: "GetServiceRegistryResponse",
@@ -11502,7 +14180,7 @@ function __c34(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          storageType: S.String,
+          storageType: StoragePropertiesStorageType,
         }),
       ).annotate({ identifier: "StorageProperties" });
     case 7:
@@ -11511,8 +14189,8 @@ function __c34(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(278)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(StorageProperties),
         }),
       ).annotate({ identifier: "GetStorageResponse" });
   }
@@ -11538,11 +14216,11 @@ function __c35(j: number): any {
         identifier: "ListApiPortalCustomDomainsRequest",
       });
     case 1:
-      return S.Array(__S(3));
+      return S.Array(ApiPortalCustomDomainResource);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(281)),
+          value: S.optional(ApiPortalCustomDomainResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -11564,11 +14242,11 @@ function __c35(j: number): any {
         ),
       ).annotate({ identifier: "ListApiPortalsRequest" });
     case 4:
-      return S.Array(__S(209));
+      return S.Array(ApiPortalResource);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(284)),
+          value: S.optional(ApiPortalResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -11590,7 +14268,7 @@ function __c35(j: number): any {
         ),
       ).annotate({ identifier: "ListApmsRequest" });
     case 7:
-      return S.Array(__S(212));
+      return S.Array(ApmResource);
   }
 }
 function __c36(j: number): any {
@@ -11598,7 +14276,7 @@ function __c36(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(287)),
+          value: S.optional(ApmResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApmResourceCollection" });
@@ -11621,7 +14299,7 @@ function __c36(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(4)),
+          value: S.optional(ApmSecretKeysValueList),
         }),
       ).annotate({ identifier: "ApmSecretKeys" });
     case 3:
@@ -11642,11 +14320,11 @@ function __c36(j: number): any {
         identifier: "ListApplicationAcceleratorsRequest",
       });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(ApplicationAcceleratorResource);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(292)),
+          value: S.optional(ApplicationAcceleratorResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -11670,7 +14348,7 @@ function __c36(j: number): any {
         identifier: "ListApplicationLiveViewsRequest",
       });
     case 7:
-      return S.Array(__S(32));
+      return S.Array(ApplicationLiveViewResource);
   }
 }
 function __c37(j: number): any {
@@ -11678,7 +14356,7 @@ function __c37(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(295)),
+          value: S.optional(ApplicationLiveViewResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -11700,11 +14378,11 @@ function __c37(j: number): any {
         ),
       ).annotate({ identifier: "ListAppsRequest" });
     case 2:
-      return S.Array(__S(214));
+      return S.Array(AppResource);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(298)),
+          value: S.optional(AppResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppResourceCollection" });
@@ -11725,11 +14403,11 @@ function __c37(j: number): any {
         ),
       ).annotate({ identifier: "ListBindingsRequest" });
     case 5:
-      return S.Array(__S(218));
+      return S.Array(BindingResource);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(301)),
+          value: S.optional(BindingResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -11764,16 +14442,16 @@ function __c38(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(63)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BuildpackBindingProperties),
         }),
       ).annotate({ identifier: "BuildpackBindingResource" });
     case 1:
-      return S.Array(__S(304));
+      return S.Array(BuildpackBindingResource);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(305)),
+          value: S.optional(BuildpackBindingResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -11815,11 +14493,11 @@ function __c38(j: number): any {
         identifier: "ListBuildServiceAgentPoolRequest",
       });
     case 5:
-      return S.Array(__S(70));
+      return S.Array(BuildServiceAgentPoolResource);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(309)),
+          value: S.optional(BuildServiceAgentPoolResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -11853,16 +14531,16 @@ function __c39(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(78)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BuilderProperties),
         }),
       ).annotate({ identifier: "BuilderResource" });
     case 1:
-      return S.Array(__S(312));
+      return S.Array(BuilderResource);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(313)),
+          value: S.optional(BuilderResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -11890,7 +14568,7 @@ function __c39(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          deployments: S.optional(__S(4)),
+          deployments: S.optional(DeploymentListDeploymentsList),
         }),
       ).annotate({ identifier: "DeploymentList" });
     case 5:
@@ -11918,12 +14596,12 @@ function __c39(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(226)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BuildResultProperties),
         }),
       ).annotate({ identifier: "BuildResult" });
     case 7:
-      return S.Array(__S(318));
+      return S.Array(BuildResult);
   }
 }
 function __c40(j: number): any {
@@ -11931,7 +14609,7 @@ function __c40(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(319)),
+          value: S.optional(BuildResultCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BuildResultCollection" });
@@ -11959,16 +14637,16 @@ function __c40(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(90)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BuildProperties),
         }),
       ).annotate({ identifier: "Build" });
     case 3:
-      return S.Array(__S(322));
+      return S.Array(Build);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(323)),
+          value: S.optional(BuildCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BuildCollection" });
@@ -11995,12 +14673,12 @@ function __c40(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(82)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BuildServiceProperties),
         }),
       ).annotate({ identifier: "BuildService" });
     case 7:
-      return S.Array(__S(326));
+      return S.Array(BuildService);
   }
 }
 function __c41(j: number): any {
@@ -12008,7 +14686,7 @@ function __c41(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(327)),
+          value: S.optional(BuildServiceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BuildServiceCollection" });
@@ -12031,11 +14709,11 @@ function __c41(j: number): any {
         identifier: "ListBuildServiceSupportedBuildpacksRequest",
       });
     case 2:
-      return S.Array(__S(233));
+      return S.Array(SupportedBuildpackResource);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(330)),
+          value: S.optional(SupportedBuildpacksCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12065,16 +14743,16 @@ function __c41(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(235)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SupportedStackResourceProperties),
         }),
       ).annotate({ identifier: "SupportedStackResource" });
     case 6:
-      return S.Array(__S(333));
+      return S.Array(SupportedStackResource);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(334)),
+          value: S.optional(SupportedStacksCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12100,11 +14778,11 @@ function __c42(j: number): any {
         ),
       ).annotate({ identifier: "ListCertificatesRequest" });
     case 1:
-      return S.Array(__S(238));
+      return S.Array(CertificateResource);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(337)),
+          value: S.optional(CertificateResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12128,11 +14806,11 @@ function __c42(j: number): any {
         identifier: "ListConfigurationServicesRequest",
       });
     case 4:
-      return S.Array(__S(116));
+      return S.Array(ConfigurationServiceResource);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(340)),
+          value: S.optional(ConfigurationServiceResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12156,7 +14834,7 @@ function __c42(j: number): any {
         identifier: "ListContainerRegistriesRequest",
       });
     case 7:
-      return S.Array(__S(120));
+      return S.Array(ContainerRegistryResource);
   }
 }
 function __c43(j: number): any {
@@ -12164,7 +14842,7 @@ function __c43(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(343)),
+          value: S.optional(ContainerRegistryResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12187,11 +14865,11 @@ function __c43(j: number): any {
         ),
       ).annotate({ identifier: "ListCustomDomainsRequest" });
     case 2:
-      return S.Array(__S(244));
+      return S.Array(CustomDomainResource);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(346)),
+          value: S.optional(CustomDomainResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12216,11 +14894,11 @@ function __c43(j: number): any {
         identifier: "ListCustomizedAcceleratorsRequest",
       });
     case 5:
-      return S.Array(__S(130));
+      return S.Array(CustomizedAcceleratorResource);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(349)),
+          value: S.optional(CustomizedAcceleratorResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12232,7 +14910,7 @@ function __c43(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          version: S.optional(__S(4).pipe(T.Query())),
+          version: S.optional(ListDeploymentForClusterRequestVersionList.pipe(T.Query())),
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
         }).pipe(
           T.Http({
@@ -12250,11 +14928,11 @@ function __c43(j: number): any {
 function __c44(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(247));
+      return S.Array(DeploymentResource);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(352)),
+          value: S.optional(DeploymentResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12267,7 +14945,7 @@ function __c44(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           appName: S.String.pipe(T.Label()),
-          version: S.optional(__S(4).pipe(T.Query())),
+          version: S.optional(ListDeploymentsRequestVersionList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -12295,11 +14973,11 @@ function __c44(j: number): any {
         identifier: "ListDevToolPortalsRequest",
       });
     case 4:
-      return S.Array(__S(252));
+      return S.Array(DevToolPortalResource);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(356)),
+          value: S.optional(DevToolPortalResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12346,7 +15024,7 @@ function __c44(j: number): any {
 function __c45(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(14).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GatewayEnvSecrets.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGatewayEnvSecretsResponse",
       });
     case 1:
@@ -12368,11 +15046,11 @@ function __c45(j: number): any {
         identifier: "ListGatewayRouteConfigsRequest",
       });
     case 2:
-      return S.Array(__S(196));
+      return S.Array(GatewayRouteConfigResource);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(362)),
+          value: S.optional(GatewayRouteConfigResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12394,11 +15072,11 @@ function __c45(j: number): any {
         ),
       ).annotate({ identifier: "ListGatewaysRequest" });
     case 5:
-      return S.Array(__S(254));
+      return S.Array(GatewayResource);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(365)),
+          value: S.optional(GatewayResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12437,7 +15115,7 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "LogSpecification" });
     case 2:
-      return S.Array(__S(369));
+      return S.Array(LogSpecification);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -12447,7 +15125,7 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "MetricDimension" });
     case 4:
-      return S.Array(__S(371));
+      return S.Array(MetricDimension);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -12457,20 +15135,20 @@ function __c46(j: number): any {
           unit: S.optional(S.String),
           category: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          supportedAggregationTypes: S.optional(__S(4)),
-          supportedTimeGrainTypes: S.optional(__S(4)),
+          supportedAggregationTypes: S.optional(MetricSpecificationSupportedAggregationTypesList),
+          supportedTimeGrainTypes: S.optional(MetricSpecificationSupportedTimeGrainTypesList),
           fillGapWithZero: S.optional(S.Boolean),
-          dimensions: S.optional(__S(372)),
+          dimensions: S.optional(MetricSpecificationDimensionsList),
           sourceMdmNamespace: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricSpecification" });
     case 6:
-      return S.Array(__S(373));
+      return S.Array(MetricSpecification);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          logSpecifications: S.optional(__S(370)),
-          metricSpecifications: S.optional(__S(374)),
+          logSpecifications: S.optional(ServiceSpecificationLogSpecificationsList),
+          metricSpecifications: S.optional(ServiceSpecificationMetricSpecificationsList),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
   }
@@ -12480,7 +15158,7 @@ function __c47(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(375)),
+          serviceSpecification: S.optional(ServiceSpecification),
         }),
       ).annotate({ identifier: "OperationProperties" });
     case 1:
@@ -12488,18 +15166,18 @@ function __c47(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(368)),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          actionType: S.optional(OperationDetailActionType),
           origin: S.optional(S.String),
-          properties: S.optional(__S(376)),
+          properties: S.optional(OperationProperties),
         }),
       ).annotate({ identifier: "OperationDetail" });
     case 2:
-      return S.Array(__S(377));
+      return S.Array(OperationDetail);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(378)),
+          value: S.optional(AvailableOperationsValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AvailableOperations" });
@@ -12522,11 +15200,11 @@ function __c47(j: number): any {
         identifier: "ListPredefinedAcceleratorsRequest",
       });
     case 5:
-      return S.Array(__S(263));
+      return S.Array(PredefinedAcceleratorResource);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(381)),
+          value: S.optional(PredefinedAcceleratorResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12552,17 +15230,17 @@ function __c48(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(S.String),
-          platform: S.optional(S.String),
+          value: S.optional(SupportedRuntimeVersionValue),
+          platform: S.optional(SupportedRuntimeVersionPlatform),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "SupportedRuntimeVersion" });
     case 1:
-      return S.Array(__S(384));
+      return S.Array(SupportedRuntimeVersion);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(385)),
+          value: S.optional(AvailableRuntimeVersionsValueList),
         }),
       ).annotate({ identifier: "AvailableRuntimeVersions" });
     case 3:
@@ -12581,11 +15259,11 @@ function __c48(j: number): any {
         identifier: "ListServiceBySubscriptionRequest",
       });
     case 4:
-      return S.Array(__S(273));
+      return S.Array(ServiceResource);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(388)),
+          value: S.optional(ServiceResourceListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceResourceList" });
@@ -12633,16 +15311,16 @@ function __c49(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(275)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ServiceRegistryProperties),
         }),
       ).annotate({ identifier: "ServiceRegistryResource" });
     case 1:
-      return S.Array(__S(392));
+      return S.Array(ServiceRegistryResource);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(393)),
+          value: S.optional(ServiceRegistryResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12686,11 +15364,11 @@ function __c49(j: number): any {
         }),
       ).annotate({ identifier: "SupportedApmType" });
     case 6:
-      return S.Array(__S(397));
+      return S.Array(SupportedApmType);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(398)),
+          value: S.optional(SupportedApmTypesValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SupportedApmTypes" });
@@ -12724,11 +15402,11 @@ function __c50(j: number): any {
         }),
       ).annotate({ identifier: "SupportedServerVersion" });
     case 2:
-      return S.Array(__S(401));
+      return S.Array(SupportedServerVersion);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(402)),
+          value: S.optional(SupportedServerVersionsValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SupportedServerVersions" });
@@ -12768,7 +15446,7 @@ function __c50(j: number): any {
           minimum: S.Number,
           maximum: S.optional(S.Number),
           default: S.optional(S.Number),
-          scaleType: S.optional(S.String),
+          scaleType: S.optional(SkuCapacityScaleType),
         }),
       ).annotate({ identifier: "SkuCapacity" });
     case 7:
@@ -12783,31 +15461,31 @@ function __c50(j: number): any {
 function __c51(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(407));
+      return S.Array(ResourceSkuCapabilities);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(4)),
-          capabilities: S.optional(__S(408)),
+          name: S.optional(ResourceSkuZoneDetailsNameList),
+          capabilities: S.optional(ResourceSkuZoneDetailsCapabilitiesList),
         }),
       ).annotate({ identifier: "ResourceSkuZoneDetails" });
     case 2:
-      return S.Array(__S(409));
+      return S.Array(ResourceSkuZoneDetails);
     case 3:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
-          zones: S.optional(__S(4)),
-          zoneDetails: S.optional(__S(410)),
+          zones: S.optional(ResourceSkuLocationInfoZonesList),
+          zoneDetails: S.optional(ResourceSkuLocationInfoZoneDetailsList),
         }),
       ).annotate({ identifier: "ResourceSkuLocationInfo" });
     case 4:
-      return S.Array(__S(411));
+      return S.Array(ResourceSkuLocationInfo);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(4)),
-          zones: S.optional(__S(4)),
+          locations: S.optional(ResourceSkuRestrictionInfoLocationsList),
+          zones: S.optional(ResourceSkuRestrictionInfoZonesList),
         }),
       ).annotate({
         identifier: "ResourceSkuRestrictionInfo",
@@ -12815,14 +15493,14 @@ function __c51(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          values: S.optional(__S(4)),
-          restrictionInfo: S.optional(__S(413)),
-          reasonCode: S.optional(S.String),
+          type: S.optional(ResourceSkuRestrictionsType),
+          values: S.optional(ResourceSkuRestrictionsValuesList),
+          restrictionInfo: S.optional(ResourceSkuRestrictionInfo),
+          reasonCode: S.optional(ResourceSkuRestrictionsReasonCode),
         }),
       ).annotate({ identifier: "ResourceSkuRestrictions" });
     case 7:
-      return S.Array(__S(414));
+      return S.Array(ResourceSkuRestrictions);
   }
 }
 function __c52(j: number): any {
@@ -12833,18 +15511,18 @@ function __c52(j: number): any {
           resourceType: S.optional(S.String),
           name: S.optional(S.String),
           tier: S.optional(S.String),
-          capacity: S.optional(__S(406)),
-          locations: S.optional(__S(4)),
-          locationInfo: S.optional(__S(412)),
-          restrictions: S.optional(__S(415)),
+          capacity: S.optional(SkuCapacity),
+          locations: S.optional(ResourceSkuLocationsList),
+          locationInfo: S.optional(ResourceSkuLocationInfoList),
+          restrictions: S.optional(ResourceSkuRestrictionsList),
         }),
       ).annotate({ identifier: "ResourceSku" });
     case 1:
-      return S.Array(__S(416));
+      return S.Array(ResourceSku);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(417)),
+          value: S.optional(ResourceSkuCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceSkuCollection" });
@@ -12864,11 +15542,11 @@ function __c52(j: number): any {
         ),
       ).annotate({ identifier: "ListStoragesRequest" });
     case 4:
-      return S.Array(__S(279));
+      return S.Array(StorageResource);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(420)),
+          value: S.optional(StorageResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12877,11 +15555,11 @@ function __c52(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(99)),
+          error: S.optional(Error),
           traceEnabled: S.optional(S.Boolean),
           appInsightsInstrumentationKey: S.optional(S.String),
           appInsightsSamplingRate: S.optional(S.Number),
-          appInsightsAgentVersions: S.optional(__S(19)),
+          appInsightsAgentVersions: S.optional(ApplicationAcceleratorPropertiesInput),
         }),
       ).annotate({
         identifier: "MonitoringSettingPropertiesInput",
@@ -12892,7 +15570,7 @@ function __c52(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(422)),
+          properties: S.optional(MonitoringSettingPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12914,7 +15592,7 @@ function __c53(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(422)),
+          properties: S.optional(MonitoringSettingPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12932,7 +15610,7 @@ function __c53(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          keyType: S.String,
+          keyType: RegenerateServiceTestKeyRequestKeyType,
         }).pipe(
           T.Http({
             method: "POST",
@@ -13003,17 +15681,17 @@ function __c53(j: number): any {
           serviceCidr: S.optional(S.String),
           serviceRuntimeNetworkResourceGroup: S.optional(S.String),
           appNetworkResourceGroup: S.optional(S.String),
-          ingressConfig: S.optional(__S(268)),
+          ingressConfig: S.optional(IngressConfig),
           outboundType: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkProfileInput" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          networkProfile: S.optional(__S(429)),
-          vnetAddons: S.optional(__S(270)),
+          networkProfile: S.optional(NetworkProfileInput),
+          vnetAddons: S.optional(ServiceVNetAddons),
           zoneRedundant: S.optional(S.Boolean),
-          marketplaceResource: S.optional(__S(271)),
+          marketplaceResource: S.optional(MarketplaceResource),
         }),
       ).annotate({
         identifier: "ClusterResourcePropertiesInput",
@@ -13025,9 +15703,9 @@ function __c53(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(14)),
-          properties: S.optional(__S(430)),
-          sku: S.optional(__S(7)),
+          tags: S.optional(ServicesCreateOrUpdateRequestTagsMap),
+          properties: S.optional(ClusterResourcePropertiesInput),
+          sku: S.optional(Sku),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13049,11 +15727,11 @@ function __c54(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
           location: S.optional(S.String),
-          tags: S.optional(__S(14)),
-          properties: S.optional(__S(272)),
-          sku: S.optional(__S(7)),
+          tags: S.optional(ServicesCreateOrUpdateResponseTagsMap),
+          properties: S.optional(ClusterResourceProperties),
+          sku: S.optional(Sku),
         }),
       ).annotate({
         identifier: "ServicesCreateOrUpdateResponse",
@@ -13065,7 +15743,9 @@ function __c54(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           appName: S.String.pipe(T.Label()),
-          activeDeploymentNames: S.optional(__S(4)),
+          activeDeploymentNames: S.optional(
+            SetAppActiveDeploymentsRequestActiveDeploymentNamesList,
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13170,7 +15850,7 @@ function __c54(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           storageName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(278)),
+          properties: S.optional(StorageProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13192,8 +15872,8 @@ function __c55(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(278)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(StorageProperties),
         }),
       ).annotate({
         identifier: "StoragesCreateOrUpdateResponse",
@@ -13205,8 +15885,8 @@ function __c55(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           appName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(43)),
-          identity: S.optional(__S(45)),
+          properties: S.optional(AppResourcePropertiesInput),
+          identity: S.optional(ManagedIdentityPropertiesInput),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -13225,7 +15905,7 @@ function __c55(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           appName: S.String.pipe(T.Label()),
           bindingName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(56)),
+          properties: S.optional(BindingResourcePropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13243,7 +15923,7 @@ function __c55(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           appName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(121)),
+          properties: S.optional(CustomDomainPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13263,8 +15943,8 @@ function __c55(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           appName: S.String.pipe(T.Label()),
           deploymentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(161)),
-          sku: S.optional(__S(7)),
+          properties: S.optional(DeploymentResourcePropertiesInput),
+          sku: S.optional(Sku),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13281,9 +15961,9 @@ function __c55(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(14)),
-          properties: S.optional(__S(430)),
-          sku: S.optional(__S(7)),
+          tags: S.optional(UpdateServiceRequestTagsMap),
+          properties: S.optional(ClusterResourcePropertiesInput),
+          sku: S.optional(Sku),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13348,7 +16028,7 @@ function __c56(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          gitProperty: S.optional(__S(102)),
+          gitProperty: S.optional(ConfigServerGitProperty),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13365,18 +16045,18 @@ function __c56(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           uri: S.optional(S.String),
-          messages: S.optional(__S(4)),
+          messages: S.optional(ConfigServerSettingsErrorRecordMessagesList),
         }),
       ).annotate({
         identifier: "ConfigServerSettingsErrorRecord",
       });
     case 3:
-      return S.Array(__S(450));
+      return S.Array(ConfigServerSettingsErrorRecord);
     case 4:
       return S.suspend(() =>
         S.Struct({
           isValid: S.optional(S.Boolean),
-          details: S.optional(__S(451)),
+          details: S.optional(ConfigServerSettingsValidateResultDetailsList),
         }),
       ).annotate({
         identifier: "ConfigServerSettingsValidateResult",
@@ -13388,7 +16068,7 @@ function __c56(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           configurationServiceName: S.String.pipe(T.Label()),
-          gitProperty: S.optional(__S(111)),
+          gitProperty: S.optional(ConfigurationServiceGitProperty),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13404,11 +16084,11 @@ function __c56(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          messages: S.optional(__S(4)),
+          messages: S.optional(ValidationMessagesMessagesList),
         }),
       ).annotate({ identifier: "ValidationMessages" });
     case 7:
-      return S.Array(__S(454));
+      return S.Array(ValidationMessages);
   }
 }
 function __c57(j: number): any {
@@ -13417,7 +16097,9 @@ function __c57(j: number): any {
       return S.suspend(() =>
         S.Struct({
           isValid: S.optional(S.Boolean),
-          gitReposValidationResult: S.optional(__S(455)),
+          gitReposValidationResult: S.optional(
+            ConfigurationServiceGitPropertyValidateResultGitReposValidationResultList,
+          ),
         }),
       ).annotate({
         identifier: "ConfigurationServiceGitPropertyValidateResult",
@@ -13425,7 +16107,7 @@ function __c57(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          gitPropertyValidationResult: S.optional(__S(456)),
+          gitPropertyValidationResult: S.optional(ConfigurationServiceGitPropertyValidateResult),
         }),
       ).annotate({
         identifier: "ConfigurationServiceSettingsValidateResult",
@@ -13437,7 +16119,7 @@ function __c57(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           configurationServiceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(113)),
+          properties: S.optional(ConfigurationServicePropertiesInput),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13456,7 +16138,7 @@ function __c57(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           containerRegistryName: S.String.pipe(T.Label()),
-          credentials: __S(93),
+          credentials: ContainerRegistryCredentials,
         }).pipe(
           T.Http({
             method: "POST",
@@ -13476,12 +16158,12 @@ function __c57(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           applicationAcceleratorName: S.String.pipe(T.Label()),
           customizedAcceleratorName: S.String.pipe(T.Label()),
-          acceleratorType: S.optional(S.String),
+          acceleratorType: S.optional(ValidateCustomizedAcceleratorRequestAcceleratorType),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
           iconUrl: S.optional(S.String),
-          acceleratorTags: S.optional(__S(4)),
-          gitRepository: __S(126),
+          acceleratorTags: S.optional(ValidateCustomizedAcceleratorRequestAcceleratorTagsList),
+          gitRepository: AcceleratorGitRepository,
         }).pipe(
           T.Http({
             method: "POST",
@@ -13496,7 +16178,7 @@ function __c57(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(CustomizedAcceleratorValidateResultState),
           errorMessage: S.optional(S.String),
         }),
       ).annotate({
@@ -13521,130 +16203,5 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "ValidateGatewayDomainRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
-    case 41:
-      return __c41(i & 7);
-    case 42:
-      return __c42(i & 7);
-    case 43:
-      return __c43(i & 7);
-    case 44:
-      return __c44(i & 7);
-    case 45:
-      return __c45(i & 7);
-    case 46:
-      return __c46(i & 7);
-    case 47:
-      return __c47(i & 7);
-    case 48:
-      return __c48(i & 7);
-    case 49:
-      return __c49(i & 7);
-    case 50:
-      return __c50(i & 7);
-    case 51:
-      return __c51(i & 7);
-    case 52:
-      return __c52(i & 7);
-    case 53:
-      return __c53(i & 7);
-    case 54:
-      return __c54(i & 7);
-    case 55:
-      return __c55(i & 7);
-    case 56:
-      return __c56(i & 7);
-    case 57:
-      return __c57(i & 7);
   }
 }

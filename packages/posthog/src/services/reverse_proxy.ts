@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -44,6 +42,11 @@ export interface CreateProxyRecordRequest {
   /** The custom domain to proxy through, e.g. 'e.example.com'. Must be a valid subdomain you control. */
   domain?: string;
 }
+const CreateProxyRecordRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateProxyRecordRequest>;
+
 /** * `waiting` - Waiting * `issuing` - Issuing * `valid` - Valid * `warning` - Warning * `erroring` - Erroring * `deleting` - Deleting * `timed_out` - Timed Out */
 export type ProxyRecordStatusEnum =
   | "waiting"
@@ -53,6 +56,8 @@ export type ProxyRecordStatusEnum =
   | "erroring"
   | "deleting"
   | "timed_out";
+const ProxyRecordStatusEnum = S.String;
+
 export interface ProxyRecord {
   /** Unique identifier for the proxy record. */
   id?: string;
@@ -75,14 +80,23 @@ export interface ProxyRecord {
   /** ID of the user who created this proxy record. */
   created_by?: number;
 }
+const ProxyRecord = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ProxyRecord>;
+
 export interface CreateProxyRecordsDiagnoseRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A UUID string identifying this proxy record. */
   id: string;
 }
+const CreateProxyRecordsDiagnoseRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateProxyRecordsDiagnoseRequest>;
+
 /** * `healthy` - healthy * `warn` - warn * `fail` - fail */
 export type DiagnosticReportSummaryStatusEnum = "healthy" | "warn" | "fail";
+const DiagnosticReportSummaryStatusEnum = S.String;
+
 export interface DiagnosticReportSummary {
   /** Overall outcome: healthy if the proxy is serving requests, warn for non-blocking issues, fail otherwise. * `healthy` - healthy * `warn` - warn * `fail` - fail */
   status: DiagnosticReportSummaryStatusEnum;
@@ -91,10 +105,19 @@ export interface DiagnosticReportSummary {
   /** One-sentence next action the customer should take. Null when nothing's wrong. */
   next_action: string | null;
 }
+const DiagnosticReportSummary = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DiagnosticReportSummary>;
+
 /** * `passed` - passed * `warned` - warned * `failed` - failed * `skipped` - skipped */
 export type DiagnosticCheckResultStatusEnum = "passed" | "warned" | "failed" | "skipped";
+const DiagnosticCheckResultStatusEnum = S.String;
+
 /** * `dns` - dns * `config` - config * `wait` - wait * `retry` - retry */
 export type DiagnosticRemediationTypeEnum = "dns" | "config" | "wait" | "retry";
+const DiagnosticRemediationTypeEnum = S.String;
+
 export interface DiagnosticDnsRecord {
   /** DNS record name (the hostname the record is set on). */
   name: string;
@@ -103,8 +126,15 @@ export interface DiagnosticDnsRecord {
   /** DNS record value to set. */
   value: string;
 }
+const DiagnosticDnsRecord = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DiagnosticDnsRecord>;
+
 /** DNS records the customer should add (empty when remediation is not DNS-based). */
 export type DiagnosticRemediationRecordsList = Array<DiagnosticDnsRecord>;
+const DiagnosticRemediationRecordsList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DiagnosticRemediationRecordsList>;
+
 export interface DiagnosticRemediation {
   /** Category of fix. dns: customer must change DNS records. config: customer must adjust their server config (e.g. allow port 80). wait: no action -- the system will resolve on its own. retry: hit Retry. * `dns` - dns * `config` - config * `wait` - wait * `retry` - retry */
   type: DiagnosticRemediationTypeEnum;
@@ -113,6 +143,11 @@ export interface DiagnosticRemediation {
   /** DNS records the customer should add (empty when remediation is not DNS-based). */
   records: DiagnosticRemediationRecordsList;
 }
+const DiagnosticRemediation = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DiagnosticRemediation>;
+
 export interface DiagnosticCheckResult {
   /** Stable identifier for the check (e.g. cname, cloudflare, caa, http_challenge, live_event, cert_expiry). */
   id: string;
@@ -125,8 +160,18 @@ export interface DiagnosticCheckResult {
   /** Concrete remediation steps when the check failed; null when there's nothing actionable. */
   remediation?: DiagnosticRemediation | null;
 }
+const DiagnosticCheckResult = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DiagnosticCheckResult>;
+
 /** Per-check results in execution order. */
 export type DiagnosticReportChecksList = Array<DiagnosticCheckResult>;
+const DiagnosticReportChecksList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DiagnosticReportChecksList>;
+
 export interface DiagnosticReport {
   /** When this diagnostic report was generated (UTC). */
   ran_at: string;
@@ -135,35 +180,72 @@ export interface DiagnosticReport {
   /** Per-check results in execution order. */
   checks: DiagnosticReportChecksList;
 }
+const DiagnosticReport = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DiagnosticReport>;
+
 export interface GetProxyRecordRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A UUID string identifying this proxy record. */
   id: string;
 }
+const GetProxyRecordRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetProxyRecordRequest>;
+
 export interface ListProxyRecordsRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
+const ListProxyRecordsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListProxyRecordsRequest>;
+
 export type ProxyRecordListResponseResultsList = Array<ProxyRecord>;
+const ProxyRecordListResponseResultsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ProxyRecordListResponseResultsList>;
+
 export interface ProxyRecordListResponse {
   results?: ProxyRecordListResponseResultsList;
   /** Maximum number of proxy records allowed for this organization's current plan. */
   max_proxy_records?: number;
 }
+const ProxyRecordListResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ProxyRecordListResponse>;
+
 export interface ProxyRecordsDestroyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A UUID string identifying this proxy record. */
   id: string;
 }
+const ProxyRecordsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ProxyRecordsDestroyRequest>;
+
 export interface ProxyRecordsDestroyResponse {}
+const ProxyRecordsDestroyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ProxyRecordsDestroyResponse>;
+
 export interface ProxyRecordsRetryCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A UUID string identifying this proxy record. */
   id: string;
 }
+const ProxyRecordsRetryCreateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ProxyRecordsRetryCreateRequest>;
+
 export interface UpdateProxyRecordsPartialRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -172,6 +254,11 @@ export interface UpdateProxyRecordsPartialRequest {
   /** HTTPS URL that requests to the proxy domain root redirect to, or null to disable the redirect. The URL must use the same registrable domain as the managed proxy. */
   root_redirect_url?: string;
 }
+const UpdateProxyRecordsPartialRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<UpdateProxyRecordsPartialRequest>;
+
 export type CreateProxyRecordError = BadRequest | Forbidden | NotFound | PosthogOpError;
 /** Create a new managed reverse proxy. Provide the domain you want to proxy through. The response includes the CNAME target you need to add as a DNS record. Once the CNAME is configured, the proxy will be automatically verified and provisioned. */
 export const createProxyRecord: API.OperationMethod<
@@ -180,8 +267,8 @@ export const createProxyRecord: API.OperationMethod<
   CreateProxyRecordError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateProxyRecordRequest>,
-  output: __S(1) as any as S.Schema<ProxyRecord>,
+  input: CreateProxyRecordRequest,
+  output: ProxyRecord,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -195,8 +282,8 @@ export const createProxyRecordsDiagnose: API.OperationMethod<
   CreateProxyRecordsDiagnoseError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateProxyRecordsDiagnoseRequest>,
-  output: __S(9) as any as S.Schema<DiagnosticReport>,
+  input: CreateProxyRecordsDiagnoseRequest,
+  output: DiagnosticReport,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -210,8 +297,8 @@ export const getProxyRecord: API.OperationMethod<
   GetProxyRecordError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<GetProxyRecordRequest>,
-  output: __S(1) as any as S.Schema<ProxyRecord>,
+  input: GetProxyRecordRequest,
+  output: ProxyRecord,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -225,8 +312,8 @@ export const listProxyRecords: API.OperationMethod<
   ListProxyRecordsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<ListProxyRecordsRequest>,
-  output: __S(13) as any as S.Schema<ProxyRecordListResponse>,
+  input: ListProxyRecordsRequest,
+  output: ProxyRecordListResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -240,8 +327,8 @@ export const proxyRecordsDestroy: API.OperationMethod<
   ProxyRecordsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<ProxyRecordsDestroyRequest>,
-  output: __S(15) as any as S.Schema<ProxyRecordsDestroyResponse>,
+  input: ProxyRecordsDestroyRequest,
+  output: ProxyRecordsDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -255,8 +342,8 @@ export const proxyRecordsRetryCreate: API.OperationMethod<
   ProxyRecordsRetryCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<ProxyRecordsRetryCreateRequest>,
-  output: __S(1) as any as S.Schema<ProxyRecord>,
+  input: ProxyRecordsRetryCreateRequest,
+  output: ProxyRecord,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -270,8 +357,8 @@ export const updateProxyRecordsPartial: API.OperationMethod<
   UpdateProxyRecordsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<UpdateProxyRecordsPartialRequest>,
-  output: __S(1) as any as S.Schema<ProxyRecord>,
+  input: UpdateProxyRecordsPartialRequest,
+  output: ProxyRecord,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -301,7 +388,7 @@ function __c0(j: number): any {
           target_cname: S.optional(S.String),
           root_redirect_url: S.optional(S.NullOr(S.String)),
           root_redirect_supported: S.optional(S.Boolean),
-          status: S.optional(S.String),
+          status: S.optional(ProxyRecordStatusEnum),
           message: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
@@ -326,7 +413,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.String,
+          status: DiagnosticReportSummaryStatusEnum,
           primary_issue: S.NullOr(S.String),
           next_action: S.NullOr(S.String),
         }),
@@ -340,13 +427,13 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "DiagnosticDnsRecord" });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(DiagnosticDnsRecord);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: DiagnosticRemediationTypeEnum,
           summary: S.String,
-          records: __S(5),
+          records: DiagnosticRemediationRecordsList,
         }),
       ).annotate({ identifier: "DiagnosticRemediation" });
     case 7:
@@ -354,9 +441,9 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          status: S.String,
+          status: DiagnosticCheckResultStatusEnum,
           detail: S.String,
-          remediation: S.optional(S.NullOr(__S(6))),
+          remediation: S.optional(S.NullOr(DiagnosticRemediation)),
         }),
       ).annotate({ identifier: "DiagnosticCheckResult" });
   }
@@ -364,13 +451,13 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(DiagnosticCheckResult);
     case 1:
       return S.suspend(() =>
         S.Struct({
           ran_at: S.String,
-          summary: __S(3),
-          checks: __S(8),
+          summary: DiagnosticReportSummary,
+          checks: DiagnosticReportChecksList,
         }),
       ).annotate({ identifier: "DiagnosticReport" });
     case 2:
@@ -399,11 +486,11 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListProxyRecordsRequest" });
     case 4:
-      return S.Array(__S(1));
+      return S.Array(ProxyRecord);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(12)),
+          results: S.optional(ProxyRecordListResponseResultsList),
           max_proxy_records: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ProxyRecordListResponse" });
@@ -461,20 +548,5 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdateProxyRecordsPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

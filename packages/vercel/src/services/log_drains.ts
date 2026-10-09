@@ -7,8 +7,6 @@ import * as Redacted from "effect/Redacted";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -41,9 +39,21 @@ export class NotFound
 
 /** The delivery log format */
 export type CreateConfigurableLogDrainRequestDeliveryFormat = "json" | "ndjson";
+const CreateConfigurableLogDrainRequestDeliveryFormat = S.String;
+
 /** Headers to be sent together with the request */
 export type CreateConfigurableLogDrainRequestHeadersMap = { [key: string]: string | undefined };
+const CreateConfigurableLogDrainRequestHeadersMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateConfigurableLogDrainRequestHeadersMap>;
+
 export type CreateConfigurableLogDrainRequestProjectIdsList = Array<string>;
+const CreateConfigurableLogDrainRequestProjectIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateConfigurableLogDrainRequestProjectIdsList>;
+
 export type CreateConfigurableLogDrainRequestSourcesItem =
   | "static"
   | "lambda"
@@ -51,13 +61,23 @@ export type CreateConfigurableLogDrainRequestSourcesItem =
   | "edge"
   | "external"
   | "firewall";
+const CreateConfigurableLogDrainRequestSourcesItem = S.String;
+
 export type CreateConfigurableLogDrainRequestSourcesList = Array<
   CreateConfigurableLogDrainRequestSourcesItem | (string & {})
 >;
+const CreateConfigurableLogDrainRequestSourcesList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateConfigurableLogDrainRequestSourcesList>;
+
 export type CreateConfigurableLogDrainRequestEnvironmentsItem = "preview" | "production";
 export type CreateConfigurableLogDrainRequestEnvironmentsList = Array<
   CreateConfigurableLogDrainRequestEnvironmentsItem | (string & {})
 >;
+const CreateConfigurableLogDrainRequestEnvironmentsList =
+  CreateConfigurableLogDrainRequestSourcesList as any as S.Schema<CreateConfigurableLogDrainRequestEnvironmentsList>;
+
 export interface CreateConfigurableLogDrainRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
@@ -79,10 +99,25 @@ export interface CreateConfigurableLogDrainRequest {
   /** The custom name of this log drain. */
   name?: string;
 }
+const CreateConfigurableLogDrainRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateConfigurableLogDrainRequest>;
+
 export type CreateConfigurableLogDrainResponse = unknown;
+const CreateConfigurableLogDrainResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateConfigurableLogDrainResponse>;
+
 export type CreateLogDrainRequestProjectIdsList = Array<string>;
+const CreateLogDrainRequestProjectIdsList =
+  CreateConfigurableLogDrainRequestProjectIdsList as any as S.Schema<CreateLogDrainRequestProjectIdsList>;
+
 /** The delivery log format */
 export type CreateLogDrainRequestDeliveryFormat = "json" | "ndjson";
+const CreateLogDrainRequestDeliveryFormat = S.String;
+
 export type CreateLogDrainRequestSourcesItem =
   | "static"
   | "lambda"
@@ -93,12 +128,21 @@ export type CreateLogDrainRequestSourcesItem =
 export type CreateLogDrainRequestSourcesList = Array<
   CreateLogDrainRequestSourcesItem | (string & {})
 >;
+const CreateLogDrainRequestSourcesList =
+  CreateConfigurableLogDrainRequestSourcesList as any as S.Schema<CreateLogDrainRequestSourcesList>;
+
 /** Headers to be sent together with the request */
 export type CreateLogDrainRequestHeadersMap = { [key: string]: string | undefined };
+const CreateLogDrainRequestHeadersMap =
+  CreateConfigurableLogDrainRequestHeadersMap as any as S.Schema<CreateLogDrainRequestHeadersMap>;
+
 export type CreateLogDrainRequestEnvironmentsItem = "preview" | "production";
 export type CreateLogDrainRequestEnvironmentsList = Array<
   CreateLogDrainRequestEnvironmentsItem | (string & {})
 >;
+const CreateLogDrainRequestEnvironmentsList =
+  CreateConfigurableLogDrainRequestSourcesList as any as S.Schema<CreateLogDrainRequestEnvironmentsList>;
+
 export interface CreateLogDrainRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
@@ -118,18 +162,36 @@ export interface CreateLogDrainRequest {
   headers?: CreateLogDrainRequestHeadersMap;
   environments?: CreateLogDrainRequestEnvironmentsList;
 }
+const CreateLogDrainRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateLogDrainRequest>;
+
 /** Whether the log drain was created by an integration or by a user */
 export type CreateLogDrainResponseCreatedFrom = "integration" | "self-served";
+const CreateLogDrainResponseCreatedFrom = S.String;
+
 /** The delivery log format */
 export type CreateLogDrainResponseDeliveryFormat = "json" | "ndjson" | "protobuf";
+const CreateLogDrainResponseDeliveryFormat = S.String;
+
 /** The environment of log drain */
 export type CreateLogDrainResponseEnvironmentsItem = "preview" | "production";
 /** The environment of log drain */
 export type CreateLogDrainResponseEnvironmentsList = Array<CreateLogDrainResponseEnvironmentsItem>;
+const CreateLogDrainResponseEnvironmentsList =
+  CreateConfigurableLogDrainRequestSourcesList as any as S.Schema<CreateLogDrainResponseEnvironmentsList>;
+
 /** The headers to send with the request */
 export type CreateLogDrainResponseHeadersMap = { [key: string]: string | undefined };
+const CreateLogDrainResponseHeadersMap =
+  CreateConfigurableLogDrainRequestHeadersMap as any as S.Schema<CreateLogDrainResponseHeadersMap>;
+
 /** The identifier of the projects this log drain is associated with */
 export type CreateLogDrainResponseProjectIdsList = Array<string>;
+const CreateLogDrainResponseProjectIdsList =
+  CreateConfigurableLogDrainRequestProjectIdsList as any as S.Schema<CreateLogDrainResponseProjectIdsList>;
+
 /** Informational marker for a system-owned default drain. */
 export type CreateLogDrainResponseSourceCase0DefaultFor = "eve-tracing";
 export type CreateLogDrainResponseSourceCase0Kind = "self-served";
@@ -149,6 +211,8 @@ export interface CreateLogDrainResponseSourceCase1 {
 export type CreateLogDrainResponseSource =
   | CreateLogDrainResponseSourceCase0
   | CreateLogDrainResponseSourceCase1;
+const CreateLogDrainResponseSource = S.Unknown as any as S.Schema<CreateLogDrainResponseSource>;
+
 /** The sources from which logs are currently being delivered to this log drain. */
 export type CreateLogDrainResponseSourcesItem =
   | "build"
@@ -160,6 +224,9 @@ export type CreateLogDrainResponseSourcesItem =
   | "static";
 /** The sources from which logs are currently being delivered to this log drain. */
 export type CreateLogDrainResponseSourcesList = Array<CreateLogDrainResponseSourcesItem>;
+const CreateLogDrainResponseSourcesList =
+  CreateConfigurableLogDrainRequestSourcesList as any as S.Schema<CreateLogDrainResponseSourcesList>;
+
 export interface CreateLogDrainResponse {
   /** The branch regexp of log drain */
   branch?: string;
@@ -194,6 +261,11 @@ export interface CreateLogDrainResponse {
   /** The URL to call when logs are generated */
   url: string;
 }
+const CreateLogDrainResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateLogDrainResponse>;
+
 export interface DeleteConfigurableLogDrainRequest {
   id: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -201,7 +273,17 @@ export interface DeleteConfigurableLogDrainRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const DeleteConfigurableLogDrainRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteConfigurableLogDrainRequest>;
+
 export interface DeleteConfigurableLogDrainResponse {}
+const DeleteConfigurableLogDrainResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteConfigurableLogDrainResponse>;
+
 export interface DeleteIntegrationLogDrainRequest {
   /** ID of the log drain to be deleted */
   id: string;
@@ -210,7 +292,15 @@ export interface DeleteIntegrationLogDrainRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const DeleteIntegrationLogDrainRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteIntegrationLogDrainRequest>;
+
 export interface DeleteIntegrationLogDrainResponse {}
+const DeleteIntegrationLogDrainResponse =
+  DeleteConfigurableLogDrainResponse as any as S.Schema<DeleteIntegrationLogDrainResponse>;
+
 export interface GetAllLogDrainsRequest {
   projectId?: string;
   projectIdOrName?: string;
@@ -220,6 +310,11 @@ export interface GetAllLogDrainsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetAllLogDrainsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetAllLogDrainsRequest>;
+
 export type GetAllLogDrainsResponseBodyCase0ItemProjectsMetadataItemFramework =
   | "actix-web"
   | "angular"
@@ -772,7 +867,14 @@ export interface GetAllLogDrainsResponseBodyCase1 {
 export type GetAllLogDrainsResponseBody =
   | GetAllLogDrainsResponseBodyCase0List
   | GetAllLogDrainsResponseBodyCase1;
+const GetAllLogDrainsResponseBody = S.Unknown as any as S.Schema<GetAllLogDrainsResponseBody>;
+
 export type GetAllLogDrainsResponse = GetAllLogDrainsResponseBody;
+const GetAllLogDrainsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetAllLogDrainsResponse>;
+
 export interface GetConfigurableLogDrainRequest {
   id: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -780,6 +882,11 @@ export interface GetConfigurableLogDrainRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetConfigurableLogDrainRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetConfigurableLogDrainRequest>;
+
 export type GetConfigurableLogDrainResponseProjectsMetadataItemFramework =
   | "actix-web"
   | "angular"
@@ -855,14 +962,26 @@ export type GetConfigurableLogDrainResponseProjectsMetadataItemFramework =
   | "vuepress"
   | "xmcp"
   | "zola";
+const GetConfigurableLogDrainResponseProjectsMetadataItemFramework = S.String;
+
 export interface GetConfigurableLogDrainResponseProjectsMetadataItem {
   framework?: GetConfigurableLogDrainResponseProjectsMetadataItemFramework | null;
   id: string;
   latestDeployment?: string;
   name: string;
 }
+const GetConfigurableLogDrainResponseProjectsMetadataItem = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetConfigurableLogDrainResponseProjectsMetadataItem>;
+
 export type GetConfigurableLogDrainResponseProjectsMetadataList =
   Array<GetConfigurableLogDrainResponseProjectsMetadataItem>;
+const GetConfigurableLogDrainResponseProjectsMetadataList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetConfigurableLogDrainResponseProjectsMetadataList>;
+
 export interface GetConfigurableLogDrainResponse {
   clientId?: string;
   configurationId?: string;
@@ -872,27 +991,50 @@ export interface GetConfigurableLogDrainResponse {
   integrationWebsite?: string;
   projectsMetadata?: GetConfigurableLogDrainResponseProjectsMetadataList | null;
 }
+const GetConfigurableLogDrainResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetConfigurableLogDrainResponse>;
+
 export interface GetIntegrationLogDrainsRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetIntegrationLogDrainsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetIntegrationLogDrainsRequest>;
+
 /** Whether the log drain was created by an integration or by a user */
 export type GetIntegrationLogDrainsResponseBodyItemCreatedFrom = "integration" | "self-served";
+const GetIntegrationLogDrainsResponseBodyItemCreatedFrom = S.String;
+
 /** The delivery log format */
 export type GetIntegrationLogDrainsResponseBodyItemDeliveryFormat = "json" | "ndjson" | "protobuf";
+const GetIntegrationLogDrainsResponseBodyItemDeliveryFormat = S.String;
+
 /** The environment of log drain */
 export type GetIntegrationLogDrainsResponseBodyItemEnvironmentsItem = "preview" | "production";
 /** The environment of log drain */
 export type GetIntegrationLogDrainsResponseBodyItemEnvironmentsList =
   Array<GetIntegrationLogDrainsResponseBodyItemEnvironmentsItem>;
+const GetIntegrationLogDrainsResponseBodyItemEnvironmentsList =
+  CreateConfigurableLogDrainRequestSourcesList as any as S.Schema<GetIntegrationLogDrainsResponseBodyItemEnvironmentsList>;
+
 /** The headers to send with the request */
 export type GetIntegrationLogDrainsResponseBodyItemHeadersMap = {
   [key: string]: string | undefined;
 };
+const GetIntegrationLogDrainsResponseBodyItemHeadersMap =
+  CreateConfigurableLogDrainRequestHeadersMap as any as S.Schema<GetIntegrationLogDrainsResponseBodyItemHeadersMap>;
+
 /** The identifier of the projects this log drain is associated with */
 export type GetIntegrationLogDrainsResponseBodyItemProjectIdsList = Array<string>;
+const GetIntegrationLogDrainsResponseBodyItemProjectIdsList =
+  CreateConfigurableLogDrainRequestProjectIdsList as any as S.Schema<GetIntegrationLogDrainsResponseBodyItemProjectIdsList>;
+
 /** Informational marker for a system-owned default drain. */
 export type GetIntegrationLogDrainsResponseBodyItemSourceCase0DefaultFor = "eve-tracing";
 export type GetIntegrationLogDrainsResponseBodyItemSourceCase0Kind = "self-served";
@@ -912,6 +1054,9 @@ export interface GetIntegrationLogDrainsResponseBodyItemSourceCase1 {
 export type GetIntegrationLogDrainsResponseBodyItemSource =
   | GetIntegrationLogDrainsResponseBodyItemSourceCase0
   | GetIntegrationLogDrainsResponseBodyItemSourceCase1;
+const GetIntegrationLogDrainsResponseBodyItemSource =
+  S.Unknown as any as S.Schema<GetIntegrationLogDrainsResponseBodyItemSource>;
+
 /** The sources from which logs are currently being delivered to this log drain. */
 export type GetIntegrationLogDrainsResponseBodyItemSourcesItem =
   | "build"
@@ -924,6 +1069,9 @@ export type GetIntegrationLogDrainsResponseBodyItemSourcesItem =
 /** The sources from which logs are currently being delivered to this log drain. */
 export type GetIntegrationLogDrainsResponseBodyItemSourcesList =
   Array<GetIntegrationLogDrainsResponseBodyItemSourcesItem>;
+const GetIntegrationLogDrainsResponseBodyItemSourcesList =
+  CreateConfigurableLogDrainRequestSourcesList as any as S.Schema<GetIntegrationLogDrainsResponseBodyItemSourcesList>;
+
 export interface GetIntegrationLogDrainsResponseBodyItem {
   /** The branch regexp of log drain */
   branch?: string;
@@ -958,9 +1106,24 @@ export interface GetIntegrationLogDrainsResponseBodyItem {
   /** The URL to call when logs are generated */
   url: string;
 }
+const GetIntegrationLogDrainsResponseBodyItem = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetIntegrationLogDrainsResponseBodyItem>;
+
 export type GetIntegrationLogDrainsResponseBodyList =
   Array<GetIntegrationLogDrainsResponseBodyItem>;
+const GetIntegrationLogDrainsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetIntegrationLogDrainsResponseBodyList>;
+
 export type GetIntegrationLogDrainsResponse = GetIntegrationLogDrainsResponseBodyList;
+const GetIntegrationLogDrainsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetIntegrationLogDrainsResponse>;
+
 export type CreateConfigurableLogDrainError = BadRequest | Forbidden | NotFound | VercelOpError;
 /** Creates a Configurable Log Drain (deprecated) Creates a configurable log drain. This endpoint must be called with a team AccessToken (integration OAuth2 clients are not allowed) */
 export const createConfigurableLogDrain: API.OperationMethod<
@@ -969,8 +1132,8 @@ export const createConfigurableLogDrain: API.OperationMethod<
   CreateConfigurableLogDrainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateConfigurableLogDrainRequest>,
-  output: __S(4) as any as S.Schema<CreateConfigurableLogDrainResponse>,
+  input: CreateConfigurableLogDrainRequest,
+  output: CreateConfigurableLogDrainResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -984,8 +1147,8 @@ export const createLogDrain: API.OperationMethod<
   CreateLogDrainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreateLogDrainRequest>,
-  output: __S(6) as any as S.Schema<CreateLogDrainResponse>,
+  input: CreateLogDrainRequest,
+  output: CreateLogDrainResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -999,8 +1162,8 @@ export const deleteConfigurableLogDrain: API.OperationMethod<
   DeleteConfigurableLogDrainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DeleteConfigurableLogDrainRequest>,
-  output: __S(8) as any as S.Schema<DeleteConfigurableLogDrainResponse>,
+  input: DeleteConfigurableLogDrainRequest,
+  output: DeleteConfigurableLogDrainResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1014,8 +1177,8 @@ export const deleteIntegrationLogDrain: API.OperationMethod<
   DeleteIntegrationLogDrainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeleteIntegrationLogDrainRequest>,
-  output: __S(8) as any as S.Schema<DeleteIntegrationLogDrainResponse>,
+  input: DeleteIntegrationLogDrainRequest,
+  output: DeleteIntegrationLogDrainResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1029,8 +1192,8 @@ export const getAllLogDrains: API.OperationMethod<
   GetAllLogDrainsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<GetAllLogDrainsRequest>,
-  output: __S(11) as any as S.Schema<GetAllLogDrainsResponse>,
+  input: GetAllLogDrainsRequest,
+  output: GetAllLogDrainsResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1044,8 +1207,8 @@ export const getConfigurableLogDrain: API.OperationMethod<
   GetConfigurableLogDrainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<GetConfigurableLogDrainRequest>,
-  output: __S(15) as any as S.Schema<GetConfigurableLogDrainResponse>,
+  input: GetConfigurableLogDrainRequest,
+  output: GetConfigurableLogDrainResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1059,8 +1222,8 @@ export const getIntegrationLogDrains: API.OperationMethod<
   GetIntegrationLogDrainsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetIntegrationLogDrainsRequest>,
-  output: __S(19) as any as S.Schema<GetIntegrationLogDrainsResponse>,
+  input: GetIntegrationLogDrainsRequest,
+  output: GetIntegrationLogDrainsResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1074,18 +1237,18 @@ function __c0(j: number): any {
     case 1:
       return S.Array(S.String);
     case 2:
-      return S.Array(S.String);
+      return S.Array(CreateConfigurableLogDrainRequestSourcesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          deliveryFormat: S.String,
+          deliveryFormat: CreateConfigurableLogDrainRequestDeliveryFormat,
           url: S.String,
-          headers: S.optional(__S(0)),
-          projectIds: S.optional(__S(1)),
-          sources: __S(2),
-          environments: S.optional(__S(2)),
+          headers: S.optional(CreateConfigurableLogDrainRequestHeadersMap),
+          projectIds: S.optional(CreateConfigurableLogDrainRequestProjectIdsList),
+          sources: CreateConfigurableLogDrainRequestSourcesList,
+          environments: S.optional(CreateConfigurableLogDrainRequestEnvironmentsList),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           samplingRate: S.optional(S.Number),
           name: S.optional(S.String),
@@ -1103,13 +1266,13 @@ function __c0(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           name: S.String,
-          projectIds: S.optional(__S(1)),
+          projectIds: S.optional(CreateLogDrainRequestProjectIdsList),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          deliveryFormat: S.optional(S.String),
+          deliveryFormat: S.optional(CreateLogDrainRequestDeliveryFormat),
           url: S.String,
-          sources: S.optional(__S(2)),
-          headers: S.optional(__S(0)),
-          environments: S.optional(__S(2)),
+          sources: S.optional(CreateLogDrainRequestSourcesList),
+          headers: S.optional(CreateLogDrainRequestHeadersMap),
+          environments: S.optional(CreateLogDrainRequestEnvironmentsList),
         }).pipe(T.Http({ method: "POST", uri: "/v2/integrations/log-drains", code: 200 })),
       ).annotate({ identifier: "CreateLogDrainRequest" });
     case 6:
@@ -1119,18 +1282,18 @@ function __c0(j: number): any {
           clientId: S.optional(S.String),
           configurationId: S.optional(S.String),
           createdAt: S.Number,
-          createdFrom: S.optional(S.String),
-          deliveryFormat: S.optional(S.String),
-          environments: S.optional(__S(2)),
-          headers: S.optional(__S(0)),
+          createdFrom: S.optional(CreateLogDrainResponseCreatedFrom),
+          deliveryFormat: S.optional(CreateLogDrainResponseDeliveryFormat),
+          environments: S.optional(CreateLogDrainResponseEnvironmentsList),
+          headers: S.optional(CreateLogDrainResponseHeadersMap),
           id: S.String,
           name: S.String,
           ownerId: S.String,
           projectId: S.optional(S.NullOr(S.String)),
-          projectIds: S.optional(__S(1)),
+          projectIds: S.optional(CreateLogDrainResponseProjectIdsList),
           samplingRate: S.optional(S.Number),
-          source: S.Unknown,
-          sources: S.optional(__S(2)),
+          source: CreateLogDrainResponseSource,
+          sources: S.optional(CreateLogDrainResponseSourcesList),
           url: S.String,
         }),
       ).annotate({ identifier: "CreateLogDrainResponse" });
@@ -1173,7 +1336,7 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/log-drains", code: 200 })),
       ).annotate({ identifier: "GetAllLogDrainsRequest" });
     case 3:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetAllLogDrainsResponseBody.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetAllLogDrainsResponse",
       });
     case 4:
@@ -1189,7 +1352,9 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          framework: S.optional(S.NullOr(S.String)),
+          framework: S.optional(
+            S.NullOr(GetConfigurableLogDrainResponseProjectsMetadataItemFramework),
+          ),
           id: S.String,
           latestDeployment: S.optional(S.String),
           name: S.String,
@@ -1198,7 +1363,7 @@ function __c1(j: number): any {
         identifier: "GetConfigurableLogDrainResponseProjectsMetadataItem",
       });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(GetConfigurableLogDrainResponseProjectsMetadataItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1208,7 +1373,9 @@ function __c1(j: number): any {
           integrationConfigurationUri: S.optional(S.String),
           integrationIcon: S.optional(S.String),
           integrationWebsite: S.optional(S.String),
-          projectsMetadata: S.optional(S.NullOr(__S(14))),
+          projectsMetadata: S.optional(
+            S.NullOr(GetConfigurableLogDrainResponseProjectsMetadataList),
+          ),
         }),
       ).annotate({
         identifier: "GetConfigurableLogDrainResponse",
@@ -1233,43 +1400,30 @@ function __c2(j: number): any {
           clientId: S.optional(S.String),
           configurationId: S.optional(S.String),
           createdAt: S.Number,
-          createdFrom: S.optional(S.String),
-          deliveryFormat: S.optional(S.String),
-          environments: S.optional(__S(2)),
-          headers: S.optional(__S(0)),
+          createdFrom: S.optional(GetIntegrationLogDrainsResponseBodyItemCreatedFrom),
+          deliveryFormat: S.optional(GetIntegrationLogDrainsResponseBodyItemDeliveryFormat),
+          environments: S.optional(GetIntegrationLogDrainsResponseBodyItemEnvironmentsList),
+          headers: S.optional(GetIntegrationLogDrainsResponseBodyItemHeadersMap),
           id: S.String,
           name: S.String,
           ownerId: S.String,
           projectId: S.optional(S.NullOr(S.String)),
-          projectIds: S.optional(__S(1)),
+          projectIds: S.optional(GetIntegrationLogDrainsResponseBodyItemProjectIdsList),
           samplingRate: S.optional(S.Number),
-          source: S.Unknown,
-          sources: S.optional(__S(2)),
+          source: GetIntegrationLogDrainsResponseBodyItemSource,
+          sources: S.optional(GetIntegrationLogDrainsResponseBodyItemSourcesList),
           url: S.String,
         }),
       ).annotate({
         identifier: "GetIntegrationLogDrainsResponseBodyItem",
       });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(GetIntegrationLogDrainsResponseBodyItem);
     case 3:
-      return S.suspend(() => __S(18).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetIntegrationLogDrainsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetIntegrationLogDrainsResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

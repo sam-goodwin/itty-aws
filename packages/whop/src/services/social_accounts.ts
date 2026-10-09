@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -54,11 +52,20 @@ export type ConnectSocialAccountRequestPlatform =
   | "tiktok"
   | "linkedin"
   | "snapchat";
+const ConnectSocialAccountRequestPlatform = S.String;
+
 export type ConnectSocialAccountRequestScopesItem = "advertise";
+const ConnectSocialAccountRequestScopesItem = S.String;
+
 /** The connection purpose. For `meta_business` and `snapchat`, `advertise` is required and connects company advertising assets. For `linkedin`, omit scopes to connect the authenticated user's profile; advertising is not supported. For `tiktok`, omit scopes to connect the authenticated user's profile, or pass `advertise` to connect company advertising assets. Profile connections still request the platform permissions needed to read the profile. */
 export type ConnectSocialAccountRequestScopesList = Array<
   ConnectSocialAccountRequestScopesItem | (string & {})
 >;
+const ConnectSocialAccountRequestScopesList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ConnectSocialAccountRequestScopesList>;
+
 export interface ConnectSocialAccountRequest {
   /** The Account (biz_ identifier) to connect the social account for. An account-scoped API key may omit this to default to its own account. Omit for user profile connections. */
   account_id?: string;
@@ -71,12 +78,24 @@ export interface ConnectSocialAccountRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const ConnectSocialAccountRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ConnectSocialAccountRequest>;
+
 export interface ConnectSocialAccountResponse {
   /** The OAuth authorization URL to redirect the user to. */
   authorize_url: string;
 }
+const ConnectSocialAccountResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ConnectSocialAccountResponse>;
+
 /** The platform to create the social account on. `facebook` requires the account's `banner_image`, `logo`, and `description`, and `tiktok` requires its `logo`; configure them with [Update Account](/api-reference/beta/accounts/update-account). The account is returned before the platform has created it -- its `id` is usable right away, and the rest of the profile fills in once provisioning finishes. */
 export type CreateSocialAccountRequestPlatform = "facebook" | "tiktok";
+const CreateSocialAccountRequestPlatform = S.String;
+
 export interface CreateSocialAccountRequest {
   /** The Account (biz_ identifier) to create the social account for. An account-scoped API key may omit this to default to its own account. Account API keys cannot update their own account's branding through Update Account; use a user-authenticated path. */
   account_id?: string;
@@ -85,6 +104,11 @@ export interface CreateSocialAccountRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const CreateSocialAccountRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateSocialAccountRequest>;
+
 /** The platform the parent social account exists on. */
 export type SocialAccountParentPlatform =
   | "x"
@@ -96,6 +120,8 @@ export type SocialAccountParentPlatform =
   | "telegram"
   | "linkedin"
   | "snapchat";
+const SocialAccountParentPlatform = S.String;
+
 export interface SocialAccountParent {
   /** The platform-specific ID for the parent social account. */
   external_id: string | null;
@@ -112,6 +138,8 @@ export interface SocialAccountParent {
   /** Whether the parent social account is verified on the platform. */
   verified: boolean;
 }
+const SocialAccountParent = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<SocialAccountParent>;
+
 /** The platform the social account exists on. */
 export type SocialAccountPlatform =
   | "x"
@@ -123,7 +151,14 @@ export type SocialAccountPlatform =
   | "telegram"
   | "linkedin"
   | "snapchat";
+const SocialAccountPlatform = S.String;
+
 export type SocialAccountScopesList = Array<string>;
+const SocialAccountScopesList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<SocialAccountScopesList>;
+
 export interface SocialAccount {
   /** Why this social account currently can't be used for advertising -- a failed share or a Meta-side restriction. Null when the account is healthy. */
   error: string | null;
@@ -147,6 +182,8 @@ export interface SocialAccount {
   /** Whether the social account is verified on the platform. */
   verified: boolean;
 }
+const SocialAccount = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<SocialAccount>;
+
 export interface DeleteSocialAccountRequest {
   /** The ID of the social account to disconnect. */
   id: string;
@@ -155,20 +192,37 @@ export interface DeleteSocialAccountRequest {
   /** The User that the social account is connected to. Provide either this or account_id. */
   user_id?: string;
 }
+const DeleteSocialAccountRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteSocialAccountRequest>;
+
 export interface DeleteSocialAccountResponse {
   /** Always true. */
   deleted: boolean;
   /** ID of the disconnected social account. */
   id: string;
 }
+const DeleteSocialAccountResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteSocialAccountResponse>;
+
 export interface ListSocialAccountLeadFormsRequest {
   /** The social account (a sacc_ identifier) whose lead forms to list. */
   id: string;
   /** The Account (a biz_ identifier) the social account is connected to. */
   account_id: string;
 }
+const ListSocialAccountLeadFormsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListSocialAccountLeadFormsRequest>;
+
 /** What the follow-up button does. `null` on forms saved before the button was configurable. */
 export type AdLeadFormCompletionButtonType = "website" | "call" | "download";
+const AdLeadFormCompletionButtonType = S.String;
+
 export interface AdLeadFormCompletion {
   /** Text of the follow-up button. */
   button_text: string | null;
@@ -185,6 +239,8 @@ export interface AdLeadFormCompletion {
   /** Website the follow-up button opens. Set when `button_type` is `website`. */
   url: string | null;
 }
+const AdLeadFormCompletion = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<AdLeadFormCompletion>;
+
 export interface AdLeadFormDisclaimerCheckbox {
   /** Whether the checkbox starts ticked. */
   checked_by_default: boolean | null;
@@ -195,7 +251,17 @@ export interface AdLeadFormDisclaimerCheckbox {
   /** Consent text next to the checkbox. */
   text: string;
 }
+const AdLeadFormDisclaimerCheckbox = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<AdLeadFormDisclaimerCheckbox>;
+
 export type AdLeadFormDisclaimerCheckboxesList = Array<AdLeadFormDisclaimerCheckbox>;
+const AdLeadFormDisclaimerCheckboxesList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<AdLeadFormDisclaimerCheckboxesList>;
+
 export interface AdLeadFormDisclaimer {
   /** Disclaimer text. */
   body: string | null;
@@ -203,17 +269,28 @@ export interface AdLeadFormDisclaimer {
   /** Disclaimer title. */
   title: string | null;
 }
+const AdLeadFormDisclaimer = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AdLeadFormDisclaimer>;
+
 /** `more_volume` is quickest to submit; `higher_intent` adds a confirmation step before submission. */
 export type SocialAccountLeadFormFormType = "more_volume" | "higher_intent";
+const SocialAccountLeadFormFormType = S.String;
+
 export interface AdLeadFormIntro {
   /** Body text under the headline. */
   description: string | null;
   /** Headline of the intro screen. */
   headline: string | null;
 }
+const AdLeadFormIntro = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<AdLeadFormIntro>;
+
 export type SocialAccountLeadFormQuestionLabelsList = Array<string>;
+const SocialAccountLeadFormQuestionLabelsList =
+  SocialAccountScopesList as any as S.Schema<SocialAccountLeadFormQuestionLabelsList>;
+
 /** What happens when the choice is selected. */
 export type AdLeadFormOptionLogicAction = "go_to_question" | "submit_form" | "close_form";
+const AdLeadFormOptionLogicAction = S.String;
+
 export interface AdLeadFormOptionLogic {
   /** What happens when the choice is selected. */
   action: AdLeadFormOptionLogicAction;
@@ -222,6 +299,11 @@ export interface AdLeadFormOptionLogic {
   /** Zero-based index of the question to jump to, for `go_to_question`. */
   target_question_index?: number;
 }
+const AdLeadFormOptionLogic = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<AdLeadFormOptionLogic>;
+
 export interface AdLeadFormQuestionOption {
   /** Stable identifier the choice's answers are stored under. Absent for simple choices. */
   key?: string | null;
@@ -230,7 +312,17 @@ export interface AdLeadFormQuestionOption {
   /** Choice text shown to the person. */
   value: string;
 }
+const AdLeadFormQuestionOption = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<AdLeadFormQuestionOption>;
+
 export type AdLeadFormQuestionOptionsList = Array<AdLeadFormQuestionOption>;
+const AdLeadFormQuestionOptionsList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<AdLeadFormQuestionOptionsList>;
+
 export interface AdLeadFormQuestion {
   /** Answer format for `custom` questions: `short_answer`, `multiple_choice`, or `appointment`. Absent otherwise. */
   format?: string;
@@ -240,7 +332,14 @@ export interface AdLeadFormQuestion {
   /** Question type: a standard prefill type such as `email`, `phone`, or `full_name`, or `custom` for your own question. */
   type: string;
 }
+const AdLeadFormQuestion = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<AdLeadFormQuestion>;
+
 export type SocialAccountLeadFormQuestionsList = Array<AdLeadFormQuestion>;
+const SocialAccountLeadFormQuestionsList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<SocialAccountLeadFormQuestionsList>;
+
 export interface SocialAccountLeadForm {
   /** Screen shown after the form is submitted. `null` when the form has none. */
   completion: AdLeadFormCompletion | null;
@@ -265,10 +364,25 @@ export interface SocialAccountLeadForm {
   question_labels: SocialAccountLeadFormQuestionLabelsList;
   questions: SocialAccountLeadFormQuestionsList;
 }
+const SocialAccountLeadForm = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<SocialAccountLeadForm>;
+
 export type ListSocialAccountLeadFormsResponseDataList = Array<SocialAccountLeadForm>;
+const ListSocialAccountLeadFormsResponseDataList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ListSocialAccountLeadFormsResponseDataList>;
+
 export interface ListSocialAccountLeadFormsResponse {
   data: ListSocialAccountLeadFormsResponseDataList;
 }
+const ListSocialAccountLeadFormsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListSocialAccountLeadFormsResponse>;
+
 export interface ListSocialAccountPostsRequest {
   /** The social account (a sacc_ identifier) whose posts to list. */
   id: string;
@@ -281,6 +395,11 @@ export interface ListSocialAccountPostsRequest {
   /** Return results after this cursor. Use `page_info.end_cursor` from the previous response to fetch the next page. */
   after?: string;
 }
+const ListSocialAccountPostsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListSocialAccountPostsRequest>;
+
 /** The post's call-to-action button, for example shop_now (Facebook only; null for Instagram and TikTok). */
 export type SocialAccountPostCallToAction =
   | "learn_more"
@@ -314,6 +433,8 @@ export type SocialAccountPostCallToAction =
   | "event_rsvp"
   | "see_details"
   | "view_instagram_profile";
+const SocialAccountPostCallToAction = S.String;
+
 /** Ways this post can't be used on an ad. `lead_form_ineligible`: post can't be used in lead form ads. `promotion_ineligible`: the platform won't promote this post at all -- always present when that's true, alongside a reason code when one is identified. `copyrighted_music`: post uses music the platform does not allow for ads. `messenger_destination`, `instagram_destination`, `whatsapp_destination`: the post's own button opens that chat app, so the post can only run in an ad group that sends people to the same one -- always accompanied by `lead_form_ineligible`. Empty when the post has no restrictions. */
 export type SocialAccountPostRestrictionsItem =
   | "lead_form_ineligible"
@@ -323,6 +444,9 @@ export type SocialAccountPostRestrictionsItem =
   | "instagram_destination"
   | "whatsapp_destination";
 export type SocialAccountPostRestrictionsList = Array<SocialAccountPostRestrictionsItem>;
+const SocialAccountPostRestrictionsList =
+  ConnectSocialAccountRequestScopesList as any as S.Schema<SocialAccountPostRestrictionsList>;
+
 export interface SocialAccountPost {
   /** The post's call-to-action button, for example shop_now (Facebook only; null for Instagram and TikTok). */
   call_to_action: SocialAccountPostCallToAction | null;
@@ -342,15 +466,32 @@ export interface SocialAccountPost {
   /** The platform video identifier for engagement audience rules. Null for non-video posts or when unavailable. Facebook video identifiers differ from post identifiers. */
   video_id: string | null;
 }
+const SocialAccountPost = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<SocialAccountPost>;
+
 export type ListSocialAccountPostsResponseDataList = Array<SocialAccountPost>;
+const ListSocialAccountPostsResponseDataList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListSocialAccountPostsResponseDataList>;
+
 export interface ListSocialAccountPostsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
 }
+const ListSocialAccountPostsResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListSocialAccountPostsResponsePageInfo>;
+
 export interface ListSocialAccountPostsResponse {
   data: ListSocialAccountPostsResponseDataList;
   page_info: ListSocialAccountPostsResponsePageInfo;
 }
+const ListSocialAccountPostsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ListSocialAccountPostsResponse>;
+
 export type ListSocialAccountsRequestPlatform =
   | "x"
   | "instagram"
@@ -361,12 +502,21 @@ export type ListSocialAccountsRequestPlatform =
   | "telegram"
   | "linkedin"
   | "snapchat";
+const ListSocialAccountsRequestPlatform = S.String;
+
 export type ListSocialAccountsRequestScopesItem = "advertise";
 export type ListSocialAccountsRequestScopesList = Array<
   ListSocialAccountsRequestScopesItem | (string & {})
 >;
+const ListSocialAccountsRequestScopesList =
+  ConnectSocialAccountRequestScopesList as any as S.Schema<ListSocialAccountsRequestScopesList>;
+
 export type ListSocialAccountsRequestOrder = "display_order" | "created_at";
+const ListSocialAccountsRequestOrder = S.String;
+
 export type ListSocialAccountsRequestDirection = "asc" | "desc";
+const ListSocialAccountsRequestDirection = S.String;
+
 export interface ListSocialAccountsRequest {
   /** The Account that the social accounts are connected to. Provide either this or user_id. */
   account_id?: string;
@@ -391,17 +541,37 @@ export interface ListSocialAccountsRequest {
   /** Sort direction. */
   direction?: ListSocialAccountsRequestDirection | (string & {});
 }
+const ListSocialAccountsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ListSocialAccountsRequest>;
+
 export type ListSocialAccountsResponseDataList = Array<SocialAccount>;
+const ListSocialAccountsResponseDataList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListSocialAccountsResponseDataList>;
+
 export interface ListSocialAccountsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
+const ListSocialAccountsResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ListSocialAccountsResponsePageInfo>;
+
 export interface ListSocialAccountsResponse {
   data: ListSocialAccountsResponseDataList;
   page_info: ListSocialAccountsResponsePageInfo;
 }
+const ListSocialAccountsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ListSocialAccountsResponse>;
+
 export interface RefreshSocialAccountRequest {
   /** The social account (a sacc_ identifier) to refresh. */
   id: string;
@@ -410,6 +580,11 @@ export interface RefreshSocialAccountRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const RefreshSocialAccountRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<RefreshSocialAccountRequest>;
+
 export type ConnectSocialAccountError = BadRequest | Conflict | WhopOpError;
 /** Connect a Social Account Starts an OAuth connection flow and returns an authorize_url where the user can connect a social account. LinkedIn supports personal profiles only, with scopes omitted. TikTok connects the authenticated user's profile when scopes are omitted or company advertising assets with advertise. Meta Business and Snapchat support advertising connections only and require advertise. Personal profile connections must be completed in a browser signed in as the initiating Whop user. */
 export const connectSocialAccount: API.OperationMethod<
@@ -418,8 +593,8 @@ export const connectSocialAccount: API.OperationMethod<
   ConnectSocialAccountError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<ConnectSocialAccountRequest>,
-  output: __S(2) as any as S.Schema<ConnectSocialAccountResponse>,
+  input: ConnectSocialAccountRequest,
+  output: ConnectSocialAccountResponse,
   errors: [BadRequest, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -433,8 +608,8 @@ export const createSocialAccount: API.OperationMethod<
   CreateSocialAccountError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateSocialAccountRequest>,
-  output: __S(6) as any as S.Schema<SocialAccount>,
+  input: CreateSocialAccountRequest,
+  output: SocialAccount,
   errors: [BadRequest, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -448,8 +623,8 @@ export const deleteSocialAccount: API.OperationMethod<
   DeleteSocialAccountError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DeleteSocialAccountRequest>,
-  output: __S(8) as any as S.Schema<DeleteSocialAccountResponse>,
+  input: DeleteSocialAccountRequest,
+  output: DeleteSocialAccountResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -463,8 +638,8 @@ export const listSocialAccountLeadForms: API.OperationMethod<
   ListSocialAccountLeadFormsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<ListSocialAccountLeadFormsRequest>,
-  output: __S(22) as any as S.Schema<ListSocialAccountLeadFormsResponse>,
+  input: ListSocialAccountLeadFormsRequest,
+  output: ListSocialAccountLeadFormsResponse,
   errors: [BadRequest, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -480,8 +655,8 @@ export const listSocialAccountPosts: API.PaginatedOperationMethod<
   SocialAccountPost
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(23) as any as S.Schema<ListSocialAccountPostsRequest>,
-    output: __S(27) as any as S.Schema<ListSocialAccountPostsResponse>,
+    input: ListSocialAccountPostsRequest,
+    output: ListSocialAccountPostsResponse,
     errors: [BadRequest, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -507,8 +682,8 @@ export const listSocialAccounts: API.PaginatedOperationMethod<
   SocialAccount
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(28) as any as S.Schema<ListSocialAccountsRequest>,
-    output: __S(31) as any as S.Schema<ListSocialAccountsResponse>,
+    input: ListSocialAccountsRequest,
+    output: ListSocialAccountsResponse,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -532,8 +707,8 @@ export const refreshSocialAccount: API.OperationMethod<
   RefreshSocialAccountError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<RefreshSocialAccountRequest>,
-  output: __S(6) as any as S.Schema<SocialAccount>,
+  input: RefreshSocialAccountRequest,
+  output: SocialAccount,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -543,14 +718,14 @@ export const refreshSocialAccount: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(ConnectSocialAccountRequestScopesItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String),
-          platform: S.String,
+          platform: ConnectSocialAccountRequestPlatform,
           redirect_url: S.String,
-          scopes: S.optional(__S(0)),
+          scopes: S.optional(ConnectSocialAccountRequestScopesList),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/social_accounts/connect", code: 200 })),
       ).annotate({
@@ -568,7 +743,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String),
-          platform: S.String,
+          platform: CreateSocialAccountRequestPlatform,
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/social_accounts", code: 200 })),
       ).annotate({
@@ -580,7 +755,7 @@ function __c0(j: number): any {
           external_id: S.NullOr(S.String),
           id: S.String,
           name: S.NullOr(S.String),
-          platform: S.String,
+          platform: SocialAccountParentPlatform,
           profile_picture_url: S.NullOr(S.String),
           username: S.NullOr(S.String),
           verified: S.Boolean,
@@ -595,10 +770,10 @@ function __c0(j: number): any {
           external_id: S.NullOr(S.String),
           id: S.String,
           name: S.NullOr(S.String),
-          parent_social_account: S.NullOr(__S(4)),
-          platform: S.String,
+          parent_social_account: S.NullOr(SocialAccountParent),
+          platform: SocialAccountPlatform,
           profile_picture_url: S.NullOr(S.String),
-          scopes: __S(5),
+          scopes: SocialAccountScopesList,
           url: S.NullOr(S.String),
           username: S.NullOr(S.String),
           verified: S.Boolean,
@@ -640,7 +815,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           button_text: S.NullOr(S.String),
-          button_type: S.NullOr(S.String),
+          button_type: S.NullOr(AdLeadFormCompletionButtonType),
           description: S.NullOr(S.String),
           file_url: S.NullOr(S.String),
           headline: S.NullOr(S.String),
@@ -660,12 +835,12 @@ function __c1(j: number): any {
         identifier: "AdLeadFormDisclaimerCheckbox",
       });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(AdLeadFormDisclaimerCheckbox);
     case 5:
       return S.suspend(() =>
         S.Struct({
           body: S.NullOr(S.String),
-          checkboxes: __S(12),
+          checkboxes: AdLeadFormDisclaimerCheckboxesList,
           title: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "AdLeadFormDisclaimer" });
@@ -679,7 +854,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          action: S.String,
+          action: AdLeadFormOptionLogicAction,
           target_end_page_index: S.optional(S.Number),
           target_question_index: S.optional(S.Number),
         }),
@@ -692,46 +867,46 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.NullOr(S.String)),
-          logic: S.optional(__S(15)),
+          logic: S.optional(AdLeadFormOptionLogic),
           value: S.String,
         }),
       ).annotate({ identifier: "AdLeadFormQuestionOption" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(AdLeadFormQuestionOption);
     case 2:
       return S.suspend(() =>
         S.Struct({
           format: S.optional(S.String),
           label: S.optional(S.String),
-          options: S.optional(__S(17)),
+          options: S.optional(AdLeadFormQuestionOptionsList),
           type: S.String,
         }),
       ).annotate({ identifier: "AdLeadFormQuestion" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(AdLeadFormQuestion);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          completion: S.NullOr(__S(10)),
+          completion: S.NullOr(AdLeadFormCompletion),
           created_at: S.NullOr(S.String),
-          disclaimer: S.NullOr(__S(13)),
-          form_type: S.String,
+          disclaimer: S.NullOr(AdLeadFormDisclaimer),
+          form_type: SocialAccountLeadFormFormType,
           id: S.String,
-          intro: S.NullOr(__S(14)),
+          intro: S.NullOr(AdLeadFormIntro),
           locale: S.NullOr(S.String),
           name: S.NullOr(S.String),
           privacy_policy_link_text: S.NullOr(S.String),
           privacy_policy_url: S.NullOr(S.String),
-          question_labels: __S(5),
-          questions: __S(19),
+          question_labels: SocialAccountLeadFormQuestionLabelsList,
+          questions: SocialAccountLeadFormQuestionsList,
         }),
       ).annotate({ identifier: "SocialAccountLeadForm" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(SocialAccountLeadForm);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(21),
+          data: ListSocialAccountLeadFormsResponseDataList,
         }),
       ).annotate({
         identifier: "ListSocialAccountLeadFormsResponse",
@@ -755,19 +930,19 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          call_to_action: S.NullOr(S.String),
+          call_to_action: S.NullOr(SocialAccountPostCallToAction),
           caption: S.NullOr(S.String),
           destination_url: S.NullOr(S.String),
           embed_url: S.NullOr(S.String),
           id: S.String,
           media_url: S.NullOr(S.String),
-          restrictions: __S(0),
+          restrictions: SocialAccountPostRestrictionsList,
           thumbnail_url: S.NullOr(S.String),
           video_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "SocialAccountPost" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(SocialAccountPost);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -780,8 +955,8 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(25),
-          page_info: __S(26),
+          data: ListSocialAccountPostsResponseDataList,
+          page_info: ListSocialAccountPostsResponsePageInfo,
         }),
       ).annotate({
         identifier: "ListSocialAccountPostsResponse",
@@ -791,21 +966,21 @@ function __c3(j: number): any {
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
           user_id: S.optional(S.String.pipe(T.Query())),
-          platform: S.optional(S.String.pipe(T.Query())),
+          platform: S.optional(ListSocialAccountsRequestPlatform.pipe(T.Query())),
           verified: S.optional(S.Boolean.pipe(T.Query())),
-          scopes: S.optional(__S(0).pipe(T.Query())),
+          scopes: S.optional(ListSocialAccountsRequestScopesList.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListSocialAccountsRequestOrder.pipe(T.Query())),
+          direction: S.optional(ListSocialAccountsRequestDirection.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/social_accounts", code: 200 })),
       ).annotate({
         identifier: "ListSocialAccountsRequest",
       });
     case 5:
-      return S.Array(__S(6));
+      return S.Array(SocialAccount);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -820,8 +995,8 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(29),
-          page_info: __S(30),
+          data: ListSocialAccountsResponseDataList,
+          page_info: ListSocialAccountsResponsePageInfo,
         }),
       ).annotate({
         identifier: "ListSocialAccountsResponse",
@@ -840,24 +1015,5 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "RefreshSocialAccountRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

@@ -7,13 +7,16 @@ import { slackPaginate } from "../pagination.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
 /** Initial item data. */
 export type CreateItemRequestInitialFieldsList = Array<unknown>;
+const CreateItemRequestInitialFieldsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateItemRequestInitialFieldsList>;
+
 export interface CreateItemRequest {
   /** ID of the List to add the item to. */
   list_id: string;
@@ -24,15 +27,25 @@ export interface CreateItemRequest {
   /** Initial item data. */
   initial_fields?: CreateItemRequestInitialFieldsList;
 }
+const CreateItemRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateItemRequest>;
+
 export interface CreateItemResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   item: unknown;
 }
+const CreateItemResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateItemResponse>;
+
 /** A rich text description of the List. */
 export type CreateSlackListRequestDescriptionBlocksList = Array<unknown>;
+const CreateSlackListRequestDescriptionBlocksList =
+  CreateItemRequestInitialFieldsList as any as S.Schema<CreateSlackListRequestDescriptionBlocksList>;
+
 /** Column definition for the List. */
 export type CreateSlackListRequestSchemaList = Array<unknown>;
+const CreateSlackListRequestSchemaList =
+  CreateItemRequestInitialFieldsList as any as S.Schema<CreateSlackListRequestSchemaList>;
+
 export interface CreateSlackListRequest {
   /** Name of the List. */
   name: string;
@@ -47,6 +60,11 @@ export interface CreateSlackListRequest {
   /** Boolean indicating whether the List should be used to track todo tasks. */
   todo_mode?: boolean;
 }
+const CreateSlackListRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateSlackListRequest>;
+
 export interface CreateSlackListResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -55,10 +73,23 @@ export interface CreateSlackListResponse {
   /** The metadata of the List created. */
   list_metadata?: unknown;
 }
+const CreateSlackListResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateSlackListResponse>;
+
 /** List of channels you wish to update access for. Can only be used if `user_ids` is not provided. */
 export type DeleteAccessRequestChannelIdsList = Array<string>;
+const DeleteAccessRequestChannelIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteAccessRequestChannelIdsList>;
+
 /** List of users you wish to update access for. Can only be used if `channel_ids` is not provided. */
 export type DeleteAccessRequestUserIdsList = Array<string>;
+const DeleteAccessRequestUserIdsList =
+  DeleteAccessRequestChannelIdsList as any as S.Schema<DeleteAccessRequestUserIdsList>;
+
 export interface DeleteAccessRequest {
   /** Encoded ID of the List. */
   list_id: string;
@@ -67,10 +98,18 @@ export interface DeleteAccessRequest {
   /** List of users you wish to update access for. Can only be used if `channel_ids` is not provided. */
   user_ids?: DeleteAccessRequestUserIdsList;
 }
+const DeleteAccessRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DeleteAccessRequest>;
+
 /** The channel IDs that could not be updated. */
 export type DeleteAccessResponseFailedToUpdateChannelIdsList = Array<string>;
+const DeleteAccessResponseFailedToUpdateChannelIdsList =
+  DeleteAccessRequestChannelIdsList as any as S.Schema<DeleteAccessResponseFailedToUpdateChannelIdsList>;
+
 /** The user IDs that could not be updated. */
 export type DeleteAccessResponseFailedToUpdateUserIdsList = Array<string>;
+const DeleteAccessResponseFailedToUpdateUserIdsList =
+  DeleteAccessRequestChannelIdsList as any as S.Schema<DeleteAccessResponseFailedToUpdateUserIdsList>;
+
 export interface DeleteAccessResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -79,26 +118,42 @@ export interface DeleteAccessResponse {
   /** The user IDs that could not be updated. */
   failed_to_update_user_ids?: DeleteAccessResponseFailedToUpdateUserIdsList;
 }
+const DeleteAccessResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DeleteAccessResponse>;
+
 export interface DeleteItemRequest {
   /** ID of the List containing the item. */
   list_id: string;
   /** ID of item to delete. */
   id: string;
 }
+const DeleteItemRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DeleteItemRequest>;
+
 export interface DeleteItemResponse {
   ok: boolean;
 }
+const DeleteItemResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DeleteItemResponse>;
+
 /** IDs of items to delete. */
 export type DeleteMultipleRequestIdsList = Array<string>;
+const DeleteMultipleRequestIdsList =
+  DeleteAccessRequestChannelIdsList as any as S.Schema<DeleteMultipleRequestIdsList>;
+
 export interface DeleteMultipleRequest {
   /** ID of the List containing the items. */
   list_id: string;
   /** IDs of items to delete. */
   ids: DeleteMultipleRequestIdsList;
 }
+const DeleteMultipleRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteMultipleRequest>;
+
 export interface DeleteMultipleResponse {
   ok: boolean;
 }
+const DeleteMultipleResponse = DeleteItemResponse as any as S.Schema<DeleteMultipleResponse>;
+
 export interface DownloadGetRequest {
   /** ID of the List to export. */
   list_id: string;
@@ -111,6 +166,8 @@ export interface DownloadGetRequest {
   /** Must match the `include_attachments` passed to `slackLists.download.start`. The returned `download_url` carries this through so the served export matches what was generated. Only applies when `format` is `json`. */
   include_attachments?: boolean;
 }
+const DownloadGetRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DownloadGetRequest>;
+
 export interface DownloadGetResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -119,6 +176,8 @@ export interface DownloadGetResponse {
   /** The URL at which to download the CSV. */
   download_url?: string;
 }
+const DownloadGetResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DownloadGetResponse>;
+
 export interface DownloadStartRequest {
   /** ID of the List to export. */
   list_id: string;
@@ -130,12 +189,19 @@ export interface DownloadStartRequest {
   /** Include file attachment metadata and access paths in the export. Only applies when `format` is `json`. */
   include_attachments?: boolean;
 }
+const DownloadStartRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DownloadStartRequest>;
+
 export interface DownloadStartResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   /** The ID of the recently started job to export the List. */
   job_id: number;
 }
+const DownloadStartResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DownloadStartResponse>;
+
 export interface ItemsInfoRequest {
   /** ID of the List. */
   list_id: string;
@@ -144,7 +210,12 @@ export interface ItemsInfoRequest {
   /** Set to `true` to include `is_subscribed` data for the returned List row. */
   include_is_subscribed?: boolean;
 }
+const ItemsInfoRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ItemsInfoRequest>;
+
 export type ItemsInfoResponseSubtasksList = Array<unknown>;
+const ItemsInfoResponseSubtasksList =
+  CreateItemRequestInitialFieldsList as any as S.Schema<ItemsInfoResponseSubtasksList>;
+
 export interface ItemsInfoResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -153,6 +224,8 @@ export interface ItemsInfoResponse {
   parent_task?: unknown;
   subtasks?: ItemsInfoResponseSubtasksList;
 }
+const ItemsInfoResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ItemsInfoResponse>;
+
 export interface ListItemsRequest {
   /** ID of the List. */
   list_id: string;
@@ -165,12 +238,22 @@ export interface ListItemsRequest {
   /** Set to `true` to also return the parent `list` object, including its title, column schema, and total row count. Defaults to `false` to keep the response small. */
   include_list?: boolean;
 }
+const ListItemsRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ListItemsRequest>;
+
 export type ListItemsResponseItemsList = Array<unknown>;
+const ListItemsResponseItemsList =
+  CreateItemRequestInitialFieldsList as any as S.Schema<ListItemsResponseItemsList>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export interface ListItemsResponseResponseMetadata {
   /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
+const ListItemsResponseResponseMetadata = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListItemsResponseResponseMetadata>;
+
 export interface ListItemsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -180,10 +263,18 @@ export interface ListItemsResponse {
   /** The parent list. Only returned when `include_list` is `true`. `list_limits` carries `row_count` and no other key: the number of items matching this request's `archived` value, counting Slack-suggested items that `items` itself does not return, so it can exceed the number of items you can page through. Sharing and access fields (`channels`, `groups`, `ims`, `access`) are omitted; call `files.info` if you need those or the full set of list limits. */
   list?: unknown;
 }
+const ListItemsResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ListItemsResponse>;
+
 /** List of channels you wish to update access for. Can only be used if `user_ids` is not provided. */
 export type SetAccessRequestChannelIdsList = Array<string>;
+const SetAccessRequestChannelIdsList =
+  DeleteAccessRequestChannelIdsList as any as S.Schema<SetAccessRequestChannelIdsList>;
+
 /** List of users you wish to update access for. Can only be used if `channel_ids` is not provided. */
 export type SetAccessRequestUserIdsList = Array<string>;
+const SetAccessRequestUserIdsList =
+  DeleteAccessRequestChannelIdsList as any as S.Schema<SetAccessRequestUserIdsList>;
+
 export interface SetAccessRequest {
   /** Encoded ID of the List. */
   list_id: string;
@@ -194,6 +285,8 @@ export interface SetAccessRequest {
   /** List of users you wish to update access for. Can only be used if `channel_ids` is not provided. */
   user_ids?: SetAccessRequestUserIdsList;
 }
+const SetAccessRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<SetAccessRequest>;
+
 /** The channel IDs that could not be updated. */
 export type SetAccessResponseFailedToUpdateChannelIdsList = Array<string>;
 /** The user IDs that could not be updated. */
@@ -206,20 +299,32 @@ export interface SetAccessResponse {
   /** The user IDs that could not be updated. */
   failed_to_update_user_ids?: SetAccessResponseFailedToUpdateUserIdsList;
 }
+const SetAccessResponse = DeleteAccessResponse as any as S.Schema<SetAccessResponse>;
+
 /** Cells to update. */
 export type UpdateItemRequestCellsList = Array<unknown>;
+const UpdateItemRequestCellsList =
+  CreateItemRequestInitialFieldsList as any as S.Schema<UpdateItemRequestCellsList>;
+
 export interface UpdateItemRequest {
   /** ID of the List to add or update cells. */
   list_id: string;
   /** Cells to update. */
   cells: UpdateItemRequestCellsList;
 }
+const UpdateItemRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<UpdateItemRequest>;
+
 export interface UpdateItemResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const UpdateItemResponse = DeleteItemResponse as any as S.Schema<UpdateItemResponse>;
+
 /** A rich text description of the List. */
 export type UpdateSlackListRequestDescriptionBlocksList = Array<unknown>;
+const UpdateSlackListRequestDescriptionBlocksList =
+  CreateItemRequestInitialFieldsList as any as S.Schema<UpdateSlackListRequestDescriptionBlocksList>;
+
 export interface UpdateSlackListRequest {
   /** The ID of the List to update. */
   id: string;
@@ -230,10 +335,17 @@ export interface UpdateSlackListRequest {
   /** Boolean indicating whether the List should be in todo mode. */
   todo_mode?: boolean;
 }
+const UpdateSlackListRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<UpdateSlackListRequest>;
+
 export interface UpdateSlackListResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const UpdateSlackListResponse = DeleteItemResponse as any as S.Schema<UpdateSlackListResponse>;
+
 export type CreateItemError = SlackOpError;
 /** Add a new item to an existing List. Required scopes -- bot: `lists:write`; user: `lists:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `list_not_found` -- The List was not found. - `over_row_maximum` -- Cannot create more items over the maximum. - `team_not_found` -- The team cannot be found. - `user_not_found` -- The user cannot be found. - `duplicated_item_not_found` -- The item to duplicate cannot be found. - `invalid_option_id` -- Option ID provided does not match column definition. - `invalid_args` -- The provided arguments are invalid. - `uneditable_column` -- Initial values provided for an uneditable column. - `invalid_input_type` -- The field value type does not match the column type. - `invalid_column_id` -- The column ID provided does not exist in the List. - `over_cell_fields_limit` -- Too many values provided for a single field. - `file_not_found` -- The attachment file could not be found. - `invalid_vote_value` -- Invalid value provided for a vote column. See https://docs.slack.dev/reference/methods/slackLists.items.create */
 export const createItem: API.OperationMethod<
@@ -242,8 +354,8 @@ export const createItem: API.OperationMethod<
   CreateItemError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateItemRequest>,
-  output: __S(2) as any as S.Schema<CreateItemResponse>,
+  input: CreateItemRequest,
+  output: CreateItemResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -257,8 +369,8 @@ export const createSlackList: API.OperationMethod<
   CreateSlackListError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateSlackListRequest>,
-  output: __S(4) as any as S.Schema<CreateSlackListResponse>,
+  input: CreateSlackListRequest,
+  output: CreateSlackListResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -272,8 +384,8 @@ export const deleteAccess: API.OperationMethod<
   DeleteAccessError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DeleteAccessRequest>,
-  output: __S(7) as any as S.Schema<DeleteAccessResponse>,
+  input: DeleteAccessRequest,
+  output: DeleteAccessResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -287,8 +399,8 @@ export const deleteItem: API.OperationMethod<
   DeleteItemError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<DeleteItemRequest>,
-  output: __S(9) as any as S.Schema<DeleteItemResponse>,
+  input: DeleteItemRequest,
+  output: DeleteItemResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -302,8 +414,8 @@ export const deleteMultiple: API.OperationMethod<
   DeleteMultipleError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeleteMultipleRequest>,
-  output: __S(9) as any as S.Schema<DeleteMultipleResponse>,
+  input: DeleteMultipleRequest,
+  output: DeleteMultipleResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -317,8 +429,8 @@ export const downloadGet: API.OperationMethod<
   DownloadGetError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<DownloadGetRequest>,
-  output: __S(12) as any as S.Schema<DownloadGetResponse>,
+  input: DownloadGetRequest,
+  output: DownloadGetResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -332,8 +444,8 @@ export const downloadStart: API.OperationMethod<
   DownloadStartError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<DownloadStartRequest>,
-  output: __S(14) as any as S.Schema<DownloadStartResponse>,
+  input: DownloadStartRequest,
+  output: DownloadStartResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -347,8 +459,8 @@ export const itemsInfo: API.OperationMethod<
   ItemsInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<ItemsInfoRequest>,
-  output: __S(16) as any as S.Schema<ItemsInfoResponse>,
+  input: ItemsInfoRequest,
+  output: ItemsInfoResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -364,8 +476,8 @@ export const listItems: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(17) as any as S.Schema<ListItemsRequest>,
-    output: __S(19) as any as S.Schema<ListItemsResponse>,
+    input: ListItemsRequest,
+    output: ListItemsResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -388,8 +500,8 @@ export const setAccess: API.OperationMethod<
   SetAccessError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<SetAccessRequest>,
-  output: __S(7) as any as S.Schema<SetAccessResponse>,
+  input: SetAccessRequest,
+  output: SetAccessResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -403,8 +515,8 @@ export const updateItem: API.OperationMethod<
   UpdateItemError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<UpdateItemRequest>,
-  output: __S(9) as any as S.Schema<UpdateItemResponse>,
+  input: UpdateItemRequest,
+  output: UpdateItemResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -418,8 +530,8 @@ export const updateSlackList: API.OperationMethod<
   UpdateSlackListError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<UpdateSlackListRequest>,
-  output: __S(9) as any as S.Schema<UpdateSlackListResponse>,
+  input: UpdateSlackListRequest,
+  output: UpdateSlackListResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -436,7 +548,7 @@ function __c0(j: number): any {
           list_id: S.String,
           duplicated_item_id: S.optional(S.String),
           parent_item_id: S.optional(S.String),
-          initial_fields: S.optional(__S(0)),
+          initial_fields: S.optional(CreateItemRequestInitialFieldsList),
         }).pipe(T.Http({ method: "POST", uri: "/slackLists.items.create", code: 200 })),
       ).annotate({ identifier: "CreateItemRequest" });
     case 2:
@@ -450,8 +562,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          description_blocks: S.optional(__S(0)),
-          schema: S.optional(__S(0)),
+          description_blocks: S.optional(CreateSlackListRequestDescriptionBlocksList),
+          schema: S.optional(CreateSlackListRequestSchemaList),
           copy_from_list_id: S.optional(S.String),
           include_copied_list_records: S.optional(S.Boolean),
           todo_mode: S.optional(S.Boolean),
@@ -471,16 +583,18 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           list_id: S.String,
-          channel_ids: S.optional(__S(5)),
-          user_ids: S.optional(__S(5)),
+          channel_ids: S.optional(DeleteAccessRequestChannelIdsList),
+          user_ids: S.optional(DeleteAccessRequestUserIdsList),
         }).pipe(T.Http({ method: "POST", uri: "/slackLists.access.delete", code: 200 })),
       ).annotate({ identifier: "DeleteAccessRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          failed_to_update_channel_ids: S.optional(__S(5)),
-          failed_to_update_user_ids: S.optional(__S(5)),
+          failed_to_update_channel_ids: S.optional(
+            DeleteAccessResponseFailedToUpdateChannelIdsList,
+          ),
+          failed_to_update_user_ids: S.optional(DeleteAccessResponseFailedToUpdateUserIdsList),
         }),
       ).annotate({ identifier: "DeleteAccessResponse" });
   }
@@ -504,7 +618,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           list_id: S.String,
-          ids: __S(5),
+          ids: DeleteMultipleRequestIdsList,
         }).pipe(T.Http({ method: "POST", uri: "/slackLists.items.deleteMultiple", code: 200 })),
       ).annotate({ identifier: "DeleteMultipleRequest" });
     case 3:
@@ -561,7 +675,7 @@ function __c2(j: number): any {
           list: S.Unknown,
           record: S.Unknown,
           parent_task: S.optional(S.Unknown),
-          subtasks: S.optional(__S(0)),
+          subtasks: S.optional(ItemsInfoResponseSubtasksList),
         }),
       ).annotate({ identifier: "ItemsInfoResponse" });
     case 1:
@@ -586,8 +700,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          items: __S(0),
-          response_metadata: S.optional(__S(18)),
+          items: ListItemsResponseItemsList,
+          response_metadata: S.optional(ListItemsResponseResponseMetadata),
           list: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "ListItemsResponse" });
@@ -596,15 +710,15 @@ function __c2(j: number): any {
         S.Struct({
           list_id: S.String,
           access_level: S.String,
-          channel_ids: S.optional(__S(5)),
-          user_ids: S.optional(__S(5)),
+          channel_ids: S.optional(SetAccessRequestChannelIdsList),
+          user_ids: S.optional(SetAccessRequestUserIdsList),
         }).pipe(T.Http({ method: "POST", uri: "/slackLists.access.set", code: 200 })),
       ).annotate({ identifier: "SetAccessRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           list_id: S.String,
-          cells: __S(0),
+          cells: UpdateItemRequestCellsList,
         }).pipe(T.Http({ method: "POST", uri: "/slackLists.items.update", code: 200 })),
       ).annotate({ identifier: "UpdateItemRequest" });
     case 6:
@@ -612,24 +726,9 @@ function __c2(j: number): any {
         S.Struct({
           id: S.String,
           name: S.optional(S.String),
-          description_blocks: S.optional(__S(0)),
+          description_blocks: S.optional(UpdateSlackListRequestDescriptionBlocksList),
           todo_mode: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/slackLists.update", code: 200 })),
       ).annotate({ identifier: "UpdateSlackListRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

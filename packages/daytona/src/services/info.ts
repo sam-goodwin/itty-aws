@@ -6,22 +6,40 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
 export interface GetUserHomeDirRequest {}
+const GetUserHomeDirRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetUserHomeDirRequest>;
+
 export interface UserHomeDirResponse {
   dir: string;
 }
+const UserHomeDirResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<UserHomeDirResponse>;
+
 export interface GetVersionRequest {}
+const GetVersionRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetVersionRequest>;
+
 export type GetVersionResponseBodyMap = { [key: string]: string | undefined };
+const GetVersionResponseBodyMap = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GetVersionResponseBodyMap>;
+
 export type GetVersionResponse = GetVersionResponseBodyMap;
+const GetVersionResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetVersionResponse>;
+
 export interface GetWorkDirRequest {}
+const GetWorkDirRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetWorkDirRequest>;
+
 export interface WorkDirResponse {
   dir: string;
 }
+const WorkDirResponse = UserHomeDirResponse as any as S.Schema<WorkDirResponse>;
+
 export type GetUserHomeDirError = DaytonaOpError;
 /** Get user home directory Get the current user home directory path. */
 export const getUserHomeDir: API.OperationMethod<
@@ -30,8 +48,8 @@ export const getUserHomeDir: API.OperationMethod<
   GetUserHomeDirError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetUserHomeDirRequest>,
-  output: __S(1) as any as S.Schema<UserHomeDirResponse>,
+  input: GetUserHomeDirRequest,
+  output: UserHomeDirResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -45,8 +63,8 @@ export const getVersion: API.OperationMethod<
   GetVersionError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetVersionRequest>,
-  output: __S(4) as any as S.Schema<GetVersionResponse>,
+  input: GetVersionRequest,
+  output: GetVersionResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -60,8 +78,8 @@ export const getWorkDir: API.OperationMethod<
   GetWorkDirError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<GetWorkDirRequest>,
-  output: __S(1) as any as S.Schema<WorkDirResponse>,
+  input: GetWorkDirRequest,
+  output: WorkDirResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -87,23 +105,12 @@ function __c0(j: number): any {
     case 3:
       return S.Record(S.String, S.String);
     case 4:
-      return S.suspend(() => __S(3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetVersionResponseBodyMap.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetVersionResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/work-dir", code: 200 })),
       ).annotate({ identifier: "GetWorkDirRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

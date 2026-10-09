@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -68,20 +66,45 @@ export interface DeleteAchievementConfigurationsRequest {
   /** The ID of the achievement used by this method. */
   achievementId: string;
 }
+const DeleteAchievementConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeleteAchievementConfigurationsRequest>;
+
 export interface DeleteAchievementConfigurationsResponse {}
+const DeleteAchievementConfigurationsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<DeleteAchievementConfigurationsResponse>;
+
 export interface DeleteLeaderboardConfigurationsRequest {
   /** The ID of the leaderboard. */
   leaderboardId: string;
 }
+const DeleteLeaderboardConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteLeaderboardConfigurationsRequest>;
+
 export interface DeleteLeaderboardConfigurationsResponse {}
+const DeleteLeaderboardConfigurationsResponse =
+  DeleteAchievementConfigurationsResponse as any as S.Schema<DeleteLeaderboardConfigurationsResponse>;
+
 export interface GetAchievementConfigurationsRequest {
   /** The ID of the achievement used by this method. */
   achievementId: string;
 }
+const GetAchievementConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GetAchievementConfigurationsRequest>;
+
 export type AchievementConfigurationAchievementTypeEnum =
   | "ACHIEVEMENT_TYPE_UNSPECIFIED"
   | "STANDARD"
   | "INCREMENTAL";
+const AchievementConfigurationAchievementTypeEnum = S.String;
+
 /** A localized string resource. */
 export interface LocalizedString {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#localizedString`. */
@@ -91,7 +114,11 @@ export interface LocalizedString {
   /** The locale string. */
   locale?: string;
 }
+const LocalizedString = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<LocalizedString>;
+
 export type LocalizedStringList = Array<LocalizedString>;
+const LocalizedStringList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<LocalizedStringList>;
+
 /** A localized string bundle resource. */
 export interface LocalizedStringBundle {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#localizedStringBundle`. */
@@ -99,6 +126,11 @@ export interface LocalizedStringBundle {
   /** The locale strings. */
   translations?: LocalizedStringList;
 }
+const LocalizedStringBundle = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<LocalizedStringBundle>;
+
 /** An achievement configuration detail. */
 export interface AchievementConfigurationDetail {
   /** Localized strings for the achievement name. */
@@ -114,10 +146,17 @@ export interface AchievementConfigurationDetail {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#achievementConfigurationDetail`. */
   kind?: string;
 }
+const AchievementConfigurationDetail = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AchievementConfigurationDetail>;
+
 export type AchievementConfigurationInitialStateEnum =
   | "INITIAL_STATE_UNSPECIFIED"
   | "HIDDEN"
   | "REVEALED";
+const AchievementConfigurationInitialStateEnum = S.String;
+
 /** An achievement configuration resource. */
 export interface AchievementConfiguration {
   /** The type of the achievement. */
@@ -137,15 +176,27 @@ export interface AchievementConfiguration {
   /** The draft data of the achievement. */
   draft?: AchievementConfigurationDetail;
 }
+const AchievementConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AchievementConfiguration>;
+
 export interface GetLeaderboardConfigurationsRequest {
   /** The ID of the leaderboard. */
   leaderboardId: string;
 }
+const GetLeaderboardConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetLeaderboardConfigurationsRequest>;
+
 export type GamesNumberFormatConfigurationNumberFormatTypeEnum =
   | "NUMBER_FORMAT_TYPE_UNSPECIFIED"
   | "NUMERIC"
   | "TIME_DURATION"
   | "CURRENCY";
+const GamesNumberFormatConfigurationNumberFormatTypeEnum = S.String;
+
 /** A number affix resource. */
 export interface GamesNumberAffixConfiguration {
   /** When the language does not require special treatment of the given quantity (as with all numbers in Chinese, or 42 in English). */
@@ -161,6 +212,11 @@ export interface GamesNumberAffixConfiguration {
   /** When the language requires special treatment of "small" numbers (as with 2, 3, and 4 in Czech; or numbers ending 2, 3, or 4 but not 12, 13, or 14 in Polish). */
   few?: LocalizedStringBundle;
 }
+const GamesNumberAffixConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GamesNumberAffixConfiguration>;
+
 /** A number format resource. */
 export interface GamesNumberFormatConfiguration {
   /** The formatting for the number. */
@@ -172,6 +228,11 @@ export interface GamesNumberFormatConfiguration {
   /** An optional suffix for the NUMERIC format type. These strings follow the same plural rules as all Android string resources. */
   suffix?: GamesNumberAffixConfiguration;
 }
+const GamesNumberFormatConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GamesNumberFormatConfiguration>;
+
 /** A leaderboard configuration detail. */
 export interface LeaderboardConfigurationDetail {
   /** The sort rank of this leaderboard. Writes to this field are ignored. */
@@ -185,10 +246,17 @@ export interface LeaderboardConfigurationDetail {
   /** Localized strings for the leaderboard name. */
   name?: LocalizedStringBundle;
 }
+const LeaderboardConfigurationDetail = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<LeaderboardConfigurationDetail>;
+
 export type LeaderboardConfigurationScoreOrderEnum =
   | "SCORE_ORDER_UNSPECIFIED"
   | "LARGER_IS_BETTER"
   | "SMALLER_IS_BETTER";
+const LeaderboardConfigurationScoreOrderEnum = S.String;
+
 /** An leaderboard configuration resource. */
 export interface LeaderboardConfiguration {
   /** Minimum score that can be posted to this leaderboard. */
@@ -207,18 +275,33 @@ export interface LeaderboardConfiguration {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#leaderboardConfiguration`. */
   kind?: string;
 }
+const LeaderboardConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<LeaderboardConfiguration>;
+
 export interface InsertAchievementConfigurationsRequest {
   /** The application ID from the Google Play developer console. */
   applicationId: string;
   /** Request body */
   body?: AchievementConfiguration;
 }
+const InsertAchievementConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<InsertAchievementConfigurationsRequest>;
+
 export interface InsertLeaderboardConfigurationsRequest {
   /** The application ID from the Google Play developer console. */
   applicationId: string;
   /** Request body */
   body?: LeaderboardConfiguration;
 }
+const InsertLeaderboardConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<InsertLeaderboardConfigurationsRequest>;
+
 export interface ListAchievementConfigurationsRequest {
   /** The maximum number of resource configurations to return in the response, used for paging. For any response, the actual number of resources returned may be less than the specified `maxResults`. */
   maxResults?: number;
@@ -227,7 +310,17 @@ export interface ListAchievementConfigurationsRequest {
   /** The token returned by the previous request. */
   pageToken?: string;
 }
+const ListAchievementConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListAchievementConfigurationsRequest>;
+
 export type AchievementConfigurationList = Array<AchievementConfiguration>;
+const AchievementConfigurationList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<AchievementConfigurationList>;
+
 /** A ListConfigurations response. */
 export interface AchievementConfigurationListResponse {
   /** The achievement configurations. */
@@ -237,6 +330,11 @@ export interface AchievementConfigurationListResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#achievementConfigurationListResponse`. */
   kind?: string;
 }
+const AchievementConfigurationListResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<AchievementConfigurationListResponse>;
+
 export interface ListLeaderboardConfigurationsRequest {
   /** The maximum number of resource configurations to return in the response, used for paging. For any response, the actual number of resources returned may be less than the specified `maxResults`. */
   maxResults?: number;
@@ -245,7 +343,17 @@ export interface ListLeaderboardConfigurationsRequest {
   /** The token returned by the previous request. */
   pageToken?: string;
 }
+const ListLeaderboardConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListLeaderboardConfigurationsRequest>;
+
 export type LeaderboardConfigurationList = Array<LeaderboardConfiguration>;
+const LeaderboardConfigurationList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<LeaderboardConfigurationList>;
+
 /** A ListConfigurations response. */
 export interface LeaderboardConfigurationListResponse {
   /** The pagination token for the next page of results. */
@@ -255,18 +363,33 @@ export interface LeaderboardConfigurationListResponse {
   /** The leaderboard configurations. */
   items: LeaderboardConfigurationList;
 }
+const LeaderboardConfigurationListResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<LeaderboardConfigurationListResponse>;
+
 export interface UpdateAchievementConfigurationsRequest {
   /** The ID of the achievement used by this method. */
   achievementId: string;
   /** Request body */
   body?: AchievementConfiguration;
 }
+const UpdateAchievementConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<UpdateAchievementConfigurationsRequest>;
+
 export interface UpdateLeaderboardConfigurationsRequest {
   /** The ID of the leaderboard. */
   leaderboardId: string;
   /** Request body */
   body?: LeaderboardConfiguration;
 }
+const UpdateLeaderboardConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<UpdateLeaderboardConfigurationsRequest>;
+
 export type DeleteAchievementConfigurationsError =
   | NotFound
   | Forbidden
@@ -280,8 +403,8 @@ export const deleteAchievementConfigurations: API.OperationMethod<
   DeleteAchievementConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeleteAchievementConfigurationsRequest>,
-  output: __S(1) as any as S.Schema<DeleteAchievementConfigurationsResponse>,
+  input: DeleteAchievementConfigurationsRequest,
+  output: DeleteAchievementConfigurationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -300,8 +423,8 @@ export const deleteLeaderboardConfigurations: API.OperationMethod<
   DeleteLeaderboardConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteLeaderboardConfigurationsRequest>,
-  output: __S(1) as any as S.Schema<DeleteLeaderboardConfigurationsResponse>,
+  input: DeleteLeaderboardConfigurationsRequest,
+  output: DeleteLeaderboardConfigurationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -315,8 +438,8 @@ export const getAchievementConfigurations: API.OperationMethod<
   GetAchievementConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<GetAchievementConfigurationsRequest>,
-  output: __S(8) as any as S.Schema<AchievementConfiguration>,
+  input: GetAchievementConfigurationsRequest,
+  output: AchievementConfiguration,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -330,8 +453,8 @@ export const getLeaderboardConfigurations: API.OperationMethod<
   GetLeaderboardConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<GetLeaderboardConfigurationsRequest>,
-  output: __S(13) as any as S.Schema<LeaderboardConfiguration>,
+  input: GetLeaderboardConfigurationsRequest,
+  output: LeaderboardConfiguration,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -350,8 +473,8 @@ export const insertAchievementConfigurations: API.OperationMethod<
   InsertAchievementConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<InsertAchievementConfigurationsRequest>,
-  output: __S(8) as any as S.Schema<AchievementConfiguration>,
+  input: InsertAchievementConfigurationsRequest,
+  output: AchievementConfiguration,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -370,8 +493,8 @@ export const insertLeaderboardConfigurations: API.OperationMethod<
   InsertLeaderboardConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<InsertLeaderboardConfigurationsRequest>,
-  output: __S(13) as any as S.Schema<LeaderboardConfiguration>,
+  input: InsertLeaderboardConfigurationsRequest,
+  output: LeaderboardConfiguration,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -386,8 +509,8 @@ export const listAchievementConfigurations: API.PaginatedOperationMethod<
   GcpOpContext,
   AchievementConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(16) as any as S.Schema<ListAchievementConfigurationsRequest>,
-  output: __S(18) as any as S.Schema<AchievementConfigurationListResponse>,
+  input: ListAchievementConfigurationsRequest,
+  output: AchievementConfigurationListResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -403,8 +526,8 @@ export const listLeaderboardConfigurations: API.PaginatedOperationMethod<
   GcpOpContext,
   LeaderboardConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(19) as any as S.Schema<ListLeaderboardConfigurationsRequest>,
-  output: __S(21) as any as S.Schema<LeaderboardConfigurationListResponse>,
+  input: ListLeaderboardConfigurationsRequest,
+  output: LeaderboardConfigurationListResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -424,8 +547,8 @@ export const updateAchievementConfigurations: API.OperationMethod<
   UpdateAchievementConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<UpdateAchievementConfigurationsRequest>,
-  output: __S(8) as any as S.Schema<AchievementConfiguration>,
+  input: UpdateAchievementConfigurationsRequest,
+  output: AchievementConfiguration,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -444,8 +567,8 @@ export const updateLeaderboardConfigurations: API.OperationMethod<
   UpdateLeaderboardConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<UpdateLeaderboardConfigurationsRequest>,
-  output: __S(13) as any as S.Schema<LeaderboardConfiguration>,
+  input: UpdateLeaderboardConfigurationsRequest,
+  output: LeaderboardConfiguration,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -509,20 +632,20 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "LocalizedString" });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(LocalizedString);
     case 6:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          translations: S.optional(__S(5)),
+          translations: S.optional(LocalizedStringList),
         }),
       ).annotate({ identifier: "LocalizedStringBundle" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(6)),
+          name: S.optional(LocalizedStringBundle),
           iconUrl: S.optional(S.String),
-          description: S.optional(__S(6)),
+          description: S.optional(LocalizedStringBundle),
           pointValue: S.optional(S.Number),
           sortRank: S.optional(S.Number),
           kind: S.optional(S.String),
@@ -537,14 +660,14 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          achievementType: S.optional(S.String),
+          achievementType: S.optional(AchievementConfigurationAchievementTypeEnum),
           token: S.optional(S.String),
           id: S.optional(S.String),
           kind: S.optional(S.String),
-          published: S.optional(__S(7)),
+          published: S.optional(AchievementConfigurationDetail),
           stepsToUnlock: S.optional(S.Number),
-          initialState: S.optional(S.String),
-          draft: S.optional(__S(7)),
+          initialState: S.optional(AchievementConfigurationInitialStateEnum),
+          draft: S.optional(AchievementConfigurationDetail),
         }),
       ).annotate({ identifier: "AchievementConfiguration" });
     case 1:
@@ -564,12 +687,12 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          other: S.optional(__S(6)),
-          many: S.optional(__S(6)),
-          one: S.optional(__S(6)),
-          zero: S.optional(__S(6)),
-          two: S.optional(__S(6)),
-          few: S.optional(__S(6)),
+          other: S.optional(LocalizedStringBundle),
+          many: S.optional(LocalizedStringBundle),
+          one: S.optional(LocalizedStringBundle),
+          zero: S.optional(LocalizedStringBundle),
+          two: S.optional(LocalizedStringBundle),
+          few: S.optional(LocalizedStringBundle),
         }),
       ).annotate({
         identifier: "GamesNumberAffixConfiguration",
@@ -577,10 +700,10 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          numberFormatType: S.optional(S.String),
+          numberFormatType: S.optional(GamesNumberFormatConfigurationNumberFormatTypeEnum),
           numDecimalPlaces: S.optional(S.Number),
           currencyCode: S.optional(S.String),
-          suffix: S.optional(__S(10)),
+          suffix: S.optional(GamesNumberAffixConfiguration),
         }),
       ).annotate({
         identifier: "GamesNumberFormatConfiguration",
@@ -591,8 +714,8 @@ function __c1(j: number): any {
           sortRank: S.optional(S.Number),
           kind: S.optional(S.String),
           iconUrl: S.optional(S.String),
-          scoreFormat: S.optional(__S(11)),
-          name: S.optional(__S(6)),
+          scoreFormat: S.optional(GamesNumberFormatConfiguration),
+          name: S.optional(LocalizedStringBundle),
         }),
       ).annotate({
         identifier: "LeaderboardConfigurationDetail",
@@ -601,9 +724,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scoreMin: S.optional(S.String),
-          draft: S.optional(__S(12)),
-          scoreOrder: S.optional(S.String),
-          published: S.optional(__S(12)),
+          draft: S.optional(LeaderboardConfigurationDetail),
+          scoreOrder: S.optional(LeaderboardConfigurationScoreOrderEnum),
+          published: S.optional(LeaderboardConfigurationDetail),
           scoreMax: S.optional(S.String),
           id: S.optional(S.String),
           token: S.optional(S.String),
@@ -614,7 +737,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.Label()),
-          body: S.optional(__S(8).pipe(T.HttpBody())),
+          body: S.optional(AchievementConfiguration.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -629,7 +752,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.Label()),
-          body: S.optional(__S(13).pipe(T.HttpBody())),
+          body: S.optional(LeaderboardConfiguration.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -661,11 +784,11 @@ function __c2(j: number): any {
         identifier: "ListAchievementConfigurationsRequest",
       });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(AchievementConfiguration);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(17),
+          items: AchievementConfigurationList,
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
         }),
@@ -689,13 +812,13 @@ function __c2(j: number): any {
         identifier: "ListLeaderboardConfigurationsRequest",
       });
     case 4:
-      return S.Array(__S(13));
+      return S.Array(LeaderboardConfiguration);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
-          items: __S(20),
+          items: LeaderboardConfigurationList,
         }),
       ).annotate({
         identifier: "LeaderboardConfigurationListResponse",
@@ -704,7 +827,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           achievementId: S.String.pipe(T.Label()),
-          body: S.optional(__S(8).pipe(T.HttpBody())),
+          body: S.optional(AchievementConfiguration.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -719,7 +842,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           leaderboardId: S.String.pipe(T.Label()),
-          body: S.optional(__S(13).pipe(T.HttpBody())),
+          body: S.optional(LeaderboardConfiguration.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -730,20 +853,5 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdateLeaderboardConfigurationsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

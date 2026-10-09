@@ -7,8 +7,6 @@ import * as Redacted from "effect/Redacted";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -47,14 +45,23 @@ export type DataWarehouseTableFormatEnum =
   | "JSONEachRow"
   | "Delta"
   | "DeltaS3Wrapper";
+const DataWarehouseTableFormatEnum = S.String;
+
 export interface CredentialInput {
   /** Access key ID for the bucket the files live in (an AWS access key ID, a Google Cloud HMAC key, or the equivalent for another S3-compatible store). */
   access_key?: string;
   /** Secret for the access key. Stored encrypted and never returned by the API. */
   access_secret?: string | Redacted.Redacted<string>;
 }
+const CredentialInput = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CredentialInput>;
+
 /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
 export type CreateWarehouseTableRequestOptionsMap = { [key: string]: unknown | undefined };
+const CreateWarehouseTableRequestOptionsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateWarehouseTableRequestOptionsMap>;
+
 export interface CreateWarehouseTableRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -70,7 +77,15 @@ export interface CreateWarehouseTableRequest {
   /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
   options?: CreateWarehouseTableRequestOptionsMap;
 }
+const CreateWarehouseTableRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateWarehouseTableRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap =
+  CreateWarehouseTableRequestOptionsMap as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -84,6 +99,8 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -95,6 +112,8 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<UserBasic>;
+
 /** * `web` - web * `api` - api * `mcp` - mcp * `wizard` - wizard * `self_driving` - self_driving * `source` - source * `materialized_view` - materialized_view * `demo` - demo */
 export type DataWarehouseTableCreatedViaEnum =
   | "web"
@@ -105,13 +124,25 @@ export type DataWarehouseTableCreatedViaEnum =
   | "source"
   | "materialized_view"
   | "demo";
+const DataWarehouseTableCreatedViaEnum = S.String;
+
 export interface CredentialOutput {
   id?: string;
   created_by?: UserBasic | null;
   created_at?: string;
 }
+const CredentialOutput = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CredentialOutput>;
+
 export type TableOutputColumnsItemMap = { [key: string]: unknown | undefined };
+const TableOutputColumnsItemMap =
+  CreateWarehouseTableRequestOptionsMap as any as S.Schema<TableOutputColumnsItemMap>;
+
 export type TableOutputColumnsList = Array<TableOutputColumnsItemMap>;
+const TableOutputColumnsList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<TableOutputColumnsList>;
+
 /** * `Ashby` - Ashby * `Supabase` - Supabase * `CustomerIO` - CustomerIO * `Github` - Github * `Stripe` - Stripe * `Hubspot` - Hubspot * `Postgres` - Postgres * `Zendesk` - Zendesk * `Snowflake` - Snowflake * `Salesforce` - Salesforce * `MySQL` - MySQL * `MongoDB` - MongoDB * `MSSQL` - MSSQL * `Vitally` - Vitally * `BigQuery` - BigQuery * `Chargebee` - Chargebee * `Clerk` - Clerk * `GoogleAds` - GoogleAds * `GoogleSearchConsole` - GoogleSearchConsole * `TemporalIO` - TemporalIO * `DoIt` - DoIt * `GoogleSheets` - GoogleSheets * `MetaAds` - MetaAds * `Klaviyo` - Klaviyo * `Mailchimp` - Mailchimp * `Braze` - Braze * `Mailjet` - Mailjet * `Redshift` - Redshift * `Polar` - Polar * `RevenueCat` - RevenueCat * `LinkedinAds` - LinkedinAds * `RedditAds` - RedditAds * `TikTokAds` - TikTokAds * `BingAds` - BingAds * `Shopify` - Shopify * `Attio` - Attio * `SnapchatAds` - SnapchatAds * `Linear` - Linear * `Intercom` - Intercom * `Amplitude` - Amplitude * `Mixpanel` - Mixpanel * `Jira` - Jira * `ActiveCampaign` - ActiveCampaign * `Marketo` - Marketo * `Adjust` - Adjust * `AppsFlyer` - AppsFlyer * `Freshdesk` - Freshdesk * `GoogleAnalytics` - GoogleAnalytics * `Pipedrive` - Pipedrive * `SendGrid` - SendGrid * `Slack` - Slack * `PagerDuty` - PagerDuty * `Asana` - Asana * `Notion` - Notion * `Airtable` - Airtable * `Greenhouse` - Greenhouse * `BambooHR` - BambooHR * `Lever` - Lever * `GitLab` - GitLab * `Datadog` - Datadog * `Sentry` - Sentry * `Pendo` - Pendo * `FullStory` - FullStory * `AmazonAds` - AmazonAds * `PinterestAds` - PinterestAds * `AppleSearchAds` - AppleSearchAds * `QuickBooks` - QuickBooks * `Xero` - Xero * `NetSuite` - NetSuite * `WooCommerce` - WooCommerce * `BigCommerce` - BigCommerce * `PayPal` - PayPal * `Square` - Square * `Zoom` - Zoom * `Trello` - Trello * `Monday` - Monday * `ClickUp` - ClickUp * `Confluence` - Confluence * `Recurly` - Recurly * `SalesLoft` - SalesLoft * `Outreach` - Outreach * `Gong` - Gong * `Calendly` - Calendly * `Typeform` - Typeform * `Iterable` - Iterable * `ZohoCRM` - ZohoCRM * `Close` - Close * `Oracle` - Oracle * `DynamoDB` - DynamoDB * `Elasticsearch` - Elasticsearch * `Kafka` - Kafka * `LaunchDarkly` - LaunchDarkly * `Braintree` - Braintree * `Recharge` - Recharge * `HelpScout` - HelpScout * `Gorgias` - Gorgias * `Instagram` - Instagram * `YouTubeAnalytics` - YouTubeAnalytics * `FacebookPages` - FacebookPages * `TwitterAds` - TwitterAds * `Workday` - Workday * `ServiceNow` - ServiceNow * `Pardot` - Pardot * `Copper` - Copper * `Front` - Front * `ChartMogul` - ChartMogul * `Zuora` - Zuora * `Paddle` - Paddle * `CircleCI` - CircleCI * `CockroachDB` - CockroachDB * `Firebase` - Firebase * `AzureBlob` - AzureBlob * `GoogleDrive` - GoogleDrive * `OneDrive` - OneDrive * `SharePoint` - SharePoint * `Box` - Box * `SFTP` - SFTP * `MicrosoftTeams` - MicrosoftTeams * `Aircall` - Aircall * `Webflow` - Webflow * `Okta` - Okta * `Auth0` - Auth0 * `Productboard` - Productboard * `Smartsheet` - Smartsheet * `Wrike` - Wrike * `Plaid` - Plaid * `SurveyMonkey` - SurveyMonkey * `Eventbrite` - Eventbrite * `RingCentral` - RingCentral * `Twilio` - Twilio * `Freshsales` - Freshsales * `Shortcut` - Shortcut * `ConvertKit` - ConvertKit * `Drip` - Drip * `CampaignMonitor` - CampaignMonitor * `MailerLite` - MailerLite * `Omnisend` - Omnisend * `Brevo` - Brevo * `Postmark` - Postmark * `Granola` - Granola * `BuildBetter` - BuildBetter * `Convex` - Convex * `ClickHouse` - ClickHouse * `Plain` - Plain * `Resend` - Resend * `PgAnalyze` - PgAnalyze * `WorkOS` - WorkOS * `AmazonS3` - AmazonS3 * `GoogleCloudStorage` - GoogleCloudStorage * `Databricks` - Databricks * `Dynamics365` - Dynamics365 * `SalesforceMarketingCloud` - SalesforceMarketingCloud * `Db2` - Db2 * `Heap` - Heap * `AdobeAnalytics` - AdobeAnalytics * `Matomo` - Matomo * `Optimizely` - Optimizely * `Adyen` - Adyen * `GoCardless` - GoCardless * `Mollie` - Mollie * `CheckoutCom` - CheckoutCom * `Branch` - Branch * `Criteo` - Criteo * `Outbrain` - Outbrain * `Taboola` - Taboola * `AdRoll` - AdRoll * `DisplayVideo360` - DisplayVideo360 * `GoogleAdManager` - GoogleAdManager * `CampaignManager360` - CampaignManager360 * `SearchAds360` - SearchAds360 * `AdobeCommerce` - AdobeCommerce * `AmazonSellingPartner` - AmazonSellingPartner * `Ebay` - Ebay * `Commercetools` - Commercetools * `LightspeedRetail` - LightspeedRetail * `Shipmail` - Shipmail * `ShipStation` - ShipStation * `ConstantContact` - ConstantContact * `Mailgun` - Mailgun * `Eloqua` - Eloqua * `Sailthru` - Sailthru * `Ortto` - Ortto * `Attentive` - Attentive * `Kustomer` - Kustomer * `Dixa` - Dixa * `Gladly` - Gladly * `Qualtrics` - Qualtrics * `AzureDevOps` - AzureDevOps * `RoktAds` - RoktAds * `Rollbar` - Rollbar * `Opsgenie` - Opsgenie * `IncidentIo` - IncidentIo * `Pingdom` - Pingdom * `Cloudflare` - Cloudflare * `CosmosDB` - CosmosDB * `PlanetScaleMySQL` - PlanetScaleMySQL * `PlanetScalePostgres` - PlanetScalePostgres * `SapHana` - SapHana * `Rippling` - Rippling * `HiBob` - HiBob * `Personio` - Personio * `Deel` - Deel * `AdpWorkforceNow` - AdpWorkforceNow * `Paylocity` - Paylocity * `Gusto` - Gusto * `CultureAmp` - CultureAmp * `Lattice` - Lattice * `SageIntacct` - SageIntacct * `FreshBooks` - FreshBooks * `Expensify` - Expensify * `Ramp` - Ramp * `Brex` - Brex * `Coupa` - Coupa * `SapConcur` - SapConcur * `Apollo` - Apollo * `Crunchbase` - Crunchbase * `ZoomInfo` - ZoomInfo * `Clari` - Clari * `Chorus` - Chorus * `Coda` - Coda * `Guru` - Guru * `Dropbox` - Dropbox * `Docusign` - Docusign * `PandaDoc` - PandaDoc * `SapErp` - SapErp * `SapSuccessFactors` - SapSuccessFactors * `OracleEbs` - OracleEbs * `OracleFusion` - OracleFusion * `AmazonSNS` - AmazonSNS * `AmazonEventBridge` - AmazonEventBridge * `AmazonSQS` - AmazonSQS * `AmazonKinesis` - AmazonKinesis * `AmazonCloudWatch` - AmazonCloudWatch * `OpenAIAds` - OpenAIAds * `OneHundredMs` - OneHundredMs * `SevenShifts` - SevenShifts * `AcuityScheduling` - AcuityScheduling * `AgileCRM` - AgileCRM * `Aha` - Aha * `Airbyte` - Airbyte * `Akeneo` - Akeneo * `Algolia` - Algolia * `AlpacaBrokerAPI` - AlpacaBrokerAPI * `ApifyDataset` - ApifyDataset * `Appcues` - Appcues * `Appfigures` - Appfigures * `Appfollow` - Appfollow * `Apptivo` - Apptivo * `AssemblyAI` - AssemblyAI * `Awin` - Awin * `AwsCloudTrail` - AwsCloudTrail * `AzureTableStorage` - AzureTableStorage * `Babelforce` - Babelforce * `Basecamp` - Basecamp * `Beamer` - Beamer * `BigMailer` - BigMailer * `Bluetally` - Bluetally * `BoldSign` - BoldSign * `BreezyHR` - BreezyHR * `Bugsnag` - Bugsnag * `Buildkite` - Buildkite * `Bunny` - Bunny * `Buzzsprout` - Buzzsprout * `CalCom` - CalCom * `CallRail` - CallRail * `Campayn` - Campayn * `Canny` - Canny * `CapsuleCRM` - CapsuleCRM * `CaptainData` - CaptainData * `CartCom` - CartCom * `CastorEDC` - CastorEDC * `Chameleon` - Chameleon * `Chargedesk` - Chargedesk * `Chargify` - Chargify * `Chift` - Chift * `Churnkey` - Churnkey * `Cin7` - Cin7 * `CiscoMeraki` - CiscoMeraki * `Clazar` - Clazar * `Clockify` - Clockify * `Clockodo` - Clockodo * `Cloudbeds` - Cloudbeds * `Coassemble` - Coassemble * `Codefresh` - Codefresh * `Concord` - Concord * `ConfigCat` - ConfigCat * `Couchbase` - Couchbase * `Curve` - Curve * `Customerly` - Customerly * `Datascope` - Datascope * `Dbt` - Dbt * `Demodesk` - Demodesk * `Deputy` - Deputy * `DevinAI` - DevinAI * `Docuseal` - Docuseal * `Dolibarr` - Dolibarr * `Dremio` - Dremio * `DropboxSign` - DropboxSign * `Dwolla` - Dwolla * `EConomic` - EConomic * `Easypost` - Easypost * `Easypromos` - Easypromos * `Elasticemail` - Elasticemail * `EmailOctopus` - EmailOctopus * `EmploymentHero` - EmploymentHero * `Encharge` - Encharge * `Eventee` - Eventee * `Eventzilla` - Eventzilla * `Everhour` - Everhour * `EZOfficeInventory` - EZOfficeInventory * `Factorial` - Factorial * `Fastbill` - Fastbill * `Fastly` - Fastly * `Fauna` - Fauna * `Feishu` - Feishu * `Fillout` - Fillout * `Finage` - Finage * `Firebolt` - Firebolt * `FireHydrant` - FireHydrant * `Fleetio` - Fleetio * `Flexmail` - Flexmail * `Flexport` - Flexport * `FloatApp` - FloatApp * `Flowlu` - Flowlu * `Formbricks` - Formbricks * `Framer` - Framer * `FreeAgent` - FreeAgent * `Freightview` - Freightview * `Freshcaller` - Freshcaller * `Freshchat` - Freshchat * `Freshservice` - Freshservice * `Fulcrum` - Fulcrum * `GainsightCs` - GainsightCs * `GainsightPx` - GainsightPx * `GitBook` - GitBook * `Glassfrog` - Glassfrog * `Goldcast` - Goldcast * `GoLogin` - GoLogin * `Grafana` - Grafana * `GreytHr` - GreytHr * `Gridly` - Gridly * `Harness` - Harness * `Height` - Height * `Hellobaton` - Hellobaton * `HighLevel` - HighLevel * `HoorayHR` - HoorayHR * `Hubplanner` - Hubplanner * `Humanitix` - Humanitix * `Huntr` - Huntr * `Inflowinventory` - Inflowinventory * `InforNexus` - InforNexus * `Insightful` - Insightful * `Insightly` - Insightly * `Instantly` - Instantly * `Instatus` - Instatus * `Intruder` - Intruder * `Invoiced` - Invoiced * `Invoiceninja` - Invoiceninja * `JamfPro` - JamfPro * `JobNimbus` - JobNimbus * `Jotform` - Jotform * `JudgeMeReviews` - JudgeMeReviews * `JustCall` - JustCall * `JustSift` - JustSift * `K6Cloud` - K6Cloud * `Katana` - Katana * `Keka` - Keka * `Kisi` - Kisi * `Kissmetrics` - Kissmetrics * `Klarna` - Klarna * `Klaus` - Klaus * `Lago` - Lago * `Leadfeeder` - Leadfeeder * `Lemlist` - Lemlist * `LessAnnoyingCRM` - LessAnnoyingCRM * `LinkedinPages` - LinkedinPages * `Linkrunner` - Linkrunner * `Linnworks` - Linnworks * `Lob` - Lob * `Lokalise` - Lokalise * `Looker` - Looker * `Luma` - Luma * `MailerSend` - MailerSend * `Mailosaur` - Mailosaur * `Mailtrap` - Mailtrap * `Mantle` - Mantle * `Mention` - Mention * `MercadoAds` - MercadoAds * `Merge` - Merge * `Metabase` - Metabase * `Metricool` - Metricool * `MicrosoftDataverse` - MicrosoftDataverse * `MicrosoftEntraId` - MicrosoftEntraId * `MicrosoftLists` - MicrosoftLists * `Miro` - Miro * `Missive` - Missive * `MixMax` - MixMax * `Mode` - Mode * `Mux` - Mux * `MyHours` - MyHours * `N8n` - N8n * `Navan` - Navan * `NebiusAI` - NebiusAI * `Nexiopay` - Nexiopay * `NinjaOneRMM` - NinjaOneRMM * `NoCRM` - NoCRM * `NorthpassLMS` - NorthpassLMS * `Nutshell` - Nutshell * `Nylas` - Nylas * `Oncehub` - Oncehub * `Onepagecrm` - Onepagecrm * `OneSignal` - OneSignal * `Onfleet` - Onfleet * `OpinionStage` - OpinionStage * `OPUSWatch` - OPUSWatch * `Orb` - Orb * `Orbit` - Orbit * `Oura` - Oura * `Oveit` - Oveit * `PabblySubscriptionsBilling` - PabblySubscriptionsBilling * `Paperform` - Paperform * `Papersign` - Papersign * `Partnerize` - Partnerize * `PartnerStack` - PartnerStack * `PayFit` - PayFit * `Paystack` - Paystack * `Pennylane` - Pennylane * `Perk` - Perk * `PersistIq` - PersistIq * `Persona` - Persona * `Phyllo` - Phyllo * `Picqer` - Picqer * `Pipeliner` - Pipeliner * `PivotalTracker` - PivotalTracker * `Piwik` - Piwik * `Planhat` - Planhat * `Plausible` - Plausible * `Poplar` - Poplar * `PrestaShop` - PrestaShop * `Pretix` - Pretix * `Primetric` - Primetric * `Printavo` - Printavo * `Printify` - Printify * `Productive` - Productive * `Pylon` - Pylon * `Qonto` - Qonto * `Qualaroo` - Qualaroo * `Railz` - Railz * `RDStationMarketing` - RDStationMarketing * `Recruitee` - Recruitee * `Reddit` - Reddit * `ReferralHero` - ReferralHero * `RentCast` - RentCast * `Repairshopr` - Repairshopr * `ReplyIo` - ReplyIo * `RetailExpress` - RetailExpress * `Retently` - Retently * `RevolutMerchant` - RevolutMerchant * `RocketChat` - RocketChat * `Rocketlane` - Rocketlane * `Rootly` - Rootly * `Ruddr` - Ruddr * `SafetyCulture` - SafetyCulture * `SageHR` - SageHR * `Salesflare` - Salesflare * `SAPFieldglass` - SAPFieldglass * `SavvyCal` - SavvyCal * `Secoda` - Secoda * `Segment` - Segment * `Sendowl` - Sendowl * `SendPulse` - SendPulse * `Senseforce` - Senseforce * `Serpstat` - Serpstat * `Sharetribe` - Sharetribe * `Shippo` - Shippo * `ShopWired` - ShopWired * `Shortio` - Shortio * `Shutterstock` - Shutterstock * `SigmaComputing` - SigmaComputing * `SignNow` - SignNow * `SimpleCast` - SimpleCast * `Simplesat` - Simplesat * `Smaily` - Smaily * `SmartEngage` - SmartEngage * `Smartreach` - Smartreach * `Smartwaiver` - Smartwaiver * `SolarwindsServiceDesk` - SolarwindsServiceDesk * `SonarCloud` - SonarCloud * `SparkPost` - SparkPost * `SplitIo` - SplitIo * `SpotifyAds` - SpotifyAds * `SpotlerCRM` - SpotlerCRM * `Squarespace` - Squarespace * `Statsig` - Statsig * `Statuspage` - Statuspage * `Stigg` - Stigg * `Strava` - Strava * `SurveySparrow` - SurveySparrow * `Survicate` - Survicate * `Svix` - Svix * `Systeme` - Systeme * `Tavus` - Tavus * `Teamtailor` - Teamtailor * `Teamwork` - Teamwork * `Tempo` - Tempo * `Testrail` - Testrail * `Thinkific` - Thinkific * `ThinkificCourses` - ThinkificCourses * `ThriveLearning` - ThriveLearning * `Ticketmaster` - Ticketmaster * `TicketTailor` - TicketTailor * `TickTick` - TickTick * `Timely` - Timely * `Tinyemail` - Tinyemail * `Todoist` - Todoist * `Toggl` - Toggl * `TrackPMS` - TrackPMS * `Tremendous` - Tremendous * `TrustPilot` - TrustPilot * `Twitter` - Twitter * `TyntecSMS` - TyntecSMS * `Unleash` - Unleash * `UpPromote` - UpPromote * `Uptick` - Uptick * `Uservoice` - Uservoice * `Vantage` - Vantage * `Veeqo` - Veeqo * `Vercel` - Vercel * `VismaEconomic` - VismaEconomic * `VWO` - VWO * `Waiteraid` - Waiteraid * `Wasabi` - Wasabi * `WhenIWork` - WhenIWork * `Wordpress` - Wordpress * `Workable` - Workable * `Workflowmax` - Workflowmax * `Workramp` - Workramp * `Wufoo` - Wufoo * `Xsolla` - Xsolla * `YandexMetrica` - YandexMetrica * `Yotpo` - Yotpo * `Ynab` - Ynab * `Younium` - Younium * `YouSign` - YouSign * `YoutubeData` - YoutubeData * `ZapierSupportedStorage` - ZapierSupportedStorage * `ZapSign` - ZapSign * `ZendeskSell` - ZendeskSell * `ZendeskSunshine` - ZendeskSunshine * `Zenefits` - Zenefits * `Zenloop` - Zenloop * `ZohoAnalytics` - ZohoAnalytics * `ZohoBigin` - ZohoBigin * `ZohoBilling` - ZohoBilling * `ZohoBooks` - ZohoBooks * `ZohoCampaign` - ZohoCampaign * `ZohoDesk` - ZohoDesk * `ZohoExpense` - ZohoExpense * `ZohoInventory` - ZohoInventory * `ZohoInvoice` - ZohoInvoice * `ZonkaFeedback` - ZonkaFeedback * `AlphaVantage` - AlphaVantage * `Aviationstack` - Aviationstack * `Bitly` - Bitly * `Blogger` - Blogger * `Breezometer` - Breezometer * `CareQualityCommission` - CareQualityCommission * `Cimis` - Cimis * `CoinApi` - CoinApi * `CoinGecko` - CoinGecko * `CoinMarketCap` - CoinMarketCap * `DingConnect` - DingConnect * `Dockerhub` - Dockerhub * `ExchangeRatesApi` - ExchangeRatesApi * `FinancialModelling` - FinancialModelling * `Finnhub` - Finnhub * `Finnworlds` - Finnworlds * `Giphy` - Giphy * `Gmail` - Gmail * `GNews` - GNews * `GoogleCalendar` - GoogleCalendar * `GoogleClassroom` - GoogleClassroom * `GoogleDirectory` - GoogleDirectory * `GoogleForms` - GoogleForms * `GooglePageSpeedInsights` - GooglePageSpeedInsights * `GoogleTasks` - GoogleTasks * `GoogleWebfonts` - GoogleWebfonts * `GoogleWorkspaceAdminReports` - GoogleWorkspaceAdminReports * `HuggingFace` - HuggingFace * `IlluminaBasespace` - IlluminaBasespace * `Imagga` - Imagga * `Interzoid` - Interzoid * `IP2Whois` - IP2Whois * `KYVE` - KYVE * `Marketstack` - Marketstack * `Mendeley` - Mendeley * `Nasa` - Nasa * `NewYorkTimes` - NewYorkTimes * `NewsApi` - NewsApi * `NewsData` - NewsData * `OpenDataDc` - OpenDataDc * `OpenExchangeRates` - OpenExchangeRates * `OpenAQ` - OpenAQ * `OpenFDA` - OpenFDA * `OpenWeather` - OpenWeather * `Outlook` - Outlook * `Perigon` - Perigon * `Pexels` - Pexels * `Pocket` - Pocket * `Polygon` - Polygon * `PyPI` - PyPI * `Recreation` - Recreation * `RKICovid` - RKICovid * `Rss` - Rss * `SimFin` - SimFin * `StockData` - StockData * `Guardian` - Guardian * `TMDb` - TMDb * `TVMaze` - TVMaze * `TwelveData` - TwelveData * `Ubidots` - Ubidots * `USCensus` - USCensus * `Watchmode` - Watchmode * `WikipediaPageviews` - WikipediaPageviews * `YahooFinance` - YahooFinance * `Clarifai` - Clarifai * `Adapty` - Adapty * `Braintrust` - Braintrust * `StreamElements` - StreamElements * `Streamlabs` - Streamlabs * `Datorama` - Datorama * `Ahrefs` - Ahrefs * `Lightfield` - Lightfield * `Appstack` - Appstack * `Razorpay` - Razorpay * `Neon` - Neon * `NewRelic` - NewRelic * `Custom` - Custom * `Tile38` - Tile38 * `Chatwoot` - Chatwoot * `Sanity` - Sanity * `Metronome` - Metronome * `Jobber` - Jobber * `Knock` - Knock * `Leexi` - Leexi * `RB2B` - RB2B * `Superwall` - Superwall * `Liana` - Liana * `TawkTo` - TawkTo * `Hightouch` - Hightouch * `LemonSqueezy` - LemonSqueezy * `Ikas` - Ikas * `Talkwalker` - Talkwalker * `NextdoorAds` - NextdoorAds * `AppLovin` - AppLovin * `Baserow` - Baserow * `Plunk` - Plunk * `Dub` - Dub * `AirOps` - AirOps * `Podium` - Podium * `Loops` - Loops * `Redis` - Redis * `Mercury` - Mercury * `Gojiberry` - Gojiberry * `Teachable` - Teachable * `PeecAI` - PeecAI * `Healthchecks` - Healthchecks * `Impact` - Impact * `AikidoSecurity` - AikidoSecurity * `Alguna` - Alguna * `Anthropic` - Anthropic * `Appwrite` - Appwrite * `BlandAI` - BlandAI * `BrowseAI` - BrowseAI * `BrowserUse` - BrowserUse * `ChartHop` - ChartHop * `Cody` - Cody * `Cursor` - Cursor * `Decagon` - Decagon * `Deepgram` - Deepgram * `ElevenLabs` - ElevenLabs * `Harvey` - Harvey * `Hyperspell` - Hyperspell * `Langfuse` - Langfuse * `LingoDev` - LingoDev * `M3ter` - M3ter * `Maxio` - Maxio * `Metorial` - Metorial * `OpenRouter` - OpenRouter * `TogetherAI` - TogetherAI * `Vapi` - Vapi * `Vespa` - Vespa * `Writesonic` - Writesonic * `Aiven` - Aiven * `Aviator` - Aviator * `Backblaze` - Backblaze * `Baseten` - Baseten * `Browserbase` - Browserbase * `Cohere` - Cohere * `DenoDeploy` - DenoDeploy * `DigitalOcean` - DigitalOcean * `E2B` - E2B * `Fintoc` - Fintoc * `Firecrawl` - Firecrawl * `FireworksAI` - FireworksAI * `FlyIo` - FlyIo * `Groq` - Groq * `GrowthBook` - GrowthBook * `Gumloop` - Gumloop * `Hatchet` - Hatchet * `Helicone` - Helicone * `Heroku` - Heroku * `Hetzner` - Hetzner * `HeyGen` - HeyGen * `Infisical` - Infisical * `Inngest` - Inngest * `KapaAI` - KapaAI * `Kernel` - Kernel * `Koyeb` - Koyeb * `LambdaLabs` - LambdaLabs * `LangSmith` - LangSmith * `Linode` - Linode * `LlamaCloud` - LlamaCloud * `Mem0` - Mem0 * `Metriport` - Metriport * `Mintlify` - Mintlify * `MistralAI` - MistralAI * `Mono` - Mono * `Netlify` - Netlify * `Northflank` - Northflank * `OpenAI` - OpenAI * `Pinecone` - Pinecone * `PlatformSh` - PlatformSh * `PromptingCompany` - PromptingCompany * `Qdrant` - Qdrant * `Render` - Render * `Replicate` - Replicate * `RetellAI` - RetellAI * `Roark` - Roark * `RunPod` - RunPod * `ScaleAI` - ScaleAI * `Scaleway` - Scaleway * `SigNoz` - SigNoz * `Sim` - Sim * `Skyvern` - Skyvern * `Slash` - Slash * `Synthesia` - Synthesia * `Telli` - Telli * `TerraApi` - TerraApi * `TriggerDev` - TriggerDev * `Turso` - Turso * `Singular` - Singular * `Swonkie` - Swonkie * `TwelveLabs` - TwelveLabs * `Twenty` - Twenty * `Unstructured` - Unstructured * `Upstash` - Upstash * `Vellum` - Vellum * `Vultr` - Vultr * `Windmill` - Windmill * `Zep` - Zep * `Hex` - Hex * `Sumsub` - Sumsub * `GoogleChat` - GoogleChat * `Kickscale` - Kickscale * `Zellify` - Zellify * `RudderStack` - RudderStack * `DodoPayments` - DodoPayments * `Salestrics` - Salestrics * `Doppler` - Doppler * `Usersnap` - Usersnap * `Asknicely` - Asknicely * `Featurebase` - Featurebase * `Frill` - Frill * `Bettermode` - Bettermode * `Dynatrace` - Dynatrace * `Honeycomb` - Honeycomb * `SumoLogic` - SumoLogic * `LogzIO` - LogzIO * `Coralogix` - Coralogix * `BetterStack` - BetterStack * `Raygun` - Raygun * `Honeybadger` - Honeybadger * `Airbrake` - Airbrake * `Appsignal` - Appsignal * `Appdynamics` - Appdynamics * `Instana` - Instana * `SplunkObservabilityCloud` - SplunkObservabilityCloud * `Uptimerobot` - Uptimerobot * `Statuscake` - Statuscake * `Tailscale` - Tailscale * `Flagsmith` - Flagsmith * `Xmatters` - Xmatters * `Squadcast` - Squadcast * `Zenduty` - Zenduty * `Cronitor` - Cronitor * `Jenkins` - Jenkins * `Bitbucket` - Bitbucket * `Gitea` - Gitea * `Teamcity` - Teamcity * `TravisCI` - TravisCI * `Semaphore` - Semaphore * `CircleciInsights` - CircleciInsights * `OctopusDeploy` - OctopusDeploy * `Sourcegraph` - Sourcegraph * `Bitrise` - Bitrise * `Gerrit` - Gerrit * `TerraformCloud` - TerraformCloud * `PulumiCloud` - PulumiCloud * `Spacelift` - Spacelift * `Railway` - Railway * `Argocd` - Argocd * `PrefectCloud` - PrefectCloud * `DagsterCloud` - DagsterCloud * `Env0` - Env0 * `Kubecost` - Kubecost * `Snyk` - Snyk * `Semgrep` - Semgrep * `Veracode` - Veracode * `Checkmarx` - Checkmarx * `Gitguardian` - Gitguardian * `QualysVmdr` - QualysVmdr * `Rapid7Insightvm` - Rapid7Insightvm * `TenableVulnerabilityManagement` - TenableVulnerabilityManagement * `Sentinelone` - Sentinelone * `Lacework` - Lacework * `OrcaSecurity` - OrcaSecurity * `Drata` - Drata * `Secureframe` - Secureframe * `CiscoDuo` - CiscoDuo * `Jumpcloud` - Jumpcloud * `OnePassword` - OnePassword * `Stytch` - Stytch * `Sonarqube` - Sonarqube * `Codecov` - Codecov * `Coveralls` - Coveralls * `Codacy` - Codacy * `Deepsource` - Deepsource * `Linearb` - Linearb * `Jellyfish` - Jellyfish * `Swarmia` - Swarmia * `Packagist` - Packagist * `Nuget` - Nuget * `CratesIO` - CratesIO * `SonatypeNexus` - SonatypeNexus * `JfrogArtifactory` - JfrogArtifactory * `Snowplow` - Snowplow * `WeightsAndBiases` - WeightsAndBiases * `MonteCarlo` - MonteCarlo * `Metaplane` - Metaplane * `Datahub` - Datahub * `ClickhouseCloud` - ClickhouseCloud * `ConfluentCloud` - ConfluentCloud * `KongKonnect` - KongKonnect * `Kandji` - Kandji * `Automox` - Automox * `Autumn` - Autumn * `GetStream` - GetStream * `Octolens` - Octolens * `Kajabi` - Kajabi * `Shopware` - Shopware * `Dubsado` - Dubsado * `Campfire` - Campfire * `PromptWatch` - PromptWatch * `Crisp` - Crisp * `Kommo` - Kommo * `Axiom` - Axiom * `Plivo` - Plivo * `DataForSEO` - DataForSEO * `Sleekplan` - Sleekplan * `AbTasty` - AbTasty * `Ably` - Ably * `AbnormalSecurity` - AbnormalSecurity * `Acast` - Acast * `Acculynx` - Acculynx * `Actionstep` - Actionstep * `Aftership` - Aftership * `AhaIdeas` - AhaIdeas * `AkamaiReporting` - AkamaiReporting * `Alation` - Alation * `Alegra` - Alegra * `Allegro` - Allegro * `AnodotCost` - AnodotCost * `Anomalo` - Anomalo * `Apaleo` - Apaleo * `Apitally` - Apitally * `AppStoreConnect` - AppStoreConnect * `Appdirect` - Appdirect * `Appfolio` - Appfolio * `Arxiv` - Arxiv * `Asaas` - Asaas * `Astronomer` - Astronomer * `Athenahealth` - Athenahealth * `Atlan` - Atlan * `AutodeskConstructionCloud` - AutodeskConstructionCloud * `Avalara` - Avalara * `AwsAthena` - AwsAthena * `AwsBatch` - AwsBatch * `AwsBudgets` - AwsBudgets * `AwsCloudformation` - AwsCloudformation * `AwsComputeOptimizer` - AwsComputeOptimizer * `AwsConfig` - AwsConfig * `AwsConnect` - AwsConnect * `AwsCostAndUsageReport` - AwsCostAndUsageReport * `AwsCostAnomalyDetection` - AwsCostAnomalyDetection * `AwsCostExplorer` - AwsCostExplorer * `AwsGlueDataCatalog` - AwsGlueDataCatalog * `AwsGuardduty` - AwsGuardduty * `AwsHealth` - AwsHealth * `AwsIamAccessAnalyzer` - AwsIamAccessAnalyzer * `AwsInspector` - AwsInspector * `AwsMacie` - AwsMacie * `AwsOrganizations` - AwsOrganizations * `AwsRdsPerformanceInsights` - AwsRdsPerformanceInsights * `AwsSagemaker` - AwsSagemaker * `AwsSavingsPlans` - AwsSavingsPlans * `AwsSecurityHub` - AwsSecurityHub * `AwsSes` - AwsSes * `AwsStepFunctions` - AwsStepFunctions * `AwsSupport` - AwsSupport * `AwsSystemsManager` - AwsSystemsManager * `AwsTrustedAdvisor` - AwsTrustedAdvisor * `AwsWaf` - AwsWaf * `AwsXray` - AwsXray * `AzureActivityLog` - AzureActivityLog * `AzureAdvisor` - AzureAdvisor * `AzureApiManagement` - AzureApiManagement * `AzureApplicationInsights` - AzureApplicationInsights * `AzureCostManagement` - AzureCostManagement * `AzureDataExplorer` - AzureDataExplorer * `AzureDataFactory` - AzureDataFactory * `AzureLogAnalytics` - AzureLogAnalytics * `AzureMonitorAlerts` - AzureMonitorAlerts * `AzureMonitorMetrics` - AzureMonitorMetrics * `AzureOpenaiUsage` - AzureOpenaiUsage * `AzurePolicyInsights` - AzurePolicyInsights * `AzureReservations` - AzureReservations * `AzureResourceGraph` - AzureResourceGraph * `AzureResourceHealth` - AzureResourceHealth * `AzureServiceHealth` - AzureServiceHealth * `AzureSynapse` - AzureSynapse * `BackMarket` - BackMarket * `Beehiiv` - Beehiiv * `Bigeye` - Bigeye * `BillCom` - BillCom * `Billomat` - Billomat * `BingWebmasterTools` - BingWebmasterTools * `Bitwarden` - Bitwarden * `BlackbaudRaisersEdgeNxt` - BlackbaudRaisersEdgeNxt * `BlackboardLearn` - BlackboardLearn * `Bling` - Bling * `Bloomerang` - Bloomerang * `Bluesky` - Bluesky * `BolRetailer` - BolRetailer * `Boulevard` - Boulevard * `Buffer` - Buffer * `Bugherd` - Bugherd * `Buildium` - Buildium * `Buttondown` - Buttondown * `BuyMeACoffee` - BuyMeACoffee * `Calendarific` - Calendarific * `Calibre` - Calibre * `CanvasLms` - CanvasLms * `Captivate` - Captivate * `Cashfree` - Cashfree * `CastAi` - CastAi * `Catchpoint` - Catchpoint * `CdcOpenData` - CdcOpenData * `Census` - Census * `Checkly` - Checkly * `CircleSo` - CircleSo * `Classy` - Classy * `Cleartax` - Cleartax * `Clever` - Clever * `Clevertap` - Clevertap * `Cliniko` - Cliniko * `Clio` - Clio * `Clip` - Clip * `Cloudability` - Cloudability * `Cloudsmith` - Cloudsmith * `Cloudzero` - Cloudzero * `Clover` - Clover * `Codemagic` - Codemagic * `Codescene` - Codescene * `Collibra` - Collibra * `Companycam` - Companycam * `Conekta` - Conekta * `ContaAzul` - ContaAzul * `Contentsquare` - Contentsquare * `Cortex` - Cortex * `Courier` - Courier * `Crossref` - Crossref * `CrowdstrikeFalcon` - CrowdstrikeFalcon * `CubeCloud` - CubeCloud * `D2lBrightspace` - D2lBrightspace * `Dayforce` - Dayforce * `Debugbear` - Debugbear * `Descope` - Descope * `Develocity` - Develocity * `Dialpad` - Dialpad * `Discord` - Discord * `Discourse` - Discourse * `Donorbox` - Donorbox * `Doorloop` - Doorloop * `Dovetail` - Dovetail * `Dragonboat` - Dragonboat * `Drchrono` - Drchrono * `Dynamics365BusinessCentral` - Dynamics365BusinessCentral * `EcbDataPortal` - EcbDataPortal * `Emarsys` - Emarsys * `Embrace` - Embrace * `Entsoe` - Entsoe * `Eppo` - Eppo * `Etsy` - Etsy * `Eurostat` - Eurostat * `Faire` - Faire * `FarosAi` - FarosAi * `Fieldpulse` - Fieldpulse * `Fieldwire` - Fieldwire * `Filevine` - Filevine * `Finout` - Finout * `Five9` - Five9 * `FlexeraCloudCost` - FlexeraCloudCost * `Flutterwave` - Flutterwave * `Fortnox` - Fortnox * `Fourthwall` - Fourthwall * `Fred` - Fred * `Frontegg` - Frontegg * `FusionAuth` - FusionAuth * `G2` - G2 * `Gcore` - Gcore * `GcpApigee` - GcpApigee * `GcpArtifactRegistry` - GcpArtifactRegistry * `GcpBigtable` - GcpBigtable * `GcpChronicle` - GcpChronicle * `GcpCloudAssetInventory` - GcpCloudAssetInventory * `GcpCloudBilling` - GcpCloudBilling * `GcpCloudBuild` - GcpCloudBuild * `GcpCloudDeploy` - GcpCloudDeploy * `GcpCloudDns` - GcpCloudDns * `GcpCloudFunctions` - GcpCloudFunctions * `GcpCloudLogging` - GcpCloudLogging * `GcpCloudMonitoring` - GcpCloudMonitoring * `GcpCloudRun` - GcpCloudRun * `GcpCloudSpanner` - GcpCloudSpanner * `GcpCloudSql` - GcpCloudSql * `GcpCloudTrace` - GcpCloudTrace * `GcpCloudWorkflows` - GcpCloudWorkflows * `GcpComputeEngine` - GcpComputeEngine * `GcpContainerAnalysis` - GcpContainerAnalysis * `GcpDataflow` - GcpDataflow * `GcpDataplex` - GcpDataplex * `GcpDataproc` - GcpDataproc * `GcpErrorReporting` - GcpErrorReporting * `GcpGke` - GcpGke * `GcpPubsub` - GcpPubsub * `GcpRecaptchaEnterprise` - GcpRecaptchaEnterprise * `GcpRecommender` - GcpRecommender * `GcpSecurityCommandCenter` - GcpSecurityCommandCenter * `Gdelt` - Gdelt * `GenesysCloud` - GenesysCloud * `Getdx` - Getdx * `Ghost` - Ghost * `Givebutter` - Givebutter * `Gleif` - Gleif * `GooglePlayConsole` - GooglePlayConsole * `Guesty` - Guesty * `Gumroad` - Gumroad * `HarnessCcm` - HarnessCcm * `HarnessSei` - HarnessSei * `Harvest` - Harvest * `Healthie` - Healthie * `Hitpay` - Hitpay * `Hivebrite` - Hivebrite * `Holded` - Holded * `Hostaway` - Hostaway * `HousecallPro` - HousecallPro * `Humanitec` - Humanitec * `ImfData` - ImfData * `Imperva` - Imperva * `InfluxdbCloud` - InfluxdbCloud * `Iyzico` - Iyzico * `Jobtread` - Jobtread * `Kameleoon` - Kameleoon * `KauflandMarketplace` - KauflandMarketplace * `Kestra` - Kestra * `Kick` - Kick * `Kinde` - Kinde * `Kion` - Kion * `Knowbe4` - Knowbe4 * `Komodor` - Komodor * `Labelbox` - Labelbox * `Lawmatics` - Lawmatics * `Learnworlds` - Learnworlds * `LexwareOffice` - LexwareOffice * `Lightdash` - Lightdash * `Lodgify` - Lodgify * `Logicmonitor` - Logicmonitor * `Logrocket` - Logrocket * `LoopReturns` - LoopReturns * `Mastodon` - Mastodon * `Meetup` - Meetup * `Memberful` - Memberful * `MercadoPago` - MercadoPago * `Meteostat` - Meteostat * `Mews` - Mews * `Mezmo` - Mezmo * `Microsoft365UsageReports` - Microsoft365UsageReports * `MicrosoftAdvertising` - MicrosoftAdvertising * `MicrosoftClarity` - MicrosoftClarity * `MicrosoftDefenderCloudApps` - MicrosoftDefenderCloudApps * `MicrosoftDefenderEndpoint` - MicrosoftDefenderEndpoint * `MicrosoftDefenderForCloud` - MicrosoftDefenderForCloud * `MicrosoftIntune` - MicrosoftIntune * `MicrosoftPurview` - MicrosoftPurview * `MicrosoftPurviewAudit` - MicrosoftPurviewAudit * `MicrosoftSentinel` - MicrosoftSentinel * `MicrosoftTeamsCallRecords` - MicrosoftTeamsCallRecords * `Midtrans` - Midtrans * `MightyNetworks` - MightyNetworks * `Mindbody` - Mindbody * `Mirakl` - Mirakl * `Moesif` - Moesif * `Moneybird` - Moneybird * `Moodle` - Moodle * `Motherduck` - Motherduck * `Mycase` - Mycase * `NagerDate` - NagerDate * `NeonCrm` - NeonCrm * `Nexhealth` - Nexhealth * `NoaaCdo` - NoaaCdo * `Nobl9` - Nobl9 * `Nolt` - Nolt * `Nops` - Nops * `NpmRegistry` - NpmRegistry * `Oecd` - Oecd * `Okendo` - Okendo * `Omni` - Omni * `Onelogin` - Onelogin * `OpenDental` - OpenDental * `OpenMeteo` - OpenMeteo * `Openalex` - Openalex * `Opencorporates` - Opencorporates * `Openfec` - Openfec * `OpnPayments` - OpnPayments * `Opslevel` - Opslevel * `OttoMarket` - OttoMarket * `Ownerrez` - Ownerrez * `Pagbank` - Pagbank * `Patreon` - Patreon * `Pax8` - Pax8 * `Paychex` - Paychex * `Paymob` - Paymob * `Paymongo` - Paymongo * `Phonepe` - Phonepe * `Pike13` - Pike13 * `Pingone` - Pingone * `PinterestOrganic` - PinterestOrganic * `PlanningCenter` - PlanningCenter * `PluralsightFlow` - PluralsightFlow * `Podbean` - Podbean * `Postscript` - Postscript * `PowerBiAdmin` - PowerBiAdmin * `Practicepanther` - Practicepanther * `Preset` - Preset * `Procore` - Procore * `Productiv` - Productiv * `ProofpointTap` - ProofpointTap * `Propertyware` - Propertyware * `Pubnub` - Pubnub * `Quay` - Quay * `Raken` - Raken * `RedpandaCloud` - RedpandaCloud * `RentManager` - RentManager * `Reverb` - Reverb * `RocketMatter` - RocketMatter * `Rubygems` - Rubygems * `Scalr` - Scalr * `SecEdgar` - SecEdgar * `SelectStar` - SelectStar * `SemanticScholar` - SemanticScholar * `Semrush` - Semrush * `ServiceFusion` - ServiceFusion * `Servicem8` - Servicem8 * `Servicetitan` - Servicetitan * `Servicetrade` - Servicetrade * `Sevdesk` - Sevdesk * `Similarweb` - Similarweb * `Simpro` - Simpro * `Sinch` - Sinch * `Singlestore` - Singlestore * `Site24x7` - Site24x7 * `Sleuth` - Sleuth * `Smartlook` - Smartlook * `Smartrecruiters` - Smartrecruiters * `Smokeball` - Smokeball * `SodaCloud` - SodaCloud * `Speedcurve` - Speedcurve * `SpotIo` - SpotIo * `Sprig` - Sprig * `Sprinklr` - Sprinklr * `SproutSocial` - SproutSocial * `StackOverflowForTeams` - StackOverflowForTeams * `Stockx` - Stockx * `TackleIo` - TackleIo * `Talkdesk` - Talkdesk * `TeamupFitness` - TeamupFitness * `Tebra` - Tebra * `Telnyx` - Telnyx * `Ternary` - Ternary * `Thoughtspot` - Thoughtspot * `Thousandeyes` - Thousandeyes * `Threads` - Threads * `TiktokShop` - TiktokShop * `TinyErp` - TinyErp * `Tinybird` - Tinybird * `Tipalti` - Tipalti * `Toast` - Toast * `Torii` - Torii * `Transistor` - Transistor * `TrunkIo` - TrunkIo * `Trustradius` - Trustradius * `Twitch` - Twitch * `TwoC2p` - TwoC2p * `UkCompaniesHouse` - UkCompaniesHouse * `UkOns` - UkOns * `UnComtrade` - UnComtrade * `UsBea` - UsBea * `UsBls` - UsBls * `UsEia` - UsEia * `UsTreasuryFiscalData` - UsTreasuryFiscalData * `Vanta` - Vanta * `Vendr` - Vendr * `Virtuous` - Virtuous * `Vonage` - Vonage * `WalmartMarketplace` - WalmartMarketplace * `Waydev` - Waydev * `Wayfair` - Wayfair * `WhatsappBusinessManagement` - WhatsappBusinessManagement * `WhoGho` - WhoGho * `Whop` - Whop * `Wiz` - Wiz * `Wompi` - Wompi * `Workiz` - Workiz * `WorldBank` - WorldBank * `Xendit` - Xendit * `Yoco` - Yoco * `ZalandoZdirect` - ZalandoZdirect * `Zluri` - Zluri * `Zylo` - Zylo * `Tally` - Tally * `Nuntly` - Nuntly * `Vturb` - Vturb * `Meltwater` - Meltwater * `UserCom` - UserCom * `Latitude` - Latitude * `Workato` - Workato * `SideShift` - SideShift * `DuckLake` - DuckLake * `Starburst` - Starburst * `Trino` - Trino * `Easybill` - Easybill * `Bexio` - Bexio * `Umami` - Umami * `Manychat` - Manychat * `Kickstarter` - Kickstarter * `Typesense` - Typesense * `FirstPromoter` - FirstPromoter * `Zero` - Zero * `Inth` - Inth * `BCMS` - BCMS * `Convonite` - Convonite * `Hookdeck` - Hookdeck * `Billit` - Billit * `Moxie` - Moxie * `TripleWhale` - TripleWhale * `Directus` - Directus * `Clay` - Clay * `TradableBits` - TradableBits * `Swan` - Swan * `Hyros` - Hyros * `Odoo` - Odoo * `Airbridge` - Airbridge * `Snovio` - Snovio * `GoogleMerchantCenter` - GoogleMerchantCenter * `Raisely` - Raisely * `RakutenAdvertising` - RakutenAdvertising * `Zitadel` - Zitadel * `DeelFlows` - DeelFlows * `WindsorAi` - WindsorAi * `Wix` - Wix * `Sevalla` - Sevalla * `Motion` - Motion * `ImpactPartner` - ImpactPartner * `Cloudinary` - Cloudinary * `Uploadcare` - Uploadcare * `WHMCS` - WHMCS * `MSG91` - MSG91 * `Depot` - Depot * `Schematic` - Schematic * `Dokploy` - Dokploy * `Hootsuite` - Hootsuite * `WisprFlow` - WisprFlow * `SamCart` - SamCart * `IronSourceAds` - IronSourceAds * `MicrosoftExcel` - MicrosoftExcel * `Profound` - Profound * `Airwallex` - Airwallex * `Polymarket` - Polymarket * `Kalshi` - Kalshi * `Capterra` - Capterra * `GooglePostmasterTools` - GooglePostmasterTools * `Growi` - Growi * `Clarify` - Clarify * `DatoCMS` - DatoCMS * `WPSOffice` - WPSOffice * `TeraBox` - TeraBox * `SimonData` - SimonData * `CommissionJunction` - CommissionJunction * `Liveblocks` - Liveblocks * `NationBuilder` - NationBuilder * `Tana` - Tana * `Zenchef` - Zenchef * `Lovable` - Lovable * `Anvil` - Anvil * `Coolify` - Coolify * `SocialPilot` - SocialPilot * `Strato` - Strato * `Medusa` - Medusa * `Membrain` - Membrain * `RecallAI` - RecallAI * `Tenjin` - Tenjin * `Folk` - Folk * `Cybersource` - Cybersource * `GoogleAdSense` - GoogleAdSense * `Sequenzy` - Sequenzy * `Skio` - Skio * `Smartlead` - Smartlead * `Substack` - Substack * `ElectricityMaps` - ElectricityMaps * `Amplemarket` - Amplemarket * `Quo` - Quo * `HeyReach` - HeyReach * `MoEngage` - MoEngage * `Monaco` - Monaco * `Oneleet` - Oneleet * `Expo` - Expo * `PostNord` - PostNord * `Commslayer` - Commslayer * `Sprinto` - Sprinto * `Gem` - Gem * `AudioGO` - AudioGO * `ExactOnline` - ExactOnline * `LettrLabs` - LettrLabs * `GrafanaIRM` - GrafanaIRM */
 export type ExternalDataSourceTypeEnum =
   | "Ashby"
@@ -1469,6 +1500,8 @@ export type ExternalDataSourceTypeEnum =
   | "ExactOnline"
   | "LettrLabs"
   | "GrafanaIRM";
+const ExternalDataSourceTypeEnum = S.String;
+
 export interface SimpleExternalDataSourceSerializers {
   id?: string;
   created_at?: string;
@@ -1476,9 +1509,20 @@ export interface SimpleExternalDataSourceSerializers {
   status?: string;
   source_type?: ExternalDataSourceTypeEnum;
 }
+const SimpleExternalDataSourceSerializers = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<SimpleExternalDataSourceSerializers>;
+
 export type TableOutputExternalSchemaMap = { [key: string]: unknown | undefined };
+const TableOutputExternalSchemaMap =
+  CreateWarehouseTableRequestOptionsMap as any as S.Schema<TableOutputExternalSchemaMap>;
+
 /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
 export type TableOutputOptionsMap = { [key: string]: unknown | undefined };
+const TableOutputOptionsMap =
+  CreateWarehouseTableRequestOptionsMap as any as S.Schema<TableOutputOptionsMap>;
+
 /** Mixin for serializers to add user access control fields */
 export interface TableOutput {
   id?: string;
@@ -1505,8 +1549,13 @@ export interface TableOutput {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
+const TableOutput = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<TableOutput>;
+
 /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
 export type CreateWarehouseTablesFileRequestOptionsMap = { [key: string]: unknown | undefined };
+const CreateWarehouseTablesFileRequestOptionsMap =
+  CreateWarehouseTableRequestOptionsMap as any as S.Schema<CreateWarehouseTablesFileRequestOptionsMap>;
+
 export interface CreateWarehouseTablesFileRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1522,13 +1571,28 @@ export interface CreateWarehouseTablesFileRequest {
   /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
   options?: CreateWarehouseTablesFileRequestOptionsMap;
 }
+const CreateWarehouseTablesFileRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateWarehouseTablesFileRequest>;
+
 export interface CreateWarehouseTablesFileResponse {}
+const CreateWarehouseTablesFileResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateWarehouseTablesFileResponse>;
+
 export interface GetWarehouseTableRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this data warehouse table. */
   id: string;
 }
+const GetWarehouseTableRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetWarehouseTableRequest>;
+
 export interface ListWarehouseTablesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1539,15 +1603,33 @@ export interface ListWarehouseTablesRequest {
   /** A search term. */
   search?: string;
 }
+const ListWarehouseTablesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListWarehouseTablesRequest>;
+
 export type PaginatedTableListOutputResultsList = Array<TableOutput>;
+const PaginatedTableListOutputResultsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<PaginatedTableListOutputResultsList>;
+
 export interface PaginatedTableListOutput {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedTableListOutputResultsList;
 }
+const PaginatedTableListOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<PaginatedTableListOutput>;
+
 /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
 export type UpdateWarehouseTableRequestOptionsMap = { [key: string]: unknown | undefined };
+const UpdateWarehouseTableRequestOptionsMap =
+  CreateWarehouseTableRequestOptionsMap as any as S.Schema<UpdateWarehouseTableRequestOptionsMap>;
+
 export interface UpdateWarehouseTableRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1565,8 +1647,16 @@ export interface UpdateWarehouseTableRequest {
   /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
   options?: UpdateWarehouseTableRequestOptionsMap;
 }
+const UpdateWarehouseTableRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<UpdateWarehouseTableRequest>;
+
 /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
 export type UpdateWarehouseTablesPartialRequestOptionsMap = { [key: string]: unknown | undefined };
+const UpdateWarehouseTablesPartialRequestOptionsMap =
+  CreateWarehouseTableRequestOptionsMap as any as S.Schema<UpdateWarehouseTablesPartialRequestOptionsMap>;
+
 export interface UpdateWarehouseTablesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1584,8 +1674,15 @@ export interface UpdateWarehouseTablesPartialRequest {
   /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
   options?: UpdateWarehouseTablesPartialRequestOptionsMap;
 }
+const UpdateWarehouseTablesPartialRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<UpdateWarehouseTablesPartialRequest>;
+
 /** * `csv` - csv * `json` - json * `parquet` - parquet */
 export type CreateTableFromUploadFileFormatEnum = "csv" | "json" | "parquet";
+const CreateTableFromUploadFileFormatEnum = S.String;
+
 export interface WarehouseTablesCreateFromUploadCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1598,24 +1695,50 @@ export interface WarehouseTablesCreateFromUploadCreateRequest {
   /** Name the resulting table is queried by in HogQL. */
   table_name: string;
 }
+const WarehouseTablesCreateFromUploadCreateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<WarehouseTablesCreateFromUploadCreateRequest>;
+
 export interface WarehouseTablesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this data warehouse table. */
   id: string;
 }
+const WarehouseTablesDestroyRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<WarehouseTablesDestroyRequest>;
+
 export interface WarehouseTablesDestroyResponse {}
+const WarehouseTablesDestroyResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<WarehouseTablesDestroyResponse>;
+
 export interface WarehouseTablesRefreshSchemaCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this data warehouse table. */
   id: string;
 }
+const WarehouseTablesRefreshSchemaCreateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<WarehouseTablesRefreshSchemaCreateRequest>;
+
 export interface WarehouseTablesRefreshSchemaCreateResponse {}
+const WarehouseTablesRefreshSchemaCreateResponse =
+  CreateWarehouseTablesFileResponse as any as S.Schema<WarehouseTablesRefreshSchemaCreateResponse>;
+
 /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
 export type WarehouseTablesUpdateSchemaCreateRequestOptionsMap = {
   [key: string]: unknown | undefined;
 };
+const WarehouseTablesUpdateSchemaCreateRequestOptionsMap =
+  CreateWarehouseTableRequestOptionsMap as any as S.Schema<WarehouseTablesUpdateSchemaCreateRequestOptionsMap>;
+
 export interface WarehouseTablesUpdateSchemaCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1633,9 +1756,19 @@ export interface WarehouseTablesUpdateSchemaCreateRequest {
   /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
   options?: WarehouseTablesUpdateSchemaCreateRequestOptionsMap;
 }
+const WarehouseTablesUpdateSchemaCreateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<WarehouseTablesUpdateSchemaCreateRequest>;
+
 export interface WarehouseTablesUpdateSchemaCreateResponse {}
+const WarehouseTablesUpdateSchemaCreateResponse =
+  CreateWarehouseTablesFileResponse as any as S.Schema<WarehouseTablesUpdateSchemaCreateResponse>;
+
 /** How the file will be read when the table is created. */
 export type WarehouseTablesUploadFileCreateRequestFileFormat = "csv" | "json" | "parquet";
+const WarehouseTablesUploadFileCreateRequestFileFormat = S.String;
+
 export interface WarehouseTablesUploadFileCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1644,6 +1777,11 @@ export interface WarehouseTablesUploadFileCreateRequest {
   /** How the file will be read when the table is created. */
   file_format: WarehouseTablesUploadFileCreateRequestFileFormat | (string & {});
 }
+const WarehouseTablesUploadFileCreateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<WarehouseTablesUploadFileCreateRequest>;
+
 export interface FileUploadResponse {
   /** Id of the stored upload. Pass it to create_from_upload to build the table. */
   upload_id: string;
@@ -1654,6 +1792,8 @@ export interface FileUploadResponse {
   /** Size of the stored file in bytes. */
   size_bytes: number;
 }
+const FileUploadResponse = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<FileUploadResponse>;
+
 export type CreateWarehouseTableError = BadRequest | Forbidden | NotFound | PosthogOpError;
 /** Create, Read, Update and Delete Warehouse Tables. */
 export const createWarehouseTable: API.OperationMethod<
@@ -1662,8 +1802,8 @@ export const createWarehouseTable: API.OperationMethod<
   CreateWarehouseTableError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateWarehouseTableRequest>,
-  output: __S(7) as any as S.Schema<TableOutput>,
+  input: CreateWarehouseTableRequest,
+  output: TableOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1677,8 +1817,8 @@ export const createWarehouseTablesFile: API.OperationMethod<
   CreateWarehouseTablesFileError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateWarehouseTablesFileRequest>,
-  output: __S(9) as any as S.Schema<CreateWarehouseTablesFileResponse>,
+  input: CreateWarehouseTablesFileRequest,
+  output: CreateWarehouseTablesFileResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1692,8 +1832,8 @@ export const getWarehouseTable: API.OperationMethod<
   GetWarehouseTableError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<GetWarehouseTableRequest>,
-  output: __S(7) as any as S.Schema<TableOutput>,
+  input: GetWarehouseTableRequest,
+  output: TableOutput,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1707,8 +1847,8 @@ export const listWarehouseTables: API.OperationMethod<
   ListWarehouseTablesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<ListWarehouseTablesRequest>,
-  output: __S(13) as any as S.Schema<PaginatedTableListOutput>,
+  input: ListWarehouseTablesRequest,
+  output: PaginatedTableListOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1722,8 +1862,8 @@ export const updateWarehouseTable: API.OperationMethod<
   UpdateWarehouseTableError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<UpdateWarehouseTableRequest>,
-  output: __S(7) as any as S.Schema<TableOutput>,
+  input: UpdateWarehouseTableRequest,
+  output: TableOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1737,8 +1877,8 @@ export const updateWarehouseTablesPartial: API.OperationMethod<
   UpdateWarehouseTablesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<UpdateWarehouseTablesPartialRequest>,
-  output: __S(7) as any as S.Schema<TableOutput>,
+  input: UpdateWarehouseTablesPartialRequest,
+  output: TableOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1752,8 +1892,8 @@ export const warehouseTablesCreateFromUploadCreate: API.OperationMethod<
   WarehouseTablesCreateFromUploadCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<WarehouseTablesCreateFromUploadCreateRequest>,
-  output: __S(7) as any as S.Schema<TableOutput>,
+  input: WarehouseTablesCreateFromUploadCreateRequest,
+  output: TableOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1767,8 +1907,8 @@ export const warehouseTablesDestroy: API.OperationMethod<
   WarehouseTablesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<WarehouseTablesDestroyRequest>,
-  output: __S(18) as any as S.Schema<WarehouseTablesDestroyResponse>,
+  input: WarehouseTablesDestroyRequest,
+  output: WarehouseTablesDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1786,8 +1926,8 @@ export const warehouseTablesRefreshSchemaCreate: API.OperationMethod<
   WarehouseTablesRefreshSchemaCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<WarehouseTablesRefreshSchemaCreateRequest>,
-  output: __S(9) as any as S.Schema<WarehouseTablesRefreshSchemaCreateResponse>,
+  input: WarehouseTablesRefreshSchemaCreateRequest,
+  output: WarehouseTablesRefreshSchemaCreateResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1805,8 +1945,8 @@ export const warehouseTablesUpdateSchemaCreate: API.OperationMethod<
   WarehouseTablesUpdateSchemaCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<WarehouseTablesUpdateSchemaCreateRequest>,
-  output: __S(9) as any as S.Schema<WarehouseTablesUpdateSchemaCreateResponse>,
+  input: WarehouseTablesUpdateSchemaCreateRequest,
+  output: WarehouseTablesUpdateSchemaCreateResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1820,8 +1960,8 @@ export const warehouseTablesUploadFileCreate: API.OperationMethod<
   WarehouseTablesUploadFileCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<WarehouseTablesUploadFileCreateRequest>,
-  output: __S(22) as any as S.Schema<FileUploadResponse>,
+  input: WarehouseTablesUploadFileCreateRequest,
+  output: FileUploadResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1845,10 +1985,10 @@ function __c0(j: number): any {
           project_id: S.String.pipe(T.Label()),
           deleted: S.optional(S.NullOr(S.Boolean)),
           name: S.optional(S.String),
-          format: S.optional(S.String),
+          format: S.optional(DataWarehouseTableFormatEnum),
           url_pattern: S.optional(S.String),
-          credential: S.optional(__S(0)),
-          options: S.optional(__S(1)),
+          credential: S.optional(CredentialInput),
+          options: S.optional(CreateWarehouseTableRequestOptionsMap),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1869,20 +2009,20 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(3))),
+          created_by: S.optional(S.NullOr(UserBasic)),
           created_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "CredentialOutput" });
     case 5:
-      return S.Array(__S(1));
+      return S.Array(TableOutputColumnsItemMap);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1890,7 +2030,7 @@ function __c0(j: number): any {
           created_at: S.optional(S.String),
           created_by: S.optional(S.NullOr(S.Number)),
           status: S.optional(S.String),
-          source_type: S.optional(S.String),
+          source_type: S.optional(ExternalDataSourceTypeEnum),
         }),
       ).annotate({
         identifier: "SimpleExternalDataSourceSerializers",
@@ -1902,16 +2042,16 @@ function __c0(j: number): any {
           deleted: S.optional(S.NullOr(S.Boolean)),
           name: S.optional(S.String),
           hogql_name: S.optional(S.String),
-          format: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(3))),
+          format: S.optional(DataWarehouseTableFormatEnum),
+          created_by: S.optional(S.NullOr(UserBasic)),
           created_at: S.optional(S.String),
-          created_via: S.optional(S.NullOr(S.String)),
+          created_via: S.optional(S.NullOr(DataWarehouseTableCreatedViaEnum)),
           url_pattern: S.optional(S.String),
-          credential: S.optional(__S(4)),
-          columns: S.optional(__S(5)),
-          external_data_source: S.optional(__S(6)),
-          external_schema: S.optional(S.NullOr(__S(1))),
-          options: S.optional(__S(1)),
+          credential: S.optional(CredentialOutput),
+          columns: S.optional(TableOutputColumnsList),
+          external_data_source: S.optional(SimpleExternalDataSourceSerializers),
+          external_schema: S.optional(S.NullOr(TableOutputExternalSchemaMap)),
+          options: S.optional(TableOutputOptionsMap),
           user_access_level: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TableOutput" });
@@ -1925,10 +2065,10 @@ function __c1(j: number): any {
           project_id: S.String.pipe(T.Label()),
           deleted: S.optional(S.NullOr(S.Boolean)),
           name: S.optional(S.String),
-          format: S.optional(S.String),
+          format: S.optional(DataWarehouseTableFormatEnum),
           url_pattern: S.optional(S.String),
-          credential: S.optional(__S(0)),
-          options: S.optional(__S(1)),
+          credential: S.optional(CredentialInput),
+          options: S.optional(CreateWarehouseTablesFileRequestOptionsMap),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1971,14 +2111,14 @@ function __c1(j: number): any {
         identifier: "ListWarehouseTablesRequest",
       });
     case 4:
-      return S.Array(__S(7));
+      return S.Array(TableOutput);
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(12)),
+          results: S.optional(PaginatedTableListOutputResultsList),
         }),
       ).annotate({ identifier: "PaginatedTableListOutput" });
     case 6:
@@ -1988,10 +2128,10 @@ function __c1(j: number): any {
           id: S.String.pipe(T.Label()),
           deleted: S.optional(S.NullOr(S.Boolean)),
           name: S.optional(S.String),
-          format: S.optional(S.String),
+          format: S.optional(DataWarehouseTableFormatEnum),
           url_pattern: S.optional(S.String),
-          credential: S.optional(__S(0)),
-          options: S.optional(__S(1)),
+          credential: S.optional(CredentialInput),
+          options: S.optional(UpdateWarehouseTableRequestOptionsMap),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2009,10 +2149,10 @@ function __c1(j: number): any {
           id: S.String.pipe(T.Label()),
           deleted: S.optional(S.NullOr(S.Boolean)),
           name: S.optional(S.String),
-          format: S.optional(S.String),
+          format: S.optional(DataWarehouseTableFormatEnum),
           url_pattern: S.optional(S.String),
-          credential: S.optional(__S(0)),
-          options: S.optional(__S(1)),
+          credential: S.optional(CredentialInput),
+          options: S.optional(UpdateWarehouseTablesPartialRequestOptionsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2033,7 +2173,7 @@ function __c2(j: number): any {
           project_id: S.String.pipe(T.Label()),
           upload_id: S.String,
           filename: S.String,
-          file_format: S.String,
+          file_format: CreateTableFromUploadFileFormatEnum,
           table_name: S.String,
         }).pipe(
           T.Http({
@@ -2086,10 +2226,10 @@ function __c2(j: number): any {
           id: S.String.pipe(T.Label()),
           deleted: S.optional(S.NullOr(S.Boolean)),
           name: S.optional(S.String),
-          format: S.optional(S.String),
+          format: S.optional(DataWarehouseTableFormatEnum),
           url_pattern: S.optional(S.String),
-          credential: S.optional(__S(0)),
-          options: S.optional(__S(1)),
+          credential: S.optional(CredentialInput),
+          options: S.optional(WarehouseTablesUpdateSchemaCreateRequestOptionsMap),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2105,7 +2245,7 @@ function __c2(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           file: S.String,
-          file_format: S.String,
+          file_format: WarehouseTablesUploadFileCreateRequestFileFormat,
         }).pipe(
           T.Http({
             method: "POST",
@@ -2126,20 +2266,5 @@ function __c2(j: number): any {
           size_bytes: S.Number,
         }),
       ).annotate({ identifier: "FileUploadResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

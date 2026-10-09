@@ -7,8 +7,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -20,8 +18,15 @@ export interface CheckNameAvailabilityRequest {
   /** The resource type. */
   type?: string;
 }
+const CheckNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CheckNameAvailabilityRequest>;
+
 /** The reason why the given name is not available. */
 export type CheckNameAvailabilityResponseReason = "Invalid" | "AlreadyExists";
+const CheckNameAvailabilityResponseReason = S.String;
+
 export interface CheckNameAvailabilityResponse {
   /** Indicates if the resource name is available. */
   nameAvailable?: boolean;
@@ -30,14 +35,30 @@ export interface CheckNameAvailabilityResponse {
   /** Detailed reason why the given name is available. */
   message?: string;
 }
+const CheckNameAvailabilityResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CheckNameAvailabilityResponse>;
+
 /** Resource tags. */
 export type CreateAccountRequestTagsMap = { [key: string]: string | undefined };
+const CreateAccountRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateAccountRequestTagsMap>;
+
 /** Whether or not public network access is allowed for the account. */
 export type CreateAccountRequestPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
+const CreateAccountRequestPropertiesPublicNetworkAccess = S.String;
+
 /** The Private Endpoint resource. */
 export interface PrivateEndpointInput {}
+const PrivateEndpointInput = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<PrivateEndpointInput>;
+
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
+const PrivateEndpointServiceConnectionStatus = S.String;
+
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
@@ -47,8 +68,18 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<PrivateLinkServiceConnectionState>;
+
 /** Array of group IDs. */
 export type PrivateEndpointConnectionPropertiesInputGroupIdsList = Array<string>;
+const PrivateEndpointConnectionPropertiesInputGroupIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<PrivateEndpointConnectionPropertiesInputGroupIdsList>;
+
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionPropertiesInput {
   /** The resource of private end point. */
@@ -58,16 +89,33 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** Array of group IDs. */
   groupIds?: PrivateEndpointConnectionPropertiesInputGroupIdsList;
 }
+const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
 /** The Private Endpoint Connection resource. */
 export interface CreateAccountRequestPropertiesPrivateEndpointConnectionsItem {
   /** Resource properties. */
   properties: PrivateEndpointConnectionPropertiesInput;
 }
+const CreateAccountRequestPropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateAccountRequestPropertiesPrivateEndpointConnectionsItem>;
+
 /** List of private endpoint connections associated with the account. */
 export type CreateAccountRequestPropertiesPrivateEndpointConnectionsList =
   Array<CreateAccountRequestPropertiesPrivateEndpointConnectionsItem>;
+const CreateAccountRequestPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateAccountRequestPropertiesPrivateEndpointConnectionsList>;
+
 /** Device Update Sku */
 export type CreateAccountRequestPropertiesSku = "Free" | "Standard";
+const CreateAccountRequestPropertiesSku = S.String;
+
 /** The CMK encryption settings on the Device Update account. */
 export interface Encryption {
   /** The URI of the key vault */
@@ -75,6 +123,8 @@ export interface Encryption {
   /** The full resourceId of the user assigned identity to be used for key vault access. Identity has to be also assigned to the Account */
   userAssignedIdentity?: string;
 }
+const Encryption = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Encryption>;
+
 /** Device Update account properties. */
 export interface CreateAccountRequestProperties {
   /** Whether or not public network access is allowed for the account. */
@@ -86,21 +136,38 @@ export interface CreateAccountRequestProperties {
   /** CMK encryption at rest properties */
   encryption?: Encryption;
 }
+const CreateAccountRequestProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateAccountRequestProperties>;
+
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
+const ManagedServiceIdentityType = S.String;
+
 /** User assigned identity properties */
 export type UserAssignedIdentityInput = PrivateEndpointInput;
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = { [key: string]: PrivateEndpointInput | undefined };
+const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateAccountRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput | null;
 }
+const CreateAccountRequestIdentity = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateAccountRequestIdentity>;
+
 export interface CreateAccountRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -117,10 +184,16 @@ export interface CreateAccountRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateAccountRequestIdentity;
 }
+const CreateAccountRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CreateAccountRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -136,8 +209,13 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<SystemData>;
+
 /** Resource tags. */
 export type CreateAccountResponseTagsMap = { [key: string]: string | undefined };
+const CreateAccountResponseTagsMap =
+  CreateAccountRequestTagsMap as any as S.Schema<CreateAccountResponseTagsMap>;
+
 /** Provisioning state. */
 export type CreateAccountResponsePropertiesProvisioningState =
   | "Succeeded"
@@ -146,21 +224,32 @@ export type CreateAccountResponsePropertiesProvisioningState =
   | "Canceled"
   | "Accepted"
   | "Creating";
+const CreateAccountResponsePropertiesProvisioningState = S.String;
+
 /** Whether or not public network access is allowed for the account. */
 export type CreateAccountResponsePropertiesPublicNetworkAccess = "Enabled" | "Disabled";
+const CreateAccountResponsePropertiesPublicNetworkAccess = S.String;
+
 /** The Private Endpoint resource. */
 export interface PrivateEndpoint {
   /** The ARM identifier for Private Endpoint */
   id?: string;
 }
+const PrivateEndpoint = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<PrivateEndpoint>;
+
 /** Array of group IDs. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
+const PrivateEndpointConnectionPropertiesGroupIdsList =
+  PrivateEndpointConnectionPropertiesInputGroupIdsList as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
+
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
   | "Failed";
+const PrivateEndpointConnectionProvisioningState = S.String;
+
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionProperties {
   /** The resource of private end point. */
@@ -172,6 +261,11 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<PrivateEndpointConnectionProperties>;
+
 /** The Private Endpoint Connection resource. */
 export interface CreateAccountResponsePropertiesPrivateEndpointConnectionsItem {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -185,20 +279,41 @@ export interface CreateAccountResponsePropertiesPrivateEndpointConnectionsItem {
   /** Resource properties. */
   properties: PrivateEndpointConnectionProperties;
 }
+const CreateAccountResponsePropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateAccountResponsePropertiesPrivateEndpointConnectionsItem>;
+
 /** List of private endpoint connections associated with the account. */
 export type CreateAccountResponsePropertiesPrivateEndpointConnectionsList =
   Array<CreateAccountResponsePropertiesPrivateEndpointConnectionsItem>;
+const CreateAccountResponsePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateAccountResponsePropertiesPrivateEndpointConnectionsList>;
+
 /** Device Update Sku */
 export type CreateAccountResponsePropertiesSku = "Free" | "Standard";
+const CreateAccountResponsePropertiesSku = S.String;
+
 /** Whether the location is primary or failover */
 export type LocationRole = "Primary" | "Failover";
+const LocationRole = S.String;
+
 export interface Location {
   name?: string;
   /** Whether the location is primary or failover */
   role?: LocationRole;
 }
+const Location = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Location>;
+
 /** Device Update account primary and failover location details */
 export type CreateAccountResponsePropertiesLocationsList = Array<Location>;
+const CreateAccountResponsePropertiesLocationsList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateAccountResponsePropertiesLocationsList>;
+
 /** Device Update account properties. */
 export interface CreateAccountResponseProperties {
   /** Provisioning state. */
@@ -216,6 +331,11 @@ export interface CreateAccountResponseProperties {
   /** Device Update account primary and failover location details */
   locations?: CreateAccountResponsePropertiesLocationsList;
 }
+const CreateAccountResponseProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateAccountResponseProperties>;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -223,8 +343,15 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
+const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<UserAssignedIdentity>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | undefined };
+const UserAssignedIdentities = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<UserAssignedIdentities>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateAccountResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -234,6 +361,11 @@ export interface CreateAccountResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities | null;
 }
+const CreateAccountResponseIdentity = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateAccountResponseIdentity>;
+
 export interface CreateAccountResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -252,17 +384,34 @@ export interface CreateAccountResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateAccountResponseIdentity;
 }
+const CreateAccountResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateAccountResponse>;
+
 /** Resource tags. */
 export type CreateInstanceRequestTagsMap = { [key: string]: string | undefined };
+const CreateInstanceRequestTagsMap =
+  CreateAccountRequestTagsMap as any as S.Schema<CreateInstanceRequestTagsMap>;
+
 /** Device Update account integration with IoT Hub settings. */
 export interface IotHubSettings {
   /** IoTHub resource ID */
   resourceId: string;
 }
+const IotHubSettings = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<IotHubSettings>;
+
 /** List of IoT Hubs associated with the account. */
 export type CreateInstanceRequestPropertiesIotHubsList = Array<IotHubSettings>;
+const CreateInstanceRequestPropertiesIotHubsList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateInstanceRequestPropertiesIotHubsList>;
+
 /** Authentication Type */
 export type DiagnosticStoragePropertiesAuthenticationType = "KeyBased";
+const DiagnosticStoragePropertiesAuthenticationType = S.String;
+
 /** Customer-initiated diagnostic log collection storage properties */
 export interface DiagnosticStorageProperties {
   /** Authentication Type */
@@ -272,6 +421,11 @@ export interface DiagnosticStorageProperties {
   /** ResourceId of the diagnostic storage account */
   resourceId: string;
 }
+const DiagnosticStorageProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DiagnosticStorageProperties>;
+
 /** Device Update instance properties. */
 export interface CreateInstanceRequestProperties {
   /** List of IoT Hubs associated with the account. */
@@ -280,6 +434,11 @@ export interface CreateInstanceRequestProperties {
   enableDiagnostics?: boolean;
   diagnosticStorageProperties?: DiagnosticStorageProperties;
 }
+const CreateInstanceRequestProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateInstanceRequestProperties>;
+
 export interface CreateInstanceRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -296,8 +455,16 @@ export interface CreateInstanceRequest {
   /** Device Update instance properties. */
   properties: CreateInstanceRequestProperties;
 }
+const CreateInstanceRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateInstanceRequest>;
+
 /** Resource tags. */
 export type CreateInstanceResponseTagsMap = { [key: string]: string | undefined };
+const CreateInstanceResponseTagsMap =
+  CreateAccountRequestTagsMap as any as S.Schema<CreateInstanceResponseTagsMap>;
+
 /** Provisioning state. */
 export type CreateInstanceResponsePropertiesProvisioningState =
   | "Succeeded"
@@ -306,8 +473,13 @@ export type CreateInstanceResponsePropertiesProvisioningState =
   | "Canceled"
   | "Accepted"
   | "Creating";
+const CreateInstanceResponsePropertiesProvisioningState = S.String;
+
 /** List of IoT Hubs associated with the account. */
 export type CreateInstanceResponsePropertiesIotHubsList = Array<IotHubSettings>;
+const CreateInstanceResponsePropertiesIotHubsList =
+  CreateInstanceRequestPropertiesIotHubsList as any as S.Schema<CreateInstanceResponsePropertiesIotHubsList>;
+
 /** Device Update instance properties. */
 export interface CreateInstanceResponseProperties {
   /** Provisioning state. */
@@ -320,6 +492,11 @@ export interface CreateInstanceResponseProperties {
   enableDiagnostics?: boolean;
   diagnosticStorageProperties?: DiagnosticStorageProperties;
 }
+const CreateInstanceResponseProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateInstanceResponseProperties>;
+
 export interface CreateInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -336,6 +513,11 @@ export interface CreateInstanceResponse {
   /** Device Update instance properties. */
   properties: CreateInstanceResponseProperties;
 }
+const CreateInstanceResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateInstanceResponse>;
+
 export interface DeleteAccountRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -344,7 +526,11 @@ export interface DeleteAccountRequest {
   /** Account name. */
   accountName: string;
 }
+const DeleteAccountRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<DeleteAccountRequest>;
+
 export interface DeleteAccountResponse {}
+const DeleteAccountResponse = PrivateEndpointInput as any as S.Schema<DeleteAccountResponse>;
+
 export interface DeleteInstanceRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -355,7 +541,14 @@ export interface DeleteInstanceRequest {
   /** Instance name. */
   instanceName: string;
 }
+const DeleteInstanceRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<DeleteInstanceRequest>;
+
 export interface DeleteInstanceResponse {}
+const DeleteInstanceResponse = PrivateEndpointInput as any as S.Schema<DeleteInstanceResponse>;
+
 export interface DeletePrivateEndpointConnectionRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -366,7 +559,17 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource */
   privateEndpointConnectionName: string;
 }
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
+
 export interface DeletePrivateEndpointConnectionResponse {}
+const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+
 export interface DeletePrivateEndpointConnectionProxyRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -377,7 +580,15 @@ export interface DeletePrivateEndpointConnectionProxyRequest {
   /** The ID of the private endpoint connection proxy object. */
   privateEndpointConnectionProxyId: string;
 }
+const DeletePrivateEndpointConnectionProxyRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DeletePrivateEndpointConnectionProxyRequest>;
+
 export interface DeletePrivateEndpointConnectionProxyResponse {}
+const DeletePrivateEndpointConnectionProxyResponse =
+  DeletePrivateEndpointConnectionResponse as any as S.Schema<DeletePrivateEndpointConnectionProxyResponse>;
+
 export interface GetAccountRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -386,8 +597,13 @@ export interface GetAccountRequest {
   /** Account name. */
   accountName: string;
 }
+const GetAccountRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<GetAccountRequest>;
+
 /** Resource tags. */
 export type GetAccountResponseTagsMap = { [key: string]: string | undefined };
+const GetAccountResponseTagsMap =
+  CreateAccountRequestTagsMap as any as S.Schema<GetAccountResponseTagsMap>;
+
 /** Provisioning state. */
 export type GetAccountResponsePropertiesProvisioningState =
   | "Succeeded"
@@ -396,18 +612,30 @@ export type GetAccountResponsePropertiesProvisioningState =
   | "Canceled"
   | "Accepted"
   | "Creating";
+const GetAccountResponsePropertiesProvisioningState = S.String;
+
 /** Whether or not public network access is allowed for the account. */
 export type GetAccountResponsePropertiesPublicNetworkAccess = "Enabled" | "Disabled";
+const GetAccountResponsePropertiesPublicNetworkAccess = S.String;
+
 /** The Private Endpoint Connection resource. */
 export type GetAccountResponsePropertiesPrivateEndpointConnectionsItem =
   CreateAccountResponsePropertiesPrivateEndpointConnectionsItem;
 /** List of private endpoint connections associated with the account. */
 export type GetAccountResponsePropertiesPrivateEndpointConnectionsList =
   Array<CreateAccountResponsePropertiesPrivateEndpointConnectionsItem>;
+const GetAccountResponsePropertiesPrivateEndpointConnectionsList =
+  CreateAccountResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<GetAccountResponsePropertiesPrivateEndpointConnectionsList>;
+
 /** Device Update Sku */
 export type GetAccountResponsePropertiesSku = "Free" | "Standard";
+const GetAccountResponsePropertiesSku = S.String;
+
 /** Device Update account primary and failover location details */
 export type GetAccountResponsePropertiesLocationsList = Array<Location>;
+const GetAccountResponsePropertiesLocationsList =
+  CreateAccountResponsePropertiesLocationsList as any as S.Schema<GetAccountResponsePropertiesLocationsList>;
+
 /** Device Update account properties. */
 export interface GetAccountResponseProperties {
   /** Provisioning state. */
@@ -425,6 +653,11 @@ export interface GetAccountResponseProperties {
   /** Device Update account primary and failover location details */
   locations?: GetAccountResponsePropertiesLocationsList;
 }
+const GetAccountResponseProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<GetAccountResponseProperties>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetAccountResponseIdentity = CreateAccountResponseIdentity;
 export interface GetAccountResponse {
@@ -445,6 +678,8 @@ export interface GetAccountResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateAccountResponseIdentity;
 }
+const GetAccountResponse = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<GetAccountResponse>;
+
 export interface GetInstanceRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -455,8 +690,13 @@ export interface GetInstanceRequest {
   /** Instance name. */
   instanceName: string;
 }
+const GetInstanceRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<GetInstanceRequest>;
+
 /** Resource tags. */
 export type GetInstanceResponseTagsMap = { [key: string]: string | undefined };
+const GetInstanceResponseTagsMap =
+  CreateAccountRequestTagsMap as any as S.Schema<GetInstanceResponseTagsMap>;
+
 /** Provisioning state. */
 export type GetInstanceResponsePropertiesProvisioningState =
   | "Succeeded"
@@ -465,8 +705,13 @@ export type GetInstanceResponsePropertiesProvisioningState =
   | "Canceled"
   | "Accepted"
   | "Creating";
+const GetInstanceResponsePropertiesProvisioningState = S.String;
+
 /** List of IoT Hubs associated with the account. */
 export type GetInstanceResponsePropertiesIotHubsList = Array<IotHubSettings>;
+const GetInstanceResponsePropertiesIotHubsList =
+  CreateInstanceRequestPropertiesIotHubsList as any as S.Schema<GetInstanceResponsePropertiesIotHubsList>;
+
 /** Device Update instance properties. */
 export interface GetInstanceResponseProperties {
   /** Provisioning state. */
@@ -479,6 +724,11 @@ export interface GetInstanceResponseProperties {
   enableDiagnostics?: boolean;
   diagnosticStorageProperties?: DiagnosticStorageProperties;
 }
+const GetInstanceResponseProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GetInstanceResponseProperties>;
+
 export interface GetInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -495,6 +745,8 @@ export interface GetInstanceResponse {
   /** Device Update instance properties. */
   properties: GetInstanceResponseProperties;
 }
+const GetInstanceResponse = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<GetInstanceResponse>;
+
 export interface GetPrivateEndpointConnectionRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -505,6 +757,11 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource */
   privateEndpointConnectionName: string;
 }
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
+
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -517,6 +774,11 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties: PrivateEndpointConnectionProperties;
 }
+const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+
 export interface GetPrivateEndpointConnectionProxyRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -527,8 +789,16 @@ export interface GetPrivateEndpointConnectionProxyRequest {
   /** The ID of the private endpoint connection proxy object. */
   privateEndpointConnectionProxyId: string;
 }
+const GetPrivateEndpointConnectionProxyRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<GetPrivateEndpointConnectionProxyRequest>;
+
 /** List of group IDs. */
 export type PrivateLinkServiceConnectionGroupIdsList = Array<string>;
+const PrivateLinkServiceConnectionGroupIdsList =
+  PrivateEndpointConnectionPropertiesInputGroupIdsList as any as S.Schema<PrivateLinkServiceConnectionGroupIdsList>;
+
 /** Private link service connection details. */
 export interface PrivateLinkServiceConnection {
   /** Private link service connection name. */
@@ -538,12 +808,25 @@ export interface PrivateLinkServiceConnection {
   /** Request message. */
   requestMessage?: string;
 }
+const PrivateLinkServiceConnection = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<PrivateLinkServiceConnection>;
+
 /** List of private link service connections that need manual approval. */
 export type RemotePrivateEndpointManualPrivateLinkServiceConnectionsList =
   Array<PrivateLinkServiceConnection>;
+const RemotePrivateEndpointManualPrivateLinkServiceConnectionsList = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<RemotePrivateEndpointManualPrivateLinkServiceConnectionsList>;
+
 /** List of automatically approved private link service connections. */
 export type RemotePrivateEndpointPrivateLinkServiceConnectionsList =
   Array<PrivateLinkServiceConnection>;
+const RemotePrivateEndpointPrivateLinkServiceConnectionsList =
+  RemotePrivateEndpointManualPrivateLinkServiceConnectionsList as any as S.Schema<RemotePrivateEndpointPrivateLinkServiceConnectionsList>;
+
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceProxyRemotePrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
@@ -553,13 +836,26 @@ export interface PrivateLinkServiceProxyRemotePrivateLinkServiceConnectionState 
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
+const PrivateLinkServiceProxyRemotePrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<PrivateLinkServiceProxyRemotePrivateLinkServiceConnectionState>;
+
 /** Remote private endpoint connection details. */
 export interface RemotePrivateEndpointConnection {
   /** Remote private endpoint connection ID. */
   id?: string;
 }
+const RemotePrivateEndpointConnection = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<RemotePrivateEndpointConnection>;
+
 /** List of customer visible FQDNs. */
 export type GroupConnectivityInformationCustomerVisibleFqdnsList = Array<string>;
+const GroupConnectivityInformationCustomerVisibleFqdnsList =
+  PrivateEndpointConnectionPropertiesInputGroupIdsList as any as S.Schema<GroupConnectivityInformationCustomerVisibleFqdnsList>;
+
 /** Group connectivity details. */
 export interface GroupConnectivityInformation {
   /** Group ID. */
@@ -575,9 +871,19 @@ export interface GroupConnectivityInformation {
   /** PrivateLinkService ARM region. */
   privateLinkServiceArmRegion?: string;
 }
+const GroupConnectivityInformation = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GroupConnectivityInformation>;
+
 /** Group connectivity information. */
 export type PrivateLinkServiceProxyGroupConnectivityInformationList =
   Array<GroupConnectivityInformation>;
+const PrivateLinkServiceProxyGroupConnectivityInformationList = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<PrivateLinkServiceProxyGroupConnectivityInformationList>;
+
 /** Private link service proxy details. */
 export interface PrivateLinkServiceProxy {
   /** NRP resource ID. */
@@ -589,8 +895,18 @@ export interface PrivateLinkServiceProxy {
   /** Group connectivity information. */
   groupConnectivityInformation?: PrivateLinkServiceProxyGroupConnectivityInformationList;
 }
+const PrivateLinkServiceProxy = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<PrivateLinkServiceProxy>;
+
 /** List of private link service proxies. */
 export type RemotePrivateEndpointPrivateLinkServiceProxiesList = Array<PrivateLinkServiceProxy>;
+const RemotePrivateEndpointPrivateLinkServiceProxiesList = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<RemotePrivateEndpointPrivateLinkServiceProxiesList>;
+
 /** Private endpoint connection proxy object properties. */
 export interface ConnectionDetails {
   /** Connection details ID. */
@@ -604,8 +920,15 @@ export interface ConnectionDetails {
   /** Member name. */
   memberName?: string;
 }
+const ConnectionDetails = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ConnectionDetails>;
+
 /** List of connection details. */
 export type RemotePrivateEndpointConnectionDetailsList = Array<ConnectionDetails>;
+const RemotePrivateEndpointConnectionDetailsList = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<RemotePrivateEndpointConnectionDetailsList>;
+
 /** Remote private endpoint details. */
 export interface RemotePrivateEndpoint {
   /** Remote endpoint resource ID. */
@@ -627,17 +950,29 @@ export interface RemotePrivateEndpoint {
   /** List of connection details. */
   connectionDetails?: RemotePrivateEndpointConnectionDetailsList;
 }
+const RemotePrivateEndpoint = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<RemotePrivateEndpoint>;
+
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProxyProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
   | "Failed";
+const PrivateEndpointConnectionProxyProvisioningState = S.String;
+
 /** Private endpoint connection proxy object property bag. */
 export interface GetPrivateEndpointConnectionProxyResponseProperties {
   /** The provisioning state of the private endpoint connection proxy resource. */
   provisioningState?: PrivateEndpointConnectionProxyProvisioningState;
 }
+const GetPrivateEndpointConnectionProxyResponseProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<GetPrivateEndpointConnectionProxyResponseProperties>;
+
 export interface GetPrivateEndpointConnectionProxyResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -656,6 +991,11 @@ export interface GetPrivateEndpointConnectionProxyResponse {
   /** Private endpoint connection proxy object property bag. */
   properties?: GetPrivateEndpointConnectionProxyResponseProperties;
 }
+const GetPrivateEndpointConnectionProxyResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetPrivateEndpointConnectionProxyResponse>;
+
 export interface GetPrivateLinkResourceRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -666,12 +1006,25 @@ export interface GetPrivateLinkResourceRequest {
   /** The group ID of the private link resource. */
   groupId: string;
 }
+const GetPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GetPrivateLinkResourceRequest>;
+
 /** The private link resource required member names. */
 export type GroupInformationPropertiesRequiredMembersList = Array<string>;
+const GroupInformationPropertiesRequiredMembersList =
+  PrivateEndpointConnectionPropertiesInputGroupIdsList as any as S.Schema<GroupInformationPropertiesRequiredMembersList>;
+
 /** The private link resource Private link DNS zone name. */
 export type GroupInformationPropertiesRequiredZoneNamesList = Array<string>;
+const GroupInformationPropertiesRequiredZoneNamesList =
+  PrivateEndpointConnectionPropertiesInputGroupIdsList as any as S.Schema<GroupInformationPropertiesRequiredZoneNamesList>;
+
 /** The provisioning state of private link group ID. */
 export type GroupInformationPropertiesProvisioningState = "Succeeded" | "Failed" | "Canceled";
+const GroupInformationPropertiesProvisioningState = S.String;
+
 /** The properties for a group information object */
 export interface GroupInformationProperties {
   /** The private link resource group id. */
@@ -683,6 +1036,11 @@ export interface GroupInformationProperties {
   /** The provisioning state of private link group ID. */
   provisioningState?: GroupInformationPropertiesProvisioningState;
 }
+const GroupInformationProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<GroupInformationProperties>;
+
 export interface GetPrivateLinkResourceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -695,14 +1053,26 @@ export interface GetPrivateLinkResourceResponse {
   /** The properties for a group information object */
   properties: GroupInformationProperties;
 }
+const GetPrivateLinkResourceResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GetPrivateLinkResourceResponse>;
+
 export interface ListAccountByResourceGroupRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
   /** The resource group name. */
   resourceGroupName: string;
 }
+const ListAccountByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListAccountByResourceGroupRequest>;
+
 /** Resource tags. */
 export type AccountTagsMap = { [key: string]: string | undefined };
+const AccountTagsMap = CreateAccountRequestTagsMap as any as S.Schema<AccountTagsMap>;
+
 /** Provisioning state. */
 export type AccountPropertiesProvisioningState =
   | "Succeeded"
@@ -711,18 +1081,30 @@ export type AccountPropertiesProvisioningState =
   | "Canceled"
   | "Accepted"
   | "Creating";
+const AccountPropertiesProvisioningState = S.String;
+
 /** Whether or not public network access is allowed for the account. */
 export type AccountPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
+const AccountPropertiesPublicNetworkAccess = S.String;
+
 /** The Private Endpoint Connection resource. */
 export type AccountPropertiesPrivateEndpointConnectionsItem =
   CreateAccountResponsePropertiesPrivateEndpointConnectionsItem;
 /** List of private endpoint connections associated with the account. */
 export type AccountPropertiesPrivateEndpointConnectionsList =
   Array<CreateAccountResponsePropertiesPrivateEndpointConnectionsItem>;
+const AccountPropertiesPrivateEndpointConnectionsList =
+  CreateAccountResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<AccountPropertiesPrivateEndpointConnectionsList>;
+
 /** Device Update Sku */
 export type AccountPropertiesSku = "Free" | "Standard";
+const AccountPropertiesSku = S.String;
+
 /** Device Update account primary and failover location details */
 export type AccountPropertiesLocationsList = Array<Location>;
+const AccountPropertiesLocationsList =
+  CreateAccountResponsePropertiesLocationsList as any as S.Schema<AccountPropertiesLocationsList>;
+
 /** Device Update account properties. */
 export interface AccountProperties {
   /** Provisioning state. */
@@ -740,6 +1122,8 @@ export interface AccountProperties {
   /** Device Update account primary and failover location details */
   locations?: AccountPropertiesLocationsList;
 }
+const AccountProperties = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<AccountProperties>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type AccountIdentity = CreateAccountResponseIdentity;
 /** Device Update account details. */
@@ -761,8 +1145,12 @@ export interface Account {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateAccountResponseIdentity;
 }
+const Account = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<Account>;
+
 /** List of Accounts. */
 export type AccountListValueList = Array<Account>;
+const AccountListValueList = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<AccountListValueList>;
+
 /** List of Accounts. */
 export interface AccountList {
   /** The link used to get the next page of Accounts list. */
@@ -770,10 +1158,17 @@ export interface AccountList {
   /** List of Accounts. */
   value?: AccountListValueList;
 }
+const AccountList = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<AccountList>;
+
 export interface ListAccountBySubscriptionRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
 }
+const ListAccountBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ListAccountBySubscriptionRequest>;
+
 export interface ListInstanceByAccountRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -782,8 +1177,15 @@ export interface ListInstanceByAccountRequest {
   /** Account name. */
   accountName: string;
 }
+const ListInstanceByAccountRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ListInstanceByAccountRequest>;
+
 /** Resource tags. */
 export type InstanceTagsMap = { [key: string]: string | undefined };
+const InstanceTagsMap = CreateAccountRequestTagsMap as any as S.Schema<InstanceTagsMap>;
+
 /** Provisioning state. */
 export type InstancePropertiesProvisioningState =
   | "Succeeded"
@@ -792,8 +1194,13 @@ export type InstancePropertiesProvisioningState =
   | "Canceled"
   | "Accepted"
   | "Creating";
+const InstancePropertiesProvisioningState = S.String;
+
 /** List of IoT Hubs associated with the account. */
 export type InstancePropertiesIotHubsList = Array<IotHubSettings>;
+const InstancePropertiesIotHubsList =
+  CreateInstanceRequestPropertiesIotHubsList as any as S.Schema<InstancePropertiesIotHubsList>;
+
 /** Device Update instance properties. */
 export interface InstanceProperties {
   /** Provisioning state. */
@@ -806,6 +1213,8 @@ export interface InstanceProperties {
   enableDiagnostics?: boolean;
   diagnosticStorageProperties?: DiagnosticStorageProperties;
 }
+const InstanceProperties = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<InstanceProperties>;
+
 /** Device Update instance details. */
 export interface Instance {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -823,8 +1232,15 @@ export interface Instance {
   /** Device Update instance properties. */
   properties: InstanceProperties;
 }
+const Instance = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<Instance>;
+
 /** List of Instances. */
 export type InstanceListValueList = Array<Instance>;
+const InstanceListValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<InstanceListValueList>;
+
 /** List of Instances. */
 export interface InstanceList {
   /** The link used to get the next page of Instances list. */
@@ -832,7 +1248,14 @@ export interface InstanceList {
   /** List of Instances. */
   value?: InstanceListValueList;
 }
+const InstanceList = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<InstanceList>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -844,10 +1267,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -861,14 +1290,26 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListPrivateEndpointConnectionByAccountRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -877,16 +1318,29 @@ export interface ListPrivateEndpointConnectionByAccountRequest {
   /** Account name. */
   accountName: string;
 }
+const ListPrivateEndpointConnectionByAccountRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ListPrivateEndpointConnectionByAccountRequest>;
+
 /** The Private Endpoint Connection resource. */
 export type PrivateEndpointConnection =
   CreateAccountResponsePropertiesPrivateEndpointConnectionsItem;
 /** Array of private endpoint connections */
 export type ListPrivateEndpointConnectionByAccountResponseValueList =
   Array<CreateAccountResponsePropertiesPrivateEndpointConnectionsItem>;
+const ListPrivateEndpointConnectionByAccountResponseValueList =
+  CreateAccountResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<ListPrivateEndpointConnectionByAccountResponseValueList>;
+
 export interface ListPrivateEndpointConnectionByAccountResponse {
   /** Array of private endpoint connections */
   value?: ListPrivateEndpointConnectionByAccountResponseValueList;
 }
+const ListPrivateEndpointConnectionByAccountResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListPrivateEndpointConnectionByAccountResponse>;
+
 export interface ListPrivateEndpointConnectionProxyByAccountRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -895,6 +1349,11 @@ export interface ListPrivateEndpointConnectionProxyByAccountRequest {
   /** Account name. */
   accountName: string;
 }
+const ListPrivateEndpointConnectionProxyByAccountRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ListPrivateEndpointConnectionProxyByAccountRequest>;
+
 /** Private endpoint connection proxy object property bag. */
 export type PrivateEndpointConnectionProxyProperties =
   GetPrivateEndpointConnectionProxyResponseProperties;
@@ -917,9 +1376,17 @@ export interface PrivateEndpointConnectionProxy {
   /** Private endpoint connection proxy object property bag. */
   properties?: GetPrivateEndpointConnectionProxyResponseProperties;
 }
+const PrivateEndpointConnectionProxy =
+  GetPrivateEndpointConnectionProxyResponse as any as S.Schema<PrivateEndpointConnectionProxy>;
+
 /** The list of available private endpoint connection proxies for an Account */
 export type PrivateEndpointConnectionProxyListResultValueList =
   Array<PrivateEndpointConnectionProxy>;
+const PrivateEndpointConnectionProxyListResultValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<PrivateEndpointConnectionProxyListResultValueList>;
+
 /** The available private endpoint connection proxies for an Account (not to be used by anyone, here because of ARM requirements) */
 export interface PrivateEndpointConnectionProxyListResult {
   /** The list of available private endpoint connection proxies for an Account */
@@ -927,6 +1394,11 @@ export interface PrivateEndpointConnectionProxyListResult {
   /** The URI that can be used to request the next list of private endpoint connection proxies. */
   nextLink?: string;
 }
+const PrivateEndpointConnectionProxyListResult = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<PrivateEndpointConnectionProxyListResult>;
+
 export interface ListPrivateLinkResourceByAccountRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -935,6 +1407,11 @@ export interface ListPrivateLinkResourceByAccountRequest {
   /** Account name. */
   accountName: string;
 }
+const ListPrivateLinkResourceByAccountRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListPrivateLinkResourceByAccountRequest>;
+
 /** The group information for creating a private endpoint on an Account */
 export interface GroupInformation {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -948,8 +1425,15 @@ export interface GroupInformation {
   /** The properties for a group information object */
   properties: GroupInformationProperties;
 }
+const GroupInformation = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<GroupInformation>;
+
 /** The list of available private link resources for an Account */
 export type PrivateLinkResourceListResultValueList = Array<GroupInformation>;
+const PrivateLinkResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<PrivateLinkResourceListResultValueList>;
+
 /** The available private link resources for an Account */
 export interface PrivateLinkResourceListResult {
   /** The list of available private link resources for an Account */
@@ -957,12 +1441,25 @@ export interface PrivateLinkResourceListResult {
   /** The URI that can be used to request the next list of private link resources. */
   nextLink?: string;
 }
+const PrivateLinkResourceListResult = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<PrivateLinkResourceListResult>;
+
 /** List of private link service connections that need manual approval. */
 export type RemotePrivateEndpointInputManualPrivateLinkServiceConnectionsList =
   Array<PrivateLinkServiceConnection>;
+const RemotePrivateEndpointInputManualPrivateLinkServiceConnectionsList = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<RemotePrivateEndpointInputManualPrivateLinkServiceConnectionsList>;
+
 /** List of automatically approved private link service connections. */
 export type RemotePrivateEndpointInputPrivateLinkServiceConnectionsList =
   Array<PrivateLinkServiceConnection>;
+const RemotePrivateEndpointInputPrivateLinkServiceConnectionsList =
+  RemotePrivateEndpointManualPrivateLinkServiceConnectionsList as any as S.Schema<RemotePrivateEndpointInputPrivateLinkServiceConnectionsList>;
+
 /** A collection of information about the state of the connection between service consumer and provider. */
 export type PrivateLinkServiceProxyInputRemotePrivateLinkServiceConnectionState =
   PrivateLinkServiceConnectionState;
@@ -970,6 +1467,9 @@ export type PrivateLinkServiceProxyInputRemotePrivateLinkServiceConnectionState 
 export type RemotePrivateEndpointConnectionInput = PrivateEndpointInput;
 /** List of customer visible FQDNs. */
 export type GroupConnectivityInformationInputCustomerVisibleFqdnsList = Array<string>;
+const GroupConnectivityInformationInputCustomerVisibleFqdnsList =
+  PrivateEndpointConnectionPropertiesInputGroupIdsList as any as S.Schema<GroupConnectivityInformationInputCustomerVisibleFqdnsList>;
+
 /** Group connectivity details. */
 export interface GroupConnectivityInformationInput {
   /** List of customer visible FQDNs. */
@@ -979,9 +1479,19 @@ export interface GroupConnectivityInformationInput {
   /** PrivateLinkService ARM region. */
   privateLinkServiceArmRegion?: string;
 }
+const GroupConnectivityInformationInput = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<GroupConnectivityInformationInput>;
+
 /** Group connectivity information. */
 export type PrivateLinkServiceProxyInputGroupConnectivityInformationList =
   Array<GroupConnectivityInformationInput>;
+const PrivateLinkServiceProxyInputGroupConnectivityInformationList = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<PrivateLinkServiceProxyInputGroupConnectivityInformationList>;
+
 /** Private link service proxy details. */
 export interface PrivateLinkServiceProxyInput {
   /** NRP resource ID. */
@@ -993,13 +1503,28 @@ export interface PrivateLinkServiceProxyInput {
   /** Group connectivity information. */
   groupConnectivityInformation?: PrivateLinkServiceProxyInputGroupConnectivityInformationList;
 }
+const PrivateLinkServiceProxyInput = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<PrivateLinkServiceProxyInput>;
+
 /** List of private link service proxies. */
 export type RemotePrivateEndpointInputPrivateLinkServiceProxiesList =
   Array<PrivateLinkServiceProxyInput>;
+const RemotePrivateEndpointInputPrivateLinkServiceProxiesList = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<RemotePrivateEndpointInputPrivateLinkServiceProxiesList>;
+
 /** Private endpoint connection proxy object properties. */
 export type ConnectionDetailsInput = PrivateEndpointInput;
 /** List of connection details. */
 export type RemotePrivateEndpointInputConnectionDetailsList = Array<PrivateEndpointInput>;
+const RemotePrivateEndpointInputConnectionDetailsList = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<RemotePrivateEndpointInputConnectionDetailsList>;
+
 /** Remote private endpoint details. */
 export interface RemotePrivateEndpointInput {
   /** Remote endpoint resource ID. */
@@ -1021,6 +1546,11 @@ export interface RemotePrivateEndpointInput {
   /** List of connection details. */
   connectionDetails?: RemotePrivateEndpointInputConnectionDetailsList;
 }
+const RemotePrivateEndpointInput = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<RemotePrivateEndpointInput>;
+
 /** Private endpoint connection proxy object property bag. */
 export type PrivateEndpointConnectionProxiesCreateOrUpdateRequestProperties = PrivateEndpointInput;
 export interface PrivateEndpointConnectionProxiesCreateOrUpdateRequest {
@@ -1039,6 +1569,11 @@ export interface PrivateEndpointConnectionProxiesCreateOrUpdateRequest {
   /** Private endpoint connection proxy object property bag. */
   properties?: PrivateEndpointInput;
 }
+const PrivateEndpointConnectionProxiesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<PrivateEndpointConnectionProxiesCreateOrUpdateRequest>;
+
 /** Private endpoint connection proxy object property bag. */
 export type PrivateEndpointConnectionProxiesCreateOrUpdateResponseProperties =
   GetPrivateEndpointConnectionProxyResponseProperties;
@@ -1060,6 +1595,9 @@ export interface PrivateEndpointConnectionProxiesCreateOrUpdateResponse {
   /** Private endpoint connection proxy object property bag. */
   properties?: GetPrivateEndpointConnectionProxyResponseProperties;
 }
+const PrivateEndpointConnectionProxiesCreateOrUpdateResponse =
+  GetPrivateEndpointConnectionProxyResponse as any as S.Schema<PrivateEndpointConnectionProxiesCreateOrUpdateResponse>;
+
 export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -1072,6 +1610,11 @@ export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** Resource properties. */
   properties: PrivateEndpointConnectionPropertiesInput;
 }
+const PrivateEndpointConnectionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>;
+
 export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1084,8 +1627,14 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Resource properties. */
   properties: PrivateEndpointConnectionProperties;
 }
+const PrivateEndpointConnectionsCreateOrUpdateResponse =
+  GetPrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
+
 /** List of key value pairs that describe the resource. This will overwrite the existing tags. */
 export type UpdateAccountRequestTagsMap = { [key: string]: string | undefined };
+const UpdateAccountRequestTagsMap =
+  CreateAccountRequestTagsMap as any as S.Schema<UpdateAccountRequestTagsMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateAccountRequestIdentity = CreateAccountRequestIdentity;
 export interface UpdateAccountRequest {
@@ -1102,8 +1651,16 @@ export interface UpdateAccountRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
+const UpdateAccountRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<UpdateAccountRequest>;
+
 /** Resource tags. */
 export type UpdateAccountResponseTagsMap = { [key: string]: string | undefined };
+const UpdateAccountResponseTagsMap =
+  CreateAccountRequestTagsMap as any as S.Schema<UpdateAccountResponseTagsMap>;
+
 /** Provisioning state. */
 export type UpdateAccountResponsePropertiesProvisioningState =
   | "Succeeded"
@@ -1112,18 +1669,30 @@ export type UpdateAccountResponsePropertiesProvisioningState =
   | "Canceled"
   | "Accepted"
   | "Creating";
+const UpdateAccountResponsePropertiesProvisioningState = S.String;
+
 /** Whether or not public network access is allowed for the account. */
 export type UpdateAccountResponsePropertiesPublicNetworkAccess = "Enabled" | "Disabled";
+const UpdateAccountResponsePropertiesPublicNetworkAccess = S.String;
+
 /** The Private Endpoint Connection resource. */
 export type UpdateAccountResponsePropertiesPrivateEndpointConnectionsItem =
   CreateAccountResponsePropertiesPrivateEndpointConnectionsItem;
 /** List of private endpoint connections associated with the account. */
 export type UpdateAccountResponsePropertiesPrivateEndpointConnectionsList =
   Array<CreateAccountResponsePropertiesPrivateEndpointConnectionsItem>;
+const UpdateAccountResponsePropertiesPrivateEndpointConnectionsList =
+  CreateAccountResponsePropertiesPrivateEndpointConnectionsList as any as S.Schema<UpdateAccountResponsePropertiesPrivateEndpointConnectionsList>;
+
 /** Device Update Sku */
 export type UpdateAccountResponsePropertiesSku = "Free" | "Standard";
+const UpdateAccountResponsePropertiesSku = S.String;
+
 /** Device Update account primary and failover location details */
 export type UpdateAccountResponsePropertiesLocationsList = Array<Location>;
+const UpdateAccountResponsePropertiesLocationsList =
+  CreateAccountResponsePropertiesLocationsList as any as S.Schema<UpdateAccountResponsePropertiesLocationsList>;
+
 /** Device Update account properties. */
 export interface UpdateAccountResponseProperties {
   /** Provisioning state. */
@@ -1141,6 +1710,11 @@ export interface UpdateAccountResponseProperties {
   /** Device Update account primary and failover location details */
   locations?: UpdateAccountResponsePropertiesLocationsList;
 }
+const UpdateAccountResponseProperties = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<UpdateAccountResponseProperties>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateAccountResponseIdentity = CreateAccountResponseIdentity;
 export interface UpdateAccountResponse {
@@ -1161,8 +1735,16 @@ export interface UpdateAccountResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateAccountResponseIdentity;
 }
+const UpdateAccountResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<UpdateAccountResponse>;
+
 /** List of key value pairs that describe the resource. This will overwrite the existing tags. */
 export type UpdateInstanceRequestTagsMap = { [key: string]: string | undefined };
+const UpdateInstanceRequestTagsMap =
+  CreateAccountRequestTagsMap as any as S.Schema<UpdateInstanceRequestTagsMap>;
+
 export interface UpdateInstanceRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -1175,8 +1757,16 @@ export interface UpdateInstanceRequest {
   /** List of key value pairs that describe the resource. This will overwrite the existing tags. */
   tags?: UpdateInstanceRequestTagsMap;
 }
+const UpdateInstanceRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<UpdateInstanceRequest>;
+
 /** Resource tags. */
 export type UpdateInstanceResponseTagsMap = { [key: string]: string | undefined };
+const UpdateInstanceResponseTagsMap =
+  CreateAccountRequestTagsMap as any as S.Schema<UpdateInstanceResponseTagsMap>;
+
 /** Provisioning state. */
 export type UpdateInstanceResponsePropertiesProvisioningState =
   | "Succeeded"
@@ -1185,8 +1775,13 @@ export type UpdateInstanceResponsePropertiesProvisioningState =
   | "Canceled"
   | "Accepted"
   | "Creating";
+const UpdateInstanceResponsePropertiesProvisioningState = S.String;
+
 /** List of IoT Hubs associated with the account. */
 export type UpdateInstanceResponsePropertiesIotHubsList = Array<IotHubSettings>;
+const UpdateInstanceResponsePropertiesIotHubsList =
+  CreateInstanceRequestPropertiesIotHubsList as any as S.Schema<UpdateInstanceResponsePropertiesIotHubsList>;
+
 /** Device Update instance properties. */
 export interface UpdateInstanceResponseProperties {
   /** Provisioning state. */
@@ -1199,6 +1794,11 @@ export interface UpdateInstanceResponseProperties {
   enableDiagnostics?: boolean;
   diagnosticStorageProperties?: DiagnosticStorageProperties;
 }
+const UpdateInstanceResponseProperties = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<UpdateInstanceResponseProperties>;
+
 export interface UpdateInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1215,6 +1815,11 @@ export interface UpdateInstanceResponse {
   /** Device Update instance properties. */
   properties: UpdateInstanceResponseProperties;
 }
+const UpdateInstanceResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<UpdateInstanceResponse>;
+
 export interface UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -1235,7 +1840,17 @@ export interface UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesRe
   /** Virtual network traffic tag. */
   vnetTrafficTag?: string;
 }
+const UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesRequest>;
+
 export interface UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesResponse {}
+const UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesResponse>;
+
 /** Private endpoint connection proxy object property bag. */
 export type ValidatePrivateEndpointConnectionProxyRequestProperties = PrivateEndpointInput;
 export interface ValidatePrivateEndpointConnectionProxyRequest {
@@ -1254,7 +1869,15 @@ export interface ValidatePrivateEndpointConnectionProxyRequest {
   /** Private endpoint connection proxy object property bag. */
   properties?: PrivateEndpointInput;
 }
+const ValidatePrivateEndpointConnectionProxyRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ValidatePrivateEndpointConnectionProxyRequest>;
+
 export interface ValidatePrivateEndpointConnectionProxyResponse {}
+const ValidatePrivateEndpointConnectionProxyResponse =
+  DeletePrivateEndpointConnectionResponse as any as S.Schema<ValidatePrivateEndpointConnectionProxyResponse>;
+
 export type CheckNameAvailabilityError = AzureOpError;
 /** Checks ADU resource name availability. */
 export const CheckNameAvailability: API.OperationMethod<
@@ -1263,8 +1886,8 @@ export const CheckNameAvailability: API.OperationMethod<
   CheckNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CheckNameAvailabilityRequest>,
-  output: __S(1) as any as S.Schema<CheckNameAvailabilityResponse>,
+  input: CheckNameAvailabilityRequest,
+  output: CheckNameAvailabilityResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1278,8 +1901,8 @@ export const CreateAccount: API.OperationMethod<
   CreateAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CreateAccountRequest>,
-  output: __S(25) as any as S.Schema<CreateAccountResponse>,
+  input: CreateAccountRequest,
+  output: CreateAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1293,8 +1916,8 @@ export const CreateInstance: API.OperationMethod<
   CreateInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<CreateInstanceRequest>,
-  output: __S(32) as any as S.Schema<CreateInstanceResponse>,
+  input: CreateInstanceRequest,
+  output: CreateInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1308,8 +1931,8 @@ export const DeleteAccount: API.OperationMethod<
   DeleteAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<DeleteAccountRequest>,
-  output: __S(3) as any as S.Schema<DeleteAccountResponse>,
+  input: DeleteAccountRequest,
+  output: DeleteAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1323,8 +1946,8 @@ export const DeleteInstance: API.OperationMethod<
   DeleteInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<DeleteInstanceRequest>,
-  output: __S(3) as any as S.Schema<DeleteInstanceResponse>,
+  input: DeleteInstanceRequest,
+  output: DeleteInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1338,8 +1961,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(36) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: DeletePrivateEndpointConnectionRequest,
+  output: DeletePrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1353,8 +1976,8 @@ export const DeletePrivateEndpointConnectionProxy: API.OperationMethod<
   DeletePrivateEndpointConnectionProxyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<DeletePrivateEndpointConnectionProxyRequest>,
-  output: __S(36) as any as S.Schema<DeletePrivateEndpointConnectionProxyResponse>,
+  input: DeletePrivateEndpointConnectionProxyRequest,
+  output: DeletePrivateEndpointConnectionProxyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1368,8 +1991,8 @@ export const GetAccount: API.OperationMethod<
   GetAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<GetAccountRequest>,
-  output: __S(40) as any as S.Schema<GetAccountResponse>,
+  input: GetAccountRequest,
+  output: GetAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1383,8 +2006,8 @@ export const GetInstance: API.OperationMethod<
   GetInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<GetInstanceRequest>,
-  output: __S(43) as any as S.Schema<GetInstanceResponse>,
+  input: GetInstanceRequest,
+  output: GetInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1398,8 +2021,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(45) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: GetPrivateEndpointConnectionRequest,
+  output: GetPrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1413,8 +2036,8 @@ export const GetPrivateEndpointConnectionProxy: API.OperationMethod<
   GetPrivateEndpointConnectionProxyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<GetPrivateEndpointConnectionProxyRequest>,
-  output: __S(59) as any as S.Schema<GetPrivateEndpointConnectionProxyResponse>,
+  input: GetPrivateEndpointConnectionProxyRequest,
+  output: GetPrivateEndpointConnectionProxyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1428,8 +2051,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(62) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: GetPrivateLinkResourceRequest,
+  output: GetPrivateLinkResourceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1443,8 +2066,8 @@ export const ListAccountByResourceGroup: API.OperationMethod<
   ListAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<ListAccountByResourceGroupRequest>,
-  output: __S(67) as any as S.Schema<AccountList>,
+  input: ListAccountByResourceGroupRequest,
+  output: AccountList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1458,8 +2081,8 @@ export const ListAccountBySubscription: API.OperationMethod<
   ListAccountBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<ListAccountBySubscriptionRequest>,
-  output: __S(67) as any as S.Schema<AccountList>,
+  input: ListAccountBySubscriptionRequest,
+  output: AccountList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1473,8 +2096,8 @@ export const ListInstanceByAccount: API.OperationMethod<
   ListInstanceByAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<ListInstanceByAccountRequest>,
-  output: __S(73) as any as S.Schema<InstanceList>,
+  input: ListInstanceByAccountRequest,
+  output: InstanceList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1488,8 +2111,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<ListOperationsRequest>,
-  output: __S(78) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1503,8 +2126,8 @@ export const ListPrivateEndpointConnectionByAccount: API.OperationMethod<
   ListPrivateEndpointConnectionByAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<ListPrivateEndpointConnectionByAccountRequest>,
-  output: __S(80) as any as S.Schema<ListPrivateEndpointConnectionByAccountResponse>,
+  input: ListPrivateEndpointConnectionByAccountRequest,
+  output: ListPrivateEndpointConnectionByAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1518,8 +2141,8 @@ export const ListPrivateEndpointConnectionProxyByAccount: API.OperationMethod<
   ListPrivateEndpointConnectionProxyByAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<ListPrivateEndpointConnectionProxyByAccountRequest>,
-  output: __S(83) as any as S.Schema<PrivateEndpointConnectionProxyListResult>,
+  input: ListPrivateEndpointConnectionProxyByAccountRequest,
+  output: PrivateEndpointConnectionProxyListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1533,8 +2156,8 @@ export const ListPrivateLinkResourceByAccount: API.OperationMethod<
   ListPrivateLinkResourceByAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<ListPrivateLinkResourceByAccountRequest>,
-  output: __S(87) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: ListPrivateLinkResourceByAccountRequest,
+  output: PrivateLinkResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1548,8 +2171,8 @@ export const PrivateEndpointConnectionProxiesCreateOrUpdate: API.OperationMethod
   PrivateEndpointConnectionProxiesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<PrivateEndpointConnectionProxiesCreateOrUpdateRequest>,
-  output: __S(59) as any as S.Schema<PrivateEndpointConnectionProxiesCreateOrUpdateResponse>,
+  input: PrivateEndpointConnectionProxiesCreateOrUpdateRequest,
+  output: PrivateEndpointConnectionProxiesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1563,8 +2186,8 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
-  output: __S(45) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
+  input: PrivateEndpointConnectionsCreateOrUpdateRequest,
+  output: PrivateEndpointConnectionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1578,8 +2201,8 @@ export const UpdateAccount: API.OperationMethod<
   UpdateAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<UpdateAccountRequest>,
-  output: __S(99) as any as S.Schema<UpdateAccountResponse>,
+  input: UpdateAccountRequest,
+  output: UpdateAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1593,8 +2216,8 @@ export const UpdateInstance: API.OperationMethod<
   UpdateInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<UpdateInstanceRequest>,
-  output: __S(102) as any as S.Schema<UpdateInstanceResponse>,
+  input: UpdateInstanceRequest,
+  output: UpdateInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1608,12 +2231,8 @@ export const UpdatePrivateEndpointConnectionProxyPrivateEndpointProperties: API.
   UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    103,
-  ) as any as S.Schema<UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesRequest>,
-  output: __S(
-    104,
-  ) as any as S.Schema<UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesResponse>,
+  input: UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesRequest,
+  output: UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1627,8 +2246,8 @@ export const ValidatePrivateEndpointConnectionProxy: API.OperationMethod<
   ValidatePrivateEndpointConnectionProxyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<ValidatePrivateEndpointConnectionProxyRequest>,
-  output: __S(36) as any as S.Schema<ValidatePrivateEndpointConnectionProxyResponse>,
+  input: ValidatePrivateEndpointConnectionProxyRequest,
+  output: ValidatePrivateEndpointConnectionProxyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1658,7 +2277,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.optional(S.Boolean),
-          reason: S.optional(S.String),
+          reason: S.optional(CheckNameAvailabilityResponseReason),
           message: S.optional(S.String),
         }),
       ).annotate({
@@ -1673,7 +2292,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(PrivateEndpointServiceConnectionStatus),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -1685,9 +2304,9 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(3)),
-          privateLinkServiceConnectionState: __S(4),
-          groupIds: S.optional(__S(5)),
+          privateEndpoint: S.optional(PrivateEndpointInput),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+          groupIds: S.optional(PrivateEndpointConnectionPropertiesInputGroupIdsList),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
@@ -1695,7 +2314,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(6),
+          properties: PrivateEndpointConnectionPropertiesInput,
         }),
       ).annotate({
         identifier: "CreateAccountRequestPropertiesPrivateEndpointConnectionsItem",
@@ -1705,7 +2324,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(CreateAccountRequestPropertiesPrivateEndpointConnectionsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1716,21 +2335,23 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          publicNetworkAccess: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(8)),
-          sku: S.optional(S.String),
-          encryption: S.optional(__S(9)),
+          publicNetworkAccess: S.optional(CreateAccountRequestPropertiesPublicNetworkAccess),
+          privateEndpointConnections: S.optional(
+            CreateAccountRequestPropertiesPrivateEndpointConnectionsList,
+          ),
+          sku: S.optional(CreateAccountRequestPropertiesSku),
+          encryption: S.optional(Encryption),
         }),
       ).annotate({
         identifier: "CreateAccountRequestProperties",
       });
     case 3:
-      return S.Record(S.String, __S(3));
+      return S.Record(S.String, PrivateEndpointInput);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(S.NullOr(__S(11))),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
         }),
       ).annotate({
         identifier: "CreateAccountRequestIdentity",
@@ -1741,10 +2362,10 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2)),
+          tags: S.optional(CreateAccountRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(10)),
-          identity: S.optional(__S(12)),
+          properties: S.optional(CreateAccountRequestProperties),
+          identity: S.optional(CreateAccountRequestIdentity),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1758,10 +2379,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -1778,10 +2399,10 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(15)),
-          privateLinkServiceConnectionState: __S(4),
-          groupIds: S.optional(__S(5)),
-          provisioningState: S.optional(S.String),
+          privateEndpoint: S.optional(PrivateEndpoint),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+          groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
+          provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -1792,33 +2413,35 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14)),
-          properties: __S(16),
+          systemData: S.optional(SystemData),
+          properties: PrivateEndpointConnectionProperties,
         }),
       ).annotate({
         identifier: "CreateAccountResponsePropertiesPrivateEndpointConnectionsItem",
       });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(CreateAccountResponsePropertiesPrivateEndpointConnectionsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          role: S.optional(S.String),
+          role: S.optional(LocationRole),
         }),
       ).annotate({ identifier: "Location" });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(Location);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(CreateAccountResponsePropertiesProvisioningState),
           hostName: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(18)),
-          sku: S.optional(S.String),
-          encryption: S.optional(__S(9)),
-          locations: S.optional(__S(20)),
+          publicNetworkAccess: S.optional(CreateAccountResponsePropertiesPublicNetworkAccess),
+          privateEndpointConnections: S.optional(
+            CreateAccountResponsePropertiesPrivateEndpointConnectionsList,
+          ),
+          sku: S.optional(CreateAccountResponsePropertiesSku),
+          encryption: S.optional(Encryption),
+          locations: S.optional(CreateAccountResponsePropertiesLocationsList),
         }),
       ).annotate({
         identifier: "CreateAccountResponseProperties",
@@ -1831,7 +2454,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 7:
-      return S.Record(S.String, __S(22));
+      return S.Record(S.String, UserAssignedIdentity);
   }
 }
 function __c3(j: number): any {
@@ -1841,8 +2464,8 @@ function __c3(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(S.NullOr(__S(23))),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
         }),
       ).annotate({
         identifier: "CreateAccountResponseIdentity",
@@ -1853,11 +2476,11 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateAccountResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(21)),
-          identity: S.optional(__S(24)),
+          properties: S.optional(CreateAccountResponseProperties),
+          identity: S.optional(CreateAccountResponseIdentity),
         }),
       ).annotate({ identifier: "CreateAccountResponse" });
     case 2:
@@ -1867,11 +2490,11 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "IotHubSettings" });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(IotHubSettings);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          authenticationType: S.String,
+          authenticationType: DiagnosticStoragePropertiesAuthenticationType,
           connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
           resourceId: S.String,
         }),
@@ -1881,9 +2504,9 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          iotHubs: S.optional(__S(27)),
+          iotHubs: S.optional(CreateInstanceRequestPropertiesIotHubsList),
           enableDiagnostics: S.optional(S.Boolean),
-          diagnosticStorageProperties: S.optional(__S(28)),
+          diagnosticStorageProperties: S.optional(DiagnosticStorageProperties),
         }),
       ).annotate({
         identifier: "CreateInstanceRequestProperties",
@@ -1895,9 +2518,9 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2)),
+          tags: S.optional(CreateInstanceRequestTagsMap),
           location: S.String,
-          properties: __S(29),
+          properties: CreateInstanceRequestProperties,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1910,11 +2533,11 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(CreateInstanceResponsePropertiesProvisioningState),
           accountName: S.optional(S.String),
-          iotHubs: S.optional(__S(27)),
+          iotHubs: S.optional(CreateInstanceResponsePropertiesIotHubsList),
           enableDiagnostics: S.optional(S.Boolean),
-          diagnosticStorageProperties: S.optional(__S(28)),
+          diagnosticStorageProperties: S.optional(DiagnosticStorageProperties),
         }),
       ).annotate({
         identifier: "CreateInstanceResponseProperties",
@@ -1929,10 +2552,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateInstanceResponseTagsMap),
           location: S.String,
-          properties: __S(31),
+          properties: CreateInstanceResponseProperties,
         }),
       ).annotate({ identifier: "CreateInstanceResponse" });
     case 1:
@@ -2024,13 +2647,15 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(GetAccountResponsePropertiesProvisioningState),
           hostName: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(18)),
-          sku: S.optional(S.String),
-          encryption: S.optional(__S(9)),
-          locations: S.optional(__S(20)),
+          publicNetworkAccess: S.optional(GetAccountResponsePropertiesPublicNetworkAccess),
+          privateEndpointConnections: S.optional(
+            GetAccountResponsePropertiesPrivateEndpointConnectionsList,
+          ),
+          sku: S.optional(GetAccountResponsePropertiesSku),
+          encryption: S.optional(Encryption),
+          locations: S.optional(GetAccountResponsePropertiesLocationsList),
         }),
       ).annotate({
         identifier: "GetAccountResponseProperties",
@@ -2045,11 +2670,11 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetAccountResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(39)),
-          identity: S.optional(__S(24)),
+          properties: S.optional(GetAccountResponseProperties),
+          identity: S.optional(CreateAccountResponseIdentity),
         }),
       ).annotate({ identifier: "GetAccountResponse" });
     case 1:
@@ -2071,11 +2696,11 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(GetInstanceResponsePropertiesProvisioningState),
           accountName: S.optional(S.String),
-          iotHubs: S.optional(__S(27)),
+          iotHubs: S.optional(GetInstanceResponsePropertiesIotHubsList),
           enableDiagnostics: S.optional(S.Boolean),
-          diagnosticStorageProperties: S.optional(__S(28)),
+          diagnosticStorageProperties: S.optional(DiagnosticStorageProperties),
         }),
       ).annotate({
         identifier: "GetInstanceResponseProperties",
@@ -2086,10 +2711,10 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetInstanceResponseTagsMap),
           location: S.String,
-          properties: __S(42),
+          properties: GetInstanceResponseProperties,
         }),
       ).annotate({ identifier: "GetInstanceResponse" });
     case 4:
@@ -2116,8 +2741,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14)),
-          properties: __S(16),
+          systemData: S.optional(SystemData),
+          properties: PrivateEndpointConnectionProperties,
         }),
       ).annotate({
         identifier: "GetPrivateEndpointConnectionResponse",
@@ -2144,7 +2769,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          groupIds: S.optional(__S(5)),
+          groupIds: S.optional(PrivateLinkServiceConnectionGroupIdsList),
           requestMessage: S.optional(S.String),
         }),
       ).annotate({
@@ -2155,11 +2780,11 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(PrivateLinkServiceConnection);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(PrivateEndpointServiceConnectionStatus),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -2179,7 +2804,7 @@ function __c6(j: number): any {
         S.Struct({
           groupId: S.optional(S.String),
           memberName: S.optional(S.String),
-          customerVisibleFqdns: S.optional(__S(5)),
+          customerVisibleFqdns: S.optional(GroupConnectivityInformationCustomerVisibleFqdnsList),
           internalFqdn: S.optional(S.String),
           redirectMapId: S.optional(S.String),
           privateLinkServiceArmRegion: S.optional(S.String),
@@ -2188,18 +2813,22 @@ function __c6(j: number): any {
         identifier: "GroupConnectivityInformation",
       });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(GroupConnectivityInformation);
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          remotePrivateLinkServiceConnectionState: S.optional(__S(49)),
-          remotePrivateEndpointConnection: S.optional(__S(50)),
-          groupConnectivityInformation: S.optional(__S(52)),
+          remotePrivateLinkServiceConnectionState: S.optional(
+            PrivateLinkServiceProxyRemotePrivateLinkServiceConnectionState,
+          ),
+          remotePrivateEndpointConnection: S.optional(RemotePrivateEndpointConnection),
+          groupConnectivityInformation: S.optional(
+            PrivateLinkServiceProxyGroupConnectivityInformationList,
+          ),
         }),
       ).annotate({ identifier: "PrivateLinkServiceProxy" });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(PrivateLinkServiceProxy);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2215,7 +2844,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55));
+      return S.Array(ConnectionDetails);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2224,16 +2853,20 @@ function __c7(j: number): any {
           immutableSubscriptionId: S.optional(S.String),
           immutableResourceId: S.optional(S.String),
           vnetTrafficTag: S.optional(S.String),
-          manualPrivateLinkServiceConnections: S.optional(__S(48)),
-          privateLinkServiceConnections: S.optional(__S(48)),
-          privateLinkServiceProxies: S.optional(__S(54)),
-          connectionDetails: S.optional(__S(56)),
+          manualPrivateLinkServiceConnections: S.optional(
+            RemotePrivateEndpointManualPrivateLinkServiceConnectionsList,
+          ),
+          privateLinkServiceConnections: S.optional(
+            RemotePrivateEndpointPrivateLinkServiceConnectionsList,
+          ),
+          privateLinkServiceProxies: S.optional(RemotePrivateEndpointPrivateLinkServiceProxiesList),
+          connectionDetails: S.optional(RemotePrivateEndpointConnectionDetailsList),
         }),
       ).annotate({ identifier: "RemotePrivateEndpoint" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(PrivateEndpointConnectionProxyProvisioningState),
         }),
       ).annotate({
         identifier: "GetPrivateEndpointConnectionProxyResponseProperties",
@@ -2244,11 +2877,11 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14)),
+          systemData: S.optional(SystemData),
           eTag: S.optional(S.String),
-          remotePrivateEndpoint: S.optional(__S(57)),
+          remotePrivateEndpoint: S.optional(RemotePrivateEndpoint),
           status: S.optional(S.String),
-          properties: S.optional(__S(58)),
+          properties: S.optional(GetPrivateEndpointConnectionProxyResponseProperties),
         }),
       ).annotate({
         identifier: "GetPrivateEndpointConnectionProxyResponse",
@@ -2275,9 +2908,9 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(5)),
-          requiredZoneNames: S.optional(__S(5)),
-          provisioningState: S.optional(S.String),
+          requiredMembers: S.optional(GroupInformationPropertiesRequiredMembersList),
+          requiredZoneNames: S.optional(GroupInformationPropertiesRequiredZoneNamesList),
+          provisioningState: S.optional(GroupInformationPropertiesProvisioningState),
         }),
       ).annotate({
         identifier: "GroupInformationProperties",
@@ -2288,8 +2921,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14)),
-          properties: __S(61),
+          systemData: S.optional(SystemData),
+          properties: GroupInformationProperties,
         }),
       ).annotate({
         identifier: "GetPrivateLinkResourceResponse",
@@ -2317,13 +2950,13 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(AccountPropertiesProvisioningState),
           hostName: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(18)),
-          sku: S.optional(S.String),
-          encryption: S.optional(__S(9)),
-          locations: S.optional(__S(20)),
+          publicNetworkAccess: S.optional(AccountPropertiesPublicNetworkAccess),
+          privateEndpointConnections: S.optional(AccountPropertiesPrivateEndpointConnectionsList),
+          sku: S.optional(AccountPropertiesSku),
+          encryption: S.optional(Encryption),
+          locations: S.optional(AccountPropertiesLocationsList),
         }),
       ).annotate({ identifier: "AccountProperties" });
     case 1:
@@ -2332,20 +2965,20 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(AccountTagsMap),
           location: S.String,
-          properties: S.optional(__S(64)),
-          identity: S.optional(__S(24)),
+          properties: S.optional(AccountProperties),
+          identity: S.optional(CreateAccountResponseIdentity),
         }),
       ).annotate({ identifier: "Account" });
     case 2:
-      return S.Array(__S(65));
+      return S.Array(Account);
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(66)),
+          value: S.optional(AccountListValueList),
         }),
       ).annotate({ identifier: "AccountList" });
     case 4:
@@ -2383,11 +3016,11 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(InstancePropertiesProvisioningState),
           accountName: S.optional(S.String),
-          iotHubs: S.optional(__S(27)),
+          iotHubs: S.optional(InstancePropertiesIotHubsList),
           enableDiagnostics: S.optional(S.Boolean),
-          diagnosticStorageProperties: S.optional(__S(28)),
+          diagnosticStorageProperties: S.optional(DiagnosticStorageProperties),
         }),
       ).annotate({ identifier: "InstanceProperties" });
     case 7:
@@ -2396,10 +3029,10 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(InstanceTagsMap),
           location: S.String,
-          properties: __S(70),
+          properties: InstanceProperties,
         }),
       ).annotate({ identifier: "Instance" });
   }
@@ -2407,12 +3040,12 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71));
+      return S.Array(Instance);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(72)),
+          value: S.optional(InstanceListValueList),
         }),
       ).annotate({ identifier: "InstanceList" });
     case 2:
@@ -2440,17 +3073,17 @@ function __c9(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(75)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 5:
-      return S.Array(__S(76));
+      return S.Array(Operation);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(77)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -2478,7 +3111,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(18)),
+          value: S.optional(ListPrivateEndpointConnectionByAccountResponseValueList),
         }),
       ).annotate({
         identifier: "ListPrivateEndpointConnectionByAccountResponse",
@@ -2501,11 +3134,11 @@ function __c10(j: number): any {
         identifier: "ListPrivateEndpointConnectionProxyByAccountRequest",
       });
     case 2:
-      return S.Array(__S(59));
+      return S.Array(PrivateEndpointConnectionProxy);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(82)),
+          value: S.optional(PrivateEndpointConnectionProxyListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2534,16 +3167,16 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14)),
-          properties: __S(61),
+          systemData: S.optional(SystemData),
+          properties: GroupInformationProperties,
         }),
       ).annotate({ identifier: "GroupInformation" });
     case 6:
-      return S.Array(__S(85));
+      return S.Array(GroupInformation);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(86)),
+          value: S.optional(PrivateLinkResourceListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2554,11 +3187,13 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(PrivateLinkServiceConnection);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          customerVisibleFqdns: S.optional(__S(5)),
+          customerVisibleFqdns: S.optional(
+            GroupConnectivityInformationInputCustomerVisibleFqdnsList,
+          ),
           redirectMapId: S.optional(S.String),
           privateLinkServiceArmRegion: S.optional(S.String),
         }),
@@ -2566,22 +3201,24 @@ function __c11(j: number): any {
         identifier: "GroupConnectivityInformationInput",
       });
     case 2:
-      return S.Array(__S(89));
+      return S.Array(GroupConnectivityInformationInput);
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          remotePrivateLinkServiceConnectionState: S.optional(__S(4)),
-          remotePrivateEndpointConnection: S.optional(__S(3)),
-          groupConnectivityInformation: S.optional(__S(90)),
+          remotePrivateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionState),
+          remotePrivateEndpointConnection: S.optional(PrivateEndpointInput),
+          groupConnectivityInformation: S.optional(
+            PrivateLinkServiceProxyInputGroupConnectivityInformationList,
+          ),
         }),
       ).annotate({
         identifier: "PrivateLinkServiceProxyInput",
       });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(PrivateLinkServiceProxyInput);
     case 5:
-      return S.Array(__S(3));
+      return S.Array(PrivateEndpointInput);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2590,10 +3227,16 @@ function __c11(j: number): any {
           immutableSubscriptionId: S.optional(S.String),
           immutableResourceId: S.optional(S.String),
           vnetTrafficTag: S.optional(S.String),
-          manualPrivateLinkServiceConnections: S.optional(__S(88)),
-          privateLinkServiceConnections: S.optional(__S(48)),
-          privateLinkServiceProxies: S.optional(__S(92)),
-          connectionDetails: S.optional(__S(93)),
+          manualPrivateLinkServiceConnections: S.optional(
+            RemotePrivateEndpointInputManualPrivateLinkServiceConnectionsList,
+          ),
+          privateLinkServiceConnections: S.optional(
+            RemotePrivateEndpointInputPrivateLinkServiceConnectionsList,
+          ),
+          privateLinkServiceProxies: S.optional(
+            RemotePrivateEndpointInputPrivateLinkServiceProxiesList,
+          ),
+          connectionDetails: S.optional(RemotePrivateEndpointInputConnectionDetailsList),
         }),
       ).annotate({
         identifier: "RemotePrivateEndpointInput",
@@ -2605,9 +3248,9 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           privateEndpointConnectionProxyId: S.String.pipe(T.Label()),
-          remotePrivateEndpoint: S.optional(__S(94)),
+          remotePrivateEndpoint: S.optional(RemotePrivateEndpointInput),
           status: S.optional(S.String),
-          properties: S.optional(__S(3)),
+          properties: S.optional(PrivateEndpointInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2630,7 +3273,7 @@ function __c12(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: __S(6),
+          properties: PrivateEndpointConnectionPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2648,8 +3291,8 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2)),
-          identity: S.optional(__S(12)),
+          tags: S.optional(UpdateAccountRequestTagsMap),
+          identity: S.optional(CreateAccountRequestIdentity),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -2663,13 +3306,15 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(UpdateAccountResponsePropertiesProvisioningState),
           hostName: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(18)),
-          sku: S.optional(S.String),
-          encryption: S.optional(__S(9)),
-          locations: S.optional(__S(20)),
+          publicNetworkAccess: S.optional(UpdateAccountResponsePropertiesPublicNetworkAccess),
+          privateEndpointConnections: S.optional(
+            UpdateAccountResponsePropertiesPrivateEndpointConnectionsList,
+          ),
+          sku: S.optional(UpdateAccountResponsePropertiesSku),
+          encryption: S.optional(Encryption),
+          locations: S.optional(UpdateAccountResponsePropertiesLocationsList),
         }),
       ).annotate({
         identifier: "UpdateAccountResponseProperties",
@@ -2680,11 +3325,11 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(UpdateAccountResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(98)),
-          identity: S.optional(__S(24)),
+          properties: S.optional(UpdateAccountResponseProperties),
+          identity: S.optional(CreateAccountResponseIdentity),
         }),
       ).annotate({ identifier: "UpdateAccountResponse" });
     case 4:
@@ -2694,7 +3339,7 @@ function __c12(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2)),
+          tags: S.optional(UpdateInstanceRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2707,11 +3352,11 @@ function __c12(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(UpdateInstanceResponsePropertiesProvisioningState),
           accountName: S.optional(S.String),
-          iotHubs: S.optional(__S(27)),
+          iotHubs: S.optional(UpdateInstanceResponsePropertiesIotHubsList),
           enableDiagnostics: S.optional(S.Boolean),
-          diagnosticStorageProperties: S.optional(__S(28)),
+          diagnosticStorageProperties: S.optional(DiagnosticStorageProperties),
         }),
       ).annotate({
         identifier: "UpdateInstanceResponseProperties",
@@ -2722,10 +3367,10 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(UpdateInstanceResponseTagsMap),
           location: S.String,
-          properties: __S(101),
+          properties: UpdateInstanceResponseProperties,
         }),
       ).annotate({ identifier: "UpdateInstanceResponse" });
     case 7:
@@ -2766,9 +3411,9 @@ function __c13(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           privateEndpointConnectionProxyId: S.String.pipe(T.Label()),
-          remotePrivateEndpoint: S.optional(__S(94)),
+          remotePrivateEndpoint: S.optional(RemotePrivateEndpointInput),
           status: S.optional(S.String),
-          properties: S.optional(__S(3)),
+          properties: S.optional(PrivateEndpointInput),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2780,42 +3425,5 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ValidatePrivateEndpointConnectionProxyRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
   }
 }

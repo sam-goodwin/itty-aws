@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -19,6 +17,8 @@ export type AccessPolicyAssignmentProvisioningState =
   | "Deleted"
   | "Canceled"
   | "Failed";
+const AccessPolicyAssignmentProvisioningState = S.String;
+
 /** Properties for an access policy assignment */
 export interface RedisCacheAccessPolicyAssignmentProperties {
   /** Provisioning state of an access policy assignment set */
@@ -30,6 +30,11 @@ export interface RedisCacheAccessPolicyAssignmentProperties {
   /** The name of the access policy that is being assigned */
   accessPolicyName: string;
 }
+const RedisCacheAccessPolicyAssignmentProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<RedisCacheAccessPolicyAssignmentProperties>;
+
 export interface AccessPolicyAssignmentCreateUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -42,10 +47,19 @@ export interface AccessPolicyAssignmentCreateUpdateRequest {
   /** Properties of an access policy assignment */
   properties?: RedisCacheAccessPolicyAssignmentProperties;
 }
+const AccessPolicyAssignmentCreateUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AccessPolicyAssignmentCreateUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -61,6 +75,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SystemData>;
+
 export interface AccessPolicyAssignmentCreateUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -73,6 +89,11 @@ export interface AccessPolicyAssignmentCreateUpdateResponse {
   /** Properties of an access policy assignment */
   properties?: RedisCacheAccessPolicyAssignmentProperties;
 }
+const AccessPolicyAssignmentCreateUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AccessPolicyAssignmentCreateUpdateResponse>;
+
 /** Provisioning state of access policy */
 export type AccessPolicyProvisioningState =
   | "Updating"
@@ -81,8 +102,12 @@ export type AccessPolicyProvisioningState =
   | "Deleted"
   | "Canceled"
   | "Failed";
+const AccessPolicyProvisioningState = S.String;
+
 /** Built-In or Custom access policy */
 export type AccessPolicyType = "Custom" | "BuiltIn";
+const AccessPolicyType = S.String;
+
 /** All properties of an access policy. */
 export interface RedisCacheAccessPolicyProperties {
   /** Provisioning state of access policy */
@@ -92,6 +117,11 @@ export interface RedisCacheAccessPolicyProperties {
   /** Permissions for the access policy. Learn how to configure permissions at https://aka.ms/redis/AADPreRequisites */
   permissions: string;
 }
+const RedisCacheAccessPolicyProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<RedisCacheAccessPolicyProperties>;
+
 export interface AccessPolicyCreateUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -104,6 +134,11 @@ export interface AccessPolicyCreateUpdateRequest {
   /** Properties of an access policy. */
   properties?: RedisCacheAccessPolicyProperties;
 }
+const AccessPolicyCreateUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AccessPolicyCreateUpdateRequest>;
+
 export interface AccessPolicyCreateUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -116,6 +151,11 @@ export interface AccessPolicyCreateUpdateResponse {
   /** Properties of an access policy. */
   properties?: RedisCacheAccessPolicyProperties;
 }
+const AccessPolicyCreateUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AccessPolicyCreateUpdateResponse>;
+
 export interface CheckRedisNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -124,9 +164,21 @@ export interface CheckRedisNameAvailabilityRequest {
   /** Resource type. The only legal value of this property for checking redis cache name availability is 'Microsoft.Cache/redis'. */
   type: string;
 }
+const CheckRedisNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CheckRedisNameAvailabilityRequest>;
+
 export interface CheckRedisNameAvailabilityResponse {}
+const CheckRedisNameAvailabilityResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CheckRedisNameAvailabilityResponse>;
+
 /** Role of the linked server. */
 export type ReplicationRole = "Primary" | "Secondary";
+const ReplicationRole = S.String;
+
 /** Create properties for a linked server */
 export interface RedisLinkedServerCreatePropertiesInput {
   /** Fully qualified resourceId of the linked redis cache. */
@@ -136,6 +188,11 @@ export interface RedisLinkedServerCreatePropertiesInput {
   /** Role of the linked server. */
   serverRole: ReplicationRole | (string & {});
 }
+const RedisLinkedServerCreatePropertiesInput = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<RedisLinkedServerCreatePropertiesInput>;
+
 export interface CreateLinkedServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -148,6 +205,11 @@ export interface CreateLinkedServerRequest {
   /** Properties required to create a linked server. */
   properties: RedisLinkedServerCreatePropertiesInput;
 }
+const CreateLinkedServerRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateLinkedServerRequest>;
+
 /** Properties of a linked server to be returned in get/put response */
 export interface RedisLinkedServerProperties {
   /** Fully qualified resourceId of the linked redis cache. */
@@ -163,6 +225,11 @@ export interface RedisLinkedServerProperties {
   /** Terminal state of the link between primary and secondary redis cache. */
   provisioningState?: string;
 }
+const RedisLinkedServerProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<RedisLinkedServerProperties>;
+
 export interface CreateLinkedServerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -175,6 +242,11 @@ export interface CreateLinkedServerResponse {
   /** Properties of the linked server. */
   properties?: RedisLinkedServerProperties;
 }
+const CreateLinkedServerResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateLinkedServerResponse>;
+
 /** All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc. */
 export interface RedisCommonPropertiesRedisConfigurationInput {
   /** Specifies whether the RDB backup is enabled */
@@ -210,20 +282,42 @@ export interface RedisCommonPropertiesRedisConfigurationInput {
   /** Specifies whether AAD based authentication has been enabled or disabled for the cache */
   aad_enabled?: string;
 }
+const RedisCommonPropertiesRedisConfigurationInput = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<RedisCommonPropertiesRedisConfigurationInput>;
+
 /** A dictionary of tenant settings */
 export type RedisCreatePropertiesInputTenantSettingsMap = { [key: string]: string | undefined };
+const RedisCreatePropertiesInputTenantSettingsMap = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<RedisCreatePropertiesInputTenantSettingsMap>;
+
 /** Optional: requires clients to use a specified TLS version (or higher) to connect (e,g, '1.0', '1.1', '1.2') */
 export type TlsVersion = "1.0" | "1.1" | "1.2";
+const TlsVersion = S.String;
+
 /** Whether or not public endpoint access is allowed for this cache. Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled' */
 export type PublicNetworkAccess = "Enabled" | "Disabled";
+const PublicNetworkAccess = S.String;
+
 /** Optional: Specifies the update channel for the monthly Redis updates your Redis Cache will receive. Caches using 'Preview' update channel get latest Redis updates at least 4 weeks ahead of 'Stable' channel caches. Default value is 'Stable'. */
 export type UpdateChannel = "Stable" | "Preview";
+const UpdateChannel = S.String;
+
 /** Optional: Specifies how availability zones are allocated to the Redis cache. 'Automatic' enables zone redundancy and Azure will automatically select zones based on regional availability and capacity. 'UserDefined' will select availability zones passed in by you using the 'zones' parameter. 'NoZones' will produce a non-zonal cache. If 'zonalAllocationPolicy' is not passed, it will be set to 'UserDefined' when zones are passed in, otherwise, it will be set to 'Automatic' in regions where zones are supported and 'NoZones' in regions where zones are not supported. */
 export type ZonalAllocationPolicy = "Automatic" | "UserDefined" | "NoZones";
+const ZonalAllocationPolicy = S.String;
+
 /** The type of Redis cache to deploy. Valid values: (Basic, Standard, Premium) */
 export type SkuName = "Basic" | "Standard" | "Premium";
+const SkuName = S.String;
+
 /** The SKU family to use. Valid values: (C, P). (C = Basic/Standard, P = Premium). */
 export type SkuFamily = "C" | "P";
+const SkuFamily = S.String;
+
 /** SKU parameters supplied to the create Redis operation. */
 export interface Sku {
   /** The type of Redis cache to deploy. Valid values: (Basic, Standard, Premium) */
@@ -233,6 +327,8 @@ export interface Sku {
   /** The size of the Redis cache to deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium) family (1, 2, 3, 4). */
   capacity: number;
 }
+const Sku = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Sku>;
+
 /** Properties supplied to Create Redis operation. */
 export interface RedisCreatePropertiesInput {
   /** All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc. */
@@ -266,25 +362,55 @@ export interface RedisCreatePropertiesInput {
   /** Static IP address. Optionally, may be specified when deploying a Redis cache inside an existing Azure Virtual Network; auto assigned by default. */
   staticIP?: string;
 }
+const RedisCreatePropertiesInput = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<RedisCreatePropertiesInput>;
+
 /** A list of availability zones denoting where the resource needs to come from. */
 export type CreateRedisRequestZonesList = Array<string>;
+const CreateRedisRequestZonesList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateRedisRequestZonesList>;
+
 /** Resource tags. */
 export type CreateRedisRequestTagsMap = { [key: string]: string | undefined };
+const CreateRedisRequestTagsMap =
+  RedisCreatePropertiesInputTenantSettingsMap as any as S.Schema<CreateRedisRequestTagsMap>;
+
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned";
+const ManagedServiceIdentityType = S.String;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
+const UserAssignedIdentityInput = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<UserAssignedIdentityInput>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = { [key: string]: UserAssignedIdentityInput | undefined };
+const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateRedisRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
+const CreateRedisRequestIdentity = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateRedisRequestIdentity>;
+
 export interface CreateRedisRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -303,8 +429,13 @@ export interface CreateRedisRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateRedisRequestIdentity;
 }
+const CreateRedisRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<CreateRedisRequest>;
+
 /** Resource tags. */
 export type CreateRedisResponseTagsMap = { [key: string]: string | undefined };
+const CreateRedisResponseTagsMap =
+  RedisCreatePropertiesInputTenantSettingsMap as any as S.Schema<CreateRedisResponseTagsMap>;
+
 /** All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc. */
 export interface RedisCommonPropertiesRedisConfiguration {
   /** Specifies whether the RDB backup is enabled */
@@ -346,8 +477,16 @@ export interface RedisCommonPropertiesRedisConfiguration {
   /** Specifies whether AAD based authentication has been enabled or disabled for the cache */
   aad_enabled?: string;
 }
+const RedisCommonPropertiesRedisConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<RedisCommonPropertiesRedisConfiguration>;
+
 /** A dictionary of tenant settings */
 export type RedisPropertiesTenantSettingsMap = { [key: string]: string | undefined };
+const RedisPropertiesTenantSettingsMap =
+  RedisCreatePropertiesInputTenantSettingsMap as any as S.Schema<RedisPropertiesTenantSettingsMap>;
+
 /** Redis instance provisioning status. */
 export type ProvisioningState =
   | "Creating"
@@ -363,6 +502,8 @@ export type ProvisioningState =
   | "Unprovisioning"
   | "Updating"
   | "ConfiguringAAD";
+const ProvisioningState = S.String;
+
 /** Redis cache access keys. */
 export interface RedisAccessKeys {
   /** The current primary key that clients can use to authenticate with Redis cache. */
@@ -370,13 +511,22 @@ export interface RedisAccessKeys {
   /** The current secondary key that clients can use to authenticate with Redis cache. */
   secondaryKey?: string;
 }
+const RedisAccessKeys = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<RedisAccessKeys>;
+
 /** Linked server Id */
 export interface RedisLinkedServer {
   /** Linked server Id. */
   id?: string;
 }
+const RedisLinkedServer = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<RedisLinkedServer>;
+
 /** List of the linked servers associated with the cache */
 export type RedisPropertiesLinkedServersList = Array<RedisLinkedServer>;
+const RedisPropertiesLinkedServersList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<RedisPropertiesLinkedServersList>;
+
 /** Details of single instance of redis. */
 export interface RedisInstanceDetails {
   /** Redis instance SSL port. */
@@ -392,17 +542,31 @@ export interface RedisInstanceDetails {
   /** Specifies whether the instance is a primary node. */
   isPrimary?: boolean;
 }
+const RedisInstanceDetails = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<RedisInstanceDetails>;
+
 /** List of the Redis instances associated with the cache */
 export type RedisPropertiesInstancesList = Array<RedisInstanceDetails>;
+const RedisPropertiesInstancesList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<RedisPropertiesInstancesList>;
+
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
+const PrivateEndpointConnectionPropertiesGroupIdsList =
+  CreateRedisRequestZonesList as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
+
 /** The private endpoint resource. */
 export interface PrivateEndpoint {
   /** The ARM identifier for private endpoint. */
   id?: string;
 }
+const PrivateEndpoint = RedisLinkedServer as any as S.Schema<PrivateEndpoint>;
+
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
+const PrivateEndpointServiceConnectionStatus = S.String;
+
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
@@ -412,12 +576,19 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<PrivateLinkServiceConnectionState>;
+
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
   | "Failed";
+const PrivateEndpointConnectionProvisioningState = S.String;
+
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionProperties {
   /** The group ids for the private endpoint resource. */
@@ -429,6 +600,11 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<PrivateEndpointConnectionProperties>;
+
 /** The private endpoint connection resource. */
 export interface RedisPropertiesPrivateEndpointConnectionsItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -442,9 +618,19 @@ export interface RedisPropertiesPrivateEndpointConnectionsItem {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const RedisPropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<RedisPropertiesPrivateEndpointConnectionsItem>;
+
 /** List of private endpoint connection associated with the specified redis cache */
 export type RedisPropertiesPrivateEndpointConnectionsList =
   Array<RedisPropertiesPrivateEndpointConnectionsItem>;
+const RedisPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<RedisPropertiesPrivateEndpointConnectionsList>;
+
 /** Properties of the redis cache. */
 export interface RedisProperties {
   /** All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc. */
@@ -494,8 +680,13 @@ export interface RedisProperties {
   /** List of private endpoint connection associated with the specified redis cache */
   privateEndpointConnections?: RedisPropertiesPrivateEndpointConnectionsList;
 }
+const RedisProperties = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<RedisProperties>;
+
 /** The availability zones. */
 export type CreateRedisResponseZonesList = Array<string>;
+const CreateRedisResponseZonesList =
+  CreateRedisRequestZonesList as any as S.Schema<CreateRedisResponseZonesList>;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -503,8 +694,15 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
+const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<UserAssignedIdentity>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | undefined };
+const UserAssignedIdentities = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<UserAssignedIdentities>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateRedisResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -514,6 +712,11 @@ export interface CreateRedisResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
+const CreateRedisResponseIdentity = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateRedisResponseIdentity>;
+
 export interface CreateRedisResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -534,6 +737,8 @@ export interface CreateRedisResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateRedisResponseIdentity;
 }
+const CreateRedisResponse = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<CreateRedisResponse>;
+
 export interface DeleteAccessPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -544,7 +749,15 @@ export interface DeleteAccessPolicyRequest {
   /** The name of the access policy that is being added to the Redis cache. */
   accessPolicyName: string;
 }
+const DeleteAccessPolicyRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DeleteAccessPolicyRequest>;
+
 export interface DeleteAccessPolicyResponse {}
+const DeleteAccessPolicyResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteAccessPolicyResponse>;
+
 export interface DeleteAccessPolicyAssignmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -555,7 +768,15 @@ export interface DeleteAccessPolicyAssignmentRequest {
   /** The name of the access policy assignment. */
   accessPolicyAssignmentName: string;
 }
+const DeleteAccessPolicyAssignmentRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<DeleteAccessPolicyAssignmentRequest>;
+
 export interface DeleteAccessPolicyAssignmentResponse {}
+const DeleteAccessPolicyAssignmentResponse =
+  CheckRedisNameAvailabilityResponse as any as S.Schema<DeleteAccessPolicyAssignmentResponse>;
+
 export interface DeleteFirewallRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -566,7 +787,15 @@ export interface DeleteFirewallRuleRequest {
   /** The name of the firewall rule. */
   ruleName: string;
 }
+const DeleteFirewallRuleRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<DeleteFirewallRuleRequest>;
+
 export interface DeleteFirewallRuleResponse {}
+const DeleteFirewallRuleResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteFirewallRuleResponse>;
+
 export interface DeleteLinkedServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -577,8 +806,18 @@ export interface DeleteLinkedServerRequest {
   /** The name of the RedisLinkedServerWithProperties */
   linkedServerName: string;
 }
+const DeleteLinkedServerRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<DeleteLinkedServerRequest>;
+
 export interface DeleteLinkedServerResponse {}
+const DeleteLinkedServerResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteLinkedServerResponse>;
+
 export type DeletePatchScheduleRequestDefault = "default";
+const DeletePatchScheduleRequestDefault = S.String;
+
 export interface DeletePatchScheduleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -589,7 +828,15 @@ export interface DeletePatchScheduleRequest {
   /** The name of the RedisPatchSchedule */
   default: DeletePatchScheduleRequestDefault | (string & {});
 }
+const DeletePatchScheduleRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<DeletePatchScheduleRequest>;
+
 export interface DeletePatchScheduleResponse {}
+const DeletePatchScheduleResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeletePatchScheduleResponse>;
+
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -600,7 +847,15 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
+
 export interface DeletePrivateEndpointConnectionResponse {}
+const DeletePrivateEndpointConnectionResponse =
+  CheckRedisNameAvailabilityResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+
 export interface DeleteRedisRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -609,7 +864,11 @@ export interface DeleteRedisRequest {
   /** The name of the RedisResource */
   name: string;
 }
+const DeleteRedisRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<DeleteRedisRequest>;
+
 export interface DeleteRedisResponse {}
+const DeleteRedisResponse = UserAssignedIdentityInput as any as S.Schema<DeleteRedisResponse>;
+
 export interface ExportRedisDataRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -628,7 +887,15 @@ export interface ExportRedisDataRequest {
   /** Subscription id of the storage container for data to be exported using ManagedIdentity. */
   storage_subscription_id?: string;
 }
+const ExportRedisDataRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ExportRedisDataRequest>;
+
 export interface ExportRedisDataResponse {}
+const ExportRedisDataResponse =
+  UserAssignedIdentityInput as any as S.Schema<ExportRedisDataResponse>;
+
 /** Specifies a range of IP addresses permitted to connect to the cache */
 export interface RedisFirewallRuleProperties {
   /** lowest IP address included in the range */
@@ -636,6 +903,11 @@ export interface RedisFirewallRuleProperties {
   /** highest IP address included in the range */
   endIP: string;
 }
+const RedisFirewallRuleProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<RedisFirewallRuleProperties>;
+
 export interface FirewallRulesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -648,6 +920,11 @@ export interface FirewallRulesCreateOrUpdateRequest {
   /** redis cache firewall rule properties */
   properties: RedisFirewallRuleProperties;
 }
+const FirewallRulesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<FirewallRulesCreateOrUpdateRequest>;
+
 export interface FirewallRulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -660,6 +937,11 @@ export interface FirewallRulesCreateOrUpdateResponse {
   /** redis cache firewall rule properties */
   properties: RedisFirewallRuleProperties;
 }
+const FirewallRulesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<FirewallRulesCreateOrUpdateResponse>;
+
 export interface FlushRedisCacheRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -668,10 +950,25 @@ export interface FlushRedisCacheRequest {
   /** The name of the Redis cache. */
   cacheName: string;
 }
+const FlushRedisCacheRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<FlushRedisCacheRequest>;
+
 /** The operations list. */
 export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
+const OperationStatusResultOperationsList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<OperationStatusResultOperationsList>;
+
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
+const ErrorDetailDetailsList = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ErrorDetailDetailsList>;
+
 /** The resource management error additional info. */
 export interface ErrorAdditionalInfo {
   /** The additional info type. */
@@ -679,8 +976,15 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
+const ErrorAdditionalInfo = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ErrorAdditionalInfo>;
+
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
+const ErrorDetailAdditionalInfoList = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ErrorDetailAdditionalInfoList>;
+
 /** The error detail. */
 export interface ErrorDetail {
   /** The error code. */
@@ -694,6 +998,8 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
+const ErrorDetail = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ErrorDetail>;
+
 /** The current status of an async operation. */
 export interface OperationStatusResult {
   /** Fully qualified ID for the async operation. */
@@ -713,8 +1019,18 @@ export interface OperationStatusResult {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
+const OperationStatusResult = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<OperationStatusResult>;
+
 /** The operations list. */
 export type FlushRedisCacheResponseOperationsList = Array<OperationStatusResult>;
+const FlushRedisCacheResponseOperationsList = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<FlushRedisCacheResponseOperationsList>;
+
 export interface FlushRedisCacheResponse {
   /** Fully qualified ID for the async operation. */
   id?: string;
@@ -733,6 +1049,11 @@ export interface FlushRedisCacheResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
+const FlushRedisCacheResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<FlushRedisCacheResponse>;
+
 export interface GetAccessPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -743,6 +1064,11 @@ export interface GetAccessPolicyRequest {
   /** The name of the access policy that is being added to the Redis cache. */
   accessPolicyName: string;
 }
+const GetAccessPolicyRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GetAccessPolicyRequest>;
+
 export interface GetAccessPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -755,6 +1081,11 @@ export interface GetAccessPolicyResponse {
   /** Properties of an access policy. */
   properties?: RedisCacheAccessPolicyProperties;
 }
+const GetAccessPolicyResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<GetAccessPolicyResponse>;
+
 export interface GetAccessPolicyAssignmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -765,6 +1096,11 @@ export interface GetAccessPolicyAssignmentRequest {
   /** The name of the access policy assignment. */
   accessPolicyAssignmentName: string;
 }
+const GetAccessPolicyAssignmentRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetAccessPolicyAssignmentRequest>;
+
 export interface GetAccessPolicyAssignmentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -777,6 +1113,9 @@ export interface GetAccessPolicyAssignmentResponse {
   /** Properties of an access policy assignment */
   properties?: RedisCacheAccessPolicyAssignmentProperties;
 }
+const GetAccessPolicyAssignmentResponse =
+  AccessPolicyAssignmentCreateUpdateResponse as any as S.Schema<GetAccessPolicyAssignmentResponse>;
+
 export interface GetAsyncOperationStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -785,10 +1124,23 @@ export interface GetAsyncOperationStatusRequest {
   /** The ID of asynchronous operation */
   operationId: string;
 }
+const GetAsyncOperationStatusRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GetAsyncOperationStatusRequest>;
+
 /** The operations list. */
 export type GetAsyncOperationStatusResponseOperationsList = Array<OperationStatusResult>;
+const GetAsyncOperationStatusResponseOperationsList =
+  FlushRedisCacheResponseOperationsList as any as S.Schema<GetAsyncOperationStatusResponseOperationsList>;
+
 /** Additional properties from RP, only when operation is successful */
 export type GetAsyncOperationStatusResponsePropertiesMap = { [key: string]: unknown | undefined };
+const GetAsyncOperationStatusResponsePropertiesMap = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<GetAsyncOperationStatusResponsePropertiesMap>;
+
 export interface GetAsyncOperationStatusResponse {
   /** Fully qualified ID for the async operation. */
   id?: string;
@@ -809,6 +1161,11 @@ export interface GetAsyncOperationStatusResponse {
   /** Additional properties from RP, only when operation is successful */
   properties?: GetAsyncOperationStatusResponsePropertiesMap;
 }
+const GetAsyncOperationStatusResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GetAsyncOperationStatusResponse>;
+
 export interface GetFirewallRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -819,6 +1176,11 @@ export interface GetFirewallRuleRequest {
   /** The name of the firewall rule. */
   ruleName: string;
 }
+const GetFirewallRuleRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetFirewallRuleRequest>;
+
 export interface GetFirewallRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -831,6 +1193,11 @@ export interface GetFirewallRuleResponse {
   /** redis cache firewall rule properties */
   properties: RedisFirewallRuleProperties;
 }
+const GetFirewallRuleResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GetFirewallRuleResponse>;
+
 export interface GetLinkedServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -841,6 +1208,11 @@ export interface GetLinkedServerRequest {
   /** The name of the RedisLinkedServerWithProperties */
   linkedServerName: string;
 }
+const GetLinkedServerRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<GetLinkedServerRequest>;
+
 export interface GetLinkedServerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -853,7 +1225,14 @@ export interface GetLinkedServerResponse {
   /** Properties of the linked server. */
   properties?: RedisLinkedServerProperties;
 }
+const GetLinkedServerResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetLinkedServerResponse>;
+
 export type GetPatchScheduleRequestDefault = "default";
+const GetPatchScheduleRequestDefault = S.String;
+
 export interface GetPatchScheduleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -864,6 +1243,11 @@ export interface GetPatchScheduleRequest {
   /** The name of the RedisPatchSchedule */
   default: GetPatchScheduleRequestDefault | (string & {});
 }
+const GetPatchScheduleRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GetPatchScheduleRequest>;
+
 /** Day of the week when a cache can be patched. */
 export type DayOfWeek =
   | "Monday"
@@ -875,6 +1259,8 @@ export type DayOfWeek =
   | "Sunday"
   | "Everyday"
   | "Weekend";
+const DayOfWeek = S.String;
+
 /** Patch schedule entry for a Premium Redis Cache. */
 export interface ScheduleEntry {
   /** Day of the week when a cache can be patched. */
@@ -884,13 +1270,22 @@ export interface ScheduleEntry {
   /** ISO8601 timespan specifying how much time cache patching can take. */
   maintenanceWindow?: string;
 }
+const ScheduleEntry = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<ScheduleEntry>;
+
 /** List of patch schedules for a Redis cache. */
 export type ScheduleEntriesScheduleEntriesList = Array<ScheduleEntry>;
+const ScheduleEntriesScheduleEntriesList = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ScheduleEntriesScheduleEntriesList>;
+
 /** List of patch schedules for a Redis cache. */
 export interface ScheduleEntries {
   /** List of patch schedules for a Redis cache. */
   scheduleEntries: ScheduleEntriesScheduleEntriesList;
 }
+const ScheduleEntries = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<ScheduleEntries>;
+
 export interface GetPatchScheduleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -905,6 +1300,11 @@ export interface GetPatchScheduleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
+const GetPatchScheduleResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<GetPatchScheduleResponse>;
+
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -915,6 +1315,11 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
+
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -927,6 +1332,9 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const GetPrivateEndpointConnectionResponse =
+  RedisPropertiesPrivateEndpointConnectionsItem as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+
 export interface GetRedisRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -935,6 +1343,8 @@ export interface GetRedisRequest {
   /** The name of the RedisResource */
   name: string;
 }
+const GetRedisRequest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<GetRedisRequest>;
+
 /** Resource tags. */
 export type GetRedisResponseTagsMap = { [key: string]: string | undefined };
 /** The availability zones. */
@@ -961,8 +1371,13 @@ export interface GetRedisResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateRedisResponseIdentity;
 }
+const GetRedisResponse = CreateRedisResponse as any as S.Schema<GetRedisResponse>;
+
 /** files to import. */
 export type ImportRedisDataRequestFilesList = Array<string>;
+const ImportRedisDataRequestFilesList =
+  CreateRedisRequestZonesList as any as S.Schema<ImportRedisDataRequestFilesList>;
+
 export interface ImportRedisDataRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -979,7 +1394,15 @@ export interface ImportRedisDataRequest {
   /** Subscription id of the storage container containing files to import using Managed Identity. */
   storage_subscription_id?: string;
 }
+const ImportRedisDataRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ImportRedisDataRequest>;
+
 export interface ImportRedisDataResponse {}
+const ImportRedisDataResponse =
+  UserAssignedIdentityInput as any as S.Schema<ImportRedisDataResponse>;
+
 export interface ListAccessPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -988,6 +1411,11 @@ export interface ListAccessPolicyRequest {
   /** The name of the Redis cache. */
   cacheName: string;
 }
+const ListAccessPolicyRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ListAccessPolicyRequest>;
+
 /** Response to get/put access policy. */
 export interface RedisCacheAccessPolicy {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1001,8 +1429,15 @@ export interface RedisCacheAccessPolicy {
   /** Properties of an access policy. */
   properties?: RedisCacheAccessPolicyProperties;
 }
+const RedisCacheAccessPolicy = GetAccessPolicyResponse as any as S.Schema<RedisCacheAccessPolicy>;
+
 /** The RedisCacheAccessPolicy items on this page */
 export type RedisCacheAccessPolicyListValueList = Array<RedisCacheAccessPolicy>;
+const RedisCacheAccessPolicyListValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<RedisCacheAccessPolicyListValueList>;
+
 /** List of access policies (with properties) of a Redis cache. */
 export interface RedisCacheAccessPolicyList {
   /** The RedisCacheAccessPolicy items on this page */
@@ -1010,6 +1445,11 @@ export interface RedisCacheAccessPolicyList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const RedisCacheAccessPolicyList = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<RedisCacheAccessPolicyList>;
+
 export interface ListAccessPolicyAssignmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1018,6 +1458,11 @@ export interface ListAccessPolicyAssignmentRequest {
   /** The name of the Redis cache. */
   cacheName: string;
 }
+const ListAccessPolicyAssignmentRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ListAccessPolicyAssignmentRequest>;
+
 /** Response to an operation on access policy assignment */
 export interface RedisCacheAccessPolicyAssignment {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1031,8 +1476,16 @@ export interface RedisCacheAccessPolicyAssignment {
   /** Properties of an access policy assignment */
   properties?: RedisCacheAccessPolicyAssignmentProperties;
 }
+const RedisCacheAccessPolicyAssignment =
+  AccessPolicyAssignmentCreateUpdateResponse as any as S.Schema<RedisCacheAccessPolicyAssignment>;
+
 /** The RedisCacheAccessPolicyAssignment items on this page */
 export type RedisCacheAccessPolicyAssignmentListValueList = Array<RedisCacheAccessPolicyAssignment>;
+const RedisCacheAccessPolicyAssignmentListValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<RedisCacheAccessPolicyAssignmentListValueList>;
+
 /** List of access policies assignments (with properties) of a Redis cache. */
 export interface RedisCacheAccessPolicyAssignmentList {
   /** The RedisCacheAccessPolicyAssignment items on this page */
@@ -1040,6 +1493,11 @@ export interface RedisCacheAccessPolicyAssignmentList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const RedisCacheAccessPolicyAssignmentList = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<RedisCacheAccessPolicyAssignmentList>;
+
 export interface ListFirewallRulesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1048,6 +1506,11 @@ export interface ListFirewallRulesRequest {
   /** The name of the Redis cache. */
   cacheName: string;
 }
+const ListFirewallRulesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ListFirewallRulesRequest>;
+
 /** A firewall rule on a redis cache has a name, and describes a contiguous range of IP addresses permitted to connect */
 export interface RedisFirewallRule {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1061,8 +1524,15 @@ export interface RedisFirewallRule {
   /** redis cache firewall rule properties */
   properties: RedisFirewallRuleProperties;
 }
+const RedisFirewallRule = GetFirewallRuleResponse as any as S.Schema<RedisFirewallRule>;
+
 /** The RedisFirewallRule items on this page */
 export type RedisFirewallRuleListResultValueList = Array<RedisFirewallRule>;
+const RedisFirewallRuleListResultValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<RedisFirewallRuleListResultValueList>;
+
 /** The response of a RedisFirewallRule list operation. */
 export interface RedisFirewallRuleListResult {
   /** The RedisFirewallRule items on this page */
@@ -1070,6 +1540,11 @@ export interface RedisFirewallRuleListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const RedisFirewallRuleListResult = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<RedisFirewallRuleListResult>;
+
 export interface ListLinkedServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1078,6 +1553,11 @@ export interface ListLinkedServerRequest {
   /** The name of the redis cache. */
   name: string;
 }
+const ListLinkedServerRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListLinkedServerRequest>;
+
 /** Response to put/get linked server (with properties) for Redis cache. */
 export interface RedisLinkedServerWithProperties {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1091,8 +1571,16 @@ export interface RedisLinkedServerWithProperties {
   /** Properties of the linked server. */
   properties?: RedisLinkedServerProperties;
 }
+const RedisLinkedServerWithProperties =
+  CreateLinkedServerResponse as any as S.Schema<RedisLinkedServerWithProperties>;
+
 /** The RedisLinkedServerWithProperties items on this page */
 export type RedisLinkedServerWithPropertiesListValueList = Array<RedisLinkedServerWithProperties>;
+const RedisLinkedServerWithPropertiesListValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<RedisLinkedServerWithPropertiesListValueList>;
+
 /** List of linked servers (with properties) of a Redis cache. */
 export interface RedisLinkedServerWithPropertiesList {
   /** The RedisLinkedServerWithProperties items on this page */
@@ -1100,7 +1588,17 @@ export interface RedisLinkedServerWithPropertiesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const RedisLinkedServerWithPropertiesList = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<RedisLinkedServerWithPropertiesList>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** The object that describes the operation. */
 export interface OperationDisplay {
   /** Friendly name of the resource provider */
@@ -1112,6 +1610,8 @@ export interface OperationDisplay {
   /** Friendly name of the operation */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<OperationDisplay>;
+
 /** REST API operation */
 export interface Operation {
   /** Operation name: {provider}/{resource}/{operation} */
@@ -1119,8 +1619,15 @@ export interface Operation {
   /** The object that describes the operation. */
   display?: OperationDisplay;
 }
+const Operation = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider. */
 export type OperationListResultValueList = Array<Operation>;
+const OperationListResultValueList = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<OperationListResultValueList>;
+
 /** Result of the request to list REST API operations. It contains a list of operations and a URL nextLink to get the next set of results. */
 export interface OperationListResult {
   /** List of operations supported by the resource provider. */
@@ -1128,6 +1635,8 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
+const OperationListResult = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<OperationListResult>;
+
 export interface ListPatchScheduleByRedisResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1136,6 +1645,11 @@ export interface ListPatchScheduleByRedisResourceRequest {
   /** The name of the Redis cache. */
   cacheName: string;
 }
+const ListPatchScheduleByRedisResourceRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ListPatchScheduleByRedisResourceRequest>;
+
 /** Response to put/get patch schedules for Redis cache. */
 export interface RedisPatchSchedule {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1151,8 +1665,15 @@ export interface RedisPatchSchedule {
   /** The geo-location where the resource lives */
   location?: string;
 }
+const RedisPatchSchedule = GetPatchScheduleResponse as any as S.Schema<RedisPatchSchedule>;
+
 /** The RedisPatchSchedule items on this page */
 export type RedisPatchScheduleListResultValueList = Array<RedisPatchSchedule>;
+const RedisPatchScheduleListResultValueList = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<RedisPatchScheduleListResultValueList>;
+
 /** The response of a RedisPatchSchedule list operation. */
 export interface RedisPatchScheduleListResult {
   /** The RedisPatchSchedule items on this page */
@@ -1160,6 +1681,11 @@ export interface RedisPatchScheduleListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const RedisPatchScheduleListResult = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<RedisPatchScheduleListResult>;
+
 export interface ListPrivateEndpointConnectionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1168,12 +1694,20 @@ export interface ListPrivateEndpointConnectionsRequest {
   /** The name of the Redis cache. */
   cacheName: string;
 }
+const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ListPrivateEndpointConnectionsRequest>;
+
 /** The private endpoint connection resource. */
 export type PrivateEndpointConnectionListResultValueItem =
   RedisPropertiesPrivateEndpointConnectionsItem;
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
   Array<RedisPropertiesPrivateEndpointConnectionsItem>;
+const PrivateEndpointConnectionListResultValueList =
+  RedisPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+
 /** The response of a PrivateEndpointConnection list operation. */
 export interface PrivateEndpointConnectionListResult {
   /** The PrivateEndpointConnection items on this page */
@@ -1181,6 +1715,11 @@ export interface PrivateEndpointConnectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PrivateEndpointConnectionListResult = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<PrivateEndpointConnectionListResult>;
+
 export interface ListPrivateLinkResourceByRedisCacheRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1189,10 +1728,21 @@ export interface ListPrivateLinkResourceByRedisCacheRequest {
   /** The name of the Redis cache. */
   cacheName: string;
 }
+const ListPrivateLinkResourceByRedisCacheRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ListPrivateLinkResourceByRedisCacheRequest>;
+
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
+const PrivateLinkResourcePropertiesRequiredMembersList =
+  CreateRedisRequestZonesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  CreateRedisRequestZonesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
   /** The private link resource group id. */
@@ -1202,6 +1752,11 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
+const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<PrivateLinkResourceProperties>;
+
 /** A private link resource. */
 export interface PrivateLinkResourceListResultValueItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1215,8 +1770,18 @@ export interface PrivateLinkResourceListResultValueItem {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
+const PrivateLinkResourceListResultValueItem = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<PrivateLinkResourceListResultValueItem>;
+
 /** The PrivateLinkResource items on this page */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResourceListResultValueItem>;
+const PrivateLinkResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<PrivateLinkResourceListResultValueList>;
+
 /** The response of a PrivateLinkResource list operation. */
 export interface PrivateLinkResourceListResult {
   /** The PrivateLinkResource items on this page */
@@ -1224,12 +1789,22 @@ export interface PrivateLinkResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PrivateLinkResourceListResult = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<PrivateLinkResourceListResult>;
+
 export interface ListRedisByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListRedisByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ListRedisByResourceGroupRequest>;
+
 /** Resource tags. */
 export type RedisResourceTagsMap = { [key: string]: string | undefined };
 /** The availability zones. */
@@ -1257,8 +1832,15 @@ export interface RedisResource {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateRedisResponseIdentity;
 }
+const RedisResource = CreateRedisResponse as any as S.Schema<RedisResource>;
+
 /** The RedisResource items on this page */
 export type RedisListResultValueList = Array<RedisResource>;
+const RedisListResultValueList = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<RedisListResultValueList>;
+
 /** The response of list Redis operation. */
 export interface RedisListResult {
   /** The RedisResource items on this page */
@@ -1266,10 +1848,17 @@ export interface RedisListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const RedisListResult = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<RedisListResult>;
+
 export interface ListRedisBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListRedisBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ListRedisBySubscriptionRequest>;
+
 export interface ListRedisKeysRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1278,6 +1867,11 @@ export interface ListRedisKeysRequest {
   /** The name of the RedisResource */
   name: string;
 }
+const ListRedisKeysRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ListRedisKeysRequest>;
+
 export interface ListRedisUpgradeNotificationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1288,8 +1882,16 @@ export interface ListRedisUpgradeNotificationsRequest {
   /** how many minutes in past to look for upgrade notifications */
   history: number;
 }
+const ListRedisUpgradeNotificationsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ListRedisUpgradeNotificationsRequest>;
+
 /** Details about this upgrade notification */
 export type UpgradeNotificationUpsellNotificationMap = { [key: string]: string | undefined };
+const UpgradeNotificationUpsellNotificationMap =
+  RedisCreatePropertiesInputTenantSettingsMap as any as S.Schema<UpgradeNotificationUpsellNotificationMap>;
+
 /** Properties of upgrade notification. */
 export interface UpgradeNotification {
   /** Name of upgrade notification. */
@@ -1299,8 +1901,15 @@ export interface UpgradeNotification {
   /** Details about this upgrade notification */
   upsellNotification?: UpgradeNotificationUpsellNotificationMap;
 }
+const UpgradeNotification = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<UpgradeNotification>;
+
 /** The UpgradeNotification items on this page */
 export type NotificationListResponseValueList = Array<UpgradeNotification>;
+const NotificationListResponseValueList = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<NotificationListResponseValueList>;
+
 /** The response of listUpgradeNotifications. */
 export interface NotificationListResponse {
   /** The UpgradeNotification items on this page */
@@ -1308,7 +1917,14 @@ export interface NotificationListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const NotificationListResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<NotificationListResponse>;
+
 export type PatchSchedulesCreateOrUpdateRequestDefault = "default";
+const PatchSchedulesCreateOrUpdateRequestDefault = S.String;
+
 export interface PatchSchedulesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1321,6 +1937,11 @@ export interface PatchSchedulesCreateOrUpdateRequest {
   /** List of patch schedules for a Redis cache. */
   properties: ScheduleEntries;
 }
+const PatchSchedulesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<PatchSchedulesCreateOrUpdateRequest>;
+
 export interface PatchSchedulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1335,6 +1956,11 @@ export interface PatchSchedulesCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
+const PatchSchedulesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<PatchSchedulesCreateOrUpdateResponse>;
+
 /** The private endpoint resource. */
 export type PrivateEndpointInput = UserAssignedIdentityInput;
 /** Properties of the private endpoint connection. */
@@ -1344,6 +1970,11 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
+const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
 export interface PutPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1356,6 +1987,11 @@ export interface PutPrivateEndpointConnectionRequest {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
+const PutPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<PutPrivateEndpointConnectionRequest>;
+
 export interface PutPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1368,10 +2004,20 @@ export interface PutPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const PutPrivateEndpointConnectionResponse =
+  RedisPropertiesPrivateEndpointConnectionsItem as any as S.Schema<PutPrivateEndpointConnectionResponse>;
+
 /** Which Redis node(s) to reboot. Depending on this value data loss is possible. */
 export type RebootType = "PrimaryNode" | "SecondaryNode" | "AllNodes";
+const RebootType = S.String;
+
 /** A list of redis instances to reboot, specified by per-instance SSL ports or non-SSL ports. */
 export type RebootRedisForceRequestPortsList = Array<number>;
+const RebootRedisForceRequestPortsList = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<RebootRedisForceRequestPortsList>;
+
 export interface RebootRedisForceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1386,13 +2032,25 @@ export interface RebootRedisForceRequest {
   /** A list of redis instances to reboot, specified by per-instance SSL ports or non-SSL ports. */
   ports?: RebootRedisForceRequestPortsList;
 }
+const RebootRedisForceRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<RebootRedisForceRequest>;
+
 /** Response to force reboot for Redis cache. */
 export interface RebootRedisForceResponse {
   /** Status message */
   message?: string;
 }
+const RebootRedisForceResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<RebootRedisForceResponse>;
+
 /** The Redis access key to regenerate. */
 export type RedisKeyType = "Primary" | "Secondary";
+const RedisKeyType = S.String;
+
 export interface RegenerateRedisKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1403,8 +2061,16 @@ export interface RegenerateRedisKeyRequest {
   /** The Redis access key to regenerate. */
   keyType: RedisKeyType | (string & {});
 }
+const RegenerateRedisKeyRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<RegenerateRedisKeyRequest>;
+
 /** A dictionary of tenant settings */
 export type RedisUpdatePropertiesInputTenantSettingsMap = { [key: string]: string | undefined };
+const RedisUpdatePropertiesInputTenantSettingsMap =
+  RedisCreatePropertiesInputTenantSettingsMap as any as S.Schema<RedisUpdatePropertiesInputTenantSettingsMap>;
+
 /** Patchable properties of the redis cache. */
 export interface RedisUpdatePropertiesInput {
   /** All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc. */
@@ -1434,8 +2100,16 @@ export interface RedisUpdatePropertiesInput {
   /** The SKU of the Redis cache to deploy. */
   sku?: Sku;
 }
+const RedisUpdatePropertiesInput = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<RedisUpdatePropertiesInput>;
+
 /** Resource tags. */
 export type UpdateRedisRequestTagsMap = { [key: string]: string | undefined };
+const UpdateRedisRequestTagsMap =
+  RedisCreatePropertiesInputTenantSettingsMap as any as S.Schema<UpdateRedisRequestTagsMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateRedisRequestIdentity = CreateRedisRequestIdentity;
 export interface UpdateRedisRequest {
@@ -1452,6 +2126,8 @@ export interface UpdateRedisRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateRedisRequestIdentity;
 }
+const UpdateRedisRequest = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<UpdateRedisRequest>;
+
 /** Resource tags. */
 export type UpdateRedisResponseTagsMap = { [key: string]: string | undefined };
 /** The availability zones. */
@@ -1478,6 +2154,8 @@ export interface UpdateRedisResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateRedisResponseIdentity;
 }
+const UpdateRedisResponse = CreateRedisResponse as any as S.Schema<UpdateRedisResponse>;
+
 export type AccessPolicyAssignmentCreateUpdateError = AzureOpError;
 /** Adds the access policy assignment to the specified users */
 export const AccessPolicyAssignmentCreateUpdate: API.OperationMethod<
@@ -1486,8 +2164,8 @@ export const AccessPolicyAssignmentCreateUpdate: API.OperationMethod<
   AccessPolicyAssignmentCreateUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AccessPolicyAssignmentCreateUpdateRequest>,
-  output: __S(3) as any as S.Schema<AccessPolicyAssignmentCreateUpdateResponse>,
+  input: AccessPolicyAssignmentCreateUpdateRequest,
+  output: AccessPolicyAssignmentCreateUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1501,8 +2179,8 @@ export const AccessPolicyCreateUpdate: API.OperationMethod<
   AccessPolicyCreateUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<AccessPolicyCreateUpdateRequest>,
-  output: __S(6) as any as S.Schema<AccessPolicyCreateUpdateResponse>,
+  input: AccessPolicyCreateUpdateRequest,
+  output: AccessPolicyCreateUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1516,8 +2194,8 @@ export const CheckRedisNameAvailability: API.OperationMethod<
   CheckRedisNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<CheckRedisNameAvailabilityRequest>,
-  output: __S(8) as any as S.Schema<CheckRedisNameAvailabilityResponse>,
+  input: CheckRedisNameAvailabilityRequest,
+  output: CheckRedisNameAvailabilityResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1531,8 +2209,8 @@ export const CreateLinkedServer: API.OperationMethod<
   CreateLinkedServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CreateLinkedServerRequest>,
-  output: __S(12) as any as S.Schema<CreateLinkedServerResponse>,
+  input: CreateLinkedServerRequest,
+  output: CreateLinkedServerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1546,8 +2224,8 @@ export const CreateRedis: API.OperationMethod<
   CreateRedisError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<CreateRedisRequest>,
-  output: __S(36) as any as S.Schema<CreateRedisResponse>,
+  input: CreateRedisRequest,
+  output: CreateRedisResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1561,8 +2239,8 @@ export const DeleteAccessPolicy: API.OperationMethod<
   DeleteAccessPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<DeleteAccessPolicyRequest>,
-  output: __S(18) as any as S.Schema<DeleteAccessPolicyResponse>,
+  input: DeleteAccessPolicyRequest,
+  output: DeleteAccessPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1576,8 +2254,8 @@ export const DeleteAccessPolicyAssignment: API.OperationMethod<
   DeleteAccessPolicyAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<DeleteAccessPolicyAssignmentRequest>,
-  output: __S(8) as any as S.Schema<DeleteAccessPolicyAssignmentResponse>,
+  input: DeleteAccessPolicyAssignmentRequest,
+  output: DeleteAccessPolicyAssignmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1591,8 +2269,8 @@ export const DeleteFirewallRule: API.OperationMethod<
   DeleteFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<DeleteFirewallRuleRequest>,
-  output: __S(18) as any as S.Schema<DeleteFirewallRuleResponse>,
+  input: DeleteFirewallRuleRequest,
+  output: DeleteFirewallRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1606,8 +2284,8 @@ export const DeleteLinkedServer: API.OperationMethod<
   DeleteLinkedServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<DeleteLinkedServerRequest>,
-  output: __S(18) as any as S.Schema<DeleteLinkedServerResponse>,
+  input: DeleteLinkedServerRequest,
+  output: DeleteLinkedServerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1621,8 +2299,8 @@ export const DeletePatchSchedule: API.OperationMethod<
   DeletePatchScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<DeletePatchScheduleRequest>,
-  output: __S(18) as any as S.Schema<DeletePatchScheduleResponse>,
+  input: DeletePatchScheduleRequest,
+  output: DeletePatchScheduleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1636,8 +2314,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(8) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: DeletePrivateEndpointConnectionRequest,
+  output: DeletePrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1651,8 +2329,8 @@ export const DeleteRedis: API.OperationMethod<
   DeleteRedisError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<DeleteRedisRequest>,
-  output: __S(18) as any as S.Schema<DeleteRedisResponse>,
+  input: DeleteRedisRequest,
+  output: DeleteRedisResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1666,8 +2344,8 @@ export const ExportRedisData: API.OperationMethod<
   ExportRedisDataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<ExportRedisDataRequest>,
-  output: __S(18) as any as S.Schema<ExportRedisDataResponse>,
+  input: ExportRedisDataRequest,
+  output: ExportRedisDataResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1681,8 +2359,8 @@ export const FirewallRulesCreateOrUpdate: API.OperationMethod<
   FirewallRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<FirewallRulesCreateOrUpdateRequest>,
-  output: __S(47) as any as S.Schema<FirewallRulesCreateOrUpdateResponse>,
+  input: FirewallRulesCreateOrUpdateRequest,
+  output: FirewallRulesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1696,8 +2374,8 @@ export const FlushRedisCache: API.OperationMethod<
   FlushRedisCacheError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<FlushRedisCacheRequest>,
-  output: __S(56) as any as S.Schema<FlushRedisCacheResponse>,
+  input: FlushRedisCacheRequest,
+  output: FlushRedisCacheResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1711,8 +2389,8 @@ export const GetAccessPolicy: API.OperationMethod<
   GetAccessPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<GetAccessPolicyRequest>,
-  output: __S(58) as any as S.Schema<GetAccessPolicyResponse>,
+  input: GetAccessPolicyRequest,
+  output: GetAccessPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1726,8 +2404,8 @@ export const GetAccessPolicyAssignment: API.OperationMethod<
   GetAccessPolicyAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<GetAccessPolicyAssignmentRequest>,
-  output: __S(3) as any as S.Schema<GetAccessPolicyAssignmentResponse>,
+  input: GetAccessPolicyAssignmentRequest,
+  output: GetAccessPolicyAssignmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1741,8 +2419,8 @@ export const GetAsyncOperationStatus: API.OperationMethod<
   GetAsyncOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<GetAsyncOperationStatusRequest>,
-  output: __S(62) as any as S.Schema<GetAsyncOperationStatusResponse>,
+  input: GetAsyncOperationStatusRequest,
+  output: GetAsyncOperationStatusResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1756,8 +2434,8 @@ export const GetFirewallRule: API.OperationMethod<
   GetFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<GetFirewallRuleRequest>,
-  output: __S(64) as any as S.Schema<GetFirewallRuleResponse>,
+  input: GetFirewallRuleRequest,
+  output: GetFirewallRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1771,8 +2449,8 @@ export const GetLinkedServer: API.OperationMethod<
   GetLinkedServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<GetLinkedServerRequest>,
-  output: __S(66) as any as S.Schema<GetLinkedServerResponse>,
+  input: GetLinkedServerRequest,
+  output: GetLinkedServerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1786,8 +2464,8 @@ export const GetPatchSchedule: API.OperationMethod<
   GetPatchScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<GetPatchScheduleRequest>,
-  output: __S(71) as any as S.Schema<GetPatchScheduleResponse>,
+  input: GetPatchScheduleRequest,
+  output: GetPatchScheduleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1801,8 +2479,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(30) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: GetPrivateEndpointConnectionRequest,
+  output: GetPrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1816,8 +2494,8 @@ export const GetRedis: API.OperationMethod<
   GetRedisError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<GetRedisRequest>,
-  output: __S(36) as any as S.Schema<GetRedisResponse>,
+  input: GetRedisRequest,
+  output: GetRedisResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1831,8 +2509,8 @@ export const ImportRedisData: API.OperationMethod<
   ImportRedisDataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<ImportRedisDataRequest>,
-  output: __S(18) as any as S.Schema<ImportRedisDataResponse>,
+  input: ImportRedisDataRequest,
+  output: ImportRedisDataResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1846,8 +2524,8 @@ export const ListAccessPolicy: API.OperationMethod<
   ListAccessPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<ListAccessPolicyRequest>,
-  output: __S(77) as any as S.Schema<RedisCacheAccessPolicyList>,
+  input: ListAccessPolicyRequest,
+  output: RedisCacheAccessPolicyList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1861,8 +2539,8 @@ export const ListAccessPolicyAssignment: API.OperationMethod<
   ListAccessPolicyAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<ListAccessPolicyAssignmentRequest>,
-  output: __S(80) as any as S.Schema<RedisCacheAccessPolicyAssignmentList>,
+  input: ListAccessPolicyAssignmentRequest,
+  output: RedisCacheAccessPolicyAssignmentList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1876,8 +2554,8 @@ export const ListFirewallRules: API.OperationMethod<
   ListFirewallRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<ListFirewallRulesRequest>,
-  output: __S(83) as any as S.Schema<RedisFirewallRuleListResult>,
+  input: ListFirewallRulesRequest,
+  output: RedisFirewallRuleListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1891,8 +2569,8 @@ export const ListLinkedServer: API.OperationMethod<
   ListLinkedServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<ListLinkedServerRequest>,
-  output: __S(86) as any as S.Schema<RedisLinkedServerWithPropertiesList>,
+  input: ListLinkedServerRequest,
+  output: RedisLinkedServerWithPropertiesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1906,8 +2584,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<ListOperationsRequest>,
-  output: __S(91) as any as S.Schema<OperationListResult>,
+  input: ListOperationsRequest,
+  output: OperationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1921,8 +2599,8 @@ export const ListPatchScheduleByRedisResource: API.OperationMethod<
   ListPatchScheduleByRedisResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<ListPatchScheduleByRedisResourceRequest>,
-  output: __S(94) as any as S.Schema<RedisPatchScheduleListResult>,
+  input: ListPatchScheduleByRedisResourceRequest,
+  output: RedisPatchScheduleListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1936,8 +2614,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
-  output: __S(96) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: ListPrivateEndpointConnectionsRequest,
+  output: PrivateEndpointConnectionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1951,8 +2629,8 @@ export const ListPrivateLinkResourceByRedisCache: API.OperationMethod<
   ListPrivateLinkResourceByRedisCacheError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<ListPrivateLinkResourceByRedisCacheRequest>,
-  output: __S(101) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: ListPrivateLinkResourceByRedisCacheRequest,
+  output: PrivateLinkResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1966,8 +2644,8 @@ export const ListRedisByResourceGroup: API.OperationMethod<
   ListRedisByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<ListRedisByResourceGroupRequest>,
-  output: __S(104) as any as S.Schema<RedisListResult>,
+  input: ListRedisByResourceGroupRequest,
+  output: RedisListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1981,8 +2659,8 @@ export const ListRedisBySubscription: API.OperationMethod<
   ListRedisBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<ListRedisBySubscriptionRequest>,
-  output: __S(104) as any as S.Schema<RedisListResult>,
+  input: ListRedisBySubscriptionRequest,
+  output: RedisListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1996,8 +2674,8 @@ export const ListRedisKeys: API.OperationMethod<
   ListRedisKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<ListRedisKeysRequest>,
-  output: __S(23) as any as S.Schema<RedisAccessKeys>,
+  input: ListRedisKeysRequest,
+  output: RedisAccessKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2011,8 +2689,8 @@ export const ListRedisUpgradeNotifications: API.OperationMethod<
   ListRedisUpgradeNotificationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<ListRedisUpgradeNotificationsRequest>,
-  output: __S(110) as any as S.Schema<NotificationListResponse>,
+  input: ListRedisUpgradeNotificationsRequest,
+  output: NotificationListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2026,8 +2704,8 @@ export const PatchSchedulesCreateOrUpdate: API.OperationMethod<
   PatchSchedulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<PatchSchedulesCreateOrUpdateRequest>,
-  output: __S(112) as any as S.Schema<PatchSchedulesCreateOrUpdateResponse>,
+  input: PatchSchedulesCreateOrUpdateRequest,
+  output: PatchSchedulesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2041,8 +2719,8 @@ export const PutPrivateEndpointConnection: API.OperationMethod<
   PutPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<PutPrivateEndpointConnectionRequest>,
-  output: __S(30) as any as S.Schema<PutPrivateEndpointConnectionResponse>,
+  input: PutPrivateEndpointConnectionRequest,
+  output: PutPrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2056,8 +2734,8 @@ export const RebootRedisForce: API.OperationMethod<
   RebootRedisForceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<RebootRedisForceRequest>,
-  output: __S(117) as any as S.Schema<RebootRedisForceResponse>,
+  input: RebootRedisForceRequest,
+  output: RebootRedisForceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2071,8 +2749,8 @@ export const RegenerateRedisKey: API.OperationMethod<
   RegenerateRedisKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<RegenerateRedisKeyRequest>,
-  output: __S(23) as any as S.Schema<RedisAccessKeys>,
+  input: RegenerateRedisKeyRequest,
+  output: RedisAccessKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2086,8 +2764,8 @@ export const UpdateRedis: API.OperationMethod<
   UpdateRedisError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<UpdateRedisRequest>,
-  output: __S(36) as any as S.Schema<UpdateRedisResponse>,
+  input: UpdateRedisRequest,
+  output: UpdateRedisResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2099,7 +2777,7 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(AccessPolicyAssignmentProvisioningState),
           objectId: S.String,
           objectIdAlias: S.String,
           accessPolicyName: S.String,
@@ -2114,7 +2792,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           cacheName: S.String.pipe(T.Label()),
           accessPolicyAssignmentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(0)),
+          properties: S.optional(RedisCacheAccessPolicyAssignmentProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2130,10 +2808,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -2143,8 +2821,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(RedisCacheAccessPolicyAssignmentProperties),
         }),
       ).annotate({
         identifier: "AccessPolicyAssignmentCreateUpdateResponse",
@@ -2152,8 +2830,8 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          type: S.optional(S.String),
+          provisioningState: S.optional(AccessPolicyProvisioningState),
+          type: S.optional(AccessPolicyType),
           permissions: S.String,
         }),
       ).annotate({
@@ -2166,7 +2844,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           cacheName: S.String.pipe(T.Label()),
           accessPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(4)),
+          properties: S.optional(RedisCacheAccessPolicyProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2184,8 +2862,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(RedisCacheAccessPolicyProperties),
         }),
       ).annotate({
         identifier: "AccessPolicyCreateUpdateResponse",
@@ -2220,7 +2898,7 @@ function __c1(j: number): any {
         S.Struct({
           linkedRedisCacheId: S.String,
           linkedRedisCacheLocation: S.String,
-          serverRole: S.String,
+          serverRole: ReplicationRole,
         }),
       ).annotate({
         identifier: "RedisLinkedServerCreatePropertiesInput",
@@ -2232,7 +2910,7 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           linkedServerName: S.String.pipe(T.Label()),
-          properties: __S(9),
+          properties: RedisLinkedServerCreatePropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2249,7 +2927,7 @@ function __c1(j: number): any {
         S.Struct({
           linkedRedisCacheId: S.String,
           linkedRedisCacheLocation: S.String,
-          serverRole: S.String,
+          serverRole: ReplicationRole,
           geoReplicatedPrimaryHostName: S.optional(S.String),
           primaryHostName: S.optional(S.String),
           provisioningState: S.optional(S.String),
@@ -2263,8 +2941,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(11)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(RedisLinkedServerProperties),
         }),
       ).annotate({
         identifier: "CreateLinkedServerResponse",
@@ -2309,8 +2987,8 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
-          family: S.String,
+          name: SkuName,
+          family: SkuFamily,
           capacity: S.Number,
         }),
       ).annotate({ identifier: "Sku" });
@@ -2321,19 +2999,19 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          redisConfiguration: S.optional(__S(13)),
+          redisConfiguration: S.optional(RedisCommonPropertiesRedisConfigurationInput),
           redisVersion: S.optional(S.String),
           enableNonSslPort: S.optional(S.Boolean),
           replicasPerMaster: S.optional(S.Number),
           replicasPerPrimary: S.optional(S.Number),
-          tenantSettings: S.optional(__S(14)),
+          tenantSettings: S.optional(RedisCreatePropertiesInputTenantSettingsMap),
           shardCount: S.optional(S.Number),
-          minimumTlsVersion: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          updateChannel: S.optional(S.String),
+          minimumTlsVersion: S.optional(TlsVersion),
+          publicNetworkAccess: S.optional(PublicNetworkAccess),
+          updateChannel: S.optional(UpdateChannel),
           disableAccessKeyAuthentication: S.optional(S.Boolean),
-          zonalAllocationPolicy: S.optional(S.String),
-          sku: __S(15),
+          zonalAllocationPolicy: S.optional(ZonalAllocationPolicy),
+          sku: Sku,
           subnetId: S.optional(S.String),
           staticIP: S.optional(S.String),
         }),
@@ -2347,12 +3025,12 @@ function __c2(j: number): any {
         identifier: "UserAssignedIdentityInput",
       });
     case 3:
-      return S.Record(S.String, __S(18));
+      return S.Record(S.String, UserAssignedIdentityInput);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(19)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
         }),
       ).annotate({
         identifier: "CreateRedisRequestIdentity",
@@ -2363,11 +3041,11 @@ function __c2(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: __S(16),
-          zones: S.optional(__S(17)),
+          properties: RedisCreatePropertiesInput,
+          zones: S.optional(CreateRedisRequestZonesList),
           location: S.String,
-          tags: S.optional(__S(14)),
-          identity: S.optional(__S(20)),
+          tags: S.optional(CreateRedisRequestTagsMap),
+          identity: S.optional(CreateRedisRequestIdentity),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2435,7 +3113,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "RedisLinkedServer" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(RedisLinkedServer);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2448,11 +3126,11 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "RedisInstanceDetails" });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(RedisInstanceDetails);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(PrivateEndpointServiceConnectionStatus),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -2462,10 +3140,10 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(17)),
-          privateEndpoint: S.optional(__S(24)),
-          privateLinkServiceConnectionState: __S(28),
-          provisioningState: S.optional(S.String),
+          groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
+          privateEndpoint: S.optional(PrivateEndpoint),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+          provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -2476,14 +3154,14 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(29)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateEndpointConnectionProperties),
         }),
       ).annotate({
         identifier: "RedisPropertiesPrivateEndpointConnectionsItem",
       });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(RedisPropertiesPrivateEndpointConnectionsItem);
   }
 }
 function __c4(j: number): any {
@@ -2491,29 +3169,29 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          redisConfiguration: S.optional(__S(22)),
+          redisConfiguration: S.optional(RedisCommonPropertiesRedisConfiguration),
           redisVersion: S.optional(S.String),
           enableNonSslPort: S.optional(S.Boolean),
           replicasPerMaster: S.optional(S.Number),
           replicasPerPrimary: S.optional(S.Number),
-          tenantSettings: S.optional(__S(14)),
+          tenantSettings: S.optional(RedisPropertiesTenantSettingsMap),
           shardCount: S.optional(S.Number),
-          minimumTlsVersion: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          updateChannel: S.optional(S.String),
+          minimumTlsVersion: S.optional(TlsVersion),
+          publicNetworkAccess: S.optional(PublicNetworkAccess),
+          updateChannel: S.optional(UpdateChannel),
           disableAccessKeyAuthentication: S.optional(S.Boolean),
-          zonalAllocationPolicy: S.optional(S.String),
-          sku: __S(15),
+          zonalAllocationPolicy: S.optional(ZonalAllocationPolicy),
+          sku: Sku,
           subnetId: S.optional(S.String),
           staticIP: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           hostName: S.optional(S.String),
           port: S.optional(S.Number),
           sslPort: S.optional(S.Number),
-          accessKeys: S.optional(__S(23)),
-          linkedServers: S.optional(__S(25)),
-          instances: S.optional(__S(27)),
-          privateEndpointConnections: S.optional(__S(31)),
+          accessKeys: S.optional(RedisAccessKeys),
+          linkedServers: S.optional(RedisPropertiesLinkedServersList),
+          instances: S.optional(RedisPropertiesInstancesList),
+          privateEndpointConnections: S.optional(RedisPropertiesPrivateEndpointConnectionsList),
         }),
       ).annotate({ identifier: "RedisProperties" });
     case 1:
@@ -2524,14 +3202,14 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 2:
-      return S.Record(S.String, __S(33));
+      return S.Record(S.String, UserAssignedIdentity);
     case 3:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(34)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(UserAssignedIdentities),
         }),
       ).annotate({
         identifier: "CreateRedisResponseIdentity",
@@ -2542,12 +3220,12 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(14)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateRedisResponseTagsMap),
           location: S.String,
-          properties: __S(32),
-          zones: S.optional(__S(17)),
-          identity: S.optional(__S(35)),
+          properties: RedisProperties,
+          zones: S.optional(CreateRedisResponseZonesList),
+          identity: S.optional(CreateRedisResponseIdentity),
         }),
       ).annotate({ identifier: "CreateRedisResponse" });
     case 5:
@@ -2632,7 +3310,7 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          default: S.String.pipe(T.Label()),
+          default: DeletePatchScheduleRequestDefault.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -2715,7 +3393,7 @@ function __c5(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           cacheName: S.String.pipe(T.Label()),
           ruleName: S.String.pipe(T.Label()),
-          properties: __S(45),
+          properties: RedisFirewallRuleProperties,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2733,8 +3411,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: __S(45),
+          systemData: S.optional(SystemData),
+          properties: RedisFirewallRuleProperties,
         }),
       ).annotate({
         identifier: "FirewallRulesCreateOrUpdateResponse",
@@ -2759,9 +3437,9 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "FlushRedisCacheRequest" });
     case 1:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(54)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => OperationStatusResult));
     case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(53)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => ErrorDetail));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2770,15 +3448,15 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(ErrorAdditionalInfo);
     case 5:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(50)),
-          additionalInfo: S.optional(__S(52)),
+          details: S.optional(ErrorDetailDetailsList),
+          additionalInfo: S.optional(ErrorDetailAdditionalInfoList),
         }),
       ).annotate({ identifier: "ErrorDetail" });
     case 6:
@@ -2790,12 +3468,12 @@ function __c6(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(49)),
-          error: S.optional(__S(53)),
+          operations: S.optional(OperationStatusResultOperationsList),
+          error: S.optional(ErrorDetail),
         }),
       ).annotate({ identifier: "OperationStatusResult" });
     case 7:
-      return S.Array(__S(54));
+      return S.Array(OperationStatusResult);
   }
 }
 function __c7(j: number): any {
@@ -2809,8 +3487,8 @@ function __c7(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(55)),
-          error: S.optional(__S(53)),
+          operations: S.optional(FlushRedisCacheResponseOperationsList),
+          error: S.optional(ErrorDetail),
         }),
       ).annotate({ identifier: "FlushRedisCacheResponse" });
     case 1:
@@ -2835,8 +3513,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(RedisCacheAccessPolicyProperties),
         }),
       ).annotate({ identifier: "GetAccessPolicyResponse" });
     case 3:
@@ -2885,9 +3563,9 @@ function __c7(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(55)),
-          error: S.optional(__S(53)),
-          properties: S.optional(__S(61)),
+          operations: S.optional(GetAsyncOperationStatusResponseOperationsList),
+          error: S.optional(ErrorDetail),
+          properties: S.optional(GetAsyncOperationStatusResponsePropertiesMap),
         }),
       ).annotate({
         identifier: "GetAsyncOperationStatusResponse",
@@ -2918,8 +3596,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: __S(45),
+          systemData: S.optional(SystemData),
+          properties: RedisFirewallRuleProperties,
         }),
       ).annotate({ identifier: "GetFirewallRuleResponse" });
     case 1:
@@ -2944,8 +3622,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(11)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(RedisLinkedServerProperties),
         }),
       ).annotate({ identifier: "GetLinkedServerResponse" });
     case 3:
@@ -2954,7 +3632,7 @@ function __c8(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          default: S.String.pipe(T.Label()),
+          default: GetPatchScheduleRequestDefault.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2967,17 +3645,17 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dayOfWeek: S.String,
+          dayOfWeek: DayOfWeek,
           startHourUtc: S.Number,
           maintenanceWindow: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScheduleEntry" });
     case 5:
-      return S.Array(__S(68));
+      return S.Array(ScheduleEntry);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          scheduleEntries: __S(69),
+          scheduleEntries: ScheduleEntriesScheduleEntriesList,
         }),
       ).annotate({ identifier: "ScheduleEntries" });
     case 7:
@@ -2986,8 +3664,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: __S(70),
+          systemData: S.optional(SystemData),
+          properties: ScheduleEntries,
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetPatchScheduleResponse" });
@@ -3035,7 +3713,7 @@ function __c9(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           format: S.optional(S.String),
-          files: __S(17),
+          files: ImportRedisDataRequestFilesList,
           preferred_data_archive_auth_method: S.optional(
             S.String.pipe(T.Body("preferred-data-archive-auth-method")),
           ),
@@ -3065,11 +3743,11 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "ListAccessPolicyRequest" });
     case 4:
-      return S.Array(__S(58));
+      return S.Array(RedisCacheAccessPolicy);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(76),
+          value: RedisCacheAccessPolicyListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3093,7 +3771,7 @@ function __c9(j: number): any {
         identifier: "ListAccessPolicyAssignmentRequest",
       });
     case 7:
-      return S.Array(__S(3));
+      return S.Array(RedisCacheAccessPolicyAssignment);
   }
 }
 function __c10(j: number): any {
@@ -3101,7 +3779,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(79),
+          value: RedisCacheAccessPolicyAssignmentListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3123,11 +3801,11 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "ListFirewallRulesRequest" });
     case 2:
-      return S.Array(__S(64));
+      return S.Array(RedisFirewallRule);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(82),
+          value: RedisFirewallRuleListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3149,11 +3827,11 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "ListLinkedServerRequest" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(RedisLinkedServerWithProperties);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(85),
+          value: RedisLinkedServerWithPropertiesListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3187,15 +3865,15 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(88)),
+          display: S.optional(OperationDisplay),
         }),
       ).annotate({ identifier: "Operation" });
     case 2:
-      return S.Array(__S(89));
+      return S.Array(Operation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(90),
+          value: OperationListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -3217,11 +3895,11 @@ function __c11(j: number): any {
         identifier: "ListPatchScheduleByRedisResourceRequest",
       });
     case 5:
-      return S.Array(__S(71));
+      return S.Array(RedisPatchSchedule);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(93),
+          value: RedisPatchScheduleListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3251,7 +3929,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(31),
+          value: PrivateEndpointConnectionListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3278,8 +3956,8 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(17)),
-          requiredZoneNames: S.optional(__S(17)),
+          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
+          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -3290,18 +3968,18 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(98)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateLinkResourceProperties),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceListResultValueItem",
       });
     case 4:
-      return S.Array(__S(99));
+      return S.Array(PrivateLinkResourceListResultValueItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(100),
+          value: PrivateLinkResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3324,7 +4002,7 @@ function __c12(j: number): any {
         identifier: "ListRedisByResourceGroupRequest",
       });
     case 7:
-      return S.Array(__S(36));
+      return S.Array(RedisResource);
   }
 }
 function __c13(j: number): any {
@@ -3332,7 +4010,7 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(103),
+          value: RedisListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RedisListResult" });
@@ -3389,15 +4067,15 @@ function __c13(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           timestamp: S.optional(S.String),
-          upsellNotification: S.optional(__S(14)),
+          upsellNotification: S.optional(UpgradeNotificationUpsellNotificationMap),
         }),
       ).annotate({ identifier: "UpgradeNotification" });
     case 5:
-      return S.Array(__S(108));
+      return S.Array(UpgradeNotification);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(109),
+          value: NotificationListResponseValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotificationListResponse" });
@@ -3407,8 +4085,8 @@ function __c13(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          default: S.String.pipe(T.Label()),
-          properties: __S(70),
+          default: PatchSchedulesCreateOrUpdateRequestDefault.pipe(T.Label()),
+          properties: ScheduleEntries,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3430,8 +4108,8 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: __S(70),
+          systemData: S.optional(SystemData),
+          properties: ScheduleEntries,
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -3440,8 +4118,8 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(18)),
-          privateLinkServiceConnectionState: __S(28),
+          privateEndpoint: S.optional(UserAssignedIdentityInput),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
@@ -3453,7 +4131,7 @@ function __c14(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           cacheName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(113)),
+          properties: S.optional(PrivateEndpointConnectionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3473,9 +4151,9 @@ function __c14(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          rebootType: S.optional(S.String),
+          rebootType: S.optional(RebootType),
           shardId: S.optional(S.Number),
-          ports: S.optional(__S(115)),
+          ports: S.optional(RebootRedisForceRequestPortsList),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3497,7 +4175,7 @@ function __c14(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          keyType: S.String,
+          keyType: RedisKeyType,
         }).pipe(
           T.Http({
             method: "POST",
@@ -3512,19 +4190,19 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          redisConfiguration: S.optional(__S(13)),
+          redisConfiguration: S.optional(RedisCommonPropertiesRedisConfigurationInput),
           redisVersion: S.optional(S.String),
           enableNonSslPort: S.optional(S.Boolean),
           replicasPerMaster: S.optional(S.Number),
           replicasPerPrimary: S.optional(S.Number),
-          tenantSettings: S.optional(__S(14)),
+          tenantSettings: S.optional(RedisUpdatePropertiesInputTenantSettingsMap),
           shardCount: S.optional(S.Number),
-          minimumTlsVersion: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          updateChannel: S.optional(S.String),
+          minimumTlsVersion: S.optional(TlsVersion),
+          publicNetworkAccess: S.optional(PublicNetworkAccess),
+          updateChannel: S.optional(UpdateChannel),
           disableAccessKeyAuthentication: S.optional(S.Boolean),
-          zonalAllocationPolicy: S.optional(S.String),
-          sku: S.optional(__S(15)),
+          zonalAllocationPolicy: S.optional(ZonalAllocationPolicy),
+          sku: S.optional(Sku),
         }),
       ).annotate({
         identifier: "RedisUpdatePropertiesInput",
@@ -3539,9 +4217,9 @@ function __c15(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: S.optional(__S(119)),
-          tags: S.optional(__S(14)),
-          identity: S.optional(__S(20)),
+          properties: S.optional(RedisUpdatePropertiesInput),
+          tags: S.optional(UpdateRedisRequestTagsMap),
+          identity: S.optional(CreateRedisRequestIdentity),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3551,46 +4229,5 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateRedisRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
   }
 }

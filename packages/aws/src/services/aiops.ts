@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "AIOps", serviceShapeName: "AIOps" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "aiops" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2018-05-10");
@@ -129,24 +127,39 @@ export type EncryptionConfigurationType =
   | "AWS_OWNED_KEY"
   | "CUSTOMER_MANAGED_KMS_KEY"
   | (string & {});
+const EncryptionConfigurationType = S.String;
+
 export type KmsKeyId = string;
 export interface EncryptionConfiguration {
   type?: EncryptionConfigurationType;
   kmsKeyId?: string;
 }
+const EncryptionConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<EncryptionConfiguration>;
 export type Retention = number;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
+const Tags = /*@__PURE__*/ __L.at(__c0, 1);
 export type TagKeyBoundaries = string[];
+const TagKeyBoundaries = /*@__PURE__*/ __L.at(__c0, 2);
 export type SNSTopicArn = string;
 export type ChatConfigurationArn = string;
 export type ChatConfigurationArns = string[];
+const ChatConfigurationArns = TagKeyBoundaries as any as S.Schema<ChatConfigurationArns>;
 export type ChatbotNotificationChannel = { [key: string]: string[] | undefined };
+const ChatbotNotificationChannel = /*@__PURE__*/ __L.at(__c0, 3);
 export interface CrossAccountConfiguration {
   sourceRoleArn?: string;
 }
+const CrossAccountConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CrossAccountConfiguration>;
 export type CrossAccountConfigurations = CrossAccountConfiguration[];
+const CrossAccountConfigurations = /*@__PURE__*/ __L.at(__c0, 5);
 export interface CreateInvestigationGroupInput {
   name: string;
   roleArn: string;
@@ -158,22 +171,48 @@ export interface CreateInvestigationGroupInput {
   isCloudTrailEventHistoryEnabled?: boolean;
   crossAccountConfigurations?: CrossAccountConfiguration[];
 }
+const CreateInvestigationGroupInput = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateInvestigationGroupInput>;
 export type InvestigationGroupArn = string;
 export interface CreateInvestigationGroupOutput {
   arn?: string;
 }
+const CreateInvestigationGroupOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateInvestigationGroupOutput>;
 export type InvestigationGroupIdentifier = string;
 export interface DeleteInvestigationGroupRequest {
   identifier: string;
 }
+const DeleteInvestigationGroupRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteInvestigationGroupRequest>;
 export interface DeleteInvestigationGroupResponse {}
+const DeleteInvestigationGroupResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteInvestigationGroupResponse>;
 export interface DeleteInvestigationGroupPolicyRequest {
   identifier: string;
 }
+const DeleteInvestigationGroupPolicyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteInvestigationGroupPolicyRequest>;
 export interface DeleteInvestigationGroupPolicyOutput {}
+const DeleteInvestigationGroupPolicyOutput =
+  DeleteInvestigationGroupResponse as any as S.Schema<DeleteInvestigationGroupPolicyOutput>;
 export interface GetInvestigationGroupRequest {
   identifier: string;
 }
+const GetInvestigationGroupRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetInvestigationGroupRequest>;
 export type IdentifierStringWithPatternAndLengthLimits = string;
 export interface GetInvestigationGroupResponse {
   createdBy?: string;
@@ -190,52 +229,98 @@ export interface GetInvestigationGroupResponse {
   isCloudTrailEventHistoryEnabled?: boolean;
   crossAccountConfigurations?: CrossAccountConfiguration[];
 }
+const GetInvestigationGroupResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetInvestigationGroupResponse>;
 export interface GetInvestigationGroupPolicyRequest {
   identifier: string;
 }
+const GetInvestigationGroupPolicyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetInvestigationGroupPolicyRequest>;
 export type InvestigationGroupPolicyDocument = string;
 export interface GetInvestigationGroupPolicyResponse {
   investigationGroupArn?: string;
   policy?: string;
 }
+const GetInvestigationGroupPolicyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetInvestigationGroupPolicyResponse>;
 export type SensitiveStringWithLengthLimits = string | redacted.Redacted<string>;
 export interface ListInvestigationGroupsInput {
   nextToken?: string | redacted.Redacted<string>;
   maxResults?: number;
 }
+const ListInvestigationGroupsInput = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListInvestigationGroupsInput>;
 export interface ListInvestigationGroupsModel {
   arn?: string;
   name?: string;
 }
+const ListInvestigationGroupsModel = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListInvestigationGroupsModel>;
 export type InvestigationGroups = ListInvestigationGroupsModel[];
+const InvestigationGroups = /*@__PURE__*/ __L.at(__c2, 1);
 export interface ListInvestigationGroupsOutput {
   nextToken?: string | redacted.Redacted<string>;
   investigationGroups?: ListInvestigationGroupsModel[];
 }
+const ListInvestigationGroupsOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListInvestigationGroupsOutput>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceOutput {
   tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListTagsForResourceOutput>;
 export interface PutInvestigationGroupPolicyRequest {
   identifier: string;
   policy: string;
 }
+const PutInvestigationGroupPolicyRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<PutInvestigationGroupPolicyRequest>;
 export interface PutInvestigationGroupPolicyResponse {
   investigationGroupArn?: string;
 }
+const PutInvestigationGroupPolicyResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<PutInvestigationGroupPolicyResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
+const TagKeys = TagKeyBoundaries as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateInvestigationGroupRequest {
   identifier: string;
   roleArn?: string;
@@ -245,7 +330,13 @@ export interface UpdateInvestigationGroupRequest {
   isCloudTrailEventHistoryEnabled?: boolean;
   crossAccountConfigurations?: CrossAccountConfiguration[];
 }
+const UpdateInvestigationGroupRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<UpdateInvestigationGroupRequest>;
 export interface UpdateInvestigationGroupOutput {}
+const UpdateInvestigationGroupOutput =
+  TagResourceResponse as any as S.Schema<UpdateInvestigationGroupOutput>;
 export type CreateInvestigationGroupError =
   | AccessDeniedException
   | ConflictException
@@ -280,8 +371,8 @@ export const createInvestigationGroup: API.OperationMethod<
   CreateInvestigationGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateInvestigationGroupInput>,
-  output: __S(7) as any as S.Schema<CreateInvestigationGroupOutput>,
+  input: CreateInvestigationGroupInput,
+  output: CreateInvestigationGroupOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -312,8 +403,8 @@ export const deleteInvestigationGroup: API.OperationMethod<
   DeleteInvestigationGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<DeleteInvestigationGroupRequest>,
-  output: __S(9) as any as S.Schema<DeleteInvestigationGroupResponse>,
+  input: DeleteInvestigationGroupRequest,
+  output: DeleteInvestigationGroupResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -343,8 +434,8 @@ export const deleteInvestigationGroupPolicy: API.OperationMethod<
   DeleteInvestigationGroupPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeleteInvestigationGroupPolicyRequest>,
-  output: __S(9) as any as S.Schema<DeleteInvestigationGroupPolicyOutput>,
+  input: DeleteInvestigationGroupPolicyRequest,
+  output: DeleteInvestigationGroupPolicyOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -374,8 +465,8 @@ export const getInvestigationGroup: API.OperationMethod<
   GetInvestigationGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetInvestigationGroupRequest>,
-  output: __S(12) as any as S.Schema<GetInvestigationGroupResponse>,
+  input: GetInvestigationGroupRequest,
+  output: GetInvestigationGroupResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -405,8 +496,8 @@ export const getInvestigationGroupPolicy: API.OperationMethod<
   GetInvestigationGroupPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<GetInvestigationGroupPolicyRequest>,
-  output: __S(14) as any as S.Schema<GetInvestigationGroupPolicyResponse>,
+  input: GetInvestigationGroupPolicyRequest,
+  output: GetInvestigationGroupPolicyResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -435,8 +526,8 @@ export const listInvestigationGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListInvestigationGroupsModel
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(15) as any as S.Schema<ListInvestigationGroupsInput>,
-  output: __S(18) as any as S.Schema<ListInvestigationGroupsOutput>,
+  input: ListInvestigationGroupsInput,
+  output: ListInvestigationGroupsOutput,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -466,8 +557,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(20) as any as S.Schema<ListTagsForResourceOutput>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -503,8 +594,8 @@ export const putInvestigationGroupPolicy: API.OperationMethod<
   PutInvestigationGroupPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<PutInvestigationGroupPolicyRequest>,
-  output: __S(22) as any as S.Schema<PutInvestigationGroupPolicyResponse>,
+  input: PutInvestigationGroupPolicyRequest,
+  output: PutInvestigationGroupPolicyResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -542,8 +633,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<TagResourceRequest>,
-  output: __S(24) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -574,8 +665,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<UntagResourceRequest>,
-  output: __S(24) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -607,8 +698,8 @@ export const updateInvestigationGroup: API.OperationMethod<
   UpdateInvestigationGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<UpdateInvestigationGroupRequest>,
-  output: __S(24) as any as S.Schema<UpdateInvestigationGroupOutput>,
+  input: UpdateInvestigationGroupRequest,
+  output: UpdateInvestigationGroupOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -628,32 +719,32 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ type: S.optional(S.String), kmsKeyId: S.optional(S.String) }),
+        S.Struct({ type: S.optional(EncryptionConfigurationType), kmsKeyId: S.optional(S.String) }),
       ).annotate({ identifier: "EncryptionConfiguration" });
     case 1:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 2:
       return S.Array(S.String);
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(2).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ ChatConfigurationArns.pipe(S.optional));
     case 4:
       return S.suspend(() => S.Struct({ sourceRoleArn: S.optional(S.String) })).annotate({
         identifier: "CrossAccountConfiguration",
       });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(CrossAccountConfiguration);
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           roleArn: S.String,
-          encryptionConfiguration: S.optional(__S(0)),
+          encryptionConfiguration: S.optional(EncryptionConfiguration),
           retentionInDays: S.optional(S.Number),
-          tags: S.optional(__S(1)),
-          tagKeyBoundaries: S.optional(__S(2)),
-          chatbotNotificationChannel: S.optional(__S(3)),
+          tags: S.optional(Tags),
+          tagKeyBoundaries: S.optional(TagKeyBoundaries),
+          chatbotNotificationChannel: S.optional(ChatbotNotificationChannel),
           isCloudTrailEventHistoryEnabled: S.optional(S.Boolean),
-          crossAccountConfigurations: S.optional(__S(5)),
+          crossAccountConfigurations: S.optional(CrossAccountConfigurations),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/investigationGroups" }),
@@ -734,12 +825,12 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           arn: S.optional(S.String),
           roleArn: S.optional(S.String),
-          encryptionConfiguration: S.optional(__S(0)),
+          encryptionConfiguration: S.optional(EncryptionConfiguration),
           retentionInDays: S.optional(S.Number),
-          chatbotNotificationChannel: S.optional(__S(3)),
-          tagKeyBoundaries: S.optional(__S(2)),
+          chatbotNotificationChannel: S.optional(ChatbotNotificationChannel),
+          tagKeyBoundaries: S.optional(TagKeyBoundaries),
           isCloudTrailEventHistoryEnabled: S.optional(S.Boolean),
-          crossAccountConfigurations: S.optional(__S(5)),
+          crossAccountConfigurations: S.optional(CrossAccountConfigurations),
         }),
       ).annotate({
         identifier: "GetInvestigationGroupResponse",
@@ -794,12 +885,12 @@ function __c2(j: number): any {
         identifier: "ListInvestigationGroupsModel",
       });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(ListInvestigationGroupsModel);
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(SensitiveString),
-          investigationGroups: S.optional(__S(17)),
+          investigationGroups: S.optional(InvestigationGroups),
         }),
       ).annotate({
         identifier: "ListInvestigationGroupsOutput",
@@ -820,7 +911,7 @@ function __c2(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(1)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
     case 5:
@@ -844,7 +935,7 @@ function __c2(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: __S(1) }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: Tags }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -867,7 +958,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(2).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -884,11 +975,11 @@ function __c3(j: number): any {
         S.Struct({
           identifier: S.String.pipe(T.HttpLabel("identifier")),
           roleArn: S.optional(S.String),
-          encryptionConfiguration: S.optional(__S(0)),
-          tagKeyBoundaries: S.optional(__S(2)),
-          chatbotNotificationChannel: S.optional(__S(3)),
+          encryptionConfiguration: S.optional(EncryptionConfiguration),
+          tagKeyBoundaries: S.optional(TagKeyBoundaries),
+          chatbotNotificationChannel: S.optional(ChatbotNotificationChannel),
           isCloudTrailEventHistoryEnabled: S.optional(S.Boolean),
-          crossAccountConfigurations: S.optional(__S(5)),
+          crossAccountConfigurations: S.optional(CrossAccountConfigurations),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/investigationGroups/{identifier}" }),
@@ -902,22 +993,5 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UpdateInvestigationGroupRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "savingsplans",
   serviceShapeName: "AWSSavingsPlan",
@@ -150,6 +148,7 @@ export type ClientToken = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
+const TagMap = /*@__PURE__*/ __L.at(__c0, 0);
 export interface CreateSavingsPlanRequest {
   savingsPlanOfferingId: string;
   commitment: string;
@@ -158,14 +157,30 @@ export interface CreateSavingsPlanRequest {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
+const CreateSavingsPlanRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateSavingsPlanRequest>;
 export type SavingsPlanId = string;
 export interface CreateSavingsPlanResponse {
   savingsPlanId?: string;
 }
+const CreateSavingsPlanResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateSavingsPlanResponse>;
 export interface DeleteQueuedSavingsPlanRequest {
   savingsPlanId: string;
 }
+const DeleteQueuedSavingsPlanRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeleteQueuedSavingsPlanRequest>;
 export interface DeleteQueuedSavingsPlanResponse {}
+const DeleteQueuedSavingsPlanResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeleteQueuedSavingsPlanResponse>;
 export type SavingsPlanRateFilterName =
   | "region"
   | "instanceType"
@@ -176,12 +191,20 @@ export type SavingsPlanRateFilterName =
   | "usageType"
   | "operation"
   | (string & {});
+const SavingsPlanRateFilterName = S.String;
+
 export type ListOfStrings = string[];
+const ListOfStrings = /*@__PURE__*/ __L.at(__c0, 5);
 export interface SavingsPlanRateFilter {
   name?: SavingsPlanRateFilterName;
   values?: string[];
 }
+const SavingsPlanRateFilter = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<SavingsPlanRateFilter>;
 export type SavingsPlanRateFilterList = SavingsPlanRateFilter[];
+const SavingsPlanRateFilterList = /*@__PURE__*/ __L.at(__c0, 7);
 export type PaginationToken = string;
 export type MaxResults = number;
 export interface DescribeSavingsPlanRatesRequest {
@@ -190,7 +213,13 @@ export interface DescribeSavingsPlanRatesRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const DescribeSavingsPlanRatesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DescribeSavingsPlanRatesRequest>;
 export type CurrencyCode = "CNY" | "USD" | "EUR" | (string & {});
+const CurrencyCode = S.String;
+
 export type SavingsPlanRateUnit =
   | "Hrs"
   | "Lambda-GB-Second"
@@ -210,6 +239,8 @@ export type SavingsPlanRateUnit =
   | "OCU-hours"
   | "Jobs"
   | (string & {});
+const SavingsPlanRateUnit = S.String;
+
 export type SavingsPlanProductType =
   | "EC2"
   | "Fargate"
@@ -226,6 +257,8 @@ export type SavingsPlanProductType =
   | "DMS"
   | "OpenSearch"
   | (string & {});
+const SavingsPlanProductType = S.String;
+
 export type SavingsPlanRateServiceCode =
   | "AmazonEC2"
   | "AmazonECS"
@@ -243,6 +276,8 @@ export type SavingsPlanRateServiceCode =
   | "AWSDatabaseMigrationSvc"
   | "AmazonES"
   | (string & {});
+const SavingsPlanRateServiceCode = S.String;
+
 export type SavingsPlanRateUsageType = string;
 export type SavingsPlanRateOperation = string;
 export type SavingsPlanRatePropertyKey =
@@ -252,12 +287,19 @@ export type SavingsPlanRatePropertyKey =
   | "productDescription"
   | "tenancy"
   | (string & {});
+const SavingsPlanRatePropertyKey = S.String;
+
 export type JsonSafeFilterValueString = string;
 export interface SavingsPlanRateProperty {
   name?: SavingsPlanRatePropertyKey;
   value?: string;
 }
+const SavingsPlanRateProperty = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<SavingsPlanRateProperty>;
 export type SavingsPlanRatePropertyList = SavingsPlanRateProperty[];
+const SavingsPlanRatePropertyList = /*@__PURE__*/ __L.at(__c1, 2);
 export interface SavingsPlanRate {
   rate?: string;
   currency?: CurrencyCode;
@@ -268,15 +310,23 @@ export interface SavingsPlanRate {
   operation?: string;
   properties?: SavingsPlanRateProperty[];
 }
+const SavingsPlanRate = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<SavingsPlanRate>;
 export type SavingsPlanRateList = SavingsPlanRate[];
+const SavingsPlanRateList = /*@__PURE__*/ __L.at(__c1, 4);
 export interface DescribeSavingsPlanRatesResponse {
   savingsPlanId?: string;
   searchResults?: SavingsPlanRate[];
   nextToken?: string;
 }
+const DescribeSavingsPlanRatesResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DescribeSavingsPlanRatesResponse>;
 export type SavingsPlanArn = string;
 export type SavingsPlanArnList = string[];
+const SavingsPlanArnList = ListOfStrings as any as S.Schema<SavingsPlanArnList>;
 export type SavingsPlanIdList = string[];
+const SavingsPlanIdList = ListOfStrings as any as S.Schema<SavingsPlanIdList>;
 export type SavingsPlanState =
   | "payment-pending"
   | "payment-failed"
@@ -287,7 +337,10 @@ export type SavingsPlanState =
   | "pending-return"
   | "returned"
   | (string & {});
+const SavingsPlanState = S.String;
+
 export type SavingsPlanStateList = SavingsPlanState[];
+const SavingsPlanStateList = /*@__PURE__*/ __L.at(__c1, 6);
 export type SavingsPlansFilterName =
   | "region"
   | "ec2-instance-family"
@@ -305,6 +358,7 @@ export interface SavingsPlanFilter {
   values?: string[];
 }
 export type SavingsPlanFilterList = SavingsPlanFilter[];
+const SavingsPlanFilterList = SavingsPlanRateFilterList as any as S.Schema<SavingsPlanFilterList>;
 export interface DescribeSavingsPlansRequest {
   savingsPlanArns?: string[];
   savingsPlanIds?: string[];
@@ -313,15 +367,25 @@ export interface DescribeSavingsPlansRequest {
   states?: SavingsPlanState[];
   filters?: SavingsPlanFilter[];
 }
+const DescribeSavingsPlansRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DescribeSavingsPlansRequest>;
 export type Region = string;
 export type EC2InstanceFamily = string;
 export type SavingsPlanType = "Compute" | "EC2Instance" | "SageMaker" | "Database" | (string & {});
+const SavingsPlanType = S.String;
+
 export type SavingsPlanPaymentOption =
   | "All Upfront"
   | "Partial Upfront"
   | "No Upfront"
   | (string & {});
+const SavingsPlanPaymentOption = S.String;
+
 export type SavingsPlanProductTypeList = SavingsPlanProductType[];
+const SavingsPlanProductTypeList =
+  SavingsPlanStateList as any as S.Schema<SavingsPlanProductTypeList>;
 export type TermDurationInSeconds = number;
 export interface SavingsPlan {
   offeringId?: string;
@@ -344,18 +408,32 @@ export interface SavingsPlan {
   tags?: { [key: string]: string | undefined };
   returnableUntil?: string;
 }
+const SavingsPlan = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<SavingsPlan>;
 export type SavingsPlanList = SavingsPlan[];
+const SavingsPlanList = /*@__PURE__*/ __L.at(__c2, 1);
 export interface DescribeSavingsPlansResponse {
   savingsPlans?: SavingsPlan[];
   nextToken?: string;
 }
+const DescribeSavingsPlansResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DescribeSavingsPlansResponse>;
 export type UUID = string;
 export type UUIDs = string[];
+const UUIDs = ListOfStrings as any as S.Schema<UUIDs>;
 export type SavingsPlanPaymentOptionList = SavingsPlanPaymentOption[];
+const SavingsPlanPaymentOptionList =
+  SavingsPlanStateList as any as S.Schema<SavingsPlanPaymentOptionList>;
 export type SavingsPlanTypeList = SavingsPlanType[];
+const SavingsPlanTypeList = SavingsPlanStateList as any as S.Schema<SavingsPlanTypeList>;
 export type SavingsPlanRateServiceCodeList = SavingsPlanRateServiceCode[];
+const SavingsPlanRateServiceCodeList =
+  SavingsPlanStateList as any as S.Schema<SavingsPlanRateServiceCodeList>;
 export type SavingsPlanRateUsageTypeList = string[];
+const SavingsPlanRateUsageTypeList = ListOfStrings as any as S.Schema<SavingsPlanRateUsageTypeList>;
 export type SavingsPlanRateOperationList = string[];
+const SavingsPlanRateOperationList = ListOfStrings as any as S.Schema<SavingsPlanRateOperationList>;
 export type SavingsPlanRateFilterAttribute =
   | "region"
   | "instanceFamily"
@@ -364,12 +442,20 @@ export type SavingsPlanRateFilterAttribute =
   | "tenancy"
   | "productId"
   | (string & {});
+const SavingsPlanRateFilterAttribute = S.String;
+
 export type FilterValuesList = string[];
+const FilterValuesList = ListOfStrings as any as S.Schema<FilterValuesList>;
 export interface SavingsPlanOfferingRateFilterElement {
   name?: SavingsPlanRateFilterAttribute;
   values?: string[];
 }
+const SavingsPlanOfferingRateFilterElement = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<SavingsPlanOfferingRateFilterElement>;
 export type SavingsPlanOfferingRateFiltersList = SavingsPlanOfferingRateFilterElement[];
+const SavingsPlanOfferingRateFiltersList = /*@__PURE__*/ __L.at(__c2, 4);
 export type PageSize = number;
 export interface DescribeSavingsPlansOfferingRatesRequest {
   savingsPlanOfferingIds?: string[];
@@ -383,6 +469,10 @@ export interface DescribeSavingsPlansOfferingRatesRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const DescribeSavingsPlansOfferingRatesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DescribeSavingsPlansOfferingRatesRequest>;
 export type SavingsPlansDuration = number;
 export type SavingsPlanDescription = string;
 export interface ParentSavingsPlanOffering {
@@ -393,12 +483,21 @@ export interface ParentSavingsPlanOffering {
   currency?: CurrencyCode;
   planDescription?: string;
 }
+const ParentSavingsPlanOffering = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ParentSavingsPlanOffering>;
 export type SavingsPlanRatePricePerUnit = string;
 export interface SavingsPlanOfferingRateProperty {
   name?: string;
   value?: string;
 }
+const SavingsPlanOfferingRateProperty = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<SavingsPlanOfferingRateProperty>;
 export type SavingsPlanOfferingRatePropertyList = SavingsPlanOfferingRateProperty[];
+const SavingsPlanOfferingRatePropertyList = /*@__PURE__*/ __L.at(__c3, 0);
 export interface SavingsPlanOfferingRate {
   savingsPlanOffering?: ParentSavingsPlanOffering;
   rate?: string;
@@ -409,26 +508,43 @@ export interface SavingsPlanOfferingRate {
   operation?: string;
   properties?: SavingsPlanOfferingRateProperty[];
 }
+const SavingsPlanOfferingRate = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<SavingsPlanOfferingRate>;
 export type SavingsPlanOfferingRatesList = SavingsPlanOfferingRate[];
+const SavingsPlanOfferingRatesList = /*@__PURE__*/ __L.at(__c3, 2);
 export interface DescribeSavingsPlansOfferingRatesResponse {
   searchResults?: SavingsPlanOfferingRate[];
   nextToken?: string;
 }
+const DescribeSavingsPlansOfferingRatesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DescribeSavingsPlansOfferingRatesResponse>;
 export type DurationsList = number[];
+const DurationsList = /*@__PURE__*/ __L.at(__c3, 4);
 export type CurrencyList = CurrencyCode[];
+const CurrencyList = SavingsPlanStateList as any as S.Schema<CurrencyList>;
 export type SavingsPlanDescriptionsList = string[];
+const SavingsPlanDescriptionsList = ListOfStrings as any as S.Schema<SavingsPlanDescriptionsList>;
 export type SavingsPlanServiceCode = string;
 export type SavingsPlanServiceCodeList = string[];
+const SavingsPlanServiceCodeList = ListOfStrings as any as S.Schema<SavingsPlanServiceCodeList>;
 export type SavingsPlanUsageType = string;
 export type SavingsPlanUsageTypeList = string[];
+const SavingsPlanUsageTypeList = ListOfStrings as any as S.Schema<SavingsPlanUsageTypeList>;
 export type SavingsPlanOperation = string;
 export type SavingsPlanOperationList = string[];
+const SavingsPlanOperationList = ListOfStrings as any as S.Schema<SavingsPlanOperationList>;
 export type SavingsPlanOfferingFilterAttribute = "region" | "instanceFamily" | (string & {});
 export interface SavingsPlanOfferingFilterElement {
   name?: SavingsPlanOfferingFilterAttribute;
   values?: string[];
 }
 export type SavingsPlanOfferingFiltersList = SavingsPlanOfferingFilterElement[];
+const SavingsPlanOfferingFiltersList =
+  SavingsPlanOfferingRateFiltersList as any as S.Schema<SavingsPlanOfferingFiltersList>;
 export interface DescribeSavingsPlansOfferingsRequest {
   offeringIds?: string[];
   paymentOptions?: SavingsPlanPaymentOption[];
@@ -444,12 +560,23 @@ export interface DescribeSavingsPlansOfferingsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const DescribeSavingsPlansOfferingsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DescribeSavingsPlansOfferingsRequest>;
 export type SavingsPlanOfferingPropertyKey = "region" | "instanceFamily" | (string & {});
+const SavingsPlanOfferingPropertyKey = S.String;
+
 export interface SavingsPlanOfferingProperty {
   name?: SavingsPlanOfferingPropertyKey;
   value?: string;
 }
+const SavingsPlanOfferingProperty = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<SavingsPlanOfferingProperty>;
 export type SavingsPlanOfferingPropertyList = SavingsPlanOfferingProperty[];
+const SavingsPlanOfferingPropertyList = /*@__PURE__*/ __L.at(__c3, 7);
 export interface SavingsPlanOffering {
   offeringId?: string;
   productTypes?: SavingsPlanProductType[];
@@ -463,35 +590,60 @@ export interface SavingsPlanOffering {
   operation?: string;
   properties?: SavingsPlanOfferingProperty[];
 }
+const SavingsPlanOffering = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<SavingsPlanOffering>;
 export type SavingsPlanOfferingsList = SavingsPlanOffering[];
+const SavingsPlanOfferingsList = /*@__PURE__*/ __L.at(__c4, 1);
 export interface DescribeSavingsPlansOfferingsResponse {
   searchResults?: SavingsPlanOffering[];
   nextToken?: string;
 }
+const DescribeSavingsPlansOfferingsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<DescribeSavingsPlansOfferingsResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ReturnSavingsPlanRequest {
   savingsPlanId: string;
   clientToken?: string;
 }
+const ReturnSavingsPlanRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ReturnSavingsPlanRequest>;
 export interface ReturnSavingsPlanResponse {
   savingsPlanId?: string;
 }
+const ReturnSavingsPlanResponse =
+  CreateSavingsPlanResponse as any as S.Schema<ReturnSavingsPlanResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
+const TagKeyList = ListOfStrings as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type CreateSavingsPlanError =
   | InternalServerException
   | ResourceNotFoundException
@@ -507,8 +659,8 @@ export const createSavingsPlan: API.OperationMethod<
   CreateSavingsPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateSavingsPlanRequest>,
-  output: __S(2) as any as S.Schema<CreateSavingsPlanResponse>,
+  input: CreateSavingsPlanRequest,
+  output: CreateSavingsPlanResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -535,8 +687,8 @@ export const deleteQueuedSavingsPlan: API.OperationMethod<
   DeleteQueuedSavingsPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<DeleteQueuedSavingsPlanRequest>,
-  output: __S(4) as any as S.Schema<DeleteQueuedSavingsPlanResponse>,
+  input: DeleteQueuedSavingsPlanRequest,
+  output: DeleteQueuedSavingsPlanResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -562,8 +714,8 @@ export const describeSavingsPlanRates: API.OperationMethod<
   DescribeSavingsPlanRatesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<DescribeSavingsPlanRatesRequest>,
-  output: __S(13) as any as S.Schema<DescribeSavingsPlanRatesResponse>,
+  input: DescribeSavingsPlanRatesRequest,
+  output: DescribeSavingsPlanRatesResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -583,8 +735,8 @@ export const describeSavingsPlans: API.OperationMethod<
   DescribeSavingsPlansError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DescribeSavingsPlansRequest>,
-  output: __S(18) as any as S.Schema<DescribeSavingsPlansResponse>,
+  input: DescribeSavingsPlansRequest,
+  output: DescribeSavingsPlansResponse,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -604,8 +756,8 @@ export const describeSavingsPlansOfferingRates: API.OperationMethod<
   DescribeSavingsPlansOfferingRatesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<DescribeSavingsPlansOfferingRatesRequest>,
-  output: __S(27) as any as S.Schema<DescribeSavingsPlansOfferingRatesResponse>,
+  input: DescribeSavingsPlansOfferingRatesRequest,
+  output: DescribeSavingsPlansOfferingRatesResponse,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -625,8 +777,8 @@ export const describeSavingsPlansOfferings: API.OperationMethod<
   DescribeSavingsPlansOfferingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<DescribeSavingsPlansOfferingsRequest>,
-  output: __S(34) as any as S.Schema<DescribeSavingsPlansOfferingsResponse>,
+  input: DescribeSavingsPlansOfferingsRequest,
+  output: DescribeSavingsPlansOfferingsResponse,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -647,8 +799,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(36) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -670,8 +822,8 @@ export const returnSavingsPlan: API.OperationMethod<
   ReturnSavingsPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<ReturnSavingsPlanRequest>,
-  output: __S(2) as any as S.Schema<ReturnSavingsPlanResponse>,
+  input: ReturnSavingsPlanRequest,
+  output: ReturnSavingsPlanResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -698,8 +850,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<TagResourceRequest>,
-  output: __S(39) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -725,8 +877,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<UntagResourceRequest>,
-  output: __S(39) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -746,7 +898,7 @@ function __c0(j: number): any {
           upfrontPaymentAmount: S.optional(S.String),
           purchaseTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(TagMap),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateSavingsPlan" }),
@@ -786,12 +938,12 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          values: S.optional(__S(5)),
+          name: S.optional(SavingsPlanRateFilterName),
+          values: S.optional(ListOfStrings),
         }),
       ).annotate({ identifier: "SavingsPlanRateFilter" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(SavingsPlanRateFilter);
   }
 }
 function __c1(j: number): any {
@@ -800,7 +952,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           savingsPlanId: S.String,
-          filters: S.optional(__S(7)),
+          filters: S.optional(SavingsPlanRateFilterList),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -818,46 +970,46 @@ function __c1(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
+        S.Struct({ name: S.optional(SavingsPlanRatePropertyKey), value: S.optional(S.String) }),
       ).annotate({ identifier: "SavingsPlanRateProperty" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(SavingsPlanRateProperty);
     case 3:
       return S.suspend(() =>
         S.Struct({
           rate: S.optional(S.String),
-          currency: S.optional(S.String),
-          unit: S.optional(S.String),
-          productType: S.optional(S.String),
-          serviceCode: S.optional(S.String),
+          currency: S.optional(CurrencyCode),
+          unit: S.optional(SavingsPlanRateUnit),
+          productType: S.optional(SavingsPlanProductType),
+          serviceCode: S.optional(SavingsPlanRateServiceCode),
           usageType: S.optional(S.String),
           operation: S.optional(S.String),
-          properties: S.optional(__S(10)),
+          properties: S.optional(SavingsPlanRatePropertyList),
         }),
       ).annotate({ identifier: "SavingsPlanRate" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(SavingsPlanRate);
     case 5:
       return S.suspend(() =>
         S.Struct({
           savingsPlanId: S.optional(S.String),
-          searchResults: S.optional(__S(12)),
+          searchResults: S.optional(SavingsPlanRateList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DescribeSavingsPlanRatesResponse",
       });
     case 6:
-      return S.Array(S.String);
+      return S.Array(SavingsPlanState);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          savingsPlanArns: S.optional(__S(5)),
-          savingsPlanIds: S.optional(__S(5)),
+          savingsPlanArns: S.optional(SavingsPlanArnList),
+          savingsPlanIds: S.optional(SavingsPlanIdList),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          states: S.optional(__S(14)),
-          filters: S.optional(__S(7)),
+          states: S.optional(SavingsPlanStateList),
+          filters: S.optional(SavingsPlanFilterList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/DescribeSavingsPlans" }),
@@ -884,51 +1036,51 @@ function __c2(j: number): any {
           description: S.optional(S.String),
           start: S.optional(S.String),
           end: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(SavingsPlanState),
           region: S.optional(S.String),
           ec2InstanceFamily: S.optional(S.String),
-          savingsPlanType: S.optional(S.String),
-          paymentOption: S.optional(S.String),
-          productTypes: S.optional(__S(14)),
-          currency: S.optional(S.String),
+          savingsPlanType: S.optional(SavingsPlanType),
+          paymentOption: S.optional(SavingsPlanPaymentOption),
+          productTypes: S.optional(SavingsPlanProductTypeList),
+          currency: S.optional(CurrencyCode),
           commitment: S.optional(S.String),
           upfrontPaymentAmount: S.optional(S.String),
           recurringPaymentAmount: S.optional(S.String),
           termDurationInSeconds: S.optional(S.Number),
-          tags: S.optional(__S(0)),
+          tags: S.optional(TagMap),
           returnableUntil: S.optional(S.String),
         }),
       ).annotate({ identifier: "SavingsPlan" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(SavingsPlan);
     case 2:
       return S.suspend(() =>
-        S.Struct({ savingsPlans: S.optional(__S(17)), nextToken: S.optional(S.String) }),
+        S.Struct({ savingsPlans: S.optional(SavingsPlanList), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeSavingsPlansResponse",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          values: S.optional(__S(5)),
+          name: S.optional(SavingsPlanRateFilterAttribute),
+          values: S.optional(FilterValuesList),
         }),
       ).annotate({
         identifier: "SavingsPlanOfferingRateFilterElement",
       });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(SavingsPlanOfferingRateFilterElement);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          savingsPlanOfferingIds: S.optional(__S(5)),
-          savingsPlanPaymentOptions: S.optional(__S(14)),
-          savingsPlanTypes: S.optional(__S(14)),
-          products: S.optional(__S(14)),
-          serviceCodes: S.optional(__S(14)),
-          usageTypes: S.optional(__S(5)),
-          operations: S.optional(__S(5)),
-          filters: S.optional(__S(20)),
+          savingsPlanOfferingIds: S.optional(UUIDs),
+          savingsPlanPaymentOptions: S.optional(SavingsPlanPaymentOptionList),
+          savingsPlanTypes: S.optional(SavingsPlanTypeList),
+          products: S.optional(SavingsPlanProductTypeList),
+          serviceCodes: S.optional(SavingsPlanRateServiceCodeList),
+          usageTypes: S.optional(SavingsPlanRateUsageTypeList),
+          operations: S.optional(SavingsPlanRateOperationList),
+          filters: S.optional(SavingsPlanOfferingRateFiltersList),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -948,10 +1100,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           offeringId: S.optional(S.String),
-          paymentOption: S.optional(S.String),
-          planType: S.optional(S.String),
+          paymentOption: S.optional(SavingsPlanPaymentOption),
+          planType: S.optional(SavingsPlanType),
           durationSeconds: S.optional(S.Number),
-          currency: S.optional(S.String),
+          currency: S.optional(CurrencyCode),
           planDescription: S.optional(S.String),
         }),
       ).annotate({
@@ -968,26 +1120,26 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(SavingsPlanOfferingRateProperty);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          savingsPlanOffering: S.optional(__S(22)),
+          savingsPlanOffering: S.optional(ParentSavingsPlanOffering),
           rate: S.optional(S.String),
-          unit: S.optional(S.String),
-          productType: S.optional(S.String),
-          serviceCode: S.optional(S.String),
+          unit: S.optional(SavingsPlanRateUnit),
+          productType: S.optional(SavingsPlanProductType),
+          serviceCode: S.optional(SavingsPlanRateServiceCode),
           usageType: S.optional(S.String),
           operation: S.optional(S.String),
-          properties: S.optional(__S(24)),
+          properties: S.optional(SavingsPlanOfferingRatePropertyList),
         }),
       ).annotate({ identifier: "SavingsPlanOfferingRate" });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(SavingsPlanOfferingRate);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          searchResults: S.optional(__S(26)),
+          searchResults: S.optional(SavingsPlanOfferingRatesList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -998,17 +1150,17 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          offeringIds: S.optional(__S(5)),
-          paymentOptions: S.optional(__S(14)),
-          productType: S.optional(S.String),
-          planTypes: S.optional(__S(14)),
-          durations: S.optional(__S(28)),
-          currencies: S.optional(__S(14)),
-          descriptions: S.optional(__S(5)),
-          serviceCodes: S.optional(__S(5)),
-          usageTypes: S.optional(__S(5)),
-          operations: S.optional(__S(5)),
-          filters: S.optional(__S(20)),
+          offeringIds: S.optional(UUIDs),
+          paymentOptions: S.optional(SavingsPlanPaymentOptionList),
+          productType: S.optional(SavingsPlanProductType),
+          planTypes: S.optional(SavingsPlanTypeList),
+          durations: S.optional(DurationsList),
+          currencies: S.optional(CurrencyList),
+          descriptions: S.optional(SavingsPlanDescriptionsList),
+          serviceCodes: S.optional(SavingsPlanServiceCodeList),
+          usageTypes: S.optional(SavingsPlanUsageTypeList),
+          operations: S.optional(SavingsPlanOperationList),
+          filters: S.optional(SavingsPlanOfferingFiltersList),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -1026,12 +1178,12 @@ function __c3(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
+        S.Struct({ name: S.optional(SavingsPlanOfferingPropertyKey), value: S.optional(S.String) }),
       ).annotate({
         identifier: "SavingsPlanOfferingProperty",
       });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(SavingsPlanOfferingProperty);
   }
 }
 function __c4(j: number): any {
@@ -1040,24 +1192,24 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           offeringId: S.optional(S.String),
-          productTypes: S.optional(__S(14)),
-          planType: S.optional(S.String),
+          productTypes: S.optional(SavingsPlanProductTypeList),
+          planType: S.optional(SavingsPlanType),
           description: S.optional(S.String),
-          paymentOption: S.optional(S.String),
+          paymentOption: S.optional(SavingsPlanPaymentOption),
           durationSeconds: S.optional(S.Number),
-          currency: S.optional(S.String),
+          currency: S.optional(CurrencyCode),
           serviceCode: S.optional(S.String),
           usageType: S.optional(S.String),
           operation: S.optional(S.String),
-          properties: S.optional(__S(31)),
+          properties: S.optional(SavingsPlanOfferingPropertyList),
         }),
       ).annotate({ identifier: "SavingsPlanOffering" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(SavingsPlanOffering);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          searchResults: S.optional(__S(33)),
+          searchResults: S.optional(SavingsPlanOfferingsList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1079,7 +1231,7 @@ function __c4(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(0)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 5:
@@ -1100,7 +1252,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "ReturnSavingsPlanRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: __S(0) }).pipe(
+        S.Struct({ resourceArn: S.String, tags: TagMap }).pipe(
           T.all(T.Http({ method: "POST", uri: "/TagResource" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -1114,30 +1266,9 @@ function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tagKeys: __S(5) }).pipe(
+        S.Struct({ resourceArn: S.String, tagKeys: TagKeyList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/UntagResource" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

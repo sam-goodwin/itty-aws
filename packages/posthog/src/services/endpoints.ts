@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -40,10 +38,23 @@ export class NotFound
 
 /** Per-column bucket overrides for range variable materialization. Keys are column names, values are bucket keys. */
 export type CreateEndpointRequestBucketOverridesMap = { [key: string]: unknown | undefined };
+const CreateEndpointRequestBucketOverridesMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateEndpointRequestBucketOverridesMap>;
+
 /** List of tag names to associate with this endpoint. Replaces any existing tags. */
 export type CreateEndpointRequestTagsList = Array<string>;
+const CreateEndpointRequestTagsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateEndpointRequestTagsList>;
+
 /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] -- every breakdown variable is required. */
 export type CreateEndpointRequestOptionalBreakdownPropertiesList = Array<string>;
+const CreateEndpointRequestOptionalBreakdownPropertiesList =
+  CreateEndpointRequestTagsList as any as S.Schema<CreateEndpointRequestOptionalBreakdownPropertiesList>;
+
 export interface CreateEndpointRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -72,7 +83,15 @@ export interface CreateEndpointRequest {
   /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] -- every breakdown variable is required. */
   optional_breakdown_properties?: CreateEndpointRequestOptionalBreakdownPropertiesList | null;
 }
+const CreateEndpointRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateEndpointRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap =
+  CreateEndpointRequestBucketOverridesMap as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -86,6 +105,8 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -97,6 +118,8 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<UserBasic>;
+
 /** Materialization status for an endpoint version. */
 export interface EndpointMaterialization {
   /** URL-safe endpoint name. */
@@ -118,8 +141,16 @@ export interface EndpointMaterialization {
   /** UUID of the underlying saved query backing this materialization. Only populated when the version is materialized. */
   saved_query_id?: string | null;
 }
+const EndpointMaterialization = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<EndpointMaterialization>;
+
 /** Per-column bucket overrides for range variable materialization. */
 export type EndpointResponseBucketOverridesMap = { [key: string]: unknown | undefined };
+const EndpointResponseBucketOverridesMap =
+  CreateEndpointRequestBucketOverridesMap as any as S.Schema<EndpointResponseBucketOverridesMap>;
+
 /** A column in the endpoint's query result. */
 export interface EndpointColumn {
   /** Column name from the query SELECT clause. */
@@ -127,12 +158,25 @@ export interface EndpointColumn {
   /** Serialized column type: integer, float, string, datetime, date, boolean, array, json, or unknown. */
   type?: string;
 }
+const EndpointColumn = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<EndpointColumn>;
+
 /** Column names and types from the query's SELECT clause. */
 export type EndpointResponseColumnsList = Array<EndpointColumn>;
+const EndpointResponseColumnsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<EndpointResponseColumnsList>;
+
 /** Tag names associated with this endpoint. */
 export type EndpointResponseTagsList = Array<string>;
+const EndpointResponseTagsList =
+  CreateEndpointRequestTagsList as any as S.Schema<EndpointResponseTagsList>;
+
 /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. */
 export type EndpointResponseOptionalBreakdownPropertiesList = Array<string>;
+const EndpointResponseOptionalBreakdownPropertiesList =
+  CreateEndpointRequestTagsList as any as S.Schema<EndpointResponseOptionalBreakdownPropertiesList>;
+
 /** Full endpoint representation returned by list/retrieve/create/update. */
 export interface EndpointResponse {
   /** Unique endpoint identifier (UUID). */
@@ -182,13 +226,26 @@ export interface EndpointResponse {
   /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. */
   optional_breakdown_properties?: EndpointResponseOptionalBreakdownPropertiesList;
 }
+const EndpointResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<EndpointResponse>;
+
 export type CreateEndpointsLastExecutionTimeRequestNamesList = Array<string>;
+const CreateEndpointsLastExecutionTimeRequestNamesList =
+  CreateEndpointRequestTagsList as any as S.Schema<CreateEndpointsLastExecutionTimeRequestNamesList>;
+
 export interface CreateEndpointsLastExecutionTimeRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   names?: CreateEndpointsLastExecutionTimeRequestNamesList;
 }
+const CreateEndpointsLastExecutionTimeRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateEndpointsLastExecutionTimeRequest>;
+
 export type QueryStatusLabelsList = Array<string>;
+const QueryStatusLabelsList =
+  CreateEndpointRequestTagsList as any as S.Schema<QueryStatusLabelsList>;
+
 export interface ClickhouseQueryProgress {
   active_cpu_time?: number;
   bytes_read?: number;
@@ -196,13 +253,22 @@ export interface ClickhouseQueryProgress {
   rows_read?: number;
   time_elapsed?: number;
 }
+const ClickhouseQueryProgress = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ClickhouseQueryProgress>;
+
 export type QueryScanFixLocation =
   | "query"
   | "subquery"
   | "view"
   | "insight_date_range"
   | "dashboard_date_filter";
+const QueryScanFixLocation = S.String;
+
 export type QueryScanFindingKind = "no_event_filter" | "no_start_date" | "persons_join";
+const QueryScanFindingKind = S.String;
+
 export interface QueryScanWarning {
   /** Whether the person can change the query so it reads less and still answers the same question. Surfaces show the full advice and "Fix with AI" only when a finding is actionable. */
   actionable: boolean;
@@ -220,8 +286,15 @@ export interface QueryScanWarning {
   /** Shown to the person: what happened and what to do. */
   message: string;
 }
+const QueryScanWarning = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<QueryScanWarning>;
+
 /** Every finding, fixable or not. Empty when the analysis found none. */
 export type QueryScanAnalysisFindingsList = Array<QueryScanWarning>;
+const QueryScanAnalysisFindingsList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<QueryScanAnalysisFindingsList>;
+
 export interface QueryScanAnalysis {
   /** The message the Fix with AI button sends to the assistant. Absent when no finding can be fixed in the query. */
   assistant_prompt?: string | null;
@@ -232,6 +305,8 @@ export interface QueryScanAnalysis {
   /** How much of the project's events in the query's date range the query read, 0 to 1. */
   range_share?: number | null;
 }
+const QueryScanAnalysis = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<QueryScanAnalysis>;
+
 export interface QueryScanSummary {
   /** The stored analysis, put on the response when it is served. Absent while the analysis runs, and when none was requested. */
   analysis?: QueryScanAnalysis | null;
@@ -244,6 +319,8 @@ export interface QueryScanSummary {
   /** Rows ClickHouse read for the last fresh run, all tables included. */
   rows_read: number;
 }
+const QueryScanSummary = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<QueryScanSummary>;
+
 export interface QueryStatus {
   budget_remaining_bytes?: number | null;
   bytes_read?: number | null;
@@ -275,13 +352,22 @@ export interface QueryStatus {
   task_id?: string | null;
   team_id?: number;
 }
+const QueryStatus = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<QueryStatus>;
+
 export interface QueryStatusResponse {
   query_status?: QueryStatus;
 }
+const QueryStatusResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<QueryStatusResponse>;
+
 /** Per-column bucket function overrides, e.g. {"timestamp": "hour"} */
 export type CreateEndpointsMaterializationPreviewRequestBucketOverridesMap = {
   [key: string]: string | undefined;
 };
+const CreateEndpointsMaterializationPreviewRequestBucketOverridesMap = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateEndpointsMaterializationPreviewRequestBucketOverridesMap>;
+
 export interface CreateEndpointsMaterializationPreviewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -291,8 +377,16 @@ export interface CreateEndpointsMaterializationPreviewRequest {
   /** Per-column bucket function overrides, e.g. {"timestamp": "hour"} */
   bucket_overrides?: CreateEndpointsMaterializationPreviewRequestBucketOverridesMap | null;
 }
+const CreateEndpointsMaterializationPreviewRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateEndpointsMaterializationPreviewRequest>;
+
 /** Query variables that filter on this column. */
 export type MaterializationPreviewRangePairVariablesList = Array<string>;
+const MaterializationPreviewRangePairVariablesList =
+  CreateEndpointRequestTagsList as any as S.Schema<MaterializationPreviewRangePairVariablesList>;
+
 export interface MaterializationPreviewRangePair {
   /** Column the query buckets on. */
   column: string;
@@ -301,16 +395,36 @@ export interface MaterializationPreviewRangePair {
   /** Bucket function applied to the column. */
   bucket_fn: string;
 }
+const MaterializationPreviewRangePair = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<MaterializationPreviewRangePair>;
+
 /** Bucketed columns and the variables that filter on them. */
 export type MaterializationPreviewResponseRangePairsList = Array<MaterializationPreviewRangePair>;
+const MaterializationPreviewResponseRangePairsList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<MaterializationPreviewResponseRangePairsList>;
+
 export interface MaterializationPreviewAggregate {
   /** Aggregate expression in the transformed query. */
   expression: string;
   /** Function that combines materialized partials again, or null when there is none. */
   reaggregate_fn: string | null;
 }
+const MaterializationPreviewAggregate = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<MaterializationPreviewAggregate>;
+
 /** Aggregate expressions and how to re-aggregate them. */
 export type MaterializationPreviewResponseAggregatesList = Array<MaterializationPreviewAggregate>;
+const MaterializationPreviewResponseAggregatesList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<MaterializationPreviewResponseAggregatesList>;
+
 export interface MaterializationPreviewResponse {
   /** Whether the endpoint query can be materialized. */
   can_materialize: boolean;
@@ -327,6 +441,11 @@ export interface MaterializationPreviewResponse {
   /** Aggregate expressions and how to re-aggregate them. */
   aggregates: MaterializationPreviewResponseAggregatesList;
 }
+const MaterializationPreviewResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<MaterializationPreviewResponse>;
+
 export interface CreateEndpointsMaterializationSuggestionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -334,8 +453,15 @@ export interface CreateEndpointsMaterializationSuggestionRequest {
   /** Endpoint version to suggest a fix for. Defaults to the latest version. */
   version?: number | null;
 }
+const CreateEndpointsMaterializationSuggestionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateEndpointsMaterializationSuggestionRequest>;
+
 /** * `ok` - ok * `cannot_fix` - cannot_fix * `invalid` - invalid * `model_error` - model_error */
 export type SuggestionStatusEnum = "ok" | "cannot_fix" | "invalid" | "model_error";
+const SuggestionStatusEnum = S.String;
+
 /** AI-suggested query rewrite that would make the endpoint materializable. */
 export interface EndpointMaterializationSuggestion {
   /** Outcome of the suggestion run: 'ok' -- the suggested query passes the live materialization checks; 'cannot_fix' -- no semantically equivalent rewrite exists; 'invalid' -- a suggestion was produced but never passed validation (suggested_query carries the last attempt); 'model_error' -- the model returned no usable response. * `ok` - ok * `cannot_fix` - cannot_fix * `invalid` - invalid * `model_error` - model_error */
@@ -351,9 +477,16 @@ export interface EndpointMaterializationSuggestion {
   /** The materialization blocker that triggered the suggestion. */
   original_reason: string;
 }
+const EndpointMaterializationSuggestion = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<EndpointMaterializationSuggestion>;
+
 export type BreakdownFilterBreakdownCase1Item = string | number;
 export type BreakdownFilterBreakdownCase1List = Array<BreakdownFilterBreakdownCase1Item>;
 export type BreakdownFilterBreakdown = string | BreakdownFilterBreakdownCase1List | number;
+const BreakdownFilterBreakdown = S.Unknown as any as S.Schema<BreakdownFilterBreakdown>;
+
 export type BreakdownType =
   | "cohort"
   | "person"
@@ -365,7 +498,11 @@ export type BreakdownType =
   | "data_warehouse"
   | "data_warehouse_person_property"
   | "revenue_analytics";
+const BreakdownType = S.String;
+
 export type BreakdownProperty = string | number;
+const BreakdownProperty = S.Unknown as any as S.Schema<BreakdownProperty>;
+
 export type MultipleBreakdownType =
   | "person"
   | "event"
@@ -377,6 +514,8 @@ export type MultipleBreakdownType =
   | "revenue_analytics"
   | "data_warehouse"
   | "data_warehouse_person_property";
+const MultipleBreakdownType = S.String;
+
 export interface Breakdown {
   group_type_index?: number | null;
   histogram_bin_count?: number | null;
@@ -384,7 +523,14 @@ export interface Breakdown {
   property?: BreakdownProperty;
   type?: MultipleBreakdownType | (string & {}) | null;
 }
+const Breakdown = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Breakdown>;
+
 export type BreakdownFilterBreakdownsList = Array<Breakdown>;
+const BreakdownFilterBreakdownsList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<BreakdownFilterBreakdownsList>;
+
 export interface BreakdownFilter {
   breakdown?: BreakdownFilterBreakdown | null;
   breakdown_group_type_index?: number | null;
@@ -396,6 +542,8 @@ export interface BreakdownFilter {
   breakdown_type?: BreakdownType | (string & {}) | null;
   breakdowns?: BreakdownFilterBreakdownsList | null;
 }
+const BreakdownFilter = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<BreakdownFilter>;
+
 export type IntervalType =
   | "second"
   | "minute"
@@ -405,6 +553,8 @@ export type IntervalType =
   | "month"
   | "quarter"
   | "year";
+const IntervalType = S.String;
+
 export type PropertyOperator =
   | "exact"
   | "is_not"
@@ -818,7 +968,14 @@ export type DashboardFilterPropertiesItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
+const DashboardFilterPropertiesItem = S.Unknown as any as S.Schema<DashboardFilterPropertiesItem>;
+
 export type DashboardFilterPropertiesList = Array<DashboardFilterPropertiesItem>;
+const DashboardFilterPropertiesList = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DashboardFilterPropertiesList>;
+
 export interface DashboardFilter {
   breakdown_filter?: BreakdownFilter | null;
   date_from?: string | null;
@@ -830,8 +987,15 @@ export interface DashboardFilter {
   interval?: IntervalType | (string & {}) | null;
   properties?: DashboardFilterPropertiesList | null;
 }
+const DashboardFilter = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<DashboardFilter>;
+
 export type EndpointRefreshMode = "cache" | "force" | "direct";
+const EndpointRefreshMode = S.String;
+
 export type CreateEndpointsRunRequestVariablesMap = { [key: string]: unknown | undefined };
+const CreateEndpointsRunRequestVariablesMap =
+  CreateEndpointRequestBucketOverridesMap as any as S.Schema<CreateEndpointsRunRequestVariablesMap>;
+
 export interface CreateEndpointsRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -851,10 +1015,23 @@ export interface CreateEndpointsRunRequest {
   /** Specific endpoint version to execute. If not provided, the latest version is used. */
   version?: number | null;
 }
+const CreateEndpointsRunRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateEndpointsRunRequest>;
+
 /** Query result rows. Each row is a list of values matching the columns order. */
 export type EndpointRunResponseResultsList = Array<unknown>;
+const EndpointRunResponseResultsList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<EndpointRunResponseResultsList>;
+
 /** Column names from the query SELECT clause. */
 export type EndpointRunResponseColumnsList = Array<string>;
+const EndpointRunResponseColumnsList =
+  CreateEndpointRequestTagsList as any as S.Schema<EndpointRunResponseColumnsList>;
+
 /** Response from executing an endpoint query. */
 export interface EndpointRunResponse {
   /** URL-safe endpoint name that was executed. */
@@ -870,12 +1047,24 @@ export interface EndpointRunResponse {
   /** Version number of the endpoint that was executed. */
   endpoint_version?: number;
 }
+const EndpointRunResponse = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<EndpointRunResponse>;
+
 export interface EndpointsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   name: string;
 }
+const EndpointsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<EndpointsDestroyRequest>;
+
 export interface EndpointsDestroyResponse {}
+const EndpointsDestroyResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<EndpointsDestroyResponse>;
+
 export interface GetEndpointRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -883,14 +1072,28 @@ export interface GetEndpointRequest {
   /** Endpoint version to act on. Defaults to the current version. */
   version?: number;
 }
+const GetEndpointRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<GetEndpointRequest>;
+
 /** Per-column bucket overrides for range variable materialization. */
 export type EndpointVersionResponseBucketOverridesMap = { [key: string]: unknown | undefined };
+const EndpointVersionResponseBucketOverridesMap =
+  CreateEndpointRequestBucketOverridesMap as any as S.Schema<EndpointVersionResponseBucketOverridesMap>;
+
 /** Column names and types from the query's SELECT clause. */
 export type EndpointVersionResponseColumnsList = Array<EndpointColumn>;
+const EndpointVersionResponseColumnsList =
+  EndpointResponseColumnsList as any as S.Schema<EndpointVersionResponseColumnsList>;
+
 /** Tag names associated with this endpoint. */
 export type EndpointVersionResponseTagsList = Array<string>;
+const EndpointVersionResponseTagsList =
+  CreateEndpointRequestTagsList as any as S.Schema<EndpointVersionResponseTagsList>;
+
 /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. */
 export type EndpointVersionResponseOptionalBreakdownPropertiesList = Array<string>;
+const EndpointVersionResponseOptionalBreakdownPropertiesList =
+  CreateEndpointRequestTagsList as any as S.Schema<EndpointVersionResponseOptionalBreakdownPropertiesList>;
+
 /** Extended endpoint representation when viewing a specific version. */
 export interface EndpointVersionResponse {
   /** Unique endpoint identifier (UUID). */
@@ -952,6 +1155,11 @@ export interface EndpointVersionResponse {
   /** User who created this version. */
   version_created_by?: UserBasic | null;
 }
+const EndpointVersionResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<EndpointVersionResponse>;
+
 export interface GetEndpointsLogRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -969,11 +1177,24 @@ export interface GetEndpointsLogRequest {
   /** Case-insensitive substring search across log messages. */
   search?: string;
 }
+const GetEndpointsLogRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetEndpointsLogRequest>;
+
 export interface GetEndpointsLogResponse {}
+const GetEndpointsLogResponse =
+  EndpointsDestroyResponse as any as S.Schema<GetEndpointsLogResponse>;
+
 export interface GetEndpointsMaterializationConditionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const GetEndpointsMaterializationConditionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetEndpointsMaterializationConditionRequest>;
+
 /** The live materialization rules, for agents that want to rewrite a rejected query themselves. */
 export interface EndpointMaterializationConditions {
   /** Python source code of the checks that decide whether an endpoint query can be materialized, read from the running system -- always matches what this instance enforces. Reason from it to rewrite a rejected query into a form that passes every check. */
@@ -981,6 +1202,11 @@ export interface EndpointMaterializationConditions {
   /** Hard rules a rewrite must obey so it stays semantically equivalent to the original query (same results for all variable values, keep every variable placeholder unchanged). */
   rewrite_contract: string;
 }
+const EndpointMaterializationConditions = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<EndpointMaterializationConditions>;
+
 export interface GetEndpointsMaterializationStatusRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -988,6 +1214,11 @@ export interface GetEndpointsMaterializationStatusRequest {
   /** Endpoint version to act on. Defaults to the current version. */
   version?: number;
 }
+const GetEndpointsMaterializationStatusRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GetEndpointsMaterializationStatusRequest>;
+
 export interface GetEndpointsOpenapiSpecRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -995,12 +1226,27 @@ export interface GetEndpointsOpenapiSpecRequest {
   /** Endpoint version to act on. Defaults to the current version. */
   version?: number;
 }
+const GetEndpointsOpenapiSpecRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetEndpointsOpenapiSpecRequest>;
+
 export interface GetEndpointsOpenapiSpecResponse {}
+const GetEndpointsOpenapiSpecResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GetEndpointsOpenapiSpecResponse>;
+
 export interface GetEndpointsRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   name: string;
 }
+const GetEndpointsRunRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetEndpointsRunRequest>;
+
 export interface ListEndpointsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1011,13 +1257,25 @@ export interface ListEndpointsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListEndpointsRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ListEndpointsRequest>;
+
 export type PaginatedEndpointResponseListResultsList = Array<EndpointResponse>;
+const PaginatedEndpointResponseListResultsList = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<PaginatedEndpointResponseListResultsList>;
+
 export interface PaginatedEndpointResponseList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedEndpointResponseListResultsList;
 }
+const PaginatedEndpointResponseList = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<PaginatedEndpointResponseList>;
+
 export interface ListEndpointsVersionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1029,19 +1287,43 @@ export interface ListEndpointsVersionsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListEndpointsVersionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListEndpointsVersionsRequest>;
+
 export type PaginatedEndpointVersionResponseListResultsList = Array<EndpointVersionResponse>;
+const PaginatedEndpointVersionResponseListResultsList = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<PaginatedEndpointVersionResponseListResultsList>;
+
 export interface PaginatedEndpointVersionResponseList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedEndpointVersionResponseListResultsList;
 }
+const PaginatedEndpointVersionResponseList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<PaginatedEndpointVersionResponseList>;
+
 /** Per-column bucket overrides for range variable materialization. Keys are column names, values are bucket keys. */
 export type UpdateEndpointRequestBucketOverridesMap = { [key: string]: unknown | undefined };
+const UpdateEndpointRequestBucketOverridesMap =
+  CreateEndpointRequestBucketOverridesMap as any as S.Schema<UpdateEndpointRequestBucketOverridesMap>;
+
 /** List of tag names to associate with this endpoint. Replaces any existing tags. */
 export type UpdateEndpointRequestTagsList = Array<string>;
+const UpdateEndpointRequestTagsList =
+  CreateEndpointRequestTagsList as any as S.Schema<UpdateEndpointRequestTagsList>;
+
 /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] -- every breakdown variable is required. */
 export type UpdateEndpointRequestOptionalBreakdownPropertiesList = Array<string>;
+const UpdateEndpointRequestOptionalBreakdownPropertiesList =
+  CreateEndpointRequestTagsList as any as S.Schema<UpdateEndpointRequestOptionalBreakdownPropertiesList>;
+
 export interface UpdateEndpointRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1069,14 +1351,28 @@ export interface UpdateEndpointRequest {
   /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] -- every breakdown variable is required. */
   optional_breakdown_properties?: UpdateEndpointRequestOptionalBreakdownPropertiesList | null;
 }
+const UpdateEndpointRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<UpdateEndpointRequest>;
+
 /** Per-column bucket overrides for range variable materialization. Keys are column names, values are bucket keys. */
 export type UpdateEndpointsPartialRequestBucketOverridesMap = {
   [key: string]: unknown | undefined;
 };
+const UpdateEndpointsPartialRequestBucketOverridesMap =
+  CreateEndpointRequestBucketOverridesMap as any as S.Schema<UpdateEndpointsPartialRequestBucketOverridesMap>;
+
 /** List of tag names to associate with this endpoint. Replaces any existing tags. */
 export type UpdateEndpointsPartialRequestTagsList = Array<string>;
+const UpdateEndpointsPartialRequestTagsList =
+  CreateEndpointRequestTagsList as any as S.Schema<UpdateEndpointsPartialRequestTagsList>;
+
 /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] -- every breakdown variable is required. */
 export type UpdateEndpointsPartialRequestOptionalBreakdownPropertiesList = Array<string>;
+const UpdateEndpointsPartialRequestOptionalBreakdownPropertiesList =
+  CreateEndpointRequestTagsList as any as S.Schema<UpdateEndpointsPartialRequestOptionalBreakdownPropertiesList>;
+
 export interface UpdateEndpointsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1104,6 +1400,11 @@ export interface UpdateEndpointsPartialRequest {
   /** Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown. Defaults to [] -- every breakdown variable is required. */
   optional_breakdown_properties?: UpdateEndpointsPartialRequestOptionalBreakdownPropertiesList | null;
 }
+const UpdateEndpointsPartialRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<UpdateEndpointsPartialRequest>;
+
 export type CreateEndpointError = BadRequest | Forbidden | NotFound | PosthogOpError;
 /** Create a new endpoint. */
 export const createEndpoint: API.OperationMethod<
@@ -1112,8 +1413,8 @@ export const createEndpoint: API.OperationMethod<
   CreateEndpointError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateEndpointRequest>,
-  output: __S(7) as any as S.Schema<EndpointResponse>,
+  input: CreateEndpointRequest,
+  output: EndpointResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1131,8 +1432,8 @@ export const createEndpointsLastExecutionTime: API.OperationMethod<
   CreateEndpointsLastExecutionTimeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateEndpointsLastExecutionTimeRequest>,
-  output: __S(15) as any as S.Schema<QueryStatusResponse>,
+  input: CreateEndpointsLastExecutionTimeRequest,
+  output: QueryStatusResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1150,8 +1451,8 @@ export const createEndpointsMaterializationPreview: API.OperationMethod<
   CreateEndpointsMaterializationPreviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<CreateEndpointsMaterializationPreviewRequest>,
-  output: __S(22) as any as S.Schema<MaterializationPreviewResponse>,
+  input: CreateEndpointsMaterializationPreviewRequest,
+  output: MaterializationPreviewResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1165,8 +1466,8 @@ export const createEndpointsMaterializationSuggestion: API.OperationMethod<
   CreateEndpointsMaterializationSuggestionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateEndpointsMaterializationSuggestionRequest>,
-  output: __S(24) as any as S.Schema<EndpointMaterializationSuggestion>,
+  input: CreateEndpointsMaterializationSuggestionRequest,
+  output: EndpointMaterializationSuggestion,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1180,8 +1481,8 @@ export const createEndpointsRun: API.OperationMethod<
   CreateEndpointsRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<CreateEndpointsRunRequest>,
-  output: __S(32) as any as S.Schema<EndpointRunResponse>,
+  input: CreateEndpointsRunRequest,
+  output: EndpointRunResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1195,8 +1496,8 @@ export const endpointsDestroy: API.OperationMethod<
   EndpointsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<EndpointsDestroyRequest>,
-  output: __S(34) as any as S.Schema<EndpointsDestroyResponse>,
+  input: EndpointsDestroyRequest,
+  output: EndpointsDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1210,8 +1511,8 @@ export const getEndpoint: API.OperationMethod<
   GetEndpointError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<GetEndpointRequest>,
-  output: __S(36) as any as S.Schema<EndpointVersionResponse>,
+  input: GetEndpointRequest,
+  output: EndpointVersionResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1224,8 +1525,8 @@ export const getEndpointsLog: API.OperationMethod<
   GetEndpointsLogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<GetEndpointsLogRequest>,
-  output: __S(34) as any as S.Schema<GetEndpointsLogResponse>,
+  input: GetEndpointsLogRequest,
+  output: GetEndpointsLogResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1239,8 +1540,8 @@ export const getEndpointsMaterializationCondition: API.OperationMethod<
   GetEndpointsMaterializationConditionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<GetEndpointsMaterializationConditionRequest>,
-  output: __S(39) as any as S.Schema<EndpointMaterializationConditions>,
+  input: GetEndpointsMaterializationConditionRequest,
+  output: EndpointMaterializationConditions,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1254,8 +1555,8 @@ export const getEndpointsMaterializationStatus: API.OperationMethod<
   GetEndpointsMaterializationStatusError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<GetEndpointsMaterializationStatusRequest>,
-  output: __S(4) as any as S.Schema<EndpointMaterialization>,
+  input: GetEndpointsMaterializationStatusRequest,
+  output: EndpointMaterialization,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1269,8 +1570,8 @@ export const getEndpointsOpenapiSpec: API.OperationMethod<
   GetEndpointsOpenapiSpecError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<GetEndpointsOpenapiSpecRequest>,
-  output: __S(42) as any as S.Schema<GetEndpointsOpenapiSpecResponse>,
+  input: GetEndpointsOpenapiSpecRequest,
+  output: GetEndpointsOpenapiSpecResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1284,8 +1585,8 @@ export const getEndpointsRun: API.OperationMethod<
   GetEndpointsRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<GetEndpointsRunRequest>,
-  output: __S(32) as any as S.Schema<EndpointRunResponse>,
+  input: GetEndpointsRunRequest,
+  output: EndpointRunResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1299,8 +1600,8 @@ export const listEndpoints: API.OperationMethod<
   ListEndpointsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<ListEndpointsRequest>,
-  output: __S(46) as any as S.Schema<PaginatedEndpointResponseList>,
+  input: ListEndpointsRequest,
+  output: PaginatedEndpointResponseList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1314,8 +1615,8 @@ export const listEndpointsVersions: API.OperationMethod<
   ListEndpointsVersionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<ListEndpointsVersionsRequest>,
-  output: __S(49) as any as S.Schema<PaginatedEndpointVersionResponseList>,
+  input: ListEndpointsVersionsRequest,
+  output: PaginatedEndpointVersionResponseList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1329,8 +1630,8 @@ export const updateEndpoint: API.OperationMethod<
   UpdateEndpointError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<UpdateEndpointRequest>,
-  output: __S(7) as any as S.Schema<EndpointResponse>,
+  input: UpdateEndpointRequest,
+  output: EndpointResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1344,8 +1645,8 @@ export const updateEndpointsPartial: API.OperationMethod<
   UpdateEndpointsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<UpdateEndpointsPartialRequest>,
-  output: __S(7) as any as S.Schema<EndpointResponse>,
+  input: UpdateEndpointsPartialRequest,
+  output: EndpointResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1370,10 +1671,12 @@ function __c0(j: number): any {
           is_materialized: S.optional(S.NullOr(S.Boolean)),
           derived_from_insight: S.optional(S.NullOr(S.String)),
           version: S.optional(S.NullOr(S.Number)),
-          bucket_overrides: S.optional(S.NullOr(__S(0))),
+          bucket_overrides: S.optional(S.NullOr(CreateEndpointRequestBucketOverridesMap)),
           deleted: S.optional(S.NullOr(S.Boolean)),
-          tags: S.optional(S.NullOr(__S(1))),
-          optional_breakdown_properties: S.optional(S.NullOr(__S(1))),
+          tags: S.optional(S.NullOr(CreateEndpointRequestTagsList)),
+          optional_breakdown_properties: S.optional(
+            S.NullOr(CreateEndpointRequestOptionalBreakdownPropertiesList),
+          ),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/endpoints/", code: 200 }),
         ),
@@ -1388,8 +1691,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(0))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 4:
@@ -1414,7 +1717,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "EndpointColumn" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(EndpointColumn);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1429,18 +1732,20 @@ function __c0(j: number): any {
           ui_url: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(3))),
+          created_by: S.optional(S.NullOr(UserBasic)),
           is_materialized: S.optional(S.Boolean),
           current_version: S.optional(S.Number),
           current_version_id: S.optional(S.NullOr(S.String)),
           versions_count: S.optional(S.Number),
           derived_from_insight: S.optional(S.NullOr(S.String)),
           last_executed_at: S.optional(S.NullOr(S.String)),
-          materialization: S.optional(__S(4)),
-          bucket_overrides: S.optional(S.NullOr(__S(0))),
-          columns: S.optional(__S(6)),
-          tags: S.optional(__S(1)),
-          optional_breakdown_properties: S.optional(__S(1)),
+          materialization: S.optional(EndpointMaterialization),
+          bucket_overrides: S.optional(S.NullOr(EndpointResponseBucketOverridesMap)),
+          columns: S.optional(EndpointResponseColumnsList),
+          tags: S.optional(EndpointResponseTagsList),
+          optional_breakdown_properties: S.optional(
+            EndpointResponseOptionalBreakdownPropertiesList,
+          ),
         }),
       ).annotate({ identifier: "EndpointResponse" });
   }
@@ -1451,7 +1756,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          names: S.optional(__S(1)),
+          names: S.optional(CreateEndpointsLastExecutionTimeRequestNamesList),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1480,18 +1785,18 @@ function __c1(j: number): any {
           cause: S.optional(S.NullOr(S.String)),
           evidence: S.optional(S.NullOr(S.String)),
           fix: S.String,
-          fix_location: S.optional(S.NullOr(S.String)),
-          kind: S.String,
+          fix_location: S.optional(S.NullOr(QueryScanFixLocation)),
+          kind: QueryScanFindingKind,
           message: S.String,
         }),
       ).annotate({ identifier: "QueryScanWarning" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(QueryScanWarning);
     case 4:
       return S.suspend(() =>
         S.Struct({
           assistant_prompt: S.optional(S.NullOr(S.String)),
-          findings: __S(11),
+          findings: QueryScanAnalysisFindingsList,
           project_share: S.optional(S.NullOr(S.Number)),
           range_share: S.optional(S.NullOr(S.Number)),
         }),
@@ -1499,7 +1804,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          analysis: S.optional(S.NullOr(__S(12))),
+          analysis: S.optional(S.NullOr(QueryScanAnalysis)),
           analysis_requested: S.optional(S.NullOr(S.Boolean)),
           duration_ms: S.Number,
           killed: S.optional(S.NullOr(S.Boolean)),
@@ -1521,11 +1826,11 @@ function __c1(j: number): any {
           expiration_time: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
           insight_id: S.optional(S.NullOr(S.Number)),
-          labels: S.optional(S.NullOr(__S(1))),
+          labels: S.optional(S.NullOr(QueryStatusLabelsList)),
           pickup_time: S.optional(S.NullOr(S.String)),
           query_async: S.optional(S.Boolean),
-          query_progress: S.optional(S.NullOr(__S(9))),
-          query_scan: S.optional(S.NullOr(__S(13))),
+          query_progress: S.optional(S.NullOr(ClickhouseQueryProgress)),
+          query_scan: S.optional(S.NullOr(QueryScanSummary)),
           results: S.optional(S.Unknown),
           start_time: S.optional(S.NullOr(S.String)),
           task_id: S.optional(S.NullOr(S.String)),
@@ -1535,7 +1840,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          query_status: S.optional(__S(14)),
+          query_status: S.optional(QueryStatus),
         }),
       ).annotate({ identifier: "QueryStatusResponse" });
   }
@@ -1550,7 +1855,9 @@ function __c2(j: number): any {
           project_id: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           version: S.optional(S.Number),
-          bucket_overrides: S.optional(S.NullOr(__S(16))),
+          bucket_overrides: S.optional(
+            S.NullOr(CreateEndpointsMaterializationPreviewRequestBucketOverridesMap),
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1565,14 +1872,14 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           column: S.String,
-          variables: __S(1),
+          variables: MaterializationPreviewRangePairVariablesList,
           bucket_fn: S.String,
         }),
       ).annotate({
         identifier: "MaterializationPreviewRangePair",
       });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(MaterializationPreviewRangePair);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1583,7 +1890,7 @@ function __c2(j: number): any {
         identifier: "MaterializationPreviewAggregate",
       });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(MaterializationPreviewAggregate);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1592,8 +1899,8 @@ function __c2(j: number): any {
           transformed_query: S.NullOr(S.String),
           execution_query: S.NullOr(S.String),
           display_execution_query: S.NullOr(S.String),
-          range_pairs: __S(19),
-          aggregates: __S(21),
+          range_pairs: MaterializationPreviewResponseRangePairsList,
+          aggregates: MaterializationPreviewResponseAggregatesList,
         }),
       ).annotate({
         identifier: "MaterializationPreviewResponse",
@@ -1621,7 +1928,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          suggestion_status: S.String,
+          suggestion_status: SuggestionStatusEnum,
           suggested_query: S.NullOr(S.String),
           explanation: S.NullOr(S.String),
           attempts: S.Number,
@@ -1637,38 +1944,38 @@ function __c3(j: number): any {
           group_type_index: S.optional(S.NullOr(S.Number)),
           histogram_bin_count: S.optional(S.NullOr(S.Number)),
           normalize_url: S.optional(S.NullOr(S.Boolean)),
-          property: S.optional(S.Unknown),
-          type: S.optional(S.NullOr(S.String)),
+          property: S.optional(BreakdownProperty),
+          type: S.optional(S.NullOr(MultipleBreakdownType)),
         }),
       ).annotate({ identifier: "Breakdown" });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(Breakdown);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          breakdown: S.optional(S.NullOr(S.Unknown)),
+          breakdown: S.optional(S.NullOr(BreakdownFilterBreakdown)),
           breakdown_group_type_index: S.optional(S.NullOr(S.Number)),
           breakdown_hide_other_aggregation: S.optional(S.NullOr(S.Boolean)),
           breakdown_histogram_bin_count: S.optional(S.NullOr(S.Number)),
           breakdown_limit: S.optional(S.NullOr(S.Number)),
           breakdown_normalize_url: S.optional(S.NullOr(S.Boolean)),
           breakdown_path_cleaning: S.optional(S.NullOr(S.Boolean)),
-          breakdown_type: S.optional(S.NullOr(S.String)),
-          breakdowns: S.optional(S.NullOr(__S(26))),
+          breakdown_type: S.optional(S.NullOr(BreakdownType)),
+          breakdowns: S.optional(S.NullOr(BreakdownFilterBreakdownsList)),
         }),
       ).annotate({ identifier: "BreakdownFilter" });
     case 4:
-      return S.Array(S.Unknown);
+      return S.Array(DashboardFilterPropertiesItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          breakdown_filter: S.optional(S.NullOr(__S(27))),
+          breakdown_filter: S.optional(S.NullOr(BreakdownFilter)),
           date_from: S.optional(S.NullOr(S.String)),
           date_to: S.optional(S.NullOr(S.String)),
           explicitDate: S.optional(S.NullOr(S.Boolean)),
           filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
-          interval: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(__S(28))),
+          interval: S.optional(S.NullOr(IntervalType)),
+          properties: S.optional(S.NullOr(DashboardFilterPropertiesList)),
         }),
       ).annotate({ identifier: "DashboardFilter" });
     case 6:
@@ -1678,11 +1985,11 @@ function __c3(j: number): any {
           name: S.String.pipe(T.Label()),
           client_query_id: S.optional(S.NullOr(S.String)),
           debug: S.optional(S.NullOr(S.Boolean)),
-          filters_override: S.optional(S.NullOr(__S(29))),
+          filters_override: S.optional(S.NullOr(DashboardFilter)),
           limit: S.optional(S.NullOr(S.Number)),
           offset: S.optional(S.NullOr(S.Number)),
-          refresh: S.optional(S.NullOr(S.String)),
-          variables: S.optional(S.NullOr(__S(0))),
+          refresh: S.optional(S.NullOr(EndpointRefreshMode)),
+          variables: S.optional(S.NullOr(CreateEndpointsRunRequestVariablesMap)),
           version: S.optional(S.NullOr(S.Number)),
         }).pipe(
           T.Http({
@@ -1705,8 +2012,8 @@ function __c4(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           execution_id: S.optional(S.String),
-          results: S.optional(__S(31)),
-          columns: S.optional(__S(1)),
+          results: S.optional(EndpointRunResponseResultsList),
+          columns: S.optional(EndpointRunResponseColumnsList),
           hasMore: S.optional(S.Boolean),
           endpoint_version: S.optional(S.Number),
         }),
@@ -1752,24 +2059,26 @@ function __c4(j: number): any {
           ui_url: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(3))),
+          created_by: S.optional(S.NullOr(UserBasic)),
           is_materialized: S.optional(S.Boolean),
           current_version: S.optional(S.Number),
           current_version_id: S.optional(S.NullOr(S.String)),
           versions_count: S.optional(S.Number),
           derived_from_insight: S.optional(S.NullOr(S.String)),
           last_executed_at: S.optional(S.NullOr(S.String)),
-          materialization: S.optional(__S(4)),
-          bucket_overrides: S.optional(S.NullOr(__S(0))),
-          columns: S.optional(__S(6)),
-          tags: S.optional(__S(1)),
-          optional_breakdown_properties: S.optional(__S(1)),
+          materialization: S.optional(EndpointMaterialization),
+          bucket_overrides: S.optional(S.NullOr(EndpointVersionResponseBucketOverridesMap)),
+          columns: S.optional(EndpointVersionResponseColumnsList),
+          tags: S.optional(EndpointVersionResponseTagsList),
+          optional_breakdown_properties: S.optional(
+            EndpointVersionResponseOptionalBreakdownPropertiesList,
+          ),
           version: S.optional(S.Number),
           version_id: S.optional(S.String),
           endpoint_is_active: S.optional(S.Boolean),
           version_created_at: S.optional(S.String),
           version_updated_at: S.optional(S.NullOr(S.String)),
-          version_created_by: S.optional(S.NullOr(__S(3))),
+          version_created_by: S.optional(S.NullOr(UserBasic)),
         }),
       ).annotate({ identifier: "EndpointVersionResponse" });
     case 5:
@@ -1878,14 +2187,14 @@ function __c5(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/endpoints/", code: 200 })),
       ).annotate({ identifier: "ListEndpointsRequest" });
     case 5:
-      return S.Array(__S(7));
+      return S.Array(EndpointResponse);
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(45)),
+          results: S.optional(PaginatedEndpointResponseListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedEndpointResponseList",
@@ -1914,14 +2223,14 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(36));
+      return S.Array(EndpointVersionResponse);
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(48)),
+          results: S.optional(PaginatedEndpointVersionResponseListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedEndpointVersionResponseList",
@@ -1938,10 +2247,12 @@ function __c6(j: number): any {
           is_materialized: S.optional(S.NullOr(S.Boolean)),
           derived_from_insight: S.optional(S.NullOr(S.String)),
           version: S.optional(S.NullOr(S.Number)),
-          bucket_overrides: S.optional(S.NullOr(__S(0))),
+          bucket_overrides: S.optional(S.NullOr(UpdateEndpointRequestBucketOverridesMap)),
           deleted: S.optional(S.NullOr(S.Boolean)),
-          tags: S.optional(S.NullOr(__S(1))),
-          optional_breakdown_properties: S.optional(S.NullOr(__S(1))),
+          tags: S.optional(S.NullOr(UpdateEndpointRequestTagsList)),
+          optional_breakdown_properties: S.optional(
+            S.NullOr(UpdateEndpointRequestOptionalBreakdownPropertiesList),
+          ),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/projects/{project_id}/endpoints/{name}/", code: 200 }),
         ),
@@ -1958,10 +2269,12 @@ function __c6(j: number): any {
           is_materialized: S.optional(S.NullOr(S.Boolean)),
           derived_from_insight: S.optional(S.NullOr(S.String)),
           version: S.optional(S.NullOr(S.Number)),
-          bucket_overrides: S.optional(S.NullOr(__S(0))),
+          bucket_overrides: S.optional(S.NullOr(UpdateEndpointsPartialRequestBucketOverridesMap)),
           deleted: S.optional(S.NullOr(S.Boolean)),
-          tags: S.optional(S.NullOr(__S(1))),
-          optional_breakdown_properties: S.optional(S.NullOr(__S(1))),
+          tags: S.optional(S.NullOr(UpdateEndpointsPartialRequestTagsList)),
+          optional_breakdown_properties: S.optional(
+            S.NullOr(UpdateEndpointsPartialRequestOptionalBreakdownPropertiesList),
+          ),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1972,28 +2285,5 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UpdateEndpointsPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

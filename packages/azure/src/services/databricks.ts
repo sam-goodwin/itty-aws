@@ -6,31 +6,51 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type AccessConnectorsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const AccessConnectorsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AccessConnectorsCreateOrUpdateRequestTagsMap>;
+
 export interface AccessConnectorPropertiesInput {}
+const AccessConnectorPropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AccessConnectorPropertiesInput>;
+
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
+const ManagedServiceIdentityType = S.String;
+
 /** User assigned identity properties */
 export type UserAssignedIdentityInput = AccessConnectorPropertiesInput;
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
   [key: string]: AccessConnectorPropertiesInput | null | undefined;
 };
+const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface AccessConnectorsCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
+const AccessConnectorsCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AccessConnectorsCreateOrUpdateRequestIdentity>;
+
 export interface AccessConnectorsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -47,8 +67,16 @@ export interface AccessConnectorsCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: AccessConnectorsCreateOrUpdateRequestIdentity;
 }
+const AccessConnectorsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AccessConnectorsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type AccessConnectorsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const AccessConnectorsCreateOrUpdateResponseTagsMap =
+  AccessConnectorsCreateOrUpdateRequestTagsMap as any as S.Schema<AccessConnectorsCreateOrUpdateResponseTagsMap>;
+
 /** Provisioning status of the workspace. */
 export type ProvisioningState =
   | "Accepted"
@@ -62,14 +90,26 @@ export type ProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Updating";
+const ProvisioningState = S.String;
+
 /** List of workspaces referring this Access Connector. */
 export type AccessConnectorPropertiesReferedByList = Array<string>;
+const AccessConnectorPropertiesReferedByList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AccessConnectorPropertiesReferedByList>;
+
 export interface AccessConnectorProperties {
   /** Provisioning status of the Access Connector. */
   provisioningState?: ProvisioningState;
   /** List of workspaces referring this Access Connector. */
   referedBy?: AccessConnectorPropertiesReferedByList;
 }
+const AccessConnectorProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AccessConnectorProperties>;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -77,8 +117,15 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
+const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<UserAssignedIdentity>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | null | undefined };
+const UserAssignedIdentities = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<UserAssignedIdentities>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface AccessConnectorsCreateOrUpdateResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -88,6 +135,11 @@ export interface AccessConnectorsCreateOrUpdateResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
+const AccessConnectorsCreateOrUpdateResponseIdentity = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<AccessConnectorsCreateOrUpdateResponseIdentity>;
+
 export interface AccessConnectorsCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -104,16 +156,26 @@ export interface AccessConnectorsCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: AccessConnectorsCreateOrUpdateResponseIdentity;
 }
+const AccessConnectorsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<AccessConnectorsCreateOrUpdateResponse>;
+
 /** The private endpoint property of a private endpoint connection. */
 export type PrivateEndpointInput = AccessConnectorPropertiesInput;
 /** GroupIds from the private link service resource. */
 export type PrivateEndpointConnectionPropertiesInputGroupIdsList = Array<string>;
+const PrivateEndpointConnectionPropertiesInputGroupIdsList =
+  AccessConnectorPropertiesReferedByList as any as S.Schema<PrivateEndpointConnectionPropertiesInputGroupIdsList>;
+
 /** The status of a private endpoint connection */
 export type PrivateLinkServiceConnectionStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
   | "Disconnected";
+const PrivateLinkServiceConnectionStatus = S.String;
+
 /** The current state of a private endpoint connection. */
 export interface PrivateLinkServiceConnectionState {
   /** The status of a private endpoint connection */
@@ -123,6 +185,11 @@ export interface PrivateLinkServiceConnectionState {
   /** Actions required for a private endpoint connection */
   actionsRequired?: string;
 }
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<PrivateLinkServiceConnectionState>;
+
 /** The properties of a private endpoint connection. */
 export interface PrivateEndpointConnectionPropertiesInput {
   /** Private endpoint */
@@ -132,6 +199,11 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** Private endpoint connection state */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
+const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
 export interface CreatePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -144,13 +216,23 @@ export interface CreatePrivateEndpointConnectionRequest {
   /** The private endpoint connection properties. */
   properties: PrivateEndpointConnectionPropertiesInput;
 }
+const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreatePrivateEndpointConnectionRequest>;
+
 /** The private endpoint property of a private endpoint connection. */
 export interface PrivateEndpoint {
   /** The resource identifier. */
   id?: string;
 }
+const PrivateEndpoint = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<PrivateEndpoint>;
+
 /** GroupIds from the private link service resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
+const PrivateEndpointConnectionPropertiesGroupIdsList =
+  AccessConnectorPropertiesReferedByList as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
+
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
@@ -158,6 +240,8 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Updating"
   | "Deleting"
   | "Failed";
+const PrivateEndpointConnectionProvisioningState = S.String;
+
 /** The properties of a private endpoint connection. */
 export interface PrivateEndpointConnectionProperties {
   /** Private endpoint */
@@ -169,6 +253,11 @@ export interface PrivateEndpointConnectionProperties {
   /** Provisioning state of the private endpoint connection. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<PrivateEndpointConnectionProperties>;
+
 export interface CreatePrivateEndpointConnectionResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -179,6 +268,11 @@ export interface CreatePrivateEndpointConnectionResponse {
   /** The private endpoint connection properties. */
   properties: PrivateEndpointConnectionProperties;
 }
+const CreatePrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreatePrivateEndpointConnectionResponse>;
+
 export interface DeleteAccessConnectorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -187,7 +281,15 @@ export interface DeleteAccessConnectorRequest {
   /** The name of the Azure Databricks Access Connector. */
   connectorName: string;
 }
+const DeleteAccessConnectorRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DeleteAccessConnectorRequest>;
+
 export interface DeleteAccessConnectorResponse {}
+const DeleteAccessConnectorResponse =
+  AccessConnectorPropertiesInput as any as S.Schema<DeleteAccessConnectorResponse>;
+
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -198,7 +300,17 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection */
   privateEndpointConnectionName: string;
 }
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
+
 export interface DeletePrivateEndpointConnectionResponse {}
+const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+
 export interface DeleteVNetPeeringRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -209,7 +321,15 @@ export interface DeleteVNetPeeringRequest {
   /** The name of the workspace vNet peering. */
   peeringName: string;
 }
+const DeleteVNetPeeringRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DeleteVNetPeeringRequest>;
+
 export interface DeleteVNetPeeringResponse {}
+const DeleteVNetPeeringResponse =
+  AccessConnectorPropertiesInput as any as S.Schema<DeleteVNetPeeringResponse>;
+
 export interface DeleteWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -220,7 +340,15 @@ export interface DeleteWorkspaceRequest {
   /** Optional parameter to retain default unity catalog data. By default the data will retained if Uc is enabled on the workspace. */
   forceDeletion?: boolean;
 }
+const DeleteWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DeleteWorkspaceRequest>;
+
 export interface DeleteWorkspaceResponse {}
+const DeleteWorkspaceResponse =
+  AccessConnectorPropertiesInput as any as S.Schema<DeleteWorkspaceResponse>;
+
 export interface GetAccessConnectorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -229,6 +357,11 @@ export interface GetAccessConnectorRequest {
   /** The name of the Azure Databricks Access Connector. */
   connectorName: string;
 }
+const GetAccessConnectorRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetAccessConnectorRequest>;
+
 /** Resource tags. */
 export type GetAccessConnectorResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -249,6 +382,9 @@ export interface GetAccessConnectorResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: AccessConnectorsCreateOrUpdateResponseIdentity;
 }
+const GetAccessConnectorResponse =
+  AccessConnectorsCreateOrUpdateResponse as any as S.Schema<GetAccessConnectorResponse>;
+
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -259,6 +395,11 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection */
   privateEndpointConnectionName: string;
 }
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
+
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -269,6 +410,9 @@ export interface GetPrivateEndpointConnectionResponse {
   /** The private endpoint connection properties. */
   properties: PrivateEndpointConnectionProperties;
 }
+const GetPrivateEndpointConnectionResponse =
+  CreatePrivateEndpointConnectionResponse as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+
 export interface GetPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -279,10 +423,21 @@ export interface GetPrivateLinkResourceRequest {
   /** The name of the private link resource */
   groupId: string;
 }
+const GetPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetPrivateLinkResourceRequest>;
+
 /** The required members for a specific group id */
 export type GroupIdInformationPropertiesRequiredMembersList = Array<string>;
+const GroupIdInformationPropertiesRequiredMembersList =
+  AccessConnectorPropertiesReferedByList as any as S.Schema<GroupIdInformationPropertiesRequiredMembersList>;
+
 /** The required DNS zones for a specific group id */
 export type GroupIdInformationPropertiesRequiredZoneNamesList = Array<string>;
+const GroupIdInformationPropertiesRequiredZoneNamesList =
+  AccessConnectorPropertiesReferedByList as any as S.Schema<GroupIdInformationPropertiesRequiredZoneNamesList>;
+
 /** The properties for a group information object */
 export interface GroupIdInformationProperties {
   /** The group id */
@@ -292,6 +447,11 @@ export interface GroupIdInformationProperties {
   /** The required DNS zones for a specific group id */
   requiredZoneNames?: GroupIdInformationPropertiesRequiredZoneNamesList;
 }
+const GroupIdInformationProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GroupIdInformationProperties>;
+
 export interface GetPrivateLinkResourceResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -302,6 +462,11 @@ export interface GetPrivateLinkResourceResponse {
   /** The group id properties. */
   properties: GroupIdInformationProperties;
 }
+const GetPrivateLinkResourceResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetPrivateLinkResourceResponse>;
+
 export interface GetVNetPeeringRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -312,27 +477,51 @@ export interface GetVNetPeeringRequest {
   /** The name of the workspace vNet peering. */
   peeringName: string;
 }
+const GetVNetPeeringRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetVNetPeeringRequest>;
+
 /** The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering). */
 export interface VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork {
   /** The Id of the databricks virtual network. */
   id?: string;
 }
+const VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork>;
+
 /** A list of address blocks reserved for this virtual network in CIDR notation. */
 export type AddressSpaceAddressPrefixesList = Array<string>;
+const AddressSpaceAddressPrefixesList =
+  AccessConnectorPropertiesReferedByList as any as S.Schema<AddressSpaceAddressPrefixesList>;
+
 /** AddressSpace contains an array of IP address ranges that can be used by subnets of the virtual network. */
 export interface AddressSpace {
   /** A list of address blocks reserved for this virtual network in CIDR notation. */
   addressPrefixes?: AddressSpaceAddressPrefixesList;
 }
+const AddressSpace = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<AddressSpace>;
+
 /** The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering). */
 export interface VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork {
   /** The Id of the remote virtual network. */
   id?: string;
 }
+const VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork>;
+
 /** The status of the virtual network peering. */
 export type PeeringState = "Initiated" | "Connected" | "Disconnected";
+const PeeringState = S.String;
+
 /** The current provisioning state. */
 export type PeeringProvisioningState = "Succeeded" | "Updating" | "Deleting" | "Failed";
+const PeeringProvisioningState = S.String;
+
 /** Properties of the virtual network peering. */
 export interface VirtualNetworkPeeringPropertiesFormat {
   /** Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space. */
@@ -356,6 +545,11 @@ export interface VirtualNetworkPeeringPropertiesFormat {
   /** The provisioning state of the virtual network peering resource. */
   provisioningState?: PeeringProvisioningState | (string & {});
 }
+const VirtualNetworkPeeringPropertiesFormat = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<VirtualNetworkPeeringPropertiesFormat>;
+
 export interface GetVNetPeeringResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -366,6 +560,11 @@ export interface GetVNetPeeringResponse {
   /** List of properties for vNet Peering */
   properties: VirtualNetworkPeeringPropertiesFormat;
 }
+const GetVNetPeeringResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetVNetPeeringResponse>;
+
 export interface GetWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -374,12 +573,21 @@ export interface GetWorkspaceRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
+const GetWorkspaceRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<GetWorkspaceRequest>;
+
 /** Resource tags. */
 export type GetWorkspaceResponseTagsMap = { [key: string]: string | undefined };
+const GetWorkspaceResponseTagsMap =
+  AccessConnectorsCreateOrUpdateRequestTagsMap as any as S.Schema<GetWorkspaceResponseTagsMap>;
+
 /** The workspace compute mode. Required on create, cannot be changed. Possible values include: 'Serverless', 'Hybrid' */
 export type ComputeMode = "Serverless" | "Hybrid";
+const ComputeMode = S.String;
+
 /** The workspace's custom parameters. */
 export type CustomParameterType = "Bool" | "Object" | "String";
+const CustomParameterType = S.String;
+
 /** The Value. */
 export interface WorkspaceCustomStringParameter {
   /** The type of variable that this is */
@@ -387,6 +595,11 @@ export interface WorkspaceCustomStringParameter {
   /** The value which should be used for this field. */
   value: string;
 }
+const WorkspaceCustomStringParameter = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<WorkspaceCustomStringParameter>;
+
 /** The value which should be used for this field. */
 export interface WorkspaceNoPublicIPBooleanParameter {
   /** The type of variable that this is */
@@ -394,10 +607,17 @@ export interface WorkspaceNoPublicIPBooleanParameter {
   /** The value which should be used for this field. */
   value: boolean;
 }
+const WorkspaceNoPublicIPBooleanParameter = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<WorkspaceNoPublicIPBooleanParameter>;
+
 /** The value which should be used for this field. */
 export type WorkspaceCustomBooleanParameter = WorkspaceNoPublicIPBooleanParameter;
 /** The encryption keySource (provider). Possible values (case-insensitive): Default, Microsoft.Keyvault */
 export type EncryptionKeySource = "Default" | "Microsoft.Keyvault";
+const EncryptionKeySource = S.String;
+
 /** The object that contains details of encryption used on the workspace. */
 export interface Encryption {
   /** The encryption keySource (provider). Possible values (case-insensitive): Default, Microsoft.Keyvault */
@@ -409,6 +629,8 @@ export interface Encryption {
   /** The Uri of KeyVault. */
   keyvaulturi?: string;
 }
+const Encryption = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<Encryption>;
+
 /** The object that contains details of encryption used on the workspace. */
 export interface WorkspaceEncryptionParameter {
   /** The type of variable that this is */
@@ -416,6 +638,11 @@ export interface WorkspaceEncryptionParameter {
   /** The value which should be used for this field. */
   value?: Encryption;
 }
+const WorkspaceEncryptionParameter = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<WorkspaceEncryptionParameter>;
+
 /** The value which should be used for this field. */
 export interface WorkspaceCustomObjectParameter {
   /** The type of variable that this is */
@@ -423,6 +650,11 @@ export interface WorkspaceCustomObjectParameter {
   /** The value which should be used for this field. */
   value: unknown;
 }
+const WorkspaceCustomObjectParameter = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<WorkspaceCustomObjectParameter>;
+
 /** Custom Parameters used for Workspace Creation. Not allowed in Serverless ComputeMode workspace. */
 export interface WorkspaceCustomParameters {
   /** The ID of a Azure Machine Learning workspace to link with Databricks workspace. Not allowed in Serverless ComputeMode workspace. */
@@ -458,6 +690,11 @@ export interface WorkspaceCustomParameters {
   /** Tags applied to resources under Managed resource group. These can be updated by updating tags at workspace level. Not allowed in Serverless ComputeMode workspace. */
   resourceTags?: WorkspaceCustomObjectParameter;
 }
+const WorkspaceCustomParameters = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<WorkspaceCustomParameters>;
+
 /** The workspace provider authorization. */
 export interface WorkspaceProviderAuthorization {
   /** The provider's principal identifier. This is the identity that the provider will use to call ARM to manage the workspace resources. */
@@ -465,8 +702,18 @@ export interface WorkspaceProviderAuthorization {
   /** The provider's role definition identifier. This role will define all the permissions that the provider must have on the workspace's container resource group. This role definition cannot have permission to delete the resource group. */
   roleDefinitionId: string;
 }
+const WorkspaceProviderAuthorization = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<WorkspaceProviderAuthorization>;
+
 /** The workspace provider authorizations. */
 export type WorkspacePropertiesAuthorizationsList = Array<WorkspaceProviderAuthorization>;
+const WorkspacePropertiesAuthorizationsList = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<WorkspacePropertiesAuthorizationsList>;
+
 /** Provides details of the entity that created/updated the workspace. */
 export interface CreatedBy {
   /** The Object ID that created the workspace. */
@@ -476,6 +723,8 @@ export interface CreatedBy {
   /** The application ID of the application that initiated the creation of the workspace. For example, Azure Portal. */
   applicationId?: string;
 }
+const CreatedBy = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<CreatedBy>;
+
 /** The Managed Identity details for storage account. */
 export interface ManagedIdentityConfiguration {
   /** The objectId of the Managed Identity that is linked to the Managed Storage account. */
@@ -485,8 +734,15 @@ export interface ManagedIdentityConfiguration {
   /** The type of Identity created. It can be either SystemAssigned or UserAssigned. */
   type?: string;
 }
+const ManagedIdentityConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ManagedIdentityConfiguration>;
+
 /** The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault */
 export type EncryptionKeySource2 = "Microsoft.Keyvault";
+const EncryptionKeySource2 = S.String;
+
 /** Key Vault input properties for encryption. */
 export interface EncryptionV2KeyVaultProperties {
   /** The Uri of KeyVault. */
@@ -496,6 +752,11 @@ export interface EncryptionV2KeyVaultProperties {
   /** The version of KeyVault key. */
   keyVersion: string;
 }
+const EncryptionV2KeyVaultProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<EncryptionV2KeyVaultProperties>;
+
 /** The object that contains details of encryption used on the workspace. */
 export interface EncryptionV2 {
   /** The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault */
@@ -503,6 +764,8 @@ export interface EncryptionV2 {
   /** Key Vault input properties for encryption. */
   keyVaultProperties?: EncryptionV2KeyVaultProperties;
 }
+const EncryptionV2 = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<EncryptionV2>;
+
 /** Key Vault input properties for encryption. */
 export interface ManagedDiskEncryptionKeyVaultProperties {
   /** The URI of KeyVault. */
@@ -512,6 +775,9 @@ export interface ManagedDiskEncryptionKeyVaultProperties {
   /** The version of KeyVault key. */
   keyVersion: string;
 }
+const ManagedDiskEncryptionKeyVaultProperties =
+  EncryptionV2KeyVaultProperties as any as S.Schema<ManagedDiskEncryptionKeyVaultProperties>;
+
 /** The object that contains details of encryption used on the workspace. */
 export interface ManagedDiskEncryption {
   /** The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault. Not allowed in Serverless ComputeMode workspace. */
@@ -521,6 +787,11 @@ export interface ManagedDiskEncryption {
   /** Indicate whether the latest key version should be automatically used for Managed Disk Encryption. */
   rotationToLatestKeyVersionEnabled?: boolean;
 }
+const ManagedDiskEncryption = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ManagedDiskEncryption>;
+
 /** Encryption entities for databricks workspace resource. */
 export interface EncryptionEntitiesDefinition {
   /** Encryption properties for the databricks managed services. Supported in both Serverless and Hybrid ComputeMode. */
@@ -528,30 +799,60 @@ export interface EncryptionEntitiesDefinition {
   /** Encryption properties for the databricks managed disks. Not allowed in Serverless ComputeMode workspace. */
   managedDisk?: ManagedDiskEncryption;
 }
+const EncryptionEntitiesDefinition = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<EncryptionEntitiesDefinition>;
+
 /** Encryption properties for databricks workspace. Supported in both Serverless and Hybrid ComputeMode workspace. */
 export interface WorkspacePropertiesEncryption {
   /** Encryption entities definition for the workspace. */
   entities: EncryptionEntitiesDefinition;
 }
+const WorkspacePropertiesEncryption = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<WorkspacePropertiesEncryption>;
+
 export type AutomaticClusterUpdateValue = "Enabled" | "Disabled";
+const AutomaticClusterUpdateValue = S.String;
+
 /** Status of automated cluster updates feature. */
 export interface AutomaticClusterUpdateDefinition {
   value?: AutomaticClusterUpdateValue | (string & {});
 }
+const AutomaticClusterUpdateDefinition = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<AutomaticClusterUpdateDefinition>;
+
 /** Compliance standards associated with the workspace. */
 export type ComplianceSecurityProfileDefinitionComplianceStandardsList = Array<string>;
+const ComplianceSecurityProfileDefinitionComplianceStandardsList =
+  AccessConnectorPropertiesReferedByList as any as S.Schema<ComplianceSecurityProfileDefinitionComplianceStandardsList>;
+
 export type ComplianceSecurityProfileValue = "Enabled" | "Disabled";
+const ComplianceSecurityProfileValue = S.String;
+
 /** Status of Compliance Security Profile feature. */
 export interface ComplianceSecurityProfileDefinition {
   /** Compliance standards associated with the workspace. */
   complianceStandards?: ComplianceSecurityProfileDefinitionComplianceStandardsList;
   value?: ComplianceSecurityProfileValue | (string & {});
 }
+const ComplianceSecurityProfileDefinition = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ComplianceSecurityProfileDefinition>;
+
 export type EnhancedSecurityMonitoringValue = "Enabled" | "Disabled";
 /** Status of Enhanced Security Monitoring feature. */
 export interface EnhancedSecurityMonitoringDefinition {
   value?: EnhancedSecurityMonitoringValue | (string & {});
 }
+const EnhancedSecurityMonitoringDefinition =
+  AutomaticClusterUpdateDefinition as any as S.Schema<EnhancedSecurityMonitoringDefinition>;
+
 /** Status of settings related to the Enhanced Security and Compliance Add-On. */
 export interface EnhancedSecurityComplianceDefinition {
   /** Status of automated cluster updates feature. */
@@ -561,6 +862,11 @@ export interface EnhancedSecurityComplianceDefinition {
   /** Status of Enhanced Security Monitoring feature. */
   enhancedSecurityMonitoring?: EnhancedSecurityMonitoringDefinition;
 }
+const EnhancedSecurityComplianceDefinition = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<EnhancedSecurityComplianceDefinition>;
+
 /** The private endpoint connection of a workspace. */
 export interface PrivateEndpointConnection {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -572,14 +878,28 @@ export interface PrivateEndpointConnection {
   /** The private endpoint connection properties. */
   properties: PrivateEndpointConnectionProperties;
 }
+const PrivateEndpointConnection =
+  CreatePrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnection>;
+
 /** Private endpoint connections created on the workspace. Supported in both Serverless and Hybrid ComputeMode workspace. */
 export type WorkspacePropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
+const WorkspacePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<WorkspacePropertiesPrivateEndpointConnectionsList>;
+
 /** The network access type for accessing workspace. Set value to disabled to access workspace only via private link. Used to configure front-end only private link for Serverless ComputeMode workspace. */
 export type PublicNetworkAccess = "Enabled" | "Disabled";
+const PublicNetworkAccess = S.String;
+
 /** Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only. Not allowed in Serverless ComputeMode workspace. */
 export type RequiredNsgRules = "AllRules" | "NoAzureDatabricksRules" | "NoAzureServiceRules";
+const RequiredNsgRules = S.String;
+
 /** Defines the initial type of the default catalog. Possible values (case-insensitive): HiveMetastore, UnityCatalog */
 export type DefaultCatalogPropertiesInitialType = "HiveMetastore" | "UnityCatalog";
+const DefaultCatalogPropertiesInitialType = S.String;
+
 /** These properties lets user specify default catalog properties during workspace creation. Not allowed in Serverless ComputeMode workspace. */
 export interface DefaultCatalogProperties {
   /** Defines the initial type of the default catalog. Possible values (case-insensitive): HiveMetastore, UnityCatalog */
@@ -587,8 +907,15 @@ export interface DefaultCatalogProperties {
   /** Specifies the initial Name of default catalog. If not specified, the name of the workspace will be used. */
   initialName?: string;
 }
+const DefaultCatalogProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DefaultCatalogProperties>;
+
 /** The identity type of the Access Connector Resource. */
 export type IdentityType = "SystemAssigned" | "UserAssigned";
+const IdentityType = S.String;
+
 /** Access Connector Resource that is going to be associated with Databricks Workspace. Not allowed in Serverless ComputeMode workspace. */
 export interface WorkspacePropertiesAccessConnector {
   /** The resource ID of Azure Databricks Access Connector Resource. */
@@ -598,8 +925,15 @@ export interface WorkspacePropertiesAccessConnector {
   /** The resource ID of the User Assigned Identity associated with the Access Connector Resource. This is required for type 'UserAssigned' and not valid for type 'SystemAssigned'. */
   userAssignedIdentityId?: string;
 }
+const WorkspacePropertiesAccessConnector = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<WorkspacePropertiesAccessConnector>;
+
 /** Gets or Sets Default Storage Firewall configuration information. Not allowed in Serverless ComputeMode workspace. */
 export type DefaultStorageFirewall = "Disabled" | "Enabled";
+const DefaultStorageFirewall = S.String;
+
 /** The workspace properties. */
 export interface WorkspaceProperties {
   /** The workspace compute mode. Required on create, cannot be changed. Possible values include: 'Serverless', 'Hybrid' */
@@ -649,6 +983,8 @@ export interface WorkspaceProperties {
   /** Gets or Sets Default Storage Firewall configuration information. Not allowed in Serverless ComputeMode workspace. */
   defaultStorageFirewall?: DefaultStorageFirewall;
 }
+const WorkspaceProperties = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<WorkspaceProperties>;
+
 /** SKU for the resource. */
 export interface Sku {
   /** The SKU name. */
@@ -656,6 +992,8 @@ export interface Sku {
   /** The SKU tier. */
   tier?: string;
 }
+const Sku = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<Sku>;
+
 export interface GetWorkspaceResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -672,14 +1010,24 @@ export interface GetWorkspaceResponse {
   /** The SKU of the resource. */
   sku?: Sku;
 }
+const GetWorkspaceResponse = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<GetWorkspaceResponse>;
+
 export interface ListAccessConnectorByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListAccessConnectorByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListAccessConnectorByResourceGroupRequest>;
+
 /** Resource tags. */
 export type AccessConnectorTagsMap = { [key: string]: string | undefined };
+const AccessConnectorTagsMap =
+  AccessConnectorsCreateOrUpdateRequestTagsMap as any as S.Schema<AccessConnectorTagsMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type AccessConnectorIdentity = AccessConnectorsCreateOrUpdateResponseIdentity;
 /** Information about Azure Databricks Access Connector. */
@@ -699,8 +1047,15 @@ export interface AccessConnector {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: AccessConnectorsCreateOrUpdateResponseIdentity;
 }
+const AccessConnector = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<AccessConnector>;
+
 /** The AccessConnector items on this page */
 export type AccessConnectorListResultValueList = Array<AccessConnector>;
+const AccessConnectorListResultValueList = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<AccessConnectorListResultValueList>;
+
 /** The response of a AccessConnector list operation. */
 export interface AccessConnectorListResult {
   /** The AccessConnector items on this page */
@@ -708,11 +1063,26 @@ export interface AccessConnectorListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const AccessConnectorListResult = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<AccessConnectorListResult>;
+
 export interface ListAccessConnectorBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListAccessConnectorBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListAccessConnectorBySubscriptionRequest>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: ex Microsoft.Databricks */
@@ -724,6 +1094,8 @@ export interface OperationDisplay {
   /** Description for the resource operation. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<OperationDisplay>;
+
 /** REST API operation */
 export interface Operation {
   /** Operation name: {provider}/{resource}/{operation} */
@@ -731,8 +1103,15 @@ export interface Operation {
   /** The object that represents the operation. */
   display?: OperationDisplay;
 }
+const Operation = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<Operation>;
+
 /** List of Resource Provider operations supported by the Resource Provider resource provider. */
 export type OperationListResultValueList = Array<Operation>;
+const OperationListResultValueList = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<OperationListResultValueList>;
+
 /** Result of the request to list Resource Provider operations. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationListResult {
   /** List of Resource Provider operations supported by the Resource Provider resource provider. */
@@ -740,6 +1119,8 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
+const OperationListResult = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<OperationListResult>;
+
 export interface ListPrivateEndpointConnectionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -748,8 +1129,16 @@ export interface ListPrivateEndpointConnectionsRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
+const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ListPrivateEndpointConnectionsRequest>;
+
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionsListValueList = Array<PrivateEndpointConnection>;
+const PrivateEndpointConnectionsListValueList =
+  WorkspacePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionsListValueList>;
+
 /** List of private link connections. */
 export interface PrivateEndpointConnectionsList {
   /** The PrivateEndpointConnection items on this page */
@@ -757,6 +1146,11 @@ export interface PrivateEndpointConnectionsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<PrivateEndpointConnectionsList>;
+
 export interface ListPrivateLinkResourcesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -765,6 +1159,11 @@ export interface ListPrivateLinkResourcesRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
+const ListPrivateLinkResourcesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListPrivateLinkResourcesRequest>;
+
 /** The group information for creating a private endpoint on a workspace */
 export interface GroupIdInformation {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -776,8 +1175,15 @@ export interface GroupIdInformation {
   /** The group id properties. */
   properties: GroupIdInformationProperties;
 }
+const GroupIdInformation = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<GroupIdInformation>;
+
 /** The GroupIdInformation items on this page */
 export type PrivateLinkResourcesListValueList = Array<GroupIdInformation>;
+const PrivateLinkResourcesListValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<PrivateLinkResourcesListValueList>;
+
 /** The available private link resources for a workspace */
 export interface PrivateLinkResourcesList {
   /** The GroupIdInformation items on this page */
@@ -785,6 +1191,11 @@ export interface PrivateLinkResourcesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PrivateLinkResourcesList = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<PrivateLinkResourcesList>;
+
 export interface ListVNetPeeringByWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -793,6 +1204,11 @@ export interface ListVNetPeeringByWorkspaceRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
+const ListVNetPeeringByWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListVNetPeeringByWorkspaceRequest>;
+
 /** Peerings in a VirtualNetwork resource */
 export interface VirtualNetworkPeering {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -804,8 +1220,15 @@ export interface VirtualNetworkPeering {
   /** List of properties for vNet Peering */
   properties: VirtualNetworkPeeringPropertiesFormat;
 }
+const VirtualNetworkPeering = GetVNetPeeringResponse as any as S.Schema<VirtualNetworkPeering>;
+
 /** The VirtualNetworkPeering items on this page */
 export type VirtualNetworkPeeringListValueList = Array<VirtualNetworkPeering>;
+const VirtualNetworkPeeringListValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<VirtualNetworkPeeringListValueList>;
+
 /** Gets all virtual network peerings under a workspace. */
 export interface VirtualNetworkPeeringList {
   /** The VirtualNetworkPeering items on this page */
@@ -813,12 +1236,22 @@ export interface VirtualNetworkPeeringList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const VirtualNetworkPeeringList = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<VirtualNetworkPeeringList>;
+
 export interface ListWorkspaceByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListWorkspaceByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ListWorkspaceByResourceGroupRequest>;
+
 /** Resource tags. */
 export type WorkspaceTagsMap = { [key: string]: string | undefined };
 /** Information about workspace. */
@@ -838,8 +1271,15 @@ export interface Workspace {
   /** The SKU of the resource. */
   sku?: Sku;
 }
+const Workspace = GetWorkspaceResponse as any as S.Schema<Workspace>;
+
 /** The Workspace items on this page */
 export type WorkspaceListResultValueList = Array<Workspace>;
+const WorkspaceListResultValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<WorkspaceListResultValueList>;
+
 /** The response of a Workspace list operation. */
 export interface WorkspaceListResult {
   /** The Workspace items on this page */
@@ -847,12 +1287,22 @@ export interface WorkspaceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const WorkspaceListResult = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<WorkspaceListResult>;
+
 export interface ListWorkspaceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListWorkspaceBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListWorkspaceBySubscriptionRequest>;
+
 /** Resource tags. */
 export type UpdateAccessConnectorRequestTagsMap = { [key: string]: string | undefined };
+const UpdateAccessConnectorRequestTagsMap =
+  AccessConnectorsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccessConnectorRequestTagsMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateAccessConnectorRequestIdentity = AccessConnectorsCreateOrUpdateRequestIdentity;
 export interface UpdateAccessConnectorRequest {
@@ -867,6 +1317,11 @@ export interface UpdateAccessConnectorRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: AccessConnectorsCreateOrUpdateRequestIdentity;
 }
+const UpdateAccessConnectorRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<UpdateAccessConnectorRequest>;
+
 /** Resource tags. */
 export type UpdateAccessConnectorResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -887,8 +1342,14 @@ export interface UpdateAccessConnectorResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: AccessConnectorsCreateOrUpdateResponseIdentity;
 }
+const UpdateAccessConnectorResponse =
+  AccessConnectorsCreateOrUpdateResponse as any as S.Schema<UpdateAccessConnectorResponse>;
+
 /** Resource tags. */
 export type UpdateWorkspaceRequestTagsMap = { [key: string]: string | undefined };
+const UpdateWorkspaceRequestTagsMap =
+  AccessConnectorsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWorkspaceRequestTagsMap>;
+
 export interface UpdateWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -899,6 +1360,11 @@ export interface UpdateWorkspaceRequest {
   /** Resource tags. */
   tags?: UpdateWorkspaceRequestTagsMap;
 }
+const UpdateWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<UpdateWorkspaceRequest>;
+
 /** Resource tags. */
 export type UpdateWorkspaceResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateWorkspaceResponse {
@@ -917,6 +1383,8 @@ export interface UpdateWorkspaceResponse {
   /** The SKU of the resource. */
   sku?: Sku;
 }
+const UpdateWorkspaceResponse = GetWorkspaceResponse as any as S.Schema<UpdateWorkspaceResponse>;
+
 export interface VNetPeeringCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -929,6 +1397,11 @@ export interface VNetPeeringCreateOrUpdateRequest {
   /** List of properties for vNet Peering */
   properties: VirtualNetworkPeeringPropertiesFormat;
 }
+const VNetPeeringCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<VNetPeeringCreateOrUpdateRequest>;
+
 export interface VNetPeeringCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -939,10 +1412,21 @@ export interface VNetPeeringCreateOrUpdateResponse {
   /** List of properties for vNet Peering */
   properties: VirtualNetworkPeeringPropertiesFormat;
 }
+const VNetPeeringCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<VNetPeeringCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type WorkspacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const WorkspacesCreateOrUpdateRequestTagsMap =
+  AccessConnectorsCreateOrUpdateRequestTagsMap as any as S.Schema<WorkspacesCreateOrUpdateRequestTagsMap>;
+
 /** The workspace provider authorizations. */
 export type WorkspacePropertiesInputAuthorizationsList = Array<WorkspaceProviderAuthorization>;
+const WorkspacePropertiesInputAuthorizationsList =
+  WorkspacePropertiesAuthorizationsList as any as S.Schema<WorkspacePropertiesInputAuthorizationsList>;
+
 /** Provides details of the entity that created/updated the workspace. */
 export type CreatedByInput = AccessConnectorPropertiesInput;
 /** The Managed Identity details for storage account. */
@@ -982,6 +1466,11 @@ export interface WorkspacePropertiesInput {
   /** Gets or Sets Default Storage Firewall configuration information. Not allowed in Serverless ComputeMode workspace. */
   defaultStorageFirewall?: DefaultStorageFirewall | (string & {});
 }
+const WorkspacePropertiesInput = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<WorkspacePropertiesInput>;
+
 export interface WorkspacesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -998,8 +1487,16 @@ export interface WorkspacesCreateOrUpdateRequest {
   /** The SKU of the resource. */
   sku?: Sku;
 }
+const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<WorkspacesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type WorkspacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const WorkspacesCreateOrUpdateResponseTagsMap =
+  AccessConnectorsCreateOrUpdateRequestTagsMap as any as S.Schema<WorkspacesCreateOrUpdateResponseTagsMap>;
+
 export interface WorkspacesCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1016,6 +1513,11 @@ export interface WorkspacesCreateOrUpdateResponse {
   /** The SKU of the resource. */
   sku?: Sku;
 }
+const WorkspacesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<WorkspacesCreateOrUpdateResponse>;
+
 export type AccessConnectorsCreateOrUpdateError = AzureOpError;
 /** Creates or updates Azure Databricks Access Connector. */
 export const AccessConnectorsCreateOrUpdate: API.OperationMethod<
@@ -1024,8 +1526,8 @@ export const AccessConnectorsCreateOrUpdate: API.OperationMethod<
   AccessConnectorsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<AccessConnectorsCreateOrUpdateRequest>,
-  output: __S(10) as any as S.Schema<AccessConnectorsCreateOrUpdateResponse>,
+  input: AccessConnectorsCreateOrUpdateRequest,
+  output: AccessConnectorsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1039,8 +1541,8 @@ export const CreatePrivateEndpointConnection: API.OperationMethod<
   CreatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
-  output: __S(16) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
+  input: CreatePrivateEndpointConnectionRequest,
+  output: CreatePrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1054,8 +1556,8 @@ export const DeleteAccessConnector: API.OperationMethod<
   DeleteAccessConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<DeleteAccessConnectorRequest>,
-  output: __S(1) as any as S.Schema<DeleteAccessConnectorResponse>,
+  input: DeleteAccessConnectorRequest,
+  output: DeleteAccessConnectorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1069,8 +1571,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(19) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: DeletePrivateEndpointConnectionRequest,
+  output: DeletePrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1084,8 +1586,8 @@ export const DeleteVNetPeering: API.OperationMethod<
   DeleteVNetPeeringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<DeleteVNetPeeringRequest>,
-  output: __S(1) as any as S.Schema<DeleteVNetPeeringResponse>,
+  input: DeleteVNetPeeringRequest,
+  output: DeleteVNetPeeringResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1099,8 +1601,8 @@ export const DeleteWorkspace: API.OperationMethod<
   DeleteWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<DeleteWorkspaceRequest>,
-  output: __S(1) as any as S.Schema<DeleteWorkspaceResponse>,
+  input: DeleteWorkspaceRequest,
+  output: DeleteWorkspaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1114,8 +1616,8 @@ export const GetAccessConnector: API.OperationMethod<
   GetAccessConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<GetAccessConnectorRequest>,
-  output: __S(10) as any as S.Schema<GetAccessConnectorResponse>,
+  input: GetAccessConnectorRequest,
+  output: GetAccessConnectorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1129,8 +1631,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(16) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: GetPrivateEndpointConnectionRequest,
+  output: GetPrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1144,8 +1646,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(26) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: GetPrivateLinkResourceRequest,
+  output: GetPrivateLinkResourceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1159,8 +1661,8 @@ export const GetVNetPeering: API.OperationMethod<
   GetVNetPeeringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<GetVNetPeeringRequest>,
-  output: __S(32) as any as S.Schema<GetVNetPeeringResponse>,
+  input: GetVNetPeeringRequest,
+  output: GetVNetPeeringResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1174,8 +1676,8 @@ export const GetWorkspace: API.OperationMethod<
   GetWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<GetWorkspaceRequest>,
-  output: __S(57) as any as S.Schema<GetWorkspaceResponse>,
+  input: GetWorkspaceRequest,
+  output: GetWorkspaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1189,8 +1691,8 @@ export const ListAccessConnectorByResourceGroup: API.OperationMethod<
   ListAccessConnectorByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<ListAccessConnectorByResourceGroupRequest>,
-  output: __S(61) as any as S.Schema<AccessConnectorListResult>,
+  input: ListAccessConnectorByResourceGroupRequest,
+  output: AccessConnectorListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1204,8 +1706,8 @@ export const ListAccessConnectorBySubscription: API.OperationMethod<
   ListAccessConnectorBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<ListAccessConnectorBySubscriptionRequest>,
-  output: __S(61) as any as S.Schema<AccessConnectorListResult>,
+  input: ListAccessConnectorBySubscriptionRequest,
+  output: AccessConnectorListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1219,8 +1721,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<ListOperationsRequest>,
-  output: __S(67) as any as S.Schema<OperationListResult>,
+  input: ListOperationsRequest,
+  output: OperationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1234,8 +1736,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
-  output: __S(69) as any as S.Schema<PrivateEndpointConnectionsList>,
+  input: ListPrivateEndpointConnectionsRequest,
+  output: PrivateEndpointConnectionsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1249,8 +1751,8 @@ export const ListPrivateLinkResources: API.OperationMethod<
   ListPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<ListPrivateLinkResourcesRequest>,
-  output: __S(73) as any as S.Schema<PrivateLinkResourcesList>,
+  input: ListPrivateLinkResourcesRequest,
+  output: PrivateLinkResourcesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1264,8 +1766,8 @@ export const ListVNetPeeringByWorkspace: API.OperationMethod<
   ListVNetPeeringByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<ListVNetPeeringByWorkspaceRequest>,
-  output: __S(76) as any as S.Schema<VirtualNetworkPeeringList>,
+  input: ListVNetPeeringByWorkspaceRequest,
+  output: VirtualNetworkPeeringList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1279,8 +1781,8 @@ export const ListWorkspaceByResourceGroup: API.OperationMethod<
   ListWorkspaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
-  output: __S(79) as any as S.Schema<WorkspaceListResult>,
+  input: ListWorkspaceByResourceGroupRequest,
+  output: WorkspaceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1294,8 +1796,8 @@ export const ListWorkspaceBySubscription: API.OperationMethod<
   ListWorkspaceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<ListWorkspaceBySubscriptionRequest>,
-  output: __S(79) as any as S.Schema<WorkspaceListResult>,
+  input: ListWorkspaceBySubscriptionRequest,
+  output: WorkspaceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1309,8 +1811,8 @@ export const UpdateAccessConnector: API.OperationMethod<
   UpdateAccessConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<UpdateAccessConnectorRequest>,
-  output: __S(10) as any as S.Schema<UpdateAccessConnectorResponse>,
+  input: UpdateAccessConnectorRequest,
+  output: UpdateAccessConnectorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1324,8 +1826,8 @@ export const UpdateWorkspace: API.OperationMethod<
   UpdateWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<UpdateWorkspaceRequest>,
-  output: __S(57) as any as S.Schema<UpdateWorkspaceResponse>,
+  input: UpdateWorkspaceRequest,
+  output: UpdateWorkspaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1339,8 +1841,8 @@ export const VNetPeeringCreateOrUpdate: API.OperationMethod<
   VNetPeeringCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<VNetPeeringCreateOrUpdateRequest>,
-  output: __S(84) as any as S.Schema<VNetPeeringCreateOrUpdateResponse>,
+  input: VNetPeeringCreateOrUpdateRequest,
+  output: VNetPeeringCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1354,8 +1856,8 @@ export const WorkspacesCreateOrUpdate: API.OperationMethod<
   WorkspacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<WorkspacesCreateOrUpdateRequest>,
-  output: __S(87) as any as S.Schema<WorkspacesCreateOrUpdateResponse>,
+  input: WorkspacesCreateOrUpdateRequest,
+  output: WorkspacesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1371,12 +1873,12 @@ function __c0(j: number): any {
         identifier: "AccessConnectorPropertiesInput",
       });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(AccessConnectorPropertiesInput));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(2)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
         }),
       ).annotate({
         identifier: "AccessConnectorsCreateOrUpdateRequestIdentity",
@@ -1387,10 +1889,10 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           connectorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(AccessConnectorsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(1)),
-          identity: S.optional(__S(3)),
+          properties: S.optional(AccessConnectorPropertiesInput),
+          identity: S.optional(AccessConnectorsCreateOrUpdateRequestIdentity),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1407,8 +1909,8 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          referedBy: S.optional(__S(5)),
+          provisioningState: S.optional(ProvisioningState),
+          referedBy: S.optional(AccessConnectorPropertiesReferedByList),
         }),
       ).annotate({
         identifier: "AccessConnectorProperties",
@@ -1425,14 +1927,14 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(7)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
     case 1:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(8)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(UserAssignedIdentities),
         }),
       ).annotate({
         identifier: "AccessConnectorsCreateOrUpdateResponseIdentity",
@@ -1443,10 +1945,10 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(AccessConnectorsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(6)),
-          identity: S.optional(__S(9)),
+          properties: S.optional(AccessConnectorProperties),
+          identity: S.optional(AccessConnectorsCreateOrUpdateResponseIdentity),
         }),
       ).annotate({
         identifier: "AccessConnectorsCreateOrUpdateResponse",
@@ -1454,7 +1956,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.String,
+          status: PrivateLinkServiceConnectionStatus,
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -1464,9 +1966,9 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(1)),
-          groupIds: S.optional(__S(5)),
-          privateLinkServiceConnectionState: __S(11),
+          privateEndpoint: S.optional(AccessConnectorPropertiesInput),
+          groupIds: S.optional(PrivateEndpointConnectionPropertiesInputGroupIdsList),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
@@ -1478,7 +1980,7 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: __S(12),
+          properties: PrivateEndpointConnectionPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1499,10 +2001,10 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(14)),
-          groupIds: S.optional(__S(5)),
-          privateLinkServiceConnectionState: __S(11),
-          provisioningState: S.optional(S.String),
+          privateEndpoint: S.optional(PrivateEndpoint),
+          groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+          provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -1517,7 +2019,7 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: __S(15),
+          properties: PrivateEndpointConnectionProperties,
         }),
       ).annotate({
         identifier: "CreatePrivateEndpointConnectionResponse",
@@ -1654,8 +2156,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(5)),
-          requiredZoneNames: S.optional(__S(5)),
+          requiredMembers: S.optional(GroupIdInformationPropertiesRequiredMembersList),
+          requiredZoneNames: S.optional(GroupIdInformationPropertiesRequiredZoneNamesList),
         }),
       ).annotate({
         identifier: "GroupIdInformationProperties",
@@ -1666,7 +2168,7 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: __S(25),
+          properties: GroupIdInformationProperties,
         }),
       ).annotate({
         identifier: "GetPrivateLinkResourceResponse",
@@ -1698,7 +2200,7 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          addressPrefixes: S.optional(__S(5)),
+          addressPrefixes: S.optional(AddressSpaceAddressPrefixesList),
         }),
       ).annotate({ identifier: "AddressSpace" });
     case 6:
@@ -1716,12 +2218,14 @@ function __c3(j: number): any {
           allowForwardedTraffic: S.optional(S.Boolean),
           allowGatewayTransit: S.optional(S.Boolean),
           useRemoteGateways: S.optional(S.Boolean),
-          databricksVirtualNetwork: S.optional(__S(28)),
-          databricksAddressSpace: S.optional(__S(29)),
-          remoteVirtualNetwork: __S(30),
-          remoteAddressSpace: S.optional(__S(29)),
-          peeringState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          databricksVirtualNetwork: S.optional(
+            VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork,
+          ),
+          databricksAddressSpace: S.optional(AddressSpace),
+          remoteVirtualNetwork: VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork,
+          remoteAddressSpace: S.optional(AddressSpace),
+          peeringState: S.optional(PeeringState),
+          provisioningState: S.optional(PeeringProvisioningState),
         }),
       ).annotate({
         identifier: "VirtualNetworkPeeringPropertiesFormat",
@@ -1736,7 +2240,7 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: __S(31),
+          properties: VirtualNetworkPeeringPropertiesFormat,
         }),
       ).annotate({ identifier: "GetVNetPeeringResponse" });
     case 1:
@@ -1757,7 +2261,7 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(CustomParameterType),
           value: S.String,
         }),
       ).annotate({
@@ -1766,7 +2270,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(CustomParameterType),
           value: S.Boolean,
         }),
       ).annotate({
@@ -1775,7 +2279,7 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          keySource: S.optional(S.String),
+          keySource: S.optional(EncryptionKeySource),
           KeyName: S.optional(S.String),
           keyversion: S.optional(S.String),
           keyvaulturi: S.optional(S.String),
@@ -1784,8 +2288,8 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          value: S.optional(__S(36)),
+          type: S.optional(CustomParameterType),
+          value: S.optional(Encryption),
         }),
       ).annotate({
         identifier: "WorkspaceEncryptionParameter",
@@ -1793,7 +2297,7 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(CustomParameterType),
           value: S.Unknown,
         }),
       ).annotate({
@@ -1802,22 +2306,22 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          amlWorkspaceId: S.optional(__S(34)),
-          customVirtualNetworkId: S.optional(__S(34)),
-          customPublicSubnetName: S.optional(__S(34)),
-          customPrivateSubnetName: S.optional(__S(34)),
-          enableNoPublicIp: S.optional(__S(35)),
-          loadBalancerBackendPoolName: S.optional(__S(34)),
-          loadBalancerId: S.optional(__S(34)),
-          natGatewayName: S.optional(__S(34)),
-          publicIpName: S.optional(__S(34)),
-          prepareEncryption: S.optional(__S(35)),
-          encryption: S.optional(__S(37)),
-          requireInfrastructureEncryption: S.optional(__S(35)),
-          storageAccountName: S.optional(__S(34)),
-          storageAccountSkuName: S.optional(__S(34)),
-          vnetAddressPrefix: S.optional(__S(34)),
-          resourceTags: S.optional(__S(38)),
+          amlWorkspaceId: S.optional(WorkspaceCustomStringParameter),
+          customVirtualNetworkId: S.optional(WorkspaceCustomStringParameter),
+          customPublicSubnetName: S.optional(WorkspaceCustomStringParameter),
+          customPrivateSubnetName: S.optional(WorkspaceCustomStringParameter),
+          enableNoPublicIp: S.optional(WorkspaceNoPublicIPBooleanParameter),
+          loadBalancerBackendPoolName: S.optional(WorkspaceCustomStringParameter),
+          loadBalancerId: S.optional(WorkspaceCustomStringParameter),
+          natGatewayName: S.optional(WorkspaceCustomStringParameter),
+          publicIpName: S.optional(WorkspaceCustomStringParameter),
+          prepareEncryption: S.optional(WorkspaceNoPublicIPBooleanParameter),
+          encryption: S.optional(WorkspaceEncryptionParameter),
+          requireInfrastructureEncryption: S.optional(WorkspaceNoPublicIPBooleanParameter),
+          storageAccountName: S.optional(WorkspaceCustomStringParameter),
+          storageAccountSkuName: S.optional(WorkspaceCustomStringParameter),
+          vnetAddressPrefix: S.optional(WorkspaceCustomStringParameter),
+          resourceTags: S.optional(WorkspaceCustomObjectParameter),
         }),
       ).annotate({
         identifier: "WorkspaceCustomParameters",
@@ -1836,7 +2340,7 @@ function __c5(j: number): any {
         identifier: "WorkspaceProviderAuthorization",
       });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(WorkspaceProviderAuthorization);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1868,23 +2372,23 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          keySource: S.String,
-          keyVaultProperties: S.optional(__S(44)),
+          keySource: EncryptionKeySource2,
+          keyVaultProperties: S.optional(EncryptionV2KeyVaultProperties),
         }),
       ).annotate({ identifier: "EncryptionV2" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          keySource: S.String,
-          keyVaultProperties: __S(44),
+          keySource: EncryptionKeySource2,
+          keyVaultProperties: ManagedDiskEncryptionKeyVaultProperties,
           rotationToLatestKeyVersionEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ManagedDiskEncryption" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          managedServices: S.optional(__S(45)),
-          managedDisk: S.optional(__S(46)),
+          managedServices: S.optional(EncryptionV2),
+          managedDisk: S.optional(ManagedDiskEncryption),
         }),
       ).annotate({
         identifier: "EncryptionEntitiesDefinition",
@@ -1896,7 +2400,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          entities: __S(47),
+          entities: EncryptionEntitiesDefinition,
         }),
       ).annotate({
         identifier: "WorkspacePropertiesEncryption",
@@ -1904,7 +2408,7 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(S.String),
+          value: S.optional(AutomaticClusterUpdateValue),
         }),
       ).annotate({
         identifier: "AutomaticClusterUpdateDefinition",
@@ -1912,8 +2416,10 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          complianceStandards: S.optional(__S(5)),
-          value: S.optional(S.String),
+          complianceStandards: S.optional(
+            ComplianceSecurityProfileDefinitionComplianceStandardsList,
+          ),
+          value: S.optional(ComplianceSecurityProfileValue),
         }),
       ).annotate({
         identifier: "ComplianceSecurityProfileDefinition",
@@ -1921,19 +2427,19 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          automaticClusterUpdate: S.optional(__S(49)),
-          complianceSecurityProfile: S.optional(__S(50)),
-          enhancedSecurityMonitoring: S.optional(__S(49)),
+          automaticClusterUpdate: S.optional(AutomaticClusterUpdateDefinition),
+          complianceSecurityProfile: S.optional(ComplianceSecurityProfileDefinition),
+          enhancedSecurityMonitoring: S.optional(EnhancedSecurityMonitoringDefinition),
         }),
       ).annotate({
         identifier: "EnhancedSecurityComplianceDefinition",
       });
     case 4:
-      return S.Array(__S(16));
+      return S.Array(PrivateEndpointConnection);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          initialType: S.optional(S.String),
+          initialType: S.optional(DefaultCatalogPropertiesInitialType),
           initialName: S.optional(S.String),
         }),
       ).annotate({ identifier: "DefaultCatalogProperties" });
@@ -1941,7 +2447,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          identityType: S.String,
+          identityType: IdentityType,
           userAssignedIdentityId: S.optional(S.String),
         }),
       ).annotate({
@@ -1950,29 +2456,29 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          computeMode: S.String,
+          computeMode: ComputeMode,
           managedResourceGroupId: S.optional(S.String),
-          parameters: S.optional(__S(39)),
-          provisioningState: S.optional(S.String),
+          parameters: S.optional(WorkspaceCustomParameters),
+          provisioningState: S.optional(ProvisioningState),
           uiDefinitionUri: S.optional(S.String),
-          authorizations: S.optional(__S(41)),
-          createdBy: S.optional(__S(42)),
-          updatedBy: S.optional(__S(42)),
+          authorizations: S.optional(WorkspacePropertiesAuthorizationsList),
+          createdBy: S.optional(CreatedBy),
+          updatedBy: S.optional(CreatedBy),
           createdDateTime: S.optional(S.String),
           workspaceId: S.optional(S.String),
           workspaceUrl: S.optional(S.String),
-          storageAccountIdentity: S.optional(__S(43)),
-          managedDiskIdentity: S.optional(__S(43)),
+          storageAccountIdentity: S.optional(ManagedIdentityConfiguration),
+          managedDiskIdentity: S.optional(ManagedIdentityConfiguration),
           diskEncryptionSetId: S.optional(S.String),
-          encryption: S.optional(__S(48)),
-          enhancedSecurityCompliance: S.optional(__S(51)),
-          privateEndpointConnections: S.optional(__S(52)),
-          publicNetworkAccess: S.optional(S.String),
-          requiredNsgRules: S.optional(S.String),
-          defaultCatalog: S.optional(__S(53)),
+          encryption: S.optional(WorkspacePropertiesEncryption),
+          enhancedSecurityCompliance: S.optional(EnhancedSecurityComplianceDefinition),
+          privateEndpointConnections: S.optional(WorkspacePropertiesPrivateEndpointConnectionsList),
+          publicNetworkAccess: S.optional(PublicNetworkAccess),
+          requiredNsgRules: S.optional(RequiredNsgRules),
+          defaultCatalog: S.optional(DefaultCatalogProperties),
           isUcEnabled: S.optional(S.Boolean),
-          accessConnector: S.optional(__S(54)),
-          defaultStorageFirewall: S.optional(S.String),
+          accessConnector: S.optional(WorkspacePropertiesAccessConnector),
+          defaultStorageFirewall: S.optional(DefaultStorageFirewall),
         }),
       ).annotate({ identifier: "WorkspaceProperties" });
   }
@@ -1992,10 +2498,10 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(GetWorkspaceResponseTagsMap),
           location: S.String,
-          properties: __S(55),
-          sku: S.optional(__S(56)),
+          properties: WorkspaceProperties,
+          sku: S.optional(Sku),
         }),
       ).annotate({ identifier: "GetWorkspaceResponse" });
     case 2:
@@ -2020,18 +2526,18 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(AccessConnectorTagsMap),
           location: S.String,
-          properties: S.optional(__S(6)),
-          identity: S.optional(__S(9)),
+          properties: S.optional(AccessConnectorProperties),
+          identity: S.optional(AccessConnectorsCreateOrUpdateResponseIdentity),
         }),
       ).annotate({ identifier: "AccessConnector" });
     case 4:
-      return S.Array(__S(59));
+      return S.Array(AccessConnector);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(60),
+          value: AccessConnectorListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2080,15 +2586,15 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(64)),
+          display: S.optional(OperationDisplay),
         }),
       ).annotate({ identifier: "Operation" });
     case 2:
-      return S.Array(__S(65));
+      return S.Array(Operation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(66)),
+          value: S.optional(OperationListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -2112,7 +2618,7 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(52),
+          value: PrivateEndpointConnectionsListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2141,7 +2647,7 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: __S(25),
+          properties: GroupIdInformationProperties,
         }),
       ).annotate({ identifier: "GroupIdInformation" });
   }
@@ -2149,11 +2655,11 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71));
+      return S.Array(GroupIdInformation);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(72),
+          value: PrivateLinkResourcesListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResourcesList" });
@@ -2175,11 +2681,11 @@ function __c9(j: number): any {
         identifier: "ListVNetPeeringByWorkspaceRequest",
       });
     case 3:
-      return S.Array(__S(32));
+      return S.Array(VirtualNetworkPeering);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(75),
+          value: VirtualNetworkPeeringListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2202,11 +2708,11 @@ function __c9(j: number): any {
         identifier: "ListWorkspaceByResourceGroupRequest",
       });
     case 6:
-      return S.Array(__S(57));
+      return S.Array(Workspace);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(78),
+          value: WorkspaceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceListResult" });
@@ -2235,8 +2741,8 @@ function __c10(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           connectorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
-          identity: S.optional(__S(3)),
+          tags: S.optional(UpdateAccessConnectorRequestTagsMap),
+          identity: S.optional(AccessConnectorsCreateOrUpdateRequestIdentity),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2254,7 +2760,7 @@ function __c10(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateWorkspaceRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2271,7 +2777,7 @@ function __c10(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           peeringName: S.String.pipe(T.Label()),
-          properties: __S(31),
+          properties: VirtualNetworkPeeringPropertiesFormat,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2289,7 +2795,7 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: __S(31),
+          properties: VirtualNetworkPeeringPropertiesFormat,
         }),
       ).annotate({
         identifier: "VNetPeeringCreateOrUpdateResponse",
@@ -2297,22 +2803,22 @@ function __c10(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          computeMode: S.String,
+          computeMode: ComputeMode,
           managedResourceGroupId: S.optional(S.String),
-          parameters: S.optional(__S(39)),
+          parameters: S.optional(WorkspaceCustomParameters),
           uiDefinitionUri: S.optional(S.String),
-          authorizations: S.optional(__S(41)),
-          createdBy: S.optional(__S(1)),
-          updatedBy: S.optional(__S(1)),
-          storageAccountIdentity: S.optional(__S(1)),
-          managedDiskIdentity: S.optional(__S(1)),
-          encryption: S.optional(__S(48)),
-          enhancedSecurityCompliance: S.optional(__S(51)),
-          publicNetworkAccess: S.optional(S.String),
-          requiredNsgRules: S.optional(S.String),
-          defaultCatalog: S.optional(__S(53)),
-          accessConnector: S.optional(__S(54)),
-          defaultStorageFirewall: S.optional(S.String),
+          authorizations: S.optional(WorkspacePropertiesInputAuthorizationsList),
+          createdBy: S.optional(AccessConnectorPropertiesInput),
+          updatedBy: S.optional(AccessConnectorPropertiesInput),
+          storageAccountIdentity: S.optional(AccessConnectorPropertiesInput),
+          managedDiskIdentity: S.optional(AccessConnectorPropertiesInput),
+          encryption: S.optional(WorkspacePropertiesEncryption),
+          enhancedSecurityCompliance: S.optional(EnhancedSecurityComplianceDefinition),
+          publicNetworkAccess: S.optional(PublicNetworkAccess),
+          requiredNsgRules: S.optional(RequiredNsgRules),
+          defaultCatalog: S.optional(DefaultCatalogProperties),
+          accessConnector: S.optional(WorkspacePropertiesAccessConnector),
+          defaultStorageFirewall: S.optional(DefaultStorageFirewall),
         }),
       ).annotate({ identifier: "WorkspacePropertiesInput" });
     case 6:
@@ -2321,10 +2827,10 @@ function __c10(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(WorkspacesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: __S(85),
-          sku: S.optional(__S(56)),
+          properties: WorkspacePropertiesInput,
+          sku: S.optional(Sku),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2342,44 +2848,13 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(WorkspacesCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: __S(55),
-          sku: S.optional(__S(56)),
+          properties: WorkspaceProperties,
+          sku: S.optional(Sku),
         }),
       ).annotate({
         identifier: "WorkspacesCreateOrUpdateResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
   }
 }

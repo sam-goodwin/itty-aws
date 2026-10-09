@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -42,8 +40,17 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
+const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetProjectsLocationsRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DocumentMap>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StringMap>;
+
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
@@ -57,28 +64,43 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
+const Location = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Location>;
+
 export interface GetProjectsLocationsCloudLocationsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
+const GetProjectsLocationsCloudLocationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetProjectsLocationsCloudLocationsRequest>;
+
 export type CloudLocationCloudProviderEnum =
   | "CLOUD_PROVIDER_UNSPECIFIED"
   | "CLOUD_PROVIDER_GCP"
   | "CLOUD_PROVIDER_AWS"
   | "CLOUD_PROVIDER_AZURE"
   | "CLOUD_PROVIDER_OCI";
+const CloudLocationCloudProviderEnum = S.String;
+
 export type CloudLocationCloudLocationTypeEnum =
   | "CLOUD_LOCATION_TYPE_UNSPECIFIED"
   | "CLOUD_LOCATION_TYPE_REGION"
   | "CLOUD_LOCATION_TYPE_ZONE"
   | "CLOUD_LOCATION_TYPE_GDCC_ZONE"
   | "CLOUD_LOCATION_TYPE_GLOBAL";
+const CloudLocationCloudLocationTypeEnum = S.String;
+
 export type GcpAttributesZoneTypeEnum = "GCP_ZONE_TYPE_UNSPECIFIED" | "GENERAL_PURPOSE" | "AI_ZONE";
+const GcpAttributesZoneTypeEnum = S.String;
+
 /** GCP-specific attributes. */
 export interface GcpAttributes {
   /** Optional. The type of the cloud zone. */
   zoneType?: GcpAttributesZoneTypeEnum;
 }
+const GcpAttributes = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GcpAttributes>;
+
 /** Represents resource cloud locations. */
 export interface CloudLocation {
   /** Optional. The provider of the cloud location. Values can be Google Cloud or third-party providers, including AWS, Azure, or Oracle Cloud Infrastructure. */
@@ -98,7 +120,11 @@ export interface CloudLocation {
   /** Identifier. Name of the cloud location. Unique name of the cloud location including project and location using the form: `projects/{project_id}/locations/{location}/cloudLocations/{cloud_location}` */
   name?: string;
 }
+const CloudLocation = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CloudLocation>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<StringList>;
+
 export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
@@ -111,7 +137,14 @@ export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
 }
+const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListProjectsLocationsRequest>;
+
 export type LocationList = Array<Location>;
+const LocationList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<LocationList>;
+
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -119,6 +152,11 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
+const ListLocationsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListLocationsResponse>;
+
 export interface ListProjectsLocationsCloudLocationsRequest {
   /** Optional. The maximum number of cloud locations to return per page. The service might return fewer cloud locations than this value. If unspecified, at most 500 cloud locations will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -129,7 +167,14 @@ export interface ListProjectsLocationsCloudLocationsRequest {
   /** Optional. A filter expression that filters resources listed in the response. The expression is in the form of field=value. For example, 'cloud_location_type=CLOUD_LOCATION_TYPE_REGION'. Multiple filter queries are space-separated. For example, 'cloud_location_type=CLOUD_LOCATION_TYPE_REGION territory_code="US"' By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. */
   filter?: string;
 }
+const ListProjectsLocationsCloudLocationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListProjectsLocationsCloudLocationsRequest>;
+
 export type CloudLocationList = Array<CloudLocation>;
+const CloudLocationList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CloudLocationList>;
+
 /** Message for response to listing cloud locations. */
 export interface ListCloudLocationsResponse {
   /** Output only. The continuation token, used to page through large result sets. Provide this value in a subsequent request as page_token in subsequent requests to retrieve the next page. If this field is not present, there are no subsequent results. */
@@ -137,6 +182,11 @@ export interface ListCloudLocationsResponse {
   /** Output only. List of cloud locations. */
   cloudLocations?: CloudLocationList;
 }
+const ListCloudLocationsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ListCloudLocationsResponse>;
+
 export interface SearchProjectsLocationsCloudLocationsRequest {
   /** Optional. The maximum number of cloud locations to return. The service might return fewer cloud locations than this value. If unspecified, at most 500 cloud locations will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -149,6 +199,11 @@ export interface SearchProjectsLocationsCloudLocationsRequest {
   /** Optional. A token identifying a page of results the server should return. Provide Page token returned by a previous 'ListCloudLocations' call to retrieve the next page of results. When paginating, all other parameters provided to 'ListCloudLocations' must match the call that provided the page token. */
   pageToken?: string;
 }
+const SearchProjectsLocationsCloudLocationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<SearchProjectsLocationsCloudLocationsRequest>;
+
 /** Message for response to searching cloud locations. */
 export interface SearchCloudLocationsResponse {
   /** Output only. List of cloud locations. */
@@ -156,6 +211,11 @@ export interface SearchCloudLocationsResponse {
   /** Output only. The continuation token, used to page through large result sets. Provide this value in a subsequent request as page_token in subsequent requests to retrieve the next page. If this field is not present, there are no subsequent results. */
   nextPageToken?: string;
 }
+const SearchCloudLocationsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<SearchCloudLocationsResponse>;
+
 export type GetProjectsLocationsError = NotFound | Forbidden | GcpOpError;
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -164,8 +224,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(3) as any as S.Schema<Location>,
+  input: GetProjectsLocationsRequest,
+  output: Location,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -179,8 +239,8 @@ export const getProjectsLocationsCloudLocations: API.OperationMethod<
   GetProjectsLocationsCloudLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetProjectsLocationsCloudLocationsRequest>,
-  output: __S(6) as any as S.Schema<CloudLocation>,
+  input: GetProjectsLocationsCloudLocationsRequest,
+  output: CloudLocation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -195,8 +255,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(8) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(10) as any as S.Schema<ListLocationsResponse>,
+  input: ListProjectsLocationsRequest,
+  output: ListLocationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -212,8 +272,8 @@ export const listProjectsLocationsCloudLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCloudLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(11) as any as S.Schema<ListProjectsLocationsCloudLocationsRequest>,
-  output: __S(13) as any as S.Schema<ListCloudLocationsResponse>,
+  input: ListProjectsLocationsCloudLocationsRequest,
+  output: ListCloudLocationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -229,8 +289,8 @@ export const searchProjectsLocationsCloudLocations: API.PaginatedOperationMethod
   GcpOpContext,
   SearchCloudLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(14) as any as S.Schema<SearchProjectsLocationsCloudLocationsRequest>,
-  output: __S(15) as any as S.Schema<SearchCloudLocationsResponse>,
+  input: SearchProjectsLocationsCloudLocationsRequest,
+  output: SearchCloudLocationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -262,9 +322,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          metadata: S.optional(__S(1)),
+          metadata: S.optional(DocumentMap),
           name: S.optional(S.String),
-          labels: S.optional(__S(2)),
+          labels: S.optional(StringMap),
           locationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
@@ -285,19 +345,19 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          zoneType: S.optional(S.String),
+          zoneType: S.optional(GcpAttributesZoneTypeEnum),
         }),
       ).annotate({ identifier: "GcpAttributes" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          cloudProvider: S.optional(S.String),
+          cloudProvider: S.optional(CloudLocationCloudProviderEnum),
           territoryCode: S.optional(S.String),
           containingCloudLocation: S.optional(S.String),
-          cloudLocationType: S.optional(S.String),
+          cloudLocationType: S.optional(CloudLocationCloudLocationTypeEnum),
           carbonFreeEnergyPercentage: S.optional(S.Number),
           displayName: S.optional(S.String),
-          gcpAttributes: S.optional(__S(5)),
+          gcpAttributes: S.optional(GcpAttributes),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudLocation" });
@@ -314,7 +374,7 @@ function __c1(j: number): any {
           name: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(7).pipe(T.Query())),
+          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -326,11 +386,11 @@ function __c1(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 1:
-      return S.Array(__S(3));
+      return S.Array(Location);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(9)),
+          locations: S.optional(LocationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
@@ -352,12 +412,12 @@ function __c1(j: number): any {
         identifier: "ListProjectsLocationsCloudLocationsRequest",
       });
     case 4:
-      return S.Array(__S(6));
+      return S.Array(CloudLocation);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          cloudLocations: S.optional(__S(12)),
+          cloudLocations: S.optional(CloudLocationList),
         }),
       ).annotate({
         identifier: "ListCloudLocationsResponse",
@@ -383,24 +443,11 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          cloudLocations: S.optional(__S(12)),
+          cloudLocations: S.optional(CloudLocationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SearchCloudLocationsResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

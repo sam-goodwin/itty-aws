@@ -7,8 +7,6 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -40,6 +38,8 @@ export class NotFound
   ) {}
 
 export type CreateRuleRequestRegionId = "eu01" | "eu02";
+const CreateRuleRequestRegionId = S.String;
+
 export interface CreateRuleRequest {
   /** The STACKIT portal project UUID */
   projectId: string;
@@ -72,11 +72,17 @@ export interface CreateRuleRequest {
   /** The type of the rule (e.g., "ACL", "PublicIP", "SecurityRule"). */
   type: string;
 }
+const CreateRuleRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateRuleRequest>;
+
 export interface CreateRuleResponse {
   /** Represents the uuid of the created rule */
   refId?: string;
 }
+const CreateRuleResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateRuleResponse>;
+
 export type DeleteRuleRequestRegionId = "eu01" | "eu02";
+const DeleteRuleRequestRegionId = S.String;
+
 export interface DeleteRuleRequest {
   /** The STACKIT portal project UUID */
   projectId: string;
@@ -85,11 +91,17 @@ export interface DeleteRuleRequest {
   /** The STACKIT security rule UUID. */
   ruleId: string;
 }
+const DeleteRuleRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DeleteRuleRequest>;
+
 export interface DeleteRuleResponse {
   /** Represents if the call was successfully made */
   success?: boolean;
 }
+const DeleteRuleResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DeleteRuleResponse>;
+
 export type GetRuleRequestRegionId = "eu01" | "eu02";
+const GetRuleRequestRegionId = S.String;
+
 export interface GetRuleRequest {
   /** The STACKIT portal project UUID */
   projectId: string;
@@ -98,6 +110,8 @@ export interface GetRuleRequest {
   /** The STACKIT security rule UUID. */
   ruleId: string;
 }
+const GetRuleRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetRuleRequest>;
+
 /** The current state of the resource. */
 export type RuleResponseStatus =
   | "Active"
@@ -106,8 +120,12 @@ export type RuleResponseStatus =
   | "Updating"
   | "Deleting"
   | "Creating";
+const RuleResponseStatus = S.String;
+
 /** The type of the rule (e.g., "ACL", "PublicIP", "SecurityRule"). */
 export type RuleResponseType = "ACL" | "PublicIP" | "SecurityRule" | "SecurityGroup";
+const RuleResponseType = S.String;
+
 export interface RuleResponse {
   description?: string;
   destination: string;
@@ -132,6 +150,8 @@ export interface RuleResponse {
   /** The type of the rule (e.g., "ACL", "PublicIP", "SecurityRule"). */
   type: RuleResponseType;
 }
+const RuleResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<RuleResponse>;
+
 export interface ListFolderContainersRequest {
   /** The STACKIT portal folder UUID */
   folderId: string;
@@ -140,17 +160,34 @@ export interface ListFolderContainersRequest {
   /** A pagination cursor that represents a position in the dataset. If given, results will be returned from the item after the cursor. If not given, results will be returned from the beginning. */
   cursor?: string;
 }
+const ListFolderContainersRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListFolderContainersRequest>;
+
 export interface ContainerResponse {
   id: string;
   name: string;
   type: string;
 }
+const ContainerResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ContainerResponse>;
+
 export type ListContainersResponseItemsList = Array<ContainerResponse>;
+const ListContainersResponseItemsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListContainersResponseItemsList>;
+
 export interface ListContainersResponse {
   cursor: string;
   items: ListContainersResponseItemsList;
   limit: number;
 }
+const ListContainersResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListContainersResponse>;
+
 export interface ListOrganizationContainersRequest {
   /** The STACKIT portal organization UUID */
   organizationId: string;
@@ -159,30 +196,77 @@ export interface ListOrganizationContainersRequest {
   /** A pagination cursor that represents a position in the dataset. If given, results will be returned from the item after the cursor. If not given, results will be returned from the beginning. */
   cursor?: string;
 }
+const ListOrganizationContainersRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListOrganizationContainersRequest>;
+
 export type ListProviderOptionsRequestRegionId = "eu01" | "eu02";
+const ListProviderOptionsRequestRegionId = S.String;
+
 export interface ListProviderOptionsRequest {
   /** The STACKIT region name the resource is located in. */
   regionId: ListProviderOptionsRequestRegionId | (string & {});
 }
+const ListProviderOptionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListProviderOptionsRequest>;
+
 export type ProviderOptionsProductMetaActionsList = Array<string>;
+const ProviderOptionsProductMetaActionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ProviderOptionsProductMetaActionsList>;
+
 export type ProviderOptionsProductMetaTypesList = Array<string>;
+const ProviderOptionsProductMetaTypesList =
+  ProviderOptionsProductMetaActionsList as any as S.Schema<ProviderOptionsProductMetaTypesList>;
+
 export interface ProviderOptionsProductMeta {
   actions: ProviderOptionsProductMetaActionsList;
   types: ProviderOptionsProductMetaTypesList;
 }
+const ProviderOptionsProductMeta = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ProviderOptionsProductMeta>;
+
 export type ProviderOptionsResponseProductMetaMap = {
   [key: string]: ProviderOptionsProductMeta | undefined;
 };
+const ProviderOptionsResponseProductMetaMap = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ProviderOptionsResponseProductMetaMap>;
+
 export type ProviderOptionsResponseProductsList = Array<string>;
+const ProviderOptionsResponseProductsList =
+  ProviderOptionsProductMetaActionsList as any as S.Schema<ProviderOptionsResponseProductsList>;
+
 export type ProviderOptionsResponseTypesList = Array<string>;
+const ProviderOptionsResponseTypesList =
+  ProviderOptionsProductMetaActionsList as any as S.Schema<ProviderOptionsResponseTypesList>;
+
 export interface ProviderOptionsResponse {
   productMeta: ProviderOptionsResponseProductMetaMap;
   products: ProviderOptionsResponseProductsList;
   types: ProviderOptionsResponseTypesList;
 }
+const ProviderOptionsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ProviderOptionsResponse>;
+
 export type ListRulesRequestRegionId = "eu01" | "eu02";
+const ListRulesRequestRegionId = S.String;
+
 export type ListRulesRequestDirection = "ingress" | "egress";
+const ListRulesRequestDirection = S.String;
+
 export type ListRulesRequestSortOrder = "asc" | "desc";
+const ListRulesRequestSortOrder = S.String;
+
 export interface ListRulesRequest {
   /** The STACKIT portal project UUID */
   projectId: string;
@@ -215,13 +299,27 @@ export interface ListRulesRequest {
   /** A pagination cursor that represents a position in the dataset. If given, results will be returned from the item after the cursor. If not given, results will be returned from the beginning. */
   cursor?: string;
 }
+const ListRulesRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ListRulesRequest>;
+
 export type ListRulesResponseErrorsList = Array<string>;
+const ListRulesResponseErrorsList =
+  ProviderOptionsProductMetaActionsList as any as S.Schema<ListRulesResponseErrorsList>;
+
 export type ListRulesResponseRulesList = Array<RuleResponse>;
+const ListRulesResponseRulesList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListRulesResponseRulesList>;
+
 export interface ListRulesResponse {
   errors?: ListRulesResponseErrorsList;
   rules: ListRulesResponseRulesList;
 }
+const ListRulesResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ListRulesResponse>;
+
 export type UpdateRuleRequestRegionId = "eu01" | "eu02";
+const UpdateRuleRequestRegionId = S.String;
+
 export interface UpdateRuleRequest {
   /** The STACKIT portal project UUID */
   projectId: string;
@@ -242,10 +340,14 @@ export interface UpdateRuleRequest {
   /** The IP (CIDR) to which the rule applies. */
   sourceIP: string;
 }
+const UpdateRuleRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<UpdateRuleRequest>;
+
 export interface UpdateRuleResponse {
   /** Represents the uuid of the updated rule */
   refId?: string;
 }
+const UpdateRuleResponse = CreateRuleResponse as any as S.Schema<UpdateRuleResponse>;
+
 export type CreateRuleError = BadRequest | Forbidden | NotFound | StackitOpError;
 /** Create rule for a project Returns the created rule for a specific project */
 export const createRule: API.OperationMethod<
@@ -254,8 +356,8 @@ export const createRule: API.OperationMethod<
   CreateRuleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateRuleRequest>,
-  output: __S(1) as any as S.Schema<CreateRuleResponse>,
+  input: CreateRuleRequest,
+  output: CreateRuleResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -269,8 +371,8 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteRuleRequest>,
-  output: __S(3) as any as S.Schema<DeleteRuleResponse>,
+  input: DeleteRuleRequest,
+  output: DeleteRuleResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -284,8 +386,8 @@ export const getRule: API.OperationMethod<
   GetRuleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetRuleRequest>,
-  output: __S(5) as any as S.Schema<RuleResponse>,
+  input: GetRuleRequest,
+  output: RuleResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -299,8 +401,8 @@ export const listFolderContainers: API.OperationMethod<
   ListFolderContainersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<ListFolderContainersRequest>,
-  output: __S(9) as any as S.Schema<ListContainersResponse>,
+  input: ListFolderContainersRequest,
+  output: ListContainersResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -314,8 +416,8 @@ export const listOrganizationContainers: API.OperationMethod<
   ListOrganizationContainersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<ListOrganizationContainersRequest>,
-  output: __S(9) as any as S.Schema<ListContainersResponse>,
+  input: ListOrganizationContainersRequest,
+  output: ListContainersResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -329,8 +431,8 @@ export const listProviderOptions: API.OperationMethod<
   ListProviderOptionsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<ListProviderOptionsRequest>,
-  output: __S(15) as any as S.Schema<ProviderOptionsResponse>,
+  input: ListProviderOptionsRequest,
+  output: ProviderOptionsResponse,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -344,8 +446,8 @@ export const listRules: API.OperationMethod<
   ListRulesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<ListRulesRequest>,
-  output: __S(18) as any as S.Schema<ListRulesResponse>,
+  input: ListRulesRequest,
+  output: ListRulesResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -359,8 +461,8 @@ export const updateRule: API.OperationMethod<
   UpdateRuleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<UpdateRuleRequest>,
-  output: __S(1) as any as S.Schema<UpdateRuleResponse>,
+  input: UpdateRuleRequest,
+  output: UpdateRuleResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -373,7 +475,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
+          regionId: CreateRuleRequestRegionId.pipe(T.Label()),
           description: S.optional(S.String),
           direction: S.optional(S.String),
           etherType: S.optional(S.String),
@@ -406,7 +508,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
+          regionId: DeleteRuleRequestRegionId.pipe(T.Label()),
           ruleId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -427,7 +529,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
+          regionId: GetRuleRequestRegionId.pipe(T.Label()),
           ruleId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -459,8 +561,8 @@ function __c0(j: number): any {
           securityGroupId: S.optional(S.String),
           sourceIP: S.String,
           stateful: S.optional(S.Boolean),
-          status: S.String,
-          type: S.String,
+          status: RuleResponseStatus,
+          type: RuleResponseType,
         }),
       ).annotate({ identifier: "RuleResponse" });
     case 6:
@@ -493,12 +595,12 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(ContainerResponse);
     case 1:
       return S.suspend(() =>
         S.Struct({
           cursor: S.String,
-          items: __S(8),
+          items: ListContainersResponseItemsList,
           limit: S.Number,
         }),
       ).annotate({ identifier: "ListContainersResponse" });
@@ -522,7 +624,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          regionId: S.String.pipe(T.Label()),
+          regionId: ListProviderOptionsRequestRegionId.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -539,20 +641,20 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(12),
-          types: __S(12),
+          actions: ProviderOptionsProductMetaActionsList,
+          types: ProviderOptionsProductMetaTypesList,
         }),
       ).annotate({
         identifier: "ProviderOptionsProductMeta",
       });
     case 6:
-      return S.Record(S.String, __S(13));
+      return S.Record(S.String, ProviderOptionsProductMeta);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          productMeta: __S(14),
-          products: __S(12),
-          types: __S(12),
+          productMeta: ProviderOptionsResponseProductMetaMap,
+          products: ProviderOptionsResponseProductsList,
+          types: ProviderOptionsResponseTypesList,
         }),
       ).annotate({ identifier: "ProviderOptionsResponse" });
   }
@@ -563,7 +665,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
+          regionId: ListRulesRequestRegionId.pipe(T.Label()),
           securityGroupId: S.optional(S.String.pipe(T.Query())),
           product: S.optional(S.String.pipe(T.Query())),
           instanceId: S.optional(S.String.pipe(T.Query())),
@@ -571,10 +673,10 @@ function __c2(j: number): any {
           sourceIP: S.optional(S.String.pipe(T.Query())),
           portRange: S.optional(S.String.pipe(T.Query())),
           protocol: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(ListRulesRequestDirection.pipe(T.Query())),
           etherType: S.optional(S.String.pipe(T.Query())),
           sortBy: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(ListRulesRequestSortOrder.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -587,19 +689,19 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListRulesRequest" });
     case 1:
-      return S.Array(__S(5));
+      return S.Array(RuleResponse);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(__S(12)),
-          rules: __S(17),
+          errors: S.optional(ListRulesResponseErrorsList),
+          rules: ListRulesResponseRulesList,
         }),
       ).annotate({ identifier: "ListRulesResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
+          regionId: UpdateRuleRequestRegionId.pipe(T.Label()),
           ruleId: S.String.pipe(T.Label()),
           direction: S.optional(S.String),
           etherType: S.optional(S.String),
@@ -616,20 +718,5 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateRuleRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

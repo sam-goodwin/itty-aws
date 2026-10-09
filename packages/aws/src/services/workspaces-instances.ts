@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Workspaces Instances",
   serviceShapeName: "EUCMIFrontendAPIService",
@@ -123,11 +121,11 @@ export class ValidationException
     "ValidationException",
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-      Reason: /*@__PURE__*/ S.suspend(() => S.String).annotate({
+      Reason: /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),
       FieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(78)).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -142,7 +140,15 @@ export interface AssociateVolumeRequest {
   VolumeId: string;
   Device: string;
 }
+const AssociateVolumeRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AssociateVolumeRequest>;
 export interface AssociateVolumeResponse {}
+const AssociateVolumeResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AssociateVolumeResponse>;
 export type String64 = string;
 export type ClientToken = string | redacted.Redacted<string>;
 export type NonNegativeInteger = number;
@@ -154,18 +160,24 @@ export type ResourceTypeEnum =
   | "spot-instances-request"
   | "network-interface"
   | (string & {});
+const ResourceTypeEnum = S.String;
+
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   Key?: string;
   Value?: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Tag>;
 export type TagList = Tag[];
+const TagList = /*@__PURE__*/ __L.at(__c0, 3);
 export interface TagSpecification {
   ResourceType?: ResourceTypeEnum;
   Tags?: Tag[];
 }
+const TagSpecification = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<TagSpecification>;
 export type TagSpecifications = TagSpecification[];
+const TagSpecifications = /*@__PURE__*/ __L.at(__c0, 5);
 export type VolumeTypeEnum =
   | "standard"
   | "io1"
@@ -175,6 +187,8 @@ export type VolumeTypeEnum =
   | "st1"
   | "gp3"
   | (string & {});
+const VolumeTypeEnum = S.String;
+
 export interface CreateVolumeRequest {
   AvailabilityZone: string;
   ClientToken?: string | redacted.Redacted<string>;
@@ -187,9 +201,11 @@ export interface CreateVolumeRequest {
   Throughput?: number;
   VolumeType?: VolumeTypeEnum;
 }
+const CreateVolumeRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateVolumeRequest>;
 export interface CreateVolumeResponse {
   VolumeId?: string;
 }
+const CreateVolumeResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateVolumeResponse>;
 export interface EbsBlockDevice {
   VolumeType?: VolumeTypeEnum;
   Encrypted?: boolean;
@@ -198,6 +214,7 @@ export interface EbsBlockDevice {
   Throughput?: number;
   VolumeSize?: number;
 }
+const EbsBlockDevice = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<EbsBlockDevice>;
 export type VirtualName = string;
 export interface BlockDeviceMappingRequest {
   DeviceName?: string;
@@ -205,48 +222,92 @@ export interface BlockDeviceMappingRequest {
   NoDevice?: string;
   VirtualName?: string;
 }
+const BlockDeviceMappingRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<BlockDeviceMappingRequest>;
 export type BlockDeviceMappings = BlockDeviceMappingRequest[];
+const BlockDeviceMappings = /*@__PURE__*/ __L.at(__c1, 2);
 export type CapacityReservationPreferenceEnum =
   | "capacity-reservations-only"
   | "open"
   | "none"
   | (string & {});
+const CapacityReservationPreferenceEnum = S.String;
+
 export type String128 = string;
 export type ARN = string;
 export interface CapacityReservationTarget {
   CapacityReservationId?: string;
   CapacityReservationResourceGroupArn?: string;
 }
+const CapacityReservationTarget = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CapacityReservationTarget>;
 export interface CapacityReservationSpecification {
   CapacityReservationPreference?: CapacityReservationPreferenceEnum;
   CapacityReservationTarget?: CapacityReservationTarget;
 }
+const CapacityReservationSpecification = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CapacityReservationSpecification>;
 export type AmdSevSnpEnum = "enabled" | "disabled" | (string & {});
+const AmdSevSnpEnum = S.String;
+
 export type NestedVirtualizationEnum = "enabled" | "disabled" | (string & {});
+const NestedVirtualizationEnum = S.String;
+
 export interface CpuOptionsRequest {
   AmdSevSnp?: AmdSevSnpEnum;
   CoreCount?: number;
   ThreadsPerCore?: number;
   NestedVirtualization?: NestedVirtualizationEnum;
 }
+const CpuOptionsRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CpuOptionsRequest>;
 export type CpuCreditsEnum = "standard" | "unlimited" | (string & {});
+const CpuCreditsEnum = S.String;
+
 export interface CreditSpecificationRequest {
   CpuCredits?: CpuCreditsEnum;
 }
+const CreditSpecificationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreditSpecificationRequest>;
 export interface EnclaveOptionsRequest {
   Enabled?: boolean;
 }
+const EnclaveOptionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<EnclaveOptionsRequest>;
 export interface HibernationOptionsRequest {
   Configured?: boolean;
 }
+const HibernationOptionsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<HibernationOptionsRequest>;
 export interface IamInstanceProfileSpecification {
   Arn?: string;
   Name?: string;
 }
+const IamInstanceProfileSpecification = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<IamInstanceProfileSpecification>;
 export type ImageId = string;
 export type MarketTypeEnum = "spot" | "capacity-block" | (string & {});
+const MarketTypeEnum = S.String;
+
 export type InstanceInterruptionBehaviorEnum = "hibernate" | "stop" | (string & {});
+const InstanceInterruptionBehaviorEnum = S.String;
+
 export type SpotInstanceTypeEnum = "one-time" | "persistent" | (string & {});
+const SpotInstanceTypeEnum = S.String;
+
 export interface SpotMarketOptions {
   BlockDurationMinutes?: number;
   InstanceInterruptionBehavior?: InstanceInterruptionBehaviorEnum;
@@ -254,30 +315,56 @@ export interface SpotMarketOptions {
   SpotInstanceType?: SpotInstanceTypeEnum;
   ValidUntilUtc?: Date;
 }
+const SpotMarketOptions = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<SpotMarketOptions>;
 export interface InstanceMarketOptionsRequest {
   MarketType?: MarketTypeEnum;
   SpotOptions?: SpotMarketOptions;
 }
+const InstanceMarketOptionsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<InstanceMarketOptionsRequest>;
 export type InstanceType = string;
 export type Ipv6Address = string | redacted.Redacted<string>;
 export interface InstanceIpv6Address {
   Ipv6Address?: string | redacted.Redacted<string>;
   IsPrimaryIpv6?: boolean;
 }
+const InstanceIpv6Address = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<InstanceIpv6Address>;
 export type Ipv6Addresses = InstanceIpv6Address[];
+const Ipv6Addresses = /*@__PURE__*/ __L.at(__c2, 5);
 export interface LicenseConfigurationRequest {
   LicenseConfigurationArn?: string;
 }
+const LicenseConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<LicenseConfigurationRequest>;
 export type LicenseSpecifications = LicenseConfigurationRequest[];
+const LicenseSpecifications = /*@__PURE__*/ __L.at(__c2, 7);
 export type AutoRecoveryEnum = "disabled" | "default" | (string & {});
+const AutoRecoveryEnum = S.String;
+
 export interface InstanceMaintenanceOptionsRequest {
   AutoRecovery?: AutoRecoveryEnum;
 }
+const InstanceMaintenanceOptionsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<InstanceMaintenanceOptionsRequest>;
 export type HttpEndpointEnum = "enabled" | "disabled" | (string & {});
+const HttpEndpointEnum = S.String;
+
 export type HttpProtocolIpv6Enum = "enabled" | "disabled" | (string & {});
+const HttpProtocolIpv6Enum = S.String;
+
 export type HttpPutResponseHopLimit = number;
 export type HttpTokensEnum = "optional" | "required" | (string & {});
+const HttpTokensEnum = S.String;
+
 export type InstanceMetadataTagsEnum = "enabled" | "disabled" | (string & {});
+const InstanceMetadataTagsEnum = S.String;
+
 export interface InstanceMetadataOptionsRequest {
   HttpEndpoint?: HttpEndpointEnum;
   HttpProtocolIpv6?: HttpProtocolIpv6Enum;
@@ -285,42 +372,80 @@ export interface InstanceMetadataOptionsRequest {
   HttpTokens?: HttpTokensEnum;
   InstanceMetadataTags?: InstanceMetadataTagsEnum;
 }
+const InstanceMetadataOptionsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<InstanceMetadataOptionsRequest>;
 export interface RunInstancesMonitoringEnabled {
   Enabled?: boolean;
 }
+const RunInstancesMonitoringEnabled = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<RunInstancesMonitoringEnabled>;
 export interface ConnectionTrackingSpecificationRequest {
   TcpEstablishedTimeout?: number;
   UdpStreamTimeout?: number;
   UdpTimeout?: number;
 }
+const ConnectionTrackingSpecificationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ConnectionTrackingSpecificationRequest>;
 export type Description = string;
 export interface EnaSrdUdpSpecificationRequest {
   EnaSrdUdpEnabled?: boolean;
 }
+const EnaSrdUdpSpecificationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<EnaSrdUdpSpecificationRequest>;
 export interface EnaSrdSpecificationRequest {
   EnaSrdEnabled?: boolean;
   EnaSrdUdpSpecification?: EnaSrdUdpSpecificationRequest;
 }
+const EnaSrdSpecificationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<EnaSrdSpecificationRequest>;
 export type InterfaceTypeEnum = "interface" | "efa" | "efa-only" | (string & {});
+const InterfaceTypeEnum = S.String;
+
 export type Ipv4Prefix = string;
 export interface Ipv4PrefixSpecificationRequest {
   Ipv4Prefix?: string;
 }
+const Ipv4PrefixSpecificationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<Ipv4PrefixSpecificationRequest>;
 export type Ipv4Prefixes = Ipv4PrefixSpecificationRequest[];
+const Ipv4Prefixes = /*@__PURE__*/ __L.at(__c3, 7);
 export type Ipv6Prefix = string;
 export interface Ipv6PrefixSpecificationRequest {
   Ipv6Prefix?: string;
 }
+const Ipv6PrefixSpecificationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<Ipv6PrefixSpecificationRequest>;
 export type Ipv6Prefixes = Ipv6PrefixSpecificationRequest[];
+const Ipv6Prefixes = /*@__PURE__*/ __L.at(__c4, 1);
 export type NetworkInterfaceId = string;
 export type Ipv4Address = string | redacted.Redacted<string>;
 export interface PrivateIpAddressSpecification {
   Primary?: boolean;
   PrivateIpAddress?: string | redacted.Redacted<string>;
 }
+const PrivateIpAddressSpecification = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<PrivateIpAddressSpecification>;
 export type PrivateIpAddresses = PrivateIpAddressSpecification[];
+const PrivateIpAddresses = /*@__PURE__*/ __L.at(__c4, 3);
 export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
+const SecurityGroupIds = /*@__PURE__*/ __L.at(__c4, 4);
 export type SubnetId = string;
 export interface InstanceNetworkInterfaceSpecification {
   AssociateCarrierIpAddress?: boolean;
@@ -345,15 +470,28 @@ export interface InstanceNetworkInterfaceSpecification {
   Groups?: string[];
   SubnetId?: string;
 }
+const InstanceNetworkInterfaceSpecification = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<InstanceNetworkInterfaceSpecification>;
 export type NetworkInterfaces = InstanceNetworkInterfaceSpecification[];
+const NetworkInterfaces = /*@__PURE__*/ __L.at(__c4, 6);
 export type BandwidthWeightingEnum = "default" | "vpc-1" | "ebs-1" | (string & {});
+const BandwidthWeightingEnum = S.String;
+
 export interface InstanceNetworkPerformanceOptionsRequest {
   BandwidthWeighting?: BandwidthWeightingEnum;
 }
+const InstanceNetworkPerformanceOptionsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<InstanceNetworkPerformanceOptionsRequest>;
 export type AvailabilityZone = string;
 export type PlacementGroupId = string;
 export type HostId = string;
 export type TenancyEnum = "default" | "dedicated" | "host" | (string & {});
+const TenancyEnum = S.String;
+
 export interface Placement {
   Affinity?: string;
   AvailabilityZone?: string;
@@ -364,14 +502,22 @@ export interface Placement {
   PartitionNumber?: number;
   Tenancy?: TenancyEnum;
 }
+const Placement = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Placement>;
 export type HostnameTypeEnum = "ip-name" | "resource-name" | (string & {});
+const HostnameTypeEnum = S.String;
+
 export interface PrivateDnsNameOptionsRequest {
   HostnameType?: HostnameTypeEnum;
   EnableResourceNameDnsARecord?: boolean;
   EnableResourceNameDnsAAAARecord?: boolean;
 }
+const PrivateDnsNameOptionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<PrivateDnsNameOptionsRequest>;
 export type SecurityGroupName = string;
 export type SecurityGroupNames = string[];
+const SecurityGroupNames = SecurityGroupIds as any as S.Schema<SecurityGroupNames>;
 export type UserData = string | redacted.Redacted<string>;
 export interface ManagedInstanceRequest {
   BlockDeviceMappings?: BlockDeviceMappingRequest[];
@@ -407,49 +553,93 @@ export interface ManagedInstanceRequest {
   TagSpecifications?: TagSpecification[];
   UserData?: string | redacted.Redacted<string>;
 }
+const ManagedInstanceRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ManagedInstanceRequest>;
 export type BillingMode = "MONTHLY" | "HOURLY" | (string & {});
+const BillingMode = S.String;
+
 export interface BillingConfiguration {
   BillingMode: BillingMode;
 }
+const BillingConfiguration = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<BillingConfiguration>;
 export interface CreateWorkspaceInstanceRequest {
   ClientToken?: string | redacted.Redacted<string>;
   Tags?: Tag[];
   ManagedInstance: ManagedInstanceRequest;
   BillingConfiguration?: BillingConfiguration;
 }
+const CreateWorkspaceInstanceRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreateWorkspaceInstanceRequest>;
 export interface CreateWorkspaceInstanceResponse {
   WorkspaceInstanceId?: string;
 }
+const CreateWorkspaceInstanceResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreateWorkspaceInstanceResponse>;
 export interface DeleteVolumeRequest {
   VolumeId: string;
 }
+const DeleteVolumeRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<DeleteVolumeRequest>;
 export interface DeleteVolumeResponse {}
+const DeleteVolumeResponse = AssociateVolumeResponse as any as S.Schema<DeleteVolumeResponse>;
 export interface DeleteWorkspaceInstanceRequest {
   WorkspaceInstanceId: string;
 }
+const DeleteWorkspaceInstanceRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DeleteWorkspaceInstanceRequest>;
 export interface DeleteWorkspaceInstanceResponse {}
+const DeleteWorkspaceInstanceResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DeleteWorkspaceInstanceResponse>;
 export type DisassociateModeEnum = "FORCE" | "NO_FORCE" | (string & {});
+const DisassociateModeEnum = S.String;
+
 export interface DisassociateVolumeRequest {
   WorkspaceInstanceId: string;
   VolumeId: string;
   Device?: string;
   DisassociateMode?: DisassociateModeEnum;
 }
+const DisassociateVolumeRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<DisassociateVolumeRequest>;
 export interface DisassociateVolumeResponse {}
+const DisassociateVolumeResponse =
+  AssociateVolumeResponse as any as S.Schema<DisassociateVolumeResponse>;
 export interface GetWorkspaceInstanceRequest {
   WorkspaceInstanceId: string;
 }
+const GetWorkspaceInstanceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<GetWorkspaceInstanceRequest>;
 export interface WorkspaceInstanceError {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
+const WorkspaceInstanceError = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<WorkspaceInstanceError>;
 export type WorkspaceInstanceErrors = WorkspaceInstanceError[];
+const WorkspaceInstanceErrors = /*@__PURE__*/ __L.at(__c6, 4);
 export interface EC2InstanceError {
   EC2ErrorCode?: string;
   EC2ExceptionType?: string;
   EC2ErrorMessage?: string;
 }
+const EC2InstanceError = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<EC2InstanceError>;
 export type EC2InstanceErrors = EC2InstanceError[];
+const EC2InstanceErrors = /*@__PURE__*/ __L.at(__c6, 6);
 export type ProvisionStateEnum =
   | "ALLOCATING"
   | "ALLOCATED"
@@ -458,9 +648,12 @@ export type ProvisionStateEnum =
   | "ERROR_ALLOCATING"
   | "ERROR_DEALLOCATING"
   | (string & {});
+const ProvisionStateEnum = S.String;
+
 export interface EC2ManagedInstance {
   InstanceId?: string;
 }
+const EC2ManagedInstance = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<EC2ManagedInstance>;
 export interface GetWorkspaceInstanceResponse {
   WorkspaceInstanceErrors?: WorkspaceInstanceError[];
   EC2InstanceErrors?: EC2InstanceError[];
@@ -469,6 +662,10 @@ export interface GetWorkspaceInstanceResponse {
   EC2ManagedInstance?: EC2ManagedInstance;
   BillingConfiguration?: BillingConfiguration;
 }
+const GetWorkspaceInstanceResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<GetWorkspaceInstanceResponse>;
 export type ListInstanceTypesMaxResults = number;
 export type NextToken = string | redacted.Redacted<string>;
 export type PlatformTypeEnum =
@@ -480,80 +677,130 @@ export type PlatformTypeEnum =
   | "Red Hat BYOL Linux"
   | "SUSE Linux"
   | (string & {});
+const PlatformTypeEnum = S.String;
+
 export type InstanceConfigurationTenancyEnum = "SHARED" | "DEDICATED" | (string & {});
+const InstanceConfigurationTenancyEnum = S.String;
+
 export interface InstanceConfigurationFilter {
   BillingMode: BillingMode;
   PlatformType: PlatformTypeEnum;
   Tenancy: InstanceConfigurationTenancyEnum;
 }
+const InstanceConfigurationFilter = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<InstanceConfigurationFilter>;
 export interface ListInstanceTypesRequest {
   MaxResults?: number;
   NextToken?: string | redacted.Redacted<string>;
   InstanceConfigurationFilter?: InstanceConfigurationFilter;
 }
+const ListInstanceTypesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListInstanceTypesRequest>;
 export interface SupportedInstanceConfiguration {
   BillingMode?: BillingMode;
   PlatformType?: PlatformTypeEnum;
   Tenancy?: InstanceConfigurationTenancyEnum;
 }
+const SupportedInstanceConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<SupportedInstanceConfiguration>;
 export type SupportedInstanceConfigurations = SupportedInstanceConfiguration[];
+const SupportedInstanceConfigurations = /*@__PURE__*/ __L.at(__c7, 4);
 export interface InstanceTypeInfo {
   InstanceType?: string;
   SupportedInstanceConfigurations?: SupportedInstanceConfiguration[];
 }
+const InstanceTypeInfo = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<InstanceTypeInfo>;
 export type InstanceTypes = InstanceTypeInfo[];
+const InstanceTypes = /*@__PURE__*/ __L.at(__c7, 6);
 export interface ListInstanceTypesResponse {
   InstanceTypes: InstanceTypeInfo[];
   NextToken?: string | redacted.Redacted<string>;
 }
+const ListInstanceTypesResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListInstanceTypesResponse>;
 export type MaxResults = number;
 export interface ListRegionsRequest {
   MaxResults?: number;
   NextToken?: string | redacted.Redacted<string>;
 }
+const ListRegionsRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ListRegionsRequest>;
 export type RegionName = string;
 export interface Region {
   RegionName?: string;
 }
 const Region = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<Region>;
 export type RegionList = Region[];
+const RegionList = /*@__PURE__*/ __L.at(__c8, 2);
 export interface ListRegionsResponse {
   Regions: Region[];
   NextToken?: string | redacted.Redacted<string>;
 }
+const ListRegionsResponse = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ListRegionsResponse>;
 export interface ListTagsForResourceRequest {
   WorkspaceInstanceId: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export type ProvisionStates = ProvisionStateEnum[];
+const ProvisionStates = /*@__PURE__*/ __L.at(__c8, 6);
 export interface ListWorkspaceInstancesRequest {
   ProvisionStates?: ProvisionStateEnum[];
   MaxResults?: number;
   NextToken?: string | redacted.Redacted<string>;
 }
+const ListWorkspaceInstancesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListWorkspaceInstancesRequest>;
 export interface WorkspaceInstance {
   ProvisionState?: ProvisionStateEnum;
   WorkspaceInstanceId?: string;
   EC2ManagedInstance?: EC2ManagedInstance;
 }
+const WorkspaceInstance = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<WorkspaceInstance>;
 export type WorkspaceInstances = WorkspaceInstance[];
+const WorkspaceInstances = /*@__PURE__*/ __L.at(__c9, 1);
 export interface ListWorkspaceInstancesResponse {
   WorkspaceInstances: WorkspaceInstance[];
   NextToken?: string | redacted.Redacted<string>;
 }
+const ListWorkspaceInstancesResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListWorkspaceInstancesResponse>;
 export interface TagResourceRequest {
   WorkspaceInstanceId: string;
   Tags: Tag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = AssociateVolumeResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
+const TagKeyList = SecurityGroupIds as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   WorkspaceInstanceId: string;
   TagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = AssociateVolumeResponse as any as S.Schema<UntagResourceResponse>;
 export type ValidationExceptionReason =
   | "UNKNOWN_OPERATION"
   | "UNSUPPORTED_OPERATION"
@@ -562,12 +809,19 @@ export type ValidationExceptionReason =
   | "DEPENDENCY_FAILURE"
   | "OTHER"
   | (string & {});
+const ValidationExceptionReason = S.String;
+
 export interface ValidationExceptionField {
   Name: string;
   Reason: string;
   Message: string;
 }
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c9, 6);
 export type AssociateVolumeError =
   | AccessDeniedException
   | ConflictException
@@ -585,8 +839,8 @@ export const associateVolume: API.OperationMethod<
   AssociateVolumeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AssociateVolumeRequest>,
-  output: __S(1) as any as S.Schema<AssociateVolumeResponse>,
+  input: AssociateVolumeRequest,
+  output: AssociateVolumeResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -617,8 +871,8 @@ export const createVolume: API.OperationMethod<
   CreateVolumeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateVolumeRequest>,
-  output: __S(7) as any as S.Schema<CreateVolumeResponse>,
+  input: CreateVolumeRequest,
+  output: CreateVolumeResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -649,8 +903,8 @@ export const createWorkspaceInstance: API.OperationMethod<
   CreateWorkspaceInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<CreateWorkspaceInstanceRequest>,
-  output: __S(45) as any as S.Schema<CreateWorkspaceInstanceResponse>,
+  input: CreateWorkspaceInstanceRequest,
+  output: CreateWorkspaceInstanceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -681,8 +935,8 @@ export const deleteVolume: API.OperationMethod<
   DeleteVolumeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<DeleteVolumeRequest>,
-  output: __S(1) as any as S.Schema<DeleteVolumeResponse>,
+  input: DeleteVolumeRequest,
+  output: DeleteVolumeResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -715,8 +969,8 @@ export const deleteWorkspaceInstance: API.OperationMethod<
   DeleteWorkspaceInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<DeleteWorkspaceInstanceRequest>,
-  output: __S(48) as any as S.Schema<DeleteWorkspaceInstanceResponse>,
+  input: DeleteWorkspaceInstanceRequest,
+  output: DeleteWorkspaceInstanceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -747,8 +1001,8 @@ export const disassociateVolume: API.OperationMethod<
   DisassociateVolumeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<DisassociateVolumeRequest>,
-  output: __S(1) as any as S.Schema<DisassociateVolumeResponse>,
+  input: DisassociateVolumeRequest,
+  output: DisassociateVolumeResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -778,8 +1032,8 @@ export const getWorkspaceInstance: API.OperationMethod<
   GetWorkspaceInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<GetWorkspaceInstanceRequest>,
-  output: __S(56) as any as S.Schema<GetWorkspaceInstanceResponse>,
+  input: GetWorkspaceInstanceRequest,
+  output: GetWorkspaceInstanceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -808,8 +1062,8 @@ export const listInstanceTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   InstanceTypeInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(58) as any as S.Schema<ListInstanceTypesRequest>,
-  output: __S(63) as any as S.Schema<ListInstanceTypesResponse>,
+  input: ListInstanceTypesRequest,
+  output: ListInstanceTypesResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -843,8 +1097,8 @@ export const listRegions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Region
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(64) as any as S.Schema<ListRegionsRequest>,
-  output: __S(67) as any as S.Schema<ListRegionsResponse>,
+  input: ListRegionsRequest,
+  output: ListRegionsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -878,8 +1132,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(69) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -908,8 +1162,8 @@ export const listWorkspaceInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkspaceInstance
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(71) as any as S.Schema<ListWorkspaceInstancesRequest>,
-  output: __S(74) as any as S.Schema<ListWorkspaceInstancesResponse>,
+  input: ListWorkspaceInstancesRequest,
+  output: ListWorkspaceInstancesResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -943,8 +1197,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<TagResourceRequest>,
-  output: __S(1) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -973,8 +1227,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<UntagResourceRequest>,
-  output: __S(1) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1005,13 +1259,13 @@ function __c0(j: number): any {
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "Tag" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(Tag);
     case 4:
       return S.suspend(() =>
-        S.Struct({ ResourceType: S.optional(S.String), Tags: S.optional(__S(3)) }),
+        S.Struct({ ResourceType: S.optional(ResourceTypeEnum), Tags: S.optional(TagList) }),
       ).annotate({ identifier: "TagSpecification" });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(TagSpecification);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1022,9 +1276,9 @@ function __c0(j: number): any {
           KmsKeyId: S.optional(SensitiveString),
           SizeInGB: S.optional(S.Number),
           SnapshotId: S.optional(S.String),
-          TagSpecifications: S.optional(__S(5)),
+          TagSpecifications: S.optional(TagSpecifications),
           Throughput: S.optional(S.Number),
-          VolumeType: S.optional(S.String),
+          VolumeType: S.optional(VolumeTypeEnum),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateVolumeRequest" });
     case 7:
@@ -1038,7 +1292,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          VolumeType: S.optional(S.String),
+          VolumeType: S.optional(VolumeTypeEnum),
           Encrypted: S.optional(S.Boolean),
           KmsKeyId: S.optional(SensitiveString),
           Iops: S.optional(S.Number),
@@ -1050,7 +1304,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DeviceName: S.optional(S.String),
-          Ebs: S.optional(__S(8)),
+          Ebs: S.optional(EbsBlockDevice),
           NoDevice: S.optional(S.String),
           VirtualName: S.optional(S.String),
         }),
@@ -1058,7 +1312,7 @@ function __c1(j: number): any {
         identifier: "BlockDeviceMappingRequest",
       });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(BlockDeviceMappingRequest);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1071,8 +1325,8 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          CapacityReservationPreference: S.optional(S.String),
-          CapacityReservationTarget: S.optional(__S(11)),
+          CapacityReservationPreference: S.optional(CapacityReservationPreferenceEnum),
+          CapacityReservationTarget: S.optional(CapacityReservationTarget),
         }),
       ).annotate({
         identifier: "CapacityReservationSpecification",
@@ -1080,14 +1334,14 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          AmdSevSnp: S.optional(S.String),
+          AmdSevSnp: S.optional(AmdSevSnpEnum),
           CoreCount: S.optional(S.Number),
           ThreadsPerCore: S.optional(S.Number),
-          NestedVirtualization: S.optional(S.String),
+          NestedVirtualization: S.optional(NestedVirtualizationEnum),
         }),
       ).annotate({ identifier: "CpuOptionsRequest" });
     case 6:
-      return S.suspend(() => S.Struct({ CpuCredits: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ CpuCredits: S.optional(CpuCreditsEnum) })).annotate({
         identifier: "CreditSpecificationRequest",
       });
     case 7:
@@ -1112,17 +1366,17 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           BlockDurationMinutes: S.optional(S.Number),
-          InstanceInterruptionBehavior: S.optional(S.String),
+          InstanceInterruptionBehavior: S.optional(InstanceInterruptionBehaviorEnum),
           MaxPrice: S.optional(S.String),
-          SpotInstanceType: S.optional(S.String),
+          SpotInstanceType: S.optional(SpotInstanceTypeEnum),
           ValidUntilUtc: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "SpotMarketOptions" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          MarketType: S.optional(S.String),
-          SpotOptions: S.optional(__S(18)),
+          MarketType: S.optional(MarketTypeEnum),
+          SpotOptions: S.optional(SpotMarketOptions),
         }),
       ).annotate({
         identifier: "InstanceMarketOptionsRequest",
@@ -1135,29 +1389,29 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "InstanceIpv6Address" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(InstanceIpv6Address);
     case 6:
       return S.suspend(() => S.Struct({ LicenseConfigurationArn: S.optional(S.String) })).annotate({
         identifier: "LicenseConfigurationRequest",
       });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(LicenseConfigurationRequest);
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ AutoRecovery: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ AutoRecovery: S.optional(AutoRecoveryEnum) })).annotate({
         identifier: "InstanceMaintenanceOptionsRequest",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          HttpEndpoint: S.optional(S.String),
-          HttpProtocolIpv6: S.optional(S.String),
+          HttpEndpoint: S.optional(HttpEndpointEnum),
+          HttpProtocolIpv6: S.optional(HttpProtocolIpv6Enum),
           HttpPutResponseHopLimit: S.optional(S.Number),
-          HttpTokens: S.optional(S.String),
-          InstanceMetadataTags: S.optional(S.String),
+          HttpTokens: S.optional(HttpTokensEnum),
+          InstanceMetadataTags: S.optional(InstanceMetadataTagsEnum),
         }),
       ).annotate({
         identifier: "InstanceMetadataOptionsRequest",
@@ -1184,7 +1438,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           EnaSrdEnabled: S.optional(S.Boolean),
-          EnaSrdUdpSpecification: S.optional(__S(28)),
+          EnaSrdUdpSpecification: S.optional(EnaSrdUdpSpecificationRequest),
         }),
       ).annotate({
         identifier: "EnaSrdSpecificationRequest",
@@ -1194,7 +1448,7 @@ function __c3(j: number): any {
         identifier: "Ipv4PrefixSpecificationRequest",
       });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(Ipv4PrefixSpecificationRequest);
   }
 }
 function __c4(j: number): any {
@@ -1204,7 +1458,7 @@ function __c4(j: number): any {
         identifier: "Ipv6PrefixSpecificationRequest",
       });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(Ipv6PrefixSpecificationRequest);
     case 2:
       return S.suspend(() =>
         S.Struct({ Primary: S.optional(S.Boolean), PrivateIpAddress: S.optional(SensitiveString) }),
@@ -1212,7 +1466,7 @@ function __c4(j: number): any {
         identifier: "PrivateIpAddressSpecification",
       });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(PrivateIpAddressSpecification);
     case 4:
       return S.Array(S.String);
     case 5:
@@ -1220,33 +1474,35 @@ function __c4(j: number): any {
         S.Struct({
           AssociateCarrierIpAddress: S.optional(S.Boolean),
           AssociatePublicIpAddress: S.optional(S.Boolean),
-          ConnectionTrackingSpecification: S.optional(__S(27)),
+          ConnectionTrackingSpecification: S.optional(ConnectionTrackingSpecificationRequest),
           Description: S.optional(S.String),
           DeviceIndex: S.optional(S.Number),
-          EnaSrdSpecification: S.optional(__S(29)),
-          InterfaceType: S.optional(S.String),
-          Ipv4Prefixes: S.optional(__S(31)),
+          EnaSrdSpecification: S.optional(EnaSrdSpecificationRequest),
+          InterfaceType: S.optional(InterfaceTypeEnum),
+          Ipv4Prefixes: S.optional(Ipv4Prefixes),
           Ipv4PrefixCount: S.optional(S.Number),
           Ipv6AddressCount: S.optional(S.Number),
-          Ipv6Addresses: S.optional(__S(21)),
-          Ipv6Prefixes: S.optional(__S(33)),
+          Ipv6Addresses: S.optional(Ipv6Addresses),
+          Ipv6Prefixes: S.optional(Ipv6Prefixes),
           Ipv6PrefixCount: S.optional(S.Number),
           NetworkCardIndex: S.optional(S.Number),
           NetworkInterfaceId: S.optional(S.String),
           PrimaryIpv6: S.optional(S.Boolean),
           PrivateIpAddress: S.optional(SensitiveString),
-          PrivateIpAddresses: S.optional(__S(35)),
+          PrivateIpAddresses: S.optional(PrivateIpAddresses),
           SecondaryPrivateIpAddressCount: S.optional(S.Number),
-          Groups: S.optional(__S(36)),
+          Groups: S.optional(SecurityGroupIds),
           SubnetId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "InstanceNetworkInterfaceSpecification",
       });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(InstanceNetworkInterfaceSpecification);
     case 7:
-      return S.suspend(() => S.Struct({ BandwidthWeighting: S.optional(S.String) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ BandwidthWeighting: S.optional(BandwidthWeightingEnum) }),
+      ).annotate({
         identifier: "InstanceNetworkPerformanceOptionsRequest",
       });
   }
@@ -1263,13 +1519,13 @@ function __c5(j: number): any {
           HostId: S.optional(S.String),
           HostResourceGroupArn: S.optional(S.String),
           PartitionNumber: S.optional(S.Number),
-          Tenancy: S.optional(S.String),
+          Tenancy: S.optional(TenancyEnum),
         }),
       ).annotate({ identifier: "Placement" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          HostnameType: S.optional(S.String),
+          HostnameType: S.optional(HostnameTypeEnum),
           EnableResourceNameDnsARecord: S.optional(S.Boolean),
           EnableResourceNameDnsAAAARecord: S.optional(S.Boolean),
         }),
@@ -1279,51 +1535,51 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          BlockDeviceMappings: S.optional(__S(10)),
-          CapacityReservationSpecification: S.optional(__S(12)),
-          CpuOptions: S.optional(__S(13)),
-          CreditSpecification: S.optional(__S(14)),
+          BlockDeviceMappings: S.optional(BlockDeviceMappings),
+          CapacityReservationSpecification: S.optional(CapacityReservationSpecification),
+          CpuOptions: S.optional(CpuOptionsRequest),
+          CreditSpecification: S.optional(CreditSpecificationRequest),
           DisableApiStop: S.optional(S.Boolean),
           EbsOptimized: S.optional(S.Boolean),
           EnablePrimaryIpv6: S.optional(S.Boolean),
-          EnclaveOptions: S.optional(__S(15)),
-          HibernationOptions: S.optional(__S(16)),
-          IamInstanceProfile: S.optional(__S(17)),
+          EnclaveOptions: S.optional(EnclaveOptionsRequest),
+          HibernationOptions: S.optional(HibernationOptionsRequest),
+          IamInstanceProfile: S.optional(IamInstanceProfileSpecification),
           ImageId: S.optional(S.String),
-          InstanceMarketOptions: S.optional(__S(19)),
+          InstanceMarketOptions: S.optional(InstanceMarketOptionsRequest),
           InstanceType: S.optional(S.String),
-          Ipv6Addresses: S.optional(__S(21)),
+          Ipv6Addresses: S.optional(Ipv6Addresses),
           Ipv6AddressCount: S.optional(S.Number),
           KernelId: S.optional(S.String),
           KeyName: S.optional(S.String),
-          LicenseSpecifications: S.optional(__S(23)),
-          MaintenanceOptions: S.optional(__S(24)),
-          MetadataOptions: S.optional(__S(25)),
-          Monitoring: S.optional(__S(26)),
-          NetworkInterfaces: S.optional(__S(38)),
-          NetworkPerformanceOptions: S.optional(__S(39)),
-          Placement: S.optional(__S(40)),
-          PrivateDnsNameOptions: S.optional(__S(41)),
+          LicenseSpecifications: S.optional(LicenseSpecifications),
+          MaintenanceOptions: S.optional(InstanceMaintenanceOptionsRequest),
+          MetadataOptions: S.optional(InstanceMetadataOptionsRequest),
+          Monitoring: S.optional(RunInstancesMonitoringEnabled),
+          NetworkInterfaces: S.optional(NetworkInterfaces),
+          NetworkPerformanceOptions: S.optional(InstanceNetworkPerformanceOptionsRequest),
+          Placement: S.optional(Placement),
+          PrivateDnsNameOptions: S.optional(PrivateDnsNameOptionsRequest),
           PrivateIpAddress: S.optional(SensitiveString),
           RamdiskId: S.optional(S.String),
-          SecurityGroupIds: S.optional(__S(36)),
-          SecurityGroups: S.optional(__S(36)),
+          SecurityGroupIds: S.optional(SecurityGroupIds),
+          SecurityGroups: S.optional(SecurityGroupNames),
           SubnetId: S.optional(S.String),
-          TagSpecifications: S.optional(__S(5)),
+          TagSpecifications: S.optional(TagSpecifications),
           UserData: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "ManagedInstanceRequest" });
     case 3:
-      return S.suspend(() => S.Struct({ BillingMode: S.String })).annotate({
+      return S.suspend(() => S.Struct({ BillingMode: BillingMode })).annotate({
         identifier: "BillingConfiguration",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
           ClientToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(3)),
-          ManagedInstance: __S(42),
-          BillingConfiguration: S.optional(__S(43)),
+          Tags: S.optional(TagList),
+          ManagedInstance: ManagedInstanceRequest,
+          BillingConfiguration: S.optional(BillingConfiguration),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateWorkspaceInstanceRequest",
@@ -1360,7 +1616,7 @@ function __c6(j: number): any {
           WorkspaceInstanceId: S.String,
           VolumeId: S.String,
           Device: S.optional(S.String),
-          DisassociateMode: S.optional(S.String),
+          DisassociateMode: S.optional(DisassociateModeEnum),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DisassociateVolumeRequest",
@@ -1378,7 +1634,7 @@ function __c6(j: number): any {
         S.Struct({ ErrorCode: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
       ).annotate({ identifier: "WorkspaceInstanceError" });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(WorkspaceInstanceError);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1388,7 +1644,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "EC2InstanceError" });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(EC2InstanceError);
     case 7:
       return S.suspend(() => S.Struct({ InstanceId: S.optional(S.String) })).annotate({
         identifier: "EC2ManagedInstance",
@@ -1400,12 +1656,12 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          WorkspaceInstanceErrors: S.optional(__S(52)),
-          EC2InstanceErrors: S.optional(__S(54)),
-          ProvisionState: S.optional(S.String),
+          WorkspaceInstanceErrors: S.optional(WorkspaceInstanceErrors),
+          EC2InstanceErrors: S.optional(EC2InstanceErrors),
+          ProvisionState: S.optional(ProvisionStateEnum),
           WorkspaceInstanceId: S.optional(S.String),
-          EC2ManagedInstance: S.optional(__S(55)),
-          BillingConfiguration: S.optional(__S(43)),
+          EC2ManagedInstance: S.optional(EC2ManagedInstance),
+          BillingConfiguration: S.optional(BillingConfiguration),
         }),
       ).annotate({
         identifier: "GetWorkspaceInstanceResponse",
@@ -1413,9 +1669,9 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          BillingMode: S.String,
-          PlatformType: S.String,
-          Tenancy: S.String,
+          BillingMode: BillingMode,
+          PlatformType: PlatformTypeEnum,
+          Tenancy: InstanceConfigurationTenancyEnum,
         }),
       ).annotate({
         identifier: "InstanceConfigurationFilter",
@@ -1425,33 +1681,33 @@ function __c7(j: number): any {
         S.Struct({
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(SensitiveString),
-          InstanceConfigurationFilter: S.optional(__S(57)),
+          InstanceConfigurationFilter: S.optional(InstanceConfigurationFilter),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListInstanceTypesRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          BillingMode: S.optional(S.String),
-          PlatformType: S.optional(S.String),
-          Tenancy: S.optional(S.String),
+          BillingMode: S.optional(BillingMode),
+          PlatformType: S.optional(PlatformTypeEnum),
+          Tenancy: S.optional(InstanceConfigurationTenancyEnum),
         }),
       ).annotate({
         identifier: "SupportedInstanceConfiguration",
       });
     case 4:
-      return S.Array(__S(59));
+      return S.Array(SupportedInstanceConfiguration);
     case 5:
       return S.suspend(() =>
         S.Struct({
           InstanceType: S.optional(S.String),
-          SupportedInstanceConfigurations: S.optional(__S(60)),
+          SupportedInstanceConfigurations: S.optional(SupportedInstanceConfigurations),
         }),
       ).annotate({ identifier: "InstanceTypeInfo" });
     case 6:
-      return S.Array(__S(61));
+      return S.Array(InstanceTypeInfo);
     case 7:
       return S.suspend(() =>
-        S.Struct({ InstanceTypes: __S(62), NextToken: S.optional(SensitiveString) }),
+        S.Struct({ InstanceTypes: InstanceTypes, NextToken: S.optional(SensitiveString) }),
       ).annotate({
         identifier: "ListInstanceTypesResponse",
       });
@@ -1473,7 +1729,7 @@ function __c8(j: number): any {
       return S.Array(Region);
     case 3:
       return S.suspend(() =>
-        S.Struct({ Regions: __S(66), NextToken: S.optional(SensitiveString) }),
+        S.Struct({ Regions: RegionList, NextToken: S.optional(SensitiveString) }),
       ).annotate({ identifier: "ListRegionsResponse" });
     case 4:
       return S.suspend(() =>
@@ -1484,15 +1740,15 @@ function __c8(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 5:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(3)) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 6:
-      return S.Array(S.String);
+      return S.Array(ProvisionStateEnum);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ProvisionStates: S.optional(__S(70)),
+          ProvisionStates: S.optional(ProvisionStates),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(SensitiveString),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -1506,17 +1762,17 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ProvisionState: S.optional(S.String),
+          ProvisionState: S.optional(ProvisionStateEnum),
           WorkspaceInstanceId: S.optional(S.String),
-          EC2ManagedInstance: S.optional(__S(55)),
+          EC2ManagedInstance: S.optional(EC2ManagedInstance),
         }),
       ).annotate({ identifier: "WorkspaceInstance" });
     case 1:
-      return S.Array(__S(72));
+      return S.Array(WorkspaceInstance);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          WorkspaceInstances: __S(73),
+          WorkspaceInstances: WorkspaceInstances,
           NextToken: S.optional(SensitiveString),
         }),
       ).annotate({
@@ -1524,13 +1780,13 @@ function __c9(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ WorkspaceInstanceId: S.String, Tags: __S(3) }).pipe(
+        S.Struct({ WorkspaceInstanceId: S.String, Tags: TagList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ WorkspaceInstanceId: S.String, TagKeys: __S(36) }).pipe(
+        S.Struct({ WorkspaceInstanceId: S.String, TagKeys: TagKeyList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -1539,35 +1795,6 @@ function __c9(j: number): any {
         S.Struct({ Name: S.String, Reason: S.String, Message: S.String }),
       ).annotate({ identifier: "ValidationExceptionField" });
     case 6:
-      return S.Array(__S(77));
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
+      return S.Array(ValidationExceptionField);
   }
 }

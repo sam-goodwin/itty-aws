@@ -6,31 +6,50 @@ import { SlackError, SlackRateLimited } from "../errors.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
 /** Comma-separated array of trigger IDs to add; max 15 */
 export type AddFeaturedRequestTriggerIdsList = Array<string>;
+const AddFeaturedRequestTriggerIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddFeaturedRequestTriggerIdsList>;
+
 export interface AddFeaturedRequest {
   /** Channel to add featured workflow in. */
   channel_id: string;
   /** Comma-separated array of trigger IDs to add; max 15 */
   trigger_ids: AddFeaturedRequestTriggerIdsList;
 }
+const AddFeaturedRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AddFeaturedRequest>;
+
 export interface AddFeaturedResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const AddFeaturedResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AddFeaturedResponse>;
+
 /** List of encoded user IDs */
 export type AddTriggersPermissionsRequestUserIdsList = Array<string>;
+const AddTriggersPermissionsRequestUserIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<AddTriggersPermissionsRequestUserIdsList>;
+
 /** List of encoded channel IDs */
 export type AddTriggersPermissionsRequestChannelIdsList = Array<string>;
+const AddTriggersPermissionsRequestChannelIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<AddTriggersPermissionsRequestChannelIdsList>;
+
 /** List of encoded workspace IDs */
 export type AddTriggersPermissionsRequestTeamIdsList = Array<string>;
+const AddTriggersPermissionsRequestTeamIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<AddTriggersPermissionsRequestTeamIdsList>;
+
 /** List of encoded organization IDs */
 export type AddTriggersPermissionsRequestOrgIdsList = Array<string>;
+const AddTriggersPermissionsRequestOrgIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<AddTriggersPermissionsRequestOrgIdsList>;
+
 export interface AddTriggersPermissionsRequest {
   /** Encoded ID of the trigger */
   trigger_id: string;
@@ -43,64 +62,131 @@ export interface AddTriggersPermissionsRequest {
   /** List of encoded organization IDs */
   org_ids?: AddTriggersPermissionsRequestOrgIdsList;
 }
+const AddTriggersPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AddTriggersPermissionsRequest>;
+
 export interface AddTriggersPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const AddTriggersPermissionsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AddTriggersPermissionsResponse>;
+
 /** Comma-separated array of channel IDs to list featured workflows for. */
 export type ListFeaturedRequestChannelIdsList = Array<string>;
+const ListFeaturedRequestChannelIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<ListFeaturedRequestChannelIdsList>;
+
 export interface ListFeaturedRequest {
   /** Comma-separated array of channel IDs to list featured workflows for. */
   channel_ids: ListFeaturedRequestChannelIdsList;
 }
+const ListFeaturedRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ListFeaturedRequest>;
+
 export interface ListFeaturedResponseFeaturedWorkflowsItemTriggersItem {
   id: string;
   title: string;
 }
+const ListFeaturedResponseFeaturedWorkflowsItemTriggersItem = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListFeaturedResponseFeaturedWorkflowsItemTriggersItem>;
+
 /** Array of triggers associated with channel */
 export type ListFeaturedResponseFeaturedWorkflowsItemTriggersList =
   Array<ListFeaturedResponseFeaturedWorkflowsItemTriggersItem>;
+const ListFeaturedResponseFeaturedWorkflowsItemTriggersList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListFeaturedResponseFeaturedWorkflowsItemTriggersList>;
+
 export interface ListFeaturedResponseFeaturedWorkflowsItem {
   /** Channel where workflows are featured */
   channel_id: string;
   /** Array of triggers associated with channel */
   triggers: ListFeaturedResponseFeaturedWorkflowsItemTriggersList;
 }
+const ListFeaturedResponseFeaturedWorkflowsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListFeaturedResponseFeaturedWorkflowsItem>;
+
 export type ListFeaturedResponseFeaturedWorkflowsList =
   Array<ListFeaturedResponseFeaturedWorkflowsItem>;
+const ListFeaturedResponseFeaturedWorkflowsList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListFeaturedResponseFeaturedWorkflowsList>;
+
 export interface ListFeaturedResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   featured_workflows: ListFeaturedResponseFeaturedWorkflowsList;
 }
+const ListFeaturedResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ListFeaturedResponse>;
+
 export interface ListTriggersPermissionsRequest {
   /** Encoded ID of the trigger */
   trigger_id: string;
 }
+const ListTriggersPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListTriggersPermissionsRequest>;
+
 export interface ListTriggersPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const ListTriggersPermissionsResponse =
+  AddTriggersPermissionsResponse as any as S.Schema<ListTriggersPermissionsResponse>;
+
 /** Comma-separated array of trigger IDs to remove; max 15 */
 export type RemoveFeaturedRequestTriggerIdsList = Array<string>;
+const RemoveFeaturedRequestTriggerIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<RemoveFeaturedRequestTriggerIdsList>;
+
 export interface RemoveFeaturedRequest {
   /** Channel to remove featured workflow from. */
   channel_id: string;
   /** Comma-separated array of trigger IDs to remove; max 15 */
   trigger_ids: RemoveFeaturedRequestTriggerIdsList;
 }
+const RemoveFeaturedRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<RemoveFeaturedRequest>;
+
 export interface RemoveFeaturedResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const RemoveFeaturedResponse = AddFeaturedResponse as any as S.Schema<RemoveFeaturedResponse>;
+
 /** List of encoded user IDs */
 export type RemoveTriggersPermissionsRequestUserIdsList = Array<string>;
+const RemoveTriggersPermissionsRequestUserIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<RemoveTriggersPermissionsRequestUserIdsList>;
+
 /** List of encoded channel IDs */
 export type RemoveTriggersPermissionsRequestChannelIdsList = Array<string>;
+const RemoveTriggersPermissionsRequestChannelIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<RemoveTriggersPermissionsRequestChannelIdsList>;
+
 /** List of encoded workspace IDs */
 export type RemoveTriggersPermissionsRequestTeamIdsList = Array<string>;
+const RemoveTriggersPermissionsRequestTeamIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<RemoveTriggersPermissionsRequestTeamIdsList>;
+
 /** List of encoded organization IDs */
 export type RemoveTriggersPermissionsRequestOrgIdsList = Array<string>;
+const RemoveTriggersPermissionsRequestOrgIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<RemoveTriggersPermissionsRequestOrgIdsList>;
+
 export interface RemoveTriggersPermissionsRequest {
   /** Encoded ID of the trigger */
   trigger_id: string;
@@ -113,17 +199,36 @@ export interface RemoveTriggersPermissionsRequest {
   /** List of encoded organization IDs */
   org_ids?: RemoveTriggersPermissionsRequestOrgIdsList;
 }
+const RemoveTriggersPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<RemoveTriggersPermissionsRequest>;
+
 export type RemoveTriggersPermissionsResponsePermissionType =
   | "everyone"
   | "app_collaborators"
   | "named_entities";
+const RemoveTriggersPermissionsResponsePermissionType = S.String;
+
 /** A list of encoded user IDs. */
 export type RemoveTriggersPermissionsResponseUserIdsList = Array<string>;
+const RemoveTriggersPermissionsResponseUserIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<RemoveTriggersPermissionsResponseUserIdsList>;
+
 /** A list of encoded channel IDs. */
 export type RemoveTriggersPermissionsResponseChannelIdsList = Array<string>;
+const RemoveTriggersPermissionsResponseChannelIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<RemoveTriggersPermissionsResponseChannelIdsList>;
+
 /** Encoded workspace IDs. */
 export type RemoveTriggersPermissionsResponseTeamIdsList = Array<string>;
+const RemoveTriggersPermissionsResponseTeamIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<RemoveTriggersPermissionsResponseTeamIdsList>;
+
 export type RemoveTriggersPermissionsResponseOrgIdsList = Array<string>;
+const RemoveTriggersPermissionsResponseOrgIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<RemoveTriggersPermissionsResponseOrgIdsList>;
+
 export interface RemoveTriggersPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -136,31 +241,57 @@ export interface RemoveTriggersPermissionsResponse {
   team_ids?: RemoveTriggersPermissionsResponseTeamIdsList;
   org_ids?: RemoveTriggersPermissionsResponseOrgIdsList;
 }
+const RemoveTriggersPermissionsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<RemoveTriggersPermissionsResponse>;
+
 /** Comma-separated array of trigger IDs that will replace any existing featured workflows in the channel; max 15 */
 export type SetFeaturedRequestTriggerIdsList = Array<string>;
+const SetFeaturedRequestTriggerIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<SetFeaturedRequestTriggerIdsList>;
+
 export interface SetFeaturedRequest {
   /** Channel to set featured workflows in. */
   channel_id: string;
   /** Comma-separated array of trigger IDs that will replace any existing featured workflows in the channel; max 15 */
   trigger_ids: SetFeaturedRequestTriggerIdsList;
 }
+const SetFeaturedRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<SetFeaturedRequest>;
+
 export interface SetFeaturedResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const SetFeaturedResponse = AddFeaturedResponse as any as S.Schema<SetFeaturedResponse>;
+
 /** The type of permission that defines who can run a trigger */
 export type SetTriggersPermissionsRequestPermissionType =
   | "everyone"
   | "app_collaborators"
   | "named_entities";
+const SetTriggersPermissionsRequestPermissionType = S.String;
+
 /** List of encoded user IDs */
 export type SetTriggersPermissionsRequestUserIdsList = Array<string>;
+const SetTriggersPermissionsRequestUserIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<SetTriggersPermissionsRequestUserIdsList>;
+
 /** List of encoded channel IDs */
 export type SetTriggersPermissionsRequestChannelIdsList = Array<string>;
+const SetTriggersPermissionsRequestChannelIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<SetTriggersPermissionsRequestChannelIdsList>;
+
 /** List of encoded workspace IDs */
 export type SetTriggersPermissionsRequestTeamIdsList = Array<string>;
+const SetTriggersPermissionsRequestTeamIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<SetTriggersPermissionsRequestTeamIdsList>;
+
 /** List of encoded organization IDs */
 export type SetTriggersPermissionsRequestOrgIdsList = Array<string>;
+const SetTriggersPermissionsRequestOrgIdsList =
+  AddFeaturedRequestTriggerIdsList as any as S.Schema<SetTriggersPermissionsRequestOrgIdsList>;
+
 export interface SetTriggersPermissionsRequest {
   /** Encoded ID of the trigger */
   trigger_id: string;
@@ -175,10 +306,18 @@ export interface SetTriggersPermissionsRequest {
   /** List of encoded organization IDs */
   org_ids?: SetTriggersPermissionsRequestOrgIdsList;
 }
+const SetTriggersPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<SetTriggersPermissionsRequest>;
+
 export interface SetTriggersPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const SetTriggersPermissionsResponse =
+  AddTriggersPermissionsResponse as any as S.Schema<SetTriggersPermissionsResponse>;
+
 export type AddFeaturedError = SlackOpError;
 /** Add featured workflows to a channel. Required scopes -- bot: `bookmarks:write`; user: `bookmarks:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `method_not_supported` -- Method not yet supported - `restricted_action` -- User does not have access to this method. - `error_modifying_workflows` -- Error modifying workflows See https://docs.slack.dev/reference/methods/workflows.featured.add */
 export const addFeatured: API.OperationMethod<
@@ -187,8 +326,8 @@ export const addFeatured: API.OperationMethod<
   AddFeaturedError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AddFeaturedRequest>,
-  output: __S(2) as any as S.Schema<AddFeaturedResponse>,
+  input: AddFeaturedRequest,
+  output: AddFeaturedResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -202,8 +341,8 @@ export const addTriggersPermissions: API.OperationMethod<
   AddTriggersPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<AddTriggersPermissionsRequest>,
-  output: __S(4) as any as S.Schema<AddTriggersPermissionsResponse>,
+  input: AddTriggersPermissionsRequest,
+  output: AddTriggersPermissionsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -217,8 +356,8 @@ export const listFeatured: API.OperationMethod<
   ListFeaturedError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<ListFeaturedRequest>,
-  output: __S(10) as any as S.Schema<ListFeaturedResponse>,
+  input: ListFeaturedRequest,
+  output: ListFeaturedResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -232,8 +371,8 @@ export const listTriggersPermissions: API.OperationMethod<
   ListTriggersPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<ListTriggersPermissionsRequest>,
-  output: __S(4) as any as S.Schema<ListTriggersPermissionsResponse>,
+  input: ListTriggersPermissionsRequest,
+  output: ListTriggersPermissionsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -247,8 +386,8 @@ export const removeFeatured: API.OperationMethod<
   RemoveFeaturedError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<RemoveFeaturedRequest>,
-  output: __S(2) as any as S.Schema<RemoveFeaturedResponse>,
+  input: RemoveFeaturedRequest,
+  output: RemoveFeaturedResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -262,8 +401,8 @@ export const removeTriggersPermissions: API.OperationMethod<
   RemoveTriggersPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<RemoveTriggersPermissionsRequest>,
-  output: __S(14) as any as S.Schema<RemoveTriggersPermissionsResponse>,
+  input: RemoveTriggersPermissionsRequest,
+  output: RemoveTriggersPermissionsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -277,8 +416,8 @@ export const setFeatured: API.OperationMethod<
   SetFeaturedError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<SetFeaturedRequest>,
-  output: __S(2) as any as S.Schema<SetFeaturedResponse>,
+  input: SetFeaturedRequest,
+  output: SetFeaturedResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -292,8 +431,8 @@ export const setTriggersPermissions: API.OperationMethod<
   SetTriggersPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<SetTriggersPermissionsRequest>,
-  output: __S(4) as any as S.Schema<SetTriggersPermissionsResponse>,
+  input: SetTriggersPermissionsRequest,
+  output: SetTriggersPermissionsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -308,7 +447,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
-          trigger_ids: __S(0),
+          trigger_ids: AddFeaturedRequestTriggerIdsList,
         }).pipe(T.Http({ method: "POST", uri: "/workflows.featured.add", code: 200 })),
       ).annotate({ identifier: "AddFeaturedRequest" });
     case 2:
@@ -321,10 +460,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           trigger_id: S.String,
-          user_ids: S.optional(__S(0)),
-          channel_ids: S.optional(__S(0)),
-          team_ids: S.optional(__S(0)),
-          org_ids: S.optional(__S(0)),
+          user_ids: S.optional(AddTriggersPermissionsRequestUserIdsList),
+          channel_ids: S.optional(AddTriggersPermissionsRequestChannelIdsList),
+          team_ids: S.optional(AddTriggersPermissionsRequestTeamIdsList),
+          org_ids: S.optional(AddTriggersPermissionsRequestOrgIdsList),
         }).pipe(T.Http({ method: "POST", uri: "/workflows.triggers.permissions.add", code: 200 })),
       ).annotate({
         identifier: "AddTriggersPermissionsRequest",
@@ -340,7 +479,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          channel_ids: __S(0),
+          channel_ids: ListFeaturedRequestChannelIdsList,
         }).pipe(T.Http({ method: "POST", uri: "/workflows.featured.list", code: 200 })),
       ).annotate({ identifier: "ListFeaturedRequest" });
     case 6:
@@ -353,7 +492,7 @@ function __c0(j: number): any {
         identifier: "ListFeaturedResponseFeaturedWorkflowsItemTriggersItem",
       });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(ListFeaturedResponseFeaturedWorkflowsItemTriggersItem);
   }
 }
 function __c1(j: number): any {
@@ -362,18 +501,18 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
-          triggers: __S(7),
+          triggers: ListFeaturedResponseFeaturedWorkflowsItemTriggersList,
         }),
       ).annotate({
         identifier: "ListFeaturedResponseFeaturedWorkflowsItem",
       });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(ListFeaturedResponseFeaturedWorkflowsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          featured_workflows: __S(9),
+          featured_workflows: ListFeaturedResponseFeaturedWorkflowsList,
         }),
       ).annotate({ identifier: "ListFeaturedResponse" });
     case 3:
@@ -388,17 +527,17 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
-          trigger_ids: __S(0),
+          trigger_ids: RemoveFeaturedRequestTriggerIdsList,
         }).pipe(T.Http({ method: "POST", uri: "/workflows.featured.remove", code: 200 })),
       ).annotate({ identifier: "RemoveFeaturedRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           trigger_id: S.String,
-          user_ids: S.optional(__S(0)),
-          channel_ids: S.optional(__S(0)),
-          team_ids: S.optional(__S(0)),
-          org_ids: S.optional(__S(0)),
+          user_ids: S.optional(RemoveTriggersPermissionsRequestUserIdsList),
+          channel_ids: S.optional(RemoveTriggersPermissionsRequestChannelIdsList),
+          team_ids: S.optional(RemoveTriggersPermissionsRequestTeamIdsList),
+          org_ids: S.optional(RemoveTriggersPermissionsRequestOrgIdsList),
         }).pipe(
           T.Http({ method: "POST", uri: "/workflows.triggers.permissions.remove", code: 200 }),
         ),
@@ -409,11 +548,11 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          permission_type: S.String,
-          user_ids: S.optional(__S(0)),
-          channel_ids: S.optional(__S(0)),
-          team_ids: S.optional(__S(0)),
-          org_ids: S.optional(__S(0)),
+          permission_type: RemoveTriggersPermissionsResponsePermissionType,
+          user_ids: S.optional(RemoveTriggersPermissionsResponseUserIdsList),
+          channel_ids: S.optional(RemoveTriggersPermissionsResponseChannelIdsList),
+          team_ids: S.optional(RemoveTriggersPermissionsResponseTeamIdsList),
+          org_ids: S.optional(RemoveTriggersPermissionsResponseOrgIdsList),
         }),
       ).annotate({
         identifier: "RemoveTriggersPermissionsResponse",
@@ -422,7 +561,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
-          trigger_ids: __S(0),
+          trigger_ids: SetFeaturedRequestTriggerIdsList,
         }).pipe(T.Http({ method: "POST", uri: "/workflows.featured.set", code: 200 })),
       ).annotate({ identifier: "SetFeaturedRequest" });
   }
@@ -433,29 +572,14 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           trigger_id: S.String,
-          permission_type: S.String,
-          user_ids: S.optional(__S(0)),
-          channel_ids: S.optional(__S(0)),
-          team_ids: S.optional(__S(0)),
-          org_ids: S.optional(__S(0)),
+          permission_type: SetTriggersPermissionsRequestPermissionType,
+          user_ids: S.optional(SetTriggersPermissionsRequestUserIdsList),
+          channel_ids: S.optional(SetTriggersPermissionsRequestChannelIdsList),
+          team_ids: S.optional(SetTriggersPermissionsRequestTeamIdsList),
+          org_ids: S.optional(SetTriggersPermissionsRequestOrgIdsList),
         }).pipe(T.Http({ method: "POST", uri: "/workflows.triggers.permissions.set", code: 200 })),
       ).annotate({
         identifier: "SetTriggersPermissionsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

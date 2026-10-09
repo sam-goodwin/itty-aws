@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -77,12 +75,21 @@ export interface Tag {
   /** A time value of the tag. */
   timeValue?: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Tag>;
+
 export type TagList = Array<Tag>;
+const TagList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<TagList>;
+
 /** Request message for CreateOrUpdateTags. VerifyToken. */
 export interface CreateOrUpdateTagsRequest {
   /** Tags to be inserted or updated. */
   tags?: TagList;
 }
+const CreateOrUpdateTagsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateOrUpdateTagsRequest>;
+
 export interface CreateOrUpdateAppsTokensTagsRequest {
   /** Required. App whose tags are being manipulated. Format: apps/{package_name} */
   appPackage: string;
@@ -91,16 +98,26 @@ export interface CreateOrUpdateAppsTokensTagsRequest {
   /** Request body */
   body?: CreateOrUpdateTagsRequest;
 }
+const CreateOrUpdateAppsTokensTagsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateOrUpdateAppsTokensTagsRequest>;
+
 /** Response message for CreateOrUpdateTags. */
 export interface CreateOrUpdateTagsResponse {
   /** All requested tags are returned, including pre-existing ones. */
   tags?: TagList;
 }
+const CreateOrUpdateTagsResponse =
+  CreateOrUpdateTagsRequest as any as S.Schema<CreateOrUpdateTagsResponse>;
+
 /** Request message for VerifyToken. */
 export interface VerifyTokenRequest {
   /** Required. Persona represented by the token. Format: personas/{persona} */
   persona?: string;
 }
+const VerifyTokenRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<VerifyTokenRequest>;
+
 export interface VerifyAppsTokensRequest {
   /** Required. The token to be verified. Format: tokens/{token} */
   token: string;
@@ -109,8 +126,15 @@ export interface VerifyAppsTokensRequest {
   /** Request body */
   body?: VerifyTokenRequest;
 }
+const VerifyAppsTokensRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<VerifyAppsTokensRequest>;
+
 /** Response message for VerifyToken. */
 export interface VerifyTokenResponse {}
+const VerifyTokenResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<VerifyTokenResponse>;
+
 export type CreateOrUpdateAppsTokensTagsError =
   | NotFound
   | Forbidden
@@ -124,8 +148,8 @@ export const createOrUpdateAppsTokensTags: API.OperationMethod<
   CreateOrUpdateAppsTokensTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateOrUpdateAppsTokensTagsRequest>,
-  output: __S(2) as any as S.Schema<CreateOrUpdateTagsResponse>,
+  input: CreateOrUpdateAppsTokensTagsRequest,
+  output: CreateOrUpdateTagsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -139,8 +163,8 @@ export const verifyAppsTokens: API.OperationMethod<
   VerifyAppsTokensError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<VerifyAppsTokensRequest>,
-  output: __S(6) as any as S.Schema<VerifyTokenResponse>,
+  input: VerifyAppsTokensRequest,
+  output: VerifyTokenResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -160,11 +184,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Tag" });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(Tag);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(1)),
+          tags: S.optional(TagList),
         }),
       ).annotate({
         identifier: "CreateOrUpdateTagsRequest",
@@ -174,7 +198,7 @@ function __c0(j: number): any {
         S.Struct({
           appPackage: S.String.pipe(T.Label()),
           token: S.String.pipe(T.Label()),
-          body: S.optional(__S(2).pipe(T.HttpBody())),
+          body: S.optional(CreateOrUpdateTagsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -196,7 +220,7 @@ function __c0(j: number): any {
         S.Struct({
           token: S.String.pipe(T.Label()),
           appPackage: S.String.pipe(T.Label()),
-          body: S.optional(__S(4).pipe(T.HttpBody())),
+          body: S.optional(VerifyTokenRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -209,16 +233,5 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "VerifyTokenResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

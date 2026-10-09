@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -57,7 +55,17 @@ export interface BuyDomainsRequestDomainsItem {
   /** The language code for the domain. For punycode domains, this must be provided. The list of supported language codes for a TLD can be retrieved from the [Get TLD](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-tld) endpoint. */
   languageCode?: string;
 }
+const BuyDomainsRequestDomainsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<BuyDomainsRequestDomainsItem>;
+
 export type BuyDomainsRequestDomainsList = Array<BuyDomainsRequestDomainsItem>;
+const BuyDomainsRequestDomainsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BuyDomainsRequestDomainsList>;
+
 /** The contact information for the domain. Some TLDs require additional contact information. Use the [Get contact info schema](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-contact-info-schema) endpoint to retrieve the required fields. */
 export interface BuyDomainsRequestContactInformation {
   firstName: string;
@@ -74,24 +82,45 @@ export interface BuyDomainsRequestContactInformation {
   fax?: string;
   additional?: unknown;
 }
+const BuyDomainsRequestContactInformation = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<BuyDomainsRequestContactInformation>;
+
 export interface BuyDomainsRequest {
   teamId?: string;
   domains: BuyDomainsRequestDomainsList;
   /** The contact information for the domain. Some TLDs require additional contact information. Use the [Get contact info schema](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-contact-info-schema) endpoint to retrieve the required fields. */
   contactInformation: BuyDomainsRequestContactInformation;
 }
+const BuyDomainsRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<BuyDomainsRequest>;
+
 export type BuyDomainsResponseLinksValueMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
+const BuyDomainsResponseLinksValueMethod = S.String;
+
 export interface BuyDomainsResponseLinksValue {
   href: string;
   method: BuyDomainsResponseLinksValueMethod;
 }
+const BuyDomainsResponseLinksValue = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<BuyDomainsResponseLinksValue>;
+
 export type BuyDomainsResponseLinksMap = {
   [key: string]: BuyDomainsResponseLinksValue | undefined;
 };
+const BuyDomainsResponseLinksMap = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<BuyDomainsResponseLinksMap>;
+
 export interface BuyDomainsResponse {
   orderId: string;
   _links: BuyDomainsResponseLinksMap;
 }
+const BuyDomainsResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<BuyDomainsResponse>;
+
 /** The contact information for the domain. Some TLDs require additional contact information. Use the [Get contact info schema](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-contact-info-schema) endpoint to retrieve the required fields. */
 export type BuySingleDomainRequestContactInformation = BuyDomainsRequestContactInformation;
 export interface BuySingleDomainRequest {
@@ -107,6 +136,11 @@ export interface BuySingleDomainRequest {
   /** The language code for the domain. For punycode domains, this must be provided. The list of supported language codes for a TLD can be retrieved from the [Get TLD](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-tld) endpoint. */
   languageCode?: string;
 }
+const BuySingleDomainRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<BuySingleDomainRequest>;
+
 export type BuySingleDomainResponseLinksValueMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
 export interface BuySingleDomainResponseLinksValue {
   href: string;
@@ -119,23 +153,53 @@ export interface BuySingleDomainResponse {
   orderId: string;
   _links: BuySingleDomainResponseLinksMap;
 }
+const BuySingleDomainResponse = BuyDomainsResponse as any as S.Schema<BuySingleDomainResponse>;
+
 /** an array of at most 50 item(s) */
 export type GetBulkAvailabilityRequestDomainsList = Array<string>;
+const GetBulkAvailabilityRequestDomainsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetBulkAvailabilityRequestDomainsList>;
+
 export interface GetBulkAvailabilityRequest {
   teamId?: string;
   /** an array of at most 50 item(s) */
   domains: GetBulkAvailabilityRequestDomainsList;
 }
+const GetBulkAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetBulkAvailabilityRequest>;
+
 export interface GetBulkAvailabilityResponseResultsItem {
   domain: string;
   available: boolean;
 }
+const GetBulkAvailabilityResponseResultsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetBulkAvailabilityResponseResultsItem>;
+
 export type GetBulkAvailabilityResponseResultsList = Array<GetBulkAvailabilityResponseResultsItem>;
+const GetBulkAvailabilityResponseResultsList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetBulkAvailabilityResponseResultsList>;
+
 export interface GetBulkAvailabilityResponse {
   results: GetBulkAvailabilityResponseResultsList;
 }
+const GetBulkAvailabilityResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetBulkAvailabilityResponse>;
+
 /** an array of at most 50 item(s) */
 export type GetBulkPriceRequestDomainsList = Array<string>;
+const GetBulkPriceRequestDomainsList =
+  GetBulkAvailabilityRequestDomainsList as any as S.Schema<GetBulkPriceRequestDomainsList>;
+
 export interface GetBulkPriceRequest {
   teamId?: string;
   /** an array of at most 50 item(s) */
@@ -143,9 +207,20 @@ export interface GetBulkPriceRequest {
   /** The number of years to get the price for. If not provided, the minimum number of years for the TLD will be used. */
   years?: number;
 }
+const GetBulkPriceRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetBulkPriceRequest>;
+
 export type GetBulkPriceResponseResultsItemPurchasePrice = number | string;
+const GetBulkPriceResponseResultsItemPurchasePrice =
+  S.Unknown as any as S.Schema<GetBulkPriceResponseResultsItemPurchasePrice>;
+
 export type GetBulkPriceResponseResultsItemRenewalPrice = number | string;
+const GetBulkPriceResponseResultsItemRenewalPrice =
+  S.Unknown as any as S.Schema<GetBulkPriceResponseResultsItemRenewalPrice>;
+
 export type GetBulkPriceResponseResultsItemTransferPrice = number | string;
+const GetBulkPriceResponseResultsItemTransferPrice =
+  S.Unknown as any as S.Schema<GetBulkPriceResponseResultsItemTransferPrice>;
+
 export interface GetBulkPriceResponseResultsItem {
   domain: string;
   years: number;
@@ -153,33 +228,80 @@ export interface GetBulkPriceResponseResultsItem {
   renewalPrice: GetBulkPriceResponseResultsItemRenewalPrice;
   transferPrice: GetBulkPriceResponseResultsItemTransferPrice;
 }
+const GetBulkPriceResponseResultsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetBulkPriceResponseResultsItem>;
+
 export type GetBulkPriceResponseResultsList = Array<GetBulkPriceResponseResultsItem>;
+const GetBulkPriceResponseResultsList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetBulkPriceResponseResultsList>;
+
 export interface GetBulkPriceResponse {
   results: GetBulkPriceResponseResultsList;
 }
+const GetBulkPriceResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetBulkPriceResponse>;
+
 export interface GetContactInfoSchemaRequest {
   domain: string;
   teamId?: string;
 }
+const GetContactInfoSchemaRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetContactInfoSchemaRequest>;
+
 export type GetContactInfoSchemaResponse = unknown;
+const GetContactInfoSchemaResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetContactInfoSchemaResponse>;
+
 export interface GetDomainAuthCodeRequest {
   domain: string;
   teamId?: string;
 }
+const GetDomainAuthCodeRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetDomainAuthCodeRequest>;
+
 export interface GetDomainAuthCodeResponse {
   authCode: string;
 }
+const GetDomainAuthCodeResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetDomainAuthCodeResponse>;
+
 export interface GetDomainAvailabilityRequest {
   domain: string;
   teamId?: string;
 }
+const GetDomainAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetDomainAvailabilityRequest>;
+
 export interface GetDomainAvailabilityResponse {
   available: boolean;
 }
+const GetDomainAvailabilityResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetDomainAvailabilityResponse>;
+
 export interface GetDomainContactVerificationRequest {
   domain: string;
   teamId?: string;
 }
+const GetDomainContactVerificationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetDomainContactVerificationRequest>;
+
 /** The registrant contact has been verified. */
 export interface ContactVerified {
   verified: boolean;
@@ -191,26 +313,58 @@ export interface ContactPendingVerification {
   email: string;
 }
 export type GetDomainContactVerificationResponseBody = ContactVerified | ContactPendingVerification;
+const GetDomainContactVerificationResponseBody =
+  S.Unknown as any as S.Schema<GetDomainContactVerificationResponseBody>;
+
 export type GetDomainContactVerificationResponse = GetDomainContactVerificationResponseBody;
+const GetDomainContactVerificationResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetDomainContactVerificationResponse>;
+
 export interface GetDomainPriceRequest {
   domain: string;
   /** The number of years to get the price for. If not provided, the minimum number of years for the TLD will be used. */
   years?: string;
   teamId?: string;
 }
+const GetDomainPriceRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetDomainPriceRequest>;
+
 export type GetDomainPriceResponsePurchasePrice = number | string;
+const GetDomainPriceResponsePurchasePrice =
+  S.Unknown as any as S.Schema<GetDomainPriceResponsePurchasePrice>;
+
 export type GetDomainPriceResponseRenewalPrice = number | string;
+const GetDomainPriceResponseRenewalPrice =
+  S.Unknown as any as S.Schema<GetDomainPriceResponseRenewalPrice>;
+
 export type GetDomainPriceResponseTransferPrice = number | string;
+const GetDomainPriceResponseTransferPrice =
+  S.Unknown as any as S.Schema<GetDomainPriceResponseTransferPrice>;
+
 export interface GetDomainPriceResponse {
   years: number;
   purchasePrice: GetDomainPriceResponsePurchasePrice;
   renewalPrice: GetDomainPriceResponseRenewalPrice;
   transferPrice: GetDomainPriceResponseTransferPrice;
 }
+const GetDomainPriceResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetDomainPriceResponse>;
+
 export interface GetDomainTransferInRequest {
   domain: string;
   teamId?: string;
 }
+const GetDomainTransferInRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetDomainTransferInRequest>;
+
 export type GetDomainTransferInResponseStatus =
   | "canceled"
   | "canceled_pending_refund"
@@ -225,13 +379,22 @@ export type GetDomainTransferInResponseStatus =
   | "pending_registry_unlock"
   | "rejected"
   | "submitting_transfer";
+const GetDomainTransferInResponseStatus = S.String;
+
 export interface GetDomainTransferInResponse {
   status: GetDomainTransferInResponseStatus;
 }
+const GetDomainTransferInResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetDomainTransferInResponse>;
+
 export interface GetOrderRequest {
   orderId: string;
   teamId?: string;
 }
+const GetOrderRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetOrderRequest>;
+
 export type GetOrderResponseDomainsItemCase0PurchaseType = "purchase";
 export type GetOrderResponseDomainsItemCase0Status =
   | "pending"
@@ -534,8 +697,17 @@ export type GetOrderResponseDomainsItem =
   | GetOrderResponseDomainsItemCase0
   | GetOrderResponseDomainsItemCase1
   | GetOrderResponseDomainsItemCase2;
+const GetOrderResponseDomainsItem = S.Unknown as any as S.Schema<GetOrderResponseDomainsItem>;
+
 export type GetOrderResponseDomainsList = Array<GetOrderResponseDomainsItem>;
+const GetOrderResponseDomainsList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetOrderResponseDomainsList>;
+
 export type GetOrderResponseStatus = "draft" | "purchasing" | "completed" | "failed";
+const GetOrderResponseStatus = S.String;
+
 export type GetOrderResponseErrorCase0Case0Code = "payment-failed";
 export interface GetOrderResponseErrorCase0Case0 {
   code: GetOrderResponseErrorCase0Case0Code;
@@ -592,37 +764,74 @@ export type GetOrderResponseErrorCase1 = GetOrderResponseDomainsItemCase0ErrorCa
 export type GetOrderResponseError =
   | GetOrderResponseErrorCase0
   | GetOrderResponseDomainsItemCase0ErrorCase1;
+const GetOrderResponseError = S.Unknown as any as S.Schema<GetOrderResponseError>;
+
 export interface GetOrderResponse {
   orderId: string;
   domains: GetOrderResponseDomainsList;
   status: GetOrderResponseStatus;
   error?: GetOrderResponseError;
 }
+const GetOrderResponse = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GetOrderResponse>;
+
 export interface GetSupportedTldsRequest {
   teamId?: string;
 }
+const GetSupportedTldsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetSupportedTldsRequest>;
+
 /** A list of the TLDs supported by Vercel. */
 export type GetSupportedTldsResponseBodyList = Array<string>;
+const GetSupportedTldsResponseBodyList =
+  GetBulkAvailabilityRequestDomainsList as any as S.Schema<GetSupportedTldsResponseBodyList>;
+
 export type GetSupportedTldsResponse = GetSupportedTldsResponseBodyList;
+const GetSupportedTldsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetSupportedTldsResponse>;
+
 export interface GetTldRequest {
   tld: string;
   teamId?: string;
 }
+const GetTldRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<GetTldRequest>;
+
 /** The language codes that are supported for the TLD. The key is the language code, and the value is the name of the language. */
 export type GetTldResponseSupportedLanguageCodesMap = { [key: string]: string | undefined };
+const GetTldResponseSupportedLanguageCodesMap = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetTldResponseSupportedLanguageCodesMap>;
+
 export interface GetTldResponse {
   /** The language codes that are supported for the TLD. The key is the language code, and the value is the name of the language. */
   supportedLanguageCodes: GetTldResponseSupportedLanguageCodesMap;
 }
+const GetTldResponse = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<GetTldResponse>;
+
 export interface GetTldPriceRequest {
   tld: string;
   /** The number of years to get the price for. If not provided, the minimum number of years for the TLD will be used. */
   years?: string;
   teamId?: string;
 }
+const GetTldPriceRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<GetTldPriceRequest>;
+
 export type GetTldPriceResponsePurchasePrice = number | string;
+const GetTldPriceResponsePurchasePrice =
+  S.Unknown as any as S.Schema<GetTldPriceResponsePurchasePrice>;
+
 export type GetTldPriceResponseRenewalPrice = number | string;
+const GetTldPriceResponseRenewalPrice =
+  S.Unknown as any as S.Schema<GetTldPriceResponseRenewalPrice>;
+
 export type GetTldPriceResponseTransferPrice = number | string;
+const GetTldPriceResponseTransferPrice =
+  S.Unknown as any as S.Schema<GetTldPriceResponseTransferPrice>;
+
 export interface GetTldPriceResponse {
   /** The number of years the returned price is for. */
   years: number;
@@ -630,6 +839,8 @@ export interface GetTldPriceResponse {
   renewalPrice: GetTldPriceResponseRenewalPrice;
   transferPrice: GetTldPriceResponseTransferPrice;
 }
+const GetTldPriceResponse = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<GetTldPriceResponse>;
+
 export interface RenewDomainRequestContactInformation {
   firstName: string;
   lastName: string;
@@ -644,6 +855,11 @@ export interface RenewDomainRequestContactInformation {
   companyName?: string;
   fax?: string;
 }
+const RenewDomainRequestContactInformation = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<RenewDomainRequestContactInformation>;
+
 export interface RenewDomainRequest {
   domain: string;
   teamId?: string;
@@ -652,6 +868,8 @@ export interface RenewDomainRequest {
   expectedPrice: number;
   contactInformation?: RenewDomainRequestContactInformation;
 }
+const RenewDomainRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<RenewDomainRequest>;
+
 export type RenewDomainResponseLinksValueMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
 export interface RenewDomainResponseLinksValue {
   href: string;
@@ -664,13 +882,20 @@ export interface RenewDomainResponse {
   orderId: string;
   _links: RenewDomainResponseLinksMap;
 }
+const RenewDomainResponse = BuyDomainsResponse as any as S.Schema<RenewDomainResponse>;
+
 /** an array of at most 200 item(s) */
 export type SearchDomainsRequestDomainsList = Array<string>;
+const SearchDomainsRequestDomainsList =
+  GetBulkAvailabilityRequestDomainsList as any as S.Schema<SearchDomainsRequestDomainsList>;
+
 export interface SearchDomainsRequest {
   teamId?: string;
   /** an array of at most 200 item(s) */
   domains: SearchDomainsRequestDomainsList;
 }
+const SearchDomainsRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<SearchDomainsRequest>;
+
 export interface SearchDomainsResponseResultsItemCase0 {
   domain: string;
   /** `false` means the domain is unavailable or its availability could not be confirmed. */
@@ -687,10 +912,23 @@ export interface SearchDomainsResponseResultsItemCase1 {
 export type SearchDomainsResponseResultsItem =
   | SearchDomainsResponseResultsItemCase0
   | SearchDomainsResponseResultsItemCase1;
+const SearchDomainsResponseResultsItem =
+  S.Unknown as any as S.Schema<SearchDomainsResponseResultsItem>;
+
 export type SearchDomainsResponseResultsList = Array<SearchDomainsResponseResultsItem>;
+const SearchDomainsResponseResultsList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<SearchDomainsResponseResultsList>;
+
 export interface SearchDomainsResponse {
   results: SearchDomainsResponseResultsList;
 }
+const SearchDomainsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<SearchDomainsResponse>;
+
 export type TransferInDomainRequestContactInformation = RenewDomainRequestContactInformation;
 export interface TransferInDomainRequest {
   domain: string;
@@ -704,6 +942,11 @@ export interface TransferInDomainRequest {
   expectedPrice: number;
   contactInformation: RenewDomainRequestContactInformation;
 }
+const TransferInDomainRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<TransferInDomainRequest>;
+
 export type TransferInDomainResponseLinksValueMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
 export interface TransferInDomainResponseLinksValue {
   href: string;
@@ -716,19 +959,44 @@ export interface TransferInDomainResponse {
   orderId: string;
   _links: TransferInDomainResponseLinksMap;
 }
+const TransferInDomainResponse = BuyDomainsResponse as any as S.Schema<TransferInDomainResponse>;
+
 export interface UpdateDomainAutoRenewRequest {
   domain: string;
   teamId?: string;
   autoRenew: boolean;
 }
+const UpdateDomainAutoRenewRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<UpdateDomainAutoRenewRequest>;
+
 export interface UpdateDomainAutoRenewResponse {}
+const UpdateDomainAutoRenewResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<UpdateDomainAutoRenewResponse>;
+
 export type UpdateDomainNameserversRequestNameserversList = Array<string>;
+const UpdateDomainNameserversRequestNameserversList =
+  GetBulkAvailabilityRequestDomainsList as any as S.Schema<UpdateDomainNameserversRequestNameserversList>;
+
 export interface UpdateDomainNameserversRequest {
   domain: string;
   teamId?: string;
   nameservers: UpdateDomainNameserversRequestNameserversList;
 }
+const UpdateDomainNameserversRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<UpdateDomainNameserversRequest>;
+
 export interface UpdateDomainNameserversResponse {}
+const UpdateDomainNameserversResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<UpdateDomainNameserversResponse>;
+
 export type BuyDomainsError = BadRequest | Forbidden | VercelOpError;
 /** Buy multiple domains Buy multiple domains at once */
 export const buyDomains: API.OperationMethod<
@@ -737,8 +1005,8 @@ export const buyDomains: API.OperationMethod<
   BuyDomainsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<BuyDomainsRequest>,
-  output: __S(6) as any as S.Schema<BuyDomainsResponse>,
+  input: BuyDomainsRequest,
+  output: BuyDomainsResponse,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -752,8 +1020,8 @@ export const buySingleDomain: API.OperationMethod<
   BuySingleDomainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<BuySingleDomainRequest>,
-  output: __S(6) as any as S.Schema<BuySingleDomainResponse>,
+  input: BuySingleDomainRequest,
+  output: BuySingleDomainResponse,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -767,8 +1035,8 @@ export const getBulkAvailability: API.OperationMethod<
   GetBulkAvailabilityError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<GetBulkAvailabilityRequest>,
-  output: __S(12) as any as S.Schema<GetBulkAvailabilityResponse>,
+  input: GetBulkAvailabilityRequest,
+  output: GetBulkAvailabilityResponse,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -782,8 +1050,8 @@ export const getBulkPrice: API.OperationMethod<
   GetBulkPriceError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<GetBulkPriceRequest>,
-  output: __S(16) as any as S.Schema<GetBulkPriceResponse>,
+  input: GetBulkPriceRequest,
+  output: GetBulkPriceResponse,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -797,8 +1065,8 @@ export const getContactInfoSchema: API.OperationMethod<
   GetContactInfoSchemaError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<GetContactInfoSchemaRequest>,
-  output: __S(18) as any as S.Schema<GetContactInfoSchemaResponse>,
+  input: GetContactInfoSchemaRequest,
+  output: GetContactInfoSchemaResponse,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -812,8 +1080,8 @@ export const getDomainAuthCode: API.OperationMethod<
   GetDomainAuthCodeError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetDomainAuthCodeRequest>,
-  output: __S(20) as any as S.Schema<GetDomainAuthCodeResponse>,
+  input: GetDomainAuthCodeRequest,
+  output: GetDomainAuthCodeResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -827,8 +1095,8 @@ export const getDomainAvailability: API.OperationMethod<
   GetDomainAvailabilityError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetDomainAvailabilityRequest>,
-  output: __S(22) as any as S.Schema<GetDomainAvailabilityResponse>,
+  input: GetDomainAvailabilityRequest,
+  output: GetDomainAvailabilityResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -842,8 +1110,8 @@ export const getDomainContactVerification: API.OperationMethod<
   GetDomainContactVerificationError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<GetDomainContactVerificationRequest>,
-  output: __S(24) as any as S.Schema<GetDomainContactVerificationResponse>,
+  input: GetDomainContactVerificationRequest,
+  output: GetDomainContactVerificationResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -857,8 +1125,8 @@ export const getDomainPrice: API.OperationMethod<
   GetDomainPriceError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<GetDomainPriceRequest>,
-  output: __S(26) as any as S.Schema<GetDomainPriceResponse>,
+  input: GetDomainPriceRequest,
+  output: GetDomainPriceResponse,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -872,8 +1140,8 @@ export const getDomainTransferIn: API.OperationMethod<
   GetDomainTransferInError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<GetDomainTransferInRequest>,
-  output: __S(28) as any as S.Schema<GetDomainTransferInResponse>,
+  input: GetDomainTransferInRequest,
+  output: GetDomainTransferInResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -887,8 +1155,8 @@ export const getOrder: API.OperationMethod<
   GetOrderError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<GetOrderRequest>,
-  output: __S(31) as any as S.Schema<GetOrderResponse>,
+  input: GetOrderRequest,
+  output: GetOrderResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -902,8 +1170,8 @@ export const getSupportedTlds: API.OperationMethod<
   GetSupportedTldsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<GetSupportedTldsRequest>,
-  output: __S(33) as any as S.Schema<GetSupportedTldsResponse>,
+  input: GetSupportedTldsRequest,
+  output: GetSupportedTldsResponse,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -917,8 +1185,8 @@ export const getTld: API.OperationMethod<
   GetTldError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<GetTldRequest>,
-  output: __S(36) as any as S.Schema<GetTldResponse>,
+  input: GetTldRequest,
+  output: GetTldResponse,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -932,8 +1200,8 @@ export const getTldPrice: API.OperationMethod<
   GetTldPriceError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<GetTldPriceRequest>,
-  output: __S(38) as any as S.Schema<GetTldPriceResponse>,
+  input: GetTldPriceRequest,
+  output: GetTldPriceResponse,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -947,8 +1215,8 @@ export const renewDomain: API.OperationMethod<
   RenewDomainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<RenewDomainRequest>,
-  output: __S(6) as any as S.Schema<RenewDomainResponse>,
+  input: RenewDomainRequest,
+  output: RenewDomainResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -962,8 +1230,8 @@ export const searchDomains: API.OperationMethod<
   SearchDomainsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<SearchDomainsRequest>,
-  output: __S(43) as any as S.Schema<SearchDomainsResponse>,
+  input: SearchDomainsRequest,
+  output: SearchDomainsResponse,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -977,8 +1245,8 @@ export const transferInDomain: API.OperationMethod<
   TransferInDomainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<TransferInDomainRequest>,
-  output: __S(6) as any as S.Schema<TransferInDomainResponse>,
+  input: TransferInDomainRequest,
+  output: TransferInDomainResponse,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -992,8 +1260,8 @@ export const updateDomainAutoRenew: API.OperationMethod<
   UpdateDomainAutoRenewError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<UpdateDomainAutoRenewRequest>,
-  output: __S(46) as any as S.Schema<UpdateDomainAutoRenewResponse>,
+  input: UpdateDomainAutoRenewRequest,
+  output: UpdateDomainAutoRenewResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1007,8 +1275,8 @@ export const updateDomainNameservers: API.OperationMethod<
   UpdateDomainNameserversError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<UpdateDomainNameserversRequest>,
-  output: __S(48) as any as S.Schema<UpdateDomainNameserversResponse>,
+  input: UpdateDomainNameserversRequest,
+  output: UpdateDomainNameserversResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1030,7 +1298,7 @@ function __c0(j: number): any {
         identifier: "BuyDomainsRequestDomainsItem",
       });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(BuyDomainsRequestDomainsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1055,26 +1323,26 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
-          domains: __S(1),
-          contactInformation: __S(2),
+          domains: BuyDomainsRequestDomainsList,
+          contactInformation: BuyDomainsRequestContactInformation,
         }).pipe(T.Http({ method: "POST", uri: "/v1/registrar/domains/buy", code: 200 })),
       ).annotate({ identifier: "BuyDomainsRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
-          method: S.String,
+          method: BuyDomainsResponseLinksValueMethod,
         }),
       ).annotate({
         identifier: "BuyDomainsResponseLinksValue",
       });
     case 5:
-      return S.Record(S.String, __S(4));
+      return S.Record(S.String, BuyDomainsResponseLinksValue);
     case 6:
       return S.suspend(() =>
         S.Struct({
           orderId: S.String,
-          _links: __S(5),
+          _links: BuyDomainsResponseLinksMap,
         }),
       ).annotate({ identifier: "BuyDomainsResponse" });
     case 7:
@@ -1085,7 +1353,7 @@ function __c0(j: number): any {
           autoRenew: S.Boolean,
           years: S.Number,
           expectedPrice: S.Number,
-          contactInformation: __S(2),
+          contactInformation: BuyDomainsRequestContactInformation,
           languageCode: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v1/registrar/domains/{domain}/buy", code: 200 })),
       ).annotate({ identifier: "BuySingleDomainRequest" });
@@ -1099,7 +1367,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
-          domains: __S(8),
+          domains: GetBulkAvailabilityRequestDomainsList,
         }).pipe(T.Http({ method: "POST", uri: "/v1/registrar/domains/availability", code: 200 })),
       ).annotate({
         identifier: "GetBulkAvailabilityRequest",
@@ -1114,11 +1382,11 @@ function __c1(j: number): any {
         identifier: "GetBulkAvailabilityResponseResultsItem",
       });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(GetBulkAvailabilityResponseResultsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          results: __S(11),
+          results: GetBulkAvailabilityResponseResultsList,
         }),
       ).annotate({
         identifier: "GetBulkAvailabilityResponse",
@@ -1127,7 +1395,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
-          domains: __S(8),
+          domains: GetBulkPriceRequestDomainsList,
           years: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/v1/registrar/domains/price", code: 200 })),
       ).annotate({ identifier: "GetBulkPriceRequest" });
@@ -1136,15 +1404,15 @@ function __c1(j: number): any {
         S.Struct({
           domain: S.String,
           years: S.Number,
-          purchasePrice: S.Unknown,
-          renewalPrice: S.Unknown,
-          transferPrice: S.Unknown,
+          purchasePrice: GetBulkPriceResponseResultsItemPurchasePrice,
+          renewalPrice: GetBulkPriceResponseResultsItemRenewalPrice,
+          transferPrice: GetBulkPriceResponseResultsItemTransferPrice,
         }),
       ).annotate({
         identifier: "GetBulkPriceResponseResultsItem",
       });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(GetBulkPriceResponseResultsItem);
   }
 }
 function __c2(j: number): any {
@@ -1152,7 +1420,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          results: __S(15),
+          results: GetBulkPriceResponseResultsList,
         }),
       ).annotate({ identifier: "GetBulkPriceResponse" });
     case 1:
@@ -1230,7 +1498,9 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetDomainContactVerificationResponseBody.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetDomainContactVerificationResponse",
       });
     case 1:
@@ -1245,9 +1515,9 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           years: S.Number,
-          purchasePrice: S.Unknown,
-          renewalPrice: S.Unknown,
-          transferPrice: S.Unknown,
+          purchasePrice: GetDomainPriceResponsePurchasePrice,
+          renewalPrice: GetDomainPriceResponseRenewalPrice,
+          transferPrice: GetDomainPriceResponseTransferPrice,
         }),
       ).annotate({ identifier: "GetDomainPriceResponse" });
     case 3:
@@ -1264,7 +1534,7 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.String,
+          status: GetDomainTransferInResponseStatus,
         }),
       ).annotate({
         identifier: "GetDomainTransferInResponse",
@@ -1277,14 +1547,14 @@ function __c3(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/registrar/orders/{orderId}", code: 200 })),
       ).annotate({ identifier: "GetOrderRequest" });
     case 6:
-      return S.Array(S.Unknown);
+      return S.Array(GetOrderResponseDomainsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           orderId: S.String,
-          domains: __S(30),
-          status: S.String,
-          error: S.optional(S.Unknown),
+          domains: GetOrderResponseDomainsList,
+          status: GetOrderResponseStatus,
+          error: S.optional(GetOrderResponseError),
         }),
       ).annotate({ identifier: "GetOrderResponse" });
   }
@@ -1298,7 +1568,7 @@ function __c4(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/registrar/tlds/supported", code: 200 })),
       ).annotate({ identifier: "GetSupportedTldsRequest" });
     case 1:
-      return S.suspend(() => __S(8).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetSupportedTldsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetSupportedTldsResponse",
       });
     case 2:
@@ -1313,7 +1583,7 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          supportedLanguageCodes: __S(35),
+          supportedLanguageCodes: GetTldResponseSupportedLanguageCodesMap,
         }),
       ).annotate({ identifier: "GetTldResponse" });
     case 5:
@@ -1328,9 +1598,9 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           years: S.Number,
-          purchasePrice: S.Unknown,
-          renewalPrice: S.Unknown,
-          transferPrice: S.Unknown,
+          purchasePrice: GetTldPriceResponsePurchasePrice,
+          renewalPrice: GetTldPriceResponseRenewalPrice,
+          transferPrice: GetTldPriceResponseTransferPrice,
         }),
       ).annotate({ identifier: "GetTldPriceResponse" });
     case 7:
@@ -1363,22 +1633,22 @@ function __c5(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           years: S.Number,
           expectedPrice: S.Number,
-          contactInformation: S.optional(__S(39)),
+          contactInformation: S.optional(RenewDomainRequestContactInformation),
         }).pipe(T.Http({ method: "POST", uri: "/v1/registrar/domains/{domain}/renew", code: 200 })),
       ).annotate({ identifier: "RenewDomainRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
-          domains: __S(8),
+          domains: SearchDomainsRequestDomainsList,
         }).pipe(T.Http({ method: "POST", uri: "/v1/registrar/domains/search", code: 200 })),
       ).annotate({ identifier: "SearchDomainsRequest" });
     case 2:
-      return S.Array(S.Unknown);
+      return S.Array(SearchDomainsResponseResultsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(42),
+          results: SearchDomainsResponseResultsList,
         }),
       ).annotate({ identifier: "SearchDomainsResponse" });
     case 4:
@@ -1390,7 +1660,7 @@ function __c5(j: number): any {
           autoRenew: S.Boolean,
           years: S.Number,
           expectedPrice: S.Number,
-          contactInformation: __S(39),
+          contactInformation: RenewDomainRequestContactInformation,
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/registrar/domains/{domain}/transfer", code: 200 }),
         ),
@@ -1416,7 +1686,7 @@ function __c5(j: number): any {
         S.Struct({
           domain: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
-          nameservers: __S(8),
+          nameservers: UpdateDomainNameserversRequestNameserversList,
         }).pipe(
           T.Http({ method: "PATCH", uri: "/v1/registrar/domains/{domain}/nameservers", code: 200 }),
         ),
@@ -1431,28 +1701,5 @@ function __c6(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "UpdateDomainNameserversResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

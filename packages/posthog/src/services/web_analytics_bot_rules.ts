@@ -5,8 +5,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -20,8 +18,18 @@ export interface WebAnalyticsBotCondition {
   /** Value matched against the property named by `key`. For 'cidr' this is a network range like 192.0.2.0/24. */
   pattern: string;
 }
+const WebAnalyticsBotCondition = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<WebAnalyticsBotCondition>;
+
 /** The conditions of this rule. Each one reads a single event property. */
 export type CreateWebAnalyticsBotRuleRequestItemsList = Array<WebAnalyticsBotCondition>;
+const CreateWebAnalyticsBotRuleRequestItemsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateWebAnalyticsBotRuleRequestItemsList>;
+
 export interface CreateWebAnalyticsBotRuleRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -34,8 +42,16 @@ export interface CreateWebAnalyticsBotRuleRequest {
   /** The conditions of this rule. Each one reads a single event property. */
   items: CreateWebAnalyticsBotRuleRequestItemsList;
 }
+const CreateWebAnalyticsBotRuleRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateWebAnalyticsBotRuleRequest>;
+
 /** The conditions of this rule. Each one reads a single event property. */
 export type WebAnalyticsBotRuleItemsList = Array<WebAnalyticsBotCondition>;
+const WebAnalyticsBotRuleItemsList =
+  CreateWebAnalyticsBotRuleRequestItemsList as any as S.Schema<WebAnalyticsBotRuleItemsList>;
+
 export interface WebAnalyticsBotRule {
   /** Stable id for the rule. Pass it to the delete endpoint. */
   id: string;
@@ -48,18 +64,45 @@ export interface WebAnalyticsBotRule {
   /** The conditions of this rule. Each one reads a single event property. */
   items: WebAnalyticsBotRuleItemsList;
 }
+const WebAnalyticsBotRule = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<WebAnalyticsBotRule>;
+
 export interface ListWebAnalyticsBotRulesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const ListWebAnalyticsBotRulesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ListWebAnalyticsBotRulesRequest>;
+
 export type ListWebAnalyticsBotRulesResponseBodyList = Array<WebAnalyticsBotRule>;
+const ListWebAnalyticsBotRulesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListWebAnalyticsBotRulesResponseBodyList>;
+
 export type ListWebAnalyticsBotRulesResponse = ListWebAnalyticsBotRulesResponseBodyList;
+const ListWebAnalyticsBotRulesResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListWebAnalyticsBotRulesResponse>;
+
 export interface WebAnalyticsBotRulesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const WebAnalyticsBotRulesDestroyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<WebAnalyticsBotRulesDestroyRequest>;
+
 export interface WebAnalyticsBotRulesDestroyResponse {}
+const WebAnalyticsBotRulesDestroyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<WebAnalyticsBotRulesDestroyResponse>;
+
 export type CreateWebAnalyticsBotRuleError = PosthogOpError;
 /** Create a custom bot rule Add one bot rule to the project. A rule combines one or more single-property conditions with AND or OR. A pattern is rejected if it cannot run, because a broken rule would break every query that classifies traffic for the project. */
 export const createWebAnalyticsBotRule: API.OperationMethod<
@@ -68,8 +111,8 @@ export const createWebAnalyticsBotRule: API.OperationMethod<
   CreateWebAnalyticsBotRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateWebAnalyticsBotRuleRequest>,
-  output: __S(3) as any as S.Schema<WebAnalyticsBotRule>,
+  input: CreateWebAnalyticsBotRuleRequest,
+  output: WebAnalyticsBotRule,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -83,8 +126,8 @@ export const listWebAnalyticsBotRules: API.OperationMethod<
   ListWebAnalyticsBotRulesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<ListWebAnalyticsBotRulesRequest>,
-  output: __S(6) as any as S.Schema<ListWebAnalyticsBotRulesResponse>,
+  input: ListWebAnalyticsBotRulesRequest,
+  output: ListWebAnalyticsBotRulesResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -98,8 +141,8 @@ export const webAnalyticsBotRulesDestroy: API.OperationMethod<
   WebAnalyticsBotRulesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<WebAnalyticsBotRulesDestroyRequest>,
-  output: __S(8) as any as S.Schema<WebAnalyticsBotRulesDestroyResponse>,
+  input: WebAnalyticsBotRulesDestroyRequest,
+  output: WebAnalyticsBotRulesDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -118,7 +161,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "WebAnalyticsBotCondition" });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(WebAnalyticsBotCondition);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -126,7 +169,7 @@ function __c0(j: number): any {
           name: S.String,
           category: S.optional(S.String),
           combiner: S.optional(S.String),
-          items: __S(1),
+          items: CreateWebAnalyticsBotRuleRequestItemsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -144,7 +187,7 @@ function __c0(j: number): any {
           name: S.String,
           category: S.optional(S.String),
           combiner: S.optional(S.String),
-          items: __S(1),
+          items: WebAnalyticsBotRuleItemsList,
         }),
       ).annotate({ identifier: "WebAnalyticsBotRule" });
     case 4:
@@ -162,9 +205,11 @@ function __c0(j: number): any {
         identifier: "ListWebAnalyticsBotRulesRequest",
       });
     case 5:
-      return S.Array(__S(3));
+      return S.Array(WebAnalyticsBotRule);
     case 6:
-      return S.suspend(() => __S(5).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListWebAnalyticsBotRulesResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListWebAnalyticsBotRulesResponse",
       });
     case 7:
@@ -190,18 +235,5 @@ function __c1(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "WebAnalyticsBotRulesDestroyResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

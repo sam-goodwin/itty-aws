@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -68,14 +66,22 @@ export interface CancelTaskRequest {
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
   tenant?: string;
 }
+const CancelTaskRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CancelTaskRequest>;
+
 export interface CancelTasksRequest {
   /** The resource name of the task to cancel. Format: tasks/{task_id} */
   name: string;
   /** Request body */
   body?: CancelTaskRequest;
 }
+const CancelTasksRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CancelTasksRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DocumentMap>;
+
 export type StringList_ = Array<string>;
+const StringList_ = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<StringList_>;
+
 /** FilePart represents the different ways files can be provided. If files are small, directly feeding the bytes is supported via file_with_bytes. If the file is large, the agent should read the content as appropriate directly from the file_with_uri source. */
 export interface FilePart {
   mimeType?: string;
@@ -83,10 +89,14 @@ export interface FilePart {
   name?: string;
   fileWithBytes?: string;
 }
+const FilePart = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<FilePart>;
+
 /** DataPart represents a structured blob. This is most commonly a JSON payload. */
 export interface DataPart {
   data?: DocumentMap;
 }
+const DataPart = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DataPart>;
+
 /** Part represents a container for a section of communication content. Parts can be purely textual, some sort of file (image, video, etc) or a structured data blob (i.e. JSON). */
 export interface Part {
   text?: string;
@@ -95,8 +105,14 @@ export interface Part {
   metadata?: DocumentMap;
   data?: DataPart;
 }
+const Part = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Part>;
+
 export type PartList = Array<Part>;
+const PartList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<PartList>;
+
 export type MessageRoleEnum = "ROLE_UNSPECIFIED" | "ROLE_USER" | "ROLE_AGENT";
+const MessageRoleEnum = S.String;
+
 /** Message is one unit of communication between client and server. It is associated with a context and optionally a task. Since the server is responsible for the context definition, it must always provide a context_id in its messages. The client can optionally provide the context_id if it knows the context to associate the message to. Similarly for task_id, except the server decides if a task is created and whether to include the task_id. */
 export interface Message {
   /** The task id of the message. This is optional and if set, the message will be associated with the given task. */
@@ -114,7 +130,11 @@ export interface Message {
   /** The unique identifier (e.g. UUID)of the message. This is required and created by the message creator. */
   messageId?: string;
 }
+const Message = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Message>;
+
 export type MessageList = Array<Message>;
+const MessageList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<MessageList>;
+
 export type TaskStatusStateEnum =
   | "TASK_STATE_UNSPECIFIED"
   | "TASK_STATE_SUBMITTED"
@@ -125,6 +145,8 @@ export type TaskStatusStateEnum =
   | "TASK_STATE_INPUT_REQUIRED"
   | "TASK_STATE_REJECTED"
   | "TASK_STATE_AUTH_REQUIRED";
+const TaskStatusStateEnum = S.String;
+
 /** A container for the status of a task */
 export interface TaskStatus {
   /** A message associated with the status. */
@@ -134,6 +156,8 @@ export interface TaskStatus {
   /** The current state of this task */
   state?: TaskStatusStateEnum;
 }
+const TaskStatus = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<TaskStatus>;
+
 /** Artifacts are the container for task completed results. These are similar to Messages but are intended to be the product of a task, as opposed to point-to-point communication. */
 export interface Artifact {
   /** The URIs of extensions that are present or contributed to this Artifact. */
@@ -149,7 +173,11 @@ export interface Artifact {
   /** Unique identifier (e.g. UUID) for the artifact. It must be at least unique within a task. */
   artifactId?: string;
 }
+const Artifact = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Artifact>;
+
 export type ArtifactList = Array<Artifact>;
+const ArtifactList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ArtifactList>;
+
 /** Task is the core unit of action for A2A. It has a current status and when results are created for the task they are stored in the artifact. If there are multiple turns for a task, these are stored in history. */
 export interface Task {
   /** protolint:enable REPEATED_FIELD_NAMES_PLURALIZED A key/value object to store custom metadata about a task. */
@@ -165,6 +193,8 @@ export interface Task {
   /** A set of output artifacts for a Task. */
   artifacts?: ArtifactList;
 }
+const Task = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Task>;
+
 /** A billing account in the [Google Cloud Console](https://console.cloud.google.com/). You can assign a billing account to one or more projects. */
 export interface BillingAccount {
   /** Optional. The currency in which the billing account is billed and charged, represented as an ISO 4217 code such as `USD`. Billing account currency is determined at the time of billing account creation and cannot be updated subsequently, so this field should not be set on update requests. In addition, a subaccount always matches the currency of its parent billing account, so this field should not be set on subaccount creation requests. Clients can read this field to determine the currency of an existing billing account. */
@@ -180,24 +210,41 @@ export interface BillingAccount {
   /** The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console. */
   displayName?: string;
 }
+const BillingAccount = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<BillingAccount>;
+
 export interface CreateBillingAccountsRequest {
   /** Optional. The parent to create a billing account from. Format: - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF` */
   parent?: string;
   /** Request body */
   body?: BillingAccount;
 }
+const CreateBillingAccountsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateBillingAccountsRequest>;
+
 export interface CreateBillingAccountsSubAccountsRequest {
   /** Optional. The parent to create a billing account from. Format: - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF` */
   parent: string;
   /** Request body */
   body?: BillingAccount;
 }
+const CreateBillingAccountsSubAccountsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateBillingAccountsSubAccountsRequest>;
+
 export interface CreateOrganizationsBillingAccountsRequest {
   /** Optional. The parent to create a billing account from. Format: - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF` */
   parent: string;
   /** Request body */
   body?: BillingAccount;
 }
+const CreateOrganizationsBillingAccountsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateOrganizationsBillingAccountsRequest>;
+
 /** Defines authentication details, used for push notifications. */
 export interface AuthenticationInfo {
   /** Supported authentication schemes - e.g. Basic, Bearer, etc */
@@ -205,6 +252,8 @@ export interface AuthenticationInfo {
   /** Optional credentials */
   credentials?: string;
 }
+const AuthenticationInfo = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<AuthenticationInfo>;
+
 /** Configuration for setting up push notifications for task updates. */
 export interface PushNotificationConfig {
   /** Token unique for this task/session */
@@ -216,12 +265,22 @@ export interface PushNotificationConfig {
   /** A unique identifier (e.g. UUID) for this push notification. */
   id?: string;
 }
+const PushNotificationConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<PushNotificationConfig>;
+
 export interface TaskPushNotificationConfig {
   /** The resource name of the config. Format: tasks/{task_id}/pushNotificationConfigs/{config_id} */
   name?: string;
   /** The push notification configuration details. */
   pushNotificationConfig?: PushNotificationConfig;
 }
+const TaskPushNotificationConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<TaskPushNotificationConfig>;
+
 export interface CreateTasksPushNotificationConfigsRequest {
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
   tenant?: string;
@@ -232,22 +291,44 @@ export interface CreateTasksPushNotificationConfigsRequest {
   /** Request body */
   body?: TaskPushNotificationConfig;
 }
+const CreateTasksPushNotificationConfigsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateTasksPushNotificationConfigsRequest>;
+
 export interface DeleteTasksPushNotificationConfigsRequest {
   /** The resource name of the config to delete. Format: tasks/{task_id}/pushNotificationConfigs/{config_id} */
   name: string;
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
   tenant?: string;
 }
+const DeleteTasksPushNotificationConfigsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DeleteTasksPushNotificationConfigsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Empty>;
+
 export interface GetBillingAccountsRequest {
   /** Required. The resource name of the billing account to retrieve. For example, `billingAccounts/012345-567890-ABCDEF`. */
   name: string;
 }
+const GetBillingAccountsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetBillingAccountsRequest>;
+
 export interface GetBillingInfoProjectsRequest {
   /** Required. The resource name of the project for which billing information is retrieved. For example, `projects/tokyo-rain-123`. */
   name: string;
 }
+const GetBillingInfoProjectsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetBillingInfoProjectsRequest>;
+
 /** Encapsulation of billing information for a Google Cloud Console project. A project has at most one associated billing account at a time (but a billing account can be assigned to multiple projects). */
 export interface ProjectBillingInfo {
   /** Output only. True if the project is associated with an open billing account, to which usage on the project is charged. False if the project is associated with a closed billing account, or no billing account at all, and therefore cannot use paid services. */
@@ -259,10 +340,14 @@ export interface ProjectBillingInfo {
   /** Output only. The ID of the project that this `ProjectBillingInfo` represents, such as `tokyo-rain-123`. This is a convenience field so that you don't need to parse the `name` field to obtain a project ID. */
   projectId?: string;
 }
+const ProjectBillingInfo = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ProjectBillingInfo>;
+
 export interface GetCardV1Request {
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
   tenant?: string;
 }
+const GetCardV1Request = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GetCardV1Request>;
+
 /** Represents information about the service provider of an agent. */
 export interface AgentProvider {
   /** The providers reference url Example: "https://ai.google.dev" */
@@ -270,6 +355,8 @@ export interface AgentProvider {
   /** The providers organization name Example: "Google" */
   organization?: string;
 }
+const AgentProvider = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<AgentProvider>;
+
 /** Defines additional transport information for the agent. */
 export interface AgentInterface {
   /** The transport supported this url. This is an open form string, to be easily extended for many transport protocols. The core ones officially supported are JSONRPC, GRPC and HTTP+JSON. */
@@ -279,7 +366,11 @@ export interface AgentInterface {
   /** The url this interface is found at. */
   url?: string;
 }
+const AgentInterface = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<AgentInterface>;
+
 export type AgentInterfaceList = Array<AgentInterface>;
+const AgentInterfaceList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<AgentInterfaceList>;
+
 /** A declaration of an extension supported by an Agent. */
 export interface AgentExtension {
   /** A description of how this agent uses this extension. Example: "Google OAuth 2.0 authentication" */
@@ -291,7 +382,11 @@ export interface AgentExtension {
   /** Optional configuration for the extension. */
   params?: DocumentMap;
 }
+const AgentExtension = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<AgentExtension>;
+
 export type AgentExtensionList = Array<AgentExtension>;
+const AgentExtensionList = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<AgentExtensionList>;
+
 /** Defines the A2A feature set supported by the agent */
 export interface AgentCapabilities {
   /** Extensions supported by this agent. */
@@ -301,15 +396,25 @@ export interface AgentCapabilities {
   /** If the agent can send push notifications to the clients webhook */
   pushNotifications?: boolean;
 }
+const AgentCapabilities = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<AgentCapabilities>;
+
 /** protolint:disable REPEATED_FIELD_NAMES_PLURALIZED */
 export interface StringList {
   list?: StringList_;
 }
+const StringList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<StringList>;
+
 export type StringListMap = { [key: string]: StringList | undefined };
+const StringListMap = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<StringListMap>;
+
 export interface Security {
   schemes?: StringListMap;
 }
+const Security = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<Security>;
+
 export type SecurityList = Array<Security>;
+const SecurityList = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<SecurityList>;
+
 /** AgentSkill represents a unit of action/solution that the agent can perform. One can think of this as a type of highly reliable solution that an agent can be tasked to provide. Agents have the autonomy to choose how and when to use specific skills, but clients should have confidence that if the skill is defined that unit of action can be reliably performed. */
 export interface AgentSkill {
   /** Possible input modalities supported. */
@@ -329,7 +434,11 @@ export interface AgentSkill {
   /** A human (or llm) readable description of the skill details and behaviors. */
   description?: string;
 }
+const AgentSkill = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<AgentSkill>;
+
 export type AgentSkillList = Array<AgentSkill>;
+const AgentSkillList = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<AgentSkillList>;
+
 export interface HTTPAuthSecurityScheme {
   /** Description of this security scheme. */
   description?: string;
@@ -338,7 +447,14 @@ export interface HTTPAuthSecurityScheme {
   /** The name of the HTTP Authentication scheme to be used in the Authorization header as defined in RFC7235. The values used SHOULD be registered in the IANA Authentication Scheme registry. The value is case-insensitive, as defined in RFC7235. */
   scheme?: string;
 }
+const HTTPAuthSecurityScheme = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<HTTPAuthSecurityScheme>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<StringMap>;
+
 export interface ClientCredentialsOAuthFlow {
   /** The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS. */
   refreshUrl?: string;
@@ -347,6 +463,11 @@ export interface ClientCredentialsOAuthFlow {
   /** The token URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS. */
   tokenUrl?: string;
 }
+const ClientCredentialsOAuthFlow = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ClientCredentialsOAuthFlow>;
+
 export interface AuthorizationCodeOAuthFlow {
   /** The authorization URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS */
   authorizationUrl?: string;
@@ -357,6 +478,11 @@ export interface AuthorizationCodeOAuthFlow {
   /** The token URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS. */
   tokenUrl?: string;
 }
+const AuthorizationCodeOAuthFlow = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<AuthorizationCodeOAuthFlow>;
+
 export interface PasswordOAuthFlow {
   /** The available scopes for the OAuth2 security scheme. A map between the scope name and a short description for it. The map MAY be empty. */
   scopes?: StringMap;
@@ -365,6 +491,8 @@ export interface PasswordOAuthFlow {
   /** The token URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS. */
   tokenUrl?: string;
 }
+const PasswordOAuthFlow = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<PasswordOAuthFlow>;
+
 export interface ImplicitOAuthFlow {
   /** The authorization URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS */
   authorizationUrl?: string;
@@ -373,12 +501,16 @@ export interface ImplicitOAuthFlow {
   /** The available scopes for the OAuth2 security scheme. A map between the scope name and a short description for it. The map MAY be empty. */
   scopes?: StringMap;
 }
+const ImplicitOAuthFlow = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ImplicitOAuthFlow>;
+
 export interface OAuthFlows {
   clientCredentials?: ClientCredentialsOAuthFlow;
   authorizationCode?: AuthorizationCodeOAuthFlow;
   password?: PasswordOAuthFlow;
   implicit?: ImplicitOAuthFlow;
 }
+const OAuthFlows = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<OAuthFlows>;
+
 export interface OAuth2SecurityScheme {
   /** URL to the oauth2 authorization server metadata [RFC8414](https://datatracker.ietf.org/doc/html/rfc8414). TLS is required. */
   oauth2MetadataUrl?: string;
@@ -387,16 +519,28 @@ export interface OAuth2SecurityScheme {
   /** Description of this security scheme. */
   description?: string;
 }
+const OAuth2SecurityScheme = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<OAuth2SecurityScheme>;
+
 export interface MutualTlsSecurityScheme {
   /** Description of this security scheme. */
   description?: string;
 }
+const MutualTlsSecurityScheme = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<MutualTlsSecurityScheme>;
+
 export interface OpenIdConnectSecurityScheme {
   /** Description of this security scheme. */
   description?: string;
   /** Well-known URL to discover the [[OpenID-Connect-Discovery]] provider metadata. */
   openIdConnectUrl?: string;
 }
+const OpenIdConnectSecurityScheme = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<OpenIdConnectSecurityScheme>;
+
 export interface APIKeySecurityScheme {
   /** Location of the API key, valid values are "query", "header", or "cookie" */
   location?: string;
@@ -405,6 +549,8 @@ export interface APIKeySecurityScheme {
   /** Name of the header, query or cookie parameter to be used. */
   name?: string;
 }
+const APIKeySecurityScheme = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<APIKeySecurityScheme>;
+
 export interface SecurityScheme {
   httpAuthSecurityScheme?: HTTPAuthSecurityScheme;
   oauth2SecurityScheme?: OAuth2SecurityScheme;
@@ -412,7 +558,11 @@ export interface SecurityScheme {
   openIdConnectSecurityScheme?: OpenIdConnectSecurityScheme;
   apiKeySecurityScheme?: APIKeySecurityScheme;
 }
+const SecurityScheme = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<SecurityScheme>;
+
 export type SecuritySchemeMap = { [key: string]: SecurityScheme | undefined };
+const SecuritySchemeMap = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<SecuritySchemeMap>;
+
 /** AgentCardSignature represents a JWS signature of an AgentCard. This follows the JSON format of an RFC 7515 JSON Web Signature (JWS). */
 export interface AgentCardSignature {
   /** The unprotected JWS header values. */
@@ -422,7 +572,14 @@ export interface AgentCardSignature {
   /** Required. The computed signature, base64url-encoded. Required. */
   signature?: string;
 }
+const AgentCardSignature = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<AgentCardSignature>;
+
 export type AgentCardSignatureList = Array<AgentCardSignature>;
+const AgentCardSignatureList = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<AgentCardSignatureList>;
+
 /** AgentCard conveys key information: - Overall details (version, name, description, uses) - Skills; a set of actions/solutions the agent can perform - Default modalities/content types supported by the agent. - Authentication requirements Next ID: 19 */
 export interface AgentCard {
   /** The service provider of the agent. */
@@ -462,12 +619,19 @@ export interface AgentCard {
   /** A url to provide additional documentation about the agent. */
   documentationUrl?: string;
 }
+const AgentCard = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<AgentCard>;
+
 export interface GetIamPolicyBillingAccountsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
+const GetIamPolicyBillingAccountsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<GetIamPolicyBillingAccountsRequest>;
+
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
@@ -479,6 +643,8 @@ export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
+const Expr = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<Expr>;
+
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -488,12 +654,18 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
+const Binding = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<Binding>;
+
 export type BindingList = Array<Binding>;
+const BindingList = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<BindingList>;
+
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
+const AuditLogConfigLogTypeEnum = S.String;
+
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
@@ -501,7 +673,11 @@ export interface AuditLogConfig {
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
+const AuditLogConfig = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<AuditLogConfig>;
+
 export type AuditLogConfigList = Array<AuditLogConfig>;
+const AuditLogConfigList = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<AuditLogConfigList>;
+
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
@@ -509,7 +685,11 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
+const AuditConfig = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<AuditConfig>;
+
 export type AuditConfigList = Array<AuditConfig>;
+const AuditConfigList = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<AuditConfigList>;
+
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -521,6 +701,8 @@ export interface Policy {
   /** Specifies cloud audit logging configuration for this policy. */
   auditConfigs?: AuditConfigList;
 }
+const Policy = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<Policy>;
+
 export interface GetTasksRequest {
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
   tenant?: string;
@@ -529,12 +711,19 @@ export interface GetTasksRequest {
   /** The number of most recent messages from the task's history to retrieve. */
   historyLength?: number;
 }
+const GetTasksRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<GetTasksRequest>;
+
 export interface GetTasksPushNotificationConfigsRequest {
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
   tenant?: string;
   /** The resource name of the config to retrieve. Format: tasks/{task_id}/pushNotificationConfigs/{config_id} */
   name: string;
 }
+const GetTasksPushNotificationConfigsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetTasksPushNotificationConfigsRequest>;
+
 export interface ListBillingAccountsRequest {
   /** Requested page size. The maximum page size is 100; this is also the default. */
   pageSize?: number;
@@ -545,7 +734,14 @@ export interface ListBillingAccountsRequest {
   /** Optional. The parent resource to list billing accounts from. Format: - `organizations/{organization_id}`, for example, `organizations/12345678` - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF` */
   parent?: string;
 }
+const ListBillingAccountsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ListBillingAccountsRequest>;
+
 export type BillingAccountList = Array<BillingAccount>;
+const BillingAccountList = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<BillingAccountList>;
+
 /** Response message for `ListBillingAccounts`. */
 export interface ListBillingAccountsResponse {
   /** A token to retrieve the next page of results. To retrieve the next page, call `ListBillingAccounts` again with the `page_token` field set to this value. This field is empty if there are no more results to retrieve. */
@@ -553,6 +749,11 @@ export interface ListBillingAccountsResponse {
   /** A list of billing accounts. */
   billingAccounts?: BillingAccountList;
 }
+const ListBillingAccountsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ListBillingAccountsResponse>;
+
 export interface ListBillingAccountsProjectsRequest {
   /** Required. The resource name of the billing account associated with the projects that you want to list. For example, `billingAccounts/012345-567890-ABCDEF`. */
   name: string;
@@ -561,7 +762,17 @@ export interface ListBillingAccountsProjectsRequest {
   /** A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous `ListProjectBillingInfo` call. If unspecified, the first page of results is returned. */
   pageToken?: string;
 }
+const ListBillingAccountsProjectsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListBillingAccountsProjectsRequest>;
+
 export type ProjectBillingInfoList = Array<ProjectBillingInfo>;
+const ProjectBillingInfoList = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ProjectBillingInfoList>;
+
 /** Request message for `ListProjectBillingInfoResponse`. */
 export interface ListProjectBillingInfoResponse {
   /** A token to retrieve the next page of results. To retrieve the next page, call `ListProjectBillingInfo` again with the `page_token` field set to this value. This field is empty if there are no more results to retrieve. */
@@ -569,6 +780,11 @@ export interface ListProjectBillingInfoResponse {
   /** A list of `ProjectBillingInfo` resources representing the projects associated with the billing account. */
   projectBillingInfo?: ProjectBillingInfoList;
 }
+const ListProjectBillingInfoResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ListProjectBillingInfoResponse>;
+
 export interface ListBillingAccountsSubAccountsRequest {
   /** Optional. The parent resource to list billing accounts from. Format: - `organizations/{organization_id}`, for example, `organizations/12345678` - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF` */
   parent: string;
@@ -579,6 +795,11 @@ export interface ListBillingAccountsSubAccountsRequest {
   /** Options for how to filter the returned billing accounts. This only supports filtering for [subaccounts](https://cloud.google.com/billing/docs/concepts) under a single provided parent billing account. (for example, `master_billing_account=billingAccounts/012345-678901-ABCDEF`). Boolean algebra and other fields are not currently supported. */
   filter?: string;
 }
+const ListBillingAccountsSubAccountsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListBillingAccountsSubAccountsRequest>;
+
 export interface ListOrganizationsBillingAccountsRequest {
   /** Requested page size. The maximum page size is 100; this is also the default. */
   pageSize?: number;
@@ -589,12 +810,19 @@ export interface ListOrganizationsBillingAccountsRequest {
   /** Optional. The parent resource to list billing accounts from. Format: - `organizations/{organization_id}`, for example, `organizations/12345678` - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF` */
   parent: string;
 }
+const ListOrganizationsBillingAccountsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListOrganizationsBillingAccountsRequest>;
+
 export interface ListServicesRequest {
   /** Requested page size. Defaults to 5000. */
   pageSize?: number;
   /** A token identifying a page of results to return. This should be a `next_page_token` value returned from a previous `ListServices` call. If unspecified, the first page of results is returned. */
   pageToken?: string;
 }
+const ListServicesRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<ListServicesRequest>;
+
 /** Encapsulates a single service in Google Cloud Platform. */
 export interface Service {
   /** A human readable display name for this service. */
@@ -606,7 +834,11 @@ export interface Service {
   /** The identifier for the service. Example: "6F81-5844-456A" */
   serviceId?: string;
 }
+const Service = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<Service>;
+
 export type ServiceList = Array<Service>;
+const ServiceList = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<ServiceList>;
+
 /** Response message for `ListServices`. */
 export interface ListServicesResponse {
   /** A token to retrieve the next page of results. To retrieve the next page, call `ListServices` again with the `page_token` field set to this value. This field is empty if there are no more results to retrieve. */
@@ -614,6 +846,8 @@ export interface ListServicesResponse {
   /** A list of services. */
   services?: ServiceList;
 }
+const ListServicesResponse = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<ListServicesResponse>;
+
 export interface ListServicesSkusRequest {
   /** A token identifying a page of results to return. This should be a `next_page_token` value returned from a previous `ListSkus` call. If unspecified, the first page of results is returned. */
   pageToken?: string;
@@ -628,6 +862,11 @@ export interface ListServicesSkusRequest {
   /** Requested page size. Defaults to 5000. */
   pageSize?: number;
 }
+const ListServicesSkusRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ListServicesSkusRequest>;
+
 /** Represents an amount of money with its currency type. */
 export interface Money {
   /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
@@ -637,6 +876,8 @@ export interface Money {
   /** The three-letter currency code defined in ISO 4217. */
   currencyCode?: string;
 }
+const Money = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<Money>;
+
 /** The price rate indicating starting usage and its corresponding price. */
 export interface TierRate {
   /** Usage is priced at this rate only after this amount. Example: start_usage_amount of 10 indicates that the usage will be priced at the unit_price after the first 10 usage_units. */
@@ -644,7 +885,11 @@ export interface TierRate {
   /** The price per unit of usage. Example: unit_price of amount $10 indicates that each unit will cost $10. */
   unitPrice?: Money;
 }
+const TierRate = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<TierRate>;
+
 export type TierRateList = Array<TierRate>;
+const TierRateList = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<TierRateList>;
+
 /** Expresses a mathematical pricing formula. For Example:- `usage_unit: GBy` `tiered_rates:` `[start_usage_amount: 20, unit_price: $10]` `[start_usage_amount: 100, unit_price: $5]` The above expresses a pricing formula where the first 20GB is free, the next 80GB is priced at $10 per GB followed by $5 per GB for additional usage. */
 export interface PricingExpression {
   /** The short hand for unit of usage this pricing is specified in. Example: usage_unit of "GiBy" means that usage is specified in "Gibi Byte". */
@@ -662,14 +907,20 @@ export interface PricingExpression {
   /** The base unit for the SKU which is the unit used in usage exports. Example: "By" */
   baseUnit?: string;
 }
+const PricingExpression = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<PricingExpression>;
+
 export type AggregationInfoAggregationLevelEnum =
   | "AGGREGATION_LEVEL_UNSPECIFIED"
   | "ACCOUNT"
   | "PROJECT";
+const AggregationInfoAggregationLevelEnum = S.String;
+
 export type AggregationInfoAggregationIntervalEnum =
   | "AGGREGATION_INTERVAL_UNSPECIFIED"
   | "DAILY"
   | "MONTHLY";
+const AggregationInfoAggregationIntervalEnum = S.String;
+
 /** Represents the aggregation level and interval for pricing of a single SKU. */
 export interface AggregationInfo {
   aggregationLevel?: AggregationInfoAggregationLevelEnum;
@@ -677,6 +928,8 @@ export interface AggregationInfo {
   aggregationCount?: number;
   aggregationInterval?: AggregationInfoAggregationIntervalEnum;
 }
+const AggregationInfo = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<AggregationInfo>;
+
 /** Represents the pricing information for a SKU at a single point of time. */
 export interface PricingInfo {
   /** Expresses the pricing formula. See `PricingExpression` for an example. */
@@ -690,8 +943,14 @@ export interface PricingInfo {
   /** The timestamp from which this pricing was effective within the requested time range. This is guaranteed to be greater than or equal to the start_time field in the request and less than the end_time field in the request. If a time range was not specified in the request this field will be equivalent to a time within the last 12 hours, indicating the latest pricing info. */
   effectiveTime?: string;
 }
+const PricingInfo = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<PricingInfo>;
+
 export type PricingInfoList = Array<PricingInfo>;
+const PricingInfoList = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<PricingInfoList>;
+
 export type GeoTaxonomyTypeEnum = "TYPE_UNSPECIFIED" | "GLOBAL" | "REGIONAL" | "MULTI_REGIONAL";
+const GeoTaxonomyTypeEnum = S.String;
+
 /** Encapsulates the geographic taxonomy data for a sku. */
 export interface GeoTaxonomy {
   /** The type of Geo Taxonomy: GLOBAL, REGIONAL, or MULTI_REGIONAL. */
@@ -699,6 +958,8 @@ export interface GeoTaxonomy {
   /** The list of regions associated with a sku. Empty for Global skus, which are associated with all Google Cloud regions. */
   regions?: StringList_;
 }
+const GeoTaxonomy = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<GeoTaxonomy>;
+
 /** Represents the category hierarchy of a SKU. */
 export interface Category {
   /** The display name of the service this SKU belongs to. */
@@ -710,6 +971,8 @@ export interface Category {
   /** Represents how the SKU is consumed. Example: "OnDemand", "Preemptible", "Commit1Mo", "Commit1Yr" etc. */
   usageType?: string;
 }
+const Category = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<Category>;
+
 /** Encapsulates a single SKU in Google Cloud */
 export interface Sku {
   /** The resource name for the SKU. Example: "services/6F81-5844-456A/skus/D041-B8A1-6E0B" */
@@ -729,7 +992,11 @@ export interface Sku {
   /** The category hierarchy of this SKU, purely for organizational purpose. */
   category?: Category;
 }
+const Sku = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<Sku>;
+
 export type SkuList = Array<Sku>;
+const SkuList = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<SkuList>;
+
 /** Response message for `ListSkus`. */
 export interface ListSkusResponse {
   /** The list of public SKUs of the given service. */
@@ -737,6 +1004,8 @@ export interface ListSkusResponse {
   /** A token to retrieve the next page of results. To retrieve the next page, call `ListSkus` again with the `page_token` field set to this value. This field is empty if there are no more results to retrieve. */
   nextPageToken?: string;
 }
+const ListSkusResponse = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<ListSkusResponse>;
+
 export interface ListTasksPushNotificationConfigsRequest {
   /** For AIP-158 these fields are present. Usually not used/needed. The maximum number of configurations to return. If unspecified, all configs will be returned. */
   pageSize?: number;
@@ -747,30 +1016,60 @@ export interface ListTasksPushNotificationConfigsRequest {
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
   tenant?: string;
 }
+const ListTasksPushNotificationConfigsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ListTasksPushNotificationConfigsRequest>;
+
 export type TaskPushNotificationConfigList = Array<TaskPushNotificationConfig>;
+const TaskPushNotificationConfigList = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<TaskPushNotificationConfigList>;
+
 export interface ListTaskPushNotificationConfigResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The list of push notification configurations. */
   configs?: TaskPushNotificationConfigList;
 }
+const ListTaskPushNotificationConfigResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ListTaskPushNotificationConfigResponse>;
+
 /** Request message for `MoveBillingAccount` RPC. */
 export interface MoveBillingAccountRequest {
   /** Required. The resource name of the Organization to move the billing account under. Must be of the form `organizations/{organization_id}`. */
   destinationParent?: string;
 }
+const MoveBillingAccountRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<MoveBillingAccountRequest>;
+
 export interface MoveBillingAccountsRequest {
   /** Required. The resource name of the billing account to move. Must be of the form `billingAccounts/{billing_account_id}`. The specified billing account cannot be a subaccount, since a subaccount always belongs to the same organization as its parent account. */
   name: string;
   /** Request body */
   body?: MoveBillingAccountRequest;
 }
+const MoveBillingAccountsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<MoveBillingAccountsRequest>;
+
 export interface MoveOrganizationsBillingAccountsRequest {
   /** Required. The resource name of the Organization to move the billing account under. Must be of the form `organizations/{organization_id}`. */
   destinationParent: string;
   /** Required. The resource name of the billing account to move. Must be of the form `billingAccounts/{billing_account_id}`. The specified billing account cannot be a subaccount, since a subaccount always belongs to the same organization as its parent account. */
   name: string;
 }
+const MoveOrganizationsBillingAccountsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<MoveOrganizationsBillingAccountsRequest>;
+
 export interface PatchBillingAccountsRequest {
   /** Required. The name of the billing account resource to be updated. */
   name: string;
@@ -779,6 +1078,11 @@ export interface PatchBillingAccountsRequest {
   /** Request body */
   body?: BillingAccount;
 }
+const PatchBillingAccountsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<PatchBillingAccountsRequest>;
+
 /** Configuration of a send message request. */
 export interface SendMessageConfiguration {
   /** The maximum number of messages to include in the history. if 0, the history will be unlimited. */
@@ -790,6 +1094,11 @@ export interface SendMessageConfiguration {
   /** If true, the message will be blocking until the task is completed. If false, the message will be non-blocking and the task will be returned immediately. It is the caller's responsibility to check for any task updates. */
   blocking?: boolean;
 }
+const SendMessageConfiguration = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<SendMessageConfiguration>;
+
 /** /////////// Request Messages /////////// */
 export interface SendMessageRequest {
   /** Required. The message to send to the agent. */
@@ -801,15 +1110,21 @@ export interface SendMessageRequest {
   /** Configuration for the send request. */
   configuration?: SendMessageConfiguration;
 }
+const SendMessageRequest = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<SendMessageRequest>;
+
 export interface SendMessageRequest_ {
   /** Request body */
   body?: SendMessageRequest;
 }
+const SendMessageRequest_ = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<SendMessageRequest_>;
+
 /** ////// Response Messages /////////// */
 export interface SendMessageResponse {
   message?: Message;
   task?: Task;
 }
+const SendMessageResponse = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<SendMessageResponse>;
+
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
@@ -817,16 +1132,28 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
+const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<SetIamPolicyRequest>;
+
 export interface SetIamPolicyBillingAccountsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyBillingAccountsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<SetIamPolicyBillingAccountsRequest>;
+
 export interface StreamMessageRequest {
   /** Request body */
   body?: SendMessageRequest;
 }
+const StreamMessageRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<StreamMessageRequest>;
+
 /** TaskArtifactUpdateEvent represents a task delta where an artifact has been generated. */
 export interface TaskArtifactUpdateEvent {
   /** The id of the context that this task belongs too */
@@ -842,6 +1169,11 @@ export interface TaskArtifactUpdateEvent {
   /** Whether this represents the last part of an artifact */
   lastChunk?: boolean;
 }
+const TaskArtifactUpdateEvent = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<TaskArtifactUpdateEvent>;
+
 /** TaskStatusUpdateEvent is a delta even on a task indicating that a task has changed. */
 export interface TaskStatusUpdateEvent {
   /** Whether this is the last status update expected for this task. */
@@ -855,6 +1187,11 @@ export interface TaskStatusUpdateEvent {
   /** The id of the task that is changed */
   taskId?: string;
 }
+const TaskStatusUpdateEvent = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<TaskStatusUpdateEvent>;
+
 /** The stream response for a message. The stream should be one of the following sequences: If the response is a message, the stream should contain one, and only one, message and then close If the response is a task lifecycle, the first response should be a Task object followed by zero or more TaskStatusUpdateEvents and TaskArtifactUpdateEvents. The stream should complete when the Task if in an interrupted or terminal state. A stream that ends before these conditions are met are */
 export interface StreamResponse {
   message?: Message;
@@ -862,34 +1199,59 @@ export interface StreamResponse {
   artifactUpdate?: TaskArtifactUpdateEvent;
   statusUpdate?: TaskStatusUpdateEvent;
 }
+const StreamResponse = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<StreamResponse>;
+
 export interface SubscribeTasksRequest {
   /** The resource name of the task to subscribe to. Format: tasks/{task_id} */
   name: string;
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
   tenant?: string;
 }
+const SubscribeTasksRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<SubscribeTasksRequest>;
+
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList_;
 }
+const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<TestIamPermissionsRequest>;
+
 export interface TestIamPermissionsBillingAccountsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsBillingAccountsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<TestIamPermissionsBillingAccountsRequest>;
+
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList_;
 }
+const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
+
 export interface UpdateBillingInfoProjectsRequest {
   /** Required. The resource name of the project associated with the billing information that you want to update. For example, `projects/tokyo-rain-123`. */
   name: string;
   /** Request body */
   body?: ProjectBillingInfo;
 }
+const UpdateBillingInfoProjectsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<UpdateBillingInfoProjectsRequest>;
+
 export type CancelTasksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Cancel a task from the agent. If supported one should expect no more task updates for the task. */
 export const cancelTasks: API.OperationMethod<
@@ -898,8 +1260,8 @@ export const cancelTasks: API.OperationMethod<
   CancelTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CancelTasksRequest>,
-  output: __S(13) as any as S.Schema<Task>,
+  input: CancelTasksRequest,
+  output: Task,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -913,8 +1275,8 @@ export const createBillingAccounts: API.OperationMethod<
   CreateBillingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<CreateBillingAccountsRequest>,
-  output: __S(14) as any as S.Schema<BillingAccount>,
+  input: CreateBillingAccountsRequest,
+  output: BillingAccount,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -933,8 +1295,8 @@ export const createBillingAccountsSubAccounts: API.OperationMethod<
   CreateBillingAccountsSubAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CreateBillingAccountsSubAccountsRequest>,
-  output: __S(14) as any as S.Schema<BillingAccount>,
+  input: CreateBillingAccountsSubAccountsRequest,
+  output: BillingAccount,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -953,8 +1315,8 @@ export const createOrganizationsBillingAccounts: API.OperationMethod<
   CreateOrganizationsBillingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<CreateOrganizationsBillingAccountsRequest>,
-  output: __S(14) as any as S.Schema<BillingAccount>,
+  input: CreateOrganizationsBillingAccountsRequest,
+  output: BillingAccount,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -973,8 +1335,8 @@ export const createTasksPushNotificationConfigs: API.OperationMethod<
   CreateTasksPushNotificationConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<CreateTasksPushNotificationConfigsRequest>,
-  output: __S(20) as any as S.Schema<TaskPushNotificationConfig>,
+  input: CreateTasksPushNotificationConfigsRequest,
+  output: TaskPushNotificationConfig,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -993,8 +1355,8 @@ export const deleteTasksPushNotificationConfigs: API.OperationMethod<
   DeleteTasksPushNotificationConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<DeleteTasksPushNotificationConfigsRequest>,
-  output: __S(23) as any as S.Schema<Empty>,
+  input: DeleteTasksPushNotificationConfigsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1008,8 +1370,8 @@ export const getBillingAccounts: API.OperationMethod<
   GetBillingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetBillingAccountsRequest>,
-  output: __S(14) as any as S.Schema<BillingAccount>,
+  input: GetBillingAccountsRequest,
+  output: BillingAccount,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1023,8 +1385,8 @@ export const getBillingInfoProjects: API.OperationMethod<
   GetBillingInfoProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<GetBillingInfoProjectsRequest>,
-  output: __S(26) as any as S.Schema<ProjectBillingInfo>,
+  input: GetBillingInfoProjectsRequest,
+  output: ProjectBillingInfo,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1038,8 +1400,8 @@ export const getCardV1: API.OperationMethod<
   GetCardV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<GetCardV1Request>,
-  output: __S(55) as any as S.Schema<AgentCard>,
+  input: GetCardV1Request,
+  output: AgentCard,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1053,8 +1415,8 @@ export const getIamPolicyBillingAccounts: API.OperationMethod<
   GetIamPolicyBillingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<GetIamPolicyBillingAccountsRequest>,
-  output: __S(64) as any as S.Schema<Policy>,
+  input: GetIamPolicyBillingAccountsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1064,8 +1426,8 @@ export type GetTasksError = NotFound | Forbidden | GcpOpError;
 /** Get the current state of a task from the agent. */
 export const getTasks: API.OperationMethod<GetTasksRequest, Task, GetTasksError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(65) as any as S.Schema<GetTasksRequest>,
-    output: __S(13) as any as S.Schema<Task>,
+    input: GetTasksRequest,
+    output: Task,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -1079,8 +1441,8 @@ export const getTasksPushNotificationConfigs: API.OperationMethod<
   GetTasksPushNotificationConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<GetTasksPushNotificationConfigsRequest>,
-  output: __S(20) as any as S.Schema<TaskPushNotificationConfig>,
+  input: GetTasksPushNotificationConfigsRequest,
+  output: TaskPushNotificationConfig,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1095,8 +1457,8 @@ export const listBillingAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBillingAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(67) as any as S.Schema<ListBillingAccountsRequest>,
-  output: __S(69) as any as S.Schema<ListBillingAccountsResponse>,
+  input: ListBillingAccountsRequest,
+  output: ListBillingAccountsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1112,8 +1474,8 @@ export const listBillingAccountsProjects: API.PaginatedOperationMethod<
   GcpOpContext,
   ListProjectBillingInfoResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(70) as any as S.Schema<ListBillingAccountsProjectsRequest>,
-  output: __S(72) as any as S.Schema<ListProjectBillingInfoResponse>,
+  input: ListBillingAccountsProjectsRequest,
+  output: ListProjectBillingInfoResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1129,8 +1491,8 @@ export const listBillingAccountsSubAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBillingAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(73) as any as S.Schema<ListBillingAccountsSubAccountsRequest>,
-  output: __S(69) as any as S.Schema<ListBillingAccountsResponse>,
+  input: ListBillingAccountsSubAccountsRequest,
+  output: ListBillingAccountsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1146,8 +1508,8 @@ export const listOrganizationsBillingAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBillingAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(74) as any as S.Schema<ListOrganizationsBillingAccountsRequest>,
-  output: __S(69) as any as S.Schema<ListBillingAccountsResponse>,
+  input: ListOrganizationsBillingAccountsRequest,
+  output: ListBillingAccountsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1163,8 +1525,8 @@ export const listServices: API.PaginatedOperationMethod<
   GcpOpContext,
   ListServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(75) as any as S.Schema<ListServicesRequest>,
-  output: __S(78) as any as S.Schema<ListServicesResponse>,
+  input: ListServicesRequest,
+  output: ListServicesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1180,8 +1542,8 @@ export const listServicesSkus: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSkusResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(79) as any as S.Schema<ListServicesSkusRequest>,
-  output: __S(91) as any as S.Schema<ListSkusResponse>,
+  input: ListServicesSkusRequest,
+  output: ListSkusResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1197,8 +1559,8 @@ export const listTasksPushNotificationConfigs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTaskPushNotificationConfigResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(92) as any as S.Schema<ListTasksPushNotificationConfigsRequest>,
-  output: __S(94) as any as S.Schema<ListTaskPushNotificationConfigResponse>,
+  input: ListTasksPushNotificationConfigsRequest,
+  output: ListTaskPushNotificationConfigResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1213,8 +1575,8 @@ export const moveBillingAccounts: API.OperationMethod<
   MoveBillingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<MoveBillingAccountsRequest>,
-  output: __S(14) as any as S.Schema<BillingAccount>,
+  input: MoveBillingAccountsRequest,
+  output: BillingAccount,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1228,8 +1590,8 @@ export const moveOrganizationsBillingAccounts: API.OperationMethod<
   MoveOrganizationsBillingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<MoveOrganizationsBillingAccountsRequest>,
-  output: __S(14) as any as S.Schema<BillingAccount>,
+  input: MoveOrganizationsBillingAccountsRequest,
+  output: BillingAccount,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1243,8 +1605,8 @@ export const patchBillingAccounts: API.OperationMethod<
   PatchBillingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<PatchBillingAccountsRequest>,
-  output: __S(14) as any as S.Schema<BillingAccount>,
+  input: PatchBillingAccountsRequest,
+  output: BillingAccount,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1258,8 +1620,8 @@ export const sendMessage: API.OperationMethod<
   SendMessageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<SendMessageRequest_>,
-  output: __S(102) as any as S.Schema<SendMessageResponse>,
+  input: SendMessageRequest_,
+  output: SendMessageResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1278,8 +1640,8 @@ export const setIamPolicyBillingAccounts: API.OperationMethod<
   SetIamPolicyBillingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<SetIamPolicyBillingAccountsRequest>,
-  output: __S(64) as any as S.Schema<Policy>,
+  input: SetIamPolicyBillingAccountsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1293,8 +1655,8 @@ export const streamMessage: API.OperationMethod<
   StreamMessageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<StreamMessageRequest>,
-  output: __S(108) as any as S.Schema<StreamResponse>,
+  input: StreamMessageRequest,
+  output: StreamResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1308,8 +1670,8 @@ export const subscribeTasks: API.OperationMethod<
   SubscribeTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<SubscribeTasksRequest>,
-  output: __S(108) as any as S.Schema<StreamResponse>,
+  input: SubscribeTasksRequest,
+  output: StreamResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1328,8 +1690,8 @@ export const testIamPermissionsBillingAccounts: API.OperationMethod<
   TestIamPermissionsBillingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<TestIamPermissionsBillingAccountsRequest>,
-  output: __S(110) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsBillingAccountsRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1348,8 +1710,8 @@ export const updateBillingInfoProjects: API.OperationMethod<
   UpdateBillingInfoProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<UpdateBillingInfoProjectsRequest>,
-  output: __S(26) as any as S.Schema<ProjectBillingInfo>,
+  input: UpdateBillingInfoProjectsRequest,
+  output: ProjectBillingInfo,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1368,7 +1730,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(CancelTaskRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1393,20 +1755,20 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(2)),
+          data: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "DataPart" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
-          file: S.optional(__S(4)),
-          metadata: S.optional(__S(2)),
-          data: S.optional(__S(5)),
+          file: S.optional(FilePart),
+          metadata: S.optional(DocumentMap),
+          data: S.optional(DataPart),
         }),
       ).annotate({ identifier: "Part" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(Part);
   }
 }
 function __c1(j: number): any {
@@ -1415,46 +1777,46 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
-          extensions: S.optional(__S(3)),
-          content: S.optional(__S(7)),
+          extensions: S.optional(StringList_),
+          content: S.optional(PartList),
           contextId: S.optional(S.String),
-          metadata: S.optional(__S(2)),
-          role: S.optional(S.String),
+          metadata: S.optional(DocumentMap),
+          role: S.optional(MessageRoleEnum),
           messageId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Message" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(Message);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(__S(8)),
+          message: S.optional(Message),
           timestamp: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(TaskStatusStateEnum),
         }),
       ).annotate({ identifier: "TaskStatus" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          extensions: S.optional(__S(3)),
-          metadata: S.optional(__S(2)),
+          extensions: S.optional(StringList_),
+          metadata: S.optional(DocumentMap),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          parts: S.optional(__S(7)),
+          parts: S.optional(PartList),
           artifactId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Artifact" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(Artifact);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(2)),
-          history: S.optional(__S(9)),
-          status: S.optional(__S(10)),
+          metadata: S.optional(DocumentMap),
+          history: S.optional(MessageList),
+          status: S.optional(TaskStatus),
           id: S.optional(S.String),
           contextId: S.optional(S.String),
-          artifacts: S.optional(__S(12)),
+          artifacts: S.optional(ArtifactList),
         }),
       ).annotate({ identifier: "Task" });
     case 6:
@@ -1472,7 +1834,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(14).pipe(T.HttpBody())),
+          body: S.optional(BillingAccount.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1491,7 +1853,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(14).pipe(T.HttpBody())),
+          body: S.optional(BillingAccount.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1506,7 +1868,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(14).pipe(T.HttpBody())),
+          body: S.optional(BillingAccount.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1520,7 +1882,7 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          schemes: S.optional(__S(3)),
+          schemes: S.optional(StringList_),
           credentials: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthenticationInfo" });
@@ -1528,7 +1890,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           token: S.optional(S.String),
-          authentication: S.optional(__S(18)),
+          authentication: S.optional(AuthenticationInfo),
           url: S.optional(S.String),
           id: S.optional(S.String),
         }),
@@ -1537,7 +1899,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          pushNotificationConfig: S.optional(__S(19)),
+          pushNotificationConfig: S.optional(PushNotificationConfig),
         }),
       ).annotate({
         identifier: "TaskPushNotificationConfig",
@@ -1548,7 +1910,7 @@ function __c2(j: number): any {
           tenant: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           configId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(20).pipe(T.HttpBody())),
+          body: S.optional(TaskPushNotificationConfig.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1647,14 +2009,14 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "AgentInterface" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(AgentInterface);
     case 7:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           required: S.optional(S.Boolean),
           uri: S.optional(S.String),
-          params: S.optional(__S(2)),
+          params: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "AgentExtension" });
   }
@@ -1662,11 +2024,11 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(AgentExtension);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          extensions: S.optional(__S(32)),
+          extensions: S.optional(AgentExtensionList),
           streaming: S.optional(S.Boolean),
           pushNotifications: S.optional(S.Boolean),
         }),
@@ -1674,34 +2036,34 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          list: S.optional(__S(3)),
+          list: S.optional(StringList_),
         }),
       ).annotate({ identifier: "StringList" });
     case 3:
-      return S.Record(S.String, __S(34));
+      return S.Record(S.String, StringList);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          schemes: S.optional(__S(35)),
+          schemes: S.optional(StringListMap),
         }),
       ).annotate({ identifier: "Security" });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(Security);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          inputModes: S.optional(__S(3)),
-          examples: S.optional(__S(3)),
-          outputModes: S.optional(__S(3)),
-          security: S.optional(__S(37)),
+          inputModes: S.optional(StringList_),
+          examples: S.optional(StringList_),
+          outputModes: S.optional(StringList_),
+          security: S.optional(SecurityList),
           id: S.optional(S.String),
           name: S.optional(S.String),
-          tags: S.optional(__S(3)),
+          tags: S.optional(StringList_),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentSkill" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(AgentSkill);
   }
 }
 function __c5(j: number): any {
@@ -1720,7 +2082,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           refreshUrl: S.optional(S.String),
-          scopes: S.optional(__S(41)),
+          scopes: S.optional(StringMap),
           tokenUrl: S.optional(S.String),
         }),
       ).annotate({
@@ -1731,7 +2093,7 @@ function __c5(j: number): any {
         S.Struct({
           authorizationUrl: S.optional(S.String),
           refreshUrl: S.optional(S.String),
-          scopes: S.optional(__S(41)),
+          scopes: S.optional(StringMap),
           tokenUrl: S.optional(S.String),
         }),
       ).annotate({
@@ -1740,7 +2102,7 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          scopes: S.optional(__S(41)),
+          scopes: S.optional(StringMap),
           refreshUrl: S.optional(S.String),
           tokenUrl: S.optional(S.String),
         }),
@@ -1750,23 +2112,23 @@ function __c5(j: number): any {
         S.Struct({
           authorizationUrl: S.optional(S.String),
           refreshUrl: S.optional(S.String),
-          scopes: S.optional(__S(41)),
+          scopes: S.optional(StringMap),
         }),
       ).annotate({ identifier: "ImplicitOAuthFlow" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          clientCredentials: S.optional(__S(42)),
-          authorizationCode: S.optional(__S(43)),
-          password: S.optional(__S(44)),
-          implicit: S.optional(__S(45)),
+          clientCredentials: S.optional(ClientCredentialsOAuthFlow),
+          authorizationCode: S.optional(AuthorizationCodeOAuthFlow),
+          password: S.optional(PasswordOAuthFlow),
+          implicit: S.optional(ImplicitOAuthFlow),
         }),
       ).annotate({ identifier: "OAuthFlows" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           oauth2MetadataUrl: S.optional(S.String),
-          flows: S.optional(__S(46)),
+          flows: S.optional(OAuthFlows),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OAuth2SecurityScheme" });
@@ -1800,44 +2162,44 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          httpAuthSecurityScheme: S.optional(__S(40)),
-          oauth2SecurityScheme: S.optional(__S(47)),
-          mtlsSecurityScheme: S.optional(__S(48)),
-          openIdConnectSecurityScheme: S.optional(__S(49)),
-          apiKeySecurityScheme: S.optional(__S(50)),
+          httpAuthSecurityScheme: S.optional(HTTPAuthSecurityScheme),
+          oauth2SecurityScheme: S.optional(OAuth2SecurityScheme),
+          mtlsSecurityScheme: S.optional(MutualTlsSecurityScheme),
+          openIdConnectSecurityScheme: S.optional(OpenIdConnectSecurityScheme),
+          apiKeySecurityScheme: S.optional(APIKeySecurityScheme),
         }),
       ).annotate({ identifier: "SecurityScheme" });
     case 4:
-      return S.Record(S.String, __S(51));
+      return S.Record(S.String, SecurityScheme);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          header: S.optional(__S(2)),
+          header: S.optional(DocumentMap),
           protected: S.optional(S.String),
           signature: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentCardSignature" });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(AgentCardSignature);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provider: S.optional(__S(28)),
-          defaultOutputModes: S.optional(__S(3)),
+          provider: S.optional(AgentProvider),
+          defaultOutputModes: S.optional(StringList_),
           description: S.optional(S.String),
-          additionalInterfaces: S.optional(__S(30)),
-          capabilities: S.optional(__S(33)),
+          additionalInterfaces: S.optional(AgentInterfaceList),
+          capabilities: S.optional(AgentCapabilities),
           protocolVersion: S.optional(S.String),
           name: S.optional(S.String),
-          skills: S.optional(__S(39)),
-          defaultInputModes: S.optional(__S(3)),
-          securitySchemes: S.optional(__S(52)),
+          skills: S.optional(AgentSkillList),
+          defaultInputModes: S.optional(StringList_),
+          securitySchemes: S.optional(SecuritySchemeMap),
           supportsAuthenticatedExtendedCard: S.optional(S.Boolean),
           url: S.optional(S.String),
           preferredTransport: S.optional(S.String),
           iconUrl: S.optional(S.String),
-          security: S.optional(__S(37)),
-          signatures: S.optional(__S(54)),
+          security: S.optional(SecurityList),
+          signatures: S.optional(AgentCardSignatureList),
           version: S.optional(S.String),
           documentationUrl: S.optional(S.String),
         }),
@@ -1873,31 +2235,31 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(__S(57)),
-          members: S.optional(__S(3)),
+          condition: S.optional(Expr),
+          members: S.optional(StringList_),
           role: S.optional(S.String),
         }),
       ).annotate({ identifier: "Binding" });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(Binding);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          exemptedMembers: S.optional(__S(3)),
-          logType: S.optional(S.String),
+          exemptedMembers: S.optional(StringList_),
+          logType: S.optional(AuditLogConfigLogTypeEnum),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
     case 5:
-      return S.Array(__S(60));
+      return S.Array(AuditLogConfig);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          auditLogConfigs: S.optional(__S(61)),
+          auditLogConfigs: S.optional(AuditLogConfigList),
           service: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditConfig" });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(AuditConfig);
   }
 }
 function __c8(j: number): any {
@@ -1906,9 +2268,9 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.Number),
-          bindings: S.optional(__S(59)),
+          bindings: S.optional(BindingList),
           etag: S.optional(S.String),
-          auditConfigs: S.optional(__S(63)),
+          auditConfigs: S.optional(AuditConfigList),
         }),
       ).annotate({ identifier: "Policy" });
     case 1:
@@ -1958,12 +2320,12 @@ function __c8(j: number): any {
         identifier: "ListBillingAccountsRequest",
       });
     case 4:
-      return S.Array(__S(14));
+      return S.Array(BillingAccount);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          billingAccounts: S.optional(__S(68)),
+          billingAccounts: S.optional(BillingAccountList),
         }),
       ).annotate({
         identifier: "ListBillingAccountsResponse",
@@ -1985,7 +2347,7 @@ function __c8(j: number): any {
         identifier: "ListBillingAccountsProjectsRequest",
       });
     case 7:
-      return S.Array(__S(26));
+      return S.Array(ProjectBillingInfo);
   }
 }
 function __c9(j: number): any {
@@ -1994,7 +2356,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          projectBillingInfo: S.optional(__S(71)),
+          projectBillingInfo: S.optional(ProjectBillingInfoList),
         }),
       ).annotate({
         identifier: "ListProjectBillingInfoResponse",
@@ -2056,12 +2418,12 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "Service" });
     case 5:
-      return S.Array(__S(76));
+      return S.Array(Service);
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          services: S.optional(__S(77)),
+          services: S.optional(ServiceList),
         }),
       ).annotate({ identifier: "ListServicesResponse" });
     case 7:
@@ -2097,16 +2459,16 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           startUsageAmount: S.optional(S.Number),
-          unitPrice: S.optional(__S(80)),
+          unitPrice: S.optional(Money),
         }),
       ).annotate({ identifier: "TierRate" });
     case 2:
-      return S.Array(__S(81));
+      return S.Array(TierRate);
     case 3:
       return S.suspend(() =>
         S.Struct({
           usageUnit: S.optional(S.String),
-          tieredRates: S.optional(__S(82)),
+          tieredRates: S.optional(TierRateList),
           baseUnitConversionFactor: S.optional(S.Number),
           baseUnitDescription: S.optional(S.String),
           usageUnitDescription: S.optional(S.String),
@@ -2117,28 +2479,28 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          aggregationLevel: S.optional(S.String),
+          aggregationLevel: S.optional(AggregationInfoAggregationLevelEnum),
           aggregationCount: S.optional(S.Number),
-          aggregationInterval: S.optional(S.String),
+          aggregationInterval: S.optional(AggregationInfoAggregationIntervalEnum),
         }),
       ).annotate({ identifier: "AggregationInfo" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pricingExpression: S.optional(__S(83)),
+          pricingExpression: S.optional(PricingExpression),
           currencyConversionRate: S.optional(S.Number),
-          aggregationInfo: S.optional(__S(84)),
+          aggregationInfo: S.optional(AggregationInfo),
           summary: S.optional(S.String),
           effectiveTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "PricingInfo" });
     case 6:
-      return S.Array(__S(85));
+      return S.Array(PricingInfo);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          regions: S.optional(__S(3)),
+          type: S.optional(GeoTaxonomyTypeEnum),
+          regions: S.optional(StringList_),
         }),
       ).annotate({ identifier: "GeoTaxonomy" });
   }
@@ -2160,19 +2522,19 @@ function __c11(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.String),
           serviceProviderName: S.optional(S.String),
-          serviceRegions: S.optional(__S(3)),
-          pricingInfo: S.optional(__S(86)),
-          geoTaxonomy: S.optional(__S(87)),
+          serviceRegions: S.optional(StringList_),
+          pricingInfo: S.optional(PricingInfoList),
+          geoTaxonomy: S.optional(GeoTaxonomy),
           skuId: S.optional(S.String),
-          category: S.optional(__S(88)),
+          category: S.optional(Category),
         }),
       ).annotate({ identifier: "Sku" });
     case 2:
-      return S.Array(__S(89));
+      return S.Array(Sku);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          skus: S.optional(__S(90)),
+          skus: S.optional(SkuList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSkusResponse" });
@@ -2194,12 +2556,12 @@ function __c11(j: number): any {
         identifier: "ListTasksPushNotificationConfigsRequest",
       });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(TaskPushNotificationConfig);
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          configs: S.optional(__S(93)),
+          configs: S.optional(TaskPushNotificationConfigList),
         }),
       ).annotate({
         identifier: "ListTaskPushNotificationConfigResponse",
@@ -2220,7 +2582,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(95).pipe(T.HttpBody())),
+          body: S.optional(MoveBillingAccountRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2251,7 +2613,7 @@ function __c12(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(14).pipe(T.HttpBody())),
+          body: S.optional(BillingAccount.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2266,24 +2628,24 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           historyLength: S.optional(S.Number),
-          acceptedOutputModes: S.optional(__S(3)),
-          pushNotification: S.optional(__S(19)),
+          acceptedOutputModes: S.optional(StringList_),
+          pushNotification: S.optional(PushNotificationConfig),
           blocking: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SendMessageConfiguration" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(__S(8)),
+          message: S.optional(Message),
           tenant: S.optional(S.String),
-          metadata: S.optional(__S(2)),
-          configuration: S.optional(__S(99)),
+          metadata: S.optional(DocumentMap),
+          configuration: S.optional(SendMessageConfiguration),
         }),
       ).annotate({ identifier: "SendMessageRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(100).pipe(T.HttpBody())),
+          body: S.optional(SendMessageRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2295,15 +2657,15 @@ function __c12(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(__S(8)),
-          task: S.optional(__S(13)),
+          message: S.optional(Message),
+          task: S.optional(Task),
         }),
       ).annotate({ identifier: "SendMessageResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
-          policy: S.optional(__S(64)),
+          policy: S.optional(Policy),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
   }
@@ -2314,7 +2676,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(103).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2328,7 +2690,7 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(100).pipe(T.HttpBody())),
+          body: S.optional(SendMessageRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2341,9 +2703,9 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           contextId: S.optional(S.String),
-          artifact: S.optional(__S(11)),
+          artifact: S.optional(Artifact),
           append: S.optional(S.Boolean),
-          metadata: S.optional(__S(2)),
+          metadata: S.optional(DocumentMap),
           taskId: S.optional(S.String),
           lastChunk: S.optional(S.Boolean),
         }),
@@ -2352,19 +2714,19 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           final: S.optional(S.Boolean),
-          status: S.optional(__S(10)),
+          status: S.optional(TaskStatus),
           contextId: S.optional(S.String),
-          metadata: S.optional(__S(2)),
+          metadata: S.optional(DocumentMap),
           taskId: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaskStatusUpdateEvent" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(__S(8)),
-          task: S.optional(__S(13)),
-          artifactUpdate: S.optional(__S(106)),
-          statusUpdate: S.optional(__S(107)),
+          message: S.optional(Message),
+          task: S.optional(Task),
+          artifactUpdate: S.optional(TaskArtifactUpdateEvent),
+          statusUpdate: S.optional(TaskStatusUpdateEvent),
         }),
       ).annotate({ identifier: "StreamResponse" });
     case 5:
@@ -2383,7 +2745,7 @@ function __c13(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(3)),
+          permissions: S.optional(StringList_),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -2392,7 +2754,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(110).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2411,7 +2773,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(26).pipe(T.HttpBody())),
+          body: S.optional(ProjectBillingInfo.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2422,44 +2784,5 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "UpdateBillingInfoProjectsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
   }
 }

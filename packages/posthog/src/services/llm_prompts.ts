@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -41,7 +39,17 @@ export interface CreateLlmPromptRequest {
   /** Optional note describing what changed in this version. Set when the version is published. */
   version_description?: string | null;
 }
+const CreateLlmPromptRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateLlmPromptRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -55,6 +63,8 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -66,15 +76,26 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<UserBasic>;
+
 export interface LLMPromptOutlineEntry {
   /** Markdown heading level (1-6). */
   level?: number;
   /** Heading text with markdown link syntax preserved. */
   text?: string;
 }
+const LLMPromptOutlineEntry = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<LLMPromptOutlineEntry>;
+
 export type LLMPromptOutlineList = Array<LLMPromptOutlineEntry>;
+const LLMPromptOutlineList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<LLMPromptOutlineList>;
+
 /** Names of the labels currently pointing at this version. */
 export type LLMPromptLabelsList = Array<string>;
+const LLMPromptLabelsList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<LLMPromptLabelsList>;
+
 export interface LLMPrompt {
   id?: string;
   /** Unique prompt name using letters, numbers, hyphens, and underscores only. */
@@ -100,7 +121,11 @@ export interface LLMPrompt {
   /** Key for this prompt's rows in the activity log, e.g. for the History tab. Derived from the name, at most 72 characters. */
   activity_item_id?: string;
 }
+const LLMPrompt = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<LLMPrompt>;
+
 export type GetLlmPromptsNameRequestContent = "full" | "preview" | "none";
+const GetLlmPromptsNameRequestContent = S.String;
+
 export interface GetLlmPromptsNameRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -114,8 +139,16 @@ export interface GetLlmPromptsNameRequest {
   /** Specific prompt version to fetch. If omitted, the latest version is returned. */
   version?: number;
 }
+const GetLlmPromptsNameRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetLlmPromptsNameRequest>;
+
 /** Flat list of markdown headings parsed from the prompt. Useful as a lightweight table of contents. */
 export type LLMPromptPublicOutlineList = Array<LLMPromptOutlineEntry>;
+const LLMPromptPublicOutlineList =
+  LLMPromptOutlineList as any as S.Schema<LLMPromptPublicOutlineList>;
+
 export interface LLMPromptResolvedReference {
   /** Name of the referenced prompt that was spliced in. */
   name: string;
@@ -124,8 +157,18 @@ export interface LLMPromptResolvedReference {
   /** Label the reference used, or null when it pinned a version directly. */
   label: string | null;
 }
+const LLMPromptResolvedReference = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<LLMPromptResolvedReference>;
+
 /** The exact prompt versions spliced into the returned content, in order of first appearance. Empty when the prompt has no references. Only present when references were resolved. */
 export type LLMPromptPublicResolvedReferencesList = Array<LLMPromptResolvedReference>;
+const LLMPromptPublicResolvedReferencesList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<LLMPromptPublicResolvedReferencesList>;
+
 export interface LLMPromptPublic {
   id?: string;
   name?: string;
@@ -150,6 +193,8 @@ export interface LLMPromptPublic {
   version_count?: number;
   first_version_created_at?: string;
 }
+const LLMPromptPublic = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<LLMPromptPublic>;
+
 export interface GetLlmPromptsResolveNameRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -165,8 +210,16 @@ export interface GetLlmPromptsResolveNameRequest {
   /** Exact prompt version UUID to resolve. Can be used together with version for extra safety. */
   version_id?: string;
 }
+const GetLlmPromptsResolveNameRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetLlmPromptsResolveNameRequest>;
+
 /** Names of the labels currently pointing at this version. */
 export type LLMPromptVersionSummaryLabelsList = Array<string>;
+const LLMPromptVersionSummaryLabelsList =
+  LLMPromptLabelsList as any as S.Schema<LLMPromptVersionSummaryLabelsList>;
+
 export interface LLMPromptVersionSummary {
   id?: string;
   version?: number;
@@ -177,7 +230,17 @@ export interface LLMPromptVersionSummary {
   /** Names of the labels currently pointing at this version. */
   labels?: LLMPromptVersionSummaryLabelsList;
 }
+const LLMPromptVersionSummary = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<LLMPromptVersionSummary>;
+
 export type LLMPromptResolveResponseVersionsList = Array<LLMPromptVersionSummary>;
+const LLMPromptResolveResponseVersionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<LLMPromptResolveResponseVersionsList>;
+
 export interface LLMPromptLabel {
   id: string;
   /** Label name, e.g. 'production'. Points to exactly one version of the prompt. */
@@ -189,8 +252,15 @@ export interface LLMPromptLabel {
   created_at: string;
   updated_at: string;
 }
+const LLMPromptLabel = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<LLMPromptLabel>;
+
 /** All labels on this prompt with the version each one currently points to, across all versions (not just the returned page). */
 export type LLMPromptResolveResponseLabelsList = Array<LLMPromptLabel>;
+const LLMPromptResolveResponseLabelsList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<LLMPromptResolveResponseLabelsList>;
+
 export interface LLMPromptReferencedBy {
   /** Prompt whose latest or labeled version references this prompt. */
   name: string;
@@ -199,8 +269,18 @@ export interface LLMPromptReferencedBy {
   /** Version of this prompt the reference pins, or null when it follows a label. */
   version: number | null;
 }
+const LLMPromptReferencedBy = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<LLMPromptReferencedBy>;
+
 /** Prompts whose latest or labeled version references this prompt, with the label or version each reference uses. Empty when nothing references this prompt. At most 100 entries, ordered by prompt name. */
 export type LLMPromptResolveResponseReferencedByList = Array<LLMPromptReferencedBy>;
+const LLMPromptResolveResponseReferencedByList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<LLMPromptResolveResponseReferencedByList>;
+
 export interface LLMPromptResolveResponse {
   prompt?: LLMPrompt;
   versions?: LLMPromptResolveResponseVersionsList;
@@ -210,7 +290,14 @@ export interface LLMPromptResolveResponse {
   /** Prompts whose latest or labeled version references this prompt, with the label or version each reference uses. Empty when nothing references this prompt. At most 100 entries, ordered by prompt name. */
   referenced_by?: LLMPromptResolveResponseReferencedByList;
 }
+const LLMPromptResolveResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<LLMPromptResolveResponse>;
+
 export type ListLlmPromptsRequestContent = "full" | "preview" | "none";
+const ListLlmPromptsRequestContent = S.String;
+
 export type ListLlmPromptsRequestOrderBy =
   | "name"
   | "-name"
@@ -228,6 +315,8 @@ export type ListLlmPromptsRequestOrderBy =
   | "-first_version_created_at"
   | "prompt_size_bytes"
   | "-prompt_size_bytes";
+const ListLlmPromptsRequestOrderBy = S.String;
+
 export interface ListLlmPromptsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -248,17 +337,39 @@ export interface ListLlmPromptsRequest {
   /** Optional substring filter applied to prompt names and prompt content. */
   search?: string;
 }
+const ListLlmPromptsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListLlmPromptsRequest>;
+
 export type LLMPromptListOutlineList = Array<LLMPromptOutlineEntry>;
+const LLMPromptListOutlineList = LLMPromptOutlineList as any as S.Schema<LLMPromptListOutlineList>;
+
 /** Names of the labels currently pointing at this version. */
 export type LLMPromptListLabelsList = Array<string>;
+const LLMPromptListLabelsList = LLMPromptLabelsList as any as S.Schema<LLMPromptListLabelsList>;
+
 export interface LLMPromptLabelSummary {
   /** Label name, e.g. 'production'. */
   name: string;
   /** Prompt version this label currently points to. */
   version: number;
 }
+const LLMPromptLabelSummary = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<LLMPromptLabelSummary>;
+
 export type LLMPromptListAllLabelsList = Array<LLMPromptLabelSummary>;
+const LLMPromptListAllLabelsList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<LLMPromptListAllLabelsList>;
+
 export type LLMPromptListResolvedReferencesList = Array<LLMPromptResolvedReference>;
+const LLMPromptListResolvedReferencesList =
+  LLMPromptPublicResolvedReferencesList as any as S.Schema<LLMPromptListResolvedReferencesList>;
+
 export interface LLMPromptList {
   id?: string;
   /** Unique prompt name using letters, numbers, hyphens, and underscores only. */
@@ -288,19 +399,41 @@ export interface LLMPromptList {
   all_labels?: LLMPromptListAllLabelsList;
   resolved_references?: LLMPromptListResolvedReferencesList | null;
 }
+const LLMPromptList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<LLMPromptList>;
+
 export type PaginatedLLMPromptListListResultsList = Array<LLMPromptList>;
+const PaginatedLLMPromptListListResultsList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<PaginatedLLMPromptListListResultsList>;
+
 export interface PaginatedLLMPromptListList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedLLMPromptListListResultsList;
 }
+const PaginatedLLMPromptListList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<PaginatedLLMPromptListList>;
+
 export interface LlmPromptsNameArchiveCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   prompt_name: string;
 }
+const LlmPromptsNameArchiveCreateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<LlmPromptsNameArchiveCreateRequest>;
+
 export interface LlmPromptsNameArchiveCreateResponse {}
+const LlmPromptsNameArchiveCreateResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<LlmPromptsNameArchiveCreateResponse>;
+
 export interface LlmPromptsNameDuplicateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -308,13 +441,26 @@ export interface LlmPromptsNameDuplicateCreateRequest {
   /** Name for the duplicated prompt. Must be unique and use only letters, numbers, hyphens, and underscores. */
   new_name?: string;
 }
+const LlmPromptsNameDuplicateCreateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<LlmPromptsNameDuplicateCreateRequest>;
+
 export interface LlmPromptsNameLabelsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   prompt_name: string;
   label_name: string;
 }
+const LlmPromptsNameLabelsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<LlmPromptsNameLabelsDestroyRequest>;
+
 export interface LlmPromptsNameLabelsDestroyResponse {}
+const LlmPromptsNameLabelsDestroyResponse =
+  LlmPromptsNameArchiveCreateResponse as any as S.Schema<LlmPromptsNameLabelsDestroyResponse>;
+
 export interface UpdateLlmPromptsNameLabelRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -323,14 +469,29 @@ export interface UpdateLlmPromptsNameLabelRequest {
   /** Prompt version this label should point to. If the label already exists on another version of the prompt, it is moved there. */
   version: number;
 }
+const UpdateLlmPromptsNameLabelRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<UpdateLlmPromptsNameLabelRequest>;
+
 export interface LLMPromptEditOperation {
   /** Text to find in the current prompt. Must match exactly once. */
   old?: string;
   /** Replacement text. */
   new?: string;
 }
+const LLMPromptEditOperation = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<LLMPromptEditOperation>;
+
 /** List of find/replace operations to apply to the current prompt version. Each edit's 'old' text must match exactly once. Edits are applied sequentially. Mutually exclusive with prompt. */
 export type UpdateLlmPromptsNamePartialRequestEditsList = Array<LLMPromptEditOperation>;
+const UpdateLlmPromptsNamePartialRequestEditsList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<UpdateLlmPromptsNamePartialRequestEditsList>;
+
 export interface UpdateLlmPromptsNamePartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -346,6 +507,11 @@ export interface UpdateLlmPromptsNamePartialRequest {
   /** Optional note describing what changed in this version. Shown in the version history. */
   version_description?: string;
 }
+const UpdateLlmPromptsNamePartialRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<UpdateLlmPromptsNamePartialRequest>;
+
 export type CreateLlmPromptError = PosthogOpError;
 export const createLlmPrompt: API.OperationMethod<
   CreateLlmPromptRequest,
@@ -353,8 +519,8 @@ export const createLlmPrompt: API.OperationMethod<
   CreateLlmPromptError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateLlmPromptRequest>,
-  output: __S(6) as any as S.Schema<LLMPrompt>,
+  input: CreateLlmPromptRequest,
+  output: LLMPrompt,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -367,8 +533,8 @@ export const getLlmPromptsName: API.OperationMethod<
   GetLlmPromptsNameError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<GetLlmPromptsNameRequest>,
-  output: __S(10) as any as S.Schema<LLMPromptPublic>,
+  input: GetLlmPromptsNameRequest,
+  output: LLMPromptPublic,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -381,8 +547,8 @@ export const getLlmPromptsResolveName: API.OperationMethod<
   GetLlmPromptsResolveNameError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetLlmPromptsResolveNameRequest>,
-  output: __S(18) as any as S.Schema<LLMPromptResolveResponse>,
+  input: GetLlmPromptsResolveNameRequest,
+  output: LLMPromptResolveResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -395,8 +561,8 @@ export const listLlmPrompts: API.OperationMethod<
   ListLlmPromptsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<ListLlmPromptsRequest>,
-  output: __S(24) as any as S.Schema<PaginatedLLMPromptListList>,
+  input: ListLlmPromptsRequest,
+  output: PaginatedLLMPromptListList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -409,8 +575,8 @@ export const llmPromptsNameArchiveCreate: API.OperationMethod<
   LlmPromptsNameArchiveCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<LlmPromptsNameArchiveCreateRequest>,
-  output: __S(26) as any as S.Schema<LlmPromptsNameArchiveCreateResponse>,
+  input: LlmPromptsNameArchiveCreateRequest,
+  output: LlmPromptsNameArchiveCreateResponse,
   errors: [Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -423,8 +589,8 @@ export const llmPromptsNameDuplicateCreate: API.OperationMethod<
   LlmPromptsNameDuplicateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<LlmPromptsNameDuplicateCreateRequest>,
-  output: __S(6) as any as S.Schema<LLMPrompt>,
+  input: LlmPromptsNameDuplicateCreateRequest,
+  output: LLMPrompt,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -437,8 +603,8 @@ export const llmPromptsNameLabelsDestroy: API.OperationMethod<
   LlmPromptsNameLabelsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<LlmPromptsNameLabelsDestroyRequest>,
-  output: __S(26) as any as S.Schema<LlmPromptsNameLabelsDestroyResponse>,
+  input: LlmPromptsNameLabelsDestroyRequest,
+  output: LlmPromptsNameLabelsDestroyResponse,
   errors: [Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -451,8 +617,8 @@ export const updateLlmPromptsNameLabel: API.OperationMethod<
   UpdateLlmPromptsNameLabelError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<UpdateLlmPromptsNameLabelRequest>,
-  output: __S(14) as any as S.Schema<LLMPromptLabel>,
+  input: UpdateLlmPromptsNameLabelRequest,
+  output: LLMPromptLabel,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -465,8 +631,8 @@ export const updateLlmPromptsNamePartial: API.OperationMethod<
   UpdateLlmPromptsNamePartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<UpdateLlmPromptsNamePartialRequest>,
-  output: __S(6) as any as S.Schema<LLMPrompt>,
+  input: UpdateLlmPromptsNamePartialRequest,
+  output: LLMPrompt,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -499,8 +665,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 3:
@@ -511,7 +677,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "LLMPromptOutlineEntry" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(LLMPromptOutlineEntry);
     case 5:
       return S.Array(S.String);
     case 6:
@@ -523,7 +689,7 @@ function __c0(j: number): any {
           config: S.optional(S.NullOr(S.Unknown)),
           version: S.optional(S.Number),
           version_description: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(__S(2))),
+          created_by: S.optional(S.NullOr(UserBasic)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
           deleted: S.optional(S.Boolean),
@@ -531,8 +697,8 @@ function __c0(j: number): any {
           latest_version: S.optional(S.Number),
           version_count: S.optional(S.Number),
           first_version_created_at: S.optional(S.String),
-          outline: S.optional(__S(4)),
-          labels: S.optional(__S(5)),
+          outline: S.optional(LLMPromptOutlineList),
+          labels: S.optional(LLMPromptLabelsList),
           activity_item_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "LLMPrompt" });
@@ -541,7 +707,7 @@ function __c0(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           prompt_name: S.String.pipe(T.Label()),
-          content: S.optional(S.String.pipe(T.Query())),
+          content: S.optional(GetLlmPromptsNameRequestContent.pipe(T.Query())),
           label: S.optional(S.String.pipe(T.Query())),
           resolve: S.optional(S.Boolean.pipe(T.Query())),
           version: S.optional(S.Number.pipe(T.Query())),
@@ -568,7 +734,7 @@ function __c1(j: number): any {
         identifier: "LLMPromptResolvedReference",
       });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(LLMPromptResolvedReference);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -577,10 +743,10 @@ function __c1(j: number): any {
           prompt: S.optional(S.Unknown),
           config: S.optional(S.NullOr(S.Unknown)),
           prompt_preview: S.optional(S.String),
-          outline: S.optional(__S(4)),
+          outline: S.optional(LLMPromptPublicOutlineList),
           version: S.optional(S.Number),
           label: S.optional(S.String),
-          resolved_references: S.optional(__S(9)),
+          resolved_references: S.optional(LLMPromptPublicResolvedReferencesList),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
           deleted: S.optional(S.Boolean),
@@ -616,14 +782,14 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           version: S.optional(S.Number),
           version_description: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(__S(2))),
+          created_by: S.optional(S.NullOr(UserBasic)),
           created_at: S.optional(S.String),
           is_latest: S.optional(S.Boolean),
-          labels: S.optional(__S(5)),
+          labels: S.optional(LLMPromptVersionSummaryLabelsList),
         }),
       ).annotate({ identifier: "LLMPromptVersionSummary" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(LLMPromptVersionSummary);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -631,13 +797,13 @@ function __c1(j: number): any {
           name: S.String,
           prompt_name: S.String,
           version: S.Number,
-          created_by: __S(2),
+          created_by: UserBasic,
           created_at: S.String,
           updated_at: S.String,
         }),
       ).annotate({ identifier: "LLMPromptLabel" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(LLMPromptLabel);
   }
 }
 function __c2(j: number): any {
@@ -651,27 +817,27 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "LLMPromptReferencedBy" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(LLMPromptReferencedBy);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          prompt: S.optional(__S(6)),
-          versions: S.optional(__S(13)),
+          prompt: S.optional(LLMPrompt),
+          versions: S.optional(LLMPromptResolveResponseVersionsList),
           has_more: S.optional(S.Boolean),
-          labels: S.optional(__S(15)),
-          referenced_by: S.optional(__S(17)),
+          labels: S.optional(LLMPromptResolveResponseLabelsList),
+          referenced_by: S.optional(LLMPromptResolveResponseReferencedByList),
         }),
       ).annotate({ identifier: "LLMPromptResolveResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          content: S.optional(S.String.pipe(T.Query())),
+          content: S.optional(ListLlmPromptsRequestContent.pipe(T.Query())),
           created_by_id: S.optional(S.Number.pipe(T.Query())),
           label: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          order_by: S.optional(S.String.pipe(T.Query())),
+          order_by: S.optional(ListLlmPromptsRequestOrderBy.pipe(T.Query())),
           resolve: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -686,7 +852,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "LLMPromptLabelSummary" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(LLMPromptLabelSummary);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -696,7 +862,7 @@ function __c2(j: number): any {
           config: S.optional(S.NullOr(S.Unknown)),
           version: S.optional(S.Number),
           version_description: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(__S(2))),
+          created_by: S.optional(S.NullOr(UserBasic)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
           deleted: S.optional(S.Boolean),
@@ -704,17 +870,17 @@ function __c2(j: number): any {
           latest_version: S.optional(S.Number),
           version_count: S.optional(S.Number),
           first_version_created_at: S.optional(S.String),
-          outline: S.optional(__S(4)),
-          labels: S.optional(__S(5)),
+          outline: S.optional(LLMPromptListOutlineList),
+          labels: S.optional(LLMPromptListLabelsList),
           activity_item_id: S.optional(S.String),
           prompt_preview: S.optional(S.String),
           prompt_size_bytes: S.optional(S.Number),
-          all_labels: S.optional(__S(21)),
-          resolved_references: S.optional(S.NullOr(__S(9))),
+          all_labels: S.optional(LLMPromptListAllLabelsList),
+          resolved_references: S.optional(S.NullOr(LLMPromptListResolvedReferencesList)),
         }),
       ).annotate({ identifier: "LLMPromptList" });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(LLMPromptList);
   }
 }
 function __c3(j: number): any {
@@ -725,7 +891,7 @@ function __c3(j: number): any {
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(23)),
+          results: S.optional(PaginatedLLMPromptListListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedLLMPromptListList",
@@ -806,7 +972,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "LLMPromptEditOperation" });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(LLMPromptEditOperation);
   }
 }
 function __c4(j: number): any {
@@ -817,7 +983,7 @@ function __c4(j: number): any {
           project_id: S.String.pipe(T.Label()),
           prompt_name: S.String.pipe(T.Label()),
           prompt: S.optional(S.Unknown),
-          edits: S.optional(__S(31)),
+          edits: S.optional(UpdateLlmPromptsNamePartialRequestEditsList),
           config: S.optional(S.NullOr(S.Unknown)),
           base_version: S.optional(S.Number),
           version_description: S.optional(S.String),
@@ -831,24 +997,5 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "UpdateLlmPromptsNamePartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

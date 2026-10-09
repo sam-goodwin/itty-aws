@@ -7,8 +7,6 @@ import { UnknownOvhError } from "../errors.ts";
 import { OvhProtocol, type OvhOpError, type OvhOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { OvhOpError, OvhOpContext };
 
@@ -16,15 +14,32 @@ export interface AcceptMeAgreementRequest {
   /** Id of the contract */
   id: number;
 }
+const AcceptMeAgreementRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AcceptMeAgreementRequest>;
+
 export type AcceptMeAgreementResponse = string;
+const AcceptMeAgreementResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AcceptMeAgreementResponse>;
+
 export interface AcceptMeMigrationContractRequest {
   /** Migration ID */
   migrationId: number;
   /** Contract ID */
   contractId: number;
 }
+const AcceptMeMigrationContractRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AcceptMeMigrationContractRequest>;
+
 /** State of the agreement */
 export type MeAgreementsAgreementStatusEnum = "ko" | "obsolete" | "ok" | "todo";
+const MeAgreementsAgreementStatusEnum = S.String;
+
 /** Contract Agreement */
 export interface MeAgreementsContractAgreement {
   /** State of the agreement */
@@ -36,50 +51,121 @@ export interface MeAgreementsContractAgreement {
   /** Contract Agreement ID */
   id?: number;
 }
+const MeAgreementsContractAgreement = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<MeAgreementsContractAgreement>;
+
 export interface AcceptMeTaskContactChangeRequest {
   id: number;
   /** The token you received by email for this request */
   token: string;
 }
+const AcceptMeTaskContactChangeRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AcceptMeTaskContactChangeRequest>;
+
 export interface AcceptMeTaskContactChangeResponse {}
+const AcceptMeTaskContactChangeResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AcceptMeTaskContactChangeResponse>;
+
 export interface AcceptMeTaskEmailChangeRequest {
   id: number;
   /** The token you received by email for this request */
   token: string;
 }
+const AcceptMeTaskEmailChangeRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AcceptMeTaskEmailChangeRequest>;
+
 export interface AcceptMeTaskEmailChangeResponse {}
+const AcceptMeTaskEmailChangeResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AcceptMeTaskEmailChangeResponse>;
+
 export interface ApplyMeSlaRequest {
   /** Id of the object */
   id: number;
 }
+const ApplyMeSlaRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ApplyMeSlaRequest>;
+
 export interface ApplyMeSlaResponse {}
+const ApplyMeSlaResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ApplyMeSlaResponse>;
+
 export interface CancelMeTaskDnsRequest {
   /** Id */
   id: number;
 }
+const CancelMeTaskDnsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CancelMeTaskDnsRequest>;
+
 export interface CancelMeTaskDnsResponse {}
+const CancelMeTaskDnsResponse = ApplyMeSlaResponse as any as S.Schema<CancelMeTaskDnsResponse>;
+
 export interface CancelMeTaskDomainRequest {
   /** Id */
   id: number;
 }
+const CancelMeTaskDomainRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CancelMeTaskDomainRequest>;
+
 export interface CancelMeTaskDomainResponse {}
+const CancelMeTaskDomainResponse =
+  ApplyMeSlaResponse as any as S.Schema<CancelMeTaskDomainResponse>;
+
 export interface CheckMeVoucherValidityRequest {
   /** Voucher value */
   voucher: string;
 }
+const CheckMeVoucherValidityRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CheckMeVoucherValidityRequest>;
+
 /** Voucher Status and Information */
 export interface NichandleVoucherStatus {
   /** Is voucher valid */
   validity?: boolean;
 }
+const NichandleVoucherStatus = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<NichandleVoucherStatus>;
+
 export interface CreateMeAccessRestrictionBackupCodeRequest {}
+const CreateMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateMeAccessRestrictionBackupCodeRequest>;
+
 export type NichandleAccessRestrictionSOTPSecretCodesList = Array<string>;
+const NichandleAccessRestrictionSOTPSecretCodesList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<NichandleAccessRestrictionSOTPSecretCodesList>;
+
 /** Describe SOTP secret keys */
 export interface NichandleAccessRestrictionSOTPSecret {
   codes?: NichandleAccessRestrictionSOTPSecretCodesList;
 }
+const NichandleAccessRestrictionSOTPSecret = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<NichandleAccessRestrictionSOTPSecret>;
+
 /** Accept or deny IP access */
 export type NichandleAccessRestrictionIpRestrictionRuleEnum = "accept" | "deny";
+const NichandleAccessRestrictionIpRestrictionRuleEnum = S.String;
+
 export interface CreateMeAccessRestrictionIpRequest {
   /** An IP range where we will apply the rule */
   ip: string;
@@ -88,24 +174,57 @@ export interface CreateMeAccessRestrictionIpRequest {
   /** Send an email if someone try to access with this IP address */
   warning: boolean;
 }
+const CreateMeAccessRestrictionIpRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateMeAccessRestrictionIpRequest>;
+
 export interface CreateMeAccessRestrictionIpResponse {}
+const CreateMeAccessRestrictionIpResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeAccessRestrictionIpResponse>;
+
 export interface CreateMeAccessRestrictionSmsRequest {
   /** Cell phone number to register */
   phone: string;
 }
+const CreateMeAccessRestrictionSmsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateMeAccessRestrictionSmsRequest>;
+
 /** Describe secret key */
 export interface NichandleAccessRestrictionSmsSecret {
   id?: number;
   remainingTry?: number;
 }
+const NichandleAccessRestrictionSmsSecret = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<NichandleAccessRestrictionSmsSecret>;
+
 export interface CreateMeAccessRestrictionTotpRequest {}
+const CreateMeAccessRestrictionTotpRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateMeAccessRestrictionTotpRequest>;
+
 /** Describe TOTP secret keys */
 export interface NichandleAccessRestrictionTOTPSecret {
   id?: number;
   qrcodeHelper?: string;
   secret?: string | Redacted.Redacted<string>;
 }
+const NichandleAccessRestrictionTOTPSecret = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<NichandleAccessRestrictionTOTPSecret>;
+
 export interface CreateMeAccessRestrictionU2fRequest {}
+const CreateMeAccessRestrictionU2fRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateMeAccessRestrictionU2fRequest>;
+
 /** U2F Register Request */
 export interface NichandleAccessRestrictionU2FRegisterChallenge {
   challenge?: string;
@@ -116,6 +235,11 @@ export interface NichandleAccessRestrictionU2FRegisterChallenge {
   userId?: string;
   userName?: string;
 }
+const NichandleAccessRestrictionU2FRegisterChallenge = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<NichandleAccessRestrictionU2FRegisterChallenge>;
+
 /** Countries a nichandle can choose */
 export type NichandleCountryEnum =
   | "AC"
@@ -372,6 +496,8 @@ export type NichandleCountryEnum =
   | "ZA"
   | "ZM"
   | "ZW";
+const NichandleCountryEnum = S.String;
+
 /** Languages a nichandle can choose */
 export type NichandleLanguageEnum =
   | "cs_CZ"
@@ -393,6 +519,8 @@ export type NichandleLanguageEnum =
   | "nl_NL"
   | "pl_PL"
   | "pt_PT";
+const NichandleLanguageEnum = S.String;
+
 /** Legal forms a nichandle can be registered as */
 export type NichandleLegalFormEnum =
   | "administration"
@@ -401,10 +529,16 @@ export type NichandleLegalFormEnum =
   | "individual"
   | "other"
   | "personalcorporation";
+const NichandleLegalFormEnum = S.String;
+
 /** All phone type a person can choose */
 export type NichandlePhoneTypeEnum = "landline" | "mobile";
+const NichandlePhoneTypeEnum = S.String;
+
 /** All genders a person can choose */
 export type NichandleGenderEnum = "female" | "male";
+const NichandleGenderEnum = S.String;
+
 export interface CreateMeAccountRequest {
   /** Address of nichandle */
   address?: string | null;
@@ -460,6 +594,11 @@ export interface CreateMeAccountRequest {
   /** Zipcode */
   zip?: string | null;
 }
+const CreateMeAccountRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateMeAccountRequest>;
+
 /** Customer currency */
 export interface NichandleCurrency {
   /** Currency code */
@@ -467,8 +606,12 @@ export interface NichandleCurrency {
   /** Currency symbol */
   symbol?: string;
 }
+const NichandleCurrency = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<NichandleCurrency>;
+
 /** OVH companies */
 export type NichandleOvhCompanyEnum = "kimsufi" | "ovh" | "soyoustart";
+const NichandleOvhCompanyEnum = S.String;
+
 /** OVH subsidiaries */
 export type NichandleOvhSubsidiaryEnum =
   | "CZ"
@@ -487,8 +630,12 @@ export type NichandleOvhSubsidiaryEnum =
   | "PT"
   | "SN"
   | "TN";
+const NichandleOvhSubsidiaryEnum = S.String;
+
 /** States a nichandle can be in */
 export type NichandleStateEnum = "complete" | "incomplete";
+const NichandleStateEnum = S.String;
+
 /** Details about your OVH identifier */
 export interface NichandleNichandle {
   /** Address of nichandle */
@@ -559,15 +706,32 @@ export interface NichandleNichandle {
   /** Zipcode */
   zip?: string | null;
 }
+const NichandleNichandle = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<NichandleNichandle>;
+
 export interface CreateMeAutorenewRequest {
   /** Day of autorenew */
   renewDay: number;
 }
+const CreateMeAutorenewRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateMeAutorenewRequest>;
+
 export interface CreateMeAutorenewResponse {}
+const CreateMeAutorenewResponse = ApplyMeSlaResponse as any as S.Schema<CreateMeAutorenewResponse>;
+
 export interface CreateMeBillDebtPayRequest {
   billId: string;
 }
+const CreateMeBillDebtPayRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateMeBillDebtPayRequest>;
+
 export type BillingOrderMetadatasList = Array<string>;
+const BillingOrderMetadatasList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<BillingOrderMetadatasList>;
+
 /** Currency code */
 export type OrderCurrencyCodeEnum =
   | "AUD"
@@ -585,6 +749,8 @@ export type OrderCurrencyCodeEnum =
   | "USD"
   | "XOF"
   | "points";
+const OrderCurrencyCodeEnum = S.String;
+
 /** Price with its currency and textual representation */
 export interface OrderPrice {
   /** Currency code */
@@ -596,6 +762,8 @@ export interface OrderPrice {
   /** The effective price */
   value?: number;
 }
+const OrderPrice = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<OrderPrice>;
+
 /** Details about an Order */
 export interface BillingOrder {
   date?: string | null;
@@ -610,6 +778,8 @@ export interface BillingOrder {
   tax?: OrderPrice;
   url?: string;
 }
+const BillingOrder = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<BillingOrder>;
+
 export interface CreateMeBillingGroupRequest {
   /** Contact ID from /me/contact */
   contactId?: number | null;
@@ -618,6 +788,11 @@ export interface CreateMeBillingGroupRequest {
   /** Payment method ID associated to the billing group */
   paymentMethodId?: number | null;
 }
+const CreateMeBillingGroupRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateMeBillingGroupRequest>;
+
 /** Missing description */
 export interface MeBillingGroupBillingGroup {
   /** Contact ID from /me/contact */
@@ -633,12 +808,22 @@ export interface MeBillingGroupBillingGroup {
   /** Payment method ID associated to the billing group */
   paymentMethodId?: number | null;
 }
+const MeBillingGroupBillingGroup = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<MeBillingGroupBillingGroup>;
+
 export interface CreateMeBillingGroupServiceRequest {
   /** Group ID */
   groupId: number;
   /** A service ID to associate */
   serviceId: number;
 }
+const CreateMeBillingGroupServiceRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateMeBillingGroupServiceRequest>;
+
 /** Missing description */
 export interface MeBillingGroupService {
   /** Billing group ID */
@@ -646,13 +831,28 @@ export interface MeBillingGroupService {
   /** Service ID */
   serviceId?: number;
 }
+const MeBillingGroupService = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<MeBillingGroupService>;
+
 export interface CreateMeBillingInvoicesByPostalMailRequest {
   /** Send invoices through postal mail */
   enable: boolean;
 }
+const CreateMeBillingInvoicesByPostalMailRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateMeBillingInvoicesByPostalMailRequest>;
+
 export interface CreateMeBillingInvoicesByPostalMailResponse {}
+const CreateMeBillingInvoicesByPostalMailResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeBillingInvoicesByPostalMailResponse>;
+
 /** Type of a purchase order */
 export type MeBillingPurchaseOrderPurchaseOrderTypeEnum = "PURCHASE_ORDER" | "REFERENCE_ORDER";
+const MeBillingPurchaseOrderPurchaseOrderTypeEnum = S.String;
+
 export interface CreateMeBillingPurchaseOrderRequest {
   /** Active */
   active?: boolean | null;
@@ -669,8 +869,15 @@ export interface CreateMeBillingPurchaseOrderRequest {
   /** Type of a purchase order */
   type: MeBillingPurchaseOrderPurchaseOrderTypeEnum | (string & {});
 }
+const CreateMeBillingPurchaseOrderRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateMeBillingPurchaseOrderRequest>;
+
 /** Status of the Purchase Order */
 export type MeBillingPurchaseOrderStatusEnum = "CREATED" | "DELETED";
+const MeBillingPurchaseOrderStatusEnum = S.String;
+
 /** Purchase Order */
 export interface MeBillingPurchaseOrderPurchaseOrder {
   /** Active */
@@ -696,32 +903,64 @@ export interface MeBillingPurchaseOrderPurchaseOrder {
   /** Type of a purchase order */
   type?: MeBillingPurchaseOrderPurchaseOrderTypeEnum;
 }
+const MeBillingPurchaseOrderPurchaseOrder = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<MeBillingPurchaseOrderPurchaseOrder>;
+
 export interface CreateMeBillingReportConsumptionRequest {
   /** End date of the report period */
   periodEnd: string;
   /** Start date of the report period */
   periodStart: string;
 }
+const CreateMeBillingReportConsumptionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateMeBillingReportConsumptionRequest>;
+
 /** Response of consumption billing report creation */
 export interface MeBillingReportConsumptionCreationResponse {
   /** Task id of the report */
   taskId?: string;
 }
+const MeBillingReportConsumptionCreationResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<MeBillingReportConsumptionCreationResponse>;
+
 export interface CreateMeCarbonCalculatorTaskRequest {
   /** Month of the requested document (day is ignored) */
   date: string;
 }
+const CreateMeCarbonCalculatorTaskRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<CreateMeCarbonCalculatorTaskRequest>;
+
 /** Response for request of customer's carbon impact */
 export interface CarbonCalculatorCalculationResponse {
   /** ID of the calculation task */
   taskID?: string;
 }
+const CarbonCalculatorCalculationResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CarbonCalculatorCalculationResponse>;
+
 export interface CreateMeChangeEmailRequest {
   /** New email to associate to your account */
   newEmail: string;
 }
+const CreateMeChangeEmailRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<CreateMeChangeEmailRequest>;
+
 /** State of email change task */
 export type NichandleChangeEmailTaskStateEnum = "aborted" | "done" | "refused" | "todo";
+const NichandleChangeEmailTaskStateEnum = S.String;
+
 /** Task running an email change on an account */
 export interface NichandleEmailChangeTask {
   /** End date of that request */
@@ -734,8 +973,21 @@ export interface NichandleEmailChangeTask {
   /** Current state of the request */
   state?: NichandleChangeEmailTaskStateEnum;
 }
+const NichandleEmailChangeTask = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<NichandleEmailChangeTask>;
+
 export interface CreateMeChangePasswordRequest {}
+const CreateMeChangePasswordRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreateMeChangePasswordRequest>;
+
 export interface CreateMeChangePasswordResponse {}
+const CreateMeChangePasswordResponse =
+  ApplyMeSlaResponse as any as S.Schema<CreateMeChangePasswordResponse>;
+
 /** Representation of a Contact */
 export interface MeContactAddress {
   /** City */
@@ -755,6 +1007,8 @@ export interface MeContactAddress {
   /** Zipcode */
   zip?: string | null;
 }
+const MeContactAddress = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<MeContactAddress>;
+
 export interface CreateMeContactRequest {
   /** Address for this contact */
   address?: MeContactAddress;
@@ -799,6 +1053,11 @@ export interface CreateMeContactRequest {
   /** VAT number */
   vat?: string | null;
 }
+const CreateMeContactRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CreateMeContactRequest>;
+
 /** Contact definition */
 export interface MeContactContact {
   /** Address for this contact */
@@ -846,15 +1105,27 @@ export interface MeContactContact {
   /** VAT number */
   vat?: string | null;
 }
+const MeContactContact = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<MeContactContact>;
+
 export interface CreateMeCorrectiveInvoiceDebtPayRequest {
   correctiveInvoiceId: string;
 }
+const CreateMeCorrectiveInvoiceDebtPayRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreateMeCorrectiveInvoiceDebtPayRequest>;
+
 export interface CreateMeCreditCodeRequest {
   /** Code to validate */
   inputCode: string;
   /** Restrict credit to a specific service */
   serviceId?: number;
 }
+const CreateMeCreditCodeRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<CreateMeCreditCodeRequest>;
+
 /** Missing description */
 export interface MeCreditBalanceMovementSubObject {
   /** Sub object ID */
@@ -862,6 +1133,11 @@ export interface MeCreditBalanceMovementSubObject {
   /** Sub object name */
   name?: string;
 }
+const MeCreditBalanceMovementSubObject = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<MeCreditBalanceMovementSubObject>;
+
 /** Balance movement type */
 export type MeCreditBalanceMovementTypeEnum =
   | "BONUS"
@@ -875,6 +1151,8 @@ export type MeCreditBalanceMovementTypeEnum =
   | "UNPAID"
   | "USE"
   | "VOUCHER";
+const MeCreditBalanceMovementTypeEnum = S.String;
+
 /** Missing description */
 export interface MeCreditBalanceMovement {
   /** Movement amount */
@@ -898,33 +1176,78 @@ export interface MeCreditBalanceMovement {
   /** Movement type */
   type?: MeCreditBalanceMovementTypeEnum;
 }
+const MeCreditBalanceMovement = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<MeCreditBalanceMovement>;
+
 export interface CreateMeDebtAccountDebtPayRequest {
   debtId: number;
 }
+const CreateMeDebtAccountDebtPayRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<CreateMeDebtAccountDebtPayRequest>;
+
 export interface CreateMeDebtAccountPayRequest {}
+const CreateMeDebtAccountPayRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<CreateMeDebtAccountPayRequest>;
+
 export interface CreateMeDepositPaidBillDebtPayRequest {
   depositId: string;
   billId: string;
 }
+const CreateMeDepositPaidBillDebtPayRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreateMeDepositPaidBillDebtPayRequest>;
+
 /** Key and value, with proper key strings */
 export interface ComplexTypeSafeKeyValueStringInput {
   value?: string;
 }
+const ComplexTypeSafeKeyValueStringInput = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ComplexTypeSafeKeyValueStringInput>;
+
 /** File tags */
 export type CreateMeDocumentRequestTagsList = Array<ComplexTypeSafeKeyValueStringInput>;
+const CreateMeDocumentRequestTagsList = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<CreateMeDocumentRequestTagsList>;
+
 export interface CreateMeDocumentRequest {
   /** File name */
   name: string;
   /** File tags */
   tags?: CreateMeDocumentRequestTagsList;
 }
+const CreateMeDocumentRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<CreateMeDocumentRequest>;
+
 /** Key and value, with proper key strings */
 export interface ComplexTypeSafeKeyValueString {
   key?: string;
   value?: string;
 }
+const ComplexTypeSafeKeyValueString = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ComplexTypeSafeKeyValueString>;
+
 /** Document tags */
 export type NichandleDocumentDocumentTagsList = Array<ComplexTypeSafeKeyValueString>;
+const NichandleDocumentDocumentTagsList = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<NichandleDocumentDocumentTagsList>;
+
 /** List of documents added on your account */
 export interface NichandleDocumentDocument {
   /** Document creation */
@@ -946,36 +1269,81 @@ export interface NichandleDocumentDocument {
   /** Document validation */
   validationDate?: string | null;
 }
+const NichandleDocumentDocument = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<NichandleDocumentDocument>;
+
 export interface CreateMeDocumentCorsRequest {
   /** Allow this origin */
   origin: string;
 }
+const CreateMeDocumentCorsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<CreateMeDocumentCorsRequest>;
+
 export interface CreateMeDocumentCorsResponse {}
+const CreateMeDocumentCorsResponse =
+  ApplyMeSlaResponse as any as S.Schema<CreateMeDocumentCorsResponse>;
+
 export interface CreateMeDownPaymentInvoiceDebtPayRequest {
   downPaymentInvoiceId: string;
 }
+const CreateMeDownPaymentInvoiceDebtPayRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<CreateMeDownPaymentInvoiceDebtPayRequest>;
+
 export interface CreateMeFaxCustomDomainRequest {
   /** The custom domain of your fax services */
   domain: string;
 }
+const CreateMeFaxCustomDomainRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<CreateMeFaxCustomDomainRequest>;
+
 /** Custom domains of your fax services */
 export interface TelephonyMailDomain2Service {
   /** The custom domain of your fax services */
   domain?: string;
   id?: number;
 }
+const TelephonyMailDomain2Service = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<TelephonyMailDomain2Service>;
+
 export interface CreateMeFeedbackRequest {
   /** Your feedback text */
   body: string;
   /** Subject of your request */
   subject: string;
 }
+const CreateMeFeedbackRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<CreateMeFeedbackRequest>;
+
 export interface CreateMeFeedbackResponse {}
+const CreateMeFeedbackResponse = ApplyMeSlaResponse as any as S.Schema<CreateMeFeedbackResponse>;
+
 export interface CreateMeFidelityAccountCreditOrderRequest {
   /** The amount of points you want to credit your fidelity account of */
   amount: number;
 }
+const CreateMeFidelityAccountCreditOrderRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<CreateMeFidelityAccountCreditOrderRequest>;
+
 export interface CreateMeGeolocationRequest {}
+const CreateMeGeolocationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<CreateMeGeolocationRequest>;
+
 /** Continent */
 export type MeGeolocationContinentEnum =
   | "africa"
@@ -985,6 +1353,8 @@ export type MeGeolocationContinentEnum =
   | "north-america"
   | "oceania"
   | "south-america";
+const MeGeolocationContinentEnum = S.String;
+
 /** Country iso code */
 export type MeGeolocationCountryEnum =
   | "ac"
@@ -1247,6 +1617,8 @@ export type MeGeolocationCountryEnum =
   | "za"
   | "zm"
   | "zw";
+const MeGeolocationCountryEnum = S.String;
+
 /** Representation of country and continent from visitor IP */
 export interface MeGeolocationContinentCountryLocation {
   /** Continent */
@@ -1256,8 +1628,15 @@ export interface MeGeolocationContinentCountryLocation {
   /** The IP address processed, the user's origin one */
   ip?: string;
 }
+const MeGeolocationContinentCountryLocation = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<MeGeolocationContinentCountryLocation>;
+
 /** Permission given on the account */
 export type AuthRoleEnum = "ADMIN" | "NONE" | "REGULAR" | "UNPRIVILEGED";
+const AuthRoleEnum = S.String;
+
 export interface CreateMeIdentityGroupRequest {
   /** Group's description */
   description?: string | null;
@@ -1266,6 +1645,11 @@ export interface CreateMeIdentityGroupRequest {
   /** Group's role */
   role?: AuthRoleEnum | (string & {});
 }
+const CreateMeIdentityGroupRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<CreateMeIdentityGroupRequest>;
+
 /** An IAM Group */
 export interface AuthGroup {
   /** Creation date of this group */
@@ -1283,15 +1667,28 @@ export interface AuthGroup {
   /** IAM identity URN of the group */
   urn?: string;
 }
+const AuthGroup = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<AuthGroup>;
+
 export interface CreateMeIdentityGroupUserRequest {
   /** Group */
   group: string;
   /** Username to add to the group */
   user?: string;
 }
+const CreateMeIdentityGroupUserRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<CreateMeIdentityGroupUserRequest>;
+
 export interface CreateMeIdentityGroupUserResponse {}
+const CreateMeIdentityGroupUserResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeIdentityGroupUserResponse>;
+
 /** List of AttributeValues allowed for this RequestedAttribute */
 export type AuthProviderRequestedAttributesValuesList = Array<string>;
+const AuthProviderRequestedAttributesValuesList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<AuthProviderRequestedAttributesValuesList>;
+
 /** A SAML 2.0 requested attribute that should be added to SAML requests when using this provider */
 export interface AuthProviderRequestedAttributes {
   /** Expresses that this RequestedAttribute is mandatory (remains advisory) */
@@ -1303,13 +1700,28 @@ export interface AuthProviderRequestedAttributes {
   /** List of AttributeValues allowed for this RequestedAttribute */
   values?: AuthProviderRequestedAttributesValuesList | null;
 }
+const AuthProviderRequestedAttributes = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<AuthProviderRequestedAttributes>;
+
 /** List of SAML RequestedAttribute to add to SAML requests */
 export type AuthProviderExtensionsRequestedAttributesList = Array<AuthProviderRequestedAttributes>;
+const AuthProviderExtensionsRequestedAttributesList = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<AuthProviderExtensionsRequestedAttributesList>;
+
 /** A SAML 2.0 Extension that should be added to SAML requests when using this provider */
 export interface AuthProviderExtensions {
   /** List of SAML RequestedAttribute to add to SAML requests */
   requestedAttributes?: AuthProviderExtensionsRequestedAttributesList | null;
 }
+const AuthProviderExtensions = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<AuthProviderExtensions>;
+
 export interface CreateMeIdentityProviderRequest {
   /** Whether account users should still be usable as a login method or not */
   disableUsers?: boolean | null;
@@ -1324,6 +1736,11 @@ export interface CreateMeIdentityProviderRequest {
   /** SAML User attribute name */
   userAttributeName?: string | null;
 }
+const CreateMeIdentityProviderRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<CreateMeIdentityProviderRequest>;
+
 /** X509 Certificate */
 export interface AuthCertificate {
   /** Certificate's expiration */
@@ -1331,8 +1748,15 @@ export interface AuthCertificate {
   /** Certificate's subject */
   subject?: string;
 }
+const AuthCertificate = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<AuthCertificate>;
+
 /** IdP's signing certificate */
 export type AuthProviderIdpSigningCertificatesList = Array<AuthCertificate>;
+const AuthProviderIdpSigningCertificatesList = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<AuthProviderIdpSigningCertificatesList>;
+
 /** An IAM Federation Provider */
 export interface AuthProvider {
   /** Creation date of the identity provider */
@@ -1354,8 +1778,12 @@ export interface AuthProvider {
   /** SAML User attribute name */
   userAttributeName?: string;
 }
+const AuthProvider = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<AuthProvider>;
+
 /** Type of user */
 export type AuthUserTypeEnum = "ROOT" | "SERVICE" | "USER";
+const AuthUserTypeEnum = S.String;
+
 export interface CreateMeIdentityUserRequest {
   /** User's description */
   description?: string;
@@ -1370,7 +1798,15 @@ export interface CreateMeIdentityUserRequest {
   /** Type of user to create */
   type?: AuthUserTypeEnum | (string & {});
 }
+const CreateMeIdentityUserRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<CreateMeIdentityUserRequest>;
+
 export interface CreateMeIdentityUserResponse {}
+const CreateMeIdentityUserResponse =
+  ApplyMeSlaResponse as any as S.Schema<CreateMeIdentityUserResponse>;
+
 export interface CreateMeIdentityUserTokenRequest {
   /** User */
   user: string;
@@ -1383,6 +1819,11 @@ export interface CreateMeIdentityUserTokenRequest {
   /** Personal access token's name */
   name: string;
 }
+const CreateMeIdentityUserTokenRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<CreateMeIdentityUserTokenRequest>;
+
 /** Personal access token usable on OVHcloud's applications */
 export interface AuthPersonalAccessTokenResponse {
   /** Creation date of this token */
@@ -1398,8 +1839,15 @@ export interface AuthPersonalAccessTokenResponse {
   /** Personal access token */
   token?: string;
 }
+const AuthPersonalAccessTokenResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<AuthPersonalAccessTokenResponse>;
+
 /** Ip registries */
 export type NichandleIpRegistryEnum = "ARIN" | "RIPE";
+const NichandleIpRegistryEnum = S.String;
+
 export interface CreateMeIpOrganisationRequest {
   abuse_mailbox: string;
   address: string;
@@ -1412,13 +1860,26 @@ export interface CreateMeIpOrganisationRequest {
   state?: string;
   zip?: string;
 }
+const CreateMeIpOrganisationRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<CreateMeIpOrganisationRequest>;
+
 export interface CreateMeIpOrganisationResponse {}
+const CreateMeIpOrganisationResponse =
+  ApplyMeSlaResponse as any as S.Schema<CreateMeIpOrganisationResponse>;
+
 export interface CreateMeLogAuditLogSubscriptionRequest {
   /** Log kind name to subscribe to */
   kind: string;
   /** Customer log stream ID */
   streamId: string;
 }
+const CreateMeLogAuditLogSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<CreateMeLogAuditLogSubscriptionRequest>;
+
 /** Asynchronous operation after subscribing or unsubscribing to a resource logs */
 export interface DbaasLogsLogSubscriptionResponse {
   /** Identifier of the operation */
@@ -1426,10 +1887,20 @@ export interface DbaasLogsLogSubscriptionResponse {
   /** Operation owner's service name */
   serviceName?: string;
 }
+const DbaasLogsLogSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<DbaasLogsLogSubscriptionResponse>;
+
 export interface CreateMeLogAuditLogUrlRequest {
   /** Log kind name */
   kind: string;
 }
+const CreateMeLogAuditLogUrlRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<CreateMeLogAuditLogUrlRequest>;
+
 /** Temporary url information */
 export interface DbaasLogsTemporaryLogsLink {
   /** Temporary url expiration date */
@@ -1437,22 +1908,50 @@ export interface DbaasLogsTemporaryLogsLink {
   /** Temporary url */
   url?: string;
 }
+const DbaasLogsTemporaryLogsLink = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<DbaasLogsTemporaryLogsLink>;
+
 export interface CreateMeLogSubscriptionRequest {
   /** Log kind name to subscribe to */
   kind: string;
   /** Customer log stream ID */
   streamId: string;
 }
+const CreateMeLogSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<CreateMeLogSubscriptionRequest>;
+
 export interface CreateMeLogUrlRequest {
   /** Log kind name */
   kind: string;
 }
+const CreateMeLogUrlRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<CreateMeLogUrlRequest>;
+
 export interface CreateMeManualDomainPaymentRequest {}
+const CreateMeManualDomainPaymentRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<CreateMeManualDomainPaymentRequest>;
+
 export interface CreateMeManualDomainPaymentResponse {}
+const CreateMeManualDomainPaymentResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeManualDomainPaymentResponse>;
+
 /** allowed callback urls */
 export type CreateMeOauth2ClientRequestCallbackUrlsList = Array<string>;
+const CreateMeOauth2ClientRequestCallbackUrlsList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<CreateMeOauth2ClientRequestCallbackUrlsList>;
+
 /** oAuth2 Flow */
 export type Oauth2ClientFlowEnum = "AUTHORIZATION_CODE" | "CLIENT_CREDENTIALS";
+const Oauth2ClientFlowEnum = S.String;
+
 export interface CreateMeOauth2ClientRequest {
   /** allowed callback urls */
   callbackUrls?: CreateMeOauth2ClientRequestCallbackUrlsList;
@@ -1463,6 +1962,11 @@ export interface CreateMeOauth2ClientRequest {
   /** client's name */
   name: string;
 }
+const CreateMeOauth2ClientRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<CreateMeOauth2ClientRequest>;
+
 /** An oAuth2 Client Secret */
 export interface Oauth2ClientSecret {
   /** client's client_id */
@@ -1470,11 +1974,18 @@ export interface Oauth2ClientSecret {
   /** client's client_secret */
   clientSecret?: string | Redacted.Redacted<string>;
 }
+const Oauth2ClientSecret = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<Oauth2ClientSecret>;
+
 export interface CreateMeOrderBalanceRequest {
   orderId: number;
   /** Balance name to use on this Order */
   balanceName: string;
 }
+const CreateMeOrderBalanceRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<CreateMeOrderBalanceRequest>;
+
 /** Credit balance applied on an Order */
 export interface BillingCreditBalance {
   /** Amount applied from the balance */
@@ -1482,20 +1993,42 @@ export interface BillingCreditBalance {
   /** Credit balance name */
   balanceName?: string;
 }
+const BillingCreditBalance = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<BillingCreditBalance>;
+
 export interface CreateMeOrderDebtPayRequest {
   orderId: number;
 }
+const CreateMeOrderDebtPayRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<CreateMeOrderDebtPayRequest>;
+
 /** Pay with payment method parameter */
 export interface BillingOrderPayWithPaymentMethod {
   /** ID of payment method for pay this order */
   id?: number;
 }
+const BillingOrderPayWithPaymentMethod = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<BillingOrderPayWithPaymentMethod>;
+
 export interface CreateMeOrderPayRequest {
   orderId: number;
   /** Payment method informations for pay */
   paymentMethod: BillingOrderPayWithPaymentMethod;
 }
+const CreateMeOrderPayRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<CreateMeOrderPayRequest>;
+
 export interface CreateMeOrderPayResponse {}
+const CreateMeOrderPayResponse = ApplyMeSlaResponse as any as S.Schema<CreateMeOrderPayResponse>;
+
 /** Reusable payment mean type */
 export type BillingReusablePaymentMeanEnum =
   | "CREDIT_CARD"
@@ -1513,6 +2046,8 @@ export type BillingReusablePaymentMeanEnum =
   | "fidelityAccount"
   | "ovhAccount"
   | "paypal";
+const BillingReusablePaymentMeanEnum = S.String;
+
 export interface CreateMeOrderPayWithRegisteredPaymentMeanRequest {
   orderId: number;
   /** The registered payment mean you want to use */
@@ -1520,7 +2055,15 @@ export interface CreateMeOrderPayWithRegisteredPaymentMeanRequest {
   /** Id of registered payment mean, mandatory for bankAccount, creditCard and paypal */
   paymentMeanId?: number;
 }
+const CreateMeOrderPayWithRegisteredPaymentMeanRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<CreateMeOrderPayWithRegisteredPaymentMeanRequest>;
+
 export interface CreateMeOrderPayWithRegisteredPaymentMeanResponse {}
+const CreateMeOrderPayWithRegisteredPaymentMeanResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeOrderPayWithRegisteredPaymentMeanResponse>;
+
 /** Retraction reason type */
 export type BillingOrderRetractionReasonEnum =
   | "competitor"
@@ -1530,6 +2073,8 @@ export type BillingOrderRetractionReasonEnum =
   | "performance"
   | "reliability"
   | "unused";
+const BillingOrderRetractionReasonEnum = S.String;
+
 export interface CreateMeOrderRetractionRequest {
   orderId: number;
   /** An optional comment of why you want to retract */
@@ -1537,35 +2082,84 @@ export interface CreateMeOrderRetractionRequest {
   /** The reason why you want to retract */
   reason: BillingOrderRetractionReasonEnum | (string & {});
 }
+const CreateMeOrderRetractionRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<CreateMeOrderRetractionRequest>;
+
 export interface CreateMeOrderRetractionResponse {}
+const CreateMeOrderRetractionResponse =
+  AcceptMeTaskEmailChangeResponse as any as S.Schema<CreateMeOrderRetractionResponse>;
+
 export interface CreateMeOrderWaiveRetractionRequest {
   orderId: number;
 }
+const CreateMeOrderWaiveRetractionRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<CreateMeOrderWaiveRetractionRequest>;
+
 export interface CreateMeOrderWaiveRetractionResponse {}
+const CreateMeOrderWaiveRetractionResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeOrderWaiveRetractionResponse>;
+
 export interface CreateMeOvhAccountCreditOrderRequest {
   ovhAccountId: string;
   /** The amount in cents you want to credit your account of */
   amount: number;
 }
+const CreateMeOvhAccountCreditOrderRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<CreateMeOvhAccountCreditOrderRequest>;
+
 export interface CreateMeOvhAccountMovementRequestRefundRequest {
   ovhAccountId: string;
   movementId: number;
   /** The amount in cents you want to retrieve */
   amount: number;
 }
+const CreateMeOvhAccountMovementRequestRefundRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<CreateMeOvhAccountMovementRequestRefundRequest>;
+
 export interface CreateMeOvhAccountMovementRequestRefundResponse {}
+const CreateMeOvhAccountMovementRequestRefundResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeOvhAccountMovementRequestRefundResponse>;
+
 export interface CreateMePasswordRecoverRequest {
   /** Company of your OVH Account Id */
   ovhCompany: NichandleOvhCompanyEnum | (string & {});
   /** Your OVH Account Id */
   ovhId: string;
 }
+const CreateMePasswordRecoverRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<CreateMePasswordRecoverRequest>;
+
 export interface CreateMePasswordRecoverResponse {}
+const CreateMePasswordRecoverResponse =
+  AcceptMeTaskEmailChangeResponse as any as S.Schema<CreateMePasswordRecoverResponse>;
+
 export interface CreateMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMeanRequest {
   /** Id */
   id: number;
 }
+const CreateMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMeanRequest =
+  /*@__PURE__*/ __L.at(
+    __c12,
+    7,
+  ) as any as S.Schema<CreateMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMeanRequest>;
+
 export interface CreateMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMeanResponse {}
+const CreateMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMeanResponse =
+  /*@__PURE__*/ __L.at(
+    __c13,
+    0,
+  ) as any as S.Schema<CreateMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMeanResponse>;
+
 /** Callback URL's to register a new payment method */
 export interface MePaymentMethodCallbackUrl {
   /** URL when customer cancels the action */
@@ -1579,8 +2173,15 @@ export interface MePaymentMethodCallbackUrl {
   /** URL when payment method registration success */
   success: string;
 }
+const MePaymentMethodCallbackUrl = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<MePaymentMethodCallbackUrl>;
+
 /** Payment method creation sub-type enum */
 export type MePaymentCreationSubTypeEnum = "CHORUS" | "NONE";
+const MePaymentCreationSubTypeEnum = S.String;
+
 export interface CreateMePaymentMethodRequest {
   /** Associated billing contact ID */
   billingContactId?: number | null;
@@ -1601,6 +2202,11 @@ export interface CreateMePaymentMethodRequest {
   /** Register this payment method if it's possible (default value is false and will proceed a oneshot transaction) */
   register?: boolean;
 }
+const CreateMePaymentMethodRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<CreateMePaymentMethodRequest>;
+
 /** Register integration type enum */
 export type MePaymentIntegrationEnum =
   | "BANK_TRANSFER"
@@ -1610,6 +2216,8 @@ export type MePaymentIntegrationEnum =
   | "NONE"
   | "POST_FORM"
   | "REDIRECT";
+const MePaymentIntegrationEnum = S.String;
+
 /** Registration response to validate */
 export interface MePaymentMethodValidation {
   /** Form session ID */
@@ -1627,13 +2235,26 @@ export interface MePaymentMethodValidation {
   /** Registration validation type */
   validationType?: MePaymentIntegrationEnum;
 }
+const MePaymentMethodValidation = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<MePaymentMethodValidation>;
+
 export interface CreateMePaymentMethodChallengeRequest {
   /** Payment method ID */
   paymentMethodId: number;
   /** Challenge */
   challenge: string;
 }
+const CreateMePaymentMethodChallengeRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<CreateMePaymentMethodChallengeRequest>;
+
 export interface CreateMePaymentMethodChallengeResponse {}
+const CreateMePaymentMethodChallengeResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMePaymentMethodChallengeResponse>;
+
 export interface CreateMePaymentMethodDetailRequest {
   /** Payment method ID */
   paymentMethodId: number;
@@ -1642,45 +2263,89 @@ export interface CreateMePaymentMethodDetailRequest {
   /** Transaction ID */
   transactionId?: number;
 }
+const CreateMePaymentMethodDetailRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<CreateMePaymentMethodDetailRequest>;
+
 export interface CreateMePreferenceManagerRequest {
   /** This preference key */
   key: string;
   /** This preference value */
   value: string;
 }
+const CreateMePreferenceManagerRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<CreateMePreferenceManagerRequest>;
+
 export interface CreateMePreferenceManagerResponse {}
+const CreateMePreferenceManagerResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMePreferenceManagerResponse>;
+
 export interface CreateMeSshKeyRequest {
   /** ASCII encoded public SSH key to add */
   key: string;
   /** name of the new public SSH key */
   keyName: string;
 }
+const CreateMeSshKeyRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<CreateMeSshKeyRequest>;
+
 export interface CreateMeSshKeyResponse {}
+const CreateMeSshKeyResponse = ApplyMeSlaResponse as any as S.Schema<CreateMeSshKeyResponse>;
+
 export interface CreateMeSubAccountRequest {
   /** Description of the new sub-account */
   description?: string;
 }
+const CreateMeSubAccountRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<CreateMeSubAccountRequest>;
+
 export type CreateMeSubAccountResponse = number;
+const CreateMeSubAccountResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<CreateMeSubAccountResponse>;
+
 export interface CreateMeSubAccountConsumerKeyRequest {
   /** Id of the object */
   id: number;
 }
+const CreateMeSubAccountConsumerKeyRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<CreateMeSubAccountConsumerKeyRequest>;
+
 /** Credentials to interact with the api on behalf of the sub-account */
 export interface NichandleSubAccountConsumerKey {
   /** The consumer key */
   consumerKey?: string;
 }
+const NichandleSubAccountConsumerKey = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<NichandleSubAccountConsumerKey>;
+
 export interface CreateMeTagRequest {
   /** Reason */
   reason?: string | null;
   /** Tag name */
   tagName: string;
 }
+const CreateMeTagRequest = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<CreateMeTagRequest>;
+
 /** Tag Extra */
 export interface MeTagTagExtra {
   /** Tax exemption */
   exemption?: string | null;
 }
+const MeTagTagExtra = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<MeTagTagExtra>;
+
 /** Tag status */
 export type MeTagStatusEnum =
   | "CREATED"
@@ -1694,6 +2359,8 @@ export type MeTagStatusEnum =
   | "REVOCATING"
   | "WAIT_MODERATION"
   | "WAIT_REVOCATION";
+const MeTagStatusEnum = S.String;
+
 /** Tag */
 export interface MeTagTag {
   /** Creation date */
@@ -1711,46 +2378,103 @@ export interface MeTagTag {
   /** Tag name */
   tag?: string;
 }
+const MeTagTag = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<MeTagTag>;
+
 export interface CreateMeTaskContactChangeRefuseRequest {
   id: number;
   /** The token you received by email for this request */
   token: string;
 }
+const CreateMeTaskContactChangeRefuseRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<CreateMeTaskContactChangeRefuseRequest>;
+
 export interface CreateMeTaskContactChangeRefuseResponse {}
+const CreateMeTaskContactChangeRefuseResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeTaskContactChangeRefuseResponse>;
+
 export interface CreateMeTaskDnsAccelerateRequest {
   /** Id */
   id: number;
 }
+const CreateMeTaskDnsAccelerateRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<CreateMeTaskDnsAccelerateRequest>;
+
 export interface CreateMeTaskDnsAccelerateResponse {}
+const CreateMeTaskDnsAccelerateResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeTaskDnsAccelerateResponse>;
+
 export interface CreateMeTaskDnsRelaunchRequest {
   /** Id */
   id: number;
 }
+const CreateMeTaskDnsRelaunchRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<CreateMeTaskDnsRelaunchRequest>;
+
 export interface CreateMeTaskDnsRelaunchResponse {}
+const CreateMeTaskDnsRelaunchResponse =
+  AcceptMeTaskEmailChangeResponse as any as S.Schema<CreateMeTaskDnsRelaunchResponse>;
+
 export interface CreateMeTaskDomainAccelerateRequest {
   /** Id */
   id: number;
 }
+const CreateMeTaskDomainAccelerateRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<CreateMeTaskDomainAccelerateRequest>;
+
 export interface CreateMeTaskDomainAccelerateResponse {}
+const CreateMeTaskDomainAccelerateResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeTaskDomainAccelerateResponse>;
+
 export interface CreateMeTaskDomainRelaunchRequest {
   /** Id */
   id: number;
 }
+const CreateMeTaskDomainRelaunchRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<CreateMeTaskDomainRelaunchRequest>;
+
 export interface CreateMeTaskDomainRelaunchResponse {}
+const CreateMeTaskDomainRelaunchResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeTaskDomainRelaunchResponse>;
+
 export interface CreateMeTaskEmailChangeRefuseRequest {
   id: number;
   /** The token you received by email for this request */
   token: string;
 }
+const CreateMeTaskEmailChangeRefuseRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<CreateMeTaskEmailChangeRefuseRequest>;
+
 export interface CreateMeTaskEmailChangeRefuseResponse {}
+const CreateMeTaskEmailChangeRefuseResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeTaskEmailChangeRefuseResponse>;
+
 /** Phone protocol */
 export type TelephonyProtocolEnum = "mgcp" | "sip";
+const TelephonyProtocolEnum = S.String;
+
 export interface CreateMeTelephonyDefaultIpRestrictionRequest {
   /** The IPv4 subnet you want to allow */
   subnet: string;
   /** The protocol you want to restrict (sip/mgcp) */
   type: TelephonyProtocolEnum | (string & {});
 }
+const CreateMeTelephonyDefaultIpRestrictionRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<CreateMeTelephonyDefaultIpRestrictionRequest>;
+
 /** Default IP restriction of a VoIP line */
 export interface TelephonyDefaultIpRestriction {
   id?: number;
@@ -1759,11 +2483,21 @@ export interface TelephonyDefaultIpRestriction {
   /** The protocol you want to restrict (sip/mgcp) */
   type?: TelephonyProtocolEnum;
 }
+const TelephonyDefaultIpRestriction = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<TelephonyDefaultIpRestriction>;
+
 /** Billing policies settings */
 export interface TelephonyBillingSettings {
   /** Renew is done by billing contact instead of billing account */
   renewByBillingContact?: boolean;
 }
+const TelephonyBillingSettings = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<TelephonyBillingSettings>;
+
 /** Line description policies settings */
 export interface TelephonyLineDescriptionSettings {
   /** Line's description is displayed on bills */
@@ -1771,6 +2505,11 @@ export interface TelephonyLineDescriptionSettings {
   /** Line's description is displayed on incoming calls */
   displayOnIncomingCall?: boolean;
 }
+const TelephonyLineDescriptionSettings = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<TelephonyLineDescriptionSettings>;
+
 /** Telephony settings linked to the customer account */
 export interface TelephonySettings {
   /** Billing policies settings */
@@ -1778,134 +2517,334 @@ export interface TelephonySettings {
   /** Line description policies settings */
   lineDescriptionPolicies?: TelephonyLineDescriptionSettings;
 }
+const TelephonySettings = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<TelephonySettings>;
+
 export interface CreateMeTelephonySettingsRequest {
   /** Settings to be changed */
   settings: TelephonySettings;
 }
+const CreateMeTelephonySettingsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<CreateMeTelephonySettingsRequest>;
+
 export interface CreateMeTelephonySettingsResponse {}
+const CreateMeTelephonySettingsResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeTelephonySettingsResponse>;
+
 export interface CreateMeXdslSettingRequest {
   /** Send the modem as soon as possible, do not wait the xdsl line to be active */
   resellerFastModemShipping?: boolean;
   /** Let the modem with vendor configuration. It prevent to apply the config managed by ovh manager */
   resellerModemBasicConfig?: boolean;
 }
+const CreateMeXdslSettingRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<CreateMeXdslSettingRequest>;
+
 export interface CreateMeXdslSettingResponse {}
+const CreateMeXdslSettingResponse =
+  ApplyMeSlaResponse as any as S.Schema<CreateMeXdslSettingResponse>;
+
 export interface DeleteMeAccessRestrictionBackupCodeRequest {}
+const DeleteMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<DeleteMeAccessRestrictionBackupCodeRequest>;
+
 export interface DeleteMeAccessRestrictionBackupCodeResponse {}
+const DeleteMeAccessRestrictionBackupCodeResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeAccessRestrictionBackupCodeResponse>;
+
 export interface DeleteMeAccessRestrictionIpRequest {
   /** The Id of the restriction */
   id: number;
 }
+const DeleteMeAccessRestrictionIpRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<DeleteMeAccessRestrictionIpRequest>;
+
 export interface DeleteMeAccessRestrictionIpResponse {}
+const DeleteMeAccessRestrictionIpResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeAccessRestrictionIpResponse>;
+
 export interface DeleteMeAccessRestrictionSmsRequest {
   /** The Id of the restriction */
   id: number;
 }
+const DeleteMeAccessRestrictionSmsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<DeleteMeAccessRestrictionSmsRequest>;
+
 export interface DeleteMeAccessRestrictionSmsResponse {}
+const DeleteMeAccessRestrictionSmsResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeAccessRestrictionSmsResponse>;
+
 export interface DeleteMeAccessRestrictionTotpRequest {
   /** The Id of the restriction */
   id: number;
 }
+const DeleteMeAccessRestrictionTotpRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<DeleteMeAccessRestrictionTotpRequest>;
+
 export interface DeleteMeAccessRestrictionTotpResponse {}
+const DeleteMeAccessRestrictionTotpResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeAccessRestrictionTotpResponse>;
+
 export interface DeleteMeAccessRestrictionU2fRequest {
   /** The Id of the restriction */
   id: number;
 }
+const DeleteMeAccessRestrictionU2fRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<DeleteMeAccessRestrictionU2fRequest>;
+
 export interface DeleteMeAccessRestrictionU2fResponse {}
+const DeleteMeAccessRestrictionU2fResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeAccessRestrictionU2fResponse>;
+
 export interface DeleteMeApplicationRequest {
   /** Application ID */
   applicationId: number;
 }
+const DeleteMeApplicationRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<DeleteMeApplicationRequest>;
+
 export interface DeleteMeApplicationResponse {}
+const DeleteMeApplicationResponse =
+  ApplyMeSlaResponse as any as S.Schema<DeleteMeApplicationResponse>;
+
 export interface DeleteMeBillingGroupRequest {
   /** Group ID */
   groupId: number;
 }
+const DeleteMeBillingGroupRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<DeleteMeBillingGroupRequest>;
+
 export interface DeleteMeBillingGroupResponse {}
+const DeleteMeBillingGroupResponse =
+  ApplyMeSlaResponse as any as S.Schema<DeleteMeBillingGroupResponse>;
+
 export interface DeleteMeBillingGroupServiceRequest {
   /** Group ID */
   groupId: number;
   /** Service ID */
   serviceId: number;
 }
+const DeleteMeBillingGroupServiceRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<DeleteMeBillingGroupServiceRequest>;
+
 export interface DeleteMeBillingGroupServiceResponse {}
+const DeleteMeBillingGroupServiceResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeBillingGroupServiceResponse>;
+
 export interface DeleteMeBillingPurchaseOrderRequest {
   /** Id */
   id: number;
 }
+const DeleteMeBillingPurchaseOrderRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<DeleteMeBillingPurchaseOrderRequest>;
+
 export interface DeleteMeBillingPurchaseOrderResponse {}
+const DeleteMeBillingPurchaseOrderResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeBillingPurchaseOrderResponse>;
+
 export interface DeleteMeCredentialRequest {
   /** Credential ID */
   credentialId: number;
 }
+const DeleteMeCredentialRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<DeleteMeCredentialRequest>;
+
 export interface DeleteMeCredentialResponse {}
+const DeleteMeCredentialResponse =
+  ApplyMeSlaResponse as any as S.Schema<DeleteMeCredentialResponse>;
+
 export interface DeleteMeDocumentRequest {
   /** Document id */
   id: string;
 }
+const DeleteMeDocumentRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<DeleteMeDocumentRequest>;
+
 export interface DeleteMeDocumentResponse {}
+const DeleteMeDocumentResponse = ApplyMeSlaResponse as any as S.Schema<DeleteMeDocumentResponse>;
+
 export interface DeleteMeFaxCustomDomainRequest {
   id: number;
 }
+const DeleteMeFaxCustomDomainRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<DeleteMeFaxCustomDomainRequest>;
+
 export interface DeleteMeFaxCustomDomainResponse {}
+const DeleteMeFaxCustomDomainResponse =
+  AcceptMeTaskEmailChangeResponse as any as S.Schema<DeleteMeFaxCustomDomainResponse>;
+
 export interface DeleteMeIdentityGroupRequest {
   /** Group */
   group: string;
 }
+const DeleteMeIdentityGroupRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<DeleteMeIdentityGroupRequest>;
+
 export interface DeleteMeIdentityGroupResponse {}
+const DeleteMeIdentityGroupResponse =
+  ApplyMeSlaResponse as any as S.Schema<DeleteMeIdentityGroupResponse>;
+
 export interface DeleteMeIdentityGroupUserRequest {
   /** Group */
   group: string;
   /** User */
   user: string;
 }
+const DeleteMeIdentityGroupUserRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<DeleteMeIdentityGroupUserRequest>;
+
 export interface DeleteMeIdentityGroupUserResponse {}
+const DeleteMeIdentityGroupUserResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeIdentityGroupUserResponse>;
+
 export interface DeleteMeIdentityProviderRequest {}
+const DeleteMeIdentityProviderRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<DeleteMeIdentityProviderRequest>;
+
 export interface DeleteMeIdentityProviderResponse {}
+const DeleteMeIdentityProviderResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeIdentityProviderResponse>;
+
 export interface DeleteMeIdentityUserRequest {
   /** User */
   user: string;
 }
+const DeleteMeIdentityUserRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<DeleteMeIdentityUserRequest>;
+
 export interface DeleteMeIdentityUserResponse {}
+const DeleteMeIdentityUserResponse =
+  ApplyMeSlaResponse as any as S.Schema<DeleteMeIdentityUserResponse>;
+
 export interface DeleteMeIdentityUserTokenRequest {
   /** User */
   user: string;
   /** Name */
   name: string;
 }
+const DeleteMeIdentityUserTokenRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<DeleteMeIdentityUserTokenRequest>;
+
 export interface DeleteMeIdentityUserTokenResponse {}
+const DeleteMeIdentityUserTokenResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeIdentityUserTokenResponse>;
+
 export interface DeleteMeIpOrganisationRequest {
   organisationId: string;
 }
+const DeleteMeIpOrganisationRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<DeleteMeIpOrganisationRequest>;
+
 export interface DeleteMeIpOrganisationResponse {}
+const DeleteMeIpOrganisationResponse =
+  ApplyMeSlaResponse as any as S.Schema<DeleteMeIpOrganisationResponse>;
+
 export interface DeleteMeLogAuditLogSubscriptionRequest {
   /** Subscription ID */
   subscriptionId: string;
 }
+const DeleteMeLogAuditLogSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<DeleteMeLogAuditLogSubscriptionRequest>;
+
 export interface DeleteMeLogSubscriptionRequest {
   /** Subscription ID */
   subscriptionId: string;
 }
+const DeleteMeLogSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<DeleteMeLogSubscriptionRequest>;
+
 export interface DeleteMeOauth2ClientRequest {
   /** Client ID */
   clientId: string;
 }
+const DeleteMeOauth2ClientRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<DeleteMeOauth2ClientRequest>;
+
 export interface DeleteMeOauth2ClientResponse {}
+const DeleteMeOauth2ClientResponse =
+  ApplyMeSlaResponse as any as S.Schema<DeleteMeOauth2ClientResponse>;
+
 export interface DeleteMeOauth2TokenRequest {
   /** Id */
   id: string;
 }
+const DeleteMeOauth2TokenRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<DeleteMeOauth2TokenRequest>;
+
 export interface DeleteMeOauth2TokenResponse {}
+const DeleteMeOauth2TokenResponse =
+  ApplyMeSlaResponse as any as S.Schema<DeleteMeOauth2TokenResponse>;
+
 export interface DeleteMeOrderBalanceRequest {
   orderId: number;
   /** Credit balance name */
   balanceName: string;
 }
+const DeleteMeOrderBalanceRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<DeleteMeOrderBalanceRequest>;
+
 export interface DeleteMeOrderBalanceResponse {}
+const DeleteMeOrderBalanceResponse =
+  ApplyMeSlaResponse as any as S.Schema<DeleteMeOrderBalanceResponse>;
+
 export interface DeleteMePaymentMethodRequest {
   /** Payment method ID */
   paymentMethodId: number;
 }
+const DeleteMePaymentMethodRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<DeleteMePaymentMethodRequest>;
+
 /** Icon */
 export interface MePaymentIcon {
   /** Icon in base64 */
@@ -1915,6 +2854,8 @@ export interface MePaymentIcon {
   /** Icon URL */
   url?: string | null;
 }
+const MePaymentIcon = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<MePaymentIcon>;
+
 /** Payment method available sub-type enum */
 export type MePaymentAvailableSubTypeEnum =
   | "30_DAYS"
@@ -1933,6 +2874,8 @@ export type MePaymentAvailableSubTypeEnum =
   | "NONE"
   | "RUPAY"
   | "VISA";
+const MePaymentAvailableSubTypeEnum = S.String;
+
 /** Payment method status */
 export type MePaymentMethodStatusEnum =
   | "CANCELED"
@@ -1948,6 +2891,8 @@ export type MePaymentMethodStatusEnum =
   | "REPLACED"
   | "VALID"
   | "VALIDATING";
+const MePaymentMethodStatusEnum = S.String;
+
 /** Payment method object */
 export interface MePaymentPaymentMethod {
   /** Associated billing contact ID */
@@ -1985,53 +2930,123 @@ export interface MePaymentPaymentMethod {
   /** Payment method status */
   status?: MePaymentMethodStatusEnum;
 }
+const MePaymentPaymentMethod = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<MePaymentPaymentMethod>;
+
 export interface DeleteMePreferenceManagerRequest {
   /** This preference key */
   key: string;
 }
+const DeleteMePreferenceManagerRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<DeleteMePreferenceManagerRequest>;
+
 export interface DeleteMePreferenceManagerResponse {}
+const DeleteMePreferenceManagerResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMePreferenceManagerResponse>;
+
 export interface DeleteMeSshKeyRequest {
   /** Name of this public SSH key */
   keyName: string;
 }
+const DeleteMeSshKeyRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<DeleteMeSshKeyRequest>;
+
 export interface DeleteMeSshKeyResponse {}
+const DeleteMeSshKeyResponse = ApplyMeSlaResponse as any as S.Schema<DeleteMeSshKeyResponse>;
+
 export interface DeleteMeTagRequest {
   /** Tag */
   tag: string;
 }
+const DeleteMeTagRequest = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<DeleteMeTagRequest>;
+
 export interface DeleteMeTelephonyDefaultIpRestrictionRequest {
   id: number;
 }
+const DeleteMeTelephonyDefaultIpRestrictionRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<DeleteMeTelephonyDefaultIpRestrictionRequest>;
+
 export interface DeleteMeTelephonyDefaultIpRestrictionResponse {}
+const DeleteMeTelephonyDefaultIpRestrictionResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeTelephonyDefaultIpRestrictionResponse>;
+
 export interface DisableMeAccessRestrictionBackupCodeRequest {
   /** OTP code given by the application */
   code: string;
 }
+const DisableMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<DisableMeAccessRestrictionBackupCodeRequest>;
+
 export interface DisableMeAccessRestrictionBackupCodeResponse {}
+const DisableMeAccessRestrictionBackupCodeResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DisableMeAccessRestrictionBackupCodeResponse>;
+
 export interface DisableMeAccessRestrictionSmsRequest {
   /** The Id of the restriction */
   id: number;
   /** SMS code send by a cellphone */
   code: string;
 }
+const DisableMeAccessRestrictionSmsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<DisableMeAccessRestrictionSmsRequest>;
+
 export interface DisableMeAccessRestrictionSmsResponse {}
+const DisableMeAccessRestrictionSmsResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DisableMeAccessRestrictionSmsResponse>;
+
 export interface DisableMeAccessRestrictionTotpRequest {
   /** The Id of the restriction */
   id: number;
   /** OTP code given by the application */
   code: string;
 }
+const DisableMeAccessRestrictionTotpRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<DisableMeAccessRestrictionTotpRequest>;
+
 export interface DisableMeAccessRestrictionTotpResponse {}
+const DisableMeAccessRestrictionTotpResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DisableMeAccessRestrictionTotpResponse>;
+
 export interface DisableMeAccessRestrictionU2fRequest {
   /** The Id of the restriction */
   id: number;
 }
+const DisableMeAccessRestrictionU2fRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<DisableMeAccessRestrictionU2fRequest>;
+
 export interface DisableMeAccessRestrictionU2fResponse {}
+const DisableMeAccessRestrictionU2fResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<DisableMeAccessRestrictionU2fResponse>;
+
 export interface DisableMeIdentityUserRequest {
   /** User */
   user: string;
 }
+const DisableMeIdentityUserRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<DisableMeIdentityUserRequest>;
+
 export interface DisableMeIdentityUserResponse {}
+const DisableMeIdentityUserResponse =
+  ApplyMeSlaResponse as any as S.Schema<DisableMeIdentityUserResponse>;
+
 export interface EditAccountDetailsRequest {
   /** Address of nichandle */
   address?: string | null;
@@ -2085,40 +3100,93 @@ export interface EditAccountDetailsRequest {
   /** Zipcode */
   zip?: string | null;
 }
+const EditAccountDetailsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<EditAccountDetailsRequest>;
+
 export interface EditAccountDetailsResponse {}
+const EditAccountDetailsResponse =
+  ApplyMeSlaResponse as any as S.Schema<EditAccountDetailsResponse>;
+
 export interface EnableMeAccessRestrictionBackupCodeRequest {
   /** OTP code given by the application */
   code: string;
 }
+const EnableMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<EnableMeAccessRestrictionBackupCodeRequest>;
+
 export interface EnableMeAccessRestrictionBackupCodeResponse {}
+const EnableMeAccessRestrictionBackupCodeResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<EnableMeAccessRestrictionBackupCodeResponse>;
+
 export interface EnableMeAccessRestrictionSmsRequest {
   /** The Id of the restriction */
   id: number;
   /** SMS code send by a cellphone */
   code: string;
 }
+const EnableMeAccessRestrictionSmsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<EnableMeAccessRestrictionSmsRequest>;
+
 export interface EnableMeAccessRestrictionSmsResponse {}
+const EnableMeAccessRestrictionSmsResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<EnableMeAccessRestrictionSmsResponse>;
+
 export interface EnableMeAccessRestrictionTotpRequest {
   /** The Id of the restriction */
   id: number;
   /** OTP code given by the application */
   code: string;
 }
+const EnableMeAccessRestrictionTotpRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<EnableMeAccessRestrictionTotpRequest>;
+
 export interface EnableMeAccessRestrictionTotpResponse {}
+const EnableMeAccessRestrictionTotpResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<EnableMeAccessRestrictionTotpResponse>;
+
 export interface EnableMeAccessRestrictionU2fRequest {
   /** The Id of the restriction */
   id: number;
 }
+const EnableMeAccessRestrictionU2fRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<EnableMeAccessRestrictionU2fRequest>;
+
 export interface EnableMeAccessRestrictionU2fResponse {}
+const EnableMeAccessRestrictionU2fResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<EnableMeAccessRestrictionU2fResponse>;
+
 export interface EnableMeIdentityUserRequest {
   /** User */
   user: string;
 }
+const EnableMeIdentityUserRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<EnableMeIdentityUserRequest>;
+
 export interface EnableMeIdentityUserResponse {}
+const EnableMeIdentityUserResponse =
+  ApplyMeSlaResponse as any as S.Schema<EnableMeIdentityUserResponse>;
+
 /** List of available archive types */
 export type BillingArchiveTypeEnum = "csv" | "zip";
+const BillingArchiveTypeEnum = S.String;
+
 /** A list of ids to export */
 export type ExportMeBillRequestIdsList = Array<string>;
+const ExportMeBillRequestIdsList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ExportMeBillRequestIdsList>;
+
 export interface ExportMeBillRequest {
   /** The file type of the archive */
   archiveType: BillingArchiveTypeEnum | (string & {});
@@ -2129,9 +3197,16 @@ export interface ExportMeBillRequest {
   /** Start interval of the export */
   startDate?: string;
 }
+const ExportMeBillRequest = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<ExportMeBillRequest>;
+
 export interface ExportMeBillResponse {}
+const ExportMeBillResponse = ApplyMeSlaResponse as any as S.Schema<ExportMeBillResponse>;
+
 /** A list of ids to export */
 export type ExportMeRefundRequestIdsList = Array<string>;
+const ExportMeRefundRequestIdsList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ExportMeRefundRequestIdsList>;
+
 export interface ExportMeRefundRequest {
   /** The file type of the archive */
   archiveType: BillingArchiveTypeEnum | (string & {});
@@ -2142,7 +3217,14 @@ export interface ExportMeRefundRequest {
   /** Start interval of the export */
   startDate?: string;
 }
+const ExportMeRefundRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<ExportMeRefundRequest>;
+
 export interface ExportMeRefundResponse {}
+const ExportMeRefundResponse = ApplyMeSlaResponse as any as S.Schema<ExportMeRefundResponse>;
+
 export interface FinalizeMePaymentMethodRequest {
   /** Payment method ID */
   paymentMethodId: number;
@@ -2155,17 +3237,42 @@ export interface FinalizeMePaymentMethodRequest {
   /** Registration ID */
   registrationId?: string | null;
 }
+const FinalizeMePaymentMethodRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<FinalizeMePaymentMethodRequest>;
+
 export interface GetAccountDetailsRequest {}
+const GetAccountDetailsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<GetAccountDetailsRequest>;
+
 export interface GetCertificatesRequest {
   /** Certificate definition name */
   name?: string;
 }
+const GetCertificatesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<GetCertificatesRequest>;
+
 export type GetCertificatesResponseBodyList = Array<string>;
+const GetCertificatesResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<GetCertificatesResponseBodyList>;
+
 export type GetCertificatesResponse = GetCertificatesResponseBodyList;
+const GetCertificatesResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<GetCertificatesResponse>;
+
 export interface GetMeAbuseRequest {
   /** Id */
   id: string;
 }
+const GetMeAbuseRequest = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<GetMeAbuseRequest>;
+
 /** The abuse categories */
 export type MeAbuseAbuseCategoryEnum =
   | "Compromised"
@@ -2177,6 +3284,8 @@ export type MeAbuseAbuseCategoryEnum =
   | "Other"
   | "Phishing"
   | "Spam";
+const MeAbuseAbuseCategoryEnum = S.String;
+
 /** The abuse status */
 export type MeAbuseAbuseStatusEnum =
   | "Answered"
@@ -2188,6 +3297,8 @@ export type MeAbuseAbuseStatusEnum =
   | "Reopened"
   | "Updated"
   | "WaitingAnswer";
+const MeAbuseAbuseStatusEnum = S.String;
+
 /** Get report API response */
 export interface MeAbuseAbuse {
   /** Abuse category */
@@ -2201,13 +3312,22 @@ export interface MeAbuseAbuse {
   /** Abuse case status */
   status?: MeAbuseAbuseStatusEnum;
 }
+const MeAbuseAbuse = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<MeAbuseAbuse>;
+
 export interface GetMeAccessRestrictionBackupCodeRequest {}
+const GetMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<GetMeAccessRestrictionBackupCodeRequest>;
+
 /** Status of SOTP account */
 export type NichandleAccessRestrictionSOTPStatusEnum =
   | "disabled"
   | "enabled"
   | "needCodeValidation"
   | "needEmailValidation";
+const NichandleAccessRestrictionSOTPStatusEnum = S.String;
+
 /** SOTP Two-Factor Authentication */
 export interface NichandleAccessRestrictionSOTPAccount {
   /** Creation date */
@@ -2219,16 +3339,36 @@ export interface NichandleAccessRestrictionSOTPAccount {
   /** Status of this account */
   status?: NichandleAccessRestrictionSOTPStatusEnum;
 }
+const NichandleAccessRestrictionSOTPAccount = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<NichandleAccessRestrictionSOTPAccount>;
+
 export interface GetMeAccessRestrictionDeveloperModeRequest {}
+const GetMeAccessRestrictionDeveloperModeRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<GetMeAccessRestrictionDeveloperModeRequest>;
+
 /** Login restrictions on a development version of the Manager */
 export interface NichandleDeveloperModeRestriction {
   /** Allow login on your account on a development version of the Manager */
   enabled?: boolean;
 }
+const NichandleDeveloperModeRestriction = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<NichandleDeveloperModeRestriction>;
+
 export interface GetMeAccessRestrictionIpRequest {
   /** The Id of the restriction */
   id: number;
 }
+const GetMeAccessRestrictionIpRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<GetMeAccessRestrictionIpRequest>;
+
 /** List of all IP Restrictions */
 export interface NichandleIpRestriction {
   /** The Id of the restriction */
@@ -2240,7 +3380,17 @@ export interface NichandleIpRestriction {
   /** Send an email if someone try to access with this IP address */
   warning?: boolean;
 }
+const NichandleIpRestriction = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<NichandleIpRestriction>;
+
 export interface GetMeAccessRestrictionIpDefaultRuleRequest {}
+const GetMeAccessRestrictionIpDefaultRuleRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<GetMeAccessRestrictionIpDefaultRuleRequest>;
+
 /** IP Restriction default rule */
 export interface NichandleIpRestrictionDefaultRule {
   /** Accept or deny access */
@@ -2248,16 +3398,28 @@ export interface NichandleIpRestrictionDefaultRule {
   /** Send an email if someone try to access */
   warning?: boolean;
 }
+const NichandleIpRestrictionDefaultRule = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<NichandleIpRestrictionDefaultRule>;
+
 export interface GetMeAccessRestrictionSmsRequest {
   /** The Id of the restriction */
   id: number;
 }
+const GetMeAccessRestrictionSmsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<GetMeAccessRestrictionSmsRequest>;
+
 /** Status of the Sms account */
 export type NichandleAccessRestrictionSmsStatusEnum =
   | "disabled"
   | "enabled"
   | "needCodeValidation"
   | "needEmailValidation";
+const NichandleAccessRestrictionSmsStatusEnum = S.String;
+
 /** Sms Two-Factor Authentication */
 export interface NichandleAccessRestrictionSmsAccount {
   /** Creation date */
@@ -2273,16 +3435,28 @@ export interface NichandleAccessRestrictionSmsAccount {
   /** Status of this account */
   status?: NichandleAccessRestrictionSmsStatusEnum;
 }
+const NichandleAccessRestrictionSmsAccount = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<NichandleAccessRestrictionSmsAccount>;
+
 export interface GetMeAccessRestrictionTotpRequest {
   /** The Id of the restriction */
   id: number;
 }
+const GetMeAccessRestrictionTotpRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<GetMeAccessRestrictionTotpRequest>;
+
 /** Status of TOTP account */
 export type NichandleAccessRestrictionTOTPStatusEnum =
   | "disabled"
   | "enabled"
   | "needCodeValidation"
   | "needEmailValidation";
+const NichandleAccessRestrictionTOTPStatusEnum = S.String;
+
 /** TOTP Two-Factor Authentication */
 export interface NichandleAccessRestrictionTOTPAccount {
   /** Creation date */
@@ -2296,10 +3470,20 @@ export interface NichandleAccessRestrictionTOTPAccount {
   /** Status of this account */
   status?: NichandleAccessRestrictionTOTPStatusEnum;
 }
+const NichandleAccessRestrictionTOTPAccount = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<NichandleAccessRestrictionTOTPAccount>;
+
 export interface GetMeAccessRestrictionU2fRequest {
   /** The Id of the restriction */
   id: number;
 }
+const GetMeAccessRestrictionU2fRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<GetMeAccessRestrictionU2fRequest>;
+
 /** Status of U2F account */
 export type NichandleAccessRestrictionU2FStatusEnum = "disabled" | "enabled" | "needCodeValidation";
 /** U2F Two-Factor Authentication */
@@ -2315,12 +3499,22 @@ export interface NichandleAccessRestrictionU2FAccount {
   /** Status of this account */
   status?: NichandleAccessRestrictionU2FStatusEnum;
 }
+const NichandleAccessRestrictionU2FAccount =
+  NichandleAccessRestrictionTOTPAccount as any as S.Schema<NichandleAccessRestrictionU2FAccount>;
+
 export interface GetMeAgreementRequest {
   /** Id of the contract */
   id: number;
 }
+const GetMeAgreementRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<GetMeAgreementRequest>;
+
 /** The current state of a contract agreement */
 export type AgreementsAgreementStateEnum = "ko" | "obsolete" | "ok" | "todo";
+const AgreementsAgreementStateEnum = S.String;
+
 /** Contract agreement */
 export interface AgreementsContractAgreement {
   /** State of the agreement */
@@ -2332,10 +3526,18 @@ export interface AgreementsContractAgreement {
   /** Id of the contract */
   id?: number;
 }
+const AgreementsContractAgreement =
+  MeAgreementsContractAgreement as any as S.Schema<AgreementsContractAgreement>;
+
 export interface GetMeAgreementContractRequest {
   /** Id of the contract */
   id: number;
 }
+const GetMeAgreementContractRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<GetMeAgreementContractRequest>;
+
 /** Contract of service */
 export interface AgreementsContract {
   /** Is this contract currently active or not ? */
@@ -2349,12 +3551,21 @@ export interface AgreementsContract {
   /** Full text of the contract */
   text?: string;
 }
+const AgreementsContract = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<AgreementsContract>;
+
 export interface GetMeApplicationRequest {
   /** Application ID */
   applicationId: number;
 }
+const GetMeApplicationRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<GetMeApplicationRequest>;
+
 /** All states an API Application can be in */
 export type AuthApplicationStatusEnum = "active" | "blocked" | "inactive" | "trusted";
+const AuthApplicationStatusEnum = S.String;
+
 /** API Application */
 export interface AuthApiApplication {
   /** ID of this Application */
@@ -2368,7 +3579,14 @@ export interface AuthApiApplication {
   /** Status of this application */
   status?: AuthApplicationStatusEnum;
 }
+const AuthApiApplication = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<AuthApiApplication>;
+
 export interface GetMeAutorenewRequest {}
+const GetMeAutorenewRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<GetMeAutorenewRequest>;
+
 /** Auto renewal information */
 export interface NichandleNicAutorenewInfos {
   /** Renewal active or not */
@@ -2378,7 +3596,17 @@ export interface NichandleNicAutorenewInfos {
   /** give the renewal day */
   renewDay?: number;
 }
+const NichandleNicAutorenewInfos = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<NichandleNicAutorenewInfos>;
+
 export interface GetMeAvailableAutomaticPaymentMeansRequest {}
+const GetMeAvailableAutomaticPaymentMeansRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<GetMeAvailableAutomaticPaymentMeansRequest>;
+
 /** Available automatic payment means */
 export interface BillingAutomaticPaymentMean {
   /** Bank Account */
@@ -2390,9 +3618,16 @@ export interface BillingAutomaticPaymentMean {
   /** Paypal account */
   paypal?: boolean;
 }
+const BillingAutomaticPaymentMean = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<BillingAutomaticPaymentMean>;
+
 export interface GetMeBillRequest {
   billId: string;
 }
+const GetMeBillRequest = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<GetMeBillRequest>;
+
 /** Types of plans */
 export type BillingCategoryEnum =
   | "autorenew"
@@ -2402,6 +3637,8 @@ export type BillingCategoryEnum =
   | "purchase-servers"
   | "purchase-telecom"
   | "purchase-web";
+const BillingCategoryEnum = S.String;
+
 /** List of available eInvoicing Status types */
 export type BillingEInvoicingStatusEnum =
   | "accepted"
@@ -2414,6 +3651,8 @@ export type BillingEInvoicingStatusEnum =
   | "readyToSubmit"
   | "rejected"
   | "submitted";
+const BillingEInvoicingStatusEnum = S.String;
+
 /** Details about a Bill */
 export interface BillingBill {
   billId?: string;
@@ -2429,9 +3668,16 @@ export interface BillingBill {
   tax?: OrderPrice;
   url?: string;
 }
+const BillingBill = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<BillingBill>;
+
 export interface GetMeBillDebtRequest {
   billId: string;
 }
+const GetMeBillDebtRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<GetMeBillDebtRequest>;
+
 /** All status a debt HistoryOrder entry can be in */
 export type DebtEntryStatusDebtOrderEnum =
   | "PAID"
@@ -2440,6 +3686,8 @@ export type DebtEntryStatusDebtOrderEnum =
   | "UNMATURED"
   | "UNPAID"
   | "WRITE_OFF";
+const DebtEntryStatusDebtOrderEnum = S.String;
+
 /** State of a debt */
 export interface DebtDebt {
   /** Original amount of the debt */
@@ -2462,12 +3710,21 @@ export interface DebtDebt {
   /** Unmatured amount for deferred payment term */
   unmaturedAmount?: OrderPrice;
 }
+const DebtDebt = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<DebtDebt>;
+
 export interface GetMeBillDebtOperationRequest {
   billId: string;
   operationId: number;
 }
+const GetMeBillDebtOperationRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<GetMeBillDebtOperationRequest>;
+
 /** All status a debt entry can be in */
 export type DebtEntryStatusEnum = "CANCELLED" | "DONE" | "FAILED" | "PAID" | "PENDING" | "TODO";
+const DebtEntryStatusEnum = S.String;
+
 /** All operations a debt entry can represent */
 export type DebtEntryOperationEnum =
   | "BANK_TRANSFER_MANUAL"
@@ -2542,6 +3799,8 @@ export type DebtEntryOperationEnum =
   | "UNPAID_WITHDRAW"
   | "WARRANT_MANUAL"
   | "WITHDRAW_AUTOMATIC";
+const DebtEntryOperationEnum = S.String;
+
 /** Operation that happend on a debt */
 export interface DebtOperation {
   /** Amount of the operation */
@@ -2556,10 +3815,17 @@ export interface DebtOperation {
   /** Type of movement this operation represents */
   type?: DebtEntryOperationEnum | null;
 }
+const DebtOperation = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<DebtOperation>;
+
 export interface GetMeBillDebtOperationAssociatedObjectRequest {
   billId: string;
   operationId: number;
 }
+const GetMeBillDebtOperationAssociatedObjectRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<GetMeBillDebtOperationAssociatedObjectRequest>;
+
 /** All payment means you might have use on an OVH order */
 export type BillingPaymentMeanEnum =
   | "cash"
@@ -2588,6 +3854,8 @@ export type BillingPaymentMeanEnum =
   | "rupay"
   | "transfer"
   | "withdrawal";
+const BillingPaymentMeanEnum = S.String;
+
 /** The payment infos linked to this debt entry */
 export interface DebtAssociatedObjectPaymentInfo {
   /** Optional customer description */
@@ -2597,6 +3865,11 @@ export interface DebtAssociatedObjectPaymentInfo {
   /** Public payment mean label */
   publicLabel?: string | null;
 }
+const DebtAssociatedObjectPaymentInfo = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<DebtAssociatedObjectPaymentInfo>;
+
 /** Type of objects an order can be linked to */
 export type DebtAssociatedObjectTypeEnum =
   | "Bill"
@@ -2606,6 +3879,8 @@ export type DebtAssociatedObjectTypeEnum =
   | "OvhAccountMovement"
   | "Refund"
   | "Withdrawal";
+const DebtAssociatedObjectTypeEnum = S.String;
+
 /** The object linked to this debt entry */
 export interface DebtEntryAssociatedObject {
   id?: string | null;
@@ -2613,16 +3888,28 @@ export interface DebtEntryAssociatedObject {
   subId?: string | null;
   type?: DebtAssociatedObjectTypeEnum | null;
 }
+const DebtEntryAssociatedObject = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<DebtEntryAssociatedObject>;
+
 export interface GetMeBillDetailRequest {
   billId: string;
   billDetailId: string;
 }
+const GetMeBillDetailRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<GetMeBillDetailRequest>;
+
 /** LongPrice with all digits and its currency and a textual representation */
 export interface OrderLongPrice {
   currencyCode?: OrderCurrencyCodeEnum;
   text?: string;
   value?: number;
 }
+const OrderLongPrice = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<OrderLongPrice>;
+
 /** Information about a Bill entry */
 export interface BillingBillDetail {
   billDetailId?: string;
@@ -2634,12 +3921,21 @@ export interface BillingBillDetail {
   totalPrice?: OrderPrice;
   unitPrice?: OrderLongPrice;
 }
+const BillingBillDetail = /*@__PURE__*/ __L.at(__c26, 6) as any as S.Schema<BillingBillDetail>;
+
 export interface GetMeBillingCapacitiesRequest {}
+const GetMeBillingCapacitiesRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<GetMeBillingCapacitiesRequest>;
+
 /** Indicates the mandatory nature of having a valid payment method */
 export type NichandleRequiredPaymentMethodEnum =
   | "mandatoryForAutorenew"
   | "mandatoryForPostpaid"
   | "notMandatory";
+const NichandleRequiredPaymentMethodEnum = S.String;
+
 /** Internal customer billing capacities for customer control panel */
 export interface NichandleBillingCapacities {
   /** Indicates if the debt system has been enabled on the customer account */
@@ -2649,28 +3945,65 @@ export interface NichandleBillingCapacities {
   /** Indicates the mandatory nature of having a valid payment method */
   requiredPaymentMethod?: NichandleRequiredPaymentMethodEnum;
 }
+const NichandleBillingCapacities = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<NichandleBillingCapacities>;
+
 export interface GetMeBillingGroupRequest {
   /** Group ID */
   groupId: number;
 }
+const GetMeBillingGroupRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<GetMeBillingGroupRequest>;
+
 export interface GetMeBillingGroupServiceRequest {
   /** Group ID */
   groupId: number;
   /** Service ID */
   serviceId: number;
 }
+const GetMeBillingGroupServiceRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<GetMeBillingGroupServiceRequest>;
+
 export interface GetMeBillingInvoicesByPostalMailRequest {}
+const GetMeBillingInvoicesByPostalMailRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<GetMeBillingInvoicesByPostalMailRequest>;
+
 export type GetMeBillingInvoicesByPostalMailResponse = boolean;
+const GetMeBillingInvoicesByPostalMailResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<GetMeBillingInvoicesByPostalMailResponse>;
+
 export interface GetMeBillingPurchaseOrderRequest {
   /** Id */
   id: number;
 }
+const GetMeBillingPurchaseOrderRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<GetMeBillingPurchaseOrderRequest>;
+
 export interface GetMeBillingReportConsumptionRequest {
   /** Task ID */
   taskId: string;
 }
+const GetMeBillingReportConsumptionRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<GetMeBillingReportConsumptionRequest>;
+
 /** Status of consumption billing report */
 export type MeBillingReportConsumptionStatusEnum = "CREATING" | "ERROR" | "READY";
+const MeBillingReportConsumptionStatusEnum = S.String;
+
 /** Consumption billing report */
 export interface MeBillingReportConsumption {
   /** End date of the report period */
@@ -2684,10 +4017,20 @@ export interface MeBillingReportConsumption {
   /** Task id of the report */
   taskId?: string;
 }
+const MeBillingReportConsumption = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<MeBillingReportConsumption>;
+
 export interface GetMeBillingTaskRequest {
   /** Id */
   id: number;
 }
+const GetMeBillingTaskRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<GetMeBillingTaskRequest>;
+
 /** Metadatum linked to a Task */
 export interface MeBillingTasksTaskMetadatum {
   /** Metadatum key */
@@ -2697,8 +4040,13 @@ export interface MeBillingTasksTaskMetadatum {
 }
 /** Metadata linked to the Task. Will help you determine which object it relates to */
 export type MeBillingTasksTaskMetadataList = Array<MeBillingTasksTaskMetadatum>;
+const MeBillingTasksTaskMetadataList =
+  NichandleDocumentDocumentTagsList as any as S.Schema<MeBillingTasksTaskMetadataList>;
+
 /** Billing tasks names */
 export type MeBillingTasksTaskNameEnum = "contact/change";
+const MeBillingTasksTaskNameEnum = S.String;
+
 /** Billing tasks statuses */
 export type MeBillingTasksTaskStatusEnum =
   | "CANCELLED"
@@ -2708,6 +4056,8 @@ export type MeBillingTasksTaskStatusEnum =
   | "INIT"
   | "PROBLEM"
   | "TODO";
+const MeBillingTasksTaskStatusEnum = S.String;
+
 /** Asynchronous task related to Billing */
 export interface MeBillingTasksTask {
   /** Unique identifier of the Task */
@@ -2721,15 +4071,24 @@ export interface MeBillingTasksTask {
   /** Current step of the Task. The step depends on the Task name. */
   step?: string;
 }
+const MeBillingTasksTask = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<MeBillingTasksTask>;
+
 export interface GetMeBillPaymentRequest {
   billId: string;
 }
+const GetMeBillPaymentRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<GetMeBillPaymentRequest>;
+
 /** Details about a payment */
 export interface BillingPayment {
   paymentDate?: string;
   paymentIdentifier?: string | null;
   paymentType?: BillingPaymentMeanEnum;
 }
+const BillingPayment = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<BillingPayment>;
+
 /** Possible values for IP campuses' names */
 export type IpCampusEnum =
   | "BHS"
@@ -2747,26 +4106,53 @@ export type IpCampusEnum =
   | "WAW"
   | "YNM"
   | "YYZ";
+const IpCampusEnum = S.String;
+
 export interface GetMeBringYourOwnIpTokenRequest {
   /** Campus where you plan to bring your own IP range in. See /ip/campus to get more details. */
   campus: IpCampusEnum | (string & {});
 }
+const GetMeBringYourOwnIpTokenRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<GetMeBringYourOwnIpTokenRequest>;
+
 export type GetMeBringYourOwnIpTokenResponse = string;
+const GetMeBringYourOwnIpTokenResponse =
+  AcceptMeAgreementResponse as any as S.Schema<GetMeBringYourOwnIpTokenResponse>;
+
 export interface GetMeCarbonCalculatorHasInvoiceRequest {
   /** Month of the requested invoice (day is ignored) */
   date?: string;
 }
+const GetMeCarbonCalculatorHasInvoiceRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<GetMeCarbonCalculatorHasInvoiceRequest>;
+
 /** Boolean to determine if account can generate invoice */
 export interface CarbonCalculatorHasInvoiceResponse {
   /** Whether the account has data to generate invoice */
   hasInvoice?: boolean;
 }
+const CarbonCalculatorHasInvoiceResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<CarbonCalculatorHasInvoiceResponse>;
+
 export interface GetMeCarbonCalculatorTaskRequest {
   /** TaskID */
   taskID: string;
 }
+const GetMeCarbonCalculatorTaskRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<GetMeCarbonCalculatorTaskRequest>;
+
 /** Status of a calculation task */
 export type CarbonCalculatorTaskTaskStatusEnum = "ERROR" | "IN_PROGRESS" | "SUCCESS";
+const CarbonCalculatorTaskTaskStatusEnum = S.String;
+
 /** Task to generate a carbon impact document */
 export interface CarbonCalculatorTask {
   /** Link to the document */
@@ -2776,12 +4162,21 @@ export interface CarbonCalculatorTask {
   /** ID of the task */
   taskID?: string;
 }
+const CarbonCalculatorTask = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<CarbonCalculatorTask>;
+
 export interface GetMeConsentRequest {
   /** Campaign name */
   campaignName: string;
 }
+const GetMeConsentRequest = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<GetMeConsentRequest>;
+
 /** Campaign type */
 export type MeConsentCampaignTypeEnum = "OPTIN" | "OPTOUT";
+const MeConsentCampaignTypeEnum = S.String;
+
 /** Consent campaign */
 export interface MeConsentCampaign {
   /** Campaign description */
@@ -2791,13 +4186,22 @@ export interface MeConsentCampaign {
   /** Campaign type */
   type?: MeConsentCampaignTypeEnum;
 }
+const MeConsentCampaign = /*@__PURE__*/ __L.at(__c29, 2) as any as S.Schema<MeConsentCampaign>;
+
 export interface GetMeContactRequest {
   /** Contact ID */
   contactId: number;
 }
+const GetMeContactRequest = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<GetMeContactRequest>;
+
 export interface GetMeCorrectiveInvoiceRequest {
   correctiveInvoiceId: string;
 }
+const GetMeCorrectiveInvoiceRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<GetMeCorrectiveInvoiceRequest>;
+
 /** Details about a CorrectiveInvoice */
 export interface BillingCorrectiveInvoice {
   category?: BillingCategoryEnum;
@@ -2814,21 +4218,46 @@ export interface BillingCorrectiveInvoice {
   tax?: OrderPrice;
   url?: string;
 }
+const BillingCorrectiveInvoice = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<BillingCorrectiveInvoice>;
+
 export interface GetMeCorrectiveInvoiceDebtRequest {
   correctiveInvoiceId: string;
 }
+const GetMeCorrectiveInvoiceDebtRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<GetMeCorrectiveInvoiceDebtRequest>;
+
 export interface GetMeCorrectiveInvoiceDebtOperationRequest {
   correctiveInvoiceId: string;
   operationId: number;
 }
+const GetMeCorrectiveInvoiceDebtOperationRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<GetMeCorrectiveInvoiceDebtOperationRequest>;
+
 export interface GetMeCorrectiveInvoiceDebtOperationAssociatedObjectRequest {
   correctiveInvoiceId: string;
   operationId: number;
 }
+const GetMeCorrectiveInvoiceDebtOperationAssociatedObjectRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<GetMeCorrectiveInvoiceDebtOperationAssociatedObjectRequest>;
+
 export interface GetMeCorrectiveInvoiceDetailRequest {
   correctiveInvoiceId: string;
   correctiveInvoiceDetailId: string;
 }
+const GetMeCorrectiveInvoiceDetailRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<GetMeCorrectiveInvoiceDetailRequest>;
+
 /** Information about a Bill entry */
 export interface BillingCorrectiveInvoiceDetail {
   correctiveInvoiceDetailId?: string;
@@ -2840,17 +4269,37 @@ export interface BillingCorrectiveInvoiceDetail {
   totalPrice?: OrderPrice;
   unitPrice?: OrderLongPrice;
 }
+const BillingCorrectiveInvoiceDetail = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<BillingCorrectiveInvoiceDetail>;
+
 export interface GetMeCorrectiveInvoicePaymentRequest {
   correctiveInvoiceId: string;
 }
+const GetMeCorrectiveInvoicePaymentRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<GetMeCorrectiveInvoicePaymentRequest>;
+
 export interface GetMeCredentialRequest {
   /** Credential ID */
   credentialId: number;
 }
+const GetMeCredentialRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<GetMeCredentialRequest>;
+
 /** If defined, list of ip blocks which are allowed to call API with this credential */
 export type AuthApiCredentialAllowedIPsList = Array<string>;
+const AuthApiCredentialAllowedIPsList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<AuthApiCredentialAllowedIPsList>;
+
 /** All HTTP methods available */
 export type AuthHTTPMethodEnum = "DELETE" | "GET" | "PATCH" | "POST" | "PUT";
+const AuthHTTPMethodEnum = S.String;
+
 /** Access rule allowed to an application */
 export interface AuthAccessRule {
   /** Allowed Method */
@@ -2858,10 +4307,19 @@ export interface AuthAccessRule {
   /** Allowed path */
   path?: string;
 }
+const AuthAccessRule = /*@__PURE__*/ __L.at(__c30, 5) as any as S.Schema<AuthAccessRule>;
+
 /** API routes allowed to this credential */
 export type AuthApiCredentialRulesList = Array<AuthAccessRule>;
+const AuthApiCredentialRulesList = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<AuthApiCredentialRulesList>;
+
 /** All states a Credential can be in */
 export type AuthCredentialStateEnum = "expired" | "pendingValidation" | "refused" | "validated";
+const AuthCredentialStateEnum = S.String;
+
 /** API Credential */
 export interface AuthApiCredential {
   /** If defined, list of ip blocks which are allowed to call API with this credential */
@@ -2883,14 +4341,26 @@ export interface AuthApiCredential {
   /** State of to this credential */
   status?: AuthCredentialStateEnum;
 }
+const AuthApiCredential = /*@__PURE__*/ __L.at(__c30, 7) as any as S.Schema<AuthApiCredential>;
+
 export interface GetMeCredentialApplicationRequest {
   /** Credential ID */
   credentialId: number;
 }
+const GetMeCredentialApplicationRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<GetMeCredentialApplicationRequest>;
+
 export interface GetMeCreditBalanceRequest {
   /** Balance name */
   balanceName: string;
 }
+const GetMeCreditBalanceRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<GetMeCreditBalanceRequest>;
+
 /** Missing description */
 export interface MeCreditBalanceExpiringMovement {
   /** Movement amount */
@@ -2904,8 +4374,18 @@ export interface MeCreditBalanceExpiringMovement {
   /** Object source of this credit movement */
   sourceObject?: MeCreditBalanceMovementSubObject;
 }
+const MeCreditBalanceExpiringMovement = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<MeCreditBalanceExpiringMovement>;
+
 /** Expiring parts of this balance */
 export type MeCreditBalanceBalanceDetailsExpiringList = Array<MeCreditBalanceExpiringMovement>;
+const MeCreditBalanceBalanceDetailsExpiringList = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<MeCreditBalanceBalanceDetailsExpiringList>;
+
 /** Missing description */
 export interface MeCreditBalanceBalanceDetails {
   /** Balance part amount */
@@ -2917,8 +4397,18 @@ export interface MeCreditBalanceBalanceDetails {
   /** Service ID of this balance part */
   serviceId?: number | null;
 }
+const MeCreditBalanceBalanceDetails = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<MeCreditBalanceBalanceDetails>;
+
 /** Balance details, amounts by serviceID */
 export type MeCreditBalanceBalanceDetailsList = Array<MeCreditBalanceBalanceDetails>;
+const MeCreditBalanceBalanceDetailsList = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<MeCreditBalanceBalanceDetailsList>;
+
 /** Missing description */
 export interface MeCreditBalanceBookedMovement {
   /** Movement amount */
@@ -2928,12 +4418,27 @@ export interface MeCreditBalanceBookedMovement {
   /** Order ID */
   orderId?: number;
 }
+const MeCreditBalanceBookedMovement = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<MeCreditBalanceBookedMovement>;
+
 /** Movement already booked on orders */
 export type MeCreditBalanceBookedList = Array<MeCreditBalanceBookedMovement>;
+const MeCreditBalanceBookedList = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<MeCreditBalanceBookedList>;
+
 /** Movement expiring soon */
 export type MeCreditBalanceExpiringList = Array<MeCreditBalanceExpiringMovement>;
+const MeCreditBalanceExpiringList =
+  MeCreditBalanceBalanceDetailsExpiringList as any as S.Schema<MeCreditBalanceExpiringList>;
+
 /** Balance type */
 export type MeCreditBalanceTypeEnum = "BONUS" | "DEPOSIT" | "PREPAID_ACCOUNT" | "VOUCHER";
+const MeCreditBalanceTypeEnum = S.String;
+
 /** Missing description */
 export interface MeCreditBalance {
   /** Balance amount */
@@ -2953,13 +4458,25 @@ export interface MeCreditBalance {
   /** Balance type */
   type?: MeCreditBalanceTypeEnum;
 }
+const MeCreditBalance = /*@__PURE__*/ __L.at(__c32, 0) as any as S.Schema<MeCreditBalance>;
+
 export interface GetMeCreditBalanceMovementRequest {
   /** Balance name */
   balanceName: string;
   /** Movement ID */
   movementId: number;
 }
+const GetMeCreditBalanceMovementRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<GetMeCreditBalanceMovementRequest>;
+
 export interface GetMeDebtAccountRequest {}
+const GetMeDebtAccountRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<GetMeDebtAccountRequest>;
+
 /** Debt balance of the account */
 export interface DebtBalance {
   active?: boolean;
@@ -2972,20 +4489,39 @@ export interface DebtBalance {
   /** Unmatured amount for deferred payment term */
   unmaturedAmount?: OrderPrice;
 }
+const DebtBalance = /*@__PURE__*/ __L.at(__c32, 3) as any as S.Schema<DebtBalance>;
+
 export interface GetMeDebtAccountDebtRequest {
   debtId: number;
 }
+const GetMeDebtAccountDebtRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<GetMeDebtAccountDebtRequest>;
+
 export interface GetMeDebtAccountDebtOperationRequest {
   debtId: number;
   operationId: number;
 }
+const GetMeDebtAccountDebtOperationRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<GetMeDebtAccountDebtOperationRequest>;
+
 export interface GetMeDebtAccountDebtOperationAssociatedObjectRequest {
   debtId: number;
   operationId: number;
 }
+const GetMeDebtAccountDebtOperationAssociatedObjectRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<GetMeDebtAccountDebtOperationAssociatedObjectRequest>;
+
 export interface GetMeDepositRequest {
   depositId: string;
 }
+const GetMeDepositRequest = /*@__PURE__*/ __L.at(__c32, 7) as any as S.Schema<GetMeDepositRequest>;
+
 /** Details about a deposit */
 export interface BillingDeposit {
   amount?: OrderPrice;
@@ -2997,10 +4533,17 @@ export interface BillingDeposit {
   pdfUrl?: string;
   url?: string;
 }
+const BillingDeposit = /*@__PURE__*/ __L.at(__c33, 0) as any as S.Schema<BillingDeposit>;
+
 export interface GetMeDepositDetailRequest {
   depositId: string;
   depositDetailId: string;
 }
+const GetMeDepositDetailRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<GetMeDepositDetailRequest>;
+
 /** Information about a Deposit entry */
 export interface BillingDepositDetail {
   depositDetailId?: string;
@@ -3010,43 +4553,93 @@ export interface BillingDepositDetail {
   totalPrice?: OrderPrice;
   unitPrice?: OrderPrice;
 }
+const BillingDepositDetail = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<BillingDepositDetail>;
+
 export interface GetMeDepositPaidBillRequest {
   depositId: string;
   billId: string;
 }
+const GetMeDepositPaidBillRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<GetMeDepositPaidBillRequest>;
+
 export interface GetMeDepositPaidBillDebtRequest {
   depositId: string;
   billId: string;
 }
+const GetMeDepositPaidBillDebtRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  4,
+) as any as S.Schema<GetMeDepositPaidBillDebtRequest>;
+
 export interface GetMeDepositPaidBillDebtOperationRequest {
   depositId: string;
   billId: string;
   operationId: number;
 }
+const GetMeDepositPaidBillDebtOperationRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<GetMeDepositPaidBillDebtOperationRequest>;
+
 export interface GetMeDepositPaidBillDebtOperationAssociatedObjectRequest {
   depositId: string;
   billId: string;
   operationId: number;
 }
+const GetMeDepositPaidBillDebtOperationAssociatedObjectRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  6,
+) as any as S.Schema<GetMeDepositPaidBillDebtOperationAssociatedObjectRequest>;
+
 export interface GetMeDepositPaidBillDetailRequest {
   depositId: string;
   billId: string;
   billDetailId: string;
 }
+const GetMeDepositPaidBillDetailRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<GetMeDepositPaidBillDetailRequest>;
+
 export interface GetMeDepositPaidBillPaymentRequest {
   depositId: string;
   billId: string;
 }
+const GetMeDepositPaidBillPaymentRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<GetMeDepositPaidBillPaymentRequest>;
+
 export interface GetMeDepositPaymentRequest {
   depositId: string;
 }
+const GetMeDepositPaymentRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<GetMeDepositPaymentRequest>;
+
 export interface GetMeDocumentRequest {
   /** Document id */
   id: string;
 }
+const GetMeDocumentRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<GetMeDocumentRequest>;
+
 export interface GetMeDownPaymentInvoiceRequest {
   downPaymentInvoiceId: string;
 }
+const GetMeDownPaymentInvoiceRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<GetMeDownPaymentInvoiceRequest>;
+
 /** Details about a DownPaymentInvoice */
 export interface BillingDownPaymentInvoice {
   category?: BillingCategoryEnum;
@@ -3062,21 +4655,46 @@ export interface BillingDownPaymentInvoice {
   tax?: OrderPrice;
   url?: string;
 }
+const BillingDownPaymentInvoice = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<BillingDownPaymentInvoice>;
+
 export interface GetMeDownPaymentInvoiceDebtRequest {
   downPaymentInvoiceId: string;
 }
+const GetMeDownPaymentInvoiceDebtRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<GetMeDownPaymentInvoiceDebtRequest>;
+
 export interface GetMeDownPaymentInvoiceDebtOperationRequest {
   downPaymentInvoiceId: string;
   operationId: number;
 }
+const GetMeDownPaymentInvoiceDebtOperationRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<GetMeDownPaymentInvoiceDebtOperationRequest>;
+
 export interface GetMeDownPaymentInvoiceDebtOperationAssociatedObjectRequest {
   downPaymentInvoiceId: string;
   operationId: number;
 }
+const GetMeDownPaymentInvoiceDebtOperationAssociatedObjectRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<GetMeDownPaymentInvoiceDebtOperationAssociatedObjectRequest>;
+
 export interface GetMeDownPaymentInvoiceDetailRequest {
   downPaymentInvoiceId: string;
   downPaymentInvoiceDetailId: string;
 }
+const GetMeDownPaymentInvoiceDetailRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<GetMeDownPaymentInvoiceDetailRequest>;
+
 /** Information about a DownPaymentInvoice entry */
 export interface BillingDownPaymentInvoiceDetail {
   description?: string;
@@ -3088,13 +4706,33 @@ export interface BillingDownPaymentInvoiceDetail {
   totalPrice?: OrderPrice;
   unitPrice?: OrderLongPrice;
 }
+const BillingDownPaymentInvoiceDetail = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<BillingDownPaymentInvoiceDetail>;
+
 export interface GetMeDownPaymentInvoicePaymentRequest {
   downPaymentInvoiceId: string;
 }
+const GetMeDownPaymentInvoicePaymentRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<GetMeDownPaymentInvoicePaymentRequest>;
+
 export interface GetMeFaxCustomDomainRequest {
   id: number;
 }
+const GetMeFaxCustomDomainRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<GetMeFaxCustomDomainRequest>;
+
 export interface GetMeFidelityAccountRequest {}
+const GetMeFidelityAccountRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<GetMeFidelityAccountRequest>;
+
 /** Balance of the fidelity account */
 export interface BillingFidelityAccount {
   alertThreshold?: number | null;
@@ -3103,9 +4741,19 @@ export interface BillingFidelityAccount {
   lastUpdate?: string;
   openDate?: string;
 }
+const BillingFidelityAccount = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<BillingFidelityAccount>;
+
 export interface GetMeFidelityAccountMovementRequest {
   movementId: number;
 }
+const GetMeFidelityAccountMovementRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  6,
+) as any as S.Schema<GetMeFidelityAccountMovementRequest>;
+
 /** Operations a fidelity account movement can represent */
 export type BillingFidelityAccountOperationEnum =
   | "bonus"
@@ -3117,6 +4765,8 @@ export type BillingFidelityAccountOperationEnum =
   | "debit"
   | "pre-credit"
   | "pre-debit";
+const BillingFidelityAccountOperationEnum = S.String;
+
 /** Details about a fidelity account */
 export interface BillingFidelityMovement {
   amount?: number;
@@ -3128,12 +4778,32 @@ export interface BillingFidelityMovement {
   order?: number;
   previousBalance?: number;
 }
+const BillingFidelityMovement = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<BillingFidelityMovement>;
+
 export interface GetMeIdentityGroupRequest {
   /** Group */
   group: string;
 }
+const GetMeIdentityGroupRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<GetMeIdentityGroupRequest>;
+
 export interface GetMeIdentityProviderRequest {}
+const GetMeIdentityProviderRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<GetMeIdentityProviderRequest>;
+
 export interface GetMeIdentityProviderSamlServiceProviderInfoRequest {}
+const GetMeIdentityProviderSamlServiceProviderInfoRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  2,
+) as any as S.Schema<GetMeIdentityProviderSamlServiceProviderInfoRequest>;
+
 /** An IAM Federation Provider */
 export interface AuthServiceProviderInfo {
   /** URL of the SAMLv2 Assertion Consumer Service for OVHcloud */
@@ -3145,14 +4815,29 @@ export interface AuthServiceProviderInfo {
   /** URL of the SAMLv2 metadata for OVHcloud */
   metadataUrl?: string;
 }
+const AuthServiceProviderInfo = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<AuthServiceProviderInfo>;
+
 export interface GetMeIdentityUserRequest {
   /** User */
   user: string;
 }
+const GetMeIdentityUserRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  4,
+) as any as S.Schema<GetMeIdentityUserRequest>;
+
 /** User's groups */
 export type AuthUserGroupsList = Array<string>;
+const AuthUserGroupsList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<AuthUserGroupsList>;
+
 /** Status of a User */
 export type AuthUserStatusEnum = "DISABLED" | "OK" | "PASSWORD_CHANGE_REQUIRED";
+const AuthUserStatusEnum = S.String;
+
 /** An IAM User */
 export interface AuthUser {
   /** Creation date of this user */
@@ -3178,12 +4863,19 @@ export interface AuthUser {
   /** IAM identity URN of the user */
   urn?: string;
 }
+const AuthUser = /*@__PURE__*/ __L.at(__c36, 5) as any as S.Schema<AuthUser>;
+
 export interface GetMeIdentityUserTokenRequest {
   /** User */
   user: string;
   /** Name */
   name: string;
 }
+const GetMeIdentityUserTokenRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<GetMeIdentityUserTokenRequest>;
+
 /** A personal access token response */
 export interface AuthPersonalAccessToken {
   /** Creation date of this token */
@@ -3197,7 +4889,14 @@ export interface AuthPersonalAccessToken {
   /** Name of this token */
   name?: string;
 }
+const AuthPersonalAccessToken = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<AuthPersonalAccessToken>;
+
 export interface GetMeInsightRequest {}
+const GetMeInsightRequest = /*@__PURE__*/ __L.at(__c37, 0) as any as S.Schema<GetMeInsightRequest>;
+
 /** Insight access token */
 export interface MeInsightAccess {
   /** Access token */
@@ -3207,9 +4906,16 @@ export interface MeInsightAccess {
   /** Token expiration date */
   expireAt?: string;
 }
+const MeInsightAccess = /*@__PURE__*/ __L.at(__c37, 1) as any as S.Schema<MeInsightAccess>;
+
 export interface GetMeIpOrganisationRequest {
   organisationId: string;
 }
+const GetMeIpOrganisationRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  2,
+) as any as S.Schema<GetMeIpOrganisationRequest>;
+
 /** Details about an IP block organisation */
 export interface NichandleIpv4Org {
   abuse_mailbox?: string;
@@ -3224,12 +4930,22 @@ export interface NichandleIpv4Org {
   state?: string | null;
   zip?: string | null;
 }
+const NichandleIpv4Org = /*@__PURE__*/ __L.at(__c37, 3) as any as S.Schema<NichandleIpv4Org>;
+
 export interface GetMeLogAuditLogKindRequest {
   /** Name */
   name: string;
 }
+const GetMeLogAuditLogKindRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  4,
+) as any as S.Schema<GetMeLogAuditLogKindRequest>;
+
 /** List of additional log fields managed in this log kind */
 export type DbaasLogsLogKindAdditionalReturnedFieldsList = Array<string>;
+const DbaasLogsLogKindAdditionalReturnedFieldsList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<DbaasLogsLogKindAdditionalReturnedFieldsList>;
+
 /** Log kind */
 export interface DbaasLogsLogKind {
   /** List of additional log fields managed in this log kind */
@@ -3245,10 +4961,17 @@ export interface DbaasLogsLogKind {
   /** Last update date of the log kind */
   updatedAt?: string;
 }
+const DbaasLogsLogKind = /*@__PURE__*/ __L.at(__c37, 5) as any as S.Schema<DbaasLogsLogKind>;
+
 export interface GetMeLogAuditLogSubscriptionRequest {
   /** Subscription ID */
   subscriptionId: string;
 }
+const GetMeLogAuditLogSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<GetMeLogAuditLogSubscriptionRequest>;
+
 /** Log subscription resource */
 export interface DbaasLogsSubscriptionResource {
   /** Name of subscribed resource */
@@ -3256,6 +4979,11 @@ export interface DbaasLogsSubscriptionResource {
   /** Type of subscribed resource */
   type?: string;
 }
+const DbaasLogsSubscriptionResource = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<DbaasLogsSubscriptionResource>;
+
 /** Log subscription */
 export interface DbaasLogsLogSubscription {
   /** Creation date of the subscription */
@@ -3273,15 +5001,26 @@ export interface DbaasLogsLogSubscription {
   /** Last update date of the subscription */
   updatedAt?: string;
 }
+const DbaasLogsLogSubscription = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<DbaasLogsLogSubscription>;
+
 export interface GetMeLogKindRequest {
   /** Name */
   name: string;
 }
+const GetMeLogKindRequest = /*@__PURE__*/ __L.at(__c38, 1) as any as S.Schema<GetMeLogKindRequest>;
+
 export interface GetMeLogSelfRequest {
   logId: number;
 }
+const GetMeLogSelfRequest = /*@__PURE__*/ __L.at(__c38, 2) as any as S.Schema<GetMeLogSelfRequest>;
+
 /** All HTTP methods available */
 export type HttpMethodEnum = "DELETE" | "GET" | "POST" | "PUT";
+const HttpMethodEnum = S.String;
+
 /** API Log */
 export interface ApiLog {
   /** Account which did the Request */
@@ -3298,14 +5037,31 @@ export interface ApiLog {
   /** API Route called */
   route?: string;
 }
+const ApiLog = /*@__PURE__*/ __L.at(__c38, 3) as any as S.Schema<ApiLog>;
+
 export interface GetMeLogServiceRequest {
   logId: number;
 }
+const GetMeLogServiceRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  4,
+) as any as S.Schema<GetMeLogServiceRequest>;
+
 export interface GetMeLogSubscriptionRequest {
   /** Subscription ID */
   subscriptionId: string;
 }
+const GetMeLogSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  5,
+) as any as S.Schema<GetMeLogSubscriptionRequest>;
+
 export interface GetMeManualDomainPaymentRequest {}
+const GetMeManualDomainPaymentRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  6,
+) as any as S.Schema<GetMeManualDomainPaymentRequest>;
+
 /** billing task status */
 export type BillingBillingTaskStatusEnum =
   | "cancelled"
@@ -3315,6 +5071,8 @@ export type BillingBillingTaskStatusEnum =
   | "init"
   | "ovhError"
   | "todo";
+const BillingBillingTaskStatusEnum = S.String;
+
 /** Status of your manual domain payment migration */
 export interface BillingManualDomainPaymentStatus {
   /** Total number of domains that needs to be migrated to manual renew mode */
@@ -3323,7 +5081,17 @@ export interface BillingManualDomainPaymentStatus {
   migratedDomains?: number | null;
   status?: BillingBillingTaskStatusEnum;
 }
+const BillingManualDomainPaymentStatus = /*@__PURE__*/ __L.at(
+  __c38,
+  7,
+) as any as S.Schema<BillingManualDomainPaymentStatus>;
+
 export interface GetMeMarketingRequest {}
+const GetMeMarketingRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<GetMeMarketingRequest>;
+
 /** User consent details for a marketing communication mean */
 export interface MeMarketingConsentDetails {
   /** Enable marketing communication for OVHcloud events and webinars */
@@ -3335,6 +5103,11 @@ export interface MeMarketingConsentDetails {
   /** Enable marketing communication for offer and discount */
   offerAndDiscount?: boolean;
 }
+const MeMarketingConsentDetails = /*@__PURE__*/ __L.at(
+  __c39,
+  1,
+) as any as S.Schema<MeMarketingConsentDetails>;
+
 /** User marketing consent */
 export interface MeMarketingConsent {
   /** Details for call marketing communication */
@@ -3348,10 +5121,17 @@ export interface MeMarketingConsent {
   /** Details for sms marketing communication */
   sms?: MeMarketingConsentDetails;
 }
+const MeMarketingConsent = /*@__PURE__*/ __L.at(__c39, 2) as any as S.Schema<MeMarketingConsent>;
+
 export interface GetMeMigrationRequest {
   /** Migration ID */
   migrationId: number;
 }
+const GetMeMigrationRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<GetMeMigrationRequest>;
+
 /** Status of the migration */
 export type MeMigrationStatusEnum =
   | "CANCELED"
@@ -3360,13 +5140,25 @@ export type MeMigrationStatusEnum =
   | "MIGRATED"
   | "TODO"
   | "TO_CHECK";
+const MeMigrationStatusEnum = S.String;
+
 /** Array of contract agreements to accept */
 export type MeMigrationStepContractsAgreementsList = Array<MeAgreementsContractAgreement>;
+const MeMigrationStepContractsAgreementsList = /*@__PURE__*/ __L.at(
+  __c39,
+  4,
+) as any as S.Schema<MeMigrationStepContractsAgreementsList>;
+
 /** Country Migration step contracts data */
 export interface MeMigrationStepContracts {
   /** Array of contract agreements to accept */
   agreements?: MeMigrationStepContractsAgreementsList;
 }
+const MeMigrationStepContracts = /*@__PURE__*/ __L.at(
+  __c39,
+  5,
+) as any as S.Schema<MeMigrationStepContracts>;
+
 /** Country Migration step debt data */
 export interface MeMigrationStepDebt {
   /** Balance amount */
@@ -3374,8 +5166,12 @@ export interface MeMigrationStepDebt {
   /** OVH Account amount */
   ovhAccountAmount?: OrderPrice | null;
 }
+const MeMigrationStepDebt = /*@__PURE__*/ __L.at(__c39, 6) as any as S.Schema<MeMigrationStepDebt>;
+
 /** Name of the migration step */
 export type MeMigrationStepNameEnum = "CONTRACTS" | "DEBT" | "NIC" | "ORDERS";
+const MeMigrationStepNameEnum = S.String;
+
 /** Country Migration step orders data */
 export interface MeMigrationStepOrders {
   /** Whether there is pending operations */
@@ -3385,8 +5181,15 @@ export interface MeMigrationStepOrders {
   /** Whether there is pending subscriptions */
   pendingSubscriptions?: boolean;
 }
+const MeMigrationStepOrders = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<MeMigrationStepOrders>;
+
 /** Status of the migration step */
 export type MeMigrationStepStatusEnum = "OK" | "PENDING";
+const MeMigrationStepStatusEnum = S.String;
+
 /** Country Migration Step */
 export interface MeMigrationStep {
   /** Contracts data */
@@ -3400,8 +5203,15 @@ export interface MeMigrationStep {
   /** Billing step status */
   status?: MeMigrationStepStatusEnum;
 }
+const MeMigrationStep = /*@__PURE__*/ __L.at(__c40, 0) as any as S.Schema<MeMigrationStep>;
+
 /** Migration steps */
 export type MeMigrationStepsList = Array<MeMigrationStep>;
+const MeMigrationStepsList = /*@__PURE__*/ __L.at(
+  __c40,
+  1,
+) as any as S.Schema<MeMigrationStepsList>;
+
 /** Country Migration */
 export interface MeMigration {
   /** Billing country to migrate from */
@@ -3415,12 +5225,19 @@ export interface MeMigration {
   /** Billing country to migrate to */
   to?: NichandleOvhSubsidiaryEnum;
 }
+const MeMigration = /*@__PURE__*/ __L.at(__c40, 2) as any as S.Schema<MeMigration>;
+
 export interface GetMeMigrationContractRequest {
   /** Migration ID */
   migrationId: number;
   /** Contract ID */
   contractId: number;
 }
+const GetMeMigrationContractRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  3,
+) as any as S.Schema<GetMeMigrationContractRequest>;
+
 /** contract */
 export interface MeMigrationContract {
   /** Status */
@@ -3436,16 +5253,28 @@ export interface MeMigrationContract {
   /** Text of the contract */
   text?: string;
 }
+const MeMigrationContract = /*@__PURE__*/ __L.at(__c40, 4) as any as S.Schema<MeMigrationContract>;
+
 export interface GetMeMigrationContractAgreementRequest {
   /** Migration ID */
   migrationId: number;
   /** Contract ID */
   contractId: number;
 }
+const GetMeMigrationContractAgreementRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  5,
+) as any as S.Schema<GetMeMigrationContractAgreementRequest>;
+
 export interface GetMeNotificationEmailHistoryRequest {
   /** Id */
   id: number;
 }
+const GetMeNotificationEmailHistoryRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  6,
+) as any as S.Schema<GetMeNotificationEmailHistoryRequest>;
+
 /** Email notification received */
 export interface NichandleEmailNotification {
   /** Content of the email */
@@ -3457,12 +5286,25 @@ export interface NichandleEmailNotification {
   /** Subject of the email */
   subject?: string;
 }
+const NichandleEmailNotification = /*@__PURE__*/ __L.at(
+  __c40,
+  7,
+) as any as S.Schema<NichandleEmailNotification>;
+
 export interface GetMeOauth2ClientRequest {
   /** Client ID */
   clientId: string;
 }
+const GetMeOauth2ClientRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<GetMeOauth2ClientRequest>;
+
 /** allowed callback urls */
 export type Oauth2ClientCallbackUrlsList = Array<string>;
+const Oauth2ClientCallbackUrlsList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<Oauth2ClientCallbackUrlsList>;
+
 /** An oAuth2 Client */
 export interface Oauth2Client {
   /** allowed callback urls */
@@ -3480,12 +5322,22 @@ export interface Oauth2Client {
   /** client's name */
   name?: string;
 }
+const Oauth2Client = /*@__PURE__*/ __L.at(__c41, 1) as any as S.Schema<Oauth2Client>;
+
 export interface GetMeOauth2TokenRequest {
   /** Id */
   id: string;
 }
+const GetMeOauth2TokenRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  2,
+) as any as S.Schema<GetMeOauth2TokenRequest>;
+
 /** list of scopes the token has */
 export type Oauth2AccessTokenScopesList = Array<string>;
+const Oauth2AccessTokenScopesList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<Oauth2AccessTokenScopesList>;
+
 /** An oAuth2 accesss token details */
 export interface Oauth2AccessToken {
   /** token's creation date */
@@ -3497,12 +5349,25 @@ export interface Oauth2AccessToken {
   /** list of scopes the token has */
   scopes?: Oauth2AccessTokenScopesList;
 }
+const Oauth2AccessToken = /*@__PURE__*/ __L.at(__c41, 3) as any as S.Schema<Oauth2AccessToken>;
+
 /** list of access tokens derived from the refresh token */
 export type Oauth2TokenAccessTokensList = Array<Oauth2AccessToken>;
+const Oauth2TokenAccessTokensList = /*@__PURE__*/ __L.at(
+  __c41,
+  4,
+) as any as S.Schema<Oauth2TokenAccessTokensList>;
+
 /** list of identities that the token is associated with */
 export type Oauth2TokenIdentitiesList = Array<string>;
+const Oauth2TokenIdentitiesList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<Oauth2TokenIdentitiesList>;
+
 /** list of scopes the token has */
 export type Oauth2TokenScopesList = Array<string>;
+const Oauth2TokenScopesList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<Oauth2TokenScopesList>;
+
 /** An oAuth2 refresh token details */
 export interface Oauth2Token {
   /** list of access tokens derived from the refresh token */
@@ -3526,12 +5391,21 @@ export interface Oauth2Token {
   /** list of scopes the token has */
   scopes?: Oauth2TokenScopesList;
 }
+const Oauth2Token = /*@__PURE__*/ __L.at(__c41, 5) as any as S.Schema<Oauth2Token>;
+
 export interface GetMeOrderRequest {
   orderId: number;
 }
+const GetMeOrderRequest = /*@__PURE__*/ __L.at(__c41, 6) as any as S.Schema<GetMeOrderRequest>;
+
 export interface GetMeOrderAssociatedObjectRequest {
   orderId: number;
 }
+const GetMeOrderAssociatedObjectRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  7,
+) as any as S.Schema<GetMeOrderAssociatedObjectRequest>;
+
 /** Type of objects an order can be linked to */
 export type BillingOrderAssociatedObjectTypeEnum =
   | "Bill"
@@ -3539,25 +5413,46 @@ export type BillingOrderAssociatedObjectTypeEnum =
   | "Refund"
   | "ReverseBill"
   | "Withdrawal";
+const BillingOrderAssociatedObjectTypeEnum = S.String;
+
 /** The object the processing of the order leaded to */
 export interface BillingOrderAssociatedObject {
   id?: string | null;
   type?: BillingOrderAssociatedObjectTypeEnum | null;
 }
+const BillingOrderAssociatedObject = /*@__PURE__*/ __L.at(
+  __c42,
+  0,
+) as any as S.Schema<BillingOrderAssociatedObject>;
+
 export interface GetMeOrderBalanceRequest {
   orderId: number;
   /** Credit balance name */
   balanceName: string;
 }
+const GetMeOrderBalanceRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  1,
+) as any as S.Schema<GetMeOrderBalanceRequest>;
+
 /** Export file format */
 export type ConsumptionConsumptionExportFormatsEnum = "csv";
+const ConsumptionConsumptionExportFormatsEnum = S.String;
+
 export interface GetMeOrderConsumptionDetailsRequest {
   orderId: number;
   /** Format of the file */
   fileFormat: ConsumptionConsumptionExportFormatsEnum | (string & {});
 }
+const GetMeOrderConsumptionDetailsRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  2,
+) as any as S.Schema<GetMeOrderConsumptionDetailsRequest>;
+
 /** Export task status */
 export type ConsumptionConsumptionExportTaskStatusEnum = "DOING" | "DONE" | "ERROR" | "TODO";
+const ConsumptionConsumptionExportTaskStatusEnum = S.String;
+
 /** Detailed consumption's retrieval information */
 export interface BillingOrderConsumptionDetails {
   /** Format of the file */
@@ -3571,21 +5466,46 @@ export interface BillingOrderConsumptionDetails {
   /** Consumption details export task's status */
   taskStatus?: ConsumptionConsumptionExportTaskStatusEnum;
 }
+const BillingOrderConsumptionDetails = /*@__PURE__*/ __L.at(
+  __c42,
+  3,
+) as any as S.Schema<BillingOrderConsumptionDetails>;
+
 export interface GetMeOrderDebtRequest {
   orderId: number;
 }
+const GetMeOrderDebtRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  4,
+) as any as S.Schema<GetMeOrderDebtRequest>;
+
 export interface GetMeOrderDebtOperationRequest {
   orderId: number;
   operationId: number;
 }
+const GetMeOrderDebtOperationRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  5,
+) as any as S.Schema<GetMeOrderDebtOperationRequest>;
+
 export interface GetMeOrderDebtOperationAssociatedObjectRequest {
   orderId: number;
   operationId: number;
 }
+const GetMeOrderDebtOperationAssociatedObjectRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  6,
+) as any as S.Schema<GetMeOrderDebtOperationAssociatedObjectRequest>;
+
 export interface GetMeOrderDetailRequest {
   orderId: number;
   orderDetailId: number;
 }
+const GetMeOrderDetailRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  7,
+) as any as S.Schema<GetMeOrderDetailRequest>;
+
 /** Product type of item in order */
 export type OrderOrderDetailTypeEnum =
   | "ACCESSORY"
@@ -3608,6 +5528,8 @@ export type OrderOrderDetailTypeEnum =
   | "SWITCH"
   | "TRANSFER"
   | "VOUCHER";
+const OrderOrderDetailTypeEnum = S.String;
+
 /** Information about a Bill entry */
 export interface BillingOrderDetail {
   cancelled?: boolean;
@@ -3619,10 +5541,17 @@ export interface BillingOrderDetail {
   totalPrice?: OrderPrice;
   unitPrice?: OrderPrice;
 }
+const BillingOrderDetail = /*@__PURE__*/ __L.at(__c43, 0) as any as S.Schema<BillingOrderDetail>;
+
 export interface GetMeOrderDetailExtensionRequest {
   orderId: number;
   orderDetailId: number;
 }
+const GetMeOrderDetailExtensionRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  1,
+) as any as S.Schema<GetMeOrderDetailExtensionRequest>;
+
 /** List of order actions */
 export type BillingItemDetailOrderActionEnum =
   | "consumption"
@@ -3631,6 +5560,8 @@ export type BillingItemDetailOrderActionEnum =
   | "renew"
   | "revert"
   | "upgrade";
+const BillingItemDetailOrderActionEnum = S.String;
+
 /** Configuration of order */
 export interface BillingItemDetailOrderConfiguration {
   /** Label of the configuration */
@@ -3638,13 +5569,28 @@ export interface BillingItemDetailOrderConfiguration {
   /** Value of the configuration */
   value?: string;
 }
+const BillingItemDetailOrderConfiguration = /*@__PURE__*/ __L.at(
+  __c43,
+  2,
+) as any as S.Schema<BillingItemDetailOrderConfiguration>;
+
 /** Configurations chosen during the order */
 export type BillingItemDetailOrderConfigurationsList = Array<BillingItemDetailOrderConfiguration>;
+const BillingItemDetailOrderConfigurationsList = /*@__PURE__*/ __L.at(
+  __c43,
+  3,
+) as any as S.Schema<BillingItemDetailOrderConfigurationsList>;
+
 /** Product data from order */
 export interface BillingItemDetailOrderPlanProduct {
   /** Name of the product used when ordering through /order/cart */
   name?: string | null;
 }
+const BillingItemDetailOrderPlanProduct = /*@__PURE__*/ __L.at(
+  __c43,
+  4,
+) as any as S.Schema<BillingItemDetailOrderPlanProduct>;
+
 /** Plan data from order */
 export interface BillingItemDetailOrderPlan {
   /** Plan code used when ordering through /order/cart */
@@ -3658,8 +5604,15 @@ export interface BillingItemDetailOrderPlan {
   /** Quantity ordered */
   quantity?: number | null;
 }
+const BillingItemDetailOrderPlan = /*@__PURE__*/ __L.at(
+  __c43,
+  5,
+) as any as S.Schema<BillingItemDetailOrderPlan>;
+
 /** List of order detail types */
 export type BillingItemDetailOrderDetailTypeEnum = "plan" | "product";
+const BillingItemDetailOrderDetailTypeEnum = S.String;
+
 /** Order data for this Detail */
 export interface BillingItemDetailOrder {
   /** The meaning of this order detail */
@@ -3671,16 +5624,33 @@ export interface BillingItemDetailOrder {
   /** Type of the detail to match with values inside the catalog */
   type?: BillingItemDetailOrderDetailTypeEnum | null;
 }
+const BillingItemDetailOrder = /*@__PURE__*/ __L.at(
+  __c43,
+  6,
+) as any as S.Schema<BillingItemDetailOrder>;
+
 /** Extensions of a detail */
 export interface BillingItemDetail {
   order?: BillingItemDetailOrder;
 }
+const BillingItemDetail = /*@__PURE__*/ __L.at(__c43, 7) as any as S.Schema<BillingItemDetail>;
+
 export interface GetMeOrderPaymentRequest {
   orderId: number;
 }
+const GetMeOrderPaymentRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  0,
+) as any as S.Schema<GetMeOrderPaymentRequest>;
+
 export interface GetMeOrderStatusRequest {
   orderId: number;
 }
+const GetMeOrderStatusRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  1,
+) as any as S.Schema<GetMeOrderStatusRequest>;
+
 /** All possible order status */
 export type BillingOrderOrderStatusEnum =
   | "cancelled"
@@ -3691,10 +5661,22 @@ export type BillingOrderOrderStatusEnum =
   | "documentsRequested"
   | "notPaid"
   | "unknown";
+const BillingOrderOrderStatusEnum = S.String;
+
 export type GetMeOrderStatusResponse = BillingOrderOrderStatusEnum;
+const GetMeOrderStatusResponse = /*@__PURE__*/ __L.at(
+  __c44,
+  2,
+) as any as S.Schema<GetMeOrderStatusResponse>;
+
 export interface GetMeOvhAccountRequest {
   ovhAccountId: string;
 }
+const GetMeOvhAccountRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  3,
+) as any as S.Schema<GetMeOvhAccountRequest>;
+
 /** Details about an OVH account */
 export interface BillingOvhAccount {
   alertThreshold?: number | null;
@@ -3707,6 +5689,8 @@ export interface BillingOvhAccount {
   ovhAccountId?: string;
   retrievableAmount?: OrderPrice;
 }
+const BillingOvhAccount = /*@__PURE__*/ __L.at(__c44, 4) as any as S.Schema<BillingOvhAccount>;
+
 export interface GetMeOvhAccountMoneyRequest {
   ovhAccountId: string;
   /** The amount in cents you want to transfer */
@@ -3714,10 +5698,20 @@ export interface GetMeOvhAccountMoneyRequest {
   /** A valid bank account */
   bankAccountId: number;
 }
+const GetMeOvhAccountMoneyRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  5,
+) as any as S.Schema<GetMeOvhAccountMoneyRequest>;
+
 export interface GetMeOvhAccountMovementRequest {
   ovhAccountId: string;
   movementId: number;
 }
+const GetMeOvhAccountMovementRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  6,
+) as any as S.Schema<GetMeOvhAccountMovementRequest>;
+
 /** Operations an OVH account movement can represent */
 export type BillingOvhAccountOperationEnum =
   | "cancel-credit"
@@ -3727,6 +5721,8 @@ export type BillingOvhAccountOperationEnum =
   | "debit"
   | "pre-credit"
   | "pre-debit";
+const BillingOvhAccountOperationEnum = S.String;
+
 /** Details about an OVH account */
 export interface BillingMovement {
   amount?: OrderPrice;
@@ -3739,11 +5735,22 @@ export interface BillingMovement {
   previousBalance?: OrderPrice;
   retrievableAmount?: OrderPrice;
 }
+const BillingMovement = /*@__PURE__*/ __L.at(__c44, 7) as any as S.Schema<BillingMovement>;
+
 export interface GetMePartnerLevelRequest {}
+const GetMePartnerLevelRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  0,
+) as any as S.Schema<GetMePartnerLevelRequest>;
+
 /** Type of level */
 export type MePartnerLevelLevelTypeEnum = "advanced" | "none" | "standard" | "strategic";
+const MePartnerLevelLevelTypeEnum = S.String;
+
 /** Level of Support required */
 export type MePartnerLevelRequirementLoSEnum = "none" | "premium" | "premium-accredited";
+const MePartnerLevelRequirementLoSEnum = S.String;
+
 /** Partner level of an account */
 export interface MePartnerLevelLevel {
   /** Level of partner */
@@ -3753,10 +5760,17 @@ export interface MePartnerLevelLevel {
   /** Level of Support required */
   requirement?: MePartnerLevelRequirementLoSEnum;
 }
+const MePartnerLevelLevel = /*@__PURE__*/ __L.at(__c45, 1) as any as S.Schema<MePartnerLevelLevel>;
+
 export interface GetMePaymentMeanDeferredPaymentAccountRequest {
   /** Id */
   id: number;
 }
+const GetMePaymentMeanDeferredPaymentAccountRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  2,
+) as any as S.Schema<GetMePaymentMeanDeferredPaymentAccountRequest>;
+
 /** Payment mean type icon */
 export interface MePaymentMeanIconData {
   /** Icon in base64 */
@@ -3766,8 +5780,15 @@ export interface MePaymentMeanIconData {
   /** Icon URL */
   url?: string | null;
 }
+const MePaymentMeanIconData = /*@__PURE__*/ __L.at(
+  __c45,
+  3,
+) as any as S.Schema<MePaymentMeanIconData>;
+
 /** State of you deferred account */
 export type MePaymentMeanDeferredStateEnum = "failed" | "valid";
+const MePaymentMeanDeferredStateEnum = S.String;
+
 /** Deferred account information */
 export interface MePaymentMeanDeferred {
   /** Creation date of this deferred account */
@@ -3784,14 +5805,29 @@ export interface MePaymentMeanDeferred {
   /** Deferred account state */
   state?: MePaymentMeanDeferredStateEnum;
 }
+const MePaymentMeanDeferred = /*@__PURE__*/ __L.at(
+  __c45,
+  4,
+) as any as S.Schema<MePaymentMeanDeferred>;
+
 export interface GetMePaymentMethodRequest {
   /** Payment method ID */
   paymentMethodId: number;
 }
+const GetMePaymentMethodRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  5,
+) as any as S.Schema<GetMePaymentMethodRequest>;
+
 export interface GetMePaymentTransactionRequest {
   /** Transaction ID */
   transactionId: number;
 }
+const GetMePaymentTransactionRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  6,
+) as any as S.Schema<GetMePaymentTransactionRequest>;
+
 /** Transaction status */
 export type MePaymentTransactionStatusEnum =
   | "CANCELED"
@@ -3802,8 +5838,12 @@ export type MePaymentTransactionStatusEnum =
   | "FAILED"
   | "READY"
   | "SUCCESS";
+const MePaymentTransactionStatusEnum = S.String;
+
 /** Transaction type */
 export type MePaymentTransactionTypeEnum = "CREDIT" | "DEBIT";
+const MePaymentTransactionTypeEnum = S.String;
+
 /** Transaction object */
 export interface MePaymentTransaction {
   /** Transaction amount */
@@ -3821,10 +5861,20 @@ export interface MePaymentTransaction {
   /** Transaction type */
   type?: MePaymentTransactionTypeEnum;
 }
+const MePaymentTransaction = /*@__PURE__*/ __L.at(
+  __c45,
+  7,
+) as any as S.Schema<MePaymentTransaction>;
+
 export interface GetMePreferenceManagerRequest {
   /** This preference key */
   key: string;
 }
+const GetMePreferenceManagerRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  0,
+) as any as S.Schema<GetMePreferenceManagerRequest>;
+
 /** Manager preference */
 export interface NichandleManagerPreference {
   /** This preference key */
@@ -3832,9 +5882,14 @@ export interface NichandleManagerPreference {
   /** This preference value */
   value?: string;
 }
+const NichandleManagerPreference =
+  ComplexTypeSafeKeyValueString as any as S.Schema<NichandleManagerPreference>;
+
 export interface GetMeRefundRequest {
   refundId: string;
 }
+const GetMeRefundRequest = /*@__PURE__*/ __L.at(__c46, 1) as any as S.Schema<GetMeRefundRequest>;
+
 /** Details about a Refund */
 export interface BillingRefund {
   date?: string;
@@ -3848,10 +5903,17 @@ export interface BillingRefund {
   tax?: OrderPrice;
   url?: string;
 }
+const BillingRefund = /*@__PURE__*/ __L.at(__c46, 2) as any as S.Schema<BillingRefund>;
+
 export interface GetMeRefundDetailRequest {
   refundId: string;
   refundDetailId: string;
 }
+const GetMeRefundDetailRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  3,
+) as any as S.Schema<GetMeRefundDetailRequest>;
+
 /** Information about a Bill entry */
 export interface BillingRefundDetail {
   description?: string;
@@ -3863,12 +5925,24 @@ export interface BillingRefundDetail {
   totalPrice?: OrderPrice;
   unitPrice?: OrderPrice;
 }
+const BillingRefundDetail = /*@__PURE__*/ __L.at(__c46, 4) as any as S.Schema<BillingRefundDetail>;
+
 export interface GetMeRefundPaymentRequest {
   refundId: string;
 }
+const GetMeRefundPaymentRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  5,
+) as any as S.Schema<GetMeRefundPaymentRequest>;
+
 export interface GetMeReverseBillRequest {
   reverseBillId: string;
 }
+const GetMeReverseBillRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  6,
+) as any as S.Schema<GetMeReverseBillRequest>;
+
 /** Details about a bill from customer */
 export interface BillingReverseBill {
   date?: string;
@@ -3881,10 +5955,17 @@ export interface BillingReverseBill {
   tax?: OrderPrice;
   url?: string;
 }
+const BillingReverseBill = /*@__PURE__*/ __L.at(__c46, 7) as any as S.Schema<BillingReverseBill>;
+
 export interface GetMeReverseBillDetailRequest {
   reverseBillId: string;
   reverseBillDetailId: string;
 }
+const GetMeReverseBillDetailRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  0,
+) as any as S.Schema<GetMeReverseBillDetailRequest>;
+
 /** Information about withdrawal entry */
 export interface BillingReversableBillDetail {
   description?: string;
@@ -3896,13 +5977,25 @@ export interface BillingReversableBillDetail {
   totalPrice?: OrderPrice;
   unitPrice?: OrderPrice;
 }
+const BillingReversableBillDetail = /*@__PURE__*/ __L.at(
+  __c47,
+  1,
+) as any as S.Schema<BillingReversableBillDetail>;
+
 export interface GetMeReverseBillPaymentRequest {
   reverseBillId: string;
 }
+const GetMeReverseBillPaymentRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  2,
+) as any as S.Schema<GetMeReverseBillPaymentRequest>;
+
 export interface GetMeSlaRequest {
   /** Id of the object */
   id: number;
 }
+const GetMeSlaRequest = /*@__PURE__*/ __L.at(__c47, 3) as any as S.Schema<GetMeSlaRequest>;
+
 /** SLA properties */
 export interface BillingSlaOperation {
   /** Date of the event that led to SLA */
@@ -3918,20 +6011,42 @@ export interface BillingSlaOperation {
   /** Date of the start of the SLA */
   startDate?: string;
 }
+const BillingSlaOperation = /*@__PURE__*/ __L.at(__c47, 4) as any as S.Schema<BillingSlaOperation>;
+
 export interface GetMeSlaCanBeAppliedRequest {
   /** Id of the object */
   id: number;
 }
+const GetMeSlaCanBeAppliedRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  5,
+) as any as S.Schema<GetMeSlaCanBeAppliedRequest>;
+
 export type GetMeSlaCanBeAppliedResponse = boolean;
+const GetMeSlaCanBeAppliedResponse =
+  GetMeBillingInvoicesByPostalMailResponse as any as S.Schema<GetMeSlaCanBeAppliedResponse>;
+
 export interface GetMeSlaStatusRequest {
   /** Id of the object */
   id: number;
 }
+const GetMeSlaStatusRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  6,
+) as any as S.Schema<GetMeSlaStatusRequest>;
+
 export type GetMeSlaStatusResponse = string;
+const GetMeSlaStatusResponse = /*@__PURE__*/ __L.at(
+  __c47,
+  7,
+) as any as S.Schema<GetMeSlaStatusResponse>;
+
 export interface GetMeSshKeyRequest {
   /** Name of this public SSH key */
   keyName: string;
 }
+const GetMeSshKeyRequest = /*@__PURE__*/ __L.at(__c48, 0) as any as S.Schema<GetMeSshKeyRequest>;
+
 /** Customer public SSH key, can be used for rescue netboot or server access after reinstallation */
 export interface NichandleSshKey {
   /** ASCII encoded public SSH key */
@@ -3939,10 +6054,17 @@ export interface NichandleSshKey {
   /** Name of this public SSH key */
   keyName?: string;
 }
+const NichandleSshKey = /*@__PURE__*/ __L.at(__c48, 1) as any as S.Schema<NichandleSshKey>;
+
 export interface GetMeSubAccountRequest {
   /** Id of the object */
   id: number;
 }
+const GetMeSubAccountRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  2,
+) as any as S.Schema<GetMeSubAccountRequest>;
+
 /** Sub Account */
 export interface NichandleSubAccount {
   /** Creation date */
@@ -3952,7 +6074,14 @@ export interface NichandleSubAccount {
   /** This sub-account id */
   id?: number;
 }
+const NichandleSubAccount = /*@__PURE__*/ __L.at(__c48, 3) as any as S.Schema<NichandleSubAccount>;
+
 export interface GetMeSupportLevelRequest {}
+const GetMeSupportLevelRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  4,
+) as any as S.Schema<GetMeSupportLevelRequest>;
+
 /** Type of level */
 export type MeSupportLevelLevelTypeEnum =
   | "business"
@@ -3960,26 +6089,44 @@ export type MeSupportLevelLevelTypeEnum =
   | "premium"
   | "premium-accredited"
   | "standard";
+const MeSupportLevelLevelTypeEnum = S.String;
+
 /** Support level of an account */
 export interface MeSupportLevelLevel {
   /** Level of support */
   level?: MeSupportLevelLevelTypeEnum;
 }
+const MeSupportLevelLevel = /*@__PURE__*/ __L.at(__c48, 5) as any as S.Schema<MeSupportLevelLevel>;
+
 export interface GetMeTagRequest {
   /** Tag */
   tag: string;
 }
+const GetMeTagRequest = /*@__PURE__*/ __L.at(__c48, 6) as any as S.Schema<GetMeTagRequest>;
+
 export interface GetMeTaskContactChangeRequest {
   id: number;
 }
+const GetMeTaskContactChangeRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  7,
+) as any as S.Schema<GetMeTaskContactChangeRequest>;
+
 /** Allowed types of contact who can be changed by change contact task */
 export type NichandleChangeContactContactTypeEnum =
   | "contactAdmin"
   | "contactBilling"
   | "contactTech";
+const NichandleChangeContactContactTypeEnum = S.String;
+
 /** Contacts to be changed */
 export type NichandleContactChangeTaskContactTypesList =
   Array<NichandleChangeContactContactTypeEnum>;
+const NichandleContactChangeTaskContactTypesList = /*@__PURE__*/ __L.at(
+  __c49,
+  0,
+) as any as S.Schema<NichandleContactChangeTaskContactTypesList>;
+
 /** State of contact change task */
 export type NichandleChangeContactTaskStateEnum =
   | "aborted"
@@ -3991,6 +6138,8 @@ export type NichandleChangeContactTaskStateEnum =
   | "refused"
   | "todo"
   | "validatingByCustomers";
+const NichandleChangeContactTaskStateEnum = S.String;
+
 /** Task running a contact change on a service */
 export interface NichandleContactChangeTask {
   /** Account who asked the contact change */
@@ -4011,10 +6160,17 @@ export interface NichandleContactChangeTask {
   /** Account to change contact to */
   toAccount?: string;
 }
+const NichandleContactChangeTask = /*@__PURE__*/ __L.at(
+  __c49,
+  1,
+) as any as S.Schema<NichandleContactChangeTask>;
+
 export interface GetMeTaskDnsRequest {
   /** Id */
   id: number;
 }
+const GetMeTaskDnsRequest = /*@__PURE__*/ __L.at(__c49, 2) as any as S.Schema<GetMeTaskDnsRequest>;
+
 /** All functions from a dns task */
 export type DomainTaskFunctionEnum =
   | "DnsAnycastActivate"
@@ -4031,8 +6187,12 @@ export type DomainTaskFunctionEnum =
   | "ZoneImport"
   | "ZoneRefresh"
   | "ZoneRestore";
+const DomainTaskFunctionEnum = S.String;
+
 /** All statuses from a dns task */
 export type DomainTaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "problem" | "todo";
+const DomainTaskStatusEnum = S.String;
+
 /** DNS task */
 export interface MeDnsTask {
   /** Can accelerate the task */
@@ -4060,10 +6220,17 @@ export interface MeDnsTask {
   /** Zone related to the task */
   zone?: string;
 }
+const MeDnsTask = /*@__PURE__*/ __L.at(__c49, 3) as any as S.Schema<MeDnsTask>;
+
 export interface GetMeTaskDomainRequest {
   /** Id */
   id: number;
 }
+const GetMeTaskDomainRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  4,
+) as any as S.Schema<GetMeTaskDomainRequest>;
+
 /** Operation status */
 export type DomainOperationStatusEnum =
   | "cancelled"
@@ -4072,8 +6239,12 @@ export type DomainOperationStatusEnum =
   | "error"
   | "problem"
   | "todo";
+const DomainOperationStatusEnum = S.String;
+
 /** Operation type */
 export type DomainOperationTypeEnum = "alldom" | "domain";
+const DomainOperationTypeEnum = S.String;
+
 /** Tasks associated to domain */
 export interface DomainTask {
   /** Can accelerate the task */
@@ -4103,18 +6274,31 @@ export interface DomainTask {
   /** type of the task */
   type?: DomainOperationTypeEnum;
 }
+const DomainTask = /*@__PURE__*/ __L.at(__c49, 5) as any as S.Schema<DomainTask>;
+
 export interface GetMeTaskDomainArgumentRequest {
   /** Id */
   id: number;
   /** Key */
   key: string;
 }
+const GetMeTaskDomainArgumentRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  6,
+) as any as S.Schema<GetMeTaskDomainArgumentRequest>;
+
 /** Document file format */
 export type DomainDocumentFormatsEnum = "gif" | "jpeg" | "jpg" | "pdf" | "png";
 /** List of accepted formats */
 export type NichandleDomainTaskArgumentAcceptedFormatsList = Array<DomainDocumentFormatsEnum>;
+const NichandleDomainTaskArgumentAcceptedFormatsList =
+  NichandleContactChangeTaskContactTypesList as any as S.Schema<NichandleDomainTaskArgumentAcceptedFormatsList>;
+
 /** List of accepted values */
 export type NichandleDomainTaskArgumentAcceptedValuesList = Array<string>;
+const NichandleDomainTaskArgumentAcceptedValuesList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<NichandleDomainTaskArgumentAcceptedValuesList>;
+
 /** Available contact fields */
 export type XanderContactFieldEnum =
   | "address.city"
@@ -4147,6 +6331,9 @@ export type XanderContactFieldEnum =
   | "vat";
 /** List of impacted field names */
 export type NichandleDomainTaskArgumentFieldsList = Array<XanderContactFieldEnum>;
+const NichandleDomainTaskArgumentFieldsList =
+  NichandleContactChangeTaskContactTypesList as any as S.Schema<NichandleDomainTaskArgumentFieldsList>;
+
 /** Domain operation argument */
 export interface NichandleDomainTaskArgument {
   /** List of accepted formats */
@@ -4172,10 +6359,20 @@ export interface NichandleDomainTaskArgument {
   /** Value of the argument */
   value?: string | null;
 }
+const NichandleDomainTaskArgument = /*@__PURE__*/ __L.at(
+  __c49,
+  7,
+) as any as S.Schema<NichandleDomainTaskArgument>;
+
 export interface GetMeTaskDomainProgressbarRequest {
   /** Id */
   id: number;
 }
+const GetMeTaskDomainProgressbarRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  0,
+) as any as S.Schema<GetMeTaskDomainProgressbarRequest>;
+
 /** One step from an operation */
 export interface DomainOperationStep {
   /** Description of the step */
@@ -4185,12 +6382,22 @@ export interface DomainOperationStep {
   /** Name of the step */
   step?: string;
 }
+const DomainOperationStep = /*@__PURE__*/ __L.at(__c50, 1) as any as S.Schema<DomainOperationStep>;
+
 /** All the steps of the operation */
 export type NichandleDomainTaskProgressBarFollowUpStepsList = Array<DomainOperationStep>;
+const NichandleDomainTaskProgressBarFollowUpStepsList = /*@__PURE__*/ __L.at(
+  __c50,
+  2,
+) as any as S.Schema<NichandleDomainTaskProgressBarFollowUpStepsList>;
+
 /** Operation actions */
 export type DomainOperationActionEnum = "canCancel" | "canCorrect" | "canRelaunch" | "canReset";
 /** Action possible on task */
 export type NichandleDomainTaskProgressBarTaskActionsList = Array<DomainOperationActionEnum>;
+const NichandleDomainTaskProgressBarTaskActionsList =
+  NichandleContactChangeTaskContactTypesList as any as S.Schema<NichandleDomainTaskProgressBarTaskActionsList>;
+
 /** Domain operation progress */
 export interface NichandleDomainTaskProgressBar {
   /** Current step of the operation */
@@ -4208,14 +6415,39 @@ export interface NichandleDomainTaskProgressBar {
   /** The status of the task */
   taskStatus?: DomainOperationStatusEnum;
 }
+const NichandleDomainTaskProgressBar = /*@__PURE__*/ __L.at(
+  __c50,
+  3,
+) as any as S.Schema<NichandleDomainTaskProgressBar>;
+
 export interface GetMeTaskEmailChangeRequest {
   id: number;
 }
+const GetMeTaskEmailChangeRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  4,
+) as any as S.Schema<GetMeTaskEmailChangeRequest>;
+
 export interface GetMeTelephonyDefaultIpRestrictionRequest {
   id: number;
 }
+const GetMeTelephonyDefaultIpRestrictionRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  5,
+) as any as S.Schema<GetMeTelephonyDefaultIpRestrictionRequest>;
+
 export interface GetMeTelephonySettingsRequest {}
+const GetMeTelephonySettingsRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  6,
+) as any as S.Schema<GetMeTelephonySettingsRequest>;
+
 export interface GetMeVipStatusRequest {}
+const GetMeVipStatusRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  7,
+) as any as S.Schema<GetMeVipStatusRequest>;
+
 /** VIP Status by Universe */
 export interface NichandleVipStatus {
   /** Is account VIP for Cloud Universe */
@@ -4227,9 +6459,16 @@ export interface NichandleVipStatus {
   /** Is account VIP for Web Universe */
   web?: boolean;
 }
+const NichandleVipStatus = /*@__PURE__*/ __L.at(__c51, 0) as any as S.Schema<NichandleVipStatus>;
+
 export interface GetMeVoucherAccountRequest {
   voucherAccountId: string;
 }
+const GetMeVoucherAccountRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  1,
+) as any as S.Schema<GetMeVoucherAccountRequest>;
+
 /** Details about a Voucher account */
 export interface BillingVoucherAccount {
   balance?: OrderPrice;
@@ -4237,10 +6476,20 @@ export interface BillingVoucherAccount {
   openDate?: string;
   voucherAccountId?: string;
 }
+const BillingVoucherAccount = /*@__PURE__*/ __L.at(
+  __c51,
+  2,
+) as any as S.Schema<BillingVoucherAccount>;
+
 export interface GetMeVoucherAccountMovementRequest {
   voucherAccountId: string;
   movementId: number;
 }
+const GetMeVoucherAccountMovementRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  3,
+) as any as S.Schema<GetMeVoucherAccountMovementRequest>;
+
 /** Operations a voucher account movement can represent */
 export type BillingVoucherAccountOperationEnum =
   | "cancel-credit"
@@ -4250,6 +6499,8 @@ export type BillingVoucherAccountOperationEnum =
   | "debit"
   | "pre-credit"
   | "pre-debit";
+const BillingVoucherAccountOperationEnum = S.String;
+
 /** Details about a voucher account */
 export interface BillingVoucherMovement {
   amount?: OrderPrice;
@@ -4261,9 +6512,19 @@ export interface BillingVoucherMovement {
   order?: number;
   previousBalance?: OrderPrice;
 }
+const BillingVoucherMovement = /*@__PURE__*/ __L.at(
+  __c51,
+  4,
+) as any as S.Schema<BillingVoucherMovement>;
+
 export interface GetMeWithdrawalRequest {
   withdrawalId: string;
 }
+const GetMeWithdrawalRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  5,
+) as any as S.Schema<GetMeWithdrawalRequest>;
+
 /** Details about a withdrawal */
 export interface BillingWithdrawal {
   amount?: OrderPrice;
@@ -4275,10 +6536,17 @@ export interface BillingWithdrawal {
   url?: string;
   withdrawalId?: string;
 }
+const BillingWithdrawal = /*@__PURE__*/ __L.at(__c51, 6) as any as S.Schema<BillingWithdrawal>;
+
 export interface GetMeWithdrawalDetailRequest {
   withdrawalId: string;
   withdrawalDetailId: string;
 }
+const GetMeWithdrawalDetailRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  7,
+) as any as S.Schema<GetMeWithdrawalDetailRequest>;
+
 /** Information about a Withdrawal entry */
 export interface BillingWithdrawalDetail {
   description?: string;
@@ -4288,10 +6556,25 @@ export interface BillingWithdrawalDetail {
   unitPrice?: OrderPrice;
   withdrawalDetailId?: string;
 }
+const BillingWithdrawalDetail = /*@__PURE__*/ __L.at(
+  __c52,
+  0,
+) as any as S.Schema<BillingWithdrawalDetail>;
+
 export interface GetMeWithdrawalPaymentRequest {
   withdrawalId: string;
 }
+const GetMeWithdrawalPaymentRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  1,
+) as any as S.Schema<GetMeWithdrawalPaymentRequest>;
+
 export interface GetMeXdslSettingRequest {}
+const GetMeXdslSettingRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  2,
+) as any as S.Schema<GetMeXdslSettingRequest>;
+
 /** Xdsl Settings */
 export interface XdslSetting {
   /** Enable the partner collect choice in the order funnel */
@@ -4301,32 +6584,98 @@ export interface XdslSetting {
   /** Let the modem with vendor configuration. It prevent to apply the config managed by ovh manager */
   resellerModemBasicConfig?: boolean;
 }
+const XdslSetting = /*@__PURE__*/ __L.at(__c52, 3) as any as S.Schema<XdslSetting>;
+
 export interface ListMeAbuseRequest {}
+const ListMeAbuseRequest = /*@__PURE__*/ __L.at(__c52, 4) as any as S.Schema<ListMeAbuseRequest>;
+
 export type ListMeAbuseResponseBodyList = Array<string>;
 export type ListMeAbuseResponse = ListMeAbuseResponseBodyList;
+const ListMeAbuseResponse = GetCertificatesResponse as any as S.Schema<ListMeAbuseResponse>;
+
 export interface ListMeAccessRestrictionIpRequest {}
+const ListMeAccessRestrictionIpRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  5,
+) as any as S.Schema<ListMeAccessRestrictionIpRequest>;
+
 export type ListMeAccessRestrictionIpResponseBodyList = Array<number>;
+const ListMeAccessRestrictionIpResponseBodyList = /*@__PURE__*/ __L.at(
+  __c52,
+  6,
+) as any as S.Schema<ListMeAccessRestrictionIpResponseBodyList>;
+
 export type ListMeAccessRestrictionIpResponse = ListMeAccessRestrictionIpResponseBodyList;
+const ListMeAccessRestrictionIpResponse = /*@__PURE__*/ __L.at(
+  __c52,
+  7,
+) as any as S.Schema<ListMeAccessRestrictionIpResponse>;
+
 export interface ListMeAccessRestrictionSmsRequest {}
+const ListMeAccessRestrictionSmsRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  0,
+) as any as S.Schema<ListMeAccessRestrictionSmsRequest>;
+
 export type ListMeAccessRestrictionSmsResponseBodyList = Array<number>;
 export type ListMeAccessRestrictionSmsResponse = ListMeAccessRestrictionSmsResponseBodyList;
+const ListMeAccessRestrictionSmsResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeAccessRestrictionSmsResponse>;
+
 export interface ListMeAccessRestrictionTotpRequest {}
+const ListMeAccessRestrictionTotpRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  1,
+) as any as S.Schema<ListMeAccessRestrictionTotpRequest>;
+
 export type ListMeAccessRestrictionTotpResponseBodyList = Array<number>;
 export type ListMeAccessRestrictionTotpResponse = ListMeAccessRestrictionTotpResponseBodyList;
+const ListMeAccessRestrictionTotpResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeAccessRestrictionTotpResponse>;
+
 export interface ListMeAccessRestrictionU2fRequest {}
+const ListMeAccessRestrictionU2fRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  2,
+) as any as S.Schema<ListMeAccessRestrictionU2fRequest>;
+
 export type ListMeAccessRestrictionU2fResponseBodyList = Array<number>;
 export type ListMeAccessRestrictionU2fResponse = ListMeAccessRestrictionU2fResponseBodyList;
+const ListMeAccessRestrictionU2fResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeAccessRestrictionU2fResponse>;
+
 export interface ListMeAgreementsRequest {
   /** Filter the value of agreed property (like) */
   agreed?: AgreementsAgreementStateEnum | (string & {});
   /** Filter the value of contractId property (like) */
   contractId?: number;
 }
+const ListMeAgreementsRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  3,
+) as any as S.Schema<ListMeAgreementsRequest>;
+
 export type ListMeAgreementsResponseBodyList = Array<number>;
+const ListMeAgreementsResponseBodyList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeAgreementsResponseBodyList>;
+
 export type ListMeAgreementsResponse = ListMeAgreementsResponseBodyList;
+const ListMeAgreementsResponse = /*@__PURE__*/ __L.at(
+  __c53,
+  4,
+) as any as S.Schema<ListMeAgreementsResponse>;
+
 export interface ListMeApplicationRequest {}
+const ListMeApplicationRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  5,
+) as any as S.Schema<ListMeApplicationRequest>;
+
 export type ListMeApplicationResponseBodyList = Array<number>;
 export type ListMeApplicationResponse = ListMeApplicationResponseBodyList;
+const ListMeApplicationResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeApplicationResponse>;
+
 export interface ListMeBillRequest {
   /** Filter the value of category property (=) */
   category?: BillingCategoryEnum | (string & {});
@@ -4337,61 +6686,161 @@ export interface ListMeBillRequest {
   /** Filter the value of orderId property (=) */
   orderId?: number;
 }
+const ListMeBillRequest = /*@__PURE__*/ __L.at(__c53, 6) as any as S.Schema<ListMeBillRequest>;
+
 export type ListMeBillResponseBodyList = Array<string>;
 export type ListMeBillResponse = ListMeBillResponseBodyList;
+const ListMeBillResponse = GetCertificatesResponse as any as S.Schema<ListMeBillResponse>;
+
 export interface ListMeBillDebtOperationRequest {
   billId: string;
   /** Filter the value of depositOrderId property (=) */
   depositOrderId?: number;
 }
+const ListMeBillDebtOperationRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  7,
+) as any as S.Schema<ListMeBillDebtOperationRequest>;
+
 export type ListMeBillDebtOperationResponseBodyList = Array<number>;
 export type ListMeBillDebtOperationResponse = ListMeBillDebtOperationResponseBodyList;
+const ListMeBillDebtOperationResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeBillDebtOperationResponse>;
+
 export interface ListMeBillDetailsRequest {
   billId: string;
 }
+const ListMeBillDetailsRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  0,
+) as any as S.Schema<ListMeBillDetailsRequest>;
+
 export type ListMeBillDetailsResponseBodyList = Array<string>;
+const ListMeBillDetailsResponseBodyList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeBillDetailsResponseBodyList>;
+
 export type ListMeBillDetailsResponse = ListMeBillDetailsResponseBodyList;
+const ListMeBillDetailsResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  1,
+) as any as S.Schema<ListMeBillDetailsResponse>;
+
 export interface ListMeBillingGroupRequest {
   /** Filter by name */
   name?: string;
   /** Filter by Service ID */
   serviceId?: number;
 }
+const ListMeBillingGroupRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  2,
+) as any as S.Schema<ListMeBillingGroupRequest>;
+
 export type ListMeBillingGroupResponseBodyList = Array<number>;
 export type ListMeBillingGroupResponse = ListMeBillingGroupResponseBodyList;
+const ListMeBillingGroupResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeBillingGroupResponse>;
+
 export interface ListMeBillingGroupServiceRequest {
   /** Group ID */
   groupId: number;
 }
+const ListMeBillingGroupServiceRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  3,
+) as any as S.Schema<ListMeBillingGroupServiceRequest>;
+
 export type ListMeBillingGroupServiceResponseBodyList = Array<number>;
 export type ListMeBillingGroupServiceResponse = ListMeBillingGroupServiceResponseBodyList;
+const ListMeBillingGroupServiceResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeBillingGroupServiceResponse>;
+
 export interface ListMeBillingPurchaseOrderRequest {
   /** Billing Group Identifier */
   billingGroupId?: number;
 }
+const ListMeBillingPurchaseOrderRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  4,
+) as any as S.Schema<ListMeBillingPurchaseOrderRequest>;
+
 export type ListMeBillingPurchaseOrderResponseBodyList = Array<number>;
 export type ListMeBillingPurchaseOrderResponse = ListMeBillingPurchaseOrderResponseBodyList;
+const ListMeBillingPurchaseOrderResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeBillingPurchaseOrderResponse>;
+
 export interface ListMeBillingReportConsumptionRequest {}
+const ListMeBillingReportConsumptionRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  5,
+) as any as S.Schema<ListMeBillingReportConsumptionRequest>;
+
 export type ListMeBillingReportConsumptionResponseBodyList = Array<string>;
 export type ListMeBillingReportConsumptionResponse = ListMeBillingReportConsumptionResponseBodyList;
+const ListMeBillingReportConsumptionResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeBillingReportConsumptionResponse>;
+
 export interface ListMeBillingTaskRequest {
   /** Filter tasks by name */
   name?: MeBillingTasksTaskNameEnum | (string & {});
   /** Filter tasks by status */
   status?: MeBillingTasksTaskStatusEnum | (string & {});
 }
+const ListMeBillingTaskRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  6,
+) as any as S.Schema<ListMeBillingTaskRequest>;
+
 export type ListMeBillingTaskResponseBodyList = Array<number>;
 export type ListMeBillingTaskResponse = ListMeBillingTaskResponseBodyList;
+const ListMeBillingTaskResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeBillingTaskResponse>;
+
 export interface ListMeCarbonCalculatorTaskRequest {}
+const ListMeCarbonCalculatorTaskRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  7,
+) as any as S.Schema<ListMeCarbonCalculatorTaskRequest>;
+
 export type ListMeCarbonCalculatorTaskResponseBodyList = Array<CarbonCalculatorTask>;
+const ListMeCarbonCalculatorTaskResponseBodyList = /*@__PURE__*/ __L.at(
+  __c55,
+  0,
+) as any as S.Schema<ListMeCarbonCalculatorTaskResponseBodyList>;
+
 export type ListMeCarbonCalculatorTaskResponse = ListMeCarbonCalculatorTaskResponseBodyList;
+const ListMeCarbonCalculatorTaskResponse = /*@__PURE__*/ __L.at(
+  __c55,
+  1,
+) as any as S.Schema<ListMeCarbonCalculatorTaskResponse>;
+
 export interface ListMeConsentRequest {}
+const ListMeConsentRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  2,
+) as any as S.Schema<ListMeConsentRequest>;
+
 export type ListMeConsentResponseBodyList = Array<MeConsentCampaign>;
+const ListMeConsentResponseBodyList = /*@__PURE__*/ __L.at(
+  __c55,
+  3,
+) as any as S.Schema<ListMeConsentResponseBodyList>;
+
 export type ListMeConsentResponse = ListMeConsentResponseBodyList;
+const ListMeConsentResponse = /*@__PURE__*/ __L.at(
+  __c55,
+  4,
+) as any as S.Schema<ListMeConsentResponse>;
+
 export interface ListMeConsentDecisionRequest {
   /** Campaign name */
   campaignName: string;
 }
+const ListMeConsentDecisionRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  5,
+) as any as S.Schema<ListMeConsentDecisionRequest>;
+
 /** Customer consent decision */
 export interface MeConsentDecision {
   /** Consent decision datetime */
@@ -4399,8 +6848,15 @@ export interface MeConsentDecision {
   /** Consent decision value */
   value: boolean;
 }
+const MeConsentDecision = /*@__PURE__*/ __L.at(__c55, 6) as any as S.Schema<MeConsentDecision>;
+
 /** Consent decisions history for this campaign */
 export type MeConsentConsentHistoryList = Array<MeConsentDecision>;
+const MeConsentConsentHistoryList = /*@__PURE__*/ __L.at(
+  __c55,
+  7,
+) as any as S.Schema<MeConsentConsentHistoryList>;
+
 /** Customer consent information for a campaign */
 export interface MeConsentConsent {
   /** Campaign name */
@@ -4412,7 +6868,14 @@ export interface MeConsentConsent {
   /** Current consent value */
   value?: boolean;
 }
+const MeConsentConsent = /*@__PURE__*/ __L.at(__c56, 0) as any as S.Schema<MeConsentConsent>;
+
 export interface ListMeConsumptionUsageCurrentRequest {}
+const ListMeConsumptionUsageCurrentRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  1,
+) as any as S.Schema<ListMeConsumptionUsageCurrentRequest>;
+
 /** Price with currency and amount in micro-cents */
 export interface MeConsumptionPrice {
   currencyCode?: OrderCurrencyCodeEnum;
@@ -4420,6 +6883,8 @@ export interface MeConsumptionPrice {
   value?: number;
   valueInUcents?: number;
 }
+const MeConsumptionPrice = /*@__PURE__*/ __L.at(__c56, 2) as any as S.Schema<MeConsumptionPrice>;
+
 /** Element of consumption for resource */
 export interface MeConsumptionTransactionElementDetail {
   /** Consumption amount price */
@@ -4429,9 +6894,19 @@ export interface MeConsumptionTransactionElementDetail {
   /** Unique ID associated to one service element */
   unique_id?: string | null;
 }
+const MeConsumptionTransactionElementDetail = /*@__PURE__*/ __L.at(
+  __c56,
+  3,
+) as any as S.Schema<MeConsumptionTransactionElementDetail>;
+
 /** List of consumption details for this planCode */
 export type MeConsumptionTransactionElementDetailsList =
   Array<MeConsumptionTransactionElementDetail>;
+const MeConsumptionTransactionElementDetailsList = /*@__PURE__*/ __L.at(
+  __c56,
+  4,
+) as any as S.Schema<MeConsumptionTransactionElementDetailsList>;
+
 /** Element of consumption for resource */
 export interface MeConsumptionTransactionElement {
   /** List of consumption details for this planCode */
@@ -4445,8 +6920,18 @@ export interface MeConsumptionTransactionElement {
   /** Consumption quantity */
   quantity?: number;
 }
+const MeConsumptionTransactionElement = /*@__PURE__*/ __L.at(
+  __c56,
+  5,
+) as any as S.Schema<MeConsumptionTransactionElement>;
+
 /** List of product plan code consumption */
 export type MeConsumptionTransactionElementsList = Array<MeConsumptionTransactionElement>;
+const MeConsumptionTransactionElementsList = /*@__PURE__*/ __L.at(
+  __c56,
+  6,
+) as any as S.Schema<MeConsumptionTransactionElementsList>;
+
 /** List of consumptions recorded in a range */
 export interface MeConsumptionTransaction {
   /** Begin date */
@@ -4466,26 +6951,69 @@ export interface MeConsumptionTransaction {
   /** Service ID */
   serviceId?: number;
 }
+const MeConsumptionTransaction = /*@__PURE__*/ __L.at(
+  __c56,
+  7,
+) as any as S.Schema<MeConsumptionTransaction>;
+
 export type ListMeConsumptionUsageCurrentResponseBodyList = Array<MeConsumptionTransaction>;
+const ListMeConsumptionUsageCurrentResponseBodyList = /*@__PURE__*/ __L.at(
+  __c57,
+  0,
+) as any as S.Schema<ListMeConsumptionUsageCurrentResponseBodyList>;
+
 export type ListMeConsumptionUsageCurrentResponse = ListMeConsumptionUsageCurrentResponseBodyList;
+const ListMeConsumptionUsageCurrentResponse = /*@__PURE__*/ __L.at(
+  __c57,
+  1,
+) as any as S.Schema<ListMeConsumptionUsageCurrentResponse>;
+
 export interface ListMeConsumptionUsageForecastRequest {}
+const ListMeConsumptionUsageForecastRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  2,
+) as any as S.Schema<ListMeConsumptionUsageForecastRequest>;
+
 export type ListMeConsumptionUsageForecastResponseBodyList = Array<MeConsumptionTransaction>;
 export type ListMeConsumptionUsageForecastResponse = ListMeConsumptionUsageForecastResponseBodyList;
+const ListMeConsumptionUsageForecastResponse =
+  ListMeConsumptionUsageCurrentResponse as any as S.Schema<ListMeConsumptionUsageForecastResponse>;
+
 export interface ListMeConsumptionUsageHistoryRequest {
   /** Begin date */
   beginDate: string;
   /** End date */
   endDate: string;
 }
+const ListMeConsumptionUsageHistoryRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  3,
+) as any as S.Schema<ListMeConsumptionUsageHistoryRequest>;
+
 export type ListMeConsumptionUsageHistoryResponseBodyList = Array<MeConsumptionTransaction>;
 export type ListMeConsumptionUsageHistoryResponse = ListMeConsumptionUsageHistoryResponseBodyList;
+const ListMeConsumptionUsageHistoryResponse =
+  ListMeConsumptionUsageCurrentResponse as any as S.Schema<ListMeConsumptionUsageHistoryResponse>;
+
 export interface ListMeContactRequest {}
+const ListMeContactRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  4,
+) as any as S.Schema<ListMeContactRequest>;
+
 export type ListMeContactResponseBodyList = Array<number>;
 export type ListMeContactResponse = ListMeContactResponseBodyList;
+const ListMeContactResponse = ListMeAgreementsResponse as any as S.Schema<ListMeContactResponse>;
+
 export interface ListMeContactFieldsRequest {
   /** Contact ID */
   contactId: number;
 }
+const ListMeContactFieldsRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  5,
+) as any as S.Schema<ListMeContactFieldsRequest>;
+
 /** Extras information about a field */
 export interface MeContactFieldInformation {
   /** Name of the field concerned by restrictions */
@@ -4495,8 +7023,23 @@ export interface MeContactFieldInformation {
   /** Indicates if the field can't be edited */
   readOnly?: boolean;
 }
+const MeContactFieldInformation = /*@__PURE__*/ __L.at(
+  __c57,
+  6,
+) as any as S.Schema<MeContactFieldInformation>;
+
 export type ListMeContactFieldsResponseBodyList = Array<MeContactFieldInformation>;
+const ListMeContactFieldsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c57,
+  7,
+) as any as S.Schema<ListMeContactFieldsResponseBodyList>;
+
 export type ListMeContactFieldsResponse = ListMeContactFieldsResponseBodyList;
+const ListMeContactFieldsResponse = /*@__PURE__*/ __L.at(
+  __c58,
+  0,
+) as any as S.Schema<ListMeContactFieldsResponse>;
+
 export interface ListMeCorrectiveInvoiceRequest {
   /** Filter the value of category property (=) */
   category?: BillingCategoryEnum | (string & {});
@@ -4507,51 +7050,115 @@ export interface ListMeCorrectiveInvoiceRequest {
   /** Filter the value of orderId property (=) */
   orderId?: number;
 }
+const ListMeCorrectiveInvoiceRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  1,
+) as any as S.Schema<ListMeCorrectiveInvoiceRequest>;
+
 export type ListMeCorrectiveInvoiceResponseBodyList = Array<string>;
 export type ListMeCorrectiveInvoiceResponse = ListMeCorrectiveInvoiceResponseBodyList;
+const ListMeCorrectiveInvoiceResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeCorrectiveInvoiceResponse>;
+
 export interface ListMeCorrectiveInvoiceDebtOperationRequest {
   correctiveInvoiceId: string;
   /** Filter the value of depositOrderId property (=) */
   depositOrderId?: number;
 }
+const ListMeCorrectiveInvoiceDebtOperationRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  2,
+) as any as S.Schema<ListMeCorrectiveInvoiceDebtOperationRequest>;
+
 export type ListMeCorrectiveInvoiceDebtOperationResponseBodyList = Array<number>;
 export type ListMeCorrectiveInvoiceDebtOperationResponse =
   ListMeCorrectiveInvoiceDebtOperationResponseBodyList;
+const ListMeCorrectiveInvoiceDebtOperationResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeCorrectiveInvoiceDebtOperationResponse>;
+
 export interface ListMeCorrectiveInvoiceDetailsRequest {
   correctiveInvoiceId: string;
 }
+const ListMeCorrectiveInvoiceDetailsRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  3,
+) as any as S.Schema<ListMeCorrectiveInvoiceDetailsRequest>;
+
 export type ListMeCorrectiveInvoiceDetailsResponseBodyList = Array<string>;
 export type ListMeCorrectiveInvoiceDetailsResponse = ListMeCorrectiveInvoiceDetailsResponseBodyList;
+const ListMeCorrectiveInvoiceDetailsResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeCorrectiveInvoiceDetailsResponse>;
+
 export interface ListMeCredentialRequest {
   /** Filter by applicationId */
   applicationId?: number;
   /** Filter by status */
   status?: AuthCredentialStateEnum | (string & {});
 }
+const ListMeCredentialRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  4,
+) as any as S.Schema<ListMeCredentialRequest>;
+
 export type ListMeCredentialResponseBodyList = Array<number>;
 export type ListMeCredentialResponse = ListMeCredentialResponseBodyList;
+const ListMeCredentialResponse =
+  ListMeAgreementsResponse as any as S.Schema<ListMeCredentialResponse>;
+
 export interface ListMeCreditBalanceRequest {
   /** Filter by balance type */
   type?: MeCreditBalanceTypeEnum | (string & {});
 }
+const ListMeCreditBalanceRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  5,
+) as any as S.Schema<ListMeCreditBalanceRequest>;
+
 export type ListMeCreditBalanceResponseBodyList = Array<string>;
 export type ListMeCreditBalanceResponse = ListMeCreditBalanceResponseBodyList;
+const ListMeCreditBalanceResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeCreditBalanceResponse>;
+
 export interface ListMeCreditBalanceMovementRequest {
   /** Balance name */
   balanceName: string;
 }
+const ListMeCreditBalanceMovementRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  6,
+) as any as S.Schema<ListMeCreditBalanceMovementRequest>;
+
 export type ListMeCreditBalanceMovementResponseBodyList = Array<number>;
 export type ListMeCreditBalanceMovementResponse = ListMeCreditBalanceMovementResponseBodyList;
+const ListMeCreditBalanceMovementResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeCreditBalanceMovementResponse>;
+
 export interface ListMeDebtAccountDebtRequest {}
+const ListMeDebtAccountDebtRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  7,
+) as any as S.Schema<ListMeDebtAccountDebtRequest>;
+
 export type ListMeDebtAccountDebtResponseBodyList = Array<number>;
 export type ListMeDebtAccountDebtResponse = ListMeDebtAccountDebtResponseBodyList;
+const ListMeDebtAccountDebtResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeDebtAccountDebtResponse>;
+
 export interface ListMeDebtAccountDebtOperationRequest {
   debtId: number;
   /** Filter the value of depositOrderId property (=) */
   depositOrderId?: number;
 }
+const ListMeDebtAccountDebtOperationRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  0,
+) as any as S.Schema<ListMeDebtAccountDebtOperationRequest>;
+
 export type ListMeDebtAccountDebtOperationResponseBodyList = Array<number>;
 export type ListMeDebtAccountDebtOperationResponse = ListMeDebtAccountDebtOperationResponseBodyList;
+const ListMeDebtAccountDebtOperationResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeDebtAccountDebtOperationResponse>;
+
 export interface ListMeDepositRequest {
   /** Filter the value of date property (>=) */
   date_from?: string;
@@ -4560,36 +7167,82 @@ export interface ListMeDepositRequest {
   /** Filter the value of orderId property (=) */
   orderId?: number;
 }
+const ListMeDepositRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  1,
+) as any as S.Schema<ListMeDepositRequest>;
+
 export type ListMeDepositResponseBodyList = Array<string>;
 export type ListMeDepositResponse = ListMeDepositResponseBodyList;
+const ListMeDepositResponse = GetCertificatesResponse as any as S.Schema<ListMeDepositResponse>;
+
 export interface ListMeDepositDetailsRequest {
   depositId: string;
 }
+const ListMeDepositDetailsRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  2,
+) as any as S.Schema<ListMeDepositDetailsRequest>;
+
 export type ListMeDepositDetailsResponseBodyList = Array<string>;
 export type ListMeDepositDetailsResponse = ListMeDepositDetailsResponseBodyList;
+const ListMeDepositDetailsResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeDepositDetailsResponse>;
+
 export interface ListMeDepositPaidBillDebtOperationRequest {
   depositId: string;
   billId: string;
   /** Filter the value of depositOrderId property (=) */
   depositOrderId?: number;
 }
+const ListMeDepositPaidBillDebtOperationRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  3,
+) as any as S.Schema<ListMeDepositPaidBillDebtOperationRequest>;
+
 export type ListMeDepositPaidBillDebtOperationResponseBodyList = Array<number>;
 export type ListMeDepositPaidBillDebtOperationResponse =
   ListMeDepositPaidBillDebtOperationResponseBodyList;
+const ListMeDepositPaidBillDebtOperationResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeDepositPaidBillDebtOperationResponse>;
+
 export interface ListMeDepositPaidBillDetailsRequest {
   depositId: string;
   billId: string;
 }
+const ListMeDepositPaidBillDetailsRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  4,
+) as any as S.Schema<ListMeDepositPaidBillDetailsRequest>;
+
 export type ListMeDepositPaidBillDetailsResponseBodyList = Array<string>;
 export type ListMeDepositPaidBillDetailsResponse = ListMeDepositPaidBillDetailsResponseBodyList;
+const ListMeDepositPaidBillDetailsResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeDepositPaidBillDetailsResponse>;
+
 export interface ListMeDepositPaidBillsRequest {
   depositId: string;
 }
+const ListMeDepositPaidBillsRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  5,
+) as any as S.Schema<ListMeDepositPaidBillsRequest>;
+
 export type ListMeDepositPaidBillsResponseBodyList = Array<string>;
 export type ListMeDepositPaidBillsResponse = ListMeDepositPaidBillsResponseBodyList;
+const ListMeDepositPaidBillsResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeDepositPaidBillsResponse>;
+
 export interface ListMeDocumentRequest {}
+const ListMeDocumentRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  6,
+) as any as S.Schema<ListMeDocumentRequest>;
+
 export type ListMeDocumentResponseBodyList = Array<string>;
 export type ListMeDocumentResponse = ListMeDocumentResponseBodyList;
+const ListMeDocumentResponse = GetCertificatesResponse as any as S.Schema<ListMeDocumentResponse>;
+
 export interface ListMeDownPaymentInvoiceRequest {
   /** Filter the value of category property (=) */
   category?: BillingCategoryEnum | (string & {});
@@ -4600,54 +7253,136 @@ export interface ListMeDownPaymentInvoiceRequest {
   /** Filter the value of orderId property (=) */
   orderId?: number;
 }
+const ListMeDownPaymentInvoiceRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  7,
+) as any as S.Schema<ListMeDownPaymentInvoiceRequest>;
+
 export type ListMeDownPaymentInvoiceResponseBodyList = Array<string>;
 export type ListMeDownPaymentInvoiceResponse = ListMeDownPaymentInvoiceResponseBodyList;
+const ListMeDownPaymentInvoiceResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeDownPaymentInvoiceResponse>;
+
 export interface ListMeDownPaymentInvoiceDebtOperationRequest {
   downPaymentInvoiceId: string;
   /** Filter the value of depositOrderId property (=) */
   depositOrderId?: number;
 }
+const ListMeDownPaymentInvoiceDebtOperationRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  0,
+) as any as S.Schema<ListMeDownPaymentInvoiceDebtOperationRequest>;
+
 export type ListMeDownPaymentInvoiceDebtOperationResponseBodyList = Array<number>;
 export type ListMeDownPaymentInvoiceDebtOperationResponse =
   ListMeDownPaymentInvoiceDebtOperationResponseBodyList;
+const ListMeDownPaymentInvoiceDebtOperationResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeDownPaymentInvoiceDebtOperationResponse>;
+
 export interface ListMeDownPaymentInvoiceDetailsRequest {
   downPaymentInvoiceId: string;
 }
+const ListMeDownPaymentInvoiceDetailsRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  1,
+) as any as S.Schema<ListMeDownPaymentInvoiceDetailsRequest>;
+
 export type ListMeDownPaymentInvoiceDetailsResponseBodyList = Array<string>;
 export type ListMeDownPaymentInvoiceDetailsResponse =
   ListMeDownPaymentInvoiceDetailsResponseBodyList;
+const ListMeDownPaymentInvoiceDetailsResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeDownPaymentInvoiceDetailsResponse>;
+
 export interface ListMeFaxCustomDomainsRequest {}
+const ListMeFaxCustomDomainsRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  2,
+) as any as S.Schema<ListMeFaxCustomDomainsRequest>;
+
 export type ListMeFaxCustomDomainsResponseBodyList = Array<number>;
 export type ListMeFaxCustomDomainsResponse = ListMeFaxCustomDomainsResponseBodyList;
+const ListMeFaxCustomDomainsResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeFaxCustomDomainsResponse>;
+
 export interface ListMeFidelityAccountMovementsRequest {
   /** Filter the value of date property (>=) */
   date_from?: string;
   /** Filter the value of date property (<=) */
   date_to?: string;
 }
+const ListMeFidelityAccountMovementsRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  3,
+) as any as S.Schema<ListMeFidelityAccountMovementsRequest>;
+
 export type ListMeFidelityAccountMovementsResponseBodyList = Array<number>;
 export type ListMeFidelityAccountMovementsResponse = ListMeFidelityAccountMovementsResponseBodyList;
+const ListMeFidelityAccountMovementsResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeFidelityAccountMovementsResponse>;
+
 export interface ListMeIdentityGroupRequest {}
+const ListMeIdentityGroupRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  4,
+) as any as S.Schema<ListMeIdentityGroupRequest>;
+
 export type ListMeIdentityGroupResponseBodyList = Array<string>;
 export type ListMeIdentityGroupResponse = ListMeIdentityGroupResponseBodyList;
+const ListMeIdentityGroupResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeIdentityGroupResponse>;
+
 export interface ListMeIdentityGroupUserRequest {
   /** Group */
   group: string;
 }
+const ListMeIdentityGroupUserRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  5,
+) as any as S.Schema<ListMeIdentityGroupUserRequest>;
+
 export type ListMeIdentityGroupUserResponseBodyList = Array<string>;
 export type ListMeIdentityGroupUserResponse = ListMeIdentityGroupUserResponseBodyList;
+const ListMeIdentityGroupUserResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeIdentityGroupUserResponse>;
+
 export interface ListMeIdentityUserRequest {}
+const ListMeIdentityUserRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  6,
+) as any as S.Schema<ListMeIdentityUserRequest>;
+
 export type ListMeIdentityUserResponseBodyList = Array<string>;
 export type ListMeIdentityUserResponse = ListMeIdentityUserResponseBodyList;
+const ListMeIdentityUserResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeIdentityUserResponse>;
+
 export interface ListMeIdentityUserTokenRequest {
   /** User */
   user: string;
 }
+const ListMeIdentityUserTokenRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  7,
+) as any as S.Schema<ListMeIdentityUserTokenRequest>;
+
 export type ListMeIdentityUserTokenResponseBodyList = Array<string>;
 export type ListMeIdentityUserTokenResponse = ListMeIdentityUserTokenResponseBodyList;
+const ListMeIdentityUserTokenResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeIdentityUserTokenResponse>;
+
 export interface ListMeIncidentSbgMigrateServicesRequest {}
+const ListMeIncidentSbgMigrateServicesRequest = /*@__PURE__*/ __L.at(
+  __c61,
+  0,
+) as any as S.Schema<ListMeIncidentSbgMigrateServicesRequest>;
+
 /** Options to migrate linked to the original service */
 export type MeIncidentServiceMigrationAddonsList = Array<MeIncidentServiceMigration>;
+const MeIncidentServiceMigrationAddonsList = /*@__PURE__*/ __L.at(
+  __c61,
+  1,
+) as any as S.Schema<MeIncidentServiceMigrationAddonsList>;
+
 /** Config */
 export interface MeIncidentProposedOfferConfiguration {
   /** name */
@@ -4655,8 +7390,18 @@ export interface MeIncidentProposedOfferConfiguration {
   /** value */
   value?: string;
 }
+const MeIncidentProposedOfferConfiguration = /*@__PURE__*/ __L.at(
+  __c61,
+  2,
+) as any as S.Schema<MeIncidentProposedOfferConfiguration>;
+
 /** List of configurations used for the migration */
 export type MeIncidentProposedOfferConfigurationsList = Array<MeIncidentProposedOfferConfiguration>;
+const MeIncidentProposedOfferConfigurationsList = /*@__PURE__*/ __L.at(
+  __c61,
+  3,
+) as any as S.Schema<MeIncidentProposedOfferConfigurationsList>;
+
 /** Capacity of a pricing (type) */
 export type OrderCartGenericProductPricingCapacitiesEnum =
   | "consumption"
@@ -4669,8 +7414,13 @@ export type OrderCartGenericProductPricingCapacitiesEnum =
 /** Capacities of the pricing (type of pricing) */
 export type OrderCartGenericProductPricingCapacitiesList =
   Array<OrderCartGenericProductPricingCapacitiesEnum>;
+const OrderCartGenericProductPricingCapacitiesList =
+  NichandleContactChangeTaskContactTypesList as any as S.Schema<OrderCartGenericProductPricingCapacitiesList>;
+
 /** Type of a pricing */
 export type OrderCartGenericProductPricingTypeEnum = "consumption" | "purchase" | "rental";
+const OrderCartGenericProductPricingTypeEnum = S.String;
+
 /** Representation of a product pricing */
 export interface OrderCartGenericProductPricing {
   /** Capacities of the pricing (type of pricing) */
@@ -4698,8 +7448,18 @@ export interface OrderCartGenericProductPricing {
   /** Pricing type */
   pricingType?: OrderCartGenericProductPricingTypeEnum;
 }
+const OrderCartGenericProductPricing = /*@__PURE__*/ __L.at(
+  __c61,
+  4,
+) as any as S.Schema<OrderCartGenericProductPricing>;
+
 /** Prices of the product offer */
 export type OrderCartGenericProductDefinitionPricesList = Array<OrderCartGenericProductPricing>;
+const OrderCartGenericProductDefinitionPricesList = /*@__PURE__*/ __L.at(
+  __c61,
+  5,
+) as any as S.Schema<OrderCartGenericProductDefinitionPricesList>;
+
 /** Type of a product */
 export type OrderCartGenericProductTypeEnum =
   | "cloud_service"
@@ -4710,6 +7470,8 @@ export type OrderCartGenericProductTypeEnum =
   | "saas_license"
   | "shipping"
   | "storage";
+const OrderCartGenericProductTypeEnum = S.String;
+
 /** Representation of a generic product */
 export interface OrderCartGenericProductDefinition {
   /** Product offer identifier */
@@ -4721,6 +7483,11 @@ export interface OrderCartGenericProductDefinition {
   /** Product type */
   productType?: OrderCartGenericProductTypeEnum;
 }
+const OrderCartGenericProductDefinition = /*@__PURE__*/ __L.at(
+  __c61,
+  6,
+) as any as S.Schema<OrderCartGenericProductDefinition>;
+
 /** Commercial gesture applied for the service migration */
 export interface MeIncidentPercentagePromotion {
   /** Duration applied for the commercial gesture */
@@ -4728,6 +7495,11 @@ export interface MeIncidentPercentagePromotion {
   /** Percentage of the discount */
   value?: number;
 }
+const MeIncidentPercentagePromotion = /*@__PURE__*/ __L.at(
+  __c61,
+  7,
+) as any as S.Schema<MeIncidentPercentagePromotion>;
+
 /** Commercial offer a customer can migrate his service to */
 export interface MeIncidentProposedOffer {
   /** List of configurations used for the migration */
@@ -4739,8 +7511,16 @@ export interface MeIncidentProposedOffer {
   /** Promotion applied to the commercial offer */
   promotion?: MeIncidentPercentagePromotion;
 }
+const MeIncidentProposedOffer = /*@__PURE__*/ __L.at(
+  __c62,
+  0,
+) as any as S.Schema<MeIncidentProposedOffer>;
+
 /** Additional information on the service */
 export type MeIncidentServiceToMigrateMetadataList = Array<ComplexTypeSafeKeyValueString>;
+const MeIncidentServiceToMigrateMetadataList =
+  NichandleDocumentDocumentTagsList as any as S.Schema<MeIncidentServiceToMigrateMetadataList>;
+
 /** Original service that can be migrated */
 export interface MeIncidentServiceToMigrate {
   /** Description of the offer of the service */
@@ -4754,6 +7534,11 @@ export interface MeIncidentServiceToMigrate {
   /** Name of the migratable service */
   serviceName?: string;
 }
+const MeIncidentServiceToMigrate = /*@__PURE__*/ __L.at(
+  __c62,
+  1,
+) as any as S.Schema<MeIncidentServiceToMigrate>;
+
 /** Service you may migrate to a given offer */
 export interface MeIncidentServiceMigration {
   /** Options to migrate linked to the original service */
@@ -4765,15 +7550,45 @@ export interface MeIncidentServiceMigration {
   /** Description of the service to migrate */
   serviceToMigrate?: MeIncidentServiceToMigrate | null;
 }
+const MeIncidentServiceMigration = /*@__PURE__*/ __L.at(
+  __c62,
+  2,
+) as any as S.Schema<MeIncidentServiceMigration>;
+
 export type ListMeIncidentSbgMigrateServicesResponseBodyList = Array<MeIncidentServiceMigration>;
+const ListMeIncidentSbgMigrateServicesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c62,
+  3,
+) as any as S.Schema<ListMeIncidentSbgMigrateServicesResponseBodyList>;
+
 export type ListMeIncidentSbgMigrateServicesResponse =
   ListMeIncidentSbgMigrateServicesResponseBodyList;
+const ListMeIncidentSbgMigrateServicesResponse = /*@__PURE__*/ __L.at(
+  __c62,
+  4,
+) as any as S.Schema<ListMeIncidentSbgMigrateServicesResponse>;
+
 export interface ListMeIpOrganisationRequest {}
+const ListMeIpOrganisationRequest = /*@__PURE__*/ __L.at(
+  __c62,
+  5,
+) as any as S.Schema<ListMeIpOrganisationRequest>;
+
 export type ListMeIpOrganisationResponseBodyList = Array<string>;
 export type ListMeIpOrganisationResponse = ListMeIpOrganisationResponseBodyList;
+const ListMeIpOrganisationResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeIpOrganisationResponse>;
+
 export interface ListMeLogAuditRequest {}
+const ListMeLogAuditRequest = /*@__PURE__*/ __L.at(
+  __c62,
+  6,
+) as any as S.Schema<ListMeLogAuditRequest>;
+
 /** Authentication type */
 export type AuditLogAuthUserTypeEnum = "ACCOUNT" | "PROVIDER" | "USER";
+const AuditLogAuthUserTypeEnum = S.String;
+
 /** Authenticated user details */
 export interface AuditLogAuthUserDetails {
   /** authentication type */
@@ -4781,11 +7596,18 @@ export interface AuditLogAuthUserDetails {
   /** authenticated user name */
   user?: string | null;
 }
+const AuditLogAuthUserDetails = /*@__PURE__*/ __L.at(
+  __c62,
+  7,
+) as any as S.Schema<AuditLogAuthUserDetails>;
+
 /** Authentication details */
 export interface AuditLogAuthDetails {
   /** authenticated user details */
   userDetails?: AuditLogAuthUserDetails;
 }
+const AuditLogAuthDetails = /*@__PURE__*/ __L.at(__c63, 0) as any as S.Schema<AuditLogAuthDetails>;
+
 /** Specific fields for GROUP events */
 export interface AuditLogGroupDetails {
   /** Description of the group */
@@ -4795,6 +7617,11 @@ export interface AuditLogGroupDetails {
   /** Role of the group */
   role?: string;
 }
+const AuditLogGroupDetails = /*@__PURE__*/ __L.at(
+  __c63,
+  1,
+) as any as S.Schema<AuditLogGroupDetails>;
+
 /** specific fields for GROUP_CREATED events */
 export interface AuditLogGroupCreatedDetails {
   /** Identifier of the group */
@@ -4802,6 +7629,11 @@ export interface AuditLogGroupCreatedDetails {
   /** Group details after creation */
   new?: AuditLogGroupDetails | null;
 }
+const AuditLogGroupCreatedDetails = /*@__PURE__*/ __L.at(
+  __c63,
+  2,
+) as any as S.Schema<AuditLogGroupCreatedDetails>;
+
 /** specific fields for GROUP_DELETED events */
 export interface AuditLogGroupDeletedDetails {
   /** Identifier of the group */
@@ -4809,6 +7641,11 @@ export interface AuditLogGroupDeletedDetails {
   /** Group details before deletion */
   old?: AuditLogGroupDetails | null;
 }
+const AuditLogGroupDeletedDetails = /*@__PURE__*/ __L.at(
+  __c63,
+  3,
+) as any as S.Schema<AuditLogGroupDeletedDetails>;
+
 /** specific fields for GROUP_MODIFIED events */
 export interface AuditLogGroupModifiedDetails {
   /** Identifier of the group */
@@ -4818,6 +7655,11 @@ export interface AuditLogGroupModifiedDetails {
   /** Group details before update */
   old?: AuditLogGroupDetails | null;
 }
+const AuditLogGroupModifiedDetails = /*@__PURE__*/ __L.at(
+  __c63,
+  4,
+) as any as S.Schema<AuditLogGroupModifiedDetails>;
+
 /** Authentication MFA type */
 export type AuditLogAuthMFATypeEnum =
   | "BACKUP_CODE"
@@ -4827,6 +7669,8 @@ export type AuditLogAuthMFATypeEnum =
   | "TOTP"
   | "U2F"
   | "UNKNOWN";
+const AuditLogAuthMFATypeEnum = S.String;
+
 /** specific fields for LOGIN_SUCCESS events */
 export interface AuditLogLoginSuccessDetails {
   /** Used MFA while login */
@@ -4834,10 +7678,21 @@ export interface AuditLogLoginSuccessDetails {
   /** Browser's user agent */
   userAgent?: string;
 }
+const AuditLogLoginSuccessDetails = /*@__PURE__*/ __L.at(
+  __c63,
+  5,
+) as any as S.Schema<AuditLogLoginSuccessDetails>;
+
 /** Identities changed on the policy */
 export type AuditLogPolicyChangesIdentitiesList = Array<string>;
+const AuditLogPolicyChangesIdentitiesList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<AuditLogPolicyChangesIdentitiesList>;
+
 /** Resources changed on the policy */
 export type AuditLogPolicyChangesResourcesList = Array<string>;
+const AuditLogPolicyChangesResourcesList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<AuditLogPolicyChangesResourcesList>;
+
 /** Changed fields for POLICY events */
 export interface AuditLogPolicyChanges {
   /** Identities changed on the policy */
@@ -4845,6 +7700,11 @@ export interface AuditLogPolicyChanges {
   /** Resources changed on the policy */
   resources?: AuditLogPolicyChangesResourcesList | null;
 }
+const AuditLogPolicyChanges = /*@__PURE__*/ __L.at(
+  __c63,
+  6,
+) as any as S.Schema<AuditLogPolicyChanges>;
+
 /** Specific fields for POLICY events */
 export interface AuditLogPolicyDetails {
   /** Description of the policy */
@@ -4852,6 +7712,11 @@ export interface AuditLogPolicyDetails {
   /** Name of the policy */
   name?: string;
 }
+const AuditLogPolicyDetails = /*@__PURE__*/ __L.at(
+  __c63,
+  7,
+) as any as S.Schema<AuditLogPolicyDetails>;
+
 /** specific fields for POLICY_CREATED events */
 export interface AuditLogPolicyCreatedDetails {
   /** Policy changes */
@@ -4863,6 +7728,11 @@ export interface AuditLogPolicyCreatedDetails {
   /** Name of the policy */
   policyName?: string;
 }
+const AuditLogPolicyCreatedDetails = /*@__PURE__*/ __L.at(
+  __c64,
+  0,
+) as any as S.Schema<AuditLogPolicyCreatedDetails>;
+
 /** specific fields for POLICY_DELETED events */
 export interface AuditLogPolicyDeletedDetails {
   /** Policy details before deletion */
@@ -4874,6 +7744,11 @@ export interface AuditLogPolicyDeletedDetails {
   /** Policy changes */
   removed?: AuditLogPolicyChanges | null;
 }
+const AuditLogPolicyDeletedDetails = /*@__PURE__*/ __L.at(
+  __c64,
+  1,
+) as any as S.Schema<AuditLogPolicyDeletedDetails>;
+
 /** specific fields for POLICY_MODIFIED events */
 export interface AuditLogPolicyModifiedDetails {
   /** Policy changes (addition) */
@@ -4889,6 +7764,11 @@ export interface AuditLogPolicyModifiedDetails {
   /** Policy changes (removal) */
   removed?: AuditLogPolicyChanges | null;
 }
+const AuditLogPolicyModifiedDetails = /*@__PURE__*/ __L.at(
+  __c64,
+  2,
+) as any as S.Schema<AuditLogPolicyModifiedDetails>;
+
 /** specific fields for PROVIDER events */
 export interface AuditLogProviderDetails {
   /** SAML group attribute name of the provider */
@@ -4900,6 +7780,11 @@ export interface AuditLogProviderDetails {
   /** Provider use disabled account users */
   usersDisabled?: boolean;
 }
+const AuditLogProviderDetails = /*@__PURE__*/ __L.at(
+  __c64,
+  3,
+) as any as S.Schema<AuditLogProviderDetails>;
+
 /** specific fields for PROVIDER_CREATED events */
 export interface AuditLogProviderCreatedDetails {
   /** Provider details after creation */
@@ -4907,6 +7792,11 @@ export interface AuditLogProviderCreatedDetails {
   /** SSO URL of the provider */
   ssoServiceURL?: string;
 }
+const AuditLogProviderCreatedDetails = /*@__PURE__*/ __L.at(
+  __c64,
+  4,
+) as any as S.Schema<AuditLogProviderCreatedDetails>;
+
 /** specific fields for PROVIDER_DELETED events */
 export interface AuditLogProviderDeletedDetails {
   /** Provider details before deletion */
@@ -4914,6 +7804,11 @@ export interface AuditLogProviderDeletedDetails {
   /** SSO URL of the provider */
   ssoServiceURL?: string;
 }
+const AuditLogProviderDeletedDetails = /*@__PURE__*/ __L.at(
+  __c64,
+  5,
+) as any as S.Schema<AuditLogProviderDeletedDetails>;
+
 /** specific fields for PROVIDER_MODIFIED events */
 export interface AuditLogProviderModifiedDetails {
   /** Provider details after update */
@@ -4923,18 +7818,36 @@ export interface AuditLogProviderModifiedDetails {
   /** SSO URL of the provider */
   ssoServiceURL?: string;
 }
+const AuditLogProviderModifiedDetails = /*@__PURE__*/ __L.at(
+  __c64,
+  6,
+) as any as S.Schema<AuditLogProviderModifiedDetails>;
+
 /** Resources changed on the resource group */
 export type AuditLogResourceGroupChangesResourcesList = Array<string>;
+const AuditLogResourceGroupChangesResourcesList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<AuditLogResourceGroupChangesResourcesList>;
+
 /** Changed fields for RESOURCE_GROUP events */
 export interface AuditLogResourceGroupChanges {
   /** Resources changed on the resource group */
   resources?: AuditLogResourceGroupChangesResourcesList | null;
 }
+const AuditLogResourceGroupChanges = /*@__PURE__*/ __L.at(
+  __c64,
+  7,
+) as any as S.Schema<AuditLogResourceGroupChanges>;
+
 /** Specific fields for RESOURCE_GROUP events */
 export interface AuditLogResourceGroupDetails {
   /** Name of the policy */
   name?: string;
 }
+const AuditLogResourceGroupDetails = /*@__PURE__*/ __L.at(
+  __c65,
+  0,
+) as any as S.Schema<AuditLogResourceGroupDetails>;
+
 /** specific fields for RESOURCE_GROUP_CREATED events */
 export interface AuditLogResourceGroupCreatedDetails {
   /** Resource group changes */
@@ -4946,6 +7859,11 @@ export interface AuditLogResourceGroupCreatedDetails {
   /** Name of the resource group */
   resourceGroupName?: string;
 }
+const AuditLogResourceGroupCreatedDetails = /*@__PURE__*/ __L.at(
+  __c65,
+  1,
+) as any as S.Schema<AuditLogResourceGroupCreatedDetails>;
+
 /** specific fields for RESOURCE_GROUP_DELETED events */
 export interface AuditLogResourceGroupDeletedDetails {
   /** Resource group details before deletion */
@@ -4957,6 +7875,11 @@ export interface AuditLogResourceGroupDeletedDetails {
   /** Name of the resource group */
   resourceGroupName?: string;
 }
+const AuditLogResourceGroupDeletedDetails = /*@__PURE__*/ __L.at(
+  __c65,
+  2,
+) as any as S.Schema<AuditLogResourceGroupDeletedDetails>;
+
 /** specific fields for RESOURCE_GROUP_MODIFIED events */
 export interface AuditLogResourceGroupModifiedDetails {
   /** Resource group changes (addition) */
@@ -4972,6 +7895,11 @@ export interface AuditLogResourceGroupModifiedDetails {
   /** Name of the resource group */
   resourceGroupName?: string;
 }
+const AuditLogResourceGroupModifiedDetails = /*@__PURE__*/ __L.at(
+  __c65,
+  3,
+) as any as S.Schema<AuditLogResourceGroupModifiedDetails>;
+
 /** specific fields for TOKEN events */
 export interface AuditLogTokenDetails {
   /** Description of the token */
@@ -4979,6 +7907,11 @@ export interface AuditLogTokenDetails {
   /** Token's expiration date */
   expiresAt?: string | null;
 }
+const AuditLogTokenDetails = /*@__PURE__*/ __L.at(
+  __c65,
+  4,
+) as any as S.Schema<AuditLogTokenDetails>;
+
 /** specific fields for TOKEN_CREATED events */
 export interface AuditLogTokenCreatedDetails {
   /** Token details after creation */
@@ -4990,6 +7923,11 @@ export interface AuditLogTokenCreatedDetails {
   /** Login of the user */
   user?: string;
 }
+const AuditLogTokenCreatedDetails = /*@__PURE__*/ __L.at(
+  __c65,
+  5,
+) as any as S.Schema<AuditLogTokenCreatedDetails>;
+
 /** specific fields for TOKEN_DELETED events */
 export interface AuditLogTokenDeletedDetails {
   /** Token details before deletion */
@@ -5001,6 +7939,11 @@ export interface AuditLogTokenDeletedDetails {
   /** Login of the user */
   user?: string;
 }
+const AuditLogTokenDeletedDetails = /*@__PURE__*/ __L.at(
+  __c65,
+  6,
+) as any as S.Schema<AuditLogTokenDeletedDetails>;
+
 /** specific fields for TOKEN_MODIFIED events */
 export interface AuditLogTokenModifiedDetails {
   /** Token details after update */
@@ -5014,6 +7957,11 @@ export interface AuditLogTokenModifiedDetails {
   /** Login of the user */
   user?: string;
 }
+const AuditLogTokenModifiedDetails = /*@__PURE__*/ __L.at(
+  __c65,
+  7,
+) as any as S.Schema<AuditLogTokenModifiedDetails>;
+
 /** Audit event type */
 export type AuditLogTypeEnum =
   | "ACCOUNT_PASSWORD_CHANGED"
@@ -5037,6 +7985,8 @@ export type AuditLogTypeEnum =
   | "USER_DELETED"
   | "USER_MODIFIED"
   | "USER_PASSWORD_CHANGED";
+const AuditLogTypeEnum = S.String;
+
 /** specific fields for USER events */
 export interface AuditLogUserDetails {
   /** Description of the user */
@@ -5048,6 +7998,8 @@ export interface AuditLogUserDetails {
   /** Type of user created */
   userType?: AuthUserTypeEnum | null;
 }
+const AuditLogUserDetails = /*@__PURE__*/ __L.at(__c66, 0) as any as S.Schema<AuditLogUserDetails>;
+
 /** specific fields for USER_CREATED events */
 export interface AuditLogUserCreatedDetails {
   /** User details after creation */
@@ -5059,6 +8011,11 @@ export interface AuditLogUserCreatedDetails {
   /** Type of user created */
   userType?: AuthUserTypeEnum | null;
 }
+const AuditLogUserCreatedDetails = /*@__PURE__*/ __L.at(
+  __c66,
+  1,
+) as any as S.Schema<AuditLogUserCreatedDetails>;
+
 /** specific fields for USER_DELETED events */
 export interface AuditLogUserDeletedDetails {
   /** User details before deletion */
@@ -5070,6 +8027,11 @@ export interface AuditLogUserDeletedDetails {
   /** Type of user created */
   userType?: AuthUserTypeEnum | null;
 }
+const AuditLogUserDeletedDetails = /*@__PURE__*/ __L.at(
+  __c66,
+  2,
+) as any as S.Schema<AuditLogUserDeletedDetails>;
+
 /** specific fields for USER_MODIFIED events */
 export interface AuditLogUserModifiedDetails {
   /** User details after update */
@@ -5081,6 +8043,11 @@ export interface AuditLogUserModifiedDetails {
   /** User's creation date */
   userCreatedAt?: string | null;
 }
+const AuditLogUserModifiedDetails = /*@__PURE__*/ __L.at(
+  __c66,
+  3,
+) as any as S.Schema<AuditLogUserModifiedDetails>;
+
 /** specific fields for USER_PASSWORD_CHANGED events */
 export interface AuditLogUserPasswordChangedDetails {
   /** User name */
@@ -5088,6 +8055,11 @@ export interface AuditLogUserPasswordChangedDetails {
   /** User's creation date */
   userCreatedAt?: string | null;
 }
+const AuditLogUserPasswordChangedDetails = /*@__PURE__*/ __L.at(
+  __c66,
+  4,
+) as any as S.Schema<AuditLogUserPasswordChangedDetails>;
+
 /** An audit Log */
 export interface AuditLog {
   /** authentication details */
@@ -5139,68 +8111,188 @@ export interface AuditLog {
   /** specific fields for USER_PASSWORD_CHANGED events */
   userPasswordChangedDetails?: AuditLogUserPasswordChangedDetails | null;
 }
+const AuditLog = /*@__PURE__*/ __L.at(__c66, 5) as any as S.Schema<AuditLog>;
+
 export type ListMeLogAuditResponseBodyList = Array<AuditLog>;
+const ListMeLogAuditResponseBodyList = /*@__PURE__*/ __L.at(
+  __c66,
+  6,
+) as any as S.Schema<ListMeLogAuditResponseBodyList>;
+
 export type ListMeLogAuditResponse = ListMeLogAuditResponseBodyList;
+const ListMeLogAuditResponse = /*@__PURE__*/ __L.at(
+  __c66,
+  7,
+) as any as S.Schema<ListMeLogAuditResponse>;
+
 export interface ListMeLogAuditLogKindRequest {}
+const ListMeLogAuditLogKindRequest = /*@__PURE__*/ __L.at(
+  __c67,
+  0,
+) as any as S.Schema<ListMeLogAuditLogKindRequest>;
+
 export type ListMeLogAuditLogKindResponseBodyList = Array<string>;
 export type ListMeLogAuditLogKindResponse = ListMeLogAuditLogKindResponseBodyList;
+const ListMeLogAuditLogKindResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeLogAuditLogKindResponse>;
+
 export interface ListMeLogAuditLogSubscriptionRequest {
   /** Filter on a specific kind (e.g., audit) */
   kind?: string;
 }
+const ListMeLogAuditLogSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c67,
+  1,
+) as any as S.Schema<ListMeLogAuditLogSubscriptionRequest>;
+
 export type ListMeLogAuditLogSubscriptionResponseBodyList = Array<string>;
 export type ListMeLogAuditLogSubscriptionResponse = ListMeLogAuditLogSubscriptionResponseBodyList;
+const ListMeLogAuditLogSubscriptionResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeLogAuditLogSubscriptionResponse>;
+
 export interface ListMeLogKindRequest {}
+const ListMeLogKindRequest = /*@__PURE__*/ __L.at(
+  __c67,
+  2,
+) as any as S.Schema<ListMeLogKindRequest>;
+
 export type ListMeLogKindResponseBodyList = Array<string>;
 export type ListMeLogKindResponse = ListMeLogKindResponseBodyList;
+const ListMeLogKindResponse = GetCertificatesResponse as any as S.Schema<ListMeLogKindResponse>;
+
 export interface ListMeLogSelfRequest {}
+const ListMeLogSelfRequest = /*@__PURE__*/ __L.at(
+  __c67,
+  3,
+) as any as S.Schema<ListMeLogSelfRequest>;
+
 export type ListMeLogSelfResponseBodyList = Array<number>;
 export type ListMeLogSelfResponse = ListMeLogSelfResponseBodyList;
+const ListMeLogSelfResponse = ListMeAgreementsResponse as any as S.Schema<ListMeLogSelfResponse>;
+
 export interface ListMeLogServicesRequest {}
+const ListMeLogServicesRequest = /*@__PURE__*/ __L.at(
+  __c67,
+  4,
+) as any as S.Schema<ListMeLogServicesRequest>;
+
 export type ListMeLogServicesResponseBodyList = Array<number>;
 export type ListMeLogServicesResponse = ListMeLogServicesResponseBodyList;
+const ListMeLogServicesResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeLogServicesResponse>;
+
 export interface ListMeLogSubscriptionRequest {
   /** Filter on a specific kind (e.g., audit) */
   kind?: string;
 }
+const ListMeLogSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c67,
+  5,
+) as any as S.Schema<ListMeLogSubscriptionRequest>;
+
 export type ListMeLogSubscriptionResponseBodyList = Array<string>;
 export type ListMeLogSubscriptionResponse = ListMeLogSubscriptionResponseBodyList;
+const ListMeLogSubscriptionResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeLogSubscriptionResponse>;
+
 export interface ListMeMailingListAvailableListsRequest {}
+const ListMeMailingListAvailableListsRequest = /*@__PURE__*/ __L.at(
+  __c67,
+  6,
+) as any as S.Schema<ListMeMailingListAvailableListsRequest>;
+
 export type ListMeMailingListAvailableListsResponseBodyList = Array<string>;
 export type ListMeMailingListAvailableListsResponse =
   ListMeMailingListAvailableListsResponseBodyList;
+const ListMeMailingListAvailableListsResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeMailingListAvailableListsResponse>;
+
 export interface ListMeMigrationRequest {}
+const ListMeMigrationRequest = /*@__PURE__*/ __L.at(
+  __c67,
+  7,
+) as any as S.Schema<ListMeMigrationRequest>;
+
 export type ListMeMigrationResponseBodyList = Array<number>;
 export type ListMeMigrationResponse = ListMeMigrationResponseBodyList;
+const ListMeMigrationResponse =
+  ListMeAgreementsResponse as any as S.Schema<ListMeMigrationResponse>;
+
 export interface ListMeMigrationContractRequest {
   /** Migration ID */
   migrationId: number;
 }
+const ListMeMigrationContractRequest = /*@__PURE__*/ __L.at(
+  __c68,
+  0,
+) as any as S.Schema<ListMeMigrationContractRequest>;
+
 export type ListMeMigrationContractResponseBodyList = Array<number>;
 export type ListMeMigrationContractResponse = ListMeMigrationContractResponseBodyList;
+const ListMeMigrationContractResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeMigrationContractResponse>;
+
 export interface ListMeNotificationEmailHistoryRequest {}
+const ListMeNotificationEmailHistoryRequest = /*@__PURE__*/ __L.at(
+  __c68,
+  1,
+) as any as S.Schema<ListMeNotificationEmailHistoryRequest>;
+
 export type ListMeNotificationEmailHistoryResponseBodyList = Array<number>;
 export type ListMeNotificationEmailHistoryResponse = ListMeNotificationEmailHistoryResponseBodyList;
+const ListMeNotificationEmailHistoryResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeNotificationEmailHistoryResponse>;
+
 export interface ListMeOauth2ClientRequest {}
+const ListMeOauth2ClientRequest = /*@__PURE__*/ __L.at(
+  __c68,
+  2,
+) as any as S.Schema<ListMeOauth2ClientRequest>;
+
 export type ListMeOauth2ClientResponseBodyList = Array<string>;
 export type ListMeOauth2ClientResponse = ListMeOauth2ClientResponseBodyList;
+const ListMeOauth2ClientResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeOauth2ClientResponse>;
+
 export interface ListMeOauth2TokenRequest {}
+const ListMeOauth2TokenRequest = /*@__PURE__*/ __L.at(
+  __c68,
+  3,
+) as any as S.Schema<ListMeOauth2TokenRequest>;
+
 export type ListMeOauth2TokenResponseBodyList = Array<string>;
 export type ListMeOauth2TokenResponse = ListMeOauth2TokenResponseBodyList;
+const ListMeOauth2TokenResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeOauth2TokenResponse>;
+
 export interface ListMeOrderRequest {
   /** Filter the value of date property (>=) */
   date_from?: string;
   /** Filter the value of date property (<=) */
   date_to?: string;
 }
+const ListMeOrderRequest = /*@__PURE__*/ __L.at(__c68, 4) as any as S.Schema<ListMeOrderRequest>;
+
 export type ListMeOrderResponseBodyList = Array<number>;
 export type ListMeOrderResponse = ListMeOrderResponseBodyList;
+const ListMeOrderResponse = ListMeAgreementsResponse as any as S.Schema<ListMeOrderResponse>;
+
 export interface ListMeOrderAvailablePaymentMeanRequest {
   orderId: number;
 }
+const ListMeOrderAvailablePaymentMeanRequest = /*@__PURE__*/ __L.at(
+  __c68,
+  5,
+) as any as S.Schema<ListMeOrderAvailablePaymentMeanRequest>;
+
 export type BillingOrderAvailablePaymentMeanFieldOptionsList = Array<string>;
+const BillingOrderAvailablePaymentMeanFieldOptionsList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<BillingOrderAvailablePaymentMeanFieldOptionsList>;
+
 /** Field type of a payment mean */
 export type BillingOrderPaymentMeanFieldTypeEnum = "hidden" | "select" | "text";
+const BillingOrderPaymentMeanFieldTypeEnum = S.String;
+
 /** All fields needed for a payment mean integration */
 export interface BillingOrderAvailablePaymentMeanField {
   key?: string;
@@ -5208,10 +8300,22 @@ export interface BillingOrderAvailablePaymentMeanField {
   type?: BillingOrderPaymentMeanFieldTypeEnum;
   value?: string | null;
 }
+const BillingOrderAvailablePaymentMeanField = /*@__PURE__*/ __L.at(
+  __c68,
+  6,
+) as any as S.Schema<BillingOrderAvailablePaymentMeanField>;
+
 export type BillingOrderAvailablePaymentMeanFieldsList =
   Array<BillingOrderAvailablePaymentMeanField>;
+const BillingOrderAvailablePaymentMeanFieldsList = /*@__PURE__*/ __L.at(
+  __c68,
+  7,
+) as any as S.Schema<BillingOrderAvailablePaymentMeanFieldsList>;
+
 /** Integration payment mean type */
 export type BillingOrderPaymentMeanIntegrationEnum = "GET_FORM" | "POST_FORM" | "REDIRECT";
+const BillingOrderPaymentMeanIntegrationEnum = S.String;
+
 /** All data needed to use a payment mean */
 export interface BillingOrderAvailablePaymentMean {
   fields?: BillingOrderAvailablePaymentMeanFieldsList | null;
@@ -5219,41 +8323,105 @@ export interface BillingOrderAvailablePaymentMean {
   name?: string;
   url?: string | null;
 }
+const BillingOrderAvailablePaymentMean = /*@__PURE__*/ __L.at(
+  __c69,
+  0,
+) as any as S.Schema<BillingOrderAvailablePaymentMean>;
+
 export type ListMeOrderAvailablePaymentMeanResponseBodyList =
   Array<BillingOrderAvailablePaymentMean>;
+const ListMeOrderAvailablePaymentMeanResponseBodyList = /*@__PURE__*/ __L.at(
+  __c69,
+  1,
+) as any as S.Schema<ListMeOrderAvailablePaymentMeanResponseBodyList>;
+
 export type ListMeOrderAvailablePaymentMeanResponse =
   ListMeOrderAvailablePaymentMeanResponseBodyList;
+const ListMeOrderAvailablePaymentMeanResponse = /*@__PURE__*/ __L.at(
+  __c69,
+  2,
+) as any as S.Schema<ListMeOrderAvailablePaymentMeanResponse>;
+
 export interface ListMeOrderAvailableRegisteredPaymentMeanRequest {
   orderId: number;
 }
+const ListMeOrderAvailableRegisteredPaymentMeanRequest = /*@__PURE__*/ __L.at(
+  __c69,
+  3,
+) as any as S.Schema<ListMeOrderAvailableRegisteredPaymentMeanRequest>;
+
 /** A registered payment mean */
 export interface BillingOrderRegisteredPaymentMean {
   paymentMean?: BillingReusablePaymentMeanEnum;
 }
+const BillingOrderRegisteredPaymentMean = /*@__PURE__*/ __L.at(
+  __c69,
+  4,
+) as any as S.Schema<BillingOrderRegisteredPaymentMean>;
+
 export type ListMeOrderAvailableRegisteredPaymentMeanResponseBodyList =
   Array<BillingOrderRegisteredPaymentMean>;
+const ListMeOrderAvailableRegisteredPaymentMeanResponseBodyList = /*@__PURE__*/ __L.at(
+  __c69,
+  5,
+) as any as S.Schema<ListMeOrderAvailableRegisteredPaymentMeanResponseBodyList>;
+
 export type ListMeOrderAvailableRegisteredPaymentMeanResponse =
   ListMeOrderAvailableRegisteredPaymentMeanResponseBodyList;
+const ListMeOrderAvailableRegisteredPaymentMeanResponse = /*@__PURE__*/ __L.at(
+  __c69,
+  6,
+) as any as S.Schema<ListMeOrderAvailableRegisteredPaymentMeanResponse>;
+
 export interface ListMeOrderBalanceRequest {
   orderId: number;
 }
+const ListMeOrderBalanceRequest = /*@__PURE__*/ __L.at(
+  __c69,
+  7,
+) as any as S.Schema<ListMeOrderBalanceRequest>;
+
 export type ListMeOrderBalanceResponseBodyList = Array<string>;
 export type ListMeOrderBalanceResponse = ListMeOrderBalanceResponseBodyList;
+const ListMeOrderBalanceResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeOrderBalanceResponse>;
+
 export interface ListMeOrderDebtOperationRequest {
   orderId: number;
   /** Filter the value of depositOrderId property (=) */
   depositOrderId?: number;
 }
+const ListMeOrderDebtOperationRequest = /*@__PURE__*/ __L.at(
+  __c70,
+  0,
+) as any as S.Schema<ListMeOrderDebtOperationRequest>;
+
 export type ListMeOrderDebtOperationResponseBodyList = Array<number>;
 export type ListMeOrderDebtOperationResponse = ListMeOrderDebtOperationResponseBodyList;
+const ListMeOrderDebtOperationResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeOrderDebtOperationResponse>;
+
 export interface ListMeOrderDetailsRequest {
   orderId: number;
 }
+const ListMeOrderDetailsRequest = /*@__PURE__*/ __L.at(
+  __c70,
+  1,
+) as any as S.Schema<ListMeOrderDetailsRequest>;
+
 export type ListMeOrderDetailsResponseBodyList = Array<number>;
 export type ListMeOrderDetailsResponse = ListMeOrderDetailsResponseBodyList;
+const ListMeOrderDetailsResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeOrderDetailsResponse>;
+
 export interface ListMeOrderFollowUpRequest {
   orderId: number;
 }
+const ListMeOrderFollowUpRequest = /*@__PURE__*/ __L.at(
+  __c70,
+  2,
+) as any as S.Schema<ListMeOrderFollowUpRequest>;
+
 /** History label of order follow-up */
 export type BillingOrderFollowUpHistoryStatusEnum =
   | "DELIVERY"
@@ -5269,6 +8437,8 @@ export type BillingOrderFollowUpHistoryStatusEnum =
   | "PAYMENT_INITIATED"
   | "PAYMENT_RECEIVED"
   | "REGISTERED_PAYMENT_INITIATED";
+const BillingOrderFollowUpHistoryStatusEnum = S.String;
+
 /** Step history of order follow-up */
 export interface BillingOrderFollowUpHistory {
   /** History date of order follow-up */
@@ -5278,12 +8448,26 @@ export interface BillingOrderFollowUpHistory {
   /** History label of order follow-up */
   label?: BillingOrderFollowUpHistoryStatusEnum;
 }
+const BillingOrderFollowUpHistory = /*@__PURE__*/ __L.at(
+  __c70,
+  3,
+) as any as S.Schema<BillingOrderFollowUpHistory>;
+
 /** Step history of order follow-up */
 export type BillingOrderFollowUpHistoryList = Array<BillingOrderFollowUpHistory>;
+const BillingOrderFollowUpHistoryList = /*@__PURE__*/ __L.at(
+  __c70,
+  4,
+) as any as S.Schema<BillingOrderFollowUpHistoryList>;
+
 /** Step status of order follow-up */
 export type BillingOrderFollowUpStatusEnum = "DOING" | "DONE" | "ERROR" | "TODO";
+const BillingOrderFollowUpStatusEnum = S.String;
+
 /** Status of order follow-up */
 export type BillingOrderFollowUpStepEnum = "AVAILABLE" | "DELIVERING" | "VALIDATED" | "VALIDATING";
+const BillingOrderFollowUpStepEnum = S.String;
+
 /** Follow up history of an order */
 export interface BillingOrderFollowUp {
   /** Step history of order follow-up */
@@ -5293,11 +8477,31 @@ export interface BillingOrderFollowUp {
   /** Step of order follow-up */
   step?: BillingOrderFollowUpStepEnum;
 }
+const BillingOrderFollowUp = /*@__PURE__*/ __L.at(
+  __c70,
+  5,
+) as any as S.Schema<BillingOrderFollowUp>;
+
 export type ListMeOrderFollowUpResponseBodyList = Array<BillingOrderFollowUp>;
+const ListMeOrderFollowUpResponseBodyList = /*@__PURE__*/ __L.at(
+  __c70,
+  6,
+) as any as S.Schema<ListMeOrderFollowUpResponseBodyList>;
+
 export type ListMeOrderFollowUpResponse = ListMeOrderFollowUpResponseBodyList;
+const ListMeOrderFollowUpResponse = /*@__PURE__*/ __L.at(
+  __c70,
+  7,
+) as any as S.Schema<ListMeOrderFollowUpResponse>;
+
 export interface ListMeOrderPaymentMeansRequest {
   orderId: number;
 }
+const ListMeOrderPaymentMeansRequest = /*@__PURE__*/ __L.at(
+  __c71,
+  0,
+) as any as S.Schema<ListMeOrderPaymentMeansRequest>;
+
 /** Choice for an HTTP multi value parameter */
 export interface BillingOrderPaymentMeanHttpParameterChoice {
   name?: string;
@@ -5305,13 +8509,26 @@ export interface BillingOrderPaymentMeanHttpParameterChoice {
 }
 export type BillingOrderPaymentMeanHttpParameterChoiceList =
   Array<BillingOrderPaymentMeanHttpParameterChoice>;
+const BillingOrderPaymentMeanHttpParameterChoiceList =
+  MeIncidentProposedOfferConfigurationsList as any as S.Schema<BillingOrderPaymentMeanHttpParameterChoiceList>;
+
 /** Parameter to give to a payment page */
 export interface BillingOrderPaymentMeanHttpParameter {
   choice?: BillingOrderPaymentMeanHttpParameterChoiceList | null;
   name?: string;
   value?: string | null;
 }
+const BillingOrderPaymentMeanHttpParameter = /*@__PURE__*/ __L.at(
+  __c71,
+  1,
+) as any as S.Schema<BillingOrderPaymentMeanHttpParameter>;
+
 export type BillingOrderPaymentMeanParametersList = Array<BillingOrderPaymentMeanHttpParameter>;
+const BillingOrderPaymentMeanParametersList = /*@__PURE__*/ __L.at(
+  __c71,
+  2,
+) as any as S.Schema<BillingOrderPaymentMeanParametersList>;
+
 /** All data needed to use a payment mean */
 export interface BillingOrderPaymentMean {
   fee?: number;
@@ -5322,14 +8539,45 @@ export interface BillingOrderPaymentMean {
   subType?: string | null;
   url?: string;
 }
+const BillingOrderPaymentMean = /*@__PURE__*/ __L.at(
+  __c71,
+  3,
+) as any as S.Schema<BillingOrderPaymentMean>;
+
 export type BillingOrderPaymentMeansCreditCardList = Array<BillingOrderPaymentMean>;
+const BillingOrderPaymentMeansCreditCardList = /*@__PURE__*/ __L.at(
+  __c71,
+  4,
+) as any as S.Schema<BillingOrderPaymentMeansCreditCardList>;
+
 export type BillingOrderPaymentMeansEdinarList = Array<BillingOrderPaymentMean>;
+const BillingOrderPaymentMeansEdinarList =
+  BillingOrderPaymentMeansCreditCardList as any as S.Schema<BillingOrderPaymentMeansEdinarList>;
+
 export type BillingOrderPaymentMeansFidelityPointsList = Array<BillingOrderPaymentMean>;
+const BillingOrderPaymentMeansFidelityPointsList =
+  BillingOrderPaymentMeansCreditCardList as any as S.Schema<BillingOrderPaymentMeansFidelityPointsList>;
+
 export type BillingOrderPaymentMeansIdealList = Array<BillingOrderPaymentMean>;
+const BillingOrderPaymentMeansIdealList =
+  BillingOrderPaymentMeansCreditCardList as any as S.Schema<BillingOrderPaymentMeansIdealList>;
+
 export type BillingOrderPaymentMeansMultibancoList = Array<BillingOrderPaymentMean>;
+const BillingOrderPaymentMeansMultibancoList =
+  BillingOrderPaymentMeansCreditCardList as any as S.Schema<BillingOrderPaymentMeansMultibancoList>;
+
 export type BillingOrderPaymentMeansOvhAccountList = Array<BillingOrderPaymentMean>;
+const BillingOrderPaymentMeansOvhAccountList =
+  BillingOrderPaymentMeansCreditCardList as any as S.Schema<BillingOrderPaymentMeansOvhAccountList>;
+
 export type BillingOrderPaymentMeansPaypalList = Array<BillingOrderPaymentMean>;
+const BillingOrderPaymentMeansPaypalList =
+  BillingOrderPaymentMeansCreditCardList as any as S.Schema<BillingOrderPaymentMeansPaypalList>;
+
 export type BillingOrderPaymentMeansPromotionList = Array<BillingOrderPaymentMean>;
+const BillingOrderPaymentMeansPromotionList =
+  BillingOrderPaymentMeansCreditCardList as any as S.Schema<BillingOrderPaymentMeansPromotionList>;
+
 /** TODO */
 export interface BillingOrderPaymentMeans {
   creditCard?: BillingOrderPaymentMeansCreditCardList | null;
@@ -5341,9 +8589,19 @@ export interface BillingOrderPaymentMeans {
   paypal?: BillingOrderPaymentMeansPaypalList | null;
   promotion?: BillingOrderPaymentMeansPromotionList | null;
 }
+const BillingOrderPaymentMeans = /*@__PURE__*/ __L.at(
+  __c71,
+  5,
+) as any as S.Schema<BillingOrderPaymentMeans>;
+
 export interface ListMeOrderPaymentMethodsRequest {
   orderId: number;
 }
+const ListMeOrderPaymentMethodsRequest = /*@__PURE__*/ __L.at(
+  __c71,
+  6,
+) as any as S.Schema<ListMeOrderPaymentMethodsRequest>;
+
 /** Payment icon */
 export interface PaymentMethodIcon {
   /** Icon data in base64 */
@@ -5353,6 +8611,8 @@ export interface PaymentMethodIcon {
   /** Icon URL */
   url?: string | null;
 }
+const PaymentMethodIcon = MePaymentMeanIconData as any as S.Schema<PaymentMethodIcon>;
+
 /** Payment method integration type */
 export type PaymentMethodIntegrationType =
   | "BANK_TRANSFER"
@@ -5363,6 +8623,8 @@ export type PaymentMethodIntegrationType =
   | "NONE"
   | "POST_FORM"
   | "REDIRECT";
+const PaymentMethodIntegrationType = S.String;
+
 /** Available payment methods */
 export interface PaymentMethodAvailablePaymentMethod {
   /** Payment method session identifier */
@@ -5386,8 +8648,18 @@ export interface PaymentMethodAvailablePaymentMethod {
   /** Payment method type is registerable with the possibility to pay in same time an order ? */
   registerableWithTransaction?: boolean;
 }
+const PaymentMethodAvailablePaymentMethod = /*@__PURE__*/ __L.at(
+  __c71,
+  7,
+) as any as S.Schema<PaymentMethodAvailablePaymentMethod>;
+
 /** Payment method available on this order */
 export type BillingOrderPaymentMethodsAvailableList = Array<PaymentMethodAvailablePaymentMethod>;
+const BillingOrderPaymentMethodsAvailableList = /*@__PURE__*/ __L.at(
+  __c72,
+  0,
+) as any as S.Schema<BillingOrderPaymentMethodsAvailableList>;
+
 /** Payment method sub-type */
 export type PaymentMethodSubTypeEnum =
   | "30_DAYS"
@@ -5406,6 +8678,8 @@ export type PaymentMethodSubTypeEnum =
   | "NONE"
   | "RUPAY"
   | "VISA";
+const PaymentMethodSubTypeEnum = S.String;
+
 /** Payment method status */
 export type PaymentMethodStatusEnum =
   | "CANCELED"
@@ -5421,6 +8695,8 @@ export type PaymentMethodStatusEnum =
   | "REPLACED"
   | "VALID"
   | "VALIDATING";
+const PaymentMethodStatusEnum = S.String;
+
 /** payment method */
 export interface PaymentMethodPaymentMethod {
   /** Associated billing contact ID */
@@ -5458,10 +8734,23 @@ export interface PaymentMethodPaymentMethod {
   /** Payment method status */
   status?: PaymentMethodStatusEnum;
 }
+const PaymentMethodPaymentMethod = /*@__PURE__*/ __L.at(
+  __c72,
+  1,
+) as any as S.Schema<PaymentMethodPaymentMethod>;
+
 /** List of registered Payment methods usable on this order */
 export type BillingOrderPaymentMethodsPaymentMethodsList = Array<PaymentMethodPaymentMethod>;
+const BillingOrderPaymentMethodsPaymentMethodsList = /*@__PURE__*/ __L.at(
+  __c72,
+  2,
+) as any as S.Schema<BillingOrderPaymentMethodsPaymentMethodsList>;
+
 /** IDs of registered payment method usable on this order */
 export type BillingOrderPaymentMethodsRegisteredList = Array<number>;
+const BillingOrderPaymentMethodsRegisteredList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<BillingOrderPaymentMethodsRegisteredList>;
+
 /** Payment methods */
 export interface BillingOrderPaymentMethods {
   /** Payment method available on this order */
@@ -5471,9 +8760,22 @@ export interface BillingOrderPaymentMethods {
   /** IDs of registered payment method usable on this order */
   registered?: BillingOrderPaymentMethodsRegisteredList;
 }
+const BillingOrderPaymentMethods = /*@__PURE__*/ __L.at(
+  __c72,
+  3,
+) as any as S.Schema<BillingOrderPaymentMethods>;
+
 export interface ListMeOvhAccountRequest {}
+const ListMeOvhAccountRequest = /*@__PURE__*/ __L.at(
+  __c72,
+  4,
+) as any as S.Schema<ListMeOvhAccountRequest>;
+
 export type ListMeOvhAccountResponseBodyList = Array<string>;
 export type ListMeOvhAccountResponse = ListMeOvhAccountResponseBodyList;
+const ListMeOvhAccountResponse =
+  GetCertificatesResponse as any as S.Schema<ListMeOvhAccountResponse>;
+
 export interface ListMeOvhAccountMovementsRequest {
   ovhAccountId: string;
   /** Filter the value of date property (>=) */
@@ -5481,9 +8783,22 @@ export interface ListMeOvhAccountMovementsRequest {
   /** Filter the value of date property (<=) */
   date_to?: string;
 }
+const ListMeOvhAccountMovementsRequest = /*@__PURE__*/ __L.at(
+  __c72,
+  5,
+) as any as S.Schema<ListMeOvhAccountMovementsRequest>;
+
 export type ListMeOvhAccountMovementsResponseBodyList = Array<number>;
 export type ListMeOvhAccountMovementsResponse = ListMeOvhAccountMovementsResponseBodyList;
+const ListMeOvhAccountMovementsResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeOvhAccountMovementsResponse>;
+
 export interface ListMePaymentAvailableMethodsRequest {}
+const ListMePaymentAvailableMethodsRequest = /*@__PURE__*/ __L.at(
+  __c72,
+  6,
+) as any as S.Schema<ListMePaymentAvailableMethodsRequest>;
+
 /** Available payment method object */
 export interface MePaymentAvailablePaymentMethod {
   /** Form session ID */
@@ -5507,12 +8822,35 @@ export interface MePaymentAvailablePaymentMethod {
   /** Indicates if payment method type allows payment and registration at the same time */
   registerableWithTransaction?: boolean;
 }
+const MePaymentAvailablePaymentMethod = /*@__PURE__*/ __L.at(
+  __c72,
+  7,
+) as any as S.Schema<MePaymentAvailablePaymentMethod>;
+
 export type ListMePaymentAvailableMethodsResponseBodyList = Array<MePaymentAvailablePaymentMethod>;
+const ListMePaymentAvailableMethodsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c73,
+  0,
+) as any as S.Schema<ListMePaymentAvailableMethodsResponseBodyList>;
+
 export type ListMePaymentAvailableMethodsResponse = ListMePaymentAvailableMethodsResponseBodyList;
+const ListMePaymentAvailableMethodsResponse = /*@__PURE__*/ __L.at(
+  __c73,
+  1,
+) as any as S.Schema<ListMePaymentAvailableMethodsResponse>;
+
 export interface ListMePaymentMeanDeferredPaymentAccountRequest {}
+const ListMePaymentMeanDeferredPaymentAccountRequest = /*@__PURE__*/ __L.at(
+  __c73,
+  2,
+) as any as S.Schema<ListMePaymentMeanDeferredPaymentAccountRequest>;
+
 export type ListMePaymentMeanDeferredPaymentAccountResponseBodyList = Array<number>;
 export type ListMePaymentMeanDeferredPaymentAccountResponse =
   ListMePaymentMeanDeferredPaymentAccountResponseBodyList;
+const ListMePaymentMeanDeferredPaymentAccountResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMePaymentMeanDeferredPaymentAccountResponse>;
+
 export interface ListMePaymentMethodRequest {
   /** Filter on 'default' property */
   default?: boolean;
@@ -5521,19 +8859,43 @@ export interface ListMePaymentMethodRequest {
   /** Filter on 'status' property */
   status?: MePaymentMethodStatusEnum | (string & {});
 }
+const ListMePaymentMethodRequest = /*@__PURE__*/ __L.at(
+  __c73,
+  3,
+) as any as S.Schema<ListMePaymentMethodRequest>;
+
 export type ListMePaymentMethodResponseBodyList = Array<number>;
 export type ListMePaymentMethodResponse = ListMePaymentMethodResponseBodyList;
+const ListMePaymentMethodResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMePaymentMethodResponse>;
+
 export interface ListMePaymentTransactionRequest {
   /** Payment method ID */
   paymentMethodId?: number;
   /** Status */
   status?: MePaymentTransactionStatusEnum | (string & {});
 }
+const ListMePaymentTransactionRequest = /*@__PURE__*/ __L.at(
+  __c73,
+  4,
+) as any as S.Schema<ListMePaymentTransactionRequest>;
+
 export type ListMePaymentTransactionResponseBodyList = Array<number>;
 export type ListMePaymentTransactionResponse = ListMePaymentTransactionResponseBodyList;
+const ListMePaymentTransactionResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMePaymentTransactionResponse>;
+
 export interface ListMePreferenceManagerRequest {}
+const ListMePreferenceManagerRequest = /*@__PURE__*/ __L.at(
+  __c73,
+  5,
+) as any as S.Schema<ListMePreferenceManagerRequest>;
+
 export type ListMePreferenceManagerResponseBodyList = Array<string>;
 export type ListMePreferenceManagerResponse = ListMePreferenceManagerResponseBodyList;
+const ListMePreferenceManagerResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMePreferenceManagerResponse>;
+
 /** Recommendations product ranges */
 export type RecommendationsProductRangesEnum =
   | "baremetal"
@@ -5542,12 +8904,19 @@ export type RecommendationsProductRangesEnum =
   | "saas"
   | "vps"
   | "web";
+const RecommendationsProductRangesEnum = S.String;
+
 export interface ListMeRecommendationsRequest {
   /** Maximum number of recommendations to be returned */
   max?: number;
   /** Filter recommendations by product range */
   range?: RecommendationsProductRangesEnum | (string & {});
 }
+const ListMeRecommendationsRequest = /*@__PURE__*/ __L.at(
+  __c73,
+  6,
+) as any as S.Schema<ListMeRecommendationsRequest>;
+
 /** Recommendation advice struct */
 export interface RecommendationsRecommendationAdvice {
   /** Product identifier, usually range>line>category>subCategory>marketingName */
@@ -5557,11 +8926,26 @@ export interface RecommendationsRecommendationAdvice {
   /** Product page url */
   url?: string;
 }
+const RecommendationsRecommendationAdvice = /*@__PURE__*/ __L.at(
+  __c73,
+  7,
+) as any as S.Schema<RecommendationsRecommendationAdvice>;
+
 export type RecommendationsRecommendationAdvicesList = Array<RecommendationsRecommendationAdvice>;
+const RecommendationsRecommendationAdvicesList = /*@__PURE__*/ __L.at(
+  __c74,
+  0,
+) as any as S.Schema<RecommendationsRecommendationAdvicesList>;
+
 /** Recommendation advices introduction and description sentences, indexed by supported locales */
 export type RecommendationsRecommendationLocalizedDescriptionMap = {
   [key: string]: string | undefined;
 };
+const RecommendationsRecommendationLocalizedDescriptionMap = /*@__PURE__*/ __L.at(
+  __c74,
+  1,
+) as any as S.Schema<RecommendationsRecommendationLocalizedDescriptionMap>;
+
 /** Recommendation struct */
 export interface RecommendationsRecommendation {
   advices?: RecommendationsRecommendationAdvicesList;
@@ -5570,12 +8954,27 @@ export interface RecommendationsRecommendation {
   /** Recommendation rank */
   rank?: number;
 }
+const RecommendationsRecommendation = /*@__PURE__*/ __L.at(
+  __c74,
+  2,
+) as any as S.Schema<RecommendationsRecommendation>;
+
 export type RecommendationsRecommendationsRecommendationsList =
   Array<RecommendationsRecommendation>;
+const RecommendationsRecommendationsRecommendationsList = /*@__PURE__*/ __L.at(
+  __c74,
+  3,
+) as any as S.Schema<RecommendationsRecommendationsRecommendationsList>;
+
 /** Array of Recommendation objects */
 export interface RecommendationsRecommendations {
   recommendations?: RecommendationsRecommendationsRecommendationsList;
 }
+const RecommendationsRecommendations = /*@__PURE__*/ __L.at(
+  __c74,
+  4,
+) as any as S.Schema<RecommendationsRecommendations>;
+
 export interface ListMeRefundRequest {
   /** Filter the value of date property (>=) */
   date_from?: string;
@@ -5584,18 +8983,43 @@ export interface ListMeRefundRequest {
   /** Filter the value of orderId property (=) */
   orderId?: number;
 }
+const ListMeRefundRequest = /*@__PURE__*/ __L.at(__c74, 5) as any as S.Schema<ListMeRefundRequest>;
+
 export type ListMeRefundResponseBodyList = Array<string>;
 export type ListMeRefundResponse = ListMeRefundResponseBodyList;
+const ListMeRefundResponse = GetCertificatesResponse as any as S.Schema<ListMeRefundResponse>;
+
 export interface ListMeRefundDetailsRequest {
   refundId: string;
 }
+const ListMeRefundDetailsRequest = /*@__PURE__*/ __L.at(
+  __c74,
+  6,
+) as any as S.Schema<ListMeRefundDetailsRequest>;
+
 export type ListMeRefundDetailsResponseBodyList = Array<string>;
 export type ListMeRefundDetailsResponse = ListMeRefundDetailsResponseBodyList;
+const ListMeRefundDetailsResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeRefundDetailsResponse>;
+
 export interface ListMeRepricingFall22Request {}
+const ListMeRepricingFall22Request = /*@__PURE__*/ __L.at(
+  __c74,
+  7,
+) as any as S.Schema<ListMeRepricingFall22Request>;
+
 /** Addons of the Service */
 export type MeRepricingServiceAddonsList = Array<MeRepricingService>;
+const MeRepricingServiceAddonsList = /*@__PURE__*/ __L.at(
+  __c75,
+  0,
+) as any as S.Schema<MeRepricingServiceAddonsList>;
+
 /** Variables to use in the path */
 export type ServicesExpandedRouteVarsList = Array<ComplexTypeSafeKeyValueString>;
+const ServicesExpandedRouteVarsList =
+  NichandleDocumentDocumentTagsList as any as S.Schema<ServicesExpandedRouteVarsList>;
+
 /** Route of the service */
 export interface ServicesExpandedRoute {
   /** Path to use in API */
@@ -5605,6 +9029,11 @@ export interface ServicesExpandedRoute {
   /** Variables to use in the path */
   vars?: ServicesExpandedRouteVarsList;
 }
+const ServicesExpandedRoute = /*@__PURE__*/ __L.at(
+  __c75,
+  1,
+) as any as S.Schema<ServicesExpandedRoute>;
+
 /** Description of a service being repricing */
 export interface MeRepricingService {
   /** Addons of the Service */
@@ -5640,8 +9069,20 @@ export interface MeRepricingService {
   /** Total price (addons included) before repricing, tax excluded */
   totalPriceBeforeWithoutTax?: OrderPrice;
 }
+const MeRepricingService = /*@__PURE__*/ __L.at(__c75, 2) as any as S.Schema<MeRepricingService>;
+
 export type ListMeRepricingFall22ResponseBodyList = Array<MeRepricingService>;
+const ListMeRepricingFall22ResponseBodyList = /*@__PURE__*/ __L.at(
+  __c75,
+  3,
+) as any as S.Schema<ListMeRepricingFall22ResponseBodyList>;
+
 export type ListMeRepricingFall22Response = ListMeRepricingFall22ResponseBodyList;
+const ListMeRepricingFall22Response = /*@__PURE__*/ __L.at(
+  __c75,
+  4,
+) as any as S.Schema<ListMeRepricingFall22Response>;
+
 export interface ListMeReverseBillRequest {
   /** Filter the value of date property (>=) */
   date_from?: string;
@@ -5650,20 +9091,45 @@ export interface ListMeReverseBillRequest {
   /** Filter the value of orderId property (=) */
   orderId?: number;
 }
+const ListMeReverseBillRequest = /*@__PURE__*/ __L.at(
+  __c75,
+  5,
+) as any as S.Schema<ListMeReverseBillRequest>;
+
 export type ListMeReverseBillResponseBodyList = Array<string>;
 export type ListMeReverseBillResponse = ListMeReverseBillResponseBodyList;
+const ListMeReverseBillResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeReverseBillResponse>;
+
 export interface ListMeReverseBillDetailsRequest {
   reverseBillId: string;
 }
+const ListMeReverseBillDetailsRequest = /*@__PURE__*/ __L.at(
+  __c75,
+  6,
+) as any as S.Schema<ListMeReverseBillDetailsRequest>;
+
 export type ListMeReverseBillDetailsResponseBodyList = Array<string>;
 export type ListMeReverseBillDetailsResponse = ListMeReverseBillDetailsResponseBodyList;
+const ListMeReverseBillDetailsResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeReverseBillDetailsResponse>;
+
 export interface ListMeSlaRequest {}
+const ListMeSlaRequest = /*@__PURE__*/ __L.at(__c75, 7) as any as S.Schema<ListMeSlaRequest>;
+
 export type ListMeSlaResponseBodyList = Array<number>;
 export type ListMeSlaResponse = ListMeSlaResponseBodyList;
+const ListMeSlaResponse = ListMeAgreementsResponse as any as S.Schema<ListMeSlaResponse>;
+
 export interface ListMeSlaServicesRequest {
   /** Id of the object */
   id: number;
 }
+const ListMeSlaServicesRequest = /*@__PURE__*/ __L.at(
+  __c76,
+  0,
+) as any as S.Schema<ListMeSlaServicesRequest>;
+
 /** Describe all services impacted by SLA */
 export interface BillingSlaOperationService {
   /** Service description */
@@ -5675,22 +9141,63 @@ export interface BillingSlaOperationService {
   /** SLA plan description */
   slaPlan?: string;
 }
+const BillingSlaOperationService = /*@__PURE__*/ __L.at(
+  __c76,
+  1,
+) as any as S.Schema<BillingSlaOperationService>;
+
 export type ListMeSlaServicesResponseBodyList = Array<BillingSlaOperationService>;
+const ListMeSlaServicesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c76,
+  2,
+) as any as S.Schema<ListMeSlaServicesResponseBodyList>;
+
 export type ListMeSlaServicesResponse = ListMeSlaServicesResponseBodyList;
+const ListMeSlaServicesResponse = /*@__PURE__*/ __L.at(
+  __c76,
+  3,
+) as any as S.Schema<ListMeSlaServicesResponse>;
+
 export interface ListMeSshKeyRequest {}
+const ListMeSshKeyRequest = /*@__PURE__*/ __L.at(__c76, 4) as any as S.Schema<ListMeSshKeyRequest>;
+
 export type ListMeSshKeyResponseBodyList = Array<string>;
 export type ListMeSshKeyResponse = ListMeSshKeyResponseBodyList;
+const ListMeSshKeyResponse = GetCertificatesResponse as any as S.Schema<ListMeSshKeyResponse>;
+
 export interface ListMeSubAccountRequest {}
+const ListMeSubAccountRequest = /*@__PURE__*/ __L.at(
+  __c76,
+  5,
+) as any as S.Schema<ListMeSubAccountRequest>;
+
 export type ListMeSubAccountResponseBodyList = Array<number>;
 export type ListMeSubAccountResponse = ListMeSubAccountResponseBodyList;
+const ListMeSubAccountResponse =
+  ListMeAgreementsResponse as any as S.Schema<ListMeSubAccountResponse>;
+
 export interface ListMeTagRequest {}
+const ListMeTagRequest = /*@__PURE__*/ __L.at(__c76, 6) as any as S.Schema<ListMeTagRequest>;
+
 export type ListMeTagResponseBodyList = Array<string>;
 export type ListMeTagResponse = ListMeTagResponseBodyList;
+const ListMeTagResponse = GetCertificatesResponse as any as S.Schema<ListMeTagResponse>;
+
 export interface ListMeTagAvailableRequest {}
+const ListMeTagAvailableRequest = /*@__PURE__*/ __L.at(
+  __c76,
+  7,
+) as any as S.Schema<ListMeTagAvailableRequest>;
+
 /** Enum values */
 export type MeTagTagKeyEnumList = Array<string>;
+const MeTagTagKeyEnumList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<MeTagTagKeyEnumList>;
+
 /** Tag key type */
 export type MeTagTagKeyTypeEnum = "ARRAY" | "DATE" | "ENUM" | "INTEGER" | "TEXT" | "VARCHAR";
+const MeTagTagKeyTypeEnum = S.String;
+
 /** Tag configuration key */
 export interface MeTagTagKey {
   /** Enum values */
@@ -5708,8 +9215,15 @@ export interface MeTagTagKey {
   /** Tag key type */
   type?: MeTagTagKeyTypeEnum;
 }
+const MeTagTagKey = /*@__PURE__*/ __L.at(__c77, 0) as any as S.Schema<MeTagTagKey>;
+
 /** Tag configuration keys */
 export type MeTagAvailableTagKeysList = Array<MeTagTagKey>;
+const MeTagAvailableTagKeysList = /*@__PURE__*/ __L.at(
+  __c77,
+  1,
+) as any as S.Schema<MeTagAvailableTagKeysList>;
+
 /** Available tag configuration object for creation */
 export interface MeTagAvailableTag {
   /** Tag configuration keys */
@@ -5717,8 +9231,20 @@ export interface MeTagAvailableTag {
   /** Tag name */
   name?: string;
 }
+const MeTagAvailableTag = /*@__PURE__*/ __L.at(__c77, 2) as any as S.Schema<MeTagAvailableTag>;
+
 export type ListMeTagAvailableResponseBodyList = Array<MeTagAvailableTag>;
+const ListMeTagAvailableResponseBodyList = /*@__PURE__*/ __L.at(
+  __c77,
+  3,
+) as any as S.Schema<ListMeTagAvailableResponseBodyList>;
+
 export type ListMeTagAvailableResponse = ListMeTagAvailableResponseBodyList;
+const ListMeTagAvailableResponse = /*@__PURE__*/ __L.at(
+  __c77,
+  4,
+) as any as S.Schema<ListMeTagAvailableResponse>;
+
 export interface ListMeTaskContactChangeRequest {
   /** Filter the value of askingAccount property (like) */
   askingAccount?: string;
@@ -5727,15 +9253,30 @@ export interface ListMeTaskContactChangeRequest {
   /** Filter the value of toAccount property (like) */
   toAccount?: string;
 }
+const ListMeTaskContactChangeRequest = /*@__PURE__*/ __L.at(
+  __c77,
+  5,
+) as any as S.Schema<ListMeTaskContactChangeRequest>;
+
 export type ListMeTaskContactChangeResponseBodyList = Array<number>;
 export type ListMeTaskContactChangeResponse = ListMeTaskContactChangeResponseBodyList;
+const ListMeTaskContactChangeResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeTaskContactChangeResponse>;
+
 export interface ListMeTaskDnsRequest {
   function?: DomainTaskFunctionEnum | (string & {});
   status?: DomainTaskStatusEnum | (string & {});
   zone?: string;
 }
+const ListMeTaskDnsRequest = /*@__PURE__*/ __L.at(
+  __c77,
+  6,
+) as any as S.Schema<ListMeTaskDnsRequest>;
+
 export type ListMeTaskDnsResponseBodyList = Array<number>;
 export type ListMeTaskDnsResponse = ListMeTaskDnsResponseBodyList;
+const ListMeTaskDnsResponse = ListMeAgreementsResponse as any as S.Schema<ListMeTaskDnsResponse>;
+
 /** Operation functions */
 export type DomainOperationFunctionEnum =
   | "ContactControl"
@@ -5774,6 +9315,8 @@ export type DomainOperationFunctionEnum =
   | "DomainUnhold"
   | "DomainUnlock"
   | "ZoneImport";
+const DomainOperationFunctionEnum = S.String;
+
 export interface ListMeTaskDomainRequest {
   /** Filter the value of domain property (like) */
   domain?: string;
@@ -5784,27 +9327,67 @@ export interface ListMeTaskDomainRequest {
   /** Filter the value of type property (=) */
   type?: DomainOperationTypeEnum | (string & {});
 }
+const ListMeTaskDomainRequest = /*@__PURE__*/ __L.at(
+  __c77,
+  7,
+) as any as S.Schema<ListMeTaskDomainRequest>;
+
 export type ListMeTaskDomainResponseBodyList = Array<number>;
 export type ListMeTaskDomainResponse = ListMeTaskDomainResponseBodyList;
+const ListMeTaskDomainResponse =
+  ListMeAgreementsResponse as any as S.Schema<ListMeTaskDomainResponse>;
+
 export interface ListMeTaskDomainArgumentRequest {
   /** Id */
   id: number;
 }
+const ListMeTaskDomainArgumentRequest = /*@__PURE__*/ __L.at(
+  __c78,
+  0,
+) as any as S.Schema<ListMeTaskDomainArgumentRequest>;
+
 export type ListMeTaskDomainArgumentResponseBodyList = Array<string>;
 export type ListMeTaskDomainArgumentResponse = ListMeTaskDomainArgumentResponseBodyList;
+const ListMeTaskDomainArgumentResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeTaskDomainArgumentResponse>;
+
 export interface ListMeTaskEmailChangeRequest {
   /** Filter the value of state property (like) */
   state?: NichandleChangeEmailTaskStateEnum | (string & {});
 }
+const ListMeTaskEmailChangeRequest = /*@__PURE__*/ __L.at(
+  __c78,
+  1,
+) as any as S.Schema<ListMeTaskEmailChangeRequest>;
+
 export type ListMeTaskEmailChangeResponseBodyList = Array<number>;
 export type ListMeTaskEmailChangeResponse = ListMeTaskEmailChangeResponseBodyList;
+const ListMeTaskEmailChangeResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeTaskEmailChangeResponse>;
+
 export interface ListMeTelephonyDefaultIpRestrictionRequest {}
+const ListMeTelephonyDefaultIpRestrictionRequest = /*@__PURE__*/ __L.at(
+  __c78,
+  2,
+) as any as S.Schema<ListMeTelephonyDefaultIpRestrictionRequest>;
+
 export type ListMeTelephonyDefaultIpRestrictionResponseBodyList = Array<number>;
 export type ListMeTelephonyDefaultIpRestrictionResponse =
   ListMeTelephonyDefaultIpRestrictionResponseBodyList;
+const ListMeTelephonyDefaultIpRestrictionResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeTelephonyDefaultIpRestrictionResponse>;
+
 export interface ListMeVoucherAccountRequest {}
+const ListMeVoucherAccountRequest = /*@__PURE__*/ __L.at(
+  __c78,
+  3,
+) as any as S.Schema<ListMeVoucherAccountRequest>;
+
 export type ListMeVoucherAccountResponseBodyList = Array<string>;
 export type ListMeVoucherAccountResponse = ListMeVoucherAccountResponseBodyList;
+const ListMeVoucherAccountResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeVoucherAccountResponse>;
+
 export interface ListMeVoucherAccountMovementsRequest {
   voucherAccountId: string;
   /** Filter the value of date property (>=) */
@@ -5812,8 +9395,16 @@ export interface ListMeVoucherAccountMovementsRequest {
   /** Filter the value of date property (<=) */
   date_to?: string;
 }
+const ListMeVoucherAccountMovementsRequest = /*@__PURE__*/ __L.at(
+  __c78,
+  4,
+) as any as S.Schema<ListMeVoucherAccountMovementsRequest>;
+
 export type ListMeVoucherAccountMovementsResponseBodyList = Array<number>;
 export type ListMeVoucherAccountMovementsResponse = ListMeVoucherAccountMovementsResponseBodyList;
+const ListMeVoucherAccountMovementsResponse =
+  ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeVoucherAccountMovementsResponse>;
+
 export interface ListMeWithdrawalRequest {
   /** Filter the value of date property (>=) */
   date_from?: string;
@@ -5822,21 +9413,45 @@ export interface ListMeWithdrawalRequest {
   /** Filter the value of orderId property (=) */
   orderId?: number;
 }
+const ListMeWithdrawalRequest = /*@__PURE__*/ __L.at(
+  __c78,
+  5,
+) as any as S.Schema<ListMeWithdrawalRequest>;
+
 export type ListMeWithdrawalResponseBodyList = Array<string>;
 export type ListMeWithdrawalResponse = ListMeWithdrawalResponseBodyList;
+const ListMeWithdrawalResponse =
+  GetCertificatesResponse as any as S.Schema<ListMeWithdrawalResponse>;
+
 export interface ListMeWithdrawalDetailsRequest {
   withdrawalId: string;
 }
+const ListMeWithdrawalDetailsRequest = /*@__PURE__*/ __L.at(
+  __c78,
+  6,
+) as any as S.Schema<ListMeWithdrawalDetailsRequest>;
+
 export type ListMeWithdrawalDetailsResponseBodyList = Array<string>;
 export type ListMeWithdrawalDetailsResponse = ListMeWithdrawalDetailsResponseBodyList;
+const ListMeWithdrawalDetailsResponse =
+  ListMeBillDetailsResponse as any as S.Schema<ListMeWithdrawalDetailsResponse>;
+
 /** IDs of the services to migrate */
 export type MigrateMeIncidentSbgServicesRequestServiceIdsList = Array<number>;
+const MigrateMeIncidentSbgServicesRequestServiceIdsList =
+  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<MigrateMeIncidentSbgServicesRequestServiceIdsList>;
+
 export interface MigrateMeIncidentSbgServicesRequest {
   /** If false, the order will be registered; if true, the order will be returned but not registered. Useful to compute prices */
   dryRun?: boolean;
   /** IDs of the services to migrate */
   serviceIds?: MigrateMeIncidentSbgServicesRequestServiceIdsList;
 }
+const MigrateMeIncidentSbgServicesRequest = /*@__PURE__*/ __L.at(
+  __c78,
+  7,
+) as any as S.Schema<MigrateMeIncidentSbgServicesRequest>;
+
 /** A contract */
 export interface OrderContract {
   /** Terms of the contract */
@@ -5846,12 +9461,23 @@ export interface OrderContract {
   /** URL to download the contract */
   url?: string;
 }
+const OrderContract = /*@__PURE__*/ __L.at(__c79, 0) as any as S.Schema<OrderContract>;
+
 /** List of contracts related to the order */
 export type OrderOrderContractsList = Array<OrderContract>;
+const OrderOrderContractsList = /*@__PURE__*/ __L.at(
+  __c79,
+  1,
+) as any as S.Schema<OrderOrderContractsList>;
+
 /** Context of the reduction */
 export type OrderReductionContextEnum = "promotion" | "voucher";
+const OrderReductionContextEnum = S.String;
+
 /** Type of reduction */
 export type OrderReductionTypeEnum = "fixed_amount" | "forced_amount" | "percentage";
+const OrderReductionTypeEnum = S.String;
+
 /** Order detail reduction */
 export interface OrderReduction {
   /** In which context the reduction is applied */
@@ -5867,8 +9493,15 @@ export interface OrderReduction {
   /** The reduction value */
   value?: OrderPrice;
 }
+const OrderReduction = /*@__PURE__*/ __L.at(__c79, 2) as any as S.Schema<OrderReduction>;
+
 /** List of reductions applied to the detail */
 export type OrderOrderDetailReductionsList = Array<OrderReduction>;
+const OrderOrderDetailReductionsList = /*@__PURE__*/ __L.at(
+  __c79,
+  3,
+) as any as S.Schema<OrderOrderDetailReductionsList>;
+
 /** Detail of an order */
 export interface OrderOrderDetail {
   /** Cart Item ID the details is related to */
@@ -5892,8 +9525,15 @@ export interface OrderOrderDetail {
   /** Unitary price of the service */
   unitPrice?: OrderPrice;
 }
+const OrderOrderDetail = /*@__PURE__*/ __L.at(__c79, 4) as any as S.Schema<OrderOrderDetail>;
+
 /** Details of the order */
 export type OrderOrderDetailsList = Array<OrderOrderDetail>;
+const OrderOrderDetailsList = /*@__PURE__*/ __L.at(
+  __c79,
+  5,
+) as any as S.Schema<OrderOrderDetailsList>;
+
 /** Prices of an order */
 export interface OrderOrderPrices {
   /** Price before reduction application */
@@ -5907,6 +9547,8 @@ export interface OrderOrderPrices {
   /** Price without tax */
   withoutTax?: OrderPrice;
 }
+const OrderOrderPrices = /*@__PURE__*/ __L.at(__c79, 6) as any as S.Schema<OrderOrderPrices>;
+
 /** An order */
 export interface OrderOrder {
   /** List of contracts related to the order */
@@ -5920,16 +9562,28 @@ export interface OrderOrder {
   /** URL to download the order */
   url?: string | null;
 }
+const OrderOrder = /*@__PURE__*/ __L.at(__c79, 7) as any as S.Schema<OrderOrder>;
+
 /** Order created in order to migrate a service */
 export interface MeIncidentOrder {
   /** Order created in order to migrate a service */
   order?: OrderOrder;
 }
+const MeIncidentOrder = /*@__PURE__*/ __L.at(__c80, 0) as any as S.Schema<MeIncidentOrder>;
+
 export interface PutMeAccessRestrictionDeveloperModeRequest {
   /** Allow login on your account on a development version of the Manager */
   enabled?: boolean;
 }
+const PutMeAccessRestrictionDeveloperModeRequest = /*@__PURE__*/ __L.at(
+  __c80,
+  1,
+) as any as S.Schema<PutMeAccessRestrictionDeveloperModeRequest>;
+
 export interface PutMeAccessRestrictionDeveloperModeResponse {}
+const PutMeAccessRestrictionDeveloperModeResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<PutMeAccessRestrictionDeveloperModeResponse>;
+
 export interface PutMeAccessRestrictionIpRequest {
   /** The Id of the restriction */
   id: number;
@@ -5938,42 +9592,89 @@ export interface PutMeAccessRestrictionIpRequest {
   /** Send an email if someone try to access with this IP address */
   warning?: boolean;
 }
+const PutMeAccessRestrictionIpRequest = /*@__PURE__*/ __L.at(
+  __c80,
+  2,
+) as any as S.Schema<PutMeAccessRestrictionIpRequest>;
+
 export interface PutMeAccessRestrictionIpResponse {}
+const PutMeAccessRestrictionIpResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<PutMeAccessRestrictionIpResponse>;
+
 export interface PutMeAccessRestrictionIpDefaultRuleRequest {
   /** Accept or deny access */
   rule?: NichandleAccessRestrictionIpRestrictionRuleEnum | (string & {});
   /** Send an email if someone try to access */
   warning?: boolean;
 }
+const PutMeAccessRestrictionIpDefaultRuleRequest = /*@__PURE__*/ __L.at(
+  __c80,
+  3,
+) as any as S.Schema<PutMeAccessRestrictionIpDefaultRuleRequest>;
+
 export interface PutMeAccessRestrictionIpDefaultRuleResponse {}
+const PutMeAccessRestrictionIpDefaultRuleResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<PutMeAccessRestrictionIpDefaultRuleResponse>;
+
 export interface PutMeAccessRestrictionSmsRequest {
   /** The Id of the restriction */
   id: number;
   /** Description of this phone */
   description?: string;
 }
+const PutMeAccessRestrictionSmsRequest = /*@__PURE__*/ __L.at(
+  __c80,
+  4,
+) as any as S.Schema<PutMeAccessRestrictionSmsRequest>;
+
 export interface PutMeAccessRestrictionSmsResponse {}
+const PutMeAccessRestrictionSmsResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<PutMeAccessRestrictionSmsResponse>;
+
 export interface PutMeAccessRestrictionTotpRequest {
   /** The Id of the restriction */
   id: number;
   /** Description of this TOTP */
   description?: string;
 }
+const PutMeAccessRestrictionTotpRequest = /*@__PURE__*/ __L.at(
+  __c80,
+  5,
+) as any as S.Schema<PutMeAccessRestrictionTotpRequest>;
+
 export interface PutMeAccessRestrictionTotpResponse {}
+const PutMeAccessRestrictionTotpResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<PutMeAccessRestrictionTotpResponse>;
+
 export interface PutMeAccessRestrictionU2fRequest {
   /** The Id of the restriction */
   id: number;
   /** Description of this U2F key */
   description?: string;
 }
+const PutMeAccessRestrictionU2fRequest = /*@__PURE__*/ __L.at(
+  __c80,
+  6,
+) as any as S.Schema<PutMeAccessRestrictionU2fRequest>;
+
 export interface PutMeAccessRestrictionU2fResponse {}
+const PutMeAccessRestrictionU2fResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<PutMeAccessRestrictionU2fResponse>;
+
 export interface PutMeAutorenewRequest {
   /** Renewal active or not */
   active?: boolean;
   /** give the renewal day */
   renewDay?: number;
 }
+const PutMeAutorenewRequest = /*@__PURE__*/ __L.at(
+  __c80,
+  7,
+) as any as S.Schema<PutMeAutorenewRequest>;
+
 export interface PutMeAutorenewResponse {}
+const PutMeAutorenewResponse = ApplyMeSlaResponse as any as S.Schema<PutMeAutorenewResponse>;
+
 export interface PutMeBillingGroupRequest {
   /** Group ID */
   groupId: number;
@@ -5984,7 +9685,14 @@ export interface PutMeBillingGroupRequest {
   /** Payment method ID associated to the billing group */
   paymentMethodId?: number | null;
 }
+const PutMeBillingGroupRequest = /*@__PURE__*/ __L.at(
+  __c81,
+  0,
+) as any as S.Schema<PutMeBillingGroupRequest>;
+
 export interface PutMeBillingGroupResponse {}
+const PutMeBillingGroupResponse = ApplyMeSlaResponse as any as S.Schema<PutMeBillingGroupResponse>;
+
 export interface PutMeBillingPurchaseOrderRequest {
   /** Id */
   id: number;
@@ -6003,14 +9711,30 @@ export interface PutMeBillingPurchaseOrderRequest {
   /** Type of a purchase order */
   type?: MeBillingPurchaseOrderPurchaseOrderTypeEnum | (string & {}) | null;
 }
+const PutMeBillingPurchaseOrderRequest = /*@__PURE__*/ __L.at(
+  __c81,
+  1,
+) as any as S.Schema<PutMeBillingPurchaseOrderRequest>;
+
 export interface PutMeBillingPurchaseOrderResponse {}
+const PutMeBillingPurchaseOrderResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<PutMeBillingPurchaseOrderResponse>;
+
 export interface PutMeConsentDecisionRequest {
   /** Campaign name */
   campaignName: string;
   /** Consent decision value */
   value: boolean;
 }
+const PutMeConsentDecisionRequest = /*@__PURE__*/ __L.at(
+  __c81,
+  2,
+) as any as S.Schema<PutMeConsentDecisionRequest>;
+
 export interface PutMeConsentDecisionResponse {}
+const PutMeConsentDecisionResponse =
+  ApplyMeSlaResponse as any as S.Schema<PutMeConsentDecisionResponse>;
+
 export interface PutMeContactRequest {
   /** Contact ID */
   contactId: number;
@@ -6057,26 +9781,53 @@ export interface PutMeContactRequest {
   /** VAT number */
   vat?: string | null;
 }
+const PutMeContactRequest = /*@__PURE__*/ __L.at(__c81, 3) as any as S.Schema<PutMeContactRequest>;
+
 /** If defined, list of ip blocks which are allowed to call API with this credential */
 export type PutMeCredentialRequestAllowedIPsList = Array<string>;
+const PutMeCredentialRequestAllowedIPsList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<PutMeCredentialRequestAllowedIPsList>;
+
 export interface PutMeCredentialRequest {
   /** Credential ID */
   credentialId: number;
   /** If defined, list of ip blocks which are allowed to call API with this credential */
   allowedIPs?: PutMeCredentialRequestAllowedIPsList | null;
 }
+const PutMeCredentialRequest = /*@__PURE__*/ __L.at(
+  __c81,
+  4,
+) as any as S.Schema<PutMeCredentialRequest>;
+
 export interface PutMeCredentialResponse {}
+const PutMeCredentialResponse = ApplyMeSlaResponse as any as S.Schema<PutMeCredentialResponse>;
+
 export interface PutMeDocumentRequest {
   /** Document id */
   id: string;
   /** Document expiration */
   expirationDate?: string | null;
 }
+const PutMeDocumentRequest = /*@__PURE__*/ __L.at(
+  __c81,
+  5,
+) as any as S.Schema<PutMeDocumentRequest>;
+
 export interface PutMeDocumentResponse {}
+const PutMeDocumentResponse = ApplyMeSlaResponse as any as S.Schema<PutMeDocumentResponse>;
+
 export interface PutMeFidelityAccountRequest {
   alertThreshold?: number | null;
 }
+const PutMeFidelityAccountRequest = /*@__PURE__*/ __L.at(
+  __c81,
+  6,
+) as any as S.Schema<PutMeFidelityAccountRequest>;
+
 export interface PutMeFidelityAccountResponse {}
+const PutMeFidelityAccountResponse =
+  ApplyMeSlaResponse as any as S.Schema<PutMeFidelityAccountResponse>;
+
 export interface PutMeIdentityGroupRequest {
   /** Group */
   group: string;
@@ -6085,7 +9836,15 @@ export interface PutMeIdentityGroupRequest {
   /** Group's role */
   role?: AuthRoleEnum | (string & {});
 }
+const PutMeIdentityGroupRequest = /*@__PURE__*/ __L.at(
+  __c81,
+  7,
+) as any as S.Schema<PutMeIdentityGroupRequest>;
+
 export interface PutMeIdentityGroupResponse {}
+const PutMeIdentityGroupResponse =
+  ApplyMeSlaResponse as any as S.Schema<PutMeIdentityGroupResponse>;
+
 export interface PutMeIdentityProviderRequest {
   /** Whether account users should still be usable as a login method or not */
   disableUsers?: boolean | null;
@@ -6098,7 +9857,15 @@ export interface PutMeIdentityProviderRequest {
   /** SAML User attribute name */
   userAttributeName?: string;
 }
+const PutMeIdentityProviderRequest = /*@__PURE__*/ __L.at(
+  __c82,
+  0,
+) as any as S.Schema<PutMeIdentityProviderRequest>;
+
 export interface PutMeIdentityProviderResponse {}
+const PutMeIdentityProviderResponse =
+  ApplyMeSlaResponse as any as S.Schema<PutMeIdentityProviderResponse>;
+
 export interface PutMeIdentityUserRequest {
   /** User */
   user: string;
@@ -6109,7 +9876,14 @@ export interface PutMeIdentityUserRequest {
   /** User's main group */
   group?: string;
 }
+const PutMeIdentityUserRequest = /*@__PURE__*/ __L.at(
+  __c82,
+  1,
+) as any as S.Schema<PutMeIdentityUserRequest>;
+
 export interface PutMeIdentityUserResponse {}
+const PutMeIdentityUserResponse = ApplyMeSlaResponse as any as S.Schema<PutMeIdentityUserResponse>;
+
 export interface PutMeIdentityUserTokenRequest {
   /** User */
   user: string;
@@ -6122,6 +9896,11 @@ export interface PutMeIdentityUserTokenRequest {
   /** Duration (in seconds) of the token's validity */
   expiresIn?: number | null;
 }
+const PutMeIdentityUserTokenRequest = /*@__PURE__*/ __L.at(
+  __c82,
+  2,
+) as any as S.Schema<PutMeIdentityUserTokenRequest>;
+
 export interface PutMeIpOrganisationRequest {
   organisationId: string;
   abuse_mailbox?: string;
@@ -6134,7 +9913,15 @@ export interface PutMeIpOrganisationRequest {
   state?: string | null;
   zip?: string | null;
 }
+const PutMeIpOrganisationRequest = /*@__PURE__*/ __L.at(
+  __c82,
+  3,
+) as any as S.Schema<PutMeIpOrganisationRequest>;
+
 export interface PutMeIpOrganisationResponse {}
+const PutMeIpOrganisationResponse =
+  ApplyMeSlaResponse as any as S.Schema<PutMeIpOrganisationResponse>;
+
 export interface PutMeMarketingRequest {
   /** Details for call marketing communication */
   call?: MeMarketingConsentDetails;
@@ -6147,8 +9934,16 @@ export interface PutMeMarketingRequest {
   /** Details for sms marketing communication */
   sms?: MeMarketingConsentDetails;
 }
+const PutMeMarketingRequest = /*@__PURE__*/ __L.at(
+  __c82,
+  4,
+) as any as S.Schema<PutMeMarketingRequest>;
+
 /** allowed callback urls */
 export type PutMeOauth2ClientRequestCallbackUrlsList = Array<string>;
+const PutMeOauth2ClientRequestCallbackUrlsList =
+  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<PutMeOauth2ClientRequestCallbackUrlsList>;
+
 export interface PutMeOauth2ClientRequest {
   /** Client ID */
   clientId: string;
@@ -6159,19 +9954,41 @@ export interface PutMeOauth2ClientRequest {
   /** client's name */
   name?: string;
 }
+const PutMeOauth2ClientRequest = /*@__PURE__*/ __L.at(
+  __c82,
+  5,
+) as any as S.Schema<PutMeOauth2ClientRequest>;
+
 export interface PutMeOauth2ClientResponse {}
+const PutMeOauth2ClientResponse = ApplyMeSlaResponse as any as S.Schema<PutMeOauth2ClientResponse>;
+
 export interface PutMeOvhAccountRequest {
   ovhAccountId: string;
   alertThreshold?: number | null;
 }
+const PutMeOvhAccountRequest = /*@__PURE__*/ __L.at(
+  __c82,
+  6,
+) as any as S.Schema<PutMeOvhAccountRequest>;
+
 export interface PutMeOvhAccountResponse {}
+const PutMeOvhAccountResponse = ApplyMeSlaResponse as any as S.Schema<PutMeOvhAccountResponse>;
+
 export interface PutMePaymentMeanDeferredPaymentAccountRequest {
   /** Id */
   id: number;
   /** Custom description of this deferred account */
   description?: string | null;
 }
+const PutMePaymentMeanDeferredPaymentAccountRequest = /*@__PURE__*/ __L.at(
+  __c82,
+  7,
+) as any as S.Schema<PutMePaymentMeanDeferredPaymentAccountRequest>;
+
 export interface PutMePaymentMeanDeferredPaymentAccountResponse {}
+const PutMePaymentMeanDeferredPaymentAccountResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<PutMePaymentMeanDeferredPaymentAccountResponse>;
+
 export interface PutMePaymentMethodRequest {
   /** Payment method ID */
   paymentMethodId: number;
@@ -6180,20 +9997,40 @@ export interface PutMePaymentMethodRequest {
   /** Custom customer description */
   description?: string | null;
 }
+const PutMePaymentMethodRequest = /*@__PURE__*/ __L.at(
+  __c83,
+  0,
+) as any as S.Schema<PutMePaymentMethodRequest>;
+
 export interface PutMePreferenceManagerRequest {
   /** This preference key */
   key: string;
   /** This preference value */
   value?: string;
 }
+const PutMePreferenceManagerRequest = /*@__PURE__*/ __L.at(
+  __c83,
+  1,
+) as any as S.Schema<PutMePreferenceManagerRequest>;
+
 export interface PutMePreferenceManagerResponse {}
+const PutMePreferenceManagerResponse =
+  ApplyMeSlaResponse as any as S.Schema<PutMePreferenceManagerResponse>;
+
 export interface PutMeSubAccountRequest {
   /** Id of the object */
   id: number;
   /** This sub-account description */
   description?: string | null;
 }
+const PutMeSubAccountRequest = /*@__PURE__*/ __L.at(
+  __c83,
+  2,
+) as any as S.Schema<PutMeSubAccountRequest>;
+
 export interface PutMeSubAccountResponse {}
+const PutMeSubAccountResponse = ApplyMeSlaResponse as any as S.Schema<PutMeSubAccountResponse>;
+
 export interface PutMeTaskDomainArgumentRequest {
   /** Id */
   id: number;
@@ -6202,48 +10039,108 @@ export interface PutMeTaskDomainArgumentRequest {
   /** Value of the argument */
   value?: string | null;
 }
+const PutMeTaskDomainArgumentRequest = /*@__PURE__*/ __L.at(
+  __c83,
+  3,
+) as any as S.Schema<PutMeTaskDomainArgumentRequest>;
+
 export interface PutMeTaskDomainArgumentResponse {}
+const PutMeTaskDomainArgumentResponse =
+  AcceptMeTaskEmailChangeResponse as any as S.Schema<PutMeTaskDomainArgumentResponse>;
+
 export interface ResendMeTaskContactChangeEmailRequest {
   id: number;
 }
+const ResendMeTaskContactChangeEmailRequest = /*@__PURE__*/ __L.at(
+  __c83,
+  4,
+) as any as S.Schema<ResendMeTaskContactChangeEmailRequest>;
+
 export interface ResendMeTaskContactChangeEmailResponse {}
+const ResendMeTaskContactChangeEmailResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<ResendMeTaskContactChangeEmailResponse>;
+
 export interface SendMeAccessRestrictionSmsCodeRequest {
   /** The Id of the restriction */
   id: number;
 }
+const SendMeAccessRestrictionSmsCodeRequest = /*@__PURE__*/ __L.at(
+  __c83,
+  5,
+) as any as S.Schema<SendMeAccessRestrictionSmsCodeRequest>;
+
 /** Send secret code */
 export interface NichandleAccessRestrictionSmsCode {
   challenge?: string;
 }
+const NichandleAccessRestrictionSmsCode = /*@__PURE__*/ __L.at(
+  __c83,
+  6,
+) as any as S.Schema<NichandleAccessRestrictionSmsCode>;
+
 export interface SubscribeMeMailingListRequest {
   /** Email you want to subscribe to */
   email: string;
   /** Mailing list */
   mailingList: string;
 }
+const SubscribeMeMailingListRequest = /*@__PURE__*/ __L.at(
+  __c83,
+  7,
+) as any as S.Schema<SubscribeMeMailingListRequest>;
+
 export interface SubscribeMeMailingListResponse {}
+const SubscribeMeMailingListResponse =
+  ApplyMeSlaResponse as any as S.Schema<SubscribeMeMailingListResponse>;
+
 export interface ValidateMeAccessRestrictionBackupCodeRequest {
   /** OTP code given by the application */
   code: string;
 }
+const ValidateMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ __L.at(
+  __c84,
+  0,
+) as any as S.Schema<ValidateMeAccessRestrictionBackupCodeRequest>;
+
 /** Describe SOTP validation status */
 export interface NichandleAccessRestrictionSOTPValidate {
   remainingCodes?: number;
 }
+const NichandleAccessRestrictionSOTPValidate = /*@__PURE__*/ __L.at(
+  __c84,
+  1,
+) as any as S.Schema<NichandleAccessRestrictionSOTPValidate>;
+
 export interface ValidateMeAccessRestrictionSmsRequest {
   /** The Id of the restriction */
   id: number;
   /** SMS code send to a cellphone */
   code: string;
 }
+const ValidateMeAccessRestrictionSmsRequest = /*@__PURE__*/ __L.at(
+  __c84,
+  2,
+) as any as S.Schema<ValidateMeAccessRestrictionSmsRequest>;
+
 export interface ValidateMeAccessRestrictionSmsResponse {}
+const ValidateMeAccessRestrictionSmsResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<ValidateMeAccessRestrictionSmsResponse>;
+
 export interface ValidateMeAccessRestrictionTotpRequest {
   /** The Id of the restriction */
   id: number;
   /** OTP code given by the application */
   code: string;
 }
+const ValidateMeAccessRestrictionTotpRequest = /*@__PURE__*/ __L.at(
+  __c84,
+  3,
+) as any as S.Schema<ValidateMeAccessRestrictionTotpRequest>;
+
 export interface ValidateMeAccessRestrictionTotpResponse {}
+const ValidateMeAccessRestrictionTotpResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<ValidateMeAccessRestrictionTotpResponse>;
+
 export interface ValidateMeAccessRestrictionU2fRequest {
   /** The Id of the restriction */
   id: number;
@@ -6251,7 +10148,15 @@ export interface ValidateMeAccessRestrictionU2fRequest {
   clientDataJSON: string;
   rawId: string;
 }
+const ValidateMeAccessRestrictionU2fRequest = /*@__PURE__*/ __L.at(
+  __c84,
+  4,
+) as any as S.Schema<ValidateMeAccessRestrictionU2fRequest>;
+
 export interface ValidateMeAccessRestrictionU2fResponse {}
+const ValidateMeAccessRestrictionU2fResponse =
+  AcceptMeTaskContactChangeResponse as any as S.Schema<ValidateMeAccessRestrictionU2fResponse>;
+
 export type AcceptMeAgreementError = OvhOpError;
 /** Accept this contract */
 export const acceptMeAgreement: API.OperationMethod<
@@ -6260,8 +10165,8 @@ export const acceptMeAgreement: API.OperationMethod<
   AcceptMeAgreementError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AcceptMeAgreementRequest>,
-  output: __S(1) as any as S.Schema<AcceptMeAgreementResponse>,
+  input: AcceptMeAgreementRequest,
+  output: AcceptMeAgreementResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6275,8 +10180,8 @@ export const acceptMeMigrationContract: API.OperationMethod<
   AcceptMeMigrationContractError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<AcceptMeMigrationContractRequest>,
-  output: __S(3) as any as S.Schema<MeAgreementsContractAgreement>,
+  input: AcceptMeMigrationContractRequest,
+  output: MeAgreementsContractAgreement,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6290,8 +10195,8 @@ export const acceptMeTaskContactChange: API.OperationMethod<
   AcceptMeTaskContactChangeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<AcceptMeTaskContactChangeRequest>,
-  output: __S(5) as any as S.Schema<AcceptMeTaskContactChangeResponse>,
+  input: AcceptMeTaskContactChangeRequest,
+  output: AcceptMeTaskContactChangeResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6305,8 +10210,8 @@ export const acceptMeTaskEmailChange: API.OperationMethod<
   AcceptMeTaskEmailChangeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<AcceptMeTaskEmailChangeRequest>,
-  output: __S(7) as any as S.Schema<AcceptMeTaskEmailChangeResponse>,
+  input: AcceptMeTaskEmailChangeRequest,
+  output: AcceptMeTaskEmailChangeResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6320,8 +10225,8 @@ export const applyMeSla: API.OperationMethod<
   ApplyMeSlaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<ApplyMeSlaRequest>,
-  output: __S(9) as any as S.Schema<ApplyMeSlaResponse>,
+  input: ApplyMeSlaRequest,
+  output: ApplyMeSlaResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6335,8 +10240,8 @@ export const cancelMeTaskDns: API.OperationMethod<
   CancelMeTaskDnsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CancelMeTaskDnsRequest>,
-  output: __S(9) as any as S.Schema<CancelMeTaskDnsResponse>,
+  input: CancelMeTaskDnsRequest,
+  output: CancelMeTaskDnsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6350,8 +10255,8 @@ export const cancelMeTaskDomain: API.OperationMethod<
   CancelMeTaskDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CancelMeTaskDomainRequest>,
-  output: __S(9) as any as S.Schema<CancelMeTaskDomainResponse>,
+  input: CancelMeTaskDomainRequest,
+  output: CancelMeTaskDomainResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6365,8 +10270,8 @@ export const checkMeVoucherValidity: API.OperationMethod<
   CheckMeVoucherValidityError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CheckMeVoucherValidityRequest>,
-  output: __S(13) as any as S.Schema<NichandleVoucherStatus>,
+  input: CheckMeVoucherValidityRequest,
+  output: NichandleVoucherStatus,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6380,8 +10285,8 @@ export const createMeAccessRestrictionBackupCode: API.OperationMethod<
   CreateMeAccessRestrictionBackupCodeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<CreateMeAccessRestrictionBackupCodeRequest>,
-  output: __S(16) as any as S.Schema<NichandleAccessRestrictionSOTPSecret>,
+  input: CreateMeAccessRestrictionBackupCodeRequest,
+  output: NichandleAccessRestrictionSOTPSecret,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6395,8 +10300,8 @@ export const createMeAccessRestrictionIp: API.OperationMethod<
   CreateMeAccessRestrictionIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<CreateMeAccessRestrictionIpRequest>,
-  output: __S(5) as any as S.Schema<CreateMeAccessRestrictionIpResponse>,
+  input: CreateMeAccessRestrictionIpRequest,
+  output: CreateMeAccessRestrictionIpResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6410,8 +10315,8 @@ export const createMeAccessRestrictionSms: API.OperationMethod<
   CreateMeAccessRestrictionSmsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CreateMeAccessRestrictionSmsRequest>,
-  output: __S(19) as any as S.Schema<NichandleAccessRestrictionSmsSecret>,
+  input: CreateMeAccessRestrictionSmsRequest,
+  output: NichandleAccessRestrictionSmsSecret,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6425,8 +10330,8 @@ export const createMeAccessRestrictionTotp: API.OperationMethod<
   CreateMeAccessRestrictionTotpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CreateMeAccessRestrictionTotpRequest>,
-  output: __S(21) as any as S.Schema<NichandleAccessRestrictionTOTPSecret>,
+  input: CreateMeAccessRestrictionTotpRequest,
+  output: NichandleAccessRestrictionTOTPSecret,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6440,8 +10345,8 @@ export const createMeAccessRestrictionU2f: API.OperationMethod<
   CreateMeAccessRestrictionU2fError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<CreateMeAccessRestrictionU2fRequest>,
-  output: __S(23) as any as S.Schema<NichandleAccessRestrictionU2FRegisterChallenge>,
+  input: CreateMeAccessRestrictionU2fRequest,
+  output: NichandleAccessRestrictionU2FRegisterChallenge,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6455,8 +10360,8 @@ export const createMeAccount: API.OperationMethod<
   CreateMeAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<CreateMeAccountRequest>,
-  output: __S(26) as any as S.Schema<NichandleNichandle>,
+  input: CreateMeAccountRequest,
+  output: NichandleNichandle,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6470,8 +10375,8 @@ export const createMeAutorenew: API.OperationMethod<
   CreateMeAutorenewError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<CreateMeAutorenewRequest>,
-  output: __S(9) as any as S.Schema<CreateMeAutorenewResponse>,
+  input: CreateMeAutorenewRequest,
+  output: CreateMeAutorenewResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6485,8 +10390,8 @@ export const createMeBillDebtPay: API.OperationMethod<
   CreateMeBillDebtPayError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<CreateMeBillDebtPayRequest>,
-  output: __S(30) as any as S.Schema<BillingOrder>,
+  input: CreateMeBillDebtPayRequest,
+  output: BillingOrder,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6500,8 +10405,8 @@ export const createMeBillingGroup: API.OperationMethod<
   CreateMeBillingGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<CreateMeBillingGroupRequest>,
-  output: __S(32) as any as S.Schema<MeBillingGroupBillingGroup>,
+  input: CreateMeBillingGroupRequest,
+  output: MeBillingGroupBillingGroup,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6515,8 +10420,8 @@ export const createMeBillingGroupService: API.OperationMethod<
   CreateMeBillingGroupServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<CreateMeBillingGroupServiceRequest>,
-  output: __S(34) as any as S.Schema<MeBillingGroupService>,
+  input: CreateMeBillingGroupServiceRequest,
+  output: MeBillingGroupService,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6530,8 +10435,8 @@ export const createMeBillingInvoicesByPostalMail: API.OperationMethod<
   CreateMeBillingInvoicesByPostalMailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<CreateMeBillingInvoicesByPostalMailRequest>,
-  output: __S(5) as any as S.Schema<CreateMeBillingInvoicesByPostalMailResponse>,
+  input: CreateMeBillingInvoicesByPostalMailRequest,
+  output: CreateMeBillingInvoicesByPostalMailResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6545,8 +10450,8 @@ export const createMeBillingPurchaseOrder: API.OperationMethod<
   CreateMeBillingPurchaseOrderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<CreateMeBillingPurchaseOrderRequest>,
-  output: __S(37) as any as S.Schema<MeBillingPurchaseOrderPurchaseOrder>,
+  input: CreateMeBillingPurchaseOrderRequest,
+  output: MeBillingPurchaseOrderPurchaseOrder,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6560,8 +10465,8 @@ export const createMeBillingReportConsumption: API.OperationMethod<
   CreateMeBillingReportConsumptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<CreateMeBillingReportConsumptionRequest>,
-  output: __S(39) as any as S.Schema<MeBillingReportConsumptionCreationResponse>,
+  input: CreateMeBillingReportConsumptionRequest,
+  output: MeBillingReportConsumptionCreationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6575,8 +10480,8 @@ export const createMeCarbonCalculatorTask: API.OperationMethod<
   CreateMeCarbonCalculatorTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<CreateMeCarbonCalculatorTaskRequest>,
-  output: __S(41) as any as S.Schema<CarbonCalculatorCalculationResponse>,
+  input: CreateMeCarbonCalculatorTaskRequest,
+  output: CarbonCalculatorCalculationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6590,8 +10495,8 @@ export const createMeChangeEmail: API.OperationMethod<
   CreateMeChangeEmailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<CreateMeChangeEmailRequest>,
-  output: __S(43) as any as S.Schema<NichandleEmailChangeTask>,
+  input: CreateMeChangeEmailRequest,
+  output: NichandleEmailChangeTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6605,8 +10510,8 @@ export const createMeChangePassword: API.OperationMethod<
   CreateMeChangePasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<CreateMeChangePasswordRequest>,
-  output: __S(9) as any as S.Schema<CreateMeChangePasswordResponse>,
+  input: CreateMeChangePasswordRequest,
+  output: CreateMeChangePasswordResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6620,8 +10525,8 @@ export const createMeContact: API.OperationMethod<
   CreateMeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<CreateMeContactRequest>,
-  output: __S(47) as any as S.Schema<MeContactContact>,
+  input: CreateMeContactRequest,
+  output: MeContactContact,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6635,8 +10540,8 @@ export const createMeCorrectiveInvoiceDebtPay: API.OperationMethod<
   CreateMeCorrectiveInvoiceDebtPayError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<CreateMeCorrectiveInvoiceDebtPayRequest>,
-  output: __S(30) as any as S.Schema<BillingOrder>,
+  input: CreateMeCorrectiveInvoiceDebtPayRequest,
+  output: BillingOrder,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6650,8 +10555,8 @@ export const createMeCreditCode: API.OperationMethod<
   CreateMeCreditCodeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<CreateMeCreditCodeRequest>,
-  output: __S(51) as any as S.Schema<MeCreditBalanceMovement>,
+  input: CreateMeCreditCodeRequest,
+  output: MeCreditBalanceMovement,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6665,8 +10570,8 @@ export const createMeDebtAccountDebtPay: API.OperationMethod<
   CreateMeDebtAccountDebtPayError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<CreateMeDebtAccountDebtPayRequest>,
-  output: __S(30) as any as S.Schema<BillingOrder>,
+  input: CreateMeDebtAccountDebtPayRequest,
+  output: BillingOrder,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6680,8 +10585,8 @@ export const createMeDebtAccountPay: API.OperationMethod<
   CreateMeDebtAccountPayError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<CreateMeDebtAccountPayRequest>,
-  output: __S(30) as any as S.Schema<BillingOrder>,
+  input: CreateMeDebtAccountPayRequest,
+  output: BillingOrder,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6695,8 +10600,8 @@ export const createMeDepositPaidBillDebtPay: API.OperationMethod<
   CreateMeDepositPaidBillDebtPayError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<CreateMeDepositPaidBillDebtPayRequest>,
-  output: __S(30) as any as S.Schema<BillingOrder>,
+  input: CreateMeDepositPaidBillDebtPayRequest,
+  output: BillingOrder,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6710,8 +10615,8 @@ export const createMeDocument: API.OperationMethod<
   CreateMeDocumentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<CreateMeDocumentRequest>,
-  output: __S(60) as any as S.Schema<NichandleDocumentDocument>,
+  input: CreateMeDocumentRequest,
+  output: NichandleDocumentDocument,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6725,8 +10630,8 @@ export const createMeDocumentCors: API.OperationMethod<
   CreateMeDocumentCorsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<CreateMeDocumentCorsRequest>,
-  output: __S(9) as any as S.Schema<CreateMeDocumentCorsResponse>,
+  input: CreateMeDocumentCorsRequest,
+  output: CreateMeDocumentCorsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6740,8 +10645,8 @@ export const createMeDownPaymentInvoiceDebtPay: API.OperationMethod<
   CreateMeDownPaymentInvoiceDebtPayError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<CreateMeDownPaymentInvoiceDebtPayRequest>,
-  output: __S(30) as any as S.Schema<BillingOrder>,
+  input: CreateMeDownPaymentInvoiceDebtPayRequest,
+  output: BillingOrder,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6755,8 +10660,8 @@ export const createMeFaxCustomDomain: API.OperationMethod<
   CreateMeFaxCustomDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<CreateMeFaxCustomDomainRequest>,
-  output: __S(64) as any as S.Schema<TelephonyMailDomain2Service>,
+  input: CreateMeFaxCustomDomainRequest,
+  output: TelephonyMailDomain2Service,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6770,8 +10675,8 @@ export const createMeFeedback: API.OperationMethod<
   CreateMeFeedbackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<CreateMeFeedbackRequest>,
-  output: __S(9) as any as S.Schema<CreateMeFeedbackResponse>,
+  input: CreateMeFeedbackRequest,
+  output: CreateMeFeedbackResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6785,8 +10690,8 @@ export const createMeFidelityAccountCreditOrder: API.OperationMethod<
   CreateMeFidelityAccountCreditOrderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<CreateMeFidelityAccountCreditOrderRequest>,
-  output: __S(30) as any as S.Schema<BillingOrder>,
+  input: CreateMeFidelityAccountCreditOrderRequest,
+  output: BillingOrder,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6800,8 +10705,8 @@ export const createMeGeolocation: API.OperationMethod<
   CreateMeGeolocationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<CreateMeGeolocationRequest>,
-  output: __S(68) as any as S.Schema<MeGeolocationContinentCountryLocation>,
+  input: CreateMeGeolocationRequest,
+  output: MeGeolocationContinentCountryLocation,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6815,8 +10720,8 @@ export const createMeIdentityGroup: API.OperationMethod<
   CreateMeIdentityGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<CreateMeIdentityGroupRequest>,
-  output: __S(70) as any as S.Schema<AuthGroup>,
+  input: CreateMeIdentityGroupRequest,
+  output: AuthGroup,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6830,8 +10735,8 @@ export const createMeIdentityGroupUser: API.OperationMethod<
   CreateMeIdentityGroupUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<CreateMeIdentityGroupUserRequest>,
-  output: __S(5) as any as S.Schema<CreateMeIdentityGroupUserResponse>,
+  input: CreateMeIdentityGroupUserRequest,
+  output: CreateMeIdentityGroupUserResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6845,8 +10750,8 @@ export const createMeIdentityProvider: API.OperationMethod<
   CreateMeIdentityProviderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<CreateMeIdentityProviderRequest>,
-  output: __S(78) as any as S.Schema<AuthProvider>,
+  input: CreateMeIdentityProviderRequest,
+  output: AuthProvider,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6860,8 +10765,8 @@ export const createMeIdentityUser: API.OperationMethod<
   CreateMeIdentityUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<CreateMeIdentityUserRequest>,
-  output: __S(9) as any as S.Schema<CreateMeIdentityUserResponse>,
+  input: CreateMeIdentityUserRequest,
+  output: CreateMeIdentityUserResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6875,8 +10780,8 @@ export const createMeIdentityUserToken: API.OperationMethod<
   CreateMeIdentityUserTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<CreateMeIdentityUserTokenRequest>,
-  output: __S(81) as any as S.Schema<AuthPersonalAccessTokenResponse>,
+  input: CreateMeIdentityUserTokenRequest,
+  output: AuthPersonalAccessTokenResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6890,8 +10795,8 @@ export const createMeIpOrganisation: API.OperationMethod<
   CreateMeIpOrganisationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<CreateMeIpOrganisationRequest>,
-  output: __S(9) as any as S.Schema<CreateMeIpOrganisationResponse>,
+  input: CreateMeIpOrganisationRequest,
+  output: CreateMeIpOrganisationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6905,8 +10810,8 @@ export const createMeLogAuditLogSubscription: API.OperationMethod<
   CreateMeLogAuditLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<CreateMeLogAuditLogSubscriptionRequest>,
-  output: __S(84) as any as S.Schema<DbaasLogsLogSubscriptionResponse>,
+  input: CreateMeLogAuditLogSubscriptionRequest,
+  output: DbaasLogsLogSubscriptionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6920,8 +10825,8 @@ export const createMeLogAuditLogUrl: API.OperationMethod<
   CreateMeLogAuditLogUrlError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<CreateMeLogAuditLogUrlRequest>,
-  output: __S(86) as any as S.Schema<DbaasLogsTemporaryLogsLink>,
+  input: CreateMeLogAuditLogUrlRequest,
+  output: DbaasLogsTemporaryLogsLink,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6935,8 +10840,8 @@ export const createMeLogSubscription: API.OperationMethod<
   CreateMeLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<CreateMeLogSubscriptionRequest>,
-  output: __S(84) as any as S.Schema<DbaasLogsLogSubscriptionResponse>,
+  input: CreateMeLogSubscriptionRequest,
+  output: DbaasLogsLogSubscriptionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6950,8 +10855,8 @@ export const createMeLogUrl: API.OperationMethod<
   CreateMeLogUrlError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<CreateMeLogUrlRequest>,
-  output: __S(86) as any as S.Schema<DbaasLogsTemporaryLogsLink>,
+  input: CreateMeLogUrlRequest,
+  output: DbaasLogsTemporaryLogsLink,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6965,8 +10870,8 @@ export const createMeManualDomainPayment: API.OperationMethod<
   CreateMeManualDomainPaymentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<CreateMeManualDomainPaymentRequest>,
-  output: __S(5) as any as S.Schema<CreateMeManualDomainPaymentResponse>,
+  input: CreateMeManualDomainPaymentRequest,
+  output: CreateMeManualDomainPaymentResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6980,8 +10885,8 @@ export const createMeOauth2Client: API.OperationMethod<
   CreateMeOauth2ClientError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<CreateMeOauth2ClientRequest>,
-  output: __S(91) as any as S.Schema<Oauth2ClientSecret>,
+  input: CreateMeOauth2ClientRequest,
+  output: Oauth2ClientSecret,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6995,8 +10900,8 @@ export const createMeOrderBalance: API.OperationMethod<
   CreateMeOrderBalanceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<CreateMeOrderBalanceRequest>,
-  output: __S(93) as any as S.Schema<BillingCreditBalance>,
+  input: CreateMeOrderBalanceRequest,
+  output: BillingCreditBalance,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7010,8 +10915,8 @@ export const createMeOrderDebtPay: API.OperationMethod<
   CreateMeOrderDebtPayError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<CreateMeOrderDebtPayRequest>,
-  output: __S(30) as any as S.Schema<BillingOrder>,
+  input: CreateMeOrderDebtPayRequest,
+  output: BillingOrder,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7025,8 +10930,8 @@ export const createMeOrderPay: API.OperationMethod<
   CreateMeOrderPayError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<CreateMeOrderPayRequest>,
-  output: __S(9) as any as S.Schema<CreateMeOrderPayResponse>,
+  input: CreateMeOrderPayRequest,
+  output: CreateMeOrderPayResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7040,8 +10945,8 @@ export const createMeOrderPayWithRegisteredPaymentMean: API.OperationMethod<
   CreateMeOrderPayWithRegisteredPaymentMeanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<CreateMeOrderPayWithRegisteredPaymentMeanRequest>,
-  output: __S(5) as any as S.Schema<CreateMeOrderPayWithRegisteredPaymentMeanResponse>,
+  input: CreateMeOrderPayWithRegisteredPaymentMeanRequest,
+  output: CreateMeOrderPayWithRegisteredPaymentMeanResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7055,8 +10960,8 @@ export const createMeOrderRetraction: API.OperationMethod<
   CreateMeOrderRetractionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<CreateMeOrderRetractionRequest>,
-  output: __S(7) as any as S.Schema<CreateMeOrderRetractionResponse>,
+  input: CreateMeOrderRetractionRequest,
+  output: CreateMeOrderRetractionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7070,8 +10975,8 @@ export const createMeOrderWaiveRetraction: API.OperationMethod<
   CreateMeOrderWaiveRetractionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<CreateMeOrderWaiveRetractionRequest>,
-  output: __S(5) as any as S.Schema<CreateMeOrderWaiveRetractionResponse>,
+  input: CreateMeOrderWaiveRetractionRequest,
+  output: CreateMeOrderWaiveRetractionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7085,8 +10990,8 @@ export const createMeOvhAccountCreditOrder: API.OperationMethod<
   CreateMeOvhAccountCreditOrderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<CreateMeOvhAccountCreditOrderRequest>,
-  output: __S(30) as any as S.Schema<BillingOrder>,
+  input: CreateMeOvhAccountCreditOrderRequest,
+  output: BillingOrder,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7100,8 +11005,8 @@ export const createMeOvhAccountMovementRequestRefund: API.OperationMethod<
   CreateMeOvhAccountMovementRequestRefundError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<CreateMeOvhAccountMovementRequestRefundRequest>,
-  output: __S(5) as any as S.Schema<CreateMeOvhAccountMovementRequestRefundResponse>,
+  input: CreateMeOvhAccountMovementRequestRefundRequest,
+  output: CreateMeOvhAccountMovementRequestRefundResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7115,8 +11020,8 @@ export const createMePasswordRecover: API.OperationMethod<
   CreateMePasswordRecoverError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<CreateMePasswordRecoverRequest>,
-  output: __S(7) as any as S.Schema<CreateMePasswordRecoverResponse>,
+  input: CreateMePasswordRecoverRequest,
+  output: CreateMePasswordRecoverResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7130,12 +11035,8 @@ export const createMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMean
   CreateMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMeanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    103,
-  ) as any as S.Schema<CreateMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMeanRequest>,
-  output: __S(
-    104,
-  ) as any as S.Schema<CreateMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMeanResponse>,
+  input: CreateMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMeanRequest,
+  output: CreateMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMeanResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7149,8 +11050,8 @@ export const createMePaymentMethod: API.OperationMethod<
   CreateMePaymentMethodError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<CreateMePaymentMethodRequest>,
-  output: __S(107) as any as S.Schema<MePaymentMethodValidation>,
+  input: CreateMePaymentMethodRequest,
+  output: MePaymentMethodValidation,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7164,8 +11065,8 @@ export const createMePaymentMethodChallenge: API.OperationMethod<
   CreateMePaymentMethodChallengeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<CreateMePaymentMethodChallengeRequest>,
-  output: __S(5) as any as S.Schema<CreateMePaymentMethodChallengeResponse>,
+  input: CreateMePaymentMethodChallengeRequest,
+  output: CreateMePaymentMethodChallengeResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7179,8 +11080,8 @@ export const createMePaymentMethodDetail: API.OperationMethod<
   CreateMePaymentMethodDetailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<CreateMePaymentMethodDetailRequest>,
-  output: __S(107) as any as S.Schema<MePaymentMethodValidation>,
+  input: CreateMePaymentMethodDetailRequest,
+  output: MePaymentMethodValidation,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7194,8 +11095,8 @@ export const createMePreferenceManager: API.OperationMethod<
   CreateMePreferenceManagerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<CreateMePreferenceManagerRequest>,
-  output: __S(5) as any as S.Schema<CreateMePreferenceManagerResponse>,
+  input: CreateMePreferenceManagerRequest,
+  output: CreateMePreferenceManagerResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7209,8 +11110,8 @@ export const createMeSshKey: API.OperationMethod<
   CreateMeSshKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<CreateMeSshKeyRequest>,
-  output: __S(9) as any as S.Schema<CreateMeSshKeyResponse>,
+  input: CreateMeSshKeyRequest,
+  output: CreateMeSshKeyResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7224,8 +11125,8 @@ export const createMeSubAccount: API.OperationMethod<
   CreateMeSubAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<CreateMeSubAccountRequest>,
-  output: __S(113) as any as S.Schema<CreateMeSubAccountResponse>,
+  input: CreateMeSubAccountRequest,
+  output: CreateMeSubAccountResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7239,8 +11140,8 @@ export const createMeSubAccountConsumerKey: API.OperationMethod<
   CreateMeSubAccountConsumerKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<CreateMeSubAccountConsumerKeyRequest>,
-  output: __S(115) as any as S.Schema<NichandleSubAccountConsumerKey>,
+  input: CreateMeSubAccountConsumerKeyRequest,
+  output: NichandleSubAccountConsumerKey,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7254,8 +11155,8 @@ export const createMeTag: API.OperationMethod<
   CreateMeTagError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<CreateMeTagRequest>,
-  output: __S(118) as any as S.Schema<MeTagTag>,
+  input: CreateMeTagRequest,
+  output: MeTagTag,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7269,8 +11170,8 @@ export const createMeTaskContactChangeRefuse: API.OperationMethod<
   CreateMeTaskContactChangeRefuseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<CreateMeTaskContactChangeRefuseRequest>,
-  output: __S(5) as any as S.Schema<CreateMeTaskContactChangeRefuseResponse>,
+  input: CreateMeTaskContactChangeRefuseRequest,
+  output: CreateMeTaskContactChangeRefuseResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7284,8 +11185,8 @@ export const createMeTaskDnsAccelerate: API.OperationMethod<
   CreateMeTaskDnsAccelerateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<CreateMeTaskDnsAccelerateRequest>,
-  output: __S(5) as any as S.Schema<CreateMeTaskDnsAccelerateResponse>,
+  input: CreateMeTaskDnsAccelerateRequest,
+  output: CreateMeTaskDnsAccelerateResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7299,8 +11200,8 @@ export const createMeTaskDnsRelaunch: API.OperationMethod<
   CreateMeTaskDnsRelaunchError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<CreateMeTaskDnsRelaunchRequest>,
-  output: __S(7) as any as S.Schema<CreateMeTaskDnsRelaunchResponse>,
+  input: CreateMeTaskDnsRelaunchRequest,
+  output: CreateMeTaskDnsRelaunchResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7314,8 +11215,8 @@ export const createMeTaskDomainAccelerate: API.OperationMethod<
   CreateMeTaskDomainAccelerateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<CreateMeTaskDomainAccelerateRequest>,
-  output: __S(5) as any as S.Schema<CreateMeTaskDomainAccelerateResponse>,
+  input: CreateMeTaskDomainAccelerateRequest,
+  output: CreateMeTaskDomainAccelerateResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7329,8 +11230,8 @@ export const createMeTaskDomainRelaunch: API.OperationMethod<
   CreateMeTaskDomainRelaunchError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<CreateMeTaskDomainRelaunchRequest>,
-  output: __S(5) as any as S.Schema<CreateMeTaskDomainRelaunchResponse>,
+  input: CreateMeTaskDomainRelaunchRequest,
+  output: CreateMeTaskDomainRelaunchResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7344,8 +11245,8 @@ export const createMeTaskEmailChangeRefuse: API.OperationMethod<
   CreateMeTaskEmailChangeRefuseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<CreateMeTaskEmailChangeRefuseRequest>,
-  output: __S(5) as any as S.Schema<CreateMeTaskEmailChangeRefuseResponse>,
+  input: CreateMeTaskEmailChangeRefuseRequest,
+  output: CreateMeTaskEmailChangeRefuseResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7359,8 +11260,8 @@ export const createMeTelephonyDefaultIpRestriction: API.OperationMethod<
   CreateMeTelephonyDefaultIpRestrictionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<CreateMeTelephonyDefaultIpRestrictionRequest>,
-  output: __S(126) as any as S.Schema<TelephonyDefaultIpRestriction>,
+  input: CreateMeTelephonyDefaultIpRestrictionRequest,
+  output: TelephonyDefaultIpRestriction,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7374,8 +11275,8 @@ export const createMeTelephonySettings: API.OperationMethod<
   CreateMeTelephonySettingsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130) as any as S.Schema<CreateMeTelephonySettingsRequest>,
-  output: __S(5) as any as S.Schema<CreateMeTelephonySettingsResponse>,
+  input: CreateMeTelephonySettingsRequest,
+  output: CreateMeTelephonySettingsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7389,8 +11290,8 @@ export const createMeXdslSetting: API.OperationMethod<
   CreateMeXdslSettingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<CreateMeXdslSettingRequest>,
-  output: __S(9) as any as S.Schema<CreateMeXdslSettingResponse>,
+  input: CreateMeXdslSettingRequest,
+  output: CreateMeXdslSettingResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7404,8 +11305,8 @@ export const deleteMeAccessRestrictionBackupCode: API.OperationMethod<
   DeleteMeAccessRestrictionBackupCodeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<DeleteMeAccessRestrictionBackupCodeRequest>,
-  output: __S(5) as any as S.Schema<DeleteMeAccessRestrictionBackupCodeResponse>,
+  input: DeleteMeAccessRestrictionBackupCodeRequest,
+  output: DeleteMeAccessRestrictionBackupCodeResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7419,8 +11320,8 @@ export const deleteMeAccessRestrictionIp: API.OperationMethod<
   DeleteMeAccessRestrictionIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133) as any as S.Schema<DeleteMeAccessRestrictionIpRequest>,
-  output: __S(5) as any as S.Schema<DeleteMeAccessRestrictionIpResponse>,
+  input: DeleteMeAccessRestrictionIpRequest,
+  output: DeleteMeAccessRestrictionIpResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7434,8 +11335,8 @@ export const deleteMeAccessRestrictionSms: API.OperationMethod<
   DeleteMeAccessRestrictionSmsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134) as any as S.Schema<DeleteMeAccessRestrictionSmsRequest>,
-  output: __S(5) as any as S.Schema<DeleteMeAccessRestrictionSmsResponse>,
+  input: DeleteMeAccessRestrictionSmsRequest,
+  output: DeleteMeAccessRestrictionSmsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7449,8 +11350,8 @@ export const deleteMeAccessRestrictionTotp: API.OperationMethod<
   DeleteMeAccessRestrictionTotpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<DeleteMeAccessRestrictionTotpRequest>,
-  output: __S(5) as any as S.Schema<DeleteMeAccessRestrictionTotpResponse>,
+  input: DeleteMeAccessRestrictionTotpRequest,
+  output: DeleteMeAccessRestrictionTotpResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7464,8 +11365,8 @@ export const deleteMeAccessRestrictionU2f: API.OperationMethod<
   DeleteMeAccessRestrictionU2fError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<DeleteMeAccessRestrictionU2fRequest>,
-  output: __S(5) as any as S.Schema<DeleteMeAccessRestrictionU2fResponse>,
+  input: DeleteMeAccessRestrictionU2fRequest,
+  output: DeleteMeAccessRestrictionU2fResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7479,8 +11380,8 @@ export const deleteMeApplication: API.OperationMethod<
   DeleteMeApplicationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<DeleteMeApplicationRequest>,
-  output: __S(9) as any as S.Schema<DeleteMeApplicationResponse>,
+  input: DeleteMeApplicationRequest,
+  output: DeleteMeApplicationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7494,8 +11395,8 @@ export const deleteMeBillingGroup: API.OperationMethod<
   DeleteMeBillingGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<DeleteMeBillingGroupRequest>,
-  output: __S(9) as any as S.Schema<DeleteMeBillingGroupResponse>,
+  input: DeleteMeBillingGroupRequest,
+  output: DeleteMeBillingGroupResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7509,8 +11410,8 @@ export const deleteMeBillingGroupService: API.OperationMethod<
   DeleteMeBillingGroupServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<DeleteMeBillingGroupServiceRequest>,
-  output: __S(5) as any as S.Schema<DeleteMeBillingGroupServiceResponse>,
+  input: DeleteMeBillingGroupServiceRequest,
+  output: DeleteMeBillingGroupServiceResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7524,8 +11425,8 @@ export const deleteMeBillingPurchaseOrder: API.OperationMethod<
   DeleteMeBillingPurchaseOrderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<DeleteMeBillingPurchaseOrderRequest>,
-  output: __S(5) as any as S.Schema<DeleteMeBillingPurchaseOrderResponse>,
+  input: DeleteMeBillingPurchaseOrderRequest,
+  output: DeleteMeBillingPurchaseOrderResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7539,8 +11440,8 @@ export const deleteMeCredential: API.OperationMethod<
   DeleteMeCredentialError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141) as any as S.Schema<DeleteMeCredentialRequest>,
-  output: __S(9) as any as S.Schema<DeleteMeCredentialResponse>,
+  input: DeleteMeCredentialRequest,
+  output: DeleteMeCredentialResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7554,8 +11455,8 @@ export const deleteMeDocument: API.OperationMethod<
   DeleteMeDocumentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<DeleteMeDocumentRequest>,
-  output: __S(9) as any as S.Schema<DeleteMeDocumentResponse>,
+  input: DeleteMeDocumentRequest,
+  output: DeleteMeDocumentResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7569,8 +11470,8 @@ export const deleteMeFaxCustomDomain: API.OperationMethod<
   DeleteMeFaxCustomDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143) as any as S.Schema<DeleteMeFaxCustomDomainRequest>,
-  output: __S(7) as any as S.Schema<DeleteMeFaxCustomDomainResponse>,
+  input: DeleteMeFaxCustomDomainRequest,
+  output: DeleteMeFaxCustomDomainResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7584,8 +11485,8 @@ export const deleteMeIdentityGroup: API.OperationMethod<
   DeleteMeIdentityGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144) as any as S.Schema<DeleteMeIdentityGroupRequest>,
-  output: __S(9) as any as S.Schema<DeleteMeIdentityGroupResponse>,
+  input: DeleteMeIdentityGroupRequest,
+  output: DeleteMeIdentityGroupResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7599,8 +11500,8 @@ export const deleteMeIdentityGroupUser: API.OperationMethod<
   DeleteMeIdentityGroupUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<DeleteMeIdentityGroupUserRequest>,
-  output: __S(5) as any as S.Schema<DeleteMeIdentityGroupUserResponse>,
+  input: DeleteMeIdentityGroupUserRequest,
+  output: DeleteMeIdentityGroupUserResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7614,8 +11515,8 @@ export const deleteMeIdentityProvider: API.OperationMethod<
   DeleteMeIdentityProviderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<DeleteMeIdentityProviderRequest>,
-  output: __S(5) as any as S.Schema<DeleteMeIdentityProviderResponse>,
+  input: DeleteMeIdentityProviderRequest,
+  output: DeleteMeIdentityProviderResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7629,8 +11530,8 @@ export const deleteMeIdentityUser: API.OperationMethod<
   DeleteMeIdentityUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147) as any as S.Schema<DeleteMeIdentityUserRequest>,
-  output: __S(9) as any as S.Schema<DeleteMeIdentityUserResponse>,
+  input: DeleteMeIdentityUserRequest,
+  output: DeleteMeIdentityUserResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7644,8 +11545,8 @@ export const deleteMeIdentityUserToken: API.OperationMethod<
   DeleteMeIdentityUserTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148) as any as S.Schema<DeleteMeIdentityUserTokenRequest>,
-  output: __S(5) as any as S.Schema<DeleteMeIdentityUserTokenResponse>,
+  input: DeleteMeIdentityUserTokenRequest,
+  output: DeleteMeIdentityUserTokenResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7659,8 +11560,8 @@ export const deleteMeIpOrganisation: API.OperationMethod<
   DeleteMeIpOrganisationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<DeleteMeIpOrganisationRequest>,
-  output: __S(9) as any as S.Schema<DeleteMeIpOrganisationResponse>,
+  input: DeleteMeIpOrganisationRequest,
+  output: DeleteMeIpOrganisationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7674,8 +11575,8 @@ export const deleteMeLogAuditLogSubscription: API.OperationMethod<
   DeleteMeLogAuditLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<DeleteMeLogAuditLogSubscriptionRequest>,
-  output: __S(84) as any as S.Schema<DbaasLogsLogSubscriptionResponse>,
+  input: DeleteMeLogAuditLogSubscriptionRequest,
+  output: DbaasLogsLogSubscriptionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7689,8 +11590,8 @@ export const deleteMeLogSubscription: API.OperationMethod<
   DeleteMeLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<DeleteMeLogSubscriptionRequest>,
-  output: __S(84) as any as S.Schema<DbaasLogsLogSubscriptionResponse>,
+  input: DeleteMeLogSubscriptionRequest,
+  output: DbaasLogsLogSubscriptionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7704,8 +11605,8 @@ export const deleteMeOauth2Client: API.OperationMethod<
   DeleteMeOauth2ClientError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152) as any as S.Schema<DeleteMeOauth2ClientRequest>,
-  output: __S(9) as any as S.Schema<DeleteMeOauth2ClientResponse>,
+  input: DeleteMeOauth2ClientRequest,
+  output: DeleteMeOauth2ClientResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7719,8 +11620,8 @@ export const deleteMeOauth2Token: API.OperationMethod<
   DeleteMeOauth2TokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<DeleteMeOauth2TokenRequest>,
-  output: __S(9) as any as S.Schema<DeleteMeOauth2TokenResponse>,
+  input: DeleteMeOauth2TokenRequest,
+  output: DeleteMeOauth2TokenResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7734,8 +11635,8 @@ export const deleteMeOrderBalance: API.OperationMethod<
   DeleteMeOrderBalanceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<DeleteMeOrderBalanceRequest>,
-  output: __S(9) as any as S.Schema<DeleteMeOrderBalanceResponse>,
+  input: DeleteMeOrderBalanceRequest,
+  output: DeleteMeOrderBalanceResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7749,8 +11650,8 @@ export const deleteMePaymentMethod: API.OperationMethod<
   DeleteMePaymentMethodError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155) as any as S.Schema<DeleteMePaymentMethodRequest>,
-  output: __S(157) as any as S.Schema<MePaymentPaymentMethod>,
+  input: DeleteMePaymentMethodRequest,
+  output: MePaymentPaymentMethod,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7764,8 +11665,8 @@ export const deleteMePreferenceManager: API.OperationMethod<
   DeleteMePreferenceManagerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158) as any as S.Schema<DeleteMePreferenceManagerRequest>,
-  output: __S(5) as any as S.Schema<DeleteMePreferenceManagerResponse>,
+  input: DeleteMePreferenceManagerRequest,
+  output: DeleteMePreferenceManagerResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7779,8 +11680,8 @@ export const deleteMeSshKey: API.OperationMethod<
   DeleteMeSshKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159) as any as S.Schema<DeleteMeSshKeyRequest>,
-  output: __S(9) as any as S.Schema<DeleteMeSshKeyResponse>,
+  input: DeleteMeSshKeyRequest,
+  output: DeleteMeSshKeyResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7794,8 +11695,8 @@ export const deleteMeTag: API.OperationMethod<
   DeleteMeTagError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160) as any as S.Schema<DeleteMeTagRequest>,
-  output: __S(118) as any as S.Schema<MeTagTag>,
+  input: DeleteMeTagRequest,
+  output: MeTagTag,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7809,8 +11710,8 @@ export const deleteMeTelephonyDefaultIpRestriction: API.OperationMethod<
   DeleteMeTelephonyDefaultIpRestrictionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161) as any as S.Schema<DeleteMeTelephonyDefaultIpRestrictionRequest>,
-  output: __S(5) as any as S.Schema<DeleteMeTelephonyDefaultIpRestrictionResponse>,
+  input: DeleteMeTelephonyDefaultIpRestrictionRequest,
+  output: DeleteMeTelephonyDefaultIpRestrictionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7824,8 +11725,8 @@ export const disableMeAccessRestrictionBackupCode: API.OperationMethod<
   DisableMeAccessRestrictionBackupCodeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162) as any as S.Schema<DisableMeAccessRestrictionBackupCodeRequest>,
-  output: __S(5) as any as S.Schema<DisableMeAccessRestrictionBackupCodeResponse>,
+  input: DisableMeAccessRestrictionBackupCodeRequest,
+  output: DisableMeAccessRestrictionBackupCodeResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7839,8 +11740,8 @@ export const disableMeAccessRestrictionSms: API.OperationMethod<
   DisableMeAccessRestrictionSmsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<DisableMeAccessRestrictionSmsRequest>,
-  output: __S(5) as any as S.Schema<DisableMeAccessRestrictionSmsResponse>,
+  input: DisableMeAccessRestrictionSmsRequest,
+  output: DisableMeAccessRestrictionSmsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7854,8 +11755,8 @@ export const disableMeAccessRestrictionTotp: API.OperationMethod<
   DisableMeAccessRestrictionTotpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164) as any as S.Schema<DisableMeAccessRestrictionTotpRequest>,
-  output: __S(5) as any as S.Schema<DisableMeAccessRestrictionTotpResponse>,
+  input: DisableMeAccessRestrictionTotpRequest,
+  output: DisableMeAccessRestrictionTotpResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7869,8 +11770,8 @@ export const disableMeAccessRestrictionU2f: API.OperationMethod<
   DisableMeAccessRestrictionU2fError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165) as any as S.Schema<DisableMeAccessRestrictionU2fRequest>,
-  output: __S(5) as any as S.Schema<DisableMeAccessRestrictionU2fResponse>,
+  input: DisableMeAccessRestrictionU2fRequest,
+  output: DisableMeAccessRestrictionU2fResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7884,8 +11785,8 @@ export const disableMeIdentityUser: API.OperationMethod<
   DisableMeIdentityUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<DisableMeIdentityUserRequest>,
-  output: __S(9) as any as S.Schema<DisableMeIdentityUserResponse>,
+  input: DisableMeIdentityUserRequest,
+  output: DisableMeIdentityUserResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7899,8 +11800,8 @@ export const editAccountDetails: API.OperationMethod<
   EditAccountDetailsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<EditAccountDetailsRequest>,
-  output: __S(9) as any as S.Schema<EditAccountDetailsResponse>,
+  input: EditAccountDetailsRequest,
+  output: EditAccountDetailsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7914,8 +11815,8 @@ export const enableMeAccessRestrictionBackupCode: API.OperationMethod<
   EnableMeAccessRestrictionBackupCodeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<EnableMeAccessRestrictionBackupCodeRequest>,
-  output: __S(5) as any as S.Schema<EnableMeAccessRestrictionBackupCodeResponse>,
+  input: EnableMeAccessRestrictionBackupCodeRequest,
+  output: EnableMeAccessRestrictionBackupCodeResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7929,8 +11830,8 @@ export const enableMeAccessRestrictionSms: API.OperationMethod<
   EnableMeAccessRestrictionSmsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<EnableMeAccessRestrictionSmsRequest>,
-  output: __S(5) as any as S.Schema<EnableMeAccessRestrictionSmsResponse>,
+  input: EnableMeAccessRestrictionSmsRequest,
+  output: EnableMeAccessRestrictionSmsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7944,8 +11845,8 @@ export const enableMeAccessRestrictionTotp: API.OperationMethod<
   EnableMeAccessRestrictionTotpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170) as any as S.Schema<EnableMeAccessRestrictionTotpRequest>,
-  output: __S(5) as any as S.Schema<EnableMeAccessRestrictionTotpResponse>,
+  input: EnableMeAccessRestrictionTotpRequest,
+  output: EnableMeAccessRestrictionTotpResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7959,8 +11860,8 @@ export const enableMeAccessRestrictionU2f: API.OperationMethod<
   EnableMeAccessRestrictionU2fError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171) as any as S.Schema<EnableMeAccessRestrictionU2fRequest>,
-  output: __S(5) as any as S.Schema<EnableMeAccessRestrictionU2fResponse>,
+  input: EnableMeAccessRestrictionU2fRequest,
+  output: EnableMeAccessRestrictionU2fResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7974,8 +11875,8 @@ export const enableMeIdentityUser: API.OperationMethod<
   EnableMeIdentityUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172) as any as S.Schema<EnableMeIdentityUserRequest>,
-  output: __S(9) as any as S.Schema<EnableMeIdentityUserResponse>,
+  input: EnableMeIdentityUserRequest,
+  output: EnableMeIdentityUserResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7989,8 +11890,8 @@ export const exportMeBill: API.OperationMethod<
   ExportMeBillError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173) as any as S.Schema<ExportMeBillRequest>,
-  output: __S(9) as any as S.Schema<ExportMeBillResponse>,
+  input: ExportMeBillRequest,
+  output: ExportMeBillResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8004,8 +11905,8 @@ export const exportMeRefund: API.OperationMethod<
   ExportMeRefundError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174) as any as S.Schema<ExportMeRefundRequest>,
-  output: __S(9) as any as S.Schema<ExportMeRefundResponse>,
+  input: ExportMeRefundRequest,
+  output: ExportMeRefundResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8019,8 +11920,8 @@ export const finalizeMePaymentMethod: API.OperationMethod<
   FinalizeMePaymentMethodError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<FinalizeMePaymentMethodRequest>,
-  output: __S(157) as any as S.Schema<MePaymentPaymentMethod>,
+  input: FinalizeMePaymentMethodRequest,
+  output: MePaymentPaymentMethod,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8034,8 +11935,8 @@ export const getAccountDetails: API.OperationMethod<
   GetAccountDetailsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<GetAccountDetailsRequest>,
-  output: __S(26) as any as S.Schema<NichandleNichandle>,
+  input: GetAccountDetailsRequest,
+  output: NichandleNichandle,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8049,8 +11950,8 @@ export const getCertificates: API.OperationMethod<
   GetCertificatesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<GetCertificatesRequest>,
-  output: __S(178) as any as S.Schema<GetCertificatesResponse>,
+  input: GetCertificatesRequest,
+  output: GetCertificatesResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8064,8 +11965,8 @@ export const getMeAbuse: API.OperationMethod<
   GetMeAbuseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<GetMeAbuseRequest>,
-  output: __S(180) as any as S.Schema<MeAbuseAbuse>,
+  input: GetMeAbuseRequest,
+  output: MeAbuseAbuse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8079,8 +11980,8 @@ export const getMeAccessRestrictionBackupCode: API.OperationMethod<
   GetMeAccessRestrictionBackupCodeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<GetMeAccessRestrictionBackupCodeRequest>,
-  output: __S(182) as any as S.Schema<NichandleAccessRestrictionSOTPAccount>,
+  input: GetMeAccessRestrictionBackupCodeRequest,
+  output: NichandleAccessRestrictionSOTPAccount,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8094,8 +11995,8 @@ export const getMeAccessRestrictionDeveloperMode: API.OperationMethod<
   GetMeAccessRestrictionDeveloperModeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183) as any as S.Schema<GetMeAccessRestrictionDeveloperModeRequest>,
-  output: __S(184) as any as S.Schema<NichandleDeveloperModeRestriction>,
+  input: GetMeAccessRestrictionDeveloperModeRequest,
+  output: NichandleDeveloperModeRestriction,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8109,8 +12010,8 @@ export const getMeAccessRestrictionIp: API.OperationMethod<
   GetMeAccessRestrictionIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<GetMeAccessRestrictionIpRequest>,
-  output: __S(186) as any as S.Schema<NichandleIpRestriction>,
+  input: GetMeAccessRestrictionIpRequest,
+  output: NichandleIpRestriction,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8124,8 +12025,8 @@ export const getMeAccessRestrictionIpDefaultRule: API.OperationMethod<
   GetMeAccessRestrictionIpDefaultRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<GetMeAccessRestrictionIpDefaultRuleRequest>,
-  output: __S(188) as any as S.Schema<NichandleIpRestrictionDefaultRule>,
+  input: GetMeAccessRestrictionIpDefaultRuleRequest,
+  output: NichandleIpRestrictionDefaultRule,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8139,8 +12040,8 @@ export const getMeAccessRestrictionSms: API.OperationMethod<
   GetMeAccessRestrictionSmsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189) as any as S.Schema<GetMeAccessRestrictionSmsRequest>,
-  output: __S(190) as any as S.Schema<NichandleAccessRestrictionSmsAccount>,
+  input: GetMeAccessRestrictionSmsRequest,
+  output: NichandleAccessRestrictionSmsAccount,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8154,8 +12055,8 @@ export const getMeAccessRestrictionTotp: API.OperationMethod<
   GetMeAccessRestrictionTotpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191) as any as S.Schema<GetMeAccessRestrictionTotpRequest>,
-  output: __S(192) as any as S.Schema<NichandleAccessRestrictionTOTPAccount>,
+  input: GetMeAccessRestrictionTotpRequest,
+  output: NichandleAccessRestrictionTOTPAccount,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8169,8 +12070,8 @@ export const getMeAccessRestrictionU2f: API.OperationMethod<
   GetMeAccessRestrictionU2fError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<GetMeAccessRestrictionU2fRequest>,
-  output: __S(192) as any as S.Schema<NichandleAccessRestrictionU2FAccount>,
+  input: GetMeAccessRestrictionU2fRequest,
+  output: NichandleAccessRestrictionU2FAccount,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8184,8 +12085,8 @@ export const getMeAgreement: API.OperationMethod<
   GetMeAgreementError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194) as any as S.Schema<GetMeAgreementRequest>,
-  output: __S(3) as any as S.Schema<AgreementsContractAgreement>,
+  input: GetMeAgreementRequest,
+  output: AgreementsContractAgreement,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8199,8 +12100,8 @@ export const getMeAgreementContract: API.OperationMethod<
   GetMeAgreementContractError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195) as any as S.Schema<GetMeAgreementContractRequest>,
-  output: __S(196) as any as S.Schema<AgreementsContract>,
+  input: GetMeAgreementContractRequest,
+  output: AgreementsContract,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8214,8 +12115,8 @@ export const getMeApplication: API.OperationMethod<
   GetMeApplicationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197) as any as S.Schema<GetMeApplicationRequest>,
-  output: __S(198) as any as S.Schema<AuthApiApplication>,
+  input: GetMeApplicationRequest,
+  output: AuthApiApplication,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8229,8 +12130,8 @@ export const getMeAutorenew: API.OperationMethod<
   GetMeAutorenewError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199) as any as S.Schema<GetMeAutorenewRequest>,
-  output: __S(200) as any as S.Schema<NichandleNicAutorenewInfos>,
+  input: GetMeAutorenewRequest,
+  output: NichandleNicAutorenewInfos,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8244,8 +12145,8 @@ export const getMeAvailableAutomaticPaymentMeans: API.OperationMethod<
   GetMeAvailableAutomaticPaymentMeansError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201) as any as S.Schema<GetMeAvailableAutomaticPaymentMeansRequest>,
-  output: __S(202) as any as S.Schema<BillingAutomaticPaymentMean>,
+  input: GetMeAvailableAutomaticPaymentMeansRequest,
+  output: BillingAutomaticPaymentMean,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8259,8 +12160,8 @@ export const getMeBill: API.OperationMethod<
   GetMeBillError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203) as any as S.Schema<GetMeBillRequest>,
-  output: __S(204) as any as S.Schema<BillingBill>,
+  input: GetMeBillRequest,
+  output: BillingBill,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8274,8 +12175,8 @@ export const getMeBillDebt: API.OperationMethod<
   GetMeBillDebtError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205) as any as S.Schema<GetMeBillDebtRequest>,
-  output: __S(206) as any as S.Schema<DebtDebt>,
+  input: GetMeBillDebtRequest,
+  output: DebtDebt,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8289,8 +12190,8 @@ export const getMeBillDebtOperation: API.OperationMethod<
   GetMeBillDebtOperationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207) as any as S.Schema<GetMeBillDebtOperationRequest>,
-  output: __S(208) as any as S.Schema<DebtOperation>,
+  input: GetMeBillDebtOperationRequest,
+  output: DebtOperation,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8304,8 +12205,8 @@ export const getMeBillDebtOperationAssociatedObject: API.OperationMethod<
   GetMeBillDebtOperationAssociatedObjectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209) as any as S.Schema<GetMeBillDebtOperationAssociatedObjectRequest>,
-  output: __S(211) as any as S.Schema<DebtEntryAssociatedObject>,
+  input: GetMeBillDebtOperationAssociatedObjectRequest,
+  output: DebtEntryAssociatedObject,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8319,8 +12220,8 @@ export const getMeBillDetail: API.OperationMethod<
   GetMeBillDetailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212) as any as S.Schema<GetMeBillDetailRequest>,
-  output: __S(214) as any as S.Schema<BillingBillDetail>,
+  input: GetMeBillDetailRequest,
+  output: BillingBillDetail,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8334,8 +12235,8 @@ export const getMeBillingCapacities: API.OperationMethod<
   GetMeBillingCapacitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215) as any as S.Schema<GetMeBillingCapacitiesRequest>,
-  output: __S(216) as any as S.Schema<NichandleBillingCapacities>,
+  input: GetMeBillingCapacitiesRequest,
+  output: NichandleBillingCapacities,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8349,8 +12250,8 @@ export const getMeBillingGroup: API.OperationMethod<
   GetMeBillingGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217) as any as S.Schema<GetMeBillingGroupRequest>,
-  output: __S(32) as any as S.Schema<MeBillingGroupBillingGroup>,
+  input: GetMeBillingGroupRequest,
+  output: MeBillingGroupBillingGroup,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8364,8 +12265,8 @@ export const getMeBillingGroupService: API.OperationMethod<
   GetMeBillingGroupServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218) as any as S.Schema<GetMeBillingGroupServiceRequest>,
-  output: __S(34) as any as S.Schema<MeBillingGroupService>,
+  input: GetMeBillingGroupServiceRequest,
+  output: MeBillingGroupService,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8379,8 +12280,8 @@ export const getMeBillingInvoicesByPostalMail: API.OperationMethod<
   GetMeBillingInvoicesByPostalMailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219) as any as S.Schema<GetMeBillingInvoicesByPostalMailRequest>,
-  output: __S(220) as any as S.Schema<GetMeBillingInvoicesByPostalMailResponse>,
+  input: GetMeBillingInvoicesByPostalMailRequest,
+  output: GetMeBillingInvoicesByPostalMailResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8394,8 +12295,8 @@ export const getMeBillingPurchaseOrder: API.OperationMethod<
   GetMeBillingPurchaseOrderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221) as any as S.Schema<GetMeBillingPurchaseOrderRequest>,
-  output: __S(37) as any as S.Schema<MeBillingPurchaseOrderPurchaseOrder>,
+  input: GetMeBillingPurchaseOrderRequest,
+  output: MeBillingPurchaseOrderPurchaseOrder,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8409,8 +12310,8 @@ export const getMeBillingReportConsumption: API.OperationMethod<
   GetMeBillingReportConsumptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222) as any as S.Schema<GetMeBillingReportConsumptionRequest>,
-  output: __S(223) as any as S.Schema<MeBillingReportConsumption>,
+  input: GetMeBillingReportConsumptionRequest,
+  output: MeBillingReportConsumption,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8424,8 +12325,8 @@ export const getMeBillingTask: API.OperationMethod<
   GetMeBillingTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224) as any as S.Schema<GetMeBillingTaskRequest>,
-  output: __S(225) as any as S.Schema<MeBillingTasksTask>,
+  input: GetMeBillingTaskRequest,
+  output: MeBillingTasksTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8439,8 +12340,8 @@ export const getMeBillPayment: API.OperationMethod<
   GetMeBillPaymentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226) as any as S.Schema<GetMeBillPaymentRequest>,
-  output: __S(227) as any as S.Schema<BillingPayment>,
+  input: GetMeBillPaymentRequest,
+  output: BillingPayment,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8454,8 +12355,8 @@ export const getMeBringYourOwnIpToken: API.OperationMethod<
   GetMeBringYourOwnIpTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228) as any as S.Schema<GetMeBringYourOwnIpTokenRequest>,
-  output: __S(1) as any as S.Schema<GetMeBringYourOwnIpTokenResponse>,
+  input: GetMeBringYourOwnIpTokenRequest,
+  output: GetMeBringYourOwnIpTokenResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8469,8 +12370,8 @@ export const getMeCarbonCalculatorHasInvoice: API.OperationMethod<
   GetMeCarbonCalculatorHasInvoiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229) as any as S.Schema<GetMeCarbonCalculatorHasInvoiceRequest>,
-  output: __S(230) as any as S.Schema<CarbonCalculatorHasInvoiceResponse>,
+  input: GetMeCarbonCalculatorHasInvoiceRequest,
+  output: CarbonCalculatorHasInvoiceResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8484,8 +12385,8 @@ export const getMeCarbonCalculatorTask: API.OperationMethod<
   GetMeCarbonCalculatorTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231) as any as S.Schema<GetMeCarbonCalculatorTaskRequest>,
-  output: __S(232) as any as S.Schema<CarbonCalculatorTask>,
+  input: GetMeCarbonCalculatorTaskRequest,
+  output: CarbonCalculatorTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8499,8 +12400,8 @@ export const getMeConsent: API.OperationMethod<
   GetMeConsentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233) as any as S.Schema<GetMeConsentRequest>,
-  output: __S(234) as any as S.Schema<MeConsentCampaign>,
+  input: GetMeConsentRequest,
+  output: MeConsentCampaign,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8514,8 +12415,8 @@ export const getMeContact: API.OperationMethod<
   GetMeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235) as any as S.Schema<GetMeContactRequest>,
-  output: __S(47) as any as S.Schema<MeContactContact>,
+  input: GetMeContactRequest,
+  output: MeContactContact,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8529,8 +12430,8 @@ export const getMeCorrectiveInvoice: API.OperationMethod<
   GetMeCorrectiveInvoiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236) as any as S.Schema<GetMeCorrectiveInvoiceRequest>,
-  output: __S(237) as any as S.Schema<BillingCorrectiveInvoice>,
+  input: GetMeCorrectiveInvoiceRequest,
+  output: BillingCorrectiveInvoice,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8544,8 +12445,8 @@ export const getMeCorrectiveInvoiceDebt: API.OperationMethod<
   GetMeCorrectiveInvoiceDebtError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238) as any as S.Schema<GetMeCorrectiveInvoiceDebtRequest>,
-  output: __S(206) as any as S.Schema<DebtDebt>,
+  input: GetMeCorrectiveInvoiceDebtRequest,
+  output: DebtDebt,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8559,8 +12460,8 @@ export const getMeCorrectiveInvoiceDebtOperation: API.OperationMethod<
   GetMeCorrectiveInvoiceDebtOperationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239) as any as S.Schema<GetMeCorrectiveInvoiceDebtOperationRequest>,
-  output: __S(208) as any as S.Schema<DebtOperation>,
+  input: GetMeCorrectiveInvoiceDebtOperationRequest,
+  output: DebtOperation,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8574,8 +12475,8 @@ export const getMeCorrectiveInvoiceDebtOperationAssociatedObject: API.OperationM
   GetMeCorrectiveInvoiceDebtOperationAssociatedObjectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240) as any as S.Schema<GetMeCorrectiveInvoiceDebtOperationAssociatedObjectRequest>,
-  output: __S(211) as any as S.Schema<DebtEntryAssociatedObject>,
+  input: GetMeCorrectiveInvoiceDebtOperationAssociatedObjectRequest,
+  output: DebtEntryAssociatedObject,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8589,8 +12490,8 @@ export const getMeCorrectiveInvoiceDetail: API.OperationMethod<
   GetMeCorrectiveInvoiceDetailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241) as any as S.Schema<GetMeCorrectiveInvoiceDetailRequest>,
-  output: __S(242) as any as S.Schema<BillingCorrectiveInvoiceDetail>,
+  input: GetMeCorrectiveInvoiceDetailRequest,
+  output: BillingCorrectiveInvoiceDetail,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8604,8 +12505,8 @@ export const getMeCorrectiveInvoicePayment: API.OperationMethod<
   GetMeCorrectiveInvoicePaymentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243) as any as S.Schema<GetMeCorrectiveInvoicePaymentRequest>,
-  output: __S(227) as any as S.Schema<BillingPayment>,
+  input: GetMeCorrectiveInvoicePaymentRequest,
+  output: BillingPayment,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8619,8 +12520,8 @@ export const getMeCredential: API.OperationMethod<
   GetMeCredentialError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244) as any as S.Schema<GetMeCredentialRequest>,
-  output: __S(247) as any as S.Schema<AuthApiCredential>,
+  input: GetMeCredentialRequest,
+  output: AuthApiCredential,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8634,8 +12535,8 @@ export const getMeCredentialApplication: API.OperationMethod<
   GetMeCredentialApplicationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248) as any as S.Schema<GetMeCredentialApplicationRequest>,
-  output: __S(198) as any as S.Schema<AuthApiApplication>,
+  input: GetMeCredentialApplicationRequest,
+  output: AuthApiApplication,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8649,8 +12550,8 @@ export const getMeCreditBalance: API.OperationMethod<
   GetMeCreditBalanceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249) as any as S.Schema<GetMeCreditBalanceRequest>,
-  output: __S(256) as any as S.Schema<MeCreditBalance>,
+  input: GetMeCreditBalanceRequest,
+  output: MeCreditBalance,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8664,8 +12565,8 @@ export const getMeCreditBalanceMovement: API.OperationMethod<
   GetMeCreditBalanceMovementError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257) as any as S.Schema<GetMeCreditBalanceMovementRequest>,
-  output: __S(51) as any as S.Schema<MeCreditBalanceMovement>,
+  input: GetMeCreditBalanceMovementRequest,
+  output: MeCreditBalanceMovement,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8679,8 +12580,8 @@ export const getMeDebtAccount: API.OperationMethod<
   GetMeDebtAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258) as any as S.Schema<GetMeDebtAccountRequest>,
-  output: __S(259) as any as S.Schema<DebtBalance>,
+  input: GetMeDebtAccountRequest,
+  output: DebtBalance,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8694,8 +12595,8 @@ export const getMeDebtAccountDebt: API.OperationMethod<
   GetMeDebtAccountDebtError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260) as any as S.Schema<GetMeDebtAccountDebtRequest>,
-  output: __S(206) as any as S.Schema<DebtDebt>,
+  input: GetMeDebtAccountDebtRequest,
+  output: DebtDebt,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8709,8 +12610,8 @@ export const getMeDebtAccountDebtOperation: API.OperationMethod<
   GetMeDebtAccountDebtOperationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261) as any as S.Schema<GetMeDebtAccountDebtOperationRequest>,
-  output: __S(208) as any as S.Schema<DebtOperation>,
+  input: GetMeDebtAccountDebtOperationRequest,
+  output: DebtOperation,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8724,8 +12625,8 @@ export const getMeDebtAccountDebtOperationAssociatedObject: API.OperationMethod<
   GetMeDebtAccountDebtOperationAssociatedObjectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262) as any as S.Schema<GetMeDebtAccountDebtOperationAssociatedObjectRequest>,
-  output: __S(211) as any as S.Schema<DebtEntryAssociatedObject>,
+  input: GetMeDebtAccountDebtOperationAssociatedObjectRequest,
+  output: DebtEntryAssociatedObject,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8739,8 +12640,8 @@ export const getMeDeposit: API.OperationMethod<
   GetMeDepositError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263) as any as S.Schema<GetMeDepositRequest>,
-  output: __S(264) as any as S.Schema<BillingDeposit>,
+  input: GetMeDepositRequest,
+  output: BillingDeposit,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8754,8 +12655,8 @@ export const getMeDepositDetail: API.OperationMethod<
   GetMeDepositDetailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265) as any as S.Schema<GetMeDepositDetailRequest>,
-  output: __S(266) as any as S.Schema<BillingDepositDetail>,
+  input: GetMeDepositDetailRequest,
+  output: BillingDepositDetail,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8769,8 +12670,8 @@ export const getMeDepositPaidBill: API.OperationMethod<
   GetMeDepositPaidBillError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267) as any as S.Schema<GetMeDepositPaidBillRequest>,
-  output: __S(204) as any as S.Schema<BillingBill>,
+  input: GetMeDepositPaidBillRequest,
+  output: BillingBill,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8784,8 +12685,8 @@ export const getMeDepositPaidBillDebt: API.OperationMethod<
   GetMeDepositPaidBillDebtError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268) as any as S.Schema<GetMeDepositPaidBillDebtRequest>,
-  output: __S(206) as any as S.Schema<DebtDebt>,
+  input: GetMeDepositPaidBillDebtRequest,
+  output: DebtDebt,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8799,8 +12700,8 @@ export const getMeDepositPaidBillDebtOperation: API.OperationMethod<
   GetMeDepositPaidBillDebtOperationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269) as any as S.Schema<GetMeDepositPaidBillDebtOperationRequest>,
-  output: __S(208) as any as S.Schema<DebtOperation>,
+  input: GetMeDepositPaidBillDebtOperationRequest,
+  output: DebtOperation,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8814,8 +12715,8 @@ export const getMeDepositPaidBillDebtOperationAssociatedObject: API.OperationMet
   GetMeDepositPaidBillDebtOperationAssociatedObjectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270) as any as S.Schema<GetMeDepositPaidBillDebtOperationAssociatedObjectRequest>,
-  output: __S(211) as any as S.Schema<DebtEntryAssociatedObject>,
+  input: GetMeDepositPaidBillDebtOperationAssociatedObjectRequest,
+  output: DebtEntryAssociatedObject,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8829,8 +12730,8 @@ export const getMeDepositPaidBillDetail: API.OperationMethod<
   GetMeDepositPaidBillDetailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271) as any as S.Schema<GetMeDepositPaidBillDetailRequest>,
-  output: __S(214) as any as S.Schema<BillingBillDetail>,
+  input: GetMeDepositPaidBillDetailRequest,
+  output: BillingBillDetail,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8844,8 +12745,8 @@ export const getMeDepositPaidBillPayment: API.OperationMethod<
   GetMeDepositPaidBillPaymentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272) as any as S.Schema<GetMeDepositPaidBillPaymentRequest>,
-  output: __S(227) as any as S.Schema<BillingPayment>,
+  input: GetMeDepositPaidBillPaymentRequest,
+  output: BillingPayment,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8859,8 +12760,8 @@ export const getMeDepositPayment: API.OperationMethod<
   GetMeDepositPaymentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273) as any as S.Schema<GetMeDepositPaymentRequest>,
-  output: __S(227) as any as S.Schema<BillingPayment>,
+  input: GetMeDepositPaymentRequest,
+  output: BillingPayment,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8874,8 +12775,8 @@ export const getMeDocument: API.OperationMethod<
   GetMeDocumentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274) as any as S.Schema<GetMeDocumentRequest>,
-  output: __S(60) as any as S.Schema<NichandleDocumentDocument>,
+  input: GetMeDocumentRequest,
+  output: NichandleDocumentDocument,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8889,8 +12790,8 @@ export const getMeDownPaymentInvoice: API.OperationMethod<
   GetMeDownPaymentInvoiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275) as any as S.Schema<GetMeDownPaymentInvoiceRequest>,
-  output: __S(276) as any as S.Schema<BillingDownPaymentInvoice>,
+  input: GetMeDownPaymentInvoiceRequest,
+  output: BillingDownPaymentInvoice,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8904,8 +12805,8 @@ export const getMeDownPaymentInvoiceDebt: API.OperationMethod<
   GetMeDownPaymentInvoiceDebtError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277) as any as S.Schema<GetMeDownPaymentInvoiceDebtRequest>,
-  output: __S(206) as any as S.Schema<DebtDebt>,
+  input: GetMeDownPaymentInvoiceDebtRequest,
+  output: DebtDebt,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8919,8 +12820,8 @@ export const getMeDownPaymentInvoiceDebtOperation: API.OperationMethod<
   GetMeDownPaymentInvoiceDebtOperationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278) as any as S.Schema<GetMeDownPaymentInvoiceDebtOperationRequest>,
-  output: __S(208) as any as S.Schema<DebtOperation>,
+  input: GetMeDownPaymentInvoiceDebtOperationRequest,
+  output: DebtOperation,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8934,8 +12835,8 @@ export const getMeDownPaymentInvoiceDebtOperationAssociatedObject: API.Operation
   GetMeDownPaymentInvoiceDebtOperationAssociatedObjectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279) as any as S.Schema<GetMeDownPaymentInvoiceDebtOperationAssociatedObjectRequest>,
-  output: __S(211) as any as S.Schema<DebtEntryAssociatedObject>,
+  input: GetMeDownPaymentInvoiceDebtOperationAssociatedObjectRequest,
+  output: DebtEntryAssociatedObject,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8949,8 +12850,8 @@ export const getMeDownPaymentInvoiceDetail: API.OperationMethod<
   GetMeDownPaymentInvoiceDetailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280) as any as S.Schema<GetMeDownPaymentInvoiceDetailRequest>,
-  output: __S(281) as any as S.Schema<BillingDownPaymentInvoiceDetail>,
+  input: GetMeDownPaymentInvoiceDetailRequest,
+  output: BillingDownPaymentInvoiceDetail,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8964,8 +12865,8 @@ export const getMeDownPaymentInvoicePayment: API.OperationMethod<
   GetMeDownPaymentInvoicePaymentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282) as any as S.Schema<GetMeDownPaymentInvoicePaymentRequest>,
-  output: __S(227) as any as S.Schema<BillingPayment>,
+  input: GetMeDownPaymentInvoicePaymentRequest,
+  output: BillingPayment,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8979,8 +12880,8 @@ export const getMeFaxCustomDomain: API.OperationMethod<
   GetMeFaxCustomDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283) as any as S.Schema<GetMeFaxCustomDomainRequest>,
-  output: __S(64) as any as S.Schema<TelephonyMailDomain2Service>,
+  input: GetMeFaxCustomDomainRequest,
+  output: TelephonyMailDomain2Service,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8994,8 +12895,8 @@ export const getMeFidelityAccount: API.OperationMethod<
   GetMeFidelityAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284) as any as S.Schema<GetMeFidelityAccountRequest>,
-  output: __S(285) as any as S.Schema<BillingFidelityAccount>,
+  input: GetMeFidelityAccountRequest,
+  output: BillingFidelityAccount,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9009,8 +12910,8 @@ export const getMeFidelityAccountMovement: API.OperationMethod<
   GetMeFidelityAccountMovementError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286) as any as S.Schema<GetMeFidelityAccountMovementRequest>,
-  output: __S(287) as any as S.Schema<BillingFidelityMovement>,
+  input: GetMeFidelityAccountMovementRequest,
+  output: BillingFidelityMovement,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9024,8 +12925,8 @@ export const getMeIdentityGroup: API.OperationMethod<
   GetMeIdentityGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288) as any as S.Schema<GetMeIdentityGroupRequest>,
-  output: __S(70) as any as S.Schema<AuthGroup>,
+  input: GetMeIdentityGroupRequest,
+  output: AuthGroup,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9039,8 +12940,8 @@ export const getMeIdentityProvider: API.OperationMethod<
   GetMeIdentityProviderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289) as any as S.Schema<GetMeIdentityProviderRequest>,
-  output: __S(78) as any as S.Schema<AuthProvider>,
+  input: GetMeIdentityProviderRequest,
+  output: AuthProvider,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9054,8 +12955,8 @@ export const getMeIdentityProviderSamlServiceProviderInfo: API.OperationMethod<
   GetMeIdentityProviderSamlServiceProviderInfoError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290) as any as S.Schema<GetMeIdentityProviderSamlServiceProviderInfoRequest>,
-  output: __S(291) as any as S.Schema<AuthServiceProviderInfo>,
+  input: GetMeIdentityProviderSamlServiceProviderInfoRequest,
+  output: AuthServiceProviderInfo,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9069,8 +12970,8 @@ export const getMeIdentityUser: API.OperationMethod<
   GetMeIdentityUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292) as any as S.Schema<GetMeIdentityUserRequest>,
-  output: __S(293) as any as S.Schema<AuthUser>,
+  input: GetMeIdentityUserRequest,
+  output: AuthUser,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9084,8 +12985,8 @@ export const getMeIdentityUserToken: API.OperationMethod<
   GetMeIdentityUserTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294) as any as S.Schema<GetMeIdentityUserTokenRequest>,
-  output: __S(295) as any as S.Schema<AuthPersonalAccessToken>,
+  input: GetMeIdentityUserTokenRequest,
+  output: AuthPersonalAccessToken,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9099,8 +13000,8 @@ export const getMeInsight: API.OperationMethod<
   GetMeInsightError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296) as any as S.Schema<GetMeInsightRequest>,
-  output: __S(297) as any as S.Schema<MeInsightAccess>,
+  input: GetMeInsightRequest,
+  output: MeInsightAccess,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9114,8 +13015,8 @@ export const getMeIpOrganisation: API.OperationMethod<
   GetMeIpOrganisationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298) as any as S.Schema<GetMeIpOrganisationRequest>,
-  output: __S(299) as any as S.Schema<NichandleIpv4Org>,
+  input: GetMeIpOrganisationRequest,
+  output: NichandleIpv4Org,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9129,8 +13030,8 @@ export const getMeLogAuditLogKind: API.OperationMethod<
   GetMeLogAuditLogKindError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300) as any as S.Schema<GetMeLogAuditLogKindRequest>,
-  output: __S(301) as any as S.Schema<DbaasLogsLogKind>,
+  input: GetMeLogAuditLogKindRequest,
+  output: DbaasLogsLogKind,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9144,8 +13045,8 @@ export const getMeLogAuditLogSubscription: API.OperationMethod<
   GetMeLogAuditLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302) as any as S.Schema<GetMeLogAuditLogSubscriptionRequest>,
-  output: __S(304) as any as S.Schema<DbaasLogsLogSubscription>,
+  input: GetMeLogAuditLogSubscriptionRequest,
+  output: DbaasLogsLogSubscription,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9159,8 +13060,8 @@ export const getMeLogKind: API.OperationMethod<
   GetMeLogKindError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305) as any as S.Schema<GetMeLogKindRequest>,
-  output: __S(301) as any as S.Schema<DbaasLogsLogKind>,
+  input: GetMeLogKindRequest,
+  output: DbaasLogsLogKind,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9174,8 +13075,8 @@ export const getMeLogSelf: API.OperationMethod<
   GetMeLogSelfError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306) as any as S.Schema<GetMeLogSelfRequest>,
-  output: __S(307) as any as S.Schema<ApiLog>,
+  input: GetMeLogSelfRequest,
+  output: ApiLog,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9189,8 +13090,8 @@ export const getMeLogService: API.OperationMethod<
   GetMeLogServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308) as any as S.Schema<GetMeLogServiceRequest>,
-  output: __S(307) as any as S.Schema<ApiLog>,
+  input: GetMeLogServiceRequest,
+  output: ApiLog,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9204,8 +13105,8 @@ export const getMeLogSubscription: API.OperationMethod<
   GetMeLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309) as any as S.Schema<GetMeLogSubscriptionRequest>,
-  output: __S(304) as any as S.Schema<DbaasLogsLogSubscription>,
+  input: GetMeLogSubscriptionRequest,
+  output: DbaasLogsLogSubscription,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9219,8 +13120,8 @@ export const getMeManualDomainPayment: API.OperationMethod<
   GetMeManualDomainPaymentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310) as any as S.Schema<GetMeManualDomainPaymentRequest>,
-  output: __S(311) as any as S.Schema<BillingManualDomainPaymentStatus>,
+  input: GetMeManualDomainPaymentRequest,
+  output: BillingManualDomainPaymentStatus,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9234,8 +13135,8 @@ export const getMeMarketing: API.OperationMethod<
   GetMeMarketingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312) as any as S.Schema<GetMeMarketingRequest>,
-  output: __S(314) as any as S.Schema<MeMarketingConsent>,
+  input: GetMeMarketingRequest,
+  output: MeMarketingConsent,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9249,8 +13150,8 @@ export const getMeMigration: API.OperationMethod<
   GetMeMigrationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315) as any as S.Schema<GetMeMigrationRequest>,
-  output: __S(322) as any as S.Schema<MeMigration>,
+  input: GetMeMigrationRequest,
+  output: MeMigration,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9264,8 +13165,8 @@ export const getMeMigrationContract: API.OperationMethod<
   GetMeMigrationContractError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323) as any as S.Schema<GetMeMigrationContractRequest>,
-  output: __S(324) as any as S.Schema<MeMigrationContract>,
+  input: GetMeMigrationContractRequest,
+  output: MeMigrationContract,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9279,8 +13180,8 @@ export const getMeMigrationContractAgreement: API.OperationMethod<
   GetMeMigrationContractAgreementError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325) as any as S.Schema<GetMeMigrationContractAgreementRequest>,
-  output: __S(3) as any as S.Schema<MeAgreementsContractAgreement>,
+  input: GetMeMigrationContractAgreementRequest,
+  output: MeAgreementsContractAgreement,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9294,8 +13195,8 @@ export const getMeNotificationEmailHistory: API.OperationMethod<
   GetMeNotificationEmailHistoryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326) as any as S.Schema<GetMeNotificationEmailHistoryRequest>,
-  output: __S(327) as any as S.Schema<NichandleEmailNotification>,
+  input: GetMeNotificationEmailHistoryRequest,
+  output: NichandleEmailNotification,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9308,8 +13209,8 @@ export const getMeOauth2Client: API.OperationMethod<
   GetMeOauth2ClientError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328) as any as S.Schema<GetMeOauth2ClientRequest>,
-  output: __S(329) as any as S.Schema<Oauth2Client>,
+  input: GetMeOauth2ClientRequest,
+  output: Oauth2Client,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9322,8 +13223,8 @@ export const getMeOauth2Token: API.OperationMethod<
   GetMeOauth2TokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330) as any as S.Schema<GetMeOauth2TokenRequest>,
-  output: __S(333) as any as S.Schema<Oauth2Token>,
+  input: GetMeOauth2TokenRequest,
+  output: Oauth2Token,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9337,8 +13238,8 @@ export const getMeOrder: API.OperationMethod<
   GetMeOrderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334) as any as S.Schema<GetMeOrderRequest>,
-  output: __S(30) as any as S.Schema<BillingOrder>,
+  input: GetMeOrderRequest,
+  output: BillingOrder,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9352,8 +13253,8 @@ export const getMeOrderAssociatedObject: API.OperationMethod<
   GetMeOrderAssociatedObjectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335) as any as S.Schema<GetMeOrderAssociatedObjectRequest>,
-  output: __S(336) as any as S.Schema<BillingOrderAssociatedObject>,
+  input: GetMeOrderAssociatedObjectRequest,
+  output: BillingOrderAssociatedObject,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9367,8 +13268,8 @@ export const getMeOrderBalance: API.OperationMethod<
   GetMeOrderBalanceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337) as any as S.Schema<GetMeOrderBalanceRequest>,
-  output: __S(93) as any as S.Schema<BillingCreditBalance>,
+  input: GetMeOrderBalanceRequest,
+  output: BillingCreditBalance,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9382,8 +13283,8 @@ export const getMeOrderConsumptionDetails: API.OperationMethod<
   GetMeOrderConsumptionDetailsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338) as any as S.Schema<GetMeOrderConsumptionDetailsRequest>,
-  output: __S(339) as any as S.Schema<BillingOrderConsumptionDetails>,
+  input: GetMeOrderConsumptionDetailsRequest,
+  output: BillingOrderConsumptionDetails,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9397,8 +13298,8 @@ export const getMeOrderDebt: API.OperationMethod<
   GetMeOrderDebtError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(340) as any as S.Schema<GetMeOrderDebtRequest>,
-  output: __S(206) as any as S.Schema<DebtDebt>,
+  input: GetMeOrderDebtRequest,
+  output: DebtDebt,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9412,8 +13313,8 @@ export const getMeOrderDebtOperation: API.OperationMethod<
   GetMeOrderDebtOperationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341) as any as S.Schema<GetMeOrderDebtOperationRequest>,
-  output: __S(208) as any as S.Schema<DebtOperation>,
+  input: GetMeOrderDebtOperationRequest,
+  output: DebtOperation,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9427,8 +13328,8 @@ export const getMeOrderDebtOperationAssociatedObject: API.OperationMethod<
   GetMeOrderDebtOperationAssociatedObjectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(342) as any as S.Schema<GetMeOrderDebtOperationAssociatedObjectRequest>,
-  output: __S(211) as any as S.Schema<DebtEntryAssociatedObject>,
+  input: GetMeOrderDebtOperationAssociatedObjectRequest,
+  output: DebtEntryAssociatedObject,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9442,8 +13343,8 @@ export const getMeOrderDetail: API.OperationMethod<
   GetMeOrderDetailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343) as any as S.Schema<GetMeOrderDetailRequest>,
-  output: __S(344) as any as S.Schema<BillingOrderDetail>,
+  input: GetMeOrderDetailRequest,
+  output: BillingOrderDetail,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9457,8 +13358,8 @@ export const getMeOrderDetailExtension: API.OperationMethod<
   GetMeOrderDetailExtensionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345) as any as S.Schema<GetMeOrderDetailExtensionRequest>,
-  output: __S(351) as any as S.Schema<BillingItemDetail>,
+  input: GetMeOrderDetailExtensionRequest,
+  output: BillingItemDetail,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9472,8 +13373,8 @@ export const getMeOrderPayment: API.OperationMethod<
   GetMeOrderPaymentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352) as any as S.Schema<GetMeOrderPaymentRequest>,
-  output: __S(227) as any as S.Schema<BillingPayment>,
+  input: GetMeOrderPaymentRequest,
+  output: BillingPayment,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9487,8 +13388,8 @@ export const getMeOrderStatus: API.OperationMethod<
   GetMeOrderStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353) as any as S.Schema<GetMeOrderStatusRequest>,
-  output: __S(354) as any as S.Schema<GetMeOrderStatusResponse>,
+  input: GetMeOrderStatusRequest,
+  output: GetMeOrderStatusResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9502,8 +13403,8 @@ export const getMeOvhAccount: API.OperationMethod<
   GetMeOvhAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355) as any as S.Schema<GetMeOvhAccountRequest>,
-  output: __S(356) as any as S.Schema<BillingOvhAccount>,
+  input: GetMeOvhAccountRequest,
+  output: BillingOvhAccount,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9517,8 +13418,8 @@ export const getMeOvhAccountMoney: API.OperationMethod<
   GetMeOvhAccountMoneyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357) as any as S.Schema<GetMeOvhAccountMoneyRequest>,
-  output: __S(30) as any as S.Schema<BillingOrder>,
+  input: GetMeOvhAccountMoneyRequest,
+  output: BillingOrder,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9532,8 +13433,8 @@ export const getMeOvhAccountMovement: API.OperationMethod<
   GetMeOvhAccountMovementError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358) as any as S.Schema<GetMeOvhAccountMovementRequest>,
-  output: __S(359) as any as S.Schema<BillingMovement>,
+  input: GetMeOvhAccountMovementRequest,
+  output: BillingMovement,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9547,8 +13448,8 @@ export const getMePartnerLevel: API.OperationMethod<
   GetMePartnerLevelError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360) as any as S.Schema<GetMePartnerLevelRequest>,
-  output: __S(361) as any as S.Schema<MePartnerLevelLevel>,
+  input: GetMePartnerLevelRequest,
+  output: MePartnerLevelLevel,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9562,8 +13463,8 @@ export const getMePaymentMeanDeferredPaymentAccount: API.OperationMethod<
   GetMePaymentMeanDeferredPaymentAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362) as any as S.Schema<GetMePaymentMeanDeferredPaymentAccountRequest>,
-  output: __S(364) as any as S.Schema<MePaymentMeanDeferred>,
+  input: GetMePaymentMeanDeferredPaymentAccountRequest,
+  output: MePaymentMeanDeferred,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9577,8 +13478,8 @@ export const getMePaymentMethod: API.OperationMethod<
   GetMePaymentMethodError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(365) as any as S.Schema<GetMePaymentMethodRequest>,
-  output: __S(157) as any as S.Schema<MePaymentPaymentMethod>,
+  input: GetMePaymentMethodRequest,
+  output: MePaymentPaymentMethod,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9592,8 +13493,8 @@ export const getMePaymentTransaction: API.OperationMethod<
   GetMePaymentTransactionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(366) as any as S.Schema<GetMePaymentTransactionRequest>,
-  output: __S(367) as any as S.Schema<MePaymentTransaction>,
+  input: GetMePaymentTransactionRequest,
+  output: MePaymentTransaction,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9607,8 +13508,8 @@ export const getMePreferenceManager: API.OperationMethod<
   GetMePreferenceManagerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368) as any as S.Schema<GetMePreferenceManagerRequest>,
-  output: __S(58) as any as S.Schema<NichandleManagerPreference>,
+  input: GetMePreferenceManagerRequest,
+  output: NichandleManagerPreference,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9622,8 +13523,8 @@ export const getMeRefund: API.OperationMethod<
   GetMeRefundError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(369) as any as S.Schema<GetMeRefundRequest>,
-  output: __S(370) as any as S.Schema<BillingRefund>,
+  input: GetMeRefundRequest,
+  output: BillingRefund,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9637,8 +13538,8 @@ export const getMeRefundDetail: API.OperationMethod<
   GetMeRefundDetailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(371) as any as S.Schema<GetMeRefundDetailRequest>,
-  output: __S(372) as any as S.Schema<BillingRefundDetail>,
+  input: GetMeRefundDetailRequest,
+  output: BillingRefundDetail,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9652,8 +13553,8 @@ export const getMeRefundPayment: API.OperationMethod<
   GetMeRefundPaymentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(373) as any as S.Schema<GetMeRefundPaymentRequest>,
-  output: __S(227) as any as S.Schema<BillingPayment>,
+  input: GetMeRefundPaymentRequest,
+  output: BillingPayment,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9667,8 +13568,8 @@ export const getMeReverseBill: API.OperationMethod<
   GetMeReverseBillError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374) as any as S.Schema<GetMeReverseBillRequest>,
-  output: __S(375) as any as S.Schema<BillingReverseBill>,
+  input: GetMeReverseBillRequest,
+  output: BillingReverseBill,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9682,8 +13583,8 @@ export const getMeReverseBillDetail: API.OperationMethod<
   GetMeReverseBillDetailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376) as any as S.Schema<GetMeReverseBillDetailRequest>,
-  output: __S(377) as any as S.Schema<BillingReversableBillDetail>,
+  input: GetMeReverseBillDetailRequest,
+  output: BillingReversableBillDetail,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9697,8 +13598,8 @@ export const getMeReverseBillPayment: API.OperationMethod<
   GetMeReverseBillPaymentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378) as any as S.Schema<GetMeReverseBillPaymentRequest>,
-  output: __S(227) as any as S.Schema<BillingPayment>,
+  input: GetMeReverseBillPaymentRequest,
+  output: BillingPayment,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9712,8 +13613,8 @@ export const getMeSla: API.OperationMethod<
   GetMeSlaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(379) as any as S.Schema<GetMeSlaRequest>,
-  output: __S(380) as any as S.Schema<BillingSlaOperation>,
+  input: GetMeSlaRequest,
+  output: BillingSlaOperation,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9727,8 +13628,8 @@ export const getMeSlaCanBeApplied: API.OperationMethod<
   GetMeSlaCanBeAppliedError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(381) as any as S.Schema<GetMeSlaCanBeAppliedRequest>,
-  output: __S(220) as any as S.Schema<GetMeSlaCanBeAppliedResponse>,
+  input: GetMeSlaCanBeAppliedRequest,
+  output: GetMeSlaCanBeAppliedResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9742,8 +13643,8 @@ export const getMeSlaStatus: API.OperationMethod<
   GetMeSlaStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(382) as any as S.Schema<GetMeSlaStatusRequest>,
-  output: __S(383) as any as S.Schema<GetMeSlaStatusResponse>,
+  input: GetMeSlaStatusRequest,
+  output: GetMeSlaStatusResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9757,8 +13658,8 @@ export const getMeSshKey: API.OperationMethod<
   GetMeSshKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384) as any as S.Schema<GetMeSshKeyRequest>,
-  output: __S(385) as any as S.Schema<NichandleSshKey>,
+  input: GetMeSshKeyRequest,
+  output: NichandleSshKey,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9772,8 +13673,8 @@ export const getMeSubAccount: API.OperationMethod<
   GetMeSubAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(386) as any as S.Schema<GetMeSubAccountRequest>,
-  output: __S(387) as any as S.Schema<NichandleSubAccount>,
+  input: GetMeSubAccountRequest,
+  output: NichandleSubAccount,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9787,8 +13688,8 @@ export const getMeSupportLevel: API.OperationMethod<
   GetMeSupportLevelError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(388) as any as S.Schema<GetMeSupportLevelRequest>,
-  output: __S(389) as any as S.Schema<MeSupportLevelLevel>,
+  input: GetMeSupportLevelRequest,
+  output: MeSupportLevelLevel,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9798,8 +13699,8 @@ export type GetMeTagError = OvhOpError;
 /** Retrieve a customer tag */
 export const getMeTag: API.OperationMethod<GetMeTagRequest, MeTagTag, GetMeTagError, OvhOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(390) as any as S.Schema<GetMeTagRequest>,
-    output: __S(118) as any as S.Schema<MeTagTag>,
+    input: GetMeTagRequest,
+    output: MeTagTag,
     errors: [UnknownOvhError],
     protocol: OvhProtocol,
     retry: Retry.Retry,
@@ -9813,8 +13714,8 @@ export const getMeTaskContactChange: API.OperationMethod<
   GetMeTaskContactChangeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391) as any as S.Schema<GetMeTaskContactChangeRequest>,
-  output: __S(393) as any as S.Schema<NichandleContactChangeTask>,
+  input: GetMeTaskContactChangeRequest,
+  output: NichandleContactChangeTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9828,8 +13729,8 @@ export const getMeTaskDns: API.OperationMethod<
   GetMeTaskDnsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394) as any as S.Schema<GetMeTaskDnsRequest>,
-  output: __S(395) as any as S.Schema<MeDnsTask>,
+  input: GetMeTaskDnsRequest,
+  output: MeDnsTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9843,8 +13744,8 @@ export const getMeTaskDomain: API.OperationMethod<
   GetMeTaskDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(396) as any as S.Schema<GetMeTaskDomainRequest>,
-  output: __S(397) as any as S.Schema<DomainTask>,
+  input: GetMeTaskDomainRequest,
+  output: DomainTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9858,8 +13759,8 @@ export const getMeTaskDomainArgument: API.OperationMethod<
   GetMeTaskDomainArgumentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398) as any as S.Schema<GetMeTaskDomainArgumentRequest>,
-  output: __S(399) as any as S.Schema<NichandleDomainTaskArgument>,
+  input: GetMeTaskDomainArgumentRequest,
+  output: NichandleDomainTaskArgument,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9873,8 +13774,8 @@ export const getMeTaskDomainProgressbar: API.OperationMethod<
   GetMeTaskDomainProgressbarError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400) as any as S.Schema<GetMeTaskDomainProgressbarRequest>,
-  output: __S(403) as any as S.Schema<NichandleDomainTaskProgressBar>,
+  input: GetMeTaskDomainProgressbarRequest,
+  output: NichandleDomainTaskProgressBar,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9888,8 +13789,8 @@ export const getMeTaskEmailChange: API.OperationMethod<
   GetMeTaskEmailChangeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(404) as any as S.Schema<GetMeTaskEmailChangeRequest>,
-  output: __S(43) as any as S.Schema<NichandleEmailChangeTask>,
+  input: GetMeTaskEmailChangeRequest,
+  output: NichandleEmailChangeTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9903,8 +13804,8 @@ export const getMeTelephonyDefaultIpRestriction: API.OperationMethod<
   GetMeTelephonyDefaultIpRestrictionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405) as any as S.Schema<GetMeTelephonyDefaultIpRestrictionRequest>,
-  output: __S(126) as any as S.Schema<TelephonyDefaultIpRestriction>,
+  input: GetMeTelephonyDefaultIpRestrictionRequest,
+  output: TelephonyDefaultIpRestriction,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9918,8 +13819,8 @@ export const getMeTelephonySettings: API.OperationMethod<
   GetMeTelephonySettingsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(406) as any as S.Schema<GetMeTelephonySettingsRequest>,
-  output: __S(129) as any as S.Schema<TelephonySettings>,
+  input: GetMeTelephonySettingsRequest,
+  output: TelephonySettings,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9933,8 +13834,8 @@ export const getMeVipStatus: API.OperationMethod<
   GetMeVipStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407) as any as S.Schema<GetMeVipStatusRequest>,
-  output: __S(408) as any as S.Schema<NichandleVipStatus>,
+  input: GetMeVipStatusRequest,
+  output: NichandleVipStatus,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9948,8 +13849,8 @@ export const getMeVoucherAccount: API.OperationMethod<
   GetMeVoucherAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(409) as any as S.Schema<GetMeVoucherAccountRequest>,
-  output: __S(410) as any as S.Schema<BillingVoucherAccount>,
+  input: GetMeVoucherAccountRequest,
+  output: BillingVoucherAccount,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9963,8 +13864,8 @@ export const getMeVoucherAccountMovement: API.OperationMethod<
   GetMeVoucherAccountMovementError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(411) as any as S.Schema<GetMeVoucherAccountMovementRequest>,
-  output: __S(412) as any as S.Schema<BillingVoucherMovement>,
+  input: GetMeVoucherAccountMovementRequest,
+  output: BillingVoucherMovement,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9978,8 +13879,8 @@ export const getMeWithdrawal: API.OperationMethod<
   GetMeWithdrawalError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(413) as any as S.Schema<GetMeWithdrawalRequest>,
-  output: __S(414) as any as S.Schema<BillingWithdrawal>,
+  input: GetMeWithdrawalRequest,
+  output: BillingWithdrawal,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -9993,8 +13894,8 @@ export const getMeWithdrawalDetail: API.OperationMethod<
   GetMeWithdrawalDetailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(415) as any as S.Schema<GetMeWithdrawalDetailRequest>,
-  output: __S(416) as any as S.Schema<BillingWithdrawalDetail>,
+  input: GetMeWithdrawalDetailRequest,
+  output: BillingWithdrawalDetail,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10008,8 +13909,8 @@ export const getMeWithdrawalPayment: API.OperationMethod<
   GetMeWithdrawalPaymentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(417) as any as S.Schema<GetMeWithdrawalPaymentRequest>,
-  output: __S(227) as any as S.Schema<BillingPayment>,
+  input: GetMeWithdrawalPaymentRequest,
+  output: BillingPayment,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10023,8 +13924,8 @@ export const getMeXdslSetting: API.OperationMethod<
   GetMeXdslSettingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(418) as any as S.Schema<GetMeXdslSettingRequest>,
-  output: __S(419) as any as S.Schema<XdslSetting>,
+  input: GetMeXdslSettingRequest,
+  output: XdslSetting,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10038,8 +13939,8 @@ export const listMeAbuse: API.OperationMethod<
   ListMeAbuseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(420) as any as S.Schema<ListMeAbuseRequest>,
-  output: __S(178) as any as S.Schema<ListMeAbuseResponse>,
+  input: ListMeAbuseRequest,
+  output: ListMeAbuseResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10053,8 +13954,8 @@ export const listMeAccessRestrictionIp: API.OperationMethod<
   ListMeAccessRestrictionIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421) as any as S.Schema<ListMeAccessRestrictionIpRequest>,
-  output: __S(423) as any as S.Schema<ListMeAccessRestrictionIpResponse>,
+  input: ListMeAccessRestrictionIpRequest,
+  output: ListMeAccessRestrictionIpResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10068,8 +13969,8 @@ export const listMeAccessRestrictionSms: API.OperationMethod<
   ListMeAccessRestrictionSmsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424) as any as S.Schema<ListMeAccessRestrictionSmsRequest>,
-  output: __S(423) as any as S.Schema<ListMeAccessRestrictionSmsResponse>,
+  input: ListMeAccessRestrictionSmsRequest,
+  output: ListMeAccessRestrictionSmsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10083,8 +13984,8 @@ export const listMeAccessRestrictionTotp: API.OperationMethod<
   ListMeAccessRestrictionTotpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(425) as any as S.Schema<ListMeAccessRestrictionTotpRequest>,
-  output: __S(423) as any as S.Schema<ListMeAccessRestrictionTotpResponse>,
+  input: ListMeAccessRestrictionTotpRequest,
+  output: ListMeAccessRestrictionTotpResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10098,8 +13999,8 @@ export const listMeAccessRestrictionU2f: API.OperationMethod<
   ListMeAccessRestrictionU2fError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426) as any as S.Schema<ListMeAccessRestrictionU2fRequest>,
-  output: __S(423) as any as S.Schema<ListMeAccessRestrictionU2fResponse>,
+  input: ListMeAccessRestrictionU2fRequest,
+  output: ListMeAccessRestrictionU2fResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10113,8 +14014,8 @@ export const listMeAgreements: API.OperationMethod<
   ListMeAgreementsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(427) as any as S.Schema<ListMeAgreementsRequest>,
-  output: __S(428) as any as S.Schema<ListMeAgreementsResponse>,
+  input: ListMeAgreementsRequest,
+  output: ListMeAgreementsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10128,8 +14029,8 @@ export const listMeApplication: API.OperationMethod<
   ListMeApplicationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(429) as any as S.Schema<ListMeApplicationRequest>,
-  output: __S(423) as any as S.Schema<ListMeApplicationResponse>,
+  input: ListMeApplicationRequest,
+  output: ListMeApplicationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10143,8 +14044,8 @@ export const listMeBill: API.OperationMethod<
   ListMeBillError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(430) as any as S.Schema<ListMeBillRequest>,
-  output: __S(178) as any as S.Schema<ListMeBillResponse>,
+  input: ListMeBillRequest,
+  output: ListMeBillResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10158,8 +14059,8 @@ export const listMeBillDebtOperation: API.OperationMethod<
   ListMeBillDebtOperationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431) as any as S.Schema<ListMeBillDebtOperationRequest>,
-  output: __S(423) as any as S.Schema<ListMeBillDebtOperationResponse>,
+  input: ListMeBillDebtOperationRequest,
+  output: ListMeBillDebtOperationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10173,8 +14074,8 @@ export const listMeBillDetails: API.OperationMethod<
   ListMeBillDetailsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432) as any as S.Schema<ListMeBillDetailsRequest>,
-  output: __S(433) as any as S.Schema<ListMeBillDetailsResponse>,
+  input: ListMeBillDetailsRequest,
+  output: ListMeBillDetailsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10188,8 +14089,8 @@ export const listMeBillingGroup: API.OperationMethod<
   ListMeBillingGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(434) as any as S.Schema<ListMeBillingGroupRequest>,
-  output: __S(423) as any as S.Schema<ListMeBillingGroupResponse>,
+  input: ListMeBillingGroupRequest,
+  output: ListMeBillingGroupResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10203,8 +14104,8 @@ export const listMeBillingGroupService: API.OperationMethod<
   ListMeBillingGroupServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(435) as any as S.Schema<ListMeBillingGroupServiceRequest>,
-  output: __S(423) as any as S.Schema<ListMeBillingGroupServiceResponse>,
+  input: ListMeBillingGroupServiceRequest,
+  output: ListMeBillingGroupServiceResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10218,8 +14119,8 @@ export const listMeBillingPurchaseOrder: API.OperationMethod<
   ListMeBillingPurchaseOrderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436) as any as S.Schema<ListMeBillingPurchaseOrderRequest>,
-  output: __S(423) as any as S.Schema<ListMeBillingPurchaseOrderResponse>,
+  input: ListMeBillingPurchaseOrderRequest,
+  output: ListMeBillingPurchaseOrderResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10233,8 +14134,8 @@ export const listMeBillingReportConsumption: API.OperationMethod<
   ListMeBillingReportConsumptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(437) as any as S.Schema<ListMeBillingReportConsumptionRequest>,
-  output: __S(433) as any as S.Schema<ListMeBillingReportConsumptionResponse>,
+  input: ListMeBillingReportConsumptionRequest,
+  output: ListMeBillingReportConsumptionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10248,8 +14149,8 @@ export const listMeBillingTask: API.OperationMethod<
   ListMeBillingTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(438) as any as S.Schema<ListMeBillingTaskRequest>,
-  output: __S(423) as any as S.Schema<ListMeBillingTaskResponse>,
+  input: ListMeBillingTaskRequest,
+  output: ListMeBillingTaskResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10263,8 +14164,8 @@ export const listMeCarbonCalculatorTask: API.OperationMethod<
   ListMeCarbonCalculatorTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(439) as any as S.Schema<ListMeCarbonCalculatorTaskRequest>,
-  output: __S(441) as any as S.Schema<ListMeCarbonCalculatorTaskResponse>,
+  input: ListMeCarbonCalculatorTaskRequest,
+  output: ListMeCarbonCalculatorTaskResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10278,8 +14179,8 @@ export const listMeConsent: API.OperationMethod<
   ListMeConsentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(442) as any as S.Schema<ListMeConsentRequest>,
-  output: __S(444) as any as S.Schema<ListMeConsentResponse>,
+  input: ListMeConsentRequest,
+  output: ListMeConsentResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10293,8 +14194,8 @@ export const listMeConsentDecision: API.OperationMethod<
   ListMeConsentDecisionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(445) as any as S.Schema<ListMeConsentDecisionRequest>,
-  output: __S(448) as any as S.Schema<MeConsentConsent>,
+  input: ListMeConsentDecisionRequest,
+  output: MeConsentConsent,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10308,8 +14209,8 @@ export const listMeConsumptionUsageCurrent: API.OperationMethod<
   ListMeConsumptionUsageCurrentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(449) as any as S.Schema<ListMeConsumptionUsageCurrentRequest>,
-  output: __S(457) as any as S.Schema<ListMeConsumptionUsageCurrentResponse>,
+  input: ListMeConsumptionUsageCurrentRequest,
+  output: ListMeConsumptionUsageCurrentResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10323,8 +14224,8 @@ export const listMeConsumptionUsageForecast: API.OperationMethod<
   ListMeConsumptionUsageForecastError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(458) as any as S.Schema<ListMeConsumptionUsageForecastRequest>,
-  output: __S(457) as any as S.Schema<ListMeConsumptionUsageForecastResponse>,
+  input: ListMeConsumptionUsageForecastRequest,
+  output: ListMeConsumptionUsageForecastResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10338,8 +14239,8 @@ export const listMeConsumptionUsageHistory: API.OperationMethod<
   ListMeConsumptionUsageHistoryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(459) as any as S.Schema<ListMeConsumptionUsageHistoryRequest>,
-  output: __S(457) as any as S.Schema<ListMeConsumptionUsageHistoryResponse>,
+  input: ListMeConsumptionUsageHistoryRequest,
+  output: ListMeConsumptionUsageHistoryResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10353,8 +14254,8 @@ export const listMeContact: API.OperationMethod<
   ListMeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(460) as any as S.Schema<ListMeContactRequest>,
-  output: __S(428) as any as S.Schema<ListMeContactResponse>,
+  input: ListMeContactRequest,
+  output: ListMeContactResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10368,8 +14269,8 @@ export const listMeContactFields: API.OperationMethod<
   ListMeContactFieldsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(461) as any as S.Schema<ListMeContactFieldsRequest>,
-  output: __S(464) as any as S.Schema<ListMeContactFieldsResponse>,
+  input: ListMeContactFieldsRequest,
+  output: ListMeContactFieldsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10383,8 +14284,8 @@ export const listMeCorrectiveInvoice: API.OperationMethod<
   ListMeCorrectiveInvoiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(465) as any as S.Schema<ListMeCorrectiveInvoiceRequest>,
-  output: __S(433) as any as S.Schema<ListMeCorrectiveInvoiceResponse>,
+  input: ListMeCorrectiveInvoiceRequest,
+  output: ListMeCorrectiveInvoiceResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10398,8 +14299,8 @@ export const listMeCorrectiveInvoiceDebtOperation: API.OperationMethod<
   ListMeCorrectiveInvoiceDebtOperationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(466) as any as S.Schema<ListMeCorrectiveInvoiceDebtOperationRequest>,
-  output: __S(423) as any as S.Schema<ListMeCorrectiveInvoiceDebtOperationResponse>,
+  input: ListMeCorrectiveInvoiceDebtOperationRequest,
+  output: ListMeCorrectiveInvoiceDebtOperationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10413,8 +14314,8 @@ export const listMeCorrectiveInvoiceDetails: API.OperationMethod<
   ListMeCorrectiveInvoiceDetailsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(467) as any as S.Schema<ListMeCorrectiveInvoiceDetailsRequest>,
-  output: __S(433) as any as S.Schema<ListMeCorrectiveInvoiceDetailsResponse>,
+  input: ListMeCorrectiveInvoiceDetailsRequest,
+  output: ListMeCorrectiveInvoiceDetailsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10428,8 +14329,8 @@ export const listMeCredential: API.OperationMethod<
   ListMeCredentialError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(468) as any as S.Schema<ListMeCredentialRequest>,
-  output: __S(428) as any as S.Schema<ListMeCredentialResponse>,
+  input: ListMeCredentialRequest,
+  output: ListMeCredentialResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10443,8 +14344,8 @@ export const listMeCreditBalance: API.OperationMethod<
   ListMeCreditBalanceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(469) as any as S.Schema<ListMeCreditBalanceRequest>,
-  output: __S(433) as any as S.Schema<ListMeCreditBalanceResponse>,
+  input: ListMeCreditBalanceRequest,
+  output: ListMeCreditBalanceResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10458,8 +14359,8 @@ export const listMeCreditBalanceMovement: API.OperationMethod<
   ListMeCreditBalanceMovementError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(470) as any as S.Schema<ListMeCreditBalanceMovementRequest>,
-  output: __S(423) as any as S.Schema<ListMeCreditBalanceMovementResponse>,
+  input: ListMeCreditBalanceMovementRequest,
+  output: ListMeCreditBalanceMovementResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10473,8 +14374,8 @@ export const listMeDebtAccountDebt: API.OperationMethod<
   ListMeDebtAccountDebtError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(471) as any as S.Schema<ListMeDebtAccountDebtRequest>,
-  output: __S(423) as any as S.Schema<ListMeDebtAccountDebtResponse>,
+  input: ListMeDebtAccountDebtRequest,
+  output: ListMeDebtAccountDebtResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10488,8 +14389,8 @@ export const listMeDebtAccountDebtOperation: API.OperationMethod<
   ListMeDebtAccountDebtOperationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(472) as any as S.Schema<ListMeDebtAccountDebtOperationRequest>,
-  output: __S(423) as any as S.Schema<ListMeDebtAccountDebtOperationResponse>,
+  input: ListMeDebtAccountDebtOperationRequest,
+  output: ListMeDebtAccountDebtOperationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10503,8 +14404,8 @@ export const listMeDeposit: API.OperationMethod<
   ListMeDepositError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(473) as any as S.Schema<ListMeDepositRequest>,
-  output: __S(178) as any as S.Schema<ListMeDepositResponse>,
+  input: ListMeDepositRequest,
+  output: ListMeDepositResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10518,8 +14419,8 @@ export const listMeDepositDetails: API.OperationMethod<
   ListMeDepositDetailsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(474) as any as S.Schema<ListMeDepositDetailsRequest>,
-  output: __S(433) as any as S.Schema<ListMeDepositDetailsResponse>,
+  input: ListMeDepositDetailsRequest,
+  output: ListMeDepositDetailsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10533,8 +14434,8 @@ export const listMeDepositPaidBillDebtOperation: API.OperationMethod<
   ListMeDepositPaidBillDebtOperationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(475) as any as S.Schema<ListMeDepositPaidBillDebtOperationRequest>,
-  output: __S(423) as any as S.Schema<ListMeDepositPaidBillDebtOperationResponse>,
+  input: ListMeDepositPaidBillDebtOperationRequest,
+  output: ListMeDepositPaidBillDebtOperationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10548,8 +14449,8 @@ export const listMeDepositPaidBillDetails: API.OperationMethod<
   ListMeDepositPaidBillDetailsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(476) as any as S.Schema<ListMeDepositPaidBillDetailsRequest>,
-  output: __S(433) as any as S.Schema<ListMeDepositPaidBillDetailsResponse>,
+  input: ListMeDepositPaidBillDetailsRequest,
+  output: ListMeDepositPaidBillDetailsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10563,8 +14464,8 @@ export const listMeDepositPaidBills: API.OperationMethod<
   ListMeDepositPaidBillsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(477) as any as S.Schema<ListMeDepositPaidBillsRequest>,
-  output: __S(433) as any as S.Schema<ListMeDepositPaidBillsResponse>,
+  input: ListMeDepositPaidBillsRequest,
+  output: ListMeDepositPaidBillsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10578,8 +14479,8 @@ export const listMeDocument: API.OperationMethod<
   ListMeDocumentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(478) as any as S.Schema<ListMeDocumentRequest>,
-  output: __S(178) as any as S.Schema<ListMeDocumentResponse>,
+  input: ListMeDocumentRequest,
+  output: ListMeDocumentResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10593,8 +14494,8 @@ export const listMeDownPaymentInvoice: API.OperationMethod<
   ListMeDownPaymentInvoiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(479) as any as S.Schema<ListMeDownPaymentInvoiceRequest>,
-  output: __S(433) as any as S.Schema<ListMeDownPaymentInvoiceResponse>,
+  input: ListMeDownPaymentInvoiceRequest,
+  output: ListMeDownPaymentInvoiceResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10608,8 +14509,8 @@ export const listMeDownPaymentInvoiceDebtOperation: API.OperationMethod<
   ListMeDownPaymentInvoiceDebtOperationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480) as any as S.Schema<ListMeDownPaymentInvoiceDebtOperationRequest>,
-  output: __S(423) as any as S.Schema<ListMeDownPaymentInvoiceDebtOperationResponse>,
+  input: ListMeDownPaymentInvoiceDebtOperationRequest,
+  output: ListMeDownPaymentInvoiceDebtOperationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10623,8 +14524,8 @@ export const listMeDownPaymentInvoiceDetails: API.OperationMethod<
   ListMeDownPaymentInvoiceDetailsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(481) as any as S.Schema<ListMeDownPaymentInvoiceDetailsRequest>,
-  output: __S(433) as any as S.Schema<ListMeDownPaymentInvoiceDetailsResponse>,
+  input: ListMeDownPaymentInvoiceDetailsRequest,
+  output: ListMeDownPaymentInvoiceDetailsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10638,8 +14539,8 @@ export const listMeFaxCustomDomains: API.OperationMethod<
   ListMeFaxCustomDomainsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(482) as any as S.Schema<ListMeFaxCustomDomainsRequest>,
-  output: __S(423) as any as S.Schema<ListMeFaxCustomDomainsResponse>,
+  input: ListMeFaxCustomDomainsRequest,
+  output: ListMeFaxCustomDomainsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10653,8 +14554,8 @@ export const listMeFidelityAccountMovements: API.OperationMethod<
   ListMeFidelityAccountMovementsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(483) as any as S.Schema<ListMeFidelityAccountMovementsRequest>,
-  output: __S(423) as any as S.Schema<ListMeFidelityAccountMovementsResponse>,
+  input: ListMeFidelityAccountMovementsRequest,
+  output: ListMeFidelityAccountMovementsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10668,8 +14569,8 @@ export const listMeIdentityGroup: API.OperationMethod<
   ListMeIdentityGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(484) as any as S.Schema<ListMeIdentityGroupRequest>,
-  output: __S(433) as any as S.Schema<ListMeIdentityGroupResponse>,
+  input: ListMeIdentityGroupRequest,
+  output: ListMeIdentityGroupResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10683,8 +14584,8 @@ export const listMeIdentityGroupUser: API.OperationMethod<
   ListMeIdentityGroupUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(485) as any as S.Schema<ListMeIdentityGroupUserRequest>,
-  output: __S(433) as any as S.Schema<ListMeIdentityGroupUserResponse>,
+  input: ListMeIdentityGroupUserRequest,
+  output: ListMeIdentityGroupUserResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10698,8 +14599,8 @@ export const listMeIdentityUser: API.OperationMethod<
   ListMeIdentityUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(486) as any as S.Schema<ListMeIdentityUserRequest>,
-  output: __S(433) as any as S.Schema<ListMeIdentityUserResponse>,
+  input: ListMeIdentityUserRequest,
+  output: ListMeIdentityUserResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10713,8 +14614,8 @@ export const listMeIdentityUserToken: API.OperationMethod<
   ListMeIdentityUserTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(487) as any as S.Schema<ListMeIdentityUserTokenRequest>,
-  output: __S(433) as any as S.Schema<ListMeIdentityUserTokenResponse>,
+  input: ListMeIdentityUserTokenRequest,
+  output: ListMeIdentityUserTokenResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10728,8 +14629,8 @@ export const listMeIncidentSbgMigrateServices: API.OperationMethod<
   ListMeIncidentSbgMigrateServicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(488) as any as S.Schema<ListMeIncidentSbgMigrateServicesRequest>,
-  output: __S(500) as any as S.Schema<ListMeIncidentSbgMigrateServicesResponse>,
+  input: ListMeIncidentSbgMigrateServicesRequest,
+  output: ListMeIncidentSbgMigrateServicesResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10743,8 +14644,8 @@ export const listMeIpOrganisation: API.OperationMethod<
   ListMeIpOrganisationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(501) as any as S.Schema<ListMeIpOrganisationRequest>,
-  output: __S(433) as any as S.Schema<ListMeIpOrganisationResponse>,
+  input: ListMeIpOrganisationRequest,
+  output: ListMeIpOrganisationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10758,8 +14659,8 @@ export const listMeLogAudit: API.OperationMethod<
   ListMeLogAuditError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(502) as any as S.Schema<ListMeLogAuditRequest>,
-  output: __S(535) as any as S.Schema<ListMeLogAuditResponse>,
+  input: ListMeLogAuditRequest,
+  output: ListMeLogAuditResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10773,8 +14674,8 @@ export const listMeLogAuditLogKind: API.OperationMethod<
   ListMeLogAuditLogKindError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(536) as any as S.Schema<ListMeLogAuditLogKindRequest>,
-  output: __S(433) as any as S.Schema<ListMeLogAuditLogKindResponse>,
+  input: ListMeLogAuditLogKindRequest,
+  output: ListMeLogAuditLogKindResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10788,8 +14689,8 @@ export const listMeLogAuditLogSubscription: API.OperationMethod<
   ListMeLogAuditLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(537) as any as S.Schema<ListMeLogAuditLogSubscriptionRequest>,
-  output: __S(433) as any as S.Schema<ListMeLogAuditLogSubscriptionResponse>,
+  input: ListMeLogAuditLogSubscriptionRequest,
+  output: ListMeLogAuditLogSubscriptionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10803,8 +14704,8 @@ export const listMeLogKind: API.OperationMethod<
   ListMeLogKindError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(538) as any as S.Schema<ListMeLogKindRequest>,
-  output: __S(178) as any as S.Schema<ListMeLogKindResponse>,
+  input: ListMeLogKindRequest,
+  output: ListMeLogKindResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10818,8 +14719,8 @@ export const listMeLogSelf: API.OperationMethod<
   ListMeLogSelfError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(539) as any as S.Schema<ListMeLogSelfRequest>,
-  output: __S(428) as any as S.Schema<ListMeLogSelfResponse>,
+  input: ListMeLogSelfRequest,
+  output: ListMeLogSelfResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10833,8 +14734,8 @@ export const listMeLogServices: API.OperationMethod<
   ListMeLogServicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(540) as any as S.Schema<ListMeLogServicesRequest>,
-  output: __S(423) as any as S.Schema<ListMeLogServicesResponse>,
+  input: ListMeLogServicesRequest,
+  output: ListMeLogServicesResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10848,8 +14749,8 @@ export const listMeLogSubscription: API.OperationMethod<
   ListMeLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(541) as any as S.Schema<ListMeLogSubscriptionRequest>,
-  output: __S(433) as any as S.Schema<ListMeLogSubscriptionResponse>,
+  input: ListMeLogSubscriptionRequest,
+  output: ListMeLogSubscriptionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10863,8 +14764,8 @@ export const listMeMailingListAvailableLists: API.OperationMethod<
   ListMeMailingListAvailableListsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(542) as any as S.Schema<ListMeMailingListAvailableListsRequest>,
-  output: __S(433) as any as S.Schema<ListMeMailingListAvailableListsResponse>,
+  input: ListMeMailingListAvailableListsRequest,
+  output: ListMeMailingListAvailableListsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10878,8 +14779,8 @@ export const listMeMigration: API.OperationMethod<
   ListMeMigrationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(543) as any as S.Schema<ListMeMigrationRequest>,
-  output: __S(428) as any as S.Schema<ListMeMigrationResponse>,
+  input: ListMeMigrationRequest,
+  output: ListMeMigrationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10893,8 +14794,8 @@ export const listMeMigrationContract: API.OperationMethod<
   ListMeMigrationContractError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544) as any as S.Schema<ListMeMigrationContractRequest>,
-  output: __S(423) as any as S.Schema<ListMeMigrationContractResponse>,
+  input: ListMeMigrationContractRequest,
+  output: ListMeMigrationContractResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10908,8 +14809,8 @@ export const listMeNotificationEmailHistory: API.OperationMethod<
   ListMeNotificationEmailHistoryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(545) as any as S.Schema<ListMeNotificationEmailHistoryRequest>,
-  output: __S(423) as any as S.Schema<ListMeNotificationEmailHistoryResponse>,
+  input: ListMeNotificationEmailHistoryRequest,
+  output: ListMeNotificationEmailHistoryResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10923,8 +14824,8 @@ export const listMeOauth2Client: API.OperationMethod<
   ListMeOauth2ClientError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(546) as any as S.Schema<ListMeOauth2ClientRequest>,
-  output: __S(433) as any as S.Schema<ListMeOauth2ClientResponse>,
+  input: ListMeOauth2ClientRequest,
+  output: ListMeOauth2ClientResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10938,8 +14839,8 @@ export const listMeOauth2Token: API.OperationMethod<
   ListMeOauth2TokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(547) as any as S.Schema<ListMeOauth2TokenRequest>,
-  output: __S(433) as any as S.Schema<ListMeOauth2TokenResponse>,
+  input: ListMeOauth2TokenRequest,
+  output: ListMeOauth2TokenResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10953,8 +14854,8 @@ export const listMeOrder: API.OperationMethod<
   ListMeOrderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(548) as any as S.Schema<ListMeOrderRequest>,
-  output: __S(428) as any as S.Schema<ListMeOrderResponse>,
+  input: ListMeOrderRequest,
+  output: ListMeOrderResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10968,8 +14869,8 @@ export const listMeOrderAvailablePaymentMean: API.OperationMethod<
   ListMeOrderAvailablePaymentMeanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(549) as any as S.Schema<ListMeOrderAvailablePaymentMeanRequest>,
-  output: __S(554) as any as S.Schema<ListMeOrderAvailablePaymentMeanResponse>,
+  input: ListMeOrderAvailablePaymentMeanRequest,
+  output: ListMeOrderAvailablePaymentMeanResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10983,8 +14884,8 @@ export const listMeOrderAvailableRegisteredPaymentMean: API.OperationMethod<
   ListMeOrderAvailableRegisteredPaymentMeanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(555) as any as S.Schema<ListMeOrderAvailableRegisteredPaymentMeanRequest>,
-  output: __S(558) as any as S.Schema<ListMeOrderAvailableRegisteredPaymentMeanResponse>,
+  input: ListMeOrderAvailableRegisteredPaymentMeanRequest,
+  output: ListMeOrderAvailableRegisteredPaymentMeanResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -10998,8 +14899,8 @@ export const listMeOrderBalance: API.OperationMethod<
   ListMeOrderBalanceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(559) as any as S.Schema<ListMeOrderBalanceRequest>,
-  output: __S(433) as any as S.Schema<ListMeOrderBalanceResponse>,
+  input: ListMeOrderBalanceRequest,
+  output: ListMeOrderBalanceResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11013,8 +14914,8 @@ export const listMeOrderDebtOperation: API.OperationMethod<
   ListMeOrderDebtOperationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560) as any as S.Schema<ListMeOrderDebtOperationRequest>,
-  output: __S(423) as any as S.Schema<ListMeOrderDebtOperationResponse>,
+  input: ListMeOrderDebtOperationRequest,
+  output: ListMeOrderDebtOperationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11028,8 +14929,8 @@ export const listMeOrderDetails: API.OperationMethod<
   ListMeOrderDetailsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(561) as any as S.Schema<ListMeOrderDetailsRequest>,
-  output: __S(423) as any as S.Schema<ListMeOrderDetailsResponse>,
+  input: ListMeOrderDetailsRequest,
+  output: ListMeOrderDetailsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11043,8 +14944,8 @@ export const listMeOrderFollowUp: API.OperationMethod<
   ListMeOrderFollowUpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(562) as any as S.Schema<ListMeOrderFollowUpRequest>,
-  output: __S(567) as any as S.Schema<ListMeOrderFollowUpResponse>,
+  input: ListMeOrderFollowUpRequest,
+  output: ListMeOrderFollowUpResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11058,8 +14959,8 @@ export const listMeOrderPaymentMeans: API.OperationMethod<
   ListMeOrderPaymentMeansError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(568) as any as S.Schema<ListMeOrderPaymentMeansRequest>,
-  output: __S(573) as any as S.Schema<BillingOrderPaymentMeans>,
+  input: ListMeOrderPaymentMeansRequest,
+  output: BillingOrderPaymentMeans,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11073,8 +14974,8 @@ export const listMeOrderPaymentMethods: API.OperationMethod<
   ListMeOrderPaymentMethodsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(574) as any as S.Schema<ListMeOrderPaymentMethodsRequest>,
-  output: __S(579) as any as S.Schema<BillingOrderPaymentMethods>,
+  input: ListMeOrderPaymentMethodsRequest,
+  output: BillingOrderPaymentMethods,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11088,8 +14989,8 @@ export const listMeOvhAccount: API.OperationMethod<
   ListMeOvhAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(580) as any as S.Schema<ListMeOvhAccountRequest>,
-  output: __S(178) as any as S.Schema<ListMeOvhAccountResponse>,
+  input: ListMeOvhAccountRequest,
+  output: ListMeOvhAccountResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11103,8 +15004,8 @@ export const listMeOvhAccountMovements: API.OperationMethod<
   ListMeOvhAccountMovementsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(581) as any as S.Schema<ListMeOvhAccountMovementsRequest>,
-  output: __S(423) as any as S.Schema<ListMeOvhAccountMovementsResponse>,
+  input: ListMeOvhAccountMovementsRequest,
+  output: ListMeOvhAccountMovementsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11118,8 +15019,8 @@ export const listMePaymentAvailableMethods: API.OperationMethod<
   ListMePaymentAvailableMethodsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(582) as any as S.Schema<ListMePaymentAvailableMethodsRequest>,
-  output: __S(585) as any as S.Schema<ListMePaymentAvailableMethodsResponse>,
+  input: ListMePaymentAvailableMethodsRequest,
+  output: ListMePaymentAvailableMethodsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11133,8 +15034,8 @@ export const listMePaymentMeanDeferredPaymentAccount: API.OperationMethod<
   ListMePaymentMeanDeferredPaymentAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(586) as any as S.Schema<ListMePaymentMeanDeferredPaymentAccountRequest>,
-  output: __S(423) as any as S.Schema<ListMePaymentMeanDeferredPaymentAccountResponse>,
+  input: ListMePaymentMeanDeferredPaymentAccountRequest,
+  output: ListMePaymentMeanDeferredPaymentAccountResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11148,8 +15049,8 @@ export const listMePaymentMethod: API.OperationMethod<
   ListMePaymentMethodError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(587) as any as S.Schema<ListMePaymentMethodRequest>,
-  output: __S(423) as any as S.Schema<ListMePaymentMethodResponse>,
+  input: ListMePaymentMethodRequest,
+  output: ListMePaymentMethodResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11163,8 +15064,8 @@ export const listMePaymentTransaction: API.OperationMethod<
   ListMePaymentTransactionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(588) as any as S.Schema<ListMePaymentTransactionRequest>,
-  output: __S(423) as any as S.Schema<ListMePaymentTransactionResponse>,
+  input: ListMePaymentTransactionRequest,
+  output: ListMePaymentTransactionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11178,8 +15079,8 @@ export const listMePreferenceManager: API.OperationMethod<
   ListMePreferenceManagerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(589) as any as S.Schema<ListMePreferenceManagerRequest>,
-  output: __S(433) as any as S.Schema<ListMePreferenceManagerResponse>,
+  input: ListMePreferenceManagerRequest,
+  output: ListMePreferenceManagerResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11193,8 +15094,8 @@ export const listMeRecommendations: API.OperationMethod<
   ListMeRecommendationsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(590) as any as S.Schema<ListMeRecommendationsRequest>,
-  output: __S(596) as any as S.Schema<RecommendationsRecommendations>,
+  input: ListMeRecommendationsRequest,
+  output: RecommendationsRecommendations,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11208,8 +15109,8 @@ export const listMeRefund: API.OperationMethod<
   ListMeRefundError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(597) as any as S.Schema<ListMeRefundRequest>,
-  output: __S(178) as any as S.Schema<ListMeRefundResponse>,
+  input: ListMeRefundRequest,
+  output: ListMeRefundResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11223,8 +15124,8 @@ export const listMeRefundDetails: API.OperationMethod<
   ListMeRefundDetailsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(598) as any as S.Schema<ListMeRefundDetailsRequest>,
-  output: __S(433) as any as S.Schema<ListMeRefundDetailsResponse>,
+  input: ListMeRefundDetailsRequest,
+  output: ListMeRefundDetailsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11238,8 +15139,8 @@ export const listMeRepricingFall22: API.OperationMethod<
   ListMeRepricingFall22Error,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(599) as any as S.Schema<ListMeRepricingFall22Request>,
-  output: __S(604) as any as S.Schema<ListMeRepricingFall22Response>,
+  input: ListMeRepricingFall22Request,
+  output: ListMeRepricingFall22Response,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11253,8 +15154,8 @@ export const listMeReverseBill: API.OperationMethod<
   ListMeReverseBillError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(605) as any as S.Schema<ListMeReverseBillRequest>,
-  output: __S(433) as any as S.Schema<ListMeReverseBillResponse>,
+  input: ListMeReverseBillRequest,
+  output: ListMeReverseBillResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11268,8 +15169,8 @@ export const listMeReverseBillDetails: API.OperationMethod<
   ListMeReverseBillDetailsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(606) as any as S.Schema<ListMeReverseBillDetailsRequest>,
-  output: __S(433) as any as S.Schema<ListMeReverseBillDetailsResponse>,
+  input: ListMeReverseBillDetailsRequest,
+  output: ListMeReverseBillDetailsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11283,8 +15184,8 @@ export const listMeSla: API.OperationMethod<
   ListMeSlaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(607) as any as S.Schema<ListMeSlaRequest>,
-  output: __S(428) as any as S.Schema<ListMeSlaResponse>,
+  input: ListMeSlaRequest,
+  output: ListMeSlaResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11298,8 +15199,8 @@ export const listMeSlaServices: API.OperationMethod<
   ListMeSlaServicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608) as any as S.Schema<ListMeSlaServicesRequest>,
-  output: __S(611) as any as S.Schema<ListMeSlaServicesResponse>,
+  input: ListMeSlaServicesRequest,
+  output: ListMeSlaServicesResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11313,8 +15214,8 @@ export const listMeSshKey: API.OperationMethod<
   ListMeSshKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(612) as any as S.Schema<ListMeSshKeyRequest>,
-  output: __S(178) as any as S.Schema<ListMeSshKeyResponse>,
+  input: ListMeSshKeyRequest,
+  output: ListMeSshKeyResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11328,8 +15229,8 @@ export const listMeSubAccount: API.OperationMethod<
   ListMeSubAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(613) as any as S.Schema<ListMeSubAccountRequest>,
-  output: __S(428) as any as S.Schema<ListMeSubAccountResponse>,
+  input: ListMeSubAccountRequest,
+  output: ListMeSubAccountResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11343,8 +15244,8 @@ export const listMeTag: API.OperationMethod<
   ListMeTagError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(614) as any as S.Schema<ListMeTagRequest>,
-  output: __S(178) as any as S.Schema<ListMeTagResponse>,
+  input: ListMeTagRequest,
+  output: ListMeTagResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11358,8 +15259,8 @@ export const listMeTagAvailable: API.OperationMethod<
   ListMeTagAvailableError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(615) as any as S.Schema<ListMeTagAvailableRequest>,
-  output: __S(620) as any as S.Schema<ListMeTagAvailableResponse>,
+  input: ListMeTagAvailableRequest,
+  output: ListMeTagAvailableResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11373,8 +15274,8 @@ export const listMeTaskContactChange: API.OperationMethod<
   ListMeTaskContactChangeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(621) as any as S.Schema<ListMeTaskContactChangeRequest>,
-  output: __S(423) as any as S.Schema<ListMeTaskContactChangeResponse>,
+  input: ListMeTaskContactChangeRequest,
+  output: ListMeTaskContactChangeResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11388,8 +15289,8 @@ export const listMeTaskDns: API.OperationMethod<
   ListMeTaskDnsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(622) as any as S.Schema<ListMeTaskDnsRequest>,
-  output: __S(428) as any as S.Schema<ListMeTaskDnsResponse>,
+  input: ListMeTaskDnsRequest,
+  output: ListMeTaskDnsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11403,8 +15304,8 @@ export const listMeTaskDomain: API.OperationMethod<
   ListMeTaskDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(623) as any as S.Schema<ListMeTaskDomainRequest>,
-  output: __S(428) as any as S.Schema<ListMeTaskDomainResponse>,
+  input: ListMeTaskDomainRequest,
+  output: ListMeTaskDomainResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11418,8 +15319,8 @@ export const listMeTaskDomainArgument: API.OperationMethod<
   ListMeTaskDomainArgumentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624) as any as S.Schema<ListMeTaskDomainArgumentRequest>,
-  output: __S(433) as any as S.Schema<ListMeTaskDomainArgumentResponse>,
+  input: ListMeTaskDomainArgumentRequest,
+  output: ListMeTaskDomainArgumentResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11433,8 +15334,8 @@ export const listMeTaskEmailChange: API.OperationMethod<
   ListMeTaskEmailChangeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(625) as any as S.Schema<ListMeTaskEmailChangeRequest>,
-  output: __S(423) as any as S.Schema<ListMeTaskEmailChangeResponse>,
+  input: ListMeTaskEmailChangeRequest,
+  output: ListMeTaskEmailChangeResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11448,8 +15349,8 @@ export const listMeTelephonyDefaultIpRestriction: API.OperationMethod<
   ListMeTelephonyDefaultIpRestrictionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(626) as any as S.Schema<ListMeTelephonyDefaultIpRestrictionRequest>,
-  output: __S(423) as any as S.Schema<ListMeTelephonyDefaultIpRestrictionResponse>,
+  input: ListMeTelephonyDefaultIpRestrictionRequest,
+  output: ListMeTelephonyDefaultIpRestrictionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11463,8 +15364,8 @@ export const listMeVoucherAccount: API.OperationMethod<
   ListMeVoucherAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(627) as any as S.Schema<ListMeVoucherAccountRequest>,
-  output: __S(433) as any as S.Schema<ListMeVoucherAccountResponse>,
+  input: ListMeVoucherAccountRequest,
+  output: ListMeVoucherAccountResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11478,8 +15379,8 @@ export const listMeVoucherAccountMovements: API.OperationMethod<
   ListMeVoucherAccountMovementsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(628) as any as S.Schema<ListMeVoucherAccountMovementsRequest>,
-  output: __S(423) as any as S.Schema<ListMeVoucherAccountMovementsResponse>,
+  input: ListMeVoucherAccountMovementsRequest,
+  output: ListMeVoucherAccountMovementsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11493,8 +15394,8 @@ export const listMeWithdrawal: API.OperationMethod<
   ListMeWithdrawalError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(629) as any as S.Schema<ListMeWithdrawalRequest>,
-  output: __S(178) as any as S.Schema<ListMeWithdrawalResponse>,
+  input: ListMeWithdrawalRequest,
+  output: ListMeWithdrawalResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11508,8 +15409,8 @@ export const listMeWithdrawalDetails: API.OperationMethod<
   ListMeWithdrawalDetailsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(630) as any as S.Schema<ListMeWithdrawalDetailsRequest>,
-  output: __S(433) as any as S.Schema<ListMeWithdrawalDetailsResponse>,
+  input: ListMeWithdrawalDetailsRequest,
+  output: ListMeWithdrawalDetailsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11523,8 +15424,8 @@ export const migrateMeIncidentSbgServices: API.OperationMethod<
   MigrateMeIncidentSbgServicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(631) as any as S.Schema<MigrateMeIncidentSbgServicesRequest>,
-  output: __S(640) as any as S.Schema<MeIncidentOrder>,
+  input: MigrateMeIncidentSbgServicesRequest,
+  output: MeIncidentOrder,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11538,8 +15439,8 @@ export const putMeAccessRestrictionDeveloperMode: API.OperationMethod<
   PutMeAccessRestrictionDeveloperModeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(641) as any as S.Schema<PutMeAccessRestrictionDeveloperModeRequest>,
-  output: __S(5) as any as S.Schema<PutMeAccessRestrictionDeveloperModeResponse>,
+  input: PutMeAccessRestrictionDeveloperModeRequest,
+  output: PutMeAccessRestrictionDeveloperModeResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11553,8 +15454,8 @@ export const putMeAccessRestrictionIp: API.OperationMethod<
   PutMeAccessRestrictionIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(642) as any as S.Schema<PutMeAccessRestrictionIpRequest>,
-  output: __S(5) as any as S.Schema<PutMeAccessRestrictionIpResponse>,
+  input: PutMeAccessRestrictionIpRequest,
+  output: PutMeAccessRestrictionIpResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11568,8 +15469,8 @@ export const putMeAccessRestrictionIpDefaultRule: API.OperationMethod<
   PutMeAccessRestrictionIpDefaultRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(643) as any as S.Schema<PutMeAccessRestrictionIpDefaultRuleRequest>,
-  output: __S(5) as any as S.Schema<PutMeAccessRestrictionIpDefaultRuleResponse>,
+  input: PutMeAccessRestrictionIpDefaultRuleRequest,
+  output: PutMeAccessRestrictionIpDefaultRuleResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11583,8 +15484,8 @@ export const putMeAccessRestrictionSms: API.OperationMethod<
   PutMeAccessRestrictionSmsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(644) as any as S.Schema<PutMeAccessRestrictionSmsRequest>,
-  output: __S(5) as any as S.Schema<PutMeAccessRestrictionSmsResponse>,
+  input: PutMeAccessRestrictionSmsRequest,
+  output: PutMeAccessRestrictionSmsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11598,8 +15499,8 @@ export const putMeAccessRestrictionTotp: API.OperationMethod<
   PutMeAccessRestrictionTotpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(645) as any as S.Schema<PutMeAccessRestrictionTotpRequest>,
-  output: __S(5) as any as S.Schema<PutMeAccessRestrictionTotpResponse>,
+  input: PutMeAccessRestrictionTotpRequest,
+  output: PutMeAccessRestrictionTotpResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11613,8 +15514,8 @@ export const putMeAccessRestrictionU2f: API.OperationMethod<
   PutMeAccessRestrictionU2fError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(646) as any as S.Schema<PutMeAccessRestrictionU2fRequest>,
-  output: __S(5) as any as S.Schema<PutMeAccessRestrictionU2fResponse>,
+  input: PutMeAccessRestrictionU2fRequest,
+  output: PutMeAccessRestrictionU2fResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11628,8 +15529,8 @@ export const putMeAutorenew: API.OperationMethod<
   PutMeAutorenewError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(647) as any as S.Schema<PutMeAutorenewRequest>,
-  output: __S(9) as any as S.Schema<PutMeAutorenewResponse>,
+  input: PutMeAutorenewRequest,
+  output: PutMeAutorenewResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11643,8 +15544,8 @@ export const putMeBillingGroup: API.OperationMethod<
   PutMeBillingGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(648) as any as S.Schema<PutMeBillingGroupRequest>,
-  output: __S(9) as any as S.Schema<PutMeBillingGroupResponse>,
+  input: PutMeBillingGroupRequest,
+  output: PutMeBillingGroupResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11658,8 +15559,8 @@ export const putMeBillingPurchaseOrder: API.OperationMethod<
   PutMeBillingPurchaseOrderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(649) as any as S.Schema<PutMeBillingPurchaseOrderRequest>,
-  output: __S(5) as any as S.Schema<PutMeBillingPurchaseOrderResponse>,
+  input: PutMeBillingPurchaseOrderRequest,
+  output: PutMeBillingPurchaseOrderResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11673,8 +15574,8 @@ export const putMeConsentDecision: API.OperationMethod<
   PutMeConsentDecisionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(650) as any as S.Schema<PutMeConsentDecisionRequest>,
-  output: __S(9) as any as S.Schema<PutMeConsentDecisionResponse>,
+  input: PutMeConsentDecisionRequest,
+  output: PutMeConsentDecisionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11688,8 +15589,8 @@ export const putMeContact: API.OperationMethod<
   PutMeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(651) as any as S.Schema<PutMeContactRequest>,
-  output: __S(47) as any as S.Schema<MeContactContact>,
+  input: PutMeContactRequest,
+  output: MeContactContact,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11703,8 +15604,8 @@ export const putMeCredential: API.OperationMethod<
   PutMeCredentialError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(652) as any as S.Schema<PutMeCredentialRequest>,
-  output: __S(9) as any as S.Schema<PutMeCredentialResponse>,
+  input: PutMeCredentialRequest,
+  output: PutMeCredentialResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11718,8 +15619,8 @@ export const putMeDocument: API.OperationMethod<
   PutMeDocumentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(653) as any as S.Schema<PutMeDocumentRequest>,
-  output: __S(9) as any as S.Schema<PutMeDocumentResponse>,
+  input: PutMeDocumentRequest,
+  output: PutMeDocumentResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11733,8 +15634,8 @@ export const putMeFidelityAccount: API.OperationMethod<
   PutMeFidelityAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(654) as any as S.Schema<PutMeFidelityAccountRequest>,
-  output: __S(9) as any as S.Schema<PutMeFidelityAccountResponse>,
+  input: PutMeFidelityAccountRequest,
+  output: PutMeFidelityAccountResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11748,8 +15649,8 @@ export const putMeIdentityGroup: API.OperationMethod<
   PutMeIdentityGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(655) as any as S.Schema<PutMeIdentityGroupRequest>,
-  output: __S(9) as any as S.Schema<PutMeIdentityGroupResponse>,
+  input: PutMeIdentityGroupRequest,
+  output: PutMeIdentityGroupResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11763,8 +15664,8 @@ export const putMeIdentityProvider: API.OperationMethod<
   PutMeIdentityProviderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656) as any as S.Schema<PutMeIdentityProviderRequest>,
-  output: __S(9) as any as S.Schema<PutMeIdentityProviderResponse>,
+  input: PutMeIdentityProviderRequest,
+  output: PutMeIdentityProviderResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11778,8 +15679,8 @@ export const putMeIdentityUser: API.OperationMethod<
   PutMeIdentityUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(657) as any as S.Schema<PutMeIdentityUserRequest>,
-  output: __S(9) as any as S.Schema<PutMeIdentityUserResponse>,
+  input: PutMeIdentityUserRequest,
+  output: PutMeIdentityUserResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11793,8 +15694,8 @@ export const putMeIdentityUserToken: API.OperationMethod<
   PutMeIdentityUserTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(658) as any as S.Schema<PutMeIdentityUserTokenRequest>,
-  output: __S(295) as any as S.Schema<AuthPersonalAccessToken>,
+  input: PutMeIdentityUserTokenRequest,
+  output: AuthPersonalAccessToken,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11808,8 +15709,8 @@ export const putMeIpOrganisation: API.OperationMethod<
   PutMeIpOrganisationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(659) as any as S.Schema<PutMeIpOrganisationRequest>,
-  output: __S(9) as any as S.Schema<PutMeIpOrganisationResponse>,
+  input: PutMeIpOrganisationRequest,
+  output: PutMeIpOrganisationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11823,8 +15724,8 @@ export const putMeMarketing: API.OperationMethod<
   PutMeMarketingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(660) as any as S.Schema<PutMeMarketingRequest>,
-  output: __S(314) as any as S.Schema<MeMarketingConsent>,
+  input: PutMeMarketingRequest,
+  output: MeMarketingConsent,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11837,8 +15738,8 @@ export const putMeOauth2Client: API.OperationMethod<
   PutMeOauth2ClientError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(661) as any as S.Schema<PutMeOauth2ClientRequest>,
-  output: __S(9) as any as S.Schema<PutMeOauth2ClientResponse>,
+  input: PutMeOauth2ClientRequest,
+  output: PutMeOauth2ClientResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11852,8 +15753,8 @@ export const putMeOvhAccount: API.OperationMethod<
   PutMeOvhAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(662) as any as S.Schema<PutMeOvhAccountRequest>,
-  output: __S(9) as any as S.Schema<PutMeOvhAccountResponse>,
+  input: PutMeOvhAccountRequest,
+  output: PutMeOvhAccountResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11867,8 +15768,8 @@ export const putMePaymentMeanDeferredPaymentAccount: API.OperationMethod<
   PutMePaymentMeanDeferredPaymentAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(663) as any as S.Schema<PutMePaymentMeanDeferredPaymentAccountRequest>,
-  output: __S(5) as any as S.Schema<PutMePaymentMeanDeferredPaymentAccountResponse>,
+  input: PutMePaymentMeanDeferredPaymentAccountRequest,
+  output: PutMePaymentMeanDeferredPaymentAccountResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11882,8 +15783,8 @@ export const putMePaymentMethod: API.OperationMethod<
   PutMePaymentMethodError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(664) as any as S.Schema<PutMePaymentMethodRequest>,
-  output: __S(157) as any as S.Schema<MePaymentPaymentMethod>,
+  input: PutMePaymentMethodRequest,
+  output: MePaymentPaymentMethod,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11897,8 +15798,8 @@ export const putMePreferenceManager: API.OperationMethod<
   PutMePreferenceManagerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(665) as any as S.Schema<PutMePreferenceManagerRequest>,
-  output: __S(9) as any as S.Schema<PutMePreferenceManagerResponse>,
+  input: PutMePreferenceManagerRequest,
+  output: PutMePreferenceManagerResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11912,8 +15813,8 @@ export const putMeSubAccount: API.OperationMethod<
   PutMeSubAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(666) as any as S.Schema<PutMeSubAccountRequest>,
-  output: __S(9) as any as S.Schema<PutMeSubAccountResponse>,
+  input: PutMeSubAccountRequest,
+  output: PutMeSubAccountResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11927,8 +15828,8 @@ export const putMeTaskDomainArgument: API.OperationMethod<
   PutMeTaskDomainArgumentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(667) as any as S.Schema<PutMeTaskDomainArgumentRequest>,
-  output: __S(7) as any as S.Schema<PutMeTaskDomainArgumentResponse>,
+  input: PutMeTaskDomainArgumentRequest,
+  output: PutMeTaskDomainArgumentResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11942,8 +15843,8 @@ export const resendMeTaskContactChangeEmail: API.OperationMethod<
   ResendMeTaskContactChangeEmailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(668) as any as S.Schema<ResendMeTaskContactChangeEmailRequest>,
-  output: __S(5) as any as S.Schema<ResendMeTaskContactChangeEmailResponse>,
+  input: ResendMeTaskContactChangeEmailRequest,
+  output: ResendMeTaskContactChangeEmailResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11957,8 +15858,8 @@ export const sendMeAccessRestrictionSmsCode: API.OperationMethod<
   SendMeAccessRestrictionSmsCodeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(669) as any as S.Schema<SendMeAccessRestrictionSmsCodeRequest>,
-  output: __S(670) as any as S.Schema<NichandleAccessRestrictionSmsCode>,
+  input: SendMeAccessRestrictionSmsCodeRequest,
+  output: NichandleAccessRestrictionSmsCode,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11972,8 +15873,8 @@ export const subscribeMeMailingList: API.OperationMethod<
   SubscribeMeMailingListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(671) as any as S.Schema<SubscribeMeMailingListRequest>,
-  output: __S(9) as any as S.Schema<SubscribeMeMailingListResponse>,
+  input: SubscribeMeMailingListRequest,
+  output: SubscribeMeMailingListResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -11987,8 +15888,8 @@ export const validateMeAccessRestrictionBackupCode: API.OperationMethod<
   ValidateMeAccessRestrictionBackupCodeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672) as any as S.Schema<ValidateMeAccessRestrictionBackupCodeRequest>,
-  output: __S(673) as any as S.Schema<NichandleAccessRestrictionSOTPValidate>,
+  input: ValidateMeAccessRestrictionBackupCodeRequest,
+  output: NichandleAccessRestrictionSOTPValidate,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -12002,8 +15903,8 @@ export const validateMeAccessRestrictionSms: API.OperationMethod<
   ValidateMeAccessRestrictionSmsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(674) as any as S.Schema<ValidateMeAccessRestrictionSmsRequest>,
-  output: __S(5) as any as S.Schema<ValidateMeAccessRestrictionSmsResponse>,
+  input: ValidateMeAccessRestrictionSmsRequest,
+  output: ValidateMeAccessRestrictionSmsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -12017,8 +15918,8 @@ export const validateMeAccessRestrictionTotp: API.OperationMethod<
   ValidateMeAccessRestrictionTotpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(675) as any as S.Schema<ValidateMeAccessRestrictionTotpRequest>,
-  output: __S(5) as any as S.Schema<ValidateMeAccessRestrictionTotpResponse>,
+  input: ValidateMeAccessRestrictionTotpRequest,
+  output: ValidateMeAccessRestrictionTotpResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -12032,8 +15933,8 @@ export const validateMeAccessRestrictionU2f: API.OperationMethod<
   ValidateMeAccessRestrictionU2fError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(676) as any as S.Schema<ValidateMeAccessRestrictionU2fRequest>,
-  output: __S(5) as any as S.Schema<ValidateMeAccessRestrictionU2fResponse>,
+  input: ValidateMeAccessRestrictionU2fRequest,
+  output: ValidateMeAccessRestrictionU2fResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -12070,7 +15971,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          agreed: S.optional(S.String),
+          agreed: S.optional(MeAgreementsAgreementStatusEnum),
           contractId: S.optional(S.Number),
           date: S.optional(S.String),
           id: S.optional(S.Number),
@@ -12163,7 +16064,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          codes: S.optional(__S(15)),
+          codes: S.optional(NichandleAccessRestrictionSOTPSecretCodesList),
         }),
       ).annotate({
         identifier: "NichandleAccessRestrictionSOTPSecret",
@@ -12172,7 +16073,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ip: S.String,
-          rule: S.String,
+          rule: NichandleAccessRestrictionIpRestrictionRuleEnum,
           warning: S.Boolean,
         }).pipe(T.Http({ method: "POST", uri: "/me/accessRestriction/ip", code: 200 })),
       ).annotate({
@@ -12247,21 +16148,21 @@ function __c3(j: number): any {
           companyNationalIdentificationNumber: S.optional(S.NullOr(S.String)),
           complementaryAddress: S.optional(S.NullOr(S.String)),
           corporationType: S.optional(S.NullOr(S.String)),
-          country: S.optional(S.String),
+          country: S.optional(NichandleCountryEnum),
           email: S.optional(S.NullOr(S.String)),
           fax: S.optional(S.NullOr(S.String)),
           firstname: S.optional(S.NullOr(S.String)),
           italianSDI: S.optional(S.NullOr(S.String)),
-          language: S.optional(S.NullOr(S.String)),
-          legalform: S.optional(S.String),
+          language: S.optional(S.NullOr(NichandleLanguageEnum)),
+          legalform: S.optional(NichandleLegalFormEnum),
           name: S.optional(S.NullOr(S.String)),
           nationalIdentificationNumber: S.optional(S.NullOr(S.String)),
           organisation: S.optional(S.NullOr(S.String)),
           phone: S.optional(S.NullOr(S.String)),
-          phoneCountry: S.optional(S.NullOr(S.String)),
-          phoneType: S.optional(S.NullOr(S.String)),
+          phoneCountry: S.optional(S.NullOr(NichandleCountryEnum)),
+          phoneType: S.optional(S.NullOr(NichandlePhoneTypeEnum)),
           purposeOfPurchase: S.optional(S.NullOr(S.String)),
-          sex: S.optional(S.NullOr(S.String)),
+          sex: S.optional(S.NullOr(NichandleGenderEnum)),
           spareEmail: S.optional(S.NullOr(S.String)),
           vat: S.optional(S.NullOr(S.String)),
           zip: S.optional(S.NullOr(S.String)),
@@ -12285,8 +16186,8 @@ function __c3(j: number): any {
           companyNationalIdentificationNumber: S.optional(S.NullOr(S.String)),
           complementaryAddress: S.optional(S.NullOr(S.String)),
           corporationType: S.optional(S.NullOr(S.String)),
-          country: S.optional(S.String),
-          currency: S.optional(__S(25)),
+          country: S.optional(NichandleCountryEnum),
+          currency: S.optional(NichandleCurrency),
           customerCode: S.optional(S.NullOr(S.String)),
           displayName: S.optional(S.NullOr(S.String)),
           email: S.optional(S.String),
@@ -12294,21 +16195,21 @@ function __c3(j: number): any {
           firstname: S.optional(S.NullOr(S.String)),
           italianSDI: S.optional(S.NullOr(S.String)),
           kycValidated: S.optional(S.NullOr(S.Boolean)),
-          language: S.optional(S.NullOr(S.String)),
-          legalform: S.optional(S.String),
+          language: S.optional(S.NullOr(NichandleLanguageEnum)),
+          legalform: S.optional(NichandleLegalFormEnum),
           name: S.optional(S.NullOr(S.String)),
           nationalIdentificationNumber: S.optional(S.NullOr(S.String)),
           nichandle: S.optional(S.String),
           organisation: S.optional(S.NullOr(S.String)),
-          ovhCompany: S.optional(S.String),
-          ovhSubsidiary: S.optional(S.String),
+          ovhCompany: S.optional(NichandleOvhCompanyEnum),
+          ovhSubsidiary: S.optional(NichandleOvhSubsidiaryEnum),
           phone: S.optional(S.NullOr(S.String)),
-          phoneCountry: S.optional(S.NullOr(S.String)),
-          phoneType: S.optional(S.NullOr(S.String)),
+          phoneCountry: S.optional(S.NullOr(NichandleCountryEnum)),
+          phoneType: S.optional(S.NullOr(NichandlePhoneTypeEnum)),
           purposeOfPurchase: S.optional(S.NullOr(S.String)),
-          sex: S.optional(S.NullOr(S.String)),
+          sex: S.optional(S.NullOr(NichandleGenderEnum)),
           spareEmail: S.optional(S.NullOr(S.String)),
-          state: S.optional(S.String),
+          state: S.optional(NichandleStateEnum),
           vat: S.optional(S.NullOr(S.String)),
           zip: S.optional(S.NullOr(S.String)),
         }),
@@ -12330,7 +16231,7 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          currencyCode: S.optional(S.String),
+          currencyCode: S.optional(OrderCurrencyCodeEnum),
           priceInUcents: S.optional(S.NullOr(S.Number)),
           text: S.optional(S.String),
           value: S.optional(S.Number),
@@ -12341,14 +16242,14 @@ function __c3(j: number): any {
         S.Struct({
           date: S.optional(S.NullOr(S.String)),
           expirationDate: S.optional(S.NullOr(S.String)),
-          metadatas: S.optional(S.NullOr(__S(15))),
+          metadatas: S.optional(S.NullOr(BillingOrderMetadatasList)),
           orderId: S.optional(S.Number),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           pdfUrl: S.optional(S.String),
-          priceWithTax: S.optional(__S(29)),
-          priceWithoutTax: S.optional(__S(29)),
+          priceWithTax: S.optional(OrderPrice),
+          priceWithoutTax: S.optional(OrderPrice),
           retractionDate: S.optional(S.NullOr(S.String)),
-          tax: S.optional(__S(29)),
+          tax: S.optional(OrderPrice),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingOrder" });
@@ -12412,7 +16313,7 @@ function __c4(j: number): any {
           endDate: S.optional(S.NullOr(S.String)),
           reference: S.String,
           startDate: S.String,
-          type: S.String,
+          type: MeBillingPurchaseOrderPurchaseOrderTypeEnum,
         }).pipe(T.Http({ method: "POST", uri: "/me/billing/purchaseOrder", code: 200 })),
       ).annotate({
         identifier: "CreateMeBillingPurchaseOrderRequest",
@@ -12429,8 +16330,8 @@ function __c4(j: number): any {
           lastUpdate: S.optional(S.String),
           reference: S.optional(S.String),
           startDate: S.optional(S.String),
-          status: S.optional(S.String),
-          type: S.optional(S.String),
+          status: S.optional(MeBillingPurchaseOrderStatusEnum),
+          type: S.optional(MeBillingPurchaseOrderPurchaseOrderTypeEnum),
         }),
       ).annotate({
         identifier: "MeBillingPurchaseOrderPurchaseOrder",
@@ -12487,7 +16388,7 @@ function __c5(j: number): any {
           dateRequest: S.optional(S.String),
           id: S.optional(S.Number),
           newEmail: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(NichandleChangeEmailTaskStateEnum),
         }),
       ).annotate({ identifier: "NichandleEmailChangeTask" });
     case 4:
@@ -12500,7 +16401,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           city: S.optional(S.String),
-          country: S.optional(S.String),
+          country: S.optional(NichandleCountryEnum),
           line1: S.optional(S.String),
           line2: S.optional(S.NullOr(S.String)),
           line3: S.optional(S.NullOr(S.String)),
@@ -12512,9 +16413,9 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(__S(45)),
+          address: S.optional(MeContactAddress),
           birthCity: S.optional(S.NullOr(S.String)),
-          birthCountry: S.optional(S.NullOr(S.String)),
+          birthCountry: S.optional(S.NullOr(NichandleCountryEnum)),
           birthDay: S.optional(S.NullOr(S.String)),
           birthZip: S.optional(S.NullOr(S.String)),
           cellPhone: S.optional(S.NullOr(S.String)),
@@ -12522,12 +16423,12 @@ function __c5(j: number): any {
           email: S.optional(S.String),
           fax: S.optional(S.NullOr(S.String)),
           firstName: S.optional(S.String),
-          gender: S.optional(S.NullOr(S.String)),
-          language: S.optional(S.String),
+          gender: S.optional(S.NullOr(NichandleGenderEnum)),
+          language: S.optional(NichandleLanguageEnum),
           lastName: S.optional(S.String),
-          legalForm: S.optional(S.String),
+          legalForm: S.optional(NichandleLegalFormEnum),
           nationalIdentificationNumber: S.optional(S.NullOr(S.String)),
-          nationality: S.optional(S.NullOr(S.String)),
+          nationality: S.optional(S.NullOr(NichandleCountryEnum)),
           organisationName: S.optional(S.NullOr(S.String)),
           organisationType: S.optional(S.NullOr(S.String)),
           phone: S.optional(S.NullOr(S.String)),
@@ -12538,9 +16439,9 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(__S(45)),
+          address: S.optional(MeContactAddress),
           birthCity: S.optional(S.NullOr(S.String)),
-          birthCountry: S.optional(S.NullOr(S.String)),
+          birthCountry: S.optional(S.NullOr(NichandleCountryEnum)),
           birthDay: S.optional(S.NullOr(S.String)),
           birthZip: S.optional(S.NullOr(S.String)),
           cellPhone: S.optional(S.NullOr(S.String)),
@@ -12548,13 +16449,13 @@ function __c5(j: number): any {
           email: S.optional(S.String),
           fax: S.optional(S.NullOr(S.String)),
           firstName: S.optional(S.String),
-          gender: S.optional(S.NullOr(S.String)),
+          gender: S.optional(S.NullOr(NichandleGenderEnum)),
           id: S.optional(S.Number),
-          language: S.optional(S.String),
+          language: S.optional(NichandleLanguageEnum),
           lastName: S.optional(S.String),
-          legalForm: S.optional(S.String),
+          legalForm: S.optional(NichandleLegalFormEnum),
           nationalIdentificationNumber: S.optional(S.NullOr(S.String)),
-          nationality: S.optional(S.NullOr(S.String)),
+          nationality: S.optional(S.NullOr(NichandleCountryEnum)),
           organisationName: S.optional(S.NullOr(S.String)),
           organisationType: S.optional(S.NullOr(S.String)),
           phone: S.optional(S.NullOr(S.String)),
@@ -12601,16 +16502,16 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(29)),
+          amount: S.optional(OrderPrice),
           balanceName: S.optional(S.String),
           creationDate: S.optional(S.String),
-          destinationObject: S.optional(S.NullOr(__S(50))),
+          destinationObject: S.optional(S.NullOr(MeCreditBalanceMovementSubObject)),
           expirationDate: S.optional(S.NullOr(S.String)),
           lastUpdate: S.optional(S.String),
           movementId: S.optional(S.Number),
           orderId: S.optional(S.NullOr(S.Number)),
-          sourceObject: S.optional(__S(50)),
-          type: S.optional(S.String),
+          sourceObject: S.optional(MeCreditBalanceMovementSubObject),
+          type: S.optional(MeCreditBalanceMovementTypeEnum),
         }),
       ).annotate({ identifier: "MeCreditBalanceMovement" });
     case 4:
@@ -12655,12 +16556,12 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55));
+      return S.Array(ComplexTypeSafeKeyValueStringInput);
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          tags: S.optional(__S(56)),
+          tags: S.optional(CreateMeDocumentRequestTagsList),
         }).pipe(T.Http({ method: "POST", uri: "/me/document", code: 200 })),
       ).annotate({ identifier: "CreateMeDocumentRequest" });
     case 2:
@@ -12673,7 +16574,7 @@ function __c7(j: number): any {
         identifier: "ComplexTypeSafeKeyValueString",
       });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(ComplexTypeSafeKeyValueString);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -12684,7 +16585,7 @@ function __c7(j: number): any {
           name: S.optional(S.String),
           putUrl: S.optional(S.String),
           size: S.optional(S.Number),
-          tags: S.optional(__S(59)),
+          tags: S.optional(NichandleDocumentDocumentTagsList),
           validationDate: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -12757,8 +16658,8 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          continent: S.optional(S.NullOr(S.String)),
-          countryCode: S.optional(S.NullOr(S.String)),
+          continent: S.optional(S.NullOr(MeGeolocationContinentEnum)),
+          countryCode: S.optional(S.NullOr(MeGeolocationCountryEnum)),
           ip: S.optional(S.String),
         }),
       ).annotate({
@@ -12769,7 +16670,7 @@ function __c8(j: number): any {
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
           name: S.String,
-          role: S.optional(S.String),
+          role: S.optional(AuthRoleEnum),
         }).pipe(T.Http({ method: "POST", uri: "/me/identity/group", code: 200 })),
       ).annotate({
         identifier: "CreateMeIdentityGroupRequest",
@@ -12782,7 +16683,7 @@ function __c8(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           lastUpdate: S.optional(S.String),
           name: S.optional(S.String),
-          role: S.optional(S.String),
+          role: S.optional(AuthRoleEnum),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthGroup" });
@@ -12805,24 +16706,24 @@ function __c9(j: number): any {
           isRequired: S.Boolean,
           name: S.String,
           nameFormat: S.optional(S.NullOr(S.String)),
-          values: S.optional(S.NullOr(__S(15))),
+          values: S.optional(S.NullOr(AuthProviderRequestedAttributesValuesList)),
         }),
       ).annotate({
         identifier: "AuthProviderRequestedAttributes",
       });
     case 1:
-      return S.Array(__S(72));
+      return S.Array(AuthProviderRequestedAttributes);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          requestedAttributes: S.optional(S.NullOr(__S(73))),
+          requestedAttributes: S.optional(S.NullOr(AuthProviderExtensionsRequestedAttributesList)),
         }),
       ).annotate({ identifier: "AuthProviderExtensions" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           disableUsers: S.optional(S.NullOr(S.Boolean)),
-          extensions: S.optional(__S(74)),
+          extensions: S.optional(AuthProviderExtensions),
           groupAttributeName: S.optional(S.NullOr(S.String)),
           metadata: S.String,
           signRequests: S.optional(S.NullOr(S.Boolean)),
@@ -12839,15 +16740,15 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "AuthCertificate" });
     case 5:
-      return S.Array(__S(76));
+      return S.Array(AuthCertificate);
     case 6:
       return S.suspend(() =>
         S.Struct({
           creation: S.optional(S.String),
           disableUsers: S.optional(S.NullOr(S.Boolean)),
-          extensions: S.optional(__S(74)),
+          extensions: S.optional(AuthProviderExtensions),
           groupAttributeName: S.optional(S.String),
-          idpSigningCertificates: S.optional(__S(77)),
+          idpSigningCertificates: S.optional(AuthProviderIdpSigningCertificatesList),
           lastUpdate: S.optional(S.String),
           signRequests: S.optional(S.NullOr(S.Boolean)),
           ssoServiceUrl: S.optional(S.String),
@@ -12862,7 +16763,7 @@ function __c9(j: number): any {
           group: S.optional(S.String),
           login: S.String,
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          type: S.optional(S.String),
+          type: S.optional(AuthUserTypeEnum),
         }).pipe(T.Http({ method: "POST", uri: "/me/identity/user", code: 200 })),
       ).annotate({
         identifier: "CreateMeIdentityUserRequest",
@@ -12902,11 +16803,11 @@ function __c10(j: number): any {
           abuse_mailbox: S.String,
           address: S.String,
           city: S.String,
-          country: S.String,
+          country: NichandleCountryEnum,
           firstname: S.String,
           lastname: S.String,
           phone: S.String,
-          registry: S.String,
+          registry: NichandleIpRegistryEnum,
           state: S.optional(S.String),
           zip: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/me/ipOrganisation", code: 200 })),
@@ -12976,9 +16877,9 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          callbackUrls: S.optional(__S(15)),
+          callbackUrls: S.optional(CreateMeOauth2ClientRequestCallbackUrlsList),
           description: S.String,
-          flow: S.String,
+          flow: Oauth2ClientFlowEnum,
           name: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/me/api/oauth2/client", code: 200 })),
       ).annotate({
@@ -13003,7 +16904,7 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(29)),
+          amount: S.optional(OrderPrice),
           balanceName: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingCreditBalance" });
@@ -13031,14 +16932,14 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           orderId: S.Number.pipe(T.Label()),
-          paymentMethod: __S(95),
+          paymentMethod: BillingOrderPayWithPaymentMethod,
         }).pipe(T.Http({ method: "POST", uri: "/me/order/{orderId}/pay", code: 200 })),
       ).annotate({ identifier: "CreateMeOrderPayRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           orderId: S.Number.pipe(T.Label()),
-          paymentMean: S.String,
+          paymentMean: BillingReusablePaymentMeanEnum,
           paymentMeanId: S.optional(S.Number),
         }).pipe(
           T.Http({
@@ -13055,7 +16956,7 @@ function __c12(j: number): any {
         S.Struct({
           orderId: S.Number.pipe(T.Label()),
           comment: S.optional(S.String),
-          reason: S.String,
+          reason: BillingOrderRetractionReasonEnum,
         }).pipe(T.Http({ method: "POST", uri: "/me/order/{orderId}/retraction", code: 200 })),
       ).annotate({
         identifier: "CreateMeOrderRetractionRequest",
@@ -13098,7 +16999,7 @@ function __c12(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ovhCompany: S.String,
+          ovhCompany: NichandleOvhCompanyEnum,
           ovhId: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/me/passwordRecover", code: 200 })),
       ).annotate({
@@ -13142,12 +17043,12 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           billingContactId: S.optional(S.NullOr(S.Number)),
-          callbackUrl: __S(105),
+          callbackUrl: MePaymentMethodCallbackUrl,
           default: S.optional(S.Boolean),
           description: S.optional(S.NullOr(S.String)),
           formData: S.optional(S.NullOr(S.String)),
           orderId: S.optional(S.NullOr(S.Number)),
-          paymentSubType: S.optional(S.NullOr(S.String)),
+          paymentSubType: S.optional(S.NullOr(MePaymentCreationSubTypeEnum)),
           paymentType: S.String,
           register: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/me/payment/method", code: 200 })),
@@ -13163,7 +17064,7 @@ function __c13(j: number): any {
           paymentMethodId: S.optional(S.Number),
           transactionId: S.optional(S.NullOr(S.Number)),
           url: S.optional(S.NullOr(S.String)),
-          validationType: S.optional(S.String),
+          validationType: S.optional(MePaymentIntegrationEnum),
         }),
       ).annotate({
         identifier: "MePaymentMethodValidation",
@@ -13268,9 +17169,9 @@ function __c14(j: number): any {
           creationDate: S.optional(S.String),
           customerCode: S.optional(S.String),
           expirationDate: S.optional(S.NullOr(S.String)),
-          extra: S.optional(S.NullOr(__S(117))),
+          extra: S.optional(S.NullOr(MeTagTagExtra)),
           lastUpdate: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(MeTagStatusEnum),
           tag: S.optional(S.String),
         }),
       ).annotate({ identifier: "MeTagTag" });
@@ -13332,7 +17233,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subnet: S.String,
-          type: S.String,
+          type: TelephonyProtocolEnum,
         }).pipe(T.Http({ method: "POST", uri: "/me/telephony/defaultIpRestriction", code: 200 })),
       ).annotate({
         identifier: "CreateMeTelephonyDefaultIpRestrictionRequest",
@@ -13342,7 +17243,7 @@ function __c15(j: number): any {
         S.Struct({
           id: S.optional(S.Number),
           subnet: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(TelephonyProtocolEnum),
         }),
       ).annotate({
         identifier: "TelephonyDefaultIpRestriction",
@@ -13369,14 +17270,14 @@ function __c16(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          billingPolicies: S.optional(__S(127)),
-          lineDescriptionPolicies: S.optional(__S(128)),
+          billingPolicies: S.optional(TelephonyBillingSettings),
+          lineDescriptionPolicies: S.optional(TelephonyLineDescriptionSettings),
         }),
       ).annotate({ identifier: "TelephonySettings" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          settings: __S(129),
+          settings: TelephonySettings,
         }).pipe(T.Http({ method: "POST", uri: "/me/telephony/settings", code: 200 })),
       ).annotate({
         identifier: "CreateMeTelephonySettingsRequest",
@@ -13637,17 +17538,17 @@ function __c19(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           expirationDate: S.optional(S.NullOr(S.String)),
           formSessionId: S.optional(S.NullOr(S.String)),
-          icon: S.optional(__S(156)),
-          integration: S.optional(S.NullOr(S.String)),
+          icon: S.optional(MePaymentIcon),
+          integration: S.optional(S.NullOr(MePaymentIntegrationEnum)),
           label: S.optional(S.NullOr(S.String)),
           lastUpdate: S.optional(S.String),
           merchantId: S.optional(S.NullOr(S.String)),
           oneclick: S.optional(S.NullOr(S.Boolean)),
           paymentMeanId: S.optional(S.NullOr(S.Number)),
           paymentMethodId: S.optional(S.Number),
-          paymentSubType: S.optional(S.NullOr(S.String)),
+          paymentSubType: S.optional(S.NullOr(MePaymentAvailableSubTypeEnum)),
           paymentType: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(MePaymentMethodStatusEnum),
         }),
       ).annotate({ identifier: "MePaymentPaymentMethod" });
     case 6:
@@ -13745,21 +17646,21 @@ function __c20(j: number): any {
           companyNationalIdentificationNumber: S.optional(S.NullOr(S.String)),
           complementaryAddress: S.optional(S.NullOr(S.String)),
           corporationType: S.optional(S.NullOr(S.String)),
-          country: S.optional(S.String),
+          country: S.optional(NichandleCountryEnum),
           displayName: S.optional(S.NullOr(S.String)),
           fax: S.optional(S.NullOr(S.String)),
           firstname: S.optional(S.NullOr(S.String)),
           italianSDI: S.optional(S.NullOr(S.String)),
-          language: S.optional(S.NullOr(S.String)),
-          legalform: S.optional(S.String),
+          language: S.optional(S.NullOr(NichandleLanguageEnum)),
+          legalform: S.optional(NichandleLegalFormEnum),
           name: S.optional(S.NullOr(S.String)),
           nationalIdentificationNumber: S.optional(S.NullOr(S.String)),
           organisation: S.optional(S.NullOr(S.String)),
           phone: S.optional(S.NullOr(S.String)),
-          phoneCountry: S.optional(S.NullOr(S.String)),
-          phoneType: S.optional(S.NullOr(S.String)),
+          phoneCountry: S.optional(S.NullOr(NichandleCountryEnum)),
+          phoneType: S.optional(S.NullOr(NichandlePhoneTypeEnum)),
           purposeOfPurchase: S.optional(S.NullOr(S.String)),
-          sex: S.optional(S.NullOr(S.String)),
+          sex: S.optional(S.NullOr(NichandleGenderEnum)),
           spareEmail: S.optional(S.NullOr(S.String)),
           vat: S.optional(S.NullOr(S.String)),
           zip: S.optional(S.NullOr(S.String)),
@@ -13824,18 +17725,18 @@ function __c21(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          archiveType: S.String,
+          archiveType: BillingArchiveTypeEnum,
           endDate: S.optional(S.String),
-          ids: S.optional(__S(15)),
+          ids: S.optional(ExportMeBillRequestIdsList),
           startDate: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/me/bill/export", code: 200 })),
       ).annotate({ identifier: "ExportMeBillRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          archiveType: S.String,
+          archiveType: BillingArchiveTypeEnum,
           endDate: S.optional(S.String),
-          ids: S.optional(__S(15)),
+          ids: S.optional(ExportMeRefundRequestIdsList),
           startDate: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/me/refund/export", code: 200 })),
       ).annotate({ identifier: "ExportMeRefundRequest" });
@@ -13872,7 +17773,7 @@ function __c22(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/me/certificates", code: 200 })),
       ).annotate({ identifier: "GetCertificatesRequest" });
     case 2:
-      return S.suspend(() => __S(15).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetCertificatesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetCertificatesResponse",
       });
     case 3:
@@ -13884,11 +17785,11 @@ function __c22(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(S.String),
+          category: S.optional(MeAbuseAbuseCategoryEnum),
           creationDate: S.optional(S.String),
           publicId: S.optional(S.String),
           service: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(MeAbuseAbuseStatusEnum),
         }),
       ).annotate({ identifier: "MeAbuseAbuse" });
     case 5:
@@ -13905,7 +17806,7 @@ function __c22(j: number): any {
           creationDate: S.optional(S.String),
           lastUsedDate: S.optional(S.NullOr(S.String)),
           remaining: S.optional(S.Number),
-          status: S.optional(S.String),
+          status: S.optional(NichandleAccessRestrictionSOTPStatusEnum),
         }),
       ).annotate({
         identifier: "NichandleAccessRestrictionSOTPAccount",
@@ -13943,7 +17844,7 @@ function __c23(j: number): any {
         S.Struct({
           id: S.optional(S.Number),
           ip: S.optional(S.String),
-          rule: S.optional(S.String),
+          rule: S.optional(NichandleAccessRestrictionIpRestrictionRuleEnum),
           warning: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "NichandleIpRestriction" });
@@ -13958,7 +17859,7 @@ function __c23(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          rule: S.optional(S.String),
+          rule: S.optional(NichandleAccessRestrictionIpRestrictionRuleEnum),
           warning: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -13980,7 +17881,7 @@ function __c23(j: number): any {
           id: S.optional(S.Number),
           lastUsedDate: S.optional(S.NullOr(S.String)),
           phoneNumber: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(NichandleAccessRestrictionSmsStatusEnum),
         }),
       ).annotate({
         identifier: "NichandleAccessRestrictionSmsAccount",
@@ -14004,7 +17905,7 @@ function __c24(j: number): any {
           description: S.optional(S.String),
           id: S.optional(S.Number),
           lastUsedDate: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
+          status: S.optional(NichandleAccessRestrictionTOTPStatusEnum),
         }),
       ).annotate({
         identifier: "NichandleAccessRestrictionTOTPAccount",
@@ -14054,7 +17955,7 @@ function __c24(j: number): any {
           applicationKey: S.optional(S.String),
           description: S.optional(S.String),
           name: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(AuthApplicationStatusEnum),
         }),
       ).annotate({ identifier: "AuthApiApplication" });
     case 7:
@@ -14104,16 +18005,16 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           billId: S.optional(S.String),
-          category: S.optional(S.String),
+          category: S.optional(BillingCategoryEnum),
           date: S.optional(S.String),
           eInvoicingId: S.optional(S.NullOr(S.String)),
-          eInvoicingStatus: S.optional(S.NullOr(S.String)),
+          eInvoicingStatus: S.optional(S.NullOr(BillingEInvoicingStatusEnum)),
           orderId: S.optional(S.Number),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           pdfUrl: S.optional(S.String),
-          priceWithTax: S.optional(__S(29)),
-          priceWithoutTax: S.optional(__S(29)),
-          tax: S.optional(__S(29)),
+          priceWithTax: S.optional(OrderPrice),
+          priceWithoutTax: S.optional(OrderPrice),
+          tax: S.optional(OrderPrice),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingBill" });
@@ -14126,16 +18027,16 @@ function __c25(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(29)),
+          amount: S.optional(OrderPrice),
           date: S.optional(S.String),
           debtId: S.optional(S.Number),
-          dueAmount: S.optional(__S(29)),
+          dueAmount: S.optional(OrderPrice),
           dueDate: S.optional(S.NullOr(S.String)),
           orderId: S.optional(S.Number),
-          pendingAmount: S.optional(__S(29)),
-          status: S.optional(S.String),
-          todoAmount: S.optional(__S(29)),
-          unmaturedAmount: S.optional(__S(29)),
+          pendingAmount: S.optional(OrderPrice),
+          status: S.optional(DebtEntryStatusDebtOrderEnum),
+          todoAmount: S.optional(OrderPrice),
+          unmaturedAmount: S.optional(OrderPrice),
         }),
       ).annotate({ identifier: "DebtDebt" });
     case 7:
@@ -14160,12 +18061,12 @@ function __c26(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(29)),
+          amount: S.optional(OrderPrice),
           date: S.optional(S.String),
           depositOrderId: S.optional(S.Number),
           operationId: S.optional(S.Number),
-          status: S.optional(S.String),
-          type: S.optional(S.NullOr(S.String)),
+          status: S.optional(DebtEntryStatusEnum),
+          type: S.optional(S.NullOr(DebtEntryOperationEnum)),
         }),
       ).annotate({ identifier: "DebtOperation" });
     case 1:
@@ -14187,7 +18088,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          paymentType: S.optional(S.String),
+          paymentType: S.optional(BillingPaymentMeanEnum),
           publicLabel: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -14197,9 +18098,9 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          paymentInfo: S.optional(S.NullOr(__S(210))),
+          paymentInfo: S.optional(S.NullOr(DebtAssociatedObjectPaymentInfo)),
           subId: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(DebtAssociatedObjectTypeEnum)),
         }),
       ).annotate({
         identifier: "DebtEntryAssociatedObject",
@@ -14216,7 +18117,7 @@ function __c26(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          currencyCode: S.optional(S.String),
+          currencyCode: S.optional(OrderCurrencyCodeEnum),
           text: S.optional(S.String),
           value: S.optional(S.Number),
         }),
@@ -14230,8 +18131,8 @@ function __c26(j: number): any {
           periodEnd: S.optional(S.NullOr(S.String)),
           periodStart: S.optional(S.NullOr(S.String)),
           quantity: S.optional(S.String),
-          totalPrice: S.optional(__S(29)),
-          unitPrice: S.optional(__S(213)),
+          totalPrice: S.optional(OrderPrice),
+          unitPrice: S.optional(OrderLongPrice),
         }),
       ).annotate({ identifier: "BillingBillDetail" });
     case 7:
@@ -14249,7 +18150,7 @@ function __c27(j: number): any {
         S.Struct({
           canUseDebtSystem: S.optional(S.Boolean),
           canUsePostalMailForInvoices: S.optional(S.Boolean),
-          requiredPaymentMethod: S.optional(S.String),
+          requiredPaymentMethod: S.optional(NichandleRequiredPaymentMethodEnum),
         }),
       ).annotate({
         identifier: "NichandleBillingCapacities",
@@ -14311,7 +18212,7 @@ function __c27(j: number): any {
           periodEnd: S.optional(S.String),
           periodStart: S.optional(S.String),
           report: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
+          status: S.optional(MeBillingReportConsumptionStatusEnum),
           taskId: S.optional(S.String),
         }),
       ).annotate({
@@ -14331,9 +18232,9 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          metadata: S.optional(__S(59)),
-          name: S.optional(S.String),
-          status: S.optional(S.String),
+          metadata: S.optional(MeBillingTasksTaskMetadataList),
+          name: S.optional(MeBillingTasksTaskNameEnum),
+          status: S.optional(MeBillingTasksTaskStatusEnum),
           step: S.optional(S.String),
         }),
       ).annotate({ identifier: "MeBillingTasksTask" });
@@ -14348,13 +18249,13 @@ function __c28(j: number): any {
         S.Struct({
           paymentDate: S.optional(S.String),
           paymentIdentifier: S.optional(S.NullOr(S.String)),
-          paymentType: S.optional(S.String),
+          paymentType: S.optional(BillingPaymentMeanEnum),
         }),
       ).annotate({ identifier: "BillingPayment" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          campus: S.String.pipe(T.Query()),
+          campus: IpCampusEnum.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/me/bringYourOwnIp/token", code: 200 })),
       ).annotate({
         identifier: "GetMeBringYourOwnIpTokenRequest",
@@ -14391,7 +18292,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           link: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
+          status: S.optional(CarbonCalculatorTaskTaskStatusEnum),
           taskID: S.optional(S.String),
         }),
       ).annotate({ identifier: "CarbonCalculatorTask" });
@@ -14406,7 +18307,7 @@ function __c29(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(MeConsentCampaignTypeEnum),
         }),
       ).annotate({ identifier: "MeConsentCampaign" });
     case 3:
@@ -14428,18 +18329,18 @@ function __c29(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(S.String),
+          category: S.optional(BillingCategoryEnum),
           correctedInvoiceId: S.optional(S.String),
           correctiveInvoiceId: S.optional(S.String),
           date: S.optional(S.String),
           eInvoicingId: S.optional(S.NullOr(S.String)),
-          eInvoicingStatus: S.optional(S.NullOr(S.String)),
+          eInvoicingStatus: S.optional(S.NullOr(BillingEInvoicingStatusEnum)),
           orderId: S.optional(S.Number),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           pdfUrl: S.optional(S.String),
-          priceWithTax: S.optional(__S(29)),
-          priceWithoutTax: S.optional(__S(29)),
-          tax: S.optional(__S(29)),
+          priceWithTax: S.optional(OrderPrice),
+          priceWithoutTax: S.optional(OrderPrice),
+          tax: S.optional(OrderPrice),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingCorrectiveInvoice" });
@@ -14515,8 +18416,8 @@ function __c30(j: number): any {
           periodEnd: S.optional(S.NullOr(S.String)),
           periodStart: S.optional(S.NullOr(S.String)),
           quantity: S.optional(S.Number),
-          totalPrice: S.optional(__S(29)),
-          unitPrice: S.optional(__S(213)),
+          totalPrice: S.optional(OrderPrice),
+          unitPrice: S.optional(OrderLongPrice),
         }),
       ).annotate({
         identifier: "BillingCorrectiveInvoiceDetail",
@@ -14544,24 +18445,24 @@ function __c30(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          method: S.optional(S.String),
+          method: S.optional(AuthHTTPMethodEnum),
           path: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthAccessRule" });
     case 6:
-      return S.Array(__S(245));
+      return S.Array(AuthAccessRule);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          allowedIPs: S.optional(S.NullOr(__S(15))),
+          allowedIPs: S.optional(S.NullOr(AuthApiCredentialAllowedIPsList)),
           applicationId: S.optional(S.Number),
           creation: S.optional(S.String),
           credentialId: S.optional(S.Number),
           expiration: S.optional(S.NullOr(S.String)),
           lastUse: S.optional(S.NullOr(S.String)),
           ovhSupport: S.optional(S.Boolean),
-          rules: S.optional(__S(246)),
-          status: S.optional(S.String),
+          rules: S.optional(AuthApiCredentialRulesList),
+          status: S.optional(AuthCredentialStateEnum),
         }),
       ).annotate({ identifier: "AuthApiCredential" });
   }
@@ -14593,34 +18494,34 @@ function __c31(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(29)),
+          amount: S.optional(OrderPrice),
           creationDate: S.optional(S.String),
           expirationDate: S.optional(S.String),
           lastUpdate: S.optional(S.String),
-          sourceObject: S.optional(__S(50)),
+          sourceObject: S.optional(MeCreditBalanceMovementSubObject),
         }),
       ).annotate({
         identifier: "MeCreditBalanceExpiringMovement",
       });
     case 3:
-      return S.Array(__S(250));
+      return S.Array(MeCreditBalanceExpiringMovement);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(29)),
+          amount: S.optional(OrderPrice),
           balanceSubName: S.optional(S.NullOr(S.String)),
-          expiring: S.optional(__S(251)),
+          expiring: S.optional(MeCreditBalanceBalanceDetailsExpiringList),
           serviceId: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "MeCreditBalanceBalanceDetails",
       });
     case 5:
-      return S.Array(__S(252));
+      return S.Array(MeCreditBalanceBalanceDetails);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(29)),
+          amount: S.optional(OrderPrice),
           balanceSubName: S.optional(S.NullOr(S.String)),
           orderId: S.optional(S.Number),
         }),
@@ -14628,7 +18529,7 @@ function __c31(j: number): any {
         identifier: "MeCreditBalanceBookedMovement",
       });
     case 7:
-      return S.Array(__S(254));
+      return S.Array(MeCreditBalanceBookedMovement);
   }
 }
 function __c32(j: number): any {
@@ -14636,14 +18537,14 @@ function __c32(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(29)),
-          balanceDetails: S.optional(__S(253)),
+          amount: S.optional(OrderPrice),
+          balanceDetails: S.optional(MeCreditBalanceBalanceDetailsList),
           balanceName: S.optional(S.String),
-          booked: S.optional(__S(255)),
+          booked: S.optional(MeCreditBalanceBookedList),
           creationDate: S.optional(S.String),
-          expiring: S.optional(__S(251)),
+          expiring: S.optional(MeCreditBalanceExpiringList),
           lastUpdate: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(MeCreditBalanceTypeEnum),
         }),
       ).annotate({ identifier: "MeCreditBalance" });
     case 1:
@@ -14669,10 +18570,10 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           active: S.optional(S.Boolean),
-          dueAmount: S.optional(__S(29)),
-          pendingAmount: S.optional(__S(29)),
-          todoAmount: S.optional(__S(29)),
-          unmaturedAmount: S.optional(__S(29)),
+          dueAmount: S.optional(OrderPrice),
+          pendingAmount: S.optional(OrderPrice),
+          todoAmount: S.optional(OrderPrice),
+          unmaturedAmount: S.optional(OrderPrice),
         }),
       ).annotate({ identifier: "DebtBalance" });
     case 4:
@@ -14726,12 +18627,12 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(29)),
+          amount: S.optional(OrderPrice),
           date: S.optional(S.String),
           depositId: S.optional(S.String),
           orderId: S.optional(S.Number),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          paymentInfo: S.optional(S.NullOr(__S(210))),
+          paymentInfo: S.optional(S.NullOr(DebtAssociatedObjectPaymentInfo)),
           pdfUrl: S.optional(S.String),
           url: S.optional(S.String),
         }),
@@ -14758,8 +18659,8 @@ function __c33(j: number): any {
           description: S.optional(S.String),
           domain: S.optional(S.String),
           quantity: S.optional(S.String),
-          totalPrice: S.optional(__S(29)),
-          unitPrice: S.optional(__S(29)),
+          totalPrice: S.optional(OrderPrice),
+          unitPrice: S.optional(OrderPrice),
         }),
       ).annotate({ identifier: "BillingDepositDetail" });
     case 3:
@@ -14886,17 +18787,17 @@ function __c34(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(S.String),
+          category: S.optional(BillingCategoryEnum),
           date: S.optional(S.String),
           downPaymentInvoiceId: S.optional(S.String),
           eInvoicingId: S.optional(S.NullOr(S.String)),
-          eInvoicingStatus: S.optional(S.NullOr(S.String)),
+          eInvoicingStatus: S.optional(S.NullOr(BillingEInvoicingStatusEnum)),
           orderId: S.optional(S.Number),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           pdfUrl: S.optional(S.String),
-          priceWithTax: S.optional(__S(29)),
-          priceWithoutTax: S.optional(__S(29)),
-          tax: S.optional(__S(29)),
+          priceWithTax: S.optional(OrderPrice),
+          priceWithoutTax: S.optional(OrderPrice),
+          tax: S.optional(OrderPrice),
           url: S.optional(S.String),
         }),
       ).annotate({
@@ -14974,8 +18875,8 @@ function __c35(j: number): any {
           periodEnd: S.optional(S.NullOr(S.String)),
           periodStart: S.optional(S.NullOr(S.String)),
           quantity: S.optional(S.Number),
-          totalPrice: S.optional(__S(29)),
-          unitPrice: S.optional(__S(213)),
+          totalPrice: S.optional(OrderPrice),
+          unitPrice: S.optional(OrderLongPrice),
         }),
       ).annotate({
         identifier: "BillingDownPaymentInvoiceDetail",
@@ -15036,7 +18937,7 @@ function __c35(j: number): any {
           date: S.optional(S.String),
           description: S.optional(S.String),
           movementId: S.optional(S.Number),
-          operation: S.optional(S.String),
+          operation: S.optional(BillingFidelityAccountOperationEnum),
           order: S.optional(S.Number),
           previousBalance: S.optional(S.Number),
         }),
@@ -15093,12 +18994,12 @@ function __c36(j: number): any {
           description: S.optional(S.String),
           email: S.optional(S.NullOr(S.String)),
           group: S.optional(S.String),
-          groups: S.optional(__S(15)),
+          groups: S.optional(AuthUserGroupsList),
           lastUpdate: S.optional(S.String),
           login: S.optional(S.String),
           passwordLastUpdate: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          status: S.optional(S.String),
-          type: S.optional(S.NullOr(S.String)),
+          status: S.optional(AuthUserStatusEnum),
+          type: S.optional(S.NullOr(AuthUserTypeEnum)),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthUser" });
@@ -15151,12 +19052,12 @@ function __c37(j: number): any {
           abuse_mailbox: S.optional(S.String),
           address: S.optional(S.String),
           city: S.optional(S.String),
-          country: S.optional(S.String),
+          country: S.optional(NichandleCountryEnum),
           firstname: S.optional(S.String),
           lastname: S.optional(S.String),
           organisationId: S.optional(S.String),
           phone: S.optional(S.String),
-          registry: S.optional(S.String),
+          registry: S.optional(NichandleIpRegistryEnum),
           state: S.optional(S.NullOr(S.String)),
           zip: S.optional(S.NullOr(S.String)),
         }),
@@ -15172,7 +19073,7 @@ function __c37(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          additionalReturnedFields: S.optional(__S(15)),
+          additionalReturnedFields: S.optional(DbaasLogsLogKindAdditionalReturnedFieldsList),
           createdAt: S.optional(S.String),
           displayName: S.optional(S.String),
           kindId: S.optional(S.String),
@@ -15212,7 +19113,7 @@ function __c38(j: number): any {
         S.Struct({
           createdAt: S.optional(S.String),
           kind: S.optional(S.String),
-          resource: S.optional(__S(303)),
+          resource: S.optional(DbaasLogsSubscriptionResource),
           serviceName: S.optional(S.String),
           streamId: S.optional(S.String),
           subscriptionId: S.optional(S.String),
@@ -15238,7 +19139,7 @@ function __c38(j: number): any {
           date: S.optional(S.String),
           ip: S.optional(S.NullOr(S.String)),
           logId: S.optional(S.Number),
-          method: S.optional(S.String),
+          method: S.optional(HttpMethodEnum),
           path: S.optional(S.String),
           route: S.optional(S.String),
         }),
@@ -15270,7 +19171,7 @@ function __c38(j: number): any {
         S.Struct({
           domainsToMigrate: S.optional(S.NullOr(S.Number)),
           migratedDomains: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.String),
+          status: S.optional(BillingBillingTaskStatusEnum),
         }),
       ).annotate({
         identifier: "BillingManualDomainPaymentStatus",
@@ -15297,11 +19198,11 @@ function __c39(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          call: S.optional(__S(313)),
+          call: S.optional(MeMarketingConsentDetails),
           denyAll: S.optional(S.Boolean),
           denyUntil: S.optional(S.NullOr(S.String)),
-          email: S.optional(__S(313)),
-          sms: S.optional(__S(313)),
+          email: S.optional(MeMarketingConsentDetails),
+          sms: S.optional(MeMarketingConsentDetails),
         }),
       ).annotate({ identifier: "MeMarketingConsent" });
     case 3:
@@ -15311,18 +19212,18 @@ function __c39(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/me/migration/{migrationId}", code: 200 })),
       ).annotate({ identifier: "GetMeMigrationRequest" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(MeAgreementsContractAgreement);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          agreements: S.optional(__S(316)),
+          agreements: S.optional(MeMigrationStepContractsAgreementsList),
         }),
       ).annotate({ identifier: "MeMigrationStepContracts" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          balanceAmount: S.optional(S.NullOr(__S(29))),
-          ovhAccountAmount: S.optional(S.NullOr(__S(29))),
+          balanceAmount: S.optional(S.NullOr(OrderPrice)),
+          ovhAccountAmount: S.optional(S.NullOr(OrderPrice)),
         }),
       ).annotate({ identifier: "MeMigrationStepDebt" });
     case 7:
@@ -15340,23 +19241,23 @@ function __c40(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          contracts: S.optional(S.NullOr(__S(317))),
-          debt: S.optional(S.NullOr(__S(318))),
-          name: S.optional(S.String),
-          orders: S.optional(S.NullOr(__S(319))),
-          status: S.optional(S.String),
+          contracts: S.optional(S.NullOr(MeMigrationStepContracts)),
+          debt: S.optional(S.NullOr(MeMigrationStepDebt)),
+          name: S.optional(MeMigrationStepNameEnum),
+          orders: S.optional(S.NullOr(MeMigrationStepOrders)),
+          status: S.optional(MeMigrationStepStatusEnum),
         }),
       ).annotate({ identifier: "MeMigrationStep" });
     case 1:
-      return S.Array(__S(320));
+      return S.Array(MeMigrationStep);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          from: S.optional(S.String),
+          from: S.optional(NichandleOvhSubsidiaryEnum),
           id: S.optional(S.Number),
-          status: S.optional(S.String),
-          steps: S.optional(S.NullOr(__S(321))),
-          to: S.optional(S.String),
+          status: S.optional(MeMigrationStatusEnum),
+          steps: S.optional(S.NullOr(MeMigrationStepsList)),
+          to: S.optional(NichandleOvhSubsidiaryEnum),
         }),
       ).annotate({ identifier: "MeMigration" });
     case 3:
@@ -15432,11 +19333,11 @@ function __c41(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          callbackUrls: S.optional(S.NullOr(__S(15))),
+          callbackUrls: S.optional(S.NullOr(Oauth2ClientCallbackUrlsList)),
           clientId: S.optional(S.String),
           createdAt: S.optional(S.String),
           description: S.optional(S.String),
-          flow: S.optional(S.String),
+          flow: S.optional(Oauth2ClientFlowEnum),
           identity: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
         }),
@@ -15453,24 +19354,24 @@ function __c41(j: number): any {
           createdAt: S.optional(S.String),
           expiresAt: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          scopes: S.optional(__S(15)),
+          scopes: S.optional(Oauth2AccessTokenScopesList),
         }),
       ).annotate({ identifier: "Oauth2AccessToken" });
     case 4:
-      return S.Array(__S(331));
+      return S.Array(Oauth2AccessToken);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          accessTokens: S.optional(__S(332)),
+          accessTokens: S.optional(Oauth2TokenAccessTokensList),
           clientDescription: S.optional(S.String),
           clientId: S.optional(S.String),
           clientName: S.optional(S.String),
           createdAt: S.optional(S.String),
           expiresAt: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          identities: S.optional(__S(15)),
+          identities: S.optional(Oauth2TokenIdentitiesList),
           lastUsedAt: S.optional(S.NullOr(S.String)),
-          scopes: S.optional(__S(15)),
+          scopes: S.optional(Oauth2TokenScopesList),
         }),
       ).annotate({ identifier: "Oauth2Token" });
     case 6:
@@ -15495,7 +19396,7 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(BillingOrderAssociatedObjectTypeEnum)),
         }),
       ).annotate({
         identifier: "BillingOrderAssociatedObject",
@@ -15513,7 +19414,7 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           orderId: S.Number.pipe(T.Label()),
-          fileFormat: S.String.pipe(T.Query()),
+          fileFormat: ConsumptionConsumptionExportFormatsEnum.pipe(T.Query()),
         }).pipe(
           T.Http({ method: "GET", uri: "/me/order/{orderId}/consumption/details", code: 200 }),
         ),
@@ -15523,11 +19424,11 @@ function __c42(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          fileFormat: S.optional(S.NullOr(S.String)),
+          fileFormat: S.optional(S.NullOr(ConsumptionConsumptionExportFormatsEnum)),
           fileURL: S.optional(S.NullOr(S.String)),
           message: S.optional(S.NullOr(S.String)),
           taskId: S.optional(S.Number),
-          taskStatus: S.optional(S.String),
+          taskStatus: S.optional(ConsumptionConsumptionExportTaskStatusEnum),
         }),
       ).annotate({
         identifier: "BillingOrderConsumptionDetails",
@@ -15586,12 +19487,12 @@ function __c43(j: number): any {
         S.Struct({
           cancelled: S.optional(S.Boolean),
           description: S.optional(S.String),
-          detailType: S.optional(S.NullOr(S.String)),
+          detailType: S.optional(S.NullOr(OrderOrderDetailTypeEnum)),
           domain: S.optional(S.String),
           orderDetailId: S.optional(S.Number),
           quantity: S.optional(S.String),
-          totalPrice: S.optional(__S(29)),
-          unitPrice: S.optional(__S(29)),
+          totalPrice: S.optional(OrderPrice),
+          unitPrice: S.optional(OrderPrice),
         }),
       ).annotate({ identifier: "BillingOrderDetail" });
     case 1:
@@ -15619,7 +19520,7 @@ function __c43(j: number): any {
         identifier: "BillingItemDetailOrderConfiguration",
       });
     case 3:
-      return S.Array(__S(346));
+      return S.Array(BillingItemDetailOrderConfiguration);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -15634,7 +19535,7 @@ function __c43(j: number): any {
           code: S.optional(S.NullOr(S.String)),
           duration: S.optional(S.NullOr(S.String)),
           pricingMode: S.optional(S.NullOr(S.String)),
-          product: S.optional(__S(348)),
+          product: S.optional(BillingItemDetailOrderPlanProduct),
           quantity: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
@@ -15643,16 +19544,16 @@ function __c43(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(S.NullOr(S.String)),
-          configurations: S.optional(__S(347)),
-          plan: S.optional(__S(349)),
-          type: S.optional(S.NullOr(S.String)),
+          action: S.optional(S.NullOr(BillingItemDetailOrderActionEnum)),
+          configurations: S.optional(BillingItemDetailOrderConfigurationsList),
+          plan: S.optional(BillingItemDetailOrderPlan),
+          type: S.optional(S.NullOr(BillingItemDetailOrderDetailTypeEnum)),
         }),
       ).annotate({ identifier: "BillingItemDetailOrder" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          order: S.optional(__S(350)),
+          order: S.optional(BillingItemDetailOrder),
         }),
       ).annotate({ identifier: "BillingItemDetail" });
   }
@@ -15672,7 +19573,7 @@ function __c44(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/me/order/{orderId}/status", code: 200 })),
       ).annotate({ identifier: "GetMeOrderStatusRequest" });
     case 2:
-      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => BillingOrderOrderStatusEnum.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetMeOrderStatusResponse",
       });
     case 3:
@@ -15685,14 +19586,14 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           alertThreshold: S.optional(S.NullOr(S.Number)),
-          availableAfterCredit: S.optional(__S(29)),
-          balance: S.optional(__S(29)),
+          availableAfterCredit: S.optional(OrderPrice),
+          balance: S.optional(OrderPrice),
           canBeCredited: S.optional(S.Boolean),
           isActive: S.optional(S.Boolean),
           lastUpdate: S.optional(S.String),
           openDate: S.optional(S.String),
           ovhAccountId: S.optional(S.String),
-          retrievableAmount: S.optional(__S(29)),
+          retrievableAmount: S.optional(OrderPrice),
         }),
       ).annotate({ identifier: "BillingOvhAccount" });
     case 5:
@@ -15725,15 +19626,15 @@ function __c44(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(29)),
-          balance: S.optional(__S(29)),
+          amount: S.optional(OrderPrice),
+          balance: S.optional(OrderPrice),
           date: S.optional(S.String),
           description: S.optional(S.String),
           movementId: S.optional(S.Number),
-          operation: S.optional(S.String),
+          operation: S.optional(BillingOvhAccountOperationEnum),
           order: S.optional(S.Number),
-          previousBalance: S.optional(__S(29)),
-          retrievableAmount: S.optional(__S(29)),
+          previousBalance: S.optional(OrderPrice),
+          retrievableAmount: S.optional(OrderPrice),
         }),
       ).annotate({ identifier: "BillingMovement" });
   }
@@ -15747,9 +19648,9 @@ function __c45(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          level: S.optional(S.String),
+          level: S.optional(MePartnerLevelLevelTypeEnum),
           msa: S.optional(S.Boolean),
-          requirement: S.optional(S.String),
+          requirement: S.optional(MePartnerLevelRequirementLoSEnum),
         }),
       ).annotate({ identifier: "MePartnerLevelLevel" });
     case 2:
@@ -15776,10 +19677,10 @@ function __c45(j: number): any {
           creationDate: S.optional(S.String),
           defaultPaymentMean: S.optional(S.Boolean),
           description: S.optional(S.NullOr(S.String)),
-          icon: S.optional(S.NullOr(__S(363))),
+          icon: S.optional(S.NullOr(MePaymentMeanIconData)),
           id: S.optional(S.Number),
           label: S.optional(S.NullOr(S.String)),
-          state: S.optional(S.String),
+          state: S.optional(MePaymentMeanDeferredStateEnum),
         }),
       ).annotate({ identifier: "MePaymentMeanDeferred" });
     case 5:
@@ -15803,13 +19704,13 @@ function __c45(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(29)),
+          amount: S.optional(OrderPrice),
           creationDate: S.optional(S.String),
           lastUpdate: S.optional(S.String),
           paymentMethodId: S.optional(S.Number),
-          status: S.optional(S.String),
+          status: S.optional(MePaymentTransactionStatusEnum),
           transactionId: S.optional(S.Number),
-          type: S.optional(S.String),
+          type: S.optional(MePaymentTransactionTypeEnum),
         }),
       ).annotate({ identifier: "MePaymentTransaction" });
   }
@@ -15838,10 +19739,10 @@ function __c46(j: number): any {
           originalBillId: S.optional(S.NullOr(S.String)),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           pdfUrl: S.optional(S.String),
-          priceWithTax: S.optional(__S(29)),
-          priceWithoutTax: S.optional(__S(29)),
+          priceWithTax: S.optional(OrderPrice),
+          priceWithoutTax: S.optional(OrderPrice),
           refundId: S.optional(S.String),
-          tax: S.optional(__S(29)),
+          tax: S.optional(OrderPrice),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingRefund" });
@@ -15867,8 +19768,8 @@ function __c46(j: number): any {
           reference: S.optional(S.String),
           refundDetailId: S.optional(S.String),
           refundId: S.optional(S.String),
-          totalPrice: S.optional(__S(29)),
-          unitPrice: S.optional(__S(29)),
+          totalPrice: S.optional(OrderPrice),
+          unitPrice: S.optional(OrderPrice),
         }),
       ).annotate({ identifier: "BillingRefundDetail" });
     case 5:
@@ -15892,10 +19793,10 @@ function __c46(j: number): any {
           orderId: S.optional(S.Number),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           pdfUrl: S.optional(S.String),
-          priceWithTax: S.optional(__S(29)),
-          priceWithoutTax: S.optional(__S(29)),
+          priceWithTax: S.optional(OrderPrice),
+          priceWithoutTax: S.optional(OrderPrice),
           reverseBillId: S.optional(S.String),
-          tax: S.optional(__S(29)),
+          tax: S.optional(OrderPrice),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingReverseBill" });
@@ -15927,8 +19828,8 @@ function __c47(j: number): any {
           reference: S.optional(S.String),
           reverseBillDetailId: S.optional(S.String),
           reverseBillId: S.optional(S.String),
-          totalPrice: S.optional(__S(29)),
-          unitPrice: S.optional(__S(29)),
+          totalPrice: S.optional(OrderPrice),
+          unitPrice: S.optional(OrderPrice),
         }),
       ).annotate({
         identifier: "BillingReversableBillDetail",
@@ -16016,7 +19917,7 @@ function __c48(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          level: S.optional(S.String),
+          level: S.optional(MeSupportLevelLevelTypeEnum),
         }),
       ).annotate({ identifier: "MeSupportLevelLevel" });
     case 6:
@@ -16038,18 +19939,18 @@ function __c48(j: number): any {
 function __c49(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(NichandleChangeContactContactTypeEnum);
     case 1:
       return S.suspend(() =>
         S.Struct({
           askingAccount: S.optional(S.NullOr(S.String)),
-          contactTypes: S.optional(__S(392)),
+          contactTypes: S.optional(NichandleContactChangeTaskContactTypesList),
           dateDone: S.optional(S.NullOr(S.String)),
           dateRequest: S.optional(S.String),
           fromAccount: S.optional(S.String),
           id: S.optional(S.Number),
           serviceDomain: S.optional(S.NullOr(S.String)),
-          state: S.optional(S.String),
+          state: S.optional(NichandleChangeContactTaskStateEnum),
           toAccount: S.optional(S.String),
         }),
       ).annotate({
@@ -16070,10 +19971,10 @@ function __c49(j: number): any {
           comment: S.optional(S.NullOr(S.String)),
           creationDate: S.optional(S.String),
           doneDate: S.optional(S.NullOr(S.String)),
-          function: S.optional(S.String),
+          function: S.optional(DomainTaskFunctionEnum),
           id: S.optional(S.Number),
           lastUpdate: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
+          status: S.optional(DomainTaskStatusEnum),
           todoDate: S.optional(S.String),
           zone: S.optional(S.String),
         }),
@@ -16097,9 +19998,9 @@ function __c49(j: number): any {
           function: S.optional(S.String),
           id: S.optional(S.Number),
           lastUpdate: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(DomainOperationStatusEnum),
           todoDate: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(DomainOperationTypeEnum),
         }),
       ).annotate({ identifier: "DomainTask" });
     case 6:
@@ -16114,10 +20015,10 @@ function __c49(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          acceptedFormats: S.optional(S.NullOr(__S(392))),
-          acceptedValues: S.optional(S.NullOr(__S(15))),
+          acceptedFormats: S.optional(S.NullOr(NichandleDomainTaskArgumentAcceptedFormatsList)),
+          acceptedValues: S.optional(S.NullOr(NichandleDomainTaskArgumentAcceptedValuesList)),
           description: S.optional(S.NullOr(S.String)),
-          fields: S.optional(S.NullOr(__S(392))),
+          fields: S.optional(S.NullOr(NichandleDomainTaskArgumentFieldsList)),
           key: S.optional(S.String),
           maximumSize: S.optional(S.NullOr(S.Number)),
           minimumSize: S.optional(S.NullOr(S.Number)),
@@ -16150,17 +20051,17 @@ function __c50(j: number): any {
         }),
       ).annotate({ identifier: "DomainOperationStep" });
     case 2:
-      return S.Array(__S(401));
+      return S.Array(DomainOperationStep);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          currentStep: S.optional(__S(401)),
+          currentStep: S.optional(DomainOperationStep),
           expectedDoneDate: S.optional(S.NullOr(S.String)),
-          followUpSteps: S.optional(S.NullOr(__S(402))),
+          followUpSteps: S.optional(S.NullOr(NichandleDomainTaskProgressBarFollowUpStepsList)),
           lastUpdateDate: S.optional(S.NullOr(S.String)),
           progress: S.optional(S.Number),
-          taskActions: S.optional(__S(392)),
-          taskStatus: S.optional(S.String),
+          taskActions: S.optional(NichandleDomainTaskProgressBarTaskActionsList),
+          taskStatus: S.optional(DomainOperationStatusEnum),
         }),
       ).annotate({
         identifier: "NichandleDomainTaskProgressBar",
@@ -16217,7 +20118,7 @@ function __c51(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          balance: S.optional(__S(29)),
+          balance: S.optional(OrderPrice),
           lastUpdate: S.optional(S.String),
           openDate: S.optional(S.String),
           voucherAccountId: S.optional(S.String),
@@ -16241,14 +20142,14 @@ function __c51(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(29)),
-          balance: S.optional(__S(29)),
+          amount: S.optional(OrderPrice),
+          balance: S.optional(OrderPrice),
           date: S.optional(S.String),
           description: S.optional(S.String),
           movementId: S.optional(S.Number),
-          operation: S.optional(S.String),
+          operation: S.optional(BillingVoucherAccountOperationEnum),
           order: S.optional(S.Number),
-          previousBalance: S.optional(__S(29)),
+          previousBalance: S.optional(OrderPrice),
         }),
       ).annotate({ identifier: "BillingVoucherMovement" });
     case 5:
@@ -16260,7 +20161,7 @@ function __c51(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(29)),
+          amount: S.optional(OrderPrice),
           country: S.optional(S.String),
           date: S.optional(S.String),
           orderId: S.optional(S.Number),
@@ -16295,8 +20196,8 @@ function __c52(j: number): any {
           description: S.optional(S.String),
           domain: S.optional(S.String),
           quantity: S.optional(S.String),
-          totalPrice: S.optional(__S(29)),
-          unitPrice: S.optional(__S(29)),
+          totalPrice: S.optional(OrderPrice),
+          unitPrice: S.optional(OrderPrice),
           withdrawalDetailId: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingWithdrawalDetail" });
@@ -16333,7 +20234,9 @@ function __c52(j: number): any {
     case 6:
       return S.Array(S.Number);
     case 7:
-      return S.suspend(() => __S(422).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListMeAccessRestrictionIpResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListMeAccessRestrictionIpResponse",
       });
   }
@@ -16361,12 +20264,12 @@ function __c53(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          agreed: S.optional(S.String.pipe(T.Query())),
+          agreed: S.optional(AgreementsAgreementStateEnum.pipe(T.Query())),
           contractId: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/me/agreements", code: 200 })),
       ).annotate({ identifier: "ListMeAgreementsRequest" });
     case 4:
-      return S.suspend(() => __S(422).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListMeAgreementsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListMeAgreementsResponse",
       });
     case 5:
@@ -16376,7 +20279,7 @@ function __c53(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(S.String.pipe(T.Query())),
+          category: S.optional(BillingCategoryEnum.pipe(T.Query())),
           date_from: S.optional(S.String.pipe(T.Query("date.from"))),
           date_to: S.optional(S.String.pipe(T.Query("date.to"))),
           orderId: S.optional(S.Number.pipe(T.Query())),
@@ -16402,7 +20305,7 @@ function __c54(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/me/bill/{billId}/details", code: 200 })),
       ).annotate({ identifier: "ListMeBillDetailsRequest" });
     case 1:
-      return S.suspend(() => __S(15).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListMeBillDetailsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListMeBillDetailsResponse",
       });
     case 2:
@@ -16441,8 +20344,8 @@ function __c54(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          name: S.optional(MeBillingTasksTaskNameEnum.pipe(T.Query())),
+          status: S.optional(MeBillingTasksTaskStatusEnum.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/me/billing/task", code: 200 })),
       ).annotate({ identifier: "ListMeBillingTaskRequest" });
     case 7:
@@ -16456,9 +20359,11 @@ function __c54(j: number): any {
 function __c55(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(232));
+      return S.Array(CarbonCalculatorTask);
     case 1:
-      return S.suspend(() => __S(440).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListMeCarbonCalculatorTaskResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListMeCarbonCalculatorTaskResponse",
       });
     case 2:
@@ -16466,9 +20371,9 @@ function __c55(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/consent", code: 200 })),
       ).annotate({ identifier: "ListMeConsentRequest" });
     case 3:
-      return S.Array(__S(234));
+      return S.Array(MeConsentCampaign);
     case 4:
-      return S.suspend(() => __S(443).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListMeConsentResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListMeConsentResponse",
       });
     case 5:
@@ -16487,7 +20392,7 @@ function __c55(j: number): any {
         }),
       ).annotate({ identifier: "MeConsentDecision" });
     case 7:
-      return S.Array(__S(446));
+      return S.Array(MeConsentDecision);
   }
 }
 function __c56(j: number): any {
@@ -16496,8 +20401,8 @@ function __c56(j: number): any {
       return S.suspend(() =>
         S.Struct({
           campaign: S.optional(S.String),
-          history: S.optional(__S(447)),
-          type: S.optional(S.String),
+          history: S.optional(MeConsentConsentHistoryList),
+          type: S.optional(MeConsentCampaignTypeEnum),
           value: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MeConsentConsent" });
@@ -16512,7 +20417,7 @@ function __c56(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          currencyCode: S.optional(S.String),
+          currencyCode: S.optional(OrderCurrencyCodeEnum),
           text: S.optional(S.String),
           value: S.optional(S.Number),
           valueInUcents: S.optional(S.Number),
@@ -16521,7 +20426,7 @@ function __c56(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          price: S.optional(__S(450)),
+          price: S.optional(MeConsumptionPrice),
           quantity: S.optional(S.Number),
           unique_id: S.optional(S.NullOr(S.String)),
         }),
@@ -16529,31 +20434,31 @@ function __c56(j: number): any {
         identifier: "MeConsumptionTransactionElementDetail",
       });
     case 4:
-      return S.Array(__S(451));
+      return S.Array(MeConsumptionTransactionElementDetail);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(452)),
+          details: S.optional(MeConsumptionTransactionElementDetailsList),
           planCode: S.optional(S.String),
           planFamily: S.optional(S.String),
-          price: S.optional(__S(450)),
+          price: S.optional(MeConsumptionPrice),
           quantity: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "MeConsumptionTransactionElement",
       });
     case 6:
-      return S.Array(__S(453));
+      return S.Array(MeConsumptionTransactionElement);
     case 7:
       return S.suspend(() =>
         S.Struct({
           beginDate: S.optional(S.String),
           creationDate: S.optional(S.NullOr(S.String)),
-          elements: S.optional(__S(454)),
+          elements: S.optional(MeConsumptionTransactionElementsList),
           endDate: S.optional(S.NullOr(S.String)),
           id: S.optional(S.NullOr(S.Number)),
           lastUpdate: S.optional(S.NullOr(S.String)),
-          price: S.optional(__S(450)),
+          price: S.optional(MeConsumptionPrice),
           serviceId: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MeConsumptionTransaction" });
@@ -16562,9 +20467,11 @@ function __c56(j: number): any {
 function __c57(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(455));
+      return S.Array(MeConsumptionTransaction);
     case 1:
-      return S.suspend(() => __S(456).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListMeConsumptionUsageCurrentResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListMeConsumptionUsageCurrentResponse",
       });
     case 2:
@@ -16607,19 +20514,21 @@ function __c57(j: number): any {
         identifier: "MeContactFieldInformation",
       });
     case 7:
-      return S.Array(__S(462));
+      return S.Array(MeContactFieldInformation);
   }
 }
 function __c58(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(463).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListMeContactFieldsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListMeContactFieldsResponse",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(S.String.pipe(T.Query())),
+          category: S.optional(BillingCategoryEnum.pipe(T.Query())),
           date_from: S.optional(S.String.pipe(T.Query("date.from"))),
           date_to: S.optional(S.String.pipe(T.Query("date.to"))),
           orderId: S.optional(S.Number.pipe(T.Query())),
@@ -16660,13 +20569,13 @@ function __c58(j: number): any {
       return S.suspend(() =>
         S.Struct({
           applicationId: S.optional(S.Number.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(AuthCredentialStateEnum.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/me/api/credential", code: 200 })),
       ).annotate({ identifier: "ListMeCredentialRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(MeCreditBalanceTypeEnum.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/me/credit/balance", code: 200 })),
       ).annotate({
         identifier: "ListMeCreditBalanceRequest",
@@ -16764,7 +20673,7 @@ function __c59(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(S.String.pipe(T.Query())),
+          category: S.optional(BillingCategoryEnum.pipe(T.Query())),
           date_from: S.optional(S.String.pipe(T.Query("date.from"))),
           date_to: S.optional(S.String.pipe(T.Query("date.to"))),
           orderId: S.optional(S.Number.pipe(T.Query())),
@@ -16861,7 +20770,7 @@ function __c61(j: number): any {
         identifier: "ListMeIncidentSbgMigrateServicesRequest",
       });
     case 1:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(498)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => MeIncidentServiceMigration));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -16872,11 +20781,11 @@ function __c61(j: number): any {
         identifier: "MeIncidentProposedOfferConfiguration",
       });
     case 3:
-      return S.Array(__S(490));
+      return S.Array(MeIncidentProposedOfferConfiguration);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          capacities: S.optional(__S(392)),
+          capacities: S.optional(OrderCartGenericProductPricingCapacitiesList),
           description: S.optional(S.String),
           duration: S.optional(S.String),
           interval: S.optional(S.Number),
@@ -16884,23 +20793,23 @@ function __c61(j: number): any {
           maximumRepeat: S.optional(S.NullOr(S.Number)),
           minimumQuantity: S.optional(S.Number),
           minimumRepeat: S.optional(S.Number),
-          price: S.optional(__S(29)),
+          price: S.optional(OrderPrice),
           priceInUcents: S.optional(S.Number),
           pricingMode: S.optional(S.String),
-          pricingType: S.optional(S.String),
+          pricingType: S.optional(OrderCartGenericProductPricingTypeEnum),
         }),
       ).annotate({
         identifier: "OrderCartGenericProductPricing",
       });
     case 5:
-      return S.Array(__S(492));
+      return S.Array(OrderCartGenericProductPricing);
     case 6:
       return S.suspend(() =>
         S.Struct({
           planCode: S.optional(S.String),
-          prices: S.optional(__S(493)),
+          prices: S.optional(OrderCartGenericProductDefinitionPricesList),
           productName: S.optional(S.String),
-          productType: S.optional(S.String),
+          productType: S.optional(OrderCartGenericProductTypeEnum),
         }),
       ).annotate({
         identifier: "OrderCartGenericProductDefinition",
@@ -16921,17 +20830,17 @@ function __c62(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          configurations: S.optional(__S(491)),
-          plan: S.optional(__S(494)),
+          configurations: S.optional(MeIncidentProposedOfferConfigurationsList),
+          plan: S.optional(OrderCartGenericProductDefinition),
           pricingMode: S.optional(S.String),
-          promotion: S.optional(__S(495)),
+          promotion: S.optional(MeIncidentPercentagePromotion),
         }),
       ).annotate({ identifier: "MeIncidentProposedOffer" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          metadata: S.optional(__S(59)),
+          metadata: S.optional(MeIncidentServiceToMigrateMetadataList),
           route: S.optional(S.NullOr(S.String)),
           serviceId: S.optional(S.Number),
           serviceName: S.optional(S.String),
@@ -16942,18 +20851,20 @@ function __c62(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          addons: S.optional(__S(489)),
+          addons: S.optional(MeIncidentServiceMigrationAddonsList),
           orderId: S.optional(S.NullOr(S.Number)),
-          proposedOffer: S.optional(__S(496)),
-          serviceToMigrate: S.optional(S.NullOr(__S(497))),
+          proposedOffer: S.optional(MeIncidentProposedOffer),
+          serviceToMigrate: S.optional(S.NullOr(MeIncidentServiceToMigrate)),
         }),
       ).annotate({
         identifier: "MeIncidentServiceMigration",
       });
     case 3:
-      return S.Array(__S(498));
+      return S.Array(MeIncidentServiceMigration);
     case 4:
-      return S.suspend(() => __S(499).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListMeIncidentSbgMigrateServicesResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListMeIncidentSbgMigrateServicesResponse",
       });
     case 5:
@@ -16969,7 +20880,7 @@ function __c62(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(AuditLogAuthUserTypeEnum),
           user: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "AuditLogAuthUserDetails" });
@@ -16980,7 +20891,7 @@ function __c63(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          userDetails: S.optional(__S(503)),
+          userDetails: S.optional(AuditLogAuthUserDetails),
         }),
       ).annotate({ identifier: "AuditLogAuthDetails" });
     case 1:
@@ -16995,7 +20906,7 @@ function __c63(j: number): any {
       return S.suspend(() =>
         S.Struct({
           group: S.optional(S.String),
-          new: S.optional(S.NullOr(__S(505))),
+          new: S.optional(S.NullOr(AuditLogGroupDetails)),
         }),
       ).annotate({
         identifier: "AuditLogGroupCreatedDetails",
@@ -17004,7 +20915,7 @@ function __c63(j: number): any {
       return S.suspend(() =>
         S.Struct({
           group: S.optional(S.String),
-          old: S.optional(S.NullOr(__S(505))),
+          old: S.optional(S.NullOr(AuditLogGroupDetails)),
         }),
       ).annotate({
         identifier: "AuditLogGroupDeletedDetails",
@@ -17013,8 +20924,8 @@ function __c63(j: number): any {
       return S.suspend(() =>
         S.Struct({
           group: S.optional(S.String),
-          new: S.optional(S.NullOr(__S(505))),
-          old: S.optional(S.NullOr(__S(505))),
+          new: S.optional(S.NullOr(AuditLogGroupDetails)),
+          old: S.optional(S.NullOr(AuditLogGroupDetails)),
         }),
       ).annotate({
         identifier: "AuditLogGroupModifiedDetails",
@@ -17022,7 +20933,7 @@ function __c63(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          mfaType: S.optional(S.NullOr(S.String)),
+          mfaType: S.optional(S.NullOr(AuditLogAuthMFATypeEnum)),
           userAgent: S.optional(S.String),
         }),
       ).annotate({
@@ -17031,8 +20942,8 @@ function __c63(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          identities: S.optional(S.NullOr(__S(15))),
-          resources: S.optional(S.NullOr(__S(15))),
+          identities: S.optional(S.NullOr(AuditLogPolicyChangesIdentitiesList)),
+          resources: S.optional(S.NullOr(AuditLogPolicyChangesResourcesList)),
         }),
       ).annotate({ identifier: "AuditLogPolicyChanges" });
     case 7:
@@ -17049,8 +20960,8 @@ function __c64(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          added: S.optional(S.NullOr(__S(510))),
-          new: S.optional(S.NullOr(__S(511))),
+          added: S.optional(S.NullOr(AuditLogPolicyChanges)),
+          new: S.optional(S.NullOr(AuditLogPolicyDetails)),
           policyId: S.optional(S.String),
           policyName: S.optional(S.String),
         }),
@@ -17060,10 +20971,10 @@ function __c64(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          old: S.optional(S.NullOr(__S(511))),
+          old: S.optional(S.NullOr(AuditLogPolicyDetails)),
           policyId: S.optional(S.String),
           policyName: S.optional(S.String),
-          removed: S.optional(S.NullOr(__S(510))),
+          removed: S.optional(S.NullOr(AuditLogPolicyChanges)),
         }),
       ).annotate({
         identifier: "AuditLogPolicyDeletedDetails",
@@ -17071,12 +20982,12 @@ function __c64(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          added: S.optional(S.NullOr(__S(510))),
-          new: S.optional(S.NullOr(__S(511))),
-          old: S.optional(S.NullOr(__S(511))),
+          added: S.optional(S.NullOr(AuditLogPolicyChanges)),
+          new: S.optional(S.NullOr(AuditLogPolicyDetails)),
+          old: S.optional(S.NullOr(AuditLogPolicyDetails)),
           policyId: S.optional(S.String),
           policyName: S.optional(S.String),
-          removed: S.optional(S.NullOr(__S(510))),
+          removed: S.optional(S.NullOr(AuditLogPolicyChanges)),
         }),
       ).annotate({
         identifier: "AuditLogPolicyModifiedDetails",
@@ -17093,7 +21004,7 @@ function __c64(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          new: S.optional(S.NullOr(__S(515))),
+          new: S.optional(S.NullOr(AuditLogProviderDetails)),
           ssoServiceURL: S.optional(S.String),
         }),
       ).annotate({
@@ -17102,7 +21013,7 @@ function __c64(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          old: S.optional(S.NullOr(__S(515))),
+          old: S.optional(S.NullOr(AuditLogProviderDetails)),
           ssoServiceURL: S.optional(S.String),
         }),
       ).annotate({
@@ -17111,8 +21022,8 @@ function __c64(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          new: S.optional(S.NullOr(__S(515))),
-          old: S.optional(S.NullOr(__S(515))),
+          new: S.optional(S.NullOr(AuditLogProviderDetails)),
+          old: S.optional(S.NullOr(AuditLogProviderDetails)),
           ssoServiceURL: S.optional(S.String),
         }),
       ).annotate({
@@ -17121,7 +21032,7 @@ function __c64(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(S.NullOr(__S(15))),
+          resources: S.optional(S.NullOr(AuditLogResourceGroupChangesResourcesList)),
         }),
       ).annotate({
         identifier: "AuditLogResourceGroupChanges",
@@ -17141,8 +21052,8 @@ function __c65(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          added: S.optional(S.NullOr(__S(519))),
-          new: S.optional(S.NullOr(__S(520))),
+          added: S.optional(S.NullOr(AuditLogResourceGroupChanges)),
+          new: S.optional(S.NullOr(AuditLogResourceGroupDetails)),
           resourceGroupId: S.optional(S.String),
           resourceGroupName: S.optional(S.String),
         }),
@@ -17152,8 +21063,8 @@ function __c65(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          old: S.optional(S.NullOr(__S(520))),
-          removed: S.optional(S.NullOr(__S(519))),
+          old: S.optional(S.NullOr(AuditLogResourceGroupDetails)),
+          removed: S.optional(S.NullOr(AuditLogResourceGroupChanges)),
           resourceGroupId: S.optional(S.String),
           resourceGroupName: S.optional(S.String),
         }),
@@ -17163,10 +21074,10 @@ function __c65(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          added: S.optional(S.NullOr(__S(519))),
-          new: S.optional(S.NullOr(__S(520))),
-          old: S.optional(S.NullOr(__S(520))),
-          removed: S.optional(S.NullOr(__S(519))),
+          added: S.optional(S.NullOr(AuditLogResourceGroupChanges)),
+          new: S.optional(S.NullOr(AuditLogResourceGroupDetails)),
+          old: S.optional(S.NullOr(AuditLogResourceGroupDetails)),
+          removed: S.optional(S.NullOr(AuditLogResourceGroupChanges)),
           resourceGroupId: S.optional(S.String),
           resourceGroupName: S.optional(S.String),
         }),
@@ -17183,7 +21094,7 @@ function __c65(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          new: S.optional(S.NullOr(__S(524))),
+          new: S.optional(S.NullOr(AuditLogTokenDetails)),
           tokenCreatedAt: S.optional(S.NullOr(S.String)),
           tokenName: S.optional(S.String),
           user: S.optional(S.String),
@@ -17194,7 +21105,7 @@ function __c65(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          old: S.optional(S.NullOr(__S(524))),
+          old: S.optional(S.NullOr(AuditLogTokenDetails)),
           tokenCreatedAt: S.optional(S.NullOr(S.String)),
           tokenName: S.optional(S.String),
           user: S.optional(S.String),
@@ -17205,8 +21116,8 @@ function __c65(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          new: S.optional(S.NullOr(__S(524))),
-          old: S.optional(S.NullOr(__S(524))),
+          new: S.optional(S.NullOr(AuditLogTokenDetails)),
+          old: S.optional(S.NullOr(AuditLogTokenDetails)),
           tokenCreatedAt: S.optional(S.NullOr(S.String)),
           tokenName: S.optional(S.String),
           user: S.optional(S.String),
@@ -17224,16 +21135,16 @@ function __c66(j: number): any {
           description: S.optional(S.String),
           group: S.optional(S.String),
           passwordRecoveryEmail: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          userType: S.optional(S.NullOr(S.String)),
+          userType: S.optional(S.NullOr(AuthUserTypeEnum)),
         }),
       ).annotate({ identifier: "AuditLogUserDetails" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          new: S.optional(S.NullOr(__S(528))),
+          new: S.optional(S.NullOr(AuditLogUserDetails)),
           user: S.optional(S.String),
           userCreatedAt: S.optional(S.NullOr(S.String)),
-          userType: S.optional(S.NullOr(S.String)),
+          userType: S.optional(S.NullOr(AuthUserTypeEnum)),
         }),
       ).annotate({
         identifier: "AuditLogUserCreatedDetails",
@@ -17241,10 +21152,10 @@ function __c66(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          old: S.optional(S.NullOr(__S(528))),
+          old: S.optional(S.NullOr(AuditLogUserDetails)),
           user: S.optional(S.String),
           userCreatedAt: S.optional(S.NullOr(S.String)),
-          userType: S.optional(S.NullOr(S.String)),
+          userType: S.optional(S.NullOr(AuthUserTypeEnum)),
         }),
       ).annotate({
         identifier: "AuditLogUserDeletedDetails",
@@ -17252,8 +21163,8 @@ function __c66(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          new: S.optional(S.NullOr(__S(528))),
-          old: S.optional(S.NullOr(__S(528))),
+          new: S.optional(S.NullOr(AuditLogUserDetails)),
+          old: S.optional(S.NullOr(AuditLogUserDetails)),
           user: S.optional(S.String),
           userCreatedAt: S.optional(S.NullOr(S.String)),
         }),
@@ -17272,36 +21183,36 @@ function __c66(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          authDetails: S.optional(S.NullOr(__S(504))),
+          authDetails: S.optional(S.NullOr(AuditLogAuthDetails)),
           createdAt: S.optional(S.String),
-          groupCreatedDetails: S.optional(S.NullOr(__S(506))),
-          groupDeletedDetails: S.optional(S.NullOr(__S(507))),
-          groupModifiedDetails: S.optional(S.NullOr(__S(508))),
+          groupCreatedDetails: S.optional(S.NullOr(AuditLogGroupCreatedDetails)),
+          groupDeletedDetails: S.optional(S.NullOr(AuditLogGroupDeletedDetails)),
+          groupModifiedDetails: S.optional(S.NullOr(AuditLogGroupModifiedDetails)),
           ip: S.optional(S.NullOr(S.String)),
-          loginSuccessDetails: S.optional(S.NullOr(__S(509))),
-          policyCreatedDetails: S.optional(S.NullOr(__S(512))),
-          policyDeletedDetails: S.optional(S.NullOr(__S(513))),
-          policyModifiedDetails: S.optional(S.NullOr(__S(514))),
-          providerCreatedDetails: S.optional(S.NullOr(__S(516))),
-          providerDeletedDetails: S.optional(S.NullOr(__S(517))),
-          providerModifiedDetails: S.optional(S.NullOr(__S(518))),
-          resourceGroupCreatedDetails: S.optional(S.NullOr(__S(521))),
-          resourceGroupDeletedDetails: S.optional(S.NullOr(__S(522))),
-          resourceGroupModifiedDetails: S.optional(S.NullOr(__S(523))),
-          tokenCreatedDetails: S.optional(S.NullOr(__S(525))),
-          tokenDeletedDetails: S.optional(S.NullOr(__S(526))),
-          tokenModifiedDetails: S.optional(S.NullOr(__S(527))),
-          type: S.optional(S.String),
-          userCreatedDetails: S.optional(S.NullOr(__S(529))),
-          userDeletedDetails: S.optional(S.NullOr(__S(530))),
-          userModifiedDetails: S.optional(S.NullOr(__S(531))),
-          userPasswordChangedDetails: S.optional(S.NullOr(__S(532))),
+          loginSuccessDetails: S.optional(S.NullOr(AuditLogLoginSuccessDetails)),
+          policyCreatedDetails: S.optional(S.NullOr(AuditLogPolicyCreatedDetails)),
+          policyDeletedDetails: S.optional(S.NullOr(AuditLogPolicyDeletedDetails)),
+          policyModifiedDetails: S.optional(S.NullOr(AuditLogPolicyModifiedDetails)),
+          providerCreatedDetails: S.optional(S.NullOr(AuditLogProviderCreatedDetails)),
+          providerDeletedDetails: S.optional(S.NullOr(AuditLogProviderDeletedDetails)),
+          providerModifiedDetails: S.optional(S.NullOr(AuditLogProviderModifiedDetails)),
+          resourceGroupCreatedDetails: S.optional(S.NullOr(AuditLogResourceGroupCreatedDetails)),
+          resourceGroupDeletedDetails: S.optional(S.NullOr(AuditLogResourceGroupDeletedDetails)),
+          resourceGroupModifiedDetails: S.optional(S.NullOr(AuditLogResourceGroupModifiedDetails)),
+          tokenCreatedDetails: S.optional(S.NullOr(AuditLogTokenCreatedDetails)),
+          tokenDeletedDetails: S.optional(S.NullOr(AuditLogTokenDeletedDetails)),
+          tokenModifiedDetails: S.optional(S.NullOr(AuditLogTokenModifiedDetails)),
+          type: S.optional(AuditLogTypeEnum),
+          userCreatedDetails: S.optional(S.NullOr(AuditLogUserCreatedDetails)),
+          userDeletedDetails: S.optional(S.NullOr(AuditLogUserDeletedDetails)),
+          userModifiedDetails: S.optional(S.NullOr(AuditLogUserModifiedDetails)),
+          userPasswordChangedDetails: S.optional(S.NullOr(AuditLogUserPasswordChangedDetails)),
         }),
       ).annotate({ identifier: "AuditLog" });
     case 6:
-      return S.Array(__S(533));
+      return S.Array(AuditLog);
     case 7:
-      return S.suspend(() => __S(534).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListMeLogAuditResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListMeLogAuditResponse",
       });
   }
@@ -17405,15 +21316,15 @@ function __c68(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          options: S.optional(S.NullOr(__S(15))),
-          type: S.optional(S.String),
+          options: S.optional(S.NullOr(BillingOrderAvailablePaymentMeanFieldOptionsList)),
+          type: S.optional(BillingOrderPaymentMeanFieldTypeEnum),
           value: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "BillingOrderAvailablePaymentMeanField",
       });
     case 7:
-      return S.Array(__S(550));
+      return S.Array(BillingOrderAvailablePaymentMeanField);
   }
 }
 function __c69(j: number): any {
@@ -17421,8 +21332,8 @@ function __c69(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(S.NullOr(__S(551))),
-          integration: S.optional(S.String),
+          fields: S.optional(S.NullOr(BillingOrderAvailablePaymentMeanFieldsList)),
+          integration: S.optional(BillingOrderPaymentMeanIntegrationEnum),
           name: S.optional(S.String),
           url: S.optional(S.NullOr(S.String)),
         }),
@@ -17430,9 +21341,11 @@ function __c69(j: number): any {
         identifier: "BillingOrderAvailablePaymentMean",
       });
     case 1:
-      return S.Array(__S(552));
+      return S.Array(BillingOrderAvailablePaymentMean);
     case 2:
-      return S.suspend(() => __S(553).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListMeOrderAvailablePaymentMeanResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListMeOrderAvailablePaymentMeanResponse",
       });
     case 3:
@@ -17452,15 +21365,17 @@ function __c69(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          paymentMean: S.optional(S.String),
+          paymentMean: S.optional(BillingReusablePaymentMeanEnum),
         }),
       ).annotate({
         identifier: "BillingOrderRegisteredPaymentMean",
       });
     case 5:
-      return S.Array(__S(556));
+      return S.Array(BillingOrderRegisteredPaymentMean);
     case 6:
-      return S.suspend(() => __S(557).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListMeOrderAvailableRegisteredPaymentMeanResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListMeOrderAvailableRegisteredPaymentMeanResponse",
       });
     case 7:
@@ -17505,25 +21420,27 @@ function __c70(j: number): any {
         S.Struct({
           date: S.optional(S.String),
           description: S.optional(S.String),
-          label: S.optional(S.String),
+          label: S.optional(BillingOrderFollowUpHistoryStatusEnum),
         }),
       ).annotate({
         identifier: "BillingOrderFollowUpHistory",
       });
     case 4:
-      return S.Array(__S(563));
+      return S.Array(BillingOrderFollowUpHistory);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          history: S.optional(__S(564)),
-          status: S.optional(S.String),
-          step: S.optional(S.String),
+          history: S.optional(BillingOrderFollowUpHistoryList),
+          status: S.optional(BillingOrderFollowUpStatusEnum),
+          step: S.optional(BillingOrderFollowUpStepEnum),
         }),
       ).annotate({ identifier: "BillingOrderFollowUp" });
     case 6:
-      return S.Array(__S(565));
+      return S.Array(BillingOrderFollowUp);
     case 7:
-      return S.suspend(() => __S(566).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListMeOrderFollowUpResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListMeOrderFollowUpResponse",
       });
   }
@@ -17541,7 +21458,7 @@ function __c71(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          choice: S.optional(S.NullOr(__S(491))),
+          choice: S.optional(S.NullOr(BillingOrderPaymentMeanHttpParameterChoiceList)),
           name: S.optional(S.String),
           value: S.optional(S.NullOr(S.String)),
         }),
@@ -17549,7 +21466,7 @@ function __c71(j: number): any {
         identifier: "BillingOrderPaymentMeanHttpParameter",
       });
     case 2:
-      return S.Array(__S(569));
+      return S.Array(BillingOrderPaymentMeanHttpParameter);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -17557,24 +21474,24 @@ function __c71(j: number): any {
           htmlForm: S.optional(S.NullOr(S.String)),
           httpMethod: S.optional(S.String),
           logo: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(__S(570)),
+          parameters: S.optional(BillingOrderPaymentMeanParametersList),
           subType: S.optional(S.NullOr(S.String)),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingOrderPaymentMean" });
     case 4:
-      return S.Array(__S(571));
+      return S.Array(BillingOrderPaymentMean);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          creditCard: S.optional(S.NullOr(__S(572))),
-          edinar: S.optional(S.NullOr(__S(572))),
-          fidelityPoints: S.optional(S.NullOr(__S(572))),
-          ideal: S.optional(S.NullOr(__S(572))),
-          multibanco: S.optional(S.NullOr(__S(572))),
-          ovhAccount: S.optional(S.NullOr(__S(572))),
-          paypal: S.optional(S.NullOr(__S(572))),
-          promotion: S.optional(S.NullOr(__S(572))),
+          creditCard: S.optional(S.NullOr(BillingOrderPaymentMeansCreditCardList)),
+          edinar: S.optional(S.NullOr(BillingOrderPaymentMeansEdinarList)),
+          fidelityPoints: S.optional(S.NullOr(BillingOrderPaymentMeansFidelityPointsList)),
+          ideal: S.optional(S.NullOr(BillingOrderPaymentMeansIdealList)),
+          multibanco: S.optional(S.NullOr(BillingOrderPaymentMeansMultibancoList)),
+          ovhAccount: S.optional(S.NullOr(BillingOrderPaymentMeansOvhAccountList)),
+          paypal: S.optional(S.NullOr(BillingOrderPaymentMeansPaypalList)),
+          promotion: S.optional(S.NullOr(BillingOrderPaymentMeansPromotionList)),
         }),
       ).annotate({ identifier: "BillingOrderPaymentMeans" });
     case 6:
@@ -17589,8 +21506,8 @@ function __c71(j: number): any {
       return S.suspend(() =>
         S.Struct({
           formSessionId: S.optional(S.NullOr(S.String)),
-          icon: S.optional(__S(363)),
-          integration: S.optional(S.String),
+          icon: S.optional(PaymentMethodIcon),
+          integration: S.optional(PaymentMethodIntegrationType),
           merchantId: S.optional(S.NullOr(S.String)),
           oneshot: S.optional(S.Boolean),
           organizationId: S.optional(S.NullOr(S.String)),
@@ -17607,7 +21524,7 @@ function __c71(j: number): any {
 function __c72(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(575));
+      return S.Array(PaymentMethodAvailablePaymentMethod);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -17617,29 +21534,29 @@ function __c72(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           expirationDate: S.optional(S.NullOr(S.String)),
           formSessionId: S.optional(S.NullOr(S.String)),
-          icon: S.optional(__S(363)),
-          integration: S.optional(S.NullOr(S.String)),
+          icon: S.optional(PaymentMethodIcon),
+          integration: S.optional(S.NullOr(PaymentMethodIntegrationType)),
           label: S.optional(S.NullOr(S.String)),
           lastUpdate: S.optional(S.NullOr(S.String)),
           merchantId: S.optional(S.NullOr(S.String)),
           oneclick: S.optional(S.NullOr(S.Boolean)),
           paymentMeanId: S.optional(S.NullOr(S.Number)),
           paymentMethodId: S.optional(S.Number),
-          paymentSubType: S.optional(S.NullOr(S.String)),
+          paymentSubType: S.optional(S.NullOr(PaymentMethodSubTypeEnum)),
           paymentType: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(PaymentMethodStatusEnum),
         }),
       ).annotate({
         identifier: "PaymentMethodPaymentMethod",
       });
     case 2:
-      return S.Array(__S(577));
+      return S.Array(PaymentMethodPaymentMethod);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          available: S.optional(__S(576)),
-          paymentMethods: S.optional(__S(578)),
-          registered: S.optional(__S(422)),
+          available: S.optional(BillingOrderPaymentMethodsAvailableList),
+          paymentMethods: S.optional(BillingOrderPaymentMethodsPaymentMethodsList),
+          registered: S.optional(BillingOrderPaymentMethodsRegisteredList),
         }),
       ).annotate({
         identifier: "BillingOrderPaymentMethods",
@@ -17672,12 +21589,12 @@ function __c72(j: number): any {
       return S.suspend(() =>
         S.Struct({
           formSessionId: S.optional(S.NullOr(S.String)),
-          icon: S.optional(__S(156)),
-          integration: S.optional(S.String),
+          icon: S.optional(MePaymentIcon),
+          integration: S.optional(MePaymentIntegrationEnum),
           merchantId: S.optional(S.NullOr(S.String)),
           oneshot: S.optional(S.Boolean),
           organizationId: S.optional(S.NullOr(S.String)),
-          paymentSubType: S.optional(S.NullOr(S.String)),
+          paymentSubType: S.optional(S.NullOr(MePaymentAvailableSubTypeEnum)),
           paymentType: S.optional(S.String),
           registerable: S.optional(S.Boolean),
           registerableWithTransaction: S.optional(S.Boolean),
@@ -17690,9 +21607,11 @@ function __c72(j: number): any {
 function __c73(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(583));
+      return S.Array(MePaymentAvailablePaymentMethod);
     case 1:
-      return S.suspend(() => __S(584).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListMePaymentAvailableMethodsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListMePaymentAvailableMethodsResponse",
       });
     case 2:
@@ -17708,7 +21627,7 @@ function __c73(j: number): any {
         S.Struct({
           default: S.optional(S.Boolean.pipe(T.Query())),
           paymentType: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(MePaymentMethodStatusEnum.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/me/payment/method", code: 200 })),
       ).annotate({
         identifier: "ListMePaymentMethodRequest",
@@ -17717,7 +21636,7 @@ function __c73(j: number): any {
       return S.suspend(() =>
         S.Struct({
           paymentMethodId: S.optional(S.Number.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(MePaymentTransactionStatusEnum.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/me/payment/transaction", code: 200 })),
       ).annotate({
         identifier: "ListMePaymentTransactionRequest",
@@ -17732,7 +21651,7 @@ function __c73(j: number): any {
       return S.suspend(() =>
         S.Struct({
           max: S.optional(S.Number.pipe(T.Query())),
-          range: S.optional(S.String.pipe(T.Query())),
+          range: S.optional(RecommendationsProductRangesEnum.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/me/recommendations", code: 200 })),
       ).annotate({
         identifier: "ListMeRecommendationsRequest",
@@ -17752,25 +21671,25 @@ function __c73(j: number): any {
 function __c74(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(591));
+      return S.Array(RecommendationsRecommendationAdvice);
     case 1:
       return S.Record(S.String, S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          advices: S.optional(__S(592)),
-          localizedDescription: S.optional(__S(593)),
+          advices: S.optional(RecommendationsRecommendationAdvicesList),
+          localizedDescription: S.optional(RecommendationsRecommendationLocalizedDescriptionMap),
           rank: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "RecommendationsRecommendation",
       });
     case 3:
-      return S.Array(__S(594));
+      return S.Array(RecommendationsRecommendation);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          recommendations: S.optional(__S(595)),
+          recommendations: S.optional(RecommendationsRecommendationsRecommendationsList),
         }),
       ).annotate({
         identifier: "RecommendationsRecommendations",
@@ -17802,40 +21721,42 @@ function __c74(j: number): any {
 function __c75(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(602)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => MeRepricingService));
     case 1:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.NullOr(S.String)),
           url: S.optional(S.NullOr(S.String)),
-          vars: S.optional(__S(59)),
+          vars: S.optional(ServicesExpandedRouteVarsList),
         }),
       ).annotate({ identifier: "ServicesExpandedRoute" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          addons: S.optional(__S(600)),
+          addons: S.optional(MeRepricingServiceAddonsList),
           applicationDate: S.optional(S.String),
           description: S.optional(S.String),
           displayName: S.optional(S.String),
           duration: S.optional(S.String),
-          priceAfterWithTax: S.optional(__S(29)),
-          priceAfterWithoutTax: S.optional(__S(29)),
-          priceBeforeWithTax: S.optional(__S(29)),
-          priceBeforeWithoutTax: S.optional(__S(29)),
-          route: S.optional(S.NullOr(__S(601))),
+          priceAfterWithTax: S.optional(OrderPrice),
+          priceAfterWithoutTax: S.optional(OrderPrice),
+          priceBeforeWithTax: S.optional(OrderPrice),
+          priceBeforeWithoutTax: S.optional(OrderPrice),
+          route: S.optional(S.NullOr(ServicesExpandedRoute)),
           serviceId: S.optional(S.Number),
           serviceName: S.optional(S.String),
-          totalPriceAfterWithTax: S.optional(__S(29)),
-          totalPriceAfterWithoutTax: S.optional(__S(29)),
-          totalPriceBeforeWithTax: S.optional(__S(29)),
-          totalPriceBeforeWithoutTax: S.optional(__S(29)),
+          totalPriceAfterWithTax: S.optional(OrderPrice),
+          totalPriceAfterWithoutTax: S.optional(OrderPrice),
+          totalPriceBeforeWithTax: S.optional(OrderPrice),
+          totalPriceBeforeWithoutTax: S.optional(OrderPrice),
         }),
       ).annotate({ identifier: "MeRepricingService" });
     case 3:
-      return S.Array(__S(602));
+      return S.Array(MeRepricingService);
     case 4:
-      return S.suspend(() => __S(603).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListMeRepricingFall22ResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListMeRepricingFall22Response",
       });
     case 5:
@@ -17882,9 +21803,9 @@ function __c76(j: number): any {
         identifier: "BillingSlaOperationService",
       });
     case 2:
-      return S.Array(__S(609));
+      return S.Array(BillingSlaOperationService);
     case 3:
-      return S.suspend(() => __S(610).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListMeSlaServicesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListMeSlaServicesResponse",
       });
     case 4:
@@ -17912,35 +21833,37 @@ function __c77(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          enum: S.optional(S.NullOr(__S(15))),
+          enum: S.optional(S.NullOr(MeTagTagKeyEnumList)),
           key: S.optional(S.String),
           maxLength: S.optional(S.NullOr(S.Number)),
           minValue: S.optional(S.NullOr(S.Number)),
           optional: S.optional(S.Boolean),
           pattern: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
+          type: S.optional(MeTagTagKeyTypeEnum),
         }),
       ).annotate({ identifier: "MeTagTagKey" });
     case 1:
-      return S.Array(__S(616));
+      return S.Array(MeTagTagKey);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(__S(617)),
+          keys: S.optional(MeTagAvailableTagKeysList),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "MeTagAvailableTag" });
     case 3:
-      return S.Array(__S(618));
+      return S.Array(MeTagAvailableTag);
     case 4:
-      return S.suspend(() => __S(619).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListMeTagAvailableResponse",
-      });
+      return S.suspend(() => ListMeTagAvailableResponseBodyList.pipe(T.RawResponseRoot())).annotate(
+        {
+          identifier: "ListMeTagAvailableResponse",
+        },
+      );
     case 5:
       return S.suspend(() =>
         S.Struct({
           askingAccount: S.optional(S.String.pipe(T.Query())),
-          state: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(NichandleChangeContactTaskStateEnum.pipe(T.Query())),
           toAccount: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/me/task/contactChange", code: 200 })),
       ).annotate({
@@ -17949,8 +21872,8 @@ function __c77(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          function: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          function: S.optional(DomainTaskFunctionEnum.pipe(T.Query())),
+          status: S.optional(DomainTaskStatusEnum.pipe(T.Query())),
           zone: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/me/task/dns", code: 200 })),
       ).annotate({ identifier: "ListMeTaskDnsRequest" });
@@ -17958,9 +21881,9 @@ function __c77(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String.pipe(T.Query())),
-          function: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
+          function: S.optional(DomainOperationFunctionEnum.pipe(T.Query())),
+          status: S.optional(DomainOperationStatusEnum.pipe(T.Query())),
+          type: S.optional(DomainOperationTypeEnum.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/me/task/domain", code: 200 })),
       ).annotate({ identifier: "ListMeTaskDomainRequest" });
   }
@@ -17978,7 +21901,7 @@ function __c78(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(NichandleChangeEmailTaskStateEnum.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/me/task/emailChange", code: 200 })),
       ).annotate({
         identifier: "ListMeTaskEmailChangeRequest",
@@ -18033,7 +21956,7 @@ function __c78(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dryRun: S.optional(S.Boolean),
-          serviceIds: S.optional(__S(422)),
+          serviceIds: S.optional(MigrateMeIncidentSbgServicesRequestServiceIdsList),
         }).pipe(T.Http({ method: "POST", uri: "/me/incident/sbg/migrateServices", code: 200 })),
       ).annotate({
         identifier: "MigrateMeIncidentSbgServicesRequest",
@@ -18051,54 +21974,54 @@ function __c79(j: number): any {
         }),
       ).annotate({ identifier: "OrderContract" });
     case 1:
-      return S.Array(__S(632));
+      return S.Array(OrderContract);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          context: S.optional(S.String),
+          context: S.optional(OrderReductionContextEnum),
           description: S.optional(S.String),
-          price: S.optional(__S(29)),
+          price: S.optional(OrderPrice),
           reductionDescription: S.optional(S.String),
-          type: S.optional(S.String),
-          value: S.optional(__S(29)),
+          type: S.optional(OrderReductionTypeEnum),
+          value: S.optional(OrderPrice),
         }),
       ).annotate({ identifier: "OrderReduction" });
     case 3:
-      return S.Array(__S(634));
+      return S.Array(OrderReduction);
     case 4:
       return S.suspend(() =>
         S.Struct({
           cartItemID: S.optional(S.NullOr(S.Number)),
           description: S.optional(S.String),
-          detailType: S.optional(S.NullOr(S.String)),
+          detailType: S.optional(S.NullOr(OrderOrderDetailTypeEnum)),
           domain: S.optional(S.String),
-          originalTotalPrice: S.optional(__S(29)),
+          originalTotalPrice: S.optional(OrderPrice),
           quantity: S.optional(S.Number),
-          reductionTotalPrice: S.optional(__S(29)),
-          reductions: S.optional(__S(635)),
-          totalPrice: S.optional(__S(29)),
-          unitPrice: S.optional(__S(29)),
+          reductionTotalPrice: S.optional(OrderPrice),
+          reductions: S.optional(OrderOrderDetailReductionsList),
+          totalPrice: S.optional(OrderPrice),
+          unitPrice: S.optional(OrderPrice),
         }),
       ).annotate({ identifier: "OrderOrderDetail" });
     case 5:
-      return S.Array(__S(636));
+      return S.Array(OrderOrderDetail);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          originalWithoutTax: S.optional(S.NullOr(__S(29))),
-          reduction: S.optional(S.NullOr(__S(29))),
-          tax: S.optional(__S(29)),
-          withTax: S.optional(__S(29)),
-          withoutTax: S.optional(__S(29)),
+          originalWithoutTax: S.optional(S.NullOr(OrderPrice)),
+          reduction: S.optional(S.NullOr(OrderPrice)),
+          tax: S.optional(OrderPrice),
+          withTax: S.optional(OrderPrice),
+          withoutTax: S.optional(OrderPrice),
         }),
       ).annotate({ identifier: "OrderOrderPrices" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          contracts: S.optional(__S(633)),
-          details: S.optional(__S(637)),
+          contracts: S.optional(OrderOrderContractsList),
+          details: S.optional(OrderOrderDetailsList),
           orderId: S.optional(S.NullOr(S.Number)),
-          prices: S.optional(__S(638)),
+          prices: S.optional(OrderOrderPrices),
           url: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "OrderOrder" });
@@ -18109,7 +22032,7 @@ function __c80(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          order: S.optional(__S(639)),
+          order: S.optional(OrderOrder),
         }),
       ).annotate({ identifier: "MeIncidentOrder" });
     case 1:
@@ -18124,7 +22047,7 @@ function __c80(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          rule: S.optional(S.String),
+          rule: S.optional(NichandleAccessRestrictionIpRestrictionRuleEnum),
           warning: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "PUT", uri: "/me/accessRestriction/ip/{id}", code: 200 })),
       ).annotate({
@@ -18133,7 +22056,7 @@ function __c80(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          rule: S.optional(S.String),
+          rule: S.optional(NichandleAccessRestrictionIpRestrictionRuleEnum),
           warning: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "PUT", uri: "/me/accessRestriction/ipDefaultRule", code: 200 })),
       ).annotate({
@@ -18196,7 +22119,7 @@ function __c81(j: number): any {
           endDate: S.optional(S.NullOr(S.String)),
           reference: S.optional(S.NullOr(S.String)),
           startDate: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(MeBillingPurchaseOrderPurchaseOrderTypeEnum)),
         }).pipe(T.Http({ method: "PUT", uri: "/me/billing/purchaseOrder/{id}", code: 200 })),
       ).annotate({
         identifier: "PutMeBillingPurchaseOrderRequest",
@@ -18214,9 +22137,9 @@ function __c81(j: number): any {
       return S.suspend(() =>
         S.Struct({
           contactId: S.Number.pipe(T.Label()),
-          address: S.optional(__S(45)),
+          address: S.optional(MeContactAddress),
           birthCity: S.optional(S.NullOr(S.String)),
-          birthCountry: S.optional(S.NullOr(S.String)),
+          birthCountry: S.optional(S.NullOr(NichandleCountryEnum)),
           birthDay: S.optional(S.NullOr(S.String)),
           birthZip: S.optional(S.NullOr(S.String)),
           cellPhone: S.optional(S.NullOr(S.String)),
@@ -18224,12 +22147,12 @@ function __c81(j: number): any {
           email: S.optional(S.String),
           fax: S.optional(S.NullOr(S.String)),
           firstName: S.optional(S.String),
-          gender: S.optional(S.NullOr(S.String)),
-          language: S.optional(S.String),
+          gender: S.optional(S.NullOr(NichandleGenderEnum)),
+          language: S.optional(NichandleLanguageEnum),
           lastName: S.optional(S.String),
-          legalForm: S.optional(S.String),
+          legalForm: S.optional(NichandleLegalFormEnum),
           nationalIdentificationNumber: S.optional(S.NullOr(S.String)),
-          nationality: S.optional(S.NullOr(S.String)),
+          nationality: S.optional(S.NullOr(NichandleCountryEnum)),
           organisationName: S.optional(S.NullOr(S.String)),
           organisationType: S.optional(S.NullOr(S.String)),
           phone: S.optional(S.NullOr(S.String)),
@@ -18241,7 +22164,7 @@ function __c81(j: number): any {
       return S.suspend(() =>
         S.Struct({
           credentialId: S.Number.pipe(T.Label()),
-          allowedIPs: S.optional(S.NullOr(__S(15))),
+          allowedIPs: S.optional(S.NullOr(PutMeCredentialRequestAllowedIPsList)),
         }).pipe(T.Http({ method: "PUT", uri: "/me/api/credential/{credentialId}", code: 200 })),
       ).annotate({ identifier: "PutMeCredentialRequest" });
     case 5:
@@ -18264,7 +22187,7 @@ function __c81(j: number): any {
         S.Struct({
           group: S.String.pipe(T.Label()),
           description: S.optional(S.NullOr(S.String)),
-          role: S.optional(S.String),
+          role: S.optional(AuthRoleEnum),
         }).pipe(T.Http({ method: "PUT", uri: "/me/identity/group/{group}", code: 200 })),
       ).annotate({
         identifier: "PutMeIdentityGroupRequest",
@@ -18277,7 +22200,7 @@ function __c82(j: number): any {
       return S.suspend(() =>
         S.Struct({
           disableUsers: S.optional(S.NullOr(S.Boolean)),
-          extensions: S.optional(__S(74)),
+          extensions: S.optional(AuthProviderExtensions),
           groupAttributeName: S.optional(S.String),
           signRequests: S.optional(S.NullOr(S.Boolean)),
           userAttributeName: S.optional(S.String),
@@ -18313,7 +22236,7 @@ function __c82(j: number): any {
           abuse_mailbox: S.optional(S.String),
           address: S.optional(S.String),
           city: S.optional(S.String),
-          country: S.optional(S.String),
+          country: S.optional(NichandleCountryEnum),
           firstname: S.optional(S.String),
           lastname: S.optional(S.String),
           phone: S.optional(S.String),
@@ -18326,18 +22249,18 @@ function __c82(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          call: S.optional(__S(313)),
+          call: S.optional(MeMarketingConsentDetails),
           denyAll: S.optional(S.Boolean),
           denyUntil: S.optional(S.NullOr(S.String)),
-          email: S.optional(__S(313)),
-          sms: S.optional(__S(313)),
+          email: S.optional(MeMarketingConsentDetails),
+          sms: S.optional(MeMarketingConsentDetails),
         }).pipe(T.Http({ method: "PUT", uri: "/me/marketing", code: 200 })),
       ).annotate({ identifier: "PutMeMarketingRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           clientId: S.String.pipe(T.Label()),
-          callbackUrls: S.optional(S.NullOr(__S(15))),
+          callbackUrls: S.optional(S.NullOr(PutMeOauth2ClientRequestCallbackUrlsList)),
           description: S.optional(S.String),
           name: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/me/api/oauth2/client/{clientId}", code: 200 })),
@@ -18494,184 +22417,5 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "ValidateMeAccessRestrictionU2fRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
-    case 41:
-      return __c41(i & 7);
-    case 42:
-      return __c42(i & 7);
-    case 43:
-      return __c43(i & 7);
-    case 44:
-      return __c44(i & 7);
-    case 45:
-      return __c45(i & 7);
-    case 46:
-      return __c46(i & 7);
-    case 47:
-      return __c47(i & 7);
-    case 48:
-      return __c48(i & 7);
-    case 49:
-      return __c49(i & 7);
-    case 50:
-      return __c50(i & 7);
-    case 51:
-      return __c51(i & 7);
-    case 52:
-      return __c52(i & 7);
-    case 53:
-      return __c53(i & 7);
-    case 54:
-      return __c54(i & 7);
-    case 55:
-      return __c55(i & 7);
-    case 56:
-      return __c56(i & 7);
-    case 57:
-      return __c57(i & 7);
-    case 58:
-      return __c58(i & 7);
-    case 59:
-      return __c59(i & 7);
-    case 60:
-      return __c60(i & 7);
-    case 61:
-      return __c61(i & 7);
-    case 62:
-      return __c62(i & 7);
-    case 63:
-      return __c63(i & 7);
-    case 64:
-      return __c64(i & 7);
-    case 65:
-      return __c65(i & 7);
-    case 66:
-      return __c66(i & 7);
-    case 67:
-      return __c67(i & 7);
-    case 68:
-      return __c68(i & 7);
-    case 69:
-      return __c69(i & 7);
-    case 70:
-      return __c70(i & 7);
-    case 71:
-      return __c71(i & 7);
-    case 72:
-      return __c72(i & 7);
-    case 73:
-      return __c73(i & 7);
-    case 74:
-      return __c74(i & 7);
-    case 75:
-      return __c75(i & 7);
-    case 76:
-      return __c76(i & 7);
-    case 77:
-      return __c77(i & 7);
-    case 78:
-      return __c78(i & 7);
-    case 79:
-      return __c79(i & 7);
-    case 80:
-      return __c80(i & 7);
-    case 81:
-      return __c81(i & 7);
-    case 82:
-      return __c82(i & 7);
-    case 83:
-      return __c83(i & 7);
-    case 84:
-      return __c84(i & 7);
   }
 }

@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -38,8 +36,15 @@ export interface AddAudiencePeopleRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const AddAudiencePeopleRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddAudiencePeopleRequest>;
+
 /** Whether the audience targets a defined group of people or people similar to an existing audience. */
 export type AudienceAudienceType = "custom" | "lookalike";
+const AudienceAudienceType = S.String;
+
 /** Interaction that qualifies a person for this rule. */
 export type AudienceEngagementVideoRuleEvent =
   | "watched_3_seconds"
@@ -52,6 +57,11 @@ export type AudienceEngagementVideoRuleEvent =
 /** Engagement source. */
 export type AudienceEngagementVideoRuleObject = "video";
 export type AudienceEngagementVideoRulePlatformVideoIdsList = Array<string>;
+const AudienceEngagementVideoRulePlatformVideoIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AudienceEngagementVideoRulePlatformVideoIdsList>;
+
 export interface AudienceEngagementVideoRule {
   /** Interaction that qualifies a person for this rule. */
   event: AudienceEngagementVideoRuleEvent | (string & {});
@@ -136,12 +146,24 @@ export type AudienceEngagementRule =
   | AudienceEngagementLeadFormRule
   | AudienceEngagementInstagramProfileRule
   | AudienceEngagementFacebookPageRule;
+const AudienceEngagementRule = S.Unknown as any as S.Schema<AudienceEngagementRule>;
+
 /** Exclude anyone matching any exclusion rule. Supply 0-10 rules. Video audiences do not support exclusions; use a separate audience in ad-group exclusions. */
 export type AudienceEngagementExcludeList = Array<AudienceEngagementRule>;
+const AudienceEngagementExcludeList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AudienceEngagementExcludeList>;
+
 /** Match any inclusion rule. Supply 1-10 rules. Video rules must share a retention window and cannot be combined with other sources. */
 export type AudienceEngagementIncludeList = Array<AudienceEngagementRule>;
+const AudienceEngagementIncludeList =
+  AudienceEngagementExcludeList as any as S.Schema<AudienceEngagementIncludeList>;
+
 /** Ad platform that maintains membership. */
 export type AudienceEngagementPlatform = "meta";
+const AudienceEngagementPlatform = S.String;
+
 export interface AudienceEngagement {
   /** Exclude anyone matching any exclusion rule. Supply 0-10 rules. Video audiences do not support exclusions; use a separate audience in ad-group exclusions. */
   exclude: AudienceEngagementExcludeList;
@@ -150,10 +172,16 @@ export interface AudienceEngagement {
   /** Ad platform that maintains membership. */
   platform: AudienceEngagementPlatform;
 }
+const AudienceEngagement = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AudienceEngagement>;
+
 /** The ad platform that provided the match-rate estimate. */
 export type AudienceMatchRatePlatform = "meta";
+const AudienceMatchRatePlatform = S.String;
+
 /** Availability of the estimated match rate. */
 export type AudienceMatchRateStatus = "calculating" | "available" | "unavailable";
+const AudienceMatchRateStatus = S.String;
+
 export interface AudienceMatchRate {
   /** Lower bound of the estimated match rate percentage. `null` until available. */
   lower_bound: number | null;
@@ -164,12 +192,26 @@ export interface AudienceMatchRate {
   /** Upper bound of the estimated match rate percentage. `null` until available. */
   upper_bound: number | null;
 }
+const AudienceMatchRate = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AudienceMatchRate>;
+
 export type AudienceMatchRatesList = Array<AudienceMatchRate>;
+const AudienceMatchRatesList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AudienceMatchRatesList>;
+
 export type AudiencePlatformAudienceIdsList = Array<string>;
+const AudiencePlatformAudienceIdsList =
+  AudienceEngagementVideoRulePlatformVideoIdsList as any as S.Schema<AudiencePlatformAudienceIdsList>;
+
 /** Membership source: an uploaded CSV, Whop People filters, or social engagement. */
 export type AudienceSourceType = "csv_upload" | "people_filter" | "engagement";
+const AudienceSourceType = S.String;
+
 /** Current state of audience creation. For engagement audiences, `ready` means the rules were created on Meta; membership may still be populating. `syncing` means Whop is sending matched rows to connected ad accounts. When status is `partial` or `failed`, `error_message` explains what went wrong. */
 export type AudienceStatus = "pending" | "processing" | "syncing" | "ready" | "partial" | "failed";
+const AudienceStatus = S.String;
+
 export interface Audience {
   /** Whether the audience targets a defined group of people or people similar to an existing audience. */
   audience_type: AudienceAudienceType;
@@ -212,8 +254,12 @@ export interface Audience {
   /** When the audience was last updated, as an ISO 8601 timestamp. */
   updated_at: string;
 }
+const Audience = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Audience>;
+
 /** Audience type. Defaults to `custom`. */
 export type CreateAudienceRequestAudienceType = "custom" | "lookalike";
+const CreateAudienceRequestAudienceType = S.String;
+
 /** CSV audiences only. Maps supported identity fields to CSV column headers. Map at least one of `email` or `phone`. */
 export interface CreateAudienceRequestColumnMapping {
   /** CSV header for ISO 3166-1 alpha-2 country codes, such as `US`. */
@@ -229,12 +275,25 @@ export interface CreateAudienceRequestColumnMapping {
   /** CSV header for phone numbers. */
   phone?: string;
 }
+const CreateAudienceRequestColumnMapping = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateAudienceRequestColumnMapping>;
+
 /** Exclude anyone matching any exclusion rule. Defaults to an empty array. Video audiences do not support exclusions; use a separate audience in ad-group exclusions. */
 export type CreateAudienceRequestEngagementExcludeList = Array<AudienceEngagementRule>;
+const CreateAudienceRequestEngagementExcludeList =
+  AudienceEngagementExcludeList as any as S.Schema<CreateAudienceRequestEngagementExcludeList>;
+
 /** Match any inclusion rule. Video rules must share a retention window and cannot be combined with other sources. */
 export type CreateAudienceRequestEngagementIncludeList = Array<AudienceEngagementRule>;
+const CreateAudienceRequestEngagementIncludeList =
+  AudienceEngagementExcludeList as any as S.Schema<CreateAudienceRequestEngagementIncludeList>;
+
 /** Ad platform that maintains membership. */
 export type CreateAudienceRequestEngagementPlatform = "meta";
+const CreateAudienceRequestEngagementPlatform = S.String;
+
 /** Rules for membership based on social engagement. Requires a connected social account with advertising access. */
 export interface CreateAudienceRequestEngagement {
   /** Exclude anyone matching any exclusion rule. Defaults to an empty array. Video audiences do not support exclusions; use a separate audience in ad-group exclusions. */
@@ -244,8 +303,15 @@ export interface CreateAudienceRequestEngagement {
   /** Ad platform that maintains membership. */
   platform: CreateAudienceRequestEngagementPlatform | (string & {});
 }
+const CreateAudienceRequestEngagement = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateAudienceRequestEngagement>;
+
 /** Custom audience source. Inferred from `engagement`, then `filters`, otherwise defaults to `csv_upload`. Supply only the fields for the selected source. */
 export type CreateAudienceRequestSourceType = "csv_upload" | "people_filter" | "engagement";
+const CreateAudienceRequestSourceType = S.String;
+
 export interface CreateAudienceRequest {
   /** Account ID, prefixed `biz_`. */
   account_id: string;
@@ -274,21 +340,52 @@ export interface CreateAudienceRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const CreateAudienceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateAudienceRequest>;
+
 export type CreateAudienceResponseBodyCase1DataList = Array<Audience>;
+const CreateAudienceResponseBodyCase1DataList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateAudienceResponseBodyCase1DataList>;
+
 export interface CreateAudienceResponseBodyCase1 {
   data: CreateAudienceResponseBodyCase1DataList;
 }
 export type CreateAudienceResponseBody = Audience | CreateAudienceResponseBodyCase1;
+const CreateAudienceResponseBody = S.Unknown as any as S.Schema<CreateAudienceResponseBody>;
+
 export type CreateAudienceResponse = CreateAudienceResponseBody;
+const CreateAudienceResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateAudienceResponse>;
+
 export interface DeleteAudienceRequest {
   /** Audience ID, prefixed `adaud_`. */
   id: string;
 }
+const DeleteAudienceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeleteAudienceRequest>;
+
 export interface DeleteAudienceResponse {
   success: boolean;
 }
+const DeleteAudienceResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteAudienceResponse>;
+
 export type ListAudiencesRequestAudienceType = "custom" | "lookalike";
+const ListAudiencesRequestAudienceType = S.String;
+
 export type ListAudiencesRequestSourceType = "csv_upload" | "people_filter" | "engagement";
+const ListAudiencesRequestSourceType = S.String;
+
 export interface ListAudiencesRequest {
   /** Account ID, prefixed `biz_`. */
   account_id: string;
@@ -303,17 +400,32 @@ export interface ListAudiencesRequest {
   /** Return results after this cursor. Use `page_info.end_cursor` from the previous response to fetch the next page. */
   after?: string;
 }
+const ListAudiencesRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ListAudiencesRequest>;
+
 export type ListAudiencesResponseDataList = Array<Audience>;
+const ListAudiencesResponseDataList =
+  CreateAudienceResponseBodyCase1DataList as any as S.Schema<ListAudiencesResponseDataList>;
+
 export interface ListAudiencesResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
+const ListAudiencesResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListAudiencesResponsePageInfo>;
+
 export interface ListAudiencesResponse {
   data: ListAudiencesResponseDataList;
   page_info: ListAudiencesResponsePageInfo;
 }
+const ListAudiencesResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListAudiencesResponse>;
+
 export interface UpdateAudienceRequest {
   /** Audience ID, prefixed `adaud_`. */
   id: string;
@@ -322,6 +434,11 @@ export interface UpdateAudienceRequest {
   /** New audience display name. A blank value is ignored rather than clearing the name. */
   name?: string;
 }
+const UpdateAudienceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<UpdateAudienceRequest>;
+
 export type AddAudiencePeopleError = Conflict | WhopOpError;
 /** Add People Adds users from a new CSV file to an existing uploaded custom audience. The file uses the audience's saved column mapping, processing happens in the background, and existing audience members remain unchanged. */
 export const addAudiencePeople: API.OperationMethod<
@@ -330,8 +447,8 @@ export const addAudiencePeople: API.OperationMethod<
   AddAudiencePeopleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AddAudiencePeopleRequest>,
-  output: __S(6) as any as S.Schema<Audience>,
+  input: AddAudiencePeopleRequest,
+  output: Audience,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -345,8 +462,8 @@ export const createAudience: API.OperationMethod<
   CreateAudienceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CreateAudienceRequest>,
-  output: __S(11) as any as S.Schema<CreateAudienceResponse>,
+  input: CreateAudienceRequest,
+  output: CreateAudienceResponse,
   errors: [BadRequest, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -360,8 +477,8 @@ export const deleteAudience: API.OperationMethod<
   DeleteAudienceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DeleteAudienceRequest>,
-  output: __S(13) as any as S.Schema<DeleteAudienceResponse>,
+  input: DeleteAudienceRequest,
+  output: DeleteAudienceResponse,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -377,8 +494,8 @@ export const listAudiences: API.PaginatedOperationMethod<
   Audience
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(14) as any as S.Schema<ListAudiencesRequest>,
-    output: __S(16) as any as S.Schema<ListAudiencesResponse>,
+    input: ListAudiencesRequest,
+    output: ListAudiencesResponse,
     errors: [],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -402,8 +519,8 @@ export const updateAudience: API.OperationMethod<
   UpdateAudienceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<UpdateAudienceRequest>,
-  output: __S(6) as any as S.Schema<Audience>,
+  input: UpdateAudienceRequest,
+  output: Audience,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -423,48 +540,48 @@ function __c0(j: number): any {
     case 1:
       return S.Array(S.String);
     case 2:
-      return S.Array(S.Unknown);
+      return S.Array(AudienceEngagementRule);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          exclude: __S(2),
-          include: __S(2),
-          platform: S.String,
+          exclude: AudienceEngagementExcludeList,
+          include: AudienceEngagementIncludeList,
+          platform: AudienceEngagementPlatform,
         }),
       ).annotate({ identifier: "AudienceEngagement" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           lower_bound: S.NullOr(S.Number),
-          platform: S.String,
-          status: S.NullOr(S.String),
+          platform: AudienceMatchRatePlatform,
+          status: S.NullOr(AudienceMatchRateStatus),
           upper_bound: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "AudienceMatchRate" });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(AudienceMatchRate);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          audience_type: S.String,
+          audience_type: AudienceAudienceType,
           auto_refresh: S.Boolean,
           created_at: S.String,
-          engagement: S.NullOr(__S(3)),
+          engagement: S.NullOr(AudienceEngagement),
           error_message: S.NullOr(S.String),
           filters: S.NullOr(S.Unknown),
           id: S.String,
           last_refreshed_at: S.NullOr(S.String),
           lookalike_ratio: S.NullOr(S.Number),
           lookalike_starting_ratio: S.NullOr(S.Number),
-          match_rates: __S(5),
+          match_rates: AudienceMatchRatesList,
           matched_rows: S.Number,
           name: S.String,
-          platform_audience_ids: __S(1),
+          platform_audience_ids: AudiencePlatformAudienceIdsList,
           processed_rows: S.Number,
           progress_percent: S.Number,
           source_audience_id: S.NullOr(S.String),
-          source_type: S.String,
-          status: S.String,
+          source_type: AudienceSourceType,
+          status: AudienceStatus,
           total_rows: S.Number,
           updated_at: S.String,
         }),
@@ -489,9 +606,9 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          exclude: S.optional(__S(2)),
-          include: __S(2),
-          platform: S.String,
+          exclude: S.optional(CreateAudienceRequestEngagementExcludeList),
+          include: CreateAudienceRequestEngagementIncludeList,
+          platform: CreateAudienceRequestEngagementPlatform,
         }),
       ).annotate({
         identifier: "CreateAudienceRequestEngagement",
@@ -500,24 +617,24 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
-          audience_type: S.optional(S.String),
+          audience_type: S.optional(CreateAudienceRequestAudienceType),
           auto_refresh: S.optional(S.Boolean),
-          column_mapping: S.optional(__S(7)),
+          column_mapping: S.optional(CreateAudienceRequestColumnMapping),
           count: S.optional(S.Number),
-          engagement: S.optional(__S(8)),
+          engagement: S.optional(CreateAudienceRequestEngagement),
           file_id: S.optional(S.String),
           filters: S.optional(S.Unknown),
           name: S.optional(S.String),
           percentage: S.optional(S.Number),
           source_audience_id: S.optional(S.String),
-          source_type: S.optional(S.String),
+          source_type: S.optional(CreateAudienceRequestSourceType),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/audiences", code: 200 })),
       ).annotate({ identifier: "CreateAudienceRequest" });
     case 2:
-      return S.Array(__S(6));
+      return S.Array(Audience);
     case 3:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => CreateAudienceResponseBody.pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateAudienceResponse",
       });
     case 4:
@@ -537,8 +654,8 @@ function __c1(j: number): any {
         S.Struct({
           account_id: S.String.pipe(T.Query()),
           audience_id: S.optional(S.String.pipe(T.Query())),
-          audience_type: S.optional(S.String.pipe(T.Query())),
-          source_type: S.optional(S.String.pipe(T.Query())),
+          audience_type: S.optional(ListAudiencesRequestAudienceType.pipe(T.Query())),
+          source_type: S.optional(ListAudiencesRequestSourceType.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/audiences", code: 200 })),
@@ -561,8 +678,8 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: __S(10),
-          page_info: __S(15),
+          data: ListAudiencesResponseDataList,
+          page_info: ListAudiencesResponsePageInfo,
         }),
       ).annotate({ identifier: "ListAudiencesResponse" });
     case 1:
@@ -573,20 +690,5 @@ function __c2(j: number): any {
           name: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/audiences/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateAudienceRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

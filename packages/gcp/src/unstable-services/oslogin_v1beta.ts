@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -75,26 +73,47 @@ export interface SshPublicKey {
   /** Output only. The canonical resource name. */
   name?: string;
 }
+const SshPublicKey = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<SshPublicKey>;
+
 export interface CreateUsersSshPublicKeysRequest {
   /** Required. The unique ID for the user in format `users/{user}`. */
   parent: string;
   /** Request body */
   body?: SshPublicKey;
 }
+const CreateUsersSshPublicKeysRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateUsersSshPublicKeysRequest>;
+
 export interface DeleteUsersProjectsRequest {
   /** Required. A reference to the POSIX account to update. POSIX accounts are identified by the project ID they are associated with. A reference to the POSIX account is in format `users/{user}/projects/{project}`. */
   name: string;
 }
+const DeleteUsersProjectsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteUsersProjectsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Empty>;
+
 export interface DeleteUsersSshPublicKeysRequest {
   /** Required. The fingerprint of the public key to update. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`. */
   name: string;
 }
+const DeleteUsersSshPublicKeysRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeleteUsersSshPublicKeysRequest>;
+
 export type GetLoginProfileUsersViewEnum =
   | "LOGIN_PROFILE_VIEW_UNSPECIFIED"
   | "BASIC"
   | "SECURITY_KEY";
+const GetLoginProfileUsersViewEnum = S.String;
+
 export interface GetLoginProfileUsersRequest {
   /** The view configures whether to retrieve security keys information. */
   view?: GetLoginProfileUsersViewEnum | (string & {});
@@ -105,10 +124,17 @@ export interface GetLoginProfileUsersRequest {
   /** Required. The project ID of the Google Cloud Platform project. */
   projectId?: string;
 }
+const GetLoginProfileUsersRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetLoginProfileUsersRequest>;
+
 export type PosixAccountOperatingSystemTypeEnum =
   | "OPERATING_SYSTEM_TYPE_UNSPECIFIED"
   | "LINUX"
   | "WINDOWS";
+const PosixAccountOperatingSystemTypeEnum = S.String;
+
 /** The POSIX account information associated with a Google account. */
 export interface PosixAccount {
   /** The user ID. */
@@ -134,17 +160,25 @@ export interface PosixAccount {
   /** Output only. The canonical resource name. */
   name?: string;
 }
+const PosixAccount = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<PosixAccount>;
+
 export type PosixAccountList = Array<PosixAccount>;
+const PosixAccountList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<PosixAccountList>;
+
 /** Security key information specific to the U2F protocol. */
 export interface UniversalTwoFactor {
   /** Application ID for the U2F protocol. */
   appId?: string;
 }
+const UniversalTwoFactor = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<UniversalTwoFactor>;
+
 /** Security key information specific to the Web Authentication protocol. */
 export interface WebAuthn {
   /** Relying party ID for Web Authentication. */
   rpId?: string;
 }
+const WebAuthn = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<WebAuthn>;
+
 /** The credential information for a Google registered security key. */
 export interface SecurityKey {
   /** Public key text in SSH format, defined by [RFC4253]("https://www.ietf.org/rfc/rfc4253.txt") section 6.6. */
@@ -158,8 +192,14 @@ export interface SecurityKey {
   /** The Web Authentication protocol type. */
   webAuthn?: WebAuthn;
 }
+const SecurityKey = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SecurityKey>;
+
 export type SecurityKeyList = Array<SecurityKey>;
+const SecurityKeyList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<SecurityKeyList>;
+
 export type SshPublicKeyMap = { [key: string]: SshPublicKey | undefined };
+const SshPublicKeyMap = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<SshPublicKeyMap>;
+
 /** The user profile information used for logging in to a virtual machine on Google Compute Engine. */
 export interface LoginProfile {
   /** The list of POSIX accounts associated with the user. */
@@ -171,15 +211,26 @@ export interface LoginProfile {
   /** A map from SSH public key fingerprint to the associated key object. */
   sshPublicKeys?: SshPublicKeyMap;
 }
+const LoginProfile = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<LoginProfile>;
+
 export interface GetUsersSshPublicKeysRequest {
   /** Required. The fingerprint of the public key to retrieve. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`. */
   name: string;
 }
+const GetUsersSshPublicKeysRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetUsersSshPublicKeysRequest>;
+
 export type ImportSshPublicKeyUsersViewEnum =
   | "LOGIN_PROFILE_VIEW_UNSPECIFIED"
   | "BASIC"
   | "SECURITY_KEY";
+const ImportSshPublicKeyUsersViewEnum = S.String;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<StringList>;
+
 export interface ImportSshPublicKeyUsersRequest {
   /** The view configures whether to retrieve security keys information. */
   view?: ImportSshPublicKeyUsersViewEnum | (string & {});
@@ -192,6 +243,11 @@ export interface ImportSshPublicKeyUsersRequest {
   /** Request body */
   body?: SshPublicKey;
 }
+const ImportSshPublicKeyUsersRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ImportSshPublicKeyUsersRequest>;
+
 /** A response message for importing an SSH public key. */
 export interface ImportSshPublicKeyResponse {
   /** The login profile information for the user. */
@@ -199,6 +255,11 @@ export interface ImportSshPublicKeyResponse {
   /** Detailed information about import results. */
   details?: string;
 }
+const ImportSshPublicKeyResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ImportSshPublicKeyResponse>;
+
 export interface PatchUsersSshPublicKeysRequest {
   /** Required. The fingerprint of the public key to update. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`. */
   name: string;
@@ -207,17 +268,32 @@ export interface PatchUsersSshPublicKeysRequest {
   /** Request body */
   body?: SshPublicKey;
 }
+const PatchUsersSshPublicKeysRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<PatchUsersSshPublicKeysRequest>;
+
 /** A request message for creating a POSIX account entry. */
 export interface ProvisionPosixAccountRequest {
   /** Optional. The regions to wait for a POSIX account to be written to before returning a response. If unspecified, defaults to all regions. Regions are listed at https://cloud.google.com/about/locations#region. */
   regions?: StringList;
 }
+const ProvisionPosixAccountRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ProvisionPosixAccountRequest>;
+
 export interface ProvisionPosixAccountUsersProjectsRequest {
   /** Required. The unique ID for the user in format `users/{user}/projects/{project}`. */
   name: string;
   /** Request body */
   body?: ProvisionPosixAccountRequest;
 }
+const ProvisionPosixAccountUsersProjectsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ProvisionPosixAccountUsersProjectsRequest>;
+
 /** A request message for signing an SSH public key. */
 export interface GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyRequest {
   /** The Compute instance to sign the SSH public key for. Expected format: projects/{project}/zones/{zone}/instances/{numeric_instance_id} */
@@ -231,37 +307,72 @@ export interface GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyReq
   /** The App Engine instance to sign the SSH public key for. Expected format: apps/{app}/services/{service}/versions/{version}/instances/{instance} */
   appEngineInstance?: string;
 }
+const GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyRequest>;
+
 export interface SignSshPublicKeyProjectsLocationsRequest {
   /** Required. The parent for the signing request. Format: projects/{project}/locations/{location} */
   parent: string;
   /** Request body */
   body?: GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyRequest;
 }
+const SignSshPublicKeyProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<SignSshPublicKeyProjectsLocationsRequest>;
+
 /** The response message for signing an SSH public key. */
 export interface GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyResponse {
   /** The signed SSH public key to use in the SSH handshake. */
   signedSshPublicKey?: string;
 }
+const GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyResponse>;
+
 export interface SignSshPublicKeyRequest {
   /** Required. The SSH public key to sign. */
   sshPublicKey?: string;
 }
+const SignSshPublicKeyRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<SignSshPublicKeyRequest>;
+
 export interface SignSshPublicKeyUsersProjectsLocationsRequest {
   /** Required. The parent project and region for the signing request. */
   parent: string;
   /** Request body */
   body?: SignSshPublicKeyRequest;
 }
+const SignSshPublicKeyUsersProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<SignSshPublicKeyUsersProjectsLocationsRequest>;
+
 export interface SignSshPublicKeyResponse {
   /** The signed SSH public key to use in the SSH handshake. */
   signedSshPublicKey?: string;
 }
+const SignSshPublicKeyResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<SignSshPublicKeyResponse>;
+
 export interface SignSshPublicKeyUsersProjectsZonesRequest {
   /** Required. The parent project and region for the signing request. */
   parent: string;
   /** Request body */
   body?: SignSshPublicKeyRequest;
 }
+const SignSshPublicKeyUsersProjectsZonesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<SignSshPublicKeyUsersProjectsZonesRequest>;
+
 export type CreateUsersSshPublicKeysError =
   | NotFound
   | Forbidden
@@ -275,8 +386,8 @@ export const createUsersSshPublicKeys: API.OperationMethod<
   CreateUsersSshPublicKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateUsersSshPublicKeysRequest>,
-  output: __S(0) as any as S.Schema<SshPublicKey>,
+  input: CreateUsersSshPublicKeysRequest,
+  output: SshPublicKey,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -290,8 +401,8 @@ export const deleteUsersProjects: API.OperationMethod<
   DeleteUsersProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteUsersProjectsRequest>,
-  output: __S(3) as any as S.Schema<Empty>,
+  input: DeleteUsersProjectsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -310,8 +421,8 @@ export const deleteUsersSshPublicKeys: API.OperationMethod<
   DeleteUsersSshPublicKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DeleteUsersSshPublicKeysRequest>,
-  output: __S(3) as any as S.Schema<Empty>,
+  input: DeleteUsersSshPublicKeysRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -325,8 +436,8 @@ export const getLoginProfileUsers: API.OperationMethod<
   GetLoginProfileUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<GetLoginProfileUsersRequest>,
-  output: __S(13) as any as S.Schema<LoginProfile>,
+  input: GetLoginProfileUsersRequest,
+  output: LoginProfile,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -340,8 +451,8 @@ export const getUsersSshPublicKeys: API.OperationMethod<
   GetUsersSshPublicKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetUsersSshPublicKeysRequest>,
-  output: __S(0) as any as S.Schema<SshPublicKey>,
+  input: GetUsersSshPublicKeysRequest,
+  output: SshPublicKey,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -360,8 +471,8 @@ export const importSshPublicKeyUsers: API.OperationMethod<
   ImportSshPublicKeyUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<ImportSshPublicKeyUsersRequest>,
-  output: __S(17) as any as S.Schema<ImportSshPublicKeyResponse>,
+  input: ImportSshPublicKeyUsersRequest,
+  output: ImportSshPublicKeyResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -380,8 +491,8 @@ export const patchUsersSshPublicKeys: API.OperationMethod<
   PatchUsersSshPublicKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<PatchUsersSshPublicKeysRequest>,
-  output: __S(0) as any as S.Schema<SshPublicKey>,
+  input: PatchUsersSshPublicKeysRequest,
+  output: SshPublicKey,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -400,8 +511,8 @@ export const provisionPosixAccountUsersProjects: API.OperationMethod<
   ProvisionPosixAccountUsersProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<ProvisionPosixAccountUsersProjectsRequest>,
-  output: __S(6) as any as S.Schema<PosixAccount>,
+  input: ProvisionPosixAccountUsersProjectsRequest,
+  output: PosixAccount,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -420,10 +531,8 @@ export const signSshPublicKeyProjectsLocations: API.OperationMethod<
   SignSshPublicKeyProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<SignSshPublicKeyProjectsLocationsRequest>,
-  output: __S(
-    23,
-  ) as any as S.Schema<GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyResponse>,
+  input: SignSshPublicKeyProjectsLocationsRequest,
+  output: GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -442,8 +551,8 @@ export const signSshPublicKeyUsersProjectsLocations: API.OperationMethod<
   SignSshPublicKeyUsersProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<SignSshPublicKeyUsersProjectsLocationsRequest>,
-  output: __S(26) as any as S.Schema<SignSshPublicKeyResponse>,
+  input: SignSshPublicKeyUsersProjectsLocationsRequest,
+  output: SignSshPublicKeyResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -462,8 +571,8 @@ export const signSshPublicKeyUsersProjectsZones: API.OperationMethod<
   SignSshPublicKeyUsersProjectsZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<SignSshPublicKeyUsersProjectsZonesRequest>,
-  output: __S(26) as any as S.Schema<SignSshPublicKeyResponse>,
+  input: SignSshPublicKeyUsersProjectsZonesRequest,
+  output: SignSshPublicKeyResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -485,7 +594,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(SshPublicKey.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -531,7 +640,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(GetLoginProfileUsersViewEnum.pipe(T.Query())),
           systemId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           projectId: S.optional(S.String.pipe(T.Query())),
@@ -553,7 +662,7 @@ function __c0(j: number): any {
           accountId: S.optional(S.String),
           primary: S.optional(S.Boolean),
           systemId: S.optional(S.String),
-          operatingSystemType: S.optional(S.String),
+          operatingSystemType: S.optional(PosixAccountOperatingSystemTypeEnum),
           gecos: S.optional(S.String),
           shell: S.optional(S.String),
           homeDirectory: S.optional(S.String),
@@ -562,7 +671,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "PosixAccount" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(PosixAccount);
   }
 }
 function __c1(j: number): any {
@@ -583,23 +692,23 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           publicKey: S.optional(S.String),
-          universalTwoFactor: S.optional(__S(8)),
+          universalTwoFactor: S.optional(UniversalTwoFactor),
           privateKey: S.optional(S.String),
           deviceNickname: S.optional(S.String),
-          webAuthn: S.optional(__S(9)),
+          webAuthn: S.optional(WebAuthn),
         }),
       ).annotate({ identifier: "SecurityKey" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(SecurityKey);
     case 4:
-      return S.Record(S.String, __S(0));
+      return S.Record(S.String, SshPublicKey);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          posixAccounts: S.optional(__S(7)),
+          posixAccounts: S.optional(PosixAccountList),
           name: S.optional(S.String),
-          securityKeys: S.optional(__S(11)),
-          sshPublicKeys: S.optional(__S(12)),
+          securityKeys: S.optional(SecurityKeyList),
+          sshPublicKeys: S.optional(SshPublicKeyMap),
         }),
       ).annotate({ identifier: "LoginProfile" });
     case 6:
@@ -625,11 +734,11 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(ImportSshPublicKeyUsersViewEnum.pipe(T.Query())),
           projectId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          regions: S.optional(__S(15).pipe(T.Query())),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          regions: S.optional(StringList.pipe(T.Query())),
+          body: S.optional(SshPublicKey.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -643,7 +752,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          loginProfile: S.optional(__S(13)),
+          loginProfile: S.optional(LoginProfile),
           details: S.optional(S.String),
         }),
       ).annotate({
@@ -654,7 +763,7 @@ function __c2(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(SshPublicKey.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -668,7 +777,7 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          regions: S.optional(__S(15)),
+          regions: S.optional(StringList),
         }),
       ).annotate({
         identifier: "ProvisionPosixAccountRequest",
@@ -677,7 +786,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(19).pipe(T.HttpBody())),
+          body: S.optional(ProvisionPosixAccountRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -704,7 +813,9 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(21).pipe(T.HttpBody())),
+          body: S.optional(
+            GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyRequest.pipe(T.HttpBody()),
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -737,7 +848,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(24).pipe(T.HttpBody())),
+          body: S.optional(SignSshPublicKeyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -758,7 +869,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(24).pipe(T.HttpBody())),
+          body: S.optional(SignSshPublicKeyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -769,22 +880,5 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "SignSshPublicKeyUsersProjectsZonesRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

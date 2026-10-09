@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Budgets",
   serviceShapeName: "AWSBudgetServiceGateway",
@@ -230,10 +228,14 @@ export interface Spend {
   Amount: string;
   Unit: string;
 }
+const Spend = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Spend>;
 export type PlannedBudgetLimits = { [key: string]: Spend | undefined };
+const PlannedBudgetLimits = /*@__PURE__*/ __L.at(__c0, 1);
 export type DimensionValue = string;
 export type DimensionValues = string[];
+const DimensionValues = /*@__PURE__*/ __L.at(__c0, 2);
 export type CostFilters = { [key: string]: string[] | undefined };
+const CostFilters = /*@__PURE__*/ __L.at(__c0, 3);
 export interface CostTypes {
   IncludeTax?: boolean;
   IncludeSubscription?: boolean;
@@ -247,15 +249,20 @@ export interface CostTypes {
   IncludeDiscount?: boolean;
   UseAmortized?: boolean;
 }
+const CostTypes = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CostTypes>;
 export type TimeUnit = "DAILY" | "MONTHLY" | "QUARTERLY" | "ANNUALLY" | "CUSTOM" | (string & {});
+const TimeUnit = S.String;
+
 export interface TimePeriod {
   Start?: Date;
   End?: Date;
 }
+const TimePeriod = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<TimePeriod>;
 export interface CalculatedSpend {
   ActualSpend: Spend;
   ForecastedSpend?: Spend;
 }
+const CalculatedSpend = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CalculatedSpend>;
 export type BudgetType =
   | "USAGE"
   | "COST"
@@ -264,18 +271,25 @@ export type BudgetType =
   | "SAVINGS_PLANS_UTILIZATION"
   | "SAVINGS_PLANS_COVERAGE"
   | (string & {});
+const BudgetType = S.String;
+
 export type AutoAdjustType = "HISTORICAL" | "FORECAST" | (string & {});
+const AutoAdjustType = S.String;
+
 export type AdjustmentPeriod = number;
 export interface HistoricalOptions {
   BudgetAdjustmentPeriod: number;
   LookBackAvailablePeriods?: number;
 }
+const HistoricalOptions = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<HistoricalOptions>;
 export interface AutoAdjustData {
   AutoAdjustType: AutoAdjustType;
   HistoricalOptions?: HistoricalOptions;
   LastAutoAdjustTime?: Date;
 }
+const AutoAdjustData = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AutoAdjustData>;
 export type Expressions = Expression[];
+const Expressions = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Expressions>;
 export type Dimension =
   | "AZ"
   | "INSTANCE_TYPE"
@@ -311,8 +325,11 @@ export type Dimension =
   | "TAG_KEY"
   | "COST_CATEGORY_NAME"
   | (string & {});
+const Dimension = S.String;
+
 export type Value = string;
 export type Values = string[];
+const Values = DimensionValues as any as S.Schema<Values>;
 export type MatchOption =
   | "EQUALS"
   | "ABSENT"
@@ -323,24 +340,33 @@ export type MatchOption =
   | "CASE_SENSITIVE"
   | "CASE_INSENSITIVE"
   | (string & {});
+const MatchOption = S.String;
+
 export type MatchOptions = MatchOption[];
+const MatchOptions = /*@__PURE__*/ __L.at(__c1, 2);
 export interface ExpressionDimensionValues {
   Key: Dimension;
   Values: string[];
   MatchOptions?: MatchOption[];
 }
+const ExpressionDimensionValues = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ExpressionDimensionValues>;
 export type TagKey = string;
 export interface TagValues {
   Key?: string;
   Values?: string[];
   MatchOptions?: MatchOption[];
 }
+const TagValues = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<TagValues>;
 export type CostCategoryName = string;
 export interface CostCategoryValues {
   Key?: string;
   Values?: string[];
   MatchOptions?: MatchOption[];
 }
+const CostCategoryValues = TagValues as any as S.Schema<CostCategoryValues>;
 export interface Expression {
   Or?: Expression[];
   And?: Expression[];
@@ -349,6 +375,7 @@ export interface Expression {
   Tags?: TagValues;
   CostCategories?: CostCategoryValues;
 }
+const Expression = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Expression>;
 export type Metric =
   | "BlendedCost"
   | "UnblendedCost"
@@ -360,19 +387,25 @@ export type Metric =
   | "Hours"
   | (string & {});
 export type Metrics = Metric[];
+const Metrics = MatchOptions as any as S.Schema<Metrics>;
 export type BillingViewArn = string;
 export type HealthStatusValue = "HEALTHY" | "UNHEALTHY" | (string & {});
+const HealthStatusValue = S.String;
+
 export type HealthStatusReason =
   | "BILLING_VIEW_NO_ACCESS"
   | "BILLING_VIEW_UNHEALTHY"
   | "FILTER_INVALID"
   | "MULTI_YEAR_HISTORICAL_DATA_DISABLED"
   | (string & {});
+const HealthStatusReason = S.String;
+
 export interface HealthStatus {
   Status?: HealthStatusValue;
   StatusReason?: HealthStatusReason;
   LastUpdatedTime?: Date;
 }
+const HealthStatus = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<HealthStatus>;
 export interface Budget {
   BudgetName: string;
   BudgetLimit?: Spend;
@@ -390,11 +423,20 @@ export interface Budget {
   BillingViewArn?: string;
   HealthStatus?: HealthStatus;
 }
+const Budget = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Budget>;
 export type NotificationType = "ACTUAL" | "FORECASTED" | (string & {});
+const NotificationType = S.String;
+
 export type ComparisonOperator = "GREATER_THAN" | "LESS_THAN" | "EQUAL_TO" | (string & {});
+const ComparisonOperator = S.String;
+
 export type NotificationThreshold = number;
 export type ThresholdType = "PERCENTAGE" | "ABSOLUTE_VALUE" | (string & {});
+const ThresholdType = S.String;
+
 export type NotificationState = "OK" | "ALARM" | (string & {});
+const NotificationState = S.String;
+
 export interface Notification {
   NotificationType: NotificationType;
   ComparisonOperator: ComparisonOperator;
@@ -402,77 +444,107 @@ export interface Notification {
   ThresholdType?: ThresholdType;
   NotificationState?: NotificationState;
 }
+const Notification = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Notification>;
 export type SubscriptionType = "SNS" | "EMAIL" | (string & {});
+const SubscriptionType = S.String;
+
 export type SubscriberAddress = string | redacted.Redacted<string>;
 export interface Subscriber {
   SubscriptionType: SubscriptionType;
   Address: string | redacted.Redacted<string>;
 }
+const Subscriber = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Subscriber>;
 export type Subscribers = Subscriber[];
+const Subscribers = /*@__PURE__*/ __L.at(__c2, 2);
 export interface NotificationWithSubscribers {
   Notification: Notification;
   Subscribers: Subscriber[];
 }
+const NotificationWithSubscribers = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<NotificationWithSubscribers>;
 export type NotificationWithSubscribersList = NotificationWithSubscribers[];
+const NotificationWithSubscribersList = /*@__PURE__*/ __L.at(__c2, 4);
 export type ResourceTagKey = string;
 export type ResourceTagValue = string;
 export interface ResourceTag {
   Key: string;
   Value: string;
 }
+const ResourceTag = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ResourceTag>;
 export type ResourceTagList = ResourceTag[];
+const ResourceTagList = /*@__PURE__*/ __L.at(__c2, 6);
 export interface CreateBudgetRequest {
   AccountId: string;
   Budget: Budget;
   NotificationsWithSubscribers?: NotificationWithSubscribers[];
   ResourceTags?: ResourceTag[];
 }
+const CreateBudgetRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<CreateBudgetRequest>;
 export interface CreateBudgetResponse {}
+const CreateBudgetResponse = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<CreateBudgetResponse>;
 export type ActionType =
   | "APPLY_IAM_POLICY"
   | "APPLY_SCP_POLICY"
   | "RUN_SSM_DOCUMENTS"
   | (string & {});
+const ActionType = S.String;
+
 export interface ActionThreshold {
   ActionThresholdValue: number;
   ActionThresholdType: ThresholdType;
 }
+const ActionThreshold = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ActionThreshold>;
 export type PolicyArn = string;
 export type Role = string;
 export type Roles = string[];
+const Roles = DimensionValues as any as S.Schema<Roles>;
 export type Group = string;
 export type Groups = string[];
+const Groups = DimensionValues as any as S.Schema<Groups>;
 export type User = string;
 export type Users = string[];
+const Users = DimensionValues as any as S.Schema<Users>;
 export interface IamActionDefinition {
   PolicyArn: string;
   Roles?: string[];
   Groups?: string[];
   Users?: string[];
 }
+const IamActionDefinition = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<IamActionDefinition>;
 export type PolicyId = string;
 export type TargetId = string;
 export type TargetIds = string[];
+const TargetIds = DimensionValues as any as S.Schema<TargetIds>;
 export interface ScpActionDefinition {
   PolicyId: string;
   TargetIds: string[];
 }
+const ScpActionDefinition = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ScpActionDefinition>;
 export type ActionSubType = "STOP_EC2_INSTANCES" | "STOP_RDS_INSTANCES" | (string & {});
+const ActionSubType = S.String;
+
 export type Region = string;
 export type InstanceId = string;
 export type InstanceIds = string[];
+const InstanceIds = DimensionValues as any as S.Schema<InstanceIds>;
 export interface SsmActionDefinition {
   ActionSubType: ActionSubType;
   Region: string;
   InstanceIds: string[];
 }
+const SsmActionDefinition = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<SsmActionDefinition>;
 export interface Definition {
   IamActionDefinition?: IamActionDefinition;
   ScpActionDefinition?: ScpActionDefinition;
   SsmActionDefinition?: SsmActionDefinition;
 }
+const Definition = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<Definition>;
 export type RoleArn = string;
 export type ApprovalModel = "AUTOMATIC" | "MANUAL" | (string & {});
+const ApprovalModel = S.String;
+
 export interface CreateBudgetActionRequest {
   AccountId: string;
   BudgetName: string;
@@ -485,36 +557,61 @@ export interface CreateBudgetActionRequest {
   Subscribers: Subscriber[];
   ResourceTags?: ResourceTag[];
 }
+const CreateBudgetActionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateBudgetActionRequest>;
 export type ActionId = string;
 export interface CreateBudgetActionResponse {
   AccountId: string;
   BudgetName: string;
   ActionId: string;
 }
+const CreateBudgetActionResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateBudgetActionResponse>;
 export interface CreateNotificationRequest {
   AccountId: string;
   BudgetName: string;
   Notification: Notification;
   Subscribers: Subscriber[];
 }
+const CreateNotificationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateNotificationRequest>;
 export interface CreateNotificationResponse {}
+const CreateNotificationResponse =
+  CreateBudgetResponse as any as S.Schema<CreateNotificationResponse>;
 export interface CreateSubscriberRequest {
   AccountId: string;
   BudgetName: string;
   Notification: Notification;
   Subscriber: Subscriber;
 }
+const CreateSubscriberRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateSubscriberRequest>;
 export interface CreateSubscriberResponse {}
+const CreateSubscriberResponse = CreateBudgetResponse as any as S.Schema<CreateSubscriberResponse>;
 export interface DeleteBudgetRequest {
   AccountId: string;
   BudgetName: string;
 }
+const DeleteBudgetRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<DeleteBudgetRequest>;
 export interface DeleteBudgetResponse {}
+const DeleteBudgetResponse = CreateBudgetResponse as any as S.Schema<DeleteBudgetResponse>;
 export interface DeleteBudgetActionRequest {
   AccountId: string;
   BudgetName: string;
   ActionId: string;
 }
+const DeleteBudgetActionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<DeleteBudgetActionRequest>;
 export type ActionStatus =
   | "STANDBY"
   | "PENDING"
@@ -527,6 +624,8 @@ export type ActionStatus =
   | "RESET_IN_PROGRESS"
   | "RESET_FAILURE"
   | (string & {});
+const ActionStatus = S.String;
+
 export interface Action {
   ActionId: string;
   BudgetName: string;
@@ -539,42 +638,72 @@ export interface Action {
   Status: ActionStatus;
   Subscribers: Subscriber[];
 }
+const Action = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<Action>;
 export interface DeleteBudgetActionResponse {
   AccountId: string;
   BudgetName: string;
   Action: Action;
 }
+const DeleteBudgetActionResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DeleteBudgetActionResponse>;
 export interface DeleteNotificationRequest {
   AccountId: string;
   BudgetName: string;
   Notification: Notification;
 }
+const DeleteNotificationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<DeleteNotificationRequest>;
 export interface DeleteNotificationResponse {}
+const DeleteNotificationResponse =
+  CreateBudgetResponse as any as S.Schema<DeleteNotificationResponse>;
 export interface DeleteSubscriberRequest {
   AccountId: string;
   BudgetName: string;
   Notification: Notification;
   Subscriber: Subscriber;
 }
+const DeleteSubscriberRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<DeleteSubscriberRequest>;
 export interface DeleteSubscriberResponse {}
+const DeleteSubscriberResponse = CreateBudgetResponse as any as S.Schema<DeleteSubscriberResponse>;
 export interface DescribeBudgetRequest {
   AccountId: string;
   BudgetName: string;
   ShowFilterExpression?: boolean;
 }
+const DescribeBudgetRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<DescribeBudgetRequest>;
 export interface DescribeBudgetResponse {
   Budget?: Budget;
 }
+const DescribeBudgetResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<DescribeBudgetResponse>;
 export interface DescribeBudgetActionRequest {
   AccountId: string;
   BudgetName: string;
   ActionId: string;
 }
+const DescribeBudgetActionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DescribeBudgetActionRequest>;
 export interface DescribeBudgetActionResponse {
   AccountId: string;
   BudgetName: string;
   Action: Action;
 }
+const DescribeBudgetActionResponse =
+  DeleteBudgetActionResponse as any as S.Schema<DescribeBudgetActionResponse>;
 export type MaxResults = number;
 export interface DescribeBudgetActionHistoriesRequest {
   AccountId: string;
@@ -584,6 +713,10 @@ export interface DescribeBudgetActionHistoriesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeBudgetActionHistoriesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DescribeBudgetActionHistoriesRequest>;
 export type EventType =
   | "SYSTEM"
   | "CREATE_ACTION"
@@ -591,57 +724,95 @@ export type EventType =
   | "UPDATE_ACTION"
   | "EXECUTE_ACTION"
   | (string & {});
+const EventType = S.String;
+
 export interface ActionHistoryDetails {
   Message: string;
   Action: Action;
 }
+const ActionHistoryDetails = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ActionHistoryDetails>;
 export interface ActionHistory {
   Timestamp: Date;
   Status: ActionStatus;
   EventType: EventType;
   ActionHistoryDetails: ActionHistoryDetails;
 }
+const ActionHistory = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ActionHistory>;
 export type ActionHistories = ActionHistory[];
+const ActionHistories = /*@__PURE__*/ __L.at(__c5, 6);
 export interface DescribeBudgetActionHistoriesResponse {
   ActionHistories: ActionHistory[];
   NextToken?: string;
 }
+const DescribeBudgetActionHistoriesResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DescribeBudgetActionHistoriesResponse>;
 export interface DescribeBudgetActionsForAccountRequest {
   AccountId: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeBudgetActionsForAccountRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DescribeBudgetActionsForAccountRequest>;
 export type Actions = Action[];
+const Actions = /*@__PURE__*/ __L.at(__c6, 1);
 export interface DescribeBudgetActionsForAccountResponse {
   Actions: Action[];
   NextToken?: string;
 }
+const DescribeBudgetActionsForAccountResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DescribeBudgetActionsForAccountResponse>;
 export interface DescribeBudgetActionsForBudgetRequest {
   AccountId: string;
   BudgetName: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeBudgetActionsForBudgetRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DescribeBudgetActionsForBudgetRequest>;
 export interface DescribeBudgetActionsForBudgetResponse {
   Actions: Action[];
   NextToken?: string;
 }
+const DescribeBudgetActionsForBudgetResponse =
+  DescribeBudgetActionsForAccountResponse as any as S.Schema<DescribeBudgetActionsForBudgetResponse>;
 export type MaxResultsBudgetNotifications = number;
 export interface DescribeBudgetNotificationsForAccountRequest {
   AccountId: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeBudgetNotificationsForAccountRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DescribeBudgetNotificationsForAccountRequest>;
 export type Notifications = Notification[];
+const Notifications = /*@__PURE__*/ __L.at(__c6, 5);
 export interface BudgetNotificationsForAccount {
   Notifications?: Notification[];
   BudgetName?: string;
 }
+const BudgetNotificationsForAccount = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<BudgetNotificationsForAccount>;
 export type BudgetNotificationsForAccountList = BudgetNotificationsForAccount[];
+const BudgetNotificationsForAccountList = /*@__PURE__*/ __L.at(__c6, 7);
 export interface DescribeBudgetNotificationsForAccountResponse {
   BudgetNotificationsForAccount?: BudgetNotificationsForAccount[];
   NextToken?: string;
 }
+const DescribeBudgetNotificationsForAccountResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DescribeBudgetNotificationsForAccountResponse>;
 export interface DescribeBudgetPerformanceHistoryRequest {
   AccountId: string;
   BudgetName: string;
@@ -649,12 +820,21 @@ export interface DescribeBudgetPerformanceHistoryRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeBudgetPerformanceHistoryRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DescribeBudgetPerformanceHistoryRequest>;
 export interface BudgetedAndActualAmounts {
   BudgetedAmount?: Spend;
   ActualAmount?: Spend;
   TimePeriod?: TimePeriod;
 }
+const BudgetedAndActualAmounts = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<BudgetedAndActualAmounts>;
 export type BudgetedAndActualAmountsList = BudgetedAndActualAmounts[];
+const BudgetedAndActualAmountsList = /*@__PURE__*/ __L.at(__c7, 3);
 export interface BudgetPerformanceHistory {
   BudgetName?: string;
   BudgetType?: BudgetType;
@@ -666,10 +846,18 @@ export interface BudgetPerformanceHistory {
   FilterExpression?: Expression;
   Metrics?: Metric[];
 }
+const BudgetPerformanceHistory = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<BudgetPerformanceHistory>;
 export interface DescribeBudgetPerformanceHistoryResponse {
   BudgetPerformanceHistory?: BudgetPerformanceHistory;
   NextToken?: string;
 }
+const DescribeBudgetPerformanceHistoryResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<DescribeBudgetPerformanceHistoryResponse>;
 export type MaxResultsDescribeBudgets = number;
 export interface DescribeBudgetsRequest {
   AccountId: string;
@@ -677,21 +865,38 @@ export interface DescribeBudgetsRequest {
   NextToken?: string;
   ShowFilterExpression?: boolean;
 }
+const DescribeBudgetsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DescribeBudgetsRequest>;
 export type Budgets = Budget[];
+const Budgets = /*@__PURE__*/ __L.at(__c7, 7);
 export interface DescribeBudgetsResponse {
   Budgets?: Budget[];
   NextToken?: string;
 }
+const DescribeBudgetsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DescribeBudgetsResponse>;
 export interface DescribeNotificationsForBudgetRequest {
   AccountId: string;
   BudgetName: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeNotificationsForBudgetRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DescribeNotificationsForBudgetRequest>;
 export interface DescribeNotificationsForBudgetResponse {
   Notifications?: Notification[];
   NextToken?: string;
 }
+const DescribeNotificationsForBudgetResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<DescribeNotificationsForBudgetResponse>;
 export interface DescribeSubscribersForNotificationRequest {
   AccountId: string;
   BudgetName: string;
@@ -699,51 +904,84 @@ export interface DescribeSubscribersForNotificationRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeSubscribersForNotificationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DescribeSubscribersForNotificationRequest>;
 export interface DescribeSubscribersForNotificationResponse {
   Subscribers?: Subscriber[];
   NextToken?: string;
 }
+const DescribeSubscribersForNotificationResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<DescribeSubscribersForNotificationResponse>;
 export type ExecutionType =
   | "APPROVE_BUDGET_ACTION"
   | "RETRY_BUDGET_ACTION"
   | "REVERSE_BUDGET_ACTION"
   | "RESET_BUDGET_ACTION"
   | (string & {});
+const ExecutionType = S.String;
+
 export interface ExecuteBudgetActionRequest {
   AccountId: string;
   BudgetName: string;
   ActionId: string;
   ExecutionType: ExecutionType;
 }
+const ExecuteBudgetActionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ExecuteBudgetActionRequest>;
 export interface ExecuteBudgetActionResponse {
   AccountId: string;
   BudgetName: string;
   ActionId: string;
   ExecutionType: ExecutionType;
 }
+const ExecuteBudgetActionResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ExecuteBudgetActionResponse>;
 export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   ResourceTags?: ResourceTag[];
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   ResourceARN: string;
   ResourceTags: ResourceTag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = CreateBudgetResponse as any as S.Schema<TagResourceResponse>;
 export type ResourceTagKeyList = string[];
+const ResourceTagKeyList = DimensionValues as any as S.Schema<ResourceTagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   ResourceTagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = CreateBudgetResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateBudgetRequest {
   AccountId: string;
   NewBudget: Budget;
 }
+const UpdateBudgetRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<UpdateBudgetRequest>;
 export interface UpdateBudgetResponse {}
+const UpdateBudgetResponse = CreateBudgetResponse as any as S.Schema<UpdateBudgetResponse>;
 export interface UpdateBudgetActionRequest {
   AccountId: string;
   BudgetName: string;
@@ -755,19 +993,33 @@ export interface UpdateBudgetActionRequest {
   ApprovalModel?: ApprovalModel;
   Subscribers?: Subscriber[];
 }
+const UpdateBudgetActionRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<UpdateBudgetActionRequest>;
 export interface UpdateBudgetActionResponse {
   AccountId: string;
   BudgetName: string;
   OldAction: Action;
   NewAction: Action;
 }
+const UpdateBudgetActionResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<UpdateBudgetActionResponse>;
 export interface UpdateNotificationRequest {
   AccountId: string;
   BudgetName: string;
   OldNotification: Notification;
   NewNotification: Notification;
 }
+const UpdateNotificationRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<UpdateNotificationRequest>;
 export interface UpdateNotificationResponse {}
+const UpdateNotificationResponse =
+  CreateBudgetResponse as any as S.Schema<UpdateNotificationResponse>;
 export interface UpdateSubscriberRequest {
   AccountId: string;
   BudgetName: string;
@@ -775,7 +1027,12 @@ export interface UpdateSubscriberRequest {
   OldSubscriber: Subscriber;
   NewSubscriber: Subscriber;
 }
+const UpdateSubscriberRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<UpdateSubscriberRequest>;
 export interface UpdateSubscriberResponse {}
+const UpdateSubscriberResponse = CreateBudgetResponse as any as S.Schema<UpdateSubscriberResponse>;
 export type ErrorMessage = string;
 export type CreateBudgetError =
   | AccessDeniedException
@@ -809,8 +1066,8 @@ export const createBudget: API.OperationMethod<
   CreateBudgetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateBudgetRequest>,
-  output: __S(24) as any as S.Schema<CreateBudgetResponse>,
+  input: CreateBudgetRequest,
+  output: CreateBudgetResponse,
   errors: [
     AccessDeniedException,
     BillingViewHealthStatusException,
@@ -846,8 +1103,8 @@ export const createBudgetAction: API.OperationMethod<
   CreateBudgetActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<CreateBudgetActionRequest>,
-  output: __S(31) as any as S.Schema<CreateBudgetActionResponse>,
+  input: CreateBudgetActionRequest,
+  output: CreateBudgetActionResponse,
   errors: [
     AccessDeniedException,
     CreationLimitExceededException,
@@ -881,8 +1138,8 @@ export const createNotification: API.OperationMethod<
   CreateNotificationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<CreateNotificationRequest>,
-  output: __S(24) as any as S.Schema<CreateNotificationResponse>,
+  input: CreateNotificationRequest,
+  output: CreateNotificationResponse,
   errors: [
     AccessDeniedException,
     CreationLimitExceededException,
@@ -915,8 +1172,8 @@ export const createSubscriber: API.OperationMethod<
   CreateSubscriberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<CreateSubscriberRequest>,
-  output: __S(24) as any as S.Schema<CreateSubscriberResponse>,
+  input: CreateSubscriberRequest,
+  output: CreateSubscriberResponse,
   errors: [
     AccessDeniedException,
     CreationLimitExceededException,
@@ -949,8 +1206,8 @@ export const deleteBudget: API.OperationMethod<
   DeleteBudgetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<DeleteBudgetRequest>,
-  output: __S(24) as any as S.Schema<DeleteBudgetResponse>,
+  input: DeleteBudgetRequest,
+  output: DeleteBudgetResponse,
   errors: [
     AccessDeniedException,
     InternalErrorException,
@@ -980,8 +1237,8 @@ export const deleteBudgetAction: API.OperationMethod<
   DeleteBudgetActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<DeleteBudgetActionRequest>,
-  output: __S(37) as any as S.Schema<DeleteBudgetActionResponse>,
+  input: DeleteBudgetActionRequest,
+  output: DeleteBudgetActionResponse,
   errors: [
     AccessDeniedException,
     InternalErrorException,
@@ -1013,8 +1270,8 @@ export const deleteNotification: API.OperationMethod<
   DeleteNotificationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<DeleteNotificationRequest>,
-  output: __S(24) as any as S.Schema<DeleteNotificationResponse>,
+  input: DeleteNotificationRequest,
+  output: DeleteNotificationResponse,
   errors: [
     AccessDeniedException,
     InternalErrorException,
@@ -1045,8 +1302,8 @@ export const deleteSubscriber: API.OperationMethod<
   DeleteSubscriberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<DeleteSubscriberRequest>,
-  output: __S(24) as any as S.Schema<DeleteSubscriberResponse>,
+  input: DeleteSubscriberRequest,
+  output: DeleteSubscriberResponse,
   errors: [
     AccessDeniedException,
     InternalErrorException,
@@ -1078,8 +1335,8 @@ export const describeBudget: API.OperationMethod<
   DescribeBudgetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<DescribeBudgetRequest>,
-  output: __S(41) as any as S.Schema<DescribeBudgetResponse>,
+  input: DescribeBudgetRequest,
+  output: DescribeBudgetResponse,
   errors: [
     AccessDeniedException,
     InternalErrorException,
@@ -1108,8 +1365,8 @@ export const describeBudgetAction: API.OperationMethod<
   DescribeBudgetActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<DescribeBudgetActionRequest>,
-  output: __S(37) as any as S.Schema<DescribeBudgetActionResponse>,
+  input: DescribeBudgetActionRequest,
+  output: DescribeBudgetActionResponse,
   errors: [
     AccessDeniedException,
     InternalErrorException,
@@ -1140,8 +1397,8 @@ export const describeBudgetActionHistories: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ActionHistory
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(43) as any as S.Schema<DescribeBudgetActionHistoriesRequest>,
-  output: __S(47) as any as S.Schema<DescribeBudgetActionHistoriesResponse>,
+  input: DescribeBudgetActionHistoriesRequest,
+  output: DescribeBudgetActionHistoriesResponse,
   errors: [
     AccessDeniedException,
     InternalErrorException,
@@ -1178,8 +1435,8 @@ export const describeBudgetActionsForAccount: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Action
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(48) as any as S.Schema<DescribeBudgetActionsForAccountRequest>,
-  output: __S(50) as any as S.Schema<DescribeBudgetActionsForAccountResponse>,
+  input: DescribeBudgetActionsForAccountRequest,
+  output: DescribeBudgetActionsForAccountResponse,
   errors: [
     AccessDeniedException,
     InternalErrorException,
@@ -1216,8 +1473,8 @@ export const describeBudgetActionsForBudget: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Action
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(51) as any as S.Schema<DescribeBudgetActionsForBudgetRequest>,
-  output: __S(50) as any as S.Schema<DescribeBudgetActionsForBudgetResponse>,
+  input: DescribeBudgetActionsForBudgetRequest,
+  output: DescribeBudgetActionsForBudgetResponse,
   errors: [
     AccessDeniedException,
     InternalErrorException,
@@ -1256,8 +1513,8 @@ export const describeBudgetNotificationsForAccount: API.PaginatedOperationMethod
   Credentials | HttpClient.HttpClient,
   BudgetNotificationsForAccount
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(52) as any as S.Schema<DescribeBudgetNotificationsForAccountRequest>,
-  output: __S(56) as any as S.Schema<DescribeBudgetNotificationsForAccountResponse>,
+  input: DescribeBudgetNotificationsForAccountRequest,
+  output: DescribeBudgetNotificationsForAccountResponse,
   errors: [
     AccessDeniedException,
     ExpiredNextTokenException,
@@ -1298,8 +1555,8 @@ export const describeBudgetPerformanceHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(57) as any as S.Schema<DescribeBudgetPerformanceHistoryRequest>,
-  output: __S(61) as any as S.Schema<DescribeBudgetPerformanceHistoryResponse>,
+  input: DescribeBudgetPerformanceHistoryRequest,
+  output: DescribeBudgetPerformanceHistoryResponse,
   errors: [
     AccessDeniedException,
     BillingViewHealthStatusException,
@@ -1342,8 +1599,8 @@ export const describeBudgets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Budget
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(62) as any as S.Schema<DescribeBudgetsRequest>,
-  output: __S(64) as any as S.Schema<DescribeBudgetsResponse>,
+  input: DescribeBudgetsRequest,
+  output: DescribeBudgetsResponse,
   errors: [
     AccessDeniedException,
     ExpiredNextTokenException,
@@ -1383,8 +1640,8 @@ export const describeNotificationsForBudget: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Notification
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(65) as any as S.Schema<DescribeNotificationsForBudgetRequest>,
-  output: __S(66) as any as S.Schema<DescribeNotificationsForBudgetResponse>,
+  input: DescribeNotificationsForBudgetRequest,
+  output: DescribeNotificationsForBudgetResponse,
   errors: [
     AccessDeniedException,
     ExpiredNextTokenException,
@@ -1424,8 +1681,8 @@ export const describeSubscribersForNotification: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Subscriber
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(67) as any as S.Schema<DescribeSubscribersForNotificationRequest>,
-  output: __S(68) as any as S.Schema<DescribeSubscribersForNotificationResponse>,
+  input: DescribeSubscribersForNotificationRequest,
+  output: DescribeSubscribersForNotificationResponse,
   errors: [
     AccessDeniedException,
     ExpiredNextTokenException,
@@ -1463,8 +1720,8 @@ export const executeBudgetAction: API.OperationMethod<
   ExecuteBudgetActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<ExecuteBudgetActionRequest>,
-  output: __S(70) as any as S.Schema<ExecuteBudgetActionResponse>,
+  input: ExecuteBudgetActionRequest,
+  output: ExecuteBudgetActionResponse,
   errors: [
     AccessDeniedException,
     InternalErrorException,
@@ -1494,8 +1751,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(72) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     AccessDeniedException,
     InternalErrorException,
@@ -1525,8 +1782,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<TagResourceRequest>,
-  output: __S(24) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     AccessDeniedException,
     InternalErrorException,
@@ -1556,8 +1813,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<UntagResourceRequest>,
-  output: __S(24) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     AccessDeniedException,
     InternalErrorException,
@@ -1600,8 +1857,8 @@ export const updateBudget: API.OperationMethod<
   UpdateBudgetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<UpdateBudgetRequest>,
-  output: __S(24) as any as S.Schema<UpdateBudgetResponse>,
+  input: UpdateBudgetRequest,
+  output: UpdateBudgetResponse,
   errors: [
     AccessDeniedException,
     BillingViewHealthStatusException,
@@ -1633,8 +1890,8 @@ export const updateBudgetAction: API.OperationMethod<
   UpdateBudgetActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<UpdateBudgetActionRequest>,
-  output: __S(77) as any as S.Schema<UpdateBudgetActionResponse>,
+  input: UpdateBudgetActionRequest,
+  output: UpdateBudgetActionResponse,
   errors: [
     AccessDeniedException,
     InternalErrorException,
@@ -1665,8 +1922,8 @@ export const updateNotification: API.OperationMethod<
   UpdateNotificationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<UpdateNotificationRequest>,
-  output: __S(24) as any as S.Schema<UpdateNotificationResponse>,
+  input: UpdateNotificationRequest,
+  output: UpdateNotificationResponse,
   errors: [
     AccessDeniedException,
     DuplicateRecordException,
@@ -1697,8 +1954,8 @@ export const updateSubscriber: API.OperationMethod<
   UpdateSubscriberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<UpdateSubscriberRequest>,
-  output: __S(24) as any as S.Schema<UpdateSubscriberResponse>,
+  input: UpdateSubscriberRequest,
+  output: UpdateSubscriberResponse,
   errors: [
     AccessDeniedException,
     DuplicateRecordException,
@@ -1720,11 +1977,11 @@ function __c0(j: number): any {
         identifier: "Spend",
       });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ Spend.pipe(S.optional));
     case 2:
       return S.Array(S.String);
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(2).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ DimensionValues.pipe(S.optional));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1750,7 +2007,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "TimePeriod" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ ActualSpend: __S(0), ForecastedSpend: S.optional(__S(0)) }),
+        S.Struct({ ActualSpend: Spend, ForecastedSpend: S.optional(Spend) }),
       ).annotate({ identifier: "CalculatedSpend" });
     case 7:
       return S.suspend(() =>
@@ -1766,22 +2023,22 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AutoAdjustType: S.String,
-          HistoricalOptions: S.optional(__S(7)),
+          AutoAdjustType: AutoAdjustType,
+          HistoricalOptions: S.optional(HistoricalOptions),
           LastAutoAdjustTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "AutoAdjustData" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<Expression> => __S(13)).annotate({
+        /*@__PURE__*/ S.suspend((): S.Schema<Expression> => Expression).annotate({
           identifier: "Expression",
         }),
       );
     case 2:
-      return S.Array(S.String);
+      return S.Array(MatchOption);
     case 3:
       return S.suspend(() =>
-        S.Struct({ Key: S.String, Values: __S(2), MatchOptions: S.optional(__S(10)) }),
+        S.Struct({ Key: Dimension, Values: Values, MatchOptions: S.optional(MatchOptions) }),
       ).annotate({
         identifier: "ExpressionDimensionValues",
       });
@@ -1789,30 +2046,30 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Key: S.optional(S.String),
-          Values: S.optional(__S(2)),
-          MatchOptions: S.optional(__S(10)),
+          Values: S.optional(Values),
+          MatchOptions: S.optional(MatchOptions),
         }),
       ).annotate({ identifier: "TagValues" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Or: S.optional(S.suspend(() => __S(9)).annotate({ identifier: "Expressions" })),
-          And: S.optional(S.suspend(() => __S(9)).annotate({ identifier: "Expressions" })),
+          Or: S.optional(S.suspend(() => Expressions).annotate({ identifier: "Expressions" })),
+          And: S.optional(S.suspend(() => Expressions).annotate({ identifier: "Expressions" })),
           Not: S.optional(
-            S.suspend((): S.Schema<Expression> => __S(13)).annotate({
+            S.suspend((): S.Schema<Expression> => Expression).annotate({
               identifier: "Expression",
             }),
           ),
-          Dimensions: S.optional(__S(11)),
-          Tags: S.optional(__S(12)),
-          CostCategories: S.optional(__S(12)),
+          Dimensions: S.optional(ExpressionDimensionValues),
+          Tags: S.optional(TagValues),
+          CostCategories: S.optional(CostCategoryValues),
         }),
       ).annotate({ identifier: "Expression" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(S.String),
-          StatusReason: S.optional(S.String),
+          Status: S.optional(HealthStatusValue),
+          StatusReason: S.optional(HealthStatusReason),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "HealthStatus" });
@@ -1820,20 +2077,20 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           BudgetName: S.String,
-          BudgetLimit: S.optional(__S(0)),
-          PlannedBudgetLimits: S.optional(__S(1)),
-          CostFilters: S.optional(__S(3)),
-          CostTypes: S.optional(__S(4)),
-          TimeUnit: S.String,
-          TimePeriod: S.optional(__S(5)),
-          CalculatedSpend: S.optional(__S(6)),
-          BudgetType: S.String,
+          BudgetLimit: S.optional(Spend),
+          PlannedBudgetLimits: S.optional(PlannedBudgetLimits),
+          CostFilters: S.optional(CostFilters),
+          CostTypes: S.optional(CostTypes),
+          TimeUnit: TimeUnit,
+          TimePeriod: S.optional(TimePeriod),
+          CalculatedSpend: S.optional(CalculatedSpend),
+          BudgetType: BudgetType,
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AutoAdjustData: S.optional(__S(8)),
-          FilterExpression: S.optional(__S(13)),
-          Metrics: S.optional(__S(10)),
+          AutoAdjustData: S.optional(AutoAdjustData),
+          FilterExpression: S.optional(Expression),
+          Metrics: S.optional(Metrics),
           BillingViewArn: S.optional(S.String),
-          HealthStatus: S.optional(__S(14)),
+          HealthStatus: S.optional(HealthStatus),
         }),
       ).annotate({ identifier: "Budget" });
   }
@@ -1843,38 +2100,40 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          NotificationType: S.String,
-          ComparisonOperator: S.String,
+          NotificationType: NotificationType,
+          ComparisonOperator: ComparisonOperator,
           Threshold: S.Number,
-          ThresholdType: S.optional(S.String),
-          NotificationState: S.optional(S.String),
+          ThresholdType: S.optional(ThresholdType),
+          NotificationState: S.optional(NotificationState),
         }),
       ).annotate({ identifier: "Notification" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ SubscriptionType: S.String, Address: SensitiveString }),
+        S.Struct({ SubscriptionType: SubscriptionType, Address: SensitiveString }),
       ).annotate({ identifier: "Subscriber" });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(Subscriber);
     case 3:
-      return S.suspend(() => S.Struct({ Notification: __S(16), Subscribers: __S(18) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ Notification: Notification, Subscribers: Subscribers }),
+      ).annotate({
         identifier: "NotificationWithSubscribers",
       });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(NotificationWithSubscribers);
     case 5:
       return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
         identifier: "ResourceTag",
       });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(ResourceTag);
     case 7:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String,
-          Budget: __S(15),
-          NotificationsWithSubscribers: S.optional(__S(20)),
-          ResourceTags: S.optional(__S(22)),
+          Budget: Budget,
+          NotificationsWithSubscribers: S.optional(NotificationWithSubscribersList),
+          ResourceTags: S.optional(ResourceTagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateBudgetRequest" });
   }
@@ -1887,31 +2146,31 @@ function __c3(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ActionThresholdValue: S.Number, ActionThresholdType: S.String }),
+        S.Struct({ ActionThresholdValue: S.Number, ActionThresholdType: ThresholdType }),
       ).annotate({ identifier: "ActionThreshold" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           PolicyArn: S.String,
-          Roles: S.optional(__S(2)),
-          Groups: S.optional(__S(2)),
-          Users: S.optional(__S(2)),
+          Roles: S.optional(Roles),
+          Groups: S.optional(Groups),
+          Users: S.optional(Users),
         }),
       ).annotate({ identifier: "IamActionDefinition" });
     case 3:
-      return S.suspend(() => S.Struct({ PolicyId: S.String, TargetIds: __S(2) })).annotate({
+      return S.suspend(() => S.Struct({ PolicyId: S.String, TargetIds: TargetIds })).annotate({
         identifier: "ScpActionDefinition",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ActionSubType: S.String, Region: S.String, InstanceIds: __S(2) }),
+        S.Struct({ ActionSubType: ActionSubType, Region: S.String, InstanceIds: InstanceIds }),
       ).annotate({ identifier: "SsmActionDefinition" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          IamActionDefinition: S.optional(__S(26)),
-          ScpActionDefinition: S.optional(__S(27)),
-          SsmActionDefinition: S.optional(__S(28)),
+          IamActionDefinition: S.optional(IamActionDefinition),
+          ScpActionDefinition: S.optional(ScpActionDefinition),
+          SsmActionDefinition: S.optional(SsmActionDefinition),
         }),
       ).annotate({ identifier: "Definition" });
     case 6:
@@ -1919,14 +2178,14 @@ function __c3(j: number): any {
         S.Struct({
           AccountId: S.String,
           BudgetName: S.String,
-          NotificationType: S.String,
-          ActionType: S.String,
-          ActionThreshold: __S(25),
-          Definition: __S(29),
+          NotificationType: NotificationType,
+          ActionType: ActionType,
+          ActionThreshold: ActionThreshold,
+          Definition: Definition,
           ExecutionRoleArn: S.String,
-          ApprovalModel: S.String,
-          Subscribers: __S(18),
-          ResourceTags: S.optional(__S(22)),
+          ApprovalModel: ApprovalModel,
+          Subscribers: Subscribers,
+          ResourceTags: S.optional(ResourceTagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateBudgetActionRequest",
@@ -1946,8 +2205,8 @@ function __c4(j: number): any {
         S.Struct({
           AccountId: S.String,
           BudgetName: S.String,
-          Notification: __S(16),
-          Subscribers: __S(18),
+          Notification: Notification,
+          Subscribers: Subscribers,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateNotificationRequest",
@@ -1957,8 +2216,8 @@ function __c4(j: number): any {
         S.Struct({
           AccountId: S.String,
           BudgetName: S.String,
-          Notification: __S(16),
-          Subscriber: __S(17),
+          Notification: Notification,
+          Subscriber: Subscriber,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateSubscriberRequest" });
     case 2:
@@ -1980,25 +2239,25 @@ function __c4(j: number): any {
         S.Struct({
           ActionId: S.String,
           BudgetName: S.String,
-          NotificationType: S.String,
-          ActionType: S.String,
-          ActionThreshold: __S(25),
-          Definition: __S(29),
+          NotificationType: NotificationType,
+          ActionType: ActionType,
+          ActionThreshold: ActionThreshold,
+          Definition: Definition,
           ExecutionRoleArn: S.String,
-          ApprovalModel: S.String,
-          Status: S.String,
-          Subscribers: __S(18),
+          ApprovalModel: ApprovalModel,
+          Status: ActionStatus,
+          Subscribers: Subscribers,
         }),
       ).annotate({ identifier: "Action" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ AccountId: S.String, BudgetName: S.String, Action: __S(36) }),
+        S.Struct({ AccountId: S.String, BudgetName: S.String, Action: Action }),
       ).annotate({
         identifier: "DeleteBudgetActionResponse",
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ AccountId: S.String, BudgetName: S.String, Notification: __S(16) }).pipe(
+        S.Struct({ AccountId: S.String, BudgetName: S.String, Notification: Notification }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -2009,8 +2268,8 @@ function __c4(j: number): any {
         S.Struct({
           AccountId: S.String,
           BudgetName: S.String,
-          Notification: __S(16),
-          Subscriber: __S(17),
+          Notification: Notification,
+          Subscriber: Subscriber,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DeleteSubscriberRequest" });
   }
@@ -2026,7 +2285,7 @@ function __c5(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeBudgetRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ Budget: S.optional(__S(15)) })).annotate({
+      return S.suspend(() => S.Struct({ Budget: S.optional(Budget) })).annotate({
         identifier: "DescribeBudgetResponse",
       });
     case 2:
@@ -2043,7 +2302,7 @@ function __c5(j: number): any {
           AccountId: S.String,
           BudgetName: S.String,
           ActionId: S.String,
-          TimePeriod: S.optional(__S(5)),
+          TimePeriod: S.optional(TimePeriod),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -2051,23 +2310,23 @@ function __c5(j: number): any {
         identifier: "DescribeBudgetActionHistoriesRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ Message: S.String, Action: __S(36) })).annotate({
+      return S.suspend(() => S.Struct({ Message: S.String, Action: Action })).annotate({
         identifier: "ActionHistoryDetails",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
           Timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Status: S.String,
-          EventType: S.String,
-          ActionHistoryDetails: __S(44),
+          Status: ActionStatus,
+          EventType: EventType,
+          ActionHistoryDetails: ActionHistoryDetails,
         }),
       ).annotate({ identifier: "ActionHistory" });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(ActionHistory);
     case 7:
       return S.suspend(() =>
-        S.Struct({ ActionHistories: __S(46), NextToken: S.optional(S.String) }),
+        S.Struct({ ActionHistories: ActionHistories, NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeBudgetActionHistoriesResponse",
       });
@@ -2086,10 +2345,10 @@ function __c6(j: number): any {
         identifier: "DescribeBudgetActionsForAccountRequest",
       });
     case 1:
-      return S.Array(__S(36));
+      return S.Array(Action);
     case 2:
       return S.suspend(() =>
-        S.Struct({ Actions: __S(49), NextToken: S.optional(S.String) }),
+        S.Struct({ Actions: Actions, NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeBudgetActionsForAccountResponse",
       });
@@ -2115,15 +2374,15 @@ function __c6(j: number): any {
         identifier: "DescribeBudgetNotificationsForAccountRequest",
       });
     case 5:
-      return S.Array(__S(16));
+      return S.Array(Notification);
     case 6:
       return S.suspend(() =>
-        S.Struct({ Notifications: S.optional(__S(53)), BudgetName: S.optional(S.String) }),
+        S.Struct({ Notifications: S.optional(Notifications), BudgetName: S.optional(S.String) }),
       ).annotate({
         identifier: "BudgetNotificationsForAccount",
       });
     case 7:
-      return S.Array(__S(54));
+      return S.Array(BudgetNotificationsForAccount);
   }
 }
 function __c7(j: number): any {
@@ -2131,7 +2390,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          BudgetNotificationsForAccount: S.optional(__S(55)),
+          BudgetNotificationsForAccount: S.optional(BudgetNotificationsForAccountList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2142,7 +2401,7 @@ function __c7(j: number): any {
         S.Struct({
           AccountId: S.String,
           BudgetName: S.String,
-          TimePeriod: S.optional(__S(5)),
+          TimePeriod: S.optional(TimePeriod),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -2152,31 +2411,31 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          BudgetedAmount: S.optional(__S(0)),
-          ActualAmount: S.optional(__S(0)),
-          TimePeriod: S.optional(__S(5)),
+          BudgetedAmount: S.optional(Spend),
+          ActualAmount: S.optional(Spend),
+          TimePeriod: S.optional(TimePeriod),
         }),
       ).annotate({ identifier: "BudgetedAndActualAmounts" });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(BudgetedAndActualAmounts);
     case 4:
       return S.suspend(() =>
         S.Struct({
           BudgetName: S.optional(S.String),
-          BudgetType: S.optional(S.String),
-          CostFilters: S.optional(__S(3)),
-          CostTypes: S.optional(__S(4)),
-          TimeUnit: S.optional(S.String),
+          BudgetType: S.optional(BudgetType),
+          CostFilters: S.optional(CostFilters),
+          CostTypes: S.optional(CostTypes),
+          TimeUnit: S.optional(TimeUnit),
           BillingViewArn: S.optional(S.String),
-          BudgetedAndActualAmountsList: S.optional(__S(59)),
-          FilterExpression: S.optional(__S(13)),
-          Metrics: S.optional(__S(10)),
+          BudgetedAndActualAmountsList: S.optional(BudgetedAndActualAmountsList),
+          FilterExpression: S.optional(Expression),
+          Metrics: S.optional(Metrics),
         }),
       ).annotate({ identifier: "BudgetPerformanceHistory" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          BudgetPerformanceHistory: S.optional(__S(60)),
+          BudgetPerformanceHistory: S.optional(BudgetPerformanceHistory),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2192,14 +2451,14 @@ function __c7(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeBudgetsRequest" });
     case 7:
-      return S.Array(__S(15));
+      return S.Array(Budget);
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Budgets: S.optional(__S(63)), NextToken: S.optional(S.String) }),
+        S.Struct({ Budgets: S.optional(Budgets), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "DescribeBudgetsResponse" });
     case 1:
       return S.suspend(() =>
@@ -2214,7 +2473,7 @@ function __c8(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Notifications: S.optional(__S(53)), NextToken: S.optional(S.String) }),
+        S.Struct({ Notifications: S.optional(Notifications), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeNotificationsForBudgetResponse",
       });
@@ -2223,7 +2482,7 @@ function __c8(j: number): any {
         S.Struct({
           AccountId: S.String,
           BudgetName: S.String,
-          Notification: __S(16),
+          Notification: Notification,
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -2232,7 +2491,7 @@ function __c8(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Subscribers: S.optional(__S(18)), NextToken: S.optional(S.String) }),
+        S.Struct({ Subscribers: S.optional(Subscribers), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeSubscribersForNotificationResponse",
       });
@@ -2242,7 +2501,7 @@ function __c8(j: number): any {
           AccountId: S.String,
           BudgetName: S.String,
           ActionId: S.String,
-          ExecutionType: S.String,
+          ExecutionType: ExecutionType,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ExecuteBudgetActionRequest",
@@ -2253,7 +2512,7 @@ function __c8(j: number): any {
           AccountId: S.String,
           BudgetName: S.String,
           ActionId: S.String,
-          ExecutionType: S.String,
+          ExecutionType: ExecutionType,
         }),
       ).annotate({
         identifier: "ExecuteBudgetActionResponse",
@@ -2271,24 +2530,24 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ ResourceTags: S.optional(__S(22)) })).annotate({
+      return S.suspend(() => S.Struct({ ResourceTags: S.optional(ResourceTagList) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, ResourceTags: __S(22) }).pipe(
+        S.Struct({ ResourceARN: S.String, ResourceTags: ResourceTagList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, ResourceTagKeys: __S(2) }).pipe(
+        S.Struct({ ResourceARN: S.String, ResourceTagKeys: ResourceTagKeyList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ AccountId: S.String, NewBudget: __S(15) }).pipe(
+        S.Struct({ AccountId: S.String, NewBudget: Budget }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateBudgetRequest" });
@@ -2298,12 +2557,12 @@ function __c9(j: number): any {
           AccountId: S.String,
           BudgetName: S.String,
           ActionId: S.String,
-          NotificationType: S.optional(S.String),
-          ActionThreshold: S.optional(__S(25)),
-          Definition: S.optional(__S(29)),
+          NotificationType: S.optional(NotificationType),
+          ActionThreshold: S.optional(ActionThreshold),
+          Definition: S.optional(Definition),
           ExecutionRoleArn: S.optional(S.String),
-          ApprovalModel: S.optional(S.String),
-          Subscribers: S.optional(__S(18)),
+          ApprovalModel: S.optional(ApprovalModel),
+          Subscribers: S.optional(Subscribers),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateBudgetActionRequest",
@@ -2313,8 +2572,8 @@ function __c9(j: number): any {
         S.Struct({
           AccountId: S.String,
           BudgetName: S.String,
-          OldAction: __S(36),
-          NewAction: __S(36),
+          OldAction: Action,
+          NewAction: Action,
         }),
       ).annotate({
         identifier: "UpdateBudgetActionResponse",
@@ -2324,8 +2583,8 @@ function __c9(j: number): any {
         S.Struct({
           AccountId: S.String,
           BudgetName: S.String,
-          OldNotification: __S(16),
-          NewNotification: __S(16),
+          OldNotification: Notification,
+          NewNotification: Notification,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateNotificationRequest",
@@ -2335,39 +2594,10 @@ function __c9(j: number): any {
         S.Struct({
           AccountId: S.String,
           BudgetName: S.String,
-          Notification: __S(16),
-          OldSubscriber: __S(17),
-          NewSubscriber: __S(17),
+          Notification: Notification,
+          OldSubscriber: Subscriber,
+          NewSubscriber: Subscriber,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateSubscriberRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
   }
 }

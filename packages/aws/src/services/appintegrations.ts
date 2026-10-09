@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "AppIntegrations",
   serviceShapeName: "AmazonAppIntegrationService",
@@ -140,53 +138,76 @@ export type Description = string;
 export type URL = string;
 export type ApplicationTrustedSource = string;
 export type ApplicationApprovedOrigins = string[];
+const ApplicationApprovedOrigins = /*@__PURE__*/ __L.at(__c0, 0);
 export interface ExternalUrlConfig {
   AccessUrl: string;
   ApprovedOrigins?: string[];
 }
+const ExternalUrlConfig = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ExternalUrlConfig>;
 export interface ApplicationSourceConfig {
   ExternalUrlConfig?: ExternalUrlConfig;
 }
+const ApplicationSourceConfig = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ApplicationSourceConfig>;
 export type EventName = string;
 export interface Subscription {
   Event: string;
   Description?: string;
 }
+const Subscription = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Subscription>;
 export type SubscriptionList = Subscription[];
+const SubscriptionList = /*@__PURE__*/ __L.at(__c0, 4);
 export type EventDefinitionSchema = string;
 export interface Publication {
   Event: string;
   Schema: string;
   Description?: string;
 }
+const Publication = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Publication>;
 export type PublicationList = Publication[];
+const PublicationList = /*@__PURE__*/ __L.at(__c0, 6);
 export type IdempotencyToken = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
+const TagMap = /*@__PURE__*/ __L.at(__c0, 7);
 export type Permission = string;
 export type PermissionList = string[];
+const PermissionList = ApplicationApprovedOrigins as any as S.Schema<PermissionList>;
 export type InitializationTimeout = number;
 export type ContactHandlingScope = "CROSS_CONTACTS" | "PER_CONTACT" | (string & {});
+const ContactHandlingScope = S.String;
+
 export interface ContactHandling {
   Scope?: ContactHandlingScope;
 }
+const ContactHandling = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ContactHandling>;
 export interface ApplicationConfig {
   ContactHandling?: ContactHandling;
 }
+const ApplicationConfig = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ApplicationConfig>;
 export type IframePermission = string;
 export type IframePermissionList = string[];
+const IframePermissionList = ApplicationApprovedOrigins as any as S.Schema<IframePermissionList>;
 export interface IframeConfig {
   Allow?: string[];
   Sandbox?: string[];
 }
+const IframeConfig = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<IframeConfig>;
 export type ApplicationType = "STANDARD" | "SERVICE" | "MCP_SERVER" | "A2A_SERVER" | (string & {});
+const ApplicationType = S.String;
+
 export type AuthType = "API_KEY" | (string & {});
+const AuthType = S.String;
+
 export type Arn = string;
 export interface AuthConfig {
   AuthType?: AuthType;
   CredentialProviderIdentifier?: string;
 }
+const AuthConfig = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<AuthConfig>;
 export interface CreateApplicationRequest {
   Name: string;
   Namespace: string;
@@ -204,11 +225,19 @@ export interface CreateApplicationRequest {
   ApplicationType?: ApplicationType;
   AuthConfig?: AuthConfig;
 }
+const CreateApplicationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateApplicationRequest>;
 export type UUID = string;
 export interface CreateApplicationResponse {
   Arn?: string;
   Id?: string;
 }
+const CreateApplicationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateApplicationResponse>;
 export type Name = string;
 export type NonBlankString = string;
 export type SourceURI = string;
@@ -217,18 +246,27 @@ export interface ScheduleConfiguration {
   Object?: string;
   ScheduleExpression: string;
 }
+const ScheduleConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ScheduleConfiguration>;
 export type NonBlankLongString = string;
 export type FolderList = string[];
+const FolderList = ApplicationApprovedOrigins as any as S.Schema<FolderList>;
 export type Fields = string;
 export type FieldsList = string[];
+const FieldsList = ApplicationApprovedOrigins as any as S.Schema<FieldsList>;
 export type FieldsMap = { [key: string]: string[] | undefined };
+const FieldsMap = /*@__PURE__*/ __L.at(__c1, 7);
 export interface FileConfiguration {
   Folders: string[];
   Filters?: { [key: string]: string[] | undefined };
 }
+const FileConfiguration = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<FileConfiguration>;
 export type ObjectConfiguration = {
   [key: string]: { [key: string]: string[] | undefined } | undefined;
 };
+const ObjectConfiguration = /*@__PURE__*/ __L.at(__c2, 1);
 export interface CreateDataIntegrationRequest {
   Name: string;
   Description?: string;
@@ -240,6 +278,10 @@ export interface CreateDataIntegrationRequest {
   FileConfiguration?: FileConfiguration;
   ObjectConfiguration?: { [key: string]: { [key: string]: string[] | undefined } | undefined };
 }
+const CreateDataIntegrationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateDataIntegrationRequest>;
 export interface CreateDataIntegrationResponse {
   Arn?: string;
   Id?: string;
@@ -253,20 +295,35 @@ export interface CreateDataIntegrationResponse {
   FileConfiguration?: FileConfiguration;
   ObjectConfiguration?: { [key: string]: { [key: string]: string[] | undefined } | undefined };
 }
+const CreateDataIntegrationResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateDataIntegrationResponse>;
 export type Identifier = string;
 export type ClientId = string;
 export type DestinationURI = string;
 export type ClientAssociationMetadata = { [key: string]: string | undefined };
+const ClientAssociationMetadata = /*@__PURE__*/ __L.at(__c2, 4);
 export type ExecutionMode = "ON_DEMAND" | "SCHEDULED" | (string & {});
+const ExecutionMode = S.String;
+
 export interface OnDemandConfiguration {
   StartTime: string;
   EndTime?: string;
 }
+const OnDemandConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<OnDemandConfiguration>;
 export interface ExecutionConfiguration {
   ExecutionMode: ExecutionMode;
   OnDemandConfiguration?: OnDemandConfiguration;
   ScheduleConfiguration?: ScheduleConfiguration;
 }
+const ExecutionConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ExecutionConfiguration>;
 export interface CreateDataIntegrationAssociationRequest {
   DataIntegrationIdentifier: string;
   ClientId?: string;
@@ -276,14 +333,23 @@ export interface CreateDataIntegrationAssociationRequest {
   ClientToken?: string;
   ExecutionConfiguration?: ExecutionConfiguration;
 }
+const CreateDataIntegrationAssociationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateDataIntegrationAssociationRequest>;
 export interface CreateDataIntegrationAssociationResponse {
   DataIntegrationAssociationId?: string;
   DataIntegrationArn?: string;
 }
+const CreateDataIntegrationAssociationResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateDataIntegrationAssociationResponse>;
 export type Source = string;
 export interface EventFilter {
   Source: string;
 }
+const EventFilter = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<EventFilter>;
 export type EventBridgeBus = string;
 export interface CreateEventIntegrationRequest {
   Name: string;
@@ -293,26 +359,58 @@ export interface CreateEventIntegrationRequest {
   ClientToken?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const CreateEventIntegrationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateEventIntegrationRequest>;
 export interface CreateEventIntegrationResponse {
   EventIntegrationArn?: string;
 }
+const CreateEventIntegrationResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateEventIntegrationResponse>;
 export type ArnOrUUID = string;
 export interface DeleteApplicationRequest {
   Arn: string;
   Force?: boolean;
 }
+const DeleteApplicationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DeleteApplicationRequest>;
 export interface DeleteApplicationResponse {}
+const DeleteApplicationResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DeleteApplicationResponse>;
 export interface DeleteDataIntegrationRequest {
   DataIntegrationIdentifier: string;
 }
+const DeleteDataIntegrationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DeleteDataIntegrationRequest>;
 export interface DeleteDataIntegrationResponse {}
+const DeleteDataIntegrationResponse =
+  DeleteApplicationResponse as any as S.Schema<DeleteDataIntegrationResponse>;
 export interface DeleteEventIntegrationRequest {
   Name: string;
 }
+const DeleteEventIntegrationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DeleteEventIntegrationRequest>;
 export interface DeleteEventIntegrationResponse {}
+const DeleteEventIntegrationResponse =
+  DeleteApplicationResponse as any as S.Schema<DeleteEventIntegrationResponse>;
 export interface GetApplicationRequest {
   Arn: string;
 }
+const GetApplicationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetApplicationRequest>;
 export interface GetApplicationResponse {
   Arn?: string;
   Id?: string;
@@ -333,9 +431,17 @@ export interface GetApplicationResponse {
   ApplicationType?: ApplicationType;
   AuthConfig?: AuthConfig;
 }
+const GetApplicationResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetApplicationResponse>;
 export interface GetDataIntegrationRequest {
   Identifier: string;
 }
+const GetDataIntegrationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetDataIntegrationRequest>;
 export interface GetDataIntegrationResponse {
   Arn?: string;
   Id?: string;
@@ -348,9 +454,17 @@ export interface GetDataIntegrationResponse {
   FileConfiguration?: FileConfiguration;
   ObjectConfiguration?: { [key: string]: { [key: string]: string[] | undefined } | undefined };
 }
+const GetDataIntegrationResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetDataIntegrationResponse>;
 export interface GetEventIntegrationRequest {
   Name: string;
 }
+const GetEventIntegrationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetEventIntegrationRequest>;
 export interface GetEventIntegrationResponse {
   Name?: string;
   Description?: string;
@@ -359,6 +473,10 @@ export interface GetEventIntegrationResponse {
   EventFilter?: EventFilter;
   Tags?: { [key: string]: string | undefined };
 }
+const GetEventIntegrationResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetEventIntegrationResponse>;
 export type NextToken = string;
 export type MaxResults = number;
 export interface ListApplicationAssociationsRequest {
@@ -366,21 +484,38 @@ export interface ListApplicationAssociationsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListApplicationAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListApplicationAssociationsRequest>;
 export interface ApplicationAssociationSummary {
   ApplicationAssociationArn?: string;
   ApplicationArn?: string;
   ClientId?: string;
 }
+const ApplicationAssociationSummary = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ApplicationAssociationSummary>;
 export type ApplicationAssociationsList = ApplicationAssociationSummary[];
+const ApplicationAssociationsList = /*@__PURE__*/ __L.at(__c5, 0);
 export interface ListApplicationAssociationsResponse {
   ApplicationAssociations?: ApplicationAssociationSummary[];
   NextToken?: string;
 }
+const ListApplicationAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ListApplicationAssociationsResponse>;
 export interface ListApplicationsRequest {
   NextToken?: string;
   MaxResults?: number;
   ApplicationType?: ApplicationType;
 }
+const ListApplicationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListApplicationsRequest>;
 export interface ApplicationSummary {
   Arn?: string;
   Id?: string;
@@ -391,21 +526,34 @@ export interface ApplicationSummary {
   IsService?: boolean;
   ApplicationType?: ApplicationType;
 }
+const ApplicationSummary = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ApplicationSummary>;
 export type ApplicationsList = ApplicationSummary[];
+const ApplicationsList = /*@__PURE__*/ __L.at(__c5, 4);
 export interface ListApplicationsResponse {
   Applications?: ApplicationSummary[];
   NextToken?: string;
 }
+const ListApplicationsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListApplicationsResponse>;
 export interface ListDataIntegrationAssociationsRequest {
   DataIntegrationIdentifier: string;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListDataIntegrationAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ListDataIntegrationAssociationsRequest>;
 export type ExecutionStatus = "COMPLETED" | "IN_PROGRESS" | "FAILED" | (string & {});
+const ExecutionStatus = S.String;
+
 export interface LastExecutionStatus {
   ExecutionStatus?: ExecutionStatus;
   StatusMessage?: string;
 }
+const LastExecutionStatus = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<LastExecutionStatus>;
 export interface DataIntegrationAssociationSummary {
   DataIntegrationAssociationArn?: string;
   DataIntegrationArn?: string;
@@ -414,30 +562,56 @@ export interface DataIntegrationAssociationSummary {
   LastExecutionStatus?: LastExecutionStatus;
   ExecutionConfiguration?: ExecutionConfiguration;
 }
+const DataIntegrationAssociationSummary = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DataIntegrationAssociationSummary>;
 export type DataIntegrationAssociationsList = DataIntegrationAssociationSummary[];
+const DataIntegrationAssociationsList = /*@__PURE__*/ __L.at(__c6, 1);
 export interface ListDataIntegrationAssociationsResponse {
   DataIntegrationAssociations?: DataIntegrationAssociationSummary[];
   NextToken?: string;
 }
+const ListDataIntegrationAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListDataIntegrationAssociationsResponse>;
 export interface ListDataIntegrationsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListDataIntegrationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ListDataIntegrationsRequest>;
 export interface DataIntegrationSummary {
   Arn?: string;
   Name?: string;
   SourceURI?: string;
 }
+const DataIntegrationSummary = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DataIntegrationSummary>;
 export type DataIntegrationsList = DataIntegrationSummary[];
+const DataIntegrationsList = /*@__PURE__*/ __L.at(__c6, 5);
 export interface ListDataIntegrationsResponse {
   DataIntegrations?: DataIntegrationSummary[];
   NextToken?: string;
 }
+const ListDataIntegrationsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListDataIntegrationsResponse>;
 export interface ListEventIntegrationAssociationsRequest {
   EventIntegrationName: string;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListEventIntegrationAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListEventIntegrationAssociationsRequest>;
 export type EventBridgeRuleName = string;
 export interface EventIntegrationAssociation {
   EventIntegrationAssociationArn?: string;
@@ -447,15 +621,28 @@ export interface EventIntegrationAssociation {
   EventBridgeRuleName?: string;
   ClientAssociationMetadata?: { [key: string]: string | undefined };
 }
+const EventIntegrationAssociation = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<EventIntegrationAssociation>;
 export type EventIntegrationAssociationsList = EventIntegrationAssociation[];
+const EventIntegrationAssociationsList = /*@__PURE__*/ __L.at(__c7, 1);
 export interface ListEventIntegrationAssociationsResponse {
   EventIntegrationAssociations?: EventIntegrationAssociation[];
   NextToken?: string;
 }
+const ListEventIntegrationAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListEventIntegrationAssociationsResponse>;
 export interface ListEventIntegrationsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListEventIntegrationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListEventIntegrationsRequest>;
 export interface EventIntegration {
   EventIntegrationArn?: string;
   Name?: string;
@@ -464,28 +651,47 @@ export interface EventIntegration {
   EventBridgeBus?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const EventIntegration = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<EventIntegration>;
 export type EventIntegrationsList = EventIntegration[];
+const EventIntegrationsList = /*@__PURE__*/ __L.at(__c7, 5);
 export interface ListEventIntegrationsResponse {
   EventIntegrations?: EventIntegration[];
   NextToken?: string;
 }
+const ListEventIntegrationsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListEventIntegrationsResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = DeleteApplicationResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
+const TagKeyList = ApplicationApprovedOrigins as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = DeleteApplicationResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateApplicationRequest {
   Arn: string;
   Name?: string;
@@ -501,24 +707,50 @@ export interface UpdateApplicationRequest {
   ApplicationType?: ApplicationType;
   AuthConfig?: AuthConfig;
 }
+const UpdateApplicationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<UpdateApplicationRequest>;
 export interface UpdateApplicationResponse {}
+const UpdateApplicationResponse =
+  DeleteApplicationResponse as any as S.Schema<UpdateApplicationResponse>;
 export interface UpdateDataIntegrationRequest {
   Identifier: string;
   Name?: string;
   Description?: string;
 }
+const UpdateDataIntegrationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<UpdateDataIntegrationRequest>;
 export interface UpdateDataIntegrationResponse {}
+const UpdateDataIntegrationResponse =
+  DeleteApplicationResponse as any as S.Schema<UpdateDataIntegrationResponse>;
 export interface UpdateDataIntegrationAssociationRequest {
   DataIntegrationIdentifier: string;
   DataIntegrationAssociationIdentifier: string;
   ExecutionConfiguration: ExecutionConfiguration;
 }
+const UpdateDataIntegrationAssociationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<UpdateDataIntegrationAssociationRequest>;
 export interface UpdateDataIntegrationAssociationResponse {}
+const UpdateDataIntegrationAssociationResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<UpdateDataIntegrationAssociationResponse>;
 export interface UpdateEventIntegrationRequest {
   Name: string;
   Description?: string;
 }
+const UpdateEventIntegrationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<UpdateEventIntegrationRequest>;
 export interface UpdateEventIntegrationResponse {}
+const UpdateEventIntegrationResponse =
+  DeleteApplicationResponse as any as S.Schema<UpdateEventIntegrationResponse>;
 export type Message = string;
 export type CreateApplicationError =
   | AccessDeniedException
@@ -539,8 +771,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(13) as any as S.Schema<CreateApplicationResponse>,
+  input: CreateApplicationRequest,
+  output: CreateApplicationResponse,
   errors: [
     AccessDeniedException,
     DuplicateResourceException,
@@ -578,8 +810,8 @@ export const createDataIntegration: API.OperationMethod<
   CreateDataIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CreateDataIntegrationRequest>,
-  output: __S(19) as any as S.Schema<CreateDataIntegrationResponse>,
+  input: CreateDataIntegrationRequest,
+  output: CreateDataIntegrationResponse,
   errors: [
     AccessDeniedException,
     DuplicateResourceException,
@@ -612,8 +844,8 @@ export const createDataIntegrationAssociation: API.OperationMethod<
   CreateDataIntegrationAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateDataIntegrationAssociationRequest>,
-  output: __S(24) as any as S.Schema<CreateDataIntegrationAssociationResponse>,
+  input: CreateDataIntegrationAssociationRequest,
+  output: CreateDataIntegrationAssociationResponse,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -649,8 +881,8 @@ export const createEventIntegration: API.OperationMethod<
   CreateEventIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<CreateEventIntegrationRequest>,
-  output: __S(27) as any as S.Schema<CreateEventIntegrationResponse>,
+  input: CreateEventIntegrationRequest,
+  output: CreateEventIntegrationResponse,
   errors: [
     AccessDeniedException,
     DuplicateResourceException,
@@ -684,8 +916,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(29) as any as S.Schema<DeleteApplicationResponse>,
+  input: DeleteApplicationRequest,
+  output: DeleteApplicationResponse,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -722,8 +954,8 @@ export const deleteDataIntegration: API.OperationMethod<
   DeleteDataIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<DeleteDataIntegrationRequest>,
-  output: __S(29) as any as S.Schema<DeleteDataIntegrationResponse>,
+  input: DeleteDataIntegrationRequest,
+  output: DeleteDataIntegrationResponse,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -755,8 +987,8 @@ export const deleteEventIntegration: API.OperationMethod<
   DeleteEventIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<DeleteEventIntegrationRequest>,
-  output: __S(29) as any as S.Schema<DeleteEventIntegrationResponse>,
+  input: DeleteEventIntegrationRequest,
+  output: DeleteEventIntegrationResponse,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -787,8 +1019,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<GetApplicationRequest>,
-  output: __S(33) as any as S.Schema<GetApplicationResponse>,
+  input: GetApplicationRequest,
+  output: GetApplicationResponse,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -823,8 +1055,8 @@ export const getDataIntegration: API.OperationMethod<
   GetDataIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<GetDataIntegrationRequest>,
-  output: __S(35) as any as S.Schema<GetDataIntegrationResponse>,
+  input: GetDataIntegrationRequest,
+  output: GetDataIntegrationResponse,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -855,8 +1087,8 @@ export const getEventIntegration: API.OperationMethod<
   GetEventIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GetEventIntegrationRequest>,
-  output: __S(37) as any as S.Schema<GetEventIntegrationResponse>,
+  input: GetEventIntegrationRequest,
+  output: GetEventIntegrationResponse,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -888,8 +1120,8 @@ export const listApplicationAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(38) as any as S.Schema<ListApplicationAssociationsRequest>,
-  output: __S(41) as any as S.Schema<ListApplicationAssociationsResponse>,
+  input: ListApplicationAssociationsRequest,
+  output: ListApplicationAssociationsResponse,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -926,8 +1158,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(42) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(45) as any as S.Schema<ListApplicationsResponse>,
+  input: ListApplicationsRequest,
+  output: ListApplicationsResponse,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -968,8 +1200,8 @@ export const listDataIntegrationAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataIntegrationAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(46) as any as S.Schema<ListDataIntegrationAssociationsRequest>,
-  output: __S(50) as any as S.Schema<ListDataIntegrationAssociationsResponse>,
+  input: ListDataIntegrationAssociationsRequest,
+  output: ListDataIntegrationAssociationsResponse,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -1010,8 +1242,8 @@ export const listDataIntegrations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataIntegrationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(51) as any as S.Schema<ListDataIntegrationsRequest>,
-  output: __S(54) as any as S.Schema<ListDataIntegrationsResponse>,
+  input: ListDataIntegrationsRequest,
+  output: ListDataIntegrationsResponse,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -1048,8 +1280,8 @@ export const listEventIntegrationAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventIntegrationAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(55) as any as S.Schema<ListEventIntegrationAssociationsRequest>,
-  output: __S(58) as any as S.Schema<ListEventIntegrationAssociationsResponse>,
+  input: ListEventIntegrationAssociationsRequest,
+  output: ListEventIntegrationAssociationsResponse,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -1086,8 +1318,8 @@ export const listEventIntegrations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventIntegration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59) as any as S.Schema<ListEventIntegrationsRequest>,
-  output: __S(62) as any as S.Schema<ListEventIntegrationsResponse>,
+  input: ListEventIntegrationsRequest,
+  output: ListEventIntegrationsResponse,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -1122,8 +1354,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(64) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1152,8 +1384,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<TagResourceRequest>,
-  output: __S(29) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1182,8 +1414,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<UntagResourceRequest>,
-  output: __S(29) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1215,8 +1447,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(29) as any as S.Schema<UpdateApplicationResponse>,
+  input: UpdateApplicationRequest,
+  output: UpdateApplicationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1253,8 +1485,8 @@ export const updateDataIntegration: API.OperationMethod<
   UpdateDataIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<UpdateDataIntegrationRequest>,
-  output: __S(29) as any as S.Schema<UpdateDataIntegrationResponse>,
+  input: UpdateDataIntegrationRequest,
+  output: UpdateDataIntegrationResponse,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -1287,8 +1519,8 @@ export const updateDataIntegrationAssociation: API.OperationMethod<
   UpdateDataIntegrationAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<UpdateDataIntegrationAssociationRequest>,
-  output: __S(70) as any as S.Schema<UpdateDataIntegrationAssociationResponse>,
+  input: UpdateDataIntegrationAssociationRequest,
+  output: UpdateDataIntegrationAssociationResponse,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -1319,8 +1551,8 @@ export const updateEventIntegration: API.OperationMethod<
   UpdateEventIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<UpdateEventIntegrationRequest>,
-  output: __S(29) as any as S.Schema<UpdateEventIntegrationResponse>,
+  input: UpdateEventIntegrationRequest,
+  output: UpdateEventIntegrationResponse,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -1341,24 +1573,24 @@ function __c0(j: number): any {
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
-        S.Struct({ AccessUrl: S.String, ApprovedOrigins: S.optional(__S(0)) }),
+        S.Struct({ AccessUrl: S.String, ApprovedOrigins: S.optional(ApplicationApprovedOrigins) }),
       ).annotate({ identifier: "ExternalUrlConfig" });
     case 2:
-      return S.suspend(() => S.Struct({ ExternalUrlConfig: S.optional(__S(1)) })).annotate({
-        identifier: "ApplicationSourceConfig",
-      });
+      return S.suspend(() =>
+        S.Struct({ ExternalUrlConfig: S.optional(ExternalUrlConfig) }),
+      ).annotate({ identifier: "ApplicationSourceConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({ Event: S.String, Description: S.optional(S.String) }),
       ).annotate({ identifier: "Subscription" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(Subscription);
     case 5:
       return S.suspend(() =>
         S.Struct({ Event: S.String, Schema: S.String, Description: S.optional(S.String) }),
       ).annotate({ identifier: "Publication" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(Publication);
     case 7:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
@@ -1366,24 +1598,24 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Scope: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ Scope: S.optional(ContactHandlingScope) })).annotate({
         identifier: "ContactHandling",
       });
     case 1:
-      return S.suspend(() => S.Struct({ ContactHandling: S.optional(__S(8)) })).annotate({
+      return S.suspend(() => S.Struct({ ContactHandling: S.optional(ContactHandling) })).annotate({
         identifier: "ApplicationConfig",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Allow: S.optional(__S(0)),
-          Sandbox: S.optional(__S(0)),
+          Allow: S.optional(IframePermissionList),
+          Sandbox: S.optional(IframePermissionList),
         }),
       ).annotate({ identifier: "IframeConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AuthType: S.optional(S.String),
+          AuthType: S.optional(AuthType),
           CredentialProviderIdentifier: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthConfig" });
@@ -1393,18 +1625,18 @@ function __c1(j: number): any {
           Name: S.String,
           Namespace: S.String,
           Description: S.optional(S.String),
-          ApplicationSourceConfig: __S(2),
-          Subscriptions: S.optional(__S(4)),
-          Publications: S.optional(__S(6)),
+          ApplicationSourceConfig: ApplicationSourceConfig,
+          Subscriptions: S.optional(SubscriptionList),
+          Publications: S.optional(PublicationList),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(7)),
-          Permissions: S.optional(__S(0)),
+          Tags: S.optional(TagMap),
+          Permissions: S.optional(PermissionList),
           IsService: S.optional(S.Boolean),
           InitializationTimeout: S.optional(S.Number),
-          ApplicationConfig: S.optional(__S(9)),
-          IframeConfig: S.optional(__S(10)),
-          ApplicationType: S.optional(S.String),
-          AuthConfig: S.optional(__S(11)),
+          ApplicationConfig: S.optional(ApplicationConfig),
+          IframeConfig: S.optional(IframeConfig),
+          ApplicationType: S.optional(ApplicationType),
+          AuthConfig: S.optional(AuthConfig),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules),
         ),
@@ -1424,17 +1656,17 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ScheduleConfiguration" });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ FieldsList.pipe(S.optional));
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Folders: __S(0), Filters: S.optional(__S(15)) })).annotate({
-        identifier: "FileConfiguration",
-      });
+      return S.suspend(() =>
+        S.Struct({ Folders: FolderList, Filters: S.optional(FieldsMap) }),
+      ).annotate({ identifier: "FileConfiguration" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(15).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ FieldsMap.pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1442,11 +1674,11 @@ function __c2(j: number): any {
           Description: S.optional(S.String),
           KmsKey: S.String,
           SourceURI: S.optional(S.String),
-          ScheduleConfig: S.optional(__S(14)),
-          Tags: S.optional(__S(7)),
+          ScheduleConfig: S.optional(ScheduleConfiguration),
+          Tags: S.optional(TagMap),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          FileConfiguration: S.optional(__S(16)),
-          ObjectConfiguration: S.optional(__S(17)),
+          FileConfiguration: S.optional(FileConfiguration),
+          ObjectConfiguration: S.optional(ObjectConfiguration),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/dataIntegrations" }), svc, auth, proto, ver, rules),
         ),
@@ -1462,11 +1694,11 @@ function __c2(j: number): any {
           Description: S.optional(S.String),
           KmsKey: S.optional(S.String),
           SourceURI: S.optional(S.String),
-          ScheduleConfiguration: S.optional(__S(14)),
-          Tags: S.optional(__S(7)),
+          ScheduleConfiguration: S.optional(ScheduleConfiguration),
+          Tags: S.optional(TagMap),
           ClientToken: S.optional(S.String),
-          FileConfiguration: S.optional(__S(16)),
-          ObjectConfiguration: S.optional(__S(17)),
+          FileConfiguration: S.optional(FileConfiguration),
+          ObjectConfiguration: S.optional(ObjectConfiguration),
         }),
       ).annotate({
         identifier: "CreateDataIntegrationResponse",
@@ -1480,9 +1712,9 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ExecutionMode: S.String,
-          OnDemandConfiguration: S.optional(__S(21)),
-          ScheduleConfiguration: S.optional(__S(14)),
+          ExecutionMode: ExecutionMode,
+          OnDemandConfiguration: S.optional(OnDemandConfiguration),
+          ScheduleConfiguration: S.optional(ScheduleConfiguration),
         }),
       ).annotate({ identifier: "ExecutionConfiguration" });
     case 7:
@@ -1490,11 +1722,11 @@ function __c2(j: number): any {
         S.Struct({
           DataIntegrationIdentifier: S.String.pipe(T.HttpLabel("DataIntegrationIdentifier")),
           ClientId: S.optional(S.String),
-          ObjectConfiguration: S.optional(__S(17)),
+          ObjectConfiguration: S.optional(ObjectConfiguration),
           DestinationURI: S.optional(S.String),
-          ClientAssociationMetadata: S.optional(__S(20)),
+          ClientAssociationMetadata: S.optional(ClientAssociationMetadata),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          ExecutionConfiguration: S.optional(__S(22)),
+          ExecutionConfiguration: S.optional(ExecutionConfiguration),
         }).pipe(
           T.all(
             T.Http({
@@ -1533,10 +1765,10 @@ function __c3(j: number): any {
         S.Struct({
           Name: S.String,
           Description: S.optional(S.String),
-          EventFilter: __S(25),
+          EventFilter: EventFilter,
           EventBridgeBus: S.String,
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagMap),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/eventIntegrations" }),
@@ -1631,19 +1863,19 @@ function __c4(j: number): any {
           Name: S.optional(S.String),
           Namespace: S.optional(S.String),
           Description: S.optional(S.String),
-          ApplicationSourceConfig: S.optional(__S(2)),
-          Subscriptions: S.optional(__S(4)),
-          Publications: S.optional(__S(6)),
+          ApplicationSourceConfig: S.optional(ApplicationSourceConfig),
+          Subscriptions: S.optional(SubscriptionList),
+          Publications: S.optional(PublicationList),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(7)),
-          Permissions: S.optional(__S(0)),
+          Tags: S.optional(TagMap),
+          Permissions: S.optional(PermissionList),
           IsService: S.optional(S.Boolean),
           InitializationTimeout: S.optional(S.Number),
-          ApplicationConfig: S.optional(__S(9)),
-          IframeConfig: S.optional(__S(10)),
-          ApplicationType: S.optional(S.String),
-          AuthConfig: S.optional(__S(11)),
+          ApplicationConfig: S.optional(ApplicationConfig),
+          IframeConfig: S.optional(IframeConfig),
+          ApplicationType: S.optional(ApplicationType),
+          AuthConfig: S.optional(AuthConfig),
         }),
       ).annotate({ identifier: "GetApplicationResponse" });
     case 2:
@@ -1670,10 +1902,10 @@ function __c4(j: number): any {
           Description: S.optional(S.String),
           KmsKey: S.optional(S.String),
           SourceURI: S.optional(S.String),
-          ScheduleConfiguration: S.optional(__S(14)),
-          Tags: S.optional(__S(7)),
-          FileConfiguration: S.optional(__S(16)),
-          ObjectConfiguration: S.optional(__S(17)),
+          ScheduleConfiguration: S.optional(ScheduleConfiguration),
+          Tags: S.optional(TagMap),
+          FileConfiguration: S.optional(FileConfiguration),
+          ObjectConfiguration: S.optional(ObjectConfiguration),
         }),
       ).annotate({
         identifier: "GetDataIntegrationResponse",
@@ -1700,8 +1932,8 @@ function __c4(j: number): any {
           Description: S.optional(S.String),
           EventIntegrationArn: S.optional(S.String),
           EventBridgeBus: S.optional(S.String),
-          EventFilter: S.optional(__S(25)),
-          Tags: S.optional(__S(7)),
+          EventFilter: S.optional(EventFilter),
+          Tags: S.optional(TagMap),
         }),
       ).annotate({
         identifier: "GetEventIntegrationResponse",
@@ -1740,11 +1972,11 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39));
+      return S.Array(ApplicationAssociationSummary);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ApplicationAssociations: S.optional(__S(40)),
+          ApplicationAssociations: S.optional(ApplicationAssociationsList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1755,7 +1987,7 @@ function __c5(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          ApplicationType: S.optional(S.String).pipe(T.HttpQuery("applicationType")),
+          ApplicationType: S.optional(ApplicationType).pipe(T.HttpQuery("applicationType")),
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/applications" }), svc, auth, proto, ver, rules),
         ),
@@ -1770,14 +2002,14 @@ function __c5(j: number): any {
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           IsService: S.optional(S.Boolean),
-          ApplicationType: S.optional(S.String),
+          ApplicationType: S.optional(ApplicationType),
         }),
       ).annotate({ identifier: "ApplicationSummary" });
     case 4:
-      return S.Array(__S(43));
+      return S.Array(ApplicationSummary);
     case 5:
       return S.suspend(() =>
-        S.Struct({ Applications: S.optional(__S(44)), NextToken: S.optional(S.String) }),
+        S.Struct({ Applications: S.optional(ApplicationsList), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListApplicationsResponse" });
     case 6:
       return S.suspend(() =>
@@ -1804,7 +2036,7 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ExecutionStatus: S.optional(S.String),
+          ExecutionStatus: S.optional(ExecutionStatus),
           StatusMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "LastExecutionStatus" });
@@ -1819,18 +2051,18 @@ function __c6(j: number): any {
           DataIntegrationArn: S.optional(S.String),
           ClientId: S.optional(S.String),
           DestinationURI: S.optional(S.String),
-          LastExecutionStatus: S.optional(__S(47)),
-          ExecutionConfiguration: S.optional(__S(22)),
+          LastExecutionStatus: S.optional(LastExecutionStatus),
+          ExecutionConfiguration: S.optional(ExecutionConfiguration),
         }),
       ).annotate({
         identifier: "DataIntegrationAssociationSummary",
       });
     case 1:
-      return S.Array(__S(48));
+      return S.Array(DataIntegrationAssociationSummary);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          DataIntegrationAssociations: S.optional(__S(49)),
+          DataIntegrationAssociations: S.optional(DataIntegrationAssociationsList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1856,11 +2088,11 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "DataIntegrationSummary" });
     case 5:
-      return S.Array(__S(52));
+      return S.Array(DataIntegrationSummary);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          DataIntegrations: S.optional(__S(53)),
+          DataIntegrations: S.optional(DataIntegrationsList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1900,17 +2132,17 @@ function __c7(j: number): any {
           EventIntegrationName: S.optional(S.String),
           ClientId: S.optional(S.String),
           EventBridgeRuleName: S.optional(S.String),
-          ClientAssociationMetadata: S.optional(__S(20)),
+          ClientAssociationMetadata: S.optional(ClientAssociationMetadata),
         }),
       ).annotate({
         identifier: "EventIntegrationAssociation",
       });
     case 1:
-      return S.Array(__S(56));
+      return S.Array(EventIntegrationAssociation);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          EventIntegrationAssociations: S.optional(__S(57)),
+          EventIntegrationAssociations: S.optional(EventIntegrationAssociationsList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1933,17 +2165,17 @@ function __c7(j: number): any {
           EventIntegrationArn: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          EventFilter: S.optional(__S(25)),
+          EventFilter: S.optional(EventFilter),
           EventBridgeBus: S.optional(S.String),
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagMap),
         }),
       ).annotate({ identifier: "EventIntegration" });
     case 5:
-      return S.Array(__S(60));
+      return S.Array(EventIntegration);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          EventIntegrations: S.optional(__S(61)),
+          EventIntegrations: S.optional(EventIntegrationsList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1969,12 +2201,12 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(7)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: __S(7) }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -1989,7 +2221,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -2007,16 +2239,16 @@ function __c8(j: number): any {
           Arn: S.String.pipe(T.HttpLabel("Arn")),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          ApplicationSourceConfig: S.optional(__S(2)),
-          Subscriptions: S.optional(__S(4)),
-          Publications: S.optional(__S(6)),
-          Permissions: S.optional(__S(0)),
+          ApplicationSourceConfig: S.optional(ApplicationSourceConfig),
+          Subscriptions: S.optional(SubscriptionList),
+          Publications: S.optional(PublicationList),
+          Permissions: S.optional(PermissionList),
           IsService: S.optional(S.Boolean),
           InitializationTimeout: S.optional(S.Number),
-          ApplicationConfig: S.optional(__S(9)),
-          IframeConfig: S.optional(__S(10)),
-          ApplicationType: S.optional(S.String),
-          AuthConfig: S.optional(__S(11)),
+          ApplicationConfig: S.optional(ApplicationConfig),
+          IframeConfig: S.optional(IframeConfig),
+          ApplicationType: S.optional(ApplicationType),
+          AuthConfig: S.optional(AuthConfig),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/applications/{Arn}" }),
@@ -2054,7 +2286,7 @@ function __c8(j: number): any {
           DataIntegrationAssociationIdentifier: S.String.pipe(
             T.HttpLabel("DataIntegrationAssociationIdentifier"),
           ),
-          ExecutionConfiguration: __S(22),
+          ExecutionConfiguration: ExecutionConfiguration,
         }).pipe(
           T.all(
             T.Http({
@@ -2093,32 +2325,5 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateEventIntegrationRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
   }
 }

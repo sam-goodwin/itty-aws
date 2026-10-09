@@ -12,8 +12,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -30,7 +28,14 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 };
 
 export type CreateRequestSansList = Array<string>;
+const CreateRequestSansList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateRequestSansList>;
+
 export type CreateRequestKeyType = "rsa2048" | "p256v1";
+const CreateRequestKeyType = S.String;
+
 export interface CreateCustomCsrForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -55,8 +60,17 @@ export interface CreateCustomCsrForAccountRequest {
   /** Organizational unit name. */
   organizationalUnit?: string;
 }
+const CreateCustomCsrForAccountRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateCustomCsrForAccountRequest>;
+
 export type CreateResponseKeyType = "rsa2048" | "p256v1";
+const CreateResponseKeyType = S.String;
+
 export type CreateResponseSansList = Array<string>;
+const CreateResponseSansList = CreateRequestSansList as any as S.Schema<CreateResponseSansList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateCustomCsrResponse {
   /** Custom CSR identifier tag. */
@@ -88,6 +102,11 @@ export interface CreateCustomCsrResponse {
   /** State or province name. */
   state?: string | null;
 }
+const CreateCustomCsrResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateCustomCsrResponse>;
+
 export interface CreateCustomCsrForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -112,31 +131,60 @@ export interface CreateCustomCsrForZoneRequest {
   /** Organizational unit name. */
   organizationalUnit?: string;
 }
+const CreateCustomCsrForZoneRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateCustomCsrForZoneRequest>;
+
 export interface DeleteCustomCsrForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** Custom CSR identifier tag. */
   customCsrId: string;
 }
+const DeleteCustomCsrForAccountRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeleteCustomCsrForAccountRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteCustomCsrResponse {
   /** Custom CSR identifier tag. */
   id?: string | null;
 }
+const DeleteCustomCsrResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteCustomCsrResponse>;
+
 export interface DeleteCustomCsrForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** Custom CSR identifier tag. */
   customCsrId: string;
 }
+const DeleteCustomCsrForZoneRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DeleteCustomCsrForZoneRequest>;
+
 export interface GetCustomCsrForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** Custom CSR identifier tag. */
   customCsrId: string;
 }
+const GetCustomCsrForAccountRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetCustomCsrForAccountRequest>;
+
 export type GetResponseKeyType = "rsa2048" | "p256v1";
+const GetResponseKeyType = S.String;
+
 export type GetResponseSansList = Array<string>;
+const GetResponseSansList = CreateRequestSansList as any as S.Schema<GetResponseSansList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCustomCsrResponse {
   /** Custom CSR identifier tag. */
@@ -168,14 +216,25 @@ export interface GetCustomCsrResponse {
   /** State or province name. */
   state?: string | null;
 }
+const GetCustomCsrResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetCustomCsrResponse>;
+
 export interface GetCustomCsrForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** Custom CSR identifier tag. */
   customCsrId: string;
 }
+const GetCustomCsrForZoneRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetCustomCsrForZoneRequest>;
+
 export type ListRequestDirection = "asc" | "desc";
+const ListRequestDirection = S.String;
+
 export type ListRequestOrder = "name" | "account_tag" | "created_at";
+const ListRequestOrder = S.String;
+
 export interface ListCustomCsrsForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -188,8 +247,17 @@ export interface ListCustomCsrsForAccountRequest {
   /** Number of custom CSRs per page. */
   perPage?: number;
 }
+const ListCustomCsrsForAccountRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListCustomCsrsForAccountRequest>;
+
 export type ListResultItemKeyType = "rsa2048" | "p256v1";
+const ListResultItemKeyType = S.String;
+
 export type ListResultItemSansList = Array<string>;
+const ListResultItemSansList = CreateRequestSansList as any as S.Schema<ListResultItemSansList>;
+
 export interface ListResultItem {
   /** Custom CSR identifier tag. */
   id: string;
@@ -220,13 +288,22 @@ export interface ListResultItem {
   /** State or province name. */
   state?: string | null;
 }
+const ListResultItem = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ListResultItem>;
+
 export type ListResultList = Array<ListResultItem>;
+const ListResultList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ListResultList>;
+
 export interface ListCustomCsrsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListCustomCsrsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ListCustomCsrsResponse>;
+
 export interface ListCustomCsrsForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -239,6 +316,11 @@ export interface ListCustomCsrsForZoneRequest {
   /** Number of custom CSRs per page. */
   perPage?: number;
 }
+const ListCustomCsrsForZoneRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ListCustomCsrsForZoneRequest>;
+
 export type CreateCustomCsrForAccountError = CloudflareOpError;
 /** Generate a new custom Certificate Signing Request (CSR) for an account or zone. Cloudflare generates and securely stores the private key associated with the CSR. */
 export const createCustomCsrForAccount: API.OperationMethod<
@@ -247,8 +329,8 @@ export const createCustomCsrForAccount: API.OperationMethod<
   CreateCustomCsrForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateCustomCsrForAccountRequest>,
-  output: __S(2) as any as S.Schema<CreateCustomCsrResponse>,
+  input: CreateCustomCsrForAccountRequest,
+  output: CreateCustomCsrResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -262,8 +344,8 @@ export const createCustomCsrForZone: API.OperationMethod<
   CreateCustomCsrForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateCustomCsrForZoneRequest>,
-  output: __S(2) as any as S.Schema<CreateCustomCsrResponse>,
+  input: CreateCustomCsrForZoneRequest,
+  output: CreateCustomCsrResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -277,8 +359,8 @@ export const deleteCustomCsrForAccount: API.OperationMethod<
   DeleteCustomCsrForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DeleteCustomCsrForAccountRequest>,
-  output: __S(5) as any as S.Schema<DeleteCustomCsrResponse>,
+  input: DeleteCustomCsrForAccountRequest,
+  output: DeleteCustomCsrResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -292,8 +374,8 @@ export const deleteCustomCsrForZone: API.OperationMethod<
   DeleteCustomCsrForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DeleteCustomCsrForZoneRequest>,
-  output: __S(5) as any as S.Schema<DeleteCustomCsrResponse>,
+  input: DeleteCustomCsrForZoneRequest,
+  output: DeleteCustomCsrResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -307,8 +389,8 @@ export const getCustomCsrForAccount: API.OperationMethod<
   GetCustomCsrForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<GetCustomCsrForAccountRequest>,
-  output: __S(8) as any as S.Schema<GetCustomCsrResponse>,
+  input: GetCustomCsrForAccountRequest,
+  output: GetCustomCsrResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -322,8 +404,8 @@ export const getCustomCsrForZone: API.OperationMethod<
   GetCustomCsrForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<GetCustomCsrForZoneRequest>,
-  output: __S(8) as any as S.Schema<GetCustomCsrResponse>,
+  input: GetCustomCsrForZoneRequest,
+  output: GetCustomCsrResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -339,8 +421,8 @@ export const listCustomCsrsForAccount: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(10) as any as S.Schema<ListCustomCsrsForAccountRequest>,
-    output: __S(13) as any as S.Schema<ListCustomCsrsResponse>,
+    input: ListCustomCsrsForAccountRequest,
+    output: ListCustomCsrsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -365,8 +447,8 @@ export const listCustomCsrsForZone: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(14) as any as S.Schema<ListCustomCsrsForZoneRequest>,
-    output: __S(13) as any as S.Schema<ListCustomCsrsResponse>,
+    input: ListCustomCsrsForZoneRequest,
+    output: ListCustomCsrsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -394,10 +476,10 @@ function __c0(j: number): any {
           country: S.String,
           locality: S.String,
           organization: S.String,
-          sans: __S(0),
+          sans: CreateRequestSansList,
           state: S.String,
           description: S.optional(S.String),
-          keyType: S.optional(S.String.pipe(T.Body("key_type"))),
+          keyType: S.optional(CreateRequestKeyType.pipe(T.Body("key_type"))),
           name: S.optional(S.String),
           organizationalUnit: S.optional(S.String.pipe(T.Body("organizational_unit"))),
         })
@@ -411,7 +493,7 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          keyType: S.String.pipe(T.Body("key_type")),
+          keyType: CreateResponseKeyType.pipe(T.Body("key_type")),
           accountTag: S.optional(S.NullOr(S.String).pipe(T.Body("account_tag"))),
           commonName: S.optional(S.NullOr(S.String).pipe(T.Body("common_name"))),
           country: S.optional(S.NullOr(S.String)),
@@ -421,7 +503,7 @@ function __c0(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           organization: S.optional(S.NullOr(S.String)),
           organizationalUnit: S.optional(S.NullOr(S.String).pipe(T.Body("organizational_unit"))),
-          sans: S.optional(S.NullOr(__S(0))),
+          sans: S.optional(S.NullOr(CreateResponseSansList)),
           state: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateCustomCsrResponse" });
@@ -433,10 +515,10 @@ function __c0(j: number): any {
           country: S.String,
           locality: S.String,
           organization: S.String,
-          sans: __S(0),
+          sans: CreateRequestSansList,
           state: S.String,
           description: S.optional(S.String),
-          keyType: S.optional(S.String.pipe(T.Body("key_type"))),
+          keyType: S.optional(CreateRequestKeyType.pipe(T.Body("key_type"))),
           name: S.optional(S.String),
           organizationalUnit: S.optional(S.String.pipe(T.Body("organizational_unit"))),
         })
@@ -511,7 +593,7 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          keyType: S.String.pipe(T.Body("key_type")),
+          keyType: GetResponseKeyType.pipe(T.Body("key_type")),
           accountTag: S.optional(S.NullOr(S.String).pipe(T.Body("account_tag"))),
           commonName: S.optional(S.NullOr(S.String).pipe(T.Body("common_name"))),
           country: S.optional(S.NullOr(S.String)),
@@ -521,7 +603,7 @@ function __c1(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           organization: S.optional(S.NullOr(S.String)),
           organizationalUnit: S.optional(S.NullOr(S.String).pipe(T.Body("organizational_unit"))),
-          sans: S.optional(S.NullOr(__S(0))),
+          sans: S.optional(S.NullOr(GetResponseSansList)),
           state: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetCustomCsrResponse" });
@@ -546,8 +628,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          direction: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(ListRequestDirection.pipe(T.Query())),
+          order: S.optional(ListRequestOrder.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
         })
@@ -561,7 +643,7 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          keyType: S.String.pipe(T.Body("key_type")),
+          keyType: ListResultItemKeyType.pipe(T.Body("key_type")),
           accountTag: S.optional(S.NullOr(S.String).pipe(T.Body("account_tag"))),
           commonName: S.optional(S.NullOr(S.String).pipe(T.Body("common_name"))),
           country: S.optional(S.NullOr(S.String)),
@@ -571,16 +653,16 @@ function __c1(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           organization: S.optional(S.NullOr(S.String)),
           organizationalUnit: S.optional(S.NullOr(S.String).pipe(T.Body("organizational_unit"))),
-          sans: S.optional(S.NullOr(__S(0))),
+          sans: S.optional(S.NullOr(ListResultItemSansList)),
           state: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ListResultItem" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(ListResultItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: __S(12).pipe(T.EnvelopePayload()),
+          result: ListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListCustomCsrsResponse" });
@@ -588,8 +670,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          direction: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(ListRequestDirection.pipe(T.Query())),
+          order: S.optional(ListRequestOrder.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
         })
@@ -598,18 +680,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListCustomCsrsForZoneRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

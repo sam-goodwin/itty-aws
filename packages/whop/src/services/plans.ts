@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -63,6 +61,11 @@ export interface CalculatePlanTaxRequestAddress {
   /** State, province, or region code, such as `CA`. */
   state?: string | null;
 }
+const CalculatePlanTaxRequestAddress = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CalculatePlanTaxRequestAddress>;
+
 /** Tax ID type, such as `eu_vat` for an EU VAT number. */
 export type CalculatePlanTaxRequestTaxIdsItemType =
   | "ad_nrt"
@@ -176,14 +179,26 @@ export type CalculatePlanTaxRequestTaxIdsItemType =
   | "zm_tin"
   | "zw_tin"
   | "sr_fin";
+const CalculatePlanTaxRequestTaxIdsItemType = S.String;
+
 export interface CalculatePlanTaxRequestTaxIdsItem {
   /** Tax ID type, such as `eu_vat` for an EU VAT number. */
   type?: CalculatePlanTaxRequestTaxIdsItemType | (string & {});
   /** Tax ID value, for example `DE123456789`. */
   value?: string;
 }
+const CalculatePlanTaxRequestTaxIdsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CalculatePlanTaxRequestTaxIdsItem>;
+
 /** Optional buyer tax ID for B2B exemptions. At most one entry is supported. */
 export type CalculatePlanTaxRequestTaxIdsList = Array<CalculatePlanTaxRequestTaxIdsItem>;
+const CalculatePlanTaxRequestTaxIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CalculatePlanTaxRequestTaxIdsList>;
+
 export interface CalculatePlanTaxRequest {
   /** Plan ID, prefixed `plan_`. */
   id: string;
@@ -196,10 +211,19 @@ export interface CalculatePlanTaxRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const CalculatePlanTaxRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CalculatePlanTaxRequest>;
+
 /** Whether Whop calculated tax for this preview. `not_calculated` means no tax could be determined, so `tax_amount` is 0 and `total` equals `subtotal`. */
 export type CalculatePlanTaxResponseStatus = "calculated" | "not_calculated";
+const CalculatePlanTaxResponseStatus = S.String;
+
 /** Whether tax is added on top of the plan price or already included in it for this buyer's location. */
 export type CalculatePlanTaxResponseTaxBehavior = "exclusive" | "inclusive";
+const CalculatePlanTaxResponseTaxBehavior = S.String;
+
 export interface CalculatePlanTaxResponse {
   /** Three-letter ISO 4217 currency code for the returned amounts. */
   currency: string;
@@ -214,8 +238,15 @@ export interface CalculatePlanTaxResponse {
   /** Amount the buyer would pay in the currency's smallest unit. */
   total: number;
 }
+const CalculatePlanTaxResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CalculatePlanTaxResponse>;
+
 /** The type of the custom field. */
 export type CreatePlanRequestCustomFieldsItemFieldType = "text";
+const CreatePlanRequestCustomFieldsItemFieldType = S.String;
+
 export interface CreatePlanRequestCustomFieldsItem {
   /** The type of the custom field. */
   field_type?: CreatePlanRequestCustomFieldsItemFieldType | (string & {});
@@ -230,13 +261,28 @@ export interface CreatePlanRequestCustomFieldsItem {
   /** Whether or not the field is required. */
   required?: boolean;
 }
+const CreatePlanRequestCustomFieldsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreatePlanRequestCustomFieldsItem>;
+
 /** An array of custom field definitions to collect from customers at checkout. Omitting this field clears existing custom fields. */
 export type CreatePlanRequestCustomFieldsList = Array<CreatePlanRequestCustomFieldsItem>;
+const CreatePlanRequestCustomFieldsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreatePlanRequestCustomFieldsList>;
+
 /** An image displayed on the product page to represent this plan. */
 export interface CreatePlanRequestImage {
   direct_upload_id?: string;
   id?: string;
 }
+const CreatePlanRequestImage = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreatePlanRequestImage>;
+
 /** The different types of payment methods that can be used. */
 export type PaymentMethodTypes =
   | "acss_debit"
@@ -368,14 +414,24 @@ export type PaymentMethodTypes =
   | "zip"
   | "coinflow"
   | "unknown";
+const PaymentMethodTypes = S.String;
+
 /** Payment method types explicitly disabled for this plan -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
 export type CreatePlanRequestPaymentMethodConfigurationDisabledList = Array<
   PaymentMethodTypes | (string & {})
 >;
+const CreatePlanRequestPaymentMethodConfigurationDisabledList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreatePlanRequestPaymentMethodConfigurationDisabledList>;
+
 /** Payment method types explicitly enabled for this plan -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
 export type CreatePlanRequestPaymentMethodConfigurationEnabledList = Array<
   PaymentMethodTypes | (string & {})
 >;
+const CreatePlanRequestPaymentMethodConfigurationEnabledList =
+  CreatePlanRequestPaymentMethodConfigurationDisabledList as any as S.Schema<CreatePlanRequestPaymentMethodConfigurationEnabledList>;
+
 /** Explicit payment method configuration for the plan. When not provided, the account's defaults apply. Send at least one of `enabled` or `disabled`; an omitted one is empty. */
 export interface CreatePlanRequestPaymentMethodConfiguration {
   /** Payment method types explicitly disabled for this plan -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
@@ -384,11 +440,18 @@ export interface CreatePlanRequestPaymentMethodConfiguration {
   enabled?: CreatePlanRequestPaymentMethodConfigurationEnabledList;
   include_platform_defaults?: boolean;
 }
+const CreatePlanRequestPaymentMethodConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreatePlanRequestPaymentMethodConfiguration>;
+
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. Send `null` to inherit the account default. */
 export type CreatePlanRequestThreeDsLevel =
   | "mandate_challenge"
   | "mandate_if_required"
   | "frictionless_if_required";
+const CreatePlanRequestThreeDsLevel = S.String;
+
 export interface CreatePlanRequest {
   /** The unique identifier of the account to create this plan for. Required when authenticating as a user; an account API key supplies its own account. */
   account_id?: string;
@@ -447,14 +510,20 @@ export interface CreatePlanRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const CreatePlanRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CreatePlanRequest>;
+
 export interface AccountSummary {
   /** Account ID, prefixed `biz_`. */
   id: string;
   /** Account display name. */
   title: string;
 }
+const AccountSummary = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<AccountSummary>;
+
 /** Attribute values that make this plan one variant of its product, as a map of attribute name to value, e.g. `{"color": "Blue", "size": "Large"}`. Names are snake_case identifiers and come back in alphabetical order. Every variant plan on a product carries the same attribute names and a distinct set of values; the product lists the full option set as `variant_attributes`. `null` for a plan that is not a variant. */
 export type PlanAttributesMap = { [key: string]: string | undefined };
+const PlanAttributesMap = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<PlanAttributesMap>;
+
 /** Three-letter ISO currency code for this plan's prices. */
 export type PlanCurrency =
   | "usd"
@@ -547,8 +616,12 @@ export type PlanCurrency =
   | "awg"
   | "whop_usd"
   | "xau";
+const PlanCurrency = S.String;
+
 /** Custom field input type. */
 export type PlanCustomFieldFieldType = "text";
+const PlanCustomFieldFieldType = S.String;
+
 export interface PlanCustomField {
   /** Custom field input type. */
   field_type: PlanCustomFieldFieldType;
@@ -563,15 +636,32 @@ export interface PlanCustomField {
   /** Whether the customer must complete this field to check out. */
   required: boolean;
 }
+const PlanCustomField = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<PlanCustomField>;
+
 export type PlanCustomFieldsList = Array<PlanCustomField>;
+const PlanCustomFieldsList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<PlanCustomFieldsList>;
+
 export type CheckoutSessionPaymentMethodConfigurationDisabledList = Array<string>;
+const CheckoutSessionPaymentMethodConfigurationDisabledList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CheckoutSessionPaymentMethodConfigurationDisabledList>;
+
 export type CheckoutSessionPaymentMethodConfigurationEnabledList = Array<string>;
+const CheckoutSessionPaymentMethodConfigurationEnabledList =
+  CheckoutSessionPaymentMethodConfigurationDisabledList as any as S.Schema<CheckoutSessionPaymentMethodConfigurationEnabledList>;
+
 export interface CheckoutSessionPaymentMethodConfiguration {
   disabled: CheckoutSessionPaymentMethodConfigurationDisabledList;
   enabled: CheckoutSessionPaymentMethodConfigurationEnabledList;
   /** Whether Whop's default set is the starting point. When `false`, only `enabled` is offered. */
   include_platform_defaults: boolean;
 }
+const CheckoutSessionPaymentMethodConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CheckoutSessionPaymentMethodConfiguration>;
+
 export interface Money {
   /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
@@ -582,19 +672,31 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
+const Money = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Money>;
+
 /** Billing model for this plan. */
 export type PlanPlanType = "renewal" | "one_time";
+const PlanPlanType = S.String;
+
 /** Sales method for this plan. */
 export type PlanReleaseMethod = "buy_now" | "waitlist";
+const PlanReleaseMethod = S.String;
+
 /** How tax is handled for this plan, including whether tax is included in the price, added at checkout, or not configured. */
 export type PlanTaxType = "inclusive" | "exclusive" | "unspecified";
+const PlanTaxType = S.String;
+
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. `null` inherits the account default. */
 export type PlanThreeDsLevel =
   | "mandate_challenge"
   | "mandate_if_required"
   | "frictionless_if_required";
+const PlanThreeDsLevel = S.String;
+
 /** Controls where this plan can be seen. When `hidden`, the plan is reachable only by its direct link. */
 export type PlanVisibility = "visible" | "hidden" | "archived" | "quick_link";
+const PlanVisibility = S.String;
+
 export interface Plan {
   /** Account that sells this plan; `null` for standalone invoice plans. */
   account: AccountSummary | null;
@@ -682,31 +784,55 @@ export interface Plan {
   /** Controls where this plan can be seen. When `hidden`, the plan is reachable only by its direct link. */
   visibility: PlanVisibility;
 }
+const Plan = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Plan>;
+
 export interface DeletePlanRequest {
   /** Plan ID, prefixed `plan_`. */
   id: string;
 }
+const DeletePlanRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DeletePlanRequest>;
+
 export interface DeletePlanResponse {
   /** Always true. */
   deleted: boolean;
   /** ID of the deleted plan. */
   id: string;
 }
+const DeletePlanResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DeletePlanResponse>;
+
 export interface GetPlanRequest {
   /** Plan ID, prefixed `plan_`. */
   id: string;
 }
+const GetPlanRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GetPlanRequest>;
+
 export type ListPlansRequestDirection = "asc" | "desc";
+const ListPlansRequestDirection = S.String;
+
 export type ListPlansRequestOrder =
   | "id"
   | "active_members_count"
   | "created_at"
   | "internal_notes"
   | "expiration_days";
+const ListPlansRequestOrder = S.String;
+
 export type ListPlansRequestReleaseMethodsList = Array<string>;
+const ListPlansRequestReleaseMethodsList =
+  CheckoutSessionPaymentMethodConfigurationDisabledList as any as S.Schema<ListPlansRequestReleaseMethodsList>;
+
 export type ListPlansRequestVisibilitiesList = Array<string>;
+const ListPlansRequestVisibilitiesList =
+  CheckoutSessionPaymentMethodConfigurationDisabledList as any as S.Schema<ListPlansRequestVisibilitiesList>;
+
 export type ListPlansRequestPlanTypesList = Array<string>;
+const ListPlansRequestPlanTypesList =
+  CheckoutSessionPaymentMethodConfigurationDisabledList as any as S.Schema<ListPlansRequestPlanTypesList>;
+
 export type ListPlansRequestProductIdsList = Array<string>;
+const ListPlansRequestProductIdsList =
+  CheckoutSessionPaymentMethodConfigurationDisabledList as any as S.Schema<ListPlansRequestProductIdsList>;
+
 export interface ListPlansRequest {
   /** The unique identifier of the account to list plans for. Required unless `product_ids` is provided for a public product-plan read. */
   account_id?: string;
@@ -735,20 +861,35 @@ export interface ListPlansRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
+const ListPlansRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ListPlansRequest>;
+
 /** Attribute values that make this plan one variant of its product, as a map of attribute name to value, e.g. `{"color": "Blue", "size": "Large"}`. Names are snake_case identifiers and come back in alphabetical order. Every variant plan on a product carries the same attribute names and a distinct set of values; the product lists the full option set as `variant_attributes`. `null` for a plan that is not a variant. */
 export type PlanListItemAttributesMap = { [key: string]: string | undefined };
+const PlanListItemAttributesMap = PlanAttributesMap as any as S.Schema<PlanListItemAttributesMap>;
+
 export type PlanListItemCustomFieldsList = Array<PlanCustomField>;
+const PlanListItemCustomFieldsList =
+  PlanCustomFieldsList as any as S.Schema<PlanListItemCustomFieldsList>;
+
 /** Billing model for this plan. */
 export type PlanListItemPlanType = "renewal" | "one_time";
+const PlanListItemPlanType = S.String;
+
 /** Sales method for this plan. */
 export type PlanListItemReleaseMethod = "buy_now" | "waitlist";
+const PlanListItemReleaseMethod = S.String;
+
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. `null` inherits the account default. */
 export type PlanListItemThreeDsLevel =
   | "mandate_challenge"
   | "mandate_if_required"
   | "frictionless_if_required";
+const PlanListItemThreeDsLevel = S.String;
+
 /** Controls where this plan can be seen. When `hidden`, the plan is reachable only by its direct link. */
 export type PlanListItemVisibility = "visible" | "hidden" | "archived" | "quick_link";
+const PlanListItemVisibility = S.String;
+
 export interface PlanListItem {
   /** Account that sells this plan; `null` for standalone invoice plans. */
   account: AccountSummary | null;
@@ -828,17 +969,31 @@ export interface PlanListItem {
   /** Controls where this plan can be seen. When `hidden`, the plan is reachable only by its direct link. */
   visibility: PlanListItemVisibility;
 }
+const PlanListItem = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<PlanListItem>;
+
 export type ListPlansResponseDataList = Array<PlanListItem>;
+const ListPlansResponseDataList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListPlansResponseDataList>;
+
 export interface ListPlansResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
+const ListPlansResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListPlansResponsePageInfo>;
+
 export interface ListPlansResponse {
   data: ListPlansResponseDataList;
   page_info: ListPlansResponsePageInfo;
 }
+const ListPlansResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ListPlansResponse>;
+
 /** The type of the custom field. */
 export type UpdatePlanRequestCustomFieldsItemFieldType = "text";
 export interface UpdatePlanRequestCustomFieldsItem {
@@ -857,6 +1012,9 @@ export interface UpdatePlanRequestCustomFieldsItem {
 }
 /** An array of custom field definitions to collect from customers at checkout. Omitting this field clears existing custom fields. */
 export type UpdatePlanRequestCustomFieldsList = Array<UpdatePlanRequestCustomFieldsItem>;
+const UpdatePlanRequestCustomFieldsList =
+  CreatePlanRequestCustomFieldsList as any as S.Schema<UpdatePlanRequestCustomFieldsList>;
+
 /** An image displayed on the product page to represent this plan. */
 export type UpdatePlanRequestImage = CreatePlanRequestImage;
 /** Payment method types explicitly disabled for this plan -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
@@ -875,11 +1033,16 @@ export interface UpdatePlanRequestPaymentMethodConfiguration {
   enabled?: UpdatePlanRequestPaymentMethodConfigurationEnabledList;
   include_platform_defaults?: boolean;
 }
+const UpdatePlanRequestPaymentMethodConfiguration =
+  CreatePlanRequestPaymentMethodConfiguration as any as S.Schema<UpdatePlanRequestPaymentMethodConfiguration>;
+
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. Send `null` to inherit the account default. */
 export type UpdatePlanRequestThreeDsLevel =
   | "mandate_challenge"
   | "mandate_if_required"
   | "frictionless_if_required";
+const UpdatePlanRequestThreeDsLevel = S.String;
+
 export interface UpdatePlanRequest {
   /** Plan ID, prefixed `plan_`. */
   id: string;
@@ -940,6 +1103,8 @@ export interface UpdatePlanRequest {
   /** Whether the plan is visible to customers or hidden from public view. */
   visibility?: string;
 }
+const UpdatePlanRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<UpdatePlanRequest>;
+
 export type CalculatePlanTaxError = BadRequest | Forbidden | NotFound | Conflict | WhopOpError;
 /** Calculate Tax Previews tax for a plan before checkout, based on the buyer's location. */
 export const calculatePlanTax: API.OperationMethod<
@@ -948,8 +1113,8 @@ export const calculatePlanTax: API.OperationMethod<
   CalculatePlanTaxError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CalculatePlanTaxRequest>,
-  output: __S(4) as any as S.Schema<CalculatePlanTaxResponse>,
+  input: CalculatePlanTaxRequest,
+  output: CalculatePlanTaxResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -963,8 +1128,8 @@ export const createPlan: API.OperationMethod<
   CreatePlanError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CreatePlanRequest>,
-  output: __S(18) as any as S.Schema<Plan>,
+  input: CreatePlanRequest,
+  output: Plan,
   errors: [BadRequest, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -978,8 +1143,8 @@ export const deletePlan: API.OperationMethod<
   DeletePlanError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<DeletePlanRequest>,
-  output: __S(20) as any as S.Schema<DeletePlanResponse>,
+  input: DeletePlanRequest,
+  output: DeletePlanResponse,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -989,8 +1154,8 @@ export type GetPlanError = NotFound | WhopOpError;
 /** Retrieve Plan Retrieves the details of an existing plan. */
 export const getPlan: API.OperationMethod<GetPlanRequest, Plan, GetPlanError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(21) as any as S.Schema<GetPlanRequest>,
-    output: __S(18) as any as S.Schema<Plan>,
+    input: GetPlanRequest,
+    output: Plan,
     errors: [NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1006,8 +1171,8 @@ export const listPlans: API.PaginatedOperationMethod<
   PlanListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(22) as any as S.Schema<ListPlansRequest>,
-    output: __S(26) as any as S.Schema<ListPlansResponse>,
+    input: ListPlansRequest,
+    output: ListPlansResponse,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1031,8 +1196,8 @@ export const updatePlan: API.OperationMethod<
   UpdatePlanError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<UpdatePlanRequest>,
-  output: __S(18) as any as S.Schema<Plan>,
+  input: UpdatePlanRequest,
+  output: Plan,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1057,21 +1222,21 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(CalculatePlanTaxRequestTaxIdsItemType),
           value: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CalculatePlanTaxRequestTaxIdsItem",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(CalculatePlanTaxRequestTaxIdsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          address: S.optional(S.NullOr(__S(0))),
+          address: S.optional(S.NullOr(CalculatePlanTaxRequestAddress)),
           ip_address: S.optional(S.String),
-          tax_ids: S.optional(S.NullOr(__S(2))),
+          tax_ids: S.optional(S.NullOr(CalculatePlanTaxRequestTaxIdsList)),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/plans/{id}/calculate_tax", code: 200 })),
       ).annotate({ identifier: "CalculatePlanTaxRequest" });
@@ -1079,17 +1244,17 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           currency: S.String,
-          status: S.String,
+          status: CalculatePlanTaxResponseStatus,
           subtotal: S.Number,
           tax_amount: S.Number,
-          tax_behavior: S.String,
+          tax_behavior: CalculatePlanTaxResponseTaxBehavior,
           total: S.Number,
         }),
       ).annotate({ identifier: "CalculatePlanTaxResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          field_type: S.optional(S.String),
+          field_type: S.optional(CreatePlanRequestCustomFieldsItemFieldType),
           id: S.optional(S.String),
           name: S.optional(S.String),
           order: S.optional(S.Number),
@@ -1100,7 +1265,7 @@ function __c0(j: number): any {
         identifier: "CreatePlanRequestCustomFieldsItem",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(CreatePlanRequestCustomFieldsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1113,12 +1278,12 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(PaymentMethodTypes);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          disabled: S.optional(__S(8)),
-          enabled: S.optional(__S(8)),
+          disabled: S.optional(CreatePlanRequestPaymentMethodConfigurationDisabledList),
+          enabled: S.optional(CreatePlanRequestPaymentMethodConfigurationEnabledList),
           include_platform_defaults: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -1133,15 +1298,17 @@ function __c1(j: number): any {
           billing_period: S.optional(S.NullOr(S.Number)),
           checkout_styling: S.optional(S.NullOr(S.Unknown)),
           currency: S.optional(S.String),
-          custom_fields: S.optional(S.NullOr(__S(6))),
+          custom_fields: S.optional(S.NullOr(CreatePlanRequestCustomFieldsList)),
           description: S.optional(S.NullOr(S.String)),
           expiration_days: S.optional(S.NullOr(S.Number)),
-          image: S.optional(S.NullOr(__S(7))),
+          image: S.optional(S.NullOr(CreatePlanRequestImage)),
           initial_price: S.optional(S.NullOr(S.Number)),
           internal_notes: S.optional(S.NullOr(S.String)),
           metadata: S.optional(S.NullOr(S.Unknown)),
           override_tax_type: S.optional(S.String),
-          payment_method_configuration: S.optional(S.NullOr(__S(9))),
+          payment_method_configuration: S.optional(
+            S.NullOr(CreatePlanRequestPaymentMethodConfiguration),
+          ),
           plan_type: S.optional(S.String),
           product_id: S.optional(S.String),
           release_method: S.optional(S.String),
@@ -1149,7 +1316,7 @@ function __c1(j: number): any {
           sku: S.optional(S.NullOr(S.String)),
           split_pay_required_payments: S.optional(S.NullOr(S.Number)),
           stock: S.optional(S.NullOr(S.Number)),
-          three_ds_level: S.optional(S.NullOr(S.String)),
+          three_ds_level: S.optional(S.NullOr(CreatePlanRequestThreeDsLevel)),
           title: S.optional(S.NullOr(S.String)),
           trial_period_days: S.optional(S.NullOr(S.Number)),
           unlimited_stock: S.optional(S.NullOr(S.Boolean)),
@@ -1169,7 +1336,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          field_type: S.String,
+          field_type: PlanCustomFieldFieldType,
           id: S.String,
           name: S.String,
           order: S.Number,
@@ -1178,7 +1345,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "PlanCustomField" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(PlanCustomField);
     case 7:
       return S.Array(S.String);
   }
@@ -1188,8 +1355,8 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          disabled: __S(15),
-          enabled: __S(15),
+          disabled: CheckoutSessionPaymentMethodConfigurationDisabledList,
+          enabled: CheckoutSessionPaymentMethodConfigurationEnabledList,
           include_platform_defaults: S.Boolean,
         }),
       ).annotate({
@@ -1207,49 +1374,51 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          account: S.NullOr(__S(11)),
+          account: S.NullOr(AccountSummary),
           adaptive_pricing_enabled: S.Boolean,
-          attributes: S.NullOr(__S(12)),
+          attributes: S.NullOr(PlanAttributesMap),
           billing_period: S.NullOr(S.Number),
           cancel_discount_intervals: S.NullOr(S.Number),
           cancel_discount_percentage: S.NullOr(S.Number),
           checkout_styling: S.NullOr(S.Unknown),
           collect_tax: S.Boolean,
           created_at: S.String,
-          currency: S.String,
-          custom_fields: __S(14),
+          currency: PlanCurrency,
+          custom_fields: PlanCustomFieldsList,
           deletable: S.NullOr(S.Boolean),
           description: S.NullOr(S.String),
-          effective_payment_method_configuration: S.NullOr(__S(16)),
+          effective_payment_method_configuration: S.NullOr(
+            CheckoutSessionPaymentMethodConfiguration,
+          ),
           expiration_days: S.NullOr(S.Number),
           formatted_price: S.String,
           id: S.String,
           image: S.NullOr(S.Unknown),
           initial_price: S.Number,
-          initial_price_due: __S(17),
+          initial_price_due: Money,
           internal_notes: S.NullOr(S.String),
           invoice: S.NullOr(S.Unknown),
           member_count: S.NullOr(S.Number),
           metadata: S.NullOr(S.Unknown),
           offer_cancel_discount: S.NullOr(S.Boolean),
           payment_method_configuration: S.NullOr(S.Unknown),
-          plan_type: S.String,
+          plan_type: PlanPlanType,
           product: S.NullOr(S.Unknown),
           purchase_url: S.String,
-          release_method: S.String,
+          release_method: PlanReleaseMethod,
           renewal_price: S.Number,
           sku: S.NullOr(S.String),
           split_pay_required_payments: S.NullOr(S.Number),
           stock: S.NullOr(S.Number),
           strike_through_initial_price: S.NullOr(S.Number),
           strike_through_renewal_price: S.NullOr(S.Number),
-          tax_type: S.String,
-          three_ds_level: S.NullOr(S.String),
+          tax_type: PlanTaxType,
+          three_ds_level: S.NullOr(PlanThreeDsLevel),
           title: S.NullOr(S.String),
           trial_period_days: S.NullOr(S.Number),
           unlimited_stock: S.Boolean,
           updated_at: S.String,
-          visibility: S.String,
+          visibility: PlanVisibility,
         }),
       ).annotate({ identifier: "Plan" });
     case 3:
@@ -1275,12 +1444,12 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          release_methods: S.optional(__S(15).pipe(T.Query())),
-          visibilities: S.optional(__S(15).pipe(T.Query())),
-          plan_types: S.optional(__S(15).pipe(T.Query())),
-          product_ids: S.optional(__S(15).pipe(T.Query())),
+          direction: S.optional(ListPlansRequestDirection.pipe(T.Query())),
+          order: S.optional(ListPlansRequestOrder.pipe(T.Query())),
+          release_methods: S.optional(ListPlansRequestReleaseMethodsList.pipe(T.Query())),
+          visibilities: S.optional(ListPlansRequestVisibilitiesList.pipe(T.Query())),
+          plan_types: S.optional(ListPlansRequestPlanTypesList.pipe(T.Query())),
+          product_ids: S.optional(ListPlansRequestProductIdsList.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
@@ -1292,45 +1461,45 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          account: S.NullOr(__S(11)),
+          account: S.NullOr(AccountSummary),
           adaptive_pricing_enabled: S.Boolean,
-          attributes: S.NullOr(__S(12)),
+          attributes: S.NullOr(PlanListItemAttributesMap),
           billing_period: S.NullOr(S.Number),
           cancel_discount_intervals: S.NullOr(S.Number),
           cancel_discount_percentage: S.NullOr(S.Number),
           checkout_styling: S.NullOr(S.Unknown),
           created_at: S.String,
           currency: S.String,
-          custom_fields: __S(14),
+          custom_fields: PlanListItemCustomFieldsList,
           description: S.NullOr(S.String),
           expiration_days: S.NullOr(S.Number),
           formatted_price: S.String,
           id: S.String,
           image: S.NullOr(S.Unknown),
           initial_price: S.Number,
-          initial_price_due: __S(17),
+          initial_price_due: Money,
           internal_notes: S.NullOr(S.String),
           invoice: S.NullOr(S.Unknown),
           member_count: S.NullOr(S.Number),
           metadata: S.NullOr(S.Unknown),
           offer_cancel_discount: S.NullOr(S.Boolean),
           payment_method_configuration: S.NullOr(S.Unknown),
-          plan_type: S.String,
+          plan_type: PlanListItemPlanType,
           product: S.NullOr(S.Unknown),
           purchase_url: S.String,
-          release_method: S.String,
+          release_method: PlanListItemReleaseMethod,
           renewal_price: S.Number,
           sku: S.NullOr(S.String),
           split_pay_required_payments: S.NullOr(S.Number),
           stock: S.NullOr(S.Number),
           strike_through_initial_price: S.NullOr(S.Number),
           strike_through_renewal_price: S.NullOr(S.Number),
-          three_ds_level: S.NullOr(S.String),
+          three_ds_level: S.NullOr(PlanListItemThreeDsLevel),
           title: S.NullOr(S.String),
           trial_period_days: S.NullOr(S.Number),
           unlimited_stock: S.Boolean,
           updated_at: S.String,
-          visibility: S.String,
+          visibility: PlanListItemVisibility,
         }),
       ).annotate({ identifier: "PlanListItem" });
   }
@@ -1338,7 +1507,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(PlanListItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1353,8 +1522,8 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(24),
-          page_info: __S(25),
+          data: ListPlansResponseDataList,
+          page_info: ListPlansResponsePageInfo,
         }),
       ).annotate({ identifier: "ListPlansResponse" });
     case 3:
@@ -1368,45 +1537,30 @@ function __c3(j: number): any {
           cancel_discount_percentage: S.optional(S.NullOr(S.Number)),
           checkout_styling: S.optional(S.NullOr(S.Unknown)),
           currency: S.optional(S.String),
-          custom_fields: S.optional(S.NullOr(__S(6))),
+          custom_fields: S.optional(S.NullOr(UpdatePlanRequestCustomFieldsList)),
           description: S.optional(S.NullOr(S.String)),
           expiration_days: S.optional(S.NullOr(S.Number)),
-          image: S.optional(S.NullOr(__S(7))),
+          image: S.optional(S.NullOr(CreatePlanRequestImage)),
           initial_price: S.optional(S.NullOr(S.Number)),
           internal_notes: S.optional(S.NullOr(S.String)),
           metadata: S.optional(S.NullOr(S.Unknown)),
           offer_cancel_discount: S.optional(S.NullOr(S.Boolean)),
           override_tax_type: S.optional(S.String),
-          payment_method_configuration: S.optional(S.NullOr(__S(9))),
+          payment_method_configuration: S.optional(
+            S.NullOr(UpdatePlanRequestPaymentMethodConfiguration),
+          ),
           release_method: S.optional(S.String),
           renewal_price: S.optional(S.NullOr(S.Number)),
           sku: S.optional(S.NullOr(S.String)),
           stock: S.optional(S.NullOr(S.Number)),
           strike_through_initial_price: S.optional(S.NullOr(S.Number)),
           strike_through_renewal_price: S.optional(S.NullOr(S.Number)),
-          three_ds_level: S.optional(S.NullOr(S.String)),
+          three_ds_level: S.optional(S.NullOr(UpdatePlanRequestThreeDsLevel)),
           title: S.optional(S.NullOr(S.String)),
           trial_period_days: S.optional(S.NullOr(S.Number)),
           unlimited_stock: S.optional(S.NullOr(S.Boolean)),
           visibility: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/plans/{id}", code: 200 })),
       ).annotate({ identifier: "UpdatePlanRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

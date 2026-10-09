@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Application Insights",
   serviceShapeName: "EC2WindowsBarleyService",
@@ -175,22 +173,30 @@ export type Tier =
   | "SAP_NETWEAVER_DISTRIBUTED"
   | "SAP_NETWEAVER_HIGH_AVAILABILITY"
   | (string & {});
+const Tier = S.String;
+
 export type ComponentConfiguration = string;
 export interface WorkloadConfiguration {
   WorkloadName?: string;
   Tier?: Tier;
   Configuration?: string;
 }
+const WorkloadConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<WorkloadConfiguration>;
 export interface AddWorkloadRequest {
   ResourceGroupName: string;
   ComponentName: string;
   WorkloadConfiguration: WorkloadConfiguration;
 }
+const AddWorkloadRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AddWorkloadRequest>;
 export type WorkloadId = string;
 export interface AddWorkloadResponse {
   WorkloadId?: string;
   WorkloadConfiguration?: WorkloadConfiguration;
 }
+const AddWorkloadResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AddWorkloadResponse>;
 export type OpsCenterEnabled = boolean;
 export type CWEMonitorEnabled = boolean;
 export type OpsItemSNSTopicArn = string;
@@ -201,10 +207,14 @@ export interface Tag {
   Key: string;
   Value: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Tag>;
 export type TagList = Tag[];
+const TagList = /*@__PURE__*/ __L.at(__c0, 4);
 export type AutoConfigEnabled = boolean;
 export type AutoCreate = boolean;
 export type GroupingType = "ACCOUNT_BASED" | (string & {});
+const GroupingType = S.String;
+
 export type AttachMissingPermission = boolean;
 export interface CreateApplicationRequest {
   ResourceGroupName?: string;
@@ -218,10 +228,16 @@ export interface CreateApplicationRequest {
   GroupingType?: GroupingType;
   AttachMissingPermission?: boolean;
 }
+const CreateApplicationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateApplicationRequest>;
 export type AccountId = string;
 export type LifeCycle = string;
 export type Remarks = string;
 export type DiscoveryType = "RESOURCE_GROUP_BASED" | "ACCOUNT_BASED" | (string & {});
+const DiscoveryType = S.String;
+
 export interface ApplicationInfo {
   AccountId?: string;
   ResourceGroupName?: string;
@@ -235,18 +251,32 @@ export interface ApplicationInfo {
   DiscoveryType?: DiscoveryType;
   AttachMissingPermission?: boolean;
 }
+const ApplicationInfo = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ApplicationInfo>;
 export interface CreateApplicationResponse {
   ApplicationInfo?: ApplicationInfo;
 }
+const CreateApplicationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateApplicationResponse>;
 export type CustomComponentName = string;
 export type ResourceARN = string;
 export type ResourceList = string[];
+const ResourceList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface CreateComponentRequest {
   ResourceGroupName: string;
   ComponentName: string;
   ResourceList: string[];
 }
+const CreateComponentRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateComponentRequest>;
 export interface CreateComponentResponse {}
+const CreateComponentResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateComponentResponse>;
 export type LogPatternSetName = string;
 export type LogPatternName = string;
 export type LogPatternRegex = string;
@@ -258,50 +288,90 @@ export interface CreateLogPatternRequest {
   Pattern: string;
   Rank: number;
 }
+const CreateLogPatternRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateLogPatternRequest>;
 export interface LogPattern {
   PatternSetName?: string;
   PatternName?: string;
   Pattern?: string;
   Rank?: number;
 }
+const LogPattern = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<LogPattern>;
 export interface CreateLogPatternResponse {
   LogPattern?: LogPattern;
   ResourceGroupName?: string;
 }
+const CreateLogPatternResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateLogPatternResponse>;
 export interface DeleteApplicationRequest {
   ResourceGroupName: string;
 }
+const DeleteApplicationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DeleteApplicationRequest>;
 export interface DeleteApplicationResponse {}
+const DeleteApplicationResponse =
+  CreateComponentResponse as any as S.Schema<DeleteApplicationResponse>;
 export interface DeleteComponentRequest {
   ResourceGroupName: string;
   ComponentName: string;
 }
+const DeleteComponentRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DeleteComponentRequest>;
 export interface DeleteComponentResponse {}
+const DeleteComponentResponse = CreateComponentResponse as any as S.Schema<DeleteComponentResponse>;
 export interface DeleteLogPatternRequest {
   ResourceGroupName: string;
   PatternSetName: string;
   PatternName: string;
 }
+const DeleteLogPatternRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DeleteLogPatternRequest>;
 export interface DeleteLogPatternResponse {}
+const DeleteLogPatternResponse =
+  CreateComponentResponse as any as S.Schema<DeleteLogPatternResponse>;
 export interface DescribeApplicationRequest {
   ResourceGroupName: string;
   AccountId?: string;
 }
+const DescribeApplicationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DescribeApplicationRequest>;
 export interface DescribeApplicationResponse {
   ApplicationInfo?: ApplicationInfo;
 }
+const DescribeApplicationResponse =
+  CreateApplicationResponse as any as S.Schema<DescribeApplicationResponse>;
 export interface DescribeComponentRequest {
   ResourceGroupName: string;
   ComponentName: string;
   AccountId?: string;
 }
+const DescribeComponentRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DescribeComponentRequest>;
 export type ResourceType = string;
 export type OsType = "WINDOWS" | "LINUX" | (string & {});
+const OsType = S.String;
+
 export type Monitor = boolean;
 export type MetaDataKey = string;
 export type MetaDataValue = string;
 export type WorkloadMetaData = { [key: string]: string | undefined };
+const WorkloadMetaData = /*@__PURE__*/ __L.at(__c2, 3);
 export type DetectedWorkload = { [key in Tier]?: { [key: string]: string | undefined } };
+const DetectedWorkload = /*@__PURE__*/ __L.at(__c2, 4);
 export interface ApplicationComponent {
   ComponentName?: string;
   ComponentRemarks?: string;
@@ -311,21 +381,36 @@ export interface ApplicationComponent {
   Monitor?: boolean;
   DetectedWorkload?: { [key: string]: { [key: string]: string | undefined } | undefined };
 }
+const ApplicationComponent = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ApplicationComponent>;
 export interface DescribeComponentResponse {
   ApplicationComponent?: ApplicationComponent;
   ResourceList?: string[];
 }
+const DescribeComponentResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DescribeComponentResponse>;
 export interface DescribeComponentConfigurationRequest {
   ResourceGroupName: string;
   ComponentName: string;
   AccountId?: string;
 }
+const DescribeComponentConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DescribeComponentConfigurationRequest>;
 export interface DescribeComponentConfigurationResponse {
   Monitor?: boolean;
   Tier?: Tier;
   ComponentConfiguration?: string;
 }
+const DescribeComponentConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DescribeComponentConfigurationResponse>;
 export type RecommendationType = "INFRA_ONLY" | "WORKLOAD_ONLY" | "ALL" | (string & {});
+const RecommendationType = S.String;
+
 export interface DescribeComponentConfigurationRecommendationRequest {
   ResourceGroupName: string;
   ComponentName: string;
@@ -333,25 +418,45 @@ export interface DescribeComponentConfigurationRecommendationRequest {
   WorkloadName?: string;
   RecommendationType?: RecommendationType;
 }
+const DescribeComponentConfigurationRecommendationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DescribeComponentConfigurationRecommendationRequest>;
 export interface DescribeComponentConfigurationRecommendationResponse {
   ComponentConfiguration?: string;
 }
+const DescribeComponentConfigurationRecommendationResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DescribeComponentConfigurationRecommendationResponse>;
 export interface DescribeLogPatternRequest {
   ResourceGroupName: string;
   PatternSetName: string;
   PatternName: string;
   AccountId?: string;
 }
+const DescribeLogPatternRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DescribeLogPatternRequest>;
 export interface DescribeLogPatternResponse {
   ResourceGroupName?: string;
   AccountId?: string;
   LogPattern?: LogPattern;
 }
+const DescribeLogPatternResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DescribeLogPatternResponse>;
 export type ObservationId = string;
 export interface DescribeObservationRequest {
   ObservationId: string;
   AccountId?: string;
 }
+const DescribeObservationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DescribeObservationRequest>;
 export type StartTime = Date;
 export type EndTime = Date;
 export type SourceType = string;
@@ -360,12 +465,16 @@ export type LogGroup = string;
 export type LineTime = Date;
 export type LogText = string;
 export type LogFilter = "ERROR" | "WARN" | "INFO" | (string & {});
+const LogFilter = S.String;
+
 export type MetricNamespace = string;
 export type MetricName = string;
 export type Unit = string;
 export type Value = number;
 export type CloudWatchEventId = string;
 export type CloudWatchEventSource = "EC2" | "CODE_DEPLOY" | "HEALTH" | "RDS" | (string & {});
+const CloudWatchEventSource = S.String;
+
 export type CloudWatchEventDetailType = string;
 export type HealthEventArn = string;
 export type HealthService = string;
@@ -443,27 +552,49 @@ export interface Observation {
   XRayNodeName?: string;
   XRayNodeType?: string;
 }
+const Observation = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Observation>;
 export interface DescribeObservationResponse {
   Observation?: Observation;
 }
+const DescribeObservationResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DescribeObservationResponse>;
 export type ProblemId = string;
 export interface DescribeProblemRequest {
   ProblemId: string;
   AccountId?: string;
 }
+const DescribeProblemRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<DescribeProblemRequest>;
 export type Title = string;
 export type ShortName = string;
 export type Insights = string;
 export type Status = "IGNORE" | "RESOLVED" | "PENDING" | "RECURRING" | "RECOVERING" | (string & {});
+const Status = S.String;
+
 export type AffectedResource = string;
 export type SeverityLevel = "Informative" | "Low" | "Medium" | "High" | (string & {});
+const SeverityLevel = S.String;
+
 export type FeedbackKey = "INSIGHTS_FEEDBACK" | (string & {});
+const FeedbackKey = S.String;
+
 export type FeedbackValue = "NOT_SPECIFIED" | "USEFUL" | "NOT_USEFUL" | (string & {});
+const FeedbackValue = S.String;
+
 export type Feedback = { [key in FeedbackKey]?: FeedbackValue };
+const Feedback = /*@__PURE__*/ __L.at(__c4, 1);
 export type RecurringCount = number;
 export type LastRecurrenceTime = Date;
 export type Visibility = "IGNORED" | "VISIBLE" | (string & {});
+const Visibility = S.String;
+
 export type ResolutionMethod = "MANUAL" | "AUTOMATIC" | "UNRESOLVED" | (string & {});
+const ResolutionMethod = S.String;
+
 export interface Problem {
   Id?: string;
   Title?: string;
@@ -482,32 +613,55 @@ export interface Problem {
   Visibility?: Visibility;
   ResolutionMethod?: ResolutionMethod;
 }
+const Problem = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Problem>;
 export interface DescribeProblemResponse {
   Problem?: Problem;
   SNSNotificationArn?: string;
 }
+const DescribeProblemResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<DescribeProblemResponse>;
 export interface DescribeProblemObservationsRequest {
   ProblemId: string;
   AccountId?: string;
 }
+const DescribeProblemObservationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DescribeProblemObservationsRequest>;
 export type ObservationList = Observation[];
+const ObservationList = /*@__PURE__*/ __L.at(__c4, 5);
 export interface RelatedObservations {
   ObservationList?: Observation[];
 }
+const RelatedObservations = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<RelatedObservations>;
 export interface DescribeProblemObservationsResponse {
   RelatedObservations?: RelatedObservations;
 }
+const DescribeProblemObservationsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<DescribeProblemObservationsResponse>;
 export interface DescribeWorkloadRequest {
   ResourceGroupName: string;
   ComponentName: string;
   WorkloadId: string;
   AccountId?: string;
 }
+const DescribeWorkloadRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<DescribeWorkloadRequest>;
 export interface DescribeWorkloadResponse {
   WorkloadId?: string;
   WorkloadRemarks?: string;
   WorkloadConfiguration?: WorkloadConfiguration;
 }
+const DescribeWorkloadResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<DescribeWorkloadResponse>;
 export type MaxEntities = number;
 export type PaginationToken = string;
 export interface ListApplicationsRequest {
@@ -515,23 +669,43 @@ export interface ListApplicationsRequest {
   NextToken?: string;
   AccountId?: string;
 }
+const ListApplicationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListApplicationsRequest>;
 export type ApplicationInfoList = ApplicationInfo[];
+const ApplicationInfoList = /*@__PURE__*/ __L.at(__c5, 3);
 export interface ListApplicationsResponse {
   ApplicationInfoList?: ApplicationInfo[];
   NextToken?: string;
 }
+const ListApplicationsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListApplicationsResponse>;
 export interface ListComponentsRequest {
   ResourceGroupName: string;
   MaxResults?: number;
   NextToken?: string;
   AccountId?: string;
 }
+const ListComponentsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListComponentsRequest>;
 export type ApplicationComponentList = ApplicationComponent[];
+const ApplicationComponentList = /*@__PURE__*/ __L.at(__c5, 6);
 export interface ListComponentsResponse {
   ApplicationComponentList?: ApplicationComponent[];
   NextToken?: string;
 }
+const ListComponentsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListComponentsResponse>;
 export type ConfigurationEventStatus = "INFO" | "WARN" | "ERROR" | (string & {});
+const ConfigurationEventStatus = S.String;
+
 export interface ListConfigurationHistoryRequest {
   ResourceGroupName?: string;
   StartTime?: Date;
@@ -541,6 +715,10 @@ export interface ListConfigurationHistoryRequest {
   NextToken?: string;
   AccountId?: string;
 }
+const ListConfigurationHistoryRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListConfigurationHistoryRequest>;
 export type ConfigurationEventMonitoredResourceARN = string;
 export type ConfigurationEventResourceType =
   | "CLOUDWATCH_ALARM"
@@ -548,6 +726,8 @@ export type ConfigurationEventResourceType =
   | "CLOUDFORMATION"
   | "SSM_ASSOCIATION"
   | (string & {});
+const ConfigurationEventResourceType = S.String;
+
 export type ConfigurationEventTime = Date;
 export type ConfigurationEventDetail = string;
 export type ConfigurationEventResourceName = string;
@@ -561,11 +741,17 @@ export interface ConfigurationEvent {
   EventDetail?: string;
   EventResourceName?: string;
 }
+const ConfigurationEvent = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ConfigurationEvent>;
 export type ConfigurationEventList = ConfigurationEvent[];
+const ConfigurationEventList = /*@__PURE__*/ __L.at(__c6, 2);
 export interface ListConfigurationHistoryResponse {
   EventList?: ConfigurationEvent[];
   NextToken?: string;
 }
+const ListConfigurationHistoryResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ListConfigurationHistoryResponse>;
 export interface ListLogPatternsRequest {
   ResourceGroupName: string;
   PatternSetName?: string;
@@ -573,26 +759,44 @@ export interface ListLogPatternsRequest {
   NextToken?: string;
   AccountId?: string;
 }
+const ListLogPatternsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ListLogPatternsRequest>;
 export type LogPatternList = LogPattern[];
+const LogPatternList = /*@__PURE__*/ __L.at(__c6, 5);
 export interface ListLogPatternsResponse {
   ResourceGroupName?: string;
   AccountId?: string;
   LogPatterns?: LogPattern[];
   NextToken?: string;
 }
+const ListLogPatternsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListLogPatternsResponse>;
 export interface ListLogPatternSetsRequest {
   ResourceGroupName: string;
   MaxResults?: number;
   NextToken?: string;
   AccountId?: string;
 }
+const ListLogPatternSetsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListLogPatternSetsRequest>;
 export type LogPatternSetList = string[];
+const LogPatternSetList = ResourceList as any as S.Schema<LogPatternSetList>;
 export interface ListLogPatternSetsResponse {
   ResourceGroupName?: string;
   AccountId?: string;
   LogPatternSets?: string[];
   NextToken?: string;
 }
+const ListLogPatternSetsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ListLogPatternSetsResponse>;
 export interface ListProblemsRequest {
   AccountId?: string;
   ResourceGroupName?: string;
@@ -603,20 +807,31 @@ export interface ListProblemsRequest {
   ComponentName?: string;
   Visibility?: Visibility;
 }
+const ListProblemsRequest = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ListProblemsRequest>;
 export type ProblemList = Problem[];
+const ProblemList = /*@__PURE__*/ __L.at(__c7, 2);
 export interface ListProblemsResponse {
   ProblemList?: Problem[];
   NextToken?: string;
   ResourceGroupName?: string;
   AccountId?: string;
 }
+const ListProblemsResponse = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<ListProblemsResponse>;
 export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListWorkloadsRequest {
   ResourceGroupName: string;
   ComponentName: string;
@@ -624,6 +839,7 @@ export interface ListWorkloadsRequest {
   NextToken?: string;
   AccountId?: string;
 }
+const ListWorkloadsRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<ListWorkloadsRequest>;
 export type MissingWorkloadConfig = boolean;
 export interface Workload {
   WorkloadId?: string;
@@ -633,28 +849,44 @@ export interface Workload {
   WorkloadRemarks?: string;
   MissingWorkloadConfig?: boolean;
 }
+const Workload = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<Workload>;
 export type WorkloadList = Workload[];
+const WorkloadList = /*@__PURE__*/ __L.at(__c8, 0);
 export interface ListWorkloadsResponse {
   WorkloadList?: Workload[];
   NextToken?: string;
 }
+const ListWorkloadsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ListWorkloadsResponse>;
 export interface RemoveWorkloadRequest {
   ResourceGroupName: string;
   ComponentName: string;
   WorkloadId: string;
 }
+const RemoveWorkloadRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<RemoveWorkloadRequest>;
 export interface RemoveWorkloadResponse {}
+const RemoveWorkloadResponse = CreateComponentResponse as any as S.Schema<RemoveWorkloadResponse>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = CreateComponentResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
+const TagKeyList = ResourceList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = CreateComponentResponse as any as S.Schema<UntagResourceResponse>;
 export type RemoveSNSTopic = boolean;
 export interface UpdateApplicationRequest {
   ResourceGroupName: string;
@@ -666,16 +898,27 @@ export interface UpdateApplicationRequest {
   AutoConfigEnabled?: boolean;
   AttachMissingPermission?: boolean;
 }
+const UpdateApplicationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<UpdateApplicationRequest>;
 export interface UpdateApplicationResponse {
   ApplicationInfo?: ApplicationInfo;
 }
+const UpdateApplicationResponse =
+  CreateApplicationResponse as any as S.Schema<UpdateApplicationResponse>;
 export interface UpdateComponentRequest {
   ResourceGroupName: string;
   ComponentName: string;
   NewComponentName?: string;
   ResourceList?: string[];
 }
+const UpdateComponentRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<UpdateComponentRequest>;
 export interface UpdateComponentResponse {}
+const UpdateComponentResponse = CreateComponentResponse as any as S.Schema<UpdateComponentResponse>;
 export interface UpdateComponentConfigurationRequest {
   ResourceGroupName: string;
   ComponentName: string;
@@ -684,7 +927,15 @@ export interface UpdateComponentConfigurationRequest {
   ComponentConfiguration?: string;
   AutoConfigEnabled?: boolean;
 }
+const UpdateComponentConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<UpdateComponentConfigurationRequest>;
 export interface UpdateComponentConfigurationResponse {}
+const UpdateComponentConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<UpdateComponentConfigurationResponse>;
 export interface UpdateLogPatternRequest {
   ResourceGroupName: string;
   PatternSetName: string;
@@ -692,27 +943,44 @@ export interface UpdateLogPatternRequest {
   Pattern?: string;
   Rank?: number;
 }
+const UpdateLogPatternRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<UpdateLogPatternRequest>;
 export interface UpdateLogPatternResponse {
   ResourceGroupName?: string;
   LogPattern?: LogPattern;
 }
+const UpdateLogPatternResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<UpdateLogPatternResponse>;
 export type UpdateStatus = "RESOLVED" | (string & {});
+const UpdateStatus = S.String;
+
 export interface UpdateProblemRequest {
   ProblemId: string;
   UpdateStatus?: UpdateStatus;
   Visibility?: Visibility;
 }
+const UpdateProblemRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<UpdateProblemRequest>;
 export interface UpdateProblemResponse {}
+const UpdateProblemResponse = CreateComponentResponse as any as S.Schema<UpdateProblemResponse>;
 export interface UpdateWorkloadRequest {
   ResourceGroupName: string;
   ComponentName: string;
   WorkloadId?: string;
   WorkloadConfiguration: WorkloadConfiguration;
 }
+const UpdateWorkloadRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<UpdateWorkloadRequest>;
 export interface UpdateWorkloadResponse {
   WorkloadId?: string;
   WorkloadConfiguration?: WorkloadConfiguration;
 }
+const UpdateWorkloadResponse = AddWorkloadResponse as any as S.Schema<UpdateWorkloadResponse>;
 export type ErrorMsg = string;
 export type ExceptionMessage = string;
 export type AddWorkloadError =
@@ -730,8 +998,8 @@ export const addWorkload: API.OperationMethod<
   AddWorkloadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AddWorkloadRequest>,
-  output: __S(2) as any as S.Schema<AddWorkloadResponse>,
+  input: AddWorkloadRequest,
+  output: AddWorkloadResponse,
   errors: [
     InternalServerException,
     ResourceInUseException,
@@ -760,8 +1028,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(7) as any as S.Schema<CreateApplicationResponse>,
+  input: CreateApplicationRequest,
+  output: CreateApplicationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -790,8 +1058,8 @@ export const createComponent: API.OperationMethod<
   CreateComponentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CreateComponentRequest>,
-  output: __S(10) as any as S.Schema<CreateComponentResponse>,
+  input: CreateComponentRequest,
+  output: CreateComponentResponse,
   errors: [
     InternalServerException,
     ResourceInUseException,
@@ -818,8 +1086,8 @@ export const createLogPattern: API.OperationMethod<
   CreateLogPatternError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CreateLogPatternRequest>,
-  output: __S(13) as any as S.Schema<CreateLogPatternResponse>,
+  input: CreateLogPatternRequest,
+  output: CreateLogPatternResponse,
   errors: [
     InternalServerException,
     ResourceInUseException,
@@ -847,8 +1115,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(10) as any as S.Schema<DeleteApplicationResponse>,
+  input: DeleteApplicationRequest,
+  output: DeleteApplicationResponse,
   errors: [
     BadRequestException,
     InternalServerException,
@@ -876,8 +1144,8 @@ export const deleteComponent: API.OperationMethod<
   DeleteComponentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DeleteComponentRequest>,
-  output: __S(10) as any as S.Schema<DeleteComponentResponse>,
+  input: DeleteComponentRequest,
+  output: DeleteComponentResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -899,8 +1167,8 @@ export const deleteLogPattern: API.OperationMethod<
   DeleteLogPatternError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<DeleteLogPatternRequest>,
-  output: __S(10) as any as S.Schema<DeleteLogPatternResponse>,
+  input: DeleteLogPatternRequest,
+  output: DeleteLogPatternResponse,
   errors: [
     BadRequestException,
     InternalServerException,
@@ -926,8 +1194,8 @@ export const describeApplication: API.OperationMethod<
   DescribeApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<DescribeApplicationRequest>,
-  output: __S(7) as any as S.Schema<DescribeApplicationResponse>,
+  input: DescribeApplicationRequest,
+  output: DescribeApplicationResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -949,8 +1217,8 @@ export const describeComponent: API.OperationMethod<
   DescribeComponentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<DescribeComponentRequest>,
-  output: __S(22) as any as S.Schema<DescribeComponentResponse>,
+  input: DescribeComponentRequest,
+  output: DescribeComponentResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -971,8 +1239,8 @@ export const describeComponentConfiguration: API.OperationMethod<
   DescribeComponentConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<DescribeComponentConfigurationRequest>,
-  output: __S(24) as any as S.Schema<DescribeComponentConfigurationResponse>,
+  input: DescribeComponentConfigurationRequest,
+  output: DescribeComponentConfigurationResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -993,8 +1261,8 @@ export const describeComponentConfigurationRecommendation: API.OperationMethod<
   DescribeComponentConfigurationRecommendationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<DescribeComponentConfigurationRecommendationRequest>,
-  output: __S(26) as any as S.Schema<DescribeComponentConfigurationRecommendationResponse>,
+  input: DescribeComponentConfigurationRecommendationRequest,
+  output: DescribeComponentConfigurationRecommendationResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1015,8 +1283,8 @@ export const describeLogPattern: API.OperationMethod<
   DescribeLogPatternError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<DescribeLogPatternRequest>,
-  output: __S(28) as any as S.Schema<DescribeLogPatternResponse>,
+  input: DescribeLogPatternRequest,
+  output: DescribeLogPatternResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1037,8 +1305,8 @@ export const describeObservation: API.OperationMethod<
   DescribeObservationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<DescribeObservationRequest>,
-  output: __S(31) as any as S.Schema<DescribeObservationResponse>,
+  input: DescribeObservationRequest,
+  output: DescribeObservationResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1059,8 +1327,8 @@ export const describeProblem: API.OperationMethod<
   DescribeProblemError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<DescribeProblemRequest>,
-  output: __S(35) as any as S.Schema<DescribeProblemResponse>,
+  input: DescribeProblemRequest,
+  output: DescribeProblemResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1081,8 +1349,8 @@ export const describeProblemObservations: API.OperationMethod<
   DescribeProblemObservationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<DescribeProblemObservationsRequest>,
-  output: __S(39) as any as S.Schema<DescribeProblemObservationsResponse>,
+  input: DescribeProblemObservationsRequest,
+  output: DescribeProblemObservationsResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1103,8 +1371,8 @@ export const describeWorkload: API.OperationMethod<
   DescribeWorkloadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<DescribeWorkloadRequest>,
-  output: __S(41) as any as S.Schema<DescribeWorkloadResponse>,
+  input: DescribeWorkloadRequest,
+  output: DescribeWorkloadResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1122,8 +1390,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(42) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(44) as any as S.Schema<ListApplicationsResponse>,
+  input: ListApplicationsRequest,
+  output: ListApplicationsResponse,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1150,8 +1418,8 @@ export const listComponents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(45) as any as S.Schema<ListComponentsRequest>,
-  output: __S(47) as any as S.Schema<ListComponentsResponse>,
+  input: ListComponentsRequest,
+  output: ListComponentsResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1186,8 +1454,8 @@ export const listConfigurationHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(48) as any as S.Schema<ListConfigurationHistoryRequest>,
-  output: __S(51) as any as S.Schema<ListConfigurationHistoryResponse>,
+  input: ListConfigurationHistoryRequest,
+  output: ListConfigurationHistoryResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1214,8 +1482,8 @@ export const listLogPatterns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(52) as any as S.Schema<ListLogPatternsRequest>,
-  output: __S(54) as any as S.Schema<ListLogPatternsResponse>,
+  input: ListLogPatternsRequest,
+  output: ListLogPatternsResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1242,8 +1510,8 @@ export const listLogPatternSets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(55) as any as S.Schema<ListLogPatternSetsRequest>,
-  output: __S(56) as any as S.Schema<ListLogPatternSetsResponse>,
+  input: ListLogPatternSetsRequest,
+  output: ListLogPatternSetsResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1270,8 +1538,8 @@ export const listProblems: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(57) as any as S.Schema<ListProblemsRequest>,
-  output: __S(59) as any as S.Schema<ListProblemsResponse>,
+  input: ListProblemsRequest,
+  output: ListProblemsResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1301,8 +1569,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(61) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1324,8 +1592,8 @@ export const listWorkloads: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(62) as any as S.Schema<ListWorkloadsRequest>,
-  output: __S(65) as any as S.Schema<ListWorkloadsResponse>,
+  input: ListWorkloadsRequest,
+  output: ListWorkloadsResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1351,8 +1619,8 @@ export const removeWorkload: API.OperationMethod<
   RemoveWorkloadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<RemoveWorkloadRequest>,
-  output: __S(10) as any as S.Schema<RemoveWorkloadResponse>,
+  input: RemoveWorkloadRequest,
+  output: RemoveWorkloadResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1381,8 +1649,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<TagResourceRequest>,
-  output: __S(10) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [ResourceNotFoundException, TooManyTagsException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1399,8 +1667,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<UntagResourceRequest>,
-  output: __S(10) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1421,8 +1689,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(7) as any as S.Schema<UpdateApplicationResponse>,
+  input: UpdateApplicationRequest,
+  output: UpdateApplicationResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1445,8 +1713,8 @@ export const updateComponent: API.OperationMethod<
   UpdateComponentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<UpdateComponentRequest>,
-  output: __S(10) as any as S.Schema<UpdateComponentResponse>,
+  input: UpdateComponentRequest,
+  output: UpdateComponentResponse,
   errors: [
     InternalServerException,
     ResourceInUseException,
@@ -1475,8 +1743,8 @@ export const updateComponentConfiguration: API.OperationMethod<
   UpdateComponentConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<UpdateComponentConfigurationRequest>,
-  output: __S(72) as any as S.Schema<UpdateComponentConfigurationResponse>,
+  input: UpdateComponentConfigurationRequest,
+  output: UpdateComponentConfigurationResponse,
   errors: [
     InternalServerException,
     ResourceInUseException,
@@ -1503,8 +1771,8 @@ export const updateLogPattern: API.OperationMethod<
   UpdateLogPatternError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<UpdateLogPatternRequest>,
-  output: __S(74) as any as S.Schema<UpdateLogPatternResponse>,
+  input: UpdateLogPatternRequest,
+  output: UpdateLogPatternResponse,
   errors: [
     InternalServerException,
     ResourceInUseException,
@@ -1531,8 +1799,8 @@ export const updateProblem: API.OperationMethod<
   UpdateProblemError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<UpdateProblemRequest>,
-  output: __S(10) as any as S.Schema<UpdateProblemResponse>,
+  input: UpdateProblemRequest,
+  output: UpdateProblemResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1553,8 +1821,8 @@ export const updateWorkload: API.OperationMethod<
   UpdateWorkloadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<UpdateWorkloadRequest>,
-  output: __S(2) as any as S.Schema<UpdateWorkloadResponse>,
+  input: UpdateWorkloadRequest,
+  output: UpdateWorkloadResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1568,7 +1836,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           WorkloadName: S.optional(S.String),
-          Tier: S.optional(S.String),
+          Tier: S.optional(Tier),
           Configuration: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkloadConfiguration" });
@@ -1577,14 +1845,14 @@ function __c0(j: number): any {
         S.Struct({
           ResourceGroupName: S.String,
           ComponentName: S.String,
-          WorkloadConfiguration: __S(0),
+          WorkloadConfiguration: WorkloadConfiguration,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "AddWorkloadRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           WorkloadId: S.optional(S.String),
-          WorkloadConfiguration: S.optional(__S(0)),
+          WorkloadConfiguration: S.optional(WorkloadConfiguration),
         }),
       ).annotate({ identifier: "AddWorkloadResponse" });
     case 3:
@@ -1592,7 +1860,7 @@ function __c0(j: number): any {
         identifier: "Tag",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(Tag);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1601,10 +1869,10 @@ function __c0(j: number): any {
           CWEMonitorEnabled: S.optional(S.Boolean),
           OpsItemSNSTopicArn: S.optional(S.String),
           SNSNotificationArn: S.optional(S.String),
-          Tags: S.optional(__S(4)),
+          Tags: S.optional(TagList),
           AutoConfigEnabled: S.optional(S.Boolean),
           AutoCreate: S.optional(S.Boolean),
-          GroupingType: S.optional(S.String),
+          GroupingType: S.optional(GroupingType),
           AttachMissingPermission: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateApplicationRequest" });
@@ -1620,12 +1888,12 @@ function __c0(j: number): any {
           CWEMonitorEnabled: S.optional(S.Boolean),
           Remarks: S.optional(S.String),
           AutoConfigEnabled: S.optional(S.Boolean),
-          DiscoveryType: S.optional(S.String),
+          DiscoveryType: S.optional(DiscoveryType),
           AttachMissingPermission: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ApplicationInfo" });
     case 7:
-      return S.suspend(() => S.Struct({ ApplicationInfo: S.optional(__S(6)) })).annotate({
+      return S.suspend(() => S.Struct({ ApplicationInfo: S.optional(ApplicationInfo) })).annotate({
         identifier: "CreateApplicationResponse",
       });
   }
@@ -1639,7 +1907,7 @@ function __c1(j: number): any {
         S.Struct({
           ResourceGroupName: S.String,
           ComponentName: S.String,
-          ResourceList: __S(8),
+          ResourceList: ResourceList,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateComponentRequest" });
     case 2:
@@ -1667,7 +1935,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "LogPattern" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ LogPattern: S.optional(__S(12)), ResourceGroupName: S.optional(S.String) }),
+        S.Struct({ LogPattern: S.optional(LogPattern), ResourceGroupName: S.optional(S.String) }),
       ).annotate({ identifier: "CreateLogPatternResponse" });
     case 6:
       return S.suspend(() =>
@@ -1712,24 +1980,24 @@ function __c2(j: number): any {
     case 3:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(19).pipe(S.optional));
+      return S.Record(Tier, /*@__PURE__*/ WorkloadMetaData.pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({
           ComponentName: S.optional(S.String),
           ComponentRemarks: S.optional(S.String),
           ResourceType: S.optional(S.String),
-          OsType: S.optional(S.String),
-          Tier: S.optional(S.String),
+          OsType: S.optional(OsType),
+          Tier: S.optional(Tier),
           Monitor: S.optional(S.Boolean),
-          DetectedWorkload: S.optional(__S(20)),
+          DetectedWorkload: S.optional(DetectedWorkload),
         }),
       ).annotate({ identifier: "ApplicationComponent" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ApplicationComponent: S.optional(__S(21)),
-          ResourceList: S.optional(__S(8)),
+          ApplicationComponent: S.optional(ApplicationComponent),
+          ResourceList: S.optional(ResourceList),
         }),
       ).annotate({
         identifier: "DescribeComponentResponse",
@@ -1752,7 +2020,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Monitor: S.optional(S.Boolean),
-          Tier: S.optional(S.String),
+          Tier: S.optional(Tier),
           ComponentConfiguration: S.optional(S.String),
         }),
       ).annotate({
@@ -1763,9 +2031,9 @@ function __c3(j: number): any {
         S.Struct({
           ResourceGroupName: S.String,
           ComponentName: S.String,
-          Tier: S.String,
+          Tier: Tier,
           WorkloadName: S.optional(S.String),
-          RecommendationType: S.optional(S.String),
+          RecommendationType: S.optional(RecommendationType),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeComponentConfigurationRecommendationRequest",
@@ -1790,7 +2058,7 @@ function __c3(j: number): any {
         S.Struct({
           ResourceGroupName: S.optional(S.String),
           AccountId: S.optional(S.String),
-          LogPattern: S.optional(__S(12)),
+          LogPattern: S.optional(LogPattern),
         }),
       ).annotate({
         identifier: "DescribeLogPatternResponse",
@@ -1814,13 +2082,13 @@ function __c3(j: number): any {
           LogGroup: S.optional(S.String),
           LineTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LogText: S.optional(S.String),
-          LogFilter: S.optional(S.String),
+          LogFilter: S.optional(LogFilter),
           MetricNamespace: S.optional(S.String),
           MetricName: S.optional(S.String),
           Unit: S.optional(S.String),
           Value: S.optional(S.Number),
           CloudWatchEventId: S.optional(S.String),
-          CloudWatchEventSource: S.optional(S.String),
+          CloudWatchEventSource: S.optional(CloudWatchEventSource),
           CloudWatchEventDetailType: S.optional(S.String),
           HealthEventArn: S.optional(S.String),
           HealthService: S.optional(S.String),
@@ -1854,7 +2122,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "Observation" });
     case 7:
-      return S.suspend(() => S.Struct({ Observation: S.optional(__S(30)) })).annotate({
+      return S.suspend(() => S.Struct({ Observation: S.optional(Observation) })).annotate({
         identifier: "DescribeObservationResponse",
       });
   }
@@ -1868,7 +2136,7 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "DescribeProblemRequest" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.Record(FeedbackKey, /*@__PURE__*/ FeedbackValue.pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1876,23 +2144,23 @@ function __c4(j: number): any {
           Title: S.optional(S.String),
           ShortName: S.optional(S.String),
           Insights: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(Status),
           AffectedResource: S.optional(S.String),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          SeverityLevel: S.optional(S.String),
+          SeverityLevel: S.optional(SeverityLevel),
           AccountId: S.optional(S.String),
           ResourceGroupName: S.optional(S.String),
-          Feedback: S.optional(__S(33)),
+          Feedback: S.optional(Feedback),
           RecurringCount: S.optional(S.Number),
           LastRecurrenceTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Visibility: S.optional(S.String),
-          ResolutionMethod: S.optional(S.String),
+          Visibility: S.optional(Visibility),
+          ResolutionMethod: S.optional(ResolutionMethod),
         }),
       ).annotate({ identifier: "Problem" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ Problem: S.optional(__S(34)), SNSNotificationArn: S.optional(S.String) }),
+        S.Struct({ Problem: S.optional(Problem), SNSNotificationArn: S.optional(S.String) }),
       ).annotate({ identifier: "DescribeProblemResponse" });
     case 4:
       return S.suspend(() =>
@@ -1903,13 +2171,15 @@ function __c4(j: number): any {
         identifier: "DescribeProblemObservationsRequest",
       });
     case 5:
-      return S.Array(__S(30));
+      return S.Array(Observation);
     case 6:
-      return S.suspend(() => S.Struct({ ObservationList: S.optional(__S(37)) })).annotate({
+      return S.suspend(() => S.Struct({ ObservationList: S.optional(ObservationList) })).annotate({
         identifier: "RelatedObservations",
       });
     case 7:
-      return S.suspend(() => S.Struct({ RelatedObservations: S.optional(__S(38)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ RelatedObservations: S.optional(RelatedObservations) }),
+      ).annotate({
         identifier: "DescribeProblemObservationsResponse",
       });
   }
@@ -1930,7 +2200,7 @@ function __c5(j: number): any {
         S.Struct({
           WorkloadId: S.optional(S.String),
           WorkloadRemarks: S.optional(S.String),
-          WorkloadConfiguration: S.optional(__S(0)),
+          WorkloadConfiguration: S.optional(WorkloadConfiguration),
         }),
       ).annotate({ identifier: "DescribeWorkloadResponse" });
     case 2:
@@ -1942,11 +2212,11 @@ function __c5(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListApplicationsRequest" });
     case 3:
-      return S.Array(__S(6));
+      return S.Array(ApplicationInfo);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ApplicationInfoList: S.optional(__S(43)),
+          ApplicationInfoList: S.optional(ApplicationInfoList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListApplicationsResponse" });
@@ -1960,11 +2230,11 @@ function __c5(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListComponentsRequest" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(ApplicationComponent);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ApplicationComponentList: S.optional(__S(46)),
+          ApplicationComponentList: S.optional(ApplicationComponentList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListComponentsResponse" });
@@ -1978,7 +2248,7 @@ function __c6(j: number): any {
           ResourceGroupName: S.optional(S.String),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          EventStatus: S.optional(S.String),
+          EventStatus: S.optional(ConfigurationEventStatus),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
           AccountId: S.optional(S.String),
@@ -1992,19 +2262,19 @@ function __c6(j: number): any {
           ResourceGroupName: S.optional(S.String),
           AccountId: S.optional(S.String),
           MonitoredResourceARN: S.optional(S.String),
-          EventStatus: S.optional(S.String),
-          EventResourceType: S.optional(S.String),
+          EventStatus: S.optional(ConfigurationEventStatus),
+          EventResourceType: S.optional(ConfigurationEventResourceType),
           EventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EventDetail: S.optional(S.String),
           EventResourceName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigurationEvent" });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(ConfigurationEvent);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          EventList: S.optional(__S(50)),
+          EventList: S.optional(ConfigurationEventList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2021,13 +2291,13 @@ function __c6(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListLogPatternsRequest" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(LogPattern);
     case 6:
       return S.suspend(() =>
         S.Struct({
           ResourceGroupName: S.optional(S.String),
           AccountId: S.optional(S.String),
-          LogPatterns: S.optional(__S(53)),
+          LogPatterns: S.optional(LogPatternList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLogPatternsResponse" });
@@ -2051,7 +2321,7 @@ function __c7(j: number): any {
         S.Struct({
           ResourceGroupName: S.optional(S.String),
           AccountId: S.optional(S.String),
-          LogPatternSets: S.optional(__S(8)),
+          LogPatternSets: S.optional(LogPatternSetList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2067,15 +2337,15 @@ function __c7(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
           ComponentName: S.optional(S.String),
-          Visibility: S.optional(S.String),
+          Visibility: S.optional(Visibility),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListProblemsRequest" });
     case 2:
-      return S.Array(__S(34));
+      return S.Array(Problem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ProblemList: S.optional(__S(58)),
+          ProblemList: S.optional(ProblemList),
           NextToken: S.optional(S.String),
           ResourceGroupName: S.optional(S.String),
           AccountId: S.optional(S.String),
@@ -2090,7 +2360,7 @@ function __c7(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 5:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(4)) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 6:
@@ -2109,7 +2379,7 @@ function __c7(j: number): any {
           WorkloadId: S.optional(S.String),
           ComponentName: S.optional(S.String),
           WorkloadName: S.optional(S.String),
-          Tier: S.optional(S.String),
+          Tier: S.optional(Tier),
           WorkloadRemarks: S.optional(S.String),
           MissingWorkloadConfig: S.optional(S.Boolean),
         }),
@@ -2119,10 +2389,10 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(Workload);
     case 1:
       return S.suspend(() =>
-        S.Struct({ WorkloadList: S.optional(__S(64)), NextToken: S.optional(S.String) }),
+        S.Struct({ WorkloadList: S.optional(WorkloadList), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListWorkloadsResponse" });
     case 2:
       return S.suspend(() =>
@@ -2134,13 +2404,13 @@ function __c8(j: number): any {
       ).annotate({ identifier: "RemoveWorkloadRequest" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(4) }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: TagList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(8) }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -2163,7 +2433,7 @@ function __c8(j: number): any {
           ResourceGroupName: S.String,
           ComponentName: S.String,
           NewComponentName: S.optional(S.String),
-          ResourceList: S.optional(__S(8)),
+          ResourceList: S.optional(ResourceList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateComponentRequest" });
     case 7:
@@ -2172,7 +2442,7 @@ function __c8(j: number): any {
           ResourceGroupName: S.String,
           ComponentName: S.String,
           Monitor: S.optional(S.Boolean),
-          Tier: S.optional(S.String),
+          Tier: S.optional(Tier),
           ComponentConfiguration: S.optional(S.String),
           AutoConfigEnabled: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -2199,14 +2469,14 @@ function __c9(j: number): any {
       ).annotate({ identifier: "UpdateLogPatternRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ResourceGroupName: S.optional(S.String), LogPattern: S.optional(__S(12)) }),
+        S.Struct({ ResourceGroupName: S.optional(S.String), LogPattern: S.optional(LogPattern) }),
       ).annotate({ identifier: "UpdateLogPatternResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           ProblemId: S.String,
-          UpdateStatus: S.optional(S.String),
-          Visibility: S.optional(S.String),
+          UpdateStatus: S.optional(UpdateStatus),
+          Visibility: S.optional(Visibility),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateProblemRequest" });
     case 4:
@@ -2215,37 +2485,8 @@ function __c9(j: number): any {
           ResourceGroupName: S.String,
           ComponentName: S.String,
           WorkloadId: S.optional(S.String),
-          WorkloadConfiguration: __S(0),
+          WorkloadConfiguration: WorkloadConfiguration,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateWorkloadRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
   }
 }

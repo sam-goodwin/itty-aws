@@ -7,8 +7,6 @@ import { UnknownOvhError } from "../errors.ts";
 import { OvhProtocol, type OvhOpError, type OvhOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { OvhOpError, OvhOpContext };
 
@@ -19,6 +17,8 @@ export type ServiceTerminationFutureUseEnum =
   | "SUBSCRIBE_AN_OTHER_SERVICE"
   | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR"
   | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR";
+const ServiceTerminationFutureUseEnum = S.String;
+
 /** All reasons you can provide for a service termination */
 export type ServiceTerminationReasonEnum =
   | "FEATURES_DONT_SUIT_ME"
@@ -35,6 +35,8 @@ export type ServiceTerminationReasonEnum =
   | "TOO_EXPENSIVE"
   | "TOO_HARD_TO_USE"
   | "UNSATIFIED_BY_CUSTOMER_SUPPORT";
+const ServiceTerminationReasonEnum = S.String;
+
 export interface ConfirmHostingPrivateDatabaseTerminationRequest {
   /** Service name */
   serviceName: string;
@@ -47,15 +49,32 @@ export interface ConfirmHostingPrivateDatabaseTerminationRequest {
   /** The termination token sent by email to the admin contact */
   token: string;
 }
+const ConfirmHostingPrivateDatabaseTerminationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ConfirmHostingPrivateDatabaseTerminationRequest>;
+
 export type ConfirmHostingPrivateDatabaseTerminationResponse = string;
+const ConfirmHostingPrivateDatabaseTerminationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ConfirmHostingPrivateDatabaseTerminationResponse>;
+
 export interface CopyHostingPrivateDatabaseDatabaseRequest {
   /** Service name */
   serviceName: string;
   /** Database name */
   databaseName: string;
 }
+const CopyHostingPrivateDatabaseDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CopyHostingPrivateDatabaseDatabaseRequest>;
+
 /** Database copy status */
 export type HostingPrivateDatabaseDatabaseCopyStatusEnum = "doing" | "done" | "error" | "todo";
+const HostingPrivateDatabaseDatabaseCopyStatusEnum = S.String;
+
 /** Database copy */
 export interface HostingPrivateDatabaseDatabaseCopy {
   /** Creation date of the database copy */
@@ -69,6 +88,11 @@ export interface HostingPrivateDatabaseDatabaseCopy {
   /** Database copy status */
   status?: HostingPrivateDatabaseDatabaseCopyStatusEnum;
 }
+const HostingPrivateDatabaseDatabaseCopy = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<HostingPrivateDatabaseDatabaseCopy>;
+
 export interface CopyHostingPrivateDatabaseDatabaseRestoreRequest {
   /** Service name */
   serviceName: string;
@@ -79,6 +103,11 @@ export interface CopyHostingPrivateDatabaseDatabaseRestoreRequest {
   /** Whether to flush the database before restoring the copy (default to false) */
   flushDatabase?: boolean;
 }
+const CopyHostingPrivateDatabaseDatabaseRestoreRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CopyHostingPrivateDatabaseDatabaseRestoreRequest>;
+
 /** Task's dunction */
 export type HostingPrivateDatabaseTaskFunctionEnum =
   | "abuse"
@@ -120,6 +149,8 @@ export type HostingPrivateDatabaseTaskFunctionEnum =
   | "whitelist/create"
   | "whitelist/delete"
   | "whitelist/update";
+const HostingPrivateDatabaseTaskFunctionEnum = S.String;
+
 /** Task's status */
 export type HostingPrivateDatabaseTaskStatusEnum =
   | "cancelled"
@@ -127,6 +158,8 @@ export type HostingPrivateDatabaseTaskStatusEnum =
   | "done"
   | "error"
   | "todo";
+const HostingPrivateDatabaseTaskStatusEnum = S.String;
+
 /** Web Cloud Database task */
 export interface HostingPrivateDatabaseTask {
   /** Database name on which the task is working */
@@ -148,6 +181,11 @@ export interface HostingPrivateDatabaseTask {
   /** User name on which the task is working */
   userName?: string | null;
 }
+const HostingPrivateDatabaseTask = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<HostingPrivateDatabaseTask>;
+
 export interface CreateHostingPrivateDatabaseChangeContactRequest {
   /** Service name */
   serviceName: string;
@@ -158,15 +196,35 @@ export interface CreateHostingPrivateDatabaseChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
+const CreateHostingPrivateDatabaseChangeContactRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateHostingPrivateDatabaseChangeContactRequest>;
+
 export type CreateHostingPrivateDatabaseChangeContactResponseBodyList = Array<number>;
+const CreateHostingPrivateDatabaseChangeContactResponseBodyList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateHostingPrivateDatabaseChangeContactResponseBodyList>;
+
 export type CreateHostingPrivateDatabaseChangeContactResponse =
   CreateHostingPrivateDatabaseChangeContactResponseBodyList;
+const CreateHostingPrivateDatabaseChangeContactResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateHostingPrivateDatabaseChangeContactResponse>;
+
 export interface CreateHostingPrivateDatabaseChangeFtpPasswordRequest {
   /** Service name */
   serviceName: string;
   /** New ftp admin password (alphanumeric and 8 characters minimum) */
   password: string | Redacted.Redacted<string>;
 }
+const CreateHostingPrivateDatabaseChangeFtpPasswordRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateHostingPrivateDatabaseChangeFtpPasswordRequest>;
+
 /** Private database available version */
 export type HostingPrivateDatabaseAvailableVersionEnum =
   | "mariadb_10.11"
@@ -182,18 +240,30 @@ export type HostingPrivateDatabaseAvailableVersionEnum =
   | "postgresql_17"
   | "redis_7.0"
   | "valkey_7.2";
+const HostingPrivateDatabaseAvailableVersionEnum = S.String;
+
 export interface CreateHostingPrivateDatabaseChangeVersionRequest {
   /** Service name */
   serviceName: string;
   /** Change the private database engine version */
   version: HostingPrivateDatabaseAvailableVersionEnum | (string & {});
 }
+const CreateHostingPrivateDatabaseChangeVersionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateHostingPrivateDatabaseChangeVersionRequest>;
+
 export interface CreateHostingPrivateDatabaseDatabaseRequest {
   /** Service name */
   serviceName: string;
   /** Name of your new database */
   databaseName: string;
 }
+const CreateHostingPrivateDatabaseDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateHostingPrivateDatabaseDatabaseRequest>;
+
 export interface CreateHostingPrivateDatabaseDatabaseDumpRequest {
   /** Service name */
   serviceName: string;
@@ -202,8 +272,15 @@ export interface CreateHostingPrivateDatabaseDatabaseDumpRequest {
   /** Whether to receive an email when the import is complete (default to false) */
   sendEmail?: boolean;
 }
+const CreateHostingPrivateDatabaseDatabaseDumpRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateHostingPrivateDatabaseDatabaseDumpRequest>;
+
 /** Grant on a database for a specific user */
 export type HostingPrivateDatabaseGrantGrantEnum = "admin" | "none" | "ro" | "rw";
+const HostingPrivateDatabaseGrantGrantEnum = S.String;
+
 export interface CreateHostingPrivateDatabaseDatabaseWizardRequest {
   /** Service name */
   serviceName: string;
@@ -216,6 +293,11 @@ export interface CreateHostingPrivateDatabaseDatabaseWizardRequest {
   /** New user name used to connect on your database */
   userName: string;
 }
+const CreateHostingPrivateDatabaseDatabaseWizardRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateHostingPrivateDatabaseDatabaseWizardRequest>;
+
 export interface CreateHostingPrivateDatabaseLogSubscriptionRequest {
   /** Service name */
   serviceName: string;
@@ -224,6 +306,11 @@ export interface CreateHostingPrivateDatabaseLogSubscriptionRequest {
   /** Customer log stream ID */
   streamId: string;
 }
+const CreateHostingPrivateDatabaseLogSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateHostingPrivateDatabaseLogSubscriptionRequest>;
+
 /** Asynchronous operation after subscribing or unsubscribing to a resource logs */
 export interface DbaasLogsLogSubscriptionResponse {
   /** Identifier of the operation */
@@ -231,12 +318,22 @@ export interface DbaasLogsLogSubscriptionResponse {
   /** Operation owner's service name */
   serviceName?: string;
 }
+const DbaasLogsLogSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DbaasLogsLogSubscriptionResponse>;
+
 export interface CreateHostingPrivateDatabaseLogUrlRequest {
   /** Service name */
   serviceName: string;
   /** Log kind name */
   kind: string;
 }
+const CreateHostingPrivateDatabaseLogUrlRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateHostingPrivateDatabaseLogUrlRequest>;
+
 /** Temporary url information */
 export interface DbaasLogsTemporaryLogsLink {
   /** Temporary url expiration date */
@@ -244,10 +341,20 @@ export interface DbaasLogsTemporaryLogsLink {
   /** Temporary url */
   url?: string;
 }
+const DbaasLogsTemporaryLogsLink = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DbaasLogsTemporaryLogsLink>;
+
 export interface CreateHostingPrivateDatabaseQuotaRefreshRequest {
   /** Service name */
   serviceName: string;
 }
+const CreateHostingPrivateDatabaseQuotaRefreshRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateHostingPrivateDatabaseQuotaRefreshRequest>;
+
 export interface CreateHostingPrivateDatabaseUserRequest {
   /** Service name */
   serviceName: string;
@@ -256,6 +363,11 @@ export interface CreateHostingPrivateDatabaseUserRequest {
   /** User name used to connect on your databases */
   userName: string;
 }
+const CreateHostingPrivateDatabaseUserRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateHostingPrivateDatabaseUserRequest>;
+
 export interface CreateHostingPrivateDatabaseUserChangePasswordRequest {
   /** Service name */
   serviceName: string;
@@ -264,6 +376,11 @@ export interface CreateHostingPrivateDatabaseUserChangePasswordRequest {
   /** Password for the new user ( alphanumeric and 8 characters minimum ) */
   password: string | Redacted.Redacted<string>;
 }
+const CreateHostingPrivateDatabaseUserChangePasswordRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateHostingPrivateDatabaseUserChangePasswordRequest>;
+
 export interface CreateHostingPrivateDatabaseUserGrantRequest {
   /** Service name */
   serviceName: string;
@@ -274,10 +391,20 @@ export interface CreateHostingPrivateDatabaseUserGrantRequest {
   /** Grant on a database for a specific user */
   grant: HostingPrivateDatabaseGrantGrantEnum | (string & {});
 }
+const CreateHostingPrivateDatabaseUserGrantRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateHostingPrivateDatabaseUserGrantRequest>;
+
 export interface CreateHostingPrivateDatabaseWebhostingNetworkRequest {
   /** Service name */
   serviceName: string;
 }
+const CreateHostingPrivateDatabaseWebhostingNetworkRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateHostingPrivateDatabaseWebhostingNetworkRequest>;
+
 export interface CreateHostingPrivateDatabaseWhitelistRequest {
   /** Service name */
   serviceName: string;
@@ -290,12 +417,22 @@ export interface CreateHostingPrivateDatabaseWhitelistRequest {
   /** Authorize this IP to access sftp port */
   sftp?: boolean;
 }
+const CreateHostingPrivateDatabaseWhitelistRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateHostingPrivateDatabaseWhitelistRequest>;
+
 export interface DeleteHostingPrivateDatabaseDatabaseRequest {
   /** Service name */
   serviceName: string;
   /** Database name */
   databaseName: string;
 }
+const DeleteHostingPrivateDatabaseDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DeleteHostingPrivateDatabaseDatabaseRequest>;
+
 export interface DeleteHostingPrivateDatabaseDatabaseCopyRequest {
   /** Service name */
   serviceName: string;
@@ -304,7 +441,17 @@ export interface DeleteHostingPrivateDatabaseDatabaseCopyRequest {
   /** Id */
   id: string;
 }
+const DeleteHostingPrivateDatabaseDatabaseCopyRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DeleteHostingPrivateDatabaseDatabaseCopyRequest>;
+
 export interface DeleteHostingPrivateDatabaseDatabaseCopyResponse {}
+const DeleteHostingPrivateDatabaseDatabaseCopyResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DeleteHostingPrivateDatabaseDatabaseCopyResponse>;
+
 export interface DeleteHostingPrivateDatabaseDatabaseDumpRequest {
   /** Service name */
   serviceName: string;
@@ -313,24 +460,44 @@ export interface DeleteHostingPrivateDatabaseDatabaseDumpRequest {
   /** Id */
   id: number;
 }
+const DeleteHostingPrivateDatabaseDatabaseDumpRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DeleteHostingPrivateDatabaseDatabaseDumpRequest>;
+
 export interface DeleteHostingPrivateDatabaseDumpRequest {
   /** Service name */
   serviceName: string;
   /** Dump ID */
   dumpId: number;
 }
+const DeleteHostingPrivateDatabaseDumpRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DeleteHostingPrivateDatabaseDumpRequest>;
+
 export interface DeleteHostingPrivateDatabaseLogSubscriptionRequest {
   /** Service name */
   serviceName: string;
   /** Subscription ID */
   subscriptionId: string;
 }
+const DeleteHostingPrivateDatabaseLogSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DeleteHostingPrivateDatabaseLogSubscriptionRequest>;
+
 export interface DeleteHostingPrivateDatabaseUserRequest {
   /** Service name */
   serviceName: string;
   /** User name */
   userName: string;
 }
+const DeleteHostingPrivateDatabaseUserRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DeleteHostingPrivateDatabaseUserRequest>;
+
 export interface DeleteHostingPrivateDatabaseUserGrantRequest {
   /** Service name */
   serviceName: string;
@@ -339,16 +506,31 @@ export interface DeleteHostingPrivateDatabaseUserGrantRequest {
   /** Database name */
   databaseName: string;
 }
+const DeleteHostingPrivateDatabaseUserGrantRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DeleteHostingPrivateDatabaseUserGrantRequest>;
+
 export interface DeleteHostingPrivateDatabaseWebhostingNetworkRequest {
   /** Service name */
   serviceName: string;
 }
+const DeleteHostingPrivateDatabaseWebhostingNetworkRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<DeleteHostingPrivateDatabaseWebhostingNetworkRequest>;
+
 export interface DeleteHostingPrivateDatabaseWhitelistRequest {
   /** Service name */
   serviceName: string;
   /** Ip */
   ip: string;
 }
+const DeleteHostingPrivateDatabaseWhitelistRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<DeleteHostingPrivateDatabaseWhitelistRequest>;
+
 export interface DisableHostingPrivateDatabaseDatabaseExtensionRequest {
   /** Service name */
   serviceName: string;
@@ -357,6 +539,11 @@ export interface DisableHostingPrivateDatabaseDatabaseExtensionRequest {
   /** Extension name */
   extensionName: string;
 }
+const DisableHostingPrivateDatabaseDatabaseExtensionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<DisableHostingPrivateDatabaseDatabaseExtensionRequest>;
+
 export interface EnableHostingPrivateDatabaseDatabaseExtensionRequest {
   /** Service name */
   serviceName: string;
@@ -365,10 +552,20 @@ export interface EnableHostingPrivateDatabaseDatabaseExtensionRequest {
   /** Extension name */
   extensionName: string;
 }
+const EnableHostingPrivateDatabaseDatabaseExtensionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<EnableHostingPrivateDatabaseDatabaseExtensionRequest>;
+
 export interface GenerateHostingPrivateDatabaseTemporaryLogsLinkRequest {
   /** Service name */
   serviceName: string;
 }
+const GenerateHostingPrivateDatabaseTemporaryLogsLinkRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GenerateHostingPrivateDatabaseTemporaryLogsLinkRequest>;
+
 /** Temporary url information */
 export interface HostingPrivateDatabaseTemporaryUrlInformations {
   /** Temporary url expiration date */
@@ -376,10 +573,18 @@ export interface HostingPrivateDatabaseTemporaryUrlInformations {
   /** Temporary url */
   url?: string;
 }
+const HostingPrivateDatabaseTemporaryUrlInformations =
+  DbaasLogsTemporaryLogsLink as any as S.Schema<HostingPrivateDatabaseTemporaryUrlInformations>;
+
 export interface GetHostingPrivateDatabaseRequest {
   /** Service name */
   serviceName: string;
 }
+const GetHostingPrivateDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetHostingPrivateDatabaseRequest>;
+
 /** Private database capability */
 export interface HostingPrivateDatabaseCapability {
   /** Can the object be created */
@@ -391,11 +596,23 @@ export interface HostingPrivateDatabaseCapability {
   /** Can the object be updated */
   update?: boolean;
 }
+const HostingPrivateDatabaseCapability = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<HostingPrivateDatabaseCapability>;
+
 /** Private database capabilities */
 export type HostingPrivateDatabaseServiceWithIAMCapabilitiesList =
   Array<HostingPrivateDatabaseCapability>;
+const HostingPrivateDatabaseServiceWithIAMCapabilitiesList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<HostingPrivateDatabaseServiceWithIAMCapabilitiesList>;
+
 /** Private database datacenter */
 export type HostingPrivateDatabaseDatacenterEnum = "bhs1" | "gra1" | "gra2" | "gra3";
+const HostingPrivateDatabaseDatacenterEnum = S.String;
+
 /** Parameters required to query metrics from OpenTSDB */
 export interface HostingPrivateDatabaseGraphEndpoint {
   /** The OpenTSDB host */
@@ -405,8 +622,18 @@ export interface HostingPrivateDatabaseGraphEndpoint {
   /** A read-only token ID */
   readTokenId?: string | null;
 }
+const HostingPrivateDatabaseGraphEndpoint = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<HostingPrivateDatabaseGraphEndpoint>;
+
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
+const IamResourceMetadataTagsMap = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<IamResourceMetadataTagsMap>;
+
 /** IAM resource metadata embedded in services models */
 export interface IamResourceMetadata {
   /** Resource display name */
@@ -418,16 +645,27 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
+const IamResourceMetadata = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<IamResourceMetadata>;
+
 /** Private database infrastructure */
 export type HostingPrivateDatabaseInfrastructureEnum = "docker";
+const HostingPrivateDatabaseInfrastructureEnum = S.String;
+
 /** Available offers */
 export type HostingPrivateDatabaseOfferEnum = "classic" | "public";
+const HostingPrivateDatabaseOfferEnum = S.String;
+
 /** A numeric value tagged with its unit */
 export interface ComplexTypeUnitAndValueLong {
   /** Unit of the value */
   unit?: string;
   value?: number;
 }
+const ComplexTypeUnitAndValueLong = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ComplexTypeUnitAndValueLong>;
+
 /** Private database state */
 export type HostingPrivateDatabaseStateEnum =
   | "detached"
@@ -436,8 +674,12 @@ export type HostingPrivateDatabaseStateEnum =
   | "started"
   | "stopPending"
   | "stopped";
+const HostingPrivateDatabaseStateEnum = S.String;
+
 /** Private database type */
 export type HostingPrivateDatabaseTypeEnum = "mariadb" | "mysql" | "postgresql" | "redis";
+const HostingPrivateDatabaseTypeEnum = S.String;
+
 /** Private database version */
 export type HostingPrivateDatabaseVersionEnum =
   | "mariadb_10.11"
@@ -453,6 +695,8 @@ export type HostingPrivateDatabaseVersionEnum =
   | "postgresql_17"
   | "redis_7.0"
   | "valkey_7.2";
+const HostingPrivateDatabaseVersionEnum = S.String;
+
 /** Web Cloud Database */
 export interface HostingPrivateDatabaseServiceWithIAM {
   /** Private database capabilities */
@@ -508,12 +752,22 @@ export interface HostingPrivateDatabaseServiceWithIAM {
   /** Private database version number */
   versionNumber?: number;
 }
+const HostingPrivateDatabaseServiceWithIAM = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<HostingPrivateDatabaseServiceWithIAM>;
+
 export interface GetHostingPrivateDatabaseDatabaseRequest {
   /** Service name */
   serviceName: string;
   /** Database name */
   databaseName: string;
 }
+const GetHostingPrivateDatabaseDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GetHostingPrivateDatabaseDatabaseRequest>;
+
 /** Users */
 export interface HostingPrivateDatabaseDatabaseUser {
   /** The grantId associated for this databaseName and this userName */
@@ -523,8 +777,18 @@ export interface HostingPrivateDatabaseDatabaseUser {
   /** User's name granted on this database */
   userName?: string;
 }
+const HostingPrivateDatabaseDatabaseUser = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<HostingPrivateDatabaseDatabaseUser>;
+
 /** Users granted to this database */
 export type HostingPrivateDatabaseDatabaseUsersList = Array<HostingPrivateDatabaseDatabaseUser>;
+const HostingPrivateDatabaseDatabaseUsersList = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<HostingPrivateDatabaseDatabaseUsersList>;
+
 /** Databases */
 export interface HostingPrivateDatabaseDatabase {
   /** Time of the next backup (every day) */
@@ -538,6 +802,11 @@ export interface HostingPrivateDatabaseDatabase {
   /** Users granted to this database */
   users?: HostingPrivateDatabaseDatabaseUsersList;
 }
+const HostingPrivateDatabaseDatabase = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<HostingPrivateDatabaseDatabase>;
+
 export interface GetHostingPrivateDatabaseDatabaseCopyRequest {
   /** Service name */
   serviceName: string;
@@ -546,6 +815,11 @@ export interface GetHostingPrivateDatabaseDatabaseCopyRequest {
   /** Id */
   id: string;
 }
+const GetHostingPrivateDatabaseDatabaseCopyRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetHostingPrivateDatabaseDatabaseCopyRequest>;
+
 export interface GetHostingPrivateDatabaseDatabaseDumpRequest {
   /** Service name */
   serviceName: string;
@@ -554,6 +828,11 @@ export interface GetHostingPrivateDatabaseDatabaseDumpRequest {
   /** Id */
   id: number;
 }
+const GetHostingPrivateDatabaseDatabaseDumpRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<GetHostingPrivateDatabaseDatabaseDumpRequest>;
+
 /** Dumps */
 export interface HostingPrivateDatabaseDatabaseDump {
   /** Creation date of the dump */
@@ -567,6 +846,11 @@ export interface HostingPrivateDatabaseDatabaseDump {
   /** Dump URL access */
   url?: string;
 }
+const HostingPrivateDatabaseDatabaseDump = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<HostingPrivateDatabaseDatabaseDump>;
+
 export interface GetHostingPrivateDatabaseDatabaseExtensionRequest {
   /** Service name */
   serviceName: string;
@@ -575,14 +859,26 @@ export interface GetHostingPrivateDatabaseDatabaseExtensionRequest {
   /** Extension name */
   extensionName: string;
 }
+const GetHostingPrivateDatabaseDatabaseExtensionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GetHostingPrivateDatabaseDatabaseExtensionRequest>;
+
 /** Required extensions */
 export type HostingPrivateDatabaseExtensionRequiredExtensionsList = Array<string>;
+const HostingPrivateDatabaseExtensionRequiredExtensionsList = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<HostingPrivateDatabaseExtensionRequiredExtensionsList>;
+
 /** Extension status */
 export type HostingPrivateDatabaseExtensionStatusEnum =
   | "disabled"
   | "disabling"
   | "enabled"
   | "enabling";
+const HostingPrivateDatabaseExtensionStatusEnum = S.String;
+
 /** Webcloud Database extension */
 export interface HostingPrivateDatabaseExtension {
   /** Extension details */
@@ -594,12 +890,22 @@ export interface HostingPrivateDatabaseExtension {
   /** Extension status */
   status?: HostingPrivateDatabaseExtensionStatusEnum;
 }
+const HostingPrivateDatabaseExtension = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<HostingPrivateDatabaseExtension>;
+
 export interface GetHostingPrivateDatabaseDumpRequest {
   /** Service name */
   serviceName: string;
   /** Dump ID */
   dumpId: number;
 }
+const GetHostingPrivateDatabaseDumpRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<GetHostingPrivateDatabaseDumpRequest>;
+
 /** Dumps */
 export interface HostingPrivateDatabaseDump {
   /** Creation date of the dump */
@@ -615,14 +921,27 @@ export interface HostingPrivateDatabaseDump {
   /** Dump URL access */
   url?: string;
 }
+const HostingPrivateDatabaseDump = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<HostingPrivateDatabaseDump>;
+
 export interface GetHostingPrivateDatabaseLogKindRequest {
   /** Service name */
   serviceName: string;
   /** Name */
   name: string;
 }
+const GetHostingPrivateDatabaseLogKindRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GetHostingPrivateDatabaseLogKindRequest>;
+
 /** List of additional log fields managed in this log kind */
 export type DbaasLogsLogKindAdditionalReturnedFieldsList = Array<string>;
+const DbaasLogsLogKindAdditionalReturnedFieldsList =
+  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<DbaasLogsLogKindAdditionalReturnedFieldsList>;
+
 /** Log kind */
 export interface DbaasLogsLogKind {
   /** List of additional log fields managed in this log kind */
@@ -638,12 +957,19 @@ export interface DbaasLogsLogKind {
   /** Last update date of the log kind */
   updatedAt?: string;
 }
+const DbaasLogsLogKind = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<DbaasLogsLogKind>;
+
 export interface GetHostingPrivateDatabaseLogSubscriptionRequest {
   /** Service name */
   serviceName: string;
   /** Subscription ID */
   subscriptionId: string;
 }
+const GetHostingPrivateDatabaseLogSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetHostingPrivateDatabaseLogSubscriptionRequest>;
+
 /** Log subscription resource */
 export interface DbaasLogsLogSubscriptionResource {
   /** Name of subscribed resource */
@@ -651,6 +977,11 @@ export interface DbaasLogsLogSubscriptionResource {
   /** Type of subscribed resource */
   type?: string;
 }
+const DbaasLogsLogSubscriptionResource = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<DbaasLogsLogSubscriptionResource>;
+
 /** Log subscription */
 export interface DbaasLogsLogSubscription {
   /** Creation date of the subscription */
@@ -668,10 +999,20 @@ export interface DbaasLogsLogSubscription {
   /** Last update date of the subscription */
   updatedAt?: string;
 }
+const DbaasLogsLogSubscription = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<DbaasLogsLogSubscription>;
+
 export interface GetHostingPrivateDatabaseMetricsTokenRequest {
   /** Service name */
   serviceName: string;
 }
+const GetHostingPrivateDatabaseMetricsTokenRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GetHostingPrivateDatabaseMetricsTokenRequest>;
+
 /** Metrics token */
 export interface HostingPrivateDatabaseMetricsToken {
   /** Backend url */
@@ -679,12 +1020,25 @@ export interface HostingPrivateDatabaseMetricsToken {
   /** Generated token */
   token?: string;
 }
+const HostingPrivateDatabaseMetricsToken = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<HostingPrivateDatabaseMetricsToken>;
+
 export interface GetHostingPrivateDatabaseServiceInfosRequest {
   /** Service name */
   serviceName: string;
 }
+const GetHostingPrivateDatabaseServiceInfosRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GetHostingPrivateDatabaseServiceInfosRequest>;
+
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
+const ServicesServicePossibleRenewPeriodList =
+  CreateHostingPrivateDatabaseChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
+
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
   /** The service is automatically renewed */
@@ -698,6 +1052,8 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
+const ServiceRenewType = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<ServiceRenewType>;
+
 /** Detailed renewal type of a service */
 export type ServiceRenewalTypeEnum =
   | "automaticForcedProduct"
@@ -707,6 +1063,8 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
+const ServiceRenewalTypeEnum = S.String;
+
 /** service.StateEnum */
 export type ServiceStateEnum =
   | "autorenewInProgress"
@@ -715,6 +1073,8 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
+const ServiceStateEnum = S.String;
+
 /** Details about a Service */
 export interface ServicesService {
   /** Indicates that the service can be set up to be deleted at expiration */
@@ -734,18 +1094,30 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
+const ServicesService = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ServicesService>;
+
 export interface GetHostingPrivateDatabaseTaskRequest {
   /** Service name */
   serviceName: string;
   /** Id */
   id: number;
 }
+const GetHostingPrivateDatabaseTaskRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GetHostingPrivateDatabaseTaskRequest>;
+
 export interface GetHostingPrivateDatabaseUserRequest {
   /** Service name */
   serviceName: string;
   /** User name */
   userName: string;
 }
+const GetHostingPrivateDatabaseUserRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<GetHostingPrivateDatabaseUserRequest>;
+
 /** Users */
 export interface HostingPrivateDatabaseUserDatabase {
   /** Database granted for this user */
@@ -755,8 +1127,18 @@ export interface HostingPrivateDatabaseUserDatabase {
   /** User's rights on this database */
   grantType?: HostingPrivateDatabaseGrantGrantEnum;
 }
+const HostingPrivateDatabaseUserDatabase = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<HostingPrivateDatabaseUserDatabase>;
+
 /** Databases granted for this user */
 export type HostingPrivateDatabaseUserDatabasesList = Array<HostingPrivateDatabaseUserDatabase>;
+const HostingPrivateDatabaseUserDatabasesList = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<HostingPrivateDatabaseUserDatabasesList>;
+
 /** Users */
 export interface HostingPrivateDatabaseUser {
   /** Creation date of the user */
@@ -766,6 +1148,11 @@ export interface HostingPrivateDatabaseUser {
   /** User name used to connect to your databases */
   userName?: string;
 }
+const HostingPrivateDatabaseUser = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<HostingPrivateDatabaseUser>;
+
 export interface GetHostingPrivateDatabaseUserGrantRequest {
   /** Service name */
   serviceName: string;
@@ -774,6 +1161,11 @@ export interface GetHostingPrivateDatabaseUserGrantRequest {
   /** Database name */
   databaseName: string;
 }
+const GetHostingPrivateDatabaseUserGrantRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<GetHostingPrivateDatabaseUserGrantRequest>;
+
 /** Grant */
 export interface HostingPrivateDatabaseUserGrant {
   /** Automatic deletion date of the dump */
@@ -783,33 +1175,57 @@ export interface HostingPrivateDatabaseUserGrant {
   /** Grant set */
   grant?: HostingPrivateDatabaseGrantGrantEnum;
 }
+const HostingPrivateDatabaseUserGrant = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<HostingPrivateDatabaseUserGrant>;
+
 export interface GetHostingPrivateDatabaseWebhostingNetworkRequest {
   /** Service name */
   serviceName: string;
 }
+const GetHostingPrivateDatabaseWebhostingNetworkRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<GetHostingPrivateDatabaseWebhostingNetworkRequest>;
+
 /** Webhosting network status */
 export type HostingPrivateDatabaseWebhostingNetworkStatusEnum =
   | "disabled"
   | "disabling"
   | "enabled"
   | "enabling";
+const HostingPrivateDatabaseWebhostingNetworkStatusEnum = S.String;
+
 /** webhosting Network */
 export interface HostingPrivateDatabaseWebhostingNetwork {
   /** Webhosting network status */
   status?: HostingPrivateDatabaseWebhostingNetworkStatusEnum;
 }
+const HostingPrivateDatabaseWebhostingNetwork = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<HostingPrivateDatabaseWebhostingNetwork>;
+
 export interface GetHostingPrivateDatabaseWhitelistRequest {
   /** Service name */
   serviceName: string;
   /** Ip */
   ip: string;
 }
+const GetHostingPrivateDatabaseWhitelistRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GetHostingPrivateDatabaseWhitelistRequest>;
+
 /** Whitelist status */
 export type HostingPrivateDatabaseWhitelistStatusEnum =
   | "created"
   | "creating"
   | "deleting"
   | "updating";
+const HostingPrivateDatabaseWhitelistStatusEnum = S.String;
+
 /** Whitelist */
 export interface HostingPrivateDatabaseWhitelist {
   /** Creation date of this whitelist */
@@ -829,6 +1245,11 @@ export interface HostingPrivateDatabaseWhitelist {
   /** The id of the task working on this object */
   taskId?: number | null;
 }
+const HostingPrivateDatabaseWhitelist = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<HostingPrivateDatabaseWhitelist>;
+
 export interface ImportHostingPrivateDatabaseDatabaseRequest {
   /** Service name */
   serviceName: string;
@@ -841,32 +1262,81 @@ export interface ImportHostingPrivateDatabaseDatabaseRequest {
   /** Whether to receive an email when the import is complete (default to false) */
   sendEmail?: boolean;
 }
+const ImportHostingPrivateDatabaseDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ImportHostingPrivateDatabaseDatabaseRequest>;
+
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
+const IamResourceTagFilterInput = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<IamResourceTagFilterInput>;
+
 export type ListHostingPrivateDatabaseRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
+const ListHostingPrivateDatabaseRequestIamTagsValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListHostingPrivateDatabaseRequestIamTagsValueList>;
+
 export type ListHostingPrivateDatabaseRequestIamTagsMap = {
   [key: string]: ListHostingPrivateDatabaseRequestIamTagsValueList | undefined;
 };
+const ListHostingPrivateDatabaseRequestIamTagsMap = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ListHostingPrivateDatabaseRequestIamTagsMap>;
+
 export interface ListHostingPrivateDatabaseRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListHostingPrivateDatabaseRequestIamTagsMap;
 }
+const ListHostingPrivateDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListHostingPrivateDatabaseRequest>;
+
 export type ListHostingPrivateDatabaseResponseBodyList = Array<string>;
+const ListHostingPrivateDatabaseResponseBodyList =
+  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<ListHostingPrivateDatabaseResponseBodyList>;
+
 export type ListHostingPrivateDatabaseResponse = ListHostingPrivateDatabaseResponseBodyList;
+const ListHostingPrivateDatabaseResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ListHostingPrivateDatabaseResponse>;
+
 export interface ListHostingPrivateDatabaseAvailableOrderCapacitiesRequest {
   offer: HostingPrivateDatabaseOfferEnum | (string & {});
 }
+const ListHostingPrivateDatabaseAvailableOrderCapacitiesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListHostingPrivateDatabaseAvailableOrderCapacitiesRequest>;
+
 /** A list of datacenter available for this offer */
 export type HostingPrivateDatabaseAvailableOrderCapacitiesDatacenterList =
   Array<HostingPrivateDatabaseDatacenterEnum>;
+const HostingPrivateDatabaseAvailableOrderCapacitiesDatacenterList = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<HostingPrivateDatabaseAvailableOrderCapacitiesDatacenterList>;
+
 /** Private database available ram sizes */
 export type HostingPrivateDatabaseAvailableRamSizeEnum = "1024" | "2048" | "4096" | "512";
 /** A list of ram size available for this offer */
 export type HostingPrivateDatabaseAvailableOrderCapacitiesRamList =
   Array<HostingPrivateDatabaseAvailableRamSizeEnum>;
+const HostingPrivateDatabaseAvailableOrderCapacitiesRamList =
+  HostingPrivateDatabaseAvailableOrderCapacitiesDatacenterList as any as S.Schema<HostingPrivateDatabaseAvailableOrderCapacitiesRamList>;
+
 /** A list of version available for this offer */
 export type HostingPrivateDatabaseAvailableOrderCapacitiesVersionList =
   Array<HostingPrivateDatabaseAvailableVersionEnum>;
+const HostingPrivateDatabaseAvailableOrderCapacitiesVersionList =
+  HostingPrivateDatabaseAvailableOrderCapacitiesDatacenterList as any as S.Schema<HostingPrivateDatabaseAvailableOrderCapacitiesVersionList>;
+
 /** Description for available order capacities following an offer */
 export interface HostingPrivateDatabaseAvailableOrderCapacities {
   /** A list of datacenter available for this offer */
@@ -878,22 +1348,50 @@ export interface HostingPrivateDatabaseAvailableOrderCapacities {
   /** A list of version available for this offer */
   version?: HostingPrivateDatabaseAvailableOrderCapacitiesVersionList;
 }
+const HostingPrivateDatabaseAvailableOrderCapacities = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<HostingPrivateDatabaseAvailableOrderCapacities>;
+
 export interface ListHostingPrivateDatabaseAvailableVersionsRequest {
   /** Service name */
   serviceName: string;
 }
+const ListHostingPrivateDatabaseAvailableVersionsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ListHostingPrivateDatabaseAvailableVersionsRequest>;
+
 export type ListHostingPrivateDatabaseAvailableVersionsResponseBodyList =
   Array<HostingPrivateDatabaseAvailableVersionEnum>;
+const ListHostingPrivateDatabaseAvailableVersionsResponseBodyList =
+  HostingPrivateDatabaseAvailableOrderCapacitiesVersionList as any as S.Schema<ListHostingPrivateDatabaseAvailableVersionsResponseBodyList>;
+
 export type ListHostingPrivateDatabaseAvailableVersionsResponse =
   ListHostingPrivateDatabaseAvailableVersionsResponseBodyList;
+const ListHostingPrivateDatabaseAvailableVersionsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ListHostingPrivateDatabaseAvailableVersionsResponse>;
+
 export interface ListHostingPrivateDatabaseConfigRequest {
   /** Service name */
   serviceName: string;
 }
+const ListHostingPrivateDatabaseConfigRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ListHostingPrivateDatabaseConfigRequest>;
+
 /** Configuration available values */
 export type HostingPrivateDatabaseConfigDetailAvailableValuesList = Array<string>;
+const HostingPrivateDatabaseConfigDetailAvailableValuesList =
+  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<HostingPrivateDatabaseConfigDetailAvailableValuesList>;
+
 /** Web Cloud Database config type */
 export type HostingPrivateDatabaseConfigTypeEnum = "boolean" | "number" | "string";
+const HostingPrivateDatabaseConfigTypeEnum = S.String;
+
 /** Config detail */
 export interface HostingPrivateDatabaseConfigDetail {
   /** Configuration available values */
@@ -913,10 +1411,22 @@ export interface HostingPrivateDatabaseConfigDetail {
   /** Configuration current value */
   value?: string;
 }
+const HostingPrivateDatabaseConfigDetail = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<HostingPrivateDatabaseConfigDetail>;
+
 /** Configuration details */
 export type HostingPrivateDatabaseConfigsDetailsList = Array<HostingPrivateDatabaseConfigDetail>;
+const HostingPrivateDatabaseConfigsDetailsList = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<HostingPrivateDatabaseConfigsDetailsList>;
+
 /** Web Cloud Database config status */
 export type HostingPrivateDatabaseConfigStatusEnum = "applied" | "updating";
+const HostingPrivateDatabaseConfigStatusEnum = S.String;
+
 /** Configs */
 export interface HostingPrivateDatabaseConfigs {
   /** Configuration details */
@@ -928,10 +1438,20 @@ export interface HostingPrivateDatabaseConfigs {
   /** Configuration linked task id */
   taskId?: number | null;
 }
+const HostingPrivateDatabaseConfigs = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<HostingPrivateDatabaseConfigs>;
+
 export interface ListHostingPrivateDatabaseCpuThrottleRequest {
   /** Service name */
   serviceName: string;
 }
+const ListHostingPrivateDatabaseCpuThrottleRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ListHostingPrivateDatabaseCpuThrottleRequest>;
+
 /** CPU throttle informations */
 export interface HostingPrivateDatabaseCpuThrottle {
   /** End date of the CPU throttle */
@@ -939,35 +1459,74 @@ export interface HostingPrivateDatabaseCpuThrottle {
   /** Start date of the CPU throttle */
   startDate?: string;
 }
+const HostingPrivateDatabaseCpuThrottle = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<HostingPrivateDatabaseCpuThrottle>;
+
 export type ListHostingPrivateDatabaseCpuThrottleResponseBodyList =
   Array<HostingPrivateDatabaseCpuThrottle>;
+const ListHostingPrivateDatabaseCpuThrottleResponseBodyList = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ListHostingPrivateDatabaseCpuThrottleResponseBodyList>;
+
 export type ListHostingPrivateDatabaseCpuThrottleResponse =
   ListHostingPrivateDatabaseCpuThrottleResponseBodyList;
+const ListHostingPrivateDatabaseCpuThrottleResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ListHostingPrivateDatabaseCpuThrottleResponse>;
+
 export interface ListHostingPrivateDatabaseDatabaseRequest {
   /** Service name */
   serviceName: string;
 }
+const ListHostingPrivateDatabaseDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ListHostingPrivateDatabaseDatabaseRequest>;
+
 export type ListHostingPrivateDatabaseDatabaseResponseBodyList = Array<string>;
 export type ListHostingPrivateDatabaseDatabaseResponse =
   ListHostingPrivateDatabaseDatabaseResponseBodyList;
+const ListHostingPrivateDatabaseDatabaseResponse =
+  ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseDatabaseResponse>;
+
 export interface ListHostingPrivateDatabaseDatabaseCopyRequest {
   /** Service name */
   serviceName: string;
   /** Database name */
   databaseName: string;
 }
+const ListHostingPrivateDatabaseDatabaseCopyRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ListHostingPrivateDatabaseDatabaseCopyRequest>;
+
 export type ListHostingPrivateDatabaseDatabaseCopyResponseBodyList = Array<string>;
 export type ListHostingPrivateDatabaseDatabaseCopyResponse =
   ListHostingPrivateDatabaseDatabaseCopyResponseBodyList;
+const ListHostingPrivateDatabaseDatabaseCopyResponse =
+  ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseDatabaseCopyResponse>;
+
 export interface ListHostingPrivateDatabaseDatabaseDumpRequest {
   /** Service name */
   serviceName: string;
   /** Database name */
   databaseName: string;
 }
+const ListHostingPrivateDatabaseDatabaseDumpRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<ListHostingPrivateDatabaseDatabaseDumpRequest>;
+
 export type ListHostingPrivateDatabaseDatabaseDumpResponseBodyList = Array<number>;
 export type ListHostingPrivateDatabaseDatabaseDumpResponse =
   ListHostingPrivateDatabaseDatabaseDumpResponseBodyList;
+const ListHostingPrivateDatabaseDatabaseDumpResponse =
+  CreateHostingPrivateDatabaseChangeContactResponse as any as S.Schema<ListHostingPrivateDatabaseDatabaseDumpResponse>;
+
 export interface ListHostingPrivateDatabaseDatabaseExtensionRequest {
   /** Service name */
   serviceName: string;
@@ -978,9 +1537,17 @@ export interface ListHostingPrivateDatabaseDatabaseExtensionRequest {
   /** Filter results on status (=) */
   status?: HostingPrivateDatabaseExtensionStatusEnum | (string & {});
 }
+const ListHostingPrivateDatabaseDatabaseExtensionRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ListHostingPrivateDatabaseDatabaseExtensionRequest>;
+
 export type ListHostingPrivateDatabaseDatabaseExtensionResponseBodyList = Array<string>;
 export type ListHostingPrivateDatabaseDatabaseExtensionResponse =
   ListHostingPrivateDatabaseDatabaseExtensionResponseBodyList;
+const ListHostingPrivateDatabaseDatabaseExtensionResponse =
+  ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseDatabaseExtensionResponse>;
+
 export interface ListHostingPrivateDatabaseDumpRequest {
   /** Service name */
   serviceName: string;
@@ -989,28 +1556,57 @@ export interface ListHostingPrivateDatabaseDumpRequest {
   /** Filter the value of orphan property (=) */
   orphan?: boolean;
 }
+const ListHostingPrivateDatabaseDumpRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ListHostingPrivateDatabaseDumpRequest>;
+
 export type ListHostingPrivateDatabaseDumpResponseBodyList = Array<number>;
 export type ListHostingPrivateDatabaseDumpResponse = ListHostingPrivateDatabaseDumpResponseBodyList;
+const ListHostingPrivateDatabaseDumpResponse =
+  CreateHostingPrivateDatabaseChangeContactResponse as any as S.Schema<ListHostingPrivateDatabaseDumpResponse>;
+
 export interface ListHostingPrivateDatabaseLogKindRequest {
   /** Service name */
   serviceName: string;
 }
+const ListHostingPrivateDatabaseLogKindRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ListHostingPrivateDatabaseLogKindRequest>;
+
 export type ListHostingPrivateDatabaseLogKindResponseBodyList = Array<string>;
 export type ListHostingPrivateDatabaseLogKindResponse =
   ListHostingPrivateDatabaseLogKindResponseBodyList;
+const ListHostingPrivateDatabaseLogKindResponse =
+  ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseLogKindResponse>;
+
 export interface ListHostingPrivateDatabaseLogSubscriptionRequest {
   /** Service name */
   serviceName: string;
   /** Filter on a specific kind */
   kind?: string;
 }
+const ListHostingPrivateDatabaseLogSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ListHostingPrivateDatabaseLogSubscriptionRequest>;
+
 export type ListHostingPrivateDatabaseLogSubscriptionResponseBodyList = Array<string>;
 export type ListHostingPrivateDatabaseLogSubscriptionResponse =
   ListHostingPrivateDatabaseLogSubscriptionResponseBodyList;
+const ListHostingPrivateDatabaseLogSubscriptionResponse =
+  ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseLogSubscriptionResponse>;
+
 export interface ListHostingPrivateDatabaseOomRequest {
   /** Service name */
   serviceName: string;
 }
+const ListHostingPrivateDatabaseOomRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ListHostingPrivateDatabaseOomRequest>;
+
 /** List of privatesql OOM kill */
 export interface HostingPrivateDatabaseOom {
   /** Date of the OOM kill */
@@ -1018,8 +1614,23 @@ export interface HostingPrivateDatabaseOom {
   /** Memory size reached */
   sizeReached?: number;
 }
+const HostingPrivateDatabaseOom = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<HostingPrivateDatabaseOom>;
+
 export type ListHostingPrivateDatabaseOomResponseBodyList = Array<HostingPrivateDatabaseOom>;
+const ListHostingPrivateDatabaseOomResponseBodyList = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ListHostingPrivateDatabaseOomResponseBodyList>;
+
 export type ListHostingPrivateDatabaseOomResponse = ListHostingPrivateDatabaseOomResponseBodyList;
+const ListHostingPrivateDatabaseOomResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ListHostingPrivateDatabaseOomResponse>;
+
 export interface ListHostingPrivateDatabaseTasksRequest {
   /** Service name */
   serviceName: string;
@@ -1028,30 +1639,62 @@ export interface ListHostingPrivateDatabaseTasksRequest {
   /** Filter the value of status property */
   status?: HostingPrivateDatabaseTaskStatusEnum | (string & {});
 }
+const ListHostingPrivateDatabaseTasksRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ListHostingPrivateDatabaseTasksRequest>;
+
 export type ListHostingPrivateDatabaseTasksResponseBodyList = Array<number>;
 export type ListHostingPrivateDatabaseTasksResponse =
   ListHostingPrivateDatabaseTasksResponseBodyList;
+const ListHostingPrivateDatabaseTasksResponse =
+  CreateHostingPrivateDatabaseChangeContactResponse as any as S.Schema<ListHostingPrivateDatabaseTasksResponse>;
+
 export interface ListHostingPrivateDatabaseUserRequest {
   /** Service name */
   serviceName: string;
 }
+const ListHostingPrivateDatabaseUserRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ListHostingPrivateDatabaseUserRequest>;
+
 export type ListHostingPrivateDatabaseUserResponseBodyList = Array<string>;
 export type ListHostingPrivateDatabaseUserResponse = ListHostingPrivateDatabaseUserResponseBodyList;
+const ListHostingPrivateDatabaseUserResponse =
+  ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseUserResponse>;
+
 export interface ListHostingPrivateDatabaseUserGrantRequest {
   /** Service name */
   serviceName: string;
   /** User name */
   userName: string;
 }
+const ListHostingPrivateDatabaseUserGrantRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ListHostingPrivateDatabaseUserGrantRequest>;
+
 export type ListHostingPrivateDatabaseUserGrantResponseBodyList = Array<string>;
 export type ListHostingPrivateDatabaseUserGrantResponse =
   ListHostingPrivateDatabaseUserGrantResponseBodyList;
+const ListHostingPrivateDatabaseUserGrantResponse =
+  ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseUserGrantResponse>;
+
 export interface ListHostingPrivateDatabaseWebsRequest {
   /** Service name */
   serviceName: string;
 }
+const ListHostingPrivateDatabaseWebsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<ListHostingPrivateDatabaseWebsRequest>;
+
 export type ListHostingPrivateDatabaseWebsResponseBodyList = Array<string>;
 export type ListHostingPrivateDatabaseWebsResponse = ListHostingPrivateDatabaseWebsResponseBodyList;
+const ListHostingPrivateDatabaseWebsResponse =
+  ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseWebsResponse>;
+
 export interface ListHostingPrivateDatabaseWhitelistRequest {
   /** Service name */
   serviceName: string;
@@ -1062,23 +1705,47 @@ export interface ListHostingPrivateDatabaseWhitelistRequest {
   /** Filter the value of sftp property */
   sftp?: boolean;
 }
+const ListHostingPrivateDatabaseWhitelistRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<ListHostingPrivateDatabaseWhitelistRequest>;
+
 export type ListHostingPrivateDatabaseWhitelistResponseBodyList = Array<string>;
 export type ListHostingPrivateDatabaseWhitelistResponse =
   ListHostingPrivateDatabaseWhitelistResponseBodyList;
+const ListHostingPrivateDatabaseWhitelistResponse =
+  ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseWhitelistResponse>;
+
 export interface PutHostingPrivateDatabaseRequest {
   /** Service name */
   serviceName: string;
   /** Set the name displayed in customer panel for your private database (max 50 chars) */
   displayName?: string | null;
 }
+const PutHostingPrivateDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<PutHostingPrivateDatabaseRequest>;
+
 export interface PutHostingPrivateDatabaseResponse {}
+const PutHostingPrivateDatabaseResponse =
+  DeleteHostingPrivateDatabaseDatabaseCopyResponse as any as S.Schema<PutHostingPrivateDatabaseResponse>;
+
 export interface PutHostingPrivateDatabaseServiceInfosRequest {
   /** Service name */
   serviceName: string;
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
+const PutHostingPrivateDatabaseServiceInfosRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<PutHostingPrivateDatabaseServiceInfosRequest>;
+
 export interface PutHostingPrivateDatabaseServiceInfosResponse {}
+const PutHostingPrivateDatabaseServiceInfosResponse =
+  DeleteHostingPrivateDatabaseDatabaseCopyResponse as any as S.Schema<PutHostingPrivateDatabaseServiceInfosResponse>;
+
 export interface PutHostingPrivateDatabaseWhitelistRequest {
   /** Service name */
   serviceName: string;
@@ -1091,11 +1758,24 @@ export interface PutHostingPrivateDatabaseWhitelistRequest {
   /** Authorize this IP to access sftp port */
   sftp?: boolean;
 }
+const PutHostingPrivateDatabaseWhitelistRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<PutHostingPrivateDatabaseWhitelistRequest>;
+
 export interface PutHostingPrivateDatabaseWhitelistResponse {}
+const PutHostingPrivateDatabaseWhitelistResponse =
+  DeleteHostingPrivateDatabaseDatabaseCopyResponse as any as S.Schema<PutHostingPrivateDatabaseWhitelistResponse>;
+
 export interface RestartHostingPrivateDatabaseRequest {
   /** Service name */
   serviceName: string;
 }
+const RestartHostingPrivateDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<RestartHostingPrivateDatabaseRequest>;
+
 export interface RestoreHostingPrivateDatabaseDatabaseDumpRequest {
   /** Service name */
   serviceName: string;
@@ -1104,6 +1784,11 @@ export interface RestoreHostingPrivateDatabaseDatabaseDumpRequest {
   /** Id */
   id: number;
 }
+const RestoreHostingPrivateDatabaseDatabaseDumpRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<RestoreHostingPrivateDatabaseDatabaseDumpRequest>;
+
 export interface RestoreHostingPrivateDatabaseDumpRequest {
   /** Service name */
   serviceName: string;
@@ -1112,11 +1797,24 @@ export interface RestoreHostingPrivateDatabaseDumpRequest {
   /** Database name */
   databaseName?: string;
 }
+const RestoreHostingPrivateDatabaseDumpRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<RestoreHostingPrivateDatabaseDumpRequest>;
+
 export interface TerminateHostingPrivateDatabaseRequest {
   /** Service name */
   serviceName: string;
 }
+const TerminateHostingPrivateDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<TerminateHostingPrivateDatabaseRequest>;
+
 export type TerminateHostingPrivateDatabaseResponse = string;
+const TerminateHostingPrivateDatabaseResponse =
+  ConfirmHostingPrivateDatabaseTerminationResponse as any as S.Schema<TerminateHostingPrivateDatabaseResponse>;
+
 /** ConfigKeyValue */
 export interface HostingPrivateDatabaseConfigKeyValue {
   /** Web Cloud Database configuration key */
@@ -1124,15 +1822,30 @@ export interface HostingPrivateDatabaseConfigKeyValue {
   /** Web Cloud Database configuration value */
   value: string;
 }
+const HostingPrivateDatabaseConfigKeyValue = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<HostingPrivateDatabaseConfigKeyValue>;
+
 /** Web Cloud Database configurations */
 export type UpdateHostingPrivateDatabaseConfigRequestParametersList =
   Array<HostingPrivateDatabaseConfigKeyValue>;
+const UpdateHostingPrivateDatabaseConfigRequestParametersList = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<UpdateHostingPrivateDatabaseConfigRequestParametersList>;
+
 export interface UpdateHostingPrivateDatabaseConfigRequest {
   /** Service name */
   serviceName: string;
   /** Web Cloud Database configurations */
   parameters: UpdateHostingPrivateDatabaseConfigRequestParametersList;
 }
+const UpdateHostingPrivateDatabaseConfigRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<UpdateHostingPrivateDatabaseConfigRequest>;
+
 export interface UpdateHostingPrivateDatabaseUserGrantRequest {
   /** Service name */
   serviceName: string;
@@ -1143,6 +1856,11 @@ export interface UpdateHostingPrivateDatabaseUserGrantRequest {
   /** Grant on a database for a specific user */
   grant: HostingPrivateDatabaseGrantGrantEnum | (string & {});
 }
+const UpdateHostingPrivateDatabaseUserGrantRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<UpdateHostingPrivateDatabaseUserGrantRequest>;
+
 export type ConfirmHostingPrivateDatabaseTerminationError = OvhOpError;
 /** Confirm service termination */
 export const confirmHostingPrivateDatabaseTermination: API.OperationMethod<
@@ -1151,8 +1869,8 @@ export const confirmHostingPrivateDatabaseTermination: API.OperationMethod<
   ConfirmHostingPrivateDatabaseTerminationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ConfirmHostingPrivateDatabaseTerminationRequest>,
-  output: __S(1) as any as S.Schema<ConfirmHostingPrivateDatabaseTerminationResponse>,
+  input: ConfirmHostingPrivateDatabaseTerminationRequest,
+  output: ConfirmHostingPrivateDatabaseTerminationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1166,8 +1884,8 @@ export const copyHostingPrivateDatabaseDatabase: API.OperationMethod<
   CopyHostingPrivateDatabaseDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CopyHostingPrivateDatabaseDatabaseRequest>,
-  output: __S(3) as any as S.Schema<HostingPrivateDatabaseDatabaseCopy>,
+  input: CopyHostingPrivateDatabaseDatabaseRequest,
+  output: HostingPrivateDatabaseDatabaseCopy,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1181,8 +1899,8 @@ export const copyHostingPrivateDatabaseDatabaseRestore: API.OperationMethod<
   CopyHostingPrivateDatabaseDatabaseRestoreError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CopyHostingPrivateDatabaseDatabaseRestoreRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: CopyHostingPrivateDatabaseDatabaseRestoreRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1196,8 +1914,8 @@ export const createHostingPrivateDatabaseChangeContact: API.OperationMethod<
   CreateHostingPrivateDatabaseChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateHostingPrivateDatabaseChangeContactRequest>,
-  output: __S(8) as any as S.Schema<CreateHostingPrivateDatabaseChangeContactResponse>,
+  input: CreateHostingPrivateDatabaseChangeContactRequest,
+  output: CreateHostingPrivateDatabaseChangeContactResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1211,8 +1929,8 @@ export const createHostingPrivateDatabaseChangeFtpPassword: API.OperationMethod<
   CreateHostingPrivateDatabaseChangeFtpPasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CreateHostingPrivateDatabaseChangeFtpPasswordRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: CreateHostingPrivateDatabaseChangeFtpPasswordRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1226,8 +1944,8 @@ export const createHostingPrivateDatabaseChangeVersion: API.OperationMethod<
   CreateHostingPrivateDatabaseChangeVersionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CreateHostingPrivateDatabaseChangeVersionRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: CreateHostingPrivateDatabaseChangeVersionRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1241,8 +1959,8 @@ export const createHostingPrivateDatabaseDatabase: API.OperationMethod<
   CreateHostingPrivateDatabaseDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CreateHostingPrivateDatabaseDatabaseRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: CreateHostingPrivateDatabaseDatabaseRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1256,8 +1974,8 @@ export const createHostingPrivateDatabaseDatabaseDump: API.OperationMethod<
   CreateHostingPrivateDatabaseDatabaseDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CreateHostingPrivateDatabaseDatabaseDumpRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: CreateHostingPrivateDatabaseDatabaseDumpRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1271,8 +1989,8 @@ export const createHostingPrivateDatabaseDatabaseWizard: API.OperationMethod<
   CreateHostingPrivateDatabaseDatabaseWizardError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CreateHostingPrivateDatabaseDatabaseWizardRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: CreateHostingPrivateDatabaseDatabaseWizardRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1286,8 +2004,8 @@ export const createHostingPrivateDatabaseLogSubscription: API.OperationMethod<
   CreateHostingPrivateDatabaseLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<CreateHostingPrivateDatabaseLogSubscriptionRequest>,
-  output: __S(15) as any as S.Schema<DbaasLogsLogSubscriptionResponse>,
+  input: CreateHostingPrivateDatabaseLogSubscriptionRequest,
+  output: DbaasLogsLogSubscriptionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1301,8 +2019,8 @@ export const createHostingPrivateDatabaseLogUrl: API.OperationMethod<
   CreateHostingPrivateDatabaseLogUrlError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CreateHostingPrivateDatabaseLogUrlRequest>,
-  output: __S(17) as any as S.Schema<DbaasLogsTemporaryLogsLink>,
+  input: CreateHostingPrivateDatabaseLogUrlRequest,
+  output: DbaasLogsTemporaryLogsLink,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1316,8 +2034,8 @@ export const createHostingPrivateDatabaseQuotaRefresh: API.OperationMethod<
   CreateHostingPrivateDatabaseQuotaRefreshError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CreateHostingPrivateDatabaseQuotaRefreshRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: CreateHostingPrivateDatabaseQuotaRefreshRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1331,8 +2049,8 @@ export const createHostingPrivateDatabaseUser: API.OperationMethod<
   CreateHostingPrivateDatabaseUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<CreateHostingPrivateDatabaseUserRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: CreateHostingPrivateDatabaseUserRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1346,8 +2064,8 @@ export const createHostingPrivateDatabaseUserChangePassword: API.OperationMethod
   CreateHostingPrivateDatabaseUserChangePasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CreateHostingPrivateDatabaseUserChangePasswordRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: CreateHostingPrivateDatabaseUserChangePasswordRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1361,8 +2079,8 @@ export const createHostingPrivateDatabaseUserGrant: API.OperationMethod<
   CreateHostingPrivateDatabaseUserGrantError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<CreateHostingPrivateDatabaseUserGrantRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: CreateHostingPrivateDatabaseUserGrantRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1376,8 +2094,8 @@ export const createHostingPrivateDatabaseWebhostingNetwork: API.OperationMethod<
   CreateHostingPrivateDatabaseWebhostingNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<CreateHostingPrivateDatabaseWebhostingNetworkRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: CreateHostingPrivateDatabaseWebhostingNetworkRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1391,8 +2109,8 @@ export const createHostingPrivateDatabaseWhitelist: API.OperationMethod<
   CreateHostingPrivateDatabaseWhitelistError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateHostingPrivateDatabaseWhitelistRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: CreateHostingPrivateDatabaseWhitelistRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1406,8 +2124,8 @@ export const deleteHostingPrivateDatabaseDatabase: API.OperationMethod<
   DeleteHostingPrivateDatabaseDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<DeleteHostingPrivateDatabaseDatabaseRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: DeleteHostingPrivateDatabaseDatabaseRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1421,8 +2139,8 @@ export const deleteHostingPrivateDatabaseDatabaseCopy: API.OperationMethod<
   DeleteHostingPrivateDatabaseDatabaseCopyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<DeleteHostingPrivateDatabaseDatabaseCopyRequest>,
-  output: __S(26) as any as S.Schema<DeleteHostingPrivateDatabaseDatabaseCopyResponse>,
+  input: DeleteHostingPrivateDatabaseDatabaseCopyRequest,
+  output: DeleteHostingPrivateDatabaseDatabaseCopyResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1436,8 +2154,8 @@ export const deleteHostingPrivateDatabaseDatabaseDump: API.OperationMethod<
   DeleteHostingPrivateDatabaseDatabaseDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<DeleteHostingPrivateDatabaseDatabaseDumpRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: DeleteHostingPrivateDatabaseDatabaseDumpRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1451,8 +2169,8 @@ export const deleteHostingPrivateDatabaseDump: API.OperationMethod<
   DeleteHostingPrivateDatabaseDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<DeleteHostingPrivateDatabaseDumpRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: DeleteHostingPrivateDatabaseDumpRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1466,8 +2184,8 @@ export const deleteHostingPrivateDatabaseLogSubscription: API.OperationMethod<
   DeleteHostingPrivateDatabaseLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<DeleteHostingPrivateDatabaseLogSubscriptionRequest>,
-  output: __S(15) as any as S.Schema<DbaasLogsLogSubscriptionResponse>,
+  input: DeleteHostingPrivateDatabaseLogSubscriptionRequest,
+  output: DbaasLogsLogSubscriptionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1481,8 +2199,8 @@ export const deleteHostingPrivateDatabaseUser: API.OperationMethod<
   DeleteHostingPrivateDatabaseUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<DeleteHostingPrivateDatabaseUserRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: DeleteHostingPrivateDatabaseUserRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1496,8 +2214,8 @@ export const deleteHostingPrivateDatabaseUserGrant: API.OperationMethod<
   DeleteHostingPrivateDatabaseUserGrantError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<DeleteHostingPrivateDatabaseUserGrantRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: DeleteHostingPrivateDatabaseUserGrantRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1511,8 +2229,8 @@ export const deleteHostingPrivateDatabaseWebhostingNetwork: API.OperationMethod<
   DeleteHostingPrivateDatabaseWebhostingNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<DeleteHostingPrivateDatabaseWebhostingNetworkRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: DeleteHostingPrivateDatabaseWebhostingNetworkRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1526,8 +2244,8 @@ export const deleteHostingPrivateDatabaseWhitelist: API.OperationMethod<
   DeleteHostingPrivateDatabaseWhitelistError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<DeleteHostingPrivateDatabaseWhitelistRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: DeleteHostingPrivateDatabaseWhitelistRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1541,8 +2259,8 @@ export const disableHostingPrivateDatabaseDatabaseExtension: API.OperationMethod
   DisableHostingPrivateDatabaseDatabaseExtensionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<DisableHostingPrivateDatabaseDatabaseExtensionRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: DisableHostingPrivateDatabaseDatabaseExtensionRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1556,8 +2274,8 @@ export const enableHostingPrivateDatabaseDatabaseExtension: API.OperationMethod<
   EnableHostingPrivateDatabaseDatabaseExtensionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<EnableHostingPrivateDatabaseDatabaseExtensionRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: EnableHostingPrivateDatabaseDatabaseExtensionRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1571,8 +2289,8 @@ export const generateHostingPrivateDatabaseTemporaryLogsLink: API.OperationMetho
   GenerateHostingPrivateDatabaseTemporaryLogsLinkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GenerateHostingPrivateDatabaseTemporaryLogsLinkRequest>,
-  output: __S(17) as any as S.Schema<HostingPrivateDatabaseTemporaryUrlInformations>,
+  input: GenerateHostingPrivateDatabaseTemporaryLogsLinkRequest,
+  output: HostingPrivateDatabaseTemporaryUrlInformations,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1586,8 +2304,8 @@ export const getHostingPrivateDatabase: API.OperationMethod<
   GetHostingPrivateDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<GetHostingPrivateDatabaseRequest>,
-  output: __S(44) as any as S.Schema<HostingPrivateDatabaseServiceWithIAM>,
+  input: GetHostingPrivateDatabaseRequest,
+  output: HostingPrivateDatabaseServiceWithIAM,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1601,8 +2319,8 @@ export const getHostingPrivateDatabaseDatabase: API.OperationMethod<
   GetHostingPrivateDatabaseDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<GetHostingPrivateDatabaseDatabaseRequest>,
-  output: __S(48) as any as S.Schema<HostingPrivateDatabaseDatabase>,
+  input: GetHostingPrivateDatabaseDatabaseRequest,
+  output: HostingPrivateDatabaseDatabase,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1616,8 +2334,8 @@ export const getHostingPrivateDatabaseDatabaseCopy: API.OperationMethod<
   GetHostingPrivateDatabaseDatabaseCopyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetHostingPrivateDatabaseDatabaseCopyRequest>,
-  output: __S(3) as any as S.Schema<HostingPrivateDatabaseDatabaseCopy>,
+  input: GetHostingPrivateDatabaseDatabaseCopyRequest,
+  output: HostingPrivateDatabaseDatabaseCopy,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1631,8 +2349,8 @@ export const getHostingPrivateDatabaseDatabaseDump: API.OperationMethod<
   GetHostingPrivateDatabaseDatabaseDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<GetHostingPrivateDatabaseDatabaseDumpRequest>,
-  output: __S(51) as any as S.Schema<HostingPrivateDatabaseDatabaseDump>,
+  input: GetHostingPrivateDatabaseDatabaseDumpRequest,
+  output: HostingPrivateDatabaseDatabaseDump,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1646,8 +2364,8 @@ export const getHostingPrivateDatabaseDatabaseExtension: API.OperationMethod<
   GetHostingPrivateDatabaseDatabaseExtensionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<GetHostingPrivateDatabaseDatabaseExtensionRequest>,
-  output: __S(54) as any as S.Schema<HostingPrivateDatabaseExtension>,
+  input: GetHostingPrivateDatabaseDatabaseExtensionRequest,
+  output: HostingPrivateDatabaseExtension,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1661,8 +2379,8 @@ export const getHostingPrivateDatabaseDump: API.OperationMethod<
   GetHostingPrivateDatabaseDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<GetHostingPrivateDatabaseDumpRequest>,
-  output: __S(56) as any as S.Schema<HostingPrivateDatabaseDump>,
+  input: GetHostingPrivateDatabaseDumpRequest,
+  output: HostingPrivateDatabaseDump,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1676,8 +2394,8 @@ export const getHostingPrivateDatabaseLogKind: API.OperationMethod<
   GetHostingPrivateDatabaseLogKindError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<GetHostingPrivateDatabaseLogKindRequest>,
-  output: __S(58) as any as S.Schema<DbaasLogsLogKind>,
+  input: GetHostingPrivateDatabaseLogKindRequest,
+  output: DbaasLogsLogKind,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1691,8 +2409,8 @@ export const getHostingPrivateDatabaseLogSubscription: API.OperationMethod<
   GetHostingPrivateDatabaseLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<GetHostingPrivateDatabaseLogSubscriptionRequest>,
-  output: __S(61) as any as S.Schema<DbaasLogsLogSubscription>,
+  input: GetHostingPrivateDatabaseLogSubscriptionRequest,
+  output: DbaasLogsLogSubscription,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1706,8 +2424,8 @@ export const getHostingPrivateDatabaseMetricsToken: API.OperationMethod<
   GetHostingPrivateDatabaseMetricsTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<GetHostingPrivateDatabaseMetricsTokenRequest>,
-  output: __S(63) as any as S.Schema<HostingPrivateDatabaseMetricsToken>,
+  input: GetHostingPrivateDatabaseMetricsTokenRequest,
+  output: HostingPrivateDatabaseMetricsToken,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1721,8 +2439,8 @@ export const getHostingPrivateDatabaseServiceInfos: API.OperationMethod<
   GetHostingPrivateDatabaseServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<GetHostingPrivateDatabaseServiceInfosRequest>,
-  output: __S(66) as any as S.Schema<ServicesService>,
+  input: GetHostingPrivateDatabaseServiceInfosRequest,
+  output: ServicesService,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1736,8 +2454,8 @@ export const getHostingPrivateDatabaseTask: API.OperationMethod<
   GetHostingPrivateDatabaseTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<GetHostingPrivateDatabaseTaskRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: GetHostingPrivateDatabaseTaskRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1751,8 +2469,8 @@ export const getHostingPrivateDatabaseUser: API.OperationMethod<
   GetHostingPrivateDatabaseUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<GetHostingPrivateDatabaseUserRequest>,
-  output: __S(71) as any as S.Schema<HostingPrivateDatabaseUser>,
+  input: GetHostingPrivateDatabaseUserRequest,
+  output: HostingPrivateDatabaseUser,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1766,8 +2484,8 @@ export const getHostingPrivateDatabaseUserGrant: API.OperationMethod<
   GetHostingPrivateDatabaseUserGrantError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<GetHostingPrivateDatabaseUserGrantRequest>,
-  output: __S(73) as any as S.Schema<HostingPrivateDatabaseUserGrant>,
+  input: GetHostingPrivateDatabaseUserGrantRequest,
+  output: HostingPrivateDatabaseUserGrant,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1781,8 +2499,8 @@ export const getHostingPrivateDatabaseWebhostingNetwork: API.OperationMethod<
   GetHostingPrivateDatabaseWebhostingNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<GetHostingPrivateDatabaseWebhostingNetworkRequest>,
-  output: __S(75) as any as S.Schema<HostingPrivateDatabaseWebhostingNetwork>,
+  input: GetHostingPrivateDatabaseWebhostingNetworkRequest,
+  output: HostingPrivateDatabaseWebhostingNetwork,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1796,8 +2514,8 @@ export const getHostingPrivateDatabaseWhitelist: API.OperationMethod<
   GetHostingPrivateDatabaseWhitelistError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<GetHostingPrivateDatabaseWhitelistRequest>,
-  output: __S(77) as any as S.Schema<HostingPrivateDatabaseWhitelist>,
+  input: GetHostingPrivateDatabaseWhitelistRequest,
+  output: HostingPrivateDatabaseWhitelist,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1811,8 +2529,8 @@ export const importHostingPrivateDatabaseDatabase: API.OperationMethod<
   ImportHostingPrivateDatabaseDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<ImportHostingPrivateDatabaseDatabaseRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: ImportHostingPrivateDatabaseDatabaseRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1826,8 +2544,8 @@ export const listHostingPrivateDatabase: API.OperationMethod<
   ListHostingPrivateDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<ListHostingPrivateDatabaseRequest>,
-  output: __S(83) as any as S.Schema<ListHostingPrivateDatabaseResponse>,
+  input: ListHostingPrivateDatabaseRequest,
+  output: ListHostingPrivateDatabaseResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1841,8 +2559,8 @@ export const listHostingPrivateDatabaseAvailableOrderCapacities: API.OperationMe
   ListHostingPrivateDatabaseAvailableOrderCapacitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<ListHostingPrivateDatabaseAvailableOrderCapacitiesRequest>,
-  output: __S(86) as any as S.Schema<HostingPrivateDatabaseAvailableOrderCapacities>,
+  input: ListHostingPrivateDatabaseAvailableOrderCapacitiesRequest,
+  output: HostingPrivateDatabaseAvailableOrderCapacities,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1856,8 +2574,8 @@ export const listHostingPrivateDatabaseAvailableVersions: API.OperationMethod<
   ListHostingPrivateDatabaseAvailableVersionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<ListHostingPrivateDatabaseAvailableVersionsRequest>,
-  output: __S(88) as any as S.Schema<ListHostingPrivateDatabaseAvailableVersionsResponse>,
+  input: ListHostingPrivateDatabaseAvailableVersionsRequest,
+  output: ListHostingPrivateDatabaseAvailableVersionsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1871,8 +2589,8 @@ export const listHostingPrivateDatabaseConfig: API.OperationMethod<
   ListHostingPrivateDatabaseConfigError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<ListHostingPrivateDatabaseConfigRequest>,
-  output: __S(92) as any as S.Schema<HostingPrivateDatabaseConfigs>,
+  input: ListHostingPrivateDatabaseConfigRequest,
+  output: HostingPrivateDatabaseConfigs,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1886,8 +2604,8 @@ export const listHostingPrivateDatabaseCpuThrottle: API.OperationMethod<
   ListHostingPrivateDatabaseCpuThrottleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<ListHostingPrivateDatabaseCpuThrottleRequest>,
-  output: __S(96) as any as S.Schema<ListHostingPrivateDatabaseCpuThrottleResponse>,
+  input: ListHostingPrivateDatabaseCpuThrottleRequest,
+  output: ListHostingPrivateDatabaseCpuThrottleResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1901,8 +2619,8 @@ export const listHostingPrivateDatabaseDatabase: API.OperationMethod<
   ListHostingPrivateDatabaseDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<ListHostingPrivateDatabaseDatabaseRequest>,
-  output: __S(83) as any as S.Schema<ListHostingPrivateDatabaseDatabaseResponse>,
+  input: ListHostingPrivateDatabaseDatabaseRequest,
+  output: ListHostingPrivateDatabaseDatabaseResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1916,8 +2634,8 @@ export const listHostingPrivateDatabaseDatabaseCopy: API.OperationMethod<
   ListHostingPrivateDatabaseDatabaseCopyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<ListHostingPrivateDatabaseDatabaseCopyRequest>,
-  output: __S(83) as any as S.Schema<ListHostingPrivateDatabaseDatabaseCopyResponse>,
+  input: ListHostingPrivateDatabaseDatabaseCopyRequest,
+  output: ListHostingPrivateDatabaseDatabaseCopyResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1931,8 +2649,8 @@ export const listHostingPrivateDatabaseDatabaseDump: API.OperationMethod<
   ListHostingPrivateDatabaseDatabaseDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<ListHostingPrivateDatabaseDatabaseDumpRequest>,
-  output: __S(8) as any as S.Schema<ListHostingPrivateDatabaseDatabaseDumpResponse>,
+  input: ListHostingPrivateDatabaseDatabaseDumpRequest,
+  output: ListHostingPrivateDatabaseDatabaseDumpResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1946,8 +2664,8 @@ export const listHostingPrivateDatabaseDatabaseExtension: API.OperationMethod<
   ListHostingPrivateDatabaseDatabaseExtensionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<ListHostingPrivateDatabaseDatabaseExtensionRequest>,
-  output: __S(83) as any as S.Schema<ListHostingPrivateDatabaseDatabaseExtensionResponse>,
+  input: ListHostingPrivateDatabaseDatabaseExtensionRequest,
+  output: ListHostingPrivateDatabaseDatabaseExtensionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1961,8 +2679,8 @@ export const listHostingPrivateDatabaseDump: API.OperationMethod<
   ListHostingPrivateDatabaseDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<ListHostingPrivateDatabaseDumpRequest>,
-  output: __S(8) as any as S.Schema<ListHostingPrivateDatabaseDumpResponse>,
+  input: ListHostingPrivateDatabaseDumpRequest,
+  output: ListHostingPrivateDatabaseDumpResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1976,8 +2694,8 @@ export const listHostingPrivateDatabaseLogKind: API.OperationMethod<
   ListHostingPrivateDatabaseLogKindError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<ListHostingPrivateDatabaseLogKindRequest>,
-  output: __S(83) as any as S.Schema<ListHostingPrivateDatabaseLogKindResponse>,
+  input: ListHostingPrivateDatabaseLogKindRequest,
+  output: ListHostingPrivateDatabaseLogKindResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1991,8 +2709,8 @@ export const listHostingPrivateDatabaseLogSubscription: API.OperationMethod<
   ListHostingPrivateDatabaseLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<ListHostingPrivateDatabaseLogSubscriptionRequest>,
-  output: __S(83) as any as S.Schema<ListHostingPrivateDatabaseLogSubscriptionResponse>,
+  input: ListHostingPrivateDatabaseLogSubscriptionRequest,
+  output: ListHostingPrivateDatabaseLogSubscriptionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2006,8 +2724,8 @@ export const listHostingPrivateDatabaseOom: API.OperationMethod<
   ListHostingPrivateDatabaseOomError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<ListHostingPrivateDatabaseOomRequest>,
-  output: __S(107) as any as S.Schema<ListHostingPrivateDatabaseOomResponse>,
+  input: ListHostingPrivateDatabaseOomRequest,
+  output: ListHostingPrivateDatabaseOomResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2021,8 +2739,8 @@ export const listHostingPrivateDatabaseTasks: API.OperationMethod<
   ListHostingPrivateDatabaseTasksError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<ListHostingPrivateDatabaseTasksRequest>,
-  output: __S(8) as any as S.Schema<ListHostingPrivateDatabaseTasksResponse>,
+  input: ListHostingPrivateDatabaseTasksRequest,
+  output: ListHostingPrivateDatabaseTasksResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2036,8 +2754,8 @@ export const listHostingPrivateDatabaseUser: API.OperationMethod<
   ListHostingPrivateDatabaseUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<ListHostingPrivateDatabaseUserRequest>,
-  output: __S(83) as any as S.Schema<ListHostingPrivateDatabaseUserResponse>,
+  input: ListHostingPrivateDatabaseUserRequest,
+  output: ListHostingPrivateDatabaseUserResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2051,8 +2769,8 @@ export const listHostingPrivateDatabaseUserGrant: API.OperationMethod<
   ListHostingPrivateDatabaseUserGrantError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<ListHostingPrivateDatabaseUserGrantRequest>,
-  output: __S(83) as any as S.Schema<ListHostingPrivateDatabaseUserGrantResponse>,
+  input: ListHostingPrivateDatabaseUserGrantRequest,
+  output: ListHostingPrivateDatabaseUserGrantResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2066,8 +2784,8 @@ export const listHostingPrivateDatabaseWebs: API.OperationMethod<
   ListHostingPrivateDatabaseWebsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<ListHostingPrivateDatabaseWebsRequest>,
-  output: __S(83) as any as S.Schema<ListHostingPrivateDatabaseWebsResponse>,
+  input: ListHostingPrivateDatabaseWebsRequest,
+  output: ListHostingPrivateDatabaseWebsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2081,8 +2799,8 @@ export const listHostingPrivateDatabaseWhitelist: API.OperationMethod<
   ListHostingPrivateDatabaseWhitelistError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<ListHostingPrivateDatabaseWhitelistRequest>,
-  output: __S(83) as any as S.Schema<ListHostingPrivateDatabaseWhitelistResponse>,
+  input: ListHostingPrivateDatabaseWhitelistRequest,
+  output: ListHostingPrivateDatabaseWhitelistResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2096,8 +2814,8 @@ export const putHostingPrivateDatabase: API.OperationMethod<
   PutHostingPrivateDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<PutHostingPrivateDatabaseRequest>,
-  output: __S(26) as any as S.Schema<PutHostingPrivateDatabaseResponse>,
+  input: PutHostingPrivateDatabaseRequest,
+  output: PutHostingPrivateDatabaseResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2111,8 +2829,8 @@ export const putHostingPrivateDatabaseServiceInfos: API.OperationMethod<
   PutHostingPrivateDatabaseServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<PutHostingPrivateDatabaseServiceInfosRequest>,
-  output: __S(26) as any as S.Schema<PutHostingPrivateDatabaseServiceInfosResponse>,
+  input: PutHostingPrivateDatabaseServiceInfosRequest,
+  output: PutHostingPrivateDatabaseServiceInfosResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2126,8 +2844,8 @@ export const putHostingPrivateDatabaseWhitelist: API.OperationMethod<
   PutHostingPrivateDatabaseWhitelistError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115) as any as S.Schema<PutHostingPrivateDatabaseWhitelistRequest>,
-  output: __S(26) as any as S.Schema<PutHostingPrivateDatabaseWhitelistResponse>,
+  input: PutHostingPrivateDatabaseWhitelistRequest,
+  output: PutHostingPrivateDatabaseWhitelistResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2141,8 +2859,8 @@ export const restartHostingPrivateDatabase: API.OperationMethod<
   RestartHostingPrivateDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<RestartHostingPrivateDatabaseRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: RestartHostingPrivateDatabaseRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2156,8 +2874,8 @@ export const restoreHostingPrivateDatabaseDatabaseDump: API.OperationMethod<
   RestoreHostingPrivateDatabaseDatabaseDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<RestoreHostingPrivateDatabaseDatabaseDumpRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: RestoreHostingPrivateDatabaseDatabaseDumpRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2171,8 +2889,8 @@ export const restoreHostingPrivateDatabaseDump: API.OperationMethod<
   RestoreHostingPrivateDatabaseDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<RestoreHostingPrivateDatabaseDumpRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: RestoreHostingPrivateDatabaseDumpRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2186,8 +2904,8 @@ export const terminateHostingPrivateDatabase: API.OperationMethod<
   TerminateHostingPrivateDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<TerminateHostingPrivateDatabaseRequest>,
-  output: __S(1) as any as S.Schema<TerminateHostingPrivateDatabaseResponse>,
+  input: TerminateHostingPrivateDatabaseRequest,
+  output: TerminateHostingPrivateDatabaseResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2201,8 +2919,8 @@ export const updateHostingPrivateDatabaseConfig: API.OperationMethod<
   UpdateHostingPrivateDatabaseConfigError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<UpdateHostingPrivateDatabaseConfigRequest>,
-  output: __S(92) as any as S.Schema<HostingPrivateDatabaseConfigs>,
+  input: UpdateHostingPrivateDatabaseConfigRequest,
+  output: HostingPrivateDatabaseConfigs,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2216,8 +2934,8 @@ export const updateHostingPrivateDatabaseUserGrant: API.OperationMethod<
   UpdateHostingPrivateDatabaseUserGrantError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<UpdateHostingPrivateDatabaseUserGrantRequest>,
-  output: __S(5) as any as S.Schema<HostingPrivateDatabaseTask>,
+  input: UpdateHostingPrivateDatabaseUserGrantRequest,
+  output: HostingPrivateDatabaseTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2231,8 +2949,8 @@ function __c0(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           commentary: S.optional(S.String),
-          futureUse: S.optional(S.String),
-          reason: S.optional(S.String),
+          futureUse: S.optional(ServiceTerminationFutureUseEnum),
+          reason: S.optional(ServiceTerminationReasonEnum),
           token: S.String,
         }).pipe(
           T.Http({
@@ -2270,7 +2988,7 @@ function __c0(j: number): any {
           expirationDate: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
           lastUpdate: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(HostingPrivateDatabaseDatabaseCopyStatusEnum),
         }),
       ).annotate({
         identifier: "HostingPrivateDatabaseDatabaseCopy",
@@ -2298,11 +3016,11 @@ function __c0(j: number): any {
           databaseName: S.optional(S.NullOr(S.String)),
           doneDate: S.optional(S.NullOr(S.String)),
           dumpId: S.optional(S.NullOr(S.Number)),
-          function: S.optional(S.String),
+          function: S.optional(HostingPrivateDatabaseTaskFunctionEnum),
           id: S.optional(S.Number),
           lastUpdate: S.optional(S.NullOr(S.String)),
           startDate: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(HostingPrivateDatabaseTaskStatusEnum),
           userName: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -2332,7 +3050,9 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(7).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        CreateHostingPrivateDatabaseChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "CreateHostingPrivateDatabaseChangeContactResponse",
       });
     case 1:
@@ -2354,7 +3074,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          version: S.String,
+          version: HostingPrivateDatabaseAvailableVersionEnum,
         }).pipe(
           T.Http({
             method: "POST",
@@ -2401,7 +3121,7 @@ function __c1(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           databaseName: S.String,
-          grant: S.String,
+          grant: HostingPrivateDatabaseGrantGrantEnum,
           password: S.String.pipe(T.SensitiveValue({})),
           userName: S.String,
         }).pipe(
@@ -2515,7 +3235,7 @@ function __c2(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           userName: S.String.pipe(T.Label()),
           databaseName: S.String,
-          grant: S.String,
+          grant: HostingPrivateDatabaseGrantGrantEnum,
         }).pipe(
           T.Http({
             method: "POST",
@@ -2775,7 +3495,7 @@ function __c4(j: number): any {
         identifier: "HostingPrivateDatabaseCapability",
       });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(HostingPrivateDatabaseCapability);
   }
 }
 function __c5(j: number): any {
@@ -2797,7 +3517,7 @@ function __c5(j: number): any {
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(41))),
+          tags: S.optional(S.NullOr(IamResourceMetadataTagsMap)),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
@@ -2813,30 +3533,30 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          capabilities: S.optional(__S(39)),
+          capabilities: S.optional(HostingPrivateDatabaseServiceWithIAMCapabilitiesList),
           cpu: S.optional(S.Number),
-          datacenter: S.optional(S.String),
+          datacenter: S.optional(HostingPrivateDatabaseDatacenterEnum),
           displayName: S.optional(S.NullOr(S.String)),
-          graphEndpoint: S.optional(S.NullOr(__S(40))),
+          graphEndpoint: S.optional(S.NullOr(HostingPrivateDatabaseGraphEndpoint)),
           guiURL: S.optional(S.NullOr(S.String)),
           hostname: S.optional(S.String),
           hostnameFtp: S.optional(S.NullOr(S.String)),
-          iam: S.optional(S.NullOr(__S(42))),
-          infrastructure: S.optional(S.String),
+          iam: S.optional(S.NullOr(IamResourceMetadata)),
+          infrastructure: S.optional(HostingPrivateDatabaseInfrastructureEnum),
           ip: S.optional(S.NullOr(S.String)),
           lastCheck: S.optional(S.String),
-          offer: S.optional(S.String),
+          offer: S.optional(HostingPrivateDatabaseOfferEnum),
           port: S.optional(S.Number),
           portFtp: S.optional(S.NullOr(S.Number)),
-          quotaSize: S.optional(__S(43)),
-          quotaUsed: S.optional(__S(43)),
-          ram: S.optional(__S(43)),
+          quotaSize: S.optional(ComplexTypeUnitAndValueLong),
+          quotaUsed: S.optional(ComplexTypeUnitAndValueLong),
+          ram: S.optional(ComplexTypeUnitAndValueLong),
           server: S.optional(S.String),
           serviceName: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(HostingPrivateDatabaseStateEnum),
           tlsCa: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
-          version: S.optional(S.String),
+          type: S.optional(HostingPrivateDatabaseTypeEnum),
+          version: S.optional(HostingPrivateDatabaseVersionEnum),
           versionLabel: S.optional(S.String),
           versionNumber: S.optional(S.Number),
         }),
@@ -2862,14 +3582,14 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           grantId: S.optional(S.Number),
-          grantType: S.optional(S.String),
+          grantType: S.optional(HostingPrivateDatabaseGrantGrantEnum),
           userName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "HostingPrivateDatabaseDatabaseUser",
       });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(HostingPrivateDatabaseDatabaseUser);
   }
 }
 function __c6(j: number): any {
@@ -2880,8 +3600,8 @@ function __c6(j: number): any {
           backupTime: S.optional(S.NullOr(S.String)),
           creationDate: S.optional(S.String),
           databaseName: S.optional(S.String),
-          quotaUsed: S.optional(__S(43)),
-          users: S.optional(__S(47)),
+          quotaUsed: S.optional(ComplexTypeUnitAndValueLong),
+          users: S.optional(HostingPrivateDatabaseDatabaseUsersList),
         }),
       ).annotate({
         identifier: "HostingPrivateDatabaseDatabase",
@@ -2953,8 +3673,8 @@ function __c6(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           extensionName: S.optional(S.String),
-          requiredExtensions: S.optional(__S(53)),
-          status: S.optional(S.String),
+          requiredExtensions: S.optional(HostingPrivateDatabaseExtensionRequiredExtensionsList),
+          status: S.optional(HostingPrivateDatabaseExtensionStatusEnum),
         }),
       ).annotate({
         identifier: "HostingPrivateDatabaseExtension",
@@ -3009,7 +3729,7 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          additionalReturnedFields: S.optional(__S(53)),
+          additionalReturnedFields: S.optional(DbaasLogsLogKindAdditionalReturnedFieldsList),
           createdAt: S.optional(S.String),
           displayName: S.optional(S.String),
           kindId: S.optional(S.String),
@@ -3046,7 +3766,7 @@ function __c7(j: number): any {
         S.Struct({
           createdAt: S.optional(S.String),
           kind: S.optional(S.String),
-          resource: S.optional(__S(60)),
+          resource: S.optional(DbaasLogsLogSubscriptionResource),
           serviceName: S.optional(S.String),
           streamId: S.optional(S.String),
           subscriptionId: S.optional(S.String),
@@ -3115,11 +3835,11 @@ function __c8(j: number): any {
           domain: S.optional(S.String),
           engagedUpTo: S.optional(S.NullOr(S.String)),
           expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(__S(7))),
-          renew: S.optional(S.NullOr(__S(65))),
-          renewalType: S.optional(S.String),
+          possibleRenewPeriod: S.optional(S.NullOr(ServicesServicePossibleRenewPeriodList)),
+          renew: S.optional(S.NullOr(ServiceRenewType)),
+          renewalType: S.optional(ServiceRenewalTypeEnum),
           serviceId: S.optional(S.Number),
-          status: S.optional(S.String),
+          status: S.optional(ServiceStateEnum),
         }),
       ).annotate({ identifier: "ServicesService" });
     case 3:
@@ -3157,18 +3877,18 @@ function __c8(j: number): any {
         S.Struct({
           databaseName: S.optional(S.String),
           grantId: S.optional(S.Number),
-          grantType: S.optional(S.String),
+          grantType: S.optional(HostingPrivateDatabaseGrantGrantEnum),
         }),
       ).annotate({
         identifier: "HostingPrivateDatabaseUserDatabase",
       });
     case 6:
-      return S.Array(__S(69));
+      return S.Array(HostingPrivateDatabaseUserDatabase);
     case 7:
       return S.suspend(() =>
         S.Struct({
           creationDate: S.optional(S.String),
-          databases: S.optional(__S(70)),
+          databases: S.optional(HostingPrivateDatabaseUserDatabasesList),
           userName: S.optional(S.String),
         }),
       ).annotate({
@@ -3199,7 +3919,7 @@ function __c9(j: number): any {
         S.Struct({
           creationDate: S.optional(S.String),
           databaseName: S.optional(S.String),
-          grant: S.optional(S.String),
+          grant: S.optional(HostingPrivateDatabaseGrantGrantEnum),
         }),
       ).annotate({
         identifier: "HostingPrivateDatabaseUserGrant",
@@ -3221,7 +3941,7 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(HostingPrivateDatabaseWebhostingNetworkStatusEnum),
         }),
       ).annotate({
         identifier: "HostingPrivateDatabaseWebhostingNetwork",
@@ -3250,7 +3970,7 @@ function __c9(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           service: S.optional(S.Boolean),
           sftp: S.optional(S.Boolean),
-          status: S.optional(S.String),
+          status: S.optional(HostingPrivateDatabaseWhitelistStatusEnum),
           taskId: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
@@ -3283,25 +4003,27 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(79));
+      return S.Array(IamResourceTagFilterInput);
     case 1:
-      return S.Record(S.String, __S(80));
+      return S.Record(S.String, ListHostingPrivateDatabaseRequestIamTagsValueList);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(__S(81).pipe(T.Query())),
+          iamTags: S.optional(ListHostingPrivateDatabaseRequestIamTagsMap.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/hosting/privateDatabase", code: 200 })),
       ).annotate({
         identifier: "ListHostingPrivateDatabaseRequest",
       });
     case 3:
-      return S.suspend(() => __S(53).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListHostingPrivateDatabaseResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListHostingPrivateDatabaseResponse",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          offer: S.String.pipe(T.Query()),
+          offer: HostingPrivateDatabaseOfferEnum.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3313,14 +4035,14 @@ function __c10(j: number): any {
         identifier: "ListHostingPrivateDatabaseAvailableOrderCapacitiesRequest",
       });
     case 5:
-      return S.Array(S.String);
+      return S.Array(HostingPrivateDatabaseDatacenterEnum);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          datacenter: S.optional(__S(85)),
-          offer: S.optional(S.String),
-          ram: S.optional(__S(85)),
-          version: S.optional(__S(85)),
+          datacenter: S.optional(HostingPrivateDatabaseAvailableOrderCapacitiesDatacenterList),
+          offer: S.optional(HostingPrivateDatabaseOfferEnum),
+          ram: S.optional(HostingPrivateDatabaseAvailableOrderCapacitiesRamList),
+          version: S.optional(HostingPrivateDatabaseAvailableOrderCapacitiesVersionList),
         }),
       ).annotate({
         identifier: "HostingPrivateDatabaseAvailableOrderCapacities",
@@ -3344,7 +4066,9 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(85).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListHostingPrivateDatabaseAvailableVersionsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListHostingPrivateDatabaseAvailableVersionsResponse",
       });
     case 1:
@@ -3364,12 +4088,12 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          availableValues: S.optional(__S(53)),
+          availableValues: S.optional(HostingPrivateDatabaseConfigDetailAvailableValuesList),
           defaultValue: S.optional(S.String),
           description: S.optional(S.String),
           key: S.optional(S.String),
           lastUpdate: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(HostingPrivateDatabaseConfigTypeEnum),
           unit: S.optional(S.NullOr(S.String)),
           value: S.optional(S.String),
         }),
@@ -3377,13 +4101,13 @@ function __c11(j: number): any {
         identifier: "HostingPrivateDatabaseConfigDetail",
       });
     case 3:
-      return S.Array(__S(90));
+      return S.Array(HostingPrivateDatabaseConfigDetail);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(91)),
+          details: S.optional(HostingPrivateDatabaseConfigsDetailsList),
           lastUpdate: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(HostingPrivateDatabaseConfigStatusEnum),
           taskId: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
@@ -3413,13 +4137,15 @@ function __c11(j: number): any {
         identifier: "HostingPrivateDatabaseCpuThrottle",
       });
     case 7:
-      return S.Array(__S(94));
+      return S.Array(HostingPrivateDatabaseCpuThrottle);
   }
 }
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(95).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListHostingPrivateDatabaseCpuThrottleResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListHostingPrivateDatabaseCpuThrottleResponse",
       });
     case 1:
@@ -3472,7 +4198,7 @@ function __c12(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           extensionName: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(HostingPrivateDatabaseExtensionStatusEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3548,17 +4274,19 @@ function __c13(j: number): any {
         identifier: "HostingPrivateDatabaseOom",
       });
     case 2:
-      return S.Array(__S(105));
+      return S.Array(HostingPrivateDatabaseOom);
     case 3:
-      return S.suspend(() => __S(106).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListHostingPrivateDatabaseOomResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListHostingPrivateDatabaseOomResponse",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          function: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          function: S.optional(HostingPrivateDatabaseTaskFunctionEnum.pipe(T.Query())),
+          status: S.optional(HostingPrivateDatabaseTaskStatusEnum.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/hosting/privateDatabase/{serviceName}/tasks", code: 200 }),
         ),
@@ -3636,7 +4364,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(__S(65))),
+          renew: S.optional(S.NullOr(ServiceRenewType)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3739,12 +4467,12 @@ function __c15(j: number): any {
         identifier: "HostingPrivateDatabaseConfigKeyValue",
       });
     case 1:
-      return S.Array(__S(120));
+      return S.Array(HostingPrivateDatabaseConfigKeyValue);
     case 2:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          parameters: __S(121),
+          parameters: UpdateHostingPrivateDatabaseConfigRequestParametersList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -3761,7 +4489,7 @@ function __c15(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           userName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
-          grant: S.String,
+          grant: HostingPrivateDatabaseGrantGrantEnum,
         }).pipe(
           T.Http({
             method: "POST",
@@ -3772,46 +4500,5 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "UpdateHostingPrivateDatabaseUserGrantRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
   }
 }

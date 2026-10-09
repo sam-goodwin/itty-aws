@@ -6,13 +6,13 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** The type of resource. */
 export type DevOpsInfrastructureResourceType = "Microsoft.DevOpsInfrastructure/pools";
+const DevOpsInfrastructureResourceType = S.String;
+
 export interface CheckPoolNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -21,10 +21,19 @@ export interface CheckPoolNameAvailabilityRequest {
   /** The type of resource that is used as the scope of the availability check. */
   type: DevOpsInfrastructureResourceType | (string & {});
 }
+const CheckPoolNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CheckPoolNameAvailabilityRequest>;
+
 /** AvailabilityStatus of a name. */
 export type AvailabilityStatus = "Available" | "Unavailable";
+const AvailabilityStatus = S.String;
+
 /** The reason code explaining why the name is unavailable. Will be null if the name is available. */
 export type CheckNameAvailabilityReason = "Invalid" | "AlreadyExists";
+const CheckNameAvailabilityReason = S.String;
+
 /** The CheckNameAvailability operation response. */
 export interface CheckNameAvailabilityResult {
   /** Availability status of the name. */
@@ -36,6 +45,11 @@ export interface CheckNameAvailabilityResult {
   /** The reason code explaining why the name is unavailable. Will be null if the name is available. */
   reason: CheckNameAvailabilityReason;
 }
+const CheckNameAvailabilityResult = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CheckNameAvailabilityResult>;
+
 export interface DeletePoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -44,9 +58,18 @@ export interface DeletePoolRequest {
   /** Name of the pool. It needs to be globally unique. */
   poolName: string;
 }
+const DeletePoolRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DeletePoolRequest>;
+
 export interface DeletePoolResponse {}
+const DeletePoolResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DeletePoolResponse>;
+
 /** List of resource IDs to delete. */
 export type DeletePoolResourcesRequestResourceIdsList = Array<string>;
+const DeletePoolResourcesRequestResourceIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeletePoolResourcesRequestResourceIdsList>;
+
 export interface DeletePoolResourcesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -57,7 +80,15 @@ export interface DeletePoolResourcesRequest {
   /** List of resource IDs to delete. */
   resourceIds: DeletePoolResourcesRequestResourceIdsList;
 }
+const DeletePoolResourcesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeletePoolResourcesRequest>;
+
 export interface DeletePoolResourcesResponse {}
+const DeletePoolResourcesResponse =
+  DeletePoolResponse as any as S.Schema<DeletePoolResourcesResponse>;
+
 export interface GetPoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -66,10 +97,16 @@ export interface GetPoolRequest {
   /** Name of the pool. It needs to be globally unique. */
   poolName: string;
 }
+const GetPoolRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetPoolRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -85,8 +122,15 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SystemData>;
+
 /** Resource tags. */
 export type GetPoolResponseTagsMap = { [key: string]: string | undefined };
+const GetPoolResponseTagsMap = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetPoolResponseTagsMap>;
+
 /** The status of the current operation. */
 export type ProvisioningState =
   | "Succeeded"
@@ -96,8 +140,12 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
+const ProvisioningState = S.String;
+
 /** A list of strings. */
 export type PoolStringList = Array<string>;
+const PoolStringList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<PoolStringList>;
+
 /** Defines the type of Azure DevOps pool permission. */
 export interface AzureDevOpsPermissionProfile {
   /** Determines who has admin permissions to the Azure DevOps pool (CreatorOnly, Inherit, SpecificAccounts). */
@@ -107,6 +155,11 @@ export interface AzureDevOpsPermissionProfile {
   /** Group email addresses. */
   groups?: PoolStringList;
 }
+const AzureDevOpsPermissionProfile = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<AzureDevOpsPermissionProfile>;
+
 /** Defines the organization in which the pool will be used. */
 export interface OrganizationProfile {
   /** Discriminator property for OrganizationProfile. */
@@ -118,8 +171,12 @@ export interface OrganizationProfile {
   /** AzureDevOps only: an alias to reference the pool by. */
   alias?: string;
 }
+const OrganizationProfile = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<OrganizationProfile>;
+
 /** Determines how the stand-by scheme should be provided. */
 export type ResourcePredictionsProfileType = "Manual" | "Automatic";
+const ResourcePredictionsProfileType = S.String;
+
 /** Determines how the stand-by scheme should be provided. */
 export interface ResourcePredictionsProfile {
   /** Determines how the stand-by scheme should be provided. */
@@ -127,6 +184,11 @@ export interface ResourcePredictionsProfile {
   /** Automatic only: determines the balance between cost and performance (Balanced, MostCostEffective, MoreCostEffective, MorePerformance, BestPerformance). */
   predictionPreference?: string;
 }
+const ResourcePredictionsProfile = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ResourcePredictionsProfile>;
+
 /** The agent profile of the machines in the pool. */
 export interface AgentProfile {
   /** Discriminator property for AgentProfile. */
@@ -140,11 +202,15 @@ export interface AgentProfile {
   /** Stateful only: how long should the machine be kept around after it ran a workload when there are no stand-by agents. */
   gracePeriodTimeSpan?: string;
 }
+const AgentProfile = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AgentProfile>;
+
 /** The Azure SKU of the machines in the pool. */
 export interface DevOpsAzureSku {
   /** The Azure SKU name of the machines in the pool. */
   name: string;
 }
+const DevOpsAzureSku = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<DevOpsAzureSku>;
+
 /** The VM image of the machines in the pool. */
 export interface PoolImage {
   /** The resource id of the image. */
@@ -158,8 +224,12 @@ export interface PoolImage {
   /** The ephemeral type of the image (Automatic, CacheDisk, ResourceDisk). */
   ephemeralType?: string;
 }
+const PoolImage = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<PoolImage>;
+
 /** The VM images of the machines in the pool. */
 export type PoolImageList = Array<PoolImage>;
+const PoolImageList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<PoolImageList>;
+
 /** The secret management settings of the machines in the pool. */
 export interface SecretsManagementSettings {
   /** Where to store certificates on the machine. */
@@ -171,6 +241,11 @@ export interface SecretsManagementSettings {
   /** Defines if the key of installed certificates should be exportable. */
   keyExportable: boolean;
 }
+const SecretsManagementSettings = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<SecretsManagementSettings>;
+
 /** The OS profile of the machines in the pool. */
 export interface OsProfile {
   /** The secret management settings of the machines in the pool. */
@@ -178,6 +253,8 @@ export interface OsProfile {
   /** Determines how the service should be run (Service, Interactive). */
   logonType?: string;
 }
+const OsProfile = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<OsProfile>;
+
 /** The data disk of the VMSS. */
 export interface DataDisk {
   /** The type of caching to be enabled for the data disks (None, ReadOnly, ReadWrite). */
@@ -189,8 +266,12 @@ export interface DataDisk {
   /** The drive letter for the empty data disk. */
   driveLetter?: string;
 }
+const DataDisk = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DataDisk>;
+
 /** A list of empty data disks to attach. */
 export type DataDiskList = Array<DataDisk>;
+const DataDiskList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DataDiskList>;
+
 /** The storage profile of the VMSS. */
 export interface StorageProfile {
   /** The Azure SKU name of the OS disk (Standard, Premium, StandardSSD). */
@@ -198,6 +279,8 @@ export interface StorageProfile {
   /** A list of empty data disks to attach. */
   dataDisks?: DataDiskList;
 }
+const StorageProfile = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<StorageProfile>;
+
 /** The network profile of the machines in the pool. */
 export interface NetworkProfile {
   /** The subnet id on which to put all machines created in the pool. */
@@ -205,6 +288,8 @@ export interface NetworkProfile {
   /** The number of static public IP addresses for machines in the pool. */
   staticIpAddressCount?: number;
 }
+const NetworkProfile = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<NetworkProfile>;
+
 /** Defines the type of fabric the agent will run on. */
 export interface FabricProfile {
   /** Discriminator property for FabricProfile. */
@@ -220,11 +305,15 @@ export interface FabricProfile {
   /** Vmss only: the network profile of the machines in the pool. */
   networkProfile?: NetworkProfile;
 }
+const FabricProfile = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<FabricProfile>;
+
 /** The runtime configuration of the pool. */
 export interface RuntimeConfiguration {
   /** The target work folder of the task agent on the machine. */
   workFolder?: string;
 }
+const RuntimeConfiguration = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<RuntimeConfiguration>;
+
 /** Pool properties */
 export interface PoolProperties {
   /** The status of the current operation. */
@@ -242,12 +331,16 @@ export interface PoolProperties {
   /** The runtime configuration of the pool. */
   runtimeConfiguration?: RuntimeConfiguration;
 }
+const PoolProperties = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<PoolProperties>;
+
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
+const ManagedServiceIdentityType = S.String;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -255,10 +348,17 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
+const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<UserAssignedIdentity>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetPoolResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
+const GetPoolResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetPoolResponseIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetPoolResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -269,6 +369,11 @@ export interface GetPoolResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetPoolResponseIdentityUserAssignedIdentitiesMap;
 }
+const GetPoolResponseIdentity = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetPoolResponseIdentity>;
+
 export interface GetPoolResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -287,6 +392,8 @@ export interface GetPoolResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetPoolResponseIdentity;
 }
+const GetPoolResponse = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetPoolResponse>;
+
 export interface ListImageVersionByImageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -295,11 +402,21 @@ export interface ListImageVersionByImageRequest {
   /** Name of the image. */
   imageName: string;
 }
+const ListImageVersionByImageRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ListImageVersionByImageRequest>;
+
 /** Details of the ImageVersionProperties. */
 export interface ImageVersionProperties {
   /** Version of the image. */
   version: string;
 }
+const ImageVersionProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ImageVersionProperties>;
+
 /** An image version object */
 export interface ImageVersion {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -313,8 +430,15 @@ export interface ImageVersion {
   /** The resource-specific properties for this resource. */
   properties?: ImageVersionProperties;
 }
+const ImageVersion = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ImageVersion>;
+
 /** The ImageVersion items on this page */
 export type ImageVersionListResultValueList = Array<ImageVersion>;
+const ImageVersionListResultValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ImageVersionListResultValueList>;
+
 /** The response of a ImageVersion list operation. */
 export interface ImageVersionListResult {
   /** The ImageVersion items on this page */
@@ -322,7 +446,17 @@ export interface ImageVersionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ImageVersionListResult = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ImageVersionListResult>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -334,10 +468,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -351,20 +491,37 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListPoolByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListPoolByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListPoolByResourceGroupRequest>;
+
 /** Resource tags. */
 export type PoolTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -400,8 +557,15 @@ export interface Pool {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: PoolIdentity;
 }
+const Pool = GetPoolResponse as any as S.Schema<Pool>;
+
 /** The Pool items on this page */
 export type PoolListResultValueList = Array<Pool>;
+const PoolListResultValueList = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<PoolListResultValueList>;
+
 /** The response of a Pool list operation. */
 export interface PoolListResult {
   /** The Pool items on this page */
@@ -409,10 +573,17 @@ export interface PoolListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PoolListResult = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<PoolListResult>;
+
 export interface ListPoolBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListPoolBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ListPoolBySubscriptionRequest>;
+
 export interface ListResourceDetailByPoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -421,6 +592,11 @@ export interface ListResourceDetailByPoolRequest {
   /** Name of the pool. It needs to be globally unique. */
   poolName: string;
 }
+const ListResourceDetailByPoolRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListResourceDetailByPoolRequest>;
+
 /** The status of the machine resource. */
 export type ResourceStatus =
   | "Ready"
@@ -434,6 +610,8 @@ export type ResourceStatus =
   | "Starting"
   | "PendingReimage"
   | "Reimaging";
+const ResourceStatus = S.String;
+
 /** Details of the ResourceDetailsObject. */
 export interface ResourceDetailsObjectProperties {
   /** The status of the resource. */
@@ -443,6 +621,11 @@ export interface ResourceDetailsObjectProperties {
   /** The version of the image running on the resource. */
   imageVersion: string;
 }
+const ResourceDetailsObjectProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ResourceDetailsObjectProperties>;
+
 /** A ResourceDetailsObject */
 export interface ResourceDetailsObject {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -456,8 +639,18 @@ export interface ResourceDetailsObject {
   /** The resource-specific properties for this resource. */
   properties?: ResourceDetailsObjectProperties;
 }
+const ResourceDetailsObject = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ResourceDetailsObject>;
+
 /** The ResourceDetailsObject items on this page */
 export type ResourceDetailsObjectListResultValueList = Array<ResourceDetailsObject>;
+const ResourceDetailsObjectListResultValueList = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ResourceDetailsObjectListResultValueList>;
+
 /** The response of a ResourceDetailsObject list operation. */
 export interface ResourceDetailsObjectListResult {
   /** The ResourceDetailsObject items on this page */
@@ -465,18 +658,37 @@ export interface ResourceDetailsObjectListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ResourceDetailsObjectListResult = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ResourceDetailsObjectListResult>;
+
 export interface ListSkuByLocationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** Name of the location. */
   locationName: string;
 }
+const ListSkuByLocationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ListSkuByLocationRequest>;
+
 /** The set of locations that the SKU is available. */
 export type ResourceSkuPropertiesLocationsList = Array<string>;
+const ResourceSkuPropertiesLocationsList =
+  DeletePoolResourcesRequestResourceIdsList as any as S.Schema<ResourceSkuPropertiesLocationsList>;
+
 /** List of availability zones where the SKU is supported. */
 export type ResourceSkuLocationInfoZonesList = Array<string>;
+const ResourceSkuLocationInfoZonesList =
+  DeletePoolResourcesRequestResourceIdsList as any as S.Schema<ResourceSkuLocationInfoZonesList>;
+
 /** Gets the set of zones that the SKU is available in with the specified capabilities. */
 export type ResourceSkuZoneDetailsNameList = Array<string>;
+const ResourceSkuZoneDetailsNameList =
+  DeletePoolResourcesRequestResourceIdsList as any as S.Schema<ResourceSkuZoneDetailsNameList>;
+
 /** Describes The SKU capabilities object. */
 export interface ResourceSkuCapabilities {
   /** The name of the SKU capability. */
@@ -484,8 +696,18 @@ export interface ResourceSkuCapabilities {
   /** The value of the SKU capability. */
   value: string;
 }
+const ResourceSkuCapabilities = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ResourceSkuCapabilities>;
+
 /** A list of capabilities that are available for the SKU in the specified list of zones. */
 export type ResourceSkuZoneDetailsCapabilitiesList = Array<ResourceSkuCapabilities>;
+const ResourceSkuZoneDetailsCapabilitiesList = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ResourceSkuZoneDetailsCapabilitiesList>;
+
 /** Describes The zonal capabilities of a SKU. */
 export interface ResourceSkuZoneDetails {
   /** Gets the set of zones that the SKU is available in with the specified capabilities. */
@@ -493,8 +715,18 @@ export interface ResourceSkuZoneDetails {
   /** A list of capabilities that are available for the SKU in the specified list of zones. */
   capabilities: ResourceSkuZoneDetailsCapabilitiesList;
 }
+const ResourceSkuZoneDetails = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ResourceSkuZoneDetails>;
+
 /** Gets details of capabilities available to a SKU in specific zones. */
 export type ResourceSkuLocationInfoZoneDetailsList = Array<ResourceSkuZoneDetails>;
+const ResourceSkuLocationInfoZoneDetailsList = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ResourceSkuLocationInfoZoneDetailsList>;
+
 /** Describes an available Compute SKU Location Information. */
 export interface ResourceSkuLocationInfo {
   /** Location of the SKU */
@@ -504,18 +736,42 @@ export interface ResourceSkuLocationInfo {
   /** Gets details of capabilities available to a SKU in specific zones. */
   zoneDetails: ResourceSkuLocationInfoZoneDetailsList;
 }
+const ResourceSkuLocationInfo = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ResourceSkuLocationInfo>;
+
 /** A list of locations and availability zones in those locations where the SKU is available */
 export type ResourceSkuPropertiesLocationInfoList = Array<ResourceSkuLocationInfo>;
+const ResourceSkuPropertiesLocationInfoList = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ResourceSkuPropertiesLocationInfoList>;
+
 /** Name value pairs to describe the capability. */
 export type ResourceSkuPropertiesCapabilitiesList = Array<ResourceSkuCapabilities>;
+const ResourceSkuPropertiesCapabilitiesList =
+  ResourceSkuZoneDetailsCapabilitiesList as any as S.Schema<ResourceSkuPropertiesCapabilitiesList>;
+
 /** Describes the kind of SKU restrictions that can exist */
 export type ResourceSkuRestrictionsType = "Location" | "Zone";
+const ResourceSkuRestrictionsType = S.String;
+
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
 export type ResourceSkuRestrictionsValuesList = Array<string>;
+const ResourceSkuRestrictionsValuesList =
+  DeletePoolResourcesRequestResourceIdsList as any as S.Schema<ResourceSkuRestrictionsValuesList>;
+
 /** Locations where the SKU is restricted */
 export type ResourceSkuRestrictionInfoLocationsList = Array<string>;
+const ResourceSkuRestrictionInfoLocationsList =
+  DeletePoolResourcesRequestResourceIdsList as any as S.Schema<ResourceSkuRestrictionInfoLocationsList>;
+
 /** List of availability zones where the SKU is restricted. */
 export type ResourceSkuRestrictionInfoZonesList = Array<string>;
+const ResourceSkuRestrictionInfoZonesList =
+  DeletePoolResourcesRequestResourceIdsList as any as S.Schema<ResourceSkuRestrictionInfoZonesList>;
+
 /** Describes an available Compute SKU Restriction Information. */
 export interface ResourceSkuRestrictionInfo {
   /** Locations where the SKU is restricted */
@@ -523,8 +779,15 @@ export interface ResourceSkuRestrictionInfo {
   /** List of availability zones where the SKU is restricted. */
   zones?: ResourceSkuRestrictionInfoZonesList;
 }
+const ResourceSkuRestrictionInfo = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ResourceSkuRestrictionInfo>;
+
 /** Describes the reason for SKU restriction. */
 export type ResourceSkuRestrictionsReasonCode = "QuotaId" | "NotAvailableForSubscription";
+const ResourceSkuRestrictionsReasonCode = S.String;
+
 /** The restrictions of the SKU. */
 export interface ResourceSkuRestrictions {
   /** the type of restrictions. */
@@ -536,8 +799,18 @@ export interface ResourceSkuRestrictions {
   /** the reason for restriction. */
   reasonCode?: ResourceSkuRestrictionsReasonCode;
 }
+const ResourceSkuRestrictions = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ResourceSkuRestrictions>;
+
 /** The restrictions of the SKU. */
 export type ResourceSkuPropertiesRestrictionsList = Array<ResourceSkuRestrictions>;
+const ResourceSkuPropertiesRestrictionsList = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ResourceSkuPropertiesRestrictionsList>;
+
 /** Properties of a ResourceSku */
 export interface ResourceSkuProperties {
   /** The type of resource the SKU applies to. */
@@ -557,6 +830,11 @@ export interface ResourceSkuProperties {
   /** The restrictions of the SKU. */
   restrictions: ResourceSkuPropertiesRestrictionsList;
 }
+const ResourceSkuProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ResourceSkuProperties>;
+
 /** A ResourceSku */
 export interface ResourceSku {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -570,8 +848,15 @@ export interface ResourceSku {
   /** The resource-specific properties for this resource. */
   properties?: ResourceSkuProperties;
 }
+const ResourceSku = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<ResourceSku>;
+
 /** The ResourceSku items on this page */
 export type ResourceSkuListResultValueList = Array<ResourceSku>;
+const ResourceSkuListResultValueList = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ResourceSkuListResultValueList>;
+
 /** The response of a ResourceSku list operation. */
 export interface ResourceSkuListResult {
   /** The ResourceSku items on this page */
@@ -579,20 +864,40 @@ export interface ResourceSkuListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ResourceSkuListResult = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ResourceSkuListResult>;
+
 /** Resource tags. */
 export type PoolsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const PoolsCreateOrUpdateRequestTagsMap =
+  GetPoolResponseTagsMap as any as S.Schema<PoolsCreateOrUpdateRequestTagsMap>;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
+const UserAssignedIdentityInput = DeletePoolResponse as any as S.Schema<UserAssignedIdentityInput>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type PoolsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
+const PoolsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<PoolsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface PoolsCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: PoolsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
+const PoolsCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<PoolsCreateOrUpdateRequestIdentity>;
+
 export interface PoolsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -609,12 +914,23 @@ export interface PoolsCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: PoolsCreateOrUpdateRequestIdentity;
 }
+const PoolsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<PoolsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type PoolsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const PoolsCreateOrUpdateResponseTagsMap =
+  GetPoolResponseTagsMap as any as S.Schema<PoolsCreateOrUpdateResponseTagsMap>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type PoolsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
+const PoolsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap =
+  GetPoolResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<PoolsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface PoolsCreateOrUpdateResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -625,6 +941,11 @@ export interface PoolsCreateOrUpdateResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: PoolsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap;
 }
+const PoolsCreateOrUpdateResponseIdentity = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<PoolsCreateOrUpdateResponseIdentity>;
+
 export interface PoolsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -643,12 +964,22 @@ export interface PoolsCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: PoolsCreateOrUpdateResponseIdentity;
 }
+const PoolsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<PoolsCreateOrUpdateResponse>;
+
 export interface SubscriptionUsagesUsagesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
 }
+const SubscriptionUsagesUsagesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<SubscriptionUsagesUsagesRequest>;
+
 /** The Quota Names */
 export interface QuotaName {
   /** The name of the resource. */
@@ -656,6 +987,8 @@ export interface QuotaName {
   /** The localized name of the resource. */
   localizedValue?: string;
 }
+const QuotaName = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<QuotaName>;
+
 /** Describes Resource Quota */
 export interface Quota {
   /** The name of the quota. */
@@ -669,8 +1002,12 @@ export interface Quota {
   /** The maximum permitted usage of the resource. */
   limit: number;
 }
+const Quota = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<Quota>;
+
 /** The Quota items on this page */
 export type PagedQuotaValueList = Array<Quota>;
+const PagedQuotaValueList = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<PagedQuotaValueList>;
+
 /** Paged collection of Quota items */
 export interface PagedQuota {
   /** The Quota items on this page */
@@ -678,6 +1015,8 @@ export interface PagedQuota {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PagedQuota = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<PagedQuota>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdatePoolRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
@@ -688,8 +1027,14 @@ export interface UpdatePoolRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdatePoolRequestIdentityUserAssignedIdentitiesMap;
 }
+const UpdatePoolRequestIdentity =
+  PoolsCreateOrUpdateRequestIdentity as any as S.Schema<UpdatePoolRequestIdentity>;
+
 /** Resource tags. */
 export type UpdatePoolRequestTagsMap = { [key: string]: string | undefined };
+const UpdatePoolRequestTagsMap =
+  GetPoolResponseTagsMap as any as S.Schema<UpdatePoolRequestTagsMap>;
+
 /** The updatable properties of the Pool. */
 export interface PoolUpdateProperties {
   /** The status of the current operation. */
@@ -707,6 +1052,8 @@ export interface PoolUpdateProperties {
   /** The runtime configuration of the pool. */
   runtimeConfiguration?: RuntimeConfiguration;
 }
+const PoolUpdateProperties = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<PoolUpdateProperties>;
+
 export interface UpdatePoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -721,12 +1068,20 @@ export interface UpdatePoolRequest {
   /** The resource-specific properties for this resource. */
   properties?: PoolUpdateProperties;
 }
+const UpdatePoolRequest = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<UpdatePoolRequest>;
+
 /** Resource tags. */
 export type UpdatePoolResponseTagsMap = { [key: string]: string | undefined };
+const UpdatePoolResponseTagsMap =
+  GetPoolResponseTagsMap as any as S.Schema<UpdatePoolResponseTagsMap>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdatePoolResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
+const UpdatePoolResponseIdentityUserAssignedIdentitiesMap =
+  GetPoolResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdatePoolResponseIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdatePoolResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -737,6 +1092,11 @@ export interface UpdatePoolResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdatePoolResponseIdentityUserAssignedIdentitiesMap;
 }
+const UpdatePoolResponseIdentity = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<UpdatePoolResponseIdentity>;
+
 export interface UpdatePoolResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -755,6 +1115,8 @@ export interface UpdatePoolResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: UpdatePoolResponseIdentity;
 }
+const UpdatePoolResponse = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<UpdatePoolResponse>;
+
 export type CheckPoolNameAvailabilityError = AzureOpError;
 /** Checks that the pool name is valid and is not already in use. */
 export const CheckPoolNameAvailability: API.OperationMethod<
@@ -763,8 +1125,8 @@ export const CheckPoolNameAvailability: API.OperationMethod<
   CheckPoolNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CheckPoolNameAvailabilityRequest>,
-  output: __S(1) as any as S.Schema<CheckNameAvailabilityResult>,
+  input: CheckPoolNameAvailabilityRequest,
+  output: CheckNameAvailabilityResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -778,8 +1140,8 @@ export const DeletePool: API.OperationMethod<
   DeletePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeletePoolRequest>,
-  output: __S(3) as any as S.Schema<DeletePoolResponse>,
+  input: DeletePoolRequest,
+  output: DeletePoolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -793,8 +1155,8 @@ export const DeletePoolResources: API.OperationMethod<
   DeletePoolResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<DeletePoolResourcesRequest>,
-  output: __S(3) as any as S.Schema<DeletePoolResourcesResponse>,
+  input: DeletePoolResourcesRequest,
+  output: DeletePoolResourcesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -808,8 +1170,8 @@ export const GetPool: API.OperationMethod<
   GetPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetPoolRequest>,
-  output: __S(29) as any as S.Schema<GetPoolResponse>,
+  input: GetPoolRequest,
+  output: GetPoolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -823,8 +1185,8 @@ export const ListImageVersionByImage: API.OperationMethod<
   ListImageVersionByImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<ListImageVersionByImageRequest>,
-  output: __S(34) as any as S.Schema<ImageVersionListResult>,
+  input: ListImageVersionByImageRequest,
+  output: ImageVersionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -838,8 +1200,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<ListOperationsRequest>,
-  output: __S(39) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -853,8 +1215,8 @@ export const ListPoolByResourceGroup: API.OperationMethod<
   ListPoolByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<ListPoolByResourceGroupRequest>,
-  output: __S(42) as any as S.Schema<PoolListResult>,
+  input: ListPoolByResourceGroupRequest,
+  output: PoolListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -868,8 +1230,8 @@ export const ListPoolBySubscription: API.OperationMethod<
   ListPoolBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<ListPoolBySubscriptionRequest>,
-  output: __S(42) as any as S.Schema<PoolListResult>,
+  input: ListPoolBySubscriptionRequest,
+  output: PoolListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -883,8 +1245,8 @@ export const ListResourceDetailByPool: API.OperationMethod<
   ListResourceDetailByPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<ListResourceDetailByPoolRequest>,
-  output: __S(48) as any as S.Schema<ResourceDetailsObjectListResult>,
+  input: ListResourceDetailByPoolRequest,
+  output: ResourceDetailsObjectListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -898,8 +1260,8 @@ export const ListSkuByLocation: API.OperationMethod<
   ListSkuByLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<ListSkuByLocationRequest>,
-  output: __S(62) as any as S.Schema<ResourceSkuListResult>,
+  input: ListSkuByLocationRequest,
+  output: ResourceSkuListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -913,8 +1275,8 @@ export const PoolsCreateOrUpdate: API.OperationMethod<
   PoolsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<PoolsCreateOrUpdateRequest>,
-  output: __S(67) as any as S.Schema<PoolsCreateOrUpdateResponse>,
+  input: PoolsCreateOrUpdateRequest,
+  output: PoolsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -928,8 +1290,8 @@ export const SubscriptionUsagesUsages: API.OperationMethod<
   SubscriptionUsagesUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<SubscriptionUsagesUsagesRequest>,
-  output: __S(72) as any as S.Schema<PagedQuota>,
+  input: SubscriptionUsagesUsagesRequest,
+  output: PagedQuota,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -943,8 +1305,8 @@ export const UpdatePool: API.OperationMethod<
   UpdatePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<UpdatePoolRequest>,
-  output: __S(76) as any as S.Schema<UpdatePoolResponse>,
+  input: UpdatePoolRequest,
+  output: UpdatePoolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -958,7 +1320,7 @@ function __c0(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           name: S.String,
-          type: S.String,
+          type: DevOpsInfrastructureResourceType,
         }).pipe(
           T.Http({
             method: "POST",
@@ -973,10 +1335,10 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          available: S.String,
+          available: AvailabilityStatus,
           message: S.String,
           name: S.String,
-          reason: S.String,
+          reason: CheckNameAvailabilityReason,
         }),
       ).annotate({
         identifier: "CheckNameAvailabilityResult",
@@ -1008,7 +1370,7 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
-          resourceIds: __S(4),
+          resourceIds: DeletePoolResourcesRequestResourceIdsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -1039,10 +1401,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -1058,8 +1420,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
-          users: S.optional(__S(9)),
-          groups: S.optional(__S(9)),
+          users: S.optional(PoolStringList),
+          groups: S.optional(PoolStringList),
         }),
       ).annotate({
         identifier: "AzureDevOpsPermissionProfile",
@@ -1069,14 +1431,14 @@ function __c1(j: number): any {
         S.Struct({
           kind: S.String,
           organizations: S.optional(S.Unknown),
-          permissionProfile: S.optional(__S(10)),
+          permissionProfile: S.optional(AzureDevOpsPermissionProfile),
           alias: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrganizationProfile" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
+          kind: ResourcePredictionsProfileType,
           predictionPreference: S.optional(S.String),
         }),
       ).annotate({
@@ -1087,7 +1449,7 @@ function __c1(j: number): any {
         S.Struct({
           kind: S.String,
           resourcePredictions: S.optional(S.Unknown),
-          resourcePredictionsProfile: S.optional(__S(12)),
+          resourcePredictionsProfile: S.optional(ResourcePredictionsProfile),
           maxAgentLifetime: S.optional(S.String),
           gracePeriodTimeSpan: S.optional(S.String),
         }),
@@ -1103,7 +1465,7 @@ function __c1(j: number): any {
         S.Struct({
           resourceId: S.optional(S.String),
           wellKnownImageName: S.optional(S.String),
-          aliases: S.optional(__S(9)),
+          aliases: S.optional(PoolStringList),
           buffer: S.optional(S.String),
           ephemeralType: S.optional(S.String),
         }),
@@ -1113,13 +1475,13 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(PoolImage);
     case 1:
       return S.suspend(() =>
         S.Struct({
           certificateStoreLocation: S.optional(S.String),
           certificateStoreName: S.optional(S.String),
-          observedCertificates: __S(9),
+          observedCertificates: PoolStringList,
           keyExportable: S.Boolean,
         }),
       ).annotate({
@@ -1128,7 +1490,7 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          secretsManagementSettings: S.optional(__S(17)),
+          secretsManagementSettings: S.optional(SecretsManagementSettings),
           logonType: S.optional(S.String),
         }),
       ).annotate({ identifier: "OsProfile" });
@@ -1142,12 +1504,12 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "DataDisk" });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(DataDisk);
     case 5:
       return S.suspend(() =>
         S.Struct({
           osDiskStorageAccountType: S.optional(S.String),
-          dataDisks: S.optional(__S(20)),
+          dataDisks: S.optional(DataDiskList),
         }),
       ).annotate({ identifier: "StorageProfile" });
     case 6:
@@ -1161,11 +1523,11 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
-          sku: S.optional(__S(14)),
-          images: S.optional(__S(16)),
-          osProfile: S.optional(__S(18)),
-          storageProfile: S.optional(__S(21)),
-          networkProfile: S.optional(__S(22)),
+          sku: S.optional(DevOpsAzureSku),
+          images: S.optional(PoolImageList),
+          osProfile: S.optional(OsProfile),
+          storageProfile: S.optional(StorageProfile),
+          networkProfile: S.optional(NetworkProfile),
         }),
       ).annotate({ identifier: "FabricProfile" });
   }
@@ -1181,13 +1543,13 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           maximumConcurrency: S.Number,
-          organizationProfile: __S(11),
-          agentProfile: __S(13),
-          fabricProfile: __S(23),
+          organizationProfile: OrganizationProfile,
+          agentProfile: AgentProfile,
+          fabricProfile: FabricProfile,
           devCenterProjectResourceId: S.optional(S.String),
-          runtimeConfiguration: S.optional(__S(24)),
+          runtimeConfiguration: S.optional(RuntimeConfiguration),
         }),
       ).annotate({ identifier: "PoolProperties" });
     case 2:
@@ -1198,14 +1560,14 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(26)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
     case 4:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(27)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(GetPoolResponseIdentityUserAssignedIdentitiesMap),
         }),
       ).annotate({ identifier: "GetPoolResponseIdentity" });
     case 5:
@@ -1214,11 +1576,11 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          tags: S.optional(__S(8)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetPoolResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(25)),
-          identity: S.optional(__S(28)),
+          properties: S.optional(PoolProperties),
+          identity: S.optional(GetPoolResponseIdentity),
         }),
       ).annotate({ identifier: "GetPoolResponse" });
     case 6:
@@ -1254,16 +1616,16 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(31)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ImageVersionProperties),
         }),
       ).annotate({ identifier: "ImageVersion" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(ImageVersion);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(33),
+          value: ImageVersionListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageVersionListResult" });
@@ -1292,17 +1654,17 @@ function __c4(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(36)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(Operation);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(38)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -1327,11 +1689,11 @@ function __c5(j: number): any {
         identifier: "ListPoolByResourceGroupRequest",
       });
     case 1:
-      return S.Array(__S(29));
+      return S.Array(Pool);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(41),
+          value: PoolListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PoolListResult" });
@@ -1370,7 +1732,7 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.String,
+          status: ResourceStatus,
           image: S.String,
           imageVersion: S.String,
         }),
@@ -1383,12 +1745,12 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(45)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ResourceDetailsObjectProperties),
         }),
       ).annotate({ identifier: "ResourceDetailsObject" });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(ResourceDetailsObject);
   }
 }
 function __c6(j: number): any {
@@ -1396,7 +1758,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(47),
+          value: ResourceDetailsObjectListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1424,26 +1786,26 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "ResourceSkuCapabilities" });
     case 3:
-      return S.Array(__S(50));
+      return S.Array(ResourceSkuCapabilities);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          name: __S(4),
-          capabilities: __S(51),
+          name: ResourceSkuZoneDetailsNameList,
+          capabilities: ResourceSkuZoneDetailsCapabilitiesList,
         }),
       ).annotate({ identifier: "ResourceSkuZoneDetails" });
     case 5:
-      return S.Array(__S(52));
+      return S.Array(ResourceSkuZoneDetails);
     case 6:
       return S.suspend(() =>
         S.Struct({
           location: S.String,
-          zones: __S(4),
-          zoneDetails: __S(53),
+          zones: ResourceSkuLocationInfoZonesList,
+          zoneDetails: ResourceSkuLocationInfoZoneDetailsList,
         }),
       ).annotate({ identifier: "ResourceSkuLocationInfo" });
     case 7:
-      return S.Array(__S(54));
+      return S.Array(ResourceSkuLocationInfo);
   }
 }
 function __c7(j: number): any {
@@ -1451,8 +1813,8 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(4)),
-          zones: S.optional(__S(4)),
+          locations: S.optional(ResourceSkuRestrictionInfoLocationsList),
+          zones: S.optional(ResourceSkuRestrictionInfoZonesList),
         }),
       ).annotate({
         identifier: "ResourceSkuRestrictionInfo",
@@ -1460,14 +1822,14 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          values: __S(4),
-          restrictionInfo: __S(56),
-          reasonCode: S.optional(S.String),
+          type: S.optional(ResourceSkuRestrictionsType),
+          values: ResourceSkuRestrictionsValuesList,
+          restrictionInfo: ResourceSkuRestrictionInfo,
+          reasonCode: S.optional(ResourceSkuRestrictionsReasonCode),
         }),
       ).annotate({ identifier: "ResourceSkuRestrictions" });
     case 2:
-      return S.Array(__S(57));
+      return S.Array(ResourceSkuRestrictions);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1475,10 +1837,10 @@ function __c7(j: number): any {
           tier: S.String,
           size: S.String,
           family: S.String,
-          locations: __S(4),
-          locationInfo: __S(55),
-          capabilities: __S(51),
-          restrictions: __S(58),
+          locations: ResourceSkuPropertiesLocationsList,
+          locationInfo: ResourceSkuPropertiesLocationInfoList,
+          capabilities: ResourceSkuPropertiesCapabilitiesList,
+          restrictions: ResourceSkuPropertiesRestrictionsList,
         }),
       ).annotate({ identifier: "ResourceSkuProperties" });
     case 4:
@@ -1487,21 +1849,21 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(59)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ResourceSkuProperties),
         }),
       ).annotate({ identifier: "ResourceSku" });
     case 5:
-      return S.Array(__S(60));
+      return S.Array(ResourceSku);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(61),
+          value: ResourceSkuListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceSkuListResult" });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(3)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput));
   }
 }
 function __c8(j: number): any {
@@ -1509,8 +1871,10 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(63)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(
+            PoolsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap,
+          ),
         }),
       ).annotate({
         identifier: "PoolsCreateOrUpdateRequestIdentity",
@@ -1521,10 +1885,10 @@ function __c8(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8)),
+          tags: S.optional(PoolsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(25)),
-          identity: S.optional(__S(64)),
+          properties: S.optional(PoolProperties),
+          identity: S.optional(PoolsCreateOrUpdateRequestIdentity),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1541,8 +1905,10 @@ function __c8(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(27)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(
+            PoolsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap,
+          ),
         }),
       ).annotate({
         identifier: "PoolsCreateOrUpdateResponseIdentity",
@@ -1553,11 +1919,11 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          tags: S.optional(__S(8)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(PoolsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(25)),
-          identity: S.optional(__S(66)),
+          properties: S.optional(PoolProperties),
+          identity: S.optional(PoolsCreateOrUpdateResponseIdentity),
         }),
       ).annotate({
         identifier: "PoolsCreateOrUpdateResponse",
@@ -1588,7 +1954,7 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(69)),
+          name: S.optional(QuotaName),
           id: S.String,
           unit: S.String,
           currentValue: S.Number,
@@ -1596,7 +1962,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "Quota" });
     case 7:
-      return S.Array(__S(70));
+      return S.Array(Quota);
   }
 }
 function __c9(j: number): any {
@@ -1604,20 +1970,20 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(71),
+          value: PagedQuotaValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagedQuota" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           maximumConcurrency: S.optional(S.Number),
-          organizationProfile: S.optional(__S(11)),
-          agentProfile: S.optional(__S(13)),
-          fabricProfile: S.optional(__S(23)),
+          organizationProfile: S.optional(OrganizationProfile),
+          agentProfile: S.optional(AgentProfile),
+          fabricProfile: S.optional(FabricProfile),
           devCenterProjectResourceId: S.optional(S.String),
-          runtimeConfiguration: S.optional(__S(24)),
+          runtimeConfiguration: S.optional(RuntimeConfiguration),
         }),
       ).annotate({ identifier: "PoolUpdateProperties" });
     case 2:
@@ -1626,9 +1992,9 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(64)),
-          tags: S.optional(__S(8)),
-          properties: S.optional(__S(73)),
+          identity: S.optional(UpdatePoolRequestIdentity),
+          tags: S.optional(UpdatePoolRequestTagsMap),
+          properties: S.optional(PoolUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1643,8 +2009,8 @@ function __c9(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(27)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(UpdatePoolResponseIdentityUserAssignedIdentitiesMap),
         }),
       ).annotate({
         identifier: "UpdatePoolResponseIdentity",
@@ -1655,41 +2021,12 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          tags: S.optional(__S(8)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(UpdatePoolResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(25)),
-          identity: S.optional(__S(75)),
+          properties: S.optional(PoolProperties),
+          identity: S.optional(UpdatePoolResponseIdentity),
         }),
       ).annotate({ identifier: "UpdatePoolResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
   }
 }

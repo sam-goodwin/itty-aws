@@ -8,8 +8,6 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
@@ -19,17 +17,34 @@ export interface AddServerToPlacementGroupRequest {
   /** ID of Placement Group the Server should be added to. */
   placement_group: number;
 }
+const AddServerToPlacementGroupRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddServerToPlacementGroupRequest>;
+
 /** Status of the Action. */
 export type AddServerToPlacementGroupResponseActionStatus = "running" | "success" | "error";
+const AddServerToPlacementGroupResponseActionStatus = S.String;
+
 export interface AddServerToPlacementGroupResponseActionResourcesItem {
   /** ID of the Resource. */
   id: number;
   /** Type of the Resource. */
   type: string;
 }
+const AddServerToPlacementGroupResponseActionResourcesItem = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AddServerToPlacementGroupResponseActionResourcesItem>;
+
 /** Resources the Action relates to. */
 export type AddServerToPlacementGroupResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const AddServerToPlacementGroupResponseActionResourcesList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AddServerToPlacementGroupResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface AddServerToPlacementGroupResponseActionError {
   /** Fixed error code for machines. */
@@ -37,6 +52,11 @@ export interface AddServerToPlacementGroupResponseActionError {
   /** Error message for humans. */
   message: string;
 }
+const AddServerToPlacementGroupResponseActionError = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AddServerToPlacementGroupResponseActionError>;
+
 export interface AddServerToPlacementGroupResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -55,22 +75,42 @@ export interface AddServerToPlacementGroupResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const AddServerToPlacementGroupResponseAction = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AddServerToPlacementGroupResponseAction>;
+
 export interface AddServerToPlacementGroupResponse {
   action: AddServerToPlacementGroupResponseAction;
 }
+const AddServerToPlacementGroupResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AddServerToPlacementGroupResponse>;
+
 export interface AttachServerIsoRequest {
   /** ID of the Server. */
   id: number;
   /** ID or name of ISO to attach to the Server as listed in GET `/isos`. */
   iso: string;
 }
+const AttachServerIsoRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AttachServerIsoRequest>;
+
 /** Status of the Action. */
 export type AttachServerIsoResponseActionStatus = "running" | "success" | "error";
+const AttachServerIsoResponseActionStatus = S.String;
+
 export type AttachServerIsoResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type AttachServerIsoResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const AttachServerIsoResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<AttachServerIsoResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type AttachServerIsoResponseActionError = AddServerToPlacementGroupResponseActionError;
 export interface AttachServerIsoResponseAction {
@@ -91,11 +131,26 @@ export interface AttachServerIsoResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const AttachServerIsoResponseAction = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AttachServerIsoResponseAction>;
+
 export interface AttachServerIsoResponse {
   action: AttachServerIsoResponseAction;
 }
+const AttachServerIsoResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AttachServerIsoResponse>;
+
 /** Additional IPs to be assigned to this Server. */
 export type AttachServerToNetworkRequestAliasIpsList = Array<string>;
+const AttachServerToNetworkRequestAliasIpsList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<AttachServerToNetworkRequestAliasIpsList>;
+
 export interface AttachServerToNetworkRequest {
   /** ID of the Server. */
   id: number;
@@ -108,13 +163,23 @@ export interface AttachServerToNetworkRequest {
   /** IP range in CIDR block notation of the subnet to attach to. This allows for auto assigning an IP address for a specific subnet. Providing `ip` that is not part of `ip_range` will result in an error. */
   ip_range?: string;
 }
+const AttachServerToNetworkRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<AttachServerToNetworkRequest>;
+
 /** Status of the Action. */
 export type AttachServerToNetworkResponseActionStatus = "running" | "success" | "error";
+const AttachServerToNetworkResponseActionStatus = S.String;
+
 export type AttachServerToNetworkResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type AttachServerToNetworkResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const AttachServerToNetworkResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<AttachServerToNetworkResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type AttachServerToNetworkResponseActionError = AddServerToPlacementGroupResponseActionError;
 export interface AttachServerToNetworkResponseAction {
@@ -135,11 +200,24 @@ export interface AttachServerToNetworkResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const AttachServerToNetworkResponseAction = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<AttachServerToNetworkResponseAction>;
+
 export interface AttachServerToNetworkResponse {
   action: AttachServerToNetworkResponseAction;
 }
+const AttachServerToNetworkResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<AttachServerToNetworkResponse>;
+
 /** New alias IPs to set for this Server. */
 export type ChangeServerAliasIpsRequestAliasIpsList = Array<string>;
+const ChangeServerAliasIpsRequestAliasIpsList =
+  AttachServerToNetworkRequestAliasIpsList as any as S.Schema<ChangeServerAliasIpsRequestAliasIpsList>;
+
 export interface ChangeServerAliasIpsRequest {
   /** ID of the Server. */
   id: number;
@@ -148,13 +226,23 @@ export interface ChangeServerAliasIpsRequest {
   /** New alias IPs to set for this Server. */
   alias_ips: ChangeServerAliasIpsRequestAliasIpsList;
 }
+const ChangeServerAliasIpsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ChangeServerAliasIpsRequest>;
+
 /** Status of the Action. */
 export type ChangeServerAliasIpsResponseActionStatus = "running" | "success" | "error";
+const ChangeServerAliasIpsResponseActionStatus = S.String;
+
 export type ChangeServerAliasIpsResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ChangeServerAliasIpsResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const ChangeServerAliasIpsResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ChangeServerAliasIpsResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeServerAliasIpsResponseActionError = AddServerToPlacementGroupResponseActionError;
 export interface ChangeServerAliasIpsResponseAction {
@@ -175,9 +263,19 @@ export interface ChangeServerAliasIpsResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const ChangeServerAliasIpsResponseAction = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ChangeServerAliasIpsResponseAction>;
+
 export interface ChangeServerAliasIpsResponse {
   action: ChangeServerAliasIpsResponseAction;
 }
+const ChangeServerAliasIpsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ChangeServerAliasIpsResponse>;
+
 export interface ChangeServerDnsPtrRequest {
   /** ID of the Server. */
   id: number;
@@ -186,13 +284,23 @@ export interface ChangeServerDnsPtrRequest {
   /** Domain Name to point to. PTR record content used for reverse DNS. Set to null to reset (IPv4) to the default value or remove (IPv6) the record. */
   dns_ptr: string | null;
 }
+const ChangeServerDnsPtrRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ChangeServerDnsPtrRequest>;
+
 /** Status of the Action. */
 export type ChangeServerDnsPtrResponseActionStatus = "running" | "success" | "error";
+const ChangeServerDnsPtrResponseActionStatus = S.String;
+
 export type ChangeServerDnsPtrResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ChangeServerDnsPtrResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const ChangeServerDnsPtrResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ChangeServerDnsPtrResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeServerDnsPtrResponseActionError = AddServerToPlacementGroupResponseActionError;
 export interface ChangeServerDnsPtrResponseAction {
@@ -213,9 +321,19 @@ export interface ChangeServerDnsPtrResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const ChangeServerDnsPtrResponseAction = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ChangeServerDnsPtrResponseAction>;
+
 export interface ChangeServerDnsPtrResponse {
   action: ChangeServerDnsPtrResponseAction;
 }
+const ChangeServerDnsPtrResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ChangeServerDnsPtrResponse>;
+
 export interface ChangeServerProtectionRequest {
   /** ID of the Server. */
   id: number;
@@ -224,13 +342,23 @@ export interface ChangeServerProtectionRequest {
   /** If true, prevents the Server from being rebuilt (currently delete and rebuild attribute needs to have the same value). */
   rebuild?: boolean;
 }
+const ChangeServerProtectionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ChangeServerProtectionRequest>;
+
 /** Status of the Action. */
 export type ChangeServerProtectionResponseActionStatus = "running" | "success" | "error";
+const ChangeServerProtectionResponseActionStatus = S.String;
+
 export type ChangeServerProtectionResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ChangeServerProtectionResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const ChangeServerProtectionResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ChangeServerProtectionResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeServerProtectionResponseActionError =
   AddServerToPlacementGroupResponseActionError;
@@ -252,9 +380,19 @@ export interface ChangeServerProtectionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const ChangeServerProtectionResponseAction = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ChangeServerProtectionResponseAction>;
+
 export interface ChangeServerProtectionResponse {
   action: ChangeServerProtectionResponseAction;
 }
+const ChangeServerProtectionResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ChangeServerProtectionResponse>;
+
 export interface ChangeServerTypeRequest {
   /** ID of the Server. */
   id: number;
@@ -263,13 +401,23 @@ export interface ChangeServerTypeRequest {
   /** ID or name of Server type the Server should migrate to. */
   server_type: string;
 }
+const ChangeServerTypeRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ChangeServerTypeRequest>;
+
 /** Status of the Action. */
 export type ChangeServerTypeResponseActionStatus = "running" | "success" | "error";
+const ChangeServerTypeResponseActionStatus = S.String;
+
 export type ChangeServerTypeResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ChangeServerTypeResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const ChangeServerTypeResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ChangeServerTypeResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeServerTypeResponseActionError = AddServerToPlacementGroupResponseActionError;
 export interface ChangeServerTypeResponseAction {
@@ -290,13 +438,30 @@ export interface ChangeServerTypeResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const ChangeServerTypeResponseAction = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ChangeServerTypeResponseAction>;
+
 export interface ChangeServerTypeResponse {
   action: ChangeServerTypeResponseAction;
 }
+const ChangeServerTypeResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ChangeServerTypeResponse>;
+
 /** Type of Image to create. */
 export type CreateServerImageRequestType = "snapshot" | "backup";
+const CreateServerImageRequestType = S.String;
+
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateServerImageRequestLabelsMap = { [key: string]: string | undefined };
+const CreateServerImageRequestLabelsMap = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateServerImageRequestLabelsMap>;
+
 export interface CreateServerImageRequest {
   /** ID of the Server. */
   id: number;
@@ -307,10 +472,19 @@ export interface CreateServerImageRequest {
   /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
   labels?: CreateServerImageRequestLabelsMap;
 }
+const CreateServerImageRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateServerImageRequest>;
+
 /** Type of the Image. */
 export type CreateServerImageResponseImageType = "system" | "app" | "snapshot" | "backup";
+const CreateServerImageResponseImageType = S.String;
+
 /** Status of the Image. */
 export type CreateServerImageResponseImageStatus = "available" | "creating" | "unavailable";
+const CreateServerImageResponseImageStatus = S.String;
+
 /** Information about the Server the Image was created from. */
 export interface CreateServerImageResponseImageCreatedFrom {
   /** ID of the Server the Image was created from. */
@@ -318,6 +492,11 @@ export interface CreateServerImageResponseImageCreatedFrom {
   /** Server name at the time the Image was created. */
   name: string;
 }
+const CreateServerImageResponseImageCreatedFrom = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateServerImageResponseImageCreatedFrom>;
+
 /** Flavor of operating system contained in the Image. */
 export type CreateServerImageResponseImageOsFlavor =
   | "ubuntu"
@@ -328,11 +507,18 @@ export type CreateServerImageResponseImageOsFlavor =
   | "alma"
   | "opensuse"
   | "unknown";
+const CreateServerImageResponseImageOsFlavor = S.String;
+
 /** Protection configuration for the Resource. */
 export interface CreateServerImageResponseImageProtection {
   /** Prevent the Resource from being deleted. */
   delete: boolean;
 }
+const CreateServerImageResponseImageProtection = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateServerImageResponseImageProtection>;
+
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
 export interface CreateServerImageResponseImageDeprecation {
   /** Date of the deprecated resource removal. Once this date is reached, the resource will not be returned by resource type "list" endpoint, and the resource can not be used to create new resources. For example, if this is an image, you can not create new servers with this image after the mentioned date. */
@@ -340,10 +526,20 @@ export interface CreateServerImageResponseImageDeprecation {
   /** Date of the deprecation announcement. */
   announced: string;
 }
+const CreateServerImageResponseImageDeprecation = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateServerImageResponseImageDeprecation>;
+
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateServerImageResponseImageLabelsMap = { [key: string]: string | undefined };
+const CreateServerImageResponseImageLabelsMap =
+  CreateServerImageRequestLabelsMap as any as S.Schema<CreateServerImageResponseImageLabelsMap>;
+
 /** CPU architecture compatible with the Image. */
 export type CreateServerImageResponseImageArchitecture = "x86" | "arm";
+const CreateServerImageResponseImageArchitecture = S.String;
+
 export interface CreateServerImageResponseImage {
   /** ID of the [Image](#tag/images). */
   id: number;
@@ -384,13 +580,23 @@ export interface CreateServerImageResponseImage {
   /** CPU architecture compatible with the Image. */
   architecture: CreateServerImageResponseImageArchitecture;
 }
+const CreateServerImageResponseImage = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateServerImageResponseImage>;
+
 /** Status of the Action. */
 export type CreateServerImageResponseActionStatus = "running" | "success" | "error";
+const CreateServerImageResponseActionStatus = S.String;
+
 export type CreateServerImageResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type CreateServerImageResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const CreateServerImageResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<CreateServerImageResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type CreateServerImageResponseActionError = AddServerToPlacementGroupResponseActionError;
 export interface CreateServerImageResponseAction {
@@ -411,23 +617,43 @@ export interface CreateServerImageResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const CreateServerImageResponseAction = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateServerImageResponseAction>;
+
 export interface CreateServerImageResponse {
   image?: CreateServerImageResponseImage;
   action?: CreateServerImageResponseAction;
 }
+const CreateServerImageResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateServerImageResponse>;
+
 export interface DetachServerFromNetworkRequest {
   /** ID of the Server. */
   id: number;
   /** ID of an existing network to detach the Server from. */
   network: number;
 }
+const DetachServerFromNetworkRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<DetachServerFromNetworkRequest>;
+
 /** Status of the Action. */
 export type DetachServerFromNetworkResponseActionStatus = "running" | "success" | "error";
+const DetachServerFromNetworkResponseActionStatus = S.String;
+
 export type DetachServerFromNetworkResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type DetachServerFromNetworkResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const DetachServerFromNetworkResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<DetachServerFromNetworkResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DetachServerFromNetworkResponseActionError =
   AddServerToPlacementGroupResponseActionError;
@@ -449,20 +675,40 @@ export interface DetachServerFromNetworkResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const DetachServerFromNetworkResponseAction = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<DetachServerFromNetworkResponseAction>;
+
 export interface DetachServerFromNetworkResponse {
   action: DetachServerFromNetworkResponseAction;
 }
+const DetachServerFromNetworkResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<DetachServerFromNetworkResponse>;
+
 export interface DetachServerIsoRequest {
   /** ID of the Server. */
   id: number;
 }
+const DetachServerIsoRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DetachServerIsoRequest>;
+
 /** Status of the Action. */
 export type DetachServerIsoResponseActionStatus = "running" | "success" | "error";
+const DetachServerIsoResponseActionStatus = S.String;
+
 export type DetachServerIsoResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type DetachServerIsoResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const DetachServerIsoResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<DetachServerIsoResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DetachServerIsoResponseActionError = AddServerToPlacementGroupResponseActionError;
 export interface DetachServerIsoResponseAction {
@@ -483,20 +729,40 @@ export interface DetachServerIsoResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const DetachServerIsoResponseAction = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DetachServerIsoResponseAction>;
+
 export interface DetachServerIsoResponse {
   action: DetachServerIsoResponseAction;
 }
+const DetachServerIsoResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<DetachServerIsoResponse>;
+
 export interface DisableServerBackupRequest {
   /** ID of the Server. */
   id: number;
 }
+const DisableServerBackupRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<DisableServerBackupRequest>;
+
 /** Status of the Action. */
 export type DisableServerBackupResponseActionStatus = "running" | "success" | "error";
+const DisableServerBackupResponseActionStatus = S.String;
+
 export type DisableServerBackupResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type DisableServerBackupResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const DisableServerBackupResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<DisableServerBackupResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DisableServerBackupResponseActionError = AddServerToPlacementGroupResponseActionError;
 export interface DisableServerBackupResponseAction {
@@ -517,20 +783,40 @@ export interface DisableServerBackupResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const DisableServerBackupResponseAction = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<DisableServerBackupResponseAction>;
+
 export interface DisableServerBackupResponse {
   action: DisableServerBackupResponseAction;
 }
+const DisableServerBackupResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<DisableServerBackupResponse>;
+
 export interface DisableServerRescueRequest {
   /** ID of the Server. */
   id: number;
 }
+const DisableServerRescueRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DisableServerRescueRequest>;
+
 /** Status of the Action. */
 export type DisableServerRescueResponseActionStatus = "running" | "success" | "error";
+const DisableServerRescueResponseActionStatus = S.String;
+
 export type DisableServerRescueResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type DisableServerRescueResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const DisableServerRescueResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<DisableServerRescueResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DisableServerRescueResponseActionError = AddServerToPlacementGroupResponseActionError;
 export interface DisableServerRescueResponseAction {
@@ -551,20 +837,40 @@ export interface DisableServerRescueResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const DisableServerRescueResponseAction = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DisableServerRescueResponseAction>;
+
 export interface DisableServerRescueResponse {
   action: DisableServerRescueResponseAction;
 }
+const DisableServerRescueResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<DisableServerRescueResponse>;
+
 export interface EnableServerBackupRequest {
   /** ID of the Server. */
   id: number;
 }
+const EnableServerBackupRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<EnableServerBackupRequest>;
+
 /** Status of the Action. */
 export type EnableServerBackupResponseActionStatus = "running" | "success" | "error";
+const EnableServerBackupResponseActionStatus = S.String;
+
 export type EnableServerBackupResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type EnableServerBackupResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const EnableServerBackupResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<EnableServerBackupResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type EnableServerBackupResponseActionError = AddServerToPlacementGroupResponseActionError;
 export interface EnableServerBackupResponseAction {
@@ -585,13 +891,30 @@ export interface EnableServerBackupResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const EnableServerBackupResponseAction = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<EnableServerBackupResponseAction>;
+
 export interface EnableServerBackupResponse {
   action: EnableServerBackupResponseAction;
 }
+const EnableServerBackupResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<EnableServerBackupResponse>;
+
 /** Type of rescue system to boot. */
 export type EnableServerRescueRequestType = "linux64";
+const EnableServerRescueRequestType = S.String;
+
 /** Array of SSH key IDs which should be injected into the rescue system. */
 export type EnableServerRescueRequestSshKeysList = Array<number>;
+const EnableServerRescueRequestSshKeysList = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<EnableServerRescueRequestSshKeysList>;
+
 export interface EnableServerRescueRequest {
   /** ID of the Server. */
   id: number;
@@ -600,13 +923,23 @@ export interface EnableServerRescueRequest {
   /** Array of SSH key IDs which should be injected into the rescue system. */
   ssh_keys?: EnableServerRescueRequestSshKeysList;
 }
+const EnableServerRescueRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<EnableServerRescueRequest>;
+
 /** Status of the Action. */
 export type EnableServerRescueResponseActionStatus = "running" | "success" | "error";
+const EnableServerRescueResponseActionStatus = S.String;
+
 export type EnableServerRescueResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type EnableServerRescueResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const EnableServerRescueResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<EnableServerRescueResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type EnableServerRescueResponseActionError = AddServerToPlacementGroupResponseActionError;
 export interface EnableServerRescueResponseAction {
@@ -627,22 +960,42 @@ export interface EnableServerRescueResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const EnableServerRescueResponseAction = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<EnableServerRescueResponseAction>;
+
 export interface EnableServerRescueResponse {
   /** Password that will be set for this Server once the Action succeeds. */
   root_password?: string | Redacted.Redacted<string>;
   action?: EnableServerRescueResponseAction;
 }
+const EnableServerRescueResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<EnableServerRescueResponse>;
+
 export interface GetServersActionRequest {
   /** ID of the Action. */
   id: number;
 }
+const GetServersActionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GetServersActionRequest>;
+
 /** Status of the Action. */
 export type GetServersActionResponseActionStatus = "running" | "success" | "error";
+const GetServersActionResponseActionStatus = S.String;
+
 export type GetServersActionResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type GetServersActionResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const GetServersActionResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<GetServersActionResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetServersActionResponseActionError = AddServerToPlacementGroupResponseActionError;
 export interface GetServersActionResponseAction {
@@ -663,9 +1016,19 @@ export interface GetServersActionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const GetServersActionResponseAction = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GetServersActionResponseAction>;
+
 export interface GetServersActionResponse {
   action: GetServersActionResponseAction;
 }
+const GetServersActionResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<GetServersActionResponse>;
+
 export type ListServerActionsRequestSortItem =
   | "id"
   | "id:asc"
@@ -682,14 +1045,24 @@ export type ListServerActionsRequestSortItem =
   | "finished"
   | "finished:asc"
   | "finished:desc";
+const ListServerActionsRequestSortItem = S.String;
+
 export type ListServerActionsRequestSortList = Array<
   ListServerActionsRequestSortItem | (string & {})
 >;
+const ListServerActionsRequestSortList = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListServerActionsRequestSortList>;
+
 /** Status of the Action. */
 export type ListServerActionsRequestStatusItem = "running" | "success" | "error";
 export type ListServerActionsRequestStatusList = Array<
   ListServerActionsRequestStatusItem | (string & {})
 >;
+const ListServerActionsRequestStatusList =
+  ListServerActionsRequestSortList as any as S.Schema<ListServerActionsRequestStatusList>;
+
 export interface ListServerActionsRequest {
   /** ID of the Server. */
   id: number;
@@ -702,13 +1075,23 @@ export interface ListServerActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
+const ListServerActionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ListServerActionsRequest>;
+
 /** Status of the Action. */
 export type ListServerActionsResponseActionsItemStatus = "running" | "success" | "error";
+const ListServerActionsResponseActionsItemStatus = S.String;
+
 export type ListServerActionsResponseActionsItemResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ListServerActionsResponseActionsItemResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const ListServerActionsResponseActionsItemResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ListServerActionsResponseActionsItemResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListServerActionsResponseActionsItemError =
   AddServerToPlacementGroupResponseActionError;
@@ -730,7 +1113,17 @@ export interface ListServerActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const ListServerActionsResponseActionsItem = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ListServerActionsResponseActionsItem>;
+
 export type ListServerActionsResponseActionsList = Array<ListServerActionsResponseActionsItem>;
+const ListServerActionsResponseActionsList = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListServerActionsResponseActionsList>;
+
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListServerActionsResponseMetaPagination {
   /** Current page number. */
@@ -746,15 +1139,33 @@ export interface ListServerActionsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
+const ListServerActionsResponseMetaPagination = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListServerActionsResponseMetaPagination>;
+
 export interface ListServerActionsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListServerActionsResponseMetaPagination;
 }
+const ListServerActionsResponseMeta = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ListServerActionsResponseMeta>;
+
 export interface ListServerActionsResponse {
   actions: ListServerActionsResponseActionsList;
   meta: ListServerActionsResponseMeta;
 }
+const ListServerActionsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListServerActionsResponse>;
+
 export type ListServersActionsRequestIdList = Array<number>;
+const ListServersActionsRequestIdList =
+  EnableServerRescueRequestSshKeysList as any as S.Schema<ListServersActionsRequestIdList>;
+
 export type ListServersActionsRequestSortItem =
   | "id"
   | "id:asc"
@@ -774,11 +1185,17 @@ export type ListServersActionsRequestSortItem =
 export type ListServersActionsRequestSortList = Array<
   ListServersActionsRequestSortItem | (string & {})
 >;
+const ListServersActionsRequestSortList =
+  ListServerActionsRequestSortList as any as S.Schema<ListServersActionsRequestSortList>;
+
 /** Status of the Action. */
 export type ListServersActionsRequestStatusItem = "running" | "success" | "error";
 export type ListServersActionsRequestStatusList = Array<
   ListServersActionsRequestStatusItem | (string & {})
 >;
+const ListServersActionsRequestStatusList =
+  ListServerActionsRequestSortList as any as S.Schema<ListServersActionsRequestStatusList>;
+
 export interface ListServersActionsRequest {
   /** Filter the actions by ID. May be used multiple times. The response will only contain actions matching the specified IDs. */
   id?: ListServersActionsRequestIdList;
@@ -791,13 +1208,23 @@ export interface ListServersActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
+const ListServersActionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListServersActionsRequest>;
+
 /** Status of the Action. */
 export type ListServersActionsResponseActionsItemStatus = "running" | "success" | "error";
+const ListServersActionsResponseActionsItemStatus = S.String;
+
 export type ListServersActionsResponseActionsItemResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ListServersActionsResponseActionsItemResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const ListServersActionsResponseActionsItemResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ListServersActionsResponseActionsItemResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListServersActionsResponseActionsItemError =
   AddServerToPlacementGroupResponseActionError;
@@ -819,7 +1246,17 @@ export interface ListServersActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const ListServersActionsResponseActionsItem = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListServersActionsResponseActionsItem>;
+
 export type ListServersActionsResponseActionsList = Array<ListServersActionsResponseActionsItem>;
+const ListServersActionsResponseActionsList = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListServersActionsResponseActionsList>;
+
 /** See "[Pagination](#description/pagination)" for more information. */
 export type ListServersActionsResponseMetaPagination = ListServerActionsResponseMetaPagination;
 export type ListServersActionsResponseMeta = ListServerActionsResponseMeta;
@@ -827,17 +1264,32 @@ export interface ListServersActionsResponse {
   actions: ListServersActionsResponseActionsList;
   meta: ListServerActionsResponseMeta;
 }
+const ListServersActionsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ListServersActionsResponse>;
+
 export interface PoweroffServerRequest {
   /** ID of the Server. */
   id: number;
 }
+const PoweroffServerRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<PoweroffServerRequest>;
+
 /** Status of the Action. */
 export type PoweroffServerResponseActionStatus = "running" | "success" | "error";
+const PoweroffServerResponseActionStatus = S.String;
+
 export type PoweroffServerResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type PoweroffServerResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const PoweroffServerResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<PoweroffServerResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type PoweroffServerResponseActionError = AddServerToPlacementGroupResponseActionError;
 export interface PoweroffServerResponseAction {
@@ -858,20 +1310,37 @@ export interface PoweroffServerResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const PoweroffServerResponseAction = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<PoweroffServerResponseAction>;
+
 export interface PoweroffServerResponse {
   action: PoweroffServerResponseAction;
 }
+const PoweroffServerResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<PoweroffServerResponse>;
+
 export interface PoweronServerRequest {
   /** ID of the Server. */
   id: number;
 }
+const PoweronServerRequest = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<PoweronServerRequest>;
+
 /** Status of the Action. */
 export type PoweronServerResponseActionStatus = "running" | "success" | "error";
+const PoweronServerResponseActionStatus = S.String;
+
 export type PoweronServerResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type PoweronServerResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const PoweronServerResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<PoweronServerResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type PoweronServerResponseActionError = AddServerToPlacementGroupResponseActionError;
 export interface PoweronServerResponseAction {
@@ -892,20 +1361,37 @@ export interface PoweronServerResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const PoweronServerResponseAction = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<PoweronServerResponseAction>;
+
 export interface PoweronServerResponse {
   action: PoweronServerResponseAction;
 }
+const PoweronServerResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<PoweronServerResponse>;
+
 export interface RebootServerRequest {
   /** ID of the Server. */
   id: number;
 }
+const RebootServerRequest = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<RebootServerRequest>;
+
 /** Status of the Action. */
 export type RebootServerResponseActionStatus = "running" | "success" | "error";
+const RebootServerResponseActionStatus = S.String;
+
 export type RebootServerResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type RebootServerResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const RebootServerResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<RebootServerResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type RebootServerResponseActionError = AddServerToPlacementGroupResponseActionError;
 export interface RebootServerResponseAction {
@@ -926,9 +1412,16 @@ export interface RebootServerResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const RebootServerResponseAction = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<RebootServerResponseAction>;
+
 export interface RebootServerResponse {
   action: RebootServerResponseAction;
 }
+const RebootServerResponse = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<RebootServerResponse>;
+
 export interface RebuildServerRequest {
   /** ID of the Server. */
   id: number;
@@ -937,13 +1430,20 @@ export interface RebuildServerRequest {
   /** Cloud-Init user data to use during Server rebuild. This field is limited to 32KiB. If not specified, the Server's previous user_data value will be re-used (if any was set). */
   user_data?: string;
 }
+const RebuildServerRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<RebuildServerRequest>;
+
 /** Status of the Action. */
 export type RebuildServerResponseActionStatus = "running" | "success" | "error";
+const RebuildServerResponseActionStatus = S.String;
+
 export type RebuildServerResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type RebuildServerResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const RebuildServerResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<RebuildServerResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type RebuildServerResponseActionError = AddServerToPlacementGroupResponseActionError;
 export interface RebuildServerResponseAction {
@@ -964,22 +1464,42 @@ export interface RebuildServerResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const RebuildServerResponseAction = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<RebuildServerResponseAction>;
+
 export interface RebuildServerResponse {
   /** New root password when not using SSH keys. */
   root_password?: string | Redacted.Redacted<string> | null;
   action?: RebuildServerResponseAction;
 }
+const RebuildServerResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<RebuildServerResponse>;
+
 export interface RemoveServerFromPlacementGroupRequest {
   /** ID of the Server. */
   id: number;
 }
+const RemoveServerFromPlacementGroupRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<RemoveServerFromPlacementGroupRequest>;
+
 /** Status of the Action. */
 export type RemoveServerFromPlacementGroupResponseActionStatus = "running" | "success" | "error";
+const RemoveServerFromPlacementGroupResponseActionStatus = S.String;
+
 export type RemoveServerFromPlacementGroupResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type RemoveServerFromPlacementGroupResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const RemoveServerFromPlacementGroupResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<RemoveServerFromPlacementGroupResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type RemoveServerFromPlacementGroupResponseActionError =
   AddServerToPlacementGroupResponseActionError;
@@ -1001,20 +1521,40 @@ export interface RemoveServerFromPlacementGroupResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const RemoveServerFromPlacementGroupResponseAction = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<RemoveServerFromPlacementGroupResponseAction>;
+
 export interface RemoveServerFromPlacementGroupResponse {
   action: RemoveServerFromPlacementGroupResponseAction;
 }
+const RemoveServerFromPlacementGroupResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<RemoveServerFromPlacementGroupResponse>;
+
 export interface RequestServerConsoleRequest {
   /** ID of the Server. */
   id: number;
 }
+const RequestServerConsoleRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<RequestServerConsoleRequest>;
+
 /** Status of the Action. */
 export type RequestServerConsoleResponseActionStatus = "running" | "success" | "error";
+const RequestServerConsoleResponseActionStatus = S.String;
+
 export type RequestServerConsoleResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type RequestServerConsoleResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const RequestServerConsoleResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<RequestServerConsoleResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type RequestServerConsoleResponseActionError = AddServerToPlacementGroupResponseActionError;
 export interface RequestServerConsoleResponseAction {
@@ -1035,6 +1575,11 @@ export interface RequestServerConsoleResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const RequestServerConsoleResponseAction = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<RequestServerConsoleResponseAction>;
+
 export interface RequestServerConsoleResponse {
   /** URL of websocket proxy to use; this includes a token which is valid for a limited time only. */
   wss_url: string;
@@ -1042,17 +1587,29 @@ export interface RequestServerConsoleResponse {
   password: string | Redacted.Redacted<string>;
   action: RequestServerConsoleResponseAction;
 }
+const RequestServerConsoleResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<RequestServerConsoleResponse>;
+
 export interface ResetServerRequest {
   /** ID of the Server. */
   id: number;
 }
+const ResetServerRequest = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<ResetServerRequest>;
+
 /** Status of the Action. */
 export type ResetServerResponseActionStatus = "running" | "success" | "error";
+const ResetServerResponseActionStatus = S.String;
+
 export type ResetServerResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ResetServerResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const ResetServerResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ResetServerResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ResetServerResponseActionError = AddServerToPlacementGroupResponseActionError;
 export interface ResetServerResponseAction {
@@ -1073,20 +1630,37 @@ export interface ResetServerResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const ResetServerResponseAction = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ResetServerResponseAction>;
+
 export interface ResetServerResponse {
   action: ResetServerResponseAction;
 }
+const ResetServerResponse = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ResetServerResponse>;
+
 export interface ResetServerPasswordRequest {
   /** ID of the Server. */
   id: number;
 }
+const ResetServerPasswordRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ResetServerPasswordRequest>;
+
 /** Status of the Action. */
 export type ResetServerPasswordResponseActionStatus = "running" | "success" | "error";
+const ResetServerPasswordResponseActionStatus = S.String;
+
 export type ResetServerPasswordResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ResetServerPasswordResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const ResetServerPasswordResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ResetServerPasswordResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ResetServerPasswordResponseActionError = AddServerToPlacementGroupResponseActionError;
 export interface ResetServerPasswordResponseAction {
@@ -1107,22 +1681,42 @@ export interface ResetServerPasswordResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const ResetServerPasswordResponseAction = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ResetServerPasswordResponseAction>;
+
 export interface ResetServerPasswordResponse {
   /** Password that will be set for this Server once the Action succeeds. */
   root_password?: string | Redacted.Redacted<string>;
   action?: ResetServerPasswordResponseAction;
 }
+const ResetServerPasswordResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ResetServerPasswordResponse>;
+
 export interface ShutdownServerRequest {
   /** ID of the Server. */
   id: number;
 }
+const ShutdownServerRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ShutdownServerRequest>;
+
 /** Status of the Action. */
 export type ShutdownServerResponseActionStatus = "running" | "success" | "error";
+const ShutdownServerResponseActionStatus = S.String;
+
 export type ShutdownServerResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ShutdownServerResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
+const ShutdownServerResponseActionResourcesList =
+  AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ShutdownServerResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ShutdownServerResponseActionError = AddServerToPlacementGroupResponseActionError;
 export interface ShutdownServerResponseAction {
@@ -1143,9 +1737,19 @@ export interface ShutdownServerResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
+const ShutdownServerResponseAction = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ShutdownServerResponseAction>;
+
 export interface ShutdownServerResponse {
   action: ShutdownServerResponseAction;
 }
+const ShutdownServerResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ShutdownServerResponse>;
+
 export type AddServerToPlacementGroupError = HetznerOpError;
 /** Add a Server to a Placement Group Adds a Server to a Placement Group. Server must be powered off for this command to succeed. #### Operation specific errors */
 export const addServerToPlacementGroup: API.OperationMethod<
@@ -1154,8 +1758,8 @@ export const addServerToPlacementGroup: API.OperationMethod<
   AddServerToPlacementGroupError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AddServerToPlacementGroupRequest>,
-  output: __S(5) as any as S.Schema<AddServerToPlacementGroupResponse>,
+  input: AddServerToPlacementGroupRequest,
+  output: AddServerToPlacementGroupResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1169,8 +1773,8 @@ export const attachServerIso: API.OperationMethod<
   AttachServerIsoError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<AttachServerIsoRequest>,
-  output: __S(8) as any as S.Schema<AttachServerIsoResponse>,
+  input: AttachServerIsoRequest,
+  output: AttachServerIsoResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1184,8 +1788,8 @@ export const attachServerToNetwork: API.OperationMethod<
   AttachServerToNetworkError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<AttachServerToNetworkRequest>,
-  output: __S(12) as any as S.Schema<AttachServerToNetworkResponse>,
+  input: AttachServerToNetworkRequest,
+  output: AttachServerToNetworkResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1199,8 +1803,8 @@ export const changeServerAliasIps: API.OperationMethod<
   ChangeServerAliasIpsError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<ChangeServerAliasIpsRequest>,
-  output: __S(15) as any as S.Schema<ChangeServerAliasIpsResponse>,
+  input: ChangeServerAliasIpsRequest,
+  output: ChangeServerAliasIpsResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1214,8 +1818,8 @@ export const changeServerDnsPtr: API.OperationMethod<
   ChangeServerDnsPtrError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<ChangeServerDnsPtrRequest>,
-  output: __S(18) as any as S.Schema<ChangeServerDnsPtrResponse>,
+  input: ChangeServerDnsPtrRequest,
+  output: ChangeServerDnsPtrResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1229,8 +1833,8 @@ export const changeServerProtection: API.OperationMethod<
   ChangeServerProtectionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<ChangeServerProtectionRequest>,
-  output: __S(21) as any as S.Schema<ChangeServerProtectionResponse>,
+  input: ChangeServerProtectionRequest,
+  output: ChangeServerProtectionResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1244,8 +1848,8 @@ export const changeServerType: API.OperationMethod<
   ChangeServerTypeError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<ChangeServerTypeRequest>,
-  output: __S(24) as any as S.Schema<ChangeServerTypeResponse>,
+  input: ChangeServerTypeRequest,
+  output: ChangeServerTypeResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1259,8 +1863,8 @@ export const createServerImage: API.OperationMethod<
   CreateServerImageError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<CreateServerImageRequest>,
-  output: __S(32) as any as S.Schema<CreateServerImageResponse>,
+  input: CreateServerImageRequest,
+  output: CreateServerImageResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1274,8 +1878,8 @@ export const detachServerFromNetwork: API.OperationMethod<
   DetachServerFromNetworkError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<DetachServerFromNetworkRequest>,
-  output: __S(35) as any as S.Schema<DetachServerFromNetworkResponse>,
+  input: DetachServerFromNetworkRequest,
+  output: DetachServerFromNetworkResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1289,8 +1893,8 @@ export const detachServerIso: API.OperationMethod<
   DetachServerIsoError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<DetachServerIsoRequest>,
-  output: __S(38) as any as S.Schema<DetachServerIsoResponse>,
+  input: DetachServerIsoRequest,
+  output: DetachServerIsoResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1304,8 +1908,8 @@ export const disableServerBackup: API.OperationMethod<
   DisableServerBackupError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<DisableServerBackupRequest>,
-  output: __S(41) as any as S.Schema<DisableServerBackupResponse>,
+  input: DisableServerBackupRequest,
+  output: DisableServerBackupResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1319,8 +1923,8 @@ export const disableServerRescue: API.OperationMethod<
   DisableServerRescueError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<DisableServerRescueRequest>,
-  output: __S(44) as any as S.Schema<DisableServerRescueResponse>,
+  input: DisableServerRescueRequest,
+  output: DisableServerRescueResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1334,8 +1938,8 @@ export const enableServerBackup: API.OperationMethod<
   EnableServerBackupError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<EnableServerBackupRequest>,
-  output: __S(47) as any as S.Schema<EnableServerBackupResponse>,
+  input: EnableServerBackupRequest,
+  output: EnableServerBackupResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1349,8 +1953,8 @@ export const enableServerRescue: API.OperationMethod<
   EnableServerRescueError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<EnableServerRescueRequest>,
-  output: __S(51) as any as S.Schema<EnableServerRescueResponse>,
+  input: EnableServerRescueRequest,
+  output: EnableServerRescueResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1364,8 +1968,8 @@ export const getServersAction: API.OperationMethod<
   GetServersActionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<GetServersActionRequest>,
-  output: __S(54) as any as S.Schema<GetServersActionResponse>,
+  input: GetServersActionRequest,
+  output: GetServersActionResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1381,8 +1985,8 @@ export const listServerActions: API.PaginatedOperationMethod<
   ListServerActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(56) as any as S.Schema<ListServerActionsRequest>,
-    output: __S(61) as any as S.Schema<ListServerActionsResponse>,
+    input: ListServerActionsRequest,
+    output: ListServerActionsResponse,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -1407,8 +2011,8 @@ export const listServersActions: API.PaginatedOperationMethod<
   ListServersActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(62) as any as S.Schema<ListServersActionsRequest>,
-    output: __S(65) as any as S.Schema<ListServersActionsResponse>,
+    input: ListServersActionsRequest,
+    output: ListServersActionsResponse,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -1431,8 +2035,8 @@ export const poweroffServer: API.OperationMethod<
   PoweroffServerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<PoweroffServerRequest>,
-  output: __S(68) as any as S.Schema<PoweroffServerResponse>,
+  input: PoweroffServerRequest,
+  output: PoweroffServerResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1446,8 +2050,8 @@ export const poweronServer: API.OperationMethod<
   PoweronServerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<PoweronServerRequest>,
-  output: __S(71) as any as S.Schema<PoweronServerResponse>,
+  input: PoweronServerRequest,
+  output: PoweronServerResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1461,8 +2065,8 @@ export const rebootServer: API.OperationMethod<
   RebootServerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<RebootServerRequest>,
-  output: __S(74) as any as S.Schema<RebootServerResponse>,
+  input: RebootServerRequest,
+  output: RebootServerResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1476,8 +2080,8 @@ export const rebuildServer: API.OperationMethod<
   RebuildServerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<RebuildServerRequest>,
-  output: __S(77) as any as S.Schema<RebuildServerResponse>,
+  input: RebuildServerRequest,
+  output: RebuildServerResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1491,8 +2095,8 @@ export const removeServerFromPlacementGroup: API.OperationMethod<
   RemoveServerFromPlacementGroupError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<RemoveServerFromPlacementGroupRequest>,
-  output: __S(80) as any as S.Schema<RemoveServerFromPlacementGroupResponse>,
+  input: RemoveServerFromPlacementGroupRequest,
+  output: RemoveServerFromPlacementGroupResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1506,8 +2110,8 @@ export const requestServerConsole: API.OperationMethod<
   RequestServerConsoleError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<RequestServerConsoleRequest>,
-  output: __S(83) as any as S.Schema<RequestServerConsoleResponse>,
+  input: RequestServerConsoleRequest,
+  output: RequestServerConsoleResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1521,8 +2125,8 @@ export const resetServer: API.OperationMethod<
   ResetServerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<ResetServerRequest>,
-  output: __S(86) as any as S.Schema<ResetServerResponse>,
+  input: ResetServerRequest,
+  output: ResetServerResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1536,8 +2140,8 @@ export const resetServerPassword: API.OperationMethod<
   ResetServerPasswordError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<ResetServerPasswordRequest>,
-  output: __S(89) as any as S.Schema<ResetServerPasswordResponse>,
+  input: ResetServerPasswordRequest,
+  output: ResetServerPasswordResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1551,8 +2155,8 @@ export const shutdownServer: API.OperationMethod<
   ShutdownServerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<ShutdownServerRequest>,
-  output: __S(92) as any as S.Schema<ShutdownServerResponse>,
+  input: ShutdownServerRequest,
+  output: ShutdownServerResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1586,7 +2190,7 @@ function __c0(j: number): any {
         identifier: "AddServerToPlacementGroupResponseActionResourcesItem",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(AddServerToPlacementGroupResponseActionResourcesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1601,12 +2205,12 @@ function __c0(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: AddServerToPlacementGroupResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: AddServerToPlacementGroupResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "AddServerToPlacementGroupResponseAction",
@@ -1614,7 +2218,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: __S(4),
+          action: AddServerToPlacementGroupResponseAction,
         }),
       ).annotate({
         identifier: "AddServerToPlacementGroupResponse",
@@ -1631,12 +2235,12 @@ function __c0(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: AttachServerIsoResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: AttachServerIsoResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "AttachServerIsoResponseAction",
@@ -1648,7 +2252,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: __S(7),
+          action: AttachServerIsoResponseAction,
         }),
       ).annotate({ identifier: "AttachServerIsoResponse" });
     case 1:
@@ -1659,7 +2263,7 @@ function __c1(j: number): any {
           id: S.Number.pipe(T.Label()),
           network: S.Number,
           ip: S.optional(S.String),
-          alias_ips: S.optional(__S(9)),
+          alias_ips: S.optional(AttachServerToNetworkRequestAliasIpsList),
           ip_range: S.optional(S.String),
         }).pipe(
           T.Http({ method: "POST", uri: "/servers/{id}/actions/attach_to_network", code: 200 }),
@@ -1672,12 +2276,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: AttachServerToNetworkResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: AttachServerToNetworkResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "AttachServerToNetworkResponseAction",
@@ -1685,7 +2289,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          action: __S(11),
+          action: AttachServerToNetworkResponseAction,
         }),
       ).annotate({
         identifier: "AttachServerToNetworkResponse",
@@ -1695,7 +2299,7 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number.pipe(T.Label()),
           network: S.Number,
-          alias_ips: __S(9),
+          alias_ips: ChangeServerAliasIpsRequestAliasIpsList,
         }).pipe(
           T.Http({ method: "POST", uri: "/servers/{id}/actions/change_alias_ips", code: 200 }),
         ),
@@ -1707,12 +2311,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ChangeServerAliasIpsResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: ChangeServerAliasIpsResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "ChangeServerAliasIpsResponseAction",
@@ -1720,7 +2324,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          action: __S(14),
+          action: ChangeServerAliasIpsResponseAction,
         }),
       ).annotate({
         identifier: "ChangeServerAliasIpsResponse",
@@ -1744,12 +2348,12 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ChangeServerDnsPtrResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: ChangeServerDnsPtrResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "ChangeServerDnsPtrResponseAction",
@@ -1757,7 +2361,7 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(17),
+          action: ChangeServerDnsPtrResponseAction,
         }),
       ).annotate({
         identifier: "ChangeServerDnsPtrResponse",
@@ -1779,12 +2383,12 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ChangeServerProtectionResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: ChangeServerProtectionResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "ChangeServerProtectionResponseAction",
@@ -1792,7 +2396,7 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: __S(20),
+          action: ChangeServerProtectionResponseAction,
         }),
       ).annotate({
         identifier: "ChangeServerProtectionResponse",
@@ -1810,12 +2414,12 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ChangeServerTypeResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: ChangeServerTypeResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "ChangeServerTypeResponseAction",
@@ -1827,7 +2431,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: __S(23),
+          action: ChangeServerTypeResponseAction,
         }),
       ).annotate({ identifier: "ChangeServerTypeResponse" });
     case 1:
@@ -1837,8 +2441,8 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number.pipe(T.Label()),
           description: S.optional(S.String),
-          type: S.optional(S.String),
-          labels: S.optional(__S(25)),
+          type: S.optional(CreateServerImageRequestType),
+          labels: S.optional(CreateServerImageRequestLabelsMap),
         }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/create_image", code: 200 })),
       ).annotate({ identifier: "CreateServerImageRequest" });
     case 3:
@@ -1871,24 +2475,24 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
-          type: S.String,
-          status: S.String,
+          type: CreateServerImageResponseImageType,
+          status: CreateServerImageResponseImageStatus,
           name: S.NullOr(S.String),
           description: S.String,
           image_size: S.NullOr(S.Number),
           disk_size: S.Number,
           created: S.String,
-          created_from: S.NullOr(__S(27)),
+          created_from: S.NullOr(CreateServerImageResponseImageCreatedFrom),
           bound_to: S.NullOr(S.Number),
-          os_flavor: S.String,
+          os_flavor: CreateServerImageResponseImageOsFlavor,
           os_version: S.NullOr(S.String),
           rapid_deploy: S.optional(S.Boolean),
-          protection: __S(28),
+          protection: CreateServerImageResponseImageProtection,
           deprecated: S.NullOr(S.String),
-          deprecation: S.NullOr(__S(29)),
+          deprecation: S.NullOr(CreateServerImageResponseImageDeprecation),
           deleted: S.NullOr(S.String),
-          labels: __S(25),
-          architecture: S.String,
+          labels: CreateServerImageResponseImageLabelsMap,
+          architecture: CreateServerImageResponseImageArchitecture,
         }),
       ).annotate({
         identifier: "CreateServerImageResponseImage",
@@ -1898,12 +2502,12 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: CreateServerImageResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: CreateServerImageResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "CreateServerImageResponseAction",
@@ -1915,8 +2519,8 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          image: S.optional(__S(30)),
-          action: S.optional(__S(31)),
+          image: S.optional(CreateServerImageResponseImage),
+          action: S.optional(CreateServerImageResponseAction),
         }),
       ).annotate({
         identifier: "CreateServerImageResponse",
@@ -1937,12 +2541,12 @@ function __c4(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: DetachServerFromNetworkResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: DetachServerFromNetworkResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "DetachServerFromNetworkResponseAction",
@@ -1950,7 +2554,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          action: __S(34),
+          action: DetachServerFromNetworkResponseAction,
         }),
       ).annotate({
         identifier: "DetachServerFromNetworkResponse",
@@ -1966,12 +2570,12 @@ function __c4(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: DetachServerIsoResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: DetachServerIsoResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "DetachServerIsoResponseAction",
@@ -1979,7 +2583,7 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          action: __S(37),
+          action: DetachServerIsoResponseAction,
         }),
       ).annotate({ identifier: "DetachServerIsoResponse" });
     case 7:
@@ -1999,12 +2603,12 @@ function __c5(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: DisableServerBackupResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: DisableServerBackupResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "DisableServerBackupResponseAction",
@@ -2012,7 +2616,7 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          action: __S(40),
+          action: DisableServerBackupResponseAction,
         }),
       ).annotate({
         identifier: "DisableServerBackupResponse",
@@ -2030,12 +2634,12 @@ function __c5(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: DisableServerRescueResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: DisableServerRescueResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "DisableServerRescueResponseAction",
@@ -2043,7 +2647,7 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          action: __S(43),
+          action: DisableServerRescueResponseAction,
         }),
       ).annotate({
         identifier: "DisableServerRescueResponse",
@@ -2061,12 +2665,12 @@ function __c5(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: EnableServerBackupResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: EnableServerBackupResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "EnableServerBackupResponseAction",
@@ -2074,7 +2678,7 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          action: __S(46),
+          action: EnableServerBackupResponseAction,
         }),
       ).annotate({
         identifier: "EnableServerBackupResponse",
@@ -2089,8 +2693,8 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          type: S.optional(S.String),
-          ssh_keys: S.optional(__S(48)),
+          type: S.optional(EnableServerRescueRequestType),
+          ssh_keys: S.optional(EnableServerRescueRequestSshKeysList),
         }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/enable_rescue", code: 200 })),
       ).annotate({
         identifier: "EnableServerRescueRequest",
@@ -2100,12 +2704,12 @@ function __c6(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: EnableServerRescueResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: EnableServerRescueResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "EnableServerRescueResponseAction",
@@ -2114,7 +2718,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           root_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          action: S.optional(__S(50)),
+          action: S.optional(EnableServerRescueResponseAction),
         }),
       ).annotate({
         identifier: "EnableServerRescueResponse",
@@ -2130,12 +2734,12 @@ function __c6(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: GetServersActionResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: GetServersActionResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "GetServersActionResponseAction",
@@ -2143,11 +2747,11 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          action: __S(53),
+          action: GetServersActionResponseAction,
         }),
       ).annotate({ identifier: "GetServersActionResponse" });
     case 7:
-      return S.Array(S.String);
+      return S.Array(ListServerActionsRequestSortItem);
   }
 }
 function __c7(j: number): any {
@@ -2156,8 +2760,8 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          sort: S.optional(__S(55).pipe(T.Query())),
-          status: S.optional(__S(55).pipe(T.Query())),
+          sort: S.optional(ListServerActionsRequestSortList.pipe(T.Query())),
+          status: S.optional(ListServerActionsRequestStatusList.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/servers/{id}/actions", code: 200 })),
@@ -2167,18 +2771,18 @@ function __c7(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ListServerActionsResponseActionsItemStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: ListServerActionsResponseActionsItemResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "ListServerActionsResponseActionsItem",
       });
     case 2:
-      return S.Array(__S(57));
+      return S.Array(ListServerActionsResponseActionsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2195,7 +2799,7 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(59),
+          pagination: ListServerActionsResponseMetaPagination,
         }),
       ).annotate({
         identifier: "ListServerActionsResponseMeta",
@@ -2203,8 +2807,8 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(58),
-          meta: __S(60),
+          actions: ListServerActionsResponseActionsList,
+          meta: ListServerActionsResponseMeta,
         }),
       ).annotate({
         identifier: "ListServerActionsResponse",
@@ -2212,9 +2816,9 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(__S(48).pipe(T.Query())),
-          sort: S.optional(__S(55).pipe(T.Query())),
-          status: S.optional(__S(55).pipe(T.Query())),
+          id: S.optional(ListServersActionsRequestIdList.pipe(T.Query())),
+          sort: S.optional(ListServersActionsRequestSortList.pipe(T.Query())),
+          status: S.optional(ListServersActionsRequestStatusList.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/servers/actions", code: 200 })),
@@ -2226,12 +2830,12 @@ function __c7(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ListServersActionsResponseActionsItemStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: ListServersActionsResponseActionsItemResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "ListServersActionsResponseActionsItem",
@@ -2241,12 +2845,12 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(ListServersActionsResponseActionsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(64),
-          meta: __S(60),
+          actions: ListServersActionsResponseActionsList,
+          meta: ListServerActionsResponseMeta,
         }),
       ).annotate({
         identifier: "ListServersActionsResponse",
@@ -2262,12 +2866,12 @@ function __c8(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: PoweroffServerResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: PoweroffServerResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "PoweroffServerResponseAction",
@@ -2275,7 +2879,7 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          action: __S(67),
+          action: PoweroffServerResponseAction,
         }),
       ).annotate({ identifier: "PoweroffServerResponse" });
     case 5:
@@ -2289,12 +2893,12 @@ function __c8(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: PoweronServerResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: PoweronServerResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "PoweronServerResponseAction",
@@ -2302,7 +2906,7 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          action: __S(70),
+          action: PoweronServerResponseAction,
         }),
       ).annotate({ identifier: "PoweronServerResponse" });
   }
@@ -2320,12 +2924,12 @@ function __c9(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: RebootServerResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: RebootServerResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "RebootServerResponseAction",
@@ -2333,7 +2937,7 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(73),
+          action: RebootServerResponseAction,
         }),
       ).annotate({ identifier: "RebootServerResponse" });
     case 3:
@@ -2349,12 +2953,12 @@ function __c9(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: RebuildServerResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: RebuildServerResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "RebuildServerResponseAction",
@@ -2363,7 +2967,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           root_password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          action: S.optional(__S(76)),
+          action: S.optional(RebuildServerResponseAction),
         }),
       ).annotate({ identifier: "RebuildServerResponse" });
     case 6:
@@ -2385,12 +2989,12 @@ function __c9(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: RemoveServerFromPlacementGroupResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: RemoveServerFromPlacementGroupResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "RemoveServerFromPlacementGroupResponseAction",
@@ -2402,7 +3006,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: __S(79),
+          action: RemoveServerFromPlacementGroupResponseAction,
         }),
       ).annotate({
         identifier: "RemoveServerFromPlacementGroupResponse",
@@ -2422,12 +3026,12 @@ function __c10(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: RequestServerConsoleResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: RequestServerConsoleResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "RequestServerConsoleResponseAction",
@@ -2437,7 +3041,7 @@ function __c10(j: number): any {
         S.Struct({
           wss_url: S.String,
           password: S.String.pipe(T.SensitiveValue({})),
-          action: __S(82),
+          action: RequestServerConsoleResponseAction,
         }),
       ).annotate({
         identifier: "RequestServerConsoleResponse",
@@ -2453,12 +3057,12 @@ function __c10(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ResetServerResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: ResetServerResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "ResetServerResponseAction",
@@ -2466,7 +3070,7 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          action: __S(85),
+          action: ResetServerResponseAction,
         }),
       ).annotate({ identifier: "ResetServerResponse" });
     case 7:
@@ -2486,12 +3090,12 @@ function __c11(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ResetServerPasswordResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: ResetServerPasswordResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "ResetServerPasswordResponseAction",
@@ -2500,7 +3104,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           root_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          action: S.optional(__S(88)),
+          action: S.optional(ResetServerPasswordResponseAction),
         }),
       ).annotate({
         identifier: "ResetServerPasswordResponse",
@@ -2516,12 +3120,12 @@ function __c11(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ShutdownServerResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: ShutdownServerResponseActionResourcesList,
+          error: S.NullOr(AddServerToPlacementGroupResponseActionError),
         }),
       ).annotate({
         identifier: "ShutdownServerResponseAction",
@@ -2529,41 +3133,8 @@ function __c11(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          action: __S(91),
+          action: ShutdownServerResponseAction,
         }),
       ).annotate({ identifier: "ShutdownServerResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
   }
 }

@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -56,6 +54,11 @@ export interface ApproveAllWaitlistEntriesRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const ApproveAllWaitlistEntriesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ApproveAllWaitlistEntriesRequest>;
+
 export interface ApproveAllWaitlistEntriesResponse {
   /** The seller account whose signups were queued, prefixed `biz_`. */
   account_id: string;
@@ -64,18 +67,30 @@ export interface ApproveAllWaitlistEntriesResponse {
   /** Whether any pending signups were queued for approval. `false` when there were none. */
   queued: boolean;
 }
+const ApproveAllWaitlistEntriesResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ApproveAllWaitlistEntriesResponse>;
+
 export interface ApproveWaitlistEntryRequest {
   /** Waitlist signup ID, prefixed `entry_`. */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const ApproveWaitlistEntryRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ApproveWaitlistEntryRequest>;
+
 /** Why the last approval attempt failed, or `null` when none has. `plan_unavailable` -- the plan, product, or seller account was deleted. `already_member` -- the user already has a membership on a one-per-user product. `checkout_failed` -- checkout failed, usually a declined payment, and the signup was denied. `unknown` -- another failure; retry. Cleared when approval is requeued. */
 export type WaitlistEntryApprovalFailureReason =
   | "plan_unavailable"
   | "already_member"
   | "checkout_failed"
   | "unknown";
+const WaitlistEntryApprovalFailureReason = S.String;
+
 export interface WaitlistEntryCustomFieldResponse {
   /** The buyer's answer. */
   answer: string;
@@ -84,9 +99,21 @@ export interface WaitlistEntryCustomFieldResponse {
   /** The question shown when the signup was submitted. */
   question: string;
 }
+const WaitlistEntryCustomFieldResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<WaitlistEntryCustomFieldResponse>;
+
 export type WaitlistEntryCustomFieldResponsesList = Array<WaitlistEntryCustomFieldResponse>;
+const WaitlistEntryCustomFieldResponsesList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<WaitlistEntryCustomFieldResponsesList>;
+
 /** The signup's current state. Approval runs asynchronously, so a signup stays `pending` until processing completes. `approved` alone does not prove an active membership; check `membership_id`. */
 export type WaitlistEntryStatus = "pending" | "approved" | "denied" | "canceled";
+const WaitlistEntryStatus = S.String;
+
 export interface WaitlistEntry {
   /** The seller account, prefixed `biz_`. */
   account_id: string;
@@ -114,21 +141,38 @@ export interface WaitlistEntry {
   /** The user who submitted this signup, prefixed `user_`. */
   user_id: string;
 }
+const WaitlistEntry = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<WaitlistEntry>;
+
 export interface CancelWaitlistEntryRequest {
   /** Waitlist signup ID, prefixed `entry_`. */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const CancelWaitlistEntryRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CancelWaitlistEntryRequest>;
+
 export interface CreateWaitlistEntryRequestCustomFieldResponsesItem {
   /** The buyer's answer. */
   answer: string;
   /** The checkout question being answered, prefixed `field_`. */
   custom_field_id: string;
 }
+const CreateWaitlistEntryRequestCustomFieldResponsesItem = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateWaitlistEntryRequestCustomFieldResponsesItem>;
+
 /** Answers to the plan's checkout questions. Every required question must be answered. */
 export type CreateWaitlistEntryRequestCustomFieldResponsesList =
   Array<CreateWaitlistEntryRequestCustomFieldResponsesItem>;
+const CreateWaitlistEntryRequestCustomFieldResponsesList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateWaitlistEntryRequestCustomFieldResponsesList>;
+
 export interface CreateWaitlistEntryRequest {
   /** Answers to the plan's checkout questions. Every required question must be answered. */
   custom_field_responses?: CreateWaitlistEntryRequestCustomFieldResponsesList;
@@ -139,19 +183,40 @@ export interface CreateWaitlistEntryRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const CreateWaitlistEntryRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateWaitlistEntryRequest>;
+
 export interface DenyWaitlistEntryRequest {
   /** Waitlist signup ID, prefixed `entry_`. */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const DenyWaitlistEntryRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DenyWaitlistEntryRequest>;
+
 export interface GetWaitlistEntryRequest {
   /** Waitlist signup ID, prefixed `entry_`. */
   id: string;
 }
+const GetWaitlistEntryRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetWaitlistEntryRequest>;
+
 export type ListWaitlistEntriesRequestStatus = "pending" | "approved" | "denied" | "canceled";
+const ListWaitlistEntriesRequestStatus = S.String;
+
 export type ListWaitlistEntriesRequestOrder = "created_at";
+const ListWaitlistEntriesRequestOrder = S.String;
+
 export type ListWaitlistEntriesRequestDirection = "asc" | "desc";
+const ListWaitlistEntriesRequestDirection = S.String;
+
 export interface ListWaitlistEntriesRequest {
   /** Number of results to return from the start of the range. */
   first?: number;
@@ -178,17 +243,37 @@ export interface ListWaitlistEntriesRequest {
   /** The sort direction for results. Defaults to descending. */
   direction?: ListWaitlistEntriesRequestDirection | (string & {});
 }
+const ListWaitlistEntriesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ListWaitlistEntriesRequest>;
+
 export type ListWaitlistEntriesResponseDataList = Array<WaitlistEntry>;
+const ListWaitlistEntriesResponseDataList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ListWaitlistEntriesResponseDataList>;
+
 export interface ListWaitlistEntriesResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
+const ListWaitlistEntriesResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ListWaitlistEntriesResponsePageInfo>;
+
 export interface ListWaitlistEntriesResponse {
   data: ListWaitlistEntriesResponseDataList;
   page_info: ListWaitlistEntriesResponsePageInfo;
 }
+const ListWaitlistEntriesResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListWaitlistEntriesResponse>;
+
 export type ApproveAllWaitlistEntriesError =
   | BadRequest
   | Forbidden
@@ -202,8 +287,8 @@ export const approveAllWaitlistEntries: API.OperationMethod<
   ApproveAllWaitlistEntriesError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ApproveAllWaitlistEntriesRequest>,
-  output: __S(1) as any as S.Schema<ApproveAllWaitlistEntriesResponse>,
+  input: ApproveAllWaitlistEntriesRequest,
+  output: ApproveAllWaitlistEntriesResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -217,8 +302,8 @@ export const approveWaitlistEntry: API.OperationMethod<
   ApproveWaitlistEntryError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<ApproveWaitlistEntryRequest>,
-  output: __S(5) as any as S.Schema<WaitlistEntry>,
+  input: ApproveWaitlistEntryRequest,
+  output: WaitlistEntry,
   errors: [Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -232,8 +317,8 @@ export const cancelWaitlistEntry: API.OperationMethod<
   CancelWaitlistEntryError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CancelWaitlistEntryRequest>,
-  output: __S(5) as any as S.Schema<WaitlistEntry>,
+  input: CancelWaitlistEntryRequest,
+  output: WaitlistEntry,
   errors: [Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -247,8 +332,8 @@ export const createWaitlistEntry: API.OperationMethod<
   CreateWaitlistEntryError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CreateWaitlistEntryRequest>,
-  output: __S(5) as any as S.Schema<WaitlistEntry>,
+  input: CreateWaitlistEntryRequest,
+  output: WaitlistEntry,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -262,8 +347,8 @@ export const denyWaitlistEntry: API.OperationMethod<
   DenyWaitlistEntryError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DenyWaitlistEntryRequest>,
-  output: __S(5) as any as S.Schema<WaitlistEntry>,
+  input: DenyWaitlistEntryRequest,
+  output: WaitlistEntry,
   errors: [Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -277,8 +362,8 @@ export const getWaitlistEntry: API.OperationMethod<
   GetWaitlistEntryError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetWaitlistEntryRequest>,
-  output: __S(5) as any as S.Schema<WaitlistEntry>,
+  input: GetWaitlistEntryRequest,
+  output: WaitlistEntry,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -294,8 +379,8 @@ export const listWaitlistEntries: API.PaginatedOperationMethod<
   WaitlistEntry
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(12) as any as S.Schema<ListWaitlistEntriesRequest>,
-    output: __S(15) as any as S.Schema<ListWaitlistEntriesResponse>,
+    input: ListWaitlistEntriesRequest,
+    output: ListWaitlistEntriesResponse,
     errors: [BadRequest, Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -354,21 +439,21 @@ function __c0(j: number): any {
         identifier: "WaitlistEntryCustomFieldResponse",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(WaitlistEntryCustomFieldResponse);
     case 5:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
-          approval_failure_reason: S.NullOr(S.String),
+          approval_failure_reason: S.NullOr(WaitlistEntryApprovalFailureReason),
           buyer_account_id: S.NullOr(S.String),
           created_at: S.String,
-          custom_field_responses: __S(4),
+          custom_field_responses: WaitlistEntryCustomFieldResponsesList,
           id: S.String,
           membership_id: S.NullOr(S.String),
           metadata: S.Unknown,
           plan_id: S.String,
           product_id: S.NullOr(S.String),
-          status: S.String,
+          status: WaitlistEntryStatus,
           updated_at: S.String,
           user_id: S.String,
         }),
@@ -396,11 +481,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(CreateWaitlistEntryRequestCustomFieldResponsesItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          custom_field_responses: S.optional(__S(8)),
+          custom_field_responses: S.optional(CreateWaitlistEntryRequestCustomFieldResponsesList),
           metadata: S.optional(S.Unknown),
           plan_id: S.String,
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -431,17 +516,17 @@ function __c1(j: number): any {
           plan_id: S.optional(S.String.pipe(T.Query())),
           account_id: S.optional(S.String.pipe(T.Query())),
           product_id: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(ListWaitlistEntriesRequestStatus.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListWaitlistEntriesRequestOrder.pipe(T.Query())),
+          direction: S.optional(ListWaitlistEntriesRequestDirection.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/waitlist_entries", code: 200 })),
       ).annotate({
         identifier: "ListWaitlistEntriesRequest",
       });
     case 5:
-      return S.Array(__S(5));
+      return S.Array(WaitlistEntry);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -456,24 +541,11 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(13),
-          page_info: __S(14),
+          data: ListWaitlistEntriesResponseDataList,
+          page_info: ListWaitlistEntriesResponsePageInfo,
         }),
       ).annotate({
         identifier: "ListWaitlistEntriesResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

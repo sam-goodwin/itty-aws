@@ -7,20 +7,24 @@ import { slackPaginate } from "../pagination.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
 export interface DeletePhotoRequest {}
+const DeletePhotoRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DeletePhotoRequest>;
+
 export interface DeletePhotoResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const DeletePhotoResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DeletePhotoResponse>;
+
 export interface GetPresenceRequest {
   /** User to get presence info on. Defaults to the authed user. */
   user?: string;
 }
+const GetPresenceRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetPresenceRequest>;
+
 export interface GetPresenceResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -31,17 +35,23 @@ export interface GetPresenceResponse {
   connection_count?: number;
   auto_away?: boolean;
 }
+const GetPresenceResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GetPresenceResponse>;
+
 export interface GetProfileRequest {
   /** Include labels for each ID in custom profile fields. Using this parameter will heavily rate-limit your requests and is not recommended. */
   include_labels?: boolean;
   /** User to retrieve profile info for */
   user?: string;
 }
+const GetProfileRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetProfileRequest>;
+
 export interface GetProfileResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   profile: unknown;
 }
+const GetProfileResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetProfileResponse>;
+
 export interface ListUsersRequest {
   /** Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/apis/web-api/pagination) for more detail. */
   cursor?: string;
@@ -52,12 +62,24 @@ export interface ListUsersRequest {
   /** encoded team id to list users in, required if org token is used */
   team_id?: string;
 }
+const ListUsersRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ListUsersRequest>;
+
 export type ListUsersResponseMembersList = Array<unknown>;
+const ListUsersResponseMembersList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListUsersResponseMembersList>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export interface ListUsersResponseResponseMetadata {
   /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
+const ListUsersResponseResponseMetadata = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListUsersResponseResponseMetadata>;
+
 export interface ListUsersResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -67,28 +89,51 @@ export interface ListUsersResponse {
   response_metadata?: ListUsersResponseResponseMetadata;
   offset?: string;
 }
+const ListUsersResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ListUsersResponse>;
+
 export interface LookupByEmailRequest {
   /** An email address belonging to a user in the workspace */
   email: string;
 }
+const LookupByEmailRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<LookupByEmailRequest>;
+
 export interface LookupByEmailResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   user: unknown;
 }
+const LookupByEmailResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<LookupByEmailResponse>;
+
 export interface LookupDiscoverableContactRequest {
   email: string;
 }
+const LookupDiscoverableContactRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<LookupDiscoverableContactRequest>;
+
 export interface LookupDiscoverableContactResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   is_discoverable: boolean;
 }
+const LookupDiscoverableContactResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<LookupDiscoverableContactResponse>;
+
 export interface SetActiveRequest {}
+const SetActiveRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<SetActiveRequest>;
+
 export interface SetActiveResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const SetActiveResponse = DeletePhotoResponse as any as S.Schema<SetActiveResponse>;
+
 export interface SetPhotoRequest {
   /** Width/height of crop box (always square) */
   crop_w?: string;
@@ -99,22 +144,37 @@ export interface SetPhotoRequest {
   /** File contents via `multipart/form-data`. */
   image?: unknown;
 }
+const SetPhotoRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<SetPhotoRequest>;
+
 export type SetPhotoResponseProfileMap = { [key: string]: unknown | undefined };
+const SetPhotoResponseProfileMap = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<SetPhotoResponseProfileMap>;
+
 export interface SetPhotoResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   profile: SetPhotoResponseProfileMap;
 }
+const SetPhotoResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<SetPhotoResponse>;
+
 /** Either `auto` or `away` */
 export type SetPresenceRequestPresence = "auto" | "away";
+const SetPresenceRequestPresence = S.String;
+
 export interface SetPresenceRequest {
   /** Either `auto` or `away` */
   presence: SetPresenceRequestPresence | (string & {});
 }
+const SetPresenceRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<SetPresenceRequest>;
+
 export interface SetPresenceResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const SetPresenceResponse = DeletePhotoResponse as any as S.Schema<SetPresenceResponse>;
+
 export interface SetProfileRequest {
   /** Name of a single key to set. Usable only if `profile` is not passed. */
   name?: string;
@@ -125,6 +185,8 @@ export interface SetProfileRequest {
   /** Value to set a single key to. Usable only if `profile` is not passed. */
   value?: string;
 }
+const SetProfileRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<SetProfileRequest>;
+
 export interface SetProfileResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -132,6 +194,8 @@ export interface SetProfileResponse {
   profile: unknown;
   email_pending?: string;
 }
+const SetProfileResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<SetProfileResponse>;
+
 export interface UsersConversationsRequest {
   /** Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/apis/web-api/pagination) for more detail. */
   cursor?: string;
@@ -148,7 +212,15 @@ export interface UsersConversationsRequest {
   /** Browse conversations by a specific user ID's membership. Non-public channels are restricted to those where the calling user shares membership. */
   user?: string;
 }
+const UsersConversationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<UsersConversationsRequest>;
+
 export type UsersConversationsResponseChannelsList = Array<unknown>;
+const UsersConversationsResponseChannelsList =
+  ListUsersResponseMembersList as any as S.Schema<UsersConversationsResponseChannelsList>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type UsersConversationsResponseResponseMetadata = ListUsersResponseResponseMetadata;
 export interface UsersConversationsResponse {
@@ -158,24 +230,40 @@ export interface UsersConversationsResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: ListUsersResponseResponseMetadata;
 }
+const UsersConversationsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<UsersConversationsResponse>;
+
 export interface UsersIdentityRequest {}
+const UsersIdentityRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<UsersIdentityRequest>;
+
 export interface UsersIdentityResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const UsersIdentityResponse = DeletePhotoResponse as any as S.Schema<UsersIdentityResponse>;
+
 export interface UsersInfoRequest {
   /** Set this to `true` to receive the locale for this user. Defaults to `false` */
   include_locale?: boolean;
   /** User to get info on */
   user?: string;
 }
+const UsersInfoRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<UsersInfoRequest>;
+
 export type UsersInfoResponseUsersList = Array<unknown>;
+const UsersInfoResponseUsersList =
+  ListUsersResponseMembersList as any as S.Schema<UsersInfoResponseUsersList>;
+
 export interface UsersInfoResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   user?: unknown;
   users?: UsersInfoResponseUsersList;
 }
+const UsersInfoResponse = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<UsersInfoResponse>;
+
 export type DeletePhotoError = SlackOpError;
 /** Delete the user profile photo Required scopes -- user: `users.profile:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `internal_error` -- An unexpected error occurred. See https://docs.slack.dev/reference/methods/users.deletePhoto */
 export const deletePhoto: API.OperationMethod<
@@ -184,8 +272,8 @@ export const deletePhoto: API.OperationMethod<
   DeletePhotoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeletePhotoRequest>,
-  output: __S(1) as any as S.Schema<DeletePhotoResponse>,
+  input: DeletePhotoRequest,
+  output: DeletePhotoResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -199,8 +287,8 @@ export const getPresence: API.OperationMethod<
   GetPresenceError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetPresenceRequest>,
-  output: __S(3) as any as S.Schema<GetPresenceResponse>,
+  input: GetPresenceRequest,
+  output: GetPresenceResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -214,8 +302,8 @@ export const getProfile: API.OperationMethod<
   GetProfileError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetProfileRequest>,
-  output: __S(5) as any as S.Schema<GetProfileResponse>,
+  input: GetProfileRequest,
+  output: GetProfileResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -231,8 +319,8 @@ export const listUsers: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(6) as any as S.Schema<ListUsersRequest>,
-    output: __S(9) as any as S.Schema<ListUsersResponse>,
+    input: ListUsersRequest,
+    output: ListUsersResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -255,8 +343,8 @@ export const lookupByEmail: API.OperationMethod<
   LookupByEmailError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<LookupByEmailRequest>,
-  output: __S(11) as any as S.Schema<LookupByEmailResponse>,
+  input: LookupByEmailRequest,
+  output: LookupByEmailResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -270,8 +358,8 @@ export const lookupDiscoverableContact: API.OperationMethod<
   LookupDiscoverableContactError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<LookupDiscoverableContactRequest>,
-  output: __S(13) as any as S.Schema<LookupDiscoverableContactResponse>,
+  input: LookupDiscoverableContactRequest,
+  output: LookupDiscoverableContactResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -285,8 +373,8 @@ export const setActive: API.OperationMethod<
   SetActiveError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<SetActiveRequest>,
-  output: __S(1) as any as S.Schema<SetActiveResponse>,
+  input: SetActiveRequest,
+  output: SetActiveResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -300,8 +388,8 @@ export const setPhoto: API.OperationMethod<
   SetPhotoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<SetPhotoRequest>,
-  output: __S(17) as any as S.Schema<SetPhotoResponse>,
+  input: SetPhotoRequest,
+  output: SetPhotoResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -315,8 +403,8 @@ export const setPresence: API.OperationMethod<
   SetPresenceError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<SetPresenceRequest>,
-  output: __S(1) as any as S.Schema<SetPresenceResponse>,
+  input: SetPresenceRequest,
+  output: SetPresenceResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -330,8 +418,8 @@ export const setProfile: API.OperationMethod<
   SetProfileError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<SetProfileRequest>,
-  output: __S(20) as any as S.Schema<SetProfileResponse>,
+  input: SetProfileRequest,
+  output: SetProfileResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -347,8 +435,8 @@ export const usersConversations: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(21) as any as S.Schema<UsersConversationsRequest>,
-    output: __S(22) as any as S.Schema<UsersConversationsResponse>,
+    input: UsersConversationsRequest,
+    output: UsersConversationsResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -371,8 +459,8 @@ export const usersIdentity: API.OperationMethod<
   UsersIdentityError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<UsersIdentityRequest>,
-  output: __S(1) as any as S.Schema<UsersIdentityResponse>,
+  input: UsersIdentityRequest,
+  output: UsersIdentityResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -386,8 +474,8 @@ export const usersInfo: API.OperationMethod<
   UsersInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<UsersInfoRequest>,
-  output: __S(25) as any as S.Schema<UsersInfoResponse>,
+  input: UsersInfoRequest,
+  output: UsersInfoResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -465,9 +553,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          members: __S(7),
+          members: ListUsersResponseMembersList,
           cache_ts: S.Number,
-          response_metadata: S.optional(__S(8)),
+          response_metadata: S.optional(ListUsersResponseResponseMetadata),
           offset: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListUsersResponse" });
@@ -531,13 +619,13 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          profile: __S(16),
+          profile: SetPhotoResponseProfileMap,
         }),
       ).annotate({ identifier: "SetPhotoResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          presence: S.String,
+          presence: SetPresenceRequestPresence,
         }).pipe(T.Http({ method: "POST", uri: "/users.setPresence", code: 200 })),
       ).annotate({ identifier: "SetPresenceRequest" });
     case 3:
@@ -576,8 +664,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          channels: __S(7),
-          response_metadata: S.optional(__S(8)),
+          channels: UsersConversationsResponseChannelsList,
+          response_metadata: S.optional(ListUsersResponseResponseMetadata),
         }),
       ).annotate({
         identifier: "UsersConversationsResponse",
@@ -602,25 +690,8 @@ function __c3(j: number): any {
         S.Struct({
           ok: S.Boolean,
           user: S.optional(S.Unknown),
-          users: S.optional(__S(7)),
+          users: S.optional(UsersInfoResponseUsersList),
         }),
       ).annotate({ identifier: "UsersInfoResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

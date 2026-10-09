@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -19,18 +17,27 @@ export interface GetNotificationRequest {
   /** user's principal id */
   principalId: string;
 }
+const GetNotificationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetNotificationRequest>;
+
 /** The type of identity that created the resource. */
 export type GetNotificationResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const GetNotificationResponseSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type GetNotificationResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const GetNotificationResponseSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetNotificationResponseSystemData {
   /** The identity that created the resource. */
@@ -46,6 +53,11 @@ export interface GetNotificationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetNotificationResponseSystemData = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GetNotificationResponseSystemData>;
+
 export interface OfferProperties {
   /** legacy offer id of the notification (publisher.offer) */
   offerId?: string;
@@ -56,6 +68,8 @@ export interface OfferProperties {
   /** user's principal id */
   principalId?: string;
 }
+const OfferProperties = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<OfferProperties>;
+
 export interface GetNotificationResponse {
   /** The resource ID. */
   id?: string;
@@ -68,7 +82,17 @@ export interface GetNotificationResponse {
   /** The offer data structure. */
   properties?: OfferProperties;
 }
+const GetNotificationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GetNotificationResponse>;
+
 export interface GetNotificationOperationsRequest {}
+const GetNotificationOperationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetNotificationOperationsRequest>;
+
 /** Operation display payload */
 export interface OperationDisplay {
   /** Resource of the operation */
@@ -80,6 +104,8 @@ export interface OperationDisplay {
   /** Localized friendly description for the operation */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<OperationDisplay>;
+
 /** Operation detail payload */
 export interface OperationDetail {
   /** Name of the operation */
@@ -93,8 +119,15 @@ export interface OperationDetail {
   /** operation properties */
   properties?: unknown;
 }
+const OperationDetail = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<OperationDetail>;
+
 /** Collection of available operation details */
 export type AvailableOperationsValueList = Array<OperationDetail>;
+const AvailableOperationsValueList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AvailableOperationsValueList>;
+
 /** Available operations of the service */
 export interface AvailableOperations {
   /** Collection of available operation details */
@@ -102,24 +135,35 @@ export interface AvailableOperations {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const AvailableOperations = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AvailableOperations>;
+
 export interface ListNotificationsRequest {
   /** user's subscription id */
   subscription: string;
   /** user's principal id */
   principalId: string;
 }
+const ListNotificationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListNotificationsRequest>;
+
 /** The type of identity that created the resource. */
 export type NotificationSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const NotificationSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type NotificationSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const NotificationSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface NotificationSystemData {
   /** The identity that created the resource. */
@@ -135,6 +179,11 @@ export interface NotificationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const NotificationSystemData = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<NotificationSystemData>;
+
 /** Review notification */
 export interface Notification {
   /** The resource ID. */
@@ -148,13 +197,22 @@ export interface Notification {
   /** The offer data structure. */
   properties?: OfferProperties;
 }
+const Notification = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Notification>;
+
 export type NotificationListValueList = Array<Notification>;
+const NotificationListValueList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<NotificationListValueList>;
+
 /** Notifications List */
 export interface NotificationList {
   value?: NotificationListValueList;
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const NotificationList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<NotificationList>;
+
 export type GetNotificationError = AzureOpError;
 export const GetNotification: API.OperationMethod<
   GetNotificationRequest,
@@ -162,8 +220,8 @@ export const GetNotification: API.OperationMethod<
   GetNotificationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetNotificationRequest>,
-  output: __S(3) as any as S.Schema<GetNotificationResponse>,
+  input: GetNotificationRequest,
+  output: GetNotificationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -176,8 +234,8 @@ export const GetNotificationOperations: API.OperationMethod<
   GetNotificationOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetNotificationOperationsRequest>,
-  output: __S(8) as any as S.Schema<AvailableOperations>,
+  input: GetNotificationOperationsRequest,
+  output: AvailableOperations,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -190,8 +248,8 @@ export const ListNotifications: API.OperationMethod<
   ListNotificationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<ListNotificationsRequest>,
-  output: __S(13) as any as S.Schema<NotificationList>,
+  input: ListNotificationsRequest,
+  output: NotificationList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -219,10 +277,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(GetNotificationResponseSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(GetNotificationResponseSystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -243,8 +301,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          properties: S.optional(__S(2)),
+          systemData: S.optional(GetNotificationResponseSystemData),
+          properties: S.optional(OfferProperties),
         }),
       ).annotate({ identifier: "GetNotificationResponse" });
     case 4:
@@ -274,13 +332,13 @@ function __c0(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(5)),
+          display: S.optional(OperationDisplay),
           origin: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "OperationDetail" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(OperationDetail);
   }
 }
 function __c1(j: number): any {
@@ -288,7 +346,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(7)),
+          value: S.optional(AvailableOperationsValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AvailableOperations" });
@@ -310,10 +368,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(NotificationSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(NotificationSystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotificationSystemData" });
@@ -323,31 +381,18 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10)),
-          properties: S.optional(__S(2)),
+          systemData: S.optional(NotificationSystemData),
+          properties: S.optional(OfferProperties),
         }),
       ).annotate({ identifier: "Notification" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(Notification);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(12)),
+          value: S.optional(NotificationListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotificationList" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

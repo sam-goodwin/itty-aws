@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -79,6 +77,8 @@ export class ServiceDisabled
   ) {}
 
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
+
 /** The Deployment. */
 export interface SasPortalDeployment {
   /** Output only. Resource name. */
@@ -90,17 +90,28 @@ export interface SasPortalDeployment {
   /** The deployment's display name. */
   displayName?: string;
 }
+const SasPortalDeployment = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SasPortalDeployment>;
+
 export interface CreateCustomersDeploymentsRequest {
   /** Required. The parent resource name where the deployment is to be created. */
   parent: string;
   /** Request body */
   body?: SasPortalDeployment;
 }
+const CreateCustomersDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateCustomersDeploymentsRequest>;
+
 export type SasPortalDeviceConfigCategoryEnum =
   | "DEVICE_CATEGORY_UNSPECIFIED"
   | "DEVICE_CATEGORY_A"
   | "DEVICE_CATEGORY_B";
+const SasPortalDeviceConfigCategoryEnum = S.String;
+
 export type SasPortalDeviceConfigStateEnum = "DEVICE_CONFIG_STATE_UNSPECIFIED" | "DRAFT" | "FINAL";
+const SasPortalDeviceConfigStateEnum = S.String;
+
 export type SasPortalDeviceAirInterfaceRadioTechnologyEnum =
   | "RADIO_TECHNOLOGY_UNSPECIFIED"
   | "E_UTRA"
@@ -112,6 +123,8 @@ export type SasPortalDeviceAirInterfaceRadioTechnologyEnum =
   | "REDLINE"
   | "TARANA_WIRELESS"
   | "FAROS";
+const SasPortalDeviceAirInterfaceRadioTechnologyEnum = S.String;
+
 /** Information about the device's air interface. */
 export interface SasPortalDeviceAirInterface {
   /** Conditional. This field specifies the radio access technology that is used for the CBSD. */
@@ -119,6 +132,11 @@ export interface SasPortalDeviceAirInterface {
   /** Optional. This field is related to the `radioTechnology` and provides the air interface specification that the CBSD is compliant with at the time of registration. */
   supportedSpec?: string;
 }
+const SasPortalDeviceAirInterface = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<SasPortalDeviceAirInterface>;
+
 /** Information about the model of the device. */
 export interface SasPortalDeviceModel {
   /** The firmware version of the device. */
@@ -132,10 +150,14 @@ export interface SasPortalDeviceModel {
   /** The name of the device vendor. */
   vendor?: string;
 }
+const SasPortalDeviceModel = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<SasPortalDeviceModel>;
+
 export type SasPortalInstallationParamsHeightTypeEnum =
   | "HEIGHT_TYPE_UNSPECIFIED"
   | "HEIGHT_TYPE_AGL"
   | "HEIGHT_TYPE_AMSL";
+const SasPortalInstallationParamsHeightTypeEnum = S.String;
+
 /** Information about the device installation parameters. */
 export interface SasPortalInstallationParams {
   /** Longitude of the device antenna location in degrees relative to the WGS 84 datum. The allowed range is from -180.000000 to +180.000000. Positive values represent longitudes east of the prime meridian; negative values west of the prime meridian. */
@@ -167,13 +189,25 @@ export interface SasPortalInstallationParams {
   /** Boresight direction of the horizontal plane of the antenna in degrees with respect to true north. The value of this parameter is an integer with a value between 0 and 359 inclusive. A value of 0 degrees means true north; a value of 90 degrees means east. This parameter is optional for Category A devices and conditional for Category B devices. */
   antennaAzimuth?: number;
 }
+const SasPortalInstallationParams = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<SasPortalInstallationParams>;
+
 export type SasPortalDeviceConfigMeasurementCapabilitiesItemEnum =
   | "MEASUREMENT_CAPABILITY_UNSPECIFIED"
   | "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITH_GRANT"
   | "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITHOUT_GRANT";
+const SasPortalDeviceConfigMeasurementCapabilitiesItemEnum = S.String;
+
 export type SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList = Array<
   SasPortalDeviceConfigMeasurementCapabilitiesItemEnum | (string & {})
 >;
+const SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList>;
+
 /** Information about the device configuration. */
 export interface SasPortalDeviceConfig {
   /** Output only. Whether the configuration has been signed by a CPI. */
@@ -197,6 +231,11 @@ export interface SasPortalDeviceConfig {
   /** Measurement reporting capabilities of the device. */
   measurementCapabilities?: SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList;
 }
+const SasPortalDeviceConfig = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<SasPortalDeviceConfig>;
+
 /** Frequency range from `low_frequency` to `high_frequency`. */
 export interface SasPortalFrequencyRange {
   /** The highest frequency of the frequency range in MHz. */
@@ -204,7 +243,17 @@ export interface SasPortalFrequencyRange {
   /** The lowest frequency of the frequency range in MHz. */
   lowFrequencyMhz?: number;
 }
+const SasPortalFrequencyRange = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<SasPortalFrequencyRange>;
+
 export type SasPortalFrequencyRangeList = Array<SasPortalFrequencyRange>;
+const SasPortalFrequencyRangeList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<SasPortalFrequencyRangeList>;
+
 /** An entry in a DPA's move list. */
 export interface SasPortalDpaMoveList {
   /** The ID of the DPA. */
@@ -212,7 +261,14 @@ export interface SasPortalDpaMoveList {
   /** The frequency range that the move list affects. */
   frequencyRange?: SasPortalFrequencyRange;
 }
+const SasPortalDpaMoveList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SasPortalDpaMoveList>;
+
 export type SasPortalDpaMoveListList = Array<SasPortalDpaMoveList>;
+const SasPortalDpaMoveListList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<SasPortalDpaMoveListList>;
+
 export type SasPortalDeviceGrantStateEnum =
   | "GRANT_STATE_UNSPECIFIED"
   | "GRANT_STATE_GRANTED"
@@ -220,10 +276,14 @@ export type SasPortalDeviceGrantStateEnum =
   | "GRANT_STATE_SUSPENDED"
   | "GRANT_STATE_AUTHORIZED"
   | "GRANT_STATE_EXPIRED";
+const SasPortalDeviceGrantStateEnum = S.String;
+
 export type SasPortalDeviceGrantChannelTypeEnum =
   | "CHANNEL_TYPE_UNSPECIFIED"
   | "CHANNEL_TYPE_GAA"
   | "CHANNEL_TYPE_PAL";
+const SasPortalDeviceGrantChannelTypeEnum = S.String;
+
 /** Device grant. It is an authorization provided by the Spectrum Access System to a device to transmit using specified operating parameters after a successful heartbeat by the device. */
 export interface SasPortalDeviceGrant {
   /** Grant Id. */
@@ -245,7 +305,14 @@ export interface SasPortalDeviceGrant {
   /** Type of channel used. */
   channelType?: SasPortalDeviceGrantChannelTypeEnum | (string & {});
 }
+const SasPortalDeviceGrant = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<SasPortalDeviceGrant>;
+
 export type SasPortalDeviceGrantList = Array<SasPortalDeviceGrant>;
+const SasPortalDeviceGrantList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<SasPortalDeviceGrantList>;
+
 /** The channel with score. */
 export interface SasPortalChannelWithScore {
   /** The frequency range of the channel. */
@@ -253,8 +320,20 @@ export interface SasPortalChannelWithScore {
   /** The channel score, normalized to be in the range [0,100]. */
   score?: number;
 }
+const SasPortalChannelWithScore = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<SasPortalChannelWithScore>;
+
 export type SasPortalChannelWithScoreList = Array<SasPortalChannelWithScore>;
+const SasPortalChannelWithScoreList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<SasPortalChannelWithScoreList>;
+
 export type SasPortalNrqzValidationStateEnum = "STATE_UNSPECIFIED" | "DRAFT" | "FINAL";
+const SasPortalNrqzValidationStateEnum = S.String;
+
 /** Information about National Radio Quiet Zone validation. */
 export interface SasPortalNrqzValidation {
   /** State of the NRQZ validation info. */
@@ -268,6 +347,11 @@ export interface SasPortalNrqzValidation {
   /** CPI who signed the validation. */
   cpiId?: string;
 }
+const SasPortalNrqzValidation = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<SasPortalNrqzValidation>;
+
 /** Device data overridable by both SAS Portal and registration requests. */
 export interface SasPortalDeviceMetadata {
   /** If populated, the Antenna Model Pattern to use. Format is: `RecordCreatorId:PatternId` */
@@ -281,11 +365,18 @@ export interface SasPortalDeviceMetadata {
   /** Interference Coordination Group (ICG). A group of CBSDs that manage their own interference with the group. For more details, see [CBRSA-TS-2001 V3.0.0](https://ongoalliance.org/wp-content/uploads/2020/02/CBRSA-TS-2001-V3.0.0_Approved-for-publication.pdf). */
   interferenceCoordinationGroup?: string;
 }
+const SasPortalDeviceMetadata = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<SasPortalDeviceMetadata>;
+
 export type SasPortalDeviceStateEnum =
   | "DEVICE_STATE_UNSPECIFIED"
   | "RESERVED"
   | "REGISTERED"
   | "DEREGISTERED";
+const SasPortalDeviceStateEnum = S.String;
+
 export interface SasPortalDevice {
   /** Device display name. */
   displayName?: string;
@@ -310,18 +401,30 @@ export interface SasPortalDevice {
   /** Output only. The resource path name. */
   name?: string;
 }
+const SasPortalDevice = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<SasPortalDevice>;
+
 export interface CreateCustomersDeploymentsDevicesRequest {
   /** Required. The name of the parent resource. */
   parent: string;
   /** Request body */
   body?: SasPortalDevice;
 }
+const CreateCustomersDeploymentsDevicesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateCustomersDeploymentsDevicesRequest>;
+
 export interface CreateCustomersDevicesRequest {
   /** Required. The name of the parent resource. */
   parent: string;
   /** Request body */
   body?: SasPortalDevice;
 }
+const CreateCustomersDevicesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateCustomersDevicesRequest>;
+
 /** The Node. */
 export interface SasPortalNode {
   /** User ids used by the devices belonging to this node. */
@@ -331,66 +434,118 @@ export interface SasPortalNode {
   /** The node's display name. */
   displayName?: string;
 }
+const SasPortalNode = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<SasPortalNode>;
+
 export interface CreateCustomersNodesRequest {
   /** Required. The parent resource name where the node is to be created. */
   parent: string;
   /** Request body */
   body?: SasPortalNode;
 }
+const CreateCustomersNodesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateCustomersNodesRequest>;
+
 export interface CreateCustomersNodesDeploymentsRequest {
   /** Required. The parent resource name where the deployment is to be created. */
   parent: string;
   /** Request body */
   body?: SasPortalDeployment;
 }
+const CreateCustomersNodesDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateCustomersNodesDeploymentsRequest>;
+
 export interface CreateCustomersNodesDevicesRequest {
   /** Required. The name of the parent resource. */
   parent: string;
   /** Request body */
   body?: SasPortalDevice;
 }
+const CreateCustomersNodesDevicesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateCustomersNodesDevicesRequest>;
+
 export interface CreateCustomersNodesNodesRequest {
   /** Required. The parent resource name where the node is to be created. */
   parent: string;
   /** Request body */
   body?: SasPortalNode;
 }
+const CreateCustomersNodesNodesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateCustomersNodesNodesRequest>;
+
 export interface CreateNodesDeploymentsDevicesRequest {
   /** Required. The name of the parent resource. */
   parent: string;
   /** Request body */
   body?: SasPortalDevice;
 }
+const CreateNodesDeploymentsDevicesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateNodesDeploymentsDevicesRequest>;
+
 export interface CreateNodesDevicesRequest {
   /** Required. The name of the parent resource. */
   parent: string;
   /** Request body */
   body?: SasPortalDevice;
 }
+const CreateNodesDevicesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateNodesDevicesRequest>;
+
 export interface CreateNodesNodesRequest {
   /** Required. The parent resource name where the node is to be created. */
   parent: string;
   /** Request body */
   body?: SasPortalNode;
 }
+const CreateNodesNodesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateNodesNodesRequest>;
+
 export interface CreateNodesNodesDeploymentsRequest {
   /** Required. The parent resource name where the deployment is to be created. */
   parent: string;
   /** Request body */
   body?: SasPortalDeployment;
 }
+const CreateNodesNodesDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateNodesNodesDeploymentsRequest>;
+
 export interface CreateNodesNodesDevicesRequest {
   /** Required. The name of the parent resource. */
   parent: string;
   /** Request body */
   body?: SasPortalDevice;
 }
+const CreateNodesNodesDevicesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateNodesNodesDevicesRequest>;
+
 export interface CreateNodesNodesNodesRequest {
   /** Required. The parent resource name where the node is to be created. */
   parent: string;
   /** Request body */
   body?: SasPortalNode;
 }
+const CreateNodesNodesNodesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateNodesNodesNodesRequest>;
+
 /** Request for CreateSignedDevice. */
 export interface SasPortalCreateSignedDeviceRequest {
   /** Required. JSON Web Token signed using a CPI private key. Payload must be the JSON encoding of the device. The user_id field must be set. */
@@ -398,87 +553,174 @@ export interface SasPortalCreateSignedDeviceRequest {
   /** Required. Unique installer id (CPI ID) from the Certified Professional Installers database. */
   installerId?: string;
 }
+const SasPortalCreateSignedDeviceRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<SasPortalCreateSignedDeviceRequest>;
+
 export interface CreateSignedCustomersDeploymentsDevicesRequest {
   /** Required. The name of the parent resource. */
   parent: string;
   /** Request body */
   body?: SasPortalCreateSignedDeviceRequest;
 }
+const CreateSignedCustomersDeploymentsDevicesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateSignedCustomersDeploymentsDevicesRequest>;
+
 export interface CreateSignedCustomersDevicesRequest {
   /** Required. The name of the parent resource. */
   parent: string;
   /** Request body */
   body?: SasPortalCreateSignedDeviceRequest;
 }
+const CreateSignedCustomersDevicesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CreateSignedCustomersDevicesRequest>;
+
 export interface CreateSignedCustomersNodesDevicesRequest {
   /** Required. The name of the parent resource. */
   parent: string;
   /** Request body */
   body?: SasPortalCreateSignedDeviceRequest;
 }
+const CreateSignedCustomersNodesDevicesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateSignedCustomersNodesDevicesRequest>;
+
 export interface CreateSignedNodesDeploymentsDevicesRequest {
   /** Required. The name of the parent resource. */
   parent: string;
   /** Request body */
   body?: SasPortalCreateSignedDeviceRequest;
 }
+const CreateSignedNodesDeploymentsDevicesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateSignedNodesDeploymentsDevicesRequest>;
+
 export interface CreateSignedNodesDevicesRequest {
   /** Required. The name of the parent resource. */
   parent: string;
   /** Request body */
   body?: SasPortalCreateSignedDeviceRequest;
 }
+const CreateSignedNodesDevicesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateSignedNodesDevicesRequest>;
+
 export interface CreateSignedNodesNodesDevicesRequest {
   /** Required. The name of the parent resource. */
   parent: string;
   /** Request body */
   body?: SasPortalCreateSignedDeviceRequest;
 }
+const CreateSignedNodesNodesDevicesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateSignedNodesNodesDevicesRequest>;
+
 export interface DeleteCustomersDeploymentsRequest {
   /** Required. The name of the deployment. */
   name: string;
 }
+const DeleteCustomersDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<DeleteCustomersDeploymentsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface SasPortalEmpty {}
+const SasPortalEmpty = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<SasPortalEmpty>;
+
 export interface DeleteCustomersDevicesRequest {
   /** Required. The name of the device. */
   name: string;
 }
+const DeleteCustomersDevicesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<DeleteCustomersDevicesRequest>;
+
 export interface DeleteCustomersNodesRequest {
   /** Required. The name of the node. */
   name: string;
 }
+const DeleteCustomersNodesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DeleteCustomersNodesRequest>;
+
 export interface DeleteDeploymentsDevicesRequest {
   /** Required. The name of the device. */
   name: string;
 }
+const DeleteDeploymentsDevicesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DeleteDeploymentsDevicesRequest>;
+
 export interface DeleteNodesDeploymentsRequest {
   /** Required. The name of the deployment. */
   name: string;
 }
+const DeleteNodesDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<DeleteNodesDeploymentsRequest>;
+
 export interface DeleteNodesDevicesRequest {
   /** Required. The name of the device. */
   name: string;
 }
+const DeleteNodesDevicesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DeleteNodesDevicesRequest>;
+
 export interface DeleteNodesNodesRequest {
   /** Required. The name of the node. */
   name: string;
 }
+const DeleteNodesNodesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DeleteNodesNodesRequest>;
+
 /** Request for GenerateSecret. */
 export interface SasPortalGenerateSecretRequest {}
+const SasPortalGenerateSecretRequest =
+  SasPortalEmpty as any as S.Schema<SasPortalGenerateSecretRequest>;
+
 export interface GenerateSecretInstallerRequest {
   /** Request body */
   body?: SasPortalGenerateSecretRequest;
 }
+const GenerateSecretInstallerRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GenerateSecretInstallerRequest>;
+
 /** Response for GenerateSecret. */
 export interface SasPortalGenerateSecretResponse {
   /** The secret generated by the string and used by ValidateInstaller. */
   secret?: string;
 }
+const SasPortalGenerateSecretResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<SasPortalGenerateSecretResponse>;
+
 export interface GetCustomersRequest {
   /** Required. The name of the customer. */
   name: string;
 }
+const GetCustomersRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<GetCustomersRequest>;
+
 /** Entity representing a SAS customer. */
 export interface SasPortalCustomer {
   /** User IDs used by the devices belonging to this customer. */
@@ -488,51 +730,99 @@ export interface SasPortalCustomer {
   /** Required. Name of the organization that the customer entity represents. */
   displayName?: string;
 }
+const SasPortalCustomer = SasPortalNode as any as S.Schema<SasPortalCustomer>;
+
 export interface GetCustomersDeploymentsRequest {
   /** Required. The name of the deployment. */
   name: string;
 }
+const GetCustomersDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<GetCustomersDeploymentsRequest>;
+
 export interface GetCustomersDevicesRequest {
   /** Required. The name of the device. */
   name: string;
 }
+const GetCustomersDevicesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GetCustomersDevicesRequest>;
+
 export interface GetCustomersNodesRequest {
   /** Required. The name of the node. */
   name: string;
 }
+const GetCustomersNodesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GetCustomersNodesRequest>;
+
 export interface GetDeploymentsRequest {
   /** Required. The name of the deployment. */
   name: string;
 }
+const GetDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GetDeploymentsRequest>;
+
 export interface GetDeploymentsDevicesRequest {
   /** Required. The name of the device. */
   name: string;
 }
+const GetDeploymentsDevicesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<GetDeploymentsDevicesRequest>;
+
 export interface GetNodesRequest {
   /** Required. The name of the node. */
   name: string;
 }
+const GetNodesRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<GetNodesRequest>;
+
 export interface GetNodesDeploymentsRequest {
   /** Required. The name of the deployment. */
   name: string;
 }
+const GetNodesDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<GetNodesDeploymentsRequest>;
+
 export interface GetNodesDevicesRequest {
   /** Required. The name of the device. */
   name: string;
 }
+const GetNodesDevicesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GetNodesDevicesRequest>;
+
 export interface GetNodesNodesRequest {
   /** Required. The name of the node. */
   name: string;
 }
+const GetNodesNodesRequest = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<GetNodesNodesRequest>;
+
 /** Request message for `GetPolicy` method. */
 export interface SasPortalGetPolicyRequest {
   /** Required. The resource for which the policy is being requested. */
   resource?: string;
 }
+const SasPortalGetPolicyRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<SasPortalGetPolicyRequest>;
+
 export interface GetPoliciesRequest {
   /** Request body */
   body?: SasPortalGetPolicyRequest;
 }
+const GetPoliciesRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<GetPoliciesRequest>;
+
 /** Associates `members` with a `role`. */
 export interface SasPortalAssignment {
   /** Required. Role that is assigned to `members`. */
@@ -540,7 +830,14 @@ export interface SasPortalAssignment {
   /** The identities the role is assigned to. It can have the following values: * `{user_email}`: An email address that represents a specific Google account. For example: `alice@gmail.com`. * `{group_email}`: An email address that represents a Google group. For example, `viewers@gmail.com`. */
   members?: StringList;
 }
+const SasPortalAssignment = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<SasPortalAssignment>;
+
 export type SasPortalAssignmentList = Array<SasPortalAssignment>;
+const SasPortalAssignmentList = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<SasPortalAssignmentList>;
+
 /** Defines an access control policy to the resources. */
 export interface SasPortalPolicy {
   /** List of assignments */
@@ -548,13 +845,22 @@ export interface SasPortalPolicy {
   /** The etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the etag in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An etag is returned in the response to GetPolicy, and systems are expected to put that etag in the request to SetPolicy to ensure that their change will be applied to the same version of the policy. If no etag is provided in the call to GetPolicy, then the existing policy is overwritten blindly. */
   etag?: string;
 }
+const SasPortalPolicy = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<SasPortalPolicy>;
+
 export interface ListCustomersRequest {
   /** The maximum number of customers to return in the response. */
   pageSize?: number;
   /** A pagination token returned from a previous call to ListCustomers that indicates where this listing should continue from. */
   pageToken?: string;
 }
+const ListCustomersRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ListCustomersRequest>;
+
 export type SasPortalCustomerList = Array<SasPortalCustomer>;
+const SasPortalCustomerList = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<SasPortalCustomerList>;
+
 /** Response for `ListCustomers`. */
 export interface SasPortalListCustomersResponse {
   /** A pagination token returned from a previous call to ListCustomers that indicates from where listing should continue. If the field is missing or empty, it means there are no more customers. */
@@ -562,6 +868,11 @@ export interface SasPortalListCustomersResponse {
   /** The list of customers that match the request. */
   customers?: SasPortalCustomerList;
 }
+const SasPortalListCustomersResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<SasPortalListCustomersResponse>;
+
 export interface ListCustomersDeploymentsRequest {
   /** Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2. */
   parent: string;
@@ -572,7 +883,17 @@ export interface ListCustomersDeploymentsRequest {
   /** A pagination token returned from a previous call to ListDeployments that indicates where this listing should continue from. */
   pageToken?: string;
 }
+const ListCustomersDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ListCustomersDeploymentsRequest>;
+
 export type SasPortalDeploymentList = Array<SasPortalDeployment>;
+const SasPortalDeploymentList = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<SasPortalDeploymentList>;
+
 /** Response for ListDeployments. */
 export interface SasPortalListDeploymentsResponse {
   /** The deployments that match the request. */
@@ -580,6 +901,11 @@ export interface SasPortalListDeploymentsResponse {
   /** A pagination token returned from a previous call to ListDeployments that indicates from where listing should continue. If the field is missing or empty, it means there are no more deployments. */
   nextPageToken?: string;
 }
+const SasPortalListDeploymentsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<SasPortalListDeploymentsResponse>;
+
 export interface ListCustomersDeploymentsDevicesRequest {
   /** Required. The name of the parent resource. */
   parent: string;
@@ -590,7 +916,14 @@ export interface ListCustomersDeploymentsDevicesRequest {
   /** The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. */
   pageSize?: number;
 }
+const ListCustomersDeploymentsDevicesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListCustomersDeploymentsDevicesRequest>;
+
 export type SasPortalDeviceList = Array<SasPortalDevice>;
+const SasPortalDeviceList = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<SasPortalDeviceList>;
+
 /** Response for ListDevices. */
 export interface SasPortalListDevicesResponse {
   /** A pagination token returned from a previous call to ListDevices that indicates from where listing should continue. If the field is missing or empty, it means there is no more devices. */
@@ -598,6 +931,11 @@ export interface SasPortalListDevicesResponse {
   /** The devices that match the request. */
   devices?: SasPortalDeviceList;
 }
+const SasPortalListDevicesResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<SasPortalListDevicesResponse>;
+
 export interface ListCustomersDevicesRequest {
   /** A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. */
   pageToken?: string;
@@ -608,6 +946,11 @@ export interface ListCustomersDevicesRequest {
   /** The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. */
   filter?: string;
 }
+const ListCustomersDevicesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListCustomersDevicesRequest>;
+
 export interface ListCustomersNodesRequest {
   /** A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from. */
   pageToken?: string;
@@ -618,7 +961,14 @@ export interface ListCustomersNodesRequest {
   /** The maximum number of nodes to return in the response. */
   pageSize?: number;
 }
+const ListCustomersNodesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListCustomersNodesRequest>;
+
 export type SasPortalNodeList = Array<SasPortalNode>;
+const SasPortalNodeList = SasPortalCustomerList as any as S.Schema<SasPortalNodeList>;
+
 /** Response for ListNodes. */
 export interface SasPortalListNodesResponse {
   /** The nodes that match the request. */
@@ -626,6 +976,11 @@ export interface SasPortalListNodesResponse {
   /** A pagination token returned from a previous call to ListNodes that indicates from where listing should continue. If the field is missing or empty, it means there is no more nodes. */
   nextPageToken?: string;
 }
+const SasPortalListNodesResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<SasPortalListNodesResponse>;
+
 export interface ListCustomersNodesDeploymentsRequest {
   /** Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2. */
   parent: string;
@@ -636,6 +991,11 @@ export interface ListCustomersNodesDeploymentsRequest {
   /** A pagination token returned from a previous call to ListDeployments that indicates where this listing should continue from. */
   pageToken?: string;
 }
+const ListCustomersNodesDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ListCustomersNodesDeploymentsRequest>;
+
 export interface ListCustomersNodesDevicesRequest {
   /** The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. */
   pageSize?: number;
@@ -646,6 +1006,11 @@ export interface ListCustomersNodesDevicesRequest {
   /** The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. */
   filter?: string;
 }
+const ListCustomersNodesDevicesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ListCustomersNodesDevicesRequest>;
+
 export interface ListCustomersNodesNodesRequest {
   /** A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from. */
   pageToken?: string;
@@ -656,7 +1021,17 @@ export interface ListCustomersNodesNodesRequest {
   /** The maximum number of nodes to return in the response. */
   pageSize?: number;
 }
+const ListCustomersNodesNodesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ListCustomersNodesNodesRequest>;
+
 export interface ListGcpProjectDeploymentsCustomersRequest {}
+const ListGcpProjectDeploymentsCustomersRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ListGcpProjectDeploymentsCustomersRequest>;
+
 /** Deployment associated with the GCP project. Includes whether SAS analytics has been enabled or not. */
 export interface SasPortalGcpProjectDeployment {
   /** Whether SAS analytics has been enabled. */
@@ -664,13 +1039,33 @@ export interface SasPortalGcpProjectDeployment {
   /** Deployment associated with the GCP project. */
   deployment?: SasPortalDeployment;
 }
+const SasPortalGcpProjectDeployment = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<SasPortalGcpProjectDeployment>;
+
 export type SasPortalGcpProjectDeploymentList = Array<SasPortalGcpProjectDeployment>;
+const SasPortalGcpProjectDeploymentList = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<SasPortalGcpProjectDeploymentList>;
+
 /** Response for [ListGcpProjectDeployments]. */
 export interface SasPortalListGcpProjectDeploymentsResponse {
   /** Optional. Deployments associated with the GCP project */
   deployments?: SasPortalGcpProjectDeploymentList;
 }
+const SasPortalListGcpProjectDeploymentsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<SasPortalListGcpProjectDeploymentsResponse>;
+
 export interface ListLegacyOrganizationsCustomersRequest {}
+const ListLegacyOrganizationsCustomersRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ListLegacyOrganizationsCustomersRequest>;
+
 /** Organization details. */
 export interface SasPortalOrganization {
   /** Id of organization */
@@ -678,12 +1073,27 @@ export interface SasPortalOrganization {
   /** Name of organization */
   displayName?: string;
 }
+const SasPortalOrganization = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<SasPortalOrganization>;
+
 export type SasPortalOrganizationList = Array<SasPortalOrganization>;
+const SasPortalOrganizationList = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<SasPortalOrganizationList>;
+
 /** Response for [ListLegacyOrganizations]. [spectrum.sas.portal.v1alpha1.Provisioning.ListLegacyOrganizations]. */
 export interface SasPortalListLegacyOrganizationsResponse {
   /** Optional. Legacy SAS organizations. */
   organizations?: SasPortalOrganizationList;
 }
+const SasPortalListLegacyOrganizationsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<SasPortalListLegacyOrganizationsResponse>;
+
 export interface ListNodesDeploymentsRequest {
   /** Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2. */
   parent: string;
@@ -694,6 +1104,11 @@ export interface ListNodesDeploymentsRequest {
   /** The maximum number of deployments to return in the response. */
   pageSize?: number;
 }
+const ListNodesDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ListNodesDeploymentsRequest>;
+
 export interface ListNodesDeploymentsDevicesRequest {
   /** A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. */
   pageToken?: string;
@@ -704,6 +1119,11 @@ export interface ListNodesDeploymentsDevicesRequest {
   /** The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. */
   filter?: string;
 }
+const ListNodesDeploymentsDevicesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ListNodesDeploymentsDevicesRequest>;
+
 export interface ListNodesDevicesRequest {
   /** Required. The name of the parent resource. */
   parent: string;
@@ -714,6 +1134,11 @@ export interface ListNodesDevicesRequest {
   /** A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. */
   pageToken?: string;
 }
+const ListNodesDevicesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ListNodesDevicesRequest>;
+
 export interface ListNodesNodesRequest {
   /** The maximum number of nodes to return in the response. */
   pageSize?: number;
@@ -724,6 +1149,11 @@ export interface ListNodesNodesRequest {
   /** A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from. */
   pageToken?: string;
 }
+const ListNodesNodesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ListNodesNodesRequest>;
+
 export interface ListNodesNodesDeploymentsRequest {
   /** Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2. */
   parent: string;
@@ -734,6 +1164,11 @@ export interface ListNodesNodesDeploymentsRequest {
   /** The maximum number of deployments to return in the response. */
   pageSize?: number;
 }
+const ListNodesNodesDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ListNodesNodesDeploymentsRequest>;
+
 export interface ListNodesNodesDevicesRequest {
   /** Required. The name of the parent resource. */
   parent: string;
@@ -744,6 +1179,11 @@ export interface ListNodesNodesDevicesRequest {
   /** The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. */
   pageSize?: number;
 }
+const ListNodesNodesDevicesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ListNodesNodesDevicesRequest>;
+
 export interface ListNodesNodesNodesRequest {
   /** Required. The parent resource name, for example, "nodes/1". */
   parent: string;
@@ -754,17 +1194,36 @@ export interface ListNodesNodesNodesRequest {
   /** The maximum number of nodes to return in the response. */
   pageSize?: number;
 }
+const ListNodesNodesNodesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ListNodesNodesNodesRequest>;
+
 /** Request for [MigrateOrganization]. [spectrum.sas.portal.v1alpha1.Provisioning.MigrateOrganization]. GCP Project, Organization Info, and caller's GAIA ID should be retrieved from the RPC handler, and used to check authorization on SAS Portal organization and to create GCP Projects. */
 export interface SasPortalMigrateOrganizationRequest {
   /** Required. Id of the SAS organization to be migrated. */
   organizationId?: string;
 }
+const SasPortalMigrateOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<SasPortalMigrateOrganizationRequest>;
+
 export interface MigrateOrganizationCustomersRequest {
   /** Request body */
   body?: SasPortalMigrateOrganizationRequest;
 }
+const MigrateOrganizationCustomersRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<MigrateOrganizationCustomersRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface SasPortalStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -774,6 +1233,8 @@ export interface SasPortalStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
+const SasPortalStatus = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<SasPortalStatus>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface SasPortalOperation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -787,63 +1248,113 @@ export interface SasPortalOperation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: SasPortalStatus;
 }
+const SasPortalOperation = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<SasPortalOperation>;
+
 /** Request for MoveDeployment. */
 export interface SasPortalMoveDeploymentRequest {
   /** Required. The name of the new parent resource node or customer to reparent the deployment under. */
   destination?: string;
 }
+const SasPortalMoveDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<SasPortalMoveDeploymentRequest>;
+
 export interface MoveCustomersDeploymentsRequest {
   /** Required. The name of the deployment to move. */
   name: string;
   /** Request body */
   body?: SasPortalMoveDeploymentRequest;
 }
+const MoveCustomersDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<MoveCustomersDeploymentsRequest>;
+
 /** Request for MoveDevice. */
 export interface SasPortalMoveDeviceRequest {
   /** Required. The name of the new parent resource node or customer to reparent the device under. */
   destination?: string;
 }
+const SasPortalMoveDeviceRequest =
+  SasPortalMoveDeploymentRequest as any as S.Schema<SasPortalMoveDeviceRequest>;
+
 export interface MoveCustomersDevicesRequest {
   /** Required. The name of the device to move. */
   name: string;
   /** Request body */
   body?: SasPortalMoveDeviceRequest;
 }
+const MoveCustomersDevicesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<MoveCustomersDevicesRequest>;
+
 /** Request for MoveNode. */
 export interface SasPortalMoveNodeRequest {
   /** Required. The name of the new parent resource node or customer to reparent the node under. */
   destination?: string;
 }
+const SasPortalMoveNodeRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<SasPortalMoveNodeRequest>;
+
 export interface MoveCustomersNodesRequest {
   /** Required. The name of the node to move. */
   name: string;
   /** Request body */
   body?: SasPortalMoveNodeRequest;
 }
+const MoveCustomersNodesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<MoveCustomersNodesRequest>;
+
 export interface MoveDeploymentsDevicesRequest {
   /** Required. The name of the device to move. */
   name: string;
   /** Request body */
   body?: SasPortalMoveDeviceRequest;
 }
+const MoveDeploymentsDevicesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<MoveDeploymentsDevicesRequest>;
+
 export interface MoveNodesDeploymentsRequest {
   /** Required. The name of the deployment to move. */
   name: string;
   /** Request body */
   body?: SasPortalMoveDeploymentRequest;
 }
+const MoveNodesDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<MoveNodesDeploymentsRequest>;
+
 export interface MoveNodesDevicesRequest {
   /** Required. The name of the device to move. */
   name: string;
   /** Request body */
   body?: SasPortalMoveDeviceRequest;
 }
+const MoveNodesDevicesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<MoveNodesDevicesRequest>;
+
 export interface MoveNodesNodesRequest {
   /** Required. The name of the node to move. */
   name: string;
   /** Request body */
   body?: SasPortalMoveNodeRequest;
 }
+const MoveNodesNodesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<MoveNodesNodesRequest>;
+
 export interface PatchCustomersRequest {
   /** Output only. Resource name of the customer. */
   name: string;
@@ -852,6 +1363,11 @@ export interface PatchCustomersRequest {
   /** Request body */
   body?: SasPortalCustomer;
 }
+const PatchCustomersRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<PatchCustomersRequest>;
+
 export interface PatchCustomersDeploymentsRequest {
   /** Fields to be updated. */
   updateMask?: string;
@@ -860,6 +1376,11 @@ export interface PatchCustomersDeploymentsRequest {
   /** Request body */
   body?: SasPortalDeployment;
 }
+const PatchCustomersDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<PatchCustomersDeploymentsRequest>;
+
 export interface PatchCustomersDevicesRequest {
   /** Fields to be updated. */
   updateMask?: string;
@@ -868,6 +1389,11 @@ export interface PatchCustomersDevicesRequest {
   /** Request body */
   body?: SasPortalDevice;
 }
+const PatchCustomersDevicesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<PatchCustomersDevicesRequest>;
+
 export interface PatchCustomersNodesRequest {
   /** Fields to be updated. */
   updateMask?: string;
@@ -876,6 +1402,11 @@ export interface PatchCustomersNodesRequest {
   /** Request body */
   body?: SasPortalNode;
 }
+const PatchCustomersNodesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<PatchCustomersNodesRequest>;
+
 export interface PatchDeploymentsDevicesRequest {
   /** Fields to be updated. */
   updateMask?: string;
@@ -884,6 +1415,11 @@ export interface PatchDeploymentsDevicesRequest {
   /** Request body */
   body?: SasPortalDevice;
 }
+const PatchDeploymentsDevicesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<PatchDeploymentsDevicesRequest>;
+
 export interface PatchNodesDeploymentsRequest {
   /** Fields to be updated. */
   updateMask?: string;
@@ -892,6 +1428,11 @@ export interface PatchNodesDeploymentsRequest {
   /** Request body */
   body?: SasPortalDeployment;
 }
+const PatchNodesDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<PatchNodesDeploymentsRequest>;
+
 export interface PatchNodesDevicesRequest {
   /** Output only. The resource path name. */
   name: string;
@@ -900,6 +1441,11 @@ export interface PatchNodesDevicesRequest {
   /** Request body */
   body?: SasPortalDevice;
 }
+const PatchNodesDevicesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<PatchNodesDevicesRequest>;
+
 export interface PatchNodesNodesRequest {
   /** Output only. Resource name. */
   name: string;
@@ -908,6 +1454,11 @@ export interface PatchNodesNodesRequest {
   /** Request body */
   body?: SasPortalNode;
 }
+const PatchNodesNodesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<PatchNodesNodesRequest>;
+
 /** Request for [ProvisionDeployment]. [spectrum.sas.portal.v1alpha1.Provisioning.ProvisionDeployment]. GCP Project, Organization Info, and caller's GAIA ID should be retrieved from the RPC handler, and used as inputs to create a new SAS organization (if not exists) and a new SAS deployment. */
 export interface SasPortalProvisionDeploymentRequest {
   /** Optional. If this field is set then a new deployment will be created under the organization specified by this id. */
@@ -917,15 +1468,30 @@ export interface SasPortalProvisionDeploymentRequest {
   /** Optional. If this field is set, and a new SAS Portal Deployment needs to be created, its display name will be set to the value of this field. */
   newDeploymentDisplayName?: string;
 }
+const SasPortalProvisionDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<SasPortalProvisionDeploymentRequest>;
+
 export interface ProvisionDeploymentCustomersRequest {
   /** Request body */
   body?: SasPortalProvisionDeploymentRequest;
 }
+const ProvisionDeploymentCustomersRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<ProvisionDeploymentCustomersRequest>;
+
 /** Response for [ProvisionDeployment]. [spectrum.sas.portal.v1alpha1.Provisioning.ProvisionDeployment]. */
 export interface SasPortalProvisionDeploymentResponse {
   /** Optional. Optional error message if the provisioning request is not successful. */
   errorMessage?: string;
 }
+const SasPortalProvisionDeploymentResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<SasPortalProvisionDeploymentResponse>;
+
 /** Request message for `SetPolicy` method. */
 export interface SasPortalSetPolicyRequest {
   /** Required. The resource for which the policy is being specified. This policy replaces any existing policy. */
@@ -935,42 +1501,79 @@ export interface SasPortalSetPolicyRequest {
   /** Required. The policy to be applied to the `resource`. */
   policy?: SasPortalPolicy;
 }
+const SasPortalSetPolicyRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<SasPortalSetPolicyRequest>;
+
 export interface SetPoliciesRequest {
   /** Request body */
   body?: SasPortalSetPolicyRequest;
 }
+const SetPoliciesRequest = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<SetPoliciesRequest>;
+
 /** Request for the SetupSasAnalytics rpc. */
 export interface SasPortalSetupSasAnalyticsRequest {
   /** Optional. User id to setup analytics for, if not provided the user id associated with the project is used. optional */
   userId?: string;
 }
+const SasPortalSetupSasAnalyticsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<SasPortalSetupSasAnalyticsRequest>;
+
 export interface SetupSasAnalyticsCustomersRequest {
   /** Request body */
   body?: SasPortalSetupSasAnalyticsRequest;
 }
+const SetupSasAnalyticsCustomersRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<SetupSasAnalyticsCustomersRequest>;
+
 /** Request for SignDevice. */
 export interface SasPortalSignDeviceRequest {
   /** Required. The device to sign. The device fields name, fcc_id and serial_number must be set. The user_id field must be set. */
   device?: SasPortalDevice;
 }
+const SasPortalSignDeviceRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<SasPortalSignDeviceRequest>;
+
 export interface SignDeviceCustomersDevicesRequest {
   /** Output only. The resource path name. */
   name: string;
   /** Request body */
   body?: SasPortalSignDeviceRequest;
 }
+const SignDeviceCustomersDevicesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<SignDeviceCustomersDevicesRequest>;
+
 export interface SignDeviceDeploymentsDevicesRequest {
   /** Output only. The resource path name. */
   name: string;
   /** Request body */
   body?: SasPortalSignDeviceRequest;
 }
+const SignDeviceDeploymentsDevicesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<SignDeviceDeploymentsDevicesRequest>;
+
 export interface SignDeviceNodesDevicesRequest {
   /** Output only. The resource path name. */
   name: string;
   /** Request body */
   body?: SasPortalSignDeviceRequest;
 }
+const SignDeviceNodesDevicesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<SignDeviceNodesDevicesRequest>;
+
 /** Request message for `TestPermissions` method. */
 export interface SasPortalTestPermissionsRequest {
   /** The set of permissions to check for the `resource`. */
@@ -978,15 +1581,27 @@ export interface SasPortalTestPermissionsRequest {
   /** Required. The resource for which the permissions are being requested. */
   resource?: string;
 }
+const SasPortalTestPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<SasPortalTestPermissionsRequest>;
+
 export interface TestPoliciesRequest {
   /** Request body */
   body?: SasPortalTestPermissionsRequest;
 }
+const TestPoliciesRequest = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<TestPoliciesRequest>;
+
 /** Response message for `TestPermissions` method. */
 export interface SasPortalTestPermissionsResponse {
   /** A set of permissions that the caller is allowed. */
   permissions?: StringList;
 }
+const SasPortalTestPermissionsResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<SasPortalTestPermissionsResponse>;
+
 /** Request for UpdateSignedDevice. */
 export interface SasPortalUpdateSignedDeviceRequest {
   /** Required. The JSON Web Token signed using a CPI private key. Payload must be the JSON encoding of the device. The user_id field must be set. */
@@ -994,24 +1609,42 @@ export interface SasPortalUpdateSignedDeviceRequest {
   /** Required. Unique installer ID (CPI ID) from the Certified Professional Installers database. */
   installerId?: string;
 }
+const SasPortalUpdateSignedDeviceRequest =
+  SasPortalCreateSignedDeviceRequest as any as S.Schema<SasPortalUpdateSignedDeviceRequest>;
+
 export interface UpdateSignedCustomersDevicesRequest {
   /** Required. The name of the device to update. */
   name: string;
   /** Request body */
   body?: SasPortalUpdateSignedDeviceRequest;
 }
+const UpdateSignedCustomersDevicesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<UpdateSignedCustomersDevicesRequest>;
+
 export interface UpdateSignedDeploymentsDevicesRequest {
   /** Required. The name of the device to update. */
   name: string;
   /** Request body */
   body?: SasPortalUpdateSignedDeviceRequest;
 }
+const UpdateSignedDeploymentsDevicesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<UpdateSignedDeploymentsDevicesRequest>;
+
 export interface UpdateSignedNodesDevicesRequest {
   /** Required. The name of the device to update. */
   name: string;
   /** Request body */
   body?: SasPortalUpdateSignedDeviceRequest;
 }
+const UpdateSignedNodesDevicesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<UpdateSignedNodesDevicesRequest>;
+
 /** Request for ValidateInstaller. */
 export interface SasPortalValidateInstallerRequest {
   /** Required. JSON Web Token signed using a CPI private key. Payload must include a "secret" claim whose value is the secret. */
@@ -1021,12 +1654,27 @@ export interface SasPortalValidateInstallerRequest {
   /** Required. Secret returned by the GenerateSecret. */
   secret?: string;
 }
+const SasPortalValidateInstallerRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<SasPortalValidateInstallerRequest>;
+
 export interface ValidateInstallerRequest {
   /** Request body */
   body?: SasPortalValidateInstallerRequest;
 }
+const ValidateInstallerRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ValidateInstallerRequest>;
+
 /** Response for ValidateInstaller. */
 export interface SasPortalValidateInstallerResponse {}
+const SasPortalValidateInstallerResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<SasPortalValidateInstallerResponse>;
+
 export type CreateCustomersDeploymentsError =
   | NotFound
   | Forbidden
@@ -1041,8 +1689,8 @@ export const createCustomersDeployments: API.OperationMethod<
   CreateCustomersDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateCustomersDeploymentsRequest>,
-  output: __S(1) as any as S.Schema<SasPortalDeployment>,
+  input: CreateCustomersDeploymentsRequest,
+  output: SasPortalDeployment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1062,8 +1710,8 @@ export const createCustomersDeploymentsDevices: API.OperationMethod<
   CreateCustomersDeploymentsDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<CreateCustomersDeploymentsDevicesRequest>,
-  output: __S(18) as any as S.Schema<SasPortalDevice>,
+  input: CreateCustomersDeploymentsDevicesRequest,
+  output: SasPortalDevice,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1083,8 +1731,8 @@ export const createCustomersDevices: API.OperationMethod<
   CreateCustomersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CreateCustomersDevicesRequest>,
-  output: __S(18) as any as S.Schema<SasPortalDevice>,
+  input: CreateCustomersDevicesRequest,
+  output: SasPortalDevice,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1104,8 +1752,8 @@ export const createCustomersNodes: API.OperationMethod<
   CreateCustomersNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<CreateCustomersNodesRequest>,
-  output: __S(21) as any as S.Schema<SasPortalNode>,
+  input: CreateCustomersNodesRequest,
+  output: SasPortalNode,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1125,8 +1773,8 @@ export const createCustomersNodesDeployments: API.OperationMethod<
   CreateCustomersNodesDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateCustomersNodesDeploymentsRequest>,
-  output: __S(1) as any as S.Schema<SasPortalDeployment>,
+  input: CreateCustomersNodesDeploymentsRequest,
+  output: SasPortalDeployment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1146,8 +1794,8 @@ export const createCustomersNodesDevices: API.OperationMethod<
   CreateCustomersNodesDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<CreateCustomersNodesDevicesRequest>,
-  output: __S(18) as any as S.Schema<SasPortalDevice>,
+  input: CreateCustomersNodesDevicesRequest,
+  output: SasPortalDevice,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1167,8 +1815,8 @@ export const createCustomersNodesNodes: API.OperationMethod<
   CreateCustomersNodesNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<CreateCustomersNodesNodesRequest>,
-  output: __S(21) as any as S.Schema<SasPortalNode>,
+  input: CreateCustomersNodesNodesRequest,
+  output: SasPortalNode,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1188,8 +1836,8 @@ export const createNodesDeploymentsDevices: API.OperationMethod<
   CreateNodesDeploymentsDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<CreateNodesDeploymentsDevicesRequest>,
-  output: __S(18) as any as S.Schema<SasPortalDevice>,
+  input: CreateNodesDeploymentsDevicesRequest,
+  output: SasPortalDevice,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1209,8 +1857,8 @@ export const createNodesDevices: API.OperationMethod<
   CreateNodesDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<CreateNodesDevicesRequest>,
-  output: __S(18) as any as S.Schema<SasPortalDevice>,
+  input: CreateNodesDevicesRequest,
+  output: SasPortalDevice,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1230,8 +1878,8 @@ export const createNodesNodes: API.OperationMethod<
   CreateNodesNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<CreateNodesNodesRequest>,
-  output: __S(21) as any as S.Schema<SasPortalNode>,
+  input: CreateNodesNodesRequest,
+  output: SasPortalNode,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1251,8 +1899,8 @@ export const createNodesNodesDeployments: API.OperationMethod<
   CreateNodesNodesDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<CreateNodesNodesDeploymentsRequest>,
-  output: __S(1) as any as S.Schema<SasPortalDeployment>,
+  input: CreateNodesNodesDeploymentsRequest,
+  output: SasPortalDeployment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1272,8 +1920,8 @@ export const createNodesNodesDevices: API.OperationMethod<
   CreateNodesNodesDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<CreateNodesNodesDevicesRequest>,
-  output: __S(18) as any as S.Schema<SasPortalDevice>,
+  input: CreateNodesNodesDevicesRequest,
+  output: SasPortalDevice,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1293,8 +1941,8 @@ export const createNodesNodesNodes: API.OperationMethod<
   CreateNodesNodesNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<CreateNodesNodesNodesRequest>,
-  output: __S(21) as any as S.Schema<SasPortalNode>,
+  input: CreateNodesNodesNodesRequest,
+  output: SasPortalNode,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1314,8 +1962,8 @@ export const createSignedCustomersDeploymentsDevices: API.OperationMethod<
   CreateSignedCustomersDeploymentsDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<CreateSignedCustomersDeploymentsDevicesRequest>,
-  output: __S(18) as any as S.Schema<SasPortalDevice>,
+  input: CreateSignedCustomersDeploymentsDevicesRequest,
+  output: SasPortalDevice,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1335,8 +1983,8 @@ export const createSignedCustomersDevices: API.OperationMethod<
   CreateSignedCustomersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<CreateSignedCustomersDevicesRequest>,
-  output: __S(18) as any as S.Schema<SasPortalDevice>,
+  input: CreateSignedCustomersDevicesRequest,
+  output: SasPortalDevice,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1356,8 +2004,8 @@ export const createSignedCustomersNodesDevices: API.OperationMethod<
   CreateSignedCustomersNodesDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<CreateSignedCustomersNodesDevicesRequest>,
-  output: __S(18) as any as S.Schema<SasPortalDevice>,
+  input: CreateSignedCustomersNodesDevicesRequest,
+  output: SasPortalDevice,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1377,8 +2025,8 @@ export const createSignedNodesDeploymentsDevices: API.OperationMethod<
   CreateSignedNodesDeploymentsDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<CreateSignedNodesDeploymentsDevicesRequest>,
-  output: __S(18) as any as S.Schema<SasPortalDevice>,
+  input: CreateSignedNodesDeploymentsDevicesRequest,
+  output: SasPortalDevice,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1398,8 +2046,8 @@ export const createSignedNodesDevices: API.OperationMethod<
   CreateSignedNodesDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<CreateSignedNodesDevicesRequest>,
-  output: __S(18) as any as S.Schema<SasPortalDevice>,
+  input: CreateSignedNodesDevicesRequest,
+  output: SasPortalDevice,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1419,8 +2067,8 @@ export const createSignedNodesNodesDevices: API.OperationMethod<
   CreateSignedNodesNodesDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<CreateSignedNodesNodesDevicesRequest>,
-  output: __S(18) as any as S.Schema<SasPortalDevice>,
+  input: CreateSignedNodesNodesDevicesRequest,
+  output: SasPortalDevice,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1440,8 +2088,8 @@ export const deleteCustomersDeployments: API.OperationMethod<
   DeleteCustomersDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<DeleteCustomersDeploymentsRequest>,
-  output: __S(40) as any as S.Schema<SasPortalEmpty>,
+  input: DeleteCustomersDeploymentsRequest,
+  output: SasPortalEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1461,8 +2109,8 @@ export const deleteCustomersDevices: API.OperationMethod<
   DeleteCustomersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<DeleteCustomersDevicesRequest>,
-  output: __S(40) as any as S.Schema<SasPortalEmpty>,
+  input: DeleteCustomersDevicesRequest,
+  output: SasPortalEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1482,8 +2130,8 @@ export const deleteCustomersNodes: API.OperationMethod<
   DeleteCustomersNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<DeleteCustomersNodesRequest>,
-  output: __S(40) as any as S.Schema<SasPortalEmpty>,
+  input: DeleteCustomersNodesRequest,
+  output: SasPortalEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1503,8 +2151,8 @@ export const deleteDeploymentsDevices: API.OperationMethod<
   DeleteDeploymentsDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<DeleteDeploymentsDevicesRequest>,
-  output: __S(40) as any as S.Schema<SasPortalEmpty>,
+  input: DeleteDeploymentsDevicesRequest,
+  output: SasPortalEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1524,8 +2172,8 @@ export const deleteNodesDeployments: API.OperationMethod<
   DeleteNodesDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<DeleteNodesDeploymentsRequest>,
-  output: __S(40) as any as S.Schema<SasPortalEmpty>,
+  input: DeleteNodesDeploymentsRequest,
+  output: SasPortalEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1545,8 +2193,8 @@ export const deleteNodesDevices: API.OperationMethod<
   DeleteNodesDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<DeleteNodesDevicesRequest>,
-  output: __S(40) as any as S.Schema<SasPortalEmpty>,
+  input: DeleteNodesDevicesRequest,
+  output: SasPortalEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1566,8 +2214,8 @@ export const deleteNodesNodes: API.OperationMethod<
   DeleteNodesNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<DeleteNodesNodesRequest>,
-  output: __S(40) as any as S.Schema<SasPortalEmpty>,
+  input: DeleteNodesNodesRequest,
+  output: SasPortalEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1587,8 +2235,8 @@ export const generateSecretInstaller: API.OperationMethod<
   GenerateSecretInstallerError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<GenerateSecretInstallerRequest>,
-  output: __S(48) as any as S.Schema<SasPortalGenerateSecretResponse>,
+  input: GenerateSecretInstallerRequest,
+  output: SasPortalGenerateSecretResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1602,8 +2250,8 @@ export const getCustomers: API.OperationMethod<
   GetCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetCustomersRequest>,
-  output: __S(21) as any as S.Schema<SasPortalCustomer>,
+  input: GetCustomersRequest,
+  output: SasPortalCustomer,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1617,8 +2265,8 @@ export const getCustomersDeployments: API.OperationMethod<
   GetCustomersDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<GetCustomersDeploymentsRequest>,
-  output: __S(1) as any as S.Schema<SasPortalDeployment>,
+  input: GetCustomersDeploymentsRequest,
+  output: SasPortalDeployment,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1632,8 +2280,8 @@ export const getCustomersDevices: API.OperationMethod<
   GetCustomersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<GetCustomersDevicesRequest>,
-  output: __S(18) as any as S.Schema<SasPortalDevice>,
+  input: GetCustomersDevicesRequest,
+  output: SasPortalDevice,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1647,8 +2295,8 @@ export const getCustomersNodes: API.OperationMethod<
   GetCustomersNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<GetCustomersNodesRequest>,
-  output: __S(21) as any as S.Schema<SasPortalNode>,
+  input: GetCustomersNodesRequest,
+  output: SasPortalNode,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1662,8 +2310,8 @@ export const getDeployments: API.OperationMethod<
   GetDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<GetDeploymentsRequest>,
-  output: __S(1) as any as S.Schema<SasPortalDeployment>,
+  input: GetDeploymentsRequest,
+  output: SasPortalDeployment,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1677,8 +2325,8 @@ export const getDeploymentsDevices: API.OperationMethod<
   GetDeploymentsDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<GetDeploymentsDevicesRequest>,
-  output: __S(18) as any as S.Schema<SasPortalDevice>,
+  input: GetDeploymentsDevicesRequest,
+  output: SasPortalDevice,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1692,8 +2340,8 @@ export const getNodes: API.OperationMethod<
   GetNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<GetNodesRequest>,
-  output: __S(21) as any as S.Schema<SasPortalNode>,
+  input: GetNodesRequest,
+  output: SasPortalNode,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1707,8 +2355,8 @@ export const getNodesDeployments: API.OperationMethod<
   GetNodesDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<GetNodesDeploymentsRequest>,
-  output: __S(1) as any as S.Schema<SasPortalDeployment>,
+  input: GetNodesDeploymentsRequest,
+  output: SasPortalDeployment,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1722,8 +2370,8 @@ export const getNodesDevices: API.OperationMethod<
   GetNodesDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<GetNodesDevicesRequest>,
-  output: __S(18) as any as S.Schema<SasPortalDevice>,
+  input: GetNodesDevicesRequest,
+  output: SasPortalDevice,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1737,8 +2385,8 @@ export const getNodesNodes: API.OperationMethod<
   GetNodesNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<GetNodesNodesRequest>,
-  output: __S(21) as any as S.Schema<SasPortalNode>,
+  input: GetNodesNodesRequest,
+  output: SasPortalNode,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1758,8 +2406,8 @@ export const getPolicies: API.OperationMethod<
   GetPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<GetPoliciesRequest>,
-  output: __S(63) as any as S.Schema<SasPortalPolicy>,
+  input: GetPoliciesRequest,
+  output: SasPortalPolicy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1774,8 +2422,8 @@ export const listCustomers: API.PaginatedOperationMethod<
   GcpOpContext,
   SasPortalListCustomersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(64) as any as S.Schema<ListCustomersRequest>,
-  output: __S(66) as any as S.Schema<SasPortalListCustomersResponse>,
+  input: ListCustomersRequest,
+  output: SasPortalListCustomersResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1791,8 +2439,8 @@ export const listCustomersDeployments: API.PaginatedOperationMethod<
   GcpOpContext,
   SasPortalListDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(67) as any as S.Schema<ListCustomersDeploymentsRequest>,
-  output: __S(69) as any as S.Schema<SasPortalListDeploymentsResponse>,
+  input: ListCustomersDeploymentsRequest,
+  output: SasPortalListDeploymentsResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1812,8 +2460,8 @@ export const listCustomersDeploymentsDevices: API.PaginatedOperationMethod<
   GcpOpContext,
   SasPortalListDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(70) as any as S.Schema<ListCustomersDeploymentsDevicesRequest>,
-  output: __S(72) as any as S.Schema<SasPortalListDevicesResponse>,
+  input: ListCustomersDeploymentsDevicesRequest,
+  output: SasPortalListDevicesResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1829,8 +2477,8 @@ export const listCustomersDevices: API.PaginatedOperationMethod<
   GcpOpContext,
   SasPortalListDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(73) as any as S.Schema<ListCustomersDevicesRequest>,
-  output: __S(72) as any as S.Schema<SasPortalListDevicesResponse>,
+  input: ListCustomersDevicesRequest,
+  output: SasPortalListDevicesResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1846,8 +2494,8 @@ export const listCustomersNodes: API.PaginatedOperationMethod<
   GcpOpContext,
   SasPortalListNodesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(74) as any as S.Schema<ListCustomersNodesRequest>,
-  output: __S(75) as any as S.Schema<SasPortalListNodesResponse>,
+  input: ListCustomersNodesRequest,
+  output: SasPortalListNodesResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1867,8 +2515,8 @@ export const listCustomersNodesDeployments: API.PaginatedOperationMethod<
   GcpOpContext,
   SasPortalListDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(76) as any as S.Schema<ListCustomersNodesDeploymentsRequest>,
-  output: __S(69) as any as S.Schema<SasPortalListDeploymentsResponse>,
+  input: ListCustomersNodesDeploymentsRequest,
+  output: SasPortalListDeploymentsResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1884,8 +2532,8 @@ export const listCustomersNodesDevices: API.PaginatedOperationMethod<
   GcpOpContext,
   SasPortalListDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(77) as any as S.Schema<ListCustomersNodesDevicesRequest>,
-  output: __S(72) as any as S.Schema<SasPortalListDevicesResponse>,
+  input: ListCustomersNodesDevicesRequest,
+  output: SasPortalListDevicesResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1901,8 +2549,8 @@ export const listCustomersNodesNodes: API.PaginatedOperationMethod<
   GcpOpContext,
   SasPortalListNodesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(78) as any as S.Schema<ListCustomersNodesNodesRequest>,
-  output: __S(75) as any as S.Schema<SasPortalListNodesResponse>,
+  input: ListCustomersNodesNodesRequest,
+  output: SasPortalListNodesResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1921,8 +2569,8 @@ export const listGcpProjectDeploymentsCustomers: API.OperationMethod<
   ListGcpProjectDeploymentsCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<ListGcpProjectDeploymentsCustomersRequest>,
-  output: __S(82) as any as S.Schema<SasPortalListGcpProjectDeploymentsResponse>,
+  input: ListGcpProjectDeploymentsCustomersRequest,
+  output: SasPortalListGcpProjectDeploymentsResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1940,8 +2588,8 @@ export const listLegacyOrganizationsCustomers: API.OperationMethod<
   ListLegacyOrganizationsCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<ListLegacyOrganizationsCustomersRequest>,
-  output: __S(86) as any as S.Schema<SasPortalListLegacyOrganizationsResponse>,
+  input: ListLegacyOrganizationsCustomersRequest,
+  output: SasPortalListLegacyOrganizationsResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1956,8 +2604,8 @@ export const listNodesDeployments: API.PaginatedOperationMethod<
   GcpOpContext,
   SasPortalListDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(87) as any as S.Schema<ListNodesDeploymentsRequest>,
-  output: __S(69) as any as S.Schema<SasPortalListDeploymentsResponse>,
+  input: ListNodesDeploymentsRequest,
+  output: SasPortalListDeploymentsResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1973,8 +2621,8 @@ export const listNodesDeploymentsDevices: API.PaginatedOperationMethod<
   GcpOpContext,
   SasPortalListDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(88) as any as S.Schema<ListNodesDeploymentsDevicesRequest>,
-  output: __S(72) as any as S.Schema<SasPortalListDevicesResponse>,
+  input: ListNodesDeploymentsDevicesRequest,
+  output: SasPortalListDevicesResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1990,8 +2638,8 @@ export const listNodesDevices: API.PaginatedOperationMethod<
   GcpOpContext,
   SasPortalListDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(89) as any as S.Schema<ListNodesDevicesRequest>,
-  output: __S(72) as any as S.Schema<SasPortalListDevicesResponse>,
+  input: ListNodesDevicesRequest,
+  output: SasPortalListDevicesResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2007,8 +2655,8 @@ export const listNodesNodes: API.PaginatedOperationMethod<
   GcpOpContext,
   SasPortalListNodesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(90) as any as S.Schema<ListNodesNodesRequest>,
-  output: __S(75) as any as S.Schema<SasPortalListNodesResponse>,
+  input: ListNodesNodesRequest,
+  output: SasPortalListNodesResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2024,8 +2672,8 @@ export const listNodesNodesDeployments: API.PaginatedOperationMethod<
   GcpOpContext,
   SasPortalListDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(91) as any as S.Schema<ListNodesNodesDeploymentsRequest>,
-  output: __S(69) as any as S.Schema<SasPortalListDeploymentsResponse>,
+  input: ListNodesNodesDeploymentsRequest,
+  output: SasPortalListDeploymentsResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2041,8 +2689,8 @@ export const listNodesNodesDevices: API.PaginatedOperationMethod<
   GcpOpContext,
   SasPortalListDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(92) as any as S.Schema<ListNodesNodesDevicesRequest>,
-  output: __S(72) as any as S.Schema<SasPortalListDevicesResponse>,
+  input: ListNodesNodesDevicesRequest,
+  output: SasPortalListDevicesResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2058,8 +2706,8 @@ export const listNodesNodesNodes: API.PaginatedOperationMethod<
   GcpOpContext,
   SasPortalListNodesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(93) as any as S.Schema<ListNodesNodesNodesRequest>,
-  output: __S(75) as any as S.Schema<SasPortalListNodesResponse>,
+  input: ListNodesNodesNodesRequest,
+  output: SasPortalListNodesResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2080,8 +2728,8 @@ export const migrateOrganizationCustomers: API.OperationMethod<
   MigrateOrganizationCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<MigrateOrganizationCustomersRequest>,
-  output: __S(99) as any as S.Schema<SasPortalOperation>,
+  input: MigrateOrganizationCustomersRequest,
+  output: SasPortalOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2101,8 +2749,8 @@ export const moveCustomersDeployments: API.OperationMethod<
   MoveCustomersDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<MoveCustomersDeploymentsRequest>,
-  output: __S(99) as any as S.Schema<SasPortalOperation>,
+  input: MoveCustomersDeploymentsRequest,
+  output: SasPortalOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2122,8 +2770,8 @@ export const moveCustomersDevices: API.OperationMethod<
   MoveCustomersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<MoveCustomersDevicesRequest>,
-  output: __S(99) as any as S.Schema<SasPortalOperation>,
+  input: MoveCustomersDevicesRequest,
+  output: SasPortalOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2143,8 +2791,8 @@ export const moveCustomersNodes: API.OperationMethod<
   MoveCustomersNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<MoveCustomersNodesRequest>,
-  output: __S(99) as any as S.Schema<SasPortalOperation>,
+  input: MoveCustomersNodesRequest,
+  output: SasPortalOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2164,8 +2812,8 @@ export const moveDeploymentsDevices: API.OperationMethod<
   MoveDeploymentsDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<MoveDeploymentsDevicesRequest>,
-  output: __S(99) as any as S.Schema<SasPortalOperation>,
+  input: MoveDeploymentsDevicesRequest,
+  output: SasPortalOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2185,8 +2833,8 @@ export const moveNodesDeployments: API.OperationMethod<
   MoveNodesDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<MoveNodesDeploymentsRequest>,
-  output: __S(99) as any as S.Schema<SasPortalOperation>,
+  input: MoveNodesDeploymentsRequest,
+  output: SasPortalOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2206,8 +2854,8 @@ export const moveNodesDevices: API.OperationMethod<
   MoveNodesDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<MoveNodesDevicesRequest>,
-  output: __S(99) as any as S.Schema<SasPortalOperation>,
+  input: MoveNodesDevicesRequest,
+  output: SasPortalOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2227,8 +2875,8 @@ export const moveNodesNodes: API.OperationMethod<
   MoveNodesNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<MoveNodesNodesRequest>,
-  output: __S(99) as any as S.Schema<SasPortalOperation>,
+  input: MoveNodesNodesRequest,
+  output: SasPortalOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2248,8 +2896,8 @@ export const patchCustomers: API.OperationMethod<
   PatchCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<PatchCustomersRequest>,
-  output: __S(21) as any as S.Schema<SasPortalCustomer>,
+  input: PatchCustomersRequest,
+  output: SasPortalCustomer,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2269,8 +2917,8 @@ export const patchCustomersDeployments: API.OperationMethod<
   PatchCustomersDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<PatchCustomersDeploymentsRequest>,
-  output: __S(1) as any as S.Schema<SasPortalDeployment>,
+  input: PatchCustomersDeploymentsRequest,
+  output: SasPortalDeployment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2290,8 +2938,8 @@ export const patchCustomersDevices: API.OperationMethod<
   PatchCustomersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<PatchCustomersDevicesRequest>,
-  output: __S(18) as any as S.Schema<SasPortalDevice>,
+  input: PatchCustomersDevicesRequest,
+  output: SasPortalDevice,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2311,8 +2959,8 @@ export const patchCustomersNodes: API.OperationMethod<
   PatchCustomersNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<PatchCustomersNodesRequest>,
-  output: __S(21) as any as S.Schema<SasPortalNode>,
+  input: PatchCustomersNodesRequest,
+  output: SasPortalNode,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2332,8 +2980,8 @@ export const patchDeploymentsDevices: API.OperationMethod<
   PatchDeploymentsDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<PatchDeploymentsDevicesRequest>,
-  output: __S(18) as any as S.Schema<SasPortalDevice>,
+  input: PatchDeploymentsDevicesRequest,
+  output: SasPortalDevice,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2353,8 +3001,8 @@ export const patchNodesDeployments: API.OperationMethod<
   PatchNodesDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<PatchNodesDeploymentsRequest>,
-  output: __S(1) as any as S.Schema<SasPortalDeployment>,
+  input: PatchNodesDeploymentsRequest,
+  output: SasPortalDeployment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2374,8 +3022,8 @@ export const patchNodesDevices: API.OperationMethod<
   PatchNodesDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115) as any as S.Schema<PatchNodesDevicesRequest>,
-  output: __S(18) as any as S.Schema<SasPortalDevice>,
+  input: PatchNodesDevicesRequest,
+  output: SasPortalDevice,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2395,8 +3043,8 @@ export const patchNodesNodes: API.OperationMethod<
   PatchNodesNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<PatchNodesNodesRequest>,
-  output: __S(21) as any as S.Schema<SasPortalNode>,
+  input: PatchNodesNodesRequest,
+  output: SasPortalNode,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2416,8 +3064,8 @@ export const provisionDeploymentCustomers: API.OperationMethod<
   ProvisionDeploymentCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<ProvisionDeploymentCustomersRequest>,
-  output: __S(119) as any as S.Schema<SasPortalProvisionDeploymentResponse>,
+  input: ProvisionDeploymentCustomersRequest,
+  output: SasPortalProvisionDeploymentResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2437,8 +3085,8 @@ export const setPolicies: API.OperationMethod<
   SetPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<SetPoliciesRequest>,
-  output: __S(63) as any as S.Schema<SasPortalPolicy>,
+  input: SetPoliciesRequest,
+  output: SasPortalPolicy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2458,8 +3106,8 @@ export const setupSasAnalyticsCustomers: API.OperationMethod<
   SetupSasAnalyticsCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<SetupSasAnalyticsCustomersRequest>,
-  output: __S(99) as any as S.Schema<SasPortalOperation>,
+  input: SetupSasAnalyticsCustomersRequest,
+  output: SasPortalOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2479,8 +3127,8 @@ export const signDeviceCustomersDevices: API.OperationMethod<
   SignDeviceCustomersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<SignDeviceCustomersDevicesRequest>,
-  output: __S(40) as any as S.Schema<SasPortalEmpty>,
+  input: SignDeviceCustomersDevicesRequest,
+  output: SasPortalEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2500,8 +3148,8 @@ export const signDeviceDeploymentsDevices: API.OperationMethod<
   SignDeviceDeploymentsDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<SignDeviceDeploymentsDevicesRequest>,
-  output: __S(40) as any as S.Schema<SasPortalEmpty>,
+  input: SignDeviceDeploymentsDevicesRequest,
+  output: SasPortalEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2521,8 +3169,8 @@ export const signDeviceNodesDevices: API.OperationMethod<
   SignDeviceNodesDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<SignDeviceNodesDevicesRequest>,
-  output: __S(40) as any as S.Schema<SasPortalEmpty>,
+  input: SignDeviceNodesDevicesRequest,
+  output: SasPortalEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2542,8 +3190,8 @@ export const testPolicies: API.OperationMethod<
   TestPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<TestPoliciesRequest>,
-  output: __S(130) as any as S.Schema<SasPortalTestPermissionsResponse>,
+  input: TestPoliciesRequest,
+  output: SasPortalTestPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2563,8 +3211,8 @@ export const updateSignedCustomersDevices: API.OperationMethod<
   UpdateSignedCustomersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<UpdateSignedCustomersDevicesRequest>,
-  output: __S(18) as any as S.Schema<SasPortalDevice>,
+  input: UpdateSignedCustomersDevicesRequest,
+  output: SasPortalDevice,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2584,8 +3232,8 @@ export const updateSignedDeploymentsDevices: API.OperationMethod<
   UpdateSignedDeploymentsDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<UpdateSignedDeploymentsDevicesRequest>,
-  output: __S(18) as any as S.Schema<SasPortalDevice>,
+  input: UpdateSignedDeploymentsDevicesRequest,
+  output: SasPortalDevice,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2605,8 +3253,8 @@ export const updateSignedNodesDevices: API.OperationMethod<
   UpdateSignedNodesDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133) as any as S.Schema<UpdateSignedNodesDevicesRequest>,
-  output: __S(18) as any as S.Schema<SasPortalDevice>,
+  input: UpdateSignedNodesDevicesRequest,
+  output: SasPortalDevice,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2626,8 +3274,8 @@ export const validateInstaller: API.OperationMethod<
   ValidateInstallerError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<ValidateInstallerRequest>,
-  output: __S(136) as any as S.Schema<SasPortalValidateInstallerResponse>,
+  input: ValidateInstallerRequest,
+  output: SasPortalValidateInstallerResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2642,8 +3290,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          sasUserIds: S.optional(__S(0)),
-          frns: S.optional(__S(0)),
+          sasUserIds: S.optional(StringList),
+          frns: S.optional(StringList),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "SasPortalDeployment" });
@@ -2651,7 +3299,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(1).pipe(T.HttpBody())),
+          body: S.optional(SasPortalDeployment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2665,7 +3313,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          radioTechnology: S.optional(S.String),
+          radioTechnology: S.optional(SasPortalDeviceAirInterfaceRadioTechnologyEnum),
           supportedSpec: S.optional(S.String),
         }),
       ).annotate({
@@ -2696,27 +3344,29 @@ function __c0(j: number): any {
           eirpCapability: S.optional(S.Number),
           antennaGain: S.optional(S.Number),
           height: S.optional(S.Number),
-          heightType: S.optional(S.String),
+          heightType: S.optional(SasPortalInstallationParamsHeightTypeEnum),
           antennaAzimuth: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "SasPortalInstallationParams",
       });
     case 6:
-      return S.Array(S.String);
+      return S.Array(SasPortalDeviceConfigMeasurementCapabilitiesItemEnum);
     case 7:
       return S.suspend(() =>
         S.Struct({
           isSigned: S.optional(S.Boolean),
           updateTime: S.optional(S.String),
-          category: S.optional(S.String),
-          state: S.optional(S.String),
-          airInterface: S.optional(__S(3)),
-          model: S.optional(__S(4)),
+          category: S.optional(SasPortalDeviceConfigCategoryEnum),
+          state: S.optional(SasPortalDeviceConfigStateEnum),
+          airInterface: S.optional(SasPortalDeviceAirInterface),
+          model: S.optional(SasPortalDeviceModel),
           callSign: S.optional(S.String),
-          installationParams: S.optional(__S(5)),
+          installationParams: S.optional(SasPortalInstallationParams),
           userId: S.optional(S.String),
-          measurementCapabilities: S.optional(__S(6)),
+          measurementCapabilities: S.optional(
+            SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList,
+          ),
         }),
       ).annotate({ identifier: "SasPortalDeviceConfig" });
   }
@@ -2731,43 +3381,43 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "SasPortalFrequencyRange" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(SasPortalFrequencyRange);
     case 2:
       return S.suspend(() =>
         S.Struct({
           dpaId: S.optional(S.String),
-          frequencyRange: S.optional(__S(8)),
+          frequencyRange: S.optional(SasPortalFrequencyRange),
         }),
       ).annotate({ identifier: "SasPortalDpaMoveList" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(SasPortalDpaMoveList);
     case 4:
       return S.suspend(() =>
         S.Struct({
           grantId: S.optional(S.String),
           lastHeartbeatTransmitExpireTime: S.optional(S.String),
-          moveList: S.optional(__S(11)),
+          moveList: S.optional(SasPortalDpaMoveListList),
           maxEirp: S.optional(S.Number),
-          state: S.optional(S.String),
+          state: S.optional(SasPortalDeviceGrantStateEnum),
           expireTime: S.optional(S.String),
-          frequencyRange: S.optional(__S(8)),
-          suspensionReason: S.optional(__S(0)),
-          channelType: S.optional(S.String),
+          frequencyRange: S.optional(SasPortalFrequencyRange),
+          suspensionReason: S.optional(StringList),
+          channelType: S.optional(SasPortalDeviceGrantChannelTypeEnum),
         }),
       ).annotate({ identifier: "SasPortalDeviceGrant" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(SasPortalDeviceGrant);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          frequencyRange: S.optional(__S(8)),
+          frequencyRange: S.optional(SasPortalFrequencyRange),
           score: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "SasPortalChannelWithScore",
       });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(SasPortalChannelWithScore);
   }
 }
 function __c2(j: number): any {
@@ -2775,7 +3425,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(SasPortalNrqzValidationStateEnum),
           longitude: S.optional(S.Number),
           latitude: S.optional(S.Number),
           caseId: S.optional(S.String),
@@ -2786,7 +3436,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           antennaModel: S.optional(S.String),
-          nrqzValidation: S.optional(__S(16)),
+          nrqzValidation: S.optional(SasPortalNrqzValidation),
           commonChannelGroup: S.optional(S.String),
           nrqzValidated: S.optional(S.Boolean),
           interferenceCoordinationGroup: S.optional(S.String),
@@ -2796,15 +3446,15 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          preloadedConfig: S.optional(__S(7)),
+          preloadedConfig: S.optional(SasPortalDeviceConfig),
           fccId: S.optional(S.String),
-          grantRangeAllowlists: S.optional(__S(9)),
-          grants: S.optional(__S(13)),
-          currentChannels: S.optional(__S(15)),
+          grantRangeAllowlists: S.optional(SasPortalFrequencyRangeList),
+          grants: S.optional(SasPortalDeviceGrantList),
+          currentChannels: S.optional(SasPortalChannelWithScoreList),
           serialNumber: S.optional(S.String),
-          deviceMetadata: S.optional(__S(17)),
-          state: S.optional(S.String),
-          activeConfig: S.optional(__S(7)),
+          deviceMetadata: S.optional(SasPortalDeviceMetadata),
+          state: S.optional(SasPortalDeviceStateEnum),
+          activeConfig: S.optional(SasPortalDeviceConfig),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "SasPortalDevice" });
@@ -2812,7 +3462,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(18).pipe(T.HttpBody())),
+          body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2827,7 +3477,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(18).pipe(T.HttpBody())),
+          body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2841,7 +3491,7 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          sasUserIds: S.optional(__S(0)),
+          sasUserIds: S.optional(StringList),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
@@ -2850,7 +3500,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(21).pipe(T.HttpBody())),
+          body: S.optional(SasPortalNode.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2865,7 +3515,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(1).pipe(T.HttpBody())),
+          body: S.optional(SasPortalDeployment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2884,7 +3534,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(18).pipe(T.HttpBody())),
+          body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2899,7 +3549,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(21).pipe(T.HttpBody())),
+          body: S.optional(SasPortalNode.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2914,7 +3564,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(18).pipe(T.HttpBody())),
+          body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2929,7 +3579,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(18).pipe(T.HttpBody())),
+          body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2944,7 +3594,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(21).pipe(T.HttpBody())),
+          body: S.optional(SasPortalNode.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2957,7 +3607,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(1).pipe(T.HttpBody())),
+          body: S.optional(SasPortalDeployment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2972,7 +3622,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(18).pipe(T.HttpBody())),
+          body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2987,7 +3637,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(21).pipe(T.HttpBody())),
+          body: S.optional(SasPortalNode.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3015,7 +3665,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(32).pipe(T.HttpBody())),
+          body: S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3030,7 +3680,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(32).pipe(T.HttpBody())),
+          body: S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3045,7 +3695,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(32).pipe(T.HttpBody())),
+          body: S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3060,7 +3710,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(32).pipe(T.HttpBody())),
+          body: S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3075,7 +3725,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(32).pipe(T.HttpBody())),
+          body: S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3090,7 +3740,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(32).pipe(T.HttpBody())),
+          body: S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3208,7 +3858,7 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(40).pipe(T.HttpBody())),
+          body: S.optional(SasPortalGenerateSecretRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3374,7 +4024,7 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(59).pipe(T.HttpBody())),
+          body: S.optional(SasPortalGetPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3387,15 +4037,15 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          members: S.optional(__S(0)),
+          members: S.optional(StringList),
         }),
       ).annotate({ identifier: "SasPortalAssignment" });
     case 6:
-      return S.Array(__S(61));
+      return S.Array(SasPortalAssignment);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          assignments: S.optional(__S(62)),
+          assignments: S.optional(SasPortalAssignmentList),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "SasPortalPolicy" });
@@ -3417,12 +4067,12 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "ListCustomersRequest" });
     case 1:
-      return S.Array(__S(21));
+      return S.Array(SasPortalCustomer);
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          customers: S.optional(__S(65)),
+          customers: S.optional(SasPortalCustomerList),
         }),
       ).annotate({
         identifier: "SasPortalListCustomersResponse",
@@ -3445,11 +4095,11 @@ function __c8(j: number): any {
         identifier: "ListCustomersDeploymentsRequest",
       });
     case 4:
-      return S.Array(__S(1));
+      return S.Array(SasPortalDeployment);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          deployments: S.optional(__S(68)),
+          deployments: S.optional(SasPortalDeploymentList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3473,7 +4123,7 @@ function __c8(j: number): any {
         identifier: "ListCustomersDeploymentsDevicesRequest",
       });
     case 7:
-      return S.Array(__S(18));
+      return S.Array(SasPortalDevice);
   }
 }
 function __c9(j: number): any {
@@ -3482,7 +4132,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          devices: S.optional(__S(71)),
+          devices: S.optional(SasPortalDeviceList),
         }),
       ).annotate({
         identifier: "SasPortalListDevicesResponse",
@@ -3524,7 +4174,7 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          nodes: S.optional(__S(65)),
+          nodes: S.optional(SasPortalNodeList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3601,17 +4251,17 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           hasEnabledAnalytics: S.optional(S.Boolean),
-          deployment: S.optional(__S(1)),
+          deployment: S.optional(SasPortalDeployment),
         }),
       ).annotate({
         identifier: "SasPortalGcpProjectDeployment",
       });
     case 1:
-      return S.Array(__S(80));
+      return S.Array(SasPortalGcpProjectDeployment);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          deployments: S.optional(__S(81)),
+          deployments: S.optional(SasPortalGcpProjectDeploymentList),
         }),
       ).annotate({
         identifier: "SasPortalListGcpProjectDeploymentsResponse",
@@ -3636,11 +4286,11 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "SasPortalOrganization" });
     case 5:
-      return S.Array(__S(84));
+      return S.Array(SasPortalOrganization);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          organizations: S.optional(__S(85)),
+          organizations: S.optional(SasPortalOrganizationList),
         }),
       ).annotate({
         identifier: "SasPortalListLegacyOrganizationsResponse",
@@ -3775,7 +4425,7 @@ function __c11(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(94).pipe(T.HttpBody())),
+          body: S.optional(SasPortalMigrateOrganizationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3793,12 +4443,12 @@ function __c12(j: number): any {
     case 0:
       return S.Record(S.String, S.Unknown);
     case 1:
-      return S.Array(__S(96));
+      return S.Array(DocumentMap);
     case 2:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(__S(97)),
+          details: S.optional(DocumentMapList),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SasPortalStatus" });
@@ -3807,9 +4457,9 @@ function __c12(j: number): any {
         S.Struct({
           done: S.optional(S.Boolean),
           name: S.optional(S.String),
-          metadata: S.optional(__S(96)),
-          response: S.optional(__S(96)),
-          error: S.optional(__S(98)),
+          metadata: S.optional(DocumentMap),
+          response: S.optional(DocumentMap),
+          error: S.optional(SasPortalStatus),
         }),
       ).annotate({ identifier: "SasPortalOperation" });
     case 4:
@@ -3824,7 +4474,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(100).pipe(T.HttpBody())),
+          body: S.optional(SasPortalMoveDeploymentRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3839,7 +4489,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(100).pipe(T.HttpBody())),
+          body: S.optional(SasPortalMoveDeviceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3864,7 +4514,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(103).pipe(T.HttpBody())),
+          body: S.optional(SasPortalMoveNodeRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3879,7 +4529,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(100).pipe(T.HttpBody())),
+          body: S.optional(SasPortalMoveDeviceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3894,7 +4544,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(100).pipe(T.HttpBody())),
+          body: S.optional(SasPortalMoveDeploymentRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3909,7 +4559,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(100).pipe(T.HttpBody())),
+          body: S.optional(SasPortalMoveDeviceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3922,7 +4572,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(103).pipe(T.HttpBody())),
+          body: S.optional(SasPortalMoveNodeRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3936,7 +4586,7 @@ function __c13(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(21).pipe(T.HttpBody())),
+          body: S.optional(SasPortalCustomer.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3950,7 +4600,7 @@ function __c13(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(1).pipe(T.HttpBody())),
+          body: S.optional(SasPortalDeployment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3966,7 +4616,7 @@ function __c13(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(18).pipe(T.HttpBody())),
+          body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3986,7 +4636,7 @@ function __c14(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(21).pipe(T.HttpBody())),
+          body: S.optional(SasPortalNode.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4002,7 +4652,7 @@ function __c14(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(18).pipe(T.HttpBody())),
+          body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4018,7 +4668,7 @@ function __c14(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(1).pipe(T.HttpBody())),
+          body: S.optional(SasPortalDeployment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4034,7 +4684,7 @@ function __c14(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(18).pipe(T.HttpBody())),
+          body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4048,7 +4698,7 @@ function __c14(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(21).pipe(T.HttpBody())),
+          body: S.optional(SasPortalNode.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4070,7 +4720,7 @@ function __c14(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(117).pipe(T.HttpBody())),
+          body: S.optional(SasPortalProvisionDeploymentRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4098,7 +4748,7 @@ function __c15(j: number): any {
         S.Struct({
           resource: S.optional(S.String),
           disableNotification: S.optional(S.Boolean),
-          policy: S.optional(__S(63)),
+          policy: S.optional(SasPortalPolicy),
         }),
       ).annotate({
         identifier: "SasPortalSetPolicyRequest",
@@ -4106,7 +4756,7 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(120).pipe(T.HttpBody())),
+          body: S.optional(SasPortalSetPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4126,7 +4776,7 @@ function __c15(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(122).pipe(T.HttpBody())),
+          body: S.optional(SasPortalSetupSasAnalyticsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4140,7 +4790,7 @@ function __c15(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          device: S.optional(__S(18)),
+          device: S.optional(SasPortalDevice),
         }),
       ).annotate({
         identifier: "SasPortalSignDeviceRequest",
@@ -4149,7 +4799,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(124).pipe(T.HttpBody())),
+          body: S.optional(SasPortalSignDeviceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4164,7 +4814,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(124).pipe(T.HttpBody())),
+          body: S.optional(SasPortalSignDeviceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4179,7 +4829,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(124).pipe(T.HttpBody())),
+          body: S.optional(SasPortalSignDeviceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4197,7 +4847,7 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(0)),
+          permissions: S.optional(StringList),
           resource: S.optional(S.String),
         }),
       ).annotate({
@@ -4206,7 +4856,7 @@ function __c16(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(128).pipe(T.HttpBody())),
+          body: S.optional(SasPortalTestPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4218,7 +4868,7 @@ function __c16(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(0)),
+          permissions: S.optional(StringList),
         }),
       ).annotate({
         identifier: "SasPortalTestPermissionsResponse",
@@ -4227,7 +4877,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(32).pipe(T.HttpBody())),
+          body: S.optional(SasPortalUpdateSignedDeviceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4242,7 +4892,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(32).pipe(T.HttpBody())),
+          body: S.optional(SasPortalUpdateSignedDeviceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4257,7 +4907,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(32).pipe(T.HttpBody())),
+          body: S.optional(SasPortalUpdateSignedDeviceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4281,7 +4931,7 @@ function __c16(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(134).pipe(T.HttpBody())),
+          body: S.optional(SasPortalValidateInstallerRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4298,50 +4948,5 @@ function __c17(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "SasPortalValidateInstallerResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
   }
 }

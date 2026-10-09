@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://waf.amazonaws.com/doc/2015-08-24/");
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "WAF", serviceShapeName: "AWSWAF_20150824" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "waf" });
@@ -101,7 +99,7 @@ export class WAFEntityMigrationException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       MigrationErrorType: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
+        /*@__PURE__*/ S.suspend(() => MigrationErrorType).annotate({
           identifier: "MigrationErrorType",
         }),
       ),
@@ -126,13 +124,13 @@ export class WAFInvalidParameterException
     "WAFInvalidParameterException",
     {
       field: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
+        /*@__PURE__*/ S.suspend(() => ParameterExceptionField).annotate({
           identifier: "ParameterExceptionField",
         }),
       ),
       parameter: /*@__PURE__*/ S.optional(S.String),
       reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
+        /*@__PURE__*/ S.suspend(() => ParameterExceptionReason).annotate({
           identifier: "ParameterExceptionReason",
         }),
       ),
@@ -200,6 +198,10 @@ export interface CreateByteMatchSetRequest {
   Name: string;
   ChangeToken: string;
 }
+const CreateByteMatchSetRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateByteMatchSetRequest>;
 export type ResourceId = string;
 export type MatchFieldType =
   | "URI"
@@ -210,11 +212,14 @@ export type MatchFieldType =
   | "SINGLE_QUERY_ARG"
   | "ALL_QUERY_ARGS"
   | (string & {});
+const MatchFieldType = S.String;
+
 export type MatchFieldData = string;
 export interface FieldToMatch {
   Type: MatchFieldType;
   Data?: string;
 }
+const FieldToMatch = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<FieldToMatch>;
 export type ByteMatchTargetString = Uint8Array;
 export type TextTransformation =
   | "NONE"
@@ -224,6 +229,8 @@ export type TextTransformation =
   | "CMD_LINE"
   | "URL_DECODE"
   | (string & {});
+const TextTransformation = S.String;
+
 export type PositionalConstraint =
   | "EXACTLY"
   | "STARTS_WITH"
@@ -231,27 +238,42 @@ export type PositionalConstraint =
   | "CONTAINS"
   | "CONTAINS_WORD"
   | (string & {});
+const PositionalConstraint = S.String;
+
 export interface ByteMatchTuple {
   FieldToMatch: FieldToMatch;
   TargetString: Uint8Array;
   TextTransformation: TextTransformation;
   PositionalConstraint: PositionalConstraint;
 }
+const ByteMatchTuple = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ByteMatchTuple>;
 export type ByteMatchTuples = ByteMatchTuple[];
+const ByteMatchTuples = /*@__PURE__*/ __L.at(__c0, 3);
 export interface ByteMatchSet {
   ByteMatchSetId: string;
   Name?: string;
   ByteMatchTuples: ByteMatchTuple[];
 }
+const ByteMatchSet = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ByteMatchSet>;
 export interface CreateByteMatchSetResponse {
   ByteMatchSet?: ByteMatchSet;
   ChangeToken?: string;
 }
+const CreateByteMatchSetResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateByteMatchSetResponse>;
 export interface CreateGeoMatchSetRequest {
   Name: string;
   ChangeToken: string;
 }
+const CreateGeoMatchSetRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateGeoMatchSetRequest>;
 export type GeoMatchConstraintType = "Country" | (string & {});
+const GeoMatchConstraintType = S.String;
+
 export type GeoMatchConstraintValue =
   | "AF"
   | "AX"
@@ -503,42 +525,60 @@ export type GeoMatchConstraintValue =
   | "ZM"
   | "ZW"
   | (string & {});
+const GeoMatchConstraintValue = S.String;
+
 export interface GeoMatchConstraint {
   Type: GeoMatchConstraintType;
   Value: GeoMatchConstraintValue;
 }
+const GeoMatchConstraint = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GeoMatchConstraint>;
 export type GeoMatchConstraints = GeoMatchConstraint[];
+const GeoMatchConstraints = /*@__PURE__*/ __L.at(__c1, 0);
 export interface GeoMatchSet {
   GeoMatchSetId: string;
   Name?: string;
   GeoMatchConstraints: GeoMatchConstraint[];
 }
+const GeoMatchSet = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GeoMatchSet>;
 export interface CreateGeoMatchSetResponse {
   GeoMatchSet?: GeoMatchSet;
   ChangeToken?: string;
 }
+const CreateGeoMatchSetResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateGeoMatchSetResponse>;
 export interface CreateIPSetRequest {
   Name: string;
   ChangeToken: string;
 }
+const CreateIPSetRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CreateIPSetRequest>;
 export type IPSetDescriptorType = "IPV4" | "IPV6" | (string & {});
+const IPSetDescriptorType = S.String;
+
 export type IPSetDescriptorValue = string;
 export interface IPSetDescriptor {
   Type: IPSetDescriptorType;
   Value: string;
 }
+const IPSetDescriptor = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<IPSetDescriptor>;
 export type IPSetDescriptors = IPSetDescriptor[];
+const IPSetDescriptors = /*@__PURE__*/ __L.at(__c1, 5);
 export interface IPSet {
   IPSetId: string;
   Name?: string;
   IPSetDescriptors: IPSetDescriptor[];
 }
+const IPSet = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<IPSet>;
 export interface CreateIPSetResponse {
   IPSet?: IPSet;
   ChangeToken?: string;
 }
+const CreateIPSetResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<CreateIPSetResponse>;
 export type MetricName = string;
 export type RateKey = "IP" | (string & {});
+const RateKey = S.String;
+
 export type RateLimit = number;
 export type TagKey = string;
 export type TagValue = string;
@@ -546,7 +586,9 @@ export interface Tag {
   Key: string;
   Value: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
+const TagList = /*@__PURE__*/ __L.at(__c2, 1);
 export interface CreateRateBasedRuleRequest {
   Name: string;
   MetricName: string;
@@ -555,6 +597,10 @@ export interface CreateRateBasedRuleRequest {
   ChangeToken: string;
   Tags?: Tag[];
 }
+const CreateRateBasedRuleRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateRateBasedRuleRequest>;
 export type Negated = boolean;
 export type PredicateType =
   | "IPMatch"
@@ -565,12 +611,16 @@ export type PredicateType =
   | "XssMatch"
   | "RegexMatch"
   | (string & {});
+const PredicateType = S.String;
+
 export interface Predicate {
   Negated: boolean;
   Type: PredicateType;
   DataId: string;
 }
+const Predicate = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Predicate>;
 export type Predicates = Predicate[];
+const Predicates = /*@__PURE__*/ __L.at(__c2, 4);
 export interface RateBasedRule {
   RuleId: string;
   Name?: string;
@@ -579,80 +629,124 @@ export interface RateBasedRule {
   RateKey: RateKey;
   RateLimit: number;
 }
+const RateBasedRule = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<RateBasedRule>;
 export interface CreateRateBasedRuleResponse {
   Rule?: RateBasedRule;
   ChangeToken?: string;
 }
+const CreateRateBasedRuleResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateRateBasedRuleResponse>;
 export interface CreateRegexMatchSetRequest {
   Name: string;
   ChangeToken: string;
 }
+const CreateRegexMatchSetRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateRegexMatchSetRequest>;
 export interface RegexMatchTuple {
   FieldToMatch: FieldToMatch;
   TextTransformation: TextTransformation;
   RegexPatternSetId: string;
 }
+const RegexMatchTuple = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<RegexMatchTuple>;
 export type RegexMatchTuples = RegexMatchTuple[];
+const RegexMatchTuples = /*@__PURE__*/ __L.at(__c3, 1);
 export interface RegexMatchSet {
   RegexMatchSetId?: string;
   Name?: string;
   RegexMatchTuples?: RegexMatchTuple[];
 }
+const RegexMatchSet = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<RegexMatchSet>;
 export interface CreateRegexMatchSetResponse {
   RegexMatchSet?: RegexMatchSet;
   ChangeToken?: string;
 }
+const CreateRegexMatchSetResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateRegexMatchSetResponse>;
 export interface CreateRegexPatternSetRequest {
   Name: string;
   ChangeToken: string;
 }
+const CreateRegexPatternSetRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateRegexPatternSetRequest>;
 export type RegexPatternString = string;
 export type RegexPatternStrings = string[];
+const RegexPatternStrings = /*@__PURE__*/ __L.at(__c3, 5);
 export interface RegexPatternSet {
   RegexPatternSetId: string;
   Name?: string;
   RegexPatternStrings: string[];
 }
+const RegexPatternSet = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<RegexPatternSet>;
 export interface CreateRegexPatternSetResponse {
   RegexPatternSet?: RegexPatternSet;
   ChangeToken?: string;
 }
+const CreateRegexPatternSetResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateRegexPatternSetResponse>;
 export interface CreateRuleRequest {
   Name: string;
   MetricName: string;
   ChangeToken: string;
   Tags?: Tag[];
 }
+const CreateRuleRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<CreateRuleRequest>;
 export interface Rule {
   RuleId: string;
   Name?: string;
   MetricName?: string;
   Predicates: Predicate[];
 }
+const Rule = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Rule>;
 export interface CreateRuleResponse {
   Rule?: Rule;
   ChangeToken?: string;
 }
+const CreateRuleResponse = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<CreateRuleResponse>;
 export interface CreateRuleGroupRequest {
   Name: string;
   MetricName: string;
   ChangeToken: string;
   Tags?: Tag[];
 }
+const CreateRuleGroupRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateRuleGroupRequest>;
 export interface RuleGroup {
   RuleGroupId: string;
   Name?: string;
   MetricName?: string;
 }
+const RuleGroup = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<RuleGroup>;
 export interface CreateRuleGroupResponse {
   RuleGroup?: RuleGroup;
   ChangeToken?: string;
 }
+const CreateRuleGroupResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateRuleGroupResponse>;
 export interface CreateSizeConstraintSetRequest {
   Name: string;
   ChangeToken: string;
 }
+const CreateSizeConstraintSetRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateSizeConstraintSetRequest>;
 export type ComparisonOperator = "EQ" | "NE" | "LE" | "LT" | "GE" | "GT" | (string & {});
+const ComparisonOperator = S.String;
+
 export type Size = number;
 export interface SizeConstraint {
   FieldToMatch: FieldToMatch;
@@ -660,38 +754,62 @@ export interface SizeConstraint {
   ComparisonOperator: ComparisonOperator;
   Size: number;
 }
+const SizeConstraint = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<SizeConstraint>;
 export type SizeConstraints = SizeConstraint[];
+const SizeConstraints = /*@__PURE__*/ __L.at(__c5, 0);
 export interface SizeConstraintSet {
   SizeConstraintSetId: string;
   Name?: string;
   SizeConstraints: SizeConstraint[];
 }
+const SizeConstraintSet = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<SizeConstraintSet>;
 export interface CreateSizeConstraintSetResponse {
   SizeConstraintSet?: SizeConstraintSet;
   ChangeToken?: string;
 }
+const CreateSizeConstraintSetResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<CreateSizeConstraintSetResponse>;
 export interface CreateSqlInjectionMatchSetRequest {
   Name: string;
   ChangeToken: string;
 }
+const CreateSqlInjectionMatchSetRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateSqlInjectionMatchSetRequest>;
 export interface SqlInjectionMatchTuple {
   FieldToMatch: FieldToMatch;
   TextTransformation: TextTransformation;
 }
+const SqlInjectionMatchTuple = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<SqlInjectionMatchTuple>;
 export type SqlInjectionMatchTuples = SqlInjectionMatchTuple[];
+const SqlInjectionMatchTuples = /*@__PURE__*/ __L.at(__c5, 5);
 export interface SqlInjectionMatchSet {
   SqlInjectionMatchSetId: string;
   Name?: string;
   SqlInjectionMatchTuples: SqlInjectionMatchTuple[];
 }
+const SqlInjectionMatchSet = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<SqlInjectionMatchSet>;
 export interface CreateSqlInjectionMatchSetResponse {
   SqlInjectionMatchSet?: SqlInjectionMatchSet;
   ChangeToken?: string;
 }
+const CreateSqlInjectionMatchSetResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreateSqlInjectionMatchSetResponse>;
 export type WafActionType = "BLOCK" | "ALLOW" | "COUNT" | (string & {});
+const WafActionType = S.String;
+
 export interface WafAction {
   Type: WafActionType;
 }
+const WafAction = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<WafAction>;
 export interface CreateWebACLRequest {
   Name: string;
   MetricName: string;
@@ -699,16 +817,24 @@ export interface CreateWebACLRequest {
   ChangeToken: string;
   Tags?: Tag[];
 }
+const CreateWebACLRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<CreateWebACLRequest>;
 export type RulePriority = number;
 export type WafOverrideActionType = "NONE" | "COUNT" | (string & {});
+const WafOverrideActionType = S.String;
+
 export interface WafOverrideAction {
   Type: WafOverrideActionType;
 }
+const WafOverrideAction = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<WafOverrideAction>;
 export type WafRuleType = "REGULAR" | "RATE_BASED" | "GROUP" | (string & {});
+const WafRuleType = S.String;
+
 export interface ExcludedRule {
   RuleId: string;
 }
+const ExcludedRule = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ExcludedRule>;
 export type ExcludedRules = ExcludedRule[];
+const ExcludedRules = /*@__PURE__*/ __L.at(__c6, 4);
 export interface ActivatedRule {
   Priority: number;
   RuleId: string;
@@ -717,7 +843,9 @@ export interface ActivatedRule {
   Type?: WafRuleType;
   ExcludedRules?: ExcludedRule[];
 }
+const ActivatedRule = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ActivatedRule>;
 export type ActivatedRules = ActivatedRule[];
+const ActivatedRules = /*@__PURE__*/ __L.at(__c6, 6);
 export type ResourceArn = string;
 export interface WebACL {
   WebACLId: string;
@@ -727,10 +855,12 @@ export interface WebACL {
   Rules: ActivatedRule[];
   WebACLArn?: string;
 }
+const WebACL = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<WebACL>;
 export interface CreateWebACLResponse {
   WebACL?: WebACL;
   ChangeToken?: string;
 }
+const CreateWebACLResponse = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<CreateWebACLResponse>;
 export type S3BucketName = string;
 export type IgnoreUnsupportedType = boolean;
 export interface CreateWebACLMigrationStackRequest {
@@ -738,214 +868,404 @@ export interface CreateWebACLMigrationStackRequest {
   S3BucketName: string;
   IgnoreUnsupportedType: boolean;
 }
+const CreateWebACLMigrationStackRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<CreateWebACLMigrationStackRequest>;
 export type S3ObjectUrl = string;
 export interface CreateWebACLMigrationStackResponse {
   S3ObjectUrl: string;
 }
+const CreateWebACLMigrationStackResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<CreateWebACLMigrationStackResponse>;
 export interface CreateXssMatchSetRequest {
   Name: string;
   ChangeToken: string;
 }
+const CreateXssMatchSetRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<CreateXssMatchSetRequest>;
 export interface XssMatchTuple {
   FieldToMatch: FieldToMatch;
   TextTransformation: TextTransformation;
 }
+const XssMatchTuple = SqlInjectionMatchTuple as any as S.Schema<XssMatchTuple>;
 export type XssMatchTuples = XssMatchTuple[];
+const XssMatchTuples = SqlInjectionMatchTuples as any as S.Schema<XssMatchTuples>;
 export interface XssMatchSet {
   XssMatchSetId: string;
   Name?: string;
   XssMatchTuples: XssMatchTuple[];
 }
+const XssMatchSet = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<XssMatchSet>;
 export interface CreateXssMatchSetResponse {
   XssMatchSet?: XssMatchSet;
   ChangeToken?: string;
 }
+const CreateXssMatchSetResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<CreateXssMatchSetResponse>;
 export interface DeleteByteMatchSetRequest {
   ByteMatchSetId: string;
   ChangeToken: string;
 }
+const DeleteByteMatchSetRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DeleteByteMatchSetRequest>;
 export interface DeleteByteMatchSetResponse {
   ChangeToken?: string;
 }
+const DeleteByteMatchSetResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<DeleteByteMatchSetResponse>;
 export interface DeleteGeoMatchSetRequest {
   GeoMatchSetId: string;
   ChangeToken: string;
 }
+const DeleteGeoMatchSetRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DeleteGeoMatchSetRequest>;
 export interface DeleteGeoMatchSetResponse {
   ChangeToken?: string;
 }
+const DeleteGeoMatchSetResponse =
+  DeleteByteMatchSetResponse as any as S.Schema<DeleteGeoMatchSetResponse>;
 export interface DeleteIPSetRequest {
   IPSetId: string;
   ChangeToken: string;
 }
+const DeleteIPSetRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<DeleteIPSetRequest>;
 export interface DeleteIPSetResponse {
   ChangeToken?: string;
 }
+const DeleteIPSetResponse = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<DeleteIPSetResponse>;
 export interface DeleteLoggingConfigurationRequest {
   ResourceArn: string;
 }
+const DeleteLoggingConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DeleteLoggingConfigurationRequest>;
 export interface DeleteLoggingConfigurationResponse {}
+const DeleteLoggingConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<DeleteLoggingConfigurationResponse>;
 export interface DeletePermissionPolicyRequest {
   ResourceArn: string;
 }
+const DeletePermissionPolicyRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DeletePermissionPolicyRequest>;
 export interface DeletePermissionPolicyResponse {}
+const DeletePermissionPolicyResponse =
+  DeleteLoggingConfigurationResponse as any as S.Schema<DeletePermissionPolicyResponse>;
 export interface DeleteRateBasedRuleRequest {
   RuleId: string;
   ChangeToken: string;
 }
+const DeleteRateBasedRuleRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DeleteRateBasedRuleRequest>;
 export interface DeleteRateBasedRuleResponse {
   ChangeToken?: string;
 }
+const DeleteRateBasedRuleResponse =
+  DeleteByteMatchSetResponse as any as S.Schema<DeleteRateBasedRuleResponse>;
 export interface DeleteRegexMatchSetRequest {
   RegexMatchSetId: string;
   ChangeToken: string;
 }
+const DeleteRegexMatchSetRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DeleteRegexMatchSetRequest>;
 export interface DeleteRegexMatchSetResponse {
   ChangeToken?: string;
 }
+const DeleteRegexMatchSetResponse =
+  DeleteByteMatchSetResponse as any as S.Schema<DeleteRegexMatchSetResponse>;
 export interface DeleteRegexPatternSetRequest {
   RegexPatternSetId: string;
   ChangeToken: string;
 }
+const DeleteRegexPatternSetRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<DeleteRegexPatternSetRequest>;
 export interface DeleteRegexPatternSetResponse {
   ChangeToken?: string;
 }
+const DeleteRegexPatternSetResponse =
+  DeleteByteMatchSetResponse as any as S.Schema<DeleteRegexPatternSetResponse>;
 export interface DeleteRuleRequest {
   RuleId: string;
   ChangeToken: string;
 }
+const DeleteRuleRequest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<DeleteRuleRequest>;
 export interface DeleteRuleResponse {
   ChangeToken?: string;
 }
+const DeleteRuleResponse = DeleteIPSetResponse as any as S.Schema<DeleteRuleResponse>;
 export interface DeleteRuleGroupRequest {
   RuleGroupId: string;
   ChangeToken: string;
 }
+const DeleteRuleGroupRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DeleteRuleGroupRequest>;
 export interface DeleteRuleGroupResponse {
   ChangeToken?: string;
 }
+const DeleteRuleGroupResponse = DeleteIPSetResponse as any as S.Schema<DeleteRuleGroupResponse>;
 export interface DeleteSizeConstraintSetRequest {
   SizeConstraintSetId: string;
   ChangeToken: string;
 }
+const DeleteSizeConstraintSetRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<DeleteSizeConstraintSetRequest>;
 export interface DeleteSizeConstraintSetResponse {
   ChangeToken?: string;
 }
+const DeleteSizeConstraintSetResponse =
+  DeleteByteMatchSetResponse as any as S.Schema<DeleteSizeConstraintSetResponse>;
 export interface DeleteSqlInjectionMatchSetRequest {
   SqlInjectionMatchSetId: string;
   ChangeToken: string;
 }
+const DeleteSqlInjectionMatchSetRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DeleteSqlInjectionMatchSetRequest>;
 export interface DeleteSqlInjectionMatchSetResponse {
   ChangeToken?: string;
 }
+const DeleteSqlInjectionMatchSetResponse =
+  DeleteByteMatchSetResponse as any as S.Schema<DeleteSqlInjectionMatchSetResponse>;
 export interface DeleteWebACLRequest {
   WebACLId: string;
   ChangeToken: string;
 }
+const DeleteWebACLRequest = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<DeleteWebACLRequest>;
 export interface DeleteWebACLResponse {
   ChangeToken?: string;
 }
+const DeleteWebACLResponse = DeleteIPSetResponse as any as S.Schema<DeleteWebACLResponse>;
 export interface DeleteXssMatchSetRequest {
   XssMatchSetId: string;
   ChangeToken: string;
 }
+const DeleteXssMatchSetRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<DeleteXssMatchSetRequest>;
 export interface DeleteXssMatchSetResponse {
   ChangeToken?: string;
 }
+const DeleteXssMatchSetResponse =
+  DeleteByteMatchSetResponse as any as S.Schema<DeleteXssMatchSetResponse>;
 export interface GetByteMatchSetRequest {
   ByteMatchSetId: string;
 }
+const GetByteMatchSetRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<GetByteMatchSetRequest>;
 export interface GetByteMatchSetResponse {
   ByteMatchSet?: ByteMatchSet;
 }
+const GetByteMatchSetResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<GetByteMatchSetResponse>;
 export interface GetChangeTokenRequest {}
+const GetChangeTokenRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<GetChangeTokenRequest>;
 export interface GetChangeTokenResponse {
   ChangeToken?: string;
 }
+const GetChangeTokenResponse = DeleteIPSetResponse as any as S.Schema<GetChangeTokenResponse>;
 export interface GetChangeTokenStatusRequest {
   ChangeToken: string;
 }
+const GetChangeTokenStatusRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<GetChangeTokenStatusRequest>;
 export type ChangeTokenStatus = "PROVISIONED" | "PENDING" | "INSYNC" | (string & {});
+const ChangeTokenStatus = S.String;
+
 export interface GetChangeTokenStatusResponse {
   ChangeTokenStatus?: ChangeTokenStatus;
 }
+const GetChangeTokenStatusResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<GetChangeTokenStatusResponse>;
 export interface GetGeoMatchSetRequest {
   GeoMatchSetId: string;
 }
+const GetGeoMatchSetRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<GetGeoMatchSetRequest>;
 export interface GetGeoMatchSetResponse {
   GeoMatchSet?: GeoMatchSet;
 }
+const GetGeoMatchSetResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GetGeoMatchSetResponse>;
 export interface GetIPSetRequest {
   IPSetId: string;
 }
+const GetIPSetRequest = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<GetIPSetRequest>;
 export interface GetIPSetResponse {
   IPSet?: IPSet;
 }
+const GetIPSetResponse = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<GetIPSetResponse>;
 export interface GetLoggingConfigurationRequest {
   ResourceArn: string;
 }
+const GetLoggingConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GetLoggingConfigurationRequest>;
 export type LogDestinationConfigs = string[];
+const LogDestinationConfigs = RegexPatternStrings as any as S.Schema<LogDestinationConfigs>;
 export type RedactedFields = FieldToMatch[];
+const RedactedFields = /*@__PURE__*/ __L.at(__c11, 1);
 export interface LoggingConfiguration {
   ResourceArn: string;
   LogDestinationConfigs: string[];
   RedactedFields?: FieldToMatch[];
 }
+const LoggingConfiguration = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<LoggingConfiguration>;
 export interface GetLoggingConfigurationResponse {
   LoggingConfiguration?: LoggingConfiguration;
 }
+const GetLoggingConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<GetLoggingConfigurationResponse>;
 export interface GetPermissionPolicyRequest {
   ResourceArn: string;
 }
+const GetPermissionPolicyRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<GetPermissionPolicyRequest>;
 export type PolicyString = string;
 export interface GetPermissionPolicyResponse {
   Policy?: string;
 }
+const GetPermissionPolicyResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GetPermissionPolicyResponse>;
 export interface GetRateBasedRuleRequest {
   RuleId: string;
 }
+const GetRateBasedRuleRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<GetRateBasedRuleRequest>;
 export interface GetRateBasedRuleResponse {
   Rule?: RateBasedRule;
 }
+const GetRateBasedRuleResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GetRateBasedRuleResponse>;
 export type NextMarker = string;
 export interface GetRateBasedRuleManagedKeysRequest {
   RuleId: string;
   NextMarker?: string;
 }
+const GetRateBasedRuleManagedKeysRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<GetRateBasedRuleManagedKeysRequest>;
 export type ManagedKey = string;
 export type ManagedKeys = string[];
+const ManagedKeys = RegexPatternStrings as any as S.Schema<ManagedKeys>;
 export interface GetRateBasedRuleManagedKeysResponse {
   ManagedKeys?: string[];
   NextMarker?: string;
 }
+const GetRateBasedRuleManagedKeysResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<GetRateBasedRuleManagedKeysResponse>;
 export interface GetRegexMatchSetRequest {
   RegexMatchSetId: string;
 }
+const GetRegexMatchSetRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<GetRegexMatchSetRequest>;
 export interface GetRegexMatchSetResponse {
   RegexMatchSet?: RegexMatchSet;
 }
+const GetRegexMatchSetResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<GetRegexMatchSetResponse>;
 export interface GetRegexPatternSetRequest {
   RegexPatternSetId: string;
 }
+const GetRegexPatternSetRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GetRegexPatternSetRequest>;
 export interface GetRegexPatternSetResponse {
   RegexPatternSet?: RegexPatternSet;
 }
+const GetRegexPatternSetResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GetRegexPatternSetResponse>;
 export interface GetRuleRequest {
   RuleId: string;
 }
+const GetRuleRequest = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<GetRuleRequest>;
 export interface GetRuleResponse {
   Rule?: Rule;
 }
+const GetRuleResponse = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<GetRuleResponse>;
 export interface GetRuleGroupRequest {
   RuleGroupId: string;
 }
+const GetRuleGroupRequest = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<GetRuleGroupRequest>;
 export interface GetRuleGroupResponse {
   RuleGroup?: RuleGroup;
 }
+const GetRuleGroupResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<GetRuleGroupResponse>;
 export interface TimeWindow {
   StartTime: Date;
   EndTime: Date;
 }
+const TimeWindow = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<TimeWindow>;
 export type GetSampledRequestsMaxItems = number;
 export interface GetSampledRequestsRequest {
   WebAclId: string;
@@ -953,6 +1273,10 @@ export interface GetSampledRequestsRequest {
   TimeWindow: TimeWindow;
   MaxItems: number;
 }
+const GetSampledRequestsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<GetSampledRequestsRequest>;
 export type IPString = string;
 export type Country = string;
 export type URIString = string;
@@ -964,7 +1288,9 @@ export interface HTTPHeader {
   Name?: string;
   Value?: string;
 }
+const HTTPHeader = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<HTTPHeader>;
 export type HTTPHeaders = HTTPHeader[];
+const HTTPHeaders = /*@__PURE__*/ __L.at(__c13, 5);
 export interface HTTPRequest {
   ClientIP?: string;
   Country?: string;
@@ -973,6 +1299,7 @@ export interface HTTPRequest {
   HTTPVersion?: string;
   Headers?: HTTPHeader[];
 }
+const HTTPRequest = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<HTTPRequest>;
 export type SampleWeight = number;
 export type Action = string;
 export interface SampledHTTPRequest {
@@ -982,410 +1309,704 @@ export interface SampledHTTPRequest {
   Action?: string;
   RuleWithinRuleGroup?: string;
 }
+const SampledHTTPRequest = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<SampledHTTPRequest>;
 export type SampledHTTPRequests = SampledHTTPRequest[];
+const SampledHTTPRequests = /*@__PURE__*/ __L.at(__c14, 0);
 export type PopulationSize = number;
 export interface GetSampledRequestsResponse {
   SampledRequests?: SampledHTTPRequest[];
   PopulationSize?: number;
   TimeWindow?: TimeWindow;
 }
+const GetSampledRequestsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<GetSampledRequestsResponse>;
 export interface GetSizeConstraintSetRequest {
   SizeConstraintSetId: string;
 }
+const GetSizeConstraintSetRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<GetSizeConstraintSetRequest>;
 export interface GetSizeConstraintSetResponse {
   SizeConstraintSet?: SizeConstraintSet;
 }
+const GetSizeConstraintSetResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<GetSizeConstraintSetResponse>;
 export interface GetSqlInjectionMatchSetRequest {
   SqlInjectionMatchSetId: string;
 }
+const GetSqlInjectionMatchSetRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<GetSqlInjectionMatchSetRequest>;
 export interface GetSqlInjectionMatchSetResponse {
   SqlInjectionMatchSet?: SqlInjectionMatchSet;
 }
+const GetSqlInjectionMatchSetResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<GetSqlInjectionMatchSetResponse>;
 export interface GetWebACLRequest {
   WebACLId: string;
 }
+const GetWebACLRequest = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<GetWebACLRequest>;
 export interface GetWebACLResponse {
   WebACL?: WebACL;
 }
+const GetWebACLResponse = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<GetWebACLResponse>;
 export interface GetXssMatchSetRequest {
   XssMatchSetId: string;
 }
+const GetXssMatchSetRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<GetXssMatchSetRequest>;
 export interface GetXssMatchSetResponse {
   XssMatchSet?: XssMatchSet;
 }
+const GetXssMatchSetResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<GetXssMatchSetResponse>;
 export type PaginationLimit = number;
 export interface ListActivatedRulesInRuleGroupRequest {
   RuleGroupId?: string;
   NextMarker?: string;
   Limit?: number;
 }
+const ListActivatedRulesInRuleGroupRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ListActivatedRulesInRuleGroupRequest>;
 export interface ListActivatedRulesInRuleGroupResponse {
   NextMarker?: string;
   ActivatedRules?: ActivatedRule[];
 }
+const ListActivatedRulesInRuleGroupResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ListActivatedRulesInRuleGroupResponse>;
 export interface ListByteMatchSetsRequest {
   NextMarker?: string;
   Limit?: number;
 }
+const ListByteMatchSetsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<ListByteMatchSetsRequest>;
 export interface ByteMatchSetSummary {
   ByteMatchSetId: string;
   Name: string;
 }
+const ByteMatchSetSummary = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<ByteMatchSetSummary>;
 export type ByteMatchSetSummaries = ByteMatchSetSummary[];
+const ByteMatchSetSummaries = /*@__PURE__*/ __L.at(__c15, 6);
 export interface ListByteMatchSetsResponse {
   NextMarker?: string;
   ByteMatchSets?: ByteMatchSetSummary[];
 }
+const ListByteMatchSetsResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ListByteMatchSetsResponse>;
 export interface ListGeoMatchSetsRequest {
   NextMarker?: string;
   Limit?: number;
 }
+const ListGeoMatchSetsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ListGeoMatchSetsRequest>;
 export interface GeoMatchSetSummary {
   GeoMatchSetId: string;
   Name: string;
 }
+const GeoMatchSetSummary = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<GeoMatchSetSummary>;
 export type GeoMatchSetSummaries = GeoMatchSetSummary[];
+const GeoMatchSetSummaries = /*@__PURE__*/ __L.at(__c16, 2);
 export interface ListGeoMatchSetsResponse {
   NextMarker?: string;
   GeoMatchSets?: GeoMatchSetSummary[];
 }
+const ListGeoMatchSetsResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ListGeoMatchSetsResponse>;
 export interface ListIPSetsRequest {
   NextMarker?: string;
   Limit?: number;
 }
+const ListIPSetsRequest = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<ListIPSetsRequest>;
 export interface IPSetSummary {
   IPSetId: string;
   Name: string;
 }
+const IPSetSummary = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<IPSetSummary>;
 export type IPSetSummaries = IPSetSummary[];
+const IPSetSummaries = /*@__PURE__*/ __L.at(__c16, 6);
 export interface ListIPSetsResponse {
   NextMarker?: string;
   IPSets?: IPSetSummary[];
 }
+const ListIPSetsResponse = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<ListIPSetsResponse>;
 export interface ListLoggingConfigurationsRequest {
   NextMarker?: string;
   Limit?: number;
 }
+const ListLoggingConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<ListLoggingConfigurationsRequest>;
 export type LoggingConfigurations = LoggingConfiguration[];
+const LoggingConfigurations = /*@__PURE__*/ __L.at(__c17, 1);
 export interface ListLoggingConfigurationsResponse {
   LoggingConfigurations?: LoggingConfiguration[];
   NextMarker?: string;
 }
+const ListLoggingConfigurationsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<ListLoggingConfigurationsResponse>;
 export interface ListRateBasedRulesRequest {
   NextMarker?: string;
   Limit?: number;
 }
+const ListRateBasedRulesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ListRateBasedRulesRequest>;
 export interface RuleSummary {
   RuleId: string;
   Name: string;
 }
+const RuleSummary = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<RuleSummary>;
 export type RuleSummaries = RuleSummary[];
+const RuleSummaries = /*@__PURE__*/ __L.at(__c17, 5);
 export interface ListRateBasedRulesResponse {
   NextMarker?: string;
   Rules?: RuleSummary[];
 }
+const ListRateBasedRulesResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<ListRateBasedRulesResponse>;
 export interface ListRegexMatchSetsRequest {
   NextMarker?: string;
   Limit?: number;
 }
+const ListRegexMatchSetsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<ListRegexMatchSetsRequest>;
 export interface RegexMatchSetSummary {
   RegexMatchSetId: string;
   Name: string;
 }
+const RegexMatchSetSummary = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<RegexMatchSetSummary>;
 export type RegexMatchSetSummaries = RegexMatchSetSummary[];
+const RegexMatchSetSummaries = /*@__PURE__*/ __L.at(__c18, 1);
 export interface ListRegexMatchSetsResponse {
   NextMarker?: string;
   RegexMatchSets?: RegexMatchSetSummary[];
 }
+const ListRegexMatchSetsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<ListRegexMatchSetsResponse>;
 export interface ListRegexPatternSetsRequest {
   NextMarker?: string;
   Limit?: number;
 }
+const ListRegexPatternSetsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<ListRegexPatternSetsRequest>;
 export interface RegexPatternSetSummary {
   RegexPatternSetId: string;
   Name: string;
 }
+const RegexPatternSetSummary = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<RegexPatternSetSummary>;
 export type RegexPatternSetSummaries = RegexPatternSetSummary[];
+const RegexPatternSetSummaries = /*@__PURE__*/ __L.at(__c18, 5);
 export interface ListRegexPatternSetsResponse {
   NextMarker?: string;
   RegexPatternSets?: RegexPatternSetSummary[];
 }
+const ListRegexPatternSetsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<ListRegexPatternSetsResponse>;
 export interface ListRuleGroupsRequest {
   NextMarker?: string;
   Limit?: number;
 }
+const ListRuleGroupsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<ListRuleGroupsRequest>;
 export interface RuleGroupSummary {
   RuleGroupId: string;
   Name: string;
 }
+const RuleGroupSummary = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<RuleGroupSummary>;
 export type RuleGroupSummaries = RuleGroupSummary[];
+const RuleGroupSummaries = /*@__PURE__*/ __L.at(__c19, 1);
 export interface ListRuleGroupsResponse {
   NextMarker?: string;
   RuleGroups?: RuleGroupSummary[];
 }
+const ListRuleGroupsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ListRuleGroupsResponse>;
 export interface ListRulesRequest {
   NextMarker?: string;
   Limit?: number;
 }
+const ListRulesRequest = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<ListRulesRequest>;
 export interface ListRulesResponse {
   NextMarker?: string;
   Rules?: RuleSummary[];
 }
+const ListRulesResponse = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<ListRulesResponse>;
 export interface ListSizeConstraintSetsRequest {
   NextMarker?: string;
   Limit?: number;
 }
+const ListSizeConstraintSetsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ListSizeConstraintSetsRequest>;
 export interface SizeConstraintSetSummary {
   SizeConstraintSetId: string;
   Name: string;
 }
+const SizeConstraintSetSummary = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<SizeConstraintSetSummary>;
 export type SizeConstraintSetSummaries = SizeConstraintSetSummary[];
+const SizeConstraintSetSummaries = /*@__PURE__*/ __L.at(__c19, 7);
 export interface ListSizeConstraintSetsResponse {
   NextMarker?: string;
   SizeConstraintSets?: SizeConstraintSetSummary[];
 }
+const ListSizeConstraintSetsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ListSizeConstraintSetsResponse>;
 export interface ListSqlInjectionMatchSetsRequest {
   NextMarker?: string;
   Limit?: number;
 }
+const ListSqlInjectionMatchSetsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<ListSqlInjectionMatchSetsRequest>;
 export interface SqlInjectionMatchSetSummary {
   SqlInjectionMatchSetId: string;
   Name: string;
 }
+const SqlInjectionMatchSetSummary = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<SqlInjectionMatchSetSummary>;
 export type SqlInjectionMatchSetSummaries = SqlInjectionMatchSetSummary[];
+const SqlInjectionMatchSetSummaries = /*@__PURE__*/ __L.at(__c20, 3);
 export interface ListSqlInjectionMatchSetsResponse {
   NextMarker?: string;
   SqlInjectionMatchSets?: SqlInjectionMatchSetSummary[];
 }
+const ListSqlInjectionMatchSetsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<ListSqlInjectionMatchSetsResponse>;
 export interface ListSubscribedRuleGroupsRequest {
   NextMarker?: string;
   Limit?: number;
 }
+const ListSubscribedRuleGroupsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ListSubscribedRuleGroupsRequest>;
 export interface SubscribedRuleGroupSummary {
   RuleGroupId: string;
   Name: string;
   MetricName: string;
 }
+const SubscribedRuleGroupSummary = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<SubscribedRuleGroupSummary>;
 export type SubscribedRuleGroupSummaries = SubscribedRuleGroupSummary[];
+const SubscribedRuleGroupSummaries = /*@__PURE__*/ __L.at(__c20, 7);
 export interface ListSubscribedRuleGroupsResponse {
   NextMarker?: string;
   RuleGroups?: SubscribedRuleGroupSummary[];
 }
+const ListSubscribedRuleGroupsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<ListSubscribedRuleGroupsResponse>;
 export interface ListTagsForResourceRequest {
   NextMarker?: string;
   Limit?: number;
   ResourceARN: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface TagInfoForResource {
   ResourceARN?: string;
   TagList?: Tag[];
 }
+const TagInfoForResource = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<TagInfoForResource>;
 export interface ListTagsForResourceResponse {
   NextMarker?: string;
   TagInfoForResource?: TagInfoForResource;
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListWebACLsRequest {
   NextMarker?: string;
   Limit?: number;
 }
+const ListWebACLsRequest = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<ListWebACLsRequest>;
 export interface WebACLSummary {
   WebACLId: string;
   Name: string;
 }
+const WebACLSummary = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<WebACLSummary>;
 export type WebACLSummaries = WebACLSummary[];
+const WebACLSummaries = /*@__PURE__*/ __L.at(__c21, 6);
 export interface ListWebACLsResponse {
   NextMarker?: string;
   WebACLs?: WebACLSummary[];
 }
+const ListWebACLsResponse = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<ListWebACLsResponse>;
 export interface ListXssMatchSetsRequest {
   NextMarker?: string;
   Limit?: number;
 }
+const ListXssMatchSetsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<ListXssMatchSetsRequest>;
 export interface XssMatchSetSummary {
   XssMatchSetId: string;
   Name: string;
 }
+const XssMatchSetSummary = /*@__PURE__*/ __L.at(__c22, 1) as any as S.Schema<XssMatchSetSummary>;
 export type XssMatchSetSummaries = XssMatchSetSummary[];
+const XssMatchSetSummaries = /*@__PURE__*/ __L.at(__c22, 2);
 export interface ListXssMatchSetsResponse {
   NextMarker?: string;
   XssMatchSets?: XssMatchSetSummary[];
 }
+const ListXssMatchSetsResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<ListXssMatchSetsResponse>;
 export interface PutLoggingConfigurationRequest {
   LoggingConfiguration: LoggingConfiguration;
 }
+const PutLoggingConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<PutLoggingConfigurationRequest>;
 export interface PutLoggingConfigurationResponse {
   LoggingConfiguration?: LoggingConfiguration;
 }
+const PutLoggingConfigurationResponse =
+  GetLoggingConfigurationResponse as any as S.Schema<PutLoggingConfigurationResponse>;
 export interface PutPermissionPolicyRequest {
   ResourceArn: string;
   Policy: string;
 }
+const PutPermissionPolicyRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<PutPermissionPolicyRequest>;
 export interface PutPermissionPolicyResponse {}
+const PutPermissionPolicyResponse =
+  DeleteLoggingConfigurationResponse as any as S.Schema<PutPermissionPolicyResponse>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
+const TagKeyList = RegexPatternStrings as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type ChangeAction = "INSERT" | "DELETE" | (string & {});
+const ChangeAction = S.String;
+
 export interface ByteMatchSetUpdate {
   Action: ChangeAction;
   ByteMatchTuple: ByteMatchTuple;
 }
+const ByteMatchSetUpdate = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<ByteMatchSetUpdate>;
 export type ByteMatchSetUpdates = ByteMatchSetUpdate[];
+const ByteMatchSetUpdates = /*@__PURE__*/ __L.at(__c23, 2);
 export interface UpdateByteMatchSetRequest {
   ByteMatchSetId: string;
   ChangeToken: string;
   Updates: ByteMatchSetUpdate[];
 }
+const UpdateByteMatchSetRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<UpdateByteMatchSetRequest>;
 export interface UpdateByteMatchSetResponse {
   ChangeToken?: string;
 }
+const UpdateByteMatchSetResponse =
+  DeleteByteMatchSetResponse as any as S.Schema<UpdateByteMatchSetResponse>;
 export interface GeoMatchSetUpdate {
   Action: ChangeAction;
   GeoMatchConstraint: GeoMatchConstraint;
 }
+const GeoMatchSetUpdate = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<GeoMatchSetUpdate>;
 export type GeoMatchSetUpdates = GeoMatchSetUpdate[];
+const GeoMatchSetUpdates = /*@__PURE__*/ __L.at(__c23, 5);
 export interface UpdateGeoMatchSetRequest {
   GeoMatchSetId: string;
   ChangeToken: string;
   Updates: GeoMatchSetUpdate[];
 }
+const UpdateGeoMatchSetRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<UpdateGeoMatchSetRequest>;
 export interface UpdateGeoMatchSetResponse {
   ChangeToken?: string;
 }
+const UpdateGeoMatchSetResponse =
+  DeleteByteMatchSetResponse as any as S.Schema<UpdateGeoMatchSetResponse>;
 export interface IPSetUpdate {
   Action: ChangeAction;
   IPSetDescriptor: IPSetDescriptor;
 }
+const IPSetUpdate = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<IPSetUpdate>;
 export type IPSetUpdates = IPSetUpdate[];
+const IPSetUpdates = /*@__PURE__*/ __L.at(__c24, 0);
 export interface UpdateIPSetRequest {
   IPSetId: string;
   ChangeToken: string;
   Updates: IPSetUpdate[];
 }
+const UpdateIPSetRequest = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<UpdateIPSetRequest>;
 export interface UpdateIPSetResponse {
   ChangeToken?: string;
 }
+const UpdateIPSetResponse = DeleteIPSetResponse as any as S.Schema<UpdateIPSetResponse>;
 export interface RuleUpdate {
   Action: ChangeAction;
   Predicate: Predicate;
 }
+const RuleUpdate = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<RuleUpdate>;
 export type RuleUpdates = RuleUpdate[];
+const RuleUpdates = /*@__PURE__*/ __L.at(__c24, 3);
 export interface UpdateRateBasedRuleRequest {
   RuleId: string;
   ChangeToken: string;
   Updates: RuleUpdate[];
   RateLimit: number;
 }
+const UpdateRateBasedRuleRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<UpdateRateBasedRuleRequest>;
 export interface UpdateRateBasedRuleResponse {
   ChangeToken?: string;
 }
+const UpdateRateBasedRuleResponse =
+  DeleteByteMatchSetResponse as any as S.Schema<UpdateRateBasedRuleResponse>;
 export interface RegexMatchSetUpdate {
   Action: ChangeAction;
   RegexMatchTuple: RegexMatchTuple;
 }
+const RegexMatchSetUpdate = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<RegexMatchSetUpdate>;
 export type RegexMatchSetUpdates = RegexMatchSetUpdate[];
+const RegexMatchSetUpdates = /*@__PURE__*/ __L.at(__c24, 6);
 export interface UpdateRegexMatchSetRequest {
   RegexMatchSetId: string;
   Updates: RegexMatchSetUpdate[];
   ChangeToken: string;
 }
+const UpdateRegexMatchSetRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<UpdateRegexMatchSetRequest>;
 export interface UpdateRegexMatchSetResponse {
   ChangeToken?: string;
 }
+const UpdateRegexMatchSetResponse =
+  DeleteByteMatchSetResponse as any as S.Schema<UpdateRegexMatchSetResponse>;
 export interface RegexPatternSetUpdate {
   Action: ChangeAction;
   RegexPatternString: string;
 }
+const RegexPatternSetUpdate = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<RegexPatternSetUpdate>;
 export type RegexPatternSetUpdates = RegexPatternSetUpdate[];
+const RegexPatternSetUpdates = /*@__PURE__*/ __L.at(__c25, 1);
 export interface UpdateRegexPatternSetRequest {
   RegexPatternSetId: string;
   Updates: RegexPatternSetUpdate[];
   ChangeToken: string;
 }
+const UpdateRegexPatternSetRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<UpdateRegexPatternSetRequest>;
 export interface UpdateRegexPatternSetResponse {
   ChangeToken?: string;
 }
+const UpdateRegexPatternSetResponse =
+  DeleteByteMatchSetResponse as any as S.Schema<UpdateRegexPatternSetResponse>;
 export interface UpdateRuleRequest {
   RuleId: string;
   ChangeToken: string;
   Updates: RuleUpdate[];
 }
+const UpdateRuleRequest = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<UpdateRuleRequest>;
 export interface UpdateRuleResponse {
   ChangeToken?: string;
 }
+const UpdateRuleResponse = DeleteIPSetResponse as any as S.Schema<UpdateRuleResponse>;
 export interface RuleGroupUpdate {
   Action: ChangeAction;
   ActivatedRule: ActivatedRule;
 }
+const RuleGroupUpdate = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<RuleGroupUpdate>;
 export type RuleGroupUpdates = RuleGroupUpdate[];
+const RuleGroupUpdates = /*@__PURE__*/ __L.at(__c25, 5);
 export interface UpdateRuleGroupRequest {
   RuleGroupId: string;
   Updates: RuleGroupUpdate[];
   ChangeToken: string;
 }
+const UpdateRuleGroupRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<UpdateRuleGroupRequest>;
 export interface UpdateRuleGroupResponse {
   ChangeToken?: string;
 }
+const UpdateRuleGroupResponse = DeleteIPSetResponse as any as S.Schema<UpdateRuleGroupResponse>;
 export interface SizeConstraintSetUpdate {
   Action: ChangeAction;
   SizeConstraint: SizeConstraint;
 }
+const SizeConstraintSetUpdate = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<SizeConstraintSetUpdate>;
 export type SizeConstraintSetUpdates = SizeConstraintSetUpdate[];
+const SizeConstraintSetUpdates = /*@__PURE__*/ __L.at(__c26, 0);
 export interface UpdateSizeConstraintSetRequest {
   SizeConstraintSetId: string;
   ChangeToken: string;
   Updates: SizeConstraintSetUpdate[];
 }
+const UpdateSizeConstraintSetRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<UpdateSizeConstraintSetRequest>;
 export interface UpdateSizeConstraintSetResponse {
   ChangeToken?: string;
 }
+const UpdateSizeConstraintSetResponse =
+  DeleteByteMatchSetResponse as any as S.Schema<UpdateSizeConstraintSetResponse>;
 export interface SqlInjectionMatchSetUpdate {
   Action: ChangeAction;
   SqlInjectionMatchTuple: SqlInjectionMatchTuple;
 }
+const SqlInjectionMatchSetUpdate = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<SqlInjectionMatchSetUpdate>;
 export type SqlInjectionMatchSetUpdates = SqlInjectionMatchSetUpdate[];
+const SqlInjectionMatchSetUpdates = /*@__PURE__*/ __L.at(__c26, 3);
 export interface UpdateSqlInjectionMatchSetRequest {
   SqlInjectionMatchSetId: string;
   ChangeToken: string;
   Updates: SqlInjectionMatchSetUpdate[];
 }
+const UpdateSqlInjectionMatchSetRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<UpdateSqlInjectionMatchSetRequest>;
 export interface UpdateSqlInjectionMatchSetResponse {
   ChangeToken?: string;
 }
+const UpdateSqlInjectionMatchSetResponse =
+  DeleteByteMatchSetResponse as any as S.Schema<UpdateSqlInjectionMatchSetResponse>;
 export interface WebACLUpdate {
   Action: ChangeAction;
   ActivatedRule: ActivatedRule;
 }
 export type WebACLUpdates = WebACLUpdate[];
+const WebACLUpdates = RuleGroupUpdates as any as S.Schema<WebACLUpdates>;
 export interface UpdateWebACLRequest {
   WebACLId: string;
   ChangeToken: string;
   Updates?: WebACLUpdate[];
   DefaultAction?: WafAction;
 }
+const UpdateWebACLRequest = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<UpdateWebACLRequest>;
 export interface UpdateWebACLResponse {
   ChangeToken?: string;
 }
+const UpdateWebACLResponse = DeleteIPSetResponse as any as S.Schema<UpdateWebACLResponse>;
 export interface XssMatchSetUpdate {
   Action: ChangeAction;
   XssMatchTuple: XssMatchTuple;
 }
+const XssMatchSetUpdate = /*@__PURE__*/ __L.at(__c26, 6) as any as S.Schema<XssMatchSetUpdate>;
 export type XssMatchSetUpdates = XssMatchSetUpdate[];
+const XssMatchSetUpdates = /*@__PURE__*/ __L.at(__c26, 7);
 export interface UpdateXssMatchSetRequest {
   XssMatchSetId: string;
   ChangeToken: string;
   Updates: XssMatchSetUpdate[];
 }
+const UpdateXssMatchSetRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<UpdateXssMatchSetRequest>;
 export interface UpdateXssMatchSetResponse {
   ChangeToken?: string;
 }
+const UpdateXssMatchSetResponse =
+  DeleteByteMatchSetResponse as any as S.Schema<UpdateXssMatchSetResponse>;
 export type ErrorMessage = string;
 export type ParameterExceptionField =
   | "CHANGE_ACTION"
@@ -1407,6 +2028,8 @@ export type ParameterExceptionField =
   | "TAGS"
   | "TAG_KEYS"
   | (string & {});
+const ParameterExceptionField = S.String;
+
 export type ParameterExceptionParameter = string;
 export type ParameterExceptionReason =
   | "INVALID_OPTION"
@@ -1414,6 +2037,8 @@ export type ParameterExceptionReason =
   | "ILLEGAL_ARGUMENT"
   | "INVALID_TAG_KEY"
   | (string & {});
+const ParameterExceptionReason = S.String;
+
 export type MigrationErrorType =
   | "ENTITY_NOT_SUPPORTED"
   | "ENTITY_NOT_FOUND"
@@ -1423,6 +2048,8 @@ export type MigrationErrorType =
   | "S3_BUCKET_INVALID_REGION"
   | "S3_INTERNAL_ERROR"
   | (string & {});
+const MigrationErrorType = S.String;
+
 export type ErrorReason = string;
 export type CreateByteMatchSetError =
   | WAFDisallowedNameException
@@ -1467,8 +2094,8 @@ export const createByteMatchSet: API.OperationMethod<
   CreateByteMatchSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateByteMatchSetRequest>,
-  output: __S(5) as any as S.Schema<CreateByteMatchSetResponse>,
+  input: CreateByteMatchSetRequest,
+  output: CreateByteMatchSetResponse,
   errors: [
     WAFDisallowedNameException,
     WAFInternalErrorException,
@@ -1522,8 +2149,8 @@ export const createGeoMatchSet: API.OperationMethod<
   CreateGeoMatchSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateGeoMatchSetRequest>,
-  output: __S(10) as any as S.Schema<CreateGeoMatchSetResponse>,
+  input: CreateGeoMatchSetRequest,
+  output: CreateGeoMatchSetResponse,
   errors: [
     WAFDisallowedNameException,
     WAFInternalErrorException,
@@ -1582,8 +2209,8 @@ export const createIPSet: API.OperationMethod<
   CreateIPSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CreateIPSetRequest>,
-  output: __S(15) as any as S.Schema<CreateIPSetResponse>,
+  input: CreateIPSetRequest,
+  output: CreateIPSetResponse,
   errors: [
     WAFDisallowedNameException,
     WAFInternalErrorException,
@@ -1690,8 +2317,8 @@ export const createRateBasedRule: API.OperationMethod<
   CreateRateBasedRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CreateRateBasedRuleRequest>,
-  output: __S(22) as any as S.Schema<CreateRateBasedRuleResponse>,
+  input: CreateRateBasedRuleRequest,
+  output: CreateRateBasedRuleResponse,
   errors: [
     WAFBadRequestException,
     WAFDisallowedNameException,
@@ -1748,8 +2375,8 @@ export const createRegexMatchSet: API.OperationMethod<
   CreateRegexMatchSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateRegexMatchSetRequest>,
-  output: __S(27) as any as S.Schema<CreateRegexMatchSetResponse>,
+  input: CreateRegexMatchSetRequest,
+  output: CreateRegexMatchSetResponse,
   errors: [
     WAFDisallowedNameException,
     WAFInternalErrorException,
@@ -1798,8 +2425,8 @@ export const createRegexPatternSet: API.OperationMethod<
   CreateRegexPatternSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<CreateRegexPatternSetRequest>,
-  output: __S(31) as any as S.Schema<CreateRegexPatternSetResponse>,
+  input: CreateRegexPatternSetRequest,
+  output: CreateRegexPatternSetResponse,
   errors: [
     WAFDisallowedNameException,
     WAFInternalErrorException,
@@ -1870,8 +2497,8 @@ export const createRule: API.OperationMethod<
   CreateRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<CreateRuleRequest>,
-  output: __S(34) as any as S.Schema<CreateRuleResponse>,
+  input: CreateRuleRequest,
+  output: CreateRuleResponse,
   errors: [
     WAFBadRequestException,
     WAFDisallowedNameException,
@@ -1923,8 +2550,8 @@ export const createRuleGroup: API.OperationMethod<
   CreateRuleGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<CreateRuleGroupRequest>,
-  output: __S(37) as any as S.Schema<CreateRuleGroupResponse>,
+  input: CreateRuleGroupRequest,
+  output: CreateRuleGroupResponse,
   errors: [
     WAFBadRequestException,
     WAFDisallowedNameException,
@@ -1982,8 +2609,8 @@ export const createSizeConstraintSet: API.OperationMethod<
   CreateSizeConstraintSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<CreateSizeConstraintSetRequest>,
-  output: __S(42) as any as S.Schema<CreateSizeConstraintSetResponse>,
+  input: CreateSizeConstraintSetRequest,
+  output: CreateSizeConstraintSetResponse,
   errors: [
     WAFDisallowedNameException,
     WAFInternalErrorException,
@@ -2038,8 +2665,8 @@ export const createSqlInjectionMatchSet: API.OperationMethod<
   CreateSqlInjectionMatchSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<CreateSqlInjectionMatchSetRequest>,
-  output: __S(47) as any as S.Schema<CreateSqlInjectionMatchSetResponse>,
+  input: CreateSqlInjectionMatchSetRequest,
+  output: CreateSqlInjectionMatchSetResponse,
   errors: [
     WAFDisallowedNameException,
     WAFInternalErrorException,
@@ -2106,8 +2733,8 @@ export const createWebACL: API.OperationMethod<
   CreateWebACLError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<CreateWebACLRequest>,
-  output: __S(56) as any as S.Schema<CreateWebACLResponse>,
+  input: CreateWebACLRequest,
+  output: CreateWebACLResponse,
   errors: [
     WAFBadRequestException,
     WAFDisallowedNameException,
@@ -2148,8 +2775,8 @@ export const createWebACLMigrationStack: API.OperationMethod<
   CreateWebACLMigrationStackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<CreateWebACLMigrationStackRequest>,
-  output: __S(58) as any as S.Schema<CreateWebACLMigrationStackResponse>,
+  input: CreateWebACLMigrationStackRequest,
+  output: CreateWebACLMigrationStackResponse,
   errors: [
     WAFEntityMigrationException,
     WAFInternalErrorException,
@@ -2203,8 +2830,8 @@ export const createXssMatchSet: API.OperationMethod<
   CreateXssMatchSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<CreateXssMatchSetRequest>,
-  output: __S(61) as any as S.Schema<CreateXssMatchSetResponse>,
+  input: CreateXssMatchSetRequest,
+  output: CreateXssMatchSetResponse,
   errors: [
     WAFDisallowedNameException,
     WAFInternalErrorException,
@@ -2254,8 +2881,8 @@ export const deleteByteMatchSet: API.OperationMethod<
   DeleteByteMatchSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<DeleteByteMatchSetRequest>,
-  output: __S(63) as any as S.Schema<DeleteByteMatchSetResponse>,
+  input: DeleteByteMatchSetRequest,
+  output: DeleteByteMatchSetResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidAccountException,
@@ -2305,8 +2932,8 @@ export const deleteGeoMatchSet: API.OperationMethod<
   DeleteGeoMatchSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<DeleteGeoMatchSetRequest>,
-  output: __S(63) as any as S.Schema<DeleteGeoMatchSetResponse>,
+  input: DeleteGeoMatchSetRequest,
+  output: DeleteGeoMatchSetResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidAccountException,
@@ -2356,8 +2983,8 @@ export const deleteIPSet: API.OperationMethod<
   DeleteIPSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<DeleteIPSetRequest>,
-  output: __S(66) as any as S.Schema<DeleteIPSetResponse>,
+  input: DeleteIPSetRequest,
+  output: DeleteIPSetResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidAccountException,
@@ -2393,8 +3020,8 @@ export const deleteLoggingConfiguration: API.OperationMethod<
   DeleteLoggingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<DeleteLoggingConfigurationRequest>,
-  output: __S(68) as any as S.Schema<DeleteLoggingConfigurationResponse>,
+  input: DeleteLoggingConfigurationRequest,
+  output: DeleteLoggingConfigurationResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException, WAFStaleDataException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2424,8 +3051,8 @@ export const deletePermissionPolicy: API.OperationMethod<
   DeletePermissionPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<DeletePermissionPolicyRequest>,
-  output: __S(68) as any as S.Schema<DeletePermissionPolicyResponse>,
+  input: DeletePermissionPolicyRequest,
+  output: DeletePermissionPolicyResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException, WAFStaleDataException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2474,8 +3101,8 @@ export const deleteRateBasedRule: API.OperationMethod<
   DeleteRateBasedRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<DeleteRateBasedRuleRequest>,
-  output: __S(63) as any as S.Schema<DeleteRateBasedRuleResponse>,
+  input: DeleteRateBasedRuleRequest,
+  output: DeleteRateBasedRuleResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidAccountException,
@@ -2527,8 +3154,8 @@ export const deleteRegexMatchSet: API.OperationMethod<
   DeleteRegexMatchSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<DeleteRegexMatchSetRequest>,
-  output: __S(63) as any as S.Schema<DeleteRegexMatchSetResponse>,
+  input: DeleteRegexMatchSetRequest,
+  output: DeleteRegexMatchSetResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidAccountException,
@@ -2567,8 +3194,8 @@ export const deleteRegexPatternSet: API.OperationMethod<
   DeleteRegexPatternSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<DeleteRegexPatternSetRequest>,
-  output: __S(63) as any as S.Schema<DeleteRegexPatternSetResponse>,
+  input: DeleteRegexPatternSetRequest,
+  output: DeleteRegexPatternSetResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidAccountException,
@@ -2620,8 +3247,8 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<DeleteRuleRequest>,
-  output: __S(66) as any as S.Schema<DeleteRuleResponse>,
+  input: DeleteRuleRequest,
+  output: DeleteRuleResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidAccountException,
@@ -2675,8 +3302,8 @@ export const deleteRuleGroup: API.OperationMethod<
   DeleteRuleGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<DeleteRuleGroupRequest>,
-  output: __S(66) as any as S.Schema<DeleteRuleGroupResponse>,
+  input: DeleteRuleGroupRequest,
+  output: DeleteRuleGroupResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -2728,8 +3355,8 @@ export const deleteSizeConstraintSet: API.OperationMethod<
   DeleteSizeConstraintSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<DeleteSizeConstraintSetRequest>,
-  output: __S(63) as any as S.Schema<DeleteSizeConstraintSetResponse>,
+  input: DeleteSizeConstraintSetRequest,
+  output: DeleteSizeConstraintSetResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidAccountException,
@@ -2780,8 +3407,8 @@ export const deleteSqlInjectionMatchSet: API.OperationMethod<
   DeleteSqlInjectionMatchSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<DeleteSqlInjectionMatchSetRequest>,
-  output: __S(63) as any as S.Schema<DeleteSqlInjectionMatchSetResponse>,
+  input: DeleteSqlInjectionMatchSetRequest,
+  output: DeleteSqlInjectionMatchSetResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidAccountException,
@@ -2830,8 +3457,8 @@ export const deleteWebACL: API.OperationMethod<
   DeleteWebACLError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<DeleteWebACLRequest>,
-  output: __S(66) as any as S.Schema<DeleteWebACLResponse>,
+  input: DeleteWebACLRequest,
+  output: DeleteWebACLResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidAccountException,
@@ -2884,8 +3511,8 @@ export const deleteXssMatchSet: API.OperationMethod<
   DeleteXssMatchSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<DeleteXssMatchSetRequest>,
-  output: __S(63) as any as S.Schema<DeleteXssMatchSetResponse>,
+  input: DeleteXssMatchSetRequest,
+  output: DeleteXssMatchSetResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidAccountException,
@@ -2920,8 +3547,8 @@ export const getByteMatchSet: API.OperationMethod<
   GetByteMatchSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<GetByteMatchSetRequest>,
-  output: __S(80) as any as S.Schema<GetByteMatchSetResponse>,
+  input: GetByteMatchSetRequest,
+  output: GetByteMatchSetResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException, WAFNonexistentItemException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2953,8 +3580,8 @@ export const getChangeToken: API.OperationMethod<
   GetChangeTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<GetChangeTokenRequest>,
-  output: __S(66) as any as S.Schema<GetChangeTokenResponse>,
+  input: GetChangeTokenRequest,
+  output: GetChangeTokenResponse,
   errors: [WAFInternalErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2989,8 +3616,8 @@ export const getChangeTokenStatus: API.OperationMethod<
   GetChangeTokenStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<GetChangeTokenStatusRequest>,
-  output: __S(83) as any as S.Schema<GetChangeTokenStatusResponse>,
+  input: GetChangeTokenStatusRequest,
+  output: GetChangeTokenStatusResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3018,8 +3645,8 @@ export const getGeoMatchSet: API.OperationMethod<
   GetGeoMatchSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<GetGeoMatchSetRequest>,
-  output: __S(85) as any as S.Schema<GetGeoMatchSetResponse>,
+  input: GetGeoMatchSetRequest,
+  output: GetGeoMatchSetResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException, WAFNonexistentItemException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3047,8 +3674,8 @@ export const getIPSet: API.OperationMethod<
   GetIPSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<GetIPSetRequest>,
-  output: __S(87) as any as S.Schema<GetIPSetResponse>,
+  input: GetIPSetRequest,
+  output: GetIPSetResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException, WAFNonexistentItemException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3075,8 +3702,8 @@ export const getLoggingConfiguration: API.OperationMethod<
   GetLoggingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<GetLoggingConfigurationRequest>,
-  output: __S(91) as any as S.Schema<GetLoggingConfigurationResponse>,
+  input: GetLoggingConfigurationRequest,
+  output: GetLoggingConfigurationResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3103,8 +3730,8 @@ export const getPermissionPolicy: API.OperationMethod<
   GetPermissionPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<GetPermissionPolicyRequest>,
-  output: __S(93) as any as S.Schema<GetPermissionPolicyResponse>,
+  input: GetPermissionPolicyRequest,
+  output: GetPermissionPolicyResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3134,8 +3761,8 @@ export const getRateBasedRule: API.OperationMethod<
   GetRateBasedRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<GetRateBasedRuleRequest>,
-  output: __S(95) as any as S.Schema<GetRateBasedRuleResponse>,
+  input: GetRateBasedRuleRequest,
+  output: GetRateBasedRuleResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException, WAFNonexistentItemException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3166,8 +3793,8 @@ export const getRateBasedRuleManagedKeys: API.OperationMethod<
   GetRateBasedRuleManagedKeysError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<GetRateBasedRuleManagedKeysRequest>,
-  output: __S(97) as any as S.Schema<GetRateBasedRuleManagedKeysResponse>,
+  input: GetRateBasedRuleManagedKeysRequest,
+  output: GetRateBasedRuleManagedKeysResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidAccountException,
@@ -3200,8 +3827,8 @@ export const getRegexMatchSet: API.OperationMethod<
   GetRegexMatchSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<GetRegexMatchSetRequest>,
-  output: __S(99) as any as S.Schema<GetRegexMatchSetResponse>,
+  input: GetRegexMatchSetRequest,
+  output: GetRegexMatchSetResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException, WAFNonexistentItemException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3229,8 +3856,8 @@ export const getRegexPatternSet: API.OperationMethod<
   GetRegexPatternSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<GetRegexPatternSetRequest>,
-  output: __S(101) as any as S.Schema<GetRegexPatternSetResponse>,
+  input: GetRegexPatternSetRequest,
+  output: GetRegexPatternSetResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException, WAFNonexistentItemException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3258,8 +3885,8 @@ export const getRule: API.OperationMethod<
   GetRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<GetRuleRequest>,
-  output: __S(103) as any as S.Schema<GetRuleResponse>,
+  input: GetRuleRequest,
+  output: GetRuleResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException, WAFNonexistentItemException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3288,8 +3915,8 @@ export const getRuleGroup: API.OperationMethod<
   GetRuleGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<GetRuleGroupRequest>,
-  output: __S(105) as any as S.Schema<GetRuleGroupResponse>,
+  input: GetRuleGroupRequest,
+  output: GetRuleGroupResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3320,8 +3947,8 @@ export const getSampledRequests: API.OperationMethod<
   GetSampledRequestsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<GetSampledRequestsRequest>,
-  output: __S(113) as any as S.Schema<GetSampledRequestsResponse>,
+  input: GetSampledRequestsRequest,
+  output: GetSampledRequestsResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3349,8 +3976,8 @@ export const getSizeConstraintSet: API.OperationMethod<
   GetSizeConstraintSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<GetSizeConstraintSetRequest>,
-  output: __S(115) as any as S.Schema<GetSizeConstraintSetResponse>,
+  input: GetSizeConstraintSetRequest,
+  output: GetSizeConstraintSetResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException, WAFNonexistentItemException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3378,8 +4005,8 @@ export const getSqlInjectionMatchSet: API.OperationMethod<
   GetSqlInjectionMatchSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<GetSqlInjectionMatchSetRequest>,
-  output: __S(117) as any as S.Schema<GetSqlInjectionMatchSetResponse>,
+  input: GetSqlInjectionMatchSetRequest,
+  output: GetSqlInjectionMatchSetResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException, WAFNonexistentItemException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3407,8 +4034,8 @@ export const getWebACL: API.OperationMethod<
   GetWebACLError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<GetWebACLRequest>,
-  output: __S(119) as any as S.Schema<GetWebACLResponse>,
+  input: GetWebACLRequest,
+  output: GetWebACLResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException, WAFNonexistentItemException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3436,8 +4063,8 @@ export const getXssMatchSet: API.OperationMethod<
   GetXssMatchSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<GetXssMatchSetRequest>,
-  output: __S(121) as any as S.Schema<GetXssMatchSetResponse>,
+  input: GetXssMatchSetRequest,
+  output: GetXssMatchSetResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException, WAFNonexistentItemException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3465,8 +4092,8 @@ export const listActivatedRulesInRuleGroup: API.OperationMethod<
   ListActivatedRulesInRuleGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<ListActivatedRulesInRuleGroupRequest>,
-  output: __S(123) as any as S.Schema<ListActivatedRulesInRuleGroupResponse>,
+  input: ListActivatedRulesInRuleGroupRequest,
+  output: ListActivatedRulesInRuleGroupResponse,
   errors: [WAFInternalErrorException, WAFInvalidParameterException, WAFNonexistentItemException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3493,8 +4120,8 @@ export const listByteMatchSets: API.OperationMethod<
   ListByteMatchSetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<ListByteMatchSetsRequest>,
-  output: __S(127) as any as S.Schema<ListByteMatchSetsResponse>,
+  input: ListByteMatchSetsRequest,
+  output: ListByteMatchSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3521,8 +4148,8 @@ export const listGeoMatchSets: API.OperationMethod<
   ListGeoMatchSetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128) as any as S.Schema<ListGeoMatchSetsRequest>,
-  output: __S(131) as any as S.Schema<ListGeoMatchSetsResponse>,
+  input: ListGeoMatchSetsRequest,
+  output: ListGeoMatchSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3546,8 +4173,8 @@ export const listIPSets: API.OperationMethod<
   ListIPSetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<ListIPSetsRequest>,
-  output: __S(135) as any as S.Schema<ListIPSetsResponse>,
+  input: ListIPSetsRequest,
+  output: ListIPSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3575,8 +4202,8 @@ export const listLoggingConfigurations: API.OperationMethod<
   ListLoggingConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<ListLoggingConfigurationsRequest>,
-  output: __S(138) as any as S.Schema<ListLoggingConfigurationsResponse>,
+  input: ListLoggingConfigurationsRequest,
+  output: ListLoggingConfigurationsResponse,
   errors: [WAFInternalErrorException, WAFInvalidParameterException, WAFNonexistentItemException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3603,8 +4230,8 @@ export const listRateBasedRules: API.OperationMethod<
   ListRateBasedRulesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<ListRateBasedRulesRequest>,
-  output: __S(142) as any as S.Schema<ListRateBasedRulesResponse>,
+  input: ListRateBasedRulesRequest,
+  output: ListRateBasedRulesResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3631,8 +4258,8 @@ export const listRegexMatchSets: API.OperationMethod<
   ListRegexMatchSetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143) as any as S.Schema<ListRegexMatchSetsRequest>,
-  output: __S(146) as any as S.Schema<ListRegexMatchSetsResponse>,
+  input: ListRegexMatchSetsRequest,
+  output: ListRegexMatchSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3659,8 +4286,8 @@ export const listRegexPatternSets: API.OperationMethod<
   ListRegexPatternSetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147) as any as S.Schema<ListRegexPatternSetsRequest>,
-  output: __S(150) as any as S.Schema<ListRegexPatternSetsResponse>,
+  input: ListRegexPatternSetsRequest,
+  output: ListRegexPatternSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3684,8 +4311,8 @@ export const listRuleGroups: API.OperationMethod<
   ListRuleGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<ListRuleGroupsRequest>,
-  output: __S(154) as any as S.Schema<ListRuleGroupsResponse>,
+  input: ListRuleGroupsRequest,
+  output: ListRuleGroupsResponse,
   errors: [WAFInternalErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3709,8 +4336,8 @@ export const listRules: API.OperationMethod<
   ListRulesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155) as any as S.Schema<ListRulesRequest>,
-  output: __S(156) as any as S.Schema<ListRulesResponse>,
+  input: ListRulesRequest,
+  output: ListRulesResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3737,8 +4364,8 @@ export const listSizeConstraintSets: API.OperationMethod<
   ListSizeConstraintSetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157) as any as S.Schema<ListSizeConstraintSetsRequest>,
-  output: __S(160) as any as S.Schema<ListSizeConstraintSetsResponse>,
+  input: ListSizeConstraintSetsRequest,
+  output: ListSizeConstraintSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3765,8 +4392,8 @@ export const listSqlInjectionMatchSets: API.OperationMethod<
   ListSqlInjectionMatchSetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161) as any as S.Schema<ListSqlInjectionMatchSetsRequest>,
-  output: __S(164) as any as S.Schema<ListSqlInjectionMatchSetsResponse>,
+  input: ListSqlInjectionMatchSetsRequest,
+  output: ListSqlInjectionMatchSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3793,8 +4420,8 @@ export const listSubscribedRuleGroups: API.OperationMethod<
   ListSubscribedRuleGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165) as any as S.Schema<ListSubscribedRuleGroupsRequest>,
-  output: __S(168) as any as S.Schema<ListSubscribedRuleGroupsResponse>,
+  input: ListSubscribedRuleGroupsRequest,
+  output: ListSubscribedRuleGroupsResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3827,8 +4454,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(171) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     WAFBadRequestException,
     WAFInternalErrorException,
@@ -3862,8 +4489,8 @@ export const listWebACLs: API.OperationMethod<
   ListWebACLsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172) as any as S.Schema<ListWebACLsRequest>,
-  output: __S(175) as any as S.Schema<ListWebACLsResponse>,
+  input: ListWebACLsRequest,
+  output: ListWebACLsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3890,8 +4517,8 @@ export const listXssMatchSets: API.OperationMethod<
   ListXssMatchSetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<ListXssMatchSetsRequest>,
-  output: __S(179) as any as S.Schema<ListXssMatchSetsResponse>,
+  input: ListXssMatchSetsRequest,
+  output: ListXssMatchSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3934,8 +4561,8 @@ export const putLoggingConfiguration: API.OperationMethod<
   PutLoggingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180) as any as S.Schema<PutLoggingConfigurationRequest>,
-  output: __S(91) as any as S.Schema<PutLoggingConfigurationResponse>,
+  input: PutLoggingConfigurationRequest,
+  output: PutLoggingConfigurationResponse,
   errors: [
     WAFInternalErrorException,
     WAFNonexistentItemException,
@@ -3991,8 +4618,8 @@ export const putPermissionPolicy: API.OperationMethod<
   PutPermissionPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<PutPermissionPolicyRequest>,
-  output: __S(68) as any as S.Schema<PutPermissionPolicyResponse>,
+  input: PutPermissionPolicyRequest,
+  output: PutPermissionPolicyResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidPermissionPolicyException,
@@ -4031,8 +4658,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<TagResourceRequest>,
-  output: __S(183) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     WAFBadRequestException,
     WAFInternalErrorException,
@@ -4069,8 +4696,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184) as any as S.Schema<UntagResourceRequest>,
-  output: __S(183) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     WAFBadRequestException,
     WAFInternalErrorException,
@@ -4139,8 +4766,8 @@ export const updateByteMatchSet: API.OperationMethod<
   UpdateByteMatchSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<UpdateByteMatchSetRequest>,
-  output: __S(63) as any as S.Schema<UpdateByteMatchSetResponse>,
+  input: UpdateByteMatchSetRequest,
+  output: UpdateByteMatchSetResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidAccountException,
@@ -4205,8 +4832,8 @@ export const updateGeoMatchSet: API.OperationMethod<
   UpdateGeoMatchSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190) as any as S.Schema<UpdateGeoMatchSetRequest>,
-  output: __S(63) as any as S.Schema<UpdateGeoMatchSetResponse>,
+  input: UpdateGeoMatchSetRequest,
+  output: UpdateGeoMatchSetResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidAccountException,
@@ -4306,8 +4933,8 @@ export const updateIPSet: API.OperationMethod<
   UpdateIPSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<UpdateIPSetRequest>,
-  output: __S(66) as any as S.Schema<UpdateIPSetResponse>,
+  input: UpdateIPSetRequest,
+  output: UpdateIPSetResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidAccountException,
@@ -4388,8 +5015,8 @@ export const updateRateBasedRule: API.OperationMethod<
   UpdateRateBasedRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196) as any as S.Schema<UpdateRateBasedRuleRequest>,
-  output: __S(63) as any as S.Schema<UpdateRateBasedRuleResponse>,
+  input: UpdateRateBasedRuleRequest,
+  output: UpdateRateBasedRuleResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidAccountException,
@@ -4458,8 +5085,8 @@ export const updateRegexMatchSet: API.OperationMethod<
   UpdateRegexMatchSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199) as any as S.Schema<UpdateRegexMatchSetRequest>,
-  output: __S(63) as any as S.Schema<UpdateRegexMatchSetResponse>,
+  input: UpdateRegexMatchSetRequest,
+  output: UpdateRegexMatchSetResponse,
   errors: [
     WAFDisallowedNameException,
     WAFInternalErrorException,
@@ -4528,8 +5155,8 @@ export const updateRegexPatternSet: API.OperationMethod<
   UpdateRegexPatternSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202) as any as S.Schema<UpdateRegexPatternSetRequest>,
-  output: __S(63) as any as S.Schema<UpdateRegexPatternSetResponse>,
+  input: UpdateRegexPatternSetRequest,
+  output: UpdateRegexPatternSetResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidAccountException,
@@ -4605,8 +5232,8 @@ export const updateRule: API.OperationMethod<
   UpdateRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203) as any as S.Schema<UpdateRuleRequest>,
-  output: __S(66) as any as S.Schema<UpdateRuleResponse>,
+  input: UpdateRuleRequest,
+  output: UpdateRuleResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidAccountException,
@@ -4669,8 +5296,8 @@ export const updateRuleGroup: API.OperationMethod<
   UpdateRuleGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206) as any as S.Schema<UpdateRuleGroupRequest>,
-  output: __S(66) as any as S.Schema<UpdateRuleGroupResponse>,
+  input: UpdateRuleGroupRequest,
+  output: UpdateRuleGroupResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -4746,8 +5373,8 @@ export const updateSizeConstraintSet: API.OperationMethod<
   UpdateSizeConstraintSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209) as any as S.Schema<UpdateSizeConstraintSetRequest>,
-  output: __S(63) as any as S.Schema<UpdateSizeConstraintSetResponse>,
+  input: UpdateSizeConstraintSetRequest,
+  output: UpdateSizeConstraintSetResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidAccountException,
@@ -4822,8 +5449,8 @@ export const updateSqlInjectionMatchSet: API.OperationMethod<
   UpdateSqlInjectionMatchSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212) as any as S.Schema<UpdateSqlInjectionMatchSetRequest>,
-  output: __S(63) as any as S.Schema<UpdateSqlInjectionMatchSetResponse>,
+  input: UpdateSqlInjectionMatchSetRequest,
+  output: UpdateSqlInjectionMatchSetResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidAccountException,
@@ -4928,8 +5555,8 @@ export const updateWebACL: API.OperationMethod<
   UpdateWebACLError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213) as any as S.Schema<UpdateWebACLRequest>,
-  output: __S(66) as any as S.Schema<UpdateWebACLResponse>,
+  input: UpdateWebACLRequest,
+  output: UpdateWebACLResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidAccountException,
@@ -5007,8 +5634,8 @@ export const updateXssMatchSet: API.OperationMethod<
   UpdateXssMatchSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216) as any as S.Schema<UpdateXssMatchSetRequest>,
-  output: __S(63) as any as S.Schema<UpdateXssMatchSetResponse>,
+  input: UpdateXssMatchSetRequest,
+  output: UpdateXssMatchSetResponse,
   errors: [
     WAFInternalErrorException,
     WAFInvalidAccountException,
@@ -5036,32 +5663,32 @@ function __c0(j: number): any {
         identifier: "CreateByteMatchSetRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ Type: S.String, Data: S.optional(S.String) })).annotate({
-        identifier: "FieldToMatch",
-      });
+      return S.suspend(() =>
+        S.Struct({ Type: MatchFieldType, Data: S.optional(S.String) }),
+      ).annotate({ identifier: "FieldToMatch" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          FieldToMatch: __S(1),
+          FieldToMatch: FieldToMatch,
           TargetString: T.Blob,
-          TextTransformation: S.String,
-          PositionalConstraint: S.String,
+          TextTransformation: TextTransformation,
+          PositionalConstraint: PositionalConstraint,
         }),
       ).annotate({ identifier: "ByteMatchTuple" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(ByteMatchTuple);
     case 4:
       return S.suspend(() =>
         S.Struct({
           ByteMatchSetId: S.String,
           Name: S.optional(S.String),
-          ByteMatchTuples: __S(3),
+          ByteMatchTuples: ByteMatchTuples,
         }),
       ).annotate({ identifier: "ByteMatchSet" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ByteMatchSet: S.optional(__S(4)),
+          ByteMatchSet: S.optional(ByteMatchSet),
           ChangeToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5074,26 +5701,28 @@ function __c0(j: number): any {
         ),
       ).annotate({ identifier: "CreateGeoMatchSetRequest" });
     case 7:
-      return S.suspend(() => S.Struct({ Type: S.String, Value: S.String })).annotate({
-        identifier: "GeoMatchConstraint",
-      });
+      return S.suspend(() =>
+        S.Struct({ Type: GeoMatchConstraintType, Value: GeoMatchConstraintValue }),
+      ).annotate({ identifier: "GeoMatchConstraint" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(GeoMatchConstraint);
     case 1:
       return S.suspend(() =>
         S.Struct({
           GeoMatchSetId: S.String,
           Name: S.optional(S.String),
-          GeoMatchConstraints: __S(8),
+          GeoMatchConstraints: GeoMatchConstraints,
         }),
       ).annotate({ identifier: "GeoMatchSet" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ GeoMatchSet: S.optional(__S(9)), ChangeToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ GeoMatchSet: S.optional(GeoMatchSet), ChangeToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({
         identifier: "CreateGeoMatchSetResponse",
       });
@@ -5104,22 +5733,22 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "CreateIPSetRequest" });
     case 4:
-      return S.suspend(() => S.Struct({ Type: S.String, Value: S.String })).annotate({
+      return S.suspend(() => S.Struct({ Type: IPSetDescriptorType, Value: S.String })).annotate({
         identifier: "IPSetDescriptor",
       });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(IPSetDescriptor);
     case 6:
       return S.suspend(() =>
         S.Struct({
           IPSetId: S.String,
           Name: S.optional(S.String),
-          IPSetDescriptors: __S(13),
+          IPSetDescriptors: IPSetDescriptors,
         }),
       ).annotate({ identifier: "IPSet" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ IPSet: S.optional(__S(14)), ChangeToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ IPSet: S.optional(IPSet), ChangeToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "CreateIPSetResponse" });
   }
 }
@@ -5130,40 +5759,40 @@ function __c2(j: number): any {
         identifier: "Tag",
       });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(Tag);
     case 2:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           MetricName: S.String,
-          RateKey: S.String,
+          RateKey: RateKey,
           RateLimit: S.Number,
           ChangeToken: S.String,
-          Tags: S.optional(__S(17)),
+          Tags: S.optional(TagList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateRateBasedRuleRequest",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ Negated: S.Boolean, Type: S.String, DataId: S.String }),
+        S.Struct({ Negated: S.Boolean, Type: PredicateType, DataId: S.String }),
       ).annotate({ identifier: "Predicate" });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(Predicate);
     case 5:
       return S.suspend(() =>
         S.Struct({
           RuleId: S.String,
           Name: S.optional(S.String),
           MetricName: S.optional(S.String),
-          MatchPredicates: __S(20),
-          RateKey: S.String,
+          MatchPredicates: Predicates,
+          RateKey: RateKey,
           RateLimit: S.Number,
         }),
       ).annotate({ identifier: "RateBasedRule" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Rule: S.optional(__S(21)), ChangeToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Rule: S.optional(RateBasedRule), ChangeToken: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "CreateRateBasedRuleResponse",
       });
@@ -5182,25 +5811,25 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          FieldToMatch: __S(1),
-          TextTransformation: S.String,
+          FieldToMatch: FieldToMatch,
+          TextTransformation: TextTransformation,
           RegexPatternSetId: S.String,
         }),
       ).annotate({ identifier: "RegexMatchTuple" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(RegexMatchTuple);
     case 2:
       return S.suspend(() =>
         S.Struct({
           RegexMatchSetId: S.optional(S.String),
           Name: S.optional(S.String),
-          RegexMatchTuples: S.optional(__S(25)),
+          RegexMatchTuples: S.optional(RegexMatchTuples),
         }),
       ).annotate({ identifier: "RegexMatchSet" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          RegexMatchSet: S.optional(__S(26)),
+          RegexMatchSet: S.optional(RegexMatchSet),
           ChangeToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5221,13 +5850,13 @@ function __c3(j: number): any {
         S.Struct({
           RegexPatternSetId: S.String,
           Name: S.optional(S.String),
-          RegexPatternStrings: __S(29),
+          RegexPatternStrings: RegexPatternStrings,
         }),
       ).annotate({ identifier: "RegexPatternSet" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          RegexPatternSet: S.optional(__S(30)),
+          RegexPatternSet: S.optional(RegexPatternSet),
           ChangeToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5243,7 +5872,7 @@ function __c4(j: number): any {
           Name: S.String,
           MetricName: S.String,
           ChangeToken: S.String,
-          Tags: S.optional(__S(17)),
+          Tags: S.optional(TagList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateRuleRequest" });
     case 1:
@@ -5252,12 +5881,12 @@ function __c4(j: number): any {
           RuleId: S.String,
           Name: S.optional(S.String),
           MetricName: S.optional(S.String),
-          Predicates: __S(20),
+          Predicates: Predicates,
         }),
       ).annotate({ identifier: "Rule" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Rule: S.optional(__S(33)), ChangeToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Rule: S.optional(Rule), ChangeToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "CreateRuleResponse" });
     case 3:
       return S.suspend(() =>
@@ -5265,7 +5894,7 @@ function __c4(j: number): any {
           Name: S.String,
           MetricName: S.String,
           ChangeToken: S.String,
-          Tags: S.optional(__S(17)),
+          Tags: S.optional(TagList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateRuleGroupRequest" });
     case 4:
@@ -5278,7 +5907,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "RuleGroup" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ RuleGroup: S.optional(__S(36)), ChangeToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ RuleGroup: S.optional(RuleGroup), ChangeToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "CreateRuleGroupResponse" });
     case 6:
       return S.suspend(() =>
@@ -5291,9 +5920,9 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          FieldToMatch: __S(1),
-          TextTransformation: S.String,
-          ComparisonOperator: S.String,
+          FieldToMatch: FieldToMatch,
+          TextTransformation: TextTransformation,
+          ComparisonOperator: ComparisonOperator,
           Size: S.Number,
         }),
       ).annotate({ identifier: "SizeConstraint" });
@@ -5302,19 +5931,19 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39));
+      return S.Array(SizeConstraint);
     case 1:
       return S.suspend(() =>
         S.Struct({
           SizeConstraintSetId: S.String,
           Name: S.optional(S.String),
-          SizeConstraints: __S(40),
+          SizeConstraints: SizeConstraints,
         }),
       ).annotate({ identifier: "SizeConstraintSet" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          SizeConstraintSet: S.optional(__S(41)),
+          SizeConstraintSet: S.optional(SizeConstraintSet),
           ChangeToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5330,22 +5959,22 @@ function __c5(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ FieldToMatch: __S(1), TextTransformation: S.String }),
+        S.Struct({ FieldToMatch: FieldToMatch, TextTransformation: TextTransformation }),
       ).annotate({ identifier: "SqlInjectionMatchTuple" });
     case 5:
-      return S.Array(__S(44));
+      return S.Array(SqlInjectionMatchTuple);
     case 6:
       return S.suspend(() =>
         S.Struct({
           SqlInjectionMatchSetId: S.String,
           Name: S.optional(S.String),
-          SqlInjectionMatchTuples: __S(45),
+          SqlInjectionMatchTuples: SqlInjectionMatchTuples,
         }),
       ).annotate({ identifier: "SqlInjectionMatchSet" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          SqlInjectionMatchSet: S.optional(__S(46)),
+          SqlInjectionMatchSet: S.optional(SqlInjectionMatchSet),
           ChangeToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5356,7 +5985,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Type: S.String })).annotate({
+      return S.suspend(() => S.Struct({ Type: WafActionType })).annotate({
         identifier: "WafAction",
       });
     case 1:
@@ -5364,13 +5993,13 @@ function __c6(j: number): any {
         S.Struct({
           Name: S.String,
           MetricName: S.String,
-          DefaultAction: __S(48),
+          DefaultAction: WafAction,
           ChangeToken: S.String,
-          Tags: S.optional(__S(17)),
+          Tags: S.optional(TagList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateWebACLRequest" });
     case 2:
-      return S.suspend(() => S.Struct({ Type: S.String })).annotate({
+      return S.suspend(() => S.Struct({ Type: WafOverrideActionType })).annotate({
         identifier: "WafOverrideAction",
       });
     case 3:
@@ -5378,28 +6007,28 @@ function __c6(j: number): any {
         identifier: "ExcludedRule",
       });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(ExcludedRule);
     case 5:
       return S.suspend(() =>
         S.Struct({
           Priority: S.Number,
           RuleId: S.String,
-          Action: S.optional(__S(48)),
-          OverrideAction: S.optional(__S(50)),
-          Type: S.optional(S.String),
-          ExcludedRules: S.optional(__S(52)),
+          Action: S.optional(WafAction),
+          OverrideAction: S.optional(WafOverrideAction),
+          Type: S.optional(WafRuleType),
+          ExcludedRules: S.optional(ExcludedRules),
         }),
       ).annotate({ identifier: "ActivatedRule" });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(ActivatedRule);
     case 7:
       return S.suspend(() =>
         S.Struct({
           WebACLId: S.String,
           Name: S.optional(S.String),
           MetricName: S.optional(S.String),
-          DefaultAction: __S(48),
-          Rules: __S(54),
+          DefaultAction: WafAction,
+          Rules: ActivatedRules,
           WebACLArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebACL" });
@@ -5409,7 +6038,7 @@ function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ WebACL: S.optional(__S(55)), ChangeToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ WebACL: S.optional(WebACL), ChangeToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "CreateWebACLResponse" });
     case 1:
       return S.suspend(() =>
@@ -5436,12 +6065,14 @@ function __c7(j: number): any {
         S.Struct({
           XssMatchSetId: S.String,
           Name: S.optional(S.String),
-          XssMatchTuples: __S(45),
+          XssMatchTuples: XssMatchTuples,
         }),
       ).annotate({ identifier: "XssMatchSet" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ XssMatchSet: S.optional(__S(60)), ChangeToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ XssMatchSet: S.optional(XssMatchSet), ChangeToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({
         identifier: "CreateXssMatchSetResponse",
       });
@@ -5576,9 +6207,9 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ ByteMatchSet: S.optional(__S(4)) }).pipe(ns)).annotate({
-        identifier: "GetByteMatchSetResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({ ByteMatchSet: S.optional(ByteMatchSet) }).pipe(ns),
+      ).annotate({ identifier: "GetByteMatchSetResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({}).pipe(
@@ -5595,7 +6226,7 @@ function __c10(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ ChangeTokenStatus: S.optional(S.String) }).pipe(ns),
+        S.Struct({ ChangeTokenStatus: S.optional(ChangeTokenStatus) }).pipe(ns),
       ).annotate({
         identifier: "GetChangeTokenStatusResponse",
       });
@@ -5606,7 +6237,7 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "GetGeoMatchSetRequest" });
     case 5:
-      return S.suspend(() => S.Struct({ GeoMatchSet: S.optional(__S(9)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ GeoMatchSet: S.optional(GeoMatchSet) }).pipe(ns)).annotate({
         identifier: "GetGeoMatchSetResponse",
       });
     case 6:
@@ -5616,7 +6247,7 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "GetIPSetRequest" });
     case 7:
-      return S.suspend(() => S.Struct({ IPSet: S.optional(__S(14)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ IPSet: S.optional(IPSet) }).pipe(ns)).annotate({
         identifier: "GetIPSetResponse",
       });
   }
@@ -5632,18 +6263,18 @@ function __c11(j: number): any {
         identifier: "GetLoggingConfigurationRequest",
       });
     case 1:
-      return S.Array(__S(1));
+      return S.Array(FieldToMatch);
     case 2:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String,
-          LogDestinationConfigs: __S(29),
-          RedactedFields: S.optional(__S(89)),
+          LogDestinationConfigs: LogDestinationConfigs,
+          RedactedFields: S.optional(RedactedFields),
         }),
       ).annotate({ identifier: "LoggingConfiguration" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ LoggingConfiguration: S.optional(__S(90)) }).pipe(ns),
+        S.Struct({ LoggingConfiguration: S.optional(LoggingConfiguration) }).pipe(ns),
       ).annotate({
         identifier: "GetLoggingConfigurationResponse",
       });
@@ -5666,7 +6297,7 @@ function __c11(j: number): any {
         ),
       ).annotate({ identifier: "GetRateBasedRuleRequest" });
     case 7:
-      return S.suspend(() => S.Struct({ Rule: S.optional(__S(21)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Rule: S.optional(RateBasedRule) }).pipe(ns)).annotate({
         identifier: "GetRateBasedRuleResponse",
       });
   }
@@ -5683,7 +6314,9 @@ function __c12(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ManagedKeys: S.optional(__S(29)), NextMarker: S.optional(S.String) }).pipe(ns),
+        S.Struct({ ManagedKeys: S.optional(ManagedKeys), NextMarker: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({
         identifier: "GetRateBasedRuleManagedKeysResponse",
       });
@@ -5694,9 +6327,9 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "GetRegexMatchSetRequest" });
     case 3:
-      return S.suspend(() => S.Struct({ RegexMatchSet: S.optional(__S(26)) }).pipe(ns)).annotate({
-        identifier: "GetRegexMatchSetResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({ RegexMatchSet: S.optional(RegexMatchSet) }).pipe(ns),
+      ).annotate({ identifier: "GetRegexMatchSetResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({ RegexPatternSetId: S.String }).pipe(
@@ -5706,7 +6339,9 @@ function __c12(j: number): any {
         identifier: "GetRegexPatternSetRequest",
       });
     case 5:
-      return S.suspend(() => S.Struct({ RegexPatternSet: S.optional(__S(30)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ RegexPatternSet: S.optional(RegexPatternSet) }).pipe(ns),
+      ).annotate({
         identifier: "GetRegexPatternSetResponse",
       });
     case 6:
@@ -5716,7 +6351,7 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "GetRuleRequest" });
     case 7:
-      return S.suspend(() => S.Struct({ Rule: S.optional(__S(33)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Rule: S.optional(Rule) }).pipe(ns)).annotate({
         identifier: "GetRuleResponse",
       });
   }
@@ -5730,7 +6365,7 @@ function __c13(j: number): any {
         ),
       ).annotate({ identifier: "GetRuleGroupRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ RuleGroup: S.optional(__S(36)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ RuleGroup: S.optional(RuleGroup) }).pipe(ns)).annotate({
         identifier: "GetRuleGroupResponse",
       });
     case 2:
@@ -5745,7 +6380,7 @@ function __c13(j: number): any {
         S.Struct({
           WebAclId: S.String,
           RuleId: S.String,
-          TimeWindow: __S(106),
+          TimeWindow: TimeWindow,
           MaxItems: S.Number,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -5756,7 +6391,7 @@ function __c13(j: number): any {
         S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "HTTPHeader" });
     case 5:
-      return S.Array(__S(108));
+      return S.Array(HTTPHeader);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5765,13 +6400,13 @@ function __c13(j: number): any {
           URI: S.optional(S.String),
           Method: S.optional(S.String),
           HTTPVersion: S.optional(S.String),
-          Headers: S.optional(__S(109)),
+          Headers: S.optional(HTTPHeaders),
         }),
       ).annotate({ identifier: "HTTPRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Request: __S(110),
+          Request: HTTPRequest,
           Weight: S.Number,
           Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Action: S.optional(S.String),
@@ -5783,13 +6418,13 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(111));
+      return S.Array(SampledHTTPRequest);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          SampledRequests: S.optional(__S(112)),
+          SampledRequests: S.optional(SampledHTTPRequests),
           PopulationSize: S.optional(S.Number),
-          TimeWindow: S.optional(__S(106)),
+          TimeWindow: S.optional(TimeWindow),
         }).pipe(ns),
       ).annotate({
         identifier: "GetSampledRequestsResponse",
@@ -5804,7 +6439,7 @@ function __c14(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ SizeConstraintSet: S.optional(__S(41)) }).pipe(ns),
+        S.Struct({ SizeConstraintSet: S.optional(SizeConstraintSet) }).pipe(ns),
       ).annotate({
         identifier: "GetSizeConstraintSetResponse",
       });
@@ -5818,7 +6453,7 @@ function __c14(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ SqlInjectionMatchSet: S.optional(__S(46)) }).pipe(ns),
+        S.Struct({ SqlInjectionMatchSet: S.optional(SqlInjectionMatchSet) }).pipe(ns),
       ).annotate({
         identifier: "GetSqlInjectionMatchSetResponse",
       });
@@ -5829,7 +6464,7 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "GetWebACLRequest" });
     case 7:
-      return S.suspend(() => S.Struct({ WebACL: S.optional(__S(55)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ WebACL: S.optional(WebACL) }).pipe(ns)).annotate({
         identifier: "GetWebACLResponse",
       });
   }
@@ -5843,7 +6478,7 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "GetXssMatchSetRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ XssMatchSet: S.optional(__S(60)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ XssMatchSet: S.optional(XssMatchSet) }).pipe(ns)).annotate({
         identifier: "GetXssMatchSetResponse",
       });
     case 2:
@@ -5860,7 +6495,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
-          ActivatedRules: S.optional(__S(54)),
+          ActivatedRules: S.optional(ActivatedRules),
         }).pipe(ns),
       ).annotate({
         identifier: "ListActivatedRulesInRuleGroupResponse",
@@ -5876,12 +6511,12 @@ function __c15(j: number): any {
         identifier: "ByteMatchSetSummary",
       });
     case 6:
-      return S.Array(__S(125));
+      return S.Array(ByteMatchSetSummary);
     case 7:
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
-          ByteMatchSets: S.optional(__S(126)),
+          ByteMatchSets: S.optional(ByteMatchSetSummaries),
         }).pipe(ns),
       ).annotate({
         identifier: "ListByteMatchSetsResponse",
@@ -5901,12 +6536,12 @@ function __c16(j: number): any {
         identifier: "GeoMatchSetSummary",
       });
     case 2:
-      return S.Array(__S(129));
+      return S.Array(GeoMatchSetSummary);
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
-          GeoMatchSets: S.optional(__S(130)),
+          GeoMatchSets: S.optional(GeoMatchSetSummaries),
         }).pipe(ns),
       ).annotate({ identifier: "ListGeoMatchSetsResponse" });
     case 4:
@@ -5920,10 +6555,10 @@ function __c16(j: number): any {
         identifier: "IPSetSummary",
       });
     case 6:
-      return S.Array(__S(133));
+      return S.Array(IPSetSummary);
     case 7:
       return S.suspend(() =>
-        S.Struct({ NextMarker: S.optional(S.String), IPSets: S.optional(__S(134)) }).pipe(ns),
+        S.Struct({ NextMarker: S.optional(S.String), IPSets: S.optional(IPSetSummaries) }).pipe(ns),
       ).annotate({ identifier: "ListIPSetsResponse" });
   }
 }
@@ -5938,11 +6573,11 @@ function __c17(j: number): any {
         identifier: "ListLoggingConfigurationsRequest",
       });
     case 1:
-      return S.Array(__S(90));
+      return S.Array(LoggingConfiguration);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          LoggingConfigurations: S.optional(__S(137)),
+          LoggingConfigurations: S.optional(LoggingConfigurations),
           NextMarker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5961,10 +6596,10 @@ function __c17(j: number): any {
         identifier: "RuleSummary",
       });
     case 5:
-      return S.Array(__S(140));
+      return S.Array(RuleSummary);
     case 6:
       return S.suspend(() =>
-        S.Struct({ NextMarker: S.optional(S.String), Rules: S.optional(__S(141)) }).pipe(ns),
+        S.Struct({ NextMarker: S.optional(S.String), Rules: S.optional(RuleSummaries) }).pipe(ns),
       ).annotate({
         identifier: "ListRateBasedRulesResponse",
       });
@@ -5985,12 +6620,12 @@ function __c18(j: number): any {
         identifier: "RegexMatchSetSummary",
       });
     case 1:
-      return S.Array(__S(144));
+      return S.Array(RegexMatchSetSummary);
     case 2:
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
-          RegexMatchSets: S.optional(__S(145)),
+          RegexMatchSets: S.optional(RegexMatchSetSummaries),
         }).pipe(ns),
       ).annotate({
         identifier: "ListRegexMatchSetsResponse",
@@ -6008,12 +6643,12 @@ function __c18(j: number): any {
         identifier: "RegexPatternSetSummary",
       });
     case 5:
-      return S.Array(__S(148));
+      return S.Array(RegexPatternSetSummary);
     case 6:
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
-          RegexPatternSets: S.optional(__S(149)),
+          RegexPatternSets: S.optional(RegexPatternSetSummaries),
         }).pipe(ns),
       ).annotate({
         identifier: "ListRegexPatternSetsResponse",
@@ -6033,12 +6668,12 @@ function __c19(j: number): any {
         identifier: "RuleGroupSummary",
       });
     case 1:
-      return S.Array(__S(152));
+      return S.Array(RuleGroupSummary);
     case 2:
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
-          RuleGroups: S.optional(__S(153)),
+          RuleGroups: S.optional(RuleGroupSummaries),
         }).pipe(ns),
       ).annotate({ identifier: "ListRuleGroupsResponse" });
     case 3:
@@ -6049,7 +6684,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "ListRulesRequest" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ NextMarker: S.optional(S.String), Rules: S.optional(__S(141)) }).pipe(ns),
+        S.Struct({ NextMarker: S.optional(S.String), Rules: S.optional(RuleSummaries) }).pipe(ns),
       ).annotate({ identifier: "ListRulesResponse" });
     case 5:
       return S.suspend(() =>
@@ -6064,7 +6699,7 @@ function __c19(j: number): any {
         identifier: "SizeConstraintSetSummary",
       });
     case 7:
-      return S.Array(__S(158));
+      return S.Array(SizeConstraintSetSummary);
   }
 }
 function __c20(j: number): any {
@@ -6073,7 +6708,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
-          SizeConstraintSets: S.optional(__S(159)),
+          SizeConstraintSets: S.optional(SizeConstraintSetSummaries),
         }).pipe(ns),
       ).annotate({
         identifier: "ListSizeConstraintSetsResponse",
@@ -6093,12 +6728,12 @@ function __c20(j: number): any {
         identifier: "SqlInjectionMatchSetSummary",
       });
     case 3:
-      return S.Array(__S(162));
+      return S.Array(SqlInjectionMatchSetSummary);
     case 4:
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
-          SqlInjectionMatchSets: S.optional(__S(163)),
+          SqlInjectionMatchSets: S.optional(SqlInjectionMatchSetSummaries),
         }).pipe(ns),
       ).annotate({
         identifier: "ListSqlInjectionMatchSetsResponse",
@@ -6118,7 +6753,7 @@ function __c20(j: number): any {
         identifier: "SubscribedRuleGroupSummary",
       });
     case 7:
-      return S.Array(__S(166));
+      return S.Array(SubscribedRuleGroupSummary);
   }
 }
 function __c21(j: number): any {
@@ -6127,7 +6762,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
-          RuleGroups: S.optional(__S(167)),
+          RuleGroups: S.optional(SubscribedRuleGroupSummaries),
         }).pipe(ns),
       ).annotate({
         identifier: "ListSubscribedRuleGroupsResponse",
@@ -6144,13 +6779,13 @@ function __c21(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.optional(S.String), TagList: S.optional(__S(17)) }),
+        S.Struct({ ResourceARN: S.optional(S.String), TagList: S.optional(TagList) }),
       ).annotate({ identifier: "TagInfoForResource" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
-          TagInfoForResource: S.optional(__S(170)),
+          TagInfoForResource: S.optional(TagInfoForResource),
         }).pipe(ns),
       ).annotate({
         identifier: "ListTagsForResourceResponse",
@@ -6166,10 +6801,12 @@ function __c21(j: number): any {
         identifier: "WebACLSummary",
       });
     case 6:
-      return S.Array(__S(173));
+      return S.Array(WebACLSummary);
     case 7:
       return S.suspend(() =>
-        S.Struct({ NextMarker: S.optional(S.String), WebACLs: S.optional(__S(174)) }).pipe(ns),
+        S.Struct({ NextMarker: S.optional(S.String), WebACLs: S.optional(WebACLSummaries) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "ListWebACLsResponse" });
   }
 }
@@ -6186,17 +6823,17 @@ function __c22(j: number): any {
         identifier: "XssMatchSetSummary",
       });
     case 2:
-      return S.Array(__S(177));
+      return S.Array(XssMatchSetSummary);
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
-          XssMatchSets: S.optional(__S(178)),
+          XssMatchSets: S.optional(XssMatchSetSummaries),
         }).pipe(ns),
       ).annotate({ identifier: "ListXssMatchSetsResponse" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ LoggingConfiguration: __S(90) }).pipe(
+        S.Struct({ LoggingConfiguration: LoggingConfiguration }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -6212,7 +6849,7 @@ function __c22(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(17) }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: TagList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -6226,84 +6863,84 @@ function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(29) }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ Action: S.String, ByteMatchTuple: __S(2) })).annotate({
-        identifier: "ByteMatchSetUpdate",
-      });
+      return S.suspend(() =>
+        S.Struct({ Action: ChangeAction, ByteMatchTuple: ByteMatchTuple }),
+      ).annotate({ identifier: "ByteMatchSetUpdate" });
     case 2:
-      return S.Array(__S(185));
+      return S.Array(ByteMatchSetUpdate);
     case 3:
       return S.suspend(() =>
         S.Struct({
           ByteMatchSetId: S.String,
           ChangeToken: S.String,
-          Updates: __S(186),
+          Updates: ByteMatchSetUpdates,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateByteMatchSetRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ Action: S.String, GeoMatchConstraint: __S(7) })).annotate({
-        identifier: "GeoMatchSetUpdate",
-      });
+      return S.suspend(() =>
+        S.Struct({ Action: ChangeAction, GeoMatchConstraint: GeoMatchConstraint }),
+      ).annotate({ identifier: "GeoMatchSetUpdate" });
     case 5:
-      return S.Array(__S(188));
+      return S.Array(GeoMatchSetUpdate);
     case 6:
       return S.suspend(() =>
         S.Struct({
           GeoMatchSetId: S.String,
           ChangeToken: S.String,
-          Updates: __S(189),
+          Updates: GeoMatchSetUpdates,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateGeoMatchSetRequest" });
     case 7:
-      return S.suspend(() => S.Struct({ Action: S.String, IPSetDescriptor: __S(12) })).annotate({
-        identifier: "IPSetUpdate",
-      });
+      return S.suspend(() =>
+        S.Struct({ Action: ChangeAction, IPSetDescriptor: IPSetDescriptor }),
+      ).annotate({ identifier: "IPSetUpdate" });
   }
 }
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(191));
+      return S.Array(IPSetUpdate);
     case 1:
       return S.suspend(() =>
-        S.Struct({ IPSetId: S.String, ChangeToken: S.String, Updates: __S(192) }).pipe(
+        S.Struct({ IPSetId: S.String, ChangeToken: S.String, Updates: IPSetUpdates }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateIPSetRequest" });
     case 2:
-      return S.suspend(() => S.Struct({ Action: S.String, Predicate: __S(19) })).annotate({
+      return S.suspend(() => S.Struct({ Action: ChangeAction, Predicate: Predicate })).annotate({
         identifier: "RuleUpdate",
       });
     case 3:
-      return S.Array(__S(194));
+      return S.Array(RuleUpdate);
     case 4:
       return S.suspend(() =>
         S.Struct({
           RuleId: S.String,
           ChangeToken: S.String,
-          Updates: __S(195),
+          Updates: RuleUpdates,
           RateLimit: S.Number,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateRateBasedRuleRequest",
       });
     case 5:
-      return S.suspend(() => S.Struct({ Action: S.String, RegexMatchTuple: __S(24) })).annotate({
-        identifier: "RegexMatchSetUpdate",
-      });
+      return S.suspend(() =>
+        S.Struct({ Action: ChangeAction, RegexMatchTuple: RegexMatchTuple }),
+      ).annotate({ identifier: "RegexMatchSetUpdate" });
     case 6:
-      return S.Array(__S(197));
+      return S.Array(RegexMatchSetUpdate);
     case 7:
       return S.suspend(() =>
         S.Struct({
           RegexMatchSetId: S.String,
-          Updates: __S(198),
+          Updates: RegexMatchSetUpdates,
           ChangeToken: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -6314,16 +6951,16 @@ function __c24(j: number): any {
 function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Action: S.String, RegexPatternString: S.String })).annotate(
-        { identifier: "RegexPatternSetUpdate" },
-      );
+      return S.suspend(() =>
+        S.Struct({ Action: ChangeAction, RegexPatternString: S.String }),
+      ).annotate({ identifier: "RegexPatternSetUpdate" });
     case 1:
-      return S.Array(__S(200));
+      return S.Array(RegexPatternSetUpdate);
     case 2:
       return S.suspend(() =>
         S.Struct({
           RegexPatternSetId: S.String,
-          Updates: __S(201),
+          Updates: RegexPatternSetUpdates,
           ChangeToken: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -6331,56 +6968,56 @@ function __c25(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ RuleId: S.String, ChangeToken: S.String, Updates: __S(195) }).pipe(
+        S.Struct({ RuleId: S.String, ChangeToken: S.String, Updates: RuleUpdates }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateRuleRequest" });
     case 4:
-      return S.suspend(() => S.Struct({ Action: S.String, ActivatedRule: __S(53) })).annotate({
-        identifier: "RuleGroupUpdate",
-      });
+      return S.suspend(() =>
+        S.Struct({ Action: ChangeAction, ActivatedRule: ActivatedRule }),
+      ).annotate({ identifier: "RuleGroupUpdate" });
     case 5:
-      return S.Array(__S(204));
+      return S.Array(RuleGroupUpdate);
     case 6:
       return S.suspend(() =>
-        S.Struct({ RuleGroupId: S.String, Updates: __S(205), ChangeToken: S.String }).pipe(
+        S.Struct({ RuleGroupId: S.String, Updates: RuleGroupUpdates, ChangeToken: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateRuleGroupRequest" });
     case 7:
-      return S.suspend(() => S.Struct({ Action: S.String, SizeConstraint: __S(39) })).annotate({
-        identifier: "SizeConstraintSetUpdate",
-      });
+      return S.suspend(() =>
+        S.Struct({ Action: ChangeAction, SizeConstraint: SizeConstraint }),
+      ).annotate({ identifier: "SizeConstraintSetUpdate" });
   }
 }
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(207));
+      return S.Array(SizeConstraintSetUpdate);
     case 1:
       return S.suspend(() =>
         S.Struct({
           SizeConstraintSetId: S.String,
           ChangeToken: S.String,
-          Updates: __S(208),
+          Updates: SizeConstraintSetUpdates,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateSizeConstraintSetRequest",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Action: S.String, SqlInjectionMatchTuple: __S(44) }),
+        S.Struct({ Action: ChangeAction, SqlInjectionMatchTuple: SqlInjectionMatchTuple }),
       ).annotate({
         identifier: "SqlInjectionMatchSetUpdate",
       });
     case 3:
-      return S.Array(__S(210));
+      return S.Array(SqlInjectionMatchSetUpdate);
     case 4:
       return S.suspend(() =>
         S.Struct({
           SqlInjectionMatchSetId: S.String,
           ChangeToken: S.String,
-          Updates: __S(211),
+          Updates: SqlInjectionMatchSetUpdates,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateSqlInjectionMatchSetRequest",
@@ -6390,16 +7027,16 @@ function __c26(j: number): any {
         S.Struct({
           WebACLId: S.String,
           ChangeToken: S.String,
-          Updates: S.optional(__S(205)),
-          DefaultAction: S.optional(__S(48)),
+          Updates: S.optional(WebACLUpdates),
+          DefaultAction: S.optional(WafAction),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateWebACLRequest" });
     case 6:
-      return S.suspend(() => S.Struct({ Action: S.String, XssMatchTuple: __S(44) })).annotate({
-        identifier: "XssMatchSetUpdate",
-      });
+      return S.suspend(() =>
+        S.Struct({ Action: ChangeAction, XssMatchTuple: XssMatchTuple }),
+      ).annotate({ identifier: "XssMatchSetUpdate" });
     case 7:
-      return S.Array(__S(214));
+      return S.Array(XssMatchSetUpdate);
   }
 }
 function __c27(j: number): any {
@@ -6409,73 +7046,8 @@ function __c27(j: number): any {
         S.Struct({
           XssMatchSetId: S.String,
           ChangeToken: S.String,
-          Updates: __S(215),
+          Updates: XssMatchSetUpdates,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateXssMatchSetRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
   }
 }

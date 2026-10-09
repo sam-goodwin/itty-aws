@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "SSM GuiConnect",
   serviceShapeName: "SSMGuiConnect",
@@ -122,36 +120,68 @@ export type ClientToken = string;
 export interface DeleteConnectionRecordingPreferencesRequest {
   ClientToken?: string;
 }
+const DeleteConnectionRecordingPreferencesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeleteConnectionRecordingPreferencesRequest>;
 export interface DeleteConnectionRecordingPreferencesResponse {
   ClientToken?: string;
 }
+const DeleteConnectionRecordingPreferencesResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<DeleteConnectionRecordingPreferencesResponse>;
 export interface GetConnectionRecordingPreferencesRequest {}
+const GetConnectionRecordingPreferencesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetConnectionRecordingPreferencesRequest>;
 export type AccountId = string;
 export type BucketName = string;
 export interface S3Bucket {
   BucketOwner: string;
   BucketName: string;
 }
+const S3Bucket = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<S3Bucket>;
 export type S3Buckets = S3Bucket[];
+const S3Buckets = /*@__PURE__*/ __L.at(__c0, 4);
 export interface RecordingDestinations {
   S3Buckets: S3Bucket[];
 }
+const RecordingDestinations = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<RecordingDestinations>;
 export interface ConnectionRecordingPreferences {
   RecordingDestinations: RecordingDestinations;
   KMSKeyArn: string;
 }
+const ConnectionRecordingPreferences = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ConnectionRecordingPreferences>;
 export interface GetConnectionRecordingPreferencesResponse {
   ClientToken?: string;
   ConnectionRecordingPreferences?: ConnectionRecordingPreferences;
 }
+const GetConnectionRecordingPreferencesResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetConnectionRecordingPreferencesResponse>;
 export interface UpdateConnectionRecordingPreferencesRequest {
   ConnectionRecordingPreferences: ConnectionRecordingPreferences;
   ClientToken?: string;
 }
+const UpdateConnectionRecordingPreferencesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<UpdateConnectionRecordingPreferencesRequest>;
 export interface UpdateConnectionRecordingPreferencesResponse {
   ClientToken?: string;
   ConnectionRecordingPreferences?: ConnectionRecordingPreferences;
 }
+const UpdateConnectionRecordingPreferencesResponse =
+  GetConnectionRecordingPreferencesResponse as any as S.Schema<UpdateConnectionRecordingPreferencesResponse>;
 export type ErrorMessage = string;
 export type DeleteConnectionRecordingPreferencesError =
   | AccessDeniedException
@@ -171,8 +201,8 @@ export const deleteConnectionRecordingPreferences: API.OperationMethod<
   DeleteConnectionRecordingPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeleteConnectionRecordingPreferencesRequest>,
-  output: __S(1) as any as S.Schema<DeleteConnectionRecordingPreferencesResponse>,
+  input: DeleteConnectionRecordingPreferencesRequest,
+  output: DeleteConnectionRecordingPreferencesResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -205,8 +235,8 @@ export const getConnectionRecordingPreferences: API.OperationMethod<
   GetConnectionRecordingPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetConnectionRecordingPreferencesRequest>,
-  output: __S(7) as any as S.Schema<GetConnectionRecordingPreferencesResponse>,
+  input: GetConnectionRecordingPreferencesRequest,
+  output: GetConnectionRecordingPreferencesResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -239,8 +269,8 @@ export const updateConnectionRecordingPreferences: API.OperationMethod<
   UpdateConnectionRecordingPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<UpdateConnectionRecordingPreferencesRequest>,
-  output: __S(7) as any as S.Schema<UpdateConnectionRecordingPreferencesResponse>,
+  input: UpdateConnectionRecordingPreferencesRequest,
+  output: UpdateConnectionRecordingPreferencesResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -297,14 +327,14 @@ function __c0(j: number): any {
         identifier: "S3Bucket",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(S3Bucket);
     case 5:
-      return S.suspend(() => S.Struct({ S3Buckets: __S(4) })).annotate({
+      return S.suspend(() => S.Struct({ S3Buckets: S3Buckets })).annotate({
         identifier: "RecordingDestinations",
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ RecordingDestinations: __S(5), KMSKeyArn: S.String }),
+        S.Struct({ RecordingDestinations: RecordingDestinations, KMSKeyArn: S.String }),
       ).annotate({
         identifier: "ConnectionRecordingPreferences",
       });
@@ -312,7 +342,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ClientToken: S.optional(S.String),
-          ConnectionRecordingPreferences: S.optional(__S(6)),
+          ConnectionRecordingPreferences: S.optional(ConnectionRecordingPreferences),
         }),
       ).annotate({
         identifier: "GetConnectionRecordingPreferencesResponse",
@@ -324,7 +354,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ConnectionRecordingPreferences: __S(6),
+          ConnectionRecordingPreferences: ConnectionRecordingPreferences,
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -339,18 +369,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateConnectionRecordingPreferencesRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

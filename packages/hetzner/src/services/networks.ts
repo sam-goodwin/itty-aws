@@ -7,15 +7,20 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateNetworkRequestLabelsMap = { [key: string]: string | undefined };
+const CreateNetworkRequestLabelsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateNetworkRequestLabelsMap>;
+
 /** Type of subnet. */
 export type CreateNetworkRequestSubnetsItemType = "cloud" | "server" | "vswitch";
+const CreateNetworkRequestSubnetsItemType = S.String;
+
 export interface CreateNetworkRequestSubnetsItem {
   /** Type of subnet. */
   type: CreateNetworkRequestSubnetsItemType | (string & {});
@@ -26,16 +31,36 @@ export interface CreateNetworkRequestSubnetsItem {
   /** ID of the robot vSwitch. Must only be supplied for subnets of type `vswitch`. */
   vswitch_id?: number;
 }
+const CreateNetworkRequestSubnetsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateNetworkRequestSubnetsItem>;
+
 /** Array of subnets to allocate. */
 export type CreateNetworkRequestSubnetsList = Array<CreateNetworkRequestSubnetsItem>;
+const CreateNetworkRequestSubnetsList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateNetworkRequestSubnetsList>;
+
 export interface CreateNetworkRequestRoutesItem {
   /** Destination network or host of the route. Packages addressed for IPs matching the destination IP prefix will be send to the specified gateway. Must be one of * private IPv4 ranges of RFC1918 * or `0.0.0.0/0`. Must not overlap with * an existing ip_range in any subnets * or with any destinations in other routes * or with `172.31.1.1`. `172.31.1.1` is being used as a gateway for the public network interface of [Servers](#tag/servers). */
   destination: string;
   /** Gateway of the route. Packages addressed for the specified destination will be send to this IP address. Cannot be * the first IP of the networks ip_range, * an IP behind a vSwitch or * `172.31.1.1`. `172.31.1.1` is being used as a gateway for the public network interface of [Servers](#tag/servers). */
   gateway: string;
 }
+const CreateNetworkRequestRoutesItem = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateNetworkRequestRoutesItem>;
+
 /** Array of routes set in this [Network](#tag/networks). */
 export type CreateNetworkRequestRoutesList = Array<CreateNetworkRequestRoutesItem>;
+const CreateNetworkRequestRoutesList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateNetworkRequestRoutesList>;
+
 export interface CreateNetworkRequest {
   /** Name of the [Network](#tag/networks). */
   name: string;
@@ -50,8 +75,12 @@ export interface CreateNetworkRequest {
   /** Toggle to expose routes to the [Networks](#tag/networks) vSwitch. Indicates if the routes from this [Network](#tag/networks) should be exposed to the vSwitch in this [Network](#tag/networks). Only takes effect if a [vSwitch is setup](https://docs.hetzner.com/cloud/networks/connect-dedi-vswitch) in this [Network](#tag/networks). */
   expose_routes_to_vswitch?: boolean;
 }
+const CreateNetworkRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateNetworkRequest>;
+
 /** Type of subnet. */
 export type CreateNetworkResponseNetworkSubnetsItemType = "cloud" | "server" | "vswitch";
+const CreateNetworkResponseNetworkSubnetsItemType = S.String;
+
 export interface CreateNetworkResponseNetworkSubnetsItem {
   /** Type of subnet. */
   type: CreateNetworkResponseNetworkSubnetsItemType;
@@ -64,23 +93,52 @@ export interface CreateNetworkResponseNetworkSubnetsItem {
   /** ID of the robot vSwitch if the subnet is of type `vswitch`. */
   vswitch_id?: number | null;
 }
+const CreateNetworkResponseNetworkSubnetsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateNetworkResponseNetworkSubnetsItem>;
+
 /** List of subnets allocated in this [Network](#tag/networks). */
 export type CreateNetworkResponseNetworkSubnetsList =
   Array<CreateNetworkResponseNetworkSubnetsItem>;
+const CreateNetworkResponseNetworkSubnetsList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateNetworkResponseNetworkSubnetsList>;
+
 export type CreateNetworkResponseNetworkRoutesItem = CreateNetworkRequestRoutesItem;
 /** Array of routes set in this [Network](#tag/networks). */
 export type CreateNetworkResponseNetworkRoutesList = Array<CreateNetworkRequestRoutesItem>;
+const CreateNetworkResponseNetworkRoutesList =
+  CreateNetworkRequestRoutesList as any as S.Schema<CreateNetworkResponseNetworkRoutesList>;
+
 /** Array of IDs of [Servers](#tag/servers) attached to this [Network](#tag/networks). */
 export type CreateNetworkResponseNetworkServersList = Array<number>;
+const CreateNetworkResponseNetworkServersList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateNetworkResponseNetworkServersList>;
+
 /** Array of IDs of [Load Balancers](#tag/load-balancers) attached to this [Network](#tag/networks). */
 export type CreateNetworkResponseNetworkLoadBalancersList = Array<number>;
+const CreateNetworkResponseNetworkLoadBalancersList =
+  CreateNetworkResponseNetworkServersList as any as S.Schema<CreateNetworkResponseNetworkLoadBalancersList>;
+
 /** Protection configuration for the Resource. */
 export interface CreateNetworkResponseNetworkProtection {
   /** Prevent the Resource from being deleted. */
   delete: boolean;
 }
+const CreateNetworkResponseNetworkProtection = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateNetworkResponseNetworkProtection>;
+
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateNetworkResponseNetworkLabelsMap = { [key: string]: string | undefined };
+const CreateNetworkResponseNetworkLabelsMap =
+  CreateNetworkRequestLabelsMap as any as S.Schema<CreateNetworkResponseNetworkLabelsMap>;
+
 export interface CreateNetworkResponseNetwork {
   /** ID of the [Network](#tag/networks). */
   id: number;
@@ -105,18 +163,37 @@ export interface CreateNetworkResponseNetwork {
   /** Indicates if the routes from this [Network](#tag/networks) should be exposed to the vSwitch connection. */
   expose_routes_to_vswitch: boolean;
 }
+const CreateNetworkResponseNetwork = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateNetworkResponseNetwork>;
+
 export interface CreateNetworkResponse {
   network?: CreateNetworkResponseNetwork;
 }
+const CreateNetworkResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateNetworkResponse>;
+
 export interface DeleteNetworkRequest {
   /** ID of the Network. */
   id: number;
 }
+const DeleteNetworkRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DeleteNetworkRequest>;
+
 export interface DeleteNetworkResponse {}
+const DeleteNetworkResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteNetworkResponse>;
+
 export interface GetNetworkRequest {
   /** ID of the Network. */
   id: number;
 }
+const GetNetworkRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetNetworkRequest>;
+
 /** Type of subnet. */
 export type GetNetworkResponseNetworkSubnetsItemType = "cloud" | "server" | "vswitch";
 export interface GetNetworkResponseNetworkSubnetsItem {
@@ -133,17 +210,32 @@ export interface GetNetworkResponseNetworkSubnetsItem {
 }
 /** List of subnets allocated in this [Network](#tag/networks). */
 export type GetNetworkResponseNetworkSubnetsList = Array<GetNetworkResponseNetworkSubnetsItem>;
+const GetNetworkResponseNetworkSubnetsList =
+  CreateNetworkResponseNetworkSubnetsList as any as S.Schema<GetNetworkResponseNetworkSubnetsList>;
+
 export type GetNetworkResponseNetworkRoutesItem = CreateNetworkRequestRoutesItem;
 /** Array of routes set in this [Network](#tag/networks). */
 export type GetNetworkResponseNetworkRoutesList = Array<CreateNetworkRequestRoutesItem>;
+const GetNetworkResponseNetworkRoutesList =
+  CreateNetworkRequestRoutesList as any as S.Schema<GetNetworkResponseNetworkRoutesList>;
+
 /** Array of IDs of [Servers](#tag/servers) attached to this [Network](#tag/networks). */
 export type GetNetworkResponseNetworkServersList = Array<number>;
+const GetNetworkResponseNetworkServersList =
+  CreateNetworkResponseNetworkServersList as any as S.Schema<GetNetworkResponseNetworkServersList>;
+
 /** Array of IDs of [Load Balancers](#tag/load-balancers) attached to this [Network](#tag/networks). */
 export type GetNetworkResponseNetworkLoadBalancersList = Array<number>;
+const GetNetworkResponseNetworkLoadBalancersList =
+  CreateNetworkResponseNetworkServersList as any as S.Schema<GetNetworkResponseNetworkLoadBalancersList>;
+
 /** Protection configuration for the Resource. */
 export type GetNetworkResponseNetworkProtection = CreateNetworkResponseNetworkProtection;
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetNetworkResponseNetworkLabelsMap = { [key: string]: string | undefined };
+const GetNetworkResponseNetworkLabelsMap =
+  CreateNetworkRequestLabelsMap as any as S.Schema<GetNetworkResponseNetworkLabelsMap>;
+
 export interface GetNetworkResponseNetwork {
   /** ID of the [Network](#tag/networks). */
   id: number;
@@ -168,15 +260,34 @@ export interface GetNetworkResponseNetwork {
   /** Indicates if the routes from this [Network](#tag/networks) should be exposed to the vSwitch connection. */
   expose_routes_to_vswitch: boolean;
 }
+const GetNetworkResponseNetwork = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetNetworkResponseNetwork>;
+
 export interface GetNetworkResponse {
   network?: GetNetworkResponseNetwork;
 }
+const GetNetworkResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetNetworkResponse>;
+
 /** Type of the resource attached to the [Network](#tag/networks). */
 export type ListNetworkMembersRequestTypeItem = "server" | "load_balancer";
+const ListNetworkMembersRequestTypeItem = S.String;
+
 export type ListNetworkMembersRequestTypeList = Array<
   ListNetworkMembersRequestTypeItem | (string & {})
 >;
+const ListNetworkMembersRequestTypeList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListNetworkMembersRequestTypeList>;
+
 export type ListNetworkMembersRequestSubnetList = Array<string>;
+const ListNetworkMembersRequestSubnetList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListNetworkMembersRequestSubnetList>;
+
 /** Status of the resource within the [Network](#tag/networks). */
 export type ListNetworkMembersRequestStatusItem =
   | "ok"
@@ -187,6 +298,9 @@ export type ListNetworkMembersRequestStatusItem =
 export type ListNetworkMembersRequestStatusList = Array<
   ListNetworkMembersRequestStatusItem | (string & {})
 >;
+const ListNetworkMembersRequestStatusList =
+  ListNetworkMembersRequestTypeList as any as S.Schema<ListNetworkMembersRequestStatusList>;
+
 export type ListNetworkMembersRequestSortItem =
   | "id"
   | "id:asc"
@@ -203,6 +317,9 @@ export type ListNetworkMembersRequestSortItem =
 export type ListNetworkMembersRequestSortList = Array<
   ListNetworkMembersRequestSortItem | (string & {})
 >;
+const ListNetworkMembersRequestSortList =
+  ListNetworkMembersRequestTypeList as any as S.Schema<ListNetworkMembersRequestSortList>;
+
 export interface ListNetworkMembersRequest {
   /** ID of the Network. */
   id: number;
@@ -219,8 +336,15 @@ export interface ListNetworkMembersRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
+const ListNetworkMembersRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListNetworkMembersRequest>;
+
 /** Type of the resource attached to the [Network](#tag/networks). */
 export type ListNetworkMembersResponseMembersItemType = "server" | "load_balancer";
+const ListNetworkMembersResponseMembersItemType = S.String;
+
 /** Status of the resource within the [Network](#tag/networks). */
 export type ListNetworkMembersResponseMembersItemStatus =
   | "ok"
@@ -228,8 +352,13 @@ export type ListNetworkMembersResponseMembersItemStatus =
   | "detaching"
   | "updating"
   | "error";
+const ListNetworkMembersResponseMembersItemStatus = S.String;
+
 /** Additional IP addresses of the resource within the [Network](#tag/networks). */
 export type ListNetworkMembersResponseMembersItemAliasIpsList = Array<string>;
+const ListNetworkMembersResponseMembersItemAliasIpsList =
+  ListNetworkMembersRequestSubnetList as any as S.Schema<ListNetworkMembersResponseMembersItemAliasIpsList>;
+
 export interface ListNetworkMembersResponseMembersItem {
   /** Type of the resource attached to the [Network](#tag/networks). */
   type: ListNetworkMembersResponseMembersItemType;
@@ -244,7 +373,17 @@ export interface ListNetworkMembersResponseMembersItem {
   /** IP range of the subnet the resource is attached to. Uses CIDR notation. */
   subnet: string;
 }
+const ListNetworkMembersResponseMembersItem = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListNetworkMembersResponseMembersItem>;
+
 export type ListNetworkMembersResponseMembersList = Array<ListNetworkMembersResponseMembersItem>;
+const ListNetworkMembersResponseMembersList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ListNetworkMembersResponseMembersList>;
+
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListNetworkMembersResponseMetaPagination {
   /** Current page number. */
@@ -260,14 +399,29 @@ export interface ListNetworkMembersResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
+const ListNetworkMembersResponseMetaPagination = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListNetworkMembersResponseMetaPagination>;
+
 export interface ListNetworkMembersResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListNetworkMembersResponseMetaPagination;
 }
+const ListNetworkMembersResponseMeta = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListNetworkMembersResponseMeta>;
+
 export interface ListNetworkMembersResponse {
   members: ListNetworkMembersResponseMembersList;
   meta: ListNetworkMembersResponseMeta;
 }
+const ListNetworkMembersResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListNetworkMembersResponse>;
+
 export type ListNetworksRequestSortItem =
   | "id"
   | "id:asc"
@@ -279,6 +433,9 @@ export type ListNetworksRequestSortItem =
   | "created:asc"
   | "created:desc";
 export type ListNetworksRequestSortList = Array<ListNetworksRequestSortItem | (string & {})>;
+const ListNetworksRequestSortList =
+  ListNetworkMembersRequestTypeList as any as S.Schema<ListNetworksRequestSortList>;
+
 export interface ListNetworksRequest {
   /** Sort resources by field and direction. May be used multiple times. For more information, see "[Sorting](#description/sorting)". */
   sort?: ListNetworksRequestSortList;
@@ -291,6 +448,8 @@ export interface ListNetworksRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
+const ListNetworksRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ListNetworksRequest>;
+
 /** Type of subnet. */
 export type ListNetworksResponseNetworksItemSubnetsItemType = "cloud" | "server" | "vswitch";
 export interface ListNetworksResponseNetworksItemSubnetsItem {
@@ -308,17 +467,32 @@ export interface ListNetworksResponseNetworksItemSubnetsItem {
 /** List of subnets allocated in this [Network](#tag/networks). */
 export type ListNetworksResponseNetworksItemSubnetsList =
   Array<ListNetworksResponseNetworksItemSubnetsItem>;
+const ListNetworksResponseNetworksItemSubnetsList =
+  CreateNetworkResponseNetworkSubnetsList as any as S.Schema<ListNetworksResponseNetworksItemSubnetsList>;
+
 export type ListNetworksResponseNetworksItemRoutesItem = CreateNetworkRequestRoutesItem;
 /** Array of routes set in this [Network](#tag/networks). */
 export type ListNetworksResponseNetworksItemRoutesList = Array<CreateNetworkRequestRoutesItem>;
+const ListNetworksResponseNetworksItemRoutesList =
+  CreateNetworkRequestRoutesList as any as S.Schema<ListNetworksResponseNetworksItemRoutesList>;
+
 /** Array of IDs of [Servers](#tag/servers) attached to this [Network](#tag/networks). */
 export type ListNetworksResponseNetworksItemServersList = Array<number>;
+const ListNetworksResponseNetworksItemServersList =
+  CreateNetworkResponseNetworkServersList as any as S.Schema<ListNetworksResponseNetworksItemServersList>;
+
 /** Array of IDs of [Load Balancers](#tag/load-balancers) attached to this [Network](#tag/networks). */
 export type ListNetworksResponseNetworksItemLoadBalancersList = Array<number>;
+const ListNetworksResponseNetworksItemLoadBalancersList =
+  CreateNetworkResponseNetworkServersList as any as S.Schema<ListNetworksResponseNetworksItemLoadBalancersList>;
+
 /** Protection configuration for the Resource. */
 export type ListNetworksResponseNetworksItemProtection = CreateNetworkResponseNetworkProtection;
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListNetworksResponseNetworksItemLabelsMap = { [key: string]: string | undefined };
+const ListNetworksResponseNetworksItemLabelsMap =
+  CreateNetworkRequestLabelsMap as any as S.Schema<ListNetworksResponseNetworksItemLabelsMap>;
+
 export interface ListNetworksResponseNetworksItem {
   /** ID of the [Network](#tag/networks). */
   id: number;
@@ -343,7 +517,17 @@ export interface ListNetworksResponseNetworksItem {
   /** Indicates if the routes from this [Network](#tag/networks) should be exposed to the vSwitch connection. */
   expose_routes_to_vswitch: boolean;
 }
+const ListNetworksResponseNetworksItem = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListNetworksResponseNetworksItem>;
+
 export type ListNetworksResponseNetworksList = Array<ListNetworksResponseNetworksItem>;
+const ListNetworksResponseNetworksList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ListNetworksResponseNetworksList>;
+
 /** See "[Pagination](#description/pagination)" for more information. */
 export type ListNetworksResponseMetaPagination = ListNetworkMembersResponseMetaPagination;
 export type ListNetworksResponseMeta = ListNetworkMembersResponseMeta;
@@ -351,8 +535,13 @@ export interface ListNetworksResponse {
   networks: ListNetworksResponseNetworksList;
   meta: ListNetworkMembersResponseMeta;
 }
+const ListNetworksResponse = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ListNetworksResponse>;
+
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdateNetworkRequestLabelsMap = { [key: string]: string | undefined };
+const UpdateNetworkRequestLabelsMap =
+  CreateNetworkRequestLabelsMap as any as S.Schema<UpdateNetworkRequestLabelsMap>;
+
 export interface UpdateNetworkRequest {
   /** ID of the Network. */
   id: number;
@@ -363,6 +552,8 @@ export interface UpdateNetworkRequest {
   /** Toggle to expose routes to the [Networks](#tag/networks) vSwitch. Indicates if the routes from this [Network](#tag/networks) should be exposed to the vSwitch in this [Network](#tag/networks). Only takes effect if a [vSwitch is setup](https://docs.hetzner.com/cloud/networks/connect-dedi-vswitch) in this [Network](#tag/networks). */
   expose_routes_to_vswitch?: boolean;
 }
+const UpdateNetworkRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<UpdateNetworkRequest>;
+
 /** Type of subnet. */
 export type UpdateNetworkResponseNetworkSubnetsItemType = "cloud" | "server" | "vswitch";
 export interface UpdateNetworkResponseNetworkSubnetsItem {
@@ -380,17 +571,32 @@ export interface UpdateNetworkResponseNetworkSubnetsItem {
 /** List of subnets allocated in this [Network](#tag/networks). */
 export type UpdateNetworkResponseNetworkSubnetsList =
   Array<UpdateNetworkResponseNetworkSubnetsItem>;
+const UpdateNetworkResponseNetworkSubnetsList =
+  CreateNetworkResponseNetworkSubnetsList as any as S.Schema<UpdateNetworkResponseNetworkSubnetsList>;
+
 export type UpdateNetworkResponseNetworkRoutesItem = CreateNetworkRequestRoutesItem;
 /** Array of routes set in this [Network](#tag/networks). */
 export type UpdateNetworkResponseNetworkRoutesList = Array<CreateNetworkRequestRoutesItem>;
+const UpdateNetworkResponseNetworkRoutesList =
+  CreateNetworkRequestRoutesList as any as S.Schema<UpdateNetworkResponseNetworkRoutesList>;
+
 /** Array of IDs of [Servers](#tag/servers) attached to this [Network](#tag/networks). */
 export type UpdateNetworkResponseNetworkServersList = Array<number>;
+const UpdateNetworkResponseNetworkServersList =
+  CreateNetworkResponseNetworkServersList as any as S.Schema<UpdateNetworkResponseNetworkServersList>;
+
 /** Array of IDs of [Load Balancers](#tag/load-balancers) attached to this [Network](#tag/networks). */
 export type UpdateNetworkResponseNetworkLoadBalancersList = Array<number>;
+const UpdateNetworkResponseNetworkLoadBalancersList =
+  CreateNetworkResponseNetworkServersList as any as S.Schema<UpdateNetworkResponseNetworkLoadBalancersList>;
+
 /** Protection configuration for the Resource. */
 export type UpdateNetworkResponseNetworkProtection = CreateNetworkResponseNetworkProtection;
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateNetworkResponseNetworkLabelsMap = { [key: string]: string | undefined };
+const UpdateNetworkResponseNetworkLabelsMap =
+  CreateNetworkRequestLabelsMap as any as S.Schema<UpdateNetworkResponseNetworkLabelsMap>;
+
 export interface UpdateNetworkResponseNetwork {
   /** ID of the [Network](#tag/networks). */
   id: number;
@@ -415,9 +621,19 @@ export interface UpdateNetworkResponseNetwork {
   /** Indicates if the routes from this [Network](#tag/networks) should be exposed to the vSwitch connection. */
   expose_routes_to_vswitch: boolean;
 }
+const UpdateNetworkResponseNetwork = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<UpdateNetworkResponseNetwork>;
+
 export interface UpdateNetworkResponse {
   network?: UpdateNetworkResponseNetwork;
 }
+const UpdateNetworkResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<UpdateNetworkResponse>;
+
 export type CreateNetworkError = HetznerOpError;
 /** Create a Network Creates a [Network](#tag/networks). The provided `ip_range` can only be extended later on, but not reduced. Subnets can be added now or later on using the [add subnet action](#tag/network-actions/add_network_subnet). If you do not specify an `ip_range` for the subnet the first available /24 range will be used. Routes can be added now or later by using the [add route action](#tag/network-actions/add_network_route). */
 export const createNetwork: API.OperationMethod<
@@ -426,8 +642,8 @@ export const createNetwork: API.OperationMethod<
   CreateNetworkError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreateNetworkRequest>,
-  output: __S(11) as any as S.Schema<CreateNetworkResponse>,
+  input: CreateNetworkRequest,
+  output: CreateNetworkResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -441,8 +657,8 @@ export const deleteNetwork: API.OperationMethod<
   DeleteNetworkError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DeleteNetworkRequest>,
-  output: __S(13) as any as S.Schema<DeleteNetworkResponse>,
+  input: DeleteNetworkRequest,
+  output: DeleteNetworkResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -456,8 +672,8 @@ export const getNetwork: API.OperationMethod<
   GetNetworkError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetNetworkRequest>,
-  output: __S(16) as any as S.Schema<GetNetworkResponse>,
+  input: GetNetworkRequest,
+  output: GetNetworkResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -473,8 +689,8 @@ export const listNetworkMembers: API.PaginatedOperationMethod<
   ListNetworkMembersResponseMembersItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(19) as any as S.Schema<ListNetworkMembersRequest>,
-    output: __S(24) as any as S.Schema<ListNetworkMembersResponse>,
+    input: ListNetworkMembersRequest,
+    output: ListNetworkMembersResponse,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -499,8 +715,8 @@ export const listNetworks: API.PaginatedOperationMethod<
   ListNetworksResponseNetworksItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(25) as any as S.Schema<ListNetworksRequest>,
-    output: __S(28) as any as S.Schema<ListNetworksResponse>,
+    input: ListNetworksRequest,
+    output: ListNetworksResponse,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -523,8 +739,8 @@ export const updateNetwork: API.OperationMethod<
   UpdateNetworkError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<UpdateNetworkRequest>,
-  output: __S(31) as any as S.Schema<UpdateNetworkResponse>,
+  input: UpdateNetworkRequest,
+  output: UpdateNetworkResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -538,7 +754,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: CreateNetworkRequestSubnetsItemType,
           ip_range: S.optional(S.String),
           network_zone: S.String,
           vswitch_id: S.optional(S.Number),
@@ -547,7 +763,7 @@ function __c0(j: number): any {
         identifier: "CreateNetworkRequestSubnetsItem",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(CreateNetworkRequestSubnetsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -558,22 +774,22 @@ function __c0(j: number): any {
         identifier: "CreateNetworkRequestRoutesItem",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(CreateNetworkRequestRoutesItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           ip_range: S.String,
-          labels: S.optional(__S(0)),
-          subnets: S.optional(__S(2)),
-          routes: S.optional(__S(4)),
+          labels: S.optional(CreateNetworkRequestLabelsMap),
+          subnets: S.optional(CreateNetworkRequestSubnetsList),
+          routes: S.optional(CreateNetworkRequestRoutesList),
           expose_routes_to_vswitch: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/networks", code: 200 })),
       ).annotate({ identifier: "CreateNetworkRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: CreateNetworkResponseNetworkSubnetsItemType,
           ip_range: S.optional(S.String),
           network_zone: S.String,
           gateway: S.String,
@@ -583,7 +799,7 @@ function __c0(j: number): any {
         identifier: "CreateNetworkResponseNetworkSubnetsItem",
       });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(CreateNetworkResponseNetworkSubnetsItem);
   }
 }
 function __c1(j: number): any {
@@ -604,12 +820,12 @@ function __c1(j: number): any {
           id: S.Number,
           name: S.String,
           ip_range: S.String,
-          subnets: __S(7),
-          routes: __S(4),
-          servers: __S(8),
-          load_balancers: S.optional(__S(8)),
-          protection: __S(9),
-          labels: __S(0),
+          subnets: CreateNetworkResponseNetworkSubnetsList,
+          routes: CreateNetworkResponseNetworkRoutesList,
+          servers: CreateNetworkResponseNetworkServersList,
+          load_balancers: S.optional(CreateNetworkResponseNetworkLoadBalancersList),
+          protection: CreateNetworkResponseNetworkProtection,
+          labels: CreateNetworkResponseNetworkLabelsMap,
           created: S.String,
           expose_routes_to_vswitch: S.Boolean,
         }),
@@ -619,7 +835,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          network: S.optional(__S(10)),
+          network: S.optional(CreateNetworkResponseNetwork),
         }),
       ).annotate({ identifier: "CreateNetworkResponse" });
     case 4:
@@ -644,12 +860,12 @@ function __c1(j: number): any {
           id: S.Number,
           name: S.String,
           ip_range: S.String,
-          subnets: __S(7),
-          routes: __S(4),
-          servers: __S(8),
-          load_balancers: S.optional(__S(8)),
-          protection: __S(9),
-          labels: __S(0),
+          subnets: GetNetworkResponseNetworkSubnetsList,
+          routes: GetNetworkResponseNetworkRoutesList,
+          servers: GetNetworkResponseNetworkServersList,
+          load_balancers: S.optional(GetNetworkResponseNetworkLoadBalancersList),
+          protection: CreateNetworkResponseNetworkProtection,
+          labels: GetNetworkResponseNetworkLabelsMap,
           created: S.String,
           expose_routes_to_vswitch: S.Boolean,
         }),
@@ -663,21 +879,21 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          network: S.optional(__S(15)),
+          network: S.optional(GetNetworkResponseNetwork),
         }),
       ).annotate({ identifier: "GetNetworkResponse" });
     case 1:
-      return S.Array(S.String);
+      return S.Array(ListNetworkMembersRequestTypeItem);
     case 2:
       return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          type: S.optional(__S(17).pipe(T.Query())),
-          subnet: S.optional(__S(18).pipe(T.Query())),
-          status: S.optional(__S(17).pipe(T.Query())),
-          sort: S.optional(__S(17).pipe(T.Query())),
+          type: S.optional(ListNetworkMembersRequestTypeList.pipe(T.Query())),
+          subnet: S.optional(ListNetworkMembersRequestSubnetList.pipe(T.Query())),
+          status: S.optional(ListNetworkMembersRequestStatusList.pipe(T.Query())),
+          sort: S.optional(ListNetworkMembersRequestSortList.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/networks/{id}/members", code: 200 })),
@@ -687,18 +903,18 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: ListNetworkMembersResponseMembersItemType,
           id: S.Number,
           ip: S.String,
-          status: S.String,
-          alias_ips: __S(18),
+          status: ListNetworkMembersResponseMembersItemStatus,
+          alias_ips: ListNetworkMembersResponseMembersItemAliasIpsList,
           subnet: S.String,
         }),
       ).annotate({
         identifier: "ListNetworkMembersResponseMembersItem",
       });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(ListNetworkMembersResponseMembersItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -715,7 +931,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(22),
+          pagination: ListNetworkMembersResponseMetaPagination,
         }),
       ).annotate({
         identifier: "ListNetworkMembersResponseMeta",
@@ -727,8 +943,8 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          members: __S(21),
-          meta: __S(23),
+          members: ListNetworkMembersResponseMembersList,
+          meta: ListNetworkMembersResponseMeta,
         }),
       ).annotate({
         identifier: "ListNetworkMembersResponse",
@@ -736,7 +952,7 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sort: S.optional(__S(17).pipe(T.Query())),
+          sort: S.optional(ListNetworksRequestSortList.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           label_selector: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
@@ -749,12 +965,12 @@ function __c3(j: number): any {
           id: S.Number,
           name: S.String,
           ip_range: S.String,
-          subnets: __S(7),
-          routes: __S(4),
-          servers: __S(8),
-          load_balancers: S.optional(__S(8)),
-          protection: __S(9),
-          labels: __S(0),
+          subnets: ListNetworksResponseNetworksItemSubnetsList,
+          routes: ListNetworksResponseNetworksItemRoutesList,
+          servers: ListNetworksResponseNetworksItemServersList,
+          load_balancers: S.optional(ListNetworksResponseNetworksItemLoadBalancersList),
+          protection: CreateNetworkResponseNetworkProtection,
+          labels: ListNetworksResponseNetworksItemLabelsMap,
           created: S.String,
           expose_routes_to_vswitch: S.Boolean,
         }),
@@ -762,12 +978,12 @@ function __c3(j: number): any {
         identifier: "ListNetworksResponseNetworksItem",
       });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(ListNetworksResponseNetworksItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          networks: __S(27),
-          meta: __S(23),
+          networks: ListNetworksResponseNetworksList,
+          meta: ListNetworkMembersResponseMeta,
         }),
       ).annotate({ identifier: "ListNetworksResponse" });
     case 5:
@@ -775,7 +991,7 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
-          labels: S.optional(__S(0)),
+          labels: S.optional(UpdateNetworkRequestLabelsMap),
           expose_routes_to_vswitch: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "PUT", uri: "/networks/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateNetworkRequest" });
@@ -785,12 +1001,12 @@ function __c3(j: number): any {
           id: S.Number,
           name: S.String,
           ip_range: S.String,
-          subnets: __S(7),
-          routes: __S(4),
-          servers: __S(8),
-          load_balancers: S.optional(__S(8)),
-          protection: __S(9),
-          labels: __S(0),
+          subnets: UpdateNetworkResponseNetworkSubnetsList,
+          routes: UpdateNetworkResponseNetworkRoutesList,
+          servers: UpdateNetworkResponseNetworkServersList,
+          load_balancers: S.optional(UpdateNetworkResponseNetworkLoadBalancersList),
+          protection: CreateNetworkResponseNetworkProtection,
+          labels: UpdateNetworkResponseNetworkLabelsMap,
           created: S.String,
           expose_routes_to_vswitch: S.Boolean,
         }),
@@ -800,25 +1016,8 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          network: S.optional(__S(30)),
+          network: S.optional(UpdateNetworkResponseNetwork),
         }),
       ).annotate({ identifier: "UpdateNetworkResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

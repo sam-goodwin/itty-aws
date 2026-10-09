@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -52,6 +50,8 @@ export interface GetReviewRequest {
   /** The unique identifier of the review to retrieve. */
   id: string;
 }
+const GetReviewRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetReviewRequest>;
+
 /** Represents an image attachment */
 export interface ReviewAttachmentsItem {
   /** Uploaded file MIME type, such as image/jpeg, video/mp4, or audio/mpeg. */
@@ -63,8 +63,18 @@ export interface ReviewAttachmentsItem {
   /** A pre-optimized URL for rendering this attachment on the client. This should be used for displaying attachments in apps. */
   url: string | null;
 }
+const ReviewAttachmentsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ReviewAttachmentsItem>;
+
 /** A list of files and media attached to the review. */
 export type ReviewAttachmentsList = Array<ReviewAttachmentsItem>;
+const ReviewAttachmentsList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ReviewAttachmentsList>;
+
 /** The company that this review was written for. */
 export interface ReviewCompany {
   /** The unique identifier for the company. */
@@ -74,6 +84,8 @@ export interface ReviewCompany {
   /** The display name of the company shown to customers. */
   title: string;
 }
+const ReviewCompany = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ReviewCompany>;
+
 /** The product that this review was written for. */
 export interface ReviewProduct {
   /** The unique identifier for the product. */
@@ -81,8 +93,12 @@ export interface ReviewProduct {
   /** The display name of the product shown to customers on the product page and in search results. */
   title: string;
 }
+const ReviewProduct = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ReviewProduct>;
+
 /** The statuses a review can have */
 export type ReviewStatus = "pending" | "published" | "removed";
+const ReviewStatus = S.String;
+
 /** The user account of the person who wrote this review. */
 export interface ReviewUser {
   /** The unique identifier for the user. */
@@ -92,6 +108,8 @@ export interface ReviewUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
+const ReviewUser = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ReviewUser>;
+
 /** A user-submitted review of a company, including a star rating and optional text feedback. */
 export interface Review {
   /** A list of files and media attached to the review. */
@@ -123,6 +141,8 @@ export interface Review {
   /** The user account of the person who wrote this review. */
   user: ReviewUser;
 }
+const Review = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Review>;
+
 export interface ListReviewRequest {
   after?: string;
   before?: string;
@@ -134,10 +154,15 @@ export interface ListReviewRequest {
   created_before?: string;
   created_after?: string;
 }
+const ListReviewRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ListReviewRequest>;
+
 /** Represents an image attachment */
 export type ReviewListItemAttachmentsItem = ReviewAttachmentsItem;
 /** A list of files and media attached to the review. */
 export type ReviewListItemAttachmentsList = Array<ReviewAttachmentsItem>;
+const ReviewListItemAttachmentsList =
+  ReviewAttachmentsList as any as S.Schema<ReviewListItemAttachmentsList>;
+
 /** The user account of the person who wrote this review. */
 export type ReviewListItemUser = ReviewUser;
 /** A user-submitted review of a company, including a star rating and optional text feedback. */
@@ -167,8 +192,15 @@ export interface ReviewListItem {
   /** The user account of the person who wrote this review. */
   user: ReviewUser;
 }
+const ReviewListItem = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ReviewListItem>;
+
 /** A list of nodes. */
 export type ListReviewResponseDataList = Array<ReviewListItem>;
+const ListReviewResponseDataList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListReviewResponseDataList>;
+
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -180,12 +212,16 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
+const PageInfo = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<PageInfo>;
+
 export interface ListReviewResponse {
   /** A list of nodes. */
   data: ListReviewResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
+const ListReviewResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ListReviewResponse>;
+
 export type GetReviewError = BadRequest | Forbidden | NotFound | UnprocessableEntity | WhopOpError;
 /** Retrieve review [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing review. */
 export const getReview: API.OperationMethod<
@@ -194,8 +230,8 @@ export const getReview: API.OperationMethod<
   GetReviewError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetReviewRequest>,
-  output: __S(6) as any as S.Schema<Review>,
+  input: GetReviewRequest,
+  output: Review,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -211,8 +247,8 @@ export const listReview: API.PaginatedOperationMethod<
   ReviewListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(7) as any as S.Schema<ListReviewRequest>,
-    output: __S(11) as any as S.Schema<ListReviewResponse>,
+    input: ListReviewRequest,
+    output: ListReviewResponse,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -247,7 +283,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ReviewAttachmentsItem" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(ReviewAttachmentsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -274,20 +310,20 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          attachments: __S(2),
-          company: __S(3),
+          attachments: ReviewAttachmentsList,
+          company: ReviewCompany,
           created_at: S.String,
           description: S.NullOr(S.String),
           id: S.String,
           joined_at: S.NullOr(S.String),
           paid_for_product: S.NullOr(S.Boolean),
-          product: __S(4),
+          product: ReviewProduct,
           published_at: S.NullOr(S.String),
           stars: S.Number,
-          status: S.String,
+          status: ReviewStatus,
           title: S.NullOr(S.String),
           updated_at: S.String,
-          user: __S(5),
+          user: ReviewUser,
         }),
       ).annotate({ identifier: "Review" });
     case 7:
@@ -311,7 +347,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          attachments: __S(2),
+          attachments: ReviewListItemAttachmentsList,
           created_at: S.String,
           description: S.NullOr(S.String),
           id: S.String,
@@ -319,14 +355,14 @@ function __c1(j: number): any {
           paid_for_product: S.NullOr(S.Boolean),
           published_at: S.NullOr(S.String),
           stars: S.Number,
-          status: S.String,
+          status: ReviewStatus,
           title: S.NullOr(S.String),
           updated_at: S.String,
-          user: __S(5),
+          user: ReviewUser,
         }),
       ).annotate({ identifier: "ReviewListItem" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(ReviewListItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -339,22 +375,9 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(9),
-          page_info: __S(10),
+          data: ListReviewResponseDataList,
+          page_info: PageInfo,
         }),
       ).annotate({ identifier: "ListReviewResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

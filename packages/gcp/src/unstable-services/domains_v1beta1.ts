@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -65,6 +63,8 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
+
 /** Represents a postal address, such as for postal delivery or payments addresses. With a postal address, a postal service can deliver items to a premise, P.O. box, or similar. A postal address is not intended to model geographical locations like roads, towns, or mountains. In typical usage, an address would be created by user input or from importing existing data, depending on the type of process. Advice on address input or editing: - Use an internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478. */
 export interface PostalAddress {
   /** The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions. */
@@ -90,6 +90,8 @@ export interface PostalAddress {
   /** Optional. Sublocality of the address. For example, this can be a neighborhood, borough, or district. */
   sublocality?: string;
 }
+const PostalAddress = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<PostalAddress>;
+
 /** Details required for a contact associated with a `Registration`. */
 export interface Contact {
   /** Required. Email address of the contact. */
@@ -101,11 +103,15 @@ export interface Contact {
   /** Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`. */
   phoneNumber?: string;
 }
+const Contact = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Contact>;
+
 export type ContactSettingsPrivacyEnum =
   | "CONTACT_PRIVACY_UNSPECIFIED"
   | "PUBLIC_CONTACT_DATA"
   | "PRIVATE_CONTACT_DATA"
   | "REDACTED_CONTACT_DATA";
+const ContactSettingsPrivacyEnum = S.String;
+
 /** Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical. */
 export interface ContactSettings {
   /** Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant receives an email confirmation that they must complete within 15 days to avoid domain suspension.* */
@@ -117,12 +123,21 @@ export interface ContactSettings {
   /** Required. Privacy setting for the contacts associated with the `Registration`. */
   privacy?: ContactSettingsPrivacyEnum | (string & {});
 }
+const ContactSettings = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ContactSettings>;
+
 export type ConfigureContactSettingsRequestContactNoticesItemEnum =
   | "CONTACT_NOTICE_UNSPECIFIED"
   | "PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT";
+const ConfigureContactSettingsRequestContactNoticesItemEnum = S.String;
+
 export type ConfigureContactSettingsRequestContactNoticesItemEnumList = Array<
   ConfigureContactSettingsRequestContactNoticesItemEnum | (string & {})
 >;
+const ConfigureContactSettingsRequestContactNoticesItemEnumList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ConfigureContactSettingsRequestContactNoticesItemEnumList>;
+
 /** Request for the `ConfigureContactSettings` method. */
 export interface ConfigureContactSettingsRequest {
   /** Fields of the `ContactSettings` to update. */
@@ -134,14 +149,28 @@ export interface ConfigureContactSettingsRequest {
   /** Required. The field mask describing which fields to update as a comma-separated list. For example, if only the registrant contact is being updated, the `update_mask` is `"registrant_contact"`. */
   updateMask?: string;
 }
+const ConfigureContactSettingsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ConfigureContactSettingsRequest>;
+
 export interface ConfigureContactSettingsProjectsLocationsRegistrationsRequest {
   /** Required. The name of the `Registration` whose contact settings are being updated, in the format `projects/*\/locations/*\/registrations/*`. */
   registration: string;
   /** Request body */
   body?: ConfigureContactSettingsRequest;
 }
+const ConfigureContactSettingsProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ConfigureContactSettingsProjectsLocationsRegistrationsRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -151,6 +180,8 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
+const Status = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Status>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -164,16 +195,22 @@ export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
+const Operation = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Operation>;
+
 export type GoogleDomainsDnsDsStateEnum =
   | "DS_STATE_UNSPECIFIED"
   | "DS_RECORDS_UNPUBLISHED"
   | "DS_RECORDS_PUBLISHED";
+const GoogleDomainsDnsDsStateEnum = S.String;
+
 export type DsRecordDigestTypeEnum =
   | "DIGEST_TYPE_UNSPECIFIED"
   | "SHA1"
   | "SHA256"
   | "GOST3411"
   | "SHA384";
+const DsRecordDigestTypeEnum = S.String;
+
 export type DsRecordAlgorithmEnum =
   | "ALGORITHM_UNSPECIFIED"
   | "RSAMD5"
@@ -193,6 +230,8 @@ export type DsRecordAlgorithmEnum =
   | "INDIRECT"
   | "PRIVATEDNS"
   | "PRIVATEOID";
+const DsRecordAlgorithmEnum = S.String;
+
 /** Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest (hash) of a DNSKEY record that must be present in the domain's DNS zone. */
 export interface DsRecord {
   /** The key tag of the record. Must be set in range 0 -- 65535. */
@@ -204,7 +243,11 @@ export interface DsRecord {
   /** The digest generated from the referenced DNSKEY. */
   digest?: string;
 }
+const DsRecord = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DsRecord>;
+
 export type DsRecordList = Array<DsRecord>;
+const DsRecordList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DsRecordList>;
+
 /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/). */
 export interface GoogleDomainsDns {
   /** Output only. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format. This field is automatically populated with the name servers assigned to the Google Domains DNS zone. */
@@ -214,6 +257,8 @@ export interface GoogleDomainsDns {
   /** Output only. The list of DS records published for this domain. The list is automatically populated when `ds_state` is `DS_RECORDS_PUBLISHED`, otherwise it remains empty. */
   dsRecords?: DsRecordList;
 }
+const GoogleDomainsDns = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GoogleDomainsDns>;
+
 /** Configuration for an arbitrary DNS provider. */
 export interface CustomDns {
   /** The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled. */
@@ -221,6 +266,8 @@ export interface CustomDns {
   /** Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format. */
   nameServers?: StringList;
 }
+const CustomDns = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CustomDns>;
+
 /** Defines a host on your domain that is a DNS name server for your domain and/or other domains. Glue records are a way of making the IP address of a name server known, even when it serves DNS queries for its parent domain. For example, when `ns.example.com` is a name server for `example.com`, the host `ns.example.com` must have a glue record to break the circular DNS reference. */
 export interface GlueRecord {
   /** Required. Domain name of the host in Punycode format. */
@@ -230,7 +277,11 @@ export interface GlueRecord {
   /** List of IPv6 addresses corresponding to this host in the standard hexadecimal format (e.g. `2001:db8::`). At least one of `ipv4_address` and `ipv6_address` must be set. */
   ipv6Addresses?: StringList;
 }
+const GlueRecord = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GlueRecord>;
+
 export type GlueRecordList = Array<GlueRecord>;
+const GlueRecordList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GlueRecordList>;
+
 /** Defines the DNS configuration of a `Registration`, including name servers, DNSSEC, and glue records. */
 export interface DnsSettings {
   /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The free DNS zone provided by [Google Domains](https://domains.google/). */
@@ -242,6 +293,8 @@ export interface DnsSettings {
   /** Output only. Indicates if this `Registration` has configured one of the following deprecated Google Domains DNS features: * Domain forwarding (HTTP `301` and `302` response status codes), * Email forwarding. See https://cloud.google.com/domains/docs/deprecations/feature-deprecations for more details. If any of these features is enabled call the `RetrieveGoogleDomainsForwardingConfig` method to get details about the feature's configuration. A forwarding configuration might not work correctly if required DNS records are not present in the domain's authoritative DNS Zone. */
   googleDomainsRedirectsDataAvailable?: boolean;
 }
+const DnsSettings = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DnsSettings>;
+
 /** Request for the `ConfigureDnsSettings` method. */
 export interface ConfigureDnsSettingsRequest {
   /** Fields of the `DnsSettings` to update. */
@@ -251,30 +304,48 @@ export interface ConfigureDnsSettingsRequest {
   /** Required. The field mask describing which fields to update as a comma-separated list. For example, if only the name servers are being updated for an existing Custom DNS configuration, the `update_mask` is `"custom_dns.name_servers"`. When changing the DNS provider from one type to another, pass the new provider's field name as part of the field mask. For example, when changing from a Google Domains DNS configuration to a Custom DNS configuration, the `update_mask` is `"custom_dns"`. // */
   updateMask?: string;
 }
+const ConfigureDnsSettingsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ConfigureDnsSettingsRequest>;
+
 export interface ConfigureDnsSettingsProjectsLocationsRegistrationsRequest {
   /** Required. The name of the `Registration` whose DNS settings are being updated, in the format `projects/*\/locations/*\/registrations/*`. */
   registration: string;
   /** Request body */
   body?: ConfigureDnsSettingsRequest;
 }
+const ConfigureDnsSettingsProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ConfigureDnsSettingsProjectsLocationsRegistrationsRequest>;
+
 export type ManagementSettingsPreferredRenewalMethodEnum =
   | "RENEWAL_METHOD_UNSPECIFIED"
   | "AUTOMATIC_RENEWAL"
   | "MANUAL_RENEWAL"
   | "RENEWAL_DISABLED";
+const ManagementSettingsPreferredRenewalMethodEnum = S.String;
+
 export type ManagementSettingsRenewalMethodEnum =
   | "RENEWAL_METHOD_UNSPECIFIED"
   | "AUTOMATIC_RENEWAL"
   | "MANUAL_RENEWAL"
   | "RENEWAL_DISABLED";
+const ManagementSettingsRenewalMethodEnum = S.String;
+
 export type ManagementSettingsTransferLockStateEnum =
   | "TRANSFER_LOCK_STATE_UNSPECIFIED"
   | "UNLOCKED"
   | "LOCKED";
+const ManagementSettingsTransferLockStateEnum = S.String;
+
 export type ManagementSettingsEffectiveTransferLockStateEnum =
   | "TRANSFER_LOCK_STATE_UNSPECIFIED"
   | "UNLOCKED"
   | "LOCKED";
+const ManagementSettingsEffectiveTransferLockStateEnum = S.String;
+
 /** Defines renewal, billing, and transfer settings for a `Registration`. */
 export interface ManagementSettings {
   /** Optional. The desired renewal method for this `Registration`. The actual `renewal_method` is automatically updated to reflect this choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, the actual `renewalMethod` is treated as if it were set to `AUTOMATIC_RENEWAL`. You cannot use `RENEWAL_DISABLED` during resource creation, and you can update the renewal status only when the `Registration` resource has state `ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL`, the actual `renewal_method` can be set to `RENEWAL_DISABLED` in case of problems with the billing account or reported domain abuse. In such cases, check the `issues` field on the `Registration`. After the problem is resolved, the `renewal_method` is automatically updated to `preferred_renewal_method` in a few hours. */
@@ -286,6 +357,8 @@ export interface ManagementSettings {
   /** Output only. The actual transfer lock state for this `Registration`. */
   effectiveTransferLockState?: ManagementSettingsEffectiveTransferLockStateEnum | (string & {});
 }
+const ManagementSettings = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ManagementSettings>;
+
 /** Request for the `ConfigureManagementSettings` method. */
 export interface ConfigureManagementSettingsRequest {
   /** Fields of the `ManagementSettings` to update. */
@@ -295,33 +368,65 @@ export interface ConfigureManagementSettingsRequest {
   /** Required. The field mask describing which fields to update as a comma-separated list. For example, if only the transfer lock is being updated, the `update_mask` is `"transfer_lock_state"`. */
   updateMask?: string;
 }
+const ConfigureManagementSettingsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ConfigureManagementSettingsRequest>;
+
 export interface ConfigureManagementSettingsProjectsLocationsRegistrationsRequest {
   /** Required. The name of the `Registration` whose management settings are being updated, in the format `projects/*\/locations/*\/registrations/*`. */
   registration: string;
   /** Request body */
   body?: ConfigureManagementSettingsRequest;
 }
+const ConfigureManagementSettingsProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ConfigureManagementSettingsProjectsLocationsRegistrationsRequest>;
+
 export interface DeleteProjectsLocationsRegistrationsRequest {
   /** Required. The name of the `Registration` to delete, in the format `projects/*\/locations/*\/registrations/*`. */
   name: string;
 }
+const DeleteProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DeleteProjectsLocationsRegistrationsRequest>;
+
 /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). Request for the `ExportRegistration` method. */
 export interface ExportRegistrationRequest {}
+const ExportRegistrationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ExportRegistrationRequest>;
+
 export interface ExportProjectsLocationsRegistrationsRequest {
   /** Required. The name of the `Registration` to export, in the format `projects/*\/locations/*\/registrations/*`. */
   name: string;
   /** Request body */
   body?: ExportRegistrationRequest;
 }
+const ExportProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ExportProjectsLocationsRegistrationsRequest>;
+
 export interface GetAuthorizationCodeProjectsLocationsRegistrationsRequest {
   /** Required. The name of the `Registration` whose authorization code is being retrieved, in the format `projects/*\/locations/*\/registrations/*`. */
   registration: string;
 }
+const GetAuthorizationCodeProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetAuthorizationCodeProjectsLocationsRegistrationsRequest>;
+
 /** Defines an authorization code. */
 export interface AuthorizationCode {
   /** The Authorization Code in ASCII. It can be used to transfer the domain to or from another registrar. */
   code?: string;
 }
+const AuthorizationCode = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<AuthorizationCode>;
+
 export interface GetGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest {
   /** Optional. When set to the `next_page_token` from a prior response, provides the next page of results. */
   pageToken?: string;
@@ -330,12 +435,21 @@ export interface GetGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest
   /** Optional. Maximum number of results to return. */
   pageSize?: number;
 }
+const GetGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest>;
+
 export type LoadBalancerTargetIpProtocolEnum = "UNDEFINED" | "TCP" | "UDP";
+const LoadBalancerTargetIpProtocolEnum = S.String;
+
 export type LoadBalancerTargetLoadBalancerTypeEnum =
   | "NONE"
   | "GLOBAL_L7ILB"
   | "REGIONAL_L4ILB"
   | "REGIONAL_L7ILB";
+const LoadBalancerTargetLoadBalancerTypeEnum = S.String;
+
 /** The configuration for an individual load balancer to health check. */
 export interface LoadBalancerTarget {
   /** The fully qualified URL of the network that the load balancer is attached to. This should be formatted like `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`. */
@@ -353,7 +467,14 @@ export interface LoadBalancerTarget {
   /** The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer. */
   loadBalancerType?: LoadBalancerTargetLoadBalancerTypeEnum;
 }
+const LoadBalancerTarget = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<LoadBalancerTarget>;
+
 export type LoadBalancerTargetList = Array<LoadBalancerTarget>;
+const LoadBalancerTargetList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<LoadBalancerTargetList>;
+
 /** HealthCheckTargets describes endpoints to health-check when responding to Routing Policy queries. Only the healthy endpoints will be included in the response. Set either `internal_load_balancer` or `external_endpoints`. Do not set both. */
 export interface HealthCheckTargets {
   /** The Internet IP addresses to be health checked. The format matches the format of ResourceRecordSet.rrdata as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) */
@@ -361,6 +482,8 @@ export interface HealthCheckTargets {
   /** Configuration for internal load balancers to be health checked. */
   internalLoadBalancer?: LoadBalancerTargetList;
 }
+const HealthCheckTargets = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<HealthCheckTargets>;
+
 /** ResourceRecordSet data for one geo location. */
 export interface GeoPolicyItem {
   /** The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc. */
@@ -371,7 +494,11 @@ export interface GeoPolicyItem {
   /** For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be specified along with `rrdata` within this item. */
   healthCheckedTargets?: HealthCheckTargets;
 }
+const GeoPolicyItem = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GeoPolicyItem>;
+
 export type GeoPolicyItemList = Array<GeoPolicyItem>;
+const GeoPolicyItemList = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<GeoPolicyItemList>;
+
 /** Configures a `RRSetRoutingPolicy` that routes based on the geo location of the querying user. */
 export interface GeoPolicy {
   /** Without fencing, if health check fails for all configured items in the current geo bucket, we failover to the next nearest geo bucket. With fencing, if health checking is enabled, as long as some targets in the current geo bucket are healthy, we return only the healthy targets. However, if all targets are unhealthy, we don't failover to the next nearest bucket; instead, we return all the items in the current bucket even when all targets are unhealthy. */
@@ -379,6 +506,8 @@ export interface GeoPolicy {
   /** The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead. */
   item?: GeoPolicyItemList;
 }
+const GeoPolicy = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<GeoPolicy>;
+
 /** A routing block which contains the routing information for one WRR item. */
 export interface WrrPolicyItem {
   /** Endpoints that are health checked before making the routing decision. The unhealthy endpoints are omitted from the result. If all endpoints within a bucket are unhealthy, we choose a different bucket (sampled with respect to its weight) for responding. If DNSSEC is enabled for this zone, only one of `rrdata` or `health_checked_targets` can be set. */
@@ -389,11 +518,17 @@ export interface WrrPolicyItem {
   /** DNSSEC generated signatures for all the `rrdata` within this item. When using health-checked targets for DNSSEC-enabled zones, you can only use at most one health-checked IP address per item. */
   signatureRrdata?: StringList;
 }
+const WrrPolicyItem = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<WrrPolicyItem>;
+
 export type WrrPolicyItemList = Array<WrrPolicyItem>;
+const WrrPolicyItemList = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<WrrPolicyItemList>;
+
 /** Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion. */
 export interface WrrPolicy {
   item?: WrrPolicyItemList;
 }
+const WrrPolicy = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<WrrPolicy>;
+
 /** Configures a RRSetRoutingPolicy such that all queries are responded with the primary_targets if they are healthy. And if all of them are unhealthy, then we fallback to a geo localized policy. */
 export interface PrimaryBackupPolicy {
   /** Endpoints that are health checked before making the routing decision. Unhealthy endpoints are omitted from the results. If all endpoints are unhealthy, we serve a response based on the `backup_geo_targets`. */
@@ -403,6 +538,8 @@ export interface PrimaryBackupPolicy {
   /** Backup targets provide a regional failover policy for the otherwise global primary targets. If serving state is set to `BACKUP`, this policy essentially becomes a geo routing policy. */
   backupGeoTargets?: GeoPolicy;
 }
+const PrimaryBackupPolicy = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<PrimaryBackupPolicy>;
+
 /** A RRSetRoutingPolicy represents ResourceRecordSet data that is returned dynamically with the response varying based on configured properties such as geolocation or by weighted random selection. */
 export interface RRSetRoutingPolicy {
   geoPolicy?: GeoPolicy;
@@ -413,6 +550,8 @@ export interface RRSetRoutingPolicy {
   geo?: GeoPolicy;
   wrr?: WrrPolicy;
 }
+const RRSetRoutingPolicy = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<RRSetRoutingPolicy>;
+
 /** A unit of data that is returned by the DNS servers. */
 export interface ResourceRecordSet {
   /** The identifier of a supported record type. See the list of Supported DNS record types. */
@@ -428,7 +567,14 @@ export interface ResourceRecordSet {
   /** Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid `ResourceRecordSet` contains only `rrdata` (for static resolution) or a `routing_policy` (for dynamic resolution). */
   routingPolicy?: RRSetRoutingPolicy;
 }
+const ResourceRecordSet = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ResourceRecordSet>;
+
 export type ResourceRecordSetList = Array<ResourceRecordSet>;
+const ResourceRecordSetList = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ResourceRecordSetList>;
+
 /** Response for the `RetrieveGoogleDomainsDnsRecords` method. */
 export interface RetrieveGoogleDomainsDnsRecordsResponse {
   /** The resource record set resources (DNS Zone records). */
@@ -436,14 +582,26 @@ export interface RetrieveGoogleDomainsDnsRecordsResponse {
   /** When present, there are more results to retrieve. Set `page_token` to this value on a subsequent call to get the next page of results. */
   nextPageToken?: string;
 }
+const RetrieveGoogleDomainsDnsRecordsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<RetrieveGoogleDomainsDnsRecordsResponse>;
+
 export interface GetGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest {
   /** Required. The name of the `Registration` whose Google Domains forwarding configuration details are being retrieved, in the format `projects/*\/locations/*\/registrations/*`. */
   registration: string;
 }
+const GetGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest>;
+
 export type DomainForwardingRedirectTypeEnum =
   | "REDIRECT_TYPE_UNSPECIFIED"
   | "TEMPORARY"
   | "PERMANENT";
+const DomainForwardingRedirectTypeEnum = S.String;
+
 /** Domain forwarding configuration. */
 export interface DomainForwarding {
   /** The target of the domain forwarding, i.e. the path to redirect the `subdomain` to. */
@@ -459,7 +617,11 @@ export interface DomainForwarding {
   /** The PEM-encoded certificate chain. */
   pemCertificate?: string;
 }
+const DomainForwarding = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<DomainForwarding>;
+
 export type DomainForwardingList = Array<DomainForwarding>;
+const DomainForwardingList = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<DomainForwardingList>;
+
 /** Email forwarding configuration. */
 export interface EmailForwarding {
   /** An alias recipient email that forwards emails to the `target_email_address`. For example, `admin@example.com` or `*@example.com` (wildcard alias forwards all the emails under the registered domain). */
@@ -467,7 +629,11 @@ export interface EmailForwarding {
   /** Target email that receives emails sent to the `alias`. */
   targetEmailAddress?: string;
 }
+const EmailForwarding = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<EmailForwarding>;
+
 export type EmailForwardingList = Array<EmailForwarding>;
+const EmailForwardingList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<EmailForwardingList>;
+
 /** Response for the `RetrieveGoogleDomainsForwardingConfig` method. */
 export interface RetrieveGoogleDomainsForwardingConfigResponse {
   /** The list of domain forwarding configurations. A forwarding configuration might not work correctly if the required DNS records are not present in the domain's authoritative DNS zone. */
@@ -475,17 +641,29 @@ export interface RetrieveGoogleDomainsForwardingConfigResponse {
   /** The list of email forwarding configurations. A forwarding configuration might not work correctly if the required DNS records are not present in the domain's authoritative DNS zone. */
   emailForwardings?: EmailForwardingList;
 }
+const RetrieveGoogleDomainsForwardingConfigResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<RetrieveGoogleDomainsForwardingConfigResponse>;
+
 export interface GetIamPolicyProjectsLocationsRegistrationsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
+const GetIamPolicyProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetIamPolicyProjectsLocationsRegistrationsRequest>;
+
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
+const AuditLogConfigLogTypeEnum = S.String;
+
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
@@ -493,7 +671,11 @@ export interface AuditLogConfig {
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
+const AuditLogConfig = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<AuditLogConfig>;
+
 export type AuditLogConfigList = Array<AuditLogConfig>;
+const AuditLogConfigList = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<AuditLogConfigList>;
+
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
@@ -501,7 +683,11 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
+const AuditConfig = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<AuditConfig>;
+
 export type AuditConfigList = Array<AuditConfig>;
+const AuditConfigList = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<AuditConfigList>;
+
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -513,6 +699,8 @@ export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
 }
+const Expr = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<Expr>;
+
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -522,7 +710,11 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
+const Binding = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<Binding>;
+
 export type BindingList = Array<Binding>;
+const BindingList = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<BindingList>;
+
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** Specifies cloud audit logging configuration for this policy. */
@@ -534,6 +726,8 @@ export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
+const Policy = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<Policy>;
+
 export interface GetImportableDomainsProjectsLocationsRegistrationsRequest {
   /** Required. The location. Must be in the format `projects/*\/locations/*`. */
   location: string;
@@ -542,6 +736,11 @@ export interface GetImportableDomainsProjectsLocationsRegistrationsRequest {
   /** Maximum number of results to return. */
   pageSize?: number;
 }
+const GetImportableDomainsProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<GetImportableDomainsProjectsLocationsRegistrationsRequest>;
+
 export type DomainResourceStateEnum =
   | "RESOURCE_STATE_UNSPECIFIED"
   | "IMPORTABLE"
@@ -549,6 +748,8 @@ export type DomainResourceStateEnum =
   | "SUSPENDED"
   | "EXPIRED"
   | "DELETED";
+const DomainResourceStateEnum = S.String;
+
 /** Represents an amount of money with its currency type. */
 export interface Money {
   /** The three-letter currency code defined in ISO 4217. */
@@ -558,6 +759,8 @@ export interface Money {
   /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
   nanos?: number;
 }
+const Money = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<Money>;
+
 /** A domain that the calling user manages in Google Domains. */
 export interface Domain {
   /** The domain name. Unicode domain names are expressed in Punycode format. */
@@ -567,7 +770,11 @@ export interface Domain {
   /** Price to renew the domain for one year. Only set when `resource_state` is `IMPORTABLE`. */
   yearlyPrice?: Money;
 }
+const Domain = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<Domain>;
+
 export type DomainList = Array<Domain>;
+const DomainList = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<DomainList>;
+
 /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). Response for the `RetrieveImportableDomains` method. */
 export interface RetrieveImportableDomainsResponse {
   /** A list of domains that the calling user manages in Google Domains. */
@@ -575,11 +782,23 @@ export interface RetrieveImportableDomainsResponse {
   /** When present, there are more results to retrieve. Set `page_token` to this value on a subsequent call to get the next page of results. */
   nextPageToken?: string;
 }
+const RetrieveImportableDomainsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<RetrieveImportableDomainsResponse>;
+
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
+const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetProjectsLocationsRequest>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<StringMap>;
+
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
@@ -593,14 +812,26 @@ export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
 }
+const Location = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<Location>;
+
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+
 export interface GetProjectsLocationsRegistrationsRequest {
   /** Required. The name of the `Registration` to get, in the format `projects/*\/locations/*\/registrations/*`. */
   name: string;
 }
+const GetProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GetProjectsLocationsRegistrationsRequest>;
+
 export type RegistrationSupportedPrivacyItemEnum =
   | "CONTACT_PRIVACY_UNSPECIFIED"
   | "PUBLIC_CONTACT_DATA"
@@ -609,6 +840,9 @@ export type RegistrationSupportedPrivacyItemEnum =
 export type RegistrationSupportedPrivacyItemEnumList = Array<
   RegistrationSupportedPrivacyItemEnum | (string & {})
 >;
+const RegistrationSupportedPrivacyItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegistrationSupportedPrivacyItemEnumList>;
+
 export type RegistrationStateEnum =
   | "STATE_UNSPECIFIED"
   | "REGISTRATION_PENDING"
@@ -620,11 +854,15 @@ export type RegistrationStateEnum =
   | "SUSPENDED"
   | "EXPORTED"
   | "EXPIRED";
+const RegistrationStateEnum = S.String;
+
 export type RegistrationRegisterFailureReasonEnum =
   | "REGISTER_FAILURE_REASON_UNSPECIFIED"
   | "REGISTER_FAILURE_REASON_UNKNOWN"
   | "DOMAIN_NOT_AVAILABLE"
   | "INVALID_CONTACTS";
+const RegistrationRegisterFailureReasonEnum = S.String;
+
 export type RegistrationTransferFailureReasonEnum =
   | "TRANSFER_FAILURE_REASON_UNSPECIFIED"
   | "TRANSFER_FAILURE_REASON_UNKNOWN"
@@ -637,6 +875,8 @@ export type RegistrationTransferFailureReasonEnum =
   | "INVALID_REGISTRANT_EMAIL_ADDRESS"
   | "DOMAIN_NOT_ELIGIBLE_FOR_TRANSFER"
   | "TRANSFER_ALREADY_PENDING";
+const RegistrationTransferFailureReasonEnum = S.String;
+
 export type RegistrationDomainPropertiesItemEnum =
   | "DOMAIN_PROPERTY_UNSPECIFIED"
   | "TRANSFER_LOCK_UNSUPPORTED_BY_REGISTRY"
@@ -644,6 +884,9 @@ export type RegistrationDomainPropertiesItemEnum =
 export type RegistrationDomainPropertiesItemEnumList = Array<
   RegistrationDomainPropertiesItemEnum | (string & {})
 >;
+const RegistrationDomainPropertiesItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegistrationDomainPropertiesItemEnumList>;
+
 export type RegistrationIssuesItemEnum =
   | "ISSUE_UNSPECIFIED"
   | "CONTACT_SUPPORT"
@@ -652,6 +895,9 @@ export type RegistrationIssuesItemEnum =
   | "DNS_NOT_ACTIVATED"
   | "AUTO_RENEWAL_UPDATE_NOT_EFFECTIVE";
 export type RegistrationIssuesItemEnumList = Array<RegistrationIssuesItemEnum | (string & {})>;
+const RegistrationIssuesItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegistrationIssuesItemEnumList>;
+
 /** The `Registration` resource facilitates managing and configuring domain name registrations. There are several ways to create a new `Registration` resource: To create a new `Registration` resource, find a suitable domain name by calling the `SearchDomains` method with a query to see available domain name options. After choosing a name, call `RetrieveRegisterParameters` to ensure availability and obtain information like pricing, which is needed to build a call to `RegisterDomain`. Another way to create a new `Registration` is to transfer an existing domain from another registrar (Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)). First, go to the current registrar to unlock the domain for transfer and retrieve the domain's transfer authorization code. Then call `RetrieveTransferParameters` to confirm that the domain is unlocked and to get values needed to build a call to `TransferDomain`. Finally, you can create a new `Registration` by importing an existing domain managed with [Google Domains](https://domains.google/) (Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)). First, call `RetrieveImportableDomains` to list domains to which the calling user has sufficient access. Then call `ImportDomain` on any domain names you want to use with Cloud Domains. */
 export interface Registration {
   /** Output only. Set of options for the `contact_settings.privacy` field that this `Registration` supports. */
@@ -685,12 +931,19 @@ export interface Registration {
   /** Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method. */
   dnsSettings?: DnsSettings;
 }
+const Registration = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<Registration>;
+
 export interface GetRegisterParametersProjectsLocationsRegistrationsRequest {
   /** Required. The domain name. Unicode domain names must be expressed in Punycode format. */
   domainName?: string;
   /** Required. The location. Must be in the format `projects/*\/locations/*`. */
   location: string;
 }
+const GetRegisterParametersProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetRegisterParametersProjectsLocationsRegistrationsRequest>;
+
 export type RegisterParametersSupportedPrivacyItemEnum =
   | "CONTACT_PRIVACY_UNSPECIFIED"
   | "PUBLIC_CONTACT_DATA"
@@ -698,17 +951,25 @@ export type RegisterParametersSupportedPrivacyItemEnum =
   | "REDACTED_CONTACT_DATA";
 export type RegisterParametersSupportedPrivacyItemEnumList =
   Array<RegisterParametersSupportedPrivacyItemEnum>;
+const RegisterParametersSupportedPrivacyItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegisterParametersSupportedPrivacyItemEnumList>;
+
 export type RegisterParametersAvailabilityEnum =
   | "AVAILABILITY_UNSPECIFIED"
   | "AVAILABLE"
   | "UNAVAILABLE"
   | "UNSUPPORTED"
   | "UNKNOWN";
+const RegisterParametersAvailabilityEnum = S.String;
+
 export type RegisterParametersDomainNoticesItemEnum =
   | "DOMAIN_NOTICE_UNSPECIFIED"
   | "HSTS_PRELOADED";
 export type RegisterParametersDomainNoticesItemEnumList =
   Array<RegisterParametersDomainNoticesItemEnum>;
+const RegisterParametersDomainNoticesItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegisterParametersDomainNoticesItemEnumList>;
+
 /** Parameters required to register a new domain. */
 export interface RegisterParameters {
   /** The domain name. Unicode domain names are expressed in Punycode format. */
@@ -722,17 +983,29 @@ export interface RegisterParameters {
   /** Notices about special properties of the domain. */
   domainNotices?: RegisterParametersDomainNoticesItemEnumList;
 }
+const RegisterParameters = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<RegisterParameters>;
+
 /** Response for the `RetrieveRegisterParameters` method. */
 export interface RetrieveRegisterParametersResponse {
   /** Parameters to use when calling the `RegisterDomain` method. */
   registerParameters?: RegisterParameters;
 }
+const RetrieveRegisterParametersResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<RetrieveRegisterParametersResponse>;
+
 export interface GetTransferParametersProjectsLocationsRegistrationsRequest {
   /** Required. The location. Must be in the format `projects/*\/locations/*`. */
   location: string;
   /** Required. The domain name. Unicode domain names must be expressed in Punycode format. */
   domainName?: string;
 }
+const GetTransferParametersProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<GetTransferParametersProjectsLocationsRegistrationsRequest>;
+
 export type TransferParametersSupportedPrivacyItemEnum =
   | "CONTACT_PRIVACY_UNSPECIFIED"
   | "PUBLIC_CONTACT_DATA"
@@ -740,10 +1013,15 @@ export type TransferParametersSupportedPrivacyItemEnum =
   | "REDACTED_CONTACT_DATA";
 export type TransferParametersSupportedPrivacyItemEnumList =
   Array<TransferParametersSupportedPrivacyItemEnum>;
+const TransferParametersSupportedPrivacyItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<TransferParametersSupportedPrivacyItemEnumList>;
+
 export type TransferParametersTransferLockStateEnum =
   | "TRANSFER_LOCK_STATE_UNSPECIFIED"
   | "UNLOCKED"
   | "LOCKED";
+const TransferParametersTransferLockStateEnum = S.String;
+
 /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). Parameters required to transfer a domain from another registrar. */
 export interface TransferParameters {
   /** The URL of the registrar that currently manages the domain. */
@@ -761,11 +1039,18 @@ export interface TransferParameters {
   /** The name servers that currently store the configuration of the domain. */
   nameServers?: StringList;
 }
+const TransferParameters = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<TransferParameters>;
+
 /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). Response for the `RetrieveTransferParameters` method. */
 export interface RetrieveTransferParametersResponse {
   /** Parameters to use when calling the `TransferDomain` method. */
   transferParameters?: TransferParameters;
 }
+const RetrieveTransferParametersResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<RetrieveTransferParametersResponse>;
+
 /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). Request for the `ImportDomain` method. */
 export interface ImportDomainRequest {
   /** Required. The domain name. Unicode domain names must be expressed in Punycode format. */
@@ -773,12 +1058,19 @@ export interface ImportDomainRequest {
   /** Set of labels associated with the `Registration`. */
   labels?: StringMap;
 }
+const ImportDomainRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<ImportDomainRequest>;
+
 export interface ImportProjectsLocationsRegistrationsRequest {
   /** Required. The parent resource of the Registration. Must be in the format `projects/*\/locations/*`. */
   parent: string;
   /** Request body */
   body?: ImportDomainRequest;
 }
+const ImportProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ImportProjectsLocationsRegistrationsRequest>;
+
 /** Request for the `InitiatePushTransfer` method. */
 export interface InitiatePushTransferRequest {
   /** Optional. If set, validates the request without actually initiating the transfer. */
@@ -786,12 +1078,22 @@ export interface InitiatePushTransferRequest {
   /** Required. The Tag of the new registrar. Can be found at [List of registrars](https://nominet.uk/registrar-list/). */
   tag?: string;
 }
+const InitiatePushTransferRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<InitiatePushTransferRequest>;
+
 export interface InitiatePushTransferProjectsLocationsRegistrationsRequest {
   /** Required. The name of the `Registration` for which the push transfer is initiated, in the format `projects/*\/locations/*\/registrations/*`. */
   registration: string;
   /** Request body */
   body?: InitiatePushTransferRequest;
 }
+const InitiatePushTransferProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<InitiatePushTransferProjectsLocationsRegistrationsRequest>;
+
 export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
@@ -804,7 +1106,14 @@ export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
+const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ListProjectsLocationsRequest>;
+
 export type LocationList = Array<Location>;
+const LocationList = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<LocationList>;
+
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -812,6 +1121,11 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
+const ListLocationsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ListLocationsResponse>;
+
 export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
@@ -824,7 +1138,14 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+
 export type OperationList = Array<Operation>;
+const OperationList = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<OperationList>;
+
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -834,6 +1155,11 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListProjectsLocationsRegistrationsRequest {
   /** Maximum number of results to return. */
   pageSize?: number;
@@ -844,7 +1170,14 @@ export interface ListProjectsLocationsRegistrationsRequest {
   /** When set to the `next_page_token` from a prior response, provides the next page of results. */
   pageToken?: string;
 }
+const ListProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ListProjectsLocationsRegistrationsRequest>;
+
 export type RegistrationList = Array<Registration>;
+const RegistrationList = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<RegistrationList>;
+
 /** Response for the `ListRegistrations` method. */
 export interface ListRegistrationsResponse {
   /** A list of `Registration`s. */
@@ -852,6 +1185,11 @@ export interface ListRegistrationsResponse {
   /** When present, there are more results to retrieve. Set `page_token` to this value on a subsequent call to get the next page of results. */
   nextPageToken?: string;
 }
+const ListRegistrationsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ListRegistrationsResponse>;
+
 export interface PatchProjectsLocationsRegistrationsRequest {
   /** Optional. If set, validates the request without actually updating the registration. */
   validateOnly?: boolean;
@@ -862,18 +1200,29 @@ export interface PatchProjectsLocationsRegistrationsRequest {
   /** Request body */
   body?: Registration;
 }
+const PatchProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<PatchProjectsLocationsRegistrationsRequest>;
+
 export type RegisterDomainRequestContactNoticesItemEnum =
   | "CONTACT_NOTICE_UNSPECIFIED"
   | "PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT";
 export type RegisterDomainRequestContactNoticesItemEnumList = Array<
   RegisterDomainRequestContactNoticesItemEnum | (string & {})
 >;
+const RegisterDomainRequestContactNoticesItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegisterDomainRequestContactNoticesItemEnumList>;
+
 export type RegisterDomainRequestDomainNoticesItemEnum =
   | "DOMAIN_NOTICE_UNSPECIFIED"
   | "HSTS_PRELOADED";
 export type RegisterDomainRequestDomainNoticesItemEnumList = Array<
   RegisterDomainRequestDomainNoticesItemEnum | (string & {})
 >;
+const RegisterDomainRequestDomainNoticesItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegisterDomainRequestDomainNoticesItemEnumList>;
+
 /** Request for the `RegisterDomain` method. */
 export interface RegisterDomainRequest {
   /** Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls. */
@@ -887,12 +1236,22 @@ export interface RegisterDomainRequest {
   /** The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement. */
   domainNotices?: RegisterDomainRequestDomainNoticesItemEnumList;
 }
+const RegisterDomainRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<RegisterDomainRequest>;
+
 export interface RegisterProjectsLocationsRegistrationsRequest {
   /** Required. The parent resource of the `Registration`. Must be in the format `projects/*\/locations/*`. */
   parent: string;
   /** Request body */
   body?: RegisterDomainRequest;
 }
+const RegisterProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<RegisterProjectsLocationsRegistrationsRequest>;
+
 /** Request for the `RenewDomain` method. */
 export interface RenewDomainRequest {
   /** Optional. When true, only validation is performed, without actually renewing the domain. For more information, see [Request validation](https://cloud.google.com/apis/design/design_patterns#request_validation) */
@@ -900,12 +1259,19 @@ export interface RenewDomainRequest {
   /** Required. Acknowledgement of the price to renew the domain for one year. To get the price, see [Cloud Domains pricing](https://cloud.google.com/domains/pricing). If not provided, the expected price is returned in the error message. */
   yearlyPrice?: Money;
 }
+const RenewDomainRequest = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<RenewDomainRequest>;
+
 export interface RenewDomainProjectsLocationsRegistrationsRequest {
   /** Required. The name of the `Registration` whish is being renewed, in the format `projects/*\/locations/*\/registrations/*`. */
   registration: string;
   /** Request body */
   body?: RenewDomainRequest;
 }
+const RenewDomainProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<RenewDomainProjectsLocationsRegistrationsRequest>;
+
 /** Request for the `ResetAuthorizationCode` method. */
 export type ResetAuthorizationCodeRequest = ExportRegistrationRequest;
 export interface ResetAuthorizationCodeProjectsLocationsRegistrationsRequest {
@@ -914,18 +1280,38 @@ export interface ResetAuthorizationCodeProjectsLocationsRegistrationsRequest {
   /** Request body */
   body?: ExportRegistrationRequest;
 }
+const ResetAuthorizationCodeProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ResetAuthorizationCodeProjectsLocationsRegistrationsRequest>;
+
 export interface SearchDomainsProjectsLocationsRegistrationsRequest {
   /** Required. String used to search for available domain names. */
   query?: string;
   /** Required. The location. Must be in the format `projects/*\/locations/*`. */
   location: string;
 }
+const SearchDomainsProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<SearchDomainsProjectsLocationsRegistrationsRequest>;
+
 export type RegisterParametersList = Array<RegisterParameters>;
+const RegisterParametersList = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<RegisterParametersList>;
+
 /** Response for the `SearchDomains` method. */
 export interface SearchDomainsResponse {
   /** Results of the domain name search. */
   registerParameters?: RegisterParametersList;
 }
+const SearchDomainsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<SearchDomainsResponse>;
+
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
@@ -933,34 +1319,57 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
+const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<SetIamPolicyRequest>;
+
 export interface SetIamPolicyProjectsLocationsRegistrationsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<SetIamPolicyProjectsLocationsRegistrationsRequest>;
+
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
+const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<TestIamPermissionsRequest>;
+
 export interface TestIamPermissionsProjectsLocationsRegistrationsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsRegistrationsRequest>;
+
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
+const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
+
 export type TransferDomainRequestContactNoticesItemEnum =
   | "CONTACT_NOTICE_UNSPECIFIED"
   | "PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT";
 export type TransferDomainRequestContactNoticesItemEnumList = Array<
   TransferDomainRequestContactNoticesItemEnum | (string & {})
 >;
+const TransferDomainRequestContactNoticesItemEnumList =
+  ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<TransferDomainRequestContactNoticesItemEnumList>;
+
 /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). Request for the `TransferDomain` method. */
 export interface TransferDomainRequest {
   /** Required. The complete `Registration` resource to be created. You can leave `registration.dns_settings` unset to import the domain's current DNS configuration from its current registrar. Use this option only if you are sure that the domain's current DNS service does not cease upon transfer, as is often the case for DNS services provided for free by the registrar. */
@@ -974,12 +1383,22 @@ export interface TransferDomainRequest {
   /** The list of contact notices that you acknowledge. The notices needed here depend on the values specified in `registration.contact_settings`. */
   contactNotices?: TransferDomainRequestContactNoticesItemEnumList;
 }
+const TransferDomainRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<TransferDomainRequest>;
+
 export interface TransferProjectsLocationsRegistrationsRequest {
   /** Required. The parent resource of the `Registration`. Must be in the format `projects/*\/locations/*`. */
   parent: string;
   /** Request body */
   body?: TransferDomainRequest;
 }
+const TransferProjectsLocationsRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<TransferProjectsLocationsRegistrationsRequest>;
+
 export type ConfigureContactSettingsProjectsLocationsRegistrationsError =
   | NotFound
   | Forbidden
@@ -993,8 +1412,8 @@ export const configureContactSettingsProjectsLocationsRegistrations: API.Operati
   ConfigureContactSettingsProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<ConfigureContactSettingsProjectsLocationsRegistrationsRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: ConfigureContactSettingsProjectsLocationsRegistrationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1013,8 +1432,8 @@ export const configureDnsSettingsProjectsLocationsRegistrations: API.OperationMe
   ConfigureDnsSettingsProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<ConfigureDnsSettingsProjectsLocationsRegistrationsRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: ConfigureDnsSettingsProjectsLocationsRegistrationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1033,10 +1452,8 @@ export const configureManagementSettingsProjectsLocationsRegistrations: API.Oper
   ConfigureManagementSettingsProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    22,
-  ) as any as S.Schema<ConfigureManagementSettingsProjectsLocationsRegistrationsRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: ConfigureManagementSettingsProjectsLocationsRegistrationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1055,8 +1472,8 @@ export const deleteProjectsLocationsRegistrations: API.OperationMethod<
   DeleteProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<DeleteProjectsLocationsRegistrationsRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsRegistrationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1075,8 +1492,8 @@ export const exportProjectsLocationsRegistrations: API.OperationMethod<
   ExportProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<ExportProjectsLocationsRegistrationsRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: ExportProjectsLocationsRegistrationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1093,8 +1510,8 @@ export const getAuthorizationCodeProjectsLocationsRegistrations: API.OperationMe
   GetAuthorizationCodeProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<GetAuthorizationCodeProjectsLocationsRegistrationsRequest>,
-  output: __S(27) as any as S.Schema<AuthorizationCode>,
+  input: GetAuthorizationCodeProjectsLocationsRegistrationsRequest,
+  output: AuthorizationCode,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1112,10 +1529,8 @@ export const getGoogleDomainsDnsRecordsProjectsLocationsRegistrations: API.Pagin
   GcpOpContext,
   RetrieveGoogleDomainsDnsRecordsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(
-    28,
-  ) as any as S.Schema<GetGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest>,
-  output: __S(42) as any as S.Schema<RetrieveGoogleDomainsDnsRecordsResponse>,
+  input: GetGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest,
+  output: RetrieveGoogleDomainsDnsRecordsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1133,10 +1548,8 @@ export const getGoogleDomainsForwardingConfigProjectsLocationsRegistrations: API
   GetGoogleDomainsForwardingConfigProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    43,
-  ) as any as S.Schema<GetGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest>,
-  output: __S(48) as any as S.Schema<RetrieveGoogleDomainsForwardingConfigResponse>,
+  input: GetGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest,
+  output: RetrieveGoogleDomainsForwardingConfigResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1150,8 +1563,8 @@ export const getIamPolicyProjectsLocationsRegistrations: API.OperationMethod<
   GetIamPolicyProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetIamPolicyProjectsLocationsRegistrationsRequest>,
-  output: __S(57) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsRegistrationsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1169,8 +1582,8 @@ export const getImportableDomainsProjectsLocationsRegistrations: API.PaginatedOp
   GcpOpContext,
   RetrieveImportableDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(58) as any as S.Schema<GetImportableDomainsProjectsLocationsRegistrationsRequest>,
-  output: __S(62) as any as S.Schema<RetrieveImportableDomainsResponse>,
+  input: GetImportableDomainsProjectsLocationsRegistrationsRequest,
+  output: RetrieveImportableDomainsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1185,8 +1598,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(65) as any as S.Schema<Location>,
+  input: GetProjectsLocationsRequest,
+  output: Location,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1200,8 +1613,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: GetProjectsLocationsOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1215,8 +1628,8 @@ export const getProjectsLocationsRegistrations: API.OperationMethod<
   GetProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<GetProjectsLocationsRegistrationsRequest>,
-  output: __S(68) as any as S.Schema<Registration>,
+  input: GetProjectsLocationsRegistrationsRequest,
+  output: Registration,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1233,8 +1646,8 @@ export const getRegisterParametersProjectsLocationsRegistrations: API.OperationM
   GetRegisterParametersProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<GetRegisterParametersProjectsLocationsRegistrationsRequest>,
-  output: __S(71) as any as S.Schema<RetrieveRegisterParametersResponse>,
+  input: GetRegisterParametersProjectsLocationsRegistrationsRequest,
+  output: RetrieveRegisterParametersResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1251,8 +1664,8 @@ export const getTransferParametersProjectsLocationsRegistrations: API.OperationM
   GetTransferParametersProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<GetTransferParametersProjectsLocationsRegistrationsRequest>,
-  output: __S(74) as any as S.Schema<RetrieveTransferParametersResponse>,
+  input: GetTransferParametersProjectsLocationsRegistrationsRequest,
+  output: RetrieveTransferParametersResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1271,8 +1684,8 @@ export const importProjectsLocationsRegistrations: API.OperationMethod<
   ImportProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<ImportProjectsLocationsRegistrationsRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: ImportProjectsLocationsRegistrationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1291,8 +1704,8 @@ export const initiatePushTransferProjectsLocationsRegistrations: API.OperationMe
   InitiatePushTransferProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<InitiatePushTransferProjectsLocationsRegistrationsRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: InitiatePushTransferProjectsLocationsRegistrationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1307,8 +1720,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(79) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(81) as any as S.Schema<ListLocationsResponse>,
+  input: ListProjectsLocationsRequest,
+  output: ListLocationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1324,8 +1737,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(82) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(84) as any as S.Schema<ListOperationsResponse>,
+  input: ListProjectsLocationsOperationsRequest,
+  output: ListOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1341,8 +1754,8 @@ export const listProjectsLocationsRegistrations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRegistrationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(85) as any as S.Schema<ListProjectsLocationsRegistrationsRequest>,
-  output: __S(87) as any as S.Schema<ListRegistrationsResponse>,
+  input: ListProjectsLocationsRegistrationsRequest,
+  output: ListRegistrationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1362,8 +1775,8 @@ export const patchProjectsLocationsRegistrations: API.OperationMethod<
   PatchProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<PatchProjectsLocationsRegistrationsRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: PatchProjectsLocationsRegistrationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1382,8 +1795,8 @@ export const registerProjectsLocationsRegistrations: API.OperationMethod<
   RegisterProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<RegisterProjectsLocationsRegistrationsRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: RegisterProjectsLocationsRegistrationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1402,8 +1815,8 @@ export const renewDomainProjectsLocationsRegistrations: API.OperationMethod<
   RenewDomainProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<RenewDomainProjectsLocationsRegistrationsRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: RenewDomainProjectsLocationsRegistrationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1422,8 +1835,8 @@ export const resetAuthorizationCodeProjectsLocationsRegistrations: API.Operation
   ResetAuthorizationCodeProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<ResetAuthorizationCodeProjectsLocationsRegistrationsRequest>,
-  output: __S(27) as any as S.Schema<AuthorizationCode>,
+  input: ResetAuthorizationCodeProjectsLocationsRegistrationsRequest,
+  output: AuthorizationCode,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1437,8 +1850,8 @@ export const searchDomainsProjectsLocationsRegistrations: API.OperationMethod<
   SearchDomainsProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<SearchDomainsProjectsLocationsRegistrationsRequest>,
-  output: __S(96) as any as S.Schema<SearchDomainsResponse>,
+  input: SearchDomainsProjectsLocationsRegistrationsRequest,
+  output: SearchDomainsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1457,8 +1870,8 @@ export const setIamPolicyProjectsLocationsRegistrations: API.OperationMethod<
   SetIamPolicyProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<SetIamPolicyProjectsLocationsRegistrationsRequest>,
-  output: __S(57) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsRegistrationsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1477,8 +1890,8 @@ export const testIamPermissionsProjectsLocationsRegistrations: API.OperationMeth
   TestIamPermissionsProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<TestIamPermissionsProjectsLocationsRegistrationsRequest>,
-  output: __S(99) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsRegistrationsRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1497,8 +1910,8 @@ export const transferProjectsLocationsRegistrations: API.OperationMethod<
   TransferProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<TransferProjectsLocationsRegistrationsRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: TransferProjectsLocationsRegistrationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1517,8 +1930,8 @@ function __c0(j: number): any {
           organization: S.optional(S.String),
           administrativeArea: S.optional(S.String),
           locality: S.optional(S.String),
-          addressLines: S.optional(__S(0)),
-          recipients: S.optional(__S(0)),
+          addressLines: S.optional(StringList),
+          recipients: S.optional(StringList),
           regionCode: S.optional(S.String),
           postalCode: S.optional(S.String),
           sortingCode: S.optional(S.String),
@@ -1530,26 +1943,26 @@ function __c0(j: number): any {
         S.Struct({
           email: S.optional(S.String),
           faxNumber: S.optional(S.String),
-          postalAddress: S.optional(__S(1)),
+          postalAddress: S.optional(PostalAddress),
           phoneNumber: S.optional(S.String),
         }),
       ).annotate({ identifier: "Contact" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          registrantContact: S.optional(__S(2)),
-          adminContact: S.optional(__S(2)),
-          technicalContact: S.optional(__S(2)),
-          privacy: S.optional(S.String),
+          registrantContact: S.optional(Contact),
+          adminContact: S.optional(Contact),
+          technicalContact: S.optional(Contact),
+          privacy: S.optional(ContactSettingsPrivacyEnum),
         }),
       ).annotate({ identifier: "ContactSettings" });
     case 4:
-      return S.Array(S.String);
+      return S.Array(ConfigureContactSettingsRequestContactNoticesItemEnum);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          contactSettings: S.optional(__S(3)),
-          contactNotices: S.optional(__S(4)),
+          contactSettings: S.optional(ContactSettings),
+          contactNotices: S.optional(ConfigureContactSettingsRequestContactNoticesItemEnumList),
           validateOnly: S.optional(S.Boolean),
           updateMask: S.optional(S.String),
         }),
@@ -1560,7 +1973,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           registration: S.String.pipe(T.Label()),
-          body: S.optional(__S(5).pipe(T.HttpBody())),
+          body: S.optional(ConfigureContactSettingsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1578,21 +1991,21 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(DocumentMap);
     case 1:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(__S(8)),
+          details: S.optional(DocumentMapList),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(7)),
-          response: S.optional(__S(7)),
-          error: S.optional(__S(9)),
+          metadata: S.optional(DocumentMap),
+          response: S.optional(DocumentMap),
+          error: S.optional(Status),
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
         }),
@@ -1601,34 +2014,34 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           keyTag: S.optional(S.Number),
-          digestType: S.optional(S.String),
-          algorithm: S.optional(S.String),
+          digestType: S.optional(DsRecordDigestTypeEnum),
+          algorithm: S.optional(DsRecordAlgorithmEnum),
           digest: S.optional(S.String),
         }),
       ).annotate({ identifier: "DsRecord" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(DsRecord);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          nameServers: S.optional(__S(0)),
-          dsState: S.optional(S.String),
-          dsRecords: S.optional(__S(12)),
+          nameServers: S.optional(StringList),
+          dsState: S.optional(GoogleDomainsDnsDsStateEnum),
+          dsRecords: S.optional(DsRecordList),
         }),
       ).annotate({ identifier: "GoogleDomainsDns" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          dsRecords: S.optional(__S(12)),
-          nameServers: S.optional(__S(0)),
+          dsRecords: S.optional(DsRecordList),
+          nameServers: S.optional(StringList),
         }),
       ).annotate({ identifier: "CustomDns" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           hostName: S.optional(S.String),
-          ipv4Addresses: S.optional(__S(0)),
-          ipv6Addresses: S.optional(__S(0)),
+          ipv4Addresses: S.optional(StringList),
+          ipv6Addresses: S.optional(StringList),
         }),
       ).annotate({ identifier: "GlueRecord" });
   }
@@ -1636,20 +2049,20 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(GlueRecord);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          googleDomainsDns: S.optional(__S(13)),
-          customDns: S.optional(__S(14)),
-          glueRecords: S.optional(__S(16)),
+          googleDomainsDns: S.optional(GoogleDomainsDns),
+          customDns: S.optional(CustomDns),
+          glueRecords: S.optional(GlueRecordList),
           googleDomainsRedirectsDataAvailable: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DnsSettings" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dnsSettings: S.optional(__S(17)),
+          dnsSettings: S.optional(DnsSettings),
           validateOnly: S.optional(S.Boolean),
           updateMask: S.optional(S.String),
         }),
@@ -1660,7 +2073,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           registration: S.String.pipe(T.Label()),
-          body: S.optional(__S(18).pipe(T.HttpBody())),
+          body: S.optional(ConfigureDnsSettingsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1674,16 +2087,16 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          preferredRenewalMethod: S.optional(S.String),
-          renewalMethod: S.optional(S.String),
-          transferLockState: S.optional(S.String),
-          effectiveTransferLockState: S.optional(S.String),
+          preferredRenewalMethod: S.optional(ManagementSettingsPreferredRenewalMethodEnum),
+          renewalMethod: S.optional(ManagementSettingsRenewalMethodEnum),
+          transferLockState: S.optional(ManagementSettingsTransferLockStateEnum),
+          effectiveTransferLockState: S.optional(ManagementSettingsEffectiveTransferLockStateEnum),
         }),
       ).annotate({ identifier: "ManagementSettings" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          managementSettings: S.optional(__S(20)),
+          managementSettings: S.optional(ManagementSettings),
           validateOnly: S.optional(S.Boolean),
           updateMask: S.optional(S.String),
         }),
@@ -1694,7 +2107,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           registration: S.String.pipe(T.Label()),
-          body: S.optional(__S(21).pipe(T.HttpBody())),
+          body: S.optional(ConfigureManagementSettingsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1731,7 +2144,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(24).pipe(T.HttpBody())),
+          body: S.optional(ExportRegistrationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1783,20 +2196,20 @@ function __c3(j: number): any {
         S.Struct({
           networkUrl: S.optional(S.String),
           port: S.optional(S.String),
-          ipProtocol: S.optional(S.String),
+          ipProtocol: S.optional(LoadBalancerTargetIpProtocolEnum),
           project: S.optional(S.String),
           region: S.optional(S.String),
           ipAddress: S.optional(S.String),
-          loadBalancerType: S.optional(S.String),
+          loadBalancerType: S.optional(LoadBalancerTargetLoadBalancerTypeEnum),
         }),
       ).annotate({ identifier: "LoadBalancerTarget" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(LoadBalancerTarget);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          externalEndpoints: S.optional(__S(0)),
-          internalLoadBalancer: S.optional(__S(30)),
+          externalEndpoints: S.optional(StringList),
+          internalLoadBalancer: S.optional(LoadBalancerTargetList),
         }),
       ).annotate({ identifier: "HealthCheckTargets" });
   }
@@ -1807,54 +2220,54 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
-          rrdata: S.optional(__S(0)),
-          signatureRrdata: S.optional(__S(0)),
-          healthCheckedTargets: S.optional(__S(31)),
+          rrdata: S.optional(StringList),
+          signatureRrdata: S.optional(StringList),
+          healthCheckedTargets: S.optional(HealthCheckTargets),
         }),
       ).annotate({ identifier: "GeoPolicyItem" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(GeoPolicyItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           enableFencing: S.optional(S.Boolean),
-          item: S.optional(__S(33)),
+          item: S.optional(GeoPolicyItemList),
         }),
       ).annotate({ identifier: "GeoPolicy" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          healthCheckedTargets: S.optional(__S(31)),
+          healthCheckedTargets: S.optional(HealthCheckTargets),
           weight: S.optional(S.Number),
-          rrdata: S.optional(__S(0)),
-          signatureRrdata: S.optional(__S(0)),
+          rrdata: S.optional(StringList),
+          signatureRrdata: S.optional(StringList),
         }),
       ).annotate({ identifier: "WrrPolicyItem" });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(WrrPolicyItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          item: S.optional(__S(36)),
+          item: S.optional(WrrPolicyItemList),
         }),
       ).annotate({ identifier: "WrrPolicy" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          primaryTargets: S.optional(__S(31)),
+          primaryTargets: S.optional(HealthCheckTargets),
           trickleTraffic: S.optional(S.Number),
-          backupGeoTargets: S.optional(__S(34)),
+          backupGeoTargets: S.optional(GeoPolicy),
         }),
       ).annotate({ identifier: "PrimaryBackupPolicy" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          geoPolicy: S.optional(__S(34)),
-          wrrPolicy: S.optional(__S(37)),
-          primaryBackup: S.optional(__S(38)),
+          geoPolicy: S.optional(GeoPolicy),
+          wrrPolicy: S.optional(WrrPolicy),
+          primaryBackup: S.optional(PrimaryBackupPolicy),
           healthCheck: S.optional(S.String),
-          geo: S.optional(__S(34)),
-          wrr: S.optional(__S(37)),
+          geo: S.optional(GeoPolicy),
+          wrr: S.optional(WrrPolicy),
         }),
       ).annotate({ identifier: "RRSetRoutingPolicy" });
   }
@@ -1866,18 +2279,18 @@ function __c5(j: number): any {
         S.Struct({
           type: S.optional(S.String),
           ttl: S.optional(S.Number),
-          rrdata: S.optional(__S(0)),
-          signatureRrdata: S.optional(__S(0)),
+          rrdata: S.optional(StringList),
+          signatureRrdata: S.optional(StringList),
           name: S.optional(S.String),
-          routingPolicy: S.optional(__S(39)),
+          routingPolicy: S.optional(RRSetRoutingPolicy),
         }),
       ).annotate({ identifier: "ResourceRecordSet" });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(ResourceRecordSet);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          rrset: S.optional(__S(41)),
+          rrset: S.optional(ResourceRecordSetList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1901,7 +2314,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           targetUri: S.optional(S.String),
-          redirectType: S.optional(S.String),
+          redirectType: S.optional(DomainForwardingRedirectTypeEnum),
           pathForwarding: S.optional(S.Boolean),
           sslEnabled: S.optional(S.Boolean),
           subdomain: S.optional(S.String),
@@ -1909,7 +2322,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "DomainForwarding" });
     case 5:
-      return S.Array(__S(44));
+      return S.Array(DomainForwarding);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1918,7 +2331,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "EmailForwarding" });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(EmailForwarding);
   }
 }
 function __c6(j: number): any {
@@ -1926,8 +2339,8 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          domainForwardings: S.optional(__S(45)),
-          emailForwardings: S.optional(__S(47)),
+          domainForwardings: S.optional(DomainForwardingList),
+          emailForwardings: S.optional(EmailForwardingList),
         }),
       ).annotate({
         identifier: "RetrieveGoogleDomainsForwardingConfigResponse",
@@ -1950,21 +2363,21 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          exemptedMembers: S.optional(__S(0)),
-          logType: S.optional(S.String),
+          exemptedMembers: S.optional(StringList),
+          logType: S.optional(AuditLogConfigLogTypeEnum),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
     case 3:
-      return S.Array(__S(50));
+      return S.Array(AuditLogConfig);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          auditLogConfigs: S.optional(__S(51)),
+          auditLogConfigs: S.optional(AuditLogConfigList),
           service: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditConfig" });
     case 5:
-      return S.Array(__S(52));
+      return S.Array(AuditConfig);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1978,8 +2391,8 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          condition: S.optional(__S(54)),
-          members: S.optional(__S(0)),
+          condition: S.optional(Expr),
+          members: S.optional(StringList),
         }),
       ).annotate({ identifier: "Binding" });
   }
@@ -1987,13 +2400,13 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55));
+      return S.Array(Binding);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          auditConfigs: S.optional(__S(53)),
+          auditConfigs: S.optional(AuditConfigList),
           version: S.optional(S.Number),
-          bindings: S.optional(__S(56)),
+          bindings: S.optional(BindingList),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Policy" });
@@ -2025,16 +2438,16 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
-          resourceState: S.optional(S.String),
-          yearlyPrice: S.optional(__S(59)),
+          resourceState: S.optional(DomainResourceStateEnum),
+          yearlyPrice: S.optional(Money),
         }),
       ).annotate({ identifier: "Domain" });
     case 5:
-      return S.Array(__S(60));
+      return S.Array(Domain);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          domains: S.optional(__S(61)),
+          domains: S.optional(DomainList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2065,8 +2478,8 @@ function __c8(j: number): any {
         S.Struct({
           locationId: S.optional(S.String),
           name: S.optional(S.String),
-          labels: S.optional(__S(64)),
-          metadata: S.optional(__S(7)),
+          labels: S.optional(StringMap),
+          metadata: S.optional(DocumentMap),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
@@ -2101,21 +2514,21 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          supportedPrivacy: S.optional(__S(4)),
-          state: S.optional(S.String),
+          supportedPrivacy: S.optional(RegistrationSupportedPrivacyItemEnumList),
+          state: S.optional(RegistrationStateEnum),
           domainName: S.optional(S.String),
-          pendingContactSettings: S.optional(__S(3)),
-          managementSettings: S.optional(__S(20)),
-          registerFailureReason: S.optional(S.String),
+          pendingContactSettings: S.optional(ContactSettings),
+          managementSettings: S.optional(ManagementSettings),
+          registerFailureReason: S.optional(RegistrationRegisterFailureReasonEnum),
           name: S.optional(S.String),
-          labels: S.optional(__S(64)),
+          labels: S.optional(StringMap),
           createTime: S.optional(S.String),
-          transferFailureReason: S.optional(S.String),
+          transferFailureReason: S.optional(RegistrationTransferFailureReasonEnum),
           expireTime: S.optional(S.String),
-          contactSettings: S.optional(__S(3)),
-          domainProperties: S.optional(__S(4)),
-          issues: S.optional(__S(4)),
-          dnsSettings: S.optional(__S(17)),
+          contactSettings: S.optional(ContactSettings),
+          domainProperties: S.optional(RegistrationDomainPropertiesItemEnumList),
+          issues: S.optional(RegistrationIssuesItemEnumList),
+          dnsSettings: S.optional(DnsSettings),
         }),
       ).annotate({ identifier: "Registration" });
     case 5:
@@ -2137,16 +2550,16 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
-          supportedPrivacy: S.optional(__S(4)),
-          yearlyPrice: S.optional(__S(59)),
-          availability: S.optional(S.String),
-          domainNotices: S.optional(__S(4)),
+          supportedPrivacy: S.optional(RegisterParametersSupportedPrivacyItemEnumList),
+          yearlyPrice: S.optional(Money),
+          availability: S.optional(RegisterParametersAvailabilityEnum),
+          domainNotices: S.optional(RegisterParametersDomainNoticesItemEnumList),
         }),
       ).annotate({ identifier: "RegisterParameters" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          registerParameters: S.optional(__S(70)),
+          registerParameters: S.optional(RegisterParameters),
         }),
       ).annotate({
         identifier: "RetrieveRegisterParametersResponse",
@@ -2175,17 +2588,17 @@ function __c9(j: number): any {
         S.Struct({
           currentRegistrarUri: S.optional(S.String),
           currentRegistrar: S.optional(S.String),
-          supportedPrivacy: S.optional(__S(4)),
+          supportedPrivacy: S.optional(TransferParametersSupportedPrivacyItemEnumList),
           domainName: S.optional(S.String),
-          yearlyPrice: S.optional(__S(59)),
-          transferLockState: S.optional(S.String),
-          nameServers: S.optional(__S(0)),
+          yearlyPrice: S.optional(Money),
+          transferLockState: S.optional(TransferParametersTransferLockStateEnum),
+          nameServers: S.optional(StringList),
         }),
       ).annotate({ identifier: "TransferParameters" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          transferParameters: S.optional(__S(73)),
+          transferParameters: S.optional(TransferParameters),
         }),
       ).annotate({
         identifier: "RetrieveTransferParametersResponse",
@@ -2194,14 +2607,14 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
-          labels: S.optional(__S(64)),
+          labels: S.optional(StringMap),
         }),
       ).annotate({ identifier: "ImportDomainRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(75).pipe(T.HttpBody())),
+          body: S.optional(ImportDomainRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2225,7 +2638,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           registration: S.String.pipe(T.Label()),
-          body: S.optional(__S(77).pipe(T.HttpBody())),
+          body: S.optional(InitiatePushTransferRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2239,7 +2652,7 @@ function __c9(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          extraLocationTypes: S.optional(__S(0).pipe(T.Query())),
+          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2259,11 +2672,11 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(65));
+      return S.Array(Location);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(80)),
+          locations: S.optional(LocationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
@@ -2286,13 +2699,13 @@ function __c10(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(Operation);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(0)),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(83)),
+          operations: S.optional(OperationList),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 5:
@@ -2313,11 +2726,11 @@ function __c10(j: number): any {
         identifier: "ListProjectsLocationsRegistrationsRequest",
       });
     case 6:
-      return S.Array(__S(68));
+      return S.Array(Registration);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          registrations: S.optional(__S(86)),
+          registrations: S.optional(RegistrationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2333,7 +2746,7 @@ function __c11(j: number): any {
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(68).pipe(T.HttpBody())),
+          body: S.optional(Registration.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2347,18 +2760,18 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          yearlyPrice: S.optional(__S(59)),
+          yearlyPrice: S.optional(Money),
           validateOnly: S.optional(S.Boolean),
-          contactNotices: S.optional(__S(4)),
-          registration: S.optional(__S(68)),
-          domainNotices: S.optional(__S(4)),
+          contactNotices: S.optional(RegisterDomainRequestContactNoticesItemEnumList),
+          registration: S.optional(Registration),
+          domainNotices: S.optional(RegisterDomainRequestDomainNoticesItemEnumList),
         }),
       ).annotate({ identifier: "RegisterDomainRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(89).pipe(T.HttpBody())),
+          body: S.optional(RegisterDomainRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2373,14 +2786,14 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean),
-          yearlyPrice: S.optional(__S(59)),
+          yearlyPrice: S.optional(Money),
         }),
       ).annotate({ identifier: "RenewDomainRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           registration: S.String.pipe(T.Label()),
-          body: S.optional(__S(91).pipe(T.HttpBody())),
+          body: S.optional(RenewDomainRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2395,7 +2808,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           registration: S.String.pipe(T.Label()),
-          body: S.optional(__S(24).pipe(T.HttpBody())),
+          body: S.optional(ExportRegistrationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2422,7 +2835,7 @@ function __c11(j: number): any {
         identifier: "SearchDomainsProjectsLocationsRegistrationsRequest",
       });
     case 7:
-      return S.Array(__S(70));
+      return S.Array(RegisterParameters);
   }
 }
 function __c12(j: number): any {
@@ -2430,21 +2843,21 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          registerParameters: S.optional(__S(95)),
+          registerParameters: S.optional(RegisterParametersList),
         }),
       ).annotate({ identifier: "SearchDomainsResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
-          policy: S.optional(__S(57)),
+          policy: S.optional(Policy),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(97).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2458,7 +2871,7 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(0)),
+          permissions: S.optional(StringList),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -2467,7 +2880,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(99).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2481,18 +2894,18 @@ function __c12(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          registration: S.optional(__S(68)),
-          authorizationCode: S.optional(__S(27)),
-          yearlyPrice: S.optional(__S(59)),
+          registration: S.optional(Registration),
+          authorizationCode: S.optional(AuthorizationCode),
+          yearlyPrice: S.optional(Money),
           validateOnly: S.optional(S.Boolean),
-          contactNotices: S.optional(__S(4)),
+          contactNotices: S.optional(TransferDomainRequestContactNoticesItemEnumList),
         }),
       ).annotate({ identifier: "TransferDomainRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(101).pipe(T.HttpBody())),
+          body: S.optional(TransferDomainRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2503,40 +2916,5 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "TransferProjectsLocationsRegistrationsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
   }
 }

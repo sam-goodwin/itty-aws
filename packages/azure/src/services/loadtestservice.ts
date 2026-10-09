@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -19,8 +17,15 @@ export interface CheckPlaywrightWorkspaceNameAvailabilityRequest {
   /** The resource type. */
   type?: string;
 }
+const CheckPlaywrightWorkspaceNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CheckPlaywrightWorkspaceNameAvailabilityRequest>;
+
 /** The reason why the given name is not available. */
 export type CheckPlaywrightWorkspaceNameAvailabilityResponseReason = "Invalid" | "AlreadyExists";
+const CheckPlaywrightWorkspaceNameAvailabilityResponseReason = S.String;
+
 export interface CheckPlaywrightWorkspaceNameAvailabilityResponse {
   /** Indicates if the resource name is available. */
   nameAvailable?: boolean;
@@ -29,6 +34,11 @@ export interface CheckPlaywrightWorkspaceNameAvailabilityResponse {
   /** Detailed reason why the given name is available. */
   message?: string;
 }
+const CheckPlaywrightWorkspaceNameAvailabilityResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CheckPlaywrightWorkspaceNameAvailabilityResponse>;
+
 /** Dimensions for new quota request. */
 export interface QuotaBucketRequestPropertiesDimensions {
   /** Subscription Id dimension for new quota request of the quota bucket. */
@@ -36,6 +46,11 @@ export interface QuotaBucketRequestPropertiesDimensions {
   /** Location dimension for new quota request of the quota bucket. */
   location?: string;
 }
+const QuotaBucketRequestPropertiesDimensions = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<QuotaBucketRequestPropertiesDimensions>;
+
 /** New quota request request properties. */
 export interface QuotaBucketRequestProperties {
   /** Current quota usage of the quota bucket. */
@@ -47,6 +62,11 @@ export interface QuotaBucketRequestProperties {
   /** Dimensions for new quota request. */
   dimensions?: QuotaBucketRequestPropertiesDimensions;
 }
+const QuotaBucketRequestProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<QuotaBucketRequestProperties>;
+
 export interface CheckQuotasAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -57,18 +77,27 @@ export interface CheckQuotasAvailabilityRequest {
   /** Request object of new quota for a quota bucket. */
   properties?: QuotaBucketRequestProperties;
 }
+const CheckQuotasAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CheckQuotasAvailabilityRequest>;
+
 /** The type of identity that created the resource. */
 export type CheckQuotaAvailabilityResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const CheckQuotaAvailabilityResponseSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type CheckQuotaAvailabilityResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const CheckQuotaAvailabilityResponseSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface CheckQuotaAvailabilityResponseSystemData {
   /** The identity that created the resource. */
@@ -84,6 +113,11 @@ export interface CheckQuotaAvailabilityResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const CheckQuotaAvailabilityResponseSystemData = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CheckQuotaAvailabilityResponseSystemData>;
+
 /** Check quota availability response properties. */
 export interface CheckQuotaAvailabilityResponseProperties {
   /** True/False indicating whether the quota request be granted based on availability. */
@@ -91,6 +125,11 @@ export interface CheckQuotaAvailabilityResponseProperties {
   /** Message indicating additional details to add to quota support request. */
   availabilityStatus?: string;
 }
+const CheckQuotaAvailabilityResponseProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CheckQuotaAvailabilityResponseProperties>;
+
 /** Check quota availability response object. */
 export interface CheckQuotaAvailabilityResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -104,6 +143,11 @@ export interface CheckQuotaAvailabilityResponse {
   /** Check quota availability response properties. */
   properties?: CheckQuotaAvailabilityResponseProperties;
 }
+const CheckQuotaAvailabilityResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CheckQuotaAvailabilityResponse>;
+
 export interface DeleteLoadTestRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -112,7 +156,17 @@ export interface DeleteLoadTestRequest {
   /** Load Test name */
   loadTestName: string;
 }
+const DeleteLoadTestRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteLoadTestRequest>;
+
 export interface DeleteLoadTestResponse {}
+const DeleteLoadTestResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteLoadTestResponse>;
+
 export interface DeletePlaywrightWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -121,7 +175,17 @@ export interface DeletePlaywrightWorkspaceRequest {
   /** The name of the PlaywrightWorkspace */
   playwrightWorkspaceName: string;
 }
+const DeletePlaywrightWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeletePlaywrightWorkspaceRequest>;
+
 export interface DeletePlaywrightWorkspaceResponse {}
+const DeletePlaywrightWorkspaceResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DeletePlaywrightWorkspaceResponse>;
+
 export interface GetLoadTestRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -130,10 +194,16 @@ export interface GetLoadTestRequest {
   /** Load Test name */
   loadTestName: string;
 }
+const GetLoadTestRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetLoadTestRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -149,12 +219,23 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<SystemData>;
+
 /** Resource tags. */
 export type GetLoadTestResponseTagsMap = { [key: string]: string | undefined };
+const GetLoadTestResponseTagsMap = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetLoadTestResponseTagsMap>;
+
 /** Resources provisioning states. */
 export type ResourceState = "Succeeded" | "Failed" | "Canceled" | "Deleted";
+const ResourceState = S.String;
+
 /** Managed identity type to use for accessing encryption key Url. */
 export type Type = "SystemAssigned" | "UserAssigned";
+const Type = S.String;
+
 /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
 export interface EncryptionPropertiesIdentity {
   /** Managed identity type to use for accessing encryption key Url. */
@@ -162,6 +243,11 @@ export interface EncryptionPropertiesIdentity {
   /** User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/a0a0a0a0-bbbb-cccd-dddd-e1e1e1e1e1e1/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. */
   resourceId?: string | null;
 }
+const EncryptionPropertiesIdentity = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<EncryptionPropertiesIdentity>;
+
 /** Key and identity details for Customer Managed Key encryption of load test resource. */
 export interface EncryptionProperties {
   /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
@@ -169,6 +255,8 @@ export interface EncryptionProperties {
   /** key encryption key Url, versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek. */
   keyUrl?: string;
 }
+const EncryptionProperties = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<EncryptionProperties>;
+
 /** LoadTest resource properties. */
 export interface LoadTestProperties {
   /** Description of the resource. */
@@ -180,12 +268,16 @@ export interface LoadTestProperties {
   /** CMK Encryption property. */
   encryption?: EncryptionProperties;
 }
+const LoadTestProperties = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<LoadTestProperties>;
+
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
+const ManagedServiceIdentityType = S.String;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -193,8 +285,15 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
+const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<UserAssignedIdentity>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | null | undefined };
+const UserAssignedIdentities = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<UserAssignedIdentities>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetLoadTestResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -204,6 +303,11 @@ export interface GetLoadTestResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
+const GetLoadTestResponseIdentity = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetLoadTestResponseIdentity>;
+
 export interface GetLoadTestResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -222,7 +326,11 @@ export interface GetLoadTestResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetLoadTestResponseIdentity;
 }
+const GetLoadTestResponse = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GetLoadTestResponse>;
+
 export type GetPlaywrightQuotasRequestPlaywrightQuotaName = "ExecutionMinutes";
+const GetPlaywrightQuotasRequestPlaywrightQuotaName = S.String;
+
 export interface GetPlaywrightQuotasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -231,8 +339,15 @@ export interface GetPlaywrightQuotasRequest {
   /** The name of the PlaywrightQuota */
   playwrightQuotaName: GetPlaywrightQuotasRequestPlaywrightQuotaName | (string & {});
 }
+const GetPlaywrightQuotasRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetPlaywrightQuotasRequest>;
+
 /** The free trial state. */
 export type FreeTrialState = "Active" | "Expired" | "NotApplicable";
+const FreeTrialState = S.String;
+
 /** Subscription-level location-based Playwright quota free trial properties. */
 export interface FreeTrialProperties {
   /** The workspace ID in GUID format that has free trial enabled in the subscription. */
@@ -240,6 +355,8 @@ export interface FreeTrialProperties {
   /** The free trial state. */
   state: FreeTrialState;
 }
+const FreeTrialProperties = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<FreeTrialProperties>;
+
 /** The status of the last resource operation. */
 export type ProvisioningState =
   | "Succeeded"
@@ -248,6 +365,8 @@ export type ProvisioningState =
   | "Creating"
   | "Deleting"
   | "Accepted";
+const ProvisioningState = S.String;
+
 /** Subscription-level location-based Playwright quota resource properties. */
 export interface PlaywrightQuotaProperties {
   /** The subscription-level location-based Playwright quota free trial properties. */
@@ -255,6 +374,11 @@ export interface PlaywrightQuotaProperties {
   /** The status of the last resource operation. */
   provisioningState?: ProvisioningState;
 }
+const PlaywrightQuotaProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<PlaywrightQuotaProperties>;
+
 export interface GetPlaywrightQuotasResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -267,6 +391,11 @@ export interface GetPlaywrightQuotasResponse {
   /** The resource-specific properties for this resource. */
   properties?: PlaywrightQuotaProperties;
 }
+const GetPlaywrightQuotasResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetPlaywrightQuotasResponse>;
+
 export interface GetPlaywrightWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -275,12 +404,24 @@ export interface GetPlaywrightWorkspaceRequest {
   /** The name of the PlaywrightWorkspace */
   playwrightWorkspaceName: string;
 }
+const GetPlaywrightWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetPlaywrightWorkspaceRequest>;
+
 /** Resource tags. */
 export type GetPlaywrightWorkspaceResponseTagsMap = { [key: string]: string | undefined };
+const GetPlaywrightWorkspaceResponseTagsMap =
+  GetLoadTestResponseTagsMap as any as S.Schema<GetPlaywrightWorkspaceResponseTagsMap>;
+
 /** Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created. */
 export type PlaywrightWorkspacePropertiesRegionalAffinity = "Enabled" | "Disabled";
+const PlaywrightWorkspacePropertiesRegionalAffinity = S.String;
+
 /** Enables the workspace to use local authentication through service access tokens for operations. */
 export type PlaywrightWorkspacePropertiesLocalAuth = "Enabled" | "Disabled";
+const PlaywrightWorkspacePropertiesLocalAuth = S.String;
+
 /** Playwright workspace resource properties. */
 export interface PlaywrightWorkspaceProperties {
   /** The status of the last resource operation. */
@@ -294,6 +435,11 @@ export interface PlaywrightWorkspaceProperties {
   /** The workspace ID in GUID format. */
   workspaceId?: string;
 }
+const PlaywrightWorkspaceProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<PlaywrightWorkspaceProperties>;
+
 export interface GetPlaywrightWorkspaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -310,7 +456,14 @@ export interface GetPlaywrightWorkspaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: PlaywrightWorkspaceProperties;
 }
+const GetPlaywrightWorkspaceResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetPlaywrightWorkspaceResponse>;
+
 export type GetPlaywrightWorkspaceQuotasRequestQuotaName = "ExecutionMinutes";
+const GetPlaywrightWorkspaceQuotasRequestQuotaName = S.String;
+
 export interface GetPlaywrightWorkspaceQuotasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -321,6 +474,11 @@ export interface GetPlaywrightWorkspaceQuotasRequest {
   /** The name of the PlaywrightWorkspaceQuota */
   quotaName: GetPlaywrightWorkspaceQuotasRequestQuotaName | (string & {});
 }
+const GetPlaywrightWorkspaceQuotasRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetPlaywrightWorkspaceQuotasRequest>;
+
 /** Playwright workspace quota free trial properties. */
 export interface PlaywrightWorkspaceFreeTrialProperties {
   /** The free trial creation timestamp in UTC. */
@@ -334,6 +492,11 @@ export interface PlaywrightWorkspaceFreeTrialProperties {
   /** The percentage of the free trial quota used. */
   percentageUsed: number;
 }
+const PlaywrightWorkspaceFreeTrialProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<PlaywrightWorkspaceFreeTrialProperties>;
+
 /** Playwright workspace quota resource properties. */
 export interface PlaywrightWorkspaceQuotaProperties {
   /** The Playwright workspace quota free trial properties. */
@@ -341,6 +504,11 @@ export interface PlaywrightWorkspaceQuotaProperties {
   /** The status of the last resource operation. */
   provisioningState?: ProvisioningState;
 }
+const PlaywrightWorkspaceQuotaProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<PlaywrightWorkspaceQuotaProperties>;
+
 export interface GetPlaywrightWorkspaceQuotasResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -353,6 +521,11 @@ export interface GetPlaywrightWorkspaceQuotasResponse {
   /** The resource-specific properties for this resource. */
   properties?: PlaywrightWorkspaceQuotaProperties;
 }
+const GetPlaywrightWorkspaceQuotasResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetPlaywrightWorkspaceQuotasResponse>;
+
 export interface GetQuotasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -361,6 +534,8 @@ export interface GetQuotasRequest {
   /** The quota name. */
   quotaBucketName: string;
 }
+const GetQuotasRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<GetQuotasRequest>;
+
 /** Quota bucket resource properties. */
 export interface QuotaResourceProperties {
   /** Current quota limit of the quota bucket. */
@@ -370,6 +545,11 @@ export interface QuotaResourceProperties {
   /** Resource provisioning state. */
   provisioningState?: ResourceState;
 }
+const QuotaResourceProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<QuotaResourceProperties>;
+
 export interface GetQuotasResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -382,12 +562,19 @@ export interface GetQuotasResponse {
   /** The resource-specific properties for this resource. */
   properties?: QuotaResourceProperties;
 }
+const GetQuotasResponse = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<GetQuotasResponse>;
+
 export interface ListLoadTestByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListLoadTestByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListLoadTestByResourceGroupRequest>;
+
 /** Resource tags. */
 export type LoadTestResourceTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -411,8 +598,15 @@ export interface LoadTestResource {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetLoadTestResponseIdentity;
 }
+const LoadTestResource = GetLoadTestResponse as any as S.Schema<LoadTestResource>;
+
 /** The LoadTestResource items on this page */
 export type LoadTestResourceListResultValueList = Array<LoadTestResource>;
+const LoadTestResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<LoadTestResourceListResultValueList>;
+
 /** The response of a LoadTestResource list operation. */
 export interface LoadTestResourceListResult {
   /** The LoadTestResource items on this page */
@@ -420,10 +614,20 @@ export interface LoadTestResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const LoadTestResourceListResult = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<LoadTestResourceListResult>;
+
 export interface ListLoadTestBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListLoadTestBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListLoadTestBySubscriptionRequest>;
+
 export interface ListLoadTestOutboundNetworkDependenciesEndpointsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -432,13 +636,25 @@ export interface ListLoadTestOutboundNetworkDependenciesEndpointsRequest {
   /** Load Test name */
   loadTestName: string;
 }
+const ListLoadTestOutboundNetworkDependenciesEndpointsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListLoadTestOutboundNetworkDependenciesEndpointsRequest>;
+
 /** Details about the connection between the Batch service and the endpoint. */
 export interface EndpointDetail {
   /** The port an endpoint is connected to. */
   port?: number;
 }
+const EndpointDetail = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<EndpointDetail>;
+
 /** The list of connection details for this endpoint. */
 export type EndpointDependencyEndpointDetailsList = Array<EndpointDetail>;
+const EndpointDependencyEndpointDetailsList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<EndpointDependencyEndpointDetailsList>;
+
 /** A domain name and connection details used to access a dependency. */
 export interface EndpointDependency {
   /** The domain name of the dependency. Domain names may be fully qualified or may contain a * wildcard. */
@@ -448,8 +664,15 @@ export interface EndpointDependency {
   /** The list of connection details for this endpoint. */
   endpointDetails?: EndpointDependencyEndpointDetailsList;
 }
+const EndpointDependency = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<EndpointDependency>;
+
 /** The endpoints for this service to which the Batch service makes outbound calls. */
 export type OutboundEnvironmentEndpointEndpointsList = Array<EndpointDependency>;
+const OutboundEnvironmentEndpointEndpointsList = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<OutboundEnvironmentEndpointEndpointsList>;
+
 /** A collection of related endpoints from the same service for which the Batch service requires outbound access. */
 export interface OutboundEnvironmentEndpoint {
   /** The type of service that Azure Load Testing connects to. */
@@ -457,8 +680,18 @@ export interface OutboundEnvironmentEndpoint {
   /** The endpoints for this service to which the Batch service makes outbound calls. */
   endpoints?: OutboundEnvironmentEndpointEndpointsList;
 }
+const OutboundEnvironmentEndpoint = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<OutboundEnvironmentEndpoint>;
+
 /** The OutboundEnvironmentEndpoint items on this page */
 export type PagedOutboundEnvironmentEndpointValueList = Array<OutboundEnvironmentEndpoint>;
+const PagedOutboundEnvironmentEndpointValueList = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<PagedOutboundEnvironmentEndpointValueList>;
+
 /** Values returned by the List operation. */
 export interface PagedOutboundEnvironmentEndpoint {
   /** The OutboundEnvironmentEndpoint items on this page */
@@ -466,7 +699,17 @@ export interface PagedOutboundEnvironmentEndpoint {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PagedOutboundEnvironmentEndpoint = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<PagedOutboundEnvironmentEndpoint>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -478,10 +721,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -495,20 +744,37 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListPlaywrightQuotasBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
 }
+const ListPlaywrightQuotasBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ListPlaywrightQuotasBySubscriptionRequest>;
+
 /** Subscription-level location-based Playwright quota resource. */
 export interface PlaywrightQuota {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -522,8 +788,15 @@ export interface PlaywrightQuota {
   /** The resource-specific properties for this resource. */
   properties?: PlaywrightQuotaProperties;
 }
+const PlaywrightQuota = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<PlaywrightQuota>;
+
 /** The PlaywrightQuota items on this page */
 export type PlaywrightQuotaListResultValueList = Array<PlaywrightQuota>;
+const PlaywrightQuotaListResultValueList = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<PlaywrightQuotaListResultValueList>;
+
 /** The response of a PlaywrightQuota list operation. */
 export interface PlaywrightQuotaListResult {
   /** The PlaywrightQuota items on this page */
@@ -531,14 +804,27 @@ export interface PlaywrightQuotaListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PlaywrightQuotaListResult = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<PlaywrightQuotaListResult>;
+
 export interface ListPlaywrightWorkspaceByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListPlaywrightWorkspaceByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ListPlaywrightWorkspaceByResourceGroupRequest>;
+
 /** Resource tags. */
 export type PlaywrightWorkspaceTagsMap = { [key: string]: string | undefined };
+const PlaywrightWorkspaceTagsMap =
+  GetLoadTestResponseTagsMap as any as S.Schema<PlaywrightWorkspaceTagsMap>;
+
 /** Playwright workspace resource. */
 export interface PlaywrightWorkspace {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -556,8 +842,15 @@ export interface PlaywrightWorkspace {
   /** The resource-specific properties for this resource. */
   properties?: PlaywrightWorkspaceProperties;
 }
+const PlaywrightWorkspace = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<PlaywrightWorkspace>;
+
 /** The PlaywrightWorkspace items on this page */
 export type PlaywrightWorkspaceListResultValueList = Array<PlaywrightWorkspace>;
+const PlaywrightWorkspaceListResultValueList = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<PlaywrightWorkspaceListResultValueList>;
+
 /** The response of a PlaywrightWorkspace list operation. */
 export interface PlaywrightWorkspaceListResult {
   /** The PlaywrightWorkspace items on this page */
@@ -565,10 +858,20 @@ export interface PlaywrightWorkspaceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PlaywrightWorkspaceListResult = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<PlaywrightWorkspaceListResult>;
+
 export interface ListPlaywrightWorkspaceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListPlaywrightWorkspaceBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListPlaywrightWorkspaceBySubscriptionRequest>;
+
 export interface ListPlaywrightWorkspaceQuotasByPlaywrightWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -577,6 +880,11 @@ export interface ListPlaywrightWorkspaceQuotasByPlaywrightWorkspaceRequest {
   /** The name of the PlaywrightWorkspace */
   playwrightWorkspaceName: string;
 }
+const ListPlaywrightWorkspaceQuotasByPlaywrightWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListPlaywrightWorkspaceQuotasByPlaywrightWorkspaceRequest>;
+
 /** Playwright workspace quota resource. */
 export interface PlaywrightWorkspaceQuota {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -590,8 +898,18 @@ export interface PlaywrightWorkspaceQuota {
   /** The resource-specific properties for this resource. */
   properties?: PlaywrightWorkspaceQuotaProperties;
 }
+const PlaywrightWorkspaceQuota = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<PlaywrightWorkspaceQuota>;
+
 /** The PlaywrightWorkspaceQuota items on this page */
 export type PlaywrightWorkspaceQuotaListResultValueList = Array<PlaywrightWorkspaceQuota>;
+const PlaywrightWorkspaceQuotaListResultValueList = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<PlaywrightWorkspaceQuotaListResultValueList>;
+
 /** The response of a PlaywrightWorkspaceQuota list operation. */
 export interface PlaywrightWorkspaceQuotaListResult {
   /** The PlaywrightWorkspaceQuota items on this page */
@@ -599,12 +917,19 @@ export interface PlaywrightWorkspaceQuotaListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PlaywrightWorkspaceQuotaListResult = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<PlaywrightWorkspaceQuotaListResult>;
+
 export interface ListQuotasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
 }
+const ListQuotasRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ListQuotasRequest>;
+
 /** Quota bucket details object. */
 export interface QuotaResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -618,8 +943,15 @@ export interface QuotaResource {
   /** The resource-specific properties for this resource. */
   properties?: QuotaResourceProperties;
 }
+const QuotaResource = GetQuotasResponse as any as S.Schema<QuotaResource>;
+
 /** The QuotaResource items on this page */
 export type QuotaResourceListResultValueList = Array<QuotaResource>;
+const QuotaResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<QuotaResourceListResultValueList>;
+
 /** The response of a QuotaResource list operation. */
 export interface QuotaResourceListResult {
   /** The QuotaResource items on this page */
@@ -627,8 +959,16 @@ export interface QuotaResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const QuotaResourceListResult = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<QuotaResourceListResult>;
+
 /** Resource tags. */
 export type LoadTestsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const LoadTestsCreateOrUpdateRequestTagsMap =
+  GetLoadTestResponseTagsMap as any as S.Schema<LoadTestsCreateOrUpdateRequestTagsMap>;
+
 /** LoadTest resource properties. */
 export interface LoadTestPropertiesInput {
   /** Description of the resource. */
@@ -636,17 +976,35 @@ export interface LoadTestPropertiesInput {
   /** CMK Encryption property. */
   encryption?: EncryptionProperties;
 }
+const LoadTestPropertiesInput = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<LoadTestPropertiesInput>;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
+const UserAssignedIdentityInput =
+  DeleteLoadTestResponse as any as S.Schema<UserAssignedIdentityInput>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
+const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface LoadTestsCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
+const LoadTestsCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<LoadTestsCreateOrUpdateRequestIdentity>;
+
 export interface LoadTestsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -663,8 +1021,16 @@ export interface LoadTestsCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: LoadTestsCreateOrUpdateRequestIdentity;
 }
+const LoadTestsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<LoadTestsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type LoadTestsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const LoadTestsCreateOrUpdateResponseTagsMap =
+  GetLoadTestResponseTagsMap as any as S.Schema<LoadTestsCreateOrUpdateResponseTagsMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type LoadTestsCreateOrUpdateResponseIdentity = GetLoadTestResponseIdentity;
 export interface LoadTestsCreateOrUpdateResponse {
@@ -685,14 +1051,26 @@ export interface LoadTestsCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetLoadTestResponseIdentity;
 }
+const LoadTestsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<LoadTestsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type PlaywrightWorkspacesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const PlaywrightWorkspacesCreateOrUpdateRequestTagsMap =
+  GetLoadTestResponseTagsMap as any as S.Schema<PlaywrightWorkspacesCreateOrUpdateRequestTagsMap>;
+
 /** Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created. */
 export type PlaywrightWorkspacePropertiesInputRegionalAffinity = "Enabled" | "Disabled";
+const PlaywrightWorkspacePropertiesInputRegionalAffinity = S.String;
+
 /** Enables the workspace to use local authentication through service access tokens for operations. */
 export type PlaywrightWorkspacePropertiesInputLocalAuth = "Enabled" | "Disabled";
+const PlaywrightWorkspacePropertiesInputLocalAuth = S.String;
+
 /** Playwright workspace resource properties. */
 export interface PlaywrightWorkspacePropertiesInput {
   /** Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created. */
@@ -700,6 +1078,11 @@ export interface PlaywrightWorkspacePropertiesInput {
   /** Enables the workspace to use local authentication through service access tokens for operations. */
   localAuth?: PlaywrightWorkspacePropertiesInputLocalAuth | (string & {});
 }
+const PlaywrightWorkspacePropertiesInput = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<PlaywrightWorkspacePropertiesInput>;
+
 export interface PlaywrightWorkspacesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -714,6 +1097,11 @@ export interface PlaywrightWorkspacesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: PlaywrightWorkspacePropertiesInput;
 }
+const PlaywrightWorkspacesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<PlaywrightWorkspacesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type PlaywrightWorkspacesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -734,10 +1122,16 @@ export interface PlaywrightWorkspacesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: PlaywrightWorkspaceProperties;
 }
+const PlaywrightWorkspacesCreateOrUpdateResponse =
+  GetPlaywrightWorkspaceResponse as any as S.Schema<PlaywrightWorkspacesCreateOrUpdateResponse>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateLoadTestRequestIdentity = LoadTestsCreateOrUpdateRequestIdentity;
 /** Resource tags. */
 export type UpdateLoadTestRequestTagsMap = { [key: string]: string | undefined };
+const UpdateLoadTestRequestTagsMap =
+  GetLoadTestResponseTagsMap as any as S.Schema<UpdateLoadTestRequestTagsMap>;
+
 /** The updatable properties of the LoadTestResource. */
 export type LoadTestResourceUpdateProperties = LoadTestPropertiesInput;
 export interface UpdateLoadTestRequest {
@@ -754,6 +1148,11 @@ export interface UpdateLoadTestRequest {
   /** The resource-specific properties for this resource. */
   properties?: LoadTestPropertiesInput;
 }
+const UpdateLoadTestRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<UpdateLoadTestRequest>;
+
 /** Resource tags. */
 export type UpdateLoadTestResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -776,8 +1175,13 @@ export interface UpdateLoadTestResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetLoadTestResponseIdentity;
 }
+const UpdateLoadTestResponse = GetLoadTestResponse as any as S.Schema<UpdateLoadTestResponse>;
+
 /** Resource tags. */
 export type UpdatePlaywrightWorkspaceRequestTagsMap = { [key: string]: string | undefined };
+const UpdatePlaywrightWorkspaceRequestTagsMap =
+  GetLoadTestResponseTagsMap as any as S.Schema<UpdatePlaywrightWorkspaceRequestTagsMap>;
+
 /** The enablement status of a feature. */
 export type EnablementStatus = "Enabled" | "Disabled";
 /** The updatable properties of the PlaywrightWorkspace. */
@@ -787,6 +1191,9 @@ export interface PlaywrightWorkspaceUpdateProperties {
   /** Enables the workspace to use local authentication through service access tokens for operations. */
   localAuth?: EnablementStatus | (string & {});
 }
+const PlaywrightWorkspaceUpdateProperties =
+  PlaywrightWorkspacePropertiesInput as any as S.Schema<PlaywrightWorkspaceUpdateProperties>;
+
 export interface UpdatePlaywrightWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -799,6 +1206,11 @@ export interface UpdatePlaywrightWorkspaceRequest {
   /** The resource-specific properties for this resource. */
   properties?: PlaywrightWorkspaceUpdateProperties;
 }
+const UpdatePlaywrightWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<UpdatePlaywrightWorkspaceRequest>;
+
 /** Resource tags. */
 export type UpdatePlaywrightWorkspaceResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdatePlaywrightWorkspaceResponse {
@@ -817,6 +1229,9 @@ export interface UpdatePlaywrightWorkspaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: PlaywrightWorkspaceProperties;
 }
+const UpdatePlaywrightWorkspaceResponse =
+  GetPlaywrightWorkspaceResponse as any as S.Schema<UpdatePlaywrightWorkspaceResponse>;
+
 export type CheckPlaywrightWorkspaceNameAvailabilityError = AzureOpError;
 /** Checks if a Playwright workspace name is available globally. */
 export const CheckPlaywrightWorkspaceNameAvailability: API.OperationMethod<
@@ -825,8 +1240,8 @@ export const CheckPlaywrightWorkspaceNameAvailability: API.OperationMethod<
   CheckPlaywrightWorkspaceNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CheckPlaywrightWorkspaceNameAvailabilityRequest>,
-  output: __S(1) as any as S.Schema<CheckPlaywrightWorkspaceNameAvailabilityResponse>,
+  input: CheckPlaywrightWorkspaceNameAvailabilityRequest,
+  output: CheckPlaywrightWorkspaceNameAvailabilityResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -840,8 +1255,8 @@ export const CheckQuotasAvailability: API.OperationMethod<
   CheckQuotasAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CheckQuotasAvailabilityRequest>,
-  output: __S(7) as any as S.Schema<CheckQuotaAvailabilityResponse>,
+  input: CheckQuotasAvailabilityRequest,
+  output: CheckQuotaAvailabilityResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -855,8 +1270,8 @@ export const DeleteLoadTest: API.OperationMethod<
   DeleteLoadTestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<DeleteLoadTestRequest>,
-  output: __S(9) as any as S.Schema<DeleteLoadTestResponse>,
+  input: DeleteLoadTestRequest,
+  output: DeleteLoadTestResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -870,8 +1285,8 @@ export const DeletePlaywrightWorkspace: API.OperationMethod<
   DeletePlaywrightWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeletePlaywrightWorkspaceRequest>,
-  output: __S(11) as any as S.Schema<DeletePlaywrightWorkspaceResponse>,
+  input: DeletePlaywrightWorkspaceRequest,
+  output: DeletePlaywrightWorkspaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -885,8 +1300,8 @@ export const GetLoadTest: API.OperationMethod<
   GetLoadTestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<GetLoadTestRequest>,
-  output: __S(21) as any as S.Schema<GetLoadTestResponse>,
+  input: GetLoadTestRequest,
+  output: GetLoadTestResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -900,8 +1315,8 @@ export const GetPlaywrightQuotas: API.OperationMethod<
   GetPlaywrightQuotasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<GetPlaywrightQuotasRequest>,
-  output: __S(25) as any as S.Schema<GetPlaywrightQuotasResponse>,
+  input: GetPlaywrightQuotasRequest,
+  output: GetPlaywrightQuotasResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -915,8 +1330,8 @@ export const GetPlaywrightWorkspace: API.OperationMethod<
   GetPlaywrightWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<GetPlaywrightWorkspaceRequest>,
-  output: __S(28) as any as S.Schema<GetPlaywrightWorkspaceResponse>,
+  input: GetPlaywrightWorkspaceRequest,
+  output: GetPlaywrightWorkspaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -930,8 +1345,8 @@ export const GetPlaywrightWorkspaceQuotas: API.OperationMethod<
   GetPlaywrightWorkspaceQuotasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<GetPlaywrightWorkspaceQuotasRequest>,
-  output: __S(32) as any as S.Schema<GetPlaywrightWorkspaceQuotasResponse>,
+  input: GetPlaywrightWorkspaceQuotasRequest,
+  output: GetPlaywrightWorkspaceQuotasResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -945,8 +1360,8 @@ export const GetQuotas: API.OperationMethod<
   GetQuotasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<GetQuotasRequest>,
-  output: __S(35) as any as S.Schema<GetQuotasResponse>,
+  input: GetQuotasRequest,
+  output: GetQuotasResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -960,8 +1375,8 @@ export const ListLoadTestByResourceGroup: API.OperationMethod<
   ListLoadTestByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<ListLoadTestByResourceGroupRequest>,
-  output: __S(38) as any as S.Schema<LoadTestResourceListResult>,
+  input: ListLoadTestByResourceGroupRequest,
+  output: LoadTestResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -975,8 +1390,8 @@ export const ListLoadTestBySubscription: API.OperationMethod<
   ListLoadTestBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<ListLoadTestBySubscriptionRequest>,
-  output: __S(38) as any as S.Schema<LoadTestResourceListResult>,
+  input: ListLoadTestBySubscriptionRequest,
+  output: LoadTestResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -990,8 +1405,8 @@ export const ListLoadTestOutboundNetworkDependenciesEndpoints: API.OperationMeth
   ListLoadTestOutboundNetworkDependenciesEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<ListLoadTestOutboundNetworkDependenciesEndpointsRequest>,
-  output: __S(47) as any as S.Schema<PagedOutboundEnvironmentEndpoint>,
+  input: ListLoadTestOutboundNetworkDependenciesEndpointsRequest,
+  output: PagedOutboundEnvironmentEndpoint,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1005,8 +1420,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<ListOperationsRequest>,
-  output: __S(52) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1020,8 +1435,8 @@ export const ListPlaywrightQuotasBySubscription: API.OperationMethod<
   ListPlaywrightQuotasBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<ListPlaywrightQuotasBySubscriptionRequest>,
-  output: __S(56) as any as S.Schema<PlaywrightQuotaListResult>,
+  input: ListPlaywrightQuotasBySubscriptionRequest,
+  output: PlaywrightQuotaListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1035,8 +1450,8 @@ export const ListPlaywrightWorkspaceByResourceGroup: API.OperationMethod<
   ListPlaywrightWorkspaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<ListPlaywrightWorkspaceByResourceGroupRequest>,
-  output: __S(60) as any as S.Schema<PlaywrightWorkspaceListResult>,
+  input: ListPlaywrightWorkspaceByResourceGroupRequest,
+  output: PlaywrightWorkspaceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1050,8 +1465,8 @@ export const ListPlaywrightWorkspaceBySubscription: API.OperationMethod<
   ListPlaywrightWorkspaceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<ListPlaywrightWorkspaceBySubscriptionRequest>,
-  output: __S(60) as any as S.Schema<PlaywrightWorkspaceListResult>,
+  input: ListPlaywrightWorkspaceBySubscriptionRequest,
+  output: PlaywrightWorkspaceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1065,8 +1480,8 @@ export const ListPlaywrightWorkspaceQuotasByPlaywrightWorkspace: API.OperationMe
   ListPlaywrightWorkspaceQuotasByPlaywrightWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<ListPlaywrightWorkspaceQuotasByPlaywrightWorkspaceRequest>,
-  output: __S(65) as any as S.Schema<PlaywrightWorkspaceQuotaListResult>,
+  input: ListPlaywrightWorkspaceQuotasByPlaywrightWorkspaceRequest,
+  output: PlaywrightWorkspaceQuotaListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1080,8 +1495,8 @@ export const ListQuotas: API.OperationMethod<
   ListQuotasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<ListQuotasRequest>,
-  output: __S(68) as any as S.Schema<QuotaResourceListResult>,
+  input: ListQuotasRequest,
+  output: QuotaResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1095,8 +1510,8 @@ export const LoadTestsCreateOrUpdate: API.OperationMethod<
   LoadTestsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<LoadTestsCreateOrUpdateRequest>,
-  output: __S(73) as any as S.Schema<LoadTestsCreateOrUpdateResponse>,
+  input: LoadTestsCreateOrUpdateRequest,
+  output: LoadTestsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1110,8 +1525,8 @@ export const PlaywrightWorkspacesCreateOrUpdate: API.OperationMethod<
   PlaywrightWorkspacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<PlaywrightWorkspacesCreateOrUpdateRequest>,
-  output: __S(28) as any as S.Schema<PlaywrightWorkspacesCreateOrUpdateResponse>,
+  input: PlaywrightWorkspacesCreateOrUpdateRequest,
+  output: PlaywrightWorkspacesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1125,8 +1540,8 @@ export const UpdateLoadTest: API.OperationMethod<
   UpdateLoadTestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<UpdateLoadTestRequest>,
-  output: __S(21) as any as S.Schema<UpdateLoadTestResponse>,
+  input: UpdateLoadTestRequest,
+  output: UpdateLoadTestResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1140,8 +1555,8 @@ export const UpdatePlaywrightWorkspace: API.OperationMethod<
   UpdatePlaywrightWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<UpdatePlaywrightWorkspaceRequest>,
-  output: __S(28) as any as S.Schema<UpdatePlaywrightWorkspaceResponse>,
+  input: UpdatePlaywrightWorkspaceRequest,
+  output: UpdatePlaywrightWorkspaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1171,7 +1586,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.optional(S.Boolean),
-          reason: S.optional(S.String),
+          reason: S.optional(CheckPlaywrightWorkspaceNameAvailabilityResponseReason),
           message: S.optional(S.String),
         }),
       ).annotate({
@@ -1192,7 +1607,7 @@ function __c0(j: number): any {
           currentUsage: S.optional(S.Number),
           currentQuota: S.optional(S.Number),
           newQuota: S.optional(S.Number),
-          dimensions: S.optional(__S(2)),
+          dimensions: S.optional(QuotaBucketRequestPropertiesDimensions),
         }),
       ).annotate({
         identifier: "QuotaBucketRequestProperties",
@@ -1203,7 +1618,7 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           quotaBucketName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(3)),
+          properties: S.optional(QuotaBucketRequestProperties),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1219,10 +1634,12 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(CheckQuotaAvailabilityResponseSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(
+            CheckQuotaAvailabilityResponseSystemDataLastModifiedByType,
+          ),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -1242,9 +1659,9 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           type: S.String,
-          systemData: S.optional(__S(5)),
+          systemData: S.optional(CheckQuotaAvailabilityResponseSystemData),
           name: S.optional(S.String),
-          properties: S.optional(__S(6)),
+          properties: S.optional(CheckQuotaAvailabilityResponseProperties),
         }),
       ).annotate({
         identifier: "CheckQuotaAvailabilityResponse",
@@ -1312,10 +1729,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -1324,7 +1741,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(Type),
           resourceId: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -1337,7 +1754,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          identity: S.optional(__S(15)),
+          identity: S.optional(EncryptionPropertiesIdentity),
           keyUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "EncryptionProperties" });
@@ -1345,9 +1762,9 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ResourceState),
           dataPlaneURI: S.optional(S.String),
-          encryption: S.optional(__S(16)),
+          encryption: S.optional(EncryptionProperties),
         }),
       ).annotate({ identifier: "LoadTestProperties" });
     case 2:
@@ -1358,14 +1775,14 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(18)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
     case 4:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(19)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(UserAssignedIdentities),
         }),
       ).annotate({
         identifier: "GetLoadTestResponseIdentity",
@@ -1376,11 +1793,11 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13)),
-          tags: S.optional(__S(14)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetLoadTestResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(17)),
-          identity: S.optional(__S(20)),
+          properties: S.optional(LoadTestProperties),
+          identity: S.optional(GetLoadTestResponseIdentity),
         }),
       ).annotate({ identifier: "GetLoadTestResponse" });
     case 6:
@@ -1388,7 +1805,7 @@ function __c2(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          playwrightQuotaName: S.String.pipe(T.Label()),
+          playwrightQuotaName: GetPlaywrightQuotasRequestPlaywrightQuotaName.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1404,7 +1821,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String,
-          state: S.String,
+          state: FreeTrialState,
         }),
       ).annotate({ identifier: "FreeTrialProperties" });
   }
@@ -1414,8 +1831,8 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          freeTrial: S.optional(__S(23)),
-          provisioningState: S.optional(S.String),
+          freeTrial: S.optional(FreeTrialProperties),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "PlaywrightQuotaProperties",
@@ -1426,8 +1843,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13)),
-          properties: S.optional(__S(24)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PlaywrightQuotaProperties),
         }),
       ).annotate({
         identifier: "GetPlaywrightQuotasResponse",
@@ -1452,10 +1869,10 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           dataplaneUri: S.optional(S.String),
-          regionalAffinity: S.optional(S.String),
-          localAuth: S.optional(S.String),
+          regionalAffinity: S.optional(PlaywrightWorkspacePropertiesRegionalAffinity),
+          localAuth: S.optional(PlaywrightWorkspacePropertiesLocalAuth),
           workspaceId: S.optional(S.String),
         }),
       ).annotate({
@@ -1467,10 +1884,10 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13)),
-          tags: S.optional(__S(14)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetPlaywrightWorkspaceResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(27)),
+          properties: S.optional(PlaywrightWorkspaceProperties),
         }),
       ).annotate({
         identifier: "GetPlaywrightWorkspaceResponse",
@@ -1481,7 +1898,7 @@ function __c3(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           playwrightWorkspaceName: S.String.pipe(T.Label()),
-          quotaName: S.String.pipe(T.Label()),
+          quotaName: GetPlaywrightWorkspaceQuotasRequestQuotaName.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1508,8 +1925,8 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          freeTrial: S.optional(__S(30)),
-          provisioningState: S.optional(S.String),
+          freeTrial: S.optional(PlaywrightWorkspaceFreeTrialProperties),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "PlaywrightWorkspaceQuotaProperties",
@@ -1524,8 +1941,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13)),
-          properties: S.optional(__S(31)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PlaywrightWorkspaceQuotaProperties),
         }),
       ).annotate({
         identifier: "GetPlaywrightWorkspaceQuotasResponse",
@@ -1550,7 +1967,7 @@ function __c4(j: number): any {
         S.Struct({
           limit: S.optional(S.Number),
           usage: S.optional(S.Number),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ResourceState),
         }),
       ).annotate({ identifier: "QuotaResourceProperties" });
     case 3:
@@ -1559,8 +1976,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13)),
-          properties: S.optional(__S(34)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(QuotaResourceProperties),
         }),
       ).annotate({ identifier: "GetQuotasResponse" });
     case 4:
@@ -1580,11 +1997,11 @@ function __c4(j: number): any {
         identifier: "ListLoadTestByResourceGroupRequest",
       });
     case 5:
-      return S.Array(__S(21));
+      return S.Array(LoadTestResource);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(37),
+          value: LoadTestResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1633,32 +2050,32 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "EndpointDetail" });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(EndpointDetail);
     case 3:
       return S.suspend(() =>
         S.Struct({
           domainName: S.String,
           description: S.optional(S.String),
-          endpointDetails: S.optional(__S(42)),
+          endpointDetails: S.optional(EndpointDependencyEndpointDetailsList),
         }),
       ).annotate({ identifier: "EndpointDependency" });
     case 4:
-      return S.Array(__S(43));
+      return S.Array(EndpointDependency);
     case 5:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.String),
-          endpoints: S.optional(__S(44)),
+          endpoints: S.optional(OutboundEnvironmentEndpointEndpointsList),
         }),
       ).annotate({
         identifier: "OutboundEnvironmentEndpoint",
       });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(OutboundEnvironmentEndpoint);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(46),
+          value: PagedOutboundEnvironmentEndpointValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1693,17 +2110,17 @@ function __c6(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(49)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(50));
+      return S.Array(Operation);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(51)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -1729,12 +2146,12 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13)),
-          properties: S.optional(__S(24)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PlaywrightQuotaProperties),
         }),
       ).annotate({ identifier: "PlaywrightQuota" });
     case 7:
-      return S.Array(__S(54));
+      return S.Array(PlaywrightQuota);
   }
 }
 function __c7(j: number): any {
@@ -1742,7 +2159,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(55),
+          value: PlaywrightQuotaListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1770,18 +2187,18 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13)),
-          tags: S.optional(__S(14)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(PlaywrightWorkspaceTagsMap),
           location: S.String,
-          properties: S.optional(__S(27)),
+          properties: S.optional(PlaywrightWorkspaceProperties),
         }),
       ).annotate({ identifier: "PlaywrightWorkspace" });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(PlaywrightWorkspace);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(59),
+          value: PlaywrightWorkspaceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1825,8 +2242,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13)),
-          properties: S.optional(__S(31)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PlaywrightWorkspaceQuotaProperties),
         }),
       ).annotate({ identifier: "PlaywrightWorkspaceQuota" });
   }
@@ -1834,11 +2251,11 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(PlaywrightWorkspaceQuota);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(64),
+          value: PlaywrightWorkspaceQuotaListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1859,11 +2276,11 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "ListQuotasRequest" });
     case 3:
-      return S.Array(__S(35));
+      return S.Array(QuotaResource);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(67),
+          value: QuotaResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotaResourceListResult" });
@@ -1871,16 +2288,16 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          encryption: S.optional(__S(16)),
+          encryption: S.optional(EncryptionProperties),
         }),
       ).annotate({ identifier: "LoadTestPropertiesInput" });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(9)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(70)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
         }),
       ).annotate({
         identifier: "LoadTestsCreateOrUpdateRequestIdentity",
@@ -1895,10 +2312,10 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           loadTestName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(14)),
+          tags: S.optional(LoadTestsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(69)),
-          identity: S.optional(__S(71)),
+          properties: S.optional(LoadTestPropertiesInput),
+          identity: S.optional(LoadTestsCreateOrUpdateRequestIdentity),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1916,11 +2333,11 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13)),
-          tags: S.optional(__S(14)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(LoadTestsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(17)),
-          identity: S.optional(__S(20)),
+          properties: S.optional(LoadTestProperties),
+          identity: S.optional(GetLoadTestResponseIdentity),
         }),
       ).annotate({
         identifier: "LoadTestsCreateOrUpdateResponse",
@@ -1928,8 +2345,8 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          regionalAffinity: S.optional(S.String),
-          localAuth: S.optional(S.String),
+          regionalAffinity: S.optional(PlaywrightWorkspacePropertiesInputRegionalAffinity),
+          localAuth: S.optional(PlaywrightWorkspacePropertiesInputLocalAuth),
         }),
       ).annotate({
         identifier: "PlaywrightWorkspacePropertiesInput",
@@ -1940,9 +2357,9 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           playwrightWorkspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(14)),
+          tags: S.optional(PlaywrightWorkspacesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(74)),
+          properties: S.optional(PlaywrightWorkspacePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1960,9 +2377,9 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           loadTestName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(71)),
-          tags: S.optional(__S(14)),
-          properties: S.optional(__S(69)),
+          identity: S.optional(LoadTestsCreateOrUpdateRequestIdentity),
+          tags: S.optional(UpdateLoadTestRequestTagsMap),
+          properties: S.optional(LoadTestPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1978,8 +2395,8 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           playwrightWorkspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(14)),
-          properties: S.optional(__S(74)),
+          tags: S.optional(UpdatePlaywrightWorkspaceRequestTagsMap),
+          properties: S.optional(PlaywrightWorkspaceUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1991,34 +2408,5 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdatePlaywrightWorkspaceRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
   }
 }

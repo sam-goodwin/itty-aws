@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Comprehend",
   serviceShapeName: "Comprehend_20171127",
@@ -108,12 +106,12 @@ export class InvalidRequestException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       Reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
+        /*@__PURE__*/ S.suspend(() => InvalidRequestReason).annotate({
           identifier: "InvalidRequestReason",
         }),
       ),
       Detail: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(288)).annotate({
+        /*@__PURE__*/ S.suspend(() => InvalidRequestDetail).annotate({
           identifier: "InvalidRequestDetail",
         }),
       ),
@@ -192,29 +190,47 @@ export class UnsupportedLanguageException
   ).pipe(C.withBadRequestError) {}
 export type CustomerInputString = string | redacted.Redacted<string>;
 export type CustomerInputStringList = (string | redacted.Redacted<string>)[];
+const CustomerInputStringList = /*@__PURE__*/ __L.at(__c0, 0);
 export interface BatchDetectDominantLanguageRequest {
   TextList: (string | redacted.Redacted<string>)[];
 }
+const BatchDetectDominantLanguageRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BatchDetectDominantLanguageRequest>;
 export interface DominantLanguage {
   LanguageCode?: string;
   Score?: number;
 }
+const DominantLanguage = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DominantLanguage>;
 export type ListOfDominantLanguages = DominantLanguage[];
+const ListOfDominantLanguages = /*@__PURE__*/ __L.at(__c0, 3);
 export interface BatchDetectDominantLanguageItemResult {
   Index?: number;
   Languages?: DominantLanguage[];
 }
+const BatchDetectDominantLanguageItemResult = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<BatchDetectDominantLanguageItemResult>;
 export type ListOfDetectDominantLanguageResult = BatchDetectDominantLanguageItemResult[];
+const ListOfDetectDominantLanguageResult = /*@__PURE__*/ __L.at(__c0, 5);
 export interface BatchItemError {
   Index?: number;
   ErrorCode?: string;
   ErrorMessage?: string;
 }
+const BatchItemError = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<BatchItemError>;
 export type BatchItemErrorList = BatchItemError[];
+const BatchItemErrorList = /*@__PURE__*/ __L.at(__c0, 7);
 export interface BatchDetectDominantLanguageResponse {
   ResultList: BatchDetectDominantLanguageItemResult[];
   ErrorList: BatchItemError[];
 }
+const BatchDetectDominantLanguageResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<BatchDetectDominantLanguageResponse>;
 export type LanguageCode =
   | "en"
   | "es"
@@ -229,10 +245,16 @@ export type LanguageCode =
   | "zh"
   | "zh-TW"
   | (string & {});
+const LanguageCode = S.String;
+
 export interface BatchDetectEntitiesRequest {
   TextList: (string | redacted.Redacted<string>)[];
   LanguageCode: LanguageCode;
 }
+const BatchDetectEntitiesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<BatchDetectEntitiesRequest>;
 export type EntityType =
   | "PERSON"
   | "LOCATION"
@@ -244,19 +266,25 @@ export type EntityType =
   | "TITLE"
   | "OTHER"
   | (string & {});
+const EntityType = S.String;
+
 export interface ChildBlock {
   ChildBlockId?: string;
   BeginOffset?: number;
   EndOffset?: number;
 }
+const ChildBlock = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ChildBlock>;
 export type ListOfChildBlocks = ChildBlock[];
+const ListOfChildBlocks = /*@__PURE__*/ __L.at(__c1, 3);
 export interface BlockReference {
   BlockId?: string;
   BeginOffset?: number;
   EndOffset?: number;
   ChildBlocks?: ChildBlock[];
 }
+const BlockReference = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<BlockReference>;
 export type ListOfBlockReferences = BlockReference[];
+const ListOfBlockReferences = /*@__PURE__*/ __L.at(__c1, 5);
 export interface Entity {
   Score?: number;
   Type?: EntityType;
@@ -265,62 +293,110 @@ export interface Entity {
   EndOffset?: number;
   BlockReferences?: BlockReference[];
 }
+const Entity = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Entity>;
 export type ListOfEntities = Entity[];
+const ListOfEntities = /*@__PURE__*/ __L.at(__c1, 7);
 export interface BatchDetectEntitiesItemResult {
   Index?: number;
   Entities?: Entity[];
 }
+const BatchDetectEntitiesItemResult = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<BatchDetectEntitiesItemResult>;
 export type ListOfDetectEntitiesResult = BatchDetectEntitiesItemResult[];
+const ListOfDetectEntitiesResult = /*@__PURE__*/ __L.at(__c2, 1);
 export interface BatchDetectEntitiesResponse {
   ResultList: BatchDetectEntitiesItemResult[];
   ErrorList: BatchItemError[];
 }
+const BatchDetectEntitiesResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<BatchDetectEntitiesResponse>;
 export interface BatchDetectKeyPhrasesRequest {
   TextList: (string | redacted.Redacted<string>)[];
   LanguageCode: LanguageCode;
 }
+const BatchDetectKeyPhrasesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<BatchDetectKeyPhrasesRequest>;
 export interface KeyPhrase {
   Score?: number;
   Text?: string;
   BeginOffset?: number;
   EndOffset?: number;
 }
+const KeyPhrase = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<KeyPhrase>;
 export type ListOfKeyPhrases = KeyPhrase[];
+const ListOfKeyPhrases = /*@__PURE__*/ __L.at(__c2, 5);
 export interface BatchDetectKeyPhrasesItemResult {
   Index?: number;
   KeyPhrases?: KeyPhrase[];
 }
+const BatchDetectKeyPhrasesItemResult = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<BatchDetectKeyPhrasesItemResult>;
 export type ListOfDetectKeyPhrasesResult = BatchDetectKeyPhrasesItemResult[];
+const ListOfDetectKeyPhrasesResult = /*@__PURE__*/ __L.at(__c2, 7);
 export interface BatchDetectKeyPhrasesResponse {
   ResultList: BatchDetectKeyPhrasesItemResult[];
   ErrorList: BatchItemError[];
 }
+const BatchDetectKeyPhrasesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<BatchDetectKeyPhrasesResponse>;
 export interface BatchDetectSentimentRequest {
   TextList: (string | redacted.Redacted<string>)[];
   LanguageCode: LanguageCode;
 }
+const BatchDetectSentimentRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<BatchDetectSentimentRequest>;
 export type SentimentType = "POSITIVE" | "NEGATIVE" | "NEUTRAL" | "MIXED" | (string & {});
+const SentimentType = S.String;
+
 export interface SentimentScore {
   Positive?: number;
   Negative?: number;
   Neutral?: number;
   Mixed?: number;
 }
+const SentimentScore = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<SentimentScore>;
 export interface BatchDetectSentimentItemResult {
   Index?: number;
   Sentiment?: SentimentType;
   SentimentScore?: SentimentScore;
 }
+const BatchDetectSentimentItemResult = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<BatchDetectSentimentItemResult>;
 export type ListOfDetectSentimentResult = BatchDetectSentimentItemResult[];
+const ListOfDetectSentimentResult = /*@__PURE__*/ __L.at(__c3, 4);
 export interface BatchDetectSentimentResponse {
   ResultList: BatchDetectSentimentItemResult[];
   ErrorList: BatchItemError[];
 }
+const BatchDetectSentimentResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<BatchDetectSentimentResponse>;
 export type SyntaxLanguageCode = "en" | "es" | "fr" | "de" | "it" | "pt" | (string & {});
+const SyntaxLanguageCode = S.String;
+
 export interface BatchDetectSyntaxRequest {
   TextList: (string | redacted.Redacted<string>)[];
   LanguageCode: SyntaxLanguageCode;
 }
+const BatchDetectSyntaxRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<BatchDetectSyntaxRequest>;
 export type PartOfSpeechTagType =
   | "ADJ"
   | "ADP"
@@ -341,10 +417,13 @@ export type PartOfSpeechTagType =
   | "SYM"
   | "VERB"
   | (string & {});
+const PartOfSpeechTagType = S.String;
+
 export interface PartOfSpeechTag {
   Tag?: PartOfSpeechTagType;
   Score?: number;
 }
+const PartOfSpeechTag = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<PartOfSpeechTag>;
 export interface SyntaxToken {
   TokenId?: number;
   Text?: string;
@@ -352,21 +431,37 @@ export interface SyntaxToken {
   EndOffset?: number;
   PartOfSpeech?: PartOfSpeechTag;
 }
+const SyntaxToken = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<SyntaxToken>;
 export type ListOfSyntaxTokens = SyntaxToken[];
+const ListOfSyntaxTokens = /*@__PURE__*/ __L.at(__c4, 1);
 export interface BatchDetectSyntaxItemResult {
   Index?: number;
   SyntaxTokens?: SyntaxToken[];
 }
+const BatchDetectSyntaxItemResult = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<BatchDetectSyntaxItemResult>;
 export type ListOfDetectSyntaxResult = BatchDetectSyntaxItemResult[];
+const ListOfDetectSyntaxResult = /*@__PURE__*/ __L.at(__c4, 3);
 export interface BatchDetectSyntaxResponse {
   ResultList: BatchDetectSyntaxItemResult[];
   ErrorList: BatchItemError[];
 }
+const BatchDetectSyntaxResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<BatchDetectSyntaxResponse>;
 export interface BatchDetectTargetedSentimentRequest {
   TextList: (string | redacted.Redacted<string>)[];
   LanguageCode: LanguageCode;
 }
+const BatchDetectTargetedSentimentRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<BatchDetectTargetedSentimentRequest>;
 export type ListOfDescriptiveMentionIndices = number[];
+const ListOfDescriptiveMentionIndices = /*@__PURE__*/ __L.at(__c4, 6);
 export type TargetedSentimentEntityType =
   | "PERSON"
   | "LOCATION"
@@ -386,10 +481,13 @@ export type TargetedSentimentEntityType =
   | "ATTRIBUTE"
   | "OTHER"
   | (string & {});
+const TargetedSentimentEntityType = S.String;
+
 export interface MentionSentiment {
   Sentiment?: SentimentType;
   SentimentScore?: SentimentScore;
 }
+const MentionSentiment = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<MentionSentiment>;
 export interface TargetedSentimentMention {
   Score?: number;
   GroupScore?: number;
@@ -399,62 +497,102 @@ export interface TargetedSentimentMention {
   BeginOffset?: number;
   EndOffset?: number;
 }
+const TargetedSentimentMention = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<TargetedSentimentMention>;
 export type ListOfMentions = TargetedSentimentMention[];
+const ListOfMentions = /*@__PURE__*/ __L.at(__c5, 1);
 export interface TargetedSentimentEntity {
   DescriptiveMentionIndex?: number[];
   Mentions?: TargetedSentimentMention[];
 }
+const TargetedSentimentEntity = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<TargetedSentimentEntity>;
 export type ListOfTargetedSentimentEntities = TargetedSentimentEntity[];
+const ListOfTargetedSentimentEntities = /*@__PURE__*/ __L.at(__c5, 3);
 export interface BatchDetectTargetedSentimentItemResult {
   Index?: number;
   Entities?: TargetedSentimentEntity[];
 }
+const BatchDetectTargetedSentimentItemResult = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<BatchDetectTargetedSentimentItemResult>;
 export type ListOfDetectTargetedSentimentResult = BatchDetectTargetedSentimentItemResult[];
+const ListOfDetectTargetedSentimentResult = /*@__PURE__*/ __L.at(__c5, 5);
 export interface BatchDetectTargetedSentimentResponse {
   ResultList: BatchDetectTargetedSentimentItemResult[];
   ErrorList: BatchItemError[];
 }
+const BatchDetectTargetedSentimentResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<BatchDetectTargetedSentimentResponse>;
 export type DocumentClassifierEndpointArn = string;
 export type SemiStructuredDocumentBlob = Uint8Array;
 export type DocumentReadAction =
   | "TEXTRACT_DETECT_DOCUMENT_TEXT"
   | "TEXTRACT_ANALYZE_DOCUMENT"
   | (string & {});
+const DocumentReadAction = S.String;
+
 export type DocumentReadMode = "SERVICE_DEFAULT" | "FORCE_DOCUMENT_READ_ACTION" | (string & {});
+const DocumentReadMode = S.String;
+
 export type DocumentReadFeatureTypes = "TABLES" | "FORMS" | (string & {});
+const DocumentReadFeatureTypes = S.String;
+
 export type ListOfDocumentReadFeatureTypes = DocumentReadFeatureTypes[];
+const ListOfDocumentReadFeatureTypes = /*@__PURE__*/ __L.at(__c5, 7);
 export interface DocumentReaderConfig {
   DocumentReadAction: DocumentReadAction;
   DocumentReadMode?: DocumentReadMode;
   FeatureTypes?: DocumentReadFeatureTypes[];
 }
+const DocumentReaderConfig = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<DocumentReaderConfig>;
 export interface ClassifyDocumentRequest {
   Text?: string | redacted.Redacted<string>;
   EndpointArn: string;
   Bytes?: Uint8Array;
   DocumentReaderConfig?: DocumentReaderConfig;
 }
+const ClassifyDocumentRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ClassifyDocumentRequest>;
 export interface DocumentClass {
   Name?: string;
   Score?: number;
   Page?: number;
 }
+const DocumentClass = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<DocumentClass>;
 export type ListOfClasses = DocumentClass[];
+const ListOfClasses = /*@__PURE__*/ __L.at(__c6, 3);
 export interface DocumentLabel {
   Name?: string;
   Score?: number;
   Page?: number;
 }
 export type ListOfLabels = DocumentLabel[];
+const ListOfLabels = ListOfClasses as any as S.Schema<ListOfLabels>;
 export interface ExtractedCharactersListItem {
   Page?: number;
   Count?: number;
 }
+const ExtractedCharactersListItem = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ExtractedCharactersListItem>;
 export type ListOfExtractedCharacters = ExtractedCharactersListItem[];
+const ListOfExtractedCharacters = /*@__PURE__*/ __L.at(__c6, 5);
 export interface DocumentMetadata {
   Pages?: number;
   ExtractedCharacters?: ExtractedCharactersListItem[];
 }
+const DocumentMetadata = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<DocumentMetadata>;
 export type DocumentType =
   | "NATIVE_PDF"
   | "SCANNED_PDF"
@@ -464,11 +602,15 @@ export type DocumentType =
   | "TEXTRACT_DETECT_DOCUMENT_TEXT_JSON"
   | "TEXTRACT_ANALYZE_DOCUMENT_JSON"
   | (string & {});
+const DocumentType = S.String;
+
 export interface DocumentTypeListItem {
   Page?: number;
   Type?: DocumentType;
 }
+const DocumentTypeListItem = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<DocumentTypeListItem>;
 export type ListOfDocumentType = DocumentTypeListItem[];
+const ListOfDocumentType = /*@__PURE__*/ __L.at(__c7, 0);
 export type PageBasedErrorCode =
   | "TEXTRACT_BAD_PAGE"
   | "TEXTRACT_PROVISIONED_THROUGHPUT_EXCEEDED"
@@ -476,22 +618,30 @@ export type PageBasedErrorCode =
   | "PAGE_SIZE_EXCEEDED"
   | "INTERNAL_SERVER_ERROR"
   | (string & {});
+const PageBasedErrorCode = S.String;
+
 export interface ErrorsListItem {
   Page?: number;
   ErrorCode?: PageBasedErrorCode;
   ErrorMessage?: string;
 }
+const ErrorsListItem = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ErrorsListItem>;
 export type ListOfErrors = ErrorsListItem[];
+const ListOfErrors = /*@__PURE__*/ __L.at(__c7, 2);
 export type PageBasedWarningCode =
   | "INFERENCING_PLAINTEXT_WITH_NATIVE_TRAINED_MODEL"
   | "INFERENCING_NATIVE_DOCUMENT_WITH_PLAINTEXT_TRAINED_MODEL"
   | (string & {});
+const PageBasedWarningCode = S.String;
+
 export interface WarningsListItem {
   Page?: number;
   WarnCode?: PageBasedWarningCode;
   WarnMessage?: string;
 }
+const WarningsListItem = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<WarningsListItem>;
 export type ListOfWarnings = WarningsListItem[];
+const ListOfWarnings = /*@__PURE__*/ __L.at(__c7, 4);
 export interface ClassifyDocumentResponse {
   Classes?: DocumentClass[];
   Labels?: DocumentLabel[];
@@ -500,10 +650,18 @@ export interface ClassifyDocumentResponse {
   Errors?: ErrorsListItem[];
   Warnings?: WarningsListItem[];
 }
+const ClassifyDocumentResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ClassifyDocumentResponse>;
 export interface ContainsPiiEntitiesRequest {
   Text: string;
   LanguageCode: LanguageCode;
 }
+const ContainsPiiEntitiesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ContainsPiiEntitiesRequest>;
 export type PiiEntityType =
   | "BANK_ACCOUNT_NUMBER"
   | "BANK_ROUTING"
@@ -543,25 +701,38 @@ export type PiiEntityType =
   | "IN_AADHAAR"
   | "IN_VOTER_NUMBER"
   | (string & {});
+const PiiEntityType = S.String;
+
 export interface EntityLabel {
   Name?: PiiEntityType;
   Score?: number;
 }
+const EntityLabel = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<EntityLabel>;
 export type ListOfEntityLabels = EntityLabel[];
+const ListOfEntityLabels = /*@__PURE__*/ __L.at(__c8, 0);
 export interface ContainsPiiEntitiesResponse {
   Labels?: EntityLabel[];
 }
+const ContainsPiiEntitiesResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ContainsPiiEntitiesResponse>;
 export type ComprehendFlywheelArn = string;
 export type ComprehendArnName = string;
 export type DatasetType = "TRAIN" | "TEST" | (string & {});
+const DatasetType = S.String;
+
 export type Description = string;
 export type AttributeNamesListItem = string;
 export type AttributeNamesList = string[];
+const AttributeNamesList = /*@__PURE__*/ __L.at(__c8, 2);
 export type S3Uri = string;
 export type AugmentedManifestsDocumentTypeFormat =
   | "PLAIN_TEXT_DOCUMENT"
   | "SEMI_STRUCTURED_DOCUMENT"
   | (string & {});
+const AugmentedManifestsDocumentTypeFormat = S.String;
+
 export interface DatasetAugmentedManifestsListItem {
   AttributeNames: string[];
   S3Uri: string;
@@ -569,35 +740,66 @@ export interface DatasetAugmentedManifestsListItem {
   SourceDocumentsS3Uri?: string;
   DocumentType?: AugmentedManifestsDocumentTypeFormat;
 }
+const DatasetAugmentedManifestsListItem = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DatasetAugmentedManifestsListItem>;
 export type DatasetAugmentedManifestsList = DatasetAugmentedManifestsListItem[];
+const DatasetAugmentedManifestsList = /*@__PURE__*/ __L.at(__c8, 4);
 export type DatasetDataFormat = "COMPREHEND_CSV" | "AUGMENTED_MANIFEST" | (string & {});
+const DatasetDataFormat = S.String;
+
 export type LabelDelimiter = string;
 export interface DatasetDocumentClassifierInputDataConfig {
   S3Uri: string;
   LabelDelimiter?: string;
 }
+const DatasetDocumentClassifierInputDataConfig = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DatasetDocumentClassifierInputDataConfig>;
 export interface DatasetEntityRecognizerAnnotations {
   S3Uri: string;
 }
+const DatasetEntityRecognizerAnnotations = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DatasetEntityRecognizerAnnotations>;
 export type InputFormat = "ONE_DOC_PER_FILE" | "ONE_DOC_PER_LINE" | (string & {});
+const InputFormat = S.String;
+
 export interface DatasetEntityRecognizerDocuments {
   S3Uri: string;
   InputFormat?: InputFormat;
 }
+const DatasetEntityRecognizerDocuments = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DatasetEntityRecognizerDocuments>;
 export interface DatasetEntityRecognizerEntityList {
   S3Uri: string;
 }
+const DatasetEntityRecognizerEntityList =
+  DatasetEntityRecognizerAnnotations as any as S.Schema<DatasetEntityRecognizerEntityList>;
 export interface DatasetEntityRecognizerInputDataConfig {
   Annotations?: DatasetEntityRecognizerAnnotations;
   Documents: DatasetEntityRecognizerDocuments;
   EntityList?: DatasetEntityRecognizerEntityList;
 }
+const DatasetEntityRecognizerInputDataConfig = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<DatasetEntityRecognizerInputDataConfig>;
 export interface DatasetInputDataConfig {
   AugmentedManifests?: DatasetAugmentedManifestsListItem[];
   DataFormat?: DatasetDataFormat;
   DocumentClassifierInputDataConfig?: DatasetDocumentClassifierInputDataConfig;
   EntityRecognizerInputDataConfig?: DatasetEntityRecognizerInputDataConfig;
 }
+const DatasetInputDataConfig = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<DatasetInputDataConfig>;
 export type ClientRequestTokenString = string;
 export type TagKey = string;
 export type TagValue = string;
@@ -605,7 +807,9 @@ export interface Tag {
   Key: string;
   Value?: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<Tag>;
 export type TagList = Tag[];
+const TagList = /*@__PURE__*/ __L.at(__c9, 3);
 export interface CreateDatasetRequest {
   FlywheelArn: string;
   DatasetName: string;
@@ -615,14 +819,23 @@ export interface CreateDatasetRequest {
   ClientRequestToken?: string;
   Tags?: Tag[];
 }
+const CreateDatasetRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<CreateDatasetRequest>;
 export type ComprehendDatasetArn = string;
 export interface CreateDatasetResponse {
   DatasetArn?: string;
 }
+const CreateDatasetResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<CreateDatasetResponse>;
 export type VersionName = string;
 export type IamRoleArn = string;
 export type DocumentClassifierDataFormat = "COMPREHEND_CSV" | "AUGMENTED_MANIFEST" | (string & {});
+const DocumentClassifierDataFormat = S.String;
+
 export type Split = "TRAIN" | "TEST" | (string & {});
+const Split = S.String;
+
 export interface AugmentedManifestsListItem {
   S3Uri: string;
   Split?: Split;
@@ -631,15 +844,26 @@ export interface AugmentedManifestsListItem {
   SourceDocumentsS3Uri?: string;
   DocumentType?: AugmentedManifestsDocumentTypeFormat;
 }
+const AugmentedManifestsListItem = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<AugmentedManifestsListItem>;
 export type DocumentClassifierAugmentedManifestsList = AugmentedManifestsListItem[];
+const DocumentClassifierAugmentedManifestsList = /*@__PURE__*/ __L.at(__c9, 7);
 export type DocumentClassifierDocumentTypeFormat =
   | "PLAIN_TEXT_DOCUMENT"
   | "SEMI_STRUCTURED_DOCUMENT"
   | (string & {});
+const DocumentClassifierDocumentTypeFormat = S.String;
+
 export interface DocumentClassifierDocuments {
   S3Uri: string;
   TestS3Uri?: string;
 }
+const DocumentClassifierDocuments = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<DocumentClassifierDocuments>;
 export interface DocumentClassifierInputDataConfig {
   DataFormat?: DocumentClassifierDataFormat;
   S3Uri?: string;
@@ -650,21 +874,34 @@ export interface DocumentClassifierInputDataConfig {
   Documents?: DocumentClassifierDocuments;
   DocumentReaderConfig?: DocumentReaderConfig;
 }
+const DocumentClassifierInputDataConfig = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<DocumentClassifierInputDataConfig>;
 export type KmsKeyId = string;
 export interface DocumentClassifierOutputDataConfig {
   S3Uri?: string;
   KmsKeyId?: string;
   FlywheelStatsS3Prefix?: string;
 }
+const DocumentClassifierOutputDataConfig = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<DocumentClassifierOutputDataConfig>;
 export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
+const SecurityGroupIds = AttributeNamesList as any as S.Schema<SecurityGroupIds>;
 export type SubnetId = string;
 export type Subnets = string[];
+const Subnets = AttributeNamesList as any as S.Schema<Subnets>;
 export interface VpcConfig {
   SecurityGroupIds: string[];
   Subnets: string[];
 }
+const VpcConfig = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<VpcConfig>;
 export type DocumentClassifierMode = "MULTI_CLASS" | "MULTI_LABEL" | (string & {});
+const DocumentClassifierMode = S.String;
+
 export type Policy = string;
 export interface CreateDocumentClassifierRequest {
   DocumentClassifierName: string;
@@ -681,10 +918,18 @@ export interface CreateDocumentClassifierRequest {
   ModelKmsKeyId?: string;
   ModelPolicy?: string;
 }
+const CreateDocumentClassifierRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<CreateDocumentClassifierRequest>;
 export type DocumentClassifierArn = string;
 export interface CreateDocumentClassifierResponse {
   DocumentClassifierArn?: string;
 }
+const CreateDocumentClassifierResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<CreateDocumentClassifierResponse>;
 export type ComprehendEndpointName = string;
 export type ComprehendModelArn = string;
 export type InferenceUnitsInteger = number;
@@ -697,30 +942,52 @@ export interface CreateEndpointRequest {
   DataAccessRoleArn?: string;
   FlywheelArn?: string;
 }
+const CreateEndpointRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<CreateEndpointRequest>;
 export type ComprehendEndpointArn = string;
 export interface CreateEndpointResponse {
   EndpointArn?: string;
   ModelArn?: string;
 }
+const CreateEndpointResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<CreateEndpointResponse>;
 export type EntityRecognizerDataFormat = "COMPREHEND_CSV" | "AUGMENTED_MANIFEST" | (string & {});
+const EntityRecognizerDataFormat = S.String;
+
 export type EntityTypeName = string;
 export interface EntityTypesListItem {
   Type: string;
 }
+const EntityTypesListItem = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<EntityTypesListItem>;
 export type EntityTypesList = EntityTypesListItem[];
+const EntityTypesList = /*@__PURE__*/ __L.at(__c11, 1);
 export interface EntityRecognizerDocuments {
   S3Uri: string;
   TestS3Uri?: string;
   InputFormat?: InputFormat;
 }
+const EntityRecognizerDocuments = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<EntityRecognizerDocuments>;
 export interface EntityRecognizerAnnotations {
   S3Uri: string;
   TestS3Uri?: string;
 }
+const EntityRecognizerAnnotations =
+  DocumentClassifierDocuments as any as S.Schema<EntityRecognizerAnnotations>;
 export interface EntityRecognizerEntityList {
   S3Uri: string;
 }
+const EntityRecognizerEntityList =
+  DatasetEntityRecognizerAnnotations as any as S.Schema<EntityRecognizerEntityList>;
 export type EntityRecognizerAugmentedManifestsList = AugmentedManifestsListItem[];
+const EntityRecognizerAugmentedManifestsList =
+  DocumentClassifierAugmentedManifestsList as any as S.Schema<EntityRecognizerAugmentedManifestsList>;
 export interface EntityRecognizerInputDataConfig {
   DataFormat?: EntityRecognizerDataFormat;
   EntityTypes: EntityTypesListItem[];
@@ -729,6 +996,10 @@ export interface EntityRecognizerInputDataConfig {
   EntityList?: EntityRecognizerEntityList;
   AugmentedManifests?: AugmentedManifestsListItem[];
 }
+const EntityRecognizerInputDataConfig = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<EntityRecognizerInputDataConfig>;
 export interface CreateEntityRecognizerRequest {
   RecognizerName: string;
   VersionName?: string;
@@ -742,25 +1013,45 @@ export interface CreateEntityRecognizerRequest {
   ModelKmsKeyId?: string;
   ModelPolicy?: string;
 }
+const CreateEntityRecognizerRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<CreateEntityRecognizerRequest>;
 export type EntityRecognizerArn = string;
 export interface CreateEntityRecognizerResponse {
   EntityRecognizerArn?: string;
 }
+const CreateEntityRecognizerResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<CreateEntityRecognizerResponse>;
 export type LabelListItem = string;
 export type LabelsList = string[];
+const LabelsList = AttributeNamesList as any as S.Schema<LabelsList>;
 export interface DocumentClassificationConfig {
   Mode: DocumentClassifierMode;
   Labels?: string[];
 }
+const DocumentClassificationConfig = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<DocumentClassificationConfig>;
 export interface EntityRecognitionConfig {
   EntityTypes: EntityTypesListItem[];
 }
+const EntityRecognitionConfig = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<EntityRecognitionConfig>;
 export interface TaskConfig {
   LanguageCode: LanguageCode;
   DocumentClassificationConfig?: DocumentClassificationConfig;
   EntityRecognitionConfig?: EntityRecognitionConfig;
 }
+const TaskConfig = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<TaskConfig>;
 export type ModelType = "DOCUMENT_CLASSIFIER" | "ENTITY_RECOGNIZER" | (string & {});
+const ModelType = S.String;
+
 export type FlywheelS3Uri = string;
 export interface DataSecurityConfig {
   ModelKmsKeyId?: string;
@@ -768,6 +1059,7 @@ export interface DataSecurityConfig {
   DataLakeKmsKeyId?: string;
   VpcConfig?: VpcConfig;
 }
+const DataSecurityConfig = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<DataSecurityConfig>;
 export interface CreateFlywheelRequest {
   FlywheelName: string;
   ActiveModelArn?: string;
@@ -779,36 +1071,83 @@ export interface CreateFlywheelRequest {
   ClientRequestToken?: string;
   Tags?: Tag[];
 }
+const CreateFlywheelRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<CreateFlywheelRequest>;
 export interface CreateFlywheelResponse {
   FlywheelArn?: string;
   ActiveModelArn?: string;
 }
+const CreateFlywheelResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<CreateFlywheelResponse>;
 export interface DeleteDocumentClassifierRequest {
   DocumentClassifierArn: string;
 }
+const DeleteDocumentClassifierRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<DeleteDocumentClassifierRequest>;
 export interface DeleteDocumentClassifierResponse {}
+const DeleteDocumentClassifierResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<DeleteDocumentClassifierResponse>;
 export interface DeleteEndpointRequest {
   EndpointArn: string;
 }
+const DeleteEndpointRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<DeleteEndpointRequest>;
 export interface DeleteEndpointResponse {}
+const DeleteEndpointResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<DeleteEndpointResponse>;
 export interface DeleteEntityRecognizerRequest {
   EntityRecognizerArn: string;
 }
+const DeleteEntityRecognizerRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<DeleteEntityRecognizerRequest>;
 export interface DeleteEntityRecognizerResponse {}
+const DeleteEntityRecognizerResponse =
+  DeleteEndpointResponse as any as S.Schema<DeleteEntityRecognizerResponse>;
 export interface DeleteFlywheelRequest {
   FlywheelArn: string;
 }
+const DeleteFlywheelRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<DeleteFlywheelRequest>;
 export interface DeleteFlywheelResponse {}
+const DeleteFlywheelResponse = DeleteEndpointResponse as any as S.Schema<DeleteFlywheelResponse>;
 export type PolicyRevisionId = string;
 export interface DeleteResourcePolicyRequest {
   ResourceArn: string;
   PolicyRevisionId?: string;
 }
+const DeleteResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
+const DeleteResourcePolicyResponse =
+  DeleteEndpointResponse as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DescribeDatasetRequest {
   DatasetArn: string;
 }
+const DescribeDatasetRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<DescribeDatasetRequest>;
 export type DatasetStatus = "CREATING" | "COMPLETED" | "FAILED" | (string & {});
+const DatasetStatus = S.String;
+
 export type AnyLengthString = string;
 export type NumberOfDocuments = number;
 export interface DatasetProperties {
@@ -823,13 +1162,22 @@ export interface DatasetProperties {
   CreationTime?: Date;
   EndTime?: Date;
 }
+const DatasetProperties = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<DatasetProperties>;
 export interface DescribeDatasetResponse {
   DatasetProperties?: DatasetProperties;
 }
+const DescribeDatasetResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<DescribeDatasetResponse>;
 export type JobId = string;
 export interface DescribeDocumentClassificationJobRequest {
   JobId: string;
 }
+const DescribeDocumentClassificationJobRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<DescribeDocumentClassificationJobRequest>;
 export type ComprehendArn = string;
 export type JobName = string;
 export type JobStatus =
@@ -840,15 +1188,19 @@ export type JobStatus =
   | "STOP_REQUESTED"
   | "STOPPED"
   | (string & {});
+const JobStatus = S.String;
+
 export interface InputDataConfig {
   S3Uri: string;
   InputFormat?: InputFormat;
   DocumentReaderConfig?: DocumentReaderConfig;
 }
+const InputDataConfig = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<InputDataConfig>;
 export interface OutputDataConfig {
   S3Uri: string;
   KmsKeyId?: string;
 }
+const OutputDataConfig = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<OutputDataConfig>;
 export interface DocumentClassificationJobProperties {
   JobId?: string;
   JobArn?: string;
@@ -865,12 +1217,24 @@ export interface DocumentClassificationJobProperties {
   VpcConfig?: VpcConfig;
   FlywheelArn?: string;
 }
+const DocumentClassificationJobProperties = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<DocumentClassificationJobProperties>;
 export interface DescribeDocumentClassificationJobResponse {
   DocumentClassificationJobProperties?: DocumentClassificationJobProperties;
 }
+const DescribeDocumentClassificationJobResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<DescribeDocumentClassificationJobResponse>;
 export interface DescribeDocumentClassifierRequest {
   DocumentClassifierArn: string;
 }
+const DescribeDocumentClassifierRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<DescribeDocumentClassifierRequest>;
 export type ModelStatus =
   | "SUBMITTED"
   | "TRAINING"
@@ -881,6 +1245,8 @@ export type ModelStatus =
   | "TRAINED"
   | "TRAINED_WITH_WARNING"
   | (string & {});
+const ModelStatus = S.String;
+
 export interface ClassifierEvaluationMetrics {
   Accuracy?: number;
   Precision?: number;
@@ -891,12 +1257,17 @@ export interface ClassifierEvaluationMetrics {
   MicroF1Score?: number;
   HammingLoss?: number;
 }
+const ClassifierEvaluationMetrics = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<ClassifierEvaluationMetrics>;
 export interface ClassifierMetadata {
   NumberOfLabels?: number;
   NumberOfTrainedDocuments?: number;
   NumberOfTestDocuments?: number;
   EvaluationMetrics?: ClassifierEvaluationMetrics;
 }
+const ClassifierMetadata = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<ClassifierMetadata>;
 export interface DocumentClassifierProperties {
   DocumentClassifierArn?: string;
   LanguageCode?: LanguageCode;
@@ -918,12 +1289,24 @@ export interface DocumentClassifierProperties {
   SourceModelArn?: string;
   FlywheelArn?: string;
 }
+const DocumentClassifierProperties = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<DocumentClassifierProperties>;
 export interface DescribeDocumentClassifierResponse {
   DocumentClassifierProperties?: DocumentClassifierProperties;
 }
+const DescribeDocumentClassifierResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<DescribeDocumentClassifierResponse>;
 export interface DescribeDominantLanguageDetectionJobRequest {
   JobId: string;
 }
+const DescribeDominantLanguageDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<DescribeDominantLanguageDetectionJobRequest>;
 export interface DominantLanguageDetectionJobProperties {
   JobId?: string;
   JobArn?: string;
@@ -938,12 +1321,24 @@ export interface DominantLanguageDetectionJobProperties {
   VolumeKmsKeyId?: string;
   VpcConfig?: VpcConfig;
 }
+const DominantLanguageDetectionJobProperties = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<DominantLanguageDetectionJobProperties>;
 export interface DescribeDominantLanguageDetectionJobResponse {
   DominantLanguageDetectionJobProperties?: DominantLanguageDetectionJobProperties;
 }
+const DescribeDominantLanguageDetectionJobResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<DescribeDominantLanguageDetectionJobResponse>;
 export interface DescribeEndpointRequest {
   EndpointArn: string;
 }
+const DescribeEndpointRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<DescribeEndpointRequest>;
 export type EndpointStatus =
   | "CREATING"
   | "DELETING"
@@ -951,6 +1346,8 @@ export type EndpointStatus =
   | "IN_SERVICE"
   | "UPDATING"
   | (string & {});
+const EndpointStatus = S.String;
+
 export interface EndpointProperties {
   EndpointArn?: string;
   Status?: EndpointStatus;
@@ -965,12 +1362,21 @@ export interface EndpointProperties {
   DesiredDataAccessRoleArn?: string;
   FlywheelArn?: string;
 }
+const EndpointProperties = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<EndpointProperties>;
 export interface DescribeEndpointResponse {
   EndpointProperties?: EndpointProperties;
 }
+const DescribeEndpointResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<DescribeEndpointResponse>;
 export interface DescribeEntitiesDetectionJobRequest {
   JobId: string;
 }
+const DescribeEntitiesDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<DescribeEntitiesDetectionJobRequest>;
 export interface EntitiesDetectionJobProperties {
   JobId?: string;
   JobArn?: string;
@@ -988,37 +1394,68 @@ export interface EntitiesDetectionJobProperties {
   VpcConfig?: VpcConfig;
   FlywheelArn?: string;
 }
+const EntitiesDetectionJobProperties = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<EntitiesDetectionJobProperties>;
 export interface DescribeEntitiesDetectionJobResponse {
   EntitiesDetectionJobProperties?: EntitiesDetectionJobProperties;
 }
+const DescribeEntitiesDetectionJobResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<DescribeEntitiesDetectionJobResponse>;
 export interface DescribeEntityRecognizerRequest {
   EntityRecognizerArn: string;
 }
+const DescribeEntityRecognizerRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<DescribeEntityRecognizerRequest>;
 export interface EntityRecognizerEvaluationMetrics {
   Precision?: number;
   Recall?: number;
   F1Score?: number;
 }
+const EntityRecognizerEvaluationMetrics = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<EntityRecognizerEvaluationMetrics>;
 export interface EntityTypesEvaluationMetrics {
   Precision?: number;
   Recall?: number;
   F1Score?: number;
 }
+const EntityTypesEvaluationMetrics =
+  EntityRecognizerEvaluationMetrics as any as S.Schema<EntityTypesEvaluationMetrics>;
 export interface EntityRecognizerMetadataEntityTypesListItem {
   Type?: string;
   EvaluationMetrics?: EntityTypesEvaluationMetrics;
   NumberOfTrainMentions?: number;
 }
+const EntityRecognizerMetadataEntityTypesListItem = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<EntityRecognizerMetadataEntityTypesListItem>;
 export type EntityRecognizerMetadataEntityTypesList = EntityRecognizerMetadataEntityTypesListItem[];
+const EntityRecognizerMetadataEntityTypesList = /*@__PURE__*/ __L.at(__c16, 4);
 export interface EntityRecognizerMetadata {
   NumberOfTrainedDocuments?: number;
   NumberOfTestDocuments?: number;
   EvaluationMetrics?: EntityRecognizerEvaluationMetrics;
   EntityTypes?: EntityRecognizerMetadataEntityTypesListItem[];
 }
+const EntityRecognizerMetadata = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<EntityRecognizerMetadata>;
 export interface EntityRecognizerOutputDataConfig {
   FlywheelStatsS3Prefix?: string;
 }
+const EntityRecognizerOutputDataConfig = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<EntityRecognizerOutputDataConfig>;
 export interface EntityRecognizerProperties {
   EntityRecognizerArn?: string;
   LanguageCode?: LanguageCode;
@@ -1039,14 +1476,27 @@ export interface EntityRecognizerProperties {
   FlywheelArn?: string;
   OutputDataConfig?: EntityRecognizerOutputDataConfig;
 }
+const EntityRecognizerProperties = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<EntityRecognizerProperties>;
 export interface DescribeEntityRecognizerResponse {
   EntityRecognizerProperties?: EntityRecognizerProperties;
 }
+const DescribeEntityRecognizerResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<DescribeEntityRecognizerResponse>;
 export interface DescribeEventsDetectionJobRequest {
   JobId: string;
 }
+const DescribeEventsDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<DescribeEventsDetectionJobRequest>;
 export type EventTypeString = string;
 export type TargetEventTypes = string[];
+const TargetEventTypes = AttributeNamesList as any as S.Schema<TargetEventTypes>;
 export interface EventsDetectionJobProperties {
   JobId?: string;
   JobArn?: string;
@@ -1061,12 +1511,24 @@ export interface EventsDetectionJobProperties {
   DataAccessRoleArn?: string;
   TargetEventTypes?: string[];
 }
+const EventsDetectionJobProperties = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<EventsDetectionJobProperties>;
 export interface DescribeEventsDetectionJobResponse {
   EventsDetectionJobProperties?: EventsDetectionJobProperties;
 }
+const DescribeEventsDetectionJobResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<DescribeEventsDetectionJobResponse>;
 export interface DescribeFlywheelRequest {
   FlywheelArn: string;
 }
+const DescribeFlywheelRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<DescribeFlywheelRequest>;
 export type FlywheelStatus =
   | "CREATING"
   | "ACTIVE"
@@ -1074,6 +1536,8 @@ export type FlywheelStatus =
   | "DELETING"
   | "FAILED"
   | (string & {});
+const FlywheelStatus = S.String;
+
 export type FlywheelIterationId = string;
 export interface FlywheelProperties {
   FlywheelArn?: string;
@@ -1089,13 +1553,22 @@ export interface FlywheelProperties {
   LastModifiedTime?: Date;
   LatestFlywheelIteration?: string;
 }
+const FlywheelProperties = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<FlywheelProperties>;
 export interface DescribeFlywheelResponse {
   FlywheelProperties?: FlywheelProperties;
 }
+const DescribeFlywheelResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<DescribeFlywheelResponse>;
 export interface DescribeFlywheelIterationRequest {
   FlywheelArn: string;
   FlywheelIterationId: string;
 }
+const DescribeFlywheelIterationRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<DescribeFlywheelIterationRequest>;
 export type FlywheelIterationStatus =
   | "TRAINING"
   | "EVALUATING"
@@ -1104,12 +1577,18 @@ export type FlywheelIterationStatus =
   | "STOP_REQUESTED"
   | "STOPPED"
   | (string & {});
+const FlywheelIterationStatus = S.String;
+
 export interface FlywheelModelEvaluationMetrics {
   AverageF1Score?: number;
   AveragePrecision?: number;
   AverageRecall?: number;
   AverageAccuracy?: number;
 }
+const FlywheelModelEvaluationMetrics = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<FlywheelModelEvaluationMetrics>;
 export interface FlywheelIterationProperties {
   FlywheelArn?: string;
   FlywheelIterationId?: string;
@@ -1123,12 +1602,24 @@ export interface FlywheelIterationProperties {
   TrainedModelMetrics?: FlywheelModelEvaluationMetrics;
   EvaluationManifestS3Prefix?: string;
 }
+const FlywheelIterationProperties = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<FlywheelIterationProperties>;
 export interface DescribeFlywheelIterationResponse {
   FlywheelIterationProperties?: FlywheelIterationProperties;
 }
+const DescribeFlywheelIterationResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<DescribeFlywheelIterationResponse>;
 export interface DescribeKeyPhrasesDetectionJobRequest {
   JobId: string;
 }
+const DescribeKeyPhrasesDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<DescribeKeyPhrasesDetectionJobRequest>;
 export interface KeyPhrasesDetectionJobProperties {
   JobId?: string;
   JobArn?: string;
@@ -1144,25 +1635,45 @@ export interface KeyPhrasesDetectionJobProperties {
   VolumeKmsKeyId?: string;
   VpcConfig?: VpcConfig;
 }
+const KeyPhrasesDetectionJobProperties = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<KeyPhrasesDetectionJobProperties>;
 export interface DescribeKeyPhrasesDetectionJobResponse {
   KeyPhrasesDetectionJobProperties?: KeyPhrasesDetectionJobProperties;
 }
+const DescribeKeyPhrasesDetectionJobResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<DescribeKeyPhrasesDetectionJobResponse>;
 export interface DescribePiiEntitiesDetectionJobRequest {
   JobId: string;
 }
+const DescribePiiEntitiesDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<DescribePiiEntitiesDetectionJobRequest>;
 export interface PiiOutputDataConfig {
   S3Uri: string;
   KmsKeyId?: string;
 }
+const PiiOutputDataConfig = OutputDataConfig as any as S.Schema<PiiOutputDataConfig>;
 export type ListOfPiiEntityTypes = PiiEntityType[];
+const ListOfPiiEntityTypes =
+  ListOfDocumentReadFeatureTypes as any as S.Schema<ListOfPiiEntityTypes>;
 export type PiiEntitiesDetectionMaskMode = "MASK" | "REPLACE_WITH_PII_ENTITY_TYPE" | (string & {});
+const PiiEntitiesDetectionMaskMode = S.String;
+
 export type MaskCharacter = string;
 export interface RedactionConfig {
   PiiEntityTypes?: PiiEntityType[];
   MaskMode?: PiiEntitiesDetectionMaskMode;
   MaskCharacter?: string;
 }
+const RedactionConfig = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<RedactionConfig>;
 export type PiiEntitiesDetectionMode = "ONLY_REDACTION" | "ONLY_OFFSETS" | (string & {});
+const PiiEntitiesDetectionMode = S.String;
+
 export interface PiiEntitiesDetectionJobProperties {
   JobId?: string;
   JobArn?: string;
@@ -1178,21 +1689,41 @@ export interface PiiEntitiesDetectionJobProperties {
   DataAccessRoleArn?: string;
   Mode?: PiiEntitiesDetectionMode;
 }
+const PiiEntitiesDetectionJobProperties = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<PiiEntitiesDetectionJobProperties>;
 export interface DescribePiiEntitiesDetectionJobResponse {
   PiiEntitiesDetectionJobProperties?: PiiEntitiesDetectionJobProperties;
 }
+const DescribePiiEntitiesDetectionJobResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<DescribePiiEntitiesDetectionJobResponse>;
 export interface DescribeResourcePolicyRequest {
   ResourceArn: string;
 }
+const DescribeResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<DescribeResourcePolicyRequest>;
 export interface DescribeResourcePolicyResponse {
   ResourcePolicy?: string;
   CreationTime?: Date;
   LastModifiedTime?: Date;
   PolicyRevisionId?: string;
 }
+const DescribeResourcePolicyResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<DescribeResourcePolicyResponse>;
 export interface DescribeSentimentDetectionJobRequest {
   JobId: string;
 }
+const DescribeSentimentDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<DescribeSentimentDetectionJobRequest>;
 export interface SentimentDetectionJobProperties {
   JobId?: string;
   JobArn?: string;
@@ -1208,12 +1739,22 @@ export interface SentimentDetectionJobProperties {
   VolumeKmsKeyId?: string;
   VpcConfig?: VpcConfig;
 }
+const SentimentDetectionJobProperties =
+  KeyPhrasesDetectionJobProperties as any as S.Schema<SentimentDetectionJobProperties>;
 export interface DescribeSentimentDetectionJobResponse {
   SentimentDetectionJobProperties?: SentimentDetectionJobProperties;
 }
+const DescribeSentimentDetectionJobResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<DescribeSentimentDetectionJobResponse>;
 export interface DescribeTargetedSentimentDetectionJobRequest {
   JobId: string;
 }
+const DescribeTargetedSentimentDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<DescribeTargetedSentimentDetectionJobRequest>;
 export interface TargetedSentimentDetectionJobProperties {
   JobId?: string;
   JobArn?: string;
@@ -1229,12 +1770,22 @@ export interface TargetedSentimentDetectionJobProperties {
   VolumeKmsKeyId?: string;
   VpcConfig?: VpcConfig;
 }
+const TargetedSentimentDetectionJobProperties =
+  KeyPhrasesDetectionJobProperties as any as S.Schema<TargetedSentimentDetectionJobProperties>;
 export interface DescribeTargetedSentimentDetectionJobResponse {
   TargetedSentimentDetectionJobProperties?: TargetedSentimentDetectionJobProperties;
 }
+const DescribeTargetedSentimentDetectionJobResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<DescribeTargetedSentimentDetectionJobResponse>;
 export interface DescribeTopicsDetectionJobRequest {
   JobId: string;
 }
+const DescribeTopicsDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<DescribeTopicsDetectionJobRequest>;
 export interface TopicsDetectionJobProperties {
   JobId?: string;
   JobArn?: string;
@@ -1250,15 +1801,31 @@ export interface TopicsDetectionJobProperties {
   VolumeKmsKeyId?: string;
   VpcConfig?: VpcConfig;
 }
+const TopicsDetectionJobProperties = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<TopicsDetectionJobProperties>;
 export interface DescribeTopicsDetectionJobResponse {
   TopicsDetectionJobProperties?: TopicsDetectionJobProperties;
 }
+const DescribeTopicsDetectionJobResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<DescribeTopicsDetectionJobResponse>;
 export interface DetectDominantLanguageRequest {
   Text: string | redacted.Redacted<string>;
 }
+const DetectDominantLanguageRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<DetectDominantLanguageRequest>;
 export interface DetectDominantLanguageResponse {
   Languages?: DominantLanguage[];
 }
+const DetectDominantLanguageResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<DetectDominantLanguageResponse>;
 export type EntityRecognizerEndpointArn = string;
 export interface DetectEntitiesRequest {
   Text?: string | redacted.Redacted<string>;
@@ -1267,29 +1834,47 @@ export interface DetectEntitiesRequest {
   Bytes?: Uint8Array;
   DocumentReaderConfig?: DocumentReaderConfig;
 }
+const DetectEntitiesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<DetectEntitiesRequest>;
 export type BlockType = "LINE" | "WORD" | (string & {});
+const BlockType = S.String;
+
 export interface BoundingBox {
   Height?: number;
   Left?: number;
   Top?: number;
   Width?: number;
 }
+const BoundingBox = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<BoundingBox>;
 export interface Point {
   X?: number;
   Y?: number;
 }
+const Point = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<Point>;
 export type Polygon = Point[];
+const Polygon = /*@__PURE__*/ __L.at(__c21, 0);
 export interface Geometry {
   BoundingBox?: BoundingBox;
   Polygon?: Point[];
 }
+const Geometry = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<Geometry>;
 export type StringList = string[];
+const StringList = AttributeNamesList as any as S.Schema<StringList>;
 export type RelationshipType = "CHILD" | (string & {});
+const RelationshipType = S.String;
+
 export interface RelationshipsListItem {
   Ids?: string[];
   Type?: RelationshipType;
 }
+const RelationshipsListItem = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<RelationshipsListItem>;
 export type ListOfRelationships = RelationshipsListItem[];
+const ListOfRelationships = /*@__PURE__*/ __L.at(__c21, 3);
 export interface Block {
   Id?: string;
   BlockType?: BlockType;
@@ -1298,7 +1883,9 @@ export interface Block {
   Geometry?: Geometry;
   Relationships?: RelationshipsListItem[];
 }
+const Block = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<Block>;
 export type ListOfBlocks = Block[];
+const ListOfBlocks = /*@__PURE__*/ __L.at(__c21, 5);
 export interface DetectEntitiesResponse {
   Entities?: Entity[];
   DocumentMetadata?: DocumentMetadata;
@@ -1306,57 +1893,103 @@ export interface DetectEntitiesResponse {
   Blocks?: Block[];
   Errors?: ErrorsListItem[];
 }
+const DetectEntitiesResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<DetectEntitiesResponse>;
 export interface DetectKeyPhrasesRequest {
   Text: string | redacted.Redacted<string>;
   LanguageCode: LanguageCode;
 }
+const DetectKeyPhrasesRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<DetectKeyPhrasesRequest>;
 export interface DetectKeyPhrasesResponse {
   KeyPhrases?: KeyPhrase[];
 }
+const DetectKeyPhrasesResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<DetectKeyPhrasesResponse>;
 export interface DetectPiiEntitiesRequest {
   Text: string;
   LanguageCode: LanguageCode;
 }
+const DetectPiiEntitiesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<DetectPiiEntitiesRequest>;
 export interface PiiEntity {
   Score?: number;
   Type?: PiiEntityType;
   BeginOffset?: number;
   EndOffset?: number;
 }
+const PiiEntity = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<PiiEntity>;
 export type ListOfPiiEntities = PiiEntity[];
+const ListOfPiiEntities = /*@__PURE__*/ __L.at(__c22, 3);
 export interface DetectPiiEntitiesResponse {
   Entities?: PiiEntity[];
 }
+const DetectPiiEntitiesResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<DetectPiiEntitiesResponse>;
 export interface DetectSentimentRequest {
   Text: string | redacted.Redacted<string>;
   LanguageCode: LanguageCode;
 }
+const DetectSentimentRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<DetectSentimentRequest>;
 export interface DetectSentimentResponse {
   Sentiment?: SentimentType;
   SentimentScore?: SentimentScore;
 }
+const DetectSentimentResponse = MentionSentiment as any as S.Schema<DetectSentimentResponse>;
 export interface DetectSyntaxRequest {
   Text: string | redacted.Redacted<string>;
   LanguageCode: SyntaxLanguageCode;
 }
+const DetectSyntaxRequest = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<DetectSyntaxRequest>;
 export interface DetectSyntaxResponse {
   SyntaxTokens?: SyntaxToken[];
 }
+const DetectSyntaxResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<DetectSyntaxResponse>;
 export interface DetectTargetedSentimentRequest {
   Text: string | redacted.Redacted<string>;
   LanguageCode: LanguageCode;
 }
+const DetectTargetedSentimentRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<DetectTargetedSentimentRequest>;
 export interface DetectTargetedSentimentResponse {
   Entities?: TargetedSentimentEntity[];
 }
+const DetectTargetedSentimentResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<DetectTargetedSentimentResponse>;
 export interface TextSegment {
   Text: string | redacted.Redacted<string>;
 }
+const TextSegment = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<TextSegment>;
 export type ListOfTextSegments = TextSegment[];
+const ListOfTextSegments = /*@__PURE__*/ __L.at(__c23, 3);
 export interface DetectToxicContentRequest {
   TextSegments: TextSegment[];
   LanguageCode: LanguageCode;
 }
+const DetectToxicContentRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<DetectToxicContentRequest>;
 export type ToxicContentType =
   | "GRAPHIC"
   | "HARASSMENT_OR_ABUSE"
@@ -1371,14 +2004,21 @@ export interface ToxicContent {
   Score?: number;
 }
 export type ListOfToxicContent = ToxicContent[];
+const ListOfToxicContent = ListOfEntityLabels as any as S.Schema<ListOfToxicContent>;
 export interface ToxicLabels {
   Labels?: ToxicContent[];
   Toxicity?: number;
 }
+const ToxicLabels = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<ToxicLabels>;
 export type ListOfToxicLabels = ToxicLabels[];
+const ListOfToxicLabels = /*@__PURE__*/ __L.at(__c23, 6);
 export interface DetectToxicContentResponse {
   ResultList?: ToxicLabels[];
 }
+const DetectToxicContentResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<DetectToxicContentResponse>;
 export interface ImportModelRequest {
   SourceModelArn: string;
   ModelName?: string;
@@ -1387,15 +2027,18 @@ export interface ImportModelRequest {
   DataAccessRoleArn?: string;
   Tags?: Tag[];
 }
+const ImportModelRequest = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<ImportModelRequest>;
 export interface ImportModelResponse {
   ModelArn?: string;
 }
+const ImportModelResponse = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<ImportModelResponse>;
 export interface DatasetFilter {
   Status?: DatasetStatus;
   DatasetType?: DatasetType;
   CreationTimeAfter?: Date;
   CreationTimeBefore?: Date;
 }
+const DatasetFilter = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<DatasetFilter>;
 export type MaxResultsInteger = number;
 export interface ListDatasetsRequest {
   FlywheelArn?: string;
@@ -1403,47 +2046,83 @@ export interface ListDatasetsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListDatasetsRequest = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<ListDatasetsRequest>;
 export type DatasetPropertiesList = DatasetProperties[];
+const DatasetPropertiesList = /*@__PURE__*/ __L.at(__c24, 4);
 export interface ListDatasetsResponse {
   DatasetPropertiesList?: DatasetProperties[];
   NextToken?: string;
 }
+const ListDatasetsResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<ListDatasetsResponse>;
 export interface DocumentClassificationJobFilter {
   JobName?: string;
   JobStatus?: JobStatus;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
 }
+const DocumentClassificationJobFilter = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<DocumentClassificationJobFilter>;
 export interface ListDocumentClassificationJobsRequest {
   Filter?: DocumentClassificationJobFilter;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListDocumentClassificationJobsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<ListDocumentClassificationJobsRequest>;
 export type DocumentClassificationJobPropertiesList = DocumentClassificationJobProperties[];
+const DocumentClassificationJobPropertiesList = /*@__PURE__*/ __L.at(__c25, 0);
 export interface ListDocumentClassificationJobsResponse {
   DocumentClassificationJobPropertiesList?: DocumentClassificationJobProperties[];
   NextToken?: string;
 }
+const ListDocumentClassificationJobsResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<ListDocumentClassificationJobsResponse>;
 export interface DocumentClassifierFilter {
   Status?: ModelStatus;
   DocumentClassifierName?: string;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
 }
+const DocumentClassifierFilter = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<DocumentClassifierFilter>;
 export interface ListDocumentClassifiersRequest {
   Filter?: DocumentClassifierFilter;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListDocumentClassifiersRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<ListDocumentClassifiersRequest>;
 export type DocumentClassifierPropertiesList = DocumentClassifierProperties[];
+const DocumentClassifierPropertiesList = /*@__PURE__*/ __L.at(__c25, 4);
 export interface ListDocumentClassifiersResponse {
   DocumentClassifierPropertiesList?: DocumentClassifierProperties[];
   NextToken?: string;
 }
+const ListDocumentClassifiersResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<ListDocumentClassifiersResponse>;
 export interface ListDocumentClassifierSummariesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListDocumentClassifierSummariesRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<ListDocumentClassifierSummariesRequest>;
 export interface DocumentClassifierSummary {
   DocumentClassifierName?: string;
   NumberOfVersions?: number;
@@ -1451,79 +2130,137 @@ export interface DocumentClassifierSummary {
   LatestVersionName?: string;
   LatestVersionStatus?: ModelStatus;
 }
+const DocumentClassifierSummary = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<DocumentClassifierSummary>;
 export type DocumentClassifierSummariesList = DocumentClassifierSummary[];
+const DocumentClassifierSummariesList = /*@__PURE__*/ __L.at(__c26, 0);
 export interface ListDocumentClassifierSummariesResponse {
   DocumentClassifierSummariesList?: DocumentClassifierSummary[];
   NextToken?: string;
 }
+const ListDocumentClassifierSummariesResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<ListDocumentClassifierSummariesResponse>;
 export interface DominantLanguageDetectionJobFilter {
   JobName?: string;
   JobStatus?: JobStatus;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
 }
+const DominantLanguageDetectionJobFilter =
+  DocumentClassificationJobFilter as any as S.Schema<DominantLanguageDetectionJobFilter>;
 export interface ListDominantLanguageDetectionJobsRequest {
   Filter?: DominantLanguageDetectionJobFilter;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListDominantLanguageDetectionJobsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<ListDominantLanguageDetectionJobsRequest>;
 export type DominantLanguageDetectionJobPropertiesList = DominantLanguageDetectionJobProperties[];
+const DominantLanguageDetectionJobPropertiesList = /*@__PURE__*/ __L.at(__c26, 3);
 export interface ListDominantLanguageDetectionJobsResponse {
   DominantLanguageDetectionJobPropertiesList?: DominantLanguageDetectionJobProperties[];
   NextToken?: string;
 }
+const ListDominantLanguageDetectionJobsResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<ListDominantLanguageDetectionJobsResponse>;
 export interface EndpointFilter {
   ModelArn?: string;
   Status?: EndpointStatus;
   CreationTimeBefore?: Date;
   CreationTimeAfter?: Date;
 }
+const EndpointFilter = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<EndpointFilter>;
 export interface ListEndpointsRequest {
   Filter?: EndpointFilter;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListEndpointsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<ListEndpointsRequest>;
 export type EndpointPropertiesList = EndpointProperties[];
+const EndpointPropertiesList = /*@__PURE__*/ __L.at(__c26, 7);
 export interface ListEndpointsResponse {
   EndpointPropertiesList?: EndpointProperties[];
   NextToken?: string;
 }
+const ListEndpointsResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<ListEndpointsResponse>;
 export interface EntitiesDetectionJobFilter {
   JobName?: string;
   JobStatus?: JobStatus;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
 }
+const EntitiesDetectionJobFilter =
+  DocumentClassificationJobFilter as any as S.Schema<EntitiesDetectionJobFilter>;
 export interface ListEntitiesDetectionJobsRequest {
   Filter?: EntitiesDetectionJobFilter;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListEntitiesDetectionJobsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<ListEntitiesDetectionJobsRequest>;
 export type EntitiesDetectionJobPropertiesList = EntitiesDetectionJobProperties[];
+const EntitiesDetectionJobPropertiesList = /*@__PURE__*/ __L.at(__c27, 2);
 export interface ListEntitiesDetectionJobsResponse {
   EntitiesDetectionJobPropertiesList?: EntitiesDetectionJobProperties[];
   NextToken?: string;
 }
+const ListEntitiesDetectionJobsResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<ListEntitiesDetectionJobsResponse>;
 export interface EntityRecognizerFilter {
   Status?: ModelStatus;
   RecognizerName?: string;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
 }
+const EntityRecognizerFilter = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<EntityRecognizerFilter>;
 export interface ListEntityRecognizersRequest {
   Filter?: EntityRecognizerFilter;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListEntityRecognizersRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<ListEntityRecognizersRequest>;
 export type EntityRecognizerPropertiesList = EntityRecognizerProperties[];
+const EntityRecognizerPropertiesList = /*@__PURE__*/ __L.at(__c27, 6);
 export interface ListEntityRecognizersResponse {
   EntityRecognizerPropertiesList?: EntityRecognizerProperties[];
   NextToken?: string;
 }
+const ListEntityRecognizersResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<ListEntityRecognizersResponse>;
 export interface ListEntityRecognizerSummariesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListEntityRecognizerSummariesRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<ListEntityRecognizerSummariesRequest>;
 export interface EntityRecognizerSummary {
   RecognizerName?: string;
   NumberOfVersions?: number;
@@ -1531,52 +2268,92 @@ export interface EntityRecognizerSummary {
   LatestVersionName?: string;
   LatestVersionStatus?: ModelStatus;
 }
+const EntityRecognizerSummary = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<EntityRecognizerSummary>;
 export type EntityRecognizerSummariesList = EntityRecognizerSummary[];
+const EntityRecognizerSummariesList = /*@__PURE__*/ __L.at(__c28, 2);
 export interface ListEntityRecognizerSummariesResponse {
   EntityRecognizerSummariesList?: EntityRecognizerSummary[];
   NextToken?: string;
 }
+const ListEntityRecognizerSummariesResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<ListEntityRecognizerSummariesResponse>;
 export interface EventsDetectionJobFilter {
   JobName?: string;
   JobStatus?: JobStatus;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
 }
+const EventsDetectionJobFilter = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<EventsDetectionJobFilter>;
 export interface ListEventsDetectionJobsRequest {
   Filter?: EventsDetectionJobFilter;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListEventsDetectionJobsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<ListEventsDetectionJobsRequest>;
 export type EventsDetectionJobPropertiesList = EventsDetectionJobProperties[];
+const EventsDetectionJobPropertiesList = /*@__PURE__*/ __L.at(__c28, 6);
 export interface ListEventsDetectionJobsResponse {
   EventsDetectionJobPropertiesList?: EventsDetectionJobProperties[];
   NextToken?: string;
 }
+const ListEventsDetectionJobsResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<ListEventsDetectionJobsResponse>;
 export interface FlywheelIterationFilter {
   CreationTimeAfter?: Date;
   CreationTimeBefore?: Date;
 }
+const FlywheelIterationFilter = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<FlywheelIterationFilter>;
 export interface ListFlywheelIterationHistoryRequest {
   FlywheelArn: string;
   Filter?: FlywheelIterationFilter;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListFlywheelIterationHistoryRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<ListFlywheelIterationHistoryRequest>;
 export type FlywheelIterationPropertiesList = FlywheelIterationProperties[];
+const FlywheelIterationPropertiesList = /*@__PURE__*/ __L.at(__c29, 2);
 export interface ListFlywheelIterationHistoryResponse {
   FlywheelIterationPropertiesList?: FlywheelIterationProperties[];
   NextToken?: string;
 }
+const ListFlywheelIterationHistoryResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<ListFlywheelIterationHistoryResponse>;
 export interface FlywheelFilter {
   Status?: FlywheelStatus;
   CreationTimeAfter?: Date;
   CreationTimeBefore?: Date;
 }
+const FlywheelFilter = /*@__PURE__*/ __L.at(__c29, 4) as any as S.Schema<FlywheelFilter>;
 export interface ListFlywheelsRequest {
   Filter?: FlywheelFilter;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListFlywheelsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<ListFlywheelsRequest>;
 export interface FlywheelSummary {
   FlywheelArn?: string;
   ActiveModelArn?: string;
@@ -1588,106 +2365,185 @@ export interface FlywheelSummary {
   LastModifiedTime?: Date;
   LatestFlywheelIteration?: string;
 }
+const FlywheelSummary = /*@__PURE__*/ __L.at(__c29, 6) as any as S.Schema<FlywheelSummary>;
 export type FlywheelSummaryList = FlywheelSummary[];
+const FlywheelSummaryList = /*@__PURE__*/ __L.at(__c29, 7);
 export interface ListFlywheelsResponse {
   FlywheelSummaryList?: FlywheelSummary[];
   NextToken?: string;
 }
+const ListFlywheelsResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<ListFlywheelsResponse>;
 export interface KeyPhrasesDetectionJobFilter {
   JobName?: string;
   JobStatus?: JobStatus;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
 }
+const KeyPhrasesDetectionJobFilter =
+  DocumentClassificationJobFilter as any as S.Schema<KeyPhrasesDetectionJobFilter>;
 export interface ListKeyPhrasesDetectionJobsRequest {
   Filter?: KeyPhrasesDetectionJobFilter;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListKeyPhrasesDetectionJobsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<ListKeyPhrasesDetectionJobsRequest>;
 export type KeyPhrasesDetectionJobPropertiesList = KeyPhrasesDetectionJobProperties[];
+const KeyPhrasesDetectionJobPropertiesList = /*@__PURE__*/ __L.at(__c30, 2);
 export interface ListKeyPhrasesDetectionJobsResponse {
   KeyPhrasesDetectionJobPropertiesList?: KeyPhrasesDetectionJobProperties[];
   NextToken?: string;
 }
+const ListKeyPhrasesDetectionJobsResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<ListKeyPhrasesDetectionJobsResponse>;
 export interface PiiEntitiesDetectionJobFilter {
   JobName?: string;
   JobStatus?: JobStatus;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
 }
+const PiiEntitiesDetectionJobFilter =
+  DocumentClassificationJobFilter as any as S.Schema<PiiEntitiesDetectionJobFilter>;
 export interface ListPiiEntitiesDetectionJobsRequest {
   Filter?: PiiEntitiesDetectionJobFilter;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListPiiEntitiesDetectionJobsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<ListPiiEntitiesDetectionJobsRequest>;
 export type PiiEntitiesDetectionJobPropertiesList = PiiEntitiesDetectionJobProperties[];
+const PiiEntitiesDetectionJobPropertiesList = /*@__PURE__*/ __L.at(__c30, 5);
 export interface ListPiiEntitiesDetectionJobsResponse {
   PiiEntitiesDetectionJobPropertiesList?: PiiEntitiesDetectionJobProperties[];
   NextToken?: string;
 }
+const ListPiiEntitiesDetectionJobsResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<ListPiiEntitiesDetectionJobsResponse>;
 export interface SentimentDetectionJobFilter {
   JobName?: string;
   JobStatus?: JobStatus;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
 }
+const SentimentDetectionJobFilter =
+  DocumentClassificationJobFilter as any as S.Schema<SentimentDetectionJobFilter>;
 export interface ListSentimentDetectionJobsRequest {
   Filter?: SentimentDetectionJobFilter;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListSentimentDetectionJobsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<ListSentimentDetectionJobsRequest>;
 export type SentimentDetectionJobPropertiesList = SentimentDetectionJobProperties[];
+const SentimentDetectionJobPropertiesList =
+  KeyPhrasesDetectionJobPropertiesList as any as S.Schema<SentimentDetectionJobPropertiesList>;
 export interface ListSentimentDetectionJobsResponse {
   SentimentDetectionJobPropertiesList?: SentimentDetectionJobProperties[];
   NextToken?: string;
 }
+const ListSentimentDetectionJobsResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<ListSentimentDetectionJobsResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   ResourceArn?: string;
   Tags?: Tag[];
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TargetedSentimentDetectionJobFilter {
   JobName?: string;
   JobStatus?: JobStatus;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
 }
+const TargetedSentimentDetectionJobFilter =
+  DocumentClassificationJobFilter as any as S.Schema<TargetedSentimentDetectionJobFilter>;
 export interface ListTargetedSentimentDetectionJobsRequest {
   Filter?: TargetedSentimentDetectionJobFilter;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListTargetedSentimentDetectionJobsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<ListTargetedSentimentDetectionJobsRequest>;
 export type TargetedSentimentDetectionJobPropertiesList = TargetedSentimentDetectionJobProperties[];
+const TargetedSentimentDetectionJobPropertiesList =
+  KeyPhrasesDetectionJobPropertiesList as any as S.Schema<TargetedSentimentDetectionJobPropertiesList>;
 export interface ListTargetedSentimentDetectionJobsResponse {
   TargetedSentimentDetectionJobPropertiesList?: TargetedSentimentDetectionJobProperties[];
   NextToken?: string;
 }
+const ListTargetedSentimentDetectionJobsResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<ListTargetedSentimentDetectionJobsResponse>;
 export interface TopicsDetectionJobFilter {
   JobName?: string;
   JobStatus?: JobStatus;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
 }
+const TopicsDetectionJobFilter =
+  EventsDetectionJobFilter as any as S.Schema<TopicsDetectionJobFilter>;
 export interface ListTopicsDetectionJobsRequest {
   Filter?: TopicsDetectionJobFilter;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListTopicsDetectionJobsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<ListTopicsDetectionJobsRequest>;
 export type TopicsDetectionJobPropertiesList = TopicsDetectionJobProperties[];
+const TopicsDetectionJobPropertiesList = /*@__PURE__*/ __L.at(__c31, 6);
 export interface ListTopicsDetectionJobsResponse {
   TopicsDetectionJobPropertiesList?: TopicsDetectionJobProperties[];
   NextToken?: string;
 }
+const ListTopicsDetectionJobsResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<ListTopicsDetectionJobsResponse>;
 export interface PutResourcePolicyRequest {
   ResourceArn: string;
   ResourcePolicy: string;
   PolicyRevisionId?: string;
 }
+const PutResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<PutResourcePolicyRequest>;
 export interface PutResourcePolicyResponse {
   PolicyRevisionId?: string;
 }
+const PutResourcePolicyResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<PutResourcePolicyResponse>;
 export interface StartDocumentClassificationJobRequest {
   JobName?: string;
   DocumentClassifierArn?: string;
@@ -1700,12 +2556,20 @@ export interface StartDocumentClassificationJobRequest {
   Tags?: Tag[];
   FlywheelArn?: string;
 }
+const StartDocumentClassificationJobRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<StartDocumentClassificationJobRequest>;
 export interface StartDocumentClassificationJobResponse {
   JobId?: string;
   JobArn?: string;
   JobStatus?: JobStatus;
   DocumentClassifierArn?: string;
 }
+const StartDocumentClassificationJobResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<StartDocumentClassificationJobResponse>;
 export interface StartDominantLanguageDetectionJobRequest {
   InputDataConfig: InputDataConfig;
   OutputDataConfig: OutputDataConfig;
@@ -1716,11 +2580,19 @@ export interface StartDominantLanguageDetectionJobRequest {
   VpcConfig?: VpcConfig;
   Tags?: Tag[];
 }
+const StartDominantLanguageDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<StartDominantLanguageDetectionJobRequest>;
 export interface StartDominantLanguageDetectionJobResponse {
   JobId?: string;
   JobArn?: string;
   JobStatus?: JobStatus;
 }
+const StartDominantLanguageDetectionJobResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<StartDominantLanguageDetectionJobResponse>;
 export interface StartEntitiesDetectionJobRequest {
   InputDataConfig: InputDataConfig;
   OutputDataConfig: OutputDataConfig;
@@ -1734,12 +2606,20 @@ export interface StartEntitiesDetectionJobRequest {
   Tags?: Tag[];
   FlywheelArn?: string;
 }
+const StartEntitiesDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<StartEntitiesDetectionJobRequest>;
 export interface StartEntitiesDetectionJobResponse {
   JobId?: string;
   JobArn?: string;
   JobStatus?: JobStatus;
   EntityRecognizerArn?: string;
 }
+const StartEntitiesDetectionJobResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<StartEntitiesDetectionJobResponse>;
 export interface StartEventsDetectionJobRequest {
   InputDataConfig: InputDataConfig;
   OutputDataConfig: OutputDataConfig;
@@ -1750,19 +2630,33 @@ export interface StartEventsDetectionJobRequest {
   TargetEventTypes: string[];
   Tags?: Tag[];
 }
+const StartEventsDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<StartEventsDetectionJobRequest>;
 export interface StartEventsDetectionJobResponse {
   JobId?: string;
   JobArn?: string;
   JobStatus?: JobStatus;
 }
+const StartEventsDetectionJobResponse =
+  StartDominantLanguageDetectionJobResponse as any as S.Schema<StartEventsDetectionJobResponse>;
 export interface StartFlywheelIterationRequest {
   FlywheelArn: string;
   ClientRequestToken?: string;
 }
+const StartFlywheelIterationRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<StartFlywheelIterationRequest>;
 export interface StartFlywheelIterationResponse {
   FlywheelArn?: string;
   FlywheelIterationId?: string;
 }
+const StartFlywheelIterationResponse = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<StartFlywheelIterationResponse>;
 export interface StartKeyPhrasesDetectionJobRequest {
   InputDataConfig: InputDataConfig;
   OutputDataConfig: OutputDataConfig;
@@ -1774,11 +2668,17 @@ export interface StartKeyPhrasesDetectionJobRequest {
   VpcConfig?: VpcConfig;
   Tags?: Tag[];
 }
+const StartKeyPhrasesDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<StartKeyPhrasesDetectionJobRequest>;
 export interface StartKeyPhrasesDetectionJobResponse {
   JobId?: string;
   JobArn?: string;
   JobStatus?: JobStatus;
 }
+const StartKeyPhrasesDetectionJobResponse =
+  StartDominantLanguageDetectionJobResponse as any as S.Schema<StartKeyPhrasesDetectionJobResponse>;
 export interface StartPiiEntitiesDetectionJobRequest {
   InputDataConfig: InputDataConfig;
   OutputDataConfig: OutputDataConfig;
@@ -1790,11 +2690,17 @@ export interface StartPiiEntitiesDetectionJobRequest {
   ClientRequestToken?: string;
   Tags?: Tag[];
 }
+const StartPiiEntitiesDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  4,
+) as any as S.Schema<StartPiiEntitiesDetectionJobRequest>;
 export interface StartPiiEntitiesDetectionJobResponse {
   JobId?: string;
   JobArn?: string;
   JobStatus?: JobStatus;
 }
+const StartPiiEntitiesDetectionJobResponse =
+  StartDominantLanguageDetectionJobResponse as any as S.Schema<StartPiiEntitiesDetectionJobResponse>;
 export interface StartSentimentDetectionJobRequest {
   InputDataConfig: InputDataConfig;
   OutputDataConfig: OutputDataConfig;
@@ -1806,11 +2712,17 @@ export interface StartSentimentDetectionJobRequest {
   VpcConfig?: VpcConfig;
   Tags?: Tag[];
 }
+const StartSentimentDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<StartSentimentDetectionJobRequest>;
 export interface StartSentimentDetectionJobResponse {
   JobId?: string;
   JobArn?: string;
   JobStatus?: JobStatus;
 }
+const StartSentimentDetectionJobResponse =
+  StartDominantLanguageDetectionJobResponse as any as S.Schema<StartSentimentDetectionJobResponse>;
 export interface StartTargetedSentimentDetectionJobRequest {
   InputDataConfig: InputDataConfig;
   OutputDataConfig: OutputDataConfig;
@@ -1822,11 +2734,17 @@ export interface StartTargetedSentimentDetectionJobRequest {
   VpcConfig?: VpcConfig;
   Tags?: Tag[];
 }
+const StartTargetedSentimentDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  6,
+) as any as S.Schema<StartTargetedSentimentDetectionJobRequest>;
 export interface StartTargetedSentimentDetectionJobResponse {
   JobId?: string;
   JobArn?: string;
   JobStatus?: JobStatus;
 }
+const StartTargetedSentimentDetectionJobResponse =
+  StartDominantLanguageDetectionJobResponse as any as S.Schema<StartTargetedSentimentDetectionJobResponse>;
 export type NumberOfTopicsInteger = number;
 export interface StartTopicsDetectionJobRequest {
   InputDataConfig: InputDataConfig;
@@ -1839,79 +2757,149 @@ export interface StartTopicsDetectionJobRequest {
   VpcConfig?: VpcConfig;
   Tags?: Tag[];
 }
+const StartTopicsDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<StartTopicsDetectionJobRequest>;
 export interface StartTopicsDetectionJobResponse {
   JobId?: string;
   JobArn?: string;
   JobStatus?: JobStatus;
 }
+const StartTopicsDetectionJobResponse =
+  StartDominantLanguageDetectionJobResponse as any as S.Schema<StartTopicsDetectionJobResponse>;
 export interface StopDominantLanguageDetectionJobRequest {
   JobId: string;
 }
+const StopDominantLanguageDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<StopDominantLanguageDetectionJobRequest>;
 export interface StopDominantLanguageDetectionJobResponse {
   JobId?: string;
   JobStatus?: JobStatus;
 }
+const StopDominantLanguageDetectionJobResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<StopDominantLanguageDetectionJobResponse>;
 export interface StopEntitiesDetectionJobRequest {
   JobId: string;
 }
+const StopEntitiesDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<StopEntitiesDetectionJobRequest>;
 export interface StopEntitiesDetectionJobResponse {
   JobId?: string;
   JobStatus?: JobStatus;
 }
+const StopEntitiesDetectionJobResponse =
+  StopDominantLanguageDetectionJobResponse as any as S.Schema<StopEntitiesDetectionJobResponse>;
 export interface StopEventsDetectionJobRequest {
   JobId: string;
 }
+const StopEventsDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<StopEventsDetectionJobRequest>;
 export interface StopEventsDetectionJobResponse {
   JobId?: string;
   JobStatus?: JobStatus;
 }
+const StopEventsDetectionJobResponse =
+  StopDominantLanguageDetectionJobResponse as any as S.Schema<StopEventsDetectionJobResponse>;
 export interface StopKeyPhrasesDetectionJobRequest {
   JobId: string;
 }
+const StopKeyPhrasesDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<StopKeyPhrasesDetectionJobRequest>;
 export interface StopKeyPhrasesDetectionJobResponse {
   JobId?: string;
   JobStatus?: JobStatus;
 }
+const StopKeyPhrasesDetectionJobResponse =
+  StopDominantLanguageDetectionJobResponse as any as S.Schema<StopKeyPhrasesDetectionJobResponse>;
 export interface StopPiiEntitiesDetectionJobRequest {
   JobId: string;
 }
+const StopPiiEntitiesDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<StopPiiEntitiesDetectionJobRequest>;
 export interface StopPiiEntitiesDetectionJobResponse {
   JobId?: string;
   JobStatus?: JobStatus;
 }
+const StopPiiEntitiesDetectionJobResponse =
+  StopDominantLanguageDetectionJobResponse as any as S.Schema<StopPiiEntitiesDetectionJobResponse>;
 export interface StopSentimentDetectionJobRequest {
   JobId: string;
 }
+const StopSentimentDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<StopSentimentDetectionJobRequest>;
 export interface StopSentimentDetectionJobResponse {
   JobId?: string;
   JobStatus?: JobStatus;
 }
+const StopSentimentDetectionJobResponse =
+  StopDominantLanguageDetectionJobResponse as any as S.Schema<StopSentimentDetectionJobResponse>;
 export interface StopTargetedSentimentDetectionJobRequest {
   JobId: string;
 }
+const StopTargetedSentimentDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<StopTargetedSentimentDetectionJobRequest>;
 export interface StopTargetedSentimentDetectionJobResponse {
   JobId?: string;
   JobStatus?: JobStatus;
 }
+const StopTargetedSentimentDetectionJobResponse =
+  StopDominantLanguageDetectionJobResponse as any as S.Schema<StopTargetedSentimentDetectionJobResponse>;
 export interface StopTrainingDocumentClassifierRequest {
   DocumentClassifierArn: string;
 }
+const StopTrainingDocumentClassifierRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<StopTrainingDocumentClassifierRequest>;
 export interface StopTrainingDocumentClassifierResponse {}
+const StopTrainingDocumentClassifierResponse =
+  DeleteDocumentClassifierResponse as any as S.Schema<StopTrainingDocumentClassifierResponse>;
 export interface StopTrainingEntityRecognizerRequest {
   EntityRecognizerArn: string;
 }
+const StopTrainingEntityRecognizerRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<StopTrainingEntityRecognizerRequest>;
 export interface StopTrainingEntityRecognizerResponse {}
+const StopTrainingEntityRecognizerResponse =
+  DeleteDocumentClassifierResponse as any as S.Schema<StopTrainingEntityRecognizerResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c35, 2) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = DeleteEndpointResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
+const TagKeyList = AttributeNamesList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = DeleteEndpointResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateEndpointRequest {
   EndpointArn: string;
   DesiredModelArn?: string;
@@ -1919,33 +2907,58 @@ export interface UpdateEndpointRequest {
   DesiredDataAccessRoleArn?: string;
   FlywheelArn?: string;
 }
+const UpdateEndpointRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<UpdateEndpointRequest>;
 export interface UpdateEndpointResponse {
   DesiredModelArn?: string;
 }
+const UpdateEndpointResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<UpdateEndpointResponse>;
 export interface UpdateDataSecurityConfig {
   ModelKmsKeyId?: string;
   VolumeKmsKeyId?: string;
   VpcConfig?: VpcConfig;
 }
+const UpdateDataSecurityConfig = /*@__PURE__*/ __L.at(
+  __c35,
+  6,
+) as any as S.Schema<UpdateDataSecurityConfig>;
 export interface UpdateFlywheelRequest {
   FlywheelArn: string;
   ActiveModelArn?: string;
   DataAccessRoleArn?: string;
   DataSecurityConfig?: UpdateDataSecurityConfig;
 }
+const UpdateFlywheelRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<UpdateFlywheelRequest>;
 export interface UpdateFlywheelResponse {
   FlywheelProperties?: FlywheelProperties;
 }
+const UpdateFlywheelResponse = DescribeFlywheelResponse as any as S.Schema<UpdateFlywheelResponse>;
 export type InvalidRequestReason = "INVALID_DOCUMENT" | (string & {});
+const InvalidRequestReason = S.String;
+
 export type InvalidRequestDetailReason =
   | "DOCUMENT_SIZE_EXCEEDED"
   | "UNSUPPORTED_DOC_TYPE"
   | "PAGE_LIMIT_EXCEEDED"
   | "TEXTRACT_ACCESS_DENIED"
   | (string & {});
+const InvalidRequestDetailReason = S.String;
+
 export interface InvalidRequestDetail {
   Reason?: InvalidRequestDetailReason;
 }
+const InvalidRequestDetail = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<InvalidRequestDetail>;
 export type BatchDetectDominantLanguageError =
   | BatchSizeLimitExceededException
   | InternalServerException
@@ -1962,8 +2975,8 @@ export const batchDetectDominantLanguage: API.OperationMethod<
   BatchDetectDominantLanguageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<BatchDetectDominantLanguageRequest>,
-  output: __S(8) as any as S.Schema<BatchDetectDominantLanguageResponse>,
+  input: BatchDetectDominantLanguageRequest,
+  output: BatchDetectDominantLanguageResponse,
   errors: [
     BatchSizeLimitExceededException,
     InternalServerException,
@@ -1993,8 +3006,8 @@ export const batchDetectEntities: API.OperationMethod<
   BatchDetectEntitiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<BatchDetectEntitiesRequest>,
-  output: __S(18) as any as S.Schema<BatchDetectEntitiesResponse>,
+  input: BatchDetectEntitiesRequest,
+  output: BatchDetectEntitiesResponse,
   errors: [
     BatchSizeLimitExceededException,
     InternalServerException,
@@ -2023,8 +3036,8 @@ export const batchDetectKeyPhrases: API.OperationMethod<
   BatchDetectKeyPhrasesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<BatchDetectKeyPhrasesRequest>,
-  output: __S(24) as any as S.Schema<BatchDetectKeyPhrasesResponse>,
+  input: BatchDetectKeyPhrasesRequest,
+  output: BatchDetectKeyPhrasesResponse,
   errors: [
     BatchSizeLimitExceededException,
     InternalServerException,
@@ -2055,8 +3068,8 @@ export const batchDetectSentiment: API.OperationMethod<
   BatchDetectSentimentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<BatchDetectSentimentRequest>,
-  output: __S(29) as any as S.Schema<BatchDetectSentimentResponse>,
+  input: BatchDetectSentimentRequest,
+  output: BatchDetectSentimentResponse,
   errors: [
     BatchSizeLimitExceededException,
     InternalServerException,
@@ -2087,8 +3100,8 @@ export const batchDetectSyntax: API.OperationMethod<
   BatchDetectSyntaxError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<BatchDetectSyntaxRequest>,
-  output: __S(36) as any as S.Schema<BatchDetectSyntaxResponse>,
+  input: BatchDetectSyntaxRequest,
+  output: BatchDetectSyntaxResponse,
   errors: [
     BatchSizeLimitExceededException,
     InternalServerException,
@@ -2120,8 +3133,8 @@ export const batchDetectTargetedSentiment: API.OperationMethod<
   BatchDetectTargetedSentimentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<BatchDetectTargetedSentimentRequest>,
-  output: __S(46) as any as S.Schema<BatchDetectTargetedSentimentResponse>,
+  input: BatchDetectTargetedSentimentRequest,
+  output: BatchDetectTargetedSentimentResponse,
   errors: [
     BatchSizeLimitExceededException,
     InternalServerException,
@@ -2170,8 +3183,8 @@ export const classifyDocument: API.OperationMethod<
   ClassifyDocumentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<ClassifyDocumentRequest>,
-  output: __S(61) as any as S.Schema<ClassifyDocumentResponse>,
+  input: ClassifyDocumentRequest,
+  output: ClassifyDocumentResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2201,8 +3214,8 @@ export const containsPiiEntities: API.OperationMethod<
   ContainsPiiEntitiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<ContainsPiiEntitiesRequest>,
-  output: __S(65) as any as S.Schema<ContainsPiiEntitiesResponse>,
+  input: ContainsPiiEntitiesRequest,
+  output: ContainsPiiEntitiesResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2234,8 +3247,8 @@ export const createDataset: API.OperationMethod<
   CreateDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<CreateDatasetRequest>,
-  output: __S(77) as any as S.Schema<CreateDatasetResponse>,
+  input: CreateDatasetRequest,
+  output: CreateDatasetResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2273,8 +3286,8 @@ export const createDocumentClassifier: API.OperationMethod<
   CreateDocumentClassifierError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<CreateDocumentClassifierRequest>,
-  output: __S(85) as any as S.Schema<CreateDocumentClassifierResponse>,
+  input: CreateDocumentClassifierRequest,
+  output: CreateDocumentClassifierResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2311,8 +3324,8 @@ export const createEndpoint: API.OperationMethod<
   CreateEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<CreateEndpointRequest>,
-  output: __S(87) as any as S.Schema<CreateEndpointResponse>,
+  input: CreateEndpointRequest,
+  output: CreateEndpointResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2349,8 +3362,8 @@ export const createEntityRecognizer: API.OperationMethod<
   CreateEntityRecognizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<CreateEntityRecognizerRequest>,
-  output: __S(93) as any as S.Schema<CreateEntityRecognizerResponse>,
+  input: CreateEntityRecognizerRequest,
+  output: CreateEntityRecognizerResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2401,8 +3414,8 @@ export const createFlywheel: API.OperationMethod<
   CreateFlywheelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<CreateFlywheelRequest>,
-  output: __S(99) as any as S.Schema<CreateFlywheelResponse>,
+  input: CreateFlywheelRequest,
+  output: CreateFlywheelResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2445,8 +3458,8 @@ export const deleteDocumentClassifier: API.OperationMethod<
   DeleteDocumentClassifierError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<DeleteDocumentClassifierRequest>,
-  output: __S(101) as any as S.Schema<DeleteDocumentClassifierResponse>,
+  input: DeleteDocumentClassifierRequest,
+  output: DeleteDocumentClassifierResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2478,8 +3491,8 @@ export const deleteEndpoint: API.OperationMethod<
   DeleteEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<DeleteEndpointRequest>,
-  output: __S(103) as any as S.Schema<DeleteEndpointResponse>,
+  input: DeleteEndpointRequest,
+  output: DeleteEndpointResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2517,8 +3530,8 @@ export const deleteEntityRecognizer: API.OperationMethod<
   DeleteEntityRecognizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<DeleteEntityRecognizerRequest>,
-  output: __S(103) as any as S.Schema<DeleteEntityRecognizerResponse>,
+  input: DeleteEntityRecognizerRequest,
+  output: DeleteEntityRecognizerResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2553,8 +3566,8 @@ export const deleteFlywheel: API.OperationMethod<
   DeleteFlywheelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<DeleteFlywheelRequest>,
-  output: __S(103) as any as S.Schema<DeleteFlywheelResponse>,
+  input: DeleteFlywheelRequest,
+  output: DeleteFlywheelResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2582,8 +3595,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<DeleteResourcePolicyRequest>,
-  output: __S(103) as any as S.Schema<DeleteResourcePolicyResponse>,
+  input: DeleteResourcePolicyRequest,
+  output: DeleteResourcePolicyResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2607,8 +3620,8 @@ export const describeDataset: API.OperationMethod<
   DescribeDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<DescribeDatasetRequest>,
-  output: __S(109) as any as S.Schema<DescribeDatasetResponse>,
+  input: DescribeDatasetRequest,
+  output: DescribeDatasetResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2636,8 +3649,8 @@ export const describeDocumentClassificationJob: API.OperationMethod<
   DescribeDocumentClassificationJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<DescribeDocumentClassificationJobRequest>,
-  output: __S(114) as any as S.Schema<DescribeDocumentClassificationJobResponse>,
+  input: DescribeDocumentClassificationJobRequest,
+  output: DescribeDocumentClassificationJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2664,8 +3677,8 @@ export const describeDocumentClassifier: API.OperationMethod<
   DescribeDocumentClassifierError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115) as any as S.Schema<DescribeDocumentClassifierRequest>,
-  output: __S(119) as any as S.Schema<DescribeDocumentClassifierResponse>,
+  input: DescribeDocumentClassifierRequest,
+  output: DescribeDocumentClassifierResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2693,8 +3706,8 @@ export const describeDominantLanguageDetectionJob: API.OperationMethod<
   DescribeDominantLanguageDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<DescribeDominantLanguageDetectionJobRequest>,
-  output: __S(122) as any as S.Schema<DescribeDominantLanguageDetectionJobResponse>,
+  input: DescribeDominantLanguageDetectionJobRequest,
+  output: DescribeDominantLanguageDetectionJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2723,8 +3736,8 @@ export const describeEndpoint: API.OperationMethod<
   DescribeEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<DescribeEndpointRequest>,
-  output: __S(125) as any as S.Schema<DescribeEndpointResponse>,
+  input: DescribeEndpointRequest,
+  output: DescribeEndpointResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2752,8 +3765,8 @@ export const describeEntitiesDetectionJob: API.OperationMethod<
   DescribeEntitiesDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<DescribeEntitiesDetectionJobRequest>,
-  output: __S(128) as any as S.Schema<DescribeEntitiesDetectionJobResponse>,
+  input: DescribeEntitiesDetectionJobRequest,
+  output: DescribeEntitiesDetectionJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2781,8 +3794,8 @@ export const describeEntityRecognizer: API.OperationMethod<
   DescribeEntityRecognizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<DescribeEntityRecognizerRequest>,
-  output: __S(136) as any as S.Schema<DescribeEntityRecognizerResponse>,
+  input: DescribeEntityRecognizerRequest,
+  output: DescribeEntityRecognizerResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2810,8 +3823,8 @@ export const describeEventsDetectionJob: API.OperationMethod<
   DescribeEventsDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<DescribeEventsDetectionJobRequest>,
-  output: __S(139) as any as S.Schema<DescribeEventsDetectionJobResponse>,
+  input: DescribeEventsDetectionJobRequest,
+  output: DescribeEventsDetectionJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2840,8 +3853,8 @@ export const describeFlywheel: API.OperationMethod<
   DescribeFlywheelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<DescribeFlywheelRequest>,
-  output: __S(142) as any as S.Schema<DescribeFlywheelResponse>,
+  input: DescribeFlywheelRequest,
+  output: DescribeFlywheelResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2870,8 +3883,8 @@ export const describeFlywheelIteration: API.OperationMethod<
   DescribeFlywheelIterationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143) as any as S.Schema<DescribeFlywheelIterationRequest>,
-  output: __S(146) as any as S.Schema<DescribeFlywheelIterationResponse>,
+  input: DescribeFlywheelIterationRequest,
+  output: DescribeFlywheelIterationResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2899,8 +3912,8 @@ export const describeKeyPhrasesDetectionJob: API.OperationMethod<
   DescribeKeyPhrasesDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147) as any as S.Schema<DescribeKeyPhrasesDetectionJobRequest>,
-  output: __S(149) as any as S.Schema<DescribeKeyPhrasesDetectionJobResponse>,
+  input: DescribeKeyPhrasesDetectionJobRequest,
+  output: DescribeKeyPhrasesDetectionJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2928,8 +3941,8 @@ export const describePiiEntitiesDetectionJob: API.OperationMethod<
   DescribePiiEntitiesDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<DescribePiiEntitiesDetectionJobRequest>,
-  output: __S(153) as any as S.Schema<DescribePiiEntitiesDetectionJobResponse>,
+  input: DescribePiiEntitiesDetectionJobRequest,
+  output: DescribePiiEntitiesDetectionJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -2956,8 +3969,8 @@ export const describeResourcePolicy: API.OperationMethod<
   DescribeResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<DescribeResourcePolicyRequest>,
-  output: __S(155) as any as S.Schema<DescribeResourcePolicyResponse>,
+  input: DescribeResourcePolicyRequest,
+  output: DescribeResourcePolicyResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2980,8 +3993,8 @@ export const describeSentimentDetectionJob: API.OperationMethod<
   DescribeSentimentDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156) as any as S.Schema<DescribeSentimentDetectionJobRequest>,
-  output: __S(157) as any as S.Schema<DescribeSentimentDetectionJobResponse>,
+  input: DescribeSentimentDetectionJobRequest,
+  output: DescribeSentimentDetectionJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -3009,8 +4022,8 @@ export const describeTargetedSentimentDetectionJob: API.OperationMethod<
   DescribeTargetedSentimentDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158) as any as S.Schema<DescribeTargetedSentimentDetectionJobRequest>,
-  output: __S(159) as any as S.Schema<DescribeTargetedSentimentDetectionJobResponse>,
+  input: DescribeTargetedSentimentDetectionJobRequest,
+  output: DescribeTargetedSentimentDetectionJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -3038,8 +4051,8 @@ export const describeTopicsDetectionJob: API.OperationMethod<
   DescribeTopicsDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160) as any as S.Schema<DescribeTopicsDetectionJobRequest>,
-  output: __S(162) as any as S.Schema<DescribeTopicsDetectionJobResponse>,
+  input: DescribeTopicsDetectionJobRequest,
+  output: DescribeTopicsDetectionJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -3066,8 +4079,8 @@ export const detectDominantLanguage: API.OperationMethod<
   DetectDominantLanguageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<DetectDominantLanguageRequest>,
-  output: __S(164) as any as S.Schema<DetectDominantLanguageResponse>,
+  input: DetectDominantLanguageRequest,
+  output: DetectDominantLanguageResponse,
   errors: [InternalServerException, InvalidRequestException, TextSizeLimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3107,8 +4120,8 @@ export const detectEntities: API.OperationMethod<
   DetectEntitiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165) as any as S.Schema<DetectEntitiesRequest>,
-  output: __S(174) as any as S.Schema<DetectEntitiesResponse>,
+  input: DetectEntitiesRequest,
+  output: DetectEntitiesResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -3136,8 +4149,8 @@ export const detectKeyPhrases: API.OperationMethod<
   DetectKeyPhrasesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<DetectKeyPhrasesRequest>,
-  output: __S(176) as any as S.Schema<DetectKeyPhrasesResponse>,
+  input: DetectKeyPhrasesRequest,
+  output: DetectKeyPhrasesResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -3165,8 +4178,8 @@ export const detectPiiEntities: API.OperationMethod<
   DetectPiiEntitiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<DetectPiiEntitiesRequest>,
-  output: __S(180) as any as S.Schema<DetectPiiEntitiesResponse>,
+  input: DetectPiiEntitiesRequest,
+  output: DetectPiiEntitiesResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -3194,8 +4207,8 @@ export const detectSentiment: API.OperationMethod<
   DetectSentimentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<DetectSentimentRequest>,
-  output: __S(39) as any as S.Schema<DetectSentimentResponse>,
+  input: DetectSentimentRequest,
+  output: DetectSentimentResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -3224,8 +4237,8 @@ export const detectSyntax: API.OperationMethod<
   DetectSyntaxError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<DetectSyntaxRequest>,
-  output: __S(183) as any as S.Schema<DetectSyntaxResponse>,
+  input: DetectSyntaxRequest,
+  output: DetectSyntaxResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -3254,8 +4267,8 @@ export const detectTargetedSentiment: API.OperationMethod<
   DetectTargetedSentimentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184) as any as S.Schema<DetectTargetedSentimentRequest>,
-  output: __S(185) as any as S.Schema<DetectTargetedSentimentResponse>,
+  input: DetectTargetedSentimentRequest,
+  output: DetectTargetedSentimentResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -3284,8 +4297,8 @@ export const detectToxicContent: API.OperationMethod<
   DetectToxicContentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188) as any as S.Schema<DetectToxicContentRequest>,
-  output: __S(191) as any as S.Schema<DetectToxicContentResponse>,
+  input: DetectToxicContentRequest,
+  output: DetectToxicContentResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -3324,8 +4337,8 @@ export const importModel: API.OperationMethod<
   ImportModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192) as any as S.Schema<ImportModelRequest>,
-  output: __S(193) as any as S.Schema<ImportModelResponse>,
+  input: ImportModelRequest,
+  output: ImportModelResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -3360,8 +4373,8 @@ export const listDatasets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(195) as any as S.Schema<ListDatasetsRequest>,
-  output: __S(197) as any as S.Schema<ListDatasetsResponse>,
+  input: ListDatasetsRequest,
+  output: ListDatasetsResponse,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3395,8 +4408,8 @@ export const listDocumentClassificationJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(199) as any as S.Schema<ListDocumentClassificationJobsRequest>,
-  output: __S(201) as any as S.Schema<ListDocumentClassificationJobsResponse>,
+  input: ListDocumentClassificationJobsRequest,
+  output: ListDocumentClassificationJobsResponse,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3429,8 +4442,8 @@ export const listDocumentClassifiers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(203) as any as S.Schema<ListDocumentClassifiersRequest>,
-  output: __S(205) as any as S.Schema<ListDocumentClassifiersResponse>,
+  input: ListDocumentClassifiersRequest,
+  output: ListDocumentClassifiersResponse,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3462,8 +4475,8 @@ export const listDocumentClassifierSummaries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(206) as any as S.Schema<ListDocumentClassifierSummariesRequest>,
-  output: __S(209) as any as S.Schema<ListDocumentClassifierSummariesResponse>,
+  input: ListDocumentClassifierSummariesRequest,
+  output: ListDocumentClassifierSummariesResponse,
   errors: [InternalServerException, InvalidRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3491,8 +4504,8 @@ export const listDominantLanguageDetectionJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(210) as any as S.Schema<ListDominantLanguageDetectionJobsRequest>,
-  output: __S(212) as any as S.Schema<ListDominantLanguageDetectionJobsResponse>,
+  input: ListDominantLanguageDetectionJobsRequest,
+  output: ListDominantLanguageDetectionJobsResponse,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3525,8 +4538,8 @@ export const listEndpoints: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EndpointProperties
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(214) as any as S.Schema<ListEndpointsRequest>,
-  output: __S(216) as any as S.Schema<ListEndpointsResponse>,
+  input: ListEndpointsRequest,
+  output: ListEndpointsResponse,
   errors: [InternalServerException, InvalidRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3555,8 +4568,8 @@ export const listEntitiesDetectionJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(217) as any as S.Schema<ListEntitiesDetectionJobsRequest>,
-  output: __S(219) as any as S.Schema<ListEntitiesDetectionJobsResponse>,
+  input: ListEntitiesDetectionJobsRequest,
+  output: ListEntitiesDetectionJobsResponse,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3595,8 +4608,8 @@ export const listEntityRecognizers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(221) as any as S.Schema<ListEntityRecognizersRequest>,
-  output: __S(223) as any as S.Schema<ListEntityRecognizersResponse>,
+  input: ListEntityRecognizersRequest,
+  output: ListEntityRecognizersResponse,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3628,8 +4641,8 @@ export const listEntityRecognizerSummaries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(224) as any as S.Schema<ListEntityRecognizerSummariesRequest>,
-  output: __S(227) as any as S.Schema<ListEntityRecognizerSummariesResponse>,
+  input: ListEntityRecognizerSummariesRequest,
+  output: ListEntityRecognizerSummariesResponse,
   errors: [InternalServerException, InvalidRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3658,8 +4671,8 @@ export const listEventsDetectionJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(229) as any as S.Schema<ListEventsDetectionJobsRequest>,
-  output: __S(231) as any as S.Schema<ListEventsDetectionJobsResponse>,
+  input: ListEventsDetectionJobsRequest,
+  output: ListEventsDetectionJobsResponse,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3696,8 +4709,8 @@ export const listFlywheelIterationHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(233) as any as S.Schema<ListFlywheelIterationHistoryRequest>,
-  output: __S(235) as any as S.Schema<ListFlywheelIterationHistoryResponse>,
+  input: ListFlywheelIterationHistoryRequest,
+  output: ListFlywheelIterationHistoryResponse,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3731,8 +4744,8 @@ export const listFlywheels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(237) as any as S.Schema<ListFlywheelsRequest>,
-  output: __S(240) as any as S.Schema<ListFlywheelsResponse>,
+  input: ListFlywheelsRequest,
+  output: ListFlywheelsResponse,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3765,8 +4778,8 @@ export const listKeyPhrasesDetectionJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(241) as any as S.Schema<ListKeyPhrasesDetectionJobsRequest>,
-  output: __S(243) as any as S.Schema<ListKeyPhrasesDetectionJobsResponse>,
+  input: ListKeyPhrasesDetectionJobsRequest,
+  output: ListKeyPhrasesDetectionJobsResponse,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3799,8 +4812,8 @@ export const listPiiEntitiesDetectionJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PiiEntitiesDetectionJobProperties
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(244) as any as S.Schema<ListPiiEntitiesDetectionJobsRequest>,
-  output: __S(246) as any as S.Schema<ListPiiEntitiesDetectionJobsResponse>,
+  input: ListPiiEntitiesDetectionJobsRequest,
+  output: ListPiiEntitiesDetectionJobsResponse,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3834,8 +4847,8 @@ export const listSentimentDetectionJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(247) as any as S.Schema<ListSentimentDetectionJobsRequest>,
-  output: __S(248) as any as S.Schema<ListSentimentDetectionJobsResponse>,
+  input: ListSentimentDetectionJobsRequest,
+  output: ListSentimentDetectionJobsResponse,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3866,8 +4879,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(250) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3890,8 +4903,8 @@ export const listTargetedSentimentDetectionJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(251) as any as S.Schema<ListTargetedSentimentDetectionJobsRequest>,
-  output: __S(252) as any as S.Schema<ListTargetedSentimentDetectionJobsResponse>,
+  input: ListTargetedSentimentDetectionJobsRequest,
+  output: ListTargetedSentimentDetectionJobsResponse,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3924,8 +4937,8 @@ export const listTopicsDetectionJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(253) as any as S.Schema<ListTopicsDetectionJobsRequest>,
-  output: __S(255) as any as S.Schema<ListTopicsDetectionJobsResponse>,
+  input: ListTopicsDetectionJobsRequest,
+  output: ListTopicsDetectionJobsResponse,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -3958,8 +4971,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256) as any as S.Schema<PutResourcePolicyRequest>,
-  output: __S(257) as any as S.Schema<PutResourcePolicyResponse>,
+  input: PutResourcePolicyRequest,
+  output: PutResourcePolicyResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3987,8 +5000,8 @@ export const startDocumentClassificationJob: API.OperationMethod<
   StartDocumentClassificationJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258) as any as S.Schema<StartDocumentClassificationJobRequest>,
-  output: __S(259) as any as S.Schema<StartDocumentClassificationJobResponse>,
+  input: StartDocumentClassificationJobRequest,
+  output: StartDocumentClassificationJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4023,8 +5036,8 @@ export const startDominantLanguageDetectionJob: API.OperationMethod<
   StartDominantLanguageDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260) as any as S.Schema<StartDominantLanguageDetectionJobRequest>,
-  output: __S(261) as any as S.Schema<StartDominantLanguageDetectionJobResponse>,
+  input: StartDominantLanguageDetectionJobRequest,
+  output: StartDominantLanguageDetectionJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4062,8 +5075,8 @@ export const startEntitiesDetectionJob: API.OperationMethod<
   StartEntitiesDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262) as any as S.Schema<StartEntitiesDetectionJobRequest>,
-  output: __S(263) as any as S.Schema<StartEntitiesDetectionJobResponse>,
+  input: StartEntitiesDetectionJobRequest,
+  output: StartEntitiesDetectionJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4097,8 +5110,8 @@ export const startEventsDetectionJob: API.OperationMethod<
   StartEventsDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264) as any as S.Schema<StartEventsDetectionJobRequest>,
-  output: __S(261) as any as S.Schema<StartEventsDetectionJobResponse>,
+  input: StartEventsDetectionJobRequest,
+  output: StartEventsDetectionJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4131,8 +5144,8 @@ export const startFlywheelIteration: API.OperationMethod<
   StartFlywheelIterationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265) as any as S.Schema<StartFlywheelIterationRequest>,
-  output: __S(266) as any as S.Schema<StartFlywheelIterationResponse>,
+  input: StartFlywheelIterationRequest,
+  output: StartFlywheelIterationResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4164,8 +5177,8 @@ export const startKeyPhrasesDetectionJob: API.OperationMethod<
   StartKeyPhrasesDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267) as any as S.Schema<StartKeyPhrasesDetectionJobRequest>,
-  output: __S(261) as any as S.Schema<StartKeyPhrasesDetectionJobResponse>,
+  input: StartKeyPhrasesDetectionJobRequest,
+  output: StartKeyPhrasesDetectionJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4196,8 +5209,8 @@ export const startPiiEntitiesDetectionJob: API.OperationMethod<
   StartPiiEntitiesDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268) as any as S.Schema<StartPiiEntitiesDetectionJobRequest>,
-  output: __S(261) as any as S.Schema<StartPiiEntitiesDetectionJobResponse>,
+  input: StartPiiEntitiesDetectionJobRequest,
+  output: StartPiiEntitiesDetectionJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4230,8 +5243,8 @@ export const startSentimentDetectionJob: API.OperationMethod<
   StartSentimentDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269) as any as S.Schema<StartSentimentDetectionJobRequest>,
-  output: __S(261) as any as S.Schema<StartSentimentDetectionJobResponse>,
+  input: StartSentimentDetectionJobRequest,
+  output: StartSentimentDetectionJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4264,8 +5277,8 @@ export const startTargetedSentimentDetectionJob: API.OperationMethod<
   StartTargetedSentimentDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270) as any as S.Schema<StartTargetedSentimentDetectionJobRequest>,
-  output: __S(261) as any as S.Schema<StartTargetedSentimentDetectionJobResponse>,
+  input: StartTargetedSentimentDetectionJobRequest,
+  output: StartTargetedSentimentDetectionJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4297,8 +5310,8 @@ export const startTopicsDetectionJob: API.OperationMethod<
   StartTopicsDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271) as any as S.Schema<StartTopicsDetectionJobRequest>,
-  output: __S(261) as any as S.Schema<StartTopicsDetectionJobResponse>,
+  input: StartTopicsDetectionJobRequest,
+  output: StartTopicsDetectionJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4338,8 +5351,8 @@ export const stopDominantLanguageDetectionJob: API.OperationMethod<
   StopDominantLanguageDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272) as any as S.Schema<StopDominantLanguageDetectionJobRequest>,
-  output: __S(273) as any as S.Schema<StopDominantLanguageDetectionJobResponse>,
+  input: StopDominantLanguageDetectionJobRequest,
+  output: StopDominantLanguageDetectionJobResponse,
   errors: [InternalServerException, InvalidRequestException, JobNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4372,8 +5385,8 @@ export const stopEntitiesDetectionJob: API.OperationMethod<
   StopEntitiesDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274) as any as S.Schema<StopEntitiesDetectionJobRequest>,
-  output: __S(273) as any as S.Schema<StopEntitiesDetectionJobResponse>,
+  input: StopEntitiesDetectionJobRequest,
+  output: StopEntitiesDetectionJobResponse,
   errors: [InternalServerException, InvalidRequestException, JobNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4395,8 +5408,8 @@ export const stopEventsDetectionJob: API.OperationMethod<
   StopEventsDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275) as any as S.Schema<StopEventsDetectionJobRequest>,
-  output: __S(273) as any as S.Schema<StopEventsDetectionJobResponse>,
+  input: StopEventsDetectionJobRequest,
+  output: StopEventsDetectionJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4434,8 +5447,8 @@ export const stopKeyPhrasesDetectionJob: API.OperationMethod<
   StopKeyPhrasesDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276) as any as S.Schema<StopKeyPhrasesDetectionJobRequest>,
-  output: __S(273) as any as S.Schema<StopKeyPhrasesDetectionJobResponse>,
+  input: StopKeyPhrasesDetectionJobRequest,
+  output: StopKeyPhrasesDetectionJobResponse,
   errors: [InternalServerException, InvalidRequestException, JobNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4456,8 +5469,8 @@ export const stopPiiEntitiesDetectionJob: API.OperationMethod<
   StopPiiEntitiesDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277) as any as S.Schema<StopPiiEntitiesDetectionJobRequest>,
-  output: __S(273) as any as S.Schema<StopPiiEntitiesDetectionJobResponse>,
+  input: StopPiiEntitiesDetectionJobRequest,
+  output: StopPiiEntitiesDetectionJobResponse,
   errors: [InternalServerException, InvalidRequestException, JobNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4490,8 +5503,8 @@ export const stopSentimentDetectionJob: API.OperationMethod<
   StopSentimentDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278) as any as S.Schema<StopSentimentDetectionJobRequest>,
-  output: __S(273) as any as S.Schema<StopSentimentDetectionJobResponse>,
+  input: StopSentimentDetectionJobRequest,
+  output: StopSentimentDetectionJobResponse,
   errors: [InternalServerException, InvalidRequestException, JobNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4524,8 +5537,8 @@ export const stopTargetedSentimentDetectionJob: API.OperationMethod<
   StopTargetedSentimentDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279) as any as S.Schema<StopTargetedSentimentDetectionJobRequest>,
-  output: __S(273) as any as S.Schema<StopTargetedSentimentDetectionJobResponse>,
+  input: StopTargetedSentimentDetectionJobRequest,
+  output: StopTargetedSentimentDetectionJobResponse,
   errors: [InternalServerException, InvalidRequestException, JobNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4553,8 +5566,8 @@ export const stopTrainingDocumentClassifier: API.OperationMethod<
   StopTrainingDocumentClassifierError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280) as any as S.Schema<StopTrainingDocumentClassifierRequest>,
-  output: __S(101) as any as S.Schema<StopTrainingDocumentClassifierResponse>,
+  input: StopTrainingDocumentClassifierRequest,
+  output: StopTrainingDocumentClassifierResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4587,8 +5600,8 @@ export const stopTrainingEntityRecognizer: API.OperationMethod<
   StopTrainingEntityRecognizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281) as any as S.Schema<StopTrainingEntityRecognizerRequest>,
-  output: __S(101) as any as S.Schema<StopTrainingEntityRecognizerResponse>,
+  input: StopTrainingEntityRecognizerRequest,
+  output: StopTrainingEntityRecognizerResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4618,8 +5631,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282) as any as S.Schema<TagResourceRequest>,
-  output: __S(103) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     ConcurrentModificationException,
     InternalServerException,
@@ -4648,8 +5661,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283) as any as S.Schema<UntagResourceRequest>,
-  output: __S(103) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     ConcurrentModificationException,
     InternalServerException,
@@ -4681,8 +5694,8 @@ export const updateEndpoint: API.OperationMethod<
   UpdateEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284) as any as S.Schema<UpdateEndpointRequest>,
-  output: __S(285) as any as S.Schema<UpdateEndpointResponse>,
+  input: UpdateEndpointRequest,
+  output: UpdateEndpointResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4713,8 +5726,8 @@ export const updateFlywheel: API.OperationMethod<
   UpdateFlywheelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287) as any as S.Schema<UpdateFlywheelRequest>,
-  output: __S(142) as any as S.Schema<UpdateFlywheelResponse>,
+  input: UpdateFlywheelRequest,
+  output: UpdateFlywheelResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -4734,7 +5747,7 @@ function __c0(j: number): any {
       return S.Array(SensitiveString);
     case 1:
       return S.suspend(() =>
-        S.Struct({ TextList: __S(0) }).pipe(
+        S.Struct({ TextList: CustomerInputStringList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4745,15 +5758,15 @@ function __c0(j: number): any {
         S.Struct({ LanguageCode: S.optional(S.String), Score: S.optional(S.Number) }),
       ).annotate({ identifier: "DominantLanguage" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(DominantLanguage);
     case 4:
       return S.suspend(() =>
-        S.Struct({ Index: S.optional(S.Number), Languages: S.optional(__S(3)) }),
+        S.Struct({ Index: S.optional(S.Number), Languages: S.optional(ListOfDominantLanguages) }),
       ).annotate({
         identifier: "BatchDetectDominantLanguageItemResult",
       });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(BatchDetectDominantLanguageItemResult);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -4763,18 +5776,20 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "BatchItemError" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(BatchItemError);
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ ResultList: __S(5), ErrorList: __S(7) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ ResultList: ListOfDetectDominantLanguageResult, ErrorList: BatchItemErrorList }),
+      ).annotate({
         identifier: "BatchDetectDominantLanguageResponse",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ TextList: __S(0), LanguageCode: S.String }).pipe(
+        S.Struct({ TextList: CustomerInputStringList, LanguageCode: LanguageCode }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4789,50 +5804,52 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ChildBlock" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(ChildBlock);
     case 4:
       return S.suspend(() =>
         S.Struct({
           BlockId: S.optional(S.String),
           BeginOffset: S.optional(S.Number),
           EndOffset: S.optional(S.Number),
-          ChildBlocks: S.optional(__S(11)),
+          ChildBlocks: S.optional(ListOfChildBlocks),
         }),
       ).annotate({ identifier: "BlockReference" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(BlockReference);
     case 6:
       return S.suspend(() =>
         S.Struct({
           Score: S.optional(S.Number),
-          Type: S.optional(S.String),
+          Type: S.optional(EntityType),
           Text: S.optional(S.String),
           BeginOffset: S.optional(S.Number),
           EndOffset: S.optional(S.Number),
-          BlockReferences: S.optional(__S(13)),
+          BlockReferences: S.optional(ListOfBlockReferences),
         }),
       ).annotate({ identifier: "Entity" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(Entity);
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Index: S.optional(S.Number), Entities: S.optional(__S(15)) }),
+        S.Struct({ Index: S.optional(S.Number), Entities: S.optional(ListOfEntities) }),
       ).annotate({
         identifier: "BatchDetectEntitiesItemResult",
       });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(BatchDetectEntitiesItemResult);
     case 2:
-      return S.suspend(() => S.Struct({ ResultList: __S(17), ErrorList: __S(7) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ ResultList: ListOfDetectEntitiesResult, ErrorList: BatchItemErrorList }),
+      ).annotate({
         identifier: "BatchDetectEntitiesResponse",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ TextList: __S(0), LanguageCode: S.String }).pipe(
+        S.Struct({ TextList: CustomerInputStringList, LanguageCode: LanguageCode }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4848,26 +5865,28 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "KeyPhrase" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(KeyPhrase);
     case 6:
       return S.suspend(() =>
-        S.Struct({ Index: S.optional(S.Number), KeyPhrases: S.optional(__S(21)) }),
+        S.Struct({ Index: S.optional(S.Number), KeyPhrases: S.optional(ListOfKeyPhrases) }),
       ).annotate({
         identifier: "BatchDetectKeyPhrasesItemResult",
       });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(BatchDetectKeyPhrasesItemResult);
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ ResultList: __S(23), ErrorList: __S(7) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ ResultList: ListOfDetectKeyPhrasesResult, ErrorList: BatchItemErrorList }),
+      ).annotate({
         identifier: "BatchDetectKeyPhrasesResponse",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ TextList: __S(0), LanguageCode: S.String }).pipe(
+        S.Struct({ TextList: CustomerInputStringList, LanguageCode: LanguageCode }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4886,27 +5905,29 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Index: S.optional(S.Number),
-          Sentiment: S.optional(S.String),
-          SentimentScore: S.optional(__S(26)),
+          Sentiment: S.optional(SentimentType),
+          SentimentScore: S.optional(SentimentScore),
         }),
       ).annotate({
         identifier: "BatchDetectSentimentItemResult",
       });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(BatchDetectSentimentItemResult);
     case 5:
-      return S.suspend(() => S.Struct({ ResultList: __S(28), ErrorList: __S(7) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ ResultList: ListOfDetectSentimentResult, ErrorList: BatchItemErrorList }),
+      ).annotate({
         identifier: "BatchDetectSentimentResponse",
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ TextList: __S(0), LanguageCode: S.String }).pipe(
+        S.Struct({ TextList: CustomerInputStringList, LanguageCode: SyntaxLanguageCode }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "BatchDetectSyntaxRequest" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Tag: S.optional(S.String), Score: S.optional(S.Number) }),
+        S.Struct({ Tag: S.optional(PartOfSpeechTagType), Score: S.optional(S.Number) }),
       ).annotate({ identifier: "PartOfSpeechTag" });
   }
 }
@@ -4919,26 +5940,28 @@ function __c4(j: number): any {
           Text: S.optional(S.String),
           BeginOffset: S.optional(S.Number),
           EndOffset: S.optional(S.Number),
-          PartOfSpeech: S.optional(__S(31)),
+          PartOfSpeech: S.optional(PartOfSpeechTag),
         }),
       ).annotate({ identifier: "SyntaxToken" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(SyntaxToken);
     case 2:
       return S.suspend(() =>
-        S.Struct({ Index: S.optional(S.Number), SyntaxTokens: S.optional(__S(33)) }),
+        S.Struct({ Index: S.optional(S.Number), SyntaxTokens: S.optional(ListOfSyntaxTokens) }),
       ).annotate({
         identifier: "BatchDetectSyntaxItemResult",
       });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(BatchDetectSyntaxItemResult);
     case 4:
-      return S.suspend(() => S.Struct({ ResultList: __S(35), ErrorList: __S(7) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ ResultList: ListOfDetectSyntaxResult, ErrorList: BatchItemErrorList }),
+      ).annotate({
         identifier: "BatchDetectSyntaxResponse",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ TextList: __S(0), LanguageCode: S.String }).pipe(
+        S.Struct({ TextList: CustomerInputStringList, LanguageCode: LanguageCode }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4949,8 +5972,8 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Sentiment: S.optional(S.String),
-          SentimentScore: S.optional(__S(26)),
+          Sentiment: S.optional(SentimentType),
+          SentimentScore: S.optional(SentimentScore),
         }),
       ).annotate({ identifier: "MentionSentiment" });
   }
@@ -4963,45 +5986,45 @@ function __c5(j: number): any {
           Score: S.optional(S.Number),
           GroupScore: S.optional(S.Number),
           Text: S.optional(S.String),
-          Type: S.optional(S.String),
-          MentionSentiment: S.optional(__S(39)),
+          Type: S.optional(TargetedSentimentEntityType),
+          MentionSentiment: S.optional(MentionSentiment),
           BeginOffset: S.optional(S.Number),
           EndOffset: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TargetedSentimentMention" });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(TargetedSentimentMention);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          DescriptiveMentionIndex: S.optional(__S(38)),
-          Mentions: S.optional(__S(41)),
+          DescriptiveMentionIndex: S.optional(ListOfDescriptiveMentionIndices),
+          Mentions: S.optional(ListOfMentions),
         }),
       ).annotate({ identifier: "TargetedSentimentEntity" });
     case 3:
-      return S.Array(__S(42));
+      return S.Array(TargetedSentimentEntity);
     case 4:
       return S.suspend(() =>
         S.Struct({
           Index: S.optional(S.Number),
-          Entities: S.optional(__S(43)),
+          Entities: S.optional(ListOfTargetedSentimentEntities),
         }),
       ).annotate({
         identifier: "BatchDetectTargetedSentimentItemResult",
       });
     case 5:
-      return S.Array(__S(44));
+      return S.Array(BatchDetectTargetedSentimentItemResult);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ResultList: __S(45),
-          ErrorList: __S(7),
+          ResultList: ListOfDetectTargetedSentimentResult,
+          ErrorList: BatchItemErrorList,
         }),
       ).annotate({
         identifier: "BatchDetectTargetedSentimentResponse",
       });
     case 7:
-      return S.Array(S.String);
+      return S.Array(DocumentReadFeatureTypes);
   }
 }
 function __c6(j: number): any {
@@ -5009,9 +6032,9 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          DocumentReadAction: S.String,
-          DocumentReadMode: S.optional(S.String),
-          FeatureTypes: S.optional(__S(47)),
+          DocumentReadAction: DocumentReadAction,
+          DocumentReadMode: S.optional(DocumentReadMode),
+          FeatureTypes: S.optional(ListOfDocumentReadFeatureTypes),
         }),
       ).annotate({ identifier: "DocumentReaderConfig" });
     case 1:
@@ -5020,7 +6043,7 @@ function __c6(j: number): any {
           Text: S.optional(SensitiveString),
           EndpointArn: S.String,
           Bytes: S.optional(T.Blob),
-          DocumentReaderConfig: S.optional(__S(48)),
+          DocumentReaderConfig: S.optional(DocumentReaderConfig),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ClassifyDocumentRequest" });
     case 2:
@@ -5032,7 +6055,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "DocumentClass" });
     case 3:
-      return S.Array(__S(50));
+      return S.Array(DocumentClass);
     case 4:
       return S.suspend(() =>
         S.Struct({ Page: S.optional(S.Number), Count: S.optional(S.Number) }),
@@ -5040,58 +6063,58 @@ function __c6(j: number): any {
         identifier: "ExtractedCharactersListItem",
       });
     case 5:
-      return S.Array(__S(52));
+      return S.Array(ExtractedCharactersListItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           Pages: S.optional(S.Number),
-          ExtractedCharacters: S.optional(__S(53)),
+          ExtractedCharacters: S.optional(ListOfExtractedCharacters),
         }),
       ).annotate({ identifier: "DocumentMetadata" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Page: S.optional(S.Number), Type: S.optional(S.String) }),
+        S.Struct({ Page: S.optional(S.Number), Type: S.optional(DocumentType) }),
       ).annotate({ identifier: "DocumentTypeListItem" });
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55));
+      return S.Array(DocumentTypeListItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           Page: S.optional(S.Number),
-          ErrorCode: S.optional(S.String),
+          ErrorCode: S.optional(PageBasedErrorCode),
           ErrorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "ErrorsListItem" });
     case 2:
-      return S.Array(__S(57));
+      return S.Array(ErrorsListItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           Page: S.optional(S.Number),
-          WarnCode: S.optional(S.String),
+          WarnCode: S.optional(PageBasedWarningCode),
           WarnMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "WarningsListItem" });
     case 4:
-      return S.Array(__S(59));
+      return S.Array(WarningsListItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Classes: S.optional(__S(51)),
-          Labels: S.optional(__S(51)),
-          DocumentMetadata: S.optional(__S(54)),
-          DocumentType: S.optional(__S(56)),
-          Errors: S.optional(__S(58)),
-          Warnings: S.optional(__S(60)),
+          Classes: S.optional(ListOfClasses),
+          Labels: S.optional(ListOfLabels),
+          DocumentMetadata: S.optional(DocumentMetadata),
+          DocumentType: S.optional(ListOfDocumentType),
+          Errors: S.optional(ListOfErrors),
+          Warnings: S.optional(ListOfWarnings),
         }),
       ).annotate({ identifier: "ClassifyDocumentResponse" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Text: S.String, LanguageCode: S.String }).pipe(
+        S.Struct({ Text: S.String, LanguageCode: LanguageCode }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -5099,16 +6122,16 @@ function __c7(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Score: S.optional(S.Number) }),
+        S.Struct({ Name: S.optional(PiiEntityType), Score: S.optional(S.Number) }),
       ).annotate({ identifier: "EntityLabel" });
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(EntityLabel);
     case 1:
-      return S.suspend(() => S.Struct({ Labels: S.optional(__S(64)) })).annotate({
+      return S.suspend(() => S.Struct({ Labels: S.optional(ListOfEntityLabels) })).annotate({
         identifier: "ContainsPiiEntitiesResponse",
       });
     case 2:
@@ -5116,17 +6139,17 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AttributeNames: __S(66),
+          AttributeNames: AttributeNamesList,
           S3Uri: S.String,
           AnnotationDataS3Uri: S.optional(S.String),
           SourceDocumentsS3Uri: S.optional(S.String),
-          DocumentType: S.optional(S.String),
+          DocumentType: S.optional(AugmentedManifestsDocumentTypeFormat),
         }),
       ).annotate({
         identifier: "DatasetAugmentedManifestsListItem",
       });
     case 4:
-      return S.Array(__S(67));
+      return S.Array(DatasetAugmentedManifestsListItem);
     case 5:
       return S.suspend(() =>
         S.Struct({ S3Uri: S.String, LabelDelimiter: S.optional(S.String) }),
@@ -5139,7 +6162,7 @@ function __c8(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ S3Uri: S.String, InputFormat: S.optional(S.String) }),
+        S.Struct({ S3Uri: S.String, InputFormat: S.optional(InputFormat) }),
       ).annotate({
         identifier: "DatasetEntityRecognizerDocuments",
       });
@@ -5150,9 +6173,9 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Annotations: S.optional(__S(70)),
-          Documents: __S(71),
-          EntityList: S.optional(__S(70)),
+          Annotations: S.optional(DatasetEntityRecognizerAnnotations),
+          Documents: DatasetEntityRecognizerDocuments,
+          EntityList: S.optional(DatasetEntityRecognizerEntityList),
         }),
       ).annotate({
         identifier: "DatasetEntityRecognizerInputDataConfig",
@@ -5160,10 +6183,10 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AugmentedManifests: S.optional(__S(68)),
-          DataFormat: S.optional(S.String),
-          DocumentClassifierInputDataConfig: S.optional(__S(69)),
-          EntityRecognizerInputDataConfig: S.optional(__S(72)),
+          AugmentedManifests: S.optional(DatasetAugmentedManifestsList),
+          DataFormat: S.optional(DatasetDataFormat),
+          DocumentClassifierInputDataConfig: S.optional(DatasetDocumentClassifierInputDataConfig),
+          EntityRecognizerInputDataConfig: S.optional(DatasetEntityRecognizerInputDataConfig),
         }),
       ).annotate({ identifier: "DatasetInputDataConfig" });
     case 2:
@@ -5171,17 +6194,17 @@ function __c9(j: number): any {
         identifier: "Tag",
       });
     case 3:
-      return S.Array(__S(74));
+      return S.Array(Tag);
     case 4:
       return S.suspend(() =>
         S.Struct({
           FlywheelArn: S.String,
           DatasetName: S.String,
-          DatasetType: S.optional(S.String),
+          DatasetType: S.optional(DatasetType),
           Description: S.optional(S.String),
-          InputDataConfig: __S(73),
+          InputDataConfig: DatasetInputDataConfig,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(75)),
+          Tags: S.optional(TagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateDatasetRequest" });
     case 5:
@@ -5192,17 +6215,17 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           S3Uri: S.String,
-          Split: S.optional(S.String),
-          AttributeNames: __S(66),
+          Split: S.optional(Split),
+          AttributeNames: AttributeNamesList,
           AnnotationDataS3Uri: S.optional(S.String),
           SourceDocumentsS3Uri: S.optional(S.String),
-          DocumentType: S.optional(S.String),
+          DocumentType: S.optional(AugmentedManifestsDocumentTypeFormat),
         }),
       ).annotate({
         identifier: "AugmentedManifestsListItem",
       });
     case 7:
-      return S.Array(__S(78));
+      return S.Array(AugmentedManifestsListItem);
   }
 }
 function __c10(j: number): any {
@@ -5216,14 +6239,14 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          DataFormat: S.optional(S.String),
+          DataFormat: S.optional(DocumentClassifierDataFormat),
           S3Uri: S.optional(S.String),
           TestS3Uri: S.optional(S.String),
           LabelDelimiter: S.optional(S.String),
-          AugmentedManifests: S.optional(__S(79)),
-          DocumentType: S.optional(S.String),
-          Documents: S.optional(__S(80)),
-          DocumentReaderConfig: S.optional(__S(48)),
+          AugmentedManifests: S.optional(DocumentClassifierAugmentedManifestsList),
+          DocumentType: S.optional(DocumentClassifierDocumentTypeFormat),
+          Documents: S.optional(DocumentClassifierDocuments),
+          DocumentReaderConfig: S.optional(DocumentReaderConfig),
         }),
       ).annotate({
         identifier: "DocumentClassifierInputDataConfig",
@@ -5239,23 +6262,23 @@ function __c10(j: number): any {
         identifier: "DocumentClassifierOutputDataConfig",
       });
     case 3:
-      return S.suspend(() => S.Struct({ SecurityGroupIds: __S(66), Subnets: __S(66) })).annotate({
-        identifier: "VpcConfig",
-      });
+      return S.suspend(() =>
+        S.Struct({ SecurityGroupIds: SecurityGroupIds, Subnets: Subnets }),
+      ).annotate({ identifier: "VpcConfig" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           DocumentClassifierName: S.String,
           VersionName: S.optional(S.String),
           DataAccessRoleArn: S.String,
-          Tags: S.optional(__S(75)),
-          InputDataConfig: __S(81),
-          OutputDataConfig: S.optional(__S(82)),
+          Tags: S.optional(TagList),
+          InputDataConfig: DocumentClassifierInputDataConfig,
+          OutputDataConfig: S.optional(DocumentClassifierOutputDataConfig),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          LanguageCode: S.String,
+          LanguageCode: LanguageCode,
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83)),
-          Mode: S.optional(S.String),
+          VpcConfig: S.optional(VpcConfig),
+          Mode: S.optional(DocumentClassifierMode),
           ModelKmsKeyId: S.optional(S.String),
           ModelPolicy: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -5273,7 +6296,7 @@ function __c10(j: number): any {
           ModelArn: S.optional(S.String),
           DesiredInferenceUnits: S.Number,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(75)),
+          Tags: S.optional(TagList),
           DataAccessRoleArn: S.optional(S.String),
           FlywheelArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -5291,13 +6314,13 @@ function __c11(j: number): any {
         identifier: "EntityTypesListItem",
       });
     case 1:
-      return S.Array(__S(88));
+      return S.Array(EntityTypesListItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           S3Uri: S.String,
           TestS3Uri: S.optional(S.String),
-          InputFormat: S.optional(S.String),
+          InputFormat: S.optional(InputFormat),
         }),
       ).annotate({
         identifier: "EntityRecognizerDocuments",
@@ -5305,12 +6328,12 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          DataFormat: S.optional(S.String),
-          EntityTypes: __S(89),
-          Documents: S.optional(__S(90)),
-          Annotations: S.optional(__S(80)),
-          EntityList: S.optional(__S(70)),
-          AugmentedManifests: S.optional(__S(79)),
+          DataFormat: S.optional(EntityRecognizerDataFormat),
+          EntityTypes: EntityTypesList,
+          Documents: S.optional(EntityRecognizerDocuments),
+          Annotations: S.optional(EntityRecognizerAnnotations),
+          EntityList: S.optional(EntityRecognizerEntityList),
+          AugmentedManifests: S.optional(EntityRecognizerAugmentedManifestsList),
         }),
       ).annotate({
         identifier: "EntityRecognizerInputDataConfig",
@@ -5321,12 +6344,12 @@ function __c11(j: number): any {
           RecognizerName: S.String,
           VersionName: S.optional(S.String),
           DataAccessRoleArn: S.String,
-          Tags: S.optional(__S(75)),
-          InputDataConfig: __S(91),
+          Tags: S.optional(TagList),
+          InputDataConfig: EntityRecognizerInputDataConfig,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          LanguageCode: S.String,
+          LanguageCode: LanguageCode,
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83)),
+          VpcConfig: S.optional(VpcConfig),
           ModelKmsKeyId: S.optional(S.String),
           ModelPolicy: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -5338,11 +6361,13 @@ function __c11(j: number): any {
         identifier: "CreateEntityRecognizerResponse",
       });
     case 6:
-      return S.suspend(() => S.Struct({ Mode: S.String, Labels: S.optional(__S(66)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ Mode: DocumentClassifierMode, Labels: S.optional(LabelsList) }),
+      ).annotate({
         identifier: "DocumentClassificationConfig",
       });
     case 7:
-      return S.suspend(() => S.Struct({ EntityTypes: __S(89) })).annotate({
+      return S.suspend(() => S.Struct({ EntityTypes: EntityTypesList })).annotate({
         identifier: "EntityRecognitionConfig",
       });
   }
@@ -5352,9 +6377,9 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          LanguageCode: S.String,
-          DocumentClassificationConfig: S.optional(__S(94)),
-          EntityRecognitionConfig: S.optional(__S(95)),
+          LanguageCode: LanguageCode,
+          DocumentClassificationConfig: S.optional(DocumentClassificationConfig),
+          EntityRecognitionConfig: S.optional(EntityRecognitionConfig),
         }),
       ).annotate({ identifier: "TaskConfig" });
     case 1:
@@ -5363,7 +6388,7 @@ function __c12(j: number): any {
           ModelKmsKeyId: S.optional(S.String),
           VolumeKmsKeyId: S.optional(S.String),
           DataLakeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83)),
+          VpcConfig: S.optional(VpcConfig),
         }),
       ).annotate({ identifier: "DataSecurityConfig" });
     case 2:
@@ -5372,12 +6397,12 @@ function __c12(j: number): any {
           FlywheelName: S.String,
           ActiveModelArn: S.optional(S.String),
           DataAccessRoleArn: S.String,
-          TaskConfig: S.optional(__S(96)),
-          ModelType: S.optional(S.String),
+          TaskConfig: S.optional(TaskConfig),
+          ModelType: S.optional(ModelType),
           DataLakeS3Uri: S.String,
-          DataSecurityConfig: S.optional(__S(97)),
+          DataSecurityConfig: S.optional(DataSecurityConfig),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(75)),
+          Tags: S.optional(TagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateFlywheelRequest" });
     case 3:
@@ -5443,10 +6468,10 @@ function __c13(j: number): any {
         S.Struct({
           DatasetArn: S.optional(S.String),
           DatasetName: S.optional(S.String),
-          DatasetType: S.optional(S.String),
+          DatasetType: S.optional(DatasetType),
           DatasetS3Uri: S.optional(S.String),
           Description: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(DatasetStatus),
           Message: S.optional(S.String),
           NumberOfDocuments: S.optional(S.Number),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -5454,9 +6479,9 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "DatasetProperties" });
     case 5:
-      return S.suspend(() => S.Struct({ DatasetProperties: S.optional(__S(108)) })).annotate({
-        identifier: "DescribeDatasetResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({ DatasetProperties: S.optional(DatasetProperties) }),
+      ).annotate({ identifier: "DescribeDatasetResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({ JobId: S.String }).pipe(
@@ -5469,8 +6494,8 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           S3Uri: S.String,
-          InputFormat: S.optional(S.String),
-          DocumentReaderConfig: S.optional(__S(48)),
+          InputFormat: S.optional(InputFormat),
+          DocumentReaderConfig: S.optional(DocumentReaderConfig),
         }),
       ).annotate({ identifier: "InputDataConfig" });
   }
@@ -5487,16 +6512,16 @@ function __c14(j: number): any {
           JobId: S.optional(S.String),
           JobArn: S.optional(S.String),
           JobName: S.optional(S.String),
-          JobStatus: S.optional(S.String),
+          JobStatus: S.optional(JobStatus),
           Message: S.optional(S.String),
           SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DocumentClassifierArn: S.optional(S.String),
-          InputDataConfig: S.optional(__S(111)),
-          OutputDataConfig: S.optional(__S(112)),
+          InputDataConfig: S.optional(InputDataConfig),
+          OutputDataConfig: S.optional(OutputDataConfig),
           DataAccessRoleArn: S.optional(S.String),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83)),
+          VpcConfig: S.optional(VpcConfig),
           FlywheelArn: S.optional(S.String),
         }),
       ).annotate({
@@ -5505,7 +6530,7 @@ function __c14(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          DocumentClassificationJobProperties: S.optional(__S(113)),
+          DocumentClassificationJobProperties: S.optional(DocumentClassificationJobProperties),
         }),
       ).annotate({
         identifier: "DescribeDocumentClassificationJobResponse",
@@ -5539,27 +6564,27 @@ function __c14(j: number): any {
           NumberOfLabels: S.optional(S.Number),
           NumberOfTrainedDocuments: S.optional(S.Number),
           NumberOfTestDocuments: S.optional(S.Number),
-          EvaluationMetrics: S.optional(__S(116)),
+          EvaluationMetrics: S.optional(ClassifierEvaluationMetrics),
         }),
       ).annotate({ identifier: "ClassifierMetadata" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           DocumentClassifierArn: S.optional(S.String),
-          LanguageCode: S.optional(S.String),
-          Status: S.optional(S.String),
+          LanguageCode: S.optional(LanguageCode),
+          Status: S.optional(ModelStatus),
           Message: S.optional(S.String),
           SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TrainingStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TrainingEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          InputDataConfig: S.optional(__S(81)),
-          OutputDataConfig: S.optional(__S(82)),
-          ClassifierMetadata: S.optional(__S(117)),
+          InputDataConfig: S.optional(DocumentClassifierInputDataConfig),
+          OutputDataConfig: S.optional(DocumentClassifierOutputDataConfig),
+          ClassifierMetadata: S.optional(ClassifierMetadata),
           DataAccessRoleArn: S.optional(S.String),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83)),
-          Mode: S.optional(S.String),
+          VpcConfig: S.optional(VpcConfig),
+          Mode: S.optional(DocumentClassifierMode),
           ModelKmsKeyId: S.optional(S.String),
           VersionName: S.optional(S.String),
           SourceModelArn: S.optional(S.String),
@@ -5570,7 +6595,7 @@ function __c14(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ DocumentClassifierProperties: S.optional(__S(118)) }),
+        S.Struct({ DocumentClassifierProperties: S.optional(DocumentClassifierProperties) }),
       ).annotate({
         identifier: "DescribeDocumentClassifierResponse",
       });
@@ -5592,15 +6617,15 @@ function __c15(j: number): any {
           JobId: S.optional(S.String),
           JobArn: S.optional(S.String),
           JobName: S.optional(S.String),
-          JobStatus: S.optional(S.String),
+          JobStatus: S.optional(JobStatus),
           Message: S.optional(S.String),
           SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          InputDataConfig: S.optional(__S(111)),
-          OutputDataConfig: S.optional(__S(112)),
+          InputDataConfig: S.optional(InputDataConfig),
+          OutputDataConfig: S.optional(OutputDataConfig),
           DataAccessRoleArn: S.optional(S.String),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83)),
+          VpcConfig: S.optional(VpcConfig),
         }),
       ).annotate({
         identifier: "DominantLanguageDetectionJobProperties",
@@ -5608,7 +6633,9 @@ function __c15(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          DominantLanguageDetectionJobProperties: S.optional(__S(121)),
+          DominantLanguageDetectionJobProperties: S.optional(
+            DominantLanguageDetectionJobProperties,
+          ),
         }),
       ).annotate({
         identifier: "DescribeDominantLanguageDetectionJobResponse",
@@ -5623,7 +6650,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           EndpointArn: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(EndpointStatus),
           Message: S.optional(S.String),
           ModelArn: S.optional(S.String),
           DesiredModelArn: S.optional(S.String),
@@ -5637,9 +6664,9 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "EndpointProperties" });
     case 5:
-      return S.suspend(() => S.Struct({ EndpointProperties: S.optional(__S(124)) })).annotate({
-        identifier: "DescribeEndpointResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({ EndpointProperties: S.optional(EndpointProperties) }),
+      ).annotate({ identifier: "DescribeEndpointResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({ JobId: S.String }).pipe(
@@ -5654,17 +6681,17 @@ function __c15(j: number): any {
           JobId: S.optional(S.String),
           JobArn: S.optional(S.String),
           JobName: S.optional(S.String),
-          JobStatus: S.optional(S.String),
+          JobStatus: S.optional(JobStatus),
           Message: S.optional(S.String),
           SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EntityRecognizerArn: S.optional(S.String),
-          InputDataConfig: S.optional(__S(111)),
-          OutputDataConfig: S.optional(__S(112)),
-          LanguageCode: S.optional(S.String),
+          InputDataConfig: S.optional(InputDataConfig),
+          OutputDataConfig: S.optional(OutputDataConfig),
+          LanguageCode: S.optional(LanguageCode),
           DataAccessRoleArn: S.optional(S.String),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83)),
+          VpcConfig: S.optional(VpcConfig),
           FlywheelArn: S.optional(S.String),
         }),
       ).annotate({
@@ -5676,7 +6703,7 @@ function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ EntitiesDetectionJobProperties: S.optional(__S(127)) }),
+        S.Struct({ EntitiesDetectionJobProperties: S.optional(EntitiesDetectionJobProperties) }),
       ).annotate({
         identifier: "DescribeEntitiesDetectionJobResponse",
       });
@@ -5702,21 +6729,21 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Type: S.optional(S.String),
-          EvaluationMetrics: S.optional(__S(130)),
+          EvaluationMetrics: S.optional(EntityTypesEvaluationMetrics),
           NumberOfTrainMentions: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "EntityRecognizerMetadataEntityTypesListItem",
       });
     case 4:
-      return S.Array(__S(131));
+      return S.Array(EntityRecognizerMetadataEntityTypesListItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           NumberOfTrainedDocuments: S.optional(S.Number),
           NumberOfTestDocuments: S.optional(S.Number),
-          EvaluationMetrics: S.optional(__S(130)),
-          EntityTypes: S.optional(__S(132)),
+          EvaluationMetrics: S.optional(EntityRecognizerEvaluationMetrics),
+          EntityTypes: S.optional(EntityRecognizerMetadataEntityTypesList),
         }),
       ).annotate({ identifier: "EntityRecognizerMetadata" });
     case 6:
@@ -5727,23 +6754,23 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           EntityRecognizerArn: S.optional(S.String),
-          LanguageCode: S.optional(S.String),
-          Status: S.optional(S.String),
+          LanguageCode: S.optional(LanguageCode),
+          Status: S.optional(ModelStatus),
           Message: S.optional(S.String),
           SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TrainingStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TrainingEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          InputDataConfig: S.optional(__S(91)),
-          RecognizerMetadata: S.optional(__S(133)),
+          InputDataConfig: S.optional(EntityRecognizerInputDataConfig),
+          RecognizerMetadata: S.optional(EntityRecognizerMetadata),
           DataAccessRoleArn: S.optional(S.String),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83)),
+          VpcConfig: S.optional(VpcConfig),
           ModelKmsKeyId: S.optional(S.String),
           VersionName: S.optional(S.String),
           SourceModelArn: S.optional(S.String),
           FlywheelArn: S.optional(S.String),
-          OutputDataConfig: S.optional(__S(134)),
+          OutputDataConfig: S.optional(EntityRecognizerOutputDataConfig),
         }),
       ).annotate({
         identifier: "EntityRecognizerProperties",
@@ -5754,7 +6781,7 @@ function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ EntityRecognizerProperties: S.optional(__S(135)) }),
+        S.Struct({ EntityRecognizerProperties: S.optional(EntityRecognizerProperties) }),
       ).annotate({
         identifier: "DescribeEntityRecognizerResponse",
       });
@@ -5772,22 +6799,22 @@ function __c17(j: number): any {
           JobId: S.optional(S.String),
           JobArn: S.optional(S.String),
           JobName: S.optional(S.String),
-          JobStatus: S.optional(S.String),
+          JobStatus: S.optional(JobStatus),
           Message: S.optional(S.String),
           SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          InputDataConfig: S.optional(__S(111)),
-          OutputDataConfig: S.optional(__S(112)),
-          LanguageCode: S.optional(S.String),
+          InputDataConfig: S.optional(InputDataConfig),
+          OutputDataConfig: S.optional(OutputDataConfig),
+          LanguageCode: S.optional(LanguageCode),
           DataAccessRoleArn: S.optional(S.String),
-          TargetEventTypes: S.optional(__S(66)),
+          TargetEventTypes: S.optional(TargetEventTypes),
         }),
       ).annotate({
         identifier: "EventsDetectionJobProperties",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ EventsDetectionJobProperties: S.optional(__S(138)) }),
+        S.Struct({ EventsDetectionJobProperties: S.optional(EventsDetectionJobProperties) }),
       ).annotate({
         identifier: "DescribeEventsDetectionJobResponse",
       });
@@ -5803,11 +6830,11 @@ function __c17(j: number): any {
           FlywheelArn: S.optional(S.String),
           ActiveModelArn: S.optional(S.String),
           DataAccessRoleArn: S.optional(S.String),
-          TaskConfig: S.optional(__S(96)),
+          TaskConfig: S.optional(TaskConfig),
           DataLakeS3Uri: S.optional(S.String),
-          DataSecurityConfig: S.optional(__S(97)),
-          Status: S.optional(S.String),
-          ModelType: S.optional(S.String),
+          DataSecurityConfig: S.optional(DataSecurityConfig),
+          Status: S.optional(FlywheelStatus),
+          ModelType: S.optional(ModelType),
           Message: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -5815,9 +6842,9 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "FlywheelProperties" });
     case 6:
-      return S.suspend(() => S.Struct({ FlywheelProperties: S.optional(__S(141)) })).annotate({
-        identifier: "DescribeFlywheelResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({ FlywheelProperties: S.optional(FlywheelProperties) }),
+      ).annotate({ identifier: "DescribeFlywheelResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({ FlywheelArn: S.String, FlywheelIterationId: S.String }).pipe(
@@ -5848,12 +6875,12 @@ function __c18(j: number): any {
           FlywheelIterationId: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Status: S.optional(S.String),
+          Status: S.optional(FlywheelIterationStatus),
           Message: S.optional(S.String),
           EvaluatedModelArn: S.optional(S.String),
-          EvaluatedModelMetrics: S.optional(__S(144)),
+          EvaluatedModelMetrics: S.optional(FlywheelModelEvaluationMetrics),
           TrainedModelArn: S.optional(S.String),
-          TrainedModelMetrics: S.optional(__S(144)),
+          TrainedModelMetrics: S.optional(FlywheelModelEvaluationMetrics),
           EvaluationManifestS3Prefix: S.optional(S.String),
         }),
       ).annotate({
@@ -5861,7 +6888,7 @@ function __c18(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ FlywheelIterationProperties: S.optional(__S(145)) }),
+        S.Struct({ FlywheelIterationProperties: S.optional(FlywheelIterationProperties) }),
       ).annotate({
         identifier: "DescribeFlywheelIterationResponse",
       });
@@ -5879,16 +6906,16 @@ function __c18(j: number): any {
           JobId: S.optional(S.String),
           JobArn: S.optional(S.String),
           JobName: S.optional(S.String),
-          JobStatus: S.optional(S.String),
+          JobStatus: S.optional(JobStatus),
           Message: S.optional(S.String),
           SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          InputDataConfig: S.optional(__S(111)),
-          OutputDataConfig: S.optional(__S(112)),
-          LanguageCode: S.optional(S.String),
+          InputDataConfig: S.optional(InputDataConfig),
+          OutputDataConfig: S.optional(OutputDataConfig),
+          LanguageCode: S.optional(LanguageCode),
           DataAccessRoleArn: S.optional(S.String),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83)),
+          VpcConfig: S.optional(VpcConfig),
         }),
       ).annotate({
         identifier: "KeyPhrasesDetectionJobProperties",
@@ -5896,7 +6923,7 @@ function __c18(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          KeyPhrasesDetectionJobProperties: S.optional(__S(148)),
+          KeyPhrasesDetectionJobProperties: S.optional(KeyPhrasesDetectionJobProperties),
         }),
       ).annotate({
         identifier: "DescribeKeyPhrasesDetectionJobResponse",
@@ -5912,8 +6939,8 @@ function __c18(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          PiiEntityTypes: S.optional(__S(47)),
-          MaskMode: S.optional(S.String),
+          PiiEntityTypes: S.optional(ListOfPiiEntityTypes),
+          MaskMode: S.optional(PiiEntitiesDetectionMaskMode),
           MaskCharacter: S.optional(S.String),
         }),
       ).annotate({ identifier: "RedactionConfig" });
@@ -5927,16 +6954,16 @@ function __c19(j: number): any {
           JobId: S.optional(S.String),
           JobArn: S.optional(S.String),
           JobName: S.optional(S.String),
-          JobStatus: S.optional(S.String),
+          JobStatus: S.optional(JobStatus),
           Message: S.optional(S.String),
           SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          InputDataConfig: S.optional(__S(111)),
-          OutputDataConfig: S.optional(__S(112)),
-          RedactionConfig: S.optional(__S(151)),
-          LanguageCode: S.optional(S.String),
+          InputDataConfig: S.optional(InputDataConfig),
+          OutputDataConfig: S.optional(PiiOutputDataConfig),
+          RedactionConfig: S.optional(RedactionConfig),
+          LanguageCode: S.optional(LanguageCode),
           DataAccessRoleArn: S.optional(S.String),
-          Mode: S.optional(S.String),
+          Mode: S.optional(PiiEntitiesDetectionMode),
         }),
       ).annotate({
         identifier: "PiiEntitiesDetectionJobProperties",
@@ -5944,7 +6971,7 @@ function __c19(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          PiiEntitiesDetectionJobProperties: S.optional(__S(152)),
+          PiiEntitiesDetectionJobProperties: S.optional(PiiEntitiesDetectionJobProperties),
         }),
       ).annotate({
         identifier: "DescribePiiEntitiesDetectionJobResponse",
@@ -5978,7 +7005,7 @@ function __c19(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ SentimentDetectionJobProperties: S.optional(__S(148)) }),
+        S.Struct({ SentimentDetectionJobProperties: S.optional(SentimentDetectionJobProperties) }),
       ).annotate({
         identifier: "DescribeSentimentDetectionJobResponse",
       });
@@ -5993,7 +7020,9 @@ function __c19(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          TargetedSentimentDetectionJobProperties: S.optional(__S(148)),
+          TargetedSentimentDetectionJobProperties: S.optional(
+            TargetedSentimentDetectionJobProperties,
+          ),
         }),
       ).annotate({
         identifier: "DescribeTargetedSentimentDetectionJobResponse",
@@ -6016,23 +7045,23 @@ function __c20(j: number): any {
           JobId: S.optional(S.String),
           JobArn: S.optional(S.String),
           JobName: S.optional(S.String),
-          JobStatus: S.optional(S.String),
+          JobStatus: S.optional(JobStatus),
           Message: S.optional(S.String),
           SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          InputDataConfig: S.optional(__S(111)),
-          OutputDataConfig: S.optional(__S(112)),
+          InputDataConfig: S.optional(InputDataConfig),
+          OutputDataConfig: S.optional(OutputDataConfig),
           NumberOfTopics: S.optional(S.Number),
           DataAccessRoleArn: S.optional(S.String),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83)),
+          VpcConfig: S.optional(VpcConfig),
         }),
       ).annotate({
         identifier: "TopicsDetectionJobProperties",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ TopicsDetectionJobProperties: S.optional(__S(161)) }),
+        S.Struct({ TopicsDetectionJobProperties: S.optional(TopicsDetectionJobProperties) }),
       ).annotate({
         identifier: "DescribeTopicsDetectionJobResponse",
       });
@@ -6045,17 +7074,19 @@ function __c20(j: number): any {
         identifier: "DetectDominantLanguageRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ Languages: S.optional(__S(3)) })).annotate({
-        identifier: "DetectDominantLanguageResponse",
-      });
+      return S.suspend(() => S.Struct({ Languages: S.optional(ListOfDominantLanguages) })).annotate(
+        {
+          identifier: "DetectDominantLanguageResponse",
+        },
+      );
     case 5:
       return S.suspend(() =>
         S.Struct({
           Text: S.optional(SensitiveString),
-          LanguageCode: S.optional(S.String),
+          LanguageCode: S.optional(LanguageCode),
           EndpointArn: S.optional(S.String),
           Bytes: S.optional(T.Blob),
-          DocumentReaderConfig: S.optional(__S(48)),
+          DocumentReaderConfig: S.optional(DocumentReaderConfig),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DetectEntitiesRequest" });
     case 6:
@@ -6076,43 +7107,43 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(167));
+      return S.Array(Point);
     case 1:
       return S.suspend(() =>
-        S.Struct({ BoundingBox: S.optional(__S(166)), Polygon: S.optional(__S(168)) }),
+        S.Struct({ BoundingBox: S.optional(BoundingBox), Polygon: S.optional(Polygon) }),
       ).annotate({ identifier: "Geometry" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Ids: S.optional(__S(66)), Type: S.optional(S.String) }),
+        S.Struct({ Ids: S.optional(StringList), Type: S.optional(RelationshipType) }),
       ).annotate({ identifier: "RelationshipsListItem" });
     case 3:
-      return S.Array(__S(170));
+      return S.Array(RelationshipsListItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
-          BlockType: S.optional(S.String),
+          BlockType: S.optional(BlockType),
           Text: S.optional(S.String),
           Page: S.optional(S.Number),
-          Geometry: S.optional(__S(169)),
-          Relationships: S.optional(__S(171)),
+          Geometry: S.optional(Geometry),
+          Relationships: S.optional(ListOfRelationships),
         }),
       ).annotate({ identifier: "Block" });
     case 5:
-      return S.Array(__S(172));
+      return S.Array(Block);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Entities: S.optional(__S(15)),
-          DocumentMetadata: S.optional(__S(54)),
-          DocumentType: S.optional(__S(56)),
-          Blocks: S.optional(__S(173)),
-          Errors: S.optional(__S(58)),
+          Entities: S.optional(ListOfEntities),
+          DocumentMetadata: S.optional(DocumentMetadata),
+          DocumentType: S.optional(ListOfDocumentType),
+          Blocks: S.optional(ListOfBlocks),
+          Errors: S.optional(ListOfErrors),
         }),
       ).annotate({ identifier: "DetectEntitiesResponse" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Text: SensitiveString, LanguageCode: S.String }).pipe(
+        S.Struct({ Text: SensitiveString, LanguageCode: LanguageCode }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DetectKeyPhrasesRequest" });
@@ -6121,12 +7152,12 @@ function __c21(j: number): any {
 function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ KeyPhrases: S.optional(__S(21)) })).annotate({
+      return S.suspend(() => S.Struct({ KeyPhrases: S.optional(ListOfKeyPhrases) })).annotate({
         identifier: "DetectKeyPhrasesResponse",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Text: S.String, LanguageCode: S.String }).pipe(
+        S.Struct({ Text: S.String, LanguageCode: LanguageCode }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DetectPiiEntitiesRequest" });
@@ -6134,31 +7165,31 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Score: S.optional(S.Number),
-          Type: S.optional(S.String),
+          Type: S.optional(PiiEntityType),
           BeginOffset: S.optional(S.Number),
           EndOffset: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PiiEntity" });
     case 3:
-      return S.Array(__S(178));
+      return S.Array(PiiEntity);
     case 4:
-      return S.suspend(() => S.Struct({ Entities: S.optional(__S(179)) })).annotate({
+      return S.suspend(() => S.Struct({ Entities: S.optional(ListOfPiiEntities) })).annotate({
         identifier: "DetectPiiEntitiesResponse",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Text: SensitiveString, LanguageCode: S.String }).pipe(
+        S.Struct({ Text: SensitiveString, LanguageCode: LanguageCode }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DetectSentimentRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Text: SensitiveString, LanguageCode: S.String }).pipe(
+        S.Struct({ Text: SensitiveString, LanguageCode: SyntaxLanguageCode }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DetectSyntaxRequest" });
     case 7:
-      return S.suspend(() => S.Struct({ SyntaxTokens: S.optional(__S(33)) })).annotate({
+      return S.suspend(() => S.Struct({ SyntaxTokens: S.optional(ListOfSyntaxTokens) })).annotate({
         identifier: "DetectSyntaxResponse",
       });
   }
@@ -6167,14 +7198,16 @@ function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Text: SensitiveString, LanguageCode: S.String }).pipe(
+        S.Struct({ Text: SensitiveString, LanguageCode: LanguageCode }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "DetectTargetedSentimentRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ Entities: S.optional(__S(43)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ Entities: S.optional(ListOfTargetedSentimentEntities) }),
+      ).annotate({
         identifier: "DetectTargetedSentimentResponse",
       });
     case 2:
@@ -6182,10 +7215,10 @@ function __c23(j: number): any {
         identifier: "TextSegment",
       });
     case 3:
-      return S.Array(__S(186));
+      return S.Array(TextSegment);
     case 4:
       return S.suspend(() =>
-        S.Struct({ TextSegments: __S(187), LanguageCode: S.String }).pipe(
+        S.Struct({ TextSegments: ListOfTextSegments, LanguageCode: LanguageCode }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -6193,12 +7226,12 @@ function __c23(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Labels: S.optional(__S(64)), Toxicity: S.optional(S.Number) }),
+        S.Struct({ Labels: S.optional(ListOfToxicContent), Toxicity: S.optional(S.Number) }),
       ).annotate({ identifier: "ToxicLabels" });
     case 6:
-      return S.Array(__S(189));
+      return S.Array(ToxicLabels);
     case 7:
-      return S.suspend(() => S.Struct({ ResultList: S.optional(__S(190)) })).annotate({
+      return S.suspend(() => S.Struct({ ResultList: S.optional(ListOfToxicLabels) })).annotate({
         identifier: "DetectToxicContentResponse",
       });
   }
@@ -6213,7 +7246,7 @@ function __c24(j: number): any {
           VersionName: S.optional(S.String),
           ModelKmsKeyId: S.optional(S.String),
           DataAccessRoleArn: S.optional(S.String),
-          Tags: S.optional(__S(75)),
+          Tags: S.optional(TagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ImportModelRequest" });
     case 1:
@@ -6223,8 +7256,8 @@ function __c24(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(S.String),
-          DatasetType: S.optional(S.String),
+          Status: S.optional(DatasetStatus),
+          DatasetType: S.optional(DatasetType),
           CreationTimeAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreationTimeBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -6233,17 +7266,17 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           FlywheelArn: S.optional(S.String),
-          Filter: S.optional(__S(194)),
+          Filter: S.optional(DatasetFilter),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListDatasetsRequest" });
     case 4:
-      return S.Array(__S(108));
+      return S.Array(DatasetProperties);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          DatasetPropertiesList: S.optional(__S(196)),
+          DatasetPropertiesList: S.optional(DatasetPropertiesList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDatasetsResponse" });
@@ -6251,7 +7284,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           JobName: S.optional(S.String),
-          JobStatus: S.optional(S.String),
+          JobStatus: S.optional(JobStatus),
           SubmitTimeBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           SubmitTimeAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -6261,7 +7294,7 @@ function __c24(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(198)),
+          Filter: S.optional(DocumentClassificationJobFilter),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6273,11 +7306,13 @@ function __c24(j: number): any {
 function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(113));
+      return S.Array(DocumentClassificationJobProperties);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          DocumentClassificationJobPropertiesList: S.optional(__S(200)),
+          DocumentClassificationJobPropertiesList: S.optional(
+            DocumentClassificationJobPropertiesList,
+          ),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6286,7 +7321,7 @@ function __c25(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(S.String),
+          Status: S.optional(ModelStatus),
           DocumentClassifierName: S.optional(S.String),
           SubmitTimeBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           SubmitTimeAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -6295,7 +7330,7 @@ function __c25(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(202)),
+          Filter: S.optional(DocumentClassifierFilter),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6303,11 +7338,11 @@ function __c25(j: number): any {
         identifier: "ListDocumentClassifiersRequest",
       });
     case 4:
-      return S.Array(__S(118));
+      return S.Array(DocumentClassifierProperties);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          DocumentClassifierPropertiesList: S.optional(__S(204)),
+          DocumentClassifierPropertiesList: S.optional(DocumentClassifierPropertiesList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6328,7 +7363,7 @@ function __c25(j: number): any {
           NumberOfVersions: S.optional(S.Number),
           LatestVersionCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LatestVersionName: S.optional(S.String),
-          LatestVersionStatus: S.optional(S.String),
+          LatestVersionStatus: S.optional(ModelStatus),
         }),
       ).annotate({
         identifier: "DocumentClassifierSummary",
@@ -6338,11 +7373,11 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(207));
+      return S.Array(DocumentClassifierSummary);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          DocumentClassifierSummariesList: S.optional(__S(208)),
+          DocumentClassifierSummariesList: S.optional(DocumentClassifierSummariesList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6351,7 +7386,7 @@ function __c26(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(198)),
+          Filter: S.optional(DominantLanguageDetectionJobFilter),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6359,11 +7394,13 @@ function __c26(j: number): any {
         identifier: "ListDominantLanguageDetectionJobsRequest",
       });
     case 3:
-      return S.Array(__S(121));
+      return S.Array(DominantLanguageDetectionJobProperties);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          DominantLanguageDetectionJobPropertiesList: S.optional(__S(211)),
+          DominantLanguageDetectionJobPropertiesList: S.optional(
+            DominantLanguageDetectionJobPropertiesList,
+          ),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6373,7 +7410,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ModelArn: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(EndpointStatus),
           CreationTimeBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreationTimeAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -6381,13 +7418,13 @@ function __c26(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(213)),
+          Filter: S.optional(EndpointFilter),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListEndpointsRequest" });
     case 7:
-      return S.Array(__S(124));
+      return S.Array(EndpointProperties);
   }
 }
 function __c27(j: number): any {
@@ -6395,14 +7432,14 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          EndpointPropertiesList: S.optional(__S(215)),
+          EndpointPropertiesList: S.optional(EndpointPropertiesList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListEndpointsResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(198)),
+          Filter: S.optional(EntitiesDetectionJobFilter),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6410,11 +7447,11 @@ function __c27(j: number): any {
         identifier: "ListEntitiesDetectionJobsRequest",
       });
     case 2:
-      return S.Array(__S(127));
+      return S.Array(EntitiesDetectionJobProperties);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          EntitiesDetectionJobPropertiesList: S.optional(__S(218)),
+          EntitiesDetectionJobPropertiesList: S.optional(EntitiesDetectionJobPropertiesList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6423,7 +7460,7 @@ function __c27(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(S.String),
+          Status: S.optional(ModelStatus),
           RecognizerName: S.optional(S.String),
           SubmitTimeBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           SubmitTimeAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -6432,7 +7469,7 @@ function __c27(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(220)),
+          Filter: S.optional(EntityRecognizerFilter),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6440,11 +7477,11 @@ function __c27(j: number): any {
         identifier: "ListEntityRecognizersRequest",
       });
     case 6:
-      return S.Array(__S(135));
+      return S.Array(EntityRecognizerProperties);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          EntityRecognizerPropertiesList: S.optional(__S(222)),
+          EntityRecognizerPropertiesList: S.optional(EntityRecognizerPropertiesList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6469,15 +7506,15 @@ function __c28(j: number): any {
           NumberOfVersions: S.optional(S.Number),
           LatestVersionCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LatestVersionName: S.optional(S.String),
-          LatestVersionStatus: S.optional(S.String),
+          LatestVersionStatus: S.optional(ModelStatus),
         }),
       ).annotate({ identifier: "EntityRecognizerSummary" });
     case 2:
-      return S.Array(__S(225));
+      return S.Array(EntityRecognizerSummary);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          EntityRecognizerSummariesList: S.optional(__S(226)),
+          EntityRecognizerSummariesList: S.optional(EntityRecognizerSummariesList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6487,7 +7524,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           JobName: S.optional(S.String),
-          JobStatus: S.optional(S.String),
+          JobStatus: S.optional(JobStatus),
           SubmitTimeBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           SubmitTimeAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -6495,7 +7532,7 @@ function __c28(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(228)),
+          Filter: S.optional(EventsDetectionJobFilter),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6503,11 +7540,11 @@ function __c28(j: number): any {
         identifier: "ListEventsDetectionJobsRequest",
       });
     case 6:
-      return S.Array(__S(138));
+      return S.Array(EventsDetectionJobProperties);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          EventsDetectionJobPropertiesList: S.optional(__S(230)),
+          EventsDetectionJobPropertiesList: S.optional(EventsDetectionJobPropertiesList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6528,7 +7565,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           FlywheelArn: S.String,
-          Filter: S.optional(__S(232)),
+          Filter: S.optional(FlywheelIterationFilter),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6536,11 +7573,11 @@ function __c29(j: number): any {
         identifier: "ListFlywheelIterationHistoryRequest",
       });
     case 2:
-      return S.Array(__S(145));
+      return S.Array(FlywheelIterationProperties);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          FlywheelIterationPropertiesList: S.optional(__S(234)),
+          FlywheelIterationPropertiesList: S.optional(FlywheelIterationPropertiesList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6549,7 +7586,7 @@ function __c29(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(S.String),
+          Status: S.optional(FlywheelStatus),
           CreationTimeAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreationTimeBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -6557,7 +7594,7 @@ function __c29(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(236)),
+          Filter: S.optional(FlywheelFilter),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6568,8 +7605,8 @@ function __c29(j: number): any {
           FlywheelArn: S.optional(S.String),
           ActiveModelArn: S.optional(S.String),
           DataLakeS3Uri: S.optional(S.String),
-          Status: S.optional(S.String),
-          ModelType: S.optional(S.String),
+          Status: S.optional(FlywheelStatus),
+          ModelType: S.optional(ModelType),
           Message: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -6577,7 +7614,7 @@ function __c29(j: number): any {
         }),
       ).annotate({ identifier: "FlywheelSummary" });
     case 7:
-      return S.Array(__S(238));
+      return S.Array(FlywheelSummary);
   }
 }
 function __c30(j: number): any {
@@ -6585,14 +7622,14 @@ function __c30(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          FlywheelSummaryList: S.optional(__S(239)),
+          FlywheelSummaryList: S.optional(FlywheelSummaryList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListFlywheelsResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(198)),
+          Filter: S.optional(KeyPhrasesDetectionJobFilter),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6600,11 +7637,11 @@ function __c30(j: number): any {
         identifier: "ListKeyPhrasesDetectionJobsRequest",
       });
     case 2:
-      return S.Array(__S(148));
+      return S.Array(KeyPhrasesDetectionJobProperties);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          KeyPhrasesDetectionJobPropertiesList: S.optional(__S(242)),
+          KeyPhrasesDetectionJobPropertiesList: S.optional(KeyPhrasesDetectionJobPropertiesList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6613,7 +7650,7 @@ function __c30(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(198)),
+          Filter: S.optional(PiiEntitiesDetectionJobFilter),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6621,11 +7658,11 @@ function __c30(j: number): any {
         identifier: "ListPiiEntitiesDetectionJobsRequest",
       });
     case 5:
-      return S.Array(__S(152));
+      return S.Array(PiiEntitiesDetectionJobProperties);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          PiiEntitiesDetectionJobPropertiesList: S.optional(__S(245)),
+          PiiEntitiesDetectionJobPropertiesList: S.optional(PiiEntitiesDetectionJobPropertiesList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6634,7 +7671,7 @@ function __c30(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(198)),
+          Filter: S.optional(SentimentDetectionJobFilter),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6648,7 +7685,7 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          SentimentDetectionJobPropertiesList: S.optional(__S(242)),
+          SentimentDetectionJobPropertiesList: S.optional(SentimentDetectionJobPropertiesList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6664,14 +7701,14 @@ function __c31(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.optional(S.String), Tags: S.optional(__S(75)) }),
+        S.Struct({ ResourceArn: S.optional(S.String), Tags: S.optional(TagList) }),
       ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(198)),
+          Filter: S.optional(TargetedSentimentDetectionJobFilter),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6681,7 +7718,9 @@ function __c31(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          TargetedSentimentDetectionJobPropertiesList: S.optional(__S(242)),
+          TargetedSentimentDetectionJobPropertiesList: S.optional(
+            TargetedSentimentDetectionJobPropertiesList,
+          ),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6690,7 +7729,7 @@ function __c31(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(228)),
+          Filter: S.optional(TopicsDetectionJobFilter),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6698,11 +7737,11 @@ function __c31(j: number): any {
         identifier: "ListTopicsDetectionJobsRequest",
       });
     case 6:
-      return S.Array(__S(161));
+      return S.Array(TopicsDetectionJobProperties);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          TopicsDetectionJobPropertiesList: S.optional(__S(254)),
+          TopicsDetectionJobPropertiesList: S.optional(TopicsDetectionJobPropertiesList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6729,13 +7768,13 @@ function __c32(j: number): any {
         S.Struct({
           JobName: S.optional(S.String),
           DocumentClassifierArn: S.optional(S.String),
-          InputDataConfig: __S(111),
-          OutputDataConfig: __S(112),
+          InputDataConfig: InputDataConfig,
+          OutputDataConfig: OutputDataConfig,
           DataAccessRoleArn: S.String,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83)),
-          Tags: S.optional(__S(75)),
+          VpcConfig: S.optional(VpcConfig),
+          Tags: S.optional(TagList),
           FlywheelArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -6746,7 +7785,7 @@ function __c32(j: number): any {
         S.Struct({
           JobId: S.optional(S.String),
           JobArn: S.optional(S.String),
-          JobStatus: S.optional(S.String),
+          JobStatus: S.optional(JobStatus),
           DocumentClassifierArn: S.optional(S.String),
         }),
       ).annotate({
@@ -6755,14 +7794,14 @@ function __c32(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(111),
-          OutputDataConfig: __S(112),
+          InputDataConfig: InputDataConfig,
+          OutputDataConfig: OutputDataConfig,
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83)),
-          Tags: S.optional(__S(75)),
+          VpcConfig: S.optional(VpcConfig),
+          Tags: S.optional(TagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartDominantLanguageDetectionJobRequest",
@@ -6772,7 +7811,7 @@ function __c32(j: number): any {
         S.Struct({
           JobId: S.optional(S.String),
           JobArn: S.optional(S.String),
-          JobStatus: S.optional(S.String),
+          JobStatus: S.optional(JobStatus),
         }),
       ).annotate({
         identifier: "StartDominantLanguageDetectionJobResponse",
@@ -6780,16 +7819,16 @@ function __c32(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(111),
-          OutputDataConfig: __S(112),
+          InputDataConfig: InputDataConfig,
+          OutputDataConfig: OutputDataConfig,
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
           EntityRecognizerArn: S.optional(S.String),
-          LanguageCode: S.String,
+          LanguageCode: LanguageCode,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83)),
-          Tags: S.optional(__S(75)),
+          VpcConfig: S.optional(VpcConfig),
+          Tags: S.optional(TagList),
           FlywheelArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -6800,7 +7839,7 @@ function __c32(j: number): any {
         S.Struct({
           JobId: S.optional(S.String),
           JobArn: S.optional(S.String),
-          JobStatus: S.optional(S.String),
+          JobStatus: S.optional(JobStatus),
           EntityRecognizerArn: S.optional(S.String),
         }),
       ).annotate({
@@ -6813,14 +7852,14 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(111),
-          OutputDataConfig: __S(112),
+          InputDataConfig: InputDataConfig,
+          OutputDataConfig: OutputDataConfig,
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
-          LanguageCode: S.String,
+          LanguageCode: LanguageCode,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          TargetEventTypes: __S(66),
-          Tags: S.optional(__S(75)),
+          TargetEventTypes: TargetEventTypes,
+          Tags: S.optional(TagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartEventsDetectionJobRequest",
@@ -6842,15 +7881,15 @@ function __c33(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(111),
-          OutputDataConfig: __S(112),
+          InputDataConfig: InputDataConfig,
+          OutputDataConfig: OutputDataConfig,
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
-          LanguageCode: S.String,
+          LanguageCode: LanguageCode,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83)),
-          Tags: S.optional(__S(75)),
+          VpcConfig: S.optional(VpcConfig),
+          Tags: S.optional(TagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartKeyPhrasesDetectionJobRequest",
@@ -6858,15 +7897,15 @@ function __c33(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(111),
-          OutputDataConfig: __S(112),
-          Mode: S.String,
-          RedactionConfig: S.optional(__S(151)),
+          InputDataConfig: InputDataConfig,
+          OutputDataConfig: OutputDataConfig,
+          Mode: PiiEntitiesDetectionMode,
+          RedactionConfig: S.optional(RedactionConfig),
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
-          LanguageCode: S.String,
+          LanguageCode: LanguageCode,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(75)),
+          Tags: S.optional(TagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartPiiEntitiesDetectionJobRequest",
@@ -6874,15 +7913,15 @@ function __c33(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(111),
-          OutputDataConfig: __S(112),
+          InputDataConfig: InputDataConfig,
+          OutputDataConfig: OutputDataConfig,
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
-          LanguageCode: S.String,
+          LanguageCode: LanguageCode,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83)),
-          Tags: S.optional(__S(75)),
+          VpcConfig: S.optional(VpcConfig),
+          Tags: S.optional(TagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartSentimentDetectionJobRequest",
@@ -6890,15 +7929,15 @@ function __c33(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(111),
-          OutputDataConfig: __S(112),
+          InputDataConfig: InputDataConfig,
+          OutputDataConfig: OutputDataConfig,
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
-          LanguageCode: S.String,
+          LanguageCode: LanguageCode,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83)),
-          Tags: S.optional(__S(75)),
+          VpcConfig: S.optional(VpcConfig),
+          Tags: S.optional(TagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartTargetedSentimentDetectionJobRequest",
@@ -6906,15 +7945,15 @@ function __c33(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(111),
-          OutputDataConfig: __S(112),
+          InputDataConfig: InputDataConfig,
+          OutputDataConfig: OutputDataConfig,
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
           NumberOfTopics: S.optional(S.Number),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83)),
-          Tags: S.optional(__S(75)),
+          VpcConfig: S.optional(VpcConfig),
+          Tags: S.optional(TagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartTopicsDetectionJobRequest",
@@ -6933,7 +7972,7 @@ function __c34(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ JobId: S.optional(S.String), JobStatus: S.optional(S.String) }),
+        S.Struct({ JobId: S.optional(S.String), JobStatus: S.optional(JobStatus) }),
       ).annotate({
         identifier: "StopDominantLanguageDetectionJobResponse",
       });
@@ -7007,13 +8046,13 @@ function __c35(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: __S(75) }).pipe(
+        S.Struct({ ResourceArn: S.String, Tags: TagList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: __S(66) }).pipe(
+        S.Struct({ ResourceArn: S.String, TagKeys: TagKeyList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -7036,7 +8075,7 @@ function __c35(j: number): any {
         S.Struct({
           ModelKmsKeyId: S.optional(S.String),
           VolumeKmsKeyId: S.optional(S.String),
-          VpcConfig: S.optional(__S(83)),
+          VpcConfig: S.optional(VpcConfig),
         }),
       ).annotate({ identifier: "UpdateDataSecurityConfig" });
     case 7:
@@ -7045,7 +8084,7 @@ function __c35(j: number): any {
           FlywheelArn: S.String,
           ActiveModelArn: S.optional(S.String),
           DataAccessRoleArn: S.optional(S.String),
-          DataSecurityConfig: S.optional(__S(286)),
+          DataSecurityConfig: S.optional(UpdateDataSecurityConfig),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateFlywheelRequest" });
   }
@@ -7053,91 +8092,8 @@ function __c35(j: number): any {
 function __c36(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Reason: S.optional(S.String) })).annotate({
-        identifier: "InvalidRequestDetail",
-      });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
+      return S.suspend(() => S.Struct({ Reason: S.optional(InvalidRequestDetailReason) })).annotate(
+        { identifier: "InvalidRequestDetail" },
+      );
   }
 }

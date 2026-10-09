@@ -7,8 +7,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -18,6 +16,8 @@ export type TargetServiceType =
   | "ConfluentBootstrapServer"
   | "ConfluentSchemaRegistry"
   | "SelfHostedServer";
+const TargetServiceType = S.String;
+
 /** The target service properties */
 export interface TargetServiceBase {
   /** The target service type. */
@@ -29,6 +29,8 @@ export interface TargetServiceBase {
   /** The endpoint of the service (`type: ConfluentBootstrapServer | ConfluentSchemaRegistry | SelfHostedServer`). */
   endpoint?: string;
 }
+const TargetServiceBase = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<TargetServiceBase>;
+
 /** The authentication type. */
 export type AuthType =
   | "systemAssignedIdentity"
@@ -39,10 +41,16 @@ export type AuthType =
   | "accessKey"
   | "userAccount"
   | "easyAuthMicrosoftEntraID";
+const AuthType = S.String;
+
 /** Indicates how to apply the authentication configuration operations. */
 export type AuthMode = "optInAllAuth" | "optOutAllAuth";
+const AuthMode = S.String;
+
 /** The cleanup behavior to indicate whether clean up operation when resource is deleted or updated */
 export type DeleteOrUpdateBehavior = "Default" | "ForcedCleanup";
+const DeleteOrUpdateBehavior = S.String;
+
 /** The authentication info */
 export interface AuthInfoBase {
   /** The authentication type. */
@@ -72,6 +80,8 @@ export interface AuthInfoBase {
   /** Permissions of the accessKey (`accessKey`): string array of `Read`, `Write`, `Listen`, `Send`, `Manage`. */
   permissions?: unknown;
 }
+const AuthInfoBase = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AuthInfoBase>;
+
 /** The application client type */
 export type ClientType =
   | "none"
@@ -87,8 +97,12 @@ export type ClientType =
   | "kafka-springBoot"
   | "jms-springBoot"
   | "dapr";
+const ClientType = S.String;
+
 /** Type of VNet solution. */
 export type VNetSolutionType = "serviceEndpoint" | "privateLink";
+const VNetSolutionType = S.String;
+
 /** The VNet solution for linker */
 export interface VNetSolution {
   /** Type of VNet solution. */
@@ -96,6 +110,8 @@ export interface VNetSolution {
   /** Indicates whether to clean up previous operation when Linker is updating or deleting */
   deleteOrUpdateBehavior?: DeleteOrUpdateBehavior | (string & {});
 }
+const VNetSolution = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<VNetSolution>;
+
 /** An option to store secret value in secure place */
 export interface SecretStore {
   /** The key vault id to store secret */
@@ -103,12 +119,23 @@ export interface SecretStore {
   /** The key vault secret name to store secret, only valid when storing one secret */
   keyVaultSecretName?: string | null;
 }
+const SecretStore = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SecretStore>;
+
 /** Indicates how to apply the connector operations, such as opt out network configuration, opt in configuration. */
 export type ActionType = "enable" | "optOut";
+const ActionType = S.String;
+
 /** This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account. */
 export type FirewallRulesIpRangesList = Array<string>;
+const FirewallRulesIpRangesList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<FirewallRulesIpRangesList>;
+
 /** Whether to allow firewall rules. */
 export type AllowType = "true" | "false";
+const AllowType = S.String;
+
 /** Target service's firewall rules. to allow connections from source service. */
 export interface FirewallRules {
   /** This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account. */
@@ -118,6 +145,8 @@ export interface FirewallRules {
   /** Allow caller client IP to access the target service if true. the property is used when connecting local application to target service. */
   callerClientIP?: AllowType | (string & {});
 }
+const FirewallRules = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<FirewallRules>;
+
 /** Indicates public network solution, include firewall rules */
 export interface PublicNetworkSolution {
   /** Indicates whether to clean up previous operation(such as firewall rules) when Linker is updating or deleting */
@@ -127,10 +156,22 @@ export interface PublicNetworkSolution {
   /** Describe firewall rules of target service to make sure source application could connect to the target. */
   firewallRules?: FirewallRules;
 }
+const PublicNetworkSolution = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<PublicNetworkSolution>;
+
 /** Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations */
 export type ConfigurationInfoInputCustomizedKeysMap = { [key: string]: string | undefined };
+const ConfigurationInfoInputCustomizedKeysMap = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ConfigurationInfoInputCustomizedKeysMap>;
+
 /** The value indicating whether the metadata is required or not */
 export type DaprMetadataRequired = "true" | "false";
+const DaprMetadataRequired = S.String;
+
 /** The dapr component metadata. */
 export interface DaprMetadata {
   /** Metadata property name. */
@@ -144,10 +185,20 @@ export interface DaprMetadata {
   /** The value indicating whether the metadata is required or not */
   required?: DaprMetadataRequired | (string & {});
 }
+const DaprMetadata = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DaprMetadata>;
+
 /** Additional dapr metadata */
 export type DaprPropertiesInputMetadataList = Array<DaprMetadata>;
+const DaprPropertiesInputMetadataList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DaprPropertiesInputMetadataList>;
+
 /** The dapr component scopes */
 export type DaprPropertiesInputScopesList = Array<string>;
+const DaprPropertiesInputScopesList =
+  FirewallRulesIpRangesList as any as S.Schema<DaprPropertiesInputScopesList>;
+
 /** Indicates some additional properties for dapr client type */
 export interface DaprPropertiesInput {
   /** The dapr component version */
@@ -161,19 +212,29 @@ export interface DaprPropertiesInput {
   /** The dapr component scopes */
   scopes?: DaprPropertiesInputScopesList;
 }
+const DaprPropertiesInput = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DaprPropertiesInput>;
+
 /** A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations */
 export type ConfigurationInfoInputAdditionalConfigurationsMap = {
   [key: string]: string | undefined;
 };
+const ConfigurationInfoInputAdditionalConfigurationsMap =
+  ConfigurationInfoInputCustomizedKeysMap as any as S.Schema<ConfigurationInfoInputAdditionalConfigurationsMap>;
+
 /** A dictionary of additional properties to be added in the end of connection string. */
 export type ConfigurationInfoInputAdditionalConnectionStringPropertiesMap = {
   [key: string]: string | undefined;
 };
+const ConfigurationInfoInputAdditionalConnectionStringPropertiesMap =
+  ConfigurationInfoInputCustomizedKeysMap as any as S.Schema<ConfigurationInfoInputAdditionalConnectionStringPropertiesMap>;
+
 /** An option to store configuration into different place */
 export interface ConfigurationStore {
   /** The app configuration id to store configuration */
   appConfigurationId?: string | null;
 }
+const ConfigurationStore = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ConfigurationStore>;
+
 /** The configuration information, used to generate configurations or save to applications */
 export interface ConfigurationInfoInput {
   /** Indicates whether to clean up previous operation when Linker is updating or deleting */
@@ -191,6 +252,11 @@ export interface ConfigurationInfoInput {
   /** An option to store configuration into different place */
   configurationStore?: ConfigurationStore | null;
 }
+const ConfigurationInfoInput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ConfigurationInfoInput>;
+
 /** The properties of the Linker. */
 export interface LinkerPropertiesInput {
   /** The target service properties */
@@ -210,6 +276,11 @@ export interface LinkerPropertiesInput {
   /** The connection information consumed by applications, including secrets, connection strings. */
   configurationInfo?: ConfigurationInfoInput | null;
 }
+const LinkerPropertiesInput = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<LinkerPropertiesInput>;
+
 export interface ConnectorCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -222,10 +293,19 @@ export interface ConnectorCreateOrUpdateRequest {
   /** The properties of the Linker. */
   properties: LinkerPropertiesInput;
 }
+const ConnectorCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ConnectorCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -241,14 +321,27 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<SystemData>;
+
 /** Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations */
 export type ConfigurationInfoCustomizedKeysMap = { [key: string]: string | undefined };
+const ConfigurationInfoCustomizedKeysMap =
+  ConfigurationInfoInputCustomizedKeysMap as any as S.Schema<ConfigurationInfoCustomizedKeysMap>;
+
 /** Additional dapr metadata */
 export type DaprPropertiesMetadataList = Array<DaprMetadata>;
+const DaprPropertiesMetadataList =
+  DaprPropertiesInputMetadataList as any as S.Schema<DaprPropertiesMetadataList>;
+
 /** The dapr component scopes */
 export type DaprPropertiesScopesList = Array<string>;
+const DaprPropertiesScopesList =
+  FirewallRulesIpRangesList as any as S.Schema<DaprPropertiesScopesList>;
+
 /** The direction supported by the dapr binding component */
 export type DaprPropertiesBindingComponentDirection = "input" | "output";
+const DaprPropertiesBindingComponentDirection = S.String;
+
 /** Indicates some additional properties for dapr client type */
 export interface DaprProperties {
   /** The dapr component version */
@@ -266,12 +359,20 @@ export interface DaprProperties {
   /** The direction supported by the dapr binding component */
   bindingComponentDirection?: DaprPropertiesBindingComponentDirection | null;
 }
+const DaprProperties = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DaprProperties>;
+
 /** A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations */
 export type ConfigurationInfoAdditionalConfigurationsMap = { [key: string]: string | undefined };
+const ConfigurationInfoAdditionalConfigurationsMap =
+  ConfigurationInfoInputCustomizedKeysMap as any as S.Schema<ConfigurationInfoAdditionalConfigurationsMap>;
+
 /** A dictionary of additional properties to be added in the end of connection string. */
 export type ConfigurationInfoAdditionalConnectionStringPropertiesMap = {
   [key: string]: string | undefined;
 };
+const ConfigurationInfoAdditionalConnectionStringPropertiesMap =
+  ConfigurationInfoInputCustomizedKeysMap as any as S.Schema<ConfigurationInfoAdditionalConnectionStringPropertiesMap>;
+
 /** The configuration information, used to generate configurations or save to applications */
 export interface ConfigurationInfo {
   /** Indicates whether to clean up previous operation when Linker is updating or deleting */
@@ -289,6 +390,8 @@ export interface ConfigurationInfo {
   /** An option to store configuration into different place */
   configurationStore?: ConfigurationStore | null;
 }
+const ConfigurationInfo = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ConfigurationInfo>;
+
 /** The properties of the Linker. */
 export interface LinkerProperties {
   /** The target service properties */
@@ -310,6 +413,8 @@ export interface LinkerProperties {
   /** The connection information consumed by applications, including secrets, connection strings. */
   configurationInfo?: ConfigurationInfo | null;
 }
+const LinkerProperties = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<LinkerProperties>;
+
 export interface ConnectorCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -322,17 +427,31 @@ export interface ConnectorCreateOrUpdateResponse {
   /** The properties of the Linker. */
   properties: LinkerProperties;
 }
+const ConnectorCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ConnectorCreateOrUpdateResponse>;
+
 /** The name of action for you dryrun job. */
 export type DryrunActionName = "createOrUpdate";
+const DryrunActionName = S.String;
+
 /** The parameters of the dryrun */
 export interface DryrunParameters {
   actionName: DryrunActionName | (string & {});
 }
+const DryrunParameters = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DryrunParameters>;
+
 /** The properties of the dryrun job */
 export interface DryrunPropertiesInput {
   /** The parameters of the dryrun */
   parameters?: DryrunParameters;
 }
+const DryrunPropertiesInput = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DryrunPropertiesInput>;
+
 export interface CreateConnectorDryrunRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -345,19 +464,38 @@ export interface CreateConnectorDryrunRequest {
   /** The properties of the dryrun job. */
   properties?: DryrunPropertiesInput;
 }
+const CreateConnectorDryrunRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateConnectorDryrunRequest>;
+
 /** The type of dryrun result. */
 export type DryrunPrerequisiteResultType = "basicError" | "permissionsMissing";
+const DryrunPrerequisiteResultType = S.String;
+
 /** A result of dryrun */
 export interface DryrunPrerequisiteResult {
   type: DryrunPrerequisiteResultType;
 }
+const DryrunPrerequisiteResult = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DryrunPrerequisiteResult>;
+
 /** the result of the dryrun */
 export type DryrunPropertiesPrerequisiteResultsList = Array<DryrunPrerequisiteResult>;
+const DryrunPropertiesPrerequisiteResultsList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DryrunPropertiesPrerequisiteResultsList>;
+
 /** The operation type */
 export type DryrunOperationPreviewOperationType =
   | "configConnection"
   | "configNetwork"
   | "configAuth";
+const DryrunOperationPreviewOperationType = S.String;
+
 /** The preview of the operations for creation */
 export interface DryrunOperationPreview {
   /** The operation name */
@@ -371,8 +509,18 @@ export interface DryrunOperationPreview {
   /** The scope of the operation, refer https://docs.microsoft.com/azure/role-based-access-control/scope-overview */
   scope?: string;
 }
+const DryrunOperationPreview = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DryrunOperationPreview>;
+
 /** the preview of the operations for creation */
 export type DryrunPropertiesOperationPreviewsList = Array<DryrunOperationPreview>;
+const DryrunPropertiesOperationPreviewsList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DryrunPropertiesOperationPreviewsList>;
+
 /** The properties of the dryrun job */
 export interface DryrunProperties {
   /** The parameters of the dryrun */
@@ -384,6 +532,8 @@ export interface DryrunProperties {
   /** The provisioning state. */
   provisioningState?: string;
 }
+const DryrunProperties = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<DryrunProperties>;
+
 export interface CreateConnectorDryrunResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -396,6 +546,11 @@ export interface CreateConnectorDryrunResponse {
   /** The properties of the dryrun job. */
   properties?: DryrunProperties;
 }
+const CreateConnectorDryrunResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateConnectorDryrunResponse>;
+
 export interface CreateLinkerDryrunRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
   resourceUri: string;
@@ -404,6 +559,11 @@ export interface CreateLinkerDryrunRequest {
   /** The properties of the dryrun job. */
   properties?: DryrunPropertiesInput;
 }
+const CreateLinkerDryrunRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateLinkerDryrunRequest>;
+
 export interface CreateLinkerDryrunResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -416,6 +576,9 @@ export interface CreateLinkerDryrunResponse {
   /** The properties of the dryrun job. */
   properties?: DryrunProperties;
 }
+const CreateLinkerDryrunResponse =
+  CreateConnectorDryrunResponse as any as S.Schema<CreateLinkerDryrunResponse>;
+
 export interface DeleteConnectorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -426,7 +589,17 @@ export interface DeleteConnectorRequest {
   /** The name of resource. */
   connectorName: string;
 }
+const DeleteConnectorRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DeleteConnectorRequest>;
+
 export interface DeleteConnectorResponse {}
+const DeleteConnectorResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DeleteConnectorResponse>;
+
 export interface DeleteConnectorDryrunRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -437,33 +610,64 @@ export interface DeleteConnectorDryrunRequest {
   /** The name of dryrun. */
   dryrunName: string;
 }
+const DeleteConnectorDryrunRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<DeleteConnectorDryrunRequest>;
+
 export interface DeleteConnectorDryrunResponse {}
+const DeleteConnectorDryrunResponse =
+  DeleteConnectorResponse as any as S.Schema<DeleteConnectorDryrunResponse>;
+
 export interface DeleteLinkerRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
   resourceUri: string;
   /** The name Linker resource. */
   linkerName: string;
 }
+const DeleteLinkerRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<DeleteLinkerRequest>;
+
 export interface DeleteLinkerResponse {}
+const DeleteLinkerResponse = DeleteConnectorResponse as any as S.Schema<DeleteLinkerResponse>;
+
 export interface DeleteLinkerDryrunRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
   resourceUri: string;
   /** The name of dryrun. */
   dryrunName: string;
 }
+const DeleteLinkerDryrunRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<DeleteLinkerDryrunRequest>;
+
 export interface DeleteLinkerDryrunResponse {}
+const DeleteLinkerDryrunResponse =
+  DeleteConnectorResponse as any as S.Schema<DeleteLinkerDryrunResponse>;
+
 /** Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations */
 export type GenerateConnectorConfigurationsRequestCustomizedKeysMap = {
   [key: string]: string | undefined;
 };
+const GenerateConnectorConfigurationsRequestCustomizedKeysMap =
+  ConfigurationInfoInputCustomizedKeysMap as any as S.Schema<GenerateConnectorConfigurationsRequestCustomizedKeysMap>;
+
 /** A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations */
 export type GenerateConnectorConfigurationsRequestAdditionalConfigurationsMap = {
   [key: string]: string | undefined;
 };
+const GenerateConnectorConfigurationsRequestAdditionalConfigurationsMap = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GenerateConnectorConfigurationsRequestAdditionalConfigurationsMap>;
+
 /** A dictionary of additional properties to be added in the end of connection string. */
 export type GenerateConnectorConfigurationsRequestAdditionalConnectionStringPropertiesMap = {
   [key: string]: string | undefined;
 };
+const GenerateConnectorConfigurationsRequestAdditionalConnectionStringPropertiesMap =
+  GenerateConnectorConfigurationsRequestAdditionalConfigurationsMap as any as S.Schema<GenerateConnectorConfigurationsRequestAdditionalConnectionStringPropertiesMap>;
+
 export interface GenerateConnectorConfigurationsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -488,8 +692,15 @@ export interface GenerateConnectorConfigurationsRequest {
   /** An option to store configuration into different place */
   configurationStore?: ConfigurationStore | null;
 }
+const GenerateConnectorConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GenerateConnectorConfigurationsRequest>;
+
 /** Type of configuration to determine whether the configuration can be modified after creation. KeyvaultSecret means the configuration references a key vault secret, such as App Service/ACA key vault reference. Default means the configuration is real value, such as user name, raw secret, etc. */
 export type LinkerConfigurationType = "Default" | "KeyVaultSecret";
+const LinkerConfigurationType = S.String;
+
 /** A configuration item for source resource */
 export interface SourceConfiguration {
   /** The name of setting. */
@@ -503,25 +714,43 @@ export interface SourceConfiguration {
   /** Descriptive information for the configuration */
   description?: string | null;
 }
+const SourceConfiguration = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<SourceConfiguration>;
+
 /** The configuration properties for source resource. */
 export type ConfigurationResultConfigurationsList = Array<SourceConfiguration>;
+const ConfigurationResultConfigurationsList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ConfigurationResultConfigurationsList>;
+
 /** Configurations for source resource, include appSettings, connectionString and serviceBindings */
 export interface ConfigurationResult {
   /** The configuration properties for source resource. */
   configurations?: ConfigurationResultConfigurationsList;
 }
+const ConfigurationResult = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<ConfigurationResult>;
+
 /** Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations */
 export type GenerateLinkerConfigurationsRequestCustomizedKeysMap = {
   [key: string]: string | undefined;
 };
+const GenerateLinkerConfigurationsRequestCustomizedKeysMap =
+  ConfigurationInfoInputCustomizedKeysMap as any as S.Schema<GenerateLinkerConfigurationsRequestCustomizedKeysMap>;
+
 /** A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations */
 export type GenerateLinkerConfigurationsRequestAdditionalConfigurationsMap = {
   [key: string]: string | undefined;
 };
+const GenerateLinkerConfigurationsRequestAdditionalConfigurationsMap =
+  GenerateConnectorConfigurationsRequestAdditionalConfigurationsMap as any as S.Schema<GenerateLinkerConfigurationsRequestAdditionalConfigurationsMap>;
+
 /** A dictionary of additional properties to be added in the end of connection string. */
 export type GenerateLinkerConfigurationsRequestAdditionalConnectionStringPropertiesMap = {
   [key: string]: string | undefined;
 };
+const GenerateLinkerConfigurationsRequestAdditionalConnectionStringPropertiesMap =
+  GenerateConnectorConfigurationsRequestAdditionalConfigurationsMap as any as S.Schema<GenerateLinkerConfigurationsRequestAdditionalConnectionStringPropertiesMap>;
+
 export interface GenerateLinkerConfigurationsRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
   resourceUri: string;
@@ -542,6 +771,11 @@ export interface GenerateLinkerConfigurationsRequest {
   /** An option to store configuration into different place */
   configurationStore?: ConfigurationStore | null;
 }
+const GenerateLinkerConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GenerateLinkerConfigurationsRequest>;
+
 export interface GetConnectorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -552,6 +786,8 @@ export interface GetConnectorRequest {
   /** The name of resource. */
   connectorName: string;
 }
+const GetConnectorRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<GetConnectorRequest>;
+
 export interface GetConnectorResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -564,6 +800,8 @@ export interface GetConnectorResponse {
   /** The properties of the Linker. */
   properties: LinkerProperties;
 }
+const GetConnectorResponse = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<GetConnectorResponse>;
+
 export interface GetConnectorDryrunRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -574,6 +812,11 @@ export interface GetConnectorDryrunRequest {
   /** The name of dryrun. */
   dryrunName: string;
 }
+const GetConnectorDryrunRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetConnectorDryrunRequest>;
+
 export interface GetConnectorDryrunResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -586,12 +829,17 @@ export interface GetConnectorDryrunResponse {
   /** The properties of the dryrun job. */
   properties?: DryrunProperties;
 }
+const GetConnectorDryrunResponse =
+  CreateConnectorDryrunResponse as any as S.Schema<GetConnectorDryrunResponse>;
+
 export interface GetLinkerRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
   resourceUri: string;
   /** The name Linker resource. */
   linkerName: string;
 }
+const GetLinkerRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<GetLinkerRequest>;
+
 export interface GetLinkerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -604,12 +852,19 @@ export interface GetLinkerResponse {
   /** The properties of the Linker. */
   properties: LinkerProperties;
 }
+const GetLinkerResponse = GetConnectorResponse as any as S.Schema<GetLinkerResponse>;
+
 export interface GetLinkerDryrunRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
   resourceUri: string;
   /** The name of dryrun. */
   dryrunName: string;
 }
+const GetLinkerDryrunRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GetLinkerDryrunRequest>;
+
 export interface GetLinkerDryrunResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -622,6 +877,11 @@ export interface GetLinkerDryrunResponse {
   /** The properties of the dryrun job. */
   properties?: DryrunProperties;
 }
+const GetLinkerDryrunResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<GetLinkerDryrunResponse>;
+
 export interface LinkerCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
   resourceUri: string;
@@ -630,6 +890,11 @@ export interface LinkerCreateOrUpdateRequest {
   /** The properties of the Linker. */
   properties: LinkerPropertiesInput;
 }
+const LinkerCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<LinkerCreateOrUpdateRequest>;
+
 export interface LinkerCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -642,14 +907,24 @@ export interface LinkerCreateOrUpdateResponse {
   /** The properties of the Linker. */
   properties: LinkerProperties;
 }
+const LinkerCreateOrUpdateResponse =
+  ConnectorCreateOrUpdateResponse as any as S.Schema<LinkerCreateOrUpdateResponse>;
+
 export interface ListConfigurationNamesRequest {
   /** OData filter options. */
   _filter?: string;
   /** OData skipToken option for pagination. */
   _skipToken?: string;
 }
+const ListConfigurationNamesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListConfigurationNamesRequest>;
+
 /** The type of secret source. */
 export type SecretSourceType = "rawValue" | "keyVaultSecret";
+const SecretSourceType = S.String;
+
 /** The configuration names. */
 export interface ConfigurationName {
   value?: string;
@@ -658,8 +933,15 @@ export interface ConfigurationName {
   /** Represent the configuration is required or not */
   required?: boolean;
 }
+const ConfigurationName = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ConfigurationName>;
+
 /** The configuration names to be set in compute service environment. */
 export type ConfigurationNamesNamesList = Array<ConfigurationName>;
+const ConfigurationNamesNamesList = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ConfigurationNamesNamesList>;
+
 /** The configuration names which will be set based on specific target resource, client type, auth type. */
 export interface ConfigurationNames {
   /** The target service provider name and resource name. */
@@ -675,12 +957,24 @@ export interface ConfigurationNames {
   /** The configuration names to be set in compute service environment. */
   names?: ConfigurationNamesNamesList;
 }
+const ConfigurationNames = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ConfigurationNames>;
+
 export interface ConfigurationNameItem {
   /** The result detail. */
   properties?: ConfigurationNames | null;
 }
+const ConfigurationNameItem = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ConfigurationNameItem>;
+
 /** Expected configuration names for each target service. */
 export type ConfigurationNameResultValueList = Array<ConfigurationNameItem>;
+const ConfigurationNameResultValueList = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ConfigurationNameResultValueList>;
+
 /** Configuration Name list which will be set based on different target resource, client type, auth type. */
 export interface ConfigurationNameResult {
   /** Expected configuration names for each target service. */
@@ -688,6 +982,11 @@ export interface ConfigurationNameResult {
   /** Link to next page of resources. */
   nextLink?: string;
 }
+const ConfigurationNameResult = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ConfigurationNameResult>;
+
 export interface ListConnectorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -696,6 +995,8 @@ export interface ListConnectorRequest {
   /** The name of Azure region. */
   location: string;
 }
+const ListConnectorRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ListConnectorRequest>;
+
 /** Linker of source and target resource */
 export interface LinkerResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -709,8 +1010,15 @@ export interface LinkerResource {
   /** The properties of the Linker. */
   properties: LinkerProperties;
 }
+const LinkerResource = GetConnectorResponse as any as S.Schema<LinkerResource>;
+
 /** The list of Linkers. */
 export type ResourceListValueList = Array<LinkerResource>;
+const ResourceListValueList = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ResourceListValueList>;
+
 /** The list of Linker. */
 export interface ResourceList {
   /** The Linker used to get the next page of Linker list. */
@@ -718,6 +1026,8 @@ export interface ResourceList {
   /** The list of Linkers. */
   value?: ResourceListValueList;
 }
+const ResourceList = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ResourceList>;
+
 export interface ListConnectorDryrunRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -726,6 +1036,11 @@ export interface ListConnectorDryrunRequest {
   /** The name of Azure region. */
   location: string;
 }
+const ListConnectorDryrunRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListConnectorDryrunRequest>;
+
 /** a dryrun job resource */
 export interface DryrunResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -739,8 +1054,12 @@ export interface DryrunResource {
   /** The properties of the dryrun job. */
   properties?: DryrunProperties;
 }
+const DryrunResource = GetLinkerDryrunResponse as any as S.Schema<DryrunResource>;
+
 /** The list of dryrun. */
 export type DryrunListValueList = Array<DryrunResource>;
+const DryrunListValueList = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<DryrunListValueList>;
+
 /** The list of dryrun. */
 export interface DryrunList {
   /** The link used to get the next page of dryrun list. */
@@ -748,33 +1067,62 @@ export interface DryrunList {
   /** The list of dryrun. */
   value?: DryrunListValueList;
 }
+const DryrunList = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<DryrunList>;
+
 export interface ListLinkerRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
   resourceUri: string;
 }
+const ListLinkerRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ListLinkerRequest>;
+
 export interface ListLinkerConfigurationsRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
   resourceUri: string;
   /** The name Linker resource. */
   linkerName: string;
 }
+const ListLinkerConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListLinkerConfigurationsRequest>;
+
 export interface ListLinkerDaprConfigurationsRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
   resourceUri: string;
 }
+const ListLinkerDaprConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListLinkerDaprConfigurationsRequest>;
+
 export interface DaprConfigurationProperties {
   /** Supported target resource type, extract from resource id, uppercase */
   targetType?: string;
   authType?: AuthType;
   daprProperties?: DaprProperties;
 }
+const DaprConfigurationProperties = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DaprConfigurationProperties>;
+
 /** Represent one resource of the dapr configuration list */
 export interface DaprConfigurationResource {
   /** The properties of the dapr configuration. */
   properties?: DaprConfigurationProperties;
 }
+const DaprConfigurationResource = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DaprConfigurationResource>;
+
 /** The list of dapr configurations */
 export type DaprConfigurationListValueList = Array<DaprConfigurationResource>;
+const DaprConfigurationListValueList = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<DaprConfigurationListValueList>;
+
 /** Dapr configuration list supported by Service Connector */
 export interface DaprConfigurationList {
   /** The list of dapr configurations */
@@ -782,11 +1130,26 @@ export interface DaprConfigurationList {
   /** Link to next page of resources. */
   nextLink?: string;
 }
+const DaprConfigurationList = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DaprConfigurationList>;
+
 export interface ListLinkerDryrunRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
   resourceUri: string;
 }
+const ListLinkerDryrunRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ListLinkerDryrunRequest>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -798,10 +1161,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -815,14 +1184,26 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface UpdateConnectorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -835,6 +1216,11 @@ export interface UpdateConnectorRequest {
   /** Linker properties */
   properties?: LinkerPropertiesInput;
 }
+const UpdateConnectorRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<UpdateConnectorRequest>;
+
 export interface UpdateConnectorResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -847,6 +1233,8 @@ export interface UpdateConnectorResponse {
   /** The properties of the Linker. */
   properties: LinkerProperties;
 }
+const UpdateConnectorResponse = GetConnectorResponse as any as S.Schema<UpdateConnectorResponse>;
+
 export interface UpdateConnectorDryrunRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -859,6 +1247,11 @@ export interface UpdateConnectorDryrunRequest {
   /** The properties of the dryrun job. */
   properties?: DryrunPropertiesInput;
 }
+const UpdateConnectorDryrunRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<UpdateConnectorDryrunRequest>;
+
 export interface UpdateConnectorDryrunResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -871,6 +1264,9 @@ export interface UpdateConnectorDryrunResponse {
   /** The properties of the dryrun job. */
   properties?: DryrunProperties;
 }
+const UpdateConnectorDryrunResponse =
+  CreateConnectorDryrunResponse as any as S.Schema<UpdateConnectorDryrunResponse>;
+
 export interface UpdateLinkerRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
   resourceUri: string;
@@ -879,6 +1275,8 @@ export interface UpdateLinkerRequest {
   /** Linker properties */
   properties?: LinkerPropertiesInput;
 }
+const UpdateLinkerRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<UpdateLinkerRequest>;
+
 export interface UpdateLinkerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -891,6 +1289,8 @@ export interface UpdateLinkerResponse {
   /** The properties of the Linker. */
   properties: LinkerProperties;
 }
+const UpdateLinkerResponse = GetConnectorResponse as any as S.Schema<UpdateLinkerResponse>;
+
 export interface UpdateLinkerDryrunRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
   resourceUri: string;
@@ -899,6 +1299,11 @@ export interface UpdateLinkerDryrunRequest {
   /** The properties of the dryrun job. */
   properties?: DryrunPropertiesInput;
 }
+const UpdateLinkerDryrunRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<UpdateLinkerDryrunRequest>;
+
 export interface UpdateLinkerDryrunResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -911,6 +1316,9 @@ export interface UpdateLinkerDryrunResponse {
   /** The properties of the dryrun job. */
   properties?: DryrunProperties;
 }
+const UpdateLinkerDryrunResponse =
+  CreateConnectorDryrunResponse as any as S.Schema<UpdateLinkerDryrunResponse>;
+
 export interface ValidateConnectorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -921,8 +1329,15 @@ export interface ValidateConnectorRequest {
   /** The name of resource. */
   connectorName: string;
 }
+const ValidateConnectorRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ValidateConnectorRequest>;
+
 /** The result of validation */
 export type ValidationResultItemResult = "success" | "failure" | "warning";
+const ValidationResultItemResult = S.String;
+
 /** The validation item for a Linker. */
 export interface ValidationResultItem {
   /** The validation item name. */
@@ -936,8 +1351,15 @@ export interface ValidationResultItem {
   /** The error code of validation result */
   errorCode?: string | null;
 }
+const ValidationResultItem = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ValidationResultItem>;
+
 /** The detail of validation result */
 export type ValidateResultValidationDetailList = Array<ValidationResultItem>;
+const ValidateResultValidationDetailList = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ValidateResultValidationDetailList>;
+
 /** The validation result for a Linker. */
 export interface ValidateResult {
   /** The linker name. */
@@ -957,6 +1379,8 @@ export interface ValidateResult {
   /** The detail of validation result */
   validationDetail?: ValidateResultValidationDetailList;
 }
+const ValidateResult = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<ValidateResult>;
+
 /** The validation operation result for a Linker. */
 export interface ValidateOperationResult {
   /** The validation result detail. */
@@ -966,12 +1390,22 @@ export interface ValidateOperationResult {
   /** Validation operation status. */
   status?: string | null;
 }
+const ValidateOperationResult = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ValidateOperationResult>;
+
 export interface ValidateLinkerRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
   resourceUri: string;
   /** The name Linker resource. */
   linkerName: string;
 }
+const ValidateLinkerRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ValidateLinkerRequest>;
+
 export type ConnectorCreateOrUpdateError = AzureOpError;
 /** Create or update Connector resource. */
 export const ConnectorCreateOrUpdate: API.OperationMethod<
@@ -980,8 +1414,8 @@ export const ConnectorCreateOrUpdate: API.OperationMethod<
   ConnectorCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<ConnectorCreateOrUpdateRequest>,
-  output: __S(19) as any as S.Schema<ConnectorCreateOrUpdateResponse>,
+  input: ConnectorCreateOrUpdateRequest,
+  output: ConnectorCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -995,8 +1429,8 @@ export const CreateConnectorDryrun: API.OperationMethod<
   CreateConnectorDryrunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<CreateConnectorDryrunRequest>,
-  output: __S(28) as any as S.Schema<CreateConnectorDryrunResponse>,
+  input: CreateConnectorDryrunRequest,
+  output: CreateConnectorDryrunResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1010,8 +1444,8 @@ export const CreateLinkerDryrun: API.OperationMethod<
   CreateLinkerDryrunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<CreateLinkerDryrunRequest>,
-  output: __S(28) as any as S.Schema<CreateLinkerDryrunResponse>,
+  input: CreateLinkerDryrunRequest,
+  output: CreateLinkerDryrunResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1025,8 +1459,8 @@ export const DeleteConnector: API.OperationMethod<
   DeleteConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<DeleteConnectorRequest>,
-  output: __S(31) as any as S.Schema<DeleteConnectorResponse>,
+  input: DeleteConnectorRequest,
+  output: DeleteConnectorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1040,8 +1474,8 @@ export const DeleteConnectorDryrun: API.OperationMethod<
   DeleteConnectorDryrunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<DeleteConnectorDryrunRequest>,
-  output: __S(31) as any as S.Schema<DeleteConnectorDryrunResponse>,
+  input: DeleteConnectorDryrunRequest,
+  output: DeleteConnectorDryrunResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1055,8 +1489,8 @@ export const DeleteLinker: API.OperationMethod<
   DeleteLinkerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<DeleteLinkerRequest>,
-  output: __S(31) as any as S.Schema<DeleteLinkerResponse>,
+  input: DeleteLinkerRequest,
+  output: DeleteLinkerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1070,8 +1504,8 @@ export const DeleteLinkerDryrun: API.OperationMethod<
   DeleteLinkerDryrunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<DeleteLinkerDryrunRequest>,
-  output: __S(31) as any as S.Schema<DeleteLinkerDryrunResponse>,
+  input: DeleteLinkerDryrunRequest,
+  output: DeleteLinkerDryrunResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1085,8 +1519,8 @@ export const GenerateConnectorConfigurations: API.OperationMethod<
   GenerateConnectorConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GenerateConnectorConfigurationsRequest>,
-  output: __S(39) as any as S.Schema<ConfigurationResult>,
+  input: GenerateConnectorConfigurationsRequest,
+  output: ConfigurationResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1100,8 +1534,8 @@ export const GenerateLinkerConfigurations: API.OperationMethod<
   GenerateLinkerConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<GenerateLinkerConfigurationsRequest>,
-  output: __S(39) as any as S.Schema<ConfigurationResult>,
+  input: GenerateLinkerConfigurationsRequest,
+  output: ConfigurationResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1115,8 +1549,8 @@ export const GetConnector: API.OperationMethod<
   GetConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<GetConnectorRequest>,
-  output: __S(42) as any as S.Schema<GetConnectorResponse>,
+  input: GetConnectorRequest,
+  output: GetConnectorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1130,8 +1564,8 @@ export const GetConnectorDryrun: API.OperationMethod<
   GetConnectorDryrunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<GetConnectorDryrunRequest>,
-  output: __S(28) as any as S.Schema<GetConnectorDryrunResponse>,
+  input: GetConnectorDryrunRequest,
+  output: GetConnectorDryrunResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1145,8 +1579,8 @@ export const GetLinker: API.OperationMethod<
   GetLinkerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<GetLinkerRequest>,
-  output: __S(42) as any as S.Schema<GetLinkerResponse>,
+  input: GetLinkerRequest,
+  output: GetLinkerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1160,8 +1594,8 @@ export const GetLinkerDryrun: API.OperationMethod<
   GetLinkerDryrunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<GetLinkerDryrunRequest>,
-  output: __S(46) as any as S.Schema<GetLinkerDryrunResponse>,
+  input: GetLinkerDryrunRequest,
+  output: GetLinkerDryrunResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1175,8 +1609,8 @@ export const LinkerCreateOrUpdate: API.OperationMethod<
   LinkerCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<LinkerCreateOrUpdateRequest>,
-  output: __S(19) as any as S.Schema<LinkerCreateOrUpdateResponse>,
+  input: LinkerCreateOrUpdateRequest,
+  output: LinkerCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1190,8 +1624,8 @@ export const ListConfigurationNames: API.OperationMethod<
   ListConfigurationNamesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<ListConfigurationNamesRequest>,
-  output: __S(54) as any as S.Schema<ConfigurationNameResult>,
+  input: ListConfigurationNamesRequest,
+  output: ConfigurationNameResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1205,8 +1639,8 @@ export const ListConnector: API.OperationMethod<
   ListConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<ListConnectorRequest>,
-  output: __S(57) as any as S.Schema<ResourceList>,
+  input: ListConnectorRequest,
+  output: ResourceList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1220,8 +1654,8 @@ export const ListConnectorDryrun: API.OperationMethod<
   ListConnectorDryrunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<ListConnectorDryrunRequest>,
-  output: __S(60) as any as S.Schema<DryrunList>,
+  input: ListConnectorDryrunRequest,
+  output: DryrunList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1235,8 +1669,8 @@ export const ListLinker: API.OperationMethod<
   ListLinkerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<ListLinkerRequest>,
-  output: __S(57) as any as S.Schema<ResourceList>,
+  input: ListLinkerRequest,
+  output: ResourceList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1250,8 +1684,8 @@ export const ListLinkerConfigurations: API.OperationMethod<
   ListLinkerConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<ListLinkerConfigurationsRequest>,
-  output: __S(39) as any as S.Schema<ConfigurationResult>,
+  input: ListLinkerConfigurationsRequest,
+  output: ConfigurationResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1265,8 +1699,8 @@ export const ListLinkerDaprConfigurations: API.OperationMethod<
   ListLinkerDaprConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<ListLinkerDaprConfigurationsRequest>,
-  output: __S(67) as any as S.Schema<DaprConfigurationList>,
+  input: ListLinkerDaprConfigurationsRequest,
+  output: DaprConfigurationList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1280,8 +1714,8 @@ export const ListLinkerDryrun: API.OperationMethod<
   ListLinkerDryrunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<ListLinkerDryrunRequest>,
-  output: __S(60) as any as S.Schema<DryrunList>,
+  input: ListLinkerDryrunRequest,
+  output: DryrunList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1295,8 +1729,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<ListOperationsRequest>,
-  output: __S(73) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1310,8 +1744,8 @@ export const UpdateConnector: API.OperationMethod<
   UpdateConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<UpdateConnectorRequest>,
-  output: __S(42) as any as S.Schema<UpdateConnectorResponse>,
+  input: UpdateConnectorRequest,
+  output: UpdateConnectorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1325,8 +1759,8 @@ export const UpdateConnectorDryrun: API.OperationMethod<
   UpdateConnectorDryrunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<UpdateConnectorDryrunRequest>,
-  output: __S(28) as any as S.Schema<UpdateConnectorDryrunResponse>,
+  input: UpdateConnectorDryrunRequest,
+  output: UpdateConnectorDryrunResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1340,8 +1774,8 @@ export const UpdateLinker: API.OperationMethod<
   UpdateLinkerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<UpdateLinkerRequest>,
-  output: __S(42) as any as S.Schema<UpdateLinkerResponse>,
+  input: UpdateLinkerRequest,
+  output: UpdateLinkerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1355,8 +1789,8 @@ export const UpdateLinkerDryrun: API.OperationMethod<
   UpdateLinkerDryrunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<UpdateLinkerDryrunRequest>,
-  output: __S(28) as any as S.Schema<UpdateLinkerDryrunResponse>,
+  input: UpdateLinkerDryrunRequest,
+  output: UpdateLinkerDryrunResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1370,8 +1804,8 @@ export const ValidateConnector: API.OperationMethod<
   ValidateConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<ValidateConnectorRequest>,
-  output: __S(82) as any as S.Schema<ValidateOperationResult>,
+  input: ValidateConnectorRequest,
+  output: ValidateOperationResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1385,8 +1819,8 @@ export const ValidateLinker: API.OperationMethod<
   ValidateLinkerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<ValidateLinkerRequest>,
-  output: __S(82) as any as S.Schema<ValidateOperationResult>,
+  input: ValidateLinkerRequest,
+  output: ValidateOperationResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1398,7 +1832,7 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: TargetServiceType,
           id: S.optional(S.String),
           resourceProperties: S.optional(S.Unknown),
           endpoint: S.optional(S.String),
@@ -1407,10 +1841,10 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          authType: S.String,
-          authMode: S.optional(S.String),
+          authType: AuthType,
+          authMode: S.optional(AuthMode),
           userName: S.optional(S.String),
-          deleteOrUpdateBehavior: S.optional(S.String),
+          deleteOrUpdateBehavior: S.optional(DeleteOrUpdateBehavior),
           roles: S.optional(S.Unknown),
           clientId: S.optional(S.String),
           subscriptionId: S.optional(S.String),
@@ -1425,8 +1859,8 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.NullOr(S.String)),
-          deleteOrUpdateBehavior: S.optional(S.String),
+          type: S.optional(S.NullOr(VNetSolutionType)),
+          deleteOrUpdateBehavior: S.optional(DeleteOrUpdateBehavior),
         }),
       ).annotate({ identifier: "VNetSolution" });
     case 3:
@@ -1441,17 +1875,17 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ipRanges: S.optional(__S(4)),
-          azureServices: S.optional(S.String),
-          callerClientIP: S.optional(S.String),
+          ipRanges: S.optional(FirewallRulesIpRangesList),
+          azureServices: S.optional(AllowType),
+          callerClientIP: S.optional(AllowType),
         }),
       ).annotate({ identifier: "FirewallRules" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          deleteOrUpdateBehavior: S.optional(S.String),
-          action: S.optional(S.String),
-          firewallRules: S.optional(__S(5)),
+          deleteOrUpdateBehavior: S.optional(DeleteOrUpdateBehavior),
+          action: S.optional(ActionType),
+          firewallRules: S.optional(FirewallRules),
         }),
       ).annotate({ identifier: "PublicNetworkSolution" });
     case 7:
@@ -1467,19 +1901,19 @@ function __c1(j: number): any {
           value: S.optional(S.String),
           secretRef: S.optional(S.String),
           description: S.optional(S.String),
-          required: S.optional(S.String),
+          required: S.optional(DaprMetadataRequired),
         }),
       ).annotate({ identifier: "DaprMetadata" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(DaprMetadata);
     case 2:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.NullOr(S.String)),
           componentType: S.optional(S.NullOr(S.String)),
           secretStoreComponent: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(__S(9)),
-          scopes: S.optional(__S(4)),
+          metadata: S.optional(DaprPropertiesInputMetadataList),
+          scopes: S.optional(DaprPropertiesInputScopesList),
         }),
       ).annotate({ identifier: "DaprPropertiesInput" });
     case 3:
@@ -1491,26 +1925,28 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          deleteOrUpdateBehavior: S.optional(S.String),
-          action: S.optional(S.String),
-          customizedKeys: S.optional(__S(7)),
-          daprProperties: S.optional(__S(10)),
-          additionalConfigurations: S.optional(__S(7)),
-          additionalConnectionStringProperties: S.optional(__S(7)),
-          configurationStore: S.optional(S.NullOr(__S(11))),
+          deleteOrUpdateBehavior: S.optional(DeleteOrUpdateBehavior),
+          action: S.optional(ActionType),
+          customizedKeys: S.optional(ConfigurationInfoInputCustomizedKeysMap),
+          daprProperties: S.optional(DaprPropertiesInput),
+          additionalConfigurations: S.optional(ConfigurationInfoInputAdditionalConfigurationsMap),
+          additionalConnectionStringProperties: S.optional(
+            ConfigurationInfoInputAdditionalConnectionStringPropertiesMap,
+          ),
+          configurationStore: S.optional(S.NullOr(ConfigurationStore)),
         }),
       ).annotate({ identifier: "ConfigurationInfoInput" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          targetService: S.optional(__S(0)),
-          authInfo: S.optional(__S(1)),
-          clientType: S.optional(S.String),
-          vNetSolution: S.optional(S.NullOr(__S(2))),
-          secretStore: S.optional(S.NullOr(__S(3))),
+          targetService: S.optional(TargetServiceBase),
+          authInfo: S.optional(AuthInfoBase),
+          clientType: S.optional(ClientType),
+          vNetSolution: S.optional(S.NullOr(VNetSolution)),
+          secretStore: S.optional(S.NullOr(SecretStore)),
           scope: S.optional(S.NullOr(S.String)),
-          publicNetworkSolution: S.optional(S.NullOr(__S(6))),
-          configurationInfo: S.optional(S.NullOr(__S(12))),
+          publicNetworkSolution: S.optional(S.NullOr(PublicNetworkSolution)),
+          configurationInfo: S.optional(S.NullOr(ConfigurationInfoInput)),
         }),
       ).annotate({ identifier: "LinkerPropertiesInput" });
     case 6:
@@ -1520,7 +1956,7 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           connectorName: S.String.pipe(T.Label()),
-          properties: __S(13),
+          properties: LinkerPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1536,10 +1972,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -1553,36 +1989,38 @@ function __c2(j: number): any {
           version: S.optional(S.NullOr(S.String)),
           componentType: S.optional(S.NullOr(S.String)),
           secretStoreComponent: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(__S(9)),
-          scopes: S.optional(__S(4)),
+          metadata: S.optional(DaprPropertiesMetadataList),
+          scopes: S.optional(DaprPropertiesScopesList),
           runtimeVersion: S.optional(S.NullOr(S.String)),
-          bindingComponentDirection: S.optional(S.NullOr(S.String)),
+          bindingComponentDirection: S.optional(S.NullOr(DaprPropertiesBindingComponentDirection)),
         }),
       ).annotate({ identifier: "DaprProperties" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          deleteOrUpdateBehavior: S.optional(S.String),
-          action: S.optional(S.String),
-          customizedKeys: S.optional(__S(7)),
-          daprProperties: S.optional(__S(16)),
-          additionalConfigurations: S.optional(__S(7)),
-          additionalConnectionStringProperties: S.optional(__S(7)),
-          configurationStore: S.optional(S.NullOr(__S(11))),
+          deleteOrUpdateBehavior: S.optional(DeleteOrUpdateBehavior),
+          action: S.optional(ActionType),
+          customizedKeys: S.optional(ConfigurationInfoCustomizedKeysMap),
+          daprProperties: S.optional(DaprProperties),
+          additionalConfigurations: S.optional(ConfigurationInfoAdditionalConfigurationsMap),
+          additionalConnectionStringProperties: S.optional(
+            ConfigurationInfoAdditionalConnectionStringPropertiesMap,
+          ),
+          configurationStore: S.optional(S.NullOr(ConfigurationStore)),
         }),
       ).annotate({ identifier: "ConfigurationInfo" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          targetService: S.optional(__S(0)),
-          authInfo: S.optional(__S(1)),
-          clientType: S.optional(S.String),
+          targetService: S.optional(TargetServiceBase),
+          authInfo: S.optional(AuthInfoBase),
+          clientType: S.optional(ClientType),
           provisioningState: S.optional(S.String),
-          vNetSolution: S.optional(S.NullOr(__S(2))),
-          secretStore: S.optional(S.NullOr(__S(3))),
+          vNetSolution: S.optional(S.NullOr(VNetSolution)),
+          secretStore: S.optional(S.NullOr(SecretStore)),
           scope: S.optional(S.NullOr(S.String)),
-          publicNetworkSolution: S.optional(S.NullOr(__S(6))),
-          configurationInfo: S.optional(S.NullOr(__S(17))),
+          publicNetworkSolution: S.optional(S.NullOr(PublicNetworkSolution)),
+          configurationInfo: S.optional(S.NullOr(ConfigurationInfo)),
         }),
       ).annotate({ identifier: "LinkerProperties" });
     case 3:
@@ -1591,8 +2029,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: __S(18),
+          systemData: S.optional(SystemData),
+          properties: LinkerProperties,
         }),
       ).annotate({
         identifier: "ConnectorCreateOrUpdateResponse",
@@ -1600,13 +2038,13 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          actionName: S.String,
+          actionName: DryrunActionName,
         }),
       ).annotate({ identifier: "DryrunParameters" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(20)),
+          parameters: S.optional(DryrunParameters),
         }),
       ).annotate({ identifier: "DryrunPropertiesInput" });
     case 6:
@@ -1616,7 +2054,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           dryrunName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(21)),
+          properties: S.optional(DryrunPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1631,7 +2069,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: DryrunPrerequisiteResultType,
         }),
       ).annotate({ identifier: "DryrunPrerequisiteResult" });
   }
@@ -1639,25 +2077,25 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(DryrunPrerequisiteResult);
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          operationType: S.optional(S.String),
+          operationType: S.optional(DryrunOperationPreviewOperationType),
           description: S.optional(S.String),
           action: S.optional(S.String),
           scope: S.optional(S.String),
         }),
       ).annotate({ identifier: "DryrunOperationPreview" });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(DryrunOperationPreview);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(20)),
-          prerequisiteResults: S.optional(__S(24)),
-          operationPreviews: S.optional(__S(26)),
+          parameters: S.optional(DryrunParameters),
+          prerequisiteResults: S.optional(DryrunPropertiesPrerequisiteResultsList),
+          operationPreviews: S.optional(DryrunPropertiesOperationPreviewsList),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DryrunProperties" });
@@ -1667,8 +2105,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(27)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DryrunProperties),
         }),
       ).annotate({
         identifier: "CreateConnectorDryrunResponse",
@@ -1678,7 +2116,7 @@ function __c3(j: number): any {
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           dryrunName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(21)),
+          properties: S.optional(DryrunPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1771,13 +2209,17 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           connectorName: S.String.pipe(T.Label()),
-          deleteOrUpdateBehavior: S.optional(S.String),
-          action: S.optional(S.String),
-          customizedKeys: S.optional(__S(7)),
-          daprProperties: S.optional(__S(10)),
-          additionalConfigurations: S.optional(__S(35)),
-          additionalConnectionStringProperties: S.optional(__S(35)),
-          configurationStore: S.optional(S.NullOr(__S(11))),
+          deleteOrUpdateBehavior: S.optional(DeleteOrUpdateBehavior),
+          action: S.optional(ActionType),
+          customizedKeys: S.optional(GenerateConnectorConfigurationsRequestCustomizedKeysMap),
+          daprProperties: S.optional(DaprPropertiesInput),
+          additionalConfigurations: S.optional(
+            GenerateConnectorConfigurationsRequestAdditionalConfigurationsMap,
+          ),
+          additionalConnectionStringProperties: S.optional(
+            GenerateConnectorConfigurationsRequestAdditionalConnectionStringPropertiesMap,
+          ),
+          configurationStore: S.optional(S.NullOr(ConfigurationStore)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1794,17 +2236,17 @@ function __c4(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           value: S.optional(S.NullOr(S.String)),
-          configType: S.optional(S.String),
+          configType: S.optional(LinkerConfigurationType),
           keyVaultReferenceIdentity: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "SourceConfiguration" });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(SourceConfiguration);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          configurations: S.optional(__S(38)),
+          configurations: S.optional(ConfigurationResultConfigurationsList),
         }),
       ).annotate({ identifier: "ConfigurationResult" });
   }
@@ -1816,13 +2258,17 @@ function __c5(j: number): any {
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           linkerName: S.String.pipe(T.Label()),
-          deleteOrUpdateBehavior: S.optional(S.String),
-          action: S.optional(S.String),
-          customizedKeys: S.optional(__S(7)),
-          daprProperties: S.optional(__S(10)),
-          additionalConfigurations: S.optional(__S(35)),
-          additionalConnectionStringProperties: S.optional(__S(35)),
-          configurationStore: S.optional(S.NullOr(__S(11))),
+          deleteOrUpdateBehavior: S.optional(DeleteOrUpdateBehavior),
+          action: S.optional(ActionType),
+          customizedKeys: S.optional(GenerateLinkerConfigurationsRequestCustomizedKeysMap),
+          daprProperties: S.optional(DaprPropertiesInput),
+          additionalConfigurations: S.optional(
+            GenerateLinkerConfigurationsRequestAdditionalConfigurationsMap,
+          ),
+          additionalConnectionStringProperties: S.optional(
+            GenerateLinkerConfigurationsRequestAdditionalConnectionStringPropertiesMap,
+          ),
+          configurationStore: S.optional(S.NullOr(ConfigurationStore)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1856,8 +2302,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: __S(18),
+          systemData: S.optional(SystemData),
+          properties: LinkerProperties,
         }),
       ).annotate({ identifier: "GetConnectorResponse" });
     case 3:
@@ -1912,8 +2358,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15)),
-          properties: S.optional(__S(27)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DryrunProperties),
         }),
       ).annotate({ identifier: "GetLinkerDryrunResponse" });
     case 7:
@@ -1921,7 +2367,7 @@ function __c5(j: number): any {
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           linkerName: S.String.pipe(T.Label()),
-          properties: __S(13),
+          properties: LinkerPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1962,30 +2408,30 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "ConfigurationName" });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(ConfigurationName);
     case 3:
       return S.suspend(() =>
         S.Struct({
           targetService: S.optional(S.String),
-          clientType: S.optional(S.String),
-          authType: S.optional(S.String),
-          secretType: S.optional(S.String),
-          daprProperties: S.optional(__S(16)),
-          names: S.optional(__S(50)),
+          clientType: S.optional(ClientType),
+          authType: S.optional(AuthType),
+          secretType: S.optional(SecretSourceType),
+          daprProperties: S.optional(DaprProperties),
+          names: S.optional(ConfigurationNamesNamesList),
         }),
       ).annotate({ identifier: "ConfigurationNames" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(S.NullOr(__S(51))),
+          properties: S.optional(S.NullOr(ConfigurationNames)),
         }),
       ).annotate({ identifier: "ConfigurationNameItem" });
     case 5:
-      return S.Array(__S(52));
+      return S.Array(ConfigurationNameItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(53)),
+          value: S.optional(ConfigurationNameResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigurationNameResult" });
@@ -2009,12 +2455,12 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(42));
+      return S.Array(LinkerResource);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.NullOr(S.String)),
-          value: S.optional(__S(56)),
+          value: S.optional(ResourceListValueList),
         }),
       ).annotate({ identifier: "ResourceList" });
     case 2:
@@ -2035,12 +2481,12 @@ function __c7(j: number): any {
         identifier: "ListConnectorDryrunRequest",
       });
     case 3:
-      return S.Array(__S(46));
+      return S.Array(DryrunResource);
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.NullOr(S.String)),
-          value: S.optional(__S(59)),
+          value: S.optional(DryrunListValueList),
         }),
       ).annotate({ identifier: "DryrunList" });
     case 5:
@@ -2095,8 +2541,8 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           targetType: S.optional(S.String),
-          authType: S.optional(S.String),
-          daprProperties: S.optional(__S(16)),
+          authType: S.optional(AuthType),
+          daprProperties: S.optional(DaprProperties),
         }),
       ).annotate({
         identifier: "DaprConfigurationProperties",
@@ -2104,17 +2550,17 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(64)),
+          properties: S.optional(DaprConfigurationProperties),
         }),
       ).annotate({
         identifier: "DaprConfigurationResource",
       });
     case 2:
-      return S.Array(__S(65));
+      return S.Array(DaprConfigurationResource);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(66)),
+          value: S.optional(DaprConfigurationListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DaprConfigurationList" });
@@ -2156,9 +2602,9 @@ function __c8(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(70)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
   }
@@ -2166,11 +2612,11 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71));
+      return S.Array(Operation);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(72)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -2181,7 +2627,7 @@ function __c9(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           connectorName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(13)),
+          properties: S.optional(LinkerPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2198,7 +2644,7 @@ function __c9(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           dryrunName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(21)),
+          properties: S.optional(DryrunPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2215,7 +2661,7 @@ function __c9(j: number): any {
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           linkerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(13)),
+          properties: S.optional(LinkerPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2230,7 +2676,7 @@ function __c9(j: number): any {
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           dryrunName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(21)),
+          properties: S.optional(DryrunPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2263,7 +2709,7 @@ function __c9(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          result: S.optional(S.NullOr(S.String)),
+          result: S.optional(S.NullOr(ValidationResultItemResult)),
           errorMessage: S.optional(S.NullOr(S.String)),
           errorCode: S.optional(S.NullOr(S.String)),
         }),
@@ -2273,7 +2719,7 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(79));
+      return S.Array(ValidationResultItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2283,14 +2729,14 @@ function __c10(j: number): any {
           reportEndTimeUtc: S.optional(S.NullOr(S.String)),
           sourceId: S.optional(S.NullOr(S.String)),
           targetId: S.optional(S.NullOr(S.String)),
-          authType: S.optional(S.NullOr(S.String)),
-          validationDetail: S.optional(__S(80)),
+          authType: S.optional(S.NullOr(AuthType)),
+          validationDetail: S.optional(ValidateResultValidationDetailList),
         }),
       ).annotate({ identifier: "ValidateResult" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(S.NullOr(__S(81))),
+          properties: S.optional(S.NullOr(ValidateResult)),
           resourceId: S.optional(S.NullOr(S.String)),
           status: S.optional(S.NullOr(S.String)),
         }),
@@ -2309,36 +2755,5 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ValidateLinkerRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
   }
 }

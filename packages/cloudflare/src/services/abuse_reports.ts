@@ -13,8 +13,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -83,11 +81,23 @@ export type CreateRequestAct =
   | "abuse_threat"
   | "abuse_registrar_whois"
   | "abuse_ncsei";
+const CreateRequestAct = S.String;
+
 export type CreateRequestAgree = 1;
+const CreateRequestAgree = S.Number;
+
 export type CreateRequestHostNotification = "send" | "send-anon";
+const CreateRequestHostNotification = S.String;
+
 export type CreateRequestOwnerNotification = "send" | "send-anon" | "none";
+const CreateRequestOwnerNotification = S.String;
+
 export type CreateRequestNcmecNotification = "send" | "send-anon";
+const CreateRequestNcmecNotification = S.String;
+
 export type CreateRequestRegWhoRequestRegWhoRequestType = "disclosure" | "invalid_whois";
+const CreateRequestRegWhoRequestRegWhoRequestType = S.String;
+
 export type CreateRequestRegWhoRequestRegWhoRequestedDataElementsItem =
   | "registrant_name"
   | "registrant_organization"
@@ -106,13 +116,22 @@ export type CreateRequestRegWhoRequestRegWhoRequestedDataElementsItem =
   | "tech_email"
   | "tech_phone"
   | "tech_address";
+const CreateRequestRegWhoRequestRegWhoRequestedDataElementsItem = S.String;
+
 export type CreateRequestRegWhoRequestRegWhoRequestedDataElementsList = Array<
   CreateRequestRegWhoRequestRegWhoRequestedDataElementsItem | (string & {})
 >;
+const CreateRequestRegWhoRequestRegWhoRequestedDataElementsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateRequestRegWhoRequestRegWhoRequestedDataElementsList>;
+
 export type CreateRequestRegWhoRequestRegWhoRequestorType =
   | "government"
   | "corporation"
   | "individual";
+const CreateRequestRegWhoRequestRegWhoRequestorType = S.String;
+
 export interface CreateRequestRegWhoRequest {
   /** Affirmation that the request is made in good faith per RDP 10.2.4. Must be true. */
   regWhoGoodFaithAffirmation: boolean;
@@ -129,6 +148,11 @@ export interface CreateRequestRegWhoRequest {
   /** The nature of the requestor per RDP 10.2.1.2. */
   regWhoRequestorType?: CreateRequestRegWhoRequestRegWhoRequestorType | (string & {});
 }
+const CreateRequestRegWhoRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateRequestRegWhoRequest>;
+
 export interface CreateAbuseReportRequest {
   accountId: string;
   /** The report type for submitted reports. */
@@ -196,11 +220,23 @@ export interface CreateAbuseReportRequest {
   /** If the submitter is the target of NCSEI in the URLs of the abuse report. */
   ncseiSubjectRepresentation?: boolean;
 }
+const CreateAbuseReportRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateAbuseReportRequest>;
+
 export type CreateAbuseReportResponse = string;
+const CreateAbuseReportResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateAbuseReportResponse>;
+
 export interface GetRequest {
   accountId: string;
   reportParam: string;
 }
+const GetRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetRequest>;
+
 export interface GetResponseMitigationSummary {
   /** How many of the reported URLs were confirmed as abusive. */
   acceptedUrlCount: number;
@@ -213,7 +249,14 @@ export interface GetResponseMitigationSummary {
   /** How many mitigations are pending their effective date. */
   pendingCount: number;
 }
+const GetResponseMitigationSummary = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetResponseMitigationSummary>;
+
 export type GetResponseStatus = "accepted" | "in_review";
+const GetResponseStatus = S.String;
+
 export type GetResponseType =
   | "PHISH"
   | "GEN"
@@ -224,13 +267,19 @@ export type GetResponseType =
   | "REG_WHO"
   | "NCSEI"
   | "NETWORK";
+const GetResponseType = S.String;
+
 export interface GetResponseSubmitter {
   company?: string | null;
   email?: string | null;
   name?: string | null;
   telephone?: string | null;
 }
+const GetResponseSubmitter = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetResponseSubmitter>;
+
 export type GetResponseUrlsList = Array<string>;
+const GetResponseUrlsList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetResponseUrlsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
   /** Public facing ID of abuse report, aka abuse_rand. */
@@ -253,10 +302,14 @@ export interface GetResponse {
   submitter?: GetResponseSubmitter | null;
   urls?: GetResponseUrlsList | null;
 }
+const GetResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetResponse>;
+
 export interface GetSubmittedRequest {
   accountId: string;
   reportId: string;
 }
+const GetSubmittedRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetSubmittedRequest>;
+
 export type GetSubmittedResponseDenialReason =
   | "unable_to_confirm"
   | "incomplete_report"
@@ -271,7 +324,11 @@ export type GetSubmittedResponseDenialReason =
   | "content_unavailable"
   | "law_enforcement_referral_required"
   | "domain_dispute_process_required";
+const GetSubmittedResponseDenialReason = S.String;
+
 export type GetSubmittedResponseStatus = "submitted" | "accepted" | "denied";
+const GetSubmittedResponseStatus = S.String;
+
 export type GetSubmittedResponseType =
   | "PHISH"
   | "GEN"
@@ -282,10 +339,23 @@ export type GetSubmittedResponseType =
   | "REG_WHO"
   | "NCSEI"
   | "NETWORK";
+const GetSubmittedResponseType = S.String;
+
 export type GetSubmittedResponseUrlsList = Array<string>;
+const GetSubmittedResponseUrlsList =
+  GetResponseUrlsList as any as S.Schema<GetSubmittedResponseUrlsList>;
+
 export type GetSubmittedResponseDestinationIpsList = Array<string>;
+const GetSubmittedResponseDestinationIpsList =
+  GetResponseUrlsList as any as S.Schema<GetSubmittedResponseDestinationIpsList>;
+
 export type GetSubmittedResponsePortsProtocolsList = Array<string>;
+const GetSubmittedResponsePortsProtocolsList =
+  GetResponseUrlsList as any as S.Schema<GetSubmittedResponsePortsProtocolsList>;
+
 export type GetSubmittedResponseRegWhoRequestRegWhoRequestType = "disclosure" | "invalid_whois";
+const GetSubmittedResponseRegWhoRequestRegWhoRequestType = S.String;
+
 export type GetSubmittedResponseRegWhoRequestRegWhoRequestedDataElementsItem =
   | "registrant_name"
   | "registrant_organization"
@@ -304,12 +374,21 @@ export type GetSubmittedResponseRegWhoRequestRegWhoRequestedDataElementsItem =
   | "tech_email"
   | "tech_phone"
   | "tech_address";
+const GetSubmittedResponseRegWhoRequestRegWhoRequestedDataElementsItem = S.String;
+
 export type GetSubmittedResponseRegWhoRequestRegWhoRequestedDataElementsList =
   Array<GetSubmittedResponseRegWhoRequestRegWhoRequestedDataElementsItem>;
+const GetSubmittedResponseRegWhoRequestRegWhoRequestedDataElementsList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetSubmittedResponseRegWhoRequestRegWhoRequestedDataElementsList>;
+
 export type GetSubmittedResponseRegWhoRequestRegWhoRequestorType =
   | "government"
   | "corporation"
   | "individual";
+const GetSubmittedResponseRegWhoRequestRegWhoRequestorType = S.String;
+
 export interface GetSubmittedResponseRegWhoRequest {
   /** Affirmation that the request is made in good faith per RDP 10.2.4. Must be true. */
   regWhoGoodFaithAffirmation: boolean;
@@ -326,9 +405,20 @@ export interface GetSubmittedResponseRegWhoRequest {
   /** The nature of the requestor per RDP 10.2.1.2. */
   regWhoRequestorType?: GetSubmittedResponseRegWhoRequestRegWhoRequestorType | null;
 }
+const GetSubmittedResponseRegWhoRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetSubmittedResponseRegWhoRequest>;
+
 export type GetSubmittedResponseSourceIpsList = Array<string>;
+const GetSubmittedResponseSourceIpsList =
+  GetResponseUrlsList as any as S.Schema<GetSubmittedResponseSourceIpsList>;
+
 export type GetSubmittedResponseSubmitter = GetResponseSubmitter;
 export type GetSubmittedResponseSubtypesList = Array<string>;
+const GetSubmittedResponseSubtypesList =
+  GetResponseUrlsList as any as S.Schema<GetSubmittedResponseSubtypesList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSubmittedResponse {
   /** Public report code. */
@@ -388,13 +478,19 @@ export interface GetSubmittedResponse {
   /** The string "on" when a URS proceeding applies to the report; otherwise omitted. */
   urs?: string | null;
 }
+const GetSubmittedResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetSubmittedResponse>;
+
 export type ListRequestMitigationStatus =
   | "pending"
   | "active"
   | "in_review"
   | "cancelled"
   | "removed";
+const ListRequestMitigationStatus = S.String;
+
 export type ListRequestStatus = "accepted" | "in_review";
+const ListRequestStatus = S.String;
+
 export type ListRequestType =
   | "PHISH"
   | "GEN"
@@ -405,6 +501,8 @@ export type ListRequestType =
   | "REG_WHO"
   | "NCSEI"
   | "NETWORK";
+const ListRequestType = S.String;
+
 export interface ListAbuseReportsRequest {
   accountId: string;
   /** Returns reports created after the specified date */
@@ -426,8 +524,15 @@ export interface ListAbuseReportsRequest {
   /** Filter by the type of the report. */
   type?: ListRequestType | (string & {});
 }
+const ListAbuseReportsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ListAbuseReportsRequest>;
+
 export type ListResponseReportsItemMitigationSummary = GetResponseMitigationSummary;
 export type ListResponseReportsItemStatus = "accepted" | "in_review";
+const ListResponseReportsItemStatus = S.String;
+
 export type ListResponseReportsItemType =
   | "PHISH"
   | "GEN"
@@ -438,8 +543,13 @@ export type ListResponseReportsItemType =
   | "REG_WHO"
   | "NCSEI"
   | "NETWORK";
+const ListResponseReportsItemType = S.String;
+
 export type ListResponseReportsItemSubmitter = GetResponseSubmitter;
 export type ListResponseReportsItemUrlsList = Array<string>;
+const ListResponseReportsItemUrlsList =
+  GetResponseUrlsList as any as S.Schema<ListResponseReportsItemUrlsList>;
+
 export interface ListResponseReportsItem {
   /** Public facing ID of abuse report, aka abuse_rand. */
   id: string;
@@ -461,16 +571,33 @@ export interface ListResponseReportsItem {
   submitter?: GetResponseSubmitter | null;
   urls?: ListResponseReportsItemUrlsList | null;
 }
+const ListResponseReportsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ListResponseReportsItem>;
+
 export type ListResponseReportsList = Array<ListResponseReportsItem>;
+const ListResponseReportsList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListResponseReportsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListAbuseReportsResponse {
   reports: ListResponseReportsList;
 }
+const ListAbuseReportsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListAbuseReportsResponse>;
+
 export type MitigationsListRequestEntityType =
   | "url_pattern"
   | "account"
   | "zone"
   | "custom_expression";
+const MitigationsListRequestEntityType = S.String;
+
 export type MitigationsListRequestSort =
   | "type,asc"
   | "type,desc"
@@ -480,12 +607,16 @@ export type MitigationsListRequestSort =
   | "status,desc"
   | "entity_type,asc"
   | "entity_type,desc";
+const MitigationsListRequestSort = S.String;
+
 export type MitigationsListRequestStatus =
   | "pending"
   | "active"
   | "in_review"
   | "cancelled"
   | "removed";
+const MitigationsListRequestStatus = S.String;
+
 export interface ListMitigationsRequest {
   accountId: string;
   reportId: string;
@@ -506,17 +637,26 @@ export interface ListMitigationsRequest {
   /** Filter by the type of mitigation. This filter parameter can be specified multiple times to include multiple types of mitigations in the result set. */
   type?: string;
 }
+const ListMitigationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListMitigationsRequest>;
+
 export type MitigationsListResponseMitigationsItemEntityType =
   | "url_pattern"
   | "account"
   | "zone"
   | "custom_expression";
+const MitigationsListResponseMitigationsItemEntityType = S.String;
+
 export type MitigationsListResponseMitigationsItemStatus =
   | "pending"
   | "active"
   | "in_review"
   | "cancelled"
   | "removed";
+const MitigationsListResponseMitigationsItemStatus = S.String;
+
 export interface MitigationsListResponseMitigationsItem {
   /** ID of remediation. */
   id: string;
@@ -530,14 +670,35 @@ export interface MitigationsListResponseMitigationsItem {
   /** The type of mitigation applied to a reported entity. */
   type: string;
 }
+const MitigationsListResponseMitigationsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<MitigationsListResponseMitigationsItem>;
+
 export type MitigationsListResponseMitigationsList = Array<MitigationsListResponseMitigationsItem>;
+const MitigationsListResponseMitigationsList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<MitigationsListResponseMitigationsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListMitigationsResponse {
   mitigations: MitigationsListResponseMitigationsList;
 }
+const ListMitigationsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListMitigationsResponse>;
+
 export type ListSubmittedRequestDomainList = Array<string>;
+const ListSubmittedRequestDomainList =
+  GetResponseUrlsList as any as S.Schema<ListSubmittedRequestDomainList>;
+
 export type ListSubmittedRequestStatus = "submitted" | "accepted" | "denied";
 export type ListSubmittedRequestStatusList = Array<ListSubmittedRequestStatus | (string & {})>;
+const ListSubmittedRequestStatusList =
+  CreateRequestRegWhoRequestRegWhoRequestedDataElementsList as any as S.Schema<ListSubmittedRequestStatusList>;
+
 export type ListSubmittedRequestType =
   | "PHISH"
   | "GEN"
@@ -549,6 +710,9 @@ export type ListSubmittedRequestType =
   | "NCSEI"
   | "NETWORK";
 export type ListSubmittedRequestTypeList = Array<ListSubmittedRequestType | (string & {})>;
+const ListSubmittedRequestTypeList =
+  CreateRequestRegWhoRequestRegWhoRequestedDataElementsList as any as S.Schema<ListSubmittedRequestTypeList>;
+
 export interface ListSubmittedRequest {
   accountId: string;
   /** Filter by report code. */
@@ -570,6 +734,8 @@ export interface ListSubmittedRequest {
   /** Filter by report type. This parameter can be specified multiple times. */
   type?: ListSubmittedRequestTypeList;
 }
+const ListSubmittedRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ListSubmittedRequest>;
+
 export type ListSubmittedResponseReportsItemDenialReason =
   | "unable_to_confirm"
   | "incomplete_report"
@@ -584,7 +750,11 @@ export type ListSubmittedResponseReportsItemDenialReason =
   | "content_unavailable"
   | "law_enforcement_referral_required"
   | "domain_dispute_process_required";
+const ListSubmittedResponseReportsItemDenialReason = S.String;
+
 export type ListSubmittedResponseReportsItemStatus = "submitted" | "accepted" | "denied";
+const ListSubmittedResponseReportsItemStatus = S.String;
+
 export type ListSubmittedResponseReportsItemType =
   | "PHISH"
   | "GEN"
@@ -595,6 +765,8 @@ export type ListSubmittedResponseReportsItemType =
   | "REG_WHO"
   | "NCSEI"
   | "NETWORK";
+const ListSubmittedResponseReportsItemType = S.String;
+
 export type ListSubmittedResponseReportsItemSubmitter = GetResponseSubmitter;
 export interface ListSubmittedResponseReportsItem {
   /** Public report code. */
@@ -612,11 +784,26 @@ export interface ListSubmittedResponseReportsItem {
   /** Information about the submitter of the report. */
   submitter?: GetResponseSubmitter | null;
 }
+const ListSubmittedResponseReportsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListSubmittedResponseReportsItem>;
+
 export type ListSubmittedResponseReportsList = Array<ListSubmittedResponseReportsItem>;
+const ListSubmittedResponseReportsList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListSubmittedResponseReportsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListSubmittedResponse {
   reports: ListSubmittedResponseReportsList;
 }
+const ListSubmittedResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListSubmittedResponse>;
+
 export interface ListSubmittedEmailsRequest {
   accountId: string;
   reportId: string;
@@ -625,6 +812,11 @@ export interface ListSubmittedEmailsRequest {
   /** Number of emails per page (default 20, max 100). */
   perPage?: number;
 }
+const ListSubmittedEmailsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListSubmittedEmailsRequest>;
+
 export interface ListSubmittedEmailsResponseEmailsItem {
   /** Unique identifier of the email. */
   id: string;
@@ -637,20 +829,50 @@ export interface ListSubmittedEmailsResponseEmailsItem {
   /** Subject line of the email. */
   subject: string;
 }
+const ListSubmittedEmailsResponseEmailsItem = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListSubmittedEmailsResponseEmailsItem>;
+
 export type ListSubmittedEmailsResponseEmailsList = Array<ListSubmittedEmailsResponseEmailsItem>;
+const ListSubmittedEmailsResponseEmailsList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ListSubmittedEmailsResponseEmailsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListSubmittedEmailsResponse {
   emails: ListSubmittedEmailsResponseEmailsList;
 }
+const ListSubmittedEmailsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ListSubmittedEmailsResponse>;
+
 export type MitigationsReviewRequestAppealsItemReason = "removed" | "misclassified";
+const MitigationsReviewRequestAppealsItemReason = S.String;
+
 export interface MitigationsReviewRequestAppealsItem {
   /** ID of the mitigation to appeal. */
   id: string;
   /** Reason why the customer is appealing. */
   reason: MitigationsReviewRequestAppealsItemReason | (string & {});
 }
+const MitigationsReviewRequestAppealsItem = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<MitigationsReviewRequestAppealsItem>;
+
 export type MitigationsReviewRequestAppealsList = Array<MitigationsReviewRequestAppealsItem>;
+const MitigationsReviewRequestAppealsList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<MitigationsReviewRequestAppealsList>;
+
 export type MitigationsReviewRequestDataUrlsList = Array<string>;
+const MitigationsReviewRequestDataUrlsList =
+  GetResponseUrlsList as any as S.Schema<MitigationsReviewRequestDataUrlsList>;
+
 export interface MitigationsReviewRequestData {
   city: string;
   country: string;
@@ -667,7 +889,14 @@ export interface MitigationsReviewRequestData {
   company?: string;
   counterNoticeResponse?: string;
 }
+const MitigationsReviewRequestData = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<MitigationsReviewRequestData>;
+
 export type MitigationsReviewRequestType = "counter_notice" | "content_removed";
+const MitigationsReviewRequestType = S.String;
+
 export interface ReviewMitigationRequest {
   accountId: string;
   reportId: string;
@@ -678,6 +907,11 @@ export interface ReviewMitigationRequest {
   /** The type of appeal being submitted. */
   type?: MitigationsReviewRequestType | (string & {});
 }
+const ReviewMitigationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ReviewMitigationRequest>;
+
 export type MitigationsReviewResultItemEntityType =
   | "url_pattern"
   | "account"
@@ -703,12 +937,20 @@ export interface MitigationsReviewResultItem {
   type: string;
 }
 export type MitigationsReviewResultList = Array<MitigationsReviewResultItem>;
+const MitigationsReviewResultList =
+  MitigationsListResponseMitigationsList as any as S.Schema<MitigationsReviewResultList>;
+
 export interface ReviewMitigationResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: MitigationsReviewResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ReviewMitigationResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ReviewMitigationResponse>;
+
 export type CreateAbuseReportError = InvalidRequest | CloudflareOpError;
 /** Submit an abuse report of a particular type. Requires the abuse-reports entitlement on the account (Enterprise accounts have it by default; other accounts must request access) and an API token with the `Trust and Safety Write` permission. If the account is not entitled, the request is rejected with an HTTP `401` response (see below). */
 export const createAbuseReport: API.OperationMethod<
@@ -717,8 +959,8 @@ export const createAbuseReport: API.OperationMethod<
   CreateAbuseReportError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateAbuseReportRequest>,
-  output: __S(3) as any as S.Schema<CreateAbuseReportResponse>,
+  input: CreateAbuseReportRequest,
+  output: CreateAbuseReportResponse,
   errors: [InvalidRequest, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -728,8 +970,8 @@ export type GetError = CloudflareOpError;
 /** Retrieve the details of an abuse report made against a domain or other content associated with the account. To retrieve a report that the account submitted, use the submitted abuse report endpoint instead. */
 export const get: API.OperationMethod<GetRequest, GetResponse, GetError, CloudflareOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(4) as any as S.Schema<GetRequest>,
-    output: __S(8) as any as S.Schema<GetResponse>,
+    input: GetRequest,
+    output: GetResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflareProtocol,
     retry: Retry.Retry,
@@ -743,8 +985,8 @@ export const getSubmitted: API.OperationMethod<
   GetSubmittedError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<GetSubmittedRequest>,
-  output: __S(12) as any as S.Schema<GetSubmittedResponse>,
+  input: GetSubmittedRequest,
+  output: GetSubmittedResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -758,8 +1000,8 @@ export const listAbuseReports: API.OperationMethod<
   ListAbuseReportsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<ListAbuseReportsRequest>,
-  output: __S(16) as any as S.Schema<ListAbuseReportsResponse>,
+  input: ListAbuseReportsRequest,
+  output: ListAbuseReportsResponse,
   errors: [InvalidAccountId, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -773,8 +1015,8 @@ export const listMitigations: API.OperationMethod<
   ListMitigationsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<ListMitigationsRequest>,
-  output: __S(20) as any as S.Schema<ListMitigationsResponse>,
+  input: ListMitigationsRequest,
+  output: ListMitigationsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -788,8 +1030,8 @@ export const listSubmitted: API.OperationMethod<
   ListSubmittedError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<ListSubmittedRequest>,
-  output: __S(24) as any as S.Schema<ListSubmittedResponse>,
+  input: ListSubmittedRequest,
+  output: ListSubmittedResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -803,8 +1045,8 @@ export const listSubmittedEmails: API.OperationMethod<
   ListSubmittedEmailsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<ListSubmittedEmailsRequest>,
-  output: __S(28) as any as S.Schema<ListSubmittedEmailsResponse>,
+  input: ListSubmittedEmailsRequest,
+  output: ListSubmittedEmailsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -820,8 +1062,8 @@ export const reviewMitigation: API.PaginatedOperationMethod<
   MitigationsReviewResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(32) as any as S.Schema<ReviewMitigationRequest>,
-    output: __S(33) as any as S.Schema<ReviewMitigationResponse>,
+    input: ReviewMitigationRequest,
+    output: ReviewMitigationResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -834,7 +1076,7 @@ export const reviewMitigation: API.PaginatedOperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(CreateRequestRegWhoRequestRegWhoRequestedDataElementsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -843,12 +1085,19 @@ function __c0(j: number): any {
             T.Body("reg_who_lawful_processing_agreement"),
           ),
           regWhoLegalBasis: S.String.pipe(T.Body("reg_who_legal_basis")),
-          regWhoRequestType: S.String.pipe(T.Body("reg_who_request_type")),
-          regWhoRequestedDataElements: __S(0).pipe(T.Body("reg_who_requested_data_elements")),
+          regWhoRequestType: CreateRequestRegWhoRequestRegWhoRequestType.pipe(
+            T.Body("reg_who_request_type"),
+          ),
+          regWhoRequestedDataElements:
+            CreateRequestRegWhoRequestRegWhoRequestedDataElementsList.pipe(
+              T.Body("reg_who_requested_data_elements"),
+            ),
           regWhoAuthorizationStatement: S.optional(
             S.String.pipe(T.Body("reg_who_authorization_statement")),
           ),
-          regWhoRequestorType: S.optional(S.String.pipe(T.Body("reg_who_requestor_type"))),
+          regWhoRequestorType: S.optional(
+            CreateRequestRegWhoRequestRegWhoRequestorType.pipe(T.Body("reg_who_requestor_type")),
+          ),
         }),
       ).annotate({
         identifier: "CreateRequestRegWhoRequest",
@@ -858,18 +1107,20 @@ function __c0(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           reportParam: S.String.pipe(T.Label("report_param")),
-          act: S.String,
+          act: CreateRequestAct,
           address1: S.optional(S.String),
           agentName: S.optional(S.String.pipe(T.Body("agent_name"))),
-          agree: S.optional(S.Number),
+          agree: S.optional(CreateRequestAgree),
           city: S.optional(S.String),
           country: S.optional(S.String),
           email: S.String,
           email2: S.String,
-          hostNotification: S.optional(S.String.pipe(T.Body("host_notification"))),
+          hostNotification: S.optional(
+            CreateRequestHostNotification.pipe(T.Body("host_notification")),
+          ),
           name: S.String,
           originalWork: S.optional(S.String.pipe(T.Body("original_work"))),
-          ownerNotification: S.String.pipe(T.Body("owner_notification")),
+          ownerNotification: CreateRequestOwnerNotification.pipe(T.Body("owner_notification")),
           signature: S.optional(S.String),
           state: S.optional(S.String),
           urls: S.String,
@@ -886,8 +1137,10 @@ function __c0(j: number): any {
           destinationIps: S.optional(S.String.pipe(T.Body("destination_ips"))),
           portsProtocols: S.optional(S.String.pipe(T.Body("ports_protocols"))),
           sourceIps: S.optional(S.String.pipe(T.Body("source_ips"))),
-          ncmecNotification: S.optional(S.String.pipe(T.Body("ncmec_notification"))),
-          regWhoRequest: S.optional(__S(1).pipe(T.Body("reg_who_request"))),
+          ncmecNotification: S.optional(
+            CreateRequestNcmecNotification.pipe(T.Body("ncmec_notification")),
+          ),
+          regWhoRequest: S.optional(CreateRequestRegWhoRequest.pipe(T.Body("reg_who_request"))),
           ncseiSubjectRepresentation: S.optional(
             S.Boolean.pipe(T.Body("ncsei_subject_representation")),
           ),
@@ -955,13 +1208,13 @@ function __c1(j: number): any {
           id: S.String,
           cdate: S.String,
           domain: S.String,
-          mitigationSummary: __S(5).pipe(T.Body("mitigation_summary")),
-          status: S.String,
-          type: S.String,
+          mitigationSummary: GetResponseMitigationSummary.pipe(T.Body("mitigation_summary")),
+          status: GetResponseStatus,
+          type: GetResponseType,
           justification: S.optional(S.NullOr(S.String)),
           originalWork: S.optional(S.NullOr(S.String).pipe(T.Body("original_work"))),
-          submitter: S.optional(S.NullOr(__S(6))),
-          urls: S.optional(S.NullOr(__S(7))),
+          submitter: S.optional(S.NullOr(GetResponseSubmitter)),
+          urls: S.optional(S.NullOr(GetResponseUrlsList)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetResponse" });
     case 1:
@@ -980,7 +1233,7 @@ function __c1(j: number): any {
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSubmittedRequest" });
     case 2:
-      return S.Array(S.String);
+      return S.Array(GetSubmittedResponseRegWhoRequestRegWhoRequestedDataElementsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -989,13 +1242,20 @@ function __c1(j: number): any {
             T.Body("reg_who_lawful_processing_agreement"),
           ),
           regWhoLegalBasis: S.String.pipe(T.Body("reg_who_legal_basis")),
-          regWhoRequestType: S.String.pipe(T.Body("reg_who_request_type")),
-          regWhoRequestedDataElements: __S(10).pipe(T.Body("reg_who_requested_data_elements")),
+          regWhoRequestType: GetSubmittedResponseRegWhoRequestRegWhoRequestType.pipe(
+            T.Body("reg_who_request_type"),
+          ),
+          regWhoRequestedDataElements:
+            GetSubmittedResponseRegWhoRequestRegWhoRequestedDataElementsList.pipe(
+              T.Body("reg_who_requested_data_elements"),
+            ),
           regWhoAuthorizationStatement: S.optional(
             S.NullOr(S.String).pipe(T.Body("reg_who_authorization_statement")),
           ),
           regWhoRequestorType: S.optional(
-            S.NullOr(S.String).pipe(T.Body("reg_who_requestor_type")),
+            S.NullOr(GetSubmittedResponseRegWhoRequestRegWhoRequestorType).pipe(
+              T.Body("reg_who_requestor_type"),
+            ),
           ),
         }),
       ).annotate({
@@ -1006,16 +1266,18 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String,
           cdate: S.String,
-          denialReason: S.String.pipe(T.Body("denial_reason")),
+          denialReason: GetSubmittedResponseDenialReason.pipe(T.Body("denial_reason")),
           domain: S.String,
           dsaAttestation: S.Boolean.pipe(T.Body("dsa_attestation")),
-          status: S.String,
-          type: S.String,
-          urls: __S(7),
+          status: GetSubmittedResponseStatus,
+          type: GetSubmittedResponseType,
+          urls: GetSubmittedResponseUrlsList,
           agentName: S.optional(S.NullOr(S.String).pipe(T.Body("agent_name"))),
           comments: S.optional(S.NullOr(S.String)),
           court: S.optional(S.NullOr(S.String)),
-          destinationIps: S.optional(S.NullOr(__S(7)).pipe(T.Body("destination_ips"))),
+          destinationIps: S.optional(
+            S.NullOr(GetSubmittedResponseDestinationIpsList).pipe(T.Body("destination_ips")),
+          ),
           hostNotification: S.optional(S.NullOr(S.String).pipe(T.Body("host_notification"))),
           justification: S.optional(S.NullOr(S.String)),
           ncmecNotification: S.optional(S.NullOr(S.String).pipe(T.Body("ncmec_notification"))),
@@ -1024,13 +1286,19 @@ function __c1(j: number): any {
           ),
           originalWork: S.optional(S.NullOr(S.String).pipe(T.Body("original_work"))),
           ownerNotification: S.optional(S.NullOr(S.String).pipe(T.Body("owner_notification"))),
-          portsProtocols: S.optional(S.NullOr(__S(7)).pipe(T.Body("ports_protocols"))),
-          regWhoRequest: S.optional(S.NullOr(__S(11)).pipe(T.Body("reg_who_request"))),
+          portsProtocols: S.optional(
+            S.NullOr(GetSubmittedResponsePortsProtocolsList).pipe(T.Body("ports_protocols")),
+          ),
+          regWhoRequest: S.optional(
+            S.NullOr(GetSubmittedResponseRegWhoRequest).pipe(T.Body("reg_who_request")),
+          ),
           reportedCountry: S.optional(S.NullOr(S.String).pipe(T.Body("reported_country"))),
           reportedUserAgent: S.optional(S.NullOr(S.String).pipe(T.Body("reported_user_agent"))),
-          sourceIps: S.optional(S.NullOr(__S(7)).pipe(T.Body("source_ips"))),
-          submitter: S.optional(S.NullOr(__S(6))),
-          subtypes: S.optional(S.NullOr(__S(7))),
+          sourceIps: S.optional(
+            S.NullOr(GetSubmittedResponseSourceIpsList).pipe(T.Body("source_ips")),
+          ),
+          submitter: S.optional(S.NullOr(GetResponseSubmitter)),
+          subtypes: S.optional(S.NullOr(GetSubmittedResponseSubtypesList)),
           title: S.optional(S.NullOr(S.String)),
           udrp: S.optional(S.NullOr(S.String)),
           urs: S.optional(S.NullOr(S.String)),
@@ -1043,12 +1311,14 @@ function __c1(j: number): any {
           createdAfter: S.optional(S.String.pipe(T.Query("created_after"))),
           createdBefore: S.optional(S.String.pipe(T.Query("created_before"))),
           domain: S.optional(S.String.pipe(T.Query())),
-          mitigationStatus: S.optional(S.String.pipe(T.Query("mitigation_status"))),
+          mitigationStatus: S.optional(
+            ListRequestMitigationStatus.pipe(T.Query("mitigation_status")),
+          ),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           sort: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(ListRequestStatus.pipe(T.Query())),
+          type: S.optional(ListRequestType.pipe(T.Query())),
         })
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/abuse-reports", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1059,17 +1329,17 @@ function __c1(j: number): any {
           id: S.String,
           cdate: S.String,
           domain: S.String,
-          mitigationSummary: __S(5).pipe(T.Body("mitigation_summary")),
-          status: S.String,
-          type: S.String,
+          mitigationSummary: GetResponseMitigationSummary.pipe(T.Body("mitigation_summary")),
+          status: ListResponseReportsItemStatus,
+          type: ListResponseReportsItemType,
           justification: S.optional(S.NullOr(S.String)),
           originalWork: S.optional(S.NullOr(S.String).pipe(T.Body("original_work"))),
-          submitter: S.optional(S.NullOr(__S(6))),
-          urls: S.optional(S.NullOr(__S(7))),
+          submitter: S.optional(S.NullOr(GetResponseSubmitter)),
+          urls: S.optional(S.NullOr(ListResponseReportsItemUrlsList)),
         }),
       ).annotate({ identifier: "ListResponseReportsItem" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(ListResponseReportsItem);
   }
 }
 function __c2(j: number): any {
@@ -1077,7 +1347,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          reports: __S(15),
+          reports: ListResponseReportsList,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAbuseReportsResponse" });
     case 1:
@@ -1087,11 +1357,11 @@ function __c2(j: number): any {
           reportId: S.String.pipe(T.Label("report_id")),
           effectiveAfter: S.optional(S.String.pipe(T.Query("effective_after"))),
           effectiveBefore: S.optional(S.String.pipe(T.Query("effective_before"))),
-          entityType: S.optional(S.String.pipe(T.Query("entity_type"))),
+          entityType: S.optional(MitigationsListRequestEntityType.pipe(T.Query("entity_type"))),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          sort: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(MitigationsListRequestSort.pipe(T.Query())),
+          status: S.optional(MitigationsListRequestStatus.pipe(T.Query())),
           type: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
@@ -1109,19 +1379,19 @@ function __c2(j: number): any {
           id: S.String,
           effectiveDate: S.String.pipe(T.Body("effective_date")),
           entityId: S.String.pipe(T.Body("entity_id")),
-          entityType: S.String.pipe(T.Body("entity_type")),
-          status: S.String,
+          entityType: MitigationsListResponseMitigationsItemEntityType.pipe(T.Body("entity_type")),
+          status: MitigationsListResponseMitigationsItemStatus,
           type: S.String,
         }),
       ).annotate({
         identifier: "MitigationsListResponseMitigationsItem",
       });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(MitigationsListResponseMitigationsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          mitigations: __S(19),
+          mitigations: MitigationsListResponseMitigationsList,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListMitigationsResponse" });
     case 5:
@@ -1131,12 +1401,12 @@ function __c2(j: number): any {
           id: S.optional(S.String.pipe(T.Query())),
           createdAfter: S.optional(S.String.pipe(T.Query("created_after"))),
           createdBefore: S.optional(S.String.pipe(T.Query("created_before"))),
-          domain: S.optional(__S(7).pipe(T.Query())),
+          domain: S.optional(ListSubmittedRequestDomainList.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           sort: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(__S(0).pipe(T.Query())),
-          type: S.optional(__S(0).pipe(T.Query())),
+          status: S.optional(ListSubmittedRequestStatusList.pipe(T.Query())),
+          type: S.optional(ListSubmittedRequestTypeList.pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -1152,17 +1422,17 @@ function __c2(j: number): any {
         S.Struct({
           id: S.String,
           cdate: S.String,
-          denialReason: S.String.pipe(T.Body("denial_reason")),
+          denialReason: ListSubmittedResponseReportsItemDenialReason.pipe(T.Body("denial_reason")),
           domain: S.String,
-          status: S.String,
-          type: S.String,
-          submitter: S.optional(S.NullOr(__S(6))),
+          status: ListSubmittedResponseReportsItemStatus,
+          type: ListSubmittedResponseReportsItemType,
+          submitter: S.optional(S.NullOr(GetResponseSubmitter)),
         }),
       ).annotate({
         identifier: "ListSubmittedResponseReportsItem",
       });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(ListSubmittedResponseReportsItem);
   }
 }
 function __c3(j: number): any {
@@ -1170,7 +1440,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          reports: __S(23),
+          reports: ListSubmittedResponseReportsList,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSubmittedResponse" });
     case 1:
@@ -1205,11 +1475,11 @@ function __c3(j: number): any {
         identifier: "ListSubmittedEmailsResponseEmailsItem",
       });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(ListSubmittedEmailsResponseEmailsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          emails: __S(27),
+          emails: ListSubmittedEmailsResponseEmailsList,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListSubmittedEmailsResponse",
@@ -1218,13 +1488,13 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          reason: S.String,
+          reason: MitigationsReviewRequestAppealsItemReason,
         }),
       ).annotate({
         identifier: "MitigationsReviewRequestAppealsItem",
       });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(MitigationsReviewRequestAppealsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1238,7 +1508,7 @@ function __c3(j: number): any {
           signature: S.String,
           state: S.String,
           streetAddress: S.String.pipe(T.Body("street_address")),
-          urls: __S(7),
+          urls: MitigationsReviewRequestDataUrlsList,
           zipCode: S.String.pipe(T.Body("zip_code")),
           company: S.optional(S.String),
           counterNoticeResponse: S.optional(S.String.pipe(T.Body("counter_notice_response"))),
@@ -1255,9 +1525,9 @@ function __c4(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           reportId: S.String.pipe(T.Label("report_id")),
-          appeals: S.optional(__S(30)),
-          data: S.optional(__S(31)),
-          type: S.optional(S.String),
+          appeals: S.optional(MitigationsReviewRequestAppealsList),
+          data: S.optional(MitigationsReviewRequestData),
+          type: S.optional(MitigationsReviewRequestType),
         })
           .pipe(
             T.Http({
@@ -1271,28 +1541,9 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          result: __S(19).pipe(T.EnvelopePayload()),
+          result: MitigationsReviewResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ReviewMitigationResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

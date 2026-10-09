@@ -7,8 +7,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -20,22 +18,48 @@ export interface AbortStorageAccountHierarchicalNamespaceMigrationRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
+const AbortStorageAccountHierarchicalNamespaceMigrationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AbortStorageAccountHierarchicalNamespaceMigrationRequest>;
+
 export interface AbortStorageAccountHierarchicalNamespaceMigrationResponse {}
+const AbortStorageAccountHierarchicalNamespaceMigrationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AbortStorageAccountHierarchicalNamespaceMigrationResponse>;
+
 export type AdvancedPlatformMetricsCreateOrUpdateRequestAdvancedPlatformMetricsRuleType =
   "ContainerLevelCapacityMetrics";
+const AdvancedPlatformMetricsCreateOrUpdateRequestAdvancedPlatformMetricsRuleType = S.String;
+
 /** The metrics emitted by the advanced platform metrics rule. */
 export type MetricsEmitted = "ContainerBlobCount" | "ContainerUsedSize";
+const MetricsEmitted = S.String;
+
 /** The metrics requested by the caller. If omitted in a create or update request, the service enables all metrics supported by the selected rule type. */
 export type AdvancedPlatformMetricsRulePropertiesInputMetricsToEmitList = Array<
   MetricsEmitted | (string & {})
 >;
+const AdvancedPlatformMetricsRulePropertiesInputMetricsToEmitList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AdvancedPlatformMetricsRulePropertiesInputMetricsToEmitList>;
+
 /** The type of filter applied to the advanced platform metrics rule. */
 export type AdvancedPlatformMetricsFilterType =
   | "AllContainersFilter"
   | "ContainerPrefixFilter"
   | "ContainerListFilter";
+const AdvancedPlatformMetricsFilterType = S.String;
+
 /** The values for the filter applied to the rule. If filter type is AllContainersFilter, filter values should be empty. If filter type is ContainerPrefixFilter, filter values should contain a list of container prefixes. If filter type is ContainerListFilter, filter values should contain a list of container names. */
 export type AdvancedPlatformMetricsRuleConfigFilterValuesList = Array<string>;
+const AdvancedPlatformMetricsRuleConfigFilterValuesList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AdvancedPlatformMetricsRuleConfigFilterValuesList>;
+
 /** Configuration for the advanced platform metrics rule. */
 export interface AdvancedPlatformMetricsRuleConfig {
   /** The type of filter applied to the rule. Possible values include: AllContainersFilter, ContainerPrefixFilter, ContainerListFilter. */
@@ -43,6 +67,11 @@ export interface AdvancedPlatformMetricsRuleConfig {
   /** The values for the filter applied to the rule. If filter type is AllContainersFilter, filter values should be empty. If filter type is ContainerPrefixFilter, filter values should contain a list of container prefixes. If filter type is ContainerListFilter, filter values should contain a list of container names. */
   filterValues?: AdvancedPlatformMetricsRuleConfigFilterValuesList;
 }
+const AdvancedPlatformMetricsRuleConfig = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AdvancedPlatformMetricsRuleConfig>;
+
 /** An object that defines the advanced platform metrics rule. */
 export interface AdvancedPlatformMetricsRulePropertiesInput {
   /** A boolean flag which enables the advanced platform metrics rule. */
@@ -52,6 +81,11 @@ export interface AdvancedPlatformMetricsRulePropertiesInput {
   /** Configuration for the advanced platform metrics rule. */
   ruleConfig: AdvancedPlatformMetricsRuleConfig;
 }
+const AdvancedPlatformMetricsRulePropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AdvancedPlatformMetricsRulePropertiesInput>;
+
 export interface AdvancedPlatformMetricsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -66,10 +100,19 @@ export interface AdvancedPlatformMetricsCreateOrUpdateRequest {
   /** Returns the advanced platform metrics rule. */
   properties?: AdvancedPlatformMetricsRulePropertiesInput;
 }
+const AdvancedPlatformMetricsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AdvancedPlatformMetricsCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -85,12 +128,22 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SystemData>;
+
 /** The type of the advanced platform metrics rule. */
 export type AdvancedPlatformMetricsRuleType = "ContainerLevelCapacityMetrics";
+const AdvancedPlatformMetricsRuleType = S.String;
+
 /** The metrics requested by the caller. If omitted in a create or update request, the service enables all metrics supported by the selected rule type. */
 export type AdvancedPlatformMetricsRulePropertiesMetricsToEmitList = Array<MetricsEmitted>;
+const AdvancedPlatformMetricsRulePropertiesMetricsToEmitList =
+  AdvancedPlatformMetricsRulePropertiesInputMetricsToEmitList as any as S.Schema<AdvancedPlatformMetricsRulePropertiesMetricsToEmitList>;
+
 /** The metrics emitted by the rule. Metrics are mapped according to the rule type from RuleTypeProperty. Rule type to metrics mapping: ContainerLevelCapacityMetrics => {ContainerUsedSize, ContainerBlobCount}. */
 export type AdvancedPlatformMetricsRulePropertiesMetricsEmittedList = Array<MetricsEmitted>;
+const AdvancedPlatformMetricsRulePropertiesMetricsEmittedList =
+  AdvancedPlatformMetricsRulePropertiesInputMetricsToEmitList as any as S.Schema<AdvancedPlatformMetricsRulePropertiesMetricsEmittedList>;
+
 /** An object that defines the advanced platform metrics rule. */
 export interface AdvancedPlatformMetricsRuleProperties {
   /** Indicates the type of the advanced platform metrics rule. Possible values include: ContainerLevelCapacityMetrics. */
@@ -106,6 +159,11 @@ export interface AdvancedPlatformMetricsRuleProperties {
   /** Configuration for the advanced platform metrics rule. */
   ruleConfig: AdvancedPlatformMetricsRuleConfig;
 }
+const AdvancedPlatformMetricsRuleProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AdvancedPlatformMetricsRuleProperties>;
+
 export interface AdvancedPlatformMetricsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -118,8 +176,15 @@ export interface AdvancedPlatformMetricsCreateOrUpdateResponse {
   /** Returns the advanced platform metrics rule. */
   properties?: AdvancedPlatformMetricsRuleProperties;
 }
+const AdvancedPlatformMetricsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<AdvancedPlatformMetricsCreateOrUpdateResponse>;
+
 /** The ImmutabilityPolicy state of a blob container, possible values include: Locked and Unlocked. */
 export type ImmutabilityPolicyState = "Locked" | "Unlocked";
+const ImmutabilityPolicyState = S.String;
+
 /** The properties of an ImmutabilityPolicy of a blob container. */
 export interface ImmutabilityPolicyProperty {
   /** The immutability period for the blobs in the container since the policy creation, in days. */
@@ -131,6 +196,11 @@ export interface ImmutabilityPolicyProperty {
   /** This property can only be changed for unlocked time-based retention policies. When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API. The 'allowProtectedAppendWrites' and 'allowProtectedAppendWritesAll' properties are mutually exclusive. */
   allowProtectedAppendWritesAll?: boolean;
 }
+const ImmutabilityPolicyProperty = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ImmutabilityPolicyProperty>;
+
 export interface BlobContainersCreateOrUpdateImmutabilityPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -143,6 +213,11 @@ export interface BlobContainersCreateOrUpdateImmutabilityPolicyRequest {
   /** The properties of an ImmutabilityPolicy of a blob container. */
   properties: ImmutabilityPolicyProperty;
 }
+const BlobContainersCreateOrUpdateImmutabilityPolicyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<BlobContainersCreateOrUpdateImmutabilityPolicyRequest>;
+
 export interface BlobContainersCreateOrUpdateImmutabilityPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -157,8 +232,15 @@ export interface BlobContainersCreateOrUpdateImmutabilityPolicyResponse {
   /** Resource Etag. */
   etag?: string;
 }
+const BlobContainersCreateOrUpdateImmutabilityPolicyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<BlobContainersCreateOrUpdateImmutabilityPolicyResponse>;
+
 /** Specifies the lease action. Can be one of the available actions. */
 export type LeaseContainerRequestAction = "Acquire" | "Renew" | "Change" | "Release" | "Break";
+const LeaseContainerRequestAction = S.String;
+
 export interface BlobContainersLeaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -179,6 +261,11 @@ export interface BlobContainersLeaseRequest {
   /** Optional for acquire, required for change. Proposed lease ID, in a GUID string format. */
   proposedLeaseId?: string;
 }
+const BlobContainersLeaseRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<BlobContainersLeaseRequest>;
+
 /** Lease Container response schema. */
 export interface LeaseContainerResponse {
   /** Returned unique lease ID that must be included with any request to delete the container, or to renew, change, or release the lease. */
@@ -186,6 +273,11 @@ export interface LeaseContainerResponse {
   /** Approximate time remaining in the lease period, in seconds. */
   leaseTimeSeconds?: string;
 }
+const LeaseContainerResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<LeaseContainerResponse>;
+
 export interface BlobContainersObjectLevelWormRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -196,21 +288,49 @@ export interface BlobContainersObjectLevelWormRequest {
   /** The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number. */
   containerName: string;
 }
+const BlobContainersObjectLevelWormRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<BlobContainersObjectLevelWormRequest>;
+
 export interface BlobContainersObjectLevelWormResponse {}
+const BlobContainersObjectLevelWormResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<BlobContainersObjectLevelWormResponse>;
+
 export type BlobInventoryPoliciesCreateOrUpdateRequestBlobInventoryPolicyName = "default";
+const BlobInventoryPoliciesCreateOrUpdateRequestBlobInventoryPolicyName = S.String;
+
 /** The valid value is Inventory */
 export type InventoryRuleType = "Inventory";
+const InventoryRuleType = S.String;
+
 /** An array of strings with maximum 10 blob prefixes to be included in the inventory. */
 export type BlobInventoryPolicyFilterPrefixMatchList = Array<string>;
+const BlobInventoryPolicyFilterPrefixMatchList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<BlobInventoryPolicyFilterPrefixMatchList>;
+
 /** An array of strings with maximum 10 blob prefixes to be excluded from the inventory. */
 export type BlobInventoryPolicyFilterExcludePrefixList = Array<string>;
+const BlobInventoryPolicyFilterExcludePrefixList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<BlobInventoryPolicyFilterExcludePrefixList>;
+
 /** An array of predefined enum values. Valid values include blockBlob, appendBlob, pageBlob. Hns accounts does not support pageBlobs. This field is required when definition.objectType property is set to 'Blob'. */
 export type BlobInventoryPolicyFilterBlobTypesList = Array<string>;
+const BlobInventoryPolicyFilterBlobTypesList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<BlobInventoryPolicyFilterBlobTypesList>;
+
 /** This property defines the creation time based filtering condition. Blob Inventory schema parameter 'Creation-Time' is mandatory with this filter. */
 export interface BlobInventoryCreationTime {
   /** When set the policy filters the objects that are created in the last N days. Where N is an integer value between 1 to 36500. */
   lastNDays?: number;
 }
+const BlobInventoryCreationTime = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<BlobInventoryCreationTime>;
+
 /** An object that defines the blob inventory rule filter conditions. For 'Blob' definition.objectType all filter properties are applicable, 'blobTypes' is required and others are optional. For 'Container' definition.objectType only prefixMatch is applicable and is optional. */
 export interface BlobInventoryPolicyFilter {
   /** An array of strings with maximum 10 blob prefixes to be included in the inventory. */
@@ -228,14 +348,28 @@ export interface BlobInventoryPolicyFilter {
   /** This property is used to filter objects based on the object creation time */
   creationTime?: BlobInventoryCreationTime;
 }
+const BlobInventoryPolicyFilter = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<BlobInventoryPolicyFilter>;
+
 /** This is a required field, it specifies the format for the inventory files. */
 export type Format = "Csv" | "Parquet";
+const Format = S.String;
+
 /** This is a required field. This field is used to schedule an inventory formation. */
 export type Schedule = "Daily" | "Weekly";
+const Schedule = S.String;
+
 /** This is a required field. This field specifies the scope of the inventory created either at the blob or container level. */
 export type ObjectType = "Blob" | "Container";
+const ObjectType = S.String;
+
 /** This is a required field. This field specifies the fields and properties of the object to be included in the inventory. The Schema field value 'Name' is always required. The valid values for this field for the 'Blob' definition.objectType include 'Name, Creation-Time, Last-Modified, Content-Length, Content-MD5, BlobType, AccessTier, AccessTierChangeTime, AccessTierInferred, Tags, Expiry-Time, hdi_isfolder, Owner, Group, Permissions, Acl, Snapshot, VersionId, IsCurrentVersion, Metadata, LastAccessTime, Tags, Etag, ContentType, ContentEncoding, ContentLanguage, ContentCRC64, CacheControl, ContentDisposition, LeaseStatus, LeaseState, LeaseDuration, ServerEncrypted, Deleted, DeletionId, DeletedTime, RemainingRetentionDays, ImmutabilityPolicyUntilDate, ImmutabilityPolicyMode, LegalHold, CopyId, CopyStatus, CopySource, CopyProgress, CopyCompletionTime, CopyStatusDescription, CustomerProvidedKeySha256, RehydratePriority, ArchiveStatus, XmsBlobSequenceNumber, EncryptionScope, IncrementalCopy, TagCount'. For Blob object type schema field value 'DeletedTime' is applicable only for Hns enabled accounts. The valid values for 'Container' definition.objectType include 'Name, Last-Modified, Metadata, LeaseStatus, LeaseState, LeaseDuration, PublicAccess, HasImmutabilityPolicy, HasLegalHold, Etag, DefaultEncryptionScope, DenyEncryptionScopeOverride, ImmutableStorageWithVersioningEnabled, Deleted, Version, DeletedTime, RemainingRetentionDays'. Schema field values 'Expiry-Time, hdi_isfolder, Owner, Group, Permissions, Acl, DeletionId' are valid only for Hns enabled accounts.Schema field values 'Tags, TagCount' are only valid for Non-Hns accounts. */
 export type BlobInventoryPolicyDefinitionSchemaFieldsList = Array<string>;
+const BlobInventoryPolicyDefinitionSchemaFieldsList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<BlobInventoryPolicyDefinitionSchemaFieldsList>;
+
 /** An object that defines the blob inventory rule. */
 export interface BlobInventoryPolicyDefinition {
   /** An object that defines the filter set. */
@@ -249,6 +383,11 @@ export interface BlobInventoryPolicyDefinition {
   /** This is a required field. This field specifies the fields and properties of the object to be included in the inventory. The Schema field value 'Name' is always required. The valid values for this field for the 'Blob' definition.objectType include 'Name, Creation-Time, Last-Modified, Content-Length, Content-MD5, BlobType, AccessTier, AccessTierChangeTime, AccessTierInferred, Tags, Expiry-Time, hdi_isfolder, Owner, Group, Permissions, Acl, Snapshot, VersionId, IsCurrentVersion, Metadata, LastAccessTime, Tags, Etag, ContentType, ContentEncoding, ContentLanguage, ContentCRC64, CacheControl, ContentDisposition, LeaseStatus, LeaseState, LeaseDuration, ServerEncrypted, Deleted, DeletionId, DeletedTime, RemainingRetentionDays, ImmutabilityPolicyUntilDate, ImmutabilityPolicyMode, LegalHold, CopyId, CopyStatus, CopySource, CopyProgress, CopyCompletionTime, CopyStatusDescription, CustomerProvidedKeySha256, RehydratePriority, ArchiveStatus, XmsBlobSequenceNumber, EncryptionScope, IncrementalCopy, TagCount'. For Blob object type schema field value 'DeletedTime' is applicable only for Hns enabled accounts. The valid values for 'Container' definition.objectType include 'Name, Last-Modified, Metadata, LeaseStatus, LeaseState, LeaseDuration, PublicAccess, HasImmutabilityPolicy, HasLegalHold, Etag, DefaultEncryptionScope, DenyEncryptionScopeOverride, ImmutableStorageWithVersioningEnabled, Deleted, Version, DeletedTime, RemainingRetentionDays'. Schema field values 'Expiry-Time, hdi_isfolder, Owner, Group, Permissions, Acl, DeletionId' are valid only for Hns enabled accounts.Schema field values 'Tags, TagCount' are only valid for Non-Hns accounts. */
   schemaFields: BlobInventoryPolicyDefinitionSchemaFieldsList;
 }
+const BlobInventoryPolicyDefinition = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<BlobInventoryPolicyDefinition>;
+
 /** An object that wraps the blob inventory rule. Each rule is uniquely defined by name. */
 export interface BlobInventoryPolicyRule {
   /** Rule is enabled when set to true. */
@@ -260,8 +399,18 @@ export interface BlobInventoryPolicyRule {
   /** An object that defines the blob inventory policy rule. */
   definition: BlobInventoryPolicyDefinition;
 }
+const BlobInventoryPolicyRule = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<BlobInventoryPolicyRule>;
+
 /** The storage account blob inventory policy rules. The rule is applied when it is enabled. */
 export type BlobInventoryPolicySchemaInputRulesList = Array<BlobInventoryPolicyRule>;
+const BlobInventoryPolicySchemaInputRulesList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<BlobInventoryPolicySchemaInputRulesList>;
+
 /** The storage account blob inventory policy rules. */
 export interface BlobInventoryPolicySchemaInput {
   /** Policy is enabled if set to true. */
@@ -271,11 +420,21 @@ export interface BlobInventoryPolicySchemaInput {
   /** The storage account blob inventory policy rules. The rule is applied when it is enabled. */
   rules: BlobInventoryPolicySchemaInputRulesList;
 }
+const BlobInventoryPolicySchemaInput = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<BlobInventoryPolicySchemaInput>;
+
 /** The storage account blob inventory policy properties. */
 export interface BlobInventoryPolicyPropertiesInput {
   /** The storage account blob inventory policy object. It is composed of policy rules. */
   policy: BlobInventoryPolicySchemaInput;
 }
+const BlobInventoryPolicyPropertiesInput = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<BlobInventoryPolicyPropertiesInput>;
+
 export interface BlobInventoryPoliciesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -290,8 +449,16 @@ export interface BlobInventoryPoliciesCreateOrUpdateRequest {
   /** Returns the storage account blob inventory policy rules. */
   properties?: BlobInventoryPolicyPropertiesInput;
 }
+const BlobInventoryPoliciesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<BlobInventoryPoliciesCreateOrUpdateRequest>;
+
 /** The storage account blob inventory policy rules. The rule is applied when it is enabled. */
 export type BlobInventoryPolicySchemaRulesList = Array<BlobInventoryPolicyRule>;
+const BlobInventoryPolicySchemaRulesList =
+  BlobInventoryPolicySchemaInputRulesList as any as S.Schema<BlobInventoryPolicySchemaRulesList>;
+
 /** The storage account blob inventory policy rules. */
 export interface BlobInventoryPolicySchema {
   /** Policy is enabled if set to true. */
@@ -303,6 +470,11 @@ export interface BlobInventoryPolicySchema {
   /** The storage account blob inventory policy rules. The rule is applied when it is enabled. */
   rules: BlobInventoryPolicySchemaRulesList;
 }
+const BlobInventoryPolicySchema = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<BlobInventoryPolicySchema>;
+
 /** The storage account blob inventory policy properties. */
 export interface BlobInventoryPolicyProperties {
   /** Returns the last modified date and time of the blob inventory policy. */
@@ -310,6 +482,11 @@ export interface BlobInventoryPolicyProperties {
   /** The storage account blob inventory policy object. It is composed of policy rules. */
   policy: BlobInventoryPolicySchema;
 }
+const BlobInventoryPolicyProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<BlobInventoryPolicyProperties>;
+
 export interface BlobInventoryPoliciesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -322,8 +499,15 @@ export interface BlobInventoryPoliciesCreateOrUpdateResponse {
   /** Returns the storage account blob inventory policy rules. */
   properties?: BlobInventoryPolicyProperties;
 }
+const BlobInventoryPoliciesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<BlobInventoryPoliciesCreateOrUpdateResponse>;
+
 /** The type of the context cache resource to check for availability. */
 export type CheckContextCachNameAvailabilityRequestType = "Microsoft.Storage/contextCaches";
+const CheckContextCachNameAvailabilityRequestType = S.String;
+
 export interface CheckContextCachNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -332,10 +516,17 @@ export interface CheckContextCachNameAvailabilityRequest {
   /** The type of the context cache resource to check for availability. */
   type: CheckContextCachNameAvailabilityRequestType | (string & {});
 }
+const CheckContextCachNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CheckContextCachNameAvailabilityRequest>;
+
 /** The reason why the context cache name is not available. The Reason element is only returned if NameAvailable is false. */
 export type ContextCacheCheckNameAvailabilityFailureReason =
   | "AlreadyExists"
   | "ContextCacheNameInvalid";
+const ContextCacheCheckNameAvailabilityFailureReason = S.String;
+
 /** The result of the context cache name availability check. */
 export interface ContextCacheCheckNameAvailabilityResult {
   /** A boolean value that indicates whether the context cache name is available to use. If true, the name is available. If false, the name has already been taken or is invalid and cannot be used. */
@@ -345,8 +536,15 @@ export interface ContextCacheCheckNameAvailabilityResult {
   /** The error message providing additional information about the context cache name availability check failure. */
   message?: string;
 }
+const ContextCacheCheckNameAvailabilityResult = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ContextCacheCheckNameAvailabilityResult>;
+
 /** The type of resource, Microsoft.Storage/storageAccounts */
 export type CheckStorageAccountNameAvailabilityRequestType = "Microsoft.Storage/storageAccounts";
+const CheckStorageAccountNameAvailabilityRequestType = S.String;
+
 export interface CheckStorageAccountNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -355,8 +553,15 @@ export interface CheckStorageAccountNameAvailabilityRequest {
   /** The type of resource, Microsoft.Storage/storageAccounts */
   type: CheckStorageAccountNameAvailabilityRequestType | (string & {});
 }
+const CheckStorageAccountNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CheckStorageAccountNameAvailabilityRequest>;
+
 /** Gets the reason that a storage account name could not be used. The Reason element is only returned if NameAvailable is false. */
 export type Reason = "AccountNameInvalid" | "AlreadyExists";
+const Reason = S.String;
+
 /** The CheckNameAvailability operation response. */
 export interface CheckNameAvailabilityResult {
   /** Gets a boolean value that indicates whether the name is available for you to use. If true, the name is available. If false, the name has already been taken or is invalid and cannot be used. */
@@ -366,8 +571,16 @@ export interface CheckNameAvailabilityResult {
   /** Gets an error message explaining the Reason value in more detail. */
   message?: string;
 }
+const CheckNameAvailabilityResult = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CheckNameAvailabilityResult>;
+
 /** Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP. */
 export type ClearBlobContainerLegalHoldRequestTagsList = Array<string>;
+const ClearBlobContainerLegalHoldRequestTagsList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<ClearBlobContainerLegalHoldRequestTagsList>;
+
 export interface ClearBlobContainerLegalHoldRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -382,8 +595,16 @@ export interface ClearBlobContainerLegalHoldRequest {
   /** When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining legal hold protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. */
   allowProtectedAppendWritesAll?: boolean;
 }
+const ClearBlobContainerLegalHoldRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ClearBlobContainerLegalHoldRequest>;
+
 /** Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP. */
 export type LegalHoldTagsList = Array<string>;
+const LegalHoldTagsList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<LegalHoldTagsList>;
+
 /** The LegalHold property of a blob container. */
 export interface LegalHold {
   /** The hasLegalHold public property is set to true by SRP if there are at least one existing tag. The hasLegalHold public property is set to false by SRP if all existing legal hold tags are cleared out. There can be a maximum of 1000 blob containers with hasLegalHold=true for a given account. */
@@ -393,8 +614,12 @@ export interface LegalHold {
   /** When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining legal hold protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. */
   allowProtectedAppendWritesAll?: boolean;
 }
+const LegalHold = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<LegalHold>;
+
 /** The AI provider associated with a container. */
 export type AiProvider = "OpenAI";
+const AiProvider = S.String;
+
 /** Details of a container within a Context Cache. */
 export interface ContextCacheContainerPropertiesInput {
   /** Container description. */
@@ -406,6 +631,11 @@ export interface ContextCacheContainerPropertiesInput {
   /** The Time to Live (TTL) in days (1-30) for this container. Blobs in the container that have not been accessed within this number of days will be automatically deleted. If not specified at creation time, it defaults to 1 day. */
   timeToLive?: number;
 }
+const ContextCacheContainerPropertiesInput = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ContextCacheContainerPropertiesInput>;
+
 export interface ContextCacheContainersCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -418,6 +648,11 @@ export interface ContextCacheContainersCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties: ContextCacheContainerPropertiesInput;
 }
+const ContextCacheContainersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ContextCacheContainersCreateOrUpdateRequest>;
+
 /** The status of the current operation. */
 export type ContextCacheProvisioningState =
   | "Succeeded"
@@ -427,6 +662,8 @@ export type ContextCacheProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
+const ContextCacheProvisioningState = S.String;
+
 /** Details of a container within a Context Cache. */
 export interface ContextCacheContainerProperties {
   /** Container description. */
@@ -440,6 +677,11 @@ export interface ContextCacheContainerProperties {
   /** The status of the last operation. */
   provisioningState?: ContextCacheProvisioningState;
 }
+const ContextCacheContainerProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ContextCacheContainerProperties>;
+
 export interface ContextCacheContainersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -452,17 +694,33 @@ export interface ContextCacheContainersCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties: ContextCacheContainerProperties;
 }
+const ContextCacheContainersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ContextCacheContainersCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type ContextCachesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const ContextCachesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ContextCachesCreateOrUpdateRequestTagsMap>;
+
 /** The kind of context cache account, determining storage topology. */
 export type ContextCacheAccountKind = "Regional" | "DataZone" | "Global";
+const ContextCacheAccountKind = S.String;
+
 /** (Optional) Discouraged to include in resource definition. Only needed where it is possible to disable platform (AKA infrastructure) encryption. Azure SQL TDE is an example of this. Values are enabled and disabled. */
 export type AzureResourceManagerCommonTypesInfrastructureEncryption = "enabled" | "disabled";
+const AzureResourceManagerCommonTypesInfrastructureEncryption = S.String;
+
 /** The type of identity to use. */
 export type AzureResourceManagerCommonTypesKeyEncryptionKeyIdentityType =
   | "systemAssignedIdentity"
   | "userAssignedIdentity"
   | "delegatedResourceIdentity";
+const AzureResourceManagerCommonTypesKeyEncryptionKeyIdentityType = S.String;
+
 /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
 export interface AzureResourceManagerCommonTypesKeyEncryptionKeyIdentity {
   /** The type of identity to use. Values can be systemAssignedIdentity, userAssignedIdentity, or delegatedResourceIdentity. */
@@ -474,6 +732,11 @@ export interface AzureResourceManagerCommonTypesKeyEncryptionKeyIdentity {
   /** delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only. */
   delegatedIdentityClientId?: string;
 }
+const AzureResourceManagerCommonTypesKeyEncryptionKeyIdentity = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<AzureResourceManagerCommonTypesKeyEncryptionKeyIdentity>;
+
 /** Customer-managed key encryption properties for the resource. */
 export interface AzureResourceManagerCommonTypesCustomerManagedKeyEncryption {
   /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
@@ -481,6 +744,11 @@ export interface AzureResourceManagerCommonTypesCustomerManagedKeyEncryption {
   /** key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek. */
   keyEncryptionKeyUrl?: string;
 }
+const AzureResourceManagerCommonTypesCustomerManagedKeyEncryption = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<AzureResourceManagerCommonTypesCustomerManagedKeyEncryption>;
+
 /** (Optional) Discouraged to include in resource definition. Only needed where it is possible to disable platform (AKA infrastructure) encryption. Azure SQL TDE is an example of this. Values are enabled and disabled. */
 export interface AzureResourceManagerCommonTypesEncryption {
   /** Values are enabled and disabled. */
@@ -490,6 +758,11 @@ export interface AzureResourceManagerCommonTypesEncryption {
   /** All Customer-managed key encryption properties for the resource. */
   customerManagedKeyEncryption?: AzureResourceManagerCommonTypesCustomerManagedKeyEncryption;
 }
+const AzureResourceManagerCommonTypesEncryption = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<AzureResourceManagerCommonTypesEncryption>;
+
 /** Details of the Context Cache. */
 export interface ContextCachePropertiesInput {
   /** The kind of account determining storage topology. */
@@ -499,23 +772,45 @@ export interface ContextCachePropertiesInput {
   /** Encryption settings for the account. */
   encryption?: AzureResourceManagerCommonTypesEncryption;
 }
+const ContextCachePropertiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ContextCachePropertiesInput>;
+
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
+const ManagedServiceIdentityType = S.String;
+
 /** UserAssignedIdentity for the resource. */
 export interface UserAssignedIdentityInput {}
+const UserAssignedIdentityInput = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<UserAssignedIdentityInput>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
+const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ContextCachesCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
+const ContextCachesCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ContextCachesCreateOrUpdateRequestIdentity>;
+
 export interface ContextCachesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -532,8 +827,16 @@ export interface ContextCachesCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ContextCachesCreateOrUpdateRequestIdentity;
 }
+const ContextCachesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ContextCachesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type ContextCachesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const ContextCachesCreateOrUpdateResponseTagsMap =
+  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<ContextCachesCreateOrUpdateResponseTagsMap>;
+
 /** Details of the Context Cache. */
 export interface ContextCacheProperties {
   /** The kind of account determining storage topology. */
@@ -545,6 +848,11 @@ export interface ContextCacheProperties {
   /** Encryption settings for the account. */
   encryption?: AzureResourceManagerCommonTypesEncryption;
 }
+const ContextCacheProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ContextCacheProperties>;
+
 /** UserAssignedIdentity for the resource. */
 export interface UserAssignedIdentity {
   /** The principal ID of the identity. */
@@ -552,8 +860,15 @@ export interface UserAssignedIdentity {
   /** The client ID of the identity. */
   clientId?: string;
 }
+const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<UserAssignedIdentity>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | null | undefined };
+const UserAssignedIdentities = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<UserAssignedIdentities>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ContextCachesCreateOrUpdateResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -563,6 +878,11 @@ export interface ContextCachesCreateOrUpdateResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
+const ContextCachesCreateOrUpdateResponseIdentity = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ContextCachesCreateOrUpdateResponseIdentity>;
+
 export interface ContextCachesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -581,12 +901,22 @@ export interface ContextCachesCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ContextCachesCreateOrUpdateResponseIdentity;
 }
+const ContextCachesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ContextCachesCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type CreateBlobAccessPointConfigurationRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const CreateBlobAccessPointConfigurationRequestTagsMap =
+  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<CreateBlobAccessPointConfigurationRequestTagsMap>;
+
 /** The state of a Blob Access Point configuration. */
 export type BlobAccessPointConfigurationState = "Active" | "Inactive";
+const BlobAccessPointConfigurationState = S.String;
+
 /** The type of the non-Azure S3-compatible data source exposed through the Blob Access Point. */
 export type BlobAccessPointSourceType =
   | "NetAppOntap"
@@ -596,11 +926,18 @@ export type BlobAccessPointSourceType =
   | "Commvault"
   | "Nasuni"
   | "S3Compatible";
+const BlobAccessPointSourceType = S.String;
+
 /** Information about the data source exposed through a Blob Access Point. */
 export interface BlobAccessPointSourceProperties {
   /** The source type. This value determines the remaining shape of the source object. */
   sourceType: BlobAccessPointSourceType | (string & {});
 }
+const BlobAccessPointSourceProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<BlobAccessPointSourceProperties>;
+
 /** Details of a Blob Access Point configuration. */
 export interface BlobAccessPointConfigurationPropertiesInput {
   /** The configuration state. A configuration is created in the Active state when this value is not specified. */
@@ -610,6 +947,11 @@ export interface BlobAccessPointConfigurationPropertiesInput {
   /** Information about the backing data source. */
   source: BlobAccessPointSourceProperties;
 }
+const BlobAccessPointConfigurationPropertiesInput = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<BlobAccessPointConfigurationPropertiesInput>;
+
 export interface CreateBlobAccessPointConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -626,14 +968,26 @@ export interface CreateBlobAccessPointConfigurationRequest {
   /** The resource-specific properties for this resource. */
   properties: BlobAccessPointConfigurationPropertiesInput;
 }
+const CreateBlobAccessPointConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreateBlobAccessPointConfigurationRequest>;
+
 /** Resource tags. */
 export type CreateBlobAccessPointConfigurationResponseTagsMap = {
   [key: string]: string | undefined;
 };
+const CreateBlobAccessPointConfigurationResponseTagsMap =
+  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<CreateBlobAccessPointConfigurationResponseTagsMap>;
+
 /** The status of the most recent connection test. */
 export type BlobAccessPointConnectionTestStatus = "Succeeded" | "Failed";
+const BlobAccessPointConnectionTestStatus = S.String;
+
 /** The provisioning state of a resource type. */
 export type AzureResourceManagerResourceProvisioningState = "Succeeded" | "Failed" | "Canceled";
+const AzureResourceManagerResourceProvisioningState = S.String;
+
 /** Details of a Blob Access Point configuration. */
 export interface BlobAccessPointConfigurationProperties {
   /** The system-generated unique identifier of the configuration. */
@@ -653,6 +1007,11 @@ export interface BlobAccessPointConfigurationProperties {
   /** The status of the last operation. */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
+const BlobAccessPointConfigurationProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<BlobAccessPointConfigurationProperties>;
+
 export interface CreateBlobAccessPointConfigurationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -669,15 +1028,30 @@ export interface CreateBlobAccessPointConfigurationResponse {
   /** The resource-specific properties for this resource. */
   properties: BlobAccessPointConfigurationProperties;
 }
+const CreateBlobAccessPointConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<CreateBlobAccessPointConfigurationResponse>;
+
 /** Specifies whether data in the container may be accessed publicly and the level of access. */
 export type PublicAccess = "Container" | "Blob" | "None";
+const PublicAccess = S.String;
+
 /** A name-value pair to associate with the container as metadata. */
 export type ContainerPropertiesInputMetadataMap = { [key: string]: string | undefined };
+const ContainerPropertiesInputMetadataMap =
+  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<ContainerPropertiesInputMetadataMap>;
+
 /** Object level immutability properties of the container. */
 export interface ImmutableStorageWithVersioningInput {
   /** This is an immutable property, when set to true it enables object level immutability at the container level. */
   enabled?: boolean;
 }
+const ImmutableStorageWithVersioningInput = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ImmutableStorageWithVersioningInput>;
+
 /** Blob Access Point configuration associated with a blob container. */
 export interface BlobAccessPointConfigurationConnection {
   /** Name of the Blob Access Point Configuration to connect to. */
@@ -685,6 +1059,11 @@ export interface BlobAccessPointConfigurationConnection {
   /** System-generated unique identifier of the Blob Access Point Configuration to connect to. If not provided on create, the service looks up and persists the current unique id. */
   blobAccessPointConfigurationUniqueId?: string;
 }
+const BlobAccessPointConfigurationConnection = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<BlobAccessPointConfigurationConnection>;
+
 /** The properties of a container. */
 export interface ContainerPropertiesInput {
   /** Default the container to use specified encryption scope for all writes. */
@@ -704,6 +1083,11 @@ export interface ContainerPropertiesInput {
   /** Configuration that attaches this container to a Blob Access Point. If set, the container is a read-only virtual container whose read/list requests are forwarded to the connected backing data store. Cannot be changed, removed, or added after container creation. */
   blobAccessPointConfiguration?: BlobAccessPointConfigurationConnection;
 }
+const ContainerPropertiesInput = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ContainerPropertiesInput>;
+
 export interface CreateBlobContainerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -716,16 +1100,32 @@ export interface CreateBlobContainerRequest {
   /** Properties of the blob container. */
   properties?: ContainerPropertiesInput;
 }
+const CreateBlobContainerRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<CreateBlobContainerRequest>;
+
 /** The lease status of the container. */
 export type LeaseStatus = "Locked" | "Unlocked";
+const LeaseStatus = S.String;
+
 /** Lease state of the container. */
 export type LeaseState = "Available" | "Leased" | "Expired" | "Breaking" | "Broken";
+const LeaseState = S.String;
+
 /** Specifies whether the lease on a container is of infinite or fixed duration, only when the container is leased. */
 export type LeaseDuration = "Infinite" | "Fixed";
+const LeaseDuration = S.String;
+
 /** A name-value pair to associate with the container as metadata. */
 export type ContainerPropertiesMetadataMap = { [key: string]: string | undefined };
+const ContainerPropertiesMetadataMap =
+  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<ContainerPropertiesMetadataMap>;
+
 /** The ImmutabilityPolicy update type of a blob container, possible values include: put, lock and extend. */
 export type ImmutabilityPolicyUpdateType = "put" | "lock" | "extend";
+const ImmutabilityPolicyUpdateType = S.String;
+
 /** An update history of the ImmutabilityPolicy of a blob container. */
 export interface UpdateHistoryProperty {
   /** The ImmutabilityPolicy update type of a blob container, possible values include: put, lock and extend. */
@@ -745,8 +1145,18 @@ export interface UpdateHistoryProperty {
   /** This property can only be changed for unlocked time-based retention policies. When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API. The 'allowProtectedAppendWrites' and 'allowProtectedAppendWritesAll' properties are mutually exclusive. */
   allowProtectedAppendWritesAll?: boolean;
 }
+const UpdateHistoryProperty = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<UpdateHistoryProperty>;
+
 /** The ImmutabilityPolicy update history of the blob container. */
 export type ImmutabilityPolicyPropertiesUpdateHistoryList = Array<UpdateHistoryProperty>;
+const ImmutabilityPolicyPropertiesUpdateHistoryList = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ImmutabilityPolicyPropertiesUpdateHistoryList>;
+
 /** The properties of an ImmutabilityPolicy of a blob container. */
 export interface ImmutabilityPolicyProperties {
   /** The properties of an ImmutabilityPolicy of a blob container. */
@@ -756,6 +1166,11 @@ export interface ImmutabilityPolicyProperties {
   /** The ImmutabilityPolicy update history of the blob container. */
   updateHistory?: ImmutabilityPolicyPropertiesUpdateHistoryList;
 }
+const ImmutabilityPolicyProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ImmutabilityPolicyProperties>;
+
 /** A tag of the LegalHold of a blob container. */
 export interface TagProperty {
   /** The tag value. */
@@ -769,8 +1184,15 @@ export interface TagProperty {
   /** Returns the User Principal Name of the user who added the tag. */
   upn?: string;
 }
+const TagProperty = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<TagProperty>;
+
 /** The list of LegalHold tags of a blob container. */
 export type LegalHoldPropertiesTagsList = Array<TagProperty>;
+const LegalHoldPropertiesTagsList = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<LegalHoldPropertiesTagsList>;
+
 /** Protected append writes history setting for the blob container with Legal holds. */
 export interface ProtectedAppendWritesHistory {
   /** When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining legal hold protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. */
@@ -778,6 +1200,11 @@ export interface ProtectedAppendWritesHistory {
   /** Returns the date and time the tag was added. */
   timestamp?: string;
 }
+const ProtectedAppendWritesHistory = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ProtectedAppendWritesHistory>;
+
 /** The LegalHold property of a blob container. */
 export interface LegalHoldProperties {
   /** The hasLegalHold public property is set to true by SRP if there are at least one existing tag. The hasLegalHold public property is set to false by SRP if all existing legal hold tags are cleared out. There can be a maximum of 1000 blob containers with hasLegalHold=true for a given account. */
@@ -787,8 +1214,12 @@ export interface LegalHoldProperties {
   /** Protected append blob writes history. */
   protectedAppendWritesHistory?: ProtectedAppendWritesHistory;
 }
+const LegalHoldProperties = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<LegalHoldProperties>;
+
 /** This property denotes the container level immutability to object level immutability migration state. */
 export type MigrationState = "InProgress" | "Completed";
+const MigrationState = S.String;
+
 /** Object level immutability properties of the container. */
 export interface ImmutableStorageWithVersioning {
   /** This is an immutable property, when set to true it enables object level immutability at the container level. */
@@ -798,6 +1229,11 @@ export interface ImmutableStorageWithVersioning {
   /** This property denotes the container level immutability to object level immutability migration state. */
   migrationState?: MigrationState;
 }
+const ImmutableStorageWithVersioning = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ImmutableStorageWithVersioning>;
+
 /** The properties of a container. */
 export interface ContainerProperties {
   /** The version of the deleted blob container. */
@@ -841,6 +1277,8 @@ export interface ContainerProperties {
   /** Configuration that attaches this container to a Blob Access Point. If set, the container is a read-only virtual container whose read/list requests are forwarded to the connected backing data store. Cannot be changed, removed, or added after container creation. */
   blobAccessPointConfiguration?: BlobAccessPointConfigurationConnection;
 }
+const ContainerProperties = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ContainerProperties>;
+
 export interface CreateBlobContainerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -855,14 +1293,28 @@ export interface CreateBlobContainerResponse {
   /** Resource Etag. */
   etag?: string;
 }
+const CreateBlobContainerResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<CreateBlobContainerResponse>;
+
 /** Resource tags. */
 export type CreateConnectorRequestTagsMap = { [key: string]: string | undefined };
+const CreateConnectorRequestTagsMap =
+  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<CreateConnectorRequestTagsMap>;
+
 /** State - Active or Inactive. Whether or not the Storage Connector should start as active (default: Active) (While set to false on the Storage Connector, all data plane requests using this Storage Connector fail, and this Storage Connector is not billed if it would be otherwise. */
 export type StorageConnectorPropertiesInputState = "Active" | "Inactive";
+const StorageConnectorPropertiesInputState = S.String;
+
 /** The type of the backing data source for storage connector */
 export type StorageConnectorDataSourceType = "Azure_DataShare";
+const StorageConnectorDataSourceType = S.String;
+
 /** The type of the backing data source for storage connector */
 export type StorageConnectorSourceType = "DataShare";
+const StorageConnectorSourceType = S.String;
+
 /** The connection properties of the backing data source */
 export interface StorageConnectorConnection {
   /** Type of the connection, e.g. `DataShare`. Not mutable once the Storage Connector is created. */
@@ -870,6 +1322,11 @@ export interface StorageConnectorConnection {
   /** The URI of the backing DataShare, in the format `azds://<region>:<DataShareName>:<DataShareIdentifier>`. */
   dataShareUri?: string;
 }
+const StorageConnectorConnection = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<StorageConnectorConnection>;
+
 /** The authentication properties of the backing data source */
 export interface StorageConnectorAuthProperties {
   /** Type of the authentication properties, e.g. `ManagedIdentity`. */
@@ -877,6 +1334,11 @@ export interface StorageConnectorAuthProperties {
   /** ARM resource ID of the managed identity used to authenticate to the backing data source. */
   identityResourceId?: string;
 }
+const StorageConnectorAuthProperties = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<StorageConnectorAuthProperties>;
+
 /** The storage connector backing data source information */
 export interface StorageConnectorSource {
   /** Type of the Storage Connector. Not mutable once the Storage Connector is created." */
@@ -886,6 +1348,11 @@ export interface StorageConnectorSource {
   /** Details for how to authenticate to the backing data store. */
   authProperties?: StorageConnectorAuthProperties;
 }
+const StorageConnectorSource = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<StorageConnectorSource>;
+
 /** The storage connector properties */
 export interface StorageConnectorPropertiesInput {
   /** State - Active or Inactive. Whether or not the Storage Connector should start as active (default: Active) (While set to false on the Storage Connector, all data plane requests using this Storage Connector fail, and this Storage Connector is not billed if it would be otherwise. */
@@ -899,6 +1366,11 @@ export interface StorageConnectorPropertiesInput {
   /** Information about how to communicate with and authenticate to the backing data store. */
   source: StorageConnectorSource;
 }
+const StorageConnectorPropertiesInput = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<StorageConnectorPropertiesInput>;
+
 export interface CreateConnectorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -915,10 +1387,20 @@ export interface CreateConnectorRequest {
   /** The properties of the Storage Connector. */
   properties: StorageConnectorPropertiesInput;
 }
+const CreateConnectorRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<CreateConnectorRequest>;
+
 /** Resource tags. */
 export type CreateConnectorResponseTagsMap = { [key: string]: string | undefined };
+const CreateConnectorResponseTagsMap =
+  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<CreateConnectorResponseTagsMap>;
+
 /** State - Active or Inactive. Whether or not the Storage Connector should start as active (default: Active) (While set to false on the Storage Connector, all data plane requests using this Storage Connector fail, and this Storage Connector is not billed if it would be otherwise. */
 export type StorageConnectorPropertiesState = "Active" | "Inactive";
+const StorageConnectorPropertiesState = S.String;
+
 /** Provisioning state of the resource at the time the operation was called. */
 export type NativeDataSharingProvisioningState =
   | "Accepted"
@@ -927,6 +1409,8 @@ export type NativeDataSharingProvisioningState =
   | "Deleting"
   | "Canceled"
   | "Failed";
+const NativeDataSharingProvisioningState = S.String;
+
 /** The storage connector properties */
 export interface StorageConnectorProperties {
   /** System-generated GUID identifier for the Storage Connector. Not a valid input parameter when creating. */
@@ -946,6 +1430,11 @@ export interface StorageConnectorProperties {
   /** Represents the provisioning state of the storage connector. */
   provisioningState?: NativeDataSharingProvisioningState;
 }
+const StorageConnectorProperties = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<StorageConnectorProperties>;
+
 export interface CreateConnectorResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -962,10 +1451,20 @@ export interface CreateConnectorResponse {
   /** The properties of the Storage Connector. */
   properties: StorageConnectorProperties;
 }
+const CreateConnectorResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<CreateConnectorResponse>;
+
 /** Resource tags. */
 export type CreateDataShareRequestTagsMap = { [key: string]: string | undefined };
+const CreateDataShareRequestTagsMap =
+  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<CreateDataShareRequestTagsMap>;
+
 /** The permissions supported in access policies for storage data share */
 export type StorageDataShareAccessPolicyPermission = "None" | "Read";
+const StorageDataShareAccessPolicyPermission = S.String;
+
 /** Policy that specify the permission allowed to a managed identity */
 export interface StorageDataShareAccessPolicy {
   /** The AAD principal ID of the Managed Identity. */
@@ -975,8 +1474,18 @@ export interface StorageDataShareAccessPolicy {
   /** Allowed permissions. Currently, only supported value is Read. */
   permission: StorageDataShareAccessPolicyPermission | (string & {});
 }
+const StorageDataShareAccessPolicy = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<StorageDataShareAccessPolicy>;
+
 /** List of access policies that specify the permission allowed to a managed identity. For Create - This property is required and cannot be null. If no access policies are provided at creation time, specify an empty array. For Update - This property is optional. If set to null or not passed, the existing access policies are left unchanged. If provided with a non-null value, the existing access policies are replaced with the specified list. */
 export type StorageDataSharePropertiesInputAccessPoliciesList = Array<StorageDataShareAccessPolicy>;
+const StorageDataSharePropertiesInputAccessPoliciesList = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<StorageDataSharePropertiesInputAccessPoliciesList>;
+
 /** Properties of a shared resource. */
 export interface StorageDataShareAsset {
   /** Source Path to be shared. It can be a folder or a blob. The asset path should contain container name followed by path within the container, e.g. /container1/logs/external. */
@@ -984,8 +1493,18 @@ export interface StorageDataShareAsset {
   /** Consumer visible name of the original path. */
   displayName: string;
 }
+const StorageDataShareAsset = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<StorageDataShareAsset>;
+
 /** List of assets that specify the properties of the shared resources. For Create - This property is required and cannot be null. If no assets are provided at creation time, specify an empty array. For Update - This property is optional. If set to null or not passed, the existing assets are left unchanged. If provided with a non-null value, the existing assets are replaced with the specified list. */
 export type StorageDataSharePropertiesInputAssetsList = Array<StorageDataShareAsset>;
+const StorageDataSharePropertiesInputAssetsList = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<StorageDataSharePropertiesInputAssetsList>;
+
 /** The storage datashare properties */
 export interface StorageDataSharePropertiesInput {
   /** Arbitrary description of this Data Share. Max 250 characters. */
@@ -995,6 +1514,11 @@ export interface StorageDataSharePropertiesInput {
   /** List of assets that specify the properties of the shared resources. For Create - This property is required and cannot be null. If no assets are provided at creation time, specify an empty array. For Update - This property is optional. If set to null or not passed, the existing assets are left unchanged. If provided with a non-null value, the existing assets are replaced with the specified list. */
   assets: StorageDataSharePropertiesInputAssetsList;
 }
+const StorageDataSharePropertiesInput = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<StorageDataSharePropertiesInput>;
+
 export interface CreateDataShareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1011,12 +1535,26 @@ export interface CreateDataShareRequest {
   /** The properties of the Storage DataShare. */
   properties: StorageDataSharePropertiesInput;
 }
+const CreateDataShareRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<CreateDataShareRequest>;
+
 /** Resource tags. */
 export type CreateDataShareResponseTagsMap = { [key: string]: string | undefined };
+const CreateDataShareResponseTagsMap =
+  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<CreateDataShareResponseTagsMap>;
+
 /** List of access policies that specify the permission allowed to a managed identity. For Create - This property is required and cannot be null. If no access policies are provided at creation time, specify an empty array. For Update - This property is optional. If set to null or not passed, the existing access policies are left unchanged. If provided with a non-null value, the existing access policies are replaced with the specified list. */
 export type StorageDataSharePropertiesAccessPoliciesList = Array<StorageDataShareAccessPolicy>;
+const StorageDataSharePropertiesAccessPoliciesList =
+  StorageDataSharePropertiesInputAccessPoliciesList as any as S.Schema<StorageDataSharePropertiesAccessPoliciesList>;
+
 /** List of assets that specify the properties of the shared resources. For Create - This property is required and cannot be null. If no assets are provided at creation time, specify an empty array. For Update - This property is optional. If set to null or not passed, the existing assets are left unchanged. If provided with a non-null value, the existing assets are replaced with the specified list. */
 export type StorageDataSharePropertiesAssetsList = Array<StorageDataShareAsset>;
+const StorageDataSharePropertiesAssetsList =
+  StorageDataSharePropertiesInputAssetsList as any as S.Schema<StorageDataSharePropertiesAssetsList>;
+
 /** The storage datashare properties */
 export interface StorageDataShareProperties {
   /** System-generated GUID identifier for the Storage DataShare. Not a valid input parameter when creating. */
@@ -1032,6 +1570,11 @@ export interface StorageDataShareProperties {
   /** Represents the provisioning state of the storage datashare. */
   provisioningState?: NativeDataSharingProvisioningState;
 }
+const StorageDataShareProperties = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<StorageDataShareProperties>;
+
 export interface CreateDataShareResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1048,14 +1591,28 @@ export interface CreateDataShareResponse {
   /** The properties of the Storage DataShare. */
   properties: StorageDataShareProperties;
 }
+const CreateDataShareResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<CreateDataShareResponse>;
+
 /** A name-value pair to associate with the share as metadata. */
 export type FileSharePropertiesInputMetadataMap = { [key: string]: string | undefined };
+const FileSharePropertiesInputMetadataMap =
+  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<FileSharePropertiesInputMetadataMap>;
+
 /** The authentication protocol that is used for the file share. Can only be specified when creating a share. */
 export type EnabledProtocols = "SMB" | "NFS";
+const EnabledProtocols = S.String;
+
 /** The property is for NFS share only. The default is NoRootSquash. */
 export type RootSquashType = "NoRootSquash" | "RootSquash" | "AllSquash";
+const RootSquashType = S.String;
+
 /** Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. */
 export type ShareAccessTier = "TransactionOptimized" | "Hot" | "Cool" | "Premium";
+const ShareAccessTier = S.String;
+
 export interface AccessPolicy {
   /** Start time of the access policy */
   startTime?: string;
@@ -1064,14 +1621,23 @@ export interface AccessPolicy {
   /** List of abbreviated permissions. */
   permission?: string;
 }
+const AccessPolicy = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<AccessPolicy>;
+
 export interface SignedIdentifier {
   /** An unique identifier of the stored access policy. */
   id?: string;
   /** Access policy */
   accessPolicy?: AccessPolicy;
 }
+const SignedIdentifier = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<SignedIdentifier>;
+
 /** List of stored access policies specified on the share. */
 export type FileSharePropertiesInputSignedIdentifiersList = Array<SignedIdentifier>;
+const FileSharePropertiesInputSignedIdentifiersList = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<FileSharePropertiesInputSignedIdentifiersList>;
+
 /** File Share Paid Bursting properties. */
 export interface FileSharePropertiesFileSharePaidBursting {
   /** Indicates whether paid bursting is enabled for the share. This property is only for file shares created under Files Provisioned v1 SSD account type. */
@@ -1081,6 +1647,11 @@ export interface FileSharePropertiesFileSharePaidBursting {
   /** The maximum paid bursting bandwidth for the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 10340 which is the maximum allowed bandwidth for a share. */
   paidBurstingMaxBandwidthMibps?: number;
 }
+const FileSharePropertiesFileSharePaidBursting = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<FileSharePropertiesFileSharePaidBursting>;
+
 /** The properties of the file share. */
 export interface FileSharePropertiesInput {
   /** A name-value pair to associate with the share as metadata. */
@@ -1102,6 +1673,11 @@ export interface FileSharePropertiesInput {
   /** File Share Paid Bursting properties. */
   fileSharePaidBursting?: FileSharePropertiesFileSharePaidBursting;
 }
+const FileSharePropertiesInput = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<FileSharePropertiesInput>;
+
 export interface CreateFileShareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1116,10 +1692,21 @@ export interface CreateFileShareRequest {
   /** Properties of the file share. */
   properties?: FileSharePropertiesInput;
 }
+const CreateFileShareRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<CreateFileShareRequest>;
+
 /** A name-value pair to associate with the share as metadata. */
 export type FileSharePropertiesMetadataMap = { [key: string]: string | undefined };
+const FileSharePropertiesMetadataMap =
+  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<FileSharePropertiesMetadataMap>;
+
 /** List of stored access policies specified on the share. */
 export type FileSharePropertiesSignedIdentifiersList = Array<SignedIdentifier>;
+const FileSharePropertiesSignedIdentifiersList =
+  FileSharePropertiesInputSignedIdentifiersList as any as S.Schema<FileSharePropertiesSignedIdentifiersList>;
+
 /** The properties of the file share. */
 export interface FileShareProperties {
   /** Returns the date and time the share was last modified. */
@@ -1175,6 +1762,8 @@ export interface FileShareProperties {
   /** File Share Paid Bursting properties. */
   fileSharePaidBursting?: FileSharePropertiesFileSharePaidBursting;
 }
+const FileShareProperties = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<FileShareProperties>;
+
 export interface CreateFileShareResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1189,12 +1778,25 @@ export interface CreateFileShareResponse {
   /** Resource Etag. */
   etag?: string;
 }
+const CreateFileShareResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<CreateFileShareResponse>;
+
 /** A name-value pair that represents queue metadata. */
 export type QueuePropertiesInputMetadataMap = { [key: string]: string | undefined };
+const QueuePropertiesInputMetadataMap =
+  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<QueuePropertiesInputMetadataMap>;
+
 export interface QueuePropertiesInput {
   /** A name-value pair that represents queue metadata. */
   metadata?: QueuePropertiesInputMetadataMap;
 }
+const QueuePropertiesInput = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<QueuePropertiesInput>;
+
 export interface CreateQueueRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1207,14 +1809,21 @@ export interface CreateQueueRequest {
   /** Queue resource properties. */
   properties?: QueuePropertiesInput;
 }
+const CreateQueueRequest = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<CreateQueueRequest>;
+
 /** A name-value pair that represents queue metadata. */
 export type QueuePropertiesMetadataMap = { [key: string]: string | undefined };
+const QueuePropertiesMetadataMap =
+  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<QueuePropertiesMetadataMap>;
+
 export interface QueueProperties {
   /** A name-value pair that represents queue metadata. */
   metadata?: QueuePropertiesMetadataMap;
   /** Integer indicating an approximate number of messages in the queue. This number is not lower than the actual number of messages in the queue, but could be higher. */
   approximateMessageCount?: number;
 }
+const QueueProperties = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<QueueProperties>;
+
 export interface CreateQueueResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1227,6 +1836,8 @@ export interface CreateQueueResponse {
   /** Queue resource properties. */
   properties?: QueueProperties;
 }
+const CreateQueueResponse = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<CreateQueueResponse>;
+
 /** The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType. */
 export type SkuName =
   | "Standard_LRS"
@@ -1243,8 +1854,12 @@ export type SkuName =
   | "StandardV2_GZRS"
   | "PremiumV2_LRS"
   | "PremiumV2_ZRS";
+const SkuName = S.String;
+
 /** The SKU tier. This is based on the SKU name. */
 export type SkuTier = "Standard" | "Premium";
+const SkuTier = S.String;
+
 /** The SKU of the storage account. */
 export interface Sku {
   /** The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType. */
@@ -1252,10 +1867,16 @@ export interface Sku {
   /** The SKU tier. This is based on the SKU name. */
   tier?: SkuTier | (string & {});
 }
+const Sku = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<Sku>;
+
 /** Indicates the type of storage account. */
 export type Kind = "Storage" | "StorageV2" | "BlobStorage" | "FileStorage" | "BlockBlobStorage";
+const Kind = S.String;
+
 /** The type of extendedLocation. */
 export type ExtendedLocationTypes = "EdgeZone";
+const ExtendedLocationTypes = S.String;
+
 /** The complex type of the extended location. */
 export interface ExtendedLocation {
   /** The name of the extended location. */
@@ -1263,27 +1884,46 @@ export interface ExtendedLocation {
   /** The type of the extended location. */
   type?: ExtendedLocationTypes | (string & {});
 }
+const ExtendedLocation = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<ExtendedLocation>;
+
 /** Optional. Gets or sets the pinned logical availability zone for the storage account. */
 export type CreateStorageAccountRequestZonesList = Array<string>;
+const CreateStorageAccountRequestZonesList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<CreateStorageAccountRequestZonesList>;
+
 /** The availability zone pinning policy for the storage account. */
 export type ZonePlacementPolicy = "Any" | "None";
+const ZonePlacementPolicy = S.String;
+
 /** The complex type of the zonal placement details. */
 export interface Placement {
   /** The availability zone pinning policy for the storage account. */
   zonePlacementPolicy?: ZonePlacementPolicy | (string & {});
 }
+const Placement = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<Placement>;
+
 /** Gets or sets a list of key value pairs that describe the resource. These tags can be used for viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key with a length no greater than 128 characters and a value with a length no greater than 256 characters. */
 export type CreateStorageAccountRequestTagsMap = { [key: string]: string | undefined };
+const CreateStorageAccountRequestTagsMap =
+  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<CreateStorageAccountRequestTagsMap>;
+
 /** The identity type. */
 export type IdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
+const IdentityType = S.String;
+
 /** Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this storage account. The key is the ARM resource identifier of the identity. Only 1 User Assigned identity is permitted here. */
 export type IdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
+const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap>;
+
 /** Identity for the resource. */
 export interface IdentityInput {
   /** The identity type. */
@@ -1291,14 +1931,24 @@ export interface IdentityInput {
   /** Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this storage account. The key is the ARM resource identifier of the identity. Only 1 User Assigned identity is permitted here. */
   userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
 }
+const IdentityInput = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<IdentityInput>;
+
 /** Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet. */
 export type AllowedCopyScope = "PrivateLink" | "AAD" | "All";
+const AllowedCopyScope = S.String;
+
 /** Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account. Value is optional but if passed in, must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'. */
 export type PublicNetworkAccess = "Enabled" | "Disabled" | "SecuredByPerimeter";
+const PublicNetworkAccess = S.String;
+
 /** The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period. */
 export type SasPolicyExpirationAction = "Log" | "Block";
+const SasPolicyExpirationAction = S.String;
+
 /** The action to perform when a user delegation SAS (shared access signature) policy requirement is violated. */
 export type PolicyViolationAction = "None" | "Log" | "Block";
+const PolicyViolationAction = S.String;
+
 /** SasPolicy assigned to the storage account. */
 export interface SasPolicy {
   /** The SAS expiration period, DD.HH:MM:SS. */
@@ -1310,11 +1960,15 @@ export interface SasPolicy {
   /** The action to perform when a user delegation SAS (shared access signature) token is not bound to a user as required by requireUserBoundUserDelegationSas. */
   requireUserBoundUserDelegationSasAction?: PolicyViolationAction | (string & {});
 }
+const SasPolicy = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<SasPolicy>;
+
 /** KeyPolicy assigned to the storage account. */
 export interface KeyPolicy {
   /** The key expiration period in days. */
   keyExpirationPeriodInDays: number;
 }
+const KeyPolicy = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<KeyPolicy>;
+
 /** The custom domain assigned to this storage account. This can be set via Update. */
 export interface CustomDomain {
   /** Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source. */
@@ -1322,8 +1976,12 @@ export interface CustomDomain {
   /** Indicates whether indirect CName validation is enabled. Default value is false. This should only be set on updates. */
   useSubDomainName?: boolean;
 }
+const CustomDomain = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<CustomDomain>;
+
 /** Encryption key type to be used for the encryption service. 'Account' key type implies that an account-scoped encryption key will be used. 'Service' key type implies that a default service key is used. */
 export type KeyType = "Service" | "Account";
+const KeyType = S.String;
+
 /** A service that allows server-side encryption to be used. */
 export interface EncryptionServiceInput {
   /** A boolean indicating whether or not the service encrypts the data as it is stored. Encryption at rest is enabled by default today and cannot be disabled. */
@@ -1331,6 +1989,11 @@ export interface EncryptionServiceInput {
   /** Encryption key type to be used for the encryption service. 'Account' key type implies that an account-scoped encryption key will be used. 'Service' key type implies that a default service key is used. */
   keyType?: KeyType | (string & {});
 }
+const EncryptionServiceInput = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<EncryptionServiceInput>;
+
 /** A list of services that support encryption. */
 export interface EncryptionServicesInput {
   /** The encryption function of the blob storage service. */
@@ -1342,8 +2005,15 @@ export interface EncryptionServicesInput {
   /** The encryption function of the queue storage service. */
   queue?: EncryptionServiceInput;
 }
+const EncryptionServicesInput = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<EncryptionServicesInput>;
+
 /** The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Storage, Microsoft.Keyvault */
 export type EncryptionInputKeySource = "Microsoft.Storage" | "Microsoft.Keyvault";
+const EncryptionInputKeySource = S.String;
+
 /** Properties of key vault. */
 export interface KeyVaultPropertiesInput {
   /** The name of KeyVault key. */
@@ -1353,6 +2023,11 @@ export interface KeyVaultPropertiesInput {
   /** The Uri of KeyVault. */
   keyvaulturi?: string;
 }
+const KeyVaultPropertiesInput = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<KeyVaultPropertiesInput>;
+
 /** Encryption identity for the storage account. */
 export interface EncryptionIdentity {
   /** Resource identifier of the UserAssigned identity to be associated with server-side encryption on the storage account. */
@@ -1360,6 +2035,8 @@ export interface EncryptionIdentity {
   /** ClientId of the multi-tenant application to be used in conjunction with the user-assigned identity for cross-tenant customer-managed-keys server-side encryption on the storage account. */
   federatedIdentityClientId?: string;
 }
+const EncryptionIdentity = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<EncryptionIdentity>;
+
 /** The encryption settings on the storage account. */
 export interface EncryptionInput {
   /** List of services which support encryption. */
@@ -1373,8 +2050,12 @@ export interface EncryptionInput {
   /** The identity to be used with service-side encryption at rest. */
   identity?: EncryptionIdentity;
 }
+const EncryptionInput = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<EncryptionInput>;
+
 /** Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to bypass none of those traffics. */
 export type NetworkRuleSetInputBypass = "None" | "Logging" | "Metrics" | "AzureServices";
+const NetworkRuleSetInputBypass = S.String;
+
 /** Resource Access Rule. */
 export interface ResourceAccessRule {
   /** Tenant Id */
@@ -1382,10 +2063,19 @@ export interface ResourceAccessRule {
   /** Resource Id */
   resourceId?: string;
 }
+const ResourceAccessRule = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<ResourceAccessRule>;
+
 /** Sets the resource access rules */
 export type NetworkRuleSetInputResourceAccessRulesList = Array<ResourceAccessRule>;
+const NetworkRuleSetInputResourceAccessRulesList = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<NetworkRuleSetInputResourceAccessRulesList>;
+
 /** The action of virtual network rule. */
 export type VirtualNetworkRuleInputAction = "Allow";
+const VirtualNetworkRuleInputAction = S.String;
+
 /** Virtual Network rule. */
 export interface VirtualNetworkRuleInput {
   /** Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}. */
@@ -1393,10 +2083,22 @@ export interface VirtualNetworkRuleInput {
   /** The action of virtual network rule. */
   action?: VirtualNetworkRuleInputAction | (string & {});
 }
+const VirtualNetworkRuleInput = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<VirtualNetworkRuleInput>;
+
 /** Sets the virtual network rules */
 export type NetworkRuleSetInputVirtualNetworkRulesList = Array<VirtualNetworkRuleInput>;
+const NetworkRuleSetInputVirtualNetworkRulesList = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<NetworkRuleSetInputVirtualNetworkRulesList>;
+
 /** The action of IP ACL rule. */
 export type IPRuleAction = "Allow";
+const IPRuleAction = S.String;
+
 /** IP rule with specific IP or IP range in CIDR format. */
 export interface IPRule {
   /** Specifies the IP or IP range in CIDR format. */
@@ -1404,12 +2106,24 @@ export interface IPRule {
   /** The action of IP ACL rule. */
   action?: IPRuleAction | (string & {});
 }
+const IPRule = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<IPRule>;
+
 /** Sets the IP ACL rules */
 export type NetworkRuleSetInputIpRulesList = Array<IPRule>;
+const NetworkRuleSetInputIpRulesList = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<NetworkRuleSetInputIpRulesList>;
+
 /** Sets the IPv6 ACL rules. */
 export type NetworkRuleSetInputIpv6RulesList = Array<IPRule>;
+const NetworkRuleSetInputIpv6RulesList =
+  NetworkRuleSetInputIpRulesList as any as S.Schema<NetworkRuleSetInputIpv6RulesList>;
+
 /** Specifies the default action of allow or deny when no other rules match. */
 export type NetworkRuleSetInputDefaultAction = "Allow" | "Deny";
+const NetworkRuleSetInputDefaultAction = S.String;
+
 /** Network rule set */
 export interface NetworkRuleSetInput {
   /** Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to bypass none of those traffics. */
@@ -1425,10 +2139,16 @@ export interface NetworkRuleSetInput {
   /** Specifies the default action of allow or deny when no other rules match. */
   defaultAction: NetworkRuleSetInputDefaultAction | (string & {});
 }
+const NetworkRuleSetInput = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<NetworkRuleSetInput>;
+
 /** The default access tier for block blobs in the storage account. Required for storage accounts where kind = BlobStorage. See more details in: https://learn.microsoft.com/azure/storage/blobs/access-tiers-overview. */
 export type AccessTier = "Hot" | "Cool" | "Premium" | "Cold" | "Smart";
+const AccessTier = S.String;
+
 /** Indicates whether Turbo Tier is enabled or disabled. */
 export type TurboTierStatus = "Enabled" | "Disabled";
+const TurboTierStatus = S.String;
+
 /** Configures Turbo Tier for a storage account. */
 export interface TurboTier {
   /** Indicates whether Turbo Tier is enabled or disabled. */
@@ -1436,10 +2156,16 @@ export interface TurboTier {
   /** The target fill percentage used for placement. The valid range is 10 to 100. When status is Enabled and this property is omitted, the default value is 20. */
   targetPercent?: number;
 }
+const TurboTier = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<TurboTier>;
+
 /** Indicates the directory service used. Note that this enum may be extended in the future. */
 export type DirectoryServiceOptions = "None" | "AADDS" | "AD" | "AADKERB";
+const DirectoryServiceOptions = S.String;
+
 /** Specifies the Active Directory account type for Azure Storage. If directoryServiceOptions is set to AD (AD DS authentication), this property is optional. If provided, samAccountName should also be provided. For directoryServiceOptions AADDS (Entra DS authentication) or AADKERB (Entra authentication), this property can be omitted. */
 export type AccountType = "User" | "Computer";
+const AccountType = S.String;
+
 /** Settings properties for Active Directory (AD). */
 export interface ActiveDirectoryProperties {
   /** Specifies the primary domain that the AD DNS server is authoritative for. This property is required if directoryServiceOptions is set to AD (AD DS authentication). If directoryServiceOptions is set to AADDS (Entra DS authentication), providing this property is optional, as it will be inferred automatically if omitted. If directoryServiceOptions is set to AADKERB (Entra authentication), this property is optional; it is needed to support configuration of directory- and file-level permissions via Windows File Explorer, but is not required for authentication. */
@@ -1459,17 +2185,26 @@ export interface ActiveDirectoryProperties {
   /** Specifies the Active Directory account type for Azure Storage. If directoryServiceOptions is set to AD (AD DS authentication), this property is optional. If provided, samAccountName should also be provided. For directoryServiceOptions AADDS (Entra DS authentication) or AADKERB (Entra authentication), this property can be omitted. */
   accountType?: AccountType | (string & {});
 }
+const ActiveDirectoryProperties = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ActiveDirectoryProperties>;
+
 /** Default share permission for users using Kerberos authentication if RBAC role is not assigned. */
 export type DefaultSharePermission =
   | "None"
   | "StorageFileDataSmbShareReader"
   | "StorageFileDataSmbShareContributor"
   | "StorageFileDataSmbShareElevatedContributor";
+const DefaultSharePermission = S.String;
+
 /** Setting property for Managed Identity access over SMB using OAuth */
 export interface SmbOAuthSettings {
   /** Specifies if managed identities can access SMB shares using OAuth. The default interpretation is false for this property. */
   isSmbOAuthEnabled?: boolean;
 }
+const SmbOAuthSettings = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<SmbOAuthSettings>;
+
 /** Settings for Azure Files identity based authentication. */
 export interface AzureFilesIdentityBasedAuthentication {
   /** Indicates the directory service used. Note that this enum may be extended in the future. */
@@ -1481,10 +2216,19 @@ export interface AzureFilesIdentityBasedAuthentication {
   /** Required for Managed Identities access using OAuth over SMB. */
   smbOAuthSettings?: SmbOAuthSettings;
 }
+const AzureFilesIdentityBasedAuthentication = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<AzureFilesIdentityBasedAuthentication>;
+
 /** Allow large file shares if sets to Enabled. It cannot be disabled once it is enabled. */
 export type LargeFileSharesState = "Disabled" | "Enabled";
+const LargeFileSharesState = S.String;
+
 /** Routing Choice defines the kind of network routing opted by the user. */
 export type RoutingChoice = "MicrosoftRouting" | "InternetRouting";
+const RoutingChoice = S.String;
+
 /** Routing preference defines the type of network, either microsoft or internet routing to be used to deliver the user data, the default option is microsoft routing */
 export interface RoutingPreference {
   /** Routing Choice defines the kind of network routing opted by the user. */
@@ -1494,15 +2238,26 @@ export interface RoutingPreference {
   /** A boolean flag which indicates whether internet routing storage endpoints are to be published */
   publishInternetEndpoints?: boolean;
 }
+const RoutingPreference = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<RoutingPreference>;
+
 /** Dual-stack endpoint preference defines whether IPv6 endpoints are going to be published. */
 export interface DualStackEndpointPreference {
   /** A boolean flag which indicates whether IPv6 storage endpoints are to be published. */
   publishIpv6Endpoint?: boolean;
 }
+const DualStackEndpointPreference = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<DualStackEndpointPreference>;
+
 /** Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property. Minimum TLS version 1.3 version is not supported. */
 export type MinimumTlsVersion = "TLS1_0" | "TLS1_1" | "TLS1_2" | "TLS1_3";
+const MinimumTlsVersion = S.String;
+
 /** The ImmutabilityPolicy state defines the mode of the policy. Disabled state disables the policy, Unlocked state allows increase and decrease of immutability retention time and also allows toggling allowProtectedAppendWrites property, Locked state only allows the increase of the immutability retention time. A policy can only be created in a Disabled or Unlocked state and can be toggled between the two states. Only a policy in an Unlocked state can transition to a Locked state which cannot be reverted. */
 export type AccountImmutabilityPolicyState = "Unlocked" | "Locked" | "Disabled";
+const AccountImmutabilityPolicyState = S.String;
+
 /** This defines account-level immutability policy properties. */
 export interface AccountImmutabilityPolicyProperties {
   /** The immutability period for the blobs in the container since the policy creation, in days. */
@@ -1512,6 +2267,11 @@ export interface AccountImmutabilityPolicyProperties {
   /** This property can only be changed for disabled and unlocked time-based retention policies. When enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. */
   allowProtectedAppendWrites?: boolean;
 }
+const AccountImmutabilityPolicyProperties = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<AccountImmutabilityPolicyProperties>;
+
 /** This property enables and defines account-level immutability. Enabling the feature auto-enables Blob Versioning. */
 export interface ImmutableStorageAccount {
   /** A boolean flag which enables account-level immutability. All the containers under such an account have object-level immutability enabled by default. */
@@ -1519,18 +2279,33 @@ export interface ImmutableStorageAccount {
   /** Specifies the default account-level immutability policy which is inherited and applied to objects that do not possess an explicit immutability policy at the object level. The object-level immutability policy has higher precedence than the container-level immutability policy, which has a higher precedence than the account-level immutability policy. */
   immutabilityPolicy?: AccountImmutabilityPolicyProperties;
 }
+const ImmutableStorageAccount = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ImmutableStorageAccount>;
+
 /** Allows you to specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier. */
 export type DnsEndpointType = "Standard" | "AzureDnsZone";
+const DnsEndpointType = S.String;
+
 /** Geo Priority Replication enablement status for the storage account. */
 export interface GeoPriorityReplicationStatus {
   /** Indicates whether Blob Geo Priority Replication is enabled for the storage account. */
   isBlobEnabled?: boolean;
 }
+const GeoPriorityReplicationStatus = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<GeoPriorityReplicationStatus>;
+
 /** Defines shared key access settings for an individual storage service. */
 export interface ServiceSharedKeyAccessProperties {
   /** Indicates whether shared key access is enabled for the service. */
   enabled?: boolean;
 }
+const ServiceSharedKeyAccessProperties =
+  ImmutableStorageWithVersioningInput as any as S.Schema<ServiceSharedKeyAccessProperties>;
+
 /** Defines shared key access properties for a storage account. */
 export interface StorageAccountSharedKeyAccessProperties {
   /** Shared key access settings for Blob service. */
@@ -1542,6 +2317,11 @@ export interface StorageAccountSharedKeyAccessProperties {
   /** Shared key access settings for Queue service. */
   queue?: ServiceSharedKeyAccessProperties;
 }
+const StorageAccountSharedKeyAccessProperties = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<StorageAccountSharedKeyAccessProperties>;
+
 /** Defines Data Collaboration Policy for a storage account. */
 export interface StorageDataCollaborationPolicyProperties {
   /** Indicates whether storage connectors are allowed to created or managed on the storage account. */
@@ -1553,6 +2333,11 @@ export interface StorageDataCollaborationPolicyProperties {
   /** Indicates whether cross-entra tenant data sharing is allowed on the storage account. */
   allowCrossTenantDataSharing?: boolean;
 }
+const StorageDataCollaborationPolicyProperties = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<StorageDataCollaborationPolicyProperties>;
+
 /** The parameters used to create the storage account. */
 export interface StorageAccountPropertiesCreateParametersInput {
   /** Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet. */
@@ -1616,6 +2401,11 @@ export interface StorageAccountPropertiesCreateParametersInput {
   /** Allow or disallow cross AAD tenant user delegation SAS (shared access signature). The default interpretation is false for this property. */
   allowCrossTenantDelegationSas?: boolean;
 }
+const StorageAccountPropertiesCreateParametersInput = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<StorageAccountPropertiesCreateParametersInput>;
+
 export interface CreateStorageAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1642,10 +2432,20 @@ export interface CreateStorageAccountRequest {
   /** The parameters used to create the storage account. */
   properties?: StorageAccountPropertiesCreateParametersInput;
 }
+const CreateStorageAccountRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<CreateStorageAccountRequest>;
+
 /** Resource tags. */
 export type CreateStorageAccountResponseTagsMap = { [key: string]: string | undefined };
+const CreateStorageAccountResponseTagsMap =
+  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<CreateStorageAccountResponseTagsMap>;
+
 /** Gets the status of the storage account at the time the operation was called. */
 export type ProvisioningState = "Creating" | "ResolvingDNS" | "Succeeded";
+const ProvisioningState = S.String;
+
 /** The URIs that are used to perform a retrieval of a public blob, queue, table, web or dfs object via a microsoft routing endpoint. */
 export interface StorageAccountMicrosoftEndpoints {
   /** Gets the blob endpoint. */
@@ -1661,6 +2461,11 @@ export interface StorageAccountMicrosoftEndpoints {
   /** Gets the dfs endpoint. */
   dfs?: string;
 }
+const StorageAccountMicrosoftEndpoints = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<StorageAccountMicrosoftEndpoints>;
+
 /** The URIs that are used to perform a retrieval of a public blob, file, web or dfs object via a internet routing endpoint. */
 export interface StorageAccountInternetEndpoints {
   /** Gets the blob endpoint. */
@@ -1672,6 +2477,11 @@ export interface StorageAccountInternetEndpoints {
   /** Gets the dfs endpoint. */
   dfs?: string;
 }
+const StorageAccountInternetEndpoints = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<StorageAccountInternetEndpoints>;
+
 /** The URIs that are used to perform a retrieval of a public blob, queue, table, web or dfs object via an IPv6 endpoint. */
 export interface StorageAccountIpv6Endpoints {
   /** Gets the blob endpoint. */
@@ -1691,6 +2501,11 @@ export interface StorageAccountIpv6Endpoints {
   /** Gets the internet routing storage endpoints */
   internetEndpoints?: StorageAccountInternetEndpoints;
 }
+const StorageAccountIpv6Endpoints = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<StorageAccountIpv6Endpoints>;
+
 /** The URIs that are used to perform a retrieval of a public blob, queue, table, web or dfs object. */
 export interface Endpoints {
   /** Gets the blob endpoint. */
@@ -1712,13 +2527,19 @@ export interface Endpoints {
   /** Gets the IPv6 storage endpoints. */
   ipv6Endpoints?: StorageAccountIpv6Endpoints;
 }
+const Endpoints = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<Endpoints>;
+
 /** Gets the status indicating whether the primary location of the storage account is available or unavailable. */
 export type AccountStatus = "available" | "unavailable";
+const AccountStatus = S.String;
+
 /** Storage account keys creation time. */
 export interface KeyCreationTime {
   key1?: string;
   key2?: string;
 }
+const KeyCreationTime = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<KeyCreationTime>;
+
 /** A service that allows server-side encryption to be used. */
 export interface EncryptionService {
   /** A boolean indicating whether or not the service encrypts the data as it is stored. Encryption at rest is enabled by default today and cannot be disabled. */
@@ -1728,6 +2549,8 @@ export interface EncryptionService {
   /** Encryption key type to be used for the encryption service. 'Account' key type implies that an account-scoped encryption key will be used. 'Service' key type implies that a default service key is used. */
   keyType?: KeyType;
 }
+const EncryptionService = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<EncryptionService>;
+
 /** A list of services that support encryption. */
 export interface EncryptionServices {
   /** The encryption function of the blob storage service. */
@@ -1739,8 +2562,12 @@ export interface EncryptionServices {
   /** The encryption function of the queue storage service. */
   queue?: EncryptionService;
 }
+const EncryptionServices = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<EncryptionServices>;
+
 /** The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Storage, Microsoft.Keyvault */
 export type EncryptionKeySource = "Microsoft.Storage" | "Microsoft.Keyvault";
+const EncryptionKeySource = S.String;
+
 /** Properties of key vault. */
 export interface KeyVaultProperties {
   /** The name of KeyVault key. */
@@ -1756,6 +2583,8 @@ export interface KeyVaultProperties {
   /** This is a read only property that represents the expiration time of the current version of the customer managed key used for encryption. */
   currentVersionedKeyExpirationTimestamp?: string;
 }
+const KeyVaultProperties = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<KeyVaultProperties>;
+
 /** The encryption settings on the storage account. */
 export interface Encryption {
   /** List of services which support encryption. */
@@ -1769,12 +2598,21 @@ export interface Encryption {
   /** The identity to be used with service-side encryption at rest. */
   identity?: EncryptionIdentity;
 }
+const Encryption = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<Encryption>;
+
 /** Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to bypass none of those traffics. */
 export type NetworkRuleSetBypass = "None" | "Logging" | "Metrics" | "AzureServices";
+const NetworkRuleSetBypass = S.String;
+
 /** Sets the resource access rules */
 export type NetworkRuleSetResourceAccessRulesList = Array<ResourceAccessRule>;
+const NetworkRuleSetResourceAccessRulesList =
+  NetworkRuleSetInputResourceAccessRulesList as any as S.Schema<NetworkRuleSetResourceAccessRulesList>;
+
 /** The action of virtual network rule. */
 export type VirtualNetworkRuleAction = "Allow";
+const VirtualNetworkRuleAction = S.String;
+
 /** Gets the state of virtual network rule. */
 export type State =
   | "Provisioning"
@@ -1782,6 +2620,8 @@ export type State =
   | "Succeeded"
   | "Failed"
   | "NetworkSourceDeleted";
+const State = S.String;
+
 /** Virtual Network rule. */
 export interface VirtualNetworkRule {
   /** Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}. */
@@ -1791,14 +2631,29 @@ export interface VirtualNetworkRule {
   /** Gets the state of virtual network rule. */
   state?: State;
 }
+const VirtualNetworkRule = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<VirtualNetworkRule>;
+
 /** Sets the virtual network rules */
 export type NetworkRuleSetVirtualNetworkRulesList = Array<VirtualNetworkRule>;
+const NetworkRuleSetVirtualNetworkRulesList = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<NetworkRuleSetVirtualNetworkRulesList>;
+
 /** Sets the IP ACL rules */
 export type NetworkRuleSetIpRulesList = Array<IPRule>;
+const NetworkRuleSetIpRulesList =
+  NetworkRuleSetInputIpRulesList as any as S.Schema<NetworkRuleSetIpRulesList>;
+
 /** Sets the IPv6 ACL rules. */
 export type NetworkRuleSetIpv6RulesList = Array<IPRule>;
+const NetworkRuleSetIpv6RulesList =
+  NetworkRuleSetInputIpRulesList as any as S.Schema<NetworkRuleSetIpv6RulesList>;
+
 /** Specifies the default action of allow or deny when no other rules match. */
 export type NetworkRuleSetDefaultAction = "Allow" | "Deny";
+const NetworkRuleSetDefaultAction = S.String;
+
 /** Network rule set */
 export interface NetworkRuleSet {
   /** Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to bypass none of those traffics. */
@@ -1814,16 +2669,24 @@ export interface NetworkRuleSet {
   /** Specifies the default action of allow or deny when no other rules match. */
   defaultAction: NetworkRuleSetDefaultAction;
 }
+const NetworkRuleSet = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<NetworkRuleSet>;
+
 /** The status of the secondary location. Possible values are: - Live: Indicates that the secondary location is active and operational. - Bootstrap: Indicates initial synchronization from the primary location to the secondary location is in progress.This typically occurs when replication is first enabled. - Unavailable: Indicates that the secondary location is temporarily unavailable. */
 export type GeoReplicationStatus = "Live" | "Bootstrap" | "Unavailable";
+const GeoReplicationStatus = S.String;
+
 /** The redundancy type of the account after an account failover is performed. */
 export type PostFailoverRedundancy = "Standard_LRS" | "Standard_ZRS";
+const PostFailoverRedundancy = S.String;
+
 /** The redundancy type of the account after a planned account failover is performed. */
 export type PostPlannedFailoverRedundancy =
   | "Standard_GRS"
   | "Standard_GZRS"
   | "Standard_RAGRS"
   | "Standard_RAGZRS";
+const PostPlannedFailoverRedundancy = S.String;
+
 /** Statistics related to replication for storage account's Blob, Table, Queue and File services. It is only available when geo-redundant replication is enabled for the storage account. */
 export interface GeoReplicationStats {
   /** The status of the secondary location. Possible values are: - Live: Indicates that the secondary location is active and operational. - Bootstrap: Indicates initial synchronization from the primary location to the secondary location is in progress.This typically occurs when replication is first enabled. - Unavailable: Indicates that the secondary location is temporarily unavailable. */
@@ -1839,13 +2702,19 @@ export interface GeoReplicationStats {
   /** The redundancy type of the account after a planned account failover is performed. */
   postPlannedFailoverRedundancy?: PostPlannedFailoverRedundancy;
 }
+const GeoReplicationStats = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<GeoReplicationStats>;
+
 /** The Private Endpoint resource. */
 export interface PrivateEndpoint {
   /** The ARM identifier for Private Endpoint */
   id?: string;
 }
+const PrivateEndpoint = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<PrivateEndpoint>;
+
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
+const PrivateEndpointServiceConnectionStatus = S.String;
+
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
@@ -1855,12 +2724,19 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionRequired?: string;
 }
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<PrivateLinkServiceConnectionState>;
+
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
   | "Failed";
+const PrivateEndpointConnectionProvisioningState = S.String;
+
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionProperties {
   /** The resource of private end point. */
@@ -1870,6 +2746,11 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<PrivateEndpointConnectionProperties>;
+
 /** The Private Endpoint Connection resource. */
 export interface PrivateEndpointConnection {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1883,11 +2764,23 @@ export interface PrivateEndpointConnection {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const PrivateEndpointConnection = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<PrivateEndpointConnection>;
+
 /** List of private endpoint connection associated with the specified storage account */
 export type StorageAccountPropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
+const StorageAccountPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<StorageAccountPropertiesPrivateEndpointConnectionsList>;
+
 /** The status of blob restore progress. Possible values are: - InProgress: Indicates that blob restore is ongoing. - Complete: Indicates that blob restore has been completed successfully. - Failed: Indicates that blob restore is failed. */
 export type BlobRestoreProgressStatus = "InProgress" | "Complete" | "Failed";
+const BlobRestoreProgressStatus = S.String;
+
 /** Blob range */
 export interface BlobRestoreRange {
   /** Blob start range. This is inclusive. Empty means account start. */
@@ -1895,8 +2788,15 @@ export interface BlobRestoreRange {
   /** Blob end range. This is exclusive. Empty means account end. */
   endRange: string;
 }
+const BlobRestoreRange = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<BlobRestoreRange>;
+
 /** Blob ranges to restore. */
 export type BlobRestoreParametersBlobRangesList = Array<BlobRestoreRange>;
+const BlobRestoreParametersBlobRangesList = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<BlobRestoreParametersBlobRangesList>;
+
 /** Blob restore parameters */
 export interface BlobRestoreParameters {
   /** Restore blob to the specified time. */
@@ -1904,6 +2804,11 @@ export interface BlobRestoreParameters {
   /** Blob ranges to restore. */
   blobRanges: BlobRestoreParametersBlobRangesList;
 }
+const BlobRestoreParameters = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<BlobRestoreParameters>;
+
 /** Blob restore status. */
 export interface BlobRestoreStatus {
   /** The status of blob restore progress. Possible values are: - InProgress: Indicates that blob restore is ongoing. - Complete: Indicates that blob restore has been completed successfully. - Failed: Indicates that blob restore is failed. */
@@ -1915,8 +2820,12 @@ export interface BlobRestoreStatus {
   /** Blob restore request parameters. */
   parameters?: BlobRestoreParameters;
 }
+const BlobRestoreStatus = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<BlobRestoreStatus>;
+
 /** This property indicates the current sku conversion status. */
 export type SkuConversionStatus = "InProgress" | "Succeeded" | "Failed";
+const SkuConversionStatus = S.String;
+
 /** This defines the sku conversion status object for asynchronous sku conversions. */
 export interface StorageAccountSkuConversionStatus {
   /** This property indicates the current sku conversion status. */
@@ -1928,6 +2837,11 @@ export interface StorageAccountSkuConversionStatus {
   /** This property represents the sku conversion end time. */
   endTime?: string;
 }
+const StorageAccountSkuConversionStatus = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<StorageAccountSkuConversionStatus>;
+
 /** Properties of the storage account. */
 export interface StorageAccountProperties {
   /** Gets the status of the storage account at the time the operation was called. */
@@ -2025,8 +2939,18 @@ export interface StorageAccountProperties {
   /** Allow or disallow cross AAD tenant user delegation SAS (shared access signature). The default interpretation is false for this property. */
   allowCrossTenantDelegationSas?: boolean;
 }
+const StorageAccountProperties = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<StorageAccountProperties>;
+
 /** Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this storage account. The key is the ARM resource identifier of the identity. Only 1 User Assigned identity is permitted here. */
 export type IdentityUserAssignedIdentitiesMap = { [key: string]: UserAssignedIdentity | undefined };
+const IdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<IdentityUserAssignedIdentitiesMap>;
+
 /** Identity for the resource. */
 export interface Identity {
   /** The principal ID of resource identity. */
@@ -2038,8 +2962,13 @@ export interface Identity {
   /** Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this storage account. The key is the ARM resource identifier of the identity. Only 1 User Assigned identity is permitted here. */
   userAssignedIdentities?: IdentityUserAssignedIdentitiesMap;
 }
+const Identity = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<Identity>;
+
 /** The availability zones. */
 export type CreateStorageAccountResponseZonesList = Array<string>;
+const CreateStorageAccountResponseZonesList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<CreateStorageAccountResponseZonesList>;
+
 export interface CreateStorageAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2068,10 +2997,21 @@ export interface CreateStorageAccountResponse {
   /** Optional. Gets or sets the zonal placement details for the storage account. */
   placement?: Placement;
 }
+const CreateStorageAccountResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<CreateStorageAccountResponse>;
+
 /** Required list of object prefixes to be included for task execution */
 export type ExecutionTargetPrefixList = Array<string>;
+const ExecutionTargetPrefixList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<ExecutionTargetPrefixList>;
+
 /** List of object prefixes to be excluded from task execution. If there is a conflict between include and exclude prefixes, the exclude prefix will be the determining factor */
 export type ExecutionTargetExcludePrefixList = Array<string>;
+const ExecutionTargetExcludePrefixList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<ExecutionTargetExcludePrefixList>;
+
 /** Target helps provide filter parameters for the objects in the storage account and forms the execution context for the storage task */
 export interface ExecutionTarget {
   /** Required list of object prefixes to be included for task execution */
@@ -2079,10 +3019,16 @@ export interface ExecutionTarget {
   /** List of object prefixes to be excluded from task execution. If there is a conflict between include and exclude prefixes, the exclude prefix will be the determining factor */
   excludePrefix?: ExecutionTargetExcludePrefixList;
 }
+const ExecutionTarget = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<ExecutionTarget>;
+
 /** The trigger type of the storage task assignment execution */
 export type TriggerType = "RunOnce" | "OnSchedule" | "MockRun";
+const TriggerType = S.String;
+
 /** Run interval unit of task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce' */
 export type IntervalUnit = "Days";
+const IntervalUnit = S.String;
+
 /** The trigger parameters update for the storage task assignment execution */
 export interface TriggerParameters {
   /** When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce' */
@@ -2096,6 +3042,8 @@ export interface TriggerParameters {
   /** When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule' */
   startOn?: string;
 }
+const TriggerParameters = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<TriggerParameters>;
+
 /** Execution trigger for storage task assignment */
 export interface ExecutionTrigger {
   /** The trigger type of the storage task assignment execution */
@@ -2103,6 +3051,8 @@ export interface ExecutionTrigger {
   /** The trigger parameters of the storage task assignment execution */
   parameters: TriggerParameters;
 }
+const ExecutionTrigger = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<ExecutionTrigger>;
+
 /** Execution context of the storage task assignment. */
 export interface StorageTaskAssignmentExecutionContext {
   /** Execution target of the storage task assignment */
@@ -2110,11 +3060,21 @@ export interface StorageTaskAssignmentExecutionContext {
   /** Execution trigger of the storage task assignment */
   trigger: ExecutionTrigger;
 }
+const StorageTaskAssignmentExecutionContext = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<StorageTaskAssignmentExecutionContext>;
+
 /** The storage task assignment report */
 export interface StorageTaskAssignmentReport {
   /** The container prefix for the location of storage task assignment report */
   prefix: string;
 }
+const StorageTaskAssignmentReport = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<StorageTaskAssignmentReport>;
+
 /** Storage task execution report for a run instance. */
 export type StorageTaskReportPropertiesInput = UserAssignedIdentityInput;
 /** Properties of the storage task assignment. */
@@ -2132,6 +3092,11 @@ export interface StorageTaskAssignmentPropertiesInput {
   /** Run status of storage task assignment */
   runStatus?: UserAssignedIdentityInput;
 }
+const StorageTaskAssignmentPropertiesInput = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<StorageTaskAssignmentPropertiesInput>;
+
 export interface CreateStorageTaskAssignmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2144,6 +3109,11 @@ export interface CreateStorageTaskAssignmentRequest {
   /** Properties of the storage task assignment. */
   properties?: StorageTaskAssignmentPropertiesInput;
 }
+const CreateStorageTaskAssignmentRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<CreateStorageTaskAssignmentRequest>;
+
 /** Gets the status of the storage account at the time the operation was called. */
 export type StorageTaskAssignmentProvisioningState =
   | "ValidateSubscriptionQuotaBegin"
@@ -2154,10 +3124,16 @@ export type StorageTaskAssignmentProvisioningState =
   | "Deleting"
   | "Canceled"
   | "Failed";
+const StorageTaskAssignmentProvisioningState = S.String;
+
 /** Represents the status of the execution. */
 export type RunStatusEnum = "InProgress" | "Finished";
+const RunStatusEnum = S.String;
+
 /** Represents the overall result of the execution for the run instance */
 export type RunResult = "Succeeded" | "Failed";
+const RunResult = S.String;
+
 /** Storage task execution report for a run instance. */
 export interface StorageTaskReportProperties {
   /** Represents the Storage Task Assignment Id associated with the storage task that provided an execution context. */
@@ -2189,6 +3165,11 @@ export interface StorageTaskReportProperties {
   /** Represents the overall result of the execution for the run instance */
   runResult?: RunResult;
 }
+const StorageTaskReportProperties = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<StorageTaskReportProperties>;
+
 /** Properties of the storage task assignment. */
 export interface StorageTaskAssignmentProperties {
   /** Id of the corresponding storage task */
@@ -2206,6 +3187,11 @@ export interface StorageTaskAssignmentProperties {
   /** Run status of storage task assignment */
   runStatus?: StorageTaskReportProperties;
 }
+const StorageTaskAssignmentProperties = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<StorageTaskAssignmentProperties>;
+
 export interface CreateStorageTaskAssignmentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2218,6 +3204,11 @@ export interface CreateStorageTaskAssignmentResponse {
   /** Properties of the storage task assignment. */
   properties?: StorageTaskAssignmentProperties;
 }
+const CreateStorageTaskAssignmentResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<CreateStorageTaskAssignmentResponse>;
+
 /** Table Access Policy Properties Object. */
 export interface TableAccessPolicy {
   /** Start time of the access policy */
@@ -2227,6 +3218,8 @@ export interface TableAccessPolicy {
   /** Required. List of abbreviated permissions. Supported permission values include 'r','a','u','d' */
   permission: string;
 }
+const TableAccessPolicy = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<TableAccessPolicy>;
+
 /** Object to set Table Access Policy. */
 export interface TableSignedIdentifier {
   /** unique-64-character-value of the stored access policy. */
@@ -2234,12 +3227,27 @@ export interface TableSignedIdentifier {
   /** Access policy */
   accessPolicy?: TableAccessPolicy;
 }
+const TableSignedIdentifier = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<TableSignedIdentifier>;
+
 /** List of stored access policies specified on the table. */
 export type TablePropertiesInputSignedIdentifiersList = Array<TableSignedIdentifier>;
+const TablePropertiesInputSignedIdentifiersList = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<TablePropertiesInputSignedIdentifiersList>;
+
 export interface TablePropertiesInput {
   /** List of stored access policies specified on the table. */
   signedIdentifiers?: TablePropertiesInputSignedIdentifiersList;
 }
+const TablePropertiesInput = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<TablePropertiesInput>;
+
 export interface CreateTableRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2252,14 +3260,21 @@ export interface CreateTableRequest {
   /** Table resource properties. */
   properties?: TablePropertiesInput;
 }
+const CreateTableRequest = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<CreateTableRequest>;
+
 /** List of stored access policies specified on the table. */
 export type TablePropertiesSignedIdentifiersList = Array<TableSignedIdentifier>;
+const TablePropertiesSignedIdentifiersList =
+  TablePropertiesInputSignedIdentifiersList as any as S.Schema<TablePropertiesSignedIdentifiersList>;
+
 export interface TableProperties {
   /** Table name under the specified account */
   tableName?: string;
   /** List of stored access policies specified on the table. */
   signedIdentifiers?: TablePropertiesSignedIdentifiersList;
 }
+const TableProperties = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<TableProperties>;
+
 export interface CreateTableResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2272,8 +3287,12 @@ export interface CreateTableResponse {
   /** Table resource properties. */
   properties?: TableProperties;
 }
+const CreateTableResponse = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<CreateTableResponse>;
+
 export type DeleteAdvancedPlatformMetricsRequestAdvancedPlatformMetricsRuleType =
   "ContainerLevelCapacityMetrics";
+const DeleteAdvancedPlatformMetricsRequestAdvancedPlatformMetricsRuleType = S.String;
+
 export interface DeleteAdvancedPlatformMetricsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2286,7 +3305,15 @@ export interface DeleteAdvancedPlatformMetricsRequest {
     | DeleteAdvancedPlatformMetricsRequestAdvancedPlatformMetricsRuleType
     | (string & {});
 }
+const DeleteAdvancedPlatformMetricsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<DeleteAdvancedPlatformMetricsRequest>;
+
 export interface DeleteAdvancedPlatformMetricsResponse {}
+const DeleteAdvancedPlatformMetricsResponse =
+  BlobContainersObjectLevelWormResponse as any as S.Schema<DeleteAdvancedPlatformMetricsResponse>;
+
 export interface DeleteBlobAccessPointConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2297,7 +3324,15 @@ export interface DeleteBlobAccessPointConfigurationRequest {
   /** The name of the Blob Access Point configuration. */
   blobAccessPointConfigurationName: string;
 }
+const DeleteBlobAccessPointConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<DeleteBlobAccessPointConfigurationRequest>;
+
 export interface DeleteBlobAccessPointConfigurationResponse {}
+const DeleteBlobAccessPointConfigurationResponse =
+  BlobContainersObjectLevelWormResponse as any as S.Schema<DeleteBlobAccessPointConfigurationResponse>;
+
 export interface DeleteBlobContainerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2308,7 +3343,15 @@ export interface DeleteBlobContainerRequest {
   /** The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number. */
   containerName: string;
 }
+const DeleteBlobContainerRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<DeleteBlobContainerRequest>;
+
 export interface DeleteBlobContainerResponse {}
+const DeleteBlobContainerResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteBlobContainerResponse>;
+
 export interface DeleteBlobContainerImmutabilityPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2321,6 +3364,11 @@ export interface DeleteBlobContainerImmutabilityPolicyRequest {
   /** The entity state (ETag) version of the immutability policy to abort. A value of "*" applies to all. */
   ifMatch: string;
 }
+const DeleteBlobContainerImmutabilityPolicyRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<DeleteBlobContainerImmutabilityPolicyRequest>;
+
 export interface DeleteBlobContainerImmutabilityPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2335,7 +3383,12 @@ export interface DeleteBlobContainerImmutabilityPolicyResponse {
   /** Resource Etag. */
   etag?: string;
 }
+const DeleteBlobContainerImmutabilityPolicyResponse =
+  BlobContainersCreateOrUpdateImmutabilityPolicyResponse as any as S.Schema<DeleteBlobContainerImmutabilityPolicyResponse>;
+
 export type DeleteBlobInventoryPolicyRequestBlobInventoryPolicyName = "default";
+const DeleteBlobInventoryPolicyRequestBlobInventoryPolicyName = S.String;
+
 export interface DeleteBlobInventoryPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2346,7 +3399,15 @@ export interface DeleteBlobInventoryPolicyRequest {
   /** The name of the storage account blob inventory policy. It should always be 'default' */
   blobInventoryPolicyName: DeleteBlobInventoryPolicyRequestBlobInventoryPolicyName | (string & {});
 }
+const DeleteBlobInventoryPolicyRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<DeleteBlobInventoryPolicyRequest>;
+
 export interface DeleteBlobInventoryPolicyResponse {}
+const DeleteBlobInventoryPolicyResponse =
+  BlobContainersObjectLevelWormResponse as any as S.Schema<DeleteBlobInventoryPolicyResponse>;
+
 export interface DeleteConnectorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2357,7 +3418,15 @@ export interface DeleteConnectorRequest {
   /** The name of the Storage Connector. */
   connectorName: string;
 }
+const DeleteConnectorRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<DeleteConnectorRequest>;
+
 export interface DeleteConnectorResponse {}
+const DeleteConnectorResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteConnectorResponse>;
+
 export interface DeleteContextCachRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2366,7 +3435,15 @@ export interface DeleteContextCachRequest {
   /** The name of the context cache */
   contextCacheName: string;
 }
+const DeleteContextCachRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<DeleteContextCachRequest>;
+
 export interface DeleteContextCachResponse {}
+const DeleteContextCachResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteContextCachResponse>;
+
 export interface DeleteContextCacheContainerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2377,7 +3454,15 @@ export interface DeleteContextCacheContainerRequest {
   /** The name of the context cache container */
   contextCacheContainerName: string;
 }
+const DeleteContextCacheContainerRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<DeleteContextCacheContainerRequest>;
+
 export interface DeleteContextCacheContainerResponse {}
+const DeleteContextCacheContainerResponse =
+  BlobContainersObjectLevelWormResponse as any as S.Schema<DeleteContextCacheContainerResponse>;
+
 export interface DeleteDataShareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2388,7 +3473,15 @@ export interface DeleteDataShareRequest {
   /** The name of the Storage DataShare. */
   dataShareName: string;
 }
+const DeleteDataShareRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<DeleteDataShareRequest>;
+
 export interface DeleteDataShareResponse {}
+const DeleteDataShareResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteDataShareResponse>;
+
 export interface DeleteFileShareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2401,7 +3494,15 @@ export interface DeleteFileShareRequest {
   /** Optional. Valid values are: snapshots, leased-snapshots, none. The default value is snapshots. For 'snapshots', the file share is deleted including all of its file share snapshots. If the file share contains leased-snapshots, the deletion fails. For 'leased-snapshots', the file share is deleted included all of its file share snapshots (leased/unleased). For 'none', the file share is deleted if it has no share snapshots. If the file share contains any snapshots (leased or unleased), the deletion fails. */
   _include?: string;
 }
+const DeleteFileShareRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<DeleteFileShareRequest>;
+
 export interface DeleteFileShareResponse {}
+const DeleteFileShareResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteFileShareResponse>;
+
 export interface DeleteLocalUserRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2412,8 +3513,18 @@ export interface DeleteLocalUserRequest {
   /** The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account. */
   username: string;
 }
+const DeleteLocalUserRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<DeleteLocalUserRequest>;
+
 export interface DeleteLocalUserResponse {}
+const DeleteLocalUserResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteLocalUserResponse>;
+
 export type DeleteManagementPolicyRequestManagementPolicyName = "default";
+const DeleteManagementPolicyRequestManagementPolicyName = S.String;
+
 export interface DeleteManagementPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2424,7 +3535,15 @@ export interface DeleteManagementPolicyRequest {
   /** The name of the Storage Account Management Policy. It should always be 'default' */
   managementPolicyName: DeleteManagementPolicyRequestManagementPolicyName | (string & {});
 }
+const DeleteManagementPolicyRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<DeleteManagementPolicyRequest>;
+
 export interface DeleteManagementPolicyResponse {}
+const DeleteManagementPolicyResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteManagementPolicyResponse>;
+
 export interface DeleteObjectReplicationPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2435,7 +3554,15 @@ export interface DeleteObjectReplicationPolicyRequest {
   /** For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file. */
   objectReplicationPolicyId: string;
 }
+const DeleteObjectReplicationPolicyRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<DeleteObjectReplicationPolicyRequest>;
+
 export interface DeleteObjectReplicationPolicyResponse {}
+const DeleteObjectReplicationPolicyResponse =
+  BlobContainersObjectLevelWormResponse as any as S.Schema<DeleteObjectReplicationPolicyResponse>;
+
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2446,7 +3573,15 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource */
   privateEndpointConnectionName: string;
 }
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
+
 export interface DeletePrivateEndpointConnectionResponse {}
+const DeletePrivateEndpointConnectionResponse =
+  BlobContainersObjectLevelWormResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+
 export interface DeleteQueueRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2457,7 +3592,11 @@ export interface DeleteQueueRequest {
   /** A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters. */
   queueName: string;
 }
+const DeleteQueueRequest = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<DeleteQueueRequest>;
+
 export interface DeleteQueueResponse {}
+const DeleteQueueResponse = UserAssignedIdentityInput as any as S.Schema<DeleteQueueResponse>;
+
 export interface DeleteStorageAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2466,7 +3605,15 @@ export interface DeleteStorageAccountRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
+const DeleteStorageAccountRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<DeleteStorageAccountRequest>;
+
 export interface DeleteStorageAccountResponse {}
+const DeleteStorageAccountResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteStorageAccountResponse>;
+
 export interface DeleteStorageTaskAssignmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2477,7 +3624,15 @@ export interface DeleteStorageTaskAssignmentRequest {
   /** The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   storageTaskAssignmentName: string;
 }
+const DeleteStorageTaskAssignmentRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<DeleteStorageTaskAssignmentRequest>;
+
 export interface DeleteStorageTaskAssignmentResponse {}
+const DeleteStorageTaskAssignmentResponse =
+  BlobContainersObjectLevelWormResponse as any as S.Schema<DeleteStorageTaskAssignmentResponse>;
+
 export interface DeleteTableRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2488,7 +3643,11 @@ export interface DeleteTableRequest {
   /** A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character. */
   tableName: string;
 }
+const DeleteTableRequest = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<DeleteTableRequest>;
+
 export interface DeleteTableResponse {}
+const DeleteTableResponse = UserAssignedIdentityInput as any as S.Schema<DeleteTableResponse>;
+
 export interface ExtendBlobContainerImmutabilityPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2501,6 +3660,11 @@ export interface ExtendBlobContainerImmutabilityPolicyRequest {
   /** The properties of an ImmutabilityPolicy of a blob container. */
   properties: ImmutabilityPolicyProperty;
 }
+const ExtendBlobContainerImmutabilityPolicyRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<ExtendBlobContainerImmutabilityPolicyRequest>;
+
 export interface ExtendBlobContainerImmutabilityPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2515,8 +3679,13 @@ export interface ExtendBlobContainerImmutabilityPolicyResponse {
   /** Resource Etag. */
   etag?: string;
 }
+const ExtendBlobContainerImmutabilityPolicyResponse =
+  BlobContainersCreateOrUpdateImmutabilityPolicyResponse as any as S.Schema<ExtendBlobContainerImmutabilityPolicyResponse>;
+
 /** Specifies the lease action. Can be one of the available actions. */
 export type LeaseShareAction = "Acquire" | "Renew" | "Change" | "Release" | "Break";
+const LeaseShareAction = S.String;
+
 export interface FileSharesLeaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2537,6 +3706,11 @@ export interface FileSharesLeaseRequest {
   /** Optional for acquire, required for change. Proposed lease ID, in a GUID string format. */
   proposedLeaseId?: string;
 }
+const FileSharesLeaseRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<FileSharesLeaseRequest>;
+
 /** Lease Share response schema. */
 export interface LeaseShareResponse {
   /** Returned unique lease ID that must be included with any request to delete the share, or to renew, change, or release the lease. */
@@ -2544,8 +3718,12 @@ export interface LeaseShareResponse {
   /** Approximate time remaining in the lease period, in seconds. */
   leaseTimeSeconds?: string;
 }
+const LeaseShareResponse = LeaseContainerResponse as any as S.Schema<LeaseShareResponse>;
+
 export type GetAdvancedPlatformMetricsRequestAdvancedPlatformMetricsRuleType =
   "ContainerLevelCapacityMetrics";
+const GetAdvancedPlatformMetricsRequestAdvancedPlatformMetricsRuleType = S.String;
+
 export interface GetAdvancedPlatformMetricsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2558,6 +3736,11 @@ export interface GetAdvancedPlatformMetricsRequest {
     | GetAdvancedPlatformMetricsRequestAdvancedPlatformMetricsRuleType
     | (string & {});
 }
+const GetAdvancedPlatformMetricsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<GetAdvancedPlatformMetricsRequest>;
+
 export interface GetAdvancedPlatformMetricsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2570,6 +3753,9 @@ export interface GetAdvancedPlatformMetricsResponse {
   /** Returns the advanced platform metrics rule. */
   properties?: AdvancedPlatformMetricsRuleProperties;
 }
+const GetAdvancedPlatformMetricsResponse =
+  AdvancedPlatformMetricsCreateOrUpdateResponse as any as S.Schema<GetAdvancedPlatformMetricsResponse>;
+
 export interface GetBlobAccessPointConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2580,6 +3766,11 @@ export interface GetBlobAccessPointConfigurationRequest {
   /** The name of the Blob Access Point configuration. */
   blobAccessPointConfigurationName: string;
 }
+const GetBlobAccessPointConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<GetBlobAccessPointConfigurationRequest>;
+
 /** Resource tags. */
 export type GetBlobAccessPointConfigurationResponseTagsMap = { [key: string]: string | undefined };
 export interface GetBlobAccessPointConfigurationResponse {
@@ -2598,6 +3789,9 @@ export interface GetBlobAccessPointConfigurationResponse {
   /** The resource-specific properties for this resource. */
   properties: BlobAccessPointConfigurationProperties;
 }
+const GetBlobAccessPointConfigurationResponse =
+  CreateBlobAccessPointConfigurationResponse as any as S.Schema<GetBlobAccessPointConfigurationResponse>;
+
 export interface GetBlobContainerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2608,6 +3802,11 @@ export interface GetBlobContainerRequest {
   /** The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number. */
   containerName: string;
 }
+const GetBlobContainerRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<GetBlobContainerRequest>;
+
 export interface GetBlobContainerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2622,6 +3821,11 @@ export interface GetBlobContainerResponse {
   /** Resource Etag. */
   etag?: string;
 }
+const GetBlobContainerResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<GetBlobContainerResponse>;
+
 export interface GetBlobContainerImmutabilityPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2632,6 +3836,11 @@ export interface GetBlobContainerImmutabilityPolicyRequest {
   /** The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number. */
   containerName: string;
 }
+const GetBlobContainerImmutabilityPolicyRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<GetBlobContainerImmutabilityPolicyRequest>;
+
 export interface GetBlobContainerImmutabilityPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2646,7 +3855,12 @@ export interface GetBlobContainerImmutabilityPolicyResponse {
   /** Resource Etag. */
   etag?: string;
 }
+const GetBlobContainerImmutabilityPolicyResponse =
+  BlobContainersCreateOrUpdateImmutabilityPolicyResponse as any as S.Schema<GetBlobContainerImmutabilityPolicyResponse>;
+
 export type GetBlobInventoryPolicyRequestBlobInventoryPolicyName = "default";
+const GetBlobInventoryPolicyRequestBlobInventoryPolicyName = S.String;
+
 export interface GetBlobInventoryPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2657,6 +3871,11 @@ export interface GetBlobInventoryPolicyRequest {
   /** The name of the storage account blob inventory policy. It should always be 'default' */
   blobInventoryPolicyName: GetBlobInventoryPolicyRequestBlobInventoryPolicyName | (string & {});
 }
+const GetBlobInventoryPolicyRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<GetBlobInventoryPolicyRequest>;
+
 export interface GetBlobInventoryPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2669,6 +3888,9 @@ export interface GetBlobInventoryPolicyResponse {
   /** Returns the storage account blob inventory policy rules. */
   properties?: BlobInventoryPolicyProperties;
 }
+const GetBlobInventoryPolicyResponse =
+  BlobInventoryPoliciesCreateOrUpdateResponse as any as S.Schema<GetBlobInventoryPolicyResponse>;
+
 export interface GetBlobServiceServicePropertiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2677,8 +3899,16 @@ export interface GetBlobServiceServicePropertiesRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
+const GetBlobServiceServicePropertiesRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<GetBlobServiceServicePropertiesRequest>;
+
 /** Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains */
 export type CorsRuleAllowedOriginsList = Array<string>;
+const CorsRuleAllowedOriginsList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<CorsRuleAllowedOriginsList>;
+
 export type AllowedMethods =
   | "DELETE"
   | "GET"
@@ -2692,10 +3922,19 @@ export type AllowedMethods =
   | "TRACE";
 /** Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin. */
 export type CorsRuleAllowedMethodsList = Array<AllowedMethods | (string & {})>;
+const CorsRuleAllowedMethodsList =
+  AdvancedPlatformMetricsRulePropertiesInputMetricsToEmitList as any as S.Schema<CorsRuleAllowedMethodsList>;
+
 /** Required if CorsRule element is present. A list of response headers to expose to CORS clients. */
 export type CorsRuleExposedHeadersList = Array<string>;
+const CorsRuleExposedHeadersList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<CorsRuleExposedHeadersList>;
+
 /** Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request. */
 export type CorsRuleAllowedHeadersList = Array<string>;
+const CorsRuleAllowedHeadersList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<CorsRuleAllowedHeadersList>;
+
 /** Specifies a CORS rule for the Blob service. */
 export interface CorsRule {
   /** Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains */
@@ -2709,13 +3948,22 @@ export interface CorsRule {
   /** Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request. */
   allowedHeaders: CorsRuleAllowedHeadersList;
 }
+const CorsRule = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<CorsRule>;
+
 /** The List of CORS rules. You can include up to five CorsRule elements in the request. */
 export type CorsRulesCorsRulesList = Array<CorsRule>;
+const CorsRulesCorsRulesList = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<CorsRulesCorsRulesList>;
+
 /** Sets the CORS rules. You can include up to five CorsRule elements in the request. */
 export interface CorsRules {
   /** The List of CORS rules. You can include up to five CorsRule elements in the request. */
   corsRules?: CorsRulesCorsRulesList;
 }
+const CorsRules = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<CorsRules>;
+
 /** The service properties for soft delete. */
 export interface DeleteRetentionPolicy {
   /** Indicates whether DeleteRetentionPolicy is enabled. */
@@ -2725,6 +3973,11 @@ export interface DeleteRetentionPolicy {
   /** This property when set to true allows deletion of the soft deleted blob versions and snapshots. This property cannot be used blob restore policy. This property only applies to blob service and does not apply to containers or file share. */
   allowPermanentDelete?: boolean;
 }
+const DeleteRetentionPolicy = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<DeleteRetentionPolicy>;
+
 /** The static website properties for blob storage. */
 export interface StaticWebsite {
   /** Indicates whether static website support is enabled for the specified account. */
@@ -2736,6 +3989,8 @@ export interface StaticWebsite {
   /** The absolute path to a webpage that Azure Storage serves for requests that don't correspond to an existing file. The contents of the page are returned with HTTP 404 Not Found. Only a single custom 404 page is supported in each static website. */
   errorDocument404Path?: string;
 }
+const StaticWebsite = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<StaticWebsite>;
+
 /** The blob service properties for change feed events. */
 export interface ChangeFeed {
   /** Indicates whether change feed event logging is enabled for the Blob service. */
@@ -2743,6 +3998,8 @@ export interface ChangeFeed {
   /** Indicates the duration of changeFeed retention in days. Minimum value is 1 day and maximum value is 146000 days (400 years). A null value indicates an infinite retention of the change feed. */
   retentionInDays?: number;
 }
+const ChangeFeed = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<ChangeFeed>;
+
 /** The blob service properties for blob restore policy */
 export interface RestorePolicyProperties {
   /** Blob restore is enabled if set to true. */
@@ -2754,10 +4011,20 @@ export interface RestorePolicyProperties {
   /** Returns the minimum date and time that the restore can be started. */
   minRestoreTime?: string;
 }
+const RestorePolicyProperties = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<RestorePolicyProperties>;
+
 /** Name of the policy. The valid value is AccessTimeTracking. This field is currently read only */
 export type Name = "AccessTimeTracking";
+const Name = S.String;
+
 /** An array of predefined supported blob types. Only blockBlob is the supported value. This field is currently read only */
 export type LastAccessTimeTrackingPolicyBlobTypeList = Array<string>;
+const LastAccessTimeTrackingPolicyBlobTypeList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<LastAccessTimeTrackingPolicyBlobTypeList>;
+
 /** The blob service properties for Last access time based tracking policy. */
 export interface LastAccessTimeTrackingPolicy {
   /** When set to true last access time based tracking is enabled. */
@@ -2769,6 +4036,11 @@ export interface LastAccessTimeTrackingPolicy {
   /** An array of predefined supported blob types. Only blockBlob is the supported value. This field is currently read only */
   blobType?: LastAccessTimeTrackingPolicyBlobTypeList;
 }
+const LastAccessTimeTrackingPolicy = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<LastAccessTimeTrackingPolicy>;
+
 /** The properties of a storage account's Blob service. */
 export interface BlobServicePropertiesProperties {
   /** Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service. */
@@ -2792,6 +4064,11 @@ export interface BlobServicePropertiesProperties {
   /** The blob service property to configure last access time based tracking policy. */
   lastAccessTimeTrackingPolicy?: LastAccessTimeTrackingPolicy;
 }
+const BlobServicePropertiesProperties = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<BlobServicePropertiesProperties>;
+
 export interface GetBlobServiceServicePropertiesResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2806,6 +4083,11 @@ export interface GetBlobServiceServicePropertiesResponse {
   /** Sku name and tier. */
   sku?: Sku;
 }
+const GetBlobServiceServicePropertiesResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<GetBlobServiceServicePropertiesResponse>;
+
 export interface GetConnectorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2816,6 +4098,8 @@ export interface GetConnectorRequest {
   /** The name of the Storage Connector. */
   connectorName: string;
 }
+const GetConnectorRequest = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<GetConnectorRequest>;
+
 /** Resource tags. */
 export type GetConnectorResponseTagsMap = { [key: string]: string | undefined };
 export interface GetConnectorResponse {
@@ -2834,6 +4118,8 @@ export interface GetConnectorResponse {
   /** The properties of the Storage Connector. */
   properties: StorageConnectorProperties;
 }
+const GetConnectorResponse = CreateConnectorResponse as any as S.Schema<GetConnectorResponse>;
+
 export interface GetContextCachRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2842,8 +4128,16 @@ export interface GetContextCachRequest {
   /** The name of the context cache */
   contextCacheName: string;
 }
+const GetContextCachRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<GetContextCachRequest>;
+
 /** Resource tags. */
 export type GetContextCachResponseTagsMap = { [key: string]: string | undefined };
+const GetContextCachResponseTagsMap =
+  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<GetContextCachResponseTagsMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetContextCachResponseIdentity = ContextCachesCreateOrUpdateResponseIdentity;
 export interface GetContextCachResponse {
@@ -2864,6 +4158,11 @@ export interface GetContextCachResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ContextCachesCreateOrUpdateResponseIdentity;
 }
+const GetContextCachResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<GetContextCachResponse>;
+
 export interface GetContextCacheContainerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2874,6 +4173,11 @@ export interface GetContextCacheContainerRequest {
   /** The name of the context cache container */
   contextCacheContainerName: string;
 }
+const GetContextCacheContainerRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<GetContextCacheContainerRequest>;
+
 export interface GetContextCacheContainerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2886,6 +4190,9 @@ export interface GetContextCacheContainerResponse {
   /** The resource-specific properties for this resource. */
   properties: ContextCacheContainerProperties;
 }
+const GetContextCacheContainerResponse =
+  ContextCacheContainersCreateOrUpdateResponse as any as S.Schema<GetContextCacheContainerResponse>;
+
 export interface GetDataShareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2896,6 +4203,8 @@ export interface GetDataShareRequest {
   /** The name of the Storage DataShare. */
   dataShareName: string;
 }
+const GetDataShareRequest = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<GetDataShareRequest>;
+
 /** Resource tags. */
 export type GetDataShareResponseTagsMap = { [key: string]: string | undefined };
 export interface GetDataShareResponse {
@@ -2914,6 +4223,8 @@ export interface GetDataShareResponse {
   /** The properties of the Storage DataShare. */
   properties: StorageDataShareProperties;
 }
+const GetDataShareResponse = CreateDataShareResponse as any as S.Schema<GetDataShareResponse>;
+
 export interface GetDeletedAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2922,6 +4233,11 @@ export interface GetDeletedAccountRequest {
   /** Name of the deleted storage account. */
   deletedAccountName: string;
 }
+const GetDeletedAccountRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<GetDeletedAccountRequest>;
+
 /** Attributes of a deleted storage account. */
 export interface DeletedAccountProperties {
   /** Full resource id of the original storage account. */
@@ -2935,6 +4251,11 @@ export interface DeletedAccountProperties {
   /** Deletion time of the deleted account. */
   deletionTime?: string;
 }
+const DeletedAccountProperties = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<DeletedAccountProperties>;
+
 export interface GetDeletedAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2947,6 +4268,11 @@ export interface GetDeletedAccountResponse {
   /** Properties of the deleted account. */
   properties?: DeletedAccountProperties;
 }
+const GetDeletedAccountResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<GetDeletedAccountResponse>;
+
 export interface GetEncryptionScopeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2957,10 +4283,19 @@ export interface GetEncryptionScopeRequest {
   /** The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number. */
   encryptionScopeName: string;
 }
+const GetEncryptionScopeRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<GetEncryptionScopeRequest>;
+
 /** The provider for the encryption scope. Possible values (case-insensitive): Microsoft.Storage, Microsoft.KeyVault. */
 export type EncryptionScopeSource = "Microsoft.Storage" | "Microsoft.KeyVault";
+const EncryptionScopeSource = S.String;
+
 /** The state of the encryption scope. Possible values (case-insensitive): Enabled, Disabled. */
 export type EncryptionScopeState = "Enabled" | "Disabled";
+const EncryptionScopeState = S.String;
+
 /** The key vault properties for the encryption scope. This is a required field if encryption scope 'source' attribute is set to 'Microsoft.KeyVault'. */
 export interface EncryptionScopeKeyVaultProperties {
   /** The object identifier for a key vault key object. When applied, the encryption scope will use the key referenced by the identifier to enable customer-managed key support on this encryption scope. */
@@ -2970,6 +4305,11 @@ export interface EncryptionScopeKeyVaultProperties {
   /** Timestamp of last rotation of the Key Vault Key. */
   lastKeyRotationTimestamp?: string;
 }
+const EncryptionScopeKeyVaultProperties = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<EncryptionScopeKeyVaultProperties>;
+
 /** Properties of the encryption scope. */
 export interface EncryptionScopeProperties {
   /** The provider for the encryption scope. Possible values (case-insensitive): Microsoft.Storage, Microsoft.KeyVault. */
@@ -2985,6 +4325,11 @@ export interface EncryptionScopeProperties {
   /** A boolean indicating whether or not the service applies a secondary layer of encryption with platform managed keys for data at rest. */
   requireInfrastructureEncryption?: boolean;
 }
+const EncryptionScopeProperties = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<EncryptionScopeProperties>;
+
 export interface GetEncryptionScopeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2997,6 +4342,11 @@ export interface GetEncryptionScopeResponse {
   /** Properties of the encryption scope. */
   properties?: EncryptionScopeProperties;
 }
+const GetEncryptionScopeResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<GetEncryptionScopeResponse>;
+
 export interface GetFileServiceServicePropertiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3005,16 +4355,25 @@ export interface GetFileServiceServicePropertiesRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
+const GetFileServiceServicePropertiesRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<GetFileServiceServicePropertiesRequest>;
+
 /** Multichannel setting. Applies to Premium FileStorage only. */
 export interface Multichannel {
   /** Indicates whether multichannel is enabled */
   enabled?: boolean;
 }
+const Multichannel = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<Multichannel>;
+
 /** Encryption in transit setting. */
 export interface EncryptionInTransit {
   /** Indicates whether encryption in transit is required */
   required?: boolean;
 }
+const EncryptionInTransit = /*@__PURE__*/ __L.at(__c28, 2) as any as S.Schema<EncryptionInTransit>;
+
 /** Setting for SMB protocol */
 export interface SmbSetting {
   /** Multichannel setting. Applies to Premium FileStorage only. */
@@ -3030,11 +4389,15 @@ export interface SmbSetting {
   /** Encryption in transit setting. */
   encryptionInTransit?: EncryptionInTransit;
 }
+const SmbSetting = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<SmbSetting>;
+
 /** Setting for NFS protocol */
 export interface NfsSetting {
   /** Encryption in transit setting. */
   encryptionInTransit?: EncryptionInTransit;
 }
+const NfsSetting = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<NfsSetting>;
+
 /** Protocol settings for file service */
 export interface ProtocolSettings {
   /** Setting for SMB protocol */
@@ -3042,6 +4405,8 @@ export interface ProtocolSettings {
   /** Setting for NFS protocol */
   nfs?: NfsSetting;
 }
+const ProtocolSettings = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<ProtocolSettings>;
+
 /** The properties of File services in storage account. */
 export interface FileServicePropertiesProperties {
   /** Specifies CORS rules for the File service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the File service. */
@@ -3051,6 +4416,11 @@ export interface FileServicePropertiesProperties {
   /** Protocol settings for file service */
   protocolSettings?: ProtocolSettings;
 }
+const FileServicePropertiesProperties = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<FileServicePropertiesProperties>;
+
 export interface GetFileServiceServicePropertiesResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3065,6 +4435,11 @@ export interface GetFileServiceServicePropertiesResponse {
   /** Sku name and tier. */
   sku?: Sku;
 }
+const GetFileServiceServicePropertiesResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<GetFileServiceServicePropertiesResponse>;
+
 export interface GetFileServiceServiceUsageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3073,6 +4448,11 @@ export interface GetFileServiceServiceUsageRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
+const GetFileServiceServiceUsageRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<GetFileServiceServiceUsageRequest>;
+
 /** Maximum provisioned storage, IOPS, bandwidth and number of file shares limits for the storage account. */
 export interface AccountLimits {
   /** The maximum number of file shares limit for the storage account. */
@@ -3084,6 +4464,8 @@ export interface AccountLimits {
   /** The maximum provisioned bandwidth limit in mebibytes per second for the storage account. */
   maxProvisionedBandwidthMiBPerSec?: number;
 }
+const AccountLimits = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<AccountLimits>;
+
 /** Minimum and maximum provisioned storage, IOPS and bandwidth limits for a file share in the storage account. */
 export interface FileShareLimits {
   /** The minimum provisioned storage quota limit in gibibytes for a file share in the storage account. */
@@ -3103,6 +4485,8 @@ export interface FileShareLimits {
   /** The bandwidth scalar used for guardrail calculations for a file share in the storage account. */
   guardrailBandwidthScalar?: number;
 }
+const FileShareLimits = /*@__PURE__*/ __L.at(__c29, 2) as any as S.Schema<FileShareLimits>;
+
 /** Constants used for calculating recommended provisioned IOPS and bandwidth for a file share in the storage account. */
 export interface FileShareRecommendations {
   /** The base IOPS in the file share provisioned IOPS recommendation formula. */
@@ -3114,6 +4498,11 @@ export interface FileShareRecommendations {
   /** The scalar for bandwidth in the file share provisioned bandwidth recommendation formula. */
   bandwidthScalar?: number;
 }
+const FileShareRecommendations = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<FileShareRecommendations>;
+
 /** Constants used for calculating included burst IOPS and maximum burst credits for IOPS for a file share in the storage account. */
 export interface BurstingConstants {
   /** The guaranteed floor of burst IOPS for small file shares. */
@@ -3123,6 +4512,8 @@ export interface BurstingConstants {
   /** The time frame for bursting in seconds in the file share maximum burst credits for IOPS formula. */
   burstTimeframeSeconds?: number;
 }
+const BurstingConstants = /*@__PURE__*/ __L.at(__c29, 4) as any as S.Schema<BurstingConstants>;
+
 /** Usage of provisioned storage, IOPS, bandwidth and number of file shares across all live shares or soft-deleted shares in the account. */
 export interface AccountUsageElements {
   /** The total number of file shares. */
@@ -3134,6 +4525,11 @@ export interface AccountUsageElements {
   /** The total provisioned bandwidth in mebibytes per second. */
   provisionedBandwidthMiBPerSec?: number;
 }
+const AccountUsageElements = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<AccountUsageElements>;
+
 /** Usage of provisioned storage, IOPS, bandwidth and number of file shares across all live shares and soft-deleted shares in the account. */
 export interface AccountUsage {
   /** Usage of provisioned storage, IOPS, bandwidth and number of file shares across all live shares or soft-deleted shares in the account. */
@@ -3141,6 +4537,8 @@ export interface AccountUsage {
   /** Usage of provisioned storage, IOPS, bandwidth and number of file shares across all live shares or soft-deleted shares in the account. */
   softDeletedShares?: AccountUsageElements;
 }
+const AccountUsage = /*@__PURE__*/ __L.at(__c29, 6) as any as S.Schema<AccountUsage>;
+
 /** File service usage in storage account including account limits, file share limits and constants used in recommendations and bursting formula. */
 export interface FileServiceUsageProperties {
   /** Maximum provisioned storage, IOPS, bandwidth and number of file shares limits for the storage account. */
@@ -3154,6 +4552,11 @@ export interface FileServiceUsageProperties {
   /** Usage of provisioned storage, IOPS, bandwidth and number of file shares across all live shares and soft-deleted shares in the account. */
   storageAccountUsage?: AccountUsage;
 }
+const FileServiceUsageProperties = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<FileServiceUsageProperties>;
+
 export interface GetFileServiceServiceUsageResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3166,6 +4569,11 @@ export interface GetFileServiceServiceUsageResponse {
   /** File service usage in storage account including account limits, file share limits and constants used in recommendations and bursting formula. */
   properties?: FileServiceUsageProperties;
 }
+const GetFileServiceServiceUsageResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<GetFileServiceServiceUsageResponse>;
+
 export interface GetFileShareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3178,6 +4586,8 @@ export interface GetFileShareRequest {
   /** Optional, used to expand the properties within share's properties. Valid values are: stats. Should be passed as a string with delimiter ','. */
   _expand?: string;
 }
+const GetFileShareRequest = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<GetFileShareRequest>;
+
 export interface GetFileShareResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3192,6 +4602,8 @@ export interface GetFileShareResponse {
   /** Resource Etag. */
   etag?: string;
 }
+const GetFileShareResponse = CreateFileShareResponse as any as S.Schema<GetFileShareResponse>;
+
 export interface GetLocalUserRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3202,6 +4614,8 @@ export interface GetLocalUserRequest {
   /** The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account. */
   username: string;
 }
+const GetLocalUserRequest = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<GetLocalUserRequest>;
+
 export interface PermissionScope {
   /** The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), Create (c), Modify Ownership (o), and Modify Permissions (p). */
   permissions: string;
@@ -3210,18 +4624,37 @@ export interface PermissionScope {
   /** The name of resource, normally the container name or the file share name, used by the local user. */
   resourceName: string;
 }
+const PermissionScope = /*@__PURE__*/ __L.at(__c30, 3) as any as S.Schema<PermissionScope>;
+
 /** The permission scopes of the local user. */
 export type LocalUserPropertiesPermissionScopesList = Array<PermissionScope>;
+const LocalUserPropertiesPermissionScopesList = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<LocalUserPropertiesPermissionScopesList>;
+
 export interface SshPublicKey {
   /** Optional. It is used to store the function/usage of the key */
   description?: string;
   /** Ssh public key base64 encoded. The format should be: '<keyType> <keyData>', e.g. ssh-rsa AAAABBBB */
   key?: string;
 }
+const SshPublicKey = /*@__PURE__*/ __L.at(__c30, 5) as any as S.Schema<SshPublicKey>;
+
 /** Optional, local user ssh authorized keys for SFTP. */
 export type LocalUserPropertiesSshAuthorizedKeysList = Array<SshPublicKey>;
+const LocalUserPropertiesSshAuthorizedKeysList = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<LocalUserPropertiesSshAuthorizedKeysList>;
+
 /** Supplementary group membership. Only applicable for local users enabled for NFSv3 access. */
 export type LocalUserPropertiesExtendedGroupsList = Array<number>;
+const LocalUserPropertiesExtendedGroupsList = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<LocalUserPropertiesExtendedGroupsList>;
+
 /** The Storage Account Local User properties. */
 export interface LocalUserProperties {
   /** The permission scopes of the local user. */
@@ -3249,6 +4682,8 @@ export interface LocalUserProperties {
   /** Indicates if the local user is enabled for access with NFSv3 protocol. */
   isNFSv3Enabled?: boolean;
 }
+const LocalUserProperties = /*@__PURE__*/ __L.at(__c31, 0) as any as S.Schema<LocalUserProperties>;
+
 export interface GetLocalUserResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3261,7 +4696,14 @@ export interface GetLocalUserResponse {
   /** Storage account local user properties. */
   properties?: LocalUserProperties;
 }
+const GetLocalUserResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<GetLocalUserResponse>;
+
 export type GetManagementPolicyRequestManagementPolicyName = "default";
+const GetManagementPolicyRequestManagementPolicyName = S.String;
+
 export interface GetManagementPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3272,8 +4714,15 @@ export interface GetManagementPolicyRequest {
   /** The name of the Storage Account Management Policy. It should always be 'default' */
   managementPolicyName: GetManagementPolicyRequestManagementPolicyName | (string & {});
 }
+const GetManagementPolicyRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<GetManagementPolicyRequest>;
+
 /** The valid value is Lifecycle */
 export type RuleType = "Lifecycle";
+const RuleType = S.String;
+
 /** Object to define the base blob action conditions. Properties daysAfterModificationGreaterThan, daysAfterLastAccessTimeGreaterThan and daysAfterCreationGreaterThan are mutually exclusive. The daysAfterLastTierChangeGreaterThan property is only applicable for tierToArchive actions which requires daysAfterModificationGreaterThan to be set, also it cannot be used in conjunction with daysAfterLastAccessTimeGreaterThan or daysAfterCreationGreaterThan. */
 export interface DateAfterModification {
   /** Value indicating the age in days after last modification */
@@ -3285,6 +4734,11 @@ export interface DateAfterModification {
   /** Value indicating the age in days after blob creation. */
   daysAfterCreationGreaterThan?: number;
 }
+const DateAfterModification = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<DateAfterModification>;
+
 /** Management policy action for base blob. */
 export interface ManagementPolicyBaseBlob {
   /** The function to tier blobs to cool storage. */
@@ -3300,6 +4754,11 @@ export interface ManagementPolicyBaseBlob {
   /** This property enables auto tiering of a blob from cool to hot on a blob access. This property requires tierToCool.daysAfterLastAccessTimeGreaterThan. */
   enableAutoTierToHotFromCool?: boolean;
 }
+const ManagementPolicyBaseBlob = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<ManagementPolicyBaseBlob>;
+
 /** Object to define snapshot and version action conditions. */
 export interface DateAfterCreation {
   /** Value indicating the age in days after creation */
@@ -3307,6 +4766,8 @@ export interface DateAfterCreation {
   /** Value indicating the age in days after last blob tier change time. This property is only applicable for tierToArchive actions and requires daysAfterCreationGreaterThan to be set for snapshots and blob version based actions. The blob will be archived if both the conditions are satisfied. */
   daysAfterLastTierChangeGreaterThan?: number;
 }
+const DateAfterCreation = /*@__PURE__*/ __L.at(__c31, 5) as any as S.Schema<DateAfterCreation>;
+
 /** Management policy action for snapshot. */
 export interface ManagementPolicySnapShot {
   /** The function to tier blob snapshot to cool storage. */
@@ -3320,6 +4781,11 @@ export interface ManagementPolicySnapShot {
   /** The function to delete the blob snapshot */
   delete?: DateAfterCreation;
 }
+const ManagementPolicySnapShot = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<ManagementPolicySnapShot>;
+
 /** Management policy action for blob version. */
 export interface ManagementPolicyVersion {
   /** The function to tier blob version to cool storage. */
@@ -3333,6 +4799,9 @@ export interface ManagementPolicyVersion {
   /** The function to delete the blob version */
   delete?: DateAfterCreation;
 }
+const ManagementPolicyVersion =
+  ManagementPolicySnapShot as any as S.Schema<ManagementPolicyVersion>;
+
 /** Actions are applied to the filtered blobs when the execution condition is met. */
 export interface ManagementPolicyAction {
   /** The management policy action for base blob */
@@ -3342,10 +4811,21 @@ export interface ManagementPolicyAction {
   /** The management policy action for version */
   version?: ManagementPolicyVersion;
 }
+const ManagementPolicyAction = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<ManagementPolicyAction>;
+
 /** An array of strings for prefixes to be match. */
 export type ManagementPolicyFilterPrefixMatchList = Array<string>;
+const ManagementPolicyFilterPrefixMatchList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<ManagementPolicyFilterPrefixMatchList>;
+
 /** An array of predefined enum values. Currently blockBlob supports all tiering and delete actions. Only delete actions are supported for appendBlob. */
 export type ManagementPolicyFilterBlobTypesList = Array<string>;
+const ManagementPolicyFilterBlobTypesList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<ManagementPolicyFilterBlobTypesList>;
+
 /** Blob index tag based filtering for blob objects */
 export interface TagFilter {
   /** This is the filter tag name, it can have 1 - 128 characters */
@@ -3355,8 +4835,15 @@ export interface TagFilter {
   /** This is the filter tag value field used for tag based filtering, it can have 0 - 256 characters */
   value: string;
 }
+const TagFilter = /*@__PURE__*/ __L.at(__c32, 0) as any as S.Schema<TagFilter>;
+
 /** An array of blob index tag based filters, there can be at most 10 tag filters */
 export type ManagementPolicyFilterBlobIndexMatchList = Array<TagFilter>;
+const ManagementPolicyFilterBlobIndexMatchList = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<ManagementPolicyFilterBlobIndexMatchList>;
+
 /** Filters limit rule actions to a subset of blobs within the storage account. If multiple filters are defined, a logical AND is performed on all filters. */
 export interface ManagementPolicyFilter {
   /** An array of strings for prefixes to be match. */
@@ -3366,6 +4853,11 @@ export interface ManagementPolicyFilter {
   /** An array of blob index tag based filters, there can be at most 10 tag filters */
   blobIndexMatch?: ManagementPolicyFilterBlobIndexMatchList;
 }
+const ManagementPolicyFilter = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<ManagementPolicyFilter>;
+
 /** An object that defines the Lifecycle rule. Each definition is made up with a filters set and an actions set. */
 export interface ManagementPolicyDefinition {
   /** An object that defines the action set. */
@@ -3373,6 +4865,11 @@ export interface ManagementPolicyDefinition {
   /** An object that defines the filter set. */
   filters?: ManagementPolicyFilter;
 }
+const ManagementPolicyDefinition = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<ManagementPolicyDefinition>;
+
 /** An object that wraps the Lifecycle rule. Each rule is uniquely defined by name. */
 export interface ManagementPolicyRule {
   /** Rule is enabled if set to true. */
@@ -3384,13 +4881,28 @@ export interface ManagementPolicyRule {
   /** An object that defines the Lifecycle rule. */
   definition: ManagementPolicyDefinition;
 }
+const ManagementPolicyRule = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<ManagementPolicyRule>;
+
 /** The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview. */
 export type ManagementPolicySchemaRulesList = Array<ManagementPolicyRule>;
+const ManagementPolicySchemaRulesList = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<ManagementPolicySchemaRulesList>;
+
 /** The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview. */
 export interface ManagementPolicySchema {
   /** The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview. */
   rules: ManagementPolicySchemaRulesList;
 }
+const ManagementPolicySchema = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<ManagementPolicySchema>;
+
 /** The Storage Account ManagementPolicy properties. */
 export interface ManagementPolicyProperties {
   /** Returns the date and time the ManagementPolicies was last modified. */
@@ -3398,6 +4910,11 @@ export interface ManagementPolicyProperties {
   /** The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview. */
   policy: ManagementPolicySchema;
 }
+const ManagementPolicyProperties = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<ManagementPolicyProperties>;
+
 export interface GetManagementPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3410,6 +4927,11 @@ export interface GetManagementPolicyResponse {
   /** Returns the Storage Account Data Policies Rules. */
   properties?: ManagementPolicyProperties;
 }
+const GetManagementPolicyResponse = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<GetManagementPolicyResponse>;
+
 export interface GetNetworkSecurityPerimeterConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3420,6 +4942,11 @@ export interface GetNetworkSecurityPerimeterConfigurationRequest {
   /** The name for Network Security Perimeter configuration */
   networkSecurityPerimeterConfigurationName: string;
 }
+const GetNetworkSecurityPerimeterConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationRequest>;
+
 /** Provisioning state of Network Security Perimeter configuration propagation */
 export type NetworkSecurityPerimeterConfigurationProvisioningState =
   | "Accepted"
@@ -3427,10 +4954,16 @@ export type NetworkSecurityPerimeterConfigurationProvisioningState =
   | "Failed"
   | "Deleting"
   | "Canceled";
+const NetworkSecurityPerimeterConfigurationProvisioningState = S.String;
+
 /** Type of issue */
 export type IssueType = "Unknown" | "ConfigurationPropagationFailure";
+const IssueType = S.String;
+
 /** Severity of the issue. */
 export type Severity = "Warning" | "Error";
+const Severity = S.String;
+
 /** Properties of provisioning issue */
 export interface ProvisioningIssueProperties {
   /** Type of issue */
@@ -3440,6 +4973,11 @@ export interface ProvisioningIssueProperties {
   /** Description of the issue */
   description?: string;
 }
+const ProvisioningIssueProperties = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<ProvisioningIssueProperties>;
+
 /** Describes provisioning issue for given NetworkSecurityPerimeterConfiguration */
 export interface ProvisioningIssue {
   /** Name of the issue */
@@ -3447,9 +4985,16 @@ export interface ProvisioningIssue {
   /** Properties of provisioning issue */
   properties?: ProvisioningIssueProperties;
 }
+const ProvisioningIssue = /*@__PURE__*/ __L.at(__c33, 3) as any as S.Schema<ProvisioningIssue>;
+
 /** List of Provisioning Issues if any */
 export type NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
   Array<ProvisioningIssue>;
+const NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList = /*@__PURE__*/ __L.at(
+  __c33,
+  4,
+) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList>;
+
 /** NetworkSecurityPerimeter related information */
 export interface NetworkSecurityPerimeter {
   /** The ARM identifier of the resource */
@@ -3459,8 +5004,15 @@ export interface NetworkSecurityPerimeter {
   /** Location of the resource */
   location?: string;
 }
+const NetworkSecurityPerimeter = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<NetworkSecurityPerimeter>;
+
 /** Access Mode of the resource association */
 export type ResourceAssociationAccessMode = "Enforced" | "Learning" | "Audit";
+const ResourceAssociationAccessMode = S.String;
+
 /** Information about resource association */
 export interface NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation {
   /** Name of the resource association */
@@ -3468,24 +5020,55 @@ export interface NetworkSecurityPerimeterConfigurationPropertiesResourceAssociat
   /** Access Mode of the resource association */
   accessMode?: ResourceAssociationAccessMode;
 }
+const NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation = /*@__PURE__*/ __L.at(
+  __c33,
+  6,
+) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation>;
+
 /** Direction of Access Rule */
 export type NspAccessRuleDirection = "Inbound" | "Outbound";
+const NspAccessRuleDirection = S.String;
+
 /** Address prefixes in the CIDR format for inbound rules */
 export type NspAccessRulePropertiesAddressPrefixesList = Array<string>;
+const NspAccessRulePropertiesAddressPrefixesList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<NspAccessRulePropertiesAddressPrefixesList>;
+
 /** Subscription for inbound rule */
 export interface NspAccessRulePropertiesSubscriptionsItem {
   /** The ARM identifier of subscription */
   id?: string;
 }
+const NspAccessRulePropertiesSubscriptionsItem = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<NspAccessRulePropertiesSubscriptionsItem>;
+
 /** Subscriptions for inbound rules */
 export type NspAccessRulePropertiesSubscriptionsList =
   Array<NspAccessRulePropertiesSubscriptionsItem>;
+const NspAccessRulePropertiesSubscriptionsList = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<NspAccessRulePropertiesSubscriptionsList>;
+
 /** NetworkSecurityPerimeters for inbound rules */
 export type NspAccessRulePropertiesNetworkSecurityPerimetersList = Array<NetworkSecurityPerimeter>;
+const NspAccessRulePropertiesNetworkSecurityPerimetersList = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<NspAccessRulePropertiesNetworkSecurityPerimetersList>;
+
 /** FQDN for outbound rules */
 export type NspAccessRulePropertiesFullyQualifiedDomainNamesList = Array<string>;
+const NspAccessRulePropertiesFullyQualifiedDomainNamesList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<NspAccessRulePropertiesFullyQualifiedDomainNamesList>;
+
 /** Service Tags for inbound rules */
 export type NspAccessRulePropertiesServiceTagsList = Array<string>;
+const NspAccessRulePropertiesServiceTagsList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<NspAccessRulePropertiesServiceTagsList>;
+
 /** Properties of Access Rule */
 export interface NspAccessRuleProperties {
   /** Direction of Access Rule */
@@ -3501,6 +5084,11 @@ export interface NspAccessRuleProperties {
   /** Service Tags for inbound rules */
   serviceTags?: NspAccessRulePropertiesServiceTagsList;
 }
+const NspAccessRuleProperties = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<NspAccessRuleProperties>;
+
 /** Information of Access Rule in Network Security Perimeter profile */
 export interface NspAccessRule {
   /** Name of the resource */
@@ -3508,12 +5096,25 @@ export interface NspAccessRule {
   /** Properties of Access Rule */
   properties?: NspAccessRuleProperties;
 }
+const NspAccessRule = /*@__PURE__*/ __L.at(__c34, 3) as any as S.Schema<NspAccessRule>;
+
 /** List of Access Rules */
 export type NetworkSecurityPerimeterConfigurationPropertiesProfileAccessRulesList =
   Array<NspAccessRule>;
+const NetworkSecurityPerimeterConfigurationPropertiesProfileAccessRulesList = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesProfileAccessRulesList>;
+
 /** Enabled logging categories */
 export type NetworkSecurityPerimeterConfigurationPropertiesProfileEnabledLogCategoriesList =
   Array<string>;
+const NetworkSecurityPerimeterConfigurationPropertiesProfileEnabledLogCategoriesList =
+  /*@__PURE__*/ __L.at(
+    __c34,
+    5,
+  ) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesProfileEnabledLogCategoriesList>;
+
 /** Network Security Perimeter profile */
 export interface NetworkSecurityPerimeterConfigurationPropertiesProfile {
   /** Name of the resource */
@@ -3527,6 +5128,11 @@ export interface NetworkSecurityPerimeterConfigurationPropertiesProfile {
   /** Enabled logging categories */
   enabledLogCategories?: NetworkSecurityPerimeterConfigurationPropertiesProfileEnabledLogCategoriesList;
 }
+const NetworkSecurityPerimeterConfigurationPropertiesProfile = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesProfile>;
+
 /** Properties of the Network Security Perimeter Configuration */
 export interface NetworkSecurityPerimeterConfigurationProperties {
   /** Provisioning state of Network Security Perimeter configuration propagation */
@@ -3540,6 +5146,11 @@ export interface NetworkSecurityPerimeterConfigurationProperties {
   /** Network Security Perimeter profile */
   profile?: NetworkSecurityPerimeterConfigurationPropertiesProfile;
 }
+const NetworkSecurityPerimeterConfigurationProperties = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<NetworkSecurityPerimeterConfigurationProperties>;
+
 export interface GetNetworkSecurityPerimeterConfigurationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3552,6 +5163,11 @@ export interface GetNetworkSecurityPerimeterConfigurationResponse {
   /** Properties of the Network Security Perimeter Configuration */
   properties?: NetworkSecurityPerimeterConfigurationProperties;
 }
+const GetNetworkSecurityPerimeterConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationResponse>;
+
 export interface GetObjectReplicationPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3562,8 +5178,16 @@ export interface GetObjectReplicationPolicyRequest {
   /** For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file. */
   objectReplicationPolicyId: string;
 }
+const GetObjectReplicationPolicyRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<GetObjectReplicationPolicyRequest>;
+
 /** Optional. Filters the results to replicate only blobs whose names begin with the specified prefix. */
 export type ObjectReplicationPolicyFilterPrefixMatchList = Array<string>;
+const ObjectReplicationPolicyFilterPrefixMatchList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<ObjectReplicationPolicyFilterPrefixMatchList>;
+
 /** Filters limit replication to a subset of blobs within the storage account. A logical OR is performed on values in the filter. If multiple filters are defined, a logical AND is performed on all filters. */
 export interface ObjectReplicationPolicyFilter {
   /** Optional. Filters the results to replicate only blobs whose names begin with the specified prefix. */
@@ -3571,6 +5195,11 @@ export interface ObjectReplicationPolicyFilter {
   /** Blobs created after the time will be replicated to the destination. It must be in datetime format 'yyyy-MM-ddTHH:mm:ssZ'. Example: 2020-02-19T16:05:00Z */
   minCreationTime?: string;
 }
+const ObjectReplicationPolicyFilter = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<ObjectReplicationPolicyFilter>;
+
 /** The replication policy rule between two containers. */
 export interface ObjectReplicationPolicyRule {
   /** Rule Id is auto-generated for each new rule on destination account. It is required for put policy on source account. */
@@ -3582,23 +5211,42 @@ export interface ObjectReplicationPolicyRule {
   /** Optional. An object that defines the filter set. */
   filters?: ObjectReplicationPolicyFilter;
 }
+const ObjectReplicationPolicyRule = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<ObjectReplicationPolicyRule>;
+
 /** The storage account object replication rules. */
 export type ObjectReplicationPolicyPropertiesRulesList = Array<ObjectReplicationPolicyRule>;
+const ObjectReplicationPolicyPropertiesRulesList = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<ObjectReplicationPolicyPropertiesRulesList>;
+
 /** Optional. The object replication policy metrics feature options. */
 export interface ObjectReplicationPolicyPropertiesMetrics {
   /** Indicates whether object replication metrics feature is enabled for the policy. */
   enabled?: boolean;
 }
+const ObjectReplicationPolicyPropertiesMetrics =
+  ImmutableStorageWithVersioningInput as any as S.Schema<ObjectReplicationPolicyPropertiesMetrics>;
+
 /** Optional. The object replication policy priority replication feature options. */
 export interface ObjectReplicationPolicyPropertiesPriorityReplication {
   /** Indicates whether object replication priority replication feature is enabled for the policy. */
   enabled?: boolean;
 }
+const ObjectReplicationPolicyPropertiesPriorityReplication =
+  ImmutableStorageWithVersioningInput as any as S.Schema<ObjectReplicationPolicyPropertiesPriorityReplication>;
+
 /** Optional. The object replication policy tags replication feature options. */
 export interface ObjectReplicationPolicyPropertiesTagsReplication {
   /** Indicates whether object replication tags replication feature is enabled for the policy. */
   enabled?: boolean;
 }
+const ObjectReplicationPolicyPropertiesTagsReplication =
+  ImmutableStorageWithVersioningInput as any as S.Schema<ObjectReplicationPolicyPropertiesTagsReplication>;
+
 /** The Storage Account ObjectReplicationPolicy properties. */
 export interface ObjectReplicationPolicyProperties {
   /** A unique id for object replication policy. */
@@ -3618,6 +5266,11 @@ export interface ObjectReplicationPolicyProperties {
   /** Optional. The object replication policy tags replication feature options. */
   tagsReplication?: ObjectReplicationPolicyPropertiesTagsReplication;
 }
+const ObjectReplicationPolicyProperties = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<ObjectReplicationPolicyProperties>;
+
 export interface GetObjectReplicationPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3630,6 +5283,11 @@ export interface GetObjectReplicationPolicyResponse {
   /** Returns the Storage Account Object Replication Policy. */
   properties?: ObjectReplicationPolicyProperties;
 }
+const GetObjectReplicationPolicyResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  6,
+) as any as S.Schema<GetObjectReplicationPolicyResponse>;
+
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3640,6 +5298,11 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource */
   privateEndpointConnectionName: string;
 }
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
+
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3652,6 +5315,9 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const GetPrivateEndpointConnectionResponse =
+  PrivateEndpointConnection as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+
 export interface GetQueueRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3662,6 +5328,8 @@ export interface GetQueueRequest {
   /** A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters. */
   queueName: string;
 }
+const GetQueueRequest = /*@__PURE__*/ __L.at(__c36, 0) as any as S.Schema<GetQueueRequest>;
+
 export interface GetQueueResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3674,6 +5342,8 @@ export interface GetQueueResponse {
   /** Queue resource properties. */
   properties?: QueueProperties;
 }
+const GetQueueResponse = CreateQueueResponse as any as S.Schema<GetQueueResponse>;
+
 export interface GetQueueServiceServicePropertiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3682,11 +5352,21 @@ export interface GetQueueServiceServicePropertiesRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
+const GetQueueServiceServicePropertiesRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<GetQueueServiceServicePropertiesRequest>;
+
 /** The properties of a storage account's Queue service. */
 export interface QueueServicePropertiesProperties {
   /** Specifies CORS rules for the Queue service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Queue service. */
   cors?: CorsRules;
 }
+const QueueServicePropertiesProperties = /*@__PURE__*/ __L.at(
+  __c36,
+  2,
+) as any as S.Schema<QueueServicePropertiesProperties>;
+
 export interface GetQueueServiceServicePropertiesResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3699,7 +5379,14 @@ export interface GetQueueServiceServicePropertiesResponse {
   /** The properties of a storage account's Queue service. */
   properties?: QueueServicePropertiesProperties;
 }
+const GetQueueServiceServicePropertiesResponse = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<GetQueueServiceServicePropertiesResponse>;
+
 export type GetStorageAccountCustomerInitiatedMigrationRequestMigrationName = "default";
+const GetStorageAccountCustomerInitiatedMigrationRequestMigrationName = S.String;
+
 export interface GetStorageAccountCustomerInitiatedMigrationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3710,6 +5397,11 @@ export interface GetStorageAccountCustomerInitiatedMigrationRequest {
   /** The name of the Storage Account Migration. It should always be 'default' */
   migrationName: GetStorageAccountCustomerInitiatedMigrationRequestMigrationName | (string & {});
 }
+const GetStorageAccountCustomerInitiatedMigrationRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  4,
+) as any as S.Schema<GetStorageAccountCustomerInitiatedMigrationRequest>;
+
 /** Current status of migration */
 export type MigrationStatus =
   | "Invalid"
@@ -3717,6 +5409,8 @@ export type MigrationStatus =
   | "InProgress"
   | "Complete"
   | "Failed";
+const MigrationStatus = S.String;
+
 /** The properties of a storage account's ongoing or enqueued migration. */
 export interface StorageAccountMigrationProperties {
   /** Target sku name for the account */
@@ -3728,6 +5422,11 @@ export interface StorageAccountMigrationProperties {
   /** Reason for migration failure */
   migrationFailedDetailedReason?: string;
 }
+const StorageAccountMigrationProperties = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<StorageAccountMigrationProperties>;
+
 export interface GetStorageAccountCustomerInitiatedMigrationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3740,7 +5439,14 @@ export interface GetStorageAccountCustomerInitiatedMigrationResponse {
   /** The properties of a storage account's ongoing or enqueued migration. */
   properties: StorageAccountMigrationProperties;
 }
+const GetStorageAccountCustomerInitiatedMigrationResponse = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<GetStorageAccountCustomerInitiatedMigrationResponse>;
+
 export type GetStorageAccountPropertiesRequestExpand = "geoReplicationStats" | "blobRestoreStatus";
+const GetStorageAccountPropertiesRequestExpand = S.String;
+
 export interface GetStorageAccountPropertiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3751,6 +5457,11 @@ export interface GetStorageAccountPropertiesRequest {
   /** May be used to expand the properties within account's properties. By default, data is not included when fetching properties. Currently we only support geoReplicationStats and blobRestoreStatus. */
   _expand?: GetStorageAccountPropertiesRequestExpand | (string & {});
 }
+const GetStorageAccountPropertiesRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<GetStorageAccountPropertiesRequest>;
+
 /** Resource tags. */
 export type GetStorageAccountPropertiesResponseTagsMap = { [key: string]: string | undefined };
 /** The availability zones. */
@@ -3783,6 +5494,9 @@ export interface GetStorageAccountPropertiesResponse {
   /** Optional. Gets or sets the zonal placement details for the storage account. */
   placement?: Placement;
 }
+const GetStorageAccountPropertiesResponse =
+  CreateStorageAccountResponse as any as S.Schema<GetStorageAccountPropertiesResponse>;
+
 export interface GetStorageTaskAssignmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3793,6 +5507,11 @@ export interface GetStorageTaskAssignmentRequest {
   /** The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   storageTaskAssignmentName: string;
 }
+const GetStorageTaskAssignmentRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<GetStorageTaskAssignmentRequest>;
+
 export interface GetStorageTaskAssignmentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3805,6 +5524,9 @@ export interface GetStorageTaskAssignmentResponse {
   /** Properties of the storage task assignment. */
   properties?: StorageTaskAssignmentProperties;
 }
+const GetStorageTaskAssignmentResponse =
+  CreateStorageTaskAssignmentResponse as any as S.Schema<GetStorageTaskAssignmentResponse>;
+
 export interface GetTableRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3815,6 +5537,8 @@ export interface GetTableRequest {
   /** A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character. */
   tableName: string;
 }
+const GetTableRequest = /*@__PURE__*/ __L.at(__c37, 1) as any as S.Schema<GetTableRequest>;
+
 export interface GetTableResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3827,6 +5551,8 @@ export interface GetTableResponse {
   /** Table resource properties. */
   properties?: TableProperties;
 }
+const GetTableResponse = CreateTableResponse as any as S.Schema<GetTableResponse>;
+
 export interface GetTableServiceServicePropertiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3835,11 +5561,19 @@ export interface GetTableServiceServicePropertiesRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
+const GetTableServiceServicePropertiesRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  2,
+) as any as S.Schema<GetTableServiceServicePropertiesRequest>;
+
 /** The properties of a storage account's Table service. */
 export interface TableServicePropertiesProperties {
   /** Specifies CORS rules for the Table service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Table service. */
   cors?: CorsRules;
 }
+const TableServicePropertiesProperties =
+  QueueServicePropertiesProperties as any as S.Schema<TableServicePropertiesProperties>;
+
 export interface GetTableServiceServicePropertiesResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3852,6 +5586,9 @@ export interface GetTableServiceServicePropertiesResponse {
   /** The properties of a storage account's Table service. */
   properties?: TableServicePropertiesProperties;
 }
+const GetTableServiceServicePropertiesResponse =
+  GetQueueServiceServicePropertiesResponse as any as S.Schema<GetTableServiceServicePropertiesResponse>;
+
 export interface ListAdvancedPlatformMetricsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3860,6 +5597,11 @@ export interface ListAdvancedPlatformMetricsRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
+const ListAdvancedPlatformMetricsRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  3,
+) as any as S.Schema<ListAdvancedPlatformMetricsRequest>;
+
 /** The advanced platform metrics rule for the storage account. */
 export interface AdvancedPlatformMetricsRule {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3873,8 +5615,16 @@ export interface AdvancedPlatformMetricsRule {
   /** Returns the advanced platform metrics rule. */
   properties?: AdvancedPlatformMetricsRuleProperties;
 }
+const AdvancedPlatformMetricsRule =
+  AdvancedPlatformMetricsCreateOrUpdateResponse as any as S.Schema<AdvancedPlatformMetricsRule>;
+
 /** The AdvancedPlatformMetricsRule items on this page */
 export type AdvancedPlatformMetricsRuleListResultValueList = Array<AdvancedPlatformMetricsRule>;
+const AdvancedPlatformMetricsRuleListResultValueList = /*@__PURE__*/ __L.at(
+  __c37,
+  4,
+) as any as S.Schema<AdvancedPlatformMetricsRuleListResultValueList>;
+
 /** The response of a AdvancedPlatformMetricsRule list operation. */
 export interface AdvancedPlatformMetricsRuleListResult {
   /** The AdvancedPlatformMetricsRule items on this page */
@@ -3882,6 +5632,11 @@ export interface AdvancedPlatformMetricsRuleListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const AdvancedPlatformMetricsRuleListResult = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<AdvancedPlatformMetricsRuleListResult>;
+
 export interface ListBlobAccessPointConfigurationByStorageAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3890,6 +5645,11 @@ export interface ListBlobAccessPointConfigurationByStorageAccountRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
+const ListBlobAccessPointConfigurationByStorageAccountRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<ListBlobAccessPointConfigurationByStorageAccountRequest>;
+
 /** Resource tags. */
 export type BlobAccessPointConfigurationTagsMap = { [key: string]: string | undefined };
 /** A BlobAccessPointConfiguration is a tracked Azure resource modeled as a sub-resource of a Storage Account. */
@@ -3909,8 +5669,16 @@ export interface BlobAccessPointConfiguration {
   /** The resource-specific properties for this resource. */
   properties: BlobAccessPointConfigurationProperties;
 }
+const BlobAccessPointConfiguration =
+  CreateBlobAccessPointConfigurationResponse as any as S.Schema<BlobAccessPointConfiguration>;
+
 /** The BlobAccessPointConfiguration items on this page */
 export type BlobAccessPointConfigurationListResultValueList = Array<BlobAccessPointConfiguration>;
+const BlobAccessPointConfigurationListResultValueList = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<BlobAccessPointConfigurationListResultValueList>;
+
 /** The response of a BlobAccessPointConfiguration list operation. */
 export interface BlobAccessPointConfigurationListResult {
   /** The BlobAccessPointConfiguration items on this page */
@@ -3918,7 +5686,14 @@ export interface BlobAccessPointConfigurationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const BlobAccessPointConfigurationListResult = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<BlobAccessPointConfigurationListResult>;
+
 export type ListBlobContainersRequestInclude = "deleted";
+const ListBlobContainersRequestInclude = S.String;
+
 export interface ListBlobContainersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3933,6 +5708,11 @@ export interface ListBlobContainersRequest {
   /** Optional, used to include the properties for soft deleted blob containers. */
   _include?: ListBlobContainersRequestInclude | (string & {});
 }
+const ListBlobContainersRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  1,
+) as any as S.Schema<ListBlobContainersRequest>;
+
 /** The blob container properties be listed out. */
 export interface ListContainerItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3948,8 +5728,15 @@ export interface ListContainerItem {
   /** The blob container properties be listed out. */
   properties?: ContainerProperties;
 }
+const ListContainerItem = /*@__PURE__*/ __L.at(__c38, 2) as any as S.Schema<ListContainerItem>;
+
 /** The ListContainerItem items on this page */
 export type ListContainerItemsValueList = Array<ListContainerItem>;
+const ListContainerItemsValueList = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<ListContainerItemsValueList>;
+
 /** Response schema. Contains list of blobs returned, and if paging is requested or required, a URL to next page of containers. */
 export interface ListContainerItems {
   /** The ListContainerItem items on this page */
@@ -3957,6 +5744,8 @@ export interface ListContainerItems {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ListContainerItems = /*@__PURE__*/ __L.at(__c38, 4) as any as S.Schema<ListContainerItems>;
+
 export interface ListBlobInventoryPoliciesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3965,6 +5754,11 @@ export interface ListBlobInventoryPoliciesRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
+const ListBlobInventoryPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  5,
+) as any as S.Schema<ListBlobInventoryPoliciesRequest>;
+
 /** The storage account blob inventory policy. */
 export interface BlobInventoryPolicy {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3978,14 +5772,26 @@ export interface BlobInventoryPolicy {
   /** Returns the storage account blob inventory policy rules. */
   properties?: BlobInventoryPolicyProperties;
 }
+const BlobInventoryPolicy = /*@__PURE__*/ __L.at(__c38, 6) as any as S.Schema<BlobInventoryPolicy>;
+
 /** List of blob inventory policies. */
 export type ListBlobInventoryPolicyValueList = Array<BlobInventoryPolicy>;
+const ListBlobInventoryPolicyValueList = /*@__PURE__*/ __L.at(
+  __c38,
+  7,
+) as any as S.Schema<ListBlobInventoryPolicyValueList>;
+
 /** List of blob inventory policies returned. */
 export interface ListBlobInventoryPolicy {
   /** List of blob inventory policies. */
   value?: ListBlobInventoryPolicyValueList;
   nextLink?: string;
 }
+const ListBlobInventoryPolicy = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<ListBlobInventoryPolicy>;
+
 export interface ListBlobServicesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3994,6 +5800,11 @@ export interface ListBlobServicesRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
+const ListBlobServicesRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  1,
+) as any as S.Schema<ListBlobServicesRequest>;
+
 /** The properties of a storage account's Blob service. */
 export interface BlobServiceProperties {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4009,13 +5820,25 @@ export interface BlobServiceProperties {
   /** Sku name and tier. */
   sku?: Sku;
 }
+const BlobServiceProperties = /*@__PURE__*/ __L.at(
+  __c39,
+  2,
+) as any as S.Schema<BlobServiceProperties>;
+
 /** List of blob services returned. */
 export type BlobServiceItemsValueList = Array<BlobServiceProperties>;
+const BlobServiceItemsValueList = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<BlobServiceItemsValueList>;
+
 export interface BlobServiceItems {
   /** List of blob services returned. */
   value?: BlobServiceItemsValueList;
   nextLink?: string;
 }
+const BlobServiceItems = /*@__PURE__*/ __L.at(__c39, 4) as any as S.Schema<BlobServiceItems>;
+
 export interface ListConnectorByStorageAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4024,6 +5847,11 @@ export interface ListConnectorByStorageAccountRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
+const ListConnectorByStorageAccountRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  5,
+) as any as S.Schema<ListConnectorByStorageAccountRequest>;
+
 /** Resource tags. */
 export type ConnectorTagsMap = { [key: string]: string | undefined };
 /** A Connector is a tracked ARM resource modeled as a sub-resource of a Storage Account. */
@@ -4043,8 +5871,15 @@ export interface Connector {
   /** The properties of the Storage Connector. */
   properties: StorageConnectorProperties;
 }
+const Connector = CreateConnectorResponse as any as S.Schema<Connector>;
+
 /** The Connector items on this page */
 export type ConnectorListResultValueList = Array<Connector>;
+const ConnectorListResultValueList = /*@__PURE__*/ __L.at(
+  __c39,
+  6,
+) as any as S.Schema<ConnectorListResultValueList>;
+
 /** The response of a Connector list operation. */
 export interface ConnectorListResult {
   /** The Connector items on this page */
@@ -4052,12 +5887,19 @@ export interface ConnectorListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ConnectorListResult = /*@__PURE__*/ __L.at(__c39, 7) as any as S.Schema<ConnectorListResult>;
+
 export interface ListContextCachByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListContextCachByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<ListContextCachByResourceGroupRequest>;
+
 /** Resource tags. */
 export type ContextCacheTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -4081,8 +5923,15 @@ export interface ContextCache {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ContextCachesCreateOrUpdateResponseIdentity;
 }
+const ContextCache = GetContextCachResponse as any as S.Schema<ContextCache>;
+
 /** The ContextCache items on this page */
 export type ContextCacheListResultValueList = Array<ContextCache>;
+const ContextCacheListResultValueList = /*@__PURE__*/ __L.at(
+  __c40,
+  1,
+) as any as S.Schema<ContextCacheListResultValueList>;
+
 /** The response of a ContextCache list operation. */
 export interface ContextCacheListResult {
   /** The ContextCache items on this page */
@@ -4090,10 +5939,20 @@ export interface ContextCacheListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ContextCacheListResult = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<ContextCacheListResult>;
+
 export interface ListContextCachBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListContextCachBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  3,
+) as any as S.Schema<ListContextCachBySubscriptionRequest>;
+
 export interface ListContextCacheContainerByContextCacheRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4102,6 +5961,11 @@ export interface ListContextCacheContainerByContextCacheRequest {
   /** The name of the context cache */
   contextCacheName: string;
 }
+const ListContextCacheContainerByContextCacheRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  4,
+) as any as S.Schema<ListContextCacheContainerByContextCacheRequest>;
+
 /** A container resource within a Context Cache */
 export interface ContextCacheContainer {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4115,8 +5979,18 @@ export interface ContextCacheContainer {
   /** The resource-specific properties for this resource. */
   properties: ContextCacheContainerProperties;
 }
+const ContextCacheContainer = /*@__PURE__*/ __L.at(
+  __c40,
+  5,
+) as any as S.Schema<ContextCacheContainer>;
+
 /** The ContextCacheContainer items on this page */
 export type ContextCacheContainerListResultValueList = Array<ContextCacheContainer>;
+const ContextCacheContainerListResultValueList = /*@__PURE__*/ __L.at(
+  __c40,
+  6,
+) as any as S.Schema<ContextCacheContainerListResultValueList>;
+
 /** The response of a ContextCacheContainer list operation. */
 export interface ContextCacheContainerListResult {
   /** The ContextCacheContainer items on this page */
@@ -4124,6 +5998,11 @@ export interface ContextCacheContainerListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ContextCacheContainerListResult = /*@__PURE__*/ __L.at(
+  __c40,
+  7,
+) as any as S.Schema<ContextCacheContainerListResult>;
+
 export interface ListDataShareByStorageAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4132,6 +6011,11 @@ export interface ListDataShareByStorageAccountRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
+const ListDataShareByStorageAccountRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<ListDataShareByStorageAccountRequest>;
+
 /** Resource tags. */
 export type DataShareTagsMap = { [key: string]: string | undefined };
 /** A DataShare is a tracked ARM resource modeled as a sub-resource of a Storage Account. */
@@ -4151,8 +6035,15 @@ export interface DataShare {
   /** The properties of the Storage DataShare. */
   properties: StorageDataShareProperties;
 }
+const DataShare = CreateDataShareResponse as any as S.Schema<DataShare>;
+
 /** The DataShare items on this page */
 export type DataShareListResultValueList = Array<DataShare>;
+const DataShareListResultValueList = /*@__PURE__*/ __L.at(
+  __c41,
+  1,
+) as any as S.Schema<DataShareListResultValueList>;
+
 /** The response of a DataShare list operation. */
 export interface DataShareListResult {
   /** The DataShare items on this page */
@@ -4160,10 +6051,17 @@ export interface DataShareListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DataShareListResult = /*@__PURE__*/ __L.at(__c41, 2) as any as S.Schema<DataShareListResult>;
+
 export interface ListDeletedAccountsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListDeletedAccountsRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  3,
+) as any as S.Schema<ListDeletedAccountsRequest>;
+
 /** Deleted storage account */
 export interface DeletedAccount {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4177,8 +6075,15 @@ export interface DeletedAccount {
   /** Properties of the deleted account. */
   properties?: DeletedAccountProperties;
 }
+const DeletedAccount = /*@__PURE__*/ __L.at(__c41, 4) as any as S.Schema<DeletedAccount>;
+
 /** The DeletedAccount items on this page */
 export type DeletedAccountListResultValueList = Array<DeletedAccount>;
+const DeletedAccountListResultValueList = /*@__PURE__*/ __L.at(
+  __c41,
+  5,
+) as any as S.Schema<DeletedAccountListResultValueList>;
+
 /** The response of a DeletedAccount list operation. */
 export interface DeletedAccountListResult {
   /** The DeletedAccount items on this page */
@@ -4186,7 +6091,14 @@ export interface DeletedAccountListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DeletedAccountListResult = /*@__PURE__*/ __L.at(
+  __c41,
+  6,
+) as any as S.Schema<DeletedAccountListResult>;
+
 export type ListEncryptionScopesRequestInclude = "All" | "Enabled" | "Disabled";
+const ListEncryptionScopesRequestInclude = S.String;
+
 export interface ListEncryptionScopesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4201,6 +6113,11 @@ export interface ListEncryptionScopesRequest {
   /** Optional, when specified, will list encryption scopes with the specific state. Defaults to All */
   _include?: ListEncryptionScopesRequestInclude | (string & {});
 }
+const ListEncryptionScopesRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  7,
+) as any as S.Schema<ListEncryptionScopesRequest>;
+
 /** The Encryption Scope resource. */
 export interface EncryptionScope {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4214,8 +6131,15 @@ export interface EncryptionScope {
   /** Properties of the encryption scope. */
   properties?: EncryptionScopeProperties;
 }
+const EncryptionScope = /*@__PURE__*/ __L.at(__c42, 0) as any as S.Schema<EncryptionScope>;
+
 /** The EncryptionScope items on this page */
 export type EncryptionScopeListResultValueList = Array<EncryptionScope>;
+const EncryptionScopeListResultValueList = /*@__PURE__*/ __L.at(
+  __c42,
+  1,
+) as any as S.Schema<EncryptionScopeListResultValueList>;
+
 /** The response of a EncryptionScope list operation. */
 export interface EncryptionScopeListResult {
   /** The EncryptionScope items on this page */
@@ -4223,6 +6147,11 @@ export interface EncryptionScopeListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const EncryptionScopeListResult = /*@__PURE__*/ __L.at(
+  __c42,
+  2,
+) as any as S.Schema<EncryptionScopeListResult>;
+
 export interface ListFileServicesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4231,6 +6160,11 @@ export interface ListFileServicesRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
+const ListFileServicesRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  3,
+) as any as S.Schema<ListFileServicesRequest>;
+
 /** The properties of File services in storage account. */
 export interface FileServiceProperties {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4246,12 +6180,24 @@ export interface FileServiceProperties {
   /** Sku name and tier. */
   sku?: Sku;
 }
+const FileServiceProperties = /*@__PURE__*/ __L.at(
+  __c42,
+  4,
+) as any as S.Schema<FileServiceProperties>;
+
 /** List of file services returned. */
 export type FileServiceItemsValueList = Array<FileServiceProperties>;
+const FileServiceItemsValueList = /*@__PURE__*/ __L.at(
+  __c42,
+  5,
+) as any as S.Schema<FileServiceItemsValueList>;
+
 export interface FileServiceItems {
   /** List of file services returned. */
   value?: FileServiceItemsValueList;
 }
+const FileServiceItems = /*@__PURE__*/ __L.at(__c42, 6) as any as S.Schema<FileServiceItems>;
+
 export interface ListFileServiceServiceUsagesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4262,6 +6208,11 @@ export interface ListFileServiceServiceUsagesRequest {
   /** Optional, specifies the maximum number of file service usages to be included in the list response. */
   _maxpagesize?: number;
 }
+const ListFileServiceServiceUsagesRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  7,
+) as any as S.Schema<ListFileServiceServiceUsagesRequest>;
+
 /** The usage of file service in storage account. */
 export interface FileServiceUsage {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4275,8 +6226,15 @@ export interface FileServiceUsage {
   /** File service usage in storage account including account limits, file share limits and constants used in recommendations and bursting formula. */
   properties?: FileServiceUsageProperties;
 }
+const FileServiceUsage = /*@__PURE__*/ __L.at(__c43, 0) as any as S.Schema<FileServiceUsage>;
+
 /** The FileServiceUsage items on this page */
 export type FileServiceUsagesValueList = Array<FileServiceUsage>;
+const FileServiceUsagesValueList = /*@__PURE__*/ __L.at(
+  __c43,
+  1,
+) as any as S.Schema<FileServiceUsagesValueList>;
+
 /** List file service usages schema. */
 export interface FileServiceUsages {
   /** The FileServiceUsage items on this page */
@@ -4284,6 +6242,8 @@ export interface FileServiceUsages {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const FileServiceUsages = /*@__PURE__*/ __L.at(__c43, 2) as any as S.Schema<FileServiceUsages>;
+
 export interface ListFileSharesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4298,6 +6258,11 @@ export interface ListFileSharesRequest {
   /** Optional, used to expand the properties within share's properties. Valid values are: deleted, snapshots. Should be passed as a string with delimiter ',' */
   _expand?: string;
 }
+const ListFileSharesRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  3,
+) as any as S.Schema<ListFileSharesRequest>;
+
 /** The file share properties be listed out. */
 export interface FileShareItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4313,8 +6278,15 @@ export interface FileShareItem {
   /** The file share properties be listed out. */
   properties?: FileShareProperties;
 }
+const FileShareItem = /*@__PURE__*/ __L.at(__c43, 4) as any as S.Schema<FileShareItem>;
+
 /** The FileShareItem items on this page */
 export type FileShareItemsValueList = Array<FileShareItem>;
+const FileShareItemsValueList = /*@__PURE__*/ __L.at(
+  __c43,
+  5,
+) as any as S.Schema<FileShareItemsValueList>;
+
 /** Response schema. Contains list of shares returned, and if paging is requested or required, a URL to next page of shares. */
 export interface FileShareItems {
   /** The FileShareItem items on this page */
@@ -4322,6 +6294,8 @@ export interface FileShareItems {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const FileShareItems = /*@__PURE__*/ __L.at(__c43, 6) as any as S.Schema<FileShareItems>;
+
 export interface ListLocalUserKeysRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4332,8 +6306,16 @@ export interface ListLocalUserKeysRequest {
   /** The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account. */
   username: string;
 }
+const ListLocalUserKeysRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  7,
+) as any as S.Schema<ListLocalUserKeysRequest>;
+
 /** Optional, local user ssh authorized keys for SFTP. */
 export type LocalUserKeysSshAuthorizedKeysList = Array<SshPublicKey>;
+const LocalUserKeysSshAuthorizedKeysList =
+  LocalUserPropertiesSshAuthorizedKeysList as any as S.Schema<LocalUserKeysSshAuthorizedKeysList>;
+
 /** The Storage Account Local User keys. */
 export interface LocalUserKeys {
   /** Optional, local user ssh authorized keys for SFTP. */
@@ -4341,7 +6323,11 @@ export interface LocalUserKeys {
   /** Auto generated by the server for SMB authentication. */
   sharedKey?: string;
 }
+const LocalUserKeys = /*@__PURE__*/ __L.at(__c44, 0) as any as S.Schema<LocalUserKeys>;
+
 export type ListLocalUsersRequestInclude = "nfsv3";
+const ListLocalUsersRequestInclude = S.String;
+
 export interface ListLocalUsersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4356,6 +6342,11 @@ export interface ListLocalUsersRequest {
   /** Optional, when specified, will list local users enabled for the specific protocol. Lists all users by default. */
   _include?: ListLocalUsersRequestInclude | (string & {});
 }
+const ListLocalUsersRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  1,
+) as any as S.Schema<ListLocalUsersRequest>;
+
 /** The local user associated with the storage accounts. */
 export interface LocalUser {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4369,8 +6360,12 @@ export interface LocalUser {
   /** Storage account local user properties. */
   properties?: LocalUserProperties;
 }
+const LocalUser = GetLocalUserResponse as any as S.Schema<LocalUser>;
+
 /** The LocalUser items on this page */
 export type LocalUsersValueList = Array<LocalUser>;
+const LocalUsersValueList = /*@__PURE__*/ __L.at(__c44, 2) as any as S.Schema<LocalUsersValueList>;
+
 /** List of local users requested, and if paging is required, a URL to the next page of local users. */
 export interface LocalUsers {
   /** The LocalUser items on this page */
@@ -4378,6 +6373,8 @@ export interface LocalUsers {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const LocalUsers = /*@__PURE__*/ __L.at(__c44, 3) as any as S.Schema<LocalUsers>;
+
 export interface ListNetworkSecurityPerimeterConfigurationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4386,6 +6383,11 @@ export interface ListNetworkSecurityPerimeterConfigurationsRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
+const ListNetworkSecurityPerimeterConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  4,
+) as any as S.Schema<ListNetworkSecurityPerimeterConfigurationsRequest>;
+
 /** The Network Security Perimeter configuration resource. */
 export interface NetworkSecurityPerimeterConfiguration {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4399,9 +6401,17 @@ export interface NetworkSecurityPerimeterConfiguration {
   /** Properties of the Network Security Perimeter Configuration */
   properties?: NetworkSecurityPerimeterConfigurationProperties;
 }
+const NetworkSecurityPerimeterConfiguration =
+  GetNetworkSecurityPerimeterConfigurationResponse as any as S.Schema<NetworkSecurityPerimeterConfiguration>;
+
 /** The NetworkSecurityPerimeterConfiguration items on this page */
 export type NetworkSecurityPerimeterConfigurationListValueList =
   Array<NetworkSecurityPerimeterConfiguration>;
+const NetworkSecurityPerimeterConfigurationListValueList = /*@__PURE__*/ __L.at(
+  __c44,
+  5,
+) as any as S.Schema<NetworkSecurityPerimeterConfigurationListValueList>;
+
 /** Result of the List Network Security Perimeter configuration operation. */
 export interface NetworkSecurityPerimeterConfigurationList {
   /** The NetworkSecurityPerimeterConfiguration items on this page */
@@ -4409,6 +6419,11 @@ export interface NetworkSecurityPerimeterConfigurationList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const NetworkSecurityPerimeterConfigurationList = /*@__PURE__*/ __L.at(
+  __c44,
+  6,
+) as any as S.Schema<NetworkSecurityPerimeterConfigurationList>;
+
 export interface ListObjectReplicationPoliciesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4417,6 +6432,11 @@ export interface ListObjectReplicationPoliciesRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
+const ListObjectReplicationPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  7,
+) as any as S.Schema<ListObjectReplicationPoliciesRequest>;
+
 /** The replication policy between two storage accounts. Multiple rules can be defined in one policy. */
 export interface ObjectReplicationPolicy {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4430,15 +6450,35 @@ export interface ObjectReplicationPolicy {
   /** Returns the Storage Account Object Replication Policy. */
   properties?: ObjectReplicationPolicyProperties;
 }
+const ObjectReplicationPolicy = /*@__PURE__*/ __L.at(
+  __c45,
+  0,
+) as any as S.Schema<ObjectReplicationPolicy>;
+
 /** The replication policy between two storage accounts. */
 export type ObjectReplicationPoliciesValueList = Array<ObjectReplicationPolicy>;
+const ObjectReplicationPoliciesValueList = /*@__PURE__*/ __L.at(
+  __c45,
+  1,
+) as any as S.Schema<ObjectReplicationPoliciesValueList>;
+
 /** List storage account object replication policies. */
 export interface ObjectReplicationPolicies {
   /** The replication policy between two storage accounts. */
   value?: ObjectReplicationPoliciesValueList;
   nextLink?: string;
 }
+const ObjectReplicationPolicies = /*@__PURE__*/ __L.at(
+  __c45,
+  2,
+) as any as S.Schema<ObjectReplicationPolicies>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  3,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Display metadata associated with the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft Storage. */
@@ -4450,6 +6490,8 @@ export interface OperationDisplay {
   /** Description of the operation. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c45, 4) as any as S.Schema<OperationDisplay>;
+
 /** Dimension of blobs, possibly be blob type or access tier. */
 export interface Dimension {
   /** Display name of dimension. */
@@ -4457,8 +6499,15 @@ export interface Dimension {
   /** Display name of dimension. */
   displayName?: string;
 }
+const Dimension = /*@__PURE__*/ __L.at(__c45, 5) as any as S.Schema<Dimension>;
+
 /** Dimensions of blobs, including blob type and access tier. */
 export type MetricSpecificationDimensionsList = Array<Dimension>;
+const MetricSpecificationDimensionsList = /*@__PURE__*/ __L.at(
+  __c45,
+  6,
+) as any as S.Schema<MetricSpecificationDimensionsList>;
+
 /** Metric specification of operation. */
 export interface MetricSpecification {
   /** Name of metric specification. */
@@ -4480,18 +6529,32 @@ export interface MetricSpecification {
   /** Account Resource Id. */
   resourceIdDimensionNameOverride?: string;
 }
+const MetricSpecification = /*@__PURE__*/ __L.at(__c45, 7) as any as S.Schema<MetricSpecification>;
+
 /** Metric specifications of operation. */
 export type ServiceSpecificationMetricSpecificationsList = Array<MetricSpecification>;
+const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ __L.at(
+  __c46,
+  0,
+) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
+
 /** One property of operation, include metric specifications. */
 export interface ServiceSpecification {
   /** Metric specifications of operation. */
   metricSpecifications?: ServiceSpecificationMetricSpecificationsList;
 }
+const ServiceSpecification = /*@__PURE__*/ __L.at(
+  __c46,
+  1,
+) as any as S.Schema<ServiceSpecification>;
+
 /** Properties of operation, include metric specifications. */
 export interface OperationProperties {
   /** One property of operation, include metric specifications. */
   serviceSpecification?: ServiceSpecification;
 }
+const OperationProperties = /*@__PURE__*/ __L.at(__c46, 2) as any as S.Schema<OperationProperties>;
+
 /** Storage REST API operation definition. */
 export interface Operation {
   /** Operation name: {provider}/{resource}/{operation} */
@@ -4503,14 +6566,23 @@ export interface Operation {
   /** Properties of operation, include metric specifications. */
   properties?: OperationProperties;
 }
+const Operation = /*@__PURE__*/ __L.at(__c46, 3) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider. */
 export type OperationListResultValueList = Array<Operation>;
+const OperationListResultValueList = /*@__PURE__*/ __L.at(
+  __c46,
+  4,
+) as any as S.Schema<OperationListResultValueList>;
+
 /** The list of available operations. */
 export interface OperationListResult {
   /** List of operations supported by the resource provider. */
   value?: OperationListResultValueList;
   nextLink?: string;
 }
+const OperationListResult = /*@__PURE__*/ __L.at(__c46, 5) as any as S.Schema<OperationListResult>;
+
 export interface ListPrivateEndpointConnectionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4519,14 +6591,27 @@ export interface ListPrivateEndpointConnectionsRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
+const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  6,
+) as any as S.Schema<ListPrivateEndpointConnectionsRequest>;
+
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
+const PrivateEndpointConnectionListResultValueList =
+  StorageAccountPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+
 /** List of private endpoint connection associated with the specified storage account */
 export interface PrivateEndpointConnectionListResult {
   /** Array of private endpoint connections */
   value?: PrivateEndpointConnectionListResultValueList;
   nextLink?: string;
 }
+const PrivateEndpointConnectionListResult = /*@__PURE__*/ __L.at(
+  __c46,
+  7,
+) as any as S.Schema<PrivateEndpointConnectionListResult>;
+
 export interface ListPrivateLinkResourceByStorageAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4535,10 +6620,21 @@ export interface ListPrivateLinkResourceByStorageAccountRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
+const ListPrivateLinkResourceByStorageAccountRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  0,
+) as any as S.Schema<ListPrivateLinkResourceByStorageAccountRequest>;
+
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
+const PrivateLinkResourcePropertiesRequiredMembersList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
   /** The private link resource group id. */
@@ -4548,6 +6644,11 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource Private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
+const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
+  __c47,
+  1,
+) as any as S.Schema<PrivateLinkResourceProperties>;
+
 /** A private link resource */
 export interface PrivateLinkResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4561,13 +6662,25 @@ export interface PrivateLinkResource {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
+const PrivateLinkResource = /*@__PURE__*/ __L.at(__c47, 2) as any as S.Schema<PrivateLinkResource>;
+
 /** Array of private link resources */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
+const PrivateLinkResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c47,
+  3,
+) as any as S.Schema<PrivateLinkResourceListResultValueList>;
+
 /** A list of private link resources */
 export interface PrivateLinkResourceListResult {
   /** Array of private link resources */
   value?: PrivateLinkResourceListResultValueList;
 }
+const PrivateLinkResourceListResult = /*@__PURE__*/ __L.at(
+  __c47,
+  4,
+) as any as S.Schema<PrivateLinkResourceListResult>;
+
 export interface ListQueueRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4580,12 +6693,16 @@ export interface ListQueueRequest {
   /** Optional, When specified, only the queues with a name starting with the given filter will be listed. */
   _filter?: string;
 }
+const ListQueueRequest = /*@__PURE__*/ __L.at(__c47, 5) as any as S.Schema<ListQueueRequest>;
+
 /** A name-value pair that represents queue metadata. */
 export type ListQueuePropertiesMetadataMap = { [key: string]: string | undefined };
 export interface ListQueueProperties {
   /** A name-value pair that represents queue metadata. */
   metadata?: ListQueuePropertiesMetadataMap;
 }
+const ListQueueProperties = QueuePropertiesInput as any as S.Schema<ListQueueProperties>;
+
 export interface ListQueue {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4598,8 +6715,15 @@ export interface ListQueue {
   /** List Queue resource properties. */
   properties?: ListQueueProperties;
 }
+const ListQueue = /*@__PURE__*/ __L.at(__c47, 6) as any as S.Schema<ListQueue>;
+
 /** The ListQueue items on this page */
 export type ListQueueResourceValueList = Array<ListQueue>;
+const ListQueueResourceValueList = /*@__PURE__*/ __L.at(
+  __c47,
+  7,
+) as any as S.Schema<ListQueueResourceValueList>;
+
 /** Response schema. Contains list of queues returned */
 export interface ListQueueResource {
   /** The ListQueue items on this page */
@@ -4607,6 +6731,8 @@ export interface ListQueueResource {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ListQueueResource = /*@__PURE__*/ __L.at(__c48, 0) as any as S.Schema<ListQueueResource>;
+
 export interface ListQueueServicesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4615,6 +6741,11 @@ export interface ListQueueServicesRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
+const ListQueueServicesRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  1,
+) as any as S.Schema<ListQueueServicesRequest>;
+
 /** The properties of a storage account's Queue service. */
 export interface QueueServiceProperties {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4628,27 +6759,57 @@ export interface QueueServiceProperties {
   /** The properties of a storage account's Queue service. */
   properties?: QueueServicePropertiesProperties;
 }
+const QueueServiceProperties = /*@__PURE__*/ __L.at(
+  __c48,
+  2,
+) as any as S.Schema<QueueServiceProperties>;
+
 /** List of queue services returned. */
 export type ListQueueServicesValueList = Array<QueueServiceProperties>;
+const ListQueueServicesValueList = /*@__PURE__*/ __L.at(
+  __c48,
+  3,
+) as any as S.Schema<ListQueueServicesValueList>;
+
 export interface ListQueueServices {
   /** List of queue services returned. */
   value?: ListQueueServicesValueList;
 }
+const ListQueueServices = /*@__PURE__*/ __L.at(__c48, 4) as any as S.Schema<ListQueueServices>;
+
 export interface ListSkusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListSkusRequest = /*@__PURE__*/ __L.at(__c48, 5) as any as S.Schema<ListSkusRequest>;
+
 /** The set of locations that the SKU is available. This will be supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.). */
 export type SkuInformationLocationsList = Array<string>;
+const SkuInformationLocationsList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<SkuInformationLocationsList>;
+
 /** Describes the available zones for the product where storage account resource can be created. */
 export type SkuInformationLocationInfoItemZonesList = Array<string>;
+const SkuInformationLocationInfoItemZonesList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<SkuInformationLocationInfoItemZonesList>;
+
 export interface SkuInformationLocationInfoItem {
   /** Describes the location for the product where storage account resource can be created. */
   location?: string;
   /** Describes the available zones for the product where storage account resource can be created. */
   zones?: SkuInformationLocationInfoItemZonesList;
 }
+const SkuInformationLocationInfoItem = /*@__PURE__*/ __L.at(
+  __c48,
+  6,
+) as any as S.Schema<SkuInformationLocationInfoItem>;
+
 export type SkuInformationLocationInfoList = Array<SkuInformationLocationInfoItem>;
+const SkuInformationLocationInfoList = /*@__PURE__*/ __L.at(
+  __c48,
+  7,
+) as any as S.Schema<SkuInformationLocationInfoList>;
+
 /** The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc. */
 export interface SKUCapability {
   /** The name of capability, The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc. */
@@ -4656,12 +6817,24 @@ export interface SKUCapability {
   /** A string value to indicate states of given capability. Possibly 'true' or 'false'. */
   value?: string;
 }
+const SKUCapability = /*@__PURE__*/ __L.at(__c49, 0) as any as S.Schema<SKUCapability>;
+
 /** The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc. */
 export type SkuInformationCapabilitiesList = Array<SKUCapability>;
+const SkuInformationCapabilitiesList = /*@__PURE__*/ __L.at(
+  __c49,
+  1,
+) as any as S.Schema<SkuInformationCapabilitiesList>;
+
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
 export type RestrictionValuesList = Array<string>;
+const RestrictionValuesList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<RestrictionValuesList>;
+
 /** The reason for the restriction. As of now this can be "QuotaId" or "NotAvailableForSubscription". Quota Id is set when the SKU has requiredQuotas parameter as the subscription does not belong to that quota. The "NotAvailableForSubscription" is related to capacity at DC. */
 export type ReasonCode = "QuotaId" | "NotAvailableForSubscription";
+const ReasonCode = S.String;
+
 /** The restriction because of which SKU cannot be used. */
 export interface Restriction {
   /** The type of restrictions. As of now only possible value for this is location. */
@@ -4671,8 +6844,15 @@ export interface Restriction {
   /** The reason for the restriction. As of now this can be "QuotaId" or "NotAvailableForSubscription". Quota Id is set when the SKU has requiredQuotas parameter as the subscription does not belong to that quota. The "NotAvailableForSubscription" is related to capacity at DC. */
   reasonCode?: ReasonCode;
 }
+const Restriction = /*@__PURE__*/ __L.at(__c49, 2) as any as S.Schema<Restriction>;
+
 /** The restrictions because of which SKU cannot be used. This is empty if there are no restrictions. */
 export type SkuInformationRestrictionsList = Array<Restriction>;
+const SkuInformationRestrictionsList = /*@__PURE__*/ __L.at(
+  __c49,
+  3,
+) as any as S.Schema<SkuInformationRestrictionsList>;
+
 /** Storage SKU and its properties */
 export interface SkuInformation {
   /** The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType. */
@@ -4691,22 +6871,42 @@ export interface SkuInformation {
   /** The restrictions because of which SKU cannot be used. This is empty if there are no restrictions. */
   restrictions?: SkuInformationRestrictionsList;
 }
+const SkuInformation = /*@__PURE__*/ __L.at(__c49, 4) as any as S.Schema<SkuInformation>;
+
 /** Get the list result of storage SKUs and their properties. */
 export type StorageSkuListResultValueList = Array<SkuInformation>;
+const StorageSkuListResultValueList = /*@__PURE__*/ __L.at(
+  __c49,
+  5,
+) as any as S.Schema<StorageSkuListResultValueList>;
+
 /** The response from the List Storage SKUs operation. */
 export interface StorageSkuListResult {
   /** Get the list result of storage SKUs and their properties. */
   value?: StorageSkuListResultValueList;
   nextLink?: string;
 }
+const StorageSkuListResult = /*@__PURE__*/ __L.at(
+  __c49,
+  6,
+) as any as S.Schema<StorageSkuListResult>;
+
 /** The signed services accessible with the account SAS. Possible values include: Blob (b), Queue (q), Table (t), File (f). */
 export type Services = "b" | "q" | "t" | "f";
+const Services = S.String;
+
 /** The signed resource types that are accessible with the account SAS. Service (s): Access to service-level APIs; Container (c): Access to container-level APIs; Object (o): Access to object-level APIs for blobs, queue messages, table entities, and files. */
 export type SignedResourceTypes = "s" | "c" | "o";
+const SignedResourceTypes = S.String;
+
 /** The signed permissions for the account SAS. Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a), Create (c), Update (u) and Process (p). */
 export type Permissions = "r" | "d" | "w" | "l" | "a" | "c" | "u" | "p";
+const Permissions = S.String;
+
 /** The protocol permitted for a request made with the account SAS. */
 export type HttpProtocol = "https,http" | "https";
+const HttpProtocol = S.String;
+
 export interface ListStorageAccountAccountSASRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4731,21 +6931,42 @@ export interface ListStorageAccountAccountSASRequest {
   /** The key to sign the account SAS token with. */
   keyToSign?: string;
 }
+const ListStorageAccountAccountSASRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  7,
+) as any as S.Schema<ListStorageAccountAccountSASRequest>;
+
 /** The List SAS credentials operation response. */
 export interface ListAccountSasResponse {
   /** List SAS credentials of storage account. */
   accountSasToken?: string;
 }
+const ListAccountSasResponse = /*@__PURE__*/ __L.at(
+  __c50,
+  0,
+) as any as S.Schema<ListAccountSasResponse>;
+
 export interface ListStorageAccountByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListStorageAccountByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  1,
+) as any as S.Schema<ListStorageAccountByResourceGroupRequest>;
+
 /** Resource tags. */
 export type StorageAccountTagsMap = { [key: string]: string | undefined };
+const StorageAccountTagsMap =
+  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<StorageAccountTagsMap>;
+
 /** The availability zones. */
 export type StorageAccountZonesList = Array<string>;
+const StorageAccountZonesList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<StorageAccountZonesList>;
+
 /** The storage account. */
 export interface StorageAccount {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4775,8 +6996,15 @@ export interface StorageAccount {
   /** Optional. Gets or sets the zonal placement details for the storage account. */
   placement?: Placement;
 }
+const StorageAccount = /*@__PURE__*/ __L.at(__c50, 2) as any as S.Schema<StorageAccount>;
+
 /** The StorageAccount items on this page */
 export type StorageAccountListResultValueList = Array<StorageAccount>;
+const StorageAccountListResultValueList = /*@__PURE__*/ __L.at(
+  __c50,
+  3,
+) as any as S.Schema<StorageAccountListResultValueList>;
+
 /** The response of a StorageAccount list operation. */
 export interface StorageAccountListResult {
   /** The StorageAccount items on this page */
@@ -4784,7 +7012,14 @@ export interface StorageAccountListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const StorageAccountListResult = /*@__PURE__*/ __L.at(
+  __c50,
+  4,
+) as any as S.Schema<StorageAccountListResult>;
+
 export type ListStorageAccountKeysRequestExpand = "kerb";
+const ListStorageAccountKeysRequestExpand = S.String;
+
 export interface ListStorageAccountKeysRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4795,8 +7030,15 @@ export interface ListStorageAccountKeysRequest {
   /** Specifies type of the key to be listed. Possible value is kerb. */
   _expand?: ListStorageAccountKeysRequestExpand | (string & {});
 }
+const ListStorageAccountKeysRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  5,
+) as any as S.Schema<ListStorageAccountKeysRequest>;
+
 /** Permissions for the key -- read-only or full permissions. */
 export type KeyPermission = "Read" | "Full";
+const KeyPermission = S.String;
+
 /** An access key for the storage account. */
 export interface StorageAccountKey {
   /** Name of the key. */
@@ -4808,19 +7050,38 @@ export interface StorageAccountKey {
   /** Creation time of the key, in round trip date format. */
   creationTime?: string;
 }
+const StorageAccountKey = /*@__PURE__*/ __L.at(__c50, 6) as any as S.Schema<StorageAccountKey>;
+
 /** Gets the list of storage account keys and their properties for the specified storage account. */
 export type StorageAccountListKeysResultKeysList = Array<StorageAccountKey>;
+const StorageAccountListKeysResultKeysList = /*@__PURE__*/ __L.at(
+  __c50,
+  7,
+) as any as S.Schema<StorageAccountListKeysResultKeysList>;
+
 /** The response from the ListKeys operation. */
 export interface StorageAccountListKeysResult {
   /** Gets the list of storage account keys and their properties for the specified storage account. */
   keys?: StorageAccountListKeysResultKeysList;
 }
+const StorageAccountListKeysResult = /*@__PURE__*/ __L.at(
+  __c51,
+  0,
+) as any as S.Schema<StorageAccountListKeysResult>;
+
 export interface ListStorageAccountsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListStorageAccountsRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  1,
+) as any as S.Schema<ListStorageAccountsRequest>;
+
 /** The signed services accessible with the service SAS. Possible values include: Blob (b), Container (c), File (f), Share (s). */
 export type SignedResource = "b" | "c" | "f" | "s";
+const SignedResource = S.String;
+
 export interface ListStorageAccountServiceSASRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4865,11 +7126,21 @@ export interface ListStorageAccountServiceSASRequest {
   /** The response header override for content type. */
   rsct?: string;
 }
+const ListStorageAccountServiceSASRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  2,
+) as any as S.Schema<ListStorageAccountServiceSASRequest>;
+
 /** The List service SAS credentials operation response. */
 export interface ListServiceSasResponse {
   /** List service SAS credentials of specific resource. */
   serviceSasToken?: string;
 }
+const ListServiceSasResponse = /*@__PURE__*/ __L.at(
+  __c51,
+  3,
+) as any as S.Schema<ListServiceSasResponse>;
+
 export interface ListStorageTaskAssignmentInstancesReportRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4884,6 +7155,11 @@ export interface ListStorageTaskAssignmentInstancesReportRequest {
   /** Optional. When specified, it can be used to query using reporting properties. See [Constructing Filter Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings) for details. */
   _filter?: string;
 }
+const ListStorageTaskAssignmentInstancesReportRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  4,
+) as any as S.Schema<ListStorageTaskAssignmentInstancesReportRequest>;
+
 /** Storage Tasks run report instance */
 export interface StorageTaskReportInstance {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4897,8 +7173,18 @@ export interface StorageTaskReportInstance {
   /** Storage task execution report for a run instance. */
   properties?: StorageTaskReportProperties;
 }
+const StorageTaskReportInstance = /*@__PURE__*/ __L.at(
+  __c51,
+  5,
+) as any as S.Schema<StorageTaskReportInstance>;
+
 /** The StorageTaskReportInstance items on this page */
 export type StorageTaskReportSummaryValueList = Array<StorageTaskReportInstance>;
+const StorageTaskReportSummaryValueList = /*@__PURE__*/ __L.at(
+  __c51,
+  6,
+) as any as S.Schema<StorageTaskReportSummaryValueList>;
+
 /** Fetch Storage Tasks Run Summary. */
 export interface StorageTaskReportSummary {
   /** The StorageTaskReportInstance items on this page */
@@ -4906,6 +7192,11 @@ export interface StorageTaskReportSummary {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const StorageTaskReportSummary = /*@__PURE__*/ __L.at(
+  __c51,
+  7,
+) as any as S.Schema<StorageTaskReportSummary>;
+
 export interface ListStorageTaskAssignmentsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4916,6 +7207,11 @@ export interface ListStorageTaskAssignmentsRequest {
   /** Optional, specifies the maximum number of storage task assignment Ids to be included in the list response. */
   _top?: number;
 }
+const ListStorageTaskAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  0,
+) as any as S.Schema<ListStorageTaskAssignmentsRequest>;
+
 /** The storage task assignment. */
 export interface StorageTaskAssignment {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4929,8 +7225,18 @@ export interface StorageTaskAssignment {
   /** Properties of the storage task assignment. */
   properties?: StorageTaskAssignmentProperties;
 }
+const StorageTaskAssignment = /*@__PURE__*/ __L.at(
+  __c52,
+  1,
+) as any as S.Schema<StorageTaskAssignment>;
+
 /** The StorageTaskAssignment items on this page */
 export type StorageTaskAssignmentsListValueList = Array<StorageTaskAssignment>;
+const StorageTaskAssignmentsListValueList = /*@__PURE__*/ __L.at(
+  __c52,
+  2,
+) as any as S.Schema<StorageTaskAssignmentsListValueList>;
+
 /** List of storage task assignments for the storage account */
 export interface StorageTaskAssignmentsList {
   /** The StorageTaskAssignment items on this page */
@@ -4938,6 +7244,11 @@ export interface StorageTaskAssignmentsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const StorageTaskAssignmentsList = /*@__PURE__*/ __L.at(
+  __c52,
+  3,
+) as any as S.Schema<StorageTaskAssignmentsList>;
+
 export interface ListStorageTaskAssignmentsInstancesReportRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4950,6 +7261,11 @@ export interface ListStorageTaskAssignmentsInstancesReportRequest {
   /** Optional. When specified, it can be used to query using reporting properties. See [Constructing Filter Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings) for details. */
   _filter?: string;
 }
+const ListStorageTaskAssignmentsInstancesReportRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  4,
+) as any as S.Schema<ListStorageTaskAssignmentsInstancesReportRequest>;
+
 export interface ListTableRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4958,6 +7274,8 @@ export interface ListTableRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
+const ListTableRequest = /*@__PURE__*/ __L.at(__c52, 5) as any as S.Schema<ListTableRequest>;
+
 /** Properties of the table, including Id, resource name, resource type. */
 export interface Table {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4971,8 +7289,15 @@ export interface Table {
   /** Table resource properties. */
   properties?: TableProperties;
 }
+const Table = CreateTableResponse as any as S.Schema<Table>;
+
 /** The Table items on this page */
 export type ListTableResourceValueList = Array<Table>;
+const ListTableResourceValueList = /*@__PURE__*/ __L.at(
+  __c52,
+  6,
+) as any as S.Schema<ListTableResourceValueList>;
+
 /** Response schema. Contains list of tables returned */
 export interface ListTableResource {
   /** The Table items on this page */
@@ -4980,6 +7305,8 @@ export interface ListTableResource {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ListTableResource = /*@__PURE__*/ __L.at(__c52, 7) as any as S.Schema<ListTableResource>;
+
 export interface ListTableServicesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4988,6 +7315,11 @@ export interface ListTableServicesRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
+const ListTableServicesRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  0,
+) as any as S.Schema<ListTableServicesRequest>;
+
 /** The properties of a storage account's Table service. */
 export interface TableServiceProperties {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5007,12 +7339,19 @@ export interface ListTableServices {
   /** List of table services returned. */
   value?: ListTableServicesValueList;
 }
+const ListTableServices = ListQueueServices as any as S.Schema<ListTableServices>;
+
 export interface ListUsageByLocationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
 }
+const ListUsageByLocationRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  1,
+) as any as S.Schema<ListUsageByLocationRequest>;
+
 /** Gets the unit of measurement. */
 export type UsageUnit =
   | "Count"
@@ -5021,6 +7360,8 @@ export type UsageUnit =
   | "Percent"
   | "CountsPerSecond"
   | "BytesPerSecond";
+const UsageUnit = S.String;
+
 /** The usage names that can be used; currently limited to StorageAccount. */
 export interface UsageName {
   /** Gets a string describing the resource name. */
@@ -5028,6 +7369,8 @@ export interface UsageName {
   /** Gets a localized string describing the resource name. */
   localizedValue?: string;
 }
+const UsageName = /*@__PURE__*/ __L.at(__c53, 2) as any as S.Schema<UsageName>;
+
 /** Describes Storage Resource Usage. */
 export interface Usage {
   /** Gets the unit of measurement. */
@@ -5039,20 +7382,38 @@ export interface Usage {
   /** Gets the name of the type of usage. */
   name?: UsageName;
 }
+const Usage = /*@__PURE__*/ __L.at(__c53, 3) as any as S.Schema<Usage>;
+
 /** Gets or sets the list of Storage Resource Usages. */
 export type UsageListResultValueList = Array<Usage>;
+const UsageListResultValueList = /*@__PURE__*/ __L.at(
+  __c53,
+  4,
+) as any as S.Schema<UsageListResultValueList>;
+
 /** The response from the List Usages operation. */
 export interface UsageListResult {
   /** Gets or sets the list of Storage Resource Usages. */
   value?: UsageListResultValueList;
   nextLink?: string;
 }
+const UsageListResult = /*@__PURE__*/ __L.at(__c53, 5) as any as S.Schema<UsageListResult>;
+
 /** The permission scopes of the local user. */
 export type LocalUserPropertiesInputPermissionScopesList = Array<PermissionScope>;
+const LocalUserPropertiesInputPermissionScopesList =
+  LocalUserPropertiesPermissionScopesList as any as S.Schema<LocalUserPropertiesInputPermissionScopesList>;
+
 /** Optional, local user ssh authorized keys for SFTP. */
 export type LocalUserPropertiesInputSshAuthorizedKeysList = Array<SshPublicKey>;
+const LocalUserPropertiesInputSshAuthorizedKeysList =
+  LocalUserPropertiesSshAuthorizedKeysList as any as S.Schema<LocalUserPropertiesInputSshAuthorizedKeysList>;
+
 /** Supplementary group membership. Only applicable for local users enabled for NFSv3 access. */
 export type LocalUserPropertiesInputExtendedGroupsList = Array<number>;
+const LocalUserPropertiesInputExtendedGroupsList =
+  LocalUserPropertiesExtendedGroupsList as any as S.Schema<LocalUserPropertiesInputExtendedGroupsList>;
+
 /** The Storage Account Local User properties. */
 export interface LocalUserPropertiesInput {
   /** The permission scopes of the local user. */
@@ -5076,6 +7437,11 @@ export interface LocalUserPropertiesInput {
   /** Indicates if the local user is enabled for access with NFSv3 protocol. */
   isNFSv3Enabled?: boolean;
 }
+const LocalUserPropertiesInput = /*@__PURE__*/ __L.at(
+  __c53,
+  6,
+) as any as S.Schema<LocalUserPropertiesInput>;
+
 export interface LocalUsersCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5088,6 +7454,11 @@ export interface LocalUsersCreateOrUpdateRequest {
   /** Storage account local user properties. */
   properties?: LocalUserPropertiesInput;
 }
+const LocalUsersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  7,
+) as any as S.Schema<LocalUsersCreateOrUpdateRequest>;
+
 export interface LocalUsersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5100,6 +7471,11 @@ export interface LocalUsersCreateOrUpdateResponse {
   /** Storage account local user properties. */
   properties?: LocalUserProperties;
 }
+const LocalUsersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  0,
+) as any as S.Schema<LocalUsersCreateOrUpdateResponse>;
+
 export interface LockBlobContainerImmutabilityPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5110,6 +7486,11 @@ export interface LockBlobContainerImmutabilityPolicyRequest {
   /** The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number. */
   containerName: string;
 }
+const LockBlobContainerImmutabilityPolicyRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  1,
+) as any as S.Schema<LockBlobContainerImmutabilityPolicyRequest>;
+
 export interface LockBlobContainerImmutabilityPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5124,12 +7505,22 @@ export interface LockBlobContainerImmutabilityPolicyResponse {
   /** Resource Etag. */
   etag?: string;
 }
+const LockBlobContainerImmutabilityPolicyResponse =
+  BlobContainersCreateOrUpdateImmutabilityPolicyResponse as any as S.Schema<LockBlobContainerImmutabilityPolicyResponse>;
+
 export type ManagementPoliciesCreateOrUpdateRequestManagementPolicyName = "default";
+const ManagementPoliciesCreateOrUpdateRequestManagementPolicyName = S.String;
+
 /** The Storage Account ManagementPolicy properties. */
 export interface ManagementPolicyPropertiesInput {
   /** The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview. */
   policy: ManagementPolicySchema;
 }
+const ManagementPolicyPropertiesInput = /*@__PURE__*/ __L.at(
+  __c54,
+  2,
+) as any as S.Schema<ManagementPolicyPropertiesInput>;
+
 export interface ManagementPoliciesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5142,6 +7533,11 @@ export interface ManagementPoliciesCreateOrUpdateRequest {
   /** Returns the Storage Account Data Policies Rules. */
   properties?: ManagementPolicyPropertiesInput;
 }
+const ManagementPoliciesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  3,
+) as any as S.Schema<ManagementPoliciesCreateOrUpdateRequest>;
+
 export interface ManagementPoliciesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5154,6 +7550,9 @@ export interface ManagementPoliciesCreateOrUpdateResponse {
   /** Returns the Storage Account Data Policies Rules. */
   properties?: ManagementPolicyProperties;
 }
+const ManagementPoliciesCreateOrUpdateResponse =
+  GetManagementPolicyResponse as any as S.Schema<ManagementPoliciesCreateOrUpdateResponse>;
+
 export interface NetworkSecurityPerimeterConfigurationsReconcileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5164,9 +7563,20 @@ export interface NetworkSecurityPerimeterConfigurationsReconcileRequest {
   /** The name for Network Security Perimeter configuration */
   networkSecurityPerimeterConfigurationName: string;
 }
+const NetworkSecurityPerimeterConfigurationsReconcileRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  4,
+) as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileRequest>;
+
 export interface NetworkSecurityPerimeterConfigurationsReconcileResponse {}
+const NetworkSecurityPerimeterConfigurationsReconcileResponse =
+  BlobContainersObjectLevelWormResponse as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileResponse>;
+
 /** The storage account object replication rules. */
 export type ObjectReplicationPolicyPropertiesInputRulesList = Array<ObjectReplicationPolicyRule>;
+const ObjectReplicationPolicyPropertiesInputRulesList =
+  ObjectReplicationPolicyPropertiesRulesList as any as S.Schema<ObjectReplicationPolicyPropertiesInputRulesList>;
+
 /** The Storage Account ObjectReplicationPolicy properties. */
 export interface ObjectReplicationPolicyPropertiesInput {
   /** Required. Source account name. It should be full resource id if allowCrossTenantReplication set to false. */
@@ -5182,6 +7592,11 @@ export interface ObjectReplicationPolicyPropertiesInput {
   /** Optional. The object replication policy tags replication feature options. */
   tagsReplication?: ObjectReplicationPolicyPropertiesTagsReplication;
 }
+const ObjectReplicationPolicyPropertiesInput = /*@__PURE__*/ __L.at(
+  __c54,
+  5,
+) as any as S.Schema<ObjectReplicationPolicyPropertiesInput>;
+
 export interface ObjectReplicationPoliciesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5194,6 +7609,11 @@ export interface ObjectReplicationPoliciesCreateOrUpdateRequest {
   /** Returns the Storage Account Object Replication Policy. */
   properties?: ObjectReplicationPolicyPropertiesInput;
 }
+const ObjectReplicationPoliciesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  6,
+) as any as S.Schema<ObjectReplicationPoliciesCreateOrUpdateRequest>;
+
 export interface ObjectReplicationPoliciesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5206,11 +7626,19 @@ export interface ObjectReplicationPoliciesCreateOrUpdateResponse {
   /** Returns the Storage Account Object Replication Policy. */
   properties?: ObjectReplicationPolicyProperties;
 }
+const ObjectReplicationPoliciesCreateOrUpdateResponse =
+  GetObjectReplicationPolicyResponse as any as S.Schema<ObjectReplicationPoliciesCreateOrUpdateResponse>;
+
 /** The key vault properties for the encryption scope. This is a required field if encryption scope 'source' attribute is set to 'Microsoft.KeyVault'. */
 export interface EncryptionScopeKeyVaultPropertiesInput {
   /** The object identifier for a key vault key object. When applied, the encryption scope will use the key referenced by the identifier to enable customer-managed key support on this encryption scope. */
   keyUri?: string;
 }
+const EncryptionScopeKeyVaultPropertiesInput = /*@__PURE__*/ __L.at(
+  __c54,
+  7,
+) as any as S.Schema<EncryptionScopeKeyVaultPropertiesInput>;
+
 /** Properties of the encryption scope. */
 export interface EncryptionScopePropertiesInput {
   /** The provider for the encryption scope. Possible values (case-insensitive): Microsoft.Storage, Microsoft.KeyVault. */
@@ -5222,6 +7650,11 @@ export interface EncryptionScopePropertiesInput {
   /** A boolean indicating whether or not the service applies a secondary layer of encryption with platform managed keys for data at rest. */
   requireInfrastructureEncryption?: boolean;
 }
+const EncryptionScopePropertiesInput = /*@__PURE__*/ __L.at(
+  __c55,
+  0,
+) as any as S.Schema<EncryptionScopePropertiesInput>;
+
 export interface PatchEncryptionScopeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5234,6 +7667,11 @@ export interface PatchEncryptionScopeRequest {
   /** Properties of the encryption scope. */
   properties?: EncryptionScopePropertiesInput;
 }
+const PatchEncryptionScopeRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  1,
+) as any as S.Schema<PatchEncryptionScopeRequest>;
+
 export interface PatchEncryptionScopeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5246,6 +7684,9 @@ export interface PatchEncryptionScopeResponse {
   /** Properties of the encryption scope. */
   properties?: EncryptionScopeProperties;
 }
+const PatchEncryptionScopeResponse =
+  GetEncryptionScopeResponse as any as S.Schema<PatchEncryptionScopeResponse>;
+
 export interface PutEncryptionScopeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5258,6 +7699,11 @@ export interface PutEncryptionScopeRequest {
   /** Properties of the encryption scope. */
   properties?: EncryptionScopePropertiesInput;
 }
+const PutEncryptionScopeRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  2,
+) as any as S.Schema<PutEncryptionScopeRequest>;
+
 export interface PutEncryptionScopeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5270,6 +7716,9 @@ export interface PutEncryptionScopeResponse {
   /** Properties of the encryption scope. */
   properties?: EncryptionScopeProperties;
 }
+const PutEncryptionScopeResponse =
+  GetEncryptionScopeResponse as any as S.Schema<PutEncryptionScopeResponse>;
+
 /** The Private Endpoint resource. */
 export type PrivateEndpointInput = UserAssignedIdentityInput;
 /** Properties of the PrivateEndpointConnectProperties. */
@@ -5279,6 +7728,11 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
+const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c55,
+  3,
+) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
 export interface PutPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5291,6 +7745,11 @@ export interface PutPrivateEndpointConnectionRequest {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
+const PutPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  4,
+) as any as S.Schema<PutPrivateEndpointConnectionRequest>;
+
 export interface PutPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5303,6 +7762,9 @@ export interface PutPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const PutPrivateEndpointConnectionResponse =
+  PrivateEndpointConnection as any as S.Schema<PutPrivateEndpointConnectionResponse>;
+
 export interface RegenerateLocalUserPasswordRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5313,11 +7775,21 @@ export interface RegenerateLocalUserPasswordRequest {
   /** The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account. */
   username: string;
 }
+const RegenerateLocalUserPasswordRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  5,
+) as any as S.Schema<RegenerateLocalUserPasswordRequest>;
+
 /** The secrets of Storage Account Local User. */
 export interface LocalUserRegeneratePasswordResult {
   /** Auto generated password by the server for SSH authentication if hasSshPassword is set to true on the creation of local user. */
   sshPassword?: string | Redacted.Redacted<string>;
 }
+const LocalUserRegeneratePasswordResult = /*@__PURE__*/ __L.at(
+  __c55,
+  6,
+) as any as S.Schema<LocalUserRegeneratePasswordResult>;
+
 export interface RegenerateStorageAccountKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5328,6 +7800,11 @@ export interface RegenerateStorageAccountKeyRequest {
   /** The name of storage keys that want to be regenerated, possible values are key1, key2, kerb1, kerb2. */
   keyName: string;
 }
+const RegenerateStorageAccountKeyRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  7,
+) as any as S.Schema<RegenerateStorageAccountKeyRequest>;
+
 export interface RestoreFileShareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5342,9 +7819,20 @@ export interface RestoreFileShareRequest {
   /** Required. Identify the version of the deleted share that will be restored. */
   deletedShareVersion: string;
 }
+const RestoreFileShareRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  0,
+) as any as S.Schema<RestoreFileShareRequest>;
+
 export interface RestoreFileShareResponse {}
+const RestoreFileShareResponse =
+  UserAssignedIdentityInput as any as S.Schema<RestoreFileShareResponse>;
+
 /** Blob ranges to restore. */
 export type RestoreStorageAccountBlobRangesRequestBlobRangesList = Array<BlobRestoreRange>;
+const RestoreStorageAccountBlobRangesRequestBlobRangesList =
+  BlobRestoreParametersBlobRangesList as any as S.Schema<RestoreStorageAccountBlobRangesRequestBlobRangesList>;
+
 export interface RestoreStorageAccountBlobRangesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5357,6 +7845,11 @@ export interface RestoreStorageAccountBlobRangesRequest {
   /** Blob ranges to restore. */
   blobRanges: RestoreStorageAccountBlobRangesRequestBlobRangesList;
 }
+const RestoreStorageAccountBlobRangesRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  1,
+) as any as S.Schema<RestoreStorageAccountBlobRangesRequest>;
+
 export interface RevokeStorageAccountUserDelegationKeysRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5365,9 +7858,20 @@ export interface RevokeStorageAccountUserDelegationKeysRequest {
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
 }
+const RevokeStorageAccountUserDelegationKeysRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  2,
+) as any as S.Schema<RevokeStorageAccountUserDelegationKeysRequest>;
+
 export interface RevokeStorageAccountUserDelegationKeysResponse {}
+const RevokeStorageAccountUserDelegationKeysResponse =
+  BlobContainersObjectLevelWormResponse as any as S.Schema<RevokeStorageAccountUserDelegationKeysResponse>;
+
 /** Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP. */
 export type SetBlobContainerLegalHoldRequestTagsList = Array<string>;
+const SetBlobContainerLegalHoldRequestTagsList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<SetBlobContainerLegalHoldRequestTagsList>;
+
 export interface SetBlobContainerLegalHoldRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5382,6 +7886,11 @@ export interface SetBlobContainerLegalHoldRequest {
   /** When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining legal hold protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. */
   allowProtectedAppendWritesAll?: boolean;
 }
+const SetBlobContainerLegalHoldRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  3,
+) as any as S.Schema<SetBlobContainerLegalHoldRequest>;
+
 /** The blob service properties for blob restore policy */
 export interface RestorePolicyPropertiesInput {
   /** Blob restore is enabled if set to true. */
@@ -5389,6 +7898,11 @@ export interface RestorePolicyPropertiesInput {
   /** how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days. */
   days?: number;
 }
+const RestorePolicyPropertiesInput = /*@__PURE__*/ __L.at(
+  __c56,
+  4,
+) as any as S.Schema<RestorePolicyPropertiesInput>;
+
 /** The properties of a storage account's Blob service. */
 export interface BlobServicePropertiesPropertiesInput {
   /** Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service. */
@@ -5412,6 +7926,11 @@ export interface BlobServicePropertiesPropertiesInput {
   /** The blob service property to configure last access time based tracking policy. */
   lastAccessTimeTrackingPolicy?: LastAccessTimeTrackingPolicy;
 }
+const BlobServicePropertiesPropertiesInput = /*@__PURE__*/ __L.at(
+  __c56,
+  5,
+) as any as S.Schema<BlobServicePropertiesPropertiesInput>;
+
 export interface SetBlobServiceServicePropertiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5422,6 +7941,11 @@ export interface SetBlobServiceServicePropertiesRequest {
   /** The properties of a storage account's Blob service. */
   properties?: BlobServicePropertiesPropertiesInput;
 }
+const SetBlobServiceServicePropertiesRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  6,
+) as any as S.Schema<SetBlobServiceServicePropertiesRequest>;
+
 export interface SetBlobServiceServicePropertiesResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5436,6 +7960,9 @@ export interface SetBlobServiceServicePropertiesResponse {
   /** Sku name and tier. */
   sku?: Sku;
 }
+const SetBlobServiceServicePropertiesResponse =
+  GetBlobServiceServicePropertiesResponse as any as S.Schema<SetBlobServiceServicePropertiesResponse>;
+
 export interface SetFileServiceServicePropertiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5446,6 +7973,11 @@ export interface SetFileServiceServicePropertiesRequest {
   /** The properties of File services in storage account. */
   properties?: FileServicePropertiesProperties;
 }
+const SetFileServiceServicePropertiesRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  7,
+) as any as S.Schema<SetFileServiceServicePropertiesRequest>;
+
 export interface SetFileServiceServicePropertiesResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5460,6 +7992,9 @@ export interface SetFileServiceServicePropertiesResponse {
   /** Sku name and tier. */
   sku?: Sku;
 }
+const SetFileServiceServicePropertiesResponse =
+  GetFileServiceServicePropertiesResponse as any as S.Schema<SetFileServiceServicePropertiesResponse>;
+
 export interface SetQueueServiceServicePropertiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5470,6 +8005,11 @@ export interface SetQueueServiceServicePropertiesRequest {
   /** The properties of a storage account's Queue service. */
   properties?: QueueServicePropertiesProperties;
 }
+const SetQueueServiceServicePropertiesRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  0,
+) as any as S.Schema<SetQueueServiceServicePropertiesRequest>;
+
 export interface SetQueueServiceServicePropertiesResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5482,6 +8022,9 @@ export interface SetQueueServiceServicePropertiesResponse {
   /** The properties of a storage account's Queue service. */
   properties?: QueueServicePropertiesProperties;
 }
+const SetQueueServiceServicePropertiesResponse =
+  GetQueueServiceServicePropertiesResponse as any as S.Schema<SetQueueServiceServicePropertiesResponse>;
+
 export interface SetTableServiceServicePropertiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5492,6 +8035,11 @@ export interface SetTableServiceServicePropertiesRequest {
   /** The properties of a storage account's Table service. */
   properties?: TableServicePropertiesProperties;
 }
+const SetTableServiceServicePropertiesRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  1,
+) as any as S.Schema<SetTableServiceServicePropertiesRequest>;
+
 export interface SetTableServiceServicePropertiesResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5504,6 +8052,9 @@ export interface SetTableServiceServicePropertiesResponse {
   /** The properties of a storage account's Table service. */
   properties?: TableServicePropertiesProperties;
 }
+const SetTableServiceServicePropertiesResponse =
+  GetQueueServiceServicePropertiesResponse as any as S.Schema<SetTableServiceServicePropertiesResponse>;
+
 export interface StopStorageTaskAssignmentAssignmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5514,12 +8065,25 @@ export interface StopStorageTaskAssignmentAssignmentRequest {
   /** The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   storageTaskAssignmentName: string;
 }
+const StopStorageTaskAssignmentAssignmentRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  2,
+) as any as S.Schema<StopStorageTaskAssignmentAssignmentRequest>;
+
 export interface StopStorageTaskAssignmentAssignmentResponse {}
+const StopStorageTaskAssignmentAssignmentResponse =
+  BlobContainersObjectLevelWormResponse as any as S.Schema<StopStorageTaskAssignmentAssignmentResponse>;
+
 /** The properties of a storage account's ongoing or enqueued migration. */
 export interface StorageAccountMigrationPropertiesInput {
   /** Target sku name for the account */
   targetSkuName: SkuName | (string & {});
 }
+const StorageAccountMigrationPropertiesInput = /*@__PURE__*/ __L.at(
+  __c57,
+  3,
+) as any as S.Schema<StorageAccountMigrationPropertiesInput>;
+
 export interface StorageAccountsCustomerInitiatedMigrationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5530,8 +8094,18 @@ export interface StorageAccountsCustomerInitiatedMigrationRequest {
   /** The properties of a storage account's ongoing or enqueued migration. */
   properties: StorageAccountMigrationPropertiesInput;
 }
+const StorageAccountsCustomerInitiatedMigrationRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  4,
+) as any as S.Schema<StorageAccountsCustomerInitiatedMigrationRequest>;
+
 export interface StorageAccountsCustomerInitiatedMigrationResponse {}
+const StorageAccountsCustomerInitiatedMigrationResponse =
+  BlobContainersObjectLevelWormResponse as any as S.Schema<StorageAccountsCustomerInitiatedMigrationResponse>;
+
 export type StorageAccountsFailoverRequestFailoverType = "Planned";
+const StorageAccountsFailoverRequestFailoverType = S.String;
+
 export interface StorageAccountsFailoverRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5542,7 +8116,17 @@ export interface StorageAccountsFailoverRequest {
   /** The parameter is set to 'Planned' to indicate whether a Planned failover is requested. */
   failoverType?: StorageAccountsFailoverRequestFailoverType | (string & {});
 }
+const StorageAccountsFailoverRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  5,
+) as any as S.Schema<StorageAccountsFailoverRequest>;
+
 export interface StorageAccountsFailoverResponse {}
+const StorageAccountsFailoverResponse = /*@__PURE__*/ __L.at(
+  __c57,
+  6,
+) as any as S.Schema<StorageAccountsFailoverResponse>;
+
 export interface StorageAccountsHierarchicalNamespaceMigrationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5553,7 +8137,15 @@ export interface StorageAccountsHierarchicalNamespaceMigrationRequest {
   /** Required. Hierarchical namespace migration type can either be a hierarchical namespace validation request 'HnsOnValidationRequest' or a hydration request 'HnsOnHydrationRequest'. The validation request will validate the migration whereas the hydration request will migrate the account. */
   requestType: string;
 }
+const StorageAccountsHierarchicalNamespaceMigrationRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  7,
+) as any as S.Schema<StorageAccountsHierarchicalNamespaceMigrationRequest>;
+
 export interface StorageAccountsHierarchicalNamespaceMigrationResponse {}
+const StorageAccountsHierarchicalNamespaceMigrationResponse =
+  BlobContainersObjectLevelWormResponse as any as S.Schema<StorageAccountsHierarchicalNamespaceMigrationResponse>;
+
 export interface TestBlobAccessPointConfigurationExistingConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5566,6 +8158,11 @@ export interface TestBlobAccessPointConfigurationExistingConnectionRequest {
   /** The system-generated unique identifier of the Blob Access Point configuration, as returned by a read operation. This value must match the configuration named in the request path, and is required so that a configuration which was deleted and recreated under the same name is not tested by mistake. */
   uniqueId: string;
 }
+const TestBlobAccessPointConfigurationExistingConnectionRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  0,
+) as any as S.Schema<TestBlobAccessPointConfigurationExistingConnectionRequest>;
+
 /** The result of testing a Blob Access Point configuration connection. */
 export interface BlobAccessPointConnectionTestResponse {
   /** The name of the request attempted against the backing data source. */
@@ -5575,6 +8172,11 @@ export interface BlobAccessPointConnectionTestResponse {
   /** The request ID associated with the request sent to the backing data source for validation. */
   requestId: string;
 }
+const BlobAccessPointConnectionTestResponse = /*@__PURE__*/ __L.at(
+  __c58,
+  1,
+) as any as S.Schema<BlobAccessPointConnectionTestResponse>;
+
 export interface TestBlobAccessPointConnectionTestProposedConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5585,6 +8187,11 @@ export interface TestBlobAccessPointConnectionTestProposedConnectionRequest {
   /** Information about the backing data source whose connection is tested. */
   source: BlobAccessPointSourceProperties;
 }
+const TestBlobAccessPointConnectionTestProposedConnectionRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  2,
+) as any as S.Schema<TestBlobAccessPointConnectionTestProposedConnectionRequest>;
+
 export interface TestConnectorExistingConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5597,6 +8204,11 @@ export interface TestConnectorExistingConnectionRequest {
   /** The uniqueId of the storage connector as returned by the server. */
   uniqueId: string;
 }
+const TestConnectorExistingConnectionRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  3,
+) as any as S.Schema<TestConnectorExistingConnectionRequest>;
+
 /** Test connection response properties */
 export interface TestConnectionResponse {
   /** Indicates the method used to validate the connection to the backing data store. Valid values are `GetBlob` and `ListBlobs` for failure, and `TestExistingConnection` for success. */
@@ -5606,10 +8218,18 @@ export interface TestConnectionResponse {
   /** The request Id associated with the request sent to the backing data store for validation. */
   storageConnectorRequestId: string;
 }
+const TestConnectionResponse = /*@__PURE__*/ __L.at(
+  __c58,
+  4,
+) as any as S.Schema<TestConnectionResponse>;
+
 /** Resource tags. */
 export type UpdateBlobAccessPointConfigurationRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const UpdateBlobAccessPointConfigurationRequestTagsMap =
+  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateBlobAccessPointConfigurationRequestTagsMap>;
+
 /** Information about the data source exposed through a Blob Access Point. */
 export type BlobAccessPointSourcePropertiesUpdate = BlobAccessPointSourceProperties;
 /** Details of a Blob Access Point configuration. */
@@ -5621,6 +8241,11 @@ export interface BlobAccessPointConfigurationPropertiesUpdate {
   /** Information about the backing data source. */
   source?: BlobAccessPointSourceProperties;
 }
+const BlobAccessPointConfigurationPropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c58,
+  5,
+) as any as S.Schema<BlobAccessPointConfigurationPropertiesUpdate>;
+
 export interface UpdateBlobAccessPointConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5635,6 +8260,11 @@ export interface UpdateBlobAccessPointConfigurationRequest {
   /** The resource-specific properties for this resource. */
   properties?: BlobAccessPointConfigurationPropertiesUpdate;
 }
+const UpdateBlobAccessPointConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  6,
+) as any as S.Schema<UpdateBlobAccessPointConfigurationRequest>;
+
 /** Resource tags. */
 export type UpdateBlobAccessPointConfigurationResponseTagsMap = {
   [key: string]: string | undefined;
@@ -5655,6 +8285,9 @@ export interface UpdateBlobAccessPointConfigurationResponse {
   /** The resource-specific properties for this resource. */
   properties: BlobAccessPointConfigurationProperties;
 }
+const UpdateBlobAccessPointConfigurationResponse =
+  CreateBlobAccessPointConfigurationResponse as any as S.Schema<UpdateBlobAccessPointConfigurationResponse>;
+
 export interface UpdateBlobContainerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5667,6 +8300,11 @@ export interface UpdateBlobContainerRequest {
   /** Properties of the blob container. */
   properties?: ContainerPropertiesInput;
 }
+const UpdateBlobContainerRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  7,
+) as any as S.Schema<UpdateBlobContainerRequest>;
+
 export interface UpdateBlobContainerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5681,10 +8319,18 @@ export interface UpdateBlobContainerResponse {
   /** Resource Etag. */
   etag?: string;
 }
+const UpdateBlobContainerResponse =
+  CreateBlobContainerResponse as any as S.Schema<UpdateBlobContainerResponse>;
+
 /** Resource tags. */
 export type UpdateConnectorRequestTagsMap = { [key: string]: string | undefined };
+const UpdateConnectorRequestTagsMap =
+  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateConnectorRequestTagsMap>;
+
 /** State - Active or Inactive. Whether or not the Storage Connector should start as active (default: Active) (While set to false on the Storage Connector, all data plane requests using this Storage Connector fail, and this Storage Connector is not billed if it would be otherwise. */
 export type StorageConnectorPropertiesUpdateState = "Active" | "Inactive";
+const StorageConnectorPropertiesUpdateState = S.String;
+
 /** The storage connector backing data source information */
 export interface StorageConnectorSourceUpdate {
   /** Type of the Storage Connector. Not mutable once the Storage Connector is created." */
@@ -5692,6 +8338,11 @@ export interface StorageConnectorSourceUpdate {
   /** Details for how to authenticate to the backing data store. */
   authProperties?: StorageConnectorAuthProperties;
 }
+const StorageConnectorSourceUpdate = /*@__PURE__*/ __L.at(
+  __c59,
+  0,
+) as any as S.Schema<StorageConnectorSourceUpdate>;
+
 /** The storage connector properties */
 export interface StorageConnectorPropertiesUpdate {
   /** State - Active or Inactive. Whether or not the Storage Connector should start as active (default: Active) (While set to false on the Storage Connector, all data plane requests using this Storage Connector fail, and this Storage Connector is not billed if it would be otherwise. */
@@ -5703,6 +8354,11 @@ export interface StorageConnectorPropertiesUpdate {
   /** Information about how to communicate with and authenticate to the backing data store. */
   source?: StorageConnectorSourceUpdate;
 }
+const StorageConnectorPropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c59,
+  1,
+) as any as S.Schema<StorageConnectorPropertiesUpdate>;
+
 export interface UpdateConnectorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5717,6 +8373,11 @@ export interface UpdateConnectorRequest {
   /** The properties of the Storage Connector. */
   properties?: StorageConnectorPropertiesUpdate;
 }
+const UpdateConnectorRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  2,
+) as any as S.Schema<UpdateConnectorRequest>;
+
 /** Resource tags. */
 export type UpdateConnectorResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateConnectorResponse {
@@ -5735,8 +8396,13 @@ export interface UpdateConnectorResponse {
   /** The properties of the Storage Connector. */
   properties: StorageConnectorProperties;
 }
+const UpdateConnectorResponse = CreateConnectorResponse as any as S.Schema<UpdateConnectorResponse>;
+
 /** Resource tags. */
 export type UpdateContextCachRequestTagsMap = { [key: string]: string | undefined };
+const UpdateContextCachRequestTagsMap =
+  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateContextCachRequestTagsMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateContextCachRequestIdentity = ContextCachesCreateOrUpdateRequestIdentity;
 /** Updatable properties of the Context Cache. */
@@ -5746,6 +8412,11 @@ export interface ContextCachePropertiesUpdate {
   /** Encryption settings for the account. */
   encryption?: AzureResourceManagerCommonTypesEncryption;
 }
+const ContextCachePropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c59,
+  3,
+) as any as S.Schema<ContextCachePropertiesUpdate>;
+
 export interface UpdateContextCachRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5760,6 +8431,11 @@ export interface UpdateContextCachRequest {
   /** The updatable properties of the Context Cache. */
   properties?: ContextCachePropertiesUpdate;
 }
+const UpdateContextCachRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  4,
+) as any as S.Schema<UpdateContextCachRequest>;
+
 /** Resource tags. */
 export type UpdateContextCachResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -5782,6 +8458,9 @@ export interface UpdateContextCachResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ContextCachesCreateOrUpdateResponseIdentity;
 }
+const UpdateContextCachResponse =
+  ContextCachesCreateOrUpdateResponse as any as S.Schema<UpdateContextCachResponse>;
+
 /** Updatable properties of a container within a Context Cache. */
 export interface ContextCacheContainerPropertiesUpdate {
   /** Container description. */
@@ -5789,6 +8468,11 @@ export interface ContextCacheContainerPropertiesUpdate {
   /** The Time to Live (TTL) in days (1-30) for this container. Blobs in the container that have not been accessed within this number of days will be automatically deleted. */
   timeToLive?: number;
 }
+const ContextCacheContainerPropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c59,
+  5,
+) as any as S.Schema<ContextCacheContainerPropertiesUpdate>;
+
 export interface UpdateContextCacheContainerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5801,6 +8485,11 @@ export interface UpdateContextCacheContainerRequest {
   /** The updatable properties of the Context Cache Container. */
   properties?: ContextCacheContainerPropertiesUpdate;
 }
+const UpdateContextCacheContainerRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  6,
+) as any as S.Schema<UpdateContextCacheContainerRequest>;
+
 export interface UpdateContextCacheContainerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5813,13 +8502,25 @@ export interface UpdateContextCacheContainerResponse {
   /** The resource-specific properties for this resource. */
   properties: ContextCacheContainerProperties;
 }
+const UpdateContextCacheContainerResponse =
+  ContextCacheContainersCreateOrUpdateResponse as any as S.Schema<UpdateContextCacheContainerResponse>;
+
 /** Resource tags. */
 export type UpdateDataShareRequestTagsMap = { [key: string]: string | undefined };
+const UpdateDataShareRequestTagsMap =
+  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDataShareRequestTagsMap>;
+
 /** List of access policies that specify the permission allowed to a managed identity. For Create - This property is required and cannot be null. If no access policies are provided at creation time, specify an empty array. For Update - This property is optional. If set to null or not passed, the existing access policies are left unchanged. If provided with a non-null value, the existing access policies are replaced with the specified list. */
 export type StorageDataSharePropertiesUpdateAccessPoliciesList =
   Array<StorageDataShareAccessPolicy>;
+const StorageDataSharePropertiesUpdateAccessPoliciesList =
+  StorageDataSharePropertiesInputAccessPoliciesList as any as S.Schema<StorageDataSharePropertiesUpdateAccessPoliciesList>;
+
 /** List of assets that specify the properties of the shared resources. For Create - This property is required and cannot be null. If no assets are provided at creation time, specify an empty array. For Update - This property is optional. If set to null or not passed, the existing assets are left unchanged. If provided with a non-null value, the existing assets are replaced with the specified list. */
 export type StorageDataSharePropertiesUpdateAssetsList = Array<StorageDataShareAsset>;
+const StorageDataSharePropertiesUpdateAssetsList =
+  StorageDataSharePropertiesInputAssetsList as any as S.Schema<StorageDataSharePropertiesUpdateAssetsList>;
+
 /** The storage datashare properties */
 export interface StorageDataSharePropertiesUpdate {
   /** Arbitrary description of this Data Share. Max 250 characters. */
@@ -5829,6 +8530,11 @@ export interface StorageDataSharePropertiesUpdate {
   /** List of assets that specify the properties of the shared resources. For Create - This property is required and cannot be null. If no assets are provided at creation time, specify an empty array. For Update - This property is optional. If set to null or not passed, the existing assets are left unchanged. If provided with a non-null value, the existing assets are replaced with the specified list. */
   assets?: StorageDataSharePropertiesUpdateAssetsList;
 }
+const StorageDataSharePropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c59,
+  7,
+) as any as S.Schema<StorageDataSharePropertiesUpdate>;
+
 export interface UpdateDataShareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5843,6 +8549,11 @@ export interface UpdateDataShareRequest {
   /** The properties of the Storage DataShare. */
   properties?: StorageDataSharePropertiesUpdate;
 }
+const UpdateDataShareRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  0,
+) as any as S.Schema<UpdateDataShareRequest>;
+
 /** Resource tags. */
 export type UpdateDataShareResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateDataShareResponse {
@@ -5861,6 +8572,8 @@ export interface UpdateDataShareResponse {
   /** The properties of the Storage DataShare. */
   properties: StorageDataShareProperties;
 }
+const UpdateDataShareResponse = CreateDataShareResponse as any as S.Schema<UpdateDataShareResponse>;
+
 export interface UpdateFileShareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5873,6 +8586,11 @@ export interface UpdateFileShareRequest {
   /** Properties of the file share. */
   properties?: FileSharePropertiesInput;
 }
+const UpdateFileShareRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  1,
+) as any as S.Schema<UpdateFileShareRequest>;
+
 export interface UpdateFileShareResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5887,6 +8605,8 @@ export interface UpdateFileShareResponse {
   /** Resource Etag. */
   etag?: string;
 }
+const UpdateFileShareResponse = CreateFileShareResponse as any as S.Schema<UpdateFileShareResponse>;
+
 export interface UpdateQueueRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5899,6 +8619,8 @@ export interface UpdateQueueRequest {
   /** Queue resource properties. */
   properties?: QueuePropertiesInput;
 }
+const UpdateQueueRequest = /*@__PURE__*/ __L.at(__c60, 2) as any as S.Schema<UpdateQueueRequest>;
+
 export interface UpdateQueueResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5911,8 +8633,13 @@ export interface UpdateQueueResponse {
   /** Queue resource properties. */
   properties?: QueueProperties;
 }
+const UpdateQueueResponse = CreateQueueResponse as any as S.Schema<UpdateQueueResponse>;
+
 /** Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters. */
 export type UpdateStorageAccountRequestTagsMap = { [key: string]: string | undefined };
+const UpdateStorageAccountRequestTagsMap =
+  ContextCachesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateStorageAccountRequestTagsMap>;
+
 /** The parameters used when updating a storage account. */
 export interface StorageAccountPropertiesUpdateParametersInput {
   /** Custom domain assigned to the storage account by the user. Name is the CNAME source. Only one custom domain is supported per storage account at this time. To clear the existing custom domain, use an empty string for the custom domain name property. */
@@ -5972,8 +8699,16 @@ export interface StorageAccountPropertiesUpdateParametersInput {
   /** Allow or disallow cross AAD tenant user delegation SAS (shared access signature). The default interpretation is false for this property. */
   allowCrossTenantDelegationSas?: boolean;
 }
+const StorageAccountPropertiesUpdateParametersInput = /*@__PURE__*/ __L.at(
+  __c60,
+  3,
+) as any as S.Schema<StorageAccountPropertiesUpdateParametersInput>;
+
 /** Optional. Gets or sets the pinned logical availability zone for the storage account. */
 export type UpdateStorageAccountRequestZonesList = Array<string>;
+const UpdateStorageAccountRequestZonesList =
+  AdvancedPlatformMetricsRuleConfigFilterValuesList as any as S.Schema<UpdateStorageAccountRequestZonesList>;
+
 export interface UpdateStorageAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5996,6 +8731,11 @@ export interface UpdateStorageAccountRequest {
   /** Optional. Gets or sets the zonal placement details for the storage account. */
   placement?: Placement;
 }
+const UpdateStorageAccountRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  4,
+) as any as S.Schema<UpdateStorageAccountRequest>;
+
 /** Resource tags. */
 export type UpdateStorageAccountResponseTagsMap = { [key: string]: string | undefined };
 /** The availability zones. */
@@ -6028,6 +8768,9 @@ export interface UpdateStorageAccountResponse {
   /** Optional. Gets or sets the zonal placement details for the storage account. */
   placement?: Placement;
 }
+const UpdateStorageAccountResponse =
+  CreateStorageAccountResponse as any as S.Schema<UpdateStorageAccountResponse>;
+
 /** The trigger parameters update for the storage task assignment execution */
 export interface TriggerParametersUpdate {
   /** When to start task execution. This is a mutable field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce' */
@@ -6041,6 +8784,8 @@ export interface TriggerParametersUpdate {
   /** When to start task execution. This is a mutable field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule' */
   startOn?: string;
 }
+const TriggerParametersUpdate = TriggerParameters as any as S.Schema<TriggerParametersUpdate>;
+
 /** Execution trigger update for storage task assignment */
 export interface ExecutionTriggerUpdate {
   /** The trigger type of the storage task assignment execution */
@@ -6048,6 +8793,11 @@ export interface ExecutionTriggerUpdate {
   /** The trigger parameters of the storage task assignment execution */
   parameters?: TriggerParametersUpdate;
 }
+const ExecutionTriggerUpdate = /*@__PURE__*/ __L.at(
+  __c60,
+  5,
+) as any as S.Schema<ExecutionTriggerUpdate>;
+
 /** Execution context of the storage task assignment update. */
 export interface StorageTaskAssignmentUpdateExecutionContext {
   /** Execution target of the storage task assignment */
@@ -6055,11 +8805,21 @@ export interface StorageTaskAssignmentUpdateExecutionContext {
   /** Execution trigger of the storage task assignment */
   trigger?: ExecutionTriggerUpdate;
 }
+const StorageTaskAssignmentUpdateExecutionContext = /*@__PURE__*/ __L.at(
+  __c60,
+  6,
+) as any as S.Schema<StorageTaskAssignmentUpdateExecutionContext>;
+
 /** The storage task assignment report */
 export interface StorageTaskAssignmentUpdateReport {
   /** The prefix of the storage task assignment report */
   prefix?: string;
 }
+const StorageTaskAssignmentUpdateReport = /*@__PURE__*/ __L.at(
+  __c60,
+  7,
+) as any as S.Schema<StorageTaskAssignmentUpdateReport>;
+
 /** Properties of the storage task update assignment. */
 export interface StorageTaskAssignmentUpdatePropertiesInput {
   /** Whether the storage task assignment is enabled or not */
@@ -6073,6 +8833,11 @@ export interface StorageTaskAssignmentUpdatePropertiesInput {
   /** Run status of storage task assignment */
   runStatus?: UserAssignedIdentityInput;
 }
+const StorageTaskAssignmentUpdatePropertiesInput = /*@__PURE__*/ __L.at(
+  __c61,
+  0,
+) as any as S.Schema<StorageTaskAssignmentUpdatePropertiesInput>;
+
 export interface UpdateStorageTaskAssignmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6085,6 +8850,11 @@ export interface UpdateStorageTaskAssignmentRequest {
   /** Properties of the storage task assignment. */
   properties?: StorageTaskAssignmentUpdatePropertiesInput;
 }
+const UpdateStorageTaskAssignmentRequest = /*@__PURE__*/ __L.at(
+  __c61,
+  1,
+) as any as S.Schema<UpdateStorageTaskAssignmentRequest>;
+
 export interface UpdateStorageTaskAssignmentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -6097,6 +8867,9 @@ export interface UpdateStorageTaskAssignmentResponse {
   /** Properties of the storage task assignment. */
   properties?: StorageTaskAssignmentProperties;
 }
+const UpdateStorageTaskAssignmentResponse =
+  CreateStorageTaskAssignmentResponse as any as S.Schema<UpdateStorageTaskAssignmentResponse>;
+
 export interface UpdateTableRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6109,6 +8882,8 @@ export interface UpdateTableRequest {
   /** Table resource properties. */
   properties?: TablePropertiesInput;
 }
+const UpdateTableRequest = /*@__PURE__*/ __L.at(__c61, 2) as any as S.Schema<UpdateTableRequest>;
+
 export interface UpdateTableResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -6121,6 +8896,8 @@ export interface UpdateTableResponse {
   /** Table resource properties. */
   properties?: TableProperties;
 }
+const UpdateTableResponse = CreateTableResponse as any as S.Schema<UpdateTableResponse>;
+
 export type AbortStorageAccountHierarchicalNamespaceMigrationError = AzureOpError;
 /** Abort live Migration of storage account to enable Hns */
 export const AbortStorageAccountHierarchicalNamespaceMigration: API.OperationMethod<
@@ -6129,8 +8906,8 @@ export const AbortStorageAccountHierarchicalNamespaceMigration: API.OperationMet
   AbortStorageAccountHierarchicalNamespaceMigrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AbortStorageAccountHierarchicalNamespaceMigrationRequest>,
-  output: __S(1) as any as S.Schema<AbortStorageAccountHierarchicalNamespaceMigrationResponse>,
+  input: AbortStorageAccountHierarchicalNamespaceMigrationRequest,
+  output: AbortStorageAccountHierarchicalNamespaceMigrationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6144,8 +8921,8 @@ export const AdvancedPlatformMetricsCreateOrUpdate: API.OperationMethod<
   AdvancedPlatformMetricsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<AdvancedPlatformMetricsCreateOrUpdateRequest>,
-  output: __S(9) as any as S.Schema<AdvancedPlatformMetricsCreateOrUpdateResponse>,
+  input: AdvancedPlatformMetricsCreateOrUpdateRequest,
+  output: AdvancedPlatformMetricsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6159,8 +8936,8 @@ export const BlobContainersCreateOrUpdateImmutabilityPolicy: API.OperationMethod
   BlobContainersCreateOrUpdateImmutabilityPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<BlobContainersCreateOrUpdateImmutabilityPolicyRequest>,
-  output: __S(12) as any as S.Schema<BlobContainersCreateOrUpdateImmutabilityPolicyResponse>,
+  input: BlobContainersCreateOrUpdateImmutabilityPolicyRequest,
+  output: BlobContainersCreateOrUpdateImmutabilityPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6174,8 +8951,8 @@ export const BlobContainersLease: API.OperationMethod<
   BlobContainersLeaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<BlobContainersLeaseRequest>,
-  output: __S(14) as any as S.Schema<LeaseContainerResponse>,
+  input: BlobContainersLeaseRequest,
+  output: LeaseContainerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6189,8 +8966,8 @@ export const BlobContainersObjectLevelWorm: API.OperationMethod<
   BlobContainersObjectLevelWormError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<BlobContainersObjectLevelWormRequest>,
-  output: __S(16) as any as S.Schema<BlobContainersObjectLevelWormResponse>,
+  input: BlobContainersObjectLevelWormRequest,
+  output: BlobContainersObjectLevelWormResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6204,8 +8981,8 @@ export const BlobInventoryPoliciesCreateOrUpdate: API.OperationMethod<
   BlobInventoryPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<BlobInventoryPoliciesCreateOrUpdateRequest>,
-  output: __S(27) as any as S.Schema<BlobInventoryPoliciesCreateOrUpdateResponse>,
+  input: BlobInventoryPoliciesCreateOrUpdateRequest,
+  output: BlobInventoryPoliciesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6219,8 +8996,8 @@ export const CheckContextCachNameAvailability: API.OperationMethod<
   CheckContextCachNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<CheckContextCachNameAvailabilityRequest>,
-  output: __S(29) as any as S.Schema<ContextCacheCheckNameAvailabilityResult>,
+  input: CheckContextCachNameAvailabilityRequest,
+  output: ContextCacheCheckNameAvailabilityResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6234,8 +9011,8 @@ export const CheckStorageAccountNameAvailability: API.OperationMethod<
   CheckStorageAccountNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<CheckStorageAccountNameAvailabilityRequest>,
-  output: __S(31) as any as S.Schema<CheckNameAvailabilityResult>,
+  input: CheckStorageAccountNameAvailabilityRequest,
+  output: CheckNameAvailabilityResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6249,8 +9026,8 @@ export const ClearBlobContainerLegalHold: API.OperationMethod<
   ClearBlobContainerLegalHoldError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<ClearBlobContainerLegalHoldRequest>,
-  output: __S(33) as any as S.Schema<LegalHold>,
+  input: ClearBlobContainerLegalHoldRequest,
+  output: LegalHold,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6264,8 +9041,8 @@ export const ContextCacheContainersCreateOrUpdate: API.OperationMethod<
   ContextCacheContainersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<ContextCacheContainersCreateOrUpdateRequest>,
-  output: __S(37) as any as S.Schema<ContextCacheContainersCreateOrUpdateResponse>,
+  input: ContextCacheContainersCreateOrUpdateRequest,
+  output: ContextCacheContainersCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6279,8 +9056,8 @@ export const ContextCachesCreateOrUpdate: API.OperationMethod<
   ContextCachesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<ContextCachesCreateOrUpdateRequest>,
-  output: __S(51) as any as S.Schema<ContextCachesCreateOrUpdateResponse>,
+  input: ContextCachesCreateOrUpdateRequest,
+  output: ContextCachesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6294,8 +9071,8 @@ export const CreateBlobAccessPointConfiguration: API.OperationMethod<
   CreateBlobAccessPointConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<CreateBlobAccessPointConfigurationRequest>,
-  output: __S(56) as any as S.Schema<CreateBlobAccessPointConfigurationResponse>,
+  input: CreateBlobAccessPointConfigurationRequest,
+  output: CreateBlobAccessPointConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6309,8 +9086,8 @@ export const CreateBlobContainer: API.OperationMethod<
   CreateBlobContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<CreateBlobContainerRequest>,
-  output: __S(70) as any as S.Schema<CreateBlobContainerResponse>,
+  input: CreateBlobContainerRequest,
+  output: CreateBlobContainerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6324,8 +9101,8 @@ export const CreateConnector: API.OperationMethod<
   CreateConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<CreateConnectorRequest>,
-  output: __S(77) as any as S.Schema<CreateConnectorResponse>,
+  input: CreateConnectorRequest,
+  output: CreateConnectorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6339,8 +9116,8 @@ export const CreateDataShare: API.OperationMethod<
   CreateDataShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<CreateDataShareRequest>,
-  output: __S(85) as any as S.Schema<CreateDataShareResponse>,
+  input: CreateDataShareRequest,
+  output: CreateDataShareResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6354,8 +9131,8 @@ export const CreateFileShare: API.OperationMethod<
   CreateFileShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<CreateFileShareRequest>,
-  output: __S(93) as any as S.Schema<CreateFileShareResponse>,
+  input: CreateFileShareRequest,
+  output: CreateFileShareResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6369,8 +9146,8 @@ export const CreateQueue: API.OperationMethod<
   CreateQueueError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<CreateQueueRequest>,
-  output: __S(97) as any as S.Schema<CreateQueueResponse>,
+  input: CreateQueueRequest,
+  output: CreateQueueResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6384,8 +9161,8 @@ export const CreateStorageAccount: API.OperationMethod<
   CreateStorageAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130) as any as S.Schema<CreateStorageAccountRequest>,
-  output: __S(157) as any as S.Schema<CreateStorageAccountResponse>,
+  input: CreateStorageAccountRequest,
+  output: CreateStorageAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6399,8 +9176,8 @@ export const CreateStorageTaskAssignment: API.OperationMethod<
   CreateStorageTaskAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164) as any as S.Schema<CreateStorageTaskAssignmentRequest>,
-  output: __S(167) as any as S.Schema<CreateStorageTaskAssignmentResponse>,
+  input: CreateStorageTaskAssignmentRequest,
+  output: CreateStorageTaskAssignmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6414,8 +9191,8 @@ export const CreateTable: API.OperationMethod<
   CreateTableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172) as any as S.Schema<CreateTableRequest>,
-  output: __S(174) as any as S.Schema<CreateTableResponse>,
+  input: CreateTableRequest,
+  output: CreateTableResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6429,8 +9206,8 @@ export const DeleteAdvancedPlatformMetrics: API.OperationMethod<
   DeleteAdvancedPlatformMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<DeleteAdvancedPlatformMetricsRequest>,
-  output: __S(16) as any as S.Schema<DeleteAdvancedPlatformMetricsResponse>,
+  input: DeleteAdvancedPlatformMetricsRequest,
+  output: DeleteAdvancedPlatformMetricsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6444,8 +9221,8 @@ export const DeleteBlobAccessPointConfiguration: API.OperationMethod<
   DeleteBlobAccessPointConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<DeleteBlobAccessPointConfigurationRequest>,
-  output: __S(16) as any as S.Schema<DeleteBlobAccessPointConfigurationResponse>,
+  input: DeleteBlobAccessPointConfigurationRequest,
+  output: DeleteBlobAccessPointConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6459,8 +9236,8 @@ export const DeleteBlobContainer: API.OperationMethod<
   DeleteBlobContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<DeleteBlobContainerRequest>,
-  output: __S(43) as any as S.Schema<DeleteBlobContainerResponse>,
+  input: DeleteBlobContainerRequest,
+  output: DeleteBlobContainerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6474,8 +9251,8 @@ export const DeleteBlobContainerImmutabilityPolicy: API.OperationMethod<
   DeleteBlobContainerImmutabilityPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178) as any as S.Schema<DeleteBlobContainerImmutabilityPolicyRequest>,
-  output: __S(12) as any as S.Schema<DeleteBlobContainerImmutabilityPolicyResponse>,
+  input: DeleteBlobContainerImmutabilityPolicyRequest,
+  output: DeleteBlobContainerImmutabilityPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6489,8 +9266,8 @@ export const DeleteBlobInventoryPolicy: API.OperationMethod<
   DeleteBlobInventoryPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<DeleteBlobInventoryPolicyRequest>,
-  output: __S(16) as any as S.Schema<DeleteBlobInventoryPolicyResponse>,
+  input: DeleteBlobInventoryPolicyRequest,
+  output: DeleteBlobInventoryPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6504,8 +9281,8 @@ export const DeleteConnector: API.OperationMethod<
   DeleteConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180) as any as S.Schema<DeleteConnectorRequest>,
-  output: __S(43) as any as S.Schema<DeleteConnectorResponse>,
+  input: DeleteConnectorRequest,
+  output: DeleteConnectorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6519,8 +9296,8 @@ export const DeleteContextCach: API.OperationMethod<
   DeleteContextCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<DeleteContextCachRequest>,
-  output: __S(43) as any as S.Schema<DeleteContextCachResponse>,
+  input: DeleteContextCachRequest,
+  output: DeleteContextCachResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6534,8 +9311,8 @@ export const DeleteContextCacheContainer: API.OperationMethod<
   DeleteContextCacheContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<DeleteContextCacheContainerRequest>,
-  output: __S(16) as any as S.Schema<DeleteContextCacheContainerResponse>,
+  input: DeleteContextCacheContainerRequest,
+  output: DeleteContextCacheContainerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6549,8 +9326,8 @@ export const DeleteDataShare: API.OperationMethod<
   DeleteDataShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183) as any as S.Schema<DeleteDataShareRequest>,
-  output: __S(43) as any as S.Schema<DeleteDataShareResponse>,
+  input: DeleteDataShareRequest,
+  output: DeleteDataShareResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6564,8 +9341,8 @@ export const DeleteFileShare: API.OperationMethod<
   DeleteFileShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184) as any as S.Schema<DeleteFileShareRequest>,
-  output: __S(43) as any as S.Schema<DeleteFileShareResponse>,
+  input: DeleteFileShareRequest,
+  output: DeleteFileShareResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6579,8 +9356,8 @@ export const DeleteLocalUser: API.OperationMethod<
   DeleteLocalUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<DeleteLocalUserRequest>,
-  output: __S(43) as any as S.Schema<DeleteLocalUserResponse>,
+  input: DeleteLocalUserRequest,
+  output: DeleteLocalUserResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6594,8 +9371,8 @@ export const DeleteManagementPolicy: API.OperationMethod<
   DeleteManagementPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<DeleteManagementPolicyRequest>,
-  output: __S(43) as any as S.Schema<DeleteManagementPolicyResponse>,
+  input: DeleteManagementPolicyRequest,
+  output: DeleteManagementPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6609,8 +9386,8 @@ export const DeleteObjectReplicationPolicy: API.OperationMethod<
   DeleteObjectReplicationPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<DeleteObjectReplicationPolicyRequest>,
-  output: __S(16) as any as S.Schema<DeleteObjectReplicationPolicyResponse>,
+  input: DeleteObjectReplicationPolicyRequest,
+  output: DeleteObjectReplicationPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6624,8 +9401,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(16) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: DeletePrivateEndpointConnectionRequest,
+  output: DeletePrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6639,8 +9416,8 @@ export const DeleteQueue: API.OperationMethod<
   DeleteQueueError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189) as any as S.Schema<DeleteQueueRequest>,
-  output: __S(43) as any as S.Schema<DeleteQueueResponse>,
+  input: DeleteQueueRequest,
+  output: DeleteQueueResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6654,8 +9431,8 @@ export const DeleteStorageAccount: API.OperationMethod<
   DeleteStorageAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190) as any as S.Schema<DeleteStorageAccountRequest>,
-  output: __S(43) as any as S.Schema<DeleteStorageAccountResponse>,
+  input: DeleteStorageAccountRequest,
+  output: DeleteStorageAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6669,8 +9446,8 @@ export const DeleteStorageTaskAssignment: API.OperationMethod<
   DeleteStorageTaskAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191) as any as S.Schema<DeleteStorageTaskAssignmentRequest>,
-  output: __S(16) as any as S.Schema<DeleteStorageTaskAssignmentResponse>,
+  input: DeleteStorageTaskAssignmentRequest,
+  output: DeleteStorageTaskAssignmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6684,8 +9461,8 @@ export const DeleteTable: API.OperationMethod<
   DeleteTableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192) as any as S.Schema<DeleteTableRequest>,
-  output: __S(43) as any as S.Schema<DeleteTableResponse>,
+  input: DeleteTableRequest,
+  output: DeleteTableResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6699,8 +9476,8 @@ export const ExtendBlobContainerImmutabilityPolicy: API.OperationMethod<
   ExtendBlobContainerImmutabilityPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<ExtendBlobContainerImmutabilityPolicyRequest>,
-  output: __S(12) as any as S.Schema<ExtendBlobContainerImmutabilityPolicyResponse>,
+  input: ExtendBlobContainerImmutabilityPolicyRequest,
+  output: ExtendBlobContainerImmutabilityPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6714,8 +9491,8 @@ export const FileSharesLease: API.OperationMethod<
   FileSharesLeaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194) as any as S.Schema<FileSharesLeaseRequest>,
-  output: __S(14) as any as S.Schema<LeaseShareResponse>,
+  input: FileSharesLeaseRequest,
+  output: LeaseShareResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6729,8 +9506,8 @@ export const GetAdvancedPlatformMetrics: API.OperationMethod<
   GetAdvancedPlatformMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195) as any as S.Schema<GetAdvancedPlatformMetricsRequest>,
-  output: __S(9) as any as S.Schema<GetAdvancedPlatformMetricsResponse>,
+  input: GetAdvancedPlatformMetricsRequest,
+  output: GetAdvancedPlatformMetricsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6744,8 +9521,8 @@ export const GetBlobAccessPointConfiguration: API.OperationMethod<
   GetBlobAccessPointConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196) as any as S.Schema<GetBlobAccessPointConfigurationRequest>,
-  output: __S(56) as any as S.Schema<GetBlobAccessPointConfigurationResponse>,
+  input: GetBlobAccessPointConfigurationRequest,
+  output: GetBlobAccessPointConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6759,8 +9536,8 @@ export const GetBlobContainer: API.OperationMethod<
   GetBlobContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197) as any as S.Schema<GetBlobContainerRequest>,
-  output: __S(198) as any as S.Schema<GetBlobContainerResponse>,
+  input: GetBlobContainerRequest,
+  output: GetBlobContainerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6774,8 +9551,8 @@ export const GetBlobContainerImmutabilityPolicy: API.OperationMethod<
   GetBlobContainerImmutabilityPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199) as any as S.Schema<GetBlobContainerImmutabilityPolicyRequest>,
-  output: __S(12) as any as S.Schema<GetBlobContainerImmutabilityPolicyResponse>,
+  input: GetBlobContainerImmutabilityPolicyRequest,
+  output: GetBlobContainerImmutabilityPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6789,8 +9566,8 @@ export const GetBlobInventoryPolicy: API.OperationMethod<
   GetBlobInventoryPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200) as any as S.Schema<GetBlobInventoryPolicyRequest>,
-  output: __S(27) as any as S.Schema<GetBlobInventoryPolicyResponse>,
+  input: GetBlobInventoryPolicyRequest,
+  output: GetBlobInventoryPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6804,8 +9581,8 @@ export const GetBlobServiceServiceProperties: API.OperationMethod<
   GetBlobServiceServicePropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201) as any as S.Schema<GetBlobServiceServicePropertiesRequest>,
-  output: __S(211) as any as S.Schema<GetBlobServiceServicePropertiesResponse>,
+  input: GetBlobServiceServicePropertiesRequest,
+  output: GetBlobServiceServicePropertiesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6819,8 +9596,8 @@ export const GetConnector: API.OperationMethod<
   GetConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212) as any as S.Schema<GetConnectorRequest>,
-  output: __S(77) as any as S.Schema<GetConnectorResponse>,
+  input: GetConnectorRequest,
+  output: GetConnectorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6834,8 +9611,8 @@ export const GetContextCach: API.OperationMethod<
   GetContextCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213) as any as S.Schema<GetContextCachRequest>,
-  output: __S(214) as any as S.Schema<GetContextCachResponse>,
+  input: GetContextCachRequest,
+  output: GetContextCachResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6849,8 +9626,8 @@ export const GetContextCacheContainer: API.OperationMethod<
   GetContextCacheContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215) as any as S.Schema<GetContextCacheContainerRequest>,
-  output: __S(37) as any as S.Schema<GetContextCacheContainerResponse>,
+  input: GetContextCacheContainerRequest,
+  output: GetContextCacheContainerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6864,8 +9641,8 @@ export const GetDataShare: API.OperationMethod<
   GetDataShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216) as any as S.Schema<GetDataShareRequest>,
-  output: __S(85) as any as S.Schema<GetDataShareResponse>,
+  input: GetDataShareRequest,
+  output: GetDataShareResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6879,8 +9656,8 @@ export const GetDeletedAccount: API.OperationMethod<
   GetDeletedAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217) as any as S.Schema<GetDeletedAccountRequest>,
-  output: __S(219) as any as S.Schema<GetDeletedAccountResponse>,
+  input: GetDeletedAccountRequest,
+  output: GetDeletedAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6894,8 +9671,8 @@ export const GetEncryptionScope: API.OperationMethod<
   GetEncryptionScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220) as any as S.Schema<GetEncryptionScopeRequest>,
-  output: __S(223) as any as S.Schema<GetEncryptionScopeResponse>,
+  input: GetEncryptionScopeRequest,
+  output: GetEncryptionScopeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6909,8 +9686,8 @@ export const GetFileServiceServiceProperties: API.OperationMethod<
   GetFileServiceServicePropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224) as any as S.Schema<GetFileServiceServicePropertiesRequest>,
-  output: __S(231) as any as S.Schema<GetFileServiceServicePropertiesResponse>,
+  input: GetFileServiceServicePropertiesRequest,
+  output: GetFileServiceServicePropertiesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6924,8 +9701,8 @@ export const GetFileServiceServiceUsage: API.OperationMethod<
   GetFileServiceServiceUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232) as any as S.Schema<GetFileServiceServiceUsageRequest>,
-  output: __S(240) as any as S.Schema<GetFileServiceServiceUsageResponse>,
+  input: GetFileServiceServiceUsageRequest,
+  output: GetFileServiceServiceUsageResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6939,8 +9716,8 @@ export const GetFileShare: API.OperationMethod<
   GetFileShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241) as any as S.Schema<GetFileShareRequest>,
-  output: __S(93) as any as S.Schema<GetFileShareResponse>,
+  input: GetFileShareRequest,
+  output: GetFileShareResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6954,8 +9731,8 @@ export const GetLocalUser: API.OperationMethod<
   GetLocalUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242) as any as S.Schema<GetLocalUserRequest>,
-  output: __S(249) as any as S.Schema<GetLocalUserResponse>,
+  input: GetLocalUserRequest,
+  output: GetLocalUserResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6969,8 +9746,8 @@ export const GetManagementPolicy: API.OperationMethod<
   GetManagementPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250) as any as S.Schema<GetManagementPolicyRequest>,
-  output: __S(264) as any as S.Schema<GetManagementPolicyResponse>,
+  input: GetManagementPolicyRequest,
+  output: GetManagementPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6984,8 +9761,8 @@ export const GetNetworkSecurityPerimeterConfiguration: API.OperationMethod<
   GetNetworkSecurityPerimeterConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationRequest>,
-  output: __S(280) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationResponse>,
+  input: GetNetworkSecurityPerimeterConfigurationRequest,
+  output: GetNetworkSecurityPerimeterConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6999,8 +9776,8 @@ export const GetObjectReplicationPolicy: API.OperationMethod<
   GetObjectReplicationPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281) as any as S.Schema<GetObjectReplicationPolicyRequest>,
-  output: __S(286) as any as S.Schema<GetObjectReplicationPolicyResponse>,
+  input: GetObjectReplicationPolicyRequest,
+  output: GetObjectReplicationPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7014,8 +9791,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(147) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: GetPrivateEndpointConnectionRequest,
+  output: GetPrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7029,8 +9806,8 @@ export const GetQueue: API.OperationMethod<
   GetQueueError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288) as any as S.Schema<GetQueueRequest>,
-  output: __S(97) as any as S.Schema<GetQueueResponse>,
+  input: GetQueueRequest,
+  output: GetQueueResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7044,8 +9821,8 @@ export const GetQueueServiceServiceProperties: API.OperationMethod<
   GetQueueServiceServicePropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289) as any as S.Schema<GetQueueServiceServicePropertiesRequest>,
-  output: __S(291) as any as S.Schema<GetQueueServiceServicePropertiesResponse>,
+  input: GetQueueServiceServicePropertiesRequest,
+  output: GetQueueServiceServicePropertiesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7059,8 +9836,8 @@ export const GetStorageAccountCustomerInitiatedMigration: API.OperationMethod<
   GetStorageAccountCustomerInitiatedMigrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292) as any as S.Schema<GetStorageAccountCustomerInitiatedMigrationRequest>,
-  output: __S(294) as any as S.Schema<GetStorageAccountCustomerInitiatedMigrationResponse>,
+  input: GetStorageAccountCustomerInitiatedMigrationRequest,
+  output: GetStorageAccountCustomerInitiatedMigrationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7074,8 +9851,8 @@ export const GetStorageAccountProperties: API.OperationMethod<
   GetStorageAccountPropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295) as any as S.Schema<GetStorageAccountPropertiesRequest>,
-  output: __S(157) as any as S.Schema<GetStorageAccountPropertiesResponse>,
+  input: GetStorageAccountPropertiesRequest,
+  output: GetStorageAccountPropertiesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7089,8 +9866,8 @@ export const GetStorageTaskAssignment: API.OperationMethod<
   GetStorageTaskAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296) as any as S.Schema<GetStorageTaskAssignmentRequest>,
-  output: __S(167) as any as S.Schema<GetStorageTaskAssignmentResponse>,
+  input: GetStorageTaskAssignmentRequest,
+  output: GetStorageTaskAssignmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7104,8 +9881,8 @@ export const GetTable: API.OperationMethod<
   GetTableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297) as any as S.Schema<GetTableRequest>,
-  output: __S(174) as any as S.Schema<GetTableResponse>,
+  input: GetTableRequest,
+  output: GetTableResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7119,8 +9896,8 @@ export const GetTableServiceServiceProperties: API.OperationMethod<
   GetTableServiceServicePropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298) as any as S.Schema<GetTableServiceServicePropertiesRequest>,
-  output: __S(291) as any as S.Schema<GetTableServiceServicePropertiesResponse>,
+  input: GetTableServiceServicePropertiesRequest,
+  output: GetTableServiceServicePropertiesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7134,8 +9911,8 @@ export const ListAdvancedPlatformMetrics: API.OperationMethod<
   ListAdvancedPlatformMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299) as any as S.Schema<ListAdvancedPlatformMetricsRequest>,
-  output: __S(301) as any as S.Schema<AdvancedPlatformMetricsRuleListResult>,
+  input: ListAdvancedPlatformMetricsRequest,
+  output: AdvancedPlatformMetricsRuleListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7149,8 +9926,8 @@ export const ListBlobAccessPointConfigurationByStorageAccount: API.OperationMeth
   ListBlobAccessPointConfigurationByStorageAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302) as any as S.Schema<ListBlobAccessPointConfigurationByStorageAccountRequest>,
-  output: __S(304) as any as S.Schema<BlobAccessPointConfigurationListResult>,
+  input: ListBlobAccessPointConfigurationByStorageAccountRequest,
+  output: BlobAccessPointConfigurationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7164,8 +9941,8 @@ export const ListBlobContainers: API.OperationMethod<
   ListBlobContainersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305) as any as S.Schema<ListBlobContainersRequest>,
-  output: __S(308) as any as S.Schema<ListContainerItems>,
+  input: ListBlobContainersRequest,
+  output: ListContainerItems,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7179,8 +9956,8 @@ export const ListBlobInventoryPolicies: API.OperationMethod<
   ListBlobInventoryPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309) as any as S.Schema<ListBlobInventoryPoliciesRequest>,
-  output: __S(312) as any as S.Schema<ListBlobInventoryPolicy>,
+  input: ListBlobInventoryPoliciesRequest,
+  output: ListBlobInventoryPolicy,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7194,8 +9971,8 @@ export const ListBlobServices: API.OperationMethod<
   ListBlobServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313) as any as S.Schema<ListBlobServicesRequest>,
-  output: __S(316) as any as S.Schema<BlobServiceItems>,
+  input: ListBlobServicesRequest,
+  output: BlobServiceItems,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7209,8 +9986,8 @@ export const ListConnectorByStorageAccount: API.OperationMethod<
   ListConnectorByStorageAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317) as any as S.Schema<ListConnectorByStorageAccountRequest>,
-  output: __S(319) as any as S.Schema<ConnectorListResult>,
+  input: ListConnectorByStorageAccountRequest,
+  output: ConnectorListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7224,8 +10001,8 @@ export const ListContextCachByResourceGroup: API.OperationMethod<
   ListContextCachByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320) as any as S.Schema<ListContextCachByResourceGroupRequest>,
-  output: __S(322) as any as S.Schema<ContextCacheListResult>,
+  input: ListContextCachByResourceGroupRequest,
+  output: ContextCacheListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7239,8 +10016,8 @@ export const ListContextCachBySubscription: API.OperationMethod<
   ListContextCachBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323) as any as S.Schema<ListContextCachBySubscriptionRequest>,
-  output: __S(322) as any as S.Schema<ContextCacheListResult>,
+  input: ListContextCachBySubscriptionRequest,
+  output: ContextCacheListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7254,8 +10031,8 @@ export const ListContextCacheContainerByContextCache: API.OperationMethod<
   ListContextCacheContainerByContextCacheError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(324) as any as S.Schema<ListContextCacheContainerByContextCacheRequest>,
-  output: __S(327) as any as S.Schema<ContextCacheContainerListResult>,
+  input: ListContextCacheContainerByContextCacheRequest,
+  output: ContextCacheContainerListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7269,8 +10046,8 @@ export const ListDataShareByStorageAccount: API.OperationMethod<
   ListDataShareByStorageAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328) as any as S.Schema<ListDataShareByStorageAccountRequest>,
-  output: __S(330) as any as S.Schema<DataShareListResult>,
+  input: ListDataShareByStorageAccountRequest,
+  output: DataShareListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7284,8 +10061,8 @@ export const ListDeletedAccounts: API.OperationMethod<
   ListDeletedAccountsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331) as any as S.Schema<ListDeletedAccountsRequest>,
-  output: __S(334) as any as S.Schema<DeletedAccountListResult>,
+  input: ListDeletedAccountsRequest,
+  output: DeletedAccountListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7299,8 +10076,8 @@ export const ListEncryptionScopes: API.OperationMethod<
   ListEncryptionScopesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335) as any as S.Schema<ListEncryptionScopesRequest>,
-  output: __S(338) as any as S.Schema<EncryptionScopeListResult>,
+  input: ListEncryptionScopesRequest,
+  output: EncryptionScopeListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7314,8 +10091,8 @@ export const ListFileServices: API.OperationMethod<
   ListFileServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339) as any as S.Schema<ListFileServicesRequest>,
-  output: __S(342) as any as S.Schema<FileServiceItems>,
+  input: ListFileServicesRequest,
+  output: FileServiceItems,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7329,8 +10106,8 @@ export const ListFileServiceServiceUsages: API.OperationMethod<
   ListFileServiceServiceUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343) as any as S.Schema<ListFileServiceServiceUsagesRequest>,
-  output: __S(346) as any as S.Schema<FileServiceUsages>,
+  input: ListFileServiceServiceUsagesRequest,
+  output: FileServiceUsages,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7344,8 +10121,8 @@ export const ListFileShares: API.OperationMethod<
   ListFileSharesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347) as any as S.Schema<ListFileSharesRequest>,
-  output: __S(350) as any as S.Schema<FileShareItems>,
+  input: ListFileSharesRequest,
+  output: FileShareItems,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7359,8 +10136,8 @@ export const ListLocalUserKeys: API.OperationMethod<
   ListLocalUserKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351) as any as S.Schema<ListLocalUserKeysRequest>,
-  output: __S(352) as any as S.Schema<LocalUserKeys>,
+  input: ListLocalUserKeysRequest,
+  output: LocalUserKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7374,8 +10151,8 @@ export const ListLocalUsers: API.OperationMethod<
   ListLocalUsersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353) as any as S.Schema<ListLocalUsersRequest>,
-  output: __S(355) as any as S.Schema<LocalUsers>,
+  input: ListLocalUsersRequest,
+  output: LocalUsers,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7389,8 +10166,8 @@ export const ListNetworkSecurityPerimeterConfigurations: API.OperationMethod<
   ListNetworkSecurityPerimeterConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(356) as any as S.Schema<ListNetworkSecurityPerimeterConfigurationsRequest>,
-  output: __S(358) as any as S.Schema<NetworkSecurityPerimeterConfigurationList>,
+  input: ListNetworkSecurityPerimeterConfigurationsRequest,
+  output: NetworkSecurityPerimeterConfigurationList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7404,8 +10181,8 @@ export const ListObjectReplicationPolicies: API.OperationMethod<
   ListObjectReplicationPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359) as any as S.Schema<ListObjectReplicationPoliciesRequest>,
-  output: __S(362) as any as S.Schema<ObjectReplicationPolicies>,
+  input: ListObjectReplicationPoliciesRequest,
+  output: ObjectReplicationPolicies,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7419,8 +10196,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(363) as any as S.Schema<ListOperationsRequest>,
-  output: __S(373) as any as S.Schema<OperationListResult>,
+  input: ListOperationsRequest,
+  output: OperationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7434,8 +10211,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
-  output: __S(375) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: ListPrivateEndpointConnectionsRequest,
+  output: PrivateEndpointConnectionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7449,8 +10226,8 @@ export const ListPrivateLinkResourceByStorageAccount: API.OperationMethod<
   ListPrivateLinkResourceByStorageAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376) as any as S.Schema<ListPrivateLinkResourceByStorageAccountRequest>,
-  output: __S(380) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: ListPrivateLinkResourceByStorageAccountRequest,
+  output: PrivateLinkResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7464,8 +10241,8 @@ export const ListQueue2: API.OperationMethod<
   ListQueue2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(381) as any as S.Schema<ListQueueRequest>,
-  output: __S(384) as any as S.Schema<ListQueueResource>,
+  input: ListQueueRequest,
+  output: ListQueueResource,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7479,8 +10256,8 @@ export const ListQueueServices2: API.OperationMethod<
   ListQueueServices2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(385) as any as S.Schema<ListQueueServicesRequest>,
-  output: __S(388) as any as S.Schema<ListQueueServices>,
+  input: ListQueueServicesRequest,
+  output: ListQueueServices,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7494,8 +10271,8 @@ export const ListSkus: API.OperationMethod<
   ListSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(389) as any as S.Schema<ListSkusRequest>,
-  output: __S(398) as any as S.Schema<StorageSkuListResult>,
+  input: ListSkusRequest,
+  output: StorageSkuListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7509,8 +10286,8 @@ export const ListStorageAccountAccountSAS: API.OperationMethod<
   ListStorageAccountAccountSASError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(399) as any as S.Schema<ListStorageAccountAccountSASRequest>,
-  output: __S(400) as any as S.Schema<ListAccountSasResponse>,
+  input: ListStorageAccountAccountSASRequest,
+  output: ListAccountSasResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7524,8 +10301,8 @@ export const ListStorageAccountByResourceGroup: API.OperationMethod<
   ListStorageAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401) as any as S.Schema<ListStorageAccountByResourceGroupRequest>,
-  output: __S(404) as any as S.Schema<StorageAccountListResult>,
+  input: ListStorageAccountByResourceGroupRequest,
+  output: StorageAccountListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7539,8 +10316,8 @@ export const ListStorageAccountKeys: API.OperationMethod<
   ListStorageAccountKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405) as any as S.Schema<ListStorageAccountKeysRequest>,
-  output: __S(408) as any as S.Schema<StorageAccountListKeysResult>,
+  input: ListStorageAccountKeysRequest,
+  output: StorageAccountListKeysResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7554,8 +10331,8 @@ export const ListStorageAccounts: API.OperationMethod<
   ListStorageAccountsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(409) as any as S.Schema<ListStorageAccountsRequest>,
-  output: __S(404) as any as S.Schema<StorageAccountListResult>,
+  input: ListStorageAccountsRequest,
+  output: StorageAccountListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7569,8 +10346,8 @@ export const ListStorageAccountServiceSAS: API.OperationMethod<
   ListStorageAccountServiceSASError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(410) as any as S.Schema<ListStorageAccountServiceSASRequest>,
-  output: __S(411) as any as S.Schema<ListServiceSasResponse>,
+  input: ListStorageAccountServiceSASRequest,
+  output: ListServiceSasResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7584,8 +10361,8 @@ export const ListStorageTaskAssignmentInstancesReport: API.OperationMethod<
   ListStorageTaskAssignmentInstancesReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(412) as any as S.Schema<ListStorageTaskAssignmentInstancesReportRequest>,
-  output: __S(415) as any as S.Schema<StorageTaskReportSummary>,
+  input: ListStorageTaskAssignmentInstancesReportRequest,
+  output: StorageTaskReportSummary,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7599,8 +10376,8 @@ export const ListStorageTaskAssignments: API.OperationMethod<
   ListStorageTaskAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416) as any as S.Schema<ListStorageTaskAssignmentsRequest>,
-  output: __S(419) as any as S.Schema<StorageTaskAssignmentsList>,
+  input: ListStorageTaskAssignmentsRequest,
+  output: StorageTaskAssignmentsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7614,8 +10391,8 @@ export const ListStorageTaskAssignmentsInstancesReport: API.OperationMethod<
   ListStorageTaskAssignmentsInstancesReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(420) as any as S.Schema<ListStorageTaskAssignmentsInstancesReportRequest>,
-  output: __S(415) as any as S.Schema<StorageTaskReportSummary>,
+  input: ListStorageTaskAssignmentsInstancesReportRequest,
+  output: StorageTaskReportSummary,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7629,8 +10406,8 @@ export const ListTable: API.OperationMethod<
   ListTableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421) as any as S.Schema<ListTableRequest>,
-  output: __S(423) as any as S.Schema<ListTableResource>,
+  input: ListTableRequest,
+  output: ListTableResource,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7644,8 +10421,8 @@ export const ListTableServices2: API.OperationMethod<
   ListTableServices2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424) as any as S.Schema<ListTableServicesRequest>,
-  output: __S(388) as any as S.Schema<ListTableServices>,
+  input: ListTableServicesRequest,
+  output: ListTableServices,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7659,8 +10436,8 @@ export const ListUsageByLocation: API.OperationMethod<
   ListUsageByLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(425) as any as S.Schema<ListUsageByLocationRequest>,
-  output: __S(429) as any as S.Schema<UsageListResult>,
+  input: ListUsageByLocationRequest,
+  output: UsageListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7674,8 +10451,8 @@ export const LocalUsersCreateOrUpdate: API.OperationMethod<
   LocalUsersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431) as any as S.Schema<LocalUsersCreateOrUpdateRequest>,
-  output: __S(432) as any as S.Schema<LocalUsersCreateOrUpdateResponse>,
+  input: LocalUsersCreateOrUpdateRequest,
+  output: LocalUsersCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7689,8 +10466,8 @@ export const LockBlobContainerImmutabilityPolicy: API.OperationMethod<
   LockBlobContainerImmutabilityPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433) as any as S.Schema<LockBlobContainerImmutabilityPolicyRequest>,
-  output: __S(12) as any as S.Schema<LockBlobContainerImmutabilityPolicyResponse>,
+  input: LockBlobContainerImmutabilityPolicyRequest,
+  output: LockBlobContainerImmutabilityPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7704,8 +10481,8 @@ export const ManagementPoliciesCreateOrUpdate: API.OperationMethod<
   ManagementPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(435) as any as S.Schema<ManagementPoliciesCreateOrUpdateRequest>,
-  output: __S(264) as any as S.Schema<ManagementPoliciesCreateOrUpdateResponse>,
+  input: ManagementPoliciesCreateOrUpdateRequest,
+  output: ManagementPoliciesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7719,8 +10496,8 @@ export const NetworkSecurityPerimeterConfigurationsReconcile: API.OperationMetho
   NetworkSecurityPerimeterConfigurationsReconcileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436) as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileRequest>,
-  output: __S(16) as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileResponse>,
+  input: NetworkSecurityPerimeterConfigurationsReconcileRequest,
+  output: NetworkSecurityPerimeterConfigurationsReconcileResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7734,8 +10511,8 @@ export const ObjectReplicationPoliciesCreateOrUpdate: API.OperationMethod<
   ObjectReplicationPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(438) as any as S.Schema<ObjectReplicationPoliciesCreateOrUpdateRequest>,
-  output: __S(286) as any as S.Schema<ObjectReplicationPoliciesCreateOrUpdateResponse>,
+  input: ObjectReplicationPoliciesCreateOrUpdateRequest,
+  output: ObjectReplicationPoliciesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7749,8 +10526,8 @@ export const PatchEncryptionScope: API.OperationMethod<
   PatchEncryptionScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(441) as any as S.Schema<PatchEncryptionScopeRequest>,
-  output: __S(223) as any as S.Schema<PatchEncryptionScopeResponse>,
+  input: PatchEncryptionScopeRequest,
+  output: PatchEncryptionScopeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7764,8 +10541,8 @@ export const PutEncryptionScope: API.OperationMethod<
   PutEncryptionScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(442) as any as S.Schema<PutEncryptionScopeRequest>,
-  output: __S(223) as any as S.Schema<PutEncryptionScopeResponse>,
+  input: PutEncryptionScopeRequest,
+  output: PutEncryptionScopeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7779,8 +10556,8 @@ export const PutPrivateEndpointConnection: API.OperationMethod<
   PutPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(444) as any as S.Schema<PutPrivateEndpointConnectionRequest>,
-  output: __S(147) as any as S.Schema<PutPrivateEndpointConnectionResponse>,
+  input: PutPrivateEndpointConnectionRequest,
+  output: PutPrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7794,8 +10571,8 @@ export const RegenerateLocalUserPassword: API.OperationMethod<
   RegenerateLocalUserPasswordError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(445) as any as S.Schema<RegenerateLocalUserPasswordRequest>,
-  output: __S(446) as any as S.Schema<LocalUserRegeneratePasswordResult>,
+  input: RegenerateLocalUserPasswordRequest,
+  output: LocalUserRegeneratePasswordResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7809,8 +10586,8 @@ export const RegenerateStorageAccountKey: API.OperationMethod<
   RegenerateStorageAccountKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(447) as any as S.Schema<RegenerateStorageAccountKeyRequest>,
-  output: __S(408) as any as S.Schema<StorageAccountListKeysResult>,
+  input: RegenerateStorageAccountKeyRequest,
+  output: StorageAccountListKeysResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7824,8 +10601,8 @@ export const RestoreFileShare: API.OperationMethod<
   RestoreFileShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448) as any as S.Schema<RestoreFileShareRequest>,
-  output: __S(43) as any as S.Schema<RestoreFileShareResponse>,
+  input: RestoreFileShareRequest,
+  output: RestoreFileShareResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7839,8 +10616,8 @@ export const RestoreStorageAccountBlobRanges: API.OperationMethod<
   RestoreStorageAccountBlobRangesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(449) as any as S.Schema<RestoreStorageAccountBlobRangesRequest>,
-  output: __S(152) as any as S.Schema<BlobRestoreStatus>,
+  input: RestoreStorageAccountBlobRangesRequest,
+  output: BlobRestoreStatus,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7854,8 +10631,8 @@ export const RevokeStorageAccountUserDelegationKeys: API.OperationMethod<
   RevokeStorageAccountUserDelegationKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(450) as any as S.Schema<RevokeStorageAccountUserDelegationKeysRequest>,
-  output: __S(16) as any as S.Schema<RevokeStorageAccountUserDelegationKeysResponse>,
+  input: RevokeStorageAccountUserDelegationKeysRequest,
+  output: RevokeStorageAccountUserDelegationKeysResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7869,8 +10646,8 @@ export const SetBlobContainerLegalHold: API.OperationMethod<
   SetBlobContainerLegalHoldError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451) as any as S.Schema<SetBlobContainerLegalHoldRequest>,
-  output: __S(33) as any as S.Schema<LegalHold>,
+  input: SetBlobContainerLegalHoldRequest,
+  output: LegalHold,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7884,8 +10661,8 @@ export const SetBlobServiceServiceProperties: API.OperationMethod<
   SetBlobServiceServicePropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(454) as any as S.Schema<SetBlobServiceServicePropertiesRequest>,
-  output: __S(211) as any as S.Schema<SetBlobServiceServicePropertiesResponse>,
+  input: SetBlobServiceServicePropertiesRequest,
+  output: SetBlobServiceServicePropertiesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7899,8 +10676,8 @@ export const SetFileServiceServiceProperties: API.OperationMethod<
   SetFileServiceServicePropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455) as any as S.Schema<SetFileServiceServicePropertiesRequest>,
-  output: __S(231) as any as S.Schema<SetFileServiceServicePropertiesResponse>,
+  input: SetFileServiceServicePropertiesRequest,
+  output: SetFileServiceServicePropertiesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7914,8 +10691,8 @@ export const SetQueueServiceServiceProperties: API.OperationMethod<
   SetQueueServiceServicePropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(456) as any as S.Schema<SetQueueServiceServicePropertiesRequest>,
-  output: __S(291) as any as S.Schema<SetQueueServiceServicePropertiesResponse>,
+  input: SetQueueServiceServicePropertiesRequest,
+  output: SetQueueServiceServicePropertiesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7929,8 +10706,8 @@ export const SetTableServiceServiceProperties: API.OperationMethod<
   SetTableServiceServicePropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(457) as any as S.Schema<SetTableServiceServicePropertiesRequest>,
-  output: __S(291) as any as S.Schema<SetTableServiceServicePropertiesResponse>,
+  input: SetTableServiceServicePropertiesRequest,
+  output: SetTableServiceServicePropertiesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7944,8 +10721,8 @@ export const StopStorageTaskAssignmentAssignment: API.OperationMethod<
   StopStorageTaskAssignmentAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(458) as any as S.Schema<StopStorageTaskAssignmentAssignmentRequest>,
-  output: __S(16) as any as S.Schema<StopStorageTaskAssignmentAssignmentResponse>,
+  input: StopStorageTaskAssignmentAssignmentRequest,
+  output: StopStorageTaskAssignmentAssignmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7959,8 +10736,8 @@ export const StorageAccountsCustomerInitiatedMigration: API.OperationMethod<
   StorageAccountsCustomerInitiatedMigrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(460) as any as S.Schema<StorageAccountsCustomerInitiatedMigrationRequest>,
-  output: __S(16) as any as S.Schema<StorageAccountsCustomerInitiatedMigrationResponse>,
+  input: StorageAccountsCustomerInitiatedMigrationRequest,
+  output: StorageAccountsCustomerInitiatedMigrationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7974,8 +10751,8 @@ export const StorageAccountsFailover: API.OperationMethod<
   StorageAccountsFailoverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(461) as any as S.Schema<StorageAccountsFailoverRequest>,
-  output: __S(462) as any as S.Schema<StorageAccountsFailoverResponse>,
+  input: StorageAccountsFailoverRequest,
+  output: StorageAccountsFailoverResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7989,8 +10766,8 @@ export const StorageAccountsHierarchicalNamespaceMigration: API.OperationMethod<
   StorageAccountsHierarchicalNamespaceMigrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(463) as any as S.Schema<StorageAccountsHierarchicalNamespaceMigrationRequest>,
-  output: __S(16) as any as S.Schema<StorageAccountsHierarchicalNamespaceMigrationResponse>,
+  input: StorageAccountsHierarchicalNamespaceMigrationRequest,
+  output: StorageAccountsHierarchicalNamespaceMigrationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8004,8 +10781,8 @@ export const TestBlobAccessPointConfigurationExistingConnection: API.OperationMe
   TestBlobAccessPointConfigurationExistingConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464) as any as S.Schema<TestBlobAccessPointConfigurationExistingConnectionRequest>,
-  output: __S(465) as any as S.Schema<BlobAccessPointConnectionTestResponse>,
+  input: TestBlobAccessPointConfigurationExistingConnectionRequest,
+  output: BlobAccessPointConnectionTestResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8019,8 +10796,8 @@ export const TestBlobAccessPointConnectionTestProposedConnection: API.OperationM
   TestBlobAccessPointConnectionTestProposedConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(466) as any as S.Schema<TestBlobAccessPointConnectionTestProposedConnectionRequest>,
-  output: __S(465) as any as S.Schema<BlobAccessPointConnectionTestResponse>,
+  input: TestBlobAccessPointConnectionTestProposedConnectionRequest,
+  output: BlobAccessPointConnectionTestResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8034,8 +10811,8 @@ export const TestConnectorExistingConnection: API.OperationMethod<
   TestConnectorExistingConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(467) as any as S.Schema<TestConnectorExistingConnectionRequest>,
-  output: __S(468) as any as S.Schema<TestConnectionResponse>,
+  input: TestConnectorExistingConnectionRequest,
+  output: TestConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8049,8 +10826,8 @@ export const UpdateBlobAccessPointConfiguration: API.OperationMethod<
   UpdateBlobAccessPointConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(470) as any as S.Schema<UpdateBlobAccessPointConfigurationRequest>,
-  output: __S(56) as any as S.Schema<UpdateBlobAccessPointConfigurationResponse>,
+  input: UpdateBlobAccessPointConfigurationRequest,
+  output: UpdateBlobAccessPointConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8064,8 +10841,8 @@ export const UpdateBlobContainer: API.OperationMethod<
   UpdateBlobContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(471) as any as S.Schema<UpdateBlobContainerRequest>,
-  output: __S(70) as any as S.Schema<UpdateBlobContainerResponse>,
+  input: UpdateBlobContainerRequest,
+  output: UpdateBlobContainerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8079,8 +10856,8 @@ export const UpdateConnector: API.OperationMethod<
   UpdateConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(474) as any as S.Schema<UpdateConnectorRequest>,
-  output: __S(77) as any as S.Schema<UpdateConnectorResponse>,
+  input: UpdateConnectorRequest,
+  output: UpdateConnectorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8094,8 +10871,8 @@ export const UpdateContextCach: API.OperationMethod<
   UpdateContextCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(476) as any as S.Schema<UpdateContextCachRequest>,
-  output: __S(51) as any as S.Schema<UpdateContextCachResponse>,
+  input: UpdateContextCachRequest,
+  output: UpdateContextCachResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8109,8 +10886,8 @@ export const UpdateContextCacheContainer: API.OperationMethod<
   UpdateContextCacheContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(478) as any as S.Schema<UpdateContextCacheContainerRequest>,
-  output: __S(37) as any as S.Schema<UpdateContextCacheContainerResponse>,
+  input: UpdateContextCacheContainerRequest,
+  output: UpdateContextCacheContainerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8124,8 +10901,8 @@ export const UpdateDataShare: API.OperationMethod<
   UpdateDataShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480) as any as S.Schema<UpdateDataShareRequest>,
-  output: __S(85) as any as S.Schema<UpdateDataShareResponse>,
+  input: UpdateDataShareRequest,
+  output: UpdateDataShareResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8139,8 +10916,8 @@ export const UpdateFileShare: API.OperationMethod<
   UpdateFileShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(481) as any as S.Schema<UpdateFileShareRequest>,
-  output: __S(93) as any as S.Schema<UpdateFileShareResponse>,
+  input: UpdateFileShareRequest,
+  output: UpdateFileShareResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8154,8 +10931,8 @@ export const UpdateQueue: API.OperationMethod<
   UpdateQueueError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(482) as any as S.Schema<UpdateQueueRequest>,
-  output: __S(97) as any as S.Schema<UpdateQueueResponse>,
+  input: UpdateQueueRequest,
+  output: UpdateQueueResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8169,8 +10946,8 @@ export const UpdateStorageAccount: API.OperationMethod<
   UpdateStorageAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(484) as any as S.Schema<UpdateStorageAccountRequest>,
-  output: __S(157) as any as S.Schema<UpdateStorageAccountResponse>,
+  input: UpdateStorageAccountRequest,
+  output: UpdateStorageAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8184,8 +10961,8 @@ export const UpdateStorageTaskAssignment: API.OperationMethod<
   UpdateStorageTaskAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(489) as any as S.Schema<UpdateStorageTaskAssignmentRequest>,
-  output: __S(167) as any as S.Schema<UpdateStorageTaskAssignmentResponse>,
+  input: UpdateStorageTaskAssignmentRequest,
+  output: UpdateStorageTaskAssignmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8199,8 +10976,8 @@ export const UpdateTable: API.OperationMethod<
   UpdateTableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(490) as any as S.Schema<UpdateTableRequest>,
-  output: __S(174) as any as S.Schema<UpdateTableResponse>,
+  input: UpdateTableRequest,
+  output: UpdateTableResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8231,14 +11008,14 @@ function __c0(j: number): any {
         identifier: "AbortStorageAccountHierarchicalNamespaceMigrationResponse",
       });
     case 2:
-      return S.Array(S.String);
+      return S.Array(MetricsEmitted);
     case 3:
       return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          filterType: S.optional(S.String),
-          filterValues: S.optional(__S(3)),
+          filterType: S.optional(AdvancedPlatformMetricsFilterType),
+          filterValues: S.optional(AdvancedPlatformMetricsRuleConfigFilterValuesList),
         }),
       ).annotate({
         identifier: "AdvancedPlatformMetricsRuleConfig",
@@ -8247,8 +11024,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          metricsToEmit: S.optional(__S(2)),
-          ruleConfig: __S(4),
+          metricsToEmit: S.optional(AdvancedPlatformMetricsRulePropertiesInputMetricsToEmitList),
+          ruleConfig: AdvancedPlatformMetricsRuleConfig,
         }),
       ).annotate({
         identifier: "AdvancedPlatformMetricsRulePropertiesInput",
@@ -8259,8 +11036,11 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          advancedPlatformMetricsRuleType: S.String.pipe(T.Label()),
-          properties: S.optional(__S(5)),
+          advancedPlatformMetricsRuleType:
+            AdvancedPlatformMetricsCreateOrUpdateRequestAdvancedPlatformMetricsRuleType.pipe(
+              T.Label(),
+            ),
+          properties: S.optional(AdvancedPlatformMetricsRulePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8276,10 +11056,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -8290,12 +11070,12 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ruleType: S.optional(S.String),
+          ruleType: S.optional(AdvancedPlatformMetricsRuleType),
           enabled: S.Boolean,
           lastModifiedTime: S.optional(S.String),
-          metricsToEmit: S.optional(__S(2)),
-          metricsEmitted: S.optional(__S(2)),
-          ruleConfig: __S(4),
+          metricsToEmit: S.optional(AdvancedPlatformMetricsRulePropertiesMetricsToEmitList),
+          metricsEmitted: S.optional(AdvancedPlatformMetricsRulePropertiesMetricsEmittedList),
+          ruleConfig: AdvancedPlatformMetricsRuleConfig,
         }),
       ).annotate({
         identifier: "AdvancedPlatformMetricsRuleProperties",
@@ -8306,8 +11086,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(8)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AdvancedPlatformMetricsRuleProperties),
         }),
       ).annotate({
         identifier: "AdvancedPlatformMetricsCreateOrUpdateResponse",
@@ -8316,7 +11096,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           immutabilityPeriodSinceCreationInDays: S.optional(S.Number),
-          state: S.optional(S.String),
+          state: S.optional(ImmutabilityPolicyState),
           allowProtectedAppendWrites: S.optional(S.Boolean),
           allowProtectedAppendWritesAll: S.optional(S.Boolean),
         }),
@@ -8330,7 +11110,7 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           containerName: S.String.pipe(T.Label()),
-          properties: __S(10),
+          properties: ImmutabilityPolicyProperty,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8348,8 +11128,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: __S(10),
+          systemData: S.optional(SystemData),
+          properties: ImmutabilityPolicyProperty,
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -8362,7 +11142,7 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           containerName: S.String.pipe(T.Label()),
-          action: S.String,
+          action: LeaseContainerRequestAction,
           leaseId: S.optional(S.String),
           breakPeriod: S.optional(S.Number),
           leaseDuration: S.optional(S.Number),
@@ -8422,13 +11202,13 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          prefixMatch: S.optional(__S(3)),
-          excludePrefix: S.optional(__S(3)),
-          blobTypes: S.optional(__S(3)),
+          prefixMatch: S.optional(BlobInventoryPolicyFilterPrefixMatchList),
+          excludePrefix: S.optional(BlobInventoryPolicyFilterExcludePrefixList),
+          blobTypes: S.optional(BlobInventoryPolicyFilterBlobTypesList),
           includeBlobVersions: S.optional(S.Boolean),
           includeSnapshots: S.optional(S.Boolean),
           includeDeleted: S.optional(S.Boolean),
-          creationTime: S.optional(__S(17)),
+          creationTime: S.optional(BlobInventoryCreationTime),
         }),
       ).annotate({
         identifier: "BlobInventoryPolicyFilter",
@@ -8436,11 +11216,11 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(18)),
-          format: S.String,
-          schedule: S.String,
-          objectType: S.String,
-          schemaFields: __S(3),
+          filters: S.optional(BlobInventoryPolicyFilter),
+          format: Format,
+          schedule: Schedule,
+          objectType: ObjectType,
+          schemaFields: BlobInventoryPolicyDefinitionSchemaFieldsList,
         }),
       ).annotate({
         identifier: "BlobInventoryPolicyDefinition",
@@ -8451,17 +11231,17 @@ function __c2(j: number): any {
           enabled: S.Boolean,
           name: S.String,
           destination: S.String,
-          definition: __S(19),
+          definition: BlobInventoryPolicyDefinition,
         }),
       ).annotate({ identifier: "BlobInventoryPolicyRule" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(BlobInventoryPolicyRule);
     case 6:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          type: S.String,
-          rules: __S(21),
+          type: InventoryRuleType,
+          rules: BlobInventoryPolicySchemaInputRulesList,
         }),
       ).annotate({
         identifier: "BlobInventoryPolicySchemaInput",
@@ -8469,7 +11249,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          policy: __S(22),
+          policy: BlobInventoryPolicySchemaInput,
         }),
       ).annotate({
         identifier: "BlobInventoryPolicyPropertiesInput",
@@ -8484,8 +11264,9 @@ function __c3(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          blobInventoryPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(23)),
+          blobInventoryPolicyName:
+            BlobInventoryPoliciesCreateOrUpdateRequestBlobInventoryPolicyName.pipe(T.Label()),
+          properties: S.optional(BlobInventoryPolicyPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8502,8 +11283,8 @@ function __c3(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           destination: S.optional(S.String),
-          type: S.String,
-          rules: __S(21),
+          type: InventoryRuleType,
+          rules: BlobInventoryPolicySchemaRulesList,
         }),
       ).annotate({
         identifier: "BlobInventoryPolicySchema",
@@ -8512,7 +11293,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lastModifiedTime: S.optional(S.String),
-          policy: __S(25),
+          policy: BlobInventoryPolicySchema,
         }),
       ).annotate({
         identifier: "BlobInventoryPolicyProperties",
@@ -8523,8 +11304,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(26)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BlobInventoryPolicyProperties),
         }),
       ).annotate({
         identifier: "BlobInventoryPoliciesCreateOrUpdateResponse",
@@ -8534,7 +11315,7 @@ function __c3(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           name: S.String,
-          type: S.String,
+          type: CheckContextCachNameAvailabilityRequestType,
         }).pipe(
           T.Http({
             method: "POST",
@@ -8550,7 +11331,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.Boolean,
-          reason: S.optional(S.String),
+          reason: S.optional(ContextCacheCheckNameAvailabilityFailureReason),
           message: S.optional(S.String),
         }),
       ).annotate({
@@ -8561,7 +11342,7 @@ function __c3(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           name: S.String,
-          type: S.String,
+          type: CheckStorageAccountNameAvailabilityRequestType,
         }).pipe(
           T.Http({
             method: "POST",
@@ -8577,7 +11358,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.optional(S.Boolean),
-          reason: S.optional(S.String),
+          reason: S.optional(Reason),
           message: S.optional(S.String),
         }),
       ).annotate({
@@ -8594,7 +11375,7 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           containerName: S.String.pipe(T.Label()),
-          tags: __S(3),
+          tags: ClearBlobContainerLegalHoldRequestTagsList,
           allowProtectedAppendWritesAll: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -8611,7 +11392,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           hasLegalHold: S.optional(S.Boolean),
-          tags: __S(3),
+          tags: LegalHoldTagsList,
           allowProtectedAppendWritesAll: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "LegalHold" });
@@ -8620,7 +11401,7 @@ function __c4(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           modelName: S.String,
-          provider: S.String,
+          provider: AiProvider,
           timeToLive: S.optional(S.Number),
         }),
       ).annotate({
@@ -8633,7 +11414,7 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           contextCacheName: S.String.pipe(T.Label()),
           contextCacheContainerName: S.String.pipe(T.Label()),
-          properties: __S(34),
+          properties: ContextCacheContainerPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8650,9 +11431,9 @@ function __c4(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           modelName: S.String,
-          provider: S.String,
+          provider: AiProvider,
           timeToLive: S.optional(S.Number),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ContextCacheProvisioningState),
         }),
       ).annotate({
         identifier: "ContextCacheContainerProperties",
@@ -8663,8 +11444,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: __S(36),
+          systemData: S.optional(SystemData),
+          properties: ContextCacheContainerProperties,
         }),
       ).annotate({
         identifier: "ContextCacheContainersCreateOrUpdateResponse",
@@ -8674,7 +11455,7 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          identityType: S.optional(S.String),
+          identityType: S.optional(AzureResourceManagerCommonTypesKeyEncryptionKeyIdentityType),
           userAssignedIdentityResourceId: S.optional(S.String),
           federatedClientId: S.optional(S.String),
           delegatedIdentityClientId: S.optional(S.String),
@@ -8689,7 +11470,9 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          keyEncryptionKeyIdentity: S.optional(__S(39)),
+          keyEncryptionKeyIdentity: S.optional(
+            AzureResourceManagerCommonTypesKeyEncryptionKeyIdentity,
+          ),
           keyEncryptionKeyUrl: S.optional(S.String),
         }),
       ).annotate({
@@ -8698,8 +11481,12 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          infrastructureEncryption: S.optional(S.String),
-          customerManagedKeyEncryption: S.optional(__S(40)),
+          infrastructureEncryption: S.optional(
+            AzureResourceManagerCommonTypesInfrastructureEncryption,
+          ),
+          customerManagedKeyEncryption: S.optional(
+            AzureResourceManagerCommonTypesCustomerManagedKeyEncryption,
+          ),
         }),
       ).annotate({
         identifier: "AzureResourceManagerCommonTypesEncryption",
@@ -8707,9 +11494,9 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          accountKind: S.String,
+          accountKind: ContextCacheAccountKind,
           description: S.optional(S.String),
-          encryption: S.optional(__S(41)),
+          encryption: S.optional(AzureResourceManagerCommonTypesEncryption),
         }),
       ).annotate({
         identifier: "ContextCachePropertiesInput",
@@ -8719,12 +11506,12 @@ function __c5(j: number): any {
         identifier: "UserAssignedIdentityInput",
       });
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(43)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(44)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
         }),
       ).annotate({
         identifier: "ContextCachesCreateOrUpdateRequestIdentity",
@@ -8735,10 +11522,10 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           contextCacheName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(38)),
+          tags: S.optional(ContextCachesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: __S(42),
-          identity: S.optional(__S(45)),
+          properties: ContextCachePropertiesInput,
+          identity: S.optional(ContextCachesCreateOrUpdateRequestIdentity),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8753,10 +11540,10 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          accountKind: S.String,
+          accountKind: ContextCacheAccountKind,
           description: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          encryption: S.optional(__S(41)),
+          provisioningState: S.optional(ContextCacheProvisioningState),
+          encryption: S.optional(AzureResourceManagerCommonTypesEncryption),
         }),
       ).annotate({ identifier: "ContextCacheProperties" });
   }
@@ -8771,14 +11558,14 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(48)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
     case 2:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(49)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(UserAssignedIdentities),
         }),
       ).annotate({
         identifier: "ContextCachesCreateOrUpdateResponseIdentity",
@@ -8789,11 +11576,11 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          tags: S.optional(__S(38)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(ContextCachesCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: __S(47),
-          identity: S.optional(__S(50)),
+          properties: ContextCacheProperties,
+          identity: S.optional(ContextCachesCreateOrUpdateResponseIdentity),
         }),
       ).annotate({
         identifier: "ContextCachesCreateOrUpdateResponse",
@@ -8801,7 +11588,7 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          sourceType: S.String,
+          sourceType: BlobAccessPointSourceType,
         }),
       ).annotate({
         identifier: "BlobAccessPointSourceProperties",
@@ -8809,9 +11596,9 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(BlobAccessPointConfigurationState),
           description: S.optional(S.String),
-          source: __S(52),
+          source: BlobAccessPointSourceProperties,
         }),
       ).annotate({
         identifier: "BlobAccessPointConfigurationPropertiesInput",
@@ -8823,9 +11610,9 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           blobAccessPointConfigurationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(38)),
+          tags: S.optional(CreateBlobAccessPointConfigurationRequestTagsMap),
           location: S.String,
-          properties: __S(53),
+          properties: BlobAccessPointConfigurationPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8841,13 +11628,13 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           uniqueId: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(BlobAccessPointConfigurationState),
           description: S.optional(S.String),
-          lastConnectionTestStatus: S.optional(S.String),
+          lastConnectionTestStatus: S.optional(BlobAccessPointConnectionTestStatus),
           lastConnectionTestTimestamp: S.optional(S.String),
           lastConnectionTestErrorMessage: S.optional(S.String),
-          source: __S(52),
-          provisioningState: S.optional(S.String),
+          source: BlobAccessPointSourceProperties,
+          provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
         }),
       ).annotate({
         identifier: "BlobAccessPointConfigurationProperties",
@@ -8862,10 +11649,10 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          tags: S.optional(__S(38)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateBlobAccessPointConfigurationResponseTagsMap),
           location: S.String,
-          properties: __S(55),
+          properties: BlobAccessPointConfigurationProperties,
         }),
       ).annotate({
         identifier: "CreateBlobAccessPointConfigurationResponse",
@@ -8892,12 +11679,12 @@ function __c7(j: number): any {
         S.Struct({
           defaultEncryptionScope: S.optional(S.String),
           denyEncryptionScopeOverride: S.optional(S.Boolean),
-          publicAccess: S.optional(S.String),
-          metadata: S.optional(__S(38)),
-          immutableStorageWithVersioning: S.optional(__S(57)),
+          publicAccess: S.optional(PublicAccess),
+          metadata: S.optional(ContainerPropertiesInputMetadataMap),
+          immutableStorageWithVersioning: S.optional(ImmutableStorageWithVersioningInput),
           enableNfsV3RootSquash: S.optional(S.Boolean),
           enableNfsV3AllSquash: S.optional(S.Boolean),
-          blobAccessPointConfiguration: S.optional(__S(58)),
+          blobAccessPointConfiguration: S.optional(BlobAccessPointConfigurationConnection),
         }),
       ).annotate({ identifier: "ContainerPropertiesInput" });
     case 4:
@@ -8907,7 +11694,7 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           containerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(59)),
+          properties: S.optional(ContainerPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8922,7 +11709,7 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          update: S.optional(S.String),
+          update: S.optional(ImmutabilityPolicyUpdateType),
           immutabilityPeriodSinceCreationInDays: S.optional(S.Number),
           timestamp: S.optional(S.String),
           objectIdentifier: S.optional(S.String),
@@ -8933,13 +11720,13 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "UpdateHistoryProperty" });
     case 6:
-      return S.Array(__S(61));
+      return S.Array(UpdateHistoryProperty);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(10)),
+          properties: S.optional(ImmutabilityPolicyProperty),
           etag: S.optional(S.String),
-          updateHistory: S.optional(__S(62)),
+          updateHistory: S.optional(ImmutabilityPolicyPropertiesUpdateHistoryList),
         }),
       ).annotate({
         identifier: "ImmutabilityPolicyProperties",
@@ -8959,7 +11746,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "TagProperty" });
     case 1:
-      return S.Array(__S(64));
+      return S.Array(TagProperty);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -8973,8 +11760,8 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           hasLegalHold: S.optional(S.Boolean),
-          tags: S.optional(__S(65)),
-          protectedAppendWritesHistory: S.optional(__S(66)),
+          tags: S.optional(LegalHoldPropertiesTagsList),
+          protectedAppendWritesHistory: S.optional(ProtectedAppendWritesHistory),
         }),
       ).annotate({ identifier: "LegalHoldProperties" });
     case 4:
@@ -8982,7 +11769,7 @@ function __c8(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           timeStamp: S.optional(S.String),
-          migrationState: S.optional(S.String),
+          migrationState: S.optional(MigrationState),
         }),
       ).annotate({
         identifier: "ImmutableStorageWithVersioning",
@@ -8996,20 +11783,20 @@ function __c8(j: number): any {
           remainingRetentionDays: S.optional(S.Number),
           defaultEncryptionScope: S.optional(S.String),
           denyEncryptionScopeOverride: S.optional(S.Boolean),
-          publicAccess: S.optional(S.String),
+          publicAccess: S.optional(PublicAccess),
           lastModifiedTime: S.optional(S.String),
-          leaseStatus: S.optional(S.String),
-          leaseState: S.optional(S.String),
-          leaseDuration: S.optional(S.String),
-          metadata: S.optional(__S(38)),
-          immutabilityPolicy: S.optional(__S(63)),
-          legalHold: S.optional(__S(67)),
+          leaseStatus: S.optional(LeaseStatus),
+          leaseState: S.optional(LeaseState),
+          leaseDuration: S.optional(LeaseDuration),
+          metadata: S.optional(ContainerPropertiesMetadataMap),
+          immutabilityPolicy: S.optional(ImmutabilityPolicyProperties),
+          legalHold: S.optional(LegalHoldProperties),
           hasLegalHold: S.optional(S.Boolean),
           hasImmutabilityPolicy: S.optional(S.Boolean),
-          immutableStorageWithVersioning: S.optional(__S(68)),
+          immutableStorageWithVersioning: S.optional(ImmutableStorageWithVersioning),
           enableNfsV3RootSquash: S.optional(S.Boolean),
           enableNfsV3AllSquash: S.optional(S.Boolean),
-          blobAccessPointConfiguration: S.optional(__S(58)),
+          blobAccessPointConfiguration: S.optional(BlobAccessPointConfigurationConnection),
         }),
       ).annotate({ identifier: "ContainerProperties" });
     case 6:
@@ -9018,8 +11805,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(69)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ContainerProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -9050,19 +11837,19 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          connection: S.optional(__S(71)),
-          authProperties: S.optional(__S(72)),
+          type: StorageConnectorSourceType,
+          connection: S.optional(StorageConnectorConnection),
+          authProperties: S.optional(StorageConnectorAuthProperties),
         }),
       ).annotate({ identifier: "StorageConnectorSource" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(StorageConnectorPropertiesInputState),
           description: S.optional(S.String),
           testConnection: S.optional(S.Boolean),
-          dataSourceType: S.String,
-          source: __S(73),
+          dataSourceType: StorageConnectorDataSourceType,
+          source: StorageConnectorSource,
         }),
       ).annotate({
         identifier: "StorageConnectorPropertiesInput",
@@ -9074,9 +11861,9 @@ function __c9(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           connectorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(38)),
+          tags: S.optional(CreateConnectorRequestTagsMap),
           location: S.String,
-          properties: __S(74),
+          properties: StorageConnectorPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9090,13 +11877,13 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           uniqueId: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(StorageConnectorPropertiesState),
           creationTime: S.optional(S.String),
           description: S.optional(S.String),
           testConnection: S.optional(S.Boolean),
-          dataSourceType: S.String,
-          source: __S(73),
-          provisioningState: S.optional(S.String),
+          dataSourceType: StorageConnectorDataSourceType,
+          source: StorageConnectorSource,
+          provisioningState: S.optional(NativeDataSharingProvisioningState),
         }),
       ).annotate({
         identifier: "StorageConnectorProperties",
@@ -9107,10 +11894,10 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          tags: S.optional(__S(38)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateConnectorResponseTagsMap),
           location: S.String,
-          properties: __S(76),
+          properties: StorageConnectorProperties,
         }),
       ).annotate({ identifier: "CreateConnectorResponse" });
     case 6:
@@ -9118,13 +11905,13 @@ function __c9(j: number): any {
         S.Struct({
           principalId: S.String,
           tenantId: S.String,
-          permission: S.String,
+          permission: StorageDataShareAccessPolicyPermission,
         }),
       ).annotate({
         identifier: "StorageDataShareAccessPolicy",
       });
     case 7:
-      return S.Array(__S(78));
+      return S.Array(StorageDataShareAccessPolicy);
   }
 }
 function __c10(j: number): any {
@@ -9137,13 +11924,13 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "StorageDataShareAsset" });
     case 1:
-      return S.Array(__S(80));
+      return S.Array(StorageDataShareAsset);
     case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          accessPolicies: __S(79),
-          assets: __S(81),
+          accessPolicies: StorageDataSharePropertiesInputAccessPoliciesList,
+          assets: StorageDataSharePropertiesInputAssetsList,
         }),
       ).annotate({
         identifier: "StorageDataSharePropertiesInput",
@@ -9155,9 +11942,9 @@ function __c10(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           dataShareName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(38)),
+          tags: S.optional(CreateDataShareRequestTagsMap),
           location: S.String,
-          properties: __S(82),
+          properties: StorageDataSharePropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9173,9 +11960,9 @@ function __c10(j: number): any {
           dataShareIdentifier: S.optional(S.String),
           description: S.optional(S.String),
           dataShareUri: S.optional(S.String),
-          accessPolicies: __S(79),
-          assets: __S(81),
-          provisioningState: S.optional(S.String),
+          accessPolicies: StorageDataSharePropertiesAccessPoliciesList,
+          assets: StorageDataSharePropertiesAssetsList,
+          provisioningState: S.optional(NativeDataSharingProvisioningState),
         }),
       ).annotate({
         identifier: "StorageDataShareProperties",
@@ -9186,10 +11973,10 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          tags: S.optional(__S(38)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateDataShareResponseTagsMap),
           location: S.String,
-          properties: __S(84),
+          properties: StorageDataShareProperties,
         }),
       ).annotate({ identifier: "CreateDataShareResponse" });
     case 6:
@@ -9204,7 +11991,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          accessPolicy: S.optional(__S(86)),
+          accessPolicy: S.optional(AccessPolicy),
         }),
       ).annotate({ identifier: "SignedIdentifier" });
   }
@@ -9212,7 +11999,7 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87));
+      return S.Array(SignedIdentifier);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9226,15 +12013,15 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(38)),
+          metadata: S.optional(FileSharePropertiesInputMetadataMap),
           shareQuota: S.optional(S.Number),
           provisionedIops: S.optional(S.Number),
           provisionedBandwidthMibps: S.optional(S.Number),
-          enabledProtocols: S.optional(S.String),
-          rootSquash: S.optional(S.String),
-          accessTier: S.optional(S.String),
-          signedIdentifiers: S.optional(__S(88)),
-          fileSharePaidBursting: S.optional(__S(89)),
+          enabledProtocols: S.optional(EnabledProtocols),
+          rootSquash: S.optional(RootSquashType),
+          accessTier: S.optional(ShareAccessTier),
+          signedIdentifiers: S.optional(FileSharePropertiesInputSignedIdentifiersList),
+          fileSharePaidBursting: S.optional(FileSharePropertiesFileSharePaidBursting),
         }),
       ).annotate({ identifier: "FileSharePropertiesInput" });
     case 3:
@@ -9245,7 +12032,7 @@ function __c11(j: number): any {
           accountName: S.String.pipe(T.Label()),
           shareName: S.String.pipe(T.Label()),
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-          properties: S.optional(__S(90)),
+          properties: S.optional(FileSharePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9259,7 +12046,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lastModifiedTime: S.optional(S.String),
-          metadata: S.optional(__S(38)),
+          metadata: S.optional(FileSharePropertiesMetadataMap),
           shareQuota: S.optional(S.Number),
           provisionedIops: S.optional(S.Number),
           provisionedBandwidthMibps: S.optional(S.Number),
@@ -9268,22 +12055,22 @@ function __c11(j: number): any {
           nextAllowedQuotaDowngradeTime: S.optional(S.String),
           nextAllowedProvisionedIopsDowngradeTime: S.optional(S.String),
           nextAllowedProvisionedBandwidthDowngradeTime: S.optional(S.String),
-          enabledProtocols: S.optional(S.String),
-          rootSquash: S.optional(S.String),
+          enabledProtocols: S.optional(EnabledProtocols),
+          rootSquash: S.optional(RootSquashType),
           version: S.optional(S.String),
           deleted: S.optional(S.Boolean),
           deletedTime: S.optional(S.String),
           remainingRetentionDays: S.optional(S.Number),
-          accessTier: S.optional(S.String),
+          accessTier: S.optional(ShareAccessTier),
           accessTierChangeTime: S.optional(S.String),
           accessTierStatus: S.optional(S.String),
           shareUsageBytes: S.optional(S.Number),
-          leaseStatus: S.optional(S.String),
-          leaseState: S.optional(S.String),
-          leaseDuration: S.optional(S.String),
-          signedIdentifiers: S.optional(__S(88)),
+          leaseStatus: S.optional(LeaseStatus),
+          leaseState: S.optional(LeaseState),
+          leaseDuration: S.optional(LeaseDuration),
+          signedIdentifiers: S.optional(FileSharePropertiesSignedIdentifiersList),
           snapshotTime: S.optional(S.String),
-          fileSharePaidBursting: S.optional(__S(89)),
+          fileSharePaidBursting: S.optional(FileSharePropertiesFileSharePaidBursting),
         }),
       ).annotate({ identifier: "FileShareProperties" });
     case 5:
@@ -9292,15 +12079,15 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(92)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(FileShareProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateFileShareResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(38)),
+          metadata: S.optional(QueuePropertiesInputMetadataMap),
         }),
       ).annotate({ identifier: "QueuePropertiesInput" });
     case 7:
@@ -9310,7 +12097,7 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           queueName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(94)),
+          properties: S.optional(QueuePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9327,7 +12114,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(38)),
+          metadata: S.optional(QueuePropertiesMetadataMap),
           approximateMessageCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "QueueProperties" });
@@ -9337,46 +12124,46 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(96)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(QueueProperties),
         }),
       ).annotate({ identifier: "CreateQueueResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
-          tier: S.optional(S.String),
+          name: SkuName,
+          tier: S.optional(SkuTier),
         }),
       ).annotate({ identifier: "Sku" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(ExtendedLocationTypes),
         }),
       ).annotate({ identifier: "ExtendedLocation" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          zonePlacementPolicy: S.optional(S.String),
+          zonePlacementPolicy: S.optional(ZonePlacementPolicy),
         }),
       ).annotate({ identifier: "Placement" });
     case 5:
-      return S.Record(S.String, __S(43));
+      return S.Record(S.String, UserAssignedIdentityInput);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(101)),
+          type: IdentityType,
+          userAssignedIdentities: S.optional(IdentityInputUserAssignedIdentitiesMap),
         }),
       ).annotate({ identifier: "IdentityInput" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           sasExpirationPeriod: S.String,
-          expirationAction: S.String,
+          expirationAction: SasPolicyExpirationAction,
           requireUserBoundUserDelegationSas: S.optional(S.Boolean),
-          requireUserBoundUserDelegationSasAction: S.optional(S.String),
+          requireUserBoundUserDelegationSasAction: S.optional(PolicyViolationAction),
         }),
       ).annotate({ identifier: "SasPolicy" });
   }
@@ -9400,16 +12187,16 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          keyType: S.optional(S.String),
+          keyType: S.optional(KeyType),
         }),
       ).annotate({ identifier: "EncryptionServiceInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          blob: S.optional(__S(106)),
-          file: S.optional(__S(106)),
-          table: S.optional(__S(106)),
-          queue: S.optional(__S(106)),
+          blob: S.optional(EncryptionServiceInput),
+          file: S.optional(EncryptionServiceInput),
+          table: S.optional(EncryptionServiceInput),
+          queue: S.optional(EncryptionServiceInput),
         }),
       ).annotate({ identifier: "EncryptionServicesInput" });
     case 4:
@@ -9430,11 +12217,11 @@ function __c13(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          services: S.optional(__S(107)),
-          keySource: S.optional(S.String),
+          services: S.optional(EncryptionServicesInput),
+          keySource: S.optional(EncryptionInputKeySource),
           requireInfrastructureEncryption: S.optional(S.Boolean),
-          keyvaultproperties: S.optional(__S(108)),
-          identity: S.optional(__S(109)),
+          keyvaultproperties: S.optional(KeyVaultPropertiesInput),
+          identity: S.optional(EncryptionIdentity),
         }),
       ).annotate({ identifier: "EncryptionInput" });
     case 7:
@@ -9449,40 +12236,40 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(111));
+      return S.Array(ResourceAccessRule);
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          action: S.optional(S.String),
+          action: S.optional(VirtualNetworkRuleInputAction),
         }),
       ).annotate({ identifier: "VirtualNetworkRuleInput" });
     case 2:
-      return S.Array(__S(113));
+      return S.Array(VirtualNetworkRuleInput);
     case 3:
       return S.suspend(() =>
         S.Struct({
           value: S.String,
-          action: S.optional(S.String),
+          action: S.optional(IPRuleAction),
         }),
       ).annotate({ identifier: "IPRule" });
     case 4:
-      return S.Array(__S(115));
+      return S.Array(IPRule);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          bypass: S.optional(S.String),
-          resourceAccessRules: S.optional(__S(112)),
-          virtualNetworkRules: S.optional(__S(114)),
-          ipRules: S.optional(__S(116)),
-          ipv6Rules: S.optional(__S(116)),
-          defaultAction: S.String,
+          bypass: S.optional(NetworkRuleSetInputBypass),
+          resourceAccessRules: S.optional(NetworkRuleSetInputResourceAccessRulesList),
+          virtualNetworkRules: S.optional(NetworkRuleSetInputVirtualNetworkRulesList),
+          ipRules: S.optional(NetworkRuleSetInputIpRulesList),
+          ipv6Rules: S.optional(NetworkRuleSetInputIpv6RulesList),
+          defaultAction: NetworkRuleSetInputDefaultAction,
         }),
       ).annotate({ identifier: "NetworkRuleSetInput" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(TurboTierStatus),
           targetPercent: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TurboTier" });
@@ -9496,7 +12283,7 @@ function __c14(j: number): any {
           domainSid: S.optional(S.String),
           azureStorageSid: S.optional(S.String),
           samAccountName: S.optional(S.String),
-          accountType: S.optional(S.String),
+          accountType: S.optional(AccountType),
         }),
       ).annotate({
         identifier: "ActiveDirectoryProperties",
@@ -9514,10 +12301,10 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          directoryServiceOptions: S.String,
-          activeDirectoryProperties: S.optional(__S(119)),
-          defaultSharePermission: S.optional(S.String),
-          smbOAuthSettings: S.optional(__S(120)),
+          directoryServiceOptions: DirectoryServiceOptions,
+          activeDirectoryProperties: S.optional(ActiveDirectoryProperties),
+          defaultSharePermission: S.optional(DefaultSharePermission),
+          smbOAuthSettings: S.optional(SmbOAuthSettings),
         }),
       ).annotate({
         identifier: "AzureFilesIdentityBasedAuthentication",
@@ -9525,7 +12312,7 @@ function __c15(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          routingChoice: S.optional(S.String),
+          routingChoice: S.optional(RoutingChoice),
           publishMicrosoftEndpoints: S.optional(S.Boolean),
           publishInternetEndpoints: S.optional(S.Boolean),
         }),
@@ -9542,7 +12329,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           immutabilityPeriodSinceCreationInDays: S.optional(S.Number),
-          state: S.optional(S.String),
+          state: S.optional(AccountImmutabilityPolicyState),
           allowProtectedAppendWrites: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -9552,7 +12339,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          immutabilityPolicy: S.optional(__S(124)),
+          immutabilityPolicy: S.optional(AccountImmutabilityPolicyProperties),
         }),
       ).annotate({ identifier: "ImmutableStorageAccount" });
     case 6:
@@ -9566,10 +12353,10 @@ function __c15(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          blob: S.optional(__S(57)),
-          file: S.optional(__S(57)),
-          table: S.optional(__S(57)),
-          queue: S.optional(__S(57)),
+          blob: S.optional(ServiceSharedKeyAccessProperties),
+          file: S.optional(ServiceSharedKeyAccessProperties),
+          table: S.optional(ServiceSharedKeyAccessProperties),
+          queue: S.optional(ServiceSharedKeyAccessProperties),
         }),
       ).annotate({
         identifier: "StorageAccountSharedKeyAccessProperties",
@@ -9592,35 +12379,35 @@ function __c16(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          allowedCopyScope: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          sasPolicy: S.optional(__S(103)),
-          keyPolicy: S.optional(__S(104)),
-          customDomain: S.optional(__S(105)),
-          encryption: S.optional(__S(110)),
-          networkAcls: S.optional(__S(117)),
-          accessTier: S.optional(S.String),
-          turboTier: S.optional(__S(118)),
-          azureFilesIdentityBasedAuthentication: S.optional(__S(121)),
+          allowedCopyScope: S.optional(AllowedCopyScope),
+          publicNetworkAccess: S.optional(PublicNetworkAccess),
+          sasPolicy: S.optional(SasPolicy),
+          keyPolicy: S.optional(KeyPolicy),
+          customDomain: S.optional(CustomDomain),
+          encryption: S.optional(EncryptionInput),
+          networkAcls: S.optional(NetworkRuleSetInput),
+          accessTier: S.optional(AccessTier),
+          turboTier: S.optional(TurboTier),
+          azureFilesIdentityBasedAuthentication: S.optional(AzureFilesIdentityBasedAuthentication),
           supportsHttpsTrafficOnly: S.optional(S.Boolean),
           isSftpEnabled: S.optional(S.Boolean),
           isLocalUserEnabled: S.optional(S.Boolean),
           enableExtendedGroups: S.optional(S.Boolean),
           isHnsEnabled: S.optional(S.Boolean),
-          largeFileSharesState: S.optional(S.String),
-          routingPreference: S.optional(__S(122)),
-          dualStackEndpointPreference: S.optional(__S(123)),
+          largeFileSharesState: S.optional(LargeFileSharesState),
+          routingPreference: S.optional(RoutingPreference),
+          dualStackEndpointPreference: S.optional(DualStackEndpointPreference),
           allowBlobPublicAccess: S.optional(S.Boolean),
-          minimumTlsVersion: S.optional(S.String),
+          minimumTlsVersion: S.optional(MinimumTlsVersion),
           allowSharedKeyAccess: S.optional(S.Boolean),
           isNfsV3Enabled: S.optional(S.Boolean),
           allowCrossTenantReplication: S.optional(S.Boolean),
           defaultToOAuthAuthentication: S.optional(S.Boolean),
-          immutableStorageWithVersioning: S.optional(__S(125)),
-          dnsEndpointType: S.optional(S.String),
-          geoPriorityReplicationStatus: S.optional(__S(126)),
-          allowSharedKeyAccessForServices: S.optional(__S(127)),
-          dataCollaborationPolicyProperties: S.optional(__S(128)),
+          immutableStorageWithVersioning: S.optional(ImmutableStorageAccount),
+          dnsEndpointType: S.optional(DnsEndpointType),
+          geoPriorityReplicationStatus: S.optional(GeoPriorityReplicationStatus),
+          allowSharedKeyAccessForServices: S.optional(StorageAccountSharedKeyAccessProperties),
+          dataCollaborationPolicyProperties: S.optional(StorageDataCollaborationPolicyProperties),
           allowCrossTenantDelegationSas: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -9632,15 +12419,15 @@ function __c16(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          sku: __S(98),
-          kind: S.String,
+          sku: Sku,
+          kind: Kind,
           location: S.String,
-          extendedLocation: S.optional(__S(99)),
-          zones: S.optional(__S(3)),
-          placement: S.optional(__S(100)),
-          tags: S.optional(__S(38)),
-          identity: S.optional(__S(102)),
-          properties: S.optional(__S(129)),
+          extendedLocation: S.optional(ExtendedLocation),
+          zones: S.optional(CreateStorageAccountRequestZonesList),
+          placement: S.optional(Placement),
+          tags: S.optional(CreateStorageAccountRequestTagsMap),
+          identity: S.optional(IdentityInput),
+          properties: S.optional(StorageAccountPropertiesCreateParametersInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9685,8 +12472,8 @@ function __c16(j: number): any {
           file: S.optional(S.String),
           web: S.optional(S.String),
           dfs: S.optional(S.String),
-          microsoftEndpoints: S.optional(__S(131)),
-          internetEndpoints: S.optional(__S(132)),
+          microsoftEndpoints: S.optional(StorageAccountMicrosoftEndpoints),
+          internetEndpoints: S.optional(StorageAccountInternetEndpoints),
         }),
       ).annotate({
         identifier: "StorageAccountIpv6Endpoints",
@@ -9700,9 +12487,9 @@ function __c16(j: number): any {
           file: S.optional(S.String),
           web: S.optional(S.String),
           dfs: S.optional(S.String),
-          microsoftEndpoints: S.optional(__S(131)),
-          internetEndpoints: S.optional(__S(132)),
-          ipv6Endpoints: S.optional(__S(133)),
+          microsoftEndpoints: S.optional(StorageAccountMicrosoftEndpoints),
+          internetEndpoints: S.optional(StorageAccountInternetEndpoints),
+          ipv6Endpoints: S.optional(StorageAccountIpv6Endpoints),
         }),
       ).annotate({ identifier: "Endpoints" });
     case 7:
@@ -9721,16 +12508,16 @@ function __c17(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           lastEnabledTime: S.optional(S.String),
-          keyType: S.optional(S.String),
+          keyType: S.optional(KeyType),
         }),
       ).annotate({ identifier: "EncryptionService" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          blob: S.optional(__S(136)),
-          file: S.optional(__S(136)),
-          table: S.optional(__S(136)),
-          queue: S.optional(__S(136)),
+          blob: S.optional(EncryptionService),
+          file: S.optional(EncryptionService),
+          table: S.optional(EncryptionService),
+          queue: S.optional(EncryptionService),
         }),
       ).annotate({ identifier: "EncryptionServices" });
     case 2:
@@ -9747,43 +12534,43 @@ function __c17(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          services: S.optional(__S(137)),
-          keySource: S.optional(S.String),
+          services: S.optional(EncryptionServices),
+          keySource: S.optional(EncryptionKeySource),
           requireInfrastructureEncryption: S.optional(S.Boolean),
-          keyvaultproperties: S.optional(__S(138)),
-          identity: S.optional(__S(109)),
+          keyvaultproperties: S.optional(KeyVaultProperties),
+          identity: S.optional(EncryptionIdentity),
         }),
       ).annotate({ identifier: "Encryption" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          action: S.optional(S.String),
-          state: S.optional(S.String),
+          action: S.optional(VirtualNetworkRuleAction),
+          state: S.optional(State),
         }),
       ).annotate({ identifier: "VirtualNetworkRule" });
     case 5:
-      return S.Array(__S(140));
+      return S.Array(VirtualNetworkRule);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          bypass: S.optional(S.String),
-          resourceAccessRules: S.optional(__S(112)),
-          virtualNetworkRules: S.optional(__S(141)),
-          ipRules: S.optional(__S(116)),
-          ipv6Rules: S.optional(__S(116)),
-          defaultAction: S.String,
+          bypass: S.optional(NetworkRuleSetBypass),
+          resourceAccessRules: S.optional(NetworkRuleSetResourceAccessRulesList),
+          virtualNetworkRules: S.optional(NetworkRuleSetVirtualNetworkRulesList),
+          ipRules: S.optional(NetworkRuleSetIpRulesList),
+          ipv6Rules: S.optional(NetworkRuleSetIpv6RulesList),
+          defaultAction: NetworkRuleSetDefaultAction,
         }),
       ).annotate({ identifier: "NetworkRuleSet" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(GeoReplicationStatus),
           lastSyncTime: S.optional(S.String),
           canFailover: S.optional(S.Boolean),
           canPlannedFailover: S.optional(S.Boolean),
-          postFailoverRedundancy: S.optional(S.String),
-          postPlannedFailoverRedundancy: S.optional(S.String),
+          postFailoverRedundancy: S.optional(PostFailoverRedundancy),
+          postPlannedFailoverRedundancy: S.optional(PostPlannedFailoverRedundancy),
         }),
       ).annotate({ identifier: "GeoReplicationStats" });
   }
@@ -9799,7 +12586,7 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(PrivateEndpointServiceConnectionStatus),
           description: S.optional(S.String),
           actionRequired: S.optional(S.String),
         }),
@@ -9809,9 +12596,9 @@ function __c18(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(144)),
-          privateLinkServiceConnectionState: __S(145),
-          provisioningState: S.optional(S.String),
+          privateEndpoint: S.optional(PrivateEndpoint),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+          provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -9822,14 +12609,14 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(146)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateEndpointConnectionProperties),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnection",
       });
     case 4:
-      return S.Array(__S(147));
+      return S.Array(PrivateEndpointConnection);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -9838,12 +12625,12 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "BlobRestoreRange" });
     case 6:
-      return S.Array(__S(149));
+      return S.Array(BlobRestoreRange);
     case 7:
       return S.suspend(() =>
         S.Struct({
           timeToRestore: S.String,
-          blobRanges: __S(150),
+          blobRanges: BlobRestoreParametersBlobRangesList,
         }),
       ).annotate({ identifier: "BlobRestoreParameters" });
   }
@@ -9853,17 +12640,17 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(BlobRestoreProgressStatus),
           failureReason: S.optional(S.String),
           restoreId: S.optional(S.String),
-          parameters: S.optional(__S(151)),
+          parameters: S.optional(BlobRestoreParameters),
         }),
       ).annotate({ identifier: "BlobRestoreStatus" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          skuConversionStatus: S.optional(S.String),
-          targetSkuName: S.optional(S.String),
+          skuConversionStatus: S.optional(SkuConversionStatus),
+          targetSkuName: S.optional(SkuName),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
         }),
@@ -9873,64 +12660,66 @@ function __c19(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          primaryEndpoints: S.optional(__S(134)),
+          provisioningState: S.optional(ProvisioningState),
+          primaryEndpoints: S.optional(Endpoints),
           primaryLocation: S.optional(S.String),
-          statusOfPrimary: S.optional(S.String),
+          statusOfPrimary: S.optional(AccountStatus),
           lastGeoFailoverTime: S.optional(S.String),
           secondaryLocation: S.optional(S.String),
-          statusOfSecondary: S.optional(S.String),
+          statusOfSecondary: S.optional(AccountStatus),
           creationTime: S.optional(S.String),
-          customDomain: S.optional(__S(105)),
-          sasPolicy: S.optional(__S(103)),
-          keyPolicy: S.optional(__S(104)),
-          keyCreationTime: S.optional(__S(135)),
-          secondaryEndpoints: S.optional(__S(134)),
-          encryption: S.optional(__S(139)),
-          accessTier: S.optional(S.String),
-          turboTier: S.optional(__S(118)),
-          azureFilesIdentityBasedAuthentication: S.optional(__S(121)),
+          customDomain: S.optional(CustomDomain),
+          sasPolicy: S.optional(SasPolicy),
+          keyPolicy: S.optional(KeyPolicy),
+          keyCreationTime: S.optional(KeyCreationTime),
+          secondaryEndpoints: S.optional(Endpoints),
+          encryption: S.optional(Encryption),
+          accessTier: S.optional(AccessTier),
+          turboTier: S.optional(TurboTier),
+          azureFilesIdentityBasedAuthentication: S.optional(AzureFilesIdentityBasedAuthentication),
           supportsHttpsTrafficOnly: S.optional(S.Boolean),
-          networkAcls: S.optional(__S(142)),
+          networkAcls: S.optional(NetworkRuleSet),
           isSftpEnabled: S.optional(S.Boolean),
           isLocalUserEnabled: S.optional(S.Boolean),
           enableExtendedGroups: S.optional(S.Boolean),
           isHnsEnabled: S.optional(S.Boolean),
-          geoReplicationStats: S.optional(__S(143)),
+          geoReplicationStats: S.optional(GeoReplicationStats),
           failoverInProgress: S.optional(S.Boolean),
-          largeFileSharesState: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(148)),
-          routingPreference: S.optional(__S(122)),
-          dualStackEndpointPreference: S.optional(__S(123)),
-          blobRestoreStatus: S.optional(__S(152)),
+          largeFileSharesState: S.optional(LargeFileSharesState),
+          privateEndpointConnections: S.optional(
+            StorageAccountPropertiesPrivateEndpointConnectionsList,
+          ),
+          routingPreference: S.optional(RoutingPreference),
+          dualStackEndpointPreference: S.optional(DualStackEndpointPreference),
+          blobRestoreStatus: S.optional(BlobRestoreStatus),
           allowBlobPublicAccess: S.optional(S.Boolean),
-          minimumTlsVersion: S.optional(S.String),
+          minimumTlsVersion: S.optional(MinimumTlsVersion),
           allowSharedKeyAccess: S.optional(S.Boolean),
           isNfsV3Enabled: S.optional(S.Boolean),
           allowCrossTenantReplication: S.optional(S.Boolean),
           defaultToOAuthAuthentication: S.optional(S.Boolean),
-          publicNetworkAccess: S.optional(S.String),
-          immutableStorageWithVersioning: S.optional(__S(125)),
-          allowedCopyScope: S.optional(S.String),
-          storageAccountSkuConversionStatus: S.optional(__S(153)),
-          dnsEndpointType: S.optional(S.String),
+          publicNetworkAccess: S.optional(PublicNetworkAccess),
+          immutableStorageWithVersioning: S.optional(ImmutableStorageAccount),
+          allowedCopyScope: S.optional(AllowedCopyScope),
+          storageAccountSkuConversionStatus: S.optional(StorageAccountSkuConversionStatus),
+          dnsEndpointType: S.optional(DnsEndpointType),
           isSkuConversionBlocked: S.optional(S.Boolean),
           accountMigrationInProgress: S.optional(S.Boolean),
-          geoPriorityReplicationStatus: S.optional(__S(126)),
-          allowSharedKeyAccessForServices: S.optional(__S(127)),
-          dataCollaborationPolicyProperties: S.optional(__S(128)),
+          geoPriorityReplicationStatus: S.optional(GeoPriorityReplicationStatus),
+          allowSharedKeyAccessForServices: S.optional(StorageAccountSharedKeyAccessProperties),
+          dataCollaborationPolicyProperties: S.optional(StorageDataCollaborationPolicyProperties),
           allowCrossTenantDelegationSas: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "StorageAccountProperties" });
     case 3:
-      return S.Record(S.String, __S(48));
+      return S.Record(S.String, UserAssignedIdentity);
     case 4:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(155)),
+          type: IdentityType,
+          userAssignedIdentities: S.optional(IdentityUserAssignedIdentitiesMap),
         }),
       ).annotate({ identifier: "Identity" });
     case 5:
@@ -9939,16 +12728,16 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          tags: S.optional(__S(38)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateStorageAccountResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(154)),
-          sku: S.optional(__S(98)),
-          kind: S.optional(S.String),
-          identity: S.optional(__S(156)),
-          extendedLocation: S.optional(__S(99)),
-          zones: S.optional(__S(3)),
-          placement: S.optional(__S(100)),
+          properties: S.optional(StorageAccountProperties),
+          sku: S.optional(Sku),
+          kind: S.optional(Kind),
+          identity: S.optional(Identity),
+          extendedLocation: S.optional(ExtendedLocation),
+          zones: S.optional(CreateStorageAccountResponseZonesList),
+          placement: S.optional(Placement),
         }),
       ).annotate({
         identifier: "CreateStorageAccountResponse",
@@ -9956,8 +12745,8 @@ function __c19(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          prefix: S.optional(__S(3)),
-          excludePrefix: S.optional(__S(3)),
+          prefix: S.optional(ExecutionTargetPrefixList),
+          excludePrefix: S.optional(ExecutionTargetExcludePrefixList),
         }),
       ).annotate({ identifier: "ExecutionTarget" });
     case 7:
@@ -9965,7 +12754,7 @@ function __c19(j: number): any {
         S.Struct({
           startFrom: S.optional(S.String),
           interval: S.optional(S.Number),
-          intervalUnit: S.optional(S.String),
+          intervalUnit: S.optional(IntervalUnit),
           endBy: S.optional(S.String),
           startOn: S.optional(S.String),
         }),
@@ -9977,15 +12766,15 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          parameters: __S(159),
+          type: TriggerType,
+          parameters: TriggerParameters,
         }),
       ).annotate({ identifier: "ExecutionTrigger" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          target: S.optional(__S(158)),
-          trigger: __S(160),
+          target: S.optional(ExecutionTarget),
+          trigger: ExecutionTrigger,
         }),
       ).annotate({
         identifier: "StorageTaskAssignmentExecutionContext",
@@ -10004,9 +12793,9 @@ function __c20(j: number): any {
           taskId: S.String,
           enabled: S.Boolean,
           description: S.String,
-          executionContext: __S(161),
-          report: __S(162),
-          runStatus: S.optional(__S(43)),
+          executionContext: StorageTaskAssignmentExecutionContext,
+          report: StorageTaskAssignmentReport,
+          runStatus: S.optional(UserAssignedIdentityInput),
         }),
       ).annotate({
         identifier: "StorageTaskAssignmentPropertiesInput",
@@ -10018,7 +12807,7 @@ function __c20(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           storageTaskAssignmentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(163)),
+          properties: S.optional(StorageTaskAssignmentPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10042,11 +12831,11 @@ function __c20(j: number): any {
           objectFailedCount: S.optional(S.String),
           objectsSucceededCount: S.optional(S.String),
           runStatusError: S.optional(S.String),
-          runStatusEnum: S.optional(S.String),
+          runStatusEnum: S.optional(RunStatusEnum),
           summaryReportPath: S.optional(S.String),
           taskId: S.optional(S.String),
           taskVersion: S.optional(S.String),
-          runResult: S.optional(S.String),
+          runResult: S.optional(RunResult),
         }),
       ).annotate({
         identifier: "StorageTaskReportProperties",
@@ -10057,10 +12846,10 @@ function __c20(j: number): any {
           taskId: S.String,
           enabled: S.Boolean,
           description: S.String,
-          executionContext: __S(161),
-          report: __S(162),
-          provisioningState: S.optional(S.String),
-          runStatus: S.optional(__S(165)),
+          executionContext: StorageTaskAssignmentExecutionContext,
+          report: StorageTaskAssignmentReport,
+          provisioningState: S.optional(StorageTaskAssignmentProvisioningState),
+          runStatus: S.optional(StorageTaskReportProperties),
         }),
       ).annotate({
         identifier: "StorageTaskAssignmentProperties",
@@ -10071,8 +12860,8 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(166)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(StorageTaskAssignmentProperties),
         }),
       ).annotate({
         identifier: "CreateStorageTaskAssignmentResponse",
@@ -10093,15 +12882,15 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          accessPolicy: S.optional(__S(168)),
+          accessPolicy: S.optional(TableAccessPolicy),
         }),
       ).annotate({ identifier: "TableSignedIdentifier" });
     case 2:
-      return S.Array(__S(169));
+      return S.Array(TableSignedIdentifier);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          signedIdentifiers: S.optional(__S(170)),
+          signedIdentifiers: S.optional(TablePropertiesInputSignedIdentifiersList),
         }),
       ).annotate({ identifier: "TablePropertiesInput" });
     case 4:
@@ -10111,7 +12900,7 @@ function __c21(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           tableName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(171)),
+          properties: S.optional(TablePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10125,7 +12914,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tableName: S.optional(S.String),
-          signedIdentifiers: S.optional(__S(170)),
+          signedIdentifiers: S.optional(TablePropertiesSignedIdentifiersList),
         }),
       ).annotate({ identifier: "TableProperties" });
     case 6:
@@ -10134,8 +12923,8 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(173)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(TableProperties),
         }),
       ).annotate({ identifier: "CreateTableResponse" });
     case 7:
@@ -10144,7 +12933,8 @@ function __c21(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          advancedPlatformMetricsRuleType: S.String.pipe(T.Label()),
+          advancedPlatformMetricsRuleType:
+            DeleteAdvancedPlatformMetricsRequestAdvancedPlatformMetricsRuleType.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -10221,7 +13011,9 @@ function __c22(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          blobInventoryPolicyName: S.String.pipe(T.Label()),
+          blobInventoryPolicyName: DeleteBlobInventoryPolicyRequestBlobInventoryPolicyName.pipe(
+            T.Label(),
+          ),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -10341,7 +13133,7 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          managementPolicyName: S.String.pipe(T.Label()),
+          managementPolicyName: DeleteManagementPolicyRequestManagementPolicyName.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -10467,7 +13259,7 @@ function __c24(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           containerName: S.String.pipe(T.Label()),
-          properties: __S(10),
+          properties: ImmutabilityPolicyProperty,
         }).pipe(
           T.Http({
             method: "POST",
@@ -10486,7 +13278,7 @@ function __c24(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           shareName: S.String.pipe(T.Label()),
-          action: S.String,
+          action: LeaseShareAction,
           leaseId: S.optional(S.String),
           breakPeriod: S.optional(S.Number),
           leaseDuration: S.optional(S.Number),
@@ -10506,7 +13298,8 @@ function __c24(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          advancedPlatformMetricsRuleType: S.String.pipe(T.Label()),
+          advancedPlatformMetricsRuleType:
+            GetAdvancedPlatformMetricsRequestAdvancedPlatformMetricsRuleType.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -10558,8 +13351,8 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(69)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ContainerProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetBlobContainerResponse" });
@@ -10591,7 +13384,9 @@ function __c25(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          blobInventoryPolicyName: S.String.pipe(T.Label()),
+          blobInventoryPolicyName: GetBlobInventoryPolicyRequestBlobInventoryPolicyName.pipe(
+            T.Label(),
+          ),
         }).pipe(
           T.Http({
             method: "GET",
@@ -10623,19 +13418,19 @@ function __c25(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          allowedOrigins: __S(3),
-          allowedMethods: __S(2),
+          allowedOrigins: CorsRuleAllowedOriginsList,
+          allowedMethods: CorsRuleAllowedMethodsList,
           maxAgeInSeconds: S.Number,
-          exposedHeaders: __S(3),
-          allowedHeaders: __S(3),
+          exposedHeaders: CorsRuleExposedHeadersList,
+          allowedHeaders: CorsRuleAllowedHeadersList,
         }),
       ).annotate({ identifier: "CorsRule" });
     case 3:
-      return S.Array(__S(202));
+      return S.Array(CorsRule);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          corsRules: S.optional(__S(203)),
+          corsRules: S.optional(CorsRulesCorsRulesList),
         }),
       ).annotate({ identifier: "CorsRules" });
     case 5:
@@ -10679,9 +13474,9 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enable: S.Boolean,
-          name: S.optional(S.String),
+          name: S.optional(Name),
           trackingGranularityInDays: S.optional(S.Number),
-          blobType: S.optional(__S(3)),
+          blobType: S.optional(LastAccessTimeTrackingPolicyBlobTypeList),
         }),
       ).annotate({
         identifier: "LastAccessTimeTrackingPolicy",
@@ -10689,16 +13484,16 @@ function __c26(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cors: S.optional(__S(204)),
+          cors: S.optional(CorsRules),
           defaultServiceVersion: S.optional(S.String),
-          deleteRetentionPolicy: S.optional(__S(205)),
-          staticWebsite: S.optional(__S(206)),
+          deleteRetentionPolicy: S.optional(DeleteRetentionPolicy),
+          staticWebsite: S.optional(StaticWebsite),
           isVersioningEnabled: S.optional(S.Boolean),
           automaticSnapshotPolicyEnabled: S.optional(S.Boolean),
-          changeFeed: S.optional(__S(207)),
-          restorePolicy: S.optional(__S(208)),
-          containerDeleteRetentionPolicy: S.optional(__S(205)),
-          lastAccessTimeTrackingPolicy: S.optional(__S(209)),
+          changeFeed: S.optional(ChangeFeed),
+          restorePolicy: S.optional(RestorePolicyProperties),
+          containerDeleteRetentionPolicy: S.optional(DeleteRetentionPolicy),
+          lastAccessTimeTrackingPolicy: S.optional(LastAccessTimeTrackingPolicy),
         }),
       ).annotate({
         identifier: "BlobServicePropertiesProperties",
@@ -10709,9 +13504,9 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(210)),
-          sku: S.optional(__S(98)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BlobServicePropertiesProperties),
+          sku: S.optional(Sku),
         }),
       ).annotate({
         identifier: "GetBlobServiceServicePropertiesResponse",
@@ -10753,11 +13548,11 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          tags: S.optional(__S(38)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetContextCachResponseTagsMap),
           location: S.String,
-          properties: __S(47),
-          identity: S.optional(__S(50)),
+          properties: ContextCacheProperties,
+          identity: S.optional(ContextCachesCreateOrUpdateResponseIdentity),
         }),
       ).annotate({ identifier: "GetContextCachResponse" });
     case 7:
@@ -10829,8 +13624,8 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(218)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DeletedAccountProperties),
         }),
       ).annotate({
         identifier: "GetDeletedAccountResponse",
@@ -10866,11 +13661,11 @@ function __c27(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(S.String),
-          state: S.optional(S.String),
+          source: S.optional(EncryptionScopeSource),
+          state: S.optional(EncryptionScopeState),
           creationTime: S.optional(S.String),
           lastModifiedTime: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(221)),
+          keyVaultProperties: S.optional(EncryptionScopeKeyVaultProperties),
           requireInfrastructureEncryption: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -10882,8 +13677,8 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(222)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(EncryptionScopeProperties),
         }),
       ).annotate({
         identifier: "GetEncryptionScopeResponse",
@@ -10924,33 +13719,33 @@ function __c28(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          multichannel: S.optional(__S(225)),
+          multichannel: S.optional(Multichannel),
           versions: S.optional(S.String),
           authenticationMethods: S.optional(S.String),
           kerberosTicketEncryption: S.optional(S.String),
           channelEncryption: S.optional(S.String),
-          encryptionInTransit: S.optional(__S(226)),
+          encryptionInTransit: S.optional(EncryptionInTransit),
         }),
       ).annotate({ identifier: "SmbSetting" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          encryptionInTransit: S.optional(__S(226)),
+          encryptionInTransit: S.optional(EncryptionInTransit),
         }),
       ).annotate({ identifier: "NfsSetting" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          smb: S.optional(__S(227)),
-          nfs: S.optional(__S(228)),
+          smb: S.optional(SmbSetting),
+          nfs: S.optional(NfsSetting),
         }),
       ).annotate({ identifier: "ProtocolSettings" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          cors: S.optional(__S(204)),
-          shareDeleteRetentionPolicy: S.optional(__S(205)),
-          protocolSettings: S.optional(__S(229)),
+          cors: S.optional(CorsRules),
+          shareDeleteRetentionPolicy: S.optional(DeleteRetentionPolicy),
+          protocolSettings: S.optional(ProtocolSettings),
         }),
       ).annotate({
         identifier: "FileServicePropertiesProperties",
@@ -10961,9 +13756,9 @@ function __c28(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(230)),
-          sku: S.optional(__S(98)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(FileServicePropertiesProperties),
+          sku: S.optional(Sku),
         }),
       ).annotate({
         identifier: "GetFileServiceServicePropertiesResponse",
@@ -11040,18 +13835,18 @@ function __c29(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          liveShares: S.optional(__S(237)),
-          softDeletedShares: S.optional(__S(237)),
+          liveShares: S.optional(AccountUsageElements),
+          softDeletedShares: S.optional(AccountUsageElements),
         }),
       ).annotate({ identifier: "AccountUsage" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          storageAccountLimits: S.optional(__S(233)),
-          fileShareLimits: S.optional(__S(234)),
-          fileShareRecommendations: S.optional(__S(235)),
-          burstingConstants: S.optional(__S(236)),
-          storageAccountUsage: S.optional(__S(238)),
+          storageAccountLimits: S.optional(AccountLimits),
+          fileShareLimits: S.optional(FileShareLimits),
+          fileShareRecommendations: S.optional(FileShareRecommendations),
+          burstingConstants: S.optional(BurstingConstants),
+          storageAccountUsage: S.optional(AccountUsage),
         }),
       ).annotate({
         identifier: "FileServiceUsageProperties",
@@ -11066,8 +13861,8 @@ function __c30(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(239)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(FileServiceUsageProperties),
         }),
       ).annotate({
         identifier: "GetFileServiceServiceUsageResponse",
@@ -11114,7 +13909,7 @@ function __c30(j: number): any {
         }),
       ).annotate({ identifier: "PermissionScope" });
     case 4:
-      return S.Array(__S(243));
+      return S.Array(PermissionScope);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -11123,7 +13918,7 @@ function __c30(j: number): any {
         }),
       ).annotate({ identifier: "SshPublicKey" });
     case 6:
-      return S.Array(__S(245));
+      return S.Array(SshPublicKey);
     case 7:
       return S.Array(S.Number);
   }
@@ -11133,9 +13928,9 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          permissionScopes: S.optional(__S(244)),
+          permissionScopes: S.optional(LocalUserPropertiesPermissionScopesList),
           homeDirectory: S.optional(S.String),
-          sshAuthorizedKeys: S.optional(__S(246)),
+          sshAuthorizedKeys: S.optional(LocalUserPropertiesSshAuthorizedKeysList),
           sid: S.optional(S.String),
           hasSharedKey: S.optional(S.Boolean),
           hasSshKey: S.optional(S.Boolean),
@@ -11143,7 +13938,7 @@ function __c31(j: number): any {
           userId: S.optional(S.Number),
           groupId: S.optional(S.Number),
           allowAclAuthorization: S.optional(S.Boolean),
-          extendedGroups: S.optional(__S(247)),
+          extendedGroups: S.optional(LocalUserPropertiesExtendedGroupsList),
           isNFSv3Enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "LocalUserProperties" });
@@ -11153,8 +13948,8 @@ function __c31(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(248)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(LocalUserProperties),
         }),
       ).annotate({ identifier: "GetLocalUserResponse" });
     case 2:
@@ -11163,7 +13958,7 @@ function __c31(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          managementPolicyName: S.String.pipe(T.Label()),
+          managementPolicyName: GetManagementPolicyRequestManagementPolicyName.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -11187,11 +13982,11 @@ function __c31(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          tierToCool: S.optional(__S(251)),
-          tierToArchive: S.optional(__S(251)),
-          tierToCold: S.optional(__S(251)),
-          tierToHot: S.optional(__S(251)),
-          delete: S.optional(__S(251)),
+          tierToCool: S.optional(DateAfterModification),
+          tierToArchive: S.optional(DateAfterModification),
+          tierToCold: S.optional(DateAfterModification),
+          tierToHot: S.optional(DateAfterModification),
+          delete: S.optional(DateAfterModification),
           enableAutoTierToHotFromCool: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ManagementPolicyBaseBlob" });
@@ -11205,19 +14000,19 @@ function __c31(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          tierToCool: S.optional(__S(253)),
-          tierToArchive: S.optional(__S(253)),
-          tierToCold: S.optional(__S(253)),
-          tierToHot: S.optional(__S(253)),
-          delete: S.optional(__S(253)),
+          tierToCool: S.optional(DateAfterCreation),
+          tierToArchive: S.optional(DateAfterCreation),
+          tierToCold: S.optional(DateAfterCreation),
+          tierToHot: S.optional(DateAfterCreation),
+          delete: S.optional(DateAfterCreation),
         }),
       ).annotate({ identifier: "ManagementPolicySnapShot" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          baseBlob: S.optional(__S(252)),
-          snapshot: S.optional(__S(254)),
-          version: S.optional(__S(254)),
+          baseBlob: S.optional(ManagementPolicyBaseBlob),
+          snapshot: S.optional(ManagementPolicySnapShot),
+          version: S.optional(ManagementPolicyVersion),
         }),
       ).annotate({ identifier: "ManagementPolicyAction" });
   }
@@ -11233,20 +14028,20 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "TagFilter" });
     case 1:
-      return S.Array(__S(256));
+      return S.Array(TagFilter);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          prefixMatch: S.optional(__S(3)),
-          blobTypes: __S(3),
-          blobIndexMatch: S.optional(__S(257)),
+          prefixMatch: S.optional(ManagementPolicyFilterPrefixMatchList),
+          blobTypes: ManagementPolicyFilterBlobTypesList,
+          blobIndexMatch: S.optional(ManagementPolicyFilterBlobIndexMatchList),
         }),
       ).annotate({ identifier: "ManagementPolicyFilter" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(255),
-          filters: S.optional(__S(258)),
+          actions: ManagementPolicyAction,
+          filters: S.optional(ManagementPolicyFilter),
         }),
       ).annotate({
         identifier: "ManagementPolicyDefinition",
@@ -11256,23 +14051,23 @@ function __c32(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           name: S.String,
-          type: S.String,
-          definition: __S(259),
+          type: RuleType,
+          definition: ManagementPolicyDefinition,
         }),
       ).annotate({ identifier: "ManagementPolicyRule" });
     case 5:
-      return S.Array(__S(260));
+      return S.Array(ManagementPolicyRule);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          rules: __S(261),
+          rules: ManagementPolicySchemaRulesList,
         }),
       ).annotate({ identifier: "ManagementPolicySchema" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           lastModifiedTime: S.optional(S.String),
-          policy: __S(262),
+          policy: ManagementPolicySchema,
         }),
       ).annotate({
         identifier: "ManagementPolicyProperties",
@@ -11287,8 +14082,8 @@ function __c33(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(263)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ManagementPolicyProperties),
         }),
       ).annotate({
         identifier: "GetManagementPolicyResponse",
@@ -11314,8 +14109,8 @@ function __c33(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          issueType: S.optional(S.String),
-          severity: S.optional(S.String),
+          issueType: S.optional(IssueType),
+          severity: S.optional(Severity),
           description: S.optional(S.String),
         }),
       ).annotate({
@@ -11325,11 +14120,11 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(__S(266)),
+          properties: S.optional(ProvisioningIssueProperties),
         }),
       ).annotate({ identifier: "ProvisioningIssue" });
     case 4:
-      return S.Array(__S(267));
+      return S.Array(ProvisioningIssue);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -11342,7 +14137,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          accessMode: S.optional(S.String),
+          accessMode: S.optional(ResourceAssociationAccessMode),
         }),
       ).annotate({
         identifier: "NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation",
@@ -11360,29 +14155,33 @@ function __c33(j: number): any {
 function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(271));
+      return S.Array(NspAccessRulePropertiesSubscriptionsItem);
     case 1:
-      return S.Array(__S(269));
+      return S.Array(NetworkSecurityPerimeter);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          direction: S.optional(S.String),
-          addressPrefixes: S.optional(__S(3)),
-          subscriptions: S.optional(__S(272)),
-          networkSecurityPerimeters: S.optional(__S(273)),
-          fullyQualifiedDomainNames: S.optional(__S(3)),
-          serviceTags: S.optional(__S(3)),
+          direction: S.optional(NspAccessRuleDirection),
+          addressPrefixes: S.optional(NspAccessRulePropertiesAddressPrefixesList),
+          subscriptions: S.optional(NspAccessRulePropertiesSubscriptionsList),
+          networkSecurityPerimeters: S.optional(
+            NspAccessRulePropertiesNetworkSecurityPerimetersList,
+          ),
+          fullyQualifiedDomainNames: S.optional(
+            NspAccessRulePropertiesFullyQualifiedDomainNamesList,
+          ),
+          serviceTags: S.optional(NspAccessRulePropertiesServiceTagsList),
         }),
       ).annotate({ identifier: "NspAccessRuleProperties" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(__S(274)),
+          properties: S.optional(NspAccessRuleProperties),
         }),
       ).annotate({ identifier: "NspAccessRule" });
     case 4:
-      return S.Array(__S(275));
+      return S.Array(NspAccessRule);
     case 5:
       return S.Array(S.String);
     case 6:
@@ -11390,9 +14189,13 @@ function __c34(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           accessRulesVersion: S.optional(S.Number),
-          accessRules: S.optional(__S(276)),
+          accessRules: S.optional(
+            NetworkSecurityPerimeterConfigurationPropertiesProfileAccessRulesList,
+          ),
           diagnosticSettingsVersion: S.optional(S.Number),
-          enabledLogCategories: S.optional(__S(277)),
+          enabledLogCategories: S.optional(
+            NetworkSecurityPerimeterConfigurationPropertiesProfileEnabledLogCategoriesList,
+          ),
         }),
       ).annotate({
         identifier: "NetworkSecurityPerimeterConfigurationPropertiesProfile",
@@ -11400,11 +14203,15 @@ function __c34(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          provisioningIssues: S.optional(__S(268)),
-          networkSecurityPerimeter: S.optional(__S(269)),
-          resourceAssociation: S.optional(__S(270)),
-          profile: S.optional(__S(278)),
+          provisioningState: S.optional(NetworkSecurityPerimeterConfigurationProvisioningState),
+          provisioningIssues: S.optional(
+            NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList,
+          ),
+          networkSecurityPerimeter: S.optional(NetworkSecurityPerimeter),
+          resourceAssociation: S.optional(
+            NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation,
+          ),
+          profile: S.optional(NetworkSecurityPerimeterConfigurationPropertiesProfile),
         }),
       ).annotate({
         identifier: "NetworkSecurityPerimeterConfigurationProperties",
@@ -11419,8 +14226,8 @@ function __c35(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(279)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(NetworkSecurityPerimeterConfigurationProperties),
         }),
       ).annotate({
         identifier: "GetNetworkSecurityPerimeterConfigurationResponse",
@@ -11446,7 +14253,7 @@ function __c35(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          prefixMatch: S.optional(__S(3)),
+          prefixMatch: S.optional(ObjectReplicationPolicyFilterPrefixMatchList),
           minCreationTime: S.optional(S.String),
         }),
       ).annotate({
@@ -11458,13 +14265,13 @@ function __c35(j: number): any {
           ruleId: S.optional(S.String),
           sourceContainer: S.String,
           destinationContainer: S.String,
-          filters: S.optional(__S(282)),
+          filters: S.optional(ObjectReplicationPolicyFilter),
         }),
       ).annotate({
         identifier: "ObjectReplicationPolicyRule",
       });
     case 4:
-      return S.Array(__S(283));
+      return S.Array(ObjectReplicationPolicyRule);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -11472,10 +14279,10 @@ function __c35(j: number): any {
           enabledTime: S.optional(S.String),
           sourceAccount: S.String,
           destinationAccount: S.String,
-          rules: S.optional(__S(284)),
-          metrics: S.optional(__S(57)),
-          priorityReplication: S.optional(__S(57)),
-          tagsReplication: S.optional(__S(57)),
+          rules: S.optional(ObjectReplicationPolicyPropertiesRulesList),
+          metrics: S.optional(ObjectReplicationPolicyPropertiesMetrics),
+          priorityReplication: S.optional(ObjectReplicationPolicyPropertiesPriorityReplication),
+          tagsReplication: S.optional(ObjectReplicationPolicyPropertiesTagsReplication),
         }),
       ).annotate({
         identifier: "ObjectReplicationPolicyProperties",
@@ -11486,8 +14293,8 @@ function __c35(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(285)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ObjectReplicationPolicyProperties),
         }),
       ).annotate({
         identifier: "GetObjectReplicationPolicyResponse",
@@ -11550,7 +14357,7 @@ function __c36(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cors: S.optional(__S(204)),
+          cors: S.optional(CorsRules),
         }),
       ).annotate({
         identifier: "QueueServicePropertiesProperties",
@@ -11561,8 +14368,8 @@ function __c36(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(290)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(QueueServicePropertiesProperties),
         }),
       ).annotate({
         identifier: "GetQueueServiceServicePropertiesResponse",
@@ -11573,7 +14380,9 @@ function __c36(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          migrationName: S.String.pipe(T.Label()),
+          migrationName: GetStorageAccountCustomerInitiatedMigrationRequestMigrationName.pipe(
+            T.Label(),
+          ),
         }).pipe(
           T.Http({
             method: "GET",
@@ -11588,8 +14397,8 @@ function __c36(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          targetSkuName: S.String,
-          migrationStatus: S.optional(S.String),
+          targetSkuName: SkuName,
+          migrationStatus: S.optional(MigrationStatus),
           migrationFailedReason: S.optional(S.String),
           migrationFailedDetailedReason: S.optional(S.String),
         }),
@@ -11602,8 +14411,8 @@ function __c36(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: __S(293),
+          systemData: S.optional(SystemData),
+          properties: StorageAccountMigrationProperties,
         }),
       ).annotate({
         identifier: "GetStorageAccountCustomerInitiatedMigrationResponse",
@@ -11614,7 +14423,7 @@ function __c36(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          _expand: S.optional(GetStorageAccountPropertiesRequestExpand.pipe(T.Query("$expand"))),
         }).pipe(
           T.Http({
             method: "GET",
@@ -11699,11 +14508,11 @@ function __c37(j: number): any {
         identifier: "ListAdvancedPlatformMetricsRequest",
       });
     case 4:
-      return S.Array(__S(9));
+      return S.Array(AdvancedPlatformMetricsRule);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(300),
+          value: AdvancedPlatformMetricsRuleListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -11727,7 +14536,7 @@ function __c37(j: number): any {
         identifier: "ListBlobAccessPointConfigurationByStorageAccountRequest",
       });
     case 7:
-      return S.Array(__S(56));
+      return S.Array(BlobAccessPointConfiguration);
   }
 }
 function __c38(j: number): any {
@@ -11735,7 +14544,7 @@ function __c38(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(303),
+          value: BlobAccessPointConfigurationListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -11749,7 +14558,7 @@ function __c38(j: number): any {
           accountName: S.String.pipe(T.Label()),
           _maxpagesize: S.optional(S.String.pipe(T.Query("$maxpagesize"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _include: S.optional(S.String.pipe(T.Query("$include"))),
+          _include: S.optional(ListBlobContainersRequestInclude.pipe(T.Query("$include"))),
         }).pipe(
           T.Http({
             method: "GET",
@@ -11767,17 +14576,17 @@ function __c38(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
           etag: S.optional(S.String),
-          properties: S.optional(__S(69)),
+          properties: S.optional(ContainerProperties),
         }),
       ).annotate({ identifier: "ListContainerItem" });
     case 3:
-      return S.Array(__S(306));
+      return S.Array(ListContainerItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(307),
+          value: ListContainerItemsValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListContainerItems" });
@@ -11804,12 +14613,12 @@ function __c38(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(26)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BlobInventoryPolicyProperties),
         }),
       ).annotate({ identifier: "BlobInventoryPolicy" });
     case 7:
-      return S.Array(__S(310));
+      return S.Array(BlobInventoryPolicy);
   }
 }
 function __c39(j: number): any {
@@ -11817,7 +14626,7 @@ function __c39(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(311)),
+          value: S.optional(ListBlobInventoryPolicyValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListBlobInventoryPolicy" });
@@ -11842,17 +14651,17 @@ function __c39(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(210)),
-          sku: S.optional(__S(98)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BlobServicePropertiesProperties),
+          sku: S.optional(Sku),
         }),
       ).annotate({ identifier: "BlobServiceProperties" });
     case 3:
-      return S.Array(__S(314));
+      return S.Array(BlobServiceProperties);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(315)),
+          value: S.optional(BlobServiceItemsValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BlobServiceItems" });
@@ -11874,11 +14683,11 @@ function __c39(j: number): any {
         identifier: "ListConnectorByStorageAccountRequest",
       });
     case 6:
-      return S.Array(__S(77));
+      return S.Array(Connector);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(318),
+          value: ConnectorListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectorListResult" });
@@ -11903,11 +14712,11 @@ function __c40(j: number): any {
         identifier: "ListContextCachByResourceGroupRequest",
       });
     case 1:
-      return S.Array(__S(214));
+      return S.Array(ContextCache);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(321),
+          value: ContextCacheListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContextCacheListResult" });
@@ -11949,16 +14758,16 @@ function __c40(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: __S(36),
+          systemData: S.optional(SystemData),
+          properties: ContextCacheContainerProperties,
         }),
       ).annotate({ identifier: "ContextCacheContainer" });
     case 6:
-      return S.Array(__S(325));
+      return S.Array(ContextCacheContainer);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(326),
+          value: ContextCacheContainerListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -11986,11 +14795,11 @@ function __c41(j: number): any {
         identifier: "ListDataShareByStorageAccountRequest",
       });
     case 1:
-      return S.Array(__S(85));
+      return S.Array(DataShare);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(329),
+          value: DataShareListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataShareListResult" });
@@ -12015,16 +14824,16 @@ function __c41(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(218)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DeletedAccountProperties),
         }),
       ).annotate({ identifier: "DeletedAccount" });
     case 5:
-      return S.Array(__S(332));
+      return S.Array(DeletedAccount);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(333),
+          value: DeletedAccountListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeletedAccountListResult" });
@@ -12036,7 +14845,7 @@ function __c41(j: number): any {
           accountName: S.String.pipe(T.Label()),
           _maxpagesize: S.optional(S.Number.pipe(T.Query("$maxpagesize"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _include: S.optional(S.String.pipe(T.Query("$include"))),
+          _include: S.optional(ListEncryptionScopesRequestInclude.pipe(T.Query("$include"))),
         }).pipe(
           T.Http({
             method: "GET",
@@ -12058,16 +14867,16 @@ function __c42(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(222)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(EncryptionScopeProperties),
         }),
       ).annotate({ identifier: "EncryptionScope" });
     case 1:
-      return S.Array(__S(336));
+      return S.Array(EncryptionScope);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(337),
+          value: EncryptionScopeListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12094,17 +14903,17 @@ function __c42(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(230)),
-          sku: S.optional(__S(98)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(FileServicePropertiesProperties),
+          sku: S.optional(Sku),
         }),
       ).annotate({ identifier: "FileServiceProperties" });
     case 5:
-      return S.Array(__S(340));
+      return S.Array(FileServiceProperties);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(341)),
+          value: S.optional(FileServiceItemsValueList),
         }),
       ).annotate({ identifier: "FileServiceItems" });
     case 7:
@@ -12135,16 +14944,16 @@ function __c43(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(239)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(FileServiceUsageProperties),
         }),
       ).annotate({ identifier: "FileServiceUsage" });
     case 1:
-      return S.Array(__S(344));
+      return S.Array(FileServiceUsage);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(345),
+          value: FileServiceUsagesValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileServiceUsages" });
@@ -12172,17 +14981,17 @@ function __c43(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
           etag: S.optional(S.String),
-          properties: S.optional(__S(92)),
+          properties: S.optional(FileShareProperties),
         }),
       ).annotate({ identifier: "FileShareItem" });
     case 5:
-      return S.Array(__S(348));
+      return S.Array(FileShareItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(349),
+          value: FileShareItemsValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileShareItems" });
@@ -12209,7 +15018,7 @@ function __c44(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sshAuthorizedKeys: S.optional(__S(246)),
+          sshAuthorizedKeys: S.optional(LocalUserKeysSshAuthorizedKeysList),
           sharedKey: S.optional(S.String),
         }),
       ).annotate({ identifier: "LocalUserKeys" });
@@ -12221,7 +15030,7 @@ function __c44(j: number): any {
           accountName: S.String.pipe(T.Label()),
           _maxpagesize: S.optional(S.Number.pipe(T.Query("$maxpagesize"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _include: S.optional(S.String.pipe(T.Query("$include"))),
+          _include: S.optional(ListLocalUsersRequestInclude.pipe(T.Query("$include"))),
         }).pipe(
           T.Http({
             method: "GET",
@@ -12232,11 +15041,11 @@ function __c44(j: number): any {
         ),
       ).annotate({ identifier: "ListLocalUsersRequest" });
     case 2:
-      return S.Array(__S(249));
+      return S.Array(LocalUser);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(354),
+          value: LocalUsersValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "LocalUsers" });
@@ -12258,11 +15067,11 @@ function __c44(j: number): any {
         identifier: "ListNetworkSecurityPerimeterConfigurationsRequest",
       });
     case 5:
-      return S.Array(__S(280));
+      return S.Array(NetworkSecurityPerimeterConfiguration);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(357),
+          value: NetworkSecurityPerimeterConfigurationListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12295,16 +15104,16 @@ function __c45(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(285)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ObjectReplicationPolicyProperties),
         }),
       ).annotate({ identifier: "ObjectReplicationPolicy" });
     case 1:
-      return S.Array(__S(360));
+      return S.Array(ObjectReplicationPolicy);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(361)),
+          value: S.optional(ObjectReplicationPoliciesValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12338,7 +15147,7 @@ function __c45(j: number): any {
         }),
       ).annotate({ identifier: "Dimension" });
     case 6:
-      return S.Array(__S(365));
+      return S.Array(Dimension);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -12346,7 +15155,7 @@ function __c45(j: number): any {
           displayName: S.optional(S.String),
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
-          dimensions: S.optional(__S(366)),
+          dimensions: S.optional(MetricSpecificationDimensionsList),
           aggregationType: S.optional(S.String),
           fillGapWithZero: S.optional(S.Boolean),
           category: S.optional(S.String),
@@ -12358,34 +15167,34 @@ function __c45(j: number): any {
 function __c46(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(367));
+      return S.Array(MetricSpecification);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(__S(368)),
+          metricSpecifications: S.optional(ServiceSpecificationMetricSpecificationsList),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(369)),
+          serviceSpecification: S.optional(ServiceSpecification),
         }),
       ).annotate({ identifier: "OperationProperties" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(364)),
+          display: S.optional(OperationDisplay),
           origin: S.optional(S.String),
-          properties: S.optional(__S(370)),
+          properties: S.optional(OperationProperties),
         }),
       ).annotate({ identifier: "Operation" });
     case 4:
-      return S.Array(__S(371));
+      return S.Array(Operation);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(372)),
+          value: S.optional(OperationListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -12409,7 +15218,7 @@ function __c46(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(148)),
+          value: S.optional(PrivateEndpointConnectionListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12440,8 +15249,8 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(3)),
-          requiredZoneNames: S.optional(__S(3)),
+          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
+          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -12452,16 +15261,16 @@ function __c47(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(377)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateLinkResourceProperties),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 3:
-      return S.Array(__S(378));
+      return S.Array(PrivateLinkResource);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(379)),
+          value: S.optional(PrivateLinkResourceListResultValueList),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceListResult",
@@ -12489,12 +15298,12 @@ function __c47(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(94)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ListQueueProperties),
         }),
       ).annotate({ identifier: "ListQueue" });
     case 7:
-      return S.Array(__S(382));
+      return S.Array(ListQueue);
   }
 }
 function __c48(j: number): any {
@@ -12502,7 +15311,7 @@ function __c48(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(383),
+          value: ListQueueResourceValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListQueueResource" });
@@ -12527,16 +15336,16 @@ function __c48(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(290)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(QueueServicePropertiesProperties),
         }),
       ).annotate({ identifier: "QueueServiceProperties" });
     case 3:
-      return S.Array(__S(386));
+      return S.Array(QueueServiceProperties);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(387)),
+          value: S.optional(ListQueueServicesValueList),
         }),
       ).annotate({ identifier: "ListQueueServices" });
     case 5:
@@ -12556,13 +15365,13 @@ function __c48(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
-          zones: S.optional(__S(3)),
+          zones: S.optional(SkuInformationLocationInfoItemZonesList),
         }),
       ).annotate({
         identifier: "SkuInformationLocationInfoItem",
       });
     case 7:
-      return S.Array(__S(390));
+      return S.Array(SkuInformationLocationInfoItem);
   }
 }
 function __c49(j: number): any {
@@ -12575,36 +15384,36 @@ function __c49(j: number): any {
         }),
       ).annotate({ identifier: "SKUCapability" });
     case 1:
-      return S.Array(__S(392));
+      return S.Array(SKUCapability);
     case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          values: S.optional(__S(3)),
-          reasonCode: S.optional(S.String),
+          values: S.optional(RestrictionValuesList),
+          reasonCode: S.optional(ReasonCode),
         }),
       ).annotate({ identifier: "Restriction" });
     case 3:
-      return S.Array(__S(394));
+      return S.Array(Restriction);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
-          tier: S.optional(S.String),
+          name: SkuName,
+          tier: S.optional(SkuTier),
           resourceType: S.optional(S.String),
-          kind: S.optional(S.String),
-          locations: S.optional(__S(3)),
-          locationInfo: S.optional(__S(391)),
-          capabilities: S.optional(__S(393)),
-          restrictions: S.optional(__S(395)),
+          kind: S.optional(Kind),
+          locations: S.optional(SkuInformationLocationsList),
+          locationInfo: S.optional(SkuInformationLocationInfoList),
+          capabilities: S.optional(SkuInformationCapabilitiesList),
+          restrictions: S.optional(SkuInformationRestrictionsList),
         }),
       ).annotate({ identifier: "SkuInformation" });
     case 5:
-      return S.Array(__S(396));
+      return S.Array(SkuInformation);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(397)),
+          value: S.optional(StorageSkuListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageSkuListResult" });
@@ -12614,11 +15423,11 @@ function __c49(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          signedServices: S.String,
-          signedResourceTypes: S.String,
-          signedPermission: S.String,
+          signedServices: Services,
+          signedResourceTypes: SignedResourceTypes,
+          signedPermission: Permissions,
           signedIp: S.optional(S.String),
-          signedProtocol: S.optional(S.String),
+          signedProtocol: S.optional(HttpProtocol),
           signedStart: S.optional(S.String),
           signedExpiry: S.String,
           keyToSign: S.optional(S.String),
@@ -12665,24 +15474,24 @@ function __c50(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          tags: S.optional(__S(38)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(StorageAccountTagsMap),
           location: S.String,
-          properties: S.optional(__S(154)),
-          sku: S.optional(__S(98)),
-          kind: S.optional(S.String),
-          identity: S.optional(__S(156)),
-          extendedLocation: S.optional(__S(99)),
-          zones: S.optional(__S(3)),
-          placement: S.optional(__S(100)),
+          properties: S.optional(StorageAccountProperties),
+          sku: S.optional(Sku),
+          kind: S.optional(Kind),
+          identity: S.optional(Identity),
+          extendedLocation: S.optional(ExtendedLocation),
+          zones: S.optional(StorageAccountZonesList),
+          placement: S.optional(Placement),
         }),
       ).annotate({ identifier: "StorageAccount" });
     case 3:
-      return S.Array(__S(402));
+      return S.Array(StorageAccount);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(403),
+          value: StorageAccountListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageAccountListResult" });
@@ -12692,7 +15501,7 @@ function __c50(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          _expand: S.optional(ListStorageAccountKeysRequestExpand.pipe(T.Query("$expand"))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12709,12 +15518,12 @@ function __c50(j: number): any {
         S.Struct({
           keyName: S.optional(S.String),
           value: S.optional(S.String),
-          permissions: S.optional(S.String),
+          permissions: S.optional(KeyPermission),
           creationTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageAccountKey" });
     case 7:
-      return S.Array(__S(406));
+      return S.Array(StorageAccountKey);
   }
 }
 function __c51(j: number): any {
@@ -12722,7 +15531,7 @@ function __c51(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(__S(407)),
+          keys: S.optional(StorageAccountListKeysResultKeysList),
         }),
       ).annotate({
         identifier: "StorageAccountListKeysResult",
@@ -12749,10 +15558,10 @@ function __c51(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           canonicalizedResource: S.String,
-          signedResource: S.optional(S.String),
-          signedPermission: S.optional(S.String),
+          signedResource: S.optional(SignedResource),
+          signedPermission: S.optional(Permissions),
           signedIp: S.optional(S.String),
-          signedProtocol: S.optional(S.String),
+          signedProtocol: S.optional(HttpProtocol),
           signedStart: S.optional(S.String),
           signedExpiry: S.optional(S.String),
           signedIdentifier: S.optional(S.String),
@@ -12809,18 +15618,18 @@ function __c51(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(165)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(StorageTaskReportProperties),
         }),
       ).annotate({
         identifier: "StorageTaskReportInstance",
       });
     case 6:
-      return S.Array(__S(413));
+      return S.Array(StorageTaskReportInstance);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(414),
+          value: StorageTaskReportSummaryValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageTaskReportSummary" });
@@ -12852,16 +15661,16 @@ function __c52(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(166)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(StorageTaskAssignmentProperties),
         }),
       ).annotate({ identifier: "StorageTaskAssignment" });
     case 2:
-      return S.Array(__S(417));
+      return S.Array(StorageTaskAssignment);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(418),
+          value: StorageTaskAssignmentsListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12902,11 +15711,11 @@ function __c52(j: number): any {
         ),
       ).annotate({ identifier: "ListTableRequest" });
     case 6:
-      return S.Array(__S(174));
+      return S.Array(Table);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(422),
+          value: ListTableResourceValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTableResource" });
@@ -12955,33 +15764,33 @@ function __c53(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          unit: S.optional(S.String),
+          unit: S.optional(UsageUnit),
           currentValue: S.optional(S.Number),
           limit: S.optional(S.Number),
-          name: S.optional(__S(426)),
+          name: S.optional(UsageName),
         }),
       ).annotate({ identifier: "Usage" });
     case 4:
-      return S.Array(__S(427));
+      return S.Array(Usage);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(428)),
+          value: S.optional(UsageListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageListResult" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          permissionScopes: S.optional(__S(244)),
+          permissionScopes: S.optional(LocalUserPropertiesInputPermissionScopesList),
           homeDirectory: S.optional(S.String),
-          sshAuthorizedKeys: S.optional(__S(246)),
+          sshAuthorizedKeys: S.optional(LocalUserPropertiesInputSshAuthorizedKeysList),
           hasSharedKey: S.optional(S.Boolean),
           hasSshKey: S.optional(S.Boolean),
           hasSshPassword: S.optional(S.Boolean),
           groupId: S.optional(S.Number),
           allowAclAuthorization: S.optional(S.Boolean),
-          extendedGroups: S.optional(__S(247)),
+          extendedGroups: S.optional(LocalUserPropertiesInputExtendedGroupsList),
           isNFSv3Enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "LocalUserPropertiesInput" });
@@ -12992,7 +15801,7 @@ function __c53(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           username: S.String.pipe(T.Label()),
-          properties: S.optional(__S(430)),
+          properties: S.optional(LocalUserPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13014,8 +15823,8 @@ function __c54(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(248)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(LocalUserProperties),
         }),
       ).annotate({
         identifier: "LocalUsersCreateOrUpdateResponse",
@@ -13041,7 +15850,7 @@ function __c54(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          policy: __S(262),
+          policy: ManagementPolicySchema,
         }),
       ).annotate({
         identifier: "ManagementPolicyPropertiesInput",
@@ -13052,8 +15861,10 @@ function __c54(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          managementPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(434)),
+          managementPolicyName: ManagementPoliciesCreateOrUpdateRequestManagementPolicyName.pipe(
+            T.Label(),
+          ),
+          properties: S.optional(ManagementPolicyPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13088,10 +15899,10 @@ function __c54(j: number): any {
         S.Struct({
           sourceAccount: S.String,
           destinationAccount: S.String,
-          rules: S.optional(__S(284)),
-          metrics: S.optional(__S(57)),
-          priorityReplication: S.optional(__S(57)),
-          tagsReplication: S.optional(__S(57)),
+          rules: S.optional(ObjectReplicationPolicyPropertiesInputRulesList),
+          metrics: S.optional(ObjectReplicationPolicyPropertiesMetrics),
+          priorityReplication: S.optional(ObjectReplicationPolicyPropertiesPriorityReplication),
+          tagsReplication: S.optional(ObjectReplicationPolicyPropertiesTagsReplication),
         }),
       ).annotate({
         identifier: "ObjectReplicationPolicyPropertiesInput",
@@ -13103,7 +15914,7 @@ function __c54(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           objectReplicationPolicyId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(437)),
+          properties: S.optional(ObjectReplicationPolicyPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13130,9 +15941,9 @@ function __c55(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(S.String),
-          state: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(439)),
+          source: S.optional(EncryptionScopeSource),
+          state: S.optional(EncryptionScopeState),
+          keyVaultProperties: S.optional(EncryptionScopeKeyVaultPropertiesInput),
           requireInfrastructureEncryption: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -13145,7 +15956,7 @@ function __c55(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           encryptionScopeName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(440)),
+          properties: S.optional(EncryptionScopePropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13164,7 +15975,7 @@ function __c55(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           encryptionScopeName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(440)),
+          properties: S.optional(EncryptionScopePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13179,8 +15990,8 @@ function __c55(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(43)),
-          privateLinkServiceConnectionState: __S(145),
+          privateEndpoint: S.optional(UserAssignedIdentityInput),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
@@ -13192,7 +16003,7 @@ function __c55(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(443)),
+          properties: S.optional(PrivateEndpointConnectionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13277,7 +16088,7 @@ function __c56(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           timeToRestore: S.String,
-          blobRanges: __S(150),
+          blobRanges: RestoreStorageAccountBlobRangesRequestBlobRangesList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -13313,7 +16124,7 @@ function __c56(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           containerName: S.String.pipe(T.Label()),
-          tags: __S(3),
+          tags: SetBlobContainerLegalHoldRequestTagsList,
           allowProtectedAppendWritesAll: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -13338,16 +16149,16 @@ function __c56(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          cors: S.optional(__S(204)),
+          cors: S.optional(CorsRules),
           defaultServiceVersion: S.optional(S.String),
-          deleteRetentionPolicy: S.optional(__S(205)),
-          staticWebsite: S.optional(__S(206)),
+          deleteRetentionPolicy: S.optional(DeleteRetentionPolicy),
+          staticWebsite: S.optional(StaticWebsite),
           isVersioningEnabled: S.optional(S.Boolean),
           automaticSnapshotPolicyEnabled: S.optional(S.Boolean),
-          changeFeed: S.optional(__S(207)),
-          restorePolicy: S.optional(__S(452)),
-          containerDeleteRetentionPolicy: S.optional(__S(205)),
-          lastAccessTimeTrackingPolicy: S.optional(__S(209)),
+          changeFeed: S.optional(ChangeFeed),
+          restorePolicy: S.optional(RestorePolicyPropertiesInput),
+          containerDeleteRetentionPolicy: S.optional(DeleteRetentionPolicy),
+          lastAccessTimeTrackingPolicy: S.optional(LastAccessTimeTrackingPolicy),
         }),
       ).annotate({
         identifier: "BlobServicePropertiesPropertiesInput",
@@ -13358,7 +16169,7 @@ function __c56(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(453)),
+          properties: S.optional(BlobServicePropertiesPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13376,7 +16187,7 @@ function __c56(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(230)),
+          properties: S.optional(FileServicePropertiesProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13398,7 +16209,7 @@ function __c57(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(290)),
+          properties: S.optional(QueueServicePropertiesProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13416,7 +16227,7 @@ function __c57(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(290)),
+          properties: S.optional(TableServicePropertiesProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13449,7 +16260,7 @@ function __c57(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          targetSkuName: S.String,
+          targetSkuName: SkuName,
         }),
       ).annotate({
         identifier: "StorageAccountMigrationPropertiesInput",
@@ -13460,7 +16271,7 @@ function __c57(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          properties: __S(459),
+          properties: StorageAccountMigrationPropertiesInput,
         }).pipe(
           T.Http({
             method: "POST",
@@ -13478,7 +16289,7 @@ function __c57(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          failoverType: S.optional(S.String.pipe(T.Query())),
+          failoverType: S.optional(StorageAccountsFailoverRequestFailoverType.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13551,7 +16362,7 @@ function __c58(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          source: __S(52),
+          source: BlobAccessPointSourceProperties,
         }).pipe(
           T.Http({
             method: "POST",
@@ -13593,9 +16404,9 @@ function __c58(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(BlobAccessPointConfigurationState),
           description: S.optional(S.String),
-          source: S.optional(__S(52)),
+          source: S.optional(BlobAccessPointSourceProperties),
         }),
       ).annotate({
         identifier: "BlobAccessPointConfigurationPropertiesUpdate",
@@ -13607,8 +16418,8 @@ function __c58(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           blobAccessPointConfigurationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(38)),
-          properties: S.optional(__S(469)),
+          tags: S.optional(UpdateBlobAccessPointConfigurationRequestTagsMap),
+          properties: S.optional(BlobAccessPointConfigurationPropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13627,7 +16438,7 @@ function __c58(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           containerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(59)),
+          properties: S.optional(ContainerPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13646,8 +16457,8 @@ function __c59(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          authProperties: S.optional(__S(72)),
+          type: StorageConnectorSourceType,
+          authProperties: S.optional(StorageConnectorAuthProperties),
         }),
       ).annotate({
         identifier: "StorageConnectorSourceUpdate",
@@ -13655,10 +16466,10 @@ function __c59(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(StorageConnectorPropertiesUpdateState),
           description: S.optional(S.String),
           testConnection: S.optional(S.Boolean),
-          source: S.optional(__S(472)),
+          source: S.optional(StorageConnectorSourceUpdate),
         }),
       ).annotate({
         identifier: "StorageConnectorPropertiesUpdate",
@@ -13670,8 +16481,8 @@ function __c59(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           connectorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(38)),
-          properties: S.optional(__S(473)),
+          tags: S.optional(UpdateConnectorRequestTagsMap),
+          properties: S.optional(StorageConnectorPropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13685,7 +16496,7 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          encryption: S.optional(__S(41)),
+          encryption: S.optional(AzureResourceManagerCommonTypesEncryption),
         }),
       ).annotate({
         identifier: "ContextCachePropertiesUpdate",
@@ -13696,9 +16507,9 @@ function __c59(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           contextCacheName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(38)),
-          identity: S.optional(__S(45)),
-          properties: S.optional(__S(475)),
+          tags: S.optional(UpdateContextCachRequestTagsMap),
+          identity: S.optional(ContextCachesCreateOrUpdateRequestIdentity),
+          properties: S.optional(ContextCachePropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13724,7 +16535,7 @@ function __c59(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           contextCacheName: S.String.pipe(T.Label()),
           contextCacheContainerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(477)),
+          properties: S.optional(ContextCacheContainerPropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13740,8 +16551,8 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          accessPolicies: S.optional(__S(79)),
-          assets: S.optional(__S(81)),
+          accessPolicies: S.optional(StorageDataSharePropertiesUpdateAccessPoliciesList),
+          assets: S.optional(StorageDataSharePropertiesUpdateAssetsList),
         }),
       ).annotate({
         identifier: "StorageDataSharePropertiesUpdate",
@@ -13757,8 +16568,8 @@ function __c60(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           dataShareName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(38)),
-          properties: S.optional(__S(479)),
+          tags: S.optional(UpdateDataShareRequestTagsMap),
+          properties: S.optional(StorageDataSharePropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13775,7 +16586,7 @@ function __c60(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           shareName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(90)),
+          properties: S.optional(FileSharePropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13792,7 +16603,7 @@ function __c60(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           queueName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(94)),
+          properties: S.optional(QueuePropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13805,33 +16616,33 @@ function __c60(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          customDomain: S.optional(__S(105)),
-          encryption: S.optional(__S(110)),
-          sasPolicy: S.optional(__S(103)),
-          keyPolicy: S.optional(__S(104)),
-          accessTier: S.optional(S.String),
-          turboTier: S.optional(__S(118)),
-          azureFilesIdentityBasedAuthentication: S.optional(__S(121)),
+          customDomain: S.optional(CustomDomain),
+          encryption: S.optional(EncryptionInput),
+          sasPolicy: S.optional(SasPolicy),
+          keyPolicy: S.optional(KeyPolicy),
+          accessTier: S.optional(AccessTier),
+          turboTier: S.optional(TurboTier),
+          azureFilesIdentityBasedAuthentication: S.optional(AzureFilesIdentityBasedAuthentication),
           supportsHttpsTrafficOnly: S.optional(S.Boolean),
           isSftpEnabled: S.optional(S.Boolean),
           isLocalUserEnabled: S.optional(S.Boolean),
           enableExtendedGroups: S.optional(S.Boolean),
-          networkAcls: S.optional(__S(117)),
-          largeFileSharesState: S.optional(S.String),
-          routingPreference: S.optional(__S(122)),
-          dualStackEndpointPreference: S.optional(__S(123)),
+          networkAcls: S.optional(NetworkRuleSetInput),
+          largeFileSharesState: S.optional(LargeFileSharesState),
+          routingPreference: S.optional(RoutingPreference),
+          dualStackEndpointPreference: S.optional(DualStackEndpointPreference),
           allowBlobPublicAccess: S.optional(S.Boolean),
-          minimumTlsVersion: S.optional(S.String),
+          minimumTlsVersion: S.optional(MinimumTlsVersion),
           allowSharedKeyAccess: S.optional(S.Boolean),
           allowCrossTenantReplication: S.optional(S.Boolean),
           defaultToOAuthAuthentication: S.optional(S.Boolean),
-          publicNetworkAccess: S.optional(S.String),
-          immutableStorageWithVersioning: S.optional(__S(125)),
-          allowedCopyScope: S.optional(S.String),
-          dnsEndpointType: S.optional(S.String),
-          geoPriorityReplicationStatus: S.optional(__S(126)),
-          allowSharedKeyAccessForServices: S.optional(__S(127)),
-          dataCollaborationPolicyProperties: S.optional(__S(128)),
+          publicNetworkAccess: S.optional(PublicNetworkAccess),
+          immutableStorageWithVersioning: S.optional(ImmutableStorageAccount),
+          allowedCopyScope: S.optional(AllowedCopyScope),
+          dnsEndpointType: S.optional(DnsEndpointType),
+          geoPriorityReplicationStatus: S.optional(GeoPriorityReplicationStatus),
+          allowSharedKeyAccessForServices: S.optional(StorageAccountSharedKeyAccessProperties),
+          dataCollaborationPolicyProperties: S.optional(StorageDataCollaborationPolicyProperties),
           allowCrossTenantDelegationSas: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -13843,13 +16654,13 @@ function __c60(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          sku: S.optional(__S(98)),
-          tags: S.optional(__S(38)),
-          identity: S.optional(__S(102)),
-          properties: S.optional(__S(483)),
-          kind: S.optional(S.String),
-          zones: S.optional(__S(3)),
-          placement: S.optional(__S(100)),
+          sku: S.optional(Sku),
+          tags: S.optional(UpdateStorageAccountRequestTagsMap),
+          identity: S.optional(IdentityInput),
+          properties: S.optional(StorageAccountPropertiesUpdateParametersInput),
+          kind: S.optional(Kind),
+          zones: S.optional(UpdateStorageAccountRequestZonesList),
+          placement: S.optional(Placement),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13864,15 +16675,15 @@ function __c60(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          parameters: S.optional(__S(159)),
+          type: S.optional(TriggerType),
+          parameters: S.optional(TriggerParametersUpdate),
         }),
       ).annotate({ identifier: "ExecutionTriggerUpdate" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          target: S.optional(__S(158)),
-          trigger: S.optional(__S(485)),
+          target: S.optional(ExecutionTarget),
+          trigger: S.optional(ExecutionTriggerUpdate),
         }),
       ).annotate({
         identifier: "StorageTaskAssignmentUpdateExecutionContext",
@@ -13894,9 +16705,9 @@ function __c61(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           description: S.optional(S.String),
-          executionContext: S.optional(__S(486)),
-          report: S.optional(__S(487)),
-          runStatus: S.optional(__S(43)),
+          executionContext: S.optional(StorageTaskAssignmentUpdateExecutionContext),
+          report: S.optional(StorageTaskAssignmentUpdateReport),
+          runStatus: S.optional(UserAssignedIdentityInput),
         }),
       ).annotate({
         identifier: "StorageTaskAssignmentUpdatePropertiesInput",
@@ -13908,7 +16719,7 @@ function __c61(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           storageTaskAssignmentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(488)),
+          properties: S.optional(StorageTaskAssignmentUpdatePropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13927,7 +16738,7 @@ function __c61(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           tableName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(171)),
+          properties: S.optional(TablePropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13937,138 +16748,5 @@ function __c61(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateTableRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
-    case 41:
-      return __c41(i & 7);
-    case 42:
-      return __c42(i & 7);
-    case 43:
-      return __c43(i & 7);
-    case 44:
-      return __c44(i & 7);
-    case 45:
-      return __c45(i & 7);
-    case 46:
-      return __c46(i & 7);
-    case 47:
-      return __c47(i & 7);
-    case 48:
-      return __c48(i & 7);
-    case 49:
-      return __c49(i & 7);
-    case 50:
-      return __c50(i & 7);
-    case 51:
-      return __c51(i & 7);
-    case 52:
-      return __c52(i & 7);
-    case 53:
-      return __c53(i & 7);
-    case 54:
-      return __c54(i & 7);
-    case 55:
-      return __c55(i & 7);
-    case 56:
-      return __c56(i & 7);
-    case 57:
-      return __c57(i & 7);
-    case 58:
-      return __c58(i & 7);
-    case 59:
-      return __c59(i & 7);
-    case 60:
-      return __c60(i & 7);
-    case 61:
-      return __c61(i & 7);
   }
 }

@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Account Access",
   serviceShapeName: "AWSAccountAccess",
@@ -101,53 +99,102 @@ export type IdentityCenterInstanceArn = string;
 export interface IdentityCenter {
   instanceArn: string;
 }
+const IdentityCenter = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<IdentityCenter>;
 export type IdentitySource = { identityCenter: IdentityCenter };
+const IdentitySource = /*@__PURE__*/ __L.at(__c0, 1);
 export type TagsMap = { [key: string]: string | undefined };
+const TagsMap = /*@__PURE__*/ __L.at(__c0, 2);
 export interface CreateApplicationRequest {
   identitySource: IdentitySource;
   tags?: { [key: string]: string | undefined };
 }
+const CreateApplicationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateApplicationRequest>;
 export type ApplicationArn = string;
 export interface CreateApplicationResponse {
   applicationArn: string;
 }
+const CreateApplicationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateApplicationResponse>;
 export type UserId = string;
 export type GroupId = string;
 export type IdentityCenterPrincipal =
   | { userId: string; groupId?: never }
   | { userId?: never; groupId: string };
+const IdentityCenterPrincipal = /*@__PURE__*/ __L.at(__c0, 5);
 export type Principal = { identityCenter: IdentityCenterPrincipal };
+const Principal = /*@__PURE__*/ __L.at(__c0, 6);
 export type RoleArn = string;
 export interface PrincipalRoleEntitlement {
   principal: Principal;
   roleArn: string;
 }
+const PrincipalRoleEntitlement = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<PrincipalRoleEntitlement>;
 export type Entitlement = { principalRole: PrincipalRoleEntitlement };
+const Entitlement = /*@__PURE__*/ __L.at(__c1, 0);
 export interface CreateEntitlementRequest {
   applicationArn: string;
   entitlement: Entitlement;
 }
+const CreateEntitlementRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateEntitlementRequest>;
 export interface CreateEntitlementResponse {
   entitlementId: string;
 }
+const CreateEntitlementResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateEntitlementResponse>;
 export interface DeleteApplicationRequest {
   applicationArn: string;
 }
+const DeleteApplicationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DeleteApplicationRequest>;
 export interface DeleteApplicationResponse {}
+const DeleteApplicationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeleteApplicationResponse>;
 export interface DeleteEntitlementRequest {
   applicationArn: string;
   entitlementId: string;
 }
+const DeleteEntitlementRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteEntitlementRequest>;
 export interface DeleteEntitlementResponse {}
+const DeleteEntitlementResponse =
+  DeleteApplicationResponse as any as S.Schema<DeleteEntitlementResponse>;
 export interface GetApplicationRequest {
   applicationArn: string;
 }
+const GetApplicationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetApplicationRequest>;
 export type IdentityCenterApplicationArn = string;
 export interface IdentityCenterDetails {
   instanceArn: string;
   applicationArn?: string;
 }
+const IdentityCenterDetails = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<IdentityCenterDetails>;
 export type IdentitySourceDetails = { identityCenter: IdentityCenterDetails };
+const IdentitySourceDetails = /*@__PURE__*/ __L.at(__c2, 0);
 export type Status =
   | "CREATE_IN_PROGRESS"
   | "ACTIVE"
@@ -155,16 +202,21 @@ export type Status =
   | "CREATE_FAILED"
   | "DELETE_FAILED"
   | (string & {});
+const Status = S.String;
+
 export type ErrorCode =
   | "AUTHORIZATION_ERROR"
   | "RESOURCE_NOT_FOUND_ERROR"
   | "SERVICE_QUOTA_EXCEEDED_ERROR"
   | "INTERNAL_SERVICE_ERROR"
   | (string & {});
+const ErrorCode = S.String;
+
 export interface ErrorDetails {
   code: ErrorCode;
   message: string;
 }
+const ErrorDetails = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ErrorDetails>;
 export interface GetApplicationResponse {
   identitySource: IdentitySourceDetails;
   status: Status;
@@ -174,10 +226,18 @@ export interface GetApplicationResponse {
   tags?: { [key: string]: string | undefined };
   error?: ErrorDetails;
 }
+const GetApplicationResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetApplicationResponse>;
 export interface GetEntitlementRequest {
   applicationArn: string;
   entitlementId: string;
 }
+const GetEntitlementRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetEntitlementRequest>;
 export type Account = string;
 export interface PrincipalRoleEntitlementDetails {
   principal: Principal;
@@ -185,46 +245,75 @@ export interface PrincipalRoleEntitlementDetails {
   account: string;
   accountName?: string;
 }
+const PrincipalRoleEntitlementDetails = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<PrincipalRoleEntitlementDetails>;
 export type EntitlementDetails = { principalRole: PrincipalRoleEntitlementDetails };
+const EntitlementDetails = /*@__PURE__*/ __L.at(__c2, 5);
 export interface GetEntitlementResponse {
   applicationArn: string;
   entitlementId: string;
   entitlement: EntitlementDetails;
   createdAt: Date;
 }
+const GetEntitlementResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetEntitlementResponse>;
 export interface ListApplicationsRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListApplicationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListApplicationsRequest>;
 export interface ApplicationSummary {
   applicationArn: string;
   tenantId?: string;
   createdAt: Date;
   updatedAt: Date;
 }
+const ApplicationSummary = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ApplicationSummary>;
 export type ApplicationList = ApplicationSummary[];
+const ApplicationList = /*@__PURE__*/ __L.at(__c3, 1);
 export interface ListApplicationsResponse {
   applications: ApplicationSummary[];
   nextToken?: string;
 }
+const ListApplicationsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListApplicationsResponse>;
 export type IdentityCenterPrincipalFilter =
   | { userId: string; groupId?: never }
   | { userId?: never; groupId: string };
 export type PrincipalFilter = { identityCenter: IdentityCenterPrincipalFilter };
+const PrincipalFilter = Principal as any as S.Schema<PrincipalFilter>;
 export interface PrincipalRoleEntitlementFilter {
   principal?: PrincipalFilter;
   roleArn?: string;
   account?: string;
 }
+const PrincipalRoleEntitlementFilter = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<PrincipalRoleEntitlementFilter>;
 export interface EntitlementFilter {
   principalRole?: PrincipalRoleEntitlementFilter;
 }
+const EntitlementFilter = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<EntitlementFilter>;
 export interface ListEntitlementsRequest {
   applicationArn: string;
   filter: EntitlementFilter;
   nextToken?: string;
   maxResults?: number;
 }
+const ListEntitlementsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListEntitlementsRequest>;
 export interface PrincipalRoleEntitlementSummary {
   principal: Principal;
   roleArn: string;
@@ -232,33 +321,56 @@ export interface PrincipalRoleEntitlementSummary {
   accountName?: string;
 }
 export type EntitlementSummary = { principalRole: PrincipalRoleEntitlementSummary };
+const EntitlementSummary = EntitlementDetails as any as S.Schema<EntitlementSummary>;
 export interface EntitlementsListMember {
   entitlementId: string;
   entitlement: EntitlementSummary;
   createdAt: Date;
 }
+const EntitlementsListMember = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<EntitlementsListMember>;
 export type EntitlementsList = EntitlementsListMember[];
+const EntitlementsList = /*@__PURE__*/ __L.at(__c3, 7);
 export interface ListEntitlementsResponse {
   entitlements: EntitlementsListMember[];
   nextToken?: string;
 }
+const ListEntitlementsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ListEntitlementsResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = DeleteApplicationResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
+const TagKeys = /*@__PURE__*/ __L.at(__c4, 4);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = DeleteApplicationResponse as any as S.Schema<UntagResourceResponse>;
 export type CreateApplicationError =
   | AccessDeniedException
   | AlreadyCreatedException
@@ -276,8 +388,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(4) as any as S.Schema<CreateApplicationResponse>,
+  input: CreateApplicationRequest,
+  output: CreateApplicationResponse,
   errors: [
     AccessDeniedException,
     AlreadyCreatedException,
@@ -309,8 +421,8 @@ export const createEntitlement: API.OperationMethod<
   CreateEntitlementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CreateEntitlementRequest>,
-  output: __S(10) as any as S.Schema<CreateEntitlementResponse>,
+  input: CreateEntitlementRequest,
+  output: CreateEntitlementResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -342,8 +454,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(12) as any as S.Schema<DeleteApplicationResponse>,
+  input: DeleteApplicationRequest,
+  output: DeleteApplicationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -374,8 +486,8 @@ export const deleteEntitlement: API.OperationMethod<
   DeleteEntitlementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<DeleteEntitlementRequest>,
-  output: __S(12) as any as S.Schema<DeleteEntitlementResponse>,
+  input: DeleteEntitlementRequest,
+  output: DeleteEntitlementResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -405,8 +517,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetApplicationRequest>,
-  output: __S(18) as any as S.Schema<GetApplicationResponse>,
+  input: GetApplicationRequest,
+  output: GetApplicationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -435,8 +547,8 @@ export const getEntitlement: API.OperationMethod<
   GetEntitlementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetEntitlementRequest>,
-  output: __S(22) as any as S.Schema<GetEntitlementResponse>,
+  input: GetEntitlementRequest,
+  output: GetEntitlementResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -465,8 +577,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(23) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(26) as any as S.Schema<ListApplicationsResponse>,
+  input: ListApplicationsRequest,
+  output: ListApplicationsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -496,8 +608,8 @@ export const listEntitlements: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EntitlementsListMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(29) as any as S.Schema<ListEntitlementsRequest>,
-  output: __S(32) as any as S.Schema<ListEntitlementsResponse>,
+  input: ListEntitlementsRequest,
+  output: ListEntitlementsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -526,8 +638,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(34) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -554,8 +666,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<TagResourceRequest>,
-  output: __S(12) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -582,8 +694,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<UntagResourceRequest>,
-  output: __S(12) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -603,12 +715,12 @@ function __c0(j: number): any {
         identifier: "IdentityCenter",
       });
     case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ identityCenter: __S(0) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ identityCenter: IdentityCenter })]);
     case 2:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 3:
       return S.suspend(() =>
-        S.Struct({ identitySource: __S(1), tags: S.optional(__S(2)) }).pipe(
+        S.Struct({ identitySource: IdentitySource, tags: S.optional(TagsMap) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateApplicationRequest" });
@@ -622,9 +734,9 @@ function __c0(j: number): any {
         /*@__PURE__*/ S.Struct({ groupId: S.String }),
       ]);
     case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ identityCenter: __S(5) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ identityCenter: IdentityCenterPrincipal })]);
     case 7:
-      return S.suspend(() => S.Struct({ principal: __S(6), roleArn: S.String })).annotate({
+      return S.suspend(() => S.Struct({ principal: Principal, roleArn: S.String })).annotate({
         identifier: "PrincipalRoleEntitlement",
       });
   }
@@ -632,10 +744,10 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ principalRole: __S(7) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ principalRole: PrincipalRoleEntitlement })]);
     case 1:
       return S.suspend(() =>
-        S.Struct({ applicationArn: S.String, entitlement: __S(8) }).pipe(
+        S.Struct({ applicationArn: S.String, entitlement: Entitlement }).pipe(
           T.all(T.Http({ method: "POST", uri: "/entitlements" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateEntitlementRequest" });
@@ -698,21 +810,21 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ identityCenter: __S(15) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ identityCenter: IdentityCenterDetails })]);
     case 1:
-      return S.suspend(() => S.Struct({ code: S.String, message: S.String })).annotate({
+      return S.suspend(() => S.Struct({ code: ErrorCode, message: S.String })).annotate({
         identifier: "ErrorDetails",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          identitySource: __S(16),
-          status: S.String,
+          identitySource: IdentitySourceDetails,
+          status: Status,
           tenantId: S.optional(S.String),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          tags: S.optional(__S(2)),
-          error: S.optional(__S(17)),
+          tags: S.optional(TagsMap),
+          error: S.optional(ErrorDetails),
         }),
       ).annotate({ identifier: "GetApplicationResponse" });
     case 3:
@@ -734,7 +846,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          principal: __S(6),
+          principal: Principal,
           roleArn: S.String,
           account: S.String,
           accountName: S.optional(S.String),
@@ -743,13 +855,13 @@ function __c2(j: number): any {
         identifier: "PrincipalRoleEntitlementDetails",
       });
     case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ principalRole: __S(20) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ principalRole: PrincipalRoleEntitlementDetails })]);
     case 6:
       return S.suspend(() =>
         S.Struct({
           applicationArn: S.String,
           entitlementId: S.String,
-          entitlement: __S(21),
+          entitlement: EntitlementDetails,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "GetEntitlementResponse" });
@@ -780,15 +892,15 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "ApplicationSummary" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(ApplicationSummary);
     case 2:
       return S.suspend(() =>
-        S.Struct({ applications: __S(25), nextToken: S.optional(S.String) }),
+        S.Struct({ applications: ApplicationList, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListApplicationsResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          principal: S.optional(__S(6)),
+          principal: S.optional(PrincipalFilter),
           roleArn: S.optional(S.String),
           account: S.optional(S.String),
         }),
@@ -796,14 +908,14 @@ function __c3(j: number): any {
         identifier: "PrincipalRoleEntitlementFilter",
       });
     case 4:
-      return S.suspend(() => S.Struct({ principalRole: S.optional(__S(27)) })).annotate({
-        identifier: "EntitlementFilter",
-      });
+      return S.suspend(() =>
+        S.Struct({ principalRole: S.optional(PrincipalRoleEntitlementFilter) }),
+      ).annotate({ identifier: "EntitlementFilter" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           applicationArn: S.String,
-          filter: __S(28),
+          filter: EntitlementFilter,
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -821,19 +933,19 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           entitlementId: S.String,
-          entitlement: __S(21),
+          entitlement: EntitlementSummary,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "EntitlementsListMember" });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(EntitlementsListMember);
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ entitlements: __S(31), nextToken: S.optional(S.String) }),
+        S.Struct({ entitlements: EntitlementsList, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListEntitlementsResponse" });
     case 1:
       return S.suspend(() =>
@@ -851,12 +963,12 @@ function __c4(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(2)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(TagsMap) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: __S(2) }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagsMap }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -873,7 +985,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(36).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -885,24 +997,5 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

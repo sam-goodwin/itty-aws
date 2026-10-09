@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -70,12 +68,24 @@ export interface DeleteAccountsProductInputsRequest {
   /** Required. The primary or supplemental data source from which the product input should be deleted. Format: `accounts/{account}/dataSources/{datasource}`. For example, `accounts/123456/dataSources/104628`. */
   dataSource?: string;
 }
+const DeleteAccountsProductInputsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeleteAccountsProductInputsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Empty>;
+
 export interface GetAccountsProductsRequest {
   /** Required. The name of the product. Format: `accounts/{account}/products/{product}` The `{product}` segment is a unique identifier for the product. This identifier must be unique within a merchant account and generally follows the structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The format of the `{product}` segment in the URL is automatically detected by the server, supporting two options: 1. **Encoded Format**: The `{product}` segment is an unpadded base64url encoded string (RFC 4648 Section 5). The decoded string must result in the `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the product identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123`, the `{product}` segment must be the unpadded base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the product would be `accounts/123/products/ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The `{product}` segment is the tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only when `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all product IDs to ensure correct parsing, especially those containing special characters. The presence of tilde (`~`) characters in the `{product}` segment is used to differentiate between the two formats. Note: For calls to the v1beta version, the plain format is `channel~content_language~feed_label~offer_id`, for example: `accounts/123/products/online~en~US~sku123`. */
   name: string;
 }
+const GetAccountsProductsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetAccountsProductsRequest>;
+
 /** The price represented as a number and currency. */
 export interface Price {
   /** The price represented as a number in micros (1 million micros is an equivalent to one's currency standard unit, for example, 1 USD = 1000000 micros). */
@@ -83,6 +93,8 @@ export interface Price {
   /** The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217). */
   currencyCode?: string;
 }
+const Price = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Price>;
+
 /** Information regarding Automated Discounts. */
 export interface AutomatedDiscounts {
   /** The price prior to the application of consecutive price reductions. Absent if the information about the prior price of the product is not available. */
@@ -92,6 +104,8 @@ export interface AutomatedDiscounts {
   /** The price prior to the application of the first price reduction. Absent if the information about the prior price of the product is not available. */
   priorPrice?: Price;
 }
+const AutomatedDiscounts = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AutomatedDiscounts>;
+
 /** The dimension of the product. */
 export interface ProductDimension {
   /** Required. The dimension units. Acceptable values are: * "`in`" * "`cm`" */
@@ -99,8 +113,14 @@ export interface ProductDimension {
   /** Required. The dimension value represented as a number. The value can have a maximum precision of four decimal places. */
   value?: number;
 }
+const ProductDimension = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ProductDimension>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StringList>;
+
 export type DoubleList = Array<number>;
+const DoubleList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DoubleList>;
+
 /** Product property for the Cloud Retail API. For example, properties for a TV product could be "Screen-Resolution" or "Screen-Size". */
 export interface CloudExportAdditionalProperties {
   /** Float values of the given property. For example for a TV product 1.2345. Maximum repeatedness of this value is 400. Values are stored in an arbitrary but consistent order. */
@@ -120,7 +140,17 @@ export interface CloudExportAdditionalProperties {
   /** Name of the given property. For example, "Screen-Resolution" for a TV product. Maximum string size is 256 characters. */
   propertyName?: string;
 }
+const CloudExportAdditionalProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CloudExportAdditionalProperties>;
+
 export type CloudExportAdditionalPropertiesList = Array<CloudExportAdditionalProperties>;
+const CloudExportAdditionalPropertiesList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CloudExportAdditionalPropertiesList>;
+
 /** The ShippingWeight of the product. */
 export interface ShippingWeight {
   /** The weight of the product used to calculate the shipping cost of the item. */
@@ -128,6 +158,8 @@ export interface ShippingWeight {
   /** The unit of value. */
   unit?: string;
 }
+const ShippingWeight = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ShippingWeight>;
+
 /** The UnitPricingMeasure of the product. */
 export interface UnitPricingMeasure {
   /** The measure of an item. */
@@ -135,11 +167,15 @@ export interface UnitPricingMeasure {
   /** The unit of the measure. */
   unit?: string;
 }
+const UnitPricingMeasure = ShippingWeight as any as S.Schema<UnitPricingMeasure>;
+
 export type SubscriptionCostPeriodEnum =
   | "SUBSCRIPTION_PERIOD_UNSPECIFIED"
   | "MONTH"
   | "YEAR"
   | "WEEK";
+const SubscriptionCostPeriodEnum = S.String;
+
 /** The SubscriptionCost of the product. */
 export interface SubscriptionCost {
   /** The type of subscription period. Supported values are: * "`month`" * "`year`" * "`week`" */
@@ -149,6 +185,8 @@ export interface SubscriptionCost {
   /** The amount the buyer has to pay per subscription period. */
   amount?: Price;
 }
+const SubscriptionCost = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<SubscriptionCost>;
+
 /** The Shipping of the product. */
 export interface Shipping {
   /** Optional. The label of the [loyalty program](https://support.google.com/merchants/answer/6324484). Must match one of the program labels set in loyalty_programs. When set (in combination with [loyalty_tier_label](https://support.google.com/merchants/answer/6324484)), this shipping option is only applicable to loyalty program members of the specified tier. */
@@ -182,7 +220,11 @@ export interface Shipping {
   /** The [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) of the country to which an item will ship. */
   country?: string;
 }
+const Shipping = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Shipping>;
+
 export type ShippingList = Array<Shipping>;
+const ShippingList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ShippingList>;
+
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
 export interface Interval {
   /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
@@ -190,6 +232,8 @@ export interface Interval {
   /** Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end. */
   endTime?: string;
 }
+const Interval = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Interval>;
+
 /** The UnitPricingBaseMeasure of the product. */
 export interface UnitPricingBaseMeasure {
   /** The unit of the denominator. */
@@ -197,10 +241,17 @@ export interface UnitPricingBaseMeasure {
   /** The denominator of the unit price. */
   value?: string;
 }
+const UnitPricingBaseMeasure = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<UnitPricingBaseMeasure>;
+
 export type ProductSustainabilityIncentiveTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "EV_TAX_CREDIT"
   | "EV_PRICE_DISCOUNT";
+const ProductSustainabilityIncentiveTypeEnum = S.String;
+
 /** Information regarding sustainability-related incentive programs such as rebates or tax relief. */
 export interface ProductSustainabilityIncentive {
   /** The percentage of the sale price that the incentive is applied to. */
@@ -210,7 +261,17 @@ export interface ProductSustainabilityIncentive {
   /** The fixed amount of the incentive. */
   amount?: Price;
 }
+const ProductSustainabilityIncentive = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ProductSustainabilityIncentive>;
+
 export type ProductSustainabilityIncentiveList = Array<ProductSustainabilityIncentive>;
+const ProductSustainabilityIncentiveList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ProductSustainabilityIncentiveList>;
+
 /** Structured description, for algorithmically (AI)-generated descriptions. */
 export interface ProductStructuredDescription {
   /** The digital source type, for example "trained_algorithmic_media". Following [IPTC](https://cv.iptc.org/newscodes/digitalsourcetype). Maximum length is 40 characters. */
@@ -218,6 +279,11 @@ export interface ProductStructuredDescription {
   /** The description text Maximum length is 5000 characters */
   content?: string;
 }
+const ProductStructuredDescription = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ProductStructuredDescription>;
+
 /** A message that represents installment. */
 export interface Installment {
   /** The up-front down payment amount the buyer has to pay. */
@@ -229,6 +295,8 @@ export interface Installment {
   /** Type of installment payments. Supported values are: * "`finance`" * "`lease`" */
   creditType?: string;
 }
+const Installment = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Installment>;
+
 /** The product details. */
 export interface ProductDetail {
   /** The value of the product detail. */
@@ -238,7 +306,11 @@ export interface ProductDetail {
   /** The section header used to group a set of product details. */
   sectionName?: string;
 }
+const ProductDetail = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ProductDetail>;
+
 export type ProductDetailList = Array<ProductDetail>;
+const ProductDetailList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ProductDetailList>;
+
 /** The weight of the product. */
 export interface ProductWeight {
   /** Required. The weight unit. Acceptable values are: * "`g`" * "`kg`" * "`oz`" * "`lb`" */
@@ -246,6 +318,8 @@ export interface ProductWeight {
   /** Required. The weight represented as a number. The weight can have a maximum precision of four decimal places. */
   value?: number;
 }
+const ProductWeight = ProductDimension as any as S.Schema<ProductWeight>;
+
 /** A message that represents loyalty program. For more information on loyalty programs, see [Overview of loyalty programs](/merchant/api/guides/loyalty/loyalty-programs). */
 export interface LoyaltyProgram {
   /** The label of the shipping benefit. If the field has value, this offer has loyalty shipping benefit. If the field value isn't provided, the item is not eligible for loyalty shipping for the given loyalty tier. */
@@ -263,7 +337,11 @@ export interface LoyaltyProgram {
   /** The price for members of the given tier, that is, the instant discount price. Must be smaller or equal to the regular price. */
   price?: Price;
 }
+const LoyaltyProgram = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<LoyaltyProgram>;
+
 export type LoyaltyProgramList = Array<LoyaltyProgram>;
+const LoyaltyProgramList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<LoyaltyProgramList>;
+
 /** A message that represents loyalty points. */
 export interface LoyaltyPoints {
   /** Name of loyalty points program. It is recommended to limit the name to 12 full-width characters or 24 Roman characters. */
@@ -273,6 +351,8 @@ export interface LoyaltyPoints {
   /** The ratio of a point when converted to currency. Google assumes currency based on Merchant Center settings. If ratio is left out, it defaults to 1.0. */
   ratio?: number;
 }
+const LoyaltyPoints = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<LoyaltyPoints>;
+
 /** The ShippingDimension of the product. */
 export interface ShippingDimension {
   /** The unit of value. */
@@ -280,6 +360,8 @@ export interface ShippingDimension {
   /** The dimension of the product used to calculate the shipping cost of the item. */
   value?: number;
 }
+const ShippingDimension = ProductDimension as any as S.Schema<ShippingDimension>;
+
 /** Product [certification](https://support.google.com/merchants/answer/13528839), initially introduced for EU energy efficiency labeling compliance using the EU EPREL database. */
 export interface Certification {
   /** The certification authority, for example "European_Commission". Maximum length is 2000 characters. */
@@ -295,7 +377,11 @@ export interface Certification {
   /** The name of the certification, for example "EPREL". Maximum length is 2000 characters. */
   certificationName?: string;
 }
+const Certification = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Certification>;
+
 export type CertificationList = Array<Certification>;
+const CertificationList = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<CertificationList>;
+
 /** The Tax of the product. */
 export interface Tax {
   /** The numeric ID of a location that the tax rate applies to as defined in the [AdWords API](https://developers.google.com/adwords/api/docs/appendix/geotargeting). */
@@ -311,7 +397,11 @@ export interface Tax {
   /** The geographic region to which the tax rate applies. */
   region?: string;
 }
+const Tax = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Tax>;
+
 export type TaxList = Array<Tax>;
+const TaxList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<TaxList>;
+
 /** Structured title, for algorithmically (AI)-generated titles. */
 export interface ProductStructuredTitle {
   /** The title text Maximum length is 150 characters */
@@ -319,6 +409,11 @@ export interface ProductStructuredTitle {
   /** The digital source type, for example "trained_algorithmic_media". Following [IPTC](https://cv.iptc.org/newscodes/digitalsourcetype). Maximum length is 40 characters. */
   digitalSourceType?: string;
 }
+const ProductStructuredTitle = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ProductStructuredTitle>;
+
 /** Conditions to be met for a product to have free shipping. */
 export interface FreeShippingThreshold {
   /** The minimum product price for the shipping cost to become free. Represented as a number. */
@@ -326,7 +421,17 @@ export interface FreeShippingThreshold {
   /** The [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) of the country to which an item will ship. */
   country?: string;
 }
+const FreeShippingThreshold = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<FreeShippingThreshold>;
+
 export type FreeShippingThresholdList = Array<FreeShippingThreshold>;
+const FreeShippingThresholdList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<FreeShippingThresholdList>;
+
 /** Attributes. */
 export interface Attributes {
   /** The width of the product in the units provided. The value must be between 0 (exclusive) and 3000 (inclusive). */
@@ -520,12 +625,18 @@ export interface Attributes {
   /** Similar to ads_grouping, but only works on CPC. */
   adsLabels?: StringList;
 }
+const Attributes = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Attributes>;
+
 export type ProductChannelEnum = "CHANNEL_ENUM_UNSPECIFIED" | "ONLINE" | "LOCAL";
+const ProductChannelEnum = S.String;
+
 export type ItemLevelIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "NOT_IMPACTED"
   | "DEMOTED"
   | "DISAPPROVED";
+const ItemLevelIssueSeverityEnum = S.String;
+
 export type ItemLevelIssueReportingContextEnum =
   | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
   | "SHOPPING_ADS"
@@ -548,6 +659,8 @@ export type ItemLevelIssueReportingContextEnum =
   | "MERCHANT_REVIEWS"
   | "YOUTUBE_CHECKOUT"
   | "RENTAL_ADS";
+const ItemLevelIssueReportingContextEnum = S.String;
+
 /** The ItemLevelIssue of the product status. */
 export interface ItemLevelIssue {
   /** A short issue description in English. */
@@ -569,7 +682,11 @@ export interface ItemLevelIssue {
   /** The error code of the issue. */
   code?: string;
 }
+const ItemLevelIssue = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ItemLevelIssue>;
+
 export type ItemLevelIssueList = Array<ItemLevelIssue>;
+const ItemLevelIssueList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ItemLevelIssueList>;
+
 export type DestinationStatusReportingContextEnum =
   | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
   | "SHOPPING_ADS"
@@ -592,6 +709,8 @@ export type DestinationStatusReportingContextEnum =
   | "MERCHANT_REVIEWS"
   | "YOUTUBE_CHECKOUT"
   | "RENTAL_ADS";
+const DestinationStatusReportingContextEnum = S.String;
+
 /** The destination status of the product status. Equivalent to `StatusPerReportingContext` in Reports API. */
 export interface DestinationStatus {
   /** The name of the reporting context. */
@@ -603,7 +722,14 @@ export interface DestinationStatus {
   /** List of country codes (ISO 3166-1 alpha-2) where the offer is pending approval. */
   pendingCountries?: StringList;
 }
+const DestinationStatus = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<DestinationStatus>;
+
 export type DestinationStatusList = Array<DestinationStatus>;
+const DestinationStatusList = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DestinationStatusList>;
+
 /** The status of a product, data validation issues, that is, information about a product computed asynchronously. */
 export interface ProductStatus {
   /** Date on which the item has been created, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. */
@@ -617,6 +743,8 @@ export interface ProductStatus {
   /** Date on which the item expires, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. */
   googleExpirationDate?: string;
 }
+const ProductStatus = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ProductStatus>;
+
 /** A message that represents custom attributes. Exactly one of `value` or `group_values` must not be empty. */
 export interface CustomAttribute {
   /** The name of the attribute. */
@@ -626,7 +754,11 @@ export interface CustomAttribute {
   /** The value of the attribute. If `value` is not empty, `group_values` must be empty. */
   value?: string;
 }
+const CustomAttribute = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<CustomAttribute>;
+
 export type CustomAttributeList = Array<CustomAttribute>;
+const CustomAttributeList = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<CustomAttributeList>;
+
 /** The processed product, built from multiple product inputs after applying rules and supplemental data sources. This processed product matches what is shown in your Merchant Center account. Each product is built from exactly one primary data source product input, and multiple supplemental data source inputs. After inserting, updating, or deleting a product input, it may take several minutes before the updated processed product can be retrieved. All fields in the processed product and its sub-messages match the name of their corresponding attribute in the [Product data specification](https://support.google.com/merchants/answer/7052112) with some exceptions. */
 export interface Product {
   /** Output only. The automated discounts information for the product. */
@@ -656,7 +788,11 @@ export interface Product {
   /** Output only. Determines whether the product is [archived](https://support.google.com/merchants/answer/11909930). To archive or restore your product, visit Merchant Center products page. Learn also more about [offer visibility](https://support.google.com/merchants/answer/12488713). */
   archived?: boolean;
 }
+const Product = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Product>;
+
 export type ProductInputChannelEnum = "CHANNEL_ENUM_UNSPECIFIED" | "ONLINE" | "LOCAL";
+const ProductInputChannelEnum = S.String;
+
 /** This resource represents input data you submit for a product, not the processed product that you see in Merchant Center, in Shopping ads, or across Google surfaces. Product inputs, rules and supplemental data source data are combined to create the processed Product. For more information, see [Manage products](/merchant/api/guides/products/overview). Required product input attributes to pass data validation checks are primarily defined in the [Products Data Specification](https://support.google.com/merchants/answer/188494). The following attributes are required: feedLabel, contentLanguage and offerId. After inserting, updating, or deleting a product input, it may take several minutes before the processed product can be retrieved. All fields in the product input and its sub-messages match the English name of their corresponding attribute in the [Products Data Specification](https://support.google.com/merchants/answer/188494) with [some exceptions](https://support.google.com/merchants/answer/7052112). The following reference documentation lists the field names in the **camelCase** casing style while the Products Data Specification lists the names in the **snake_case** casing style. */
 export interface ProductInput {
   /** Optional. A list of product attributes. */
@@ -682,6 +818,8 @@ export interface ProductInput {
   /** Identifier. The name of the product. Format: `accounts/{account}/productInputs/{productinput}` The {productinput} segment is a unique identifier for the product. This identifier must be unique within a merchant account and generally follows the structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The format of the {productinput} segment in the URL is automatically detected by the server, supporting two options: 1. **Encoded Format**: The `{productinput}` segment is an unpadded base64url encoded string (RFC 4648 Section 5). The decoded string must result in the `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the product identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123`, the `{productinput}` segment must be the unpadded base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the product would be `accounts/123/productInputs/ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The `{productinput}` segment is the tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only when `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all product IDs to ensure correct parsing, especially those containing special characters. The presence of tilde (`~`) characters in the `{productinput}` segment is used to differentiate between the two formats. */
   name?: string;
 }
+const ProductInput = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ProductInput>;
+
 export interface InsertAccountsProductInputsRequest {
   /** Required. The account where this product will be inserted. Format: `accounts/{account}` */
   parent: string;
@@ -690,6 +828,11 @@ export interface InsertAccountsProductInputsRequest {
   /** Request body */
   body?: ProductInput;
 }
+const InsertAccountsProductInputsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<InsertAccountsProductInputsRequest>;
+
 export interface ListAccountsProductsRequest {
   /** Required. The account to list processed products for. Format: `accounts/{account}` */
   parent: string;
@@ -698,7 +841,14 @@ export interface ListAccountsProductsRequest {
   /** A page token, received from a previous `ListProducts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListProducts` must match the call that provided the page token. */
   pageToken?: string;
 }
+const ListAccountsProductsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ListAccountsProductsRequest>;
+
 export type ProductList = Array<Product>;
+const ProductList = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ProductList>;
+
 /** Response message for the ListProducts method. */
 export interface ListProductsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -706,6 +856,8 @@ export interface ListProductsResponse {
   /** The processed products from the specified account. These are your processed products after applying rules and supplemental data sources. */
   products?: ProductList;
 }
+const ListProductsResponse = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ListProductsResponse>;
+
 export interface PatchAccountsProductInputsRequest {
   /** Optional. The list of product attributes to be updated. If the update mask is omitted, then it is treated as implied field mask equivalent to all fields that are populated (have a non-empty value). Attributes specified in the update mask without a value specified in the body will be deleted from the product. Update mask can only be specified for top level fields in attributes and custom attributes. To specify the update mask for custom attributes you need to add the `custom_attribute.` prefix. Providing special "*" value for full product replacement is not supported. */
   updateMask?: string;
@@ -716,6 +868,11 @@ export interface PatchAccountsProductInputsRequest {
   /** Request body */
   body?: ProductInput;
 }
+const PatchAccountsProductInputsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<PatchAccountsProductInputsRequest>;
+
 export type DeleteAccountsProductInputsError =
   | NotFound
   | Forbidden
@@ -729,8 +886,8 @@ export const deleteAccountsProductInputs: API.OperationMethod<
   DeleteAccountsProductInputsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeleteAccountsProductInputsRequest>,
-  output: __S(1) as any as S.Schema<Empty>,
+  input: DeleteAccountsProductInputsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -744,8 +901,8 @@ export const getAccountsProducts: API.OperationMethod<
   GetAccountsProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetAccountsProductsRequest>,
-  output: __S(40) as any as S.Schema<Product>,
+  input: GetAccountsProductsRequest,
+  output: Product,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -764,8 +921,8 @@ export const insertAccountsProductInputs: API.OperationMethod<
   InsertAccountsProductInputsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<InsertAccountsProductInputsRequest>,
-  output: __S(41) as any as S.Schema<ProductInput>,
+  input: InsertAccountsProductInputsRequest,
+  output: ProductInput,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -780,8 +937,8 @@ export const listAccountsProducts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(43) as any as S.Schema<ListAccountsProductsRequest>,
-  output: __S(45) as any as S.Schema<ListProductsResponse>,
+  input: ListAccountsProductsRequest,
+  output: ListProductsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -801,8 +958,8 @@ export const patchAccountsProductInputs: API.OperationMethod<
   PatchAccountsProductInputsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<PatchAccountsProductInputsRequest>,
-  output: __S(41) as any as S.Schema<ProductInput>,
+  input: PatchAccountsProductInputsRequest,
+  output: ProductInput,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -854,9 +1011,9 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          priorPriceProgressive: S.optional(__S(3)),
-          gadPrice: S.optional(__S(3)),
-          priorPrice: S.optional(__S(3)),
+          priorPriceProgressive: S.optional(Price),
+          gadPrice: S.optional(Price),
+          priorPrice: S.optional(Price),
         }),
       ).annotate({ identifier: "AutomatedDiscounts" });
     case 5:
@@ -877,10 +1034,10 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          floatValue: S.optional(__S(7)),
-          textValue: S.optional(__S(6)),
+          floatValue: S.optional(DoubleList),
+          textValue: S.optional(StringList),
           minValue: S.optional(S.Number),
-          intValue: S.optional(__S(6)),
+          intValue: S.optional(StringList),
           unitCode: S.optional(S.String),
           boolValue: S.optional(S.Boolean),
           maxValue: S.optional(S.Number),
@@ -890,7 +1047,7 @@ function __c1(j: number): any {
         identifier: "CloudExportAdditionalProperties",
       });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(CloudExportAdditionalProperties);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -901,9 +1058,9 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          period: S.optional(S.String),
+          period: S.optional(SubscriptionCostPeriodEnum),
           periodLength: S.optional(S.String),
-          amount: S.optional(__S(3)),
+          amount: S.optional(Price),
         }),
       ).annotate({ identifier: "SubscriptionCost" });
     case 4:
@@ -911,7 +1068,7 @@ function __c1(j: number): any {
         S.Struct({
           loyaltyProgramLabel: S.optional(S.String),
           region: S.optional(S.String),
-          price: S.optional(__S(3)),
+          price: S.optional(Price),
           handlingCutoffTimezone: S.optional(S.String),
           postalCode: S.optional(S.String),
           minTransitTime: S.optional(S.String),
@@ -927,7 +1084,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Shipping" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(Shipping);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -950,14 +1107,14 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           percentage: S.optional(S.Number),
-          type: S.optional(S.String),
-          amount: S.optional(__S(3)),
+          type: S.optional(ProductSustainabilityIncentiveTypeEnum),
+          amount: S.optional(Price),
         }),
       ).annotate({
         identifier: "ProductSustainabilityIncentive",
       });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(ProductSustainabilityIncentive);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -970,8 +1127,8 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          downpayment: S.optional(__S(3)),
-          amount: S.optional(__S(3)),
+          downpayment: S.optional(Price),
+          amount: S.optional(Price),
           months: S.optional(S.String),
           creditType: S.optional(S.String),
         }),
@@ -985,21 +1142,21 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "ProductDetail" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(ProductDetail);
     case 6:
       return S.suspend(() =>
         S.Struct({
           shippingLabel: S.optional(S.String),
-          memberPriceEffectiveDate: S.optional(__S(14)),
+          memberPriceEffectiveDate: S.optional(Interval),
           loyaltyPoints: S.optional(S.String),
           tierLabel: S.optional(S.String),
           programLabel: S.optional(S.String),
-          cashbackForFutureUse: S.optional(__S(3)),
-          price: S.optional(__S(3)),
+          cashbackForFutureUse: S.optional(Price),
+          price: S.optional(Price),
         }),
       ).annotate({ identifier: "LoyaltyProgram" });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(LoyaltyProgram);
   }
 }
 function __c3(j: number): any {
@@ -1024,7 +1181,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "Certification" });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(Certification);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1037,7 +1194,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "Tax" });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(Tax);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1048,12 +1205,12 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          priceThreshold: S.optional(__S(3)),
+          priceThreshold: S.optional(Price),
           country: S.optional(S.String),
         }),
       ).annotate({ identifier: "FreeShippingThreshold" });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(FreeShippingThreshold);
   }
 }
 function __c4(j: number): any {
@@ -1061,35 +1218,35 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          productWidth: S.optional(__S(5)),
+          productWidth: S.optional(ProductDimension),
           ageGroup: S.optional(S.String),
-          additionalImageLinks: S.optional(__S(6)),
-          cloudExportAdditionalProperties: S.optional(__S(9)),
-          shippingWeight: S.optional(__S(10)),
+          additionalImageLinks: S.optional(StringList),
+          cloudExportAdditionalProperties: S.optional(CloudExportAdditionalPropertiesList),
+          shippingWeight: S.optional(ShippingWeight),
           minEnergyEfficiencyClass: S.optional(S.String),
           brand: S.optional(S.String),
           expirationDate: S.optional(S.String),
           size: S.optional(S.String),
-          unitPricingMeasure: S.optional(__S(10)),
+          unitPricingMeasure: S.optional(UnitPricingMeasure),
           adsRedirect: S.optional(S.String),
-          subscriptionCost: S.optional(__S(11)),
-          shipping: S.optional(__S(13)),
-          excludedDestinations: S.optional(__S(6)),
-          autoPricingMinPrice: S.optional(__S(3)),
+          subscriptionCost: S.optional(SubscriptionCost),
+          shipping: S.optional(ShippingList),
+          excludedDestinations: S.optional(StringList),
+          autoPricingMinPrice: S.optional(Price),
           material: S.optional(S.String),
-          productHighlights: S.optional(__S(6)),
+          productHighlights: S.optional(StringList),
           sellOnGoogleQuantity: S.optional(S.String),
           canonicalLink: S.optional(S.String),
           color: S.optional(S.String),
-          productTypes: S.optional(__S(6)),
+          productTypes: S.optional(StringList),
           maxHandlingTime: S.optional(S.String),
-          gtins: S.optional(__S(6)),
+          gtins: S.optional(StringList),
           itemGroupId: S.optional(S.String),
           transitTimeLabel: S.optional(S.String),
-          salePriceEffectiveDate: S.optional(__S(14)),
-          unitPricingBaseMeasure: S.optional(__S(15)),
+          salePriceEffectiveDate: S.optional(Interval),
+          unitPricingBaseMeasure: S.optional(UnitPricingBaseMeasure),
           gender: S.optional(S.String),
-          maximumRetailPrice: S.optional(__S(3)),
+          maximumRetailPrice: S.optional(Price),
           mpn: S.optional(S.String),
           taxCategory: S.optional(S.String),
           disclosureDate: S.optional(S.String),
@@ -1097,101 +1254,101 @@ function __c4(j: number): any {
           multipack: S.optional(S.String),
           displayAdsLink: S.optional(S.String),
           customLabel2: S.optional(S.String),
-          salePrice: S.optional(__S(3)),
+          salePrice: S.optional(Price),
           virtualModelLink: S.optional(S.String),
           minHandlingTime: S.optional(S.String),
           customLabel3: S.optional(S.String),
           linkTemplate: S.optional(S.String),
-          sustainabilityIncentives: S.optional(__S(17)),
-          structuredDescription: S.optional(__S(18)),
+          sustainabilityIncentives: S.optional(ProductSustainabilityIncentiveList),
+          structuredDescription: S.optional(ProductStructuredDescription),
           mobileLinkTemplate: S.optional(S.String),
           pattern: S.optional(S.String),
-          installment: S.optional(__S(19)),
+          installment: S.optional(Installment),
           pause: S.optional(S.String),
           identifierExists: S.optional(S.Boolean),
-          productDetails: S.optional(__S(21)),
+          productDetails: S.optional(ProductDetailList),
           energyEfficiencyClass: S.optional(S.String),
-          productWeight: S.optional(__S(5)),
+          productWeight: S.optional(ProductWeight),
           title: S.optional(S.String),
           adult: S.optional(S.Boolean),
           displayAdsId: S.optional(S.String),
-          promotionIds: S.optional(__S(6)),
-          loyaltyPrograms: S.optional(__S(23)),
+          promotionIds: S.optional(StringList),
+          loyaltyPrograms: S.optional(LoyaltyProgramList),
           customLabel4: S.optional(S.String),
-          loyaltyPoints: S.optional(__S(24)),
+          loyaltyPoints: S.optional(LoyaltyPoints),
           description: S.optional(S.String),
           isBundle: S.optional(S.Boolean),
-          displayAdsSimilarIds: S.optional(__S(6)),
-          sizeTypes: S.optional(__S(6)),
-          shippingWidth: S.optional(__S(5)),
+          displayAdsSimilarIds: S.optional(StringList),
+          sizeTypes: S.optional(StringList),
+          shippingWidth: S.optional(ShippingDimension),
           sizeSystem: S.optional(S.String),
           maxEnergyEfficiencyClass: S.optional(S.String),
           mobileLink: S.optional(S.String),
-          gtin: S.optional(__S(6)),
-          certifications: S.optional(__S(26)),
+          gtin: S.optional(StringList),
+          certifications: S.optional(CertificationList),
           condition: S.optional(S.String),
-          shippingHeight: S.optional(__S(5)),
+          shippingHeight: S.optional(ShippingDimension),
           shippingLabel: S.optional(S.String),
           googleProductCategory: S.optional(S.String),
-          lifestyleImageLinks: S.optional(__S(6)),
+          lifestyleImageLinks: S.optional(StringList),
           link: S.optional(S.String),
           availabilityDate: S.optional(S.String),
           customLabel0: S.optional(S.String),
-          price: S.optional(__S(3)),
-          taxes: S.optional(__S(28)),
-          structuredTitle: S.optional(__S(29)),
+          price: S.optional(Price),
+          taxes: S.optional(TaxList),
+          structuredTitle: S.optional(ProductStructuredTitle),
           availability: S.optional(S.String),
           externalSellerId: S.optional(S.String),
-          shoppingAdsExcludedCountries: S.optional(__S(6)),
-          productLength: S.optional(__S(5)),
+          shoppingAdsExcludedCountries: S.optional(StringList),
+          productLength: S.optional(ProductDimension),
           displayAdsTitle: S.optional(S.String),
-          freeShippingThreshold: S.optional(__S(31)),
-          costOfGoodsSold: S.optional(__S(3)),
+          freeShippingThreshold: S.optional(FreeShippingThresholdList),
+          costOfGoodsSold: S.optional(Price),
           pickupSla: S.optional(S.String),
           pickupMethod: S.optional(S.String),
           displayAdsValue: S.optional(S.Number),
           imageLink: S.optional(S.String),
-          shippingLength: S.optional(__S(5)),
-          productHeight: S.optional(__S(5)),
-          includedDestinations: S.optional(__S(6)),
+          shippingLength: S.optional(ShippingDimension),
+          productHeight: S.optional(ProductDimension),
+          includedDestinations: S.optional(StringList),
           customLabel1: S.optional(S.String),
-          adsLabels: S.optional(__S(6)),
+          adsLabels: S.optional(StringList),
         }),
       ).annotate({ identifier: "Attributes" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          severity: S.optional(S.String),
-          applicableCountries: S.optional(__S(6)),
+          severity: S.optional(ItemLevelIssueSeverityEnum),
+          applicableCountries: S.optional(StringList),
           detail: S.optional(S.String),
           documentation: S.optional(S.String),
-          reportingContext: S.optional(S.String),
+          reportingContext: S.optional(ItemLevelIssueReportingContextEnum),
           resolution: S.optional(S.String),
           attribute: S.optional(S.String),
           code: S.optional(S.String),
         }),
       ).annotate({ identifier: "ItemLevelIssue" });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(ItemLevelIssue);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          reportingContext: S.optional(S.String),
-          disapprovedCountries: S.optional(__S(6)),
-          approvedCountries: S.optional(__S(6)),
-          pendingCountries: S.optional(__S(6)),
+          reportingContext: S.optional(DestinationStatusReportingContextEnum),
+          disapprovedCountries: S.optional(StringList),
+          approvedCountries: S.optional(StringList),
+          pendingCountries: S.optional(StringList),
         }),
       ).annotate({ identifier: "DestinationStatus" });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(DestinationStatus);
     case 5:
       return S.suspend(() =>
         S.Struct({
           creationDate: S.optional(S.String),
-          itemLevelIssues: S.optional(__S(34)),
+          itemLevelIssues: S.optional(ItemLevelIssueList),
           lastUpdateDate: S.optional(S.String),
-          destinationStatuses: S.optional(__S(36)),
+          destinationStatuses: S.optional(DestinationStatusList),
           googleExpirationDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductStatus" });
@@ -1199,12 +1356,12 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          groupValues: S.optional(S.suspend(() => __S(39))),
+          groupValues: S.optional(S.suspend(() => CustomAttributeList)),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomAttribute" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(CustomAttribute);
   }
 }
 function __c5(j: number): any {
@@ -1212,13 +1369,13 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          automatedDiscounts: S.optional(__S(4)),
-          attributes: S.optional(__S(32)),
-          channel: S.optional(S.String),
-          productStatus: S.optional(__S(37)),
+          automatedDiscounts: S.optional(AutomatedDiscounts),
+          attributes: S.optional(Attributes),
+          channel: S.optional(ProductChannelEnum),
+          productStatus: S.optional(ProductStatus),
           feedLabel: S.optional(S.String),
           base64EncodedName: S.optional(S.String),
-          customAttributes: S.optional(__S(39)),
+          customAttributes: S.optional(CustomAttributeList),
           dataSource: S.optional(S.String),
           versionNumber: S.optional(S.String),
           name: S.optional(S.String),
@@ -1230,16 +1387,16 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(__S(32)),
+          attributes: S.optional(Attributes),
           feedLabel: S.optional(S.String),
-          customAttributes: S.optional(__S(39)),
+          customAttributes: S.optional(CustomAttributeList),
           base64EncodedName: S.optional(S.String),
           offerId: S.optional(S.String),
           product: S.optional(S.String),
           base64EncodedProduct: S.optional(S.String),
           contentLanguage: S.optional(S.String),
           versionNumber: S.optional(S.String),
-          channel: S.optional(S.String),
+          channel: S.optional(ProductInputChannelEnum),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductInput" });
@@ -1248,7 +1405,7 @@ function __c5(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           dataSource: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(41).pipe(T.HttpBody())),
+          body: S.optional(ProductInput.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1276,12 +1433,12 @@ function __c5(j: number): any {
         identifier: "ListAccountsProductsRequest",
       });
     case 4:
-      return S.Array(__S(40));
+      return S.Array(Product);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          products: S.optional(__S(44)),
+          products: S.optional(ProductList),
         }),
       ).annotate({ identifier: "ListProductsResponse" });
     case 6:
@@ -1290,7 +1447,7 @@ function __c5(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           dataSource: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(41).pipe(T.HttpBody())),
+          body: S.optional(ProductInput.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1301,26 +1458,5 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PatchAccountsProductInputsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

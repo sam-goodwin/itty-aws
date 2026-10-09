@@ -6,12 +6,15 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -23,10 +26,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -40,16 +49,33 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ListOperationsResponse>;
+
 /** The list of operation ids to cancel operations on */
 export type ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList = Array<string>;
+const ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList>;
+
 export interface ScheduledActionsVirtualMachinesCancelOperationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -60,10 +86,19 @@ export interface ScheduledActionsVirtualMachinesCancelOperationsRequest {
   /** CorrelationId item */
   correlationid: string;
 }
+const ScheduledActionsVirtualMachinesCancelOperationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ScheduledActionsVirtualMachinesCancelOperationsRequest>;
+
 /** Type of operation performed on the resources */
 export type ResourceOperationDetailsOpType = "Unknown" | "Start" | "Deallocate" | "Hibernate";
+const ResourceOperationDetailsOpType = S.String;
+
 /** Type of deadline of the operation */
 export type ResourceOperationDetailsDeadlineType = "Unknown" | "InitiateAt" | "CompleteBy";
+const ResourceOperationDetailsDeadlineType = S.String;
+
 /** Current state of the operation */
 export type ResourceOperationDetailsState =
   | "Unknown"
@@ -75,6 +110,8 @@ export type ResourceOperationDetailsState =
   | "Failed"
   | "Cancelled"
   | "Blocked";
+const ResourceOperationDetailsState = S.String;
+
 /** These describe errors that occur at the resource level */
 export interface ResourceOperationError {
   /** Code for the error eg 404, 500 */
@@ -82,6 +119,11 @@ export interface ResourceOperationError {
   /** Detailed message about the error */
   errorDetails: string;
 }
+const ResourceOperationError = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ResourceOperationError>;
+
 /** The retry policy for the user request */
 export interface RetryPolicy {
   /** Retry count for user request */
@@ -89,6 +131,8 @@ export interface RetryPolicy {
   /** Retry window in minutes for user request */
   retryWindowInMinutes?: number;
 }
+const RetryPolicy = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<RetryPolicy>;
+
 /** The details of a response from an operation on a resource */
 export interface ResourceOperationDetails {
   /** Operation identifier for the unique operation */
@@ -116,6 +160,11 @@ export interface ResourceOperationDetails {
   /** Retry policy the user can pass */
   retryPolicy?: RetryPolicy;
 }
+const ResourceOperationDetails = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ResourceOperationDetails>;
+
 /** High level response from an operation on a resource */
 export interface ResourceOperation {
   /** Unique identifier for the resource involved in the operation, eg ArmId */
@@ -127,21 +176,46 @@ export interface ResourceOperation {
   /** Details of the operation performed on a resource */
   operation?: ResourceOperationDetails;
 }
+const ResourceOperation = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ResourceOperation>;
+
 /** An array of resource operations that were successfully cancelled */
 export type CancelOperationsResponseResultsList = Array<ResourceOperation>;
+const CancelOperationsResponseResultsList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CancelOperationsResponseResultsList>;
+
 /** This is the response from a cancel operations request */
 export interface CancelOperationsResponse {
   /** An array of resource operations that were successfully cancelled */
   results: CancelOperationsResponseResultsList;
 }
+const CancelOperationsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CancelOperationsResponse>;
+
 /** Virtual machine profile object that contains VM properties that are common across all VMs in this batch (if you want to create 100 VMs in this request, and they all have same vmSize, then include vmSize in baseProfile) */
 export type ResourceProvisionPayloadBaseProfileMap = { [key: string]: unknown | undefined };
+const ResourceProvisionPayloadBaseProfileMap = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ResourceProvisionPayloadBaseProfileMap>;
+
 export type ResourceProvisionPayloadResourceOverridesItemMap = {
   [key: string]: unknown | undefined;
 };
+const ResourceProvisionPayloadResourceOverridesItemMap =
+  ResourceProvisionPayloadBaseProfileMap as any as S.Schema<ResourceProvisionPayloadResourceOverridesItemMap>;
+
 /** Virtual machine profile array that contains VM properties that needs to be overridden for each VM in the batch (if you want to create 100 VMs, they all need a distinct computerName property, you pass computerNames for each VM in batch in this array), service will merge baseProfile with VM specific overrides and create a merged VMProfile. */
 export type ResourceProvisionPayloadResourceOverridesList =
   Array<ResourceProvisionPayloadResourceOverridesItemMap>;
+const ResourceProvisionPayloadResourceOverridesList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ResourceProvisionPayloadResourceOverridesList>;
+
 /** Resource creation data model */
 export interface ResourceProvisionPayload {
   /** Virtual machine profile object that contains VM properties that are common across all VMs in this batch (if you want to create 100 VMs in this request, and they all have same vmSize, then include vmSize in baseProfile) */
@@ -153,8 +227,15 @@ export interface ResourceProvisionPayload {
   /** if resourceOverrides doesn't contain "name", service will create name based of prefix and ResourceCount e.g. resourceprefix-0,resourceprefix-1.. */
   resourcePrefix?: string;
 }
+const ResourceProvisionPayload = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ResourceProvisionPayload>;
+
 /** The preferences customers can select to optimize their requests to ScheduledActions */
 export type OptimizationPreference = "Cost" | "Availability" | "CostAvailabilityBalanced";
+const OptimizationPreference = S.String;
+
 /** Extra details needed to run the user's request */
 export interface ExecutionParameters {
   /** Details that could optimize the user's request */
@@ -162,6 +243,8 @@ export interface ExecutionParameters {
   /** Retry policy the user can pass */
   retryPolicy?: RetryPolicy;
 }
+const ExecutionParameters = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ExecutionParameters>;
+
 export interface ScheduledActionsVirtualMachinesExecuteCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -174,8 +257,16 @@ export interface ScheduledActionsVirtualMachinesExecuteCreateRequest {
   /** CorrelationId item */
   correlationid?: string;
 }
+const ScheduledActionsVirtualMachinesExecuteCreateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteCreateRequest>;
+
 /** The results from the start request if no errors exist */
 export type CreateResourceOperationResponseResultsList = Array<ResourceOperation>;
+const CreateResourceOperationResponseResultsList =
+  CancelOperationsResponseResultsList as any as S.Schema<CreateResourceOperationResponseResultsList>;
+
 /** The response from a create request */
 export interface CreateResourceOperationResponse {
   /** The description of the operation response */
@@ -187,13 +278,22 @@ export interface CreateResourceOperationResponse {
   /** The results from the start request if no errors exist */
   results?: CreateResourceOperationResponseResultsList;
 }
+const CreateResourceOperationResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateResourceOperationResponse>;
+
 /** The resource ids used for the request */
 export type ResourcesIdsList = Array<string>;
+const ResourcesIdsList = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ResourcesIdsList>;
+
 /** The resources needed for the user request */
 export interface Resources {
   /** The resource ids used for the request */
   ids: ResourcesIdsList;
 }
+const Resources = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Resources>;
+
 export interface ScheduledActionsVirtualMachinesExecuteDeallocateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -206,6 +306,11 @@ export interface ScheduledActionsVirtualMachinesExecuteDeallocateRequest {
   /** CorrelationId item */
   correlationid: string;
 }
+const ScheduledActionsVirtualMachinesExecuteDeallocateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteDeallocateRequest>;
+
 /** The results from the deallocate request if no errors exist */
 export type DeallocateResourceOperationResponseResultsList = Array<ResourceOperation>;
 /** The response from a deallocate request */
@@ -219,6 +324,9 @@ export interface DeallocateResourceOperationResponse {
   /** The results from the deallocate request if no errors exist */
   results?: DeallocateResourceOperationResponseResultsList;
 }
+const DeallocateResourceOperationResponse =
+  CreateResourceOperationResponse as any as S.Schema<DeallocateResourceOperationResponse>;
+
 export interface ScheduledActionsVirtualMachinesExecuteDeleteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -233,6 +341,11 @@ export interface ScheduledActionsVirtualMachinesExecuteDeleteRequest {
   /** Forced delete resource item */
   forceDeletion?: boolean;
 }
+const ScheduledActionsVirtualMachinesExecuteDeleteRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteDeleteRequest>;
+
 /** The results from the start request if no errors exist */
 export type DeleteResourceOperationResponseResultsList = Array<ResourceOperation>;
 /** The response from a delete request */
@@ -246,6 +359,9 @@ export interface DeleteResourceOperationResponse {
   /** The results from the start request if no errors exist */
   results?: DeleteResourceOperationResponseResultsList;
 }
+const DeleteResourceOperationResponse =
+  CreateResourceOperationResponse as any as S.Schema<DeleteResourceOperationResponse>;
+
 export interface ScheduledActionsVirtualMachinesExecuteHibernateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -258,6 +374,11 @@ export interface ScheduledActionsVirtualMachinesExecuteHibernateRequest {
   /** CorrelationId item */
   correlationid: string;
 }
+const ScheduledActionsVirtualMachinesExecuteHibernateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteHibernateRequest>;
+
 /** The results from the Hibernate request if no errors exist */
 export type HibernateResourceOperationResponseResultsList = Array<ResourceOperation>;
 /** The response from a Hibernate request */
@@ -271,6 +392,9 @@ export interface HibernateResourceOperationResponse {
   /** The results from the Hibernate request if no errors exist */
   results?: HibernateResourceOperationResponseResultsList;
 }
+const HibernateResourceOperationResponse =
+  CreateResourceOperationResponse as any as S.Schema<HibernateResourceOperationResponse>;
+
 export interface ScheduledActionsVirtualMachinesExecuteStartRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -283,6 +407,11 @@ export interface ScheduledActionsVirtualMachinesExecuteStartRequest {
   /** CorrelationId item */
   correlationid: string;
 }
+const ScheduledActionsVirtualMachinesExecuteStartRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteStartRequest>;
+
 /** The results from the start request if no errors exist */
 export type StartResourceOperationResponseResultsList = Array<ResourceOperation>;
 /** The response from a start request */
@@ -296,9 +425,15 @@ export interface StartResourceOperationResponse {
   /** The results from the start request if no errors exist */
   results?: StartResourceOperationResponseResultsList;
 }
+const StartResourceOperationResponse =
+  CreateResourceOperationResponse as any as S.Schema<StartResourceOperationResponse>;
+
 /** The list of operation ids to query errors of */
 export type ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList =
   Array<string>;
+const ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList =
+  ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList>;
+
 export interface ScheduledActionsVirtualMachinesGetOperationErrorsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -307,6 +442,11 @@ export interface ScheduledActionsVirtualMachinesGetOperationErrorsRequest {
   /** The list of operation ids to query errors of */
   operationIds: ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList;
 }
+const ScheduledActionsVirtualMachinesGetOperationErrorsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationErrorsRequest>;
+
 /** This defines a list of operation errors associated with a unique operationId */
 export interface OperationErrorDetails {
   /** The error code of the operation */
@@ -322,8 +462,18 @@ export interface OperationErrorDetails {
   /** The compute operationid of the Start/Deallocate/Hibernate request */
   crpOperationId?: string;
 }
+const OperationErrorDetails = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<OperationErrorDetails>;
+
 /** A list of errors associated with the operationid */
 export type OperationErrorsResultOperationErrorsList = Array<OperationErrorDetails>;
+const OperationErrorsResultOperationErrorsList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<OperationErrorsResultOperationErrorsList>;
+
 /** This is the first level of operation errors from the request when clients get errors per vm operation */
 export interface OperationErrorsResult {
   /** The operationId identifying a vm operation */
@@ -341,16 +491,34 @@ export interface OperationErrorsResult {
   /** Request level error details */
   requestErrorDetails?: string;
 }
+const OperationErrorsResult = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<OperationErrorsResult>;
+
 /** An array of operationids and their corresponding errors if any */
 export type GetOperationErrorsResponseResultsList = Array<OperationErrorsResult>;
+const GetOperationErrorsResponseResultsList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetOperationErrorsResponseResultsList>;
+
 /** This is the response from a get operations errors request */
 export interface GetOperationErrorsResponse {
   /** An array of operationids and their corresponding errors if any */
   results: GetOperationErrorsResponseResultsList;
 }
+const GetOperationErrorsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetOperationErrorsResponse>;
+
 /** The list of operation ids to get the status of */
 export type ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList =
   Array<string>;
+const ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList =
+  ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList>;
+
 export interface ScheduledActionsVirtualMachinesGetOperationStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -361,15 +529,30 @@ export interface ScheduledActionsVirtualMachinesGetOperationStatusRequest {
   /** CorrelationId item */
   correlationid: string;
 }
+const ScheduledActionsVirtualMachinesGetOperationStatusRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationStatusRequest>;
+
 /** An array of resource operations based on their operation ids */
 export type GetOperationStatusResponseResultsList = Array<ResourceOperation>;
+const GetOperationStatusResponseResultsList =
+  CancelOperationsResponseResultsList as any as S.Schema<GetOperationStatusResponseResultsList>;
+
 /** This is the response from a get operations status request */
 export interface GetOperationStatusResponse {
   /** An array of resource operations based on their operation ids */
   results: GetOperationStatusResponseResultsList;
 }
+const GetOperationStatusResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetOperationStatusResponse>;
+
 /** The deadlinetype of the operation, this can either be InitiateAt or CompleteBy */
 export type ScheduleDeadlineType = "Unknown" | "InitiateAt" | "CompleteBy";
+const ScheduleDeadlineType = S.String;
+
 /** The schedule details for the user request */
 export interface Schedule {
   /** The deadline for the operation */
@@ -383,6 +566,8 @@ export interface Schedule {
   /** The deadlinetype of the operation, this can either be InitiateAt or CompleteBy */
   deadlineType: ScheduleDeadlineType | (string & {});
 }
+const Schedule = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Schedule>;
+
 export interface ScheduledActionsVirtualMachinesSubmitDeallocateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -397,6 +582,11 @@ export interface ScheduledActionsVirtualMachinesSubmitDeallocateRequest {
   /** CorrelationId item */
   correlationid: string;
 }
+const ScheduledActionsVirtualMachinesSubmitDeallocateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ScheduledActionsVirtualMachinesSubmitDeallocateRequest>;
+
 export interface ScheduledActionsVirtualMachinesSubmitHibernateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -411,6 +601,11 @@ export interface ScheduledActionsVirtualMachinesSubmitHibernateRequest {
   /** CorrelationId item */
   correlationid: string;
 }
+const ScheduledActionsVirtualMachinesSubmitHibernateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ScheduledActionsVirtualMachinesSubmitHibernateRequest>;
+
 export interface ScheduledActionsVirtualMachinesSubmitStartRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -425,6 +620,11 @@ export interface ScheduledActionsVirtualMachinesSubmitStartRequest {
   /** CorrelationId item */
   correlationid: string;
 }
+const ScheduledActionsVirtualMachinesSubmitStartRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ScheduledActionsVirtualMachinesSubmitStartRequest>;
+
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
 export const ListOperations: API.OperationMethod<
@@ -433,8 +633,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(4) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -448,8 +648,8 @@ export const ScheduledActionsVirtualMachinesCancelOperations: API.OperationMetho
   ScheduledActionsVirtualMachinesCancelOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<ScheduledActionsVirtualMachinesCancelOperationsRequest>,
-  output: __S(12) as any as S.Schema<CancelOperationsResponse>,
+  input: ScheduledActionsVirtualMachinesCancelOperationsRequest,
+  output: CancelOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -463,8 +663,8 @@ export const ScheduledActionsVirtualMachinesExecuteCreate: API.OperationMethod<
   ScheduledActionsVirtualMachinesExecuteCreateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteCreateRequest>,
-  output: __S(18) as any as S.Schema<CreateResourceOperationResponse>,
+  input: ScheduledActionsVirtualMachinesExecuteCreateRequest,
+  output: CreateResourceOperationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -478,8 +678,8 @@ export const ScheduledActionsVirtualMachinesExecuteDeallocate: API.OperationMeth
   ScheduledActionsVirtualMachinesExecuteDeallocateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteDeallocateRequest>,
-  output: __S(18) as any as S.Schema<DeallocateResourceOperationResponse>,
+  input: ScheduledActionsVirtualMachinesExecuteDeallocateRequest,
+  output: DeallocateResourceOperationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -493,8 +693,8 @@ export const ScheduledActionsVirtualMachinesExecuteDelete: API.OperationMethod<
   ScheduledActionsVirtualMachinesExecuteDeleteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteDeleteRequest>,
-  output: __S(18) as any as S.Schema<DeleteResourceOperationResponse>,
+  input: ScheduledActionsVirtualMachinesExecuteDeleteRequest,
+  output: DeleteResourceOperationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -508,8 +708,8 @@ export const ScheduledActionsVirtualMachinesExecuteHibernate: API.OperationMetho
   ScheduledActionsVirtualMachinesExecuteHibernateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteHibernateRequest>,
-  output: __S(18) as any as S.Schema<HibernateResourceOperationResponse>,
+  input: ScheduledActionsVirtualMachinesExecuteHibernateRequest,
+  output: HibernateResourceOperationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -523,8 +723,8 @@ export const ScheduledActionsVirtualMachinesExecuteStart: API.OperationMethod<
   ScheduledActionsVirtualMachinesExecuteStartError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteStartRequest>,
-  output: __S(18) as any as S.Schema<StartResourceOperationResponse>,
+  input: ScheduledActionsVirtualMachinesExecuteStartRequest,
+  output: StartResourceOperationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -538,8 +738,8 @@ export const ScheduledActionsVirtualMachinesGetOperationErrors: API.OperationMet
   ScheduledActionsVirtualMachinesGetOperationErrorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationErrorsRequest>,
-  output: __S(30) as any as S.Schema<GetOperationErrorsResponse>,
+  input: ScheduledActionsVirtualMachinesGetOperationErrorsRequest,
+  output: GetOperationErrorsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -553,8 +753,8 @@ export const ScheduledActionsVirtualMachinesGetOperationStatus: API.OperationMet
   ScheduledActionsVirtualMachinesGetOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationStatusRequest>,
-  output: __S(32) as any as S.Schema<GetOperationStatusResponse>,
+  input: ScheduledActionsVirtualMachinesGetOperationStatusRequest,
+  output: GetOperationStatusResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -568,8 +768,8 @@ export const ScheduledActionsVirtualMachinesSubmitDeallocate: API.OperationMetho
   ScheduledActionsVirtualMachinesSubmitDeallocateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<ScheduledActionsVirtualMachinesSubmitDeallocateRequest>,
-  output: __S(18) as any as S.Schema<DeallocateResourceOperationResponse>,
+  input: ScheduledActionsVirtualMachinesSubmitDeallocateRequest,
+  output: DeallocateResourceOperationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -583,8 +783,8 @@ export const ScheduledActionsVirtualMachinesSubmitHibernate: API.OperationMethod
   ScheduledActionsVirtualMachinesSubmitHibernateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<ScheduledActionsVirtualMachinesSubmitHibernateRequest>,
-  output: __S(18) as any as S.Schema<HibernateResourceOperationResponse>,
+  input: ScheduledActionsVirtualMachinesSubmitHibernateRequest,
+  output: HibernateResourceOperationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -598,8 +798,8 @@ export const ScheduledActionsVirtualMachinesSubmitStart: API.OperationMethod<
   ScheduledActionsVirtualMachinesSubmitStartError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<ScheduledActionsVirtualMachinesSubmitStartRequest>,
-  output: __S(18) as any as S.Schema<StartResourceOperationResponse>,
+  input: ScheduledActionsVirtualMachinesSubmitStartRequest,
+  output: StartResourceOperationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -633,17 +833,17 @@ function __c0(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(1)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(Operation);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -654,7 +854,7 @@ function __c0(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           locationparameter: S.String.pipe(T.Label()),
-          operationIds: __S(5),
+          operationIds: ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList,
           correlationid: S.String,
         }).pipe(
           T.Http({
@@ -690,16 +890,16 @@ function __c1(j: number): any {
         S.Struct({
           operationId: S.String,
           resourceId: S.optional(S.String),
-          opType: S.optional(S.String),
+          opType: S.optional(ResourceOperationDetailsOpType),
           subscriptionId: S.optional(S.String),
           deadline: S.optional(S.String),
-          deadlineType: S.optional(S.String),
-          state: S.optional(S.String),
+          deadlineType: S.optional(ResourceOperationDetailsDeadlineType),
+          state: S.optional(ResourceOperationDetailsState),
           timezone: S.optional(S.String),
           timeZone: S.optional(S.String),
-          resourceOperationError: S.optional(__S(7)),
+          resourceOperationError: S.optional(ResourceOperationError),
           completedAt: S.optional(S.String),
-          retryPolicy: S.optional(__S(8)),
+          retryPolicy: S.optional(RetryPolicy),
         }),
       ).annotate({ identifier: "ResourceOperationDetails" });
     case 2:
@@ -708,26 +908,26 @@ function __c1(j: number): any {
           resourceId: S.optional(S.String),
           errorCode: S.optional(S.String),
           errorDetails: S.optional(S.String),
-          operation: S.optional(__S(9)),
+          operation: S.optional(ResourceOperationDetails),
         }),
       ).annotate({ identifier: "ResourceOperation" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(ResourceOperation);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          results: __S(11),
+          results: CancelOperationsResponseResultsList,
         }),
       ).annotate({ identifier: "CancelOperationsResponse" });
     case 5:
       return S.Record(S.String, S.Unknown);
     case 6:
-      return S.Array(__S(13));
+      return S.Array(ResourceProvisionPayloadResourceOverridesItemMap);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          baseProfile: S.optional(__S(13)),
-          resourceOverrides: S.optional(__S(14)),
+          baseProfile: S.optional(ResourceProvisionPayloadBaseProfileMap),
+          resourceOverrides: S.optional(ResourceProvisionPayloadResourceOverridesList),
           resourceCount: S.Number,
           resourcePrefix: S.optional(S.String),
         }),
@@ -739,8 +939,8 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          optimizationPreference: S.optional(S.String),
-          retryPolicy: S.optional(__S(8)),
+          optimizationPreference: S.optional(OptimizationPreference),
+          retryPolicy: S.optional(RetryPolicy),
         }),
       ).annotate({ identifier: "ExecutionParameters" });
     case 1:
@@ -748,8 +948,8 @@ function __c2(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           locationparameter: S.String.pipe(T.Label()),
-          resourceConfigParameters: __S(15),
-          executionParameters: __S(16),
+          resourceConfigParameters: ResourceProvisionPayload,
+          executionParameters: ExecutionParameters,
           correlationid: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -768,7 +968,7 @@ function __c2(j: number): any {
           description: S.String,
           type: S.String,
           location: S.String,
-          results: S.optional(__S(11)),
+          results: S.optional(CreateResourceOperationResponseResultsList),
         }),
       ).annotate({
         identifier: "CreateResourceOperationResponse",
@@ -778,7 +978,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ids: __S(19),
+          ids: ResourcesIdsList,
         }),
       ).annotate({ identifier: "Resources" });
     case 5:
@@ -786,8 +986,8 @@ function __c2(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           locationparameter: S.String.pipe(T.Label()),
-          executionParameters: __S(16),
-          resources: __S(20),
+          executionParameters: ExecutionParameters,
+          resources: Resources,
           correlationid: S.String,
         }).pipe(
           T.Http({
@@ -805,8 +1005,8 @@ function __c2(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           locationparameter: S.String.pipe(T.Label()),
-          executionParameters: __S(16),
-          resources: __S(20),
+          executionParameters: ExecutionParameters,
+          resources: Resources,
           correlationid: S.optional(S.String),
           forceDeletion: S.optional(S.Boolean),
         }).pipe(
@@ -825,8 +1025,8 @@ function __c2(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           locationparameter: S.String.pipe(T.Label()),
-          executionParameters: __S(16),
-          resources: __S(20),
+          executionParameters: ExecutionParameters,
+          resources: Resources,
           correlationid: S.String,
         }).pipe(
           T.Http({
@@ -848,8 +1048,8 @@ function __c3(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           locationparameter: S.String.pipe(T.Label()),
-          executionParameters: __S(16),
-          resources: __S(20),
+          executionParameters: ExecutionParameters,
+          resources: Resources,
           correlationid: S.String,
         }).pipe(
           T.Http({
@@ -867,7 +1067,7 @@ function __c3(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           locationparameter: S.String.pipe(T.Label()),
-          operationIds: __S(5),
+          operationIds: ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -891,7 +1091,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "OperationErrorDetails" });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(OperationErrorDetails);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -899,17 +1099,17 @@ function __c3(j: number): any {
           creationTime: S.optional(S.String),
           activationTime: S.optional(S.String),
           completedAt: S.optional(S.String),
-          operationErrors: S.optional(__S(27)),
+          operationErrors: S.optional(OperationErrorsResultOperationErrorsList),
           requestErrorCode: S.optional(S.String),
           requestErrorDetails: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationErrorsResult" });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(OperationErrorsResult);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          results: __S(29),
+          results: GetOperationErrorsResponseResultsList,
         }),
       ).annotate({
         identifier: "GetOperationErrorsResponse",
@@ -919,7 +1119,7 @@ function __c3(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           locationparameter: S.String.pipe(T.Label()),
-          operationIds: __S(5),
+          operationIds: ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList,
           correlationid: S.String,
         }).pipe(
           T.Http({
@@ -939,7 +1139,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          results: __S(11),
+          results: GetOperationStatusResponseResultsList,
         }),
       ).annotate({
         identifier: "GetOperationStatusResponse",
@@ -951,7 +1151,7 @@ function __c4(j: number): any {
           deadLine: S.optional(S.String),
           timezone: S.optional(S.String),
           timeZone: S.optional(S.String),
-          deadlineType: S.String,
+          deadlineType: ScheduleDeadlineType,
         }),
       ).annotate({ identifier: "Schedule" });
     case 2:
@@ -959,9 +1159,9 @@ function __c4(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           locationparameter: S.String.pipe(T.Label()),
-          schedule: __S(33),
-          executionParameters: __S(16),
-          resources: __S(20),
+          schedule: Schedule,
+          executionParameters: ExecutionParameters,
+          resources: Resources,
           correlationid: S.String,
         }).pipe(
           T.Http({
@@ -979,9 +1179,9 @@ function __c4(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           locationparameter: S.String.pipe(T.Label()),
-          schedule: __S(33),
-          executionParameters: __S(16),
-          resources: __S(20),
+          schedule: Schedule,
+          executionParameters: ExecutionParameters,
+          resources: Resources,
           correlationid: S.String,
         }).pipe(
           T.Http({
@@ -999,9 +1199,9 @@ function __c4(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           locationparameter: S.String.pipe(T.Label()),
-          schedule: __S(33),
-          executionParameters: __S(16),
-          resources: __S(20),
+          schedule: Schedule,
+          executionParameters: ExecutionParameters,
+          resources: Resources,
           correlationid: S.String,
         }).pipe(
           T.Http({
@@ -1014,24 +1214,5 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ScheduledActionsVirtualMachinesSubmitStartRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

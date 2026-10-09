@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -40,6 +38,8 @@ export class UnprocessableEntity
 
 /** The role that this user should have in the team. */
 export type AddOrUpdateMembershipForUserInOrgRequestRole = "member" | "maintainer";
+const AddOrUpdateMembershipForUserInOrgRequestRole = S.String;
+
 export interface AddOrUpdateMembershipForUserInOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -50,10 +50,19 @@ export interface AddOrUpdateMembershipForUserInOrgRequest {
   /** The role that this user should have in the team. */
   role?: AddOrUpdateMembershipForUserInOrgRequestRole | (string & {});
 }
+const AddOrUpdateMembershipForUserInOrgRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddOrUpdateMembershipForUserInOrgRequest>;
+
 /** The role of the user in the team. */
 export type TeamMembershipRole = "member" | "maintainer";
+const TeamMembershipRole = S.String;
+
 /** The state of the user's membership in the team. */
 export type TeamMembershipState = "active" | "pending";
+const TeamMembershipState = S.String;
+
 /** Team Membership */
 export interface TeamMembership {
   url: string;
@@ -62,6 +71,8 @@ export interface TeamMembership {
   /** The state of the user's membership in the team. */
   state: TeamMembershipState;
 }
+const TeamMembership = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<TeamMembership>;
+
 export interface AddOrUpdateRepoPermissionsInOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -74,7 +85,17 @@ export interface AddOrUpdateRepoPermissionsInOrgRequest {
   /** The permission to grant the team on this repository. We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository. */
   permission?: string;
 }
+const AddOrUpdateRepoPermissionsInOrgRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AddOrUpdateRepoPermissionsInOrgRequest>;
+
 export interface AddOrUpdateRepoPermissionsInOrgResponse {}
+const AddOrUpdateRepoPermissionsInOrgResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AddOrUpdateRepoPermissionsInOrgResponse>;
+
 export interface CheckPermissionsForRepoInOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -85,6 +106,11 @@ export interface CheckPermissionsForRepoInOrgRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const CheckPermissionsForRepoInOrgRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CheckPermissionsForRepoInOrgRequest>;
+
 /** License Simple */
 export interface NullableLicenseSimple {
   key: string;
@@ -94,6 +120,11 @@ export interface NullableLicenseSimple {
   node_id: string;
   html_url?: string;
 }
+const NullableLicenseSimple = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<NullableLicenseSimple>;
+
 export interface TeamRepositoryPermissions {
   admin: boolean;
   pull: boolean;
@@ -101,6 +132,11 @@ export interface TeamRepositoryPermissions {
   push: boolean;
   maintain?: boolean;
 }
+const TeamRepositoryPermissions = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<TeamRepositoryPermissions>;
+
 /** A GitHub user. */
 export interface NullableSimpleUser {
   name?: string | null;
@@ -126,7 +162,14 @@ export interface NullableSimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
+const NullableSimpleUser = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<NullableSimpleUser>;
+
 export type TeamRepositoryTopicsList = Array<string>;
+const TeamRepositoryTopicsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<TeamRepositoryTopicsList>;
+
 /** A team's access to a repository. */
 export interface TeamRepository {
   /** Unique identifier of the repository */
@@ -238,16 +281,30 @@ export interface TeamRepository {
   watchers: number;
   master_branch?: string;
 }
+const TeamRepository = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<TeamRepository>;
+
 /** List GitHub usernames for organization members who will become team maintainers. */
 export type CreateRequestMaintainersList = Array<string>;
+const CreateRequestMaintainersList =
+  TeamRepositoryTopicsList as any as S.Schema<CreateRequestMaintainersList>;
+
 /** The full name (e.g., "organization-name/repository-name") of repositories to add the team to. */
 export type CreateRequestRepoNamesList = Array<string>;
+const CreateRequestRepoNamesList =
+  TeamRepositoryTopicsList as any as S.Schema<CreateRequestRepoNamesList>;
+
 /** The level of privacy this team should have. The options are: **For a non-nested team:** * `secret` - only visible to organization owners and members of this team. * `closed` - visible to all members of this organization. Default: `secret` **For a parent or child team:** * `closed` - visible to all members of this organization. Default for child team: `closed` */
 export type CreateRequestPrivacy = "secret" | "closed";
+const CreateRequestPrivacy = S.String;
+
 /** The notification setting the team has chosen. The options are: * `notifications_enabled` - team members receive notifications when the team is @mentioned. * `notifications_disabled` - no one receives notifications. Default: `notifications_enabled` */
 export type CreateRequestNotificationSetting = "notifications_enabled" | "notifications_disabled";
+const CreateRequestNotificationSetting = S.String;
+
 /** **Closing down notice**. The permission that new repositories will be added to the team with when none is specified. */
 export type CreateRequestPermission = "pull" | "push";
+const CreateRequestPermission = S.String;
+
 export interface CreateRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -270,12 +327,20 @@ export interface CreateRequest {
   /** The slug of a team to set as the parent team. Ignored when `parent_team_id` is also provided. */
   parent_team_slug?: string;
 }
+const CreateRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CreateRequest>;
+
 /** The level of privacy this team should have */
 export type TeamFullPrivacy = "closed" | "secret";
+const TeamFullPrivacy = S.String;
+
 /** The notification setting the team has set */
 export type TeamFullNotificationSetting = "notifications_enabled" | "notifications_disabled";
+const TeamFullNotificationSetting = S.String;
+
 /** The ownership type of the team */
 export type NullableTeamSimpleType = "enterprise" | "organization";
+const NullableTeamSimpleType = S.String;
+
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface NullableTeamSimple {
   /** Unique identifier of the team */
@@ -306,6 +371,8 @@ export interface NullableTeamSimple {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
+const NullableTeamSimple = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<NullableTeamSimple>;
+
 export interface TeamOrganizationPlan {
   name: string;
   space: number;
@@ -313,6 +380,8 @@ export interface TeamOrganizationPlan {
   filled_seats?: number;
   seats?: number;
 }
+const TeamOrganizationPlan = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<TeamOrganizationPlan>;
+
 /** Team Organization */
 export interface TeamOrganization {
   login: string;
@@ -365,8 +434,12 @@ export interface TeamOrganization {
   updated_at: string;
   archived_at: string | null;
 }
+const TeamOrganization = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<TeamOrganization>;
+
 /** The ownership type of the team */
 export type TeamFullType = "enterprise" | "organization";
+const TeamFullType = S.String;
+
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface TeamFull {
   /** Unique identifier of the team */
@@ -401,19 +474,27 @@ export interface TeamFull {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
+const TeamFull = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<TeamFull>;
+
 export interface DeleteInOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The slug of the team name. */
   team_slug: string;
 }
+const DeleteInOrgRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DeleteInOrgRequest>;
+
 export interface DeleteInOrgResponse {}
+const DeleteInOrgResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DeleteInOrgResponse>;
+
 export interface GetByNameRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The slug of the team name. */
   team_slug: string;
 }
+const GetByNameRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetByNameRequest>;
+
 export interface GetMembershipForUserInOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -422,7 +503,14 @@ export interface GetMembershipForUserInOrgRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
+const GetMembershipForUserInOrgRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetMembershipForUserInOrgRequest>;
+
 export type ListRequestTeamType = "all" | "enterprise" | "organization";
+const ListRequestTeamType = S.String;
+
 export interface ListRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -433,6 +521,8 @@ export interface ListRequest {
   /** Filter team results by their type. For more information, see "[What kind of team should I use?](https://docs.github.com/enterprise-cloud@latest/admin/concepts/enterprise-fundamentals/teams-in-an-enterprise#what-kind-of-team-should-i-use)" */
   team_type?: ListRequestTeamType | (string & {});
 }
+const ListRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ListRequest>;
+
 export interface TeamPermissions {
   pull: boolean;
   triage: boolean;
@@ -440,10 +530,16 @@ export interface TeamPermissions {
   maintain: boolean;
   admin: boolean;
 }
+const TeamPermissions = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<TeamPermissions>;
+
 /** The ownership type of the team */
 export type TeamType = "enterprise" | "organization";
+const TeamType = S.String;
+
 /** How the team's access to the repository was granted. This property is only present when the team is returned in a repository context, such as `GET /repos/{owner}/{repo}/teams`. */
 export type TeamAccessSource = "direct" | "organization" | "enterprise";
+const TeamAccessSource = S.String;
+
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface Team {
   id: number;
@@ -469,8 +565,14 @@ export interface Team {
   enterprise_id?: number;
   parent: NullableTeamSimple | null;
 }
+const Team = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Team>;
+
 export type ListResponseBodyList = Array<Team>;
+const ListResponseBodyList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ListResponseBodyList>;
+
 export type ListResponse = ListResponseBodyList;
+const ListResponse = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ListResponse>;
+
 export interface ListChildInOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -481,17 +583,41 @@ export interface ListChildInOrgRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListChildInOrgRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListChildInOrgRequest>;
+
 export type ListChildInOrgResponseBodyList = Array<Team>;
 export type ListChildInOrgResponse = ListChildInOrgResponseBodyList;
+const ListChildInOrgResponse = ListResponse as any as S.Schema<ListChildInOrgResponse>;
+
 export interface ListForAuthenticatedUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListForAuthenticatedUserRequest>;
+
 export type ListForAuthenticatedUserResponseBodyList = Array<TeamFull>;
+const ListForAuthenticatedUserResponseBodyList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListForAuthenticatedUserResponseBodyList>;
+
 export type ListForAuthenticatedUserResponse = ListForAuthenticatedUserResponseBodyList;
+const ListForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ListForAuthenticatedUserResponse>;
+
 export type ListMembersInOrgRequestRole = "member" | "maintainer" | "all";
+const ListMembersInOrgRequestRole = S.String;
+
 export interface ListMembersInOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -504,8 +630,15 @@ export interface ListMembersInOrgRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListMembersInOrgRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ListMembersInOrgRequest>;
+
 /** The member's role on the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization. */
 export type TeamMemberRole = "member" | "maintainer";
+const TeamMemberRole = S.String;
+
 /** A user that is a member of a team, including their role on the team and whether the membership is inherited from a child team. */
 export interface TeamMember {
   name?: string | null;
@@ -535,8 +668,20 @@ export interface TeamMember {
   /** Whether the user is a member of the team only through a child team. `true` means the membership is inherited from a child team; `false` means the user is a direct (immediate) member of the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization. */
   inherited?: boolean;
 }
+const TeamMember = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<TeamMember>;
+
 export type ListMembersInOrgResponseBodyList = Array<TeamMember>;
+const ListMembersInOrgResponseBodyList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ListMembersInOrgResponseBodyList>;
+
 export type ListMembersInOrgResponse = ListMembersInOrgResponseBodyList;
+const ListMembersInOrgResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ListMembersInOrgResponse>;
+
 export interface ListPendingInvitationsInOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -547,6 +692,11 @@ export interface ListPendingInvitationsInOrgRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListPendingInvitationsInOrgRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ListPendingInvitationsInOrgRequest>;
+
 /** A GitHub user. */
 export type SimpleUser = NullableSimpleUser;
 /** Organization Invitation */
@@ -564,8 +714,23 @@ export interface OrganizationInvitation {
   invitation_teams_url: string;
   invitation_source?: string;
 }
+const OrganizationInvitation = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<OrganizationInvitation>;
+
 export type ListPendingInvitationsInOrgResponseBodyList = Array<OrganizationInvitation>;
+const ListPendingInvitationsInOrgResponseBodyList = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListPendingInvitationsInOrgResponseBodyList>;
+
 export type ListPendingInvitationsInOrgResponse = ListPendingInvitationsInOrgResponseBodyList;
+const ListPendingInvitationsInOrgResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListPendingInvitationsInOrgResponse>;
+
 export interface ListReposInOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -576,9 +741,19 @@ export interface ListReposInOrgRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListReposInOrgRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListReposInOrgRequest>;
+
 export type MinimalRepositoryTopicsList = Array<string>;
+const MinimalRepositoryTopicsList =
+  TeamRepositoryTopicsList as any as S.Schema<MinimalRepositoryTopicsList>;
+
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
+const MinimalRepositoryPullRequestCreationPolicy = S.String;
+
 export interface MinimalRepositoryPermissions {
   admin?: boolean;
   maintain?: boolean;
@@ -586,6 +761,11 @@ export interface MinimalRepositoryPermissions {
   triage?: boolean;
   pull?: boolean;
 }
+const MinimalRepositoryPermissions = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<MinimalRepositoryPermissions>;
+
 /** Code Of Conduct */
 export interface CodeOfConduct {
   key: string;
@@ -594,6 +774,8 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
+const CodeOfConduct = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<CodeOfConduct>;
+
 export interface MinimalRepositoryLicense {
   key?: string;
   name?: string;
@@ -601,15 +783,30 @@ export interface MinimalRepositoryLicense {
   url?: string | null;
   node_id?: string;
 }
+const MinimalRepositoryLicense = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<MinimalRepositoryLicense>;
+
 export type SecurityAndAnalysisAdvancedSecurityStatus = "enabled" | "disabled";
+const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
+
 /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface SecurityAndAnalysisAdvancedSecurity {
   status?: SecurityAndAnalysisAdvancedSecurityStatus;
 }
+const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<SecurityAndAnalysisAdvancedSecurity>;
+
 export type SecurityAndAnalysisCodeSecurityStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
+const SecurityAndAnalysisCodeSecurity =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
+
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
 /** Enable or disable Dependabot security updates for the repository. */
@@ -617,38 +814,67 @@ export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
+const SecurityAndAnalysisDependabotSecurityUpdates =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
+
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
+const SecurityAndAnalysisSecretScanning =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
+
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
+const SecurityAndAnalysisSecretScanningPushProtection =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
+
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
+const SecurityAndAnalysisSecretScanningNonProviderPatterns =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
+
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
+const SecurityAndAnalysisSecretScanningAiDetection =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
+
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
+
 export interface SecurityAndAnalysisSecretScanningDelegatedAlertDismissal {
   status?: SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus;
 }
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedAlertDismissal>;
+
 export type SecurityAndAnalysisSecretScanningDelegatedBypassStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
+const SecurityAndAnalysisSecretScanningDelegatedBypass =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
+
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType = S.String;
+
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
+
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
   reviewer_id: number;
@@ -657,13 +883,28 @@ export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewer
   /** The bypass mode for the reviewer */
   mode?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode;
 }
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
+
 /** The bypass reviewers for secret scanning delegated bypass */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
+
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptions>;
+
 export interface SecurityAndAnalysis {
   /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
   advanced_security?: SecurityAndAnalysisAdvancedSecurity;
@@ -678,8 +919,15 @@ export interface SecurityAndAnalysis {
   secret_scanning_delegated_bypass?: SecurityAndAnalysisSecretScanningDelegatedBypass;
   secret_scanning_delegated_bypass_options?: SecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
+const SecurityAndAnalysis = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<SecurityAndAnalysis>;
+
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type MinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
+const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<MinimalRepositoryCustomPropertiesMap>;
+
 /** Minimal Repository */
 export interface MinimalRepository {
   id: number;
@@ -776,8 +1024,20 @@ export interface MinimalRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: MinimalRepositoryCustomPropertiesMap;
 }
+const MinimalRepository = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<MinimalRepository>;
+
 export type ListReposInOrgResponseBodyList = Array<MinimalRepository>;
+const ListReposInOrgResponseBodyList = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListReposInOrgResponseBodyList>;
+
 export type ListReposInOrgResponse = ListReposInOrgResponseBodyList;
+const ListReposInOrgResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ListReposInOrgResponse>;
+
 export interface RemoveMembershipForUserInOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -786,7 +1046,15 @@ export interface RemoveMembershipForUserInOrgRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
+const RemoveMembershipForUserInOrgRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<RemoveMembershipForUserInOrgRequest>;
+
 export interface RemoveMembershipForUserInOrgResponse {}
+const RemoveMembershipForUserInOrgResponse =
+  AddOrUpdateRepoPermissionsInOrgResponse as any as S.Schema<RemoveMembershipForUserInOrgResponse>;
+
 export interface RemoveRepoInOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -797,15 +1065,28 @@ export interface RemoveRepoInOrgRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const RemoveRepoInOrgRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<RemoveRepoInOrgRequest>;
+
 export interface RemoveRepoInOrgResponse {}
+const RemoveRepoInOrgResponse = DeleteInOrgResponse as any as S.Schema<RemoveRepoInOrgResponse>;
+
 /** The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The options are: **For a non-nested team:** * `secret` - only visible to organization owners and members of this team. * `closed` - visible to all members of this organization. **For a parent or child team:** * `closed` - visible to all members of this organization. */
 export type UpdateInOrgRequestPrivacy = "secret" | "closed";
+const UpdateInOrgRequestPrivacy = S.String;
+
 /** The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: * `notifications_enabled` - team members receive notifications when the team is @mentioned. * `notifications_disabled` - no one receives notifications. */
 export type UpdateInOrgRequestNotificationSetting =
   | "notifications_enabled"
   | "notifications_disabled";
+const UpdateInOrgRequestNotificationSetting = S.String;
+
 /** **Closing down notice**. The permission that new repositories will be added to the team with when none is specified. */
 export type UpdateInOrgRequestPermission = "pull" | "push" | "admin";
+const UpdateInOrgRequestPermission = S.String;
+
 export interface UpdateInOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -826,6 +1107,8 @@ export interface UpdateInOrgRequest {
   /** The slug of a team to set as the parent team. Ignored when `parent_team_id` is also provided. */
   parent_team_slug?: string | null;
 }
+const UpdateInOrgRequest = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<UpdateInOrgRequest>;
+
 export type AddOrUpdateMembershipForUserInOrgError =
   | Forbidden
   | UnprocessableEntity
@@ -837,8 +1120,8 @@ export const addOrUpdateMembershipForUserInOrg: API.OperationMethod<
   AddOrUpdateMembershipForUserInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AddOrUpdateMembershipForUserInOrgRequest>,
-  output: __S(1) as any as S.Schema<TeamMembership>,
+  input: AddOrUpdateMembershipForUserInOrgRequest,
+  output: TeamMembership,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -852,8 +1135,8 @@ export const addOrUpdateRepoPermissionsInOrg: API.OperationMethod<
   AddOrUpdateRepoPermissionsInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<AddOrUpdateRepoPermissionsInOrgRequest>,
-  output: __S(3) as any as S.Schema<AddOrUpdateRepoPermissionsInOrgResponse>,
+  input: AddOrUpdateRepoPermissionsInOrgRequest,
+  output: AddOrUpdateRepoPermissionsInOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -867,8 +1150,8 @@ export const checkPermissionsForRepoInOrg: API.OperationMethod<
   CheckPermissionsForRepoInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CheckPermissionsForRepoInOrgRequest>,
-  output: __S(9) as any as S.Schema<TeamRepository>,
+  input: CheckPermissionsForRepoInOrgRequest,
+  output: TeamRepository,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -878,8 +1161,8 @@ export type CreateError = Forbidden | UnprocessableEntity | GithubOpError;
 /** Create a team To create a team, the authenticated user must be a member or owner of `{org}`. By default, organization members can create teams. Organization owners can limit team creation to organization owners. For more information, see "[Setting team creation permissions](https://docs.github.com/articles/setting-team-creation-permissions-in-your-organization)." When you create a new team, you automatically become a team maintainer without explicitly adding yourself to the optional array of `maintainers`. For more information, see "[About teams](https://docs.github.com/github/setting-up-and-managing-organizations-and-teams/about-teams)". */
 export const create: API.OperationMethod<CreateRequest, TeamFull, CreateError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(10) as any as S.Schema<CreateRequest>,
-    output: __S(14) as any as S.Schema<TeamFull>,
+    input: CreateRequest,
+    output: TeamFull,
     errors: [Forbidden, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -893,8 +1176,8 @@ export const deleteInOrg: API.OperationMethod<
   DeleteInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DeleteInOrgRequest>,
-  output: __S(16) as any as S.Schema<DeleteInOrgResponse>,
+  input: DeleteInOrgRequest,
+  output: DeleteInOrgResponse,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -908,8 +1191,8 @@ export const getByName: API.OperationMethod<
   GetByNameError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<GetByNameRequest>,
-  output: __S(14) as any as S.Schema<TeamFull>,
+  input: GetByNameRequest,
+  output: TeamFull,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -923,8 +1206,8 @@ export const getMembershipForUserInOrg: API.OperationMethod<
   GetMembershipForUserInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<GetMembershipForUserInOrgRequest>,
-  output: __S(1) as any as S.Schema<TeamMembership>,
+  input: GetMembershipForUserInOrgRequest,
+  output: TeamMembership,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -934,8 +1217,8 @@ export type ListError = Forbidden | GithubOpError;
 /** List teams Lists all teams in an organization that are visible to the authenticated user. */
 export const list: API.OperationMethod<ListRequest, ListResponse, ListError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(19) as any as S.Schema<ListRequest>,
-    output: __S(23) as any as S.Schema<ListResponse>,
+    input: ListRequest,
+    output: ListResponse,
     errors: [Forbidden],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -949,8 +1232,8 @@ export const listChildInOrg: API.OperationMethod<
   ListChildInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<ListChildInOrgRequest>,
-  output: __S(23) as any as S.Schema<ListChildInOrgResponse>,
+  input: ListChildInOrgRequest,
+  output: ListChildInOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -964,8 +1247,8 @@ export const listForAuthenticatedUser: API.OperationMethod<
   ListForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<ListForAuthenticatedUserRequest>,
-  output: __S(27) as any as S.Schema<ListForAuthenticatedUserResponse>,
+  input: ListForAuthenticatedUserRequest,
+  output: ListForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -979,8 +1262,8 @@ export const listMembersInOrg: API.OperationMethod<
   ListMembersInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<ListMembersInOrgRequest>,
-  output: __S(31) as any as S.Schema<ListMembersInOrgResponse>,
+  input: ListMembersInOrgRequest,
+  output: ListMembersInOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -994,8 +1277,8 @@ export const listPendingInvitationsInOrg: API.OperationMethod<
   ListPendingInvitationsInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<ListPendingInvitationsInOrgRequest>,
-  output: __S(35) as any as S.Schema<ListPendingInvitationsInOrgResponse>,
+  input: ListPendingInvitationsInOrgRequest,
+  output: ListPendingInvitationsInOrgResponse,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1009,8 +1292,8 @@ export const listReposInOrg: API.OperationMethod<
   ListReposInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<ListReposInOrgRequest>,
-  output: __S(49) as any as S.Schema<ListReposInOrgResponse>,
+  input: ListReposInOrgRequest,
+  output: ListReposInOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1024,8 +1307,8 @@ export const removeMembershipForUserInOrg: API.OperationMethod<
   RemoveMembershipForUserInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<RemoveMembershipForUserInOrgRequest>,
-  output: __S(3) as any as S.Schema<RemoveMembershipForUserInOrgResponse>,
+  input: RemoveMembershipForUserInOrgRequest,
+  output: RemoveMembershipForUserInOrgResponse,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1039,8 +1322,8 @@ export const removeRepoInOrg: API.OperationMethod<
   RemoveRepoInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<RemoveRepoInOrgRequest>,
-  output: __S(16) as any as S.Schema<RemoveRepoInOrgResponse>,
+  input: RemoveRepoInOrgRequest,
+  output: RemoveRepoInOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1054,8 +1337,8 @@ export const updateInOrg: API.OperationMethod<
   UpdateInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<UpdateInOrgRequest>,
-  output: __S(14) as any as S.Schema<TeamFull>,
+  input: UpdateInOrgRequest,
+  output: TeamFull,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1070,7 +1353,7 @@ function __c0(j: number): any {
           org: S.String.pipe(T.Label()),
           team_slug: S.String.pipe(T.Label()),
           username: S.String.pipe(T.Label()),
-          role: S.optional(S.String),
+          role: S.optional(AddOrUpdateMembershipForUserInOrgRequestRole),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1085,8 +1368,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           url: S.String,
-          role: S.String,
-          state: S.String,
+          role: TeamMembershipRole,
+          state: TeamMembershipState,
         }),
       ).annotate({ identifier: "TeamMembership" });
     case 2:
@@ -1191,11 +1474,11 @@ function __c1(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          license: S.NullOr(__S(5)),
+          license: S.NullOr(NullableLicenseSimple),
           forks: S.Number,
-          permissions: S.optional(__S(6)),
+          permissions: S.optional(TeamRepositoryPermissions),
           role_name: S.optional(S.String),
-          owner: S.NullOr(__S(7)),
+          owner: S.NullOr(NullableSimpleUser),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -1251,7 +1534,7 @@ function __c1(j: number): any {
           default_branch: S.String,
           open_issues_count: S.Number,
           is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(8)),
+          topics: S.optional(TeamRepositoryTopicsList),
           has_issues: S.Boolean,
           has_projects: S.Boolean,
           has_wiki: S.Boolean,
@@ -1284,11 +1567,11 @@ function __c1(j: number): any {
           org: S.String.pipe(T.Label()),
           name: S.String,
           description: S.optional(S.String),
-          maintainers: S.optional(__S(8)),
-          repo_names: S.optional(__S(8)),
-          privacy: S.optional(S.String),
-          notification_setting: S.optional(S.String),
-          permission: S.optional(S.String),
+          maintainers: S.optional(CreateRequestMaintainersList),
+          repo_names: S.optional(CreateRequestRepoNamesList),
+          privacy: S.optional(CreateRequestPrivacy),
+          notification_setting: S.optional(CreateRequestNotificationSetting),
+          permission: S.optional(CreateRequestPermission),
           parent_team_id: S.optional(S.Number),
           parent_team_slug: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/teams", code: 200 })),
@@ -1309,7 +1592,7 @@ function __c1(j: number): any {
           repositories_url: S.String,
           slug: S.String,
           ldap_dn: S.optional(S.String),
-          type: S.String,
+          type: NullableTeamSimpleType,
           organization_id: S.optional(S.Number),
           enterprise_id: S.optional(S.Number),
         }),
@@ -1361,7 +1644,7 @@ function __c1(j: number): any {
           disk_usage: S.optional(S.NullOr(S.Number)),
           collaborators: S.optional(S.NullOr(S.Number)),
           billing_email: S.optional(S.NullOr(S.String)),
-          plan: S.optional(__S(12)),
+          plan: S.optional(TeamOrganizationPlan),
           default_repository_permission: S.optional(S.NullOr(S.String)),
           members_can_create_repositories: S.optional(S.NullOr(S.Boolean)),
           two_factor_requirement_enabled: S.optional(S.NullOr(S.Boolean)),
@@ -1388,19 +1671,19 @@ function __c1(j: number): any {
           name: S.String,
           slug: S.String,
           description: S.NullOr(S.String),
-          privacy: S.optional(S.String),
-          notification_setting: S.optional(S.String),
+          privacy: S.optional(TeamFullPrivacy),
+          notification_setting: S.optional(TeamFullNotificationSetting),
           permission: S.String,
           members_url: S.String,
           repositories_url: S.String,
-          parent: S.optional(S.NullOr(__S(11))),
+          parent: S.optional(S.NullOr(NullableTeamSimple)),
           members_count: S.Number,
           repos_count: S.Number,
           created_at: S.String,
           updated_at: S.String,
-          organization: __S(13),
+          organization: TeamOrganization,
           ldap_dn: S.optional(S.String),
-          type: S.String,
+          type: TeamFullType,
           organization_id: S.optional(S.Number),
           enterprise_id: S.optional(S.Number),
         }),
@@ -1449,7 +1732,7 @@ function __c2(j: number): any {
           org: S.String.pipe(T.Label()),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
-          team_type: S.optional(S.String.pipe(T.Query())),
+          team_type: S.optional(ListRequestTeamType.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/teams", code: 200 })),
       ).annotate({ identifier: "ListRequest" });
     case 4:
@@ -1473,22 +1756,22 @@ function __c2(j: number): any {
           privacy: S.optional(S.String),
           notification_setting: S.optional(S.String),
           permission: S.String,
-          permissions: S.optional(__S(20)),
+          permissions: S.optional(TeamPermissions),
           url: S.String,
           html_url: S.String,
           members_url: S.String,
           repositories_url: S.String,
-          type: S.String,
-          access_source: S.optional(S.String),
+          type: TeamType,
+          access_source: S.optional(TeamAccessSource),
           organization_id: S.optional(S.Number),
           enterprise_id: S.optional(S.Number),
-          parent: S.NullOr(__S(11)),
+          parent: S.NullOr(NullableTeamSimple),
         }),
       ).annotate({ identifier: "Team" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(Team);
     case 7:
-      return S.suspend(() => __S(22).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListResponse",
       });
   }
@@ -1514,9 +1797,11 @@ function __c3(j: number): any {
         identifier: "ListForAuthenticatedUserRequest",
       });
     case 2:
-      return S.Array(__S(14));
+      return S.Array(TeamFull);
     case 3:
-      return S.suspend(() => __S(26).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListForAuthenticatedUserResponse",
       });
     case 4:
@@ -1524,7 +1809,7 @@ function __c3(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           team_slug: S.String.pipe(T.Label()),
-          role: S.optional(S.String.pipe(T.Query())),
+          role: S.optional(ListMembersInOrgRequestRole.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/teams/{team_slug}/members", code: 200 })),
@@ -1554,14 +1839,14 @@ function __c3(j: number): any {
           site_admin: S.Boolean,
           starred_at: S.optional(S.String),
           user_view_type: S.optional(S.String),
-          role: S.optional(S.String),
+          role: S.optional(TeamMemberRole),
           inherited: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "TeamMember" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(TeamMember);
     case 7:
-      return S.suspend(() => __S(30).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListMembersInOrgResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListMembersInOrgResponse",
       });
   }
@@ -1591,7 +1876,7 @@ function __c4(j: number): any {
           created_at: S.String,
           failed_at: S.optional(S.NullOr(S.String)),
           failed_reason: S.optional(S.NullOr(S.String)),
-          inviter: __S(7),
+          inviter: NullableSimpleUser,
           team_count: S.Number,
           node_id: S.String,
           invitation_teams_url: S.String,
@@ -1599,9 +1884,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "OrganizationInvitation" });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(OrganizationInvitation);
     case 3:
-      return S.suspend(() => __S(34).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPendingInvitationsInOrgResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPendingInvitationsInOrgResponse",
       });
     case 4:
@@ -1652,7 +1939,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(SecurityAndAnalysisAdvancedSecurityStatus),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisAdvancedSecurity",
@@ -1660,7 +1947,7 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
@@ -1669,18 +1956,23 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reviewer_id: S.Number,
-          reviewer_type: S.String,
-          mode: S.optional(S.String),
+          reviewer_type:
+            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType,
+          mode: S.optional(
+            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode,
+          ),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem",
       });
     case 3:
-      return S.Array(__S(42));
+      return S.Array(SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          reviewers: S.optional(__S(43)),
+          reviewers: S.optional(
+            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList,
+          ),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptions",
@@ -1688,16 +1980,26 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          advanced_security: S.optional(__S(40)),
-          code_security: S.optional(__S(40)),
-          dependabot_security_updates: S.optional(__S(40)),
-          secret_scanning: S.optional(__S(40)),
-          secret_scanning_push_protection: S.optional(__S(40)),
-          secret_scanning_non_provider_patterns: S.optional(__S(40)),
-          secret_scanning_ai_detection: S.optional(__S(40)),
-          secret_scanning_delegated_alert_dismissal: S.optional(__S(41)),
-          secret_scanning_delegated_bypass: S.optional(__S(40)),
-          secret_scanning_delegated_bypass_options: S.optional(__S(44)),
+          advanced_security: S.optional(SecurityAndAnalysisAdvancedSecurity),
+          code_security: S.optional(SecurityAndAnalysisCodeSecurity),
+          dependabot_security_updates: S.optional(SecurityAndAnalysisDependabotSecurityUpdates),
+          secret_scanning: S.optional(SecurityAndAnalysisSecretScanning),
+          secret_scanning_push_protection: S.optional(
+            SecurityAndAnalysisSecretScanningPushProtection,
+          ),
+          secret_scanning_non_provider_patterns: S.optional(
+            SecurityAndAnalysisSecretScanningNonProviderPatterns,
+          ),
+          secret_scanning_ai_detection: S.optional(SecurityAndAnalysisSecretScanningAiDetection),
+          secret_scanning_delegated_alert_dismissal: S.optional(
+            SecurityAndAnalysisSecretScanningDelegatedAlertDismissal,
+          ),
+          secret_scanning_delegated_bypass: S.optional(
+            SecurityAndAnalysisSecretScanningDelegatedBypass,
+          ),
+          secret_scanning_delegated_bypass_options: S.optional(
+            SecurityAndAnalysisSecretScanningDelegatedBypassOptions,
+          ),
         }),
       ).annotate({ identifier: "SecurityAndAnalysis" });
     case 6:
@@ -1709,7 +2011,7 @@ function __c5(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: __S(7),
+          owner: NullableSimpleUser,
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -1765,7 +2067,7 @@ function __c5(j: number): any {
           default_branch: S.optional(S.String),
           open_issues_count: S.optional(S.Number),
           is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(8)),
+          topics: S.optional(MinimalRepositoryTopicsList),
           has_issues: S.optional(S.Boolean),
           has_projects: S.optional(S.Boolean),
           has_wiki: S.optional(S.Boolean),
@@ -1773,28 +2075,28 @@ function __c5(j: number): any {
           has_downloads: S.optional(S.Boolean),
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(S.String),
+          pull_request_creation_policy: S.optional(MinimalRepositoryPullRequestCreationPolicy),
           archived: S.optional(S.Boolean),
           disabled: S.optional(S.Boolean),
           visibility: S.optional(S.String),
           pushed_at: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(__S(37)),
+          permissions: S.optional(MinimalRepositoryPermissions),
           role_name: S.optional(S.String),
           temp_clone_token: S.optional(S.String),
           delete_branch_on_merge: S.optional(S.Boolean),
           subscribers_count: S.optional(S.Number),
           network_count: S.optional(S.Number),
-          code_of_conduct: S.optional(__S(38)),
-          license: S.optional(S.NullOr(__S(39))),
+          code_of_conduct: S.optional(CodeOfConduct),
+          license: S.optional(S.NullOr(MinimalRepositoryLicense)),
           forks: S.optional(S.Number),
           open_issues: S.optional(S.Number),
           watchers: S.optional(S.Number),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
-          security_and_analysis: S.optional(S.NullOr(__S(45))),
-          custom_properties: S.optional(__S(46)),
+          security_and_analysis: S.optional(S.NullOr(SecurityAndAnalysis)),
+          custom_properties: S.optional(MinimalRepositoryCustomPropertiesMap),
         }),
       ).annotate({ identifier: "MinimalRepository" });
   }
@@ -1802,9 +2104,9 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(MinimalRepository);
     case 1:
-      return S.suspend(() => __S(48).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListReposInOrgResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListReposInOrgResponse",
       });
     case 2:
@@ -1845,35 +2147,12 @@ function __c6(j: number): any {
           team_slug: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          privacy: S.optional(S.String),
-          notification_setting: S.optional(S.String),
-          permission: S.optional(S.String),
+          privacy: S.optional(UpdateInOrgRequestPrivacy),
+          notification_setting: S.optional(UpdateInOrgRequestNotificationSetting),
+          permission: S.optional(UpdateInOrgRequestPermission),
           parent_team_id: S.optional(S.NullOr(S.Number)),
           parent_team_slug: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/orgs/{org}/teams/{team_slug}", code: 200 })),
       ).annotate({ identifier: "UpdateInOrgRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

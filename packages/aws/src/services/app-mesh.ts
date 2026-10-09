@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "App Mesh", serviceShapeName: "AppMesh" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "appmesh" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2019-01-25");
@@ -142,15 +140,19 @@ export interface HttpPathMatch {
   exact?: string;
   regex?: string;
 }
+const HttpPathMatch = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<HttpPathMatch>;
 export type QueryParameterName = string;
 export interface QueryParameterMatch {
   exact?: string;
 }
+const QueryParameterMatch = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<QueryParameterMatch>;
 export interface HttpQueryParameter {
   name: string;
   match?: QueryParameterMatch;
 }
+const HttpQueryParameter = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<HttpQueryParameter>;
 export type HttpQueryParameters = HttpQueryParameter[];
+const HttpQueryParameters = /*@__PURE__*/ __L.at(__c0, 3);
 export type HttpMethod = string;
 export type ExactHostName = string;
 export type SuffixHostname = string;
@@ -158,24 +160,35 @@ export interface GatewayRouteHostnameMatch {
   exact?: string;
   suffix?: string;
 }
+const GatewayRouteHostnameMatch = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GatewayRouteHostnameMatch>;
 export type HeaderName = string;
 export type HeaderMatch = string;
 export interface MatchRange {
   start: number;
   end: number;
 }
+const MatchRange = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<MatchRange>;
 export type HeaderMatchMethod =
   | { exact: string; regex?: never; range?: never; prefix?: never; suffix?: never }
   | { exact?: never; regex: string; range?: never; prefix?: never; suffix?: never }
   | { exact?: never; regex?: never; range: MatchRange; prefix?: never; suffix?: never }
   | { exact?: never; regex?: never; range?: never; prefix: string; suffix?: never }
   | { exact?: never; regex?: never; range?: never; prefix?: never; suffix: string };
+const HeaderMatchMethod = /*@__PURE__*/ __L.at(__c0, 6);
 export interface HttpGatewayRouteHeader {
   name: string;
   invert?: boolean;
   match?: HeaderMatchMethod;
 }
+const HttpGatewayRouteHeader = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<HttpGatewayRouteHeader>;
 export type HttpGatewayRouteHeaders = HttpGatewayRouteHeader[];
+const HttpGatewayRouteHeaders = /*@__PURE__*/ __L.at(__c1, 0);
 export type ListenerPort = number;
 export interface HttpGatewayRouteMatch {
   prefix?: string;
@@ -186,38 +199,68 @@ export interface HttpGatewayRouteMatch {
   headers?: HttpGatewayRouteHeader[];
   port?: number;
 }
+const HttpGatewayRouteMatch = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<HttpGatewayRouteMatch>;
 export interface GatewayRouteVirtualService {
   virtualServiceName: string;
 }
+const GatewayRouteVirtualService = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GatewayRouteVirtualService>;
 export interface GatewayRouteTarget {
   virtualService: GatewayRouteVirtualService;
   port?: number;
 }
+const GatewayRouteTarget = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GatewayRouteTarget>;
 export type DefaultGatewayRouteRewrite = string;
 export type HttpGatewayRoutePrefix = string;
 export interface HttpGatewayRoutePrefixRewrite {
   defaultPrefix?: string;
   value?: string;
 }
+const HttpGatewayRoutePrefixRewrite = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<HttpGatewayRoutePrefixRewrite>;
 export interface HttpGatewayRoutePathRewrite {
   exact?: string;
 }
+const HttpGatewayRoutePathRewrite = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<HttpGatewayRoutePathRewrite>;
 export interface GatewayRouteHostnameRewrite {
   defaultTargetHostname?: string;
 }
+const GatewayRouteHostnameRewrite = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GatewayRouteHostnameRewrite>;
 export interface HttpGatewayRouteRewrite {
   prefix?: HttpGatewayRoutePrefixRewrite;
   path?: HttpGatewayRoutePathRewrite;
   hostname?: GatewayRouteHostnameRewrite;
 }
+const HttpGatewayRouteRewrite = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<HttpGatewayRouteRewrite>;
 export interface HttpGatewayRouteAction {
   target: GatewayRouteTarget;
   rewrite?: HttpGatewayRouteRewrite;
 }
+const HttpGatewayRouteAction = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<HttpGatewayRouteAction>;
 export interface HttpGatewayRoute {
   match: HttpGatewayRouteMatch;
   action: HttpGatewayRouteAction;
 }
+const HttpGatewayRoute = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<HttpGatewayRoute>;
 export type ServiceName = string;
 export type GrpcMetadataMatchMethod =
   | { exact: string; regex?: never; range?: never; prefix?: never; suffix?: never }
@@ -225,42 +268,64 @@ export type GrpcMetadataMatchMethod =
   | { exact?: never; regex?: never; range: MatchRange; prefix?: never; suffix?: never }
   | { exact?: never; regex?: never; range?: never; prefix: string; suffix?: never }
   | { exact?: never; regex?: never; range?: never; prefix?: never; suffix: string };
+const GrpcMetadataMatchMethod = HeaderMatchMethod as any as S.Schema<GrpcMetadataMatchMethod>;
 export interface GrpcGatewayRouteMetadata {
   name: string;
   invert?: boolean;
   match?: GrpcMetadataMatchMethod;
 }
+const GrpcGatewayRouteMetadata = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GrpcGatewayRouteMetadata>;
 export type GrpcGatewayRouteMetadataList = GrpcGatewayRouteMetadata[];
+const GrpcGatewayRouteMetadataList = /*@__PURE__*/ __L.at(__c2, 3);
 export interface GrpcGatewayRouteMatch {
   serviceName?: string;
   hostname?: GatewayRouteHostnameMatch;
   metadata?: GrpcGatewayRouteMetadata[];
   port?: number;
 }
+const GrpcGatewayRouteMatch = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GrpcGatewayRouteMatch>;
 export interface GrpcGatewayRouteRewrite {
   hostname?: GatewayRouteHostnameRewrite;
 }
+const GrpcGatewayRouteRewrite = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GrpcGatewayRouteRewrite>;
 export interface GrpcGatewayRouteAction {
   target: GatewayRouteTarget;
   rewrite?: GrpcGatewayRouteRewrite;
 }
+const GrpcGatewayRouteAction = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GrpcGatewayRouteAction>;
 export interface GrpcGatewayRoute {
   match: GrpcGatewayRouteMatch;
   action: GrpcGatewayRouteAction;
 }
+const GrpcGatewayRoute = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GrpcGatewayRoute>;
 export interface GatewayRouteSpec {
   priority?: number;
   httpRoute?: HttpGatewayRoute;
   http2Route?: HttpGatewayRoute;
   grpcRoute?: GrpcGatewayRoute;
 }
+const GatewayRouteSpec = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GatewayRouteSpec>;
 export type TagKey = string;
 export type TagValue = string;
 export interface TagRef {
   key: string;
   value: string;
 }
+const TagRef = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<TagRef>;
 export type TagList = TagRef[];
+const TagList = /*@__PURE__*/ __L.at(__c3, 2);
 export type AccountId = string;
 export interface CreateGatewayRouteInput {
   gatewayRouteName: string;
@@ -271,6 +336,10 @@ export interface CreateGatewayRouteInput {
   clientToken?: string;
   meshOwner?: string;
 }
+const CreateGatewayRouteInput = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateGatewayRouteInput>;
 export type Arn = string;
 export interface ResourceMetadata {
   arn: string;
@@ -281,10 +350,12 @@ export interface ResourceMetadata {
   meshOwner: string;
   resourceOwner: string;
 }
+const ResourceMetadata = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ResourceMetadata>;
 export type GatewayRouteStatusCode = string;
 export interface GatewayRouteStatus {
   status: string;
 }
+const GatewayRouteStatus = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GatewayRouteStatus>;
 export interface GatewayRouteData {
   meshName: string;
   gatewayRouteName: string;
@@ -293,40 +364,52 @@ export interface GatewayRouteData {
   metadata: ResourceMetadata;
   status: GatewayRouteStatus;
 }
+const GatewayRouteData = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GatewayRouteData>;
 export interface CreateGatewayRouteOutput {
   gatewayRoute: GatewayRouteData;
 }
+const CreateGatewayRouteOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateGatewayRouteOutput>;
 export type EgressFilterType = string;
 export interface EgressFilter {
   type: string;
 }
+const EgressFilter = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<EgressFilter>;
 export type IpPreference = string;
 export interface MeshServiceDiscovery {
   ipPreference?: string;
 }
+const MeshServiceDiscovery = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<MeshServiceDiscovery>;
 export interface MeshSpec {
   egressFilter?: EgressFilter;
   serviceDiscovery?: MeshServiceDiscovery;
 }
+const MeshSpec = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<MeshSpec>;
 export interface CreateMeshInput {
   meshName: string;
   spec?: MeshSpec;
   tags?: TagRef[];
   clientToken?: string;
 }
+const CreateMeshInput = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<CreateMeshInput>;
 export type MeshStatusCode = string;
 export interface MeshStatus {
   status?: string;
 }
+const MeshStatus = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<MeshStatus>;
 export interface MeshData {
   meshName: string;
   spec: MeshSpec;
   metadata: ResourceMetadata;
   status: MeshStatus;
 }
+const MeshData = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<MeshData>;
 export interface CreateMeshOutput {
   mesh: MeshData;
 }
+const CreateMeshOutput = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<CreateMeshOutput>;
 export type RoutePriority = number;
 export type HttpScheme = string;
 export interface HttpRouteHeader {
@@ -335,6 +418,7 @@ export interface HttpRouteHeader {
   match?: HeaderMatchMethod;
 }
 export type HttpRouteHeaders = HttpRouteHeader[];
+const HttpRouteHeaders = HttpGatewayRouteHeaders as any as S.Schema<HttpRouteHeaders>;
 export interface HttpRouteMatch {
   prefix?: string;
   path?: HttpPathMatch;
@@ -344,60 +428,75 @@ export interface HttpRouteMatch {
   headers?: HttpRouteHeader[];
   port?: number;
 }
+const HttpRouteMatch = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<HttpRouteMatch>;
 export type PercentInt = number;
 export interface WeightedTarget {
   virtualNode: string;
   weight: number;
   port?: number;
 }
+const WeightedTarget = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<WeightedTarget>;
 export type WeightedTargets = WeightedTarget[];
+const WeightedTargets = /*@__PURE__*/ __L.at(__c5, 1);
 export interface HttpRouteAction {
   weightedTargets: WeightedTarget[];
 }
+const HttpRouteAction = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<HttpRouteAction>;
 export type DurationValue = number;
 export type DurationUnit = string;
 export interface Duration {
   value?: number;
   unit?: string;
 }
+const Duration = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Duration>;
 export type MaxRetries = number;
 export type HttpRetryPolicyEvent = string;
 export type HttpRetryPolicyEvents = string[];
+const HttpRetryPolicyEvents = /*@__PURE__*/ __L.at(__c5, 4);
 export type TcpRetryPolicyEvent = string;
 export type TcpRetryPolicyEvents = string[];
+const TcpRetryPolicyEvents = HttpRetryPolicyEvents as any as S.Schema<TcpRetryPolicyEvents>;
 export interface HttpRetryPolicy {
   perRetryTimeout: Duration;
   maxRetries: number;
   httpRetryEvents?: string[];
   tcpRetryEvents?: string[];
 }
+const HttpRetryPolicy = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<HttpRetryPolicy>;
 export interface HttpTimeout {
   perRequest?: Duration;
   idle?: Duration;
 }
+const HttpTimeout = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<HttpTimeout>;
 export interface HttpRoute {
   match: HttpRouteMatch;
   action: HttpRouteAction;
   retryPolicy?: HttpRetryPolicy;
   timeout?: HttpTimeout;
 }
+const HttpRoute = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<HttpRoute>;
 export interface TcpRouteAction {
   weightedTargets: WeightedTarget[];
 }
+const TcpRouteAction = HttpRouteAction as any as S.Schema<TcpRouteAction>;
 export interface TcpTimeout {
   idle?: Duration;
 }
+const TcpTimeout = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<TcpTimeout>;
 export interface TcpRouteMatch {
   port?: number;
 }
+const TcpRouteMatch = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<TcpRouteMatch>;
 export interface TcpRoute {
   action: TcpRouteAction;
   timeout?: TcpTimeout;
   match?: TcpRouteMatch;
 }
+const TcpRoute = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<TcpRoute>;
 export interface GrpcRouteAction {
   weightedTargets: WeightedTarget[];
 }
+const GrpcRouteAction = HttpRouteAction as any as S.Schema<GrpcRouteAction>;
 export type MethodName = string;
 export type GrpcRouteMetadataMatchMethod =
   | { exact: string; regex?: never; range?: never; prefix?: never; suffix?: never }
@@ -411,14 +510,18 @@ export interface GrpcRouteMetadata {
   match?: GrpcRouteMetadataMatchMethod;
 }
 export type GrpcRouteMetadataList = GrpcRouteMetadata[];
+const GrpcRouteMetadataList =
+  GrpcGatewayRouteMetadataList as any as S.Schema<GrpcRouteMetadataList>;
 export interface GrpcRouteMatch {
   serviceName?: string;
   methodName?: string;
   metadata?: GrpcRouteMetadata[];
   port?: number;
 }
+const GrpcRouteMatch = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<GrpcRouteMatch>;
 export type GrpcRetryPolicyEvent = string;
 export type GrpcRetryPolicyEvents = string[];
+const GrpcRetryPolicyEvents = HttpRetryPolicyEvents as any as S.Schema<GrpcRetryPolicyEvents>;
 export interface GrpcRetryPolicy {
   perRetryTimeout: Duration;
   maxRetries: number;
@@ -426,16 +529,19 @@ export interface GrpcRetryPolicy {
   tcpRetryEvents?: string[];
   grpcRetryEvents?: string[];
 }
+const GrpcRetryPolicy = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<GrpcRetryPolicy>;
 export interface GrpcTimeout {
   perRequest?: Duration;
   idle?: Duration;
 }
+const GrpcTimeout = HttpTimeout as any as S.Schema<GrpcTimeout>;
 export interface GrpcRoute {
   action: GrpcRouteAction;
   match: GrpcRouteMatch;
   retryPolicy?: GrpcRetryPolicy;
   timeout?: GrpcTimeout;
 }
+const GrpcRoute = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<GrpcRoute>;
 export interface RouteSpec {
   priority?: number;
   httpRoute?: HttpRoute;
@@ -443,6 +549,7 @@ export interface RouteSpec {
   http2Route?: HttpRoute;
   grpcRoute?: GrpcRoute;
 }
+const RouteSpec = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<RouteSpec>;
 export interface CreateRouteInput {
   routeName: string;
   meshName: string;
@@ -452,10 +559,12 @@ export interface CreateRouteInput {
   clientToken?: string;
   meshOwner?: string;
 }
+const CreateRouteInput = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<CreateRouteInput>;
 export type RouteStatusCode = string;
 export interface RouteStatus {
   status: string;
 }
+const RouteStatus = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<RouteStatus>;
 export interface RouteData {
   meshName: string;
   virtualRouterName: string;
@@ -464,61 +573,112 @@ export interface RouteData {
   metadata: ResourceMetadata;
   status: RouteStatus;
 }
+const RouteData = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<RouteData>;
 export interface CreateRouteOutput {
   route: RouteData;
 }
+const CreateRouteOutput = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<CreateRouteOutput>;
 export type PortNumber = number;
 export type PortSet = number[];
+const PortSet = /*@__PURE__*/ __L.at(__c7, 3);
 export type FilePath = string;
 export interface VirtualGatewayListenerTlsFileCertificate {
   certificateChain: string;
   privateKey: string;
 }
+const VirtualGatewayListenerTlsFileCertificate = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<VirtualGatewayListenerTlsFileCertificate>;
 export type VirtualGatewaySdsSecretName = string;
 export interface VirtualGatewayListenerTlsSdsCertificate {
   secretName: string;
 }
+const VirtualGatewayListenerTlsSdsCertificate = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<VirtualGatewayListenerTlsSdsCertificate>;
 export type VirtualGatewayClientTlsCertificate =
   | { file: VirtualGatewayListenerTlsFileCertificate; sds?: never }
   | { file?: never; sds: VirtualGatewayListenerTlsSdsCertificate };
+const VirtualGatewayClientTlsCertificate = /*@__PURE__*/ __L.at(__c7, 6);
 export type VirtualGatewayCertificateAuthorityArns = string[];
+const VirtualGatewayCertificateAuthorityArns =
+  HttpRetryPolicyEvents as any as S.Schema<VirtualGatewayCertificateAuthorityArns>;
 export interface VirtualGatewayTlsValidationContextAcmTrust {
   certificateAuthorityArns: string[];
 }
+const VirtualGatewayTlsValidationContextAcmTrust = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<VirtualGatewayTlsValidationContextAcmTrust>;
 export interface VirtualGatewayTlsValidationContextFileTrust {
   certificateChain: string;
 }
+const VirtualGatewayTlsValidationContextFileTrust = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<VirtualGatewayTlsValidationContextFileTrust>;
 export interface VirtualGatewayTlsValidationContextSdsTrust {
   secretName: string;
 }
+const VirtualGatewayTlsValidationContextSdsTrust =
+  VirtualGatewayListenerTlsSdsCertificate as any as S.Schema<VirtualGatewayTlsValidationContextSdsTrust>;
 export type VirtualGatewayTlsValidationContextTrust =
   | { acm: VirtualGatewayTlsValidationContextAcmTrust; file?: never; sds?: never }
   | { acm?: never; file: VirtualGatewayTlsValidationContextFileTrust; sds?: never }
   | { acm?: never; file?: never; sds: VirtualGatewayTlsValidationContextSdsTrust };
+const VirtualGatewayTlsValidationContextTrust = /*@__PURE__*/ __L.at(__c8, 1);
 export type SubjectAlternativeName = string;
 export type SubjectAlternativeNameList = string[];
+const SubjectAlternativeNameList =
+  HttpRetryPolicyEvents as any as S.Schema<SubjectAlternativeNameList>;
 export interface SubjectAlternativeNameMatchers {
   exact: string[];
 }
+const SubjectAlternativeNameMatchers = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<SubjectAlternativeNameMatchers>;
 export interface SubjectAlternativeNames {
   match: SubjectAlternativeNameMatchers;
 }
+const SubjectAlternativeNames = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<SubjectAlternativeNames>;
 export interface VirtualGatewayTlsValidationContext {
   trust: VirtualGatewayTlsValidationContextTrust;
   subjectAlternativeNames?: SubjectAlternativeNames;
 }
+const VirtualGatewayTlsValidationContext = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<VirtualGatewayTlsValidationContext>;
 export interface VirtualGatewayClientPolicyTls {
   enforce?: boolean;
   ports?: number[];
   certificate?: VirtualGatewayClientTlsCertificate;
   validation: VirtualGatewayTlsValidationContext;
 }
+const VirtualGatewayClientPolicyTls = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<VirtualGatewayClientPolicyTls>;
 export interface VirtualGatewayClientPolicy {
   tls?: VirtualGatewayClientPolicyTls;
 }
+const VirtualGatewayClientPolicy = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<VirtualGatewayClientPolicy>;
 export interface VirtualGatewayBackendDefaults {
   clientPolicy?: VirtualGatewayClientPolicy;
 }
+const VirtualGatewayBackendDefaults = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<VirtualGatewayBackendDefaults>;
 export type VirtualGatewayHealthCheckTimeoutMillis = number;
 export type VirtualGatewayHealthCheckIntervalMillis = number;
 export type VirtualGatewayPortProtocol = string;
@@ -532,54 +692,92 @@ export interface VirtualGatewayHealthCheckPolicy {
   healthyThreshold: number;
   unhealthyThreshold: number;
 }
+const VirtualGatewayHealthCheckPolicy = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<VirtualGatewayHealthCheckPolicy>;
 export interface VirtualGatewayPortMapping {
   port: number;
   protocol: string;
 }
+const VirtualGatewayPortMapping = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<VirtualGatewayPortMapping>;
 export type VirtualGatewayListenerTlsMode = string;
 export type VirtualGatewayListenerTlsValidationContextTrust =
   | { file: VirtualGatewayTlsValidationContextFileTrust; sds?: never }
   | { file?: never; sds: VirtualGatewayTlsValidationContextSdsTrust };
+const VirtualGatewayListenerTlsValidationContextTrust = /*@__PURE__*/ __L.at(__c9, 2);
 export interface VirtualGatewayListenerTlsValidationContext {
   trust: VirtualGatewayListenerTlsValidationContextTrust;
   subjectAlternativeNames?: SubjectAlternativeNames;
 }
+const VirtualGatewayListenerTlsValidationContext = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<VirtualGatewayListenerTlsValidationContext>;
 export interface VirtualGatewayListenerTlsAcmCertificate {
   certificateArn: string;
 }
+const VirtualGatewayListenerTlsAcmCertificate = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<VirtualGatewayListenerTlsAcmCertificate>;
 export type VirtualGatewayListenerTlsCertificate =
   | { acm: VirtualGatewayListenerTlsAcmCertificate; file?: never; sds?: never }
   | { acm?: never; file: VirtualGatewayListenerTlsFileCertificate; sds?: never }
   | { acm?: never; file?: never; sds: VirtualGatewayListenerTlsSdsCertificate };
+const VirtualGatewayListenerTlsCertificate = /*@__PURE__*/ __L.at(__c9, 5);
 export interface VirtualGatewayListenerTls {
   mode: string;
   validation?: VirtualGatewayListenerTlsValidationContext;
   certificate: VirtualGatewayListenerTlsCertificate;
 }
+const VirtualGatewayListenerTls = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<VirtualGatewayListenerTls>;
 export type MaxConnections = number;
 export type MaxPendingRequests = number;
 export interface VirtualGatewayHttpConnectionPool {
   maxConnections: number;
   maxPendingRequests?: number;
 }
+const VirtualGatewayHttpConnectionPool = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<VirtualGatewayHttpConnectionPool>;
 export type MaxRequests = number;
 export interface VirtualGatewayHttp2ConnectionPool {
   maxRequests: number;
 }
+const VirtualGatewayHttp2ConnectionPool = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<VirtualGatewayHttp2ConnectionPool>;
 export interface VirtualGatewayGrpcConnectionPool {
   maxRequests: number;
 }
+const VirtualGatewayGrpcConnectionPool =
+  VirtualGatewayHttp2ConnectionPool as any as S.Schema<VirtualGatewayGrpcConnectionPool>;
 export type VirtualGatewayConnectionPool =
   | { http: VirtualGatewayHttpConnectionPool; http2?: never; grpc?: never }
   | { http?: never; http2: VirtualGatewayHttp2ConnectionPool; grpc?: never }
   | { http?: never; http2?: never; grpc: VirtualGatewayGrpcConnectionPool };
+const VirtualGatewayConnectionPool = /*@__PURE__*/ __L.at(__c10, 1);
 export interface VirtualGatewayListener {
   healthCheck?: VirtualGatewayHealthCheckPolicy;
   portMapping: VirtualGatewayPortMapping;
   tls?: VirtualGatewayListenerTls;
   connectionPool?: VirtualGatewayConnectionPool;
 }
+const VirtualGatewayListener = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<VirtualGatewayListener>;
 export type VirtualGatewayListeners = VirtualGatewayListener[];
+const VirtualGatewayListeners = /*@__PURE__*/ __L.at(__c10, 3);
 export type TextFormat = string;
 export type JsonKey = string;
 export type JsonValue = string;
@@ -588,22 +786,34 @@ export interface JsonFormatRef {
   value: string;
 }
 export type JsonFormat = JsonFormatRef[];
+const JsonFormat = TagList as any as S.Schema<JsonFormat>;
 export type LoggingFormat =
   | { text: string; json?: never }
   | { text?: never; json: JsonFormatRef[] };
+const LoggingFormat = /*@__PURE__*/ __L.at(__c10, 4);
 export interface VirtualGatewayFileAccessLog {
   path: string;
   format?: LoggingFormat;
 }
+const VirtualGatewayFileAccessLog = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<VirtualGatewayFileAccessLog>;
 export type VirtualGatewayAccessLog = { file: VirtualGatewayFileAccessLog };
+const VirtualGatewayAccessLog = /*@__PURE__*/ __L.at(__c10, 6);
 export interface VirtualGatewayLogging {
   accessLog?: VirtualGatewayAccessLog;
 }
+const VirtualGatewayLogging = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<VirtualGatewayLogging>;
 export interface VirtualGatewaySpec {
   backendDefaults?: VirtualGatewayBackendDefaults;
   listeners: VirtualGatewayListener[];
   logging?: VirtualGatewayLogging;
 }
+const VirtualGatewaySpec = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<VirtualGatewaySpec>;
 export interface CreateVirtualGatewayInput {
   virtualGatewayName: string;
   meshName: string;
@@ -612,10 +822,15 @@ export interface CreateVirtualGatewayInput {
   clientToken?: string;
   meshOwner?: string;
 }
+const CreateVirtualGatewayInput = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<CreateVirtualGatewayInput>;
 export type VirtualGatewayStatusCode = string;
 export interface VirtualGatewayStatus {
   status: string;
 }
+const VirtualGatewayStatus = GatewayRouteStatus as any as S.Schema<VirtualGatewayStatus>;
 export interface VirtualGatewayData {
   meshName: string;
   virtualGatewayName: string;
@@ -623,9 +838,14 @@ export interface VirtualGatewayData {
   metadata: ResourceMetadata;
   status: VirtualGatewayStatus;
 }
+const VirtualGatewayData = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<VirtualGatewayData>;
 export interface CreateVirtualGatewayOutput {
   virtualGateway: VirtualGatewayData;
 }
+const CreateVirtualGatewayOutput = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<CreateVirtualGatewayOutput>;
 export type Hostname = string;
 export type DnsResponseType = string;
 export interface DnsServiceDiscovery {
@@ -633,6 +853,7 @@ export interface DnsServiceDiscovery {
   responseType?: string;
   ipPreference?: string;
 }
+const DnsServiceDiscovery = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<DnsServiceDiscovery>;
 export type AwsCloudMapName = string;
 export type AwsCloudMapInstanceAttributeKey = string;
 export type AwsCloudMapInstanceAttributeValue = string;
@@ -640,21 +861,32 @@ export interface AwsCloudMapInstanceAttribute {
   key: string;
   value: string;
 }
+const AwsCloudMapInstanceAttribute = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<AwsCloudMapInstanceAttribute>;
 export type AwsCloudMapInstanceAttributes = AwsCloudMapInstanceAttribute[];
+const AwsCloudMapInstanceAttributes = /*@__PURE__*/ __L.at(__c11, 6);
 export interface AwsCloudMapServiceDiscovery {
   namespaceName: string;
   serviceName: string;
   attributes?: AwsCloudMapInstanceAttribute[];
   ipPreference?: string;
 }
+const AwsCloudMapServiceDiscovery = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<AwsCloudMapServiceDiscovery>;
 export type ServiceDiscovery =
   | { dns: DnsServiceDiscovery; awsCloudMap?: never }
   | { dns?: never; awsCloudMap: AwsCloudMapServiceDiscovery };
+const ServiceDiscovery = /*@__PURE__*/ __L.at(__c12, 0);
 export type PortProtocol = string;
 export interface PortMapping {
   port: number;
   protocol: string;
 }
+const PortMapping = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<PortMapping>;
 export type ListenerTlsMode = string;
 export interface ListenerTlsAcmCertificate {
   certificateArn: string;
@@ -671,6 +903,8 @@ export type ListenerTlsCertificate =
   | { acm: ListenerTlsAcmCertificate; file?: never; sds?: never }
   | { acm?: never; file: ListenerTlsFileCertificate; sds?: never }
   | { acm?: never; file?: never; sds: ListenerTlsSdsCertificate };
+const ListenerTlsCertificate =
+  VirtualGatewayListenerTlsCertificate as any as S.Schema<ListenerTlsCertificate>;
 export interface TlsValidationContextFileTrust {
   certificateChain: string;
 }
@@ -684,11 +918,14 @@ export interface ListenerTlsValidationContext {
   trust: ListenerTlsValidationContextTrust;
   subjectAlternativeNames?: SubjectAlternativeNames;
 }
+const ListenerTlsValidationContext =
+  VirtualGatewayListenerTlsValidationContext as any as S.Schema<ListenerTlsValidationContext>;
 export interface ListenerTls {
   mode: string;
   certificate: ListenerTlsCertificate;
   validation?: ListenerTlsValidationContext;
 }
+const ListenerTls = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<ListenerTls>;
 export type HealthCheckTimeoutMillis = number;
 export type HealthCheckIntervalMillis = number;
 export type HealthCheckThreshold = number;
@@ -701,11 +938,13 @@ export interface HealthCheckPolicy {
   healthyThreshold: number;
   unhealthyThreshold: number;
 }
+const HealthCheckPolicy = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<HealthCheckPolicy>;
 export type ListenerTimeout =
   | { tcp: TcpTimeout; http?: never; http2?: never; grpc?: never }
   | { tcp?: never; http: HttpTimeout; http2?: never; grpc?: never }
   | { tcp?: never; http?: never; http2: HttpTimeout; grpc?: never }
   | { tcp?: never; http?: never; http2?: never; grpc: GrpcTimeout };
+const ListenerTimeout = /*@__PURE__*/ __L.at(__c12, 4);
 export type OutlierDetectionMaxServerErrors = number;
 export type OutlierDetectionMaxEjectionPercent = number;
 export interface OutlierDetection {
@@ -714,24 +953,36 @@ export interface OutlierDetection {
   baseEjectionDuration: Duration;
   maxEjectionPercent: number;
 }
+const OutlierDetection = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<OutlierDetection>;
 export interface VirtualNodeTcpConnectionPool {
   maxConnections: number;
 }
+const VirtualNodeTcpConnectionPool = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<VirtualNodeTcpConnectionPool>;
 export interface VirtualNodeHttpConnectionPool {
   maxConnections: number;
   maxPendingRequests?: number;
 }
+const VirtualNodeHttpConnectionPool =
+  VirtualGatewayHttpConnectionPool as any as S.Schema<VirtualNodeHttpConnectionPool>;
 export interface VirtualNodeHttp2ConnectionPool {
   maxRequests: number;
 }
+const VirtualNodeHttp2ConnectionPool =
+  VirtualGatewayHttp2ConnectionPool as any as S.Schema<VirtualNodeHttp2ConnectionPool>;
 export interface VirtualNodeGrpcConnectionPool {
   maxRequests: number;
 }
+const VirtualNodeGrpcConnectionPool =
+  VirtualGatewayHttp2ConnectionPool as any as S.Schema<VirtualNodeGrpcConnectionPool>;
 export type VirtualNodeConnectionPool =
   | { tcp: VirtualNodeTcpConnectionPool; http?: never; http2?: never; grpc?: never }
   | { tcp?: never; http: VirtualNodeHttpConnectionPool; http2?: never; grpc?: never }
   | { tcp?: never; http?: never; http2: VirtualNodeHttp2ConnectionPool; grpc?: never }
   | { tcp?: never; http?: never; http2?: never; grpc: VirtualNodeGrpcConnectionPool };
+const VirtualNodeConnectionPool = /*@__PURE__*/ __L.at(__c12, 7);
 export interface Listener {
   portMapping: PortMapping;
   tls?: ListenerTls;
@@ -740,10 +991,14 @@ export interface Listener {
   outlierDetection?: OutlierDetection;
   connectionPool?: VirtualNodeConnectionPool;
 }
+const Listener = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<Listener>;
 export type Listeners = Listener[];
+const Listeners = /*@__PURE__*/ __L.at(__c13, 1);
 export type ClientTlsCertificate =
   | { file: ListenerTlsFileCertificate; sds?: never }
   | { file?: never; sds: ListenerTlsSdsCertificate };
+const ClientTlsCertificate =
+  VirtualGatewayClientTlsCertificate as any as S.Schema<ClientTlsCertificate>;
 export type CertificateAuthorityArns = string[];
 export interface TlsValidationContextAcmTrust {
   certificateAuthorityArns: string[];
@@ -752,36 +1007,54 @@ export type TlsValidationContextTrust =
   | { acm: TlsValidationContextAcmTrust; file?: never; sds?: never }
   | { acm?: never; file: TlsValidationContextFileTrust; sds?: never }
   | { acm?: never; file?: never; sds: TlsValidationContextSdsTrust };
+const TlsValidationContextTrust =
+  VirtualGatewayTlsValidationContextTrust as any as S.Schema<TlsValidationContextTrust>;
 export interface TlsValidationContext {
   trust: TlsValidationContextTrust;
   subjectAlternativeNames?: SubjectAlternativeNames;
 }
+const TlsValidationContext = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<TlsValidationContext>;
 export interface ClientPolicyTls {
   enforce?: boolean;
   ports?: number[];
   certificate?: ClientTlsCertificate;
   validation: TlsValidationContext;
 }
+const ClientPolicyTls = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<ClientPolicyTls>;
 export interface ClientPolicy {
   tls?: ClientPolicyTls;
 }
+const ClientPolicy = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<ClientPolicy>;
 export interface VirtualServiceBackend {
   virtualServiceName: string;
   clientPolicy?: ClientPolicy;
 }
+const VirtualServiceBackend = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<VirtualServiceBackend>;
 export type Backend = { virtualService: VirtualServiceBackend };
+const Backend = /*@__PURE__*/ __L.at(__c13, 6);
 export type Backends = Backend[];
+const Backends = /*@__PURE__*/ __L.at(__c13, 7);
 export interface BackendDefaults {
   clientPolicy?: ClientPolicy;
 }
+const BackendDefaults = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<BackendDefaults>;
 export interface FileAccessLog {
   path: string;
   format?: LoggingFormat;
 }
+const FileAccessLog = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<FileAccessLog>;
 export type AccessLog = { file: FileAccessLog };
+const AccessLog = /*@__PURE__*/ __L.at(__c14, 2);
 export interface Logging {
   accessLog?: AccessLog;
 }
+const Logging = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<Logging>;
 export interface VirtualNodeSpec {
   serviceDiscovery?: ServiceDiscovery;
   listeners?: Listener[];
@@ -789,6 +1062,7 @@ export interface VirtualNodeSpec {
   backendDefaults?: BackendDefaults;
   logging?: Logging;
 }
+const VirtualNodeSpec = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<VirtualNodeSpec>;
 export interface CreateVirtualNodeInput {
   virtualNodeName: string;
   meshName: string;
@@ -797,10 +1071,15 @@ export interface CreateVirtualNodeInput {
   clientToken?: string;
   meshOwner?: string;
 }
+const CreateVirtualNodeInput = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<CreateVirtualNodeInput>;
 export type VirtualNodeStatusCode = string;
 export interface VirtualNodeStatus {
   status: string;
 }
+const VirtualNodeStatus = GatewayRouteStatus as any as S.Schema<VirtualNodeStatus>;
 export interface VirtualNodeData {
   meshName: string;
   virtualNodeName: string;
@@ -808,16 +1087,27 @@ export interface VirtualNodeData {
   metadata: ResourceMetadata;
   status: VirtualNodeStatus;
 }
+const VirtualNodeData = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<VirtualNodeData>;
 export interface CreateVirtualNodeOutput {
   virtualNode: VirtualNodeData;
 }
+const CreateVirtualNodeOutput = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<CreateVirtualNodeOutput>;
 export interface VirtualRouterListener {
   portMapping: PortMapping;
 }
+const VirtualRouterListener = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<VirtualRouterListener>;
 export type VirtualRouterListeners = VirtualRouterListener[];
+const VirtualRouterListeners = /*@__PURE__*/ __L.at(__c15, 1);
 export interface VirtualRouterSpec {
   listeners?: VirtualRouterListener[];
 }
+const VirtualRouterSpec = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<VirtualRouterSpec>;
 export interface CreateVirtualRouterInput {
   virtualRouterName: string;
   meshName: string;
@@ -826,10 +1116,15 @@ export interface CreateVirtualRouterInput {
   clientToken?: string;
   meshOwner?: string;
 }
+const CreateVirtualRouterInput = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<CreateVirtualRouterInput>;
 export type VirtualRouterStatusCode = string;
 export interface VirtualRouterStatus {
   status: string;
 }
+const VirtualRouterStatus = GatewayRouteStatus as any as S.Schema<VirtualRouterStatus>;
 export interface VirtualRouterData {
   meshName: string;
   virtualRouterName: string;
@@ -837,21 +1132,36 @@ export interface VirtualRouterData {
   metadata: ResourceMetadata;
   status: VirtualRouterStatus;
 }
+const VirtualRouterData = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<VirtualRouterData>;
 export interface CreateVirtualRouterOutput {
   virtualRouter: VirtualRouterData;
 }
+const CreateVirtualRouterOutput = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<CreateVirtualRouterOutput>;
 export interface VirtualNodeServiceProvider {
   virtualNodeName: string;
 }
+const VirtualNodeServiceProvider = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<VirtualNodeServiceProvider>;
 export interface VirtualRouterServiceProvider {
   virtualRouterName: string;
 }
+const VirtualRouterServiceProvider = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<VirtualRouterServiceProvider>;
 export type VirtualServiceProvider =
   | { virtualNode: VirtualNodeServiceProvider; virtualRouter?: never }
   | { virtualNode?: never; virtualRouter: VirtualRouterServiceProvider };
+const VirtualServiceProvider = /*@__PURE__*/ __L.at(__c16, 0);
 export interface VirtualServiceSpec {
   provider?: VirtualServiceProvider;
 }
+const VirtualServiceSpec = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<VirtualServiceSpec>;
 export interface CreateVirtualServiceInput {
   virtualServiceName: string;
   meshName: string;
@@ -860,10 +1170,15 @@ export interface CreateVirtualServiceInput {
   clientToken?: string;
   meshOwner?: string;
 }
+const CreateVirtualServiceInput = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<CreateVirtualServiceInput>;
 export type VirtualServiceStatusCode = string;
 export interface VirtualServiceStatus {
   status: string;
 }
+const VirtualServiceStatus = GatewayRouteStatus as any as S.Schema<VirtualServiceStatus>;
 export interface VirtualServiceData {
   meshName: string;
   virtualServiceName: string;
@@ -871,122 +1186,198 @@ export interface VirtualServiceData {
   metadata: ResourceMetadata;
   status: VirtualServiceStatus;
 }
+const VirtualServiceData = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<VirtualServiceData>;
 export interface CreateVirtualServiceOutput {
   virtualService: VirtualServiceData;
 }
+const CreateVirtualServiceOutput = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<CreateVirtualServiceOutput>;
 export interface DeleteGatewayRouteInput {
   gatewayRouteName: string;
   meshName: string;
   virtualGatewayName: string;
   meshOwner?: string;
 }
+const DeleteGatewayRouteInput = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<DeleteGatewayRouteInput>;
 export interface DeleteGatewayRouteOutput {
   gatewayRoute: GatewayRouteData;
 }
+const DeleteGatewayRouteOutput =
+  CreateGatewayRouteOutput as any as S.Schema<DeleteGatewayRouteOutput>;
 export interface DeleteMeshInput {
   meshName: string;
 }
+const DeleteMeshInput = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<DeleteMeshInput>;
 export interface DeleteMeshOutput {
   mesh: MeshData;
 }
+const DeleteMeshOutput = CreateMeshOutput as any as S.Schema<DeleteMeshOutput>;
 export interface DeleteRouteInput {
   routeName: string;
   meshName: string;
   virtualRouterName: string;
   meshOwner?: string;
 }
+const DeleteRouteInput = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<DeleteRouteInput>;
 export interface DeleteRouteOutput {
   route: RouteData;
 }
+const DeleteRouteOutput = CreateRouteOutput as any as S.Schema<DeleteRouteOutput>;
 export interface DeleteVirtualGatewayInput {
   virtualGatewayName: string;
   meshName: string;
   meshOwner?: string;
 }
+const DeleteVirtualGatewayInput = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<DeleteVirtualGatewayInput>;
 export interface DeleteVirtualGatewayOutput {
   virtualGateway: VirtualGatewayData;
 }
+const DeleteVirtualGatewayOutput =
+  CreateVirtualGatewayOutput as any as S.Schema<DeleteVirtualGatewayOutput>;
 export interface DeleteVirtualNodeInput {
   virtualNodeName: string;
   meshName: string;
   meshOwner?: string;
 }
+const DeleteVirtualNodeInput = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<DeleteVirtualNodeInput>;
 export interface DeleteVirtualNodeOutput {
   virtualNode: VirtualNodeData;
 }
+const DeleteVirtualNodeOutput = CreateVirtualNodeOutput as any as S.Schema<DeleteVirtualNodeOutput>;
 export interface DeleteVirtualRouterInput {
   virtualRouterName: string;
   meshName: string;
   meshOwner?: string;
 }
+const DeleteVirtualRouterInput = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<DeleteVirtualRouterInput>;
 export interface DeleteVirtualRouterOutput {
   virtualRouter: VirtualRouterData;
 }
+const DeleteVirtualRouterOutput =
+  CreateVirtualRouterOutput as any as S.Schema<DeleteVirtualRouterOutput>;
 export interface DeleteVirtualServiceInput {
   virtualServiceName: string;
   meshName: string;
   meshOwner?: string;
 }
+const DeleteVirtualServiceInput = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<DeleteVirtualServiceInput>;
 export interface DeleteVirtualServiceOutput {
   virtualService: VirtualServiceData;
 }
+const DeleteVirtualServiceOutput =
+  CreateVirtualServiceOutput as any as S.Schema<DeleteVirtualServiceOutput>;
 export interface DescribeGatewayRouteInput {
   gatewayRouteName: string;
   meshName: string;
   virtualGatewayName: string;
   meshOwner?: string;
 }
+const DescribeGatewayRouteInput = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<DescribeGatewayRouteInput>;
 export interface DescribeGatewayRouteOutput {
   gatewayRoute: GatewayRouteData;
 }
+const DescribeGatewayRouteOutput = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<DescribeGatewayRouteOutput>;
 export interface DescribeMeshInput {
   meshName: string;
   meshOwner?: string;
 }
+const DescribeMeshInput = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<DescribeMeshInput>;
 export interface DescribeMeshOutput {
   mesh: MeshData;
 }
+const DescribeMeshOutput = CreateMeshOutput as any as S.Schema<DescribeMeshOutput>;
 export interface DescribeRouteInput {
   routeName: string;
   meshName: string;
   meshOwner?: string;
   virtualRouterName: string;
 }
+const DescribeRouteInput = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<DescribeRouteInput>;
 export interface DescribeRouteOutput {
   route: RouteData;
 }
+const DescribeRouteOutput = CreateRouteOutput as any as S.Schema<DescribeRouteOutput>;
 export interface DescribeVirtualGatewayInput {
   virtualGatewayName: string;
   meshName: string;
   meshOwner?: string;
 }
+const DescribeVirtualGatewayInput = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<DescribeVirtualGatewayInput>;
 export interface DescribeVirtualGatewayOutput {
   virtualGateway: VirtualGatewayData;
 }
+const DescribeVirtualGatewayOutput =
+  CreateVirtualGatewayOutput as any as S.Schema<DescribeVirtualGatewayOutput>;
 export interface DescribeVirtualNodeInput {
   virtualNodeName: string;
   meshName: string;
   meshOwner?: string;
 }
+const DescribeVirtualNodeInput = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<DescribeVirtualNodeInput>;
 export interface DescribeVirtualNodeOutput {
   virtualNode: VirtualNodeData;
 }
+const DescribeVirtualNodeOutput = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<DescribeVirtualNodeOutput>;
 export interface DescribeVirtualRouterInput {
   virtualRouterName: string;
   meshName: string;
   meshOwner?: string;
 }
+const DescribeVirtualRouterInput = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<DescribeVirtualRouterInput>;
 export interface DescribeVirtualRouterOutput {
   virtualRouter: VirtualRouterData;
 }
+const DescribeVirtualRouterOutput =
+  CreateVirtualRouterOutput as any as S.Schema<DescribeVirtualRouterOutput>;
 export interface DescribeVirtualServiceInput {
   virtualServiceName: string;
   meshName: string;
   meshOwner?: string;
 }
+const DescribeVirtualServiceInput = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<DescribeVirtualServiceInput>;
 export interface DescribeVirtualServiceOutput {
   virtualService: VirtualServiceData;
 }
+const DescribeVirtualServiceOutput =
+  CreateVirtualServiceOutput as any as S.Schema<DescribeVirtualServiceOutput>;
 export type ListGatewayRoutesLimit = number;
 export interface ListGatewayRoutesInput {
   meshName: string;
@@ -995,6 +1386,10 @@ export interface ListGatewayRoutesInput {
   limit?: number;
   meshOwner?: string;
 }
+const ListGatewayRoutesInput = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<ListGatewayRoutesInput>;
 export interface GatewayRouteRef {
   meshName: string;
   gatewayRouteName: string;
@@ -1006,16 +1401,23 @@ export interface GatewayRouteRef {
   createdAt: Date;
   lastUpdatedAt: Date;
 }
+const GatewayRouteRef = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<GatewayRouteRef>;
 export type GatewayRouteList = GatewayRouteRef[];
+const GatewayRouteList = /*@__PURE__*/ __L.at(__c18, 7);
 export interface ListGatewayRoutesOutput {
   gatewayRoutes: GatewayRouteRef[];
   nextToken?: string;
 }
+const ListGatewayRoutesOutput = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ListGatewayRoutesOutput>;
 export type ListMeshesLimit = number;
 export interface ListMeshesInput {
   nextToken?: string;
   limit?: number;
 }
+const ListMeshesInput = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<ListMeshesInput>;
 export interface MeshRef {
   meshName: string;
   meshOwner: string;
@@ -1025,11 +1427,14 @@ export interface MeshRef {
   createdAt: Date;
   lastUpdatedAt: Date;
 }
+const MeshRef = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<MeshRef>;
 export type MeshList = MeshRef[];
+const MeshList = /*@__PURE__*/ __L.at(__c19, 3);
 export interface ListMeshesOutput {
   meshes: MeshRef[];
   nextToken?: string;
 }
+const ListMeshesOutput = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<ListMeshesOutput>;
 export type ListRoutesLimit = number;
 export interface ListRoutesInput {
   meshName: string;
@@ -1038,6 +1443,7 @@ export interface ListRoutesInput {
   limit?: number;
   meshOwner?: string;
 }
+const ListRoutesInput = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<ListRoutesInput>;
 export interface RouteRef {
   meshName: string;
   virtualRouterName: string;
@@ -1049,21 +1455,32 @@ export interface RouteRef {
   createdAt: Date;
   lastUpdatedAt: Date;
 }
+const RouteRef = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<RouteRef>;
 export type RouteList = RouteRef[];
+const RouteList = /*@__PURE__*/ __L.at(__c19, 7);
 export interface ListRoutesOutput {
   routes: RouteRef[];
   nextToken?: string;
 }
+const ListRoutesOutput = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<ListRoutesOutput>;
 export type TagsLimit = number;
 export interface ListTagsForResourceInput {
   resourceArn: string;
   nextToken?: string;
   limit?: number;
 }
+const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   tags: TagRef[];
   nextToken?: string;
 }
+const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<ListTagsForResourceOutput>;
 export type ListVirtualGatewaysLimit = number;
 export interface ListVirtualGatewaysInput {
   meshName: string;
@@ -1071,6 +1488,10 @@ export interface ListVirtualGatewaysInput {
   limit?: number;
   meshOwner?: string;
 }
+const ListVirtualGatewaysInput = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<ListVirtualGatewaysInput>;
 export interface VirtualGatewayRef {
   meshName: string;
   virtualGatewayName: string;
@@ -1081,11 +1502,17 @@ export interface VirtualGatewayRef {
   createdAt: Date;
   lastUpdatedAt: Date;
 }
+const VirtualGatewayRef = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<VirtualGatewayRef>;
 export type VirtualGatewayList = VirtualGatewayRef[];
+const VirtualGatewayList = /*@__PURE__*/ __L.at(__c20, 5);
 export interface ListVirtualGatewaysOutput {
   virtualGateways: VirtualGatewayRef[];
   nextToken?: string;
 }
+const ListVirtualGatewaysOutput = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<ListVirtualGatewaysOutput>;
 export type ListVirtualNodesLimit = number;
 export interface ListVirtualNodesInput {
   meshName: string;
@@ -1093,6 +1520,10 @@ export interface ListVirtualNodesInput {
   limit?: number;
   meshOwner?: string;
 }
+const ListVirtualNodesInput = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<ListVirtualNodesInput>;
 export interface VirtualNodeRef {
   meshName: string;
   virtualNodeName: string;
@@ -1103,11 +1534,17 @@ export interface VirtualNodeRef {
   createdAt: Date;
   lastUpdatedAt: Date;
 }
+const VirtualNodeRef = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<VirtualNodeRef>;
 export type VirtualNodeList = VirtualNodeRef[];
+const VirtualNodeList = /*@__PURE__*/ __L.at(__c21, 1);
 export interface ListVirtualNodesOutput {
   virtualNodes: VirtualNodeRef[];
   nextToken?: string;
 }
+const ListVirtualNodesOutput = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<ListVirtualNodesOutput>;
 export type ListVirtualRoutersLimit = number;
 export interface ListVirtualRoutersInput {
   meshName: string;
@@ -1115,6 +1552,10 @@ export interface ListVirtualRoutersInput {
   limit?: number;
   meshOwner?: string;
 }
+const ListVirtualRoutersInput = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<ListVirtualRoutersInput>;
 export interface VirtualRouterRef {
   meshName: string;
   virtualRouterName: string;
@@ -1125,11 +1566,17 @@ export interface VirtualRouterRef {
   createdAt: Date;
   lastUpdatedAt: Date;
 }
+const VirtualRouterRef = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<VirtualRouterRef>;
 export type VirtualRouterList = VirtualRouterRef[];
+const VirtualRouterList = /*@__PURE__*/ __L.at(__c21, 5);
 export interface ListVirtualRoutersOutput {
   virtualRouters: VirtualRouterRef[];
   nextToken?: string;
 }
+const ListVirtualRoutersOutput = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<ListVirtualRoutersOutput>;
 export type ListVirtualServicesLimit = number;
 export interface ListVirtualServicesInput {
   meshName: string;
@@ -1137,6 +1584,10 @@ export interface ListVirtualServicesInput {
   limit?: number;
   meshOwner?: string;
 }
+const ListVirtualServicesInput = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<ListVirtualServicesInput>;
 export interface VirtualServiceRef {
   meshName: string;
   virtualServiceName: string;
@@ -1147,22 +1598,33 @@ export interface VirtualServiceRef {
   createdAt: Date;
   lastUpdatedAt: Date;
 }
+const VirtualServiceRef = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<VirtualServiceRef>;
 export type VirtualServiceList = VirtualServiceRef[];
+const VirtualServiceList = /*@__PURE__*/ __L.at(__c22, 1);
 export interface ListVirtualServicesOutput {
   virtualServices: VirtualServiceRef[];
   nextToken?: string;
 }
+const ListVirtualServicesOutput = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<ListVirtualServicesOutput>;
 export interface TagResourceInput {
   resourceArn: string;
   tags: TagRef[];
 }
+const TagResourceInput = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
+const TagResourceOutput = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
+const TagKeyList = HttpRetryPolicyEvents as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceInput = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
+const UntagResourceOutput = TagResourceOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateGatewayRouteInput {
   gatewayRouteName: string;
   meshName: string;
@@ -1171,17 +1633,25 @@ export interface UpdateGatewayRouteInput {
   clientToken?: string;
   meshOwner?: string;
 }
+const UpdateGatewayRouteInput = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<UpdateGatewayRouteInput>;
 export interface UpdateGatewayRouteOutput {
   gatewayRoute: GatewayRouteData;
 }
+const UpdateGatewayRouteOutput =
+  CreateGatewayRouteOutput as any as S.Schema<UpdateGatewayRouteOutput>;
 export interface UpdateMeshInput {
   meshName: string;
   spec?: MeshSpec;
   clientToken?: string;
 }
+const UpdateMeshInput = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<UpdateMeshInput>;
 export interface UpdateMeshOutput {
   mesh: MeshData;
 }
+const UpdateMeshOutput = CreateMeshOutput as any as S.Schema<UpdateMeshOutput>;
 export interface UpdateRouteInput {
   routeName: string;
   meshName: string;
@@ -1190,9 +1660,11 @@ export interface UpdateRouteInput {
   clientToken?: string;
   meshOwner?: string;
 }
+const UpdateRouteInput = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<UpdateRouteInput>;
 export interface UpdateRouteOutput {
   route: RouteData;
 }
+const UpdateRouteOutput = CreateRouteOutput as any as S.Schema<UpdateRouteOutput>;
 export interface UpdateVirtualGatewayInput {
   virtualGatewayName: string;
   meshName: string;
@@ -1200,9 +1672,15 @@ export interface UpdateVirtualGatewayInput {
   clientToken?: string;
   meshOwner?: string;
 }
+const UpdateVirtualGatewayInput = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<UpdateVirtualGatewayInput>;
 export interface UpdateVirtualGatewayOutput {
   virtualGateway: VirtualGatewayData;
 }
+const UpdateVirtualGatewayOutput =
+  CreateVirtualGatewayOutput as any as S.Schema<UpdateVirtualGatewayOutput>;
 export interface UpdateVirtualNodeInput {
   virtualNodeName: string;
   meshName: string;
@@ -1210,9 +1688,14 @@ export interface UpdateVirtualNodeInput {
   clientToken?: string;
   meshOwner?: string;
 }
+const UpdateVirtualNodeInput = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<UpdateVirtualNodeInput>;
 export interface UpdateVirtualNodeOutput {
   virtualNode: VirtualNodeData;
 }
+const UpdateVirtualNodeOutput = CreateVirtualNodeOutput as any as S.Schema<UpdateVirtualNodeOutput>;
 export interface UpdateVirtualRouterInput {
   virtualRouterName: string;
   meshName: string;
@@ -1220,9 +1703,15 @@ export interface UpdateVirtualRouterInput {
   clientToken?: string;
   meshOwner?: string;
 }
+const UpdateVirtualRouterInput = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<UpdateVirtualRouterInput>;
 export interface UpdateVirtualRouterOutput {
   virtualRouter: VirtualRouterData;
 }
+const UpdateVirtualRouterOutput =
+  CreateVirtualRouterOutput as any as S.Schema<UpdateVirtualRouterOutput>;
 export interface UpdateVirtualServiceInput {
   virtualServiceName: string;
   meshName: string;
@@ -1230,9 +1719,15 @@ export interface UpdateVirtualServiceInput {
   clientToken?: string;
   meshOwner?: string;
 }
+const UpdateVirtualServiceInput = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<UpdateVirtualServiceInput>;
 export interface UpdateVirtualServiceOutput {
   virtualService: VirtualServiceData;
 }
+const UpdateVirtualServiceOutput =
+  CreateVirtualServiceOutput as any as S.Schema<UpdateVirtualServiceOutput>;
 export type CreateGatewayRouteError =
   | BadRequestException
   | ConflictException
@@ -1258,8 +1753,8 @@ export const createGatewayRoute: API.OperationMethod<
   CreateGatewayRouteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<CreateGatewayRouteInput>,
-  output: __S(31) as any as S.Schema<CreateGatewayRouteOutput>,
+  input: CreateGatewayRouteInput,
+  output: CreateGatewayRouteOutput,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1301,8 +1796,8 @@ export const createMesh: API.OperationMethod<
   CreateMeshError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<CreateMeshInput>,
-  output: __S(38) as any as S.Schema<CreateMeshOutput>,
+  input: CreateMeshInput,
+  output: CreateMeshOutput,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1342,8 +1837,8 @@ export const createRoute: API.OperationMethod<
   CreateRouteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<CreateRouteInput>,
-  output: __S(58) as any as S.Schema<CreateRouteOutput>,
+  input: CreateRouteInput,
+  output: CreateRouteOutput,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1385,8 +1880,8 @@ export const createVirtualGateway: API.OperationMethod<
   CreateVirtualGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<CreateVirtualGatewayInput>,
-  output: __S(91) as any as S.Schema<CreateVirtualGatewayOutput>,
+  input: CreateVirtualGatewayInput,
+  output: CreateVirtualGatewayOutput,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1447,8 +1942,8 @@ export const createVirtualNode: API.OperationMethod<
   CreateVirtualNodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<CreateVirtualNodeInput>,
-  output: __S(119) as any as S.Schema<CreateVirtualNodeOutput>,
+  input: CreateVirtualNodeInput,
+  output: CreateVirtualNodeOutput,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1491,8 +1986,8 @@ export const createVirtualRouter: API.OperationMethod<
   CreateVirtualRouterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<CreateVirtualRouterInput>,
-  output: __S(125) as any as S.Schema<CreateVirtualRouterOutput>,
+  input: CreateVirtualRouterInput,
+  output: CreateVirtualRouterOutput,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1535,8 +2030,8 @@ export const createVirtualService: API.OperationMethod<
   CreateVirtualServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130) as any as S.Schema<CreateVirtualServiceInput>,
-  output: __S(132) as any as S.Schema<CreateVirtualServiceOutput>,
+  input: CreateVirtualServiceInput,
+  output: CreateVirtualServiceOutput,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1570,8 +2065,8 @@ export const deleteGatewayRoute: API.OperationMethod<
   DeleteGatewayRouteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133) as any as S.Schema<DeleteGatewayRouteInput>,
-  output: __S(31) as any as S.Schema<DeleteGatewayRouteOutput>,
+  input: DeleteGatewayRouteInput,
+  output: DeleteGatewayRouteOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1607,8 +2102,8 @@ export const deleteMesh: API.OperationMethod<
   DeleteMeshError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134) as any as S.Schema<DeleteMeshInput>,
-  output: __S(38) as any as S.Schema<DeleteMeshOutput>,
+  input: DeleteMeshInput,
+  output: DeleteMeshOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1641,8 +2136,8 @@ export const deleteRoute: API.OperationMethod<
   DeleteRouteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<DeleteRouteInput>,
-  output: __S(58) as any as S.Schema<DeleteRouteOutput>,
+  input: DeleteRouteInput,
+  output: DeleteRouteOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1676,8 +2171,8 @@ export const deleteVirtualGateway: API.OperationMethod<
   DeleteVirtualGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<DeleteVirtualGatewayInput>,
-  output: __S(91) as any as S.Schema<DeleteVirtualGatewayOutput>,
+  input: DeleteVirtualGatewayInput,
+  output: DeleteVirtualGatewayOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1713,8 +2208,8 @@ export const deleteVirtualNode: API.OperationMethod<
   DeleteVirtualNodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<DeleteVirtualNodeInput>,
-  output: __S(119) as any as S.Schema<DeleteVirtualNodeOutput>,
+  input: DeleteVirtualNodeInput,
+  output: DeleteVirtualNodeOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1750,8 +2245,8 @@ export const deleteVirtualRouter: API.OperationMethod<
   DeleteVirtualRouterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<DeleteVirtualRouterInput>,
-  output: __S(125) as any as S.Schema<DeleteVirtualRouterOutput>,
+  input: DeleteVirtualRouterInput,
+  output: DeleteVirtualRouterOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1784,8 +2279,8 @@ export const deleteVirtualService: API.OperationMethod<
   DeleteVirtualServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<DeleteVirtualServiceInput>,
-  output: __S(132) as any as S.Schema<DeleteVirtualServiceOutput>,
+  input: DeleteVirtualServiceInput,
+  output: DeleteVirtualServiceOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1817,8 +2312,8 @@ export const describeGatewayRoute: API.OperationMethod<
   DescribeGatewayRouteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<DescribeGatewayRouteInput>,
-  output: __S(141) as any as S.Schema<DescribeGatewayRouteOutput>,
+  input: DescribeGatewayRouteInput,
+  output: DescribeGatewayRouteOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1849,8 +2344,8 @@ export const describeMesh: API.OperationMethod<
   DescribeMeshError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<DescribeMeshInput>,
-  output: __S(38) as any as S.Schema<DescribeMeshOutput>,
+  input: DescribeMeshInput,
+  output: DescribeMeshOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1881,8 +2376,8 @@ export const describeRoute: API.OperationMethod<
   DescribeRouteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143) as any as S.Schema<DescribeRouteInput>,
-  output: __S(58) as any as S.Schema<DescribeRouteOutput>,
+  input: DescribeRouteInput,
+  output: DescribeRouteOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1913,8 +2408,8 @@ export const describeVirtualGateway: API.OperationMethod<
   DescribeVirtualGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144) as any as S.Schema<DescribeVirtualGatewayInput>,
-  output: __S(91) as any as S.Schema<DescribeVirtualGatewayOutput>,
+  input: DescribeVirtualGatewayInput,
+  output: DescribeVirtualGatewayOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1945,8 +2440,8 @@ export const describeVirtualNode: API.OperationMethod<
   DescribeVirtualNodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<DescribeVirtualNodeInput>,
-  output: __S(146) as any as S.Schema<DescribeVirtualNodeOutput>,
+  input: DescribeVirtualNodeInput,
+  output: DescribeVirtualNodeOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1977,8 +2472,8 @@ export const describeVirtualRouter: API.OperationMethod<
   DescribeVirtualRouterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147) as any as S.Schema<DescribeVirtualRouterInput>,
-  output: __S(125) as any as S.Schema<DescribeVirtualRouterOutput>,
+  input: DescribeVirtualRouterInput,
+  output: DescribeVirtualRouterOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2009,8 +2504,8 @@ export const describeVirtualService: API.OperationMethod<
   DescribeVirtualServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148) as any as S.Schema<DescribeVirtualServiceInput>,
-  output: __S(132) as any as S.Schema<DescribeVirtualServiceOutput>,
+  input: DescribeVirtualServiceInput,
+  output: DescribeVirtualServiceOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2043,8 +2538,8 @@ export const listGatewayRoutes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GatewayRouteRef
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(149) as any as S.Schema<ListGatewayRoutesInput>,
-  output: __S(152) as any as S.Schema<ListGatewayRoutesOutput>,
+  input: ListGatewayRoutesInput,
+  output: ListGatewayRoutesOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2082,8 +2577,8 @@ export const listMeshes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MeshRef
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(153) as any as S.Schema<ListMeshesInput>,
-  output: __S(156) as any as S.Schema<ListMeshesOutput>,
+  input: ListMeshesInput,
+  output: ListMeshesOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2121,8 +2616,8 @@ export const listRoutes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RouteRef
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(157) as any as S.Schema<ListRoutesInput>,
-  output: __S(160) as any as S.Schema<ListRoutesOutput>,
+  input: ListRoutesInput,
+  output: ListRoutesOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2160,8 +2655,8 @@ export const listTagsForResource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TagRef
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(161) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(162) as any as S.Schema<ListTagsForResourceOutput>,
+  input: ListTagsForResourceInput,
+  output: ListTagsForResourceOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2199,8 +2694,8 @@ export const listVirtualGateways: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   VirtualGatewayRef
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(163) as any as S.Schema<ListVirtualGatewaysInput>,
-  output: __S(166) as any as S.Schema<ListVirtualGatewaysOutput>,
+  input: ListVirtualGatewaysInput,
+  output: ListVirtualGatewaysOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2238,8 +2733,8 @@ export const listVirtualNodes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   VirtualNodeRef
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(167) as any as S.Schema<ListVirtualNodesInput>,
-  output: __S(170) as any as S.Schema<ListVirtualNodesOutput>,
+  input: ListVirtualNodesInput,
+  output: ListVirtualNodesOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2277,8 +2772,8 @@ export const listVirtualRouters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   VirtualRouterRef
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(171) as any as S.Schema<ListVirtualRoutersInput>,
-  output: __S(174) as any as S.Schema<ListVirtualRoutersOutput>,
+  input: ListVirtualRoutersInput,
+  output: ListVirtualRoutersOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2316,8 +2811,8 @@ export const listVirtualServices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   VirtualServiceRef
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(175) as any as S.Schema<ListVirtualServicesInput>,
-  output: __S(178) as any as S.Schema<ListVirtualServicesOutput>,
+  input: ListVirtualServicesInput,
+  output: ListVirtualServicesOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2358,8 +2853,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<TagResourceInput>,
-  output: __S(180) as any as S.Schema<TagResourceOutput>,
+  input: TagResourceInput,
+  output: TagResourceOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2391,8 +2886,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<UntagResourceInput>,
-  output: __S(180) as any as S.Schema<UntagResourceOutput>,
+  input: UntagResourceInput,
+  output: UntagResourceOutput,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2426,8 +2921,8 @@ export const updateGatewayRoute: API.OperationMethod<
   UpdateGatewayRouteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<UpdateGatewayRouteInput>,
-  output: __S(31) as any as S.Schema<UpdateGatewayRouteOutput>,
+  input: UpdateGatewayRouteInput,
+  output: UpdateGatewayRouteOutput,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2461,8 +2956,8 @@ export const updateMesh: API.OperationMethod<
   UpdateMeshError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183) as any as S.Schema<UpdateMeshInput>,
-  output: __S(38) as any as S.Schema<UpdateMeshOutput>,
+  input: UpdateMeshInput,
+  output: UpdateMeshOutput,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2496,8 +2991,8 @@ export const updateRoute: API.OperationMethod<
   UpdateRouteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184) as any as S.Schema<UpdateRouteInput>,
-  output: __S(58) as any as S.Schema<UpdateRouteOutput>,
+  input: UpdateRouteInput,
+  output: UpdateRouteOutput,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2532,8 +3027,8 @@ export const updateVirtualGateway: API.OperationMethod<
   UpdateVirtualGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<UpdateVirtualGatewayInput>,
-  output: __S(91) as any as S.Schema<UpdateVirtualGatewayOutput>,
+  input: UpdateVirtualGatewayInput,
+  output: UpdateVirtualGatewayOutput,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2568,8 +3063,8 @@ export const updateVirtualNode: API.OperationMethod<
   UpdateVirtualNodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<UpdateVirtualNodeInput>,
-  output: __S(119) as any as S.Schema<UpdateVirtualNodeOutput>,
+  input: UpdateVirtualNodeInput,
+  output: UpdateVirtualNodeOutput,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2604,8 +3099,8 @@ export const updateVirtualRouter: API.OperationMethod<
   UpdateVirtualRouterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<UpdateVirtualRouterInput>,
-  output: __S(125) as any as S.Schema<UpdateVirtualRouterOutput>,
+  input: UpdateVirtualRouterInput,
+  output: UpdateVirtualRouterOutput,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2640,8 +3135,8 @@ export const updateVirtualService: API.OperationMethod<
   UpdateVirtualServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188) as any as S.Schema<UpdateVirtualServiceInput>,
-  output: __S(132) as any as S.Schema<UpdateVirtualServiceOutput>,
+  input: UpdateVirtualServiceInput,
+  output: UpdateVirtualServiceOutput,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2669,11 +3164,11 @@ function __c0(j: number): any {
         identifier: "QueryParameterMatch",
       });
     case 2:
-      return S.suspend(() => S.Struct({ name: S.String, match: S.optional(__S(1)) })).annotate({
-        identifier: "HttpQueryParameter",
-      });
+      return S.suspend(() =>
+        S.Struct({ name: S.String, match: S.optional(QueryParameterMatch) }),
+      ).annotate({ identifier: "HttpQueryParameter" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(HttpQueryParameter);
     case 4:
       return S.suspend(() =>
         S.Struct({ exact: S.optional(S.String), suffix: S.optional(S.String) }),
@@ -2688,7 +3183,7 @@ function __c0(j: number): any {
       return S.Union([
         /*@__PURE__*/ S.Struct({ exact: S.String }),
         /*@__PURE__*/ S.Struct({ regex: S.String }),
-        /*@__PURE__*/ S.Struct({ range: __S(5) }),
+        /*@__PURE__*/ S.Struct({ range: MatchRange }),
         /*@__PURE__*/ S.Struct({ prefix: S.String }),
         /*@__PURE__*/ S.Struct({ suffix: S.String }),
       ]);
@@ -2697,7 +3192,7 @@ function __c0(j: number): any {
         S.Struct({
           name: S.String,
           invert: S.optional(S.Boolean),
-          match: S.optional(__S(6)),
+          match: S.optional(HeaderMatchMethod),
         }),
       ).annotate({ identifier: "HttpGatewayRouteHeader" });
   }
@@ -2705,16 +3200,16 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(HttpGatewayRouteHeader);
     case 1:
       return S.suspend(() =>
         S.Struct({
           prefix: S.optional(S.String),
-          path: S.optional(__S(0)),
-          queryParameters: S.optional(__S(3)),
+          path: S.optional(HttpPathMatch),
+          queryParameters: S.optional(HttpQueryParameters),
           method: S.optional(S.String),
-          hostname: S.optional(__S(4)),
-          headers: S.optional(__S(8)),
+          hostname: S.optional(GatewayRouteHostnameMatch),
+          headers: S.optional(HttpGatewayRouteHeaders),
           port: S.optional(S.Number),
         }),
       ).annotate({ identifier: "HttpGatewayRouteMatch" });
@@ -2724,7 +3219,7 @@ function __c1(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ virtualService: __S(10), port: S.optional(S.Number) }),
+        S.Struct({ virtualService: GatewayRouteVirtualService, port: S.optional(S.Number) }),
       ).annotate({ identifier: "GatewayRouteTarget" });
     case 4:
       return S.suspend(() =>
@@ -2743,9 +3238,9 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          prefix: S.optional(__S(12)),
-          path: S.optional(__S(13)),
-          hostname: S.optional(__S(14)),
+          prefix: S.optional(HttpGatewayRoutePrefixRewrite),
+          path: S.optional(HttpGatewayRoutePathRewrite),
+          hostname: S.optional(GatewayRouteHostnameRewrite),
         }),
       ).annotate({ identifier: "HttpGatewayRouteRewrite" });
   }
@@ -2753,44 +3248,44 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ target: __S(11), rewrite: S.optional(__S(15)) })).annotate({
-        identifier: "HttpGatewayRouteAction",
-      });
+      return S.suspend(() =>
+        S.Struct({ target: GatewayRouteTarget, rewrite: S.optional(HttpGatewayRouteRewrite) }),
+      ).annotate({ identifier: "HttpGatewayRouteAction" });
     case 1:
-      return S.suspend(() => S.Struct({ match: __S(9), action: __S(16) })).annotate({
-        identifier: "HttpGatewayRoute",
-      });
+      return S.suspend(() =>
+        S.Struct({ match: HttpGatewayRouteMatch, action: HttpGatewayRouteAction }),
+      ).annotate({ identifier: "HttpGatewayRoute" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           invert: S.optional(S.Boolean),
-          match: S.optional(__S(6)),
+          match: S.optional(GrpcMetadataMatchMethod),
         }),
       ).annotate({ identifier: "GrpcGatewayRouteMetadata" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(GrpcGatewayRouteMetadata);
     case 4:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.optional(S.String),
-          hostname: S.optional(__S(4)),
-          metadata: S.optional(__S(19)),
+          hostname: S.optional(GatewayRouteHostnameMatch),
+          metadata: S.optional(GrpcGatewayRouteMetadataList),
           port: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GrpcGatewayRouteMatch" });
     case 5:
-      return S.suspend(() => S.Struct({ hostname: S.optional(__S(14)) })).annotate({
-        identifier: "GrpcGatewayRouteRewrite",
-      });
+      return S.suspend(() =>
+        S.Struct({ hostname: S.optional(GatewayRouteHostnameRewrite) }),
+      ).annotate({ identifier: "GrpcGatewayRouteRewrite" });
     case 6:
-      return S.suspend(() => S.Struct({ target: __S(11), rewrite: S.optional(__S(21)) })).annotate({
-        identifier: "GrpcGatewayRouteAction",
-      });
+      return S.suspend(() =>
+        S.Struct({ target: GatewayRouteTarget, rewrite: S.optional(GrpcGatewayRouteRewrite) }),
+      ).annotate({ identifier: "GrpcGatewayRouteAction" });
     case 7:
-      return S.suspend(() => S.Struct({ match: __S(20), action: __S(22) })).annotate({
-        identifier: "GrpcGatewayRoute",
-      });
+      return S.suspend(() =>
+        S.Struct({ match: GrpcGatewayRouteMatch, action: GrpcGatewayRouteAction }),
+      ).annotate({ identifier: "GrpcGatewayRoute" });
   }
 }
 function __c3(j: number): any {
@@ -2799,9 +3294,9 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           priority: S.optional(S.Number),
-          httpRoute: S.optional(__S(17)),
-          http2Route: S.optional(__S(17)),
-          grpcRoute: S.optional(__S(23)),
+          httpRoute: S.optional(HttpGatewayRoute),
+          http2Route: S.optional(HttpGatewayRoute),
+          grpcRoute: S.optional(GrpcGatewayRoute),
         }),
       ).annotate({ identifier: "GatewayRouteSpec" });
     case 1:
@@ -2809,15 +3304,15 @@ function __c3(j: number): any {
         identifier: "TagRef",
       });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(TagRef);
     case 3:
       return S.suspend(() =>
         S.Struct({
           gatewayRouteName: S.String,
           meshName: S.String.pipe(T.HttpLabel("meshName")),
           virtualGatewayName: S.String.pipe(T.HttpLabel("virtualGatewayName")),
-          spec: __S(24),
-          tags: S.optional(__S(26)),
+          spec: GatewayRouteSpec,
+          tags: S.optional(TagList),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           meshOwner: S.optional(S.String).pipe(T.HttpQuery("meshOwner")),
         }).pipe(
@@ -2856,15 +3351,15 @@ function __c3(j: number): any {
           meshName: S.String,
           gatewayRouteName: S.String,
           virtualGatewayName: S.String,
-          spec: __S(24),
-          metadata: __S(28),
-          status: __S(29),
+          spec: GatewayRouteSpec,
+          metadata: ResourceMetadata,
+          status: GatewayRouteStatus,
         }),
       ).annotate({ identifier: "GatewayRouteData" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          gatewayRoute: __S(30).pipe(T.HttpPayload()).annotate({
+          gatewayRoute: GatewayRouteData.pipe(T.HttpPayload()).annotate({
             identifier: "GatewayRouteData",
           }),
         }),
@@ -2884,16 +3379,16 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          egressFilter: S.optional(__S(32)),
-          serviceDiscovery: S.optional(__S(33)),
+          egressFilter: S.optional(EgressFilter),
+          serviceDiscovery: S.optional(MeshServiceDiscovery),
         }),
       ).annotate({ identifier: "MeshSpec" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           meshName: S.String,
-          spec: S.optional(__S(34)),
-          tags: S.optional(__S(26)),
+          spec: S.optional(MeshSpec),
+          tags: S.optional(TagList),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/v20190125/meshes" }), svc, auth, proto, ver, rules),
@@ -2907,24 +3402,24 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           meshName: S.String,
-          spec: __S(34),
-          metadata: __S(28),
-          status: __S(36),
+          spec: MeshSpec,
+          metadata: ResourceMetadata,
+          status: MeshStatus,
         }),
       ).annotate({ identifier: "MeshData" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ mesh: __S(37).pipe(T.HttpPayload()).annotate({ identifier: "MeshData" }) }),
+        S.Struct({ mesh: MeshData.pipe(T.HttpPayload()).annotate({ identifier: "MeshData" }) }),
       ).annotate({ identifier: "CreateMeshOutput" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           prefix: S.optional(S.String),
-          path: S.optional(__S(0)),
-          queryParameters: S.optional(__S(3)),
+          path: S.optional(HttpPathMatch),
+          queryParameters: S.optional(HttpQueryParameters),
           method: S.optional(S.String),
           scheme: S.optional(S.String),
-          headers: S.optional(__S(8)),
+          headers: S.optional(HttpRouteHeaders),
           port: S.optional(S.Number),
         }),
       ).annotate({ identifier: "HttpRouteMatch" });
@@ -2937,9 +3432,9 @@ function __c5(j: number): any {
         S.Struct({ virtualNode: S.String, weight: S.Number, port: S.optional(S.Number) }),
       ).annotate({ identifier: "WeightedTarget" });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(WeightedTarget);
     case 2:
-      return S.suspend(() => S.Struct({ weightedTargets: __S(41) })).annotate({
+      return S.suspend(() => S.Struct({ weightedTargets: WeightedTargets })).annotate({
         identifier: "HttpRouteAction",
       });
     case 3:
@@ -2951,23 +3446,23 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          perRetryTimeout: __S(43),
+          perRetryTimeout: Duration,
           maxRetries: S.Number,
-          httpRetryEvents: S.optional(__S(44)),
-          tcpRetryEvents: S.optional(__S(44)),
+          httpRetryEvents: S.optional(HttpRetryPolicyEvents),
+          tcpRetryEvents: S.optional(TcpRetryPolicyEvents),
         }),
       ).annotate({ identifier: "HttpRetryPolicy" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ perRequest: S.optional(__S(43)), idle: S.optional(__S(43)) }),
+        S.Struct({ perRequest: S.optional(Duration), idle: S.optional(Duration) }),
       ).annotate({ identifier: "HttpTimeout" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          match: __S(39),
-          action: __S(42),
-          retryPolicy: S.optional(__S(45)),
-          timeout: S.optional(__S(46)),
+          match: HttpRouteMatch,
+          action: HttpRouteAction,
+          retryPolicy: S.optional(HttpRetryPolicy),
+          timeout: S.optional(HttpTimeout),
         }),
       ).annotate({ identifier: "HttpRoute" });
   }
@@ -2975,7 +3470,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ idle: S.optional(__S(43)) })).annotate({
+      return S.suspend(() => S.Struct({ idle: S.optional(Duration) })).annotate({
         identifier: "TcpTimeout",
       });
     case 1:
@@ -2985,9 +3480,9 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(42),
-          timeout: S.optional(__S(48)),
-          match: S.optional(__S(49)),
+          action: TcpRouteAction,
+          timeout: S.optional(TcpTimeout),
+          match: S.optional(TcpRouteMatch),
         }),
       ).annotate({ identifier: "TcpRoute" });
     case 3:
@@ -2995,37 +3490,37 @@ function __c6(j: number): any {
         S.Struct({
           serviceName: S.optional(S.String),
           methodName: S.optional(S.String),
-          metadata: S.optional(__S(19)),
+          metadata: S.optional(GrpcRouteMetadataList),
           port: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GrpcRouteMatch" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          perRetryTimeout: __S(43),
+          perRetryTimeout: Duration,
           maxRetries: S.Number,
-          httpRetryEvents: S.optional(__S(44)),
-          tcpRetryEvents: S.optional(__S(44)),
-          grpcRetryEvents: S.optional(__S(44)),
+          httpRetryEvents: S.optional(HttpRetryPolicyEvents),
+          tcpRetryEvents: S.optional(TcpRetryPolicyEvents),
+          grpcRetryEvents: S.optional(GrpcRetryPolicyEvents),
         }),
       ).annotate({ identifier: "GrpcRetryPolicy" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: __S(42),
-          match: __S(51),
-          retryPolicy: S.optional(__S(52)),
-          timeout: S.optional(__S(46)),
+          action: GrpcRouteAction,
+          match: GrpcRouteMatch,
+          retryPolicy: S.optional(GrpcRetryPolicy),
+          timeout: S.optional(GrpcTimeout),
         }),
       ).annotate({ identifier: "GrpcRoute" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           priority: S.optional(S.Number),
-          httpRoute: S.optional(__S(47)),
-          tcpRoute: S.optional(__S(50)),
-          http2Route: S.optional(__S(47)),
-          grpcRoute: S.optional(__S(53)),
+          httpRoute: S.optional(HttpRoute),
+          tcpRoute: S.optional(TcpRoute),
+          http2Route: S.optional(HttpRoute),
+          grpcRoute: S.optional(GrpcRoute),
         }),
       ).annotate({ identifier: "RouteSpec" });
     case 7:
@@ -3034,8 +3529,8 @@ function __c6(j: number): any {
           routeName: S.String,
           meshName: S.String.pipe(T.HttpLabel("meshName")),
           virtualRouterName: S.String.pipe(T.HttpLabel("virtualRouterName")),
-          spec: __S(54),
-          tags: S.optional(__S(26)),
+          spec: RouteSpec,
+          tags: S.optional(TagList),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           meshOwner: S.optional(S.String).pipe(T.HttpQuery("meshOwner")),
         }).pipe(
@@ -3066,14 +3561,14 @@ function __c7(j: number): any {
           meshName: S.String,
           virtualRouterName: S.String,
           routeName: S.String,
-          spec: __S(54),
-          metadata: __S(28),
-          status: __S(56),
+          spec: RouteSpec,
+          metadata: ResourceMetadata,
+          status: RouteStatus,
         }),
       ).annotate({ identifier: "RouteData" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ route: __S(57).pipe(T.HttpPayload()).annotate({ identifier: "RouteData" }) }),
+        S.Struct({ route: RouteData.pipe(T.HttpPayload()).annotate({ identifier: "RouteData" }) }),
       ).annotate({ identifier: "CreateRouteOutput" });
     case 3:
       return S.Array(S.Number);
@@ -3089,11 +3584,13 @@ function __c7(j: number): any {
       });
     case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ file: __S(60) }),
-        /*@__PURE__*/ S.Struct({ sds: __S(61) }),
+        /*@__PURE__*/ S.Struct({ file: VirtualGatewayListenerTlsFileCertificate }),
+        /*@__PURE__*/ S.Struct({ sds: VirtualGatewayListenerTlsSdsCertificate }),
       ]);
     case 7:
-      return S.suspend(() => S.Struct({ certificateAuthorityArns: __S(44) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ certificateAuthorityArns: VirtualGatewayCertificateAuthorityArns }),
+      ).annotate({
         identifier: "VirtualGatewayTlsValidationContextAcmTrust",
       });
   }
@@ -3106,23 +3603,23 @@ function __c8(j: number): any {
       });
     case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ acm: __S(63) }),
-        /*@__PURE__*/ S.Struct({ file: __S(64) }),
-        /*@__PURE__*/ S.Struct({ sds: __S(61) }),
+        /*@__PURE__*/ S.Struct({ acm: VirtualGatewayTlsValidationContextAcmTrust }),
+        /*@__PURE__*/ S.Struct({ file: VirtualGatewayTlsValidationContextFileTrust }),
+        /*@__PURE__*/ S.Struct({ sds: VirtualGatewayTlsValidationContextSdsTrust }),
       ]);
     case 2:
-      return S.suspend(() => S.Struct({ exact: __S(44) })).annotate({
+      return S.suspend(() => S.Struct({ exact: SubjectAlternativeNameList })).annotate({
         identifier: "SubjectAlternativeNameMatchers",
       });
     case 3:
-      return S.suspend(() => S.Struct({ match: __S(66) })).annotate({
+      return S.suspend(() => S.Struct({ match: SubjectAlternativeNameMatchers })).annotate({
         identifier: "SubjectAlternativeNames",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          trust: __S(65),
-          subjectAlternativeNames: S.optional(__S(67)),
+          trust: VirtualGatewayTlsValidationContextTrust,
+          subjectAlternativeNames: S.optional(SubjectAlternativeNames),
         }),
       ).annotate({
         identifier: "VirtualGatewayTlsValidationContext",
@@ -3131,19 +3628,23 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enforce: S.optional(S.Boolean),
-          ports: S.optional(__S(59)),
-          certificate: S.optional(__S(62)),
-          validation: __S(68),
+          ports: S.optional(PortSet),
+          certificate: S.optional(VirtualGatewayClientTlsCertificate),
+          validation: VirtualGatewayTlsValidationContext,
         }),
       ).annotate({
         identifier: "VirtualGatewayClientPolicyTls",
       });
     case 6:
-      return S.suspend(() => S.Struct({ tls: S.optional(__S(69)) })).annotate({
-        identifier: "VirtualGatewayClientPolicy",
-      });
+      return S.suspend(() => S.Struct({ tls: S.optional(VirtualGatewayClientPolicyTls) })).annotate(
+        {
+          identifier: "VirtualGatewayClientPolicy",
+        },
+      );
     case 7:
-      return S.suspend(() => S.Struct({ clientPolicy: S.optional(__S(70)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ clientPolicy: S.optional(VirtualGatewayClientPolicy) }),
+      ).annotate({
         identifier: "VirtualGatewayBackendDefaults",
       });
   }
@@ -3170,14 +3671,14 @@ function __c9(j: number): any {
       });
     case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ file: __S(64) }),
-        /*@__PURE__*/ S.Struct({ sds: __S(61) }),
+        /*@__PURE__*/ S.Struct({ file: VirtualGatewayTlsValidationContextFileTrust }),
+        /*@__PURE__*/ S.Struct({ sds: VirtualGatewayTlsValidationContextSdsTrust }),
       ]);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          trust: __S(74),
-          subjectAlternativeNames: S.optional(__S(67)),
+          trust: VirtualGatewayListenerTlsValidationContextTrust,
+          subjectAlternativeNames: S.optional(SubjectAlternativeNames),
         }),
       ).annotate({
         identifier: "VirtualGatewayListenerTlsValidationContext",
@@ -3188,16 +3689,16 @@ function __c9(j: number): any {
       });
     case 5:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ acm: __S(76) }),
-        /*@__PURE__*/ S.Struct({ file: __S(60) }),
-        /*@__PURE__*/ S.Struct({ sds: __S(61) }),
+        /*@__PURE__*/ S.Struct({ acm: VirtualGatewayListenerTlsAcmCertificate }),
+        /*@__PURE__*/ S.Struct({ file: VirtualGatewayListenerTlsFileCertificate }),
+        /*@__PURE__*/ S.Struct({ sds: VirtualGatewayListenerTlsSdsCertificate }),
       ]);
     case 6:
       return S.suspend(() =>
         S.Struct({
           mode: S.String,
-          validation: S.optional(__S(75)),
-          certificate: __S(77),
+          validation: S.optional(VirtualGatewayListenerTlsValidationContext),
+          certificate: VirtualGatewayListenerTlsCertificate,
         }),
       ).annotate({
         identifier: "VirtualGatewayListenerTls",
@@ -3218,36 +3719,38 @@ function __c10(j: number): any {
       });
     case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ http: __S(79) }),
-        /*@__PURE__*/ S.Struct({ http2: __S(80) }),
-        /*@__PURE__*/ S.Struct({ grpc: __S(80) }),
+        /*@__PURE__*/ S.Struct({ http: VirtualGatewayHttpConnectionPool }),
+        /*@__PURE__*/ S.Struct({ http2: VirtualGatewayHttp2ConnectionPool }),
+        /*@__PURE__*/ S.Struct({ grpc: VirtualGatewayGrpcConnectionPool }),
       ]);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          healthCheck: S.optional(__S(72)),
-          portMapping: __S(73),
-          tls: S.optional(__S(78)),
-          connectionPool: S.optional(__S(81)),
+          healthCheck: S.optional(VirtualGatewayHealthCheckPolicy),
+          portMapping: VirtualGatewayPortMapping,
+          tls: S.optional(VirtualGatewayListenerTls),
+          connectionPool: S.optional(VirtualGatewayConnectionPool),
         }),
       ).annotate({ identifier: "VirtualGatewayListener" });
     case 3:
-      return S.Array(__S(82));
+      return S.Array(VirtualGatewayListener);
     case 4:
       return S.Union([
         /*@__PURE__*/ S.Struct({ text: S.String }),
-        /*@__PURE__*/ S.Struct({ json: __S(26) }),
+        /*@__PURE__*/ S.Struct({ json: JsonFormat }),
       ]);
     case 5:
-      return S.suspend(() => S.Struct({ path: S.String, format: S.optional(__S(84)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ path: S.String, format: S.optional(LoggingFormat) }),
+      ).annotate({
         identifier: "VirtualGatewayFileAccessLog",
       });
     case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ file: __S(85) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ file: VirtualGatewayFileAccessLog })]);
     case 7:
-      return S.suspend(() => S.Struct({ accessLog: S.optional(__S(86)) })).annotate({
-        identifier: "VirtualGatewayLogging",
-      });
+      return S.suspend(() => S.Struct({ accessLog: S.optional(VirtualGatewayAccessLog) })).annotate(
+        { identifier: "VirtualGatewayLogging" },
+      );
   }
 }
 function __c11(j: number): any {
@@ -3255,9 +3758,9 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          backendDefaults: S.optional(__S(71)),
-          listeners: __S(83),
-          logging: S.optional(__S(87)),
+          backendDefaults: S.optional(VirtualGatewayBackendDefaults),
+          listeners: VirtualGatewayListeners,
+          logging: S.optional(VirtualGatewayLogging),
         }),
       ).annotate({ identifier: "VirtualGatewaySpec" });
     case 1:
@@ -3265,8 +3768,8 @@ function __c11(j: number): any {
         S.Struct({
           virtualGatewayName: S.String,
           meshName: S.String.pipe(T.HttpLabel("meshName")),
-          spec: __S(88),
-          tags: S.optional(__S(26)),
+          spec: VirtualGatewaySpec,
+          tags: S.optional(TagList),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           meshOwner: S.optional(S.String).pipe(T.HttpQuery("meshOwner")),
         }).pipe(
@@ -3287,15 +3790,15 @@ function __c11(j: number): any {
         S.Struct({
           meshName: S.String,
           virtualGatewayName: S.String,
-          spec: __S(88),
-          metadata: __S(28),
-          status: __S(29),
+          spec: VirtualGatewaySpec,
+          metadata: ResourceMetadata,
+          status: VirtualGatewayStatus,
         }),
       ).annotate({ identifier: "VirtualGatewayData" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          virtualGateway: __S(90).pipe(T.HttpPayload()).annotate({
+          virtualGateway: VirtualGatewayData.pipe(T.HttpPayload()).annotate({
             identifier: "VirtualGatewayData",
           }),
         }),
@@ -3315,13 +3818,13 @@ function __c11(j: number): any {
         identifier: "AwsCloudMapInstanceAttribute",
       });
     case 6:
-      return S.Array(__S(93));
+      return S.Array(AwsCloudMapInstanceAttribute);
     case 7:
       return S.suspend(() =>
         S.Struct({
           namespaceName: S.String,
           serviceName: S.String,
-          attributes: S.optional(__S(94)),
+          attributes: S.optional(AwsCloudMapInstanceAttributes),
           ipPreference: S.optional(S.String),
         }),
       ).annotate({
@@ -3333,8 +3836,8 @@ function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ dns: __S(92) }),
-        /*@__PURE__*/ S.Struct({ awsCloudMap: __S(95) }),
+        /*@__PURE__*/ S.Struct({ dns: DnsServiceDiscovery }),
+        /*@__PURE__*/ S.Struct({ awsCloudMap: AwsCloudMapServiceDiscovery }),
       ]);
     case 1:
       return S.suspend(() => S.Struct({ port: S.Number, protocol: S.String })).annotate({
@@ -3344,8 +3847,8 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           mode: S.String,
-          certificate: __S(77),
-          validation: S.optional(__S(75)),
+          certificate: ListenerTlsCertificate,
+          validation: S.optional(ListenerTlsValidationContext),
         }),
       ).annotate({ identifier: "ListenerTls" });
     case 3:
@@ -3362,17 +3865,17 @@ function __c12(j: number): any {
       ).annotate({ identifier: "HealthCheckPolicy" });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ tcp: __S(48) }),
-        /*@__PURE__*/ S.Struct({ http: __S(46) }),
-        /*@__PURE__*/ S.Struct({ http2: __S(46) }),
-        /*@__PURE__*/ S.Struct({ grpc: __S(46) }),
+        /*@__PURE__*/ S.Struct({ tcp: TcpTimeout }),
+        /*@__PURE__*/ S.Struct({ http: HttpTimeout }),
+        /*@__PURE__*/ S.Struct({ http2: HttpTimeout }),
+        /*@__PURE__*/ S.Struct({ grpc: GrpcTimeout }),
       ]);
     case 5:
       return S.suspend(() =>
         S.Struct({
           maxServerErrors: S.Number,
-          interval: __S(43),
-          baseEjectionDuration: __S(43),
+          interval: Duration,
+          baseEjectionDuration: Duration,
           maxEjectionPercent: S.Number,
         }),
       ).annotate({ identifier: "OutlierDetection" });
@@ -3382,10 +3885,10 @@ function __c12(j: number): any {
       });
     case 7:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ tcp: __S(102) }),
-        /*@__PURE__*/ S.Struct({ http: __S(79) }),
-        /*@__PURE__*/ S.Struct({ http2: __S(80) }),
-        /*@__PURE__*/ S.Struct({ grpc: __S(80) }),
+        /*@__PURE__*/ S.Struct({ tcp: VirtualNodeTcpConnectionPool }),
+        /*@__PURE__*/ S.Struct({ http: VirtualNodeHttpConnectionPool }),
+        /*@__PURE__*/ S.Struct({ http2: VirtualNodeHttp2ConnectionPool }),
+        /*@__PURE__*/ S.Struct({ grpc: VirtualNodeGrpcConnectionPool }),
       ]);
   }
 }
@@ -3394,70 +3897,70 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          portMapping: __S(97),
-          tls: S.optional(__S(98)),
-          healthCheck: S.optional(__S(99)),
-          timeout: S.optional(__S(100)),
-          outlierDetection: S.optional(__S(101)),
-          connectionPool: S.optional(__S(103)),
+          portMapping: PortMapping,
+          tls: S.optional(ListenerTls),
+          healthCheck: S.optional(HealthCheckPolicy),
+          timeout: S.optional(ListenerTimeout),
+          outlierDetection: S.optional(OutlierDetection),
+          connectionPool: S.optional(VirtualNodeConnectionPool),
         }),
       ).annotate({ identifier: "Listener" });
     case 1:
-      return S.Array(__S(104));
+      return S.Array(Listener);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          trust: __S(65),
-          subjectAlternativeNames: S.optional(__S(67)),
+          trust: TlsValidationContextTrust,
+          subjectAlternativeNames: S.optional(SubjectAlternativeNames),
         }),
       ).annotate({ identifier: "TlsValidationContext" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           enforce: S.optional(S.Boolean),
-          ports: S.optional(__S(59)),
-          certificate: S.optional(__S(62)),
-          validation: __S(106),
+          ports: S.optional(PortSet),
+          certificate: S.optional(ClientTlsCertificate),
+          validation: TlsValidationContext,
         }),
       ).annotate({ identifier: "ClientPolicyTls" });
     case 4:
-      return S.suspend(() => S.Struct({ tls: S.optional(__S(107)) })).annotate({
+      return S.suspend(() => S.Struct({ tls: S.optional(ClientPolicyTls) })).annotate({
         identifier: "ClientPolicy",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ virtualServiceName: S.String, clientPolicy: S.optional(__S(108)) }),
+        S.Struct({ virtualServiceName: S.String, clientPolicy: S.optional(ClientPolicy) }),
       ).annotate({ identifier: "VirtualServiceBackend" });
     case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ virtualService: __S(109) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ virtualService: VirtualServiceBackend })]);
     case 7:
-      return S.Array(__S(110));
+      return S.Array(Backend);
   }
 }
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ clientPolicy: S.optional(__S(108)) })).annotate({
+      return S.suspend(() => S.Struct({ clientPolicy: S.optional(ClientPolicy) })).annotate({
         identifier: "BackendDefaults",
       });
     case 1:
-      return S.suspend(() => S.Struct({ path: S.String, format: S.optional(__S(84)) })).annotate({
-        identifier: "FileAccessLog",
-      });
+      return S.suspend(() =>
+        S.Struct({ path: S.String, format: S.optional(LoggingFormat) }),
+      ).annotate({ identifier: "FileAccessLog" });
     case 2:
-      return S.Union([/*@__PURE__*/ S.Struct({ file: __S(113) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ file: FileAccessLog })]);
     case 3:
-      return S.suspend(() => S.Struct({ accessLog: S.optional(__S(114)) })).annotate({
+      return S.suspend(() => S.Struct({ accessLog: S.optional(AccessLog) })).annotate({
         identifier: "Logging",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          serviceDiscovery: S.optional(__S(96)),
-          listeners: S.optional(__S(105)),
-          backends: S.optional(__S(111)),
-          backendDefaults: S.optional(__S(112)),
-          logging: S.optional(__S(115)),
+          serviceDiscovery: S.optional(ServiceDiscovery),
+          listeners: S.optional(Listeners),
+          backends: S.optional(Backends),
+          backendDefaults: S.optional(BackendDefaults),
+          logging: S.optional(Logging),
         }),
       ).annotate({ identifier: "VirtualNodeSpec" });
     case 5:
@@ -3465,8 +3968,8 @@ function __c14(j: number): any {
         S.Struct({
           virtualNodeName: S.String,
           meshName: S.String.pipe(T.HttpLabel("meshName")),
-          spec: __S(116),
-          tags: S.optional(__S(26)),
+          spec: VirtualNodeSpec,
+          tags: S.optional(TagList),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           meshOwner: S.optional(S.String).pipe(T.HttpQuery("meshOwner")),
         }).pipe(
@@ -3485,15 +3988,15 @@ function __c14(j: number): any {
         S.Struct({
           meshName: S.String,
           virtualNodeName: S.String,
-          spec: __S(116),
-          metadata: __S(28),
-          status: __S(29),
+          spec: VirtualNodeSpec,
+          metadata: ResourceMetadata,
+          status: VirtualNodeStatus,
         }),
       ).annotate({ identifier: "VirtualNodeData" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          virtualNode: __S(118).pipe(T.HttpPayload()).annotate({
+          virtualNode: VirtualNodeData.pipe(T.HttpPayload()).annotate({
             identifier: "VirtualNodeData",
           }),
         }),
@@ -3503,13 +4006,13 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ portMapping: __S(97) })).annotate({
+      return S.suspend(() => S.Struct({ portMapping: PortMapping })).annotate({
         identifier: "VirtualRouterListener",
       });
     case 1:
-      return S.Array(__S(120));
+      return S.Array(VirtualRouterListener);
     case 2:
-      return S.suspend(() => S.Struct({ listeners: S.optional(__S(121)) })).annotate({
+      return S.suspend(() => S.Struct({ listeners: S.optional(VirtualRouterListeners) })).annotate({
         identifier: "VirtualRouterSpec",
       });
     case 3:
@@ -3517,8 +4020,8 @@ function __c15(j: number): any {
         S.Struct({
           virtualRouterName: S.String,
           meshName: S.String.pipe(T.HttpLabel("meshName")),
-          spec: __S(122),
-          tags: S.optional(__S(26)),
+          spec: VirtualRouterSpec,
+          tags: S.optional(TagList),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           meshOwner: S.optional(S.String).pipe(T.HttpQuery("meshOwner")),
         }).pipe(
@@ -3537,15 +4040,15 @@ function __c15(j: number): any {
         S.Struct({
           meshName: S.String,
           virtualRouterName: S.String,
-          spec: __S(122),
-          metadata: __S(28),
-          status: __S(29),
+          spec: VirtualRouterSpec,
+          metadata: ResourceMetadata,
+          status: VirtualRouterStatus,
         }),
       ).annotate({ identifier: "VirtualRouterData" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          virtualRouter: __S(124).pipe(T.HttpPayload()).annotate({
+          virtualRouter: VirtualRouterData.pipe(T.HttpPayload()).annotate({
             identifier: "VirtualRouterData",
           }),
         }),
@@ -3566,11 +4069,11 @@ function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ virtualNode: __S(126) }),
-        /*@__PURE__*/ S.Struct({ virtualRouter: __S(127) }),
+        /*@__PURE__*/ S.Struct({ virtualNode: VirtualNodeServiceProvider }),
+        /*@__PURE__*/ S.Struct({ virtualRouter: VirtualRouterServiceProvider }),
       ]);
     case 1:
-      return S.suspend(() => S.Struct({ provider: S.optional(__S(128)) })).annotate({
+      return S.suspend(() => S.Struct({ provider: S.optional(VirtualServiceProvider) })).annotate({
         identifier: "VirtualServiceSpec",
       });
     case 2:
@@ -3578,8 +4081,8 @@ function __c16(j: number): any {
         S.Struct({
           virtualServiceName: S.String,
           meshName: S.String.pipe(T.HttpLabel("meshName")),
-          spec: __S(129),
-          tags: S.optional(__S(26)),
+          spec: VirtualServiceSpec,
+          tags: S.optional(TagList),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           meshOwner: S.optional(S.String).pipe(T.HttpQuery("meshOwner")),
         }).pipe(
@@ -3600,15 +4103,15 @@ function __c16(j: number): any {
         S.Struct({
           meshName: S.String,
           virtualServiceName: S.String,
-          spec: __S(129),
-          metadata: __S(28),
-          status: __S(29),
+          spec: VirtualServiceSpec,
+          metadata: ResourceMetadata,
+          status: VirtualServiceStatus,
         }),
       ).annotate({ identifier: "VirtualServiceData" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          virtualService: __S(131).pipe(T.HttpPayload()).annotate({
+          virtualService: VirtualServiceData.pipe(T.HttpPayload()).annotate({
             identifier: "VirtualServiceData",
           }),
         }),
@@ -3784,7 +4287,7 @@ function __c17(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          gatewayRoute: __S(30).pipe(T.HttpPayload()).annotate({
+          gatewayRoute: GatewayRouteData.pipe(T.HttpPayload()).annotate({
             identifier: "GatewayRouteData",
           }),
         }),
@@ -3877,7 +4380,7 @@ function __c18(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          virtualNode: __S(118).pipe(T.HttpPayload()).annotate({
+          virtualNode: VirtualNodeData.pipe(T.HttpPayload()).annotate({
             identifier: "VirtualNodeData",
           }),
         }),
@@ -3965,14 +4468,14 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "GatewayRouteRef" });
     case 7:
-      return S.Array(__S(150));
+      return S.Array(GatewayRouteRef);
   }
 }
 function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ gatewayRoutes: __S(151), nextToken: S.optional(S.String) }),
+        S.Struct({ gatewayRoutes: GatewayRouteList, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListGatewayRoutesOutput" });
     case 1:
       return S.suspend(() =>
@@ -3996,10 +4499,10 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "MeshRef" });
     case 3:
-      return S.Array(__S(154));
+      return S.Array(MeshRef);
     case 4:
       return S.suspend(() =>
-        S.Struct({ meshes: __S(155), nextToken: S.optional(S.String) }),
+        S.Struct({ meshes: MeshList, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListMeshesOutput" });
     case 5:
       return S.suspend(() =>
@@ -4038,14 +4541,14 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "RouteRef" });
     case 7:
-      return S.Array(__S(158));
+      return S.Array(RouteRef);
   }
 }
 function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ routes: __S(159), nextToken: S.optional(S.String) }),
+        S.Struct({ routes: RouteList, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListRoutesOutput" });
     case 1:
       return S.suspend(() =>
@@ -4058,7 +4561,7 @@ function __c20(j: number): any {
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 2:
-      return S.suspend(() => S.Struct({ tags: __S(26), nextToken: S.optional(S.String) })).annotate(
+      return S.suspend(() => S.Struct({ tags: TagList, nextToken: S.optional(S.String) })).annotate(
         {
           identifier: "ListTagsForResourceOutput",
         },
@@ -4095,10 +4598,10 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "VirtualGatewayRef" });
     case 5:
-      return S.Array(__S(164));
+      return S.Array(VirtualGatewayRef);
     case 6:
       return S.suspend(() =>
-        S.Struct({ virtualGateways: __S(165), nextToken: S.optional(S.String) }),
+        S.Struct({ virtualGateways: VirtualGatewayList, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListVirtualGatewaysOutput",
       });
@@ -4138,10 +4641,10 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "VirtualNodeRef" });
     case 1:
-      return S.Array(__S(168));
+      return S.Array(VirtualNodeRef);
     case 2:
       return S.suspend(() =>
-        S.Struct({ virtualNodes: __S(169), nextToken: S.optional(S.String) }),
+        S.Struct({ virtualNodes: VirtualNodeList, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListVirtualNodesOutput" });
     case 3:
       return S.suspend(() =>
@@ -4175,10 +4678,10 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "VirtualRouterRef" });
     case 5:
-      return S.Array(__S(172));
+      return S.Array(VirtualRouterRef);
     case 6:
       return S.suspend(() =>
-        S.Struct({ virtualRouters: __S(173), nextToken: S.optional(S.String) }),
+        S.Struct({ virtualRouters: VirtualRouterList, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListVirtualRoutersOutput" });
     case 7:
       return S.suspend(() =>
@@ -4216,16 +4719,16 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "VirtualServiceRef" });
     case 1:
-      return S.Array(__S(176));
+      return S.Array(VirtualServiceRef);
     case 2:
       return S.suspend(() =>
-        S.Struct({ virtualServices: __S(177), nextToken: S.optional(S.String) }),
+        S.Struct({ virtualServices: VirtualServiceList, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListVirtualServicesOutput",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpQuery("resourceArn")), tags: __S(26) }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpQuery("resourceArn")), tags: TagList }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/v20190125/tag" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceInput" });
@@ -4237,7 +4740,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
-          tagKeys: __S(44),
+          tagKeys: TagKeyList,
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/v20190125/untag" }), svc, auth, proto, ver, rules),
         ),
@@ -4248,7 +4751,7 @@ function __c22(j: number): any {
           gatewayRouteName: S.String.pipe(T.HttpLabel("gatewayRouteName")),
           meshName: S.String.pipe(T.HttpLabel("meshName")),
           virtualGatewayName: S.String.pipe(T.HttpLabel("virtualGatewayName")),
-          spec: __S(24),
+          spec: GatewayRouteSpec,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           meshOwner: S.optional(S.String).pipe(T.HttpQuery("meshOwner")),
         }).pipe(
@@ -4269,7 +4772,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           meshName: S.String.pipe(T.HttpLabel("meshName")),
-          spec: S.optional(__S(34)),
+          spec: S.optional(MeshSpec),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -4292,7 +4795,7 @@ function __c23(j: number): any {
           routeName: S.String.pipe(T.HttpLabel("routeName")),
           meshName: S.String.pipe(T.HttpLabel("meshName")),
           virtualRouterName: S.String.pipe(T.HttpLabel("virtualRouterName")),
-          spec: __S(54),
+          spec: RouteSpec,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           meshOwner: S.optional(S.String).pipe(T.HttpQuery("meshOwner")),
         }).pipe(
@@ -4314,7 +4817,7 @@ function __c23(j: number): any {
         S.Struct({
           virtualGatewayName: S.String.pipe(T.HttpLabel("virtualGatewayName")),
           meshName: S.String.pipe(T.HttpLabel("meshName")),
-          spec: __S(88),
+          spec: VirtualGatewaySpec,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           meshOwner: S.optional(S.String).pipe(T.HttpQuery("meshOwner")),
         }).pipe(
@@ -4338,7 +4841,7 @@ function __c23(j: number): any {
         S.Struct({
           virtualNodeName: S.String.pipe(T.HttpLabel("virtualNodeName")),
           meshName: S.String.pipe(T.HttpLabel("meshName")),
-          spec: __S(116),
+          spec: VirtualNodeSpec,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           meshOwner: S.optional(S.String).pipe(T.HttpQuery("meshOwner")),
         }).pipe(
@@ -4360,7 +4863,7 @@ function __c23(j: number): any {
         S.Struct({
           virtualRouterName: S.String.pipe(T.HttpLabel("virtualRouterName")),
           meshName: S.String.pipe(T.HttpLabel("meshName")),
-          spec: __S(122),
+          spec: VirtualRouterSpec,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           meshOwner: S.optional(S.String).pipe(T.HttpQuery("meshOwner")),
         }).pipe(
@@ -4382,7 +4885,7 @@ function __c23(j: number): any {
         S.Struct({
           virtualServiceName: S.String.pipe(T.HttpLabel("virtualServiceName")),
           meshName: S.String.pipe(T.HttpLabel("meshName")),
-          spec: __S(129),
+          spec: VirtualServiceSpec,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           meshOwner: S.optional(S.String).pipe(T.HttpQuery("meshOwner")),
         }).pipe(
@@ -4401,62 +4904,5 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateVirtualServiceInput",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
   }
 }

@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -79,24 +77,34 @@ export interface Job {
   /** The type of reports this job creates. Corresponds to the ID of a ReportType. */
   reportTypeId?: string;
 }
+const Job = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Job>;
+
 export interface CreateJobsRequest {
   /** The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel). */
   onBehalfOfContentOwner?: string;
   /** Request body */
   body?: Job;
 }
+const CreateJobsRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateJobsRequest>;
+
 export interface DeleteJobsRequest {
   /** The ID of the job to delete. */
   jobId: string;
   /** The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel). */
   onBehalfOfContentOwner?: string;
 }
+const DeleteJobsRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DeleteJobsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Empty>;
+
 export interface DownloadMediaRequest {
   /** Name of the media that is being downloaded. */
   resourceName: string;
 }
+const DownloadMediaRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DownloadMediaRequest>;
+
 export type GdataMediaReferenceTypeEnum =
   | "PATH"
   | "BLOB_REF"
@@ -111,6 +119,8 @@ export type GdataMediaReferenceTypeEnum =
   | "DIFF_UPLOAD_RESPONSE"
   | "COSMO_BINARY_REFERENCE"
   | "ARBITRARY_BYTES";
+const GdataMediaReferenceTypeEnum = S.String;
+
 /** gdata */
 export interface GdataBlobstore2Info {
   /** gdata */
@@ -128,6 +138,8 @@ export interface GdataBlobstore2Info {
   /** gdata */
   downloadExternalReadToken?: string;
 }
+const GdataBlobstore2Info = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GdataBlobstore2Info>;
+
 /** gdata */
 export interface GdataObjectId {
   /** gdata */
@@ -137,12 +149,16 @@ export interface GdataObjectId {
   /** gdata */
   objectName?: string;
 }
+const GdataObjectId = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GdataObjectId>;
+
 export type GdataCompositeMediaReferenceTypeEnum =
   | "PATH"
   | "BLOB_REF"
   | "INLINE"
   | "BIGSTORE_REF"
   | "COSMO_BINARY_REFERENCE";
+const GdataCompositeMediaReferenceTypeEnum = S.String;
+
 /** gdata */
 export interface GdataCompositeMedia {
   /** gdata */
@@ -168,6 +184,8 @@ export interface GdataCompositeMedia {
   /** gdata */
   length?: string;
 }
+const GdataCompositeMedia = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GdataCompositeMedia>;
+
 /** gdata */
 export interface GdataDiffUploadResponse {
   /** gdata */
@@ -175,6 +193,11 @@ export interface GdataDiffUploadResponse {
   /** gdata */
   objectVersion?: string;
 }
+const GdataDiffUploadResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GdataDiffUploadResponse>;
+
 /** gdata */
 export interface GdataDownloadParameters {
   /** gdata */
@@ -182,6 +205,11 @@ export interface GdataDownloadParameters {
   /** gdata */
   ignoreRange?: boolean;
 }
+const GdataDownloadParameters = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GdataDownloadParameters>;
+
 /** gdata */
 export interface GdataContentTypeInfo {
   /** gdata */
@@ -199,6 +227,8 @@ export interface GdataContentTypeInfo {
   /** gdata */
   bestGuess?: string;
 }
+const GdataContentTypeInfo = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GdataContentTypeInfo>;
+
 /** gdata */
 export interface GdataDiffUploadRequest {
   /** gdata */
@@ -208,6 +238,11 @@ export interface GdataDiffUploadRequest {
   /** gdata */
   checksumsInfo?: GdataCompositeMedia;
 }
+const GdataDiffUploadRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GdataDiffUploadRequest>;
+
 /** gdata */
 export interface GdataDiffChecksumsResponse {
   /** gdata */
@@ -221,7 +256,17 @@ export interface GdataDiffChecksumsResponse {
   /** gdata */
   objectSizeBytes?: string;
 }
+const GdataDiffChecksumsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GdataDiffChecksumsResponse>;
+
 export type GdataCompositeMediaList = Array<GdataCompositeMedia>;
+const GdataCompositeMediaList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GdataCompositeMediaList>;
+
 /** gdata */
 export interface GdataDiffVersionResponse {
   /** gdata */
@@ -229,11 +274,21 @@ export interface GdataDiffVersionResponse {
   /** gdata */
   objectSizeBytes?: string;
 }
+const GdataDiffVersionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GdataDiffVersionResponse>;
+
 /** gdata */
 export interface GdataDiffDownloadResponse {
   /** gdata */
   objectLocation?: GdataCompositeMedia;
 }
+const GdataDiffDownloadResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GdataDiffDownloadResponse>;
+
 /** gdata */
 export interface GdataMedia {
   /** gdata */
@@ -299,12 +354,16 @@ export interface GdataMedia {
   /** gdata */
   path?: string;
 }
+const GdataMedia = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GdataMedia>;
+
 export interface GetJobsRequest {
   /** The ID of the job to retrieve. */
   jobId: string;
   /** The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel). */
   onBehalfOfContentOwner?: string;
 }
+const GetJobsRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetJobsRequest>;
+
 export interface GetJobsReportsRequest {
   /** The ID of the report to retrieve. */
   reportId: string;
@@ -313,6 +372,11 @@ export interface GetJobsReportsRequest {
   /** The ID of the job. */
   jobId: string;
 }
+const GetJobsReportsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetJobsReportsRequest>;
+
 /** A report's metadata including the URL from which the report itself can be downloaded. */
 export interface Report {
   /** The server-generated ID of the report. */
@@ -330,6 +394,8 @@ export interface Report {
   /** The date/time when the job this report belongs to will expire/expired. */
   jobExpireTime?: string;
 }
+const Report = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Report>;
+
 export interface ListJobsRequest {
   /** Requested page size. Server may return fewer jobs than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
@@ -340,7 +406,11 @@ export interface ListJobsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListReportTypesResponse.next_page_token returned in response to the previous call to the `ListJobs` method. */
   pageToken?: string;
 }
+const ListJobsRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ListJobsRequest>;
+
 export type JobList = Array<Job>;
+const JobList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<JobList>;
+
 /** Response message for ReportingService.ListJobs. */
 export interface ListJobsResponse {
   /** A token to retrieve next page of results. Pass this value in the ListJobsRequest.page_token field in the subsequent call to `ListJobs` method to retrieve the next page of results. */
@@ -348,6 +418,8 @@ export interface ListJobsResponse {
   /** The list of jobs. */
   jobs?: JobList;
 }
+const ListJobsResponse = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ListJobsResponse>;
+
 export interface ListJobsReportsRequest {
   /** Requested page size. Server may return fewer report types than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
@@ -364,7 +436,14 @@ export interface ListJobsReportsRequest {
   /** If set, only reports whose start time is greater than or equal the specified date/time are returned. */
   startTimeAtOrAfter?: string;
 }
+const ListJobsReportsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListJobsReportsRequest>;
+
 export type ReportList = Array<Report>;
+const ReportList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ReportList>;
+
 /** Response message for ReportingService.ListReports. */
 export interface ListReportsResponse {
   /** The list of report types. */
@@ -372,6 +451,8 @@ export interface ListReportsResponse {
   /** A token to retrieve next page of results. Pass this value in the ListReportsRequest.page_token field in the subsequent call to `ListReports` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
+const ListReportsResponse = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ListReportsResponse>;
+
 export interface ListReportTypesRequest {
   /** The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel). */
   onBehalfOfContentOwner?: string;
@@ -382,6 +463,11 @@ export interface ListReportTypesRequest {
   /** Requested page size. Server may return fewer report types than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
+const ListReportTypesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListReportTypesRequest>;
+
 /** A report type. */
 export interface ReportType {
   /** True if this a system-managed report type; otherwise false. Reporting jobs for system-managed report types are created automatically and can thus not be used in the `CreateJob` method. */
@@ -393,7 +479,11 @@ export interface ReportType {
   /** The name of the report type (max. 100 characters). */
   name?: string;
 }
+const ReportType = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ReportType>;
+
 export type ReportTypeList = Array<ReportType>;
+const ReportTypeList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ReportTypeList>;
+
 /** Response message for ReportingService.ListReportTypes. */
 export interface ListReportTypesResponse {
   /** The list of report types. */
@@ -401,6 +491,11 @@ export interface ListReportTypesResponse {
   /** A token to retrieve next page of results. Pass this value in the ListReportTypesRequest.page_token field in the subsequent call to `ListReportTypes` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
+const ListReportTypesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListReportTypesResponse>;
+
 export type CreateJobsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a job and returns it. */
 export const createJobs: API.OperationMethod<
@@ -409,8 +504,8 @@ export const createJobs: API.OperationMethod<
   CreateJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateJobsRequest>,
-  output: __S(0) as any as S.Schema<Job>,
+  input: CreateJobsRequest,
+  output: Job,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -424,8 +519,8 @@ export const deleteJobs: API.OperationMethod<
   DeleteJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteJobsRequest>,
-  output: __S(3) as any as S.Schema<Empty>,
+  input: DeleteJobsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -439,8 +534,8 @@ export const downloadMedia: API.OperationMethod<
   DownloadMediaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DownloadMediaRequest>,
-  output: __S(16) as any as S.Schema<GdataMedia>,
+  input: DownloadMediaRequest,
+  output: GdataMedia,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -450,8 +545,8 @@ export type GetJobsError = NotFound | Forbidden | GcpOpError;
 /** Gets a job. */
 export const getJobs: API.OperationMethod<GetJobsRequest, Job, GetJobsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(17) as any as S.Schema<GetJobsRequest>,
-    output: __S(0) as any as S.Schema<Job>,
+    input: GetJobsRequest,
+    output: Job,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -465,8 +560,8 @@ export const getJobsReports: API.OperationMethod<
   GetJobsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<GetJobsReportsRequest>,
-  output: __S(19) as any as S.Schema<Report>,
+  input: GetJobsReportsRequest,
+  output: Report,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -481,8 +576,8 @@ export const listJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(20) as any as S.Schema<ListJobsRequest>,
-  output: __S(22) as any as S.Schema<ListJobsResponse>,
+  input: ListJobsRequest,
+  output: ListJobsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -498,8 +593,8 @@ export const listJobsReports: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(23) as any as S.Schema<ListJobsReportsRequest>,
-  output: __S(25) as any as S.Schema<ListReportsResponse>,
+  input: ListJobsReportsRequest,
+  output: ListReportsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -515,8 +610,8 @@ export const listReportTypes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReportTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(26) as any as S.Schema<ListReportTypesRequest>,
-  output: __S(29) as any as S.Schema<ListReportTypesResponse>,
+  input: ListReportTypesRequest,
+  output: ListReportTypesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -541,7 +636,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(Job.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -603,15 +698,15 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           md5Hash: S.optional(S.String),
-          blobstore2Info: S.optional(__S(5)),
+          blobstore2Info: S.optional(GdataBlobstore2Info),
           inline: S.optional(S.String),
           sha1Hash: S.optional(S.String),
           crc32cHash: S.optional(S.Number),
-          objectId: S.optional(__S(6)),
+          objectId: S.optional(GdataObjectId),
           cosmoBinaryReference: S.optional(S.String),
           blobRef: S.optional(S.String),
           path: S.optional(S.String),
-          referenceType: S.optional(S.String),
+          referenceType: S.optional(GdataCompositeMediaReferenceTypeEnum),
           length: S.optional(S.String),
         }),
       ).annotate({ identifier: "GdataCompositeMedia" });
@@ -622,7 +717,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          originalObject: S.optional(__S(7)),
+          originalObject: S.optional(GdataCompositeMedia),
           objectVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "GdataDiffUploadResponse" });
@@ -648,17 +743,17 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          objectInfo: S.optional(__S(7)),
+          objectInfo: S.optional(GdataCompositeMedia),
           objectVersion: S.optional(S.String),
-          checksumsInfo: S.optional(__S(7)),
+          checksumsInfo: S.optional(GdataCompositeMedia),
         }),
       ).annotate({ identifier: "GdataDiffUploadRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          checksumsLocation: S.optional(__S(7)),
+          checksumsLocation: S.optional(GdataCompositeMedia),
           objectVersion: S.optional(S.String),
-          objectLocation: S.optional(__S(7)),
+          objectLocation: S.optional(GdataCompositeMedia),
           chunkSizeBytes: S.optional(S.String),
           objectSizeBytes: S.optional(S.String),
         }),
@@ -666,7 +761,7 @@ function __c1(j: number): any {
         identifier: "GdataDiffChecksumsResponse",
       });
     case 5:
-      return S.Array(__S(7));
+      return S.Array(GdataCompositeMedia);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -677,7 +772,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          objectLocation: S.optional(__S(7)),
+          objectLocation: S.optional(GdataCompositeMedia),
         }),
       ).annotate({
         identifier: "GdataDiffDownloadResponse",
@@ -689,33 +784,33 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          referenceType: S.optional(S.String),
-          diffUploadResponse: S.optional(__S(8)),
+          referenceType: S.optional(GdataMediaReferenceTypeEnum),
+          diffUploadResponse: S.optional(GdataDiffUploadResponse),
           sha256Hash: S.optional(S.String),
-          downloadParameters: S.optional(__S(9)),
+          downloadParameters: S.optional(GdataDownloadParameters),
           inline: S.optional(S.String),
           isPotentialRetry: S.optional(S.Boolean),
-          contentTypeInfo: S.optional(__S(10)),
-          objectId: S.optional(__S(6)),
+          contentTypeInfo: S.optional(GdataContentTypeInfo),
+          objectId: S.optional(GdataObjectId),
           timestamp: S.optional(S.String),
-          diffUploadRequest: S.optional(__S(11)),
+          diffUploadRequest: S.optional(GdataDiffUploadRequest),
           contentType: S.optional(S.String),
           blobRef: S.optional(S.String),
           filename: S.optional(S.String),
           token: S.optional(S.String),
-          diffChecksumsResponse: S.optional(__S(12)),
-          blobstore2Info: S.optional(__S(5)),
+          diffChecksumsResponse: S.optional(GdataDiffChecksumsResponse),
+          blobstore2Info: S.optional(GdataBlobstore2Info),
           sha512Hash: S.optional(S.String),
           algorithm: S.optional(S.String),
           mediaId: S.optional(S.String),
           length: S.optional(S.String),
-          compositeMedia: S.optional(__S(13)),
+          compositeMedia: S.optional(GdataCompositeMediaList),
           md5Hash: S.optional(S.String),
           hash: S.optional(S.String),
-          diffVersionResponse: S.optional(__S(14)),
+          diffVersionResponse: S.optional(GdataDiffVersionResponse),
           crc32cHash: S.optional(S.Number),
           hashVerified: S.optional(S.Boolean),
-          diffDownloadResponse: S.optional(__S(15)),
+          diffDownloadResponse: S.optional(GdataDiffDownloadResponse),
           cosmoBinaryReference: S.optional(S.String),
           bigstoreObjectRef: S.optional(S.String),
           sha1Hash: S.optional(S.String),
@@ -777,12 +872,12 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListJobsRequest" });
     case 5:
-      return S.Array(__S(0));
+      return S.Array(Job);
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          jobs: S.optional(__S(21)),
+          jobs: S.optional(JobList),
         }),
       ).annotate({ identifier: "ListJobsResponse" });
     case 7:
@@ -808,11 +903,11 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(19));
+      return S.Array(Report);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          reports: S.optional(__S(24)),
+          reports: S.optional(ReportList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListReportsResponse" });
@@ -841,30 +936,13 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "ReportType" });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(ReportType);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          reportTypes: S.optional(__S(28)),
+          reportTypes: S.optional(ReportTypeList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListReportTypesResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -71,11 +69,15 @@ export interface Schedule {
   /** A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately. */
   scheduleTime?: string;
 }
+const Schedule = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Schedule>;
+
 export type ScanConfigUserAgentEnum =
   | "USER_AGENT_UNSPECIFIED"
   | "CHROME_LINUX"
   | "CHROME_ANDROID"
   | "SAFARI_IPHONE";
+const ScanConfigUserAgentEnum = S.String;
+
 /** Describes authentication configuration that uses a Google account. */
 export interface GoogleAccount {
   /** Required. The user name of the Google account. */
@@ -83,6 +85,8 @@ export interface GoogleAccount {
   /** Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs. */
   password?: string;
 }
+const GoogleAccount = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<GoogleAccount>;
+
 /** Describes authentication configuration that uses a custom account. */
 export interface CustomAccount {
   /** Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs. */
@@ -92,6 +96,8 @@ export interface CustomAccount {
   /** Required. The login form URL of the website. */
   loginUrl?: string;
 }
+const CustomAccount = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CustomAccount>;
+
 /** Scan authentication configuration. */
 export interface Authentication {
   /** Authentication using a Google account. */
@@ -99,22 +105,37 @@ export interface Authentication {
   /** Authentication using a custom account. */
   customAccount?: CustomAccount;
 }
+const Authentication = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Authentication>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<StringList>;
+
 export type ScanConfigTargetPlatformsItemEnum =
   | "TARGET_PLATFORM_UNSPECIFIED"
   | "APP_ENGINE"
   | "COMPUTE"
   | "CLOUD_RUN"
   | "CLOUD_FUNCTIONS";
+const ScanConfigTargetPlatformsItemEnum = S.String;
+
 export type ScanConfigTargetPlatformsItemEnumList = Array<
   ScanConfigTargetPlatformsItemEnum | (string & {})
 >;
+const ScanConfigTargetPlatformsItemEnumList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ScanConfigTargetPlatformsItemEnumList>;
+
 export type ScanRunExecutionStateEnum =
   | "EXECUTION_STATE_UNSPECIFIED"
   | "QUEUED"
   | "SCANNING"
   | "FINISHED";
+const ScanRunExecutionStateEnum = S.String;
+
 export type ScanRunResultStateEnum = "RESULT_STATE_UNSPECIFIED" | "SUCCESS" | "ERROR" | "KILLED";
+const ScanRunResultStateEnum = S.String;
+
 /** A ScanRun is a output-only resource representing an actual run of the scan. */
 export interface ScanRun {
   /** The percentage of total completion ranging from 0 to 100. If the scan is in queue, the value is 0. If the scan is running, the value ranges from 0 to 100. If the scan is finished, the value is 100. */
@@ -136,6 +157,8 @@ export interface ScanRun {
   /** The number of URLs tested during this ScanRun. If the scan is in progress, the value represents the number of URLs tested up to now. The number of URLs tested is usually larger than the number URLS crawled because typically a crawled URL is tested with multiple test payloads. */
   urlsTestedCount?: string;
 }
+const ScanRun = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ScanRun>;
+
 /** A ScanConfig resource contains the configurations to launch a scan. next id: 12 */
 export interface ScanConfig {
   /** The schedule of the ScanConfig. */
@@ -159,30 +182,59 @@ export interface ScanConfig {
   /** Latest ScanRun if available. */
   latestRun?: ScanRun;
 }
+const ScanConfig = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ScanConfig>;
+
 export interface CreateProjectsScanConfigsRequest {
   /** Required. The parent resource name where the scan is created, which should be a project resource name in the format 'projects/{projectId}'. */
   parent: string;
   /** Request body */
   body?: ScanConfig;
 }
+const CreateProjectsScanConfigsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateProjectsScanConfigsRequest>;
+
 export interface DeleteProjectsScanConfigsRequest {
   /** Required. The resource name of the ScanConfig to be deleted. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. */
   name: string;
 }
+const DeleteProjectsScanConfigsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteProjectsScanConfigsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Empty>;
+
 export interface GetProjectsScanConfigsRequest {
   /** Required. The resource name of the ScanConfig to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. */
   name: string;
 }
+const GetProjectsScanConfigsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetProjectsScanConfigsRequest>;
+
 export interface GetProjectsScanConfigsScanRunsRequest {
   /** Required. The resource name of the ScanRun to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. */
   name: string;
 }
+const GetProjectsScanConfigsScanRunsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetProjectsScanConfigsScanRunsRequest>;
+
 export interface GetProjectsScanConfigsScanRunsFindingsRequest {
   /** Required. The resource name of the Finding to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}/findings/{findingId}'. */
   name: string;
 }
+const GetProjectsScanConfigsScanRunsFindingsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetProjectsScanConfigsScanRunsFindingsRequest>;
+
 /** Describes a HTTP Header. */
 export interface Header {
   /** Header name. */
@@ -190,7 +242,11 @@ export interface Header {
   /** Header value. */
   value?: string;
 }
+const Header = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Header>;
+
 export type HeaderList = Array<Header>;
+const HeaderList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<HeaderList>;
+
 /** Information about vulnerable or missing HTTP Headers. */
 export interface VulnerableHeaders {
   /** List of missing headers. */
@@ -198,11 +254,15 @@ export interface VulnerableHeaders {
   /** List of vulnerable headers. */
   headers?: HeaderList;
 }
+const VulnerableHeaders = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<VulnerableHeaders>;
+
 /** Information about vulnerable request parameters. */
 export interface VulnerableParameters {
   /** The vulnerable parameter names. */
   parameterNames?: StringList;
 }
+const VulnerableParameters = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<VulnerableParameters>;
+
 /** Information reported for an outdated library. */
 export interface OutdatedLibrary {
   /** The name of the outdated library. */
@@ -212,6 +272,8 @@ export interface OutdatedLibrary {
   /** URLs to learn more information about the vulnerabilities in the library. */
   learnMoreUrls?: StringList;
 }
+const OutdatedLibrary = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<OutdatedLibrary>;
+
 /** Information regarding any resource causing the vulnerability such as JavaScript sources, image, audio files, etc. */
 export interface ViolatingResource {
   /** The MIME type of this resource. */
@@ -219,6 +281,8 @@ export interface ViolatingResource {
   /** URL of this violating resource. */
   resourceUrl?: string;
 }
+const ViolatingResource = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ViolatingResource>;
+
 export type FindingFindingTypeEnum =
   | "FINDING_TYPE_UNSPECIFIED"
   | "MIXED_CONTENT"
@@ -235,6 +299,8 @@ export type FindingFindingTypeEnum =
   | "ACCESSIBLE_GIT_REPOSITORY"
   | "ACCESSIBLE_SVN_REPOSITORY"
   | "ACCESSIBLE_ENV_FILE";
+const FindingFindingTypeEnum = S.String;
+
 /** Information reported for an XSS. */
 export interface Xss {
   /** Stack traces leading to the point where the XSS occurred. */
@@ -242,6 +308,8 @@ export interface Xss {
   /** An error message generated by a javascript breakage. */
   errorMessage?: string;
 }
+const Xss = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Xss>;
+
 /** A Finding resource represents a vulnerability instance identified during a ScanRun. */
 export interface Finding {
   /** If the vulnerability was originated from nested IFrame, the immediate parent IFrame is reported. */
@@ -275,6 +343,8 @@ export interface Finding {
   /** An addon containing information reported for an XSS, if any. */
   xss?: Xss;
 }
+const Finding = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Finding>;
+
 export interface ListProjectsScanConfigsRequest {
   /** Required. The parent resource name, which should be a project resource name in the format 'projects/{projectId}'. */
   parent: string;
@@ -283,7 +353,14 @@ export interface ListProjectsScanConfigsRequest {
   /** The maximum number of ScanConfigs to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value. */
   pageSize?: number;
 }
+const ListProjectsScanConfigsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListProjectsScanConfigsRequest>;
+
 export type ScanConfigList = Array<ScanConfig>;
+const ScanConfigList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ScanConfigList>;
+
 /** Response for the `ListScanConfigs` method. */
 export interface ListScanConfigsResponse {
   /** The list of ScanConfigs returned. */
@@ -291,6 +368,11 @@ export interface ListScanConfigsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
+const ListScanConfigsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListScanConfigsResponse>;
+
 export interface ListProjectsScanConfigsScanRunsRequest {
   /** Required. The parent resource name, which should be a scan resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}'. */
   parent: string;
@@ -299,7 +381,14 @@ export interface ListProjectsScanConfigsScanRunsRequest {
   /** The maximum number of ScanRuns to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value. */
   pageSize?: number;
 }
+const ListProjectsScanConfigsScanRunsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListProjectsScanConfigsScanRunsRequest>;
+
 export type ScanRunList = Array<ScanRun>;
+const ScanRunList = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ScanRunList>;
+
 /** Response for the `ListScanRuns` method. */
 export interface ListScanRunsResponse {
   /** The list of ScanRuns returned. */
@@ -307,6 +396,8 @@ export interface ListScanRunsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
+const ListScanRunsResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ListScanRunsResponse>;
+
 export interface ListProjectsScanConfigsScanRunsCrawledUrlsRequest {
   /** Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. */
   parent: string;
@@ -315,6 +406,11 @@ export interface ListProjectsScanConfigsScanRunsCrawledUrlsRequest {
   /** The maximum number of CrawledUrls to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value. */
   pageSize?: number;
 }
+const ListProjectsScanConfigsScanRunsCrawledUrlsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ListProjectsScanConfigsScanRunsCrawledUrlsRequest>;
+
 /** A CrawledUrl resource represents a URL that was crawled during a ScanRun. Web Security Scanner Service crawls the web applications, following all links within the scope of sites, to find the URLs to test against. */
 export interface CrawledUrl {
   /** Output only. The URL that was crawled. */
@@ -324,7 +420,11 @@ export interface CrawledUrl {
   /** Output only. The body of the request that was used to visit the URL. */
   body?: string;
 }
+const CrawledUrl = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CrawledUrl>;
+
 export type CrawledUrlList = Array<CrawledUrl>;
+const CrawledUrlList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<CrawledUrlList>;
+
 /** Response for the `ListCrawledUrls` method. */
 export interface ListCrawledUrlsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -332,6 +432,11 @@ export interface ListCrawledUrlsResponse {
   /** The list of CrawledUrls returned. */
   crawledUrls?: CrawledUrlList;
 }
+const ListCrawledUrlsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ListCrawledUrlsResponse>;
+
 export interface ListProjectsScanConfigsScanRunsFindingsRequest {
   /** Required. The filter expression. The expression must be in the format: . Supported field: 'finding_type'. Supported operator: '='. */
   filter?: string;
@@ -342,7 +447,14 @@ export interface ListProjectsScanConfigsScanRunsFindingsRequest {
   /** The maximum number of Findings to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value. */
   pageSize?: number;
 }
+const ListProjectsScanConfigsScanRunsFindingsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ListProjectsScanConfigsScanRunsFindingsRequest>;
+
 export type FindingList = Array<Finding>;
+const FindingList = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<FindingList>;
+
 /** Response for the `ListFindings` method. */
 export interface ListFindingsResponse {
   /** The list of Findings returned. */
@@ -350,10 +462,17 @@ export interface ListFindingsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
+const ListFindingsResponse = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ListFindingsResponse>;
+
 export interface ListProjectsScanConfigsScanRunsFindingTypeStatsRequest {
   /** Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. */
   parent: string;
 }
+const ListProjectsScanConfigsScanRunsFindingTypeStatsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListProjectsScanConfigsScanRunsFindingTypeStatsRequest>;
+
 export type FindingTypeStatsFindingTypeEnum =
   | "FINDING_TYPE_UNSPECIFIED"
   | "MIXED_CONTENT"
@@ -370,6 +489,8 @@ export type FindingTypeStatsFindingTypeEnum =
   | "ACCESSIBLE_GIT_REPOSITORY"
   | "ACCESSIBLE_SVN_REPOSITORY"
   | "ACCESSIBLE_ENV_FILE";
+const FindingTypeStatsFindingTypeEnum = S.String;
+
 /** A FindingTypeStats resource represents stats regarding a specific FindingType of Findings under a given ScanRun. */
 export interface FindingTypeStats {
   /** The count of findings belonging to this finding type. */
@@ -377,12 +498,21 @@ export interface FindingTypeStats {
   /** The finding type associated with the stats. */
   findingType?: FindingTypeStatsFindingTypeEnum;
 }
+const FindingTypeStats = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<FindingTypeStats>;
+
 export type FindingTypeStatsList = Array<FindingTypeStats>;
+const FindingTypeStatsList = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<FindingTypeStatsList>;
+
 /** Response for the `ListFindingTypeStats` method. */
 export interface ListFindingTypeStatsResponse {
   /** The list of FindingTypeStats returned. */
   findingTypeStats?: FindingTypeStatsList;
 }
+const ListFindingTypeStatsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListFindingTypeStatsResponse>;
+
 export interface PatchProjectsScanConfigsRequest {
   /** The resource name of the ScanConfig. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. The ScanConfig IDs are generated by the system. */
   name: string;
@@ -391,14 +521,26 @@ export interface PatchProjectsScanConfigsRequest {
   /** Request body */
   body?: ScanConfig;
 }
+const PatchProjectsScanConfigsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<PatchProjectsScanConfigsRequest>;
+
 /** Request for the `StartScanRun` method. */
 export interface StartScanRunRequest {}
+const StartScanRunRequest = Empty as any as S.Schema<StartScanRunRequest>;
+
 export interface StartProjectsScanConfigsRequest {
   /** Required. The resource name of the ScanConfig to be used. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. */
   name: string;
   /** Request body */
   body?: StartScanRunRequest;
 }
+const StartProjectsScanConfigsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<StartProjectsScanConfigsRequest>;
+
 /** Request for the `StopScanRun` method. */
 export type StopScanRunRequest = StartScanRunRequest;
 export interface StopProjectsScanConfigsScanRunsRequest {
@@ -407,6 +549,11 @@ export interface StopProjectsScanConfigsScanRunsRequest {
   /** Request body */
   body?: StartScanRunRequest;
 }
+const StopProjectsScanConfigsScanRunsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<StopProjectsScanConfigsScanRunsRequest>;
+
 export type CreateProjectsScanConfigsError =
   | NotFound
   | Forbidden
@@ -420,8 +567,8 @@ export const createProjectsScanConfigs: API.OperationMethod<
   CreateProjectsScanConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateProjectsScanConfigsRequest>,
-  output: __S(7) as any as S.Schema<ScanConfig>,
+  input: CreateProjectsScanConfigsRequest,
+  output: ScanConfig,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -440,8 +587,8 @@ export const deleteProjectsScanConfigs: API.OperationMethod<
   DeleteProjectsScanConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeleteProjectsScanConfigsRequest>,
-  output: __S(10) as any as S.Schema<Empty>,
+  input: DeleteProjectsScanConfigsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -455,8 +602,8 @@ export const getProjectsScanConfigs: API.OperationMethod<
   GetProjectsScanConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetProjectsScanConfigsRequest>,
-  output: __S(7) as any as S.Schema<ScanConfig>,
+  input: GetProjectsScanConfigsRequest,
+  output: ScanConfig,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -470,8 +617,8 @@ export const getProjectsScanConfigsScanRuns: API.OperationMethod<
   GetProjectsScanConfigsScanRunsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<GetProjectsScanConfigsScanRunsRequest>,
-  output: __S(6) as any as S.Schema<ScanRun>,
+  input: GetProjectsScanConfigsScanRunsRequest,
+  output: ScanRun,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -485,8 +632,8 @@ export const getProjectsScanConfigsScanRunsFindings: API.OperationMethod<
   GetProjectsScanConfigsScanRunsFindingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<GetProjectsScanConfigsScanRunsFindingsRequest>,
-  output: __S(21) as any as S.Schema<Finding>,
+  input: GetProjectsScanConfigsScanRunsFindingsRequest,
+  output: Finding,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -501,8 +648,8 @@ export const listProjectsScanConfigs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListScanConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(22) as any as S.Schema<ListProjectsScanConfigsRequest>,
-  output: __S(24) as any as S.Schema<ListScanConfigsResponse>,
+  input: ListProjectsScanConfigsRequest,
+  output: ListScanConfigsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -518,8 +665,8 @@ export const listProjectsScanConfigsScanRuns: API.PaginatedOperationMethod<
   GcpOpContext,
   ListScanRunsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(25) as any as S.Schema<ListProjectsScanConfigsScanRunsRequest>,
-  output: __S(27) as any as S.Schema<ListScanRunsResponse>,
+  input: ListProjectsScanConfigsScanRunsRequest,
+  output: ListScanRunsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -535,8 +682,8 @@ export const listProjectsScanConfigsScanRunsCrawledUrls: API.PaginatedOperationM
   GcpOpContext,
   ListCrawledUrlsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(28) as any as S.Schema<ListProjectsScanConfigsScanRunsCrawledUrlsRequest>,
-  output: __S(31) as any as S.Schema<ListCrawledUrlsResponse>,
+  input: ListProjectsScanConfigsScanRunsCrawledUrlsRequest,
+  output: ListCrawledUrlsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -552,8 +699,8 @@ export const listProjectsScanConfigsScanRunsFindings: API.PaginatedOperationMeth
   GcpOpContext,
   ListFindingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(32) as any as S.Schema<ListProjectsScanConfigsScanRunsFindingsRequest>,
-  output: __S(34) as any as S.Schema<ListFindingsResponse>,
+  input: ListProjectsScanConfigsScanRunsFindingsRequest,
+  output: ListFindingsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -571,8 +718,8 @@ export const listProjectsScanConfigsScanRunsFindingTypeStats: API.OperationMetho
   ListProjectsScanConfigsScanRunsFindingTypeStatsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<ListProjectsScanConfigsScanRunsFindingTypeStatsRequest>,
-  output: __S(38) as any as S.Schema<ListFindingTypeStatsResponse>,
+  input: ListProjectsScanConfigsScanRunsFindingTypeStatsRequest,
+  output: ListFindingTypeStatsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -591,8 +738,8 @@ export const patchProjectsScanConfigs: API.OperationMethod<
   PatchProjectsScanConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<PatchProjectsScanConfigsRequest>,
-  output: __S(7) as any as S.Schema<ScanConfig>,
+  input: PatchProjectsScanConfigsRequest,
+  output: ScanConfig,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -611,8 +758,8 @@ export const startProjectsScanConfigs: API.OperationMethod<
   StartProjectsScanConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<StartProjectsScanConfigsRequest>,
-  output: __S(6) as any as S.Schema<ScanRun>,
+  input: StartProjectsScanConfigsRequest,
+  output: ScanRun,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -631,8 +778,8 @@ export const stopProjectsScanConfigsScanRuns: API.OperationMethod<
   StopProjectsScanConfigsScanRunsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<StopProjectsScanConfigsScanRunsRequest>,
-  output: __S(6) as any as S.Schema<ScanRun>,
+  input: StopProjectsScanConfigsScanRunsRequest,
+  output: ScanRun,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -666,41 +813,41 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          googleAccount: S.optional(__S(1)),
-          customAccount: S.optional(__S(2)),
+          googleAccount: S.optional(GoogleAccount),
+          customAccount: S.optional(CustomAccount),
         }),
       ).annotate({ identifier: "Authentication" });
     case 4:
       return S.Array(S.String);
     case 5:
-      return S.Array(S.String);
+      return S.Array(ScanConfigTargetPlatformsItemEnum);
     case 6:
       return S.suspend(() =>
         S.Struct({
           progressPercent: S.optional(S.Number),
-          executionState: S.optional(S.String),
+          executionState: S.optional(ScanRunExecutionStateEnum),
           hasVulnerabilities: S.optional(S.Boolean),
           startTime: S.optional(S.String),
           urlsCrawledCount: S.optional(S.String),
           endTime: S.optional(S.String),
           name: S.optional(S.String),
-          resultState: S.optional(S.String),
+          resultState: S.optional(ScanRunResultStateEnum),
           urlsTestedCount: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScanRun" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          schedule: S.optional(__S(0)),
-          userAgent: S.optional(S.String),
-          authentication: S.optional(__S(3)),
+          schedule: S.optional(Schedule),
+          userAgent: S.optional(ScanConfigUserAgentEnum),
+          authentication: S.optional(Authentication),
           name: S.optional(S.String),
           maxQps: S.optional(S.Number),
-          startingUrls: S.optional(__S(4)),
-          blacklistPatterns: S.optional(__S(4)),
-          targetPlatforms: S.optional(__S(5)),
+          startingUrls: S.optional(StringList),
+          blacklistPatterns: S.optional(StringList),
+          targetPlatforms: S.optional(ScanConfigTargetPlatformsItemEnumList),
           displayName: S.optional(S.String),
-          latestRun: S.optional(__S(6)),
+          latestRun: S.optional(ScanRun),
         }),
       ).annotate({ identifier: "ScanConfig" });
   }
@@ -711,7 +858,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(7).pipe(T.HttpBody())),
+          body: S.optional(ScanConfig.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -790,7 +937,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Header" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(Header);
   }
 }
 function __c2(j: number): any {
@@ -798,14 +945,14 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          missingHeaders: S.optional(__S(15)),
-          headers: S.optional(__S(15)),
+          missingHeaders: S.optional(HeaderList),
+          headers: S.optional(HeaderList),
         }),
       ).annotate({ identifier: "VulnerableHeaders" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          parameterNames: S.optional(__S(4)),
+          parameterNames: S.optional(StringList),
         }),
       ).annotate({ identifier: "VulnerableParameters" });
     case 2:
@@ -813,7 +960,7 @@ function __c2(j: number): any {
         S.Struct({
           libraryName: S.optional(S.String),
           version: S.optional(S.String),
-          learnMoreUrls: S.optional(__S(4)),
+          learnMoreUrls: S.optional(StringList),
         }),
       ).annotate({ identifier: "OutdatedLibrary" });
     case 3:
@@ -826,7 +973,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          stackTraces: S.optional(__S(4)),
+          stackTraces: S.optional(StringList),
           errorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "Xss" });
@@ -835,19 +982,19 @@ function __c2(j: number): any {
         S.Struct({
           frameUrl: S.optional(S.String),
           trackingId: S.optional(S.String),
-          vulnerableHeaders: S.optional(__S(16)),
-          vulnerableParameters: S.optional(__S(17)),
+          vulnerableHeaders: S.optional(VulnerableHeaders),
+          vulnerableParameters: S.optional(VulnerableParameters),
           fuzzedUrl: S.optional(S.String),
           finalUrl: S.optional(S.String),
           description: S.optional(S.String),
-          outdatedLibrary: S.optional(__S(18)),
-          violatingResource: S.optional(__S(19)),
+          outdatedLibrary: S.optional(OutdatedLibrary),
+          violatingResource: S.optional(ViolatingResource),
           body: S.optional(S.String),
           reproductionUrl: S.optional(S.String),
-          findingType: S.optional(S.String),
+          findingType: S.optional(FindingFindingTypeEnum),
           httpMethod: S.optional(S.String),
           name: S.optional(S.String),
-          xss: S.optional(__S(20)),
+          xss: S.optional(Xss),
         }),
       ).annotate({ identifier: "Finding" });
     case 6:
@@ -867,7 +1014,7 @@ function __c2(j: number): any {
         identifier: "ListProjectsScanConfigsRequest",
       });
     case 7:
-      return S.Array(__S(7));
+      return S.Array(ScanConfig);
   }
 }
 function __c3(j: number): any {
@@ -875,7 +1022,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          scanConfigs: S.optional(__S(23)),
+          scanConfigs: S.optional(ScanConfigList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListScanConfigsResponse" });
@@ -896,11 +1043,11 @@ function __c3(j: number): any {
         identifier: "ListProjectsScanConfigsScanRunsRequest",
       });
     case 2:
-      return S.Array(__S(6));
+      return S.Array(ScanRun);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          scanRuns: S.optional(__S(26)),
+          scanRuns: S.optional(ScanRunList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListScanRunsResponse" });
@@ -929,12 +1076,12 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "CrawledUrl" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(CrawledUrl);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          crawledUrls: S.optional(__S(30)),
+          crawledUrls: S.optional(CrawledUrlList),
         }),
       ).annotate({ identifier: "ListCrawledUrlsResponse" });
   }
@@ -959,11 +1106,11 @@ function __c4(j: number): any {
         identifier: "ListProjectsScanConfigsScanRunsFindingsRequest",
       });
     case 1:
-      return S.Array(__S(21));
+      return S.Array(Finding);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          findings: S.optional(__S(33)),
+          findings: S.optional(FindingList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListFindingsResponse" });
@@ -985,15 +1132,15 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           findingCount: S.optional(S.Number),
-          findingType: S.optional(S.String),
+          findingType: S.optional(FindingTypeStatsFindingTypeEnum),
         }),
       ).annotate({ identifier: "FindingTypeStats" });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(FindingTypeStats);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          findingTypeStats: S.optional(__S(37)),
+          findingTypeStats: S.optional(FindingTypeStatsList),
         }),
       ).annotate({
         identifier: "ListFindingTypeStatsResponse",
@@ -1003,7 +1150,7 @@ function __c4(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(7).pipe(T.HttpBody())),
+          body: S.optional(ScanConfig.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1022,7 +1169,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(10).pipe(T.HttpBody())),
+          body: S.optional(StartScanRunRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1037,7 +1184,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(10).pipe(T.HttpBody())),
+          body: S.optional(StartScanRunRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1048,26 +1195,5 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "StopProjectsScanConfigsScanRunsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

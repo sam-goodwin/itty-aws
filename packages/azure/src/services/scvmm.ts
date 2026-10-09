@@ -7,13 +7,16 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type AvailabilitySetsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const AvailabilitySetsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AvailabilitySetsCreateOrUpdateRequestTagsMap>;
+
 /** Defines the resource properties. */
 export interface AvailabilitySetPropertiesInput {
   /** Name of the availability set. */
@@ -21,6 +24,11 @@ export interface AvailabilitySetPropertiesInput {
   /** ARM Id of the vmmServer resource in which this resource resides. */
   vmmServerId?: string;
 }
+const AvailabilitySetPropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AvailabilitySetPropertiesInput>;
+
 /** The extended location. */
 export interface ExtendedLocation {
   /** The extended location type. */
@@ -28,6 +36,8 @@ export interface ExtendedLocation {
   /** The extended location name. */
   name?: string;
 }
+const ExtendedLocation = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ExtendedLocation>;
+
 export interface AvailabilitySetsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -44,10 +54,19 @@ export interface AvailabilitySetsCreateOrUpdateRequest {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const AvailabilitySetsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AvailabilitySetsCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -63,8 +82,13 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<SystemData>;
+
 /** Resource tags. */
 export type AvailabilitySetsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const AvailabilitySetsCreateOrUpdateResponseTagsMap =
+  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<AvailabilitySetsCreateOrUpdateResponseTagsMap>;
+
 /** The provisioning state of the resource. */
 export type ProvisioningState =
   | "Succeeded"
@@ -75,6 +99,8 @@ export type ProvisioningState =
   | "Deleting"
   | "Accepted"
   | "Created";
+const ProvisioningState = S.String;
+
 /** Defines the resource properties. */
 export interface AvailabilitySetProperties {
   /** Name of the availability set. */
@@ -84,6 +110,11 @@ export interface AvailabilitySetProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
+const AvailabilitySetProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AvailabilitySetProperties>;
+
 export interface AvailabilitySetsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -102,8 +133,16 @@ export interface AvailabilitySetsCreateOrUpdateResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const AvailabilitySetsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AvailabilitySetsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type CloudsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const CloudsCreateOrUpdateRequestTagsMap =
+  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<CloudsCreateOrUpdateRequestTagsMap>;
+
 /** Defines the resource properties. */
 export interface CloudPropertiesInput {
   /** Gets or sets the inventory Item ID for the resource. */
@@ -113,6 +152,8 @@ export interface CloudPropertiesInput {
   /** ARM Id of the vmmServer resource in which this resource resides. */
   vmmServerId?: string;
 }
+const CloudPropertiesInput = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CloudPropertiesInput>;
+
 export interface CloudsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -129,8 +170,16 @@ export interface CloudsCreateOrUpdateRequest {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const CloudsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CloudsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type CloudsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const CloudsCreateOrUpdateResponseTagsMap =
+  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<CloudsCreateOrUpdateResponseTagsMap>;
+
 /** Cloud Capacity model */
 export interface CloudCapacity {
   /** CPUCount specifies the maximum number of CPUs that can be allocated in the cloud. */
@@ -142,6 +191,8 @@ export interface CloudCapacity {
   /** StorageGB gives the storage in GB present in the cloud. */
   storageGB?: number;
 }
+const CloudCapacity = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CloudCapacity>;
+
 /** The StorageQoSPolicy definition. */
 export interface StorageQosPolicy {
   /** The name of the policy. */
@@ -157,8 +208,15 @@ export interface StorageQosPolicy {
   /** The underlying policy. */
   policyId?: string;
 }
+const StorageQosPolicy = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<StorageQosPolicy>;
+
 /** List of QoS policies available for the cloud. */
 export type CloudPropertiesStorageQoSPoliciesList = Array<StorageQosPolicy>;
+const CloudPropertiesStorageQoSPoliciesList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CloudPropertiesStorageQoSPoliciesList>;
+
 /** Defines the resource properties. */
 export interface CloudProperties {
   /** Gets or sets the inventory Item ID for the resource. */
@@ -176,6 +234,8 @@ export interface CloudProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
+const CloudProperties = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CloudProperties>;
+
 export interface CloudsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -194,6 +254,11 @@ export interface CloudsCreateOrUpdateResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const CloudsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CloudsCreateOrUpdateResponse>;
+
 /** Username / Password Credentials to connect to guest. */
 export interface GuestCredential {
   /** Gets or sets username to connect with the guest. */
@@ -201,13 +266,22 @@ export interface GuestCredential {
   /** Gets or sets the password to connect with the guest. */
   password: string | Redacted.Redacted<string>;
 }
+const GuestCredential = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GuestCredential>;
+
 /** HTTP Proxy configuration for the VM. */
 export interface HttpProxyConfiguration {
   /** Gets or sets httpsProxy url. */
   httpsProxy?: string;
 }
+const HttpProxyConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<HttpProxyConfiguration>;
+
 /** Guest agent provisioning action. */
 export type ProvisioningAction = "install" | "uninstall" | "repair";
+const ProvisioningAction = S.String;
+
 /** Defines the resource properties. */
 export interface GuestAgentPropertiesInput {
   /** Username / Password Credentials to provision guest agent. */
@@ -219,12 +293,22 @@ export interface GuestAgentPropertiesInput {
   /** The resource id of the private link scope this machine is assigned to, if any. */
   privateLinkScopeResourceId?: string;
 }
+const GuestAgentPropertiesInput = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GuestAgentPropertiesInput>;
+
 export interface CreateGuestAgentRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The resource-specific properties for this resource. */
   properties?: GuestAgentPropertiesInput;
 }
+const CreateGuestAgentRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateGuestAgentRequest>;
+
 /** Defines the resource properties. */
 export interface GuestAgentProperties {
   /** Gets a unique identifier for this resource. */
@@ -244,6 +328,8 @@ export interface GuestAgentProperties {
   /** The resource id of the private link scope this machine is assigned to, if any. */
   privateLinkScopeResourceId?: string;
 }
+const GuestAgentProperties = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GuestAgentProperties>;
+
 export interface CreateGuestAgentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -256,17 +342,29 @@ export interface CreateGuestAgentResponse {
   /** The resource-specific properties for this resource. */
   properties?: GuestAgentProperties;
 }
+const CreateGuestAgentResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateGuestAgentResponse>;
+
 /** The inventory type */
 export type InventoryType =
   | "Cloud"
   | "VirtualNetwork"
   | "VirtualMachine"
   | "VirtualMachineTemplate";
+const InventoryType = S.String;
+
 /** Defines the resource properties. */
 export interface InventoryItemPropertiesInput {
   /** They inventory type. */
   inventoryType: InventoryType | (string & {});
 }
+const InventoryItemPropertiesInput = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<InventoryItemPropertiesInput>;
+
 export interface CreateInventoryItemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -281,6 +379,11 @@ export interface CreateInventoryItemRequest {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind?: string;
 }
+const CreateInventoryItemRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateInventoryItemRequest>;
+
 /** Defines the resource properties. */
 export interface InventoryItemProperties {
   /** They inventory type. */
@@ -294,6 +397,11 @@ export interface InventoryItemProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
+const InventoryItemProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<InventoryItemProperties>;
+
 export interface CreateInventoryItemResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -308,6 +416,11 @@ export interface CreateInventoryItemResponse {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind?: string;
 }
+const CreateInventoryItemResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateInventoryItemResponse>;
+
 export interface CreateVirtualMachineInstanceCheckpointRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -316,7 +429,17 @@ export interface CreateVirtualMachineInstanceCheckpointRequest {
   /** Description of the checkpoint. */
   description?: string;
 }
+const CreateVirtualMachineInstanceCheckpointRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateVirtualMachineInstanceCheckpointRequest>;
+
 export interface CreateVirtualMachineInstanceCheckpointResponse {}
+const CreateVirtualMachineInstanceCheckpointResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateVirtualMachineInstanceCheckpointResponse>;
+
 export interface DeleteAvailabilitySetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -327,7 +450,17 @@ export interface DeleteAvailabilitySetRequest {
   /** Forces the resource to be deleted. */
   force?: boolean;
 }
+const DeleteAvailabilitySetRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DeleteAvailabilitySetRequest>;
+
 export interface DeleteAvailabilitySetResponse {}
+const DeleteAvailabilitySetResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DeleteAvailabilitySetResponse>;
+
 export interface DeleteCloudRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -338,12 +471,24 @@ export interface DeleteCloudRequest {
   /** Forces the resource to be deleted. */
   force?: boolean;
 }
+const DeleteCloudRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DeleteCloudRequest>;
+
 export interface DeleteCloudResponse {}
+const DeleteCloudResponse = DeleteAvailabilitySetResponse as any as S.Schema<DeleteCloudResponse>;
+
 export interface DeleteGuestAgentRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
+const DeleteGuestAgentRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DeleteGuestAgentRequest>;
+
 export interface DeleteGuestAgentResponse {}
+const DeleteGuestAgentResponse =
+  DeleteAvailabilitySetResponse as any as S.Schema<DeleteGuestAgentResponse>;
+
 export interface DeleteInventoryItemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -354,7 +499,15 @@ export interface DeleteInventoryItemRequest {
   /** Name of the inventoryItem. */
   inventoryItemResourceName: string;
 }
+const DeleteInventoryItemRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DeleteInventoryItemRequest>;
+
 export interface DeleteInventoryItemResponse {}
+const DeleteInventoryItemResponse =
+  DeleteAvailabilitySetResponse as any as S.Schema<DeleteInventoryItemResponse>;
+
 export interface DeleteVirtualMachineInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -363,14 +516,30 @@ export interface DeleteVirtualMachineInstanceRequest {
   /** Whether to disable the VM from azure and also delete it from Vmm. */
   deleteFromHost?: boolean;
 }
+const DeleteVirtualMachineInstanceRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DeleteVirtualMachineInstanceRequest>;
+
 export interface DeleteVirtualMachineInstanceResponse {}
+const DeleteVirtualMachineInstanceResponse =
+  CreateVirtualMachineInstanceCheckpointResponse as any as S.Schema<DeleteVirtualMachineInstanceResponse>;
+
 export interface DeleteVirtualMachineInstanceCheckpointRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** ID of the checkpoint to be deleted. */
   id?: string;
 }
+const DeleteVirtualMachineInstanceCheckpointRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<DeleteVirtualMachineInstanceCheckpointRequest>;
+
 export interface DeleteVirtualMachineInstanceCheckpointResponse {}
+const DeleteVirtualMachineInstanceCheckpointResponse =
+  CreateVirtualMachineInstanceCheckpointResponse as any as S.Schema<DeleteVirtualMachineInstanceCheckpointResponse>;
+
 export interface DeleteVirtualMachineTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -381,7 +550,15 @@ export interface DeleteVirtualMachineTemplateRequest {
   /** Forces the resource to be deleted. */
   force?: boolean;
 }
+const DeleteVirtualMachineTemplateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<DeleteVirtualMachineTemplateRequest>;
+
 export interface DeleteVirtualMachineTemplateResponse {}
+const DeleteVirtualMachineTemplateResponse =
+  CreateVirtualMachineInstanceCheckpointResponse as any as S.Schema<DeleteVirtualMachineTemplateResponse>;
+
 export interface DeleteVirtualNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -392,7 +569,15 @@ export interface DeleteVirtualNetworkRequest {
   /** Forces the resource to be deleted. */
   force?: boolean;
 }
+const DeleteVirtualNetworkRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<DeleteVirtualNetworkRequest>;
+
 export interface DeleteVirtualNetworkResponse {}
+const DeleteVirtualNetworkResponse =
+  DeleteAvailabilitySetResponse as any as S.Schema<DeleteVirtualNetworkResponse>;
+
 export interface DeleteVmmServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -403,7 +588,15 @@ export interface DeleteVmmServerRequest {
   /** Forces the resource to be deleted. */
   force?: boolean;
 }
+const DeleteVmmServerRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<DeleteVmmServerRequest>;
+
 export interface DeleteVmmServerResponse {}
+const DeleteVmmServerResponse =
+  DeleteAvailabilitySetResponse as any as S.Schema<DeleteVmmServerResponse>;
+
 export interface GetAvailabilitySetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -412,6 +605,11 @@ export interface GetAvailabilitySetRequest {
   /** Name of the AvailabilitySet. */
   availabilitySetResourceName: string;
 }
+const GetAvailabilitySetRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetAvailabilitySetRequest>;
+
 /** Resource tags. */
 export type GetAvailabilitySetResponseTagsMap = { [key: string]: string | undefined };
 export interface GetAvailabilitySetResponse {
@@ -432,6 +630,9 @@ export interface GetAvailabilitySetResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const GetAvailabilitySetResponse =
+  AvailabilitySetsCreateOrUpdateResponse as any as S.Schema<GetAvailabilitySetResponse>;
+
 export interface GetCloudRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -440,8 +641,13 @@ export interface GetCloudRequest {
   /** Name of the Cloud. */
   cloudResourceName: string;
 }
+const GetCloudRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<GetCloudRequest>;
+
 /** Resource tags. */
 export type GetCloudResponseTagsMap = { [key: string]: string | undefined };
+const GetCloudResponseTagsMap =
+  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<GetCloudResponseTagsMap>;
+
 export interface GetCloudResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -460,10 +666,14 @@ export interface GetCloudResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const GetCloudResponse = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<GetCloudResponse>;
+
 export interface GetGuestAgentRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
+const GetGuestAgentRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<GetGuestAgentRequest>;
+
 export interface GetGuestAgentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -476,6 +686,8 @@ export interface GetGuestAgentResponse {
   /** The resource-specific properties for this resource. */
   properties?: GuestAgentProperties;
 }
+const GetGuestAgentResponse = CreateGuestAgentResponse as any as S.Schema<GetGuestAgentResponse>;
+
 export interface GetInventoryItemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -486,6 +698,11 @@ export interface GetInventoryItemRequest {
   /** Name of the inventoryItem. */
   inventoryItemResourceName: string;
 }
+const GetInventoryItemRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GetInventoryItemRequest>;
+
 export interface GetInventoryItemResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -500,10 +717,20 @@ export interface GetInventoryItemResponse {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind?: string;
 }
+const GetInventoryItemResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetInventoryItemResponse>;
+
 export interface GetVirtualMachineInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
+const GetVirtualMachineInstanceRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GetVirtualMachineInstanceRequest>;
+
 /** Availability Set model */
 export interface AvailabilitySetListItem {
   /** Gets the ARM Id of the microsoft.scvmm/availabilitySets resource. */
@@ -511,10 +738,22 @@ export interface AvailabilitySetListItem {
   /** Gets or sets the name of the availability set. */
   name?: string;
 }
+const AvailabilitySetListItem = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<AvailabilitySetListItem>;
+
 /** Availability Sets in vm. */
 export type VirtualMachineInstancePropertiesAvailabilitySetsList = Array<AvailabilitySetListItem>;
+const VirtualMachineInstancePropertiesAvailabilitySetsList = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<VirtualMachineInstancePropertiesAvailabilitySetsList>;
+
 /** Virtual machine operating system type. */
 export type OsType = "Windows" | "Linux" | "Other";
+const OsType = S.String;
+
 /** Defines the resource properties. */
 export interface OsProfileForVmInstance {
   /** Gets or sets the admin username. */
@@ -544,12 +783,23 @@ export interface OsProfileForVmInstance {
   /** Get or sets the commands to be run once at the time of creation separated by semicolons. */
   runOnceCommands?: string;
 }
+const OsProfileForVmInstance = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<OsProfileForVmInstance>;
+
 /** Limit CPU for migration. */
 export type LimitCpuForMigration = "true" | "false";
+const LimitCpuForMigration = S.String;
+
 /** Dynamic memory enabled. */
 export type DynamicMemoryEnabled = "true" | "false";
+const DynamicMemoryEnabled = S.String;
+
 /** Highly available. */
 export type IsHighlyAvailable = "true" | "false";
+const IsHighlyAvailable = S.String;
+
 /** Defines the resource properties. */
 export interface HardwareProfile {
   /** MemoryMB is the size of a virtual machine's memory, in MB. */
@@ -567,12 +817,24 @@ export interface HardwareProfile {
   /** Gets highly available property. */
   isHighlyAvailable?: IsHighlyAvailable | (string & {});
 }
+const HardwareProfile = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<HardwareProfile>;
+
 /** Gets the nic ipv4 addresses. */
 export type NetworkInterfaceIpv4AddressesList = Array<string>;
+const NetworkInterfaceIpv4AddressesList = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<NetworkInterfaceIpv4AddressesList>;
+
 /** Gets the nic ipv6 addresses. */
 export type NetworkInterfaceIpv6AddressesList = Array<string>;
+const NetworkInterfaceIpv6AddressesList =
+  NetworkInterfaceIpv4AddressesList as any as S.Schema<NetworkInterfaceIpv6AddressesList>;
+
 /** Network address allocation method. */
 export type AllocationMethod = "Dynamic" | "Static";
+const AllocationMethod = S.String;
+
 /** Network Interface model */
 export interface NetworkInterface {
   /** Gets or sets the name of the network interface. */
@@ -598,13 +860,22 @@ export interface NetworkInterface {
   /** Gets or sets the nic id. */
   nicId?: string;
 }
+const NetworkInterface = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<NetworkInterface>;
+
 /** Gets or sets the list of network interfaces associated with the virtual machine. */
 export type NetworkProfileNetworkInterfacesList = Array<NetworkInterface>;
+const NetworkProfileNetworkInterfacesList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<NetworkProfileNetworkInterfacesList>;
+
 /** Defines the resource properties. */
 export interface NetworkProfile {
   /** Gets or sets the list of network interfaces associated with the virtual machine. */
   networkInterfaces?: NetworkProfileNetworkInterfacesList;
 }
+const NetworkProfile = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<NetworkProfile>;
+
 /** The StorageQoSPolicyDetails definition. */
 export interface StorageQosPolicyDetails {
   /** The name of the policy. */
@@ -612,8 +883,15 @@ export interface StorageQosPolicyDetails {
   /** The ID of the QoS policy. */
   id?: string;
 }
+const StorageQosPolicyDetails = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<StorageQosPolicyDetails>;
+
 /** Create diff disk. */
 export type CreateDiffDisk = "true" | "false";
+const CreateDiffDisk = S.String;
+
 /** Virtual disk model */
 export interface VirtualDisk {
   /** Gets or sets the name of the disk. */
@@ -645,13 +923,22 @@ export interface VirtualDisk {
   /** Gets or sets a value indicating diff disk. */
   createDiffDisk?: CreateDiffDisk;
 }
+const VirtualDisk = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<VirtualDisk>;
+
 /** Gets or sets the list of virtual disks associated with the virtual machine. */
 export type StorageProfileDisksList = Array<VirtualDisk>;
+const StorageProfileDisksList = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<StorageProfileDisksList>;
+
 /** Defines the resource properties. */
 export interface StorageProfile {
   /** Gets or sets the list of virtual disks associated with the virtual machine. */
   disks?: StorageProfileDisksList;
 }
+const StorageProfile = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<StorageProfile>;
+
 /** Defines the resource properties. */
 export interface Checkpoint {
   /** Gets ID of parent of the checkpoint. */
@@ -663,8 +950,15 @@ export interface Checkpoint {
   /** Gets description of the checkpoint. */
   description?: string;
 }
+const Checkpoint = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<Checkpoint>;
+
 /** Checkpoints in the vm. */
 export type InfrastructureProfileCheckpointsList = Array<Checkpoint>;
+const InfrastructureProfileCheckpointsList = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<InfrastructureProfileCheckpointsList>;
+
 /** Specifies the vmmServer infrastructure specific settings for the virtual machine instance. */
 export interface InfrastructureProfile {
   /** Gets or sets the inventory Item ID for the resource. */
@@ -690,6 +984,11 @@ export interface InfrastructureProfile {
   /** Gets or sets the bios guid for the vm. */
   biosGuid?: string;
 }
+const InfrastructureProfile = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<InfrastructureProfile>;
+
 /** Defines the resource properties. */
 export interface VirtualMachineInstanceProperties {
   /** Availability Sets in vm. */
@@ -709,6 +1008,11 @@ export interface VirtualMachineInstanceProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
+const VirtualMachineInstanceProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<VirtualMachineInstanceProperties>;
+
 export interface GetVirtualMachineInstanceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -723,6 +1027,11 @@ export interface GetVirtualMachineInstanceResponse {
   /** Gets or sets the extended location. */
   extendedLocation: ExtendedLocation;
 }
+const GetVirtualMachineInstanceResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetVirtualMachineInstanceResponse>;
+
 export interface GetVirtualMachineTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -731,14 +1040,30 @@ export interface GetVirtualMachineTemplateRequest {
   /** Name of the VirtualMachineTemplate. */
   virtualMachineTemplateName: string;
 }
+const GetVirtualMachineTemplateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GetVirtualMachineTemplateRequest>;
+
 /** Resource tags. */
 export type GetVirtualMachineTemplateResponseTagsMap = { [key: string]: string | undefined };
+const GetVirtualMachineTemplateResponseTagsMap =
+  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<GetVirtualMachineTemplateResponseTagsMap>;
+
 /** Customizable. */
 export type IsCustomizable = "true" | "false";
+const IsCustomizable = S.String;
+
 /** Gets the network interfaces of the template. */
 export type VirtualMachineTemplatePropertiesNetworkInterfacesList = Array<NetworkInterface>;
+const VirtualMachineTemplatePropertiesNetworkInterfacesList =
+  NetworkProfileNetworkInterfacesList as any as S.Schema<VirtualMachineTemplatePropertiesNetworkInterfacesList>;
+
 /** Gets the disks of the template. */
 export type VirtualMachineTemplatePropertiesDisksList = Array<VirtualDisk>;
+const VirtualMachineTemplatePropertiesDisksList =
+  StorageProfileDisksList as any as S.Schema<VirtualMachineTemplatePropertiesDisksList>;
+
 /** Defines the resource properties. */
 export interface VirtualMachineTemplateProperties {
   /** Gets or sets the inventory Item ID for the resource. */
@@ -778,6 +1103,11 @@ export interface VirtualMachineTemplateProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
+const VirtualMachineTemplateProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<VirtualMachineTemplateProperties>;
+
 export interface GetVirtualMachineTemplateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -796,6 +1126,11 @@ export interface GetVirtualMachineTemplateResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const GetVirtualMachineTemplateResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GetVirtualMachineTemplateResponse>;
+
 export interface GetVirtualNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -804,8 +1139,16 @@ export interface GetVirtualNetworkRequest {
   /** Name of the VirtualNetwork. */
   virtualNetworkName: string;
 }
+const GetVirtualNetworkRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetVirtualNetworkRequest>;
+
 /** Resource tags. */
 export type GetVirtualNetworkResponseTagsMap = { [key: string]: string | undefined };
+const GetVirtualNetworkResponseTagsMap =
+  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<GetVirtualNetworkResponseTagsMap>;
+
 /** Defines the resource properties. */
 export interface VirtualNetworkProperties {
   /** Gets or sets the inventory Item ID for the resource. */
@@ -819,6 +1162,11 @@ export interface VirtualNetworkProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
+const VirtualNetworkProperties = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<VirtualNetworkProperties>;
+
 export interface GetVirtualNetworkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -837,10 +1185,20 @@ export interface GetVirtualNetworkResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const GetVirtualNetworkResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<GetVirtualNetworkResponse>;
+
 export interface GetVmInstanceHybridIdentityMetadatasRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
+const GetVmInstanceHybridIdentityMetadatasRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetVmInstanceHybridIdentityMetadatasRequest>;
+
 /** Describes the properties of Hybrid Identity Metadata for a Virtual Machine. */
 export interface VmInstanceHybridIdentityMetadataProperties {
   /** The unique identifier for the resource. */
@@ -850,6 +1208,11 @@ export interface VmInstanceHybridIdentityMetadataProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
+const VmInstanceHybridIdentityMetadataProperties = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<VmInstanceHybridIdentityMetadataProperties>;
+
 export interface GetVmInstanceHybridIdentityMetadatasResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -862,6 +1225,11 @@ export interface GetVmInstanceHybridIdentityMetadatasResponse {
   /** The resource-specific properties for this resource. */
   properties?: VmInstanceHybridIdentityMetadataProperties;
 }
+const GetVmInstanceHybridIdentityMetadatasResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<GetVmInstanceHybridIdentityMetadatasResponse>;
+
 export interface GetVmmServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -870,8 +1238,13 @@ export interface GetVmmServerRequest {
   /** Name of the VmmServer. */
   vmmServerName: string;
 }
+const GetVmmServerRequest = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<GetVmmServerRequest>;
+
 /** Resource tags. */
 export type GetVmmServerResponseTagsMap = { [key: string]: string | undefined };
+const GetVmmServerResponseTagsMap =
+  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<GetVmmServerResponseTagsMap>;
+
 /** Credentials to connect to VmmServer. */
 export interface VmmCredential {
   /** Username to use to connect to VmmServer. */
@@ -879,6 +1252,8 @@ export interface VmmCredential {
   /** Password to use to connect to VmmServer. */
   password?: string | Redacted.Redacted<string>;
 }
+const VmmCredential = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<VmmCredential>;
+
 /** Defines the resource properties. */
 export interface VmmServerProperties {
   /** Credentials to connect to VmmServer. */
@@ -898,6 +1273,8 @@ export interface VmmServerProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
+const VmmServerProperties = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<VmmServerProperties>;
+
 export interface GetVmmServerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -916,14 +1293,24 @@ export interface GetVmmServerResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const GetVmmServerResponse = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<GetVmmServerResponse>;
+
 export interface ListAvailabilitySetByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListAvailabilitySetByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListAvailabilitySetByResourceGroupRequest>;
+
 /** Resource tags. */
 export type AvailabilitySetTagsMap = { [key: string]: string | undefined };
+const AvailabilitySetTagsMap =
+  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<AvailabilitySetTagsMap>;
+
 /** The AvailabilitySets resource definition. */
 export interface AvailabilitySet {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -943,8 +1330,15 @@ export interface AvailabilitySet {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const AvailabilitySet = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<AvailabilitySet>;
+
 /** The AvailabilitySet items on this page */
 export type AvailabilitySetListResultValueList = Array<AvailabilitySet>;
+const AvailabilitySetListResultValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<AvailabilitySetListResultValueList>;
+
 /** The response of a AvailabilitySet list operation. */
 export interface AvailabilitySetListResult {
   /** The AvailabilitySet items on this page */
@@ -952,16 +1346,31 @@ export interface AvailabilitySetListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const AvailabilitySetListResult = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<AvailabilitySetListResult>;
+
 export interface ListAvailabilitySetBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListAvailabilitySetBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ListAvailabilitySetBySubscriptionRequest>;
+
 export interface ListCloudByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListCloudByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ListCloudByResourceGroupRequest>;
+
 /** Resource tags. */
 export type CloudTagsMap = { [key: string]: string | undefined };
 /** The Clouds resource definition. */
@@ -983,8 +1392,15 @@ export interface Cloud {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const Cloud = GetCloudResponse as any as S.Schema<Cloud>;
+
 /** The Cloud items on this page */
 export type CloudListResultValueList = Array<Cloud>;
+const CloudListResultValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<CloudListResultValueList>;
+
 /** The response of a Cloud list operation. */
 export interface CloudListResult {
   /** The Cloud items on this page */
@@ -992,14 +1408,26 @@ export interface CloudListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const CloudListResult = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<CloudListResult>;
+
 export interface ListCloudBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListCloudBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ListCloudBySubscriptionRequest>;
+
 export interface ListGuestAgentByVirtualMachineInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
+const ListGuestAgentByVirtualMachineInstanceRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListGuestAgentByVirtualMachineInstanceRequest>;
+
 /** Defines the GuestAgent. */
 export interface GuestAgent {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1013,8 +1441,15 @@ export interface GuestAgent {
   /** The resource-specific properties for this resource. */
   properties?: GuestAgentProperties;
 }
+const GuestAgent = CreateGuestAgentResponse as any as S.Schema<GuestAgent>;
+
 /** The GuestAgent items on this page */
 export type GuestAgentListResultValueList = Array<GuestAgent>;
+const GuestAgentListResultValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<GuestAgentListResultValueList>;
+
 /** The response of a GuestAgent list operation. */
 export interface GuestAgentListResult {
   /** The GuestAgent items on this page */
@@ -1022,6 +1457,11 @@ export interface GuestAgentListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const GuestAgentListResult = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<GuestAgentListResult>;
+
 export interface ListInventoryItemByVmmServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1030,6 +1470,11 @@ export interface ListInventoryItemByVmmServerRequest {
   /** Name of the VmmServer. */
   vmmServerName: string;
 }
+const ListInventoryItemByVmmServerRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ListInventoryItemByVmmServerRequest>;
+
 /** Defines the inventory item. */
 export interface InventoryItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1045,8 +1490,15 @@ export interface InventoryItem {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind?: string;
 }
+const InventoryItem = GetInventoryItemResponse as any as S.Schema<InventoryItem>;
+
 /** The InventoryItem items on this page */
 export type InventoryItemListResultValueList = Array<InventoryItem>;
+const InventoryItemListResultValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<InventoryItemListResultValueList>;
+
 /** The response of a InventoryItem list operation. */
 export interface InventoryItemListResult {
   /** The InventoryItem items on this page */
@@ -1054,7 +1506,17 @@ export interface InventoryItemListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const InventoryItemListResult = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<InventoryItemListResult>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -1066,10 +1528,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -1083,18 +1551,35 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListVirtualMachineInstancesRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
+const ListVirtualMachineInstancesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ListVirtualMachineInstancesRequest>;
+
 /** Define the virtualMachineInstance. */
 export interface VirtualMachineInstance {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1110,8 +1595,18 @@ export interface VirtualMachineInstance {
   /** Gets or sets the extended location. */
   extendedLocation: ExtendedLocation;
 }
+const VirtualMachineInstance = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<VirtualMachineInstance>;
+
 /** The VirtualMachineInstance items on this page */
 export type VirtualMachineInstanceListResultValueList = Array<VirtualMachineInstance>;
+const VirtualMachineInstanceListResultValueList = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<VirtualMachineInstanceListResultValueList>;
+
 /** The response of a VirtualMachineInstance list operation. */
 export interface VirtualMachineInstanceListResult {
   /** The VirtualMachineInstance items on this page */
@@ -1119,14 +1614,27 @@ export interface VirtualMachineInstanceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const VirtualMachineInstanceListResult = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<VirtualMachineInstanceListResult>;
+
 export interface ListVirtualMachineTemplateByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListVirtualMachineTemplateByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ListVirtualMachineTemplateByResourceGroupRequest>;
+
 /** Resource tags. */
 export type VirtualMachineTemplateTagsMap = { [key: string]: string | undefined };
+const VirtualMachineTemplateTagsMap =
+  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualMachineTemplateTagsMap>;
+
 /** The VirtualMachineTemplates resource definition. */
 export interface VirtualMachineTemplate {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1146,8 +1654,18 @@ export interface VirtualMachineTemplate {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const VirtualMachineTemplate = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<VirtualMachineTemplate>;
+
 /** The VirtualMachineTemplate items on this page */
 export type VirtualMachineTemplateListResultValueList = Array<VirtualMachineTemplate>;
+const VirtualMachineTemplateListResultValueList = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<VirtualMachineTemplateListResultValueList>;
+
 /** The response of a VirtualMachineTemplate list operation. */
 export interface VirtualMachineTemplateListResult {
   /** The VirtualMachineTemplate items on this page */
@@ -1155,18 +1673,36 @@ export interface VirtualMachineTemplateListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const VirtualMachineTemplateListResult = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<VirtualMachineTemplateListResult>;
+
 export interface ListVirtualMachineTemplateBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListVirtualMachineTemplateBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ListVirtualMachineTemplateBySubscriptionRequest>;
+
 export interface ListVirtualNetworkByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListVirtualNetworkByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ListVirtualNetworkByResourceGroupRequest>;
+
 /** Resource tags. */
 export type VirtualNetworkTagsMap = { [key: string]: string | undefined };
+const VirtualNetworkTagsMap =
+  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualNetworkTagsMap>;
+
 /** The VirtualNetworks resource definition. */
 export interface VirtualNetwork {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1186,8 +1722,15 @@ export interface VirtualNetwork {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const VirtualNetwork = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<VirtualNetwork>;
+
 /** The VirtualNetwork items on this page */
 export type VirtualNetworkListResultValueList = Array<VirtualNetwork>;
+const VirtualNetworkListResultValueList = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<VirtualNetworkListResultValueList>;
+
 /** The response of a VirtualNetwork list operation. */
 export interface VirtualNetworkListResult {
   /** The VirtualNetwork items on this page */
@@ -1195,14 +1738,29 @@ export interface VirtualNetworkListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const VirtualNetworkListResult = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<VirtualNetworkListResult>;
+
 export interface ListVirtualNetworkBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListVirtualNetworkBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ListVirtualNetworkBySubscriptionRequest>;
+
 export interface ListVmInstanceHybridIdentityMetadatasByVirtualMachineInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
+const ListVmInstanceHybridIdentityMetadatasByVirtualMachineInstanceRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ListVmInstanceHybridIdentityMetadatasByVirtualMachineInstanceRequest>;
+
 /** Defines the HybridIdentityMetadata. */
 export interface VmInstanceHybridIdentityMetadata {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1216,9 +1774,17 @@ export interface VmInstanceHybridIdentityMetadata {
   /** The resource-specific properties for this resource. */
   properties?: VmInstanceHybridIdentityMetadataProperties;
 }
+const VmInstanceHybridIdentityMetadata =
+  GetVmInstanceHybridIdentityMetadatasResponse as any as S.Schema<VmInstanceHybridIdentityMetadata>;
+
 /** The VmInstanceHybridIdentityMetadata items on this page */
 export type VmInstanceHybridIdentityMetadataListResultValueList =
   Array<VmInstanceHybridIdentityMetadata>;
+const VmInstanceHybridIdentityMetadataListResultValueList = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<VmInstanceHybridIdentityMetadataListResultValueList>;
+
 /** The response of a VmInstanceHybridIdentityMetadata list operation. */
 export interface VmInstanceHybridIdentityMetadataListResult {
   /** The VmInstanceHybridIdentityMetadata items on this page */
@@ -1226,12 +1792,22 @@ export interface VmInstanceHybridIdentityMetadataListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const VmInstanceHybridIdentityMetadataListResult = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<VmInstanceHybridIdentityMetadataListResult>;
+
 export interface ListVmmServerByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListVmmServerByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ListVmmServerByResourceGroupRequest>;
+
 /** Resource tags. */
 export type VmmServerTagsMap = { [key: string]: string | undefined };
 /** The VmmServers resource definition. */
@@ -1253,8 +1829,15 @@ export interface VmmServer {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const VmmServer = GetVmmServerResponse as any as S.Schema<VmmServer>;
+
 /** The VmmServer items on this page */
 export type VmmServerListResultValueList = Array<VmmServer>;
+const VmmServerListResultValueList = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<VmmServerListResultValueList>;
+
 /** The response of a VmmServer list operation. */
 export interface VmmServerListResult {
   /** The VmmServer items on this page */
@@ -1262,36 +1845,78 @@ export interface VmmServerListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const VmmServerListResult = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<VmmServerListResult>;
+
 export interface ListVmmServerBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListVmmServerBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ListVmmServerBySubscriptionRequest>;
+
 export interface RestartVirtualMachineInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
+const RestartVirtualMachineInstanceRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<RestartVirtualMachineInstanceRequest>;
+
 export interface RestartVirtualMachineInstanceResponse {}
+const RestartVirtualMachineInstanceResponse =
+  CreateVirtualMachineInstanceCheckpointResponse as any as S.Schema<RestartVirtualMachineInstanceResponse>;
+
 export interface RestoreVirtualMachineInstanceCheckpointRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** ID of the checkpoint to be restored to. */
   id?: string;
 }
+const RestoreVirtualMachineInstanceCheckpointRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<RestoreVirtualMachineInstanceCheckpointRequest>;
+
 export interface RestoreVirtualMachineInstanceCheckpointResponse {}
+const RestoreVirtualMachineInstanceCheckpointResponse =
+  CreateVirtualMachineInstanceCheckpointResponse as any as S.Schema<RestoreVirtualMachineInstanceCheckpointResponse>;
+
 export interface StartVirtualMachineInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
+const StartVirtualMachineInstanceRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<StartVirtualMachineInstanceRequest>;
+
 export interface StartVirtualMachineInstanceResponse {}
+const StartVirtualMachineInstanceResponse =
+  CreateVirtualMachineInstanceCheckpointResponse as any as S.Schema<StartVirtualMachineInstanceResponse>;
+
 export interface StopVirtualMachineInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** Gets or sets a value indicating whether to request non-graceful VM shutdown. True value for this flag indicates non-graceful shutdown whereas false indicates otherwise. Defaults to false. */
   skipShutdown?: boolean;
 }
+const StopVirtualMachineInstanceRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<StopVirtualMachineInstanceRequest>;
+
 export interface StopVirtualMachineInstanceResponse {}
+const StopVirtualMachineInstanceResponse =
+  CreateVirtualMachineInstanceCheckpointResponse as any as S.Schema<StopVirtualMachineInstanceResponse>;
+
 /** Resource tags. */
 export type UpdateAvailabilitySetRequestTagsMap = { [key: string]: string | undefined };
+const UpdateAvailabilitySetRequestTagsMap =
+  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAvailabilitySetRequestTagsMap>;
+
 export interface UpdateAvailabilitySetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1302,6 +1927,11 @@ export interface UpdateAvailabilitySetRequest {
   /** Resource tags. */
   tags?: UpdateAvailabilitySetRequestTagsMap;
 }
+const UpdateAvailabilitySetRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<UpdateAvailabilitySetRequest>;
+
 /** Resource tags. */
 export type UpdateAvailabilitySetResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateAvailabilitySetResponse {
@@ -1322,8 +1952,14 @@ export interface UpdateAvailabilitySetResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const UpdateAvailabilitySetResponse =
+  AvailabilitySetsCreateOrUpdateResponse as any as S.Schema<UpdateAvailabilitySetResponse>;
+
 /** Resource tags. */
 export type UpdateCloudRequestTagsMap = { [key: string]: string | undefined };
+const UpdateCloudRequestTagsMap =
+  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCloudRequestTagsMap>;
+
 export interface UpdateCloudRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1334,6 +1970,8 @@ export interface UpdateCloudRequest {
   /** Resource tags. */
   tags?: UpdateCloudRequestTagsMap;
 }
+const UpdateCloudRequest = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<UpdateCloudRequest>;
+
 /** Resource tags. */
 export type UpdateCloudResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateCloudResponse {
@@ -1354,9 +1992,14 @@ export interface UpdateCloudResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const UpdateCloudResponse = GetCloudResponse as any as S.Schema<UpdateCloudResponse>;
+
 /** Availability Sets in vm. */
 export type VirtualMachineInstanceUpdatePropertiesAvailabilitySetsList =
   Array<AvailabilitySetListItem>;
+const VirtualMachineInstanceUpdatePropertiesAvailabilitySetsList =
+  VirtualMachineInstancePropertiesAvailabilitySetsList as any as S.Schema<VirtualMachineInstanceUpdatePropertiesAvailabilitySetsList>;
+
 /** Defines the resource update properties. */
 export interface HardwareProfileUpdate {
   /** MemoryMB is the size of a virtual machine's memory, in MB. */
@@ -1372,6 +2015,11 @@ export interface HardwareProfileUpdate {
   /** Gets or sets the min dynamic memory for the vm. */
   dynamicMemoryMinMB?: number;
 }
+const HardwareProfileUpdate = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<HardwareProfileUpdate>;
+
 /** Network Interface Update model */
 export interface NetworkInterfaceUpdate {
   /** Gets or sets the name of the network interface. */
@@ -1389,13 +2037,28 @@ export interface NetworkInterfaceUpdate {
   /** Gets or sets the nic id. */
   nicId?: string;
 }
+const NetworkInterfaceUpdate = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<NetworkInterfaceUpdate>;
+
 /** Gets or sets the list of network interfaces associated with the virtual machine. */
 export type NetworkProfileUpdateNetworkInterfacesList = Array<NetworkInterfaceUpdate>;
+const NetworkProfileUpdateNetworkInterfacesList = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<NetworkProfileUpdateNetworkInterfacesList>;
+
 /** Defines the resource update properties. */
 export interface NetworkProfileUpdate {
   /** Gets or sets the list of network interfaces associated with the virtual machine. */
   networkInterfaces?: NetworkProfileUpdateNetworkInterfacesList;
 }
+const NetworkProfileUpdate = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<NetworkProfileUpdate>;
+
 /** Virtual Disk Update model */
 export interface VirtualDiskUpdate {
   /** Gets or sets the name of the disk. */
@@ -1415,18 +2078,35 @@ export interface VirtualDiskUpdate {
   /** The QoS policy for the disk. */
   storageQoSPolicy?: StorageQosPolicyDetails;
 }
+const VirtualDiskUpdate = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<VirtualDiskUpdate>;
+
 /** Gets or sets the list of virtual disks associated with the virtual machine. */
 export type StorageProfileUpdateDisksList = Array<VirtualDiskUpdate>;
+const StorageProfileUpdateDisksList = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<StorageProfileUpdateDisksList>;
+
 /** Defines the resource update properties. */
 export interface StorageProfileUpdate {
   /** Gets or sets the list of virtual disks associated with the virtual machine. */
   disks?: StorageProfileUpdateDisksList;
 }
+const StorageProfileUpdate = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<StorageProfileUpdate>;
+
 /** Specifies the vmmServer infrastructure specific update settings for the virtual machine instance. */
 export interface InfrastructureProfileUpdate {
   /** Type of checkpoint supported for the vm. */
   checkpointType?: string;
 }
+const InfrastructureProfileUpdate = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<InfrastructureProfileUpdate>;
+
 /** Virtual Machine Instance Properties Update model */
 export interface VirtualMachineInstanceUpdateProperties {
   /** Availability Sets in vm. */
@@ -1440,12 +2120,22 @@ export interface VirtualMachineInstanceUpdateProperties {
   /** Gets the infrastructure profile. */
   infrastructureProfile?: InfrastructureProfileUpdate;
 }
+const VirtualMachineInstanceUpdateProperties = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<VirtualMachineInstanceUpdateProperties>;
+
 export interface UpdateVirtualMachineInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The update properties of the VirtualMachineInstance. */
   properties?: VirtualMachineInstanceUpdateProperties;
 }
+const UpdateVirtualMachineInstanceRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<UpdateVirtualMachineInstanceRequest>;
+
 export interface UpdateVirtualMachineInstanceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1460,8 +2150,14 @@ export interface UpdateVirtualMachineInstanceResponse {
   /** Gets or sets the extended location. */
   extendedLocation: ExtendedLocation;
 }
+const UpdateVirtualMachineInstanceResponse =
+  GetVirtualMachineInstanceResponse as any as S.Schema<UpdateVirtualMachineInstanceResponse>;
+
 /** Resource tags. */
 export type UpdateVirtualMachineTemplateRequestTagsMap = { [key: string]: string | undefined };
+const UpdateVirtualMachineTemplateRequestTagsMap =
+  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVirtualMachineTemplateRequestTagsMap>;
+
 export interface UpdateVirtualMachineTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1472,6 +2168,11 @@ export interface UpdateVirtualMachineTemplateRequest {
   /** Resource tags. */
   tags?: UpdateVirtualMachineTemplateRequestTagsMap;
 }
+const UpdateVirtualMachineTemplateRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<UpdateVirtualMachineTemplateRequest>;
+
 /** Resource tags. */
 export type UpdateVirtualMachineTemplateResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateVirtualMachineTemplateResponse {
@@ -1492,8 +2193,14 @@ export interface UpdateVirtualMachineTemplateResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const UpdateVirtualMachineTemplateResponse =
+  GetVirtualMachineTemplateResponse as any as S.Schema<UpdateVirtualMachineTemplateResponse>;
+
 /** Resource tags. */
 export type UpdateVirtualNetworkRequestTagsMap = { [key: string]: string | undefined };
+const UpdateVirtualNetworkRequestTagsMap =
+  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVirtualNetworkRequestTagsMap>;
+
 export interface UpdateVirtualNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1504,6 +2211,11 @@ export interface UpdateVirtualNetworkRequest {
   /** Resource tags. */
   tags?: UpdateVirtualNetworkRequestTagsMap;
 }
+const UpdateVirtualNetworkRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<UpdateVirtualNetworkRequest>;
+
 /** Resource tags. */
 export type UpdateVirtualNetworkResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateVirtualNetworkResponse {
@@ -1524,8 +2236,14 @@ export interface UpdateVirtualNetworkResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const UpdateVirtualNetworkResponse =
+  GetVirtualNetworkResponse as any as S.Schema<UpdateVirtualNetworkResponse>;
+
 /** Resource tags. */
 export type UpdateVmmServerRequestTagsMap = { [key: string]: string | undefined };
+const UpdateVmmServerRequestTagsMap =
+  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVmmServerRequestTagsMap>;
+
 export interface UpdateVmmServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1536,6 +2254,11 @@ export interface UpdateVmmServerRequest {
   /** Resource tags. */
   tags?: UpdateVmmServerRequestTagsMap;
 }
+const UpdateVmmServerRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<UpdateVmmServerRequest>;
+
 /** Resource tags. */
 export type UpdateVmmServerResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateVmmServerResponse {
@@ -1556,9 +2279,14 @@ export interface UpdateVmmServerResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const UpdateVmmServerResponse = GetVmmServerResponse as any as S.Schema<UpdateVmmServerResponse>;
+
 /** Availability Sets in vm. */
 export type VirtualMachineInstancePropertiesInputAvailabilitySetsList =
   Array<AvailabilitySetListItem>;
+const VirtualMachineInstancePropertiesInputAvailabilitySetsList =
+  VirtualMachineInstancePropertiesAvailabilitySetsList as any as S.Schema<VirtualMachineInstancePropertiesInputAvailabilitySetsList>;
+
 /** Defines the resource properties. */
 export interface OsProfileForVmInstanceInput {
   /** Gets or sets the admin username. */
@@ -1582,6 +2310,11 @@ export interface OsProfileForVmInstanceInput {
   /** Get or sets the commands to be run once at the time of creation separated by semicolons. */
   runOnceCommands?: string;
 }
+const OsProfileForVmInstanceInput = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<OsProfileForVmInstanceInput>;
+
 /** Network Interface model */
 export type NetworkInterfaceInput = NetworkInterfaceUpdate;
 /** Gets or sets the list of network interfaces associated with the virtual machine. */
@@ -1591,6 +2324,8 @@ export interface NetworkProfileInput {
   /** Gets or sets the list of network interfaces associated with the virtual machine. */
   networkInterfaces?: NetworkProfileInputNetworkInterfacesList;
 }
+const NetworkProfileInput = NetworkProfileUpdate as any as S.Schema<NetworkProfileInput>;
+
 /** Virtual disk model */
 export interface VirtualDiskInput {
   /** Gets or sets the name of the disk. */
@@ -1614,13 +2349,22 @@ export interface VirtualDiskInput {
   /** Gets or sets a value indicating diff disk. */
   createDiffDisk?: boolean;
 }
+const VirtualDiskInput = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<VirtualDiskInput>;
+
 /** Gets or sets the list of virtual disks associated with the virtual machine. */
 export type StorageProfileInputDisksList = Array<VirtualDiskInput>;
+const StorageProfileInputDisksList = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<StorageProfileInputDisksList>;
+
 /** Defines the resource properties. */
 export interface StorageProfileInput {
   /** Gets or sets the list of virtual disks associated with the virtual machine. */
   disks?: StorageProfileInputDisksList;
 }
+const StorageProfileInput = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<StorageProfileInput>;
+
 /** Specifies the vmmServer infrastructure specific settings for the virtual machine instance. */
 export interface InfrastructureProfileInput {
   /** Gets or sets the inventory Item ID for the resource. */
@@ -1642,6 +2386,11 @@ export interface InfrastructureProfileInput {
   /** Gets or sets the bios guid for the vm. */
   biosGuid?: string;
 }
+const InfrastructureProfileInput = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<InfrastructureProfileInput>;
+
 /** Defines the resource properties. */
 export interface VirtualMachineInstancePropertiesInput {
   /** Availability Sets in vm. */
@@ -1657,6 +2406,11 @@ export interface VirtualMachineInstancePropertiesInput {
   /** Gets the infrastructure profile. */
   infrastructureProfile?: InfrastructureProfileInput;
 }
+const VirtualMachineInstancePropertiesInput = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<VirtualMachineInstancePropertiesInput>;
+
 export interface VirtualMachineInstancesCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -1665,6 +2419,11 @@ export interface VirtualMachineInstancesCreateOrUpdateRequest {
   /** Gets or sets the extended location. */
   extendedLocation: ExtendedLocation;
 }
+const VirtualMachineInstancesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<VirtualMachineInstancesCreateOrUpdateRequest>;
+
 export interface VirtualMachineInstancesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1679,10 +2438,16 @@ export interface VirtualMachineInstancesCreateOrUpdateResponse {
   /** Gets or sets the extended location. */
   extendedLocation: ExtendedLocation;
 }
+const VirtualMachineInstancesCreateOrUpdateResponse =
+  GetVirtualMachineInstanceResponse as any as S.Schema<VirtualMachineInstancesCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type VirtualMachineTemplatesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const VirtualMachineTemplatesCreateOrUpdateRequestTagsMap =
+  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualMachineTemplatesCreateOrUpdateRequestTagsMap>;
+
 /** Defines the resource properties. */
 export interface VirtualMachineTemplatePropertiesInput {
   /** Gets or sets the inventory Item ID for the resource. */
@@ -1692,6 +2457,11 @@ export interface VirtualMachineTemplatePropertiesInput {
   /** ARM Id of the vmmServer resource in which this resource resides. */
   vmmServerId?: string;
 }
+const VirtualMachineTemplatePropertiesInput = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<VirtualMachineTemplatePropertiesInput>;
+
 export interface VirtualMachineTemplatesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1708,6 +2478,11 @@ export interface VirtualMachineTemplatesCreateOrUpdateRequest {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const VirtualMachineTemplatesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<VirtualMachineTemplatesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type VirtualMachineTemplatesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -1730,8 +2505,14 @@ export interface VirtualMachineTemplatesCreateOrUpdateResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const VirtualMachineTemplatesCreateOrUpdateResponse =
+  GetVirtualMachineTemplateResponse as any as S.Schema<VirtualMachineTemplatesCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type VirtualNetworksCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const VirtualNetworksCreateOrUpdateRequestTagsMap =
+  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualNetworksCreateOrUpdateRequestTagsMap>;
+
 /** Defines the resource properties. */
 export interface VirtualNetworkPropertiesInput {
   /** Gets or sets the inventory Item ID for the resource. */
@@ -1741,6 +2522,9 @@ export interface VirtualNetworkPropertiesInput {
   /** ARM Id of the vmmServer resource in which this resource resides. */
   vmmServerId?: string;
 }
+const VirtualNetworkPropertiesInput =
+  VirtualMachineTemplatePropertiesInput as any as S.Schema<VirtualNetworkPropertiesInput>;
+
 export interface VirtualNetworksCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1757,6 +2541,11 @@ export interface VirtualNetworksCreateOrUpdateRequest {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const VirtualNetworksCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<VirtualNetworksCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type VirtualNetworksCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface VirtualNetworksCreateOrUpdateResponse {
@@ -1777,8 +2566,14 @@ export interface VirtualNetworksCreateOrUpdateResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const VirtualNetworksCreateOrUpdateResponse =
+  GetVirtualNetworkResponse as any as S.Schema<VirtualNetworksCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type VmmServersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const VmmServersCreateOrUpdateRequestTagsMap =
+  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<VmmServersCreateOrUpdateRequestTagsMap>;
+
 /** Defines the resource properties. */
 export interface VmmServerPropertiesInput {
   /** Credentials to connect to VmmServer. */
@@ -1788,6 +2583,11 @@ export interface VmmServerPropertiesInput {
   /** Port is the port on which the vmmServer is listening. */
   port?: number;
 }
+const VmmServerPropertiesInput = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<VmmServerPropertiesInput>;
+
 export interface VmmServersCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1804,8 +2604,16 @@ export interface VmmServersCreateOrUpdateRequest {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const VmmServersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<VmmServersCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type VmmServersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const VmmServersCreateOrUpdateResponseTagsMap =
+  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<VmmServersCreateOrUpdateResponseTagsMap>;
+
 export interface VmmServersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1824,6 +2632,11 @@ export interface VmmServersCreateOrUpdateResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
+const VmmServersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<VmmServersCreateOrUpdateResponse>;
+
 export type AvailabilitySetsCreateOrUpdateError = AzureOpError;
 /** Implements AvailabilitySets PUT method. Onboards the ScVmm availability set as an Azure resource. */
 export const AvailabilitySetsCreateOrUpdate: API.OperationMethod<
@@ -1832,8 +2645,8 @@ export const AvailabilitySetsCreateOrUpdate: API.OperationMethod<
   AvailabilitySetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<AvailabilitySetsCreateOrUpdateRequest>,
-  output: __S(6) as any as S.Schema<AvailabilitySetsCreateOrUpdateResponse>,
+  input: AvailabilitySetsCreateOrUpdateRequest,
+  output: AvailabilitySetsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1847,8 +2660,8 @@ export const CloudsCreateOrUpdate: API.OperationMethod<
   CloudsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CloudsCreateOrUpdateRequest>,
-  output: __S(13) as any as S.Schema<CloudsCreateOrUpdateResponse>,
+  input: CloudsCreateOrUpdateRequest,
+  output: CloudsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1862,8 +2675,8 @@ export const CreateGuestAgent: API.OperationMethod<
   CreateGuestAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<CreateGuestAgentRequest>,
-  output: __S(19) as any as S.Schema<CreateGuestAgentResponse>,
+  input: CreateGuestAgentRequest,
+  output: CreateGuestAgentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1877,8 +2690,8 @@ export const CreateInventoryItem: API.OperationMethod<
   CreateInventoryItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<CreateInventoryItemRequest>,
-  output: __S(23) as any as S.Schema<CreateInventoryItemResponse>,
+  input: CreateInventoryItemRequest,
+  output: CreateInventoryItemResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1892,8 +2705,8 @@ export const CreateVirtualMachineInstanceCheckpoint: API.OperationMethod<
   CreateVirtualMachineInstanceCheckpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<CreateVirtualMachineInstanceCheckpointRequest>,
-  output: __S(25) as any as S.Schema<CreateVirtualMachineInstanceCheckpointResponse>,
+  input: CreateVirtualMachineInstanceCheckpointRequest,
+  output: CreateVirtualMachineInstanceCheckpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1907,8 +2720,8 @@ export const DeleteAvailabilitySet: API.OperationMethod<
   DeleteAvailabilitySetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<DeleteAvailabilitySetRequest>,
-  output: __S(27) as any as S.Schema<DeleteAvailabilitySetResponse>,
+  input: DeleteAvailabilitySetRequest,
+  output: DeleteAvailabilitySetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1922,8 +2735,8 @@ export const DeleteCloud: API.OperationMethod<
   DeleteCloudError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<DeleteCloudRequest>,
-  output: __S(27) as any as S.Schema<DeleteCloudResponse>,
+  input: DeleteCloudRequest,
+  output: DeleteCloudResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1937,8 +2750,8 @@ export const DeleteGuestAgent: API.OperationMethod<
   DeleteGuestAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<DeleteGuestAgentRequest>,
-  output: __S(27) as any as S.Schema<DeleteGuestAgentResponse>,
+  input: DeleteGuestAgentRequest,
+  output: DeleteGuestAgentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1952,8 +2765,8 @@ export const DeleteInventoryItem: API.OperationMethod<
   DeleteInventoryItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<DeleteInventoryItemRequest>,
-  output: __S(27) as any as S.Schema<DeleteInventoryItemResponse>,
+  input: DeleteInventoryItemRequest,
+  output: DeleteInventoryItemResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1967,8 +2780,8 @@ export const DeleteVirtualMachineInstance: API.OperationMethod<
   DeleteVirtualMachineInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<DeleteVirtualMachineInstanceRequest>,
-  output: __S(25) as any as S.Schema<DeleteVirtualMachineInstanceResponse>,
+  input: DeleteVirtualMachineInstanceRequest,
+  output: DeleteVirtualMachineInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1982,8 +2795,8 @@ export const DeleteVirtualMachineInstanceCheckpoint: API.OperationMethod<
   DeleteVirtualMachineInstanceCheckpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<DeleteVirtualMachineInstanceCheckpointRequest>,
-  output: __S(25) as any as S.Schema<DeleteVirtualMachineInstanceCheckpointResponse>,
+  input: DeleteVirtualMachineInstanceCheckpointRequest,
+  output: DeleteVirtualMachineInstanceCheckpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1997,8 +2810,8 @@ export const DeleteVirtualMachineTemplate: API.OperationMethod<
   DeleteVirtualMachineTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<DeleteVirtualMachineTemplateRequest>,
-  output: __S(25) as any as S.Schema<DeleteVirtualMachineTemplateResponse>,
+  input: DeleteVirtualMachineTemplateRequest,
+  output: DeleteVirtualMachineTemplateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2012,8 +2825,8 @@ export const DeleteVirtualNetwork: API.OperationMethod<
   DeleteVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<DeleteVirtualNetworkRequest>,
-  output: __S(27) as any as S.Schema<DeleteVirtualNetworkResponse>,
+  input: DeleteVirtualNetworkRequest,
+  output: DeleteVirtualNetworkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2027,8 +2840,8 @@ export const DeleteVmmServer: API.OperationMethod<
   DeleteVmmServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<DeleteVmmServerRequest>,
-  output: __S(27) as any as S.Schema<DeleteVmmServerResponse>,
+  input: DeleteVmmServerRequest,
+  output: DeleteVmmServerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2042,8 +2855,8 @@ export const GetAvailabilitySet: API.OperationMethod<
   GetAvailabilitySetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GetAvailabilitySetRequest>,
-  output: __S(6) as any as S.Schema<GetAvailabilitySetResponse>,
+  input: GetAvailabilitySetRequest,
+  output: GetAvailabilitySetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2057,8 +2870,8 @@ export const GetCloud: API.OperationMethod<
   GetCloudError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<GetCloudRequest>,
-  output: __S(38) as any as S.Schema<GetCloudResponse>,
+  input: GetCloudRequest,
+  output: GetCloudResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2072,8 +2885,8 @@ export const GetGuestAgent: API.OperationMethod<
   GetGuestAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<GetGuestAgentRequest>,
-  output: __S(19) as any as S.Schema<GetGuestAgentResponse>,
+  input: GetGuestAgentRequest,
+  output: GetGuestAgentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2087,8 +2900,8 @@ export const GetInventoryItem: API.OperationMethod<
   GetInventoryItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<GetInventoryItemRequest>,
-  output: __S(41) as any as S.Schema<GetInventoryItemResponse>,
+  input: GetInventoryItemRequest,
+  output: GetInventoryItemResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2102,8 +2915,8 @@ export const GetVirtualMachineInstance: API.OperationMethod<
   GetVirtualMachineInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<GetVirtualMachineInstanceRequest>,
-  output: __S(59) as any as S.Schema<GetVirtualMachineInstanceResponse>,
+  input: GetVirtualMachineInstanceRequest,
+  output: GetVirtualMachineInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2117,8 +2930,8 @@ export const GetVirtualMachineTemplate: API.OperationMethod<
   GetVirtualMachineTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<GetVirtualMachineTemplateRequest>,
-  output: __S(62) as any as S.Schema<GetVirtualMachineTemplateResponse>,
+  input: GetVirtualMachineTemplateRequest,
+  output: GetVirtualMachineTemplateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2132,8 +2945,8 @@ export const GetVirtualNetwork: API.OperationMethod<
   GetVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<GetVirtualNetworkRequest>,
-  output: __S(65) as any as S.Schema<GetVirtualNetworkResponse>,
+  input: GetVirtualNetworkRequest,
+  output: GetVirtualNetworkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2147,8 +2960,8 @@ export const GetVmInstanceHybridIdentityMetadatas: API.OperationMethod<
   GetVmInstanceHybridIdentityMetadatasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<GetVmInstanceHybridIdentityMetadatasRequest>,
-  output: __S(68) as any as S.Schema<GetVmInstanceHybridIdentityMetadatasResponse>,
+  input: GetVmInstanceHybridIdentityMetadatasRequest,
+  output: GetVmInstanceHybridIdentityMetadatasResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2162,8 +2975,8 @@ export const GetVmmServer: API.OperationMethod<
   GetVmmServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<GetVmmServerRequest>,
-  output: __S(72) as any as S.Schema<GetVmmServerResponse>,
+  input: GetVmmServerRequest,
+  output: GetVmmServerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2177,8 +2990,8 @@ export const ListAvailabilitySetByResourceGroup: API.OperationMethod<
   ListAvailabilitySetByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<ListAvailabilitySetByResourceGroupRequest>,
-  output: __S(76) as any as S.Schema<AvailabilitySetListResult>,
+  input: ListAvailabilitySetByResourceGroupRequest,
+  output: AvailabilitySetListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2192,8 +3005,8 @@ export const ListAvailabilitySetBySubscription: API.OperationMethod<
   ListAvailabilitySetBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<ListAvailabilitySetBySubscriptionRequest>,
-  output: __S(76) as any as S.Schema<AvailabilitySetListResult>,
+  input: ListAvailabilitySetBySubscriptionRequest,
+  output: AvailabilitySetListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2207,8 +3020,8 @@ export const ListCloudByResourceGroup: API.OperationMethod<
   ListCloudByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<ListCloudByResourceGroupRequest>,
-  output: __S(80) as any as S.Schema<CloudListResult>,
+  input: ListCloudByResourceGroupRequest,
+  output: CloudListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2222,8 +3035,8 @@ export const ListCloudBySubscription: API.OperationMethod<
   ListCloudBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<ListCloudBySubscriptionRequest>,
-  output: __S(80) as any as S.Schema<CloudListResult>,
+  input: ListCloudBySubscriptionRequest,
+  output: CloudListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2237,8 +3050,8 @@ export const ListGuestAgentByVirtualMachineInstance: API.OperationMethod<
   ListGuestAgentByVirtualMachineInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<ListGuestAgentByVirtualMachineInstanceRequest>,
-  output: __S(84) as any as S.Schema<GuestAgentListResult>,
+  input: ListGuestAgentByVirtualMachineInstanceRequest,
+  output: GuestAgentListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2252,8 +3065,8 @@ export const ListInventoryItemByVmmServer: API.OperationMethod<
   ListInventoryItemByVmmServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<ListInventoryItemByVmmServerRequest>,
-  output: __S(87) as any as S.Schema<InventoryItemListResult>,
+  input: ListInventoryItemByVmmServerRequest,
+  output: InventoryItemListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2267,8 +3080,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<ListOperationsRequest>,
-  output: __S(92) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2282,8 +3095,8 @@ export const ListVirtualMachineInstances: API.OperationMethod<
   ListVirtualMachineInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<ListVirtualMachineInstancesRequest>,
-  output: __S(96) as any as S.Schema<VirtualMachineInstanceListResult>,
+  input: ListVirtualMachineInstancesRequest,
+  output: VirtualMachineInstanceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2297,8 +3110,8 @@ export const ListVirtualMachineTemplateByResourceGroup: API.OperationMethod<
   ListVirtualMachineTemplateByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<ListVirtualMachineTemplateByResourceGroupRequest>,
-  output: __S(100) as any as S.Schema<VirtualMachineTemplateListResult>,
+  input: ListVirtualMachineTemplateByResourceGroupRequest,
+  output: VirtualMachineTemplateListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2312,8 +3125,8 @@ export const ListVirtualMachineTemplateBySubscription: API.OperationMethod<
   ListVirtualMachineTemplateBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<ListVirtualMachineTemplateBySubscriptionRequest>,
-  output: __S(100) as any as S.Schema<VirtualMachineTemplateListResult>,
+  input: ListVirtualMachineTemplateBySubscriptionRequest,
+  output: VirtualMachineTemplateListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2327,8 +3140,8 @@ export const ListVirtualNetworkByResourceGroup: API.OperationMethod<
   ListVirtualNetworkByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<ListVirtualNetworkByResourceGroupRequest>,
-  output: __S(105) as any as S.Schema<VirtualNetworkListResult>,
+  input: ListVirtualNetworkByResourceGroupRequest,
+  output: VirtualNetworkListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2342,8 +3155,8 @@ export const ListVirtualNetworkBySubscription: API.OperationMethod<
   ListVirtualNetworkBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<ListVirtualNetworkBySubscriptionRequest>,
-  output: __S(105) as any as S.Schema<VirtualNetworkListResult>,
+  input: ListVirtualNetworkBySubscriptionRequest,
+  output: VirtualNetworkListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2357,10 +3170,8 @@ export const ListVmInstanceHybridIdentityMetadatasByVirtualMachineInstance: API.
   ListVmInstanceHybridIdentityMetadatasByVirtualMachineInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    107,
-  ) as any as S.Schema<ListVmInstanceHybridIdentityMetadatasByVirtualMachineInstanceRequest>,
-  output: __S(109) as any as S.Schema<VmInstanceHybridIdentityMetadataListResult>,
+  input: ListVmInstanceHybridIdentityMetadatasByVirtualMachineInstanceRequest,
+  output: VmInstanceHybridIdentityMetadataListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2374,8 +3185,8 @@ export const ListVmmServerByResourceGroup: API.OperationMethod<
   ListVmmServerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<ListVmmServerByResourceGroupRequest>,
-  output: __S(112) as any as S.Schema<VmmServerListResult>,
+  input: ListVmmServerByResourceGroupRequest,
+  output: VmmServerListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2389,8 +3200,8 @@ export const ListVmmServerBySubscription: API.OperationMethod<
   ListVmmServerBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<ListVmmServerBySubscriptionRequest>,
-  output: __S(112) as any as S.Schema<VmmServerListResult>,
+  input: ListVmmServerBySubscriptionRequest,
+  output: VmmServerListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2404,8 +3215,8 @@ export const RestartVirtualMachineInstance: API.OperationMethod<
   RestartVirtualMachineInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<RestartVirtualMachineInstanceRequest>,
-  output: __S(25) as any as S.Schema<RestartVirtualMachineInstanceResponse>,
+  input: RestartVirtualMachineInstanceRequest,
+  output: RestartVirtualMachineInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2419,8 +3230,8 @@ export const RestoreVirtualMachineInstanceCheckpoint: API.OperationMethod<
   RestoreVirtualMachineInstanceCheckpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115) as any as S.Schema<RestoreVirtualMachineInstanceCheckpointRequest>,
-  output: __S(25) as any as S.Schema<RestoreVirtualMachineInstanceCheckpointResponse>,
+  input: RestoreVirtualMachineInstanceCheckpointRequest,
+  output: RestoreVirtualMachineInstanceCheckpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2434,8 +3245,8 @@ export const StartVirtualMachineInstance: API.OperationMethod<
   StartVirtualMachineInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<StartVirtualMachineInstanceRequest>,
-  output: __S(25) as any as S.Schema<StartVirtualMachineInstanceResponse>,
+  input: StartVirtualMachineInstanceRequest,
+  output: StartVirtualMachineInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2449,8 +3260,8 @@ export const StopVirtualMachineInstance: API.OperationMethod<
   StopVirtualMachineInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<StopVirtualMachineInstanceRequest>,
-  output: __S(25) as any as S.Schema<StopVirtualMachineInstanceResponse>,
+  input: StopVirtualMachineInstanceRequest,
+  output: StopVirtualMachineInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2464,8 +3275,8 @@ export const UpdateAvailabilitySet: API.OperationMethod<
   UpdateAvailabilitySetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<UpdateAvailabilitySetRequest>,
-  output: __S(6) as any as S.Schema<UpdateAvailabilitySetResponse>,
+  input: UpdateAvailabilitySetRequest,
+  output: UpdateAvailabilitySetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2479,8 +3290,8 @@ export const UpdateCloud: API.OperationMethod<
   UpdateCloudError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<UpdateCloudRequest>,
-  output: __S(38) as any as S.Schema<UpdateCloudResponse>,
+  input: UpdateCloudRequest,
+  output: UpdateCloudResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2494,8 +3305,8 @@ export const UpdateVirtualMachineInstance: API.OperationMethod<
   UpdateVirtualMachineInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<UpdateVirtualMachineInstanceRequest>,
-  output: __S(59) as any as S.Schema<UpdateVirtualMachineInstanceResponse>,
+  input: UpdateVirtualMachineInstanceRequest,
+  output: UpdateVirtualMachineInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2509,8 +3320,8 @@ export const UpdateVirtualMachineTemplate: API.OperationMethod<
   UpdateVirtualMachineTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130) as any as S.Schema<UpdateVirtualMachineTemplateRequest>,
-  output: __S(62) as any as S.Schema<UpdateVirtualMachineTemplateResponse>,
+  input: UpdateVirtualMachineTemplateRequest,
+  output: UpdateVirtualMachineTemplateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2524,8 +3335,8 @@ export const UpdateVirtualNetwork: API.OperationMethod<
   UpdateVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<UpdateVirtualNetworkRequest>,
-  output: __S(65) as any as S.Schema<UpdateVirtualNetworkResponse>,
+  input: UpdateVirtualNetworkRequest,
+  output: UpdateVirtualNetworkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2539,8 +3350,8 @@ export const UpdateVmmServer: API.OperationMethod<
   UpdateVmmServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<UpdateVmmServerRequest>,
-  output: __S(72) as any as S.Schema<UpdateVmmServerResponse>,
+  input: UpdateVmmServerRequest,
+  output: UpdateVmmServerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2554,8 +3365,8 @@ export const VirtualMachineInstancesCreateOrUpdate: API.OperationMethod<
   VirtualMachineInstancesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<VirtualMachineInstancesCreateOrUpdateRequest>,
-  output: __S(59) as any as S.Schema<VirtualMachineInstancesCreateOrUpdateResponse>,
+  input: VirtualMachineInstancesCreateOrUpdateRequest,
+  output: VirtualMachineInstancesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2569,8 +3380,8 @@ export const VirtualMachineTemplatesCreateOrUpdate: API.OperationMethod<
   VirtualMachineTemplatesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141) as any as S.Schema<VirtualMachineTemplatesCreateOrUpdateRequest>,
-  output: __S(62) as any as S.Schema<VirtualMachineTemplatesCreateOrUpdateResponse>,
+  input: VirtualMachineTemplatesCreateOrUpdateRequest,
+  output: VirtualMachineTemplatesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2584,8 +3395,8 @@ export const VirtualNetworksCreateOrUpdate: API.OperationMethod<
   VirtualNetworksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<VirtualNetworksCreateOrUpdateRequest>,
-  output: __S(65) as any as S.Schema<VirtualNetworksCreateOrUpdateResponse>,
+  input: VirtualNetworksCreateOrUpdateRequest,
+  output: VirtualNetworksCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2599,8 +3410,8 @@ export const VmmServersCreateOrUpdate: API.OperationMethod<
   VmmServersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144) as any as S.Schema<VmmServersCreateOrUpdateRequest>,
-  output: __S(145) as any as S.Schema<VmmServersCreateOrUpdateResponse>,
+  input: VmmServersCreateOrUpdateRequest,
+  output: VmmServersCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2633,10 +3444,10 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           availabilitySetResourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(AvailabilitySetsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(1)),
-          extendedLocation: __S(2),
+          properties: S.optional(AvailabilitySetPropertiesInput),
+          extendedLocation: ExtendedLocation,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2652,10 +3463,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -2664,7 +3475,7 @@ function __c0(j: number): any {
         S.Struct({
           availabilitySetName: S.optional(S.String),
           vmmServerId: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "AvailabilitySetProperties",
@@ -2675,11 +3486,11 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(AvailabilitySetsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(5)),
-          extendedLocation: __S(2),
+          properties: S.optional(AvailabilitySetProperties),
+          extendedLocation: ExtendedLocation,
         }),
       ).annotate({
         identifier: "AvailabilitySetsCreateOrUpdateResponse",
@@ -2702,10 +3513,10 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           cloudResourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(CloudsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(7)),
-          extendedLocation: __S(2),
+          properties: S.optional(CloudPropertiesInput),
+          extendedLocation: ExtendedLocation,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2738,7 +3549,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "StorageQosPolicy" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(StorageQosPolicy);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2746,9 +3557,9 @@ function __c1(j: number): any {
           uuid: S.optional(S.String),
           vmmServerId: S.optional(S.String),
           cloudName: S.optional(S.String),
-          cloudCapacity: S.optional(__S(9)),
-          storageQoSPolicies: S.optional(__S(11)),
-          provisioningState: S.optional(S.String),
+          cloudCapacity: S.optional(CloudCapacity),
+          storageQoSPolicies: S.optional(CloudPropertiesStorageQoSPoliciesList),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "CloudProperties" });
     case 5:
@@ -2757,11 +3568,11 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CloudsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(12)),
-          extendedLocation: __S(2),
+          properties: S.optional(CloudProperties),
+          extendedLocation: ExtendedLocation,
         }),
       ).annotate({
         identifier: "CloudsCreateOrUpdateResponse",
@@ -2786,9 +3597,9 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          credentials: S.optional(__S(14)),
-          httpProxyConfig: S.optional(__S(15)),
-          provisioningAction: S.optional(S.String),
+          credentials: S.optional(GuestCredential),
+          httpProxyConfig: S.optional(HttpProxyConfiguration),
+          provisioningAction: S.optional(ProvisioningAction),
           privateLinkScopeResourceId: S.optional(S.String),
         }),
       ).annotate({
@@ -2798,7 +3609,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
-          properties: S.optional(__S(16)),
+          properties: S.optional(GuestAgentPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2812,12 +3623,12 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           uuid: S.optional(S.String),
-          credentials: S.optional(__S(14)),
-          httpProxyConfig: S.optional(__S(15)),
-          provisioningAction: S.optional(S.String),
+          credentials: S.optional(GuestCredential),
+          httpProxyConfig: S.optional(HttpProxyConfiguration),
+          provisioningAction: S.optional(ProvisioningAction),
           status: S.optional(S.String),
           customResourceName: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           privateLinkScopeResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "GuestAgentProperties" });
@@ -2827,14 +3638,14 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          properties: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(GuestAgentProperties),
         }),
       ).annotate({ identifier: "CreateGuestAgentResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          inventoryType: S.String,
+          inventoryType: InventoryType,
         }),
       ).annotate({
         identifier: "InventoryItemPropertiesInput",
@@ -2846,7 +3657,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vmmServerName: S.String.pipe(T.Label()),
           inventoryItemResourceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(20)),
+          properties: S.optional(InventoryItemPropertiesInput),
           kind: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -2862,11 +3673,11 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          inventoryType: S.String,
+          inventoryType: InventoryType,
           managedResourceId: S.optional(S.String),
           uuid: S.optional(S.String),
           inventoryItemName: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "InventoryItemProperties" });
     case 7:
@@ -2875,8 +3686,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          properties: S.optional(__S(22)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(InventoryItemProperties),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -3103,11 +3914,11 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetCloudResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(12)),
-          extendedLocation: __S(2),
+          properties: S.optional(CloudProperties),
+          extendedLocation: ExtendedLocation,
         }),
       ).annotate({ identifier: "GetCloudResponse" });
     case 7:
@@ -3149,8 +3960,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          properties: S.optional(__S(22)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(InventoryItemProperties),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetInventoryItemResponse" });
@@ -3177,14 +3988,14 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "AvailabilitySetListItem" });
     case 4:
-      return S.Array(__S(43));
+      return S.Array(AvailabilitySetListItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           adminUsername: S.optional(S.String),
           adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
           computerName: S.optional(S.String),
-          osType: S.optional(S.String),
+          osType: S.optional(OsType),
           osSku: S.optional(S.String),
           osVersion: S.optional(S.String),
           domainName: S.optional(S.String),
@@ -3201,11 +4012,11 @@ function __c5(j: number): any {
         S.Struct({
           memoryMB: S.optional(S.Number),
           cpuCount: S.optional(S.Number),
-          limitCpuForMigration: S.optional(S.String),
-          dynamicMemoryEnabled: S.optional(S.String),
+          limitCpuForMigration: S.optional(LimitCpuForMigration),
+          dynamicMemoryEnabled: S.optional(DynamicMemoryEnabled),
           dynamicMemoryMaxMB: S.optional(S.Number),
           dynamicMemoryMinMB: S.optional(S.Number),
-          isHighlyAvailable: S.optional(S.String),
+          isHighlyAvailable: S.optional(IsHighlyAvailable),
         }),
       ).annotate({ identifier: "HardwareProfile" });
     case 7:
@@ -3219,23 +4030,23 @@ function __c6(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           displayName: S.optional(S.String),
-          ipv4Addresses: S.optional(__S(47)),
-          ipv6Addresses: S.optional(__S(47)),
+          ipv4Addresses: S.optional(NetworkInterfaceIpv4AddressesList),
+          ipv6Addresses: S.optional(NetworkInterfaceIpv6AddressesList),
           macAddress: S.optional(S.String),
           virtualNetworkId: S.optional(S.String),
           networkName: S.optional(S.String),
-          ipv4AddressType: S.optional(S.String),
-          ipv6AddressType: S.optional(S.String),
-          macAddressType: S.optional(S.String),
+          ipv4AddressType: S.optional(AllocationMethod),
+          ipv6AddressType: S.optional(AllocationMethod),
+          macAddressType: S.optional(AllocationMethod),
           nicId: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkInterface" });
     case 1:
-      return S.Array(__S(48));
+      return S.Array(NetworkInterface);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          networkInterfaces: S.optional(__S(49)),
+          networkInterfaces: S.optional(NetworkProfileNetworkInterfacesList),
         }),
       ).annotate({ identifier: "NetworkProfile" });
     case 3:
@@ -3260,16 +4071,16 @@ function __c6(j: number): any {
           volumeType: S.optional(S.String),
           vhdFormatType: S.optional(S.String),
           templateDiskId: S.optional(S.String),
-          storageQoSPolicy: S.optional(__S(51)),
-          createDiffDisk: S.optional(S.String),
+          storageQoSPolicy: S.optional(StorageQosPolicyDetails),
+          createDiffDisk: S.optional(CreateDiffDisk),
         }),
       ).annotate({ identifier: "VirtualDisk" });
     case 5:
-      return S.Array(__S(52));
+      return S.Array(VirtualDisk);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          disks: S.optional(__S(53)),
+          disks: S.optional(StorageProfileDisksList),
         }),
       ).annotate({ identifier: "StorageProfile" });
     case 7:
@@ -3286,7 +4097,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55));
+      return S.Array(Checkpoint);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3296,8 +4107,8 @@ function __c7(j: number): any {
           templateId: S.optional(S.String),
           vmName: S.optional(S.String),
           uuid: S.optional(S.String),
-          lastRestoredVMCheckpoint: S.optional(__S(55)),
-          checkpoints: S.optional(__S(56)),
+          lastRestoredVMCheckpoint: S.optional(Checkpoint),
+          checkpoints: S.optional(InfrastructureProfileCheckpointsList),
           checkpointType: S.optional(S.String),
           generation: S.optional(S.Number),
           biosGuid: S.optional(S.String),
@@ -3306,14 +4117,14 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          availabilitySets: S.optional(__S(44)),
-          osProfile: S.optional(__S(45)),
-          hardwareProfile: S.optional(__S(46)),
-          networkProfile: S.optional(__S(50)),
-          storageProfile: S.optional(__S(54)),
-          infrastructureProfile: S.optional(__S(57)),
+          availabilitySets: S.optional(VirtualMachineInstancePropertiesAvailabilitySetsList),
+          osProfile: S.optional(OsProfileForVmInstance),
+          hardwareProfile: S.optional(HardwareProfile),
+          networkProfile: S.optional(NetworkProfile),
+          storageProfile: S.optional(StorageProfile),
+          infrastructureProfile: S.optional(InfrastructureProfile),
           powerState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "VirtualMachineInstanceProperties",
@@ -3324,9 +4135,9 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          properties: S.optional(__S(58)),
-          extendedLocation: __S(2),
+          systemData: S.optional(SystemData),
+          properties: S.optional(VirtualMachineInstanceProperties),
+          extendedLocation: ExtendedLocation,
         }),
       ).annotate({
         identifier: "GetVirtualMachineInstanceResponse",
@@ -3354,21 +4165,21 @@ function __c7(j: number): any {
           inventoryItemId: S.optional(S.String),
           uuid: S.optional(S.String),
           vmmServerId: S.optional(S.String),
-          osType: S.optional(S.String),
+          osType: S.optional(OsType),
           osName: S.optional(S.String),
           computerName: S.optional(S.String),
           memoryMB: S.optional(S.Number),
           cpuCount: S.optional(S.Number),
-          limitCpuForMigration: S.optional(S.String),
-          dynamicMemoryEnabled: S.optional(S.String),
-          isCustomizable: S.optional(S.String),
+          limitCpuForMigration: S.optional(LimitCpuForMigration),
+          dynamicMemoryEnabled: S.optional(DynamicMemoryEnabled),
+          isCustomizable: S.optional(IsCustomizable),
           dynamicMemoryMaxMB: S.optional(S.Number),
           dynamicMemoryMinMB: S.optional(S.Number),
-          isHighlyAvailable: S.optional(S.String),
+          isHighlyAvailable: S.optional(IsHighlyAvailable),
           generation: S.optional(S.Number),
-          networkInterfaces: S.optional(__S(49)),
-          disks: S.optional(__S(53)),
-          provisioningState: S.optional(S.String),
+          networkInterfaces: S.optional(VirtualMachineTemplatePropertiesNetworkInterfacesList),
+          disks: S.optional(VirtualMachineTemplatePropertiesDisksList),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "VirtualMachineTemplateProperties",
@@ -3379,11 +4190,11 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetVirtualMachineTemplateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(61)),
-          extendedLocation: __S(2),
+          properties: S.optional(VirtualMachineTemplateProperties),
+          extendedLocation: ExtendedLocation,
         }),
       ).annotate({
         identifier: "GetVirtualMachineTemplateResponse",
@@ -3414,7 +4225,7 @@ function __c8(j: number): any {
           uuid: S.optional(S.String),
           vmmServerId: S.optional(S.String),
           networkName: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "VirtualNetworkProperties" });
     case 1:
@@ -3423,11 +4234,11 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetVirtualNetworkResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(64)),
-          extendedLocation: __S(2),
+          properties: S.optional(VirtualNetworkProperties),
+          extendedLocation: ExtendedLocation,
         }),
       ).annotate({
         identifier: "GetVirtualNetworkResponse",
@@ -3452,7 +4263,7 @@ function __c8(j: number): any {
         S.Struct({
           resourceUid: S.optional(S.String),
           publicKey: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "VmInstanceHybridIdentityMetadataProperties",
@@ -3463,8 +4274,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          properties: S.optional(__S(67)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(VmInstanceHybridIdentityMetadataProperties),
         }),
       ).annotate({
         identifier: "GetVmInstanceHybridIdentityMetadatasResponse",
@@ -3494,14 +4305,14 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          credentials: S.optional(__S(70)),
+          credentials: S.optional(VmmCredential),
           fqdn: S.String,
           port: S.optional(S.Number),
           connectionStatus: S.optional(S.String),
           errorMessage: S.optional(S.String),
           uuid: S.optional(S.String),
           version: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "VmmServerProperties" });
   }
@@ -3514,11 +4325,11 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetVmmServerResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(71)),
-          extendedLocation: __S(2),
+          properties: S.optional(VmmServerProperties),
+          extendedLocation: ExtendedLocation,
         }),
       ).annotate({ identifier: "GetVmmServerResponse" });
     case 1:
@@ -3543,19 +4354,19 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(AvailabilitySetTagsMap),
           location: S.String,
-          properties: S.optional(__S(5)),
-          extendedLocation: __S(2),
+          properties: S.optional(AvailabilitySetProperties),
+          extendedLocation: ExtendedLocation,
         }),
       ).annotate({ identifier: "AvailabilitySet" });
     case 3:
-      return S.Array(__S(74));
+      return S.Array(AvailabilitySet);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(75),
+          value: AvailabilitySetListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3593,7 +4404,7 @@ function __c9(j: number): any {
         identifier: "ListCloudByResourceGroupRequest",
       });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(Cloud);
   }
 }
 function __c10(j: number): any {
@@ -3601,7 +4412,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(79),
+          value: CloudListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudListResult" });
@@ -3636,11 +4447,11 @@ function __c10(j: number): any {
         identifier: "ListGuestAgentByVirtualMachineInstanceRequest",
       });
     case 3:
-      return S.Array(__S(19));
+      return S.Array(GuestAgent);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(83),
+          value: GuestAgentListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GuestAgentListResult" });
@@ -3662,11 +4473,11 @@ function __c10(j: number): any {
         identifier: "ListInventoryItemByVmmServerRequest",
       });
     case 6:
-      return S.Array(__S(41));
+      return S.Array(InventoryItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(86),
+          value: InventoryItemListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "InventoryItemListResult" });
@@ -3699,17 +4510,17 @@ function __c11(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(89)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(90));
+      return S.Array(Operation);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(91)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -3734,13 +4545,13 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          properties: S.optional(__S(58)),
-          extendedLocation: __S(2),
+          systemData: S.optional(SystemData),
+          properties: S.optional(VirtualMachineInstanceProperties),
+          extendedLocation: ExtendedLocation,
         }),
       ).annotate({ identifier: "VirtualMachineInstance" });
     case 7:
-      return S.Array(__S(94));
+      return S.Array(VirtualMachineInstance);
   }
 }
 function __c12(j: number): any {
@@ -3748,7 +4559,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(95),
+          value: VirtualMachineInstanceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3776,19 +4587,19 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(VirtualMachineTemplateTagsMap),
           location: S.String,
-          properties: S.optional(__S(61)),
-          extendedLocation: __S(2),
+          properties: S.optional(VirtualMachineTemplateProperties),
+          extendedLocation: ExtendedLocation,
         }),
       ).annotate({ identifier: "VirtualMachineTemplate" });
     case 3:
-      return S.Array(__S(98));
+      return S.Array(VirtualMachineTemplate);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(99),
+          value: VirtualMachineTemplateListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3831,11 +4642,11 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(VirtualNetworkTagsMap),
           location: S.String,
-          properties: S.optional(__S(64)),
-          extendedLocation: __S(2),
+          properties: S.optional(VirtualNetworkProperties),
+          extendedLocation: ExtendedLocation,
         }),
       ).annotate({ identifier: "VirtualNetwork" });
   }
@@ -3843,11 +4654,11 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(103));
+      return S.Array(VirtualNetwork);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(104),
+          value: VirtualNetworkListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualNetworkListResult" });
@@ -3882,11 +4693,11 @@ function __c13(j: number): any {
         identifier: "ListVmInstanceHybridIdentityMetadatasByVirtualMachineInstanceRequest",
       });
     case 4:
-      return S.Array(__S(68));
+      return S.Array(VmInstanceHybridIdentityMetadata);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(108),
+          value: VmInstanceHybridIdentityMetadataListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3909,7 +4720,7 @@ function __c13(j: number): any {
         identifier: "ListVmmServerByResourceGroupRequest",
       });
     case 7:
-      return S.Array(__S(72));
+      return S.Array(VmmServer);
   }
 }
 function __c14(j: number): any {
@@ -3917,7 +4728,7 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(111),
+          value: VmmServerListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VmmServerListResult" });
@@ -4004,7 +4815,7 @@ function __c14(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           availabilitySetResourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateAvailabilitySetRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4022,7 +4833,7 @@ function __c14(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           cloudResourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateCloudRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4053,18 +4864,18 @@ function __c15(j: number): any {
           name: S.optional(S.String),
           macAddress: S.optional(S.String),
           virtualNetworkId: S.optional(S.String),
-          ipv4AddressType: S.optional(S.String),
-          ipv6AddressType: S.optional(S.String),
-          macAddressType: S.optional(S.String),
+          ipv4AddressType: S.optional(AllocationMethod),
+          ipv6AddressType: S.optional(AllocationMethod),
+          macAddressType: S.optional(AllocationMethod),
           nicId: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkInterfaceUpdate" });
     case 2:
-      return S.Array(__S(121));
+      return S.Array(NetworkInterfaceUpdate);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          networkInterfaces: S.optional(__S(122)),
+          networkInterfaces: S.optional(NetworkProfileUpdateNetworkInterfacesList),
         }),
       ).annotate({ identifier: "NetworkProfileUpdate" });
     case 4:
@@ -4077,15 +4888,15 @@ function __c15(j: number): any {
           lun: S.optional(S.Number),
           busType: S.optional(S.String),
           vhdType: S.optional(S.String),
-          storageQoSPolicy: S.optional(__S(51)),
+          storageQoSPolicy: S.optional(StorageQosPolicyDetails),
         }),
       ).annotate({ identifier: "VirtualDiskUpdate" });
     case 5:
-      return S.Array(__S(124));
+      return S.Array(VirtualDiskUpdate);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          disks: S.optional(__S(125)),
+          disks: S.optional(StorageProfileUpdateDisksList),
         }),
       ).annotate({ identifier: "StorageProfileUpdate" });
     case 7:
@@ -4103,11 +4914,11 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          availabilitySets: S.optional(__S(44)),
-          hardwareProfile: S.optional(__S(120)),
-          networkProfile: S.optional(__S(123)),
-          storageProfile: S.optional(__S(126)),
-          infrastructureProfile: S.optional(__S(127)),
+          availabilitySets: S.optional(VirtualMachineInstanceUpdatePropertiesAvailabilitySetsList),
+          hardwareProfile: S.optional(HardwareProfileUpdate),
+          networkProfile: S.optional(NetworkProfileUpdate),
+          storageProfile: S.optional(StorageProfileUpdate),
+          infrastructureProfile: S.optional(InfrastructureProfileUpdate),
         }),
       ).annotate({
         identifier: "VirtualMachineInstanceUpdateProperties",
@@ -4116,7 +4927,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
-          properties: S.optional(__S(128)),
+          properties: S.optional(VirtualMachineInstanceUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4134,7 +4945,7 @@ function __c16(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualMachineTemplateName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateVirtualMachineTemplateRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4152,7 +4963,7 @@ function __c16(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualNetworkName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateVirtualNetworkRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4170,7 +4981,7 @@ function __c16(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vmmServerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateVmmServerRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4208,12 +5019,12 @@ function __c16(j: number): any {
           busType: S.optional(S.String),
           vhdType: S.optional(S.String),
           templateDiskId: S.optional(S.String),
-          storageQoSPolicy: S.optional(__S(51)),
+          storageQoSPolicy: S.optional(StorageQosPolicyDetails),
           createDiffDisk: S.optional(S.Boolean.pipe(T.StringEncoded())),
         }),
       ).annotate({ identifier: "VirtualDiskInput" });
     case 7:
-      return S.Array(__S(134));
+      return S.Array(VirtualDiskInput);
   }
 }
 function __c17(j: number): any {
@@ -4221,7 +5032,7 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          disks: S.optional(__S(135)),
+          disks: S.optional(StorageProfileInputDisksList),
         }),
       ).annotate({ identifier: "StorageProfileInput" });
     case 1:
@@ -4243,12 +5054,12 @@ function __c17(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          availabilitySets: S.optional(__S(44)),
-          osProfile: S.optional(__S(133)),
-          hardwareProfile: S.optional(__S(46)),
-          networkProfile: S.optional(__S(123)),
-          storageProfile: S.optional(__S(136)),
-          infrastructureProfile: S.optional(__S(137)),
+          availabilitySets: S.optional(VirtualMachineInstancePropertiesInputAvailabilitySetsList),
+          osProfile: S.optional(OsProfileForVmInstanceInput),
+          hardwareProfile: S.optional(HardwareProfile),
+          networkProfile: S.optional(NetworkProfileInput),
+          storageProfile: S.optional(StorageProfileInput),
+          infrastructureProfile: S.optional(InfrastructureProfileInput),
         }),
       ).annotate({
         identifier: "VirtualMachineInstancePropertiesInput",
@@ -4257,8 +5068,8 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
-          properties: S.optional(__S(138)),
-          extendedLocation: __S(2),
+          properties: S.optional(VirtualMachineInstancePropertiesInput),
+          extendedLocation: ExtendedLocation,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4286,10 +5097,10 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualMachineTemplateName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(VirtualMachineTemplatesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(140)),
-          extendedLocation: __S(2),
+          properties: S.optional(VirtualMachineTemplatePropertiesInput),
+          extendedLocation: ExtendedLocation,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4307,10 +5118,10 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualNetworkName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(VirtualNetworksCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(140)),
-          extendedLocation: __S(2),
+          properties: S.optional(VirtualNetworkPropertiesInput),
+          extendedLocation: ExtendedLocation,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4325,7 +5136,7 @@ function __c17(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          credentials: S.optional(__S(70)),
+          credentials: S.optional(VmmCredential),
           fqdn: S.String,
           port: S.optional(S.Number),
         }),
@@ -4340,10 +5151,10 @@ function __c18(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vmmServerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(VmmServersCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(143)),
-          extendedLocation: __S(2),
+          properties: S.optional(VmmServerPropertiesInput),
+          extendedLocation: ExtendedLocation,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4361,61 +5172,14 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(VmmServersCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(71)),
-          extendedLocation: __S(2),
+          properties: S.optional(VmmServerProperties),
+          extendedLocation: ExtendedLocation,
         }),
       ).annotate({
         identifier: "VmmServersCreateOrUpdateResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
   }
 }

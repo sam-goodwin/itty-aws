@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -42,7 +40,14 @@ export interface GetAccountsLimitsRequest {
   /** Required. The name of the limit to retrieve. Format: `accounts/{account}/limits/{limit}` For example: `accounts/123/limits/products~ADS_NON_EEA` */
   name: string;
 }
+const GetAccountsLimitsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetAccountsLimitsRequest>;
+
 export type ProductLimitScopeEnum = "SCOPE_UNSPECIFIED" | "ADS_NON_EEA" | "ADS_EEA";
+const ProductLimitScopeEnum = S.String;
+
 /** The limit for products. */
 export interface ProductLimit {
   /** Required. The scope of the product limit. */
@@ -50,6 +55,8 @@ export interface ProductLimit {
   /** Required. The maximum number of products that are allowed in the account in the given scope. */
   limit?: string;
 }
+const ProductLimit = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ProductLimit>;
+
 /** A limit of a certain type that is applied to an account. */
 export interface AccountLimit {
   /** The limit for products. */
@@ -57,6 +64,8 @@ export interface AccountLimit {
   /** Identifier. The limit part of the name will be a combination of the type and the scope. For example: `accounts/123/limits/products~ADS_NON_EEA` Format: `accounts/{account}/limits/{limit}` */
   name?: string;
 }
+const AccountLimit = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AccountLimit>;
+
 export interface ListAccountsLimitsRequest {
   /** Required. The parent account. Format: `accounts/{account}` */
   parent: string;
@@ -67,7 +76,14 @@ export interface ListAccountsLimitsRequest {
   /** Optional. A page token, received from a previous `ListAccountLimits` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccountLimits` must match the call that provided the page token. */
   pageToken?: string;
 }
+const ListAccountsLimitsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ListAccountsLimitsRequest>;
+
 export type AccountLimitList = Array<AccountLimit>;
+const AccountLimitList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AccountLimitList>;
+
 /** Response message for the `ListAccountLimits` method. */
 export interface ListAccountLimitsResponse {
   /** The limits for the given account. */
@@ -75,6 +91,11 @@ export interface ListAccountLimitsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListAccountLimitsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListAccountLimitsResponse>;
+
 export interface ListAccountsQuotasRequest {
   /** Optional. Token (if provided) to retrieve the subsequent page. All other parameters must match the original call that provided the page token. */
   pageToken?: string;
@@ -83,6 +104,11 @@ export interface ListAccountsQuotasRequest {
   /** Optional. The maximum number of quotas to return in the response, used for paging. Defaults to 500; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
+const ListAccountsQuotasRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListAccountsQuotasRequest>;
+
 /** The method details per method in the Merchant API. */
 export interface MethodDetails {
   /** Output only. The path for the method such as `products/v1/productInputs.insert` */
@@ -94,7 +120,11 @@ export interface MethodDetails {
   /** Output only. The sub-API that the method belongs to. */
   subapi?: string;
 }
+const MethodDetails = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<MethodDetails>;
+
 export type MethodDetailsList = Array<MethodDetails>;
+const MethodDetailsList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<MethodDetailsList>;
+
 /** The group information for methods in the Merchant API. The quota is shared between all methods in the group. Even if none of the methods within the group have usage the information for the group is returned. */
 export interface QuotaGroup {
   /** Identifier. The resource name of the quota group. Format: accounts/{account}/quotas/{group} Note: There is no guarantee on the format of {group} */
@@ -108,7 +138,11 @@ export interface QuotaGroup {
   /** Output only. List of all methods group quota applies to. */
   methodDetails?: MethodDetailsList;
 }
+const QuotaGroup = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<QuotaGroup>;
+
 export type QuotaGroupList = Array<QuotaGroup>;
+const QuotaGroupList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<QuotaGroupList>;
+
 /** Response message for the ListMethodGroups method. */
 export interface ListQuotaGroupsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -116,6 +150,11 @@ export interface ListQuotaGroupsResponse {
   /** The methods, current quota usage and limits per each group. The quota is shared between all methods in the group. The groups are sorted in descending order based on quota_usage. */
   quotaGroups?: QuotaGroupList;
 }
+const ListQuotaGroupsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListQuotaGroupsResponse>;
+
 export type GetAccountsLimitsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves an account limit. */
 export const getAccountsLimits: API.OperationMethod<
@@ -124,8 +163,8 @@ export const getAccountsLimits: API.OperationMethod<
   GetAccountsLimitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetAccountsLimitsRequest>,
-  output: __S(2) as any as S.Schema<AccountLimit>,
+  input: GetAccountsLimitsRequest,
+  output: AccountLimit,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -140,8 +179,8 @@ export const listAccountsLimits: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAccountLimitsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3) as any as S.Schema<ListAccountsLimitsRequest>,
-  output: __S(5) as any as S.Schema<ListAccountLimitsResponse>,
+  input: ListAccountsLimitsRequest,
+  output: ListAccountLimitsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -157,8 +196,8 @@ export const listAccountsQuotas: API.PaginatedOperationMethod<
   GcpOpContext,
   ListQuotaGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(6) as any as S.Schema<ListAccountsQuotasRequest>,
-  output: __S(11) as any as S.Schema<ListQuotaGroupsResponse>,
+  input: ListAccountsQuotasRequest,
+  output: ListQuotaGroupsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -183,14 +222,14 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          scope: S.optional(S.String),
+          scope: S.optional(ProductLimitScopeEnum),
           limit: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductLimit" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          products: S.optional(__S(1)),
+          products: S.optional(ProductLimit),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountLimit" });
@@ -212,11 +251,11 @@ function __c0(j: number): any {
         identifier: "ListAccountsLimitsRequest",
       });
     case 4:
-      return S.Array(__S(2));
+      return S.Array(AccountLimit);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          accountLimits: S.optional(__S(4)),
+          accountLimits: S.optional(AccountLimitList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -252,7 +291,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(MethodDetails);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -260,30 +299,17 @@ function __c1(j: number): any {
           quotaUsage: S.optional(S.String),
           quotaMinuteLimit: S.optional(S.String),
           quotaLimit: S.optional(S.String),
-          methodDetails: S.optional(__S(8)),
+          methodDetails: S.optional(MethodDetailsList),
         }),
       ).annotate({ identifier: "QuotaGroup" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(QuotaGroup);
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          quotaGroups: S.optional(__S(10)),
+          quotaGroups: S.optional(QuotaGroupList),
         }),
       ).annotate({ identifier: "ListQuotaGroupsResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

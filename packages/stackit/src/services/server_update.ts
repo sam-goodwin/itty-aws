@@ -7,8 +7,6 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -50,6 +48,8 @@ export interface CreateUpdateRequest {
   /** Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart. */
   maintenanceWindow: number;
 }
+const CreateUpdateRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateUpdateRequest>;
+
 export interface Update {
   endDate?: string;
   failReason?: string;
@@ -59,6 +59,8 @@ export interface Update {
   startDate: string;
   status: string;
 }
+const Update = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Update>;
+
 export interface CreateUpdateScheduleRequest {
   /** project id */
   projectId: string;
@@ -73,6 +75,11 @@ export interface CreateUpdateScheduleRequest {
   /** An rrule (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates */
   rrule: string;
 }
+const CreateUpdateScheduleRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateUpdateScheduleRequest>;
+
 export interface CreateUpdateScheduleResponse {
   enabled: boolean;
   /** Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart. */
@@ -82,6 +89,11 @@ export interface CreateUpdateScheduleResponse {
   rrule: string;
   id: number;
 }
+const CreateUpdateScheduleResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateUpdateScheduleResponse>;
+
 export interface DeleteUpdateScheduleRequest {
   /** project id */
   projectId: string;
@@ -92,7 +104,17 @@ export interface DeleteUpdateScheduleRequest {
   /** update schedule id */
   scheduleId: string;
 }
+const DeleteUpdateScheduleRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeleteUpdateScheduleRequest>;
+
 export interface DeleteUpdateScheduleResponse {}
+const DeleteUpdateScheduleResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteUpdateScheduleResponse>;
+
 export interface DisableServiceResourceRequest {
   /** project id */
   projectId: string;
@@ -101,7 +123,15 @@ export interface DisableServiceResourceRequest {
   /** server id */
   serverId: string;
 }
+const DisableServiceResourceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DisableServiceResourceRequest>;
+
 export interface DisableServiceResourceResponse {}
+const DisableServiceResourceResponse =
+  DeleteUpdateScheduleResponse as any as S.Schema<DisableServiceResourceResponse>;
+
 export interface EnableServiceResourceRequest {
   /** project id */
   projectId: string;
@@ -111,7 +141,15 @@ export interface EnableServiceResourceRequest {
   serverId: string;
   updatePolicyId?: string;
 }
+const EnableServiceResourceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<EnableServiceResourceRequest>;
+
 export interface EnableServiceResourceResponse {}
+const EnableServiceResourceResponse =
+  DeleteUpdateScheduleResponse as any as S.Schema<EnableServiceResourceResponse>;
+
 export interface GetServiceResourceRequest {
   /** project id */
   projectId: string;
@@ -120,9 +158,19 @@ export interface GetServiceResourceRequest {
   /** server id */
   serverId: string;
 }
+const GetServiceResourceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetServiceResourceRequest>;
+
 export interface GetUpdateServiceResponse {
   enabled?: boolean;
 }
+const GetUpdateServiceResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetUpdateServiceResponse>;
+
 export interface GetUpdateRequest {
   /** project id */
   projectId: string;
@@ -133,6 +181,8 @@ export interface GetUpdateRequest {
   /** id of the update */
   updateId: string;
 }
+const GetUpdateRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetUpdateRequest>;
+
 export interface GetUpdateScheduleRequest {
   /** project id */
   projectId: string;
@@ -143,6 +193,11 @@ export interface GetUpdateScheduleRequest {
   /** update schedule id */
   scheduleId: string;
 }
+const GetUpdateScheduleRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetUpdateScheduleRequest>;
+
 export interface GetUpdateScheduleResponse {
   enabled: boolean;
   /** Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart. */
@@ -152,10 +207,18 @@ export interface GetUpdateScheduleResponse {
   rrule: string;
   id: number;
 }
+const GetUpdateScheduleResponse =
+  CreateUpdateScheduleResponse as any as S.Schema<GetUpdateScheduleResponse>;
+
 export interface ListUpdatePoliciesRequest {
   /** project id */
   projectId: string;
 }
+const ListUpdatePoliciesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ListUpdatePoliciesRequest>;
+
 export interface UpdatePolicy {
   default?: boolean;
   description?: string;
@@ -167,10 +230,22 @@ export interface UpdatePolicy {
   /** An rrule (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates */
   rrule?: string;
 }
+const UpdatePolicy = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<UpdatePolicy>;
+
 export type GetUpdatePoliciesResponseItemsList = Array<UpdatePolicy>;
+const GetUpdatePoliciesResponseItemsList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetUpdatePoliciesResponseItemsList>;
+
 export interface GetUpdatePoliciesResponse {
   items?: GetUpdatePoliciesResponseItemsList;
 }
+const GetUpdatePoliciesResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetUpdatePoliciesResponse>;
+
 export interface ListUpdatesRequest {
   /** project id */
   projectId: string;
@@ -179,10 +254,22 @@ export interface ListUpdatesRequest {
   /** server id */
   serverId: string;
 }
+const ListUpdatesRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ListUpdatesRequest>;
+
 export type GetUpdatesListResponseItemsList = Array<Update>;
+const GetUpdatesListResponseItemsList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetUpdatesListResponseItemsList>;
+
 export interface GetUpdatesListResponse {
   items?: GetUpdatesListResponseItemsList;
 }
+const GetUpdatesListResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetUpdatesListResponse>;
+
 export interface ListUpdateSchedulesRequest {
   /** project id */
   projectId: string;
@@ -191,6 +278,11 @@ export interface ListUpdateSchedulesRequest {
   /** server id */
   serverId: string;
 }
+const ListUpdateSchedulesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListUpdateSchedulesRequest>;
+
 export interface UpdateSchedule {
   enabled: boolean;
   /** Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart. */
@@ -200,10 +292,22 @@ export interface UpdateSchedule {
   rrule: string;
   id: number;
 }
+const UpdateSchedule = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<UpdateSchedule>;
+
 export type GetUpdateSchedulesResponseItemsList = Array<UpdateSchedule>;
+const GetUpdateSchedulesResponseItemsList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetUpdateSchedulesResponseItemsList>;
+
 export interface GetUpdateSchedulesResponse {
   items?: GetUpdateSchedulesResponseItemsList;
 }
+const GetUpdateSchedulesResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetUpdateSchedulesResponse>;
+
 export interface UpdateUpdateScheduleRequest {
   /** project id */
   projectId: string;
@@ -220,6 +324,11 @@ export interface UpdateUpdateScheduleRequest {
   /** An rrule (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates */
   rrule: string;
 }
+const UpdateUpdateScheduleRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<UpdateUpdateScheduleRequest>;
+
 export interface UpdateUpdateScheduleResponse {
   enabled: boolean;
   /** Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart. */
@@ -229,6 +338,9 @@ export interface UpdateUpdateScheduleResponse {
   rrule: string;
   id: number;
 }
+const UpdateUpdateScheduleResponse =
+  CreateUpdateScheduleResponse as any as S.Schema<UpdateUpdateScheduleResponse>;
+
 export type CreateUpdateError = BadRequest | NotFound | Conflict | StackitOpError;
 /** create update */
 export const createUpdate: API.OperationMethod<
@@ -237,8 +349,8 @@ export const createUpdate: API.OperationMethod<
   CreateUpdateError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateUpdateRequest>,
-  output: __S(1) as any as S.Schema<Update>,
+  input: CreateUpdateRequest,
+  output: Update,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -252,8 +364,8 @@ export const createUpdateSchedule: API.OperationMethod<
   CreateUpdateScheduleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateUpdateScheduleRequest>,
-  output: __S(3) as any as S.Schema<CreateUpdateScheduleResponse>,
+  input: CreateUpdateScheduleRequest,
+  output: CreateUpdateScheduleResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -267,8 +379,8 @@ export const deleteUpdateSchedule: API.OperationMethod<
   DeleteUpdateScheduleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DeleteUpdateScheduleRequest>,
-  output: __S(5) as any as S.Schema<DeleteUpdateScheduleResponse>,
+  input: DeleteUpdateScheduleRequest,
+  output: DeleteUpdateScheduleResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -282,8 +394,8 @@ export const disableServiceResource: API.OperationMethod<
   DisableServiceResourceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DisableServiceResourceRequest>,
-  output: __S(5) as any as S.Schema<DisableServiceResourceResponse>,
+  input: DisableServiceResourceRequest,
+  output: DisableServiceResourceResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -297,8 +409,8 @@ export const enableServiceResource: API.OperationMethod<
   EnableServiceResourceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<EnableServiceResourceRequest>,
-  output: __S(5) as any as S.Schema<EnableServiceResourceResponse>,
+  input: EnableServiceResourceRequest,
+  output: EnableServiceResourceResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -312,8 +424,8 @@ export const getServiceResource: API.OperationMethod<
   GetServiceResourceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<GetServiceResourceRequest>,
-  output: __S(9) as any as S.Schema<GetUpdateServiceResponse>,
+  input: GetServiceResourceRequest,
+  output: GetUpdateServiceResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -327,8 +439,8 @@ export const getUpdate: API.OperationMethod<
   GetUpdateError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<GetUpdateRequest>,
-  output: __S(1) as any as S.Schema<Update>,
+  input: GetUpdateRequest,
+  output: Update,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -342,8 +454,8 @@ export const getUpdateSchedule: API.OperationMethod<
   GetUpdateScheduleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetUpdateScheduleRequest>,
-  output: __S(3) as any as S.Schema<GetUpdateScheduleResponse>,
+  input: GetUpdateScheduleRequest,
+  output: GetUpdateScheduleResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -357,8 +469,8 @@ export const listUpdatePolicies: API.OperationMethod<
   ListUpdatePoliciesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<ListUpdatePoliciesRequest>,
-  output: __S(15) as any as S.Schema<GetUpdatePoliciesResponse>,
+  input: ListUpdatePoliciesRequest,
+  output: GetUpdatePoliciesResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -372,8 +484,8 @@ export const listUpdates: API.OperationMethod<
   ListUpdatesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<ListUpdatesRequest>,
-  output: __S(18) as any as S.Schema<GetUpdatesListResponse>,
+  input: ListUpdatesRequest,
+  output: GetUpdatesListResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -387,8 +499,8 @@ export const listUpdateSchedules: API.OperationMethod<
   ListUpdateSchedulesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<ListUpdateSchedulesRequest>,
-  output: __S(22) as any as S.Schema<GetUpdateSchedulesResponse>,
+  input: ListUpdateSchedulesRequest,
+  output: GetUpdateSchedulesResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -402,8 +514,8 @@ export const updateUpdateSchedule: API.OperationMethod<
   UpdateUpdateScheduleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<UpdateUpdateScheduleRequest>,
-  output: __S(3) as any as S.Schema<UpdateUpdateScheduleResponse>,
+  input: UpdateUpdateScheduleRequest,
+  output: UpdateUpdateScheduleResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -618,11 +730,11 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "UpdatePolicy" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(UpdatePolicy);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(14)),
+          items: S.optional(GetUpdatePoliciesResponseItemsList),
         }),
       ).annotate({
         identifier: "GetUpdatePoliciesResponse",
@@ -647,11 +759,11 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListUpdatesRequest" });
     case 1:
-      return S.Array(__S(1));
+      return S.Array(Update);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(17)),
+          items: S.optional(GetUpdatesListResponseItemsList),
         }),
       ).annotate({ identifier: "GetUpdatesListResponse" });
     case 3:
@@ -682,11 +794,11 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "UpdateSchedule" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(UpdateSchedule);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(21)),
+          items: S.optional(GetUpdateSchedulesResponseItemsList),
         }),
       ).annotate({
         identifier: "GetUpdateSchedulesResponse",
@@ -713,20 +825,5 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdateUpdateScheduleRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

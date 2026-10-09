@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -51,6 +49,9 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicInputRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicInputRoleAtOrganization =
+  S.Unknown as any as S.Schema<UserBasicInputRoleAtOrganization>;
+
 export interface UserBasicInput {
   distinct_id?: string | null;
   first_name?: string;
@@ -59,6 +60,8 @@ export interface UserBasicInput {
   is_email_verified?: boolean | null;
   role_at_organization?: UserBasicInputRoleAtOrganization | null;
 }
+const UserBasicInput = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<UserBasicInput>;
+
 export interface AdvancedActivityLogsExportCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -75,8 +78,20 @@ export interface AdvancedActivityLogsExportCreateRequest {
   detail?: unknown;
   created_at?: string;
 }
+const AdvancedActivityLogsExportCreateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AdvancedActivityLogsExportCreateRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -88,6 +103,8 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<UserBasic>;
+
 export interface ActivityLog {
   id?: string;
   user?: UserBasic | null;
@@ -105,22 +122,45 @@ export interface ActivityLog {
   detail?: unknown;
   created_at?: string;
 }
+const ActivityLog = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ActivityLog>;
+
 export interface GetAdvancedActivityLogsAvailableFilterRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const GetAdvancedActivityLogsAvailableFilterRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetAdvancedActivityLogsAvailableFilterRequest>;
+
 export type StaticFiltersUsersItemMap = { [key: string]: unknown | undefined };
+const StaticFiltersUsersItemMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<StaticFiltersUsersItemMap>;
+
 /** Users who have logged activity. */
 export type StaticFiltersUsersList = Array<StaticFiltersUsersItemMap>;
+const StaticFiltersUsersList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<StaticFiltersUsersList>;
+
 export type StaticFiltersScopesItemMap = { [key: string]: unknown | undefined };
 /** Available activity scopes. */
 export type StaticFiltersScopesList = Array<StaticFiltersScopesItemMap>;
+const StaticFiltersScopesList = StaticFiltersUsersList as any as S.Schema<StaticFiltersScopesList>;
+
 export type StaticFiltersActivitiesItemMap = { [key: string]: unknown | undefined };
 /** Available activity types. */
 export type StaticFiltersActivitiesList = Array<StaticFiltersActivitiesItemMap>;
+const StaticFiltersActivitiesList =
+  StaticFiltersUsersList as any as S.Schema<StaticFiltersActivitiesList>;
+
 export type StaticFiltersClientsItemMap = { [key: string]: unknown | undefined };
 /** API clients that have generated activity (the x-posthog-client header, or 'scout:<skill_name>' for a scout run). */
 export type StaticFiltersClientsList = Array<StaticFiltersClientsItemMap>;
+const StaticFiltersClientsList =
+  StaticFiltersUsersList as any as S.Schema<StaticFiltersClientsList>;
+
 export interface StaticFilters {
   /** Users who have logged activity. */
   users?: StaticFiltersUsersList;
@@ -131,23 +171,62 @@ export interface StaticFilters {
   /** API clients that have generated activity (the x-posthog-client header, or 'scout:<skill_name>' for a scout run). */
   clients?: StaticFiltersClientsList;
 }
+const StaticFilters = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<StaticFilters>;
+
 /** Discovered detail fields and their value distributions. */
 export type AvailableFiltersResponseDetailFieldsMap = { [key: string]: unknown | undefined };
+const AvailableFiltersResponseDetailFieldsMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<AvailableFiltersResponseDetailFieldsMap>;
+
 export interface AvailableFiltersResponse {
   /** Pre-computed filter options for scopes, activities, and users. */
   static_filters?: StaticFilters;
   /** Discovered detail fields and their value distributions. */
   detail_fields?: AvailableFiltersResponseDetailFieldsMap;
 }
+const AvailableFiltersResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AvailableFiltersResponse>;
+
 export type ListAdvancedActivityLogsRequestActivitiesList = Array<string>;
+const ListAdvancedActivityLogsRequestActivitiesList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListAdvancedActivityLogsRequestActivitiesList>;
+
 export type ListAdvancedActivityLogsRequestClientsList = Array<string>;
+const ListAdvancedActivityLogsRequestClientsList =
+  ListAdvancedActivityLogsRequestActivitiesList as any as S.Schema<ListAdvancedActivityLogsRequestClientsList>;
+
 export type ListAdvancedActivityLogsRequestIpAddressesList = Array<string>;
+const ListAdvancedActivityLogsRequestIpAddressesList =
+  ListAdvancedActivityLogsRequestActivitiesList as any as S.Schema<ListAdvancedActivityLogsRequestIpAddressesList>;
+
 export type ListAdvancedActivityLogsRequestItemIdsList = Array<string>;
+const ListAdvancedActivityLogsRequestItemIdsList =
+  ListAdvancedActivityLogsRequestActivitiesList as any as S.Schema<ListAdvancedActivityLogsRequestItemIdsList>;
+
 export type ListAdvancedActivityLogsRequestOrdering = "-created_at" | "created_at";
+const ListAdvancedActivityLogsRequestOrdering = S.String;
+
 export type ListAdvancedActivityLogsRequestSchema = "ocsf";
+const ListAdvancedActivityLogsRequestSchema = S.String;
+
 export type ListAdvancedActivityLogsRequestScopesList = Array<string>;
+const ListAdvancedActivityLogsRequestScopesList =
+  ListAdvancedActivityLogsRequestActivitiesList as any as S.Schema<ListAdvancedActivityLogsRequestScopesList>;
+
 export type ListAdvancedActivityLogsRequestTeamIdsList = Array<number>;
+const ListAdvancedActivityLogsRequestTeamIdsList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListAdvancedActivityLogsRequestTeamIdsList>;
+
 export type ListAdvancedActivityLogsRequestUsersList = Array<string>;
+const ListAdvancedActivityLogsRequestUsersList =
+  ListAdvancedActivityLogsRequestActivitiesList as any as S.Schema<ListAdvancedActivityLogsRequestUsersList>;
+
 export interface ListAdvancedActivityLogsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -192,13 +271,28 @@ export interface ListAdvancedActivityLogsRequest {
   /** When set, filters rows where the actor was impersonating another user. */
   was_impersonated?: boolean;
 }
+const ListAdvancedActivityLogsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListAdvancedActivityLogsRequest>;
+
 export type PaginatedActivityLogListResultsList = Array<ActivityLog>;
+const PaginatedActivityLogListResultsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<PaginatedActivityLogListResultsList>;
+
 export interface PaginatedActivityLogList {
   next?: string | null;
   previous?: string | null;
   results?: PaginatedActivityLogListResultsList;
   count?: number;
 }
+const PaginatedActivityLogList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<PaginatedActivityLogList>;
+
 export type AdvancedActivityLogsExportCreateError =
   | BadRequest
   | Forbidden
@@ -210,8 +304,8 @@ export const advancedActivityLogsExportCreate: API.OperationMethod<
   AdvancedActivityLogsExportCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AdvancedActivityLogsExportCreateRequest>,
-  output: __S(4) as any as S.Schema<ActivityLog>,
+  input: AdvancedActivityLogsExportCreateRequest,
+  output: ActivityLog,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -224,8 +318,8 @@ export const getAdvancedActivityLogsAvailableFilter: API.OperationMethod<
   GetAdvancedActivityLogsAvailableFilterError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<GetAdvancedActivityLogsAvailableFilterRequest>,
-  output: __S(8) as any as S.Schema<AvailableFiltersResponse>,
+  input: GetAdvancedActivityLogsAvailableFilterRequest,
+  output: AvailableFiltersResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -238,8 +332,8 @@ export const listAdvancedActivityLogs: API.OperationMethod<
   ListAdvancedActivityLogsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<ListAdvancedActivityLogsRequest>,
-  output: __S(13) as any as S.Schema<PaginatedActivityLogList>,
+  input: ListAdvancedActivityLogsRequest,
+  output: PaginatedActivityLogList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -256,14 +350,14 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          role_at_organization: S.optional(S.NullOr(UserBasicInputRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasicInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          user: S.optional(S.NullOr(__S(0))),
+          user: S.optional(S.NullOr(UserBasicInput)),
           team_id: S.optional(S.NullOr(S.Number)),
           organization_id: S.optional(S.NullOr(S.String)),
           was_impersonated: S.optional(S.NullOr(S.Boolean)),
@@ -297,15 +391,15 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(2))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          user: S.optional(S.NullOr(__S(3))),
+          user: S.optional(S.NullOr(UserBasic)),
           unread: S.optional(S.Boolean),
           team_id: S.optional(S.NullOr(S.Number)),
           organization_id: S.optional(S.NullOr(S.String)),
@@ -335,14 +429,14 @@ function __c0(j: number): any {
         identifier: "GetAdvancedActivityLogsAvailableFilterRequest",
       });
     case 6:
-      return S.Array(__S(2));
+      return S.Array(StaticFiltersUsersItemMap);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          users: S.optional(__S(6)),
-          scopes: S.optional(__S(6)),
-          activities: S.optional(__S(6)),
-          clients: S.optional(__S(6)),
+          users: S.optional(StaticFiltersUsersList),
+          scopes: S.optional(StaticFiltersScopesList),
+          activities: S.optional(StaticFiltersActivitiesList),
+          clients: S.optional(StaticFiltersClientsList),
         }),
       ).annotate({ identifier: "StaticFilters" });
   }
@@ -352,8 +446,8 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          static_filters: S.optional(__S(7)),
-          detail_fields: S.optional(__S(2)),
+          static_filters: S.optional(StaticFilters),
+          detail_fields: S.optional(AvailableFiltersResponseDetailFieldsMap),
         }),
       ).annotate({ identifier: "AvailableFiltersResponse" });
     case 1:
@@ -364,25 +458,25 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          activities: S.optional(__S(9).pipe(T.Query())),
-          clients: S.optional(__S(9).pipe(T.Query())),
+          activities: S.optional(ListAdvancedActivityLogsRequestActivitiesList.pipe(T.Query())),
+          clients: S.optional(ListAdvancedActivityLogsRequestClientsList.pipe(T.Query())),
           detail_filters: S.optional(S.String.pipe(T.Query())),
           end_date: S.optional(S.String.pipe(T.Query())),
           follow: S.optional(S.Boolean.pipe(T.Query())),
           hogql_filter: S.optional(S.String.pipe(T.Query())),
           include_values: S.optional(S.Boolean.pipe(T.Query())),
-          ip_addresses: S.optional(__S(9).pipe(T.Query())),
+          ip_addresses: S.optional(ListAdvancedActivityLogsRequestIpAddressesList.pipe(T.Query())),
           is_system: S.optional(S.Boolean.pipe(T.Query())),
-          item_ids: S.optional(__S(9).pipe(T.Query())),
-          ordering: S.optional(S.String.pipe(T.Query())),
+          item_ids: S.optional(ListAdvancedActivityLogsRequestItemIdsList.pipe(T.Query())),
+          ordering: S.optional(ListAdvancedActivityLogsRequestOrdering.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           page_size: S.optional(S.Number.pipe(T.Query())),
-          schema: S.optional(S.String.pipe(T.Query())),
-          scopes: S.optional(__S(9).pipe(T.Query())),
+          schema: S.optional(ListAdvancedActivityLogsRequestSchema.pipe(T.Query())),
+          scopes: S.optional(ListAdvancedActivityLogsRequestScopesList.pipe(T.Query())),
           search_text: S.optional(S.String.pipe(T.Query())),
           start_date: S.optional(S.String.pipe(T.Query())),
-          team_ids: S.optional(__S(10).pipe(T.Query())),
-          users: S.optional(__S(9).pipe(T.Query())),
+          team_ids: S.optional(ListAdvancedActivityLogsRequestTeamIdsList.pipe(T.Query())),
+          users: S.optional(ListAdvancedActivityLogsRequestUsersList.pipe(T.Query())),
           was_impersonated: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -395,28 +489,15 @@ function __c1(j: number): any {
         identifier: "ListAdvancedActivityLogsRequest",
       });
     case 4:
-      return S.Array(__S(4));
+      return S.Array(ActivityLog);
     case 5:
       return S.suspend(() =>
         S.Struct({
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(12)),
+          results: S.optional(PaginatedActivityLogListResultsList),
           count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PaginatedActivityLogList" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

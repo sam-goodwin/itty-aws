@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -40,19 +38,42 @@ export class UnprocessableEntity
 
 /** The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied. */
 export type CreateCampaignRequestManagersList = Array<string>;
+const CreateCampaignRequestManagersList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateCampaignRequestManagersList>;
+
 /** The slugs of the teams to set as the campaign managers. */
 export type CreateCampaignRequestTeamManagersList = Array<string>;
+const CreateCampaignRequestTeamManagersList =
+  CreateCampaignRequestManagersList as any as S.Schema<CreateCampaignRequestTeamManagersList>;
+
 /** The alert numbers */
 export type CreateCampaignRequestCodeScanningAlertsItemAlertNumbersList = Array<number>;
+const CreateCampaignRequestCodeScanningAlertsItemAlertNumbersList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateCampaignRequestCodeScanningAlertsItemAlertNumbersList>;
+
 export interface CreateCampaignRequestCodeScanningAlertsItem {
   /** The repository id */
   repository_id: number;
   /** The alert numbers */
   alert_numbers: CreateCampaignRequestCodeScanningAlertsItemAlertNumbersList;
 }
+const CreateCampaignRequestCodeScanningAlertsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateCampaignRequestCodeScanningAlertsItem>;
+
 /** The code scanning alerts to include in this campaign */
 export type CreateCampaignRequestCodeScanningAlertsList =
   Array<CreateCampaignRequestCodeScanningAlertsItem>;
+const CreateCampaignRequestCodeScanningAlertsList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateCampaignRequestCodeScanningAlertsList>;
+
 export interface CreateCampaignRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -73,6 +94,11 @@ export interface CreateCampaignRequest {
   /** If true, will automatically generate issues for the campaign. The default is false. */
   generate_issues?: boolean;
 }
+const CreateCampaignRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateCampaignRequest>;
+
 /** A GitHub user. */
 export interface SimpleUser {
   name?: string | null;
@@ -98,8 +124,15 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
+const SimpleUser = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<SimpleUser>;
+
 /** The campaign managers */
 export type CampaignSummaryManagersList = Array<SimpleUser>;
+const CampaignSummaryManagersList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CampaignSummaryManagersList>;
+
 export interface TeamPermissions {
   pull: boolean;
   triage: boolean;
@@ -107,12 +140,20 @@ export interface TeamPermissions {
   maintain: boolean;
   admin: boolean;
 }
+const TeamPermissions = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<TeamPermissions>;
+
 /** The ownership type of the team */
 export type TeamType = "enterprise" | "organization";
+const TeamType = S.String;
+
 /** How the team's access to the repository was granted. This property is only present when the team is returned in a repository context, such as `GET /repos/{owner}/{repo}/teams`. */
 export type TeamAccessSource = "direct" | "organization" | "enterprise";
+const TeamAccessSource = S.String;
+
 /** The ownership type of the team */
 export type NullableTeamSimpleType = "enterprise" | "organization";
+const NullableTeamSimpleType = S.String;
+
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface NullableTeamSimple {
   /** Unique identifier of the team */
@@ -143,6 +184,8 @@ export interface NullableTeamSimple {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
+const NullableTeamSimple = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<NullableTeamSimple>;
+
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface Team {
   id: number;
@@ -168,10 +211,19 @@ export interface Team {
   enterprise_id?: number;
   parent: NullableTeamSimple | null;
 }
+const Team = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Team>;
+
 /** The campaign team managers */
 export type CampaignSummaryTeamManagersList = Array<Team>;
+const CampaignSummaryTeamManagersList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CampaignSummaryTeamManagersList>;
+
 /** Indicates whether a campaign is open or closed */
 export type CampaignState = "open" | "closed";
+const CampaignState = S.String;
+
 export interface CampaignSummaryAlertStats {
   /** The number of open alerts */
   open_count: number;
@@ -180,6 +232,11 @@ export interface CampaignSummaryAlertStats {
   /** The number of in-progress alerts */
   in_progress_count: number;
 }
+const CampaignSummaryAlertStats = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CampaignSummaryAlertStats>;
+
 /** The campaign metadata and alert stats. */
 export interface CampaignSummary {
   /** The number of the newly created campaign */
@@ -207,21 +264,42 @@ export interface CampaignSummary {
   contact_link: string | null;
   alert_stats?: CampaignSummaryAlertStats;
 }
+const CampaignSummary = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CampaignSummary>;
+
 export interface DeleteCampaignRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The campaign number. */
   campaign_number: number;
 }
+const DeleteCampaignRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteCampaignRequest>;
+
 export interface DeleteCampaignResponse {}
+const DeleteCampaignResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DeleteCampaignResponse>;
+
 export interface GetCampaignSummaryRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The campaign number. */
   campaign_number: number;
 }
+const GetCampaignSummaryRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetCampaignSummaryRequest>;
+
 export type ListOrgCampaignsRequestDirection = "asc" | "desc";
+const ListOrgCampaignsRequestDirection = S.String;
+
 export type ListOrgCampaignsRequestSort = "created" | "updated" | "ends_at" | "published";
+const ListOrgCampaignsRequestSort = S.String;
+
 export interface ListOrgCampaignsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -236,12 +314,33 @@ export interface ListOrgCampaignsRequest {
   /** The property by which to sort the results. */
   sort?: ListOrgCampaignsRequestSort | (string & {});
 }
+const ListOrgCampaignsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListOrgCampaignsRequest>;
+
 export type ListOrgCampaignsResponseBodyList = Array<CampaignSummary>;
+const ListOrgCampaignsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListOrgCampaignsResponseBodyList>;
+
 export type ListOrgCampaignsResponse = ListOrgCampaignsResponseBodyList;
+const ListOrgCampaignsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListOrgCampaignsResponse>;
+
 /** The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied. */
 export type UpdateCampaignRequestManagersList = Array<string>;
+const UpdateCampaignRequestManagersList =
+  CreateCampaignRequestManagersList as any as S.Schema<UpdateCampaignRequestManagersList>;
+
 /** The slugs of the teams to set as the campaign managers. */
 export type UpdateCampaignRequestTeamManagersList = Array<string>;
+const UpdateCampaignRequestTeamManagersList =
+  CreateCampaignRequestManagersList as any as S.Schema<UpdateCampaignRequestTeamManagersList>;
+
 export interface UpdateCampaignRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -261,6 +360,11 @@ export interface UpdateCampaignRequest {
   contact_link?: string | null;
   state?: CampaignState | (string & {});
 }
+const UpdateCampaignRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<UpdateCampaignRequest>;
+
 export type CreateCampaignError = BadRequest | NotFound | UnprocessableEntity | GithubOpError;
 /** Create a campaign for an organization Create a campaign for an organization. The authenticated user must be an owner or security manager for the organization to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint. Fine-grained tokens must have the "Code scanning alerts" repository permissions (read) on all repositories included in the campaign. */
 export const createCampaign: API.OperationMethod<
@@ -269,8 +373,8 @@ export const createCampaign: API.OperationMethod<
   CreateCampaignError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateCampaignRequest>,
-  output: __S(12) as any as S.Schema<CampaignSummary>,
+  input: CreateCampaignRequest,
+  output: CampaignSummary,
   errors: [BadRequest, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -284,8 +388,8 @@ export const deleteCampaign: API.OperationMethod<
   DeleteCampaignError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<DeleteCampaignRequest>,
-  output: __S(14) as any as S.Schema<DeleteCampaignResponse>,
+  input: DeleteCampaignRequest,
+  output: DeleteCampaignResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -299,8 +403,8 @@ export const getCampaignSummary: API.OperationMethod<
   GetCampaignSummaryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<GetCampaignSummaryRequest>,
-  output: __S(12) as any as S.Schema<CampaignSummary>,
+  input: GetCampaignSummaryRequest,
+  output: CampaignSummary,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -314,8 +418,8 @@ export const listOrgCampaigns: API.OperationMethod<
   ListOrgCampaignsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<ListOrgCampaignsRequest>,
-  output: __S(18) as any as S.Schema<ListOrgCampaignsResponse>,
+  input: ListOrgCampaignsRequest,
+  output: ListOrgCampaignsResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -329,8 +433,8 @@ export const updateCampaign: API.OperationMethod<
   UpdateCampaignError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<UpdateCampaignRequest>,
-  output: __S(12) as any as S.Schema<CampaignSummary>,
+  input: UpdateCampaignRequest,
+  output: CampaignSummary,
   errors: [BadRequest, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -347,24 +451,24 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           repository_id: S.Number,
-          alert_numbers: __S(1),
+          alert_numbers: CreateCampaignRequestCodeScanningAlertsItemAlertNumbersList,
         }),
       ).annotate({
         identifier: "CreateCampaignRequestCodeScanningAlertsItem",
       });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(CreateCampaignRequestCodeScanningAlertsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
           name: S.String,
           description: S.String,
-          managers: S.optional(__S(0)),
-          team_managers: S.optional(__S(0)),
+          managers: S.optional(CreateCampaignRequestManagersList),
+          team_managers: S.optional(CreateCampaignRequestTeamManagersList),
           ends_at: S.String,
           contact_link: S.optional(S.NullOr(S.String)),
-          code_scanning_alerts: S.optional(S.NullOr(__S(3))),
+          code_scanning_alerts: S.optional(S.NullOr(CreateCampaignRequestCodeScanningAlertsList)),
           generate_issues: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/campaigns", code: 200 })),
       ).annotate({ identifier: "CreateCampaignRequest" });
@@ -396,7 +500,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "SimpleUser" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(SimpleUser);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -427,7 +531,7 @@ function __c1(j: number): any {
           repositories_url: S.String,
           slug: S.String,
           ldap_dn: S.optional(S.String),
-          type: S.String,
+          type: NullableTeamSimpleType,
           organization_id: S.optional(S.Number),
           enterprise_id: S.optional(S.Number),
         }),
@@ -443,20 +547,20 @@ function __c1(j: number): any {
           privacy: S.optional(S.String),
           notification_setting: S.optional(S.String),
           permission: S.String,
-          permissions: S.optional(__S(7)),
+          permissions: S.optional(TeamPermissions),
           url: S.String,
           html_url: S.String,
           members_url: S.String,
           repositories_url: S.String,
-          type: S.String,
-          access_source: S.optional(S.String),
+          type: TeamType,
+          access_source: S.optional(TeamAccessSource),
           organization_id: S.optional(S.Number),
           enterprise_id: S.optional(S.Number),
-          parent: S.NullOr(__S(8)),
+          parent: S.NullOr(NullableTeamSimple),
         }),
       ).annotate({ identifier: "Team" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(Team);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -475,14 +579,14 @@ function __c1(j: number): any {
           updated_at: S.String,
           name: S.optional(S.String),
           description: S.String,
-          managers: __S(6),
-          team_managers: S.optional(__S(10)),
+          managers: CampaignSummaryManagersList,
+          team_managers: S.optional(CampaignSummaryTeamManagersList),
           published_at: S.optional(S.String),
           ends_at: S.String,
           closed_at: S.optional(S.NullOr(S.String)),
-          state: S.String,
+          state: CampaignState,
           contact_link: S.NullOr(S.String),
-          alert_stats: S.optional(__S(11)),
+          alert_stats: S.optional(CampaignSummaryAlertStats),
         }),
       ).annotate({ identifier: "CampaignSummary" });
     case 5:
@@ -519,15 +623,15 @@ function __c2(j: number): any {
           org: S.String.pipe(T.Label()),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
-          state: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(ListOrgCampaignsRequestDirection.pipe(T.Query())),
+          state: S.optional(CampaignState.pipe(T.Query())),
+          sort: S.optional(ListOrgCampaignsRequestSort.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/campaigns", code: 200 })),
       ).annotate({ identifier: "ListOrgCampaignsRequest" });
     case 1:
-      return S.Array(__S(12));
+      return S.Array(CampaignSummary);
     case 2:
-      return S.suspend(() => __S(17).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListOrgCampaignsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrgCampaignsResponse",
       });
     case 3:
@@ -537,29 +641,14 @@ function __c2(j: number): any {
           campaign_number: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          managers: S.optional(__S(0)),
-          team_managers: S.optional(__S(0)),
+          managers: S.optional(UpdateCampaignRequestManagersList),
+          team_managers: S.optional(UpdateCampaignRequestTeamManagersList),
           ends_at: S.optional(S.String),
           contact_link: S.optional(S.NullOr(S.String)),
-          state: S.optional(S.String),
+          state: S.optional(CampaignState),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/orgs/{org}/campaigns/{campaign_number}", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateCampaignRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

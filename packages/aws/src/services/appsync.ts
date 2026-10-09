@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://appsync.amazonaws.com");
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "AppSync",
@@ -105,12 +103,12 @@ export class BadRequestException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
+        /*@__PURE__*/ S.suspend(() => BadRequestReason).annotate({
           identifier: "BadRequestReason",
         }),
       ),
       detail: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(188)).annotate({
+        /*@__PURE__*/ S.suspend(() => BadRequestDetail).annotate({
           identifier: "BadRequestDetail",
         }),
       ),
@@ -170,26 +168,41 @@ export interface AssociateApiRequest {
   domainName: string;
   apiId: string;
 }
+const AssociateApiRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AssociateApiRequest>;
 export type AssociationStatus = "PROCESSING" | "FAILED" | "SUCCESS" | (string & {});
+const AssociationStatus = S.String;
+
 export interface ApiAssociation {
   domainName?: string;
   apiId?: string;
   associationStatus?: AssociationStatus;
   deploymentDetail?: string;
 }
+const ApiAssociation = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ApiAssociation>;
 export interface AssociateApiResponse {
   apiAssociation?: ApiAssociation;
 }
+const AssociateApiResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AssociateApiResponse>;
 export type MergeType = "MANUAL_MERGE" | "AUTO_MERGE" | (string & {});
+const MergeType = S.String;
+
 export interface SourceApiAssociationConfig {
   mergeType?: MergeType;
 }
+const SourceApiAssociationConfig = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<SourceApiAssociationConfig>;
 export interface AssociateMergedGraphqlApiRequest {
   sourceApiIdentifier: string;
   mergedApiIdentifier: string;
   description?: string;
   sourceApiAssociationConfig?: SourceApiAssociationConfig;
 }
+const AssociateMergedGraphqlApiRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AssociateMergedGraphqlApiRequest>;
 export type SourceApiAssociationStatus =
   | "MERGE_SCHEDULED"
   | "MERGE_FAILED"
@@ -200,6 +213,8 @@ export type SourceApiAssociationStatus =
   | "DELETION_IN_PROGRESS"
   | "DELETION_FAILED"
   | (string & {});
+const SourceApiAssociationStatus = S.String;
+
 export interface SourceApiAssociation {
   associationId?: string;
   associationArn?: string;
@@ -213,22 +228,34 @@ export interface SourceApiAssociation {
   sourceApiAssociationStatusDetail?: string;
   lastSuccessfulMergeDate?: Date;
 }
+const SourceApiAssociation = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<SourceApiAssociation>;
 export interface AssociateMergedGraphqlApiResponse {
   sourceApiAssociation?: SourceApiAssociation;
 }
+const AssociateMergedGraphqlApiResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AssociateMergedGraphqlApiResponse>;
 export interface AssociateSourceGraphqlApiRequest {
   mergedApiIdentifier: string;
   sourceApiIdentifier: string;
   description?: string;
   sourceApiAssociationConfig?: SourceApiAssociationConfig;
 }
+const AssociateSourceGraphqlApiRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AssociateSourceGraphqlApiRequest>;
 export interface AssociateSourceGraphqlApiResponse {
   sourceApiAssociation?: SourceApiAssociation;
 }
+const AssociateSourceGraphqlApiResponse =
+  AssociateMergedGraphqlApiResponse as any as S.Schema<AssociateSourceGraphqlApiResponse>;
 export type ApiName = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
+const TagMap = /*@__PURE__*/ __L.at(__c1, 0);
 export type AuthenticationType =
   | "API_KEY"
   | "AWS_IAM"
@@ -236,39 +263,54 @@ export type AuthenticationType =
   | "OPENID_CONNECT"
   | "AWS_LAMBDA"
   | (string & {});
+const AuthenticationType = S.String;
+
 export interface CognitoConfig {
   userPoolId: string;
   awsRegion: string;
   appIdClientRegex?: string;
 }
+const CognitoConfig = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CognitoConfig>;
 export interface OpenIDConnectConfig {
   issuer: string;
   clientId?: string;
   iatTTL?: number;
   authTTL?: number;
 }
+const OpenIDConnectConfig = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<OpenIDConnectConfig>;
 export type TTL = number;
 export interface LambdaAuthorizerConfig {
   authorizerResultTtlInSeconds?: number;
   authorizerUri: string;
   identityValidationExpression?: string;
 }
+const LambdaAuthorizerConfig = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<LambdaAuthorizerConfig>;
 export interface AuthProvider {
   authType: AuthenticationType;
   cognitoConfig?: CognitoConfig;
   openIDConnectConfig?: OpenIDConnectConfig;
   lambdaAuthorizerConfig?: LambdaAuthorizerConfig;
 }
+const AuthProvider = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<AuthProvider>;
 export type AuthProviders = AuthProvider[];
+const AuthProviders = /*@__PURE__*/ __L.at(__c1, 5);
 export interface AuthMode {
   authType: AuthenticationType;
 }
+const AuthMode = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<AuthMode>;
 export type AuthModes = AuthMode[];
+const AuthModes = /*@__PURE__*/ __L.at(__c1, 7);
 export type EventLogLevel = "NONE" | "ERROR" | "ALL" | "INFO" | "DEBUG" | (string & {});
+const EventLogLevel = S.String;
+
 export interface EventLogConfig {
   logLevel: EventLogLevel;
   cloudWatchLogsRoleArn: string;
 }
+const EventLogConfig = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<EventLogConfig>;
 export interface EventConfig {
   authProviders: AuthProvider[];
   connectionAuthModes: AuthMode[];
@@ -276,14 +318,17 @@ export interface EventConfig {
   defaultSubscribeAuthModes: AuthMode[];
   logConfig?: EventLogConfig;
 }
+const EventConfig = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<EventConfig>;
 export interface CreateApiRequest {
   name: string;
   ownerContact?: string;
   tags?: { [key: string]: string | undefined };
   eventConfig: EventConfig;
 }
+const CreateApiRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CreateApiRequest>;
 export type OwnerContact = string;
 export type MapOfStringToString = { [key: string]: string | undefined };
+const MapOfStringToString = /*@__PURE__*/ __L.at(__c2, 3);
 export interface Api {
   apiId?: string;
   name?: string;
@@ -296,14 +341,18 @@ export interface Api {
   wafWebAclArn?: string;
   eventConfig?: EventConfig;
 }
+const Api = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Api>;
 export interface CreateApiResponse {
   api?: Api;
 }
+const CreateApiResponse = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<CreateApiResponse>;
 export type ApiCachingBehavior =
   | "FULL_REQUEST_CACHING"
   | "PER_RESOLVER_CACHING"
   | "OPERATION_LEVEL_CACHING"
   | (string & {});
+const ApiCachingBehavior = S.String;
+
 export type ApiCacheType =
   | "T2_SMALL"
   | "T2_MEDIUM"
@@ -321,7 +370,11 @@ export type ApiCacheType =
   | "LARGE_8X"
   | "LARGE_12X"
   | (string & {});
+const ApiCacheType = S.String;
+
 export type CacheHealthMetricsConfig = "ENABLED" | "DISABLED" | (string & {});
+const CacheHealthMetricsConfig = S.String;
+
 export interface CreateApiCacheRequest {
   apiId: string;
   ttl: number;
@@ -331,6 +384,10 @@ export interface CreateApiCacheRequest {
   type: ApiCacheType;
   healthMetricsConfig?: CacheHealthMetricsConfig;
 }
+const CreateApiCacheRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateApiCacheRequest>;
 export type ApiCacheStatus =
   | "AVAILABLE"
   | "CREATING"
@@ -338,6 +395,8 @@ export type ApiCacheStatus =
   | "MODIFYING"
   | "FAILED"
   | (string & {});
+const ApiCacheStatus = S.String;
+
 export interface ApiCache {
   ttl?: number;
   apiCachingBehavior?: ApiCachingBehavior;
@@ -347,42 +406,58 @@ export interface ApiCache {
   status?: ApiCacheStatus;
   healthMetricsConfig?: CacheHealthMetricsConfig;
 }
+const ApiCache = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ApiCache>;
 export interface CreateApiCacheResponse {
   apiCache?: ApiCache;
 }
+const CreateApiCacheResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateApiCacheResponse>;
 export interface CreateApiKeyRequest {
   apiId: string;
   description?: string;
   expires?: number;
 }
+const CreateApiKeyRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<CreateApiKeyRequest>;
 export interface ApiKey {
   id?: string;
   description?: string;
   expires?: number;
   deletes?: number;
 }
+const ApiKey = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ApiKey>;
 export interface CreateApiKeyResponse {
   apiKey?: ApiKey;
 }
+const CreateApiKeyResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<CreateApiKeyResponse>;
 export type Namespace = string;
 export type Code = string;
 export type HandlerBehavior = "CODE" | "DIRECT" | (string & {});
+const HandlerBehavior = S.String;
+
 export type InvokeType = "REQUEST_RESPONSE" | "EVENT" | (string & {});
+const InvokeType = S.String;
+
 export interface LambdaConfig {
   invokeType?: InvokeType;
 }
+const LambdaConfig = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<LambdaConfig>;
 export interface Integration {
   dataSourceName: string;
   lambdaConfig?: LambdaConfig;
 }
+const Integration = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<Integration>;
 export interface HandlerConfig {
   behavior: HandlerBehavior;
   integration: Integration;
 }
+const HandlerConfig = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<HandlerConfig>;
 export interface HandlerConfigs {
   onPublish?: HandlerConfig;
   onSubscribe?: HandlerConfig;
 }
+const HandlerConfigs = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<HandlerConfigs>;
 export interface CreateChannelNamespaceRequest {
   apiId: string;
   name: string;
@@ -392,6 +467,10 @@ export interface CreateChannelNamespaceRequest {
   tags?: { [key: string]: string | undefined };
   handlerConfigs?: HandlerConfigs;
 }
+const CreateChannelNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateChannelNamespaceRequest>;
 export interface ChannelNamespace {
   apiId?: string;
   name?: string;
@@ -404,9 +483,14 @@ export interface ChannelNamespace {
   lastModified?: Date;
   handlerConfigs?: HandlerConfigs;
 }
+const ChannelNamespace = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ChannelNamespace>;
 export interface CreateChannelNamespaceResponse {
   channelNamespace?: ChannelNamespace;
 }
+const CreateChannelNamespaceResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CreateChannelNamespaceResponse>;
 export type ResourceName = string;
 export type DataSourceType =
   | "AWS_LAMBDA"
@@ -419,11 +503,14 @@ export type DataSourceType =
   | "AMAZON_EVENTBRIDGE"
   | "AMAZON_BEDROCK_RUNTIME"
   | (string & {});
+const DataSourceType = S.String;
+
 export interface DeltaSyncConfig {
   baseTableTTL?: number;
   deltaSyncTableName?: string;
   deltaSyncTableTTL?: number;
 }
+const DeltaSyncConfig = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<DeltaSyncConfig>;
 export interface DynamodbDataSourceConfig {
   tableName: string;
   awsRegion: string;
@@ -431,31 +518,52 @@ export interface DynamodbDataSourceConfig {
   deltaSyncConfig?: DeltaSyncConfig;
   versioned?: boolean;
 }
+const DynamodbDataSourceConfig = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DynamodbDataSourceConfig>;
 export interface LambdaDataSourceConfig {
   lambdaFunctionArn: string;
 }
+const LambdaDataSourceConfig = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<LambdaDataSourceConfig>;
 export interface ElasticsearchDataSourceConfig {
   endpoint: string;
   awsRegion: string;
 }
+const ElasticsearchDataSourceConfig = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ElasticsearchDataSourceConfig>;
 export interface OpenSearchServiceDataSourceConfig {
   endpoint: string;
   awsRegion: string;
 }
+const OpenSearchServiceDataSourceConfig =
+  ElasticsearchDataSourceConfig as any as S.Schema<OpenSearchServiceDataSourceConfig>;
 export type AuthorizationType = "AWS_IAM" | (string & {});
+const AuthorizationType = S.String;
+
 export interface AwsIamConfig {
   signingRegion?: string;
   signingServiceName?: string;
 }
+const AwsIamConfig = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<AwsIamConfig>;
 export interface AuthorizationConfig {
   authorizationType: AuthorizationType;
   awsIamConfig?: AwsIamConfig;
 }
+const AuthorizationConfig = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<AuthorizationConfig>;
 export interface HttpDataSourceConfig {
   endpoint?: string;
   authorizationConfig?: AuthorizationConfig;
 }
+const HttpDataSourceConfig = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<HttpDataSourceConfig>;
 export type RelationalDatabaseSourceType = "RDS_HTTP_ENDPOINT" | (string & {});
+const RelationalDatabaseSourceType = S.String;
+
 export interface RdsHttpEndpointConfig {
   awsRegion?: string;
   dbClusterIdentifier?: string;
@@ -463,14 +571,28 @@ export interface RdsHttpEndpointConfig {
   schema?: string;
   awsSecretStoreArn?: string;
 }
+const RdsHttpEndpointConfig = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<RdsHttpEndpointConfig>;
 export interface RelationalDatabaseDataSourceConfig {
   relationalDatabaseSourceType?: RelationalDatabaseSourceType;
   rdsHttpEndpointConfig?: RdsHttpEndpointConfig;
 }
+const RelationalDatabaseDataSourceConfig = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<RelationalDatabaseDataSourceConfig>;
 export interface EventBridgeDataSourceConfig {
   eventBusArn: string;
 }
+const EventBridgeDataSourceConfig = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<EventBridgeDataSourceConfig>;
 export type DataSourceLevelMetricsConfig = "ENABLED" | "DISABLED" | (string & {});
+const DataSourceLevelMetricsConfig = S.String;
+
 export interface CreateDataSourceRequest {
   apiId: string;
   name: string;
@@ -486,6 +608,10 @@ export interface CreateDataSourceRequest {
   eventBridgeConfig?: EventBridgeDataSourceConfig;
   metricsConfig?: DataSourceLevelMetricsConfig;
 }
+const CreateDataSourceRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreateDataSourceRequest>;
 export interface DataSource {
   dataSourceArn?: string;
   name?: string;
@@ -501,9 +627,14 @@ export interface DataSource {
   eventBridgeConfig?: EventBridgeDataSourceConfig;
   metricsConfig?: DataSourceLevelMetricsConfig;
 }
+const DataSource = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<DataSource>;
 export interface CreateDataSourceResponse {
   dataSource?: DataSource;
 }
+const CreateDataSourceResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreateDataSourceResponse>;
 export type CertificateArn = string;
 export type Description = string;
 export interface CreateDomainNameRequest {
@@ -512,6 +643,10 @@ export interface CreateDomainNameRequest {
   description?: string;
   tags?: { [key: string]: string | undefined };
 }
+const CreateDomainNameRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreateDomainNameRequest>;
 export interface DomainNameConfig {
   domainName?: string;
   description?: string;
@@ -521,9 +656,14 @@ export interface DomainNameConfig {
   tags?: { [key: string]: string | undefined };
   domainNameArn?: string;
 }
+const DomainNameConfig = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<DomainNameConfig>;
 export interface CreateDomainNameResponse {
   domainNameConfig?: DomainNameConfig;
 }
+const CreateDomainNameResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<CreateDomainNameResponse>;
 export type MappingTemplate = string;
 export type ConflictHandlerType =
   | "OPTIMISTIC_CONCURRENCY"
@@ -531,21 +671,33 @@ export type ConflictHandlerType =
   | "AUTOMERGE"
   | "NONE"
   | (string & {});
+const ConflictHandlerType = S.String;
+
 export type ConflictDetectionType = "VERSION" | "NONE" | (string & {});
+const ConflictDetectionType = S.String;
+
 export interface LambdaConflictHandlerConfig {
   lambdaConflictHandlerArn?: string;
 }
+const LambdaConflictHandlerConfig = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<LambdaConflictHandlerConfig>;
 export interface SyncConfig {
   conflictHandler?: ConflictHandlerType;
   conflictDetection?: ConflictDetectionType;
   lambdaConflictHandlerConfig?: LambdaConflictHandlerConfig;
 }
+const SyncConfig = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<SyncConfig>;
 export type MaxBatchSize = number;
 export type RuntimeName = "APPSYNC_JS" | (string & {});
+const RuntimeName = S.String;
+
 export interface AppSyncRuntime {
   name: RuntimeName;
   runtimeVersion: string;
 }
+const AppSyncRuntime = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<AppSyncRuntime>;
 export interface CreateFunctionRequest {
   apiId: string;
   name: string;
@@ -559,6 +711,10 @@ export interface CreateFunctionRequest {
   runtime?: AppSyncRuntime;
   code?: string;
 }
+const CreateFunctionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreateFunctionRequest>;
 export interface FunctionConfiguration {
   functionId?: string;
   functionArn?: string;
@@ -573,53 +729,89 @@ export interface FunctionConfiguration {
   runtime?: AppSyncRuntime;
   code?: string;
 }
+const FunctionConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<FunctionConfiguration>;
 export interface CreateFunctionResponse {
   functionConfiguration?: FunctionConfiguration;
 }
+const CreateFunctionResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<CreateFunctionResponse>;
 export type FieldLogLevel = "NONE" | "ERROR" | "ALL" | "INFO" | "DEBUG" | (string & {});
+const FieldLogLevel = S.String;
+
 export interface LogConfig {
   fieldLogLevel: FieldLogLevel;
   cloudWatchLogsRoleArn: string;
   excludeVerboseContent?: boolean;
 }
+const LogConfig = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<LogConfig>;
 export type DefaultAction = "ALLOW" | "DENY" | (string & {});
+const DefaultAction = S.String;
+
 export interface UserPoolConfig {
   userPoolId: string;
   awsRegion: string;
   defaultAction: DefaultAction;
   appIdClientRegex?: string;
 }
+const UserPoolConfig = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<UserPoolConfig>;
 export interface CognitoUserPoolConfig {
   userPoolId: string;
   awsRegion: string;
   appIdClientRegex?: string;
 }
+const CognitoUserPoolConfig = CognitoConfig as any as S.Schema<CognitoUserPoolConfig>;
 export interface AdditionalAuthenticationProvider {
   authenticationType?: AuthenticationType;
   openIDConnectConfig?: OpenIDConnectConfig;
   userPoolConfig?: CognitoUserPoolConfig;
   lambdaAuthorizerConfig?: LambdaAuthorizerConfig;
 }
+const AdditionalAuthenticationProvider = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<AdditionalAuthenticationProvider>;
 export type AdditionalAuthenticationProviders = AdditionalAuthenticationProvider[];
+const AdditionalAuthenticationProviders = /*@__PURE__*/ __L.at(__c7, 4);
 export type GraphQLApiType = "GRAPHQL" | "MERGED" | (string & {});
+const GraphQLApiType = S.String;
+
 export type GraphQLApiVisibility = "GLOBAL" | "PRIVATE" | (string & {});
+const GraphQLApiVisibility = S.String;
+
 export type GraphQLApiIntrospectionConfig = "ENABLED" | "DISABLED" | (string & {});
+const GraphQLApiIntrospectionConfig = S.String;
+
 export type QueryDepthLimit = number;
 export type ResolverCountLimit = number;
 export type ResolverLevelMetricsBehavior =
   | "FULL_REQUEST_RESOLVER_METRICS"
   | "PER_RESOLVER_METRICS"
   | (string & {});
+const ResolverLevelMetricsBehavior = S.String;
+
 export type DataSourceLevelMetricsBehavior =
   | "FULL_REQUEST_DATA_SOURCE_METRICS"
   | "PER_DATA_SOURCE_METRICS"
   | (string & {});
+const DataSourceLevelMetricsBehavior = S.String;
+
 export type OperationLevelMetricsConfig = "ENABLED" | "DISABLED" | (string & {});
+const OperationLevelMetricsConfig = S.String;
+
 export interface EnhancedMetricsConfig {
   resolverLevelMetricsBehavior: ResolverLevelMetricsBehavior;
   dataSourceLevelMetricsBehavior: DataSourceLevelMetricsBehavior;
   operationLevelMetricsConfig: OperationLevelMetricsConfig;
 }
+const EnhancedMetricsConfig = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<EnhancedMetricsConfig>;
 export interface CreateGraphqlApiRequest {
   name: string;
   logConfig?: LogConfig;
@@ -639,6 +831,10 @@ export interface CreateGraphqlApiRequest {
   resolverCountLimit?: number;
   enhancedMetricsConfig?: EnhancedMetricsConfig;
 }
+const CreateGraphqlApiRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<CreateGraphqlApiRequest>;
 export interface GraphqlApi {
   name?: string;
   apiId?: string;
@@ -664,20 +860,33 @@ export interface GraphqlApi {
   resolverCountLimit?: number;
   enhancedMetricsConfig?: EnhancedMetricsConfig;
 }
+const GraphqlApi = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<GraphqlApi>;
 export interface CreateGraphqlApiResponse {
   graphqlApi?: GraphqlApi;
 }
+const CreateGraphqlApiResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<CreateGraphqlApiResponse>;
 export type ResolverKind = "UNIT" | "PIPELINE" | (string & {});
+const ResolverKind = S.String;
+
 export type FunctionsIds = string[];
+const FunctionsIds = /*@__PURE__*/ __L.at(__c8, 1);
 export interface PipelineConfig {
   functions?: string[];
 }
+const PipelineConfig = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<PipelineConfig>;
 export type CachingKeys = string[];
+const CachingKeys = FunctionsIds as any as S.Schema<CachingKeys>;
 export interface CachingConfig {
   ttl: number;
   cachingKeys?: string[];
 }
+const CachingConfig = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<CachingConfig>;
 export type ResolverLevelMetricsConfig = "ENABLED" | "DISABLED" | (string & {});
+const ResolverLevelMetricsConfig = S.String;
+
 export interface CreateResolverRequest {
   apiId: string;
   typeName: string;
@@ -694,6 +903,10 @@ export interface CreateResolverRequest {
   code?: string;
   metricsConfig?: ResolverLevelMetricsConfig;
 }
+const CreateResolverRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<CreateResolverRequest>;
 export interface Resolver {
   typeName?: string;
   fieldName?: string;
@@ -710,15 +923,23 @@ export interface Resolver {
   code?: string;
   metricsConfig?: ResolverLevelMetricsConfig;
 }
+const Resolver = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<Resolver>;
 export interface CreateResolverResponse {
   resolver?: Resolver;
 }
+const CreateResolverResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<CreateResolverResponse>;
 export type TypeDefinitionFormat = "SDL" | "JSON" | (string & {});
+const TypeDefinitionFormat = S.String;
+
 export interface CreateTypeRequest {
   apiId: string;
   definition: string;
   format: TypeDefinitionFormat;
 }
+const CreateTypeRequest = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<CreateTypeRequest>;
 export interface Type {
   name?: string;
   description?: string;
@@ -726,74 +947,148 @@ export interface Type {
   definition?: string;
   format?: TypeDefinitionFormat;
 }
+const Type = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<Type>;
 export interface CreateTypeResponse {
   type?: Type;
 }
+const CreateTypeResponse = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<CreateTypeResponse>;
 export interface DeleteApiRequest {
   apiId: string;
 }
+const DeleteApiRequest = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<DeleteApiRequest>;
 export interface DeleteApiResponse {}
+const DeleteApiResponse = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<DeleteApiResponse>;
 export interface DeleteApiCacheRequest {
   apiId: string;
 }
+const DeleteApiCacheRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DeleteApiCacheRequest>;
 export interface DeleteApiCacheResponse {}
+const DeleteApiCacheResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DeleteApiCacheResponse>;
 export interface DeleteApiKeyRequest {
   apiId: string;
   id: string;
 }
+const DeleteApiKeyRequest = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<DeleteApiKeyRequest>;
 export interface DeleteApiKeyResponse {}
+const DeleteApiKeyResponse = DeleteApiResponse as any as S.Schema<DeleteApiKeyResponse>;
 export interface DeleteChannelNamespaceRequest {
   apiId: string;
   name: string;
 }
+const DeleteChannelNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<DeleteChannelNamespaceRequest>;
 export interface DeleteChannelNamespaceResponse {}
+const DeleteChannelNamespaceResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<DeleteChannelNamespaceResponse>;
 export interface DeleteDataSourceRequest {
   apiId: string;
   name: string;
 }
+const DeleteDataSourceRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<DeleteDataSourceRequest>;
 export interface DeleteDataSourceResponse {}
+const DeleteDataSourceResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<DeleteDataSourceResponse>;
 export interface DeleteDomainNameRequest {
   domainName: string;
 }
+const DeleteDomainNameRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<DeleteDomainNameRequest>;
 export interface DeleteDomainNameResponse {}
+const DeleteDomainNameResponse =
+  DeleteDataSourceResponse as any as S.Schema<DeleteDomainNameResponse>;
 export interface DeleteFunctionRequest {
   apiId: string;
   functionId: string;
 }
+const DeleteFunctionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<DeleteFunctionRequest>;
 export interface DeleteFunctionResponse {}
+const DeleteFunctionResponse = DeleteApiCacheResponse as any as S.Schema<DeleteFunctionResponse>;
 export interface DeleteGraphqlApiRequest {
   apiId: string;
 }
+const DeleteGraphqlApiRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<DeleteGraphqlApiRequest>;
 export interface DeleteGraphqlApiResponse {}
+const DeleteGraphqlApiResponse =
+  DeleteDataSourceResponse as any as S.Schema<DeleteGraphqlApiResponse>;
 export interface DeleteResolverRequest {
   apiId: string;
   typeName: string;
   fieldName: string;
 }
+const DeleteResolverRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<DeleteResolverRequest>;
 export interface DeleteResolverResponse {}
+const DeleteResolverResponse = DeleteApiCacheResponse as any as S.Schema<DeleteResolverResponse>;
 export interface DeleteTypeRequest {
   apiId: string;
   typeName: string;
 }
+const DeleteTypeRequest = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<DeleteTypeRequest>;
 export interface DeleteTypeResponse {}
+const DeleteTypeResponse = DeleteApiResponse as any as S.Schema<DeleteTypeResponse>;
 export interface DisassociateApiRequest {
   domainName: string;
 }
+const DisassociateApiRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<DisassociateApiRequest>;
 export interface DisassociateApiResponse {}
+const DisassociateApiResponse =
+  DeleteDataSourceResponse as any as S.Schema<DisassociateApiResponse>;
 export interface DisassociateMergedGraphqlApiRequest {
   sourceApiIdentifier: string;
   associationId: string;
 }
+const DisassociateMergedGraphqlApiRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<DisassociateMergedGraphqlApiRequest>;
 export interface DisassociateMergedGraphqlApiResponse {
   sourceApiAssociationStatus?: SourceApiAssociationStatus;
 }
+const DisassociateMergedGraphqlApiResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<DisassociateMergedGraphqlApiResponse>;
 export interface DisassociateSourceGraphqlApiRequest {
   mergedApiIdentifier: string;
   associationId: string;
 }
+const DisassociateSourceGraphqlApiRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<DisassociateSourceGraphqlApiRequest>;
 export interface DisassociateSourceGraphqlApiResponse {
   sourceApiAssociationStatus?: SourceApiAssociationStatus;
 }
+const DisassociateSourceGraphqlApiResponse =
+  DisassociateMergedGraphqlApiResponse as any as S.Schema<DisassociateSourceGraphqlApiResponse>;
 export type Context = string;
 export interface EvaluateCodeRequest {
   runtime: AppSyncRuntime;
@@ -801,6 +1096,7 @@ export interface EvaluateCodeRequest {
   context: string;
   function?: string;
 }
+const EvaluateCodeRequest = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<EvaluateCodeRequest>;
 export type EvaluationResult = string;
 export type ErrorMessage = string;
 export type CodeErrorLine = number;
@@ -811,17 +1107,25 @@ export interface CodeErrorLocation {
   column?: number;
   span?: number;
 }
+const CodeErrorLocation = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<CodeErrorLocation>;
 export interface CodeError {
   errorType?: string;
   value?: string;
   location?: CodeErrorLocation;
 }
+const CodeError = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<CodeError>;
 export type CodeErrors = CodeError[];
+const CodeErrors = /*@__PURE__*/ __L.at(__c11, 7);
 export interface EvaluateCodeErrorDetail {
   message?: string;
   codeErrors?: CodeError[];
 }
+const EvaluateCodeErrorDetail = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<EvaluateCodeErrorDetail>;
 export type Logs = string[];
+const Logs = FunctionsIds as any as S.Schema<Logs>;
 export type Stash = string;
 export type OutErrors = string;
 export interface EvaluateCodeResponse {
@@ -831,14 +1135,23 @@ export interface EvaluateCodeResponse {
   stash?: string;
   outErrors?: string;
 }
+const EvaluateCodeResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<EvaluateCodeResponse>;
 export type Template = string;
 export interface EvaluateMappingTemplateRequest {
   template: string;
   context: string;
 }
+const EvaluateMappingTemplateRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<EvaluateMappingTemplateRequest>;
 export interface ErrorDetail {
   message?: string;
 }
+const ErrorDetail = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<ErrorDetail>;
 export interface EvaluateMappingTemplateResponse {
   evaluationResult?: string;
   error?: ErrorDetail;
@@ -846,42 +1159,74 @@ export interface EvaluateMappingTemplateResponse {
   stash?: string;
   outErrors?: string;
 }
+const EvaluateMappingTemplateResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<EvaluateMappingTemplateResponse>;
 export interface FlushApiCacheRequest {
   apiId: string;
 }
+const FlushApiCacheRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<FlushApiCacheRequest>;
 export interface FlushApiCacheResponse {}
+const FlushApiCacheResponse = DeleteApiResponse as any as S.Schema<FlushApiCacheResponse>;
 export interface GetApiRequest {
   apiId: string;
 }
+const GetApiRequest = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<GetApiRequest>;
 export interface GetApiResponse {
   api?: Api;
 }
+const GetApiResponse = CreateApiResponse as any as S.Schema<GetApiResponse>;
 export interface GetApiAssociationRequest {
   domainName: string;
 }
+const GetApiAssociationRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<GetApiAssociationRequest>;
 export interface GetApiAssociationResponse {
   apiAssociation?: ApiAssociation;
 }
+const GetApiAssociationResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<GetApiAssociationResponse>;
 export interface GetApiCacheRequest {
   apiId: string;
 }
+const GetApiCacheRequest = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<GetApiCacheRequest>;
 export interface GetApiCacheResponse {
   apiCache?: ApiCache;
 }
+const GetApiCacheResponse = CreateApiCacheResponse as any as S.Schema<GetApiCacheResponse>;
 export interface GetChannelNamespaceRequest {
   apiId: string;
   name: string;
 }
+const GetChannelNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<GetChannelNamespaceRequest>;
 export interface GetChannelNamespaceResponse {
   channelNamespace?: ChannelNamespace;
 }
+const GetChannelNamespaceResponse =
+  CreateChannelNamespaceResponse as any as S.Schema<GetChannelNamespaceResponse>;
 export interface GetDataSourceRequest {
   apiId: string;
   name: string;
 }
+const GetDataSourceRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<GetDataSourceRequest>;
 export interface GetDataSourceResponse {
   dataSource?: DataSource;
 }
+const GetDataSourceResponse = CreateDataSourceResponse as any as S.Schema<GetDataSourceResponse>;
 export type PaginationToken = string;
 export type MaxResults = number;
 export interface GetDataSourceIntrospectionRequest {
@@ -890,26 +1235,50 @@ export interface GetDataSourceIntrospectionRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const GetDataSourceIntrospectionRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<GetDataSourceIntrospectionRequest>;
 export type DataSourceIntrospectionStatus = "PROCESSING" | "FAILED" | "SUCCESS" | (string & {});
+const DataSourceIntrospectionStatus = S.String;
+
 export type DataSourceIntrospectionModelFieldTypeValues = string[];
+const DataSourceIntrospectionModelFieldTypeValues =
+  FunctionsIds as any as S.Schema<DataSourceIntrospectionModelFieldTypeValues>;
 export interface DataSourceIntrospectionModelFieldType {
   kind?: string;
   name?: string;
   type?: DataSourceIntrospectionModelFieldType;
   values?: string[];
 }
+const DataSourceIntrospectionModelFieldType = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<DataSourceIntrospectionModelFieldType>;
 export interface DataSourceIntrospectionModelField {
   name?: string;
   type?: DataSourceIntrospectionModelFieldType;
   length?: number;
 }
+const DataSourceIntrospectionModelField = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<DataSourceIntrospectionModelField>;
 export type DataSourceIntrospectionModelFields = DataSourceIntrospectionModelField[];
+const DataSourceIntrospectionModelFields = /*@__PURE__*/ __L.at(__c13, 7);
 export type DataSourceIntrospectionModelIndexFields = string[];
+const DataSourceIntrospectionModelIndexFields =
+  FunctionsIds as any as S.Schema<DataSourceIntrospectionModelIndexFields>;
 export interface DataSourceIntrospectionModelIndex {
   name?: string;
   fields?: string[];
 }
+const DataSourceIntrospectionModelIndex = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<DataSourceIntrospectionModelIndex>;
 export type DataSourceIntrospectionModelIndexes = DataSourceIntrospectionModelIndex[];
+const DataSourceIntrospectionModelIndexes = /*@__PURE__*/ __L.at(__c14, 1);
 export interface DataSourceIntrospectionModel {
   name?: string;
   fields?: DataSourceIntrospectionModelField[];
@@ -917,65 +1286,115 @@ export interface DataSourceIntrospectionModel {
   indexes?: DataSourceIntrospectionModelIndex[];
   sdl?: string;
 }
+const DataSourceIntrospectionModel = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<DataSourceIntrospectionModel>;
 export type DataSourceIntrospectionModels = DataSourceIntrospectionModel[];
+const DataSourceIntrospectionModels = /*@__PURE__*/ __L.at(__c14, 3);
 export interface DataSourceIntrospectionResult {
   models?: DataSourceIntrospectionModel[];
   nextToken?: string;
 }
+const DataSourceIntrospectionResult = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<DataSourceIntrospectionResult>;
 export interface GetDataSourceIntrospectionResponse {
   introspectionId?: string;
   introspectionStatus?: DataSourceIntrospectionStatus;
   introspectionStatusDetail?: string;
   introspectionResult?: DataSourceIntrospectionResult;
 }
+const GetDataSourceIntrospectionResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<GetDataSourceIntrospectionResponse>;
 export interface GetDomainNameRequest {
   domainName: string;
 }
+const GetDomainNameRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GetDomainNameRequest>;
 export interface GetDomainNameResponse {
   domainNameConfig?: DomainNameConfig;
 }
+const GetDomainNameResponse = CreateDomainNameResponse as any as S.Schema<GetDomainNameResponse>;
 export interface GetFunctionRequest {
   apiId: string;
   functionId: string;
 }
+const GetFunctionRequest = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<GetFunctionRequest>;
 export interface GetFunctionResponse {
   functionConfiguration?: FunctionConfiguration;
 }
+const GetFunctionResponse = CreateFunctionResponse as any as S.Schema<GetFunctionResponse>;
 export interface GetGraphqlApiRequest {
   apiId: string;
 }
+const GetGraphqlApiRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<GetGraphqlApiRequest>;
 export interface GetGraphqlApiResponse {
   graphqlApi?: GraphqlApi;
 }
+const GetGraphqlApiResponse = CreateGraphqlApiResponse as any as S.Schema<GetGraphqlApiResponse>;
 export interface GetGraphqlApiEnvironmentVariablesRequest {
   apiId: string;
 }
+const GetGraphqlApiEnvironmentVariablesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<GetGraphqlApiEnvironmentVariablesRequest>;
 export type EnvironmentVariableKey = string;
 export type EnvironmentVariableValue = string;
 export type EnvironmentVariableMap = { [key: string]: string | undefined };
+const EnvironmentVariableMap = MapOfStringToString as any as S.Schema<EnvironmentVariableMap>;
 export interface GetGraphqlApiEnvironmentVariablesResponse {
   environmentVariables?: { [key: string]: string | undefined };
 }
+const GetGraphqlApiEnvironmentVariablesResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<GetGraphqlApiEnvironmentVariablesResponse>;
 export type OutputType = "SDL" | "JSON" | (string & {});
+const OutputType = S.String;
+
 export interface GetIntrospectionSchemaRequest {
   apiId: string;
   format: OutputType;
   includeDirectives?: boolean;
 }
+const GetIntrospectionSchemaRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<GetIntrospectionSchemaRequest>;
 export interface GetIntrospectionSchemaResponse {
   schema?: T.StreamingOutputBody;
 }
+const GetIntrospectionSchemaResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<GetIntrospectionSchemaResponse>;
 export interface GetResolverRequest {
   apiId: string;
   typeName: string;
   fieldName: string;
 }
+const GetResolverRequest = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<GetResolverRequest>;
 export interface GetResolverResponse {
   resolver?: Resolver;
 }
+const GetResolverResponse = CreateResolverResponse as any as S.Schema<GetResolverResponse>;
 export interface GetSchemaCreationStatusRequest {
   apiId: string;
 }
+const GetSchemaCreationStatusRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<GetSchemaCreationStatusRequest>;
 export type SchemaStatus =
   | "PROCESSING"
   | "ACTIVE"
@@ -984,121 +1403,209 @@ export type SchemaStatus =
   | "SUCCESS"
   | "NOT_APPLICABLE"
   | (string & {});
+const SchemaStatus = S.String;
+
 export interface GetSchemaCreationStatusResponse {
   status?: SchemaStatus;
   details?: string;
 }
+const GetSchemaCreationStatusResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<GetSchemaCreationStatusResponse>;
 export interface GetSourceApiAssociationRequest {
   mergedApiIdentifier: string;
   associationId: string;
 }
+const GetSourceApiAssociationRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<GetSourceApiAssociationRequest>;
 export interface GetSourceApiAssociationResponse {
   sourceApiAssociation?: SourceApiAssociation;
 }
+const GetSourceApiAssociationResponse =
+  AssociateMergedGraphqlApiResponse as any as S.Schema<GetSourceApiAssociationResponse>;
 export interface GetTypeRequest {
   apiId: string;
   typeName: string;
   format: TypeDefinitionFormat;
 }
+const GetTypeRequest = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<GetTypeRequest>;
 export interface GetTypeResponse {
   type?: Type;
 }
+const GetTypeResponse = CreateTypeResponse as any as S.Schema<GetTypeResponse>;
 export interface ListApiKeysRequest {
   apiId: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListApiKeysRequest = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<ListApiKeysRequest>;
 export type ApiKeys = ApiKey[];
+const ApiKeys = /*@__PURE__*/ __L.at(__c16, 3);
 export interface ListApiKeysResponse {
   apiKeys?: ApiKey[];
   nextToken?: string;
 }
+const ListApiKeysResponse = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<ListApiKeysResponse>;
 export interface ListApisRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListApisRequest = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<ListApisRequest>;
 export type Apis = Api[];
+const Apis = /*@__PURE__*/ __L.at(__c16, 6);
 export interface ListApisResponse {
   apis?: Api[];
   nextToken?: string;
 }
+const ListApisResponse = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<ListApisResponse>;
 export interface ListChannelNamespacesRequest {
   apiId: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListChannelNamespacesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<ListChannelNamespacesRequest>;
 export type ChannelNamespaces = ChannelNamespace[];
+const ChannelNamespaces = /*@__PURE__*/ __L.at(__c17, 1);
 export interface ListChannelNamespacesResponse {
   channelNamespaces?: ChannelNamespace[];
   nextToken?: string;
 }
+const ListChannelNamespacesResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<ListChannelNamespacesResponse>;
 export interface ListDataSourcesRequest {
   apiId: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListDataSourcesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ListDataSourcesRequest>;
 export type DataSources = DataSource[];
+const DataSources = /*@__PURE__*/ __L.at(__c17, 4);
 export interface ListDataSourcesResponse {
   dataSources?: DataSource[];
   nextToken?: string;
 }
+const ListDataSourcesResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ListDataSourcesResponse>;
 export interface ListDomainNamesRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListDomainNamesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<ListDomainNamesRequest>;
 export type DomainNameConfigs = DomainNameConfig[];
+const DomainNameConfigs = /*@__PURE__*/ __L.at(__c17, 7);
 export interface ListDomainNamesResponse {
   domainNameConfigs?: DomainNameConfig[];
   nextToken?: string;
 }
+const ListDomainNamesResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<ListDomainNamesResponse>;
 export interface ListFunctionsRequest {
   apiId: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListFunctionsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<ListFunctionsRequest>;
 export type Functions = FunctionConfiguration[];
+const Functions = /*@__PURE__*/ __L.at(__c18, 2);
 export interface ListFunctionsResponse {
   functions?: FunctionConfiguration[];
   nextToken?: string;
 }
+const ListFunctionsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<ListFunctionsResponse>;
 export type Ownership = "CURRENT_ACCOUNT" | "OTHER_ACCOUNTS" | (string & {});
+const Ownership = S.String;
+
 export interface ListGraphqlApisRequest {
   nextToken?: string;
   maxResults?: number;
   apiType?: GraphQLApiType;
   owner?: Ownership;
 }
+const ListGraphqlApisRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<ListGraphqlApisRequest>;
 export type GraphqlApis = GraphqlApi[];
+const GraphqlApis = /*@__PURE__*/ __L.at(__c18, 5);
 export interface ListGraphqlApisResponse {
   graphqlApis?: GraphqlApi[];
   nextToken?: string;
 }
+const ListGraphqlApisResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<ListGraphqlApisResponse>;
 export interface ListResolversRequest {
   apiId: string;
   typeName: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListResolversRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<ListResolversRequest>;
 export type Resolvers = Resolver[];
+const Resolvers = /*@__PURE__*/ __L.at(__c19, 0);
 export interface ListResolversResponse {
   resolvers?: Resolver[];
   nextToken?: string;
 }
+const ListResolversResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ListResolversResponse>;
 export interface ListResolversByFunctionRequest {
   apiId: string;
   functionId: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListResolversByFunctionRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ListResolversByFunctionRequest>;
 export interface ListResolversByFunctionResponse {
   resolvers?: Resolver[];
   nextToken?: string;
 }
+const ListResolversByFunctionResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<ListResolversByFunctionResponse>;
 export interface ListSourceApiAssociationsRequest {
   apiId: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListSourceApiAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ListSourceApiAssociationsRequest>;
 export interface SourceApiAssociationSummary {
   associationId?: string;
   associationArn?: string;
@@ -1108,29 +1615,49 @@ export interface SourceApiAssociationSummary {
   mergedApiArn?: string;
   description?: string;
 }
+const SourceApiAssociationSummary = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<SourceApiAssociationSummary>;
 export type SourceApiAssociationSummaryList = SourceApiAssociationSummary[];
+const SourceApiAssociationSummaryList = /*@__PURE__*/ __L.at(__c19, 6);
 export interface ListSourceApiAssociationsResponse {
   sourceApiAssociationSummaries?: SourceApiAssociationSummary[];
   nextToken?: string;
 }
+const ListSourceApiAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<ListSourceApiAssociationsResponse>;
 export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListTypesRequest {
   apiId: string;
   format: TypeDefinitionFormat;
   nextToken?: string;
   maxResults?: number;
 }
+const ListTypesRequest = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<ListTypesRequest>;
 export type TypeList = Type[];
+const TypeList = /*@__PURE__*/ __L.at(__c20, 3);
 export interface ListTypesResponse {
   types?: Type[];
   nextToken?: string;
 }
+const ListTypesResponse = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<ListTypesResponse>;
 export interface ListTypesByAssociationRequest {
   mergedApiIdentifier: string;
   associationId: string;
@@ -1138,17 +1665,31 @@ export interface ListTypesByAssociationRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListTypesByAssociationRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ListTypesByAssociationRequest>;
 export interface ListTypesByAssociationResponse {
   types?: Type[];
   nextToken?: string;
 }
+const ListTypesByAssociationResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<ListTypesByAssociationResponse>;
 export interface PutGraphqlApiEnvironmentVariablesRequest {
   apiId: string;
   environmentVariables: { [key: string]: string | undefined };
 }
+const PutGraphqlApiEnvironmentVariablesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<PutGraphqlApiEnvironmentVariablesRequest>;
 export interface PutGraphqlApiEnvironmentVariablesResponse {
   environmentVariables?: { [key: string]: string | undefined };
 }
+const PutGraphqlApiEnvironmentVariablesResponse =
+  GetGraphqlApiEnvironmentVariablesResponse as any as S.Schema<PutGraphqlApiEnvironmentVariablesResponse>;
 export type RdsDataApiConfigResourceArn = string;
 export type RdsDataApiConfigSecretArn = string;
 export type RdsDataApiConfigDatabaseName = string;
@@ -1157,48 +1698,83 @@ export interface RdsDataApiConfig {
   secretArn: string;
   databaseName: string;
 }
+const RdsDataApiConfig = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<RdsDataApiConfig>;
 export interface StartDataSourceIntrospectionRequest {
   rdsDataApiConfig?: RdsDataApiConfig;
 }
+const StartDataSourceIntrospectionRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<StartDataSourceIntrospectionRequest>;
 export interface StartDataSourceIntrospectionResponse {
   introspectionId?: string;
   introspectionStatus?: DataSourceIntrospectionStatus;
   introspectionStatusDetail?: string;
 }
+const StartDataSourceIntrospectionResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<StartDataSourceIntrospectionResponse>;
 export interface StartSchemaCreationRequest {
   apiId: string;
   definition: Uint8Array;
 }
+const StartSchemaCreationRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<StartSchemaCreationRequest>;
 export interface StartSchemaCreationResponse {
   status?: SchemaStatus;
 }
+const StartSchemaCreationResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<StartSchemaCreationResponse>;
 export interface StartSchemaMergeRequest {
   associationId: string;
   mergedApiIdentifier: string;
 }
+const StartSchemaMergeRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<StartSchemaMergeRequest>;
 export interface StartSchemaMergeResponse {
   sourceApiAssociationStatus?: SourceApiAssociationStatus;
 }
+const StartSchemaMergeResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<StartSchemaMergeResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = DeleteApiResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
+const TagKeyList = FunctionsIds as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = DeleteApiResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateApiRequest {
   apiId: string;
   name: string;
   ownerContact?: string;
   eventConfig: EventConfig;
 }
+const UpdateApiRequest = /*@__PURE__*/ __L.at(__c22, 1) as any as S.Schema<UpdateApiRequest>;
 export interface UpdateApiResponse {
   api?: Api;
 }
+const UpdateApiResponse = CreateApiResponse as any as S.Schema<UpdateApiResponse>;
 export interface UpdateApiCacheRequest {
   apiId: string;
   ttl: number;
@@ -1206,18 +1782,25 @@ export interface UpdateApiCacheRequest {
   type: ApiCacheType;
   healthMetricsConfig?: CacheHealthMetricsConfig;
 }
+const UpdateApiCacheRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<UpdateApiCacheRequest>;
 export interface UpdateApiCacheResponse {
   apiCache?: ApiCache;
 }
+const UpdateApiCacheResponse = CreateApiCacheResponse as any as S.Schema<UpdateApiCacheResponse>;
 export interface UpdateApiKeyRequest {
   apiId: string;
   id: string;
   description?: string;
   expires?: number;
 }
+const UpdateApiKeyRequest = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<UpdateApiKeyRequest>;
 export interface UpdateApiKeyResponse {
   apiKey?: ApiKey;
 }
+const UpdateApiKeyResponse = CreateApiKeyResponse as any as S.Schema<UpdateApiKeyResponse>;
 export interface UpdateChannelNamespaceRequest {
   apiId: string;
   name: string;
@@ -1226,9 +1809,15 @@ export interface UpdateChannelNamespaceRequest {
   codeHandlers?: string;
   handlerConfigs?: HandlerConfigs;
 }
+const UpdateChannelNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<UpdateChannelNamespaceRequest>;
 export interface UpdateChannelNamespaceResponse {
   channelNamespace?: ChannelNamespace;
 }
+const UpdateChannelNamespaceResponse =
+  CreateChannelNamespaceResponse as any as S.Schema<UpdateChannelNamespaceResponse>;
 export interface UpdateDataSourceRequest {
   apiId: string;
   name: string;
@@ -1244,16 +1833,28 @@ export interface UpdateDataSourceRequest {
   eventBridgeConfig?: EventBridgeDataSourceConfig;
   metricsConfig?: DataSourceLevelMetricsConfig;
 }
+const UpdateDataSourceRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<UpdateDataSourceRequest>;
 export interface UpdateDataSourceResponse {
   dataSource?: DataSource;
 }
+const UpdateDataSourceResponse =
+  CreateDataSourceResponse as any as S.Schema<UpdateDataSourceResponse>;
 export interface UpdateDomainNameRequest {
   domainName: string;
   description?: string;
 }
+const UpdateDomainNameRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<UpdateDomainNameRequest>;
 export interface UpdateDomainNameResponse {
   domainNameConfig?: DomainNameConfig;
 }
+const UpdateDomainNameResponse =
+  CreateDomainNameResponse as any as S.Schema<UpdateDomainNameResponse>;
 export interface UpdateFunctionRequest {
   apiId: string;
   name: string;
@@ -1268,9 +1869,14 @@ export interface UpdateFunctionRequest {
   runtime?: AppSyncRuntime;
   code?: string;
 }
+const UpdateFunctionRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<UpdateFunctionRequest>;
 export interface UpdateFunctionResponse {
   functionConfiguration?: FunctionConfiguration;
 }
+const UpdateFunctionResponse = CreateFunctionResponse as any as S.Schema<UpdateFunctionResponse>;
 export interface UpdateGraphqlApiRequest {
   apiId: string;
   name: string;
@@ -1288,9 +1894,15 @@ export interface UpdateGraphqlApiRequest {
   resolverCountLimit?: number;
   enhancedMetricsConfig?: EnhancedMetricsConfig;
 }
+const UpdateGraphqlApiRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<UpdateGraphqlApiRequest>;
 export interface UpdateGraphqlApiResponse {
   graphqlApi?: GraphqlApi;
 }
+const UpdateGraphqlApiResponse =
+  CreateGraphqlApiResponse as any as S.Schema<UpdateGraphqlApiResponse>;
 export interface UpdateResolverRequest {
   apiId: string;
   typeName: string;
@@ -1307,31 +1919,47 @@ export interface UpdateResolverRequest {
   code?: string;
   metricsConfig?: ResolverLevelMetricsConfig;
 }
+const UpdateResolverRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<UpdateResolverRequest>;
 export interface UpdateResolverResponse {
   resolver?: Resolver;
 }
+const UpdateResolverResponse = CreateResolverResponse as any as S.Schema<UpdateResolverResponse>;
 export interface UpdateSourceApiAssociationRequest {
   associationId: string;
   mergedApiIdentifier: string;
   description?: string;
   sourceApiAssociationConfig?: SourceApiAssociationConfig;
 }
+const UpdateSourceApiAssociationRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<UpdateSourceApiAssociationRequest>;
 export interface UpdateSourceApiAssociationResponse {
   sourceApiAssociation?: SourceApiAssociation;
 }
+const UpdateSourceApiAssociationResponse =
+  AssociateMergedGraphqlApiResponse as any as S.Schema<UpdateSourceApiAssociationResponse>;
 export interface UpdateTypeRequest {
   apiId: string;
   typeName: string;
   definition?: string;
   format: TypeDefinitionFormat;
 }
+const UpdateTypeRequest = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<UpdateTypeRequest>;
 export interface UpdateTypeResponse {
   type?: Type;
 }
+const UpdateTypeResponse = CreateTypeResponse as any as S.Schema<UpdateTypeResponse>;
 export type BadRequestReason = "CODE_ERROR" | (string & {});
+const BadRequestReason = S.String;
+
 export interface BadRequestDetail {
   codeErrors?: CodeError[];
 }
+const BadRequestDetail = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<BadRequestDetail>;
 export type AssociateApiError =
   | AccessDeniedException
   | BadRequestException
@@ -1347,8 +1975,8 @@ export const associateApi: API.OperationMethod<
   AssociateApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AssociateApiRequest>,
-  output: __S(2) as any as S.Schema<AssociateApiResponse>,
+  input: AssociateApiRequest,
+  output: AssociateApiResponse,
   errors: [AccessDeniedException, BadRequestException, InternalFailureException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1373,8 +2001,8 @@ export const associateMergedGraphqlApi: API.OperationMethod<
   AssociateMergedGraphqlApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<AssociateMergedGraphqlApiRequest>,
-  output: __S(6) as any as S.Schema<AssociateMergedGraphqlApiResponse>,
+  input: AssociateMergedGraphqlApiRequest,
+  output: AssociateMergedGraphqlApiResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1406,8 +2034,8 @@ export const associateSourceGraphqlApi: API.OperationMethod<
   AssociateSourceGraphqlApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<AssociateSourceGraphqlApiRequest>,
-  output: __S(6) as any as S.Schema<AssociateSourceGraphqlApiResponse>,
+  input: AssociateSourceGraphqlApiRequest,
+  output: AssociateSourceGraphqlApiResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1439,8 +2067,8 @@ export const createApi: API.OperationMethod<
   CreateApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CreateApiRequest>,
-  output: __S(21) as any as S.Schema<CreateApiResponse>,
+  input: CreateApiRequest,
+  output: CreateApiResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1469,8 +2097,8 @@ export const createApiCache: API.OperationMethod<
   CreateApiCacheError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<CreateApiCacheRequest>,
-  output: __S(24) as any as S.Schema<CreateApiCacheResponse>,
+  input: CreateApiCacheRequest,
+  output: CreateApiCacheResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1501,8 +2129,8 @@ export const createApiKey: API.OperationMethod<
   CreateApiKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<CreateApiKeyRequest>,
-  output: __S(27) as any as S.Schema<CreateApiKeyResponse>,
+  input: CreateApiKeyRequest,
+  output: CreateApiKeyResponse,
   errors: [
     ApiKeyLimitExceededException,
     ApiKeyValidityOutOfBoundsException,
@@ -1535,8 +2163,8 @@ export const createChannelNamespace: API.OperationMethod<
   CreateChannelNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<CreateChannelNamespaceRequest>,
-  output: __S(34) as any as S.Schema<CreateChannelNamespaceResponse>,
+  input: CreateChannelNamespaceRequest,
+  output: CreateChannelNamespaceResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1567,8 +2195,8 @@ export const createDataSource: API.OperationMethod<
   CreateDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<CreateDataSourceRequest>,
-  output: __S(47) as any as S.Schema<CreateDataSourceResponse>,
+  input: CreateDataSourceRequest,
+  output: CreateDataSourceResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1595,8 +2223,8 @@ export const createDomainName: API.OperationMethod<
   CreateDomainNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<CreateDomainNameRequest>,
-  output: __S(50) as any as S.Schema<CreateDomainNameResponse>,
+  input: CreateDomainNameRequest,
+  output: CreateDomainNameResponse,
   errors: [AccessDeniedException, BadRequestException, InternalFailureException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1622,8 +2250,8 @@ export const createFunction: API.OperationMethod<
   CreateFunctionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<CreateFunctionRequest>,
-  output: __S(56) as any as S.Schema<CreateFunctionResponse>,
+  input: CreateFunctionRequest,
+  output: CreateFunctionResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1653,8 +2281,8 @@ export const createGraphqlApi: API.OperationMethod<
   CreateGraphqlApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<CreateGraphqlApiRequest>,
-  output: __S(64) as any as S.Schema<CreateGraphqlApiResponse>,
+  input: CreateGraphqlApiRequest,
+  output: CreateGraphqlApiResponse,
   errors: [
     ApiLimitExceededException,
     BadRequestException,
@@ -1687,8 +2315,8 @@ export const createResolver: API.OperationMethod<
   CreateResolverError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<CreateResolverRequest>,
-  output: __S(70) as any as S.Schema<CreateResolverResponse>,
+  input: CreateResolverRequest,
+  output: CreateResolverResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1717,8 +2345,8 @@ export const createType: API.OperationMethod<
   CreateTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<CreateTypeRequest>,
-  output: __S(73) as any as S.Schema<CreateTypeResponse>,
+  input: CreateTypeRequest,
+  output: CreateTypeResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1748,8 +2376,8 @@ export const deleteApi: API.OperationMethod<
   DeleteApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<DeleteApiRequest>,
-  output: __S(75) as any as S.Schema<DeleteApiResponse>,
+  input: DeleteApiRequest,
+  output: DeleteApiResponse,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1779,8 +2407,8 @@ export const deleteApiCache: API.OperationMethod<
   DeleteApiCacheError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<DeleteApiCacheRequest>,
-  output: __S(77) as any as S.Schema<DeleteApiCacheResponse>,
+  input: DeleteApiCacheRequest,
+  output: DeleteApiCacheResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1808,8 +2436,8 @@ export const deleteApiKey: API.OperationMethod<
   DeleteApiKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<DeleteApiKeyRequest>,
-  output: __S(75) as any as S.Schema<DeleteApiKeyResponse>,
+  input: DeleteApiKeyRequest,
+  output: DeleteApiKeyResponse,
   errors: [BadRequestException, InternalFailureException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1833,8 +2461,8 @@ export const deleteChannelNamespace: API.OperationMethod<
   DeleteChannelNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<DeleteChannelNamespaceRequest>,
-  output: __S(80) as any as S.Schema<DeleteChannelNamespaceResponse>,
+  input: DeleteChannelNamespaceRequest,
+  output: DeleteChannelNamespaceResponse,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1864,8 +2492,8 @@ export const deleteDataSource: API.OperationMethod<
   DeleteDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<DeleteDataSourceRequest>,
-  output: __S(82) as any as S.Schema<DeleteDataSourceResponse>,
+  input: DeleteDataSourceRequest,
+  output: DeleteDataSourceResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1894,8 +2522,8 @@ export const deleteDomainName: API.OperationMethod<
   DeleteDomainNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<DeleteDomainNameRequest>,
-  output: __S(82) as any as S.Schema<DeleteDomainNameResponse>,
+  input: DeleteDomainNameRequest,
+  output: DeleteDomainNameResponse,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1924,8 +2552,8 @@ export const deleteFunction: API.OperationMethod<
   DeleteFunctionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<DeleteFunctionRequest>,
-  output: __S(77) as any as S.Schema<DeleteFunctionResponse>,
+  input: DeleteFunctionRequest,
+  output: DeleteFunctionResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -1955,8 +2583,8 @@ export const deleteGraphqlApi: API.OperationMethod<
   DeleteGraphqlApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<DeleteGraphqlApiRequest>,
-  output: __S(82) as any as S.Schema<DeleteGraphqlApiResponse>,
+  input: DeleteGraphqlApiRequest,
+  output: DeleteGraphqlApiResponse,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1986,8 +2614,8 @@ export const deleteResolver: API.OperationMethod<
   DeleteResolverError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<DeleteResolverRequest>,
-  output: __S(77) as any as S.Schema<DeleteResolverResponse>,
+  input: DeleteResolverRequest,
+  output: DeleteResolverResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -2016,8 +2644,8 @@ export const deleteType: API.OperationMethod<
   DeleteTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<DeleteTypeRequest>,
-  output: __S(75) as any as S.Schema<DeleteTypeResponse>,
+  input: DeleteTypeRequest,
+  output: DeleteTypeResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -2046,8 +2674,8 @@ export const disassociateApi: API.OperationMethod<
   DisassociateApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<DisassociateApiRequest>,
-  output: __S(82) as any as S.Schema<DisassociateApiResponse>,
+  input: DisassociateApiRequest,
+  output: DisassociateApiResponse,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2077,8 +2705,8 @@ export const disassociateMergedGraphqlApi: API.OperationMethod<
   DisassociateMergedGraphqlApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<DisassociateMergedGraphqlApiRequest>,
-  output: __S(90) as any as S.Schema<DisassociateMergedGraphqlApiResponse>,
+  input: DisassociateMergedGraphqlApiRequest,
+  output: DisassociateMergedGraphqlApiResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -2108,8 +2736,8 @@ export const disassociateSourceGraphqlApi: API.OperationMethod<
   DisassociateSourceGraphqlApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<DisassociateSourceGraphqlApiRequest>,
-  output: __S(90) as any as S.Schema<DisassociateSourceGraphqlApiResponse>,
+  input: DisassociateSourceGraphqlApiRequest,
+  output: DisassociateSourceGraphqlApiResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -2141,8 +2769,8 @@ export const evaluateCode: API.OperationMethod<
   EvaluateCodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<EvaluateCodeRequest>,
-  output: __S(97) as any as S.Schema<EvaluateCodeResponse>,
+  input: EvaluateCodeRequest,
+  output: EvaluateCodeResponse,
   errors: [AccessDeniedException, BadRequestException, InternalFailureException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2171,8 +2799,8 @@ export const evaluateMappingTemplate: API.OperationMethod<
   EvaluateMappingTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<EvaluateMappingTemplateRequest>,
-  output: __S(100) as any as S.Schema<EvaluateMappingTemplateResponse>,
+  input: EvaluateMappingTemplateRequest,
+  output: EvaluateMappingTemplateResponse,
   errors: [AccessDeniedException, BadRequestException, InternalFailureException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2195,8 +2823,8 @@ export const flushApiCache: API.OperationMethod<
   FlushApiCacheError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<FlushApiCacheRequest>,
-  output: __S(75) as any as S.Schema<FlushApiCacheResponse>,
+  input: FlushApiCacheRequest,
+  output: FlushApiCacheResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -2225,8 +2853,8 @@ export const getApi: API.OperationMethod<
   GetApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<GetApiRequest>,
-  output: __S(21) as any as S.Schema<GetApiResponse>,
+  input: GetApiRequest,
+  output: GetApiResponse,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2254,8 +2882,8 @@ export const getApiAssociation: API.OperationMethod<
   GetApiAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<GetApiAssociationRequest>,
-  output: __S(104) as any as S.Schema<GetApiAssociationResponse>,
+  input: GetApiAssociationRequest,
+  output: GetApiAssociationResponse,
   errors: [AccessDeniedException, BadRequestException, InternalFailureException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2278,8 +2906,8 @@ export const getApiCache: API.OperationMethod<
   GetApiCacheError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<GetApiCacheRequest>,
-  output: __S(24) as any as S.Schema<GetApiCacheResponse>,
+  input: GetApiCacheRequest,
+  output: GetApiCacheResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -2308,8 +2936,8 @@ export const getChannelNamespace: API.OperationMethod<
   GetChannelNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<GetChannelNamespaceRequest>,
-  output: __S(34) as any as S.Schema<GetChannelNamespaceResponse>,
+  input: GetChannelNamespaceRequest,
+  output: GetChannelNamespaceResponse,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2338,8 +2966,8 @@ export const getDataSource: API.OperationMethod<
   GetDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<GetDataSourceRequest>,
-  output: __S(47) as any as S.Schema<GetDataSourceResponse>,
+  input: GetDataSourceRequest,
+  output: GetDataSourceResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -2368,8 +2996,8 @@ export const getDataSourceIntrospection: API.OperationMethod<
   GetDataSourceIntrospectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<GetDataSourceIntrospectionRequest>,
-  output: __S(117) as any as S.Schema<GetDataSourceIntrospectionResponse>,
+  input: GetDataSourceIntrospectionRequest,
+  output: GetDataSourceIntrospectionResponse,
   errors: [BadRequestException, InternalFailureException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2391,8 +3019,8 @@ export const getDomainName: API.OperationMethod<
   GetDomainNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<GetDomainNameRequest>,
-  output: __S(50) as any as S.Schema<GetDomainNameResponse>,
+  input: GetDomainNameRequest,
+  output: GetDomainNameResponse,
   errors: [AccessDeniedException, BadRequestException, InternalFailureException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2413,8 +3041,8 @@ export const getFunction: API.OperationMethod<
   GetFunctionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<GetFunctionRequest>,
-  output: __S(56) as any as S.Schema<GetFunctionResponse>,
+  input: GetFunctionRequest,
+  output: GetFunctionResponse,
   errors: [ConcurrentModificationException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2437,8 +3065,8 @@ export const getGraphqlApi: API.OperationMethod<
   GetGraphqlApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<GetGraphqlApiRequest>,
-  output: __S(64) as any as S.Schema<GetGraphqlApiResponse>,
+  input: GetGraphqlApiRequest,
+  output: GetGraphqlApiResponse,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2468,8 +3096,8 @@ export const getGraphqlApiEnvironmentVariables: API.OperationMethod<
   GetGraphqlApiEnvironmentVariablesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<GetGraphqlApiEnvironmentVariablesRequest>,
-  output: __S(122) as any as S.Schema<GetGraphqlApiEnvironmentVariablesResponse>,
+  input: GetGraphqlApiEnvironmentVariablesRequest,
+  output: GetGraphqlApiEnvironmentVariablesResponse,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2497,8 +3125,8 @@ export const getIntrospectionSchema: API.OperationMethod<
   GetIntrospectionSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<GetIntrospectionSchemaRequest>,
-  output: __S(124) as any as S.Schema<GetIntrospectionSchemaResponse>,
+  input: GetIntrospectionSchemaRequest,
+  output: GetIntrospectionSchemaResponse,
   errors: [
     GraphQLSchemaException,
     InternalFailureException,
@@ -2524,8 +3152,8 @@ export const getResolver: API.OperationMethod<
   GetResolverError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<GetResolverRequest>,
-  output: __S(70) as any as S.Schema<GetResolverResponse>,
+  input: GetResolverRequest,
+  output: GetResolverResponse,
   errors: [ConcurrentModificationException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2547,8 +3175,8 @@ export const getSchemaCreationStatus: API.OperationMethod<
   GetSchemaCreationStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<GetSchemaCreationStatusRequest>,
-  output: __S(127) as any as S.Schema<GetSchemaCreationStatusResponse>,
+  input: GetSchemaCreationStatusRequest,
+  output: GetSchemaCreationStatusResponse,
   errors: [BadRequestException, InternalFailureException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2570,8 +3198,8 @@ export const getSourceApiAssociation: API.OperationMethod<
   GetSourceApiAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128) as any as S.Schema<GetSourceApiAssociationRequest>,
-  output: __S(6) as any as S.Schema<GetSourceApiAssociationResponse>,
+  input: GetSourceApiAssociationRequest,
+  output: GetSourceApiAssociationResponse,
   errors: [BadRequestException, InternalFailureException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2594,8 +3222,8 @@ export const getType: API.OperationMethod<
   GetTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<GetTypeRequest>,
-  output: __S(73) as any as S.Schema<GetTypeResponse>,
+  input: GetTypeRequest,
+  output: GetTypeResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -2629,8 +3257,8 @@ export const listApiKeys: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApiKey
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(130) as any as S.Schema<ListApiKeysRequest>,
-  output: __S(132) as any as S.Schema<ListApiKeysResponse>,
+  input: ListApiKeysRequest,
+  output: ListApiKeysResponse,
   errors: [BadRequestException, InternalFailureException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2661,8 +3289,8 @@ export const listApis: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Api
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(133) as any as S.Schema<ListApisRequest>,
-  output: __S(135) as any as S.Schema<ListApisResponse>,
+  input: ListApisRequest,
+  output: ListApisResponse,
   errors: [BadRequestException, InternalFailureException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2694,8 +3322,8 @@ export const listChannelNamespaces: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ChannelNamespace
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(136) as any as S.Schema<ListChannelNamespacesRequest>,
-  output: __S(138) as any as S.Schema<ListChannelNamespacesResponse>,
+  input: ListChannelNamespacesRequest,
+  output: ListChannelNamespacesResponse,
   errors: [BadRequestException, InternalFailureException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2724,8 +3352,8 @@ export const listDataSources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataSource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(139) as any as S.Schema<ListDataSourcesRequest>,
-  output: __S(141) as any as S.Schema<ListDataSourcesResponse>,
+  input: ListDataSourcesRequest,
+  output: ListDataSourcesResponse,
   errors: [BadRequestException, InternalFailureException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2753,8 +3381,8 @@ export const listDomainNames: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DomainNameConfig
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(142) as any as S.Schema<ListDomainNamesRequest>,
-  output: __S(144) as any as S.Schema<ListDomainNamesResponse>,
+  input: ListDomainNamesRequest,
+  output: ListDomainNamesResponse,
   errors: [AccessDeniedException, BadRequestException, InternalFailureException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2783,8 +3411,8 @@ export const listFunctions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FunctionConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(145) as any as S.Schema<ListFunctionsRequest>,
-  output: __S(147) as any as S.Schema<ListFunctionsResponse>,
+  input: ListFunctionsRequest,
+  output: ListFunctionsResponse,
   errors: [BadRequestException, InternalFailureException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2812,8 +3440,8 @@ export const listGraphqlApis: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GraphqlApi
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(148) as any as S.Schema<ListGraphqlApisRequest>,
-  output: __S(150) as any as S.Schema<ListGraphqlApisResponse>,
+  input: ListGraphqlApisRequest,
+  output: ListGraphqlApisResponse,
   errors: [BadRequestException, InternalFailureException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2842,8 +3470,8 @@ export const listResolvers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Resolver
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(151) as any as S.Schema<ListResolversRequest>,
-  output: __S(153) as any as S.Schema<ListResolversResponse>,
+  input: ListResolversRequest,
+  output: ListResolversResponse,
   errors: [BadRequestException, InternalFailureException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2872,8 +3500,8 @@ export const listResolversByFunction: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Resolver
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(154) as any as S.Schema<ListResolversByFunctionRequest>,
-  output: __S(155) as any as S.Schema<ListResolversByFunctionResponse>,
+  input: ListResolversByFunctionRequest,
+  output: ListResolversByFunctionResponse,
   errors: [BadRequestException, InternalFailureException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2902,8 +3530,8 @@ export const listSourceApiAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SourceApiAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(156) as any as S.Schema<ListSourceApiAssociationsRequest>,
-  output: __S(159) as any as S.Schema<ListSourceApiAssociationsResponse>,
+  input: ListSourceApiAssociationsRequest,
+  output: ListSourceApiAssociationsResponse,
   errors: [BadRequestException, InternalFailureException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2933,8 +3561,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(161) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2965,8 +3593,8 @@ export const listTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Type
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(162) as any as S.Schema<ListTypesRequest>,
-  output: __S(164) as any as S.Schema<ListTypesResponse>,
+  input: ListTypesRequest,
+  output: ListTypesResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -3002,8 +3630,8 @@ export const listTypesByAssociation: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Type
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(165) as any as S.Schema<ListTypesByAssociationRequest>,
-  output: __S(166) as any as S.Schema<ListTypesByAssociationResponse>,
+  input: ListTypesByAssociationRequest,
+  output: ListTypesByAssociationResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -3075,8 +3703,8 @@ export const putGraphqlApiEnvironmentVariables: API.OperationMethod<
   PutGraphqlApiEnvironmentVariablesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<PutGraphqlApiEnvironmentVariablesRequest>,
-  output: __S(122) as any as S.Schema<PutGraphqlApiEnvironmentVariablesResponse>,
+  input: PutGraphqlApiEnvironmentVariablesRequest,
+  output: PutGraphqlApiEnvironmentVariablesResponse,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3106,8 +3734,8 @@ export const startDataSourceIntrospection: API.OperationMethod<
   StartDataSourceIntrospectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<StartDataSourceIntrospectionRequest>,
-  output: __S(170) as any as S.Schema<StartDataSourceIntrospectionResponse>,
+  input: StartDataSourceIntrospectionRequest,
+  output: StartDataSourceIntrospectionResponse,
   errors: [BadRequestException, InternalFailureException, NotFoundException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3133,8 +3761,8 @@ export const startSchemaCreation: API.OperationMethod<
   StartSchemaCreationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171) as any as S.Schema<StartSchemaCreationRequest>,
-  output: __S(172) as any as S.Schema<StartSchemaCreationResponse>,
+  input: StartSchemaCreationRequest,
+  output: StartSchemaCreationResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -3164,8 +3792,8 @@ export const startSchemaMerge: API.OperationMethod<
   StartSchemaMergeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173) as any as S.Schema<StartSchemaMergeRequest>,
-  output: __S(174) as any as S.Schema<StartSchemaMergeResponse>,
+  input: StartSchemaMergeRequest,
+  output: StartSchemaMergeResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -3195,8 +3823,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<TagResourceRequest>,
-  output: __S(75) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3227,8 +3855,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<UntagResourceRequest>,
-  output: __S(75) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3259,8 +3887,8 @@ export const updateApi: API.OperationMethod<
   UpdateApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<UpdateApiRequest>,
-  output: __S(21) as any as S.Schema<UpdateApiResponse>,
+  input: UpdateApiRequest,
+  output: UpdateApiResponse,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3290,8 +3918,8 @@ export const updateApiCache: API.OperationMethod<
   UpdateApiCacheError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178) as any as S.Schema<UpdateApiCacheRequest>,
-  output: __S(24) as any as S.Schema<UpdateApiCacheResponse>,
+  input: UpdateApiCacheRequest,
+  output: UpdateApiCacheResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -3321,8 +3949,8 @@ export const updateApiKey: API.OperationMethod<
   UpdateApiKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<UpdateApiKeyRequest>,
-  output: __S(27) as any as S.Schema<UpdateApiKeyResponse>,
+  input: UpdateApiKeyRequest,
+  output: UpdateApiKeyResponse,
   errors: [
     ApiKeyValidityOutOfBoundsException,
     BadRequestException,
@@ -3353,8 +3981,8 @@ export const updateChannelNamespace: API.OperationMethod<
   UpdateChannelNamespaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180) as any as S.Schema<UpdateChannelNamespaceRequest>,
-  output: __S(34) as any as S.Schema<UpdateChannelNamespaceResponse>,
+  input: UpdateChannelNamespaceRequest,
+  output: UpdateChannelNamespaceResponse,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3384,8 +4012,8 @@ export const updateDataSource: API.OperationMethod<
   UpdateDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<UpdateDataSourceRequest>,
-  output: __S(47) as any as S.Schema<UpdateDataSourceResponse>,
+  input: UpdateDataSourceRequest,
+  output: UpdateDataSourceResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -3414,8 +4042,8 @@ export const updateDomainName: API.OperationMethod<
   UpdateDomainNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<UpdateDomainNameRequest>,
-  output: __S(50) as any as S.Schema<UpdateDomainNameResponse>,
+  input: UpdateDomainNameRequest,
+  output: UpdateDomainNameResponse,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3444,8 +4072,8 @@ export const updateFunction: API.OperationMethod<
   UpdateFunctionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183) as any as S.Schema<UpdateFunctionRequest>,
-  output: __S(56) as any as S.Schema<UpdateFunctionResponse>,
+  input: UpdateFunctionRequest,
+  output: UpdateFunctionResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -3475,8 +4103,8 @@ export const updateGraphqlApi: API.OperationMethod<
   UpdateGraphqlApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184) as any as S.Schema<UpdateGraphqlApiRequest>,
-  output: __S(64) as any as S.Schema<UpdateGraphqlApiResponse>,
+  input: UpdateGraphqlApiRequest,
+  output: UpdateGraphqlApiResponse,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3506,8 +4134,8 @@ export const updateResolver: API.OperationMethod<
   UpdateResolverError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<UpdateResolverRequest>,
-  output: __S(70) as any as S.Schema<UpdateResolverResponse>,
+  input: UpdateResolverRequest,
+  output: UpdateResolverResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -3536,8 +4164,8 @@ export const updateSourceApiAssociation: API.OperationMethod<
   UpdateSourceApiAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<UpdateSourceApiAssociationRequest>,
-  output: __S(6) as any as S.Schema<UpdateSourceApiAssociationResponse>,
+  input: UpdateSourceApiAssociationRequest,
+  output: UpdateSourceApiAssociationResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -3566,8 +4194,8 @@ export const updateType: API.OperationMethod<
   UpdateTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<UpdateTypeRequest>,
-  output: __S(73) as any as S.Schema<UpdateTypeResponse>,
+  input: UpdateTypeRequest,
+  output: UpdateTypeResponse,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -3602,16 +4230,16 @@ function __c0(j: number): any {
         S.Struct({
           domainName: S.optional(S.String),
           apiId: S.optional(S.String),
-          associationStatus: S.optional(S.String),
+          associationStatus: S.optional(AssociationStatus),
           deploymentDetail: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiAssociation" });
     case 2:
-      return S.suspend(() => S.Struct({ apiAssociation: S.optional(__S(1)) }).pipe(ns)).annotate({
-        identifier: "AssociateApiResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({ apiAssociation: S.optional(ApiAssociation) }).pipe(ns),
+      ).annotate({ identifier: "AssociateApiResponse" });
     case 3:
-      return S.suspend(() => S.Struct({ mergeType: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ mergeType: S.optional(MergeType) })).annotate({
         identifier: "SourceApiAssociationConfig",
       });
     case 4:
@@ -3620,7 +4248,7 @@ function __c0(j: number): any {
           sourceApiIdentifier: S.String.pipe(T.HttpLabel("sourceApiIdentifier")),
           mergedApiIdentifier: S.String,
           description: S.optional(S.String),
-          sourceApiAssociationConfig: S.optional(__S(3)),
+          sourceApiAssociationConfig: S.optional(SourceApiAssociationConfig),
         }).pipe(
           T.all(
             ns,
@@ -3648,15 +4276,15 @@ function __c0(j: number): any {
           mergedApiArn: S.optional(S.String),
           mergedApiId: S.optional(S.String),
           description: S.optional(S.String),
-          sourceApiAssociationConfig: S.optional(__S(3)),
-          sourceApiAssociationStatus: S.optional(S.String),
+          sourceApiAssociationConfig: S.optional(SourceApiAssociationConfig),
+          sourceApiAssociationStatus: S.optional(SourceApiAssociationStatus),
           sourceApiAssociationStatusDetail: S.optional(S.String),
           lastSuccessfulMergeDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "SourceApiAssociation" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ sourceApiAssociation: S.optional(__S(5)) }).pipe(ns),
+        S.Struct({ sourceApiAssociation: S.optional(SourceApiAssociation) }).pipe(ns),
       ).annotate({
         identifier: "AssociateMergedGraphqlApiResponse",
       });
@@ -3666,7 +4294,7 @@ function __c0(j: number): any {
           mergedApiIdentifier: S.String.pipe(T.HttpLabel("mergedApiIdentifier")),
           sourceApiIdentifier: S.String,
           description: S.optional(S.String),
-          sourceApiAssociationConfig: S.optional(__S(3)),
+          sourceApiAssociationConfig: S.optional(SourceApiAssociationConfig),
         }).pipe(
           T.all(
             ns,
@@ -3718,36 +4346,36 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          authType: S.String,
-          cognitoConfig: S.optional(__S(9)),
-          openIDConnectConfig: S.optional(__S(10)),
-          lambdaAuthorizerConfig: S.optional(__S(11)),
+          authType: AuthenticationType,
+          cognitoConfig: S.optional(CognitoConfig),
+          openIDConnectConfig: S.optional(OpenIDConnectConfig),
+          lambdaAuthorizerConfig: S.optional(LambdaAuthorizerConfig),
         }),
       ).annotate({ identifier: "AuthProvider" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(AuthProvider);
     case 6:
-      return S.suspend(() => S.Struct({ authType: S.String })).annotate({
+      return S.suspend(() => S.Struct({ authType: AuthenticationType })).annotate({
         identifier: "AuthMode",
       });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(AuthMode);
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ logLevel: S.String, cloudWatchLogsRoleArn: S.String }),
+        S.Struct({ logLevel: EventLogLevel, cloudWatchLogsRoleArn: S.String }),
       ).annotate({ identifier: "EventLogConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          authProviders: __S(13),
-          connectionAuthModes: __S(15),
-          defaultPublishAuthModes: __S(15),
-          defaultSubscribeAuthModes: __S(15),
-          logConfig: S.optional(__S(16)),
+          authProviders: AuthProviders,
+          connectionAuthModes: AuthModes,
+          defaultPublishAuthModes: AuthModes,
+          defaultSubscribeAuthModes: AuthModes,
+          logConfig: S.optional(EventLogConfig),
         }),
       ).annotate({ identifier: "EventConfig" });
     case 2:
@@ -3755,8 +4383,8 @@ function __c2(j: number): any {
         S.Struct({
           name: S.String,
           ownerContact: S.optional(S.String),
-          tags: S.optional(__S(8)),
-          eventConfig: __S(17),
+          tags: S.optional(TagMap),
+          eventConfig: EventConfig,
         }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/v2/apis" }), svc, auth, proto, ver, rules),
         ),
@@ -3769,17 +4397,17 @@ function __c2(j: number): any {
           apiId: S.optional(S.String),
           name: S.optional(S.String),
           ownerContact: S.optional(S.String),
-          tags: S.optional(__S(8)),
-          dns: S.optional(__S(19)),
+          tags: S.optional(TagMap),
+          dns: S.optional(MapOfStringToString),
           apiArn: S.optional(S.String),
           created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           xrayEnabled: S.optional(S.Boolean),
           wafWebAclArn: S.optional(S.String),
-          eventConfig: S.optional(__S(17)),
+          eventConfig: S.optional(EventConfig),
         }),
       ).annotate({ identifier: "Api" });
     case 5:
-      return S.suspend(() => S.Struct({ api: S.optional(__S(20)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ api: S.optional(Api) }).pipe(ns)).annotate({
         identifier: "CreateApiResponse",
       });
     case 6:
@@ -3789,9 +4417,9 @@ function __c2(j: number): any {
           ttl: S.Number,
           transitEncryptionEnabled: S.optional(S.Boolean),
           atRestEncryptionEnabled: S.optional(S.Boolean),
-          apiCachingBehavior: S.String,
-          type: S.String,
-          healthMetricsConfig: S.optional(S.String),
+          apiCachingBehavior: ApiCachingBehavior,
+          type: ApiCacheType,
+          healthMetricsConfig: S.optional(CacheHealthMetricsConfig),
         }).pipe(
           T.all(
             ns,
@@ -3808,12 +4436,12 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ttl: S.optional(S.Number),
-          apiCachingBehavior: S.optional(S.String),
+          apiCachingBehavior: S.optional(ApiCachingBehavior),
           transitEncryptionEnabled: S.optional(S.Boolean),
           atRestEncryptionEnabled: S.optional(S.Boolean),
-          type: S.optional(S.String),
-          status: S.optional(S.String),
-          healthMetricsConfig: S.optional(S.String),
+          type: S.optional(ApiCacheType),
+          status: S.optional(ApiCacheStatus),
+          healthMetricsConfig: S.optional(CacheHealthMetricsConfig),
         }),
       ).annotate({ identifier: "ApiCache" });
   }
@@ -3821,7 +4449,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ apiCache: S.optional(__S(23)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ apiCache: S.optional(ApiCache) }).pipe(ns)).annotate({
         identifier: "CreateApiCacheResponse",
       });
     case 1:
@@ -3852,24 +4480,24 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "ApiKey" });
     case 3:
-      return S.suspend(() => S.Struct({ apiKey: S.optional(__S(26)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ apiKey: S.optional(ApiKey) }).pipe(ns)).annotate({
         identifier: "CreateApiKeyResponse",
       });
     case 4:
-      return S.suspend(() => S.Struct({ invokeType: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ invokeType: S.optional(InvokeType) })).annotate({
         identifier: "LambdaConfig",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ dataSourceName: S.String, lambdaConfig: S.optional(__S(28)) }),
+        S.Struct({ dataSourceName: S.String, lambdaConfig: S.optional(LambdaConfig) }),
       ).annotate({ identifier: "Integration" });
     case 6:
-      return S.suspend(() => S.Struct({ behavior: S.String, integration: __S(29) })).annotate({
-        identifier: "HandlerConfig",
-      });
+      return S.suspend(() =>
+        S.Struct({ behavior: HandlerBehavior, integration: Integration }),
+      ).annotate({ identifier: "HandlerConfig" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ onPublish: S.optional(__S(30)), onSubscribe: S.optional(__S(30)) }),
+        S.Struct({ onPublish: S.optional(HandlerConfig), onSubscribe: S.optional(HandlerConfig) }),
       ).annotate({ identifier: "HandlerConfigs" });
   }
 }
@@ -3880,11 +4508,11 @@ function __c4(j: number): any {
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
           name: S.String,
-          subscribeAuthModes: S.optional(__S(15)),
-          publishAuthModes: S.optional(__S(15)),
+          subscribeAuthModes: S.optional(AuthModes),
+          publishAuthModes: S.optional(AuthModes),
           codeHandlers: S.optional(S.String),
-          tags: S.optional(__S(8)),
-          handlerConfigs: S.optional(__S(31)),
+          tags: S.optional(TagMap),
+          handlerConfigs: S.optional(HandlerConfigs),
         }).pipe(
           T.all(
             ns,
@@ -3904,22 +4532,22 @@ function __c4(j: number): any {
         S.Struct({
           apiId: S.optional(S.String),
           name: S.optional(S.String),
-          subscribeAuthModes: S.optional(__S(15)),
-          publishAuthModes: S.optional(__S(15)),
+          subscribeAuthModes: S.optional(AuthModes),
+          publishAuthModes: S.optional(AuthModes),
           codeHandlers: S.optional(S.String),
-          tags: S.optional(__S(8)),
+          tags: S.optional(TagMap),
           channelNamespaceArn: S.optional(S.String),
           created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          handlerConfigs: S.optional(__S(31)),
+          handlerConfigs: S.optional(HandlerConfigs),
         }),
       ).annotate({ identifier: "ChannelNamespace" });
     case 2:
-      return S.suspend(() => S.Struct({ channelNamespace: S.optional(__S(33)) }).pipe(ns)).annotate(
-        {
-          identifier: "CreateChannelNamespaceResponse",
-        },
-      );
+      return S.suspend(() =>
+        S.Struct({ channelNamespace: S.optional(ChannelNamespace) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateChannelNamespaceResponse",
+      });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3934,7 +4562,7 @@ function __c4(j: number): any {
           tableName: S.String,
           awsRegion: S.String,
           useCallerCredentials: S.optional(S.Boolean),
-          deltaSyncConfig: S.optional(__S(35)),
+          deltaSyncConfig: S.optional(DeltaSyncConfig),
           versioned: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DynamodbDataSourceConfig" });
@@ -3956,13 +4584,13 @@ function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ authorizationType: S.String, awsIamConfig: S.optional(__S(39)) }),
+        S.Struct({ authorizationType: AuthorizationType, awsIamConfig: S.optional(AwsIamConfig) }),
       ).annotate({ identifier: "AuthorizationConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           endpoint: S.optional(S.String),
-          authorizationConfig: S.optional(__S(40)),
+          authorizationConfig: S.optional(AuthorizationConfig),
         }),
       ).annotate({ identifier: "HttpDataSourceConfig" });
     case 2:
@@ -3978,8 +4606,8 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          relationalDatabaseSourceType: S.optional(S.String),
-          rdsHttpEndpointConfig: S.optional(__S(42)),
+          relationalDatabaseSourceType: S.optional(RelationalDatabaseSourceType),
+          rdsHttpEndpointConfig: S.optional(RdsHttpEndpointConfig),
         }),
       ).annotate({
         identifier: "RelationalDatabaseDataSourceConfig",
@@ -3994,16 +4622,16 @@ function __c5(j: number): any {
           apiId: S.String.pipe(T.HttpLabel("apiId")),
           name: S.String,
           description: S.optional(S.String),
-          type: S.String,
+          type: DataSourceType,
           serviceRoleArn: S.optional(S.String),
-          dynamodbConfig: S.optional(__S(36)),
-          lambdaConfig: S.optional(__S(37)),
-          elasticsearchConfig: S.optional(__S(38)),
-          openSearchServiceConfig: S.optional(__S(38)),
-          httpConfig: S.optional(__S(41)),
-          relationalDatabaseConfig: S.optional(__S(43)),
-          eventBridgeConfig: S.optional(__S(44)),
-          metricsConfig: S.optional(S.String),
+          dynamodbConfig: S.optional(DynamodbDataSourceConfig),
+          lambdaConfig: S.optional(LambdaDataSourceConfig),
+          elasticsearchConfig: S.optional(ElasticsearchDataSourceConfig),
+          openSearchServiceConfig: S.optional(OpenSearchServiceDataSourceConfig),
+          httpConfig: S.optional(HttpDataSourceConfig),
+          relationalDatabaseConfig: S.optional(RelationalDatabaseDataSourceConfig),
+          eventBridgeConfig: S.optional(EventBridgeDataSourceConfig),
+          metricsConfig: S.optional(DataSourceLevelMetricsConfig),
         }).pipe(
           T.all(
             ns,
@@ -4022,20 +4650,20 @@ function __c5(j: number): any {
           dataSourceArn: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(DataSourceType),
           serviceRoleArn: S.optional(S.String),
-          dynamodbConfig: S.optional(__S(36)),
-          lambdaConfig: S.optional(__S(37)),
-          elasticsearchConfig: S.optional(__S(38)),
-          openSearchServiceConfig: S.optional(__S(38)),
-          httpConfig: S.optional(__S(41)),
-          relationalDatabaseConfig: S.optional(__S(43)),
-          eventBridgeConfig: S.optional(__S(44)),
-          metricsConfig: S.optional(S.String),
+          dynamodbConfig: S.optional(DynamodbDataSourceConfig),
+          lambdaConfig: S.optional(LambdaDataSourceConfig),
+          elasticsearchConfig: S.optional(ElasticsearchDataSourceConfig),
+          openSearchServiceConfig: S.optional(OpenSearchServiceDataSourceConfig),
+          httpConfig: S.optional(HttpDataSourceConfig),
+          relationalDatabaseConfig: S.optional(RelationalDatabaseDataSourceConfig),
+          eventBridgeConfig: S.optional(EventBridgeDataSourceConfig),
+          metricsConfig: S.optional(DataSourceLevelMetricsConfig),
         }),
       ).annotate({ identifier: "DataSource" });
     case 7:
-      return S.suspend(() => S.Struct({ dataSource: S.optional(__S(46)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ dataSource: S.optional(DataSource) }).pipe(ns)).annotate({
         identifier: "CreateDataSourceResponse",
       });
   }
@@ -4048,7 +4676,7 @@ function __c6(j: number): any {
           domainName: S.String,
           certificateArn: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(8)),
+          tags: S.optional(TagMap),
         }).pipe(
           T.all(
             ns,
@@ -4069,14 +4697,14 @@ function __c6(j: number): any {
           certificateArn: S.optional(S.String),
           appsyncDomainName: S.optional(S.String),
           hostedZoneId: S.optional(S.String),
-          tags: S.optional(__S(8)),
+          tags: S.optional(TagMap),
           domainNameArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainNameConfig" });
     case 2:
-      return S.suspend(() => S.Struct({ domainNameConfig: S.optional(__S(49)) }).pipe(ns)).annotate(
-        { identifier: "CreateDomainNameResponse" },
-      );
+      return S.suspend(() =>
+        S.Struct({ domainNameConfig: S.optional(DomainNameConfig) }).pipe(ns),
+      ).annotate({ identifier: "CreateDomainNameResponse" });
     case 3:
       return S.suspend(() => S.Struct({ lambdaConflictHandlerArn: S.optional(S.String) })).annotate(
         {
@@ -4086,13 +4714,13 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          conflictHandler: S.optional(S.String),
-          conflictDetection: S.optional(S.String),
-          lambdaConflictHandlerConfig: S.optional(__S(51)),
+          conflictHandler: S.optional(ConflictHandlerType),
+          conflictDetection: S.optional(ConflictDetectionType),
+          lambdaConflictHandlerConfig: S.optional(LambdaConflictHandlerConfig),
         }),
       ).annotate({ identifier: "SyncConfig" });
     case 5:
-      return S.suspend(() => S.Struct({ name: S.String, runtimeVersion: S.String })).annotate({
+      return S.suspend(() => S.Struct({ name: RuntimeName, runtimeVersion: S.String })).annotate({
         identifier: "AppSyncRuntime",
       });
     case 6:
@@ -4105,9 +4733,9 @@ function __c6(j: number): any {
           requestMappingTemplate: S.optional(S.String),
           responseMappingTemplate: S.optional(S.String),
           functionVersion: S.optional(S.String),
-          syncConfig: S.optional(__S(52)),
+          syncConfig: S.optional(SyncConfig),
           maxBatchSize: S.optional(S.Number),
-          runtime: S.optional(__S(53)),
+          runtime: S.optional(AppSyncRuntime),
           code: S.optional(S.String),
         }).pipe(
           T.all(
@@ -4132,9 +4760,9 @@ function __c6(j: number): any {
           requestMappingTemplate: S.optional(S.String),
           responseMappingTemplate: S.optional(S.String),
           functionVersion: S.optional(S.String),
-          syncConfig: S.optional(__S(52)),
+          syncConfig: S.optional(SyncConfig),
           maxBatchSize: S.optional(S.Number),
-          runtime: S.optional(__S(53)),
+          runtime: S.optional(AppSyncRuntime),
           code: S.optional(S.String),
         }),
       ).annotate({ identifier: "FunctionConfiguration" });
@@ -4144,12 +4772,12 @@ function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ functionConfiguration: S.optional(__S(55)) }).pipe(ns),
+        S.Struct({ functionConfiguration: S.optional(FunctionConfiguration) }).pipe(ns),
       ).annotate({ identifier: "CreateFunctionResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          fieldLogLevel: S.String,
+          fieldLogLevel: FieldLogLevel,
           cloudWatchLogsRoleArn: S.String,
           excludeVerboseContent: S.optional(S.Boolean),
         }),
@@ -4159,51 +4787,51 @@ function __c7(j: number): any {
         S.Struct({
           userPoolId: S.String,
           awsRegion: S.String,
-          defaultAction: S.String,
+          defaultAction: DefaultAction,
           appIdClientRegex: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserPoolConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          authenticationType: S.optional(S.String),
-          openIDConnectConfig: S.optional(__S(10)),
-          userPoolConfig: S.optional(__S(9)),
-          lambdaAuthorizerConfig: S.optional(__S(11)),
+          authenticationType: S.optional(AuthenticationType),
+          openIDConnectConfig: S.optional(OpenIDConnectConfig),
+          userPoolConfig: S.optional(CognitoUserPoolConfig),
+          lambdaAuthorizerConfig: S.optional(LambdaAuthorizerConfig),
         }),
       ).annotate({
         identifier: "AdditionalAuthenticationProvider",
       });
     case 4:
-      return S.Array(__S(59));
+      return S.Array(AdditionalAuthenticationProvider);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          resolverLevelMetricsBehavior: S.String,
-          dataSourceLevelMetricsBehavior: S.String,
-          operationLevelMetricsConfig: S.String,
+          resolverLevelMetricsBehavior: ResolverLevelMetricsBehavior,
+          dataSourceLevelMetricsBehavior: DataSourceLevelMetricsBehavior,
+          operationLevelMetricsConfig: OperationLevelMetricsConfig,
         }),
       ).annotate({ identifier: "EnhancedMetricsConfig" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          logConfig: S.optional(__S(57)),
-          authenticationType: S.String,
-          userPoolConfig: S.optional(__S(58)),
-          openIDConnectConfig: S.optional(__S(10)),
-          tags: S.optional(__S(8)),
-          additionalAuthenticationProviders: S.optional(__S(60)),
+          logConfig: S.optional(LogConfig),
+          authenticationType: AuthenticationType,
+          userPoolConfig: S.optional(UserPoolConfig),
+          openIDConnectConfig: S.optional(OpenIDConnectConfig),
+          tags: S.optional(TagMap),
+          additionalAuthenticationProviders: S.optional(AdditionalAuthenticationProviders),
           xrayEnabled: S.optional(S.Boolean),
-          lambdaAuthorizerConfig: S.optional(__S(11)),
-          apiType: S.optional(S.String),
+          lambdaAuthorizerConfig: S.optional(LambdaAuthorizerConfig),
+          apiType: S.optional(GraphQLApiType),
           mergedApiExecutionRoleArn: S.optional(S.String),
-          visibility: S.optional(S.String),
+          visibility: S.optional(GraphQLApiVisibility),
           ownerContact: S.optional(S.String),
-          introspectionConfig: S.optional(S.String),
+          introspectionConfig: S.optional(GraphQLApiIntrospectionConfig),
           queryDepthLimit: S.optional(S.Number),
           resolverCountLimit: S.optional(S.Number),
-          enhancedMetricsConfig: S.optional(__S(61)),
+          enhancedMetricsConfig: S.optional(EnhancedMetricsConfig),
         }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/v1/apis" }), svc, auth, proto, ver, rules),
         ),
@@ -4213,27 +4841,27 @@ function __c7(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           apiId: S.optional(S.String),
-          authenticationType: S.optional(S.String),
-          logConfig: S.optional(__S(57)),
-          userPoolConfig: S.optional(__S(58)),
-          openIDConnectConfig: S.optional(__S(10)),
+          authenticationType: S.optional(AuthenticationType),
+          logConfig: S.optional(LogConfig),
+          userPoolConfig: S.optional(UserPoolConfig),
+          openIDConnectConfig: S.optional(OpenIDConnectConfig),
           arn: S.optional(S.String),
-          uris: S.optional(__S(19)),
-          tags: S.optional(__S(8)),
-          additionalAuthenticationProviders: S.optional(__S(60)),
+          uris: S.optional(MapOfStringToString),
+          tags: S.optional(TagMap),
+          additionalAuthenticationProviders: S.optional(AdditionalAuthenticationProviders),
           xrayEnabled: S.optional(S.Boolean),
           wafWebAclArn: S.optional(S.String),
-          lambdaAuthorizerConfig: S.optional(__S(11)),
-          dns: S.optional(__S(19)),
-          visibility: S.optional(S.String),
-          apiType: S.optional(S.String),
+          lambdaAuthorizerConfig: S.optional(LambdaAuthorizerConfig),
+          dns: S.optional(MapOfStringToString),
+          visibility: S.optional(GraphQLApiVisibility),
+          apiType: S.optional(GraphQLApiType),
           mergedApiExecutionRoleArn: S.optional(S.String),
           owner: S.optional(S.String),
           ownerContact: S.optional(S.String),
-          introspectionConfig: S.optional(S.String),
+          introspectionConfig: S.optional(GraphQLApiIntrospectionConfig),
           queryDepthLimit: S.optional(S.Number),
           resolverCountLimit: S.optional(S.Number),
-          enhancedMetricsConfig: S.optional(__S(61)),
+          enhancedMetricsConfig: S.optional(EnhancedMetricsConfig),
         }),
       ).annotate({ identifier: "GraphqlApi" });
   }
@@ -4241,18 +4869,18 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ graphqlApi: S.optional(__S(63)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ graphqlApi: S.optional(GraphqlApi) }).pipe(ns)).annotate({
         identifier: "CreateGraphqlApiResponse",
       });
     case 1:
       return S.Array(S.String);
     case 2:
-      return S.suspend(() => S.Struct({ functions: S.optional(__S(65)) })).annotate({
+      return S.suspend(() => S.Struct({ functions: S.optional(FunctionsIds) })).annotate({
         identifier: "PipelineConfig",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ ttl: S.Number, cachingKeys: S.optional(__S(65)) }),
+        S.Struct({ ttl: S.Number, cachingKeys: S.optional(CachingKeys) }),
       ).annotate({ identifier: "CachingConfig" });
     case 4:
       return S.suspend(() =>
@@ -4263,14 +4891,14 @@ function __c8(j: number): any {
           dataSourceName: S.optional(S.String),
           requestMappingTemplate: S.optional(S.String),
           responseMappingTemplate: S.optional(S.String),
-          kind: S.optional(S.String),
-          pipelineConfig: S.optional(__S(66)),
-          syncConfig: S.optional(__S(52)),
-          cachingConfig: S.optional(__S(67)),
+          kind: S.optional(ResolverKind),
+          pipelineConfig: S.optional(PipelineConfig),
+          syncConfig: S.optional(SyncConfig),
+          cachingConfig: S.optional(CachingConfig),
           maxBatchSize: S.optional(S.Number),
-          runtime: S.optional(__S(53)),
+          runtime: S.optional(AppSyncRuntime),
           code: S.optional(S.String),
-          metricsConfig: S.optional(S.String),
+          metricsConfig: S.optional(ResolverLevelMetricsConfig),
         }).pipe(
           T.all(
             ns,
@@ -4292,18 +4920,18 @@ function __c8(j: number): any {
           resolverArn: S.optional(S.String),
           requestMappingTemplate: S.optional(S.String),
           responseMappingTemplate: S.optional(S.String),
-          kind: S.optional(S.String),
-          pipelineConfig: S.optional(__S(66)),
-          syncConfig: S.optional(__S(52)),
-          cachingConfig: S.optional(__S(67)),
+          kind: S.optional(ResolverKind),
+          pipelineConfig: S.optional(PipelineConfig),
+          syncConfig: S.optional(SyncConfig),
+          cachingConfig: S.optional(CachingConfig),
           maxBatchSize: S.optional(S.Number),
-          runtime: S.optional(__S(53)),
+          runtime: S.optional(AppSyncRuntime),
           code: S.optional(S.String),
-          metricsConfig: S.optional(S.String),
+          metricsConfig: S.optional(ResolverLevelMetricsConfig),
         }),
       ).annotate({ identifier: "Resolver" });
     case 6:
-      return S.suspend(() => S.Struct({ resolver: S.optional(__S(69)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ resolver: S.optional(Resolver) }).pipe(ns)).annotate({
         identifier: "CreateResolverResponse",
       });
     case 7:
@@ -4311,7 +4939,7 @@ function __c8(j: number): any {
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
           definition: S.String,
-          format: S.String,
+          format: TypeDefinitionFormat,
         }).pipe(
           T.all(
             ns,
@@ -4335,11 +4963,11 @@ function __c9(j: number): any {
           description: S.optional(S.String),
           arn: S.optional(S.String),
           definition: S.optional(S.String),
-          format: S.optional(S.String),
+          format: S.optional(TypeDefinitionFormat),
         }),
       ).annotate({ identifier: "Type" });
     case 1:
-      return S.suspend(() => S.Struct({ type: S.optional(__S(72)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ type: S.optional(Type) }).pipe(ns)).annotate({
         identifier: "CreateTypeResponse",
       });
     case 2:
@@ -4568,7 +5196,7 @@ function __c11(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ sourceApiAssociationStatus: S.optional(S.String) }).pipe(ns),
+        S.Struct({ sourceApiAssociationStatus: S.optional(SourceApiAssociationStatus) }).pipe(ns),
       ).annotate({
         identifier: "DisassociateMergedGraphqlApiResponse",
       });
@@ -4597,7 +5225,7 @@ function __c11(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          runtime: __S(53),
+          runtime: AppSyncRuntime,
           code: S.String,
           context: S.String,
           function: S.optional(S.String),
@@ -4626,25 +5254,25 @@ function __c11(j: number): any {
         S.Struct({
           errorType: S.optional(S.String),
           value: S.optional(S.String),
-          location: S.optional(__S(93)),
+          location: S.optional(CodeErrorLocation),
         }),
       ).annotate({ identifier: "CodeError" });
     case 7:
-      return S.Array(__S(94));
+      return S.Array(CodeError);
   }
 }
 function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ message: S.optional(S.String), codeErrors: S.optional(__S(95)) }),
+        S.Struct({ message: S.optional(S.String), codeErrors: S.optional(CodeErrors) }),
       ).annotate({ identifier: "EvaluateCodeErrorDetail" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           evaluationResult: S.optional(S.String),
-          error: S.optional(__S(96)),
-          logs: S.optional(__S(65)),
+          error: S.optional(EvaluateCodeErrorDetail),
+          logs: S.optional(Logs),
           stash: S.optional(S.String),
           outErrors: S.optional(S.String),
         }).pipe(ns),
@@ -4673,8 +5301,8 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           evaluationResult: S.optional(S.String),
-          error: S.optional(__S(99)),
-          logs: S.optional(__S(65)),
+          error: S.optional(ErrorDetail),
+          logs: S.optional(Logs),
           stash: S.optional(S.String),
           outErrors: S.optional(S.String),
         }).pipe(ns),
@@ -4728,7 +5356,9 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ apiAssociation: S.optional(__S(1)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ apiAssociation: S.optional(ApiAssociation) }).pipe(ns),
+      ).annotate({
         identifier: "GetApiAssociationResponse",
       });
     case 1:
@@ -4808,11 +5438,12 @@ function __c13(j: number): any {
           kind: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(
-            S.suspend((): S.Schema<DataSourceIntrospectionModelFieldType> => __S(109)).annotate({
-              identifier: "DataSourceIntrospectionModelFieldType",
-            }),
+            S.suspend(
+              (): S.Schema<DataSourceIntrospectionModelFieldType> =>
+                DataSourceIntrospectionModelFieldType,
+            ).annotate({ identifier: "DataSourceIntrospectionModelFieldType" }),
           ),
-          values: S.optional(__S(65)),
+          values: S.optional(DataSourceIntrospectionModelFieldTypeValues),
         }),
       ).annotate({
         identifier: "DataSourceIntrospectionModelFieldType",
@@ -4821,14 +5452,14 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          type: S.optional(__S(109)),
+          type: S.optional(DataSourceIntrospectionModelFieldType),
           length: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "DataSourceIntrospectionModelField",
       });
     case 7:
-      return S.Array(__S(110));
+      return S.Array(DataSourceIntrospectionModelField);
   }
 }
 function __c14(j: number): any {
@@ -4837,31 +5468,31 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          fields: S.optional(__S(65)),
+          fields: S.optional(DataSourceIntrospectionModelIndexFields),
         }),
       ).annotate({
         identifier: "DataSourceIntrospectionModelIndex",
       });
     case 1:
-      return S.Array(__S(112));
+      return S.Array(DataSourceIntrospectionModelIndex);
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          fields: S.optional(__S(111)),
-          primaryKey: S.optional(__S(112)),
-          indexes: S.optional(__S(113)),
+          fields: S.optional(DataSourceIntrospectionModelFields),
+          primaryKey: S.optional(DataSourceIntrospectionModelIndex),
+          indexes: S.optional(DataSourceIntrospectionModelIndexes),
           sdl: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DataSourceIntrospectionModel",
       });
     case 3:
-      return S.Array(__S(114));
+      return S.Array(DataSourceIntrospectionModel);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          models: S.optional(__S(115)),
+          models: S.optional(DataSourceIntrospectionModels),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4871,9 +5502,9 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           introspectionId: S.optional(S.String),
-          introspectionStatus: S.optional(S.String),
+          introspectionStatus: S.optional(DataSourceIntrospectionStatus),
           introspectionStatusDetail: S.optional(S.String),
-          introspectionResult: S.optional(__S(116)),
+          introspectionResult: S.optional(DataSourceIntrospectionResult),
         }).pipe(ns),
       ).annotate({
         identifier: "GetDataSourceIntrospectionResponse",
@@ -4945,7 +5576,7 @@ function __c15(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ environmentVariables: S.optional(__S(19)) }).pipe(ns),
+        S.Struct({ environmentVariables: S.optional(EnvironmentVariableMap) }).pipe(ns),
       ).annotate({
         identifier: "GetGraphqlApiEnvironmentVariablesResponse",
       });
@@ -4953,7 +5584,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
-          format: S.String.pipe(T.HttpQuery("format")),
+          format: OutputType.pipe(T.HttpQuery("format")),
           includeDirectives: S.optional(S.Boolean).pipe(T.HttpQuery("includeDirectives")),
         }).pipe(
           T.all(
@@ -5014,7 +5645,7 @@ function __c15(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ status: S.optional(S.String), details: S.optional(S.String) }).pipe(ns),
+        S.Struct({ status: S.optional(SchemaStatus), details: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "GetSchemaCreationStatusResponse",
       });
@@ -5049,7 +5680,7 @@ function __c16(j: number): any {
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
           typeName: S.String.pipe(T.HttpLabel("typeName")),
-          format: S.String.pipe(T.HttpQuery("format")),
+          format: TypeDefinitionFormat.pipe(T.HttpQuery("format")),
         }).pipe(
           T.all(
             ns,
@@ -5081,10 +5712,10 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "ListApiKeysRequest" });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(ApiKey);
     case 4:
       return S.suspend(() =>
-        S.Struct({ apiKeys: S.optional(__S(131)), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ apiKeys: S.optional(ApiKeys), nextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "ListApiKeysResponse" });
     case 5:
       return S.suspend(() =>
@@ -5096,10 +5727,10 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "ListApisRequest" });
     case 6:
-      return S.Array(__S(20));
+      return S.Array(Api);
     case 7:
       return S.suspend(() =>
-        S.Struct({ apis: S.optional(__S(134)), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ apis: S.optional(Apis), nextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "ListApisResponse" });
   }
 }
@@ -5126,11 +5757,11 @@ function __c17(j: number): any {
         identifier: "ListChannelNamespacesRequest",
       });
     case 1:
-      return S.Array(__S(33));
+      return S.Array(ChannelNamespace);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          channelNamespaces: S.optional(__S(137)),
+          channelNamespaces: S.optional(ChannelNamespaces),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5155,10 +5786,12 @@ function __c17(j: number): any {
         ),
       ).annotate({ identifier: "ListDataSourcesRequest" });
     case 4:
-      return S.Array(__S(46));
+      return S.Array(DataSource);
     case 5:
       return S.suspend(() =>
-        S.Struct({ dataSources: S.optional(__S(140)), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ dataSources: S.optional(DataSources), nextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "ListDataSourcesResponse" });
     case 6:
       return S.suspend(() =>
@@ -5178,7 +5811,7 @@ function __c17(j: number): any {
         ),
       ).annotate({ identifier: "ListDomainNamesRequest" });
     case 7:
-      return S.Array(__S(49));
+      return S.Array(DomainNameConfig);
   }
 }
 function __c18(j: number): any {
@@ -5186,7 +5819,7 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          domainNameConfigs: S.optional(__S(143)),
+          domainNameConfigs: S.optional(DomainNameConfigs),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListDomainNamesResponse" });
@@ -5209,27 +5842,29 @@ function __c18(j: number): any {
         ),
       ).annotate({ identifier: "ListFunctionsRequest" });
     case 2:
-      return S.Array(__S(55));
+      return S.Array(FunctionConfiguration);
     case 3:
       return S.suspend(() =>
-        S.Struct({ functions: S.optional(__S(146)), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ functions: S.optional(Functions), nextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "ListFunctionsResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          apiType: S.optional(S.String).pipe(T.HttpQuery("apiType")),
-          owner: S.optional(S.String).pipe(T.HttpQuery("owner")),
+          apiType: S.optional(GraphQLApiType).pipe(T.HttpQuery("apiType")),
+          owner: S.optional(Ownership).pipe(T.HttpQuery("owner")),
         }).pipe(
           T.all(ns, T.Http({ method: "GET", uri: "/v1/apis" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListGraphqlApisRequest" });
     case 5:
-      return S.Array(__S(63));
+      return S.Array(GraphqlApi);
     case 6:
       return S.suspend(() =>
-        S.Struct({ graphqlApis: S.optional(__S(149)), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ graphqlApis: S.optional(GraphqlApis), nextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "ListGraphqlApisResponse" });
     case 7:
       return S.suspend(() =>
@@ -5255,10 +5890,10 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(69));
+      return S.Array(Resolver);
     case 1:
       return S.suspend(() =>
-        S.Struct({ resolvers: S.optional(__S(152)), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ resolvers: S.optional(Resolvers), nextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "ListResolversResponse" });
     case 2:
       return S.suspend(() =>
@@ -5283,7 +5918,7 @@ function __c19(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ resolvers: S.optional(__S(152)), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ resolvers: S.optional(Resolvers), nextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "ListResolversByFunctionResponse",
       });
@@ -5322,11 +5957,11 @@ function __c19(j: number): any {
         identifier: "SourceApiAssociationSummary",
       });
     case 6:
-      return S.Array(__S(157));
+      return S.Array(SourceApiAssociationSummary);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          sourceApiAssociationSummaries: S.optional(__S(158)),
+          sourceApiAssociationSummaries: S.optional(SourceApiAssociationSummaryList),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5353,14 +5988,14 @@ function __c20(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(8)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
-          format: S.String.pipe(T.HttpQuery("format")),
+          format: TypeDefinitionFormat.pipe(T.HttpQuery("format")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(
@@ -5376,17 +6011,17 @@ function __c20(j: number): any {
         ),
       ).annotate({ identifier: "ListTypesRequest" });
     case 3:
-      return S.Array(__S(72));
+      return S.Array(Type);
     case 4:
       return S.suspend(() =>
-        S.Struct({ types: S.optional(__S(163)), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ types: S.optional(TypeList), nextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "ListTypesResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           mergedApiIdentifier: S.String.pipe(T.HttpLabel("mergedApiIdentifier")),
           associationId: S.String.pipe(T.HttpLabel("associationId")),
-          format: S.String.pipe(T.HttpQuery("format")),
+          format: TypeDefinitionFormat.pipe(T.HttpQuery("format")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(
@@ -5408,7 +6043,7 @@ function __c20(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ types: S.optional(__S(163)), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ types: S.optional(TypeList), nextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "ListTypesByAssociationResponse",
       });
@@ -5416,7 +6051,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
-          environmentVariables: __S(19),
+          environmentVariables: EnvironmentVariableMap,
         }).pipe(
           T.all(
             ns,
@@ -5441,7 +6076,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "RdsDataApiConfig" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ rdsDataApiConfig: S.optional(__S(168)) }).pipe(
+        S.Struct({ rdsDataApiConfig: S.optional(RdsDataApiConfig) }).pipe(
           T.all(
             ns,
             T.Http({ method: "POST", uri: "/v1/datasources/introspections" }),
@@ -5459,7 +6094,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           introspectionId: S.optional(S.String),
-          introspectionStatus: S.optional(S.String),
+          introspectionStatus: S.optional(DataSourceIntrospectionStatus),
           introspectionStatusDetail: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5482,7 +6117,7 @@ function __c21(j: number): any {
         identifier: "StartSchemaCreationRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ status: S.optional(S.String) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ status: S.optional(SchemaStatus) }).pipe(ns)).annotate({
         identifier: "StartSchemaCreationResponse",
       });
     case 5:
@@ -5507,11 +6142,11 @@ function __c21(j: number): any {
       ).annotate({ identifier: "StartSchemaMergeRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ sourceApiAssociationStatus: S.optional(S.String) }).pipe(ns),
+        S.Struct({ sourceApiAssociationStatus: S.optional(SourceApiAssociationStatus) }).pipe(ns),
       ).annotate({ identifier: "StartSchemaMergeResponse" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: __S(8) }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
           T.all(
             ns,
             T.Http({ method: "POST", uri: "/v1/tags/{resourceArn}" }),
@@ -5531,7 +6166,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(65).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             ns,
@@ -5550,7 +6185,7 @@ function __c22(j: number): any {
           apiId: S.String.pipe(T.HttpLabel("apiId")),
           name: S.String,
           ownerContact: S.optional(S.String),
-          eventConfig: __S(17),
+          eventConfig: EventConfig,
         }).pipe(
           T.all(
             ns,
@@ -5568,9 +6203,9 @@ function __c22(j: number): any {
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
           ttl: S.Number,
-          apiCachingBehavior: S.String,
-          type: S.String,
-          healthMetricsConfig: S.optional(S.String),
+          apiCachingBehavior: ApiCachingBehavior,
+          type: ApiCacheType,
+          healthMetricsConfig: S.optional(CacheHealthMetricsConfig),
         }).pipe(
           T.all(
             ns,
@@ -5607,10 +6242,10 @@ function __c22(j: number): any {
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
           name: S.String.pipe(T.HttpLabel("name")),
-          subscribeAuthModes: S.optional(__S(15)),
-          publishAuthModes: S.optional(__S(15)),
+          subscribeAuthModes: S.optional(AuthModes),
+          publishAuthModes: S.optional(AuthModes),
           codeHandlers: S.optional(S.String),
-          handlerConfigs: S.optional(__S(31)),
+          handlerConfigs: S.optional(HandlerConfigs),
         }).pipe(
           T.all(
             ns,
@@ -5631,16 +6266,16 @@ function __c22(j: number): any {
           apiId: S.String.pipe(T.HttpLabel("apiId")),
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
-          type: S.String,
+          type: DataSourceType,
           serviceRoleArn: S.optional(S.String),
-          dynamodbConfig: S.optional(__S(36)),
-          lambdaConfig: S.optional(__S(37)),
-          elasticsearchConfig: S.optional(__S(38)),
-          openSearchServiceConfig: S.optional(__S(38)),
-          httpConfig: S.optional(__S(41)),
-          relationalDatabaseConfig: S.optional(__S(43)),
-          eventBridgeConfig: S.optional(__S(44)),
-          metricsConfig: S.optional(S.String),
+          dynamodbConfig: S.optional(DynamodbDataSourceConfig),
+          lambdaConfig: S.optional(LambdaDataSourceConfig),
+          elasticsearchConfig: S.optional(ElasticsearchDataSourceConfig),
+          openSearchServiceConfig: S.optional(OpenSearchServiceDataSourceConfig),
+          httpConfig: S.optional(HttpDataSourceConfig),
+          relationalDatabaseConfig: S.optional(RelationalDatabaseDataSourceConfig),
+          eventBridgeConfig: S.optional(EventBridgeDataSourceConfig),
+          metricsConfig: S.optional(DataSourceLevelMetricsConfig),
         }).pipe(
           T.all(
             ns,
@@ -5681,9 +6316,9 @@ function __c22(j: number): any {
           requestMappingTemplate: S.optional(S.String),
           responseMappingTemplate: S.optional(S.String),
           functionVersion: S.optional(S.String),
-          syncConfig: S.optional(__S(52)),
+          syncConfig: S.optional(SyncConfig),
           maxBatchSize: S.optional(S.Number),
-          runtime: S.optional(__S(53)),
+          runtime: S.optional(AppSyncRuntime),
           code: S.optional(S.String),
         }).pipe(
           T.all(
@@ -5706,19 +6341,19 @@ function __c23(j: number): any {
         S.Struct({
           apiId: S.String.pipe(T.HttpLabel("apiId")),
           name: S.String,
-          logConfig: S.optional(__S(57)),
-          authenticationType: S.String,
-          userPoolConfig: S.optional(__S(58)),
-          openIDConnectConfig: S.optional(__S(10)),
-          additionalAuthenticationProviders: S.optional(__S(60)),
+          logConfig: S.optional(LogConfig),
+          authenticationType: AuthenticationType,
+          userPoolConfig: S.optional(UserPoolConfig),
+          openIDConnectConfig: S.optional(OpenIDConnectConfig),
+          additionalAuthenticationProviders: S.optional(AdditionalAuthenticationProviders),
           xrayEnabled: S.optional(S.Boolean),
-          lambdaAuthorizerConfig: S.optional(__S(11)),
+          lambdaAuthorizerConfig: S.optional(LambdaAuthorizerConfig),
           mergedApiExecutionRoleArn: S.optional(S.String),
           ownerContact: S.optional(S.String),
-          introspectionConfig: S.optional(S.String),
+          introspectionConfig: S.optional(GraphQLApiIntrospectionConfig),
           queryDepthLimit: S.optional(S.Number),
           resolverCountLimit: S.optional(S.Number),
-          enhancedMetricsConfig: S.optional(__S(61)),
+          enhancedMetricsConfig: S.optional(EnhancedMetricsConfig),
         }).pipe(
           T.all(
             ns,
@@ -5740,14 +6375,14 @@ function __c23(j: number): any {
           dataSourceName: S.optional(S.String),
           requestMappingTemplate: S.optional(S.String),
           responseMappingTemplate: S.optional(S.String),
-          kind: S.optional(S.String),
-          pipelineConfig: S.optional(__S(66)),
-          syncConfig: S.optional(__S(52)),
-          cachingConfig: S.optional(__S(67)),
+          kind: S.optional(ResolverKind),
+          pipelineConfig: S.optional(PipelineConfig),
+          syncConfig: S.optional(SyncConfig),
+          cachingConfig: S.optional(CachingConfig),
           maxBatchSize: S.optional(S.Number),
-          runtime: S.optional(__S(53)),
+          runtime: S.optional(AppSyncRuntime),
           code: S.optional(S.String),
-          metricsConfig: S.optional(S.String),
+          metricsConfig: S.optional(ResolverLevelMetricsConfig),
         }).pipe(
           T.all(
             ns,
@@ -5769,7 +6404,7 @@ function __c23(j: number): any {
           associationId: S.String.pipe(T.HttpLabel("associationId")),
           mergedApiIdentifier: S.String.pipe(T.HttpLabel("mergedApiIdentifier")),
           description: S.optional(S.String),
-          sourceApiAssociationConfig: S.optional(__S(3)),
+          sourceApiAssociationConfig: S.optional(SourceApiAssociationConfig),
         }).pipe(
           T.all(
             ns,
@@ -5793,7 +6428,7 @@ function __c23(j: number): any {
           apiId: S.String.pipe(T.HttpLabel("apiId")),
           typeName: S.String.pipe(T.HttpLabel("typeName")),
           definition: S.optional(S.String),
-          format: S.String,
+          format: TypeDefinitionFormat,
         }).pipe(
           T.all(
             ns,
@@ -5807,65 +6442,8 @@ function __c23(j: number): any {
         ),
       ).annotate({ identifier: "UpdateTypeRequest" });
     case 4:
-      return S.suspend(() => S.Struct({ codeErrors: S.optional(__S(95)) })).annotate({
+      return S.suspend(() => S.Struct({ codeErrors: S.optional(CodeErrors) })).annotate({
         identifier: "BadRequestDetail",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
   }
 }

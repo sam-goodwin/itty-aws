@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "DevOps Guru",
   serviceShapeName: "CapstoneControlPlaneService",
@@ -138,12 +136,12 @@ export class ValidationException
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       Reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
       Fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(171)).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFields).annotate({
           identifier: "ValidationExceptionFields",
         }),
       ),
@@ -154,8 +152,12 @@ export type TopicArn = string;
 export interface SnsChannelConfig {
   TopicArn?: string;
 }
+const SnsChannelConfig = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<SnsChannelConfig>;
 export type InsightSeverity = "LOW" | "MEDIUM" | "HIGH" | (string & {});
+const InsightSeverity = S.String;
+
 export type InsightSeverities = InsightSeverity[];
+const InsightSeverities = /*@__PURE__*/ __L.at(__c0, 1);
 export type NotificationMessageType =
   | "NEW_INSIGHT"
   | "CLOSED_INSIGHT"
@@ -164,27 +166,53 @@ export type NotificationMessageType =
   | "NEW_RECOMMENDATION"
   | (string & {});
 export type NotificationMessageTypes = NotificationMessageType[];
+const NotificationMessageTypes = InsightSeverities as any as S.Schema<NotificationMessageTypes>;
 export interface NotificationFilterConfig {
   Severities?: InsightSeverity[];
   MessageTypes?: NotificationMessageType[];
 }
+const NotificationFilterConfig = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<NotificationFilterConfig>;
 export interface NotificationChannelConfig {
   Sns: SnsChannelConfig;
   Filters?: NotificationFilterConfig;
 }
+const NotificationChannelConfig = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<NotificationChannelConfig>;
 export interface AddNotificationChannelRequest {
   Config: NotificationChannelConfig;
 }
+const AddNotificationChannelRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AddNotificationChannelRequest>;
 export type NotificationChannelId = string;
 export interface AddNotificationChannelResponse {
   Id: string;
 }
+const AddNotificationChannelResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AddNotificationChannelResponse>;
 export type InsightId = string;
 export interface DeleteInsightRequest {
   Id: string;
 }
+const DeleteInsightRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DeleteInsightRequest>;
 export interface DeleteInsightResponse {}
+const DeleteInsightResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteInsightResponse>;
 export interface DescribeAccountHealthRequest {}
+const DescribeAccountHealthRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DescribeAccountHealthRequest>;
 export type NumOpenReactiveInsights = number;
 export type NumOpenProactiveInsights = number;
 export type NumMetricsAnalyzed = number;
@@ -197,10 +225,18 @@ export interface DescribeAccountHealthResponse {
   ResourceHours: number;
   AnalyzedResourceCount?: number;
 }
+const DescribeAccountHealthResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DescribeAccountHealthResponse>;
 export interface DescribeAccountOverviewRequest {
   FromTime: Date;
   ToTime?: Date;
 }
+const DescribeAccountOverviewRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DescribeAccountOverviewRequest>;
 export type NumReactiveInsights = number;
 export type NumProactiveInsights = number;
 export type MeanTimeToRecoverInMilliseconds = number;
@@ -209,26 +245,44 @@ export interface DescribeAccountOverviewResponse {
   ProactiveInsights: number;
   MeanTimeToRecoverInMilliseconds: number;
 }
+const DescribeAccountOverviewResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DescribeAccountOverviewResponse>;
 export type AnomalyId = string;
 export type AwsAccountId = string;
 export interface DescribeAnomalyRequest {
   Id: string;
   AccountId?: string;
 }
+const DescribeAnomalyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DescribeAnomalyRequest>;
 export type AnomalySeverity = "LOW" | "MEDIUM" | "HIGH" | (string & {});
+const AnomalySeverity = S.String;
+
 export type AnomalyStatus = "ONGOING" | "CLOSED" | (string & {});
+const AnomalyStatus = S.String;
+
 export interface AnomalyTimeRange {
   StartTime: Date;
   EndTime?: Date;
 }
+const AnomalyTimeRange = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AnomalyTimeRange>;
 export interface AnomalyReportedTimeRange {
   OpenTime: Date;
   CloseTime?: Date;
 }
+const AnomalyReportedTimeRange = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<AnomalyReportedTimeRange>;
 export interface PredictionTimeRange {
   StartTime: Date;
   EndTime?: Date;
 }
+const PredictionTimeRange = AnomalyTimeRange as any as S.Schema<PredictionTimeRange>;
 export type CloudWatchMetricsMetricName = string;
 export type CloudWatchMetricsNamespace = string;
 export type CloudWatchMetricsDimensionName = string;
@@ -237,7 +291,12 @@ export interface CloudWatchMetricsDimension {
   Name?: string;
   Value?: string;
 }
+const CloudWatchMetricsDimension = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CloudWatchMetricsDimension>;
 export type CloudWatchMetricsDimensions = CloudWatchMetricsDimension[];
+const CloudWatchMetricsDimensions = /*@__PURE__*/ __L.at(__c2, 0);
 export type CloudWatchMetricsStat =
   | "Sum"
   | "Average"
@@ -248,6 +307,8 @@ export type CloudWatchMetricsStat =
   | "p90"
   | "p50"
   | (string & {});
+const CloudWatchMetricsStat = S.String;
+
 export type CloudWatchMetricsUnit = string;
 export type CloudWatchMetricsPeriod = number;
 export type MetricValue = number;
@@ -255,16 +316,27 @@ export interface TimestampMetricValuePair {
   Timestamp?: Date;
   MetricValue?: number;
 }
+const TimestampMetricValuePair = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<TimestampMetricValuePair>;
 export type TimestampMetricValuePairList = TimestampMetricValuePair[];
+const TimestampMetricValuePairList = /*@__PURE__*/ __L.at(__c2, 2);
 export type CloudWatchMetricDataStatusCode =
   | "Complete"
   | "InternalError"
   | "PartialData"
   | (string & {});
+const CloudWatchMetricDataStatusCode = S.String;
+
 export interface CloudWatchMetricsDataSummary {
   TimestampMetricValuePairList?: TimestampMetricValuePair[];
   StatusCode?: CloudWatchMetricDataStatusCode;
 }
+const CloudWatchMetricsDataSummary = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CloudWatchMetricsDataSummary>;
 export interface CloudWatchMetricsDetail {
   MetricName?: string;
   Namespace?: string;
@@ -274,50 +346,87 @@ export interface CloudWatchMetricsDetail {
   Period?: number;
   MetricDataSummary?: CloudWatchMetricsDataSummary;
 }
+const CloudWatchMetricsDetail = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CloudWatchMetricsDetail>;
 export type CloudWatchMetricsDetails = CloudWatchMetricsDetail[];
+const CloudWatchMetricsDetails = /*@__PURE__*/ __L.at(__c2, 5);
 export type PerformanceInsightsMetricDisplayName = string;
 export type PerformanceInsightsMetricUnit = string;
 export type PerformanceInsightsMetricName = string;
 export type PerformanceInsightsMetricGroup = string;
 export type PerformanceInsightsMetricDimension = string;
 export type PerformanceInsightsMetricDimensions = string[];
+const PerformanceInsightsMetricDimensions = /*@__PURE__*/ __L.at(__c2, 6);
 export type PerformanceInsightsMetricLimitInteger = number;
 export interface PerformanceInsightsMetricDimensionGroup {
   Group?: string;
   Dimensions?: string[];
   Limit?: number;
 }
+const PerformanceInsightsMetricDimensionGroup = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<PerformanceInsightsMetricDimensionGroup>;
 export type PerformanceInsightsMetricFilterKey = string;
 export type PerformanceInsightsMetricFilterValue = string;
 export type PerformanceInsightsMetricFilterMap = { [key: string]: string | undefined };
+const PerformanceInsightsMetricFilterMap = /*@__PURE__*/ __L.at(__c3, 0);
 export interface PerformanceInsightsMetricQuery {
   Metric?: string;
   GroupBy?: PerformanceInsightsMetricDimensionGroup;
   Filter?: { [key: string]: string | undefined };
 }
+const PerformanceInsightsMetricQuery = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<PerformanceInsightsMetricQuery>;
 export type PerformanceInsightsReferenceName = string;
 export type PerformanceInsightsValueDouble = number;
 export interface PerformanceInsightsReferenceScalar {
   Value?: number;
 }
+const PerformanceInsightsReferenceScalar = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<PerformanceInsightsReferenceScalar>;
 export interface PerformanceInsightsReferenceMetric {
   MetricQuery?: PerformanceInsightsMetricQuery;
 }
+const PerformanceInsightsReferenceMetric = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<PerformanceInsightsReferenceMetric>;
 export interface PerformanceInsightsReferenceComparisonValues {
   ReferenceScalar?: PerformanceInsightsReferenceScalar;
   ReferenceMetric?: PerformanceInsightsReferenceMetric;
 }
+const PerformanceInsightsReferenceComparisonValues = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<PerformanceInsightsReferenceComparisonValues>;
 export interface PerformanceInsightsReferenceData {
   Name?: string;
   ComparisonValues?: PerformanceInsightsReferenceComparisonValues;
 }
+const PerformanceInsightsReferenceData = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<PerformanceInsightsReferenceData>;
 export type PerformanceInsightsReferenceDataList = PerformanceInsightsReferenceData[];
+const PerformanceInsightsReferenceDataList = /*@__PURE__*/ __L.at(__c3, 6);
 export type PerformanceInsightsStatType = string;
 export interface PerformanceInsightsStat {
   Type?: string;
   Value?: number;
 }
+const PerformanceInsightsStat = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<PerformanceInsightsStat>;
 export type PerformanceInsightsStats = PerformanceInsightsStat[];
+const PerformanceInsightsStats = /*@__PURE__*/ __L.at(__c4, 0);
 export interface PerformanceInsightsMetricsDetail {
   MetricDisplayName?: string;
   Unit?: string;
@@ -326,28 +435,43 @@ export interface PerformanceInsightsMetricsDetail {
   StatsAtAnomaly?: PerformanceInsightsStat[];
   StatsAtBaseline?: PerformanceInsightsStat[];
 }
+const PerformanceInsightsMetricsDetail = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<PerformanceInsightsMetricsDetail>;
 export type PerformanceInsightsMetricsDetails = PerformanceInsightsMetricsDetail[];
+const PerformanceInsightsMetricsDetails = /*@__PURE__*/ __L.at(__c4, 2);
 export interface AnomalySourceDetails {
   CloudWatchMetrics?: CloudWatchMetricsDetail[];
   PerformanceInsightsMetrics?: PerformanceInsightsMetricsDetail[];
 }
+const AnomalySourceDetails = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<AnomalySourceDetails>;
 export type StackName = string;
 export type StackNames = string[];
+const StackNames = PerformanceInsightsMetricDimensions as any as S.Schema<StackNames>;
 export interface CloudFormationCollection {
   StackNames?: string[];
 }
+const CloudFormationCollection = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CloudFormationCollection>;
 export type AppBoundaryKey = string;
 export type TagValue = string;
 export type TagValues = string[];
+const TagValues = PerformanceInsightsMetricDimensions as any as S.Schema<TagValues>;
 export interface TagCollection {
   AppBoundaryKey: string;
   TagValues: string[];
 }
+const TagCollection = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<TagCollection>;
 export type TagCollections = TagCollection[];
+const TagCollections = /*@__PURE__*/ __L.at(__c4, 6);
 export interface ResourceCollection {
   CloudFormation?: CloudFormationCollection;
   Tags?: TagCollection[];
 }
+const ResourceCollection = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<ResourceCollection>;
 export type AnomalyLimit = number;
 export type AnomalySource = string;
 export type ResourceName = string;
@@ -357,11 +481,17 @@ export interface AnomalySourceMetadata {
   SourceResourceName?: string;
   SourceResourceType?: string;
 }
+const AnomalySourceMetadata = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<AnomalySourceMetadata>;
 export interface AnomalyResource {
   Name?: string;
   Type?: string;
 }
+const AnomalyResource = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<AnomalyResource>;
 export type AnomalyResources = AnomalyResource[];
+const AnomalyResources = /*@__PURE__*/ __L.at(__c5, 2);
 export type AnomalyDescription = string;
 export interface ProactiveAnomaly {
   Id?: string;
@@ -379,7 +509,10 @@ export interface ProactiveAnomaly {
   AnomalyResources?: AnomalyResource[];
   Description?: string;
 }
+const ProactiveAnomaly = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ProactiveAnomaly>;
 export type AnomalyType = "CAUSAL" | "CONTEXTUAL" | (string & {});
+const AnomalyType = S.String;
+
 export type AnomalyName = string;
 export interface ReactiveAnomaly {
   Id?: string;
@@ -396,24 +529,48 @@ export interface ReactiveAnomaly {
   CausalAnomalyId?: string;
   AnomalyResources?: AnomalyResource[];
 }
+const ReactiveAnomaly = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ReactiveAnomaly>;
 export interface DescribeAnomalyResponse {
   ProactiveAnomaly?: ProactiveAnomaly;
   ReactiveAnomaly?: ReactiveAnomaly;
 }
+const DescribeAnomalyResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DescribeAnomalyResponse>;
 export interface DescribeEventSourcesConfigRequest {}
+const DescribeEventSourcesConfigRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DescribeEventSourcesConfigRequest>;
 export type EventSourceOptInStatus = "ENABLED" | "DISABLED" | (string & {});
+const EventSourceOptInStatus = S.String;
+
 export interface AmazonCodeGuruProfilerIntegration {
   Status?: EventSourceOptInStatus;
 }
+const AmazonCodeGuruProfilerIntegration = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<AmazonCodeGuruProfilerIntegration>;
 export interface EventSourcesConfig {
   AmazonCodeGuruProfiler?: AmazonCodeGuruProfilerIntegration;
 }
+const EventSourcesConfig = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<EventSourcesConfig>;
 export interface DescribeEventSourcesConfigResponse {
   EventSources?: EventSourcesConfig;
 }
+const DescribeEventSourcesConfigResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<DescribeEventSourcesConfigResponse>;
 export interface DescribeFeedbackRequest {
   InsightId?: string;
 }
+const DescribeFeedbackRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DescribeFeedbackRequest>;
 export type InsightFeedbackOption =
   | "VALID_COLLECTION"
   | "RECOMMENDATION_USEFUL"
@@ -421,23 +578,37 @@ export type InsightFeedbackOption =
   | "DATA_NOISY_ANOMALY"
   | "DATA_INCORRECT"
   | (string & {});
+const InsightFeedbackOption = S.String;
+
 export interface InsightFeedback {
   Id?: string;
   Feedback?: InsightFeedbackOption;
 }
+const InsightFeedback = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<InsightFeedback>;
 export interface DescribeFeedbackResponse {
   InsightFeedback?: InsightFeedback;
 }
+const DescribeFeedbackResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DescribeFeedbackResponse>;
 export interface DescribeInsightRequest {
   Id: string;
   AccountId?: string;
 }
+const DescribeInsightRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DescribeInsightRequest>;
 export type InsightName = string;
 export type InsightStatus = "ONGOING" | "CLOSED" | (string & {});
+const InsightStatus = S.String;
+
 export interface InsightTimeRange {
   StartTime: Date;
   EndTime?: Date;
 }
+const InsightTimeRange = AnomalyTimeRange as any as S.Schema<InsightTimeRange>;
 export type SsmOpsItemId = string;
 export type InsightDescription = string;
 export interface ProactiveInsight {
@@ -451,6 +622,7 @@ export interface ProactiveInsight {
   SsmOpsItemId?: string;
   Description?: string;
 }
+const ProactiveInsight = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ProactiveInsight>;
 export interface ReactiveInsight {
   Id?: string;
   Name?: string;
@@ -461,39 +633,65 @@ export interface ReactiveInsight {
   SsmOpsItemId?: string;
   Description?: string;
 }
+const ReactiveInsight = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ReactiveInsight>;
 export interface DescribeInsightResponse {
   ProactiveInsight?: ProactiveInsight;
   ReactiveInsight?: ReactiveInsight;
 }
+const DescribeInsightResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DescribeInsightResponse>;
 export type AccountIdList = string[];
+const AccountIdList = PerformanceInsightsMetricDimensions as any as S.Schema<AccountIdList>;
 export type OrganizationalUnitId = string;
 export type OrganizationalUnitIdList = string[];
+const OrganizationalUnitIdList =
+  PerformanceInsightsMetricDimensions as any as S.Schema<OrganizationalUnitIdList>;
 export interface DescribeOrganizationHealthRequest {
   AccountIds?: string[];
   OrganizationalUnitIds?: string[];
 }
+const DescribeOrganizationHealthRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DescribeOrganizationHealthRequest>;
 export interface DescribeOrganizationHealthResponse {
   OpenReactiveInsights: number;
   OpenProactiveInsights: number;
   MetricsAnalyzed: number;
   ResourceHours: number;
 }
+const DescribeOrganizationHealthResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<DescribeOrganizationHealthResponse>;
 export interface DescribeOrganizationOverviewRequest {
   FromTime: Date;
   ToTime?: Date;
   AccountIds?: string[];
   OrganizationalUnitIds?: string[];
 }
+const DescribeOrganizationOverviewRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<DescribeOrganizationOverviewRequest>;
 export interface DescribeOrganizationOverviewResponse {
   ReactiveInsights: number;
   ProactiveInsights: number;
 }
+const DescribeOrganizationOverviewResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<DescribeOrganizationOverviewResponse>;
 export type OrganizationResourceCollectionType =
   | "AWS_CLOUD_FORMATION"
   | "AWS_SERVICE"
   | "AWS_ACCOUNT"
   | "AWS_TAGS"
   | (string & {});
+const OrganizationResourceCollectionType = S.String;
+
 export type UuidNextToken = string;
 export type OrganizationResourceCollectionMaxResults = number;
 export interface DescribeOrganizationResourceCollectionHealthRequest {
@@ -503,17 +701,24 @@ export interface DescribeOrganizationResourceCollectionHealthRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeOrganizationResourceCollectionHealthRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<DescribeOrganizationResourceCollectionHealthRequest>;
 export interface InsightHealth {
   OpenProactiveInsights?: number;
   OpenReactiveInsights?: number;
   MeanTimeToRecoverInMilliseconds?: number;
 }
+const InsightHealth = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<InsightHealth>;
 export interface CloudFormationHealth {
   StackName?: string;
   Insight?: InsightHealth;
   AnalyzedResourceCount?: number;
 }
+const CloudFormationHealth = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<CloudFormationHealth>;
 export type CloudFormationHealths = CloudFormationHealth[];
+const CloudFormationHealths = /*@__PURE__*/ __L.at(__c8, 0);
 export type ServiceName =
   | "API_GATEWAY"
   | "APPLICATION_ELB"
@@ -541,32 +746,42 @@ export type ServiceName =
   | "STEP_FUNCTIONS"
   | "SWF"
   | (string & {});
+const ServiceName = S.String;
+
 export interface ServiceInsightHealth {
   OpenProactiveInsights?: number;
   OpenReactiveInsights?: number;
 }
+const ServiceInsightHealth = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<ServiceInsightHealth>;
 export interface ServiceHealth {
   ServiceName?: ServiceName;
   Insight?: ServiceInsightHealth;
   AnalyzedResourceCount?: number;
 }
+const ServiceHealth = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ServiceHealth>;
 export type ServiceHealths = ServiceHealth[];
+const ServiceHealths = /*@__PURE__*/ __L.at(__c8, 3);
 export interface AccountInsightHealth {
   OpenProactiveInsights?: number;
   OpenReactiveInsights?: number;
 }
+const AccountInsightHealth = ServiceInsightHealth as any as S.Schema<AccountInsightHealth>;
 export interface AccountHealth {
   AccountId?: string;
   Insight?: AccountInsightHealth;
 }
+const AccountHealth = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<AccountHealth>;
 export type AccountHealths = AccountHealth[];
+const AccountHealths = /*@__PURE__*/ __L.at(__c8, 5);
 export interface TagHealth {
   AppBoundaryKey?: string;
   TagValue?: string;
   Insight?: InsightHealth;
   AnalyzedResourceCount?: number;
 }
+const TagHealth = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<TagHealth>;
 export type TagHealths = TagHealth[];
+const TagHealths = /*@__PURE__*/ __L.at(__c8, 7);
 export interface DescribeOrganizationResourceCollectionHealthResponse {
   CloudFormation?: CloudFormationHealth[];
   Service?: ServiceHealth[];
@@ -574,64 +789,128 @@ export interface DescribeOrganizationResourceCollectionHealthResponse {
   NextToken?: string;
   Tags?: TagHealth[];
 }
+const DescribeOrganizationResourceCollectionHealthResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<DescribeOrganizationResourceCollectionHealthResponse>;
 export type ResourceCollectionType =
   | "AWS_CLOUD_FORMATION"
   | "AWS_SERVICE"
   | "AWS_TAGS"
   | (string & {});
+const ResourceCollectionType = S.String;
+
 export interface DescribeResourceCollectionHealthRequest {
   ResourceCollectionType: ResourceCollectionType;
   NextToken?: string;
 }
+const DescribeResourceCollectionHealthRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<DescribeResourceCollectionHealthRequest>;
 export interface DescribeResourceCollectionHealthResponse {
   CloudFormation?: CloudFormationHealth[];
   Service?: ServiceHealth[];
   NextToken?: string;
   Tags?: TagHealth[];
 }
+const DescribeResourceCollectionHealthResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DescribeResourceCollectionHealthResponse>;
 export interface DescribeServiceIntegrationRequest {}
+const DescribeServiceIntegrationRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<DescribeServiceIntegrationRequest>;
 export type OptInStatus = "ENABLED" | "DISABLED" | (string & {});
+const OptInStatus = S.String;
+
 export interface OpsCenterIntegration {
   OptInStatus?: OptInStatus;
 }
+const OpsCenterIntegration = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<OpsCenterIntegration>;
 export interface LogsAnomalyDetectionIntegration {
   OptInStatus?: OptInStatus;
 }
+const LogsAnomalyDetectionIntegration = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<LogsAnomalyDetectionIntegration>;
 export type KMSKeyId = string;
 export type ServerSideEncryptionType = "CUSTOMER_MANAGED_KEY" | "AWS_OWNED_KMS_KEY" | (string & {});
+const ServerSideEncryptionType = S.String;
+
 export interface KMSServerSideEncryptionIntegration {
   KMSKeyId?: string;
   OptInStatus?: OptInStatus;
   Type?: ServerSideEncryptionType;
 }
+const KMSServerSideEncryptionIntegration = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<KMSServerSideEncryptionIntegration>;
 export interface ServiceIntegrationConfig {
   OpsCenter?: OpsCenterIntegration;
   LogsAnomalyDetection?: LogsAnomalyDetectionIntegration;
   KMSServerSideEncryption?: KMSServerSideEncryptionIntegration;
 }
+const ServiceIntegrationConfig = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ServiceIntegrationConfig>;
 export interface DescribeServiceIntegrationResponse {
   ServiceIntegration?: ServiceIntegrationConfig;
 }
+const DescribeServiceIntegrationResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<DescribeServiceIntegrationResponse>;
 export interface GetCostEstimationRequest {
   NextToken?: string;
 }
+const GetCostEstimationRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<GetCostEstimationRequest>;
 export type CostEstimationStackNames = string[];
+const CostEstimationStackNames =
+  PerformanceInsightsMetricDimensions as any as S.Schema<CostEstimationStackNames>;
 export interface CloudFormationCostEstimationResourceCollectionFilter {
   StackNames?: string[];
 }
+const CloudFormationCostEstimationResourceCollectionFilter = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<CloudFormationCostEstimationResourceCollectionFilter>;
 export type CostEstimationTagValues = string[];
+const CostEstimationTagValues =
+  PerformanceInsightsMetricDimensions as any as S.Schema<CostEstimationTagValues>;
 export interface TagCostEstimationResourceCollectionFilter {
   AppBoundaryKey: string;
   TagValues: string[];
 }
+const TagCostEstimationResourceCollectionFilter = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<TagCostEstimationResourceCollectionFilter>;
 export type TagCostEstimationResourceCollectionFilters =
   TagCostEstimationResourceCollectionFilter[];
+const TagCostEstimationResourceCollectionFilters = /*@__PURE__*/ __L.at(__c10, 4);
 export interface CostEstimationResourceCollectionFilter {
   CloudFormation?: CloudFormationCostEstimationResourceCollectionFilter;
   Tags?: TagCostEstimationResourceCollectionFilter[];
 }
+const CostEstimationResourceCollectionFilter = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<CostEstimationResourceCollectionFilter>;
 export type CostEstimationStatus = "ONGOING" | "COMPLETED" | (string & {});
+const CostEstimationStatus = S.String;
+
 export type CostEstimationServiceResourceState = "ACTIVE" | "INACTIVE" | (string & {});
+const CostEstimationServiceResourceState = S.String;
+
 export type CostEstimationServiceResourceCount = number;
 export type Cost = number;
 export interface ServiceResourceCost {
@@ -641,11 +920,17 @@ export interface ServiceResourceCost {
   UnitCost?: number;
   Cost?: number;
 }
+const ServiceResourceCost = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ServiceResourceCost>;
 export type ServiceResourceCosts = ServiceResourceCost[];
+const ServiceResourceCosts = /*@__PURE__*/ __L.at(__c10, 7);
 export interface CostEstimationTimeRange {
   StartTime?: Date;
   EndTime?: Date;
 }
+const CostEstimationTimeRange = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<CostEstimationTimeRange>;
 export interface GetCostEstimationResponse {
   ResourceCollection?: CostEstimationResourceCollectionFilter;
   Status?: CostEstimationStatus;
@@ -654,38 +939,64 @@ export interface GetCostEstimationResponse {
   TotalCost?: number;
   NextToken?: string;
 }
+const GetCostEstimationResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<GetCostEstimationResponse>;
 export interface GetResourceCollectionRequest {
   ResourceCollectionType: ResourceCollectionType;
   NextToken?: string;
 }
+const GetResourceCollectionRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<GetResourceCollectionRequest>;
 export interface CloudFormationCollectionFilter {
   StackNames?: string[];
 }
+const CloudFormationCollectionFilter =
+  CloudFormationCostEstimationResourceCollectionFilter as any as S.Schema<CloudFormationCollectionFilter>;
 export interface TagCollectionFilter {
   AppBoundaryKey: string;
   TagValues: string[];
 }
 export type TagCollectionFilters = TagCollectionFilter[];
+const TagCollectionFilters = TagCollections as any as S.Schema<TagCollectionFilters>;
 export interface ResourceCollectionFilter {
   CloudFormation?: CloudFormationCollectionFilter;
   Tags?: TagCollectionFilter[];
 }
+const ResourceCollectionFilter = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ResourceCollectionFilter>;
 export interface GetResourceCollectionResponse {
   ResourceCollection?: ResourceCollectionFilter;
   NextToken?: string;
 }
+const GetResourceCollectionResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<GetResourceCollectionResponse>;
 export interface StartTimeRange {
   FromTime?: Date;
   ToTime?: Date;
 }
+const StartTimeRange = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<StartTimeRange>;
 export type ListAnomaliesForInsightMaxResults = number;
 export type ServiceNames = ServiceName[];
+const ServiceNames = InsightSeverities as any as S.Schema<ServiceNames>;
 export interface ServiceCollection {
   ServiceNames?: ServiceName[];
 }
+const ServiceCollection = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<ServiceCollection>;
 export interface ListAnomaliesForInsightFilters {
   ServiceCollection?: ServiceCollection;
 }
+const ListAnomaliesForInsightFilters = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ListAnomaliesForInsightFilters>;
 export interface ListAnomaliesForInsightRequest {
   InsightId: string;
   StartTimeRange?: StartTimeRange;
@@ -694,6 +1005,10 @@ export interface ListAnomaliesForInsightRequest {
   AccountId?: string;
   Filters?: ListAnomaliesForInsightFilters;
 }
+const ListAnomaliesForInsightRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ListAnomaliesForInsightRequest>;
 export interface ProactiveAnomalySummary {
   Id?: string;
   Severity?: AnomalySeverity;
@@ -710,7 +1025,9 @@ export interface ProactiveAnomalySummary {
   AnomalyResources?: AnomalyResource[];
   Description?: string;
 }
+const ProactiveAnomalySummary = ProactiveAnomaly as any as S.Schema<ProactiveAnomalySummary>;
 export type ProactiveAnomalies = ProactiveAnomalySummary[];
+const ProactiveAnomalies = /*@__PURE__*/ __L.at(__c12, 1);
 export interface ReactiveAnomalySummary {
   Id?: string;
   Severity?: AnomalySeverity;
@@ -726,18 +1043,28 @@ export interface ReactiveAnomalySummary {
   CausalAnomalyId?: string;
   AnomalyResources?: AnomalyResource[];
 }
+const ReactiveAnomalySummary = ReactiveAnomaly as any as S.Schema<ReactiveAnomalySummary>;
 export type ReactiveAnomalies = ReactiveAnomalySummary[];
+const ReactiveAnomalies = /*@__PURE__*/ __L.at(__c12, 2);
 export interface ListAnomaliesForInsightResponse {
   ProactiveAnomalies?: ProactiveAnomalySummary[];
   ReactiveAnomalies?: ReactiveAnomalySummary[];
   NextToken?: string;
 }
+const ListAnomaliesForInsightResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<ListAnomaliesForInsightResponse>;
 export type ListAnomalousLogGroupsMaxResults = number;
 export interface ListAnomalousLogGroupsRequest {
   InsightId: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListAnomalousLogGroupsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ListAnomalousLogGroupsRequest>;
 export type LogGroupName = string;
 export type NumberOfLogLinesScanned = number;
 export type LogStreamName = string;
@@ -751,6 +1078,8 @@ export type LogAnomalyType =
   | "NUMERICAL_NAN"
   | "NEW_FIELD_NAME"
   | (string & {});
+const LogAnomalyType = S.String;
+
 export type LogAnomalyToken = string;
 export type LogEventId = string;
 export type Explanation = string;
@@ -764,11 +1093,15 @@ export interface LogAnomalyClass {
   NumberOfLogLinesOccurrences?: number;
   LogEventTimestamp?: Date;
 }
+const LogAnomalyClass = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<LogAnomalyClass>;
 export type LogAnomalyClasses = LogAnomalyClass[];
+const LogAnomalyClasses = /*@__PURE__*/ __L.at(__c12, 6);
 export interface LogAnomalyShowcase {
   LogAnomalyClasses?: LogAnomalyClass[];
 }
+const LogAnomalyShowcase = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<LogAnomalyShowcase>;
 export type LogAnomalyShowcases = LogAnomalyShowcase[];
+const LogAnomalyShowcases = /*@__PURE__*/ __L.at(__c13, 0);
 export interface AnomalousLogGroup {
   LogGroupName?: string;
   ImpactStartTime?: Date;
@@ -776,16 +1109,23 @@ export interface AnomalousLogGroup {
   NumberOfLogLinesScanned?: number;
   LogAnomalyShowcases?: LogAnomalyShowcase[];
 }
+const AnomalousLogGroup = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<AnomalousLogGroup>;
 export type AnomalousLogGroups = AnomalousLogGroup[];
+const AnomalousLogGroups = /*@__PURE__*/ __L.at(__c13, 2);
 export interface ListAnomalousLogGroupsResponse {
   InsightId: string;
   AnomalousLogGroups: AnomalousLogGroup[];
   NextToken?: string;
 }
+const ListAnomalousLogGroupsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ListAnomalousLogGroupsResponse>;
 export interface EventTimeRange {
   FromTime: Date;
   ToTime: Date;
 }
+const EventTimeRange = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<EventTimeRange>;
 export type EventClass =
   | "INFRASTRUCTURE"
   | "DEPLOYMENT"
@@ -793,8 +1133,12 @@ export type EventClass =
   | "CONFIG_CHANGE"
   | "SCHEMA_CHANGE"
   | (string & {});
+const EventClass = S.String;
+
 export type EventSource = string;
 export type EventDataSource = "AWS_CLOUD_TRAIL" | "AWS_CODE_DEPLOY" | (string & {});
+const EventDataSource = S.String;
+
 export interface ListEventsFilters {
   InsightId?: string;
   EventTimeRange?: EventTimeRange;
@@ -803,6 +1147,7 @@ export interface ListEventsFilters {
   DataSource?: EventDataSource;
   ResourceCollection?: ResourceCollection;
 }
+const ListEventsFilters = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<ListEventsFilters>;
 export type ListEventsMaxResults = number;
 export interface ListEventsRequest {
   Filters: ListEventsFilters;
@@ -810,6 +1155,7 @@ export interface ListEventsRequest {
   NextToken?: string;
   AccountId?: string;
 }
+const ListEventsRequest = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<ListEventsRequest>;
 export type EventId = string;
 export type EventName = string;
 export type EventResourceType = string;
@@ -820,7 +1166,9 @@ export interface EventResource {
   Name?: string;
   Arn?: string;
 }
+const EventResource = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<EventResource>;
 export type EventResources = EventResource[];
+const EventResources = /*@__PURE__*/ __L.at(__c14, 0);
 export interface Event {
   ResourceCollection?: ResourceCollection;
   Id?: string;
@@ -831,40 +1179,65 @@ export interface Event {
   EventClass?: EventClass;
   Resources?: EventResource[];
 }
+const Event = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<Event>;
 export type Events = Event[];
+const Events = /*@__PURE__*/ __L.at(__c14, 2);
 export interface ListEventsResponse {
   Events: Event[];
   NextToken?: string;
 }
+const ListEventsResponse = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<ListEventsResponse>;
 export type InsightType = "REACTIVE" | "PROACTIVE" | (string & {});
+const InsightType = S.String;
+
 export interface ListInsightsOngoingStatusFilter {
   Type: InsightType;
 }
+const ListInsightsOngoingStatusFilter = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<ListInsightsOngoingStatusFilter>;
 export interface EndTimeRange {
   FromTime?: Date;
   ToTime?: Date;
 }
+const EndTimeRange = StartTimeRange as any as S.Schema<EndTimeRange>;
 export interface ListInsightsClosedStatusFilter {
   Type: InsightType;
   EndTimeRange: EndTimeRange;
 }
+const ListInsightsClosedStatusFilter = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ListInsightsClosedStatusFilter>;
 export interface ListInsightsAnyStatusFilter {
   Type: InsightType;
   StartTimeRange: StartTimeRange;
 }
+const ListInsightsAnyStatusFilter = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<ListInsightsAnyStatusFilter>;
 export interface ListInsightsStatusFilter {
   Ongoing?: ListInsightsOngoingStatusFilter;
   Closed?: ListInsightsClosedStatusFilter;
   Any?: ListInsightsAnyStatusFilter;
 }
+const ListInsightsStatusFilter = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ListInsightsStatusFilter>;
 export type ListInsightsMaxResults = number;
 export interface ListInsightsRequest {
   StatusFilter: ListInsightsStatusFilter;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListInsightsRequest = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<ListInsightsRequest>;
 export type ResourceArn = string;
 export type AssociatedResourceArns = string[];
+const AssociatedResourceArns =
+  PerformanceInsightsMetricDimensions as any as S.Schema<AssociatedResourceArns>;
 export interface ProactiveInsightSummary {
   Id?: string;
   Name?: string;
@@ -876,7 +1249,12 @@ export interface ProactiveInsightSummary {
   ServiceCollection?: ServiceCollection;
   AssociatedResourceArns?: string[];
 }
+const ProactiveInsightSummary = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ProactiveInsightSummary>;
 export type ProactiveInsights = ProactiveInsightSummary[];
+const ProactiveInsights = /*@__PURE__*/ __L.at(__c15, 2);
 export interface ReactiveInsightSummary {
   Id?: string;
   Name?: string;
@@ -887,13 +1265,24 @@ export interface ReactiveInsightSummary {
   ServiceCollection?: ServiceCollection;
   AssociatedResourceArns?: string[];
 }
+const ReactiveInsightSummary = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ReactiveInsightSummary>;
 export type ReactiveInsights = ReactiveInsightSummary[];
+const ReactiveInsights = /*@__PURE__*/ __L.at(__c15, 4);
 export interface ListInsightsResponse {
   ProactiveInsights?: ProactiveInsightSummary[];
   ReactiveInsights?: ReactiveInsightSummary[];
   NextToken?: string;
 }
+const ListInsightsResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ListInsightsResponse>;
 export type ResourcePermission = "FULL_PERMISSION" | "MISSING_PERMISSION" | (string & {});
+const ResourcePermission = S.String;
+
 export type ResourceTypeFilter =
   | "LOG_GROUPS"
   | "CLOUDFRONT_DISTRIBUTION"
@@ -924,16 +1313,25 @@ export type ResourceTypeFilter =
   | "STEP_FUNCTIONS_STATE_MACHINE"
   | (string & {});
 export type ResourceTypeFilters = ResourceTypeFilter[];
+const ResourceTypeFilters = InsightSeverities as any as S.Schema<ResourceTypeFilters>;
 export interface ListMonitoredResourcesFilters {
   ResourcePermission: ResourcePermission;
   ResourceTypeFilters: ResourceTypeFilter[];
 }
+const ListMonitoredResourcesFilters = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<ListMonitoredResourcesFilters>;
 export type ListMonitoredResourcesMaxResults = number;
 export interface ListMonitoredResourcesRequest {
   Filters?: ListMonitoredResourcesFilters;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListMonitoredResourcesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ListMonitoredResourcesRequest>;
 export type MonitoredResourceName = string;
 export interface MonitoredResourceIdentifier {
   MonitoredResourceName?: string;
@@ -942,25 +1340,48 @@ export interface MonitoredResourceIdentifier {
   LastUpdated?: Date;
   ResourceCollection?: ResourceCollection;
 }
+const MonitoredResourceIdentifier = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<MonitoredResourceIdentifier>;
 export type MonitoredResourceIdentifiers = MonitoredResourceIdentifier[];
+const MonitoredResourceIdentifiers = /*@__PURE__*/ __L.at(__c16, 1);
 export interface ListMonitoredResourcesResponse {
   MonitoredResourceIdentifiers: MonitoredResourceIdentifier[];
   NextToken?: string;
 }
+const ListMonitoredResourcesResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ListMonitoredResourcesResponse>;
 export interface ListNotificationChannelsRequest {
   NextToken?: string;
 }
+const ListNotificationChannelsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ListNotificationChannelsRequest>;
 export interface NotificationChannel {
   Id?: string;
   Config?: NotificationChannelConfig;
 }
+const NotificationChannel = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<NotificationChannel>;
 export type Channels = NotificationChannel[];
+const Channels = /*@__PURE__*/ __L.at(__c16, 5);
 export interface ListNotificationChannelsResponse {
   Channels?: NotificationChannel[];
   NextToken?: string;
 }
+const ListNotificationChannelsResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ListNotificationChannelsResponse>;
 export type ListInsightsAccountIdList = string[];
+const ListInsightsAccountIdList =
+  PerformanceInsightsMetricDimensions as any as S.Schema<ListInsightsAccountIdList>;
 export type ListInsightsOrganizationalUnitIdList = string[];
+const ListInsightsOrganizationalUnitIdList =
+  PerformanceInsightsMetricDimensions as any as S.Schema<ListInsightsOrganizationalUnitIdList>;
 export interface ListOrganizationInsightsRequest {
   StatusFilter: ListInsightsStatusFilter;
   MaxResults?: number;
@@ -968,6 +1389,10 @@ export interface ListOrganizationInsightsRequest {
   OrganizationalUnitIds?: string[];
   NextToken?: string;
 }
+const ListOrganizationInsightsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ListOrganizationInsightsRequest>;
 export interface ProactiveOrganizationInsightSummary {
   Id?: string;
   AccountId?: string;
@@ -980,7 +1405,12 @@ export interface ProactiveOrganizationInsightSummary {
   ResourceCollection?: ResourceCollection;
   ServiceCollection?: ServiceCollection;
 }
+const ProactiveOrganizationInsightSummary = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<ProactiveOrganizationInsightSummary>;
 export type ProactiveOrganizationInsights = ProactiveOrganizationInsightSummary[];
+const ProactiveOrganizationInsights = /*@__PURE__*/ __L.at(__c17, 1);
 export interface ReactiveOrganizationInsightSummary {
   Id?: string;
   AccountId?: string;
@@ -992,12 +1422,21 @@ export interface ReactiveOrganizationInsightSummary {
   ResourceCollection?: ResourceCollection;
   ServiceCollection?: ServiceCollection;
 }
+const ReactiveOrganizationInsightSummary = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<ReactiveOrganizationInsightSummary>;
 export type ReactiveOrganizationInsights = ReactiveOrganizationInsightSummary[];
+const ReactiveOrganizationInsights = /*@__PURE__*/ __L.at(__c17, 3);
 export interface ListOrganizationInsightsResponse {
   ProactiveInsights?: ProactiveOrganizationInsightSummary[];
   ReactiveInsights?: ReactiveOrganizationInsightSummary[];
   NextToken?: string;
 }
+const ListOrganizationInsightsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<ListOrganizationInsightsResponse>;
 export type Locale =
   | "DE_DE"
   | "EN_US"
@@ -1011,12 +1450,18 @@ export type Locale =
   | "ZH_CN"
   | "ZH_TW"
   | (string & {});
+const Locale = S.String;
+
 export interface ListRecommendationsRequest {
   InsightId: string;
   NextToken?: string;
   Locale?: Locale;
   AccountId?: string;
 }
+const ListRecommendationsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ListRecommendationsRequest>;
 export type RecommendationDescription = string;
 export type RecommendationLink = string;
 export type RecommendationName = string;
@@ -1028,12 +1473,22 @@ export interface RecommendationRelatedEventResource {
   Name?: string;
   Type?: string;
 }
+const RecommendationRelatedEventResource = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<RecommendationRelatedEventResource>;
 export type RecommendationRelatedEventResources = RecommendationRelatedEventResource[];
+const RecommendationRelatedEventResources = /*@__PURE__*/ __L.at(__c17, 7);
 export interface RecommendationRelatedEvent {
   Name?: string;
   Resources?: RecommendationRelatedEventResource[];
 }
+const RecommendationRelatedEvent = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<RecommendationRelatedEvent>;
 export type RecommendationRelatedEvents = RecommendationRelatedEvent[];
+const RecommendationRelatedEvents = /*@__PURE__*/ __L.at(__c18, 1);
 export type RecommendationRelatedAnomalyResourceName = string;
 export type RecommendationRelatedAnomalyResourceType = string;
 export interface RecommendationRelatedAnomalyResource {
@@ -1041,24 +1496,41 @@ export interface RecommendationRelatedAnomalyResource {
   Type?: string;
 }
 export type RecommendationRelatedAnomalyResources = RecommendationRelatedAnomalyResource[];
+const RecommendationRelatedAnomalyResources =
+  RecommendationRelatedEventResources as any as S.Schema<RecommendationRelatedAnomalyResources>;
 export type RecommendationRelatedCloudWatchMetricsSourceMetricName = string;
 export type RecommendationRelatedCloudWatchMetricsSourceNamespace = string;
 export interface RecommendationRelatedCloudWatchMetricsSourceDetail {
   MetricName?: string;
   Namespace?: string;
 }
+const RecommendationRelatedCloudWatchMetricsSourceDetail = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<RecommendationRelatedCloudWatchMetricsSourceDetail>;
 export type RecommendationRelatedCloudWatchMetricsSourceDetails =
   RecommendationRelatedCloudWatchMetricsSourceDetail[];
+const RecommendationRelatedCloudWatchMetricsSourceDetails = /*@__PURE__*/ __L.at(__c18, 3);
 export interface RecommendationRelatedAnomalySourceDetail {
   CloudWatchMetrics?: RecommendationRelatedCloudWatchMetricsSourceDetail[];
 }
+const RecommendationRelatedAnomalySourceDetail = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<RecommendationRelatedAnomalySourceDetail>;
 export type RelatedAnomalySourceDetails = RecommendationRelatedAnomalySourceDetail[];
+const RelatedAnomalySourceDetails = /*@__PURE__*/ __L.at(__c18, 5);
 export interface RecommendationRelatedAnomaly {
   Resources?: RecommendationRelatedAnomalyResource[];
   SourceDetails?: RecommendationRelatedAnomalySourceDetail[];
   AnomalyId?: string;
 }
+const RecommendationRelatedAnomaly = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<RecommendationRelatedAnomaly>;
 export type RecommendationRelatedAnomalies = RecommendationRelatedAnomaly[];
+const RecommendationRelatedAnomalies = /*@__PURE__*/ __L.at(__c18, 7);
 export type RecommendationCategory = string;
 export interface Recommendation {
   Description?: string;
@@ -1069,26 +1541,47 @@ export interface Recommendation {
   RelatedAnomalies?: RecommendationRelatedAnomaly[];
   Category?: string;
 }
+const Recommendation = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<Recommendation>;
 export type Recommendations = Recommendation[];
+const Recommendations = /*@__PURE__*/ __L.at(__c19, 1);
 export interface ListRecommendationsResponse {
   Recommendations?: Recommendation[];
   NextToken?: string;
 }
+const ListRecommendationsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ListRecommendationsResponse>;
 export interface PutFeedbackRequest {
   InsightFeedback?: InsightFeedback;
 }
+const PutFeedbackRequest = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<PutFeedbackRequest>;
 export interface PutFeedbackResponse {}
+const PutFeedbackResponse = DeleteInsightResponse as any as S.Schema<PutFeedbackResponse>;
 export interface RemoveNotificationChannelRequest {
   Id: string;
 }
+const RemoveNotificationChannelRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<RemoveNotificationChannelRequest>;
 export interface RemoveNotificationChannelResponse {}
+const RemoveNotificationChannelResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<RemoveNotificationChannelResponse>;
 export type InsightStatuses = InsightStatus[];
+const InsightStatuses = InsightSeverities as any as S.Schema<InsightStatuses>;
 export interface SearchInsightsFilters {
   Severities?: InsightSeverity[];
   Statuses?: InsightStatus[];
   ResourceCollection?: ResourceCollection;
   ServiceCollection?: ServiceCollection;
 }
+const SearchInsightsFilters = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<SearchInsightsFilters>;
 export type SearchInsightsMaxResults = number;
 export interface SearchInsightsRequest {
   StartTimeRange: StartTimeRange;
@@ -1097,18 +1590,29 @@ export interface SearchInsightsRequest {
   NextToken?: string;
   Type: InsightType;
 }
+const SearchInsightsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<SearchInsightsRequest>;
 export interface SearchInsightsResponse {
   ProactiveInsights?: ProactiveInsightSummary[];
   ReactiveInsights?: ReactiveInsightSummary[];
   NextToken?: string;
 }
+const SearchInsightsResponse = ListInsightsResponse as any as S.Schema<SearchInsightsResponse>;
 export type SearchInsightsAccountIdList = string[];
+const SearchInsightsAccountIdList =
+  PerformanceInsightsMetricDimensions as any as S.Schema<SearchInsightsAccountIdList>;
 export interface SearchOrganizationInsightsFilters {
   Severities?: InsightSeverity[];
   Statuses?: InsightStatus[];
   ResourceCollection?: ResourceCollection;
   ServiceCollection?: ServiceCollection;
 }
+const SearchOrganizationInsightsFilters = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<SearchOrganizationInsightsFilters>;
 export type SearchOrganizationInsightsMaxResults = number;
 export interface SearchOrganizationInsightsRequest {
   AccountIds: string[];
@@ -1118,61 +1622,114 @@ export interface SearchOrganizationInsightsRequest {
   NextToken?: string;
   Type: InsightType;
 }
+const SearchOrganizationInsightsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<SearchOrganizationInsightsRequest>;
 export interface SearchOrganizationInsightsResponse {
   ProactiveInsights?: ProactiveInsightSummary[];
   ReactiveInsights?: ReactiveInsightSummary[];
   NextToken?: string;
 }
+const SearchOrganizationInsightsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<SearchOrganizationInsightsResponse>;
 export type ClientToken = string;
 export interface StartCostEstimationRequest {
   ResourceCollection: CostEstimationResourceCollectionFilter;
   ClientToken?: string;
 }
+const StartCostEstimationRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<StartCostEstimationRequest>;
 export interface StartCostEstimationResponse {}
+const StartCostEstimationResponse =
+  DeleteInsightResponse as any as S.Schema<StartCostEstimationResponse>;
 export interface UpdateEventSourcesConfigRequest {
   EventSources?: EventSourcesConfig;
 }
+const UpdateEventSourcesConfigRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<UpdateEventSourcesConfigRequest>;
 export interface UpdateEventSourcesConfigResponse {}
+const UpdateEventSourcesConfigResponse =
+  RemoveNotificationChannelResponse as any as S.Schema<UpdateEventSourcesConfigResponse>;
 export type UpdateResourceCollectionAction = "ADD" | "REMOVE" | (string & {});
+const UpdateResourceCollectionAction = S.String;
+
 export type UpdateStackNames = string[];
 export interface UpdateCloudFormationCollectionFilter {
   StackNames?: string[];
 }
+const UpdateCloudFormationCollectionFilter =
+  CloudFormationCostEstimationResourceCollectionFilter as any as S.Schema<UpdateCloudFormationCollectionFilter>;
 export type UpdateTagValues = string[];
 export interface UpdateTagCollectionFilter {
   AppBoundaryKey: string;
   TagValues: string[];
 }
+const UpdateTagCollectionFilter =
+  TagCostEstimationResourceCollectionFilter as any as S.Schema<UpdateTagCollectionFilter>;
 export type UpdateTagCollectionFilters = UpdateTagCollectionFilter[];
+const UpdateTagCollectionFilters = /*@__PURE__*/ __L.at(__c20, 5);
 export interface UpdateResourceCollectionFilter {
   CloudFormation?: UpdateCloudFormationCollectionFilter;
   Tags?: UpdateTagCollectionFilter[];
 }
+const UpdateResourceCollectionFilter = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<UpdateResourceCollectionFilter>;
 export interface UpdateResourceCollectionRequest {
   Action: UpdateResourceCollectionAction;
   ResourceCollection: UpdateResourceCollectionFilter;
 }
+const UpdateResourceCollectionRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<UpdateResourceCollectionRequest>;
 export interface UpdateResourceCollectionResponse {}
+const UpdateResourceCollectionResponse =
+  RemoveNotificationChannelResponse as any as S.Schema<UpdateResourceCollectionResponse>;
 export interface OpsCenterIntegrationConfig {
   OptInStatus?: OptInStatus;
 }
+const OpsCenterIntegrationConfig =
+  LogsAnomalyDetectionIntegration as any as S.Schema<OpsCenterIntegrationConfig>;
 export interface LogsAnomalyDetectionIntegrationConfig {
   OptInStatus?: OptInStatus;
 }
+const LogsAnomalyDetectionIntegrationConfig =
+  LogsAnomalyDetectionIntegration as any as S.Schema<LogsAnomalyDetectionIntegrationConfig>;
 export interface KMSServerSideEncryptionIntegrationConfig {
   KMSKeyId?: string;
   OptInStatus?: OptInStatus;
   Type?: ServerSideEncryptionType;
 }
+const KMSServerSideEncryptionIntegrationConfig =
+  KMSServerSideEncryptionIntegration as any as S.Schema<KMSServerSideEncryptionIntegrationConfig>;
 export interface UpdateServiceIntegrationConfig {
   OpsCenter?: OpsCenterIntegrationConfig;
   LogsAnomalyDetection?: LogsAnomalyDetectionIntegrationConfig;
   KMSServerSideEncryption?: KMSServerSideEncryptionIntegrationConfig;
 }
+const UpdateServiceIntegrationConfig = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<UpdateServiceIntegrationConfig>;
 export interface UpdateServiceIntegrationRequest {
   ServiceIntegration: UpdateServiceIntegrationConfig;
 }
+const UpdateServiceIntegrationRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<UpdateServiceIntegrationRequest>;
 export interface UpdateServiceIntegrationResponse {}
+const UpdateServiceIntegrationResponse =
+  RemoveNotificationChannelResponse as any as S.Schema<UpdateServiceIntegrationResponse>;
 export type ErrorMessageString = string;
 export type ResourceIdString = string;
 export type ResourceIdType = string;
@@ -1187,12 +1744,19 @@ export type ValidationExceptionReason =
   | "INVALID_PARAMETER_COMBINATION"
   | "PARAMETER_INCONSISTENT_WITH_SERVICE_STATE"
   | (string & {});
+const ValidationExceptionReason = S.String;
+
 export type ErrorNameString = string;
 export interface ValidationExceptionField {
   Name: string;
   Message: string;
 }
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFields = ValidationExceptionField[];
+const ValidationExceptionFields = /*@__PURE__*/ __L.at(__c21, 3);
 export type AddNotificationChannelError =
   | AccessDeniedException
   | ConflictException
@@ -1221,8 +1785,8 @@ export const addNotificationChannel: API.OperationMethod<
   AddNotificationChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<AddNotificationChannelRequest>,
-  output: __S(5) as any as S.Schema<AddNotificationChannelResponse>,
+  input: AddNotificationChannelRequest,
+  output: AddNotificationChannelResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1254,8 +1818,8 @@ export const deleteInsight: API.OperationMethod<
   DeleteInsightError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DeleteInsightRequest>,
-  output: __S(7) as any as S.Schema<DeleteInsightResponse>,
+  input: DeleteInsightRequest,
+  output: DeleteInsightResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1286,8 +1850,8 @@ export const describeAccountHealth: API.OperationMethod<
   DescribeAccountHealthError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<DescribeAccountHealthRequest>,
-  output: __S(9) as any as S.Schema<DescribeAccountHealthResponse>,
+  input: DescribeAccountHealthRequest,
+  output: DescribeAccountHealthResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1316,8 +1880,8 @@ export const describeAccountOverview: API.OperationMethod<
   DescribeAccountOverviewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DescribeAccountOverviewRequest>,
-  output: __S(11) as any as S.Schema<DescribeAccountOverviewResponse>,
+  input: DescribeAccountOverviewRequest,
+  output: DescribeAccountOverviewResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1345,8 +1909,8 @@ export const describeAnomaly: API.OperationMethod<
   DescribeAnomalyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DescribeAnomalyRequest>,
-  output: __S(45) as any as S.Schema<DescribeAnomalyResponse>,
+  input: DescribeAnomalyRequest,
+  output: DescribeAnomalyResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1377,8 +1941,8 @@ export const describeEventSourcesConfig: API.OperationMethod<
   DescribeEventSourcesConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<DescribeEventSourcesConfigRequest>,
-  output: __S(49) as any as S.Schema<DescribeEventSourcesConfigResponse>,
+  input: DescribeEventSourcesConfigRequest,
+  output: DescribeEventSourcesConfigResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1406,8 +1970,8 @@ export const describeFeedback: API.OperationMethod<
   DescribeFeedbackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<DescribeFeedbackRequest>,
-  output: __S(52) as any as S.Schema<DescribeFeedbackResponse>,
+  input: DescribeFeedbackRequest,
+  output: DescribeFeedbackResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1436,8 +2000,8 @@ export const describeInsight: API.OperationMethod<
   DescribeInsightError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<DescribeInsightRequest>,
-  output: __S(56) as any as S.Schema<DescribeInsightResponse>,
+  input: DescribeInsightRequest,
+  output: DescribeInsightResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1466,8 +2030,8 @@ export const describeOrganizationHealth: API.OperationMethod<
   DescribeOrganizationHealthError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<DescribeOrganizationHealthRequest>,
-  output: __S(58) as any as S.Schema<DescribeOrganizationHealthResponse>,
+  input: DescribeOrganizationHealthRequest,
+  output: DescribeOrganizationHealthResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1495,8 +2059,8 @@ export const describeOrganizationOverview: API.OperationMethod<
   DescribeOrganizationOverviewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<DescribeOrganizationOverviewRequest>,
-  output: __S(60) as any as S.Schema<DescribeOrganizationOverviewResponse>,
+  input: DescribeOrganizationOverviewRequest,
+  output: DescribeOrganizationOverviewResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1526,8 +2090,8 @@ export const describeOrganizationResourceCollectionHealth: API.PaginatedOperatio
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(61) as any as S.Schema<DescribeOrganizationResourceCollectionHealthRequest>,
-  output: __S(72) as any as S.Schema<DescribeOrganizationResourceCollectionHealthResponse>,
+  input: DescribeOrganizationResourceCollectionHealthRequest,
+  output: DescribeOrganizationResourceCollectionHealthResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1560,8 +2124,8 @@ export const describeResourceCollectionHealth: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(73) as any as S.Schema<DescribeResourceCollectionHealthRequest>,
-  output: __S(74) as any as S.Schema<DescribeResourceCollectionHealthResponse>,
+  input: DescribeResourceCollectionHealthRequest,
+  output: DescribeResourceCollectionHealthResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1592,8 +2156,8 @@ export const describeServiceIntegration: API.OperationMethod<
   DescribeServiceIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<DescribeServiceIntegrationRequest>,
-  output: __S(80) as any as S.Schema<DescribeServiceIntegrationResponse>,
+  input: DescribeServiceIntegrationRequest,
+  output: DescribeServiceIntegrationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1627,8 +2191,8 @@ export const getCostEstimation: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(81) as any as S.Schema<GetCostEstimationRequest>,
-  output: __S(89) as any as S.Schema<GetCostEstimationResponse>,
+  input: GetCostEstimationRequest,
+  output: GetCostEstimationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1662,8 +2226,8 @@ export const getResourceCollection: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(90) as any as S.Schema<GetResourceCollectionRequest>,
-  output: __S(92) as any as S.Schema<GetResourceCollectionResponse>,
+  input: GetResourceCollectionRequest,
+  output: GetResourceCollectionResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1695,8 +2259,8 @@ export const listAnomaliesForInsight: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(96) as any as S.Schema<ListAnomaliesForInsightRequest>,
-  output: __S(99) as any as S.Schema<ListAnomaliesForInsightResponse>,
+  input: ListAnomaliesForInsightRequest,
+  output: ListAnomaliesForInsightResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1731,8 +2295,8 @@ export const listAnomalousLogGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(100) as any as S.Schema<ListAnomalousLogGroupsRequest>,
-  output: __S(107) as any as S.Schema<ListAnomalousLogGroupsResponse>,
+  input: ListAnomalousLogGroupsRequest,
+  output: ListAnomalousLogGroupsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1768,8 +2332,8 @@ export const listEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Event
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(110) as any as S.Schema<ListEventsRequest>,
-  output: __S(115) as any as S.Schema<ListEventsResponse>,
+  input: ListEventsRequest,
+  output: ListEventsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1806,8 +2370,8 @@ export const listInsights: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(120) as any as S.Schema<ListInsightsRequest>,
-  output: __S(125) as any as S.Schema<ListInsightsResponse>,
+  input: ListInsightsRequest,
+  output: ListInsightsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1840,8 +2404,8 @@ export const listMonitoredResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(127) as any as S.Schema<ListMonitoredResourcesRequest>,
-  output: __S(130) as any as S.Schema<ListMonitoredResourcesResponse>,
+  input: ListMonitoredResourcesRequest,
+  output: ListMonitoredResourcesResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1877,8 +2441,8 @@ export const listNotificationChannels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NotificationChannel
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(131) as any as S.Schema<ListNotificationChannelsRequest>,
-  output: __S(134) as any as S.Schema<ListNotificationChannelsResponse>,
+  input: ListNotificationChannelsRequest,
+  output: ListNotificationChannelsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1907,8 +2471,8 @@ export const listOrganizationInsights: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(135) as any as S.Schema<ListOrganizationInsightsRequest>,
-  output: __S(140) as any as S.Schema<ListOrganizationInsightsResponse>,
+  input: ListOrganizationInsightsRequest,
+  output: ListOrganizationInsightsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1943,8 +2507,8 @@ export const listRecommendations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Recommendation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(141) as any as S.Schema<ListRecommendationsRequest>,
-  output: __S(154) as any as S.Schema<ListRecommendationsResponse>,
+  input: ListRecommendationsRequest,
+  output: ListRecommendationsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1979,8 +2543,8 @@ export const putFeedback: API.OperationMethod<
   PutFeedbackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155) as any as S.Schema<PutFeedbackRequest>,
-  output: __S(7) as any as S.Schema<PutFeedbackResponse>,
+  input: PutFeedbackRequest,
+  output: PutFeedbackResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2013,8 +2577,8 @@ export const removeNotificationChannel: API.OperationMethod<
   RemoveNotificationChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156) as any as S.Schema<RemoveNotificationChannelRequest>,
-  output: __S(157) as any as S.Schema<RemoveNotificationChannelResponse>,
+  input: RemoveNotificationChannelRequest,
+  output: RemoveNotificationChannelResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2051,8 +2615,8 @@ export const searchInsights: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(159) as any as S.Schema<SearchInsightsRequest>,
-  output: __S(125) as any as S.Schema<SearchInsightsResponse>,
+  input: SearchInsightsRequest,
+  output: SearchInsightsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2093,8 +2657,8 @@ export const searchOrganizationInsights: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(161) as any as S.Schema<SearchOrganizationInsightsRequest>,
-  output: __S(162) as any as S.Schema<SearchOrganizationInsightsResponse>,
+  input: SearchOrganizationInsightsRequest,
+  output: SearchOrganizationInsightsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2129,8 +2693,8 @@ export const startCostEstimation: API.OperationMethod<
   StartCostEstimationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<StartCostEstimationRequest>,
-  output: __S(7) as any as S.Schema<StartCostEstimationResponse>,
+  input: StartCostEstimationRequest,
+  output: StartCostEstimationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2161,8 +2725,8 @@ export const updateEventSourcesConfig: API.OperationMethod<
   UpdateEventSourcesConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164) as any as S.Schema<UpdateEventSourcesConfigRequest>,
-  output: __S(157) as any as S.Schema<UpdateEventSourcesConfigResponse>,
+  input: UpdateEventSourcesConfigRequest,
+  output: UpdateEventSourcesConfigResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2194,8 +2758,8 @@ export const updateResourceCollection: API.OperationMethod<
   UpdateResourceCollectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<UpdateResourceCollectionRequest>,
-  output: __S(157) as any as S.Schema<UpdateResourceCollectionResponse>,
+  input: UpdateResourceCollectionRequest,
+  output: UpdateResourceCollectionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2226,8 +2790,8 @@ export const updateServiceIntegration: API.OperationMethod<
   UpdateServiceIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<UpdateServiceIntegrationRequest>,
-  output: __S(157) as any as S.Schema<UpdateServiceIntegrationResponse>,
+  input: UpdateServiceIntegrationRequest,
+  output: UpdateServiceIntegrationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2248,21 +2812,23 @@ function __c0(j: number): any {
         identifier: "SnsChannelConfig",
       });
     case 1:
-      return S.Array(S.String);
+      return S.Array(InsightSeverity);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Severities: S.optional(__S(1)),
-          MessageTypes: S.optional(__S(1)),
+          Severities: S.optional(InsightSeverities),
+          MessageTypes: S.optional(NotificationMessageTypes),
         }),
       ).annotate({ identifier: "NotificationFilterConfig" });
     case 3:
-      return S.suspend(() => S.Struct({ Sns: __S(0), Filters: S.optional(__S(2)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ Sns: SnsChannelConfig, Filters: S.optional(NotificationFilterConfig) }),
+      ).annotate({
         identifier: "NotificationChannelConfig",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Config: __S(3) }).pipe(
+        S.Struct({ Config: NotificationChannelConfig }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/channels" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -2368,7 +2934,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(CloudWatchMetricsDimension);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2377,12 +2943,12 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "TimestampMetricValuePair" });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(TimestampMetricValuePair);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          TimestampMetricValuePairList: S.optional(__S(18)),
-          StatusCode: S.optional(S.String),
+          TimestampMetricValuePairList: S.optional(TimestampMetricValuePairList),
+          StatusCode: S.optional(CloudWatchMetricDataStatusCode),
         }),
       ).annotate({
         identifier: "CloudWatchMetricsDataSummary",
@@ -2392,22 +2958,22 @@ function __c2(j: number): any {
         S.Struct({
           MetricName: S.optional(S.String),
           Namespace: S.optional(S.String),
-          Dimensions: S.optional(__S(16)),
-          Stat: S.optional(S.String),
+          Dimensions: S.optional(CloudWatchMetricsDimensions),
+          Stat: S.optional(CloudWatchMetricsStat),
           Unit: S.optional(S.String),
           Period: S.optional(S.Number),
-          MetricDataSummary: S.optional(__S(19)),
+          MetricDataSummary: S.optional(CloudWatchMetricsDataSummary),
         }),
       ).annotate({ identifier: "CloudWatchMetricsDetail" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(CloudWatchMetricsDetail);
     case 6:
       return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
           Group: S.optional(S.String),
-          Dimensions: S.optional(__S(22)),
+          Dimensions: S.optional(PerformanceInsightsMetricDimensions),
           Limit: S.optional(S.Number),
         }),
       ).annotate({
@@ -2423,8 +2989,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Metric: S.optional(S.String),
-          GroupBy: S.optional(__S(23)),
-          Filter: S.optional(__S(24)),
+          GroupBy: S.optional(PerformanceInsightsMetricDimensionGroup),
+          Filter: S.optional(PerformanceInsightsMetricFilterMap),
         }),
       ).annotate({
         identifier: "PerformanceInsightsMetricQuery",
@@ -2434,14 +3000,16 @@ function __c3(j: number): any {
         identifier: "PerformanceInsightsReferenceScalar",
       });
     case 3:
-      return S.suspend(() => S.Struct({ MetricQuery: S.optional(__S(25)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ MetricQuery: S.optional(PerformanceInsightsMetricQuery) }),
+      ).annotate({
         identifier: "PerformanceInsightsReferenceMetric",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ReferenceScalar: S.optional(__S(26)),
-          ReferenceMetric: S.optional(__S(27)),
+          ReferenceScalar: S.optional(PerformanceInsightsReferenceScalar),
+          ReferenceMetric: S.optional(PerformanceInsightsReferenceMetric),
         }),
       ).annotate({
         identifier: "PerformanceInsightsReferenceComparisonValues",
@@ -2450,13 +3018,13 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          ComparisonValues: S.optional(__S(28)),
+          ComparisonValues: S.optional(PerformanceInsightsReferenceComparisonValues),
         }),
       ).annotate({
         identifier: "PerformanceInsightsReferenceData",
       });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(PerformanceInsightsReferenceData);
     case 7:
       return S.suspend(() =>
         S.Struct({ Type: S.optional(S.String), Value: S.optional(S.Number) }),
@@ -2466,44 +3034,44 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(PerformanceInsightsStat);
     case 1:
       return S.suspend(() =>
         S.Struct({
           MetricDisplayName: S.optional(S.String),
           Unit: S.optional(S.String),
-          MetricQuery: S.optional(__S(25)),
-          ReferenceData: S.optional(__S(30)),
-          StatsAtAnomaly: S.optional(__S(32)),
-          StatsAtBaseline: S.optional(__S(32)),
+          MetricQuery: S.optional(PerformanceInsightsMetricQuery),
+          ReferenceData: S.optional(PerformanceInsightsReferenceDataList),
+          StatsAtAnomaly: S.optional(PerformanceInsightsStats),
+          StatsAtBaseline: S.optional(PerformanceInsightsStats),
         }),
       ).annotate({
         identifier: "PerformanceInsightsMetricsDetail",
       });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(PerformanceInsightsMetricsDetail);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          CloudWatchMetrics: S.optional(__S(21)),
-          PerformanceInsightsMetrics: S.optional(__S(34)),
+          CloudWatchMetrics: S.optional(CloudWatchMetricsDetails),
+          PerformanceInsightsMetrics: S.optional(PerformanceInsightsMetricsDetails),
         }),
       ).annotate({ identifier: "AnomalySourceDetails" });
     case 4:
-      return S.suspend(() => S.Struct({ StackNames: S.optional(__S(22)) })).annotate({
+      return S.suspend(() => S.Struct({ StackNames: S.optional(StackNames) })).annotate({
         identifier: "CloudFormationCollection",
       });
     case 5:
-      return S.suspend(() => S.Struct({ AppBoundaryKey: S.String, TagValues: __S(22) })).annotate({
-        identifier: "TagCollection",
-      });
+      return S.suspend(() => S.Struct({ AppBoundaryKey: S.String, TagValues: TagValues })).annotate(
+        { identifier: "TagCollection" },
+      );
     case 6:
-      return S.Array(__S(37));
+      return S.Array(TagCollection);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          CloudFormation: S.optional(__S(36)),
-          Tags: S.optional(__S(38)),
+          CloudFormation: S.optional(CloudFormationCollection),
+          Tags: S.optional(TagCollections),
         }),
       ).annotate({ identifier: "ResourceCollection" });
   }
@@ -2523,23 +3091,23 @@ function __c5(j: number): any {
         S.Struct({ Name: S.optional(S.String), Type: S.optional(S.String) }),
       ).annotate({ identifier: "AnomalyResource" });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(AnomalyResource);
     case 3:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
-          Severity: S.optional(S.String),
-          Status: S.optional(S.String),
+          Severity: S.optional(AnomalySeverity),
+          Status: S.optional(AnomalyStatus),
           UpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AnomalyTimeRange: S.optional(__S(13)),
-          AnomalyReportedTimeRange: S.optional(__S(14)),
-          PredictionTimeRange: S.optional(__S(13)),
-          SourceDetails: S.optional(__S(35)),
+          AnomalyTimeRange: S.optional(AnomalyTimeRange),
+          AnomalyReportedTimeRange: S.optional(AnomalyReportedTimeRange),
+          PredictionTimeRange: S.optional(PredictionTimeRange),
+          SourceDetails: S.optional(AnomalySourceDetails),
           AssociatedInsightId: S.optional(S.String),
-          ResourceCollection: S.optional(__S(39)),
+          ResourceCollection: S.optional(ResourceCollection),
           Limit: S.optional(S.Number),
-          SourceMetadata: S.optional(__S(40)),
-          AnomalyResources: S.optional(__S(42)),
+          SourceMetadata: S.optional(AnomalySourceMetadata),
+          AnomalyResources: S.optional(AnomalyResources),
           Description: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProactiveAnomaly" });
@@ -2547,25 +3115,25 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
-          Severity: S.optional(S.String),
-          Status: S.optional(S.String),
-          AnomalyTimeRange: S.optional(__S(13)),
-          AnomalyReportedTimeRange: S.optional(__S(14)),
-          SourceDetails: S.optional(__S(35)),
+          Severity: S.optional(AnomalySeverity),
+          Status: S.optional(AnomalyStatus),
+          AnomalyTimeRange: S.optional(AnomalyTimeRange),
+          AnomalyReportedTimeRange: S.optional(AnomalyReportedTimeRange),
+          SourceDetails: S.optional(AnomalySourceDetails),
           AssociatedInsightId: S.optional(S.String),
-          ResourceCollection: S.optional(__S(39)),
-          Type: S.optional(S.String),
+          ResourceCollection: S.optional(ResourceCollection),
+          Type: S.optional(AnomalyType),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           CausalAnomalyId: S.optional(S.String),
-          AnomalyResources: S.optional(__S(42)),
+          AnomalyResources: S.optional(AnomalyResources),
         }),
       ).annotate({ identifier: "ReactiveAnomaly" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ProactiveAnomaly: S.optional(__S(43)),
-          ReactiveAnomaly: S.optional(__S(44)),
+          ProactiveAnomaly: S.optional(ProactiveAnomaly),
+          ReactiveAnomaly: S.optional(ReactiveAnomaly),
         }),
       ).annotate({ identifier: "DescribeAnomalyResponse" });
     case 6:
@@ -2577,7 +3145,7 @@ function __c5(j: number): any {
         identifier: "DescribeEventSourcesConfigRequest",
       });
     case 7:
-      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ Status: S.optional(EventSourceOptInStatus) })).annotate({
         identifier: "AmazonCodeGuruProfilerIntegration",
       });
   }
@@ -2585,11 +3153,11 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ AmazonCodeGuruProfiler: S.optional(__S(47)) })).annotate({
-        identifier: "EventSourcesConfig",
-      });
+      return S.suspend(() =>
+        S.Struct({ AmazonCodeGuruProfiler: S.optional(AmazonCodeGuruProfilerIntegration) }),
+      ).annotate({ identifier: "EventSourcesConfig" });
     case 1:
-      return S.suspend(() => S.Struct({ EventSources: S.optional(__S(48)) })).annotate({
+      return S.suspend(() => S.Struct({ EventSources: S.optional(EventSourcesConfig) })).annotate({
         identifier: "DescribeEventSourcesConfigResponse",
       });
     case 2:
@@ -2600,10 +3168,10 @@ function __c6(j: number): any {
       ).annotate({ identifier: "DescribeFeedbackRequest" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ Id: S.optional(S.String), Feedback: S.optional(S.String) }),
+        S.Struct({ Id: S.optional(S.String), Feedback: S.optional(InsightFeedbackOption) }),
       ).annotate({ identifier: "InsightFeedback" });
     case 4:
-      return S.suspend(() => S.Struct({ InsightFeedback: S.optional(__S(51)) })).annotate({
+      return S.suspend(() => S.Struct({ InsightFeedback: S.optional(InsightFeedback) })).annotate({
         identifier: "DescribeFeedbackResponse",
       });
     case 5:
@@ -2620,11 +3188,11 @@ function __c6(j: number): any {
         S.Struct({
           Id: S.optional(S.String),
           Name: S.optional(S.String),
-          Severity: S.optional(S.String),
-          Status: S.optional(S.String),
-          InsightTimeRange: S.optional(__S(13)),
-          PredictionTimeRange: S.optional(__S(13)),
-          ResourceCollection: S.optional(__S(39)),
+          Severity: S.optional(InsightSeverity),
+          Status: S.optional(InsightStatus),
+          InsightTimeRange: S.optional(InsightTimeRange),
+          PredictionTimeRange: S.optional(PredictionTimeRange),
+          ResourceCollection: S.optional(ResourceCollection),
           SsmOpsItemId: S.optional(S.String),
           Description: S.optional(S.String),
         }),
@@ -2634,10 +3202,10 @@ function __c6(j: number): any {
         S.Struct({
           Id: S.optional(S.String),
           Name: S.optional(S.String),
-          Severity: S.optional(S.String),
-          Status: S.optional(S.String),
-          InsightTimeRange: S.optional(__S(13)),
-          ResourceCollection: S.optional(__S(39)),
+          Severity: S.optional(InsightSeverity),
+          Status: S.optional(InsightStatus),
+          InsightTimeRange: S.optional(InsightTimeRange),
+          ResourceCollection: S.optional(ResourceCollection),
           SsmOpsItemId: S.optional(S.String),
           Description: S.optional(S.String),
         }),
@@ -2649,15 +3217,15 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ProactiveInsight: S.optional(__S(54)),
-          ReactiveInsight: S.optional(__S(55)),
+          ProactiveInsight: S.optional(ProactiveInsight),
+          ReactiveInsight: S.optional(ReactiveInsight),
         }),
       ).annotate({ identifier: "DescribeInsightResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AccountIds: S.optional(__S(22)),
-          OrganizationalUnitIds: S.optional(__S(22)),
+          AccountIds: S.optional(AccountIdList),
+          OrganizationalUnitIds: S.optional(OrganizationalUnitIdList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/organization/health" }),
@@ -2687,8 +3255,8 @@ function __c7(j: number): any {
         S.Struct({
           FromTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           ToTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AccountIds: S.optional(__S(22)),
-          OrganizationalUnitIds: S.optional(__S(22)),
+          AccountIds: S.optional(AccountIdList),
+          OrganizationalUnitIds: S.optional(OrganizationalUnitIdList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/organization/overview" }),
@@ -2711,9 +3279,9 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          OrganizationResourceCollectionType: S.String,
-          AccountIds: S.optional(__S(22)),
-          OrganizationalUnitIds: S.optional(__S(22)),
+          OrganizationResourceCollectionType: OrganizationResourceCollectionType,
+          AccountIds: S.optional(AccountIdList),
+          OrganizationalUnitIds: S.optional(OrganizationalUnitIdList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(
@@ -2741,7 +3309,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           StackName: S.optional(S.String),
-          Insight: S.optional(__S(62)),
+          Insight: S.optional(InsightHealth),
           AnalyzedResourceCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CloudFormationHealth" });
@@ -2750,7 +3318,7 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(CloudFormationHealth);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2761,30 +3329,30 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ServiceName: S.optional(S.String),
-          Insight: S.optional(__S(65)),
+          ServiceName: S.optional(ServiceName),
+          Insight: S.optional(ServiceInsightHealth),
           AnalyzedResourceCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ServiceHealth" });
     case 3:
-      return S.Array(__S(66));
+      return S.Array(ServiceHealth);
     case 4:
       return S.suspend(() =>
-        S.Struct({ AccountId: S.optional(S.String), Insight: S.optional(__S(65)) }),
+        S.Struct({ AccountId: S.optional(S.String), Insight: S.optional(AccountInsightHealth) }),
       ).annotate({ identifier: "AccountHealth" });
     case 5:
-      return S.Array(__S(68));
+      return S.Array(AccountHealth);
     case 6:
       return S.suspend(() =>
         S.Struct({
           AppBoundaryKey: S.optional(S.String),
           TagValue: S.optional(S.String),
-          Insight: S.optional(__S(62)),
+          Insight: S.optional(InsightHealth),
           AnalyzedResourceCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TagHealth" });
     case 7:
-      return S.Array(__S(70));
+      return S.Array(TagHealth);
   }
 }
 function __c9(j: number): any {
@@ -2792,11 +3360,11 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          CloudFormation: S.optional(__S(64)),
-          Service: S.optional(__S(67)),
-          Account: S.optional(__S(69)),
+          CloudFormation: S.optional(CloudFormationHealths),
+          Service: S.optional(ServiceHealths),
+          Account: S.optional(AccountHealths),
           NextToken: S.optional(S.String),
-          Tags: S.optional(__S(71)),
+          Tags: S.optional(TagHealths),
         }),
       ).annotate({
         identifier: "DescribeOrganizationResourceCollectionHealthResponse",
@@ -2804,7 +3372,9 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ResourceCollectionType: S.String.pipe(T.HttpLabel("ResourceCollectionType")),
+          ResourceCollectionType: ResourceCollectionType.pipe(
+            T.HttpLabel("ResourceCollectionType"),
+          ),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
         }).pipe(
           T.all(
@@ -2825,10 +3395,10 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          CloudFormation: S.optional(__S(64)),
-          Service: S.optional(__S(67)),
+          CloudFormation: S.optional(CloudFormationHealths),
+          Service: S.optional(ServiceHealths),
           NextToken: S.optional(S.String),
-          Tags: S.optional(__S(71)),
+          Tags: S.optional(TagHealths),
         }),
       ).annotate({
         identifier: "DescribeResourceCollectionHealthResponse",
@@ -2849,19 +3419,19 @@ function __c9(j: number): any {
         identifier: "DescribeServiceIntegrationRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ OptInStatus: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ OptInStatus: S.optional(OptInStatus) })).annotate({
         identifier: "OpsCenterIntegration",
       });
     case 5:
-      return S.suspend(() => S.Struct({ OptInStatus: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ OptInStatus: S.optional(OptInStatus) })).annotate({
         identifier: "LogsAnomalyDetectionIntegration",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
           KMSKeyId: S.optional(S.String),
-          OptInStatus: S.optional(S.String),
-          Type: S.optional(S.String),
+          OptInStatus: S.optional(OptInStatus),
+          Type: S.optional(ServerSideEncryptionType),
         }),
       ).annotate({
         identifier: "KMSServerSideEncryptionIntegration",
@@ -2869,9 +3439,9 @@ function __c9(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          OpsCenter: S.optional(__S(76)),
-          LogsAnomalyDetection: S.optional(__S(77)),
-          KMSServerSideEncryption: S.optional(__S(78)),
+          OpsCenter: S.optional(OpsCenterIntegration),
+          LogsAnomalyDetection: S.optional(LogsAnomalyDetectionIntegration),
+          KMSServerSideEncryption: S.optional(KMSServerSideEncryptionIntegration),
         }),
       ).annotate({ identifier: "ServiceIntegrationConfig" });
   }
@@ -2879,7 +3449,9 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ ServiceIntegration: S.optional(__S(79)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ ServiceIntegration: S.optional(ServiceIntegrationConfig) }),
+      ).annotate({
         identifier: "DescribeServiceIntegrationResponse",
       });
     case 1:
@@ -2889,20 +3461,24 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "GetCostEstimationRequest" });
     case 2:
-      return S.suspend(() => S.Struct({ StackNames: S.optional(__S(22)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ StackNames: S.optional(CostEstimationStackNames) }),
+      ).annotate({
         identifier: "CloudFormationCostEstimationResourceCollectionFilter",
       });
     case 3:
-      return S.suspend(() => S.Struct({ AppBoundaryKey: S.String, TagValues: __S(22) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ AppBoundaryKey: S.String, TagValues: CostEstimationTagValues }),
+      ).annotate({
         identifier: "TagCostEstimationResourceCollectionFilter",
       });
     case 4:
-      return S.Array(__S(83));
+      return S.Array(TagCostEstimationResourceCollectionFilter);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          CloudFormation: S.optional(__S(82)),
-          Tags: S.optional(__S(84)),
+          CloudFormation: S.optional(CloudFormationCostEstimationResourceCollectionFilter),
+          Tags: S.optional(TagCostEstimationResourceCollectionFilters),
         }),
       ).annotate({
         identifier: "CostEstimationResourceCollectionFilter",
@@ -2911,14 +3487,14 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Type: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(CostEstimationServiceResourceState),
           Count: S.optional(S.Number),
           UnitCost: S.optional(S.Number),
           Cost: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ServiceResourceCost" });
     case 7:
-      return S.Array(__S(86));
+      return S.Array(ServiceResourceCost);
   }
 }
 function __c11(j: number): any {
@@ -2933,10 +3509,10 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ResourceCollection: S.optional(__S(85)),
-          Status: S.optional(S.String),
-          Costs: S.optional(__S(87)),
-          TimeRange: S.optional(__S(88)),
+          ResourceCollection: S.optional(CostEstimationResourceCollectionFilter),
+          Status: S.optional(CostEstimationStatus),
+          Costs: S.optional(ServiceResourceCosts),
+          TimeRange: S.optional(CostEstimationTimeRange),
           TotalCost: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }),
@@ -2946,7 +3522,9 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ResourceCollectionType: S.String.pipe(T.HttpLabel("ResourceCollectionType")),
+          ResourceCollectionType: ResourceCollectionType.pipe(
+            T.HttpLabel("ResourceCollectionType"),
+          ),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
         }).pipe(
           T.all(
@@ -2964,14 +3542,14 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          CloudFormation: S.optional(__S(82)),
-          Tags: S.optional(__S(38)),
+          CloudFormation: S.optional(CloudFormationCollectionFilter),
+          Tags: S.optional(TagCollectionFilters),
         }),
       ).annotate({ identifier: "ResourceCollectionFilter" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ResourceCollection: S.optional(__S(91)),
+          ResourceCollection: S.optional(ResourceCollectionFilter),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2985,11 +3563,13 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "StartTimeRange" });
     case 6:
-      return S.suspend(() => S.Struct({ ServiceNames: S.optional(__S(1)) })).annotate({
+      return S.suspend(() => S.Struct({ ServiceNames: S.optional(ServiceNames) })).annotate({
         identifier: "ServiceCollection",
       });
     case 7:
-      return S.suspend(() => S.Struct({ ServiceCollection: S.optional(__S(94)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ ServiceCollection: S.optional(ServiceCollection) }),
+      ).annotate({
         identifier: "ListAnomaliesForInsightFilters",
       });
   }
@@ -3000,11 +3580,11 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           InsightId: S.String.pipe(T.HttpLabel("InsightId")),
-          StartTimeRange: S.optional(__S(93)),
+          StartTimeRange: S.optional(StartTimeRange),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
           AccountId: S.optional(S.String),
-          Filters: S.optional(__S(95)),
+          Filters: S.optional(ListAnomaliesForInsightFilters),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/anomalies/insight/{InsightId}" }),
@@ -3019,14 +3599,14 @@ function __c12(j: number): any {
         identifier: "ListAnomaliesForInsightRequest",
       });
     case 1:
-      return S.Array(__S(43));
+      return S.Array(ProactiveAnomalySummary);
     case 2:
-      return S.Array(__S(44));
+      return S.Array(ReactiveAnomalySummary);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ProactiveAnomalies: S.optional(__S(97)),
-          ReactiveAnomalies: S.optional(__S(98)),
+          ProactiveAnomalies: S.optional(ProactiveAnomalies),
+          ReactiveAnomalies: S.optional(ReactiveAnomalies),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3055,7 +3635,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           LogStreamName: S.optional(S.String),
-          LogAnomalyType: S.optional(S.String),
+          LogAnomalyType: S.optional(LogAnomalyType),
           LogAnomalyToken: S.optional(S.String),
           LogEventId: S.optional(S.String),
           Explanation: S.optional(S.String),
@@ -3064,17 +3644,17 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "LogAnomalyClass" });
     case 6:
-      return S.Array(__S(101));
+      return S.Array(LogAnomalyClass);
     case 7:
-      return S.suspend(() => S.Struct({ LogAnomalyClasses: S.optional(__S(102)) })).annotate({
-        identifier: "LogAnomalyShowcase",
-      });
+      return S.suspend(() =>
+        S.Struct({ LogAnomalyClasses: S.optional(LogAnomalyClasses) }),
+      ).annotate({ identifier: "LogAnomalyShowcase" });
   }
 }
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(103));
+      return S.Array(LogAnomalyShowcase);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3082,16 +3662,16 @@ function __c13(j: number): any {
           ImpactStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ImpactEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           NumberOfLogLinesScanned: S.optional(S.Number),
-          LogAnomalyShowcases: S.optional(__S(104)),
+          LogAnomalyShowcases: S.optional(LogAnomalyShowcases),
         }),
       ).annotate({ identifier: "AnomalousLogGroup" });
     case 2:
-      return S.Array(__S(105));
+      return S.Array(AnomalousLogGroup);
     case 3:
       return S.suspend(() =>
         S.Struct({
           InsightId: S.String,
-          AnomalousLogGroups: __S(106),
+          AnomalousLogGroups: AnomalousLogGroups,
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3108,17 +3688,17 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           InsightId: S.optional(S.String),
-          EventTimeRange: S.optional(__S(108)),
-          EventClass: S.optional(S.String),
+          EventTimeRange: S.optional(EventTimeRange),
+          EventClass: S.optional(EventClass),
           EventSource: S.optional(S.String),
-          DataSource: S.optional(S.String),
-          ResourceCollection: S.optional(__S(39)),
+          DataSource: S.optional(EventDataSource),
+          ResourceCollection: S.optional(ResourceCollection),
         }),
       ).annotate({ identifier: "ListEventsFilters" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Filters: __S(109),
+          Filters: ListEventsFilters,
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
           AccountId: S.optional(S.String),
@@ -3137,44 +3717,46 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(111));
+      return S.Array(EventResource);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ResourceCollection: S.optional(__S(39)),
+          ResourceCollection: S.optional(ResourceCollection),
           Id: S.optional(S.String),
           Time: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EventSource: S.optional(S.String),
           Name: S.optional(S.String),
-          DataSource: S.optional(S.String),
-          EventClass: S.optional(S.String),
-          Resources: S.optional(__S(112)),
+          DataSource: S.optional(EventDataSource),
+          EventClass: S.optional(EventClass),
+          Resources: S.optional(EventResources),
         }),
       ).annotate({ identifier: "Event" });
     case 2:
-      return S.Array(__S(113));
+      return S.Array(Event);
     case 3:
       return S.suspend(() =>
-        S.Struct({ Events: __S(114), NextToken: S.optional(S.String) }),
+        S.Struct({ Events: Events, NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListEventsResponse" });
     case 4:
-      return S.suspend(() => S.Struct({ Type: S.String })).annotate({
+      return S.suspend(() => S.Struct({ Type: InsightType })).annotate({
         identifier: "ListInsightsOngoingStatusFilter",
       });
     case 5:
-      return S.suspend(() => S.Struct({ Type: S.String, EndTimeRange: __S(93) })).annotate({
+      return S.suspend(() => S.Struct({ Type: InsightType, EndTimeRange: EndTimeRange })).annotate({
         identifier: "ListInsightsClosedStatusFilter",
       });
     case 6:
-      return S.suspend(() => S.Struct({ Type: S.String, StartTimeRange: __S(93) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ Type: InsightType, StartTimeRange: StartTimeRange }),
+      ).annotate({
         identifier: "ListInsightsAnyStatusFilter",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Ongoing: S.optional(__S(116)),
-          Closed: S.optional(__S(117)),
-          Any: S.optional(__S(118)),
+          Ongoing: S.optional(ListInsightsOngoingStatusFilter),
+          Closed: S.optional(ListInsightsClosedStatusFilter),
+          Any: S.optional(ListInsightsAnyStatusFilter),
         }),
       ).annotate({ identifier: "ListInsightsStatusFilter" });
   }
@@ -3184,7 +3766,7 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          StatusFilter: __S(119),
+          StatusFilter: ListInsightsStatusFilter,
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/insights" }), svc, auth, proto, ver, rules)),
@@ -3194,45 +3776,45 @@ function __c15(j: number): any {
         S.Struct({
           Id: S.optional(S.String),
           Name: S.optional(S.String),
-          Severity: S.optional(S.String),
-          Status: S.optional(S.String),
-          InsightTimeRange: S.optional(__S(13)),
-          PredictionTimeRange: S.optional(__S(13)),
-          ResourceCollection: S.optional(__S(39)),
-          ServiceCollection: S.optional(__S(94)),
-          AssociatedResourceArns: S.optional(__S(22)),
+          Severity: S.optional(InsightSeverity),
+          Status: S.optional(InsightStatus),
+          InsightTimeRange: S.optional(InsightTimeRange),
+          PredictionTimeRange: S.optional(PredictionTimeRange),
+          ResourceCollection: S.optional(ResourceCollection),
+          ServiceCollection: S.optional(ServiceCollection),
+          AssociatedResourceArns: S.optional(AssociatedResourceArns),
         }),
       ).annotate({ identifier: "ProactiveInsightSummary" });
     case 2:
-      return S.Array(__S(121));
+      return S.Array(ProactiveInsightSummary);
     case 3:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           Name: S.optional(S.String),
-          Severity: S.optional(S.String),
-          Status: S.optional(S.String),
-          InsightTimeRange: S.optional(__S(13)),
-          ResourceCollection: S.optional(__S(39)),
-          ServiceCollection: S.optional(__S(94)),
-          AssociatedResourceArns: S.optional(__S(22)),
+          Severity: S.optional(InsightSeverity),
+          Status: S.optional(InsightStatus),
+          InsightTimeRange: S.optional(InsightTimeRange),
+          ResourceCollection: S.optional(ResourceCollection),
+          ServiceCollection: S.optional(ServiceCollection),
+          AssociatedResourceArns: S.optional(AssociatedResourceArns),
         }),
       ).annotate({ identifier: "ReactiveInsightSummary" });
     case 4:
-      return S.Array(__S(123));
+      return S.Array(ReactiveInsightSummary);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ProactiveInsights: S.optional(__S(122)),
-          ReactiveInsights: S.optional(__S(124)),
+          ProactiveInsights: S.optional(ProactiveInsights),
+          ReactiveInsights: S.optional(ReactiveInsights),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListInsightsResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ResourcePermission: S.String,
-          ResourceTypeFilters: __S(1),
+          ResourcePermission: ResourcePermission,
+          ResourceTypeFilters: ResourceTypeFilters,
         }),
       ).annotate({
         identifier: "ListMonitoredResourcesFilters",
@@ -3240,7 +3822,7 @@ function __c15(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(126)),
+          Filters: S.optional(ListMonitoredResourcesFilters),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -3265,19 +3847,19 @@ function __c16(j: number): any {
         S.Struct({
           MonitoredResourceName: S.optional(S.String),
           Type: S.optional(S.String),
-          ResourcePermission: S.optional(S.String),
+          ResourcePermission: S.optional(ResourcePermission),
           LastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ResourceCollection: S.optional(__S(39)),
+          ResourceCollection: S.optional(ResourceCollection),
         }),
       ).annotate({
         identifier: "MonitoredResourceIdentifier",
       });
     case 1:
-      return S.Array(__S(128));
+      return S.Array(MonitoredResourceIdentifier);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          MonitoredResourceIdentifiers: __S(129),
+          MonitoredResourceIdentifiers: MonitoredResourceIdentifiers,
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3293,23 +3875,23 @@ function __c16(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Id: S.optional(S.String), Config: S.optional(__S(3)) }),
+        S.Struct({ Id: S.optional(S.String), Config: S.optional(NotificationChannelConfig) }),
       ).annotate({ identifier: "NotificationChannel" });
     case 5:
-      return S.Array(__S(132));
+      return S.Array(NotificationChannel);
     case 6:
       return S.suspend(() =>
-        S.Struct({ Channels: S.optional(__S(133)), NextToken: S.optional(S.String) }),
+        S.Struct({ Channels: S.optional(Channels), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListNotificationChannelsResponse",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          StatusFilter: __S(119),
+          StatusFilter: ListInsightsStatusFilter,
           MaxResults: S.optional(S.Number),
-          AccountIds: S.optional(__S(22)),
-          OrganizationalUnitIds: S.optional(__S(22)),
+          AccountIds: S.optional(ListInsightsAccountIdList),
+          OrganizationalUnitIds: S.optional(ListInsightsOrganizationalUnitIdList),
           NextToken: S.optional(S.String),
         }).pipe(
           T.all(
@@ -3335,18 +3917,18 @@ function __c17(j: number): any {
           AccountId: S.optional(S.String),
           OrganizationalUnitId: S.optional(S.String),
           Name: S.optional(S.String),
-          Severity: S.optional(S.String),
-          Status: S.optional(S.String),
-          InsightTimeRange: S.optional(__S(13)),
-          PredictionTimeRange: S.optional(__S(13)),
-          ResourceCollection: S.optional(__S(39)),
-          ServiceCollection: S.optional(__S(94)),
+          Severity: S.optional(InsightSeverity),
+          Status: S.optional(InsightStatus),
+          InsightTimeRange: S.optional(InsightTimeRange),
+          PredictionTimeRange: S.optional(PredictionTimeRange),
+          ResourceCollection: S.optional(ResourceCollection),
+          ServiceCollection: S.optional(ServiceCollection),
         }),
       ).annotate({
         identifier: "ProactiveOrganizationInsightSummary",
       });
     case 1:
-      return S.Array(__S(136));
+      return S.Array(ProactiveOrganizationInsightSummary);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3354,22 +3936,22 @@ function __c17(j: number): any {
           AccountId: S.optional(S.String),
           OrganizationalUnitId: S.optional(S.String),
           Name: S.optional(S.String),
-          Severity: S.optional(S.String),
-          Status: S.optional(S.String),
-          InsightTimeRange: S.optional(__S(13)),
-          ResourceCollection: S.optional(__S(39)),
-          ServiceCollection: S.optional(__S(94)),
+          Severity: S.optional(InsightSeverity),
+          Status: S.optional(InsightStatus),
+          InsightTimeRange: S.optional(InsightTimeRange),
+          ResourceCollection: S.optional(ResourceCollection),
+          ServiceCollection: S.optional(ServiceCollection),
         }),
       ).annotate({
         identifier: "ReactiveOrganizationInsightSummary",
       });
     case 3:
-      return S.Array(__S(138));
+      return S.Array(ReactiveOrganizationInsightSummary);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ProactiveInsights: S.optional(__S(137)),
-          ReactiveInsights: S.optional(__S(139)),
+          ProactiveInsights: S.optional(ProactiveOrganizationInsights),
+          ReactiveInsights: S.optional(ReactiveOrganizationInsights),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3380,7 +3962,7 @@ function __c17(j: number): any {
         S.Struct({
           InsightId: S.String,
           NextToken: S.optional(S.String),
-          Locale: S.optional(S.String),
+          Locale: S.optional(Locale),
           AccountId: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/recommendations" }), svc, auth, proto, ver, rules),
@@ -3395,7 +3977,7 @@ function __c17(j: number): any {
         identifier: "RecommendationRelatedEventResource",
       });
     case 7:
-      return S.Array(__S(142));
+      return S.Array(RecommendationRelatedEventResource);
   }
 }
 function __c18(j: number): any {
@@ -3404,13 +3986,13 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Resources: S.optional(__S(143)),
+          Resources: S.optional(RecommendationRelatedEventResources),
         }),
       ).annotate({
         identifier: "RecommendationRelatedEvent",
       });
     case 1:
-      return S.Array(__S(144));
+      return S.Array(RecommendationRelatedEvent);
     case 2:
       return S.suspend(() =>
         S.Struct({ MetricName: S.optional(S.String), Namespace: S.optional(S.String) }),
@@ -3418,29 +4000,29 @@ function __c18(j: number): any {
         identifier: "RecommendationRelatedCloudWatchMetricsSourceDetail",
       });
     case 3:
-      return S.Array(__S(146));
+      return S.Array(RecommendationRelatedCloudWatchMetricsSourceDetail);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          CloudWatchMetrics: S.optional(__S(147)),
+          CloudWatchMetrics: S.optional(RecommendationRelatedCloudWatchMetricsSourceDetails),
         }),
       ).annotate({
         identifier: "RecommendationRelatedAnomalySourceDetail",
       });
     case 5:
-      return S.Array(__S(148));
+      return S.Array(RecommendationRelatedAnomalySourceDetail);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Resources: S.optional(__S(143)),
-          SourceDetails: S.optional(__S(149)),
+          Resources: S.optional(RecommendationRelatedAnomalyResources),
+          SourceDetails: S.optional(RelatedAnomalySourceDetails),
           AnomalyId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RecommendationRelatedAnomaly",
       });
     case 7:
-      return S.Array(__S(150));
+      return S.Array(RecommendationRelatedAnomaly);
   }
 }
 function __c19(j: number): any {
@@ -3452,22 +4034,22 @@ function __c19(j: number): any {
           Link: S.optional(S.String),
           Name: S.optional(S.String),
           Reason: S.optional(S.String),
-          RelatedEvents: S.optional(__S(145)),
-          RelatedAnomalies: S.optional(__S(151)),
+          RelatedEvents: S.optional(RecommendationRelatedEvents),
+          RelatedAnomalies: S.optional(RecommendationRelatedAnomalies),
           Category: S.optional(S.String),
         }),
       ).annotate({ identifier: "Recommendation" });
     case 1:
-      return S.Array(__S(152));
+      return S.Array(Recommendation);
     case 2:
       return S.suspend(() =>
-        S.Struct({ Recommendations: S.optional(__S(153)), NextToken: S.optional(S.String) }),
+        S.Struct({ Recommendations: S.optional(Recommendations), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListRecommendationsResponse",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ InsightFeedback: S.optional(__S(51)) }).pipe(
+        S.Struct({ InsightFeedback: S.optional(InsightFeedback) }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/feedback" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutFeedbackRequest" });
@@ -3486,20 +4068,20 @@ function __c19(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Severities: S.optional(__S(1)),
-          Statuses: S.optional(__S(1)),
-          ResourceCollection: S.optional(__S(39)),
-          ServiceCollection: S.optional(__S(94)),
+          Severities: S.optional(InsightSeverities),
+          Statuses: S.optional(InsightStatuses),
+          ResourceCollection: S.optional(ResourceCollection),
+          ServiceCollection: S.optional(ServiceCollection),
         }),
       ).annotate({ identifier: "SearchInsightsFilters" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          StartTimeRange: __S(93),
-          Filters: S.optional(__S(158)),
+          StartTimeRange: StartTimeRange,
+          Filters: S.optional(SearchInsightsFilters),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Type: S.String,
+          Type: InsightType,
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/insights/search" }), svc, auth, proto, ver, rules),
         ),
@@ -3511,10 +4093,10 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Severities: S.optional(__S(1)),
-          Statuses: S.optional(__S(1)),
-          ResourceCollection: S.optional(__S(39)),
-          ServiceCollection: S.optional(__S(94)),
+          Severities: S.optional(InsightSeverities),
+          Statuses: S.optional(InsightStatuses),
+          ResourceCollection: S.optional(ResourceCollection),
+          ServiceCollection: S.optional(ServiceCollection),
         }),
       ).annotate({
         identifier: "SearchOrganizationInsightsFilters",
@@ -3522,12 +4104,12 @@ function __c20(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AccountIds: __S(22),
-          StartTimeRange: __S(93),
-          Filters: S.optional(__S(160)),
+          AccountIds: SearchInsightsAccountIdList,
+          StartTimeRange: StartTimeRange,
+          Filters: S.optional(SearchOrganizationInsightsFilters),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Type: S.String,
+          Type: InsightType,
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/organization/insights/search" }),
@@ -3544,8 +4126,8 @@ function __c20(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ProactiveInsights: S.optional(__S(122)),
-          ReactiveInsights: S.optional(__S(124)),
+          ProactiveInsights: S.optional(ProactiveInsights),
+          ReactiveInsights: S.optional(ReactiveInsights),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3554,7 +4136,7 @@ function __c20(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ResourceCollection: __S(85),
+          ResourceCollection: CostEstimationResourceCollectionFilter,
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/cost-estimation" }), svc, auth, proto, ver, rules),
@@ -3564,19 +4146,19 @@ function __c20(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ EventSources: S.optional(__S(48)) }).pipe(
+        S.Struct({ EventSources: S.optional(EventSourcesConfig) }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/event-sources" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "UpdateEventSourcesConfigRequest",
       });
     case 5:
-      return S.Array(__S(83));
+      return S.Array(UpdateTagCollectionFilter);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          CloudFormation: S.optional(__S(82)),
-          Tags: S.optional(__S(165)),
+          CloudFormation: S.optional(UpdateCloudFormationCollectionFilter),
+          Tags: S.optional(UpdateTagCollectionFilters),
         }),
       ).annotate({
         identifier: "UpdateResourceCollectionFilter",
@@ -3584,8 +4166,8 @@ function __c20(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Action: S.String,
-          ResourceCollection: __S(166),
+          Action: UpdateResourceCollectionAction,
+          ResourceCollection: UpdateResourceCollectionFilter,
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/resource-collections" }),
@@ -3606,16 +4188,16 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          OpsCenter: S.optional(__S(77)),
-          LogsAnomalyDetection: S.optional(__S(77)),
-          KMSServerSideEncryption: S.optional(__S(78)),
+          OpsCenter: S.optional(OpsCenterIntegrationConfig),
+          LogsAnomalyDetection: S.optional(LogsAnomalyDetectionIntegrationConfig),
+          KMSServerSideEncryption: S.optional(KMSServerSideEncryptionIntegrationConfig),
         }),
       ).annotate({
         identifier: "UpdateServiceIntegrationConfig",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ServiceIntegration: __S(168) }).pipe(
+        S.Struct({ ServiceIntegration: UpdateServiceIntegrationConfig }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/service-integrations" }),
             svc,
@@ -3633,59 +4215,6 @@ function __c21(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 3:
-      return S.Array(__S(170));
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
+      return S.Array(ValidationExceptionField);
   }
 }

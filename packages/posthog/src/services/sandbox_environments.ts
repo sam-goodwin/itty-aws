@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -40,10 +38,20 @@ export class NotFound
 
 /** * `trusted` - Trusted * `full` - Full * `custom` - Custom */
 export type SandboxEnvironmentNetworkAccessLevelEnum = "trusted" | "full" | "custom";
+const SandboxEnvironmentNetworkAccessLevelEnum = S.String;
+
 /** Allowed domains for custom network access. */
 export type CreateSandboxRequestAllowedDomainsList = Array<string>;
+const CreateSandboxRequestAllowedDomainsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateSandboxRequestAllowedDomainsList>;
+
 /** Repositories this environment applies to (format: org/repo). */
 export type CreateSandboxRequestRepositoriesList = Array<string>;
+const CreateSandboxRequestRepositoriesList =
+  CreateSandboxRequestAllowedDomainsList as any as S.Schema<CreateSandboxRequestRepositoriesList>;
+
 export interface CreateSandboxRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -64,12 +72,31 @@ export interface CreateSandboxRequest {
   /** Custom base image for this environment's sandboxes (Modal VM runtime only); null uses the default base. */
   custom_image_id?: string | null;
 }
+const CreateSandboxRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateSandboxRequest>;
+
 export type SandboxEnvironmentDTOAllowedDomainsList = Array<string>;
+const SandboxEnvironmentDTOAllowedDomainsList =
+  CreateSandboxRequestAllowedDomainsList as any as S.Schema<SandboxEnvironmentDTOAllowedDomainsList>;
+
 export type SandboxEnvironmentDTORepositoriesList = Array<string>;
+const SandboxEnvironmentDTORepositoriesList =
+  CreateSandboxRequestAllowedDomainsList as any as S.Schema<SandboxEnvironmentDTORepositoriesList>;
+
 /** Names of the environment variables that are set, sorted. Values are write-only and never returned. */
 export type SandboxEnvironmentDTOEnvironmentVariableKeysList = Array<string>;
+const SandboxEnvironmentDTOEnvironmentVariableKeysList =
+  CreateSandboxRequestAllowedDomainsList as any as S.Schema<SandboxEnvironmentDTOEnvironmentVariableKeysList>;
+
 export type SandboxEnvironmentDTOEffectiveDomainsList = Array<string>;
+const SandboxEnvironmentDTOEffectiveDomainsList =
+  CreateSandboxRequestAllowedDomainsList as any as S.Schema<SandboxEnvironmentDTOEffectiveDomainsList>;
+
 export type TaskUserBasicInfoHedgehogConfigMap = { [key: string]: unknown | undefined };
+const TaskUserBasicInfoHedgehogConfigMap = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
+
 /** Response shape for a task creator, mirroring core ``UserBasicSerializer`` output. */
 export interface TaskUserBasicInfo {
   id: number;
@@ -82,6 +109,8 @@ export interface TaskUserBasicInfo {
   hedgehog_config?: TaskUserBasicInfoHedgehogConfigMap | null;
   role_at_organization?: string | null;
 }
+const TaskUserBasicInfo = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<TaskUserBasicInfo>;
+
 /** A sandbox environment, as returned by list, detail, create and update. */
 export interface SandboxEnvironmentDTO {
   id: string;
@@ -104,11 +133,18 @@ export interface SandboxEnvironmentDTO {
   custom_image_name?: string | null;
   custom_image_status?: string | null;
 }
+const SandboxEnvironmentDTO = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<SandboxEnvironmentDTO>;
+
 export interface GetSandboxRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const GetSandboxRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetSandboxRequest>;
+
 export interface ListSandboxRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -117,23 +153,51 @@ export interface ListSandboxRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListSandboxRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ListSandboxRequest>;
+
 export type PaginatedSandboxEnvironmentDTOListResultsList = Array<SandboxEnvironmentDTO>;
+const PaginatedSandboxEnvironmentDTOListResultsList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<PaginatedSandboxEnvironmentDTOListResultsList>;
+
 export interface PaginatedSandboxEnvironmentDTOList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedSandboxEnvironmentDTOListResultsList;
 }
+const PaginatedSandboxEnvironmentDTOList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<PaginatedSandboxEnvironmentDTOList>;
+
 export interface SandboxDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const SandboxDestroyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<SandboxDestroyRequest>;
+
 export interface SandboxDestroyResponse {}
+const SandboxDestroyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<SandboxDestroyResponse>;
+
 /** Allowed domains for custom network access. */
 export type UpdateSandboxPartialRequestAllowedDomainsList = Array<string>;
+const UpdateSandboxPartialRequestAllowedDomainsList =
+  CreateSandboxRequestAllowedDomainsList as any as S.Schema<UpdateSandboxPartialRequestAllowedDomainsList>;
+
 /** Repositories this environment applies to (format: org/repo). */
 export type UpdateSandboxPartialRequestRepositoriesList = Array<string>;
+const UpdateSandboxPartialRequestRepositoriesList =
+  CreateSandboxRequestAllowedDomainsList as any as S.Schema<UpdateSandboxPartialRequestRepositoriesList>;
+
 export interface UpdateSandboxPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -155,6 +219,11 @@ export interface UpdateSandboxPartialRequest {
   /** Custom base image for this environment's sandboxes (Modal VM runtime only); null uses the default base. */
   custom_image_id?: string | null;
 }
+const UpdateSandboxPartialRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<UpdateSandboxPartialRequest>;
+
 export type CreateSandboxError = BadRequest | Forbidden | NotFound | PosthogOpError;
 /** API for managing sandbox environments that control network access for task runs. */
 export const createSandbox: API.OperationMethod<
@@ -163,8 +232,8 @@ export const createSandbox: API.OperationMethod<
   CreateSandboxError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateSandboxRequest>,
-  output: __S(4) as any as S.Schema<SandboxEnvironmentDTO>,
+  input: CreateSandboxRequest,
+  output: SandboxEnvironmentDTO,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -178,8 +247,8 @@ export const getSandbox: API.OperationMethod<
   GetSandboxError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<GetSandboxRequest>,
-  output: __S(4) as any as S.Schema<SandboxEnvironmentDTO>,
+  input: GetSandboxRequest,
+  output: SandboxEnvironmentDTO,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -193,8 +262,8 @@ export const listSandbox: API.OperationMethod<
   ListSandboxError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<ListSandboxRequest>,
-  output: __S(8) as any as S.Schema<PaginatedSandboxEnvironmentDTOList>,
+  input: ListSandboxRequest,
+  output: PaginatedSandboxEnvironmentDTOList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -208,8 +277,8 @@ export const sandboxDestroy: API.OperationMethod<
   SandboxDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<SandboxDestroyRequest>,
-  output: __S(10) as any as S.Schema<SandboxDestroyResponse>,
+  input: SandboxDestroyRequest,
+  output: SandboxDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -223,8 +292,8 @@ export const updateSandboxPartial: API.OperationMethod<
   UpdateSandboxPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<UpdateSandboxPartialRequest>,
-  output: __S(4) as any as S.Schema<SandboxEnvironmentDTO>,
+  input: UpdateSandboxPartialRequest,
+  output: SandboxEnvironmentDTO,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -240,10 +309,10 @@ function __c0(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           name: S.String,
-          network_access_level: S.optional(S.String),
-          allowed_domains: S.optional(__S(0)),
+          network_access_level: S.optional(SandboxEnvironmentNetworkAccessLevelEnum),
+          allowed_domains: S.optional(CreateSandboxRequestAllowedDomainsList),
           include_default_domains: S.optional(S.Boolean),
-          repositories: S.optional(__S(0)),
+          repositories: S.optional(CreateSandboxRequestRepositoriesList),
           environment_variables: S.optional(S.Unknown),
           private: S.optional(S.Boolean),
           custom_image_id: S.optional(S.NullOr(S.String)),
@@ -267,7 +336,7 @@ function __c0(j: number): any {
           last_name: S.String,
           email: S.String,
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(2))),
+          hedgehog_config: S.optional(S.NullOr(TaskUserBasicInfoHedgehogConfigMap)),
           role_at_organization: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TaskUserBasicInfo" });
@@ -277,15 +346,15 @@ function __c0(j: number): any {
           id: S.String,
           name: S.String,
           network_access_level: S.String,
-          allowed_domains: S.optional(__S(0)),
+          allowed_domains: S.optional(SandboxEnvironmentDTOAllowedDomainsList),
           include_default_domains: S.Boolean,
-          repositories: S.optional(__S(0)),
+          repositories: S.optional(SandboxEnvironmentDTORepositoriesList),
           has_environment_variables: S.optional(S.Boolean),
-          environment_variable_keys: S.optional(__S(0)),
+          environment_variable_keys: S.optional(SandboxEnvironmentDTOEnvironmentVariableKeysList),
           private: S.Boolean,
           internal: S.Boolean,
-          effective_domains: S.optional(__S(0)),
-          created_by: S.optional(S.NullOr(__S(3))),
+          effective_domains: S.optional(SandboxEnvironmentDTOEffectiveDomainsList),
+          created_by: S.optional(S.NullOr(TaskUserBasicInfo)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
           custom_image_id: S.optional(S.NullOr(S.String)),
@@ -321,7 +390,7 @@ function __c0(j: number): any {
         ),
       ).annotate({ identifier: "ListSandboxRequest" });
     case 7:
-      return S.Array(__S(4));
+      return S.Array(SandboxEnvironmentDTO);
   }
 }
 function __c1(j: number): any {
@@ -332,7 +401,7 @@ function __c1(j: number): any {
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(7),
+          results: PaginatedSandboxEnvironmentDTOListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedSandboxEnvironmentDTOList",
@@ -360,10 +429,10 @@ function __c1(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          network_access_level: S.optional(S.String),
-          allowed_domains: S.optional(__S(0)),
+          network_access_level: S.optional(SandboxEnvironmentNetworkAccessLevelEnum),
+          allowed_domains: S.optional(UpdateSandboxPartialRequestAllowedDomainsList),
           include_default_domains: S.optional(S.Boolean),
-          repositories: S.optional(__S(0)),
+          repositories: S.optional(UpdateSandboxPartialRequestRepositoriesList),
           environment_variables: S.optional(S.Unknown),
           private: S.optional(S.Boolean),
           custom_image_id: S.optional(S.NullOr(S.String)),
@@ -377,18 +446,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateSandboxPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

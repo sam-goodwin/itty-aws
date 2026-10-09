@@ -10,8 +10,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -35,12 +33,30 @@ export interface GetHostnameAssociationRequest {
   /** The UUID to match against for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls_certificate_id is given, the results will be the hostnames associated to your active Cloudflare Managed CA. */
   mtlsCertificateId?: string;
 }
+const GetHostnameAssociationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetHostnameAssociationRequest>;
+
 export type HostnameAssociationsGetResponseHostnamesList = Array<string>;
+const HostnameAssociationsGetResponseHostnamesList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<HostnameAssociationsGetResponseHostnamesList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetHostnameAssociationResponse {
   hostnames?: HostnameAssociationsGetResponseHostnamesList | null;
 }
+const GetHostnameAssociationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetHostnameAssociationResponse>;
+
 export type HostnameAssociationsUpdateRequestHostnamesList = Array<string>;
+const HostnameAssociationsUpdateRequestHostnamesList =
+  HostnameAssociationsGetResponseHostnamesList as any as S.Schema<HostnameAssociationsUpdateRequestHostnamesList>;
+
 export interface PutHostnameAssociationRequest {
   /** Identifier. */
   zoneId: string;
@@ -48,11 +64,19 @@ export interface PutHostnameAssociationRequest {
   /** The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls_certificate_id is given, the hostnames will be associated to your active Cloudflare Managed CA. */
   mtlsCertificateId?: string;
 }
+const PutHostnameAssociationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<PutHostnameAssociationRequest>;
+
 export type HostnameAssociationsUpdateResponseHostnamesList = Array<string>;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutHostnameAssociationResponse {
   hostnames?: HostnameAssociationsUpdateResponseHostnamesList | null;
 }
+const PutHostnameAssociationResponse =
+  GetHostnameAssociationResponse as any as S.Schema<PutHostnameAssociationResponse>;
+
 export type GetHostnameAssociationError = Forbidden | CloudflareOpError;
 /** List Hostname Associations. */
 export const getHostnameAssociation: API.OperationMethod<
@@ -61,8 +85,8 @@ export const getHostnameAssociation: API.OperationMethod<
   GetHostnameAssociationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetHostnameAssociationRequest>,
-  output: __S(2) as any as S.Schema<GetHostnameAssociationResponse>,
+  input: GetHostnameAssociationRequest,
+  output: GetHostnameAssociationResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -76,8 +100,8 @@ export const putHostnameAssociation: API.OperationMethod<
   PutHostnameAssociationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<PutHostnameAssociationRequest>,
-  output: __S(2) as any as S.Schema<PutHostnameAssociationResponse>,
+  input: PutHostnameAssociationRequest,
+  output: PutHostnameAssociationResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -108,7 +132,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          hostnames: S.optional(S.NullOr(__S(1))),
+          hostnames: S.optional(S.NullOr(HostnameAssociationsGetResponseHostnamesList)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetHostnameAssociationResponse",
@@ -117,7 +141,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          hostnames: S.optional(__S(1)),
+          hostnames: S.optional(HostnameAssociationsUpdateRequestHostnamesList),
           mtlsCertificateId: S.optional(S.String.pipe(T.Body("mtls_certificate_id"))),
         })
           .pipe(
@@ -131,16 +155,5 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "PutHostnameAssociationRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 2) {
-    case 0:
-      return __c0(i & 3);
   }
 }

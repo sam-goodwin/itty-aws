@@ -7,8 +7,6 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -50,14 +48,23 @@ export class NotFound
 
 /** Key-value string pairs attached to an existing resource container. Certain labels may be enforced via organizational policies. * **Key:** Must be between 1 and 63 characters long (excluding an optional domain prefix). Must start and end with an alphanumeric character `[a-zA-Z0-9]` and can contain alphanumerics, dashes (-), underscores (_), and dots (.). May include an optional domain prefix up to 250 characters (a lowercase DNS subdomain containing `[a-z0-9]`, `-`, and `.`) followed by a slash (/). Total maximum key length is 314 characters. * **Value:** Must be 63 characters or less. May be empty (""). If non-empty, must start and end with an alphanumeric character `[a-zA-Z0-9]` and can contain alphanumerics, dashes (-), underscores (_), and dots (.). > Note: Additional naming restrictions may apply depending on your specific organization.* */
 export type Labels = { [key: string]: string | undefined };
+const Labels = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Labels>;
+
 export interface Member {
   /** A valid role defined for the resource. */
   role: string;
   /** Unique identifier of the user, service account or client. */
   subject: string;
 }
+const Member = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Member>;
+
 /** The initial members assigned to the project. At least one subject needs to be a user, and not a client or service account. */
 export type CreateFolderRequestMembersList = Array<Member>;
+const CreateFolderRequestMembersList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateFolderRequestMembersList>;
+
 export interface CreateFolderRequest {
   /** Identifier of the parent resource container - containerId as well as UUID identifier is supported. */
   containerParentId: string;
@@ -67,8 +74,12 @@ export interface CreateFolderRequest {
   /** The name of the folder matching the regex `^[a-zA-ZäüöÄÜÖ0-9]( ?[a-zA-ZäüöÄÜÖß0-9_+&-]){0,39}$`. */
   name: string;
 }
+const CreateFolderRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateFolderRequest>;
+
 /** Container type of parent container. */
 export type ParentType = "ORGANIZATION" | "FOLDER";
+const ParentType = S.String;
+
 /** Parent container. */
 export interface Parent {
   /** User-friendly identifier of either organization or folder (will replace id). */
@@ -78,6 +89,8 @@ export interface Parent {
   /** Container type of parent container. */
   type: ParentType;
 }
+const Parent = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Parent>;
+
 export interface FolderResponse {
   /** Globally unique, user-friendly identifier. */
   containerId: string;
@@ -92,10 +105,17 @@ export interface FolderResponse {
   /** Timestamp at which the folder was last modified. */
   updateTime: string;
 }
+const FolderResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<FolderResponse>;
+
 /** Key-value string pairs attached to a resource container during creation. Certain labels may be enforced via organizational policies. * **Key:** Must be between 1 and 63 characters long (excluding an optional domain prefix). Must start and end with an alphanumeric character `[a-zA-Z0-9]` and can contain alphanumerics, dashes (-), underscores (_), and dots (.). May include an optional domain prefix up to 250 characters (a lowercase DNS subdomain containing `[a-z0-9]`, `-`, and `.`) followed by a slash (/). Total maximum key length is 314 characters. * **Value:** Must be 63 characters or less. May be empty (""). If non-empty, must start and end with an alphanumeric character `[a-zA-Z0-9]` and can contain alphanumerics, dashes (-), underscores (_), and dots (.). * Either a `"scope": "PUBLIC"` label or a valid `networkArea` label must be provided for project creation. * To create a project within a STACKIT Network Area, you must set the label `"networkArea": "<networkAreaID>"`. > **Important:** The `networkArea` label is immutable and **cannot be changed** after project creation. */
 export type CreateProjectLabels = { [key: string]: string | undefined };
+const CreateProjectLabels = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateProjectLabels>;
+
 /** The initial members assigned to the project. At least one subject needs to be a user, and not a client or service account. */
 export type CreateProjectRequestMembersList = Array<Member>;
+const CreateProjectRequestMembersList =
+  CreateFolderRequestMembersList as any as S.Schema<CreateProjectRequestMembersList>;
+
 export interface CreateProjectRequest {
   /** Identifier of the parent resource container - containerId as well as UUID identifier is supported. */
   containerParentId: string;
@@ -105,8 +125,12 @@ export interface CreateProjectRequest {
   /** Project name matching the regex `^[a-zA-ZäüöÄÜÖ0-9]( ?[a-zA-ZäüöÄÜÖß0-9_+&-]){0,39}$`. */
   name: string;
 }
+const CreateProjectRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateProjectRequest>;
+
 /** Lifecycle state of the resource container. | LIFECYCLE STATE | DESCRIPTION | |----------|--------------------| | CREATING | The creation process has been triggered. The state remains until resource manager gets notified about successful process completion. | | ACTIVE | Resource container can be fully used. | | INACTIVE | Resource container usage has been disabled. | | DELETING | The deletion process has been triggered. The state remains until resource manager gets notified about successful process completion. Afterwards, the record will be deleted. | */
 export type LifecycleState = "CREATING" | "ACTIVE" | "DELETING" | "INACTIVE";
+const LifecycleState = S.String;
+
 export interface Project {
   /** Globally unique, user-friendly identifier. */
   containerId: string;
@@ -122,49 +146,103 @@ export interface Project {
   /** Timestamp at which the project was last modified. */
   updateTime: string;
 }
+const Project = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Project>;
+
 export interface DeleteFolderRequest {
   /** Folder identifier - containerId as well as UUID identifier is supported. */
   containerId: string;
   /** If true, all nested, empty folders are deleted recursively - if no project is attached! */
   force?: boolean;
 }
+const DeleteFolderRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DeleteFolderRequest>;
+
 export interface DeleteFolderResponse {}
+const DeleteFolderResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DeleteFolderResponse>;
+
 export type DeleteFolderLabelsRequestKeysList = Array<string>;
+const DeleteFolderLabelsRequestKeysList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DeleteFolderLabelsRequestKeysList>;
+
 export interface DeleteFolderLabelsRequest {
   /** Folder identifier - containerId as well as UUID identifier is supported. */
   containerId: string;
   /** Label name. */
   keys?: DeleteFolderLabelsRequestKeysList;
 }
+const DeleteFolderLabelsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeleteFolderLabelsRequest>;
+
 export interface DeleteFolderLabelsResponse {}
+const DeleteFolderLabelsResponse =
+  DeleteFolderResponse as any as S.Schema<DeleteFolderLabelsResponse>;
+
 export type DeleteOrganizationLabelsRequestKeysList = Array<string>;
+const DeleteOrganizationLabelsRequestKeysList =
+  DeleteFolderLabelsRequestKeysList as any as S.Schema<DeleteOrganizationLabelsRequestKeysList>;
+
 export interface DeleteOrganizationLabelsRequest {
   /** Organization identifier - containerId as well as UUID identifier is supported. */
   containerId: string;
   /** Label name. */
   keys?: DeleteOrganizationLabelsRequestKeysList;
 }
+const DeleteOrganizationLabelsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteOrganizationLabelsRequest>;
+
 export interface DeleteOrganizationLabelsResponse {}
+const DeleteOrganizationLabelsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DeleteOrganizationLabelsResponse>;
+
 export interface DeleteProjectRequest {
   /** Project identifier - containerId as well as UUID identifier is supported. */
   id: string;
 }
+const DeleteProjectRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DeleteProjectRequest>;
+
 export interface DeleteProjectResponse {}
+const DeleteProjectResponse = DeleteFolderResponse as any as S.Schema<DeleteProjectResponse>;
+
 export type DeleteProjectLabelsRequestKeysList = Array<string>;
+const DeleteProjectLabelsRequestKeysList =
+  DeleteFolderLabelsRequestKeysList as any as S.Schema<DeleteProjectLabelsRequestKeysList>;
+
 export interface DeleteProjectLabelsRequest {
   /** Project identifier - containerId as well as UUID identifier is supported. */
   containerId: string;
   /** Label name. */
   keys?: DeleteProjectLabelsRequestKeysList;
 }
+const DeleteProjectLabelsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DeleteProjectLabelsRequest>;
+
 export interface DeleteProjectLabelsResponse {}
+const DeleteProjectLabelsResponse =
+  DeleteFolderResponse as any as S.Schema<DeleteProjectLabelsResponse>;
+
 export interface GetFolderDetailsRequest {
   /** Folder identifier - containerId as well as UUID identifier is supported. */
   containerId: string;
   includeParents?: boolean;
 }
+const GetFolderDetailsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetFolderDetailsRequest>;
+
 /** Parent container type. */
 export type ParentListItemType = "FOLDER" | "ORGANIZATION";
+const ParentListItemType = S.String;
+
 export interface ParentListItem {
   /** User-friendly identifier of either organization or folder (will replace id). */
   containerId: string;
@@ -179,7 +257,11 @@ export interface ParentListItem {
   /** Parent container type. */
   type: ParentListItemType;
 }
+const ParentListItem = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ParentListItem>;
+
 export type ParentList = Array<ParentListItem>;
+const ParentList = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ParentList>;
+
 export interface GetFolderDetailsResponse {
   /** Globally unique user-friendly identifier. */
   containerId: string;
@@ -195,10 +277,20 @@ export interface GetFolderDetailsResponse {
   /** Timestamp at which the folder was last modified. */
   updateTime: string;
 }
+const GetFolderDetailsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetFolderDetailsResponse>;
+
 export interface GetOrganizationRequest {
   /** Organization identifier - containerId as well as UUID identifier is supported. */
   id: string;
 }
+const GetOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetOrganizationRequest>;
+
 export interface OrganizationResponse {
   /** Globally unique, user-friendly identifier. */
   containerId: string;
@@ -213,11 +305,15 @@ export interface OrganizationResponse {
   /** Timestamp at which the organization was last modified. */
   updateTime: string;
 }
+const OrganizationResponse = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<OrganizationResponse>;
+
 export interface GetProjectRequest {
   /** Project identifier - containerId as well as UUID identifier is supported. */
   id: string;
   includeParents?: boolean;
 }
+const GetProjectRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GetProjectRequest>;
+
 export interface GetProjectResponse {
   /** Globally unique identifier. */
   containerId: string;
@@ -234,7 +330,12 @@ export interface GetProjectResponse {
   /** Timestamp at which the project was last modified. */
   updateTime: string;
 }
+const GetProjectResponse = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GetProjectResponse>;
+
 export type ListFoldersRequestContainerIdsList = Array<string>;
+const ListFoldersRequestContainerIdsList =
+  DeleteFolderLabelsRequestKeysList as any as S.Schema<ListFoldersRequestContainerIdsList>;
+
 export interface ListFoldersRequest {
   /** Identifier of the parent resource container - containerId as well as UUID identifier is supported. */
   containerParentId?: string;
@@ -249,6 +350,8 @@ export interface ListFoldersRequest {
   /** A timestamp to specify the beginning of the creationTime from which entries should be returned. If not given, defaults to the beginning of time. */
   creation_time_start?: string;
 }
+const ListFoldersRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ListFoldersRequest>;
+
 export interface ListFoldersResponseItemsItem {
   /** Globally unique folder identifier. */
   containerId: string;
@@ -263,13 +366,28 @@ export interface ListFoldersResponseItemsItem {
   /** Timestamp at which the folder was created. */
   updateTime: string;
 }
+const ListFoldersResponseItemsItem = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListFoldersResponseItemsItem>;
+
 export type ListFoldersResponseItemsList = Array<ListFoldersResponseItemsItem>;
+const ListFoldersResponseItemsList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ListFoldersResponseItemsList>;
+
 export interface ListFoldersResponse {
   items: ListFoldersResponseItemsList;
   limit: number;
   offset: number;
 }
+const ListFoldersResponse = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ListFoldersResponse>;
+
 export type ListOrganizationsRequestContainerIdsList = Array<string>;
+const ListOrganizationsRequestContainerIdsList =
+  DeleteFolderLabelsRequestKeysList as any as S.Schema<ListOrganizationsRequestContainerIdsList>;
+
 export interface ListOrganizationsRequest {
   /** Organization identifiers - containerId as well as UUID identifier is supported. A combination of both is not allowed. */
   containerIds?: ListOrganizationsRequestContainerIdsList;
@@ -282,6 +400,11 @@ export interface ListOrganizationsRequest {
   /** A timestamp to specify the beginning of the creationTime from which entries should be returned. If not given, defaults to the beginning of time. */
   creation_time_start?: string;
 }
+const ListOrganizationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListOrganizationsRequest>;
+
 export interface ListOrganizationsResponseItemsItem {
   /** Globally unique, user-friendly identifier. */
   containerId: string;
@@ -296,13 +419,31 @@ export interface ListOrganizationsResponseItemsItem {
   /** Timestamp at which the organization was last modified. */
   updateTime: string;
 }
+const ListOrganizationsResponseItemsItem = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ListOrganizationsResponseItemsItem>;
+
 export type ListOrganizationsResponseItemsList = Array<ListOrganizationsResponseItemsItem>;
+const ListOrganizationsResponseItemsList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ListOrganizationsResponseItemsList>;
+
 export interface ListOrganizationsResponse {
   items: ListOrganizationsResponseItemsList;
   limit: number;
   offset: number;
 }
+const ListOrganizationsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ListOrganizationsResponse>;
+
 export type ListProjectsRequestContainerIdsList = Array<string>;
+const ListProjectsRequestContainerIdsList =
+  DeleteFolderLabelsRequestKeysList as any as S.Schema<ListProjectsRequestContainerIdsList>;
+
 export interface ListProjectsRequest {
   /** Identifier of the parent resource container - containerId as well as UUID identifier is supported. */
   containerParentId?: string;
@@ -317,14 +458,25 @@ export interface ListProjectsRequest {
   /** A timestamp to specify the beginning of the creationTime from which entries should be returned. If not given, defaults to the beginning of time. */
   creation_time_start?: string;
 }
+const ListProjectsRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ListProjectsRequest>;
+
 export type ListProjectsResponseItemsList = Array<Project>;
+const ListProjectsResponseItemsList = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListProjectsResponseItemsList>;
+
 export interface ListProjectsResponse {
   items: ListProjectsResponseItemsList;
   limit: number;
   offset: number;
 }
+const ListProjectsResponse = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<ListProjectsResponse>;
+
 /** Key-value string pairs attached to an existing resource container. Certain labels may be enforced via organizational policies. Setting an individual label's value to `null` removes/deletes that label from the resource. * **Key:** Must be between 1 and 63 characters long (excluding an optional domain prefix). Must start and end with an alphanumeric character `[a-zA-Z0-9]` and can contain alphanumerics, dashes (-), underscores (_), and dots (.). May include an optional domain prefix up to 250 characters (a lowercase DNS subdomain containing `[a-z0-9]`, `-`, and `.`) followed by a slash (/). Total maximum key length is 314 characters. * **Value:** Must be 63 characters or less. May be empty (""). If non-empty, must start and end with an alphanumeric character `[a-zA-Z0-9]` and can contain alphanumerics, dashes (-), underscores (_), and dots (.). > Note: Additional naming restrictions may apply depending on your specific organization.* */
 export type UpdateLabels = { [key: string]: string | null | undefined };
+const UpdateLabels = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<UpdateLabels>;
+
 export interface PartialUpdateFolderRequest {
   /** Folder identifier - containerId as well as UUID identifier is supported. */
   containerId: string;
@@ -334,6 +486,11 @@ export interface PartialUpdateFolderRequest {
   /** New name for the resource container matching the regex `^[a-zA-ZäüöÄÜÖ0-9]( ?[a-zA-ZäüöÄÜÖß0-9_+&-]){0,39}$`. */
   name?: string;
 }
+const PartialUpdateFolderRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<PartialUpdateFolderRequest>;
+
 export interface PartialUpdateOrganizationRequest {
   /** Organization identifier - containerId as well as UUID identifier is supported. */
   id: string;
@@ -341,6 +498,11 @@ export interface PartialUpdateOrganizationRequest {
   /** The new name of the organization matching the regex `^[a-zA-ZäüöÄÜÖ0-9]( ?[a-zA-ZäüöÄÜÖß0-9_+&-]){0,39}$`. */
   name?: string;
 }
+const PartialUpdateOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<PartialUpdateOrganizationRequest>;
+
 export interface PartialUpdateProjectRequest {
   /** Project identifier - containerId as well as UUID identifier is supported. */
   id: string;
@@ -350,6 +512,11 @@ export interface PartialUpdateProjectRequest {
   /** New name for the resource container matching the regex `^[a-zA-ZäüöÄÜÖ0-9]( ?[a-zA-ZäüöÄÜÖß0-9_+&-]){0,39}$`. */
   name?: string;
 }
+const PartialUpdateProjectRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<PartialUpdateProjectRequest>;
+
 export type CreateFolderError = BadRequest | Forbidden | Conflict | StackitOpError;
 /** Create Folder Creates a new folder within a parent organization or folder. Authorization & Permissions: - Evaluated on Target Parent Container: resource-manager.folder.create (required permission on the target parent organization or folder to create a folder). */
 export const createFolder: API.OperationMethod<
@@ -358,8 +525,8 @@ export const createFolder: API.OperationMethod<
   CreateFolderError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateFolderRequest>,
-  output: __S(5) as any as S.Schema<FolderResponse>,
+  input: CreateFolderRequest,
+  output: FolderResponse,
   errors: [BadRequest, Forbidden, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -373,8 +540,8 @@ export const createProject: API.OperationMethod<
   CreateProjectError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<CreateProjectRequest>,
-  output: __S(8) as any as S.Schema<Project>,
+  input: CreateProjectRequest,
+  output: Project,
   errors: [BadRequest, Forbidden, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -388,8 +555,8 @@ export const deleteFolder: API.OperationMethod<
   DeleteFolderError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeleteFolderRequest>,
-  output: __S(10) as any as S.Schema<DeleteFolderResponse>,
+  input: DeleteFolderRequest,
+  output: DeleteFolderResponse,
   errors: [NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -403,8 +570,8 @@ export const deleteFolderLabels: API.OperationMethod<
   DeleteFolderLabelsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DeleteFolderLabelsRequest>,
-  output: __S(10) as any as S.Schema<DeleteFolderLabelsResponse>,
+  input: DeleteFolderLabelsRequest,
+  output: DeleteFolderLabelsResponse,
   errors: [Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -418,8 +585,8 @@ export const deleteOrganizationLabels: API.OperationMethod<
   DeleteOrganizationLabelsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<DeleteOrganizationLabelsRequest>,
-  output: __S(14) as any as S.Schema<DeleteOrganizationLabelsResponse>,
+  input: DeleteOrganizationLabelsRequest,
+  output: DeleteOrganizationLabelsResponse,
   errors: [Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -433,8 +600,8 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DeleteProjectRequest>,
-  output: __S(10) as any as S.Schema<DeleteProjectResponse>,
+  input: DeleteProjectRequest,
+  output: DeleteProjectResponse,
   errors: [Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -448,8 +615,8 @@ export const deleteProjectLabels: API.OperationMethod<
   DeleteProjectLabelsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<DeleteProjectLabelsRequest>,
-  output: __S(10) as any as S.Schema<DeleteProjectLabelsResponse>,
+  input: DeleteProjectLabelsRequest,
+  output: DeleteProjectLabelsResponse,
   errors: [Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -463,8 +630,8 @@ export const getFolderDetails: API.OperationMethod<
   GetFolderDetailsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<GetFolderDetailsRequest>,
-  output: __S(20) as any as S.Schema<GetFolderDetailsResponse>,
+  input: GetFolderDetailsRequest,
+  output: GetFolderDetailsResponse,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -478,8 +645,8 @@ export const getOrganization: API.OperationMethod<
   GetOrganizationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetOrganizationRequest>,
-  output: __S(22) as any as S.Schema<OrganizationResponse>,
+  input: GetOrganizationRequest,
+  output: OrganizationResponse,
   errors: [NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -493,8 +660,8 @@ export const getProject: API.OperationMethod<
   GetProjectError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<GetProjectRequest>,
-  output: __S(24) as any as S.Schema<GetProjectResponse>,
+  input: GetProjectRequest,
+  output: GetProjectResponse,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -508,8 +675,8 @@ export const listFolders: API.OperationMethod<
   ListFoldersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<ListFoldersRequest>,
-  output: __S(28) as any as S.Schema<ListFoldersResponse>,
+  input: ListFoldersRequest,
+  output: ListFoldersResponse,
   errors: [BadRequest, Forbidden, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -523,8 +690,8 @@ export const listOrganizations: API.OperationMethod<
   ListOrganizationsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<ListOrganizationsRequest>,
-  output: __S(32) as any as S.Schema<ListOrganizationsResponse>,
+  input: ListOrganizationsRequest,
+  output: ListOrganizationsResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -538,8 +705,8 @@ export const listProjects: API.OperationMethod<
   ListProjectsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<ListProjectsRequest>,
-  output: __S(35) as any as S.Schema<ListProjectsResponse>,
+  input: ListProjectsRequest,
+  output: ListProjectsResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -553,8 +720,8 @@ export const partialUpdateFolder: API.OperationMethod<
   PartialUpdateFolderError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<PartialUpdateFolderRequest>,
-  output: __S(5) as any as S.Schema<FolderResponse>,
+  input: PartialUpdateFolderRequest,
+  output: FolderResponse,
   errors: [Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -568,8 +735,8 @@ export const partialUpdateOrganization: API.OperationMethod<
   PartialUpdateOrganizationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<PartialUpdateOrganizationRequest>,
-  output: __S(22) as any as S.Schema<OrganizationResponse>,
+  input: PartialUpdateOrganizationRequest,
+  output: OrganizationResponse,
   errors: [NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -583,8 +750,8 @@ export const partialUpdateProject: API.OperationMethod<
   PartialUpdateProjectError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<PartialUpdateProjectRequest>,
-  output: __S(8) as any as S.Schema<Project>,
+  input: PartialUpdateProjectRequest,
+  output: Project,
   errors: [Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -603,13 +770,13 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Member" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(Member);
     case 3:
       return S.suspend(() =>
         S.Struct({
           containerParentId: S.String,
-          labels: S.optional(__S(0)),
-          members: S.optional(__S(2)),
+          labels: S.optional(Labels),
+          members: S.optional(CreateFolderRequestMembersList),
           name: S.String,
         }).pipe(
           T.Http({
@@ -625,7 +792,7 @@ function __c0(j: number): any {
         S.Struct({
           containerId: S.String,
           id: S.String,
-          type: S.String,
+          type: ParentType,
         }),
       ).annotate({ identifier: "Parent" });
     case 5:
@@ -634,9 +801,9 @@ function __c0(j: number): any {
           containerId: S.String,
           creationTime: S.String,
           folderId: S.String,
-          labels: S.optional(__S(0)),
+          labels: S.optional(Labels),
           name: S.String,
-          parent: __S(4),
+          parent: Parent,
           updateTime: S.String,
         }),
       ).annotate({ identifier: "FolderResponse" });
@@ -646,8 +813,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           containerParentId: S.String,
-          labels: S.optional(__S(6)),
-          members: __S(2),
+          labels: S.optional(CreateProjectLabels),
+          members: CreateProjectRequestMembersList,
           name: S.String,
         }).pipe(
           T.Http({
@@ -667,10 +834,10 @@ function __c1(j: number): any {
         S.Struct({
           containerId: S.String,
           creationTime: S.String,
-          labels: S.optional(__S(0)),
-          lifecycleState: S.String,
+          labels: S.optional(Labels),
+          lifecycleState: LifecycleState,
           name: S.String,
-          parent: __S(4),
+          parent: Parent,
           projectId: S.String,
           updateTime: S.String,
         }),
@@ -699,7 +866,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           containerId: S.String.pipe(T.Label()),
-          keys: S.optional(__S(11).pipe(T.Query())),
+          keys: S.optional(DeleteFolderLabelsRequestKeysList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -715,7 +882,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           containerId: S.String.pipe(T.Label()),
-          keys: S.optional(__S(11).pipe(T.Query())),
+          keys: S.optional(DeleteOrganizationLabelsRequestKeysList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -752,7 +919,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           containerId: S.String.pipe(T.Label()),
-          keys: S.optional(__S(11).pipe(T.Query())),
+          keys: S.optional(DeleteProjectLabelsRequestKeysList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -786,21 +953,21 @@ function __c2(j: number): any {
           id: S.String,
           name: S.String,
           parentId: S.optional(S.String),
-          type: S.String,
+          type: ParentListItemType,
         }),
       ).annotate({ identifier: "ParentListItem" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(ParentListItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           containerId: S.String,
           creationTime: S.String,
           folderId: S.String,
-          labels: S.optional(__S(0)),
+          labels: S.optional(Labels),
           name: S.String,
-          parent: __S(4),
-          parents: S.optional(__S(19)),
+          parent: Parent,
+          parents: S.optional(ParentList),
           updateTime: S.String,
         }),
       ).annotate({ identifier: "GetFolderDetailsResponse" });
@@ -822,8 +989,8 @@ function __c2(j: number): any {
         S.Struct({
           containerId: S.String,
           creationTime: S.String,
-          labels: S.optional(__S(0)),
-          lifecycleState: S.String,
+          labels: S.optional(Labels),
+          lifecycleState: LifecycleState,
           name: S.String,
           organizationId: S.String,
           updateTime: S.String,
@@ -852,11 +1019,11 @@ function __c3(j: number): any {
         S.Struct({
           containerId: S.String,
           creationTime: S.String,
-          labels: S.optional(__S(0)),
-          lifecycleState: S.String,
+          labels: S.optional(Labels),
+          lifecycleState: LifecycleState,
           name: S.String,
-          parent: __S(4),
-          parents: S.optional(__S(19)),
+          parent: Parent,
+          parents: S.optional(ParentList),
           projectId: S.String,
           updateTime: S.String,
         }),
@@ -865,7 +1032,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           containerParentId: S.optional(S.String.pipe(T.Query())),
-          containerIds: S.optional(__S(11).pipe(T.Query())),
+          containerIds: S.optional(ListFoldersRequestContainerIdsList.pipe(T.Query())),
           member: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
@@ -885,20 +1052,20 @@ function __c3(j: number): any {
           containerId: S.String,
           creationTime: S.String,
           folderId: S.String,
-          labels: S.optional(__S(0)),
+          labels: S.optional(Labels),
           name: S.String,
-          parent: __S(4),
+          parent: Parent,
           updateTime: S.String,
         }),
       ).annotate({
         identifier: "ListFoldersResponseItemsItem",
       });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(ListFoldersResponseItemsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          items: __S(27),
+          items: ListFoldersResponseItemsList,
           limit: S.Number,
           offset: S.Number,
         }),
@@ -906,7 +1073,7 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          containerIds: S.optional(__S(11).pipe(T.Query())),
+          containerIds: S.optional(ListOrganizationsRequestContainerIdsList.pipe(T.Query())),
           member: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
@@ -925,8 +1092,8 @@ function __c3(j: number): any {
         S.Struct({
           containerId: S.String,
           creationTime: S.String,
-          labels: S.optional(__S(0)),
-          lifecycleState: S.String,
+          labels: S.optional(Labels),
+          lifecycleState: LifecycleState,
           name: S.String,
           organizationId: S.String,
           updateTime: S.String,
@@ -935,7 +1102,7 @@ function __c3(j: number): any {
         identifier: "ListOrganizationsResponseItemsItem",
       });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(ListOrganizationsResponseItemsItem);
   }
 }
 function __c4(j: number): any {
@@ -943,7 +1110,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          items: __S(31),
+          items: ListOrganizationsResponseItemsList,
           limit: S.Number,
           offset: S.Number,
         }),
@@ -954,7 +1121,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           containerParentId: S.optional(S.String.pipe(T.Query())),
-          containerIds: S.optional(__S(11).pipe(T.Query())),
+          containerIds: S.optional(ListProjectsRequestContainerIdsList.pipe(T.Query())),
           member: S.optional(S.String.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -969,11 +1136,11 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "ListProjectsRequest" });
     case 2:
-      return S.Array(__S(8));
+      return S.Array(Project);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          items: __S(34),
+          items: ListProjectsResponseItemsList,
           limit: S.Number,
           offset: S.Number,
         }),
@@ -985,7 +1152,7 @@ function __c4(j: number): any {
         S.Struct({
           containerId: S.String.pipe(T.Label()),
           containerParentId: S.optional(S.String),
-          labels: S.optional(__S(36)),
+          labels: S.optional(UpdateLabels),
           name: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1002,7 +1169,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          labels: S.optional(__S(36)),
+          labels: S.optional(UpdateLabels),
           name: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1020,7 +1187,7 @@ function __c4(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           containerParentId: S.optional(S.String),
-          labels: S.optional(__S(36)),
+          labels: S.optional(UpdateLabels),
           name: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1033,24 +1200,5 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "PartialUpdateProjectRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

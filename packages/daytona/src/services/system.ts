@@ -6,12 +6,15 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
 export interface GetSystemMetricsRequest {}
+const GetSystemMetricsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetSystemMetricsRequest>;
+
 export interface SystemMetrics {
   cpuCount?: number;
   cpuUsedPct?: number;
@@ -24,6 +27,8 @@ export interface SystemMetrics {
   timestamp?: string;
   timestampUnix?: number;
 }
+const SystemMetrics = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SystemMetrics>;
+
 export type GetSystemMetricsError = DaytonaOpError;
 /** Get sandbox resource metrics Latest CPU/memory/disk usage snapshot for the sandbox. cpuUsedPct is the average CPU usage as a percentage of the CPU limit over the last sample window (0 until the first sample completes). Byte fields are in bytes. */
 export const getSystemMetrics: API.OperationMethod<
@@ -32,8 +37,8 @@ export const getSystemMetrics: API.OperationMethod<
   GetSystemMetricsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetSystemMetricsRequest>,
-  output: __S(1) as any as S.Schema<SystemMetrics>,
+  input: GetSystemMetricsRequest,
+  output: SystemMetrics,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -61,16 +66,5 @@ function __c0(j: number): any {
           timestampUnix: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SystemMetrics" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 1) {
-    case 0:
-      return __c0(i & 1);
   }
 }

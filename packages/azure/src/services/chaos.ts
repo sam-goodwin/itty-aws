@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -19,9 +17,22 @@ export interface CancelExperimentRequest {
   /** String that represents a Experiment resource name. */
   experimentName: string;
 }
+const CancelExperimentRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CancelExperimentRequest>;
+
 export interface CancelExperimentResponse {}
+const CancelExperimentResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CancelExperimentResponse>;
+
 /** Model that represents the Capability properties model. */
 export interface CapabilityPropertiesInput {}
+const CapabilityPropertiesInput =
+  CancelExperimentResponse as any as S.Schema<CapabilityPropertiesInput>;
+
 export interface CapabilitiesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -40,10 +51,19 @@ export interface CapabilitiesCreateOrUpdateRequest {
   /** The properties of a capability resource. */
   properties?: CapabilityPropertiesInput;
 }
+const CapabilitiesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CapabilitiesCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -59,6 +79,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SystemData>;
+
 /** Model that represents the Capability properties model. */
 export interface CapabilityProperties {
   /** String of the Publisher that this Capability extends. */
@@ -72,6 +94,8 @@ export interface CapabilityProperties {
   /** String of the URN for this Capability Type. */
   urn?: string;
 }
+const CapabilityProperties = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CapabilityProperties>;
+
 export interface CapabilitiesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -84,6 +108,11 @@ export interface CapabilitiesCreateOrUpdateResponse {
   /** The properties of a capability resource. */
   properties?: CapabilityProperties;
 }
+const CapabilitiesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CapabilitiesCreateOrUpdateResponse>;
+
 export interface DeleteCapabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -100,7 +129,15 @@ export interface DeleteCapabilityRequest {
   /** String that represents a Capability resource name. */
   capabilityName: string;
 }
+const DeleteCapabilityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DeleteCapabilityRequest>;
+
 export interface DeleteCapabilityResponse {}
+const DeleteCapabilityResponse =
+  CancelExperimentResponse as any as S.Schema<DeleteCapabilityResponse>;
+
 export interface DeleteExperimentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -109,7 +146,15 @@ export interface DeleteExperimentRequest {
   /** String that represents a Experiment resource name. */
   experimentName: string;
 }
+const DeleteExperimentRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteExperimentRequest>;
+
 export interface DeleteExperimentResponse {}
+const DeleteExperimentResponse =
+  CancelExperimentResponse as any as S.Schema<DeleteExperimentResponse>;
+
 export interface DeleteTargetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -124,28 +169,51 @@ export interface DeleteTargetRequest {
   /** String that represents a Target resource name. */
   targetName: string;
 }
+const DeleteTargetRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DeleteTargetRequest>;
+
 export interface DeleteTargetResponse {}
+const DeleteTargetResponse = CancelExperimentResponse as any as S.Schema<DeleteTargetResponse>;
+
 /** Resource tags. */
 export type ExperimentsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const ExperimentsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ExperimentsCreateOrUpdateRequestTagsMap>;
+
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
+const ManagedServiceIdentityType = S.String;
+
 /** User assigned identity properties */
 export type UserAssignedIdentityInput = CapabilityPropertiesInput;
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
   [key: string]: CapabilityPropertiesInput | null | undefined;
 };
+const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ExperimentsCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
+const ExperimentsCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ExperimentsCreateOrUpdateRequestIdentity>;
+
 /** Enum union of Chaos experiment action types. */
 export type ExperimentActionType = "delay" | "discrete" | "continuous";
+const ExperimentActionType = S.String;
+
 /** A map to describe the settings of an action. */
 export interface KeyValuePair {
   /** The name of the setting for the action. */
@@ -153,7 +221,11 @@ export interface KeyValuePair {
   /** The value of the setting for the action. */
   value: string;
 }
+const KeyValuePair = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<KeyValuePair>;
+
 export type KeyValuePairList = Array<KeyValuePair>;
+const KeyValuePairList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<KeyValuePairList>;
+
 /** Model that represents the base action model. 9 total per experiment. */
 export interface ChaosExperimentAction {
   /** String that represents a Capability URN. */
@@ -167,8 +239,18 @@ export interface ChaosExperimentAction {
   /** ID of the selector the action targets (continuous and discrete actions). */
   selectorId?: string;
 }
+const ChaosExperimentAction = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ChaosExperimentAction>;
+
 /** List of actions. */
 export type ChaosExperimentBranchActionsList = Array<ChaosExperimentAction>;
+const ChaosExperimentBranchActionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ChaosExperimentBranchActionsList>;
+
 /** Model that represents a branch in the step. 9 total per experiment. */
 export interface ChaosExperimentBranch {
   /** String of the branch name. */
@@ -176,8 +258,18 @@ export interface ChaosExperimentBranch {
   /** List of actions. */
   actions: ChaosExperimentBranchActionsList;
 }
+const ChaosExperimentBranch = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ChaosExperimentBranch>;
+
 /** List of branches. */
 export type ChaosExperimentStepBranchesList = Array<ChaosExperimentBranch>;
+const ChaosExperimentStepBranchesList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ChaosExperimentStepBranchesList>;
+
 /** Model that represents a step in the Experiment resource. */
 export interface ChaosExperimentStep {
   /** String of the step name. */
@@ -185,18 +277,36 @@ export interface ChaosExperimentStep {
   /** List of branches. */
   branches: ChaosExperimentStepBranchesList;
 }
+const ChaosExperimentStep = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ChaosExperimentStep>;
+
 /** List of steps. */
 export type ExperimentPropertiesInputStepsList = Array<ChaosExperimentStep>;
+const ExperimentPropertiesInputStepsList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ExperimentPropertiesInputStepsList>;
+
 /** Enum of the selector type. */
 export type SelectorType = "List" | "Query";
+const SelectorType = S.String;
+
 /** Enum that discriminates between filter types. Currently only `Simple` type is supported. */
 export type FilterType = "Simple";
+const FilterType = S.String;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<StringList>;
+
 /** Parameters of a `Simple` target filter. */
 export interface ChaosTargetSimpleFilterParameters {
   /** Availability zones to filter targets by. */
   zones?: StringList;
 }
+const ChaosTargetSimpleFilterParameters = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ChaosTargetSimpleFilterParameters>;
+
 /** Model that represents available filter types that can be applied to a targets list. */
 export interface ChaosTargetFilter {
   /** Chaos target filter discriminator type */
@@ -204,6 +314,8 @@ export interface ChaosTargetFilter {
   /** Parameters of a `Simple` filter. */
   parameters?: ChaosTargetSimpleFilterParameters;
 }
+const ChaosTargetFilter = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ChaosTargetFilter>;
+
 /** Model that represents a reference to a Target in the selector. */
 export interface TargetReference {
   /** Reference type, `ChaosTarget`. */
@@ -211,7 +323,11 @@ export interface TargetReference {
   /** Resource ID of a Chaos target. */
   id: string;
 }
+const TargetReference = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<TargetReference>;
+
 export type TargetReferenceList = Array<TargetReference>;
+const TargetReferenceList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<TargetReferenceList>;
+
 /** Model that represents a selector in the Experiment resource. */
 export interface ChaosTargetSelector {
   /** String of the selector ID. */
@@ -227,8 +343,15 @@ export interface ChaosTargetSelector {
   /** Subscriptions a `Query` selector runs against. */
   subscriptionIds?: StringList;
 }
+const ChaosTargetSelector = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ChaosTargetSelector>;
+
 /** List of selectors. */
 export type ExperimentPropertiesInputSelectorsList = Array<ChaosTargetSelector>;
+const ExperimentPropertiesInputSelectorsList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ExperimentPropertiesInputSelectorsList>;
+
 /** Model that represents the Experiment properties model. */
 export interface ExperimentPropertiesInput {
   /** List of steps. */
@@ -236,6 +359,11 @@ export interface ExperimentPropertiesInput {
   /** List of selectors. */
   selectors: ExperimentPropertiesInputSelectorsList;
 }
+const ExperimentPropertiesInput = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ExperimentPropertiesInput>;
+
 export interface ExperimentsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -252,8 +380,16 @@ export interface ExperimentsCreateOrUpdateRequest {
   /** The properties of the experiment resource. */
   properties: ExperimentPropertiesInput;
 }
+const ExperimentsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ExperimentsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type ExperimentsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const ExperimentsCreateOrUpdateResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<ExperimentsCreateOrUpdateResponseTagsMap>;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -261,8 +397,15 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
+const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<UserAssignedIdentity>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | null | undefined };
+const UserAssignedIdentities = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<UserAssignedIdentities>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ExperimentsCreateOrUpdateResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -272,6 +415,11 @@ export interface ExperimentsCreateOrUpdateResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
+const ExperimentsCreateOrUpdateResponseIdentity = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ExperimentsCreateOrUpdateResponseIdentity>;
+
 /** Current provisioning state for a given Azure Chaos resource. */
 export type ProvisioningState =
   | "Succeeded"
@@ -280,10 +428,18 @@ export type ProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting";
+const ProvisioningState = S.String;
+
 /** List of steps. */
 export type ExperimentPropertiesStepsList = Array<ChaosExperimentStep>;
+const ExperimentPropertiesStepsList =
+  ExperimentPropertiesInputStepsList as any as S.Schema<ExperimentPropertiesStepsList>;
+
 /** List of selectors. */
 export type ExperimentPropertiesSelectorsList = Array<ChaosTargetSelector>;
+const ExperimentPropertiesSelectorsList =
+  ExperimentPropertiesInputSelectorsList as any as S.Schema<ExperimentPropertiesSelectorsList>;
+
 /** Model that represents the Experiment properties model. */
 export interface ExperimentProperties {
   /** Most recent provisioning state for the given experiment resource. */
@@ -293,6 +449,8 @@ export interface ExperimentProperties {
   /** List of selectors. */
   selectors: ExperimentPropertiesSelectorsList;
 }
+const ExperimentProperties = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ExperimentProperties>;
+
 export interface ExperimentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -311,6 +469,11 @@ export interface ExperimentsCreateOrUpdateResponse {
   /** The properties of the experiment resource. */
   properties: ExperimentProperties;
 }
+const ExperimentsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ExperimentsCreateOrUpdateResponse>;
+
 export interface ExperimentsExecutionDetailsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -321,6 +484,11 @@ export interface ExperimentsExecutionDetailsRequest {
   /** GUID that represents a Experiment execution detail. */
   executionId: string;
 }
+const ExperimentsExecutionDetailsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ExperimentsExecutionDetailsRequest>;
+
 /** Model that represents the Experiment action target details error model. */
 export interface ExperimentExecutionActionTargetDetailsError {
   /** The error code. */
@@ -328,6 +496,11 @@ export interface ExperimentExecutionActionTargetDetailsError {
   /** The error message */
   message?: string;
 }
+const ExperimentExecutionActionTargetDetailsError = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ExperimentExecutionActionTargetDetailsError>;
+
 /** Model that represents the Experiment action target details properties model. */
 export interface ExperimentExecutionActionTargetDetailsProperties {
   /** The status of the execution. */
@@ -341,8 +514,18 @@ export interface ExperimentExecutionActionTargetDetailsProperties {
   /** The error of the action. */
   error?: ExperimentExecutionActionTargetDetailsError;
 }
+const ExperimentExecutionActionTargetDetailsProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ExperimentExecutionActionTargetDetailsProperties>;
+
 /** The array of targets. */
 export type ActionStatusTargetsList = Array<ExperimentExecutionActionTargetDetailsProperties>;
+const ActionStatusTargetsList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ActionStatusTargetsList>;
+
 /** Model that represents the an action and its status. */
 export interface ActionStatus {
   /** The name of the action status. */
@@ -358,8 +541,15 @@ export interface ActionStatus {
   /** The array of targets. */
   targets?: ActionStatusTargetsList;
 }
+const ActionStatus = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ActionStatus>;
+
 /** The array of actions. */
 export type BranchStatusActionsList = Array<ActionStatus>;
+const BranchStatusActionsList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<BranchStatusActionsList>;
+
 /** Model that represents the a list of actions and action statuses. */
 export interface BranchStatus {
   /** The name of the branch status. */
@@ -371,8 +561,15 @@ export interface BranchStatus {
   /** The array of actions. */
   actions?: BranchStatusActionsList;
 }
+const BranchStatus = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<BranchStatus>;
+
 /** The array of branches. */
 export type StepStatusBranchesList = Array<BranchStatus>;
+const StepStatusBranchesList = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<StepStatusBranchesList>;
+
 /** Model that represents the a list of branches and branch statuses. */
 export interface StepStatus {
   /** The name of the step. */
@@ -384,13 +581,25 @@ export interface StepStatus {
   /** The array of branches. */
   branches?: StepStatusBranchesList;
 }
+const StepStatus = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<StepStatus>;
+
 /** The steps of the experiment run. */
 export type ExperimentExecutionDetailsPropertiesRunInformationStepsList = Array<StepStatus>;
+const ExperimentExecutionDetailsPropertiesRunInformationStepsList = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ExperimentExecutionDetailsPropertiesRunInformationStepsList>;
+
 /** The information of the experiment run. */
 export interface ExperimentExecutionDetailsPropertiesRunInformation {
   /** The steps of the experiment run. */
   steps?: ExperimentExecutionDetailsPropertiesRunInformationStepsList;
 }
+const ExperimentExecutionDetailsPropertiesRunInformation = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ExperimentExecutionDetailsPropertiesRunInformation>;
+
 /** Model that represents the extended properties of an experiment execution. */
 export interface ExperimentExecutionDetailsProperties {
   /** The status of the execution. */
@@ -406,6 +615,11 @@ export interface ExperimentExecutionDetailsProperties {
   /** The information of the experiment run. */
   runInformation?: ExperimentExecutionDetailsPropertiesRunInformation;
 }
+const ExperimentExecutionDetailsProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ExperimentExecutionDetailsProperties>;
+
 /** Model that represents the execution details of an Experiment. */
 export interface ExperimentExecutionDetails {
   /** String of the resource type. */
@@ -417,6 +631,11 @@ export interface ExperimentExecutionDetails {
   /** The properties of the experiment execution details. */
   properties?: ExperimentExecutionDetailsProperties;
 }
+const ExperimentExecutionDetails = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ExperimentExecutionDetails>;
+
 export interface GetCapabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -433,6 +652,8 @@ export interface GetCapabilityRequest {
   /** String that represents a Capability resource name. */
   capabilityName: string;
 }
+const GetCapabilityRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<GetCapabilityRequest>;
+
 export interface GetCapabilityResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -445,6 +666,11 @@ export interface GetCapabilityResponse {
   /** The properties of a capability resource. */
   properties?: CapabilityProperties;
 }
+const GetCapabilityResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetCapabilityResponse>;
+
 export interface GetCapabilityTypeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -455,17 +681,38 @@ export interface GetCapabilityTypeRequest {
   /** String that represents a Capability Type resource name. */
   capabilityTypeName: string;
 }
+const GetCapabilityTypeRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetCapabilityTypeRequest>;
+
 /** Control plane actions necessary to execute capability type. */
 export type CapabilityTypePropertiesAzureRbacActionsList = Array<string>;
+const CapabilityTypePropertiesAzureRbacActionsList = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<CapabilityTypePropertiesAzureRbacActionsList>;
+
 /** Data plane actions necessary to execute capability type. */
 export type CapabilityTypePropertiesAzureRbacDataActionsList = Array<string>;
+const CapabilityTypePropertiesAzureRbacDataActionsList =
+  CapabilityTypePropertiesAzureRbacActionsList as any as S.Schema<CapabilityTypePropertiesAzureRbacDataActionsList>;
+
 /** Required Azure Role Definition Ids to execute capability type. */
 export type CapabilityTypePropertiesRequiredAzureRoleDefinitionIdsList = Array<string>;
+const CapabilityTypePropertiesRequiredAzureRoleDefinitionIdsList =
+  CapabilityTypePropertiesAzureRbacActionsList as any as S.Schema<CapabilityTypePropertiesRequiredAzureRoleDefinitionIdsList>;
+
 /** Runtime properties of this Capability Type. */
 export interface CapabilityTypePropertiesRuntimeProperties {
   /** String of the kind of the resource's action type (continuous or discrete). */
   kind?: string;
 }
+const CapabilityTypePropertiesRuntimeProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<CapabilityTypePropertiesRuntimeProperties>;
+
 /** Model that represents the Capability Type properties model. */
 export interface CapabilityTypeProperties {
   /** String of the Publisher that this Capability Type extends. */
@@ -491,6 +738,11 @@ export interface CapabilityTypeProperties {
   /** Runtime properties of this Capability Type. */
   runtimeProperties?: CapabilityTypePropertiesRuntimeProperties;
 }
+const CapabilityTypeProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<CapabilityTypeProperties>;
+
 export interface GetCapabilityTypeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -503,6 +755,11 @@ export interface GetCapabilityTypeResponse {
   /** The properties of the capability type resource. */
   properties?: CapabilityTypeProperties;
 }
+const GetCapabilityTypeResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GetCapabilityTypeResponse>;
+
 export interface GetExperimentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -511,8 +768,13 @@ export interface GetExperimentRequest {
   /** String that represents a Experiment resource name. */
   experimentName: string;
 }
+const GetExperimentRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<GetExperimentRequest>;
+
 /** Resource tags. */
 export type GetExperimentResponseTagsMap = { [key: string]: string | undefined };
+const GetExperimentResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetExperimentResponseTagsMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetExperimentResponseIdentity = ExperimentsCreateOrUpdateResponseIdentity;
 export interface GetExperimentResponse {
@@ -533,6 +795,11 @@ export interface GetExperimentResponse {
   /** The properties of the experiment resource. */
   properties: ExperimentProperties;
 }
+const GetExperimentResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<GetExperimentResponse>;
+
 export interface GetExperimentExecutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -543,6 +810,11 @@ export interface GetExperimentExecutionRequest {
   /** GUID that represents a Experiment execution detail. */
   executionId: string;
 }
+const GetExperimentExecutionRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<GetExperimentExecutionRequest>;
+
 /** Model that represents the execution properties of an Experiment. */
 export interface ExperimentExecutionProperties {
   /** The status of the execution. */
@@ -552,6 +824,11 @@ export interface ExperimentExecutionProperties {
   /** String that represents the stop date time. */
   stoppedAt?: string;
 }
+const ExperimentExecutionProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ExperimentExecutionProperties>;
+
 export interface GetExperimentExecutionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -564,6 +841,11 @@ export interface GetExperimentExecutionResponse {
   /** The properties of experiment execution status. */
   properties?: ExperimentExecutionProperties;
 }
+const GetExperimentExecutionResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<GetExperimentExecutionResponse>;
+
 export interface GetOperationStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -572,10 +854,25 @@ export interface GetOperationStatusRequest {
   /** The ID of an ongoing async operation. */
   operationId: string;
 }
+const GetOperationStatusRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetOperationStatusRequest>;
+
 /** The operations list. */
 export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
+const OperationStatusResultOperationsList = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<OperationStatusResultOperationsList>;
+
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
+const ErrorDetailDetailsList = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ErrorDetailDetailsList>;
+
 /** The resource management error additional info. */
 export interface ErrorAdditionalInfo {
   /** The additional info type. */
@@ -583,8 +880,15 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
+const ErrorAdditionalInfo = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<ErrorAdditionalInfo>;
+
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
+const ErrorDetailAdditionalInfoList = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ErrorDetailAdditionalInfoList>;
+
 /** The error detail. */
 export interface ErrorDetail {
   /** The error code. */
@@ -598,6 +902,8 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
+const ErrorDetail = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ErrorDetail>;
+
 /** The current status of an async operation. */
 export interface OperationStatusResult {
   /** Fully qualified ID for the async operation. */
@@ -619,8 +925,18 @@ export interface OperationStatusResult {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
+const OperationStatusResult = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<OperationStatusResult>;
+
 /** The operations list. */
 export type GetOperationStatusResponseOperationsList = Array<OperationStatusResult>;
+const GetOperationStatusResponseOperationsList = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetOperationStatusResponseOperationsList>;
+
 export interface GetOperationStatusResponse {
   /** Fully qualified ID for the async operation. */
   id?: string;
@@ -641,6 +957,11 @@ export interface GetOperationStatusResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
+const GetOperationStatusResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GetOperationStatusResponse>;
+
 export interface GetTargetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -655,8 +976,15 @@ export interface GetTargetRequest {
   /** String that represents a Target resource name. */
   targetName: string;
 }
+const GetTargetRequest = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<GetTargetRequest>;
+
 /** The properties of the target resource. */
 export type GetTargetResponsePropertiesMap = { [key: string]: unknown | undefined };
+const GetTargetResponsePropertiesMap = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetTargetResponsePropertiesMap>;
+
 export interface GetTargetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -671,6 +999,8 @@ export interface GetTargetResponse {
   /** Azure resource location. */
   location?: string;
 }
+const GetTargetResponse = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<GetTargetResponse>;
+
 export interface GetTargetTypeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -679,8 +1009,13 @@ export interface GetTargetTypeRequest {
   /** String that represents a Target Type resource name. */
   targetTypeName: string;
 }
+const GetTargetTypeRequest = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<GetTargetTypeRequest>;
+
 /** List of resource types this Target Type can extend. */
 export type TargetTypePropertiesResourceTypesList = Array<string>;
+const TargetTypePropertiesResourceTypesList =
+  CapabilityTypePropertiesAzureRbacActionsList as any as S.Schema<TargetTypePropertiesResourceTypesList>;
+
 /** Model that represents the base Target Type properties model. */
 export interface TargetTypeProperties {
   /** Localized string of the display name. */
@@ -692,6 +1027,8 @@ export interface TargetTypeProperties {
   /** List of resource types this Target Type can extend. */
   resourceTypes?: TargetTypePropertiesResourceTypesList;
 }
+const TargetTypeProperties = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<TargetTypeProperties>;
+
 export interface GetTargetTypeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -704,6 +1041,11 @@ export interface GetTargetTypeResponse {
   /** The properties of the target type resource. */
   properties: TargetTypeProperties;
 }
+const GetTargetTypeResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<GetTargetTypeResponse>;
+
 export interface ListCapabilitiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -720,6 +1062,11 @@ export interface ListCapabilitiesRequest {
   /** String that sets the continuation token. */
   continuationToken?: string;
 }
+const ListCapabilitiesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListCapabilitiesRequest>;
+
 /** Model that represents a Capability resource. */
 export interface Capability {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -733,8 +1080,15 @@ export interface Capability {
   /** The properties of a capability resource. */
   properties?: CapabilityProperties;
 }
+const Capability = GetCapabilityResponse as any as S.Schema<Capability>;
+
 /** The Capability items on this page */
 export type CapabilityListResultValueList = Array<Capability>;
+const CapabilityListResultValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<CapabilityListResultValueList>;
+
 /** Model that represents a list of Capability resources and a link for pagination. */
 export interface CapabilityListResult {
   /** The Capability items on this page */
@@ -742,6 +1096,8 @@ export interface CapabilityListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const CapabilityListResult = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<CapabilityListResult>;
+
 export interface ListCapabilityTypesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -752,6 +1108,11 @@ export interface ListCapabilityTypesRequest {
   /** String that sets the continuation token. */
   continuationToken?: string;
 }
+const ListCapabilityTypesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ListCapabilityTypesRequest>;
+
 /** Model that represents a Capability Type resource. */
 export interface CapabilityType {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -765,8 +1126,15 @@ export interface CapabilityType {
   /** The properties of the capability type resource. */
   properties?: CapabilityTypeProperties;
 }
+const CapabilityType = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<CapabilityType>;
+
 /** The CapabilityType items on this page */
 export type CapabilityTypeListResultValueList = Array<CapabilityType>;
+const CapabilityTypeListResultValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<CapabilityTypeListResultValueList>;
+
 /** Model that represents a list of Capability Type resources and a link for pagination. */
 export interface CapabilityTypeListResult {
   /** The CapabilityType items on this page */
@@ -774,6 +1142,11 @@ export interface CapabilityTypeListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const CapabilityTypeListResult = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<CapabilityTypeListResult>;
+
 export interface ListExperimentAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -782,6 +1155,11 @@ export interface ListExperimentAllRequest {
   /** String that sets the continuation token. */
   continuationToken?: string;
 }
+const ListExperimentAllRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ListExperimentAllRequest>;
+
 /** Resource tags. */
 export type ExperimentTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -805,8 +1183,15 @@ export interface Experiment {
   /** The properties of the experiment resource. */
   properties: ExperimentProperties;
 }
+const Experiment = GetExperimentResponse as any as S.Schema<Experiment>;
+
 /** The Experiment items on this page */
 export type ExperimentListResultValueList = Array<Experiment>;
+const ExperimentListResultValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ExperimentListResultValueList>;
+
 /** Model that represents a list of Experiment resources and a link for pagination. */
 export interface ExperimentListResult {
   /** The Experiment items on this page */
@@ -814,6 +1199,11 @@ export interface ExperimentListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ExperimentListResult = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ExperimentListResult>;
+
 export interface ListExperimentAllExecutionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -822,6 +1212,11 @@ export interface ListExperimentAllExecutionsRequest {
   /** String that represents a Experiment resource name. */
   experimentName: string;
 }
+const ListExperimentAllExecutionsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListExperimentAllExecutionsRequest>;
+
 /** Model that represents the execution of a Experiment. */
 export interface ExperimentExecution {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -835,8 +1230,15 @@ export interface ExperimentExecution {
   /** The properties of experiment execution status. */
   properties?: ExperimentExecutionProperties;
 }
+const ExperimentExecution = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<ExperimentExecution>;
+
 /** The ExperimentExecution items on this page */
 export type ExperimentExecutionListResultValueList = Array<ExperimentExecution>;
+const ExperimentExecutionListResultValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ExperimentExecutionListResultValueList>;
+
 /** Model that represents a list of Experiment executions and a link for pagination. */
 export interface ExperimentExecutionListResult {
   /** The ExperimentExecution items on this page */
@@ -844,6 +1246,11 @@ export interface ExperimentExecutionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ExperimentExecutionListResult = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ExperimentExecutionListResult>;
+
 export interface ListExperimentsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -854,7 +1261,17 @@ export interface ListExperimentsRequest {
   /** String that sets the continuation token. */
   continuationToken?: string;
 }
+const ListExperimentsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ListExperimentsRequest>;
+
 export interface ListOperationAllRequest {}
+const ListOperationAllRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ListOperationAllRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -866,10 +1283,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -883,14 +1306,26 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationAllResponseValueList = Array<Operation>;
+const ListOperationAllResponseValueList = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ListOperationAllResponseValueList>;
+
 export interface ListOperationAllResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationAllResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationAllResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ListOperationAllResponse>;
+
 export interface ListTargetsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -905,6 +1340,8 @@ export interface ListTargetsRequest {
   /** String that sets the continuation token. */
   continuationToken?: string;
 }
+const ListTargetsRequest = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<ListTargetsRequest>;
+
 /** The properties of the target resource. */
 export type TargetPropertiesMap = { [key: string]: unknown | undefined };
 /** Model that represents a Target resource. */
@@ -922,8 +1359,15 @@ export interface Target {
   /** Azure resource location. */
   location?: string;
 }
+const Target = GetTargetResponse as any as S.Schema<Target>;
+
 /** The Target items on this page */
 export type TargetListResultValueList = Array<Target>;
+const TargetListResultValueList = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<TargetListResultValueList>;
+
 /** Model that represents a list of Target resources and a link for pagination. */
 export interface TargetListResult {
   /** The Target items on this page */
@@ -931,6 +1375,8 @@ export interface TargetListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const TargetListResult = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<TargetListResult>;
+
 export interface ListTargetTypesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -939,6 +1385,11 @@ export interface ListTargetTypesRequest {
   /** String that sets the continuation token. */
   continuationToken?: string;
 }
+const ListTargetTypesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ListTargetTypesRequest>;
+
 /** Model that represents a Target Type resource. */
 export interface TargetType {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -952,8 +1403,15 @@ export interface TargetType {
   /** The properties of the target type resource. */
   properties: TargetTypeProperties;
 }
+const TargetType = GetTargetTypeResponse as any as S.Schema<TargetType>;
+
 /** The TargetType items on this page */
 export type TargetTypeListResultValueList = Array<TargetType>;
+const TargetTypeListResultValueList = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<TargetTypeListResultValueList>;
+
 /** Model that represents a list of Target Type resources and a link for pagination. */
 export interface TargetTypeListResult {
   /** The TargetType items on this page */
@@ -961,6 +1419,11 @@ export interface TargetTypeListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const TargetTypeListResult = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<TargetTypeListResult>;
+
 export interface StartExperimentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -969,9 +1432,20 @@ export interface StartExperimentRequest {
   /** String that represents a Experiment resource name. */
   experimentName: string;
 }
+const StartExperimentRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<StartExperimentRequest>;
+
 export interface StartExperimentResponse {}
+const StartExperimentResponse =
+  CancelExperimentResponse as any as S.Schema<StartExperimentResponse>;
+
 /** The properties of the target resource. */
 export type TargetsCreateOrUpdateRequestPropertiesMap = { [key: string]: unknown | undefined };
+const TargetsCreateOrUpdateRequestPropertiesMap =
+  GetTargetResponsePropertiesMap as any as S.Schema<TargetsCreateOrUpdateRequestPropertiesMap>;
+
 export interface TargetsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -990,8 +1464,16 @@ export interface TargetsCreateOrUpdateRequest {
   /** Azure resource location. */
   location?: string;
 }
+const TargetsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<TargetsCreateOrUpdateRequest>;
+
 /** The properties of the target resource. */
 export type TargetsCreateOrUpdateResponsePropertiesMap = { [key: string]: unknown | undefined };
+const TargetsCreateOrUpdateResponsePropertiesMap =
+  GetTargetResponsePropertiesMap as any as S.Schema<TargetsCreateOrUpdateResponsePropertiesMap>;
+
 export interface TargetsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1006,8 +1488,16 @@ export interface TargetsCreateOrUpdateResponse {
   /** Azure resource location. */
   location?: string;
 }
+const TargetsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<TargetsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type UpdateExperimentRequestTagsMap = { [key: string]: string | undefined };
+const UpdateExperimentRequestTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateExperimentRequestTagsMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateExperimentRequestIdentity = ExperimentsCreateOrUpdateRequestIdentity;
 export interface UpdateExperimentRequest {
@@ -1022,6 +1512,11 @@ export interface UpdateExperimentRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ExperimentsCreateOrUpdateRequestIdentity;
 }
+const UpdateExperimentRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<UpdateExperimentRequest>;
+
 /** Resource tags. */
 export type UpdateExperimentResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1044,6 +1539,8 @@ export interface UpdateExperimentResponse {
   /** The properties of the experiment resource. */
   properties: ExperimentProperties;
 }
+const UpdateExperimentResponse = GetExperimentResponse as any as S.Schema<UpdateExperimentResponse>;
+
 export type CancelExperimentError = AzureOpError;
 /** Cancel a running Experiment resource. */
 export const CancelExperiment: API.OperationMethod<
@@ -1052,8 +1549,8 @@ export const CancelExperiment: API.OperationMethod<
   CancelExperimentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CancelExperimentRequest>,
-  output: __S(1) as any as S.Schema<CancelExperimentResponse>,
+  input: CancelExperimentRequest,
+  output: CancelExperimentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1067,8 +1564,8 @@ export const CapabilitiesCreateOrUpdate: API.OperationMethod<
   CapabilitiesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CapabilitiesCreateOrUpdateRequest>,
-  output: __S(5) as any as S.Schema<CapabilitiesCreateOrUpdateResponse>,
+  input: CapabilitiesCreateOrUpdateRequest,
+  output: CapabilitiesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1082,8 +1579,8 @@ export const DeleteCapability: API.OperationMethod<
   DeleteCapabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DeleteCapabilityRequest>,
-  output: __S(1) as any as S.Schema<DeleteCapabilityResponse>,
+  input: DeleteCapabilityRequest,
+  output: DeleteCapabilityResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1097,8 +1594,8 @@ export const DeleteExperiment: API.OperationMethod<
   DeleteExperimentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DeleteExperimentRequest>,
-  output: __S(1) as any as S.Schema<DeleteExperimentResponse>,
+  input: DeleteExperimentRequest,
+  output: DeleteExperimentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1112,8 +1609,8 @@ export const DeleteTarget: API.OperationMethod<
   DeleteTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<DeleteTargetRequest>,
-  output: __S(1) as any as S.Schema<DeleteTargetResponse>,
+  input: DeleteTargetRequest,
+  output: DeleteTargetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1127,8 +1624,8 @@ export const ExperimentsCreateOrUpdate: API.OperationMethod<
   ExperimentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<ExperimentsCreateOrUpdateRequest>,
-  output: __S(33) as any as S.Schema<ExperimentsCreateOrUpdateResponse>,
+  input: ExperimentsCreateOrUpdateRequest,
+  output: ExperimentsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1142,8 +1639,8 @@ export const ExperimentsExecutionDetails: API.OperationMethod<
   ExperimentsExecutionDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<ExperimentsExecutionDetailsRequest>,
-  output: __S(46) as any as S.Schema<ExperimentExecutionDetails>,
+  input: ExperimentsExecutionDetailsRequest,
+  output: ExperimentExecutionDetails,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1157,8 +1654,8 @@ export const GetCapability: API.OperationMethod<
   GetCapabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<GetCapabilityRequest>,
-  output: __S(48) as any as S.Schema<GetCapabilityResponse>,
+  input: GetCapabilityRequest,
+  output: GetCapabilityResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1172,8 +1669,8 @@ export const GetCapabilityType: API.OperationMethod<
   GetCapabilityTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetCapabilityTypeRequest>,
-  output: __S(53) as any as S.Schema<GetCapabilityTypeResponse>,
+  input: GetCapabilityTypeRequest,
+  output: GetCapabilityTypeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1187,8 +1684,8 @@ export const GetExperiment: API.OperationMethod<
   GetExperimentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<GetExperimentRequest>,
-  output: __S(55) as any as S.Schema<GetExperimentResponse>,
+  input: GetExperimentRequest,
+  output: GetExperimentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1202,8 +1699,8 @@ export const GetExperimentExecution: API.OperationMethod<
   GetExperimentExecutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<GetExperimentExecutionRequest>,
-  output: __S(58) as any as S.Schema<GetExperimentExecutionResponse>,
+  input: GetExperimentExecutionRequest,
+  output: GetExperimentExecutionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1217,8 +1714,8 @@ export const GetOperationStatus: API.OperationMethod<
   GetOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<GetOperationStatusRequest>,
-  output: __S(67) as any as S.Schema<GetOperationStatusResponse>,
+  input: GetOperationStatusRequest,
+  output: GetOperationStatusResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1232,8 +1729,8 @@ export const GetTarget: API.OperationMethod<
   GetTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<GetTargetRequest>,
-  output: __S(70) as any as S.Schema<GetTargetResponse>,
+  input: GetTargetRequest,
+  output: GetTargetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1247,8 +1744,8 @@ export const GetTargetType: API.OperationMethod<
   GetTargetTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<GetTargetTypeRequest>,
-  output: __S(73) as any as S.Schema<GetTargetTypeResponse>,
+  input: GetTargetTypeRequest,
+  output: GetTargetTypeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1262,8 +1759,8 @@ export const ListCapabilities: API.OperationMethod<
   ListCapabilitiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<ListCapabilitiesRequest>,
-  output: __S(76) as any as S.Schema<CapabilityListResult>,
+  input: ListCapabilitiesRequest,
+  output: CapabilityListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1277,8 +1774,8 @@ export const ListCapabilityTypes: API.OperationMethod<
   ListCapabilityTypesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<ListCapabilityTypesRequest>,
-  output: __S(80) as any as S.Schema<CapabilityTypeListResult>,
+  input: ListCapabilityTypesRequest,
+  output: CapabilityTypeListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1292,8 +1789,8 @@ export const ListExperimentAll: API.OperationMethod<
   ListExperimentAllError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<ListExperimentAllRequest>,
-  output: __S(83) as any as S.Schema<ExperimentListResult>,
+  input: ListExperimentAllRequest,
+  output: ExperimentListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1307,8 +1804,8 @@ export const ListExperimentAllExecutions: API.OperationMethod<
   ListExperimentAllExecutionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<ListExperimentAllExecutionsRequest>,
-  output: __S(87) as any as S.Schema<ExperimentExecutionListResult>,
+  input: ListExperimentAllExecutionsRequest,
+  output: ExperimentExecutionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1322,8 +1819,8 @@ export const ListExperiments: API.OperationMethod<
   ListExperimentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<ListExperimentsRequest>,
-  output: __S(83) as any as S.Schema<ExperimentListResult>,
+  input: ListExperimentsRequest,
+  output: ExperimentListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1337,8 +1834,8 @@ export const ListOperationAll: API.OperationMethod<
   ListOperationAllError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<ListOperationAllRequest>,
-  output: __S(93) as any as S.Schema<ListOperationAllResponse>,
+  input: ListOperationAllRequest,
+  output: ListOperationAllResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1352,8 +1849,8 @@ export const ListTargets: API.OperationMethod<
   ListTargetsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<ListTargetsRequest>,
-  output: __S(96) as any as S.Schema<TargetListResult>,
+  input: ListTargetsRequest,
+  output: TargetListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1367,8 +1864,8 @@ export const ListTargetTypes: API.OperationMethod<
   ListTargetTypesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<ListTargetTypesRequest>,
-  output: __S(99) as any as S.Schema<TargetTypeListResult>,
+  input: ListTargetTypesRequest,
+  output: TargetTypeListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1382,8 +1879,8 @@ export const StartExperiment: API.OperationMethod<
   StartExperimentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<StartExperimentRequest>,
-  output: __S(1) as any as S.Schema<StartExperimentResponse>,
+  input: StartExperimentRequest,
+  output: StartExperimentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1397,8 +1894,8 @@ export const TargetsCreateOrUpdate: API.OperationMethod<
   TargetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<TargetsCreateOrUpdateRequest>,
-  output: __S(102) as any as S.Schema<TargetsCreateOrUpdateResponse>,
+  input: TargetsCreateOrUpdateRequest,
+  output: TargetsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1412,8 +1909,8 @@ export const UpdateExperiment: API.OperationMethod<
   UpdateExperimentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<UpdateExperimentRequest>,
-  output: __S(55) as any as S.Schema<UpdateExperimentResponse>,
+  input: UpdateExperimentRequest,
+  output: UpdateExperimentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1451,7 +1948,7 @@ function __c0(j: number): any {
           parentResourceName: S.String.pipe(T.Label()),
           targetName: S.String.pipe(T.Label()),
           capabilityName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1)),
+          properties: S.optional(CapabilityPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1467,10 +1964,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -1490,8 +1987,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CapabilityProperties),
         }),
       ).annotate({
         identifier: "CapabilitiesCreateOrUpdateResponse",
@@ -1555,12 +2052,12 @@ function __c1(j: number): any {
     case 1:
       return S.Record(S.String, S.String);
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(CapabilityPropertiesInput));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(10)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
         }),
       ).annotate({
         identifier: "ExperimentsCreateOrUpdateRequestIdentity",
@@ -1573,19 +2070,19 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "KeyValuePair" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(KeyValuePair);
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: S.String,
+          type: ExperimentActionType,
           duration: S.optional(S.String),
-          parameters: S.optional(__S(13)),
+          parameters: S.optional(KeyValuePairList),
           selectorId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChaosExperimentAction" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(ChaosExperimentAction);
   }
 }
 function __c2(j: number): any {
@@ -1594,26 +2091,26 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          actions: __S(15),
+          actions: ChaosExperimentBranchActionsList,
         }),
       ).annotate({ identifier: "ChaosExperimentBranch" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(ChaosExperimentBranch);
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          branches: __S(17),
+          branches: ChaosExperimentStepBranchesList,
         }),
       ).annotate({ identifier: "ChaosExperimentStep" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(ChaosExperimentStep);
     case 4:
       return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          zones: S.optional(__S(20)),
+          zones: S.optional(StringList),
         }),
       ).annotate({
         identifier: "ChaosTargetSimpleFilterParameters",
@@ -1621,8 +2118,8 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          parameters: S.optional(__S(21)),
+          type: FilterType,
+          parameters: S.optional(ChaosTargetSimpleFilterParameters),
         }),
       ).annotate({ identifier: "ChaosTargetFilter" });
     case 7:
@@ -1637,25 +2134,25 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(TargetReference);
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: S.String,
-          filter: S.optional(__S(22)),
-          targets: S.optional(__S(24)),
+          type: SelectorType,
+          filter: S.optional(ChaosTargetFilter),
+          targets: S.optional(TargetReferenceList),
           queryString: S.optional(S.String),
-          subscriptionIds: S.optional(__S(20)),
+          subscriptionIds: S.optional(StringList),
         }),
       ).annotate({ identifier: "ChaosTargetSelector" });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(ChaosTargetSelector);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          steps: __S(19),
-          selectors: __S(26),
+          steps: ExperimentPropertiesInputStepsList,
+          selectors: ExperimentPropertiesInputSelectorsList,
         }),
       ).annotate({
         identifier: "ExperimentPropertiesInput",
@@ -1666,10 +2163,10 @@ function __c3(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           experimentName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9)),
+          tags: S.optional(ExperimentsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          identity: S.optional(__S(11)),
-          properties: __S(27),
+          identity: S.optional(ExperimentsCreateOrUpdateRequestIdentity),
+          properties: ExperimentPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1689,14 +2186,14 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(29)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
     case 7:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(30)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(UserAssignedIdentities),
         }),
       ).annotate({
         identifier: "ExperimentsCreateOrUpdateResponseIdentity",
@@ -1708,9 +2205,9 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          steps: __S(19),
-          selectors: __S(26),
+          provisioningState: S.optional(ProvisioningState),
+          steps: ExperimentPropertiesStepsList,
+          selectors: ExperimentPropertiesSelectorsList,
         }),
       ).annotate({ identifier: "ExperimentProperties" });
     case 1:
@@ -1719,11 +2216,11 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          tags: S.optional(__S(9)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(ExperimentsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          identity: S.optional(__S(31)),
-          properties: __S(32),
+          identity: S.optional(ExperimentsCreateOrUpdateResponseIdentity),
+          properties: ExperimentProperties,
         }),
       ).annotate({
         identifier: "ExperimentsCreateOrUpdateResponse",
@@ -1762,13 +2259,13 @@ function __c4(j: number): any {
           target: S.optional(S.String),
           targetFailedTime: S.optional(S.String),
           targetCompletedTime: S.optional(S.String),
-          error: S.optional(__S(35)),
+          error: S.optional(ExperimentExecutionActionTargetDetailsError),
         }),
       ).annotate({
         identifier: "ExperimentExecutionActionTargetDetailsProperties",
       });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(ExperimentExecutionActionTargetDetailsProperties);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1777,11 +2274,11 @@ function __c4(j: number): any {
           status: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          targets: S.optional(__S(37)),
+          targets: S.optional(ActionStatusTargetsList),
         }),
       ).annotate({ identifier: "ActionStatus" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(ActionStatus);
   }
 }
 function __c5(j: number): any {
@@ -1792,26 +2289,26 @@ function __c5(j: number): any {
           branchName: S.optional(S.String),
           branchId: S.optional(S.String),
           status: S.optional(S.String),
-          actions: S.optional(__S(39)),
+          actions: S.optional(BranchStatusActionsList),
         }),
       ).annotate({ identifier: "BranchStatus" });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(BranchStatus);
     case 2:
       return S.suspend(() =>
         S.Struct({
           stepName: S.optional(S.String),
           stepId: S.optional(S.String),
           status: S.optional(S.String),
-          branches: S.optional(__S(41)),
+          branches: S.optional(StepStatusBranchesList),
         }),
       ).annotate({ identifier: "StepStatus" });
     case 3:
-      return S.Array(__S(42));
+      return S.Array(StepStatus);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          steps: S.optional(__S(43)),
+          steps: S.optional(ExperimentExecutionDetailsPropertiesRunInformationStepsList),
         }),
       ).annotate({
         identifier: "ExperimentExecutionDetailsPropertiesRunInformation",
@@ -1824,7 +2321,7 @@ function __c5(j: number): any {
           stoppedAt: S.optional(S.String),
           failureReason: S.optional(S.String),
           lastActionAt: S.optional(S.String),
-          runInformation: S.optional(__S(44)),
+          runInformation: S.optional(ExperimentExecutionDetailsPropertiesRunInformation),
         }),
       ).annotate({
         identifier: "ExperimentExecutionDetailsProperties",
@@ -1835,7 +2332,7 @@ function __c5(j: number): any {
           type: S.optional(S.String),
           id: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(45)),
+          properties: S.optional(ExperimentExecutionDetailsProperties),
         }),
       ).annotate({
         identifier: "ExperimentExecutionDetails",
@@ -1869,8 +2366,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CapabilityProperties),
         }),
       ).annotate({ identifier: "GetCapabilityResponse" });
     case 1:
@@ -1909,10 +2406,12 @@ function __c6(j: number): any {
           parametersSchema: S.optional(S.String),
           urn: S.optional(S.String),
           kind: S.optional(S.String),
-          azureRbacActions: S.optional(__S(50)),
-          azureRbacDataActions: S.optional(__S(50)),
-          requiredAzureRoleDefinitionIds: S.optional(__S(50)),
-          runtimeProperties: S.optional(__S(51)),
+          azureRbacActions: S.optional(CapabilityTypePropertiesAzureRbacActionsList),
+          azureRbacDataActions: S.optional(CapabilityTypePropertiesAzureRbacDataActionsList),
+          requiredAzureRoleDefinitionIds: S.optional(
+            CapabilityTypePropertiesRequiredAzureRoleDefinitionIdsList,
+          ),
+          runtimeProperties: S.optional(CapabilityTypePropertiesRuntimeProperties),
         }),
       ).annotate({ identifier: "CapabilityTypeProperties" });
     case 5:
@@ -1921,8 +2420,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(52)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CapabilityTypeProperties),
         }),
       ).annotate({
         identifier: "GetCapabilityTypeResponse",
@@ -1948,11 +2447,11 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          tags: S.optional(__S(9)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetExperimentResponseTagsMap),
           location: S.String,
-          identity: S.optional(__S(31)),
-          properties: __S(32),
+          identity: S.optional(ExperimentsCreateOrUpdateResponseIdentity),
+          properties: ExperimentProperties,
         }),
       ).annotate({ identifier: "GetExperimentResponse" });
   }
@@ -1993,8 +2492,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(57)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ExperimentExecutionProperties),
         }),
       ).annotate({
         identifier: "GetExperimentExecutionResponse",
@@ -2017,9 +2516,9 @@ function __c7(j: number): any {
         identifier: "GetOperationStatusRequest",
       });
     case 4:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(65)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => OperationStatusResult));
     case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(64)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => ErrorDetail));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2028,7 +2527,7 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(ErrorAdditionalInfo);
   }
 }
 function __c8(j: number): any {
@@ -2039,8 +2538,8 @@ function __c8(j: number): any {
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(61)),
-          additionalInfo: S.optional(__S(63)),
+          details: S.optional(ErrorDetailDetailsList),
+          additionalInfo: S.optional(ErrorDetailAdditionalInfoList),
         }),
       ).annotate({ identifier: "ErrorDetail" });
     case 1:
@@ -2053,12 +2552,12 @@ function __c8(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(60)),
-          error: S.optional(__S(64)),
+          operations: S.optional(OperationStatusResultOperationsList),
+          error: S.optional(ErrorDetail),
         }),
       ).annotate({ identifier: "OperationStatusResult" });
     case 2:
-      return S.Array(__S(65));
+      return S.Array(OperationStatusResult);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2069,8 +2568,8 @@ function __c8(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(66)),
-          error: S.optional(__S(64)),
+          operations: S.optional(GetOperationStatusResponseOperationsList),
+          error: S.optional(ErrorDetail),
         }),
       ).annotate({
         identifier: "GetOperationStatusResponse",
@@ -2101,8 +2600,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: __S(69),
+          systemData: S.optional(SystemData),
+          properties: GetTargetResponsePropertiesMap,
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetTargetResponse" });
@@ -2131,7 +2630,7 @@ function __c9(j: number): any {
           displayName: S.optional(S.String),
           description: S.optional(S.String),
           propertiesSchema: S.optional(S.String),
-          resourceTypes: S.optional(__S(50)),
+          resourceTypes: S.optional(TargetTypePropertiesResourceTypesList),
         }),
       ).annotate({ identifier: "TargetTypeProperties" });
     case 1:
@@ -2140,8 +2639,8 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: __S(72),
+          systemData: S.optional(SystemData),
+          properties: TargetTypeProperties,
         }),
       ).annotate({ identifier: "GetTargetTypeResponse" });
     case 2:
@@ -2164,11 +2663,11 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "ListCapabilitiesRequest" });
     case 3:
-      return S.Array(__S(48));
+      return S.Array(Capability);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(75),
+          value: CapabilityListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CapabilityListResult" });
@@ -2196,12 +2695,12 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(52)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CapabilityTypeProperties),
         }),
       ).annotate({ identifier: "CapabilityType" });
     case 7:
-      return S.Array(__S(78));
+      return S.Array(CapabilityType);
   }
 }
 function __c10(j: number): any {
@@ -2209,7 +2708,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(79),
+          value: CapabilityTypeListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CapabilityTypeListResult" });
@@ -2229,11 +2728,11 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "ListExperimentAllRequest" });
     case 2:
-      return S.Array(__S(55));
+      return S.Array(Experiment);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(82),
+          value: ExperimentListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExperimentListResult" });
@@ -2260,16 +2759,16 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(57)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ExperimentExecutionProperties),
         }),
       ).annotate({ identifier: "ExperimentExecution" });
     case 6:
-      return S.Array(__S(85));
+      return S.Array(ExperimentExecution);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(86),
+          value: ExperimentExecutionListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2320,17 +2819,17 @@ function __c11(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(90)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(Operation);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(92)),
+          value: S.optional(ListOperationAllResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationAllResponse" });
@@ -2353,7 +2852,7 @@ function __c11(j: number): any {
         ),
       ).annotate({ identifier: "ListTargetsRequest" });
     case 7:
-      return S.Array(__S(70));
+      return S.Array(Target);
   }
 }
 function __c12(j: number): any {
@@ -2361,7 +2860,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(95),
+          value: TargetListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetListResult" });
@@ -2381,11 +2880,11 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "ListTargetTypesRequest" });
     case 2:
-      return S.Array(__S(73));
+      return S.Array(TargetType);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(98),
+          value: TargetTypeListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetTypeListResult" });
@@ -2413,7 +2912,7 @@ function __c12(j: number): any {
           parentResourceType: S.String.pipe(T.Label()),
           parentResourceName: S.String.pipe(T.Label()),
           targetName: S.String.pipe(T.Label()),
-          properties: __S(69),
+          properties: TargetsCreateOrUpdateRequestPropertiesMap,
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -2432,8 +2931,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: __S(69),
+          systemData: S.optional(SystemData),
+          properties: TargetsCreateOrUpdateResponsePropertiesMap,
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -2445,8 +2944,8 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           experimentName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9)),
-          identity: S.optional(__S(11)),
+          tags: S.optional(UpdateExperimentRequestTagsMap),
+          identity: S.optional(ExperimentsCreateOrUpdateRequestIdentity),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2456,40 +2955,5 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateExperimentRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
   }
 }

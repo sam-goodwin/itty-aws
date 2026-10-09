@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -68,10 +66,17 @@ export interface GetMetadataUrlNotificationsRequest {
   /** URL that is being queried. */
   url?: string;
 }
+const GetMetadataUrlNotificationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetMetadataUrlNotificationsRequest>;
+
 export type UrlNotificationTypeEnum =
   | "URL_NOTIFICATION_TYPE_UNSPECIFIED"
   | "URL_UPDATED"
   | "URL_DELETED";
+const UrlNotificationTypeEnum = S.String;
+
 /** `UrlNotification` is the resource used in all Indexing API calls. It describes one event in the life cycle of a Web Document. */
 export interface UrlNotification {
   /** Creation timestamp for this notification. Users should _not_ specify it, the field is ignored at the request time. */
@@ -81,6 +86,8 @@ export interface UrlNotification {
   /** The object of this notification. The URL must be owned by the publisher of this notification and, in case of `URL_UPDATED` notifications, it _must_ be crawlable by Google. */
   url?: string;
 }
+const UrlNotification = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<UrlNotification>;
+
 /** Summary of the most recent Indexing API notifications successfully received, for a given URL. */
 export interface UrlNotificationMetadata {
   /** Latest notification received with type `URL_UPDATED`. */
@@ -90,15 +97,30 @@ export interface UrlNotificationMetadata {
   /** Latest notification received with type `URL_REMOVED`. */
   latestRemove?: UrlNotification;
 }
+const UrlNotificationMetadata = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<UrlNotificationMetadata>;
+
 export interface PublishUrlNotificationsRequest {
   /** Request body */
   body?: UrlNotification;
 }
+const PublishUrlNotificationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<PublishUrlNotificationsRequest>;
+
 /** Output for PublishUrlNotification */
 export interface PublishUrlNotificationResponse {
   /** Description of the notification events received for this URL. */
   urlNotificationMetadata?: UrlNotificationMetadata;
 }
+const PublishUrlNotificationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<PublishUrlNotificationResponse>;
+
 export type GetMetadataUrlNotificationsError = NotFound | Forbidden | GcpOpError;
 /** Gets metadata about a Web Document. This method can _only_ be used to query URLs that were previously seen in successful Indexing API notifications. Includes the latest `UrlNotification` received via this API. */
 export const getMetadataUrlNotifications: API.OperationMethod<
@@ -107,8 +129,8 @@ export const getMetadataUrlNotifications: API.OperationMethod<
   GetMetadataUrlNotificationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetMetadataUrlNotificationsRequest>,
-  output: __S(2) as any as S.Schema<UrlNotificationMetadata>,
+  input: GetMetadataUrlNotificationsRequest,
+  output: UrlNotificationMetadata,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -127,8 +149,8 @@ export const publishUrlNotifications: API.OperationMethod<
   PublishUrlNotificationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<PublishUrlNotificationsRequest>,
-  output: __S(4) as any as S.Schema<PublishUrlNotificationResponse>,
+  input: PublishUrlNotificationsRequest,
+  output: PublishUrlNotificationResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -155,22 +177,22 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           notifyTime: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(UrlNotificationTypeEnum),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "UrlNotification" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          latestUpdate: S.optional(__S(1)),
+          latestUpdate: S.optional(UrlNotification),
           url: S.optional(S.String),
-          latestRemove: S.optional(__S(1)),
+          latestRemove: S.optional(UrlNotification),
         }),
       ).annotate({ identifier: "UrlNotificationMetadata" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(1).pipe(T.HttpBody())),
+          body: S.optional(UrlNotification.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -184,21 +206,10 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          urlNotificationMetadata: S.optional(__S(2)),
+          urlNotificationMetadata: S.optional(UrlNotificationMetadata),
         }),
       ).annotate({
         identifier: "PublishUrlNotificationResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

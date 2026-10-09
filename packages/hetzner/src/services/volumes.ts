@@ -7,13 +7,16 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateVolumeRequestLabelsMap = { [key: string]: string | undefined };
+const CreateVolumeRequestLabelsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateVolumeRequestLabelsMap>;
+
 export interface CreateVolumeRequest {
   /** Size of the Volume in GB. */
   size: number;
@@ -30,6 +33,8 @@ export interface CreateVolumeRequest {
   /** Server to which to attach the Volume once it's created (Volume will be created in the same Location as the server). */
   server?: number;
 }
+const CreateVolumeRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateVolumeRequest>;
+
 /** Location of the Volume. Volume can only be attached to Servers in the same Location. */
 export interface CreateVolumeResponseVolumeLocation {
   /** ID of the [Location](#tag/locations). */
@@ -49,15 +54,30 @@ export interface CreateVolumeResponseVolumeLocation {
   /** Name of the Network Zone this [Location](#tag/locations) resides in. */
   network_zone: string;
 }
+const CreateVolumeResponseVolumeLocation = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateVolumeResponseVolumeLocation>;
+
 /** Protection configuration for the Resource. */
 export interface CreateVolumeResponseVolumeProtection {
   /** Prevent the Resource from being deleted. */
   delete: boolean;
 }
+const CreateVolumeResponseVolumeProtection = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateVolumeResponseVolumeProtection>;
+
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateVolumeResponseVolumeLabelsMap = { [key: string]: string | undefined };
+const CreateVolumeResponseVolumeLabelsMap =
+  CreateVolumeRequestLabelsMap as any as S.Schema<CreateVolumeResponseVolumeLabelsMap>;
+
 /** Status of the Volume. */
 export type CreateVolumeResponseVolumeStatus = "available" | "creating";
+const CreateVolumeResponseVolumeStatus = S.String;
+
 export interface CreateVolumeResponseVolume {
   /** ID of the [Volume](#tag/volumes). */
   id: number;
@@ -82,17 +102,34 @@ export interface CreateVolumeResponseVolume {
   /** Filesystem of the Volume if formatted on creation, null if not formatted on creation. */
   format: string | null;
 }
+const CreateVolumeResponseVolume = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateVolumeResponseVolume>;
+
 /** Status of the Action. */
 export type CreateVolumeResponseActionStatus = "running" | "success" | "error";
+const CreateVolumeResponseActionStatus = S.String;
+
 export interface CreateVolumeResponseActionResourcesItem {
   /** ID of the Resource. */
   id: number;
   /** Type of the Resource. */
   type: string;
 }
+const CreateVolumeResponseActionResourcesItem = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateVolumeResponseActionResourcesItem>;
+
 /** Resources the Action relates to. */
 export type CreateVolumeResponseActionResourcesList =
   Array<CreateVolumeResponseActionResourcesItem>;
+const CreateVolumeResponseActionResourcesList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateVolumeResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface CreateVolumeResponseActionError {
   /** Fixed error code for machines. */
@@ -100,6 +137,11 @@ export interface CreateVolumeResponseActionError {
   /** Error message for humans. */
   message: string;
 }
+const CreateVolumeResponseActionError = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateVolumeResponseActionError>;
+
 export interface CreateVolumeResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -118,13 +160,23 @@ export interface CreateVolumeResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: CreateVolumeResponseActionError | null;
 }
+const CreateVolumeResponseAction = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateVolumeResponseAction>;
+
 /** Status of the Action. */
 export type CreateVolumeResponseNextActionsItemStatus = "running" | "success" | "error";
+const CreateVolumeResponseNextActionsItemStatus = S.String;
+
 export type CreateVolumeResponseNextActionsItemResourcesItem =
   CreateVolumeResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type CreateVolumeResponseNextActionsItemResourcesList =
   Array<CreateVolumeResponseActionResourcesItem>;
+const CreateVolumeResponseNextActionsItemResourcesList =
+  CreateVolumeResponseActionResourcesList as any as S.Schema<CreateVolumeResponseNextActionsItemResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type CreateVolumeResponseNextActionsItemError = CreateVolumeResponseActionError;
 export interface CreateVolumeResponseNextActionsItem {
@@ -145,29 +197,52 @@ export interface CreateVolumeResponseNextActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: CreateVolumeResponseActionError | null;
 }
+const CreateVolumeResponseNextActionsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateVolumeResponseNextActionsItem>;
+
 export type CreateVolumeResponseNextActionsList = Array<CreateVolumeResponseNextActionsItem>;
+const CreateVolumeResponseNextActionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateVolumeResponseNextActionsList>;
+
 export interface CreateVolumeResponse {
   volume: CreateVolumeResponseVolume;
   action: CreateVolumeResponseAction;
   next_actions: CreateVolumeResponseNextActionsList;
 }
+const CreateVolumeResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CreateVolumeResponse>;
+
 export interface DeleteVolumeRequest {
   /** ID of the Volume. */
   id: number;
 }
+const DeleteVolumeRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DeleteVolumeRequest>;
+
 export interface DeleteVolumeResponse {}
+const DeleteVolumeResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DeleteVolumeResponse>;
+
 export interface GetVolumeRequest {
   /** ID of the Volume. */
   id: number;
 }
+const GetVolumeRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetVolumeRequest>;
+
 /** Location of the Volume. Volume can only be attached to Servers in the same Location. */
 export type GetVolumeResponseVolumeLocation = CreateVolumeResponseVolumeLocation;
 /** Protection configuration for the Resource. */
 export type GetVolumeResponseVolumeProtection = CreateVolumeResponseVolumeProtection;
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetVolumeResponseVolumeLabelsMap = { [key: string]: string | undefined };
+const GetVolumeResponseVolumeLabelsMap =
+  CreateVolumeRequestLabelsMap as any as S.Schema<GetVolumeResponseVolumeLabelsMap>;
+
 /** Status of the Volume. */
 export type GetVolumeResponseVolumeStatus = "available" | "creating";
+const GetVolumeResponseVolumeStatus = S.String;
+
 export interface GetVolumeResponseVolume {
   /** ID of the [Volume](#tag/volumes). */
   id: number;
@@ -192,12 +267,26 @@ export interface GetVolumeResponseVolume {
   /** Filesystem of the Volume if formatted on creation, null if not formatted on creation. */
   format: string | null;
 }
+const GetVolumeResponseVolume = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetVolumeResponseVolume>;
+
 export interface GetVolumeResponse {
   volume: GetVolumeResponseVolume;
 }
+const GetVolumeResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetVolumeResponse>;
+
 /** Status of the Volume. */
 export type ListVolumesRequestStatusItem = "available" | "creating";
+const ListVolumesRequestStatusItem = S.String;
+
 export type ListVolumesRequestStatusList = Array<ListVolumesRequestStatusItem | (string & {})>;
+const ListVolumesRequestStatusList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListVolumesRequestStatusList>;
+
 export type ListVolumesRequestSortItem =
   | "id"
   | "id:asc"
@@ -209,6 +298,9 @@ export type ListVolumesRequestSortItem =
   | "created:asc"
   | "created:desc";
 export type ListVolumesRequestSortList = Array<ListVolumesRequestSortItem | (string & {})>;
+const ListVolumesRequestSortList =
+  ListVolumesRequestStatusList as any as S.Schema<ListVolumesRequestSortList>;
+
 export interface ListVolumesRequest {
   /** Filter resources by status. May be used multiple times. The response will only contain the resources with the specified status. */
   status?: ListVolumesRequestStatusList;
@@ -223,14 +315,21 @@ export interface ListVolumesRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
+const ListVolumesRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ListVolumesRequest>;
+
 /** Location of the Volume. Volume can only be attached to Servers in the same Location. */
 export type ListVolumesResponseVolumesItemLocation = CreateVolumeResponseVolumeLocation;
 /** Protection configuration for the Resource. */
 export type ListVolumesResponseVolumesItemProtection = CreateVolumeResponseVolumeProtection;
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListVolumesResponseVolumesItemLabelsMap = { [key: string]: string | undefined };
+const ListVolumesResponseVolumesItemLabelsMap =
+  CreateVolumeRequestLabelsMap as any as S.Schema<ListVolumesResponseVolumesItemLabelsMap>;
+
 /** Status of the Volume. */
 export type ListVolumesResponseVolumesItemStatus = "available" | "creating";
+const ListVolumesResponseVolumesItemStatus = S.String;
+
 export interface ListVolumesResponseVolumesItem {
   /** ID of the [Volume](#tag/volumes). */
   id: number;
@@ -255,7 +354,17 @@ export interface ListVolumesResponseVolumesItem {
   /** Filesystem of the Volume if formatted on creation, null if not formatted on creation. */
   format: string | null;
 }
+const ListVolumesResponseVolumesItem = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListVolumesResponseVolumesItem>;
+
 export type ListVolumesResponseVolumesList = Array<ListVolumesResponseVolumesItem>;
+const ListVolumesResponseVolumesList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListVolumesResponseVolumesList>;
+
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListVolumesResponseMetaPagination {
   /** Current page number. */
@@ -271,16 +380,31 @@ export interface ListVolumesResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
+const ListVolumesResponseMetaPagination = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ListVolumesResponseMetaPagination>;
+
 export interface ListVolumesResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListVolumesResponseMetaPagination;
 }
+const ListVolumesResponseMeta = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListVolumesResponseMeta>;
+
 export interface ListVolumesResponse {
   volumes: ListVolumesResponseVolumesList;
   meta: ListVolumesResponseMeta;
 }
+const ListVolumesResponse = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ListVolumesResponse>;
+
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdateVolumeRequestLabelsMap = { [key: string]: string | undefined };
+const UpdateVolumeRequestLabelsMap =
+  CreateVolumeRequestLabelsMap as any as S.Schema<UpdateVolumeRequestLabelsMap>;
+
 export interface UpdateVolumeRequest {
   /** ID of the Volume. */
   id: number;
@@ -289,14 +413,21 @@ export interface UpdateVolumeRequest {
   /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
   labels?: UpdateVolumeRequestLabelsMap;
 }
+const UpdateVolumeRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<UpdateVolumeRequest>;
+
 /** Location of the Volume. Volume can only be attached to Servers in the same Location. */
 export type UpdateVolumeResponseVolumeLocation = CreateVolumeResponseVolumeLocation;
 /** Protection configuration for the Resource. */
 export type UpdateVolumeResponseVolumeProtection = CreateVolumeResponseVolumeProtection;
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateVolumeResponseVolumeLabelsMap = { [key: string]: string | undefined };
+const UpdateVolumeResponseVolumeLabelsMap =
+  CreateVolumeRequestLabelsMap as any as S.Schema<UpdateVolumeResponseVolumeLabelsMap>;
+
 /** Status of the Volume. */
 export type UpdateVolumeResponseVolumeStatus = "available" | "creating";
+const UpdateVolumeResponseVolumeStatus = S.String;
+
 export interface UpdateVolumeResponseVolume {
   /** ID of the [Volume](#tag/volumes). */
   id: number;
@@ -321,9 +452,16 @@ export interface UpdateVolumeResponseVolume {
   /** Filesystem of the Volume if formatted on creation, null if not formatted on creation. */
   format: string | null;
 }
+const UpdateVolumeResponseVolume = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<UpdateVolumeResponseVolume>;
+
 export interface UpdateVolumeResponse {
   volume: UpdateVolumeResponseVolume;
 }
+const UpdateVolumeResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<UpdateVolumeResponse>;
+
 export type CreateVolumeError = HetznerOpError;
 /** Create a Volume Creates a new Volume attached to a Server. If you want to create a Volume that is not attached to a Server, you need to provide the `location` key instead of `server`. This can be either the ID or the name of the Location this Volume will be created in. Note that a Volume can be attached to a Server only in the same Location as the Volume itself. Specifying the Server during Volume creation will automatically attach the Volume to that Server after it has been initialized. In that case, the `next_actions` key in the response is an array which contains a single `attach_volume` action. The minimum Volume size is 10GB and the maximum size is 10TB (10240GB). A volume's name can consist of alphanumeric characters, dashes, underscores, and dots, but has to start and end with an alphanumeric character. The total length is limited to 64 characters. Volume names must be unique per Project. #### Operation specific errors */
 export const createVolume: API.OperationMethod<
@@ -332,8 +470,8 @@ export const createVolume: API.OperationMethod<
   CreateVolumeError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateVolumeRequest>,
-  output: __S(11) as any as S.Schema<CreateVolumeResponse>,
+  input: CreateVolumeRequest,
+  output: CreateVolumeResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -347,8 +485,8 @@ export const deleteVolume: API.OperationMethod<
   DeleteVolumeError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DeleteVolumeRequest>,
-  output: __S(13) as any as S.Schema<DeleteVolumeResponse>,
+  input: DeleteVolumeRequest,
+  output: DeleteVolumeResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -362,8 +500,8 @@ export const getVolume: API.OperationMethod<
   GetVolumeError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetVolumeRequest>,
-  output: __S(16) as any as S.Schema<GetVolumeResponse>,
+  input: GetVolumeRequest,
+  output: GetVolumeResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -379,8 +517,8 @@ export const listVolumes: API.PaginatedOperationMethod<
   ListVolumesResponseVolumesItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(18) as any as S.Schema<ListVolumesRequest>,
-    output: __S(23) as any as S.Schema<ListVolumesResponse>,
+    input: ListVolumesRequest,
+    output: ListVolumesResponse,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -403,8 +541,8 @@ export const updateVolume: API.OperationMethod<
   UpdateVolumeError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<UpdateVolumeRequest>,
-  output: __S(26) as any as S.Schema<UpdateVolumeResponse>,
+  input: UpdateVolumeRequest,
+  output: UpdateVolumeResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -420,7 +558,7 @@ function __c0(j: number): any {
         S.Struct({
           size: S.Number,
           name: S.String,
-          labels: S.optional(__S(0)),
+          labels: S.optional(CreateVolumeRequestLabelsMap),
           automount: S.optional(S.Boolean),
           format: S.optional(S.String),
           location: S.optional(S.String),
@@ -457,12 +595,12 @@ function __c0(j: number): any {
           created: S.String,
           name: S.String,
           server: S.NullOr(S.Number),
-          location: __S(2),
+          location: CreateVolumeResponseVolumeLocation,
           size: S.Number,
           linux_device: S.String,
-          protection: __S(3),
-          labels: __S(0),
-          status: S.String,
+          protection: CreateVolumeResponseVolumeProtection,
+          labels: CreateVolumeResponseVolumeLabelsMap,
+          status: CreateVolumeResponseVolumeStatus,
           format: S.NullOr(S.String),
         }),
       ).annotate({
@@ -478,7 +616,7 @@ function __c0(j: number): any {
         identifier: "CreateVolumeResponseActionResourcesItem",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(CreateVolumeResponseActionResourcesItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -497,12 +635,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: CreateVolumeResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(6),
-          error: S.NullOr(__S(7)),
+          resources: CreateVolumeResponseActionResourcesList,
+          error: S.NullOr(CreateVolumeResponseActionError),
         }),
       ).annotate({
         identifier: "CreateVolumeResponseAction",
@@ -512,24 +650,24 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: CreateVolumeResponseNextActionsItemStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(6),
-          error: S.NullOr(__S(7)),
+          resources: CreateVolumeResponseNextActionsItemResourcesList,
+          error: S.NullOr(CreateVolumeResponseActionError),
         }),
       ).annotate({
         identifier: "CreateVolumeResponseNextActionsItem",
       });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(CreateVolumeResponseNextActionsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          volume: __S(4),
-          action: __S(8),
-          next_actions: __S(10),
+          volume: CreateVolumeResponseVolume,
+          action: CreateVolumeResponseAction,
+          next_actions: CreateVolumeResponseNextActionsList,
         }),
       ).annotate({ identifier: "CreateVolumeResponse" });
     case 4:
@@ -555,12 +693,12 @@ function __c1(j: number): any {
           created: S.String,
           name: S.String,
           server: S.NullOr(S.Number),
-          location: __S(2),
+          location: CreateVolumeResponseVolumeLocation,
           size: S.Number,
           linux_device: S.String,
-          protection: __S(3),
-          labels: __S(0),
-          status: S.String,
+          protection: CreateVolumeResponseVolumeProtection,
+          labels: GetVolumeResponseVolumeLabelsMap,
+          status: GetVolumeResponseVolumeStatus,
           format: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "GetVolumeResponseVolume" });
@@ -571,16 +709,16 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          volume: __S(15),
+          volume: GetVolumeResponseVolume,
         }),
       ).annotate({ identifier: "GetVolumeResponse" });
     case 1:
-      return S.Array(S.String);
+      return S.Array(ListVolumesRequestStatusItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(__S(17).pipe(T.Query())),
-          sort: S.optional(__S(17).pipe(T.Query())),
+          status: S.optional(ListVolumesRequestStatusList.pipe(T.Query())),
+          sort: S.optional(ListVolumesRequestSortList.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           label_selector: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
@@ -594,19 +732,19 @@ function __c2(j: number): any {
           created: S.String,
           name: S.String,
           server: S.NullOr(S.Number),
-          location: __S(2),
+          location: CreateVolumeResponseVolumeLocation,
           size: S.Number,
           linux_device: S.String,
-          protection: __S(3),
-          labels: __S(0),
-          status: S.String,
+          protection: CreateVolumeResponseVolumeProtection,
+          labels: ListVolumesResponseVolumesItemLabelsMap,
+          status: ListVolumesResponseVolumesItemStatus,
           format: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "ListVolumesResponseVolumesItem",
       });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(ListVolumesResponseVolumesItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -623,14 +761,14 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(21),
+          pagination: ListVolumesResponseMetaPagination,
         }),
       ).annotate({ identifier: "ListVolumesResponseMeta" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          volumes: __S(20),
-          meta: __S(22),
+          volumes: ListVolumesResponseVolumesList,
+          meta: ListVolumesResponseMeta,
         }),
       ).annotate({ identifier: "ListVolumesResponse" });
   }
@@ -642,7 +780,7 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
-          labels: S.optional(__S(0)),
+          labels: S.optional(UpdateVolumeRequestLabelsMap),
         }).pipe(T.Http({ method: "PUT", uri: "/volumes/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateVolumeRequest" });
     case 1:
@@ -652,12 +790,12 @@ function __c3(j: number): any {
           created: S.String,
           name: S.String,
           server: S.NullOr(S.Number),
-          location: __S(2),
+          location: CreateVolumeResponseVolumeLocation,
           size: S.Number,
           linux_device: S.String,
-          protection: __S(3),
-          labels: __S(0),
-          status: S.String,
+          protection: CreateVolumeResponseVolumeProtection,
+          labels: UpdateVolumeResponseVolumeLabelsMap,
+          status: UpdateVolumeResponseVolumeStatus,
           format: S.NullOr(S.String),
         }),
       ).annotate({
@@ -666,25 +804,8 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          volume: __S(25),
+          volume: UpdateVolumeResponseVolume,
         }),
       ).annotate({ identifier: "UpdateVolumeResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

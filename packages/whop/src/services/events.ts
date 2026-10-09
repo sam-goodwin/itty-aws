@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -59,6 +57,8 @@ export type CreateEventRequestActionSource =
   | "system_generated"
   | "business_messaging"
   | "other";
+const CreateEventRequestActionSource = S.String;
+
 /** Tracking and attribution context. */
 export interface CreateEventRequestContext {
   /** Ad campaign ID. */
@@ -126,6 +126,11 @@ export interface CreateEventRequestContext {
   /** Google Ads wbraid click ID (iOS privacy). */
   wbraid?: string | null;
 }
+const CreateEventRequestContext = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateEventRequestContext>;
+
 /** The available currencies on the platform */
 export type CreateEventRequestCurrency =
   | "usd"
@@ -218,8 +223,12 @@ export type CreateEventRequestCurrency =
   | "awg"
   | "whop_usd"
   | "xau";
+const CreateEventRequestCurrency = S.String;
+
 /** Gender */
 export type CreateEventRequestUserGender = "male" | "female";
+const CreateEventRequestUserGender = S.String;
+
 /** User identity and profile data. */
 export interface CreateEventRequestUser {
   /** An anonymous identifier for the user. */
@@ -261,6 +270,11 @@ export interface CreateEventRequestUser {
   /** Username. */
   username?: string | null;
 }
+const CreateEventRequestUser = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateEventRequestUser>;
+
 export interface CreateEventRequest {
   /** The account to associate with this event. */
   account_id: string;
@@ -305,9 +319,13 @@ export interface CreateEventRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const CreateEventRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateEventRequest>;
+
 export interface CreateEventResponse {
   id: string;
 }
+const CreateEventResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateEventResponse>;
+
 export interface GetPulseRequest {
   /** Filter to one or more types, comma separated -- for example `purchase,card_spend`. These are the item's `type`, not its `event_name`: several types share the `ledger_line.created` event name. Omit for every type in the feed. Values outside the feed's own set are rejected. */
   event?: string;
@@ -318,8 +336,12 @@ export interface GetPulseRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
+const GetPulseRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetPulseRequest>;
+
 /** The underlying event recorded. Every movement on this feed is a ledger line, so switch on `type` rather than this. */
 export type GetPulseResponseDataItemEventName = "ledger_line.created";
+const GetPulseResponseDataItemEventName = S.String;
+
 /** What moved: a purchase, an affiliate commission, Whop card spend, ad spend, app revenue, an off-platform sale, a wallet deposit, a card load, a claimed drop, a transfer between accounts, or a referral bonus. */
 export type GetPulseResponseDataItemType =
   | "purchase"
@@ -333,6 +355,8 @@ export type GetPulseResponseDataItemType =
   | "airdrop_claim"
   | "transfer"
   | "referral_bonus";
+const GetPulseResponseDataItemType = S.String;
+
 /** Coarse location, shaped like the event `user` block. It belongs to the owner of the wallet the money moved into or out of -- the party the event is about, never their counterparty. Omitted entirely when nothing is known. */
 export interface GetPulseResponseDataItemUser {
   /** City name. Omitted when unknown. */
@@ -340,6 +364,11 @@ export interface GetPulseResponseDataItemUser {
   /** ISO 3166-1 alpha-2 country code. Omitted when unknown. */
   country?: string;
 }
+const GetPulseResponseDataItemUser = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetPulseResponseDataItemUser>;
+
 export interface GetPulseResponseDataItem {
   /** The underlying event recorded. Every movement on this feed is a ledger line, so switch on `type` rather than this. */
   event_name: GetPulseResponseDataItemEventName;
@@ -352,21 +381,42 @@ export interface GetPulseResponseDataItem {
   /** Coarse location, shaped like the event `user` block. It belongs to the owner of the wallet the money moved into or out of -- the party the event is about, never their counterparty. Omitted entirely when nothing is known. */
   user?: GetPulseResponseDataItemUser;
 }
+const GetPulseResponseDataItem = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetPulseResponseDataItem>;
+
 /** Recent anonymized money-movement events, newest first. */
 export type GetPulseResponseDataList = Array<GetPulseResponseDataItem>;
+const GetPulseResponseDataList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetPulseResponseDataList>;
+
 export interface GetPulseResponsePageInfo {
   end_cursor?: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor?: string | null;
 }
+const GetPulseResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetPulseResponsePageInfo>;
+
 export interface GetPulseResponse {
   /** Recent anonymized money-movement events, newest first. */
   data: GetPulseResponseDataList;
   page_info: GetPulseResponsePageInfo;
 }
+const GetPulseResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetPulseResponse>;
+
 export type ListEventsRequestDirection = "asc" | "desc";
+const ListEventsRequestDirection = S.String;
+
 export type ListEventsRequestAttributionModel = "last_touch" | "first_touch";
+const ListEventsRequestAttributionModel = S.String;
+
 export interface ListEventsRequest {
   /** Any hard identifier of the person: a person ID (prsn_*), user ID, email, phone number, or a tracking cookie value (wuid, anonymous ID, fbp/fbc/ttp/ga). Omit to list recent events for the account. */
   identifier?: string;
@@ -407,12 +457,16 @@ export interface ListEventsRequest {
   /** Page paths to filter by, comma-separated. */
   page?: string;
 }
+const ListEventsRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ListEventsRequest>;
+
 /** How this event counts as an acquisition touch, using the same rule attribution credits a conversion with. `ad_click` and `lead_form` resolved to a Whop ad; `external_ad_click` is a paid click on a campaign run outside Whop; `referrer` is organic. Null when the event is not a touch. */
 export type ListEventsResponseDataItemContextSourceType =
   | "ad_click"
   | "lead_form"
   | "external_ad_click"
   | "referrer";
+const ListEventsResponseDataItemContextSourceType = S.String;
+
 export interface ListEventsResponseDataItemContext {
   ad_campaign_id?: string | null;
   /** Stable identity for the ad click this event belongs to. Every event from one click carries the same value, so events group into clicks without re-deriving them. */
@@ -429,7 +483,17 @@ export interface ListEventsResponseDataItemContext {
   utm_source?: string | null;
   utm_term?: string | null;
 }
+const ListEventsResponseDataItemContext = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListEventsResponseDataItemContext>;
+
 export type ListEventsResponseDataItemQuestionsItemOptionsList = Array<string>;
+const ListEventsResponseDataItemQuestionsItemOptionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ListEventsResponseDataItemQuestionsItemOptionsList>;
+
 export interface ListEventsResponseDataItemQuestionsItem {
   answer?: string | null;
   id?: string | null;
@@ -438,42 +502,81 @@ export interface ListEventsResponseDataItemQuestionsItem {
   question?: string | null;
   type?: string | null;
 }
+const ListEventsResponseDataItemQuestionsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ListEventsResponseDataItemQuestionsItem>;
+
 export type ListEventsResponseDataItemQuestionsList =
   Array<ListEventsResponseDataItemQuestionsItem>;
+const ListEventsResponseDataItemQuestionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ListEventsResponseDataItemQuestionsList>;
+
 export interface ListEventsResponseDataItemRelatedAccount {
   id?: string;
   logo_url?: string | null;
   route?: string | null;
   title?: string | null;
 }
+const ListEventsResponseDataItemRelatedAccount = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListEventsResponseDataItemRelatedAccount>;
+
 /** The Whop ad this event's click resolved to. */
 export interface ListEventsResponseDataItemRelatedAd {
   id?: string;
   thumbnail_url?: string | null;
   title?: string | null;
 }
+const ListEventsResponseDataItemRelatedAd = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListEventsResponseDataItemRelatedAd>;
+
 /** The Whop ad campaign this event's click resolved to, read from the ad entity tree rather than the click's url params. */
 export interface ListEventsResponseDataItemRelatedAdCampaign {
   id?: string;
   platform?: string | null;
   title?: string | null;
 }
+const ListEventsResponseDataItemRelatedAdCampaign = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListEventsResponseDataItemRelatedAdCampaign>;
+
 /** The Whop ad group this event's click resolved to. */
 export interface ListEventsResponseDataItemRelatedAdGroup {
   id?: string;
   title?: string | null;
 }
+const ListEventsResponseDataItemRelatedAdGroup = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListEventsResponseDataItemRelatedAdGroup>;
+
 export interface ListEventsResponseDataItemRelatedApp {
   domain_id?: string | null;
   icon_url?: string | null;
   id?: string;
   title?: string | null;
 }
+const ListEventsResponseDataItemRelatedApp = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListEventsResponseDataItemRelatedApp>;
+
 export type ListEventsResponseDataItemRelatedAudienceAudienceType = "custom" | "lookalike";
+const ListEventsResponseDataItemRelatedAudienceAudienceType = S.String;
+
 export type ListEventsResponseDataItemRelatedAudienceSourceType =
   | "csv_upload"
   | "people_filter"
   | "engagement";
+const ListEventsResponseDataItemRelatedAudienceSourceType = S.String;
+
 /** The saved audience this event came from. Present on the identify events an audience ingest writes for each of its members. */
 export interface ListEventsResponseDataItemRelatedAudience {
   audience_type?: ListEventsResponseDataItemRelatedAudienceAudienceType | null;
@@ -482,6 +585,11 @@ export interface ListEventsResponseDataItemRelatedAudience {
   source_type?: ListEventsResponseDataItemRelatedAudienceSourceType | null;
   title?: string | null;
 }
+const ListEventsResponseDataItemRelatedAudience = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListEventsResponseDataItemRelatedAudience>;
+
 export interface Money {
   /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
@@ -492,6 +600,8 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
+const Money = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Money>;
+
 export interface ReceiptLineItem {
   /** Line item ID, prefixed `li_`. Null when the payment predates item snapshots and the item is read from the payment's plan. */
   id: string | null;
@@ -510,8 +620,15 @@ export interface ReceiptLineItem {
   /** The recorded amount for this item's full quantity, before discounts, tax, and fees, in its purchase currency. Returns `null` when no item amount was recorded. */
   subtotal: Money | null;
 }
+const ReceiptLineItem = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ReceiptLineItem>;
+
 /** Everything this payment charged for, in purchase order, including quantities. Older payments fall back to their original plan. */
 export type ListEventsResponseDataItemRelatedPaymentLineItemsList = Array<ReceiptLineItem>;
+const ListEventsResponseDataItemRelatedPaymentLineItemsList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListEventsResponseDataItemRelatedPaymentLineItemsList>;
+
 export interface ListEventsResponseDataItemRelatedPayment {
   card_brand?: string | null;
   card_last4?: string | null;
@@ -520,6 +637,11 @@ export interface ListEventsResponseDataItemRelatedPayment {
   line_items?: ListEventsResponseDataItemRelatedPaymentLineItemsList;
   provider?: string | null;
 }
+const ListEventsResponseDataItemRelatedPayment = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListEventsResponseDataItemRelatedPayment>;
+
 export interface ListEventsResponseDataItemRelatedPlan {
   billing_period?: number | null;
   currency?: string | null;
@@ -528,17 +650,32 @@ export interface ListEventsResponseDataItemRelatedPlan {
   renewal_price?: number | null;
   title?: string | null;
 }
+const ListEventsResponseDataItemRelatedPlan = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListEventsResponseDataItemRelatedPlan>;
+
 export interface ListEventsResponseDataItemRelatedProduct {
   id?: string;
   route?: string | null;
   title?: string | null;
 }
+const ListEventsResponseDataItemRelatedProduct = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListEventsResponseDataItemRelatedProduct>;
+
 export interface ListEventsResponseDataItemRelatedUser {
   avatar_url?: string | null;
   id?: string;
   name?: string | null;
   username?: string | null;
 }
+const ListEventsResponseDataItemRelatedUser = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ListEventsResponseDataItemRelatedUser>;
+
 /** Hydrated details for the records this event references. Only present keys resolved. */
 export interface ListEventsResponseDataItemRelated {
   account?: ListEventsResponseDataItemRelatedAccount | null;
@@ -556,6 +693,11 @@ export interface ListEventsResponseDataItemRelated {
   product?: ListEventsResponseDataItemRelatedProduct | null;
   user?: ListEventsResponseDataItemRelatedUser | null;
 }
+const ListEventsResponseDataItemRelated = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ListEventsResponseDataItemRelated>;
+
 export interface ListEventsResponseDataItemUser {
   city?: string | null;
   country?: string | null;
@@ -565,6 +707,11 @@ export interface ListEventsResponseDataItemUser {
   name?: string | null;
   phone?: string | null;
 }
+const ListEventsResponseDataItemUser = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListEventsResponseDataItemUser>;
+
 export interface ListEventsResponseDataItem {
   context?: ListEventsResponseDataItemContext | null;
   currency?: string | null;
@@ -584,12 +731,24 @@ export interface ListEventsResponseDataItem {
   user?: ListEventsResponseDataItemUser | null;
   value?: number | null;
 }
+const ListEventsResponseDataItem = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ListEventsResponseDataItem>;
+
 export type ListEventsResponseDataList = Array<ListEventsResponseDataItem>;
+const ListEventsResponseDataList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ListEventsResponseDataList>;
+
 export type ListEventsResponsePageInfo = GetPulseResponsePageInfo;
 export interface ListEventsResponse {
   data: ListEventsResponseDataList;
   page_info: GetPulseResponsePageInfo;
 }
+const ListEventsResponse = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ListEventsResponse>;
+
 export interface ValidatePixelRequest {
   /** Account to check. Defaults to the authenticated account. */
   account_id?: string;
@@ -598,8 +757,16 @@ export interface ValidatePixelRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const ValidatePixelRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ValidatePixelRequest>;
+
 export type PixelValidationHostEventsList = Array<string>;
+const PixelValidationHostEventsList =
+  ListEventsResponseDataItemQuestionsItemOptionsList as any as S.Schema<PixelValidationHostEventsList>;
+
 export type PixelValidationPageEventsList = Array<string>;
+const PixelValidationPageEventsList =
+  ListEventsResponseDataItemQuestionsItemOptionsList as any as S.Schema<PixelValidationPageEventsList>;
+
 export interface PixelValidation {
   /** False when the event lookup failed, meaning `host_events` and `last_seen_days` are incomplete. */
   firing_data_ok: boolean;
@@ -618,6 +785,8 @@ export interface PixelValidation {
   /** The URL that was checked, after normalization. `null` when the request didn't include one. */
   url: string | null;
 }
+const PixelValidation = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<PixelValidation>;
+
 export type CreateEventError = Conflict | WhopOpError;
 /** Create Event Tracks a conversion or engagement event for an account. */
 export const createEvent: API.OperationMethod<
@@ -626,8 +795,8 @@ export const createEvent: API.OperationMethod<
   CreateEventError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateEventRequest>,
-  output: __S(3) as any as S.Schema<CreateEventResponse>,
+  input: CreateEventRequest,
+  output: CreateEventResponse,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -643,8 +812,8 @@ export const getPulse: API.PaginatedOperationMethod<
   GetPulseResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(4) as any as S.Schema<GetPulseRequest>,
-    output: __S(9) as any as S.Schema<GetPulseResponse>,
+    input: GetPulseRequest,
+    output: GetPulseResponse,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -670,8 +839,8 @@ export const listEvents: API.PaginatedOperationMethod<
   ListEventsResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(10) as any as S.Schema<ListEventsRequest>,
-    output: __S(32) as any as S.Schema<ListEventsResponse>,
+    input: ListEventsRequest,
+    output: ListEventsResponse,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -695,8 +864,8 @@ export const validatePixel: API.OperationMethod<
   ValidatePixelError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<ValidatePixelRequest>,
-  output: __S(34) as any as S.Schema<PixelValidation>,
+  input: ValidatePixelRequest,
+  output: PixelValidation,
   errors: [Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -754,7 +923,7 @@ function __c0(j: number): any {
           email: S.optional(S.NullOr(S.String)),
           external_id: S.optional(S.NullOr(S.String)),
           first_name: S.optional(S.NullOr(S.String)),
-          gender: S.optional(S.NullOr(S.String)),
+          gender: S.optional(S.NullOr(CreateEventRequestUserGender)),
           last_name: S.optional(S.NullOr(S.String)),
           linked_anonymous_id: S.optional(S.NullOr(S.String)),
           linked_wuid: S.optional(S.NullOr(S.String)),
@@ -772,11 +941,11 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
-          action_source: S.optional(S.NullOr(S.String)),
+          action_source: S.optional(S.NullOr(CreateEventRequestActionSource)),
           app_build_id: S.optional(S.NullOr(S.String)),
           app_id: S.optional(S.NullOr(S.String)),
-          context: S.optional(S.NullOr(__S(0))),
-          currency: S.optional(S.NullOr(S.String)),
+          context: S.optional(S.NullOr(CreateEventRequestContext)),
+          currency: S.optional(S.NullOr(CreateEventRequestCurrency)),
           custom_name: S.optional(S.NullOr(S.String)),
           duration: S.optional(S.NullOr(S.Number)),
           event_id: S.optional(S.NullOr(S.String)),
@@ -789,7 +958,7 @@ function __c0(j: number): any {
           source: S.optional(S.NullOr(S.String)),
           title: S.optional(S.NullOr(S.String)),
           url: S.optional(S.NullOr(S.String)),
-          user: S.optional(S.NullOr(__S(1))),
+          user: S.optional(S.NullOr(CreateEventRequestUser)),
           value: S.optional(S.NullOr(S.Number)),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/events", code: 200 })),
@@ -821,15 +990,15 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          event_name: S.String,
+          event_name: GetPulseResponseDataItemEventName,
           event_time: S.String,
           total_usd_amount: S.optional(S.NullOr(S.Number)),
-          type: S.String,
-          user: S.optional(__S(5)),
+          type: GetPulseResponseDataItemType,
+          user: S.optional(GetPulseResponseDataItemUser),
         }),
       ).annotate({ identifier: "GetPulseResponseDataItem" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(GetPulseResponseDataItem);
   }
 }
 function __c1(j: number): any {
@@ -846,8 +1015,8 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(7),
-          page_info: __S(8),
+          data: GetPulseResponseDataList,
+          page_info: GetPulseResponsePageInfo,
         }),
       ).annotate({ identifier: "GetPulseResponse" });
     case 2:
@@ -860,10 +1029,10 @@ function __c1(j: number): any {
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(ListEventsRequestDirection.pipe(T.Query())),
           event: S.optional(S.String.pipe(T.Query())),
           source: S.optional(S.String.pipe(T.Query())),
-          attribution_model: S.optional(S.String.pipe(T.Query())),
+          attribution_model: S.optional(ListEventsRequestAttributionModel.pipe(T.Query())),
           country: S.optional(S.String.pipe(T.Query())),
           city: S.optional(S.String.pipe(T.Query())),
           device: S.optional(S.String.pipe(T.Query())),
@@ -882,7 +1051,7 @@ function __c1(j: number): any {
           ad_click_type: S.optional(S.NullOr(S.String)),
           ad_id: S.optional(S.NullOr(S.String)),
           ad_set_id: S.optional(S.NullOr(S.String)),
-          source_type: S.optional(S.NullOr(S.String)),
+          source_type: S.optional(S.NullOr(ListEventsResponseDataItemContextSourceType)),
           utm_campaign: S.optional(S.NullOr(S.String)),
           utm_content: S.optional(S.NullOr(S.String)),
           utm_medium: S.optional(S.NullOr(S.String)),
@@ -900,7 +1069,7 @@ function __c1(j: number): any {
           answer: S.optional(S.NullOr(S.String)),
           id: S.optional(S.NullOr(S.String)),
           key: S.optional(S.NullOr(S.String)),
-          options: S.optional(S.NullOr(__S(12))),
+          options: S.optional(S.NullOr(ListEventsResponseDataItemQuestionsItemOptionsList)),
           question: S.optional(S.NullOr(S.String)),
           type: S.optional(S.NullOr(S.String)),
         }),
@@ -908,7 +1077,7 @@ function __c1(j: number): any {
         identifier: "ListEventsResponseDataItemQuestionsItem",
       });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(ListEventsResponseDataItemQuestionsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -967,10 +1136,12 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          audience_type: S.optional(S.NullOr(S.String)),
+          audience_type: S.optional(
+            S.NullOr(ListEventsResponseDataItemRelatedAudienceAudienceType),
+          ),
           file_name: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          source_type: S.optional(S.NullOr(S.String)),
+          source_type: S.optional(S.NullOr(ListEventsResponseDataItemRelatedAudienceSourceType)),
           title: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -995,11 +1166,11 @@ function __c2(j: number): any {
           product_id: S.NullOr(S.String),
           product_title: S.NullOr(S.String),
           quantity: S.Number,
-          subtotal: S.NullOr(__S(21)),
+          subtotal: S.NullOr(Money),
         }),
       ).annotate({ identifier: "ReceiptLineItem" });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(ReceiptLineItem);
   }
 }
 function __c3(j: number): any {
@@ -1010,7 +1181,7 @@ function __c3(j: number): any {
           card_brand: S.optional(S.NullOr(S.String)),
           card_last4: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          line_items: S.optional(__S(23)),
+          line_items: S.optional(ListEventsResponseDataItemRelatedPaymentLineItemsList),
           provider: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -1053,16 +1224,16 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          account: S.optional(S.NullOr(__S(15))),
-          ad: S.optional(S.NullOr(__S(16))),
-          ad_campaign: S.optional(S.NullOr(__S(17))),
-          ad_group: S.optional(S.NullOr(__S(18))),
-          app: S.optional(S.NullOr(__S(19))),
-          audience: S.optional(S.NullOr(__S(20))),
-          payment: S.optional(S.NullOr(__S(24))),
-          plan: S.optional(S.NullOr(__S(25))),
-          product: S.optional(S.NullOr(__S(26))),
-          user: S.optional(S.NullOr(__S(27))),
+          account: S.optional(S.NullOr(ListEventsResponseDataItemRelatedAccount)),
+          ad: S.optional(S.NullOr(ListEventsResponseDataItemRelatedAd)),
+          ad_campaign: S.optional(S.NullOr(ListEventsResponseDataItemRelatedAdCampaign)),
+          ad_group: S.optional(S.NullOr(ListEventsResponseDataItemRelatedAdGroup)),
+          app: S.optional(S.NullOr(ListEventsResponseDataItemRelatedApp)),
+          audience: S.optional(S.NullOr(ListEventsResponseDataItemRelatedAudience)),
+          payment: S.optional(S.NullOr(ListEventsResponseDataItemRelatedPayment)),
+          plan: S.optional(S.NullOr(ListEventsResponseDataItemRelatedPlan)),
+          product: S.optional(S.NullOr(ListEventsResponseDataItemRelatedProduct)),
+          user: S.optional(S.NullOr(ListEventsResponseDataItemRelatedUser)),
         }),
       ).annotate({
         identifier: "ListEventsResponseDataItemRelated",
@@ -1084,7 +1255,7 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          context: S.optional(S.NullOr(__S(11))),
+          context: S.optional(S.NullOr(ListEventsResponseDataItemContext)),
           currency: S.optional(S.NullOr(S.String)),
           custom_name: S.optional(S.NullOr(S.String)),
           event_id: S.String,
@@ -1093,19 +1264,19 @@ function __c3(j: number): any {
           id: S.String,
           path: S.optional(S.NullOr(S.String)),
           person_id: S.String,
-          questions: S.optional(S.NullOr(__S(14))),
+          questions: S.optional(S.NullOr(ListEventsResponseDataItemQuestionsList)),
           referrer_url: S.optional(S.NullOr(S.String)),
-          related: S.optional(S.NullOr(__S(28))),
+          related: S.optional(S.NullOr(ListEventsResponseDataItemRelated)),
           total_usd_amount: S.optional(S.NullOr(S.Number)),
           url: S.optional(S.NullOr(S.String)),
-          user: S.optional(S.NullOr(__S(29))),
+          user: S.optional(S.NullOr(ListEventsResponseDataItemUser)),
           value: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "ListEventsResponseDataItem",
       });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(ListEventsResponseDataItem);
   }
 }
 function __c4(j: number): any {
@@ -1113,8 +1284,8 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: __S(31),
-          page_info: __S(8),
+          data: ListEventsResponseDataList,
+          page_info: GetPulseResponsePageInfo,
         }),
       ).annotate({ identifier: "ListEventsResponse" });
     case 1:
@@ -1129,34 +1300,15 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           firing_data_ok: S.Boolean,
-          host_events: __S(12),
+          host_events: PixelValidationHostEventsList,
           installed: S.Boolean,
           last_fired_days: S.Unknown,
           last_seen_days: S.NullOr(S.Number),
           native_tracking: S.Boolean,
-          page_events: __S(12),
+          page_events: PixelValidationPageEventsList,
           reachable: S.NullOr(S.Boolean),
           url: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PixelValidation" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

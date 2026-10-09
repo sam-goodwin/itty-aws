@@ -12,8 +12,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -48,15 +46,29 @@ export interface CreatePublishRequest {
   /** Zaraz configuration description. */
   body?: string;
 }
+const CreatePublishRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreatePublishRequest>;
+
 export type CreatePublishResponse = string;
+const CreatePublishResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreatePublishResponse>;
+
 export interface GetConfigRequest {
   /** Identifier. */
   zoneId: string;
 }
+const GetConfigRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetConfigRequest>;
+
 export interface ConfigGetResponseSettingsContextEnricher {
   escapedWorkerName: string;
   workerTag: string;
 }
+const ConfigGetResponseSettingsContextEnricher = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ConfigGetResponseSettingsContextEnricher>;
+
 export interface ConfigGetResponseSettings {
   /** Automatic injection of Zaraz scripts enabled. */
   autoInjectScript: boolean;
@@ -87,7 +99,14 @@ export interface ConfigGetResponseSettings {
   /** Custom endpoint for Zaraz tracking requests. */
   trackPath?: string | null;
 }
+const ConfigGetResponseSettings = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ConfigGetResponseSettings>;
+
 export type UntypedConfigMap = { [key: string]: unknown | undefined };
+const UntypedConfigMap = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<UntypedConfigMap>;
+
 export interface ConfigGetResponseAnalytics {
   /** Consent purpose assigned to Monitoring. */
   defaultPurpose?: string | null;
@@ -96,15 +115,33 @@ export interface ConfigGetResponseAnalytics {
   /** Session expiration time (seconds). */
   sessionExpTime?: number | null;
 }
+const ConfigGetResponseAnalytics = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ConfigGetResponseAnalytics>;
+
 export type ConfigGetResponseConsentButtonTextTranslationsAcceptAllMap = {
   [key: string]: string | undefined;
 };
+const ConfigGetResponseConsentButtonTextTranslationsAcceptAllMap = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ConfigGetResponseConsentButtonTextTranslationsAcceptAllMap>;
+
 export type ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap = {
   [key: string]: string | undefined;
 };
+const ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap>;
+
 export type ConfigGetResponseConsentButtonTextTranslationsRejectAllMap = {
   [key: string]: string | undefined;
 };
+const ConfigGetResponseConsentButtonTextTranslationsRejectAllMap =
+  ConfigGetResponseConsentButtonTextTranslationsAcceptAllMap as any as S.Schema<ConfigGetResponseConsentButtonTextTranslationsRejectAllMap>;
+
 export interface ConfigGetResponseConsentButtonTextTranslations {
   /** Object where keys are language codes. */
   acceptAll: ConfigGetResponseConsentButtonTextTranslationsAcceptAllMap;
@@ -113,22 +150,46 @@ export interface ConfigGetResponseConsentButtonTextTranslations {
   /** Object where keys are language codes. */
   rejectAll: ConfigGetResponseConsentButtonTextTranslationsRejectAllMap;
 }
+const ConfigGetResponseConsentButtonTextTranslations = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ConfigGetResponseConsentButtonTextTranslations>;
+
 export type ConfigGetResponseConsentConsentModalIntroHTMLWithTranslationsMap = {
   [key: string]: string | undefined;
 };
+const ConfigGetResponseConsentConsentModalIntroHTMLWithTranslationsMap =
+  ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap as any as S.Schema<ConfigGetResponseConsentConsentModalIntroHTMLWithTranslationsMap>;
+
 export interface ConfigGetResponseConsentPurposesValue {
   description: string;
   name: string;
 }
+const ConfigGetResponseConsentPurposesValue = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ConfigGetResponseConsentPurposesValue>;
+
 export type ConfigGetResponseConsentPurposesMap = {
   [key: string]: ConfigGetResponseConsentPurposesValue | undefined;
 };
+const ConfigGetResponseConsentPurposesMap = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ConfigGetResponseConsentPurposesMap>;
+
 export type ConfigGetResponseConsentPurposesWithTranslationsValueDescriptionMap = {
   [key: string]: string | undefined;
 };
+const ConfigGetResponseConsentPurposesWithTranslationsValueDescriptionMap =
+  ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap as any as S.Schema<ConfigGetResponseConsentPurposesWithTranslationsValueDescriptionMap>;
+
 export type ConfigGetResponseConsentPurposesWithTranslationsValueNameMap = {
   [key: string]: string | undefined;
 };
+const ConfigGetResponseConsentPurposesWithTranslationsValueNameMap =
+  ConfigGetResponseConsentButtonTextTranslationsAcceptAllMap as any as S.Schema<ConfigGetResponseConsentPurposesWithTranslationsValueNameMap>;
+
 export interface ConfigGetResponseConsentPurposesWithTranslationsValue {
   /** Object where keys are language codes. */
   description: ConfigGetResponseConsentPurposesWithTranslationsValueDescriptionMap;
@@ -136,9 +197,19 @@ export interface ConfigGetResponseConsentPurposesWithTranslationsValue {
   name: ConfigGetResponseConsentPurposesWithTranslationsValueNameMap;
   order: number;
 }
+const ConfigGetResponseConsentPurposesWithTranslationsValue = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ConfigGetResponseConsentPurposesWithTranslationsValue>;
+
 export type ConfigGetResponseConsentPurposesWithTranslationsMap = {
   [key: string]: ConfigGetResponseConsentPurposesWithTranslationsValue | undefined;
 };
+const ConfigGetResponseConsentPurposesWithTranslationsMap = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ConfigGetResponseConsentPurposesWithTranslationsMap>;
+
 export interface ConfigGetResponseConsent {
   enabled: boolean;
   buttonTextTranslations?: ConfigGetResponseConsentButtonTextTranslations | null;
@@ -159,6 +230,11 @@ export interface ConfigGetResponseConsent {
   purposesWithTranslations?: ConfigGetResponseConsentPurposesWithTranslationsMap | null;
   tcfCompliant?: boolean | null;
 }
+const ConfigGetResponseConsent = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ConfigGetResponseConsent>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetConfigResponse {
   /** Data layer compatibility mode enabled. */
@@ -182,10 +258,14 @@ export interface GetConfigResponse {
   /** Single Page Application support enabled. */
   historyChange?: boolean | null;
 }
+const GetConfigResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetConfigResponse>;
+
 export interface GetDefaultRequest {
   /** Identifier. */
   zoneId: string;
 }
+const GetDefaultRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetDefaultRequest>;
+
 export type DefaultGetResponseSettingsContextEnricher = ConfigGetResponseSettingsContextEnricher;
 export type DefaultGetResponseSettings = ConfigGetResponseSettings;
 export type DefaultGetResponseAnalytics = ConfigGetResponseAnalytics;
@@ -206,13 +286,22 @@ export interface DefaultGetResponseConsentButtonTextTranslations {
   /** Object where keys are language codes. */
   rejectAll: DefaultGetResponseConsentButtonTextTranslationsRejectAllMap;
 }
+const DefaultGetResponseConsentButtonTextTranslations =
+  ConfigGetResponseConsentButtonTextTranslations as any as S.Schema<DefaultGetResponseConsentButtonTextTranslations>;
+
 export type DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap = {
   [key: string]: string | undefined;
 };
+const DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap =
+  ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap as any as S.Schema<DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap>;
+
 export type DefaultGetResponseConsentPurposesValue = ConfigGetResponseConsentPurposesValue;
 export type DefaultGetResponseConsentPurposesMap = {
   [key: string]: ConfigGetResponseConsentPurposesValue | undefined;
 };
+const DefaultGetResponseConsentPurposesMap =
+  ConfigGetResponseConsentPurposesMap as any as S.Schema<DefaultGetResponseConsentPurposesMap>;
+
 export type DefaultGetResponseConsentPurposesWithTranslationsValueDescriptionMap = {
   [key: string]: string | undefined;
 };
@@ -229,6 +318,9 @@ export interface DefaultGetResponseConsentPurposesWithTranslationsValue {
 export type DefaultGetResponseConsentPurposesWithTranslationsMap = {
   [key: string]: DefaultGetResponseConsentPurposesWithTranslationsValue | undefined;
 };
+const DefaultGetResponseConsentPurposesWithTranslationsMap =
+  ConfigGetResponseConsentPurposesWithTranslationsMap as any as S.Schema<DefaultGetResponseConsentPurposesWithTranslationsMap>;
+
 export interface DefaultGetResponseConsent {
   enabled: boolean;
   buttonTextTranslations?: DefaultGetResponseConsentButtonTextTranslations | null;
@@ -249,6 +341,11 @@ export interface DefaultGetResponseConsent {
   purposesWithTranslations?: DefaultGetResponseConsentPurposesWithTranslationsMap | null;
   tcfCompliant?: boolean | null;
 }
+const DefaultGetResponseConsent = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DefaultGetResponseConsent>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDefaultResponse {
   /** Data layer compatibility mode enabled. */
@@ -272,19 +369,35 @@ export interface GetDefaultResponse {
   /** Single Page Application support enabled. */
   historyChange?: boolean | null;
 }
+const GetDefaultResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetDefaultResponse>;
+
 export interface GetExportRequest {
   /** Identifier. */
   zoneId: string;
 }
+const GetExportRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetExportRequest>;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetExportResponse {}
+const GetExportResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GetExportResponse>;
+
 export type HistoryConfigsGetRequestIdsList = Array<number>;
+const HistoryConfigsGetRequestIdsList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<HistoryConfigsGetRequestIdsList>;
+
 export interface GetHistoryConfigRequest {
   /** Identifier. */
   zoneId: string;
   /** Comma separated list of Zaraz configuration IDs. */
   ids: HistoryConfigsGetRequestIdsList;
 }
+const GetHistoryConfigRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetHistoryConfigRequest>;
+
 export type HistoryConfigsGetResultValueConfigSettingsContextEnricher =
   ConfigGetResponseSettingsContextEnricher;
 export type HistoryConfigsGetResultValueConfigSettings = ConfigGetResponseSettings;
@@ -292,12 +405,21 @@ export type HistoryConfigsGetResultValueConfigAnalytics = ConfigGetResponseAnaly
 export type HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsAcceptAllMap = {
   [key: string]: string | undefined;
 };
+const HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsAcceptAllMap =
+  ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap as any as S.Schema<HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsAcceptAllMap>;
+
 export type HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsConfirmMyChoicesMap = {
   [key: string]: string | undefined;
 };
+const HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsConfirmMyChoicesMap =
+  ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap as any as S.Schema<HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsConfirmMyChoicesMap>;
+
 export type HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsRejectAllMap = {
   [key: string]: string | undefined;
 };
+const HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsRejectAllMap =
+  ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap as any as S.Schema<HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsRejectAllMap>;
+
 export interface HistoryConfigsGetResultValueConfigConsentButtonTextTranslations {
   /** Object where keys are language codes. */
   acceptAll: HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsAcceptAllMap;
@@ -306,20 +428,37 @@ export interface HistoryConfigsGetResultValueConfigConsentButtonTextTranslations
   /** Object where keys are language codes. */
   rejectAll: HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsRejectAllMap;
 }
+const HistoryConfigsGetResultValueConfigConsentButtonTextTranslations = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<HistoryConfigsGetResultValueConfigConsentButtonTextTranslations>;
+
 export type HistoryConfigsGetResultValueConfigConsentConsentModalIntroHTMLWithTranslationsMap = {
   [key: string]: string | undefined;
 };
+const HistoryConfigsGetResultValueConfigConsentConsentModalIntroHTMLWithTranslationsMap =
+  ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap as any as S.Schema<HistoryConfigsGetResultValueConfigConsentConsentModalIntroHTMLWithTranslationsMap>;
+
 export type HistoryConfigsGetResultValueConfigConsentPurposesValue =
   ConfigGetResponseConsentPurposesValue;
 export type HistoryConfigsGetResultValueConfigConsentPurposesMap = {
   [key: string]: ConfigGetResponseConsentPurposesValue | undefined;
 };
+const HistoryConfigsGetResultValueConfigConsentPurposesMap =
+  ConfigGetResponseConsentPurposesMap as any as S.Schema<HistoryConfigsGetResultValueConfigConsentPurposesMap>;
+
 export type HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValueDescriptionMap = {
   [key: string]: string | undefined;
 };
+const HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValueDescriptionMap =
+  ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap as any as S.Schema<HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValueDescriptionMap>;
+
 export type HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValueNameMap = {
   [key: string]: string | undefined;
 };
+const HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValueNameMap =
+  ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap as any as S.Schema<HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValueNameMap>;
+
 export interface HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValue {
   /** Object where keys are language codes. */
   description: HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValueDescriptionMap;
@@ -327,9 +466,19 @@ export interface HistoryConfigsGetResultValueConfigConsentPurposesWithTranslatio
   name: HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValueNameMap;
   order: number;
 }
+const HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValue = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValue>;
+
 export type HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsMap = {
   [key: string]: HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValue | undefined;
 };
+const HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsMap = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsMap>;
+
 export interface HistoryConfigsGetResultValueConfigConsent {
   enabled: boolean;
   buttonTextTranslations?: HistoryConfigsGetResultValueConfigConsentButtonTextTranslations | null;
@@ -350,6 +499,11 @@ export interface HistoryConfigsGetResultValueConfigConsent {
   purposesWithTranslations?: HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsMap | null;
   tcfCompliant?: boolean | null;
 }
+const HistoryConfigsGetResultValueConfigConsent = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<HistoryConfigsGetResultValueConfigConsent>;
+
 export interface HistoryConfigsGetResultValueConfig {
   /** Data layer compatibility mode enabled. */
   dataLayer: boolean;
@@ -372,6 +526,11 @@ export interface HistoryConfigsGetResultValueConfig {
   /** Single Page Application support enabled. */
   historyChange?: boolean | null;
 }
+const HistoryConfigsGetResultValueConfig = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<HistoryConfigsGetResultValueConfig>;
+
 export interface HistoryConfigsGetResultValue {
   /** ID of the configuration. */
   id: number;
@@ -384,23 +543,48 @@ export interface HistoryConfigsGetResultValue {
   /** Alpha-numeric ID of the account user who published the configuration. */
   userId: string;
 }
+const HistoryConfigsGetResultValue = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<HistoryConfigsGetResultValue>;
+
 export type HistoryConfigsGetResultMap = {
   [key: string]: HistoryConfigsGetResultValue | undefined;
 };
+const HistoryConfigsGetResultMap = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<HistoryConfigsGetResultMap>;
+
 export type GetHistoryConfigResponse = HistoryConfigsGetResultMap;
+const GetHistoryConfigResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetHistoryConfigResponse>;
+
 export interface GetWorkflowRequest {
   /** Identifier. */
   zoneId: string;
 }
+const GetWorkflowRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GetWorkflowRequest>;
+
 export type WorkflowGetResult = "realtime" | "preview";
+const WorkflowGetResult = S.String;
+
 export type GetWorkflowResponse = WorkflowGetResult;
+const GetWorkflowResponse = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GetWorkflowResponse>;
+
 export type HistoryListRequestSortField =
   | "id"
   | "user_id"
   | "description"
   | "created_at"
   | "updated_at";
+const HistoryListRequestSortField = S.String;
+
 export type HistoryListRequestSortOrder = "DESC" | "ASC";
+const HistoryListRequestSortOrder = S.String;
+
 export interface ListHistoriesRequest {
   /** Identifier. */
   zoneId: string;
@@ -413,6 +597,8 @@ export interface ListHistoriesRequest {
   /** Sorting order. Default is DESC. */
   sortOrder?: HistoryListRequestSortOrder | (string & {});
 }
+const ListHistoriesRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ListHistoriesRequest>;
+
 export interface HistoryListResultItem {
   /** ID of the configuration. */
   id: number;
@@ -425,13 +611,28 @@ export interface HistoryListResultItem {
   /** Alpha-numeric ID of the account user who published the configuration. */
   userId: string;
 }
+const HistoryListResultItem = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<HistoryListResultItem>;
+
 export type HistoryListResultList = Array<HistoryListResultItem>;
+const HistoryListResultList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<HistoryListResultList>;
+
 export interface ListHistoriesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: HistoryListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListHistoriesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListHistoriesResponse>;
+
 export type ConfigUpdateRequestSettingsContextEnricher = ConfigGetResponseSettingsContextEnricher;
 export interface ConfigUpdateRequestSettings {
   /** Automatic injection of Zaraz scripts enabled. */
@@ -463,6 +664,11 @@ export interface ConfigUpdateRequestSettings {
   /** Custom endpoint for Zaraz tracking requests. */
   trackPath?: string;
 }
+const ConfigUpdateRequestSettings = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ConfigUpdateRequestSettings>;
+
 export interface ConfigUpdateRequestAnalytics {
   /** Consent purpose assigned to Monitoring. */
   defaultPurpose?: string;
@@ -471,6 +677,11 @@ export interface ConfigUpdateRequestAnalytics {
   /** Session expiration time (seconds). */
   sessionExpTime?: number;
 }
+const ConfigUpdateRequestAnalytics = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ConfigUpdateRequestAnalytics>;
+
 export type ConfigUpdateRequestConsentButtonTextTranslationsAcceptAllMap = {
   [key: string]: string | undefined;
 };
@@ -488,19 +699,34 @@ export interface ConfigUpdateRequestConsentButtonTextTranslations {
   /** Object where keys are language codes. */
   rejectAll: ConfigUpdateRequestConsentButtonTextTranslationsRejectAllMap;
 }
+const ConfigUpdateRequestConsentButtonTextTranslations =
+  ConfigGetResponseConsentButtonTextTranslations as any as S.Schema<ConfigUpdateRequestConsentButtonTextTranslations>;
+
 export type ConfigUpdateRequestConsentConsentModalIntroHTMLWithTranslationsMap = {
   [key: string]: string | undefined;
 };
+const ConfigUpdateRequestConsentConsentModalIntroHTMLWithTranslationsMap =
+  ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap as any as S.Schema<ConfigUpdateRequestConsentConsentModalIntroHTMLWithTranslationsMap>;
+
 export type ConfigUpdateRequestConsentPurposesValue = ConfigGetResponseConsentPurposesValue;
 export type ConfigUpdateRequestConsentPurposesMap = {
   [key: string]: ConfigGetResponseConsentPurposesValue | undefined;
 };
+const ConfigUpdateRequestConsentPurposesMap =
+  ConfigGetResponseConsentPurposesMap as any as S.Schema<ConfigUpdateRequestConsentPurposesMap>;
+
 export type ConfigUpdateRequestConsentPurposesWithTranslationsValueDescriptionMap = {
   [key: string]: string | undefined;
 };
+const ConfigUpdateRequestConsentPurposesWithTranslationsValueDescriptionMap =
+  ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap as any as S.Schema<ConfigUpdateRequestConsentPurposesWithTranslationsValueDescriptionMap>;
+
 export type ConfigUpdateRequestConsentPurposesWithTranslationsValueNameMap = {
   [key: string]: string | undefined;
 };
+const ConfigUpdateRequestConsentPurposesWithTranslationsValueNameMap =
+  ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap as any as S.Schema<ConfigUpdateRequestConsentPurposesWithTranslationsValueNameMap>;
+
 export interface ConfigUpdateRequestConsentPurposesWithTranslationsValue {
   /** Object where keys are language codes. */
   description: ConfigUpdateRequestConsentPurposesWithTranslationsValueDescriptionMap;
@@ -508,9 +734,19 @@ export interface ConfigUpdateRequestConsentPurposesWithTranslationsValue {
   name: ConfigUpdateRequestConsentPurposesWithTranslationsValueNameMap;
   order: number;
 }
+const ConfigUpdateRequestConsentPurposesWithTranslationsValue = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ConfigUpdateRequestConsentPurposesWithTranslationsValue>;
+
 export type ConfigUpdateRequestConsentPurposesWithTranslationsMap = {
   [key: string]: ConfigUpdateRequestConsentPurposesWithTranslationsValue | undefined;
 };
+const ConfigUpdateRequestConsentPurposesWithTranslationsMap = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ConfigUpdateRequestConsentPurposesWithTranslationsMap>;
+
 export interface ConfigUpdateRequestConsent {
   enabled: boolean;
   buttonTextTranslations?: ConfigUpdateRequestConsentButtonTextTranslations;
@@ -531,6 +767,11 @@ export interface ConfigUpdateRequestConsent {
   purposesWithTranslations?: ConfigUpdateRequestConsentPurposesWithTranslationsMap;
   tcfCompliant?: boolean;
 }
+const ConfigUpdateRequestConsent = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ConfigUpdateRequestConsent>;
+
 export interface PutConfigRequest {
   /** Identifier. */
   zoneId: string;
@@ -555,6 +796,8 @@ export interface PutConfigRequest {
   /** Single Page Application support enabled. */
   historyChange?: boolean;
 }
+const PutConfigRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<PutConfigRequest>;
+
 export type ConfigUpdateResponseSettingsContextEnricher = ConfigGetResponseSettingsContextEnricher;
 export type ConfigUpdateResponseSettings = ConfigGetResponseSettings;
 export type ConfigUpdateResponseAnalytics = ConfigGetResponseAnalytics;
@@ -575,19 +818,34 @@ export interface ConfigUpdateResponseConsentButtonTextTranslations {
   /** Object where keys are language codes. */
   rejectAll: ConfigUpdateResponseConsentButtonTextTranslationsRejectAllMap;
 }
+const ConfigUpdateResponseConsentButtonTextTranslations =
+  ConfigGetResponseConsentButtonTextTranslations as any as S.Schema<ConfigUpdateResponseConsentButtonTextTranslations>;
+
 export type ConfigUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap = {
   [key: string]: string | undefined;
 };
+const ConfigUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap =
+  ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap as any as S.Schema<ConfigUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap>;
+
 export type ConfigUpdateResponseConsentPurposesValue = ConfigGetResponseConsentPurposesValue;
 export type ConfigUpdateResponseConsentPurposesMap = {
   [key: string]: ConfigGetResponseConsentPurposesValue | undefined;
 };
+const ConfigUpdateResponseConsentPurposesMap =
+  ConfigGetResponseConsentPurposesMap as any as S.Schema<ConfigUpdateResponseConsentPurposesMap>;
+
 export type ConfigUpdateResponseConsentPurposesWithTranslationsValueDescriptionMap = {
   [key: string]: string | undefined;
 };
+const ConfigUpdateResponseConsentPurposesWithTranslationsValueDescriptionMap =
+  ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap as any as S.Schema<ConfigUpdateResponseConsentPurposesWithTranslationsValueDescriptionMap>;
+
 export type ConfigUpdateResponseConsentPurposesWithTranslationsValueNameMap = {
   [key: string]: string | undefined;
 };
+const ConfigUpdateResponseConsentPurposesWithTranslationsValueNameMap =
+  ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap as any as S.Schema<ConfigUpdateResponseConsentPurposesWithTranslationsValueNameMap>;
+
 export interface ConfigUpdateResponseConsentPurposesWithTranslationsValue {
   /** Object where keys are language codes. */
   description: ConfigUpdateResponseConsentPurposesWithTranslationsValueDescriptionMap;
@@ -595,9 +853,19 @@ export interface ConfigUpdateResponseConsentPurposesWithTranslationsValue {
   name: ConfigUpdateResponseConsentPurposesWithTranslationsValueNameMap;
   order: number;
 }
+const ConfigUpdateResponseConsentPurposesWithTranslationsValue = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ConfigUpdateResponseConsentPurposesWithTranslationsValue>;
+
 export type ConfigUpdateResponseConsentPurposesWithTranslationsMap = {
   [key: string]: ConfigUpdateResponseConsentPurposesWithTranslationsValue | undefined;
 };
+const ConfigUpdateResponseConsentPurposesWithTranslationsMap = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ConfigUpdateResponseConsentPurposesWithTranslationsMap>;
+
 export interface ConfigUpdateResponseConsent {
   enabled: boolean;
   buttonTextTranslations?: ConfigUpdateResponseConsentButtonTextTranslations | null;
@@ -618,6 +886,11 @@ export interface ConfigUpdateResponseConsent {
   purposesWithTranslations?: ConfigUpdateResponseConsentPurposesWithTranslationsMap | null;
   tcfCompliant?: boolean | null;
 }
+const ConfigUpdateResponseConsent = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ConfigUpdateResponseConsent>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutConfigResponse {
   /** Data layer compatibility mode enabled. */
@@ -641,24 +914,37 @@ export interface PutConfigResponse {
   /** Single Page Application support enabled. */
   historyChange?: boolean | null;
 }
+const PutConfigResponse = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<PutConfigResponse>;
+
 export interface PutHistoryRequest {
   /** Identifier. */
   zoneId: string;
   /** ID of the Zaraz configuration to restore. */
   body: number;
 }
+const PutHistoryRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<PutHistoryRequest>;
+
 export type HistoryUpdateResponseSettingsContextEnricher = ConfigGetResponseSettingsContextEnricher;
 export type HistoryUpdateResponseSettings = ConfigGetResponseSettings;
 export type HistoryUpdateResponseAnalytics = ConfigGetResponseAnalytics;
 export type HistoryUpdateResponseConsentButtonTextTranslationsAcceptAllMap = {
   [key: string]: string | undefined;
 };
+const HistoryUpdateResponseConsentButtonTextTranslationsAcceptAllMap =
+  ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap as any as S.Schema<HistoryUpdateResponseConsentButtonTextTranslationsAcceptAllMap>;
+
 export type HistoryUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap = {
   [key: string]: string | undefined;
 };
+const HistoryUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap =
+  ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap as any as S.Schema<HistoryUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap>;
+
 export type HistoryUpdateResponseConsentButtonTextTranslationsRejectAllMap = {
   [key: string]: string | undefined;
 };
+const HistoryUpdateResponseConsentButtonTextTranslationsRejectAllMap =
+  ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap as any as S.Schema<HistoryUpdateResponseConsentButtonTextTranslationsRejectAllMap>;
+
 export interface HistoryUpdateResponseConsentButtonTextTranslations {
   /** Object where keys are language codes. */
   acceptAll: HistoryUpdateResponseConsentButtonTextTranslationsAcceptAllMap;
@@ -667,13 +953,24 @@ export interface HistoryUpdateResponseConsentButtonTextTranslations {
   /** Object where keys are language codes. */
   rejectAll: HistoryUpdateResponseConsentButtonTextTranslationsRejectAllMap;
 }
+const HistoryUpdateResponseConsentButtonTextTranslations = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<HistoryUpdateResponseConsentButtonTextTranslations>;
+
 export type HistoryUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap = {
   [key: string]: string | undefined;
 };
+const HistoryUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap =
+  ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap as any as S.Schema<HistoryUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap>;
+
 export type HistoryUpdateResponseConsentPurposesValue = ConfigGetResponseConsentPurposesValue;
 export type HistoryUpdateResponseConsentPurposesMap = {
   [key: string]: ConfigGetResponseConsentPurposesValue | undefined;
 };
+const HistoryUpdateResponseConsentPurposesMap =
+  ConfigGetResponseConsentPurposesMap as any as S.Schema<HistoryUpdateResponseConsentPurposesMap>;
+
 export type HistoryUpdateResponseConsentPurposesWithTranslationsValueDescriptionMap = {
   [key: string]: string | undefined;
 };
@@ -690,6 +987,9 @@ export interface HistoryUpdateResponseConsentPurposesWithTranslationsValue {
 export type HistoryUpdateResponseConsentPurposesWithTranslationsMap = {
   [key: string]: HistoryUpdateResponseConsentPurposesWithTranslationsValue | undefined;
 };
+const HistoryUpdateResponseConsentPurposesWithTranslationsMap =
+  ConfigUpdateResponseConsentPurposesWithTranslationsMap as any as S.Schema<HistoryUpdateResponseConsentPurposesWithTranslationsMap>;
+
 export interface HistoryUpdateResponseConsent {
   enabled: boolean;
   buttonTextTranslations?: HistoryUpdateResponseConsentButtonTextTranslations | null;
@@ -710,6 +1010,11 @@ export interface HistoryUpdateResponseConsent {
   purposesWithTranslations?: HistoryUpdateResponseConsentPurposesWithTranslationsMap | null;
   tcfCompliant?: boolean | null;
 }
+const HistoryUpdateResponseConsent = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<HistoryUpdateResponseConsent>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutHistoryResponse {
   /** Data layer compatibility mode enabled. */
@@ -733,15 +1038,23 @@ export interface PutHistoryResponse {
   /** Single Page Application support enabled. */
   historyChange?: boolean | null;
 }
+const PutHistoryResponse = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<PutHistoryResponse>;
+
 export type UpdateRequestWorkflow = "realtime" | "preview";
+const UpdateRequestWorkflow = S.String;
+
 export interface PutZarazRequest {
   /** Identifier. */
   zoneId: string;
   /** Zaraz workflow. */
   workflow: UpdateRequestWorkflow | (string & {});
 }
+const PutZarazRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<PutZarazRequest>;
+
 export type UpdateResult = "realtime" | "preview";
 export type PutZarazResponse = UpdateResult;
+const PutZarazResponse = GetWorkflowResponse as any as S.Schema<PutZarazResponse>;
+
 export type CreatePublishError = CloudflareOpError;
 /** Publish current Zaraz preview configuration for a zone. */
 export const createPublish: API.OperationMethod<
@@ -750,8 +1063,8 @@ export const createPublish: API.OperationMethod<
   CreatePublishError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreatePublishRequest>,
-  output: __S(1) as any as S.Schema<CreatePublishResponse>,
+  input: CreatePublishRequest,
+  output: CreatePublishResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -765,8 +1078,8 @@ export const getConfig: API.OperationMethod<
   GetConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetConfigRequest>,
-  output: __S(15) as any as S.Schema<GetConfigResponse>,
+  input: GetConfigRequest,
+  output: GetConfigResponse,
   errors: [Forbidden, NotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -780,8 +1093,8 @@ export const getDefault: API.OperationMethod<
   GetDefaultError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetDefaultRequest>,
-  output: __S(18) as any as S.Schema<GetDefaultResponse>,
+  input: GetDefaultRequest,
+  output: GetDefaultResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -795,8 +1108,8 @@ export const getExport: API.OperationMethod<
   GetExportError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetExportRequest>,
-  output: __S(20) as any as S.Schema<GetExportResponse>,
+  input: GetExportRequest,
+  output: GetExportResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -810,8 +1123,8 @@ export const getHistoryConfig: API.OperationMethod<
   GetHistoryConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<GetHistoryConfigRequest>,
-  output: __S(30) as any as S.Schema<GetHistoryConfigResponse>,
+  input: GetHistoryConfigRequest,
+  output: GetHistoryConfigResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -825,8 +1138,8 @@ export const getWorkflow: API.OperationMethod<
   GetWorkflowError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GetWorkflowRequest>,
-  output: __S(32) as any as S.Schema<GetWorkflowResponse>,
+  input: GetWorkflowRequest,
+  output: GetWorkflowResponse,
   errors: [Forbidden, NotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -842,8 +1155,8 @@ export const listHistories: API.PaginatedOperationMethod<
   HistoryListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(33) as any as S.Schema<ListHistoriesRequest>,
-    output: __S(36) as any as S.Schema<ListHistoriesResponse>,
+    input: ListHistoriesRequest,
+    output: ListHistoriesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -860,8 +1173,8 @@ export const putConfig: API.OperationMethod<
   PutConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<PutConfigRequest>,
-  output: __S(46) as any as S.Schema<PutConfigResponse>,
+  input: PutConfigRequest,
+  output: PutConfigResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -875,8 +1188,8 @@ export const putHistory: API.OperationMethod<
   PutHistoryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<PutHistoryRequest>,
-  output: __S(50) as any as S.Schema<PutHistoryResponse>,
+  input: PutHistoryRequest,
+  output: PutHistoryResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -890,8 +1203,8 @@ export const putZaraz: API.OperationMethod<
   PutZarazError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<PutZarazRequest>,
-  output: __S(32) as any as S.Schema<PutZarazResponse>,
+  input: PutZarazRequest,
+  output: PutZarazResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -936,7 +1249,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           autoInjectScript: S.Boolean,
-          contextEnricher: S.optional(S.NullOr(__S(3))),
+          contextEnricher: S.optional(S.NullOr(ConfigGetResponseSettingsContextEnricher)),
           cookieDomain: S.optional(S.NullOr(S.String)),
           ecommerce: S.optional(S.NullOr(S.Boolean)),
           eventsApiPath: S.optional(S.NullOr(S.String)),
@@ -976,9 +1289,15 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          acceptAll: __S(7).pipe(T.Body("accept_all")),
-          confirmMyChoices: __S(8).pipe(T.Body("confirm_my_choices")),
-          rejectAll: __S(7).pipe(T.Body("reject_all")),
+          acceptAll: ConfigGetResponseConsentButtonTextTranslationsAcceptAllMap.pipe(
+            T.Body("accept_all"),
+          ),
+          confirmMyChoices: ConfigGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap.pipe(
+            T.Body("confirm_my_choices"),
+          ),
+          rejectAll: ConfigGetResponseConsentButtonTextTranslationsRejectAllMap.pipe(
+            T.Body("reject_all"),
+          ),
         }),
       ).annotate({
         identifier: "ConfigGetResponseConsentButtonTextTranslations",
@@ -993,36 +1312,42 @@ function __c1(j: number): any {
         identifier: "ConfigGetResponseConsentPurposesValue",
       });
     case 3:
-      return S.Record(S.String, __S(10));
+      return S.Record(S.String, ConfigGetResponseConsentPurposesValue);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          description: __S(8),
-          name: __S(7),
+          description: ConfigGetResponseConsentPurposesWithTranslationsValueDescriptionMap,
+          name: ConfigGetResponseConsentPurposesWithTranslationsValueNameMap,
           order: S.Number,
         }),
       ).annotate({
         identifier: "ConfigGetResponseConsentPurposesWithTranslationsValue",
       });
     case 5:
-      return S.Record(S.String, __S(12));
+      return S.Record(S.String, ConfigGetResponseConsentPurposesWithTranslationsValue);
     case 6:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          buttonTextTranslations: S.optional(S.NullOr(__S(9))),
+          buttonTextTranslations: S.optional(
+            S.NullOr(ConfigGetResponseConsentButtonTextTranslations),
+          ),
           companyEmail: S.optional(S.NullOr(S.String)),
           companyName: S.optional(S.NullOr(S.String)),
           companyStreetAddress: S.optional(S.NullOr(S.String)),
           consentModalIntroHTML: S.optional(S.NullOr(S.String)),
-          consentModalIntroHTMLWithTranslations: S.optional(S.NullOr(__S(8))),
+          consentModalIntroHTMLWithTranslations: S.optional(
+            S.NullOr(ConfigGetResponseConsentConsentModalIntroHTMLWithTranslationsMap),
+          ),
           cookieName: S.optional(S.NullOr(S.String)),
           customCSS: S.optional(S.NullOr(S.String)),
           customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
           defaultLanguage: S.optional(S.NullOr(S.String)),
           hideModal: S.optional(S.NullOr(S.Boolean)),
-          purposes: S.optional(S.NullOr(__S(11))),
-          purposesWithTranslations: S.optional(S.NullOr(__S(13))),
+          purposes: S.optional(S.NullOr(ConfigGetResponseConsentPurposesMap)),
+          purposesWithTranslations: S.optional(
+            S.NullOr(ConfigGetResponseConsentPurposesWithTranslationsMap),
+          ),
           tcfCompliant: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "ConfigGetResponseConsent" });
@@ -1031,13 +1356,13 @@ function __c1(j: number): any {
         S.Struct({
           dataLayer: S.Boolean,
           debugKey: S.String,
-          settings: __S(4),
-          tools: __S(5),
-          triggers: __S(5),
-          variables: __S(5),
+          settings: ConfigGetResponseSettings,
+          tools: UntypedConfigMap,
+          triggers: UntypedConfigMap,
+          variables: UntypedConfigMap,
           zarazVersion: S.Number,
-          analytics: S.optional(S.NullOr(__S(6))),
-          consent: S.optional(S.NullOr(__S(14))),
+          analytics: S.optional(S.NullOr(ConfigGetResponseAnalytics)),
+          consent: S.optional(S.NullOr(ConfigGetResponseConsent)),
           historyChange: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetConfigResponse" });
@@ -1059,19 +1384,25 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          buttonTextTranslations: S.optional(S.NullOr(__S(9))),
+          buttonTextTranslations: S.optional(
+            S.NullOr(DefaultGetResponseConsentButtonTextTranslations),
+          ),
           companyEmail: S.optional(S.NullOr(S.String)),
           companyName: S.optional(S.NullOr(S.String)),
           companyStreetAddress: S.optional(S.NullOr(S.String)),
           consentModalIntroHTML: S.optional(S.NullOr(S.String)),
-          consentModalIntroHTMLWithTranslations: S.optional(S.NullOr(__S(8))),
+          consentModalIntroHTMLWithTranslations: S.optional(
+            S.NullOr(DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap),
+          ),
           cookieName: S.optional(S.NullOr(S.String)),
           customCSS: S.optional(S.NullOr(S.String)),
           customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
           defaultLanguage: S.optional(S.NullOr(S.String)),
           hideModal: S.optional(S.NullOr(S.Boolean)),
-          purposes: S.optional(S.NullOr(__S(11))),
-          purposesWithTranslations: S.optional(S.NullOr(__S(13))),
+          purposes: S.optional(S.NullOr(DefaultGetResponseConsentPurposesMap)),
+          purposesWithTranslations: S.optional(
+            S.NullOr(DefaultGetResponseConsentPurposesWithTranslationsMap),
+          ),
           tcfCompliant: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
@@ -1082,13 +1413,13 @@ function __c2(j: number): any {
         S.Struct({
           dataLayer: S.Boolean,
           debugKey: S.String,
-          settings: __S(4),
-          tools: __S(5),
-          triggers: __S(5),
-          variables: __S(5),
+          settings: ConfigGetResponseSettings,
+          tools: UntypedConfigMap,
+          triggers: UntypedConfigMap,
+          variables: UntypedConfigMap,
           zarazVersion: S.Number,
-          analytics: S.optional(S.NullOr(__S(6))),
-          consent: S.optional(S.NullOr(__S(17))),
+          analytics: S.optional(S.NullOr(ConfigGetResponseAnalytics)),
+          consent: S.optional(S.NullOr(DefaultGetResponseConsent)),
           historyChange: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDefaultResponse" });
@@ -1110,7 +1441,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          ids: __S(21).pipe(T.Query()),
+          ids: HistoryConfigsGetRequestIdsList.pipe(T.Query()),
         })
           .pipe(
             T.Http({
@@ -1124,9 +1455,18 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          acceptAll: __S(8).pipe(T.Body("accept_all")),
-          confirmMyChoices: __S(8).pipe(T.Body("confirm_my_choices")),
-          rejectAll: __S(8).pipe(T.Body("reject_all")),
+          acceptAll:
+            HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsAcceptAllMap.pipe(
+              T.Body("accept_all"),
+            ),
+          confirmMyChoices:
+            HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsConfirmMyChoicesMap.pipe(
+              T.Body("confirm_my_choices"),
+            ),
+          rejectAll:
+            HistoryConfigsGetResultValueConfigConsentButtonTextTranslationsRejectAllMap.pipe(
+              T.Body("reject_all"),
+            ),
         }),
       ).annotate({
         identifier: "HistoryConfigsGetResultValueConfigConsentButtonTextTranslations",
@@ -1138,32 +1478,44 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          description: __S(8),
-          name: __S(8),
+          description:
+            HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValueDescriptionMap,
+          name: HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValueNameMap,
           order: S.Number,
         }),
       ).annotate({
         identifier: "HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValue",
       });
     case 1:
-      return S.Record(S.String, __S(24));
+      return S.Record(
+        S.String,
+        HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValue,
+      );
     case 2:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          buttonTextTranslations: S.optional(S.NullOr(__S(23))),
+          buttonTextTranslations: S.optional(
+            S.NullOr(HistoryConfigsGetResultValueConfigConsentButtonTextTranslations),
+          ),
           companyEmail: S.optional(S.NullOr(S.String)),
           companyName: S.optional(S.NullOr(S.String)),
           companyStreetAddress: S.optional(S.NullOr(S.String)),
           consentModalIntroHTML: S.optional(S.NullOr(S.String)),
-          consentModalIntroHTMLWithTranslations: S.optional(S.NullOr(__S(8))),
+          consentModalIntroHTMLWithTranslations: S.optional(
+            S.NullOr(
+              HistoryConfigsGetResultValueConfigConsentConsentModalIntroHTMLWithTranslationsMap,
+            ),
+          ),
           cookieName: S.optional(S.NullOr(S.String)),
           customCSS: S.optional(S.NullOr(S.String)),
           customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
           defaultLanguage: S.optional(S.NullOr(S.String)),
           hideModal: S.optional(S.NullOr(S.Boolean)),
-          purposes: S.optional(S.NullOr(__S(11))),
-          purposesWithTranslations: S.optional(S.NullOr(__S(25))),
+          purposes: S.optional(S.NullOr(HistoryConfigsGetResultValueConfigConsentPurposesMap)),
+          purposesWithTranslations: S.optional(
+            S.NullOr(HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsMap),
+          ),
           tcfCompliant: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
@@ -1174,13 +1526,13 @@ function __c3(j: number): any {
         S.Struct({
           dataLayer: S.Boolean,
           debugKey: S.String,
-          settings: __S(4),
-          tools: __S(5),
-          triggers: __S(5),
-          variables: __S(5),
+          settings: ConfigGetResponseSettings,
+          tools: UntypedConfigMap,
+          triggers: UntypedConfigMap,
+          variables: UntypedConfigMap,
           zarazVersion: S.Number,
-          analytics: S.optional(S.NullOr(__S(6))),
-          consent: S.optional(S.NullOr(__S(26))),
+          analytics: S.optional(S.NullOr(ConfigGetResponseAnalytics)),
+          consent: S.optional(S.NullOr(HistoryConfigsGetResultValueConfigConsent)),
           historyChange: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
@@ -1190,7 +1542,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
-          config: __S(27),
+          config: HistoryConfigsGetResultValueConfig,
           createdAt: S.String,
           updatedAt: S.String,
           userId: S.String,
@@ -1199,10 +1551,10 @@ function __c3(j: number): any {
         identifier: "HistoryConfigsGetResultValue",
       });
     case 5:
-      return S.Record(S.String, __S(28));
+      return S.Record(S.String, HistoryConfigsGetResultValue);
     case 6:
       return S.suspend(() =>
-        __S(29).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        HistoryConfigsGetResultMap.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetHistoryConfigResponse" });
     case 7:
       return S.suspend(() =>
@@ -1220,7 +1572,7 @@ function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        WorkflowGetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetWorkflowResponse" });
     case 1:
       return S.suspend(() =>
@@ -1228,8 +1580,8 @@ function __c4(j: number): any {
           zoneId: S.String.pipe(T.Label("zone_id")),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortField: S.optional(HistoryListRequestSortField.pipe(T.Query())),
+          sortOrder: S.optional(HistoryListRequestSortOrder.pipe(T.Query())),
         })
           .pipe(
             T.Http({ method: "GET", uri: "/zones/{zone_id}/settings/zaraz/history", code: 200 }),
@@ -1247,11 +1599,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "HistoryListResultItem" });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(HistoryListResultItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(35).pipe(T.EnvelopePayload()),
+          result: HistoryListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListHistoriesResponse" });
@@ -1259,7 +1611,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           autoInjectScript: S.Boolean,
-          contextEnricher: S.optional(__S(3)),
+          contextEnricher: S.optional(ConfigGetResponseSettingsContextEnricher),
           cookieDomain: S.optional(S.String),
           ecommerce: S.optional(S.Boolean),
           eventsApiPath: S.optional(S.String),
@@ -1289,8 +1641,8 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          description: __S(8),
-          name: __S(8),
+          description: ConfigUpdateRequestConsentPurposesWithTranslationsValueDescriptionMap,
+          name: ConfigUpdateRequestConsentPurposesWithTranslationsValueNameMap,
           order: S.Number,
         }),
       ).annotate({
@@ -1301,24 +1653,28 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(39));
+      return S.Record(S.String, ConfigUpdateRequestConsentPurposesWithTranslationsValue);
     case 1:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          buttonTextTranslations: S.optional(__S(9)),
+          buttonTextTranslations: S.optional(ConfigUpdateRequestConsentButtonTextTranslations),
           companyEmail: S.optional(S.String),
           companyName: S.optional(S.String),
           companyStreetAddress: S.optional(S.String),
           consentModalIntroHTML: S.optional(S.String),
-          consentModalIntroHTMLWithTranslations: S.optional(__S(8)),
+          consentModalIntroHTMLWithTranslations: S.optional(
+            ConfigUpdateRequestConsentConsentModalIntroHTMLWithTranslationsMap,
+          ),
           cookieName: S.optional(S.String),
           customCSS: S.optional(S.String),
           customIntroDisclaimerDismissed: S.optional(S.Boolean),
           defaultLanguage: S.optional(S.String),
           hideModal: S.optional(S.Boolean),
-          purposes: S.optional(__S(11)),
-          purposesWithTranslations: S.optional(__S(40)),
+          purposes: S.optional(ConfigUpdateRequestConsentPurposesMap),
+          purposesWithTranslations: S.optional(
+            ConfigUpdateRequestConsentPurposesWithTranslationsMap,
+          ),
           tcfCompliant: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -1330,13 +1686,13 @@ function __c5(j: number): any {
           zoneId: S.String.pipe(T.Label("zone_id")),
           dataLayer: S.Boolean,
           debugKey: S.String,
-          settings: __S(37),
-          tools: __S(5),
-          triggers: __S(5),
-          variables: __S(5),
+          settings: ConfigUpdateRequestSettings,
+          tools: UntypedConfigMap,
+          triggers: UntypedConfigMap,
+          variables: UntypedConfigMap,
           zarazVersion: S.Number,
-          analytics: S.optional(__S(38)),
-          consent: S.optional(__S(41)),
+          analytics: S.optional(ConfigUpdateRequestAnalytics),
+          consent: S.optional(ConfigUpdateRequestConsent),
           historyChange: S.optional(S.Boolean),
         })
           .pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/settings/zaraz/config", code: 200 }))
@@ -1345,32 +1701,38 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          description: __S(8),
-          name: __S(8),
+          description: ConfigUpdateResponseConsentPurposesWithTranslationsValueDescriptionMap,
+          name: ConfigUpdateResponseConsentPurposesWithTranslationsValueNameMap,
           order: S.Number,
         }),
       ).annotate({
         identifier: "ConfigUpdateResponseConsentPurposesWithTranslationsValue",
       });
     case 4:
-      return S.Record(S.String, __S(43));
+      return S.Record(S.String, ConfigUpdateResponseConsentPurposesWithTranslationsValue);
     case 5:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          buttonTextTranslations: S.optional(S.NullOr(__S(9))),
+          buttonTextTranslations: S.optional(
+            S.NullOr(ConfigUpdateResponseConsentButtonTextTranslations),
+          ),
           companyEmail: S.optional(S.NullOr(S.String)),
           companyName: S.optional(S.NullOr(S.String)),
           companyStreetAddress: S.optional(S.NullOr(S.String)),
           consentModalIntroHTML: S.optional(S.NullOr(S.String)),
-          consentModalIntroHTMLWithTranslations: S.optional(S.NullOr(__S(8))),
+          consentModalIntroHTMLWithTranslations: S.optional(
+            S.NullOr(ConfigUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap),
+          ),
           cookieName: S.optional(S.NullOr(S.String)),
           customCSS: S.optional(S.NullOr(S.String)),
           customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
           defaultLanguage: S.optional(S.NullOr(S.String)),
           hideModal: S.optional(S.NullOr(S.Boolean)),
-          purposes: S.optional(S.NullOr(__S(11))),
-          purposesWithTranslations: S.optional(S.NullOr(__S(44))),
+          purposes: S.optional(S.NullOr(ConfigUpdateResponseConsentPurposesMap)),
+          purposesWithTranslations: S.optional(
+            S.NullOr(ConfigUpdateResponseConsentPurposesWithTranslationsMap),
+          ),
           tcfCompliant: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
@@ -1381,13 +1743,13 @@ function __c5(j: number): any {
         S.Struct({
           dataLayer: S.Boolean,
           debugKey: S.String,
-          settings: __S(4),
-          tools: __S(5),
-          triggers: __S(5),
-          variables: __S(5),
+          settings: ConfigGetResponseSettings,
+          tools: UntypedConfigMap,
+          triggers: UntypedConfigMap,
+          variables: UntypedConfigMap,
           zarazVersion: S.Number,
-          analytics: S.optional(S.NullOr(__S(6))),
-          consent: S.optional(S.NullOr(__S(45))),
+          analytics: S.optional(S.NullOr(ConfigGetResponseAnalytics)),
+          consent: S.optional(S.NullOr(ConfigUpdateResponseConsent)),
           historyChange: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutConfigResponse" });
@@ -1409,9 +1771,16 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          acceptAll: __S(8).pipe(T.Body("accept_all")),
-          confirmMyChoices: __S(8).pipe(T.Body("confirm_my_choices")),
-          rejectAll: __S(8).pipe(T.Body("reject_all")),
+          acceptAll: HistoryUpdateResponseConsentButtonTextTranslationsAcceptAllMap.pipe(
+            T.Body("accept_all"),
+          ),
+          confirmMyChoices:
+            HistoryUpdateResponseConsentButtonTextTranslationsConfirmMyChoicesMap.pipe(
+              T.Body("confirm_my_choices"),
+            ),
+          rejectAll: HistoryUpdateResponseConsentButtonTextTranslationsRejectAllMap.pipe(
+            T.Body("reject_all"),
+          ),
         }),
       ).annotate({
         identifier: "HistoryUpdateResponseConsentButtonTextTranslations",
@@ -1420,19 +1789,25 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          buttonTextTranslations: S.optional(S.NullOr(__S(48))),
+          buttonTextTranslations: S.optional(
+            S.NullOr(HistoryUpdateResponseConsentButtonTextTranslations),
+          ),
           companyEmail: S.optional(S.NullOr(S.String)),
           companyName: S.optional(S.NullOr(S.String)),
           companyStreetAddress: S.optional(S.NullOr(S.String)),
           consentModalIntroHTML: S.optional(S.NullOr(S.String)),
-          consentModalIntroHTMLWithTranslations: S.optional(S.NullOr(__S(8))),
+          consentModalIntroHTMLWithTranslations: S.optional(
+            S.NullOr(HistoryUpdateResponseConsentConsentModalIntroHTMLWithTranslationsMap),
+          ),
           cookieName: S.optional(S.NullOr(S.String)),
           customCSS: S.optional(S.NullOr(S.String)),
           customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
           defaultLanguage: S.optional(S.NullOr(S.String)),
           hideModal: S.optional(S.NullOr(S.Boolean)),
-          purposes: S.optional(S.NullOr(__S(11))),
-          purposesWithTranslations: S.optional(S.NullOr(__S(44))),
+          purposes: S.optional(S.NullOr(HistoryUpdateResponseConsentPurposesMap)),
+          purposesWithTranslations: S.optional(
+            S.NullOr(HistoryUpdateResponseConsentPurposesWithTranslationsMap),
+          ),
           tcfCompliant: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
@@ -1443,13 +1818,13 @@ function __c6(j: number): any {
         S.Struct({
           dataLayer: S.Boolean,
           debugKey: S.String,
-          settings: __S(4),
-          tools: __S(5),
-          triggers: __S(5),
-          variables: __S(5),
+          settings: ConfigGetResponseSettings,
+          tools: UntypedConfigMap,
+          triggers: UntypedConfigMap,
+          variables: UntypedConfigMap,
           zarazVersion: S.Number,
-          analytics: S.optional(S.NullOr(__S(6))),
-          consent: S.optional(S.NullOr(__S(49))),
+          analytics: S.optional(S.NullOr(ConfigGetResponseAnalytics)),
+          consent: S.optional(S.NullOr(HistoryUpdateResponseConsent)),
           historyChange: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutHistoryResponse" });
@@ -1457,35 +1832,12 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          workflow: S.String,
+          workflow: UpdateRequestWorkflow,
         })
           .pipe(
             T.Http({ method: "PUT", uri: "/zones/{zone_id}/settings/zaraz/workflow", code: 200 }),
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutZarazRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

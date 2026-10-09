@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -71,6 +69,11 @@ export interface GoogleSecuritySafebrowsingV4ClientInfo {
   /** A client ID that (hopefully) uniquely identifies the client implementation of the Safe Browsing API. */
   clientId?: string;
 }
+const GoogleSecuritySafebrowsingV4ClientInfo = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4ClientInfo>;
+
 /** An individual threat; for example, a malicious URL or its hash representation. Only one of these fields should be set. */
 export interface GoogleSecuritySafebrowsingV4ThreatEntry {
   /** A URL. */
@@ -80,6 +83,11 @@ export interface GoogleSecuritySafebrowsingV4ThreatEntry {
   /** The digest of an executable in SHA256 format. The API supports both binary and hex digests. For JSON requests, digests are base64-encoded. */
   digest?: string;
 }
+const GoogleSecuritySafebrowsingV4ThreatEntry = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatEntry>;
+
 export type GoogleSecuritySafebrowsingV4ThreatHitPlatformTypeEnum =
   | "PLATFORM_TYPE_UNSPECIFIED"
   | "WINDOWS"
@@ -90,12 +98,16 @@ export type GoogleSecuritySafebrowsingV4ThreatHitPlatformTypeEnum =
   | "ANY_PLATFORM"
   | "ALL_PLATFORMS"
   | "CHROME";
+const GoogleSecuritySafebrowsingV4ThreatHitPlatformTypeEnum = S.String;
+
 export type GoogleSecuritySafebrowsingV4ThreatHitThreatSourceTypeEnum =
   | "THREAT_SOURCE_TYPE_UNSPECIFIED"
   | "MATCHING_URL"
   | "TAB_URL"
   | "TAB_REDIRECT"
   | "TAB_RESOURCE";
+const GoogleSecuritySafebrowsingV4ThreatHitThreatSourceTypeEnum = S.String;
+
 /** A single resource related to a threat hit. */
 export interface GoogleSecuritySafebrowsingV4ThreatHitThreatSource {
   /** The remote IP of the resource in ASCII format. Either IPv4 or IPv6. */
@@ -107,8 +119,18 @@ export interface GoogleSecuritySafebrowsingV4ThreatHitThreatSource {
   /** The type of source reported. */
   type?: GoogleSecuritySafebrowsingV4ThreatHitThreatSourceTypeEnum | (string & {});
 }
+const GoogleSecuritySafebrowsingV4ThreatHitThreatSource = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatHitThreatSource>;
+
 export type GoogleSecuritySafebrowsingV4ThreatHitThreatSourceList =
   Array<GoogleSecuritySafebrowsingV4ThreatHitThreatSource>;
+const GoogleSecuritySafebrowsingV4ThreatHitThreatSourceList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatHitThreatSourceList>;
+
 /** Details about the user that encountered the threat. */
 export interface GoogleSecuritySafebrowsingV4ThreatHitUserInfo {
   /** The UN M.49 region code associated with the user's location. */
@@ -116,6 +138,11 @@ export interface GoogleSecuritySafebrowsingV4ThreatHitUserInfo {
   /** Unique user identifier defined by the client. */
   userId?: string;
 }
+const GoogleSecuritySafebrowsingV4ThreatHitUserInfo = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatHitUserInfo>;
+
 export type GoogleSecuritySafebrowsingV4ThreatHitThreatTypeEnum =
   | "THREAT_TYPE_UNSPECIFIED"
   | "MALWARE"
@@ -135,6 +162,8 @@ export type GoogleSecuritySafebrowsingV4ThreatHitThreatTypeEnum =
   | "TRICK_TO_BILL"
   | "HIGH_CONFIDENCE_ALLOWLIST"
   | "ACCURACY_TIPS";
+const GoogleSecuritySafebrowsingV4ThreatHitThreatTypeEnum = S.String;
+
 export interface GoogleSecuritySafebrowsingV4ThreatHit {
   /** Client-reported identification. */
   clientInfo?: GoogleSecuritySafebrowsingV4ClientInfo;
@@ -149,12 +178,24 @@ export interface GoogleSecuritySafebrowsingV4ThreatHit {
   /** The threat type reported. */
   threatType?: GoogleSecuritySafebrowsingV4ThreatHitThreatTypeEnum | (string & {});
 }
+const GoogleSecuritySafebrowsingV4ThreatHit = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatHit>;
+
 export interface CreateThreatHitsRequest {
   /** Request body */
   body?: GoogleSecuritySafebrowsingV4ThreatHit;
 }
+const CreateThreatHitsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateThreatHitsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
+const GoogleProtobufEmpty = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GoogleProtobufEmpty>;
+
 export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatTypeEnum =
   | "THREAT_TYPE_UNSPECIFIED"
   | "MALWARE"
@@ -174,6 +215,9 @@ export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateR
   | "TRICK_TO_BILL"
   | "HIGH_CONFIDENCE_ALLOWLIST"
   | "ACCURACY_TIPS";
+const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatTypeEnum =
+  S.String;
+
 export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformTypeEnum =
   | "PLATFORM_TYPE_UNSPECIFIED"
   | "WINDOWS"
@@ -184,6 +228,9 @@ export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateR
   | "ANY_PLATFORM"
   | "ALL_PLATFORMS"
   | "CHROME";
+const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformTypeEnum =
+  S.String;
+
 export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryTypeEnum =
   | "THREAT_ENTRY_TYPE_UNSPECIFIED"
   | "URL"
@@ -192,15 +239,27 @@ export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateR
   | "CHROME_EXTENSION"
   | "FILENAME"
   | "CERT";
+const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryTypeEnum =
+  S.String;
+
 export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnum =
   | "COMPRESSION_TYPE_UNSPECIFIED"
   | "RAW"
   | "RICE";
+const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnum =
+  S.String;
+
 export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnumList =
   Array<
     | GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnum
     | (string & {})
   >;
+const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnumList =
+  /*@__PURE__*/ __L.at(
+    __c1,
+    0,
+  ) as any as S.Schema<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnumList>;
+
 /** The constraints for this update. */
 export interface GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints {
   /** Requests the list for a specific geographic location. If not set the server may pick that value based on the user's IP address. Expects ISO 3166-1 alpha-2 format. */
@@ -216,6 +275,12 @@ export interface GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUp
   /** The compression types supported by the client. */
   supportedCompressions?: GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnumList;
 }
+const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints =
+  /*@__PURE__*/ __L.at(
+    __c1,
+    1,
+  ) as any as S.Schema<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints>;
+
 /** A single list update request. */
 export interface GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest {
   /** The type of threat posed by entries present in the list. */
@@ -235,8 +300,20 @@ export interface GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUp
   /** The constraints associated with this request. */
   constraints?: GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints;
 }
+const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest =
+  /*@__PURE__*/ __L.at(
+    __c1,
+    2,
+  ) as any as S.Schema<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest>;
+
 export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestList =
   Array<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest>;
+const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestList =
+  /*@__PURE__*/ __L.at(
+    __c1,
+    3,
+  ) as any as S.Schema<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestList>;
+
 /** Describes a Safe Browsing API update request. Clients can request updates for multiple lists in a single request. The server may not respond to all requests, if the server has no updates for that list. NOTE: Field index 2 is unused. NEXT: 5 */
 export interface GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest {
   /** The client metadata. */
@@ -244,14 +321,26 @@ export interface GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest {
   /** The requested threat list updates. */
   listUpdateRequests?: GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestList;
 }
+const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest>;
+
 export interface FetchThreatListUpdatesRequest {
   /** Request body */
   body?: GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest;
 }
+const FetchThreatListUpdatesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<FetchThreatListUpdatesRequest>;
+
 export type GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionTypeEnum =
   | "COMPRESSION_TYPE_UNSPECIFIED"
   | "RAW"
   | "RICE";
+const GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionTypeEnum = S.String;
+
 /** The Rice-Golomb encoded data. Used for sending compressed 4-byte hashes or compressed removal indices. */
 export interface GoogleSecuritySafebrowsingV4RiceDeltaEncoding {
   /** The number of entries that are delta encoded in the encoded data. If only a single integer was encoded, this will be zero and the single value will be stored in `first_value`. */
@@ -263,6 +352,11 @@ export interface GoogleSecuritySafebrowsingV4RiceDeltaEncoding {
   /** The Golomb-Rice parameter, which is a number between 2 and 28. This field is missing (that is, zero) if `num_entries` is zero. */
   riceParameter?: number;
 }
+const GoogleSecuritySafebrowsingV4RiceDeltaEncoding = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4RiceDeltaEncoding>;
+
 /** The uncompressed threat entries in hash format of a particular prefix length. Hashes can be anywhere from 4 to 32 bytes in size. A large majority are 4 bytes, but some hashes are lengthened if they collide with the hash of a popular URL. Used for sending ThreatEntrySet to clients that do not support compression, or when sending non-4-byte hashes to clients that do support compression. */
 export interface GoogleSecuritySafebrowsingV4RawHashes {
   /** The number of bytes for each prefix encoded below. This field can be anywhere from 4 (shortest prefix) to 32 (full SHA256 hash). */
@@ -270,12 +364,24 @@ export interface GoogleSecuritySafebrowsingV4RawHashes {
   /** The hashes, in binary format, concatenated into one long string. Hashes are sorted in lexicographic order. For JSON API users, hashes are base64-encoded. */
   rawHashes?: string;
 }
+const GoogleSecuritySafebrowsingV4RawHashes = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4RawHashes>;
+
 export type IntegerList = Array<number>;
+const IntegerList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<IntegerList>;
+
 /** A set of raw indices to remove from a local list. */
 export interface GoogleSecuritySafebrowsingV4RawIndices {
   /** The indices to remove from a lexicographically-sorted local list. */
   indices?: IntegerList;
 }
+const GoogleSecuritySafebrowsingV4RawIndices = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4RawIndices>;
+
 /** A set of threats that should be added or removed from a client's local database. */
 export interface GoogleSecuritySafebrowsingV4ThreatEntrySet {
   /** The compression type for the entries in this set. */
@@ -289,8 +395,18 @@ export interface GoogleSecuritySafebrowsingV4ThreatEntrySet {
   /** The encoded local, lexicographically-sorted list indices, using a Golomb-Rice encoding. Used for sending compressed removal indices. The removal indices (uint32) are sorted in ascending order, then delta encoded and stored as encoded_data. */
   riceIndices?: GoogleSecuritySafebrowsingV4RiceDeltaEncoding;
 }
+const GoogleSecuritySafebrowsingV4ThreatEntrySet = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatEntrySet>;
+
 export type GoogleSecuritySafebrowsingV4ThreatEntrySetList =
   Array<GoogleSecuritySafebrowsingV4ThreatEntrySet>;
+const GoogleSecuritySafebrowsingV4ThreatEntrySetList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatEntrySetList>;
+
 export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformTypeEnum =
   | "PLATFORM_TYPE_UNSPECIFIED"
   | "WINDOWS"
@@ -301,6 +417,9 @@ export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdate
   | "ANY_PLATFORM"
   | "ALL_PLATFORMS"
   | "CHROME";
+const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformTypeEnum =
+  S.String;
+
 export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatTypeEnum =
   | "THREAT_TYPE_UNSPECIFIED"
   | "MALWARE"
@@ -320,6 +439,9 @@ export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdate
   | "TRICK_TO_BILL"
   | "HIGH_CONFIDENCE_ALLOWLIST"
   | "ACCURACY_TIPS";
+const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatTypeEnum =
+  S.String;
+
 export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryTypeEnum =
   | "THREAT_ENTRY_TYPE_UNSPECIFIED"
   | "URL"
@@ -328,15 +450,26 @@ export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdate
   | "CHROME_EXTENSION"
   | "FILENAME"
   | "CERT";
+const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryTypeEnum =
+  S.String;
+
 /** The expected state of a client's local database. */
 export interface GoogleSecuritySafebrowsingV4Checksum {
   /** The SHA256 hash of the client state; that is, of the sorted list of all hashes present in the database. */
   sha256?: string;
 }
+const GoogleSecuritySafebrowsingV4Checksum = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4Checksum>;
+
 export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseTypeEnum =
   | "RESPONSE_TYPE_UNSPECIFIED"
   | "PARTIAL_UPDATE"
   | "FULL_UPDATE";
+const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseTypeEnum =
+  S.String;
+
 /** An update to an individual list. */
 export interface GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse {
   /** The new client state, in encrypted format. Opaque to clients. */
@@ -356,14 +489,31 @@ export interface GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListU
   /** A set of entries to add to a local threat type's list. Repeated to allow for a combination of compressed and raw data to be sent in a single response. */
   additions?: GoogleSecuritySafebrowsingV4ThreatEntrySetList;
 }
+const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse =
+  /*@__PURE__*/ __L.at(
+    __c2,
+    5,
+  ) as any as S.Schema<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse>;
+
 export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseList =
   Array<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse>;
+const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseList =
+  /*@__PURE__*/ __L.at(
+    __c2,
+    6,
+  ) as any as S.Schema<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseList>;
+
 export interface GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse {
   /** The list updates requested by the clients. The number of responses here may be less than the number of requests sent by clients. This is the case, for example, if the server has no updates for a particular list. */
   listUpdateResponses?: GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseList;
   /** The minimum duration the client must wait before issuing any update request. If this field is not set clients may update as soon as they want. */
   minimumWaitDuration?: string;
 }
+const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse>;
+
 export type GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnum =
   | "PLATFORM_TYPE_UNSPECIFIED"
   | "WINDOWS"
@@ -377,6 +527,9 @@ export type GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnum =
 export type GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnumList = Array<
   GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnum | (string & {})
 >;
+const GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnumList =
+  GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnumList as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnumList>;
+
 export type GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnum =
   | "THREAT_ENTRY_TYPE_UNSPECIFIED"
   | "URL"
@@ -388,8 +541,16 @@ export type GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnum =
 export type GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnumList = Array<
   GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnum | (string & {})
 >;
+const GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnumList =
+  GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnumList as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnumList>;
+
 export type GoogleSecuritySafebrowsingV4ThreatEntryList =
   Array<GoogleSecuritySafebrowsingV4ThreatEntry>;
+const GoogleSecuritySafebrowsingV4ThreatEntryList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatEntryList>;
+
 export type GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnum =
   | "THREAT_TYPE_UNSPECIFIED"
   | "MALWARE"
@@ -409,9 +570,16 @@ export type GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnum =
   | "TRICK_TO_BILL"
   | "HIGH_CONFIDENCE_ALLOWLIST"
   | "ACCURACY_TIPS";
+const GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnum = S.String;
+
 export type GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnumList = Array<
   GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnum | (string & {})
 >;
+const GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnumList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnumList>;
+
 /** The information regarding one or more threats that a client submits when checking for matches in threat lists. */
 export interface GoogleSecuritySafebrowsingV4ThreatInfo {
   /** The platform types to be checked. */
@@ -423,7 +591,14 @@ export interface GoogleSecuritySafebrowsingV4ThreatInfo {
   /** The threat types to be checked. */
   threatTypes?: GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnumList;
 }
+const GoogleSecuritySafebrowsingV4ThreatInfo = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatInfo>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<StringList>;
+
 /** Request to return full hashes matched by the provided hash prefixes. */
 export interface GoogleSecuritySafebrowsingV4FindFullHashesRequest {
   /** The lists and hashes to be checked. */
@@ -435,10 +610,20 @@ export interface GoogleSecuritySafebrowsingV4FindFullHashesRequest {
   /** The client metadata. */
   client?: GoogleSecuritySafebrowsingV4ClientInfo;
 }
+const GoogleSecuritySafebrowsingV4FindFullHashesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4FindFullHashesRequest>;
+
 export interface FindFullHashesRequest {
   /** Request body */
   body?: GoogleSecuritySafebrowsingV4FindFullHashesRequest;
 }
+const FindFullHashesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<FindFullHashesRequest>;
+
 export type GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryTypeEnum =
   | "THREAT_ENTRY_TYPE_UNSPECIFIED"
   | "URL"
@@ -447,6 +632,8 @@ export type GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryTypeEnum =
   | "CHROME_EXTENSION"
   | "FILENAME"
   | "CERT";
+const GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryTypeEnum = S.String;
+
 export type GoogleSecuritySafebrowsingV4ThreatMatchPlatformTypeEnum =
   | "PLATFORM_TYPE_UNSPECIFIED"
   | "WINDOWS"
@@ -457,6 +644,8 @@ export type GoogleSecuritySafebrowsingV4ThreatMatchPlatformTypeEnum =
   | "ANY_PLATFORM"
   | "ALL_PLATFORMS"
   | "CHROME";
+const GoogleSecuritySafebrowsingV4ThreatMatchPlatformTypeEnum = S.String;
+
 export type GoogleSecuritySafebrowsingV4ThreatMatchThreatTypeEnum =
   | "THREAT_TYPE_UNSPECIFIED"
   | "MALWARE"
@@ -476,6 +665,8 @@ export type GoogleSecuritySafebrowsingV4ThreatMatchThreatTypeEnum =
   | "TRICK_TO_BILL"
   | "HIGH_CONFIDENCE_ALLOWLIST"
   | "ACCURACY_TIPS";
+const GoogleSecuritySafebrowsingV4ThreatMatchThreatTypeEnum = S.String;
+
 /** A single metadata entry. */
 export interface GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry {
   /** The metadata entry value. For JSON requests, the value is base64-encoded. */
@@ -483,13 +674,28 @@ export interface GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry {
   /** The metadata entry key. For JSON requests, the key is base64-encoded. */
   key?: string;
 }
+const GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry>;
+
 export type GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntryList =
   Array<GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry>;
+const GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntryList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntryList>;
+
 /** The metadata associated with a specific threat entry. The client is expected to know the metadata key/value pairs associated with each threat type. */
 export interface GoogleSecuritySafebrowsingV4ThreatEntryMetadata {
   /** The metadata entries. */
   entries?: GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntryList;
 }
+const GoogleSecuritySafebrowsingV4ThreatEntryMetadata = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatEntryMetadata>;
+
 /** A match when checking a threat entry in the Safe Browsing threat lists. */
 export interface GoogleSecuritySafebrowsingV4ThreatMatch {
   /** The threat entry type matching this threat. */
@@ -505,8 +711,18 @@ export interface GoogleSecuritySafebrowsingV4ThreatMatch {
   /** Optional metadata associated with this threat. */
   threatEntryMetadata?: GoogleSecuritySafebrowsingV4ThreatEntryMetadata;
 }
+const GoogleSecuritySafebrowsingV4ThreatMatch = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatMatch>;
+
 export type GoogleSecuritySafebrowsingV4ThreatMatchList =
   Array<GoogleSecuritySafebrowsingV4ThreatMatch>;
+const GoogleSecuritySafebrowsingV4ThreatMatchList = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatMatchList>;
+
 export interface GoogleSecuritySafebrowsingV4FindFullHashesResponse {
   /** The full hashes that matched the requested prefixes. */
   matches?: GoogleSecuritySafebrowsingV4ThreatMatchList;
@@ -515,6 +731,11 @@ export interface GoogleSecuritySafebrowsingV4FindFullHashesResponse {
   /** The minimum duration the client must wait before issuing any find hashes request. If this field is not set, clients can issue a request as soon as they want. */
   minimumWaitDuration?: string;
 }
+const GoogleSecuritySafebrowsingV4FindFullHashesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4FindFullHashesResponse>;
+
 /** Request to check entries against lists. */
 export interface GoogleSecuritySafebrowsingV4FindThreatMatchesRequest {
   /** The lists and entries to be checked for matches. */
@@ -522,14 +743,29 @@ export interface GoogleSecuritySafebrowsingV4FindThreatMatchesRequest {
   /** The client metadata. */
   client?: GoogleSecuritySafebrowsingV4ClientInfo;
 }
+const GoogleSecuritySafebrowsingV4FindThreatMatchesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4FindThreatMatchesRequest>;
+
 export interface FindThreatMatchesRequest {
   /** Request body */
   body?: GoogleSecuritySafebrowsingV4FindThreatMatchesRequest;
 }
+const FindThreatMatchesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<FindThreatMatchesRequest>;
+
 export interface GoogleSecuritySafebrowsingV4FindThreatMatchesResponse {
   /** The threat list matches. */
   matches?: GoogleSecuritySafebrowsingV4ThreatMatchList;
 }
+const GoogleSecuritySafebrowsingV4FindThreatMatchesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4FindThreatMatchesResponse>;
+
 export interface GetEncodedFullHashesRequest {
   /** A client ID that (hopefully) uniquely identifies the client implementation of the Safe Browsing API. */
   clientId?: string;
@@ -538,6 +774,11 @@ export interface GetEncodedFullHashesRequest {
   /** A serialized FindFullHashesRequest proto. */
   encodedRequest: string;
 }
+const GetEncodedFullHashesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<GetEncodedFullHashesRequest>;
+
 export interface GetEncodedUpdatesRequest {
   /** A serialized FetchThreatListUpdatesRequest proto. */
   encodedRequest: string;
@@ -546,7 +787,17 @@ export interface GetEncodedUpdatesRequest {
   /** A client ID that uniquely identifies the client implementation of the Safe Browsing API. */
   clientId?: string;
 }
+const GetEncodedUpdatesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GetEncodedUpdatesRequest>;
+
 export interface ListThreatListsRequest {}
+const ListThreatListsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ListThreatListsRequest>;
+
 export type GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryTypeEnum =
   | "THREAT_ENTRY_TYPE_UNSPECIFIED"
   | "URL"
@@ -555,6 +806,8 @@ export type GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryTypeEnum 
   | "CHROME_EXTENSION"
   | "FILENAME"
   | "CERT";
+const GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryTypeEnum = S.String;
+
 export type GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformTypeEnum =
   | "PLATFORM_TYPE_UNSPECIFIED"
   | "WINDOWS"
@@ -565,6 +818,8 @@ export type GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformTypeEnum =
   | "ANY_PLATFORM"
   | "ALL_PLATFORMS"
   | "CHROME";
+const GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformTypeEnum = S.String;
+
 export type GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatTypeEnum =
   | "THREAT_TYPE_UNSPECIFIED"
   | "MALWARE"
@@ -584,6 +839,8 @@ export type GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatTypeEnum =
   | "TRICK_TO_BILL"
   | "HIGH_CONFIDENCE_ALLOWLIST"
   | "ACCURACY_TIPS";
+const GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatTypeEnum = S.String;
+
 /** Describes an individual threat list. A list is defined by three parameters: the type of threat posed, the type of platform targeted by the threat, and the type of entries in the list. */
 export interface GoogleSecuritySafebrowsingV4ThreatListDescriptor {
   /** The entry types contained in the list. */
@@ -593,12 +850,27 @@ export interface GoogleSecuritySafebrowsingV4ThreatListDescriptor {
   /** The threat type posed by the list's entries. */
   threatType?: GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatTypeEnum;
 }
+const GoogleSecuritySafebrowsingV4ThreatListDescriptor = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatListDescriptor>;
+
 export type GoogleSecuritySafebrowsingV4ThreatListDescriptorList =
   Array<GoogleSecuritySafebrowsingV4ThreatListDescriptor>;
+const GoogleSecuritySafebrowsingV4ThreatListDescriptorList = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatListDescriptorList>;
+
 export interface GoogleSecuritySafebrowsingV4ListThreatListsResponse {
   /** The lists available for download by the client. */
   threatLists?: GoogleSecuritySafebrowsingV4ThreatListDescriptorList;
 }
+const GoogleSecuritySafebrowsingV4ListThreatListsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GoogleSecuritySafebrowsingV4ListThreatListsResponse>;
+
 export type CreateThreatHitsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Reports a Safe Browsing threat list hit to Google. Only projects with TRUSTED_REPORTER visibility can use this method. */
 export const createThreatHits: API.OperationMethod<
@@ -607,8 +879,8 @@ export const createThreatHits: API.OperationMethod<
   CreateThreatHitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateThreatHitsRequest>,
-  output: __S(7) as any as S.Schema<GoogleProtobufEmpty>,
+  input: CreateThreatHitsRequest,
+  output: GoogleProtobufEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -622,8 +894,8 @@ export const fetchThreatListUpdates: API.OperationMethod<
   FetchThreatListUpdatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<FetchThreatListUpdatesRequest>,
-  output: __S(23) as any as S.Schema<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse>,
+  input: FetchThreatListUpdatesRequest,
+  output: GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -637,8 +909,8 @@ export const findFullHashes: API.OperationMethod<
   FindFullHashesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<FindFullHashesRequest>,
-  output: __S(35) as any as S.Schema<GoogleSecuritySafebrowsingV4FindFullHashesResponse>,
+  input: FindFullHashesRequest,
+  output: GoogleSecuritySafebrowsingV4FindFullHashesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -652,8 +924,8 @@ export const findThreatMatches: API.OperationMethod<
   FindThreatMatchesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<FindThreatMatchesRequest>,
-  output: __S(38) as any as S.Schema<GoogleSecuritySafebrowsingV4FindThreatMatchesResponse>,
+  input: FindThreatMatchesRequest,
+  output: GoogleSecuritySafebrowsingV4FindThreatMatchesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -666,8 +938,8 @@ export const getEncodedFullHashes: API.OperationMethod<
   GetEncodedFullHashesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<GetEncodedFullHashesRequest>,
-  output: __S(35) as any as S.Schema<GoogleSecuritySafebrowsingV4FindFullHashesResponse>,
+  input: GetEncodedFullHashesRequest,
+  output: GoogleSecuritySafebrowsingV4FindFullHashesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -680,8 +952,8 @@ export const getEncodedUpdates: API.OperationMethod<
   GetEncodedUpdatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<GetEncodedUpdatesRequest>,
-  output: __S(23) as any as S.Schema<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse>,
+  input: GetEncodedUpdatesRequest,
+  output: GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -695,8 +967,8 @@ export const listThreatLists: API.OperationMethod<
   ListThreatListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<ListThreatListsRequest>,
-  output: __S(44) as any as S.Schema<GoogleSecuritySafebrowsingV4ListThreatListsResponse>,
+  input: ListThreatListsRequest,
+  output: GoogleSecuritySafebrowsingV4ListThreatListsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -730,13 +1002,13 @@ function __c0(j: number): any {
           remoteIp: S.optional(S.String),
           url: S.optional(S.String),
           referrer: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(GoogleSecuritySafebrowsingV4ThreatHitThreatSourceTypeEnum),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4ThreatHitThreatSource",
       });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(GoogleSecuritySafebrowsingV4ThreatHitThreatSource);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -749,12 +1021,12 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          clientInfo: S.optional(__S(0)),
-          entry: S.optional(__S(1)),
-          platformType: S.optional(S.String),
-          resources: S.optional(__S(3)),
-          userInfo: S.optional(__S(4)),
-          threatType: S.optional(S.String),
+          clientInfo: S.optional(GoogleSecuritySafebrowsingV4ClientInfo),
+          entry: S.optional(GoogleSecuritySafebrowsingV4ThreatEntry),
+          platformType: S.optional(GoogleSecuritySafebrowsingV4ThreatHitPlatformTypeEnum),
+          resources: S.optional(GoogleSecuritySafebrowsingV4ThreatHitThreatSourceList),
+          userInfo: S.optional(GoogleSecuritySafebrowsingV4ThreatHitUserInfo),
+          threatType: S.optional(GoogleSecuritySafebrowsingV4ThreatHitThreatTypeEnum),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4ThreatHit",
@@ -762,7 +1034,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(5).pipe(T.HttpBody())),
+          body: S.optional(GoogleSecuritySafebrowsingV4ThreatHit.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -780,7 +1052,9 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(
+        GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnum,
+      );
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -789,7 +1063,9 @@ function __c1(j: number): any {
           language: S.optional(S.String),
           deviceLocation: S.optional(S.String),
           maxDatabaseEntries: S.optional(S.Number),
-          supportedCompressions: S.optional(__S(8)),
+          supportedCompressions: S.optional(
+            GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnumList,
+          ),
         }),
       ).annotate({
         identifier:
@@ -798,22 +1074,32 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          threatType: S.optional(S.String),
-          platformType: S.optional(S.String),
-          threatEntryType: S.optional(S.String),
+          threatType: S.optional(
+            GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatTypeEnum,
+          ),
+          platformType: S.optional(
+            GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformTypeEnum,
+          ),
+          threatEntryType: S.optional(
+            GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryTypeEnum,
+          ),
           state: S.optional(S.String),
-          constraints: S.optional(__S(9)),
+          constraints: S.optional(
+            GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints,
+          ),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest",
       });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          client: S.optional(__S(0)),
-          listUpdateRequests: S.optional(__S(11)),
+          client: S.optional(GoogleSecuritySafebrowsingV4ClientInfo),
+          listUpdateRequests: S.optional(
+            GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestList,
+          ),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest",
@@ -821,7 +1107,9 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(12).pipe(T.HttpBody())),
+          body: S.optional(
+            GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest.pipe(T.HttpBody()),
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -861,7 +1149,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          indices: S.optional(__S(16)),
+          indices: S.optional(IntegerList),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4RawIndices",
@@ -869,17 +1157,19 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          compressionType: S.optional(S.String),
-          riceHashes: S.optional(__S(14)),
-          rawHashes: S.optional(__S(15)),
-          rawIndices: S.optional(__S(17)),
-          riceIndices: S.optional(__S(14)),
+          compressionType: S.optional(
+            GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionTypeEnum,
+          ),
+          riceHashes: S.optional(GoogleSecuritySafebrowsingV4RiceDeltaEncoding),
+          rawHashes: S.optional(GoogleSecuritySafebrowsingV4RawHashes),
+          rawIndices: S.optional(GoogleSecuritySafebrowsingV4RawIndices),
+          riceIndices: S.optional(GoogleSecuritySafebrowsingV4RiceDeltaEncoding),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4ThreatEntrySet",
       });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(GoogleSecuritySafebrowsingV4ThreatEntrySet);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -892,23 +1182,33 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           newClientState: S.optional(S.String),
-          removals: S.optional(__S(19)),
-          platformType: S.optional(S.String),
-          threatType: S.optional(S.String),
-          threatEntryType: S.optional(S.String),
-          checksum: S.optional(__S(20)),
-          responseType: S.optional(S.String),
-          additions: S.optional(__S(19)),
+          removals: S.optional(GoogleSecuritySafebrowsingV4ThreatEntrySetList),
+          platformType: S.optional(
+            GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformTypeEnum,
+          ),
+          threatType: S.optional(
+            GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatTypeEnum,
+          ),
+          threatEntryType: S.optional(
+            GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryTypeEnum,
+          ),
+          checksum: S.optional(GoogleSecuritySafebrowsingV4Checksum),
+          responseType: S.optional(
+            GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseTypeEnum,
+          ),
+          additions: S.optional(GoogleSecuritySafebrowsingV4ThreatEntrySetList),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse",
       });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          listUpdateResponses: S.optional(__S(22)),
+          listUpdateResponses: S.optional(
+            GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseList,
+          ),
           minimumWaitDuration: S.optional(S.String),
         }),
       ).annotate({
@@ -919,16 +1219,20 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1));
+      return S.Array(GoogleSecuritySafebrowsingV4ThreatEntry);
     case 1:
-      return S.Array(S.String);
+      return S.Array(GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnum);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          platformTypes: S.optional(__S(8)),
-          threatEntryTypes: S.optional(__S(8)),
-          threatEntries: S.optional(__S(24)),
-          threatTypes: S.optional(__S(25)),
+          platformTypes: S.optional(
+            GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnumList,
+          ),
+          threatEntryTypes: S.optional(
+            GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnumList,
+          ),
+          threatEntries: S.optional(GoogleSecuritySafebrowsingV4ThreatEntryList),
+          threatTypes: S.optional(GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnumList),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4ThreatInfo",
@@ -938,10 +1242,10 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          threatInfo: S.optional(__S(26)),
-          clientStates: S.optional(__S(27)),
-          apiClient: S.optional(__S(0)),
-          client: S.optional(__S(0)),
+          threatInfo: S.optional(GoogleSecuritySafebrowsingV4ThreatInfo),
+          clientStates: S.optional(StringList),
+          apiClient: S.optional(GoogleSecuritySafebrowsingV4ClientInfo),
+          client: S.optional(GoogleSecuritySafebrowsingV4ClientInfo),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4FindFullHashesRequest",
@@ -949,7 +1253,7 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(28).pipe(T.HttpBody())),
+          body: S.optional(GoogleSecuritySafebrowsingV4FindFullHashesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -968,7 +1272,7 @@ function __c3(j: number): any {
         identifier: "GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry",
       });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry);
   }
 }
 function __c4(j: number): any {
@@ -976,7 +1280,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(__S(31)),
+          entries: S.optional(GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntryList),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4ThreatEntryMetadata",
@@ -984,22 +1288,22 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          threatEntryType: S.optional(S.String),
-          platformType: S.optional(S.String),
-          threat: S.optional(__S(1)),
+          threatEntryType: S.optional(GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryTypeEnum),
+          platformType: S.optional(GoogleSecuritySafebrowsingV4ThreatMatchPlatformTypeEnum),
+          threat: S.optional(GoogleSecuritySafebrowsingV4ThreatEntry),
           cacheDuration: S.optional(S.String),
-          threatType: S.optional(S.String),
-          threatEntryMetadata: S.optional(__S(32)),
+          threatType: S.optional(GoogleSecuritySafebrowsingV4ThreatMatchThreatTypeEnum),
+          threatEntryMetadata: S.optional(GoogleSecuritySafebrowsingV4ThreatEntryMetadata),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4ThreatMatch",
       });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(GoogleSecuritySafebrowsingV4ThreatMatch);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          matches: S.optional(__S(34)),
+          matches: S.optional(GoogleSecuritySafebrowsingV4ThreatMatchList),
           negativeCacheDuration: S.optional(S.String),
           minimumWaitDuration: S.optional(S.String),
         }),
@@ -1009,8 +1313,8 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          threatInfo: S.optional(__S(26)),
-          client: S.optional(__S(0)),
+          threatInfo: S.optional(GoogleSecuritySafebrowsingV4ThreatInfo),
+          client: S.optional(GoogleSecuritySafebrowsingV4ClientInfo),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4FindThreatMatchesRequest",
@@ -1018,7 +1322,7 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(36).pipe(T.HttpBody())),
+          body: S.optional(GoogleSecuritySafebrowsingV4FindThreatMatchesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1030,7 +1334,7 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          matches: S.optional(__S(34)),
+          matches: S.optional(GoogleSecuritySafebrowsingV4ThreatMatchList),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4FindThreatMatchesResponse",
@@ -1082,43 +1386,26 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          threatEntryType: S.optional(S.String),
-          platformType: S.optional(S.String),
-          threatType: S.optional(S.String),
+          threatEntryType: S.optional(
+            GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryTypeEnum,
+          ),
+          platformType: S.optional(
+            GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformTypeEnum,
+          ),
+          threatType: S.optional(GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatTypeEnum),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4ThreatListDescriptor",
       });
     case 3:
-      return S.Array(__S(42));
+      return S.Array(GoogleSecuritySafebrowsingV4ThreatListDescriptor);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          threatLists: S.optional(__S(43)),
+          threatLists: S.optional(GoogleSecuritySafebrowsingV4ThreatListDescriptorList),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4ListThreatListsResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -50,8 +48,16 @@ export class NotFound
 
 /** IDs of saved audiences to exclude from delivery, prefixed `adaud_`. */
 export type AdGroupAudiencesBodyExcludeList = Array<string>;
+const AdGroupAudiencesBodyExcludeList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AdGroupAudiencesBodyExcludeList>;
+
 /** IDs of saved audiences to deliver to, prefixed `adaud_`. */
 export type AdGroupAudiencesBodyIncludeList = Array<string>;
+const AdGroupAudiencesBodyIncludeList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupAudiencesBodyIncludeList>;
+
 /** Saved audiences to deliver to or exclude. Can't be combined with demographics.automatic. */
 export interface AdGroupAudiencesBody {
   /** IDs of saved audiences to exclude from delivery, prefixed `adaud_`. */
@@ -59,10 +65,16 @@ export interface AdGroupAudiencesBody {
   /** IDs of saved audiences to deliver to, prefixed `adaud_`. */
   include?: AdGroupAudiencesBodyIncludeList;
 }
+const AdGroupAudiencesBody = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AdGroupAudiencesBody>;
+
 /** How delivery bids are set in the ad auction. Target-based strategies use `desired_cost_per_result`. */
 export type CreateAdGroupRequestBidType = "minimum_cost" | "average_target" | "maximum_target";
+const CreateAdGroupRequestBidType = S.String;
+
 /** Whether budget_amount is spent per day (`daily`) or over the ad group's full run (`lifetime`). */
 export type CreateAdGroupRequestBudgetType = "daily" | "lifetime";
+const CreateAdGroupRequestBudgetType = S.String;
+
 export type ConversionEventCase0 =
   | "purchase"
   | "add_to_cart"
@@ -82,6 +94,8 @@ export type ConversionEventCase0 =
   | "subscribe";
 /** The pixel event optimized for. A standard event, or any custom pixel event name. */
 export type ConversionEvent = ConversionEventCase0 | string;
+const ConversionEvent = S.Unknown as any as S.Schema<ConversionEvent>;
+
 /** Where the outcome being optimized for occurs, such as a website visit, social-profile visit, messaging conversation, ad interaction, or lead-form submission. The lead form itself is set on the ad. */
 export type CreateAdGroupRequestConversionLocation =
   | "website"
@@ -93,8 +107,12 @@ export type CreateAdGroupRequestConversionLocation =
   | "instant_forms"
   | "instant_forms_and_messenger"
   | "website_and_instant_forms";
+const CreateAdGroupRequestConversionLocation = S.String;
+
 /** Gender to target. */
 export type AdGroupDemographicsBodyGender = "all" | "male" | "female";
+const AdGroupDemographicsBodyGender = S.String;
+
 /** Age, gender, and automatic-audience targeting. */
 export interface AdGroupDemographicsBody {
   /** Turn on automatic audience targeting (Advantage+ on Meta): the platform can deliver beyond the ages, genders, and detailed targeting you set, treating them as suggestions. */
@@ -106,8 +124,15 @@ export interface AdGroupDemographicsBody {
   /** Youngest age to target. */
   minimum_age?: number;
 }
+const AdGroupDemographicsBody = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AdGroupDemographicsBody>;
+
 /** On ad platforms that scope behavior categories, what this one is measured on. Send back the value the targeting_options endpoint returned alongside the id. */
 export type AdGroupDetailedTargetingBodyBehaviorsItemBehaviorType = "video" | "creator" | "hashtag";
+const AdGroupDetailedTargetingBodyBehaviorsItemBehaviorType = S.String;
+
 export interface AdGroupDetailedTargetingBodyBehaviorsItem {
   /** On ad platforms that scope behavior categories, what this one is measured on. Send back the value the targeting_options endpoint returned alongside the id. */
   behavior_type?: AdGroupDetailedTargetingBodyBehaviorsItemBehaviorType | (string & {});
@@ -118,9 +143,19 @@ export interface AdGroupDetailedTargetingBodyBehaviorsItem {
   /** On ad platforms that scope behavior categories, how many days of activity the category covers. */
   period?: number;
 }
+const AdGroupDetailedTargetingBodyBehaviorsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AdGroupDetailedTargetingBodyBehaviorsItem>;
+
 /** Behavior categories to target, such as frequent travelers. */
 export type AdGroupDetailedTargetingBodyBehaviorsList =
   Array<AdGroupDetailedTargetingBodyBehaviorsItem>;
+const AdGroupDetailedTargetingBodyBehaviorsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AdGroupDetailedTargetingBodyBehaviorsList>;
+
 /** Kind of demographic the category belongs to. */
 export type AdGroupDetailedTargetingBodyDemographicsItemType =
   | "life_events"
@@ -131,6 +166,8 @@ export type AdGroupDetailedTargetingBodyDemographicsItemType =
   | "work_positions"
   | "education_schools"
   | "education_majors";
+const AdGroupDetailedTargetingBodyDemographicsItemType = S.String;
+
 export interface AdGroupDetailedTargetingBodyDemographicsItem {
   /** The ad platform's ID for the category in its targeting taxonomy. */
   id: string;
@@ -139,18 +176,38 @@ export interface AdGroupDetailedTargetingBodyDemographicsItem {
   /** Kind of demographic the category belongs to. */
   type: AdGroupDetailedTargetingBodyDemographicsItemType | (string & {});
 }
+const AdGroupDetailedTargetingBodyDemographicsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AdGroupDetailedTargetingBodyDemographicsItem>;
+
 /** Demographic categories to target, such as life events, industries, work employers, job titles, schools, or majors. */
 export type AdGroupDetailedTargetingBodyDemographicsList =
   Array<AdGroupDetailedTargetingBodyDemographicsItem>;
+const AdGroupDetailedTargetingBodyDemographicsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AdGroupDetailedTargetingBodyDemographicsList>;
+
 export interface AdGroupDetailedTargetingBodyInterestsItem {
   /** The ad platform's ID for the category in its targeting taxonomy. */
   id: string;
   /** Category name, such as `Movies`. */
   name?: string;
 }
+const AdGroupDetailedTargetingBodyInterestsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AdGroupDetailedTargetingBodyInterestsItem>;
+
 /** Interest categories to target, such as an interest in movies. */
 export type AdGroupDetailedTargetingBodyInterestsList =
   Array<AdGroupDetailedTargetingBodyInterestsItem>;
+const AdGroupDetailedTargetingBodyInterestsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AdGroupDetailedTargetingBodyInterestsList>;
+
 /** Interest, behavior, and demographic targeting, using categories from the ad platform's targeting taxonomy. Entries across interests, behaviors, and demographics are OR'd together (anyone matching any entry is reached), matching Ads Manager's detailed-targeting box. At most 100 entries per section. Can't be combined with demographics.automatic, and unavailable to campaigns with special_ad_categories. */
 export interface AdGroupDetailedTargetingBody {
   /** Behavior categories to target, such as frequent travelers. */
@@ -160,21 +217,45 @@ export interface AdGroupDetailedTargetingBody {
   /** Interest categories to target, such as an interest in movies. */
   interests?: AdGroupDetailedTargetingBodyInterestsList;
 }
+const AdGroupDetailedTargetingBody = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<AdGroupDetailedTargetingBody>;
+
 /** Operating system to target. */
 export type AdGroupDevicesBodyOperatingSystemsItemOs = "ios" | "android";
+const AdGroupDevicesBodyOperatingSystemsItemOs = S.String;
+
 export interface AdGroupDevicesBodyOperatingSystemsItem {
   /** Lowest OS version to target, such as `18.0`. Omit to target any version. */
   minimum_version?: string;
   /** Operating system to target. */
   os: AdGroupDevicesBodyOperatingSystemsItemOs | (string & {});
 }
+const AdGroupDevicesBodyOperatingSystemsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<AdGroupDevicesBodyOperatingSystemsItem>;
+
 /** Operating systems to target. Empty targets all operating systems. */
 export type AdGroupDevicesBodyOperatingSystemsList = Array<AdGroupDevicesBodyOperatingSystemsItem>;
+const AdGroupDevicesBodyOperatingSystemsList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<AdGroupDevicesBodyOperatingSystemsList>;
+
 export type AdGroupDevicesBodyPlatformsItem = "mobile" | "desktop";
+const AdGroupDevicesBodyPlatformsItem = S.String;
+
 /** Device types to target. Empty targets all devices. */
 export type AdGroupDevicesBodyPlatformsList = Array<
   AdGroupDevicesBodyPlatformsItem | (string & {})
 >;
+const AdGroupDevicesBodyPlatformsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<AdGroupDevicesBodyPlatformsList>;
+
 /** Device platforms and operating systems to target. */
 export interface AdGroupDevicesBody {
   /** Operating systems to target. Empty targets all operating systems. */
@@ -182,6 +263,8 @@ export interface AdGroupDevicesBody {
   /** Device types to target. Empty targets all devices. */
   platforms?: AdGroupDevicesBodyPlatformsList;
 }
+const AdGroupDevicesBody = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AdGroupDevicesBody>;
+
 /** Cap on how often one person sees ads from this ad group. Only available on campaigns with the `awareness` objective. */
 export interface CreateAdGroupRequestFrequencyCap {
   /** Most times one person can be shown ads from this ad group within the window. */
@@ -189,13 +272,24 @@ export interface CreateAdGroupRequestFrequencyCap {
   /** Length of the rolling window, in days. */
   per_days?: number;
 }
+const CreateAdGroupRequestFrequencyCap = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateAdGroupRequestFrequencyCap>;
+
 /** Languages to target, as ISO 639 codes such as `en` or `es`. Empty or omitted targets all languages. */
 export type CreateAdGroupRequestLanguagesList = Array<string>;
+const CreateAdGroupRequestLanguagesList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<CreateAdGroupRequestLanguagesList>;
+
 export type CreateAdGroupRequestMessageAppsItem = "messenger" | "instagram" | "whatsapp";
 /** Apps the conversation opens in. Required when setting `conversion_location` to `messaging`, and rejected unless the ad group's conversion location is `messaging`. */
 export type CreateAdGroupRequestMessageAppsList = Array<
   CreateAdGroupRequestMessageAppsItem | (string & {})
 >;
+const CreateAdGroupRequestMessageAppsList =
+  AdGroupDevicesBodyPlatformsList as any as S.Schema<CreateAdGroupRequestMessageAppsList>;
+
 /** The result the ad group's delivery is optimized to get the most of. */
 export type CreateAdGroupRequestOptimizationGoal =
   | "conversions"
@@ -216,6 +310,8 @@ export type CreateAdGroupRequestOptimizationGoal =
   | "quality_lead"
   | "value"
   | "profile_and_page_engagement";
+const CreateAdGroupRequestOptimizationGoal = S.String;
+
 export type CreateAdGroupRequestPlacementsCase0 = "automatic";
 /** Platform the ads run on. */
 export type CreateAdGroupRequestPlacementsCase1ItemPlatform =
@@ -239,20 +335,40 @@ export type CreateAdGroupRequestPlacementsCase1List =
 export type CreateAdGroupRequestPlacements =
   | CreateAdGroupRequestPlacementsCase0
   | CreateAdGroupRequestPlacementsCase1List;
+const CreateAdGroupRequestPlacements = S.Unknown as any as S.Schema<CreateAdGroupRequestPlacements>;
+
 export interface AdGroupGeoLocationsBodyCitiesItem {
   /** The ad platform's key for the city in its location taxonomy. */
   key: string;
   /** City name, such as `Austin`. */
   name?: string;
 }
+const AdGroupGeoLocationsBodyCitiesItem = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<AdGroupGeoLocationsBodyCitiesItem>;
+
 /** Cities, keyed by the ad platform's location taxonomy. */
 export type AdGroupGeoLocationsBodyCitiesList = Array<AdGroupGeoLocationsBodyCitiesItem>;
+const AdGroupGeoLocationsBodyCitiesList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<AdGroupGeoLocationsBodyCitiesList>;
+
 /** Countries, as ISO 3166-1 alpha-2 codes such as `US`. */
 export type AdGroupGeoLocationsBodyCountriesList = Array<string>;
+const AdGroupGeoLocationsBodyCountriesList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupGeoLocationsBodyCountriesList>;
+
 /** Multi-country groups such as `worldwide` or `europe`. Include-only -- groups can't be excluded. */
 export type AdGroupGeoLocationsBodyCountryGroupsList = Array<string>;
+const AdGroupGeoLocationsBodyCountryGroupsList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupGeoLocationsBodyCountryGroupsList>;
+
 /** Unit for `radius`. Defaults to `mile`. */
 export type AdGroupGeoLocationsBodyCustomLocationsItemDistanceUnit = "mile" | "kilometer";
+const AdGroupGeoLocationsBodyCustomLocationsItemDistanceUnit = S.String;
+
 export interface AdGroupGeoLocationsBodyCustomLocationsItem {
   /** ISO 3166-1 alpha-2 country the point falls in, as `DE`. Send it under a special ad category: the campaign must declare the countries its ad sets reach, and a coordinate names none. */
   country_code?: string;
@@ -267,18 +383,39 @@ export interface AdGroupGeoLocationsBodyCustomLocationsItem {
   /** Radius around the center point: 1-50 miles or 1-80 kilometers. */
   radius: number;
 }
+const AdGroupGeoLocationsBodyCustomLocationsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<AdGroupGeoLocationsBodyCustomLocationsItem>;
+
 /** Circular areas, each a coordinate plus a radius. At most 200 across include and exclude. */
 export type AdGroupGeoLocationsBodyCustomLocationsList =
   Array<AdGroupGeoLocationsBodyCustomLocationsItem>;
+const AdGroupGeoLocationsBodyCustomLocationsList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<AdGroupGeoLocationsBodyCustomLocationsList>;
+
 /** US states and DC, as ISO 3166-2 codes such as `US-CA`. US territories (`PR`, `GU`, `VI`, `AS`, `MP`) and everywhere outside the US are targeted through `countries`. */
 export type AdGroupGeoLocationsBodyRegionsList = Array<string>;
+const AdGroupGeoLocationsBodyRegionsList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupGeoLocationsBodyRegionsList>;
+
 export interface AdGroupGeoLocationsBodyZipsItemCase1 {
   /** The ad platform's key for the ZIP or postal code. */
   key: string;
 }
 export type AdGroupGeoLocationsBodyZipsItem = string | AdGroupGeoLocationsBodyZipsItemCase1;
+const AdGroupGeoLocationsBodyZipsItem =
+  S.Unknown as any as S.Schema<AdGroupGeoLocationsBodyZipsItem>;
+
 /** ZIP and postal codes, keyed by the ad platform's location taxonomy. Meta keys these `COUNTRY:CODE`, as `US:78756` -- a bare code is ambiguous, because the same one exists in several countries. TikTok takes the bare code. */
 export type AdGroupGeoLocationsBodyZipsList = Array<AdGroupGeoLocationsBodyZipsItem>;
+const AdGroupGeoLocationsBodyZipsList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<AdGroupGeoLocationsBodyZipsList>;
+
 export interface AdGroupGeoLocationsBody {
   /** Cities, keyed by the ad platform's location taxonomy. */
   cities?: AdGroupGeoLocationsBodyCitiesList;
@@ -293,6 +430,11 @@ export interface AdGroupGeoLocationsBody {
   /** ZIP and postal codes, keyed by the ad platform's location taxonomy. Meta keys these `COUNTRY:CODE`, as `US:78756` -- a bare code is ambiguous, because the same one exists in several countries. TikTok takes the bare code. */
   zips?: AdGroupGeoLocationsBodyZipsList;
 }
+const AdGroupGeoLocationsBody = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<AdGroupGeoLocationsBody>;
+
 /** Locations to target and exclude. */
 export interface AdGroupRegionsBody {
   /** Locations excluded from targeting. Country groups can't be excluded. */
@@ -300,8 +442,12 @@ export interface AdGroupRegionsBody {
   /** Locations the ad group targets. */
   include?: AdGroupGeoLocationsBody;
 }
+const AdGroupRegionsBody = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<AdGroupRegionsBody>;
+
 /** Initial status (default: `active`). */
 export type CreateAdGroupRequestStatus = "active" | "paused";
+const CreateAdGroupRequestStatus = S.String;
+
 export interface CreateAdGroupRequest {
   /** The ad campaign to create the ad group in, prefixed `adcamp_`. */
   ad_campaign_id: string;
@@ -353,20 +499,36 @@ export interface CreateAdGroupRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const CreateAdGroupRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CreateAdGroupRequest>;
+
 export interface AdEntityReference {
   /** The referenced entity's id. */
   id: string;
 }
+const AdEntityReference = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<AdEntityReference>;
+
 export type AdGroupAudiencesExcludeList = Array<string>;
+const AdGroupAudiencesExcludeList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupAudiencesExcludeList>;
+
 export type AdGroupAudiencesIncludeList = Array<string>;
+const AdGroupAudiencesIncludeList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupAudiencesIncludeList>;
+
 export interface AdGroupAudiences {
   exclude: AdGroupAudiencesExcludeList;
   include: AdGroupAudiencesIncludeList;
 }
+const AdGroupAudiences = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<AdGroupAudiences>;
+
 /** How delivery bids are set in the ad auction. Target-based strategies use `desired_cost_per_result`. */
 export type AdGroupBidType = "minimum_cost" | "average_target" | "maximum_target";
+const AdGroupBidType = S.String;
+
 /** Whether `budget_amount` is spent per day (`daily`) or over the ad group's full run (`lifetime`). A `lifetime` ad group also needs `ends_at`, at least 24 hours after it starts. */
 export type AdGroupBudgetType = "daily" | "lifetime";
+const AdGroupBudgetType = S.String;
+
 /** Where the outcome being optimized for occurs, such as a website visit, social-profile visit, messaging conversation, ad interaction, or lead-form submission. */
 export type AdGroupConversionLocation =
   | "website"
@@ -378,6 +540,8 @@ export type AdGroupConversionLocation =
   | "instant_forms"
   | "instant_forms_and_messenger"
   | "website_and_instant_forms";
+const AdGroupConversionLocation = S.String;
+
 /** Whether ads in this ad group are delivering right now, and if not, why. When several states apply at once, the highest-precedence one is returned. */
 export type AdGroupDeliveryStatus =
   | "in_appeal"
@@ -395,8 +559,12 @@ export type AdGroupDeliveryStatus =
   | "learning_limited"
   | "learning"
   | "active";
+const AdGroupDeliveryStatus = S.String;
+
 /** Gender targeted. */
 export type AdGroupDemographicsGender = "all" | "male" | "female";
+const AdGroupDemographicsGender = S.String;
+
 export interface AdGroupDemographics {
   /** Whether automatic audience targeting is on (Advantage+ on Meta). When `true`, the platform can deliver beyond the ages, genders, and detailed targeting you set, treating them as suggestions. */
   automatic: boolean;
@@ -407,8 +575,12 @@ export interface AdGroupDemographics {
   /** Youngest age targeted. `null` when no minimum is set. */
   minimum_age: number | null;
 }
+const AdGroupDemographics = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<AdGroupDemographics>;
+
 /** On ad platforms that scope behavior categories, what this one is measured on. Send back the value the targeting_options endpoint returned alongside the id. Absent on platforms that don't scope them. */
 export type AdGroupBehaviorCategoryBehaviorType = "video" | "creator" | "hashtag";
+const AdGroupBehaviorCategoryBehaviorType = S.String;
+
 export interface AdGroupBehaviorCategory {
   /** On ad platforms that scope behavior categories, what this one is measured on. Send back the value the targeting_options endpoint returned alongside the id. Absent on platforms that don't scope them. */
   behavior_type?: AdGroupBehaviorCategoryBehaviorType;
@@ -419,7 +591,17 @@ export interface AdGroupBehaviorCategory {
   /** On ad platforms that scope behavior categories, how many days of activity the category covers. Absent on platforms that don't scope them. */
   period?: number;
 }
+const AdGroupBehaviorCategory = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<AdGroupBehaviorCategory>;
+
 export type AdGroupDetailedTargetingBehaviorsList = Array<AdGroupBehaviorCategory>;
+const AdGroupDetailedTargetingBehaviorsList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<AdGroupDetailedTargetingBehaviorsList>;
+
 /** Kind of demographic the category belongs to. */
 export type AdGroupDemographicCategoryType =
   | "life_events"
@@ -439,38 +621,70 @@ export interface AdGroupDemographicCategory {
   type: AdGroupDemographicCategoryType;
 }
 export type AdGroupDetailedTargetingDemographicsList = Array<AdGroupDemographicCategory>;
+const AdGroupDetailedTargetingDemographicsList =
+  AdGroupDetailedTargetingBodyDemographicsList as any as S.Schema<AdGroupDetailedTargetingDemographicsList>;
+
 export type AdGroupTargetingCategory = AdGroupDetailedTargetingBodyInterestsItem;
 export type AdGroupDetailedTargetingInterestsList =
   Array<AdGroupDetailedTargetingBodyInterestsItem>;
+const AdGroupDetailedTargetingInterestsList =
+  AdGroupDetailedTargetingBodyInterestsList as any as S.Schema<AdGroupDetailedTargetingInterestsList>;
+
 export interface AdGroupDetailedTargeting {
   behaviors: AdGroupDetailedTargetingBehaviorsList;
   demographics: AdGroupDetailedTargetingDemographicsList;
   interests: AdGroupDetailedTargetingInterestsList;
 }
+const AdGroupDetailedTargeting = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<AdGroupDetailedTargeting>;
+
 /** Operating system targeted. */
 export type AdGroupOperatingSystemOs = "ios" | "android";
+const AdGroupOperatingSystemOs = S.String;
+
 export interface AdGroupOperatingSystem {
   /** Lowest OS version targeted, such as `18.0`. Absent when any version qualifies. */
   minimum_version?: string;
   /** Operating system targeted. */
   os: AdGroupOperatingSystemOs;
 }
+const AdGroupOperatingSystem = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<AdGroupOperatingSystem>;
+
 export type AdGroupDevicesOperatingSystemsList = Array<AdGroupOperatingSystem>;
+const AdGroupDevicesOperatingSystemsList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<AdGroupDevicesOperatingSystemsList>;
+
 /** Device types targeted. Empty targets all devices. */
 export type AdGroupDevicesPlatformsItem = "mobile" | "desktop";
 export type AdGroupDevicesPlatformsList = Array<AdGroupDevicesPlatformsItem>;
+const AdGroupDevicesPlatformsList =
+  AdGroupDevicesBodyPlatformsList as any as S.Schema<AdGroupDevicesPlatformsList>;
+
 export interface AdGroupDevices {
   operating_systems: AdGroupDevicesOperatingSystemsList;
   platforms: AdGroupDevicesPlatformsList;
 }
+const AdGroupDevices = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<AdGroupDevices>;
+
 export interface AdGroupFrequencyCap {
   /** Most times one person can be shown ads from this ad group within the window. */
   maximum_impressions: number;
   /** Length of the rolling window, in days. */
   per_days: number | null;
 }
+const AdGroupFrequencyCap = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<AdGroupFrequencyCap>;
+
 /** The type of resource the issue is attached to. */
 export type AdPlatformIssueResourceType = "ad_campaign" | "ad_group" | "ad";
+const AdPlatformIssueResourceType = S.String;
+
 export interface AdPlatformIssue {
   /** Unique identifier for the issue. */
   id: string;
@@ -481,11 +695,21 @@ export interface AdPlatformIssue {
   /** The type of resource the issue is attached to. */
   resource_type: AdPlatformIssueResourceType;
 }
+const AdPlatformIssue = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<AdPlatformIssue>;
+
 export type AdGroupIssuesList = Array<AdPlatformIssue>;
+const AdGroupIssuesList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<AdGroupIssuesList>;
+
 export type AdGroupLanguagesList = Array<string>;
+const AdGroupLanguagesList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupLanguagesList>;
+
 /** Apps the conversation opens in when `conversion_location` is `messaging`. Empty for other conversion locations. */
 export type AdGroupMessageAppsItem = "messenger" | "instagram" | "whatsapp";
 export type AdGroupMessageAppsList = Array<AdGroupMessageAppsItem>;
+const AdGroupMessageAppsList =
+  AdGroupDevicesBodyPlatformsList as any as S.Schema<AdGroupMessageAppsList>;
+
 /** The result the ad group's delivery is optimized to get the most of. */
 export type AdGroupOptimizationGoal =
   | "conversions"
@@ -506,6 +730,8 @@ export type AdGroupOptimizationGoal =
   | "quality_lead"
   | "value"
   | "profile_and_page_engagement";
+const AdGroupOptimizationGoal = S.String;
+
 /** Publisher platform where the ad is eligible to appear. */
 export type AdGroupPlacementPlatform =
   | "facebook"
@@ -514,26 +740,55 @@ export type AdGroupPlacementPlatform =
   | "audience_network"
   | "threads"
   | "whatsapp";
+const AdGroupPlacementPlatform = S.String;
+
 export type AdGroupPlacementPositionsList = Array<string>;
+const AdGroupPlacementPositionsList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupPlacementPositionsList>;
+
 export interface AdGroupPlacement {
   /** Publisher platform where the ad is eligible to appear. */
   platform: AdGroupPlacementPlatform;
   positions: AdGroupPlacementPositionsList;
 }
+const AdGroupPlacement = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<AdGroupPlacement>;
+
 export type AdGroupPlacementsList = Array<AdGroupPlacement>;
+const AdGroupPlacementsList = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<AdGroupPlacementsList>;
+
 /** The ad platform this ad group runs on. */
 export type AdGroupPlatform = "meta" | "tiktok" | "google";
+const AdGroupPlatform = S.String;
+
 export interface AdGroupCity {
   /** The ad platform's key for the city in its location taxonomy. */
   key: string;
   /** City name, such as `Austin`. Absent when the platform doesn't return one. */
   name?: string;
 }
+const AdGroupCity = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<AdGroupCity>;
+
 export type AdGroupGeoLocationsCitiesList = Array<AdGroupCity>;
+const AdGroupGeoLocationsCitiesList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<AdGroupGeoLocationsCitiesList>;
+
 export type AdGroupGeoLocationsCountriesList = Array<string>;
+const AdGroupGeoLocationsCountriesList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupGeoLocationsCountriesList>;
+
 export type AdGroupGeoLocationsCountryGroupsList = Array<string>;
+const AdGroupGeoLocationsCountryGroupsList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupGeoLocationsCountryGroupsList>;
+
 /** Unit for `radius`. */
 export type AdGroupCustomLocationDistanceUnit = "mile" | "kilometer";
+const AdGroupCustomLocationDistanceUnit = S.String;
+
 export interface AdGroupCustomLocation {
   /** ISO 3166-1 alpha-2 country the point falls in. Send it under a special ad category, where the campaign must declare the countries its ad sets reach. */
   country_code?: string;
@@ -548,9 +803,25 @@ export interface AdGroupCustomLocation {
   /** Radius around the center point, in `distance_unit`. */
   radius: number;
 }
+const AdGroupCustomLocation = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<AdGroupCustomLocation>;
+
 export type AdGroupGeoLocationsCustomLocationsList = Array<AdGroupCustomLocation>;
+const AdGroupGeoLocationsCustomLocationsList = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<AdGroupGeoLocationsCustomLocationsList>;
+
 export type AdGroupGeoLocationsRegionsList = Array<string>;
+const AdGroupGeoLocationsRegionsList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupGeoLocationsRegionsList>;
+
 export type AdGroupGeoLocationsZipsList = Array<string>;
+const AdGroupGeoLocationsZipsList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<AdGroupGeoLocationsZipsList>;
+
 export interface AdGroupGeoLocations {
   cities: AdGroupGeoLocationsCitiesList;
   countries: AdGroupGeoLocationsCountriesList;
@@ -559,12 +830,16 @@ export interface AdGroupGeoLocations {
   regions: AdGroupGeoLocationsRegionsList;
   zips: AdGroupGeoLocationsZipsList;
 }
+const AdGroupGeoLocations = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<AdGroupGeoLocations>;
+
 export interface AdGroupRegions {
   /** Locations excluded from targeting. Country groups can't be excluded. */
   exclude: AdGroupGeoLocations;
   /** Locations the ad group targets. */
   include: AdGroupGeoLocations;
 }
+const AdGroupRegions = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<AdGroupRegions>;
+
 /** The Whop pixel conversion event whose attributed count represents results -- the optimization goal, or the highest-volume attributed event for campaigns that budget per ad group. Null when the goal isn't a Whop-attributed event. */
 export type AdGroupResultEvent =
   | "purchase"
@@ -577,8 +852,12 @@ export type AdGroupResultEvent =
   | "add_to_cart"
   | "custom"
   | "messaging_conversation";
+const AdGroupResultEvent = S.String;
+
 /** Whether the ad group is enabled. `active` and `paused` are set by you; `rejected` means it failed ad review; `duplicating` is a copy still being filled in. */
 export type AdGroupStatus = "active" | "paused" | "rejected" | "duplicating";
+const AdGroupStatus = S.String;
+
 export interface AdGroup {
   /** The ad campaign this ad group belongs to. */
   ad_campaign: AdEntityReference;
@@ -728,16 +1007,25 @@ export interface AdGroup {
   /** Whop pixel-attributed view-content events, last-click. */
   viewed_contents: number;
 }
+const AdGroup = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<AdGroup>;
+
 export interface DeleteAdGroupRequest {
   /** The ad group ID. */
   id: string;
 }
+const DeleteAdGroupRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<DeleteAdGroupRequest>;
+
 export interface DeleteAdGroupResponse {
   /** Always true. */
   deleted: boolean;
   /** ID of the deleted ad group. */
   id: string;
 }
+const DeleteAdGroupResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DeleteAdGroupResponse>;
+
 export interface DuplicateAdGroupRequest {
   /** The ad group ID. */
   id: string;
@@ -750,14 +1038,34 @@ export interface DuplicateAdGroupRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const DuplicateAdGroupRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DuplicateAdGroupRequest>;
+
 export type DuplicateAdGroupResponseDataList = Array<AdGroup>;
+const DuplicateAdGroupResponseDataList = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DuplicateAdGroupResponseDataList>;
+
 export interface DuplicateAdGroupResponse {
   data: DuplicateAdGroupResponseDataList;
 }
+const DuplicateAdGroupResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DuplicateAdGroupResponse>;
+
 /** Languages to target, as ISO 639 codes such as `en` or `es`. Empty or omitted targets all languages. */
 export type EstimateAdGroupReachRequestLanguagesList = Array<string>;
+const EstimateAdGroupReachRequestLanguagesList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<EstimateAdGroupReachRequestLanguagesList>;
+
 /** The ad network the estimate runs on. */
 export type EstimateAdGroupReachRequestPlatform = "meta";
+const EstimateAdGroupReachRequestPlatform = S.String;
+
 export interface EstimateAdGroupReachRequest {
   /** Account to estimate on behalf of. Defaults to the authenticated account. */
   account_id?: string;
@@ -778,13 +1086,22 @@ export interface EstimateAdGroupReachRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const EstimateAdGroupReachRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<EstimateAdGroupReachRequest>;
+
 export interface ReachEstimate {
   /** Low end of how many people the targeting can reach. Null when the platform couldn't produce an estimate. */
   users_lower_bound: number | null;
   /** High end of how many people the targeting can reach. Null when the platform couldn't produce an estimate. */
   users_upper_bound: number | null;
 }
+const ReachEstimate = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ReachEstimate>;
+
 export type GetAdGroupRequestAttributionModel = "last_touch" | "first_touch";
+const GetAdGroupRequestAttributionModel = S.String;
+
 export interface GetAdGroupRequest {
   /** The ad group ID. */
   id: string;
@@ -797,8 +1114,15 @@ export interface GetAdGroupRequest {
   /** Attribution model the conversion stats count under (defaults to last_touch). Under both models a journey with any whop ad touch attributes to whop; the model picks which whop touch credits the entity and which non-whop source wins otherwise. */
   attribution_model?: GetAdGroupRequestAttributionModel | (string & {});
 }
+const GetAdGroupRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<GetAdGroupRequest>;
+
 export type ListAdGroupsRequestAdCampaignIdsList = Array<string>;
+const ListAdGroupsRequestAdCampaignIdsList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<ListAdGroupsRequestAdCampaignIdsList>;
+
 export type ListAdGroupsRequestStatus = "active" | "paused" | "rejected" | "duplicating";
+const ListAdGroupsRequestStatus = S.String;
+
 export type ListAdGroupsRequestOrder =
   | "created_at"
   | "updated_at"
@@ -815,8 +1139,14 @@ export type ListAdGroupsRequestOrder =
   | "cost_per_click"
   | "cost_per_result"
   | "return_on_ad_spend";
+const ListAdGroupsRequestOrder = S.String;
+
 export type ListAdGroupsRequestDirection = "asc" | "desc";
+const ListAdGroupsRequestDirection = S.String;
+
 export type ListAdGroupsRequestAttributionModel = "last_touch" | "first_touch";
+const ListAdGroupsRequestAttributionModel = S.String;
+
 export interface ListAdGroupsRequest {
   /** Account whose ad groups to list. Defaults to the authenticated account. */
   account_id?: string;
@@ -853,24 +1183,40 @@ export interface ListAdGroupsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
+const ListAdGroupsRequest = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ListAdGroupsRequest>;
+
 export type ListAdGroupsResponseDataList = Array<AdGroup>;
+const ListAdGroupsResponseDataList =
+  DuplicateAdGroupResponseDataList as any as S.Schema<ListAdGroupsResponseDataList>;
+
 export interface ListAdGroupsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
+const ListAdGroupsResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ListAdGroupsResponsePageInfo>;
+
 export interface ListAdGroupsResponse {
   data: ListAdGroupsResponseDataList;
   page_info: ListAdGroupsResponsePageInfo;
 }
+const ListAdGroupsResponse = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ListAdGroupsResponse>;
+
 export interface PauseAdGroupRequest {
   /** The ad group ID. */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const PauseAdGroupRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<PauseAdGroupRequest>;
+
 export type SearchAdGroupTargetingOptionsRequestPlatform = "meta";
+const SearchAdGroupTargetingOptionsRequestPlatform = S.String;
+
 export type SearchAdGroupTargetingOptionsRequestTypesItem =
   | "interests"
   | "behaviors"
@@ -887,6 +1233,9 @@ export type SearchAdGroupTargetingOptionsRequestTypesItem =
 export type SearchAdGroupTargetingOptionsRequestTypesList = Array<
   SearchAdGroupTargetingOptionsRequestTypesItem | (string & {})
 >;
+const SearchAdGroupTargetingOptionsRequestTypesList =
+  AdGroupDevicesBodyPlatformsList as any as S.Schema<SearchAdGroupTargetingOptionsRequestTypesList>;
+
 export type SearchAdGroupTargetingOptionsRequestLocationTypesItem =
   | "country"
   | "region"
@@ -898,6 +1247,9 @@ export type SearchAdGroupTargetingOptionsRequestLocationTypesItem =
 export type SearchAdGroupTargetingOptionsRequestLocationTypesList = Array<
   SearchAdGroupTargetingOptionsRequestLocationTypesItem | (string & {})
 >;
+const SearchAdGroupTargetingOptionsRequestLocationTypesList =
+  AdGroupDevicesBodyPlatformsList as any as S.Schema<SearchAdGroupTargetingOptionsRequestLocationTypesList>;
+
 export type SearchAdGroupTargetingOptionsRequestSpecialAdCategoriesItem =
   | "housing"
   | "employment"
@@ -906,6 +1258,9 @@ export type SearchAdGroupTargetingOptionsRequestSpecialAdCategoriesItem =
 export type SearchAdGroupTargetingOptionsRequestSpecialAdCategoriesList = Array<
   SearchAdGroupTargetingOptionsRequestSpecialAdCategoriesItem | (string & {})
 >;
+const SearchAdGroupTargetingOptionsRequestSpecialAdCategoriesList =
+  AdGroupDevicesBodyPlatformsList as any as S.Schema<SearchAdGroupTargetingOptionsRequestSpecialAdCategoriesList>;
+
 export interface SearchAdGroupTargetingOptionsRequest {
   /** Account to search on behalf of. Defaults to the authenticated account. */
   account_id?: string;
@@ -924,6 +1279,11 @@ export interface SearchAdGroupTargetingOptionsRequest {
   /** The campaign's declared special ad categories. Under `housing`, `employment`, or `financial_products` the ad platform allows interests only, drawn from a short approved list, so results are narrowed to what such a campaign can launch with and other kinds return nothing. Blank `query` browses that approved list instead of the usual fixed lists. */
   special_ad_categories?: SearchAdGroupTargetingOptionsRequestSpecialAdCategoriesList;
 }
+const SearchAdGroupTargetingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<SearchAdGroupTargetingOptionsRequest>;
+
 /** What a behavior category is measured on, on ad platforms that scope them. Send it back on the `detailed_targeting.behaviors` entry alongside the id. Null for options that aren't scoped. */
 export type DetailedTargetingOptionBehaviorType = "video" | "creator" | "hashtag";
 /** Which detailed-targeting field the option belongs in: `interests` and `behaviors` go in the matching `detailed_targeting` field; demographic categories (`life_events`, `industries`, `income`, `family_statuses`, `work_employers`, `work_positions`, `education_schools`, `education_majors`) go in `detailed_targeting.demographics` with this value as the entry's `type`. */
@@ -1000,20 +1360,41 @@ export type TargetingOption =
   | DetailedTargetingOption
   | LanguageTargetingOption
   | LocationTargetingOption;
+const TargetingOption = S.Unknown as any as S.Schema<TargetingOption>;
+
 export type SearchAdGroupTargetingOptionsResponseDataList = Array<TargetingOption>;
+const SearchAdGroupTargetingOptionsResponseDataList = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<SearchAdGroupTargetingOptionsResponseDataList>;
+
 export interface SearchAdGroupTargetingOptionsResponse {
   data: SearchAdGroupTargetingOptionsResponseDataList;
 }
+const SearchAdGroupTargetingOptionsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<SearchAdGroupTargetingOptionsResponse>;
+
 export interface UnpauseAdGroupRequest {
   /** The ad group ID. */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const UnpauseAdGroupRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<UnpauseAdGroupRequest>;
+
 /** How delivery bids are set in the ad auction. Target-based strategies use `desired_cost_per_result`. */
 export type UpdateAdGroupRequestBidType = "minimum_cost" | "average_target" | "maximum_target";
+const UpdateAdGroupRequestBidType = S.String;
+
 /** Whether budget_amount is spent per day (`daily`) or over the ad group's full run (`lifetime`). */
 export type UpdateAdGroupRequestBudgetType = "daily" | "lifetime";
+const UpdateAdGroupRequestBudgetType = S.String;
+
 /** Where the outcome being optimized for occurs, such as a website visit, social-profile visit, messaging conversation, ad interaction, or lead-form submission. The lead form itself is set on the ad. */
 export type UpdateAdGroupRequestConversionLocation =
   | "website"
@@ -1025,15 +1406,23 @@ export type UpdateAdGroupRequestConversionLocation =
   | "instant_forms"
   | "instant_forms_and_messenger"
   | "website_and_instant_forms";
+const UpdateAdGroupRequestConversionLocation = S.String;
+
 /** Cap on how often one person sees ads from this ad group. Only available on campaigns with the `awareness` objective. */
 export type UpdateAdGroupRequestFrequencyCap = CreateAdGroupRequestFrequencyCap;
 /** Languages to target, as ISO 639 codes such as `en` or `es`. Empty or omitted targets all languages. */
 export type UpdateAdGroupRequestLanguagesList = Array<string>;
+const UpdateAdGroupRequestLanguagesList =
+  AdGroupAudiencesBodyExcludeList as any as S.Schema<UpdateAdGroupRequestLanguagesList>;
+
 export type UpdateAdGroupRequestMessageAppsItem = "messenger" | "instagram" | "whatsapp";
 /** Apps the conversation opens in. Required when setting `conversion_location` to `messaging`, and rejected unless the ad group's conversion location is `messaging`. */
 export type UpdateAdGroupRequestMessageAppsList = Array<
   UpdateAdGroupRequestMessageAppsItem | (string & {})
 >;
+const UpdateAdGroupRequestMessageAppsList =
+  AdGroupDevicesBodyPlatformsList as any as S.Schema<UpdateAdGroupRequestMessageAppsList>;
+
 /** The result the ad group's delivery is optimized to get the most of. */
 export type UpdateAdGroupRequestOptimizationGoal =
   | "conversions"
@@ -1054,6 +1443,8 @@ export type UpdateAdGroupRequestOptimizationGoal =
   | "quality_lead"
   | "value"
   | "profile_and_page_engagement";
+const UpdateAdGroupRequestOptimizationGoal = S.String;
+
 export type UpdateAdGroupRequestPlacementsCase0 = "automatic";
 /** Platform the ads run on. */
 export type UpdateAdGroupRequestPlacementsCase1ItemPlatform =
@@ -1077,8 +1468,12 @@ export type UpdateAdGroupRequestPlacementsCase1List =
 export type UpdateAdGroupRequestPlacements =
   | UpdateAdGroupRequestPlacementsCase0
   | UpdateAdGroupRequestPlacementsCase1List;
+const UpdateAdGroupRequestPlacements = S.Unknown as any as S.Schema<UpdateAdGroupRequestPlacements>;
+
 /** Initial status (default: `active`). */
 export type UpdateAdGroupRequestStatus = "active" | "paused";
+const UpdateAdGroupRequestStatus = S.String;
+
 export interface UpdateAdGroupRequest {
   /** The ad group ID. */
   id: string;
@@ -1126,6 +1521,8 @@ export interface UpdateAdGroupRequest {
   /** The display name of the ad group. */
   title?: string;
 }
+const UpdateAdGroupRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<UpdateAdGroupRequest>;
+
 export type CreateAdGroupError = NotFound | Conflict | WhopOpError;
 /** Create an Ad Group Creates an ad group (ad set) in a campaign. */
 export const createAdGroup: API.OperationMethod<
@@ -1134,8 +1531,8 @@ export const createAdGroup: API.OperationMethod<
   CreateAdGroupError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<CreateAdGroupRequest>,
-  output: __S(43) as any as S.Schema<AdGroup>,
+  input: CreateAdGroupRequest,
+  output: AdGroup,
   errors: [NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1149,8 +1546,8 @@ export const deleteAdGroup: API.OperationMethod<
   DeleteAdGroupError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<DeleteAdGroupRequest>,
-  output: __S(45) as any as S.Schema<DeleteAdGroupResponse>,
+  input: DeleteAdGroupRequest,
+  output: DeleteAdGroupResponse,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1164,8 +1561,8 @@ export const duplicateAdGroup: API.OperationMethod<
   DuplicateAdGroupError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<DuplicateAdGroupRequest>,
-  output: __S(48) as any as S.Schema<DuplicateAdGroupResponse>,
+  input: DuplicateAdGroupRequest,
+  output: DuplicateAdGroupResponse,
   errors: [BadRequest, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1179,8 +1576,8 @@ export const estimateAdGroupReach: API.OperationMethod<
   EstimateAdGroupReachError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<EstimateAdGroupReachRequest>,
-  output: __S(50) as any as S.Schema<ReachEstimate>,
+  input: EstimateAdGroupReachRequest,
+  output: ReachEstimate,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1194,8 +1591,8 @@ export const getAdGroup: API.OperationMethod<
   GetAdGroupError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<GetAdGroupRequest>,
-  output: __S(43) as any as S.Schema<AdGroup>,
+  input: GetAdGroupRequest,
+  output: AdGroup,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1211,8 +1608,8 @@ export const listAdGroups: API.PaginatedOperationMethod<
   AdGroup
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(52) as any as S.Schema<ListAdGroupsRequest>,
-    output: __S(54) as any as S.Schema<ListAdGroupsResponse>,
+    input: ListAdGroupsRequest,
+    output: ListAdGroupsResponse,
     errors: [],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1236,8 +1633,8 @@ export const pauseAdGroup: API.OperationMethod<
   PauseAdGroupError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<PauseAdGroupRequest>,
-  output: __S(43) as any as S.Schema<AdGroup>,
+  input: PauseAdGroupRequest,
+  output: AdGroup,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1251,8 +1648,8 @@ export const searchAdGroupTargetingOptions: API.OperationMethod<
   SearchAdGroupTargetingOptionsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<SearchAdGroupTargetingOptionsRequest>,
-  output: __S(58) as any as S.Schema<SearchAdGroupTargetingOptionsResponse>,
+  input: SearchAdGroupTargetingOptionsRequest,
+  output: SearchAdGroupTargetingOptionsResponse,
   errors: [BadRequest, Forbidden],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1266,8 +1663,8 @@ export const unpauseAdGroup: API.OperationMethod<
   UnpauseAdGroupError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<UnpauseAdGroupRequest>,
-  output: __S(43) as any as S.Schema<AdGroup>,
+  input: UnpauseAdGroupRequest,
+  output: AdGroup,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1281,8 +1678,8 @@ export const updateAdGroup: API.OperationMethod<
   UpdateAdGroupError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<UpdateAdGroupRequest>,
-  output: __S(43) as any as S.Schema<AdGroup>,
+  input: UpdateAdGroupRequest,
+  output: AdGroup,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1296,15 +1693,15 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          exclude: S.optional(__S(0)),
-          include: S.optional(__S(0)),
+          exclude: S.optional(AdGroupAudiencesBodyExcludeList),
+          include: S.optional(AdGroupAudiencesBodyIncludeList),
         }),
       ).annotate({ identifier: "AdGroupAudiencesBody" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           automatic: S.optional(S.Boolean),
-          gender: S.optional(S.String),
+          gender: S.optional(AdGroupDemographicsBodyGender),
           maximum_age: S.optional(S.Number),
           minimum_age: S.optional(S.Number),
         }),
@@ -1312,7 +1709,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          behavior_type: S.optional(S.String),
+          behavior_type: S.optional(AdGroupDetailedTargetingBodyBehaviorsItemBehaviorType),
           id: S.String,
           name: S.optional(S.String),
           period: S.optional(S.Number),
@@ -1321,19 +1718,19 @@ function __c0(j: number): any {
         identifier: "AdGroupDetailedTargetingBodyBehaviorsItem",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(AdGroupDetailedTargetingBodyBehaviorsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.optional(S.String),
-          type: S.String,
+          type: AdGroupDetailedTargetingBodyDemographicsItemType,
         }),
       ).annotate({
         identifier: "AdGroupDetailedTargetingBodyDemographicsItem",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(AdGroupDetailedTargetingBodyDemographicsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1348,13 +1745,13 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(AdGroupDetailedTargetingBodyInterestsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          behaviors: S.optional(__S(4)),
-          demographics: S.optional(__S(6)),
-          interests: S.optional(__S(8)),
+          behaviors: S.optional(AdGroupDetailedTargetingBodyBehaviorsList),
+          demographics: S.optional(AdGroupDetailedTargetingBodyDemographicsList),
+          interests: S.optional(AdGroupDetailedTargetingBodyInterestsList),
         }),
       ).annotate({
         identifier: "AdGroupDetailedTargetingBody",
@@ -1363,20 +1760,20 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           minimum_version: S.optional(S.String),
-          os: S.String,
+          os: AdGroupDevicesBodyOperatingSystemsItemOs,
         }),
       ).annotate({
         identifier: "AdGroupDevicesBodyOperatingSystemsItem",
       });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(AdGroupDevicesBodyOperatingSystemsItem);
     case 4:
-      return S.Array(S.String);
+      return S.Array(AdGroupDevicesBodyPlatformsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          operating_systems: S.optional(__S(11)),
-          platforms: S.optional(__S(12)),
+          operating_systems: S.optional(AdGroupDevicesBodyOperatingSystemsList),
+          platforms: S.optional(AdGroupDevicesBodyPlatformsList),
         }),
       ).annotate({ identifier: "AdGroupDevicesBody" });
     case 6:
@@ -1402,12 +1799,12 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(AdGroupGeoLocationsBodyCitiesItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           country_code: S.optional(S.String),
-          distance_unit: S.optional(S.String),
+          distance_unit: S.optional(AdGroupGeoLocationsBodyCustomLocationsItemDistanceUnit),
           latitude: S.Number,
           longitude: S.Number,
           name: S.optional(S.String),
@@ -1417,53 +1814,53 @@ function __c2(j: number): any {
         identifier: "AdGroupGeoLocationsBodyCustomLocationsItem",
       });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(AdGroupGeoLocationsBodyCustomLocationsItem);
     case 3:
-      return S.Array(S.Unknown);
+      return S.Array(AdGroupGeoLocationsBodyZipsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          cities: S.optional(__S(16)),
-          countries: S.optional(__S(0)),
-          country_groups: S.optional(__S(0)),
-          custom_locations: S.optional(__S(18)),
-          regions: S.optional(__S(0)),
-          zips: S.optional(__S(19)),
+          cities: S.optional(AdGroupGeoLocationsBodyCitiesList),
+          countries: S.optional(AdGroupGeoLocationsBodyCountriesList),
+          country_groups: S.optional(AdGroupGeoLocationsBodyCountryGroupsList),
+          custom_locations: S.optional(AdGroupGeoLocationsBodyCustomLocationsList),
+          regions: S.optional(AdGroupGeoLocationsBodyRegionsList),
+          zips: S.optional(AdGroupGeoLocationsBodyZipsList),
         }),
       ).annotate({ identifier: "AdGroupGeoLocationsBody" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          exclude: S.optional(__S(20)),
-          include: S.optional(__S(20)),
+          exclude: S.optional(AdGroupGeoLocationsBody),
+          include: S.optional(AdGroupGeoLocationsBody),
         }),
       ).annotate({ identifier: "AdGroupRegionsBody" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           ad_campaign_id: S.String,
-          audiences: S.optional(__S(1)),
-          bid_type: S.optional(S.String),
+          audiences: S.optional(AdGroupAudiencesBody),
+          bid_type: S.optional(CreateAdGroupRequestBidType),
           budget_amount: S.optional(S.Number),
           budget_amount_local: S.optional(S.Number),
-          budget_type: S.optional(S.String),
-          conversion_event: S.optional(S.NullOr(S.Unknown)),
-          conversion_location: S.optional(S.String),
-          demographics: S.optional(__S(2)),
+          budget_type: S.optional(CreateAdGroupRequestBudgetType),
+          conversion_event: S.optional(S.NullOr(ConversionEvent)),
+          conversion_location: S.optional(CreateAdGroupRequestConversionLocation),
+          demographics: S.optional(AdGroupDemographicsBody),
           desired_cost_per_result: S.optional(S.Number),
-          detailed_targeting: S.optional(__S(9)),
-          devices: S.optional(__S(13)),
+          detailed_targeting: S.optional(AdGroupDetailedTargetingBody),
+          devices: S.optional(AdGroupDevicesBody),
           dynamic_creative: S.optional(S.Boolean),
           ends_at: S.optional(S.String),
-          frequency_cap: S.optional(__S(14)),
-          languages: S.optional(__S(0)),
-          message_apps: S.optional(__S(12)),
+          frequency_cap: S.optional(CreateAdGroupRequestFrequencyCap),
+          languages: S.optional(CreateAdGroupRequestLanguagesList),
+          message_apps: S.optional(CreateAdGroupRequestMessageAppsList),
           minimum_daily_spend: S.optional(S.Number),
-          optimization_goal: S.optional(S.String),
-          placements: S.optional(S.Unknown),
-          regions: S.optional(__S(21)),
+          optimization_goal: S.optional(CreateAdGroupRequestOptimizationGoal),
+          placements: S.optional(CreateAdGroupRequestPlacements),
+          regions: S.optional(AdGroupRegionsBody),
           starts_at: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(CreateAdGroupRequestStatus),
           title: S.optional(S.String),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/ad_groups", code: 200 })),
@@ -1481,15 +1878,15 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          exclude: __S(0),
-          include: __S(0),
+          exclude: AdGroupAudiencesExcludeList,
+          include: AdGroupAudiencesIncludeList,
         }),
       ).annotate({ identifier: "AdGroupAudiences" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           automatic: S.Boolean,
-          gender: S.String,
+          gender: AdGroupDemographicsGender,
           maximum_age: S.NullOr(S.Number),
           minimum_age: S.NullOr(S.Number),
         }),
@@ -1497,36 +1894,36 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          behavior_type: S.optional(S.String),
+          behavior_type: S.optional(AdGroupBehaviorCategoryBehaviorType),
           id: S.String,
           name: S.optional(S.String),
           period: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AdGroupBehaviorCategory" });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(AdGroupBehaviorCategory);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          behaviors: __S(27),
-          demographics: __S(6),
-          interests: __S(8),
+          behaviors: AdGroupDetailedTargetingBehaviorsList,
+          demographics: AdGroupDetailedTargetingDemographicsList,
+          interests: AdGroupDetailedTargetingInterestsList,
         }),
       ).annotate({ identifier: "AdGroupDetailedTargeting" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           minimum_version: S.optional(S.String),
-          os: S.String,
+          os: AdGroupOperatingSystemOs,
         }),
       ).annotate({ identifier: "AdGroupOperatingSystem" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(AdGroupOperatingSystem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          operating_systems: __S(30),
-          platforms: __S(12),
+          operating_systems: AdGroupDevicesOperatingSystemsList,
+          platforms: AdGroupDevicesPlatformsList,
         }),
       ).annotate({ identifier: "AdGroupDevices" });
   }
@@ -1546,20 +1943,20 @@ function __c4(j: number): any {
           id: S.String,
           message: S.String,
           resource_id: S.NullOr(S.String),
-          resource_type: S.String,
+          resource_type: AdPlatformIssueResourceType,
         }),
       ).annotate({ identifier: "AdPlatformIssue" });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(AdPlatformIssue);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          platform: S.String,
-          positions: __S(0),
+          platform: AdGroupPlacementPlatform,
+          positions: AdGroupPlacementPositionsList,
         }),
       ).annotate({ identifier: "AdGroupPlacement" });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(AdGroupPlacement);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1568,12 +1965,12 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "AdGroupCity" });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(AdGroupCity);
     case 7:
       return S.suspend(() =>
         S.Struct({
           country_code: S.optional(S.String),
-          distance_unit: S.String,
+          distance_unit: AdGroupCustomLocationDistanceUnit,
           latitude: S.Number,
           longitude: S.Number,
           name: S.optional(S.String),
@@ -1585,45 +1982,45 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39));
+      return S.Array(AdGroupCustomLocation);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          cities: __S(38),
-          countries: __S(0),
-          country_groups: __S(0),
-          custom_locations: __S(40),
-          regions: __S(0),
-          zips: __S(0),
+          cities: AdGroupGeoLocationsCitiesList,
+          countries: AdGroupGeoLocationsCountriesList,
+          country_groups: AdGroupGeoLocationsCountryGroupsList,
+          custom_locations: AdGroupGeoLocationsCustomLocationsList,
+          regions: AdGroupGeoLocationsRegionsList,
+          zips: AdGroupGeoLocationsZipsList,
         }),
       ).annotate({ identifier: "AdGroupGeoLocations" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          exclude: __S(41),
-          include: __S(41),
+          exclude: AdGroupGeoLocations,
+          include: AdGroupGeoLocations,
         }),
       ).annotate({ identifier: "AdGroupRegions" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ad_campaign: __S(23),
+          ad_campaign: AdEntityReference,
           added_to_cart_value: S.Number,
           added_to_carts: S.Number,
-          audiences: __S(24),
-          bid_type: S.NullOr(S.String),
+          audiences: AdGroupAudiences,
+          bid_type: S.NullOr(AdGroupBidType),
           budget_amount: S.NullOr(S.Number),
           budget_amount_local: S.NullOr(S.Number),
           budget_currency: S.String,
-          budget_type: S.NullOr(S.String),
+          budget_type: S.NullOr(AdGroupBudgetType),
           click_through_rate: S.Number,
           clicks: S.Number,
           completed_registration_value: S.Number,
           completed_registrations: S.Number,
           contact_value: S.Number,
           contacts: S.Number,
-          conversion_event: S.NullOr(S.Unknown),
-          conversion_location: S.optional(S.NullOr(S.String)),
+          conversion_event: S.NullOr(ConversionEvent),
+          conversion_location: S.optional(S.NullOr(AdGroupConversionLocation)),
           cost_per_added_to_cart: S.NullOr(S.Number),
           cost_per_click: S.Number,
           cost_per_completed_registration: S.NullOr(S.Number),
@@ -1640,32 +2037,32 @@ function __c5(j: number): any {
           custom_conversions: S.Number,
           custom_event_counts: S.Unknown,
           custom_event_values: S.Unknown,
-          delivery_status: S.String,
-          demographics: __S(25),
+          delivery_status: AdGroupDeliveryStatus,
+          demographics: AdGroupDemographics,
           desired_cost_per_result: S.NullOr(S.Number),
-          detailed_targeting: __S(28),
-          devices: __S(31),
+          detailed_targeting: AdGroupDetailedTargeting,
+          devices: AdGroupDevices,
           dynamic_creative: S.optional(S.Boolean),
           ends_at: S.NullOr(S.String),
           frequency: S.NullOr(S.Number),
-          frequency_cap: S.NullOr(__S(32)),
+          frequency_cap: S.NullOr(AdGroupFrequencyCap),
           id: S.String,
           impressions: S.Number,
-          issues: __S(34),
-          languages: __S(0),
+          issues: AdGroupIssuesList,
+          languages: AdGroupLanguagesList,
           lead_value: S.Number,
           leads: S.Number,
           link_clicks: S.Number,
-          message_apps: S.optional(__S(12)),
+          message_apps: S.optional(AdGroupMessageAppsList),
           minimum_daily_spend: S.optional(S.NullOr(S.Number)),
-          optimization_goal: S.NullOr(S.String),
-          placements: __S(36),
-          platform: S.String,
+          optimization_goal: S.NullOr(AdGroupOptimizationGoal),
+          placements: AdGroupPlacementsList,
+          platform: AdGroupPlatform,
           purchase_value: S.Number,
           purchases: S.Number,
           reach: S.Number,
-          regions: __S(42),
-          result_event: S.NullOr(S.String),
+          regions: AdGroupRegions,
+          result_event: S.NullOr(AdGroupResultEvent),
           result_event_name: S.NullOr(S.String),
           results: S.NullOr(S.Number),
           return_on_ad_spend: S.Number,
@@ -1674,7 +2071,7 @@ function __c5(j: number): any {
           spend: S.Number,
           spend_currency: S.NullOr(S.String),
           starts_at: S.NullOr(S.String),
-          status: S.String,
+          status: AdGroupStatus,
           submitted_application_value: S.Number,
           submitted_applications: S.Number,
           title: S.NullOr(S.String),
@@ -1709,7 +2106,7 @@ function __c5(j: number): any {
         }).pipe(T.Http({ method: "POST", uri: "/ad_groups/{id}/duplicate", code: 200 })),
       ).annotate({ identifier: "DuplicateAdGroupRequest" });
     case 7:
-      return S.Array(__S(43));
+      return S.Array(AdGroup);
   }
 }
 function __c6(j: number): any {
@@ -1717,20 +2114,20 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: __S(47),
+          data: DuplicateAdGroupResponseDataList,
         }),
       ).annotate({ identifier: "DuplicateAdGroupResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String),
-          audiences: S.optional(__S(1)),
-          demographics: S.optional(__S(2)),
-          detailed_targeting: S.optional(__S(9)),
-          devices: S.optional(__S(13)),
-          languages: S.optional(__S(0)),
-          platform: S.String,
-          regions: S.optional(__S(21)),
+          audiences: S.optional(AdGroupAudiencesBody),
+          demographics: S.optional(AdGroupDemographicsBody),
+          detailed_targeting: S.optional(AdGroupDetailedTargetingBody),
+          devices: S.optional(AdGroupDevicesBody),
+          languages: S.optional(EstimateAdGroupReachRequestLanguagesList),
+          platform: EstimateAdGroupReachRequestPlatform,
+          regions: S.optional(AdGroupRegionsBody),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/ad_groups/estimate_reach", code: 200 })),
       ).annotate({
@@ -1750,7 +2147,7 @@ function __c6(j: number): any {
           stats_from: S.optional(S.String.pipe(T.Query())),
           stats_to: S.optional(S.String.pipe(T.Query())),
           time_zone: S.optional(S.String.pipe(T.Query())),
-          attribution_model: S.optional(S.String.pipe(T.Query())),
+          attribution_model: S.optional(GetAdGroupRequestAttributionModel.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ad_groups/{id}", code: 200 })),
       ).annotate({ identifier: "GetAdGroupRequest" });
     case 4:
@@ -1758,17 +2155,17 @@ function __c6(j: number): any {
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
           ad_campaign_id: S.optional(S.String.pipe(T.Query())),
-          ad_campaign_ids: S.optional(__S(0).pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          ad_campaign_ids: S.optional(ListAdGroupsRequestAdCampaignIdsList.pipe(T.Query())),
+          status: S.optional(ListAdGroupsRequestStatus.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListAdGroupsRequestOrder.pipe(T.Query())),
+          direction: S.optional(ListAdGroupsRequestDirection.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
           stats_from: S.optional(S.String.pipe(T.Query())),
           stats_to: S.optional(S.String.pipe(T.Query())),
           time_zone: S.optional(S.String.pipe(T.Query())),
-          attribution_model: S.optional(S.String.pipe(T.Query())),
+          attribution_model: S.optional(ListAdGroupsRequestAttributionModel.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
@@ -1789,8 +2186,8 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(47),
-          page_info: __S(53),
+          data: ListAdGroupsResponseDataList,
+          page_info: ListAdGroupsResponsePageInfo,
         }),
       ).annotate({ identifier: "ListAdGroupsResponse" });
     case 7:
@@ -1808,23 +2205,27 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
-          platform: S.String.pipe(T.Query()),
+          platform: SearchAdGroupTargetingOptionsRequestPlatform.pipe(T.Query()),
           query: S.optional(S.String.pipe(T.Query())),
-          types: S.optional(__S(12).pipe(T.Query())),
-          location_types: S.optional(__S(12).pipe(T.Query())),
+          types: S.optional(SearchAdGroupTargetingOptionsRequestTypesList.pipe(T.Query())),
+          location_types: S.optional(
+            SearchAdGroupTargetingOptionsRequestLocationTypesList.pipe(T.Query()),
+          ),
           country: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          special_ad_categories: S.optional(__S(12).pipe(T.Query())),
+          special_ad_categories: S.optional(
+            SearchAdGroupTargetingOptionsRequestSpecialAdCategoriesList.pipe(T.Query()),
+          ),
         }).pipe(T.Http({ method: "GET", uri: "/ad_groups/targeting_options", code: 200 })),
       ).annotate({
         identifier: "SearchAdGroupTargetingOptionsRequest",
       });
     case 1:
-      return S.Array(S.Unknown);
+      return S.Array(TargetingOption);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(57),
+          data: SearchAdGroupTargetingOptionsResponseDataList,
         }),
       ).annotate({
         identifier: "SearchAdGroupTargetingOptionsResponse",
@@ -1840,54 +2241,29 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          audiences: S.optional(__S(1)),
-          bid_type: S.optional(S.String),
+          audiences: S.optional(AdGroupAudiencesBody),
+          bid_type: S.optional(UpdateAdGroupRequestBidType),
           budget_amount: S.optional(S.Number),
           budget_amount_local: S.optional(S.Number),
-          budget_type: S.optional(S.String),
-          conversion_event: S.optional(S.NullOr(S.Unknown)),
-          conversion_location: S.optional(S.String),
-          demographics: S.optional(__S(2)),
+          budget_type: S.optional(UpdateAdGroupRequestBudgetType),
+          conversion_event: S.optional(S.NullOr(ConversionEvent)),
+          conversion_location: S.optional(UpdateAdGroupRequestConversionLocation),
+          demographics: S.optional(AdGroupDemographicsBody),
           desired_cost_per_result: S.optional(S.Number),
-          detailed_targeting: S.optional(__S(9)),
-          devices: S.optional(__S(13)),
+          detailed_targeting: S.optional(AdGroupDetailedTargetingBody),
+          devices: S.optional(AdGroupDevicesBody),
           ends_at: S.optional(S.String),
-          frequency_cap: S.optional(__S(14)),
-          languages: S.optional(__S(0)),
-          message_apps: S.optional(__S(12)),
+          frequency_cap: S.optional(CreateAdGroupRequestFrequencyCap),
+          languages: S.optional(UpdateAdGroupRequestLanguagesList),
+          message_apps: S.optional(UpdateAdGroupRequestMessageAppsList),
           minimum_daily_spend: S.optional(S.Number),
-          optimization_goal: S.optional(S.String),
-          placements: S.optional(S.Unknown),
-          regions: S.optional(__S(21)),
+          optimization_goal: S.optional(UpdateAdGroupRequestOptimizationGoal),
+          placements: S.optional(UpdateAdGroupRequestPlacements),
+          regions: S.optional(AdGroupRegionsBody),
           starts_at: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(UpdateAdGroupRequestStatus),
           title: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/ad_groups/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateAdGroupRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
   }
 }

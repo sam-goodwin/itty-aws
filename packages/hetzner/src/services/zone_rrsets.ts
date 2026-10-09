@@ -7,8 +7,6 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
@@ -30,6 +28,8 @@ export type CreateZoneRrsetRequestType =
   | "SVCB"
   | "TLSA"
   | "TXT";
+const CreateZoneRrsetRequestType = S.String;
+
 /** Record of a [RRSet](#tag/zone-rrsets). The `value` is used to identify the record in an [RRSet](#tag/zone-rrsets). */
 export interface CreateZoneRrsetRequestRecordsItem {
   /** Value of the record. For details about accepted values, see the [DNS record types documentation](https://docs.hetzner.com/networking/dns/record-types/overview/). */
@@ -37,10 +37,25 @@ export interface CreateZoneRrsetRequestRecordsItem {
   /** Comment of the record. */
   comment?: string;
 }
+const CreateZoneRrsetRequestRecordsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateZoneRrsetRequestRecordsItem>;
+
 /** Records of the [RRSet](#tag/zone-rrsets). Must not be empty and must only contain distinct record values. The order of records returned in responses is not guaranteed to be consistent. */
 export type CreateZoneRrsetRequestRecordsList = Array<CreateZoneRrsetRequestRecordsItem>;
+const CreateZoneRrsetRequestRecordsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateZoneRrsetRequestRecordsList>;
+
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateZoneRrsetRequestLabelsMap = { [key: string]: string | undefined };
+const CreateZoneRrsetRequestLabelsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateZoneRrsetRequestLabelsMap>;
+
 export interface CreateZoneRrsetRequest {
   /** ID or Name of the Zone. */
   id_or_name: string;
@@ -55,6 +70,11 @@ export interface CreateZoneRrsetRequest {
   /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
   labels?: CreateZoneRrsetRequestLabelsMap;
 }
+const CreateZoneRrsetRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateZoneRrsetRequest>;
+
 /** Type of the [RRSet](#tag/zone-rrsets). */
 export type CreateZoneRrsetResponseRrsetType =
   | "A"
@@ -73,17 +93,30 @@ export type CreateZoneRrsetResponseRrsetType =
   | "SVCB"
   | "TLSA"
   | "TXT";
+const CreateZoneRrsetResponseRrsetType = S.String;
+
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateZoneRrsetResponseRrsetLabelsMap = { [key: string]: string | undefined };
+const CreateZoneRrsetResponseRrsetLabelsMap =
+  CreateZoneRrsetRequestLabelsMap as any as S.Schema<CreateZoneRrsetResponseRrsetLabelsMap>;
+
 /** Protection of the [RRSet](#tag/zone-rrsets). */
 export interface CreateZoneRrsetResponseRrsetProtection {
   /** Prevent the Resource from being changed. */
   change: boolean;
 }
+const CreateZoneRrsetResponseRrsetProtection = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateZoneRrsetResponseRrsetProtection>;
+
 /** Record of a [RRSet](#tag/zone-rrsets). The `value` is used to identify the record in an [RRSet](#tag/zone-rrsets). */
 export type CreateZoneRrsetResponseRrsetRecordsItem = CreateZoneRrsetRequestRecordsItem;
 /** Records of the [RRSet](#tag/zone-rrsets). Must not be empty and must only contain distinct record values. The order of records returned in responses is not guaranteed to be consistent. */
 export type CreateZoneRrsetResponseRrsetRecordsList = Array<CreateZoneRrsetRequestRecordsItem>;
+const CreateZoneRrsetResponseRrsetRecordsList =
+  CreateZoneRrsetRequestRecordsList as any as S.Schema<CreateZoneRrsetResponseRrsetRecordsList>;
+
 export interface CreateZoneRrsetResponseRrset {
   /** ID of the RRSet. The ID is composed of the name and type, joined with a slash (e.g. `www/AAAA`). */
   id: string;
@@ -102,17 +135,34 @@ export interface CreateZoneRrsetResponseRrset {
   /** ID of the [Zone](#tag/zones). */
   zone: number;
 }
+const CreateZoneRrsetResponseRrset = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateZoneRrsetResponseRrset>;
+
 /** Status of the Action. */
 export type CreateZoneRrsetResponseActionStatus = "running" | "success" | "error";
+const CreateZoneRrsetResponseActionStatus = S.String;
+
 export interface CreateZoneRrsetResponseActionResourcesItem {
   /** ID of the Resource. */
   id: number;
   /** Type of the Resource. */
   type: string;
 }
+const CreateZoneRrsetResponseActionResourcesItem = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateZoneRrsetResponseActionResourcesItem>;
+
 /** Resources the Action relates to. */
 export type CreateZoneRrsetResponseActionResourcesList =
   Array<CreateZoneRrsetResponseActionResourcesItem>;
+const CreateZoneRrsetResponseActionResourcesList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateZoneRrsetResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface CreateZoneRrsetResponseActionError {
   /** Fixed error code for machines. */
@@ -120,6 +170,11 @@ export interface CreateZoneRrsetResponseActionError {
   /** Error message for humans. */
   message: string;
 }
+const CreateZoneRrsetResponseActionError = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateZoneRrsetResponseActionError>;
+
 export interface CreateZoneRrsetResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -138,10 +193,20 @@ export interface CreateZoneRrsetResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: CreateZoneRrsetResponseActionError | null;
 }
+const CreateZoneRrsetResponseAction = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateZoneRrsetResponseAction>;
+
 export interface CreateZoneRrsetResponse {
   rrset: CreateZoneRrsetResponseRrset;
   action: CreateZoneRrsetResponseAction;
 }
+const CreateZoneRrsetResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateZoneRrsetResponse>;
+
 /** Type of the [RRSet](#tag/zone-rrsets). */
 export type DeleteZoneRrsetRequestRrType =
   | "A"
@@ -160,18 +225,30 @@ export type DeleteZoneRrsetRequestRrType =
   | "SVCB"
   | "TLSA"
   | "TXT";
+const DeleteZoneRrsetRequestRrType = S.String;
+
 export interface DeleteZoneRrsetRequest {
   /** ID or Name of the Zone. */
   id_or_name: string;
   rr_name: string;
   rr_type: DeleteZoneRrsetRequestRrType | (string & {});
 }
+const DeleteZoneRrsetRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DeleteZoneRrsetRequest>;
+
 /** Status of the Action. */
 export type DeleteZoneRrsetResponseActionStatus = "running" | "success" | "error";
+const DeleteZoneRrsetResponseActionStatus = S.String;
+
 export type DeleteZoneRrsetResponseActionResourcesItem = CreateZoneRrsetResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type DeleteZoneRrsetResponseActionResourcesList =
   Array<CreateZoneRrsetResponseActionResourcesItem>;
+const DeleteZoneRrsetResponseActionResourcesList =
+  CreateZoneRrsetResponseActionResourcesList as any as S.Schema<DeleteZoneRrsetResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DeleteZoneRrsetResponseActionError = CreateZoneRrsetResponseActionError;
 export interface DeleteZoneRrsetResponseAction {
@@ -192,9 +269,19 @@ export interface DeleteZoneRrsetResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: CreateZoneRrsetResponseActionError | null;
 }
+const DeleteZoneRrsetResponseAction = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeleteZoneRrsetResponseAction>;
+
 export interface DeleteZoneRrsetResponse {
   action: DeleteZoneRrsetResponseAction;
 }
+const DeleteZoneRrsetResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteZoneRrsetResponse>;
+
 /** Type of the [RRSet](#tag/zone-rrsets). */
 export type GetZoneRrsetRequestRrType =
   | "A"
@@ -213,12 +300,16 @@ export type GetZoneRrsetRequestRrType =
   | "SVCB"
   | "TLSA"
   | "TXT";
+const GetZoneRrsetRequestRrType = S.String;
+
 export interface GetZoneRrsetRequest {
   /** ID or Name of the Zone. */
   id_or_name: string;
   rr_name: string;
   rr_type: GetZoneRrsetRequestRrType | (string & {});
 }
+const GetZoneRrsetRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetZoneRrsetRequest>;
+
 /** Type of the [RRSet](#tag/zone-rrsets). */
 export type GetZoneRrsetResponseRrsetType =
   | "A"
@@ -237,14 +328,22 @@ export type GetZoneRrsetResponseRrsetType =
   | "SVCB"
   | "TLSA"
   | "TXT";
+const GetZoneRrsetResponseRrsetType = S.String;
+
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetZoneRrsetResponseRrsetLabelsMap = { [key: string]: string | undefined };
+const GetZoneRrsetResponseRrsetLabelsMap =
+  CreateZoneRrsetRequestLabelsMap as any as S.Schema<GetZoneRrsetResponseRrsetLabelsMap>;
+
 /** Protection of the [RRSet](#tag/zone-rrsets). */
 export type GetZoneRrsetResponseRrsetProtection = CreateZoneRrsetResponseRrsetProtection;
 /** Record of a [RRSet](#tag/zone-rrsets). The `value` is used to identify the record in an [RRSet](#tag/zone-rrsets). */
 export type GetZoneRrsetResponseRrsetRecordsItem = CreateZoneRrsetRequestRecordsItem;
 /** Records of the [RRSet](#tag/zone-rrsets). Must not be empty and must only contain distinct record values. The order of records returned in responses is not guaranteed to be consistent. */
 export type GetZoneRrsetResponseRrsetRecordsList = Array<CreateZoneRrsetRequestRecordsItem>;
+const GetZoneRrsetResponseRrsetRecordsList =
+  CreateZoneRrsetRequestRecordsList as any as S.Schema<GetZoneRrsetResponseRrsetRecordsList>;
+
 export interface GetZoneRrsetResponseRrset {
   /** ID of the RRSet. The ID is composed of the name and type, joined with a slash (e.g. `www/AAAA`). */
   id: string;
@@ -263,9 +362,16 @@ export interface GetZoneRrsetResponseRrset {
   /** ID of the [Zone](#tag/zones). */
   zone: number;
 }
+const GetZoneRrsetResponseRrset = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetZoneRrsetResponseRrset>;
+
 export interface GetZoneRrsetResponse {
   rrset: GetZoneRrsetResponseRrset;
 }
+const GetZoneRrsetResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetZoneRrsetResponse>;
+
 /** Type of the [RRSet](#tag/zone-rrsets). */
 export type ListZoneRrsetsRequestTypeItem =
   | "A"
@@ -284,7 +390,14 @@ export type ListZoneRrsetsRequestTypeItem =
   | "SVCB"
   | "TLSA"
   | "TXT";
+const ListZoneRrsetsRequestTypeItem = S.String;
+
 export type ListZoneRrsetsRequestTypeList = Array<ListZoneRrsetsRequestTypeItem | (string & {})>;
+const ListZoneRrsetsRequestTypeList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListZoneRrsetsRequestTypeList>;
+
 export type ListZoneRrsetsRequestSortItem =
   | "id"
   | "id:asc"
@@ -296,6 +409,9 @@ export type ListZoneRrsetsRequestSortItem =
   | "created:asc"
   | "created:desc";
 export type ListZoneRrsetsRequestSortList = Array<ListZoneRrsetsRequestSortItem | (string & {})>;
+const ListZoneRrsetsRequestSortList =
+  ListZoneRrsetsRequestTypeList as any as S.Schema<ListZoneRrsetsRequestSortList>;
+
 export interface ListZoneRrsetsRequest {
   /** ID or Name of the Zone. */
   id_or_name: string;
@@ -312,6 +428,11 @@ export interface ListZoneRrsetsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
+const ListZoneRrsetsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListZoneRrsetsRequest>;
+
 /** Type of the [RRSet](#tag/zone-rrsets). */
 export type ListZoneRrsetsResponseRrsetsItemType =
   | "A"
@@ -330,14 +451,22 @@ export type ListZoneRrsetsResponseRrsetsItemType =
   | "SVCB"
   | "TLSA"
   | "TXT";
+const ListZoneRrsetsResponseRrsetsItemType = S.String;
+
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListZoneRrsetsResponseRrsetsItemLabelsMap = { [key: string]: string | undefined };
+const ListZoneRrsetsResponseRrsetsItemLabelsMap =
+  CreateZoneRrsetRequestLabelsMap as any as S.Schema<ListZoneRrsetsResponseRrsetsItemLabelsMap>;
+
 /** Protection of the [RRSet](#tag/zone-rrsets). */
 export type ListZoneRrsetsResponseRrsetsItemProtection = CreateZoneRrsetResponseRrsetProtection;
 /** Record of a [RRSet](#tag/zone-rrsets). The `value` is used to identify the record in an [RRSet](#tag/zone-rrsets). */
 export type ListZoneRrsetsResponseRrsetsItemRecordsItem = CreateZoneRrsetRequestRecordsItem;
 /** Records of the [RRSet](#tag/zone-rrsets). Must not be empty and must only contain distinct record values. The order of records returned in responses is not guaranteed to be consistent. */
 export type ListZoneRrsetsResponseRrsetsItemRecordsList = Array<CreateZoneRrsetRequestRecordsItem>;
+const ListZoneRrsetsResponseRrsetsItemRecordsList =
+  CreateZoneRrsetRequestRecordsList as any as S.Schema<ListZoneRrsetsResponseRrsetsItemRecordsList>;
+
 export interface ListZoneRrsetsResponseRrsetsItem {
   /** ID of the RRSet. The ID is composed of the name and type, joined with a slash (e.g. `www/AAAA`). */
   id: string;
@@ -356,7 +485,17 @@ export interface ListZoneRrsetsResponseRrsetsItem {
   /** ID of the [Zone](#tag/zones). */
   zone: number;
 }
+const ListZoneRrsetsResponseRrsetsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListZoneRrsetsResponseRrsetsItem>;
+
 export type ListZoneRrsetsResponseRrsetsList = Array<ListZoneRrsetsResponseRrsetsItem>;
+const ListZoneRrsetsResponseRrsetsList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListZoneRrsetsResponseRrsetsList>;
+
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListZoneRrsetsResponseMetaPagination {
   /** Current page number. */
@@ -372,14 +511,29 @@ export interface ListZoneRrsetsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
+const ListZoneRrsetsResponseMetaPagination = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ListZoneRrsetsResponseMetaPagination>;
+
 export interface ListZoneRrsetsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListZoneRrsetsResponseMetaPagination;
 }
+const ListZoneRrsetsResponseMeta = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListZoneRrsetsResponseMeta>;
+
 export interface ListZoneRrsetsResponse {
   rrsets: ListZoneRrsetsResponseRrsetsList;
   meta: ListZoneRrsetsResponseMeta;
 }
+const ListZoneRrsetsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListZoneRrsetsResponse>;
+
 /** Type of the [RRSet](#tag/zone-rrsets). */
 export type UpdateZoneRrsetRequestRrType =
   | "A"
@@ -398,8 +552,13 @@ export type UpdateZoneRrsetRequestRrType =
   | "SVCB"
   | "TLSA"
   | "TXT";
+const UpdateZoneRrsetRequestRrType = S.String;
+
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdateZoneRrsetRequestLabelsMap = { [key: string]: string | undefined };
+const UpdateZoneRrsetRequestLabelsMap =
+  CreateZoneRrsetRequestLabelsMap as any as S.Schema<UpdateZoneRrsetRequestLabelsMap>;
+
 export interface UpdateZoneRrsetRequest {
   /** ID or Name of the Zone. */
   id_or_name: string;
@@ -408,6 +567,11 @@ export interface UpdateZoneRrsetRequest {
   /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
   labels?: UpdateZoneRrsetRequestLabelsMap;
 }
+const UpdateZoneRrsetRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<UpdateZoneRrsetRequest>;
+
 /** Type of the [RRSet](#tag/zone-rrsets). */
 export type UpdateZoneRrsetResponseRrsetType =
   | "A"
@@ -426,14 +590,22 @@ export type UpdateZoneRrsetResponseRrsetType =
   | "SVCB"
   | "TLSA"
   | "TXT";
+const UpdateZoneRrsetResponseRrsetType = S.String;
+
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateZoneRrsetResponseRrsetLabelsMap = { [key: string]: string | undefined };
+const UpdateZoneRrsetResponseRrsetLabelsMap =
+  CreateZoneRrsetRequestLabelsMap as any as S.Schema<UpdateZoneRrsetResponseRrsetLabelsMap>;
+
 /** Protection of the [RRSet](#tag/zone-rrsets). */
 export type UpdateZoneRrsetResponseRrsetProtection = CreateZoneRrsetResponseRrsetProtection;
 /** Record of a [RRSet](#tag/zone-rrsets). The `value` is used to identify the record in an [RRSet](#tag/zone-rrsets). */
 export type UpdateZoneRrsetResponseRrsetRecordsItem = CreateZoneRrsetRequestRecordsItem;
 /** Records of the [RRSet](#tag/zone-rrsets). Must not be empty and must only contain distinct record values. The order of records returned in responses is not guaranteed to be consistent. */
 export type UpdateZoneRrsetResponseRrsetRecordsList = Array<CreateZoneRrsetRequestRecordsItem>;
+const UpdateZoneRrsetResponseRrsetRecordsList =
+  CreateZoneRrsetRequestRecordsList as any as S.Schema<UpdateZoneRrsetResponseRrsetRecordsList>;
+
 export interface UpdateZoneRrsetResponseRrset {
   /** ID of the RRSet. The ID is composed of the name and type, joined with a slash (e.g. `www/AAAA`). */
   id: string;
@@ -452,9 +624,19 @@ export interface UpdateZoneRrsetResponseRrset {
   /** ID of the [Zone](#tag/zones). */
   zone: number;
 }
+const UpdateZoneRrsetResponseRrset = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<UpdateZoneRrsetResponseRrset>;
+
 export interface UpdateZoneRrsetResponse {
   rrset: UpdateZoneRrsetResponseRrset;
 }
+const UpdateZoneRrsetResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<UpdateZoneRrsetResponse>;
+
 export type CreateZoneRrsetError = HetznerOpError;
 /** Create an RRSet Create an [RRSet](#tag/zone-rrsets) in the [Zone](#tag/zones). Only applicable for [Zones](#tag/zones) in primary mode. #### Operation specific errors */
 export const createZoneRrset: API.OperationMethod<
@@ -463,8 +645,8 @@ export const createZoneRrset: API.OperationMethod<
   CreateZoneRrsetError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateZoneRrsetRequest>,
-  output: __S(10) as any as S.Schema<CreateZoneRrsetResponse>,
+  input: CreateZoneRrsetRequest,
+  output: CreateZoneRrsetResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -478,8 +660,8 @@ export const deleteZoneRrset: API.OperationMethod<
   DeleteZoneRrsetError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<DeleteZoneRrsetRequest>,
-  output: __S(13) as any as S.Schema<DeleteZoneRrsetResponse>,
+  input: DeleteZoneRrsetRequest,
+  output: DeleteZoneRrsetResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -493,8 +675,8 @@ export const getZoneRrset: API.OperationMethod<
   GetZoneRrsetError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetZoneRrsetRequest>,
-  output: __S(16) as any as S.Schema<GetZoneRrsetResponse>,
+  input: GetZoneRrsetRequest,
+  output: GetZoneRrsetResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -510,8 +692,8 @@ export const listZoneRrsets: API.PaginatedOperationMethod<
   ListZoneRrsetsResponseRrsetsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(18) as any as S.Schema<ListZoneRrsetsRequest>,
-    output: __S(23) as any as S.Schema<ListZoneRrsetsResponse>,
+    input: ListZoneRrsetsRequest,
+    output: ListZoneRrsetsResponse,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -534,8 +716,8 @@ export const updateZoneRrset: API.OperationMethod<
   UpdateZoneRrsetError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<UpdateZoneRrsetRequest>,
-  output: __S(26) as any as S.Schema<UpdateZoneRrsetResponse>,
+  input: UpdateZoneRrsetRequest,
+  output: UpdateZoneRrsetResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -554,7 +736,7 @@ function __c0(j: number): any {
         identifier: "CreateZoneRrsetRequestRecordsItem",
       });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(CreateZoneRrsetRequestRecordsItem);
     case 2:
       return S.Record(S.String, S.String);
     case 3:
@@ -562,10 +744,10 @@ function __c0(j: number): any {
         S.Struct({
           id_or_name: S.String.pipe(T.Label()),
           name: S.String,
-          type: S.String,
+          type: CreateZoneRrsetRequestType,
           ttl: S.optional(S.NullOr(S.Number)),
-          records: __S(1),
-          labels: S.optional(__S(2)),
+          records: CreateZoneRrsetRequestRecordsList,
+          labels: S.optional(CreateZoneRrsetRequestLabelsMap),
         }).pipe(T.Http({ method: "POST", uri: "/zones/{id_or_name}/rrsets", code: 200 })),
       ).annotate({ identifier: "CreateZoneRrsetRequest" });
     case 4:
@@ -581,11 +763,11 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          type: S.String,
+          type: CreateZoneRrsetResponseRrsetType,
           ttl: S.NullOr(S.Number),
-          labels: __S(2),
-          protection: __S(4),
-          records: __S(1),
+          labels: CreateZoneRrsetResponseRrsetLabelsMap,
+          protection: CreateZoneRrsetResponseRrsetProtection,
+          records: CreateZoneRrsetResponseRrsetRecordsList,
           zone: S.Number,
         }),
       ).annotate({
@@ -601,7 +783,7 @@ function __c0(j: number): any {
         identifier: "CreateZoneRrsetResponseActionResourcesItem",
       });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(CreateZoneRrsetResponseActionResourcesItem);
   }
 }
 function __c1(j: number): any {
@@ -620,12 +802,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: CreateZoneRrsetResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(7),
-          error: S.NullOr(__S(8)),
+          resources: CreateZoneRrsetResponseActionResourcesList,
+          error: S.NullOr(CreateZoneRrsetResponseActionError),
         }),
       ).annotate({
         identifier: "CreateZoneRrsetResponseAction",
@@ -633,8 +815,8 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          rrset: __S(5),
-          action: __S(9),
+          rrset: CreateZoneRrsetResponseRrset,
+          action: CreateZoneRrsetResponseAction,
         }),
       ).annotate({ identifier: "CreateZoneRrsetResponse" });
     case 3:
@@ -642,7 +824,7 @@ function __c1(j: number): any {
         S.Struct({
           id_or_name: S.String.pipe(T.Label()),
           rr_name: S.String.pipe(T.Label()),
-          rr_type: S.String.pipe(T.Label()),
+          rr_type: DeleteZoneRrsetRequestRrType.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -656,12 +838,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: DeleteZoneRrsetResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(7),
-          error: S.NullOr(__S(8)),
+          resources: DeleteZoneRrsetResponseActionResourcesList,
+          error: S.NullOr(CreateZoneRrsetResponseActionError),
         }),
       ).annotate({
         identifier: "DeleteZoneRrsetResponseAction",
@@ -669,7 +851,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: __S(12),
+          action: DeleteZoneRrsetResponseAction,
         }),
       ).annotate({ identifier: "DeleteZoneRrsetResponse" });
     case 6:
@@ -677,7 +859,7 @@ function __c1(j: number): any {
         S.Struct({
           id_or_name: S.String.pipe(T.Label()),
           rr_name: S.String.pipe(T.Label()),
-          rr_type: S.String.pipe(T.Label()),
+          rr_type: GetZoneRrsetRequestRrType.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -691,11 +873,11 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          type: S.String,
+          type: GetZoneRrsetResponseRrsetType,
           ttl: S.NullOr(S.Number),
-          labels: __S(2),
-          protection: __S(4),
-          records: __S(1),
+          labels: GetZoneRrsetResponseRrsetLabelsMap,
+          protection: CreateZoneRrsetResponseRrsetProtection,
+          records: GetZoneRrsetResponseRrsetRecordsList,
           zone: S.Number,
         }),
       ).annotate({
@@ -708,19 +890,19 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          rrset: __S(15),
+          rrset: GetZoneRrsetResponseRrset,
         }),
       ).annotate({ identifier: "GetZoneRrsetResponse" });
     case 1:
-      return S.Array(S.String);
+      return S.Array(ListZoneRrsetsRequestTypeItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           id_or_name: S.String.pipe(T.Label()),
           name: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(__S(17).pipe(T.Query())),
+          type: S.optional(ListZoneRrsetsRequestTypeList.pipe(T.Query())),
           label_selector: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(__S(17).pipe(T.Query())),
+          sort: S.optional(ListZoneRrsetsRequestSortList.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/zones/{id_or_name}/rrsets", code: 200 })),
@@ -730,18 +912,18 @@ function __c2(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          type: S.String,
+          type: ListZoneRrsetsResponseRrsetsItemType,
           ttl: S.NullOr(S.Number),
-          labels: __S(2),
-          protection: __S(4),
-          records: __S(1),
+          labels: ListZoneRrsetsResponseRrsetsItemLabelsMap,
+          protection: CreateZoneRrsetResponseRrsetProtection,
+          records: ListZoneRrsetsResponseRrsetsItemRecordsList,
           zone: S.Number,
         }),
       ).annotate({
         identifier: "ListZoneRrsetsResponseRrsetsItem",
       });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(ListZoneRrsetsResponseRrsetsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -758,7 +940,7 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(21),
+          pagination: ListZoneRrsetsResponseMetaPagination,
         }),
       ).annotate({
         identifier: "ListZoneRrsetsResponseMeta",
@@ -766,8 +948,8 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          rrsets: __S(20),
-          meta: __S(22),
+          rrsets: ListZoneRrsetsResponseRrsetsList,
+          meta: ListZoneRrsetsResponseMeta,
         }),
       ).annotate({ identifier: "ListZoneRrsetsResponse" });
   }
@@ -779,8 +961,8 @@ function __c3(j: number): any {
         S.Struct({
           id_or_name: S.String.pipe(T.Label()),
           rr_name: S.String.pipe(T.Label()),
-          rr_type: S.String.pipe(T.Label()),
-          labels: S.optional(__S(2)),
+          rr_type: UpdateZoneRrsetRequestRrType.pipe(T.Label()),
+          labels: S.optional(UpdateZoneRrsetRequestLabelsMap),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -794,11 +976,11 @@ function __c3(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          type: S.String,
+          type: UpdateZoneRrsetResponseRrsetType,
           ttl: S.NullOr(S.Number),
-          labels: __S(2),
-          protection: __S(4),
-          records: __S(1),
+          labels: UpdateZoneRrsetResponseRrsetLabelsMap,
+          protection: CreateZoneRrsetResponseRrsetProtection,
+          records: UpdateZoneRrsetResponseRrsetRecordsList,
           zone: S.Number,
         }),
       ).annotate({
@@ -807,25 +989,8 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          rrset: __S(25),
+          rrset: UpdateZoneRrsetResponseRrset,
         }),
       ).annotate({ identifier: "UpdateZoneRrsetResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

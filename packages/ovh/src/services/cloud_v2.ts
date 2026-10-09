@@ -8,8 +8,6 @@ import { UnknownOvhError } from "../errors.ts";
 import { OvhProtocol, type OvhOpError, type OvhOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { OvhOpError, OvhOpContext };
 
@@ -47,11 +45,21 @@ export interface PublicCloudInstanceAutobackupDistant {
   /** Target region for cross-region backup */
   region: string;
 }
+const PublicCloudInstanceAutobackupDistant = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<PublicCloudInstanceAutobackupDistant>;
+
 /** Reference to the source instance for an autobackup */
 export interface PublicCloudInstanceAutobackupInstanceRef {
   /** Instance identifier */
   id: string;
 }
+const PublicCloudInstanceAutobackupInstanceRef = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<PublicCloudInstanceAutobackupInstanceRef>;
+
 /** Resource location */
 export interface PublicCloudCommonLocation {
   /** Availability zone within the region */
@@ -59,6 +67,11 @@ export interface PublicCloudCommonLocation {
   /** Region code */
   region: string;
 }
+const PublicCloudCommonLocation = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<PublicCloudCommonLocation>;
+
 /** Target specification for an instance autobackup (all fields, used for creation) */
 export interface PublicCloudInstanceAutobackupTargetSpec {
   /** Cron schedule pattern (e.g. '0 2 * * *') */
@@ -76,18 +89,30 @@ export interface PublicCloudInstanceAutobackupTargetSpec {
   /** Number of backup versions to keep (minimum 1) */
   rotation: number;
 }
+const PublicCloudInstanceAutobackupTargetSpec = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<PublicCloudInstanceAutobackupTargetSpec>;
+
 export interface CreatePublicCloudProjectComputeAutobackupRequest {
   /** Project ID */
   projectId: string;
   /** Desired target specification for the autobackup to create */
   targetSpec: PublicCloudInstanceAutobackupTargetSpec;
 }
+const CreatePublicCloudProjectComputeAutobackupRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreatePublicCloudProjectComputeAutobackupRequest>;
+
 /** State of a single autobackup execution: SUCCESS when the backup completed, ERROR when it failed, RUNNING while in progress, IDLE when scheduled but not yet running. */
 export type PublicCloudInstanceAutobackupExecutionStateEnum =
   | "ERROR"
   | "IDLE"
   | "RUNNING"
   | "SUCCESS";
+const PublicCloudInstanceAutobackupExecutionStateEnum = S.String;
+
 /** A single execution of an instance autobackup, as recorded by the autobackup execution engine when the backup workflow runs */
 export interface PublicCloudInstanceAutobackupExecution {
   /** Error message reported by the autobackup execution engine, populated only when state is ERROR */
@@ -101,9 +126,19 @@ export interface PublicCloudInstanceAutobackupExecution {
   /** Timestamp of the last state update reported by the autobackup execution engine */
   updatedAt?: string | null;
 }
+const PublicCloudInstanceAutobackupExecution = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<PublicCloudInstanceAutobackupExecution>;
+
 /** Last 5 backup executions, newest first. Populated on GET only - null on LIST. */
 export type PublicCloudInstanceAutobackupCurrentStateLastExecutionsList =
   Array<PublicCloudInstanceAutobackupExecution>;
+const PublicCloudInstanceAutobackupCurrentStateLastExecutionsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<PublicCloudInstanceAutobackupCurrentStateLastExecutionsList>;
+
 /** Current state of an instance autobackup as observed from the infrastructure */
 export interface PublicCloudInstanceAutobackupCurrentState {
   /** Cron schedule pattern */
@@ -127,13 +162,25 @@ export interface PublicCloudInstanceAutobackupCurrentState {
   /** OpenStack Mistral workflow name (e.g. ovh.backup_vm or ovh.backup_vm_remote_region) */
   workflowName?: string;
 }
+const PublicCloudInstanceAutobackupCurrentState = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<PublicCloudInstanceAutobackupCurrentState>;
+
 /** Errors that occured on the task */
 export interface CommonTaskError {
   /** Error description */
   message?: string;
 }
+const CommonTaskError = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CommonTaskError>;
+
 /** Errors that occured on the task */
 export type CommonCurrentTaskErrorsList = Array<CommonTaskError>;
+const CommonCurrentTaskErrorsList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CommonCurrentTaskErrorsList>;
+
 /** Current status of a task. A task in ERROR cannot be retried without your inputs. PENDING tasks will be executed as soon as possible. A RUNNING task is currently executing your original request. SCHEDULED is used for tasks that will be executed in the future */
 export type CommonCurrentTaskStatusEnum =
   | "ERROR"
@@ -141,6 +188,8 @@ export type CommonCurrentTaskStatusEnum =
   | "RUNNING"
   | "SCHEDULED"
   | "WAITING_USER_INPUT";
+const CommonCurrentTaskStatusEnum = S.String;
+
 /** Asynchronous operation currently running */
 export interface CommonCurrentTask {
   /** Errors that occured on the task */
@@ -154,8 +203,15 @@ export interface CommonCurrentTask {
   /** Type of the current task */
   type?: string;
 }
+const CommonCurrentTask = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CommonCurrentTask>;
+
 /** Ongoing asynchronous tasks related to the autobackup */
 export type PublicCloudInstanceAutobackupCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudInstanceAutobackupCurrentTasksList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<PublicCloudInstanceAutobackupCurrentTasksList>;
+
 /** ResourceStatusEnum */
 export type CommonResourceStatusEnum =
   | "CREATING"
@@ -166,6 +222,8 @@ export type CommonResourceStatusEnum =
   | "SUSPENDED"
   | "UNKNOWN"
   | "UPDATING";
+const CommonResourceStatusEnum = S.String;
+
 /** A Public Cloud instance autobackup (Mistral crontrigger for scheduled automatic backups) */
 export interface PublicCloudInstanceAutobackup {
   /** Computed hash representing the current target specification value */
@@ -185,11 +243,19 @@ export interface PublicCloudInstanceAutobackup {
   /** Last update date of the autobackup */
   updatedAt?: string;
 }
+const PublicCloudInstanceAutobackup = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<PublicCloudInstanceAutobackup>;
+
 /** Reference to the source instance for a backup */
 export interface PublicCloudInstanceBackupInstanceRef {
   /** Instance unique identifier */
   id: string;
 }
+const PublicCloudInstanceBackupInstanceRef =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudInstanceBackupInstanceRef>;
+
 /** Target specification for an instance backup */
 export interface PublicCloudInstanceBackupTargetSpec {
   /** Source instance reference */
@@ -199,12 +265,22 @@ export interface PublicCloudInstanceBackupTargetSpec {
   /** Desired backup name */
   name: string;
 }
+const PublicCloudInstanceBackupTargetSpec = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<PublicCloudInstanceBackupTargetSpec>;
+
 export interface CreatePublicCloudProjectComputeBackupRequest {
   /** Project ID */
   projectId: string;
   /** Desired target specification for the backup to create */
   targetSpec: PublicCloudInstanceBackupTargetSpec;
 }
+const CreatePublicCloudProjectComputeBackupRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreatePublicCloudProjectComputeBackupRequest>;
+
 /** Possible statuses for an instance image */
 export type PublicCloudInstanceImageStatusEnum =
   | "ACTIVE"
@@ -215,8 +291,12 @@ export type PublicCloudInstanceImageStatusEnum =
   | "PENDING_DELETE"
   | "QUEUED"
   | "SAVING";
+const PublicCloudInstanceImageStatusEnum = S.String;
+
 /** Possible visibility levels for an instance image */
 export type PublicCloudInstanceImageVisibilityEnum = "COMMUNITY" | "PRIVATE" | "PUBLIC" | "SHARED";
+const PublicCloudInstanceImageVisibilityEnum = S.String;
+
 /** Current state of an instance backup as observed from the infrastructure */
 export interface PublicCloudInstanceBackupCurrentState {
   /** Source instance reference */
@@ -236,8 +316,16 @@ export interface PublicCloudInstanceBackupCurrentState {
   /** Image visibility */
   visibility?: PublicCloudInstanceImageVisibilityEnum;
 }
+const PublicCloudInstanceBackupCurrentState = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<PublicCloudInstanceBackupCurrentState>;
+
 /** Ongoing asynchronous tasks related to the backup */
 export type PublicCloudInstanceBackupCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudInstanceBackupCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudInstanceBackupCurrentTasksList>;
+
 /** A Public Cloud instance backup (Glance image created from an instance) */
 export interface PublicCloudInstanceBackup {
   /** Computed hash representing the current target specification value */
@@ -257,21 +345,35 @@ export interface PublicCloudInstanceBackup {
   /** Last update date of the backup */
   updatedAt?: string;
 }
+const PublicCloudInstanceBackup = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<PublicCloudInstanceBackup>;
+
 /** Reference to a flavor for instance target spec */
 export interface PublicCloudInstanceInstanceFlavorRef {
   /** Flavor identifier */
   id: string;
 }
+const PublicCloudInstanceInstanceFlavorRef =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudInstanceInstanceFlavorRef>;
+
 /** Reference to an instance group */
 export interface PublicCloudInstanceInstanceGroupRef {
   /** Instance group identifier */
   id: string;
 }
+const PublicCloudInstanceInstanceGroupRef =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudInstanceInstanceGroupRef>;
+
 /** Reference to an image for instance target spec */
 export interface PublicCloudInstanceInstanceImageRef {
   /** Image identifier */
   id: string;
 }
+const PublicCloudInstanceInstanceImageRef =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudInstanceInstanceImageRef>;
+
 /** Instance location */
 export type PublicCloudInstanceInstanceLocation = PublicCloudCommonLocation;
 /** Reference to a network for instance target spec */
@@ -285,19 +387,39 @@ export interface PublicCloudInstanceInstanceNetworkRef {
   /** Subnet identifier (required for private networks) */
   subnetId?: string | null;
 }
+const PublicCloudInstanceInstanceNetworkRef = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<PublicCloudInstanceInstanceNetworkRef>;
+
 /** Network references */
 export type PublicCloudInstanceInstanceTargetSpecNetworksList =
   Array<PublicCloudInstanceInstanceNetworkRef>;
+const PublicCloudInstanceInstanceTargetSpecNetworksList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<PublicCloudInstanceInstanceTargetSpecNetworksList>;
+
 /** Desired power state for an instance */
 export type PublicCloudInstancePowerStateEnum = "ACTIVE" | "RESCUE" | "SHELVED" | "SHUTOFF";
+const PublicCloudInstancePowerStateEnum = S.String;
+
 /** Reference to a security group */
 export interface PublicCloudSecurityGroupSecurityGroupRef {
   /** Security group identifier */
   id: string;
 }
+const PublicCloudSecurityGroupSecurityGroupRef =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudSecurityGroupSecurityGroupRef>;
+
 /** Security group references to apply to all instance ports */
 export type PublicCloudInstanceInstanceTargetSpecSecurityGroupsList =
   Array<PublicCloudSecurityGroupSecurityGroupRef>;
+const PublicCloudInstanceInstanceTargetSpecSecurityGroupsList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<PublicCloudInstanceInstanceTargetSpecSecurityGroupsList>;
+
 /** Reference to a volume for instance target spec */
 export interface PublicCloudInstanceInstanceVolumeRef {
   /** Volume identifier */
@@ -306,6 +428,9 @@ export interface PublicCloudInstanceInstanceVolumeRef {
 /** Volume references */
 export type PublicCloudInstanceInstanceTargetSpecVolumesList =
   Array<PublicCloudInstanceInstanceVolumeRef>;
+const PublicCloudInstanceInstanceTargetSpecVolumesList =
+  PublicCloudInstanceInstanceTargetSpecSecurityGroupsList as any as S.Schema<PublicCloudInstanceInstanceTargetSpecVolumesList>;
+
 /** Target specification for an instance */
 export interface PublicCloudInstanceInstanceTargetSpec {
   /** Flavor reference */
@@ -329,12 +454,22 @@ export interface PublicCloudInstanceInstanceTargetSpec {
   /** Volume references */
   volumes: PublicCloudInstanceInstanceTargetSpecVolumesList | null;
 }
+const PublicCloudInstanceInstanceTargetSpec = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<PublicCloudInstanceInstanceTargetSpec>;
+
 export interface CreatePublicCloudProjectComputeInstanceRequest {
   /** Project ID */
   projectId: string;
   /** Desired target specification for the instance to create */
   targetSpec: PublicCloudInstanceInstanceTargetSpec;
 }
+const CreatePublicCloudProjectComputeInstanceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreatePublicCloudProjectComputeInstanceRequest>;
+
 /** Flavor details of an instance */
 export interface PublicCloudInstanceInstanceFlavor {
   /** Local disk size in GB */
@@ -348,6 +483,11 @@ export interface PublicCloudInstanceInstanceFlavor {
   /** Number of vCPUs */
   vcpus?: number;
 }
+const PublicCloudInstanceInstanceFlavor = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<PublicCloudInstanceInstanceFlavor>;
+
 /** Image details of an instance */
 export interface PublicCloudInstanceInstanceImage {
   /** Whether the image is deprecated */
@@ -361,6 +501,11 @@ export interface PublicCloudInstanceInstanceImage {
   /** Image status */
   status?: PublicCloudInstanceImageStatusEnum | null;
 }
+const PublicCloudInstanceInstanceImage = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<PublicCloudInstanceInstanceImage>;
+
 /** An IP address of an instance network interface */
 export interface PublicCloudInstanceInstanceNetworkAddress {
   /** IP address */
@@ -372,9 +517,19 @@ export interface PublicCloudInstanceInstanceNetworkAddress {
   /** IP version */
   version?: number;
 }
+const PublicCloudInstanceInstanceNetworkAddress = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<PublicCloudInstanceInstanceNetworkAddress>;
+
 /** IP addresses */
 export type PublicCloudInstanceInstanceNetworkAddressesList =
   Array<PublicCloudInstanceInstanceNetworkAddress>;
+const PublicCloudInstanceInstanceNetworkAddressesList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<PublicCloudInstanceInstanceNetworkAddressesList>;
+
 /** Network attached to the instance */
 export interface PublicCloudInstanceInstanceNetwork {
   /** IP addresses */
@@ -390,12 +545,25 @@ export interface PublicCloudInstanceInstanceNetwork {
   /** Subnet identifier */
   subnetId?: string | null;
 }
+const PublicCloudInstanceInstanceNetwork = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<PublicCloudInstanceInstanceNetwork>;
+
 /** List of instance networks */
 export type PublicCloudInstanceInstanceCurrentStateNetworksList =
   Array<PublicCloudInstanceInstanceNetwork>;
+const PublicCloudInstanceInstanceCurrentStateNetworksList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<PublicCloudInstanceInstanceCurrentStateNetworksList>;
+
 /** Security group references attached to the instance */
 export type PublicCloudInstanceInstanceCurrentStateSecurityGroupsList =
   Array<PublicCloudSecurityGroupSecurityGroupRef>;
+const PublicCloudInstanceInstanceCurrentStateSecurityGroupsList =
+  PublicCloudInstanceInstanceTargetSpecSecurityGroupsList as any as S.Schema<PublicCloudInstanceInstanceCurrentStateSecurityGroupsList>;
+
 /** Volume attached to the instance */
 export interface PublicCloudInstanceInstanceVolume {
   /** Volume identifier */
@@ -405,9 +573,19 @@ export interface PublicCloudInstanceInstanceVolume {
   /** Volume size in GB */
   size?: number;
 }
+const PublicCloudInstanceInstanceVolume = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<PublicCloudInstanceInstanceVolume>;
+
 /** Attached block volumes */
 export type PublicCloudInstanceInstanceCurrentStateVolumesList =
   Array<PublicCloudInstanceInstanceVolume>;
+const PublicCloudInstanceInstanceCurrentStateVolumesList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<PublicCloudInstanceInstanceCurrentStateVolumesList>;
+
 /** Current state details of an instance */
 export interface PublicCloudInstanceInstanceCurrentState {
   /** Flavor details */
@@ -439,8 +617,16 @@ export interface PublicCloudInstanceInstanceCurrentState {
   /** Attached block volumes */
   volumes?: PublicCloudInstanceInstanceCurrentStateVolumesList | null;
 }
+const PublicCloudInstanceInstanceCurrentState = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<PublicCloudInstanceInstanceCurrentState>;
+
 /** Ongoing asynchronous tasks related to the instance */
 export type PublicCloudInstanceInstanceCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudInstanceInstanceCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudInstanceInstanceCurrentTasksList>;
+
 /** A Public Cloud compute instance */
 export interface PublicCloudInstanceInstance {
   /** Computed hash representing the current target specification value */
@@ -460,6 +646,11 @@ export interface PublicCloudInstanceInstance {
   /** Last update date of the instance */
   updatedAt?: string;
 }
+const PublicCloudInstanceInstance = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<PublicCloudInstanceInstance>;
+
 /** Optional parameters for an instance action */
 export interface PublicCloudInstanceInstanceActionParameters {
   /** Whether to perform a hard reboot (only for REBOOT action) */
@@ -467,6 +658,11 @@ export interface PublicCloudInstanceInstanceActionParameters {
   /** Rescue image ID (only for RESCUE action) */
   imageId?: string | null;
 }
+const PublicCloudInstanceInstanceActionParameters = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<PublicCloudInstanceInstanceActionParameters>;
+
 /** Supported imperative action types for an instance */
 export type PublicCloudInstanceInstanceActionTypeEnum =
   | "LOCK"
@@ -474,6 +670,8 @@ export type PublicCloudInstanceInstanceActionTypeEnum =
   | "RESCUE"
   | "UNLOCK"
   | "UNRESCUE";
+const PublicCloudInstanceInstanceActionTypeEnum = S.String;
+
 export interface CreatePublicCloudProjectComputeInstanceActionRequest {
   /** Project ID */
   projectId: string;
@@ -486,14 +684,23 @@ export interface CreatePublicCloudProjectComputeInstanceActionRequest {
   /** The action to perform */
   type: PublicCloudInstanceInstanceActionTypeEnum | (string & {});
 }
+const CreatePublicCloudProjectComputeInstanceActionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreatePublicCloudProjectComputeInstanceActionRequest>;
+
 /** Supported remote console protocols */
 export type PublicCloudInstanceRemoteConsoleProtocolEnum = "SERIAL" | "SPICE" | "VNC";
+const PublicCloudInstanceRemoteConsoleProtocolEnum = S.String;
+
 /** Supported remote console display types */
 export type PublicCloudInstanceRemoteConsoleTypeEnum =
   | "NOVNC"
   | "SERIAL"
   | "SPICE_HTML5"
   | "XVPVNC";
+const PublicCloudInstanceRemoteConsoleTypeEnum = S.String;
+
 export interface CreatePublicCloudProjectComputeInstanceConsoleRequest {
   /** Project ID */
   projectId: string;
@@ -504,6 +711,11 @@ export interface CreatePublicCloudProjectComputeInstanceConsoleRequest {
   /** The display type for the remote console (NOVNC, XVPVNC, SPICE_HTML5, or SERIAL) */
   type: PublicCloudInstanceRemoteConsoleTypeEnum | (string & {});
 }
+const CreatePublicCloudProjectComputeInstanceConsoleRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CreatePublicCloudProjectComputeInstanceConsoleRequest>;
+
 /** A remote console session for an instance */
 export interface PublicCloudInstanceRemoteConsole {
   /** The remote console protocol */
@@ -513,8 +725,15 @@ export interface PublicCloudInstanceRemoteConsole {
   /** The URL to connect to the remote console */
   url?: string;
 }
+const PublicCloudInstanceRemoteConsole = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<PublicCloudInstanceRemoteConsole>;
+
 /** Placement policy for an instance group */
 export type PublicCloudInstanceGroupPolicyEnum = "AFFINITY" | "ANTI_AFFINITY";
+const PublicCloudInstanceGroupPolicyEnum = S.String;
+
 /** Target specification for an instance group */
 export interface PublicCloudInstanceGroupInstanceGroupTargetSpec {
   /** Target location */
@@ -524,20 +743,40 @@ export interface PublicCloudInstanceGroupInstanceGroupTargetSpec {
   /** Placement policy */
   policy: PublicCloudInstanceGroupPolicyEnum | (string & {});
 }
+const PublicCloudInstanceGroupInstanceGroupTargetSpec = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<PublicCloudInstanceGroupInstanceGroupTargetSpec>;
+
 export interface CreatePublicCloudProjectComputeInstanceGroupRequest {
   /** Project ID */
   projectId: string;
   /** Desired target specification for the instance group to create */
   targetSpec: PublicCloudInstanceGroupInstanceGroupTargetSpec;
 }
+const CreatePublicCloudProjectComputeInstanceGroupRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreatePublicCloudProjectComputeInstanceGroupRequest>;
+
 /** Reference to an instance member of a group */
 export interface PublicCloudInstanceGroupInstanceGroupMemberRef {
   /** Instance identifier */
   id?: string;
 }
+const PublicCloudInstanceGroupInstanceGroupMemberRef = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<PublicCloudInstanceGroupInstanceGroupMemberRef>;
+
 /** Instances in this group */
 export type PublicCloudInstanceGroupInstanceGroupCurrentStateMembersList =
   Array<PublicCloudInstanceGroupInstanceGroupMemberRef>;
+const PublicCloudInstanceGroupInstanceGroupCurrentStateMembersList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<PublicCloudInstanceGroupInstanceGroupCurrentStateMembersList>;
+
 /** Current state of an instance group */
 export interface PublicCloudInstanceGroupInstanceGroupCurrentState {
   /** Deployment location */
@@ -549,8 +788,16 @@ export interface PublicCloudInstanceGroupInstanceGroupCurrentState {
   /** Placement policy */
   policy?: PublicCloudInstanceGroupPolicyEnum;
 }
+const PublicCloudInstanceGroupInstanceGroupCurrentState = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<PublicCloudInstanceGroupInstanceGroupCurrentState>;
+
 /** Ongoing asynchronous tasks related to the instance group */
 export type PublicCloudInstanceGroupInstanceGroupCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudInstanceGroupInstanceGroupCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudInstanceGroupInstanceGroupCurrentTasksList>;
+
 /** A Public Cloud instance group (server group with placement policy) */
 export interface PublicCloudInstanceGroupInstanceGroup {
   /** Computed hash representing the current target specification value */
@@ -570,6 +817,11 @@ export interface PublicCloudInstanceGroupInstanceGroup {
   /** Last update date of the instance group */
   updatedAt?: string;
 }
+const PublicCloudInstanceGroupInstanceGroup = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<PublicCloudInstanceGroupInstanceGroup>;
+
 /** Floating IP location */
 export type PublicCloudFloatingIpFloatingIPLocation = PublicCloudCommonLocation;
 /** Desired specification for a floating IP */
@@ -579,19 +831,34 @@ export interface PublicCloudFloatingIpFloatingIPTargetSpec {
   /** Target location */
   location: PublicCloudCommonLocation;
 }
+const PublicCloudFloatingIpFloatingIPTargetSpec = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<PublicCloudFloatingIpFloatingIPTargetSpec>;
+
 export interface CreatePublicCloudProjectFloatingIpRequest {
   /** Project ID */
   projectId: string;
   /** Desired target specification for the floating IP to create */
   targetSpec: PublicCloudFloatingIpFloatingIPTargetSpec;
 }
+const CreatePublicCloudProjectFloatingIpRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreatePublicCloudProjectFloatingIpRequest>;
+
 /** A network reference for a floating IP */
 export interface PublicCloudFloatingIpFloatingIPNetwork {
   /** Network ID */
   id?: string;
 }
+const PublicCloudFloatingIpFloatingIPNetwork =
+  PublicCloudInstanceGroupInstanceGroupMemberRef as any as S.Schema<PublicCloudFloatingIpFloatingIPNetwork>;
+
 /** OpenStack floating IP status */
 export type PublicCloudFloatingIpFloatingIPStatusEnum = "ACTIVE" | "DOWN" | "ERROR";
+const PublicCloudFloatingIpFloatingIPStatusEnum = S.String;
+
 /** Current state of a floating IP from OpenStack */
 export interface PublicCloudFloatingIpFloatingIPCurrentState {
   /** Floating IP description */
@@ -605,8 +872,16 @@ export interface PublicCloudFloatingIpFloatingIPCurrentState {
   /** OpenStack floating IP status */
   status?: PublicCloudFloatingIpFloatingIPStatusEnum;
 }
+const PublicCloudFloatingIpFloatingIPCurrentState = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<PublicCloudFloatingIpFloatingIPCurrentState>;
+
 /** Ongoing asynchronous tasks related to the floating IP */
 export type PublicCloudFloatingIpFloatingIPCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudFloatingIpFloatingIPCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudFloatingIpFloatingIPCurrentTasksList>;
+
 /** A Public Cloud floating IP */
 export interface PublicCloudFloatingIpFloatingIP {
   /** Computed hash representing the current target specification value */
@@ -626,8 +901,15 @@ export interface PublicCloudFloatingIpFloatingIP {
   /** Last update date of the floating IP */
   updatedAt?: string;
 }
+const PublicCloudFloatingIpFloatingIP = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<PublicCloudFloatingIpFloatingIP>;
+
 /** External gateway sizing model */
 export type PublicCloudGatewayExternalGatewayModelEnum = "2XL" | "3XL" | "L" | "M" | "S" | "XL";
+const PublicCloudGatewayExternalGatewayModelEnum = S.String;
+
 /** External gateway configuration */
 export interface PublicCloudGatewayExternalGateway {
   /** Whether the external gateway is enabled */
@@ -635,6 +917,11 @@ export interface PublicCloudGatewayExternalGateway {
   /** External gateway sizing model. Present only when enabled is true. */
   model?: PublicCloudGatewayExternalGatewayModelEnum | (string & {}) | null;
 }
+const PublicCloudGatewayExternalGateway = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<PublicCloudGatewayExternalGateway>;
+
 /** Gateway location */
 export type PublicCloudGatewayGatewayLocation = PublicCloudCommonLocation;
 /** A subnet reference for a gateway */
@@ -644,6 +931,9 @@ export interface PublicCloudGatewayGatewaySubnet {
 }
 /** Subnets to attach as router interfaces */
 export type PublicCloudGatewayGatewayTargetSpecSubnetsList = Array<PublicCloudGatewayGatewaySubnet>;
+const PublicCloudGatewayGatewayTargetSpecSubnetsList =
+  PublicCloudInstanceInstanceTargetSpecSecurityGroupsList as any as S.Schema<PublicCloudGatewayGatewayTargetSpecSubnetsList>;
+
 /** Desired specification for a gateway */
 export interface PublicCloudGatewayGatewayTargetSpec {
   /** Gateway description */
@@ -657,17 +947,32 @@ export interface PublicCloudGatewayGatewayTargetSpec {
   /** Subnets to attach as router interfaces */
   subnets?: PublicCloudGatewayGatewayTargetSpecSubnetsList | null;
 }
+const PublicCloudGatewayGatewayTargetSpec = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<PublicCloudGatewayGatewayTargetSpec>;
+
 export interface CreatePublicCloudProjectGatewayRequest {
   /** Project ID */
   projectId: string;
   /** Desired target specification for the gateway to create */
   targetSpec: PublicCloudGatewayGatewayTargetSpec;
 }
+const CreatePublicCloudProjectGatewayRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreatePublicCloudProjectGatewayRequest>;
+
 /** OpenStack router status */
 export type PublicCloudGatewayGatewayStatusEnum = "ACTIVE" | "BUILD" | "DOWN" | "ERROR";
+const PublicCloudGatewayGatewayStatusEnum = S.String;
+
 /** Currently attached subnets */
 export type PublicCloudGatewayGatewayCurrentStateSubnetsList =
   Array<PublicCloudGatewayGatewaySubnet>;
+const PublicCloudGatewayGatewayCurrentStateSubnetsList =
+  PublicCloudInstanceInstanceTargetSpecSecurityGroupsList as any as S.Schema<PublicCloudGatewayGatewayCurrentStateSubnetsList>;
+
 /** Current state of a gateway from OpenStack */
 export interface PublicCloudGatewayGatewayCurrentState {
   /** Gateway description */
@@ -685,8 +990,16 @@ export interface PublicCloudGatewayGatewayCurrentState {
   /** Currently attached subnets */
   subnets?: PublicCloudGatewayGatewayCurrentStateSubnetsList | null;
 }
+const PublicCloudGatewayGatewayCurrentState = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<PublicCloudGatewayGatewayCurrentState>;
+
 /** Ongoing asynchronous tasks related to the gateway */
 export type PublicCloudGatewayGatewayCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudGatewayGatewayCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudGatewayGatewayCurrentTasksList>;
+
 /** A Public Cloud gateway (OpenStack router) */
 export interface PublicCloudGatewayGateway {
   /** Computed hash representing the current target specification value */
@@ -706,11 +1019,19 @@ export interface PublicCloudGatewayGateway {
   /** Last update date of the gateway */
   updatedAt?: string;
 }
+const PublicCloudGatewayGateway = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<PublicCloudGatewayGateway>;
+
 /** Reference to a secret by ID */
 export interface PublicCloudKeyManagerContainerSecretRefSecret {
   /** Unique identifier of the referenced secret */
   id: string;
 }
+const PublicCloudKeyManagerContainerSecretRefSecret =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudKeyManagerContainerSecretRefSecret>;
+
 /** A secret reference within a key manager container */
 export interface PublicCloudKeyManagerContainerSecretRef {
   /** Role name of the secret reference (e.g. private_key, certificate, public_key) */
@@ -718,11 +1039,23 @@ export interface PublicCloudKeyManagerContainerSecretRef {
   /** Reference to the secret */
   secret: PublicCloudKeyManagerContainerSecretRefSecret;
 }
+const PublicCloudKeyManagerContainerSecretRef = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<PublicCloudKeyManagerContainerSecretRef>;
+
 /** Secret references to include in the container */
 export type PublicCloudKeyManagerContainerTargetSpecSecretRefsList =
   Array<PublicCloudKeyManagerContainerSecretRef>;
+const PublicCloudKeyManagerContainerTargetSpecSecretRefsList = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<PublicCloudKeyManagerContainerTargetSpecSecretRefsList>;
+
 /** Possible types for a key manager container */
 export type PublicCloudKeyManagerContainerTypeEnum = "CERTIFICATE" | "GENERIC" | "RSA";
+const PublicCloudKeyManagerContainerTypeEnum = S.String;
+
 /** Target specification for a key manager container */
 export interface PublicCloudKeyManagerContainerTargetSpec {
   /** Target location */
@@ -734,17 +1067,32 @@ export interface PublicCloudKeyManagerContainerTargetSpec {
   /** Type of the container */
   type: PublicCloudKeyManagerContainerTypeEnum | (string & {});
 }
+const PublicCloudKeyManagerContainerTargetSpec = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<PublicCloudKeyManagerContainerTargetSpec>;
+
 export interface CreatePublicCloudProjectKeyManagerContainerRequest {
   /** Project ID */
   projectId: string;
   /** Desired target specification for the container */
   targetSpec: PublicCloudKeyManagerContainerTargetSpec;
 }
+const CreatePublicCloudProjectKeyManagerContainerRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreatePublicCloudProjectKeyManagerContainerRequest>;
+
 /** Current secret references in the container */
 export type PublicCloudKeyManagerContainerCurrentStateSecretRefsList =
   Array<PublicCloudKeyManagerContainerSecretRef>;
+const PublicCloudKeyManagerContainerCurrentStateSecretRefsList =
+  PublicCloudKeyManagerContainerTargetSpecSecretRefsList as any as S.Schema<PublicCloudKeyManagerContainerCurrentStateSecretRefsList>;
+
 /** Status of a Key Manager container in OpenStack */
 export type PublicCloudKeyManagerContainerStatusEnum = "ACTIVE" | "ERROR";
+const PublicCloudKeyManagerContainerStatusEnum = S.String;
+
 /** Current state of a key manager container as observed from the infrastructure */
 export interface PublicCloudKeyManagerContainerCurrentState {
   /** Identifier of the user who created the container */
@@ -760,8 +1108,16 @@ export interface PublicCloudKeyManagerContainerCurrentState {
   /** Current container type */
   type?: PublicCloudKeyManagerContainerTypeEnum;
 }
+const PublicCloudKeyManagerContainerCurrentState = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<PublicCloudKeyManagerContainerCurrentState>;
+
 /** Ongoing asynchronous tasks related to the container */
 export type PublicCloudKeyManagerContainerCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudKeyManagerContainerCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudKeyManagerContainerCurrentTasksList>;
+
 /** A Public Cloud key manager container */
 export interface PublicCloudKeyManagerContainer {
   /** Computed hash representing the current target specification value */
@@ -781,14 +1137,23 @@ export interface PublicCloudKeyManagerContainer {
   /** Last update date of the container */
   updatedAt?: string;
 }
+const PublicCloudKeyManagerContainer = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<PublicCloudKeyManagerContainer>;
+
 /** Type of resource consuming a Key Manager secret */
 export type PublicCloudKeyManagerConsumerResourceTypeEnum = "IMAGE" | "INSTANCE" | "LOADBALANCER";
+const PublicCloudKeyManagerConsumerResourceTypeEnum = S.String;
+
 /** Type of service consuming a Key Manager secret */
 export type PublicCloudKeyManagerConsumerServiceEnum =
   | "COMPUTE"
   | "IMAGE"
   | "LOADBALANCER"
   | "NETWORK";
+const PublicCloudKeyManagerConsumerServiceEnum = S.String;
+
 export interface CreatePublicCloudProjectKeyManagerContainerConsumerRequest {
   /** Project ID */
   projectId: string;
@@ -801,6 +1166,11 @@ export interface CreatePublicCloudProjectKeyManagerContainerConsumerRequest {
   /** OpenStack service type of the consumer */
   service: PublicCloudKeyManagerConsumerServiceEnum | (string & {});
 }
+const CreatePublicCloudProjectKeyManagerContainerConsumerRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<CreatePublicCloudProjectKeyManagerContainerConsumerRequest>;
+
 /** A consumer registered for a Key Manager container */
 export interface PublicCloudKeyManagerContainerConsumer {
   /** Computed consumer identifier */
@@ -812,22 +1182,40 @@ export interface PublicCloudKeyManagerContainerConsumer {
   /** OpenStack service type of the consumer */
   service?: PublicCloudKeyManagerConsumerServiceEnum;
 }
+const PublicCloudKeyManagerContainerConsumer = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<PublicCloudKeyManagerContainerConsumer>;
+
 /** Algorithm associated with a Key Manager secret */
 export type PublicCloudKeyManagerAlgorithmEnum = "AES" | "DH" | "DSA" | "EC" | "RSA";
+const PublicCloudKeyManagerAlgorithmEnum = S.String;
+
 /** Bit length of a Key Manager secret */
 export type PublicCloudKeyManagerBitLengthEnum = 128 | 256 | 512 | 1024 | 2048 | 4096;
+const PublicCloudKeyManagerBitLengthEnum = S.Number;
+
 /** Key-value metadata pairs for the secret */
 export type PublicCloudKeyManagerSecretTargetSpecMetadataMap = {
   [key: string]: string | undefined;
 };
+const PublicCloudKeyManagerSecretTargetSpecMetadataMap = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<PublicCloudKeyManagerSecretTargetSpecMetadataMap>;
+
 /** Block cipher mode associated with a Key Manager secret */
 export type PublicCloudKeyManagerModeEnum = "CBC" | "CTR";
+const PublicCloudKeyManagerModeEnum = S.String;
+
 /** Content type of a Key Manager secret payload */
 export type PublicCloudKeyManagerPayloadContentTypeEnum =
   | "APPLICATION_OCTET_STREAM"
   | "APPLICATION_PKCS8"
   | "APPLICATION_PKIX_CERT"
   | "TEXT_PLAIN";
+const PublicCloudKeyManagerPayloadContentTypeEnum = S.String;
+
 /** Type of a Key Manager secret */
 export type PublicCloudKeyManagerSecretTypeEnum =
   | "CERTIFICATE"
@@ -836,6 +1224,8 @@ export type PublicCloudKeyManagerSecretTypeEnum =
   | "PRIVATE"
   | "PUBLIC"
   | "SYMMETRIC";
+const PublicCloudKeyManagerSecretTypeEnum = S.String;
+
 /** Desired specification for a Key Manager secret */
 export interface PublicCloudKeyManagerSecretTargetSpec {
   /** Algorithm associated with the secret */
@@ -859,18 +1249,33 @@ export interface PublicCloudKeyManagerSecretTargetSpec {
   /** Type of the secret */
   secretType: PublicCloudKeyManagerSecretTypeEnum | (string & {});
 }
+const PublicCloudKeyManagerSecretTargetSpec = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<PublicCloudKeyManagerSecretTargetSpec>;
+
 export interface CreatePublicCloudProjectKeyManagerSecretRequest {
   /** Project ID */
   projectId: string;
   /** Desired target specification for the secret to create */
   targetSpec: PublicCloudKeyManagerSecretTargetSpec;
 }
+const CreatePublicCloudProjectKeyManagerSecretRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<CreatePublicCloudProjectKeyManagerSecretRequest>;
+
 /** Key-value metadata pairs for the secret */
 export type PublicCloudKeyManagerSecretCurrentStateMetadataMap = {
   [key: string]: string | undefined;
 };
+const PublicCloudKeyManagerSecretCurrentStateMetadataMap =
+  PublicCloudKeyManagerSecretTargetSpecMetadataMap as any as S.Schema<PublicCloudKeyManagerSecretCurrentStateMetadataMap>;
+
 /** Status of a Key Manager secret in OpenStack */
 export type PublicCloudKeyManagerSecretStatusEnum = "ACTIVE" | "ERROR";
+const PublicCloudKeyManagerSecretStatusEnum = S.String;
+
 /** Current state of a Key Manager secret from OpenStack */
 export interface PublicCloudKeyManagerSecretCurrentState {
   /** Algorithm associated with the secret */
@@ -896,8 +1301,16 @@ export interface PublicCloudKeyManagerSecretCurrentState {
   /** OpenStack status of the secret */
   status?: PublicCloudKeyManagerSecretStatusEnum;
 }
+const PublicCloudKeyManagerSecretCurrentState = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<PublicCloudKeyManagerSecretCurrentState>;
+
 /** Ongoing asynchronous tasks related to the secret */
 export type PublicCloudKeyManagerSecretCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudKeyManagerSecretCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudKeyManagerSecretCurrentTasksList>;
+
 /** A Public Cloud Key Manager secret */
 export interface PublicCloudKeyManagerSecret {
   /** Computed hash representing the current target specification value */
@@ -917,6 +1330,11 @@ export interface PublicCloudKeyManagerSecret {
   /** Last update date of the secret */
   updatedAt?: string;
 }
+const PublicCloudKeyManagerSecret = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<PublicCloudKeyManagerSecret>;
+
 export interface CreatePublicCloudProjectKeyManagerSecretConsumerRequest {
   /** Project ID */
   projectId: string;
@@ -929,6 +1347,11 @@ export interface CreatePublicCloudProjectKeyManagerSecretConsumerRequest {
   /** OpenStack service type of the consumer */
   service: PublicCloudKeyManagerConsumerServiceEnum | (string & {});
 }
+const CreatePublicCloudProjectKeyManagerSecretConsumerRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<CreatePublicCloudProjectKeyManagerSecretConsumerRequest>;
+
 /** A consumer registered for a Key Manager secret */
 export interface PublicCloudKeyManagerSecretConsumer {
   /** Computed consumer identifier */
@@ -940,34 +1363,60 @@ export interface PublicCloudKeyManagerSecretConsumer {
   /** OpenStack service type of the consumer */
   service?: PublicCloudKeyManagerConsumerServiceEnum;
 }
+const PublicCloudKeyManagerSecretConsumer =
+  PublicCloudKeyManagerContainerConsumer as any as S.Schema<PublicCloudKeyManagerSecretConsumer>;
+
 export interface CreatePublicCloudProjectKeyManagerSecretPayloadRequest {
   /** Project ID */
   projectId: string;
   /** Secret ID */
   secretId: string;
 }
+const CreatePublicCloudProjectKeyManagerSecretPayloadRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<CreatePublicCloudProjectKeyManagerSecretPayloadRequest>;
+
 /** Payload content of a Key Manager secret */
 export interface PublicCloudKeyManagerSecretPayload {
   /** Secret payload data */
   payload?: string;
 }
+const PublicCloudKeyManagerSecretPayload = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<PublicCloudKeyManagerSecretPayload>;
+
 /** Available Octavia load balancer flavor names */
 export type PublicCloudLoadbalancerLoadbalancerFlavorNameEnum = "LARGE" | "MEDIUM" | "SMALL" | "XL";
+const PublicCloudLoadbalancerLoadbalancerFlavorNameEnum = S.String;
+
 /** Reference to an Octavia flavor by name */
 export interface PublicCloudLoadbalancerLoadbalancerFlavorRef {
   /** Octavia flavor name */
   name: PublicCloudLoadbalancerLoadbalancerFlavorNameEnum | (string & {});
 }
+const PublicCloudLoadbalancerLoadbalancerFlavorRef = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<PublicCloudLoadbalancerLoadbalancerFlavorRef>;
+
 /** Reference to a network */
 export interface PublicCloudLoadbalancerLoadbalancerNetworkRef {
   /** Network identifier */
   id: string;
 }
+const PublicCloudLoadbalancerLoadbalancerNetworkRef =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudLoadbalancerLoadbalancerNetworkRef>;
+
 /** Reference to a subnet */
 export interface PublicCloudLoadbalancerLoadbalancerSubnetRef {
   /** Subnet identifier */
   id: string;
 }
+const PublicCloudLoadbalancerLoadbalancerSubnetRef =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudLoadbalancerLoadbalancerSubnetRef>;
+
 /** Desired specification for a load balancer */
 export interface PublicCloudLoadbalancerLoadbalancerTargetSpec {
   /** Load balancer description */
@@ -983,12 +1432,22 @@ export interface PublicCloudLoadbalancerLoadbalancerTargetSpec {
   /** Subnet for VIP allocation */
   vipSubnet: PublicCloudLoadbalancerLoadbalancerSubnetRef;
 }
+const PublicCloudLoadbalancerLoadbalancerTargetSpec = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<PublicCloudLoadbalancerLoadbalancerTargetSpec>;
+
 export interface CreatePublicCloudProjectLoadbalancerRequest {
   /** Project ID */
   projectId: string;
   /** Desired target specification for the load balancer to create */
   targetSpec: PublicCloudLoadbalancerLoadbalancerTargetSpec;
 }
+const CreatePublicCloudProjectLoadbalancerRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<CreatePublicCloudProjectLoadbalancerRequest>;
+
 /** Operating status of a load balancer */
 export type PublicCloudLoadbalancerLoadbalancerOperatingStatusEnum =
   | "DEGRADED"
@@ -997,6 +1456,8 @@ export type PublicCloudLoadbalancerLoadbalancerOperatingStatusEnum =
   | "NO_MONITOR"
   | "OFFLINE"
   | "ONLINE";
+const PublicCloudLoadbalancerLoadbalancerOperatingStatusEnum = S.String;
+
 /** Provisioning status of a load balancer in OpenStack */
 export type PublicCloudLoadbalancerLoadbalancerProvisioningStatusEnum =
   | "ACTIVE"
@@ -1005,6 +1466,8 @@ export type PublicCloudLoadbalancerLoadbalancerProvisioningStatusEnum =
   | "PENDING_CREATE"
   | "PENDING_DELETE"
   | "PENDING_UPDATE";
+const PublicCloudLoadbalancerLoadbalancerProvisioningStatusEnum = S.String;
+
 /** Current state of a load balancer from OpenStack */
 export interface PublicCloudLoadbalancerLoadbalancerCurrentState {
   /** Load balancer description */
@@ -1026,8 +1489,16 @@ export interface PublicCloudLoadbalancerLoadbalancerCurrentState {
   /** Subnet of the VIP */
   vipSubnet?: PublicCloudLoadbalancerLoadbalancerSubnetRef;
 }
+const PublicCloudLoadbalancerLoadbalancerCurrentState = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<PublicCloudLoadbalancerLoadbalancerCurrentState>;
+
 /** Ongoing asynchronous tasks related to the load balancer */
 export type PublicCloudLoadbalancerLoadbalancerCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudLoadbalancerLoadbalancerCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudLoadbalancerLoadbalancerCurrentTasksList>;
+
 /** A Public Cloud load balancer */
 export interface PublicCloudLoadbalancerLoadbalancer {
   /** Computed hash representing the current target specification value */
@@ -1047,13 +1518,26 @@ export interface PublicCloudLoadbalancerLoadbalancer {
   /** Last update date of the load balancer */
   updatedAt?: string;
 }
+const PublicCloudLoadbalancerLoadbalancer = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<PublicCloudLoadbalancerLoadbalancer>;
+
 /** CIDR blocks allowed to connect to this listener */
 export type PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList = Array<string>;
+const PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList>;
+
 /** Reference to a default pool for a listener */
 export interface PublicCloudLoadbalancerListenerDefaultPoolRef {
   /** Identifier of the default pool for this listener */
   id: string;
 }
+const PublicCloudLoadbalancerListenerDefaultPoolRef =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudLoadbalancerListenerDefaultPoolRef>;
+
 /** Headers that the load balancer inserts into requests before forwarding to backend members */
 export interface PublicCloudLoadbalancerListenerInsertHeaders {
   /** When true, inserts X-Forwarded-For header with the client IP address */
@@ -1069,6 +1553,11 @@ export interface PublicCloudLoadbalancerListenerInsertHeaders {
   /** When true, inserts X-SSL-Client-Verify header with the client certificate verification result */
   xSslClientVerify?: boolean | null;
 }
+const PublicCloudLoadbalancerListenerInsertHeaders = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<PublicCloudLoadbalancerListenerInsertHeaders>;
+
 /** Protocol of a load balancer listener */
 export type PublicCloudLoadbalancerListenerProtocolEnum =
   | "HTTP"
@@ -1077,10 +1566,18 @@ export type PublicCloudLoadbalancerListenerProtocolEnum =
   | "TCP"
   | "TERMINATED_HTTPS"
   | "UDP";
+const PublicCloudLoadbalancerListenerProtocolEnum = S.String;
+
 /** References to TLS certificate containers for SNI (for TERMINATED_HTTPS) */
 export type PublicCloudLoadbalancerListenerTargetSpecSniContainerRefsList = Array<string>;
+const PublicCloudLoadbalancerListenerTargetSpecSniContainerRefsList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudLoadbalancerListenerTargetSpecSniContainerRefsList>;
+
 /** List of TLS protocol versions allowed (e.g. TLSv1.2, TLSv1.3) */
 export type PublicCloudLoadbalancerListenerTargetSpecTlsVersionsList = Array<string>;
+const PublicCloudLoadbalancerListenerTargetSpecTlsVersionsList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudLoadbalancerListenerTargetSpecTlsVersionsList>;
+
 /** Desired specification for creating a load balancer listener */
 export interface PublicCloudLoadbalancerListenerTargetSpec {
   /** CIDR blocks allowed to connect to this listener */
@@ -1114,6 +1611,11 @@ export interface PublicCloudLoadbalancerListenerTargetSpec {
   /** List of TLS protocol versions allowed (e.g. TLSv1.2, TLSv1.3) */
   tlsVersions?: PublicCloudLoadbalancerListenerTargetSpecTlsVersionsList | null;
 }
+const PublicCloudLoadbalancerListenerTargetSpec = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<PublicCloudLoadbalancerListenerTargetSpec>;
+
 export interface CreatePublicCloudProjectLoadbalancerListenerRequest {
   /** Project ID */
   projectId: string;
@@ -1122,17 +1624,36 @@ export interface CreatePublicCloudProjectLoadbalancerListenerRequest {
   /** Desired target specification for the listener to create */
   targetSpec: PublicCloudLoadbalancerListenerTargetSpec;
 }
+const CreatePublicCloudProjectLoadbalancerListenerRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<CreatePublicCloudProjectLoadbalancerListenerRequest>;
+
 /** CIDR blocks allowed to connect to this listener */
 export type PublicCloudLoadbalancerListenerCurrentStateAllowedCidrsList = Array<string>;
+const PublicCloudLoadbalancerListenerCurrentStateAllowedCidrsList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudLoadbalancerListenerCurrentStateAllowedCidrsList>;
+
 /** Default pool details for a listener in current state */
 export interface PublicCloudLoadbalancerListenerDefaultPoolDetail {
   /** Identifier of the default pool for this listener */
   id?: string;
 }
+const PublicCloudLoadbalancerListenerDefaultPoolDetail =
+  PublicCloudInstanceGroupInstanceGroupMemberRef as any as S.Schema<PublicCloudLoadbalancerListenerDefaultPoolDetail>;
+
 /** References to TLS certificate containers for SNI */
 export type PublicCloudLoadbalancerListenerCurrentStateSniContainerRefsList = Array<string>;
+const PublicCloudLoadbalancerListenerCurrentStateSniContainerRefsList = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<PublicCloudLoadbalancerListenerCurrentStateSniContainerRefsList>;
+
 /** List of TLS protocol versions allowed */
 export type PublicCloudLoadbalancerListenerCurrentStateTlsVersionsList = Array<string>;
+const PublicCloudLoadbalancerListenerCurrentStateTlsVersionsList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudLoadbalancerListenerCurrentStateTlsVersionsList>;
+
 /** Current state of a load balancer listener from OpenStack */
 export interface PublicCloudLoadbalancerListenerCurrentState {
   /** CIDR blocks allowed to connect to this listener */
@@ -1170,8 +1691,16 @@ export interface PublicCloudLoadbalancerListenerCurrentState {
   /** List of TLS protocol versions allowed */
   tlsVersions?: PublicCloudLoadbalancerListenerCurrentStateTlsVersionsList | null;
 }
+const PublicCloudLoadbalancerListenerCurrentState = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<PublicCloudLoadbalancerListenerCurrentState>;
+
 /** Ongoing asynchronous tasks related to the listener */
 export type PublicCloudLoadbalancerListenerCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudLoadbalancerListenerCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudLoadbalancerListenerCurrentTasksList>;
+
 /** A Public Cloud load balancer listener */
 export interface PublicCloudLoadbalancerListener {
   /** Computed hash representing the current target specification value */
@@ -1191,17 +1720,27 @@ export interface PublicCloudLoadbalancerListener {
   /** Last update date of the listener */
   updatedAt?: string;
 }
+const PublicCloudLoadbalancerListener = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<PublicCloudLoadbalancerListener>;
+
 /** Action to take when an L7 policy matches */
 export type PublicCloudLoadbalancerL7PolicyActionEnum =
   | "REDIRECT_PREFIX"
   | "REDIRECT_TO_POOL"
   | "REDIRECT_TO_URL"
   | "REJECT";
+const PublicCloudLoadbalancerL7PolicyActionEnum = S.String;
+
 /** Reference to a pool for L7 policy redirect */
 export interface PublicCloudLoadbalancerL7PolicyRedirectPoolRef {
   /** Identifier of the pool to redirect traffic to */
   id: string;
 }
+const PublicCloudLoadbalancerL7PolicyRedirectPoolRef =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudLoadbalancerL7PolicyRedirectPoolRef>;
+
 /** Comparison method for an L7 rule */
 export type PublicCloudLoadbalancerL7RuleCompareTypeEnum =
   | "CONTAINS"
@@ -1209,6 +1748,8 @@ export type PublicCloudLoadbalancerL7RuleCompareTypeEnum =
   | "EQUAL_TO"
   | "REGEX"
   | "STARTS_WITH";
+const PublicCloudLoadbalancerL7RuleCompareTypeEnum = S.String;
+
 /** Type of attribute to match in an L7 rule */
 export type PublicCloudLoadbalancerL7RuleTypeEnum =
   | "COOKIE"
@@ -1216,6 +1757,8 @@ export type PublicCloudLoadbalancerL7RuleTypeEnum =
   | "HEADER"
   | "HOST_NAME"
   | "PATH";
+const PublicCloudLoadbalancerL7RuleTypeEnum = S.String;
+
 /** Desired specification for an L7 rule embedded in an L7 policy */
 export interface PublicCloudLoadbalancerL7RuleSpec {
   /** Comparison method for matching the value */
@@ -1229,9 +1772,19 @@ export interface PublicCloudLoadbalancerL7RuleSpec {
   /** Value to compare against the attribute */
   value: string;
 }
+const PublicCloudLoadbalancerL7RuleSpec = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<PublicCloudLoadbalancerL7RuleSpec>;
+
 /** L7 rules that determine when this policy matches */
 export type PublicCloudLoadbalancerL7PolicyTargetSpecRulesList =
   Array<PublicCloudLoadbalancerL7RuleSpec>;
+const PublicCloudLoadbalancerL7PolicyTargetSpecRulesList = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<PublicCloudLoadbalancerL7PolicyTargetSpecRulesList>;
+
 /** Desired specification for creating an L7 policy */
 export interface PublicCloudLoadbalancerL7PolicyTargetSpec {
   /** Action to take when the policy matches (REDIRECT_PREFIX, REDIRECT_TO_POOL, REDIRECT_TO_URL, REJECT) */
@@ -1253,6 +1806,11 @@ export interface PublicCloudLoadbalancerL7PolicyTargetSpec {
   /** L7 rules that determine when this policy matches */
   rules?: PublicCloudLoadbalancerL7PolicyTargetSpecRulesList | null;
 }
+const PublicCloudLoadbalancerL7PolicyTargetSpec = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<PublicCloudLoadbalancerL7PolicyTargetSpec>;
+
 export interface CreatePublicCloudProjectLoadbalancerListenerL7policyRequest {
   /** Project ID */
   projectId: string;
@@ -1263,11 +1821,19 @@ export interface CreatePublicCloudProjectLoadbalancerListenerL7policyRequest {
   /** Desired target specification for the L7 policy to create */
   targetSpec: PublicCloudLoadbalancerL7PolicyTargetSpec;
 }
+const CreatePublicCloudProjectLoadbalancerListenerL7policyRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<CreatePublicCloudProjectLoadbalancerListenerL7policyRequest>;
+
 /** Pool details for an L7 policy redirect in current state */
 export interface PublicCloudLoadbalancerL7PolicyRedirectPoolDetail {
   /** Identifier of the pool traffic is redirected to */
   id?: string;
 }
+const PublicCloudLoadbalancerL7PolicyRedirectPoolDetail =
+  PublicCloudInstanceGroupInstanceGroupMemberRef as any as S.Schema<PublicCloudLoadbalancerL7PolicyRedirectPoolDetail>;
+
 /** Current state of an L7 rule from OpenStack */
 export interface PublicCloudLoadbalancerL7RuleState {
   /** Comparison method used for matching */
@@ -1287,9 +1853,19 @@ export interface PublicCloudLoadbalancerL7RuleState {
   /** Value compared against the attribute */
   value?: string;
 }
+const PublicCloudLoadbalancerL7RuleState = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<PublicCloudLoadbalancerL7RuleState>;
+
 /** L7 rules associated with this policy */
 export type PublicCloudLoadbalancerL7PolicyCurrentStateRulesList =
   Array<PublicCloudLoadbalancerL7RuleState>;
+const PublicCloudLoadbalancerL7PolicyCurrentStateRulesList = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<PublicCloudLoadbalancerL7PolicyCurrentStateRulesList>;
+
 /** Current state of an L7 policy from OpenStack */
 export interface PublicCloudLoadbalancerL7PolicyCurrentState {
   /** Action taken when the policy matches */
@@ -1315,8 +1891,16 @@ export interface PublicCloudLoadbalancerL7PolicyCurrentState {
   /** L7 rules associated with this policy */
   rules?: PublicCloudLoadbalancerL7PolicyCurrentStateRulesList | null;
 }
+const PublicCloudLoadbalancerL7PolicyCurrentState = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<PublicCloudLoadbalancerL7PolicyCurrentState>;
+
 /** Ongoing asynchronous tasks related to the L7 policy */
 export type PublicCloudLoadbalancerL7PolicyCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudLoadbalancerL7PolicyCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudLoadbalancerL7PolicyCurrentTasksList>;
+
 /** A Public Cloud load balancer L7 policy */
 export interface PublicCloudLoadbalancerL7Policy {
   /** Computed hash representing the current target specification value */
@@ -1336,12 +1920,19 @@ export interface PublicCloudLoadbalancerL7Policy {
   /** Last update date of the L7 policy */
   updatedAt?: string;
 }
+const PublicCloudLoadbalancerL7Policy = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<PublicCloudLoadbalancerL7Policy>;
+
 /** Load balancing algorithm for a pool */
 export type PublicCloudLoadbalancerPoolAlgorithmEnum =
   | "LEAST_CONNECTIONS"
   | "ROUND_ROBIN"
   | "SOURCE_IP"
   | "SOURCE_IP_PORT";
+const PublicCloudLoadbalancerPoolAlgorithmEnum = S.String;
+
 /** HTTP method used by the health monitor for HTTP/HTTPS type probes */
 export type PublicCloudLoadbalancerHealthMonitorHttpMethodEnum =
   | "CONNECT"
@@ -1353,6 +1944,8 @@ export type PublicCloudLoadbalancerHealthMonitorHttpMethodEnum =
   | "POST"
   | "PUT"
   | "TRACE";
+const PublicCloudLoadbalancerHealthMonitorHttpMethodEnum = S.String;
+
 /** Type of health monitor probe */
 export type PublicCloudLoadbalancerHealthMonitorTypeEnum =
   | "HTTP"
@@ -1362,6 +1955,8 @@ export type PublicCloudLoadbalancerHealthMonitorTypeEnum =
   | "TCP"
   | "TLS_HELLO"
   | "UDP_CONNECT";
+const PublicCloudLoadbalancerHealthMonitorTypeEnum = S.String;
+
 /** Desired specification for creating a health monitor on a pool */
 export interface PublicCloudLoadbalancerHealthMonitorTargetSpec {
   /** Time in seconds between sending health check probes to members */
@@ -1387,11 +1982,18 @@ export interface PublicCloudLoadbalancerHealthMonitorTargetSpec {
   /** URI path for HTTP/HTTPS health checks (must start with /) */
   urlPath?: string | null;
 }
+const PublicCloudLoadbalancerHealthMonitorTargetSpec = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<PublicCloudLoadbalancerHealthMonitorTargetSpec>;
+
 /** Type of session persistence for a load balancer pool */
 export type PublicCloudLoadbalancerSessionPersistenceTypeEnum =
   | "APP_COOKIE"
   | "HTTP_COOKIE"
   | "SOURCE_IP";
+const PublicCloudLoadbalancerSessionPersistenceTypeEnum = S.String;
+
 /** Session persistence configuration for a load balancer pool */
 export interface PublicCloudLoadbalancerSessionPersistence {
   /** Name of the cookie for HTTP_COOKIE or APP_COOKIE persistence types */
@@ -1399,6 +2001,11 @@ export interface PublicCloudLoadbalancerSessionPersistence {
   /** Type of session persistence */
   type: PublicCloudLoadbalancerSessionPersistenceTypeEnum | (string & {});
 }
+const PublicCloudLoadbalancerSessionPersistence = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<PublicCloudLoadbalancerSessionPersistence>;
+
 /** Protocol of a load balancer pool */
 export type PublicCloudLoadbalancerPoolProtocolEnum =
   | "HTTP"
@@ -1408,6 +2015,8 @@ export type PublicCloudLoadbalancerPoolProtocolEnum =
   | "SCTP"
   | "TCP"
   | "UDP";
+const PublicCloudLoadbalancerPoolProtocolEnum = S.String;
+
 /** Desired specification for creating a load balancer pool */
 export interface PublicCloudLoadbalancerPoolTargetSpec {
   /** Load balancing algorithm */
@@ -1423,6 +2032,11 @@ export interface PublicCloudLoadbalancerPoolTargetSpec {
   /** Protocol of the pool */
   protocol: PublicCloudLoadbalancerPoolProtocolEnum | (string & {});
 }
+const PublicCloudLoadbalancerPoolTargetSpec = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<PublicCloudLoadbalancerPoolTargetSpec>;
+
 export interface CreatePublicCloudProjectLoadbalancerPoolRequest {
   /** Project ID */
   projectId: string;
@@ -1431,6 +2045,11 @@ export interface CreatePublicCloudProjectLoadbalancerPoolRequest {
   /** Desired target specification for the pool to create */
   targetSpec: PublicCloudLoadbalancerPoolTargetSpec;
 }
+const CreatePublicCloudProjectLoadbalancerPoolRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<CreatePublicCloudProjectLoadbalancerPoolRequest>;
+
 /** Current state of a health monitor from OpenStack */
 export interface PublicCloudLoadbalancerHealthMonitorCurrentState {
   /** Time in seconds between sending health check probes to members */
@@ -1462,6 +2081,11 @@ export interface PublicCloudLoadbalancerHealthMonitorCurrentState {
   /** URI path for HTTP/HTTPS health checks */
   urlPath?: string | null;
 }
+const PublicCloudLoadbalancerHealthMonitorCurrentState = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<PublicCloudLoadbalancerHealthMonitorCurrentState>;
+
 /** Current state of a load balancer pool from OpenStack */
 export interface PublicCloudLoadbalancerPoolCurrentState {
   /** Load balancing algorithm */
@@ -1481,8 +2105,16 @@ export interface PublicCloudLoadbalancerPoolCurrentState {
   /** Provisioning status in OpenStack */
   provisioningStatus?: PublicCloudLoadbalancerLoadbalancerProvisioningStatusEnum;
 }
+const PublicCloudLoadbalancerPoolCurrentState = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<PublicCloudLoadbalancerPoolCurrentState>;
+
 /** Ongoing asynchronous tasks related to the pool */
 export type PublicCloudLoadbalancerPoolCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudLoadbalancerPoolCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudLoadbalancerPoolCurrentTasksList>;
+
 /** A Public Cloud load balancer pool */
 export interface PublicCloudLoadbalancerPool {
   /** Computed hash representing the current target specification value */
@@ -1502,6 +2134,11 @@ export interface PublicCloudLoadbalancerPool {
   /** Last update date of the pool */
   updatedAt?: string;
 }
+const PublicCloudLoadbalancerPool = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<PublicCloudLoadbalancerPool>;
+
 /** Alternate address and port for health monitoring of a pool member */
 export interface PublicCloudLoadbalancerMemberMonitor {
   /** Alternate IP address for health monitoring */
@@ -1509,6 +2146,11 @@ export interface PublicCloudLoadbalancerMemberMonitor {
   /** Alternate port for health monitoring */
   port?: number | null;
 }
+const PublicCloudLoadbalancerMemberMonitor = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<PublicCloudLoadbalancerMemberMonitor>;
+
 /** Desired specification for creating a load balancer pool member */
 export interface PublicCloudLoadbalancerMemberTargetSpec {
   /** IP address of the member backend server */
@@ -1526,6 +2168,11 @@ export interface PublicCloudLoadbalancerMemberTargetSpec {
   /** Weight for load balancing (1-256) */
   weight?: number | null;
 }
+const PublicCloudLoadbalancerMemberTargetSpec = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<PublicCloudLoadbalancerMemberTargetSpec>;
+
 export interface CreatePublicCloudProjectLoadbalancerPoolMemberRequest {
   /** Project ID */
   projectId: string;
@@ -1536,6 +2183,11 @@ export interface CreatePublicCloudProjectLoadbalancerPoolMemberRequest {
   /** Desired target specification for the member to create */
   targetSpec: PublicCloudLoadbalancerMemberTargetSpec;
 }
+const CreatePublicCloudProjectLoadbalancerPoolMemberRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<CreatePublicCloudProjectLoadbalancerPoolMemberRequest>;
+
 /** Current state of a load balancer pool member from OpenStack */
 export interface PublicCloudLoadbalancerMemberCurrentState {
   /** IP address of the member backend server */
@@ -1557,8 +2209,16 @@ export interface PublicCloudLoadbalancerMemberCurrentState {
   /** Weight for load balancing */
   weight?: number;
 }
+const PublicCloudLoadbalancerMemberCurrentState = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<PublicCloudLoadbalancerMemberCurrentState>;
+
 /** Ongoing asynchronous tasks related to the member */
 export type PublicCloudLoadbalancerMemberCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudLoadbalancerMemberCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudLoadbalancerMemberCurrentTasksList>;
+
 /** A Public Cloud load balancer pool member */
 export interface PublicCloudLoadbalancerMember {
   /** Computed hash representing the current target specification value */
@@ -1578,6 +2238,11 @@ export interface PublicCloudLoadbalancerMember {
   /** Last update date of the member */
   updatedAt?: string;
 }
+const PublicCloudLoadbalancerMember = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<PublicCloudLoadbalancerMember>;
+
 /** Desired specification for a network */
 export interface PublicCloudNetworkNetworkTargetSpec {
   /** Network description */
@@ -1589,12 +2254,22 @@ export interface PublicCloudNetworkNetworkTargetSpec {
   /** VLAN segmentation id. Not supported on localzone regions. */
   vlanId?: number | null;
 }
+const PublicCloudNetworkNetworkTargetSpec = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<PublicCloudNetworkNetworkTargetSpec>;
+
 export interface CreatePublicCloudProjectNetworkRequest {
   /** Project ID */
   projectId: string;
   /** Desired target specification for the network to create */
   targetSpec: PublicCloudNetworkNetworkTargetSpec;
 }
+const CreatePublicCloudProjectNetworkRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<CreatePublicCloudProjectNetworkRequest>;
+
 /** Current state of a network from OpenStack */
 export interface PublicCloudNetworkNetworkCurrentState {
   /** Network description */
@@ -1606,8 +2281,16 @@ export interface PublicCloudNetworkNetworkCurrentState {
   /** VLAN segmentation id. */
   vlanId?: number | null;
 }
+const PublicCloudNetworkNetworkCurrentState = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<PublicCloudNetworkNetworkCurrentState>;
+
 /** Ongoing asynchronous tasks related to the network */
 export type PublicCloudNetworkNetworkCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudNetworkNetworkCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudNetworkNetworkCurrentTasksList>;
+
 /** A Public Cloud network */
 export interface PublicCloudNetworkNetwork {
   /** Computed hash representing the current target specification value */
@@ -1627,6 +2310,11 @@ export interface PublicCloudNetworkNetwork {
   /** Last update date of the network */
   updatedAt?: string;
 }
+const PublicCloudNetworkNetwork = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<PublicCloudNetworkNetwork>;
+
 /** IP address pool for dynamic allocation within a subnet */
 export interface PublicCloudNetworkSubnetAllocationPool {
   /** End IP address of the pool */
@@ -1634,11 +2322,24 @@ export interface PublicCloudNetworkSubnetAllocationPool {
   /** Start IP address of the pool */
   start: string;
 }
+const PublicCloudNetworkSubnetAllocationPool = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<PublicCloudNetworkSubnetAllocationPool>;
+
 /** IP address allocation pools */
 export type PublicCloudNetworkSubnetTargetSpecAllocationPoolsList =
   Array<PublicCloudNetworkSubnetAllocationPool>;
+const PublicCloudNetworkSubnetTargetSpecAllocationPoolsList = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<PublicCloudNetworkSubnetTargetSpecAllocationPoolsList>;
+
 /** DNS nameservers for the subnet */
 export type PublicCloudNetworkSubnetTargetSpecDnsNameserversList = Array<string>;
+const PublicCloudNetworkSubnetTargetSpecDnsNameserversList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudNetworkSubnetTargetSpecDnsNameserversList>;
+
 /** Desired specification for a subnet */
 export interface PublicCloudNetworkSubnetTargetSpec {
   /** IP address allocation pools */
@@ -1658,6 +2359,11 @@ export interface PublicCloudNetworkSubnetTargetSpec {
   /** Subnet name */
   name: string;
 }
+const PublicCloudNetworkSubnetTargetSpec = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<PublicCloudNetworkSubnetTargetSpec>;
+
 export interface CreatePublicCloudProjectNetworkSubnetRequest {
   /** Project ID */
   projectId: string;
@@ -1666,11 +2372,22 @@ export interface CreatePublicCloudProjectNetworkSubnetRequest {
   /** Desired target specification for the subnet to create */
   targetSpec: PublicCloudNetworkSubnetTargetSpec;
 }
+const CreatePublicCloudProjectNetworkSubnetRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<CreatePublicCloudProjectNetworkSubnetRequest>;
+
 /** Allocation pools */
 export type PublicCloudNetworkSubnetCurrentStateAllocationPoolsList =
   Array<PublicCloudNetworkSubnetAllocationPool>;
+const PublicCloudNetworkSubnetCurrentStateAllocationPoolsList =
+  PublicCloudNetworkSubnetTargetSpecAllocationPoolsList as any as S.Schema<PublicCloudNetworkSubnetCurrentStateAllocationPoolsList>;
+
 /** DNS nameservers */
 export type PublicCloudNetworkSubnetCurrentStateDnsNameserversList = Array<string>;
+const PublicCloudNetworkSubnetCurrentStateDnsNameserversList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudNetworkSubnetCurrentStateDnsNameserversList>;
+
 /** Static host route for devices in a subnet */
 export interface PublicCloudNetworkSubnetHostRoute {
   /** Destination CIDR */
@@ -1678,9 +2395,19 @@ export interface PublicCloudNetworkSubnetHostRoute {
   /** Next hop IP address */
   nextHop?: string;
 }
+const PublicCloudNetworkSubnetHostRoute = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<PublicCloudNetworkSubnetHostRoute>;
+
 /** Static host routes */
 export type PublicCloudNetworkSubnetCurrentStateHostRoutesList =
   Array<PublicCloudNetworkSubnetHostRoute>;
+const PublicCloudNetworkSubnetCurrentStateHostRoutesList = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<PublicCloudNetworkSubnetCurrentStateHostRoutesList>;
+
 /** Current state of a subnet from OpenStack */
 export interface PublicCloudNetworkSubnetCurrentState {
   /** Allocation pools */
@@ -1702,8 +2429,16 @@ export interface PublicCloudNetworkSubnetCurrentState {
   /** Subnet name */
   name?: string;
 }
+const PublicCloudNetworkSubnetCurrentState = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<PublicCloudNetworkSubnetCurrentState>;
+
 /** Ongoing asynchronous tasks related to the subnet */
 export type PublicCloudNetworkSubnetCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudNetworkSubnetCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudNetworkSubnetCurrentTasksList>;
+
 /** A Public Cloud subnet */
 export interface PublicCloudNetworkSubnet {
   /** Computed hash representing the current target specification value */
@@ -1723,6 +2458,11 @@ export interface PublicCloudNetworkSubnet {
   /** Last update date of the subnet */
   updatedAt?: string;
 }
+const PublicCloudNetworkSubnet = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<PublicCloudNetworkSubnet>;
+
 /** Desired specification for a floating IP */
 export type PublicCloudPublicIpFloatingIPTargetSpec = PublicCloudFloatingIpFloatingIPTargetSpec;
 export interface CreatePublicCloudProjectPublicIpFloatingRequest {
@@ -1731,8 +2471,15 @@ export interface CreatePublicCloudProjectPublicIpFloatingRequest {
   /** Desired target specification for the floating IP to create */
   targetSpec: PublicCloudFloatingIpFloatingIPTargetSpec;
 }
+const CreatePublicCloudProjectPublicIpFloatingRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<CreatePublicCloudProjectPublicIpFloatingRequest>;
+
 /** Type of resource associated with a public IP */
 export type PublicCloudPublicIpPublicIPAssociatedResourceTypeEnum = "INSTANCE";
+const PublicCloudPublicIpPublicIPAssociatedResourceTypeEnum = S.String;
+
 /** Resource associated with a public IP */
 export interface PublicCloudPublicIpPublicIPAssociatedResource {
   /** Associated resource identifier */
@@ -1740,6 +2487,11 @@ export interface PublicCloudPublicIpPublicIPAssociatedResource {
   /** Associated resource type */
   type?: PublicCloudPublicIpPublicIPAssociatedResourceTypeEnum;
 }
+const PublicCloudPublicIpPublicIPAssociatedResource = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<PublicCloudPublicIpPublicIPAssociatedResource>;
+
 /** A network reference for a floating IP */
 export type PublicCloudPublicIpFloatingIPNetwork = PublicCloudFloatingIpFloatingIPNetwork;
 /** OpenStack floating IP status */
@@ -1751,6 +2503,8 @@ export type PublicCloudPublicIpFloatingIPStatusEnum =
   | "PENDING_CREATE"
   | "PENDING_DELETE"
   | "PENDING_UPDATE";
+const PublicCloudPublicIpFloatingIPStatusEnum = S.String;
+
 /** Current state of a floating IP from OpenStack */
 export interface PublicCloudPublicIpFloatingIPCurrentState {
   /** Resource currently associated with this floating IP */
@@ -1768,8 +2522,16 @@ export interface PublicCloudPublicIpFloatingIPCurrentState {
   /** OpenStack floating IP status */
   status?: PublicCloudPublicIpFloatingIPStatusEnum;
 }
+const PublicCloudPublicIpFloatingIPCurrentState = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<PublicCloudPublicIpFloatingIPCurrentState>;
+
 /** Ongoing asynchronous tasks related to the floating IP */
 export type PublicCloudPublicIpFloatingIPCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudPublicIpFloatingIPCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudPublicIpFloatingIPCurrentTasksList>;
+
 /** A Public Cloud floating public IP (keyed by IP address) */
 export interface PublicCloudPublicIpFloatingIP {
   /** Computed hash representing the current target specification value */
@@ -1789,8 +2551,15 @@ export interface PublicCloudPublicIpFloatingIP {
   /** Last update date of the floating IP */
   updatedAt?: string;
 }
+const PublicCloudPublicIpFloatingIP = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<PublicCloudPublicIpFloatingIP>;
+
 /** Possible values for managed Rancher plans */
 export type PublicCloudRancherPlanEnum = "OVHCLOUD_EDITION" | "STANDARD";
+const PublicCloudRancherPlanEnum = S.String;
+
 /** Target specification of the managed Rancher service */
 export interface PublicCloudRancherRancherCreationTargetSpec {
   /** Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access */
@@ -1802,12 +2571,22 @@ export interface PublicCloudRancherRancherCreationTargetSpec {
   /** Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version. Default is the latest version. */
   version?: string;
 }
+const PublicCloudRancherRancherCreationTargetSpec = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<PublicCloudRancherRancherCreationTargetSpec>;
+
 export interface CreatePublicCloudProjectRancherRequest {
   /** Project ID */
   projectId: string;
   /** Target specification for the managed Rancher service */
   targetSpec: PublicCloudRancherRancherCreationTargetSpec;
 }
+const CreatePublicCloudProjectRancherRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<CreatePublicCloudProjectRancherRequest>;
+
 /** Allowed CIDR block for a managed Rancher service's IP restrictions */
 export interface PublicCloudRancherIpRestriction {
   /** Allowed CIDR block (/subnet is optional, if unspecified then /32 will be used) */
@@ -1815,18 +2594,38 @@ export interface PublicCloudRancherIpRestriction {
   /** Description of the allowed CIDR block */
   description: string;
 }
+const PublicCloudRancherIpRestriction = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<PublicCloudRancherIpRestriction>;
+
 /** List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed */
 export type PublicCloudRancherRancherCurrentStateIpRestrictionsList =
   Array<PublicCloudRancherIpRestriction>;
+const PublicCloudRancherRancherCurrentStateIpRestrictionsList = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<PublicCloudRancherRancherCurrentStateIpRestrictionsList>;
+
 /** Specifies the CIDR ranges for egress IP addresses used by Rancher. Ensure these ranges are allowed in any IP restrictions for services that Rancher will access. */
 export type PublicCloudRancherNetworkingEgressCidrBlocksList = Array<string>;
+const PublicCloudRancherNetworkingEgressCidrBlocksList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudRancherNetworkingEgressCidrBlocksList>;
+
 /** Networking properties of a managed Rancher service */
 export interface PublicCloudRancherNetworking {
   /** Specifies the CIDR ranges for egress IP addresses used by Rancher. Ensure these ranges are allowed in any IP restrictions for services that Rancher will access. */
   egressCidrBlocks?: PublicCloudRancherNetworkingEgressCidrBlocksList;
 }
+const PublicCloudRancherNetworking = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<PublicCloudRancherNetworking>;
+
 /** Possible values for managed Rancher regions */
 export type PublicCloudRancherRegionEnum = "EU_WEST_GRA" | "EU_WEST_RBX" | "EU_WEST_SBG";
+const PublicCloudRancherRegionEnum = S.String;
+
 /** A metric sample about a managed Rancher usage */
 export interface PublicCloudRancherUsage {
   /** Date of the sample */
@@ -1834,6 +2633,11 @@ export interface PublicCloudRancherUsage {
   /** Total number of vCPUs orchestrated by the managed Rancher service through the downstream clusters */
   orchestratedVcpus?: number;
 }
+const PublicCloudRancherUsage = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<PublicCloudRancherUsage>;
+
 /** Current state of the managed Rancher service */
 export interface PublicCloudRancherRancherCurrentState {
   /** Bootstrap password of the managed Rancher service, returned only on creation */
@@ -1857,11 +2661,22 @@ export interface PublicCloudRancherRancherCurrentState {
   /** Version of the managed Rancher service */
   version?: string;
 }
+const PublicCloudRancherRancherCurrentState = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<PublicCloudRancherRancherCurrentState>;
+
 /** Asynchronous operations ongoing on the managed Rancher service */
 export type PublicCloudRancherRancherCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudRancherRancherCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudRancherRancherCurrentTasksList>;
+
 /** List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed */
 export type PublicCloudRancherRancherTargetSpecIpRestrictionsList =
   Array<PublicCloudRancherIpRestriction>;
+const PublicCloudRancherRancherTargetSpecIpRestrictionsList =
+  PublicCloudRancherRancherCurrentStateIpRestrictionsList as any as S.Schema<PublicCloudRancherRancherTargetSpecIpRestrictionsList>;
+
 /** Target specification of the managed Rancher service */
 export interface PublicCloudRancherRancherTargetSpec {
   /** Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access */
@@ -1875,6 +2690,11 @@ export interface PublicCloudRancherRancherTargetSpec {
   /** Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version */
   version: string;
 }
+const PublicCloudRancherRancherTargetSpec = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<PublicCloudRancherRancherTargetSpec>;
+
 /** A managed Rancher service object */
 export interface PublicCloudRancherRancher {
   /** Date of the managed Rancher service creation */
@@ -1892,12 +2712,22 @@ export interface PublicCloudRancherRancher {
   /** Date of the last managed Rancher service update */
   updatedAt?: string;
 }
+const PublicCloudRancherRancher = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<PublicCloudRancherRancher>;
+
 export interface CreatePublicCloudProjectRancherAdminCredentialsRequest {
   /** Project ID */
   projectId: string;
   /** Rancher ID */
   rancherId: string;
 }
+const CreatePublicCloudProjectRancherAdminCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<CreatePublicCloudProjectRancherAdminCredentialsRequest>;
+
 /** Represents a username/password couple for a managed Rancher user */
 export interface PublicCloudRancherCredentials {
   /** Password of the user */
@@ -1905,10 +2735,19 @@ export interface PublicCloudRancherCredentials {
   /** Name of the user */
   username?: string;
 }
+const PublicCloudRancherCredentials = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<PublicCloudRancherCredentials>;
+
 /** Flow rule of traffic for a security group rule */
 export type PublicCloudSecurityGroupTrafficFlowEnum = "EGRESS" | "INGRESS";
+const PublicCloudSecurityGroupTrafficFlowEnum = S.String;
+
 /** Ethernet type for a security group rule */
 export type PublicCloudSecurityGroupEthernetTypeEnum = "IPV4" | "IPV6";
+const PublicCloudSecurityGroupEthernetTypeEnum = S.String;
+
 /** Network protocol for a security group rule */
 export type PublicCloudSecurityGroupProtocolEnum =
   | "AH"
@@ -1927,6 +2766,8 @@ export type PublicCloudSecurityGroupProtocolEnum =
   | "UDP"
   | "UDPLITE"
   | "VRRP";
+const PublicCloudSecurityGroupProtocolEnum = S.String;
+
 /** Desired firewall rule for a security group */
 export interface PublicCloudSecurityGroupSecurityGroupTargetRule {
   /** Rule description */
@@ -1946,9 +2787,19 @@ export interface PublicCloudSecurityGroupSecurityGroupTargetRule {
   /** Remote CIDR prefix (mutually exclusive with remoteGroup) */
   remoteIpPrefix?: string | null;
 }
+const PublicCloudSecurityGroupSecurityGroupTargetRule = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<PublicCloudSecurityGroupSecurityGroupTargetRule>;
+
 /** Desired firewall rules */
 export type PublicCloudSecurityGroupSecurityGroupTargetSpecRulesList =
   Array<PublicCloudSecurityGroupSecurityGroupTargetRule>;
+const PublicCloudSecurityGroupSecurityGroupTargetSpecRulesList = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<PublicCloudSecurityGroupSecurityGroupTargetSpecRulesList>;
+
 /** Desired specification for creating a security group */
 export interface PublicCloudSecurityGroupSecurityGroupTargetSpec {
   /** Security group description */
@@ -1960,12 +2811,22 @@ export interface PublicCloudSecurityGroupSecurityGroupTargetSpec {
   /** Desired firewall rules */
   rules?: PublicCloudSecurityGroupSecurityGroupTargetSpecRulesList | null;
 }
+const PublicCloudSecurityGroupSecurityGroupTargetSpec = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<PublicCloudSecurityGroupSecurityGroupTargetSpec>;
+
 export interface CreatePublicCloudProjectSecurityGroupRequest {
   /** Project ID */
   projectId: string;
   /** Desired target specification for the security group to create */
   targetSpec: PublicCloudSecurityGroupSecurityGroupTargetSpec;
 }
+const CreatePublicCloudProjectSecurityGroupRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<CreatePublicCloudProjectSecurityGroupRequest>;
+
 /** Actual firewall rule from OpenStack for a security group */
 export interface PublicCloudSecurityGroupSecurityGroupStateRule {
   /** Rule description */
@@ -1987,12 +2848,27 @@ export interface PublicCloudSecurityGroupSecurityGroupStateRule {
   /** Remote CIDR prefix */
   remoteIpPrefix?: string | null;
 }
+const PublicCloudSecurityGroupSecurityGroupStateRule = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<PublicCloudSecurityGroupSecurityGroupStateRule>;
+
 /** Default egress rules auto-created by OpenStack */
 export type PublicCloudSecurityGroupSecurityGroupCurrentStateDefaultRulesList =
   Array<PublicCloudSecurityGroupSecurityGroupStateRule>;
+const PublicCloudSecurityGroupSecurityGroupCurrentStateDefaultRulesList = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<PublicCloudSecurityGroupSecurityGroupCurrentStateDefaultRulesList>;
+
 /** User-specified firewall rules */
 export type PublicCloudSecurityGroupSecurityGroupCurrentStateRulesList =
   Array<PublicCloudSecurityGroupSecurityGroupStateRule>;
+const PublicCloudSecurityGroupSecurityGroupCurrentStateRulesList = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<PublicCloudSecurityGroupSecurityGroupCurrentStateRulesList>;
+
 /** Current state of a security group from OpenStack */
 export interface PublicCloudSecurityGroupSecurityGroupCurrentState {
   /** Default egress rules auto-created by OpenStack */
@@ -2006,8 +2882,16 @@ export interface PublicCloudSecurityGroupSecurityGroupCurrentState {
   /** User-specified firewall rules */
   rules?: PublicCloudSecurityGroupSecurityGroupCurrentStateRulesList;
 }
+const PublicCloudSecurityGroupSecurityGroupCurrentState = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<PublicCloudSecurityGroupSecurityGroupCurrentState>;
+
 /** Ongoing asynchronous tasks related to the security group */
 export type PublicCloudSecurityGroupSecurityGroupCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudSecurityGroupSecurityGroupCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudSecurityGroupSecurityGroupCurrentTasksList>;
+
 /** A Public Cloud security group */
 export interface PublicCloudSecurityGroupSecurityGroup {
   /** Computed hash representing the current target specification value */
@@ -2027,6 +2911,11 @@ export interface PublicCloudSecurityGroupSecurityGroup {
   /** Last update date of the security group */
   updatedAt?: string;
 }
+const PublicCloudSecurityGroupSecurityGroup = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<PublicCloudSecurityGroupSecurityGroup>;
+
 export interface CreatePublicCloudProjectSshKeyRequest {
   /** Project ID */
   projectId: string;
@@ -2035,6 +2924,11 @@ export interface CreatePublicCloudProjectSshKeyRequest {
   /** SSH public key content */
   publicKey: string;
 }
+const CreatePublicCloudProjectSshKeyRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<CreatePublicCloudProjectSshKeyRequest>;
+
 /** A Public Cloud SSH key (stored in database, synced to OpenStack on instance creation) */
 export interface PublicCloudSshKeySSHKey {
   /** Creation date of the SSH key */
@@ -2046,6 +2940,11 @@ export interface PublicCloudSshKeySSHKey {
   /** Last update date of the SSH key */
   updatedAt?: string;
 }
+const PublicCloudSshKeySSHKey = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<PublicCloudSshKeySSHKey>;
+
 /** Target specification for a block storage backup */
 export interface PublicCloudBlockStorageBackupTargetSpec {
   /** Desired backup description */
@@ -2057,12 +2956,22 @@ export interface PublicCloudBlockStorageBackupTargetSpec {
   /** Identifier of the source volume to backup */
   volumeId: string;
 }
+const PublicCloudBlockStorageBackupTargetSpec = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<PublicCloudBlockStorageBackupTargetSpec>;
+
 export interface CreatePublicCloudProjectStorageBlockBackupRequest {
   /** Project ID */
   projectId: string;
   /** Desired target specification for the backup */
   targetSpec: PublicCloudBlockStorageBackupTargetSpec;
 }
+const CreatePublicCloudProjectStorageBlockBackupRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<CreatePublicCloudProjectStorageBlockBackupRequest>;
+
 /** Current state of a block storage backup as observed from the infrastructure */
 export interface PublicCloudBlockStorageBackupCurrentState {
   /** Backup description */
@@ -2076,8 +2985,16 @@ export interface PublicCloudBlockStorageBackupCurrentState {
   /** Identifier of the source volume */
   volumeId?: string;
 }
+const PublicCloudBlockStorageBackupCurrentState = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<PublicCloudBlockStorageBackupCurrentState>;
+
 /** Ongoing asynchronous tasks related to the backup */
 export type PublicCloudBlockStorageBackupCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudBlockStorageBackupCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudBlockStorageBackupCurrentTasksList>;
+
 /** A Public Cloud block storage backup */
 export interface PublicCloudBlockStorageBackup {
   /** Computed hash representing the current target specification value */
@@ -2097,6 +3014,11 @@ export interface PublicCloudBlockStorageBackup {
   /** Last update date of the backup */
   updatedAt?: string;
 }
+const PublicCloudBlockStorageBackup = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<PublicCloudBlockStorageBackup>;
+
 /** Target specification for a block storage volume snapshot */
 export interface PublicCloudBlockStorageSnapshotTargetSpec {
   /** Desired snapshot description */
@@ -2108,12 +3030,20 @@ export interface PublicCloudBlockStorageSnapshotTargetSpec {
   /** ID of the volume to snapshot */
   volumeId: string;
 }
+const PublicCloudBlockStorageSnapshotTargetSpec =
+  PublicCloudBlockStorageBackupTargetSpec as any as S.Schema<PublicCloudBlockStorageSnapshotTargetSpec>;
+
 export interface CreatePublicCloudProjectStorageBlockSnapshotRequest {
   /** Project ID */
   projectId: string;
   /** Desired target specification for the snapshot */
   targetSpec: PublicCloudBlockStorageSnapshotTargetSpec;
 }
+const CreatePublicCloudProjectStorageBlockSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<CreatePublicCloudProjectStorageBlockSnapshotRequest>;
+
 /** Current state of a block storage volume snapshot as observed from the infrastructure */
 export interface PublicCloudBlockStorageSnapshotCurrentState {
   /** Snapshot description */
@@ -2148,6 +3078,9 @@ export interface PublicCloudBlockStorageSnapshot {
   /** Last update date of the snapshot */
   updatedAt?: string;
 }
+const PublicCloudBlockStorageSnapshot =
+  PublicCloudBlockStorageBackup as any as S.Schema<PublicCloudBlockStorageSnapshot>;
+
 /** Optional source to create a block storage volume from (backup, snapshot, or image). Only one source may be specified. */
 export interface PublicCloudBlockStorageBlockCreateFrom {
   /** UUID of a backup to restore from */
@@ -2157,15 +3090,27 @@ export interface PublicCloudBlockStorageBlockCreateFrom {
   /** UUID of a snapshot to create from */
   snapshotId?: string | null;
 }
+const PublicCloudBlockStorageBlockCreateFrom = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<PublicCloudBlockStorageBlockCreateFrom>;
+
 /** Encryption configuration for a block storage volume */
 export interface PublicCloudBlockStorageBlockEncryption {
   /** Whether the volume is encrypted at rest with LUKS */
   enabled: boolean;
 }
+const PublicCloudBlockStorageBlockEncryption = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<PublicCloudBlockStorageBlockEncryption>;
+
 /** Location for a block storage volume */
 export type PublicCloudBlockStorageBlockLocation = PublicCloudCommonLocation;
 /** Possible volume types for a block storage volume */
 export type PublicCloudBlockStorageVolumeTypeEnum = "CLASSIC" | "HIGH_SPEED" | "HIGH_SPEED_GEN2";
+const PublicCloudBlockStorageVolumeTypeEnum = S.String;
+
 /** Target specification for a block storage volume */
 export interface PublicCloudBlockStorageBlockTargetSpec {
   /** Optional source to create the volume from (backup or snapshot). Cannot be changed after creation. */
@@ -2181,12 +3126,22 @@ export interface PublicCloudBlockStorageBlockTargetSpec {
   /** Type of the volume. Required when creating a blank volume, omitted when creating from a backup or snapshot (inherited from source). */
   volumeType?: PublicCloudBlockStorageVolumeTypeEnum | (string & {}) | null;
 }
+const PublicCloudBlockStorageBlockTargetSpec = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<PublicCloudBlockStorageBlockTargetSpec>;
+
 export interface CreatePublicCloudProjectStorageBlockVolumeRequest {
   /** Project ID */
   projectId: string;
   /** Desired target specification for the volume */
   targetSpec: PublicCloudBlockStorageBlockTargetSpec;
 }
+const CreatePublicCloudProjectStorageBlockVolumeRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<CreatePublicCloudProjectStorageBlockVolumeRequest>;
+
 /** An instance currently attached to a block storage volume */
 export interface PublicCloudBlockStorageBlockAttachedInstance {
   /** Instance unique identifier */
@@ -2195,6 +3150,9 @@ export interface PublicCloudBlockStorageBlockAttachedInstance {
 /** Instances currently attached to this volume */
 export type PublicCloudBlockStorageBlockCurrentStateAttachedInstancesList =
   Array<PublicCloudBlockStorageBlockAttachedInstance>;
+const PublicCloudBlockStorageBlockCurrentStateAttachedInstancesList =
+  PublicCloudInstanceGroupInstanceGroupCurrentStateMembersList as any as S.Schema<PublicCloudBlockStorageBlockCurrentStateAttachedInstancesList>;
+
 /** Possible statuses for a block storage volume */
 export type PublicCloudBlockStorageVolumeStatusEnum =
   | "ATTACHING"
@@ -2211,6 +3169,8 @@ export type PublicCloudBlockStorageVolumeStatusEnum =
   | "EXTENDING"
   | "IN_USE"
   | "RETYPING";
+const PublicCloudBlockStorageVolumeStatusEnum = S.String;
+
 /** Current state of a block storage volume as observed from the infrastructure */
 export interface PublicCloudBlockStorageBlockCurrentState {
   /** Instances currently attached to this volume */
@@ -2234,8 +3194,16 @@ export interface PublicCloudBlockStorageBlockCurrentState {
   /** Current volume type */
   volumeType?: PublicCloudBlockStorageVolumeTypeEnum;
 }
+const PublicCloudBlockStorageBlockCurrentState = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<PublicCloudBlockStorageBlockCurrentState>;
+
 /** Ongoing asynchronous tasks related to the volume */
 export type PublicCloudBlockStorageBlockCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudBlockStorageBlockCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudBlockStorageBlockCurrentTasksList>;
+
 /** A Public Cloud block storage volume */
 export interface PublicCloudBlockStorageBlock {
   /** Computed hash representing the current target specification value */
@@ -2255,9 +3223,19 @@ export interface PublicCloudBlockStorageBlock {
   /** Last update date of the volume */
   updatedAt?: string;
 }
+const PublicCloudBlockStorageBlock = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<PublicCloudBlockStorageBlock>;
+
 export interface PublicCloudStorageFileFileStorageNetworkTargetSpecNetwork {
   id: string;
 }
+const PublicCloudStorageFileFileStorageNetworkTargetSpecNetwork = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<PublicCloudStorageFileFileStorageNetworkTargetSpecNetwork>;
+
 export type PublicCloudStorageFileFileStorageNetworkTargetSpecSubnet =
   PublicCloudStorageFileFileStorageNetworkTargetSpecNetwork;
 export interface PublicCloudStorageFileFileStorageNetworkTargetSpec {
@@ -2267,10 +3245,20 @@ export interface PublicCloudStorageFileFileStorageNetworkTargetSpec {
   network: PublicCloudStorageFileFileStorageNetworkTargetSpecNetwork;
   subnet: PublicCloudStorageFileFileStorageNetworkTargetSpecNetwork;
 }
+const PublicCloudStorageFileFileStorageNetworkTargetSpec = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<PublicCloudStorageFileFileStorageNetworkTargetSpec>;
+
 export interface CreatePublicCloudProjectStorageFileNetworkRequest {
   projectId: string;
   targetSpec: PublicCloudStorageFileFileStorageNetworkTargetSpec;
 }
+const CreatePublicCloudProjectStorageFileNetworkRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<CreatePublicCloudProjectStorageFileNetworkRequest>;
+
 /** A Public Cloud file storage share network */
 export interface PublicCloudStorageFileFileStorageNetwork {
   id?: string;
@@ -2278,11 +3266,19 @@ export interface PublicCloudStorageFileFileStorageNetwork {
   targetSpec?: PublicCloudStorageFileFileStorageNetworkTargetSpec;
   currentState?: PublicCloudStorageFileFileStorageNetworkTargetSpec | null;
 }
+const PublicCloudStorageFileFileStorageNetwork = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<PublicCloudStorageFileFileStorageNetwork>;
+
 /** Parent file storage share */
 export interface PublicCloudStorageFileFileStorageSnapshotTargetSpecShare {
   /** ID of the parent file storage share */
   id: string;
 }
+const PublicCloudStorageFileFileStorageSnapshotTargetSpecShare =
+  PublicCloudStorageFileFileStorageNetworkTargetSpecNetwork as any as S.Schema<PublicCloudStorageFileFileStorageSnapshotTargetSpecShare>;
+
 /** Target specification for a file storage snapshot */
 export interface PublicCloudStorageFileFileStorageSnapshotTargetSpec {
   /** Description of the snapshot */
@@ -2292,17 +3288,32 @@ export interface PublicCloudStorageFileFileStorageSnapshotTargetSpec {
   /** Parent file storage share */
   share: PublicCloudStorageFileFileStorageSnapshotTargetSpecShare;
 }
+const PublicCloudStorageFileFileStorageSnapshotTargetSpec = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<PublicCloudStorageFileFileStorageSnapshotTargetSpec>;
+
 export interface CreatePublicCloudProjectStorageFileSnapshotRequest {
   /** Project ID */
   projectId: string;
   /** Desired target specification for the snapshot */
   targetSpec: PublicCloudStorageFileFileStorageSnapshotTargetSpec;
 }
+const CreatePublicCloudProjectStorageFileSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<CreatePublicCloudProjectStorageFileSnapshotRequest>;
+
 /** Parent file storage share */
 export interface PublicCloudStorageFileFileStorageSnapshotCurrentStateShare {
   /** ID of the parent file storage share */
   id?: string;
 }
+const PublicCloudStorageFileFileStorageSnapshotCurrentStateShare = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<PublicCloudStorageFileFileStorageSnapshotCurrentStateShare>;
+
 /** Current state of a file storage snapshot as observed from the infrastructure */
 export interface PublicCloudStorageFileFileStorageSnapshotCurrentState {
   /** Snapshot description */
@@ -2316,8 +3327,16 @@ export interface PublicCloudStorageFileFileStorageSnapshotCurrentState {
   /** Size of the snapshot in GB */
   size?: number;
 }
+const PublicCloudStorageFileFileStorageSnapshotCurrentState = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<PublicCloudStorageFileFileStorageSnapshotCurrentState>;
+
 /** Ongoing asynchronous tasks related to the snapshot */
 export type PublicCloudStorageFileFileStorageSnapshotCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudStorageFileFileStorageSnapshotCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudStorageFileFileStorageSnapshotCurrentTasksList>;
+
 /** A snapshot of a Public Cloud file storage (NFS share) */
 export interface PublicCloudStorageFileFileStorageSnapshot {
   /** Computed hash representing the current target specification value */
@@ -2337,20 +3356,39 @@ export interface PublicCloudStorageFileFileStorageSnapshot {
   /** Last update date of the snapshot */
   updatedAt?: string;
 }
+const PublicCloudStorageFileFileStorageSnapshot = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<PublicCloudStorageFileFileStorageSnapshot>;
+
 /** Supported encryption algorithms for S3 buckets */
 export type PublicCloudStorageObjectBucketEncryptionAlgorithmEnum = "AES256";
+const PublicCloudStorageObjectBucketEncryptionAlgorithmEnum = S.String;
+
 /** Server-side encryption configuration for an S3 bucket */
 export interface PublicCloudStorageObjectBucketEncryptionConfig {
   /** Encryption algorithm (e.g. AES256) */
   algorithm: PublicCloudStorageObjectBucketEncryptionAlgorithmEnum | (string & {});
 }
+const PublicCloudStorageObjectBucketEncryptionConfig = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<PublicCloudStorageObjectBucketEncryptionConfig>;
+
 /** Geographic region for an S3 bucket */
 export interface PublicCloudStorageObjectBucketLocation {
   /** Region identifier (e.g. GRA, SBG, BHS) */
   region: string;
 }
+const PublicCloudStorageObjectBucketLocation = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<PublicCloudStorageObjectBucketLocation>;
+
 /** Object lock retention modes */
 export type PublicCloudStorageObjectBucketObjectLockModeEnum = "COMPLIANCE" | "GOVERNANCE";
+const PublicCloudStorageObjectBucketObjectLockModeEnum = S.String;
+
 /** Object lock (WORM) configuration for an S3 bucket */
 export interface PublicCloudStorageObjectBucketObjectLockConfigInput {
   /** Object lock retention mode */
@@ -2358,20 +3396,35 @@ export interface PublicCloudStorageObjectBucketObjectLockConfigInput {
   /** Number of days to retain objects */
   retentionDays: number;
 }
+const PublicCloudStorageObjectBucketObjectLockConfigInput = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<PublicCloudStorageObjectBucketObjectLockConfigInput>;
+
 /** Metadata tags for the bucket */
 export type PublicCloudStorageObjectBucketTargetSpecInputTagsMap = {
   [key: string]: string | undefined;
 };
+const PublicCloudStorageObjectBucketTargetSpecInputTagsMap =
+  PublicCloudKeyManagerSecretTargetSpecMetadataMap as any as S.Schema<PublicCloudStorageObjectBucketTargetSpecInputTagsMap>;
+
 /** Versioning status for an S3 bucket */
 export type PublicCloudStorageObjectBucketVersioningStatusEnum =
   | "DISABLED"
   | "ENABLED"
   | "SUSPENDED";
+const PublicCloudStorageObjectBucketVersioningStatusEnum = S.String;
+
 /** Versioning configuration for an S3 bucket */
 export interface PublicCloudStorageObjectBucketVersioningConfig {
   /** Versioning status */
   status: PublicCloudStorageObjectBucketVersioningStatusEnum | (string & {});
 }
+const PublicCloudStorageObjectBucketVersioningConfig = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<PublicCloudStorageObjectBucketVersioningConfig>;
+
 /** Target specification for an S3 bucket */
 export interface PublicCloudStorageObjectBucketTargetSpecInput {
   /** Server-side encryption configuration */
@@ -2389,12 +3442,22 @@ export interface PublicCloudStorageObjectBucketTargetSpecInput {
   /** Versioning configuration */
   versioning?: PublicCloudStorageObjectBucketVersioningConfig | null;
 }
+const PublicCloudStorageObjectBucketTargetSpecInput = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<PublicCloudStorageObjectBucketTargetSpecInput>;
+
 export interface CreatePublicCloudProjectStorageObjectBucketRequest {
   /** Project ID */
   projectId: string;
   /** Desired target specification for the bucket to create */
   targetSpec: PublicCloudStorageObjectBucketTargetSpecInput;
 }
+const CreatePublicCloudProjectStorageObjectBucketRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<CreatePublicCloudProjectStorageObjectBucketRequest>;
+
 /** Object lock (WORM) configuration for an S3 bucket */
 export interface PublicCloudStorageObjectBucketObjectLockConfig {
   /** Object lock retention mode */
@@ -2404,10 +3467,18 @@ export interface PublicCloudStorageObjectBucketObjectLockConfig {
   /** Number of years to retain objects (alternative to retentionDays) */
   retentionYears?: number | null;
 }
+const PublicCloudStorageObjectBucketObjectLockConfig = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<PublicCloudStorageObjectBucketObjectLockConfig>;
+
 /** Current metadata tags */
 export type PublicCloudStorageObjectBucketCurrentStateTagsMap = {
   [key: string]: string | undefined;
 };
+const PublicCloudStorageObjectBucketCurrentStateTagsMap =
+  PublicCloudKeyManagerSecretTargetSpecMetadataMap as any as S.Schema<PublicCloudStorageObjectBucketCurrentStateTagsMap>;
+
 /** Current observed state of an S3 bucket from the S3 backend */
 export interface PublicCloudStorageObjectBucketCurrentState {
   /** Current encryption configuration */
@@ -2423,10 +3494,21 @@ export interface PublicCloudStorageObjectBucketCurrentState {
   /** Current versioning configuration */
   versioning?: PublicCloudStorageObjectBucketVersioningConfig | null;
 }
+const PublicCloudStorageObjectBucketCurrentState = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<PublicCloudStorageObjectBucketCurrentState>;
+
 /** Ongoing asynchronous tasks related to the bucket */
 export type PublicCloudStorageObjectBucketCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudStorageObjectBucketCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudStorageObjectBucketCurrentTasksList>;
+
 /** Metadata tags for the bucket */
 export type PublicCloudStorageObjectBucketTargetSpecTagsMap = { [key: string]: string | undefined };
+const PublicCloudStorageObjectBucketTargetSpecTagsMap =
+  PublicCloudKeyManagerSecretTargetSpecMetadataMap as any as S.Schema<PublicCloudStorageObjectBucketTargetSpecTagsMap>;
+
 /** Target specification for an S3 bucket */
 export interface PublicCloudStorageObjectBucketTargetSpec {
   /** Server-side encryption configuration */
@@ -2444,6 +3526,11 @@ export interface PublicCloudStorageObjectBucketTargetSpec {
   /** Versioning configuration */
   versioning?: PublicCloudStorageObjectBucketVersioningConfig | null;
 }
+const PublicCloudStorageObjectBucketTargetSpec = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<PublicCloudStorageObjectBucketTargetSpec>;
+
 /** An S3-compatible object storage bucket */
 export interface PublicCloudStorageObjectBucket {
   /** Computed hash representing the current target specification value */
@@ -2463,48 +3550,88 @@ export interface PublicCloudStorageObjectBucket {
   /** Last update date of the bucket */
   updatedAt?: string;
 }
+const PublicCloudStorageObjectBucket = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<PublicCloudStorageObjectBucket>;
+
 export interface DeletePublicCloudProjectComputeAutobackupRequest {
   /** Project ID */
   projectId: string;
   /** Autobackup ID */
   autobackupId: string;
 }
+const DeletePublicCloudProjectComputeAutobackupRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<DeletePublicCloudProjectComputeAutobackupRequest>;
+
 export interface DeletePublicCloudProjectComputeBackupRequest {
   /** Project ID */
   projectId: string;
   /** Backup ID */
   backupId: string;
 }
+const DeletePublicCloudProjectComputeBackupRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<DeletePublicCloudProjectComputeBackupRequest>;
+
 export interface DeletePublicCloudProjectComputeInstanceRequest {
   /** Project ID */
   projectId: string;
   /** Instance ID */
   instanceId: string;
 }
+const DeletePublicCloudProjectComputeInstanceRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<DeletePublicCloudProjectComputeInstanceRequest>;
+
 export interface DeletePublicCloudProjectComputeInstanceGroupRequest {
   /** Project ID */
   projectId: string;
   /** Instance group ID */
   instanceGroupId: string;
 }
+const DeletePublicCloudProjectComputeInstanceGroupRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<DeletePublicCloudProjectComputeInstanceGroupRequest>;
+
 export interface DeletePublicCloudProjectFloatingIpRequest {
   /** Project ID */
   projectId: string;
   /** Floating ip ID */
   floatingIpId: string;
 }
+const DeletePublicCloudProjectFloatingIpRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<DeletePublicCloudProjectFloatingIpRequest>;
+
 export interface DeletePublicCloudProjectGatewayRequest {
   /** Project ID */
   projectId: string;
   /** Gateway ID */
   gatewayId: string;
 }
+const DeletePublicCloudProjectGatewayRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<DeletePublicCloudProjectGatewayRequest>;
+
 export interface DeletePublicCloudProjectKeyManagerContainerRequest {
   /** Project ID */
   projectId: string;
   /** Container ID */
   containerId: string;
 }
+const DeletePublicCloudProjectKeyManagerContainerRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<DeletePublicCloudProjectKeyManagerContainerRequest>;
+
 export interface DeletePublicCloudProjectKeyManagerContainerConsumerRequest {
   /** Project ID */
   projectId: string;
@@ -2513,12 +3640,22 @@ export interface DeletePublicCloudProjectKeyManagerContainerConsumerRequest {
   /** Consumer ID */
   consumerId: string;
 }
+const DeletePublicCloudProjectKeyManagerContainerConsumerRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<DeletePublicCloudProjectKeyManagerContainerConsumerRequest>;
+
 export interface DeletePublicCloudProjectKeyManagerSecretRequest {
   /** Project ID */
   projectId: string;
   /** Secret ID */
   secretId: string;
 }
+const DeletePublicCloudProjectKeyManagerSecretRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<DeletePublicCloudProjectKeyManagerSecretRequest>;
+
 export interface DeletePublicCloudProjectKeyManagerSecretConsumerRequest {
   /** Project ID */
   projectId: string;
@@ -2527,12 +3664,22 @@ export interface DeletePublicCloudProjectKeyManagerSecretConsumerRequest {
   /** Consumer ID */
   consumerId: string;
 }
+const DeletePublicCloudProjectKeyManagerSecretConsumerRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<DeletePublicCloudProjectKeyManagerSecretConsumerRequest>;
+
 export interface DeletePublicCloudProjectLoadbalancerRequest {
   /** Project ID */
   projectId: string;
   /** Loadbalancer ID */
   loadbalancerId: string;
 }
+const DeletePublicCloudProjectLoadbalancerRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<DeletePublicCloudProjectLoadbalancerRequest>;
+
 export interface DeletePublicCloudProjectLoadbalancerListenerRequest {
   /** Project ID */
   projectId: string;
@@ -2541,6 +3688,11 @@ export interface DeletePublicCloudProjectLoadbalancerListenerRequest {
   /** Listener ID */
   listenerId: string;
 }
+const DeletePublicCloudProjectLoadbalancerListenerRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<DeletePublicCloudProjectLoadbalancerListenerRequest>;
+
 export interface DeletePublicCloudProjectLoadbalancerListenerL7policyRequest {
   /** Project ID */
   projectId: string;
@@ -2551,6 +3703,11 @@ export interface DeletePublicCloudProjectLoadbalancerListenerL7policyRequest {
   /** L7 policy ID */
   l7PolicyId: string;
 }
+const DeletePublicCloudProjectLoadbalancerListenerL7policyRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<DeletePublicCloudProjectLoadbalancerListenerL7policyRequest>;
+
 export interface DeletePublicCloudProjectLoadbalancerPoolRequest {
   /** Project ID */
   projectId: string;
@@ -2559,6 +3716,11 @@ export interface DeletePublicCloudProjectLoadbalancerPoolRequest {
   /** Pool ID */
   poolId: string;
 }
+const DeletePublicCloudProjectLoadbalancerPoolRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<DeletePublicCloudProjectLoadbalancerPoolRequest>;
+
 export interface DeletePublicCloudProjectLoadbalancerPoolMemberRequest {
   /** Project ID */
   projectId: string;
@@ -2569,12 +3731,22 @@ export interface DeletePublicCloudProjectLoadbalancerPoolMemberRequest {
   /** Member ID */
   memberId: string;
 }
+const DeletePublicCloudProjectLoadbalancerPoolMemberRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<DeletePublicCloudProjectLoadbalancerPoolMemberRequest>;
+
 export interface DeletePublicCloudProjectNetworkRequest {
   /** Project ID */
   projectId: string;
   /** Network ID */
   networkId: string;
 }
+const DeletePublicCloudProjectNetworkRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<DeletePublicCloudProjectNetworkRequest>;
+
 export interface DeletePublicCloudProjectNetworkSubnetRequest {
   /** Project ID */
   projectId: string;
@@ -2583,12 +3755,22 @@ export interface DeletePublicCloudProjectNetworkSubnetRequest {
   /** Subnet ID */
   subnetId: string;
 }
+const DeletePublicCloudProjectNetworkSubnetRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<DeletePublicCloudProjectNetworkSubnetRequest>;
+
 export interface DeletePublicCloudProjectPublicIpExtNetRequest {
   /** Project ID */
   projectId: string;
   /** Id */
   id: string;
 }
+const DeletePublicCloudProjectPublicIpExtNetRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<DeletePublicCloudProjectPublicIpExtNetRequest>;
+
 /** Current state of an Ext-Net IP */
 export interface PublicCloudPublicIpExtNetIPCurrentState {
   /** Resource currently associated with this IP */
@@ -2600,8 +3782,16 @@ export interface PublicCloudPublicIpExtNetIPCurrentState {
   /** Location where the IP resides */
   location?: PublicCloudCommonLocation;
 }
+const PublicCloudPublicIpExtNetIPCurrentState = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<PublicCloudPublicIpExtNetIPCurrentState>;
+
 /** Ongoing asynchronous tasks related to the Ext-Net IP */
 export type PublicCloudPublicIpExtNetIPCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudPublicIpExtNetIPCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudPublicIpExtNetIPCurrentTasksList>;
+
 /** A Public Cloud Ext-Net public IP (keyed by IP address) */
 export interface PublicCloudPublicIpExtNetIP {
   /** Computed hash representing the current target specification value */
@@ -2619,66 +3809,120 @@ export interface PublicCloudPublicIpExtNetIP {
   /** Last update date of the Ext-Net IP */
   updatedAt?: string;
 }
+const PublicCloudPublicIpExtNetIP = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<PublicCloudPublicIpExtNetIP>;
+
 export interface DeletePublicCloudProjectPublicIpFloatingRequest {
   /** Project ID */
   projectId: string;
   /** Id */
   id: string;
 }
+const DeletePublicCloudProjectPublicIpFloatingRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<DeletePublicCloudProjectPublicIpFloatingRequest>;
+
 export interface DeletePublicCloudProjectRancherRequest {
   /** Project ID */
   projectId: string;
   /** Rancher ID */
   rancherId: string;
 }
+const DeletePublicCloudProjectRancherRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<DeletePublicCloudProjectRancherRequest>;
+
 export interface DeletePublicCloudProjectSecurityGroupRequest {
   /** Project ID */
   projectId: string;
   /** Security group ID */
   securityGroupId: string;
 }
+const DeletePublicCloudProjectSecurityGroupRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<DeletePublicCloudProjectSecurityGroupRequest>;
+
 export interface DeletePublicCloudProjectSshKeyRequest {
   /** Project ID */
   projectId: string;
   /** Name */
   name: string;
 }
+const DeletePublicCloudProjectSshKeyRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<DeletePublicCloudProjectSshKeyRequest>;
+
 export interface DeletePublicCloudProjectStorageBlockBackupRequest {
   /** Project ID */
   projectId: string;
   /** Id */
   id: string;
 }
+const DeletePublicCloudProjectStorageBlockBackupRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<DeletePublicCloudProjectStorageBlockBackupRequest>;
+
 export interface DeletePublicCloudProjectStorageBlockSnapshotRequest {
   /** Project ID */
   projectId: string;
   /** Id */
   id: string;
 }
+const DeletePublicCloudProjectStorageBlockSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<DeletePublicCloudProjectStorageBlockSnapshotRequest>;
+
 export interface DeletePublicCloudProjectStorageBlockVolumeRequest {
   /** Project ID */
   projectId: string;
   /** Id */
   id: string;
 }
+const DeletePublicCloudProjectStorageBlockVolumeRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<DeletePublicCloudProjectStorageBlockVolumeRequest>;
+
 export interface DeletePublicCloudProjectStorageFileNetworkRequest {
   projectId: string;
   networkId: string;
 }
+const DeletePublicCloudProjectStorageFileNetworkRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<DeletePublicCloudProjectStorageFileNetworkRequest>;
+
 export interface DeletePublicCloudProjectStorageFileShareRequest {
   /** Project ID */
   projectId: string;
   /** File storage ID */
   fileStorageId: string;
 }
+const DeletePublicCloudProjectStorageFileShareRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<DeletePublicCloudProjectStorageFileShareRequest>;
+
 /** Access levels for file storage access rules */
 export type PublicCloudStorageFileFileStorageAccessLevelEnum = "READ_ONLY" | "READ_WRITE";
+const PublicCloudStorageFileFileStorageAccessLevelEnum = S.String;
+
 /** Possible states for a file storage access rule */
 export type PublicCloudStorageFileFileStorageAccessRuleStateEnum =
   | "ACTIVE"
   | "APPLYING"
   | "DENYING"
   | "ERROR";
+const PublicCloudStorageFileFileStorageAccessRuleStateEnum = S.String;
+
 /** An access rule controlling which IP addresses can access a file storage */
 export interface PublicCloudStorageFileFileStorageAccessRule {
   /** Access level granted (read-write or read-only) */
@@ -2692,9 +3936,19 @@ export interface PublicCloudStorageFileFileStorageAccessRule {
   /** Current state of the access rule */
   state?: PublicCloudStorageFileFileStorageAccessRuleStateEnum;
 }
+const PublicCloudStorageFileFileStorageAccessRule = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<PublicCloudStorageFileFileStorageAccessRule>;
+
 /** Current access rules on the file storage */
 export type PublicCloudStorageFileFileStorageCurrentStateAccessRulesList =
   Array<PublicCloudStorageFileFileStorageAccessRule>;
+const PublicCloudStorageFileFileStorageCurrentStateAccessRulesList = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<PublicCloudStorageFileFileStorageCurrentStateAccessRulesList>;
+
 /** An NFS export path for a file storage */
 export interface PublicCloudStorageFileFileStorageExportLocation {
   /** NFS export path for mounting */
@@ -2702,13 +3956,27 @@ export interface PublicCloudStorageFileFileStorageExportLocation {
   /** Whether this is the preferred export location */
   preferred?: boolean;
 }
+const PublicCloudStorageFileFileStorageExportLocation = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<PublicCloudStorageFileFileStorageExportLocation>;
+
 /** NFS export paths for mounting the file storage */
 export type PublicCloudStorageFileFileStorageCurrentStateExportLocationsList =
   Array<PublicCloudStorageFileFileStorageExportLocation>;
+const PublicCloudStorageFileFileStorageCurrentStateExportLocationsList = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<PublicCloudStorageFileFileStorageCurrentStateExportLocationsList>;
+
 /** Supported file sharing protocols */
 export type PublicCloudStorageFileFileStorageProtocolEnum = "NFS";
+const PublicCloudStorageFileFileStorageProtocolEnum = S.String;
+
 /** Supported file storage types (performance tiers) */
 export type PublicCloudStorageFileFileStorageTypeEnum = "STANDARD_1AZ";
+const PublicCloudStorageFileFileStorageTypeEnum = S.String;
+
 /** Current state of a file storage as observed from the infrastructure */
 export interface PublicCloudStorageFileFileStorageCurrentState {
   /** Current access rules on the file storage */
@@ -2732,8 +4000,16 @@ export interface PublicCloudStorageFileFileStorageCurrentState {
   /** Subnet ID within the private network */
   subnetId?: string;
 }
+const PublicCloudStorageFileFileStorageCurrentState = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<PublicCloudStorageFileFileStorageCurrentState>;
+
 /** Ongoing asynchronous tasks related to the file storage */
 export type PublicCloudStorageFileFileStorageCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudStorageFileFileStorageCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudStorageFileFileStorageCurrentTasksList>;
+
 /** Input for an access rule controlling which IP addresses can access a file storage */
 export interface PublicCloudStorageFileFileStorageAccessRuleInput {
   /** Access level granted (read-write or read-only) */
@@ -2741,14 +4017,27 @@ export interface PublicCloudStorageFileFileStorageAccessRuleInput {
   /** IP address or CIDR allowed to access the file storage */
   accessTo: string;
 }
+const PublicCloudStorageFileFileStorageAccessRuleInput = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<PublicCloudStorageFileFileStorageAccessRuleInput>;
+
 /** Access rules controlling which IPs can access the file storage */
 export type PublicCloudStorageFileFileStorageTargetSpecAccessRulesList =
   Array<PublicCloudStorageFileFileStorageAccessRuleInput>;
+const PublicCloudStorageFileFileStorageTargetSpecAccessRulesList = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<PublicCloudStorageFileFileStorageTargetSpecAccessRulesList>;
+
 /** Share network to attach the file storage to */
 export interface PublicCloudStorageFileFileStorageTargetSpecShareNetwork {
   /** Share network ID */
   id: string;
 }
+const PublicCloudStorageFileFileStorageTargetSpecShareNetwork =
+  PublicCloudInstanceAutobackupInstanceRef as any as S.Schema<PublicCloudStorageFileFileStorageTargetSpecShareNetwork>;
+
 /** Target specification for a file storage */
 export interface PublicCloudStorageFileFileStorageTargetSpec {
   /** Access rules controlling which IPs can access the file storage */
@@ -2768,6 +4057,11 @@ export interface PublicCloudStorageFileFileStorageTargetSpec {
   /** Size of the file storage in GB */
   size: number;
 }
+const PublicCloudStorageFileFileStorageTargetSpec = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<PublicCloudStorageFileFileStorageTargetSpec>;
+
 /** A Public Cloud file storage (NFS share) */
 export interface PublicCloudStorageFileFileStorage {
   /** Computed hash representing the current target specification value */
@@ -2787,24 +4081,46 @@ export interface PublicCloudStorageFileFileStorage {
   /** Last update date of the file storage */
   updatedAt?: string;
 }
+const PublicCloudStorageFileFileStorage = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<PublicCloudStorageFileFileStorage>;
+
 export interface DeletePublicCloudProjectStorageFileSnapshotRequest {
   /** Project ID */
   projectId: string;
   /** Snapshot ID */
   snapshotId: string;
 }
+const DeletePublicCloudProjectStorageFileSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<DeletePublicCloudProjectStorageFileSnapshotRequest>;
+
 export interface DeletePublicCloudProjectStorageObjectBucketRequest {
   /** Project ID */
   projectId: string;
   /** Bucket name */
   bucketName: string;
 }
+const DeletePublicCloudProjectStorageObjectBucketRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<DeletePublicCloudProjectStorageObjectBucketRequest>;
+
 export interface GetPublicCloudProjectRequest {
   /** Project ID */
   projectId: string;
 }
+const GetPublicCloudProjectRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<GetPublicCloudProjectRequest>;
+
 /** Possible values for cloud project mode */
 export type PublicCloudProjectModeEnum = "CLASSIC" | "DISCOVERY";
+const PublicCloudProjectModeEnum = S.String;
+
 /** Current state of the cloud project */
 export interface PublicCloudProjectProjectCurrentState {
   /** Project mode */
@@ -2812,12 +4128,25 @@ export interface PublicCloudProjectProjectCurrentState {
   /** Name of the cloud project */
   name?: string;
 }
+const PublicCloudProjectProjectCurrentState = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<PublicCloudProjectProjectCurrentState>;
+
 /** Asynchronous operations ongoing on the cloud project */
 export type PublicCloudProjectProjectAsyncWithIAMCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudProjectProjectAsyncWithIAMCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudProjectProjectAsyncWithIAMCurrentTasksList>;
+
 /** Resource state */
 export type IamResourceMetadataStateEnum = "EXPIRED" | "IN_CREATION" | "OK" | "SUSPENDED";
+const IamResourceMetadataStateEnum = S.String;
+
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
+const IamResourceMetadataTagsMap =
+  PublicCloudKeyManagerSecretTargetSpecMetadataMap as any as S.Schema<IamResourceMetadataTagsMap>;
+
 /** IAM resource metadata embedded in services models */
 export interface IamResourceMetadata {
   /** Resource display name */
@@ -2831,6 +4160,8 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
+const IamResourceMetadata = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<IamResourceMetadata>;
+
 /** Target specification of the cloud project */
 export interface PublicCloudProjectProjectTargetSpec {
   /** Project type. Discovery mode allows to display UI in read only without adding any payment mean. */
@@ -2838,6 +4169,11 @@ export interface PublicCloudProjectProjectTargetSpec {
   /** Name of the public cloud project */
   name: string;
 }
+const PublicCloudProjectProjectTargetSpec = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<PublicCloudProjectProjectTargetSpec>;
+
 /** A Public Cloud project */
 export interface PublicCloudProjectProjectAsyncWithIAM {
   /** Date of project creation */
@@ -2859,24 +4195,44 @@ export interface PublicCloudProjectProjectAsyncWithIAM {
   /** Date of the last cloud project update */
   updatedAt?: string;
 }
+const PublicCloudProjectProjectAsyncWithIAM = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<PublicCloudProjectProjectAsyncWithIAM>;
+
 export interface GetPublicCloudProjectComputeAutobackupRequest {
   /** Project ID */
   projectId: string;
   /** Autobackup ID */
   autobackupId: string;
 }
+const GetPublicCloudProjectComputeAutobackupRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<GetPublicCloudProjectComputeAutobackupRequest>;
+
 export interface GetPublicCloudProjectComputeBackupRequest {
   /** Project ID */
   projectId: string;
   /** Backup ID */
   backupId: string;
 }
+const GetPublicCloudProjectComputeBackupRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<GetPublicCloudProjectComputeBackupRequest>;
+
 export interface GetPublicCloudProjectComputeInstanceRequest {
   /** Project ID */
   projectId: string;
   /** Instance ID */
   instanceId: string;
 }
+const GetPublicCloudProjectComputeInstanceRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<GetPublicCloudProjectComputeInstanceRequest>;
+
 export interface GetPublicCloudProjectComputeInstanceConsoleOutputRequest {
   /** Project ID */
   projectId: string;
@@ -2885,35 +4241,65 @@ export interface GetPublicCloudProjectComputeInstanceConsoleOutputRequest {
   /** Number of lines to retrieve from the end of the console log. If omitted, returns all available output. */
   length?: number;
 }
+const GetPublicCloudProjectComputeInstanceConsoleOutputRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<GetPublicCloudProjectComputeInstanceConsoleOutputRequest>;
+
 /** Console output (log) retrieved from an instance */
 export interface PublicCloudInstanceConsoleOutput {
   /** The console output text */
   output?: string;
 }
+const PublicCloudInstanceConsoleOutput = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<PublicCloudInstanceConsoleOutput>;
+
 export interface GetPublicCloudProjectComputeInstanceGroupRequest {
   /** Project ID */
   projectId: string;
   /** Instance group ID */
   instanceGroupId: string;
 }
+const GetPublicCloudProjectComputeInstanceGroupRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<GetPublicCloudProjectComputeInstanceGroupRequest>;
+
 export interface GetPublicCloudProjectFloatingIpRequest {
   /** Project ID */
   projectId: string;
   /** Floating ip ID */
   floatingIpId: string;
 }
+const GetPublicCloudProjectFloatingIpRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<GetPublicCloudProjectFloatingIpRequest>;
+
 export interface GetPublicCloudProjectGatewayRequest {
   /** Project ID */
   projectId: string;
   /** Gateway ID */
   gatewayId: string;
 }
+const GetPublicCloudProjectGatewayRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<GetPublicCloudProjectGatewayRequest>;
+
 export interface GetPublicCloudProjectKeyManagerContainerRequest {
   /** Project ID */
   projectId: string;
   /** Container ID */
   containerId: string;
 }
+const GetPublicCloudProjectKeyManagerContainerRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<GetPublicCloudProjectKeyManagerContainerRequest>;
+
 export interface GetPublicCloudProjectKeyManagerContainerConsumerRequest {
   /** Project ID */
   projectId: string;
@@ -2922,12 +4308,22 @@ export interface GetPublicCloudProjectKeyManagerContainerConsumerRequest {
   /** Consumer ID */
   consumerId: string;
 }
+const GetPublicCloudProjectKeyManagerContainerConsumerRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<GetPublicCloudProjectKeyManagerContainerConsumerRequest>;
+
 export interface GetPublicCloudProjectKeyManagerSecretRequest {
   /** Project ID */
   projectId: string;
   /** Secret ID */
   secretId: string;
 }
+const GetPublicCloudProjectKeyManagerSecretRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<GetPublicCloudProjectKeyManagerSecretRequest>;
+
 export interface GetPublicCloudProjectKeyManagerSecretConsumerRequest {
   /** Project ID */
   projectId: string;
@@ -2936,12 +4332,22 @@ export interface GetPublicCloudProjectKeyManagerSecretConsumerRequest {
   /** Consumer ID */
   consumerId: string;
 }
+const GetPublicCloudProjectKeyManagerSecretConsumerRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<GetPublicCloudProjectKeyManagerSecretConsumerRequest>;
+
 export interface GetPublicCloudProjectLoadbalancerRequest {
   /** Project ID */
   projectId: string;
   /** Loadbalancer ID */
   loadbalancerId: string;
 }
+const GetPublicCloudProjectLoadbalancerRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<GetPublicCloudProjectLoadbalancerRequest>;
+
 export interface GetPublicCloudProjectLoadbalancerListenerRequest {
   /** Project ID */
   projectId: string;
@@ -2950,6 +4356,11 @@ export interface GetPublicCloudProjectLoadbalancerListenerRequest {
   /** Listener ID */
   listenerId: string;
 }
+const GetPublicCloudProjectLoadbalancerListenerRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<GetPublicCloudProjectLoadbalancerListenerRequest>;
+
 export interface GetPublicCloudProjectLoadbalancerListenerL7policyRequest {
   /** Project ID */
   projectId: string;
@@ -2960,6 +4371,11 @@ export interface GetPublicCloudProjectLoadbalancerListenerL7policyRequest {
   /** L7 policy ID */
   l7PolicyId: string;
 }
+const GetPublicCloudProjectLoadbalancerListenerL7policyRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<GetPublicCloudProjectLoadbalancerListenerL7policyRequest>;
+
 export interface GetPublicCloudProjectLoadbalancerPoolRequest {
   /** Project ID */
   projectId: string;
@@ -2968,6 +4384,11 @@ export interface GetPublicCloudProjectLoadbalancerPoolRequest {
   /** Pool ID */
   poolId: string;
 }
+const GetPublicCloudProjectLoadbalancerPoolRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<GetPublicCloudProjectLoadbalancerPoolRequest>;
+
 export interface GetPublicCloudProjectLoadbalancerPoolMemberRequest {
   /** Project ID */
   projectId: string;
@@ -2978,12 +4399,22 @@ export interface GetPublicCloudProjectLoadbalancerPoolMemberRequest {
   /** Member ID */
   memberId: string;
 }
+const GetPublicCloudProjectLoadbalancerPoolMemberRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<GetPublicCloudProjectLoadbalancerPoolMemberRequest>;
+
 export interface GetPublicCloudProjectNetworkRequest {
   /** Project ID */
   projectId: string;
   /** Network ID */
   networkId: string;
 }
+const GetPublicCloudProjectNetworkRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<GetPublicCloudProjectNetworkRequest>;
+
 export interface GetPublicCloudProjectNetworkSubnetRequest {
   /** Project ID */
   projectId: string;
@@ -2992,12 +4423,22 @@ export interface GetPublicCloudProjectNetworkSubnetRequest {
   /** Subnet ID */
   subnetId: string;
 }
+const GetPublicCloudProjectNetworkSubnetRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<GetPublicCloudProjectNetworkSubnetRequest>;
+
 export interface GetPublicCloudProjectPublicIpAdditionalRequest {
   /** Project ID */
   projectId: string;
   /** Id */
   id: string;
 }
+const GetPublicCloudProjectPublicIpAdditionalRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<GetPublicCloudProjectPublicIpAdditionalRequest>;
+
 /** Current state of an additional IP */
 export interface PublicCloudPublicIpAdditionalIPCurrentState {
   /** Resource currently associated with this IP */
@@ -3009,8 +4450,16 @@ export interface PublicCloudPublicIpAdditionalIPCurrentState {
   /** The additional IP address */
   ip?: string;
 }
+const PublicCloudPublicIpAdditionalIPCurrentState = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<PublicCloudPublicIpAdditionalIPCurrentState>;
+
 /** Ongoing asynchronous tasks related to the additional IP */
 export type PublicCloudPublicIpAdditionalIPCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudPublicIpAdditionalIPCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudPublicIpAdditionalIPCurrentTasksList>;
+
 /** A Public Cloud additional public IP (keyed by IP address) */
 export interface PublicCloudPublicIpAdditionalIP {
   /** Computed hash representing the current target specification value */
@@ -3024,24 +4473,44 @@ export interface PublicCloudPublicIpAdditionalIP {
   /** Additional IP readiness in the system */
   resourceStatus?: CommonResourceStatusEnum;
 }
+const PublicCloudPublicIpAdditionalIP = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<PublicCloudPublicIpAdditionalIP>;
+
 export interface GetPublicCloudProjectPublicIpExtNetRequest {
   /** Project ID */
   projectId: string;
   /** Id */
   id: string;
 }
+const GetPublicCloudProjectPublicIpExtNetRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<GetPublicCloudProjectPublicIpExtNetRequest>;
+
 export interface GetPublicCloudProjectPublicIpFloatingRequest {
   /** Project ID */
   projectId: string;
   /** Id */
   id: string;
 }
+const GetPublicCloudProjectPublicIpFloatingRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<GetPublicCloudProjectPublicIpFloatingRequest>;
+
 export interface GetPublicCloudProjectQuotaRequest {
   /** Project ID */
   projectId: string;
   /** Optional region filter */
   region?: string;
 }
+const GetPublicCloudProjectQuotaRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<GetPublicCloudProjectQuotaRequest>;
+
 /** Compute limits for a quota profile */
 export interface PublicCloudQuotaQuotaProfileCompute {
   /** Maximum allowed CPU cores */
@@ -3051,6 +4520,11 @@ export interface PublicCloudQuotaQuotaProfileCompute {
   /** Maximum allowed memory in MB */
   memory?: number;
 }
+const PublicCloudQuotaQuotaProfileCompute = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<PublicCloudQuotaQuotaProfileCompute>;
+
 /** Key manager limits for a quota profile */
 export interface PublicCloudQuotaQuotaProfileKeyManager {
   /** Maximum allowed containers */
@@ -3058,11 +4532,21 @@ export interface PublicCloudQuotaQuotaProfileKeyManager {
   /** Maximum allowed secrets */
   secrets?: number;
 }
+const PublicCloudQuotaQuotaProfileKeyManager = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<PublicCloudQuotaQuotaProfileKeyManager>;
+
 /** Keypair limits for a quota profile */
 export interface PublicCloudQuotaQuotaProfileKeypair {
   /** Maximum allowed keypairs */
   keypairs?: number;
 }
+const PublicCloudQuotaQuotaProfileKeypair = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<PublicCloudQuotaQuotaProfileKeypair>;
+
 /** Loadbalancer limits for a quota profile */
 export interface PublicCloudQuotaQuotaProfileLoadbalancer {
   /** Maximum allowed health monitors */
@@ -3080,6 +4564,11 @@ export interface PublicCloudQuotaQuotaProfileLoadbalancer {
   /** Maximum allowed pools */
   pools?: number;
 }
+const PublicCloudQuotaQuotaProfileLoadbalancer = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<PublicCloudQuotaQuotaProfileLoadbalancer>;
+
 /** Network limits for a quota profile */
 export interface PublicCloudQuotaQuotaProfileNetwork {
   /** Maximum allowed floating IPs */
@@ -3095,6 +4584,11 @@ export interface PublicCloudQuotaQuotaProfileNetwork {
   /** Maximum allowed subnets */
   subnets?: number;
 }
+const PublicCloudQuotaQuotaProfileNetwork = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<PublicCloudQuotaQuotaProfileNetwork>;
+
 /** File storage limits for a quota profile */
 export interface PublicCloudQuotaQuotaProfileShare {
   /** Maximum allowed total backup storage size in GB */
@@ -3108,6 +4602,11 @@ export interface PublicCloudQuotaQuotaProfileShare {
   /** Maximum allowed share snapshots */
   snapshots?: number;
 }
+const PublicCloudQuotaQuotaProfileShare = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<PublicCloudQuotaQuotaProfileShare>;
+
 /** Block storage limits for a quota profile */
 export interface PublicCloudQuotaQuotaProfileVolume {
   /** Maximum allowed total backup storage size in GB */
@@ -3121,6 +4620,11 @@ export interface PublicCloudQuotaQuotaProfileVolume {
   /** Maximum allowed volumes */
   volumes?: number;
 }
+const PublicCloudQuotaQuotaProfileVolume = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<PublicCloudQuotaQuotaProfileVolume>;
+
 /** A Public Cloud quota profile (read-only reference data) */
 export interface PublicCloudQuotaQuotaProfile {
   /** Compute limits */
@@ -3140,11 +4644,23 @@ export interface PublicCloudQuotaQuotaProfile {
   /** Block storage limits */
   volume?: PublicCloudQuotaQuotaProfileVolume | null;
 }
+const PublicCloudQuotaQuotaProfile = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<PublicCloudQuotaQuotaProfile>;
+
 /** Quota profiles available to this project */
 export type PublicCloudQuotaQuotaCurrentStateAvailableProfilesList =
   Array<PublicCloudQuotaQuotaProfile>;
+const PublicCloudQuotaQuotaCurrentStateAvailableProfilesList = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<PublicCloudQuotaQuotaCurrentStateAvailableProfilesList>;
+
 /** Unit of measurement for quota limits and usage */
 export type PublicCloudQuotaQuotaUnitEnum = "COUNT" | "GB" | "GiB" | "MB" | "MiB";
+const PublicCloudQuotaQuotaUnitEnum = S.String;
+
 /** Quota usage with limit and current consumption */
 export interface PublicCloudQuotaQuotaUsage {
   /** Maximum allowed */
@@ -3154,6 +4670,11 @@ export interface PublicCloudQuotaQuotaUsage {
   /** Currently used (may be omitted when not available) */
   used?: number | null;
 }
+const PublicCloudQuotaQuotaUsage = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<PublicCloudQuotaQuotaUsage>;
+
 /** Per-region compute quota usage */
 export interface PublicCloudQuotaQuotaRegionCompute {
   /** CPU cores quota usage */
@@ -3163,6 +4684,11 @@ export interface PublicCloudQuotaQuotaRegionCompute {
   /** Memory quota usage in MB */
   memory?: PublicCloudQuotaQuotaUsage;
 }
+const PublicCloudQuotaQuotaRegionCompute = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<PublicCloudQuotaQuotaRegionCompute>;
+
 /** Per-region key manager quota usage */
 export interface PublicCloudQuotaQuotaRegionKeyManager {
   /** Containers quota usage */
@@ -3170,11 +4696,21 @@ export interface PublicCloudQuotaQuotaRegionKeyManager {
   /** Secrets quota usage */
   secrets?: PublicCloudQuotaQuotaUsage;
 }
+const PublicCloudQuotaQuotaRegionKeyManager = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<PublicCloudQuotaQuotaRegionKeyManager>;
+
 /** Per-region keypair quota */
 export interface PublicCloudQuotaQuotaRegionKeypair {
   /** Keypairs quota */
   keypairs?: PublicCloudQuotaQuotaUsage;
 }
+const PublicCloudQuotaQuotaRegionKeypair = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<PublicCloudQuotaQuotaRegionKeypair>;
+
 /** Per-region load balancer quota usage */
 export interface PublicCloudQuotaQuotaRegionLoadbalancer {
   /** Health monitors quota usage */
@@ -3192,6 +4728,11 @@ export interface PublicCloudQuotaQuotaRegionLoadbalancer {
   /** Pools quota usage */
   pools?: PublicCloudQuotaQuotaUsage;
 }
+const PublicCloudQuotaQuotaRegionLoadbalancer = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<PublicCloudQuotaQuotaRegionLoadbalancer>;
+
 /** Per-region network quota usage */
 export interface PublicCloudQuotaQuotaRegionNetwork {
   /** Floating IPs quota usage */
@@ -3207,6 +4748,11 @@ export interface PublicCloudQuotaQuotaRegionNetwork {
   /** Subnets quota usage */
   subnets?: PublicCloudQuotaQuotaUsage;
 }
+const PublicCloudQuotaQuotaRegionNetwork = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<PublicCloudQuotaQuotaRegionNetwork>;
+
 /** Quota limit without usage tracking (for per-item size caps) */
 export interface PublicCloudQuotaQuotaLimit {
   /** Maximum allowed */
@@ -3214,6 +4760,11 @@ export interface PublicCloudQuotaQuotaLimit {
   /** Unit of measurement */
   unit?: PublicCloudQuotaQuotaUnitEnum;
 }
+const PublicCloudQuotaQuotaLimit = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<PublicCloudQuotaQuotaLimit>;
+
 /** Per-region file storage quota usage */
 export interface PublicCloudQuotaQuotaRegionShare {
   /** File storage backup storage quota usage */
@@ -3233,6 +4784,11 @@ export interface PublicCloudQuotaQuotaRegionShare {
   /** File storage snapshots quota usage */
   snapshots?: PublicCloudQuotaQuotaUsage;
 }
+const PublicCloudQuotaQuotaRegionShare = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<PublicCloudQuotaQuotaRegionShare>;
+
 /** Per-region volume quota usage */
 export interface PublicCloudQuotaQuotaRegionVolume {
   /** Volume backup storage quota usage */
@@ -3248,6 +4804,11 @@ export interface PublicCloudQuotaQuotaRegionVolume {
   /** Volumes quota usage */
   volumes?: PublicCloudQuotaQuotaUsage;
 }
+const PublicCloudQuotaQuotaRegionVolume = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<PublicCloudQuotaQuotaRegionVolume>;
+
 /** Quota usage across all services for a single region */
 export interface PublicCloudQuotaQuotaUsageDetails {
   /** Compute quota usage */
@@ -3265,6 +4826,11 @@ export interface PublicCloudQuotaQuotaUsageDetails {
   /** Block storage quota usage */
   volume?: PublicCloudQuotaQuotaRegionVolume | null;
 }
+const PublicCloudQuotaQuotaUsageDetails = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<PublicCloudQuotaQuotaUsageDetails>;
+
 /** Current state of the project quota in a single region */
 export interface PublicCloudQuotaQuotaRegionCurrentState {
   /** Region where the quota applies */
@@ -3274,9 +4840,19 @@ export interface PublicCloudQuotaQuotaRegionCurrentState {
   /** Quota usage for this region */
   usage?: PublicCloudQuotaQuotaUsageDetails | null;
 }
+const PublicCloudQuotaQuotaRegionCurrentState = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<PublicCloudQuotaQuotaRegionCurrentState>;
+
 /** Current state per region */
 export type PublicCloudQuotaQuotaCurrentStateRegionsList =
   Array<PublicCloudQuotaQuotaRegionCurrentState>;
+const PublicCloudQuotaQuotaCurrentStateRegionsList = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<PublicCloudQuotaQuotaCurrentStateRegionsList>;
+
 /** Current state of the project quota */
 export interface PublicCloudQuotaQuotaCurrentState {
   /** Quota profiles available to this project */
@@ -3286,8 +4862,16 @@ export interface PublicCloudQuotaQuotaCurrentState {
   /** Current state per region */
   regions?: PublicCloudQuotaQuotaCurrentStateRegionsList | null;
 }
+const PublicCloudQuotaQuotaCurrentState = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<PublicCloudQuotaQuotaCurrentState>;
+
 /** Ongoing asynchronous tasks related to the quota */
 export type PublicCloudQuotaQuotaCurrentTasksList = Array<CommonCurrentTask>;
+const PublicCloudQuotaQuotaCurrentTasksList =
+  PublicCloudInstanceAutobackupCurrentTasksList as any as S.Schema<PublicCloudQuotaQuotaCurrentTasksList>;
+
 /** Target specification for the project quota in a single region */
 export interface PublicCloudQuotaQuotaRegionTargetSpec {
   /** Region where the profile applies */
@@ -3295,9 +4879,19 @@ export interface PublicCloudQuotaQuotaRegionTargetSpec {
   /** Quota profile to apply in this region. Available values are in currentState.availableProfiles. */
   profile: string;
 }
+const PublicCloudQuotaQuotaRegionTargetSpec = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<PublicCloudQuotaQuotaRegionTargetSpec>;
+
 /** Target quota profile per region */
 export type PublicCloudQuotaQuotaTargetSpecRegionsList =
   Array<PublicCloudQuotaQuotaRegionTargetSpec>;
+const PublicCloudQuotaQuotaTargetSpecRegionsList = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<PublicCloudQuotaQuotaTargetSpecRegionsList>;
+
 /** Target specification for the project quota */
 export interface PublicCloudQuotaQuotaTargetSpec {
   /** When true, automatic quota upgrades are disabled for this project */
@@ -3305,6 +4899,11 @@ export interface PublicCloudQuotaQuotaTargetSpec {
   /** Target quota profile per region */
   regions?: PublicCloudQuotaQuotaTargetSpecRegionsList;
 }
+const PublicCloudQuotaQuotaTargetSpec = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<PublicCloudQuotaQuotaTargetSpec>;
+
 /** A Public Cloud project quota */
 export interface PublicCloudQuotaQuota {
   /** Computed hash representing the current target specification value */
@@ -3324,12 +4923,22 @@ export interface PublicCloudQuotaQuota {
   /** Last update date of the quota */
   updatedAt?: string;
 }
+const PublicCloudQuotaQuota = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<PublicCloudQuotaQuota>;
+
 export interface GetPublicCloudProjectRancherRequest {
   /** Project ID */
   projectId: string;
   /** Rancher ID */
   rancherId: string;
 }
+const GetPublicCloudProjectRancherRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<GetPublicCloudProjectRancherRequest>;
+
 export interface GetPublicCloudProjectRancherTaskRequest {
   /** Project ID */
   projectId: string;
@@ -3338,8 +4947,15 @@ export interface GetPublicCloudProjectRancherTaskRequest {
   /** Task ID */
   taskId: string;
 }
+const GetPublicCloudProjectRancherTaskRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<GetPublicCloudProjectRancherTaskRequest>;
+
 /** Errors that occured on the task */
 export type CommonTaskErrorsList = Array<CommonTaskError>;
+const CommonTaskErrorsList = CommonCurrentTaskErrorsList as any as S.Schema<CommonTaskErrorsList>;
+
 /** TaskStatusEnum */
 export type CommonTaskStatusEnum =
   | "DONE"
@@ -3348,6 +4964,8 @@ export type CommonTaskStatusEnum =
   | "RUNNING"
   | "SCHEDULED"
   | "WAITING_USER_INPUT";
+const CommonTaskStatusEnum = S.String;
+
 /** Detailed information about an asynchronous operation progress steps */
 export interface CommonTaskProgress {
   /** Progress step name */
@@ -3355,8 +4973,15 @@ export interface CommonTaskProgress {
   /** Current status of the progress step */
   status?: CommonTaskStatusEnum;
 }
+const CommonTaskProgress = /*@__PURE__*/ __L.at(__c33, 1) as any as S.Schema<CommonTaskProgress>;
+
 /** Progress steps of the asynchronous operation */
 export type CommonTaskProgressList = Array<CommonTaskProgress>;
+const CommonTaskProgressList = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<CommonTaskProgressList>;
+
 /** Asynchronous operation */
 export interface CommonTask {
   /** Creation date of the task */
@@ -3382,12 +5007,19 @@ export interface CommonTask {
   /** Last update of the task */
   updatedAt?: string;
 }
+const CommonTask = /*@__PURE__*/ __L.at(__c33, 3) as any as S.Schema<CommonTask>;
+
 export interface GetPublicCloudProjectReferenceInstanceFlavorRequest {
   /** Project ID */
   projectId: string;
   /** Id */
   id: string;
 }
+const GetPublicCloudProjectReferenceInstanceFlavorRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  4,
+) as any as S.Schema<GetPublicCloudProjectReferenceInstanceFlavorRequest>;
+
 /** A Public Cloud instance flavor (read-only reference data) */
 export interface PublicCloudReferenceInstanceFlavor {
   /** Flavor description */
@@ -3411,12 +5043,22 @@ export interface PublicCloudReferenceInstanceFlavor {
   /** Number of virtual CPUs */
   vcpus?: number;
 }
+const PublicCloudReferenceInstanceFlavor = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<PublicCloudReferenceInstanceFlavor>;
+
 export interface GetPublicCloudProjectReferenceInstanceImageRequest {
   /** Project ID */
   projectId: string;
   /** Id */
   id: string;
 }
+const GetPublicCloudProjectReferenceInstanceImageRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  6,
+) as any as S.Schema<GetPublicCloudProjectReferenceInstanceImageRequest>;
+
 /** A Public Cloud instance image (read-only reference data) */
 export interface PublicCloudReferenceInstanceImage {
   /** Image creation date */
@@ -3440,27 +5082,55 @@ export interface PublicCloudReferenceInstanceImage {
   /** Image visibility */
   visibility?: PublicCloudInstanceImageVisibilityEnum;
 }
+const PublicCloudReferenceInstanceImage = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<PublicCloudReferenceInstanceImage>;
+
 export interface GetPublicCloudProjectReferenceRancherEligibilityRequest {
   /** Project ID */
   projectId: string;
 }
+const GetPublicCloudProjectReferenceRancherEligibilityRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<GetPublicCloudProjectReferenceRancherEligibilityRequest>;
+
 /** A managed Rancher service eligibility reference, applicable to service creations */
 export interface PublicCloudRancherEligibilityReference {
   /** Whether the project is eligible for free trial for the Rancher product */
   freeTrial?: boolean;
 }
+const PublicCloudRancherEligibilityReference = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<PublicCloudRancherEligibilityReference>;
+
 export interface GetPublicCloudProjectReferenceRegionRequest {
   /** Project ID */
   projectId: string;
   /** Name */
   name: string;
 }
+const GetPublicCloudProjectReferenceRegionRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<GetPublicCloudProjectReferenceRegionRequest>;
+
 /** Availability zones in this region */
 export type PublicCloudReferenceRegionAvailabilityZonesList = Array<string>;
+const PublicCloudReferenceRegionAvailabilityZonesList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudReferenceRegionAvailabilityZonesList>;
+
 /** Available OpenStack services */
 export type PublicCloudReferenceRegionServicesList = Array<string>;
+const PublicCloudReferenceRegionServicesList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudReferenceRegionServicesList>;
+
 /** Possible statuses for a cloud region */
 export type PublicCloudReferenceRegionStatusEnum = "DISABLED" | "ENABLED" | "MAINTENANCE";
+const PublicCloudReferenceRegionStatusEnum = S.String;
+
 /** A Public Cloud region (read-only reference data) */
 export interface PublicCloudReferenceRegion {
   /** Availability zones in this region */
@@ -3478,64 +5148,129 @@ export interface PublicCloudReferenceRegion {
   /** Region status */
   status?: PublicCloudReferenceRegionStatusEnum;
 }
+const PublicCloudReferenceRegion = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<PublicCloudReferenceRegion>;
+
 export interface GetPublicCloudProjectSecurityGroupRequest {
   /** Project ID */
   projectId: string;
   /** Security group ID */
   securityGroupId: string;
 }
+const GetPublicCloudProjectSecurityGroupRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<GetPublicCloudProjectSecurityGroupRequest>;
+
 export interface GetPublicCloudProjectSshKeyRequest {
   /** Project ID */
   projectId: string;
   /** Name */
   name: string;
 }
+const GetPublicCloudProjectSshKeyRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<GetPublicCloudProjectSshKeyRequest>;
+
 export interface GetPublicCloudProjectStorageBlockBackupRequest {
   /** Project ID */
   projectId: string;
   /** Id */
   id: string;
 }
+const GetPublicCloudProjectStorageBlockBackupRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<GetPublicCloudProjectStorageBlockBackupRequest>;
+
 export interface GetPublicCloudProjectStorageBlockSnapshotRequest {
   /** Project ID */
   projectId: string;
   /** Id */
   id: string;
 }
+const GetPublicCloudProjectStorageBlockSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<GetPublicCloudProjectStorageBlockSnapshotRequest>;
+
 export interface GetPublicCloudProjectStorageBlockVolumeRequest {
   /** Project ID */
   projectId: string;
   /** Id */
   id: string;
 }
+const GetPublicCloudProjectStorageBlockVolumeRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<GetPublicCloudProjectStorageBlockVolumeRequest>;
+
 export interface GetPublicCloudProjectStorageFileNetworkRequest {
   projectId: string;
   networkId: string;
 }
+const GetPublicCloudProjectStorageFileNetworkRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<GetPublicCloudProjectStorageFileNetworkRequest>;
+
 export interface GetPublicCloudProjectStorageFileShareRequest {
   /** Project ID */
   projectId: string;
   /** File storage ID */
   fileStorageId: string;
 }
+const GetPublicCloudProjectStorageFileShareRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<GetPublicCloudProjectStorageFileShareRequest>;
+
 export interface GetPublicCloudProjectStorageFileSnapshotRequest {
   /** Project ID */
   projectId: string;
   /** Snapshot ID */
   snapshotId: string;
 }
+const GetPublicCloudProjectStorageFileSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<GetPublicCloudProjectStorageFileSnapshotRequest>;
+
 export interface GetPublicCloudProjectStorageObjectBucketRequest {
   /** Project ID */
   projectId: string;
   /** Bucket name */
   bucketName: string;
 }
+const GetPublicCloudProjectStorageObjectBucketRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<GetPublicCloudProjectStorageObjectBucketRequest>;
+
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
+const IamResourceTagFilterInput = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<IamResourceTagFilterInput>;
+
 export type ListPublicCloudProjectRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
+const ListPublicCloudProjectRequestIamTagsValueList = /*@__PURE__*/ __L.at(
+  __c35,
+  6,
+) as any as S.Schema<ListPublicCloudProjectRequestIamTagsValueList>;
+
 export type ListPublicCloudProjectRequestIamTagsMap = {
   [key: string]: ListPublicCloudProjectRequestIamTagsValueList | undefined;
 };
+const ListPublicCloudProjectRequestIamTagsMap = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<ListPublicCloudProjectRequestIamTagsMap>;
+
 export interface ListPublicCloudProjectRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListPublicCloudProjectRequestIamTagsMap;
@@ -3544,8 +5279,23 @@ export interface ListPublicCloudProjectRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<ListPublicCloudProjectRequest>;
+
 export type ListPublicCloudProjectResponseBodyList = Array<PublicCloudProjectProjectAsyncWithIAM>;
+const ListPublicCloudProjectResponseBodyList = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<ListPublicCloudProjectResponseBodyList>;
+
 export type ListPublicCloudProjectResponse = ListPublicCloudProjectResponseBodyList;
+const ListPublicCloudProjectResponse = /*@__PURE__*/ __L.at(
+  __c36,
+  2,
+) as any as S.Schema<ListPublicCloudProjectResponse>;
+
 export interface ListPublicCloudProjectComputeAutobackupRequest {
   /** Project ID */
   projectId: string;
@@ -3554,10 +5304,25 @@ export interface ListPublicCloudProjectComputeAutobackupRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectComputeAutobackupRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<ListPublicCloudProjectComputeAutobackupRequest>;
+
 export type ListPublicCloudProjectComputeAutobackupResponseBodyList =
   Array<PublicCloudInstanceAutobackup>;
+const ListPublicCloudProjectComputeAutobackupResponseBodyList = /*@__PURE__*/ __L.at(
+  __c36,
+  4,
+) as any as S.Schema<ListPublicCloudProjectComputeAutobackupResponseBodyList>;
+
 export type ListPublicCloudProjectComputeAutobackupResponse =
   ListPublicCloudProjectComputeAutobackupResponseBodyList;
+const ListPublicCloudProjectComputeAutobackupResponse = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<ListPublicCloudProjectComputeAutobackupResponse>;
+
 export interface ListPublicCloudProjectComputeBackupRequest {
   /** Project ID */
   projectId: string;
@@ -3566,9 +5331,24 @@ export interface ListPublicCloudProjectComputeBackupRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectComputeBackupRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<ListPublicCloudProjectComputeBackupRequest>;
+
 export type ListPublicCloudProjectComputeBackupResponseBodyList = Array<PublicCloudInstanceBackup>;
+const ListPublicCloudProjectComputeBackupResponseBodyList = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<ListPublicCloudProjectComputeBackupResponseBodyList>;
+
 export type ListPublicCloudProjectComputeBackupResponse =
   ListPublicCloudProjectComputeBackupResponseBodyList;
+const ListPublicCloudProjectComputeBackupResponse = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<ListPublicCloudProjectComputeBackupResponse>;
+
 export interface ListPublicCloudProjectComputeInstanceRequest {
   /** Project ID */
   projectId: string;
@@ -3577,10 +5357,25 @@ export interface ListPublicCloudProjectComputeInstanceRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectComputeInstanceRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  1,
+) as any as S.Schema<ListPublicCloudProjectComputeInstanceRequest>;
+
 export type ListPublicCloudProjectComputeInstanceResponseBodyList =
   Array<PublicCloudInstanceInstance>;
+const ListPublicCloudProjectComputeInstanceResponseBodyList = /*@__PURE__*/ __L.at(
+  __c37,
+  2,
+) as any as S.Schema<ListPublicCloudProjectComputeInstanceResponseBodyList>;
+
 export type ListPublicCloudProjectComputeInstanceResponse =
   ListPublicCloudProjectComputeInstanceResponseBodyList;
+const ListPublicCloudProjectComputeInstanceResponse = /*@__PURE__*/ __L.at(
+  __c37,
+  3,
+) as any as S.Schema<ListPublicCloudProjectComputeInstanceResponse>;
+
 export interface ListPublicCloudProjectComputeInstanceEventsRequest {
   /** Project ID */
   projectId: string;
@@ -3591,12 +5386,19 @@ export interface ListPublicCloudProjectComputeInstanceEventsRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectComputeInstanceEventsRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  4,
+) as any as S.Schema<ListPublicCloudProjectComputeInstanceEventsRequest>;
+
 /** List all defined values for an event type field */
 export type CommonEventTypeEnum =
   | "TARGET_SPEC_UPDATE"
   | "TASK_ERROR"
   | "TASK_START"
   | "TASK_SUCCESS";
+const CommonEventTypeEnum = S.String;
+
 /** Represents an event for an async envelope */
 export interface CommonEvent {
   /** Creation date of the event */
@@ -3610,9 +5412,21 @@ export interface CommonEvent {
   /** Type of the event */
   type?: CommonEventTypeEnum;
 }
+const CommonEvent = /*@__PURE__*/ __L.at(__c37, 5) as any as S.Schema<CommonEvent>;
+
 export type ListPublicCloudProjectComputeInstanceEventsResponseBodyList = Array<CommonEvent>;
+const ListPublicCloudProjectComputeInstanceEventsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<ListPublicCloudProjectComputeInstanceEventsResponseBodyList>;
+
 export type ListPublicCloudProjectComputeInstanceEventsResponse =
   ListPublicCloudProjectComputeInstanceEventsResponseBodyList;
+const ListPublicCloudProjectComputeInstanceEventsResponse = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<ListPublicCloudProjectComputeInstanceEventsResponse>;
+
 export interface ListPublicCloudProjectComputeInstanceGroupRequest {
   /** Project ID */
   projectId: string;
@@ -3621,10 +5435,25 @@ export interface ListPublicCloudProjectComputeInstanceGroupRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectComputeInstanceGroupRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<ListPublicCloudProjectComputeInstanceGroupRequest>;
+
 export type ListPublicCloudProjectComputeInstanceGroupResponseBodyList =
   Array<PublicCloudInstanceGroupInstanceGroup>;
+const ListPublicCloudProjectComputeInstanceGroupResponseBodyList = /*@__PURE__*/ __L.at(
+  __c38,
+  1,
+) as any as S.Schema<ListPublicCloudProjectComputeInstanceGroupResponseBodyList>;
+
 export type ListPublicCloudProjectComputeInstanceGroupResponse =
   ListPublicCloudProjectComputeInstanceGroupResponseBodyList;
+const ListPublicCloudProjectComputeInstanceGroupResponse = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<ListPublicCloudProjectComputeInstanceGroupResponse>;
+
 export interface ListPublicCloudProjectFloatingIpRequest {
   /** Project ID */
   projectId: string;
@@ -3633,10 +5462,25 @@ export interface ListPublicCloudProjectFloatingIpRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectFloatingIpRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<ListPublicCloudProjectFloatingIpRequest>;
+
 export type ListPublicCloudProjectFloatingIpResponseBodyList =
   Array<PublicCloudFloatingIpFloatingIP>;
+const ListPublicCloudProjectFloatingIpResponseBodyList = /*@__PURE__*/ __L.at(
+  __c38,
+  4,
+) as any as S.Schema<ListPublicCloudProjectFloatingIpResponseBodyList>;
+
 export type ListPublicCloudProjectFloatingIpResponse =
   ListPublicCloudProjectFloatingIpResponseBodyList;
+const ListPublicCloudProjectFloatingIpResponse = /*@__PURE__*/ __L.at(
+  __c38,
+  5,
+) as any as S.Schema<ListPublicCloudProjectFloatingIpResponse>;
+
 export interface ListPublicCloudProjectGatewayRequest {
   /** Project ID */
   projectId: string;
@@ -3645,8 +5489,23 @@ export interface ListPublicCloudProjectGatewayRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectGatewayRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  6,
+) as any as S.Schema<ListPublicCloudProjectGatewayRequest>;
+
 export type ListPublicCloudProjectGatewayResponseBodyList = Array<PublicCloudGatewayGateway>;
+const ListPublicCloudProjectGatewayResponseBodyList = /*@__PURE__*/ __L.at(
+  __c38,
+  7,
+) as any as S.Schema<ListPublicCloudProjectGatewayResponseBodyList>;
+
 export type ListPublicCloudProjectGatewayResponse = ListPublicCloudProjectGatewayResponseBodyList;
+const ListPublicCloudProjectGatewayResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<ListPublicCloudProjectGatewayResponse>;
+
 export interface ListPublicCloudProjectKeyManagerContainerRequest {
   /** Project ID */
   projectId: string;
@@ -3655,10 +5514,25 @@ export interface ListPublicCloudProjectKeyManagerContainerRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectKeyManagerContainerRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  1,
+) as any as S.Schema<ListPublicCloudProjectKeyManagerContainerRequest>;
+
 export type ListPublicCloudProjectKeyManagerContainerResponseBodyList =
   Array<PublicCloudKeyManagerContainer>;
+const ListPublicCloudProjectKeyManagerContainerResponseBodyList = /*@__PURE__*/ __L.at(
+  __c39,
+  2,
+) as any as S.Schema<ListPublicCloudProjectKeyManagerContainerResponseBodyList>;
+
 export type ListPublicCloudProjectKeyManagerContainerResponse =
   ListPublicCloudProjectKeyManagerContainerResponseBodyList;
+const ListPublicCloudProjectKeyManagerContainerResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<ListPublicCloudProjectKeyManagerContainerResponse>;
+
 export interface ListPublicCloudProjectKeyManagerContainerConsumerRequest {
   /** Project ID */
   projectId: string;
@@ -3669,10 +5543,25 @@ export interface ListPublicCloudProjectKeyManagerContainerConsumerRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectKeyManagerContainerConsumerRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  4,
+) as any as S.Schema<ListPublicCloudProjectKeyManagerContainerConsumerRequest>;
+
 export type ListPublicCloudProjectKeyManagerContainerConsumerResponseBodyList =
   Array<PublicCloudKeyManagerContainerConsumer>;
+const ListPublicCloudProjectKeyManagerContainerConsumerResponseBodyList = /*@__PURE__*/ __L.at(
+  __c39,
+  5,
+) as any as S.Schema<ListPublicCloudProjectKeyManagerContainerConsumerResponseBodyList>;
+
 export type ListPublicCloudProjectKeyManagerContainerConsumerResponse =
   ListPublicCloudProjectKeyManagerContainerConsumerResponseBodyList;
+const ListPublicCloudProjectKeyManagerContainerConsumerResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  6,
+) as any as S.Schema<ListPublicCloudProjectKeyManagerContainerConsumerResponse>;
+
 export interface ListPublicCloudProjectKeyManagerSecretRequest {
   /** Project ID */
   projectId: string;
@@ -3681,10 +5570,25 @@ export interface ListPublicCloudProjectKeyManagerSecretRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectKeyManagerSecretRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<ListPublicCloudProjectKeyManagerSecretRequest>;
+
 export type ListPublicCloudProjectKeyManagerSecretResponseBodyList =
   Array<PublicCloudKeyManagerSecret>;
+const ListPublicCloudProjectKeyManagerSecretResponseBodyList = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<ListPublicCloudProjectKeyManagerSecretResponseBodyList>;
+
 export type ListPublicCloudProjectKeyManagerSecretResponse =
   ListPublicCloudProjectKeyManagerSecretResponseBodyList;
+const ListPublicCloudProjectKeyManagerSecretResponse = /*@__PURE__*/ __L.at(
+  __c40,
+  1,
+) as any as S.Schema<ListPublicCloudProjectKeyManagerSecretResponse>;
+
 export interface ListPublicCloudProjectKeyManagerSecretConsumerRequest {
   /** Project ID */
   projectId: string;
@@ -3695,10 +5599,25 @@ export interface ListPublicCloudProjectKeyManagerSecretConsumerRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectKeyManagerSecretConsumerRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<ListPublicCloudProjectKeyManagerSecretConsumerRequest>;
+
 export type ListPublicCloudProjectKeyManagerSecretConsumerResponseBodyList =
   Array<PublicCloudKeyManagerSecretConsumer>;
+const ListPublicCloudProjectKeyManagerSecretConsumerResponseBodyList = /*@__PURE__*/ __L.at(
+  __c40,
+  3,
+) as any as S.Schema<ListPublicCloudProjectKeyManagerSecretConsumerResponseBodyList>;
+
 export type ListPublicCloudProjectKeyManagerSecretConsumerResponse =
   ListPublicCloudProjectKeyManagerSecretConsumerResponseBodyList;
+const ListPublicCloudProjectKeyManagerSecretConsumerResponse = /*@__PURE__*/ __L.at(
+  __c40,
+  4,
+) as any as S.Schema<ListPublicCloudProjectKeyManagerSecretConsumerResponse>;
+
 export interface ListPublicCloudProjectLoadbalancerRequest {
   /** Project ID */
   projectId: string;
@@ -3707,10 +5626,25 @@ export interface ListPublicCloudProjectLoadbalancerRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectLoadbalancerRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  5,
+) as any as S.Schema<ListPublicCloudProjectLoadbalancerRequest>;
+
 export type ListPublicCloudProjectLoadbalancerResponseBodyList =
   Array<PublicCloudLoadbalancerLoadbalancer>;
+const ListPublicCloudProjectLoadbalancerResponseBodyList = /*@__PURE__*/ __L.at(
+  __c40,
+  6,
+) as any as S.Schema<ListPublicCloudProjectLoadbalancerResponseBodyList>;
+
 export type ListPublicCloudProjectLoadbalancerResponse =
   ListPublicCloudProjectLoadbalancerResponseBodyList;
+const ListPublicCloudProjectLoadbalancerResponse = /*@__PURE__*/ __L.at(
+  __c40,
+  7,
+) as any as S.Schema<ListPublicCloudProjectLoadbalancerResponse>;
+
 export interface ListPublicCloudProjectLoadbalancerListenerRequest {
   /** Project ID */
   projectId: string;
@@ -3721,10 +5655,25 @@ export interface ListPublicCloudProjectLoadbalancerListenerRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectLoadbalancerListenerRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<ListPublicCloudProjectLoadbalancerListenerRequest>;
+
 export type ListPublicCloudProjectLoadbalancerListenerResponseBodyList =
   Array<PublicCloudLoadbalancerListener>;
+const ListPublicCloudProjectLoadbalancerListenerResponseBodyList = /*@__PURE__*/ __L.at(
+  __c41,
+  1,
+) as any as S.Schema<ListPublicCloudProjectLoadbalancerListenerResponseBodyList>;
+
 export type ListPublicCloudProjectLoadbalancerListenerResponse =
   ListPublicCloudProjectLoadbalancerListenerResponseBodyList;
+const ListPublicCloudProjectLoadbalancerListenerResponse = /*@__PURE__*/ __L.at(
+  __c41,
+  2,
+) as any as S.Schema<ListPublicCloudProjectLoadbalancerListenerResponse>;
+
 export interface ListPublicCloudProjectLoadbalancerListenerL7policyRequest {
   /** Project ID */
   projectId: string;
@@ -3737,10 +5686,25 @@ export interface ListPublicCloudProjectLoadbalancerListenerL7policyRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectLoadbalancerListenerL7policyRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  3,
+) as any as S.Schema<ListPublicCloudProjectLoadbalancerListenerL7policyRequest>;
+
 export type ListPublicCloudProjectLoadbalancerListenerL7policyResponseBodyList =
   Array<PublicCloudLoadbalancerL7Policy>;
+const ListPublicCloudProjectLoadbalancerListenerL7policyResponseBodyList = /*@__PURE__*/ __L.at(
+  __c41,
+  4,
+) as any as S.Schema<ListPublicCloudProjectLoadbalancerListenerL7policyResponseBodyList>;
+
 export type ListPublicCloudProjectLoadbalancerListenerL7policyResponse =
   ListPublicCloudProjectLoadbalancerListenerL7policyResponseBodyList;
+const ListPublicCloudProjectLoadbalancerListenerL7policyResponse = /*@__PURE__*/ __L.at(
+  __c41,
+  5,
+) as any as S.Schema<ListPublicCloudProjectLoadbalancerListenerL7policyResponse>;
+
 export interface ListPublicCloudProjectLoadbalancerPoolRequest {
   /** Project ID */
   projectId: string;
@@ -3751,10 +5715,25 @@ export interface ListPublicCloudProjectLoadbalancerPoolRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectLoadbalancerPoolRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  6,
+) as any as S.Schema<ListPublicCloudProjectLoadbalancerPoolRequest>;
+
 export type ListPublicCloudProjectLoadbalancerPoolResponseBodyList =
   Array<PublicCloudLoadbalancerPool>;
+const ListPublicCloudProjectLoadbalancerPoolResponseBodyList = /*@__PURE__*/ __L.at(
+  __c41,
+  7,
+) as any as S.Schema<ListPublicCloudProjectLoadbalancerPoolResponseBodyList>;
+
 export type ListPublicCloudProjectLoadbalancerPoolResponse =
   ListPublicCloudProjectLoadbalancerPoolResponseBodyList;
+const ListPublicCloudProjectLoadbalancerPoolResponse = /*@__PURE__*/ __L.at(
+  __c42,
+  0,
+) as any as S.Schema<ListPublicCloudProjectLoadbalancerPoolResponse>;
+
 export interface ListPublicCloudProjectLoadbalancerPoolMemberRequest {
   /** Project ID */
   projectId: string;
@@ -3767,10 +5746,25 @@ export interface ListPublicCloudProjectLoadbalancerPoolMemberRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectLoadbalancerPoolMemberRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  1,
+) as any as S.Schema<ListPublicCloudProjectLoadbalancerPoolMemberRequest>;
+
 export type ListPublicCloudProjectLoadbalancerPoolMemberResponseBodyList =
   Array<PublicCloudLoadbalancerMember>;
+const ListPublicCloudProjectLoadbalancerPoolMemberResponseBodyList = /*@__PURE__*/ __L.at(
+  __c42,
+  2,
+) as any as S.Schema<ListPublicCloudProjectLoadbalancerPoolMemberResponseBodyList>;
+
 export type ListPublicCloudProjectLoadbalancerPoolMemberResponse =
   ListPublicCloudProjectLoadbalancerPoolMemberResponseBodyList;
+const ListPublicCloudProjectLoadbalancerPoolMemberResponse = /*@__PURE__*/ __L.at(
+  __c42,
+  3,
+) as any as S.Schema<ListPublicCloudProjectLoadbalancerPoolMemberResponse>;
+
 export interface ListPublicCloudProjectNetworkRequest {
   /** Project ID */
   projectId: string;
@@ -3779,8 +5773,23 @@ export interface ListPublicCloudProjectNetworkRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectNetworkRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  4,
+) as any as S.Schema<ListPublicCloudProjectNetworkRequest>;
+
 export type ListPublicCloudProjectNetworkResponseBodyList = Array<PublicCloudNetworkNetwork>;
+const ListPublicCloudProjectNetworkResponseBodyList = /*@__PURE__*/ __L.at(
+  __c42,
+  5,
+) as any as S.Schema<ListPublicCloudProjectNetworkResponseBodyList>;
+
 export type ListPublicCloudProjectNetworkResponse = ListPublicCloudProjectNetworkResponseBodyList;
+const ListPublicCloudProjectNetworkResponse = /*@__PURE__*/ __L.at(
+  __c42,
+  6,
+) as any as S.Schema<ListPublicCloudProjectNetworkResponse>;
+
 export interface ListPublicCloudProjectNetworkSubnetRequest {
   /** Project ID */
   projectId: string;
@@ -3791,9 +5800,24 @@ export interface ListPublicCloudProjectNetworkSubnetRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectNetworkSubnetRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  7,
+) as any as S.Schema<ListPublicCloudProjectNetworkSubnetRequest>;
+
 export type ListPublicCloudProjectNetworkSubnetResponseBodyList = Array<PublicCloudNetworkSubnet>;
+const ListPublicCloudProjectNetworkSubnetResponseBodyList = /*@__PURE__*/ __L.at(
+  __c43,
+  0,
+) as any as S.Schema<ListPublicCloudProjectNetworkSubnetResponseBodyList>;
+
 export type ListPublicCloudProjectNetworkSubnetResponse =
   ListPublicCloudProjectNetworkSubnetResponseBodyList;
+const ListPublicCloudProjectNetworkSubnetResponse = /*@__PURE__*/ __L.at(
+  __c43,
+  1,
+) as any as S.Schema<ListPublicCloudProjectNetworkSubnetResponse>;
+
 export interface ListPublicCloudProjectPublicIpRequest {
   /** Project ID */
   projectId: string;
@@ -3802,8 +5826,15 @@ export interface ListPublicCloudProjectPublicIpRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectPublicIpRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  2,
+) as any as S.Schema<ListPublicCloudProjectPublicIpRequest>;
+
 /** Kind of a Public Cloud public IP address */
 export type PublicCloudPublicIpPublicIPKindEnum = "ADDITIONAL_IP" | "EXT_NET_IP" | "FLOATING_IP";
+const PublicCloudPublicIpPublicIPKindEnum = S.String;
+
 /** Lightweight view of a Public Cloud public IP, exposing only its kind and address */
 export interface PublicCloudPublicIpPublicIPSummary {
   /** The public IP address */
@@ -3811,9 +5842,24 @@ export interface PublicCloudPublicIpPublicIPSummary {
   /** Kind of the public IP address */
   type?: PublicCloudPublicIpPublicIPKindEnum;
 }
+const PublicCloudPublicIpPublicIPSummary = /*@__PURE__*/ __L.at(
+  __c43,
+  3,
+) as any as S.Schema<PublicCloudPublicIpPublicIPSummary>;
+
 export type ListPublicCloudProjectPublicIpResponseBodyList =
   Array<PublicCloudPublicIpPublicIPSummary>;
+const ListPublicCloudProjectPublicIpResponseBodyList = /*@__PURE__*/ __L.at(
+  __c43,
+  4,
+) as any as S.Schema<ListPublicCloudProjectPublicIpResponseBodyList>;
+
 export type ListPublicCloudProjectPublicIpResponse = ListPublicCloudProjectPublicIpResponseBodyList;
+const ListPublicCloudProjectPublicIpResponse = /*@__PURE__*/ __L.at(
+  __c43,
+  5,
+) as any as S.Schema<ListPublicCloudProjectPublicIpResponse>;
+
 export interface ListPublicCloudProjectPublicIpAdditionalRequest {
   /** Project ID */
   projectId: string;
@@ -3822,10 +5868,25 @@ export interface ListPublicCloudProjectPublicIpAdditionalRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectPublicIpAdditionalRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  6,
+) as any as S.Schema<ListPublicCloudProjectPublicIpAdditionalRequest>;
+
 export type ListPublicCloudProjectPublicIpAdditionalResponseBodyList =
   Array<PublicCloudPublicIpAdditionalIP>;
+const ListPublicCloudProjectPublicIpAdditionalResponseBodyList = /*@__PURE__*/ __L.at(
+  __c43,
+  7,
+) as any as S.Schema<ListPublicCloudProjectPublicIpAdditionalResponseBodyList>;
+
 export type ListPublicCloudProjectPublicIpAdditionalResponse =
   ListPublicCloudProjectPublicIpAdditionalResponseBodyList;
+const ListPublicCloudProjectPublicIpAdditionalResponse = /*@__PURE__*/ __L.at(
+  __c44,
+  0,
+) as any as S.Schema<ListPublicCloudProjectPublicIpAdditionalResponse>;
+
 export interface ListPublicCloudProjectPublicIpExtNetRequest {
   /** Project ID */
   projectId: string;
@@ -3834,10 +5895,25 @@ export interface ListPublicCloudProjectPublicIpExtNetRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectPublicIpExtNetRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  1,
+) as any as S.Schema<ListPublicCloudProjectPublicIpExtNetRequest>;
+
 export type ListPublicCloudProjectPublicIpExtNetResponseBodyList =
   Array<PublicCloudPublicIpExtNetIP>;
+const ListPublicCloudProjectPublicIpExtNetResponseBodyList = /*@__PURE__*/ __L.at(
+  __c44,
+  2,
+) as any as S.Schema<ListPublicCloudProjectPublicIpExtNetResponseBodyList>;
+
 export type ListPublicCloudProjectPublicIpExtNetResponse =
   ListPublicCloudProjectPublicIpExtNetResponseBodyList;
+const ListPublicCloudProjectPublicIpExtNetResponse = /*@__PURE__*/ __L.at(
+  __c44,
+  3,
+) as any as S.Schema<ListPublicCloudProjectPublicIpExtNetResponse>;
+
 export interface ListPublicCloudProjectPublicIpFloatingRequest {
   /** Project ID */
   projectId: string;
@@ -3846,10 +5922,25 @@ export interface ListPublicCloudProjectPublicIpFloatingRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectPublicIpFloatingRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  4,
+) as any as S.Schema<ListPublicCloudProjectPublicIpFloatingRequest>;
+
 export type ListPublicCloudProjectPublicIpFloatingResponseBodyList =
   Array<PublicCloudPublicIpFloatingIP>;
+const ListPublicCloudProjectPublicIpFloatingResponseBodyList = /*@__PURE__*/ __L.at(
+  __c44,
+  5,
+) as any as S.Schema<ListPublicCloudProjectPublicIpFloatingResponseBodyList>;
+
 export type ListPublicCloudProjectPublicIpFloatingResponse =
   ListPublicCloudProjectPublicIpFloatingResponseBodyList;
+const ListPublicCloudProjectPublicIpFloatingResponse = /*@__PURE__*/ __L.at(
+  __c44,
+  6,
+) as any as S.Schema<ListPublicCloudProjectPublicIpFloatingResponse>;
+
 export interface ListPublicCloudProjectRancherRequest {
   /** Project ID */
   projectId: string;
@@ -3858,8 +5949,23 @@ export interface ListPublicCloudProjectRancherRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectRancherRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  7,
+) as any as S.Schema<ListPublicCloudProjectRancherRequest>;
+
 export type ListPublicCloudProjectRancherResponseBodyList = Array<PublicCloudRancherRancher>;
+const ListPublicCloudProjectRancherResponseBodyList = /*@__PURE__*/ __L.at(
+  __c45,
+  0,
+) as any as S.Schema<ListPublicCloudProjectRancherResponseBodyList>;
+
 export type ListPublicCloudProjectRancherResponse = ListPublicCloudProjectRancherResponseBodyList;
+const ListPublicCloudProjectRancherResponse = /*@__PURE__*/ __L.at(
+  __c45,
+  1,
+) as any as S.Schema<ListPublicCloudProjectRancherResponse>;
+
 export interface ListPublicCloudProjectRancherCapabilityPlanRequest {
   /** Project ID */
   projectId: string;
@@ -3870,13 +5976,22 @@ export interface ListPublicCloudProjectRancherCapabilityPlanRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectRancherCapabilityPlanRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  2,
+) as any as S.Schema<ListPublicCloudProjectRancherCapabilityPlanRequest>;
+
 /** Possible causes for a managed Rancher plan being unavailable */
 export type PublicCloudRancherPlanUnavailabilityCauseEnum =
   | "CANNOT_DOWNGRADE_USING_HIGHER_FEATURES"
   | "CANNOT_SWITCH_PLAN_FOR_ALPHA"
   | "NOT_IMPLEMENTED";
+const PublicCloudRancherPlanUnavailabilityCauseEnum = S.String;
+
 /** Possible statuses for a managed Rancher plan capability, applicable to an existing managed Rancher */
 export type PublicCloudRancherPlanCapabilityStatusEnum = "AVAILABLE" | "CURRENT" | "UNAVAILABLE";
+const PublicCloudRancherPlanCapabilityStatusEnum = S.String;
+
 /** A managed Rancher service plan capability, applicable to an existing managed Rancher */
 export interface PublicCloudRancherPlanCapability {
   /** Cause for an unavailability */
@@ -3888,10 +6003,25 @@ export interface PublicCloudRancherPlanCapability {
   /** Status of the plan */
   status?: PublicCloudRancherPlanCapabilityStatusEnum;
 }
+const PublicCloudRancherPlanCapability = /*@__PURE__*/ __L.at(
+  __c45,
+  3,
+) as any as S.Schema<PublicCloudRancherPlanCapability>;
+
 export type ListPublicCloudProjectRancherCapabilityPlanResponseBodyList =
   Array<PublicCloudRancherPlanCapability>;
+const ListPublicCloudProjectRancherCapabilityPlanResponseBodyList = /*@__PURE__*/ __L.at(
+  __c45,
+  4,
+) as any as S.Schema<ListPublicCloudProjectRancherCapabilityPlanResponseBodyList>;
+
 export type ListPublicCloudProjectRancherCapabilityPlanResponse =
   ListPublicCloudProjectRancherCapabilityPlanResponseBodyList;
+const ListPublicCloudProjectRancherCapabilityPlanResponse = /*@__PURE__*/ __L.at(
+  __c45,
+  5,
+) as any as S.Schema<ListPublicCloudProjectRancherCapabilityPlanResponse>;
+
 export interface ListPublicCloudProjectRancherCapabilityVersionRequest {
   /** Project ID */
   projectId: string;
@@ -3902,6 +6032,11 @@ export interface ListPublicCloudProjectRancherCapabilityVersionRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectRancherCapabilityVersionRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  6,
+) as any as S.Schema<ListPublicCloudProjectRancherCapabilityVersionRequest>;
+
 /** Possible causes for a managed Rancher version being unavailable */
 export type PublicCloudRancherVersionUnavailabilityCauseEnum =
   | "CANNOT_UPGRADE_MULTIPLE_VERSIONS"
@@ -3910,8 +6045,12 @@ export type PublicCloudRancherVersionUnavailabilityCauseEnum =
   | "END_OF_LIFE"
   | "END_OF_SALE"
   | "END_OF_SUPPORT";
+const PublicCloudRancherVersionUnavailabilityCauseEnum = S.String;
+
 /** Possible statuses for a managed Rancher version capability, applicable to an existing managed Rancher */
 export type PublicCloudRancherVersionCapabilityStatusEnum = "AVAILABLE" | "UNAVAILABLE";
+const PublicCloudRancherVersionCapabilityStatusEnum = S.String;
+
 /** A managed Rancher service version capability, applicable to an existing managed Rancher */
 export interface PublicCloudRancherVersionCapability {
   /** Cause for an unavailability */
@@ -3925,10 +6064,25 @@ export interface PublicCloudRancherVersionCapability {
   /** Status of the version */
   status?: PublicCloudRancherVersionCapabilityStatusEnum;
 }
+const PublicCloudRancherVersionCapability = /*@__PURE__*/ __L.at(
+  __c45,
+  7,
+) as any as S.Schema<PublicCloudRancherVersionCapability>;
+
 export type ListPublicCloudProjectRancherCapabilityVersionResponseBodyList =
   Array<PublicCloudRancherVersionCapability>;
+const ListPublicCloudProjectRancherCapabilityVersionResponseBodyList = /*@__PURE__*/ __L.at(
+  __c46,
+  0,
+) as any as S.Schema<ListPublicCloudProjectRancherCapabilityVersionResponseBodyList>;
+
 export type ListPublicCloudProjectRancherCapabilityVersionResponse =
   ListPublicCloudProjectRancherCapabilityVersionResponseBodyList;
+const ListPublicCloudProjectRancherCapabilityVersionResponse = /*@__PURE__*/ __L.at(
+  __c46,
+  1,
+) as any as S.Schema<ListPublicCloudProjectRancherCapabilityVersionResponse>;
+
 export interface ListPublicCloudProjectRancherEventRequest {
   /** Project ID */
   projectId: string;
@@ -3939,9 +6093,17 @@ export interface ListPublicCloudProjectRancherEventRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectRancherEventRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  2,
+) as any as S.Schema<ListPublicCloudProjectRancherEventRequest>;
+
 export type ListPublicCloudProjectRancherEventResponseBodyList = Array<CommonEvent>;
 export type ListPublicCloudProjectRancherEventResponse =
   ListPublicCloudProjectRancherEventResponseBodyList;
+const ListPublicCloudProjectRancherEventResponse =
+  ListPublicCloudProjectComputeInstanceEventsResponse as any as S.Schema<ListPublicCloudProjectRancherEventResponse>;
+
 export interface ListPublicCloudProjectRancherTaskRequest {
   /** Project ID */
   projectId: string;
@@ -3952,9 +6114,24 @@ export interface ListPublicCloudProjectRancherTaskRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectRancherTaskRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  3,
+) as any as S.Schema<ListPublicCloudProjectRancherTaskRequest>;
+
 export type ListPublicCloudProjectRancherTaskResponseBodyList = Array<CommonTask>;
+const ListPublicCloudProjectRancherTaskResponseBodyList = /*@__PURE__*/ __L.at(
+  __c46,
+  4,
+) as any as S.Schema<ListPublicCloudProjectRancherTaskResponseBodyList>;
+
 export type ListPublicCloudProjectRancherTaskResponse =
   ListPublicCloudProjectRancherTaskResponseBodyList;
+const ListPublicCloudProjectRancherTaskResponse = /*@__PURE__*/ __L.at(
+  __c46,
+  5,
+) as any as S.Schema<ListPublicCloudProjectRancherTaskResponse>;
+
 export interface ListPublicCloudProjectReferenceInstanceFlavorRequest {
   /** Project ID */
   projectId: string;
@@ -3965,10 +6142,25 @@ export interface ListPublicCloudProjectReferenceInstanceFlavorRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectReferenceInstanceFlavorRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  6,
+) as any as S.Schema<ListPublicCloudProjectReferenceInstanceFlavorRequest>;
+
 export type ListPublicCloudProjectReferenceInstanceFlavorResponseBodyList =
   Array<PublicCloudReferenceInstanceFlavor>;
+const ListPublicCloudProjectReferenceInstanceFlavorResponseBodyList = /*@__PURE__*/ __L.at(
+  __c46,
+  7,
+) as any as S.Schema<ListPublicCloudProjectReferenceInstanceFlavorResponseBodyList>;
+
 export type ListPublicCloudProjectReferenceInstanceFlavorResponse =
   ListPublicCloudProjectReferenceInstanceFlavorResponseBodyList;
+const ListPublicCloudProjectReferenceInstanceFlavorResponse = /*@__PURE__*/ __L.at(
+  __c47,
+  0,
+) as any as S.Schema<ListPublicCloudProjectReferenceInstanceFlavorResponse>;
+
 export interface ListPublicCloudProjectReferenceInstanceImageRequest {
   /** Project ID */
   projectId: string;
@@ -3979,10 +6171,25 @@ export interface ListPublicCloudProjectReferenceInstanceImageRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectReferenceInstanceImageRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  1,
+) as any as S.Schema<ListPublicCloudProjectReferenceInstanceImageRequest>;
+
 export type ListPublicCloudProjectReferenceInstanceImageResponseBodyList =
   Array<PublicCloudReferenceInstanceImage>;
+const ListPublicCloudProjectReferenceInstanceImageResponseBodyList = /*@__PURE__*/ __L.at(
+  __c47,
+  2,
+) as any as S.Schema<ListPublicCloudProjectReferenceInstanceImageResponseBodyList>;
+
 export type ListPublicCloudProjectReferenceInstanceImageResponse =
   ListPublicCloudProjectReferenceInstanceImageResponseBodyList;
+const ListPublicCloudProjectReferenceInstanceImageResponse = /*@__PURE__*/ __L.at(
+  __c47,
+  3,
+) as any as S.Schema<ListPublicCloudProjectReferenceInstanceImageResponse>;
+
 export interface ListPublicCloudProjectReferenceRancherPlanRequest {
   /** Project ID */
   projectId: string;
@@ -3991,6 +6198,11 @@ export interface ListPublicCloudProjectReferenceRancherPlanRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectReferenceRancherPlanRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  4,
+) as any as S.Schema<ListPublicCloudProjectReferenceRancherPlanRequest>;
+
 /** Possible statuses for a managed Rancher plan reference */
 export type PublicCloudRancherPlanReferenceStatusEnum = "AVAILABLE" | "UNAVAILABLE";
 /** A managed Rancher service plan reference, applicable to service creations */
@@ -4008,6 +6220,9 @@ export type ListPublicCloudProjectReferenceRancherPlanResponseBodyList =
   Array<PublicCloudRancherPlanReference>;
 export type ListPublicCloudProjectReferenceRancherPlanResponse =
   ListPublicCloudProjectReferenceRancherPlanResponseBodyList;
+const ListPublicCloudProjectReferenceRancherPlanResponse =
+  ListPublicCloudProjectRancherCapabilityPlanResponse as any as S.Schema<ListPublicCloudProjectReferenceRancherPlanResponse>;
+
 export interface ListPublicCloudProjectReferenceRancherVersionRequest {
   /** Project ID */
   projectId: string;
@@ -4016,6 +6231,11 @@ export interface ListPublicCloudProjectReferenceRancherVersionRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectReferenceRancherVersionRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  5,
+) as any as S.Schema<ListPublicCloudProjectReferenceRancherVersionRequest>;
+
 /** Possible statuses for a managed Rancher version reference */
 export type PublicCloudRancherVersionReferenceStatusEnum = "AVAILABLE" | "UNAVAILABLE";
 /** A managed Rancher service version reference, applicable to service creations */
@@ -4035,6 +6255,9 @@ export type ListPublicCloudProjectReferenceRancherVersionResponseBodyList =
   Array<PublicCloudRancherVersionReference>;
 export type ListPublicCloudProjectReferenceRancherVersionResponse =
   ListPublicCloudProjectReferenceRancherVersionResponseBodyList;
+const ListPublicCloudProjectReferenceRancherVersionResponse =
+  ListPublicCloudProjectRancherCapabilityVersionResponse as any as S.Schema<ListPublicCloudProjectReferenceRancherVersionResponse>;
+
 export interface ListPublicCloudProjectReferenceRegionRequest {
   /** Project ID */
   projectId: string;
@@ -4043,10 +6266,25 @@ export interface ListPublicCloudProjectReferenceRegionRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectReferenceRegionRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  6,
+) as any as S.Schema<ListPublicCloudProjectReferenceRegionRequest>;
+
 export type ListPublicCloudProjectReferenceRegionResponseBodyList =
   Array<PublicCloudReferenceRegion>;
+const ListPublicCloudProjectReferenceRegionResponseBodyList = /*@__PURE__*/ __L.at(
+  __c47,
+  7,
+) as any as S.Schema<ListPublicCloudProjectReferenceRegionResponseBodyList>;
+
 export type ListPublicCloudProjectReferenceRegionResponse =
   ListPublicCloudProjectReferenceRegionResponseBodyList;
+const ListPublicCloudProjectReferenceRegionResponse = /*@__PURE__*/ __L.at(
+  __c48,
+  0,
+) as any as S.Schema<ListPublicCloudProjectReferenceRegionResponse>;
+
 export interface ListPublicCloudProjectSecurityGroupRequest {
   /** Project ID */
   projectId: string;
@@ -4055,10 +6293,25 @@ export interface ListPublicCloudProjectSecurityGroupRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectSecurityGroupRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  1,
+) as any as S.Schema<ListPublicCloudProjectSecurityGroupRequest>;
+
 export type ListPublicCloudProjectSecurityGroupResponseBodyList =
   Array<PublicCloudSecurityGroupSecurityGroup>;
+const ListPublicCloudProjectSecurityGroupResponseBodyList = /*@__PURE__*/ __L.at(
+  __c48,
+  2,
+) as any as S.Schema<ListPublicCloudProjectSecurityGroupResponseBodyList>;
+
 export type ListPublicCloudProjectSecurityGroupResponse =
   ListPublicCloudProjectSecurityGroupResponseBodyList;
+const ListPublicCloudProjectSecurityGroupResponse = /*@__PURE__*/ __L.at(
+  __c48,
+  3,
+) as any as S.Schema<ListPublicCloudProjectSecurityGroupResponse>;
+
 export interface ListPublicCloudProjectSshKeyRequest {
   /** Project ID */
   projectId: string;
@@ -4067,8 +6320,23 @@ export interface ListPublicCloudProjectSshKeyRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectSshKeyRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  4,
+) as any as S.Schema<ListPublicCloudProjectSshKeyRequest>;
+
 export type ListPublicCloudProjectSshKeyResponseBodyList = Array<PublicCloudSshKeySSHKey>;
+const ListPublicCloudProjectSshKeyResponseBodyList = /*@__PURE__*/ __L.at(
+  __c48,
+  5,
+) as any as S.Schema<ListPublicCloudProjectSshKeyResponseBodyList>;
+
 export type ListPublicCloudProjectSshKeyResponse = ListPublicCloudProjectSshKeyResponseBodyList;
+const ListPublicCloudProjectSshKeyResponse = /*@__PURE__*/ __L.at(
+  __c48,
+  6,
+) as any as S.Schema<ListPublicCloudProjectSshKeyResponse>;
+
 export interface ListPublicCloudProjectStorageBlockBackupRequest {
   /** Project ID */
   projectId: string;
@@ -4079,10 +6347,25 @@ export interface ListPublicCloudProjectStorageBlockBackupRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectStorageBlockBackupRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  7,
+) as any as S.Schema<ListPublicCloudProjectStorageBlockBackupRequest>;
+
 export type ListPublicCloudProjectStorageBlockBackupResponseBodyList =
   Array<PublicCloudBlockStorageBackup>;
+const ListPublicCloudProjectStorageBlockBackupResponseBodyList = /*@__PURE__*/ __L.at(
+  __c49,
+  0,
+) as any as S.Schema<ListPublicCloudProjectStorageBlockBackupResponseBodyList>;
+
 export type ListPublicCloudProjectStorageBlockBackupResponse =
   ListPublicCloudProjectStorageBlockBackupResponseBodyList;
+const ListPublicCloudProjectStorageBlockBackupResponse = /*@__PURE__*/ __L.at(
+  __c49,
+  1,
+) as any as S.Schema<ListPublicCloudProjectStorageBlockBackupResponse>;
+
 export interface ListPublicCloudProjectStorageBlockSnapshotRequest {
   /** Project ID */
   projectId: string;
@@ -4093,10 +6376,18 @@ export interface ListPublicCloudProjectStorageBlockSnapshotRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectStorageBlockSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  2,
+) as any as S.Schema<ListPublicCloudProjectStorageBlockSnapshotRequest>;
+
 export type ListPublicCloudProjectStorageBlockSnapshotResponseBodyList =
   Array<PublicCloudBlockStorageSnapshot>;
 export type ListPublicCloudProjectStorageBlockSnapshotResponse =
   ListPublicCloudProjectStorageBlockSnapshotResponseBodyList;
+const ListPublicCloudProjectStorageBlockSnapshotResponse =
+  ListPublicCloudProjectStorageBlockBackupResponse as any as S.Schema<ListPublicCloudProjectStorageBlockSnapshotResponse>;
+
 export interface ListPublicCloudProjectStorageBlockVolumeRequest {
   /** Project ID */
   projectId: string;
@@ -4105,17 +6396,47 @@ export interface ListPublicCloudProjectStorageBlockVolumeRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectStorageBlockVolumeRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  3,
+) as any as S.Schema<ListPublicCloudProjectStorageBlockVolumeRequest>;
+
 export type ListPublicCloudProjectStorageBlockVolumeResponseBodyList =
   Array<PublicCloudBlockStorageBlock>;
+const ListPublicCloudProjectStorageBlockVolumeResponseBodyList = /*@__PURE__*/ __L.at(
+  __c49,
+  4,
+) as any as S.Schema<ListPublicCloudProjectStorageBlockVolumeResponseBodyList>;
+
 export type ListPublicCloudProjectStorageBlockVolumeResponse =
   ListPublicCloudProjectStorageBlockVolumeResponseBodyList;
+const ListPublicCloudProjectStorageBlockVolumeResponse = /*@__PURE__*/ __L.at(
+  __c49,
+  5,
+) as any as S.Schema<ListPublicCloudProjectStorageBlockVolumeResponse>;
+
 export interface ListPublicCloudProjectStorageFileNetworkRequest {
   projectId: string;
 }
+const ListPublicCloudProjectStorageFileNetworkRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  6,
+) as any as S.Schema<ListPublicCloudProjectStorageFileNetworkRequest>;
+
 export type ListPublicCloudProjectStorageFileNetworkResponseBodyList =
   Array<PublicCloudStorageFileFileStorageNetwork>;
+const ListPublicCloudProjectStorageFileNetworkResponseBodyList = /*@__PURE__*/ __L.at(
+  __c49,
+  7,
+) as any as S.Schema<ListPublicCloudProjectStorageFileNetworkResponseBodyList>;
+
 export type ListPublicCloudProjectStorageFileNetworkResponse =
   ListPublicCloudProjectStorageFileNetworkResponseBodyList;
+const ListPublicCloudProjectStorageFileNetworkResponse = /*@__PURE__*/ __L.at(
+  __c50,
+  0,
+) as any as S.Schema<ListPublicCloudProjectStorageFileNetworkResponse>;
+
 export interface ListPublicCloudProjectStorageFileShareRequest {
   /** Project ID */
   projectId: string;
@@ -4124,10 +6445,25 @@ export interface ListPublicCloudProjectStorageFileShareRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectStorageFileShareRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  1,
+) as any as S.Schema<ListPublicCloudProjectStorageFileShareRequest>;
+
 export type ListPublicCloudProjectStorageFileShareResponseBodyList =
   Array<PublicCloudStorageFileFileStorage>;
+const ListPublicCloudProjectStorageFileShareResponseBodyList = /*@__PURE__*/ __L.at(
+  __c50,
+  2,
+) as any as S.Schema<ListPublicCloudProjectStorageFileShareResponseBodyList>;
+
 export type ListPublicCloudProjectStorageFileShareResponse =
   ListPublicCloudProjectStorageFileShareResponseBodyList;
+const ListPublicCloudProjectStorageFileShareResponse = /*@__PURE__*/ __L.at(
+  __c50,
+  3,
+) as any as S.Schema<ListPublicCloudProjectStorageFileShareResponse>;
+
 export interface ListPublicCloudProjectStorageFileSnapshotRequest {
   /** Project ID */
   projectId: string;
@@ -4136,10 +6472,25 @@ export interface ListPublicCloudProjectStorageFileSnapshotRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectStorageFileSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  4,
+) as any as S.Schema<ListPublicCloudProjectStorageFileSnapshotRequest>;
+
 export type ListPublicCloudProjectStorageFileSnapshotResponseBodyList =
   Array<PublicCloudStorageFileFileStorageSnapshot>;
+const ListPublicCloudProjectStorageFileSnapshotResponseBodyList = /*@__PURE__*/ __L.at(
+  __c50,
+  5,
+) as any as S.Schema<ListPublicCloudProjectStorageFileSnapshotResponseBodyList>;
+
 export type ListPublicCloudProjectStorageFileSnapshotResponse =
   ListPublicCloudProjectStorageFileSnapshotResponseBodyList;
+const ListPublicCloudProjectStorageFileSnapshotResponse = /*@__PURE__*/ __L.at(
+  __c50,
+  6,
+) as any as S.Schema<ListPublicCloudProjectStorageFileSnapshotResponse>;
+
 export interface ListPublicCloudProjectStorageObjectBucketRequest {
   /** Project ID */
   projectId: string;
@@ -4148,21 +6499,46 @@ export interface ListPublicCloudProjectStorageObjectBucketRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
+const ListPublicCloudProjectStorageObjectBucketRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  7,
+) as any as S.Schema<ListPublicCloudProjectStorageObjectBucketRequest>;
+
 export type ListPublicCloudProjectStorageObjectBucketResponseBodyList =
   Array<PublicCloudStorageObjectBucket>;
+const ListPublicCloudProjectStorageObjectBucketResponseBodyList = /*@__PURE__*/ __L.at(
+  __c51,
+  0,
+) as any as S.Schema<ListPublicCloudProjectStorageObjectBucketResponseBodyList>;
+
 export type ListPublicCloudProjectStorageObjectBucketResponse =
   ListPublicCloudProjectStorageObjectBucketResponseBodyList;
+const ListPublicCloudProjectStorageObjectBucketResponse = /*@__PURE__*/ __L.at(
+  __c51,
+  1,
+) as any as S.Schema<ListPublicCloudProjectStorageObjectBucketResponse>;
+
 export interface ListPublicCloudProjectStorageObjectBucketLifecycleRequest {
   /** Project ID */
   projectId: string;
   /** Bucket name */
   bucketName: string;
 }
+const ListPublicCloudProjectStorageObjectBucketLifecycleRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  2,
+) as any as S.Schema<ListPublicCloudProjectStorageObjectBucketLifecycleRequest>;
+
 /** Settings for aborting incomplete multipart uploads in a lifecycle rule */
 export interface PublicCloudStorageObjectLifecycleRuleAbortIncompleteMultipartUpload {
   /** Number of days after initiation to abort incomplete multipart uploads */
   daysAfterInitiation: number;
 }
+const PublicCloudStorageObjectLifecycleRuleAbortIncompleteMultipartUpload = /*@__PURE__*/ __L.at(
+  __c51,
+  3,
+) as any as S.Schema<PublicCloudStorageObjectLifecycleRuleAbortIncompleteMultipartUpload>;
+
 /** Expiration settings for current object versions in a lifecycle rule */
 export interface PublicCloudStorageObjectLifecycleRuleExpiration {
   /** Date when objects expire */
@@ -4172,10 +6548,18 @@ export interface PublicCloudStorageObjectLifecycleRuleExpiration {
   /** Whether to remove expired object delete markers */
   expiredObjectDeleteMarker?: boolean | null;
 }
+const PublicCloudStorageObjectLifecycleRuleExpiration = /*@__PURE__*/ __L.at(
+  __c51,
+  4,
+) as any as S.Schema<PublicCloudStorageObjectLifecycleRuleExpiration>;
+
 /** Key-value tag pairs to filter objects */
 export type PublicCloudStorageObjectLifecycleRuleFilterTagsMap = {
   [key: string]: string | undefined;
 };
+const PublicCloudStorageObjectLifecycleRuleFilterTagsMap =
+  PublicCloudKeyManagerSecretTargetSpecMetadataMap as any as S.Schema<PublicCloudStorageObjectLifecycleRuleFilterTagsMap>;
+
 /** Filter criteria to select which objects a lifecycle rule applies to */
 export interface PublicCloudStorageObjectLifecycleRuleFilter {
   /** Minimum object size in bytes for the rule to apply */
@@ -4187,6 +6571,11 @@ export interface PublicCloudStorageObjectLifecycleRuleFilter {
   /** Key-value tag pairs to filter objects */
   tags?: PublicCloudStorageObjectLifecycleRuleFilterTagsMap | null;
 }
+const PublicCloudStorageObjectLifecycleRuleFilter = /*@__PURE__*/ __L.at(
+  __c51,
+  5,
+) as any as S.Schema<PublicCloudStorageObjectLifecycleRuleFilter>;
+
 /** Expiration settings for noncurrent object versions in a lifecycle rule */
 export interface PublicCloudStorageObjectLifecycleRuleNoncurrentVersionExpiration {
   /** Number of newer noncurrent versions to retain */
@@ -4194,6 +6583,11 @@ export interface PublicCloudStorageObjectLifecycleRuleNoncurrentVersionExpiratio
   /** Number of days after an object version becomes noncurrent before it expires */
   noncurrentDays: number;
 }
+const PublicCloudStorageObjectLifecycleRuleNoncurrentVersionExpiration = /*@__PURE__*/ __L.at(
+  __c51,
+  6,
+) as any as S.Schema<PublicCloudStorageObjectLifecycleRuleNoncurrentVersionExpiration>;
+
 /** Available S3 storage classes */
 export type PublicCloudStorageObjectStorageClassEnum =
   | "DEEP_ARCHIVE"
@@ -4201,6 +6595,8 @@ export type PublicCloudStorageObjectStorageClassEnum =
   | "HIGH_PERF"
   | "STANDARD"
   | "STANDARD_IA";
+const PublicCloudStorageObjectStorageClassEnum = S.String;
+
 /** Storage class transition for noncurrent object versions */
 export interface PublicCloudStorageObjectLifecycleRuleNoncurrentVersionTransition {
   /** Number of newer noncurrent versions to retain before transitioning */
@@ -4210,11 +6606,23 @@ export interface PublicCloudStorageObjectLifecycleRuleNoncurrentVersionTransitio
   /** Target storage class for the transition */
   storageClass: PublicCloudStorageObjectStorageClassEnum | (string & {});
 }
+const PublicCloudStorageObjectLifecycleRuleNoncurrentVersionTransition = /*@__PURE__*/ __L.at(
+  __c51,
+  7,
+) as any as S.Schema<PublicCloudStorageObjectLifecycleRuleNoncurrentVersionTransition>;
+
 /** Transition rules for noncurrent version objects */
 export type PublicCloudStorageObjectLifecycleRuleNoncurrentVersionTransitionsList =
   Array<PublicCloudStorageObjectLifecycleRuleNoncurrentVersionTransition>;
+const PublicCloudStorageObjectLifecycleRuleNoncurrentVersionTransitionsList = /*@__PURE__*/ __L.at(
+  __c52,
+  0,
+) as any as S.Schema<PublicCloudStorageObjectLifecycleRuleNoncurrentVersionTransitionsList>;
+
 /** Possible statuses for an S3 bucket lifecycle rule */
 export type PublicCloudStorageObjectLifecycleRuleStatusEnum = "DISABLED" | "ENABLED";
+const PublicCloudStorageObjectLifecycleRuleStatusEnum = S.String;
+
 /** Storage class transition for current object versions */
 export interface PublicCloudStorageObjectLifecycleRuleTransition {
   /** Date (YYYY-MM-DD) when objects transition to another storage class */
@@ -4224,9 +6632,19 @@ export interface PublicCloudStorageObjectLifecycleRuleTransition {
   /** Target storage class for the transition */
   storageClass: PublicCloudStorageObjectStorageClassEnum | (string & {});
 }
+const PublicCloudStorageObjectLifecycleRuleTransition = /*@__PURE__*/ __L.at(
+  __c52,
+  1,
+) as any as S.Schema<PublicCloudStorageObjectLifecycleRuleTransition>;
+
 /** Transition rules for current version objects */
 export type PublicCloudStorageObjectLifecycleRuleTransitionsList =
   Array<PublicCloudStorageObjectLifecycleRuleTransition>;
+const PublicCloudStorageObjectLifecycleRuleTransitionsList = /*@__PURE__*/ __L.at(
+  __c52,
+  2,
+) as any as S.Schema<PublicCloudStorageObjectLifecycleRuleTransitionsList>;
+
 /** An S3 bucket lifecycle rule */
 export interface PublicCloudStorageObjectLifecycleRule {
   /** Settings for aborting incomplete multipart uploads */
@@ -4246,22 +6664,44 @@ export interface PublicCloudStorageObjectLifecycleRule {
   /** Transition rules for current version objects */
   transitions?: PublicCloudStorageObjectLifecycleRuleTransitionsList | null;
 }
+const PublicCloudStorageObjectLifecycleRule = /*@__PURE__*/ __L.at(
+  __c52,
+  3,
+) as any as S.Schema<PublicCloudStorageObjectLifecycleRule>;
+
 /** Array of lifecycle rules */
 export type PublicCloudStorageObjectLifecycleRulesResponseRulesList =
   Array<PublicCloudStorageObjectLifecycleRule>;
+const PublicCloudStorageObjectLifecycleRulesResponseRulesList = /*@__PURE__*/ __L.at(
+  __c52,
+  4,
+) as any as S.Schema<PublicCloudStorageObjectLifecycleRulesResponseRulesList>;
+
 /** Response containing lifecycle rules for an S3 bucket */
 export interface PublicCloudStorageObjectLifecycleRulesResponse {
   /** Array of lifecycle rules */
   rules?: PublicCloudStorageObjectLifecycleRulesResponseRulesList;
 }
+const PublicCloudStorageObjectLifecycleRulesResponse = /*@__PURE__*/ __L.at(
+  __c52,
+  5,
+) as any as S.Schema<PublicCloudStorageObjectLifecycleRulesResponse>;
+
 export interface ListPublicCloudProjectStorageObjectBucketReplicationRequest {
   /** Project ID */
   projectId: string;
   /** Bucket name */
   bucketName: string;
 }
+const ListPublicCloudProjectStorageObjectBucketReplicationRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  6,
+) as any as S.Schema<ListPublicCloudProjectStorageObjectBucketReplicationRequest>;
+
 /** Possible statuses for an S3 bucket replication rule */
 export type PublicCloudStorageObjectReplicationRuleStatusEnum = "DISABLED" | "ENABLED";
+const PublicCloudStorageObjectReplicationRuleStatusEnum = S.String;
+
 /** Destination configuration for replicated objects */
 export interface PublicCloudStorageObjectReplicationRuleDestination {
   /** Name of the destination bucket */
@@ -4271,10 +6711,18 @@ export interface PublicCloudStorageObjectReplicationRuleDestination {
   /** Storage class for replicated objects in the destination bucket */
   storageClass?: PublicCloudStorageObjectStorageClassEnum | (string & {}) | null;
 }
+const PublicCloudStorageObjectReplicationRuleDestination = /*@__PURE__*/ __L.at(
+  __c52,
+  7,
+) as any as S.Schema<PublicCloudStorageObjectReplicationRuleDestination>;
+
 /** Key-value tag pairs to filter objects */
 export type PublicCloudStorageObjectReplicationRuleFilterTagsMap = {
   [key: string]: string | undefined;
 };
+const PublicCloudStorageObjectReplicationRuleFilterTagsMap =
+  PublicCloudKeyManagerSecretTargetSpecMetadataMap as any as S.Schema<PublicCloudStorageObjectReplicationRuleFilterTagsMap>;
+
 /** Filter criteria to select which objects a replication rule applies to */
 export interface PublicCloudStorageObjectReplicationRuleFilter {
   /** Key prefix to filter objects */
@@ -4282,6 +6730,11 @@ export interface PublicCloudStorageObjectReplicationRuleFilter {
   /** Key-value tag pairs to filter objects */
   tags?: PublicCloudStorageObjectReplicationRuleFilterTagsMap | null;
 }
+const PublicCloudStorageObjectReplicationRuleFilter = /*@__PURE__*/ __L.at(
+  __c53,
+  0,
+) as any as S.Schema<PublicCloudStorageObjectReplicationRuleFilter>;
+
 /** An S3 bucket replication rule */
 export interface PublicCloudStorageObjectReplicationRule {
   /** Whether delete markers are replicated */
@@ -4297,23 +6750,47 @@ export interface PublicCloudStorageObjectReplicationRule {
   /** Whether the rule is enabled or disabled */
   status: PublicCloudStorageObjectReplicationRuleStatusEnum | (string & {});
 }
+const PublicCloudStorageObjectReplicationRule = /*@__PURE__*/ __L.at(
+  __c53,
+  1,
+) as any as S.Schema<PublicCloudStorageObjectReplicationRule>;
+
 /** Array of replication rules */
 export type PublicCloudStorageObjectReplicationRulesResponseRulesList =
   Array<PublicCloudStorageObjectReplicationRule>;
+const PublicCloudStorageObjectReplicationRulesResponseRulesList = /*@__PURE__*/ __L.at(
+  __c53,
+  2,
+) as any as S.Schema<PublicCloudStorageObjectReplicationRulesResponseRulesList>;
+
 /** Response containing replication rules for an S3 bucket */
 export interface PublicCloudStorageObjectReplicationRulesResponse {
   /** Array of replication rules */
   rules?: PublicCloudStorageObjectReplicationRulesResponseRulesList;
 }
+const PublicCloudStorageObjectReplicationRulesResponse = /*@__PURE__*/ __L.at(
+  __c53,
+  3,
+) as any as S.Schema<PublicCloudStorageObjectReplicationRulesResponse>;
+
 /** Network references */
 export type PublicCloudInstanceInstanceUpdateTargetSpecNetworksList =
   Array<PublicCloudInstanceInstanceNetworkRef>;
+const PublicCloudInstanceInstanceUpdateTargetSpecNetworksList =
+  PublicCloudInstanceInstanceTargetSpecNetworksList as any as S.Schema<PublicCloudInstanceInstanceUpdateTargetSpecNetworksList>;
+
 /** Security group references to apply to all instance ports */
 export type PublicCloudInstanceInstanceUpdateTargetSpecSecurityGroupsList =
   Array<PublicCloudSecurityGroupSecurityGroupRef>;
+const PublicCloudInstanceInstanceUpdateTargetSpecSecurityGroupsList =
+  PublicCloudInstanceInstanceTargetSpecSecurityGroupsList as any as S.Schema<PublicCloudInstanceInstanceUpdateTargetSpecSecurityGroupsList>;
+
 /** Volume references */
 export type PublicCloudInstanceInstanceUpdateTargetSpecVolumesList =
   Array<PublicCloudInstanceInstanceVolumeRef>;
+const PublicCloudInstanceInstanceUpdateTargetSpecVolumesList =
+  PublicCloudInstanceInstanceTargetSpecSecurityGroupsList as any as S.Schema<PublicCloudInstanceInstanceUpdateTargetSpecVolumesList>;
+
 /** Target specification for updating an instance (location cannot be changed after creation) */
 export interface PublicCloudInstanceInstanceUpdateTargetSpec {
   /** Flavor reference */
@@ -4331,6 +6808,11 @@ export interface PublicCloudInstanceInstanceUpdateTargetSpec {
   /** Volume references */
   volumes: PublicCloudInstanceInstanceUpdateTargetSpecVolumesList | null;
 }
+const PublicCloudInstanceInstanceUpdateTargetSpec = /*@__PURE__*/ __L.at(
+  __c53,
+  4,
+) as any as S.Schema<PublicCloudInstanceInstanceUpdateTargetSpec>;
+
 export interface PutPublicCloudProjectComputeInstanceRequest {
   /** Project ID */
   projectId: string;
@@ -4341,11 +6823,21 @@ export interface PutPublicCloudProjectComputeInstanceRequest {
   /** Desired target specification for the instance */
   targetSpec: PublicCloudInstanceInstanceUpdateTargetSpec;
 }
+const PutPublicCloudProjectComputeInstanceRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  5,
+) as any as S.Schema<PutPublicCloudProjectComputeInstanceRequest>;
+
 /** Desired specification for updating a floating IP (mutable fields only) */
 export interface PublicCloudFloatingIpFloatingIPUpdateTargetSpec {
   /** Floating IP description */
   description: string;
 }
+const PublicCloudFloatingIpFloatingIPUpdateTargetSpec = /*@__PURE__*/ __L.at(
+  __c53,
+  6,
+) as any as S.Schema<PublicCloudFloatingIpFloatingIPUpdateTargetSpec>;
+
 export interface PutPublicCloudProjectFloatingIpRequest {
   /** Project ID */
   projectId: string;
@@ -4356,9 +6848,17 @@ export interface PutPublicCloudProjectFloatingIpRequest {
   /** Desired target specification for the floating IP */
   targetSpec: PublicCloudFloatingIpFloatingIPUpdateTargetSpec;
 }
+const PutPublicCloudProjectFloatingIpRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  7,
+) as any as S.Schema<PutPublicCloudProjectFloatingIpRequest>;
+
 /** Subnets to attach as router interfaces */
 export type PublicCloudGatewayGatewayUpdateTargetSpecSubnetsList =
   Array<PublicCloudGatewayGatewaySubnet>;
+const PublicCloudGatewayGatewayUpdateTargetSpecSubnetsList =
+  PublicCloudInstanceInstanceTargetSpecSecurityGroupsList as any as S.Schema<PublicCloudGatewayGatewayUpdateTargetSpecSubnetsList>;
+
 /** Desired specification for updating a gateway (mutable fields only) */
 export interface PublicCloudGatewayGatewayUpdateTargetSpec {
   /** Gateway description */
@@ -4370,6 +6870,11 @@ export interface PublicCloudGatewayGatewayUpdateTargetSpec {
   /** Subnets to attach as router interfaces */
   subnets?: PublicCloudGatewayGatewayUpdateTargetSpecSubnetsList | null;
 }
+const PublicCloudGatewayGatewayUpdateTargetSpec = /*@__PURE__*/ __L.at(
+  __c54,
+  0,
+) as any as S.Schema<PublicCloudGatewayGatewayUpdateTargetSpec>;
+
 export interface PutPublicCloudProjectGatewayRequest {
   /** Project ID */
   projectId: string;
@@ -4380,14 +6885,27 @@ export interface PutPublicCloudProjectGatewayRequest {
   /** Desired target specification for the gateway */
   targetSpec: PublicCloudGatewayGatewayUpdateTargetSpec;
 }
+const PutPublicCloudProjectGatewayRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  1,
+) as any as S.Schema<PutPublicCloudProjectGatewayRequest>;
+
 /** Desired list of secret references. Replaces all existing references. */
 export type PublicCloudKeyManagerContainerUpdateTargetSpecSecretRefsList =
   Array<PublicCloudKeyManagerContainerSecretRef>;
+const PublicCloudKeyManagerContainerUpdateTargetSpecSecretRefsList =
+  PublicCloudKeyManagerContainerTargetSpecSecretRefsList as any as S.Schema<PublicCloudKeyManagerContainerUpdateTargetSpecSecretRefsList>;
+
 /** Target specification for updating a Key Manager container (only secretRefs are mutable) */
 export interface PublicCloudKeyManagerContainerUpdateTargetSpec {
   /** Desired list of secret references. Replaces all existing references. */
   secretRefs: PublicCloudKeyManagerContainerUpdateTargetSpecSecretRefsList;
 }
+const PublicCloudKeyManagerContainerUpdateTargetSpec = /*@__PURE__*/ __L.at(
+  __c54,
+  2,
+) as any as S.Schema<PublicCloudKeyManagerContainerUpdateTargetSpec>;
+
 export interface PutPublicCloudProjectKeyManagerContainerRequest {
   /** Project ID */
   projectId: string;
@@ -4398,15 +6916,28 @@ export interface PutPublicCloudProjectKeyManagerContainerRequest {
   /** Desired target specification for the container */
   targetSpec: PublicCloudKeyManagerContainerUpdateTargetSpec;
 }
+const PutPublicCloudProjectKeyManagerContainerRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  3,
+) as any as S.Schema<PutPublicCloudProjectKeyManagerContainerRequest>;
+
 /** Metadata key-value pairs for the secret. Replaces all existing metadata. */
 export type PublicCloudKeyManagerSecretUpdateTargetSpecMetadataMap = {
   [key: string]: string | undefined;
 };
+const PublicCloudKeyManagerSecretUpdateTargetSpecMetadataMap =
+  PublicCloudKeyManagerSecretTargetSpecMetadataMap as any as S.Schema<PublicCloudKeyManagerSecretUpdateTargetSpecMetadataMap>;
+
 /** Target specification for updating a Key Manager secret (only metadata is mutable) */
 export interface PublicCloudKeyManagerSecretUpdateTargetSpec {
   /** Metadata key-value pairs for the secret. Replaces all existing metadata. */
   metadata: PublicCloudKeyManagerSecretUpdateTargetSpecMetadataMap;
 }
+const PublicCloudKeyManagerSecretUpdateTargetSpec = /*@__PURE__*/ __L.at(
+  __c54,
+  4,
+) as any as S.Schema<PublicCloudKeyManagerSecretUpdateTargetSpec>;
+
 export interface PutPublicCloudProjectKeyManagerSecretRequest {
   /** Project ID */
   projectId: string;
@@ -4417,6 +6948,11 @@ export interface PutPublicCloudProjectKeyManagerSecretRequest {
   /** Desired target specification for the secret */
   targetSpec: PublicCloudKeyManagerSecretUpdateTargetSpec;
 }
+const PutPublicCloudProjectKeyManagerSecretRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  5,
+) as any as S.Schema<PutPublicCloudProjectKeyManagerSecretRequest>;
+
 /** Desired specification for updating a load balancer (excludes immutable fields) */
 export interface PublicCloudLoadbalancerLoadbalancerPutTargetSpec {
   /** Load balancer description */
@@ -4424,6 +6960,11 @@ export interface PublicCloudLoadbalancerLoadbalancerPutTargetSpec {
   /** Load balancer name */
   name: string;
 }
+const PublicCloudLoadbalancerLoadbalancerPutTargetSpec = /*@__PURE__*/ __L.at(
+  __c54,
+  6,
+) as any as S.Schema<PublicCloudLoadbalancerLoadbalancerPutTargetSpec>;
+
 export interface PutPublicCloudProjectLoadbalancerRequest {
   /** Project ID */
   projectId: string;
@@ -4434,12 +6975,26 @@ export interface PutPublicCloudProjectLoadbalancerRequest {
   /** Desired target specification for the load balancer */
   targetSpec: PublicCloudLoadbalancerLoadbalancerPutTargetSpec;
 }
+const PutPublicCloudProjectLoadbalancerRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  7,
+) as any as S.Schema<PutPublicCloudProjectLoadbalancerRequest>;
+
 /** CIDR blocks allowed to connect to this listener */
 export type PublicCloudLoadbalancerListenerPutTargetSpecAllowedCidrsList = Array<string>;
+const PublicCloudLoadbalancerListenerPutTargetSpecAllowedCidrsList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudLoadbalancerListenerPutTargetSpecAllowedCidrsList>;
+
 /** References to TLS certificate containers for SNI (for TERMINATED_HTTPS) */
 export type PublicCloudLoadbalancerListenerPutTargetSpecSniContainerRefsList = Array<string>;
+const PublicCloudLoadbalancerListenerPutTargetSpecSniContainerRefsList =
+  PublicCloudLoadbalancerListenerCurrentStateSniContainerRefsList as any as S.Schema<PublicCloudLoadbalancerListenerPutTargetSpecSniContainerRefsList>;
+
 /** List of TLS protocol versions allowed (e.g. TLSv1.2, TLSv1.3) */
 export type PublicCloudLoadbalancerListenerPutTargetSpecTlsVersionsList = Array<string>;
+const PublicCloudLoadbalancerListenerPutTargetSpecTlsVersionsList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudLoadbalancerListenerPutTargetSpecTlsVersionsList>;
+
 /** Desired specification for updating a load balancer listener (excludes immutable fields) */
 export interface PublicCloudLoadbalancerListenerPutTargetSpec {
   /** CIDR blocks allowed to connect to this listener */
@@ -4469,6 +7024,11 @@ export interface PublicCloudLoadbalancerListenerPutTargetSpec {
   /** List of TLS protocol versions allowed (e.g. TLSv1.2, TLSv1.3) */
   tlsVersions?: PublicCloudLoadbalancerListenerPutTargetSpecTlsVersionsList | null;
 }
+const PublicCloudLoadbalancerListenerPutTargetSpec = /*@__PURE__*/ __L.at(
+  __c55,
+  0,
+) as any as S.Schema<PublicCloudLoadbalancerListenerPutTargetSpec>;
+
 export interface PutPublicCloudProjectLoadbalancerListenerRequest {
   /** Project ID */
   projectId: string;
@@ -4481,6 +7041,11 @@ export interface PutPublicCloudProjectLoadbalancerListenerRequest {
   /** Desired target specification for the listener */
   targetSpec: PublicCloudLoadbalancerListenerPutTargetSpec;
 }
+const PutPublicCloudProjectLoadbalancerListenerRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  1,
+) as any as S.Schema<PutPublicCloudProjectLoadbalancerListenerRequest>;
+
 /** L7 rules that determine when this policy matches */
 export type PublicCloudLoadbalancerL7PolicyUpdateTargetSpecRulesList =
   Array<PublicCloudLoadbalancerL7RuleSpec>;
@@ -4505,6 +7070,9 @@ export interface PublicCloudLoadbalancerL7PolicyUpdateTargetSpec {
   /** L7 rules that determine when this policy matches */
   rules?: PublicCloudLoadbalancerL7PolicyUpdateTargetSpecRulesList | null;
 }
+const PublicCloudLoadbalancerL7PolicyUpdateTargetSpec =
+  PublicCloudLoadbalancerL7PolicyTargetSpec as any as S.Schema<PublicCloudLoadbalancerL7PolicyUpdateTargetSpec>;
+
 export interface PutPublicCloudProjectLoadbalancerListenerL7policyRequest {
   /** Project ID */
   projectId: string;
@@ -4519,6 +7087,11 @@ export interface PutPublicCloudProjectLoadbalancerListenerL7policyRequest {
   /** Desired target specification for the L7 policy */
   targetSpec: PublicCloudLoadbalancerL7PolicyUpdateTargetSpec;
 }
+const PutPublicCloudProjectLoadbalancerListenerL7policyRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  2,
+) as any as S.Schema<PutPublicCloudProjectLoadbalancerListenerL7policyRequest>;
+
 /** Desired specification for updating a health monitor on a pool (excludes immutable fields) */
 export interface PublicCloudLoadbalancerHealthMonitorUpdateTargetSpec {
   /** Time in seconds between sending health check probes to members */
@@ -4542,6 +7115,11 @@ export interface PublicCloudLoadbalancerHealthMonitorUpdateTargetSpec {
   /** URI path for HTTP/HTTPS health checks (must start with /) */
   urlPath?: string | null;
 }
+const PublicCloudLoadbalancerHealthMonitorUpdateTargetSpec = /*@__PURE__*/ __L.at(
+  __c55,
+  3,
+) as any as S.Schema<PublicCloudLoadbalancerHealthMonitorUpdateTargetSpec>;
+
 /** Desired specification for updating a load balancer pool (excludes immutable fields) */
 export interface PublicCloudLoadbalancerPoolUpdateTargetSpec {
   /** Load balancing algorithm */
@@ -4555,6 +7133,11 @@ export interface PublicCloudLoadbalancerPoolUpdateTargetSpec {
   /** Session persistence configuration */
   persistence?: PublicCloudLoadbalancerSessionPersistence | null;
 }
+const PublicCloudLoadbalancerPoolUpdateTargetSpec = /*@__PURE__*/ __L.at(
+  __c55,
+  4,
+) as any as S.Schema<PublicCloudLoadbalancerPoolUpdateTargetSpec>;
+
 export interface PutPublicCloudProjectLoadbalancerPoolRequest {
   /** Project ID */
   projectId: string;
@@ -4567,6 +7150,11 @@ export interface PutPublicCloudProjectLoadbalancerPoolRequest {
   /** Desired target specification for the pool */
   targetSpec: PublicCloudLoadbalancerPoolUpdateTargetSpec;
 }
+const PutPublicCloudProjectLoadbalancerPoolRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  5,
+) as any as S.Schema<PutPublicCloudProjectLoadbalancerPoolRequest>;
+
 /** Desired specification for updating a load balancer pool member (excludes immutable fields) */
 export interface PublicCloudLoadbalancerMemberUpdateTargetSpec {
   /** Whether this is a backup member */
@@ -4578,6 +7166,11 @@ export interface PublicCloudLoadbalancerMemberUpdateTargetSpec {
   /** Weight for load balancing (1-256) */
   weight?: number | null;
 }
+const PublicCloudLoadbalancerMemberUpdateTargetSpec = /*@__PURE__*/ __L.at(
+  __c55,
+  6,
+) as any as S.Schema<PublicCloudLoadbalancerMemberUpdateTargetSpec>;
+
 export interface PutPublicCloudProjectLoadbalancerPoolMemberRequest {
   /** Project ID */
   projectId: string;
@@ -4592,11 +7185,21 @@ export interface PutPublicCloudProjectLoadbalancerPoolMemberRequest {
   /** Desired target specification for the member */
   targetSpec: PublicCloudLoadbalancerMemberUpdateTargetSpec;
 }
+const PutPublicCloudProjectLoadbalancerPoolMemberRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  7,
+) as any as S.Schema<PutPublicCloudProjectLoadbalancerPoolMemberRequest>;
+
 /** Desired specification for updating a network (excludes immutable fields) */
 export interface PublicCloudNetworkNetworkPutTargetSpec {
   /** Network name */
   name: string;
 }
+const PublicCloudNetworkNetworkPutTargetSpec = /*@__PURE__*/ __L.at(
+  __c56,
+  0,
+) as any as S.Schema<PublicCloudNetworkNetworkPutTargetSpec>;
+
 export interface PutPublicCloudProjectNetworkRequest {
   /** Project ID */
   projectId: string;
@@ -4607,11 +7210,22 @@ export interface PutPublicCloudProjectNetworkRequest {
   /** Desired target specification for the network */
   targetSpec: PublicCloudNetworkNetworkPutTargetSpec;
 }
+const PutPublicCloudProjectNetworkRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  1,
+) as any as S.Schema<PutPublicCloudProjectNetworkRequest>;
+
 /** IP address allocation pools */
 export type PublicCloudNetworkSubnetPutTargetSpecAllocationPoolsList =
   Array<PublicCloudNetworkSubnetAllocationPool>;
+const PublicCloudNetworkSubnetPutTargetSpecAllocationPoolsList =
+  PublicCloudNetworkSubnetTargetSpecAllocationPoolsList as any as S.Schema<PublicCloudNetworkSubnetPutTargetSpecAllocationPoolsList>;
+
 /** DNS nameservers for the subnet */
 export type PublicCloudNetworkSubnetPutTargetSpecDnsNameserversList = Array<string>;
+const PublicCloudNetworkSubnetPutTargetSpecDnsNameserversList =
+  PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList as any as S.Schema<PublicCloudNetworkSubnetPutTargetSpecDnsNameserversList>;
+
 /** Desired specification for updating a subnet (excludes immutable fields) */
 export interface PublicCloudNetworkSubnetPutTargetSpec {
   /** IP address allocation pools */
@@ -4627,6 +7241,11 @@ export interface PublicCloudNetworkSubnetPutTargetSpec {
   /** Subnet name */
   name: string;
 }
+const PublicCloudNetworkSubnetPutTargetSpec = /*@__PURE__*/ __L.at(
+  __c56,
+  2,
+) as any as S.Schema<PublicCloudNetworkSubnetPutTargetSpec>;
+
 export interface PutPublicCloudProjectNetworkSubnetRequest {
   /** Project ID */
   projectId: string;
@@ -4639,6 +7258,11 @@ export interface PutPublicCloudProjectNetworkSubnetRequest {
   /** Desired target specification for the subnet */
   targetSpec: PublicCloudNetworkSubnetPutTargetSpec;
 }
+const PutPublicCloudProjectNetworkSubnetRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  3,
+) as any as S.Schema<PutPublicCloudProjectNetworkSubnetRequest>;
+
 /** Desired specification for updating a floating IP (mutable fields only) */
 export type PublicCloudPublicIpFloatingIPUpdateTargetSpec =
   PublicCloudFloatingIpFloatingIPUpdateTargetSpec;
@@ -4652,9 +7276,17 @@ export interface PutPublicCloudProjectPublicIpFloatingRequest {
   /** Desired target specification for the floating IP */
   targetSpec: PublicCloudFloatingIpFloatingIPUpdateTargetSpec;
 }
+const PutPublicCloudProjectPublicIpFloatingRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  4,
+) as any as S.Schema<PutPublicCloudProjectPublicIpFloatingRequest>;
+
 /** Target quota profile per region. Regions omitted are left unchanged. */
 export type PublicCloudQuotaQuotaUpdateTargetSpecRegionsList =
   Array<PublicCloudQuotaQuotaRegionTargetSpec>;
+const PublicCloudQuotaQuotaUpdateTargetSpecRegionsList =
+  PublicCloudQuotaQuotaTargetSpecRegionsList as any as S.Schema<PublicCloudQuotaQuotaUpdateTargetSpecRegionsList>;
+
 /** Update specification for the project quota */
 export interface PublicCloudQuotaQuotaUpdateTargetSpec {
   /** When true, automatic quota upgrades are disabled for this project */
@@ -4662,6 +7294,11 @@ export interface PublicCloudQuotaQuotaUpdateTargetSpec {
   /** Target quota profile per region. Regions omitted are left unchanged. */
   regions: PublicCloudQuotaQuotaUpdateTargetSpecRegionsList;
 }
+const PublicCloudQuotaQuotaUpdateTargetSpec = /*@__PURE__*/ __L.at(
+  __c56,
+  5,
+) as any as S.Schema<PublicCloudQuotaQuotaUpdateTargetSpec>;
+
 export interface PutPublicCloudProjectQuotaRequest {
   /** Project ID */
   projectId: string;
@@ -4670,6 +7307,11 @@ export interface PutPublicCloudProjectQuotaRequest {
   /** Update specification */
   targetSpec: PublicCloudQuotaQuotaUpdateTargetSpec;
 }
+const PutPublicCloudProjectQuotaRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  6,
+) as any as S.Schema<PutPublicCloudProjectQuotaRequest>;
+
 export interface PutPublicCloudProjectRancherRequest {
   /** Project ID */
   projectId: string;
@@ -4678,9 +7320,17 @@ export interface PutPublicCloudProjectRancherRequest {
   /** New target specification for the managed Rancher service */
   targetSpec: PublicCloudRancherRancherTargetSpec;
 }
+const PutPublicCloudProjectRancherRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  7,
+) as any as S.Schema<PutPublicCloudProjectRancherRequest>;
+
 /** Desired firewall rules */
 export type PublicCloudSecurityGroupSecurityGroupUpdateTargetSpecRulesList =
   Array<PublicCloudSecurityGroupSecurityGroupTargetRule>;
+const PublicCloudSecurityGroupSecurityGroupUpdateTargetSpecRulesList =
+  PublicCloudSecurityGroupSecurityGroupTargetSpecRulesList as any as S.Schema<PublicCloudSecurityGroupSecurityGroupUpdateTargetSpecRulesList>;
+
 /** Desired specification for updating a security group (mutable fields only) */
 export interface PublicCloudSecurityGroupSecurityGroupUpdateTargetSpec {
   /** Security group description */
@@ -4690,6 +7340,11 @@ export interface PublicCloudSecurityGroupSecurityGroupUpdateTargetSpec {
   /** Desired firewall rules */
   rules?: PublicCloudSecurityGroupSecurityGroupUpdateTargetSpecRulesList | null;
 }
+const PublicCloudSecurityGroupSecurityGroupUpdateTargetSpec = /*@__PURE__*/ __L.at(
+  __c57,
+  0,
+) as any as S.Schema<PublicCloudSecurityGroupSecurityGroupUpdateTargetSpec>;
+
 export interface PutPublicCloudProjectSecurityGroupRequest {
   /** Project ID */
   projectId: string;
@@ -4700,6 +7355,11 @@ export interface PutPublicCloudProjectSecurityGroupRequest {
   /** Desired target specification for the security group */
   targetSpec: PublicCloudSecurityGroupSecurityGroupUpdateTargetSpec;
 }
+const PutPublicCloudProjectSecurityGroupRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  1,
+) as any as S.Schema<PutPublicCloudProjectSecurityGroupRequest>;
+
 /** Target specification for updating a block storage backup (immutable fields like location and volumeId are excluded) */
 export interface PublicCloudBlockStorageBackupUpdateTargetSpec {
   /** Desired backup description */
@@ -4707,6 +7367,11 @@ export interface PublicCloudBlockStorageBackupUpdateTargetSpec {
   /** Desired backup name */
   name?: string;
 }
+const PublicCloudBlockStorageBackupUpdateTargetSpec = /*@__PURE__*/ __L.at(
+  __c57,
+  2,
+) as any as S.Schema<PublicCloudBlockStorageBackupUpdateTargetSpec>;
+
 export interface PutPublicCloudProjectStorageBlockBackupRequest {
   /** Project ID */
   projectId: string;
@@ -4717,6 +7382,11 @@ export interface PutPublicCloudProjectStorageBlockBackupRequest {
   /** Desired target specification for the backup */
   targetSpec: PublicCloudBlockStorageBackupUpdateTargetSpec;
 }
+const PutPublicCloudProjectStorageBlockBackupRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  3,
+) as any as S.Schema<PutPublicCloudProjectStorageBlockBackupRequest>;
+
 /** Target specification for updating a block storage volume snapshot (immutable fields like location and volumeId are excluded) */
 export interface PublicCloudBlockStorageSnapshotUpdateTargetSpec {
   /** Desired snapshot description */
@@ -4724,6 +7394,11 @@ export interface PublicCloudBlockStorageSnapshotUpdateTargetSpec {
   /** Desired snapshot name */
   name: string;
 }
+const PublicCloudBlockStorageSnapshotUpdateTargetSpec = /*@__PURE__*/ __L.at(
+  __c57,
+  4,
+) as any as S.Schema<PublicCloudBlockStorageSnapshotUpdateTargetSpec>;
+
 export interface PutPublicCloudProjectStorageBlockSnapshotRequest {
   /** Project ID */
   projectId: string;
@@ -4734,6 +7409,11 @@ export interface PutPublicCloudProjectStorageBlockSnapshotRequest {
   /** Desired target specification for the snapshot */
   targetSpec: PublicCloudBlockStorageSnapshotUpdateTargetSpec;
 }
+const PutPublicCloudProjectStorageBlockSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  5,
+) as any as S.Schema<PutPublicCloudProjectStorageBlockSnapshotRequest>;
+
 /** Target specification for updating a block storage volume (immutable fields like location and encryption are excluded) */
 export interface PublicCloudBlockStorageBlockUpdateTargetSpec {
   /** Desired volume name */
@@ -4743,6 +7423,11 @@ export interface PublicCloudBlockStorageBlockUpdateTargetSpec {
   /** Target volume type. Changing this triggers an online retype (migration). */
   volumeType?: PublicCloudBlockStorageVolumeTypeEnum | (string & {}) | null;
 }
+const PublicCloudBlockStorageBlockUpdateTargetSpec = /*@__PURE__*/ __L.at(
+  __c57,
+  6,
+) as any as S.Schema<PublicCloudBlockStorageBlockUpdateTargetSpec>;
+
 export interface PutPublicCloudProjectStorageBlockVolumeRequest {
   /** Project ID */
   projectId: string;
@@ -4753,9 +7438,19 @@ export interface PutPublicCloudProjectStorageBlockVolumeRequest {
   /** Desired target specification for the volume */
   targetSpec: PublicCloudBlockStorageBlockUpdateTargetSpec;
 }
+const PutPublicCloudProjectStorageBlockVolumeRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  7,
+) as any as S.Schema<PutPublicCloudProjectStorageBlockVolumeRequest>;
+
 /** Access rules controlling which IPs can access the file storage (replaces all existing rules) */
 export type PublicCloudStorageFileFileStorageUpdateTargetSpecAccessRulesList =
   Array<PublicCloudStorageFileFileStorageAccessRuleInput>;
+const PublicCloudStorageFileFileStorageUpdateTargetSpecAccessRulesList = /*@__PURE__*/ __L.at(
+  __c58,
+  0,
+) as any as S.Schema<PublicCloudStorageFileFileStorageUpdateTargetSpecAccessRulesList>;
+
 /** Target specification for updating a file storage (immutable fields like protocol, shareType, networkId, subnetId are excluded) */
 export interface PublicCloudStorageFileFileStorageUpdateTargetSpec {
   /** Access rules controlling which IPs can access the file storage (replaces all existing rules) */
@@ -4767,6 +7462,11 @@ export interface PublicCloudStorageFileFileStorageUpdateTargetSpec {
   /** Size of the file storage in GB (can only be increased, not reduced) */
   size: number;
 }
+const PublicCloudStorageFileFileStorageUpdateTargetSpec = /*@__PURE__*/ __L.at(
+  __c58,
+  1,
+) as any as S.Schema<PublicCloudStorageFileFileStorageUpdateTargetSpec>;
+
 export interface PutPublicCloudProjectStorageFileShareRequest {
   /** Project ID */
   projectId: string;
@@ -4777,6 +7477,11 @@ export interface PutPublicCloudProjectStorageFileShareRequest {
   /** Desired target specification for the file storage */
   targetSpec: PublicCloudStorageFileFileStorageUpdateTargetSpec;
 }
+const PutPublicCloudProjectStorageFileShareRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  2,
+) as any as S.Schema<PutPublicCloudProjectStorageFileShareRequest>;
+
 /** Target specification for updating a file storage snapshot (only name and description are mutable) */
 export interface PublicCloudStorageFileFileStorageSnapshotUpdateTargetSpec {
   /** Description of the snapshot */
@@ -4784,6 +7489,11 @@ export interface PublicCloudStorageFileFileStorageSnapshotUpdateTargetSpec {
   /** Desired snapshot name */
   name?: string | null;
 }
+const PublicCloudStorageFileFileStorageSnapshotUpdateTargetSpec = /*@__PURE__*/ __L.at(
+  __c58,
+  3,
+) as any as S.Schema<PublicCloudStorageFileFileStorageSnapshotUpdateTargetSpec>;
+
 export interface PutPublicCloudProjectStorageFileSnapshotRequest {
   /** Project ID */
   projectId: string;
@@ -4794,10 +7504,18 @@ export interface PutPublicCloudProjectStorageFileSnapshotRequest {
   /** Desired target specification for the snapshot */
   targetSpec: PublicCloudStorageFileFileStorageSnapshotUpdateTargetSpec;
 }
+const PutPublicCloudProjectStorageFileSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  4,
+) as any as S.Schema<PutPublicCloudProjectStorageFileSnapshotRequest>;
+
 /** Metadata tags for the bucket */
 export type PublicCloudStorageObjectBucketUpdateTargetSpecInputTagsMap = {
   [key: string]: string | undefined;
 };
+const PublicCloudStorageObjectBucketUpdateTargetSpecInputTagsMap =
+  PublicCloudKeyManagerSecretTargetSpecMetadataMap as any as S.Schema<PublicCloudStorageObjectBucketUpdateTargetSpecInputTagsMap>;
+
 /** Target specification for updating an S3 bucket (mutable fields only) */
 export interface PublicCloudStorageObjectBucketUpdateTargetSpecInput {
   /** Server-side encryption configuration */
@@ -4811,6 +7529,11 @@ export interface PublicCloudStorageObjectBucketUpdateTargetSpecInput {
   /** Versioning configuration */
   versioning?: PublicCloudStorageObjectBucketVersioningConfig | null;
 }
+const PublicCloudStorageObjectBucketUpdateTargetSpecInput = /*@__PURE__*/ __L.at(
+  __c58,
+  5,
+) as any as S.Schema<PublicCloudStorageObjectBucketUpdateTargetSpecInput>;
+
 export interface PutPublicCloudProjectStorageObjectBucketRequest {
   /** Project ID */
   projectId: string;
@@ -4821,9 +7544,19 @@ export interface PutPublicCloudProjectStorageObjectBucketRequest {
   /** Desired target specification for the bucket */
   targetSpec: PublicCloudStorageObjectBucketUpdateTargetSpecInput;
 }
+const PutPublicCloudProjectStorageObjectBucketRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  6,
+) as any as S.Schema<PutPublicCloudProjectStorageObjectBucketRequest>;
+
 /** Array of lifecycle rules. An empty array deletes all rules. */
 export type PutPublicCloudProjectStorageObjectBucketLifecycleRequestRulesList =
   Array<PublicCloudStorageObjectLifecycleRule>;
+const PutPublicCloudProjectStorageObjectBucketLifecycleRequestRulesList = /*@__PURE__*/ __L.at(
+  __c58,
+  7,
+) as any as S.Schema<PutPublicCloudProjectStorageObjectBucketLifecycleRequestRulesList>;
+
 export interface PutPublicCloudProjectStorageObjectBucketLifecycleRequest {
   /** Project ID */
   projectId: string;
@@ -4832,9 +7565,19 @@ export interface PutPublicCloudProjectStorageObjectBucketLifecycleRequest {
   /** Array of lifecycle rules. An empty array deletes all rules. */
   rules: PutPublicCloudProjectStorageObjectBucketLifecycleRequestRulesList;
 }
+const PutPublicCloudProjectStorageObjectBucketLifecycleRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  0,
+) as any as S.Schema<PutPublicCloudProjectStorageObjectBucketLifecycleRequest>;
+
 /** Array of replication rules. An empty array deletes all rules. */
 export type PutPublicCloudProjectStorageObjectBucketReplicationRequestRulesList =
   Array<PublicCloudStorageObjectReplicationRule>;
+const PutPublicCloudProjectStorageObjectBucketReplicationRequestRulesList = /*@__PURE__*/ __L.at(
+  __c59,
+  1,
+) as any as S.Schema<PutPublicCloudProjectStorageObjectBucketReplicationRequestRulesList>;
+
 export interface PutPublicCloudProjectStorageObjectBucketReplicationRequest {
   /** Project ID */
   projectId: string;
@@ -4843,12 +7586,22 @@ export interface PutPublicCloudProjectStorageObjectBucketReplicationRequest {
   /** Array of replication rules. An empty array deletes all rules. */
   rules: PutPublicCloudProjectStorageObjectBucketReplicationRequestRulesList;
 }
+const PutPublicCloudProjectStorageObjectBucketReplicationRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  2,
+) as any as S.Schema<PutPublicCloudProjectStorageObjectBucketReplicationRequest>;
+
 export interface SharePublicCloudProjectStorageFileRequest {
   /** Project ID */
   projectId: string;
   /** Desired target specification for the file storage */
   targetSpec: PublicCloudStorageFileFileStorageTargetSpec;
 }
+const SharePublicCloudProjectStorageFileRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  3,
+) as any as S.Schema<SharePublicCloudProjectStorageFileRequest>;
+
 export type CreatePublicCloudProjectComputeAutobackupError = BadRequest | Conflict | OvhOpError;
 /** Create a new Public Cloud instance autobackup */
 export const createPublicCloudProjectComputeAutobackup: API.OperationMethod<
@@ -4857,8 +7610,8 @@ export const createPublicCloudProjectComputeAutobackup: API.OperationMethod<
   CreatePublicCloudProjectComputeAutobackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreatePublicCloudProjectComputeAutobackupRequest>,
-  output: __S(12) as any as S.Schema<PublicCloudInstanceAutobackup>,
+  input: CreatePublicCloudProjectComputeAutobackupRequest,
+  output: PublicCloudInstanceAutobackup,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4872,8 +7625,8 @@ export const createPublicCloudProjectComputeBackup: API.OperationMethod<
   CreatePublicCloudProjectComputeBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<CreatePublicCloudProjectComputeBackupRequest>,
-  output: __S(16) as any as S.Schema<PublicCloudInstanceBackup>,
+  input: CreatePublicCloudProjectComputeBackupRequest,
+  output: PublicCloudInstanceBackup,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4887,8 +7640,8 @@ export const createPublicCloudProjectComputeInstance: API.OperationMethod<
   CreatePublicCloudProjectComputeInstanceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<CreatePublicCloudProjectComputeInstanceRequest>,
-  output: __S(31) as any as S.Schema<PublicCloudInstanceInstance>,
+  input: CreatePublicCloudProjectComputeInstanceRequest,
+  output: PublicCloudInstanceInstance,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4906,8 +7659,8 @@ export const createPublicCloudProjectComputeInstanceAction: API.OperationMethod<
   CreatePublicCloudProjectComputeInstanceActionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<CreatePublicCloudProjectComputeInstanceActionRequest>,
-  output: __S(31) as any as S.Schema<PublicCloudInstanceInstance>,
+  input: CreatePublicCloudProjectComputeInstanceActionRequest,
+  output: PublicCloudInstanceInstance,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4921,8 +7674,8 @@ export const createPublicCloudProjectComputeInstanceConsole: API.OperationMethod
   CreatePublicCloudProjectComputeInstanceConsoleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<CreatePublicCloudProjectComputeInstanceConsoleRequest>,
-  output: __S(35) as any as S.Schema<PublicCloudInstanceRemoteConsole>,
+  input: CreatePublicCloudProjectComputeInstanceConsoleRequest,
+  output: PublicCloudInstanceRemoteConsole,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4936,8 +7689,8 @@ export const createPublicCloudProjectComputeInstanceGroup: API.OperationMethod<
   CreatePublicCloudProjectComputeInstanceGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<CreatePublicCloudProjectComputeInstanceGroupRequest>,
-  output: __S(41) as any as S.Schema<PublicCloudInstanceGroupInstanceGroup>,
+  input: CreatePublicCloudProjectComputeInstanceGroupRequest,
+  output: PublicCloudInstanceGroupInstanceGroup,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4951,8 +7704,8 @@ export const createPublicCloudProjectFloatingIp: API.OperationMethod<
   CreatePublicCloudProjectFloatingIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<CreatePublicCloudProjectFloatingIpRequest>,
-  output: __S(45) as any as S.Schema<PublicCloudFloatingIpFloatingIP>,
+  input: CreatePublicCloudProjectFloatingIpRequest,
+  output: PublicCloudFloatingIpFloatingIP,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4966,8 +7719,8 @@ export const createPublicCloudProjectGateway: API.OperationMethod<
   CreatePublicCloudProjectGatewayError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<CreatePublicCloudProjectGatewayRequest>,
-  output: __S(50) as any as S.Schema<PublicCloudGatewayGateway>,
+  input: CreatePublicCloudProjectGatewayRequest,
+  output: PublicCloudGatewayGateway,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4981,8 +7734,8 @@ export const createPublicCloudProjectKeyManagerContainer: API.OperationMethod<
   CreatePublicCloudProjectKeyManagerContainerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<CreatePublicCloudProjectKeyManagerContainerRequest>,
-  output: __S(56) as any as S.Schema<PublicCloudKeyManagerContainer>,
+  input: CreatePublicCloudProjectKeyManagerContainerRequest,
+  output: PublicCloudKeyManagerContainer,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5000,8 +7753,8 @@ export const createPublicCloudProjectKeyManagerContainerConsumer: API.OperationM
   CreatePublicCloudProjectKeyManagerContainerConsumerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<CreatePublicCloudProjectKeyManagerContainerConsumerRequest>,
-  output: __S(58) as any as S.Schema<PublicCloudKeyManagerContainerConsumer>,
+  input: CreatePublicCloudProjectKeyManagerContainerConsumerRequest,
+  output: PublicCloudKeyManagerContainerConsumer,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5015,8 +7768,8 @@ export const createPublicCloudProjectKeyManagerSecret: API.OperationMethod<
   CreatePublicCloudProjectKeyManagerSecretError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<CreatePublicCloudProjectKeyManagerSecretRequest>,
-  output: __S(63) as any as S.Schema<PublicCloudKeyManagerSecret>,
+  input: CreatePublicCloudProjectKeyManagerSecretRequest,
+  output: PublicCloudKeyManagerSecret,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5034,8 +7787,8 @@ export const createPublicCloudProjectKeyManagerSecretConsumer: API.OperationMeth
   CreatePublicCloudProjectKeyManagerSecretConsumerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<CreatePublicCloudProjectKeyManagerSecretConsumerRequest>,
-  output: __S(58) as any as S.Schema<PublicCloudKeyManagerSecretConsumer>,
+  input: CreatePublicCloudProjectKeyManagerSecretConsumerRequest,
+  output: PublicCloudKeyManagerSecretConsumer,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5049,8 +7802,8 @@ export const createPublicCloudProjectKeyManagerSecretPayload: API.OperationMetho
   CreatePublicCloudProjectKeyManagerSecretPayloadError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<CreatePublicCloudProjectKeyManagerSecretPayloadRequest>,
-  output: __S(66) as any as S.Schema<PublicCloudKeyManagerSecretPayload>,
+  input: CreatePublicCloudProjectKeyManagerSecretPayloadRequest,
+  output: PublicCloudKeyManagerSecretPayload,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5068,8 +7821,8 @@ export const createPublicCloudProjectLoadbalancer: API.OperationMethod<
   CreatePublicCloudProjectLoadbalancerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<CreatePublicCloudProjectLoadbalancerRequest>,
-  output: __S(71) as any as S.Schema<PublicCloudLoadbalancerLoadbalancer>,
+  input: CreatePublicCloudProjectLoadbalancerRequest,
+  output: PublicCloudLoadbalancerLoadbalancer,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5087,8 +7840,8 @@ export const createPublicCloudProjectLoadbalancerListener: API.OperationMethod<
   CreatePublicCloudProjectLoadbalancerListenerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<CreatePublicCloudProjectLoadbalancerListenerRequest>,
-  output: __S(78) as any as S.Schema<PublicCloudLoadbalancerListener>,
+  input: CreatePublicCloudProjectLoadbalancerListenerRequest,
+  output: PublicCloudLoadbalancerListener,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5105,8 +7858,8 @@ export const createPublicCloudProjectLoadbalancerListenerL7policy: API.Operation
   CreatePublicCloudProjectLoadbalancerListenerL7policyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<CreatePublicCloudProjectLoadbalancerListenerL7policyRequest>,
-  output: __S(86) as any as S.Schema<PublicCloudLoadbalancerL7Policy>,
+  input: CreatePublicCloudProjectLoadbalancerListenerL7policyRequest,
+  output: PublicCloudLoadbalancerL7Policy,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5120,8 +7873,8 @@ export const createPublicCloudProjectLoadbalancerPool: API.OperationMethod<
   CreatePublicCloudProjectLoadbalancerPoolError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<CreatePublicCloudProjectLoadbalancerPoolRequest>,
-  output: __S(93) as any as S.Schema<PublicCloudLoadbalancerPool>,
+  input: CreatePublicCloudProjectLoadbalancerPoolRequest,
+  output: PublicCloudLoadbalancerPool,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5139,8 +7892,8 @@ export const createPublicCloudProjectLoadbalancerPoolMember: API.OperationMethod
   CreatePublicCloudProjectLoadbalancerPoolMemberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<CreatePublicCloudProjectLoadbalancerPoolMemberRequest>,
-  output: __S(98) as any as S.Schema<PublicCloudLoadbalancerMember>,
+  input: CreatePublicCloudProjectLoadbalancerPoolMemberRequest,
+  output: PublicCloudLoadbalancerMember,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5154,8 +7907,8 @@ export const createPublicCloudProjectNetwork: API.OperationMethod<
   CreatePublicCloudProjectNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<CreatePublicCloudProjectNetworkRequest>,
-  output: __S(102) as any as S.Schema<PublicCloudNetworkNetwork>,
+  input: CreatePublicCloudProjectNetworkRequest,
+  output: PublicCloudNetworkNetwork,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5169,8 +7922,8 @@ export const createPublicCloudProjectNetworkSubnet: API.OperationMethod<
   CreatePublicCloudProjectNetworkSubnetError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<CreatePublicCloudProjectNetworkSubnetRequest>,
-  output: __S(110) as any as S.Schema<PublicCloudNetworkSubnet>,
+  input: CreatePublicCloudProjectNetworkSubnetRequest,
+  output: PublicCloudNetworkSubnet,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5184,8 +7937,8 @@ export const createPublicCloudProjectPublicIpFloating: API.OperationMethod<
   CreatePublicCloudProjectPublicIpFloatingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<CreatePublicCloudProjectPublicIpFloatingRequest>,
-  output: __S(114) as any as S.Schema<PublicCloudPublicIpFloatingIP>,
+  input: CreatePublicCloudProjectPublicIpFloatingRequest,
+  output: PublicCloudPublicIpFloatingIP,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5199,8 +7952,8 @@ export const createPublicCloudProjectRancher: API.OperationMethod<
   CreatePublicCloudProjectRancherError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<CreatePublicCloudProjectRancherRequest>,
-  output: __S(123) as any as S.Schema<PublicCloudRancherRancher>,
+  input: CreatePublicCloudProjectRancherRequest,
+  output: PublicCloudRancherRancher,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5214,8 +7967,8 @@ export const createPublicCloudProjectRancherAdminCredentials: API.OperationMetho
   CreatePublicCloudProjectRancherAdminCredentialsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<CreatePublicCloudProjectRancherAdminCredentialsRequest>,
-  output: __S(125) as any as S.Schema<PublicCloudRancherCredentials>,
+  input: CreatePublicCloudProjectRancherAdminCredentialsRequest,
+  output: PublicCloudRancherCredentials,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5229,8 +7982,8 @@ export const createPublicCloudProjectSecurityGroup: API.OperationMethod<
   CreatePublicCloudProjectSecurityGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<CreatePublicCloudProjectSecurityGroupRequest>,
-  output: __S(134) as any as S.Schema<PublicCloudSecurityGroupSecurityGroup>,
+  input: CreatePublicCloudProjectSecurityGroupRequest,
+  output: PublicCloudSecurityGroupSecurityGroup,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5244,8 +7997,8 @@ export const createPublicCloudProjectSshKey: API.OperationMethod<
   CreatePublicCloudProjectSshKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<CreatePublicCloudProjectSshKeyRequest>,
-  output: __S(136) as any as S.Schema<PublicCloudSshKeySSHKey>,
+  input: CreatePublicCloudProjectSshKeyRequest,
+  output: PublicCloudSshKeySSHKey,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5259,8 +8012,8 @@ export const createPublicCloudProjectStorageBlockBackup: API.OperationMethod<
   CreatePublicCloudProjectStorageBlockBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<CreatePublicCloudProjectStorageBlockBackupRequest>,
-  output: __S(140) as any as S.Schema<PublicCloudBlockStorageBackup>,
+  input: CreatePublicCloudProjectStorageBlockBackupRequest,
+  output: PublicCloudBlockStorageBackup,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5274,8 +8027,8 @@ export const createPublicCloudProjectStorageBlockSnapshot: API.OperationMethod<
   CreatePublicCloudProjectStorageBlockSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141) as any as S.Schema<CreatePublicCloudProjectStorageBlockSnapshotRequest>,
-  output: __S(140) as any as S.Schema<PublicCloudBlockStorageSnapshot>,
+  input: CreatePublicCloudProjectStorageBlockSnapshotRequest,
+  output: PublicCloudBlockStorageSnapshot,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5289,8 +8042,8 @@ export const createPublicCloudProjectStorageBlockVolume: API.OperationMethod<
   CreatePublicCloudProjectStorageBlockVolumeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<CreatePublicCloudProjectStorageBlockVolumeRequest>,
-  output: __S(147) as any as S.Schema<PublicCloudBlockStorageBlock>,
+  input: CreatePublicCloudProjectStorageBlockVolumeRequest,
+  output: PublicCloudBlockStorageBlock,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5304,8 +8057,8 @@ export const createPublicCloudProjectStorageFileNetwork: API.OperationMethod<
   CreatePublicCloudProjectStorageFileNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<CreatePublicCloudProjectStorageFileNetworkRequest>,
-  output: __S(151) as any as S.Schema<PublicCloudStorageFileFileStorageNetwork>,
+  input: CreatePublicCloudProjectStorageFileNetworkRequest,
+  output: PublicCloudStorageFileFileStorageNetwork,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5323,8 +8076,8 @@ export const createPublicCloudProjectStorageFileSnapshot: API.OperationMethod<
   CreatePublicCloudProjectStorageFileSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<CreatePublicCloudProjectStorageFileSnapshotRequest>,
-  output: __S(156) as any as S.Schema<PublicCloudStorageFileFileStorageSnapshot>,
+  input: CreatePublicCloudProjectStorageFileSnapshotRequest,
+  output: PublicCloudStorageFileFileStorageSnapshot,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5338,8 +8091,8 @@ export const createPublicCloudProjectStorageObjectBucket: API.OperationMethod<
   CreatePublicCloudProjectStorageObjectBucketError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162) as any as S.Schema<CreatePublicCloudProjectStorageObjectBucketRequest>,
-  output: __S(166) as any as S.Schema<PublicCloudStorageObjectBucket>,
+  input: CreatePublicCloudProjectStorageObjectBucketRequest,
+  output: PublicCloudStorageObjectBucket,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5353,8 +8106,8 @@ export const deletePublicCloudProjectComputeAutobackup: API.OperationMethod<
   DeletePublicCloudProjectComputeAutobackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<DeletePublicCloudProjectComputeAutobackupRequest>,
-  output: __S(12) as any as S.Schema<PublicCloudInstanceAutobackup>,
+  input: DeletePublicCloudProjectComputeAutobackupRequest,
+  output: PublicCloudInstanceAutobackup,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5368,8 +8121,8 @@ export const deletePublicCloudProjectComputeBackup: API.OperationMethod<
   DeletePublicCloudProjectComputeBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<DeletePublicCloudProjectComputeBackupRequest>,
-  output: __S(16) as any as S.Schema<PublicCloudInstanceBackup>,
+  input: DeletePublicCloudProjectComputeBackupRequest,
+  output: PublicCloudInstanceBackup,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5383,8 +8136,8 @@ export const deletePublicCloudProjectComputeInstance: API.OperationMethod<
   DeletePublicCloudProjectComputeInstanceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<DeletePublicCloudProjectComputeInstanceRequest>,
-  output: __S(31) as any as S.Schema<PublicCloudInstanceInstance>,
+  input: DeletePublicCloudProjectComputeInstanceRequest,
+  output: PublicCloudInstanceInstance,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5398,8 +8151,8 @@ export const deletePublicCloudProjectComputeInstanceGroup: API.OperationMethod<
   DeletePublicCloudProjectComputeInstanceGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170) as any as S.Schema<DeletePublicCloudProjectComputeInstanceGroupRequest>,
-  output: __S(41) as any as S.Schema<PublicCloudInstanceGroupInstanceGroup>,
+  input: DeletePublicCloudProjectComputeInstanceGroupRequest,
+  output: PublicCloudInstanceGroupInstanceGroup,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5413,8 +8166,8 @@ export const deletePublicCloudProjectFloatingIp: API.OperationMethod<
   DeletePublicCloudProjectFloatingIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171) as any as S.Schema<DeletePublicCloudProjectFloatingIpRequest>,
-  output: __S(45) as any as S.Schema<PublicCloudFloatingIpFloatingIP>,
+  input: DeletePublicCloudProjectFloatingIpRequest,
+  output: PublicCloudFloatingIpFloatingIP,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5428,8 +8181,8 @@ export const deletePublicCloudProjectGateway: API.OperationMethod<
   DeletePublicCloudProjectGatewayError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172) as any as S.Schema<DeletePublicCloudProjectGatewayRequest>,
-  output: __S(50) as any as S.Schema<PublicCloudGatewayGateway>,
+  input: DeletePublicCloudProjectGatewayRequest,
+  output: PublicCloudGatewayGateway,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5443,8 +8196,8 @@ export const deletePublicCloudProjectKeyManagerContainer: API.OperationMethod<
   DeletePublicCloudProjectKeyManagerContainerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173) as any as S.Schema<DeletePublicCloudProjectKeyManagerContainerRequest>,
-  output: __S(56) as any as S.Schema<PublicCloudKeyManagerContainer>,
+  input: DeletePublicCloudProjectKeyManagerContainerRequest,
+  output: PublicCloudKeyManagerContainer,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5458,8 +8211,8 @@ export const deletePublicCloudProjectKeyManagerContainerConsumer: API.OperationM
   DeletePublicCloudProjectKeyManagerContainerConsumerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174) as any as S.Schema<DeletePublicCloudProjectKeyManagerContainerConsumerRequest>,
-  output: __S(58) as any as S.Schema<PublicCloudKeyManagerContainerConsumer>,
+  input: DeletePublicCloudProjectKeyManagerContainerConsumerRequest,
+  output: PublicCloudKeyManagerContainerConsumer,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5473,8 +8226,8 @@ export const deletePublicCloudProjectKeyManagerSecret: API.OperationMethod<
   DeletePublicCloudProjectKeyManagerSecretError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<DeletePublicCloudProjectKeyManagerSecretRequest>,
-  output: __S(63) as any as S.Schema<PublicCloudKeyManagerSecret>,
+  input: DeletePublicCloudProjectKeyManagerSecretRequest,
+  output: PublicCloudKeyManagerSecret,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5488,8 +8241,8 @@ export const deletePublicCloudProjectKeyManagerSecretConsumer: API.OperationMeth
   DeletePublicCloudProjectKeyManagerSecretConsumerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<DeletePublicCloudProjectKeyManagerSecretConsumerRequest>,
-  output: __S(58) as any as S.Schema<PublicCloudKeyManagerSecretConsumer>,
+  input: DeletePublicCloudProjectKeyManagerSecretConsumerRequest,
+  output: PublicCloudKeyManagerSecretConsumer,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5503,8 +8256,8 @@ export const deletePublicCloudProjectLoadbalancer: API.OperationMethod<
   DeletePublicCloudProjectLoadbalancerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<DeletePublicCloudProjectLoadbalancerRequest>,
-  output: __S(71) as any as S.Schema<PublicCloudLoadbalancerLoadbalancer>,
+  input: DeletePublicCloudProjectLoadbalancerRequest,
+  output: PublicCloudLoadbalancerLoadbalancer,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5518,8 +8271,8 @@ export const deletePublicCloudProjectLoadbalancerListener: API.OperationMethod<
   DeletePublicCloudProjectLoadbalancerListenerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178) as any as S.Schema<DeletePublicCloudProjectLoadbalancerListenerRequest>,
-  output: __S(78) as any as S.Schema<PublicCloudLoadbalancerListener>,
+  input: DeletePublicCloudProjectLoadbalancerListenerRequest,
+  output: PublicCloudLoadbalancerListener,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5536,8 +8289,8 @@ export const deletePublicCloudProjectLoadbalancerListenerL7policy: API.Operation
   DeletePublicCloudProjectLoadbalancerListenerL7policyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<DeletePublicCloudProjectLoadbalancerListenerL7policyRequest>,
-  output: __S(86) as any as S.Schema<PublicCloudLoadbalancerL7Policy>,
+  input: DeletePublicCloudProjectLoadbalancerListenerL7policyRequest,
+  output: PublicCloudLoadbalancerL7Policy,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5551,8 +8304,8 @@ export const deletePublicCloudProjectLoadbalancerPool: API.OperationMethod<
   DeletePublicCloudProjectLoadbalancerPoolError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180) as any as S.Schema<DeletePublicCloudProjectLoadbalancerPoolRequest>,
-  output: __S(93) as any as S.Schema<PublicCloudLoadbalancerPool>,
+  input: DeletePublicCloudProjectLoadbalancerPoolRequest,
+  output: PublicCloudLoadbalancerPool,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5566,8 +8319,8 @@ export const deletePublicCloudProjectLoadbalancerPoolMember: API.OperationMethod
   DeletePublicCloudProjectLoadbalancerPoolMemberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<DeletePublicCloudProjectLoadbalancerPoolMemberRequest>,
-  output: __S(98) as any as S.Schema<PublicCloudLoadbalancerMember>,
+  input: DeletePublicCloudProjectLoadbalancerPoolMemberRequest,
+  output: PublicCloudLoadbalancerMember,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5581,8 +8334,8 @@ export const deletePublicCloudProjectNetwork: API.OperationMethod<
   DeletePublicCloudProjectNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<DeletePublicCloudProjectNetworkRequest>,
-  output: __S(102) as any as S.Schema<PublicCloudNetworkNetwork>,
+  input: DeletePublicCloudProjectNetworkRequest,
+  output: PublicCloudNetworkNetwork,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5596,8 +8349,8 @@ export const deletePublicCloudProjectNetworkSubnet: API.OperationMethod<
   DeletePublicCloudProjectNetworkSubnetError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183) as any as S.Schema<DeletePublicCloudProjectNetworkSubnetRequest>,
-  output: __S(110) as any as S.Schema<PublicCloudNetworkSubnet>,
+  input: DeletePublicCloudProjectNetworkSubnetRequest,
+  output: PublicCloudNetworkSubnet,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5611,8 +8364,8 @@ export const deletePublicCloudProjectPublicIpExtNet: API.OperationMethod<
   DeletePublicCloudProjectPublicIpExtNetError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184) as any as S.Schema<DeletePublicCloudProjectPublicIpExtNetRequest>,
-  output: __S(186) as any as S.Schema<PublicCloudPublicIpExtNetIP>,
+  input: DeletePublicCloudProjectPublicIpExtNetRequest,
+  output: PublicCloudPublicIpExtNetIP,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5626,8 +8379,8 @@ export const deletePublicCloudProjectPublicIpFloating: API.OperationMethod<
   DeletePublicCloudProjectPublicIpFloatingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<DeletePublicCloudProjectPublicIpFloatingRequest>,
-  output: __S(114) as any as S.Schema<PublicCloudPublicIpFloatingIP>,
+  input: DeletePublicCloudProjectPublicIpFloatingRequest,
+  output: PublicCloudPublicIpFloatingIP,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5641,8 +8394,8 @@ export const deletePublicCloudProjectRancher: API.OperationMethod<
   DeletePublicCloudProjectRancherError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188) as any as S.Schema<DeletePublicCloudProjectRancherRequest>,
-  output: __S(123) as any as S.Schema<PublicCloudRancherRancher>,
+  input: DeletePublicCloudProjectRancherRequest,
+  output: PublicCloudRancherRancher,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5656,8 +8409,8 @@ export const deletePublicCloudProjectSecurityGroup: API.OperationMethod<
   DeletePublicCloudProjectSecurityGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189) as any as S.Schema<DeletePublicCloudProjectSecurityGroupRequest>,
-  output: __S(134) as any as S.Schema<PublicCloudSecurityGroupSecurityGroup>,
+  input: DeletePublicCloudProjectSecurityGroupRequest,
+  output: PublicCloudSecurityGroupSecurityGroup,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5671,8 +8424,8 @@ export const deletePublicCloudProjectSshKey: API.OperationMethod<
   DeletePublicCloudProjectSshKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190) as any as S.Schema<DeletePublicCloudProjectSshKeyRequest>,
-  output: __S(136) as any as S.Schema<PublicCloudSshKeySSHKey>,
+  input: DeletePublicCloudProjectSshKeyRequest,
+  output: PublicCloudSshKeySSHKey,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5686,8 +8439,8 @@ export const deletePublicCloudProjectStorageBlockBackup: API.OperationMethod<
   DeletePublicCloudProjectStorageBlockBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191) as any as S.Schema<DeletePublicCloudProjectStorageBlockBackupRequest>,
-  output: __S(140) as any as S.Schema<PublicCloudBlockStorageBackup>,
+  input: DeletePublicCloudProjectStorageBlockBackupRequest,
+  output: PublicCloudBlockStorageBackup,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5701,8 +8454,8 @@ export const deletePublicCloudProjectStorageBlockSnapshot: API.OperationMethod<
   DeletePublicCloudProjectStorageBlockSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192) as any as S.Schema<DeletePublicCloudProjectStorageBlockSnapshotRequest>,
-  output: __S(140) as any as S.Schema<PublicCloudBlockStorageSnapshot>,
+  input: DeletePublicCloudProjectStorageBlockSnapshotRequest,
+  output: PublicCloudBlockStorageSnapshot,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5716,8 +8469,8 @@ export const deletePublicCloudProjectStorageBlockVolume: API.OperationMethod<
   DeletePublicCloudProjectStorageBlockVolumeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<DeletePublicCloudProjectStorageBlockVolumeRequest>,
-  output: __S(147) as any as S.Schema<PublicCloudBlockStorageBlock>,
+  input: DeletePublicCloudProjectStorageBlockVolumeRequest,
+  output: PublicCloudBlockStorageBlock,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5731,8 +8484,8 @@ export const deletePublicCloudProjectStorageFileNetwork: API.OperationMethod<
   DeletePublicCloudProjectStorageFileNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194) as any as S.Schema<DeletePublicCloudProjectStorageFileNetworkRequest>,
-  output: __S(151) as any as S.Schema<PublicCloudStorageFileFileStorageNetwork>,
+  input: DeletePublicCloudProjectStorageFileNetworkRequest,
+  output: PublicCloudStorageFileFileStorageNetwork,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5746,8 +8499,8 @@ export const deletePublicCloudProjectStorageFileShare: API.OperationMethod<
   DeletePublicCloudProjectStorageFileShareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195) as any as S.Schema<DeletePublicCloudProjectStorageFileShareRequest>,
-  output: __S(204) as any as S.Schema<PublicCloudStorageFileFileStorage>,
+  input: DeletePublicCloudProjectStorageFileShareRequest,
+  output: PublicCloudStorageFileFileStorage,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5761,8 +8514,8 @@ export const deletePublicCloudProjectStorageFileSnapshot: API.OperationMethod<
   DeletePublicCloudProjectStorageFileSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205) as any as S.Schema<DeletePublicCloudProjectStorageFileSnapshotRequest>,
-  output: __S(156) as any as S.Schema<PublicCloudStorageFileFileStorageSnapshot>,
+  input: DeletePublicCloudProjectStorageFileSnapshotRequest,
+  output: PublicCloudStorageFileFileStorageSnapshot,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5776,8 +8529,8 @@ export const deletePublicCloudProjectStorageObjectBucket: API.OperationMethod<
   DeletePublicCloudProjectStorageObjectBucketError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206) as any as S.Schema<DeletePublicCloudProjectStorageObjectBucketRequest>,
-  output: __S(166) as any as S.Schema<PublicCloudStorageObjectBucket>,
+  input: DeletePublicCloudProjectStorageObjectBucketRequest,
+  output: PublicCloudStorageObjectBucket,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5791,8 +8544,8 @@ export const getPublicCloudProject: API.OperationMethod<
   GetPublicCloudProjectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207) as any as S.Schema<GetPublicCloudProjectRequest>,
-  output: __S(211) as any as S.Schema<PublicCloudProjectProjectAsyncWithIAM>,
+  input: GetPublicCloudProjectRequest,
+  output: PublicCloudProjectProjectAsyncWithIAM,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5806,8 +8559,8 @@ export const getPublicCloudProjectComputeAutobackup: API.OperationMethod<
   GetPublicCloudProjectComputeAutobackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212) as any as S.Schema<GetPublicCloudProjectComputeAutobackupRequest>,
-  output: __S(12) as any as S.Schema<PublicCloudInstanceAutobackup>,
+  input: GetPublicCloudProjectComputeAutobackupRequest,
+  output: PublicCloudInstanceAutobackup,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5821,8 +8574,8 @@ export const getPublicCloudProjectComputeBackup: API.OperationMethod<
   GetPublicCloudProjectComputeBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213) as any as S.Schema<GetPublicCloudProjectComputeBackupRequest>,
-  output: __S(16) as any as S.Schema<PublicCloudInstanceBackup>,
+  input: GetPublicCloudProjectComputeBackupRequest,
+  output: PublicCloudInstanceBackup,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5836,8 +8589,8 @@ export const getPublicCloudProjectComputeInstance: API.OperationMethod<
   GetPublicCloudProjectComputeInstanceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214) as any as S.Schema<GetPublicCloudProjectComputeInstanceRequest>,
-  output: __S(31) as any as S.Schema<PublicCloudInstanceInstance>,
+  input: GetPublicCloudProjectComputeInstanceRequest,
+  output: PublicCloudInstanceInstance,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5851,8 +8604,8 @@ export const getPublicCloudProjectComputeInstanceConsoleOutput: API.OperationMet
   GetPublicCloudProjectComputeInstanceConsoleOutputError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215) as any as S.Schema<GetPublicCloudProjectComputeInstanceConsoleOutputRequest>,
-  output: __S(216) as any as S.Schema<PublicCloudInstanceConsoleOutput>,
+  input: GetPublicCloudProjectComputeInstanceConsoleOutputRequest,
+  output: PublicCloudInstanceConsoleOutput,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5866,8 +8619,8 @@ export const getPublicCloudProjectComputeInstanceGroup: API.OperationMethod<
   GetPublicCloudProjectComputeInstanceGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217) as any as S.Schema<GetPublicCloudProjectComputeInstanceGroupRequest>,
-  output: __S(41) as any as S.Schema<PublicCloudInstanceGroupInstanceGroup>,
+  input: GetPublicCloudProjectComputeInstanceGroupRequest,
+  output: PublicCloudInstanceGroupInstanceGroup,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5881,8 +8634,8 @@ export const getPublicCloudProjectFloatingIp: API.OperationMethod<
   GetPublicCloudProjectFloatingIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218) as any as S.Schema<GetPublicCloudProjectFloatingIpRequest>,
-  output: __S(45) as any as S.Schema<PublicCloudFloatingIpFloatingIP>,
+  input: GetPublicCloudProjectFloatingIpRequest,
+  output: PublicCloudFloatingIpFloatingIP,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5896,8 +8649,8 @@ export const getPublicCloudProjectGateway: API.OperationMethod<
   GetPublicCloudProjectGatewayError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219) as any as S.Schema<GetPublicCloudProjectGatewayRequest>,
-  output: __S(50) as any as S.Schema<PublicCloudGatewayGateway>,
+  input: GetPublicCloudProjectGatewayRequest,
+  output: PublicCloudGatewayGateway,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5911,8 +8664,8 @@ export const getPublicCloudProjectKeyManagerContainer: API.OperationMethod<
   GetPublicCloudProjectKeyManagerContainerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220) as any as S.Schema<GetPublicCloudProjectKeyManagerContainerRequest>,
-  output: __S(56) as any as S.Schema<PublicCloudKeyManagerContainer>,
+  input: GetPublicCloudProjectKeyManagerContainerRequest,
+  output: PublicCloudKeyManagerContainer,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5926,8 +8679,8 @@ export const getPublicCloudProjectKeyManagerContainerConsumer: API.OperationMeth
   GetPublicCloudProjectKeyManagerContainerConsumerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221) as any as S.Schema<GetPublicCloudProjectKeyManagerContainerConsumerRequest>,
-  output: __S(58) as any as S.Schema<PublicCloudKeyManagerContainerConsumer>,
+  input: GetPublicCloudProjectKeyManagerContainerConsumerRequest,
+  output: PublicCloudKeyManagerContainerConsumer,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5941,8 +8694,8 @@ export const getPublicCloudProjectKeyManagerSecret: API.OperationMethod<
   GetPublicCloudProjectKeyManagerSecretError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222) as any as S.Schema<GetPublicCloudProjectKeyManagerSecretRequest>,
-  output: __S(63) as any as S.Schema<PublicCloudKeyManagerSecret>,
+  input: GetPublicCloudProjectKeyManagerSecretRequest,
+  output: PublicCloudKeyManagerSecret,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5956,8 +8709,8 @@ export const getPublicCloudProjectKeyManagerSecretConsumer: API.OperationMethod<
   GetPublicCloudProjectKeyManagerSecretConsumerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223) as any as S.Schema<GetPublicCloudProjectKeyManagerSecretConsumerRequest>,
-  output: __S(58) as any as S.Schema<PublicCloudKeyManagerSecretConsumer>,
+  input: GetPublicCloudProjectKeyManagerSecretConsumerRequest,
+  output: PublicCloudKeyManagerSecretConsumer,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5971,8 +8724,8 @@ export const getPublicCloudProjectLoadbalancer: API.OperationMethod<
   GetPublicCloudProjectLoadbalancerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224) as any as S.Schema<GetPublicCloudProjectLoadbalancerRequest>,
-  output: __S(71) as any as S.Schema<PublicCloudLoadbalancerLoadbalancer>,
+  input: GetPublicCloudProjectLoadbalancerRequest,
+  output: PublicCloudLoadbalancerLoadbalancer,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5986,8 +8739,8 @@ export const getPublicCloudProjectLoadbalancerListener: API.OperationMethod<
   GetPublicCloudProjectLoadbalancerListenerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225) as any as S.Schema<GetPublicCloudProjectLoadbalancerListenerRequest>,
-  output: __S(78) as any as S.Schema<PublicCloudLoadbalancerListener>,
+  input: GetPublicCloudProjectLoadbalancerListenerRequest,
+  output: PublicCloudLoadbalancerListener,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6001,8 +8754,8 @@ export const getPublicCloudProjectLoadbalancerListenerL7policy: API.OperationMet
   GetPublicCloudProjectLoadbalancerListenerL7policyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226) as any as S.Schema<GetPublicCloudProjectLoadbalancerListenerL7policyRequest>,
-  output: __S(86) as any as S.Schema<PublicCloudLoadbalancerL7Policy>,
+  input: GetPublicCloudProjectLoadbalancerListenerL7policyRequest,
+  output: PublicCloudLoadbalancerL7Policy,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6016,8 +8769,8 @@ export const getPublicCloudProjectLoadbalancerPool: API.OperationMethod<
   GetPublicCloudProjectLoadbalancerPoolError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227) as any as S.Schema<GetPublicCloudProjectLoadbalancerPoolRequest>,
-  output: __S(93) as any as S.Schema<PublicCloudLoadbalancerPool>,
+  input: GetPublicCloudProjectLoadbalancerPoolRequest,
+  output: PublicCloudLoadbalancerPool,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6031,8 +8784,8 @@ export const getPublicCloudProjectLoadbalancerPoolMember: API.OperationMethod<
   GetPublicCloudProjectLoadbalancerPoolMemberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228) as any as S.Schema<GetPublicCloudProjectLoadbalancerPoolMemberRequest>,
-  output: __S(98) as any as S.Schema<PublicCloudLoadbalancerMember>,
+  input: GetPublicCloudProjectLoadbalancerPoolMemberRequest,
+  output: PublicCloudLoadbalancerMember,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6046,8 +8799,8 @@ export const getPublicCloudProjectNetwork: API.OperationMethod<
   GetPublicCloudProjectNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229) as any as S.Schema<GetPublicCloudProjectNetworkRequest>,
-  output: __S(102) as any as S.Schema<PublicCloudNetworkNetwork>,
+  input: GetPublicCloudProjectNetworkRequest,
+  output: PublicCloudNetworkNetwork,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6061,8 +8814,8 @@ export const getPublicCloudProjectNetworkSubnet: API.OperationMethod<
   GetPublicCloudProjectNetworkSubnetError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230) as any as S.Schema<GetPublicCloudProjectNetworkSubnetRequest>,
-  output: __S(110) as any as S.Schema<PublicCloudNetworkSubnet>,
+  input: GetPublicCloudProjectNetworkSubnetRequest,
+  output: PublicCloudNetworkSubnet,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6076,8 +8829,8 @@ export const getPublicCloudProjectPublicIpAdditional: API.OperationMethod<
   GetPublicCloudProjectPublicIpAdditionalError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231) as any as S.Schema<GetPublicCloudProjectPublicIpAdditionalRequest>,
-  output: __S(233) as any as S.Schema<PublicCloudPublicIpAdditionalIP>,
+  input: GetPublicCloudProjectPublicIpAdditionalRequest,
+  output: PublicCloudPublicIpAdditionalIP,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6091,8 +8844,8 @@ export const getPublicCloudProjectPublicIpExtNet: API.OperationMethod<
   GetPublicCloudProjectPublicIpExtNetError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234) as any as S.Schema<GetPublicCloudProjectPublicIpExtNetRequest>,
-  output: __S(186) as any as S.Schema<PublicCloudPublicIpExtNetIP>,
+  input: GetPublicCloudProjectPublicIpExtNetRequest,
+  output: PublicCloudPublicIpExtNetIP,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6106,8 +8859,8 @@ export const getPublicCloudProjectPublicIpFloating: API.OperationMethod<
   GetPublicCloudProjectPublicIpFloatingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235) as any as S.Schema<GetPublicCloudProjectPublicIpFloatingRequest>,
-  output: __S(114) as any as S.Schema<PublicCloudPublicIpFloatingIP>,
+  input: GetPublicCloudProjectPublicIpFloatingRequest,
+  output: PublicCloudPublicIpFloatingIP,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6121,8 +8874,8 @@ export const getPublicCloudProjectQuota: API.OperationMethod<
   GetPublicCloudProjectQuotaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236) as any as S.Schema<GetPublicCloudProjectQuotaRequest>,
-  output: __S(262) as any as S.Schema<PublicCloudQuotaQuota>,
+  input: GetPublicCloudProjectQuotaRequest,
+  output: PublicCloudQuotaQuota,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6136,8 +8889,8 @@ export const getPublicCloudProjectRancher: API.OperationMethod<
   GetPublicCloudProjectRancherError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263) as any as S.Schema<GetPublicCloudProjectRancherRequest>,
-  output: __S(123) as any as S.Schema<PublicCloudRancherRancher>,
+  input: GetPublicCloudProjectRancherRequest,
+  output: PublicCloudRancherRancher,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6151,8 +8904,8 @@ export const getPublicCloudProjectRancherTask: API.OperationMethod<
   GetPublicCloudProjectRancherTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264) as any as S.Schema<GetPublicCloudProjectRancherTaskRequest>,
-  output: __S(267) as any as S.Schema<CommonTask>,
+  input: GetPublicCloudProjectRancherTaskRequest,
+  output: CommonTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6166,8 +8919,8 @@ export const getPublicCloudProjectReferenceInstanceFlavor: API.OperationMethod<
   GetPublicCloudProjectReferenceInstanceFlavorError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268) as any as S.Schema<GetPublicCloudProjectReferenceInstanceFlavorRequest>,
-  output: __S(269) as any as S.Schema<PublicCloudReferenceInstanceFlavor>,
+  input: GetPublicCloudProjectReferenceInstanceFlavorRequest,
+  output: PublicCloudReferenceInstanceFlavor,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6181,8 +8934,8 @@ export const getPublicCloudProjectReferenceInstanceImage: API.OperationMethod<
   GetPublicCloudProjectReferenceInstanceImageError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270) as any as S.Schema<GetPublicCloudProjectReferenceInstanceImageRequest>,
-  output: __S(271) as any as S.Schema<PublicCloudReferenceInstanceImage>,
+  input: GetPublicCloudProjectReferenceInstanceImageRequest,
+  output: PublicCloudReferenceInstanceImage,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6196,8 +8949,8 @@ export const getPublicCloudProjectReferenceRancherEligibility: API.OperationMeth
   GetPublicCloudProjectReferenceRancherEligibilityError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272) as any as S.Schema<GetPublicCloudProjectReferenceRancherEligibilityRequest>,
-  output: __S(273) as any as S.Schema<PublicCloudRancherEligibilityReference>,
+  input: GetPublicCloudProjectReferenceRancherEligibilityRequest,
+  output: PublicCloudRancherEligibilityReference,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6211,8 +8964,8 @@ export const getPublicCloudProjectReferenceRegion: API.OperationMethod<
   GetPublicCloudProjectReferenceRegionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274) as any as S.Schema<GetPublicCloudProjectReferenceRegionRequest>,
-  output: __S(275) as any as S.Schema<PublicCloudReferenceRegion>,
+  input: GetPublicCloudProjectReferenceRegionRequest,
+  output: PublicCloudReferenceRegion,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6226,8 +8979,8 @@ export const getPublicCloudProjectSecurityGroup: API.OperationMethod<
   GetPublicCloudProjectSecurityGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276) as any as S.Schema<GetPublicCloudProjectSecurityGroupRequest>,
-  output: __S(134) as any as S.Schema<PublicCloudSecurityGroupSecurityGroup>,
+  input: GetPublicCloudProjectSecurityGroupRequest,
+  output: PublicCloudSecurityGroupSecurityGroup,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6241,8 +8994,8 @@ export const getPublicCloudProjectSshKey: API.OperationMethod<
   GetPublicCloudProjectSshKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277) as any as S.Schema<GetPublicCloudProjectSshKeyRequest>,
-  output: __S(136) as any as S.Schema<PublicCloudSshKeySSHKey>,
+  input: GetPublicCloudProjectSshKeyRequest,
+  output: PublicCloudSshKeySSHKey,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6256,8 +9009,8 @@ export const getPublicCloudProjectStorageBlockBackup: API.OperationMethod<
   GetPublicCloudProjectStorageBlockBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278) as any as S.Schema<GetPublicCloudProjectStorageBlockBackupRequest>,
-  output: __S(140) as any as S.Schema<PublicCloudBlockStorageBackup>,
+  input: GetPublicCloudProjectStorageBlockBackupRequest,
+  output: PublicCloudBlockStorageBackup,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6271,8 +9024,8 @@ export const getPublicCloudProjectStorageBlockSnapshot: API.OperationMethod<
   GetPublicCloudProjectStorageBlockSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279) as any as S.Schema<GetPublicCloudProjectStorageBlockSnapshotRequest>,
-  output: __S(140) as any as S.Schema<PublicCloudBlockStorageSnapshot>,
+  input: GetPublicCloudProjectStorageBlockSnapshotRequest,
+  output: PublicCloudBlockStorageSnapshot,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6286,8 +9039,8 @@ export const getPublicCloudProjectStorageBlockVolume: API.OperationMethod<
   GetPublicCloudProjectStorageBlockVolumeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280) as any as S.Schema<GetPublicCloudProjectStorageBlockVolumeRequest>,
-  output: __S(147) as any as S.Schema<PublicCloudBlockStorageBlock>,
+  input: GetPublicCloudProjectStorageBlockVolumeRequest,
+  output: PublicCloudBlockStorageBlock,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6301,8 +9054,8 @@ export const getPublicCloudProjectStorageFileNetwork: API.OperationMethod<
   GetPublicCloudProjectStorageFileNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281) as any as S.Schema<GetPublicCloudProjectStorageFileNetworkRequest>,
-  output: __S(151) as any as S.Schema<PublicCloudStorageFileFileStorageNetwork>,
+  input: GetPublicCloudProjectStorageFileNetworkRequest,
+  output: PublicCloudStorageFileFileStorageNetwork,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6316,8 +9069,8 @@ export const getPublicCloudProjectStorageFileShare: API.OperationMethod<
   GetPublicCloudProjectStorageFileShareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282) as any as S.Schema<GetPublicCloudProjectStorageFileShareRequest>,
-  output: __S(204) as any as S.Schema<PublicCloudStorageFileFileStorage>,
+  input: GetPublicCloudProjectStorageFileShareRequest,
+  output: PublicCloudStorageFileFileStorage,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6331,8 +9084,8 @@ export const getPublicCloudProjectStorageFileSnapshot: API.OperationMethod<
   GetPublicCloudProjectStorageFileSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283) as any as S.Schema<GetPublicCloudProjectStorageFileSnapshotRequest>,
-  output: __S(156) as any as S.Schema<PublicCloudStorageFileFileStorageSnapshot>,
+  input: GetPublicCloudProjectStorageFileSnapshotRequest,
+  output: PublicCloudStorageFileFileStorageSnapshot,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6346,8 +9099,8 @@ export const getPublicCloudProjectStorageObjectBucket: API.OperationMethod<
   GetPublicCloudProjectStorageObjectBucketError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284) as any as S.Schema<GetPublicCloudProjectStorageObjectBucketRequest>,
-  output: __S(166) as any as S.Schema<PublicCloudStorageObjectBucket>,
+  input: GetPublicCloudProjectStorageObjectBucketRequest,
+  output: PublicCloudStorageObjectBucket,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6361,8 +9114,8 @@ export const listPublicCloudProject: API.OperationMethod<
   ListPublicCloudProjectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288) as any as S.Schema<ListPublicCloudProjectRequest>,
-  output: __S(290) as any as S.Schema<ListPublicCloudProjectResponse>,
+  input: ListPublicCloudProjectRequest,
+  output: ListPublicCloudProjectResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6376,8 +9129,8 @@ export const listPublicCloudProjectComputeAutobackup: API.OperationMethod<
   ListPublicCloudProjectComputeAutobackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291) as any as S.Schema<ListPublicCloudProjectComputeAutobackupRequest>,
-  output: __S(293) as any as S.Schema<ListPublicCloudProjectComputeAutobackupResponse>,
+  input: ListPublicCloudProjectComputeAutobackupRequest,
+  output: ListPublicCloudProjectComputeAutobackupResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6391,8 +9144,8 @@ export const listPublicCloudProjectComputeBackup: API.OperationMethod<
   ListPublicCloudProjectComputeBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294) as any as S.Schema<ListPublicCloudProjectComputeBackupRequest>,
-  output: __S(296) as any as S.Schema<ListPublicCloudProjectComputeBackupResponse>,
+  input: ListPublicCloudProjectComputeBackupRequest,
+  output: ListPublicCloudProjectComputeBackupResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6406,8 +9159,8 @@ export const listPublicCloudProjectComputeInstance: API.OperationMethod<
   ListPublicCloudProjectComputeInstanceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297) as any as S.Schema<ListPublicCloudProjectComputeInstanceRequest>,
-  output: __S(299) as any as S.Schema<ListPublicCloudProjectComputeInstanceResponse>,
+  input: ListPublicCloudProjectComputeInstanceRequest,
+  output: ListPublicCloudProjectComputeInstanceResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6421,8 +9174,8 @@ export const listPublicCloudProjectComputeInstanceEvents: API.OperationMethod<
   ListPublicCloudProjectComputeInstanceEventsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300) as any as S.Schema<ListPublicCloudProjectComputeInstanceEventsRequest>,
-  output: __S(303) as any as S.Schema<ListPublicCloudProjectComputeInstanceEventsResponse>,
+  input: ListPublicCloudProjectComputeInstanceEventsRequest,
+  output: ListPublicCloudProjectComputeInstanceEventsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6436,8 +9189,8 @@ export const listPublicCloudProjectComputeInstanceGroup: API.OperationMethod<
   ListPublicCloudProjectComputeInstanceGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304) as any as S.Schema<ListPublicCloudProjectComputeInstanceGroupRequest>,
-  output: __S(306) as any as S.Schema<ListPublicCloudProjectComputeInstanceGroupResponse>,
+  input: ListPublicCloudProjectComputeInstanceGroupRequest,
+  output: ListPublicCloudProjectComputeInstanceGroupResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6451,8 +9204,8 @@ export const listPublicCloudProjectFloatingIp: API.OperationMethod<
   ListPublicCloudProjectFloatingIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307) as any as S.Schema<ListPublicCloudProjectFloatingIpRequest>,
-  output: __S(309) as any as S.Schema<ListPublicCloudProjectFloatingIpResponse>,
+  input: ListPublicCloudProjectFloatingIpRequest,
+  output: ListPublicCloudProjectFloatingIpResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6466,8 +9219,8 @@ export const listPublicCloudProjectGateway: API.OperationMethod<
   ListPublicCloudProjectGatewayError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310) as any as S.Schema<ListPublicCloudProjectGatewayRequest>,
-  output: __S(312) as any as S.Schema<ListPublicCloudProjectGatewayResponse>,
+  input: ListPublicCloudProjectGatewayRequest,
+  output: ListPublicCloudProjectGatewayResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6481,8 +9234,8 @@ export const listPublicCloudProjectKeyManagerContainer: API.OperationMethod<
   ListPublicCloudProjectKeyManagerContainerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313) as any as S.Schema<ListPublicCloudProjectKeyManagerContainerRequest>,
-  output: __S(315) as any as S.Schema<ListPublicCloudProjectKeyManagerContainerResponse>,
+  input: ListPublicCloudProjectKeyManagerContainerRequest,
+  output: ListPublicCloudProjectKeyManagerContainerResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6496,8 +9249,8 @@ export const listPublicCloudProjectKeyManagerContainerConsumer: API.OperationMet
   ListPublicCloudProjectKeyManagerContainerConsumerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316) as any as S.Schema<ListPublicCloudProjectKeyManagerContainerConsumerRequest>,
-  output: __S(318) as any as S.Schema<ListPublicCloudProjectKeyManagerContainerConsumerResponse>,
+  input: ListPublicCloudProjectKeyManagerContainerConsumerRequest,
+  output: ListPublicCloudProjectKeyManagerContainerConsumerResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6511,8 +9264,8 @@ export const listPublicCloudProjectKeyManagerSecret: API.OperationMethod<
   ListPublicCloudProjectKeyManagerSecretError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319) as any as S.Schema<ListPublicCloudProjectKeyManagerSecretRequest>,
-  output: __S(321) as any as S.Schema<ListPublicCloudProjectKeyManagerSecretResponse>,
+  input: ListPublicCloudProjectKeyManagerSecretRequest,
+  output: ListPublicCloudProjectKeyManagerSecretResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6526,8 +9279,8 @@ export const listPublicCloudProjectKeyManagerSecretConsumer: API.OperationMethod
   ListPublicCloudProjectKeyManagerSecretConsumerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322) as any as S.Schema<ListPublicCloudProjectKeyManagerSecretConsumerRequest>,
-  output: __S(324) as any as S.Schema<ListPublicCloudProjectKeyManagerSecretConsumerResponse>,
+  input: ListPublicCloudProjectKeyManagerSecretConsumerRequest,
+  output: ListPublicCloudProjectKeyManagerSecretConsumerResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6541,8 +9294,8 @@ export const listPublicCloudProjectLoadbalancer: API.OperationMethod<
   ListPublicCloudProjectLoadbalancerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325) as any as S.Schema<ListPublicCloudProjectLoadbalancerRequest>,
-  output: __S(327) as any as S.Schema<ListPublicCloudProjectLoadbalancerResponse>,
+  input: ListPublicCloudProjectLoadbalancerRequest,
+  output: ListPublicCloudProjectLoadbalancerResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6556,8 +9309,8 @@ export const listPublicCloudProjectLoadbalancerListener: API.OperationMethod<
   ListPublicCloudProjectLoadbalancerListenerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328) as any as S.Schema<ListPublicCloudProjectLoadbalancerListenerRequest>,
-  output: __S(330) as any as S.Schema<ListPublicCloudProjectLoadbalancerListenerResponse>,
+  input: ListPublicCloudProjectLoadbalancerListenerRequest,
+  output: ListPublicCloudProjectLoadbalancerListenerResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6571,8 +9324,8 @@ export const listPublicCloudProjectLoadbalancerListenerL7policy: API.OperationMe
   ListPublicCloudProjectLoadbalancerListenerL7policyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331) as any as S.Schema<ListPublicCloudProjectLoadbalancerListenerL7policyRequest>,
-  output: __S(333) as any as S.Schema<ListPublicCloudProjectLoadbalancerListenerL7policyResponse>,
+  input: ListPublicCloudProjectLoadbalancerListenerL7policyRequest,
+  output: ListPublicCloudProjectLoadbalancerListenerL7policyResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6586,8 +9339,8 @@ export const listPublicCloudProjectLoadbalancerPool: API.OperationMethod<
   ListPublicCloudProjectLoadbalancerPoolError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334) as any as S.Schema<ListPublicCloudProjectLoadbalancerPoolRequest>,
-  output: __S(336) as any as S.Schema<ListPublicCloudProjectLoadbalancerPoolResponse>,
+  input: ListPublicCloudProjectLoadbalancerPoolRequest,
+  output: ListPublicCloudProjectLoadbalancerPoolResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6601,8 +9354,8 @@ export const listPublicCloudProjectLoadbalancerPoolMember: API.OperationMethod<
   ListPublicCloudProjectLoadbalancerPoolMemberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337) as any as S.Schema<ListPublicCloudProjectLoadbalancerPoolMemberRequest>,
-  output: __S(339) as any as S.Schema<ListPublicCloudProjectLoadbalancerPoolMemberResponse>,
+  input: ListPublicCloudProjectLoadbalancerPoolMemberRequest,
+  output: ListPublicCloudProjectLoadbalancerPoolMemberResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6616,8 +9369,8 @@ export const listPublicCloudProjectNetwork: API.OperationMethod<
   ListPublicCloudProjectNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(340) as any as S.Schema<ListPublicCloudProjectNetworkRequest>,
-  output: __S(342) as any as S.Schema<ListPublicCloudProjectNetworkResponse>,
+  input: ListPublicCloudProjectNetworkRequest,
+  output: ListPublicCloudProjectNetworkResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6631,8 +9384,8 @@ export const listPublicCloudProjectNetworkSubnet: API.OperationMethod<
   ListPublicCloudProjectNetworkSubnetError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343) as any as S.Schema<ListPublicCloudProjectNetworkSubnetRequest>,
-  output: __S(345) as any as S.Schema<ListPublicCloudProjectNetworkSubnetResponse>,
+  input: ListPublicCloudProjectNetworkSubnetRequest,
+  output: ListPublicCloudProjectNetworkSubnetResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6646,8 +9399,8 @@ export const listPublicCloudProjectPublicIp: API.OperationMethod<
   ListPublicCloudProjectPublicIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346) as any as S.Schema<ListPublicCloudProjectPublicIpRequest>,
-  output: __S(349) as any as S.Schema<ListPublicCloudProjectPublicIpResponse>,
+  input: ListPublicCloudProjectPublicIpRequest,
+  output: ListPublicCloudProjectPublicIpResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6661,8 +9414,8 @@ export const listPublicCloudProjectPublicIpAdditional: API.OperationMethod<
   ListPublicCloudProjectPublicIpAdditionalError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350) as any as S.Schema<ListPublicCloudProjectPublicIpAdditionalRequest>,
-  output: __S(352) as any as S.Schema<ListPublicCloudProjectPublicIpAdditionalResponse>,
+  input: ListPublicCloudProjectPublicIpAdditionalRequest,
+  output: ListPublicCloudProjectPublicIpAdditionalResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6676,8 +9429,8 @@ export const listPublicCloudProjectPublicIpExtNet: API.OperationMethod<
   ListPublicCloudProjectPublicIpExtNetError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353) as any as S.Schema<ListPublicCloudProjectPublicIpExtNetRequest>,
-  output: __S(355) as any as S.Schema<ListPublicCloudProjectPublicIpExtNetResponse>,
+  input: ListPublicCloudProjectPublicIpExtNetRequest,
+  output: ListPublicCloudProjectPublicIpExtNetResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6691,8 +9444,8 @@ export const listPublicCloudProjectPublicIpFloating: API.OperationMethod<
   ListPublicCloudProjectPublicIpFloatingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(356) as any as S.Schema<ListPublicCloudProjectPublicIpFloatingRequest>,
-  output: __S(358) as any as S.Schema<ListPublicCloudProjectPublicIpFloatingResponse>,
+  input: ListPublicCloudProjectPublicIpFloatingRequest,
+  output: ListPublicCloudProjectPublicIpFloatingResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6706,8 +9459,8 @@ export const listPublicCloudProjectRancher: API.OperationMethod<
   ListPublicCloudProjectRancherError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359) as any as S.Schema<ListPublicCloudProjectRancherRequest>,
-  output: __S(361) as any as S.Schema<ListPublicCloudProjectRancherResponse>,
+  input: ListPublicCloudProjectRancherRequest,
+  output: ListPublicCloudProjectRancherResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6721,8 +9474,8 @@ export const listPublicCloudProjectRancherCapabilityPlan: API.OperationMethod<
   ListPublicCloudProjectRancherCapabilityPlanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362) as any as S.Schema<ListPublicCloudProjectRancherCapabilityPlanRequest>,
-  output: __S(365) as any as S.Schema<ListPublicCloudProjectRancherCapabilityPlanResponse>,
+  input: ListPublicCloudProjectRancherCapabilityPlanRequest,
+  output: ListPublicCloudProjectRancherCapabilityPlanResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6736,8 +9489,8 @@ export const listPublicCloudProjectRancherCapabilityVersion: API.OperationMethod
   ListPublicCloudProjectRancherCapabilityVersionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(366) as any as S.Schema<ListPublicCloudProjectRancherCapabilityVersionRequest>,
-  output: __S(369) as any as S.Schema<ListPublicCloudProjectRancherCapabilityVersionResponse>,
+  input: ListPublicCloudProjectRancherCapabilityVersionRequest,
+  output: ListPublicCloudProjectRancherCapabilityVersionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6751,8 +9504,8 @@ export const listPublicCloudProjectRancherEvent: API.OperationMethod<
   ListPublicCloudProjectRancherEventError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(370) as any as S.Schema<ListPublicCloudProjectRancherEventRequest>,
-  output: __S(303) as any as S.Schema<ListPublicCloudProjectRancherEventResponse>,
+  input: ListPublicCloudProjectRancherEventRequest,
+  output: ListPublicCloudProjectRancherEventResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6766,8 +9519,8 @@ export const listPublicCloudProjectRancherTask: API.OperationMethod<
   ListPublicCloudProjectRancherTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(371) as any as S.Schema<ListPublicCloudProjectRancherTaskRequest>,
-  output: __S(373) as any as S.Schema<ListPublicCloudProjectRancherTaskResponse>,
+  input: ListPublicCloudProjectRancherTaskRequest,
+  output: ListPublicCloudProjectRancherTaskResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6781,8 +9534,8 @@ export const listPublicCloudProjectReferenceInstanceFlavor: API.OperationMethod<
   ListPublicCloudProjectReferenceInstanceFlavorError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374) as any as S.Schema<ListPublicCloudProjectReferenceInstanceFlavorRequest>,
-  output: __S(376) as any as S.Schema<ListPublicCloudProjectReferenceInstanceFlavorResponse>,
+  input: ListPublicCloudProjectReferenceInstanceFlavorRequest,
+  output: ListPublicCloudProjectReferenceInstanceFlavorResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6796,8 +9549,8 @@ export const listPublicCloudProjectReferenceInstanceImage: API.OperationMethod<
   ListPublicCloudProjectReferenceInstanceImageError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(377) as any as S.Schema<ListPublicCloudProjectReferenceInstanceImageRequest>,
-  output: __S(379) as any as S.Schema<ListPublicCloudProjectReferenceInstanceImageResponse>,
+  input: ListPublicCloudProjectReferenceInstanceImageRequest,
+  output: ListPublicCloudProjectReferenceInstanceImageResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6811,8 +9564,8 @@ export const listPublicCloudProjectReferenceRancherPlan: API.OperationMethod<
   ListPublicCloudProjectReferenceRancherPlanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(380) as any as S.Schema<ListPublicCloudProjectReferenceRancherPlanRequest>,
-  output: __S(365) as any as S.Schema<ListPublicCloudProjectReferenceRancherPlanResponse>,
+  input: ListPublicCloudProjectReferenceRancherPlanRequest,
+  output: ListPublicCloudProjectReferenceRancherPlanResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6826,8 +9579,8 @@ export const listPublicCloudProjectReferenceRancherVersion: API.OperationMethod<
   ListPublicCloudProjectReferenceRancherVersionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(381) as any as S.Schema<ListPublicCloudProjectReferenceRancherVersionRequest>,
-  output: __S(369) as any as S.Schema<ListPublicCloudProjectReferenceRancherVersionResponse>,
+  input: ListPublicCloudProjectReferenceRancherVersionRequest,
+  output: ListPublicCloudProjectReferenceRancherVersionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6841,8 +9594,8 @@ export const listPublicCloudProjectReferenceRegion: API.OperationMethod<
   ListPublicCloudProjectReferenceRegionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(382) as any as S.Schema<ListPublicCloudProjectReferenceRegionRequest>,
-  output: __S(384) as any as S.Schema<ListPublicCloudProjectReferenceRegionResponse>,
+  input: ListPublicCloudProjectReferenceRegionRequest,
+  output: ListPublicCloudProjectReferenceRegionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6856,8 +9609,8 @@ export const listPublicCloudProjectSecurityGroup: API.OperationMethod<
   ListPublicCloudProjectSecurityGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(385) as any as S.Schema<ListPublicCloudProjectSecurityGroupRequest>,
-  output: __S(387) as any as S.Schema<ListPublicCloudProjectSecurityGroupResponse>,
+  input: ListPublicCloudProjectSecurityGroupRequest,
+  output: ListPublicCloudProjectSecurityGroupResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6871,8 +9624,8 @@ export const listPublicCloudProjectSshKey: API.OperationMethod<
   ListPublicCloudProjectSshKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(388) as any as S.Schema<ListPublicCloudProjectSshKeyRequest>,
-  output: __S(390) as any as S.Schema<ListPublicCloudProjectSshKeyResponse>,
+  input: ListPublicCloudProjectSshKeyRequest,
+  output: ListPublicCloudProjectSshKeyResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6886,8 +9639,8 @@ export const listPublicCloudProjectStorageBlockBackup: API.OperationMethod<
   ListPublicCloudProjectStorageBlockBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391) as any as S.Schema<ListPublicCloudProjectStorageBlockBackupRequest>,
-  output: __S(393) as any as S.Schema<ListPublicCloudProjectStorageBlockBackupResponse>,
+  input: ListPublicCloudProjectStorageBlockBackupRequest,
+  output: ListPublicCloudProjectStorageBlockBackupResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6901,8 +9654,8 @@ export const listPublicCloudProjectStorageBlockSnapshot: API.OperationMethod<
   ListPublicCloudProjectStorageBlockSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394) as any as S.Schema<ListPublicCloudProjectStorageBlockSnapshotRequest>,
-  output: __S(393) as any as S.Schema<ListPublicCloudProjectStorageBlockSnapshotResponse>,
+  input: ListPublicCloudProjectStorageBlockSnapshotRequest,
+  output: ListPublicCloudProjectStorageBlockSnapshotResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6916,8 +9669,8 @@ export const listPublicCloudProjectStorageBlockVolume: API.OperationMethod<
   ListPublicCloudProjectStorageBlockVolumeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395) as any as S.Schema<ListPublicCloudProjectStorageBlockVolumeRequest>,
-  output: __S(397) as any as S.Schema<ListPublicCloudProjectStorageBlockVolumeResponse>,
+  input: ListPublicCloudProjectStorageBlockVolumeRequest,
+  output: ListPublicCloudProjectStorageBlockVolumeResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6931,8 +9684,8 @@ export const listPublicCloudProjectStorageFileNetwork: API.OperationMethod<
   ListPublicCloudProjectStorageFileNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398) as any as S.Schema<ListPublicCloudProjectStorageFileNetworkRequest>,
-  output: __S(400) as any as S.Schema<ListPublicCloudProjectStorageFileNetworkResponse>,
+  input: ListPublicCloudProjectStorageFileNetworkRequest,
+  output: ListPublicCloudProjectStorageFileNetworkResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6946,8 +9699,8 @@ export const listPublicCloudProjectStorageFileShare: API.OperationMethod<
   ListPublicCloudProjectStorageFileShareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401) as any as S.Schema<ListPublicCloudProjectStorageFileShareRequest>,
-  output: __S(403) as any as S.Schema<ListPublicCloudProjectStorageFileShareResponse>,
+  input: ListPublicCloudProjectStorageFileShareRequest,
+  output: ListPublicCloudProjectStorageFileShareResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6961,8 +9714,8 @@ export const listPublicCloudProjectStorageFileSnapshot: API.OperationMethod<
   ListPublicCloudProjectStorageFileSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(404) as any as S.Schema<ListPublicCloudProjectStorageFileSnapshotRequest>,
-  output: __S(406) as any as S.Schema<ListPublicCloudProjectStorageFileSnapshotResponse>,
+  input: ListPublicCloudProjectStorageFileSnapshotRequest,
+  output: ListPublicCloudProjectStorageFileSnapshotResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6976,8 +9729,8 @@ export const listPublicCloudProjectStorageObjectBucket: API.OperationMethod<
   ListPublicCloudProjectStorageObjectBucketError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407) as any as S.Schema<ListPublicCloudProjectStorageObjectBucketRequest>,
-  output: __S(409) as any as S.Schema<ListPublicCloudProjectStorageObjectBucketResponse>,
+  input: ListPublicCloudProjectStorageObjectBucketRequest,
+  output: ListPublicCloudProjectStorageObjectBucketResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6991,8 +9744,8 @@ export const listPublicCloudProjectStorageObjectBucketLifecycle: API.OperationMe
   ListPublicCloudProjectStorageObjectBucketLifecycleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(410) as any as S.Schema<ListPublicCloudProjectStorageObjectBucketLifecycleRequest>,
-  output: __S(421) as any as S.Schema<PublicCloudStorageObjectLifecycleRulesResponse>,
+  input: ListPublicCloudProjectStorageObjectBucketLifecycleRequest,
+  output: PublicCloudStorageObjectLifecycleRulesResponse,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7006,8 +9759,8 @@ export const listPublicCloudProjectStorageObjectBucketReplication: API.Operation
   ListPublicCloudProjectStorageObjectBucketReplicationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(422) as any as S.Schema<ListPublicCloudProjectStorageObjectBucketReplicationRequest>,
-  output: __S(427) as any as S.Schema<PublicCloudStorageObjectReplicationRulesResponse>,
+  input: ListPublicCloudProjectStorageObjectBucketReplicationRequest,
+  output: PublicCloudStorageObjectReplicationRulesResponse,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7025,8 +9778,8 @@ export const putPublicCloudProjectComputeInstance: API.OperationMethod<
   PutPublicCloudProjectComputeInstanceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(429) as any as S.Schema<PutPublicCloudProjectComputeInstanceRequest>,
-  output: __S(31) as any as S.Schema<PublicCloudInstanceInstance>,
+  input: PutPublicCloudProjectComputeInstanceRequest,
+  output: PublicCloudInstanceInstance,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7040,8 +9793,8 @@ export const putPublicCloudProjectFloatingIp: API.OperationMethod<
   PutPublicCloudProjectFloatingIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431) as any as S.Schema<PutPublicCloudProjectFloatingIpRequest>,
-  output: __S(45) as any as S.Schema<PublicCloudFloatingIpFloatingIP>,
+  input: PutPublicCloudProjectFloatingIpRequest,
+  output: PublicCloudFloatingIpFloatingIP,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7055,8 +9808,8 @@ export const putPublicCloudProjectGateway: API.OperationMethod<
   PutPublicCloudProjectGatewayError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433) as any as S.Schema<PutPublicCloudProjectGatewayRequest>,
-  output: __S(50) as any as S.Schema<PublicCloudGatewayGateway>,
+  input: PutPublicCloudProjectGatewayRequest,
+  output: PublicCloudGatewayGateway,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7070,8 +9823,8 @@ export const putPublicCloudProjectKeyManagerContainer: API.OperationMethod<
   PutPublicCloudProjectKeyManagerContainerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(435) as any as S.Schema<PutPublicCloudProjectKeyManagerContainerRequest>,
-  output: __S(56) as any as S.Schema<PublicCloudKeyManagerContainer>,
+  input: PutPublicCloudProjectKeyManagerContainerRequest,
+  output: PublicCloudKeyManagerContainer,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7089,8 +9842,8 @@ export const putPublicCloudProjectKeyManagerSecret: API.OperationMethod<
   PutPublicCloudProjectKeyManagerSecretError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(437) as any as S.Schema<PutPublicCloudProjectKeyManagerSecretRequest>,
-  output: __S(63) as any as S.Schema<PublicCloudKeyManagerSecret>,
+  input: PutPublicCloudProjectKeyManagerSecretRequest,
+  output: PublicCloudKeyManagerSecret,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7104,8 +9857,8 @@ export const putPublicCloudProjectLoadbalancer: API.OperationMethod<
   PutPublicCloudProjectLoadbalancerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(439) as any as S.Schema<PutPublicCloudProjectLoadbalancerRequest>,
-  output: __S(71) as any as S.Schema<PublicCloudLoadbalancerLoadbalancer>,
+  input: PutPublicCloudProjectLoadbalancerRequest,
+  output: PublicCloudLoadbalancerLoadbalancer,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7119,8 +9872,8 @@ export const putPublicCloudProjectLoadbalancerListener: API.OperationMethod<
   PutPublicCloudProjectLoadbalancerListenerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(441) as any as S.Schema<PutPublicCloudProjectLoadbalancerListenerRequest>,
-  output: __S(78) as any as S.Schema<PublicCloudLoadbalancerListener>,
+  input: PutPublicCloudProjectLoadbalancerListenerRequest,
+  output: PublicCloudLoadbalancerListener,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7137,8 +9890,8 @@ export const putPublicCloudProjectLoadbalancerListenerL7policy: API.OperationMet
   PutPublicCloudProjectLoadbalancerListenerL7policyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(442) as any as S.Schema<PutPublicCloudProjectLoadbalancerListenerL7policyRequest>,
-  output: __S(86) as any as S.Schema<PublicCloudLoadbalancerL7Policy>,
+  input: PutPublicCloudProjectLoadbalancerListenerL7policyRequest,
+  output: PublicCloudLoadbalancerL7Policy,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7152,8 +9905,8 @@ export const putPublicCloudProjectLoadbalancerPool: API.OperationMethod<
   PutPublicCloudProjectLoadbalancerPoolError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(445) as any as S.Schema<PutPublicCloudProjectLoadbalancerPoolRequest>,
-  output: __S(93) as any as S.Schema<PublicCloudLoadbalancerPool>,
+  input: PutPublicCloudProjectLoadbalancerPoolRequest,
+  output: PublicCloudLoadbalancerPool,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7167,8 +9920,8 @@ export const putPublicCloudProjectLoadbalancerPoolMember: API.OperationMethod<
   PutPublicCloudProjectLoadbalancerPoolMemberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(447) as any as S.Schema<PutPublicCloudProjectLoadbalancerPoolMemberRequest>,
-  output: __S(98) as any as S.Schema<PublicCloudLoadbalancerMember>,
+  input: PutPublicCloudProjectLoadbalancerPoolMemberRequest,
+  output: PublicCloudLoadbalancerMember,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7182,8 +9935,8 @@ export const putPublicCloudProjectNetwork: API.OperationMethod<
   PutPublicCloudProjectNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(449) as any as S.Schema<PutPublicCloudProjectNetworkRequest>,
-  output: __S(102) as any as S.Schema<PublicCloudNetworkNetwork>,
+  input: PutPublicCloudProjectNetworkRequest,
+  output: PublicCloudNetworkNetwork,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7197,8 +9950,8 @@ export const putPublicCloudProjectNetworkSubnet: API.OperationMethod<
   PutPublicCloudProjectNetworkSubnetError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451) as any as S.Schema<PutPublicCloudProjectNetworkSubnetRequest>,
-  output: __S(110) as any as S.Schema<PublicCloudNetworkSubnet>,
+  input: PutPublicCloudProjectNetworkSubnetRequest,
+  output: PublicCloudNetworkSubnet,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7212,8 +9965,8 @@ export const putPublicCloudProjectPublicIpFloating: API.OperationMethod<
   PutPublicCloudProjectPublicIpFloatingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(452) as any as S.Schema<PutPublicCloudProjectPublicIpFloatingRequest>,
-  output: __S(114) as any as S.Schema<PublicCloudPublicIpFloatingIP>,
+  input: PutPublicCloudProjectPublicIpFloatingRequest,
+  output: PublicCloudPublicIpFloatingIP,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7227,8 +9980,8 @@ export const putPublicCloudProjectQuota: API.OperationMethod<
   PutPublicCloudProjectQuotaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(454) as any as S.Schema<PutPublicCloudProjectQuotaRequest>,
-  output: __S(262) as any as S.Schema<PublicCloudQuotaQuota>,
+  input: PutPublicCloudProjectQuotaRequest,
+  output: PublicCloudQuotaQuota,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7242,8 +9995,8 @@ export const putPublicCloudProjectRancher: API.OperationMethod<
   PutPublicCloudProjectRancherError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455) as any as S.Schema<PutPublicCloudProjectRancherRequest>,
-  output: __S(123) as any as S.Schema<PublicCloudRancherRancher>,
+  input: PutPublicCloudProjectRancherRequest,
+  output: PublicCloudRancherRancher,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7257,8 +10010,8 @@ export const putPublicCloudProjectSecurityGroup: API.OperationMethod<
   PutPublicCloudProjectSecurityGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(457) as any as S.Schema<PutPublicCloudProjectSecurityGroupRequest>,
-  output: __S(134) as any as S.Schema<PublicCloudSecurityGroupSecurityGroup>,
+  input: PutPublicCloudProjectSecurityGroupRequest,
+  output: PublicCloudSecurityGroupSecurityGroup,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7272,8 +10025,8 @@ export const putPublicCloudProjectStorageBlockBackup: API.OperationMethod<
   PutPublicCloudProjectStorageBlockBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(459) as any as S.Schema<PutPublicCloudProjectStorageBlockBackupRequest>,
-  output: __S(140) as any as S.Schema<PublicCloudBlockStorageBackup>,
+  input: PutPublicCloudProjectStorageBlockBackupRequest,
+  output: PublicCloudBlockStorageBackup,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7287,8 +10040,8 @@ export const putPublicCloudProjectStorageBlockSnapshot: API.OperationMethod<
   PutPublicCloudProjectStorageBlockSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(461) as any as S.Schema<PutPublicCloudProjectStorageBlockSnapshotRequest>,
-  output: __S(140) as any as S.Schema<PublicCloudBlockStorageSnapshot>,
+  input: PutPublicCloudProjectStorageBlockSnapshotRequest,
+  output: PublicCloudBlockStorageSnapshot,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7306,8 +10059,8 @@ export const putPublicCloudProjectStorageBlockVolume: API.OperationMethod<
   PutPublicCloudProjectStorageBlockVolumeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(463) as any as S.Schema<PutPublicCloudProjectStorageBlockVolumeRequest>,
-  output: __S(147) as any as S.Schema<PublicCloudBlockStorageBlock>,
+  input: PutPublicCloudProjectStorageBlockVolumeRequest,
+  output: PublicCloudBlockStorageBlock,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7325,8 +10078,8 @@ export const putPublicCloudProjectStorageFileShare: API.OperationMethod<
   PutPublicCloudProjectStorageFileShareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(466) as any as S.Schema<PutPublicCloudProjectStorageFileShareRequest>,
-  output: __S(204) as any as S.Schema<PublicCloudStorageFileFileStorage>,
+  input: PutPublicCloudProjectStorageFileShareRequest,
+  output: PublicCloudStorageFileFileStorage,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7340,8 +10093,8 @@ export const putPublicCloudProjectStorageFileSnapshot: API.OperationMethod<
   PutPublicCloudProjectStorageFileSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(468) as any as S.Schema<PutPublicCloudProjectStorageFileSnapshotRequest>,
-  output: __S(156) as any as S.Schema<PublicCloudStorageFileFileStorageSnapshot>,
+  input: PutPublicCloudProjectStorageFileSnapshotRequest,
+  output: PublicCloudStorageFileFileStorageSnapshot,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7355,8 +10108,8 @@ export const putPublicCloudProjectStorageObjectBucket: API.OperationMethod<
   PutPublicCloudProjectStorageObjectBucketError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(470) as any as S.Schema<PutPublicCloudProjectStorageObjectBucketRequest>,
-  output: __S(166) as any as S.Schema<PublicCloudStorageObjectBucket>,
+  input: PutPublicCloudProjectStorageObjectBucketRequest,
+  output: PublicCloudStorageObjectBucket,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7370,8 +10123,8 @@ export const putPublicCloudProjectStorageObjectBucketLifecycle: API.OperationMet
   PutPublicCloudProjectStorageObjectBucketLifecycleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(472) as any as S.Schema<PutPublicCloudProjectStorageObjectBucketLifecycleRequest>,
-  output: __S(421) as any as S.Schema<PublicCloudStorageObjectLifecycleRulesResponse>,
+  input: PutPublicCloudProjectStorageObjectBucketLifecycleRequest,
+  output: PublicCloudStorageObjectLifecycleRulesResponse,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7385,8 +10138,8 @@ export const putPublicCloudProjectStorageObjectBucketReplication: API.OperationM
   PutPublicCloudProjectStorageObjectBucketReplicationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(474) as any as S.Schema<PutPublicCloudProjectStorageObjectBucketReplicationRequest>,
-  output: __S(427) as any as S.Schema<PublicCloudStorageObjectReplicationRulesResponse>,
+  input: PutPublicCloudProjectStorageObjectBucketReplicationRequest,
+  output: PublicCloudStorageObjectReplicationRulesResponse,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7400,8 +10153,8 @@ export const sharePublicCloudProjectStorageFile: API.OperationMethod<
   SharePublicCloudProjectStorageFileError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(475) as any as S.Schema<SharePublicCloudProjectStorageFileRequest>,
-  output: __S(204) as any as S.Schema<PublicCloudStorageFileFileStorage>,
+  input: SharePublicCloudProjectStorageFileRequest,
+  output: PublicCloudStorageFileFileStorage,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7440,10 +10193,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           cron: S.String,
-          distant: S.optional(S.NullOr(__S(0))),
+          distant: S.optional(S.NullOr(PublicCloudInstanceAutobackupDistant)),
           imageName: S.String,
-          instance: __S(1),
-          location: __S(2),
+          instance: PublicCloudInstanceAutobackupInstanceRef,
+          location: PublicCloudCommonLocation,
           name: S.String,
           rotation: S.Number,
         }),
@@ -7454,7 +10207,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(3),
+          targetSpec: PublicCloudInstanceAutobackupTargetSpec,
         }).pipe(
           T.Http({
             method: "POST",
@@ -7471,23 +10224,25 @@ function __c0(j: number): any {
           errorMessage: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
           startedAt: S.optional(S.NullOr(S.String)),
-          state: S.optional(S.String),
+          state: S.optional(PublicCloudInstanceAutobackupExecutionStateEnum),
           updatedAt: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "PublicCloudInstanceAutobackupExecution",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(PublicCloudInstanceAutobackupExecution);
     case 7:
       return S.suspend(() =>
         S.Struct({
           cron: S.optional(S.String),
-          distant: S.optional(S.NullOr(__S(0))),
+          distant: S.optional(S.NullOr(PublicCloudInstanceAutobackupDistant)),
           imageName: S.optional(S.String),
-          instance: S.optional(__S(1)),
-          lastExecutions: S.optional(S.NullOr(__S(6))),
-          location: S.optional(__S(2)),
+          instance: S.optional(PublicCloudInstanceAutobackupInstanceRef),
+          lastExecutions: S.optional(
+            S.NullOr(PublicCloudInstanceAutobackupCurrentStateLastExecutionsList),
+          ),
+          location: S.optional(PublicCloudCommonLocation),
           name: S.optional(S.String),
           nextExecutionTime: S.optional(S.NullOr(S.String)),
           rotation: S.optional(S.Number),
@@ -7507,29 +10262,29 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "CommonTaskError" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(CommonTaskError);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(S.NullOr(__S(9))),
+          errors: S.optional(S.NullOr(CommonCurrentTaskErrorsList)),
           id: S.optional(S.String),
           link: S.optional(S.String),
-          status: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(CommonCurrentTaskStatusEnum)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommonCurrentTask" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(CommonCurrentTask);
     case 4:
       return S.suspend(() =>
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(7))),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(S.NullOr(PublicCloudInstanceAutobackupCurrentState)),
+          currentTasks: S.optional(S.NullOr(PublicCloudInstanceAutobackupCurrentTasksList)),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(3)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudInstanceAutobackupTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -7538,8 +10293,8 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          instance: __S(1),
-          location: __S(2),
+          instance: PublicCloudInstanceBackupInstanceRef,
+          location: PublicCloudCommonLocation,
           name: S.String,
         }),
       ).annotate({
@@ -7549,7 +10304,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(13),
+          targetSpec: PublicCloudInstanceBackupTargetSpec,
         }).pipe(
           T.Http({
             method: "POST",
@@ -7563,14 +10318,14 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          instance: S.optional(__S(1)),
-          location: S.optional(__S(2)),
+          instance: S.optional(PublicCloudInstanceBackupInstanceRef),
+          location: S.optional(PublicCloudCommonLocation),
           minDisk: S.optional(S.NullOr(S.Number)),
           minRam: S.optional(S.NullOr(S.Number)),
           name: S.optional(S.String),
           size: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.String),
-          visibility: S.optional(S.String),
+          status: S.optional(PublicCloudInstanceImageStatusEnum),
+          visibility: S.optional(PublicCloudInstanceImageVisibilityEnum),
         }),
       ).annotate({
         identifier: "PublicCloudInstanceBackupCurrentState",
@@ -7584,11 +10339,11 @@ function __c2(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(15))),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(S.NullOr(PublicCloudInstanceBackupCurrentState)),
+          currentTasks: S.optional(S.NullOr(PublicCloudInstanceBackupCurrentTasksList)),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(13)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudInstanceBackupTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -7606,22 +10361,24 @@ function __c2(j: number): any {
         identifier: "PublicCloudInstanceInstanceNetworkRef",
       });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(PublicCloudInstanceInstanceNetworkRef);
     case 3:
-      return S.Array(__S(1));
+      return S.Array(PublicCloudSecurityGroupSecurityGroupRef);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          flavor: __S(1),
-          group: S.optional(S.NullOr(__S(1))),
-          image: __S(1),
-          location: __S(2),
+          flavor: PublicCloudInstanceInstanceFlavorRef,
+          group: S.optional(S.NullOr(PublicCloudInstanceInstanceGroupRef)),
+          image: PublicCloudInstanceInstanceImageRef,
+          location: PublicCloudCommonLocation,
           name: S.String,
-          networks: S.NullOr(__S(18)),
-          powerState: S.optional(S.NullOr(S.String)),
-          securityGroups: S.optional(S.NullOr(__S(19))),
+          networks: S.NullOr(PublicCloudInstanceInstanceTargetSpecNetworksList),
+          powerState: S.optional(S.NullOr(PublicCloudInstancePowerStateEnum)),
+          securityGroups: S.optional(
+            S.NullOr(PublicCloudInstanceInstanceTargetSpecSecurityGroupsList),
+          ),
           sshKeyName: S.optional(S.NullOr(S.String)),
-          volumes: S.NullOr(__S(19)),
+          volumes: S.NullOr(PublicCloudInstanceInstanceTargetSpecVolumesList),
         }),
       ).annotate({
         identifier: "PublicCloudInstanceInstanceTargetSpec",
@@ -7630,7 +10387,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(20),
+          targetSpec: PublicCloudInstanceInstanceTargetSpec,
         }).pipe(
           T.Http({
             method: "POST",
@@ -7660,7 +10417,7 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.NullOr(S.String)),
           size: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(PublicCloudInstanceImageStatusEnum)),
         }),
       ).annotate({
         identifier: "PublicCloudInstanceInstanceImage",
@@ -7681,11 +10438,11 @@ function __c3(j: number): any {
         identifier: "PublicCloudInstanceInstanceNetworkAddress",
       });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(PublicCloudInstanceInstanceNetworkAddress);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          addresses: S.optional(S.NullOr(__S(25))),
+          addresses: S.optional(S.NullOr(PublicCloudInstanceInstanceNetworkAddressesList)),
           floatingIpId: S.optional(S.NullOr(S.String)),
           gatewayId: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
@@ -7696,7 +10453,7 @@ function __c3(j: number): any {
         identifier: "PublicCloudInstanceInstanceNetwork",
       });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(PublicCloudInstanceInstanceNetwork);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -7708,24 +10465,26 @@ function __c3(j: number): any {
         identifier: "PublicCloudInstanceInstanceVolume",
       });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(PublicCloudInstanceInstanceVolume);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          flavor: S.optional(__S(22)),
-          group: S.optional(S.NullOr(__S(1))),
+          flavor: S.optional(PublicCloudInstanceInstanceFlavor),
+          group: S.optional(S.NullOr(PublicCloudInstanceInstanceGroupRef)),
           hostId: S.optional(S.NullOr(S.String)),
-          image: S.optional(__S(23)),
-          location: S.optional(__S(2)),
+          image: S.optional(PublicCloudInstanceInstanceImage),
+          location: S.optional(PublicCloudCommonLocation),
           locked: S.optional(S.Boolean),
           name: S.optional(S.String),
-          networks: S.optional(S.NullOr(__S(27))),
-          powerState: S.optional(S.String),
+          networks: S.optional(S.NullOr(PublicCloudInstanceInstanceCurrentStateNetworksList)),
+          powerState: S.optional(PublicCloudInstancePowerStateEnum),
           projectId: S.optional(S.String),
-          securityGroups: S.optional(S.NullOr(__S(19))),
+          securityGroups: S.optional(
+            S.NullOr(PublicCloudInstanceInstanceCurrentStateSecurityGroupsList),
+          ),
           sshKeyName: S.optional(S.NullOr(S.String)),
           userId: S.optional(S.String),
-          volumes: S.optional(S.NullOr(__S(29))),
+          volumes: S.optional(S.NullOr(PublicCloudInstanceInstanceCurrentStateVolumesList)),
         }),
       ).annotate({
         identifier: "PublicCloudInstanceInstanceCurrentState",
@@ -7735,11 +10494,11 @@ function __c3(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(30))),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(S.NullOr(PublicCloudInstanceInstanceCurrentState)),
+          currentTasks: S.optional(S.NullOr(PublicCloudInstanceInstanceCurrentTasksList)),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(20)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudInstanceInstanceTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -7764,8 +10523,8 @@ function __c4(j: number): any {
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           checksum: S.String,
-          parameters: S.optional(S.NullOr(__S(32))),
-          type: S.String,
+          parameters: S.optional(S.NullOr(PublicCloudInstanceInstanceActionParameters)),
+          type: PublicCloudInstanceInstanceActionTypeEnum,
         }).pipe(
           T.Http({
             method: "POST",
@@ -7781,8 +10540,8 @@ function __c4(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          protocol: S.String,
-          type: S.String,
+          protocol: PublicCloudInstanceRemoteConsoleProtocolEnum,
+          type: PublicCloudInstanceRemoteConsoleTypeEnum,
         }).pipe(
           T.Http({
             method: "POST",
@@ -7796,8 +10555,8 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          protocol: S.optional(S.String),
-          type: S.optional(S.String),
+          protocol: S.optional(PublicCloudInstanceRemoteConsoleProtocolEnum),
+          type: S.optional(PublicCloudInstanceRemoteConsoleTypeEnum),
           url: S.optional(S.String),
         }),
       ).annotate({
@@ -7806,9 +10565,9 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          location: __S(2),
+          location: PublicCloudCommonLocation,
           name: S.String,
-          policy: S.String,
+          policy: PublicCloudInstanceGroupPolicyEnum,
         }),
       ).annotate({
         identifier: "PublicCloudInstanceGroupInstanceGroupTargetSpec",
@@ -7817,7 +10576,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(36),
+          targetSpec: PublicCloudInstanceGroupInstanceGroupTargetSpec,
         }).pipe(
           T.Http({
             method: "POST",
@@ -7837,7 +10596,7 @@ function __c4(j: number): any {
         identifier: "PublicCloudInstanceGroupInstanceGroupMemberRef",
       });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(PublicCloudInstanceGroupInstanceGroupMemberRef);
   }
 }
 function __c5(j: number): any {
@@ -7845,10 +10604,12 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          location: S.optional(__S(2)),
-          members: S.optional(S.NullOr(__S(39))),
+          location: S.optional(PublicCloudCommonLocation),
+          members: S.optional(
+            S.NullOr(PublicCloudInstanceGroupInstanceGroupCurrentStateMembersList),
+          ),
           name: S.optional(S.String),
-          policy: S.optional(S.String),
+          policy: S.optional(PublicCloudInstanceGroupPolicyEnum),
         }),
       ).annotate({
         identifier: "PublicCloudInstanceGroupInstanceGroupCurrentState",
@@ -7858,11 +10619,11 @@ function __c5(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(40))),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(S.NullOr(PublicCloudInstanceGroupInstanceGroupCurrentState)),
+          currentTasks: S.optional(S.NullOr(PublicCloudInstanceGroupInstanceGroupCurrentTasksList)),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(36)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudInstanceGroupInstanceGroupTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -7872,7 +10633,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          location: __S(2),
+          location: PublicCloudCommonLocation,
         }),
       ).annotate({
         identifier: "PublicCloudFloatingIpFloatingIPTargetSpec",
@@ -7881,7 +10642,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(42),
+          targetSpec: PublicCloudFloatingIpFloatingIPTargetSpec,
         }).pipe(
           T.Http({ method: "POST", uri: "/publicCloud/project/{projectId}/floatingIp", code: 200 }),
         ),
@@ -7893,9 +10654,9 @@ function __c5(j: number): any {
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
           ip: S.optional(S.String),
-          location: S.optional(__S(2)),
-          network: S.optional(__S(38)),
-          status: S.optional(S.String),
+          location: S.optional(PublicCloudCommonLocation),
+          network: S.optional(PublicCloudFloatingIpFloatingIPNetwork),
+          status: S.optional(PublicCloudFloatingIpFloatingIPStatusEnum),
         }),
       ).annotate({
         identifier: "PublicCloudFloatingIpFloatingIPCurrentState",
@@ -7905,11 +10666,11 @@ function __c5(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(44))),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(S.NullOr(PublicCloudFloatingIpFloatingIPCurrentState)),
+          currentTasks: S.optional(S.NullOr(PublicCloudFloatingIpFloatingIPCurrentTasksList)),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(42)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudFloatingIpFloatingIPTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -7919,7 +10680,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          model: S.optional(S.NullOr(S.String)),
+          model: S.optional(S.NullOr(PublicCloudGatewayExternalGatewayModelEnum)),
         }),
       ).annotate({
         identifier: "PublicCloudGatewayExternalGateway",
@@ -7928,10 +10689,10 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          externalGateway: __S(46),
-          location: __S(2),
+          externalGateway: PublicCloudGatewayExternalGateway,
+          location: PublicCloudCommonLocation,
           name: S.String,
-          subnets: S.optional(S.NullOr(__S(19))),
+          subnets: S.optional(S.NullOr(PublicCloudGatewayGatewayTargetSpecSubnetsList)),
         }),
       ).annotate({
         identifier: "PublicCloudGatewayGatewayTargetSpec",
@@ -7944,7 +10705,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(47),
+          targetSpec: PublicCloudGatewayGatewayTargetSpec,
         }).pipe(
           T.Http({ method: "POST", uri: "/publicCloud/project/{projectId}/gateway", code: 200 }),
         ),
@@ -7955,12 +10716,12 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          externalGateway: S.optional(__S(46)),
+          externalGateway: S.optional(PublicCloudGatewayExternalGateway),
           externalIp: S.optional(S.NullOr(S.String)),
-          location: S.optional(__S(2)),
+          location: S.optional(PublicCloudCommonLocation),
           name: S.optional(S.String),
-          status: S.optional(S.String),
-          subnets: S.optional(S.NullOr(__S(19))),
+          status: S.optional(PublicCloudGatewayGatewayStatusEnum),
+          subnets: S.optional(S.NullOr(PublicCloudGatewayGatewayCurrentStateSubnetsList)),
         }),
       ).annotate({
         identifier: "PublicCloudGatewayGatewayCurrentState",
@@ -7970,11 +10731,11 @@ function __c6(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(49))),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(S.NullOr(PublicCloudGatewayGatewayCurrentState)),
+          currentTasks: S.optional(S.NullOr(PublicCloudGatewayGatewayCurrentTasksList)),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(47)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudGatewayGatewayTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -7984,20 +10745,20 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          secret: __S(1),
+          secret: PublicCloudKeyManagerContainerSecretRefSecret,
         }),
       ).annotate({
         identifier: "PublicCloudKeyManagerContainerSecretRef",
       });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(PublicCloudKeyManagerContainerSecretRef);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          location: __S(2),
+          location: PublicCloudCommonLocation,
           name: S.String,
-          secretRefs: S.optional(S.NullOr(__S(52))),
-          type: S.String,
+          secretRefs: S.optional(S.NullOr(PublicCloudKeyManagerContainerTargetSpecSecretRefsList)),
+          type: PublicCloudKeyManagerContainerTypeEnum,
         }),
       ).annotate({
         identifier: "PublicCloudKeyManagerContainerTargetSpec",
@@ -8006,7 +10767,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(53),
+          targetSpec: PublicCloudKeyManagerContainerTargetSpec,
         }).pipe(
           T.Http({
             method: "POST",
@@ -8021,11 +10782,13 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           creatorId: S.optional(S.NullOr(S.String)),
-          location: S.optional(__S(2)),
+          location: S.optional(PublicCloudCommonLocation),
           name: S.optional(S.String),
-          secretRefs: S.optional(S.NullOr(__S(52))),
-          status: S.optional(S.String),
-          type: S.optional(S.String),
+          secretRefs: S.optional(
+            S.NullOr(PublicCloudKeyManagerContainerCurrentStateSecretRefsList),
+          ),
+          status: S.optional(PublicCloudKeyManagerContainerStatusEnum),
+          type: S.optional(PublicCloudKeyManagerContainerTypeEnum),
         }),
       ).annotate({
         identifier: "PublicCloudKeyManagerContainerCurrentState",
@@ -8039,11 +10802,11 @@ function __c7(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(55))),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(S.NullOr(PublicCloudKeyManagerContainerCurrentState)),
+          currentTasks: S.optional(S.NullOr(PublicCloudKeyManagerContainerCurrentTasksList)),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(53)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudKeyManagerContainerTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -8055,8 +10818,8 @@ function __c7(j: number): any {
           projectId: S.String.pipe(T.Label()),
           containerId: S.String.pipe(T.Label()),
           resourceId: S.String,
-          resourceType: S.String,
-          service: S.String,
+          resourceType: PublicCloudKeyManagerConsumerResourceTypeEnum,
+          service: PublicCloudKeyManagerConsumerServiceEnum,
         }).pipe(
           T.Http({
             method: "POST",
@@ -8072,8 +10835,8 @@ function __c7(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           resourceId: S.optional(S.String),
-          resourceType: S.optional(S.String),
-          service: S.optional(S.String),
+          resourceType: S.optional(PublicCloudKeyManagerConsumerResourceTypeEnum),
+          service: S.optional(PublicCloudKeyManagerConsumerServiceEnum),
         }),
       ).annotate({
         identifier: "PublicCloudKeyManagerContainerConsumer",
@@ -8083,16 +10846,16 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          algorithm: S.optional(S.NullOr(S.String)),
-          bitLength: S.optional(S.NullOr(S.Number)),
+          algorithm: S.optional(S.NullOr(PublicCloudKeyManagerAlgorithmEnum)),
+          bitLength: S.optional(S.NullOr(PublicCloudKeyManagerBitLengthEnum)),
           expiration: S.optional(S.NullOr(S.String)),
-          location: __S(2),
-          metadata: S.optional(S.NullOr(__S(59))),
-          mode: S.optional(S.NullOr(S.String)),
+          location: PublicCloudCommonLocation,
+          metadata: S.optional(S.NullOr(PublicCloudKeyManagerSecretTargetSpecMetadataMap)),
+          mode: S.optional(S.NullOr(PublicCloudKeyManagerModeEnum)),
           name: S.optional(S.NullOr(S.String)),
           payload: S.optional(S.NullOr(S.String)),
-          payloadContentType: S.optional(S.NullOr(S.String)),
-          secretType: S.String,
+          payloadContentType: S.optional(S.NullOr(PublicCloudKeyManagerPayloadContentTypeEnum)),
+          secretType: PublicCloudKeyManagerSecretTypeEnum,
         }),
       ).annotate({
         identifier: "PublicCloudKeyManagerSecretTargetSpec",
@@ -8101,7 +10864,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(60),
+          targetSpec: PublicCloudKeyManagerSecretTargetSpec,
         }).pipe(
           T.Http({
             method: "POST",
@@ -8115,17 +10878,17 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          algorithm: S.optional(S.NullOr(S.String)),
-          bitLength: S.optional(S.NullOr(S.Number)),
+          algorithm: S.optional(S.NullOr(PublicCloudKeyManagerAlgorithmEnum)),
+          bitLength: S.optional(S.NullOr(PublicCloudKeyManagerBitLengthEnum)),
           creatorId: S.optional(S.NullOr(S.String)),
           expiration: S.optional(S.NullOr(S.String)),
-          location: S.optional(__S(2)),
-          metadata: S.optional(S.NullOr(__S(59))),
-          mode: S.optional(S.NullOr(S.String)),
+          location: S.optional(PublicCloudCommonLocation),
+          metadata: S.optional(S.NullOr(PublicCloudKeyManagerSecretCurrentStateMetadataMap)),
+          mode: S.optional(S.NullOr(PublicCloudKeyManagerModeEnum)),
           name: S.optional(S.NullOr(S.String)),
-          payloadContentType: S.optional(S.NullOr(S.String)),
-          secretType: S.optional(S.String),
-          status: S.optional(S.String),
+          payloadContentType: S.optional(S.NullOr(PublicCloudKeyManagerPayloadContentTypeEnum)),
+          secretType: S.optional(PublicCloudKeyManagerSecretTypeEnum),
+          status: S.optional(PublicCloudKeyManagerSecretStatusEnum),
         }),
       ).annotate({
         identifier: "PublicCloudKeyManagerSecretCurrentState",
@@ -8135,11 +10898,11 @@ function __c7(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(62))),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(S.NullOr(PublicCloudKeyManagerSecretCurrentState)),
+          currentTasks: S.optional(S.NullOr(PublicCloudKeyManagerSecretCurrentTasksList)),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(60)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudKeyManagerSecretTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -8155,8 +10918,8 @@ function __c8(j: number): any {
           projectId: S.String.pipe(T.Label()),
           secretId: S.String.pipe(T.Label()),
           resourceId: S.String,
-          resourceType: S.String,
-          service: S.String,
+          resourceType: PublicCloudKeyManagerConsumerResourceTypeEnum,
+          service: PublicCloudKeyManagerConsumerServiceEnum,
         }).pipe(
           T.Http({
             method: "POST",
@@ -8193,7 +10956,7 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
+          name: PublicCloudLoadbalancerLoadbalancerFlavorNameEnum,
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerLoadbalancerFlavorRef",
@@ -8202,11 +10965,11 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          flavor: __S(67),
-          location: __S(2),
+          flavor: PublicCloudLoadbalancerLoadbalancerFlavorRef,
+          location: PublicCloudCommonLocation,
           name: S.String,
-          vipNetwork: __S(1),
-          vipSubnet: __S(1),
+          vipNetwork: PublicCloudLoadbalancerLoadbalancerNetworkRef,
+          vipSubnet: PublicCloudLoadbalancerLoadbalancerSubnetRef,
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerLoadbalancerTargetSpec",
@@ -8215,7 +10978,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(68),
+          targetSpec: PublicCloudLoadbalancerLoadbalancerTargetSpec,
         }).pipe(
           T.Http({
             method: "POST",
@@ -8230,14 +10993,14 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          flavor: S.optional(__S(67)),
-          location: S.optional(__S(2)),
+          flavor: S.optional(PublicCloudLoadbalancerLoadbalancerFlavorRef),
+          location: S.optional(PublicCloudCommonLocation),
           name: S.optional(S.String),
-          operatingStatus: S.optional(S.String),
-          provisioningStatus: S.optional(S.String),
+          operatingStatus: S.optional(PublicCloudLoadbalancerLoadbalancerOperatingStatusEnum),
+          provisioningStatus: S.optional(PublicCloudLoadbalancerLoadbalancerProvisioningStatusEnum),
           vipAddress: S.optional(S.String),
-          vipNetwork: S.optional(__S(1)),
-          vipSubnet: S.optional(__S(1)),
+          vipNetwork: S.optional(PublicCloudLoadbalancerLoadbalancerNetworkRef),
+          vipSubnet: S.optional(PublicCloudLoadbalancerLoadbalancerSubnetRef),
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerLoadbalancerCurrentState",
@@ -8247,11 +11010,11 @@ function __c8(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(70))),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(S.NullOr(PublicCloudLoadbalancerLoadbalancerCurrentState)),
+          currentTasks: S.optional(S.NullOr(PublicCloudLoadbalancerLoadbalancerCurrentTasksList)),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(68)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudLoadbalancerLoadbalancerTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -8279,21 +11042,27 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          allowedCidrs: S.optional(S.NullOr(__S(72))),
+          allowedCidrs: S.optional(
+            S.NullOr(PublicCloudLoadbalancerListenerTargetSpecAllowedCidrsList),
+          ),
           connectionLimit: S.optional(S.NullOr(S.Number)),
-          defaultPool: S.optional(S.NullOr(__S(1))),
+          defaultPool: S.optional(S.NullOr(PublicCloudLoadbalancerListenerDefaultPoolRef)),
           defaultTlsContainerRef: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          insertHeaders: S.optional(S.NullOr(__S(73))),
+          insertHeaders: S.optional(S.NullOr(PublicCloudLoadbalancerListenerInsertHeaders)),
           name: S.String,
-          protocol: S.String,
+          protocol: PublicCloudLoadbalancerListenerProtocolEnum,
           protocolPort: S.Number,
-          sniContainerRefs: S.optional(S.NullOr(__S(72))),
+          sniContainerRefs: S.optional(
+            S.NullOr(PublicCloudLoadbalancerListenerTargetSpecSniContainerRefsList),
+          ),
           timeoutClientData: S.optional(S.NullOr(S.Number)),
           timeoutMemberConnect: S.optional(S.NullOr(S.Number)),
           timeoutMemberData: S.optional(S.NullOr(S.Number)),
           timeoutTcpInspect: S.optional(S.NullOr(S.Number)),
-          tlsVersions: S.optional(S.NullOr(__S(72))),
+          tlsVersions: S.optional(
+            S.NullOr(PublicCloudLoadbalancerListenerTargetSpecTlsVersionsList),
+          ),
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerListenerTargetSpec",
@@ -8303,7 +11072,7 @@ function __c9(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           loadbalancerId: S.String.pipe(T.Label()),
-          targetSpec: __S(74),
+          targetSpec: PublicCloudLoadbalancerListenerTargetSpec,
         }).pipe(
           T.Http({
             method: "POST",
@@ -8319,23 +11088,29 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          allowedCidrs: S.optional(S.NullOr(__S(72))),
+          allowedCidrs: S.optional(
+            S.NullOr(PublicCloudLoadbalancerListenerCurrentStateAllowedCidrsList),
+          ),
           connectionLimit: S.optional(S.NullOr(S.Number)),
-          defaultPool: S.optional(S.NullOr(__S(38))),
+          defaultPool: S.optional(S.NullOr(PublicCloudLoadbalancerListenerDefaultPoolDetail)),
           defaultTlsContainerRef: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          insertHeaders: S.optional(S.NullOr(__S(73))),
+          insertHeaders: S.optional(S.NullOr(PublicCloudLoadbalancerListenerInsertHeaders)),
           name: S.optional(S.String),
-          operatingStatus: S.optional(S.String),
-          protocol: S.optional(S.String),
+          operatingStatus: S.optional(PublicCloudLoadbalancerLoadbalancerOperatingStatusEnum),
+          protocol: S.optional(PublicCloudLoadbalancerListenerProtocolEnum),
           protocolPort: S.optional(S.Number),
-          provisioningStatus: S.optional(S.String),
-          sniContainerRefs: S.optional(S.NullOr(__S(76))),
+          provisioningStatus: S.optional(PublicCloudLoadbalancerLoadbalancerProvisioningStatusEnum),
+          sniContainerRefs: S.optional(
+            S.NullOr(PublicCloudLoadbalancerListenerCurrentStateSniContainerRefsList),
+          ),
           timeoutClientData: S.optional(S.NullOr(S.Number)),
           timeoutMemberConnect: S.optional(S.NullOr(S.Number)),
           timeoutMemberData: S.optional(S.NullOr(S.Number)),
           timeoutTcpInspect: S.optional(S.NullOr(S.Number)),
-          tlsVersions: S.optional(S.NullOr(__S(72))),
+          tlsVersions: S.optional(
+            S.NullOr(PublicCloudLoadbalancerListenerCurrentStateTlsVersionsList),
+          ),
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerListenerCurrentState",
@@ -8345,11 +11120,11 @@ function __c9(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(77))),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(S.NullOr(PublicCloudLoadbalancerListenerCurrentState)),
+          currentTasks: S.optional(S.NullOr(PublicCloudLoadbalancerListenerCurrentTasksList)),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(74)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudLoadbalancerListenerTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -8358,10 +11133,10 @@ function __c9(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          compareType: S.String,
+          compareType: PublicCloudLoadbalancerL7RuleCompareTypeEnum,
           invert: S.optional(S.NullOr(S.Boolean)),
           key: S.optional(S.NullOr(S.String)),
-          type: S.String,
+          type: PublicCloudLoadbalancerL7RuleTypeEnum,
           value: S.String,
         }),
       ).annotate({
@@ -8372,19 +11147,19 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(79));
+      return S.Array(PublicCloudLoadbalancerL7RuleSpec);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          action: S.String,
+          action: PublicCloudLoadbalancerL7PolicyActionEnum,
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
           position: S.optional(S.NullOr(S.Number)),
           redirectHttpCode: S.optional(S.NullOr(S.Number)),
-          redirectPool: S.optional(S.NullOr(__S(1))),
+          redirectPool: S.optional(S.NullOr(PublicCloudLoadbalancerL7PolicyRedirectPoolRef)),
           redirectPrefix: S.optional(S.NullOr(S.String)),
           redirectUrl: S.optional(S.NullOr(S.String)),
-          rules: S.optional(S.NullOr(__S(80))),
+          rules: S.optional(S.NullOr(PublicCloudLoadbalancerL7PolicyTargetSpecRulesList)),
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerL7PolicyTargetSpec",
@@ -8395,7 +11170,7 @@ function __c10(j: number): any {
           projectId: S.String.pipe(T.Label()),
           loadbalancerId: S.String.pipe(T.Label()),
           listenerId: S.String.pipe(T.Label()),
-          targetSpec: __S(81),
+          targetSpec: PublicCloudLoadbalancerL7PolicyTargetSpec,
         }).pipe(
           T.Http({
             method: "POST",
@@ -8413,8 +11188,12 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           invert: S.optional(S.NullOr(S.Boolean)),
           key: S.optional(S.NullOr(S.String)),
-          operatingStatus: S.optional(S.NullOr(S.String)),
-          provisioningStatus: S.optional(S.NullOr(S.String)),
+          operatingStatus: S.optional(
+            S.NullOr(PublicCloudLoadbalancerLoadbalancerOperatingStatusEnum),
+          ),
+          provisioningStatus: S.optional(
+            S.NullOr(PublicCloudLoadbalancerLoadbalancerProvisioningStatusEnum),
+          ),
           type: S.optional(S.String),
           value: S.optional(S.String),
         }),
@@ -8422,21 +11201,25 @@ function __c10(j: number): any {
         identifier: "PublicCloudLoadbalancerL7RuleState",
       });
     case 4:
-      return S.Array(__S(83));
+      return S.Array(PublicCloudLoadbalancerL7RuleState);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(S.String),
+          action: S.optional(PublicCloudLoadbalancerL7PolicyActionEnum),
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          operatingStatus: S.optional(S.NullOr(S.String)),
+          operatingStatus: S.optional(
+            S.NullOr(PublicCloudLoadbalancerLoadbalancerOperatingStatusEnum),
+          ),
           position: S.optional(S.NullOr(S.Number)),
-          provisioningStatus: S.optional(S.NullOr(S.String)),
+          provisioningStatus: S.optional(
+            S.NullOr(PublicCloudLoadbalancerLoadbalancerProvisioningStatusEnum),
+          ),
           redirectHttpCode: S.optional(S.NullOr(S.Number)),
-          redirectPool: S.optional(S.NullOr(__S(38))),
+          redirectPool: S.optional(S.NullOr(PublicCloudLoadbalancerL7PolicyRedirectPoolDetail)),
           redirectPrefix: S.optional(S.NullOr(S.String)),
           redirectUrl: S.optional(S.NullOr(S.String)),
-          rules: S.optional(S.NullOr(__S(84))),
+          rules: S.optional(S.NullOr(PublicCloudLoadbalancerL7PolicyCurrentStateRulesList)),
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerL7PolicyCurrentState",
@@ -8446,11 +11229,11 @@ function __c10(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(85))),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(S.NullOr(PublicCloudLoadbalancerL7PolicyCurrentState)),
+          currentTasks: S.optional(S.NullOr(PublicCloudLoadbalancerL7PolicyCurrentTasksList)),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(81)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudLoadbalancerL7PolicyTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -8462,13 +11245,13 @@ function __c10(j: number): any {
           delay: S.Number,
           domainName: S.optional(S.NullOr(S.String)),
           expectedCodes: S.optional(S.NullOr(S.String)),
-          httpMethod: S.optional(S.NullOr(S.String)),
+          httpMethod: S.optional(S.NullOr(PublicCloudLoadbalancerHealthMonitorHttpMethodEnum)),
           httpVersion: S.optional(S.NullOr(S.String)),
           maxRetries: S.Number,
           maxRetriesDown: S.optional(S.NullOr(S.Number)),
           name: S.optional(S.NullOr(S.String)),
           timeout: S.Number,
-          type: S.String,
+          type: PublicCloudLoadbalancerHealthMonitorTypeEnum,
           urlPath: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -8482,7 +11265,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           cookieName: S.optional(S.NullOr(S.String)),
-          type: S.String,
+          type: PublicCloudLoadbalancerSessionPersistenceTypeEnum,
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerSessionPersistence",
@@ -8490,12 +11273,12 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          algorithm: S.String,
+          algorithm: PublicCloudLoadbalancerPoolAlgorithmEnum,
           description: S.optional(S.NullOr(S.String)),
-          healthMonitor: S.optional(S.NullOr(__S(87))),
+          healthMonitor: S.optional(S.NullOr(PublicCloudLoadbalancerHealthMonitorTargetSpec)),
           name: S.optional(S.NullOr(S.String)),
-          persistence: S.optional(S.NullOr(__S(88))),
-          protocol: S.String,
+          persistence: S.optional(S.NullOr(PublicCloudLoadbalancerSessionPersistence)),
+          protocol: PublicCloudLoadbalancerPoolProtocolEnum,
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerPoolTargetSpec",
@@ -8505,7 +11288,7 @@ function __c11(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           loadbalancerId: S.String.pipe(T.Label()),
-          targetSpec: __S(89),
+          targetSpec: PublicCloudLoadbalancerPoolTargetSpec,
         }).pipe(
           T.Http({
             method: "POST",
@@ -8531,7 +11314,7 @@ function __c11(j: number): any {
           operatingStatus: S.optional(S.NullOr(S.String)),
           provisioningStatus: S.optional(S.NullOr(S.String)),
           timeout: S.optional(S.Number),
-          type: S.optional(S.String),
+          type: S.optional(PublicCloudLoadbalancerHealthMonitorTypeEnum),
           urlPath: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -8540,14 +11323,14 @@ function __c11(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          algorithm: S.optional(S.String),
+          algorithm: S.optional(PublicCloudLoadbalancerPoolAlgorithmEnum),
           description: S.optional(S.NullOr(S.String)),
-          healthMonitor: S.optional(S.NullOr(__S(91))),
+          healthMonitor: S.optional(S.NullOr(PublicCloudLoadbalancerHealthMonitorCurrentState)),
           name: S.optional(S.NullOr(S.String)),
-          operatingStatus: S.optional(S.String),
-          persistence: S.optional(S.NullOr(__S(88))),
-          protocol: S.optional(S.String),
-          provisioningStatus: S.optional(S.String),
+          operatingStatus: S.optional(PublicCloudLoadbalancerLoadbalancerOperatingStatusEnum),
+          persistence: S.optional(S.NullOr(PublicCloudLoadbalancerSessionPersistence)),
+          protocol: S.optional(PublicCloudLoadbalancerPoolProtocolEnum),
+          provisioningStatus: S.optional(PublicCloudLoadbalancerLoadbalancerProvisioningStatusEnum),
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerPoolCurrentState",
@@ -8557,11 +11340,11 @@ function __c11(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(92))),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(S.NullOr(PublicCloudLoadbalancerPoolCurrentState)),
+          currentTasks: S.optional(S.NullOr(PublicCloudLoadbalancerPoolCurrentTasksList)),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(89)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudLoadbalancerPoolTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -8581,10 +11364,10 @@ function __c11(j: number): any {
         S.Struct({
           address: S.String,
           backup: S.optional(S.NullOr(S.Boolean)),
-          monitor: S.optional(S.NullOr(__S(94))),
+          monitor: S.optional(S.NullOr(PublicCloudLoadbalancerMemberMonitor)),
           name: S.optional(S.NullOr(S.String)),
           protocolPort: S.Number,
-          subnet: S.optional(S.NullOr(__S(1))),
+          subnet: S.optional(S.NullOr(PublicCloudLoadbalancerLoadbalancerSubnetRef)),
           weight: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
@@ -8600,7 +11383,7 @@ function __c12(j: number): any {
           projectId: S.String.pipe(T.Label()),
           loadbalancerId: S.String.pipe(T.Label()),
           poolId: S.String.pipe(T.Label()),
-          targetSpec: __S(95),
+          targetSpec: PublicCloudLoadbalancerMemberTargetSpec,
         }).pipe(
           T.Http({
             method: "POST",
@@ -8616,12 +11399,12 @@ function __c12(j: number): any {
         S.Struct({
           address: S.optional(S.String),
           backup: S.optional(S.NullOr(S.Boolean)),
-          monitor: S.optional(S.NullOr(__S(94))),
+          monitor: S.optional(S.NullOr(PublicCloudLoadbalancerMemberMonitor)),
           name: S.optional(S.String),
-          operatingStatus: S.optional(S.String),
+          operatingStatus: S.optional(PublicCloudLoadbalancerLoadbalancerOperatingStatusEnum),
           protocolPort: S.optional(S.Number),
-          provisioningStatus: S.optional(S.String),
-          subnet: S.optional(S.NullOr(__S(1))),
+          provisioningStatus: S.optional(PublicCloudLoadbalancerLoadbalancerProvisioningStatusEnum),
+          subnet: S.optional(S.NullOr(PublicCloudLoadbalancerLoadbalancerSubnetRef)),
           weight: S.optional(S.Number),
         }),
       ).annotate({
@@ -8632,11 +11415,11 @@ function __c12(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(97))),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(S.NullOr(PublicCloudLoadbalancerMemberCurrentState)),
+          currentTasks: S.optional(S.NullOr(PublicCloudLoadbalancerMemberCurrentTasksList)),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(95)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudLoadbalancerMemberTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -8646,7 +11429,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          location: __S(2),
+          location: PublicCloudCommonLocation,
           name: S.String,
           vlanId: S.optional(S.NullOr(S.Number)),
         }),
@@ -8657,7 +11440,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(99),
+          targetSpec: PublicCloudNetworkNetworkTargetSpec,
         }).pipe(
           T.Http({ method: "POST", uri: "/publicCloud/project/{projectId}/network", code: 200 }),
         ),
@@ -8668,7 +11451,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          location: S.optional(__S(2)),
+          location: S.optional(PublicCloudCommonLocation),
           name: S.optional(S.String),
           vlanId: S.optional(S.NullOr(S.Number)),
         }),
@@ -8680,11 +11463,11 @@ function __c12(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(101))),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(S.NullOr(PublicCloudNetworkNetworkCurrentState)),
+          currentTasks: S.optional(S.NullOr(PublicCloudNetworkNetworkCurrentTasksList)),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(99)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudNetworkNetworkTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -8704,17 +11487,21 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(103));
+      return S.Array(PublicCloudNetworkSubnetAllocationPool);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          allocationPools: S.optional(S.NullOr(__S(104))),
+          allocationPools: S.optional(
+            S.NullOr(PublicCloudNetworkSubnetTargetSpecAllocationPoolsList),
+          ),
           cidr: S.String,
           description: S.optional(S.NullOr(S.String)),
           dhcpEnabled: S.optional(S.NullOr(S.Boolean)),
-          dnsNameservers: S.optional(S.NullOr(__S(72))),
+          dnsNameservers: S.optional(
+            S.NullOr(PublicCloudNetworkSubnetTargetSpecDnsNameserversList),
+          ),
           gatewayIp: S.optional(S.NullOr(S.String)),
-          location: __S(2),
+          location: PublicCloudCommonLocation,
           name: S.String,
         }),
       ).annotate({
@@ -8725,7 +11512,7 @@ function __c13(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           networkId: S.String.pipe(T.Label()),
-          targetSpec: __S(105),
+          targetSpec: PublicCloudNetworkSubnetTargetSpec,
         }).pipe(
           T.Http({
             method: "POST",
@@ -8746,18 +11533,22 @@ function __c13(j: number): any {
         identifier: "PublicCloudNetworkSubnetHostRoute",
       });
     case 4:
-      return S.Array(__S(107));
+      return S.Array(PublicCloudNetworkSubnetHostRoute);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          allocationPools: S.optional(S.NullOr(__S(104))),
+          allocationPools: S.optional(
+            S.NullOr(PublicCloudNetworkSubnetCurrentStateAllocationPoolsList),
+          ),
           cidr: S.optional(S.String),
           description: S.optional(S.String),
           dhcpEnabled: S.optional(S.Boolean),
-          dnsNameservers: S.optional(S.NullOr(__S(72))),
+          dnsNameservers: S.optional(
+            S.NullOr(PublicCloudNetworkSubnetCurrentStateDnsNameserversList),
+          ),
           gatewayIp: S.optional(S.NullOr(S.String)),
-          hostRoutes: S.optional(S.NullOr(__S(108))),
-          location: S.optional(__S(2)),
+          hostRoutes: S.optional(S.NullOr(PublicCloudNetworkSubnetCurrentStateHostRoutesList)),
+          location: S.optional(PublicCloudCommonLocation),
           name: S.optional(S.String),
         }),
       ).annotate({
@@ -8768,11 +11559,11 @@ function __c13(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(109))),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(S.NullOr(PublicCloudNetworkSubnetCurrentState)),
+          currentTasks: S.optional(S.NullOr(PublicCloudNetworkSubnetCurrentTasksList)),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(105)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudNetworkSubnetTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublicCloudNetworkSubnet" });
@@ -8780,7 +11571,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(42),
+          targetSpec: PublicCloudFloatingIpFloatingIPTargetSpec,
         }).pipe(
           T.Http({
             method: "POST",
@@ -8799,7 +11590,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(PublicCloudPublicIpPublicIPAssociatedResourceTypeEnum),
         }),
       ).annotate({
         identifier: "PublicCloudPublicIpPublicIPAssociatedResource",
@@ -8807,13 +11598,13 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          associatedResource: S.optional(S.NullOr(__S(112))),
+          associatedResource: S.optional(S.NullOr(PublicCloudPublicIpPublicIPAssociatedResource)),
           description: S.optional(S.NullOr(S.String)),
           id: S.optional(S.NullOr(S.String)),
           ip: S.optional(S.String),
-          location: S.optional(__S(2)),
-          network: S.optional(S.NullOr(__S(38))),
-          status: S.optional(S.String),
+          location: S.optional(PublicCloudCommonLocation),
+          network: S.optional(S.NullOr(PublicCloudFloatingIpFloatingIPNetwork)),
+          status: S.optional(PublicCloudPublicIpFloatingIPStatusEnum),
         }),
       ).annotate({
         identifier: "PublicCloudPublicIpFloatingIPCurrentState",
@@ -8823,11 +11614,11 @@ function __c14(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(113))),
-          currentTasks: S.optional(__S(11)),
+          currentState: S.optional(S.NullOr(PublicCloudPublicIpFloatingIPCurrentState)),
+          currentTasks: S.optional(PublicCloudPublicIpFloatingIPCurrentTasksList),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(42)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudFloatingIpFloatingIPTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -8838,7 +11629,7 @@ function __c14(j: number): any {
         S.Struct({
           iamAuthEnabled: S.optional(S.Boolean),
           name: S.String,
-          plan: S.String,
+          plan: PublicCloudRancherPlanEnum,
           version: S.optional(S.String),
         }),
       ).annotate({
@@ -8848,7 +11639,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(115),
+          targetSpec: PublicCloudRancherRancherCreationTargetSpec,
         }).pipe(
           T.Http({ method: "POST", uri: "/publicCloud/project/{projectId}/rancher", code: 200 }),
         ),
@@ -8865,11 +11656,11 @@ function __c14(j: number): any {
         identifier: "PublicCloudRancherIpRestriction",
       });
     case 6:
-      return S.Array(__S(117));
+      return S.Array(PublicCloudRancherIpRestriction);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          egressCidrBlocks: S.optional(__S(72)),
+          egressCidrBlocks: S.optional(PublicCloudRancherNetworkingEgressCidrBlocksList),
         }),
       ).annotate({
         identifier: "PublicCloudRancherNetworking",
@@ -8890,13 +11681,15 @@ function __c15(j: number): any {
         S.Struct({
           bootstrapPassword: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           iamAuthEnabled: S.optional(S.NullOr(S.Boolean)),
-          ipRestrictions: S.optional(S.NullOr(__S(118))),
+          ipRestrictions: S.optional(
+            S.NullOr(PublicCloudRancherRancherCurrentStateIpRestrictionsList),
+          ),
           name: S.optional(S.String),
-          networking: S.optional(S.NullOr(__S(119))),
-          plan: S.optional(S.String),
-          region: S.optional(S.String),
+          networking: S.optional(S.NullOr(PublicCloudRancherNetworking)),
+          plan: S.optional(PublicCloudRancherPlanEnum),
+          region: S.optional(PublicCloudRancherRegionEnum),
           url: S.optional(S.NullOr(S.String)),
-          usage: S.optional(S.NullOr(__S(120))),
+          usage: S.optional(S.NullOr(PublicCloudRancherUsage)),
           version: S.optional(S.String),
         }),
       ).annotate({
@@ -8906,9 +11699,9 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           iamAuthEnabled: S.optional(S.Boolean),
-          ipRestrictions: S.optional(__S(118)),
+          ipRestrictions: S.optional(PublicCloudRancherRancherTargetSpecIpRestrictionsList),
           name: S.String,
-          plan: S.String,
+          plan: PublicCloudRancherPlanEnum,
           version: S.String,
         }),
       ).annotate({
@@ -8918,11 +11711,11 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
-          currentState: S.optional(__S(121)),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(PublicCloudRancherRancherCurrentState),
+          currentTasks: S.optional(S.NullOr(PublicCloudRancherRancherCurrentTasksList)),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(122)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudRancherRancherTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -8956,19 +11749,19 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          direction: S.String,
-          ethernetType: S.String,
+          direction: PublicCloudSecurityGroupTrafficFlowEnum,
+          ethernetType: PublicCloudSecurityGroupEthernetTypeEnum,
           portRangeMax: S.optional(S.NullOr(S.Number)),
           portRangeMin: S.optional(S.NullOr(S.Number)),
-          protocol: S.optional(S.NullOr(S.String)),
-          remoteGroup: S.optional(S.NullOr(__S(1))),
+          protocol: S.optional(S.NullOr(PublicCloudSecurityGroupProtocolEnum)),
+          remoteGroup: S.optional(S.NullOr(PublicCloudSecurityGroupSecurityGroupRef)),
           remoteIpPrefix: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "PublicCloudSecurityGroupSecurityGroupTargetRule",
       });
     case 7:
-      return S.Array(__S(126));
+      return S.Array(PublicCloudSecurityGroupSecurityGroupTargetRule);
   }
 }
 function __c16(j: number): any {
@@ -8977,9 +11770,9 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          location: __S(2),
+          location: PublicCloudCommonLocation,
           name: S.String,
-          rules: S.optional(S.NullOr(__S(127))),
+          rules: S.optional(S.NullOr(PublicCloudSecurityGroupSecurityGroupTargetSpecRulesList)),
         }),
       ).annotate({
         identifier: "PublicCloudSecurityGroupSecurityGroupTargetSpec",
@@ -8988,7 +11781,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(128),
+          targetSpec: PublicCloudSecurityGroupSecurityGroupTargetSpec,
         }).pipe(
           T.Http({
             method: "POST",
@@ -9003,30 +11796,32 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          direction: S.optional(S.String),
-          ethernetType: S.optional(S.String),
+          direction: S.optional(PublicCloudSecurityGroupTrafficFlowEnum),
+          ethernetType: S.optional(PublicCloudSecurityGroupEthernetTypeEnum),
           id: S.optional(S.String),
           portRangeMax: S.optional(S.NullOr(S.Number)),
           portRangeMin: S.optional(S.NullOr(S.Number)),
-          protocol: S.optional(S.NullOr(S.String)),
-          remoteGroup: S.optional(S.NullOr(__S(1))),
+          protocol: S.optional(S.NullOr(PublicCloudSecurityGroupProtocolEnum)),
+          remoteGroup: S.optional(S.NullOr(PublicCloudSecurityGroupSecurityGroupRef)),
           remoteIpPrefix: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "PublicCloudSecurityGroupSecurityGroupStateRule",
       });
     case 3:
-      return S.Array(__S(130));
+      return S.Array(PublicCloudSecurityGroupSecurityGroupStateRule);
     case 4:
-      return S.Array(__S(130));
+      return S.Array(PublicCloudSecurityGroupSecurityGroupStateRule);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          defaultRules: S.optional(S.NullOr(__S(131))),
+          defaultRules: S.optional(
+            S.NullOr(PublicCloudSecurityGroupSecurityGroupCurrentStateDefaultRulesList),
+          ),
           description: S.optional(S.NullOr(S.String)),
-          location: S.optional(__S(2)),
+          location: S.optional(PublicCloudCommonLocation),
           name: S.optional(S.String),
-          rules: S.optional(__S(132)),
+          rules: S.optional(PublicCloudSecurityGroupSecurityGroupCurrentStateRulesList),
         }),
       ).annotate({
         identifier: "PublicCloudSecurityGroupSecurityGroupCurrentState",
@@ -9036,11 +11831,11 @@ function __c16(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(133))),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(S.NullOr(PublicCloudSecurityGroupSecurityGroupCurrentState)),
+          currentTasks: S.optional(S.NullOr(PublicCloudSecurityGroupSecurityGroupCurrentTasksList)),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(128)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudSecurityGroupSecurityGroupTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -9075,7 +11870,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          location: __S(2),
+          location: PublicCloudCommonLocation,
           name: S.String,
           volumeId: S.String,
         }),
@@ -9086,7 +11881,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(137),
+          targetSpec: PublicCloudBlockStorageBackupTargetSpec,
         }).pipe(
           T.Http({
             method: "POST",
@@ -9101,7 +11896,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          location: S.optional(__S(2)),
+          location: S.optional(PublicCloudCommonLocation),
           name: S.optional(S.String),
           size: S.optional(S.Number),
           volumeId: S.optional(S.String),
@@ -9114,11 +11909,11 @@ function __c17(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(139))),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(S.NullOr(PublicCloudBlockStorageBackupCurrentState)),
+          currentTasks: S.optional(S.NullOr(PublicCloudBlockStorageBackupCurrentTasksList)),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(137)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudBlockStorageBackupTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -9128,7 +11923,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(137),
+          targetSpec: PublicCloudBlockStorageSnapshotTargetSpec,
         }).pipe(
           T.Http({
             method: "POST",
@@ -9164,12 +11959,12 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          createFrom: S.optional(S.NullOr(__S(142))),
-          encryption: S.optional(S.NullOr(__S(143))),
-          location: __S(2),
+          createFrom: S.optional(S.NullOr(PublicCloudBlockStorageBlockCreateFrom)),
+          encryption: S.optional(S.NullOr(PublicCloudBlockStorageBlockEncryption)),
+          location: PublicCloudCommonLocation,
           name: S.String,
           size: S.Number,
-          volumeType: S.optional(S.NullOr(S.String)),
+          volumeType: S.optional(S.NullOr(PublicCloudBlockStorageVolumeTypeEnum)),
         }),
       ).annotate({
         identifier: "PublicCloudBlockStorageBlockTargetSpec",
@@ -9178,7 +11973,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(144),
+          targetSpec: PublicCloudBlockStorageBlockTargetSpec,
         }).pipe(
           T.Http({
             method: "POST",
@@ -9192,16 +11987,18 @@ function __c18(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          attachedInstances: S.optional(S.NullOr(__S(39))),
+          attachedInstances: S.optional(
+            S.NullOr(PublicCloudBlockStorageBlockCurrentStateAttachedInstancesList),
+          ),
           bootable: S.optional(S.Boolean),
           description: S.optional(S.NullOr(S.String)),
-          encryption: S.optional(__S(143)),
-          location: S.optional(__S(2)),
+          encryption: S.optional(PublicCloudBlockStorageBlockEncryption),
+          location: S.optional(PublicCloudCommonLocation),
           locked: S.optional(S.Boolean),
           name: S.optional(S.String),
           size: S.optional(S.Number),
-          status: S.optional(S.String),
-          volumeType: S.optional(S.String),
+          status: S.optional(PublicCloudBlockStorageVolumeStatusEnum),
+          volumeType: S.optional(PublicCloudBlockStorageVolumeTypeEnum),
         }),
       ).annotate({
         identifier: "PublicCloudBlockStorageBlockCurrentState",
@@ -9211,11 +12008,11 @@ function __c18(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(146))),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(S.NullOr(PublicCloudBlockStorageBlockCurrentState)),
+          currentTasks: S.optional(S.NullOr(PublicCloudBlockStorageBlockCurrentTasksList)),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(144)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudBlockStorageBlockTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -9233,10 +12030,10 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          location: __S(2),
+          location: PublicCloudCommonLocation,
           name: S.String,
-          network: __S(148),
-          subnet: __S(148),
+          network: PublicCloudStorageFileFileStorageNetworkTargetSpecNetwork,
+          subnet: PublicCloudStorageFileFileStorageNetworkTargetSpecNetwork,
         }),
       ).annotate({
         identifier: "PublicCloudStorageFileFileStorageNetworkTargetSpec",
@@ -9245,7 +12042,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(149),
+          targetSpec: PublicCloudStorageFileFileStorageNetworkTargetSpec,
         }).pipe(
           T.Http({
             method: "POST",
@@ -9260,9 +12057,9 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(149)),
-          currentState: S.optional(S.NullOr(__S(149))),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudStorageFileFileStorageNetworkTargetSpec),
+          currentState: S.optional(S.NullOr(PublicCloudStorageFileFileStorageNetworkTargetSpec)),
         }),
       ).annotate({
         identifier: "PublicCloudStorageFileFileStorageNetwork",
@@ -9276,7 +12073,7 @@ function __c19(j: number): any {
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          share: __S(148),
+          share: PublicCloudStorageFileFileStorageSnapshotTargetSpecShare,
         }),
       ).annotate({
         identifier: "PublicCloudStorageFileFileStorageSnapshotTargetSpec",
@@ -9285,7 +12082,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(152),
+          targetSpec: PublicCloudStorageFileFileStorageSnapshotTargetSpec,
         }).pipe(
           T.Http({
             method: "POST",
@@ -9308,9 +12105,9 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          location: S.optional(__S(2)),
+          location: S.optional(PublicCloudCommonLocation),
           name: S.optional(S.NullOr(S.String)),
-          share: S.optional(__S(154)),
+          share: S.optional(PublicCloudStorageFileFileStorageSnapshotCurrentStateShare),
           size: S.optional(S.Number),
         }),
       ).annotate({
@@ -9321,11 +12118,13 @@ function __c19(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(155))),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(S.NullOr(PublicCloudStorageFileFileStorageSnapshotCurrentState)),
+          currentTasks: S.optional(
+            S.NullOr(PublicCloudStorageFileFileStorageSnapshotCurrentTasksList),
+          ),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(152)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudStorageFileFileStorageSnapshotTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -9334,7 +12133,7 @@ function __c19(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          algorithm: S.String,
+          algorithm: PublicCloudStorageObjectBucketEncryptionAlgorithmEnum,
         }),
       ).annotate({
         identifier: "PublicCloudStorageObjectBucketEncryptionConfig",
@@ -9350,7 +12149,7 @@ function __c19(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          mode: S.String,
+          mode: PublicCloudStorageObjectBucketObjectLockModeEnum,
           retentionDays: S.Number,
         }),
       ).annotate({
@@ -9363,7 +12162,7 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.String,
+          status: PublicCloudStorageObjectBucketVersioningStatusEnum,
         }),
       ).annotate({
         identifier: "PublicCloudStorageObjectBucketVersioningConfig",
@@ -9371,13 +12170,13 @@ function __c20(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          encryption: S.optional(S.NullOr(__S(157))),
-          location: __S(158),
+          encryption: S.optional(S.NullOr(PublicCloudStorageObjectBucketEncryptionConfig)),
+          location: PublicCloudStorageObjectBucketLocation,
           name: S.String,
-          objectLock: S.optional(S.NullOr(__S(159))),
+          objectLock: S.optional(S.NullOr(PublicCloudStorageObjectBucketObjectLockConfigInput)),
           ownerUserId: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(59))),
-          versioning: S.optional(S.NullOr(__S(160))),
+          tags: S.optional(S.NullOr(PublicCloudStorageObjectBucketTargetSpecInputTagsMap)),
+          versioning: S.optional(S.NullOr(PublicCloudStorageObjectBucketVersioningConfig)),
         }),
       ).annotate({
         identifier: "PublicCloudStorageObjectBucketTargetSpecInput",
@@ -9386,7 +12185,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(161),
+          targetSpec: PublicCloudStorageObjectBucketTargetSpecInput,
         }).pipe(
           T.Http({
             method: "POST",
@@ -9400,7 +12199,7 @@ function __c20(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          mode: S.String,
+          mode: PublicCloudStorageObjectBucketObjectLockModeEnum,
           retentionDays: S.Number,
           retentionYears: S.optional(S.NullOr(S.Number)),
         }),
@@ -9410,12 +12209,12 @@ function __c20(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          encryption: S.optional(S.NullOr(__S(157))),
-          location: S.optional(__S(158)),
+          encryption: S.optional(S.NullOr(PublicCloudStorageObjectBucketEncryptionConfig)),
+          location: S.optional(PublicCloudStorageObjectBucketLocation),
           name: S.optional(S.String),
-          objectLock: S.optional(S.NullOr(__S(163))),
-          tags: S.optional(S.NullOr(__S(59))),
-          versioning: S.optional(S.NullOr(__S(160))),
+          objectLock: S.optional(S.NullOr(PublicCloudStorageObjectBucketObjectLockConfig)),
+          tags: S.optional(S.NullOr(PublicCloudStorageObjectBucketCurrentStateTagsMap)),
+          versioning: S.optional(S.NullOr(PublicCloudStorageObjectBucketVersioningConfig)),
         }),
       ).annotate({
         identifier: "PublicCloudStorageObjectBucketCurrentState",
@@ -9423,13 +12222,13 @@ function __c20(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          encryption: S.optional(S.NullOr(__S(157))),
-          location: __S(158),
+          encryption: S.optional(S.NullOr(PublicCloudStorageObjectBucketEncryptionConfig)),
+          location: PublicCloudStorageObjectBucketLocation,
           name: S.String,
-          objectLock: S.optional(S.NullOr(__S(163))),
+          objectLock: S.optional(S.NullOr(PublicCloudStorageObjectBucketObjectLockConfig)),
           ownerUserId: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(59))),
-          versioning: S.optional(S.NullOr(__S(160))),
+          tags: S.optional(S.NullOr(PublicCloudStorageObjectBucketTargetSpecTagsMap)),
+          versioning: S.optional(S.NullOr(PublicCloudStorageObjectBucketVersioningConfig)),
         }),
       ).annotate({
         identifier: "PublicCloudStorageObjectBucketTargetSpec",
@@ -9439,11 +12238,11 @@ function __c20(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(164))),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(S.NullOr(PublicCloudStorageObjectBucketCurrentState)),
+          currentTasks: S.optional(S.NullOr(PublicCloudStorageObjectBucketCurrentTasksList)),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(165)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudStorageObjectBucketTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -9743,10 +12542,10 @@ function __c23(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          associatedResource: S.optional(S.NullOr(__S(112))),
+          associatedResource: S.optional(S.NullOr(PublicCloudPublicIpPublicIPAssociatedResource)),
           id: S.optional(S.NullOr(S.String)),
           ip: S.optional(S.String),
-          location: S.optional(__S(2)),
+          location: S.optional(PublicCloudCommonLocation),
         }),
       ).annotate({
         identifier: "PublicCloudPublicIpExtNetIPCurrentState",
@@ -9756,10 +12555,10 @@ function __c23(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(__S(185)),
-          currentTasks: S.optional(__S(11)),
+          currentState: S.optional(PublicCloudPublicIpExtNetIPCurrentState),
+          currentTasks: S.optional(PublicCloudPublicIpExtNetIPCurrentTasksList),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -9907,17 +12706,17 @@ function __c24(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          accessLevel: S.optional(S.String),
+          accessLevel: S.optional(PublicCloudStorageFileFileStorageAccessLevelEnum),
           accessTo: S.optional(S.String),
           createdAt: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(PublicCloudStorageFileFileStorageAccessRuleStateEnum),
         }),
       ).annotate({
         identifier: "PublicCloudStorageFileFileStorageAccessRule",
       });
     case 5:
-      return S.Array(__S(196));
+      return S.Array(PublicCloudStorageFileFileStorageAccessRule);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -9928,7 +12727,7 @@ function __c24(j: number): any {
         identifier: "PublicCloudStorageFileFileStorageExportLocation",
       });
     case 7:
-      return S.Array(__S(198));
+      return S.Array(PublicCloudStorageFileFileStorageExportLocation);
   }
 }
 function __c25(j: number): any {
@@ -9936,14 +12735,18 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accessRules: S.optional(S.NullOr(__S(197))),
+          accessRules: S.optional(
+            S.NullOr(PublicCloudStorageFileFileStorageCurrentStateAccessRulesList),
+          ),
           description: S.optional(S.NullOr(S.String)),
-          exportLocations: S.optional(S.NullOr(__S(199))),
-          location: S.optional(__S(2)),
+          exportLocations: S.optional(
+            S.NullOr(PublicCloudStorageFileFileStorageCurrentStateExportLocationsList),
+          ),
+          location: S.optional(PublicCloudCommonLocation),
           name: S.optional(S.String),
           networkId: S.optional(S.String),
-          protocol: S.optional(S.String),
-          shareType: S.optional(S.String),
+          protocol: S.optional(PublicCloudStorageFileFileStorageProtocolEnum),
+          shareType: S.optional(PublicCloudStorageFileFileStorageTypeEnum),
           size: S.optional(S.Number),
           subnetId: S.optional(S.String),
         }),
@@ -9953,24 +12756,26 @@ function __c25(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          accessLevel: S.String,
+          accessLevel: PublicCloudStorageFileFileStorageAccessLevelEnum,
           accessTo: S.String,
         }),
       ).annotate({
         identifier: "PublicCloudStorageFileFileStorageAccessRuleInput",
       });
     case 2:
-      return S.Array(__S(201));
+      return S.Array(PublicCloudStorageFileFileStorageAccessRuleInput);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          accessRules: S.optional(S.NullOr(__S(202))),
+          accessRules: S.optional(
+            S.NullOr(PublicCloudStorageFileFileStorageTargetSpecAccessRulesList),
+          ),
           description: S.optional(S.NullOr(S.String)),
-          location: __S(2),
+          location: PublicCloudCommonLocation,
           name: S.String,
-          shareNetwork: __S(1),
-          protocol: S.String,
-          shareType: S.String,
+          shareNetwork: PublicCloudStorageFileFileStorageTargetSpecShareNetwork,
+          protocol: PublicCloudStorageFileFileStorageProtocolEnum,
+          shareType: PublicCloudStorageFileFileStorageTypeEnum,
           size: S.Number,
         }),
       ).annotate({
@@ -9981,11 +12786,11 @@ function __c25(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(200))),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(S.NullOr(PublicCloudStorageFileFileStorageCurrentState)),
+          currentTasks: S.optional(S.NullOr(PublicCloudStorageFileFileStorageCurrentTasksList)),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(203)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudStorageFileFileStorageTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -10036,7 +12841,7 @@ function __c26(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(S.String),
+          mode: S.optional(PublicCloudProjectModeEnum),
           name: S.optional(S.String),
         }),
       ).annotate({
@@ -10047,15 +12852,15 @@ function __c26(j: number): any {
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          state: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(59))),
+          state: S.optional(S.NullOr(IamResourceMetadataStateEnum)),
+          tags: S.optional(S.NullOr(IamResourceMetadataTagsMap)),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          mode: S.String,
+          mode: PublicCloudProjectModeEnum,
           name: S.String,
         }),
       ).annotate({
@@ -10065,13 +12870,13 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
-          currentState: S.optional(__S(208)),
-          currentTasks: S.optional(S.NullOr(__S(11))),
-          iam: S.optional(S.NullOr(__S(209))),
+          currentState: S.optional(PublicCloudProjectProjectCurrentState),
+          currentTasks: S.optional(S.NullOr(PublicCloudProjectProjectAsyncWithIAMCurrentTasksList)),
+          iam: S.optional(S.NullOr(IamResourceMetadata)),
           id: S.optional(S.String),
           name: S.optional(S.NullOr(S.String)),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(210)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudProjectProjectTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -10395,7 +13200,7 @@ function __c29(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          associatedResource: S.optional(S.NullOr(__S(112))),
+          associatedResource: S.optional(S.NullOr(PublicCloudPublicIpPublicIPAssociatedResource)),
           block: S.optional(S.NullOr(S.String)),
           id: S.optional(S.NullOr(S.String)),
           ip: S.optional(S.String),
@@ -10407,10 +13212,10 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           checksum: S.optional(S.String),
-          currentState: S.optional(__S(232)),
-          currentTasks: S.optional(__S(11)),
+          currentState: S.optional(PublicCloudPublicIpAdditionalIPCurrentState),
+          currentTasks: S.optional(PublicCloudPublicIpAdditionalIPCurrentTasksList),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
         }),
       ).annotate({
         identifier: "PublicCloudPublicIpAdditionalIP",
@@ -10541,25 +13346,25 @@ function __c30(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          compute: S.optional(S.NullOr(__S(237))),
-          keyManager: S.optional(S.NullOr(__S(238))),
-          keypair: S.optional(S.NullOr(__S(239))),
-          loadbalancer: S.optional(S.NullOr(__S(240))),
+          compute: S.optional(S.NullOr(PublicCloudQuotaQuotaProfileCompute)),
+          keyManager: S.optional(S.NullOr(PublicCloudQuotaQuotaProfileKeyManager)),
+          keypair: S.optional(S.NullOr(PublicCloudQuotaQuotaProfileKeypair)),
+          loadbalancer: S.optional(S.NullOr(PublicCloudQuotaQuotaProfileLoadbalancer)),
           name: S.optional(S.String),
-          network: S.optional(S.NullOr(__S(241))),
-          share: S.optional(S.NullOr(__S(242))),
-          volume: S.optional(S.NullOr(__S(243))),
+          network: S.optional(S.NullOr(PublicCloudQuotaQuotaProfileNetwork)),
+          share: S.optional(S.NullOr(PublicCloudQuotaQuotaProfileShare)),
+          volume: S.optional(S.NullOr(PublicCloudQuotaQuotaProfileVolume)),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaProfile",
       });
     case 5:
-      return S.Array(__S(244));
+      return S.Array(PublicCloudQuotaQuotaProfile);
     case 6:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number),
-          unit: S.optional(S.String),
+          unit: S.optional(PublicCloudQuotaQuotaUnitEnum),
           used: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
@@ -10568,9 +13373,9 @@ function __c30(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          cores: S.optional(__S(246)),
-          instances: S.optional(__S(246)),
-          memory: S.optional(__S(246)),
+          cores: S.optional(PublicCloudQuotaQuotaUsage),
+          instances: S.optional(PublicCloudQuotaQuotaUsage),
+          memory: S.optional(PublicCloudQuotaQuotaUsage),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaRegionCompute",
@@ -10582,8 +13387,8 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          containers: S.optional(__S(246)),
-          secrets: S.optional(__S(246)),
+          containers: S.optional(PublicCloudQuotaQuotaUsage),
+          secrets: S.optional(PublicCloudQuotaQuotaUsage),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaRegionKeyManager",
@@ -10591,7 +13396,7 @@ function __c31(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          keypairs: S.optional(__S(246)),
+          keypairs: S.optional(PublicCloudQuotaQuotaUsage),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaRegionKeypair",
@@ -10599,13 +13404,13 @@ function __c31(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          healthMonitors: S.optional(__S(246)),
-          l7Policies: S.optional(__S(246)),
-          l7Rules: S.optional(__S(246)),
-          listeners: S.optional(__S(246)),
-          loadbalancers: S.optional(__S(246)),
-          members: S.optional(__S(246)),
-          pools: S.optional(__S(246)),
+          healthMonitors: S.optional(PublicCloudQuotaQuotaUsage),
+          l7Policies: S.optional(PublicCloudQuotaQuotaUsage),
+          l7Rules: S.optional(PublicCloudQuotaQuotaUsage),
+          listeners: S.optional(PublicCloudQuotaQuotaUsage),
+          loadbalancers: S.optional(PublicCloudQuotaQuotaUsage),
+          members: S.optional(PublicCloudQuotaQuotaUsage),
+          pools: S.optional(PublicCloudQuotaQuotaUsage),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaRegionLoadbalancer",
@@ -10613,12 +13418,12 @@ function __c31(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          floatingIps: S.optional(__S(246)),
-          gateways: S.optional(__S(246)),
-          networks: S.optional(__S(246)),
-          securityGroupRules: S.optional(__S(246)),
-          securityGroups: S.optional(__S(246)),
-          subnets: S.optional(__S(246)),
+          floatingIps: S.optional(PublicCloudQuotaQuotaUsage),
+          gateways: S.optional(PublicCloudQuotaQuotaUsage),
+          networks: S.optional(PublicCloudQuotaQuotaUsage),
+          securityGroupRules: S.optional(PublicCloudQuotaQuotaUsage),
+          securityGroups: S.optional(PublicCloudQuotaQuotaUsage),
+          subnets: S.optional(PublicCloudQuotaQuotaUsage),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaRegionNetwork",
@@ -10627,7 +13432,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number),
-          unit: S.optional(S.String),
+          unit: S.optional(PublicCloudQuotaQuotaUnitEnum),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaLimit",
@@ -10635,14 +13440,14 @@ function __c31(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          backupSizeTotal: S.optional(__S(246)),
-          backups: S.optional(__S(246)),
-          perShareSize: S.optional(__S(252)),
-          shareNetworks: S.optional(__S(246)),
-          shares: S.optional(__S(246)),
-          sizeTotal: S.optional(__S(246)),
-          snapshotSizeTotal: S.optional(__S(246)),
-          snapshots: S.optional(__S(246)),
+          backupSizeTotal: S.optional(PublicCloudQuotaQuotaUsage),
+          backups: S.optional(PublicCloudQuotaQuotaUsage),
+          perShareSize: S.optional(PublicCloudQuotaQuotaLimit),
+          shareNetworks: S.optional(PublicCloudQuotaQuotaUsage),
+          shares: S.optional(PublicCloudQuotaQuotaUsage),
+          sizeTotal: S.optional(PublicCloudQuotaQuotaUsage),
+          snapshotSizeTotal: S.optional(PublicCloudQuotaQuotaUsage),
+          snapshots: S.optional(PublicCloudQuotaQuotaUsage),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaRegionShare",
@@ -10650,12 +13455,12 @@ function __c31(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          backupSizeTotal: S.optional(__S(246)),
-          backups: S.optional(__S(246)),
-          perVolumeSize: S.optional(__S(252)),
-          sizeTotal: S.optional(__S(246)),
-          snapshots: S.optional(__S(246)),
-          volumes: S.optional(__S(246)),
+          backupSizeTotal: S.optional(PublicCloudQuotaQuotaUsage),
+          backups: S.optional(PublicCloudQuotaQuotaUsage),
+          perVolumeSize: S.optional(PublicCloudQuotaQuotaLimit),
+          sizeTotal: S.optional(PublicCloudQuotaQuotaUsage),
+          snapshots: S.optional(PublicCloudQuotaQuotaUsage),
+          volumes: S.optional(PublicCloudQuotaQuotaUsage),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaRegionVolume",
@@ -10663,13 +13468,13 @@ function __c31(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          compute: S.optional(S.NullOr(__S(247))),
-          keyManager: S.optional(S.NullOr(__S(248))),
-          keypair: S.optional(S.NullOr(__S(249))),
-          loadbalancer: S.optional(S.NullOr(__S(250))),
-          network: S.optional(S.NullOr(__S(251))),
-          share: S.optional(S.NullOr(__S(253))),
-          volume: S.optional(S.NullOr(__S(254))),
+          compute: S.optional(S.NullOr(PublicCloudQuotaQuotaRegionCompute)),
+          keyManager: S.optional(S.NullOr(PublicCloudQuotaQuotaRegionKeyManager)),
+          keypair: S.optional(S.NullOr(PublicCloudQuotaQuotaRegionKeypair)),
+          loadbalancer: S.optional(S.NullOr(PublicCloudQuotaQuotaRegionLoadbalancer)),
+          network: S.optional(S.NullOr(PublicCloudQuotaQuotaRegionNetwork)),
+          share: S.optional(S.NullOr(PublicCloudQuotaQuotaRegionShare)),
+          volume: S.optional(S.NullOr(PublicCloudQuotaQuotaRegionVolume)),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaUsageDetails",
@@ -10681,21 +13486,23 @@ function __c32(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          location: S.optional(__S(2)),
+          location: S.optional(PublicCloudCommonLocation),
           profile: S.optional(S.String),
-          usage: S.optional(S.NullOr(__S(255))),
+          usage: S.optional(S.NullOr(PublicCloudQuotaQuotaUsageDetails)),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaRegionCurrentState",
       });
     case 1:
-      return S.Array(__S(256));
+      return S.Array(PublicCloudQuotaQuotaRegionCurrentState);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          availableProfiles: S.optional(S.NullOr(__S(245))),
+          availableProfiles: S.optional(
+            S.NullOr(PublicCloudQuotaQuotaCurrentStateAvailableProfilesList),
+          ),
           preventAutomaticQuotaUpgrade: S.optional(S.Boolean),
-          regions: S.optional(S.NullOr(__S(257))),
+          regions: S.optional(S.NullOr(PublicCloudQuotaQuotaCurrentStateRegionsList)),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaCurrentState",
@@ -10703,19 +13510,19 @@ function __c32(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          location: __S(2),
+          location: PublicCloudCommonLocation,
           profile: S.String,
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaRegionTargetSpec",
       });
     case 4:
-      return S.Array(__S(259));
+      return S.Array(PublicCloudQuotaQuotaRegionTargetSpec);
     case 5:
       return S.suspend(() =>
         S.Struct({
           preventAutomaticQuotaUpgrade: S.optional(S.Boolean),
-          regions: S.optional(__S(260)),
+          regions: S.optional(PublicCloudQuotaQuotaTargetSpecRegionsList),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaTargetSpec",
@@ -10725,11 +13532,11 @@ function __c32(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(258))),
-          currentTasks: S.optional(S.NullOr(__S(11))),
+          currentState: S.optional(S.NullOr(PublicCloudQuotaQuotaCurrentState)),
+          currentTasks: S.optional(S.NullOr(PublicCloudQuotaQuotaCurrentTasksList)),
           id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(261)),
+          resourceStatus: S.optional(CommonResourceStatusEnum),
+          targetSpec: S.optional(PublicCloudQuotaQuotaTargetSpec),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublicCloudQuotaQuota" });
@@ -10772,23 +13579,23 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(CommonTaskStatusEnum),
         }),
       ).annotate({ identifier: "CommonTaskProgress" });
     case 2:
-      return S.Array(__S(265));
+      return S.Array(CommonTaskProgress);
     case 3:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
-          errors: S.optional(S.NullOr(__S(9))),
+          errors: S.optional(S.NullOr(CommonTaskErrorsList)),
           finishedAt: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
           link: S.optional(S.String),
           message: S.optional(S.String),
-          progress: S.optional(__S(266)),
+          progress: S.optional(CommonTaskProgressList),
           startedAt: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
+          status: S.optional(CommonTaskStatusEnum),
           type: S.optional(S.String),
           updatedAt: S.optional(S.String),
         }),
@@ -10816,7 +13623,7 @@ function __c33(j: number): any {
           ephemeral: S.optional(S.Number),
           id: S.optional(S.String),
           isPublic: S.optional(S.Boolean),
-          location: S.optional(__S(2)),
+          location: S.optional(PublicCloudCommonLocation),
           name: S.optional(S.String),
           ram: S.optional(S.Number),
           swap: S.optional(S.Number),
@@ -10845,14 +13652,14 @@ function __c33(j: number): any {
         S.Struct({
           createdAt: S.optional(S.String),
           id: S.optional(S.String),
-          location: S.optional(__S(2)),
+          location: S.optional(PublicCloudCommonLocation),
           minDisk: S.optional(S.Number),
           minRam: S.optional(S.Number),
           name: S.optional(S.String),
           size: S.optional(S.Number),
-          status: S.optional(S.String),
+          status: S.optional(PublicCloudInstanceImageStatusEnum),
           updatedAt: S.optional(S.String),
-          visibility: S.optional(S.String),
+          visibility: S.optional(PublicCloudInstanceImageVisibilityEnum),
         }),
       ).annotate({
         identifier: "PublicCloudReferenceInstanceImage",
@@ -10901,13 +13708,13 @@ function __c34(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          availabilityZones: S.optional(S.NullOr(__S(72))),
+          availabilityZones: S.optional(S.NullOr(PublicCloudReferenceRegionAvailabilityZonesList)),
           continent: S.optional(S.String),
           country: S.optional(S.NullOr(S.String)),
           datacenterName: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
-          services: S.optional(__S(72)),
-          status: S.optional(S.String),
+          services: S.optional(PublicCloudReferenceRegionServicesList),
+          status: S.optional(PublicCloudReferenceRegionStatusEnum),
         }),
       ).annotate({
         identifier: "PublicCloudReferenceRegion",
@@ -11056,9 +13863,9 @@ function __c35(j: number): any {
         identifier: "IamResourceTagFilterInput",
       });
     case 6:
-      return S.Array(__S(285));
+      return S.Array(IamResourceTagFilterInput);
     case 7:
-      return S.Record(S.String, __S(286));
+      return S.Record(S.String, ListPublicCloudProjectRequestIamTagsValueList);
   }
 }
 function __c36(j: number): any {
@@ -11066,7 +13873,7 @@ function __c36(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(__S(287).pipe(T.Query())),
+          iamTags: S.optional(ListPublicCloudProjectRequestIamTagsMap.pipe(T.Query())),
           xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
           xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
         }).pipe(T.Http({ method: "GET", uri: "/publicCloud/project", code: 200 })),
@@ -11074,9 +13881,11 @@ function __c36(j: number): any {
         identifier: "ListPublicCloudProjectRequest",
       });
     case 1:
-      return S.Array(__S(211));
+      return S.Array(PublicCloudProjectProjectAsyncWithIAM);
     case 2:
-      return S.suspend(() => __S(289).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectResponse",
       });
     case 3:
@@ -11096,9 +13905,11 @@ function __c36(j: number): any {
         identifier: "ListPublicCloudProjectComputeAutobackupRequest",
       });
     case 4:
-      return S.Array(__S(12));
+      return S.Array(PublicCloudInstanceAutobackup);
     case 5:
-      return S.suspend(() => __S(292).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectComputeAutobackupResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectComputeAutobackupResponse",
       });
     case 6:
@@ -11118,13 +13929,15 @@ function __c36(j: number): any {
         identifier: "ListPublicCloudProjectComputeBackupRequest",
       });
     case 7:
-      return S.Array(__S(16));
+      return S.Array(PublicCloudInstanceBackup);
   }
 }
 function __c37(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(295).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectComputeBackupResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectComputeBackupResponse",
       });
     case 1:
@@ -11144,9 +13957,11 @@ function __c37(j: number): any {
         identifier: "ListPublicCloudProjectComputeInstanceRequest",
       });
     case 2:
-      return S.Array(__S(31));
+      return S.Array(PublicCloudInstanceInstance);
     case 3:
-      return S.suspend(() => __S(298).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectComputeInstanceResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectComputeInstanceResponse",
       });
     case 4:
@@ -11173,13 +13988,15 @@ function __c37(j: number): any {
           kind: S.optional(S.String),
           link: S.optional(S.NullOr(S.String)),
           message: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(CommonEventTypeEnum),
         }),
       ).annotate({ identifier: "CommonEvent" });
     case 6:
-      return S.Array(__S(301));
+      return S.Array(CommonEvent);
     case 7:
-      return S.suspend(() => __S(302).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectComputeInstanceEventsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectComputeInstanceEventsResponse",
       });
   }
@@ -11203,9 +14020,11 @@ function __c38(j: number): any {
         identifier: "ListPublicCloudProjectComputeInstanceGroupRequest",
       });
     case 1:
-      return S.Array(__S(41));
+      return S.Array(PublicCloudInstanceGroupInstanceGroup);
     case 2:
-      return S.suspend(() => __S(305).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectComputeInstanceGroupResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectComputeInstanceGroupResponse",
       });
     case 3:
@@ -11221,9 +14040,11 @@ function __c38(j: number): any {
         identifier: "ListPublicCloudProjectFloatingIpRequest",
       });
     case 4:
-      return S.Array(__S(45));
+      return S.Array(PublicCloudFloatingIpFloatingIP);
     case 5:
-      return S.suspend(() => __S(308).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectFloatingIpResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectFloatingIpResponse",
       });
     case 6:
@@ -11239,13 +14060,15 @@ function __c38(j: number): any {
         identifier: "ListPublicCloudProjectGatewayRequest",
       });
     case 7:
-      return S.Array(__S(50));
+      return S.Array(PublicCloudGatewayGateway);
   }
 }
 function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(311).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectGatewayResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectGatewayResponse",
       });
     case 1:
@@ -11265,9 +14088,11 @@ function __c39(j: number): any {
         identifier: "ListPublicCloudProjectKeyManagerContainerRequest",
       });
     case 2:
-      return S.Array(__S(56));
+      return S.Array(PublicCloudKeyManagerContainer);
     case 3:
-      return S.suspend(() => __S(314).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectKeyManagerContainerResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectKeyManagerContainerResponse",
       });
     case 4:
@@ -11288,9 +14113,11 @@ function __c39(j: number): any {
         identifier: "ListPublicCloudProjectKeyManagerContainerConsumerRequest",
       });
     case 5:
-      return S.Array(__S(58));
+      return S.Array(PublicCloudKeyManagerContainerConsumer);
     case 6:
-      return S.suspend(() => __S(317).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectKeyManagerContainerConsumerResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectKeyManagerContainerConsumerResponse",
       });
     case 7:
@@ -11314,9 +14141,11 @@ function __c39(j: number): any {
 function __c40(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(PublicCloudKeyManagerSecret);
     case 1:
-      return S.suspend(() => __S(320).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectKeyManagerSecretResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectKeyManagerSecretResponse",
       });
     case 2:
@@ -11337,9 +14166,11 @@ function __c40(j: number): any {
         identifier: "ListPublicCloudProjectKeyManagerSecretConsumerRequest",
       });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(PublicCloudKeyManagerSecretConsumer);
     case 4:
-      return S.suspend(() => __S(323).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectKeyManagerSecretConsumerResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectKeyManagerSecretConsumerResponse",
       });
     case 5:
@@ -11359,9 +14190,11 @@ function __c40(j: number): any {
         identifier: "ListPublicCloudProjectLoadbalancerRequest",
       });
     case 6:
-      return S.Array(__S(71));
+      return S.Array(PublicCloudLoadbalancerLoadbalancer);
     case 7:
-      return S.suspend(() => __S(326).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectLoadbalancerResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectLoadbalancerResponse",
       });
   }
@@ -11386,9 +14219,11 @@ function __c41(j: number): any {
         identifier: "ListPublicCloudProjectLoadbalancerListenerRequest",
       });
     case 1:
-      return S.Array(__S(78));
+      return S.Array(PublicCloudLoadbalancerListener);
     case 2:
-      return S.suspend(() => __S(329).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectLoadbalancerListenerResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectLoadbalancerListenerResponse",
       });
     case 3:
@@ -11410,9 +14245,13 @@ function __c41(j: number): any {
         identifier: "ListPublicCloudProjectLoadbalancerListenerL7policyRequest",
       });
     case 4:
-      return S.Array(__S(86));
+      return S.Array(PublicCloudLoadbalancerL7Policy);
     case 5:
-      return S.suspend(() => __S(332).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectLoadbalancerListenerL7policyResponseBodyList.pipe(
+          T.RawResponseRoot(),
+        ),
+      ).annotate({
         identifier: "ListPublicCloudProjectLoadbalancerListenerL7policyResponse",
       });
     case 6:
@@ -11433,13 +14272,15 @@ function __c41(j: number): any {
         identifier: "ListPublicCloudProjectLoadbalancerPoolRequest",
       });
     case 7:
-      return S.Array(__S(93));
+      return S.Array(PublicCloudLoadbalancerPool);
   }
 }
 function __c42(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(335).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectLoadbalancerPoolResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectLoadbalancerPoolResponse",
       });
     case 1:
@@ -11461,9 +14302,11 @@ function __c42(j: number): any {
         identifier: "ListPublicCloudProjectLoadbalancerPoolMemberRequest",
       });
     case 2:
-      return S.Array(__S(98));
+      return S.Array(PublicCloudLoadbalancerMember);
     case 3:
-      return S.suspend(() => __S(338).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectLoadbalancerPoolMemberResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectLoadbalancerPoolMemberResponse",
       });
     case 4:
@@ -11479,9 +14322,11 @@ function __c42(j: number): any {
         identifier: "ListPublicCloudProjectNetworkRequest",
       });
     case 5:
-      return S.Array(__S(102));
+      return S.Array(PublicCloudNetworkNetwork);
     case 6:
-      return S.suspend(() => __S(341).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectNetworkResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectNetworkResponse",
       });
     case 7:
@@ -11506,9 +14351,11 @@ function __c42(j: number): any {
 function __c43(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(110));
+      return S.Array(PublicCloudNetworkSubnet);
     case 1:
-      return S.suspend(() => __S(344).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectNetworkSubnetResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectNetworkSubnetResponse",
       });
     case 2:
@@ -11527,15 +14374,17 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ip: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(PublicCloudPublicIpPublicIPKindEnum),
         }),
       ).annotate({
         identifier: "PublicCloudPublicIpPublicIPSummary",
       });
     case 4:
-      return S.Array(__S(347));
+      return S.Array(PublicCloudPublicIpPublicIPSummary);
     case 5:
-      return S.suspend(() => __S(348).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectPublicIpResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectPublicIpResponse",
       });
     case 6:
@@ -11555,13 +14404,15 @@ function __c43(j: number): any {
         identifier: "ListPublicCloudProjectPublicIpAdditionalRequest",
       });
     case 7:
-      return S.Array(__S(233));
+      return S.Array(PublicCloudPublicIpAdditionalIP);
   }
 }
 function __c44(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(351).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectPublicIpAdditionalResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectPublicIpAdditionalResponse",
       });
     case 1:
@@ -11581,9 +14432,11 @@ function __c44(j: number): any {
         identifier: "ListPublicCloudProjectPublicIpExtNetRequest",
       });
     case 2:
-      return S.Array(__S(186));
+      return S.Array(PublicCloudPublicIpExtNetIP);
     case 3:
-      return S.suspend(() => __S(354).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectPublicIpExtNetResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectPublicIpExtNetResponse",
       });
     case 4:
@@ -11603,9 +14456,11 @@ function __c44(j: number): any {
         identifier: "ListPublicCloudProjectPublicIpFloatingRequest",
       });
     case 5:
-      return S.Array(__S(114));
+      return S.Array(PublicCloudPublicIpFloatingIP);
     case 6:
-      return S.suspend(() => __S(357).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectPublicIpFloatingResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectPublicIpFloatingResponse",
       });
     case 7:
@@ -11625,9 +14480,11 @@ function __c44(j: number): any {
 function __c45(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(123));
+      return S.Array(PublicCloudRancherRancher);
     case 1:
-      return S.suspend(() => __S(360).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectRancherResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectRancherResponse",
       });
     case 2:
@@ -11650,18 +14507,20 @@ function __c45(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cause: S.optional(S.NullOr(S.String)),
+          cause: S.optional(S.NullOr(PublicCloudRancherPlanUnavailabilityCauseEnum)),
           message: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.String),
-          status: S.optional(S.String),
+          name: S.optional(PublicCloudRancherPlanEnum),
+          status: S.optional(PublicCloudRancherPlanCapabilityStatusEnum),
         }),
       ).annotate({
         identifier: "PublicCloudRancherPlanCapability",
       });
     case 4:
-      return S.Array(__S(363));
+      return S.Array(PublicCloudRancherPlanCapability);
     case 5:
-      return S.suspend(() => __S(364).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectRancherCapabilityPlanResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectRancherCapabilityPlanResponse",
       });
     case 6:
@@ -11684,11 +14543,11 @@ function __c45(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          cause: S.optional(S.NullOr(S.String)),
+          cause: S.optional(S.NullOr(PublicCloudRancherVersionUnavailabilityCauseEnum)),
           changelogUrl: S.optional(S.String),
           message: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(PublicCloudRancherVersionCapabilityStatusEnum),
         }),
       ).annotate({
         identifier: "PublicCloudRancherVersionCapability",
@@ -11698,9 +14557,11 @@ function __c45(j: number): any {
 function __c46(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(367));
+      return S.Array(PublicCloudRancherVersionCapability);
     case 1:
-      return S.suspend(() => __S(368).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectRancherCapabilityVersionResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectRancherCapabilityVersionResponse",
       });
     case 2:
@@ -11738,9 +14599,11 @@ function __c46(j: number): any {
         identifier: "ListPublicCloudProjectRancherTaskRequest",
       });
     case 4:
-      return S.Array(__S(267));
+      return S.Array(CommonTask);
     case 5:
-      return S.suspend(() => __S(372).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectRancherTaskResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectRancherTaskResponse",
       });
     case 6:
@@ -11761,13 +14624,15 @@ function __c46(j: number): any {
         identifier: "ListPublicCloudProjectReferenceInstanceFlavorRequest",
       });
     case 7:
-      return S.Array(__S(269));
+      return S.Array(PublicCloudReferenceInstanceFlavor);
   }
 }
 function __c47(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(375).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectReferenceInstanceFlavorResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectReferenceInstanceFlavorResponse",
       });
     case 1:
@@ -11788,9 +14653,11 @@ function __c47(j: number): any {
         identifier: "ListPublicCloudProjectReferenceInstanceImageRequest",
       });
     case 2:
-      return S.Array(__S(271));
+      return S.Array(PublicCloudReferenceInstanceImage);
     case 3:
-      return S.suspend(() => __S(378).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectReferenceInstanceImageResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectReferenceInstanceImageResponse",
       });
     case 4:
@@ -11842,13 +14709,15 @@ function __c47(j: number): any {
         identifier: "ListPublicCloudProjectReferenceRegionRequest",
       });
     case 7:
-      return S.Array(__S(275));
+      return S.Array(PublicCloudReferenceRegion);
   }
 }
 function __c48(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(383).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectReferenceRegionResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectReferenceRegionResponse",
       });
     case 1:
@@ -11868,9 +14737,11 @@ function __c48(j: number): any {
         identifier: "ListPublicCloudProjectSecurityGroupRequest",
       });
     case 2:
-      return S.Array(__S(134));
+      return S.Array(PublicCloudSecurityGroupSecurityGroup);
     case 3:
-      return S.suspend(() => __S(386).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectSecurityGroupResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectSecurityGroupResponse",
       });
     case 4:
@@ -11886,9 +14757,11 @@ function __c48(j: number): any {
         identifier: "ListPublicCloudProjectSshKeyRequest",
       });
     case 5:
-      return S.Array(__S(136));
+      return S.Array(PublicCloudSshKeySSHKey);
     case 6:
-      return S.suspend(() => __S(389).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectSshKeyResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectSshKeyResponse",
       });
     case 7:
@@ -11913,9 +14786,11 @@ function __c48(j: number): any {
 function __c49(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(140));
+      return S.Array(PublicCloudBlockStorageBackup);
     case 1:
-      return S.suspend(() => __S(392).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectStorageBlockBackupResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectStorageBlockBackupResponse",
       });
     case 2:
@@ -11952,9 +14827,11 @@ function __c49(j: number): any {
         identifier: "ListPublicCloudProjectStorageBlockVolumeRequest",
       });
     case 4:
-      return S.Array(__S(147));
+      return S.Array(PublicCloudBlockStorageBlock);
     case 5:
-      return S.suspend(() => __S(396).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectStorageBlockVolumeResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectStorageBlockVolumeResponse",
       });
     case 6:
@@ -11972,13 +14849,15 @@ function __c49(j: number): any {
         identifier: "ListPublicCloudProjectStorageFileNetworkRequest",
       });
     case 7:
-      return S.Array(__S(151));
+      return S.Array(PublicCloudStorageFileFileStorageNetwork);
   }
 }
 function __c50(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(399).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectStorageFileNetworkResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectStorageFileNetworkResponse",
       });
     case 1:
@@ -11998,9 +14877,11 @@ function __c50(j: number): any {
         identifier: "ListPublicCloudProjectStorageFileShareRequest",
       });
     case 2:
-      return S.Array(__S(204));
+      return S.Array(PublicCloudStorageFileFileStorage);
     case 3:
-      return S.suspend(() => __S(402).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectStorageFileShareResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectStorageFileShareResponse",
       });
     case 4:
@@ -12020,9 +14901,11 @@ function __c50(j: number): any {
         identifier: "ListPublicCloudProjectStorageFileSnapshotRequest",
       });
     case 5:
-      return S.Array(__S(156));
+      return S.Array(PublicCloudStorageFileFileStorageSnapshot);
     case 6:
-      return S.suspend(() => __S(405).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectStorageFileSnapshotResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectStorageFileSnapshotResponse",
       });
     case 7:
@@ -12046,9 +14929,11 @@ function __c50(j: number): any {
 function __c51(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(166));
+      return S.Array(PublicCloudStorageObjectBucket);
     case 1:
-      return S.suspend(() => __S(408).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicCloudProjectStorageObjectBucketResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicCloudProjectStorageObjectBucketResponse",
       });
     case 2:
@@ -12090,7 +14975,7 @@ function __c51(j: number): any {
           objectSizeGreaterThan: S.optional(S.NullOr(S.Number)),
           objectSizeLessThan: S.optional(S.NullOr(S.Number)),
           prefix: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(59))),
+          tags: S.optional(S.NullOr(PublicCloudStorageObjectLifecycleRuleFilterTagsMap)),
         }),
       ).annotate({
         identifier: "PublicCloudStorageObjectLifecycleRuleFilter",
@@ -12109,7 +14994,7 @@ function __c51(j: number): any {
         S.Struct({
           newerNoncurrentVersions: S.optional(S.NullOr(S.Number)),
           noncurrentDays: S.Number,
-          storageClass: S.String,
+          storageClass: PublicCloudStorageObjectStorageClassEnum,
         }),
       ).annotate({
         identifier: "PublicCloudStorageObjectLifecycleRuleNoncurrentVersionTransition",
@@ -12119,40 +15004,46 @@ function __c51(j: number): any {
 function __c52(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(415));
+      return S.Array(PublicCloudStorageObjectLifecycleRuleNoncurrentVersionTransition);
     case 1:
       return S.suspend(() =>
         S.Struct({
           date: S.optional(S.NullOr(S.String)),
           days: S.optional(S.NullOr(S.Number)),
-          storageClass: S.String,
+          storageClass: PublicCloudStorageObjectStorageClassEnum,
         }),
       ).annotate({
         identifier: "PublicCloudStorageObjectLifecycleRuleTransition",
       });
     case 2:
-      return S.Array(__S(417));
+      return S.Array(PublicCloudStorageObjectLifecycleRuleTransition);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          abortIncompleteMultipartUpload: S.optional(S.NullOr(__S(411))),
-          expiration: S.optional(S.NullOr(__S(412))),
-          filter: S.optional(S.NullOr(__S(413))),
+          abortIncompleteMultipartUpload: S.optional(
+            S.NullOr(PublicCloudStorageObjectLifecycleRuleAbortIncompleteMultipartUpload),
+          ),
+          expiration: S.optional(S.NullOr(PublicCloudStorageObjectLifecycleRuleExpiration)),
+          filter: S.optional(S.NullOr(PublicCloudStorageObjectLifecycleRuleFilter)),
           id: S.String,
-          noncurrentVersionExpiration: S.optional(S.NullOr(__S(414))),
-          noncurrentVersionTransitions: S.optional(S.NullOr(__S(416))),
-          status: S.String,
-          transitions: S.optional(S.NullOr(__S(418))),
+          noncurrentVersionExpiration: S.optional(
+            S.NullOr(PublicCloudStorageObjectLifecycleRuleNoncurrentVersionExpiration),
+          ),
+          noncurrentVersionTransitions: S.optional(
+            S.NullOr(PublicCloudStorageObjectLifecycleRuleNoncurrentVersionTransitionsList),
+          ),
+          status: PublicCloudStorageObjectLifecycleRuleStatusEnum,
+          transitions: S.optional(S.NullOr(PublicCloudStorageObjectLifecycleRuleTransitionsList)),
         }),
       ).annotate({
         identifier: "PublicCloudStorageObjectLifecycleRule",
       });
     case 4:
-      return S.Array(__S(419));
+      return S.Array(PublicCloudStorageObjectLifecycleRule);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(420)),
+          rules: S.optional(PublicCloudStorageObjectLifecycleRulesResponseRulesList),
         }),
       ).annotate({
         identifier: "PublicCloudStorageObjectLifecycleRulesResponse",
@@ -12177,7 +15068,7 @@ function __c52(j: number): any {
         S.Struct({
           name: S.String,
           region: S.String,
-          storageClass: S.optional(S.NullOr(S.String)),
+          storageClass: S.optional(S.NullOr(PublicCloudStorageObjectStorageClassEnum)),
         }),
       ).annotate({
         identifier: "PublicCloudStorageObjectReplicationRuleDestination",
@@ -12190,7 +15081,7 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           prefix: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(59))),
+          tags: S.optional(S.NullOr(PublicCloudStorageObjectReplicationRuleFilterTagsMap)),
         }),
       ).annotate({
         identifier: "PublicCloudStorageObjectReplicationRuleFilter",
@@ -12198,22 +15089,22 @@ function __c53(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          deleteMarkerReplication: S.String,
-          destination: __S(423),
-          filter: S.optional(S.NullOr(__S(424))),
+          deleteMarkerReplication: PublicCloudStorageObjectReplicationRuleStatusEnum,
+          destination: PublicCloudStorageObjectReplicationRuleDestination,
+          filter: S.optional(S.NullOr(PublicCloudStorageObjectReplicationRuleFilter)),
           id: S.String,
           priority: S.Number,
-          status: S.String,
+          status: PublicCloudStorageObjectReplicationRuleStatusEnum,
         }),
       ).annotate({
         identifier: "PublicCloudStorageObjectReplicationRule",
       });
     case 2:
-      return S.Array(__S(425));
+      return S.Array(PublicCloudStorageObjectReplicationRule);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(426)),
+          rules: S.optional(PublicCloudStorageObjectReplicationRulesResponseRulesList),
         }),
       ).annotate({
         identifier: "PublicCloudStorageObjectReplicationRulesResponse",
@@ -12221,13 +15112,15 @@ function __c53(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          flavor: __S(1),
-          image: __S(1),
+          flavor: PublicCloudInstanceInstanceFlavorRef,
+          image: PublicCloudInstanceInstanceImageRef,
           name: S.String,
-          networks: S.NullOr(__S(18)),
-          powerState: S.optional(S.NullOr(S.String)),
-          securityGroups: S.optional(S.NullOr(__S(19))),
-          volumes: S.NullOr(__S(19)),
+          networks: S.NullOr(PublicCloudInstanceInstanceUpdateTargetSpecNetworksList),
+          powerState: S.optional(S.NullOr(PublicCloudInstancePowerStateEnum)),
+          securityGroups: S.optional(
+            S.NullOr(PublicCloudInstanceInstanceUpdateTargetSpecSecurityGroupsList),
+          ),
+          volumes: S.NullOr(PublicCloudInstanceInstanceUpdateTargetSpecVolumesList),
         }),
       ).annotate({
         identifier: "PublicCloudInstanceInstanceUpdateTargetSpec",
@@ -12238,7 +15131,7 @@ function __c53(j: number): any {
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: __S(428),
+          targetSpec: PublicCloudInstanceInstanceUpdateTargetSpec,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12263,7 +15156,7 @@ function __c53(j: number): any {
           projectId: S.String.pipe(T.Label()),
           floatingIpId: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: __S(430),
+          targetSpec: PublicCloudFloatingIpFloatingIPUpdateTargetSpec,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12282,9 +15175,9 @@ function __c54(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          externalGateway: __S(46),
+          externalGateway: PublicCloudGatewayExternalGateway,
           name: S.String,
-          subnets: S.optional(S.NullOr(__S(19))),
+          subnets: S.optional(S.NullOr(PublicCloudGatewayGatewayUpdateTargetSpecSubnetsList)),
         }),
       ).annotate({
         identifier: "PublicCloudGatewayGatewayUpdateTargetSpec",
@@ -12295,7 +15188,7 @@ function __c54(j: number): any {
           projectId: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: __S(432),
+          targetSpec: PublicCloudGatewayGatewayUpdateTargetSpec,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12309,7 +15202,7 @@ function __c54(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          secretRefs: __S(52),
+          secretRefs: PublicCloudKeyManagerContainerUpdateTargetSpecSecretRefsList,
         }),
       ).annotate({
         identifier: "PublicCloudKeyManagerContainerUpdateTargetSpec",
@@ -12320,7 +15213,7 @@ function __c54(j: number): any {
           projectId: S.String.pipe(T.Label()),
           containerId: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: __S(434),
+          targetSpec: PublicCloudKeyManagerContainerUpdateTargetSpec,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12334,7 +15227,7 @@ function __c54(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          metadata: __S(59),
+          metadata: PublicCloudKeyManagerSecretUpdateTargetSpecMetadataMap,
         }),
       ).annotate({
         identifier: "PublicCloudKeyManagerSecretUpdateTargetSpec",
@@ -12345,7 +15238,7 @@ function __c54(j: number): any {
           projectId: S.String.pipe(T.Label()),
           secretId: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: __S(436),
+          targetSpec: PublicCloudKeyManagerSecretUpdateTargetSpec,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12371,7 +15264,7 @@ function __c54(j: number): any {
           projectId: S.String.pipe(T.Label()),
           loadbalancerId: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: __S(438),
+          targetSpec: PublicCloudLoadbalancerLoadbalancerPutTargetSpec,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12389,19 +15282,25 @@ function __c55(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          allowedCidrs: S.optional(S.NullOr(__S(72))),
+          allowedCidrs: S.optional(
+            S.NullOr(PublicCloudLoadbalancerListenerPutTargetSpecAllowedCidrsList),
+          ),
           connectionLimit: S.optional(S.NullOr(S.Number)),
-          defaultPool: S.optional(S.NullOr(__S(1))),
+          defaultPool: S.optional(S.NullOr(PublicCloudLoadbalancerListenerDefaultPoolRef)),
           defaultTlsContainerRef: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          insertHeaders: S.optional(S.NullOr(__S(73))),
+          insertHeaders: S.optional(S.NullOr(PublicCloudLoadbalancerListenerInsertHeaders)),
           name: S.String,
-          sniContainerRefs: S.optional(S.NullOr(__S(76))),
+          sniContainerRefs: S.optional(
+            S.NullOr(PublicCloudLoadbalancerListenerPutTargetSpecSniContainerRefsList),
+          ),
           timeoutClientData: S.optional(S.NullOr(S.Number)),
           timeoutMemberConnect: S.optional(S.NullOr(S.Number)),
           timeoutMemberData: S.optional(S.NullOr(S.Number)),
           timeoutTcpInspect: S.optional(S.NullOr(S.Number)),
-          tlsVersions: S.optional(S.NullOr(__S(72))),
+          tlsVersions: S.optional(
+            S.NullOr(PublicCloudLoadbalancerListenerPutTargetSpecTlsVersionsList),
+          ),
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerListenerPutTargetSpec",
@@ -12413,7 +15312,7 @@ function __c55(j: number): any {
           loadbalancerId: S.String.pipe(T.Label()),
           listenerId: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: __S(440),
+          targetSpec: PublicCloudLoadbalancerListenerPutTargetSpec,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12432,7 +15331,7 @@ function __c55(j: number): any {
           listenerId: S.String.pipe(T.Label()),
           l7PolicyId: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: __S(81),
+          targetSpec: PublicCloudLoadbalancerL7PolicyUpdateTargetSpec,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12449,7 +15348,7 @@ function __c55(j: number): any {
           delay: S.Number,
           domainName: S.optional(S.NullOr(S.String)),
           expectedCodes: S.optional(S.NullOr(S.String)),
-          httpMethod: S.optional(S.NullOr(S.String)),
+          httpMethod: S.optional(S.NullOr(PublicCloudLoadbalancerHealthMonitorHttpMethodEnum)),
           httpVersion: S.optional(S.NullOr(S.String)),
           maxRetries: S.Number,
           maxRetriesDown: S.optional(S.NullOr(S.Number)),
@@ -12463,11 +15362,11 @@ function __c55(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          algorithm: S.String,
+          algorithm: PublicCloudLoadbalancerPoolAlgorithmEnum,
           description: S.optional(S.NullOr(S.String)),
-          healthMonitor: S.optional(S.NullOr(__S(443))),
+          healthMonitor: S.optional(S.NullOr(PublicCloudLoadbalancerHealthMonitorUpdateTargetSpec)),
           name: S.optional(S.NullOr(S.String)),
-          persistence: S.optional(S.NullOr(__S(88))),
+          persistence: S.optional(S.NullOr(PublicCloudLoadbalancerSessionPersistence)),
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerPoolUpdateTargetSpec",
@@ -12479,7 +15378,7 @@ function __c55(j: number): any {
           loadbalancerId: S.String.pipe(T.Label()),
           poolId: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: __S(444),
+          targetSpec: PublicCloudLoadbalancerPoolUpdateTargetSpec,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12494,7 +15393,7 @@ function __c55(j: number): any {
       return S.suspend(() =>
         S.Struct({
           backup: S.optional(S.NullOr(S.Boolean)),
-          monitor: S.optional(S.NullOr(__S(94))),
+          monitor: S.optional(S.NullOr(PublicCloudLoadbalancerMemberMonitor)),
           name: S.optional(S.NullOr(S.String)),
           weight: S.optional(S.NullOr(S.Number)),
         }),
@@ -12509,7 +15408,7 @@ function __c55(j: number): any {
           poolId: S.String.pipe(T.Label()),
           memberId: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: __S(446),
+          targetSpec: PublicCloudLoadbalancerMemberUpdateTargetSpec,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12538,7 +15437,7 @@ function __c56(j: number): any {
           projectId: S.String.pipe(T.Label()),
           networkId: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: __S(448),
+          targetSpec: PublicCloudNetworkNetworkPutTargetSpec,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12552,10 +15451,14 @@ function __c56(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          allocationPools: S.optional(S.NullOr(__S(104))),
+          allocationPools: S.optional(
+            S.NullOr(PublicCloudNetworkSubnetPutTargetSpecAllocationPoolsList),
+          ),
           description: S.optional(S.NullOr(S.String)),
           dhcpEnabled: S.optional(S.NullOr(S.Boolean)),
-          dnsNameservers: S.optional(S.NullOr(__S(72))),
+          dnsNameservers: S.optional(
+            S.NullOr(PublicCloudNetworkSubnetPutTargetSpecDnsNameserversList),
+          ),
           gatewayIp: S.optional(S.NullOr(S.String)),
           name: S.String,
         }),
@@ -12569,7 +15472,7 @@ function __c56(j: number): any {
           networkId: S.String.pipe(T.Label()),
           subnetId: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: __S(450),
+          targetSpec: PublicCloudNetworkSubnetPutTargetSpec,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12586,7 +15489,7 @@ function __c56(j: number): any {
           projectId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: __S(430),
+          targetSpec: PublicCloudFloatingIpFloatingIPUpdateTargetSpec,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12601,7 +15504,7 @@ function __c56(j: number): any {
       return S.suspend(() =>
         S.Struct({
           preventAutomaticQuotaUpgrade: S.Boolean,
-          regions: __S(260),
+          regions: PublicCloudQuotaQuotaUpdateTargetSpecRegionsList,
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaUpdateTargetSpec",
@@ -12611,7 +15514,7 @@ function __c56(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: __S(453),
+          targetSpec: PublicCloudQuotaQuotaUpdateTargetSpec,
         }).pipe(
           T.Http({ method: "PUT", uri: "/publicCloud/project/{projectId}/quota", code: 200 }),
         ),
@@ -12623,7 +15526,7 @@ function __c56(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           rancherId: S.String.pipe(T.Label()),
-          targetSpec: __S(122),
+          targetSpec: PublicCloudRancherRancherTargetSpec,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12643,7 +15546,9 @@ function __c57(j: number): any {
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
           name: S.String,
-          rules: S.optional(S.NullOr(__S(127))),
+          rules: S.optional(
+            S.NullOr(PublicCloudSecurityGroupSecurityGroupUpdateTargetSpecRulesList),
+          ),
         }),
       ).annotate({
         identifier: "PublicCloudSecurityGroupSecurityGroupUpdateTargetSpec",
@@ -12654,7 +15559,7 @@ function __c57(j: number): any {
           projectId: S.String.pipe(T.Label()),
           securityGroupId: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: __S(456),
+          targetSpec: PublicCloudSecurityGroupSecurityGroupUpdateTargetSpec,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12680,7 +15585,7 @@ function __c57(j: number): any {
           projectId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: __S(458),
+          targetSpec: PublicCloudBlockStorageBackupUpdateTargetSpec,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12706,7 +15611,7 @@ function __c57(j: number): any {
           projectId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: __S(460),
+          targetSpec: PublicCloudBlockStorageSnapshotUpdateTargetSpec,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12722,7 +15627,7 @@ function __c57(j: number): any {
         S.Struct({
           name: S.String,
           size: S.Number,
-          volumeType: S.optional(S.NullOr(S.String)),
+          volumeType: S.optional(S.NullOr(PublicCloudBlockStorageVolumeTypeEnum)),
         }),
       ).annotate({
         identifier: "PublicCloudBlockStorageBlockUpdateTargetSpec",
@@ -12733,7 +15638,7 @@ function __c57(j: number): any {
           projectId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: __S(462),
+          targetSpec: PublicCloudBlockStorageBlockUpdateTargetSpec,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12749,11 +15654,13 @@ function __c57(j: number): any {
 function __c58(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(201));
+      return S.Array(PublicCloudStorageFileFileStorageAccessRuleInput);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          accessRules: S.optional(S.NullOr(__S(464))),
+          accessRules: S.optional(
+            S.NullOr(PublicCloudStorageFileFileStorageUpdateTargetSpecAccessRulesList),
+          ),
           description: S.optional(S.NullOr(S.String)),
           name: S.String,
           size: S.Number,
@@ -12767,7 +15674,7 @@ function __c58(j: number): any {
           projectId: S.String.pipe(T.Label()),
           fileStorageId: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: __S(465),
+          targetSpec: PublicCloudStorageFileFileStorageUpdateTargetSpec,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12793,7 +15700,7 @@ function __c58(j: number): any {
           projectId: S.String.pipe(T.Label()),
           snapshotId: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: __S(467),
+          targetSpec: PublicCloudStorageFileFileStorageSnapshotUpdateTargetSpec,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12807,11 +15714,11 @@ function __c58(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          encryption: S.optional(S.NullOr(__S(157))),
-          objectLock: S.optional(S.NullOr(__S(159))),
+          encryption: S.optional(S.NullOr(PublicCloudStorageObjectBucketEncryptionConfig)),
+          objectLock: S.optional(S.NullOr(PublicCloudStorageObjectBucketObjectLockConfigInput)),
           ownerUserId: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(59))),
-          versioning: S.optional(S.NullOr(__S(160))),
+          tags: S.optional(S.NullOr(PublicCloudStorageObjectBucketUpdateTargetSpecInputTagsMap)),
+          versioning: S.optional(S.NullOr(PublicCloudStorageObjectBucketVersioningConfig)),
         }),
       ).annotate({
         identifier: "PublicCloudStorageObjectBucketUpdateTargetSpecInput",
@@ -12822,7 +15729,7 @@ function __c58(j: number): any {
           projectId: S.String.pipe(T.Label()),
           bucketName: S.String.pipe(T.Label()),
           checksum: S.String,
-          targetSpec: __S(469),
+          targetSpec: PublicCloudStorageObjectBucketUpdateTargetSpecInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12834,7 +15741,7 @@ function __c58(j: number): any {
         identifier: "PutPublicCloudProjectStorageObjectBucketRequest",
       });
     case 7:
-      return S.Array(__S(419));
+      return S.Array(PublicCloudStorageObjectLifecycleRule);
   }
 }
 function __c59(j: number): any {
@@ -12844,7 +15751,7 @@ function __c59(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           bucketName: S.String.pipe(T.Label()),
-          rules: __S(471),
+          rules: PutPublicCloudProjectStorageObjectBucketLifecycleRequestRulesList,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12856,13 +15763,13 @@ function __c59(j: number): any {
         identifier: "PutPublicCloudProjectStorageObjectBucketLifecycleRequest",
       });
     case 1:
-      return S.Array(__S(425));
+      return S.Array(PublicCloudStorageObjectReplicationRule);
     case 2:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           bucketName: S.String.pipe(T.Label()),
-          rules: __S(473),
+          rules: PutPublicCloudProjectStorageObjectBucketReplicationRequestRulesList,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12877,7 +15784,7 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(203),
+          targetSpec: PublicCloudStorageFileFileStorageTargetSpec,
         }).pipe(
           T.Http({
             method: "POST",
@@ -12888,134 +15795,5 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "SharePublicCloudProjectStorageFileRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
-    case 41:
-      return __c41(i & 7);
-    case 42:
-      return __c42(i & 7);
-    case 43:
-      return __c43(i & 7);
-    case 44:
-      return __c44(i & 7);
-    case 45:
-      return __c45(i & 7);
-    case 46:
-      return __c46(i & 7);
-    case 47:
-      return __c47(i & 7);
-    case 48:
-      return __c48(i & 7);
-    case 49:
-      return __c49(i & 7);
-    case 50:
-      return __c50(i & 7);
-    case 51:
-      return __c51(i & 7);
-    case 52:
-      return __c52(i & 7);
-    case 53:
-      return __c53(i & 7);
-    case 54:
-      return __c54(i & 7);
-    case 55:
-      return __c55(i & 7);
-    case 56:
-      return __c56(i & 7);
-    case 57:
-      return __c57(i & 7);
-    case 58:
-      return __c58(i & 7);
-    case 59:
-      return __c59(i & 7);
   }
 }

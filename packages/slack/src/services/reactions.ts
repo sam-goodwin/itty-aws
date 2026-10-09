@@ -7,8 +7,6 @@ import { slackPaginate } from "../pagination.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
@@ -20,10 +18,14 @@ export interface AddReactionRequest {
   /** Timestamp of the message to add reaction to. */
   timestamp: string;
 }
+const AddReactionRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AddReactionRequest>;
+
 export interface AddReactionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const AddReactionResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AddReactionResponse>;
+
 export interface GetReactionRequest {
   /** Channel where the message to get reactions for was posted. */
   channel?: string;
@@ -36,6 +38,8 @@ export interface GetReactionRequest {
   /** Timestamp of the message to get reactions for. */
   timestamp?: string;
 }
+const GetReactionRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetReactionRequest>;
+
 export interface GetReactionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -45,6 +49,8 @@ export interface GetReactionResponse {
   channel?: string;
   file?: unknown;
 }
+const GetReactionResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GetReactionResponse>;
+
 export interface ListReactionsRequest {
   /** Show reactions made by this user. Defaults to the authed user. */
   user?: string;
@@ -59,13 +65,30 @@ export interface ListReactionsRequest {
   /** encoded team id to list reactions in, required if org token is used */
   team_id?: string;
 }
+const ListReactionsRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ListReactionsRequest>;
+
 export type ListReactionsResponseItemsItemMap = { [key: string]: unknown | undefined };
+const ListReactionsResponseItemsItemMap = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListReactionsResponseItemsItemMap>;
+
 export type ListReactionsResponseItemsList = Array<ListReactionsResponseItemsItemMap>;
+const ListReactionsResponseItemsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListReactionsResponseItemsList>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export interface ListReactionsResponseResponseMetadata {
   /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
+const ListReactionsResponseResponseMetadata = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListReactionsResponseResponseMetadata>;
+
 export interface ListReactionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -74,6 +97,11 @@ export interface ListReactionsResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: ListReactionsResponseResponseMetadata;
 }
+const ListReactionsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListReactionsResponse>;
+
 export interface RemoveReactionRequest {
   /** Reaction (emoji) name. */
   name: string;
@@ -86,10 +114,17 @@ export interface RemoveReactionRequest {
   /** Timestamp of the message to remove reaction from. */
   timestamp?: string;
 }
+const RemoveReactionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<RemoveReactionRequest>;
+
 export interface RemoveReactionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const RemoveReactionResponse = AddReactionResponse as any as S.Schema<RemoveReactionResponse>;
+
 export type AddReactionError = SlackOpError;
 /** Adds a reaction to an item. Required scopes -- bot: `reactions:write`; user: `reactions:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `already_reacted` -- The specified item already has the user/reaction combination. - `bad_timestamp` -- Value passed for `timestamp` was invalid. - `channel_not_found` -- Value passed for `channel` is invalid. - `external_channel_migrating` -- The channel is in the process of being migrated. - `invalid_name` -- Value passed for `name` was invalid. - `is_archived` -- Channel specified has been archived. - `message_not_found` -- Message specified by `channel` and `timestamp` does not exist. - `no_item_specified` -- combination of `channel` and `timestamp` was not specified. - `not_reactable` -- Whatever you passed in, like a `file` or `file_comment`, can't be reacted to anymore. Your app can react to messages though. - `thread_locked` -- Reactions are disabled as the specified message is part of a locked thread. - `too_many_emoji` -- The limit for distinct reactions (i.e emoji) on the item has been reached. - `too_many_reactions` -- The limit for reactions a person may add to the item has been reached. - `no_access` -- User does not have access to react to this canvas. See https://docs.slack.dev/reference/methods/reactions.add */
 export const addReaction: API.OperationMethod<
@@ -98,8 +133,8 @@ export const addReaction: API.OperationMethod<
   AddReactionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AddReactionRequest>,
-  output: __S(1) as any as S.Schema<AddReactionResponse>,
+  input: AddReactionRequest,
+  output: AddReactionResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -113,8 +148,8 @@ export const getReaction: API.OperationMethod<
   GetReactionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetReactionRequest>,
-  output: __S(3) as any as S.Schema<GetReactionResponse>,
+  input: GetReactionRequest,
+  output: GetReactionResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -130,8 +165,8 @@ export const listReactions: API.PaginatedOperationMethod<
   ListReactionsResponseItemsItemMap
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(4) as any as S.Schema<ListReactionsRequest>,
-    output: __S(8) as any as S.Schema<ListReactionsResponse>,
+    input: ListReactionsRequest,
+    output: ListReactionsResponse,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -154,8 +189,8 @@ export const removeReaction: API.OperationMethod<
   RemoveReactionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<RemoveReactionRequest>,
-  output: __S(1) as any as S.Schema<RemoveReactionResponse>,
+  input: RemoveReactionRequest,
+  output: RemoveReactionResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -214,7 +249,7 @@ function __c0(j: number): any {
     case 5:
       return S.Record(S.String, S.Unknown);
     case 6:
-      return S.Array(__S(5));
+      return S.Array(ListReactionsResponseItemsItemMap);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -231,9 +266,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          items: __S(6),
+          items: ListReactionsResponseItemsList,
           paging: S.optional(S.Unknown),
-          response_metadata: S.optional(__S(7)),
+          response_metadata: S.optional(ListReactionsResponseResponseMetadata),
         }),
       ).annotate({ identifier: "ListReactionsResponse" });
     case 1:
@@ -246,18 +281,5 @@ function __c1(j: number): any {
           timestamp: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/reactions.remove", code: 200 })),
       ).annotate({ identifier: "RemoveReactionRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

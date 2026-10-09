@@ -7,8 +7,6 @@ import { UnknownModrinthError } from "../errors.ts";
 import { ModrinthProtocol, type ModrinthOpError, type ModrinthOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { ModrinthOpError, ModrinthOpContext };
 
@@ -35,7 +33,17 @@ export interface AddFilesToVersionRequest {
   id: string;
   data?: unknown;
 }
+const AddFilesToVersionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddFilesToVersionRequest>;
+
 export interface AddFilesToVersionResponse {}
+const AddFilesToVersionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AddFilesToVersionResponse>;
+
 export type AddGalleryImageRequestExt =
   | "png"
   | "jpg"
@@ -46,6 +54,8 @@ export type AddGalleryImageRequestExt =
   | "svg"
   | "svgz"
   | "rgb";
+const AddGalleryImageRequestExt = S.String;
+
 export interface AddGalleryImageRequest {
   /** The ID or slug of the project */
   id_slug: string;
@@ -60,13 +70,25 @@ export interface AddGalleryImageRequest {
   /** Ordering of the image */
   ordering?: number;
 }
+const AddGalleryImageRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AddGalleryImageRequest>;
+
 export interface AddGalleryImageResponse {}
+const AddGalleryImageResponse =
+  AddFilesToVersionResponse as any as S.Schema<AddGalleryImageResponse>;
+
 export interface AddTeamMemberRequest {
   /** The ID of the team */
   id: string;
   user_id: string;
 }
+const AddTeamMemberRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AddTeamMemberRequest>;
+
 export interface AddTeamMemberResponse {}
+const AddTeamMemberResponse = AddFilesToVersionResponse as any as S.Schema<AddTeamMemberResponse>;
+
 export type ChangeProjectIconRequestExt =
   | "png"
   | "jpg"
@@ -77,29 +99,61 @@ export type ChangeProjectIconRequestExt =
   | "svg"
   | "svgz"
   | "rgb";
+const ChangeProjectIconRequestExt = S.String;
+
 export interface ChangeProjectIconRequest {
   /** The ID or slug of the project */
   id_slug: string;
   /** Image extension */
   ext: ChangeProjectIconRequestExt | (string & {});
 }
+const ChangeProjectIconRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ChangeProjectIconRequest>;
+
 export interface ChangeProjectIconResponse {}
+const ChangeProjectIconResponse =
+  AddFilesToVersionResponse as any as S.Schema<ChangeProjectIconResponse>;
+
 export interface ChangeUserIconRequest {
   /** The ID or username of the user */
   id_username: string;
 }
+const ChangeUserIconRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ChangeUserIconRequest>;
+
 export interface ChangeUserIconResponse {}
+const ChangeUserIconResponse = AddFilesToVersionResponse as any as S.Schema<ChangeUserIconResponse>;
+
 export interface CheckProjectValidityRequest {
   /** The ID or slug of the project */
   id_slug: string;
 }
+const CheckProjectValidityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CheckProjectValidityRequest>;
+
 export interface ProjectIdentifier {
   id?: string;
 }
+const ProjectIdentifier = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ProjectIdentifier>;
+
 /** A list of the featured categories that the project has. */
 export type CreatableProjectCategoriesList = Array<string>;
+const CreatableProjectCategoriesList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreatableProjectCategoriesList>;
+
 /** A list of additional categories that the project also has. These are supplementary to the featured categories, and does not include them again. */
 export type CreatableProjectAdditionalCategoriesList = Array<string>;
+const CreatableProjectAdditionalCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<CreatableProjectAdditionalCategoriesList>;
+
 /** The status of the project */
 export type CreatableProjectStatus =
   | "approved"
@@ -112,6 +166,8 @@ export type CreatableProjectStatus =
   | "scheduled"
   | "private"
   | "unknown";
+const CreatableProjectStatus = S.String;
+
 /** The requested status when submitting for review or scheduling the project for release. Approved status refers to "Public" visibility. */
 export type CreatableProjectRequestedStatus =
   | "approved"
@@ -119,6 +175,8 @@ export type CreatableProjectRequestedStatus =
   | "unlisted"
   | "private"
   | "draft";
+const CreatableProjectRequestedStatus = S.String;
+
 export interface ProjectDonationURL {
   /** The ID of the donation platform */
   id?: string;
@@ -127,16 +185,31 @@ export interface ProjectDonationURL {
   /** The URL of the donation platform and user */
   url?: string;
 }
+const ProjectDonationURL = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ProjectDonationURL>;
+
 /** A list of donation links for the project */
 export type CreatableProjectDonationUrlsList = Array<ProjectDonationURL>;
+const CreatableProjectDonationUrlsList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreatableProjectDonationUrlsList>;
+
 /** Deprecated - use `environment` instead. */
 export type CreatableProjectClientSide = "required" | "optional" | "unsupported";
+const CreatableProjectClientSide = S.String;
+
 /** Deprecated - use `environment` instead. */
 export type CreatableProjectServerSide = "required" | "optional" | "unsupported";
+const CreatableProjectServerSide = S.String;
+
 /** The project type of the project */
 export type CreatableProjectProjectType = "mod" | "modpack";
+const CreatableProjectProjectType = S.String;
+
 /** The type of dependency that this version has */
 export type VersionDependencyDependencyType = "required" | "optional" | "incompatible" | "embedded";
+const VersionDependencyDependencyType = S.String;
+
 export interface VersionDependency {
   /** The ID of the version that this version depends on */
   version_id?: string | null;
@@ -147,14 +220,29 @@ export interface VersionDependency {
   /** The type of dependency that this version has */
   dependency_type: VersionDependencyDependencyType | (string & {});
 }
+const VersionDependency = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<VersionDependency>;
+
 /** A list of specific versions of projects that this version depends on */
 export type EditableVersionDependenciesList = Array<VersionDependency>;
+const EditableVersionDependenciesList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<EditableVersionDependenciesList>;
+
 /** A list of versions of Minecraft that this version supports */
 export type EditableVersionGameVersionsList = Array<string>;
+const EditableVersionGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<EditableVersionGameVersionsList>;
+
 /** The release channel for this version */
 export type EditableVersionVersionType = "release" | "beta" | "alpha";
+const EditableVersionVersionType = S.String;
+
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type EditableVersionLoadersList = Array<string>;
+const EditableVersionLoadersList =
+  CreatableProjectCategoriesList as any as S.Schema<EditableVersionLoadersList>;
+
 export type EditableVersionStatus =
   | "listed"
   | "archived"
@@ -162,9 +250,16 @@ export type EditableVersionStatus =
   | "unlisted"
   | "scheduled"
   | "unknown";
+const EditableVersionStatus = S.String;
+
 export type EditableVersionRequestedStatus = "listed" | "archived" | "draft" | "unlisted";
+const EditableVersionRequestedStatus = S.String;
+
 /** The hash format and the hash of the new primary file */
 export type EditableVersionPrimaryFileList = Array<string>;
+const EditableVersionPrimaryFileList =
+  CreatableProjectCategoriesList as any as S.Schema<EditableVersionPrimaryFileList>;
+
 export interface EditableFileType {
   /** The hash algorithm of the hash specified in the hash field */
   algorithm: string;
@@ -172,8 +267,15 @@ export interface EditableFileType {
   hash: string;
   file_type: unknown;
 }
+const EditableFileType = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<EditableFileType>;
+
 /** A list of file_types to edit */
 export type EditableVersionFileTypesList = Array<EditableFileType>;
+const EditableVersionFileTypesList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<EditableVersionFileTypesList>;
+
 export interface EditableVersion {
   /** The name of this version */
   name?: string;
@@ -198,8 +300,15 @@ export interface EditableVersion {
   /** A list of file_types to edit */
   file_types?: EditableVersionFileTypesList;
 }
+const EditableVersion = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<EditableVersion>;
+
 /** A list of initial versions to upload with the created project. Deprecated - please upload version files after initial upload. */
 export type CreatableProjectInitialVersionsList = Array<EditableVersion>;
+const CreatableProjectInitialVersionsList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreatableProjectInitialVersionsList>;
+
 export interface CreatableProjectGalleryItem {
   /** The name of the multipart item where the gallery media is located */
   item?: string;
@@ -212,8 +321,18 @@ export interface CreatableProjectGalleryItem {
   /** The order of the gallery image. Gallery images are sorted by this field and then alphabetically by title. */
   ordering?: number;
 }
+const CreatableProjectGalleryItem = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreatableProjectGalleryItem>;
+
 /** Gallery images to be uploaded with the created project. Deprecated - please upload gallery images after initial upload. */
 export type CreatableProjectGalleryItemsList = Array<CreatableProjectGalleryItem | null>;
+const CreatableProjectGalleryItemsList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreatableProjectGalleryItemsList>;
+
 export interface CreatableProject {
   /** The slug of a project, used for vanity URLs. Regex: ```^[\w!@$()`.+,"\-']{3,64}$``` */
   slug: string;
@@ -258,6 +377,8 @@ export interface CreatableProject {
   /** Gallery images to be uploaded with the created project. Deprecated - please upload gallery images after initial upload. */
   gallery_items?: CreatableProjectGalleryItemsList;
 }
+const CreatableProject = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<CreatableProject>;
+
 /** Project icon file */
 export type CreateProjectRequestIcon =
   | "*.png"
@@ -269,11 +390,15 @@ export type CreateProjectRequestIcon =
   | "*.svg"
   | "*.svgz"
   | "*.rgb";
+const CreateProjectRequestIcon = S.String;
+
 export interface CreateProjectRequest {
   data: CreatableProject;
   /** Project icon file */
   icon?: CreateProjectRequestIcon | (string & {});
 }
+const CreateProjectRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CreateProjectRequest>;
+
 /** The status of the project */
 export type ProjectStatus =
   | "approved"
@@ -286,12 +411,22 @@ export type ProjectStatus =
   | "scheduled"
   | "private"
   | "unknown";
+const ProjectStatus = S.String;
+
 /** The project type of the project */
 export type ProjectProjectType = "mod" | "modpack" | "resourcepack" | "shader";
+const ProjectProjectType = S.String;
+
 /** A list of the featured categories that the project has. */
 export type ProjectCategoriesList = Array<string>;
+const ProjectCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<ProjectCategoriesList>;
+
 /** A list of additional categories that the project also has. These are supplementary to the featured categories, and does not include them again. */
 export type ProjectAdditionalCategoriesList = Array<string>;
+const ProjectAdditionalCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<ProjectAdditionalCategoriesList>;
+
 /** The environment a project or version supports. For an explanation of each environment, see the blog post here: https://modrinth.com/news/article/new-environments/#new-system */
 export type EnvironmentEnum =
   | "client_and_server"
@@ -304,14 +439,28 @@ export type EnvironmentEnum =
   | "client_or_server"
   | "client_or_server_prefers_both"
   | "unknown";
+const EnvironmentEnum = S.String;
+
 /** All the environments that versions of this project support. Not in any particular order, we recommend using the environment information on a version instead. For an explanation of each environment, see the blog post here: https://modrinth.com/news/article/new-environments/#new-system */
 export type ProjectEnvironmentList = Array<EnvironmentEnum>;
+const ProjectEnvironmentList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ProjectEnvironmentList>;
+
 /** A list of all of the game versions supported by the project */
 export type ProjectGameVersionsList = Array<string>;
+const ProjectGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<ProjectGameVersionsList>;
+
 /** A list of all of the loaders supported by the project. These vary based on project type. */
 export type ProjectLoadersList = Array<string>;
+const ProjectLoadersList = CreatableProjectCategoriesList as any as S.Schema<ProjectLoadersList>;
+
 /** A list of the version IDs of the project */
 export type ProjectVersionsList = Array<string>;
+const ProjectVersionsList = CreatableProjectCategoriesList as any as S.Schema<ProjectVersionsList>;
+
 /** The license of the project */
 export interface ProjectLicense {
   /** The SPDX license ID of a project */
@@ -321,6 +470,8 @@ export interface ProjectLicense {
   /** The URL to this license */
   url?: string | null;
 }
+const ProjectLicense = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ProjectLicense>;
+
 export interface GalleryImage {
   /** The URL of the gallery image */
   url: string;
@@ -335,17 +486,32 @@ export interface GalleryImage {
   /** The order of the gallery image. Gallery images are sorted by this field and then alphabetically by title. */
   ordering?: number;
 }
+const GalleryImage = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GalleryImage>;
+
 /** A list of images that have been uploaded to the project's gallery */
 export type ProjectGalleryList = Array<GalleryImage | null>;
+const ProjectGalleryList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ProjectGalleryList>;
+
 export type ProjectMonetizationStatus = "monetized" | "demonetized" | "force-demonetized";
+const ProjectMonetizationStatus = S.String;
+
 /** The requested status when submitting for review or scheduling the project for release. Approved status refers to "Public" visibility. */
 export type ProjectRequestedStatus = "approved" | "archived" | "unlisted" | "private" | "draft";
+const ProjectRequestedStatus = S.String;
+
 /** A list of donation links for the project */
 export type ProjectDonationUrlsList = Array<ProjectDonationURL>;
+const ProjectDonationUrlsList =
+  CreatableProjectDonationUrlsList as any as S.Schema<ProjectDonationUrlsList>;
+
 /** Deprecated - use `environment` instead. */
 export type ProjectClientSide = "required" | "optional" | "unsupported" | "unknown";
+const ProjectClientSide = S.String;
+
 /** Deprecated - use `environment` instead. */
 export type ProjectServerSide = "required" | "optional" | "unsupported" | "unknown";
+const ProjectServerSide = S.String;
+
 /** Deprecated - A message that a moderator sent regarding the project */
 export interface ModeratorMessage {
   /** The message that a moderator has left for the project */
@@ -353,6 +519,8 @@ export interface ModeratorMessage {
   /** The longer body of the message that a moderator has left for the project */
   body?: string | null;
 }
+const ModeratorMessage = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ModeratorMessage>;
+
 export interface Project {
   /** The ID of the project, encoded as a base62 string */
   id: string;
@@ -428,14 +596,27 @@ export interface Project {
   body_url?: string | null;
   moderator_message?: ModeratorMessage | null;
 }
+const Project = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Project>;
+
 /** A list of specific versions of projects that this version depends on */
 export type CreatableVersionDependenciesList = Array<VersionDependency>;
+const CreatableVersionDependenciesList =
+  EditableVersionDependenciesList as any as S.Schema<CreatableVersionDependenciesList>;
+
 /** A list of versions of Minecraft that this version supports */
 export type CreatableVersionGameVersionsList = Array<string>;
+const CreatableVersionGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<CreatableVersionGameVersionsList>;
+
 /** The release channel for this version */
 export type CreatableVersionVersionType = "release" | "beta" | "alpha";
+const CreatableVersionVersionType = S.String;
+
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type CreatableVersionLoadersList = Array<string>;
+const CreatableVersionLoadersList =
+  CreatableProjectCategoriesList as any as S.Schema<CreatableVersionLoadersList>;
+
 export type CreatableVersionStatus =
   | "listed"
   | "archived"
@@ -443,9 +624,16 @@ export type CreatableVersionStatus =
   | "unlisted"
   | "scheduled"
   | "unknown";
+const CreatableVersionStatus = S.String;
+
 export type CreatableVersionRequestedStatus = "listed" | "archived" | "draft" | "unlisted";
+const CreatableVersionRequestedStatus = S.String;
+
 /** An array of the multipart field names of each file that goes with this version */
 export type CreatableVersionFilePartsList = Array<string>;
+const CreatableVersionFilePartsList =
+  CreatableProjectCategoriesList as any as S.Schema<CreatableVersionFilePartsList>;
+
 /** The environment a version supports. For an explanation of each environment, see the blog post here: https://modrinth.com/news/article/new-environments/#new-system */
 export type EnvironmentInputEnum =
   | "client_and_server"
@@ -457,6 +645,8 @@ export type EnvironmentInputEnum =
   | "dedicated_server_only"
   | "client_or_server"
   | "client_or_server_prefers_both";
+const EnvironmentInputEnum = S.String;
+
 export type FileTypeEnum =
   | "required-resource-pack"
   | "optional-resource-pack"
@@ -465,10 +655,17 @@ export type FileTypeEnum =
   | "javadoc-jar"
   | "unknown"
   | "signature";
+const FileTypeEnum = S.String;
+
 /** A map of file parts to their associated file type, a file type is used for additional files such as sources jars. */
 export type CreatableVersionFileTypesMap = {
   [key: string]: FileTypeEnum | (string & {}) | undefined;
 };
+const CreatableVersionFileTypesMap = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreatableVersionFileTypesMap>;
+
 export interface CreatableVersion {
   /** The name of this version */
   name: string;
@@ -498,17 +695,32 @@ export interface CreatableVersion {
   /** A map of file parts to their associated file type, a file type is used for additional files such as sources jars. */
   file_types?: CreatableVersionFileTypesMap;
 }
+const CreatableVersion = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<CreatableVersion>;
+
 export interface CreateVersionRequest {
   data: CreatableVersion;
 }
+const CreateVersionRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CreateVersionRequest>;
+
 /** A list of specific versions of projects that this version depends on */
 export type CreateVersionResponseDependenciesList = Array<VersionDependency>;
+const CreateVersionResponseDependenciesList =
+  EditableVersionDependenciesList as any as S.Schema<CreateVersionResponseDependenciesList>;
+
 /** A list of versions of Minecraft that this version supports */
 export type CreateVersionResponseGameVersionsList = Array<string>;
+const CreateVersionResponseGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<CreateVersionResponseGameVersionsList>;
+
 /** The release channel for this version */
 export type CreateVersionResponseVersionType = "release" | "beta" | "alpha";
+const CreateVersionResponseVersionType = S.String;
+
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type CreateVersionResponseLoadersList = Array<string>;
+const CreateVersionResponseLoadersList =
+  CreatableProjectCategoriesList as any as S.Schema<CreateVersionResponseLoadersList>;
+
 export type CreateVersionResponseStatus =
   | "listed"
   | "archived"
@@ -516,12 +728,18 @@ export type CreateVersionResponseStatus =
   | "unlisted"
   | "scheduled"
   | "unknown";
+const CreateVersionResponseStatus = S.String;
+
 export type CreateVersionResponseRequestedStatus = "listed" | "archived" | "draft" | "unlisted";
+const CreateVersionResponseRequestedStatus = S.String;
+
 /** A map of hashes of the file. The key is the hashing algorithm and the value is the string version of the hash. */
 export interface VersionFileHashes {
   sha512?: string;
   sha1?: string;
 }
+const VersionFileHashes = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<VersionFileHashes>;
+
 export interface VersionFile {
   hashes: VersionFileHashes;
   /** A direct link to the file */
@@ -534,8 +752,15 @@ export interface VersionFile {
   size: number;
   file_type?: unknown;
 }
+const VersionFile = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<VersionFile>;
+
 /** A list of files available for download for this version */
 export type CreateVersionResponseFilesList = Array<VersionFile>;
+const CreateVersionResponseFilesList = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateVersionResponseFilesList>;
+
 export interface CreateVersionResponse {
   /** The name of this version */
   name: string;
@@ -570,7 +795,14 @@ export interface CreateVersionResponse {
   /** A list of files available for download for this version */
   files: CreateVersionResponseFilesList;
 }
+const CreateVersionResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateVersionResponse>;
+
 export type DeleteFileFromHashRequestAlgorithm = "sha1" | "sha512";
+const DeleteFileFromHashRequestAlgorithm = S.String;
+
 export interface DeleteFileFromHashRequest {
   /** The hash of the file, considering its byte content, and encoded in hexadecimal */
   hash: string;
@@ -579,68 +811,147 @@ export interface DeleteFileFromHashRequest {
   /** Version ID to delete the version from, if multiple files of the same hash exist */
   version_id?: string;
 }
+const DeleteFileFromHashRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<DeleteFileFromHashRequest>;
+
 export interface DeleteFileFromHashResponse {}
+const DeleteFileFromHashResponse =
+  AddFilesToVersionResponse as any as S.Schema<DeleteFileFromHashResponse>;
+
 export interface DeleteGalleryImageRequest {
   /** The ID or slug of the project */
   id_slug: string;
   /** URL link of the image to delete */
   url: string;
 }
+const DeleteGalleryImageRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<DeleteGalleryImageRequest>;
+
 export interface DeleteGalleryImageResponse {}
+const DeleteGalleryImageResponse =
+  AddFilesToVersionResponse as any as S.Schema<DeleteGalleryImageResponse>;
+
 export interface DeleteNotificationRequest {
   /** The ID of the notification */
   id: string;
 }
+const DeleteNotificationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DeleteNotificationRequest>;
+
 export interface DeleteNotificationResponse {}
+const DeleteNotificationResponse =
+  AddFilesToVersionResponse as any as S.Schema<DeleteNotificationResponse>;
+
 export interface DeleteNotificationsRequest {
   /** The IDs of the notifications */
   ids: string;
 }
+const DeleteNotificationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DeleteNotificationsRequest>;
+
 export interface DeleteNotificationsResponse {}
+const DeleteNotificationsResponse =
+  AddFilesToVersionResponse as any as S.Schema<DeleteNotificationsResponse>;
+
 export interface DeleteProjectRequest {
   /** The ID or slug of the project */
   id_slug: string;
 }
+const DeleteProjectRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<DeleteProjectRequest>;
+
 export interface DeleteProjectResponse {}
+const DeleteProjectResponse = AddFilesToVersionResponse as any as S.Schema<DeleteProjectResponse>;
+
 export interface DeleteProjectIconRequest {
   /** The ID or slug of the project */
   id_slug: string;
 }
+const DeleteProjectIconRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<DeleteProjectIconRequest>;
+
 export interface DeleteProjectIconResponse {}
+const DeleteProjectIconResponse =
+  AddFilesToVersionResponse as any as S.Schema<DeleteProjectIconResponse>;
+
 export interface DeleteTeamMemberRequest {
   /** The ID of the team */
   id: string;
   /** The ID or username of the user */
   id_username: string;
 }
+const DeleteTeamMemberRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<DeleteTeamMemberRequest>;
+
 export interface DeleteTeamMemberResponse {}
+const DeleteTeamMemberResponse =
+  AddFilesToVersionResponse as any as S.Schema<DeleteTeamMemberResponse>;
+
 export interface DeleteThreadMessageRequest {
   /** The ID of the message */
   id: string;
 }
+const DeleteThreadMessageRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<DeleteThreadMessageRequest>;
+
 export interface DeleteThreadMessageResponse {}
+const DeleteThreadMessageResponse =
+  AddFilesToVersionResponse as any as S.Schema<DeleteThreadMessageResponse>;
+
 export interface DeleteUserIconRequest {
   /** The ID or username of the user */
   id_username: string;
 }
+const DeleteUserIconRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DeleteUserIconRequest>;
+
 export interface DeleteUserIconResponse {}
+const DeleteUserIconResponse = AddFilesToVersionResponse as any as S.Schema<DeleteUserIconResponse>;
+
 export interface DeleteVersionRequest {
   /** The ID of the version */
   id: string;
 }
+const DeleteVersionRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<DeleteVersionRequest>;
+
 export interface DeleteVersionResponse {}
+const DeleteVersionResponse = AddFilesToVersionResponse as any as S.Schema<DeleteVersionResponse>;
+
 export interface FollowProjectRequest {
   /** The ID or slug of the project */
   id_slug: string;
 }
+const FollowProjectRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<FollowProjectRequest>;
+
 export interface FollowProjectResponse {}
+const FollowProjectResponse = AddFilesToVersionResponse as any as S.Schema<FollowProjectResponse>;
+
 export type ForgeUpdatesRequestNeoforge = "only" | "include";
+const ForgeUpdatesRequestNeoforge = S.String;
+
 export interface ForgeUpdatesRequest {
   /** The ID or slug of the project */
   id_slug: string;
   /** Whether to include NeoForge versions. Can be `only` (NeoForge-only versions), `include` (both Forge and NeoForge versions), or omitted (Forge-only versions). */
   neoforge?: ForgeUpdatesRequestNeoforge | (string & {});
 }
+const ForgeUpdatesRequest = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ForgeUpdatesRequest>;
+
 /** A list of the recommended and latest versions for each Minecraft release */
 export interface ForgeUpdateCheckerPromos {
   /** The mod version that is recommended for `{version}`. Excludes versions with the `alpha` and `beta` version types. */
@@ -648,30 +959,63 @@ export interface ForgeUpdateCheckerPromos {
   /** The latest mod version for `{version}`. Shows versions with the `alpha` and `beta` version types. */
   _version__latest?: string;
 }
+const ForgeUpdateCheckerPromos = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ForgeUpdateCheckerPromos>;
+
 /** Mod version information that can be consumed by Forge's update checker */
 export interface ForgeUpdates {
   /** A link to the mod page */
   homepage?: string;
   promos?: ForgeUpdateCheckerPromos;
 }
+const ForgeUpdates = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ForgeUpdates>;
+
 export interface GetDependenciesRequest {
   /** The ID or slug of the project */
   id_slug: string;
 }
+const GetDependenciesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetDependenciesRequest>;
+
 /** Projects that the project depends upon */
 export type ProjectDependencyListProjectsList = Array<Project>;
+const ProjectDependencyListProjectsList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ProjectDependencyListProjectsList>;
+
 /** A list of specific versions of projects that this version depends on */
 export type VersionDependenciesList = Array<VersionDependency>;
+const VersionDependenciesList =
+  EditableVersionDependenciesList as any as S.Schema<VersionDependenciesList>;
+
 /** A list of versions of Minecraft that this version supports */
 export type VersionGameVersionsList = Array<string>;
+const VersionGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<VersionGameVersionsList>;
+
 /** The release channel for this version */
 export type VersionVersionType = "release" | "beta" | "alpha";
+const VersionVersionType = S.String;
+
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type VersionLoadersList = Array<string>;
+const VersionLoadersList = CreatableProjectCategoriesList as any as S.Schema<VersionLoadersList>;
+
 export type VersionStatus = "listed" | "archived" | "draft" | "unlisted" | "scheduled" | "unknown";
+const VersionStatus = S.String;
+
 export type VersionRequestedStatus = "listed" | "archived" | "draft" | "unlisted";
+const VersionRequestedStatus = S.String;
+
 /** A list of files available for download for this version */
 export type VersionFilesList = Array<VersionFile>;
+const VersionFilesList = CreateVersionResponseFilesList as any as S.Schema<VersionFilesList>;
+
 export interface Version {
   /** The name of this version */
   name: string;
@@ -706,27 +1050,63 @@ export interface Version {
   /** A list of files available for download for this version */
   files: VersionFilesList;
 }
+const Version = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<Version>;
+
 /** Versions that the project depends upon */
 export type ProjectDependencyListVersionsList = Array<Version>;
+const ProjectDependencyListVersionsList = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ProjectDependencyListVersionsList>;
+
 export interface ProjectDependencyList {
   /** Projects that the project depends upon */
   projects?: ProjectDependencyListProjectsList;
   /** Versions that the project depends upon */
   versions?: ProjectDependencyListVersionsList;
 }
+const ProjectDependencyList = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ProjectDependencyList>;
+
 export interface GetFollowedProjectsRequest {
   /** The ID or username of the user */
   id_username: string;
 }
+const GetFollowedProjectsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GetFollowedProjectsRequest>;
+
 export type GetFollowedProjectsResponseBodyList = Array<Project>;
+const GetFollowedProjectsResponseBodyList =
+  ProjectDependencyListProjectsList as any as S.Schema<GetFollowedProjectsResponseBodyList>;
+
 export type GetFollowedProjectsResponse = GetFollowedProjectsResponseBodyList;
+const GetFollowedProjectsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<GetFollowedProjectsResponse>;
+
 export type GetLatestVersionFromHashRequestAlgorithm = "sha1" | "sha512";
+const GetLatestVersionFromHashRequestAlgorithm = S.String;
+
 export type GetLatestVersionFromHashRequestLoadersList = Array<string>;
+const GetLatestVersionFromHashRequestLoadersList =
+  CreatableProjectCategoriesList as any as S.Schema<GetLatestVersionFromHashRequestLoadersList>;
+
 export type GetLatestVersionFromHashRequestGameVersionsList = Array<string>;
+const GetLatestVersionFromHashRequestGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<GetLatestVersionFromHashRequestGameVersionsList>;
+
 export type GetLatestVersionFromHashRequestVersionTypesItem = "release" | "alpha" | "beta";
 export type GetLatestVersionFromHashRequestVersionTypesList = Array<
   GetLatestVersionFromHashRequestVersionTypesItem | (string & {})
 >;
+const GetLatestVersionFromHashRequestVersionTypesList =
+  ProjectEnvironmentList as any as S.Schema<GetLatestVersionFromHashRequestVersionTypesList>;
+
 export interface GetLatestVersionFromHashRequest {
   /** The hash of the file, considering its byte content, and encoded in hexadecimal */
   hash: string;
@@ -736,14 +1116,30 @@ export interface GetLatestVersionFromHashRequest {
   game_versions: GetLatestVersionFromHashRequestGameVersionsList;
   version_types?: GetLatestVersionFromHashRequestVersionTypesList;
 }
+const GetLatestVersionFromHashRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<GetLatestVersionFromHashRequest>;
+
 /** A list of specific versions of projects that this version depends on */
 export type GetLatestVersionFromHashResponseDependenciesList = Array<VersionDependency>;
+const GetLatestVersionFromHashResponseDependenciesList =
+  EditableVersionDependenciesList as any as S.Schema<GetLatestVersionFromHashResponseDependenciesList>;
+
 /** A list of versions of Minecraft that this version supports */
 export type GetLatestVersionFromHashResponseGameVersionsList = Array<string>;
+const GetLatestVersionFromHashResponseGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<GetLatestVersionFromHashResponseGameVersionsList>;
+
 /** The release channel for this version */
 export type GetLatestVersionFromHashResponseVersionType = "release" | "beta" | "alpha";
+const GetLatestVersionFromHashResponseVersionType = S.String;
+
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type GetLatestVersionFromHashResponseLoadersList = Array<string>;
+const GetLatestVersionFromHashResponseLoadersList =
+  CreatableProjectCategoriesList as any as S.Schema<GetLatestVersionFromHashResponseLoadersList>;
+
 export type GetLatestVersionFromHashResponseStatus =
   | "listed"
   | "archived"
@@ -751,13 +1147,20 @@ export type GetLatestVersionFromHashResponseStatus =
   | "unlisted"
   | "scheduled"
   | "unknown";
+const GetLatestVersionFromHashResponseStatus = S.String;
+
 export type GetLatestVersionFromHashResponseRequestedStatus =
   | "listed"
   | "archived"
   | "draft"
   | "unlisted";
+const GetLatestVersionFromHashResponseRequestedStatus = S.String;
+
 /** A list of files available for download for this version */
 export type GetLatestVersionFromHashResponseFilesList = Array<VersionFile>;
+const GetLatestVersionFromHashResponseFilesList =
+  CreateVersionResponseFilesList as any as S.Schema<GetLatestVersionFromHashResponseFilesList>;
+
 export interface GetLatestVersionFromHashResponse {
   /** The name of this version */
   name: string;
@@ -792,14 +1195,33 @@ export interface GetLatestVersionFromHashResponse {
   /** A list of files available for download for this version */
   files: GetLatestVersionFromHashResponseFilesList;
 }
+const GetLatestVersionFromHashResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<GetLatestVersionFromHashResponse>;
+
 export type GetLatestVersionsFromHashesRequestHashesList = Array<string>;
+const GetLatestVersionsFromHashesRequestHashesList =
+  CreatableProjectCategoriesList as any as S.Schema<GetLatestVersionsFromHashesRequestHashesList>;
+
 export type GetLatestVersionsFromHashesRequestAlgorithm = "sha1" | "sha512";
+const GetLatestVersionsFromHashesRequestAlgorithm = S.String;
+
 export type GetLatestVersionsFromHashesRequestLoadersList = Array<string>;
+const GetLatestVersionsFromHashesRequestLoadersList =
+  CreatableProjectCategoriesList as any as S.Schema<GetLatestVersionsFromHashesRequestLoadersList>;
+
 export type GetLatestVersionsFromHashesRequestGameVersionsList = Array<string>;
+const GetLatestVersionsFromHashesRequestGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<GetLatestVersionsFromHashesRequestGameVersionsList>;
+
 export type GetLatestVersionsFromHashesRequestVersionTypesItem = "release" | "alpha" | "beta";
 export type GetLatestVersionsFromHashesRequestVersionTypesList = Array<
   GetLatestVersionsFromHashesRequestVersionTypesItem | (string & {})
 >;
+const GetLatestVersionsFromHashesRequestVersionTypesList =
+  ProjectEnvironmentList as any as S.Schema<GetLatestVersionsFromHashesRequestVersionTypesList>;
+
 export interface GetLatestVersionsFromHashesRequest {
   hashes: GetLatestVersionsFromHashesRequestHashesList;
   algorithm: GetLatestVersionsFromHashesRequestAlgorithm | (string & {});
@@ -807,21 +1229,43 @@ export interface GetLatestVersionsFromHashesRequest {
   game_versions: GetLatestVersionsFromHashesRequestGameVersionsList;
   version_types?: GetLatestVersionsFromHashesRequestVersionTypesList;
 }
+const GetLatestVersionsFromHashesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GetLatestVersionsFromHashesRequest>;
+
 /** A map from hashes to versions */
 export type HashVersionMap = { [key: string]: Version | undefined };
+const HashVersionMap = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<HashVersionMap>;
+
 export type GetLatestVersionsFromHashesResponse = HashVersionMap;
+const GetLatestVersionsFromHashesResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetLatestVersionsFromHashesResponse>;
+
 export interface GetNotificationRequest {
   /** The ID of the notification */
   id: string;
 }
+const GetNotificationRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GetNotificationRequest>;
+
 /** The type of notification */
 export type NotificationType =
   | "project_update"
   | "team_invite"
   | "status_change"
   | "moderator_message";
+const NotificationType = S.String;
+
 /** The HTTP code and path to request in order to perform this action. */
 export type NotificationActionActionRouteList = Array<string>;
+const NotificationActionActionRouteList =
+  CreatableProjectCategoriesList as any as S.Schema<NotificationActionActionRouteList>;
+
 /** An action that can be performed on a notification */
 export interface NotificationAction {
   /** The friendly name for this action */
@@ -829,8 +1273,15 @@ export interface NotificationAction {
   /** The HTTP code and path to request in order to perform this action. */
   action_route?: NotificationActionActionRouteList;
 }
+const NotificationAction = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<NotificationAction>;
+
 /** A list of actions that can be performed */
 export type NotificationActionsList = Array<NotificationAction>;
+const NotificationActionsList = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<NotificationActionsList>;
+
 export interface Notification {
   /** The id of the notification */
   id: string;
@@ -851,17 +1302,41 @@ export interface Notification {
   /** A list of actions that can be performed */
   actions: NotificationActionsList;
 }
+const Notification = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<Notification>;
+
 export interface GetNotificationsRequest {
   /** The IDs of the notifications */
   ids: string;
 }
+const GetNotificationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GetNotificationsRequest>;
+
 export type GetNotificationsResponseBodyList = Array<Notification>;
+const GetNotificationsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<GetNotificationsResponseBodyList>;
+
 export type GetNotificationsResponse = GetNotificationsResponseBodyList;
+const GetNotificationsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetNotificationsResponse>;
+
 export interface GetOpenReportsRequest {
   count?: number;
 }
+const GetOpenReportsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GetOpenReportsRequest>;
+
 /** The type of the item being reported */
 export type ReportItemType = "project" | "user" | "version";
+const ReportItemType = S.String;
+
 export interface Report {
   /** The type of the report being sent */
   report_type: string;
@@ -882,12 +1357,29 @@ export interface Report {
   /** The ID of the moderation thread associated with this report */
   thread_id: string;
 }
+const Report = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<Report>;
+
 export type GetOpenReportsResponseBodyList = Array<Report>;
+const GetOpenReportsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetOpenReportsResponseBodyList>;
+
 export type GetOpenReportsResponse = GetOpenReportsResponseBodyList;
+const GetOpenReportsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<GetOpenReportsResponse>;
+
 export interface GetPayoutHistoryRequest {
   /** The ID or username of the user */
   id_username: string;
 }
+const GetPayoutHistoryRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<GetPayoutHistoryRequest>;
+
 export interface UserPayoutHistoryEntry {
   /** The date of this transaction */
   created?: string;
@@ -896,8 +1388,18 @@ export interface UserPayoutHistoryEntry {
   /** The status of this transaction */
   status?: string;
 }
+const UserPayoutHistoryEntry = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<UserPayoutHistoryEntry>;
+
 /** A history of all of the user's past transactions */
 export type UserPayoutHistoryPayoutsList = Array<UserPayoutHistoryEntry>;
+const UserPayoutHistoryPayoutsList = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<UserPayoutHistoryPayoutsList>;
+
 export interface UserPayoutHistory {
   /** The all-time balance accrued by this user in USD */
   all_time?: string;
@@ -906,24 +1408,44 @@ export interface UserPayoutHistory {
   /** A history of all of the user's past transactions */
   payouts?: UserPayoutHistoryPayoutsList;
 }
+const UserPayoutHistory = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<UserPayoutHistory>;
+
 export interface GetProjectRequest {
   /** The ID or slug of the project */
   id_slug: string;
 }
+const GetProjectRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<GetProjectRequest>;
+
 export interface GetProjectsRequest {
   /** The IDs and/or slugs of the projects */
   ids: string;
 }
+const GetProjectsRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<GetProjectsRequest>;
+
 export type GetProjectsResponseBodyList = Array<Project>;
+const GetProjectsResponseBodyList =
+  ProjectDependencyListProjectsList as any as S.Schema<GetProjectsResponseBodyList>;
+
 export type GetProjectsResponse = GetProjectsResponseBodyList;
+const GetProjectsResponse = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<GetProjectsResponse>;
+
 export interface GetProjectTeamMembersRequest {
   /** The ID or slug of the project */
   id_slug: string;
 }
+const GetProjectTeamMembersRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<GetProjectTeamMembersRequest>;
+
 /** The wallet that the user has selected */
 export type UserPayoutDataPayoutWallet = "paypal" | "venmo";
+const UserPayoutDataPayoutWallet = S.String;
+
 /** The type of the user's wallet */
 export type UserPayoutDataPayoutWalletType = "email" | "phone" | "user_handle";
+const UserPayoutDataPayoutWalletType = S.String;
+
 /** Various data relating to the user's payouts status (you can only see your own) */
 export interface UserPayoutData {
   /** The payout balance available for the user to withdraw (note, you cannot modify this in a PATCH request) */
@@ -935,10 +1457,17 @@ export interface UserPayoutData {
   /** The user's payout address */
   payout_address?: string;
 }
+const UserPayoutData = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<UserPayoutData>;
+
 /** The user's role */
 export type UserRole = "admin" | "moderator" | "developer";
+const UserRole = S.String;
+
 /** A list of authentication providers you have signed up for (only displayed if requesting your own account) */
 export type UserAuthProvidersList = Array<string>;
+const UserAuthProvidersList =
+  CreatableProjectCategoriesList as any as S.Schema<UserAuthProvidersList>;
+
 export interface User {
   /** The user's username */
   username: string;
@@ -970,6 +1499,8 @@ export interface User {
   /** Deprecated - this is no longer public for security reasons and is always null */
   github_id?: number | null;
 }
+const User = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<User>;
+
 export interface TeamMember {
   /** The ID of the team this team member is a member of */
   team_id: string;
@@ -985,9 +1516,21 @@ export interface TeamMember {
   /** The order of the team member. */
   ordering?: number;
 }
+const TeamMember = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<TeamMember>;
+
 /** An array of team members */
 export type GetProjectTeamMembersResponseBodyList = Array<TeamMember>;
+const GetProjectTeamMembersResponseBodyList = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<GetProjectTeamMembersResponseBodyList>;
+
 export type GetProjectTeamMembersResponse = GetProjectTeamMembersResponseBodyList;
+const GetProjectTeamMembersResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<GetProjectTeamMembersResponse>;
+
 export interface GetProjectVersionsRequest {
   /** The ID or slug of the project */
   id_slug: string;
@@ -1000,12 +1543,27 @@ export interface GetProjectVersionsRequest {
   /** Allows you to toggle the inclusion of the changelog field in the response. It is highly recommended to use include_changelog=false in most cases unless you specifically need the changelog for all versions. */
   include_changelog?: boolean;
 }
+const GetProjectVersionsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<GetProjectVersionsRequest>;
+
 export type GetProjectVersionsResponseBodyList = Array<Version>;
+const GetProjectVersionsResponseBodyList =
+  ProjectDependencyListVersionsList as any as S.Schema<GetProjectVersionsResponseBodyList>;
+
 export type GetProjectVersionsResponse = GetProjectVersionsResponseBodyList;
+const GetProjectVersionsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GetProjectVersionsResponse>;
+
 export interface GetReportRequest {
   /** The ID of the report */
   id: string;
 }
+const GetReportRequest = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<GetReportRequest>;
+
 /** The type of the item being reported */
 export type GetReportResponseItemType = "project" | "user" | "version";
 export interface GetReportResponse {
@@ -1028,33 +1586,70 @@ export interface GetReportResponse {
   /** The ID of the moderation thread associated with this report */
   thread_id: string;
 }
+const GetReportResponse = Report as any as S.Schema<GetReportResponse>;
+
 export interface GetReportsRequest {
   /** The IDs of the reports */
   ids: string;
 }
+const GetReportsRequest = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<GetReportsRequest>;
+
 export type GetReportsResponseBodyList = Array<Report>;
 export type GetReportsResponse = GetReportsResponseBodyList;
+const GetReportsResponse = GetOpenReportsResponse as any as S.Schema<GetReportsResponse>;
+
 export interface GetTeamMembersRequest {
   /** The ID of the team */
   id: string;
 }
+const GetTeamMembersRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GetTeamMembersRequest>;
+
 /** An array of team members */
 export type GetTeamMembersResponseBodyList = Array<TeamMember>;
+const GetTeamMembersResponseBodyList =
+  GetProjectTeamMembersResponseBodyList as any as S.Schema<GetTeamMembersResponseBodyList>;
+
 export type GetTeamMembersResponse = GetTeamMembersResponseBodyList;
+const GetTeamMembersResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<GetTeamMembersResponse>;
+
 export interface GetTeamsRequest {
   /** The IDs of the teams */
   ids: string;
 }
+const GetTeamsRequest = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<GetTeamsRequest>;
+
 export type GetTeamsResponseBodyItemList = Array<TeamMember>;
+const GetTeamsResponseBodyItemList =
+  GetProjectTeamMembersResponseBodyList as any as S.Schema<GetTeamsResponseBodyItemList>;
+
 export type GetTeamsResponseBodyList = Array<GetTeamsResponseBodyItemList>;
+const GetTeamsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<GetTeamsResponseBodyList>;
+
 export type GetTeamsResponse = GetTeamsResponseBodyList;
+const GetTeamsResponse = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<GetTeamsResponse>;
+
 export interface GetThreadRequest {
   /** The ID of the thread */
   id: string;
 }
+const GetThreadRequest = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<GetThreadRequest>;
+
 export type ThreadType = "project" | "report" | "direct_message";
+const ThreadType = S.String;
+
 /** The type of message */
 export type ThreadMessageBodyType = "status_change" | "text" | "thread_closure" | "deleted";
+const ThreadMessageBodyType = S.String;
+
 /** The old status of the project. **Only present for `status_change` message type** */
 export type ThreadMessageBodyOldStatus =
   | "approved"
@@ -1067,6 +1662,8 @@ export type ThreadMessageBodyOldStatus =
   | "scheduled"
   | "private"
   | "unknown";
+const ThreadMessageBodyOldStatus = S.String;
+
 /** The new status of the project. **Only present for `status_change` message type** */
 export type ThreadMessageBodyNewStatus =
   | "approved"
@@ -1079,6 +1676,8 @@ export type ThreadMessageBodyNewStatus =
   | "scheduled"
   | "private"
   | "unknown";
+const ThreadMessageBodyNewStatus = S.String;
+
 /** The contents of the message. **Fields will vary depending on message type.** */
 export interface ThreadMessageBody {
   /** The type of message */
@@ -1094,6 +1693,8 @@ export interface ThreadMessageBody {
   /** The new status of the project. **Only present for `status_change` message type** */
   new_status?: ThreadMessageBodyNewStatus;
 }
+const ThreadMessageBody = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<ThreadMessageBody>;
+
 export interface ThreadMessage {
   /** The ID of the message itself */
   id: string;
@@ -1103,8 +1704,14 @@ export interface ThreadMessage {
   /** The time at which the message was created */
   created: string;
 }
+const ThreadMessage = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<ThreadMessage>;
+
 export type ThreadMessagesList = Array<ThreadMessage>;
+const ThreadMessagesList = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<ThreadMessagesList>;
+
 export type ThreadMembersList = Array<User>;
+const ThreadMembersList = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<ThreadMembersList>;
+
 export interface Thread {
   /** The ID of the thread */
   id: string;
@@ -1116,20 +1723,38 @@ export interface Thread {
   messages: ThreadMessagesList;
   members: ThreadMembersList;
 }
+const Thread = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<Thread>;
+
 export interface GetThreadsRequest {
   /** The IDs of the threads */
   ids: string;
 }
+const GetThreadsRequest = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<GetThreadsRequest>;
+
 export type GetThreadsResponseBodyList = Array<Thread>;
+const GetThreadsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GetThreadsResponseBodyList>;
+
 export type GetThreadsResponse = GetThreadsResponseBodyList;
+const GetThreadsResponse = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<GetThreadsResponse>;
+
 export interface GetUserRequest {
   /** The ID or username of the user */
   id_username: string;
 }
+const GetUserRequest = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<GetUserRequest>;
+
 /** The user's role */
 export type GetUserResponseRole = "admin" | "moderator" | "developer";
+const GetUserResponseRole = S.String;
+
 /** A list of authentication providers you have signed up for (only displayed if requesting your own account) */
 export type GetUserResponseAuthProvidersList = Array<string>;
+const GetUserResponseAuthProvidersList =
+  CreatableProjectCategoriesList as any as S.Schema<GetUserResponseAuthProvidersList>;
+
 export interface GetUserResponse {
   /** The user's username */
   username: string;
@@ -1161,11 +1786,23 @@ export interface GetUserResponse {
   /** Deprecated - this is no longer public for security reasons and is always null */
   github_id?: number | null;
 }
+const GetUserResponse = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<GetUserResponse>;
+
 export interface GetUserFromAuthRequest {}
+const GetUserFromAuthRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<GetUserFromAuthRequest>;
+
 /** The user's role */
 export type GetUserFromAuthResponseRole = "admin" | "moderator" | "developer";
+const GetUserFromAuthResponseRole = S.String;
+
 /** A list of authentication providers you have signed up for (only displayed if requesting your own account) */
 export type GetUserFromAuthResponseAuthProvidersList = Array<string>;
+const GetUserFromAuthResponseAuthProvidersList =
+  CreatableProjectCategoriesList as any as S.Schema<GetUserFromAuthResponseAuthProvidersList>;
+
 export interface GetUserFromAuthResponse {
   /** The user's username */
   username: string;
@@ -1197,36 +1834,83 @@ export interface GetUserFromAuthResponse {
   /** Deprecated - this is no longer public for security reasons and is always null */
   github_id?: number | null;
 }
+const GetUserFromAuthResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<GetUserFromAuthResponse>;
+
 export interface GetUserNotificationsRequest {
   /** The ID or username of the user */
   id_username: string;
 }
+const GetUserNotificationsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<GetUserNotificationsRequest>;
+
 export type GetUserNotificationsResponseBodyList = Array<Notification>;
+const GetUserNotificationsResponseBodyList =
+  GetNotificationsResponseBodyList as any as S.Schema<GetUserNotificationsResponseBodyList>;
+
 export type GetUserNotificationsResponse = GetUserNotificationsResponseBodyList;
+const GetUserNotificationsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<GetUserNotificationsResponse>;
+
 export interface GetUserProjectsRequest {
   /** The ID or username of the user */
   id_username: string;
 }
+const GetUserProjectsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<GetUserProjectsRequest>;
+
 export type GetUserProjectsResponseBodyList = Array<Project>;
 export type GetUserProjectsResponse = GetUserProjectsResponseBodyList;
+const GetUserProjectsResponse = GetProjectsResponse as any as S.Schema<GetUserProjectsResponse>;
+
 export interface GetUsersRequest {
   /** The IDs of the users */
   ids: string;
 }
+const GetUsersRequest = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<GetUsersRequest>;
+
 export type GetUsersResponseBodyList = Array<User>;
+const GetUsersResponseBodyList = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<GetUsersResponseBodyList>;
+
 export type GetUsersResponse = GetUsersResponseBodyList;
+const GetUsersResponse = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<GetUsersResponse>;
+
 export interface GetVersionRequest {
   /** The ID of the version */
   id: string;
 }
+const GetVersionRequest = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<GetVersionRequest>;
+
 /** A list of specific versions of projects that this version depends on */
 export type GetVersionResponseDependenciesList = Array<VersionDependency>;
+const GetVersionResponseDependenciesList =
+  EditableVersionDependenciesList as any as S.Schema<GetVersionResponseDependenciesList>;
+
 /** A list of versions of Minecraft that this version supports */
 export type GetVersionResponseGameVersionsList = Array<string>;
+const GetVersionResponseGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<GetVersionResponseGameVersionsList>;
+
 /** The release channel for this version */
 export type GetVersionResponseVersionType = "release" | "beta" | "alpha";
+const GetVersionResponseVersionType = S.String;
+
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type GetVersionResponseLoadersList = Array<string>;
+const GetVersionResponseLoadersList =
+  CreatableProjectCategoriesList as any as S.Schema<GetVersionResponseLoadersList>;
+
 export type GetVersionResponseStatus =
   | "listed"
   | "archived"
@@ -1234,9 +1918,16 @@ export type GetVersionResponseStatus =
   | "unlisted"
   | "scheduled"
   | "unknown";
+const GetVersionResponseStatus = S.String;
+
 export type GetVersionResponseRequestedStatus = "listed" | "archived" | "draft" | "unlisted";
+const GetVersionResponseRequestedStatus = S.String;
+
 /** A list of files available for download for this version */
 export type GetVersionResponseFilesList = Array<VersionFile>;
+const GetVersionResponseFilesList =
+  CreateVersionResponseFilesList as any as S.Schema<GetVersionResponseFilesList>;
+
 export interface GetVersionResponse {
   /** The name of this version */
   name: string;
@@ -1271,20 +1962,38 @@ export interface GetVersionResponse {
   /** A list of files available for download for this version */
   files: GetVersionResponseFilesList;
 }
+const GetVersionResponse = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<GetVersionResponse>;
+
 export interface GetVersionFromIdOrNumberRequest {
   /** The ID or slug of the project */
   id_slug: string;
   /** The version ID or version number */
   id_number: string;
 }
+const GetVersionFromIdOrNumberRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<GetVersionFromIdOrNumberRequest>;
+
 /** A list of specific versions of projects that this version depends on */
 export type GetVersionFromIdOrNumberResponseDependenciesList = Array<VersionDependency>;
+const GetVersionFromIdOrNumberResponseDependenciesList =
+  EditableVersionDependenciesList as any as S.Schema<GetVersionFromIdOrNumberResponseDependenciesList>;
+
 /** A list of versions of Minecraft that this version supports */
 export type GetVersionFromIdOrNumberResponseGameVersionsList = Array<string>;
+const GetVersionFromIdOrNumberResponseGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<GetVersionFromIdOrNumberResponseGameVersionsList>;
+
 /** The release channel for this version */
 export type GetVersionFromIdOrNumberResponseVersionType = "release" | "beta" | "alpha";
+const GetVersionFromIdOrNumberResponseVersionType = S.String;
+
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type GetVersionFromIdOrNumberResponseLoadersList = Array<string>;
+const GetVersionFromIdOrNumberResponseLoadersList =
+  CreatableProjectCategoriesList as any as S.Schema<GetVersionFromIdOrNumberResponseLoadersList>;
+
 export type GetVersionFromIdOrNumberResponseStatus =
   | "listed"
   | "archived"
@@ -1292,13 +2001,20 @@ export type GetVersionFromIdOrNumberResponseStatus =
   | "unlisted"
   | "scheduled"
   | "unknown";
+const GetVersionFromIdOrNumberResponseStatus = S.String;
+
 export type GetVersionFromIdOrNumberResponseRequestedStatus =
   | "listed"
   | "archived"
   | "draft"
   | "unlisted";
+const GetVersionFromIdOrNumberResponseRequestedStatus = S.String;
+
 /** A list of files available for download for this version */
 export type GetVersionFromIdOrNumberResponseFilesList = Array<VersionFile>;
+const GetVersionFromIdOrNumberResponseFilesList =
+  CreateVersionResponseFilesList as any as S.Schema<GetVersionFromIdOrNumberResponseFilesList>;
+
 export interface GetVersionFromIdOrNumberResponse {
   /** The name of this version */
   name: string;
@@ -1333,27 +2049,49 @@ export interface GetVersionFromIdOrNumberResponse {
   /** A list of files available for download for this version */
   files: GetVersionFromIdOrNumberResponseFilesList;
 }
+const GetVersionFromIdOrNumberResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<GetVersionFromIdOrNumberResponse>;
+
 export interface GetVersionsRequest {
   /** The IDs of the versions */
   ids: string;
 }
+const GetVersionsRequest = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<GetVersionsRequest>;
+
 export type GetVersionsResponseBodyList = Array<Version>;
+const GetVersionsResponseBodyList =
+  ProjectDependencyListVersionsList as any as S.Schema<GetVersionsResponseBodyList>;
+
 export type GetVersionsResponse = GetVersionsResponseBodyList;
+const GetVersionsResponse = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<GetVersionsResponse>;
+
 export interface JoinTeamRequest {
   /** The ID of the team */
   id: string;
 }
+const JoinTeamRequest = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<JoinTeamRequest>;
+
 export interface JoinTeamResponse {}
+const JoinTeamResponse = AddFilesToVersionResponse as any as S.Schema<JoinTeamResponse>;
+
 export interface LicenseTextRequest {
   /** The license ID to get the text of */
   id: string;
 }
+const LicenseTextRequest = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<LicenseTextRequest>;
+
 /** A full license */
 export interface License {
   title?: string;
   body?: string;
 }
+const License = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<License>;
+
 export interface ListCategoryRequest {}
+const ListCategoryRequest = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<ListCategoryRequest>;
+
 export interface CategoryTag {
   /** The SVG icon of a category */
   icon: string;
@@ -1364,20 +2102,54 @@ export interface CategoryTag {
   /** The header under which the category should go */
   header: string;
 }
+const CategoryTag = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<CategoryTag>;
+
 export type ListCategoryResponseBodyList = Array<CategoryTag>;
+const ListCategoryResponseBodyList = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ListCategoryResponseBodyList>;
+
 export type ListCategoryResponse = ListCategoryResponseBodyList;
+const ListCategoryResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<ListCategoryResponse>;
+
 export interface ListDonationPlatformRequest {}
+const ListDonationPlatformRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ListDonationPlatformRequest>;
+
 export interface DonationPlatformTag {
   /** The short identifier of the donation platform */
   short: string;
   /** The full name of the donation platform */
   name: string;
 }
+const DonationPlatformTag = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<DonationPlatformTag>;
+
 export type ListDonationPlatformResponseBodyList = Array<DonationPlatformTag>;
+const ListDonationPlatformResponseBodyList = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ListDonationPlatformResponseBodyList>;
+
 export type ListDonationPlatformResponse = ListDonationPlatformResponseBodyList;
+const ListDonationPlatformResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ListDonationPlatformResponse>;
+
 export interface ListLoaderRequest {}
+const ListLoaderRequest = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<ListLoaderRequest>;
+
 /** The project types that this loader is applicable to */
 export type LoaderTagSupportedProjectTypesList = Array<string>;
+const LoaderTagSupportedProjectTypesList =
+  CreatableProjectCategoriesList as any as S.Schema<LoaderTagSupportedProjectTypesList>;
+
 export interface LoaderTag {
   /** The SVG icon of a loader */
   icon: string;
@@ -1386,20 +2158,57 @@ export interface LoaderTag {
   /** The project types that this loader is applicable to */
   supported_project_types: LoaderTagSupportedProjectTypesList;
 }
+const LoaderTag = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<LoaderTag>;
+
 export type ListLoaderResponseBodyList = Array<LoaderTag>;
+const ListLoaderResponseBodyList = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ListLoaderResponseBodyList>;
+
 export type ListLoaderResponse = ListLoaderResponseBodyList;
+const ListLoaderResponse = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<ListLoaderResponse>;
+
 export interface ListProjectTypeRequest {}
+const ListProjectTypeRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ListProjectTypeRequest>;
+
 export type ListProjectTypeResponseBodyList = Array<string>;
+const ListProjectTypeResponseBodyList =
+  CreatableProjectCategoriesList as any as S.Schema<ListProjectTypeResponseBodyList>;
+
 export type ListProjectTypeResponse = ListProjectTypeResponseBodyList;
+const ListProjectTypeResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ListProjectTypeResponse>;
+
 export interface ListReportTypeRequest {}
+const ListReportTypeRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ListReportTypeRequest>;
+
 export type ListReportTypeResponseBodyList = Array<string>;
 export type ListReportTypeResponse = ListReportTypeResponseBodyList;
+const ListReportTypeResponse = ListProjectTypeResponse as any as S.Schema<ListReportTypeResponse>;
+
 export interface ListSideTypeRequest {}
+const ListSideTypeRequest = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<ListSideTypeRequest>;
+
 export type ListSideTypeResponseBodyList = Array<string>;
 export type ListSideTypeResponse = ListSideTypeResponseBodyList;
+const ListSideTypeResponse = ListProjectTypeResponse as any as S.Schema<ListSideTypeResponse>;
+
 export interface ListVersionRequest {}
+const ListVersionRequest = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<ListVersionRequest>;
+
 /** The type of the game version */
 export type GameVersionTagVersionType = "release" | "snapshot" | "alpha" | "beta";
+const GameVersionTagVersionType = S.String;
+
 export interface GameVersionTag {
   /** The name/number of the game version */
   version: string;
@@ -1410,8 +2219,17 @@ export interface GameVersionTag {
   /** Whether or not this is a major version, used for Featured Versions */
   major: boolean;
 }
+const GameVersionTag = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<GameVersionTag>;
+
 export type ListVersionResponseBodyList = Array<GameVersionTag>;
+const ListVersionResponseBodyList = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ListVersionResponseBodyList>;
+
 export type ListVersionResponse = ListVersionResponseBodyList;
+const ListVersionResponse = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<ListVersionResponse>;
+
 export interface ModifyGalleryImageRequest {
   /** The ID or slug of the project */
   id_slug: string;
@@ -1426,11 +2244,25 @@ export interface ModifyGalleryImageRequest {
   /** New ordering of the image */
   ordering?: number;
 }
+const ModifyGalleryImageRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ModifyGalleryImageRequest>;
+
 export interface ModifyGalleryImageResponse {}
+const ModifyGalleryImageResponse =
+  AddFilesToVersionResponse as any as S.Schema<ModifyGalleryImageResponse>;
+
 /** A list of the featured categories that the project has. */
 export type ModifyProjectRequestCategoriesList = Array<string>;
+const ModifyProjectRequestCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<ModifyProjectRequestCategoriesList>;
+
 /** A list of additional categories that the project also has. These are supplementary to the featured categories, and does not include them again. */
 export type ModifyProjectRequestAdditionalCategoriesList = Array<string>;
+const ModifyProjectRequestAdditionalCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<ModifyProjectRequestAdditionalCategoriesList>;
+
 /** The status of the project */
 export type ModifyProjectRequestStatus =
   | "approved"
@@ -1443,6 +2275,8 @@ export type ModifyProjectRequestStatus =
   | "scheduled"
   | "private"
   | "unknown";
+const ModifyProjectRequestStatus = S.String;
+
 /** The requested status when submitting for review or scheduling the project for release. Approved status refers to "Public" visibility. */
 export type ModifyProjectRequestRequestedStatus =
   | "approved"
@@ -1450,12 +2284,21 @@ export type ModifyProjectRequestRequestedStatus =
   | "unlisted"
   | "private"
   | "draft";
+const ModifyProjectRequestRequestedStatus = S.String;
+
 /** A list of donation links for the project */
 export type ModifyProjectRequestDonationUrlsList = Array<ProjectDonationURL>;
+const ModifyProjectRequestDonationUrlsList =
+  CreatableProjectDonationUrlsList as any as S.Schema<ModifyProjectRequestDonationUrlsList>;
+
 /** Deprecated - use `environment` instead. */
 export type ModifyProjectRequestClientSide = "required" | "optional" | "unsupported";
+const ModifyProjectRequestClientSide = S.String;
+
 /** Deprecated - use `environment` instead. */
 export type ModifyProjectRequestServerSide = "required" | "optional" | "unsupported";
+const ModifyProjectRequestServerSide = S.String;
+
 export interface ModifyProjectRequest {
   /** The ID or slug of the project */
   id_slug: string;
@@ -1498,7 +2341,14 @@ export interface ModifyProjectRequest {
   /** The body of the moderators' message for the project */
   moderation_message_body?: string | null;
 }
+const ModifyProjectRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<ModifyProjectRequest>;
+
 export interface ModifyProjectResponse {}
+const ModifyProjectResponse = AddFilesToVersionResponse as any as S.Schema<ModifyProjectResponse>;
+
 export interface ModifyReportRequest {
   /** The ID of the report */
   id: string;
@@ -1507,7 +2357,11 @@ export interface ModifyReportRequest {
   /** Whether the thread should be closed */
   closed?: boolean;
 }
+const ModifyReportRequest = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<ModifyReportRequest>;
+
 export interface ModifyReportResponse {}
+const ModifyReportResponse = AddFilesToVersionResponse as any as S.Schema<ModifyReportResponse>;
+
 export interface ModifyTeamMemberRequest {
   /** The ID of the team */
   id: string;
@@ -1521,7 +2375,15 @@ export interface ModifyTeamMemberRequest {
   /** The order of the team member. */
   ordering?: number;
 }
+const ModifyTeamMemberRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<ModifyTeamMemberRequest>;
+
 export interface ModifyTeamMemberResponse {}
+const ModifyTeamMemberResponse =
+  AddFilesToVersionResponse as any as S.Schema<ModifyTeamMemberResponse>;
+
 export interface ModifyUserRequest {
   /** The ID or username of the user */
   id_username: string;
@@ -1535,15 +2397,30 @@ export interface ModifyUserRequest {
   bio?: string;
   payout_data?: UserPayoutData | null;
 }
+const ModifyUserRequest = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<ModifyUserRequest>;
+
 export interface ModifyUserResponse {}
+const ModifyUserResponse = AddFilesToVersionResponse as any as S.Schema<ModifyUserResponse>;
+
 /** A list of specific versions of projects that this version depends on */
 export type ModifyVersionRequestDependenciesList = Array<VersionDependency>;
+const ModifyVersionRequestDependenciesList =
+  EditableVersionDependenciesList as any as S.Schema<ModifyVersionRequestDependenciesList>;
+
 /** A list of versions of Minecraft that this version supports */
 export type ModifyVersionRequestGameVersionsList = Array<string>;
+const ModifyVersionRequestGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<ModifyVersionRequestGameVersionsList>;
+
 /** The release channel for this version */
 export type ModifyVersionRequestVersionType = "release" | "beta" | "alpha";
+const ModifyVersionRequestVersionType = S.String;
+
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type ModifyVersionRequestLoadersList = Array<string>;
+const ModifyVersionRequestLoadersList =
+  CreatableProjectCategoriesList as any as S.Schema<ModifyVersionRequestLoadersList>;
+
 export type ModifyVersionRequestStatus =
   | "listed"
   | "archived"
@@ -1551,11 +2428,21 @@ export type ModifyVersionRequestStatus =
   | "unlisted"
   | "scheduled"
   | "unknown";
+const ModifyVersionRequestStatus = S.String;
+
 export type ModifyVersionRequestRequestedStatus = "listed" | "archived" | "draft" | "unlisted";
+const ModifyVersionRequestRequestedStatus = S.String;
+
 /** The hash format and the hash of the new primary file */
 export type ModifyVersionRequestPrimaryFileList = Array<string>;
+const ModifyVersionRequestPrimaryFileList =
+  CreatableProjectCategoriesList as any as S.Schema<ModifyVersionRequestPrimaryFileList>;
+
 /** A list of file_types to edit */
 export type ModifyVersionRequestFileTypesList = Array<EditableFileType>;
+const ModifyVersionRequestFileTypesList =
+  EditableVersionFileTypesList as any as S.Schema<ModifyVersionRequestFileTypesList>;
+
 export interface ModifyVersionRequest {
   /** The ID of the version */
   id: string;
@@ -1582,23 +2469,53 @@ export interface ModifyVersionRequest {
   /** A list of file_types to edit */
   file_types?: ModifyVersionRequestFileTypesList;
 }
+const ModifyVersionRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<ModifyVersionRequest>;
+
 export interface ModifyVersionResponse {}
+const ModifyVersionResponse = AddFilesToVersionResponse as any as S.Schema<ModifyVersionResponse>;
+
 export interface RandomProjectsRequest {
   /** The number of random projects to return */
   count: number;
 }
+const RandomProjectsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<RandomProjectsRequest>;
+
 export type RandomProjectsResponseBodyList = Array<Project>;
 export type RandomProjectsResponse = RandomProjectsResponseBodyList;
+const RandomProjectsResponse = GetProjectsResponse as any as S.Schema<RandomProjectsResponse>;
+
 export interface ReadNotificationRequest {
   /** The ID of the notification */
   id: string;
 }
+const ReadNotificationRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<ReadNotificationRequest>;
+
 export interface ReadNotificationResponse {}
+const ReadNotificationResponse =
+  AddFilesToVersionResponse as any as S.Schema<ReadNotificationResponse>;
+
 export interface ReadNotificationsRequest {
   /** The IDs of the notifications */
   ids: string;
 }
+const ReadNotificationsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<ReadNotificationsRequest>;
+
 export interface ReadNotificationsResponse {}
+const ReadNotificationsResponse =
+  AddFilesToVersionResponse as any as S.Schema<ReadNotificationsResponse>;
+
 /** The requested status when scheduling the project for release */
 export type ScheduleProjectRequestRequestedStatus =
   | "approved"
@@ -1606,6 +2523,8 @@ export type ScheduleProjectRequestRequestedStatus =
   | "unlisted"
   | "private"
   | "draft";
+const ScheduleProjectRequestRequestedStatus = S.String;
+
 export interface ScheduleProjectRequest {
   /** The ID or slug of the project */
   id_slug: string;
@@ -1613,7 +2532,15 @@ export interface ScheduleProjectRequest {
   /** The requested status when scheduling the project for release */
   requested_status: ScheduleProjectRequestRequestedStatus | (string & {});
 }
+const ScheduleProjectRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<ScheduleProjectRequest>;
+
 export interface ScheduleProjectResponse {}
+const ScheduleProjectResponse =
+  AddFilesToVersionResponse as any as S.Schema<ScheduleProjectResponse>;
+
 /** The requested status when scheduling the project for release */
 export type ScheduleVersionRequestRequestedStatus =
   | "approved"
@@ -1621,6 +2548,8 @@ export type ScheduleVersionRequestRequestedStatus =
   | "unlisted"
   | "private"
   | "draft";
+const ScheduleVersionRequestRequestedStatus = S.String;
+
 export interface ScheduleVersionRequest {
   /** The ID of the version */
   id: string;
@@ -1628,13 +2557,23 @@ export interface ScheduleVersionRequest {
   /** The requested status when scheduling the project for release */
   requested_status: ScheduleVersionRequestRequestedStatus | (string & {});
 }
+const ScheduleVersionRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<ScheduleVersionRequest>;
+
 export interface ScheduleVersionResponse {}
+const ScheduleVersionResponse =
+  AddFilesToVersionResponse as any as S.Schema<ScheduleVersionResponse>;
+
 export type SearchProjectsRequestIndex =
   | "relevance"
   | "downloads"
   | "follows"
   | "newest"
   | "updated";
+const SearchProjectsRequestIndex = S.String;
+
 export interface SearchProjectsRequest {
   /** The query to search for */
   query?: string;
@@ -1647,8 +2586,15 @@ export interface SearchProjectsRequest {
   /** The number of results returned by the search */
   limit?: number;
 }
+const SearchProjectsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<SearchProjectsRequest>;
+
 /** The project type of the project */
 export type ProjectResultProjectType = "mod" | "modpack" | "resourcepack" | "shader";
+const ProjectResultProjectType = S.String;
+
 export type ProjectResultAllProjectTypesItem =
   | "mod"
   | "resourcepack"
@@ -1658,14 +2604,29 @@ export type ProjectResultAllProjectTypesItem =
   | "plugin";
 /** All project types across every version of the project, unlike `project_type` which only reflects a version-specific type */
 export type ProjectResultAllProjectTypesList = Array<ProjectResultAllProjectTypesItem>;
+const ProjectResultAllProjectTypesList =
+  ProjectEnvironmentList as any as S.Schema<ProjectResultAllProjectTypesList>;
+
 /** A list of the featured categories that the project has. */
 export type ProjectResultCategoriesList = Array<string>;
+const ProjectResultCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<ProjectResultCategoriesList>;
+
 /** A list of the featured categories that the project has. Equivalent to `categories` on the project itself. */
 export type ProjectResultDisplayCategoriesList = Array<string>;
+const ProjectResultDisplayCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<ProjectResultDisplayCategoriesList>;
+
 /** A list of the minecraft versions supported by the project */
 export type ProjectResultVersionsList = Array<string>;
+const ProjectResultVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<ProjectResultVersionsList>;
+
 /** All the environments that versions of this project support. Not in any particular order, we recommend using the environment information on a version instead. For an explanation of each environment, see the blog post here: https://modrinth.com/news/article/new-environments/#new-system */
 export type ProjectResultEnvironmentList = Array<EnvironmentEnum>;
+const ProjectResultEnvironmentList =
+  ProjectEnvironmentList as any as S.Schema<ProjectResultEnvironmentList>;
+
 export type DisclosureTypeEnum =
   | "ai_content"
   | "ai_content_code"
@@ -1684,12 +2645,22 @@ export type DisclosureTypeEnum =
   | "archived";
 /** Disclosures listed on the project. */
 export type ProjectResultDisclosureTypesList = Array<DisclosureTypeEnum>;
+const ProjectResultDisclosureTypesList =
+  ProjectEnvironmentList as any as S.Schema<ProjectResultDisclosureTypesList>;
+
 /** A list of images that have been uploaded to the project's gallery */
 export type ProjectResultGalleryList = Array<string>;
+const ProjectResultGalleryList =
+  CreatableProjectCategoriesList as any as S.Schema<ProjectResultGalleryList>;
+
 /** Deprecated - use `environment` instead. The client side support of the project */
 export type ProjectResultClientSide = "required" | "optional" | "unsupported" | "unknown";
+const ProjectResultClientSide = S.String;
+
 /** Deprecated - use `environment` instead. The server side support of the project */
 export type ProjectResultServerSide = "required" | "optional" | "unsupported" | "unknown";
+const ProjectResultServerSide = S.String;
+
 export interface ProjectResult {
   /** The ID of the project, encoded as a base62 string */
   project_id: string;
@@ -1746,8 +2717,15 @@ export interface ProjectResult {
   /** Deprecated - use `environment` instead. The server side support of the project */
   server_side: ProjectResultServerSide;
 }
+const ProjectResult = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<ProjectResult>;
+
 /** The list of results */
 export type SearchResultsHitsList = Array<ProjectResult>;
+const SearchResultsHitsList = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<SearchResultsHitsList>;
+
 export interface SearchResults {
   /** The list of results */
   hits: SearchResultsHitsList;
@@ -1758,8 +2736,12 @@ export interface SearchResults {
   /** The total number of results that match the query */
   total_hits: number;
 }
+const SearchResults = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<SearchResults>;
+
 /** The type of message */
 export type SendThreadMessageRequestType = "status_change" | "text" | "thread_closure" | "deleted";
+const SendThreadMessageRequestType = S.String;
+
 /** The old status of the project. **Only present for `status_change` message type** */
 export type SendThreadMessageRequestOldStatus =
   | "approved"
@@ -1772,6 +2754,8 @@ export type SendThreadMessageRequestOldStatus =
   | "scheduled"
   | "private"
   | "unknown";
+const SendThreadMessageRequestOldStatus = S.String;
+
 /** The new status of the project. **Only present for `status_change` message type** */
 export type SendThreadMessageRequestNewStatus =
   | "approved"
@@ -1784,6 +2768,8 @@ export type SendThreadMessageRequestNewStatus =
   | "scheduled"
   | "private"
   | "unknown";
+const SendThreadMessageRequestNewStatus = S.String;
+
 export interface SendThreadMessageRequest {
   /** The ID of the thread */
   id: string;
@@ -1800,7 +2786,14 @@ export interface SendThreadMessageRequest {
   /** The new status of the project. **Only present for `status_change` message type** */
   new_status?: SendThreadMessageRequestNewStatus | (string & {});
 }
+const SendThreadMessageRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<SendThreadMessageRequest>;
+
 export interface Statistics2Request {}
+const Statistics2Request = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<Statistics2Request>;
+
 export interface Statistics {
   /** Number of projects on Modrinth */
   projects?: number;
@@ -1811,8 +2804,12 @@ export interface Statistics {
   /** Number of authors (users with projects) on Modrinth */
   authors?: number;
 }
+const Statistics = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<Statistics>;
+
 /** The type of the item being reported */
 export type SubmitReportRequestItemType = "project" | "user" | "version";
+const SubmitReportRequestItemType = S.String;
+
 export interface SubmitReportRequest {
   /** The type of the report being sent */
   report_type: string;
@@ -1823,6 +2820,8 @@ export interface SubmitReportRequest {
   /** The extended explanation of the report */
   body: string;
 }
+const SubmitReportRequest = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<SubmitReportRequest>;
+
 /** The type of the item being reported */
 export type SubmitReportResponseItemType = "project" | "user" | "version";
 export interface SubmitReportResponse {
@@ -1845,35 +2844,80 @@ export interface SubmitReportResponse {
   /** The ID of the moderation thread associated with this report */
   thread_id: string;
 }
+const SubmitReportResponse = Report as any as S.Schema<SubmitReportResponse>;
+
 export interface TransferTeamOwnershipRequest {
   /** The ID of the team */
   id: string;
   user_id: string;
 }
+const TransferTeamOwnershipRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<TransferTeamOwnershipRequest>;
+
 export interface TransferTeamOwnershipResponse {}
+const TransferTeamOwnershipResponse =
+  AddFilesToVersionResponse as any as S.Schema<TransferTeamOwnershipResponse>;
+
 export interface UnfollowProjectRequest {
   /** The ID or slug of the project */
   id_slug: string;
 }
+const UnfollowProjectRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<UnfollowProjectRequest>;
+
 export interface UnfollowProjectResponse {}
+const UnfollowProjectResponse =
+  AddFilesToVersionResponse as any as S.Schema<UnfollowProjectResponse>;
+
 /** Set all of the categories to the categories specified here */
 export type UpdateProjectsRequestCategoriesList = Array<string>;
+const UpdateProjectsRequestCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<UpdateProjectsRequestCategoriesList>;
+
 /** Add all of the categories specified here */
 export type UpdateProjectsRequestAddCategoriesList = Array<string>;
+const UpdateProjectsRequestAddCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<UpdateProjectsRequestAddCategoriesList>;
+
 /** Remove all of the categories specified here */
 export type UpdateProjectsRequestRemoveCategoriesList = Array<string>;
+const UpdateProjectsRequestRemoveCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<UpdateProjectsRequestRemoveCategoriesList>;
+
 /** Set all of the additional categories to the categories specified here */
 export type UpdateProjectsRequestAdditionalCategoriesList = Array<string>;
+const UpdateProjectsRequestAdditionalCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<UpdateProjectsRequestAdditionalCategoriesList>;
+
 /** Add all of the additional categories specified here */
 export type UpdateProjectsRequestAddAdditionalCategoriesList = Array<string>;
+const UpdateProjectsRequestAddAdditionalCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<UpdateProjectsRequestAddAdditionalCategoriesList>;
+
 /** Remove all of the additional categories specified here */
 export type UpdateProjectsRequestRemoveAdditionalCategoriesList = Array<string>;
+const UpdateProjectsRequestRemoveAdditionalCategoriesList =
+  CreatableProjectCategoriesList as any as S.Schema<UpdateProjectsRequestRemoveAdditionalCategoriesList>;
+
 /** Set all of the donation links to the donation links specified here */
 export type UpdateProjectsRequestDonationUrlsList = Array<ProjectDonationURL>;
+const UpdateProjectsRequestDonationUrlsList =
+  CreatableProjectDonationUrlsList as any as S.Schema<UpdateProjectsRequestDonationUrlsList>;
+
 /** Add all of the donation links specified here */
 export type UpdateProjectsRequestAddDonationUrlsList = Array<ProjectDonationURL>;
+const UpdateProjectsRequestAddDonationUrlsList =
+  CreatableProjectDonationUrlsList as any as S.Schema<UpdateProjectsRequestAddDonationUrlsList>;
+
 /** Remove all of the donation links specified here */
 export type UpdateProjectsRequestRemoveDonationUrlsList = Array<ProjectDonationURL>;
+const UpdateProjectsRequestRemoveDonationUrlsList =
+  CreatableProjectDonationUrlsList as any as S.Schema<UpdateProjectsRequestRemoveDonationUrlsList>;
+
 export interface UpdateProjectsRequest {
   /** The IDs and/or slugs of the projects */
   ids: string;
@@ -1904,8 +2948,17 @@ export interface UpdateProjectsRequest {
   /** An optional invite link to the projects' discord */
   discord_url?: string | null;
 }
+const UpdateProjectsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<UpdateProjectsRequest>;
+
 export interface UpdateProjectsResponse {}
+const UpdateProjectsResponse = AddFilesToVersionResponse as any as S.Schema<UpdateProjectsResponse>;
+
 export type VersionFromHashRequestAlgorithm = "sha1" | "sha512";
+const VersionFromHashRequestAlgorithm = S.String;
+
 export interface VersionFromHashRequest {
   /** The hash of the file, considering its byte content, and encoded in hexadecimal */
   hash: string;
@@ -1914,14 +2967,30 @@ export interface VersionFromHashRequest {
   /** Whether to return multiple results when looking for this hash */
   multiple?: boolean;
 }
+const VersionFromHashRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<VersionFromHashRequest>;
+
 /** A list of specific versions of projects that this version depends on */
 export type VersionFromHashResponseDependenciesList = Array<VersionDependency>;
+const VersionFromHashResponseDependenciesList =
+  EditableVersionDependenciesList as any as S.Schema<VersionFromHashResponseDependenciesList>;
+
 /** A list of versions of Minecraft that this version supports */
 export type VersionFromHashResponseGameVersionsList = Array<string>;
+const VersionFromHashResponseGameVersionsList =
+  CreatableProjectCategoriesList as any as S.Schema<VersionFromHashResponseGameVersionsList>;
+
 /** The release channel for this version */
 export type VersionFromHashResponseVersionType = "release" | "beta" | "alpha";
+const VersionFromHashResponseVersionType = S.String;
+
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type VersionFromHashResponseLoadersList = Array<string>;
+const VersionFromHashResponseLoadersList =
+  CreatableProjectCategoriesList as any as S.Schema<VersionFromHashResponseLoadersList>;
+
 export type VersionFromHashResponseStatus =
   | "listed"
   | "archived"
@@ -1929,9 +2998,16 @@ export type VersionFromHashResponseStatus =
   | "unlisted"
   | "scheduled"
   | "unknown";
+const VersionFromHashResponseStatus = S.String;
+
 export type VersionFromHashResponseRequestedStatus = "listed" | "archived" | "draft" | "unlisted";
+const VersionFromHashResponseRequestedStatus = S.String;
+
 /** A list of files available for download for this version */
 export type VersionFromHashResponseFilesList = Array<VersionFile>;
+const VersionFromHashResponseFilesList =
+  CreateVersionResponseFilesList as any as S.Schema<VersionFromHashResponseFilesList>;
+
 export interface VersionFromHashResponse {
   /** The name of this version */
   name: string;
@@ -1966,20 +3042,45 @@ export interface VersionFromHashResponse {
   /** A list of files available for download for this version */
   files: VersionFromHashResponseFilesList;
 }
+const VersionFromHashResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<VersionFromHashResponse>;
+
 export type VersionsFromHashesRequestHashesList = Array<string>;
+const VersionsFromHashesRequestHashesList =
+  CreatableProjectCategoriesList as any as S.Schema<VersionsFromHashesRequestHashesList>;
+
 export type VersionsFromHashesRequestAlgorithm = "sha1" | "sha512";
+const VersionsFromHashesRequestAlgorithm = S.String;
+
 export interface VersionsFromHashesRequest {
   hashes: VersionsFromHashesRequestHashesList;
   algorithm: VersionsFromHashesRequestAlgorithm | (string & {});
 }
+const VersionsFromHashesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<VersionsFromHashesRequest>;
+
 export type VersionsFromHashesResponse = HashVersionMap;
+const VersionsFromHashesResponse =
+  GetLatestVersionsFromHashesResponse as any as S.Schema<VersionsFromHashesResponse>;
+
 export interface WithdrawPayoutRequest {
   /** The ID or username of the user */
   id_username: string;
   /** Amount to withdraw */
   amount: number;
 }
+const WithdrawPayoutRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<WithdrawPayoutRequest>;
+
 export interface WithdrawPayoutResponse {}
+const WithdrawPayoutResponse = AddFilesToVersionResponse as any as S.Schema<WithdrawPayoutResponse>;
+
 export type AddFilesToVersionError = NotFound | ModrinthOpError;
 /** Add files to version Project files are attached. `.mrpack` and `.jar` files are accepted. */
 export const addFilesToVersion: API.OperationMethod<
@@ -1988,8 +3089,8 @@ export const addFilesToVersion: API.OperationMethod<
   AddFilesToVersionError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AddFilesToVersionRequest>,
-  output: __S(1) as any as S.Schema<AddFilesToVersionResponse>,
+  input: AddFilesToVersionRequest,
+  output: AddFilesToVersionResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2003,8 +3104,8 @@ export const addGalleryImage: API.OperationMethod<
   AddGalleryImageError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<AddGalleryImageRequest>,
-  output: __S(1) as any as S.Schema<AddGalleryImageResponse>,
+  input: AddGalleryImageRequest,
+  output: AddGalleryImageResponse,
   errors: [BadRequest, NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2018,8 +3119,8 @@ export const addTeamMember: API.OperationMethod<
   AddTeamMemberError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<AddTeamMemberRequest>,
-  output: __S(1) as any as S.Schema<AddTeamMemberResponse>,
+  input: AddTeamMemberRequest,
+  output: AddTeamMemberResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2033,8 +3134,8 @@ export const changeProjectIcon: API.OperationMethod<
   ChangeProjectIconError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<ChangeProjectIconRequest>,
-  output: __S(1) as any as S.Schema<ChangeProjectIconResponse>,
+  input: ChangeProjectIconRequest,
+  output: ChangeProjectIconResponse,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2048,8 +3149,8 @@ export const changeUserIcon: API.OperationMethod<
   ChangeUserIconError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<ChangeUserIconRequest>,
-  output: __S(1) as any as S.Schema<ChangeUserIconResponse>,
+  input: ChangeUserIconRequest,
+  output: ChangeUserIconResponse,
   errors: [BadRequest, NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2063,8 +3164,8 @@ export const checkProjectValidity: API.OperationMethod<
   CheckProjectValidityError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CheckProjectValidityRequest>,
-  output: __S(7) as any as S.Schema<ProjectIdentifier>,
+  input: CheckProjectValidityRequest,
+  output: ProjectIdentifier,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2078,8 +3179,8 @@ export const createProject: API.OperationMethod<
   CreateProjectError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CreateProjectRequest>,
-  output: __S(26) as any as S.Schema<Project>,
+  input: CreateProjectRequest,
+  output: Project,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2093,8 +3194,8 @@ export const createVersion: API.OperationMethod<
   CreateVersionError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<CreateVersionRequest>,
-  output: __S(33) as any as S.Schema<CreateVersionResponse>,
+  input: CreateVersionRequest,
+  output: CreateVersionResponse,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2108,8 +3209,8 @@ export const deleteFileFromHash: API.OperationMethod<
   DeleteFileFromHashError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<DeleteFileFromHashRequest>,
-  output: __S(1) as any as S.Schema<DeleteFileFromHashResponse>,
+  input: DeleteFileFromHashRequest,
+  output: DeleteFileFromHashResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2123,8 +3224,8 @@ export const deleteGalleryImage: API.OperationMethod<
   DeleteGalleryImageError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<DeleteGalleryImageRequest>,
-  output: __S(1) as any as S.Schema<DeleteGalleryImageResponse>,
+  input: DeleteGalleryImageRequest,
+  output: DeleteGalleryImageResponse,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2138,8 +3239,8 @@ export const deleteNotification: API.OperationMethod<
   DeleteNotificationError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<DeleteNotificationRequest>,
-  output: __S(1) as any as S.Schema<DeleteNotificationResponse>,
+  input: DeleteNotificationRequest,
+  output: DeleteNotificationResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2153,8 +3254,8 @@ export const deleteNotifications: API.OperationMethod<
   DeleteNotificationsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<DeleteNotificationsRequest>,
-  output: __S(1) as any as S.Schema<DeleteNotificationsResponse>,
+  input: DeleteNotificationsRequest,
+  output: DeleteNotificationsResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2168,8 +3269,8 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<DeleteProjectRequest>,
-  output: __S(1) as any as S.Schema<DeleteProjectResponse>,
+  input: DeleteProjectRequest,
+  output: DeleteProjectResponse,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2183,8 +3284,8 @@ export const deleteProjectIcon: API.OperationMethod<
   DeleteProjectIconError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<DeleteProjectIconRequest>,
-  output: __S(1) as any as S.Schema<DeleteProjectIconResponse>,
+  input: DeleteProjectIconRequest,
+  output: DeleteProjectIconResponse,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2198,8 +3299,8 @@ export const deleteTeamMember: API.OperationMethod<
   DeleteTeamMemberError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<DeleteTeamMemberRequest>,
-  output: __S(1) as any as S.Schema<DeleteTeamMemberResponse>,
+  input: DeleteTeamMemberRequest,
+  output: DeleteTeamMemberResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2213,8 +3314,8 @@ export const deleteThreadMessage: API.OperationMethod<
   DeleteThreadMessageError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<DeleteThreadMessageRequest>,
-  output: __S(1) as any as S.Schema<DeleteThreadMessageResponse>,
+  input: DeleteThreadMessageRequest,
+  output: DeleteThreadMessageResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2228,8 +3329,8 @@ export const deleteUserIcon: API.OperationMethod<
   DeleteUserIconError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<DeleteUserIconRequest>,
-  output: __S(1) as any as S.Schema<DeleteUserIconResponse>,
+  input: DeleteUserIconRequest,
+  output: DeleteUserIconResponse,
   errors: [BadRequest, NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2243,8 +3344,8 @@ export const deleteVersion: API.OperationMethod<
   DeleteVersionError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<DeleteVersionRequest>,
-  output: __S(1) as any as S.Schema<DeleteVersionResponse>,
+  input: DeleteVersionRequest,
+  output: DeleteVersionResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2258,8 +3359,8 @@ export const followProject: API.OperationMethod<
   FollowProjectError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<FollowProjectRequest>,
-  output: __S(1) as any as S.Schema<FollowProjectResponse>,
+  input: FollowProjectRequest,
+  output: FollowProjectResponse,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2273,8 +3374,8 @@ export const forgeUpdates2: API.OperationMethod<
   ForgeUpdates2Error,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<ForgeUpdatesRequest>,
-  output: __S(47) as any as S.Schema<ForgeUpdates>,
+  input: ForgeUpdatesRequest,
+  output: ForgeUpdates,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2288,8 +3389,8 @@ export const getDependencies: API.OperationMethod<
   GetDependenciesError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<GetDependenciesRequest>,
-  output: __S(52) as any as S.Schema<ProjectDependencyList>,
+  input: GetDependenciesRequest,
+  output: ProjectDependencyList,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2303,8 +3404,8 @@ export const getFollowedProjects: API.OperationMethod<
   GetFollowedProjectsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<GetFollowedProjectsRequest>,
-  output: __S(54) as any as S.Schema<GetFollowedProjectsResponse>,
+  input: GetFollowedProjectsRequest,
+  output: GetFollowedProjectsResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2318,8 +3419,8 @@ export const getLatestVersionFromHash: API.OperationMethod<
   GetLatestVersionFromHashError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<GetLatestVersionFromHashRequest>,
-  output: __S(56) as any as S.Schema<GetLatestVersionFromHashResponse>,
+  input: GetLatestVersionFromHashRequest,
+  output: GetLatestVersionFromHashResponse,
   errors: [BadRequest, NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2333,8 +3434,8 @@ export const getLatestVersionsFromHashes: API.OperationMethod<
   GetLatestVersionsFromHashesError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<GetLatestVersionsFromHashesRequest>,
-  output: __S(59) as any as S.Schema<GetLatestVersionsFromHashesResponse>,
+  input: GetLatestVersionsFromHashesRequest,
+  output: GetLatestVersionsFromHashesResponse,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2348,8 +3449,8 @@ export const getNotification: API.OperationMethod<
   GetNotificationError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<GetNotificationRequest>,
-  output: __S(63) as any as S.Schema<Notification>,
+  input: GetNotificationRequest,
+  output: Notification,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2363,8 +3464,8 @@ export const getNotifications: API.OperationMethod<
   GetNotificationsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<GetNotificationsRequest>,
-  output: __S(66) as any as S.Schema<GetNotificationsResponse>,
+  input: GetNotificationsRequest,
+  output: GetNotificationsResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2378,8 +3479,8 @@ export const getOpenReports: API.OperationMethod<
   GetOpenReportsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<GetOpenReportsRequest>,
-  output: __S(70) as any as S.Schema<GetOpenReportsResponse>,
+  input: GetOpenReportsRequest,
+  output: GetOpenReportsResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2393,8 +3494,8 @@ export const getPayoutHistory: API.OperationMethod<
   GetPayoutHistoryError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<GetPayoutHistoryRequest>,
-  output: __S(74) as any as S.Schema<UserPayoutHistory>,
+  input: GetPayoutHistoryRequest,
+  output: UserPayoutHistory,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2408,8 +3509,8 @@ export const getProject: API.OperationMethod<
   GetProjectError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<GetProjectRequest>,
-  output: __S(26) as any as S.Schema<Project>,
+  input: GetProjectRequest,
+  output: Project,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2423,8 +3524,8 @@ export const getProjects: API.OperationMethod<
   GetProjectsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<GetProjectsRequest>,
-  output: __S(77) as any as S.Schema<GetProjectsResponse>,
+  input: GetProjectsRequest,
+  output: GetProjectsResponse,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2438,8 +3539,8 @@ export const getProjectTeamMembers: API.OperationMethod<
   GetProjectTeamMembersError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<GetProjectTeamMembersRequest>,
-  output: __S(83) as any as S.Schema<GetProjectTeamMembersResponse>,
+  input: GetProjectTeamMembersRequest,
+  output: GetProjectTeamMembersResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2453,8 +3554,8 @@ export const getProjectVersions: API.OperationMethod<
   GetProjectVersionsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<GetProjectVersionsRequest>,
-  output: __S(85) as any as S.Schema<GetProjectVersionsResponse>,
+  input: GetProjectVersionsRequest,
+  output: GetProjectVersionsResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2468,8 +3569,8 @@ export const getReport: API.OperationMethod<
   GetReportError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<GetReportRequest>,
-  output: __S(68) as any as S.Schema<GetReportResponse>,
+  input: GetReportRequest,
+  output: GetReportResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2483,8 +3584,8 @@ export const getReports: API.OperationMethod<
   GetReportsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<GetReportsRequest>,
-  output: __S(70) as any as S.Schema<GetReportsResponse>,
+  input: GetReportsRequest,
+  output: GetReportsResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2498,8 +3599,8 @@ export const getTeamMembers: API.OperationMethod<
   GetTeamMembersError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<GetTeamMembersRequest>,
-  output: __S(89) as any as S.Schema<GetTeamMembersResponse>,
+  input: GetTeamMembersRequest,
+  output: GetTeamMembersResponse,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2513,8 +3614,8 @@ export const getTeams: API.OperationMethod<
   GetTeamsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<GetTeamsRequest>,
-  output: __S(92) as any as S.Schema<GetTeamsResponse>,
+  input: GetTeamsRequest,
+  output: GetTeamsResponse,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2528,8 +3629,8 @@ export const getThread: API.OperationMethod<
   GetThreadError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<GetThreadRequest>,
-  output: __S(98) as any as S.Schema<Thread>,
+  input: GetThreadRequest,
+  output: Thread,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2543,8 +3644,8 @@ export const getThreads: API.OperationMethod<
   GetThreadsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<GetThreadsRequest>,
-  output: __S(101) as any as S.Schema<GetThreadsResponse>,
+  input: GetThreadsRequest,
+  output: GetThreadsResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2558,8 +3659,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<GetUserRequest>,
-  output: __S(103) as any as S.Schema<GetUserResponse>,
+  input: GetUserRequest,
+  output: GetUserResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2573,8 +3674,8 @@ export const getUserFromAuth: API.OperationMethod<
   GetUserFromAuthError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<GetUserFromAuthRequest>,
-  output: __S(105) as any as S.Schema<GetUserFromAuthResponse>,
+  input: GetUserFromAuthRequest,
+  output: GetUserFromAuthResponse,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2588,8 +3689,8 @@ export const getUserNotifications: API.OperationMethod<
   GetUserNotificationsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<GetUserNotificationsRequest>,
-  output: __S(107) as any as S.Schema<GetUserNotificationsResponse>,
+  input: GetUserNotificationsRequest,
+  output: GetUserNotificationsResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2603,8 +3704,8 @@ export const getUserProjects: API.OperationMethod<
   GetUserProjectsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<GetUserProjectsRequest>,
-  output: __S(77) as any as S.Schema<GetUserProjectsResponse>,
+  input: GetUserProjectsRequest,
+  output: GetUserProjectsResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2618,8 +3719,8 @@ export const getUsers: API.OperationMethod<
   GetUsersError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<GetUsersRequest>,
-  output: __S(111) as any as S.Schema<GetUsersResponse>,
+  input: GetUsersRequest,
+  output: GetUsersResponse,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2633,8 +3734,8 @@ export const getVersion: API.OperationMethod<
   GetVersionError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<GetVersionRequest>,
-  output: __S(113) as any as S.Schema<GetVersionResponse>,
+  input: GetVersionRequest,
+  output: GetVersionResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2648,8 +3749,8 @@ export const getVersionFromIdOrNumber: API.OperationMethod<
   GetVersionFromIdOrNumberError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<GetVersionFromIdOrNumberRequest>,
-  output: __S(115) as any as S.Schema<GetVersionFromIdOrNumberResponse>,
+  input: GetVersionFromIdOrNumberRequest,
+  output: GetVersionFromIdOrNumberResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2663,8 +3764,8 @@ export const getVersions: API.OperationMethod<
   GetVersionsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<GetVersionsRequest>,
-  output: __S(117) as any as S.Schema<GetVersionsResponse>,
+  input: GetVersionsRequest,
+  output: GetVersionsResponse,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2678,8 +3779,8 @@ export const joinTeam: API.OperationMethod<
   JoinTeamError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<JoinTeamRequest>,
-  output: __S(1) as any as S.Schema<JoinTeamResponse>,
+  input: JoinTeamRequest,
+  output: JoinTeamResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2693,8 +3794,8 @@ export const licenseText: API.OperationMethod<
   LicenseTextError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<LicenseTextRequest>,
-  output: __S(120) as any as S.Schema<License>,
+  input: LicenseTextRequest,
+  output: License,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2708,8 +3809,8 @@ export const listCategory: API.OperationMethod<
   ListCategoryError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<ListCategoryRequest>,
-  output: __S(124) as any as S.Schema<ListCategoryResponse>,
+  input: ListCategoryRequest,
+  output: ListCategoryResponse,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2723,8 +3824,8 @@ export const listDonationPlatform: API.OperationMethod<
   ListDonationPlatformError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<ListDonationPlatformRequest>,
-  output: __S(128) as any as S.Schema<ListDonationPlatformResponse>,
+  input: ListDonationPlatformRequest,
+  output: ListDonationPlatformResponse,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2738,8 +3839,8 @@ export const listLoader: API.OperationMethod<
   ListLoaderError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<ListLoaderRequest>,
-  output: __S(132) as any as S.Schema<ListLoaderResponse>,
+  input: ListLoaderRequest,
+  output: ListLoaderResponse,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2753,8 +3854,8 @@ export const listProjectType: API.OperationMethod<
   ListProjectTypeError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133) as any as S.Schema<ListProjectTypeRequest>,
-  output: __S(134) as any as S.Schema<ListProjectTypeResponse>,
+  input: ListProjectTypeRequest,
+  output: ListProjectTypeResponse,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2768,8 +3869,8 @@ export const listReportType: API.OperationMethod<
   ListReportTypeError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<ListReportTypeRequest>,
-  output: __S(134) as any as S.Schema<ListReportTypeResponse>,
+  input: ListReportTypeRequest,
+  output: ListReportTypeResponse,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2783,8 +3884,8 @@ export const listSideType: API.OperationMethod<
   ListSideTypeError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<ListSideTypeRequest>,
-  output: __S(134) as any as S.Schema<ListSideTypeResponse>,
+  input: ListSideTypeRequest,
+  output: ListSideTypeResponse,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2798,8 +3899,8 @@ export const listVersion: API.OperationMethod<
   ListVersionError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<ListVersionRequest>,
-  output: __S(140) as any as S.Schema<ListVersionResponse>,
+  input: ListVersionRequest,
+  output: ListVersionResponse,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2813,8 +3914,8 @@ export const modifyGalleryImage: API.OperationMethod<
   ModifyGalleryImageError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141) as any as S.Schema<ModifyGalleryImageRequest>,
-  output: __S(1) as any as S.Schema<ModifyGalleryImageResponse>,
+  input: ModifyGalleryImageRequest,
+  output: ModifyGalleryImageResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2828,8 +3929,8 @@ export const modifyProject: API.OperationMethod<
   ModifyProjectError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<ModifyProjectRequest>,
-  output: __S(1) as any as S.Schema<ModifyProjectResponse>,
+  input: ModifyProjectRequest,
+  output: ModifyProjectResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2843,8 +3944,8 @@ export const modifyReport: API.OperationMethod<
   ModifyReportError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143) as any as S.Schema<ModifyReportRequest>,
-  output: __S(1) as any as S.Schema<ModifyReportResponse>,
+  input: ModifyReportRequest,
+  output: ModifyReportResponse,
   errors: [BadRequest, NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2858,8 +3959,8 @@ export const modifyTeamMember: API.OperationMethod<
   ModifyTeamMemberError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144) as any as S.Schema<ModifyTeamMemberRequest>,
-  output: __S(1) as any as S.Schema<ModifyTeamMemberResponse>,
+  input: ModifyTeamMemberRequest,
+  output: ModifyTeamMemberResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2873,8 +3974,8 @@ export const modifyUser: API.OperationMethod<
   ModifyUserError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<ModifyUserRequest>,
-  output: __S(1) as any as S.Schema<ModifyUserResponse>,
+  input: ModifyUserRequest,
+  output: ModifyUserResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2888,8 +3989,8 @@ export const modifyVersion: API.OperationMethod<
   ModifyVersionError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<ModifyVersionRequest>,
-  output: __S(1) as any as S.Schema<ModifyVersionResponse>,
+  input: ModifyVersionRequest,
+  output: ModifyVersionResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2903,8 +4004,8 @@ export const randomProjects: API.OperationMethod<
   RandomProjectsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147) as any as S.Schema<RandomProjectsRequest>,
-  output: __S(77) as any as S.Schema<RandomProjectsResponse>,
+  input: RandomProjectsRequest,
+  output: RandomProjectsResponse,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2918,8 +4019,8 @@ export const readNotification: API.OperationMethod<
   ReadNotificationError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148) as any as S.Schema<ReadNotificationRequest>,
-  output: __S(1) as any as S.Schema<ReadNotificationResponse>,
+  input: ReadNotificationRequest,
+  output: ReadNotificationResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2933,8 +4034,8 @@ export const readNotifications: API.OperationMethod<
   ReadNotificationsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<ReadNotificationsRequest>,
-  output: __S(1) as any as S.Schema<ReadNotificationsResponse>,
+  input: ReadNotificationsRequest,
+  output: ReadNotificationsResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2948,8 +4049,8 @@ export const scheduleProject: API.OperationMethod<
   ScheduleProjectError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<ScheduleProjectRequest>,
-  output: __S(1) as any as S.Schema<ScheduleProjectResponse>,
+  input: ScheduleProjectRequest,
+  output: ScheduleProjectResponse,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2963,8 +4064,8 @@ export const scheduleVersion: API.OperationMethod<
   ScheduleVersionError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<ScheduleVersionRequest>,
-  output: __S(1) as any as S.Schema<ScheduleVersionResponse>,
+  input: ScheduleVersionRequest,
+  output: ScheduleVersionResponse,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2978,8 +4079,8 @@ export const searchProjects: API.OperationMethod<
   SearchProjectsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152) as any as S.Schema<SearchProjectsRequest>,
-  output: __S(155) as any as S.Schema<SearchResults>,
+  input: SearchProjectsRequest,
+  output: SearchResults,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2993,8 +4094,8 @@ export const sendThreadMessage: API.OperationMethod<
   SendThreadMessageError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156) as any as S.Schema<SendThreadMessageRequest>,
-  output: __S(98) as any as S.Schema<Thread>,
+  input: SendThreadMessageRequest,
+  output: Thread,
   errors: [BadRequest, NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -3008,8 +4109,8 @@ export const statistics2: API.OperationMethod<
   Statistics2Error,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157) as any as S.Schema<Statistics2Request>,
-  output: __S(158) as any as S.Schema<Statistics>,
+  input: Statistics2Request,
+  output: Statistics,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -3023,8 +4124,8 @@ export const submitReport: API.OperationMethod<
   SubmitReportError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159) as any as S.Schema<SubmitReportRequest>,
-  output: __S(68) as any as S.Schema<SubmitReportResponse>,
+  input: SubmitReportRequest,
+  output: SubmitReportResponse,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -3038,8 +4139,8 @@ export const transferTeamOwnership: API.OperationMethod<
   TransferTeamOwnershipError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160) as any as S.Schema<TransferTeamOwnershipRequest>,
-  output: __S(1) as any as S.Schema<TransferTeamOwnershipResponse>,
+  input: TransferTeamOwnershipRequest,
+  output: TransferTeamOwnershipResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -3053,8 +4154,8 @@ export const unfollowProject: API.OperationMethod<
   UnfollowProjectError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161) as any as S.Schema<UnfollowProjectRequest>,
-  output: __S(1) as any as S.Schema<UnfollowProjectResponse>,
+  input: UnfollowProjectRequest,
+  output: UnfollowProjectResponse,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -3068,8 +4169,8 @@ export const updateProjects: API.OperationMethod<
   UpdateProjectsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162) as any as S.Schema<UpdateProjectsRequest>,
-  output: __S(1) as any as S.Schema<UpdateProjectsResponse>,
+  input: UpdateProjectsRequest,
+  output: UpdateProjectsResponse,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -3083,8 +4184,8 @@ export const versionFromHash: API.OperationMethod<
   VersionFromHashError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<VersionFromHashRequest>,
-  output: __S(164) as any as S.Schema<VersionFromHashResponse>,
+  input: VersionFromHashRequest,
+  output: VersionFromHashResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -3098,8 +4199,8 @@ export const versionsFromHashes: API.OperationMethod<
   VersionsFromHashesError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165) as any as S.Schema<VersionsFromHashesRequest>,
-  output: __S(59) as any as S.Schema<VersionsFromHashesResponse>,
+  input: VersionsFromHashesRequest,
+  output: VersionsFromHashesResponse,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -3113,8 +4214,8 @@ export const withdrawPayout: API.OperationMethod<
   WithdrawPayoutError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<WithdrawPayoutRequest>,
-  output: __S(1) as any as S.Schema<WithdrawPayoutResponse>,
+  input: WithdrawPayoutRequest,
+  output: WithdrawPayoutResponse,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -3145,7 +4246,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id_slug: S.String.pipe(T.Label()),
-          ext: S.String.pipe(T.Query()),
+          ext: AddGalleryImageRequestExt.pipe(T.Query()),
           featured: S.Boolean.pipe(T.Query()),
           title: S.optional(S.String.pipe(T.Query())),
           description: S.optional(S.String.pipe(T.Query())),
@@ -3163,7 +4264,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id_slug: S.String.pipe(T.Label()),
-          ext: S.String.pipe(T.Query()),
+          ext: ChangeProjectIconRequestExt.pipe(T.Query()),
         }).pipe(T.Http({ method: "PATCH", uri: "/project/{id_slug}/icon", code: 200 })),
       ).annotate({ identifier: "ChangeProjectIconRequest" });
     case 5:
@@ -3201,18 +4302,18 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ProjectDonationURL" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(ProjectDonationURL);
     case 3:
       return S.suspend(() =>
         S.Struct({
           version_id: S.optional(S.NullOr(S.String)),
           project_id: S.optional(S.NullOr(S.String)),
           file_name: S.optional(S.NullOr(S.String)),
-          dependency_type: S.String,
+          dependency_type: VersionDependencyDependencyType,
         }),
       ).annotate({ identifier: "VersionDependency" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(VersionDependency);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3222,22 +4323,22 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "EditableFileType" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(EditableFileType);
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           version_number: S.optional(S.String),
           changelog: S.optional(S.NullOr(S.String)),
-          dependencies: S.optional(__S(12)),
-          game_versions: S.optional(__S(8)),
-          version_type: S.optional(S.String),
-          loaders: S.optional(__S(8)),
+          dependencies: S.optional(EditableVersionDependenciesList),
+          game_versions: S.optional(EditableVersionGameVersionsList),
+          version_type: S.optional(EditableVersionVersionType),
+          loaders: S.optional(EditableVersionLoadersList),
           featured: S.optional(S.Boolean),
-          status: S.optional(S.String),
-          requested_status: S.optional(S.NullOr(S.String)),
-          primary_file: S.optional(__S(8)),
-          file_types: S.optional(__S(14)),
+          status: S.optional(EditableVersionStatus),
+          requested_status: S.optional(S.NullOr(EditableVersionRequestedStatus)),
+          primary_file: S.optional(EditableVersionPrimaryFileList),
+          file_types: S.optional(EditableVersionFileTypesList),
         }),
       ).annotate({ identifier: "EditableVersion" });
   }
@@ -3245,7 +4346,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(EditableVersion);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3259,7 +4360,7 @@ function __c2(j: number): any {
         identifier: "CreatableProjectGalleryItem",
       });
     case 2:
-      return S.Array(/*@__PURE__*/ S.NullOr(__S(17)));
+      return S.Array(/*@__PURE__*/ S.NullOr(CreatableProjectGalleryItem));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3267,34 +4368,34 @@ function __c2(j: number): any {
           title: S.String,
           description: S.String,
           body: S.String,
-          categories: __S(8),
-          additional_categories: S.optional(__S(8)),
-          status: S.optional(S.String),
-          requested_status: S.optional(S.NullOr(S.String)),
+          categories: CreatableProjectCategoriesList,
+          additional_categories: S.optional(CreatableProjectAdditionalCategoriesList),
+          status: S.optional(CreatableProjectStatus),
+          requested_status: S.optional(S.NullOr(CreatableProjectRequestedStatus)),
           issues_url: S.optional(S.NullOr(S.String)),
           source_url: S.optional(S.NullOr(S.String)),
           wiki_url: S.optional(S.NullOr(S.String)),
           discord_url: S.optional(S.NullOr(S.String)),
-          donation_urls: S.optional(__S(10)),
-          client_side: S.String,
-          server_side: S.String,
+          donation_urls: S.optional(CreatableProjectDonationUrlsList),
+          client_side: CreatableProjectClientSide,
+          server_side: CreatableProjectServerSide,
           license_id: S.String,
           license_url: S.optional(S.NullOr(S.String)),
-          project_type: S.String,
-          initial_versions: S.optional(__S(16)),
+          project_type: CreatableProjectProjectType,
+          initial_versions: S.optional(CreatableProjectInitialVersionsList),
           is_draft: S.optional(S.Boolean),
-          gallery_items: S.optional(__S(18)),
+          gallery_items: S.optional(CreatableProjectGalleryItemsList),
         }),
       ).annotate({ identifier: "CreatableProject" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(19),
-          icon: S.optional(S.String),
+          data: CreatableProject,
+          icon: S.optional(CreateProjectRequestIcon),
         }).pipe(T.Http({ method: "POST", uri: "/project", code: 200, contentType: "multipart" })),
       ).annotate({ identifier: "CreateProjectRequest" });
     case 5:
-      return S.Array(S.String);
+      return S.Array(EnvironmentEnum);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3319,7 +4420,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.NullOr(__S(23)));
+      return S.Array(/*@__PURE__*/ S.NullOr(GalleryImage));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3335,25 +4436,25 @@ function __c3(j: number): any {
           title: S.String,
           description: S.String,
           body: S.String,
-          status: S.String,
-          project_type: S.String,
-          categories: __S(8),
-          additional_categories: __S(8),
-          environment: __S(21),
-          game_versions: __S(8),
-          loaders: __S(8),
-          versions: __S(8),
-          license: __S(22),
+          status: ProjectStatus,
+          project_type: ProjectProjectType,
+          categories: ProjectCategoriesList,
+          additional_categories: ProjectAdditionalCategoriesList,
+          environment: ProjectEnvironmentList,
+          game_versions: ProjectGameVersionsList,
+          loaders: ProjectLoadersList,
+          versions: ProjectVersionsList,
+          license: ProjectLicense,
           published: S.String,
           updated: S.String,
           downloads: S.Number,
           followers: S.Number,
-          gallery: __S(24),
+          gallery: ProjectGalleryList,
           thread_id: S.String,
-          monetization_status: S.String,
+          monetization_status: ProjectMonetizationStatus,
           slug: S.optional(S.NullOr(S.String)),
           organization: S.optional(S.NullOr(S.String)),
-          requested_status: S.optional(S.NullOr(S.String)),
+          requested_status: S.optional(S.NullOr(ProjectRequestedStatus)),
           approved: S.optional(S.NullOr(S.String)),
           queued: S.optional(S.NullOr(S.String)),
           icon_url: S.optional(S.NullOr(S.String)),
@@ -3363,39 +4464,39 @@ function __c3(j: number): any {
           source_url: S.optional(S.NullOr(S.String)),
           wiki_url: S.optional(S.NullOr(S.String)),
           discord_url: S.optional(S.NullOr(S.String)),
-          donation_urls: S.optional(S.NullOr(__S(10))),
-          client_side: S.String,
-          server_side: S.String,
+          donation_urls: S.optional(S.NullOr(ProjectDonationUrlsList)),
+          client_side: ProjectClientSide,
+          server_side: ProjectServerSide,
           body_url: S.optional(S.NullOr(S.String)),
-          moderator_message: S.optional(S.NullOr(__S(25))),
+          moderator_message: S.optional(S.NullOr(ModeratorMessage)),
         }),
       ).annotate({ identifier: "Project" });
     case 3:
-      return S.Record(S.String, S.String);
+      return S.Record(S.String, FileTypeEnum);
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           version_number: S.String,
           changelog: S.optional(S.NullOr(S.String)),
-          dependencies: __S(12),
-          game_versions: __S(8),
-          version_type: S.String,
-          loaders: __S(8),
+          dependencies: CreatableVersionDependenciesList,
+          game_versions: CreatableVersionGameVersionsList,
+          version_type: CreatableVersionVersionType,
+          loaders: CreatableVersionLoadersList,
           featured: S.Boolean,
-          status: S.optional(S.String),
-          requested_status: S.optional(S.NullOr(S.String)),
+          status: S.optional(CreatableVersionStatus),
+          requested_status: S.optional(S.NullOr(CreatableVersionRequestedStatus)),
           project_id: S.String,
-          file_parts: __S(8),
+          file_parts: CreatableVersionFilePartsList,
           primary_file: S.optional(S.String),
-          environment: S.optional(S.String),
-          file_types: S.optional(__S(27)),
+          environment: S.optional(EnvironmentInputEnum),
+          file_types: S.optional(CreatableVersionFileTypesMap),
         }),
       ).annotate({ identifier: "CreatableVersion" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(28),
+          data: CreatableVersion,
         }).pipe(T.Http({ method: "POST", uri: "/version", code: 200, contentType: "multipart" })),
       ).annotate({ identifier: "CreateVersionRequest" });
     case 6:
@@ -3408,7 +4509,7 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          hashes: __S(30),
+          hashes: VersionFileHashes,
           url: S.String,
           filename: S.String,
           primary: S.Boolean,
@@ -3421,35 +4522,35 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(VersionFile);
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           version_number: S.String,
           changelog: S.optional(S.NullOr(S.String)),
-          dependencies: S.optional(__S(12)),
-          game_versions: __S(8),
-          version_type: S.String,
-          loaders: __S(8),
+          dependencies: S.optional(CreateVersionResponseDependenciesList),
+          game_versions: CreateVersionResponseGameVersionsList,
+          version_type: CreateVersionResponseVersionType,
+          loaders: CreateVersionResponseLoadersList,
           featured: S.Boolean,
-          status: S.optional(S.String),
-          requested_status: S.optional(S.NullOr(S.String)),
+          status: S.optional(CreateVersionResponseStatus),
+          requested_status: S.optional(S.NullOr(CreateVersionResponseRequestedStatus)),
           id: S.String,
           project_id: S.String,
           author_id: S.String,
           date_published: S.String,
           downloads: S.Number,
           changelog_url: S.optional(S.NullOr(S.String)),
-          environment: S.String,
-          files: __S(32),
+          environment: EnvironmentEnum,
+          files: CreateVersionResponseFilesList,
         }),
       ).annotate({ identifier: "CreateVersionResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           hash: S.String.pipe(T.Label()),
-          algorithm: S.String.pipe(T.Query()),
+          algorithm: DeleteFileFromHashRequestAlgorithm.pipe(T.Query()),
           version_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "DELETE", uri: "/version_file/{hash}", code: 200 })),
       ).annotate({
@@ -3533,7 +4634,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id_slug: S.String.pipe(T.Label()),
-          neoforge: S.optional(S.String.pipe(T.Query())),
+          neoforge: S.optional(ForgeUpdatesRequestNeoforge.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/updates/{id_slug}/forge_updates.json", code: 200 })),
       ).annotate({ identifier: "ForgeUpdatesRequest" });
     case 6:
@@ -3547,7 +4648,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           homepage: S.optional(S.String),
-          promos: S.optional(__S(46)),
+          promos: S.optional(ForgeUpdateCheckerPromos),
         }),
       ).annotate({ identifier: "ForgeUpdates" });
   }
@@ -3561,37 +4662,37 @@ function __c6(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/project/{id_slug}/dependencies", code: 200 })),
       ).annotate({ identifier: "GetDependenciesRequest" });
     case 1:
-      return S.Array(__S(26));
+      return S.Array(Project);
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           version_number: S.String,
           changelog: S.optional(S.NullOr(S.String)),
-          dependencies: S.optional(__S(12)),
-          game_versions: __S(8),
-          version_type: S.String,
-          loaders: __S(8),
+          dependencies: S.optional(VersionDependenciesList),
+          game_versions: VersionGameVersionsList,
+          version_type: VersionVersionType,
+          loaders: VersionLoadersList,
           featured: S.Boolean,
-          status: S.optional(S.String),
-          requested_status: S.optional(S.NullOr(S.String)),
+          status: S.optional(VersionStatus),
+          requested_status: S.optional(S.NullOr(VersionRequestedStatus)),
           id: S.String,
           project_id: S.String,
           author_id: S.String,
           date_published: S.String,
           downloads: S.Number,
           changelog_url: S.optional(S.NullOr(S.String)),
-          environment: S.String,
-          files: __S(32),
+          environment: EnvironmentEnum,
+          files: VersionFilesList,
         }),
       ).annotate({ identifier: "Version" });
     case 3:
-      return S.Array(__S(50));
+      return S.Array(Version);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          projects: S.optional(__S(49)),
-          versions: S.optional(__S(51)),
+          projects: S.optional(ProjectDependencyListProjectsList),
+          versions: S.optional(ProjectDependencyListVersionsList),
         }),
       ).annotate({ identifier: "ProjectDependencyList" });
     case 5:
@@ -3603,17 +4704,19 @@ function __c6(j: number): any {
         identifier: "GetFollowedProjectsRequest",
       });
     case 6:
-      return S.suspend(() => __S(49).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetFollowedProjectsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetFollowedProjectsResponse",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
           hash: S.String.pipe(T.Label()),
-          algorithm: S.String.pipe(T.Query()),
-          loaders: __S(8),
-          game_versions: __S(8),
-          version_types: S.optional(__S(21)),
+          algorithm: GetLatestVersionFromHashRequestAlgorithm.pipe(T.Query()),
+          loaders: GetLatestVersionFromHashRequestLoadersList,
+          game_versions: GetLatestVersionFromHashRequestGameVersionsList,
+          version_types: S.optional(GetLatestVersionFromHashRequestVersionTypesList),
         }).pipe(T.Http({ method: "POST", uri: "/version_file/{hash}/update", code: 200 })),
       ).annotate({
         identifier: "GetLatestVersionFromHashRequest",
@@ -3628,21 +4731,21 @@ function __c7(j: number): any {
           name: S.String,
           version_number: S.String,
           changelog: S.optional(S.NullOr(S.String)),
-          dependencies: S.optional(__S(12)),
-          game_versions: __S(8),
-          version_type: S.String,
-          loaders: __S(8),
+          dependencies: S.optional(GetLatestVersionFromHashResponseDependenciesList),
+          game_versions: GetLatestVersionFromHashResponseGameVersionsList,
+          version_type: GetLatestVersionFromHashResponseVersionType,
+          loaders: GetLatestVersionFromHashResponseLoadersList,
           featured: S.Boolean,
-          status: S.optional(S.String),
-          requested_status: S.optional(S.NullOr(S.String)),
+          status: S.optional(GetLatestVersionFromHashResponseStatus),
+          requested_status: S.optional(S.NullOr(GetLatestVersionFromHashResponseRequestedStatus)),
           id: S.String,
           project_id: S.String,
           author_id: S.String,
           date_published: S.String,
           downloads: S.Number,
           changelog_url: S.optional(S.NullOr(S.String)),
-          environment: S.String,
-          files: __S(32),
+          environment: EnvironmentEnum,
+          files: GetLatestVersionFromHashResponseFilesList,
         }),
       ).annotate({
         identifier: "GetLatestVersionFromHashResponse",
@@ -3650,19 +4753,19 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          hashes: __S(8),
-          algorithm: S.String,
-          loaders: __S(8),
-          game_versions: __S(8),
-          version_types: S.optional(__S(21)),
+          hashes: GetLatestVersionsFromHashesRequestHashesList,
+          algorithm: GetLatestVersionsFromHashesRequestAlgorithm,
+          loaders: GetLatestVersionsFromHashesRequestLoadersList,
+          game_versions: GetLatestVersionsFromHashesRequestGameVersionsList,
+          version_types: S.optional(GetLatestVersionsFromHashesRequestVersionTypesList),
         }).pipe(T.Http({ method: "POST", uri: "/version_files/update", code: 200 })),
       ).annotate({
         identifier: "GetLatestVersionsFromHashesRequest",
       });
     case 2:
-      return S.Record(S.String, __S(50));
+      return S.Record(S.String, Version);
     case 3:
-      return S.suspend(() => __S(58).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => HashVersionMap.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetLatestVersionsFromHashesResponse",
       });
     case 4:
@@ -3675,23 +4778,23 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
-          action_route: S.optional(__S(8)),
+          action_route: S.optional(NotificationActionActionRouteList),
         }),
       ).annotate({ identifier: "NotificationAction" });
     case 6:
-      return S.Array(__S(61));
+      return S.Array(NotificationAction);
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           user_id: S.String,
-          type: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(NotificationType)),
           title: S.String,
           text: S.String,
           link: S.String,
           read: S.Boolean,
           created: S.String,
-          actions: __S(62),
+          actions: NotificationActionsList,
         }),
       ).annotate({ identifier: "Notification" });
   }
@@ -3705,9 +4808,9 @@ function __c8(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/notifications", code: 200 })),
       ).annotate({ identifier: "GetNotificationsRequest" });
     case 1:
-      return S.Array(__S(63));
+      return S.Array(Notification);
     case 2:
-      return S.suspend(() => __S(65).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetNotificationsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetNotificationsResponse",
       });
     case 3:
@@ -3721,7 +4824,7 @@ function __c8(j: number): any {
         S.Struct({
           report_type: S.String,
           item_id: S.String,
-          item_type: S.String,
+          item_type: ReportItemType,
           body: S.String,
           id: S.optional(S.String),
           reporter: S.String,
@@ -3731,9 +4834,9 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "Report" });
     case 5:
-      return S.Array(__S(68));
+      return S.Array(Report);
     case 6:
-      return S.suspend(() => __S(69).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetOpenReportsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetOpenReportsResponse",
       });
     case 7:
@@ -3755,13 +4858,13 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "UserPayoutHistoryEntry" });
     case 1:
-      return S.Array(__S(72));
+      return S.Array(UserPayoutHistoryEntry);
     case 2:
       return S.suspend(() =>
         S.Struct({
           all_time: S.optional(S.String),
           last_month: S.optional(S.String),
-          payouts: S.optional(__S(73)),
+          payouts: S.optional(UserPayoutHistoryPayoutsList),
         }),
       ).annotate({ identifier: "UserPayoutHistory" });
     case 3:
@@ -3777,7 +4880,7 @@ function __c9(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/projects", code: 200 })),
       ).annotate({ identifier: "GetProjectsRequest" });
     case 5:
-      return S.suspend(() => __S(49).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetProjectsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetProjectsResponse",
       });
     case 6:
@@ -3792,8 +4895,8 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           balance: S.optional(S.Number),
-          payout_wallet: S.optional(S.String),
-          payout_wallet_type: S.optional(S.String),
+          payout_wallet: S.optional(UserPayoutDataPayoutWallet),
+          payout_wallet_type: S.optional(UserPayoutDataPayoutWalletType),
           payout_address: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserPayoutData" });
@@ -3808,13 +4911,13 @@ function __c10(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
           bio: S.optional(S.String),
-          payout_data: S.optional(S.NullOr(__S(79))),
+          payout_data: S.optional(S.NullOr(UserPayoutData)),
           id: S.String,
           avatar_url: S.String,
           created: S.String,
-          role: S.String,
+          role: UserRole,
           badges: S.optional(S.Number),
-          auth_providers: S.optional(S.NullOr(__S(8))),
+          auth_providers: S.optional(S.NullOr(UserAuthProvidersList)),
           email_verified: S.optional(S.NullOr(S.Boolean)),
           has_password: S.optional(S.NullOr(S.Boolean)),
           has_totp: S.optional(S.NullOr(S.Boolean)),
@@ -3825,7 +4928,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           team_id: S.String,
-          user: __S(80),
+          user: User,
           role: S.String,
           permissions: S.optional(S.Number),
           accepted: S.Boolean,
@@ -3834,9 +4937,11 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "TeamMember" });
     case 2:
-      return S.Array(__S(81));
+      return S.Array(TeamMember);
     case 3:
-      return S.suspend(() => __S(82).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetProjectTeamMembersResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetProjectTeamMembersResponse",
       });
     case 4:
@@ -3852,9 +4957,11 @@ function __c10(j: number): any {
         identifier: "GetProjectVersionsRequest",
       });
     case 5:
-      return S.suspend(() => __S(51).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetProjectVersionsResponse",
-      });
+      return S.suspend(() => GetProjectVersionsResponseBodyList.pipe(T.RawResponseRoot())).annotate(
+        {
+          identifier: "GetProjectVersionsResponse",
+        },
+      );
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3878,7 +4985,7 @@ function __c11(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/team/{id}/members", code: 200 })),
       ).annotate({ identifier: "GetTeamMembersRequest" });
     case 1:
-      return S.suspend(() => __S(82).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetTeamMembersResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetTeamMembersResponse",
       });
     case 2:
@@ -3888,9 +4995,9 @@ function __c11(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/teams", code: 200 })),
       ).annotate({ identifier: "GetTeamsRequest" });
     case 3:
-      return S.Array(__S(82));
+      return S.Array(GetTeamsResponseBodyItemList);
     case 4:
-      return S.suspend(() => __S(91).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetTeamsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetTeamsResponse",
       });
     case 5:
@@ -3902,12 +5009,12 @@ function __c11(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: ThreadMessageBodyType,
           body: S.optional(S.String),
           private: S.optional(S.Boolean),
           replying_to: S.optional(S.NullOr(S.String)),
-          old_status: S.optional(S.String),
-          new_status: S.optional(S.String),
+          old_status: S.optional(ThreadMessageBodyOldStatus),
+          new_status: S.optional(ThreadMessageBodyNewStatus),
         }),
       ).annotate({ identifier: "ThreadMessageBody" });
     case 7:
@@ -3915,7 +5022,7 @@ function __c11(j: number): any {
         S.Struct({
           id: S.String,
           author_id: S.optional(S.NullOr(S.String)),
-          body: __S(94),
+          body: ThreadMessageBody,
           created: S.String,
         }),
       ).annotate({ identifier: "ThreadMessage" });
@@ -3924,18 +5031,18 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95));
+      return S.Array(ThreadMessage);
     case 1:
-      return S.Array(__S(80));
+      return S.Array(User);
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: S.String,
+          type: ThreadType,
           project_id: S.optional(S.NullOr(S.String)),
           report_id: S.optional(S.NullOr(S.String)),
-          messages: __S(96),
-          members: __S(97),
+          messages: ThreadMessagesList,
+          members: ThreadMembersList,
         }),
       ).annotate({ identifier: "Thread" });
     case 3:
@@ -3945,9 +5052,9 @@ function __c12(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/threads", code: 200 })),
       ).annotate({ identifier: "GetThreadsRequest" });
     case 4:
-      return S.Array(__S(98));
+      return S.Array(Thread);
     case 5:
-      return S.suspend(() => __S(100).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetThreadsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetThreadsResponse",
       });
     case 6:
@@ -3963,13 +5070,13 @@ function __c12(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
           bio: S.optional(S.String),
-          payout_data: S.optional(S.NullOr(__S(79))),
+          payout_data: S.optional(S.NullOr(UserPayoutData)),
           id: S.String,
           avatar_url: S.String,
           created: S.String,
-          role: S.String,
+          role: GetUserResponseRole,
           badges: S.optional(S.Number),
-          auth_providers: S.optional(S.NullOr(__S(8))),
+          auth_providers: S.optional(S.NullOr(GetUserResponseAuthProvidersList)),
           email_verified: S.optional(S.NullOr(S.Boolean)),
           has_password: S.optional(S.NullOr(S.Boolean)),
           has_totp: S.optional(S.NullOr(S.Boolean)),
@@ -3991,13 +5098,13 @@ function __c13(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
           bio: S.optional(S.String),
-          payout_data: S.optional(S.NullOr(__S(79))),
+          payout_data: S.optional(S.NullOr(UserPayoutData)),
           id: S.String,
           avatar_url: S.String,
           created: S.String,
-          role: S.String,
+          role: GetUserFromAuthResponseRole,
           badges: S.optional(S.Number),
-          auth_providers: S.optional(S.NullOr(__S(8))),
+          auth_providers: S.optional(S.NullOr(GetUserFromAuthResponseAuthProvidersList)),
           email_verified: S.optional(S.NullOr(S.Boolean)),
           has_password: S.optional(S.NullOr(S.Boolean)),
           has_totp: S.optional(S.NullOr(S.Boolean)),
@@ -4013,7 +5120,9 @@ function __c13(j: number): any {
         identifier: "GetUserNotificationsRequest",
       });
     case 3:
-      return S.suspend(() => __S(65).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetUserNotificationsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetUserNotificationsResponse",
       });
     case 4:
@@ -4029,9 +5138,9 @@ function __c13(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/users", code: 200 })),
       ).annotate({ identifier: "GetUsersRequest" });
     case 6:
-      return S.Array(__S(80));
+      return S.Array(User);
     case 7:
-      return S.suspend(() => __S(110).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetUsersResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetUsersResponse",
       });
   }
@@ -4050,21 +5159,21 @@ function __c14(j: number): any {
           name: S.String,
           version_number: S.String,
           changelog: S.optional(S.NullOr(S.String)),
-          dependencies: S.optional(__S(12)),
-          game_versions: __S(8),
-          version_type: S.String,
-          loaders: __S(8),
+          dependencies: S.optional(GetVersionResponseDependenciesList),
+          game_versions: GetVersionResponseGameVersionsList,
+          version_type: GetVersionResponseVersionType,
+          loaders: GetVersionResponseLoadersList,
           featured: S.Boolean,
-          status: S.optional(S.String),
-          requested_status: S.optional(S.NullOr(S.String)),
+          status: S.optional(GetVersionResponseStatus),
+          requested_status: S.optional(S.NullOr(GetVersionResponseRequestedStatus)),
           id: S.String,
           project_id: S.String,
           author_id: S.String,
           date_published: S.String,
           downloads: S.Number,
           changelog_url: S.optional(S.NullOr(S.String)),
-          environment: S.String,
-          files: __S(32),
+          environment: EnvironmentEnum,
+          files: GetVersionResponseFilesList,
         }),
       ).annotate({ identifier: "GetVersionResponse" });
     case 2:
@@ -4084,21 +5193,21 @@ function __c14(j: number): any {
           name: S.String,
           version_number: S.String,
           changelog: S.optional(S.NullOr(S.String)),
-          dependencies: S.optional(__S(12)),
-          game_versions: __S(8),
-          version_type: S.String,
-          loaders: __S(8),
+          dependencies: S.optional(GetVersionFromIdOrNumberResponseDependenciesList),
+          game_versions: GetVersionFromIdOrNumberResponseGameVersionsList,
+          version_type: GetVersionFromIdOrNumberResponseVersionType,
+          loaders: GetVersionFromIdOrNumberResponseLoadersList,
           featured: S.Boolean,
-          status: S.optional(S.String),
-          requested_status: S.optional(S.NullOr(S.String)),
+          status: S.optional(GetVersionFromIdOrNumberResponseStatus),
+          requested_status: S.optional(S.NullOr(GetVersionFromIdOrNumberResponseRequestedStatus)),
           id: S.String,
           project_id: S.String,
           author_id: S.String,
           date_published: S.String,
           downloads: S.Number,
           changelog_url: S.optional(S.NullOr(S.String)),
-          environment: S.String,
-          files: __S(32),
+          environment: EnvironmentEnum,
+          files: GetVersionFromIdOrNumberResponseFilesList,
         }),
       ).annotate({
         identifier: "GetVersionFromIdOrNumberResponse",
@@ -4110,7 +5219,7 @@ function __c14(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/versions", code: 200 })),
       ).annotate({ identifier: "GetVersionsRequest" });
     case 5:
-      return S.suspend(() => __S(51).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetVersionsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetVersionsResponse",
       });
     case 6:
@@ -4150,9 +5259,9 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "CategoryTag" });
     case 3:
-      return S.Array(__S(122));
+      return S.Array(CategoryTag);
     case 4:
-      return S.suspend(() => __S(123).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListCategoryResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListCategoryResponse",
       });
     case 5:
@@ -4169,13 +5278,15 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "DonationPlatformTag" });
     case 7:
-      return S.Array(__S(126));
+      return S.Array(DonationPlatformTag);
   }
 }
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(127).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListDonationPlatformResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListDonationPlatformResponse",
       });
     case 1:
@@ -4187,13 +5298,13 @@ function __c16(j: number): any {
         S.Struct({
           icon: S.String,
           name: S.String,
-          supported_project_types: __S(8),
+          supported_project_types: LoaderTagSupportedProjectTypesList,
         }),
       ).annotate({ identifier: "LoaderTag" });
     case 3:
-      return S.Array(__S(130));
+      return S.Array(LoaderTag);
     case 4:
-      return S.suspend(() => __S(131).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListLoaderResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListLoaderResponse",
       });
     case 5:
@@ -4201,7 +5312,7 @@ function __c16(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/tag/project_type", code: 200 })),
       ).annotate({ identifier: "ListProjectTypeRequest" });
     case 6:
-      return S.suspend(() => __S(8).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListProjectTypeResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListProjectTypeResponse",
       });
     case 7:
@@ -4224,15 +5335,15 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           version: S.String,
-          version_type: S.String,
+          version_type: GameVersionTagVersionType,
           date: S.String,
           major: S.Boolean,
         }),
       ).annotate({ identifier: "GameVersionTag" });
     case 3:
-      return S.Array(__S(138));
+      return S.Array(GameVersionTag);
     case 4:
-      return S.suspend(() => __S(139).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListVersionResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVersionResponse",
       });
     case 5:
@@ -4256,17 +5367,17 @@ function __c17(j: number): any {
           title: S.optional(S.String),
           description: S.optional(S.String),
           body: S.optional(S.String),
-          categories: S.optional(__S(8)),
-          additional_categories: S.optional(__S(8)),
-          status: S.optional(S.String),
-          requested_status: S.optional(S.NullOr(S.String)),
+          categories: S.optional(ModifyProjectRequestCategoriesList),
+          additional_categories: S.optional(ModifyProjectRequestAdditionalCategoriesList),
+          status: S.optional(ModifyProjectRequestStatus),
+          requested_status: S.optional(S.NullOr(ModifyProjectRequestRequestedStatus)),
           issues_url: S.optional(S.NullOr(S.String)),
           source_url: S.optional(S.NullOr(S.String)),
           wiki_url: S.optional(S.NullOr(S.String)),
           discord_url: S.optional(S.NullOr(S.String)),
-          donation_urls: S.optional(__S(10)),
-          client_side: S.optional(S.String),
-          server_side: S.optional(S.String),
+          donation_urls: S.optional(ModifyProjectRequestDonationUrlsList),
+          client_side: S.optional(ModifyProjectRequestClientSide),
+          server_side: S.optional(ModifyProjectRequestServerSide),
           license_id: S.optional(S.String),
           license_url: S.optional(S.NullOr(S.String)),
           moderation_message: S.optional(S.NullOr(S.String)),
@@ -4304,7 +5415,7 @@ function __c18(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
           bio: S.optional(S.String),
-          payout_data: S.optional(S.NullOr(__S(79))),
+          payout_data: S.optional(S.NullOr(UserPayoutData)),
         }).pipe(T.Http({ method: "PATCH", uri: "/user/{id_username}", code: 200 })),
       ).annotate({ identifier: "ModifyUserRequest" });
     case 2:
@@ -4314,15 +5425,15 @@ function __c18(j: number): any {
           name: S.optional(S.String),
           version_number: S.optional(S.String),
           changelog: S.optional(S.NullOr(S.String)),
-          dependencies: S.optional(__S(12)),
-          game_versions: S.optional(__S(8)),
-          version_type: S.optional(S.String),
-          loaders: S.optional(__S(8)),
+          dependencies: S.optional(ModifyVersionRequestDependenciesList),
+          game_versions: S.optional(ModifyVersionRequestGameVersionsList),
+          version_type: S.optional(ModifyVersionRequestVersionType),
+          loaders: S.optional(ModifyVersionRequestLoadersList),
           featured: S.optional(S.Boolean),
-          status: S.optional(S.String),
-          requested_status: S.optional(S.NullOr(S.String)),
-          primary_file: S.optional(__S(8)),
-          file_types: S.optional(__S(14)),
+          status: S.optional(ModifyVersionRequestStatus),
+          requested_status: S.optional(S.NullOr(ModifyVersionRequestRequestedStatus)),
+          primary_file: S.optional(ModifyVersionRequestPrimaryFileList),
+          file_types: S.optional(ModifyVersionRequestFileTypesList),
         }).pipe(T.Http({ method: "PATCH", uri: "/version/{id}", code: 200 })),
       ).annotate({ identifier: "ModifyVersionRequest" });
     case 3:
@@ -4348,7 +5459,7 @@ function __c18(j: number): any {
         S.Struct({
           id_slug: S.String.pipe(T.Label()),
           time: S.String,
-          requested_status: S.String,
+          requested_status: ScheduleProjectRequestRequestedStatus,
         }).pipe(T.Http({ method: "POST", uri: "/project/{id_slug}/schedule", code: 200 })),
       ).annotate({ identifier: "ScheduleProjectRequest" });
     case 7:
@@ -4356,7 +5467,7 @@ function __c18(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           time: S.String,
-          requested_status: S.String,
+          requested_status: ScheduleVersionRequestRequestedStatus,
         }).pipe(T.Http({ method: "POST", uri: "/version/{id}/schedule", code: 200 })),
       ).annotate({ identifier: "ScheduleVersionRequest" });
   }
@@ -4368,7 +5479,7 @@ function __c19(j: number): any {
         S.Struct({
           query: S.optional(S.String.pipe(T.Query())),
           facets: S.optional(S.String.pipe(T.Query())),
-          index: S.optional(S.String.pipe(T.Query())),
+          index: S.optional(SearchProjectsRequestIndex.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/search", code: 200 })),
@@ -4377,14 +5488,14 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String,
-          project_type: S.String,
-          all_project_types: __S(21),
+          project_type: ProjectResultProjectType,
+          all_project_types: ProjectResultAllProjectTypesList,
           title: S.String,
           description: S.String,
           author: S.String,
-          categories: __S(8),
-          display_categories: __S(8),
-          versions: __S(8),
+          categories: ProjectResultCategoriesList,
+          display_categories: ProjectResultDisplayCategoriesList,
+          versions: ProjectResultVersionsList,
           downloads: S.Number,
           follows: S.Number,
           icon_url: S.String,
@@ -4392,25 +5503,25 @@ function __c19(j: number): any {
           date_modified: S.String,
           latest_version: S.String,
           license: S.String,
-          environment: __S(21),
-          disclosure_types: __S(21),
-          gallery: __S(8),
+          environment: ProjectResultEnvironmentList,
+          disclosure_types: ProjectResultDisclosureTypesList,
+          gallery: ProjectResultGalleryList,
           slug: S.optional(S.NullOr(S.String)),
           author_id: S.optional(S.NullOr(S.String)),
           organization: S.optional(S.NullOr(S.String)),
           organization_id: S.optional(S.NullOr(S.String)),
           featured_gallery: S.optional(S.NullOr(S.String)),
           color: S.optional(S.NullOr(S.Number)),
-          client_side: S.String,
-          server_side: S.String,
+          client_side: ProjectResultClientSide,
+          server_side: ProjectResultServerSide,
         }),
       ).annotate({ identifier: "ProjectResult" });
     case 2:
-      return S.Array(__S(153));
+      return S.Array(ProjectResult);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          hits: __S(154),
+          hits: SearchResultsHitsList,
           offset: S.Number,
           limit: S.Number,
           total_hits: S.Number,
@@ -4420,12 +5531,12 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          type: S.String,
+          type: SendThreadMessageRequestType,
           body: S.optional(S.String),
           private: S.optional(S.Boolean),
           replying_to: S.optional(S.NullOr(S.String)),
-          old_status: S.optional(S.String),
-          new_status: S.optional(S.String),
+          old_status: S.optional(SendThreadMessageRequestOldStatus),
+          new_status: S.optional(SendThreadMessageRequestNewStatus),
         }).pipe(T.Http({ method: "POST", uri: "/thread/{id}", code: 200 })),
       ).annotate({ identifier: "SendThreadMessageRequest" });
     case 5:
@@ -4446,7 +5557,7 @@ function __c19(j: number): any {
         S.Struct({
           report_type: S.String,
           item_id: S.String,
-          item_type: S.String,
+          item_type: SubmitReportRequestItemType,
           body: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/report", code: 200 })),
       ).annotate({ identifier: "SubmitReportRequest" });
@@ -4473,15 +5584,17 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ids: S.String.pipe(T.Query()),
-          categories: S.optional(__S(8)),
-          add_categories: S.optional(__S(8)),
-          remove_categories: S.optional(__S(8)),
-          additional_categories: S.optional(__S(8)),
-          add_additional_categories: S.optional(__S(8)),
-          remove_additional_categories: S.optional(__S(8)),
-          donation_urls: S.optional(__S(10)),
-          add_donation_urls: S.optional(__S(10)),
-          remove_donation_urls: S.optional(__S(10)),
+          categories: S.optional(UpdateProjectsRequestCategoriesList),
+          add_categories: S.optional(UpdateProjectsRequestAddCategoriesList),
+          remove_categories: S.optional(UpdateProjectsRequestRemoveCategoriesList),
+          additional_categories: S.optional(UpdateProjectsRequestAdditionalCategoriesList),
+          add_additional_categories: S.optional(UpdateProjectsRequestAddAdditionalCategoriesList),
+          remove_additional_categories: S.optional(
+            UpdateProjectsRequestRemoveAdditionalCategoriesList,
+          ),
+          donation_urls: S.optional(UpdateProjectsRequestDonationUrlsList),
+          add_donation_urls: S.optional(UpdateProjectsRequestAddDonationUrlsList),
+          remove_donation_urls: S.optional(UpdateProjectsRequestRemoveDonationUrlsList),
           issues_url: S.optional(S.NullOr(S.String)),
           source_url: S.optional(S.NullOr(S.String)),
           wiki_url: S.optional(S.NullOr(S.String)),
@@ -4492,7 +5605,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           hash: S.String.pipe(T.Label()),
-          algorithm: S.String.pipe(T.Query()),
+          algorithm: VersionFromHashRequestAlgorithm.pipe(T.Query()),
           multiple: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/version_file/{hash}", code: 200 })),
       ).annotate({ identifier: "VersionFromHashRequest" });
@@ -4502,28 +5615,28 @@ function __c20(j: number): any {
           name: S.String,
           version_number: S.String,
           changelog: S.optional(S.NullOr(S.String)),
-          dependencies: S.optional(__S(12)),
-          game_versions: __S(8),
-          version_type: S.String,
-          loaders: __S(8),
+          dependencies: S.optional(VersionFromHashResponseDependenciesList),
+          game_versions: VersionFromHashResponseGameVersionsList,
+          version_type: VersionFromHashResponseVersionType,
+          loaders: VersionFromHashResponseLoadersList,
           featured: S.Boolean,
-          status: S.optional(S.String),
-          requested_status: S.optional(S.NullOr(S.String)),
+          status: S.optional(VersionFromHashResponseStatus),
+          requested_status: S.optional(S.NullOr(VersionFromHashResponseRequestedStatus)),
           id: S.String,
           project_id: S.String,
           author_id: S.String,
           date_published: S.String,
           downloads: S.Number,
           changelog_url: S.optional(S.NullOr(S.String)),
-          environment: S.String,
-          files: __S(32),
+          environment: EnvironmentEnum,
+          files: VersionFromHashResponseFilesList,
         }),
       ).annotate({ identifier: "VersionFromHashResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          hashes: __S(8),
-          algorithm: S.String,
+          hashes: VersionsFromHashesRequestHashesList,
+          algorithm: VersionsFromHashesRequestAlgorithm,
         }).pipe(T.Http({ method: "POST", uri: "/version_files", code: 200 })),
       ).annotate({
         identifier: "VersionsFromHashesRequest",
@@ -4535,56 +5648,5 @@ function __c20(j: number): any {
           amount: S.Number.pipe(T.Query()),
         }).pipe(T.Http({ method: "POST", uri: "/user/{id_username}/payouts", code: 200 })),
       ).annotate({ identifier: "WithdrawPayoutRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
   }
 }

@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -22,7 +20,11 @@ export class Forbidden
   ) {}
 
 export type ListApiLogsRequestHttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
+const ListApiLogsRequestHttpMethod = S.String;
+
 export type ListApiLogsRequestStatus = "success" | "error";
+const ListApiLogsRequestStatus = S.String;
+
 export interface ListApiLogsRequest {
   /** The account (biz_*) whose API logs to list. Defaults to the authenticated account. */
   account_id?: string;
@@ -47,8 +49,14 @@ export interface ListApiLogsRequest {
   /** Return results after this cursor. Use `page_info.end_cursor` from the previous response to fetch the next page. */
   after?: string;
 }
+const ListApiLogsRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ListApiLogsRequest>;
+
 export type ListApiLogsResponseDataItemHttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
+const ListApiLogsResponseDataItemHttpMethod = S.String;
+
 export type ListApiLogsResponseDataItemStatus = "success" | "error";
+const ListApiLogsResponseDataItemStatus = S.String;
+
 export interface ListApiLogsResponseDataItem {
   api_key_id?: string | null;
   created_at: string;
@@ -63,17 +71,34 @@ export interface ListApiLogsResponseDataItem {
   status_code?: number | null;
   user_agent?: string | null;
 }
+const ListApiLogsResponseDataItem = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ListApiLogsResponseDataItem>;
+
 export type ListApiLogsResponseDataList = Array<ListApiLogsResponseDataItem>;
+const ListApiLogsResponseDataList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ListApiLogsResponseDataList>;
+
 export interface ListApiLogsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
+const ListApiLogsResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ListApiLogsResponsePageInfo>;
+
 export interface ListApiLogsResponse {
   data: ListApiLogsResponseDataList;
   page_info: ListApiLogsResponsePageInfo;
 }
+const ListApiLogsResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ListApiLogsResponse>;
+
 export type ListApiLogsError = Forbidden | WhopOpError;
 /** List Api Logs Lists the requests served by Whop's API with the account's API keys, newest first -- every surface (GraphQL, REST, and native /api/v1), reads and failed requests included. */
 export const listApiLogs: API.PaginatedOperationMethod<
@@ -84,8 +109,8 @@ export const listApiLogs: API.PaginatedOperationMethod<
   ListApiLogsResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(0) as any as S.Schema<ListApiLogsRequest>,
-    output: __S(4) as any as S.Schema<ListApiLogsResponse>,
+    input: ListApiLogsRequest,
+    output: ListApiLogsResponse,
     errors: [Forbidden],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -111,8 +136,8 @@ function __c0(j: number): any {
           created_after: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           operation_name: S.optional(S.String.pipe(T.Query())),
-          http_method: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          http_method: S.optional(ListApiLogsRequestHttpMethod.pipe(T.Query())),
+          status: S.optional(ListApiLogsRequestStatus.pipe(T.Query())),
           api_key_id: S.optional(S.String.pipe(T.Query())),
           min_duration_ms: S.optional(S.Number.pipe(T.Query())),
           max_duration_ms: S.optional(S.Number.pipe(T.Query())),
@@ -126,13 +151,13 @@ function __c0(j: number): any {
           api_key_id: S.optional(S.NullOr(S.String)),
           created_at: S.String,
           duration_ms: S.optional(S.NullOr(S.Number)),
-          http_method: S.optional(S.NullOr(S.String)),
+          http_method: S.optional(S.NullOr(ListApiLogsResponseDataItemHttpMethod)),
           http_path: S.optional(S.NullOr(S.String)),
           id: S.String,
           ip_address: S.optional(S.NullOr(S.String)),
           operation_name: S.optional(S.NullOr(S.String)),
           resource_id: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(ListApiLogsResponseDataItemStatus)),
           status_code: S.optional(S.NullOr(S.Number)),
           user_agent: S.optional(S.NullOr(S.String)),
         }),
@@ -140,7 +165,7 @@ function __c0(j: number): any {
         identifier: "ListApiLogsResponseDataItem",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(ListApiLogsResponseDataItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -155,20 +180,9 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(2),
-          page_info: __S(3),
+          data: ListApiLogsResponseDataList,
+          page_info: ListApiLogsResponsePageInfo,
         }),
       ).annotate({ identifier: "ListApiLogsResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

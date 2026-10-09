@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -68,22 +66,37 @@ export interface CalculateFoldersContainerThreatDetectionSettingsRequest {
   showEligibleModulesOnly?: boolean;
   name: string;
 }
+const CalculateFoldersContainerThreatDetectionSettingsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CalculateFoldersContainerThreatDetectionSettingsRequest>;
+
 export type ConfigModuleEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "INHERITED"
   | "ENABLED"
   | "DISABLED";
+const ConfigModuleEnablementStateEnum = S.String;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DocumentMap>;
+
 export interface Config {
   moduleEnablementState?: ConfigModuleEnablementStateEnum | (string & {});
   value?: DocumentMap;
 }
+const Config = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Config>;
+
 export type ConfigMap = { [key: string]: Config | undefined };
+const ConfigMap = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ConfigMap>;
+
 export type ContainerThreatDetectionSettingsServiceEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "INHERITED"
   | "ENABLED"
   | "DISABLED";
+const ContainerThreatDetectionSettingsServiceEnablementStateEnum = S.String;
+
 export interface ContainerThreatDetectionSettings {
   modules?: ConfigMap;
   serviceAccount?: string;
@@ -93,29 +106,53 @@ export interface ContainerThreatDetectionSettings {
     | ContainerThreatDetectionSettingsServiceEnablementStateEnum
     | (string & {});
 }
+const ContainerThreatDetectionSettings = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ContainerThreatDetectionSettings>;
+
 export interface CalculateFoldersEventThreatDetectionSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
+const CalculateFoldersEventThreatDetectionSettingsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CalculateFoldersEventThreatDetectionSettingsRequest>;
+
 export type EventThreatDetectionSettingsServiceEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "INHERITED"
   | "ENABLED"
   | "DISABLED";
+const EventThreatDetectionSettingsServiceEnablementStateEnum = S.String;
+
 export interface EventThreatDetectionSettings {
   modules?: ConfigMap;
   serviceEnablementState?: EventThreatDetectionSettingsServiceEnablementStateEnum | (string & {});
   updateTime?: string;
   name?: string;
 }
+const EventThreatDetectionSettings = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<EventThreatDetectionSettings>;
+
 export interface CalculateFoldersRapidVulnerabilityDetectionSettingsRequest {
   name: string;
 }
+const CalculateFoldersRapidVulnerabilityDetectionSettingsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CalculateFoldersRapidVulnerabilityDetectionSettingsRequest>;
+
 export type RapidVulnerabilityDetectionSettingsServiceEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "INHERITED"
   | "ENABLED"
   | "DISABLED";
+const RapidVulnerabilityDetectionSettingsServiceEnablementStateEnum = S.String;
+
 export interface RapidVulnerabilityDetectionSettings {
   modules?: ConfigMap;
   name?: string;
@@ -124,15 +161,27 @@ export interface RapidVulnerabilityDetectionSettings {
     | (string & {});
   updateTime?: string;
 }
+const RapidVulnerabilityDetectionSettings = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<RapidVulnerabilityDetectionSettings>;
+
 export interface CalculateFoldersSecurityHealthAnalyticsSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
+const CalculateFoldersSecurityHealthAnalyticsSettingsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CalculateFoldersSecurityHealthAnalyticsSettingsRequest>;
+
 export type SecurityHealthAnalyticsSettingsServiceEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "INHERITED"
   | "ENABLED"
   | "DISABLED";
+const SecurityHealthAnalyticsSettingsServiceEnablementStateEnum = S.String;
+
 export interface SecurityHealthAnalyticsSettings {
   serviceAccount?: string;
   modules?: ConfigMap;
@@ -142,15 +191,27 @@ export interface SecurityHealthAnalyticsSettings {
     | SecurityHealthAnalyticsSettingsServiceEnablementStateEnum
     | (string & {});
 }
+const SecurityHealthAnalyticsSettings = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<SecurityHealthAnalyticsSettings>;
+
 export interface CalculateFoldersVirtualMachineThreatDetectionSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
+const CalculateFoldersVirtualMachineThreatDetectionSettingsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CalculateFoldersVirtualMachineThreatDetectionSettingsRequest>;
+
 export type VirtualMachineThreatDetectionSettingsServiceEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "INHERITED"
   | "ENABLED"
   | "DISABLED";
+const VirtualMachineThreatDetectionSettingsServiceEnablementStateEnum = S.String;
+
 export interface VirtualMachineThreatDetectionSettings {
   serviceEnablementState?:
     | VirtualMachineThreatDetectionSettingsServiceEnablementStateEnum
@@ -160,104 +221,242 @@ export interface VirtualMachineThreatDetectionSettings {
   serviceAccount?: string;
   modules?: ConfigMap;
 }
+const VirtualMachineThreatDetectionSettings = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<VirtualMachineThreatDetectionSettings>;
+
 export interface CalculateFoldersWebSecurityScannerSettingsRequest {
   showEligibleModulesOnly?: boolean;
   name: string;
 }
+const CalculateFoldersWebSecurityScannerSettingsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CalculateFoldersWebSecurityScannerSettingsRequest>;
+
 export type WebSecurityScannerSettingsServiceEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "INHERITED"
   | "ENABLED"
   | "DISABLED";
+const WebSecurityScannerSettingsServiceEnablementStateEnum = S.String;
+
 export interface WebSecurityScannerSettings {
   updateTime?: string;
   serviceEnablementState?: WebSecurityScannerSettingsServiceEnablementStateEnum | (string & {});
   modules?: ConfigMap;
   name?: string;
 }
+const WebSecurityScannerSettings = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<WebSecurityScannerSettings>;
+
 export interface CalculateOrganizationsContainerThreatDetectionSettingsRequest {
   showEligibleModulesOnly?: boolean;
   name: string;
 }
+const CalculateOrganizationsContainerThreatDetectionSettingsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CalculateOrganizationsContainerThreatDetectionSettingsRequest>;
+
 export interface CalculateOrganizationsEventThreatDetectionSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
+const CalculateOrganizationsEventThreatDetectionSettingsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CalculateOrganizationsEventThreatDetectionSettingsRequest>;
+
 export interface CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest {
   name: string;
 }
+const CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest>;
+
 export interface CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
+const CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest>;
+
 export interface CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest {
   showEligibleModulesOnly?: boolean;
   name: string;
 }
+const CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest>;
+
 export interface CalculateOrganizationsWebSecurityScannerSettingsRequest {
   showEligibleModulesOnly?: boolean;
   name: string;
 }
+const CalculateOrganizationsWebSecurityScannerSettingsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CalculateOrganizationsWebSecurityScannerSettingsRequest>;
+
 export interface CalculateProjectsContainerThreatDetectionSettingsRequest {
   showEligibleModulesOnly?: boolean;
   name: string;
 }
+const CalculateProjectsContainerThreatDetectionSettingsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CalculateProjectsContainerThreatDetectionSettingsRequest>;
+
 export interface CalculateProjectsEventThreatDetectionSettingsRequest {
   showEligibleModulesOnly?: boolean;
   name: string;
 }
+const CalculateProjectsEventThreatDetectionSettingsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CalculateProjectsEventThreatDetectionSettingsRequest>;
+
 export interface CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
+const CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest =
+  /*@__PURE__*/ __L.at(
+    __c2,
+    7,
+  ) as any as S.Schema<CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest>;
+
 export interface CalculateProjectsRapidVulnerabilityDetectionSettingsRequest {
   name: string;
 }
+const CalculateProjectsRapidVulnerabilityDetectionSettingsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CalculateProjectsRapidVulnerabilityDetectionSettingsRequest>;
+
 export interface CalculateProjectsSecurityHealthAnalyticsSettingsRequest {
   showEligibleModulesOnly?: boolean;
   name: string;
 }
+const CalculateProjectsSecurityHealthAnalyticsSettingsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CalculateProjectsSecurityHealthAnalyticsSettingsRequest>;
+
 export interface CalculateProjectsVirtualMachineThreatDetectionSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
+const CalculateProjectsVirtualMachineThreatDetectionSettingsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CalculateProjectsVirtualMachineThreatDetectionSettingsRequest>;
+
 export interface CalculateProjectsWebSecurityScannerSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
+const CalculateProjectsWebSecurityScannerSettingsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CalculateProjectsWebSecurityScannerSettingsRequest>;
+
 export interface GetContainerThreatDetectionSettingsFoldersRequest {
   name: string;
 }
+const GetContainerThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetContainerThreatDetectionSettingsFoldersRequest>;
+
 export interface GetContainerThreatDetectionSettingsOrganizationsRequest {
   name: string;
 }
+const GetContainerThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetContainerThreatDetectionSettingsOrganizationsRequest>;
+
 export interface GetContainerThreatDetectionSettingsProjectsRequest {
   name: string;
 }
+const GetContainerThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetContainerThreatDetectionSettingsProjectsRequest>;
+
 export interface GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest {
   name: string;
 }
+const GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest>;
+
 export interface GetEventThreatDetectionSettingsFoldersRequest {
   name: string;
 }
+const GetEventThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetEventThreatDetectionSettingsFoldersRequest>;
+
 export interface GetEventThreatDetectionSettingsOrganizationsRequest {
   name: string;
 }
+const GetEventThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetEventThreatDetectionSettingsOrganizationsRequest>;
+
 export interface GetEventThreatDetectionSettingsProjectsRequest {
   name: string;
 }
+const GetEventThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetEventThreatDetectionSettingsProjectsRequest>;
+
 export interface GetRapidVulnerabilityDetectionSettingsFoldersRequest {
   name: string;
 }
+const GetRapidVulnerabilityDetectionSettingsFoldersRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetRapidVulnerabilityDetectionSettingsFoldersRequest>;
+
 export interface GetRapidVulnerabilityDetectionSettingsOrganizationsRequest {
   name: string;
 }
+const GetRapidVulnerabilityDetectionSettingsOrganizationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetRapidVulnerabilityDetectionSettingsOrganizationsRequest>;
+
 export interface GetRapidVulnerabilityDetectionSettingsProjectsRequest {
   name: string;
 }
+const GetRapidVulnerabilityDetectionSettingsProjectsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetRapidVulnerabilityDetectionSettingsProjectsRequest>;
+
 export interface GetSecurityCenterSettingsFoldersRequest {
   name: string;
 }
+const GetSecurityCenterSettingsFoldersRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetSecurityCenterSettingsFoldersRequest>;
+
 export interface SecurityCenterSettings {
   cryptoKeyName?: string;
   onboardingTime?: string;
@@ -265,30 +464,67 @@ export interface SecurityCenterSettings {
   logSinkProject?: string;
   orgServiceAccount?: string;
 }
+const SecurityCenterSettings = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<SecurityCenterSettings>;
+
 export interface GetSecurityCenterSettingsOrganizationsRequest {
   name: string;
 }
+const GetSecurityCenterSettingsOrganizationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GetSecurityCenterSettingsOrganizationsRequest>;
+
 export interface GetSecurityCenterSettingsProjectsRequest {
   name: string;
 }
+const GetSecurityCenterSettingsProjectsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetSecurityCenterSettingsProjectsRequest>;
+
 export interface GetSecurityHealthAnalyticsSettingsFoldersRequest {
   name: string;
 }
+const GetSecurityHealthAnalyticsSettingsFoldersRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GetSecurityHealthAnalyticsSettingsFoldersRequest>;
+
 export interface GetSecurityHealthAnalyticsSettingsOrganizationsRequest {
   name: string;
 }
+const GetSecurityHealthAnalyticsSettingsOrganizationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetSecurityHealthAnalyticsSettingsOrganizationsRequest>;
+
 export interface GetSecurityHealthAnalyticsSettingsProjectsRequest {
   name: string;
 }
+const GetSecurityHealthAnalyticsSettingsProjectsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GetSecurityHealthAnalyticsSettingsProjectsRequest>;
+
 export interface GetSubscriptionOrganizationsRequest {
   name: string;
 }
+const GetSubscriptionOrganizationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GetSubscriptionOrganizationsRequest>;
+
 export type SubscriptionTierEnum =
   | "TIER_UNSPECIFIED"
   | "STANDARD"
   | "PREMIUM"
   | "ENTERPRISE"
   | "ENTERPRISE_MC";
+const SubscriptionTierEnum = S.String;
+
 export type DetailsTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "STANDARD"
@@ -299,148 +535,279 @@ export type DetailsTypeEnum =
   | "SUBSCRIPTION"
   | "SUB_FIXED"
   | "SUB_BASE_OVERAGE";
+const DetailsTypeEnum = S.String;
+
 export interface Details {
   startTime?: string;
   endTime?: string;
   type?: DetailsTypeEnum;
 }
+const Details = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Details>;
+
 export interface Subscription {
   name?: string;
   tier?: SubscriptionTierEnum;
   details?: Details;
 }
+const Subscription = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<Subscription>;
+
 export interface GetVirtualMachineThreatDetectionSettingsFoldersRequest {
   name: string;
 }
+const GetVirtualMachineThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetVirtualMachineThreatDetectionSettingsFoldersRequest>;
+
 export interface GetVirtualMachineThreatDetectionSettingsOrganizationsRequest {
   name: string;
 }
+const GetVirtualMachineThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetVirtualMachineThreatDetectionSettingsOrganizationsRequest>;
+
 export interface GetVirtualMachineThreatDetectionSettingsProjectsRequest {
   name: string;
 }
+const GetVirtualMachineThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<GetVirtualMachineThreatDetectionSettingsProjectsRequest>;
+
 export interface GetWebSecurityScannerSettingsFoldersRequest {
   name: string;
 }
+const GetWebSecurityScannerSettingsFoldersRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GetWebSecurityScannerSettingsFoldersRequest>;
+
 export interface GetWebSecurityScannerSettingsOrganizationsRequest {
   name: string;
 }
+const GetWebSecurityScannerSettingsOrganizationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GetWebSecurityScannerSettingsOrganizationsRequest>;
+
 export interface GetWebSecurityScannerSettingsProjectsRequest {
   name: string;
 }
+const GetWebSecurityScannerSettingsProjectsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GetWebSecurityScannerSettingsProjectsRequest>;
+
 export interface UpdateContainerThreatDetectionSettingsFoldersRequest {
   name: string;
   updateMask?: string;
   /** Request body */
   body?: ContainerThreatDetectionSettings;
 }
+const UpdateContainerThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<UpdateContainerThreatDetectionSettingsFoldersRequest>;
+
 export interface UpdateContainerThreatDetectionSettingsOrganizationsRequest {
   updateMask?: string;
   name: string;
   /** Request body */
   body?: ContainerThreatDetectionSettings;
 }
+const UpdateContainerThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<UpdateContainerThreatDetectionSettingsOrganizationsRequest>;
+
 export interface UpdateContainerThreatDetectionSettingsProjectsRequest {
   name: string;
   updateMask?: string;
   /** Request body */
   body?: ContainerThreatDetectionSettings;
 }
+const UpdateContainerThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<UpdateContainerThreatDetectionSettingsProjectsRequest>;
+
 export interface UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest {
   name: string;
   updateMask?: string;
   /** Request body */
   body?: ContainerThreatDetectionSettings;
 }
+const UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest>;
+
 export interface UpdateEventThreatDetectionSettingsFoldersRequest {
   updateMask?: string;
   name: string;
   /** Request body */
   body?: EventThreatDetectionSettings;
 }
+const UpdateEventThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<UpdateEventThreatDetectionSettingsFoldersRequest>;
+
 export interface UpdateEventThreatDetectionSettingsOrganizationsRequest {
   name: string;
   updateMask?: string;
   /** Request body */
   body?: EventThreatDetectionSettings;
 }
+const UpdateEventThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<UpdateEventThreatDetectionSettingsOrganizationsRequest>;
+
 export interface UpdateEventThreatDetectionSettingsProjectsRequest {
   name: string;
   updateMask?: string;
   /** Request body */
   body?: EventThreatDetectionSettings;
 }
+const UpdateEventThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<UpdateEventThreatDetectionSettingsProjectsRequest>;
+
 export interface UpdateRapidVulnerabilityDetectionSettingsFoldersRequest {
   name: string;
   updateMask?: string;
   /** Request body */
   body?: RapidVulnerabilityDetectionSettings;
 }
+const UpdateRapidVulnerabilityDetectionSettingsFoldersRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<UpdateRapidVulnerabilityDetectionSettingsFoldersRequest>;
+
 export interface UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest {
   name: string;
   updateMask?: string;
   /** Request body */
   body?: RapidVulnerabilityDetectionSettings;
 }
+const UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest>;
+
 export interface UpdateRapidVulnerabilityDetectionSettingsProjectsRequest {
   name: string;
   updateMask?: string;
   /** Request body */
   body?: RapidVulnerabilityDetectionSettings;
 }
+const UpdateRapidVulnerabilityDetectionSettingsProjectsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<UpdateRapidVulnerabilityDetectionSettingsProjectsRequest>;
+
 export interface UpdateSecurityHealthAnalyticsSettingsFoldersRequest {
   updateMask?: string;
   name: string;
   /** Request body */
   body?: SecurityHealthAnalyticsSettings;
 }
+const UpdateSecurityHealthAnalyticsSettingsFoldersRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<UpdateSecurityHealthAnalyticsSettingsFoldersRequest>;
+
 export interface UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest {
   updateMask?: string;
   name: string;
   /** Request body */
   body?: SecurityHealthAnalyticsSettings;
 }
+const UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest>;
+
 export interface UpdateSecurityHealthAnalyticsSettingsProjectsRequest {
   updateMask?: string;
   name: string;
   /** Request body */
   body?: SecurityHealthAnalyticsSettings;
 }
+const UpdateSecurityHealthAnalyticsSettingsProjectsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<UpdateSecurityHealthAnalyticsSettingsProjectsRequest>;
+
 export interface UpdateVirtualMachineThreatDetectionSettingsFoldersRequest {
   updateMask?: string;
   name: string;
   /** Request body */
   body?: VirtualMachineThreatDetectionSettings;
 }
+const UpdateVirtualMachineThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<UpdateVirtualMachineThreatDetectionSettingsFoldersRequest>;
+
 export interface UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest {
   name: string;
   updateMask?: string;
   /** Request body */
   body?: VirtualMachineThreatDetectionSettings;
 }
+const UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest>;
+
 export interface UpdateVirtualMachineThreatDetectionSettingsProjectsRequest {
   updateMask?: string;
   name: string;
   /** Request body */
   body?: VirtualMachineThreatDetectionSettings;
 }
+const UpdateVirtualMachineThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<UpdateVirtualMachineThreatDetectionSettingsProjectsRequest>;
+
 export interface UpdateWebSecurityScannerSettingsFoldersRequest {
   name: string;
   updateMask?: string;
   /** Request body */
   body?: WebSecurityScannerSettings;
 }
+const UpdateWebSecurityScannerSettingsFoldersRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<UpdateWebSecurityScannerSettingsFoldersRequest>;
+
 export interface UpdateWebSecurityScannerSettingsOrganizationsRequest {
   updateMask?: string;
   name: string;
   /** Request body */
   body?: WebSecurityScannerSettings;
 }
+const UpdateWebSecurityScannerSettingsOrganizationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<UpdateWebSecurityScannerSettingsOrganizationsRequest>;
+
 export interface UpdateWebSecurityScannerSettingsProjectsRequest {
   updateMask?: string;
   name: string;
   /** Request body */
   body?: WebSecurityScannerSettings;
 }
+const UpdateWebSecurityScannerSettingsProjectsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<UpdateWebSecurityScannerSettingsProjectsRequest>;
+
 export type CalculateFoldersContainerThreatDetectionSettingsError =
   | NotFound
   | Forbidden
@@ -451,8 +818,8 @@ export const calculateFoldersContainerThreatDetectionSettings: API.OperationMeth
   CalculateFoldersContainerThreatDetectionSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CalculateFoldersContainerThreatDetectionSettingsRequest>,
-  output: __S(4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  input: CalculateFoldersContainerThreatDetectionSettingsRequest,
+  output: ContainerThreatDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -465,8 +832,8 @@ export const calculateFoldersEventThreatDetectionSettings: API.OperationMethod<
   CalculateFoldersEventThreatDetectionSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CalculateFoldersEventThreatDetectionSettingsRequest>,
-  output: __S(6) as any as S.Schema<EventThreatDetectionSettings>,
+  input: CalculateFoldersEventThreatDetectionSettingsRequest,
+  output: EventThreatDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -482,8 +849,8 @@ export const calculateFoldersRapidVulnerabilityDetectionSettings: API.OperationM
   CalculateFoldersRapidVulnerabilityDetectionSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<CalculateFoldersRapidVulnerabilityDetectionSettingsRequest>,
-  output: __S(8) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
+  input: CalculateFoldersRapidVulnerabilityDetectionSettingsRequest,
+  output: RapidVulnerabilityDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -499,8 +866,8 @@ export const calculateFoldersSecurityHealthAnalyticsSettings: API.OperationMetho
   CalculateFoldersSecurityHealthAnalyticsSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CalculateFoldersSecurityHealthAnalyticsSettingsRequest>,
-  output: __S(10) as any as S.Schema<SecurityHealthAnalyticsSettings>,
+  input: CalculateFoldersSecurityHealthAnalyticsSettingsRequest,
+  output: SecurityHealthAnalyticsSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -516,8 +883,8 @@ export const calculateFoldersVirtualMachineThreatDetectionSettings: API.Operatio
   CalculateFoldersVirtualMachineThreatDetectionSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CalculateFoldersVirtualMachineThreatDetectionSettingsRequest>,
-  output: __S(12) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
+  input: CalculateFoldersVirtualMachineThreatDetectionSettingsRequest,
+  output: VirtualMachineThreatDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -530,8 +897,8 @@ export const calculateFoldersWebSecurityScannerSettings: API.OperationMethod<
   CalculateFoldersWebSecurityScannerSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CalculateFoldersWebSecurityScannerSettingsRequest>,
-  output: __S(14) as any as S.Schema<WebSecurityScannerSettings>,
+  input: CalculateFoldersWebSecurityScannerSettingsRequest,
+  output: WebSecurityScannerSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -547,8 +914,8 @@ export const calculateOrganizationsContainerThreatDetectionSettings: API.Operati
   CalculateOrganizationsContainerThreatDetectionSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<CalculateOrganizationsContainerThreatDetectionSettingsRequest>,
-  output: __S(4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  input: CalculateOrganizationsContainerThreatDetectionSettingsRequest,
+  output: ContainerThreatDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -564,8 +931,8 @@ export const calculateOrganizationsEventThreatDetectionSettings: API.OperationMe
   CalculateOrganizationsEventThreatDetectionSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CalculateOrganizationsEventThreatDetectionSettingsRequest>,
-  output: __S(6) as any as S.Schema<EventThreatDetectionSettings>,
+  input: CalculateOrganizationsEventThreatDetectionSettingsRequest,
+  output: EventThreatDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -581,10 +948,8 @@ export const calculateOrganizationsRapidVulnerabilityDetectionSettings: API.Oper
   CalculateOrganizationsRapidVulnerabilityDetectionSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    17,
-  ) as any as S.Schema<CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest>,
-  output: __S(8) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
+  input: CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest,
+  output: RapidVulnerabilityDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -600,8 +965,8 @@ export const calculateOrganizationsSecurityHealthAnalyticsSettings: API.Operatio
   CalculateOrganizationsSecurityHealthAnalyticsSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest>,
-  output: __S(10) as any as S.Schema<SecurityHealthAnalyticsSettings>,
+  input: CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest,
+  output: SecurityHealthAnalyticsSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -617,10 +982,8 @@ export const calculateOrganizationsVirtualMachineThreatDetectionSettings: API.Op
   CalculateOrganizationsVirtualMachineThreatDetectionSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    19,
-  ) as any as S.Schema<CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest>,
-  output: __S(12) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
+  input: CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest,
+  output: VirtualMachineThreatDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -636,8 +999,8 @@ export const calculateOrganizationsWebSecurityScannerSettings: API.OperationMeth
   CalculateOrganizationsWebSecurityScannerSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CalculateOrganizationsWebSecurityScannerSettingsRequest>,
-  output: __S(14) as any as S.Schema<WebSecurityScannerSettings>,
+  input: CalculateOrganizationsWebSecurityScannerSettingsRequest,
+  output: WebSecurityScannerSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -653,8 +1016,8 @@ export const calculateProjectsContainerThreatDetectionSettings: API.OperationMet
   CalculateProjectsContainerThreatDetectionSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<CalculateProjectsContainerThreatDetectionSettingsRequest>,
-  output: __S(4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  input: CalculateProjectsContainerThreatDetectionSettingsRequest,
+  output: ContainerThreatDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -667,8 +1030,8 @@ export const calculateProjectsEventThreatDetectionSettings: API.OperationMethod<
   CalculateProjectsEventThreatDetectionSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<CalculateProjectsEventThreatDetectionSettingsRequest>,
-  output: __S(6) as any as S.Schema<EventThreatDetectionSettings>,
+  input: CalculateProjectsEventThreatDetectionSettingsRequest,
+  output: EventThreatDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -684,10 +1047,8 @@ export const calculateProjectsLocationsClustersContainerThreatDetectionSettings:
   CalculateProjectsLocationsClustersContainerThreatDetectionSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    23,
-  ) as any as S.Schema<CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest>,
-  output: __S(4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  input: CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest,
+  output: ContainerThreatDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -703,8 +1064,8 @@ export const calculateProjectsRapidVulnerabilityDetectionSettings: API.Operation
   CalculateProjectsRapidVulnerabilityDetectionSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<CalculateProjectsRapidVulnerabilityDetectionSettingsRequest>,
-  output: __S(8) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
+  input: CalculateProjectsRapidVulnerabilityDetectionSettingsRequest,
+  output: RapidVulnerabilityDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -720,8 +1081,8 @@ export const calculateProjectsSecurityHealthAnalyticsSettings: API.OperationMeth
   CalculateProjectsSecurityHealthAnalyticsSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<CalculateProjectsSecurityHealthAnalyticsSettingsRequest>,
-  output: __S(10) as any as S.Schema<SecurityHealthAnalyticsSettings>,
+  input: CalculateProjectsSecurityHealthAnalyticsSettingsRequest,
+  output: SecurityHealthAnalyticsSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -737,8 +1098,8 @@ export const calculateProjectsVirtualMachineThreatDetectionSettings: API.Operati
   CalculateProjectsVirtualMachineThreatDetectionSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<CalculateProjectsVirtualMachineThreatDetectionSettingsRequest>,
-  output: __S(12) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
+  input: CalculateProjectsVirtualMachineThreatDetectionSettingsRequest,
+  output: VirtualMachineThreatDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -751,8 +1112,8 @@ export const calculateProjectsWebSecurityScannerSettings: API.OperationMethod<
   CalculateProjectsWebSecurityScannerSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<CalculateProjectsWebSecurityScannerSettingsRequest>,
-  output: __S(14) as any as S.Schema<WebSecurityScannerSettings>,
+  input: CalculateProjectsWebSecurityScannerSettingsRequest,
+  output: WebSecurityScannerSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -765,8 +1126,8 @@ export const getContainerThreatDetectionSettingsFolders: API.OperationMethod<
   GetContainerThreatDetectionSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<GetContainerThreatDetectionSettingsFoldersRequest>,
-  output: __S(4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  input: GetContainerThreatDetectionSettingsFoldersRequest,
+  output: ContainerThreatDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -782,8 +1143,8 @@ export const getContainerThreatDetectionSettingsOrganizations: API.OperationMeth
   GetContainerThreatDetectionSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<GetContainerThreatDetectionSettingsOrganizationsRequest>,
-  output: __S(4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  input: GetContainerThreatDetectionSettingsOrganizationsRequest,
+  output: ContainerThreatDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -796,8 +1157,8 @@ export const getContainerThreatDetectionSettingsProjects: API.OperationMethod<
   GetContainerThreatDetectionSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<GetContainerThreatDetectionSettingsProjectsRequest>,
-  output: __S(4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  input: GetContainerThreatDetectionSettingsProjectsRequest,
+  output: ContainerThreatDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -813,10 +1174,8 @@ export const getContainerThreatDetectionSettingsProjectsLocationsClusters: API.O
   GetContainerThreatDetectionSettingsProjectsLocationsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    31,
-  ) as any as S.Schema<GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest>,
-  output: __S(4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  input: GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest,
+  output: ContainerThreatDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -829,8 +1188,8 @@ export const getEventThreatDetectionSettingsFolders: API.OperationMethod<
   GetEventThreatDetectionSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<GetEventThreatDetectionSettingsFoldersRequest>,
-  output: __S(6) as any as S.Schema<EventThreatDetectionSettings>,
+  input: GetEventThreatDetectionSettingsFoldersRequest,
+  output: EventThreatDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -843,8 +1202,8 @@ export const getEventThreatDetectionSettingsOrganizations: API.OperationMethod<
   GetEventThreatDetectionSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<GetEventThreatDetectionSettingsOrganizationsRequest>,
-  output: __S(6) as any as S.Schema<EventThreatDetectionSettings>,
+  input: GetEventThreatDetectionSettingsOrganizationsRequest,
+  output: EventThreatDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -857,8 +1216,8 @@ export const getEventThreatDetectionSettingsProjects: API.OperationMethod<
   GetEventThreatDetectionSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<GetEventThreatDetectionSettingsProjectsRequest>,
-  output: __S(6) as any as S.Schema<EventThreatDetectionSettings>,
+  input: GetEventThreatDetectionSettingsProjectsRequest,
+  output: EventThreatDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -871,8 +1230,8 @@ export const getRapidVulnerabilityDetectionSettingsFolders: API.OperationMethod<
   GetRapidVulnerabilityDetectionSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<GetRapidVulnerabilityDetectionSettingsFoldersRequest>,
-  output: __S(8) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
+  input: GetRapidVulnerabilityDetectionSettingsFoldersRequest,
+  output: RapidVulnerabilityDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -888,8 +1247,8 @@ export const getRapidVulnerabilityDetectionSettingsOrganizations: API.OperationM
   GetRapidVulnerabilityDetectionSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GetRapidVulnerabilityDetectionSettingsOrganizationsRequest>,
-  output: __S(8) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
+  input: GetRapidVulnerabilityDetectionSettingsOrganizationsRequest,
+  output: RapidVulnerabilityDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -902,8 +1261,8 @@ export const getRapidVulnerabilityDetectionSettingsProjects: API.OperationMethod
   GetRapidVulnerabilityDetectionSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<GetRapidVulnerabilityDetectionSettingsProjectsRequest>,
-  output: __S(8) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
+  input: GetRapidVulnerabilityDetectionSettingsProjectsRequest,
+  output: RapidVulnerabilityDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -916,8 +1275,8 @@ export const getSecurityCenterSettingsFolders: API.OperationMethod<
   GetSecurityCenterSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<GetSecurityCenterSettingsFoldersRequest>,
-  output: __S(39) as any as S.Schema<SecurityCenterSettings>,
+  input: GetSecurityCenterSettingsFoldersRequest,
+  output: SecurityCenterSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -930,8 +1289,8 @@ export const getSecurityCenterSettingsOrganizations: API.OperationMethod<
   GetSecurityCenterSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<GetSecurityCenterSettingsOrganizationsRequest>,
-  output: __S(39) as any as S.Schema<SecurityCenterSettings>,
+  input: GetSecurityCenterSettingsOrganizationsRequest,
+  output: SecurityCenterSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -944,8 +1303,8 @@ export const getSecurityCenterSettingsProjects: API.OperationMethod<
   GetSecurityCenterSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<GetSecurityCenterSettingsProjectsRequest>,
-  output: __S(39) as any as S.Schema<SecurityCenterSettings>,
+  input: GetSecurityCenterSettingsProjectsRequest,
+  output: SecurityCenterSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -958,8 +1317,8 @@ export const getSecurityHealthAnalyticsSettingsFolders: API.OperationMethod<
   GetSecurityHealthAnalyticsSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<GetSecurityHealthAnalyticsSettingsFoldersRequest>,
-  output: __S(10) as any as S.Schema<SecurityHealthAnalyticsSettings>,
+  input: GetSecurityHealthAnalyticsSettingsFoldersRequest,
+  output: SecurityHealthAnalyticsSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -975,8 +1334,8 @@ export const getSecurityHealthAnalyticsSettingsOrganizations: API.OperationMetho
   GetSecurityHealthAnalyticsSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<GetSecurityHealthAnalyticsSettingsOrganizationsRequest>,
-  output: __S(10) as any as S.Schema<SecurityHealthAnalyticsSettings>,
+  input: GetSecurityHealthAnalyticsSettingsOrganizationsRequest,
+  output: SecurityHealthAnalyticsSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -989,8 +1348,8 @@ export const getSecurityHealthAnalyticsSettingsProjects: API.OperationMethod<
   GetSecurityHealthAnalyticsSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<GetSecurityHealthAnalyticsSettingsProjectsRequest>,
-  output: __S(10) as any as S.Schema<SecurityHealthAnalyticsSettings>,
+  input: GetSecurityHealthAnalyticsSettingsProjectsRequest,
+  output: SecurityHealthAnalyticsSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1003,8 +1362,8 @@ export const getSubscriptionOrganizations: API.OperationMethod<
   GetSubscriptionOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<GetSubscriptionOrganizationsRequest>,
-  output: __S(47) as any as S.Schema<Subscription>,
+  input: GetSubscriptionOrganizationsRequest,
+  output: Subscription,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1020,8 +1379,8 @@ export const getVirtualMachineThreatDetectionSettingsFolders: API.OperationMetho
   GetVirtualMachineThreatDetectionSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<GetVirtualMachineThreatDetectionSettingsFoldersRequest>,
-  output: __S(12) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
+  input: GetVirtualMachineThreatDetectionSettingsFoldersRequest,
+  output: VirtualMachineThreatDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1037,8 +1396,8 @@ export const getVirtualMachineThreatDetectionSettingsOrganizations: API.Operatio
   GetVirtualMachineThreatDetectionSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetVirtualMachineThreatDetectionSettingsOrganizationsRequest>,
-  output: __S(12) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
+  input: GetVirtualMachineThreatDetectionSettingsOrganizationsRequest,
+  output: VirtualMachineThreatDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1054,8 +1413,8 @@ export const getVirtualMachineThreatDetectionSettingsProjects: API.OperationMeth
   GetVirtualMachineThreatDetectionSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<GetVirtualMachineThreatDetectionSettingsProjectsRequest>,
-  output: __S(12) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
+  input: GetVirtualMachineThreatDetectionSettingsProjectsRequest,
+  output: VirtualMachineThreatDetectionSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1068,8 +1427,8 @@ export const getWebSecurityScannerSettingsFolders: API.OperationMethod<
   GetWebSecurityScannerSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<GetWebSecurityScannerSettingsFoldersRequest>,
-  output: __S(14) as any as S.Schema<WebSecurityScannerSettings>,
+  input: GetWebSecurityScannerSettingsFoldersRequest,
+  output: WebSecurityScannerSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1082,8 +1441,8 @@ export const getWebSecurityScannerSettingsOrganizations: API.OperationMethod<
   GetWebSecurityScannerSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<GetWebSecurityScannerSettingsOrganizationsRequest>,
-  output: __S(14) as any as S.Schema<WebSecurityScannerSettings>,
+  input: GetWebSecurityScannerSettingsOrganizationsRequest,
+  output: WebSecurityScannerSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1096,8 +1455,8 @@ export const getWebSecurityScannerSettingsProjects: API.OperationMethod<
   GetWebSecurityScannerSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<GetWebSecurityScannerSettingsProjectsRequest>,
-  output: __S(14) as any as S.Schema<WebSecurityScannerSettings>,
+  input: GetWebSecurityScannerSettingsProjectsRequest,
+  output: WebSecurityScannerSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1115,8 +1474,8 @@ export const updateContainerThreatDetectionSettingsFolders: API.OperationMethod<
   UpdateContainerThreatDetectionSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<UpdateContainerThreatDetectionSettingsFoldersRequest>,
-  output: __S(4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  input: UpdateContainerThreatDetectionSettingsFoldersRequest,
+  output: ContainerThreatDetectionSettings,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1134,8 +1493,8 @@ export const updateContainerThreatDetectionSettingsOrganizations: API.OperationM
   UpdateContainerThreatDetectionSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<UpdateContainerThreatDetectionSettingsOrganizationsRequest>,
-  output: __S(4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  input: UpdateContainerThreatDetectionSettingsOrganizationsRequest,
+  output: ContainerThreatDetectionSettings,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1153,8 +1512,8 @@ export const updateContainerThreatDetectionSettingsProjects: API.OperationMethod
   UpdateContainerThreatDetectionSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<UpdateContainerThreatDetectionSettingsProjectsRequest>,
-  output: __S(4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  input: UpdateContainerThreatDetectionSettingsProjectsRequest,
+  output: ContainerThreatDetectionSettings,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1172,10 +1531,8 @@ export const updateContainerThreatDetectionSettingsProjectsLocationsClusters: AP
   UpdateContainerThreatDetectionSettingsProjectsLocationsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    57,
-  ) as any as S.Schema<UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest>,
-  output: __S(4) as any as S.Schema<ContainerThreatDetectionSettings>,
+  input: UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest,
+  output: ContainerThreatDetectionSettings,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1193,8 +1550,8 @@ export const updateEventThreatDetectionSettingsFolders: API.OperationMethod<
   UpdateEventThreatDetectionSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<UpdateEventThreatDetectionSettingsFoldersRequest>,
-  output: __S(6) as any as S.Schema<EventThreatDetectionSettings>,
+  input: UpdateEventThreatDetectionSettingsFoldersRequest,
+  output: EventThreatDetectionSettings,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1212,8 +1569,8 @@ export const updateEventThreatDetectionSettingsOrganizations: API.OperationMetho
   UpdateEventThreatDetectionSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<UpdateEventThreatDetectionSettingsOrganizationsRequest>,
-  output: __S(6) as any as S.Schema<EventThreatDetectionSettings>,
+  input: UpdateEventThreatDetectionSettingsOrganizationsRequest,
+  output: EventThreatDetectionSettings,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1231,8 +1588,8 @@ export const updateEventThreatDetectionSettingsProjects: API.OperationMethod<
   UpdateEventThreatDetectionSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<UpdateEventThreatDetectionSettingsProjectsRequest>,
-  output: __S(6) as any as S.Schema<EventThreatDetectionSettings>,
+  input: UpdateEventThreatDetectionSettingsProjectsRequest,
+  output: EventThreatDetectionSettings,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1250,8 +1607,8 @@ export const updateRapidVulnerabilityDetectionSettingsFolders: API.OperationMeth
   UpdateRapidVulnerabilityDetectionSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<UpdateRapidVulnerabilityDetectionSettingsFoldersRequest>,
-  output: __S(8) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
+  input: UpdateRapidVulnerabilityDetectionSettingsFoldersRequest,
+  output: RapidVulnerabilityDetectionSettings,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1269,8 +1626,8 @@ export const updateRapidVulnerabilityDetectionSettingsOrganizations: API.Operati
   UpdateRapidVulnerabilityDetectionSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest>,
-  output: __S(8) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
+  input: UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest,
+  output: RapidVulnerabilityDetectionSettings,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1288,8 +1645,8 @@ export const updateRapidVulnerabilityDetectionSettingsProjects: API.OperationMet
   UpdateRapidVulnerabilityDetectionSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<UpdateRapidVulnerabilityDetectionSettingsProjectsRequest>,
-  output: __S(8) as any as S.Schema<RapidVulnerabilityDetectionSettings>,
+  input: UpdateRapidVulnerabilityDetectionSettingsProjectsRequest,
+  output: RapidVulnerabilityDetectionSettings,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1307,8 +1664,8 @@ export const updateSecurityHealthAnalyticsSettingsFolders: API.OperationMethod<
   UpdateSecurityHealthAnalyticsSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<UpdateSecurityHealthAnalyticsSettingsFoldersRequest>,
-  output: __S(10) as any as S.Schema<SecurityHealthAnalyticsSettings>,
+  input: UpdateSecurityHealthAnalyticsSettingsFoldersRequest,
+  output: SecurityHealthAnalyticsSettings,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1326,8 +1683,8 @@ export const updateSecurityHealthAnalyticsSettingsOrganizations: API.OperationMe
   UpdateSecurityHealthAnalyticsSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest>,
-  output: __S(10) as any as S.Schema<SecurityHealthAnalyticsSettings>,
+  input: UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest,
+  output: SecurityHealthAnalyticsSettings,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1345,8 +1702,8 @@ export const updateSecurityHealthAnalyticsSettingsProjects: API.OperationMethod<
   UpdateSecurityHealthAnalyticsSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<UpdateSecurityHealthAnalyticsSettingsProjectsRequest>,
-  output: __S(10) as any as S.Schema<SecurityHealthAnalyticsSettings>,
+  input: UpdateSecurityHealthAnalyticsSettingsProjectsRequest,
+  output: SecurityHealthAnalyticsSettings,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1364,8 +1721,8 @@ export const updateVirtualMachineThreatDetectionSettingsFolders: API.OperationMe
   UpdateVirtualMachineThreatDetectionSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<UpdateVirtualMachineThreatDetectionSettingsFoldersRequest>,
-  output: __S(12) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
+  input: UpdateVirtualMachineThreatDetectionSettingsFoldersRequest,
+  output: VirtualMachineThreatDetectionSettings,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1383,10 +1740,8 @@ export const updateVirtualMachineThreatDetectionSettingsOrganizations: API.Opera
   UpdateVirtualMachineThreatDetectionSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    68,
-  ) as any as S.Schema<UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest>,
-  output: __S(12) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
+  input: UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest,
+  output: VirtualMachineThreatDetectionSettings,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1404,8 +1759,8 @@ export const updateVirtualMachineThreatDetectionSettingsProjects: API.OperationM
   UpdateVirtualMachineThreatDetectionSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<UpdateVirtualMachineThreatDetectionSettingsProjectsRequest>,
-  output: __S(12) as any as S.Schema<VirtualMachineThreatDetectionSettings>,
+  input: UpdateVirtualMachineThreatDetectionSettingsProjectsRequest,
+  output: VirtualMachineThreatDetectionSettings,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1423,8 +1778,8 @@ export const updateWebSecurityScannerSettingsFolders: API.OperationMethod<
   UpdateWebSecurityScannerSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<UpdateWebSecurityScannerSettingsFoldersRequest>,
-  output: __S(14) as any as S.Schema<WebSecurityScannerSettings>,
+  input: UpdateWebSecurityScannerSettingsFoldersRequest,
+  output: WebSecurityScannerSettings,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1442,8 +1797,8 @@ export const updateWebSecurityScannerSettingsOrganizations: API.OperationMethod<
   UpdateWebSecurityScannerSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<UpdateWebSecurityScannerSettingsOrganizationsRequest>,
-  output: __S(14) as any as S.Schema<WebSecurityScannerSettings>,
+  input: UpdateWebSecurityScannerSettingsOrganizationsRequest,
+  output: WebSecurityScannerSettings,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1461,8 +1816,8 @@ export const updateWebSecurityScannerSettingsProjects: API.OperationMethod<
   UpdateWebSecurityScannerSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<UpdateWebSecurityScannerSettingsProjectsRequest>,
-  output: __S(14) as any as S.Schema<WebSecurityScannerSettings>,
+  input: UpdateWebSecurityScannerSettingsProjectsRequest,
+  output: WebSecurityScannerSettings,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1491,20 +1846,22 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          moduleEnablementState: S.optional(S.String),
-          value: S.optional(__S(1)),
+          moduleEnablementState: S.optional(ConfigModuleEnablementStateEnum),
+          value: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "Config" });
     case 3:
-      return S.Record(S.String, __S(2));
+      return S.Record(S.String, Config);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          modules: S.optional(__S(3)),
+          modules: S.optional(ConfigMap),
           serviceAccount: S.optional(S.String),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
-          serviceEnablementState: S.optional(S.String),
+          serviceEnablementState: S.optional(
+            ContainerThreatDetectionSettingsServiceEnablementStateEnum,
+          ),
         }),
       ).annotate({
         identifier: "ContainerThreatDetectionSettings",
@@ -1527,8 +1884,10 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          modules: S.optional(__S(3)),
-          serviceEnablementState: S.optional(S.String),
+          modules: S.optional(ConfigMap),
+          serviceEnablementState: S.optional(
+            EventThreatDetectionSettingsServiceEnablementStateEnum,
+          ),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -1556,9 +1915,11 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          modules: S.optional(__S(3)),
+          modules: S.optional(ConfigMap),
           name: S.optional(S.String),
-          serviceEnablementState: S.optional(S.String),
+          serviceEnablementState: S.optional(
+            RapidVulnerabilityDetectionSettingsServiceEnablementStateEnum,
+          ),
           updateTime: S.optional(S.String),
         }),
       ).annotate({
@@ -1583,10 +1944,12 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceAccount: S.optional(S.String),
-          modules: S.optional(__S(3)),
+          modules: S.optional(ConfigMap),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
-          serviceEnablementState: S.optional(S.String),
+          serviceEnablementState: S.optional(
+            SecurityHealthAnalyticsSettingsServiceEnablementStateEnum,
+          ),
         }),
       ).annotate({
         identifier: "SecurityHealthAnalyticsSettings",
@@ -1609,11 +1972,13 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          serviceEnablementState: S.optional(S.String),
+          serviceEnablementState: S.optional(
+            VirtualMachineThreatDetectionSettingsServiceEnablementStateEnum,
+          ),
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
           serviceAccount: S.optional(S.String),
-          modules: S.optional(__S(3)),
+          modules: S.optional(ConfigMap),
         }),
       ).annotate({
         identifier: "VirtualMachineThreatDetectionSettings",
@@ -1637,8 +2002,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          serviceEnablementState: S.optional(S.String),
-          modules: S.optional(__S(3)),
+          serviceEnablementState: S.optional(WebSecurityScannerSettingsServiceEnablementStateEnum),
+          modules: S.optional(ConfigMap),
           name: S.optional(S.String),
         }),
       ).annotate({
@@ -2106,15 +2471,15 @@ function __c5(j: number): any {
         S.Struct({
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(DetailsTypeEnum),
         }),
       ).annotate({ identifier: "Details" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          tier: S.optional(S.String),
-          details: S.optional(__S(46)),
+          tier: S.optional(SubscriptionTierEnum),
+          details: S.optional(Details),
         }),
       ).annotate({ identifier: "Subscription" });
   }
@@ -2210,7 +2575,7 @@ function __c6(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(4).pipe(T.HttpBody())),
+          body: S.optional(ContainerThreatDetectionSettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2226,7 +2591,7 @@ function __c6(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(4).pipe(T.HttpBody())),
+          body: S.optional(ContainerThreatDetectionSettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2246,7 +2611,7 @@ function __c7(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(4).pipe(T.HttpBody())),
+          body: S.optional(ContainerThreatDetectionSettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2262,7 +2627,7 @@ function __c7(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(4).pipe(T.HttpBody())),
+          body: S.optional(ContainerThreatDetectionSettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2278,7 +2643,7 @@ function __c7(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6).pipe(T.HttpBody())),
+          body: S.optional(EventThreatDetectionSettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2294,7 +2659,7 @@ function __c7(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(6).pipe(T.HttpBody())),
+          body: S.optional(EventThreatDetectionSettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2310,7 +2675,7 @@ function __c7(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(6).pipe(T.HttpBody())),
+          body: S.optional(EventThreatDetectionSettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2326,7 +2691,7 @@ function __c7(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(8).pipe(T.HttpBody())),
+          body: S.optional(RapidVulnerabilityDetectionSettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2342,7 +2707,7 @@ function __c7(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(8).pipe(T.HttpBody())),
+          body: S.optional(RapidVulnerabilityDetectionSettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2358,7 +2723,7 @@ function __c7(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(8).pipe(T.HttpBody())),
+          body: S.optional(RapidVulnerabilityDetectionSettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2378,7 +2743,7 @@ function __c8(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(10).pipe(T.HttpBody())),
+          body: S.optional(SecurityHealthAnalyticsSettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2394,7 +2759,7 @@ function __c8(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(10).pipe(T.HttpBody())),
+          body: S.optional(SecurityHealthAnalyticsSettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2410,7 +2775,7 @@ function __c8(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(10).pipe(T.HttpBody())),
+          body: S.optional(SecurityHealthAnalyticsSettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2426,7 +2791,7 @@ function __c8(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(12).pipe(T.HttpBody())),
+          body: S.optional(VirtualMachineThreatDetectionSettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2442,7 +2807,7 @@ function __c8(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(12).pipe(T.HttpBody())),
+          body: S.optional(VirtualMachineThreatDetectionSettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2458,7 +2823,7 @@ function __c8(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(12).pipe(T.HttpBody())),
+          body: S.optional(VirtualMachineThreatDetectionSettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2474,7 +2839,7 @@ function __c8(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(14).pipe(T.HttpBody())),
+          body: S.optional(WebSecurityScannerSettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2490,7 +2855,7 @@ function __c8(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(14).pipe(T.HttpBody())),
+          body: S.optional(WebSecurityScannerSettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2510,7 +2875,7 @@ function __c9(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(14).pipe(T.HttpBody())),
+          body: S.optional(WebSecurityScannerSettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2521,34 +2886,5 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateWebSecurityScannerSettingsProjectsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
   }
 }

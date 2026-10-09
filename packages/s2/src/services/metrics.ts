@@ -6,13 +6,15 @@ import { UnknownS2Error } from "../errors.ts";
 import { S2Protocol, type S2OpError, type S2OpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { S2OpError, S2OpContext };
 
 export type AccountMetricSet = "active-basins" | "account-ops";
+const AccountMetricSet = S.String;
+
 export type TimeseriesInterval = "minute" | "hour" | "day";
+const TimeseriesInterval = S.String;
+
 export interface AccountMetricsRequest {
   /** Metric set to return. */
   set: AccountMetricSet | (string & {});
@@ -23,6 +25,11 @@ export interface AccountMetricsRequest {
   /** Interval to aggregate over for timeseries metric sets. */
   interval?: TimeseriesInterval | (string & {});
 }
+const AccountMetricsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AccountMetricsRequest>;
+
 export type MetricUnit = "bytes" | "operations";
 export interface ScalarMetric {
   /** Metric name. */
@@ -85,12 +92,21 @@ export interface MetricCase3 {
   label: LabelMetric;
 }
 export type Metric = MetricCase0 | MetricCase1 | MetricCase2 | MetricCase3;
+const Metric = /*@__PURE__*/ S.Unknown as any as S.Schema<Metric>;
+
 /** Metrics comprising the set. */
 export type MetricSetResponseValuesList = Array<Metric>;
+const MetricSetResponseValuesList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<MetricSetResponseValuesList>;
+
 export interface MetricSetResponse {
   /** Metrics comprising the set. */
   values: MetricSetResponseValuesList;
 }
+const MetricSetResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<MetricSetResponse>;
+
 export type BasinMetricSet =
   | "storage"
   | "append-ops"
@@ -98,6 +114,8 @@ export type BasinMetricSet =
   | "read-throughput"
   | "append-throughput"
   | "basin-ops";
+const BasinMetricSet = S.String;
+
 export interface BasinMetricsRequest {
   /** Basin name. */
   basin: string;
@@ -110,7 +128,11 @@ export interface BasinMetricsRequest {
   /** Interval to aggregate over for timeseries metric sets. */
   interval?: TimeseriesInterval | (string & {});
 }
+const BasinMetricsRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<BasinMetricsRequest>;
+
 export type StreamMetricSet = "storage";
+const StreamMetricSet = S.String;
+
 export interface StreamMetricsRequest {
   /** Basin name. */
   basin: string;
@@ -125,6 +147,8 @@ export interface StreamMetricsRequest {
   /** Interval to aggregate over for timeseries metric sets. */
   interval?: TimeseriesInterval | (string & {});
 }
+const StreamMetricsRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<StreamMetricsRequest>;
+
 export type AccountMetricsError = S2OpError;
 /** Account-level metrics. */
 export const accountMetrics: API.OperationMethod<
@@ -133,8 +157,8 @@ export const accountMetrics: API.OperationMethod<
   AccountMetricsError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AccountMetricsRequest>,
-  output: __S(2) as any as S.Schema<MetricSetResponse>,
+  input: AccountMetricsRequest,
+  output: MetricSetResponse,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -148,8 +172,8 @@ export const basinMetrics: API.OperationMethod<
   BasinMetricsError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<BasinMetricsRequest>,
-  output: __S(2) as any as S.Schema<MetricSetResponse>,
+  input: BasinMetricsRequest,
+  output: MetricSetResponse,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -163,8 +187,8 @@ export const streamMetrics: API.OperationMethod<
   StreamMetricsError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<StreamMetricsRequest>,
-  output: __S(2) as any as S.Schema<MetricSetResponse>,
+  input: StreamMetricsRequest,
+  output: MetricSetResponse,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -176,28 +200,28 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          set: S.String.pipe(T.Query()),
+          set: AccountMetricSet.pipe(T.Query()),
           start: S.optional(S.Number.pipe(T.Query())),
           end: S.optional(S.Number.pipe(T.Query())),
-          interval: S.optional(S.String.pipe(T.Query())),
+          interval: S.optional(TimeseriesInterval.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/metrics", code: 200 })),
       ).annotate({ identifier: "AccountMetricsRequest" });
     case 1:
-      return S.Array(S.Unknown);
+      return S.Array(Metric);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          values: __S(1),
+          values: MetricSetResponseValuesList,
         }),
       ).annotate({ identifier: "MetricSetResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           basin: S.String.pipe(T.Label()),
-          set: S.String.pipe(T.Query()),
+          set: BasinMetricSet.pipe(T.Query()),
           start: S.optional(S.Number.pipe(T.Query())),
           end: S.optional(S.Number.pipe(T.Query())),
-          interval: S.optional(S.String.pipe(T.Query())),
+          interval: S.optional(TimeseriesInterval.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/metrics/{basin}", code: 200 })),
       ).annotate({ identifier: "BasinMetricsRequest" });
     case 4:
@@ -205,22 +229,11 @@ function __c0(j: number): any {
         S.Struct({
           basin: S.String.pipe(T.Label()),
           stream: S.String.pipe(T.Label()),
-          set: S.String.pipe(T.Query()),
+          set: StreamMetricSet.pipe(T.Query()),
           start: S.optional(S.Number.pipe(T.Query())),
           end: S.optional(S.Number.pipe(T.Query())),
-          interval: S.optional(S.String.pipe(T.Query())),
+          interval: S.optional(TimeseriesInterval.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/metrics/{basin}/{stream}", code: 200 })),
       ).annotate({ identifier: "StreamMetricsRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

@@ -7,8 +7,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Marketplace Commerce Analytics",
   serviceShapeName: "MarketplaceCommerceAnalytics20150701",
@@ -109,6 +107,8 @@ export type DataSetType =
   | "sales_compensation_billed_revenue"
   | "us_sales_and_use_tax_records"
   | (string & {});
+const DataSetType = S.String;
+
 export type DataSetPublicationDate = Date;
 export type RoleNameArn = string;
 export type DestinationS3BucketName = string;
@@ -117,6 +117,7 @@ export type SnsTopicArn = string;
 export type OptionalKey = string;
 export type OptionalValue = string;
 export type CustomerDefinedValues = { [key: string]: string | undefined };
+const CustomerDefinedValues = /*@__PURE__*/ __L.at(__c0, 0);
 export interface GenerateDataSetRequest {
   dataSetType: DataSetType;
   dataSetPublicationDate: Date;
@@ -126,14 +127,24 @@ export interface GenerateDataSetRequest {
   snsTopicArn: string;
   customerDefinedValues?: { [key: string]: string | undefined };
 }
+const GenerateDataSetRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GenerateDataSetRequest>;
 export type DataSetRequestId = string;
 export interface GenerateDataSetResult {
   dataSetRequestId?: string;
 }
+const GenerateDataSetResult = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GenerateDataSetResult>;
 export type SupportDataSetType =
   | "customer_support_contacts_data"
   | "test_customer_support_contacts_data"
   | (string & {});
+const SupportDataSetType = S.String;
+
 export type FromDate = Date;
 export interface StartSupportDataExportRequest {
   dataSetType: SupportDataSetType;
@@ -144,9 +155,17 @@ export interface StartSupportDataExportRequest {
   snsTopicArn: string;
   customerDefinedValues?: { [key: string]: string | undefined };
 }
+const StartSupportDataExportRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<StartSupportDataExportRequest>;
 export interface StartSupportDataExportResult {
   dataSetRequestId?: string;
 }
+const StartSupportDataExportResult = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<StartSupportDataExportResult>;
 export type ExceptionMessage = string;
 export type GenerateDataSetError = MarketplaceCommerceAnalyticsException | CommonErrors;
 /**
@@ -165,8 +184,8 @@ export const generateDataSet: API.OperationMethod<
   GenerateDataSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<GenerateDataSetRequest>,
-  output: __S(2) as any as S.Schema<GenerateDataSetResult>,
+  input: GenerateDataSetRequest,
+  output: GenerateDataSetResult,
   errors: [MarketplaceCommerceAnalyticsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -190,8 +209,8 @@ export const startSupportDataExport: API.OperationMethod<
   StartSupportDataExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<StartSupportDataExportRequest>,
-  output: __S(4) as any as S.Schema<StartSupportDataExportResult>,
+  input: StartSupportDataExportRequest,
+  output: StartSupportDataExportResult,
   errors: [MarketplaceCommerceAnalyticsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -206,13 +225,13 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dataSetType: S.String,
+          dataSetType: DataSetType,
           dataSetPublicationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           roleNameArn: S.String,
           destinationS3BucketName: S.String,
           destinationS3Prefix: S.optional(S.String),
           snsTopicArn: S.String,
-          customerDefinedValues: S.optional(__S(0)),
+          customerDefinedValues: S.optional(CustomerDefinedValues),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GenerateDataSetRequest" });
     case 2:
@@ -222,13 +241,13 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dataSetType: S.String,
+          dataSetType: SupportDataSetType,
           fromDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           roleNameArn: S.String,
           destinationS3BucketName: S.String,
           destinationS3Prefix: S.optional(S.String),
           snsTopicArn: S.String,
-          customerDefinedValues: S.optional(__S(0)),
+          customerDefinedValues: S.optional(CustomerDefinedValues),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartSupportDataExportRequest",
@@ -237,16 +256,5 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({ dataSetRequestId: S.optional(S.String) })).annotate({
         identifier: "StartSupportDataExportResult",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

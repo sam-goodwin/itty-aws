@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -68,9 +66,16 @@ export type ComputeInsightsRequestInsightsItemEnum =
   | "INSIGHT_UNSPECIFIED"
   | "INSIGHT_COUNT"
   | "INSIGHT_PLACES";
+const ComputeInsightsRequestInsightsItemEnum = S.String;
+
 export type ComputeInsightsRequestInsightsItemEnumList = Array<
   ComputeInsightsRequestInsightsItemEnum | (string & {})
 >;
+const ComputeInsightsRequestInsightsItemEnumList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ComputeInsightsRequestInsightsItemEnumList>;
+
 export type FilterOperatingStatusItemEnum =
   | "OPERATING_STATUS_UNSPECIFIED"
   | "OPERATING_STATUS_OPERATIONAL"
@@ -79,6 +84,9 @@ export type FilterOperatingStatusItemEnum =
 export type FilterOperatingStatusItemEnumList = Array<
   FilterOperatingStatusItemEnum | (string & {})
 >;
+const FilterOperatingStatusItemEnumList =
+  ComputeInsightsRequestInsightsItemEnumList as any as S.Schema<FilterOperatingStatusItemEnumList>;
+
 /** Average user rating filters. */
 export interface RatingFilter {
   /** Optional. Restricts results to places whose average user rating is greater than or equal to min_rating. Values must be between 1.0 and 5.0. */
@@ -86,11 +94,15 @@ export interface RatingFilter {
   /** Optional. Restricts results to places whose average user rating is strictly less than or equal to max_rating. Values must be between 1.0 and 5.0. */
   maxRating?: number;
 }
+const RatingFilter = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<RatingFilter>;
+
 /** A region is a geographic boundary such as: cities, postal codes, counties, states, etc. */
 export interface Region {
   /** The [place ID](https://developers.google.com/maps/documentation/places/web-service/place-id) of the geographic region. Not all region types are supported; see documentation for details. **Format:** Must be in the format `places/PLACE_ID`, where `PLACE_ID` is the unique identifier of a place. For example: `places/ChIJPV4oX_65j4ARVW8IJ6IJUYs`. */
   place?: string;
 }
+const Region = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Region>;
+
 /** An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. */
 export interface LatLng {
   /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
@@ -98,17 +110,25 @@ export interface LatLng {
   /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
   latitude?: number;
 }
+const LatLng = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<LatLng>;
+
 export type LatLngList = Array<LatLng>;
+const LatLngList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<LatLngList>;
+
 /** A polygon is represented by a series of connected coordinates in an counterclockwise ordered sequence. The coordinates form a closed loop and define a filled region. The first and last coordinates are equivalent, and they must contain identical values. The format is a simplified version of GeoJSON polygons (we only support one counterclockwise exterior ring). */
 export interface Polygon {
   /** Optional. The coordinates that define the polygon. */
   coordinates?: LatLngList;
 }
+const Polygon = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Polygon>;
+
 /** Custom Area. */
 export interface CustomArea {
   /** Required. The custom area represented as a polygon */
   polygon?: Polygon;
 }
+const CustomArea = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CustomArea>;
+
 /** A circle is defined by a center point and radius in meters. */
 export interface Circle {
   /** **Format:** Must be in the format `places/PLACE_ID`, where `PLACE_ID` is the unique identifier of a place. For example: `places/ChIJgUbEo8cfqokR5lP9_Wh_DaM`. */
@@ -118,6 +138,8 @@ export interface Circle {
   /** The latitude and longitude of the center of the circle. */
   latLng?: LatLng;
 }
+const Circle = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Circle>;
+
 /** Location filters. Specifies the area of interest for the insight. */
 export interface LocationFilter {
   /** Area as region. */
@@ -127,6 +149,8 @@ export interface LocationFilter {
   /** Area as a circle. */
   circle?: Circle;
 }
+const LocationFilter = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<LocationFilter>;
+
 export type FilterPriceLevelsItemEnum =
   | "PRICE_LEVEL_UNSPECIFIED"
   | "PRICE_LEVEL_FREE"
@@ -135,7 +159,12 @@ export type FilterPriceLevelsItemEnum =
   | "PRICE_LEVEL_EXPENSIVE"
   | "PRICE_LEVEL_VERY_EXPENSIVE";
 export type FilterPriceLevelsItemEnumList = Array<FilterPriceLevelsItemEnum | (string & {})>;
+const FilterPriceLevelsItemEnumList =
+  ComputeInsightsRequestInsightsItemEnumList as any as S.Schema<FilterPriceLevelsItemEnumList>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<StringList>;
+
 /** Place type filters. Only Place types from [Table a](https://developers.google.com/maps/documentation/places/web-service/place-types#table-a) are supported. A place can only have a single primary type associated with it. For example, the primary type might be "mexican_restaurant" or "steak_house". Use included_primary_types and excluded_primary_types to filter the results on a place's primary type. A place can also have multiple type values associated with it. For example a restaurant might have the following types: "seafood_restaurant", "restaurant", "food", "point_of_interest", "establishment". Use included_types and excluded_types to filter the results on the list of types associated with a place. If a search is specified with multiple type restrictions, only places that satisfy all of the restrictions are returned. For example, if you specify {"included_types": ["restaurant"], "excluded_primary_types": ["steak_house"]}, the returned places provide "restaurant" related services but do not operate primarily as a "steak_house". If there are any conflicting types, i.e. a type appears in both included_types and excluded_types types or included_primary_types and excluded_primary_types, an INVALID_ARGUMENT error is returned. One of included_types or included_primary_types must be set. */
 export interface TypeFilter {
   /** Optional. Included primary Place types. */
@@ -147,6 +176,8 @@ export interface TypeFilter {
   /** Optional. Excluded Place types. */
   excludedTypes?: StringList;
 }
+const TypeFilter = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<TypeFilter>;
+
 /** Filters for the ComputeInsights RPC. */
 export interface Filter {
   /** Optional. Restricts results to places whose operating status is included on this list. If operating_status is not set, OPERATING_STATUS_OPERATIONAL is used as default. */
@@ -160,6 +191,8 @@ export interface Filter {
   /** Required. Place type filters. */
   typeFilter?: TypeFilter;
 }
+const Filter = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Filter>;
+
 /** Request for the ComputeInsights RPC. */
 export interface ComputeInsightsRequest {
   /** Required. Insights to compute. Currently only INSIGHT_COUNT and INSIGHT_PLACES are supported. */
@@ -167,16 +200,30 @@ export interface ComputeInsightsRequest {
   /** Required. Insight filter. */
   filter?: Filter;
 }
+const ComputeInsightsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ComputeInsightsRequest>;
+
 export interface ComputeInsightsV1Request {
   /** Request body */
   body?: ComputeInsightsRequest;
 }
+const ComputeInsightsV1Request = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ComputeInsightsV1Request>;
+
 /** Holds information about a place */
 export interface PlaceInsight {
   /** The unique identifier of the place. This resource name can be used to retrieve details about the place using the [Places API](https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places/get). */
   place?: string;
 }
+const PlaceInsight = Region as any as S.Schema<PlaceInsight>;
+
 export type PlaceInsightList = Array<PlaceInsight>;
+const PlaceInsightList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<PlaceInsightList>;
+
 /** Response for the ComputeInsights RPC. */
 export interface ComputeInsightsResponse {
   /** Result for Insights.INSIGHT_COUNT. */
@@ -184,6 +231,11 @@ export interface ComputeInsightsResponse {
   /** Result for Insights.INSIGHT_PLACES. */
   placeInsights?: PlaceInsightList;
 }
+const ComputeInsightsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ComputeInsightsResponse>;
+
 export type ComputeInsightsV1Error = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** This method lets you retrieve insights about areas using a variety of filter such as: area, place type, operating status, price level and ratings. Currently "count" and "places" insights are supported. With "count" insights you can answer questions such as "How many restaurant are located in California that are operational, are inexpensive and have an average rating of at least 4 stars" (see `insight` enum for more details). With "places" insights, you can determine which places match the requested filter. Clients can then use those place resource names to fetch more details about each individual place using the Places API. */
 export const computeInsightsV1: API.OperationMethod<
@@ -192,8 +244,8 @@ export const computeInsightsV1: API.OperationMethod<
   ComputeInsightsV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<ComputeInsightsV1Request>,
-  output: __S(15) as any as S.Schema<ComputeInsightsResponse>,
+  input: ComputeInsightsV1Request,
+  output: ComputeInsightsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -203,7 +255,7 @@ export const computeInsightsV1: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(ComputeInsightsRequestInsightsItemEnum);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -225,17 +277,17 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "LatLng" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(LatLng);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          coordinates: S.optional(__S(4)),
+          coordinates: S.optional(LatLngList),
         }),
       ).annotate({ identifier: "Polygon" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          polygon: S.optional(__S(5)),
+          polygon: S.optional(Polygon),
         }),
       ).annotate({ identifier: "CustomArea" });
     case 7:
@@ -243,7 +295,7 @@ function __c0(j: number): any {
         S.Struct({
           place: S.optional(S.String),
           radius: S.optional(S.Number),
-          latLng: S.optional(__S(3)),
+          latLng: S.optional(LatLng),
         }),
       ).annotate({ identifier: "Circle" });
   }
@@ -253,9 +305,9 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          region: S.optional(__S(2)),
-          customArea: S.optional(__S(6)),
-          circle: S.optional(__S(7)),
+          region: S.optional(Region),
+          customArea: S.optional(CustomArea),
+          circle: S.optional(Circle),
         }),
       ).annotate({ identifier: "LocationFilter" });
     case 1:
@@ -263,33 +315,33 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          includedPrimaryTypes: S.optional(__S(9)),
-          excludedPrimaryTypes: S.optional(__S(9)),
-          includedTypes: S.optional(__S(9)),
-          excludedTypes: S.optional(__S(9)),
+          includedPrimaryTypes: S.optional(StringList),
+          excludedPrimaryTypes: S.optional(StringList),
+          includedTypes: S.optional(StringList),
+          excludedTypes: S.optional(StringList),
         }),
       ).annotate({ identifier: "TypeFilter" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          operatingStatus: S.optional(__S(0)),
-          ratingFilter: S.optional(__S(1)),
-          locationFilter: S.optional(__S(8)),
-          priceLevels: S.optional(__S(0)),
-          typeFilter: S.optional(__S(10)),
+          operatingStatus: S.optional(FilterOperatingStatusItemEnumList),
+          ratingFilter: S.optional(RatingFilter),
+          locationFilter: S.optional(LocationFilter),
+          priceLevels: S.optional(FilterPriceLevelsItemEnumList),
+          typeFilter: S.optional(TypeFilter),
         }),
       ).annotate({ identifier: "Filter" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          insights: S.optional(__S(0)),
-          filter: S.optional(__S(11)),
+          insights: S.optional(ComputeInsightsRequestInsightsItemEnumList),
+          filter: S.optional(Filter),
         }),
       ).annotate({ identifier: "ComputeInsightsRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(12).pipe(T.HttpBody())),
+          body: S.optional(ComputeInsightsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -299,26 +351,13 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ComputeInsightsV1Request" });
     case 6:
-      return S.Array(__S(2));
+      return S.Array(PlaceInsight);
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.String),
-          placeInsights: S.optional(__S(14)),
+          placeInsights: S.optional(PlaceInsightList),
         }),
       ).annotate({ identifier: "ComputeInsightsResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

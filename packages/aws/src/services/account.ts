@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Account", serviceShapeName: "Account" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "account" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2021-02-01");
@@ -164,7 +162,7 @@ export class ValidationException
       message: /*@__PURE__*/ SensitiveString.pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: /*@__PURE__*/ S.optional(S.String),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(34)).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -179,30 +177,56 @@ export interface AcceptPrimaryEmailUpdateRequest {
   PrimaryEmail: string | redacted.Redacted<string>;
   Otp: string | redacted.Redacted<string>;
 }
+const AcceptPrimaryEmailUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AcceptPrimaryEmailUpdateRequest>;
 export type PrimaryEmailUpdateStatus = string;
 export interface AcceptPrimaryEmailUpdateResponse {
   Status?: string;
 }
+const AcceptPrimaryEmailUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AcceptPrimaryEmailUpdateResponse>;
 export type AlternateContactType = string;
 export interface DeleteAlternateContactRequest {
   AlternateContactType: string;
   AccountId?: string;
 }
+const DeleteAlternateContactRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteAlternateContactRequest>;
 export interface DeleteAlternateContactResponse {}
+const DeleteAlternateContactResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeleteAlternateContactResponse>;
 export type RegionName = string;
 export interface DisableRegionRequest {
   AccountId?: string;
   RegionName: string;
 }
+const DisableRegionRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DisableRegionRequest>;
 export interface DisableRegionResponse {}
+const DisableRegionResponse =
+  DeleteAlternateContactResponse as any as S.Schema<DisableRegionResponse>;
 export interface EnableRegionRequest {
   AccountId?: string;
   RegionName: string;
 }
+const EnableRegionRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<EnableRegionRequest>;
 export interface EnableRegionResponse {}
+const EnableRegionResponse =
+  DeleteAlternateContactResponse as any as S.Schema<EnableRegionResponse>;
 export interface GetAccountInformationRequest {
   AccountId?: string;
 }
+const GetAccountInformationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetAccountInformationRequest>;
 export type AccountName = string | redacted.Redacted<string>;
 export type AccountCreatedDate = Date;
 export type AccountState = string;
@@ -212,10 +236,18 @@ export interface GetAccountInformationResponse {
   AccountCreatedDate?: Date;
   AccountState?: string;
 }
+const GetAccountInformationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetAccountInformationResponse>;
 export interface GetAlternateContactRequest {
   AlternateContactType: string;
   AccountId?: string;
 }
+const GetAlternateContactRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetAlternateContactRequest>;
 export type Name = string | redacted.Redacted<string>;
 export type Title = string | redacted.Redacted<string>;
 export type EmailAddress = string | redacted.Redacted<string>;
@@ -227,12 +259,21 @@ export interface AlternateContact {
   PhoneNumber?: string | redacted.Redacted<string>;
   AlternateContactType?: string;
 }
+const AlternateContact = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AlternateContact>;
 export interface GetAlternateContactResponse {
   AlternateContact?: AlternateContact;
 }
+const GetAlternateContactResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetAlternateContactResponse>;
 export interface GetContactInformationRequest {
   AccountId?: string;
 }
+const GetContactInformationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetContactInformationRequest>;
 export type FullName = string | redacted.Redacted<string>;
 export type AddressLine = string | redacted.Redacted<string>;
 export type City = string | redacted.Redacted<string>;
@@ -257,63 +298,110 @@ export interface ContactInformation {
   CompanyName?: string | redacted.Redacted<string>;
   WebsiteUrl?: string | redacted.Redacted<string>;
 }
+const ContactInformation = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ContactInformation>;
 export type PhoneNumberVerificationStatus = string;
 export interface GetContactInformationResponse {
   ContactInformation?: ContactInformation;
   VerificationStatus?: string;
 }
+const GetContactInformationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetContactInformationResponse>;
 export interface GetGovCloudAccountInformationRequest {
   StandardAccountId?: string;
 }
+const GetGovCloudAccountInformationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetGovCloudAccountInformationRequest>;
 export type AwsAccountState = string;
 export interface GetGovCloudAccountInformationResponse {
   GovCloudAccountId: string;
   AccountState: string;
 }
+const GetGovCloudAccountInformationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetGovCloudAccountInformationResponse>;
 export interface GetPrimaryEmailRequest {
   AccountId: string;
 }
+const GetPrimaryEmailRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetPrimaryEmailRequest>;
 export interface GetPrimaryEmailResponse {
   PrimaryEmail?: string | redacted.Redacted<string>;
 }
+const GetPrimaryEmailResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetPrimaryEmailResponse>;
 export interface GetPrimaryEmailUpdateStatusRequest {
   AccountId?: string;
 }
+const GetPrimaryEmailUpdateStatusRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetPrimaryEmailUpdateStatusRequest>;
 export interface GetPrimaryEmailUpdateStatusResponse {
   Status: string;
   UpdatedAt?: Date;
 }
+const GetPrimaryEmailUpdateStatusResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetPrimaryEmailUpdateStatusResponse>;
 export interface GetRegionOptStatusRequest {
   AccountId?: string;
   RegionName: string;
 }
+const GetRegionOptStatusRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetRegionOptStatusRequest>;
 export type RegionOptStatus = string;
 export interface GetRegionOptStatusResponse {
   RegionName?: string;
   RegionOptStatus?: string;
 }
+const GetRegionOptStatusResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetRegionOptStatusResponse>;
 export type RegionOptStatusList = string[];
+const RegionOptStatusList = /*@__PURE__*/ __L.at(__c2, 6);
 export interface ListRegionsRequest {
   AccountId?: string;
   MaxResults?: number;
   NextToken?: string;
   RegionOptStatusContains?: string[];
 }
+const ListRegionsRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ListRegionsRequest>;
 export interface Region {
   RegionName?: string;
   RegionOptStatus?: string;
 }
 const Region = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Region>;
 export type RegionOptList = Region[];
+const RegionOptList = /*@__PURE__*/ __L.at(__c3, 1);
 export interface ListRegionsResponse {
   NextToken?: string;
   Regions?: Region[];
 }
+const ListRegionsResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ListRegionsResponse>;
 export interface PutAccountNameRequest {
   AccountName: string | redacted.Redacted<string>;
   AccountId?: string;
 }
+const PutAccountNameRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<PutAccountNameRequest>;
 export interface PutAccountNameResponse {}
+const PutAccountNameResponse =
+  DeleteAlternateContactResponse as any as S.Schema<PutAccountNameResponse>;
 export interface PutAlternateContactRequest {
   Name: string | redacted.Redacted<string>;
   Title: string | redacted.Redacted<string>;
@@ -322,39 +410,74 @@ export interface PutAlternateContactRequest {
   AlternateContactType: string;
   AccountId?: string;
 }
+const PutAlternateContactRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<PutAlternateContactRequest>;
 export interface PutAlternateContactResponse {}
+const PutAlternateContactResponse =
+  DeleteAlternateContactResponse as any as S.Schema<PutAlternateContactResponse>;
 export interface PutContactInformationRequest {
   ContactInformation: ContactInformation;
   AccountId?: string;
 }
+const PutContactInformationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<PutContactInformationRequest>;
 export interface PutContactInformationResponse {}
+const PutContactInformationResponse =
+  DeleteAlternateContactResponse as any as S.Schema<PutContactInformationResponse>;
 export interface SendPhoneNumberVerificationRequest {
   AccountId?: string;
 }
+const SendPhoneNumberVerificationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<SendPhoneNumberVerificationRequest>;
 export interface SendPhoneNumberVerificationResponse {
   Status?: string;
 }
+const SendPhoneNumberVerificationResponse =
+  AcceptPrimaryEmailUpdateResponse as any as S.Schema<SendPhoneNumberVerificationResponse>;
 export interface StartPrimaryEmailUpdateRequest {
   AccountId: string;
   PrimaryEmail: string | redacted.Redacted<string>;
 }
+const StartPrimaryEmailUpdateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<StartPrimaryEmailUpdateRequest>;
 export interface StartPrimaryEmailUpdateResponse {
   Status?: string;
 }
+const StartPrimaryEmailUpdateResponse =
+  AcceptPrimaryEmailUpdateResponse as any as S.Schema<StartPrimaryEmailUpdateResponse>;
 export interface VerifyPhoneNumberRequest {
   AccountId?: string;
   Otp: string | redacted.Redacted<string>;
 }
+const VerifyPhoneNumberRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<VerifyPhoneNumberRequest>;
 export interface VerifyPhoneNumberResponse {
   Status?: string;
 }
+const VerifyPhoneNumberResponse =
+  AcceptPrimaryEmailUpdateResponse as any as S.Schema<VerifyPhoneNumberResponse>;
 export type SensitiveString = string | redacted.Redacted<string>;
 export type ValidationExceptionReason = string;
 export interface ValidationExceptionField {
   name: string;
   message: string | redacted.Redacted<string>;
 }
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c4, 2);
 export type AcceptPrimaryEmailUpdateError =
   | AccessDeniedException
   | ConflictException
@@ -372,8 +495,8 @@ export const acceptPrimaryEmailUpdate: API.OperationMethod<
   AcceptPrimaryEmailUpdateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AcceptPrimaryEmailUpdateRequest>,
-  output: __S(1) as any as S.Schema<AcceptPrimaryEmailUpdateResponse>,
+  input: AcceptPrimaryEmailUpdateRequest,
+  output: AcceptPrimaryEmailUpdateResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -407,8 +530,8 @@ export const deleteAlternateContact: API.OperationMethod<
   DeleteAlternateContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteAlternateContactRequest>,
-  output: __S(3) as any as S.Schema<DeleteAlternateContactResponse>,
+  input: DeleteAlternateContactRequest,
+  output: DeleteAlternateContactResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -439,8 +562,8 @@ export const disableRegion: API.OperationMethod<
   DisableRegionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DisableRegionRequest>,
-  output: __S(3) as any as S.Schema<DisableRegionResponse>,
+  input: DisableRegionRequest,
+  output: DisableRegionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -469,8 +592,8 @@ export const enableRegion: API.OperationMethod<
   EnableRegionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<EnableRegionRequest>,
-  output: __S(3) as any as S.Schema<EnableRegionResponse>,
+  input: EnableRegionRequest,
+  output: EnableRegionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -498,8 +621,8 @@ export const getAccountInformation: API.OperationMethod<
   GetAccountInformationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetAccountInformationRequest>,
-  output: __S(7) as any as S.Schema<GetAccountInformationResponse>,
+  input: GetAccountInformationRequest,
+  output: GetAccountInformationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -531,8 +654,8 @@ export const getAlternateContact: API.OperationMethod<
   GetAlternateContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<GetAlternateContactRequest>,
-  output: __S(10) as any as S.Schema<GetAlternateContactResponse>,
+  input: GetAlternateContactRequest,
+  output: GetAlternateContactResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -563,8 +686,8 @@ export const getContactInformation: API.OperationMethod<
   GetContactInformationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetContactInformationRequest>,
-  output: __S(13) as any as S.Schema<GetContactInformationResponse>,
+  input: GetContactInformationRequest,
+  output: GetContactInformationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -594,8 +717,8 @@ export const getGovCloudAccountInformation: API.OperationMethod<
   GetGovCloudAccountInformationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetGovCloudAccountInformationRequest>,
-  output: __S(15) as any as S.Schema<GetGovCloudAccountInformationResponse>,
+  input: GetGovCloudAccountInformationRequest,
+  output: GetGovCloudAccountInformationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -625,8 +748,8 @@ export const getPrimaryEmail: API.OperationMethod<
   GetPrimaryEmailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetPrimaryEmailRequest>,
-  output: __S(17) as any as S.Schema<GetPrimaryEmailResponse>,
+  input: GetPrimaryEmailRequest,
+  output: GetPrimaryEmailResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -655,8 +778,8 @@ export const getPrimaryEmailUpdateStatus: API.OperationMethod<
   GetPrimaryEmailUpdateStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<GetPrimaryEmailUpdateStatusRequest>,
-  output: __S(19) as any as S.Schema<GetPrimaryEmailUpdateStatusResponse>,
+  input: GetPrimaryEmailUpdateStatusRequest,
+  output: GetPrimaryEmailUpdateStatusResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -684,8 +807,8 @@ export const getRegionOptStatus: API.OperationMethod<
   GetRegionOptStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<GetRegionOptStatusRequest>,
-  output: __S(21) as any as S.Schema<GetRegionOptStatusResponse>,
+  input: GetRegionOptStatusRequest,
+  output: GetRegionOptStatusResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -713,8 +836,8 @@ export const listRegions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Region
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(23) as any as S.Schema<ListRegionsRequest>,
-  output: __S(26) as any as S.Schema<ListRegionsResponse>,
+  input: ListRegionsRequest,
+  output: ListRegionsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -747,8 +870,8 @@ export const putAccountName: API.OperationMethod<
   PutAccountNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<PutAccountNameRequest>,
-  output: __S(3) as any as S.Schema<PutAccountNameResponse>,
+  input: PutAccountNameRequest,
+  output: PutAccountNameResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -779,8 +902,8 @@ export const putAlternateContact: API.OperationMethod<
   PutAlternateContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<PutAlternateContactRequest>,
-  output: __S(3) as any as S.Schema<PutAlternateContactResponse>,
+  input: PutAlternateContactRequest,
+  output: PutAlternateContactResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -809,8 +932,8 @@ export const putContactInformation: API.OperationMethod<
   PutContactInformationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<PutContactInformationRequest>,
-  output: __S(3) as any as S.Schema<PutContactInformationResponse>,
+  input: PutContactInformationRequest,
+  output: PutContactInformationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -841,8 +964,8 @@ export const sendPhoneNumberVerification: API.OperationMethod<
   SendPhoneNumberVerificationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<SendPhoneNumberVerificationRequest>,
-  output: __S(1) as any as S.Schema<SendPhoneNumberVerificationResponse>,
+  input: SendPhoneNumberVerificationRequest,
+  output: SendPhoneNumberVerificationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -873,8 +996,8 @@ export const startPrimaryEmailUpdate: API.OperationMethod<
   StartPrimaryEmailUpdateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<StartPrimaryEmailUpdateRequest>,
-  output: __S(1) as any as S.Schema<StartPrimaryEmailUpdateResponse>,
+  input: StartPrimaryEmailUpdateRequest,
+  output: StartPrimaryEmailUpdateResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -907,8 +1030,8 @@ export const verifyPhoneNumber: API.OperationMethod<
   VerifyPhoneNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<VerifyPhoneNumberRequest>,
-  output: __S(1) as any as S.Schema<VerifyPhoneNumberResponse>,
+  input: VerifyPhoneNumberRequest,
+  output: VerifyPhoneNumberResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1031,9 +1154,11 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "AlternateContact" });
     case 2:
-      return S.suspend(() => S.Struct({ AlternateContact: S.optional(__S(9)) })).annotate({
-        identifier: "GetAlternateContactResponse",
-      });
+      return S.suspend(() => S.Struct({ AlternateContact: S.optional(AlternateContact) })).annotate(
+        {
+          identifier: "GetAlternateContactResponse",
+        },
+      );
     case 3:
       return S.suspend(() =>
         S.Struct({ AccountId: S.optional(S.String) }).pipe(
@@ -1069,7 +1194,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ContactInformation: S.optional(__S(12)),
+          ContactInformation: S.optional(ContactInformation),
           VerificationStatus: S.optional(S.String),
         }),
       ).annotate({
@@ -1163,7 +1288,7 @@ function __c2(j: number): any {
           AccountId: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          RegionOptStatusContains: S.optional(__S(22)),
+          RegionOptStatusContains: S.optional(RegionOptStatusList),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/listRegions" }), svc, auth, proto, ver, rules),
         ),
@@ -1180,7 +1305,7 @@ function __c3(j: number): any {
       return S.Array(Region);
     case 2:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Regions: S.optional(__S(25)) }),
+        S.Struct({ NextToken: S.optional(S.String), Regions: S.optional(RegionOptList) }),
       ).annotate({ identifier: "ListRegionsResponse" });
     case 3:
       return S.suspend(() =>
@@ -1212,7 +1337,7 @@ function __c3(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ ContactInformation: __S(12), AccountId: S.optional(S.String) }).pipe(
+        S.Struct({ ContactInformation: ContactInformation, AccountId: S.optional(S.String) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/putContactInformation" }),
             svc,
@@ -1277,25 +1402,6 @@ function __c4(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 2:
-      return S.Array(__S(33));
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
+      return S.Array(ValidationExceptionField);
   }
 }

@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -40,6 +38,11 @@ export class NotFound
 
 /** List of person UUIDs to add to the cohort */
 export type CohortsAddPersonsToStaticCohortPartialUpdateRequestPersonIdsList = Array<string>;
+const CohortsAddPersonsToStaticCohortPartialUpdateRequestPersonIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CohortsAddPersonsToStaticCohortPartialUpdateRequestPersonIdsList>;
+
 export interface CohortsAddPersonsToStaticCohortPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -48,14 +51,34 @@ export interface CohortsAddPersonsToStaticCohortPartialUpdateRequest {
   /** List of person UUIDs to add to the cohort */
   person_ids?: CohortsAddPersonsToStaticCohortPartialUpdateRequestPersonIdsList;
 }
+const CohortsAddPersonsToStaticCohortPartialUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CohortsAddPersonsToStaticCohortPartialUpdateRequest>;
+
 export interface CohortsAddPersonsToStaticCohortPartialUpdateResponse {}
+const CohortsAddPersonsToStaticCohortPartialUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CohortsAddPersonsToStaticCohortPartialUpdateResponse>;
+
 export interface CohortsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this cohort. */
   id: number;
 }
+const CohortsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CohortsDestroyRequest>;
+
 export interface CohortsDestroyResponse {}
+const CohortsDestroyResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CohortsDestroyResponse>;
+
 export interface CohortsRemovePersonFromStaticCohortPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -64,8 +87,20 @@ export interface CohortsRemovePersonFromStaticCohortPartialUpdateRequest {
   /** Person UUID to remove from the cohort */
   person_id?: string;
 }
+const CohortsRemovePersonFromStaticCohortPartialUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CohortsRemovePersonFromStaticCohortPartialUpdateRequest>;
+
 export interface CohortsRemovePersonFromStaticCohortPartialUpdateResponse {}
+const CohortsRemovePersonFromStaticCohortPartialUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CohortsRemovePersonFromStaticCohortPartialUpdateResponse>;
+
 export type PropertyGroupOperatorEnum = "AND" | "OR";
+const PropertyGroupOperatorEnum = S.String;
+
 export type BehavioralFilterBytecodeList = Array<unknown>;
 export type BehavioralFilterKey = string | number;
 export type BehavioralFilterSeqEvent = string | number;
@@ -145,16 +180,27 @@ export type CohortFilterGroupValuesItem =
   | PersonFilter
   | PersonMetadataFilter
   | CohortFilterGroup;
+const CohortFilterGroupValuesItem = S.Unknown as any as S.Schema<CohortFilterGroupValuesItem>;
+
 export type CohortFilterGroupValuesList = Array<CohortFilterGroupValuesItem>;
+const CohortFilterGroupValuesList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CohortFilterGroupValuesList>;
+
 /** AND/OR group containing cohort filters. Named to avoid collision with analytics Group model. */
 export interface CohortFilterGroup {
   type?: PropertyGroupOperatorEnum | (string & {});
   values?: CohortFilterGroupValuesList;
 }
+const CohortFilterGroup = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CohortFilterGroup>;
+
 export interface CohortFilters {
   properties?: CohortFilterGroup;
   filterTestAccounts?: boolean | null;
 }
+const CohortFilters = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CohortFilters>;
+
 /** * `static` - static * `person_property` - person_property * `behavioral` - behavioral * `realtime` - realtime * `analytical` - analytical */
 export type CohortTypeEnum =
   | "static"
@@ -165,7 +211,14 @@ export type CohortTypeEnum =
 export type BlankEnum = "";
 /** Type of cohort based on filter complexity * `static` - static * `person_property` - person_property * `behavioral` - behavioral * `realtime` - realtime * `analytical` - analytical */
 export type CreateCohortRequestCohortType = CohortTypeEnum | BlankEnum;
+const CreateCohortRequestCohortType = S.Unknown as any as S.Schema<CreateCohortRequestCohortType>;
+
 export type CreateCohortRequestCreateStaticPersonIdsList = Array<string>;
+const CreateCohortRequestCreateStaticPersonIdsList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateCohortRequestCreateStaticPersonIdsList>;
+
 export interface CreateCohortRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -181,7 +234,14 @@ export interface CreateCohortRequest {
   _create_in_folder?: string;
   _create_static_person_ids?: CreateCohortRequestCreateStaticPersonIdsList;
 }
+const CreateCohortRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CreateCohortRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -194,6 +254,8 @@ export type RoleAtOrganizationEnum =
   | "student"
   | "other";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -205,8 +267,12 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<UserBasic>;
+
 /** Type of cohort based on filter complexity * `static` - static * `person_property` - person_property * `behavioral` - behavioral * `realtime` - realtime * `analytical` - analytical */
 export type CohortOutputCohortType = CohortTypeEnum | BlankEnum;
+const CohortOutputCohortType = S.Unknown as any as S.Schema<CohortOutputCohortType>;
+
 export interface CohortConditionTypeFlags {
   /** The filters include a person property or person_metadata condition. */
   person_properties: boolean;
@@ -217,6 +283,11 @@ export interface CohortConditionTypeFlags {
   /** The filters include a nested reference to another cohort. */
   cohorts: boolean;
 }
+const CohortConditionTypeFlags = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CohortConditionTypeFlags>;
+
 /** * `static` - Static * `person_properties` - Person properties * `daily` - Daily * `building` - Building * `rebuilding` - Rebuilding * `ready` - Ready * `needs_attention` - Needs attention */
 export type CohortRealtimeStateEnum =
   | "static"
@@ -226,8 +297,12 @@ export type CohortRealtimeStateEnum =
   | "rebuilding"
   | "ready"
   | "needs_attention";
+const CohortRealtimeStateEnum = S.String;
+
 /** * `waiting` - Waiting * `scanning` - Scanning * `checking` - Checking */
 export type CohortHistoryBuildPhaseEnum = "waiting" | "scanning" | "checking";
+const CohortHistoryBuildPhaseEnum = S.String;
+
 export interface CohortHistoryBuild {
   /** What the build is doing now: `waiting` to start, `scanning` past events, or `checking` the membership it produced. A build that is queued but has not started reports `waiting` too. * `waiting` - Waiting * `scanning` - Scanning * `checking` - Checking */
   phase: CohortHistoryBuildPhaseEnum;
@@ -236,6 +311,8 @@ export interface CohortHistoryBuild {
   /** When this build last made progress. Null while it is still queued. */
   updated_at: string | null;
 }
+const CohortHistoryBuild = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<CohortHistoryBuild>;
+
 export interface CohortRealtimeReadiness {
   /** Whether feature flags can target this cohort now. `ready`: they can, and they see membership changes within about a minute. `building` / `rebuilding`: PostHog is preparing the cohort from past events, and flags cannot target it yet. `needs_attention`: the cohort qualifies but nothing is preparing it. `daily`: its criteria are not supported in realtime, so its membership only comes from the once-a-day calculation. `person_properties`: it matches on person properties, which flags read directly, so they can always target it. `static`: it is a fixed list of people. * `static` - Static * `person_properties` - Person properties * `daily` - Daily * `building` - Building * `rebuilding` - Rebuilding * `ready` - Ready * `needs_attention` - Needs attention */
   state: CohortRealtimeStateEnum;
@@ -244,8 +321,20 @@ export interface CohortRealtimeReadiness {
   /** The build preparing the cohort. Null unless the state is `building` or `rebuilding`. */
   build: CohortHistoryBuild | null;
 }
+const CohortRealtimeReadiness = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CohortRealtimeReadiness>;
+
 export type CohortOutputExperimentSetList = Array<number>;
+const CohortOutputExperimentSetList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CohortOutputExperimentSetList>;
+
 export type SearchMatchTypeEnum = "exact" | "similar";
+const SearchMatchTypeEnum = S.String;
+
 export interface CohortOutput {
   id?: number;
   name?: string | null;
@@ -279,32 +368,62 @@ export interface CohortOutput {
   /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
+const CohortOutput = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CohortOutput>;
+
 export interface GetCohortRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this cohort. */
   id: number;
 }
+const GetCohortRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetCohortRequest>;
+
 export interface GetCohortsActivityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this cohort. */
   id: number;
 }
+const GetCohortsActivityRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetCohortsActivityRequest>;
+
 export interface GetCohortsActivityResponse {}
+const GetCohortsActivityResponse =
+  CohortsDestroyResponse as any as S.Schema<GetCohortsActivityResponse>;
+
 export interface GetCohortsAllActivityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const GetCohortsAllActivityRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetCohortsAllActivityRequest>;
+
 export interface GetCohortsAllActivityResponse {}
+const GetCohortsAllActivityResponse =
+  CohortsDestroyResponse as any as S.Schema<GetCohortsAllActivityResponse>;
+
 export interface GetCohortsCalculationHistoryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this cohort. */
   id: number;
 }
+const GetCohortsCalculationHistoryRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetCohortsCalculationHistoryRequest>;
+
 export interface GetCohortsCalculationHistoryResponse {}
+const GetCohortsCalculationHistoryResponse =
+  CohortsAddPersonsToStaticCohortPartialUpdateResponse as any as S.Schema<GetCohortsCalculationHistoryResponse>;
+
 export type GetCohortsPersonRequestFormat = "csv" | "json";
+const GetCohortsPersonRequestFormat = S.String;
+
 export interface GetCohortsPersonRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -316,14 +435,33 @@ export interface GetCohortsPersonRequest {
   /** Number of persons to skip before starting to return results. */
   offset?: number;
 }
+const GetCohortsPersonRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetCohortsPersonRequest>;
+
 /** The actor's properties. */
 export type SerializedPersonActorPropertiesMap = { [key: string]: unknown | undefined };
+const SerializedPersonActorPropertiesMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<SerializedPersonActorPropertiesMap>;
+
 export type SerializedPersonActorMatchedRecordingsItemMap = { [key: string]: unknown | undefined };
+const SerializedPersonActorMatchedRecordingsItemMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<SerializedPersonActorMatchedRecordingsItemMap>;
+
 /** Recordings that matched the query. Empty unless the endpoint asks for them. */
 export type SerializedPersonActorMatchedRecordingsList =
   Array<SerializedPersonActorMatchedRecordingsItemMap>;
+const SerializedPersonActorMatchedRecordingsList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<SerializedPersonActorMatchedRecordingsList>;
+
 /** The person's distinct IDs, newest first. */
 export type SerializedPersonActorDistinctIdsList = Array<string>;
+const SerializedPersonActorDistinctIdsList =
+  CreateCohortRequestCreateStaticPersonIdsList as any as S.Schema<SerializedPersonActorDistinctIdsList>;
+
 export interface SerializedPersonActor {
   /** The person's UUID, or the group's key. */
   id: string;
@@ -348,18 +486,38 @@ export interface SerializedPersonActor {
   /** Whether the person has been identified. */
   is_identified: boolean | null;
 }
+const SerializedPersonActor = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<SerializedPersonActor>;
+
 export type CohortPersonsResponseResultsList = Array<SerializedPersonActor>;
+const CohortPersonsResponseResultsList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CohortPersonsResponseResultsList>;
+
 export interface CohortPersonsResponse {
   results: CohortPersonsResponseResultsList;
   next: string | null;
   previous: string | null;
 }
+const CohortPersonsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CohortPersonsResponse>;
+
 export interface GetCohortsUsedInRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this cohort. */
   id: number;
 }
+const GetCohortsUsedInRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetCohortsUsedInRequest>;
+
 export interface CohortUsedInFlag {
   /** Feature flag database ID */
   id: number;
@@ -368,8 +526,15 @@ export interface CohortUsedInFlag {
   /** Feature flag display name */
   name: string | null;
 }
+const CohortUsedInFlag = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CohortUsedInFlag>;
+
 /** Feature flags referencing this cohort, capped at 100 results */
 export type CohortUsedInFlagsBlockResultsList = Array<CohortUsedInFlag>;
+const CohortUsedInFlagsBlockResultsList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CohortUsedInFlagsBlockResultsList>;
+
 export interface CohortUsedInFlagsBlock {
   /** Feature flags referencing this cohort, capped at 100 results */
   results: CohortUsedInFlagsBlockResultsList;
@@ -378,6 +543,11 @@ export interface CohortUsedInFlagsBlock {
   /** True when more feature flags exist beyond the truncation cap */
   has_more: boolean;
 }
+const CohortUsedInFlagsBlock = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CohortUsedInFlagsBlock>;
+
 export interface CohortUsedInInsight {
   /** Insight database ID */
   id: number;
@@ -386,8 +556,15 @@ export interface CohortUsedInInsight {
   /** Insight display name; falls back to derived name, then to 'Unnamed' when both are empty */
   name: string;
 }
+const CohortUsedInInsight = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<CohortUsedInInsight>;
+
 /** Insights referencing this cohort, capped at 100 results */
 export type CohortUsedInInsightsBlockResultsList = Array<CohortUsedInInsight>;
+const CohortUsedInInsightsBlockResultsList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CohortUsedInInsightsBlockResultsList>;
+
 export interface CohortUsedInInsightsBlock {
   /** Insights referencing this cohort, capped at 100 results */
   results: CohortUsedInInsightsBlockResultsList;
@@ -396,14 +573,26 @@ export interface CohortUsedInInsightsBlock {
   /** True when more insights exist beyond the truncation cap */
   has_more: boolean;
 }
+const CohortUsedInInsightsBlock = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CohortUsedInInsightsBlock>;
+
 export interface CohortUsedInCohort {
   /** Cohort database ID */
   id: number;
   /** Cohort display name; falls back to 'Unnamed' when empty */
   name: string;
 }
+const CohortUsedInCohort = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<CohortUsedInCohort>;
+
 /** Cohorts that include this cohort as a criterion, capped at 100 results */
 export type CohortUsedInCohortsBlockResultsList = Array<CohortUsedInCohort>;
+const CohortUsedInCohortsBlockResultsList = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CohortUsedInCohortsBlockResultsList>;
+
 export interface CohortUsedInCohortsBlock {
   /** Cohorts that include this cohort as a criterion, capped at 100 results */
   results: CohortUsedInCohortsBlockResultsList;
@@ -412,6 +601,11 @@ export interface CohortUsedInCohortsBlock {
   /** True when more cohorts exist beyond the truncation cap */
   has_more: boolean;
 }
+const CohortUsedInCohortsBlock = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CohortUsedInCohortsBlock>;
+
 export interface CohortUsedInResponse {
   /** Feature flags (active and inactive, excluding soft-deleted) that reference this cohort in their targeting conditions, with truncation metadata */
   feature_flags: CohortUsedInFlagsBlock;
@@ -420,6 +614,8 @@ export interface CohortUsedInResponse {
   /** Other cohorts that include this cohort as a criterion, with truncation metadata */
   cohorts: CohortUsedInCohortsBlock;
 }
+const CohortUsedInResponse = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<CohortUsedInResponse>;
+
 export interface ListCohortsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -434,16 +630,33 @@ export interface ListCohortsRequest {
   /** Optional. Match against cohort `name`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram -- typos, transpositions, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`. Results are ordered by relevance. When omitted, cohorts are ordered newest-first. Capped at 200 characters; longer queries return a 400 error. */
   search?: string;
 }
+const ListCohortsRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<ListCohortsRequest>;
+
 export type PaginatedCohortListOutputResultsList = Array<CohortOutput>;
+const PaginatedCohortListOutputResultsList = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<PaginatedCohortListOutputResultsList>;
+
 export interface PaginatedCohortListOutput {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedCohortListOutputResultsList;
 }
+const PaginatedCohortListOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<PaginatedCohortListOutput>;
+
 /** Type of cohort based on filter complexity * `static` - static * `person_property` - person_property * `behavioral` - behavioral * `realtime` - realtime * `analytical` - analytical */
 export type UpdateCohortRequestCohortType = CohortTypeEnum | BlankEnum;
+const UpdateCohortRequestCohortType = S.Unknown as any as S.Schema<UpdateCohortRequestCohortType>;
+
 export type UpdateCohortRequestCreateStaticPersonIdsList = Array<string>;
+const UpdateCohortRequestCreateStaticPersonIdsList =
+  CreateCohortRequestCreateStaticPersonIdsList as any as S.Schema<UpdateCohortRequestCreateStaticPersonIdsList>;
+
 export interface UpdateCohortRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -461,9 +674,17 @@ export interface UpdateCohortRequest {
   _create_in_folder?: string;
   _create_static_person_ids?: UpdateCohortRequestCreateStaticPersonIdsList;
 }
+const UpdateCohortRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<UpdateCohortRequest>;
+
 /** Type of cohort based on filter complexity * `static` - static * `person_property` - person_property * `behavioral` - behavioral * `realtime` - realtime * `analytical` - analytical */
 export type UpdateCohortsPartialRequestCohortType = CohortTypeEnum | BlankEnum;
+const UpdateCohortsPartialRequestCohortType =
+  S.Unknown as any as S.Schema<UpdateCohortsPartialRequestCohortType>;
+
 export type UpdateCohortsPartialRequestCreateStaticPersonIdsList = Array<string>;
+const UpdateCohortsPartialRequestCreateStaticPersonIdsList =
+  CreateCohortRequestCreateStaticPersonIdsList as any as S.Schema<UpdateCohortsPartialRequestCreateStaticPersonIdsList>;
+
 export interface UpdateCohortsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -481,6 +702,11 @@ export interface UpdateCohortsPartialRequest {
   _create_in_folder?: string;
   _create_static_person_ids?: UpdateCohortsPartialRequestCreateStaticPersonIdsList;
 }
+const UpdateCohortsPartialRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<UpdateCohortsPartialRequest>;
+
 export type CohortsAddPersonsToStaticCohortPartialUpdateError =
   | BadRequest
   | Forbidden
@@ -492,8 +718,8 @@ export const cohortsAddPersonsToStaticCohortPartialUpdate: API.OperationMethod<
   CohortsAddPersonsToStaticCohortPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CohortsAddPersonsToStaticCohortPartialUpdateRequest>,
-  output: __S(2) as any as S.Schema<CohortsAddPersonsToStaticCohortPartialUpdateResponse>,
+  input: CohortsAddPersonsToStaticCohortPartialUpdateRequest,
+  output: CohortsAddPersonsToStaticCohortPartialUpdateResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -507,8 +733,8 @@ export const cohortsDestroy: API.OperationMethod<
   CohortsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CohortsDestroyRequest>,
-  output: __S(4) as any as S.Schema<CohortsDestroyResponse>,
+  input: CohortsDestroyRequest,
+  output: CohortsDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -525,8 +751,8 @@ export const cohortsRemovePersonFromStaticCohortPartialUpdate: API.OperationMeth
   CohortsRemovePersonFromStaticCohortPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CohortsRemovePersonFromStaticCohortPartialUpdateRequest>,
-  output: __S(6) as any as S.Schema<CohortsRemovePersonFromStaticCohortPartialUpdateResponse>,
+  input: CohortsRemovePersonFromStaticCohortPartialUpdateRequest,
+  output: CohortsRemovePersonFromStaticCohortPartialUpdateResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -539,8 +765,8 @@ export const createCohort: API.OperationMethod<
   CreateCohortError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CreateCohortRequest>,
-  output: __S(18) as any as S.Schema<CohortOutput>,
+  input: CreateCohortRequest,
+  output: CohortOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -553,8 +779,8 @@ export const getCohort: API.OperationMethod<
   GetCohortError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetCohortRequest>,
-  output: __S(18) as any as S.Schema<CohortOutput>,
+  input: GetCohortRequest,
+  output: CohortOutput,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -567,8 +793,8 @@ export const getCohortsActivity: API.OperationMethod<
   GetCohortsActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<GetCohortsActivityRequest>,
-  output: __S(4) as any as S.Schema<GetCohortsActivityResponse>,
+  input: GetCohortsActivityRequest,
+  output: GetCohortsActivityResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -581,8 +807,8 @@ export const getCohortsAllActivity: API.OperationMethod<
   GetCohortsAllActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetCohortsAllActivityRequest>,
-  output: __S(4) as any as S.Schema<GetCohortsAllActivityResponse>,
+  input: GetCohortsAllActivityRequest,
+  output: GetCohortsAllActivityResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -595,8 +821,8 @@ export const getCohortsCalculationHistory: API.OperationMethod<
   GetCohortsCalculationHistoryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<GetCohortsCalculationHistoryRequest>,
-  output: __S(2) as any as S.Schema<GetCohortsCalculationHistoryResponse>,
+  input: GetCohortsCalculationHistoryRequest,
+  output: GetCohortsCalculationHistoryResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -609,8 +835,8 @@ export const getCohortsPerson: API.OperationMethod<
   GetCohortsPersonError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<GetCohortsPersonRequest>,
-  output: __S(27) as any as S.Schema<CohortPersonsResponse>,
+  input: GetCohortsPersonRequest,
+  output: CohortPersonsResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -623,8 +849,8 @@ export const getCohortsUsedIn: API.OperationMethod<
   GetCohortsUsedInError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<GetCohortsUsedInRequest>,
-  output: __S(38) as any as S.Schema<CohortUsedInResponse>,
+  input: GetCohortsUsedInRequest,
+  output: CohortUsedInResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -637,8 +863,8 @@ export const listCohorts: API.OperationMethod<
   ListCohortsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<ListCohortsRequest>,
-  output: __S(41) as any as S.Schema<PaginatedCohortListOutput>,
+  input: ListCohortsRequest,
+  output: PaginatedCohortListOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -651,8 +877,8 @@ export const updateCohort: API.OperationMethod<
   UpdateCohortError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<UpdateCohortRequest>,
-  output: __S(18) as any as S.Schema<CohortOutput>,
+  input: UpdateCohortRequest,
+  output: CohortOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -665,8 +891,8 @@ export const updateCohortsPartial: API.OperationMethod<
   UpdateCohortsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<UpdateCohortsPartialRequest>,
-  output: __S(18) as any as S.Schema<CohortOutput>,
+  input: UpdateCohortsPartialRequest,
+  output: CohortOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -682,7 +908,7 @@ function __c0(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          person_ids: S.optional(__S(0)),
+          person_ids: S.optional(CohortsAddPersonsToStaticCohortPartialUpdateRequestPersonIdsList),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -731,7 +957,7 @@ function __c0(j: number): any {
         identifier: "CohortsRemovePersonFromStaticCohortPartialUpdateResponse",
       });
     case 7:
-      return S.Array(S.Unknown);
+      return S.Array(CohortFilterGroupValuesItem);
   }
 }
 function __c1(j: number): any {
@@ -739,14 +965,14 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          values: S.optional(__S(7)),
+          type: S.optional(PropertyGroupOperatorEnum),
+          values: S.optional(CohortFilterGroupValuesList),
         }),
       ).annotate({ identifier: "CohortFilterGroup" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(8)),
+          properties: S.optional(CohortFilterGroup),
           filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "CohortFilters" });
@@ -760,12 +986,12 @@ function __c1(j: number): any {
           description: S.optional(S.String),
           groups: S.optional(S.Unknown),
           deleted: S.optional(S.Boolean),
-          filters: S.optional(S.NullOr(__S(9))),
+          filters: S.optional(S.NullOr(CohortFilters)),
           query: S.optional(S.Unknown),
           is_static: S.optional(S.Boolean),
-          cohort_type: S.optional(S.NullOr(S.Unknown)),
+          cohort_type: S.optional(S.NullOr(CreateCohortRequestCohortType)),
           _create_in_folder: S.optional(S.String),
-          _create_static_person_ids: S.optional(__S(10)),
+          _create_static_person_ids: S.optional(CreateCohortRequestCreateStaticPersonIdsList),
         }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/cohorts/", code: 200 })),
       ).annotate({ identifier: "CreateCohortRequest" });
     case 4:
@@ -780,8 +1006,8 @@ function __c1(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(12))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 6:
@@ -796,7 +1022,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          phase: S.String,
+          phase: CohortHistoryBuildPhaseEnum,
           percent_complete: S.NullOr(S.Number),
           updated_at: S.NullOr(S.String),
         }),
@@ -808,9 +1034,9 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          state: S.String,
+          state: CohortRealtimeStateEnum,
           ready_at: S.NullOr(S.String),
-          build: S.NullOr(__S(15)),
+          build: S.NullOr(CohortHistoryBuild),
         }),
       ).annotate({ identifier: "CohortRealtimeReadiness" });
     case 1:
@@ -823,12 +1049,12 @@ function __c2(j: number): any {
           description: S.optional(S.String),
           groups: S.optional(S.Unknown),
           deleted: S.optional(S.Boolean),
-          filters: S.optional(S.NullOr(__S(9))),
+          filters: S.optional(S.NullOr(CohortFilters)),
           query: S.optional(S.Unknown),
           version: S.optional(S.NullOr(S.Number)),
           pending_version: S.optional(S.NullOr(S.Number)),
           is_calculating: S.optional(S.Boolean),
-          created_by: S.optional(S.NullOr(__S(13))),
+          created_by: S.optional(S.NullOr(UserBasic)),
           created_at: S.optional(S.NullOr(S.String)),
           last_calculation: S.optional(S.NullOr(S.String)),
           last_backfill_person_properties_at: S.optional(S.NullOr(S.String)),
@@ -838,11 +1064,11 @@ function __c2(j: number): any {
           last_import_total_count: S.optional(S.NullOr(S.Number)),
           last_import_unmatched_count: S.optional(S.NullOr(S.Number)),
           is_static: S.optional(S.Boolean),
-          cohort_type: S.optional(S.NullOr(S.Unknown)),
-          condition_type: S.optional(S.NullOr(__S(14))),
-          realtime: S.optional(S.NullOr(__S(16))),
-          experiment_set: S.optional(__S(17)),
-          search_match_type: S.optional(S.NullOr(S.String)),
+          cohort_type: S.optional(S.NullOr(CohortOutputCohortType)),
+          condition_type: S.optional(S.NullOr(CohortConditionTypeFlags)),
+          realtime: S.optional(S.NullOr(CohortRealtimeReadiness)),
+          experiment_set: S.optional(CohortOutputExperimentSetList),
+          search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
         }),
       ).annotate({ identifier: "CohortOutput" });
     case 3:
@@ -899,7 +1125,7 @@ function __c2(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
+          format: S.optional(GetCohortsPersonRequestFormat.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -915,29 +1141,29 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(12));
+      return S.Array(SerializedPersonActorMatchedRecordingsItemMap);
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          properties: __S(12),
+          properties: SerializedPersonActorPropertiesMap,
           created_at: S.NullOr(S.String),
-          matched_recordings: __S(24),
+          matched_recordings: SerializedPersonActorMatchedRecordingsList,
           value_at_data_point: S.NullOr(S.Number),
           type: S.String,
           uuid: S.String,
           name: S.String,
-          distinct_ids: __S(10),
+          distinct_ids: SerializedPersonActorDistinctIdsList,
           last_seen_at: S.NullOr(S.String),
           is_identified: S.NullOr(S.Boolean),
         }),
       ).annotate({ identifier: "SerializedPersonActor" });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(SerializedPersonActor);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(26),
+          results: CohortPersonsResponseResultsList,
           next: S.NullOr(S.String),
           previous: S.NullOr(S.String),
         }),
@@ -964,11 +1190,11 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "CohortUsedInFlag" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(CohortUsedInFlag);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          results: __S(30),
+          results: CohortUsedInFlagsBlockResultsList,
           total: S.Number,
           has_more: S.Boolean,
         }),
@@ -986,11 +1212,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "CohortUsedInInsight" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(CohortUsedInInsight);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          results: __S(33),
+          results: CohortUsedInInsightsBlockResultsList,
           total: S.Number,
           has_more: S.Boolean,
         }),
@@ -1005,11 +1231,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "CohortUsedInCohort" });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(CohortUsedInCohort);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          results: __S(36),
+          results: CohortUsedInCohortsBlockResultsList,
           total: S.Number,
           has_more: S.Boolean,
         }),
@@ -1017,9 +1243,9 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          feature_flags: __S(31),
-          insights: __S(34),
-          cohorts: __S(37),
+          feature_flags: CohortUsedInFlagsBlock,
+          insights: CohortUsedInInsightsBlock,
+          cohorts: CohortUsedInCohortsBlock,
         }),
       ).annotate({ identifier: "CohortUsedInResponse" });
     case 7:
@@ -1038,14 +1264,14 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(18));
+      return S.Array(CohortOutput);
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(40)),
+          results: S.optional(PaginatedCohortListOutputResultsList),
         }),
       ).annotate({
         identifier: "PaginatedCohortListOutput",
@@ -1059,12 +1285,12 @@ function __c5(j: number): any {
           description: S.optional(S.String),
           groups: S.optional(S.Unknown),
           deleted: S.optional(S.Boolean),
-          filters: S.optional(S.NullOr(__S(9))),
+          filters: S.optional(S.NullOr(CohortFilters)),
           query: S.optional(S.Unknown),
           is_static: S.optional(S.Boolean),
-          cohort_type: S.optional(S.NullOr(S.Unknown)),
+          cohort_type: S.optional(S.NullOr(UpdateCohortRequestCohortType)),
           _create_in_folder: S.optional(S.String),
-          _create_static_person_ids: S.optional(__S(10)),
+          _create_static_person_ids: S.optional(UpdateCohortRequestCreateStaticPersonIdsList),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/projects/{project_id}/cohorts/{id}/", code: 200 }),
         ),
@@ -1078,38 +1304,19 @@ function __c5(j: number): any {
           description: S.optional(S.String),
           groups: S.optional(S.Unknown),
           deleted: S.optional(S.Boolean),
-          filters: S.optional(S.NullOr(__S(9))),
+          filters: S.optional(S.NullOr(CohortFilters)),
           query: S.optional(S.Unknown),
           is_static: S.optional(S.Boolean),
-          cohort_type: S.optional(S.NullOr(S.Unknown)),
+          cohort_type: S.optional(S.NullOr(UpdateCohortsPartialRequestCohortType)),
           _create_in_folder: S.optional(S.String),
-          _create_static_person_ids: S.optional(__S(10)),
+          _create_static_person_ids: S.optional(
+            UpdateCohortsPartialRequestCreateStaticPersonIdsList,
+          ),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/api/projects/{project_id}/cohorts/{id}/", code: 200 }),
         ),
       ).annotate({
         identifier: "UpdateCohortsPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

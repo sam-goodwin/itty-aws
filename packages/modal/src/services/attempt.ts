@@ -6,8 +6,6 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
@@ -17,6 +15,8 @@ export interface AttemptAwaitRequest {
   /** Used for waypoints. */
   timeoutSecs?: number;
 }
+const AttemptAwaitRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AttemptAwaitRequest>;
+
 /** Used for both tasks and function outputs */
 export type GenericResultGenericStatus =
   | "GENERIC_STATUS_UNSPECIFIED"
@@ -28,6 +28,8 @@ export type GenericResultGenericStatus =
   | "GENERIC_STATUS_INTERNAL_FAILURE"
   | "GENERIC_STATUS_IDLE_TIMEOUT"
   | "GENERIC_STATUS_MEMORY_MANAGER_EVICTION";
+const GenericResultGenericStatus = S.String;
+
 /** sub-type for generic types like lists */
 export interface GenericResult {
   status?: GenericResultGenericStatus;
@@ -48,6 +50,8 @@ export interface GenericResult {
   /** Blob ID for large data. */
   propagationReason?: string;
 }
+const GenericResult = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<GenericResult>;
+
 /** Which data format a binary message is encoded with. */
 export type DataFormat =
   | "DATA_FORMAT_UNSPECIFIED"
@@ -55,6 +59,8 @@ export type DataFormat =
   | "DATA_FORMAT_ASGI"
   | "DATA_FORMAT_GENERATOR_DONE"
   | "DATA_FORMAT_CBOR";
+const DataFormat = S.String;
+
 /** How long to sleep before requesting another input. */
 export interface FunctionGetOutputsItem {
   result?: GenericResult;
@@ -68,9 +74,16 @@ export interface FunctionGetOutputsItem {
   retryCount?: number;
   fcTraceTag?: string;
 }
+const FunctionGetOutputsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<FunctionGetOutputsItem>;
+
 export interface AttemptAwaitResponse {
   output?: FunctionGetOutputsItem;
 }
+const AttemptAwaitResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AttemptAwaitResponse>;
+
 export interface FunctionInput {
   /** serialized (args, kwargs). */
   args?: string;
@@ -80,14 +93,22 @@ export interface FunctionInput {
   /** For args_oneof. */
   methodName?: string;
 }
+const FunctionInput = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<FunctionInput>;
+
 export type BlobUploadResultOutcome = "OUTCOME_UNSPECIFIED" | "OUTCOME_SUCCESS" | "OUTCOME_FAILURE";
+const BlobUploadResultOutcome = S.String;
+
 export interface BlobUploadResult {
   blobId?: string;
   /** The blob id (from BlobCreateResponse) that this upload attempt targeted. */
   outcome?: BlobUploadResultOutcome | (string & {});
   throughputBytesS?: string;
 }
+const BlobUploadResult = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<BlobUploadResult>;
+
 export type BlobUploadResultList = Array<BlobUploadResult>;
+const BlobUploadResultList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<BlobUploadResultList>;
+
 export interface FunctionPutInputsItem {
   idx?: number;
   input?: FunctionInput;
@@ -96,21 +117,32 @@ export interface FunctionPutInputsItem {
   r2ThroughputBytesS?: string;
   blobUploadResults?: BlobUploadResultList;
 }
+const FunctionPutInputsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<FunctionPutInputsItem>;
+
 export interface RetryAttemptRequest {
   functionId?: string;
   parentInputId?: string;
   input?: FunctionPutInputsItem;
   attemptToken?: string;
 }
+const RetryAttemptRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<RetryAttemptRequest>;
+
 export interface RetryAttemptResponse {
   attemptToken?: string;
 }
+const RetryAttemptResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<RetryAttemptResponse>;
+
 export interface StartAttemptRequest {
   functionId?: string;
   parentInputId?: string;
   input?: FunctionPutInputsItem;
   proxied?: boolean;
 }
+const StartAttemptRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<StartAttemptRequest>;
+
 export interface FunctionRetryPolicy {
   backoffCoefficient?: number;
   initialDelayMs?: number;
@@ -118,10 +150,14 @@ export interface FunctionRetryPolicy {
   /** NOTE: two-byte field number not used for special reason. copy-paste error. Ref: PR #2542 */
   retries?: number;
 }
+const FunctionRetryPolicy = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<FunctionRetryPolicy>;
+
 export interface StartAttemptResponse {
   attemptToken?: string;
   retryPolicy?: FunctionRetryPolicy;
 }
+const StartAttemptResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<StartAttemptResponse>;
+
 export type AttemptAwaitError = ModalOpError;
 /** Input Plane */
 export const attemptAwait: API.OperationMethod<
@@ -130,8 +166,8 @@ export const attemptAwait: API.OperationMethod<
   AttemptAwaitError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AttemptAwaitRequest>,
-  output: __S(3) as any as S.Schema<AttemptAwaitResponse>,
+  input: AttemptAwaitRequest,
+  output: AttemptAwaitResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -144,8 +180,8 @@ export const retryAttempt: API.OperationMethod<
   RetryAttemptError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<RetryAttemptRequest>,
-  output: __S(9) as any as S.Schema<RetryAttemptResponse>,
+  input: RetryAttemptRequest,
+  output: RetryAttemptResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -158,8 +194,8 @@ export const startAttempt: API.OperationMethod<
   StartAttemptError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<StartAttemptRequest>,
-  output: __S(12) as any as S.Schema<StartAttemptResponse>,
+  input: StartAttemptRequest,
+  output: StartAttemptResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -181,7 +217,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(GenericResultGenericStatus),
           exception: S.optional(S.String),
           exitcode: S.optional(S.Number),
           traceback: S.optional(S.String),
@@ -195,10 +231,10 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(__S(1)),
+          result: S.optional(GenericResult),
           idx: S.optional(S.Number),
           inputId: S.optional(S.String),
-          dataFormat: S.optional(S.String),
+          dataFormat: S.optional(DataFormat),
           taskId: S.optional(S.String),
           inputStartedAt: S.optional(S.Number),
           outputCreatedAt: S.optional(S.Number),
@@ -209,7 +245,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          output: S.optional(__S(2)),
+          output: S.optional(FunctionGetOutputsItem),
         }),
       ).annotate({ identifier: "AttemptAwaitResponse" });
     case 4:
@@ -218,7 +254,7 @@ function __c0(j: number): any {
           args: S.optional(S.String),
           argsBlobId: S.optional(S.String),
           finalInput: S.optional(S.Boolean),
-          dataFormat: S.optional(S.String),
+          dataFormat: S.optional(DataFormat),
           methodName: S.optional(S.String),
         }),
       ).annotate({ identifier: "FunctionInput" });
@@ -226,20 +262,20 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           blobId: S.optional(S.String),
-          outcome: S.optional(S.String),
+          outcome: S.optional(BlobUploadResultOutcome),
           throughputBytesS: S.optional(S.String),
         }),
       ).annotate({ identifier: "BlobUploadResult" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(BlobUploadResult);
     case 7:
       return S.suspend(() =>
         S.Struct({
           idx: S.optional(S.Number),
-          input: S.optional(__S(4)),
+          input: S.optional(FunctionInput),
           r2Failed: S.optional(S.Boolean),
           r2ThroughputBytesS: S.optional(S.String),
-          blobUploadResults: S.optional(__S(6)),
+          blobUploadResults: S.optional(BlobUploadResultList),
         }),
       ).annotate({ identifier: "FunctionPutInputsItem" });
   }
@@ -251,7 +287,7 @@ function __c1(j: number): any {
         S.Struct({
           functionId: S.optional(S.String),
           parentInputId: S.optional(S.String),
-          input: S.optional(__S(7)),
+          input: S.optional(FunctionPutInputsItem),
           attemptToken: S.optional(S.String),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/AttemptRetry", code: 200 }),
@@ -268,7 +304,7 @@ function __c1(j: number): any {
         S.Struct({
           functionId: S.optional(S.String),
           parentInputId: S.optional(S.String),
-          input: S.optional(__S(7)),
+          input: S.optional(FunctionPutInputsItem),
           proxied: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/AttemptStart", code: 200 }),
@@ -287,21 +323,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           attemptToken: S.optional(S.String),
-          retryPolicy: S.optional(__S(11)),
+          retryPolicy: S.optional(FunctionRetryPolicy),
         }),
       ).annotate({ identifier: "StartAttemptResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

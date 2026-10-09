@@ -11,8 +11,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GoogleWorkspaceOpError, GoogleWorkspaceOpContext };
 
@@ -48,6 +46,11 @@ export interface GetCustomerLicenseRequest {
   /** The ID of the application. */
   applicationId: string;
 }
+const GetCustomerLicenseRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetCustomerLicenseRequest>;
+
 export interface Editions {
   /** (Deprecated) */
   assignedSeats?: number;
@@ -56,7 +59,11 @@ export interface Editions {
   /** (Deprecated) */
   seatCount?: number;
 }
+const Editions = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Editions>;
+
 export type EditionsList = Array<Editions>;
+const EditionsList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<EditionsList>;
+
 export interface CustomerLicense {
   /** The type of API resource. This is always `appsmarket#customerLicense`. */
   kind?: string;
@@ -71,12 +78,19 @@ export interface CustomerLicense {
   /** The customer's license status. One of: - `ACTIVE`: The customer has a valid license. - `UNLICENSED`: There is no license. Either this customer has never installed your application or has deleted it. */
   state?: string;
 }
+const CustomerLicense = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CustomerLicense>;
+
 export interface GetUserLicenseRequest {
   /** The ID of the application. */
   applicationId: string;
   /** The ID of the user. */
   userId: string;
 }
+const GetUserLicenseRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetUserLicenseRequest>;
+
 export interface UserLicense {
   /** (Deprecated) */
   editionId?: string;
@@ -95,6 +109,8 @@ export interface UserLicense {
   /** The domain name of the user. */
   customerId?: string;
 }
+const UserLicense = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<UserLicense>;
+
 export type GetCustomerLicenseError = NotFound | Forbidden | GoogleWorkspaceOpError;
 /** Gets the customer's licensing status to determine if they have access to a given app. For more information, see [Getting app installation and licensing details](https://developers.google.com/workspace/marketplace/example-calls-marketplace-api). */
 export const getCustomerLicense: API.OperationMethod<
@@ -103,8 +119,8 @@ export const getCustomerLicense: API.OperationMethod<
   GetCustomerLicenseError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetCustomerLicenseRequest>,
-  output: __S(3) as any as S.Schema<CustomerLicense>,
+  input: GetCustomerLicenseRequest,
+  output: CustomerLicense,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -118,8 +134,8 @@ export const getUserLicense: API.OperationMethod<
   GetUserLicenseError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetUserLicenseRequest>,
-  output: __S(5) as any as S.Schema<UserLicense>,
+  input: GetUserLicenseRequest,
+  output: UserLicense,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -152,7 +168,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Editions" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(Editions);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -160,7 +176,7 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           customerId: S.optional(S.String),
           applicationId: S.optional(S.String),
-          editions: S.optional(__S(2)),
+          editions: S.optional(EditionsList),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomerLicense" });
@@ -190,16 +206,5 @@ function __c0(j: number): any {
           customerId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserLicense" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

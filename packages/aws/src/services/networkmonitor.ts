@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "NetworkMonitor",
   serviceShapeName: "NetworkMonitor",
@@ -126,10 +124,13 @@ export type Arn = string;
 export type Destination = string;
 export type Port = number;
 export type Protocol = "TCP" | "ICMP" | (string & {});
+const Protocol = S.String;
+
 export type PacketSize = number;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
+const TagMap = /*@__PURE__*/ __L.at(__c0, 0);
 export interface CreateMonitorProbeInput {
   sourceArn: string;
   destination: string;
@@ -138,7 +139,12 @@ export interface CreateMonitorProbeInput {
   packetSize?: number;
   probeTags?: { [key: string]: string | undefined };
 }
+const CreateMonitorProbeInput = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateMonitorProbeInput>;
 export type CreateMonitorProbeInputList = CreateMonitorProbeInput[];
+const CreateMonitorProbeInputList = /*@__PURE__*/ __L.at(__c0, 2);
 export type AggregationPeriod = number;
 export interface CreateMonitorInput {
   monitorName: string;
@@ -147,8 +153,11 @@ export interface CreateMonitorInput {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
+const CreateMonitorInput = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateMonitorInput>;
 export type MonitorArn = string;
 export type MonitorState = "PENDING" | "ACTIVE" | "INACTIVE" | "ERROR" | "DELETING" | (string & {});
+const MonitorState = S.String;
+
 export interface CreateMonitorOutput {
   monitorArn: string;
   monitorName: string;
@@ -156,6 +165,7 @@ export interface CreateMonitorOutput {
   aggregationPeriod?: number;
   tags?: { [key: string]: string | undefined };
 }
+const CreateMonitorOutput = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateMonitorOutput>;
 export interface ProbeInput {
   sourceArn: string;
   destination: string;
@@ -164,14 +174,18 @@ export interface ProbeInput {
   packetSize?: number;
   tags?: { [key: string]: string | undefined };
 }
+const ProbeInput = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ProbeInput>;
 export interface CreateProbeInput {
   monitorName: string;
   probe: ProbeInput;
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
+const CreateProbeInput = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateProbeInput>;
 export type ProbeId = string;
 export type AddressFamily = "IPV4" | "IPV6" | (string & {});
+const AddressFamily = S.String;
+
 export type VpcId = string;
 export type ProbeState =
   | "PENDING"
@@ -181,6 +195,8 @@ export type ProbeState =
   | "DELETING"
   | "DELETED"
   | (string & {});
+const ProbeState = S.String;
+
 export type Iso8601Timestamp = Date;
 export interface CreateProbeOutput {
   probeId?: string;
@@ -197,18 +213,24 @@ export interface CreateProbeOutput {
   modifiedAt?: Date;
   tags?: { [key: string]: string | undefined };
 }
+const CreateProbeOutput = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateProbeOutput>;
 export interface DeleteMonitorInput {
   monitorName: string;
 }
+const DeleteMonitorInput = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DeleteMonitorInput>;
 export interface DeleteMonitorOutput {}
+const DeleteMonitorOutput = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DeleteMonitorOutput>;
 export interface DeleteProbeInput {
   monitorName: string;
   probeId: string;
 }
+const DeleteProbeInput = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DeleteProbeInput>;
 export interface DeleteProbeOutput {}
+const DeleteProbeOutput = DeleteMonitorOutput as any as S.Schema<DeleteProbeOutput>;
 export interface GetMonitorInput {
   monitorName: string;
 }
+const GetMonitorInput = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetMonitorInput>;
 export interface Probe {
   probeId?: string;
   probeArn?: string;
@@ -224,7 +246,9 @@ export interface Probe {
   modifiedAt?: Date;
   tags?: { [key: string]: string | undefined };
 }
+const Probe = CreateProbeOutput as any as S.Schema<Probe>;
 export type ProbeList = Probe[];
+const ProbeList = /*@__PURE__*/ __L.at(__c1, 4);
 export interface GetMonitorOutput {
   monitorArn: string;
   monitorName: string;
@@ -235,10 +259,12 @@ export interface GetMonitorOutput {
   createdAt: Date;
   modifiedAt: Date;
 }
+const GetMonitorOutput = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetMonitorOutput>;
 export interface GetProbeInput {
   monitorName: string;
   probeId: string;
 }
+const GetProbeInput = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetProbeInput>;
 export interface GetProbeOutput {
   probeId?: string;
   probeArn?: string;
@@ -254,6 +280,7 @@ export interface GetProbeOutput {
   modifiedAt?: Date;
   tags?: { [key: string]: string | undefined };
 }
+const GetProbeOutput = CreateProbeOutput as any as S.Schema<GetProbeOutput>;
 export type PaginationToken = string;
 export type MaxResults = number;
 export interface ListMonitorsInput {
@@ -261,6 +288,7 @@ export interface ListMonitorsInput {
   maxResults?: number;
   state?: string;
 }
+const ListMonitorsInput = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ListMonitorsInput>;
 export interface MonitorSummary {
   monitorArn: string;
   monitorName: string;
@@ -268,32 +296,49 @@ export interface MonitorSummary {
   aggregationPeriod?: number;
   tags?: { [key: string]: string | undefined };
 }
+const MonitorSummary = CreateMonitorOutput as any as S.Schema<MonitorSummary>;
 export type MonitorList = MonitorSummary[];
+const MonitorList = /*@__PURE__*/ __L.at(__c2, 0);
 export interface ListMonitorsOutput {
   monitors: MonitorSummary[];
   nextToken?: string;
 }
+const ListMonitorsOutput = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ListMonitorsOutput>;
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
+const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListTagsForResourceOutput>;
 export interface TagResourceInput {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
+const TagResourceInput = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
+const TagResourceOutput = DeleteMonitorOutput as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
+const TagKeyList = /*@__PURE__*/ __L.at(__c2, 5);
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceInput = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
+const UntagResourceOutput = DeleteMonitorOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateMonitorInput {
   monitorName: string;
   aggregationPeriod: number;
 }
+const UpdateMonitorInput = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<UpdateMonitorInput>;
 export interface UpdateMonitorOutput {
   monitorArn: string;
   monitorName: string;
@@ -301,6 +346,7 @@ export interface UpdateMonitorOutput {
   aggregationPeriod?: number;
   tags?: { [key: string]: string | undefined };
 }
+const UpdateMonitorOutput = CreateMonitorOutput as any as S.Schema<UpdateMonitorOutput>;
 export interface UpdateProbeInput {
   monitorName: string;
   probeId: string;
@@ -310,6 +356,7 @@ export interface UpdateProbeInput {
   protocol?: Protocol;
   packetSize?: number;
 }
+const UpdateProbeInput = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<UpdateProbeInput>;
 export interface UpdateProbeOutput {
   probeId?: string;
   probeArn?: string;
@@ -325,6 +372,7 @@ export interface UpdateProbeOutput {
   modifiedAt?: Date;
   tags?: { [key: string]: string | undefined };
 }
+const UpdateProbeOutput = CreateProbeOutput as any as S.Schema<UpdateProbeOutput>;
 export type CreateMonitorError =
   | AccessDeniedException
   | ConflictException
@@ -362,8 +410,8 @@ export const createMonitor: API.OperationMethod<
   CreateMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateMonitorInput>,
-  output: __S(4) as any as S.Schema<CreateMonitorOutput>,
+  input: CreateMonitorInput,
+  output: CreateMonitorOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -398,8 +446,8 @@ export const createProbe: API.OperationMethod<
   CreateProbeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateProbeInput>,
-  output: __S(7) as any as S.Schema<CreateProbeOutput>,
+  input: CreateProbeInput,
+  output: CreateProbeOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -432,8 +480,8 @@ export const deleteMonitor: API.OperationMethod<
   DeleteMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<DeleteMonitorInput>,
-  output: __S(9) as any as S.Schema<DeleteMonitorOutput>,
+  input: DeleteMonitorInput,
+  output: DeleteMonitorOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -469,8 +517,8 @@ export const deleteProbe: API.OperationMethod<
   DeleteProbeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeleteProbeInput>,
-  output: __S(9) as any as S.Schema<DeleteProbeOutput>,
+  input: DeleteProbeInput,
+  output: DeleteProbeOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -503,8 +551,8 @@ export const getMonitor: API.OperationMethod<
   GetMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetMonitorInput>,
-  output: __S(13) as any as S.Schema<GetMonitorOutput>,
+  input: GetMonitorInput,
+  output: GetMonitorOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -536,8 +584,8 @@ export const getProbe: API.OperationMethod<
   GetProbeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetProbeInput>,
-  output: __S(7) as any as S.Schema<GetProbeOutput>,
+  input: GetProbeInput,
+  output: GetProbeOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -566,8 +614,8 @@ export const listMonitors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MonitorSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(15) as any as S.Schema<ListMonitorsInput>,
-  output: __S(17) as any as S.Schema<ListMonitorsOutput>,
+  input: ListMonitorsInput,
+  output: ListMonitorsOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -602,8 +650,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(19) as any as S.Schema<ListTagsForResourceOutput>,
+  input: ListTagsForResourceInput,
+  output: ListTagsForResourceOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -634,8 +682,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<TagResourceInput>,
-  output: __S(9) as any as S.Schema<TagResourceOutput>,
+  input: TagResourceInput,
+  output: TagResourceOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -666,8 +714,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<UntagResourceInput>,
-  output: __S(9) as any as S.Schema<UntagResourceOutput>,
+  input: UntagResourceInput,
+  output: UntagResourceOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -701,8 +749,8 @@ export const updateMonitor: API.OperationMethod<
   UpdateMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<UpdateMonitorInput>,
-  output: __S(4) as any as S.Schema<UpdateMonitorOutput>,
+  input: UpdateMonitorInput,
+  output: UpdateMonitorOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -753,8 +801,8 @@ export const updateProbe: API.OperationMethod<
   UpdateProbeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<UpdateProbeInput>,
-  output: __S(7) as any as S.Schema<UpdateProbeOutput>,
+  input: UpdateProbeInput,
+  output: UpdateProbeOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -779,21 +827,21 @@ function __c0(j: number): any {
           sourceArn: S.String,
           destination: S.String,
           destinationPort: S.optional(S.Number),
-          protocol: S.String,
+          protocol: Protocol,
           packetSize: S.optional(S.Number),
-          probeTags: S.optional(__S(0)),
+          probeTags: S.optional(TagMap),
         }),
       ).annotate({ identifier: "CreateMonitorProbeInput" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(CreateMonitorProbeInput);
     case 3:
       return S.suspend(() =>
         S.Struct({
           monitorName: S.String,
-          probes: S.optional(__S(2)),
+          probes: S.optional(CreateMonitorProbeInputList),
           aggregationPeriod: S.optional(S.Number),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(TagMap),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/monitors" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateMonitorInput" });
     case 4:
@@ -801,9 +849,9 @@ function __c0(j: number): any {
         S.Struct({
           monitorArn: S.String,
           monitorName: S.String,
-          state: S.String,
+          state: MonitorState,
           aggregationPeriod: S.optional(S.Number),
-          tags: S.optional(__S(0)),
+          tags: S.optional(TagMap),
         }),
       ).annotate({ identifier: "CreateMonitorOutput" });
     case 5:
@@ -812,18 +860,18 @@ function __c0(j: number): any {
           sourceArn: S.String,
           destination: S.String,
           destinationPort: S.optional(S.Number),
-          protocol: S.String,
+          protocol: Protocol,
           packetSize: S.optional(S.Number),
-          tags: S.optional(__S(0)),
+          tags: S.optional(TagMap),
         }),
       ).annotate({ identifier: "ProbeInput" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           monitorName: S.String.pipe(T.HttpLabel("monitorName")),
-          probe: __S(5),
+          probe: ProbeInput,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(TagMap),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/monitors/{monitorName}/probes" }),
@@ -843,14 +891,14 @@ function __c0(j: number): any {
           sourceArn: S.String,
           destination: S.String,
           destinationPort: S.optional(S.Number),
-          protocol: S.String,
+          protocol: Protocol,
           packetSize: S.optional(S.Number),
-          addressFamily: S.optional(S.String),
+          addressFamily: S.optional(AddressFamily),
           vpcId: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(ProbeState),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           modifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(__S(0)),
+          tags: S.optional(TagMap),
         }),
       ).annotate({ identifier: "CreateProbeOutput" });
   }
@@ -904,16 +952,16 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "GetMonitorInput" });
     case 4:
-      return S.Array(__S(7));
+      return S.Array(Probe);
     case 5:
       return S.suspend(() =>
         S.Struct({
           monitorArn: S.String,
           monitorName: S.String,
-          state: S.String,
+          state: MonitorState,
           aggregationPeriod: S.Number,
-          tags: S.optional(__S(0)),
-          probes: S.optional(__S(12)),
+          tags: S.optional(TagMap),
+          probes: S.optional(ProbeList),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           modifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
@@ -947,10 +995,10 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(4));
+      return S.Array(MonitorSummary);
     case 1:
       return S.suspend(() =>
-        S.Struct({ monitors: __S(16), nextToken: S.optional(S.String) }),
+        S.Struct({ monitors: MonitorList, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListMonitorsOutput" });
     case 2:
       return S.suspend(() =>
@@ -966,12 +1014,12 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 3:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(0)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: __S(0) }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -988,7 +1036,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(21).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -1025,10 +1073,10 @@ function __c3(j: number): any {
         S.Struct({
           monitorName: S.String.pipe(T.HttpLabel("monitorName")),
           probeId: S.String.pipe(T.HttpLabel("probeId")),
-          state: S.optional(S.String),
+          state: S.optional(ProbeState),
           destination: S.optional(S.String),
           destinationPort: S.optional(S.Number),
-          protocol: S.optional(S.String),
+          protocol: S.optional(Protocol),
           packetSize: S.optional(S.Number),
         }).pipe(
           T.all(
@@ -1041,22 +1089,5 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateProbeInput" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

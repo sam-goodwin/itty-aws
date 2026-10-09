@@ -5,8 +5,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -16,6 +14,11 @@ export interface GetWarehouseColumnStatisticsRequest {
   /** A UUID string identifying this warehouse column statistics. */
   id: string;
 }
+const GetWarehouseColumnStatisticsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetWarehouseColumnStatisticsRequest>;
+
 export interface WarehouseColumnStatistics2 {
   id: string;
   /** ID of the data warehouse table this column belongs to. */
@@ -45,6 +48,11 @@ export interface WarehouseColumnStatistics2 {
   created_at: string;
   updated_at: string | null;
 }
+const WarehouseColumnStatistics2 = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<WarehouseColumnStatistics2>;
+
 export interface ListWarehouseColumnStatisticsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -55,13 +63,28 @@ export interface ListWarehouseColumnStatisticsRequest {
   /** Only return statistics for this data warehouse table. */
   table_id?: string;
 }
+const ListWarehouseColumnStatisticsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ListWarehouseColumnStatisticsRequest>;
+
 export type PaginatedWarehouseColumnStatisticsListResultsList = Array<WarehouseColumnStatistics2>;
+const PaginatedWarehouseColumnStatisticsListResultsList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<PaginatedWarehouseColumnStatisticsListResultsList>;
+
 export interface PaginatedWarehouseColumnStatisticsList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedWarehouseColumnStatisticsListResultsList;
 }
+const PaginatedWarehouseColumnStatisticsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<PaginatedWarehouseColumnStatisticsList>;
+
 export type GetWarehouseColumnStatisticsError = PosthogOpError;
 /** Read per-column data statistics (null fraction, min/max, row count) for warehouse tables. Statistics are computed automatically after a sync and surfaced to the AI agent so it can write better queries. They are system-owned and read-only here. List can be filtered to one table with `?table_id=<uuid>`. */
 export const getWarehouseColumnStatistics: API.OperationMethod<
@@ -70,8 +93,8 @@ export const getWarehouseColumnStatistics: API.OperationMethod<
   GetWarehouseColumnStatisticsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetWarehouseColumnStatisticsRequest>,
-  output: __S(1) as any as S.Schema<WarehouseColumnStatistics2>,
+  input: GetWarehouseColumnStatisticsRequest,
+  output: WarehouseColumnStatistics2,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -85,8 +108,8 @@ export const listWarehouseColumnStatistics: API.OperationMethod<
   ListWarehouseColumnStatisticsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<ListWarehouseColumnStatisticsRequest>,
-  output: __S(4) as any as S.Schema<PaginatedWarehouseColumnStatisticsList>,
+  input: ListWarehouseColumnStatisticsRequest,
+  output: PaginatedWarehouseColumnStatisticsList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -150,28 +173,17 @@ function __c0(j: number): any {
         identifier: "ListWarehouseColumnStatisticsRequest",
       });
     case 3:
-      return S.Array(__S(1));
+      return S.Array(WarehouseColumnStatistics2);
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(3),
+          results: PaginatedWarehouseColumnStatisticsListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedWarehouseColumnStatisticsList",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

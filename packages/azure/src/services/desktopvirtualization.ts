@@ -7,13 +7,16 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type AppAttachPackageCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const AppAttachPackageCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AppAttachPackageCreateOrUpdateRequestTagsMap>;
+
 /** Schema for MSIX Package Dependencies properties. */
 export interface MsixPackageDependencies {
   /** Name of package dependency. */
@@ -23,8 +26,18 @@ export interface MsixPackageDependencies {
   /** Dependency version required. */
   minVersion?: string;
 }
+const MsixPackageDependencies = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<MsixPackageDependencies>;
+
 /** List of package dependencies. */
 export type AppAttachPackageInfoPropertiesPackageDependenciesList = Array<MsixPackageDependencies>;
+const AppAttachPackageInfoPropertiesPackageDependenciesList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AppAttachPackageInfoPropertiesPackageDependenciesList>;
+
 /** Schema for MSIX Package Application properties. */
 export interface MsixPackageApplications {
   /** Package Application Id, found in appxmanifest.xml. */
@@ -42,10 +55,22 @@ export interface MsixPackageApplications {
   /** the icon a 64 bit string as a byte array. */
   rawPng?: string;
 }
+const MsixPackageApplications = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<MsixPackageApplications>;
+
 /** List of package applications. */
 export type AppAttachPackageInfoPropertiesPackageApplicationsList = Array<MsixPackageApplications>;
+const AppAttachPackageInfoPropertiesPackageApplicationsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AppAttachPackageInfoPropertiesPackageApplicationsList>;
+
 /** Is package timestamped so it can ignore the certificate expiry date */
 export type AppAttachPackageInfoPropertiesIsPackageTimestamped = "Timestamped" | "NotTimestamped";
+const AppAttachPackageInfoPropertiesIsPackageTimestamped = S.String;
+
 /** Schema for Import Package Information properties. */
 export interface AppAttachPackageInfoProperties {
   /** Alias of App Attach Package. Assigned at import time */
@@ -81,10 +106,22 @@ export interface AppAttachPackageInfoProperties {
   /** Is package timestamped so it can ignore the certificate expiry date */
   isPackageTimestamped?: AppAttachPackageInfoPropertiesIsPackageTimestamped | (string & {}) | null;
 }
+const AppAttachPackageInfoProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AppAttachPackageInfoProperties>;
+
 /** List of Hostpool resource Ids. */
 export type AppAttachPackagePropertiesInputHostPoolReferencesList = Array<string>;
+const AppAttachPackagePropertiesInputHostPoolReferencesList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AppAttachPackagePropertiesInputHostPoolReferencesList>;
+
 /** Parameter indicating how the health check should behave if this package fails staging */
 export type FailHealthCheckOnStagingFailureEnum = "Unhealthy" | "NeedsAssistance" | "DoNotFail";
+const FailHealthCheckOnStagingFailureEnum = S.String;
+
 /** Schema for App Attach Package properties. */
 export interface AppAttachPackagePropertiesInput {
   /** Detailed properties for App Attach Package */
@@ -96,6 +133,11 @@ export interface AppAttachPackagePropertiesInput {
   /** Parameter indicating how the health check should behave if this package fails staging */
   failHealthCheckOnStagingFailure?: FailHealthCheckOnStagingFailureEnum | (string & {});
 }
+const AppAttachPackagePropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AppAttachPackagePropertiesInput>;
+
 export interface AppAttachPackageCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -110,10 +152,19 @@ export interface AppAttachPackageCreateOrUpdateRequest {
   /** Detailed properties for App Attach Package */
   properties: AppAttachPackagePropertiesInput;
 }
+const AppAttachPackageCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AppAttachPackageCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -129,12 +180,22 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<SystemData>;
+
 /** Resource tags. */
 export type AppAttachPackageCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const AppAttachPackageCreateOrUpdateResponseTagsMap =
+  AppAttachPackageCreateOrUpdateRequestTagsMap as any as S.Schema<AppAttachPackageCreateOrUpdateResponseTagsMap>;
+
 /** The current provisioning state. */
 export type ProvisioningState = "Succeeded" | "Provisioning" | "Failed" | "Canceled";
+const ProvisioningState = S.String;
+
 /** List of Hostpool resource Ids. */
 export type AppAttachPackagePropertiesHostPoolReferencesList = Array<string>;
+const AppAttachPackagePropertiesHostPoolReferencesList =
+  AppAttachPackagePropertiesInputHostPoolReferencesList as any as S.Schema<AppAttachPackagePropertiesHostPoolReferencesList>;
+
 /** Schema for App Attach Package properties. */
 export interface AppAttachPackageProperties {
   /** The provisioning state of the App Attach Package. */
@@ -148,6 +209,11 @@ export interface AppAttachPackageProperties {
   /** Parameter indicating how the health check should behave if this package fails staging */
   failHealthCheckOnStagingFailure?: FailHealthCheckOnStagingFailureEnum;
 }
+const AppAttachPackageProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<AppAttachPackageProperties>;
+
 export interface AppAttachPackageCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -164,16 +230,33 @@ export interface AppAttachPackageCreateOrUpdateResponse {
   /** Detailed properties for App Attach Package */
   properties: AppAttachPackageProperties;
 }
+const AppAttachPackageCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<AppAttachPackageCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type ApplicationGroupsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const ApplicationGroupsCreateOrUpdateRequestTagsMap =
+  AppAttachPackageCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationGroupsCreateOrUpdateRequestTagsMap>;
+
 /** Type of managed service identity (either system assigned, or none). */
 export type SystemAssignedServiceIdentityType = "None" | "SystemAssigned";
+const SystemAssignedServiceIdentityType = S.String;
+
 /** Managed service identity (either system assigned, or none) */
 export interface ApplicationGroupsCreateOrUpdateRequestIdentity {
   type: SystemAssignedServiceIdentityType | (string & {});
 }
+const ApplicationGroupsCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ApplicationGroupsCreateOrUpdateRequestIdentity>;
+
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
 export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
+const SkuTier = S.String;
+
 /** The resource model definition representing SKU */
 export interface ApplicationGroupsCreateOrUpdateRequestSku {
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
@@ -186,6 +269,11 @@ export interface ApplicationGroupsCreateOrUpdateRequestSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
+const ApplicationGroupsCreateOrUpdateRequestSku = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ApplicationGroupsCreateOrUpdateRequestSku>;
+
 /** Plan for the resource. */
 export interface ApplicationGroupsCreateOrUpdateRequestPlan {
   /** A user defined name of the 3rd Party Artifact that is being procured. */
@@ -199,8 +287,15 @@ export interface ApplicationGroupsCreateOrUpdateRequestPlan {
   /** The version of the desired product/artifact. */
   version?: string;
 }
+const ApplicationGroupsCreateOrUpdateRequestPlan = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ApplicationGroupsCreateOrUpdateRequestPlan>;
+
 /** Resource Type of ApplicationGroup. */
 export type ApplicationGroupPropertiesInputApplicationGroupType = "RemoteApp" | "Desktop";
+const ApplicationGroupPropertiesInputApplicationGroupType = S.String;
+
 /** Schema for ApplicationGroup properties. */
 export interface ApplicationGroupPropertiesInput {
   /** Description of ApplicationGroup. */
@@ -214,6 +309,11 @@ export interface ApplicationGroupPropertiesInput {
   /** Boolean representing whether the applicationGroup is show in the feed. */
   showInFeed?: boolean;
 }
+const ApplicationGroupPropertiesInput = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ApplicationGroupPropertiesInput>;
+
 export interface ApplicationGroupsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -238,8 +338,16 @@ export interface ApplicationGroupsCreateOrUpdateRequest {
   /** Detailed properties for ApplicationGroup */
   properties: ApplicationGroupPropertiesInput;
 }
+const ApplicationGroupsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ApplicationGroupsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type ApplicationGroupsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const ApplicationGroupsCreateOrUpdateResponseTagsMap =
+  AppAttachPackageCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationGroupsCreateOrUpdateResponseTagsMap>;
+
 /** Managed service identity (either system assigned, or none) */
 export interface ApplicationGroupsCreateOrUpdateResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -248,6 +356,11 @@ export interface ApplicationGroupsCreateOrUpdateResponseIdentity {
   tenantId?: string;
   type: SystemAssignedServiceIdentityType;
 }
+const ApplicationGroupsCreateOrUpdateResponseIdentity = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ApplicationGroupsCreateOrUpdateResponseIdentity>;
+
 /** The resource model definition representing SKU */
 export interface ApplicationGroupsCreateOrUpdateResponseSku {
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
@@ -260,11 +373,16 @@ export interface ApplicationGroupsCreateOrUpdateResponseSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
+const ApplicationGroupsCreateOrUpdateResponseSku =
+  ApplicationGroupsCreateOrUpdateRequestSku as any as S.Schema<ApplicationGroupsCreateOrUpdateResponseSku>;
+
 /** Plan for the resource. */
 export type ApplicationGroupsCreateOrUpdateResponsePlan =
   ApplicationGroupsCreateOrUpdateRequestPlan;
 /** Resource Type of ApplicationGroup. */
 export type ApplicationGroupPropertiesApplicationGroupType = "RemoteApp" | "Desktop";
+const ApplicationGroupPropertiesApplicationGroupType = S.String;
+
 /** Schema for ApplicationGroup properties. */
 export interface ApplicationGroupProperties {
   /** ObjectId of ApplicationGroup. (internal use) */
@@ -284,6 +402,11 @@ export interface ApplicationGroupProperties {
   /** Boolean representing whether the applicationGroup is show in the feed. */
   showInFeed?: boolean;
 }
+const ApplicationGroupProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ApplicationGroupProperties>;
+
 export interface ApplicationGroupsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -312,10 +435,19 @@ export interface ApplicationGroupsCreateOrUpdateResponse {
   /** Detailed properties for ApplicationGroup */
   properties: ApplicationGroupProperties;
 }
+const ApplicationGroupsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ApplicationGroupsCreateOrUpdateResponse>;
+
 /** Resource Type of Application. */
 export type ApplicationPropertiesInputApplicationType = "InBuilt" | "MsixApplication";
+const ApplicationPropertiesInputApplicationType = S.String;
+
 /** Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all. */
 export type ApplicationPropertiesInputCommandLineSetting = "DoNotAllow" | "Allow" | "Require";
+const ApplicationPropertiesInputCommandLineSetting = S.String;
+
 /** Schema for Application properties. */
 export interface ApplicationPropertiesInput {
   /** Description of Application. */
@@ -341,6 +473,11 @@ export interface ApplicationPropertiesInput {
   /** Index of the icon. */
   iconIndex?: number;
 }
+const ApplicationPropertiesInput = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ApplicationPropertiesInput>;
+
 export interface ApplicationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -353,10 +490,19 @@ export interface ApplicationsCreateOrUpdateRequest {
   /** Detailed properties for Application */
   properties: ApplicationPropertiesInput;
 }
+const ApplicationsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ApplicationsCreateOrUpdateRequest>;
+
 /** Resource Type of Application. */
 export type ApplicationPropertiesApplicationType = "InBuilt" | "MsixApplication";
+const ApplicationPropertiesApplicationType = S.String;
+
 /** Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all. */
 export type ApplicationPropertiesCommandLineSetting = "DoNotAllow" | "Allow" | "Require";
+const ApplicationPropertiesCommandLineSetting = S.String;
+
 /** Schema for Application properties. */
 export interface ApplicationProperties {
   /** ObjectId of Application. (internal use) */
@@ -388,6 +534,11 @@ export interface ApplicationProperties {
   /** the icon a 64 bit string as a byte array. */
   iconContent?: string;
 }
+const ApplicationProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ApplicationProperties>;
+
 export interface ApplicationsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -400,8 +551,16 @@ export interface ApplicationsCreateOrUpdateResponse {
   /** Detailed properties for Application */
   properties: ApplicationProperties;
 }
+const ApplicationsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ApplicationsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type CreateScalingPlanRequestTagsMap = { [key: string]: string | undefined };
+const CreateScalingPlanRequestTagsMap =
+  AppAttachPackageCreateOrUpdateRequestTagsMap as any as S.Schema<CreateScalingPlanRequestTagsMap>;
+
 /** Managed service identity (either system assigned, or none) */
 export type CreateScalingPlanRequestIdentity = ApplicationGroupsCreateOrUpdateRequestIdentity;
 /** The resource model definition representing SKU */
@@ -410,6 +569,8 @@ export type CreateScalingPlanRequestSku = ApplicationGroupsCreateOrUpdateRequest
 export type CreateScalingPlanRequestPlan = ApplicationGroupsCreateOrUpdateRequestPlan;
 /** HostPool type for desktop. */
 export type ScalingPlanPropertiesInputHostPoolType = "Pooled";
+const ScalingPlanPropertiesInputHostPoolType = S.String;
+
 export type ScalingScheduleDaysOfWeekItem =
   | "Sunday"
   | "Monday"
@@ -418,8 +579,15 @@ export type ScalingScheduleDaysOfWeekItem =
   | "Thursday"
   | "Friday"
   | "Saturday";
+const ScalingScheduleDaysOfWeekItem = S.String;
+
 /** Set of days of the week on which this schedule is active. */
 export type ScalingScheduleDaysOfWeekList = Array<ScalingScheduleDaysOfWeekItem | (string & {})>;
+const ScalingScheduleDaysOfWeekList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ScalingScheduleDaysOfWeekList>;
+
 /** The time for a scaling action to occur. */
 export interface Time {
   /** The hour. */
@@ -427,16 +595,28 @@ export interface Time {
   /** The minute. */
   minute: number;
 }
+const Time = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Time>;
+
 /** Load balancing algorithm for ramp up period. */
 export type ScalingScheduleRampUpLoadBalancingAlgorithm = "BreadthFirst" | "DepthFirst";
+const ScalingScheduleRampUpLoadBalancingAlgorithm = S.String;
+
 /** Load balancing algorithm for peak period. */
 export type ScalingSchedulePeakLoadBalancingAlgorithm = "BreadthFirst" | "DepthFirst";
+const ScalingSchedulePeakLoadBalancingAlgorithm = S.String;
+
 /** Load balancing algorithm for ramp down period. */
 export type ScalingScheduleRampDownLoadBalancingAlgorithm = "BreadthFirst" | "DepthFirst";
+const ScalingScheduleRampDownLoadBalancingAlgorithm = S.String;
+
 /** Specifies when to stop hosts during ramp down period. */
 export type ScalingScheduleRampDownStopHostsWhen = "ZeroSessions" | "ZeroActiveSessions";
+const ScalingScheduleRampDownStopHostsWhen = S.String;
+
 /** Load balancing algorithm for off-peak period. */
 export type ScalingScheduleOffPeakLoadBalancingAlgorithm = "BreadthFirst" | "DepthFirst";
+const ScalingScheduleOffPeakLoadBalancingAlgorithm = S.String;
+
 /** A ScalingPlanPooledSchedule. */
 export interface ScalingSchedule {
   /** Name of the ScalingPlanPooledSchedule. */
@@ -476,8 +656,15 @@ export interface ScalingSchedule {
   /** Load balancing algorithm for off-peak period. */
   offPeakLoadBalancingAlgorithm?: ScalingScheduleOffPeakLoadBalancingAlgorithm | (string & {});
 }
+const ScalingSchedule = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ScalingSchedule>;
+
 /** List of ScalingPlanPooledSchedule definitions. */
 export type ScalingPlanPropertiesInputSchedulesList = Array<ScalingSchedule>;
+const ScalingPlanPropertiesInputSchedulesList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ScalingPlanPropertiesInputSchedulesList>;
+
 /** Scaling plan reference to hostpool. */
 export interface ScalingHostPoolReference {
   /** Arm path of referenced hostpool. */
@@ -485,8 +672,18 @@ export interface ScalingHostPoolReference {
   /** Is the scaling plan enabled for this hostpool. */
   scalingPlanEnabled?: boolean;
 }
+const ScalingHostPoolReference = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ScalingHostPoolReference>;
+
 /** List of ScalingHostPoolReference definitions. */
 export type ScalingPlanPropertiesInputHostPoolReferencesList = Array<ScalingHostPoolReference>;
+const ScalingPlanPropertiesInputHostPoolReferencesList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ScalingPlanPropertiesInputHostPoolReferencesList>;
+
 /** Scaling plan properties. */
 export interface ScalingPlanPropertiesInput {
   /** Description of scaling plan. */
@@ -504,6 +701,11 @@ export interface ScalingPlanPropertiesInput {
   /** List of ScalingHostPoolReference definitions. */
   hostPoolReferences?: ScalingPlanPropertiesInputHostPoolReferencesList;
 }
+const ScalingPlanPropertiesInput = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ScalingPlanPropertiesInput>;
+
 export interface CreateScalingPlanRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -528,8 +730,16 @@ export interface CreateScalingPlanRequest {
   /** Detailed properties for scaling plan. */
   properties: ScalingPlanPropertiesInput;
 }
+const CreateScalingPlanRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateScalingPlanRequest>;
+
 /** Resource tags. */
 export type CreateScalingPlanResponseTagsMap = { [key: string]: string | undefined };
+const CreateScalingPlanResponseTagsMap =
+  AppAttachPackageCreateOrUpdateRequestTagsMap as any as S.Schema<CreateScalingPlanResponseTagsMap>;
+
 /** Managed service identity (either system assigned, or none) */
 export type CreateScalingPlanResponseIdentity = ApplicationGroupsCreateOrUpdateResponseIdentity;
 /** The resource model definition representing SKU */
@@ -538,10 +748,18 @@ export type CreateScalingPlanResponseSku = ApplicationGroupsCreateOrUpdateRespon
 export type CreateScalingPlanResponsePlan = ApplicationGroupsCreateOrUpdateRequestPlan;
 /** HostPool type for desktop. */
 export type ScalingPlanPropertiesHostPoolType = "Pooled";
+const ScalingPlanPropertiesHostPoolType = S.String;
+
 /** List of ScalingPlanPooledSchedule definitions. */
 export type ScalingPlanPropertiesSchedulesList = Array<ScalingSchedule>;
+const ScalingPlanPropertiesSchedulesList =
+  ScalingPlanPropertiesInputSchedulesList as any as S.Schema<ScalingPlanPropertiesSchedulesList>;
+
 /** List of ScalingHostPoolReference definitions. */
 export type ScalingPlanPropertiesHostPoolReferencesList = Array<ScalingHostPoolReference>;
+const ScalingPlanPropertiesHostPoolReferencesList =
+  ScalingPlanPropertiesInputHostPoolReferencesList as any as S.Schema<ScalingPlanPropertiesHostPoolReferencesList>;
+
 /** Scaling plan properties. */
 export interface ScalingPlanProperties {
   /** ObjectId of scaling plan. (internal use) */
@@ -561,6 +779,11 @@ export interface ScalingPlanProperties {
   /** List of ScalingHostPoolReference definitions. */
   hostPoolReferences?: ScalingPlanPropertiesHostPoolReferencesList;
 }
+const ScalingPlanProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ScalingPlanProperties>;
+
 export interface CreateScalingPlanResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -589,6 +812,11 @@ export interface CreateScalingPlanResponse {
   /** Detailed properties for scaling plan. */
   properties: ScalingPlanProperties;
 }
+const CreateScalingPlanResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateScalingPlanResponse>;
+
 export type ScalingPlanPersonalSchedulePropertiesDaysOfWeekItem =
   | "Monday"
   | "Tuesday"
@@ -601,44 +829,73 @@ export type ScalingPlanPersonalSchedulePropertiesDaysOfWeekItem =
 export type ScalingPlanPersonalSchedulePropertiesDaysOfWeekList = Array<
   ScalingPlanPersonalSchedulePropertiesDaysOfWeekItem | (string & {})
 >;
+const ScalingPlanPersonalSchedulePropertiesDaysOfWeekList =
+  ScalingScheduleDaysOfWeekList as any as S.Schema<ScalingPlanPersonalSchedulePropertiesDaysOfWeekList>;
+
 /** The desired startup behavior during the ramp up period for personal vms in the hostpool. */
 export type ScalingPlanPersonalSchedulePropertiesRampUpAutoStartHosts =
   | "None"
   | "WithAssignedUser"
   | "All";
+const ScalingPlanPersonalSchedulePropertiesRampUpAutoStartHosts = S.String;
+
 /** The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually. */
 export type ScalingPlanPersonalSchedulePropertiesRampUpStartVMOnConnect = "Enable" | "Disable";
+const ScalingPlanPersonalSchedulePropertiesRampUpStartVMOnConnect = S.String;
+
 /** Action to be taken after a user disconnect during the ramp up period. */
 export type ScalingPlanPersonalSchedulePropertiesRampUpActionOnDisconnect = "None" | "Deallocate";
+const ScalingPlanPersonalSchedulePropertiesRampUpActionOnDisconnect = S.String;
+
 /** Action to be taken after a logoff during the ramp up period. */
 export type ScalingPlanPersonalSchedulePropertiesRampUpActionOnLogoff = "None" | "Deallocate";
+const ScalingPlanPersonalSchedulePropertiesRampUpActionOnLogoff = S.String;
+
 /** The desired configuration of Start VM On Connect for the hostpool during the peak phase. */
 export type ScalingPlanPersonalSchedulePropertiesPeakStartVMOnConnect = "Enable" | "Disable";
+const ScalingPlanPersonalSchedulePropertiesPeakStartVMOnConnect = S.String;
+
 /** Action to be taken after a user disconnect during the peak period. */
 export type ScalingPlanPersonalSchedulePropertiesPeakActionOnDisconnect = "None" | "Deallocate";
+const ScalingPlanPersonalSchedulePropertiesPeakActionOnDisconnect = S.String;
+
 /** Action to be taken after a logoff during the peak period. */
 export type ScalingPlanPersonalSchedulePropertiesPeakActionOnLogoff = "None" | "Deallocate";
+const ScalingPlanPersonalSchedulePropertiesPeakActionOnLogoff = S.String;
+
 /** The desired configuration of Start VM On Connect for the hostpool during the ramp down phase. */
 export type ScalingPlanPersonalSchedulePropertiesRampDownStartVMOnConnect = "Enable" | "Disable";
+const ScalingPlanPersonalSchedulePropertiesRampDownStartVMOnConnect = S.String;
+
 /** Action to be taken after a user disconnect during the ramp down period. */
 export type ScalingPlanPersonalSchedulePropertiesRampDownActionOnDisconnect = "None" | "Deallocate";
+const ScalingPlanPersonalSchedulePropertiesRampDownActionOnDisconnect = S.String;
+
 /** Action to be taken after a logoff during the ramp down period. */
 export type ScalingPlanPersonalSchedulePropertiesRampDownActionOnLogoff =
   | "None"
   | "Deallocate"
   | "Hibernate";
+const ScalingPlanPersonalSchedulePropertiesRampDownActionOnLogoff = S.String;
+
 /** The desired configuration of Start VM On Connect for the hostpool during the off-peak phase. */
 export type ScalingPlanPersonalSchedulePropertiesOffPeakStartVMOnConnect = "Enable" | "Disable";
+const ScalingPlanPersonalSchedulePropertiesOffPeakStartVMOnConnect = S.String;
+
 /** Action to be taken after a user disconnect during the off-peak period. */
 export type ScalingPlanPersonalSchedulePropertiesOffPeakActionOnDisconnect =
   | "None"
   | "Deallocate"
   | "Hibernate";
+const ScalingPlanPersonalSchedulePropertiesOffPeakActionOnDisconnect = S.String;
+
 /** Action to be taken after a logoff during the off-peak period. */
 export type ScalingPlanPersonalSchedulePropertiesOffPeakActionOnLogoff =
   | "None"
   | "Deallocate"
   | "Hibernate";
+const ScalingPlanPersonalSchedulePropertiesOffPeakActionOnLogoff = S.String;
+
 /** A ScalingPlanPersonalSchedule. */
 export interface ScalingPlanPersonalScheduleProperties {
   /** Set of days of the week on which this schedule is active. */
@@ -712,6 +969,11 @@ export interface ScalingPlanPersonalScheduleProperties {
   /** The time in minutes to wait before performing the desired session handling action when a user logs off during the off-peak period. */
   offPeakMinutesToWaitOnLogoff?: number;
 }
+const ScalingPlanPersonalScheduleProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ScalingPlanPersonalScheduleProperties>;
+
 export interface CreateScalingPlanPersonalScheduleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -724,6 +986,11 @@ export interface CreateScalingPlanPersonalScheduleRequest {
   /** Detailed properties for ScalingPlanPersonalSchedule */
   properties: ScalingPlanPersonalScheduleProperties;
 }
+const CreateScalingPlanPersonalScheduleRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateScalingPlanPersonalScheduleRequest>;
+
 export interface CreateScalingPlanPersonalScheduleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -736,6 +1003,11 @@ export interface CreateScalingPlanPersonalScheduleResponse {
   /** Detailed properties for ScalingPlanPersonalSchedule */
   properties: ScalingPlanPersonalScheduleProperties;
 }
+const CreateScalingPlanPersonalScheduleResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateScalingPlanPersonalScheduleResponse>;
+
 export type ScalingPlanPooledSchedulePropertiesDaysOfWeekItem =
   | "Monday"
   | "Tuesday"
@@ -748,26 +1020,39 @@ export type ScalingPlanPooledSchedulePropertiesDaysOfWeekItem =
 export type ScalingPlanPooledSchedulePropertiesDaysOfWeekList = Array<
   ScalingPlanPooledSchedulePropertiesDaysOfWeekItem | (string & {})
 >;
+const ScalingPlanPooledSchedulePropertiesDaysOfWeekList =
+  ScalingScheduleDaysOfWeekList as any as S.Schema<ScalingPlanPooledSchedulePropertiesDaysOfWeekList>;
+
 /** Load balancing algorithm for ramp up period. */
 export type ScalingPlanPooledSchedulePropertiesRampUpLoadBalancingAlgorithm =
   | "BreadthFirst"
   | "DepthFirst";
+const ScalingPlanPooledSchedulePropertiesRampUpLoadBalancingAlgorithm = S.String;
+
 /** Load balancing algorithm for peak period. */
 export type ScalingPlanPooledSchedulePropertiesPeakLoadBalancingAlgorithm =
   | "BreadthFirst"
   | "DepthFirst";
+const ScalingPlanPooledSchedulePropertiesPeakLoadBalancingAlgorithm = S.String;
+
 /** Load balancing algorithm for ramp down period. */
 export type ScalingPlanPooledSchedulePropertiesRampDownLoadBalancingAlgorithm =
   | "BreadthFirst"
   | "DepthFirst";
+const ScalingPlanPooledSchedulePropertiesRampDownLoadBalancingAlgorithm = S.String;
+
 /** Specifies when to stop hosts during ramp down period. */
 export type ScalingPlanPooledSchedulePropertiesRampDownStopHostsWhen =
   | "ZeroSessions"
   | "ZeroActiveSessions";
+const ScalingPlanPooledSchedulePropertiesRampDownStopHostsWhen = S.String;
+
 /** Load balancing algorithm for off-peak period. */
 export type ScalingPlanPooledSchedulePropertiesOffPeakLoadBalancingAlgorithm =
   | "BreadthFirst"
   | "DepthFirst";
+const ScalingPlanPooledSchedulePropertiesOffPeakLoadBalancingAlgorithm = S.String;
+
 /** A ScalingPlanPooledSchedule. */
 export interface ScalingPlanPooledScheduleProperties {
   /** Set of days of the week on which this schedule is active. */
@@ -813,6 +1098,11 @@ export interface ScalingPlanPooledScheduleProperties {
     | ScalingPlanPooledSchedulePropertiesOffPeakLoadBalancingAlgorithm
     | (string & {});
 }
+const ScalingPlanPooledScheduleProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ScalingPlanPooledScheduleProperties>;
+
 export interface CreateScalingPlanPooledScheduleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -825,6 +1115,11 @@ export interface CreateScalingPlanPooledScheduleRequest {
   /** Detailed properties for ScalingPlanPooledSchedule */
   properties: ScalingPlanPooledScheduleProperties;
 }
+const CreateScalingPlanPooledScheduleRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateScalingPlanPooledScheduleRequest>;
+
 export interface CreateScalingPlanPooledScheduleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -837,6 +1132,11 @@ export interface CreateScalingPlanPooledScheduleResponse {
   /** Detailed properties for ScalingPlanPooledSchedule */
   properties: ScalingPlanPooledScheduleProperties;
 }
+const CreateScalingPlanPooledScheduleResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreateScalingPlanPooledScheduleResponse>;
+
 export interface DeleteAppAttachPackageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -845,7 +1145,17 @@ export interface DeleteAppAttachPackageRequest {
   /** The name of the App Attach package */
   appAttachPackageName: string;
 }
+const DeleteAppAttachPackageRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<DeleteAppAttachPackageRequest>;
+
 export interface DeleteAppAttachPackageResponse {}
+const DeleteAppAttachPackageResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<DeleteAppAttachPackageResponse>;
+
 export interface DeleteApplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -856,7 +1166,15 @@ export interface DeleteApplicationRequest {
   /** The name of the application within the specified application group */
   applicationName: string;
 }
+const DeleteApplicationRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DeleteApplicationRequest>;
+
 export interface DeleteApplicationResponse {}
+const DeleteApplicationResponse =
+  DeleteAppAttachPackageResponse as any as S.Schema<DeleteApplicationResponse>;
+
 export interface DeleteApplicationGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -865,7 +1183,15 @@ export interface DeleteApplicationGroupRequest {
   /** The name of the application group */
   applicationGroupName: string;
 }
+const DeleteApplicationGroupRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DeleteApplicationGroupRequest>;
+
 export interface DeleteApplicationGroupResponse {}
+const DeleteApplicationGroupResponse =
+  DeleteAppAttachPackageResponse as any as S.Schema<DeleteApplicationGroupResponse>;
+
 export interface DeleteHostPoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -876,7 +1202,15 @@ export interface DeleteHostPoolRequest {
   /** Force flag to delete sessionHost. */
   force?: boolean;
 }
+const DeleteHostPoolRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<DeleteHostPoolRequest>;
+
 export interface DeleteHostPoolResponse {}
+const DeleteHostPoolResponse =
+  DeleteAppAttachPackageResponse as any as S.Schema<DeleteHostPoolResponse>;
+
 export interface DeleteMSIXPackageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -887,7 +1221,15 @@ export interface DeleteMSIXPackageRequest {
   /** The version specific package full name of the MSIX package within specified hostpool */
   msixPackageFullName: string;
 }
+const DeleteMSIXPackageRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DeleteMSIXPackageRequest>;
+
 export interface DeleteMSIXPackageResponse {}
+const DeleteMSIXPackageResponse =
+  DeleteAppAttachPackageResponse as any as S.Schema<DeleteMSIXPackageResponse>;
+
 export interface DeletePrivateEndpointConnectionByHostPoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -898,7 +1240,17 @@ export interface DeletePrivateEndpointConnectionByHostPoolRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
+const DeletePrivateEndpointConnectionByHostPoolRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DeletePrivateEndpointConnectionByHostPoolRequest>;
+
 export interface DeletePrivateEndpointConnectionByHostPoolResponse {}
+const DeletePrivateEndpointConnectionByHostPoolResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DeletePrivateEndpointConnectionByHostPoolResponse>;
+
 export interface DeletePrivateEndpointConnectionByWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -909,7 +1261,15 @@ export interface DeletePrivateEndpointConnectionByWorkspaceRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
+const DeletePrivateEndpointConnectionByWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DeletePrivateEndpointConnectionByWorkspaceRequest>;
+
 export interface DeletePrivateEndpointConnectionByWorkspaceResponse {}
+const DeletePrivateEndpointConnectionByWorkspaceResponse =
+  DeletePrivateEndpointConnectionByHostPoolResponse as any as S.Schema<DeletePrivateEndpointConnectionByWorkspaceResponse>;
+
 export interface DeleteScalingPlanRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -918,7 +1278,15 @@ export interface DeleteScalingPlanRequest {
   /** The name of the scaling plan. */
   scalingPlanName: string;
 }
+const DeleteScalingPlanRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<DeleteScalingPlanRequest>;
+
 export interface DeleteScalingPlanResponse {}
+const DeleteScalingPlanResponse =
+  DeleteAppAttachPackageResponse as any as S.Schema<DeleteScalingPlanResponse>;
+
 export interface DeleteScalingPlanPersonalScheduleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -929,7 +1297,15 @@ export interface DeleteScalingPlanPersonalScheduleRequest {
   /** The name of the ScalingPlanSchedule */
   scalingPlanScheduleName: string;
 }
+const DeleteScalingPlanPersonalScheduleRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DeleteScalingPlanPersonalScheduleRequest>;
+
 export interface DeleteScalingPlanPersonalScheduleResponse {}
+const DeleteScalingPlanPersonalScheduleResponse =
+  DeletePrivateEndpointConnectionByHostPoolResponse as any as S.Schema<DeleteScalingPlanPersonalScheduleResponse>;
+
 export interface DeleteScalingPlanPooledScheduleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -940,7 +1316,15 @@ export interface DeleteScalingPlanPooledScheduleRequest {
   /** The name of the ScalingPlanSchedule */
   scalingPlanScheduleName: string;
 }
+const DeleteScalingPlanPooledScheduleRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DeleteScalingPlanPooledScheduleRequest>;
+
 export interface DeleteScalingPlanPooledScheduleResponse {}
+const DeleteScalingPlanPooledScheduleResponse =
+  DeletePrivateEndpointConnectionByHostPoolResponse as any as S.Schema<DeleteScalingPlanPooledScheduleResponse>;
+
 export interface DeleteSessionHostRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -953,7 +1337,15 @@ export interface DeleteSessionHostRequest {
   /** Force flag to force sessionHost deletion even when userSession exists. */
   force?: boolean;
 }
+const DeleteSessionHostRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DeleteSessionHostRequest>;
+
 export interface DeleteSessionHostResponse {}
+const DeleteSessionHostResponse =
+  DeleteAppAttachPackageResponse as any as S.Schema<DeleteSessionHostResponse>;
+
 export interface DeleteUserSessionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -968,7 +1360,15 @@ export interface DeleteUserSessionRequest {
   /** Force flag to login off userSession. */
   force?: boolean;
 }
+const DeleteUserSessionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DeleteUserSessionRequest>;
+
 export interface DeleteUserSessionResponse {}
+const DeleteUserSessionResponse =
+  DeleteAppAttachPackageResponse as any as S.Schema<DeleteUserSessionResponse>;
+
 export interface DeleteWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -977,7 +1377,15 @@ export interface DeleteWorkspaceRequest {
   /** The name of the workspace */
   workspaceName: string;
 }
+const DeleteWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<DeleteWorkspaceRequest>;
+
 export interface DeleteWorkspaceResponse {}
+const DeleteWorkspaceResponse =
+  DeleteAppAttachPackageResponse as any as S.Schema<DeleteWorkspaceResponse>;
+
 export interface DisconnectUserSessionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -990,7 +1398,15 @@ export interface DisconnectUserSessionRequest {
   /** The name of the user session within the specified session host */
   userSessionId: string;
 }
+const DisconnectUserSessionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<DisconnectUserSessionRequest>;
+
 export interface DisconnectUserSessionResponse {}
+const DisconnectUserSessionResponse =
+  DeleteAppAttachPackageResponse as any as S.Schema<DisconnectUserSessionResponse>;
+
 export interface GetAppAttachPackageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -999,6 +1415,11 @@ export interface GetAppAttachPackageRequest {
   /** The name of the App Attach package */
   appAttachPackageName: string;
 }
+const GetAppAttachPackageRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<GetAppAttachPackageRequest>;
+
 /** Resource tags. */
 export type GetAppAttachPackageResponseTagsMap = { [key: string]: string | undefined };
 export interface GetAppAttachPackageResponse {
@@ -1017,6 +1438,9 @@ export interface GetAppAttachPackageResponse {
   /** Detailed properties for App Attach Package */
   properties: AppAttachPackageProperties;
 }
+const GetAppAttachPackageResponse =
+  AppAttachPackageCreateOrUpdateResponse as any as S.Schema<GetAppAttachPackageResponse>;
+
 export interface GetApplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1027,6 +1451,11 @@ export interface GetApplicationRequest {
   /** The name of the application within the specified application group */
   applicationName: string;
 }
+const GetApplicationRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GetApplicationRequest>;
+
 export interface GetApplicationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1039,6 +1468,11 @@ export interface GetApplicationResponse {
   /** Detailed properties for Application */
   properties: ApplicationProperties;
 }
+const GetApplicationResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<GetApplicationResponse>;
+
 export interface GetApplicationGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1047,6 +1481,11 @@ export interface GetApplicationGroupRequest {
   /** The name of the application group */
   applicationGroupName: string;
 }
+const GetApplicationGroupRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetApplicationGroupRequest>;
+
 /** Resource tags. */
 export type GetApplicationGroupResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (either system assigned, or none) */
@@ -1083,6 +1522,9 @@ export interface GetApplicationGroupResponse {
   /** Detailed properties for ApplicationGroup */
   properties: ApplicationGroupProperties;
 }
+const GetApplicationGroupResponse =
+  ApplicationGroupsCreateOrUpdateResponse as any as S.Schema<GetApplicationGroupResponse>;
+
 export interface GetDesktopRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1093,6 +1535,8 @@ export interface GetDesktopRequest {
   /** The name of the desktop within the specified desktop group */
   desktopName: string;
 }
+const GetDesktopRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<GetDesktopRequest>;
+
 /** Schema for Desktop properties. */
 export interface DesktopProperties {
   /** ObjectId of Desktop. (internal use) */
@@ -1106,6 +1550,8 @@ export interface DesktopProperties {
   /** The icon a 64 bit string as a byte array. */
   iconContent?: string;
 }
+const DesktopProperties = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<DesktopProperties>;
+
 export interface GetDesktopResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1118,6 +1564,8 @@ export interface GetDesktopResponse {
   /** Detailed properties for Desktop */
   properties?: DesktopProperties;
 }
+const GetDesktopResponse = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<GetDesktopResponse>;
+
 export interface GetHostPoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1126,8 +1574,13 @@ export interface GetHostPoolRequest {
   /** The name of the host pool within the specified resource group */
   hostPoolName: string;
 }
+const GetHostPoolRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<GetHostPoolRequest>;
+
 /** Resource tags. */
 export type GetHostPoolResponseTagsMap = { [key: string]: string | undefined };
+const GetHostPoolResponseTagsMap =
+  AppAttachPackageCreateOrUpdateRequestTagsMap as any as S.Schema<GetHostPoolResponseTagsMap>;
+
 /** Managed service identity (either system assigned, or none) */
 export type GetHostPoolResponseIdentity = ApplicationGroupsCreateOrUpdateResponseIdentity;
 /** The resource model definition representing SKU */
@@ -1136,16 +1589,24 @@ export type GetHostPoolResponseSku = ApplicationGroupsCreateOrUpdateResponseSku;
 export type GetHostPoolResponsePlan = ApplicationGroupsCreateOrUpdateRequestPlan;
 /** HostPool type for desktop. */
 export type HostPoolPropertiesHostPoolType = "Personal" | "Pooled" | "BYODesktop";
+const HostPoolPropertiesHostPoolType = S.String;
+
 /** PersonalDesktopAssignment type for HostPool. */
 export type HostPoolPropertiesPersonalDesktopAssignmentType = "Automatic" | "Direct";
+const HostPoolPropertiesPersonalDesktopAssignmentType = S.String;
+
 /** The type of the load balancer. */
 export type HostPoolPropertiesLoadBalancerType =
   | "BreadthFirst"
   | "DepthFirst"
   | "Persistent"
   | "MultiplePersistent";
+const HostPoolPropertiesLoadBalancerType = S.String;
+
 /** The type of resetting the token. */
 export type RegistrationInfoRegistrationTokenOperation = "Delete" | "None" | "Update";
+const RegistrationInfoRegistrationTokenOperation = S.String;
+
 /** Represents a RegistrationInfo definition. */
 export interface RegistrationInfo {
   /** Expiration time of registration token. */
@@ -1155,26 +1616,42 @@ export interface RegistrationInfo {
   /** The type of resetting the token. */
   registrationTokenOperation?: RegistrationInfoRegistrationTokenOperation | (string & {});
 }
+const RegistrationInfo = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<RegistrationInfo>;
+
 /** List of applicationGroup links. */
 export type HostPoolPropertiesApplicationGroupReferencesList = Array<string>;
+const HostPoolPropertiesApplicationGroupReferencesList =
+  AppAttachPackagePropertiesInputHostPoolReferencesList as any as S.Schema<HostPoolPropertiesApplicationGroupReferencesList>;
+
 /** List of App Attach Package links. */
 export type HostPoolPropertiesAppAttachPackageReferencesList = Array<string>;
+const HostPoolPropertiesAppAttachPackageReferencesList =
+  AppAttachPackagePropertiesInputHostPoolReferencesList as any as S.Schema<HostPoolPropertiesAppAttachPackageReferencesList>;
+
 /** The type of single sign on Secret Type. */
 export type HostPoolPropertiesSsoSecretType =
   | "SharedKey"
   | "Certificate"
   | "SharedKeyInKeyVault"
   | "CertificateInKeyVault";
+const HostPoolPropertiesSsoSecretType = S.String;
+
 /** The type of preferred application group type, default to Desktop Application Group */
 export type HostPoolPropertiesPreferredAppGroupType = "None" | "Desktop" | "RailApplications";
+const HostPoolPropertiesPreferredAppGroupType = S.String;
+
 /** Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints */
 export type HostPoolPropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
   | "EnabledForSessionHostsOnly"
   | "EnabledForClientsOnly";
+const HostPoolPropertiesPublicNetworkAccess = S.String;
+
 /** The type of maintenance for session host components. */
 export type AgentUpdatePropertiesType = "Default" | "Scheduled";
+const AgentUpdatePropertiesType = S.String;
+
 /** Day of the week. */
 export type MaintenanceWindowPropertiesDayOfWeek =
   | "Monday"
@@ -1184,6 +1661,8 @@ export type MaintenanceWindowPropertiesDayOfWeek =
   | "Friday"
   | "Saturday"
   | "Sunday";
+const MaintenanceWindowPropertiesDayOfWeek = S.String;
+
 /** Maintenance window starting hour and day of week. */
 export interface MaintenanceWindowProperties {
   /** The update start hour of the day. (0 - 23) */
@@ -1191,8 +1670,18 @@ export interface MaintenanceWindowProperties {
   /** Day of the week. */
   dayOfWeek?: MaintenanceWindowPropertiesDayOfWeek | (string & {});
 }
+const MaintenanceWindowProperties = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<MaintenanceWindowProperties>;
+
 /** List of maintenance windows. Maintenance windows are 2 hours long. */
 export type AgentUpdatePropertiesMaintenanceWindowsList = Array<MaintenanceWindowProperties>;
+const AgentUpdatePropertiesMaintenanceWindowsList = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<AgentUpdatePropertiesMaintenanceWindowsList>;
+
 /** The session host configuration for updating agent, monitoring agent, and stack component. */
 export interface AgentUpdateProperties {
   /** The type of maintenance for session host components. */
@@ -1204,15 +1693,27 @@ export interface AgentUpdateProperties {
   /** List of maintenance windows. Maintenance windows are 2 hours long. */
   maintenanceWindows?: AgentUpdatePropertiesMaintenanceWindowsList | null;
 }
+const AgentUpdateProperties = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<AgentUpdateProperties>;
+
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
+const PrivateEndpointConnectionPropertiesGroupIdsList =
+  AppAttachPackagePropertiesInputHostPoolReferencesList as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
+
 /** The private endpoint resource. */
 export interface PrivateEndpoint {
   /** The ARM identifier for private endpoint. */
   id?: string;
 }
+const PrivateEndpoint = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<PrivateEndpoint>;
+
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
+const PrivateEndpointServiceConnectionStatus = S.String;
+
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
@@ -1222,12 +1723,19 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<PrivateLinkServiceConnectionState>;
+
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
   | "Failed";
+const PrivateEndpointConnectionProvisioningState = S.String;
+
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionProperties {
   /** The group ids for the private endpoint resource. */
@@ -1239,6 +1747,11 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<PrivateEndpointConnectionProperties>;
+
 /** The private endpoint connection resource. */
 export interface HostPoolPropertiesPrivateEndpointConnectionsItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1252,9 +1765,19 @@ export interface HostPoolPropertiesPrivateEndpointConnectionsItem {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const HostPoolPropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<HostPoolPropertiesPrivateEndpointConnectionsItem>;
+
 /** List of private endpoint connection associated with the specified resource */
 export type HostPoolPropertiesPrivateEndpointConnectionsList =
   Array<HostPoolPropertiesPrivateEndpointConnectionsItem>;
+const HostPoolPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<HostPoolPropertiesPrivateEndpointConnectionsList>;
+
 /** Properties of HostPool. */
 export interface HostPoolProperties {
   /** ObjectId of HostPool. (internal use) */
@@ -1306,6 +1829,8 @@ export interface HostPoolProperties {
   /** List of private endpoint connection associated with the specified resource */
   privateEndpointConnections?: HostPoolPropertiesPrivateEndpointConnectionsList | null;
 }
+const HostPoolProperties = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<HostPoolProperties>;
+
 export interface GetHostPoolResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1334,6 +1859,8 @@ export interface GetHostPoolResponse {
   /** Detailed properties for HostPool */
   properties: HostPoolProperties;
 }
+const GetHostPoolResponse = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<GetHostPoolResponse>;
+
 export interface GetHostPoolRegistrationTokenRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1342,6 +1869,11 @@ export interface GetHostPoolRegistrationTokenRequest {
   /** The name of the host pool within the specified resource group */
   hostPoolName: string;
 }
+const GetHostPoolRegistrationTokenRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<GetHostPoolRegistrationTokenRequest>;
+
 export interface GetMSIXPackageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1352,10 +1884,21 @@ export interface GetMSIXPackageRequest {
   /** The version specific package full name of the MSIX package within specified hostpool */
   msixPackageFullName: string;
 }
+const GetMSIXPackageRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GetMSIXPackageRequest>;
+
 /** List of package dependencies. */
 export type MSIXPackagePropertiesPackageDependenciesList = Array<MsixPackageDependencies>;
+const MSIXPackagePropertiesPackageDependenciesList =
+  AppAttachPackageInfoPropertiesPackageDependenciesList as any as S.Schema<MSIXPackagePropertiesPackageDependenciesList>;
+
 /** List of package applications. */
 export type MSIXPackagePropertiesPackageApplicationsList = Array<MsixPackageApplications>;
+const MSIXPackagePropertiesPackageApplicationsList =
+  AppAttachPackageInfoPropertiesPackageApplicationsList as any as S.Schema<MSIXPackagePropertiesPackageApplicationsList>;
+
 /** Schema for MSIX Package properties. */
 export interface MSIXPackageProperties {
   /** VHD/CIM image path on Network Share. */
@@ -1381,6 +1924,11 @@ export interface MSIXPackageProperties {
   /** List of package applications. */
   packageApplications?: MSIXPackagePropertiesPackageApplicationsList;
 }
+const MSIXPackageProperties = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<MSIXPackageProperties>;
+
 export interface GetMSIXPackageResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1393,6 +1941,11 @@ export interface GetMSIXPackageResponse {
   /** Detailed properties for MSIX Package */
   properties: MSIXPackageProperties;
 }
+const GetMSIXPackageResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<GetMSIXPackageResponse>;
+
 export interface GetPrivateEndpointConnectionByHostPoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1403,8 +1956,18 @@ export interface GetPrivateEndpointConnectionByHostPoolRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
+const GetPrivateEndpointConnectionByHostPoolRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<GetPrivateEndpointConnectionByHostPoolRequest>;
+
 /** The group ids for the private endpoint resource. */
 export type GetPrivateEndpointConnectionByHostPoolResponsePropertiesGroupIdsList = Array<string>;
+const GetPrivateEndpointConnectionByHostPoolResponsePropertiesGroupIdsList = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<GetPrivateEndpointConnectionByHostPoolResponsePropertiesGroupIdsList>;
+
 /** Properties of the private endpoint connection. */
 export interface GetPrivateEndpointConnectionByHostPoolResponseProperties {
   /** The group ids for the private endpoint resource. */
@@ -1416,6 +1979,11 @@ export interface GetPrivateEndpointConnectionByHostPoolResponseProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
+const GetPrivateEndpointConnectionByHostPoolResponseProperties = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<GetPrivateEndpointConnectionByHostPoolResponseProperties>;
+
 export interface GetPrivateEndpointConnectionByHostPoolResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1428,6 +1996,11 @@ export interface GetPrivateEndpointConnectionByHostPoolResponse {
   /** Properties of the private endpoint connection. */
   properties?: GetPrivateEndpointConnectionByHostPoolResponseProperties;
 }
+const GetPrivateEndpointConnectionByHostPoolResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<GetPrivateEndpointConnectionByHostPoolResponse>;
+
 export interface GetPrivateEndpointConnectionByWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1438,6 +2011,11 @@ export interface GetPrivateEndpointConnectionByWorkspaceRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
+const GetPrivateEndpointConnectionByWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<GetPrivateEndpointConnectionByWorkspaceRequest>;
+
 /** The group ids for the private endpoint resource. */
 export type GetPrivateEndpointConnectionByWorkspaceResponsePropertiesGroupIdsList = Array<string>;
 /** Properties of the private endpoint connection. */
@@ -1463,6 +2041,9 @@ export interface GetPrivateEndpointConnectionByWorkspaceResponse {
   /** Properties of the private endpoint connection. */
   properties?: GetPrivateEndpointConnectionByWorkspaceResponseProperties;
 }
+const GetPrivateEndpointConnectionByWorkspaceResponse =
+  GetPrivateEndpointConnectionByHostPoolResponse as any as S.Schema<GetPrivateEndpointConnectionByWorkspaceResponse>;
+
 export interface GetScalingPlanRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1471,8 +2052,16 @@ export interface GetScalingPlanRequest {
   /** The name of the scaling plan. */
   scalingPlanName: string;
 }
+const GetScalingPlanRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<GetScalingPlanRequest>;
+
 /** Resource tags. */
 export type GetScalingPlanResponseTagsMap = { [key: string]: string | undefined };
+const GetScalingPlanResponseTagsMap =
+  AppAttachPackageCreateOrUpdateRequestTagsMap as any as S.Schema<GetScalingPlanResponseTagsMap>;
+
 /** Managed service identity (either system assigned, or none) */
 export type GetScalingPlanResponseIdentity = ApplicationGroupsCreateOrUpdateResponseIdentity;
 /** The resource model definition representing SKU */
@@ -1507,6 +2096,11 @@ export interface GetScalingPlanResponse {
   /** Detailed properties for scaling plan. */
   properties: ScalingPlanProperties;
 }
+const GetScalingPlanResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GetScalingPlanResponse>;
+
 export interface GetScalingPlanPersonalScheduleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1517,6 +2111,11 @@ export interface GetScalingPlanPersonalScheduleRequest {
   /** The name of the ScalingPlanSchedule */
   scalingPlanScheduleName: string;
 }
+const GetScalingPlanPersonalScheduleRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<GetScalingPlanPersonalScheduleRequest>;
+
 export interface GetScalingPlanPersonalScheduleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1529,6 +2128,9 @@ export interface GetScalingPlanPersonalScheduleResponse {
   /** Detailed properties for ScalingPlanPersonalSchedule */
   properties: ScalingPlanPersonalScheduleProperties;
 }
+const GetScalingPlanPersonalScheduleResponse =
+  CreateScalingPlanPersonalScheduleResponse as any as S.Schema<GetScalingPlanPersonalScheduleResponse>;
+
 export interface GetScalingPlanPooledScheduleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1539,6 +2141,11 @@ export interface GetScalingPlanPooledScheduleRequest {
   /** The name of the ScalingPlanSchedule */
   scalingPlanScheduleName: string;
 }
+const GetScalingPlanPooledScheduleRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GetScalingPlanPooledScheduleRequest>;
+
 export interface GetScalingPlanPooledScheduleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1551,6 +2158,9 @@ export interface GetScalingPlanPooledScheduleResponse {
   /** Detailed properties for ScalingPlanPooledSchedule */
   properties: ScalingPlanPooledScheduleProperties;
 }
+const GetScalingPlanPooledScheduleResponse =
+  CreateScalingPlanPooledScheduleResponse as any as S.Schema<GetScalingPlanPooledScheduleResponse>;
+
 export interface GetSessionHostRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1561,6 +2171,11 @@ export interface GetSessionHostRequest {
   /** The name of the session host within the specified host pool */
   sessionHostName: string;
 }
+const GetSessionHostRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GetSessionHostRequest>;
+
 /** Status for a SessionHost. */
 export type SessionHostPropertiesStatus =
   | "Available"
@@ -1575,6 +2190,8 @@ export type SessionHostPropertiesStatus =
   | "SxSStackListenerNotReady"
   | "FSLogixNotHealthy"
   | "NeedsAssistance";
+const SessionHostPropertiesStatus = S.String;
+
 /** Update state of a SessionHost. */
 export type SessionHostPropertiesUpdateState =
   | "Initial"
@@ -1582,6 +2199,8 @@ export type SessionHostPropertiesUpdateState =
   | "Started"
   | "Succeeded"
   | "Failed";
+const SessionHostPropertiesUpdateState = S.String;
+
 /** Represents the name of the health check operation performed. */
 export type SessionHostHealthCheckReportHealthCheckName =
   | "DomainJoinedCheck"
@@ -1595,12 +2214,16 @@ export type SessionHostHealthCheckReportHealthCheckName =
   | "SupportedEncryptionCheck"
   | "MetaDataServiceCheck"
   | "AppAttachHealthCheck";
+const SessionHostHealthCheckReportHealthCheckName = S.String;
+
 /** Represents the Health state of the health check we performed. */
 export type SessionHostHealthCheckReportHealthCheckResult =
   | "Unknown"
   | "HealthCheckSucceeded"
   | "HealthCheckFailed"
   | "SessionHostShutdown";
+const SessionHostHealthCheckReportHealthCheckResult = S.String;
+
 /** Contains details on the failure. */
 export interface SessionHostHealthCheckFailureDetails {
   /** Failure message: hints on what is wrong and how to recover. */
@@ -1610,6 +2233,11 @@ export interface SessionHostHealthCheckFailureDetails {
   /** The timestamp of the last update. */
   lastHealthCheckDateTime?: string;
 }
+const SessionHostHealthCheckFailureDetails = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<SessionHostHealthCheckFailureDetails>;
+
 /** The report for session host information. */
 export interface SessionHostHealthCheckReport {
   /** Represents the name of the health check operation performed. */
@@ -1619,9 +2247,19 @@ export interface SessionHostHealthCheckReport {
   /** Additional detailed information on the failure. */
   additionalFailureDetails?: SessionHostHealthCheckFailureDetails;
 }
+const SessionHostHealthCheckReport = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<SessionHostHealthCheckReport>;
+
 /** List of SessionHostHealthCheckReports */
 export type SessionHostPropertiesSessionHostHealthCheckResultsList =
   Array<SessionHostHealthCheckReport>;
+const SessionHostPropertiesSessionHostHealthCheckResultsList = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<SessionHostPropertiesSessionHostHealthCheckResultsList>;
+
 /** Schema for SessionHost properties. */
 export interface SessionHostProperties {
   /** ObjectId of SessionHost. (internal use) */
@@ -1659,6 +2297,11 @@ export interface SessionHostProperties {
   /** List of SessionHostHealthCheckReports */
   sessionHostHealthCheckResults?: SessionHostPropertiesSessionHostHealthCheckResultsList;
 }
+const SessionHostProperties = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<SessionHostProperties>;
+
 export interface GetSessionHostResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1671,6 +2314,11 @@ export interface GetSessionHostResponse {
   /** Detailed properties for SessionHost */
   properties?: SessionHostProperties;
 }
+const GetSessionHostResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GetSessionHostResponse>;
+
 export interface GetUserSessionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1683,8 +2331,15 @@ export interface GetUserSessionRequest {
   /** The name of the user session within the specified session host */
   userSessionId: string;
 }
+const GetUserSessionRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<GetUserSessionRequest>;
+
 /** Application type of application. */
 export type UserSessionPropertiesApplicationType = "RemoteApp" | "Desktop";
+const UserSessionPropertiesApplicationType = S.String;
+
 /** State of user session. */
 export type UserSessionPropertiesSessionState =
   | "Unknown"
@@ -1693,6 +2348,8 @@ export type UserSessionPropertiesSessionState =
   | "Pending"
   | "LogOff"
   | "UserProfileDiskMounted";
+const UserSessionPropertiesSessionState = S.String;
+
 /** Schema for UserSession properties. */
 export interface UserSessionProperties {
   /** ObjectId of user session. (internal use) */
@@ -1708,6 +2365,11 @@ export interface UserSessionProperties {
   /** The timestamp of the user session create. */
   createTime?: string;
 }
+const UserSessionProperties = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<UserSessionProperties>;
+
 export interface GetUserSessionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1720,6 +2382,11 @@ export interface GetUserSessionResponse {
   /** Detailed properties for UserSession */
   properties?: UserSessionProperties;
 }
+const GetUserSessionResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<GetUserSessionResponse>;
+
 export interface GetWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1728,8 +2395,13 @@ export interface GetWorkspaceRequest {
   /** The name of the workspace */
   workspaceName: string;
 }
+const GetWorkspaceRequest = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<GetWorkspaceRequest>;
+
 /** Resource tags. */
 export type GetWorkspaceResponseTagsMap = { [key: string]: string | undefined };
+const GetWorkspaceResponseTagsMap =
+  AppAttachPackageCreateOrUpdateRequestTagsMap as any as S.Schema<GetWorkspaceResponseTagsMap>;
+
 /** Managed service identity (either system assigned, or none) */
 export type GetWorkspaceResponseIdentity = ApplicationGroupsCreateOrUpdateResponseIdentity;
 /** The resource model definition representing SKU */
@@ -1738,14 +2410,22 @@ export type GetWorkspaceResponseSku = ApplicationGroupsCreateOrUpdateResponseSku
 export type GetWorkspaceResponsePlan = ApplicationGroupsCreateOrUpdateRequestPlan;
 /** List of applicationGroup resource Ids. */
 export type WorkspacePropertiesApplicationGroupReferencesList = Array<string>;
+const WorkspacePropertiesApplicationGroupReferencesList =
+  AppAttachPackagePropertiesInputHostPoolReferencesList as any as S.Schema<WorkspacePropertiesApplicationGroupReferencesList>;
+
 /** Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints */
 export type WorkspacePropertiesPublicNetworkAccess = "Enabled" | "Disabled";
+const WorkspacePropertiesPublicNetworkAccess = S.String;
+
 /** The private endpoint connection resource. */
 export type WorkspacePropertiesPrivateEndpointConnectionsItem =
   HostPoolPropertiesPrivateEndpointConnectionsItem;
 /** List of private endpoint connection associated with the specified resource */
 export type WorkspacePropertiesPrivateEndpointConnectionsList =
   Array<HostPoolPropertiesPrivateEndpointConnectionsItem>;
+const WorkspacePropertiesPrivateEndpointConnectionsList =
+  HostPoolPropertiesPrivateEndpointConnectionsList as any as S.Schema<WorkspacePropertiesPrivateEndpointConnectionsList>;
+
 /** Schema for Workspace properties. */
 export interface WorkspaceProperties {
   /** ObjectId of Workspace. (internal use) */
@@ -1763,6 +2443,8 @@ export interface WorkspaceProperties {
   /** List of private endpoint connection associated with the specified resource */
   privateEndpointConnections?: WorkspacePropertiesPrivateEndpointConnectionsList | null;
 }
+const WorkspaceProperties = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<WorkspaceProperties>;
+
 export interface GetWorkspaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1791,8 +2473,16 @@ export interface GetWorkspaceResponse {
   /** Detailed properties for Workspace */
   properties?: WorkspaceProperties;
 }
+const GetWorkspaceResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<GetWorkspaceResponse>;
+
 /** Resource tags. */
 export type HostPoolsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const HostPoolsCreateOrUpdateRequestTagsMap =
+  AppAttachPackageCreateOrUpdateRequestTagsMap as any as S.Schema<HostPoolsCreateOrUpdateRequestTagsMap>;
+
 /** Managed service identity (either system assigned, or none) */
 export type HostPoolsCreateOrUpdateRequestIdentity = ApplicationGroupsCreateOrUpdateRequestIdentity;
 /** The resource model definition representing SKU */
@@ -1801,28 +2491,40 @@ export type HostPoolsCreateOrUpdateRequestSku = ApplicationGroupsCreateOrUpdateR
 export type HostPoolsCreateOrUpdateRequestPlan = ApplicationGroupsCreateOrUpdateRequestPlan;
 /** HostPool type for desktop. */
 export type HostPoolPropertiesInputHostPoolType = "Personal" | "Pooled" | "BYODesktop";
+const HostPoolPropertiesInputHostPoolType = S.String;
+
 /** PersonalDesktopAssignment type for HostPool. */
 export type HostPoolPropertiesInputPersonalDesktopAssignmentType = "Automatic" | "Direct";
+const HostPoolPropertiesInputPersonalDesktopAssignmentType = S.String;
+
 /** The type of the load balancer. */
 export type HostPoolPropertiesInputLoadBalancerType =
   | "BreadthFirst"
   | "DepthFirst"
   | "Persistent"
   | "MultiplePersistent";
+const HostPoolPropertiesInputLoadBalancerType = S.String;
+
 /** The type of single sign on Secret Type. */
 export type HostPoolPropertiesInputSsoSecretType =
   | "SharedKey"
   | "Certificate"
   | "SharedKeyInKeyVault"
   | "CertificateInKeyVault";
+const HostPoolPropertiesInputSsoSecretType = S.String;
+
 /** The type of preferred application group type, default to Desktop Application Group */
 export type HostPoolPropertiesInputPreferredAppGroupType = "None" | "Desktop" | "RailApplications";
+const HostPoolPropertiesInputPreferredAppGroupType = S.String;
+
 /** Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints */
 export type HostPoolPropertiesInputPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
   | "EnabledForSessionHostsOnly"
   | "EnabledForClientsOnly";
+const HostPoolPropertiesInputPublicNetworkAccess = S.String;
+
 /** Properties of HostPool. */
 export interface HostPoolPropertiesInput {
   /** Friendly name of HostPool. */
@@ -1867,6 +2569,11 @@ export interface HostPoolPropertiesInput {
   /** The session host configuration for updating agent, monitoring agent, and stack component. */
   agentUpdate?: AgentUpdateProperties | null;
 }
+const HostPoolPropertiesInput = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<HostPoolPropertiesInput>;
+
 export interface HostPoolsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1891,8 +2598,16 @@ export interface HostPoolsCreateOrUpdateRequest {
   /** Detailed properties for HostPool */
   properties: HostPoolPropertiesInput;
 }
+const HostPoolsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<HostPoolsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type HostPoolsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const HostPoolsCreateOrUpdateResponseTagsMap =
+  AppAttachPackageCreateOrUpdateRequestTagsMap as any as S.Schema<HostPoolsCreateOrUpdateResponseTagsMap>;
+
 /** Managed service identity (either system assigned, or none) */
 export type HostPoolsCreateOrUpdateResponseIdentity =
   ApplicationGroupsCreateOrUpdateResponseIdentity;
@@ -1928,6 +2643,11 @@ export interface HostPoolsCreateOrUpdateResponse {
   /** Detailed properties for HostPool */
   properties: HostPoolProperties;
 }
+const HostPoolsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<HostPoolsCreateOrUpdateResponse>;
+
 /** Possible device architectures that an app attach package can be configured for */
 export type ImportAppAttachPackageInfoRequestPackageArchitecture =
   | "ARM"
@@ -1937,6 +2657,8 @@ export type ImportAppAttachPackageInfoRequestPackageArchitecture =
   | "Neutral"
   | "x86a64"
   | "ALL";
+const ImportAppAttachPackageInfoRequestPackageArchitecture = S.String;
+
 export interface ImportAppAttachPackageInfoRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1949,8 +2671,16 @@ export interface ImportAppAttachPackageInfoRequest {
   /** Possible device architectures that an app attach package can be configured for */
   packageArchitecture?: ImportAppAttachPackageInfoRequestPackageArchitecture | (string & {}) | null;
 }
+const ImportAppAttachPackageInfoRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ImportAppAttachPackageInfoRequest>;
+
 /** Resource tags. */
 export type AppAttachPackageTagsMap = { [key: string]: string | undefined };
+const AppAttachPackageTagsMap =
+  AppAttachPackageCreateOrUpdateRequestTagsMap as any as S.Schema<AppAttachPackageTagsMap>;
+
 /** Schema for App Attach Package properties. */
 export interface AppAttachPackage {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1968,8 +2698,15 @@ export interface AppAttachPackage {
   /** Detailed properties for App Attach Package */
   properties: AppAttachPackageProperties;
 }
+const AppAttachPackage = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<AppAttachPackage>;
+
 /** List of App Attach Package definitions. */
 export type AppAttachPackageListValueList = Array<AppAttachPackage>;
+const AppAttachPackageListValueList = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<AppAttachPackageListValueList>;
+
 /** List of App Attach Package definitions. */
 export interface AppAttachPackageList {
   /** List of App Attach Package definitions. */
@@ -1977,6 +2714,11 @@ export interface AppAttachPackageList {
   /** Link to the next page of results. */
   nextLink?: string;
 }
+const AppAttachPackageList = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<AppAttachPackageList>;
+
 export interface ListAppAttachPackageByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1985,12 +2727,22 @@ export interface ListAppAttachPackageByResourceGroupRequest {
   /** OData filter expression. Valid properties for filtering are package name and host pool. */
   _filter?: string;
 }
+const ListAppAttachPackageByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ListAppAttachPackageByResourceGroupRequest>;
+
 export interface ListAppAttachPackageBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** OData filter expression. Valid properties for filtering are package name, host pool, and resource group. */
   _filter?: string;
 }
+const ListAppAttachPackageBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ListAppAttachPackageBySubscriptionRequest>;
+
 export interface ListApplicationGroupByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2005,8 +2757,16 @@ export interface ListApplicationGroupByResourceGroupRequest {
   /** Initial number of items to skip. */
   initialSkip?: number;
 }
+const ListApplicationGroupByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ListApplicationGroupByResourceGroupRequest>;
+
 /** Resource tags. */
 export type ApplicationGroupTagsMap = { [key: string]: string | undefined };
+const ApplicationGroupTagsMap =
+  AppAttachPackageCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicationGroupTagsMap>;
+
 /** Managed service identity (either system assigned, or none) */
 export type ApplicationGroupIdentity = ApplicationGroupsCreateOrUpdateResponseIdentity;
 /** The resource model definition representing SKU */
@@ -2042,8 +2802,15 @@ export interface ApplicationGroup {
   /** Detailed properties for ApplicationGroup */
   properties: ApplicationGroupProperties;
 }
+const ApplicationGroup = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<ApplicationGroup>;
+
 /** List of ApplicationGroup definitions. */
 export type ApplicationGroupListValueList = Array<ApplicationGroup>;
+const ApplicationGroupListValueList = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<ApplicationGroupListValueList>;
+
 /** List of ApplicationGroup definitions. */
 export interface ApplicationGroupList {
   /** List of ApplicationGroup definitions. */
@@ -2051,12 +2818,22 @@ export interface ApplicationGroupList {
   /** Link to the next page of results. */
   nextLink?: string;
 }
+const ApplicationGroupList = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<ApplicationGroupList>;
+
 export interface ListApplicationGroupBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** OData filter expression. Valid properties for filtering are applicationGroupType. */
   _filter?: string;
 }
+const ListApplicationGroupBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ListApplicationGroupBySubscriptionRequest>;
+
 export interface ListApplicationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2071,6 +2848,11 @@ export interface ListApplicationsRequest {
   /** Initial number of items to skip. */
   initialSkip?: number;
 }
+const ListApplicationsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ListApplicationsRequest>;
+
 /** Schema for Application properties. */
 export interface Application {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2084,8 +2866,15 @@ export interface Application {
   /** Detailed properties for Application */
   properties: ApplicationProperties;
 }
+const Application = GetApplicationResponse as any as S.Schema<Application>;
+
 /** List of Application definitions. */
 export type ApplicationListValueList = Array<Application>;
+const ApplicationListValueList = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ApplicationListValueList>;
+
 /** List of Application definitions. */
 export interface ApplicationList {
   /** List of Application definitions. */
@@ -2093,6 +2882,8 @@ export interface ApplicationList {
   /** Link to the next page of results. */
   nextLink?: string;
 }
+const ApplicationList = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<ApplicationList>;
+
 export interface ListDesktopsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2107,6 +2898,8 @@ export interface ListDesktopsRequest {
   /** Initial number of items to skip. */
   initialSkip?: number;
 }
+const ListDesktopsRequest = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<ListDesktopsRequest>;
+
 /** Schema for Desktop properties. */
 export interface Desktop {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2120,8 +2913,15 @@ export interface Desktop {
   /** Detailed properties for Desktop */
   properties?: DesktopProperties;
 }
+const Desktop = GetDesktopResponse as any as S.Schema<Desktop>;
+
 /** List of Desktop definitions. */
 export type DesktopListValueList = Array<Desktop>;
+const DesktopListValueList = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<DesktopListValueList>;
+
 /** List of Desktop definitions. */
 export interface DesktopList {
   /** List of Desktop definitions. */
@@ -2129,6 +2929,8 @@ export interface DesktopList {
   /** Link to the next page of results. */
   nextLink?: string;
 }
+const DesktopList = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<DesktopList>;
+
 export interface ListHostPoolByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2141,6 +2943,11 @@ export interface ListHostPoolByResourceGroupRequest {
   /** Initial number of items to skip. */
   initialSkip?: number;
 }
+const ListHostPoolByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<ListHostPoolByResourceGroupRequest>;
+
 /** Resource tags. */
 export type HostPoolTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (either system assigned, or none) */
@@ -2178,8 +2985,15 @@ export interface HostPool {
   /** Detailed properties for HostPool */
   properties: HostPoolProperties;
 }
+const HostPool = GetHostPoolResponse as any as S.Schema<HostPool>;
+
 /** List of HostPool definitions. */
 export type HostPoolListValueList = Array<HostPool>;
+const HostPoolListValueList = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<HostPoolListValueList>;
+
 /** List of HostPool definitions. */
 export interface HostPoolList {
   /** List of HostPool definitions. */
@@ -2187,6 +3001,8 @@ export interface HostPoolList {
   /** Link to the next page of results. */
   nextLink?: string;
 }
+const HostPoolList = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<HostPoolList>;
+
 export interface ListHostPoolRegistrationTokensRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2195,6 +3011,11 @@ export interface ListHostPoolRegistrationTokensRequest {
   /** The name of the host pool within the specified resource group */
   hostPoolName: string;
 }
+const ListHostPoolRegistrationTokensRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ListHostPoolRegistrationTokensRequest>;
+
 /** Represents a Minimal set of properties for RegistrationToken definition. */
 export interface RegistrationTokenMinimal {
   /** Expiration time of registration token. */
@@ -2202,8 +3023,18 @@ export interface RegistrationTokenMinimal {
   /** The registration token base64 encoded string. */
   token?: string;
 }
+const RegistrationTokenMinimal = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<RegistrationTokenMinimal>;
+
 /** List of RegistrationToken definitions. */
 export type RegistrationTokenListValueList = Array<RegistrationTokenMinimal>;
+const RegistrationTokenListValueList = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<RegistrationTokenListValueList>;
+
 /** List of RegistrationToken definitions. */
 export interface RegistrationTokenList {
   /** List of RegistrationToken definitions. */
@@ -2211,6 +3042,11 @@ export interface RegistrationTokenList {
   /** Link to the next page of results. */
   nextLink?: string;
 }
+const RegistrationTokenList = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<RegistrationTokenList>;
+
 export interface ListHostPoolsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2221,6 +3057,11 @@ export interface ListHostPoolsRequest {
   /** Initial number of items to skip. */
   initialSkip?: number;
 }
+const ListHostPoolsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ListHostPoolsRequest>;
+
 export interface ListMSIXPackagesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2235,6 +3076,11 @@ export interface ListMSIXPackagesRequest {
   /** Initial number of items to skip. */
   initialSkip?: number;
 }
+const ListMSIXPackagesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ListMSIXPackagesRequest>;
+
 /** Schema for MSIX Package properties. */
 export interface MSIXPackage {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2248,8 +3094,15 @@ export interface MSIXPackage {
   /** Detailed properties for MSIX Package */
   properties: MSIXPackageProperties;
 }
+const MSIXPackage = GetMSIXPackageResponse as any as S.Schema<MSIXPackage>;
+
 /** List of MSIX Package definitions. */
 export type MSIXPackageListValueList = Array<MSIXPackage>;
+const MSIXPackageListValueList = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<MSIXPackageListValueList>;
+
 /** List of MSIX Package definitions. */
 export interface MSIXPackageList {
   /** List of MSIX Package definitions. */
@@ -2257,7 +3110,14 @@ export interface MSIXPackageList {
   /** Link to the next page of results. */
   nextLink?: string;
 }
+const MSIXPackageList = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<MSIXPackageList>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Display metadata associated with the operation. */
 export interface ResourceProviderOperationDisplay {
   /** Resource provider: Microsoft Desktop Virtualization. */
@@ -2269,6 +3129,11 @@ export interface ResourceProviderOperationDisplay {
   /** Description of this operation. */
   description?: string;
 }
+const ResourceProviderOperationDisplay = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ResourceProviderOperationDisplay>;
+
 /** Specifications of the Log for Azure Monitoring */
 export interface LogSpecification {
   /** Name of the log */
@@ -2278,17 +3143,31 @@ export interface LogSpecification {
   /** Blob duration of the log */
   blobDuration?: string;
 }
+const LogSpecification = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<LogSpecification>;
+
 /** Specifications of the Log for Azure Monitoring */
 export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
+const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
+
 /** Service specification payload */
 export interface ServiceSpecification {
   /** Specifications of the Log for Azure Monitoring */
   logSpecifications?: ServiceSpecificationLogSpecificationsList;
 }
+const ServiceSpecification = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ServiceSpecification>;
+
 /** Properties of the operation */
 export interface OperationProperties {
   serviceSpecification?: ServiceSpecification;
 }
+const OperationProperties = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<OperationProperties>;
+
 /** Supported operation of this resource provider. */
 export interface ResourceProviderOperation {
   /** Operation name, in format of {provider}/{resource}/{operation} */
@@ -2299,8 +3178,18 @@ export interface ResourceProviderOperation {
   isDataAction?: boolean;
   properties?: OperationProperties;
 }
+const ResourceProviderOperation = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<ResourceProviderOperation>;
+
 /** The ResourceProviderOperation items on this page */
 export type ResourceProviderOperationListResultValueList = Array<ResourceProviderOperation>;
+const ResourceProviderOperationListResultValueList = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<ResourceProviderOperationListResultValueList>;
+
 /** A list of REST API operations supported by an Azure Resource Provider. It contains an URL link to get the next set of results. */
 export interface ResourceProviderOperationListResult {
   /** The ResourceProviderOperation items on this page */
@@ -2308,6 +3197,11 @@ export interface ResourceProviderOperationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ResourceProviderOperationListResult = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ResourceProviderOperationListResult>;
+
 export interface ListPrivateEndpointConnectionByHostPoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2322,6 +3216,11 @@ export interface ListPrivateEndpointConnectionByHostPoolRequest {
   /** Initial number of items to skip. */
   initialSkip?: number;
 }
+const ListPrivateEndpointConnectionByHostPoolRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<ListPrivateEndpointConnectionByHostPoolRequest>;
+
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionWithSystemDataPropertiesGroupIdsList = Array<string>;
 /** Properties of the private endpoint connection. */
@@ -2351,6 +3250,9 @@ export interface PrivateEndpointConnectionWithSystemData {
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListResultWithSystemDataValueList =
   Array<PrivateEndpointConnectionWithSystemData>;
+const PrivateEndpointConnectionListResultWithSystemDataValueList =
+  HostPoolPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultWithSystemDataValueList>;
+
 /** List of private endpoint connection associated with the specified storage account */
 export interface PrivateEndpointConnectionListResultWithSystemData {
   /** Array of private endpoint connections */
@@ -2358,6 +3260,11 @@ export interface PrivateEndpointConnectionListResultWithSystemData {
   /** Link to the next page of results. */
   nextLink?: string;
 }
+const PrivateEndpointConnectionListResultWithSystemData = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<PrivateEndpointConnectionListResultWithSystemData>;
+
 export interface ListPrivateEndpointConnectionByWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2366,6 +3273,11 @@ export interface ListPrivateEndpointConnectionByWorkspaceRequest {
   /** The name of the workspace */
   workspaceName: string;
 }
+const ListPrivateEndpointConnectionByWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<ListPrivateEndpointConnectionByWorkspaceRequest>;
+
 export interface ListPrivateLinkResourceByHostPoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2380,10 +3292,21 @@ export interface ListPrivateLinkResourceByHostPoolRequest {
   /** Initial number of items to skip. */
   initialSkip?: number;
 }
+const ListPrivateLinkResourceByHostPoolRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<ListPrivateLinkResourceByHostPoolRequest>;
+
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
+const PrivateLinkResourcePropertiesRequiredMembersList =
+  AppAttachPackagePropertiesInputHostPoolReferencesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  AppAttachPackagePropertiesInputHostPoolReferencesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
   /** The private link resource group id. */
@@ -2393,6 +3316,11 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource Private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
+const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<PrivateLinkResourceProperties>;
+
 /** A private link resource */
 export interface PrivateLinkResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2406,8 +3334,15 @@ export interface PrivateLinkResource {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
+const PrivateLinkResource = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<PrivateLinkResource>;
+
 /** Array of private link resources */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
+const PrivateLinkResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<PrivateLinkResourceListResultValueList>;
+
 /** A list of private link resources */
 export interface PrivateLinkResourceListResult {
   /** Array of private link resources */
@@ -2415,6 +3350,11 @@ export interface PrivateLinkResourceListResult {
   /** Link to the next page of results. */
   nextLink?: string;
 }
+const PrivateLinkResourceListResult = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<PrivateLinkResourceListResult>;
+
 export interface ListPrivateLinkResourceByWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2429,6 +3369,11 @@ export interface ListPrivateLinkResourceByWorkspaceRequest {
   /** Initial number of items to skip. */
   initialSkip?: number;
 }
+const ListPrivateLinkResourceByWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<ListPrivateLinkResourceByWorkspaceRequest>;
+
 export interface ListScalingPlanByHostPoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2443,6 +3388,11 @@ export interface ListScalingPlanByHostPoolRequest {
   /** Initial number of items to skip. */
   initialSkip?: number;
 }
+const ListScalingPlanByHostPoolRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<ListScalingPlanByHostPoolRequest>;
+
 /** Resource tags. */
 export type ScalingPlanTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (either system assigned, or none) */
@@ -2480,8 +3430,15 @@ export interface ScalingPlan {
   /** Detailed properties for scaling plan. */
   properties: ScalingPlanProperties;
 }
+const ScalingPlan = GetScalingPlanResponse as any as S.Schema<ScalingPlan>;
+
 /** List of scaling plan definitions. */
 export type ScalingPlanListValueList = Array<ScalingPlan>;
+const ScalingPlanListValueList = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<ScalingPlanListValueList>;
+
 /** List of scaling plan definitions. */
 export interface ScalingPlanList {
   /** List of scaling plan definitions. */
@@ -2489,6 +3446,8 @@ export interface ScalingPlanList {
   /** Link to the next page of results. */
   nextLink?: string;
 }
+const ScalingPlanList = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<ScalingPlanList>;
+
 export interface ListScalingPlanByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2501,6 +3460,11 @@ export interface ListScalingPlanByResourceGroupRequest {
   /** Initial number of items to skip. */
   initialSkip?: number;
 }
+const ListScalingPlanByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ListScalingPlanByResourceGroupRequest>;
+
 export interface ListScalingPlanBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2511,6 +3475,11 @@ export interface ListScalingPlanBySubscriptionRequest {
   /** Initial number of items to skip. */
   initialSkip?: number;
 }
+const ListScalingPlanBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ListScalingPlanBySubscriptionRequest>;
+
 export interface ListScalingPlanPersonalSchedulesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2525,6 +3494,11 @@ export interface ListScalingPlanPersonalSchedulesRequest {
   /** Initial number of items to skip. */
   initialSkip?: number;
 }
+const ListScalingPlanPersonalSchedulesRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ListScalingPlanPersonalSchedulesRequest>;
+
 /** Represents a ScalingPlanPersonalSchedule definition. */
 export interface ScalingPlanPersonalSchedule {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2538,8 +3512,16 @@ export interface ScalingPlanPersonalSchedule {
   /** Detailed properties for ScalingPlanPersonalSchedule */
   properties: ScalingPlanPersonalScheduleProperties;
 }
+const ScalingPlanPersonalSchedule =
+  CreateScalingPlanPersonalScheduleResponse as any as S.Schema<ScalingPlanPersonalSchedule>;
+
 /** List of ScalingPlanPersonalSchedule definitions. */
 export type ScalingPlanPersonalScheduleListValueList = Array<ScalingPlanPersonalSchedule>;
+const ScalingPlanPersonalScheduleListValueList = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<ScalingPlanPersonalScheduleListValueList>;
+
 /** List of ScalingPlanPersonalSchedule definitions. */
 export interface ScalingPlanPersonalScheduleList {
   /** List of ScalingPlanPersonalSchedule definitions. */
@@ -2547,6 +3529,11 @@ export interface ScalingPlanPersonalScheduleList {
   /** Link to the next page of results. */
   nextLink?: string;
 }
+const ScalingPlanPersonalScheduleList = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ScalingPlanPersonalScheduleList>;
+
 export interface ListScalingPlanPooledSchedulesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2561,6 +3548,11 @@ export interface ListScalingPlanPooledSchedulesRequest {
   /** Initial number of items to skip. */
   initialSkip?: number;
 }
+const ListScalingPlanPooledSchedulesRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ListScalingPlanPooledSchedulesRequest>;
+
 /** Represents a ScalingPlanPooledSchedule definition. */
 export interface ScalingPlanPooledSchedule {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2574,8 +3566,16 @@ export interface ScalingPlanPooledSchedule {
   /** Detailed properties for ScalingPlanPooledSchedule */
   properties: ScalingPlanPooledScheduleProperties;
 }
+const ScalingPlanPooledSchedule =
+  CreateScalingPlanPooledScheduleResponse as any as S.Schema<ScalingPlanPooledSchedule>;
+
 /** List of ScalingPlanPooledSchedule definitions. */
 export type ScalingPlanPooledScheduleListValueList = Array<ScalingPlanPooledSchedule>;
+const ScalingPlanPooledScheduleListValueList = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<ScalingPlanPooledScheduleListValueList>;
+
 /** List of ScalingPlanPooledSchedule definitions. */
 export interface ScalingPlanPooledScheduleList {
   /** List of ScalingPlanPooledSchedule definitions. */
@@ -2583,6 +3583,11 @@ export interface ScalingPlanPooledScheduleList {
   /** Link to the next page of results. */
   nextLink?: string;
 }
+const ScalingPlanPooledScheduleList = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<ScalingPlanPooledScheduleList>;
+
 export interface ListSessionHostsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2597,6 +3602,11 @@ export interface ListSessionHostsRequest {
   /** Initial number of items to skip. */
   initialSkip?: number;
 }
+const ListSessionHostsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ListSessionHostsRequest>;
+
 /** Represents a SessionHost definition. */
 export interface SessionHost {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2610,8 +3620,15 @@ export interface SessionHost {
   /** Detailed properties for SessionHost */
   properties?: SessionHostProperties;
 }
+const SessionHost = GetSessionHostResponse as any as S.Schema<SessionHost>;
+
 /** List of SessionHost definitions. */
 export type SessionHostListValueList = Array<SessionHost>;
+const SessionHostListValueList = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<SessionHostListValueList>;
+
 /** List of SessionHost definitions. */
 export interface SessionHostList {
   /** List of SessionHost definitions. */
@@ -2619,6 +3636,8 @@ export interface SessionHostList {
   /** Link to the next page of results. */
   nextLink?: string;
 }
+const SessionHostList = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<SessionHostList>;
+
 export interface ListStartMenuItemsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2633,6 +3652,11 @@ export interface ListStartMenuItemsRequest {
   /** Initial number of items to skip. */
   initialSkip?: number;
 }
+const ListStartMenuItemsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<ListStartMenuItemsRequest>;
+
 /** Schema for StartMenuItem properties. */
 export interface StartMenuItemProperties {
   /** Alias of StartMenuItem. */
@@ -2646,6 +3670,11 @@ export interface StartMenuItemProperties {
   /** Index of the icon. */
   iconIndex?: number;
 }
+const StartMenuItemProperties = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<StartMenuItemProperties>;
+
 /** Represents a StartMenuItem definition. */
 export interface StartMenuItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2659,8 +3688,15 @@ export interface StartMenuItem {
   /** Detailed properties for StartMenuItem */
   properties?: StartMenuItemProperties;
 }
+const StartMenuItem = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<StartMenuItem>;
+
 /** List of StartMenuItem definitions. */
 export type StartMenuItemListValueList = Array<StartMenuItem>;
+const StartMenuItemListValueList = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<StartMenuItemListValueList>;
+
 /** List of StartMenuItem definitions. */
 export interface StartMenuItemList {
   /** List of StartMenuItem definitions. */
@@ -2668,6 +3704,8 @@ export interface StartMenuItemList {
   /** Link to the next page of results. */
   nextLink?: string;
 }
+const StartMenuItemList = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<StartMenuItemList>;
+
 export interface ListUserSessionByHostPoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2684,6 +3722,11 @@ export interface ListUserSessionByHostPoolRequest {
   /** Initial number of items to skip. */
   initialSkip?: number;
 }
+const ListUserSessionByHostPoolRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<ListUserSessionByHostPoolRequest>;
+
 /** Represents a UserSession definition. */
 export interface UserSession {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2697,8 +3740,15 @@ export interface UserSession {
   /** Detailed properties for UserSession */
   properties?: UserSessionProperties;
 }
+const UserSession = GetUserSessionResponse as any as S.Schema<UserSession>;
+
 /** List of UserSession definitions. */
 export type UserSessionListValueList = Array<UserSession>;
+const UserSessionListValueList = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<UserSessionListValueList>;
+
 /** List of UserSession definitions. */
 export interface UserSessionList {
   /** List of UserSession definitions. */
@@ -2706,6 +3756,8 @@ export interface UserSessionList {
   /** Link to the next page of results. */
   nextLink?: string;
 }
+const UserSessionList = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<UserSessionList>;
+
 export interface ListUserSessionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2722,6 +3774,11 @@ export interface ListUserSessionsRequest {
   /** Initial number of items to skip. */
   initialSkip?: number;
 }
+const ListUserSessionsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<ListUserSessionsRequest>;
+
 export interface ListWorkspaceByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2734,6 +3791,11 @@ export interface ListWorkspaceByResourceGroupRequest {
   /** Initial number of items to skip. */
   initialSkip?: number;
 }
+const ListWorkspaceByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<ListWorkspaceByResourceGroupRequest>;
+
 /** Resource tags. */
 export type WorkspaceTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (either system assigned, or none) */
@@ -2771,8 +3833,15 @@ export interface Workspace {
   /** Detailed properties for Workspace */
   properties?: WorkspaceProperties;
 }
+const Workspace = GetWorkspaceResponse as any as S.Schema<Workspace>;
+
 /** List of Workspace definitions. */
 export type WorkspaceListValueList = Array<Workspace>;
+const WorkspaceListValueList = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<WorkspaceListValueList>;
+
 /** List of Workspace definitions. */
 export interface WorkspaceList {
   /** List of Workspace definitions. */
@@ -2780,10 +3849,17 @@ export interface WorkspaceList {
   /** Link to the next page of results. */
   nextLink?: string;
 }
+const WorkspaceList = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<WorkspaceList>;
+
 export interface ListWorkspaceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListWorkspaceBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<ListWorkspaceBySubscriptionRequest>;
+
 export interface MsixImagesExpandRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2794,10 +3870,21 @@ export interface MsixImagesExpandRequest {
   /** URI to Image */
   uri?: string;
 }
+const MsixImagesExpandRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<MsixImagesExpandRequest>;
+
 /** List of package dependencies. */
 export type ExpandMsixImagePropertiesPackageDependenciesList = Array<MsixPackageDependencies>;
+const ExpandMsixImagePropertiesPackageDependenciesList =
+  AppAttachPackageInfoPropertiesPackageDependenciesList as any as S.Schema<ExpandMsixImagePropertiesPackageDependenciesList>;
+
 /** List of package applications. */
 export type ExpandMsixImagePropertiesPackageApplicationsList = Array<MsixPackageApplications>;
+const ExpandMsixImagePropertiesPackageApplicationsList =
+  AppAttachPackageInfoPropertiesPackageApplicationsList as any as S.Schema<ExpandMsixImagePropertiesPackageApplicationsList>;
+
 /** Schema for Expand MSIX Image properties. */
 export interface ExpandMsixImageProperties {
   /** Alias of MSIX Package. */
@@ -2831,6 +3918,11 @@ export interface ExpandMsixImageProperties {
   /** Date certificate expires, found in the appxmanifest.xml. */
   certificateExpiry?: string | null;
 }
+const ExpandMsixImageProperties = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<ExpandMsixImageProperties>;
+
 /** Represents the definition of contents retrieved after expanding the MSIX Image. */
 export interface ExpandMsixImage {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2844,8 +3936,15 @@ export interface ExpandMsixImage {
   /** Detailed properties for ExpandMsixImage */
   properties?: ExpandMsixImageProperties;
 }
+const ExpandMsixImage = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<ExpandMsixImage>;
+
 /** List of MSIX package properties from give MSIX Image. */
 export type ExpandMsixImageListValueList = Array<ExpandMsixImage>;
+const ExpandMsixImageListValueList = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<ExpandMsixImageListValueList>;
+
 /** List of MSIX package properties retrieved from MSIX Image expansion. */
 export interface ExpandMsixImageList {
   /** List of MSIX package properties from give MSIX Image. */
@@ -2853,6 +3952,8 @@ export interface ExpandMsixImageList {
   /** Link to the next page of results. */
   nextLink?: string;
 }
+const ExpandMsixImageList = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<ExpandMsixImageList>;
+
 export interface MSIXPackagesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2865,6 +3966,11 @@ export interface MSIXPackagesCreateOrUpdateRequest {
   /** Detailed properties for MSIX Package */
   properties: MSIXPackageProperties;
 }
+const MSIXPackagesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<MSIXPackagesCreateOrUpdateRequest>;
+
 export interface MSIXPackagesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2877,6 +3983,11 @@ export interface MSIXPackagesCreateOrUpdateResponse {
   /** Detailed properties for MSIX Package */
   properties: MSIXPackageProperties;
 }
+const MSIXPackagesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<MSIXPackagesCreateOrUpdateResponse>;
+
 export interface SendUserSessionMessageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2893,7 +4004,15 @@ export interface SendUserSessionMessageRequest {
   /** Body of message. */
   messageBody?: string;
 }
+const SendUserSessionMessageRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<SendUserSessionMessageRequest>;
+
 export interface SendUserSessionMessageResponse {}
+const SendUserSessionMessageResponse =
+  DeleteAppAttachPackageResponse as any as S.Schema<SendUserSessionMessageResponse>;
+
 /** List of Hostpool resource Ids. */
 export type AppAttachPackagePatchPropertiesHostPoolReferencesList = Array<string>;
 /** Schema for patchable fields on an App Attach Package. */
@@ -2907,6 +4026,9 @@ export interface AppAttachPackagePatchProperties {
   /** Parameter indicating how the health check should behave if this package fails staging */
   failHealthCheckOnStagingFailure?: FailHealthCheckOnStagingFailureEnum | (string & {});
 }
+const AppAttachPackagePatchProperties =
+  AppAttachPackagePropertiesInput as any as S.Schema<AppAttachPackagePatchProperties>;
+
 export interface UpdateAppAttachPackageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2917,6 +4039,11 @@ export interface UpdateAppAttachPackageRequest {
   /** Detailed properties for App Attach Package */
   properties?: AppAttachPackagePatchProperties;
 }
+const UpdateAppAttachPackageRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<UpdateAppAttachPackageRequest>;
+
 /** Resource tags. */
 export type UpdateAppAttachPackageResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateAppAttachPackageResponse {
@@ -2935,10 +4062,17 @@ export interface UpdateAppAttachPackageResponse {
   /** Detailed properties for App Attach Package */
   properties: AppAttachPackageProperties;
 }
+const UpdateAppAttachPackageResponse =
+  AppAttachPackageCreateOrUpdateResponse as any as S.Schema<UpdateAppAttachPackageResponse>;
+
 /** Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all. */
 export type ApplicationPatchPropertiesCommandLineSetting = "DoNotAllow" | "Allow" | "Require";
+const ApplicationPatchPropertiesCommandLineSetting = S.String;
+
 /** Resource Type of Application. */
 export type ApplicationPatchPropertiesApplicationType = "InBuilt" | "MsixApplication";
+const ApplicationPatchPropertiesApplicationType = S.String;
+
 /** Application properties that can be patched. */
 export interface ApplicationPatchProperties {
   /** Description of Application. */
@@ -2964,6 +4098,11 @@ export interface ApplicationPatchProperties {
   /** Resource Type of Application. */
   applicationType?: ApplicationPatchPropertiesApplicationType | (string & {});
 }
+const ApplicationPatchProperties = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<ApplicationPatchProperties>;
+
 export interface UpdateApplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2976,6 +4115,11 @@ export interface UpdateApplicationRequest {
   /** Detailed properties for Application */
   properties?: ApplicationPatchProperties;
 }
+const UpdateApplicationRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<UpdateApplicationRequest>;
+
 export interface UpdateApplicationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2988,8 +4132,14 @@ export interface UpdateApplicationResponse {
   /** Detailed properties for Application */
   properties: ApplicationProperties;
 }
+const UpdateApplicationResponse =
+  ApplicationsCreateOrUpdateResponse as any as S.Schema<UpdateApplicationResponse>;
+
 /** tags to be updated */
 export type UpdateApplicationGroupRequestTagsMap = { [key: string]: string | undefined };
+const UpdateApplicationGroupRequestTagsMap =
+  AppAttachPackageCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateApplicationGroupRequestTagsMap>;
+
 /** ApplicationGroup properties that can be patched. */
 export interface ApplicationGroupPatchProperties {
   /** Description of ApplicationGroup. */
@@ -2999,6 +4149,11 @@ export interface ApplicationGroupPatchProperties {
   /** Boolean representing whether the applicationGroup is show in the feed. */
   showInFeed?: boolean;
 }
+const ApplicationGroupPatchProperties = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<ApplicationGroupPatchProperties>;
+
 export interface UpdateApplicationGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3011,6 +4166,11 @@ export interface UpdateApplicationGroupRequest {
   /** ApplicationGroup properties that can be patched. */
   properties?: ApplicationGroupPatchProperties;
 }
+const UpdateApplicationGroupRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<UpdateApplicationGroupRequest>;
+
 /** Resource tags. */
 export type UpdateApplicationGroupResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (either system assigned, or none) */
@@ -3048,6 +4208,9 @@ export interface UpdateApplicationGroupResponse {
   /** Detailed properties for ApplicationGroup */
   properties: ApplicationGroupProperties;
 }
+const UpdateApplicationGroupResponse =
+  ApplicationGroupsCreateOrUpdateResponse as any as S.Schema<UpdateApplicationGroupResponse>;
+
 /** Desktop properties that can be patched. */
 export interface DesktopPatchProperties {
   /** Description of Desktop. */
@@ -3055,6 +4218,11 @@ export interface DesktopPatchProperties {
   /** Friendly name of Desktop. */
   friendlyName?: string;
 }
+const DesktopPatchProperties = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<DesktopPatchProperties>;
+
 export interface UpdateDesktopRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3067,6 +4235,11 @@ export interface UpdateDesktopRequest {
   /** Detailed properties for Desktop */
   properties?: DesktopPatchProperties;
 }
+const UpdateDesktopRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<UpdateDesktopRequest>;
+
 export interface UpdateDesktopResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3079,18 +4252,29 @@ export interface UpdateDesktopResponse {
   /** Detailed properties for Desktop */
   properties?: DesktopProperties;
 }
+const UpdateDesktopResponse = GetDesktopResponse as any as S.Schema<UpdateDesktopResponse>;
+
 /** tags to be updated */
 export type UpdateHostPoolRequestTagsMap = { [key: string]: string | undefined };
+const UpdateHostPoolRequestTagsMap =
+  AppAttachPackageCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateHostPoolRequestTagsMap>;
+
 /** PersonalDesktopAssignment type for HostPool. */
 export type HostPoolPatchPropertiesPersonalDesktopAssignmentType = "Automatic" | "Direct";
+const HostPoolPatchPropertiesPersonalDesktopAssignmentType = S.String;
+
 /** The type of the load balancer. */
 export type HostPoolPatchPropertiesLoadBalancerType =
   | "BreadthFirst"
   | "DepthFirst"
   | "Persistent"
   | "MultiplePersistent";
+const HostPoolPatchPropertiesLoadBalancerType = S.String;
+
 /** The type of resetting the token. */
 export type RegistrationInfoPatchRegistrationTokenOperation = "Delete" | "None" | "Update";
+const RegistrationInfoPatchRegistrationTokenOperation = S.String;
+
 /** Represents a RegistrationInfo definition. */
 export interface RegistrationInfoPatch {
   /** Expiration time of registration token. */
@@ -3098,22 +4282,35 @@ export interface RegistrationInfoPatch {
   /** The type of resetting the token. */
   registrationTokenOperation?: RegistrationInfoPatchRegistrationTokenOperation | (string & {});
 }
+const RegistrationInfoPatch = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<RegistrationInfoPatch>;
+
 /** The type of single sign on Secret Type. */
 export type HostPoolPatchPropertiesSsoSecretType =
   | "SharedKey"
   | "Certificate"
   | "SharedKeyInKeyVault"
   | "CertificateInKeyVault";
+const HostPoolPatchPropertiesSsoSecretType = S.String;
+
 /** The type of preferred application group type, default to Desktop Application Group */
 export type HostPoolPatchPropertiesPreferredAppGroupType = "None" | "Desktop" | "RailApplications";
+const HostPoolPatchPropertiesPreferredAppGroupType = S.String;
+
 /** Enabled to allow this resource to be access from the public network */
 export type HostPoolPatchPropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
   | "EnabledForSessionHostsOnly"
   | "EnabledForClientsOnly";
+const HostPoolPatchPropertiesPublicNetworkAccess = S.String;
+
 /** The type of maintenance for session host components. */
 export type AgentUpdatePatchPropertiesType = "Default" | "Scheduled";
+const AgentUpdatePatchPropertiesType = S.String;
+
 /** Day of the week. */
 export type MaintenanceWindowPatchPropertiesDayOfWeek =
   | "Monday"
@@ -3133,6 +4330,9 @@ export interface MaintenanceWindowPatchProperties {
 /** List of maintenance windows. Maintenance windows are 2 hours long. */
 export type AgentUpdatePatchPropertiesMaintenanceWindowsList =
   Array<MaintenanceWindowPatchProperties>;
+const AgentUpdatePatchPropertiesMaintenanceWindowsList =
+  AgentUpdatePropertiesMaintenanceWindowsList as any as S.Schema<AgentUpdatePatchPropertiesMaintenanceWindowsList>;
+
 /** The session host configuration for updating agent, monitoring agent, and stack component. */
 export interface AgentUpdatePatchProperties {
   /** The type of maintenance for session host components. */
@@ -3144,6 +4344,11 @@ export interface AgentUpdatePatchProperties {
   /** List of maintenance windows. Maintenance windows are 2 hours long. */
   maintenanceWindows?: AgentUpdatePatchPropertiesMaintenanceWindowsList | null;
 }
+const AgentUpdatePatchProperties = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<AgentUpdatePatchProperties>;
+
 /** Properties of HostPool. */
 export interface HostPoolPatchProperties {
   /** Friendly name of HostPool. */
@@ -3186,6 +4391,11 @@ export interface HostPoolPatchProperties {
   /** The session host configuration for updating agent, monitoring agent, and stack component. */
   agentUpdate?: AgentUpdatePatchProperties | null;
 }
+const HostPoolPatchProperties = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<HostPoolPatchProperties>;
+
 /** Managed service identity (either system assigned, or none) */
 export type UpdateHostPoolRequestIdentity = ApplicationGroupsCreateOrUpdateRequestIdentity;
 export interface UpdateHostPoolRequest {
@@ -3202,6 +4412,11 @@ export interface UpdateHostPoolRequest {
   /** Managed service identity (either system assigned, or none) */
   identity?: ApplicationGroupsCreateOrUpdateRequestIdentity;
 }
+const UpdateHostPoolRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<UpdateHostPoolRequest>;
+
 /** Resource tags. */
 export type UpdateHostPoolResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (either system assigned, or none) */
@@ -3238,6 +4453,8 @@ export interface UpdateHostPoolResponse {
   /** Detailed properties for HostPool */
   properties: HostPoolProperties;
 }
+const UpdateHostPoolResponse = GetHostPoolResponse as any as S.Schema<UpdateHostPoolResponse>;
+
 /** MSIX Package properties that can be patched. */
 export interface MSIXPackagePatchProperties {
   /** Set a version of the package to be active across hostpool. */
@@ -3247,6 +4464,11 @@ export interface MSIXPackagePatchProperties {
   /** Display name for MSIX Package. */
   displayName?: string;
 }
+const MSIXPackagePatchProperties = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<MSIXPackagePatchProperties>;
+
 export interface UpdateMSIXPackageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3259,6 +4481,11 @@ export interface UpdateMSIXPackageRequest {
   /** Detailed properties for MSIX Package */
   properties?: MSIXPackagePatchProperties;
 }
+const UpdateMSIXPackageRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<UpdateMSIXPackageRequest>;
+
 export interface UpdateMSIXPackageResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3271,8 +4498,14 @@ export interface UpdateMSIXPackageResponse {
   /** Detailed properties for MSIX Package */
   properties: MSIXPackageProperties;
 }
+const UpdateMSIXPackageResponse =
+  MSIXPackagesCreateOrUpdateResponse as any as S.Schema<UpdateMSIXPackageResponse>;
+
 /** The private endpoint resource. */
 export interface PrivateEndpointInput {}
+const PrivateEndpointInput =
+  DeleteAppAttachPackageResponse as any as S.Schema<PrivateEndpointInput>;
+
 /** Properties of the private endpoint connection. */
 export interface UpdatePrivateEndpointConnectionByHostPoolRequestProperties {
   /** The private endpoint resource. */
@@ -3280,6 +4513,11 @@ export interface UpdatePrivateEndpointConnectionByHostPoolRequestProperties {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
+const UpdatePrivateEndpointConnectionByHostPoolRequestProperties = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<UpdatePrivateEndpointConnectionByHostPoolRequestProperties>;
+
 export interface UpdatePrivateEndpointConnectionByHostPoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3292,6 +4530,11 @@ export interface UpdatePrivateEndpointConnectionByHostPoolRequest {
   /** Properties of the private endpoint connection. */
   properties?: UpdatePrivateEndpointConnectionByHostPoolRequestProperties;
 }
+const UpdatePrivateEndpointConnectionByHostPoolRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<UpdatePrivateEndpointConnectionByHostPoolRequest>;
+
 /** The group ids for the private endpoint resource. */
 export type UpdatePrivateEndpointConnectionByHostPoolResponsePropertiesGroupIdsList = Array<string>;
 /** Properties of the private endpoint connection. */
@@ -3317,6 +4560,9 @@ export interface UpdatePrivateEndpointConnectionByHostPoolResponse {
   /** Properties of the private endpoint connection. */
   properties?: UpdatePrivateEndpointConnectionByHostPoolResponseProperties;
 }
+const UpdatePrivateEndpointConnectionByHostPoolResponse =
+  GetPrivateEndpointConnectionByHostPoolResponse as any as S.Schema<UpdatePrivateEndpointConnectionByHostPoolResponse>;
+
 /** Properties of the private endpoint connection. */
 export type UpdatePrivateEndpointConnectionByWorkspaceRequestProperties =
   UpdatePrivateEndpointConnectionByHostPoolRequestProperties;
@@ -3332,9 +4578,17 @@ export interface UpdatePrivateEndpointConnectionByWorkspaceRequest {
   /** Properties of the private endpoint connection. */
   properties?: UpdatePrivateEndpointConnectionByHostPoolRequestProperties;
 }
+const UpdatePrivateEndpointConnectionByWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<UpdatePrivateEndpointConnectionByWorkspaceRequest>;
+
 /** The group ids for the private endpoint resource. */
 export type UpdatePrivateEndpointConnectionByWorkspaceResponsePropertiesGroupIdsList =
   Array<string>;
+const UpdatePrivateEndpointConnectionByWorkspaceResponsePropertiesGroupIdsList =
+  GetPrivateEndpointConnectionByHostPoolResponsePropertiesGroupIdsList as any as S.Schema<UpdatePrivateEndpointConnectionByWorkspaceResponsePropertiesGroupIdsList>;
+
 /** Properties of the private endpoint connection. */
 export interface UpdatePrivateEndpointConnectionByWorkspaceResponseProperties {
   /** The group ids for the private endpoint resource. */
@@ -3346,6 +4600,11 @@ export interface UpdatePrivateEndpointConnectionByWorkspaceResponseProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
+const UpdatePrivateEndpointConnectionByWorkspaceResponseProperties = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<UpdatePrivateEndpointConnectionByWorkspaceResponseProperties>;
+
 export interface UpdatePrivateEndpointConnectionByWorkspaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3358,12 +4617,26 @@ export interface UpdatePrivateEndpointConnectionByWorkspaceResponse {
   /** Properties of the private endpoint connection. */
   properties?: UpdatePrivateEndpointConnectionByWorkspaceResponseProperties;
 }
+const UpdatePrivateEndpointConnectionByWorkspaceResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<UpdatePrivateEndpointConnectionByWorkspaceResponse>;
+
 /** tags to be updated */
 export type UpdateScalingPlanRequestTagsMap = { [key: string]: string | undefined };
+const UpdateScalingPlanRequestTagsMap =
+  AppAttachPackageCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateScalingPlanRequestTagsMap>;
+
 /** List of ScalingSchedule definitions. */
 export type ScalingPlanPatchPropertiesSchedulesList = Array<ScalingSchedule>;
+const ScalingPlanPatchPropertiesSchedulesList =
+  ScalingPlanPropertiesInputSchedulesList as any as S.Schema<ScalingPlanPatchPropertiesSchedulesList>;
+
 /** List of ScalingHostPoolReference definitions. */
 export type ScalingPlanPatchPropertiesHostPoolReferencesList = Array<ScalingHostPoolReference>;
+const ScalingPlanPatchPropertiesHostPoolReferencesList =
+  ScalingPlanPropertiesInputHostPoolReferencesList as any as S.Schema<ScalingPlanPatchPropertiesHostPoolReferencesList>;
+
 /** Scaling plan properties. */
 export interface ScalingPlanPatchProperties {
   /** Description of scaling plan. */
@@ -3379,6 +4652,11 @@ export interface ScalingPlanPatchProperties {
   /** List of ScalingHostPoolReference definitions. */
   hostPoolReferences?: ScalingPlanPatchPropertiesHostPoolReferencesList;
 }
+const ScalingPlanPatchProperties = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<ScalingPlanPatchProperties>;
+
 export interface UpdateScalingPlanRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3391,6 +4669,11 @@ export interface UpdateScalingPlanRequest {
   /** Detailed properties for scaling plan */
   properties?: ScalingPlanPatchProperties;
 }
+const UpdateScalingPlanRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<UpdateScalingPlanRequest>;
+
 /** Resource tags. */
 export type UpdateScalingPlanResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (either system assigned, or none) */
@@ -3427,6 +4710,9 @@ export interface UpdateScalingPlanResponse {
   /** Detailed properties for scaling plan. */
   properties: ScalingPlanProperties;
 }
+const UpdateScalingPlanResponse =
+  CreateScalingPlanResponse as any as S.Schema<UpdateScalingPlanResponse>;
+
 export interface UpdateScalingPlanPersonalScheduleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3439,6 +4725,11 @@ export interface UpdateScalingPlanPersonalScheduleRequest {
   /** Detailed properties for ScalingPlanPersonalSchedule */
   properties?: ScalingPlanPersonalScheduleProperties;
 }
+const UpdateScalingPlanPersonalScheduleRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<UpdateScalingPlanPersonalScheduleRequest>;
+
 export interface UpdateScalingPlanPersonalScheduleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3451,6 +4742,9 @@ export interface UpdateScalingPlanPersonalScheduleResponse {
   /** Detailed properties for ScalingPlanPersonalSchedule */
   properties: ScalingPlanPersonalScheduleProperties;
 }
+const UpdateScalingPlanPersonalScheduleResponse =
+  CreateScalingPlanPersonalScheduleResponse as any as S.Schema<UpdateScalingPlanPersonalScheduleResponse>;
+
 export interface UpdateScalingPlanPooledScheduleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3463,6 +4757,11 @@ export interface UpdateScalingPlanPooledScheduleRequest {
   /** Detailed properties for ScalingPlanPooledSchedule */
   properties?: ScalingPlanPooledScheduleProperties;
 }
+const UpdateScalingPlanPooledScheduleRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<UpdateScalingPlanPooledScheduleRequest>;
+
 export interface UpdateScalingPlanPooledScheduleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3475,6 +4774,9 @@ export interface UpdateScalingPlanPooledScheduleResponse {
   /** Detailed properties for ScalingPlanPooledSchedule */
   properties: ScalingPlanPooledScheduleProperties;
 }
+const UpdateScalingPlanPooledScheduleResponse =
+  CreateScalingPlanPooledScheduleResponse as any as S.Schema<UpdateScalingPlanPooledScheduleResponse>;
+
 /** SessionHost properties that can be patched. */
 export interface SessionHostPatchProperties {
   /** Allow a new session. */
@@ -3484,6 +4786,11 @@ export interface SessionHostPatchProperties {
   /** Friendly name of SessionHost */
   friendlyName?: string;
 }
+const SessionHostPatchProperties = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<SessionHostPatchProperties>;
+
 export interface UpdateSessionHostRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3498,6 +4805,11 @@ export interface UpdateSessionHostRequest {
   /** Detailed properties for SessionHost */
   properties?: SessionHostPatchProperties;
 }
+const UpdateSessionHostRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<UpdateSessionHostRequest>;
+
 export interface UpdateSessionHostResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3510,12 +4822,25 @@ export interface UpdateSessionHostResponse {
   /** Detailed properties for SessionHost */
   properties?: SessionHostProperties;
 }
+const UpdateSessionHostResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<UpdateSessionHostResponse>;
+
 /** tags to be updated */
 export type UpdateWorkspaceRequestTagsMap = { [key: string]: string | undefined };
+const UpdateWorkspaceRequestTagsMap =
+  AppAttachPackageCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWorkspaceRequestTagsMap>;
+
 /** List of applicationGroup links. */
 export type WorkspacePatchPropertiesApplicationGroupReferencesList = Array<string>;
+const WorkspacePatchPropertiesApplicationGroupReferencesList =
+  AppAttachPackagePropertiesInputHostPoolReferencesList as any as S.Schema<WorkspacePatchPropertiesApplicationGroupReferencesList>;
+
 /** Enabled to allow this resource to be access from the public network */
 export type WorkspacePatchPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
+const WorkspacePatchPropertiesPublicNetworkAccess = S.String;
+
 /** Workspace properties that can be patched. */
 export interface WorkspacePatchProperties {
   /** Description of Workspace. */
@@ -3527,6 +4852,11 @@ export interface WorkspacePatchProperties {
   /** Enabled to allow this resource to be access from the public network */
   publicNetworkAccess?: WorkspacePatchPropertiesPublicNetworkAccess | (string & {}) | null;
 }
+const WorkspacePatchProperties = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<WorkspacePatchProperties>;
+
 export interface UpdateWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3539,6 +4869,11 @@ export interface UpdateWorkspaceRequest {
   /** Detailed properties for Workspace */
   properties?: WorkspacePatchProperties;
 }
+const UpdateWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<UpdateWorkspaceRequest>;
+
 /** Resource tags. */
 export type UpdateWorkspaceResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (either system assigned, or none) */
@@ -3575,8 +4910,13 @@ export interface UpdateWorkspaceResponse {
   /** Detailed properties for Workspace */
   properties?: WorkspaceProperties;
 }
+const UpdateWorkspaceResponse = GetWorkspaceResponse as any as S.Schema<UpdateWorkspaceResponse>;
+
 /** Resource tags. */
 export type WorkspacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const WorkspacesCreateOrUpdateRequestTagsMap =
+  AppAttachPackageCreateOrUpdateRequestTagsMap as any as S.Schema<WorkspacesCreateOrUpdateRequestTagsMap>;
+
 /** Managed service identity (either system assigned, or none) */
 export type WorkspacesCreateOrUpdateRequestIdentity =
   ApplicationGroupsCreateOrUpdateRequestIdentity;
@@ -3586,8 +4926,13 @@ export type WorkspacesCreateOrUpdateRequestSku = ApplicationGroupsCreateOrUpdate
 export type WorkspacesCreateOrUpdateRequestPlan = ApplicationGroupsCreateOrUpdateRequestPlan;
 /** List of applicationGroup resource Ids. */
 export type WorkspacePropertiesInputApplicationGroupReferencesList = Array<string>;
+const WorkspacePropertiesInputApplicationGroupReferencesList =
+  AppAttachPackagePropertiesInputHostPoolReferencesList as any as S.Schema<WorkspacePropertiesInputApplicationGroupReferencesList>;
+
 /** Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints */
 export type WorkspacePropertiesInputPublicNetworkAccess = "Enabled" | "Disabled";
+const WorkspacePropertiesInputPublicNetworkAccess = S.String;
+
 /** Schema for Workspace properties. */
 export interface WorkspacePropertiesInput {
   /** Description of Workspace. */
@@ -3599,6 +4944,11 @@ export interface WorkspacePropertiesInput {
   /** Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints */
   publicNetworkAccess?: WorkspacePropertiesInputPublicNetworkAccess | (string & {}) | null;
 }
+const WorkspacePropertiesInput = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<WorkspacePropertiesInput>;
+
 export interface WorkspacesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3623,8 +4973,16 @@ export interface WorkspacesCreateOrUpdateRequest {
   /** Detailed properties for Workspace */
   properties?: WorkspacePropertiesInput;
 }
+const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<WorkspacesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type WorkspacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const WorkspacesCreateOrUpdateResponseTagsMap =
+  AppAttachPackageCreateOrUpdateRequestTagsMap as any as S.Schema<WorkspacesCreateOrUpdateResponseTagsMap>;
+
 /** Managed service identity (either system assigned, or none) */
 export type WorkspacesCreateOrUpdateResponseIdentity =
   ApplicationGroupsCreateOrUpdateResponseIdentity;
@@ -3660,6 +5018,11 @@ export interface WorkspacesCreateOrUpdateResponse {
   /** Detailed properties for Workspace */
   properties?: WorkspaceProperties;
 }
+const WorkspacesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<WorkspacesCreateOrUpdateResponse>;
+
 export type AppAttachPackageCreateOrUpdateError = AzureOpError;
 /** Create or update an App Attach package. */
 export const AppAttachPackageCreateOrUpdate: API.OperationMethod<
@@ -3668,8 +5031,8 @@ export const AppAttachPackageCreateOrUpdate: API.OperationMethod<
   AppAttachPackageCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<AppAttachPackageCreateOrUpdateRequest>,
-  output: __S(11) as any as S.Schema<AppAttachPackageCreateOrUpdateResponse>,
+  input: AppAttachPackageCreateOrUpdateRequest,
+  output: AppAttachPackageCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3683,8 +5046,8 @@ export const ApplicationGroupsCreateOrUpdate: API.OperationMethod<
   ApplicationGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<ApplicationGroupsCreateOrUpdateRequest>,
-  output: __S(19) as any as S.Schema<ApplicationGroupsCreateOrUpdateResponse>,
+  input: ApplicationGroupsCreateOrUpdateRequest,
+  output: ApplicationGroupsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3698,8 +5061,8 @@ export const ApplicationsCreateOrUpdate: API.OperationMethod<
   ApplicationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<ApplicationsCreateOrUpdateRequest>,
-  output: __S(23) as any as S.Schema<ApplicationsCreateOrUpdateResponse>,
+  input: ApplicationsCreateOrUpdateRequest,
+  output: ApplicationsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3713,8 +5076,8 @@ export const CreateScalingPlan: API.OperationMethod<
   CreateScalingPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<CreateScalingPlanRequest>,
-  output: __S(33) as any as S.Schema<CreateScalingPlanResponse>,
+  input: CreateScalingPlanRequest,
+  output: CreateScalingPlanResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3728,8 +5091,8 @@ export const CreateScalingPlanPersonalSchedule: API.OperationMethod<
   CreateScalingPlanPersonalScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<CreateScalingPlanPersonalScheduleRequest>,
-  output: __S(36) as any as S.Schema<CreateScalingPlanPersonalScheduleResponse>,
+  input: CreateScalingPlanPersonalScheduleRequest,
+  output: CreateScalingPlanPersonalScheduleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3743,8 +5106,8 @@ export const CreateScalingPlanPooledSchedule: API.OperationMethod<
   CreateScalingPlanPooledScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<CreateScalingPlanPooledScheduleRequest>,
-  output: __S(39) as any as S.Schema<CreateScalingPlanPooledScheduleResponse>,
+  input: CreateScalingPlanPooledScheduleRequest,
+  output: CreateScalingPlanPooledScheduleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3758,8 +5121,8 @@ export const DeleteAppAttachPackage: API.OperationMethod<
   DeleteAppAttachPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<DeleteAppAttachPackageRequest>,
-  output: __S(41) as any as S.Schema<DeleteAppAttachPackageResponse>,
+  input: DeleteAppAttachPackageRequest,
+  output: DeleteAppAttachPackageResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3773,8 +5136,8 @@ export const DeleteApplication: API.OperationMethod<
   DeleteApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(41) as any as S.Schema<DeleteApplicationResponse>,
+  input: DeleteApplicationRequest,
+  output: DeleteApplicationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3788,8 +5151,8 @@ export const DeleteApplicationGroup: API.OperationMethod<
   DeleteApplicationGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<DeleteApplicationGroupRequest>,
-  output: __S(41) as any as S.Schema<DeleteApplicationGroupResponse>,
+  input: DeleteApplicationGroupRequest,
+  output: DeleteApplicationGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3803,8 +5166,8 @@ export const DeleteHostPool: API.OperationMethod<
   DeleteHostPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<DeleteHostPoolRequest>,
-  output: __S(41) as any as S.Schema<DeleteHostPoolResponse>,
+  input: DeleteHostPoolRequest,
+  output: DeleteHostPoolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3818,8 +5181,8 @@ export const DeleteMSIXPackage: API.OperationMethod<
   DeleteMSIXPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<DeleteMSIXPackageRequest>,
-  output: __S(41) as any as S.Schema<DeleteMSIXPackageResponse>,
+  input: DeleteMSIXPackageRequest,
+  output: DeleteMSIXPackageResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3833,8 +5196,8 @@ export const DeletePrivateEndpointConnectionByHostPool: API.OperationMethod<
   DeletePrivateEndpointConnectionByHostPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<DeletePrivateEndpointConnectionByHostPoolRequest>,
-  output: __S(47) as any as S.Schema<DeletePrivateEndpointConnectionByHostPoolResponse>,
+  input: DeletePrivateEndpointConnectionByHostPoolRequest,
+  output: DeletePrivateEndpointConnectionByHostPoolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3848,8 +5211,8 @@ export const DeletePrivateEndpointConnectionByWorkspace: API.OperationMethod<
   DeletePrivateEndpointConnectionByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<DeletePrivateEndpointConnectionByWorkspaceRequest>,
-  output: __S(47) as any as S.Schema<DeletePrivateEndpointConnectionByWorkspaceResponse>,
+  input: DeletePrivateEndpointConnectionByWorkspaceRequest,
+  output: DeletePrivateEndpointConnectionByWorkspaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3863,8 +5226,8 @@ export const DeleteScalingPlan: API.OperationMethod<
   DeleteScalingPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<DeleteScalingPlanRequest>,
-  output: __S(41) as any as S.Schema<DeleteScalingPlanResponse>,
+  input: DeleteScalingPlanRequest,
+  output: DeleteScalingPlanResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3878,8 +5241,8 @@ export const DeleteScalingPlanPersonalSchedule: API.OperationMethod<
   DeleteScalingPlanPersonalScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<DeleteScalingPlanPersonalScheduleRequest>,
-  output: __S(47) as any as S.Schema<DeleteScalingPlanPersonalScheduleResponse>,
+  input: DeleteScalingPlanPersonalScheduleRequest,
+  output: DeleteScalingPlanPersonalScheduleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3893,8 +5256,8 @@ export const DeleteScalingPlanPooledSchedule: API.OperationMethod<
   DeleteScalingPlanPooledScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<DeleteScalingPlanPooledScheduleRequest>,
-  output: __S(47) as any as S.Schema<DeleteScalingPlanPooledScheduleResponse>,
+  input: DeleteScalingPlanPooledScheduleRequest,
+  output: DeleteScalingPlanPooledScheduleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3908,8 +5271,8 @@ export const DeleteSessionHost: API.OperationMethod<
   DeleteSessionHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<DeleteSessionHostRequest>,
-  output: __S(41) as any as S.Schema<DeleteSessionHostResponse>,
+  input: DeleteSessionHostRequest,
+  output: DeleteSessionHostResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3923,8 +5286,8 @@ export const DeleteUserSession: API.OperationMethod<
   DeleteUserSessionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<DeleteUserSessionRequest>,
-  output: __S(41) as any as S.Schema<DeleteUserSessionResponse>,
+  input: DeleteUserSessionRequest,
+  output: DeleteUserSessionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3938,8 +5301,8 @@ export const DeleteWorkspace: API.OperationMethod<
   DeleteWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<DeleteWorkspaceRequest>,
-  output: __S(41) as any as S.Schema<DeleteWorkspaceResponse>,
+  input: DeleteWorkspaceRequest,
+  output: DeleteWorkspaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3953,8 +5316,8 @@ export const DisconnectUserSession: API.OperationMethod<
   DisconnectUserSessionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<DisconnectUserSessionRequest>,
-  output: __S(41) as any as S.Schema<DisconnectUserSessionResponse>,
+  input: DisconnectUserSessionRequest,
+  output: DisconnectUserSessionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3968,8 +5331,8 @@ export const GetAppAttachPackage: API.OperationMethod<
   GetAppAttachPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<GetAppAttachPackageRequest>,
-  output: __S(11) as any as S.Schema<GetAppAttachPackageResponse>,
+  input: GetAppAttachPackageRequest,
+  output: GetAppAttachPackageResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3983,8 +5346,8 @@ export const GetApplication: API.OperationMethod<
   GetApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<GetApplicationRequest>,
-  output: __S(58) as any as S.Schema<GetApplicationResponse>,
+  input: GetApplicationRequest,
+  output: GetApplicationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3998,8 +5361,8 @@ export const GetApplicationGroup: API.OperationMethod<
   GetApplicationGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<GetApplicationGroupRequest>,
-  output: __S(19) as any as S.Schema<GetApplicationGroupResponse>,
+  input: GetApplicationGroupRequest,
+  output: GetApplicationGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4013,8 +5376,8 @@ export const GetDesktop: API.OperationMethod<
   GetDesktopError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<GetDesktopRequest>,
-  output: __S(62) as any as S.Schema<GetDesktopResponse>,
+  input: GetDesktopRequest,
+  output: GetDesktopResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4028,8 +5391,8 @@ export const GetHostPool: API.OperationMethod<
   GetHostPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<GetHostPoolRequest>,
-  output: __S(74) as any as S.Schema<GetHostPoolResponse>,
+  input: GetHostPoolRequest,
+  output: GetHostPoolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4043,8 +5406,8 @@ export const GetHostPoolRegistrationToken: API.OperationMethod<
   GetHostPoolRegistrationTokenError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<GetHostPoolRegistrationTokenRequest>,
-  output: __S(64) as any as S.Schema<RegistrationInfo>,
+  input: GetHostPoolRegistrationTokenRequest,
+  output: RegistrationInfo,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4058,8 +5421,8 @@ export const GetMSIXPackage: API.OperationMethod<
   GetMSIXPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<GetMSIXPackageRequest>,
-  output: __S(78) as any as S.Schema<GetMSIXPackageResponse>,
+  input: GetMSIXPackageRequest,
+  output: GetMSIXPackageResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4073,8 +5436,8 @@ export const GetPrivateEndpointConnectionByHostPool: API.OperationMethod<
   GetPrivateEndpointConnectionByHostPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<GetPrivateEndpointConnectionByHostPoolRequest>,
-  output: __S(82) as any as S.Schema<GetPrivateEndpointConnectionByHostPoolResponse>,
+  input: GetPrivateEndpointConnectionByHostPoolRequest,
+  output: GetPrivateEndpointConnectionByHostPoolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4088,8 +5451,8 @@ export const GetPrivateEndpointConnectionByWorkspace: API.OperationMethod<
   GetPrivateEndpointConnectionByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<GetPrivateEndpointConnectionByWorkspaceRequest>,
-  output: __S(82) as any as S.Schema<GetPrivateEndpointConnectionByWorkspaceResponse>,
+  input: GetPrivateEndpointConnectionByWorkspaceRequest,
+  output: GetPrivateEndpointConnectionByWorkspaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4103,8 +5466,8 @@ export const GetScalingPlan: API.OperationMethod<
   GetScalingPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<GetScalingPlanRequest>,
-  output: __S(85) as any as S.Schema<GetScalingPlanResponse>,
+  input: GetScalingPlanRequest,
+  output: GetScalingPlanResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4118,8 +5481,8 @@ export const GetScalingPlanPersonalSchedule: API.OperationMethod<
   GetScalingPlanPersonalScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<GetScalingPlanPersonalScheduleRequest>,
-  output: __S(36) as any as S.Schema<GetScalingPlanPersonalScheduleResponse>,
+  input: GetScalingPlanPersonalScheduleRequest,
+  output: GetScalingPlanPersonalScheduleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4133,8 +5496,8 @@ export const GetScalingPlanPooledSchedule: API.OperationMethod<
   GetScalingPlanPooledScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<GetScalingPlanPooledScheduleRequest>,
-  output: __S(39) as any as S.Schema<GetScalingPlanPooledScheduleResponse>,
+  input: GetScalingPlanPooledScheduleRequest,
+  output: GetScalingPlanPooledScheduleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4148,8 +5511,8 @@ export const GetSessionHost: API.OperationMethod<
   GetSessionHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<GetSessionHostRequest>,
-  output: __S(93) as any as S.Schema<GetSessionHostResponse>,
+  input: GetSessionHostRequest,
+  output: GetSessionHostResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4163,8 +5526,8 @@ export const GetUserSession: API.OperationMethod<
   GetUserSessionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<GetUserSessionRequest>,
-  output: __S(96) as any as S.Schema<GetUserSessionResponse>,
+  input: GetUserSessionRequest,
+  output: GetUserSessionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4178,8 +5541,8 @@ export const GetWorkspace: API.OperationMethod<
   GetWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<GetWorkspaceRequest>,
-  output: __S(99) as any as S.Schema<GetWorkspaceResponse>,
+  input: GetWorkspaceRequest,
+  output: GetWorkspaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4193,8 +5556,8 @@ export const HostPoolsCreateOrUpdate: API.OperationMethod<
   HostPoolsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<HostPoolsCreateOrUpdateRequest>,
-  output: __S(102) as any as S.Schema<HostPoolsCreateOrUpdateResponse>,
+  input: HostPoolsCreateOrUpdateRequest,
+  output: HostPoolsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4208,8 +5571,8 @@ export const ImportAppAttachPackageInfo: API.OperationMethod<
   ImportAppAttachPackageInfoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<ImportAppAttachPackageInfoRequest>,
-  output: __S(106) as any as S.Schema<AppAttachPackageList>,
+  input: ImportAppAttachPackageInfoRequest,
+  output: AppAttachPackageList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4223,8 +5586,8 @@ export const ListAppAttachPackageByResourceGroup: API.OperationMethod<
   ListAppAttachPackageByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<ListAppAttachPackageByResourceGroupRequest>,
-  output: __S(106) as any as S.Schema<AppAttachPackageList>,
+  input: ListAppAttachPackageByResourceGroupRequest,
+  output: AppAttachPackageList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4238,8 +5601,8 @@ export const ListAppAttachPackageBySubscription: API.OperationMethod<
   ListAppAttachPackageBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<ListAppAttachPackageBySubscriptionRequest>,
-  output: __S(106) as any as S.Schema<AppAttachPackageList>,
+  input: ListAppAttachPackageBySubscriptionRequest,
+  output: AppAttachPackageList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4253,8 +5616,8 @@ export const ListApplicationGroupByResourceGroup: API.OperationMethod<
   ListApplicationGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<ListApplicationGroupByResourceGroupRequest>,
-  output: __S(112) as any as S.Schema<ApplicationGroupList>,
+  input: ListApplicationGroupByResourceGroupRequest,
+  output: ApplicationGroupList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4268,8 +5631,8 @@ export const ListApplicationGroupBySubscription: API.OperationMethod<
   ListApplicationGroupBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<ListApplicationGroupBySubscriptionRequest>,
-  output: __S(112) as any as S.Schema<ApplicationGroupList>,
+  input: ListApplicationGroupBySubscriptionRequest,
+  output: ApplicationGroupList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4283,8 +5646,8 @@ export const ListApplications: API.OperationMethod<
   ListApplicationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(116) as any as S.Schema<ApplicationList>,
+  input: ListApplicationsRequest,
+  output: ApplicationList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4298,8 +5661,8 @@ export const ListDesktops: API.OperationMethod<
   ListDesktopsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<ListDesktopsRequest>,
-  output: __S(119) as any as S.Schema<DesktopList>,
+  input: ListDesktopsRequest,
+  output: DesktopList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4313,8 +5676,8 @@ export const ListHostPoolByResourceGroup: API.OperationMethod<
   ListHostPoolByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<ListHostPoolByResourceGroupRequest>,
-  output: __S(122) as any as S.Schema<HostPoolList>,
+  input: ListHostPoolByResourceGroupRequest,
+  output: HostPoolList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4328,8 +5691,8 @@ export const ListHostPoolRegistrationTokens: API.OperationMethod<
   ListHostPoolRegistrationTokensError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<ListHostPoolRegistrationTokensRequest>,
-  output: __S(126) as any as S.Schema<RegistrationTokenList>,
+  input: ListHostPoolRegistrationTokensRequest,
+  output: RegistrationTokenList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4343,8 +5706,8 @@ export const ListHostPools: API.OperationMethod<
   ListHostPoolsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<ListHostPoolsRequest>,
-  output: __S(122) as any as S.Schema<HostPoolList>,
+  input: ListHostPoolsRequest,
+  output: HostPoolList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4358,8 +5721,8 @@ export const ListMSIXPackages: API.OperationMethod<
   ListMSIXPackagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128) as any as S.Schema<ListMSIXPackagesRequest>,
-  output: __S(130) as any as S.Schema<MSIXPackageList>,
+  input: ListMSIXPackagesRequest,
+  output: MSIXPackageList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4373,8 +5736,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<ListOperationsRequest>,
-  output: __S(139) as any as S.Schema<ResourceProviderOperationListResult>,
+  input: ListOperationsRequest,
+  output: ResourceProviderOperationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4388,8 +5751,8 @@ export const ListPrivateEndpointConnectionByHostPool: API.OperationMethod<
   ListPrivateEndpointConnectionByHostPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<ListPrivateEndpointConnectionByHostPoolRequest>,
-  output: __S(141) as any as S.Schema<PrivateEndpointConnectionListResultWithSystemData>,
+  input: ListPrivateEndpointConnectionByHostPoolRequest,
+  output: PrivateEndpointConnectionListResultWithSystemData,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4403,8 +5766,8 @@ export const ListPrivateEndpointConnectionByWorkspace: API.OperationMethod<
   ListPrivateEndpointConnectionByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<ListPrivateEndpointConnectionByWorkspaceRequest>,
-  output: __S(141) as any as S.Schema<PrivateEndpointConnectionListResultWithSystemData>,
+  input: ListPrivateEndpointConnectionByWorkspaceRequest,
+  output: PrivateEndpointConnectionListResultWithSystemData,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4418,8 +5781,8 @@ export const ListPrivateLinkResourceByHostPool: API.OperationMethod<
   ListPrivateLinkResourceByHostPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143) as any as S.Schema<ListPrivateLinkResourceByHostPoolRequest>,
-  output: __S(147) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: ListPrivateLinkResourceByHostPoolRequest,
+  output: PrivateLinkResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4433,8 +5796,8 @@ export const ListPrivateLinkResourceByWorkspace: API.OperationMethod<
   ListPrivateLinkResourceByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148) as any as S.Schema<ListPrivateLinkResourceByWorkspaceRequest>,
-  output: __S(147) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: ListPrivateLinkResourceByWorkspaceRequest,
+  output: PrivateLinkResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4448,8 +5811,8 @@ export const ListScalingPlanByHostPool: API.OperationMethod<
   ListScalingPlanByHostPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<ListScalingPlanByHostPoolRequest>,
-  output: __S(151) as any as S.Schema<ScalingPlanList>,
+  input: ListScalingPlanByHostPoolRequest,
+  output: ScalingPlanList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4463,8 +5826,8 @@ export const ListScalingPlanByResourceGroup: API.OperationMethod<
   ListScalingPlanByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152) as any as S.Schema<ListScalingPlanByResourceGroupRequest>,
-  output: __S(151) as any as S.Schema<ScalingPlanList>,
+  input: ListScalingPlanByResourceGroupRequest,
+  output: ScalingPlanList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4478,8 +5841,8 @@ export const ListScalingPlanBySubscription: API.OperationMethod<
   ListScalingPlanBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<ListScalingPlanBySubscriptionRequest>,
-  output: __S(151) as any as S.Schema<ScalingPlanList>,
+  input: ListScalingPlanBySubscriptionRequest,
+  output: ScalingPlanList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4493,8 +5856,8 @@ export const ListScalingPlanPersonalSchedules: API.OperationMethod<
   ListScalingPlanPersonalSchedulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<ListScalingPlanPersonalSchedulesRequest>,
-  output: __S(156) as any as S.Schema<ScalingPlanPersonalScheduleList>,
+  input: ListScalingPlanPersonalSchedulesRequest,
+  output: ScalingPlanPersonalScheduleList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4508,8 +5871,8 @@ export const ListScalingPlanPooledSchedules: API.OperationMethod<
   ListScalingPlanPooledSchedulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157) as any as S.Schema<ListScalingPlanPooledSchedulesRequest>,
-  output: __S(159) as any as S.Schema<ScalingPlanPooledScheduleList>,
+  input: ListScalingPlanPooledSchedulesRequest,
+  output: ScalingPlanPooledScheduleList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4523,8 +5886,8 @@ export const ListSessionHosts: API.OperationMethod<
   ListSessionHostsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160) as any as S.Schema<ListSessionHostsRequest>,
-  output: __S(162) as any as S.Schema<SessionHostList>,
+  input: ListSessionHostsRequest,
+  output: SessionHostList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4538,8 +5901,8 @@ export const ListStartMenuItems: API.OperationMethod<
   ListStartMenuItemsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<ListStartMenuItemsRequest>,
-  output: __S(167) as any as S.Schema<StartMenuItemList>,
+  input: ListStartMenuItemsRequest,
+  output: StartMenuItemList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4553,8 +5916,8 @@ export const ListUserSessionByHostPool: API.OperationMethod<
   ListUserSessionByHostPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<ListUserSessionByHostPoolRequest>,
-  output: __S(170) as any as S.Schema<UserSessionList>,
+  input: ListUserSessionByHostPoolRequest,
+  output: UserSessionList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4568,8 +5931,8 @@ export const ListUserSessions: API.OperationMethod<
   ListUserSessionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171) as any as S.Schema<ListUserSessionsRequest>,
-  output: __S(170) as any as S.Schema<UserSessionList>,
+  input: ListUserSessionsRequest,
+  output: UserSessionList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4583,8 +5946,8 @@ export const ListWorkspaceByResourceGroup: API.OperationMethod<
   ListWorkspaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
-  output: __S(174) as any as S.Schema<WorkspaceList>,
+  input: ListWorkspaceByResourceGroupRequest,
+  output: WorkspaceList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4598,8 +5961,8 @@ export const ListWorkspaceBySubscription: API.OperationMethod<
   ListWorkspaceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<ListWorkspaceBySubscriptionRequest>,
-  output: __S(174) as any as S.Schema<WorkspaceList>,
+  input: ListWorkspaceBySubscriptionRequest,
+  output: WorkspaceList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4613,8 +5976,8 @@ export const MsixImagesExpand: API.OperationMethod<
   MsixImagesExpandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<MsixImagesExpandRequest>,
-  output: __S(180) as any as S.Schema<ExpandMsixImageList>,
+  input: MsixImagesExpandRequest,
+  output: ExpandMsixImageList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4628,8 +5991,8 @@ export const MSIXPackagesCreateOrUpdate: API.OperationMethod<
   MSIXPackagesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<MSIXPackagesCreateOrUpdateRequest>,
-  output: __S(182) as any as S.Schema<MSIXPackagesCreateOrUpdateResponse>,
+  input: MSIXPackagesCreateOrUpdateRequest,
+  output: MSIXPackagesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4643,8 +6006,8 @@ export const SendUserSessionMessage: API.OperationMethod<
   SendUserSessionMessageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183) as any as S.Schema<SendUserSessionMessageRequest>,
-  output: __S(41) as any as S.Schema<SendUserSessionMessageResponse>,
+  input: SendUserSessionMessageRequest,
+  output: SendUserSessionMessageResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4658,8 +6021,8 @@ export const UpdateAppAttachPackage: API.OperationMethod<
   UpdateAppAttachPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184) as any as S.Schema<UpdateAppAttachPackageRequest>,
-  output: __S(11) as any as S.Schema<UpdateAppAttachPackageResponse>,
+  input: UpdateAppAttachPackageRequest,
+  output: UpdateAppAttachPackageResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4673,8 +6036,8 @@ export const UpdateApplication: API.OperationMethod<
   UpdateApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(23) as any as S.Schema<UpdateApplicationResponse>,
+  input: UpdateApplicationRequest,
+  output: UpdateApplicationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4688,8 +6051,8 @@ export const UpdateApplicationGroup: API.OperationMethod<
   UpdateApplicationGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188) as any as S.Schema<UpdateApplicationGroupRequest>,
-  output: __S(19) as any as S.Schema<UpdateApplicationGroupResponse>,
+  input: UpdateApplicationGroupRequest,
+  output: UpdateApplicationGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4703,8 +6066,8 @@ export const UpdateDesktop: API.OperationMethod<
   UpdateDesktopError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190) as any as S.Schema<UpdateDesktopRequest>,
-  output: __S(62) as any as S.Schema<UpdateDesktopResponse>,
+  input: UpdateDesktopRequest,
+  output: UpdateDesktopResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4718,8 +6081,8 @@ export const UpdateHostPool: API.OperationMethod<
   UpdateHostPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194) as any as S.Schema<UpdateHostPoolRequest>,
-  output: __S(74) as any as S.Schema<UpdateHostPoolResponse>,
+  input: UpdateHostPoolRequest,
+  output: UpdateHostPoolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4733,8 +6096,8 @@ export const UpdateMSIXPackage: API.OperationMethod<
   UpdateMSIXPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196) as any as S.Schema<UpdateMSIXPackageRequest>,
-  output: __S(182) as any as S.Schema<UpdateMSIXPackageResponse>,
+  input: UpdateMSIXPackageRequest,
+  output: UpdateMSIXPackageResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4748,8 +6111,8 @@ export const UpdatePrivateEndpointConnectionByHostPool: API.OperationMethod<
   UpdatePrivateEndpointConnectionByHostPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198) as any as S.Schema<UpdatePrivateEndpointConnectionByHostPoolRequest>,
-  output: __S(82) as any as S.Schema<UpdatePrivateEndpointConnectionByHostPoolResponse>,
+  input: UpdatePrivateEndpointConnectionByHostPoolRequest,
+  output: UpdatePrivateEndpointConnectionByHostPoolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4763,8 +6126,8 @@ export const UpdatePrivateEndpointConnectionByWorkspace: API.OperationMethod<
   UpdatePrivateEndpointConnectionByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199) as any as S.Schema<UpdatePrivateEndpointConnectionByWorkspaceRequest>,
-  output: __S(201) as any as S.Schema<UpdatePrivateEndpointConnectionByWorkspaceResponse>,
+  input: UpdatePrivateEndpointConnectionByWorkspaceRequest,
+  output: UpdatePrivateEndpointConnectionByWorkspaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4778,8 +6141,8 @@ export const UpdateScalingPlan: API.OperationMethod<
   UpdateScalingPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203) as any as S.Schema<UpdateScalingPlanRequest>,
-  output: __S(33) as any as S.Schema<UpdateScalingPlanResponse>,
+  input: UpdateScalingPlanRequest,
+  output: UpdateScalingPlanResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4793,8 +6156,8 @@ export const UpdateScalingPlanPersonalSchedule: API.OperationMethod<
   UpdateScalingPlanPersonalScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204) as any as S.Schema<UpdateScalingPlanPersonalScheduleRequest>,
-  output: __S(36) as any as S.Schema<UpdateScalingPlanPersonalScheduleResponse>,
+  input: UpdateScalingPlanPersonalScheduleRequest,
+  output: UpdateScalingPlanPersonalScheduleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4808,8 +6171,8 @@ export const UpdateScalingPlanPooledSchedule: API.OperationMethod<
   UpdateScalingPlanPooledScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205) as any as S.Schema<UpdateScalingPlanPooledScheduleRequest>,
-  output: __S(39) as any as S.Schema<UpdateScalingPlanPooledScheduleResponse>,
+  input: UpdateScalingPlanPooledScheduleRequest,
+  output: UpdateScalingPlanPooledScheduleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4823,8 +6186,8 @@ export const UpdateSessionHost: API.OperationMethod<
   UpdateSessionHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207) as any as S.Schema<UpdateSessionHostRequest>,
-  output: __S(208) as any as S.Schema<UpdateSessionHostResponse>,
+  input: UpdateSessionHostRequest,
+  output: UpdateSessionHostResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4838,8 +6201,8 @@ export const UpdateWorkspace: API.OperationMethod<
   UpdateWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210) as any as S.Schema<UpdateWorkspaceRequest>,
-  output: __S(99) as any as S.Schema<UpdateWorkspaceResponse>,
+  input: UpdateWorkspaceRequest,
+  output: UpdateWorkspaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4853,8 +6216,8 @@ export const WorkspacesCreateOrUpdate: API.OperationMethod<
   WorkspacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212) as any as S.Schema<WorkspacesCreateOrUpdateRequest>,
-  output: __S(213) as any as S.Schema<WorkspacesCreateOrUpdateResponse>,
+  input: WorkspacesCreateOrUpdateRequest,
+  output: WorkspacesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4874,7 +6237,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "MsixPackageDependencies" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(MsixPackageDependencies);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4888,7 +6251,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "MsixPackageApplications" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(MsixPackageApplications);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4901,13 +6264,17 @@ function __c0(j: number): any {
           packageRelativePath: S.optional(S.String),
           isRegularRegistration: S.optional(S.Boolean),
           isActive: S.optional(S.Boolean),
-          packageDependencies: S.optional(S.NullOr(__S(2))),
+          packageDependencies: S.optional(
+            S.NullOr(AppAttachPackageInfoPropertiesPackageDependenciesList),
+          ),
           version: S.optional(S.String),
           lastUpdated: S.optional(S.String),
-          packageApplications: S.optional(__S(4)),
+          packageApplications: S.optional(AppAttachPackageInfoPropertiesPackageApplicationsList),
           certificateName: S.optional(S.NullOr(S.String)),
           certificateExpiry: S.optional(S.NullOr(S.String)),
-          isPackageTimestamped: S.optional(S.NullOr(S.String)),
+          isPackageTimestamped: S.optional(
+            S.NullOr(AppAttachPackageInfoPropertiesIsPackageTimestamped),
+          ),
         }),
       ).annotate({
         identifier: "AppAttachPackageInfoProperties",
@@ -4917,10 +6284,10 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          image: S.optional(__S(5)),
-          hostPoolReferences: S.optional(__S(6)),
+          image: S.optional(AppAttachPackageInfoProperties),
+          hostPoolReferences: S.optional(AppAttachPackagePropertiesInputHostPoolReferencesList),
           keyVaultURL: S.optional(S.String),
-          failHealthCheckOnStagingFailure: S.optional(S.String),
+          failHealthCheckOnStagingFailure: S.optional(FailHealthCheckOnStagingFailureEnum),
         }),
       ).annotate({
         identifier: "AppAttachPackagePropertiesInput",
@@ -4935,9 +6302,9 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           appAttachPackageName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(AppAttachPackageCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: __S(7),
+          properties: AppAttachPackagePropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4953,21 +6320,21 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          image: S.optional(__S(5)),
-          hostPoolReferences: S.optional(__S(6)),
+          provisioningState: S.optional(ProvisioningState),
+          image: S.optional(AppAttachPackageInfoProperties),
+          hostPoolReferences: S.optional(AppAttachPackagePropertiesHostPoolReferencesList),
           keyVaultURL: S.optional(S.String),
-          failHealthCheckOnStagingFailure: S.optional(S.String),
+          failHealthCheckOnStagingFailure: S.optional(FailHealthCheckOnStagingFailureEnum),
         }),
       ).annotate({
         identifier: "AppAttachPackageProperties",
@@ -4978,10 +6345,10 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(AppAttachPackageCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: __S(10),
+          properties: AppAttachPackageProperties,
         }),
       ).annotate({
         identifier: "AppAttachPackageCreateOrUpdateResponse",
@@ -4989,7 +6356,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: SystemAssignedServiceIdentityType,
         }),
       ).annotate({
         identifier: "ApplicationGroupsCreateOrUpdateRequestIdentity",
@@ -4998,7 +6365,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          tier: S.optional(S.String),
+          tier: S.optional(SkuTier),
           size: S.optional(S.String),
           family: S.optional(S.String),
           capacity: S.optional(S.Number),
@@ -5024,7 +6391,7 @@ function __c1(j: number): any {
           description: S.optional(S.String),
           friendlyName: S.optional(S.String),
           hostPoolArmPath: S.String,
-          applicationGroupType: S.String,
+          applicationGroupType: ApplicationGroupPropertiesInputApplicationGroupType,
           showInFeed: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -5040,14 +6407,14 @@ function __c2(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           applicationGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(ApplicationGroupsCreateOrUpdateRequestTagsMap),
           location: S.String,
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
-          identity: S.optional(__S(12)),
-          sku: S.optional(__S(13)),
-          plan: S.optional(__S(14)),
-          properties: __S(15),
+          identity: S.optional(ApplicationGroupsCreateOrUpdateRequestIdentity),
+          sku: S.optional(ApplicationGroupsCreateOrUpdateRequestSku),
+          plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
+          properties: ApplicationGroupPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5064,7 +6431,7 @@ function __c2(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
+          type: SystemAssignedServiceIdentityType,
         }),
       ).annotate({
         identifier: "ApplicationGroupsCreateOrUpdateResponseIdentity",
@@ -5077,7 +6444,7 @@ function __c2(j: number): any {
           friendlyName: S.optional(S.String),
           hostPoolArmPath: S.String,
           workspaceArmPath: S.optional(S.String),
-          applicationGroupType: S.String,
+          applicationGroupType: ApplicationGroupPropertiesApplicationGroupType,
           cloudPcResource: S.optional(S.NullOr(S.Boolean)),
           showInFeed: S.optional(S.Boolean),
         }),
@@ -5090,16 +6457,16 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(ApplicationGroupsCreateOrUpdateResponseTagsMap),
           location: S.String,
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(17)),
-          sku: S.optional(__S(13)),
-          plan: S.optional(__S(14)),
-          properties: __S(18),
+          identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+          sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+          plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
+          properties: ApplicationGroupProperties,
         }),
       ).annotate({
         identifier: "ApplicationGroupsCreateOrUpdateResponse",
@@ -5112,8 +6479,8 @@ function __c2(j: number): any {
           filePath: S.optional(S.String),
           msixPackageFamilyName: S.optional(S.NullOr(S.String)),
           msixPackageApplicationId: S.optional(S.NullOr(S.String)),
-          applicationType: S.optional(S.String),
-          commandLineSetting: S.String,
+          applicationType: S.optional(ApplicationPropertiesInputApplicationType),
+          commandLineSetting: ApplicationPropertiesInputCommandLineSetting,
           commandLineArguments: S.optional(S.String),
           showInPortal: S.optional(S.Boolean),
           iconPath: S.optional(S.String),
@@ -5129,7 +6496,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           applicationGroupName: S.String.pipe(T.Label()),
           applicationName: S.String.pipe(T.Label()),
-          properties: __S(20),
+          properties: ApplicationPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5150,8 +6517,8 @@ function __c2(j: number): any {
           filePath: S.optional(S.String),
           msixPackageFamilyName: S.optional(S.NullOr(S.String)),
           msixPackageApplicationId: S.optional(S.NullOr(S.String)),
-          applicationType: S.optional(S.String),
-          commandLineSetting: S.String,
+          applicationType: S.optional(ApplicationPropertiesApplicationType),
+          commandLineSetting: ApplicationPropertiesCommandLineSetting,
           commandLineArguments: S.optional(S.String),
           showInPortal: S.optional(S.Boolean),
           iconPath: S.optional(S.String),
@@ -5166,8 +6533,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          properties: __S(22),
+          systemData: S.optional(SystemData),
+          properties: ApplicationProperties,
         }),
       ).annotate({
         identifier: "ApplicationsCreateOrUpdateResponse",
@@ -5177,7 +6544,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(ScalingScheduleDaysOfWeekItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5189,27 +6556,27 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          daysOfWeek: S.optional(__S(24)),
-          rampUpStartTime: S.optional(__S(25)),
-          rampUpLoadBalancingAlgorithm: S.optional(S.String),
+          daysOfWeek: S.optional(ScalingScheduleDaysOfWeekList),
+          rampUpStartTime: S.optional(Time),
+          rampUpLoadBalancingAlgorithm: S.optional(ScalingScheduleRampUpLoadBalancingAlgorithm),
           rampUpMinimumHostsPct: S.optional(S.Number),
           rampUpCapacityThresholdPct: S.optional(S.Number),
-          peakStartTime: S.optional(__S(25)),
-          peakLoadBalancingAlgorithm: S.optional(S.String),
-          rampDownStartTime: S.optional(__S(25)),
-          rampDownLoadBalancingAlgorithm: S.optional(S.String),
+          peakStartTime: S.optional(Time),
+          peakLoadBalancingAlgorithm: S.optional(ScalingSchedulePeakLoadBalancingAlgorithm),
+          rampDownStartTime: S.optional(Time),
+          rampDownLoadBalancingAlgorithm: S.optional(ScalingScheduleRampDownLoadBalancingAlgorithm),
           rampDownMinimumHostsPct: S.optional(S.Number),
           rampDownCapacityThresholdPct: S.optional(S.Number),
           rampDownForceLogoffUsers: S.optional(S.Boolean),
-          rampDownStopHostsWhen: S.optional(S.String),
+          rampDownStopHostsWhen: S.optional(ScalingScheduleRampDownStopHostsWhen),
           rampDownWaitTimeMinutes: S.optional(S.Number),
           rampDownNotificationMessage: S.optional(S.String),
-          offPeakStartTime: S.optional(__S(25)),
-          offPeakLoadBalancingAlgorithm: S.optional(S.String),
+          offPeakStartTime: S.optional(Time),
+          offPeakLoadBalancingAlgorithm: S.optional(ScalingScheduleOffPeakLoadBalancingAlgorithm),
         }),
       ).annotate({ identifier: "ScalingSchedule" });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(ScalingSchedule);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -5218,17 +6585,17 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "ScalingHostPoolReference" });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(ScalingHostPoolReference);
     case 6:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           friendlyName: S.optional(S.String),
           timeZone: S.String,
-          hostPoolType: S.optional(S.String),
+          hostPoolType: S.optional(ScalingPlanPropertiesInputHostPoolType),
           exclusionTag: S.optional(S.String),
-          schedules: S.optional(__S(27)),
-          hostPoolReferences: S.optional(__S(29)),
+          schedules: S.optional(ScalingPlanPropertiesInputSchedulesList),
+          hostPoolReferences: S.optional(ScalingPlanPropertiesInputHostPoolReferencesList),
         }),
       ).annotate({
         identifier: "ScalingPlanPropertiesInput",
@@ -5239,14 +6606,14 @@ function __c3(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           scalingPlanName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(CreateScalingPlanRequestTagsMap),
           location: S.String,
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
-          identity: S.optional(__S(12)),
-          sku: S.optional(__S(13)),
-          plan: S.optional(__S(14)),
-          properties: __S(30),
+          identity: S.optional(ApplicationGroupsCreateOrUpdateRequestIdentity),
+          sku: S.optional(ApplicationGroupsCreateOrUpdateRequestSku),
+          plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
+          properties: ScalingPlanPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5267,10 +6634,10 @@ function __c4(j: number): any {
           description: S.optional(S.String),
           friendlyName: S.optional(S.String),
           timeZone: S.String,
-          hostPoolType: S.optional(S.String),
+          hostPoolType: S.optional(ScalingPlanPropertiesHostPoolType),
           exclusionTag: S.optional(S.String),
-          schedules: S.optional(__S(27)),
-          hostPoolReferences: S.optional(__S(29)),
+          schedules: S.optional(ScalingPlanPropertiesSchedulesList),
+          hostPoolReferences: S.optional(ScalingPlanPropertiesHostPoolReferencesList),
         }),
       ).annotate({ identifier: "ScalingPlanProperties" });
     case 1:
@@ -5279,16 +6646,16 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateScalingPlanResponseTagsMap),
           location: S.String,
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(17)),
-          sku: S.optional(__S(13)),
-          plan: S.optional(__S(14)),
-          properties: __S(32),
+          identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+          sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+          plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
+          properties: ScalingPlanProperties,
         }),
       ).annotate({
         identifier: "CreateScalingPlanResponse",
@@ -5296,31 +6663,55 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          daysOfWeek: S.optional(__S(24)),
-          rampUpStartTime: S.optional(__S(25)),
-          rampUpAutoStartHosts: S.optional(S.String),
-          rampUpStartVMOnConnect: S.optional(S.String),
-          rampUpActionOnDisconnect: S.optional(S.String),
+          daysOfWeek: S.optional(ScalingPlanPersonalSchedulePropertiesDaysOfWeekList),
+          rampUpStartTime: S.optional(Time),
+          rampUpAutoStartHosts: S.optional(
+            ScalingPlanPersonalSchedulePropertiesRampUpAutoStartHosts,
+          ),
+          rampUpStartVMOnConnect: S.optional(
+            ScalingPlanPersonalSchedulePropertiesRampUpStartVMOnConnect,
+          ),
+          rampUpActionOnDisconnect: S.optional(
+            ScalingPlanPersonalSchedulePropertiesRampUpActionOnDisconnect,
+          ),
           rampUpMinutesToWaitOnDisconnect: S.optional(S.Number),
-          rampUpActionOnLogoff: S.optional(S.String),
+          rampUpActionOnLogoff: S.optional(
+            ScalingPlanPersonalSchedulePropertiesRampUpActionOnLogoff,
+          ),
           rampUpMinutesToWaitOnLogoff: S.optional(S.Number),
-          peakStartTime: S.optional(__S(25)),
-          peakStartVMOnConnect: S.optional(S.String),
-          peakActionOnDisconnect: S.optional(S.String),
+          peakStartTime: S.optional(Time),
+          peakStartVMOnConnect: S.optional(
+            ScalingPlanPersonalSchedulePropertiesPeakStartVMOnConnect,
+          ),
+          peakActionOnDisconnect: S.optional(
+            ScalingPlanPersonalSchedulePropertiesPeakActionOnDisconnect,
+          ),
           peakMinutesToWaitOnDisconnect: S.optional(S.Number),
-          peakActionOnLogoff: S.optional(S.String),
+          peakActionOnLogoff: S.optional(ScalingPlanPersonalSchedulePropertiesPeakActionOnLogoff),
           peakMinutesToWaitOnLogoff: S.optional(S.Number),
-          rampDownStartTime: S.optional(__S(25)),
-          rampDownStartVMOnConnect: S.optional(S.String),
-          rampDownActionOnDisconnect: S.optional(S.String),
+          rampDownStartTime: S.optional(Time),
+          rampDownStartVMOnConnect: S.optional(
+            ScalingPlanPersonalSchedulePropertiesRampDownStartVMOnConnect,
+          ),
+          rampDownActionOnDisconnect: S.optional(
+            ScalingPlanPersonalSchedulePropertiesRampDownActionOnDisconnect,
+          ),
           rampDownMinutesToWaitOnDisconnect: S.optional(S.Number),
-          rampDownActionOnLogoff: S.optional(S.String),
+          rampDownActionOnLogoff: S.optional(
+            ScalingPlanPersonalSchedulePropertiesRampDownActionOnLogoff,
+          ),
           rampDownMinutesToWaitOnLogoff: S.optional(S.Number),
-          offPeakStartTime: S.optional(__S(25)),
-          offPeakStartVMOnConnect: S.optional(S.String),
-          offPeakActionOnDisconnect: S.optional(S.String),
+          offPeakStartTime: S.optional(Time),
+          offPeakStartVMOnConnect: S.optional(
+            ScalingPlanPersonalSchedulePropertiesOffPeakStartVMOnConnect,
+          ),
+          offPeakActionOnDisconnect: S.optional(
+            ScalingPlanPersonalSchedulePropertiesOffPeakActionOnDisconnect,
+          ),
           offPeakMinutesToWaitOnDisconnect: S.optional(S.Number),
-          offPeakActionOnLogoff: S.optional(S.String),
+          offPeakActionOnLogoff: S.optional(
+            ScalingPlanPersonalSchedulePropertiesOffPeakActionOnLogoff,
+          ),
           offPeakMinutesToWaitOnLogoff: S.optional(S.Number),
         }),
       ).annotate({
@@ -5333,7 +6724,7 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           scalingPlanName: S.String.pipe(T.Label()),
           scalingPlanScheduleName: S.String.pipe(T.Label()),
-          properties: __S(34),
+          properties: ScalingPlanPersonalScheduleProperties,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5351,8 +6742,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          properties: __S(34),
+          systemData: S.optional(SystemData),
+          properties: ScalingPlanPersonalScheduleProperties,
         }),
       ).annotate({
         identifier: "CreateScalingPlanPersonalScheduleResponse",
@@ -5360,23 +6751,33 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          daysOfWeek: S.optional(__S(24)),
-          rampUpStartTime: S.optional(__S(25)),
-          rampUpLoadBalancingAlgorithm: S.optional(S.String),
+          daysOfWeek: S.optional(ScalingPlanPooledSchedulePropertiesDaysOfWeekList),
+          rampUpStartTime: S.optional(Time),
+          rampUpLoadBalancingAlgorithm: S.optional(
+            ScalingPlanPooledSchedulePropertiesRampUpLoadBalancingAlgorithm,
+          ),
           rampUpMinimumHostsPct: S.optional(S.Number),
           rampUpCapacityThresholdPct: S.optional(S.Number),
-          peakStartTime: S.optional(__S(25)),
-          peakLoadBalancingAlgorithm: S.optional(S.String),
-          rampDownStartTime: S.optional(__S(25)),
-          rampDownLoadBalancingAlgorithm: S.optional(S.String),
+          peakStartTime: S.optional(Time),
+          peakLoadBalancingAlgorithm: S.optional(
+            ScalingPlanPooledSchedulePropertiesPeakLoadBalancingAlgorithm,
+          ),
+          rampDownStartTime: S.optional(Time),
+          rampDownLoadBalancingAlgorithm: S.optional(
+            ScalingPlanPooledSchedulePropertiesRampDownLoadBalancingAlgorithm,
+          ),
           rampDownMinimumHostsPct: S.optional(S.Number),
           rampDownCapacityThresholdPct: S.optional(S.Number),
           rampDownForceLogoffUsers: S.optional(S.Boolean),
-          rampDownStopHostsWhen: S.optional(S.String),
+          rampDownStopHostsWhen: S.optional(
+            ScalingPlanPooledSchedulePropertiesRampDownStopHostsWhen,
+          ),
           rampDownWaitTimeMinutes: S.optional(S.Number),
           rampDownNotificationMessage: S.optional(S.String),
-          offPeakStartTime: S.optional(__S(25)),
-          offPeakLoadBalancingAlgorithm: S.optional(S.String),
+          offPeakStartTime: S.optional(Time),
+          offPeakLoadBalancingAlgorithm: S.optional(
+            ScalingPlanPooledSchedulePropertiesOffPeakLoadBalancingAlgorithm,
+          ),
         }),
       ).annotate({
         identifier: "ScalingPlanPooledScheduleProperties",
@@ -5388,7 +6789,7 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           scalingPlanName: S.String.pipe(T.Label()),
           scalingPlanScheduleName: S.String.pipe(T.Label()),
-          properties: __S(37),
+          properties: ScalingPlanPooledScheduleProperties,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5406,8 +6807,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          properties: __S(37),
+          systemData: S.optional(SystemData),
+          properties: ScalingPlanPooledScheduleProperties,
         }),
       ).annotate({
         identifier: "CreateScalingPlanPooledScheduleResponse",
@@ -5709,8 +7110,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          properties: __S(22),
+          systemData: S.optional(SystemData),
+          properties: ApplicationProperties,
         }),
       ).annotate({ identifier: "GetApplicationResponse" });
     case 3:
@@ -5762,8 +7163,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          properties: S.optional(__S(61)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DesktopProperties),
         }),
       ).annotate({ identifier: "GetDesktopResponse" });
     case 7:
@@ -5790,27 +7191,27 @@ function __c8(j: number): any {
         S.Struct({
           expirationTime: S.optional(S.NullOr(S.String)),
           token: S.optional(S.String),
-          registrationTokenOperation: S.optional(S.String),
+          registrationTokenOperation: S.optional(RegistrationInfoRegistrationTokenOperation),
         }),
       ).annotate({ identifier: "RegistrationInfo" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           hour: S.optional(S.Number),
-          dayOfWeek: S.optional(S.String),
+          dayOfWeek: S.optional(MaintenanceWindowPropertiesDayOfWeek),
         }),
       ).annotate({
         identifier: "MaintenanceWindowProperties",
       });
     case 2:
-      return S.Array(__S(65));
+      return S.Array(MaintenanceWindowProperties);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(AgentUpdatePropertiesType),
           useSessionHostLocalTime: S.optional(S.Boolean),
           maintenanceWindowTimeZone: S.optional(S.String),
-          maintenanceWindows: S.optional(S.NullOr(__S(66))),
+          maintenanceWindows: S.optional(S.NullOr(AgentUpdatePropertiesMaintenanceWindowsList)),
         }),
       ).annotate({ identifier: "AgentUpdateProperties" });
     case 4:
@@ -5822,7 +7223,7 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(PrivateEndpointServiceConnectionStatus),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -5832,10 +7233,10 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(6)),
-          privateEndpoint: S.optional(__S(68)),
-          privateLinkServiceConnectionState: __S(69),
-          provisioningState: S.optional(S.String),
+          groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
+          privateEndpoint: S.optional(PrivateEndpoint),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+          provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -5846,8 +7247,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          properties: S.optional(__S(70)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateEndpointConnectionProperties),
         }),
       ).annotate({
         identifier: "HostPoolPropertiesPrivateEndpointConnectionsItem",
@@ -5857,34 +7258,40 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71));
+      return S.Array(HostPoolPropertiesPrivateEndpointConnectionsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           objectId: S.optional(S.String),
           friendlyName: S.optional(S.String),
           description: S.optional(S.String),
-          hostPoolType: S.String,
-          personalDesktopAssignmentType: S.optional(S.NullOr(S.String)),
+          hostPoolType: HostPoolPropertiesHostPoolType,
+          personalDesktopAssignmentType: S.optional(
+            S.NullOr(HostPoolPropertiesPersonalDesktopAssignmentType),
+          ),
           customRdpProperty: S.optional(S.String),
           maxSessionLimit: S.optional(S.NullOr(S.Number)),
-          loadBalancerType: S.String,
+          loadBalancerType: HostPoolPropertiesLoadBalancerType,
           ring: S.optional(S.NullOr(S.Number)),
           validationEnvironment: S.optional(S.NullOr(S.Boolean)),
-          registrationInfo: S.optional(S.NullOr(__S(64))),
+          registrationInfo: S.optional(S.NullOr(RegistrationInfo)),
           vmTemplate: S.optional(S.String),
-          applicationGroupReferences: S.optional(S.NullOr(__S(6))),
-          appAttachPackageReferences: S.optional(__S(6)),
+          applicationGroupReferences: S.optional(
+            S.NullOr(HostPoolPropertiesApplicationGroupReferencesList),
+          ),
+          appAttachPackageReferences: S.optional(HostPoolPropertiesAppAttachPackageReferencesList),
           ssoadfsAuthority: S.optional(S.String),
           ssoClientId: S.optional(S.String),
           ssoClientSecretKeyVaultPath: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          ssoSecretType: S.optional(S.NullOr(S.String)),
-          preferredAppGroupType: S.String,
+          ssoSecretType: S.optional(S.NullOr(HostPoolPropertiesSsoSecretType)),
+          preferredAppGroupType: HostPoolPropertiesPreferredAppGroupType,
           startVMOnConnect: S.optional(S.NullOr(S.Boolean)),
           cloudPcResource: S.optional(S.NullOr(S.Boolean)),
-          publicNetworkAccess: S.optional(S.NullOr(S.String)),
-          agentUpdate: S.optional(S.NullOr(__S(67))),
-          privateEndpointConnections: S.optional(S.NullOr(__S(72))),
+          publicNetworkAccess: S.optional(S.NullOr(HostPoolPropertiesPublicNetworkAccess)),
+          agentUpdate: S.optional(S.NullOr(AgentUpdateProperties)),
+          privateEndpointConnections: S.optional(
+            S.NullOr(HostPoolPropertiesPrivateEndpointConnectionsList),
+          ),
         }),
       ).annotate({ identifier: "HostPoolProperties" });
     case 2:
@@ -5893,16 +7300,16 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetHostPoolResponseTagsMap),
           location: S.String,
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(17)),
-          sku: S.optional(__S(13)),
-          plan: S.optional(__S(14)),
-          properties: __S(73),
+          identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+          sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+          plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
+          properties: HostPoolProperties,
         }),
       ).annotate({ identifier: "GetHostPoolResponse" });
     case 3:
@@ -5948,10 +7355,10 @@ function __c9(j: number): any {
           packageRelativePath: S.optional(S.String),
           isRegularRegistration: S.optional(S.Boolean),
           isActive: S.optional(S.Boolean),
-          packageDependencies: S.optional(__S(2)),
+          packageDependencies: S.optional(MSIXPackagePropertiesPackageDependenciesList),
           version: S.optional(S.String),
           lastUpdated: S.optional(S.String),
-          packageApplications: S.optional(__S(4)),
+          packageApplications: S.optional(MSIXPackagePropertiesPackageApplicationsList),
         }),
       ).annotate({ identifier: "MSIXPackageProperties" });
     case 6:
@@ -5960,8 +7367,8 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          properties: __S(77),
+          systemData: S.optional(SystemData),
+          properties: MSIXPackageProperties,
         }),
       ).annotate({ identifier: "GetMSIXPackageResponse" });
     case 7:
@@ -5991,10 +7398,12 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(80)),
-          privateEndpoint: S.optional(__S(68)),
-          privateLinkServiceConnectionState: __S(69),
-          provisioningState: S.optional(S.String),
+          groupIds: S.optional(
+            GetPrivateEndpointConnectionByHostPoolResponsePropertiesGroupIdsList,
+          ),
+          privateEndpoint: S.optional(PrivateEndpoint),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+          provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
         }),
       ).annotate({
         identifier: "GetPrivateEndpointConnectionByHostPoolResponseProperties",
@@ -6005,8 +7414,8 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          properties: S.optional(__S(81)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(GetPrivateEndpointConnectionByHostPoolResponseProperties),
         }),
       ).annotate({
         identifier: "GetPrivateEndpointConnectionByHostPoolResponse",
@@ -6050,16 +7459,16 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetScalingPlanResponseTagsMap),
           location: S.String,
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(17)),
-          sku: S.optional(__S(13)),
-          plan: S.optional(__S(14)),
-          properties: __S(32),
+          identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+          sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+          plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
+          properties: ScalingPlanProperties,
         }),
       ).annotate({ identifier: "GetScalingPlanResponse" });
     case 6:
@@ -6131,15 +7540,15 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          healthCheckName: S.optional(S.String),
-          healthCheckResult: S.optional(S.String),
-          additionalFailureDetails: S.optional(__S(89)),
+          healthCheckName: S.optional(SessionHostHealthCheckReportHealthCheckName),
+          healthCheckResult: S.optional(SessionHostHealthCheckReportHealthCheckResult),
+          additionalFailureDetails: S.optional(SessionHostHealthCheckFailureDetails),
         }),
       ).annotate({
         identifier: "SessionHostHealthCheckReport",
       });
     case 3:
-      return S.Array(__S(90));
+      return S.Array(SessionHostHealthCheckReport);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -6152,14 +7561,16 @@ function __c11(j: number): any {
           resourceId: S.optional(S.String),
           assignedUser: S.optional(S.String),
           friendlyName: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(SessionHostPropertiesStatus),
           statusTimestamp: S.optional(S.String),
           osVersion: S.optional(S.String),
           sxSStackVersion: S.optional(S.String),
-          updateState: S.optional(S.String),
+          updateState: S.optional(SessionHostPropertiesUpdateState),
           lastUpdateTime: S.optional(S.String),
           updateErrorMessage: S.optional(S.String),
-          sessionHostHealthCheckResults: S.optional(__S(91)),
+          sessionHostHealthCheckResults: S.optional(
+            SessionHostPropertiesSessionHostHealthCheckResultsList,
+          ),
         }),
       ).annotate({ identifier: "SessionHostProperties" });
     case 5:
@@ -6168,8 +7579,8 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          properties: S.optional(__S(92)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SessionHostProperties),
         }),
       ).annotate({ identifier: "GetSessionHostResponse" });
     case 6:
@@ -6194,8 +7605,8 @@ function __c11(j: number): any {
         S.Struct({
           objectId: S.optional(S.String),
           userPrincipalName: S.optional(S.String),
-          applicationType: S.optional(S.String),
-          sessionState: S.optional(S.String),
+          applicationType: S.optional(UserSessionPropertiesApplicationType),
+          sessionState: S.optional(UserSessionPropertiesSessionState),
           activeDirectoryUserName: S.optional(S.String),
           createTime: S.optional(S.String),
         }),
@@ -6210,8 +7621,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          properties: S.optional(__S(95)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(UserSessionProperties),
         }),
       ).annotate({ identifier: "GetUserSessionResponse" });
     case 1:
@@ -6235,10 +7646,14 @@ function __c12(j: number): any {
           objectId: S.optional(S.String),
           description: S.optional(S.String),
           friendlyName: S.optional(S.String),
-          applicationGroupReferences: S.optional(S.NullOr(__S(6))),
+          applicationGroupReferences: S.optional(
+            S.NullOr(WorkspacePropertiesApplicationGroupReferencesList),
+          ),
           cloudPcResource: S.optional(S.NullOr(S.Boolean)),
-          publicNetworkAccess: S.optional(S.NullOr(S.String)),
-          privateEndpointConnections: S.optional(S.NullOr(__S(72))),
+          publicNetworkAccess: S.optional(S.NullOr(WorkspacePropertiesPublicNetworkAccess)),
+          privateEndpointConnections: S.optional(
+            S.NullOr(WorkspacePropertiesPrivateEndpointConnectionsList),
+          ),
         }),
       ).annotate({ identifier: "WorkspaceProperties" });
     case 3:
@@ -6247,16 +7662,16 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetWorkspaceResponseTagsMap),
           location: S.String,
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(17)),
-          sku: S.optional(__S(13)),
-          plan: S.optional(__S(14)),
-          properties: S.optional(__S(98)),
+          identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+          sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+          plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
+          properties: S.optional(WorkspaceProperties),
         }),
       ).annotate({ identifier: "GetWorkspaceResponse" });
     case 4:
@@ -6264,23 +7679,25 @@ function __c12(j: number): any {
         S.Struct({
           friendlyName: S.optional(S.String),
           description: S.optional(S.String),
-          hostPoolType: S.String,
-          personalDesktopAssignmentType: S.optional(S.NullOr(S.String)),
+          hostPoolType: HostPoolPropertiesInputHostPoolType,
+          personalDesktopAssignmentType: S.optional(
+            S.NullOr(HostPoolPropertiesInputPersonalDesktopAssignmentType),
+          ),
           customRdpProperty: S.optional(S.String),
           maxSessionLimit: S.optional(S.NullOr(S.Number)),
-          loadBalancerType: S.String,
+          loadBalancerType: HostPoolPropertiesInputLoadBalancerType,
           ring: S.optional(S.NullOr(S.Number)),
           validationEnvironment: S.optional(S.NullOr(S.Boolean)),
-          registrationInfo: S.optional(S.NullOr(__S(64))),
+          registrationInfo: S.optional(S.NullOr(RegistrationInfo)),
           vmTemplate: S.optional(S.String),
           ssoadfsAuthority: S.optional(S.String),
           ssoClientId: S.optional(S.String),
           ssoClientSecretKeyVaultPath: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          ssoSecretType: S.optional(S.NullOr(S.String)),
-          preferredAppGroupType: S.String,
+          ssoSecretType: S.optional(S.NullOr(HostPoolPropertiesInputSsoSecretType)),
+          preferredAppGroupType: HostPoolPropertiesInputPreferredAppGroupType,
           startVMOnConnect: S.optional(S.NullOr(S.Boolean)),
-          publicNetworkAccess: S.optional(S.NullOr(S.String)),
-          agentUpdate: S.optional(S.NullOr(__S(67))),
+          publicNetworkAccess: S.optional(S.NullOr(HostPoolPropertiesInputPublicNetworkAccess)),
+          agentUpdate: S.optional(S.NullOr(AgentUpdateProperties)),
         }),
       ).annotate({ identifier: "HostPoolPropertiesInput" });
     case 5:
@@ -6289,14 +7706,14 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           hostPoolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(HostPoolsCreateOrUpdateRequestTagsMap),
           location: S.String,
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
-          identity: S.optional(__S(12)),
-          sku: S.optional(__S(13)),
-          plan: S.optional(__S(14)),
-          properties: __S(100),
+          identity: S.optional(ApplicationGroupsCreateOrUpdateRequestIdentity),
+          sku: S.optional(ApplicationGroupsCreateOrUpdateRequestSku),
+          plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
+          properties: HostPoolPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6314,16 +7731,16 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(HostPoolsCreateOrUpdateResponseTagsMap),
           location: S.String,
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(17)),
-          sku: S.optional(__S(13)),
-          plan: S.optional(__S(14)),
-          properties: __S(73),
+          identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+          sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+          plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
+          properties: HostPoolProperties,
         }),
       ).annotate({
         identifier: "HostPoolsCreateOrUpdateResponse",
@@ -6335,7 +7752,9 @@ function __c12(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           hostPoolName: S.String.pipe(T.Label()),
           path: S.optional(S.String),
-          packageArchitecture: S.optional(S.NullOr(S.String)),
+          packageArchitecture: S.optional(
+            S.NullOr(ImportAppAttachPackageInfoRequestPackageArchitecture),
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6357,18 +7776,18 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(AppAttachPackageTagsMap),
           location: S.String,
-          properties: __S(10),
+          properties: AppAttachPackageProperties,
         }),
       ).annotate({ identifier: "AppAttachPackage" });
     case 1:
-      return S.Array(__S(104));
+      return S.Array(AppAttachPackage);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(105)),
+          value: S.optional(AppAttachPackageListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppAttachPackageList" });
@@ -6431,20 +7850,20 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(ApplicationGroupTagsMap),
           location: S.String,
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(17)),
-          sku: S.optional(__S(13)),
-          plan: S.optional(__S(14)),
-          properties: __S(18),
+          identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+          sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+          plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
+          properties: ApplicationGroupProperties,
         }),
       ).annotate({ identifier: "ApplicationGroup" });
     case 7:
-      return S.Array(__S(110));
+      return S.Array(ApplicationGroup);
   }
 }
 function __c14(j: number): any {
@@ -6452,7 +7871,7 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(111)),
+          value: S.optional(ApplicationGroupListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationGroupList" });
@@ -6491,11 +7910,11 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "ListApplicationsRequest" });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(Application);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(115)),
+          value: S.optional(ApplicationListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationList" });
@@ -6518,11 +7937,11 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "ListDesktopsRequest" });
     case 6:
-      return S.Array(__S(62));
+      return S.Array(Desktop);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(118)),
+          value: S.optional(DesktopListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DesktopList" });
@@ -6550,11 +7969,11 @@ function __c15(j: number): any {
         identifier: "ListHostPoolByResourceGroupRequest",
       });
     case 1:
-      return S.Array(__S(74));
+      return S.Array(HostPool);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(121)),
+          value: S.optional(HostPoolListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostPoolList" });
@@ -6583,11 +8002,11 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "RegistrationTokenMinimal" });
     case 5:
-      return S.Array(__S(124));
+      return S.Array(RegistrationTokenMinimal);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(125)),
+          value: S.optional(RegistrationTokenListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegistrationTokenList" });
@@ -6630,11 +8049,11 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "ListMSIXPackagesRequest" });
     case 1:
-      return S.Array(__S(78));
+      return S.Array(MSIXPackage);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(129)),
+          value: S.optional(MSIXPackageListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MSIXPackageList" });
@@ -6669,11 +8088,11 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "LogSpecification" });
     case 6:
-      return S.Array(__S(133));
+      return S.Array(LogSpecification);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          logSpecifications: S.optional(__S(134)),
+          logSpecifications: S.optional(ServiceSpecificationLogSpecificationsList),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
   }
@@ -6683,26 +8102,26 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(135)),
+          serviceSpecification: S.optional(ServiceSpecification),
         }),
       ).annotate({ identifier: "OperationProperties" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(132)),
+          display: S.optional(ResourceProviderOperationDisplay),
           isDataAction: S.optional(S.Boolean),
-          properties: S.optional(__S(136)),
+          properties: S.optional(OperationProperties),
         }),
       ).annotate({
         identifier: "ResourceProviderOperation",
       });
     case 2:
-      return S.Array(__S(137));
+      return S.Array(ResourceProviderOperation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(138),
+          value: ResourceProviderOperationListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6731,7 +8150,7 @@ function __c17(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(72)),
+          value: S.optional(PrivateEndpointConnectionListResultWithSystemDataValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6782,8 +8201,8 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(6)),
-          requiredZoneNames: S.optional(__S(6)),
+          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
+          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -6794,16 +8213,16 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          properties: S.optional(__S(144)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateLinkResourceProperties),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 2:
-      return S.Array(__S(145));
+      return S.Array(PrivateLinkResource);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(146)),
+          value: S.optional(PrivateLinkResourceListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6850,11 +8269,11 @@ function __c18(j: number): any {
         identifier: "ListScalingPlanByHostPoolRequest",
       });
     case 6:
-      return S.Array(__S(85));
+      return S.Array(ScalingPlan);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(150)),
+          value: S.optional(ScalingPlanListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScalingPlanList" });
@@ -6920,11 +8339,11 @@ function __c19(j: number): any {
         identifier: "ListScalingPlanPersonalSchedulesRequest",
       });
     case 3:
-      return S.Array(__S(36));
+      return S.Array(ScalingPlanPersonalSchedule);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(155)),
+          value: S.optional(ScalingPlanPersonalScheduleListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6951,11 +8370,11 @@ function __c19(j: number): any {
         identifier: "ListScalingPlanPooledSchedulesRequest",
       });
     case 6:
-      return S.Array(__S(39));
+      return S.Array(ScalingPlanPooledSchedule);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(158)),
+          value: S.optional(ScalingPlanPooledScheduleListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6984,11 +8403,11 @@ function __c20(j: number): any {
         ),
       ).annotate({ identifier: "ListSessionHostsRequest" });
     case 1:
-      return S.Array(__S(93));
+      return S.Array(SessionHost);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(161)),
+          value: S.optional(SessionHostListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SessionHostList" });
@@ -7028,16 +8447,16 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          properties: S.optional(__S(164)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(StartMenuItemProperties),
         }),
       ).annotate({ identifier: "StartMenuItem" });
     case 6:
-      return S.Array(__S(165));
+      return S.Array(StartMenuItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(166)),
+          value: S.optional(StartMenuItemListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StartMenuItemList" });
@@ -7067,11 +8486,11 @@ function __c21(j: number): any {
         identifier: "ListUserSessionByHostPoolRequest",
       });
     case 1:
-      return S.Array(__S(96));
+      return S.Array(UserSession);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(169)),
+          value: S.optional(UserSessionListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserSessionList" });
@@ -7114,11 +8533,11 @@ function __c21(j: number): any {
         identifier: "ListWorkspaceByResourceGroupRequest",
       });
     case 5:
-      return S.Array(__S(99));
+      return S.Array(Workspace);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(173)),
+          value: S.optional(WorkspaceListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceList" });
@@ -7169,10 +8588,12 @@ function __c22(j: number): any {
           packageRelativePath: S.optional(S.String),
           isRegularRegistration: S.optional(S.Boolean),
           isActive: S.optional(S.Boolean),
-          packageDependencies: S.optional(S.NullOr(__S(2))),
+          packageDependencies: S.optional(
+            S.NullOr(ExpandMsixImagePropertiesPackageDependenciesList),
+          ),
           version: S.optional(S.String),
           lastUpdated: S.optional(S.String),
-          packageApplications: S.optional(__S(4)),
+          packageApplications: S.optional(ExpandMsixImagePropertiesPackageApplicationsList),
           certificateName: S.optional(S.NullOr(S.String)),
           certificateExpiry: S.optional(S.NullOr(S.String)),
         }),
@@ -7185,16 +8606,16 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          properties: S.optional(__S(177)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ExpandMsixImageProperties),
         }),
       ).annotate({ identifier: "ExpandMsixImage" });
     case 3:
-      return S.Array(__S(178));
+      return S.Array(ExpandMsixImage);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(179)),
+          value: S.optional(ExpandMsixImageListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExpandMsixImageList" });
@@ -7205,7 +8626,7 @@ function __c22(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           hostPoolName: S.String.pipe(T.Label()),
           msixPackageFullName: S.String.pipe(T.Label()),
-          properties: __S(77),
+          properties: MSIXPackageProperties,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7223,8 +8644,8 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          properties: __S(77),
+          systemData: S.optional(SystemData),
+          properties: MSIXPackageProperties,
         }),
       ).annotate({
         identifier: "MSIXPackagesCreateOrUpdateResponse",
@@ -7260,7 +8681,7 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           appAttachPackageName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(7)),
+          properties: S.optional(AppAttachPackagePatchProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7278,14 +8699,14 @@ function __c23(j: number): any {
           description: S.optional(S.String),
           friendlyName: S.optional(S.String),
           filePath: S.optional(S.String),
-          commandLineSetting: S.optional(S.String),
+          commandLineSetting: S.optional(ApplicationPatchPropertiesCommandLineSetting),
           commandLineArguments: S.optional(S.String),
           showInPortal: S.optional(S.Boolean),
           iconPath: S.optional(S.String),
           iconIndex: S.optional(S.Number),
           msixPackageFamilyName: S.optional(S.NullOr(S.String)),
           msixPackageApplicationId: S.optional(S.NullOr(S.String)),
-          applicationType: S.optional(S.String),
+          applicationType: S.optional(ApplicationPatchPropertiesApplicationType),
         }),
       ).annotate({
         identifier: "ApplicationPatchProperties",
@@ -7297,7 +8718,7 @@ function __c23(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           applicationGroupName: S.String.pipe(T.Label()),
           applicationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(185)),
+          properties: S.optional(ApplicationPatchProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7323,8 +8744,8 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           applicationGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(S.NullOr(__S(0))),
-          properties: S.optional(__S(187)),
+          tags: S.optional(S.NullOr(UpdateApplicationGroupRequestTagsMap)),
+          properties: S.optional(ApplicationGroupPatchProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7350,7 +8771,7 @@ function __c23(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           applicationGroupName: S.String.pipe(T.Label()),
           desktopName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(189)),
+          properties: S.optional(DesktopPatchProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7364,7 +8785,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           expirationTime: S.optional(S.NullOr(S.String)),
-          registrationTokenOperation: S.optional(S.String),
+          registrationTokenOperation: S.optional(RegistrationInfoPatchRegistrationTokenOperation),
         }),
       ).annotate({ identifier: "RegistrationInfoPatch" });
   }
@@ -7374,10 +8795,12 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(AgentUpdatePatchPropertiesType),
           useSessionHostLocalTime: S.optional(S.Boolean),
           maintenanceWindowTimeZone: S.optional(S.String),
-          maintenanceWindows: S.optional(S.NullOr(__S(66))),
+          maintenanceWindows: S.optional(
+            S.NullOr(AgentUpdatePatchPropertiesMaintenanceWindowsList),
+          ),
         }),
       ).annotate({
         identifier: "AgentUpdatePatchProperties",
@@ -7389,20 +8812,22 @@ function __c24(j: number): any {
           description: S.optional(S.String),
           customRdpProperty: S.optional(S.String),
           maxSessionLimit: S.optional(S.NullOr(S.Number)),
-          personalDesktopAssignmentType: S.optional(S.NullOr(S.String)),
-          loadBalancerType: S.optional(S.String),
+          personalDesktopAssignmentType: S.optional(
+            S.NullOr(HostPoolPatchPropertiesPersonalDesktopAssignmentType),
+          ),
+          loadBalancerType: S.optional(HostPoolPatchPropertiesLoadBalancerType),
           ring: S.optional(S.NullOr(S.Number)),
           validationEnvironment: S.optional(S.NullOr(S.Boolean)),
-          registrationInfo: S.optional(S.NullOr(__S(191))),
+          registrationInfo: S.optional(S.NullOr(RegistrationInfoPatch)),
           vmTemplate: S.optional(S.String),
           ssoadfsAuthority: S.optional(S.String),
           ssoClientId: S.optional(S.String),
           ssoClientSecretKeyVaultPath: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          ssoSecretType: S.optional(S.NullOr(S.String)),
-          preferredAppGroupType: S.optional(S.String),
+          ssoSecretType: S.optional(S.NullOr(HostPoolPatchPropertiesSsoSecretType)),
+          preferredAppGroupType: S.optional(HostPoolPatchPropertiesPreferredAppGroupType),
           startVMOnConnect: S.optional(S.NullOr(S.Boolean)),
-          publicNetworkAccess: S.optional(S.NullOr(S.String)),
-          agentUpdate: S.optional(S.NullOr(__S(192))),
+          publicNetworkAccess: S.optional(S.NullOr(HostPoolPatchPropertiesPublicNetworkAccess)),
+          agentUpdate: S.optional(S.NullOr(AgentUpdatePatchProperties)),
         }),
       ).annotate({ identifier: "HostPoolPatchProperties" });
     case 2:
@@ -7411,9 +8836,9 @@ function __c24(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           hostPoolName: S.String.pipe(T.Label()),
-          tags: S.optional(S.NullOr(__S(0))),
-          properties: S.optional(__S(193)),
-          identity: S.optional(__S(12)),
+          tags: S.optional(S.NullOr(UpdateHostPoolRequestTagsMap)),
+          properties: S.optional(HostPoolPatchProperties),
+          identity: S.optional(ApplicationGroupsCreateOrUpdateRequestIdentity),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7440,7 +8865,7 @@ function __c24(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           hostPoolName: S.String.pipe(T.Label()),
           msixPackageFullName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(195)),
+          properties: S.optional(MSIXPackagePatchProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7453,8 +8878,8 @@ function __c24(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(41)),
-          privateLinkServiceConnectionState: __S(69),
+          privateEndpoint: S.optional(PrivateEndpointInput),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
         }),
       ).annotate({
         identifier: "UpdatePrivateEndpointConnectionByHostPoolRequestProperties",
@@ -7466,7 +8891,7 @@ function __c24(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           hostPoolName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(197)),
+          properties: S.optional(UpdatePrivateEndpointConnectionByHostPoolRequestProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7485,7 +8910,7 @@ function __c24(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(197)),
+          properties: S.optional(UpdatePrivateEndpointConnectionByHostPoolRequestProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7504,10 +8929,12 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(80)),
-          privateEndpoint: S.optional(__S(68)),
-          privateLinkServiceConnectionState: __S(69),
-          provisioningState: S.optional(S.String),
+          groupIds: S.optional(
+            UpdatePrivateEndpointConnectionByWorkspaceResponsePropertiesGroupIdsList,
+          ),
+          privateEndpoint: S.optional(PrivateEndpoint),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+          provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
         }),
       ).annotate({
         identifier: "UpdatePrivateEndpointConnectionByWorkspaceResponseProperties",
@@ -7518,8 +8945,8 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          properties: S.optional(__S(200)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(UpdatePrivateEndpointConnectionByWorkspaceResponseProperties),
         }),
       ).annotate({
         identifier: "UpdatePrivateEndpointConnectionByWorkspaceResponse",
@@ -7531,8 +8958,8 @@ function __c25(j: number): any {
           friendlyName: S.optional(S.String),
           timeZone: S.optional(S.String),
           exclusionTag: S.optional(S.String),
-          schedules: S.optional(__S(27)),
-          hostPoolReferences: S.optional(__S(29)),
+          schedules: S.optional(ScalingPlanPatchPropertiesSchedulesList),
+          hostPoolReferences: S.optional(ScalingPlanPatchPropertiesHostPoolReferencesList),
         }),
       ).annotate({
         identifier: "ScalingPlanPatchProperties",
@@ -7543,8 +8970,8 @@ function __c25(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           scalingPlanName: S.String.pipe(T.Label()),
-          tags: S.optional(S.NullOr(__S(0))),
-          properties: S.optional(__S(202)),
+          tags: S.optional(S.NullOr(UpdateScalingPlanRequestTagsMap)),
+          properties: S.optional(ScalingPlanPatchProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7561,7 +8988,7 @@ function __c25(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           scalingPlanName: S.String.pipe(T.Label()),
           scalingPlanScheduleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(34)),
+          properties: S.optional(ScalingPlanPersonalScheduleProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7580,7 +9007,7 @@ function __c25(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           scalingPlanName: S.String.pipe(T.Label()),
           scalingPlanScheduleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(37)),
+          properties: S.optional(ScalingPlanPooledScheduleProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7610,7 +9037,7 @@ function __c25(j: number): any {
           hostPoolName: S.String.pipe(T.Label()),
           sessionHostName: S.String.pipe(T.Label()),
           force: S.optional(S.Boolean.pipe(T.Query())),
-          properties: S.optional(__S(206)),
+          properties: S.optional(SessionHostPatchProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7630,8 +9057,8 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          properties: S.optional(__S(92)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SessionHostProperties),
         }),
       ).annotate({
         identifier: "UpdateSessionHostResponse",
@@ -7641,8 +9068,10 @@ function __c26(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           friendlyName: S.optional(S.String),
-          applicationGroupReferences: S.optional(S.NullOr(__S(6))),
-          publicNetworkAccess: S.optional(S.NullOr(S.String)),
+          applicationGroupReferences: S.optional(
+            S.NullOr(WorkspacePatchPropertiesApplicationGroupReferencesList),
+          ),
+          publicNetworkAccess: S.optional(S.NullOr(WorkspacePatchPropertiesPublicNetworkAccess)),
         }),
       ).annotate({ identifier: "WorkspacePatchProperties" });
     case 2:
@@ -7651,8 +9080,8 @@ function __c26(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(S.NullOr(__S(0))),
-          properties: S.optional(__S(209)),
+          tags: S.optional(S.NullOr(UpdateWorkspaceRequestTagsMap)),
+          properties: S.optional(WorkspacePatchProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7667,8 +9096,10 @@ function __c26(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           friendlyName: S.optional(S.String),
-          applicationGroupReferences: S.optional(S.NullOr(__S(6))),
-          publicNetworkAccess: S.optional(S.NullOr(S.String)),
+          applicationGroupReferences: S.optional(
+            S.NullOr(WorkspacePropertiesInputApplicationGroupReferencesList),
+          ),
+          publicNetworkAccess: S.optional(S.NullOr(WorkspacePropertiesInputPublicNetworkAccess)),
         }),
       ).annotate({ identifier: "WorkspacePropertiesInput" });
     case 4:
@@ -7677,14 +9108,14 @@ function __c26(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(WorkspacesCreateOrUpdateRequestTagsMap),
           location: S.String,
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
-          identity: S.optional(__S(12)),
-          sku: S.optional(__S(13)),
-          plan: S.optional(__S(14)),
-          properties: S.optional(__S(211)),
+          identity: S.optional(ApplicationGroupsCreateOrUpdateRequestIdentity),
+          sku: S.optional(ApplicationGroupsCreateOrUpdateRequestSku),
+          plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
+          properties: S.optional(WorkspacePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7702,82 +9133,19 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(WorkspacesCreateOrUpdateResponseTagsMap),
           location: S.String,
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(17)),
-          sku: S.optional(__S(13)),
-          plan: S.optional(__S(14)),
-          properties: S.optional(__S(98)),
+          identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+          sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+          plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
+          properties: S.optional(WorkspaceProperties),
         }),
       ).annotate({
         identifier: "WorkspacesCreateOrUpdateResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
   }
 }

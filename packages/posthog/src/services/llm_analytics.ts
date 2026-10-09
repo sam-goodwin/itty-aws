@@ -6,40 +6,72 @@ import * as Redacted from "effect/Redacted";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
 export type CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersItemMap = {
   [key: string]: unknown | undefined;
 };
+const CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersItemMap =
+  /*@__PURE__*/ __L.at(
+    __c0,
+    0,
+  ) as any as S.Schema<CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersItemMap>;
+
 /** PostHog property filters to save for automated clustering jobs. Pass an empty array to clear filters. */
 export type CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersList =
   Array<CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersItemMap>;
+const CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersList =
+  /*@__PURE__*/ __L.at(
+    __c0,
+    1,
+  ) as any as S.Schema<CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersList>;
+
 export interface CreateLlmAnalyticsClusteringConfigSetEventFilterRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** PostHog property filters to save for automated clustering jobs. Pass an empty array to clear filters. */
   event_filters: CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersList;
 }
+const CreateLlmAnalyticsClusteringConfigSetEventFilterRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateLlmAnalyticsClusteringConfigSetEventFilterRequest>;
+
 export type ClusteringConfigEventFiltersItemMap = { [key: string]: unknown | undefined };
+const ClusteringConfigEventFiltersItemMap = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ClusteringConfigEventFiltersItemMap>;
+
 /** PostHog property filters that scope automated clustering jobs. Empty array means no saved filters. */
 export type ClusteringConfigEventFiltersList = Array<ClusteringConfigEventFiltersItemMap>;
+const ClusteringConfigEventFiltersList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ClusteringConfigEventFiltersList>;
+
 export interface ClusteringConfig {
   /** PostHog property filters that scope automated clustering jobs. Empty array means no saved filters. */
   event_filters: ClusteringConfigEventFiltersList;
   created_at: string;
   updated_at: string;
 }
+const ClusteringConfig = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ClusteringConfig>;
+
 /** * `trace` - trace * `generation` - generation * `evaluation` - evaluation */
 export type AnalysisLevelEnum = "trace" | "generation" | "evaluation";
+const AnalysisLevelEnum = S.String;
+
 export type CreateLlmAnalyticsClusteringJobRequestEventFiltersItemMap = {
   [key: string]: unknown | undefined;
 };
 /** PostHog property filters that scope this clustering job. Empty array means no filters. */
 export type CreateLlmAnalyticsClusteringJobRequestEventFiltersList =
   Array<CreateLlmAnalyticsClusteringJobRequestEventFiltersItemMap>;
+const CreateLlmAnalyticsClusteringJobRequestEventFiltersList =
+  ClusteringConfigEventFiltersList as any as S.Schema<CreateLlmAnalyticsClusteringJobRequestEventFiltersList>;
+
 export interface CreateLlmAnalyticsClusteringJobRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -49,9 +81,17 @@ export interface CreateLlmAnalyticsClusteringJobRequest {
   event_filters?: CreateLlmAnalyticsClusteringJobRequestEventFiltersList;
   enabled?: boolean;
 }
+const CreateLlmAnalyticsClusteringJobRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateLlmAnalyticsClusteringJobRequest>;
+
 export type ClusteringJobEventFiltersItemMap = { [key: string]: unknown | undefined };
 /** PostHog property filters that scope this clustering job. Empty array means no filters. */
 export type ClusteringJobEventFiltersList = Array<ClusteringJobEventFiltersItemMap>;
+const ClusteringJobEventFiltersList =
+  ClusteringConfigEventFiltersList as any as S.Schema<ClusteringJobEventFiltersList>;
+
 export interface ClusteringJob {
   id?: string;
   name?: string;
@@ -62,20 +102,33 @@ export interface ClusteringJob {
   created_at?: string;
   updated_at?: string;
 }
+const ClusteringJob = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ClusteringJob>;
+
 /** * `none` - none * `l2` - l2 */
 export type EmbeddingNormalizationEnum = "none" | "l2";
+const EmbeddingNormalizationEnum = S.String;
+
 /** * `none` - none * `umap` - umap * `pca` - pca */
 export type DimensionalityReductionMethodEnum = "none" | "umap" | "pca";
+const DimensionalityReductionMethodEnum = S.String;
+
 /** * `hdbscan` - hdbscan * `kmeans` - kmeans */
 export type ClusteringMethodEnum = "hdbscan" | "kmeans";
+const ClusteringMethodEnum = S.String;
+
 /** * `umap` - umap * `pca` - pca * `tsne` - tsne */
 export type VisualizationMethodEnum = "umap" | "pca" | "tsne";
+const VisualizationMethodEnum = S.String;
+
 export type CreateLlmAnalyticsClusteringRunRequestEventFiltersItemMap = {
   [key: string]: unknown | undefined;
 };
 /** Property filters to scope which traces are included in clustering (PostHog standard format) */
 export type CreateLlmAnalyticsClusteringRunRequestEventFiltersList =
   Array<CreateLlmAnalyticsClusteringRunRequestEventFiltersItemMap>;
+const CreateLlmAnalyticsClusteringRunRequestEventFiltersList =
+  ClusteringConfigEventFiltersList as any as S.Schema<CreateLlmAnalyticsClusteringRunRequestEventFiltersList>;
+
 export interface CreateLlmAnalyticsClusteringRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -108,9 +161,17 @@ export interface CreateLlmAnalyticsClusteringRunRequest {
   /** If provided, use this clustering job's analysis_level and event_filters instead of request params */
   clustering_job_id?: string | null;
 }
+const CreateLlmAnalyticsClusteringRunRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateLlmAnalyticsClusteringRunRequest>;
+
 export type ClusteringRunRequestEventFiltersItemMap = { [key: string]: unknown | undefined };
 /** Property filters to scope which traces are included in clustering (PostHog standard format) */
 export type ClusteringRunRequestEventFiltersList = Array<ClusteringRunRequestEventFiltersItemMap>;
+const ClusteringRunRequestEventFiltersList =
+  ClusteringConfigEventFiltersList as any as S.Schema<ClusteringRunRequestEventFiltersList>;
+
 /** Serializer for clustering workflow request parameters. */
 export interface ClusteringRunRequest {
   /** Number of days to look back for traces */
@@ -142,12 +203,19 @@ export interface ClusteringRunRequest {
   /** If provided, use this clustering job's analysis_level and event_filters instead of request params */
   clustering_job_id?: string | null;
 }
+const ClusteringRunRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ClusteringRunRequest>;
+
 export interface CreateLlmAnalyticsEvaluationConfigSetActiveKeyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** UUID of an existing LLM provider key (state must be 'ok') to mark as the active key for running llm_judge evaluations team-wide. */
   key_id: string;
 }
+const CreateLlmAnalyticsEvaluationConfigSetActiveKeyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateLlmAnalyticsEvaluationConfigSetActiveKeyRequest>;
+
 /** * `openai` - Openai * `anthropic` - Anthropic * `gemini` - Gemini * `openrouter` - Openrouter * `fireworks` - Fireworks * `azure_openai` - Azure OpenAI * `together_ai` - Together AI * `minimax` - MiniMax * `zeabur` - Zeabur AI Hub * `system_one` - System One * `openai_compatible` - OpenAI-compatible */
 export type LLMProviderEnum =
   | "openai"
@@ -161,9 +229,16 @@ export type LLMProviderEnum =
   | "zeabur"
   | "system_one"
   | "openai_compatible";
+const LLMProviderEnum = S.String;
+
 /** * `unknown` - Unknown * `ok` - Ok * `invalid` - Invalid * `error` - Error */
 export type LLMProviderKeyStateEnum = "unknown" | "ok" | "invalid" | "error";
+const LLMProviderKeyStateEnum = S.String;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap =
+  ClusteringConfigEventFiltersItemMap as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -177,6 +252,8 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -188,6 +265,8 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<UserBasic>;
+
 export interface LLMProviderKeyOutput {
   id?: string;
   provider?: LLMProviderEnum;
@@ -207,6 +286,8 @@ export interface LLMProviderKeyOutput {
   created_by?: UserBasic | null;
   last_used_at?: string | null;
 }
+const LLMProviderKeyOutput = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<LLMProviderKeyOutput>;
+
 export interface EvaluationConfigOutput {
   /** Provider key used to run llm_judge evals; null if none configured yet. */
   active_provider_key: LLMProviderKeyOutput | null;
@@ -215,8 +296,15 @@ export interface EvaluationConfigOutput {
   /** Timestamp when the evaluation config row was last modified. */
   updated_at: string;
 }
+const EvaluationConfigOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<EvaluationConfigOutput>;
+
 /** * `scheduled` - Scheduled * `every_n` - Every N */
 export type EvaluationReportFrequencyEnum = "scheduled" | "every_n";
+const EvaluationReportFrequencyEnum = S.String;
+
 export interface CreateLlmAnalyticsEvaluationReportRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -241,6 +329,11 @@ export interface CreateLlmAnalyticsEvaluationReportRequest {
   /** Maximum count-triggered report runs per calendar day (UTC). Min 1, max 24 (one per cooldown window). Defaults to 10. */
   daily_run_cap?: number;
 }
+const CreateLlmAnalyticsEvaluationReportRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateLlmAnalyticsEvaluationReportRequest>;
+
 export interface EvaluationReport {
   id?: string;
   /** UUID of the evaluation this report config belongs to. */
@@ -278,6 +371,8 @@ export interface EvaluationReport {
   created_by?: number | null;
   created_at?: string;
 }
+const EvaluationReport = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<EvaluationReport>;
+
 export interface CreateLlmAnalyticsParserRecipeRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -286,6 +381,11 @@ export interface CreateLlmAnalyticsParserRecipeRequest {
   /** Raw YAML recipe source. Must parse as YAML; recipe semantics are compiled and validated client-side. */
   source: string;
 }
+const CreateLlmAnalyticsParserRecipeRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateLlmAnalyticsParserRecipeRequest>;
+
 export interface ParserRecipe {
   id: string;
   /** Human-readable recipe name shown in the editor. */
@@ -297,6 +397,8 @@ export interface ParserRecipe {
   created_at: string;
   updated_at: string | null;
 }
+const ParserRecipe = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ParserRecipe>;
+
 export interface CreateLlmAnalyticsProviderKeyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -313,21 +415,44 @@ export interface CreateLlmAnalyticsProviderKeyRequest {
   api_version?: string;
   set_as_active?: boolean;
 }
+const CreateLlmAnalyticsProviderKeyRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateLlmAnalyticsProviderKeyRequest>;
+
 export interface CreateLlmAnalyticsProviderKeyValidationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const CreateLlmAnalyticsProviderKeyValidationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateLlmAnalyticsProviderKeyValidationRequest>;
+
 export type CreateLlmAnalyticsProviderKeyValidationResponseBodyMap = {
   [key: string]: unknown | undefined;
 };
+const CreateLlmAnalyticsProviderKeyValidationResponseBodyMap =
+  ClusteringConfigEventFiltersItemMap as any as S.Schema<CreateLlmAnalyticsProviderKeyValidationResponseBodyMap>;
+
 export type CreateLlmAnalyticsProviderKeyValidationResponse =
   CreateLlmAnalyticsProviderKeyValidationResponseBodyMap;
+const CreateLlmAnalyticsProviderKeyValidationResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateLlmAnalyticsProviderKeyValidationResponse>;
+
 export interface CreateLlmAnalyticsReviewQueueRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Human-readable queue name. */
   name?: string;
 }
+const CreateLlmAnalyticsReviewQueueRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateLlmAnalyticsReviewQueueRequest>;
+
 export interface ReviewQueue {
   id?: string;
   /** Human-readable queue name. */
@@ -340,6 +465,8 @@ export interface ReviewQueue {
   created_by?: UserBasic | null;
   team?: number;
 }
+const ReviewQueue = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ReviewQueue>;
+
 export interface CreateLlmAnalyticsReviewQueueItemRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -348,6 +475,11 @@ export interface CreateLlmAnalyticsReviewQueueItemRequest {
   /** Trace ID to add to the selected review queue. */
   trace_id?: string;
 }
+const CreateLlmAnalyticsReviewQueueItemRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateLlmAnalyticsReviewQueueItemRequest>;
+
 export interface ReviewQueueItem {
   id?: string;
   /** Review queue ID that currently owns this pending trace. */
@@ -362,8 +494,12 @@ export interface ReviewQueueItem {
   created_by?: UserBasic | null;
   team?: number;
 }
+const ReviewQueueItem = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ReviewQueueItem>;
+
 /** * `categorical` - categorical * `numeric` - numeric * `boolean` - boolean */
 export type ScoreDefinitionKindEnum = "categorical" | "numeric" | "boolean";
+const ScoreDefinitionKindEnum = S.String;
+
 export interface CategoricalScoreOption {
   /** Stable option key. Use lowercase letters, numbers, underscores, or hyphens. */
   key?: string;
@@ -376,6 +512,11 @@ export type CategoricalScoreDefinitionConfigOptionsList = Array<CategoricalScore
 export type SelectionModeEnum = "single" | "multiple";
 /** Passing category keys. Every returned category must be included. An empty list makes all accepted offline results fail. */
 export type CategoricalScorePassingRuleCategoriesList = Array<string>;
+const CategoricalScorePassingRuleCategoriesList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CategoricalScorePassingRuleCategoriesList>;
+
 export interface CategoricalScorePassingRule {
   /** Passing category keys. Every returned category must be included. An empty list makes all accepted offline results fail. */
   categories: CategoricalScorePassingRuleCategoriesList;
@@ -422,6 +563,8 @@ export type ScoreDefinitionConfig =
   | CategoricalScoreDefinitionConfig
   | NumericScoreDefinitionConfig
   | BooleanScoreDefinitionConfig;
+const ScoreDefinitionConfig = S.Unknown as any as S.Schema<ScoreDefinitionConfig>;
+
 export interface CreateLlmAnalyticsScoreDefinitionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -436,6 +579,11 @@ export interface CreateLlmAnalyticsScoreDefinitionRequest {
   /** Initial immutable scorer configuration. */
   config?: ScoreDefinitionConfig;
 }
+const CreateLlmAnalyticsScoreDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateLlmAnalyticsScoreDefinitionRequest>;
+
 export interface ScoreDefinition {
   id?: string;
   name?: string;
@@ -454,6 +602,8 @@ export interface ScoreDefinition {
   updated_at?: string | null;
   team?: number;
 }
+const ScoreDefinition = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ScoreDefinition>;
+
 export interface CreateLlmAnalyticsScoreDefinitionsNewVersionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -468,8 +618,16 @@ export interface CreateLlmAnalyticsScoreDefinitionsNewVersionRequest {
   /** Version number the caller observed before requesting this bump. If provided and it does not match the scorer's current version, the request fails with 409. Omit to skip the optimistic-concurrency check. */
   base_version?: number;
 }
+const CreateLlmAnalyticsScoreDefinitionsNewVersionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateLlmAnalyticsScoreDefinitionsNewVersionRequest>;
+
 /** Categorical option keys selected for this score. */
 export type TraceReviewScoreWriteCategoricalValuesList = Array<string>;
+const TraceReviewScoreWriteCategoricalValuesList =
+  CategoricalScorePassingRuleCategoriesList as any as S.Schema<TraceReviewScoreWriteCategoricalValuesList>;
+
 export interface TraceReviewScoreWrite {
   /** Stable scorer definition ID. */
   definition_id?: string;
@@ -482,8 +640,18 @@ export interface TraceReviewScoreWrite {
   /** Boolean value selected for this score. */
   boolean_value?: boolean | null;
 }
+const TraceReviewScoreWrite = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<TraceReviewScoreWrite>;
+
 /** Full desired score set for this review. Omit scorers you want to leave blank. */
 export type CreateLlmAnalyticsTraceReviewRequestScoresList = Array<TraceReviewScoreWrite>;
+const CreateLlmAnalyticsTraceReviewRequestScoresList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateLlmAnalyticsTraceReviewRequestScoresList>;
+
 export interface CreateLlmAnalyticsTraceReviewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -496,8 +664,16 @@ export interface CreateLlmAnalyticsTraceReviewRequest {
   /** Optional review queue ID for queue-context saves. When provided, the matching pending queue item is cleared after the review is saved. If omitted, any pending queue item for the same trace is cleared. */
   queue_id?: string | null;
 }
+const CreateLlmAnalyticsTraceReviewRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateLlmAnalyticsTraceReviewRequest>;
+
 /** Categorical option keys selected for this score. */
 export type TraceReviewScoreCategoricalValuesList = Array<string>;
+const TraceReviewScoreCategoricalValuesList =
+  CategoricalScorePassingRuleCategoriesList as any as S.Schema<TraceReviewScoreCategoricalValuesList>;
+
 export interface TraceReviewScore {
   id?: string;
   /** Stable scorer definition ID. */
@@ -521,8 +697,15 @@ export interface TraceReviewScore {
   created_at?: string;
   updated_at?: string | null;
 }
+const TraceReviewScore = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<TraceReviewScore>;
+
 /** Saved scorer values for this review. */
 export type TraceReviewScoresList = Array<TraceReviewScore>;
+const TraceReviewScoresList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<TraceReviewScoresList>;
+
 export interface TraceReview {
   id?: string;
   /** Trace ID for the review. */
@@ -540,6 +723,8 @@ export interface TraceReview {
   scores?: TraceReviewScoresList;
   team?: number;
 }
+const TraceReview = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<TraceReview>;
+
 export interface CreateLlmAnalyticsTranslateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -548,24 +733,47 @@ export interface CreateLlmAnalyticsTranslateRequest {
   /** Target language code (default: 'en' for English) */
   target_language?: string;
 }
+const CreateLlmAnalyticsTranslateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateLlmAnalyticsTranslateRequest>;
+
 export type CreateLlmAnalyticsTranslateResponseBodyMap = { [key: string]: unknown | undefined };
 export type CreateLlmAnalyticsTranslateResponse = CreateLlmAnalyticsTranslateResponseBodyMap;
+const CreateLlmAnalyticsTranslateResponse =
+  CreateLlmAnalyticsProviderKeyValidationResponse as any as S.Schema<CreateLlmAnalyticsTranslateResponse>;
+
 export interface GetLlmAnalyticsClusteringJobRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this clustering job. */
   id: string;
 }
+const GetLlmAnalyticsClusteringJobRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetLlmAnalyticsClusteringJobRequest>;
+
 export interface GetLlmAnalyticsEvaluationConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const GetLlmAnalyticsEvaluationConfigRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetLlmAnalyticsEvaluationConfigRequest>;
+
 export interface GetLlmAnalyticsEvaluationReportRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this evaluation report. */
   id: string;
 }
+const GetLlmAnalyticsEvaluationReportRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetLlmAnalyticsEvaluationReportRequest>;
+
 export type GetLlmAnalyticsModelRequestProvider =
   | "anthropic"
   | "azure_openai"
@@ -578,6 +786,8 @@ export type GetLlmAnalyticsModelRequestProvider =
   | "system_one"
   | "together_ai"
   | "zeabur";
+const GetLlmAnalyticsModelRequestProvider = S.String;
+
 export interface GetLlmAnalyticsModelRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -586,14 +796,26 @@ export interface GetLlmAnalyticsModelRequest {
   /** LLM provider to list models for. Omit it to list every supported provider and its models in one call. */
   provider?: GetLlmAnalyticsModelRequestProvider | (string & {});
 }
+const GetLlmAnalyticsModelRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<GetLlmAnalyticsModelRequest>;
+
 export interface LLMModelInfo {
   /** Provider-specific model identifier (e.g. 'gpt-4o-mini', 'claude-3-5-sonnet-20241022'). */
   id: string;
   /** Provider this model belongs to. Pass this value together with `id` when configuring an llm_judge evaluation. */
   provider: string;
 }
+const LLMModelInfo = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<LLMModelInfo>;
+
 /** Models supported for the requested provider, or for every supported provider when `provider` is omitted. */
 export type LLMModelsListResponseModelsList = Array<LLMModelInfo>;
+const LLMModelsListResponseModelsList = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<LLMModelsListResponseModelsList>;
+
 export interface LLMProviderModelsSummary {
   /** Supported provider value, exactly as the `provider` param accepts it. */
   provider: string;
@@ -602,50 +824,95 @@ export interface LLMProviderModelsSummary {
   /** True when this provider's models can only be listed by passing `key_id` for one of the team's provider keys. PostHog funds no models for it, so `model_count` is 0 until a key is supplied. */
   requires_provider_key: boolean;
 }
+const LLMProviderModelsSummary = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<LLMProviderModelsSummary>;
+
 /** One entry per provider covered by this response. Read it to tell an unsupported provider apart from a provider whose models need a team key before they can be listed. */
 export type LLMModelsListResponseProvidersList = Array<LLMProviderModelsSummary>;
+const LLMModelsListResponseProvidersList = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<LLMModelsListResponseProvidersList>;
+
 export interface LLMModelsListResponse {
   /** Models supported for the requested provider, or for every supported provider when `provider` is omitted. */
   models: LLMModelsListResponseModelsList;
   /** One entry per provider covered by this response. Read it to tell an unsupported provider apart from a provider whose models need a team key before they can be listed. */
   providers: LLMModelsListResponseProvidersList;
 }
+const LLMModelsListResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<LLMModelsListResponse>;
+
 export interface GetLlmAnalyticsParserRecipeRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this parser recipe. */
   id: string;
 }
+const GetLlmAnalyticsParserRecipeRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GetLlmAnalyticsParserRecipeRequest>;
+
 export interface GetLlmAnalyticsProviderKeyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this llm provider key. */
   id: string;
 }
+const GetLlmAnalyticsProviderKeyRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<GetLlmAnalyticsProviderKeyRequest>;
+
 export interface GetLlmAnalyticsProviderKeysDependentConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this llm provider key. */
   id: string;
 }
+const GetLlmAnalyticsProviderKeysDependentConfigRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetLlmAnalyticsProviderKeysDependentConfigRequest>;
+
 export interface GetLlmAnalyticsReviewQueueRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this review queue. */
   id: string;
 }
+const GetLlmAnalyticsReviewQueueRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetLlmAnalyticsReviewQueueRequest>;
+
 export interface GetLlmAnalyticsReviewQueueItemRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this review queue item. */
   id: string;
 }
+const GetLlmAnalyticsReviewQueueItemRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetLlmAnalyticsReviewQueueItemRequest>;
+
 export interface GetLlmAnalyticsScoreDefinitionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this score definition. */
   id: string;
 }
+const GetLlmAnalyticsScoreDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<GetLlmAnalyticsScoreDefinitionRequest>;
+
 export interface GetLlmAnalyticsScoreDefinitionsVersionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -654,6 +921,11 @@ export interface GetLlmAnalyticsScoreDefinitionsVersionRequest {
   /** Immutable version UUID. */
   version_id: string;
 }
+const GetLlmAnalyticsScoreDefinitionsVersionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GetLlmAnalyticsScoreDefinitionsVersionRequest>;
+
 export interface ScoreDefinitionVersion {
   /** UUID identifying this exact immutable version. */
   id: string;
@@ -670,16 +942,31 @@ export interface ScoreDefinitionVersion {
   /** User who created this version. */
   created_by: UserBasic | null;
 }
+const ScoreDefinitionVersion = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ScoreDefinitionVersion>;
+
 export interface GetLlmAnalyticsTraceReviewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this trace review. */
   id: string;
 }
+const GetLlmAnalyticsTraceReviewRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GetLlmAnalyticsTraceReviewRequest>;
+
 export interface ListLlmAnalyticsClusteringConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const ListLlmAnalyticsClusteringConfigRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListLlmAnalyticsClusteringConfigRequest>;
+
 export interface ListLlmAnalyticsClusteringJobsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -688,13 +975,28 @@ export interface ListLlmAnalyticsClusteringJobsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListLlmAnalyticsClusteringJobsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListLlmAnalyticsClusteringJobsRequest>;
+
 export type PaginatedClusteringJobListResultsList = Array<ClusteringJob>;
+const PaginatedClusteringJobListResultsList = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<PaginatedClusteringJobListResultsList>;
+
 export interface PaginatedClusteringJobList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedClusteringJobListResultsList;
 }
+const PaginatedClusteringJobList = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<PaginatedClusteringJobList>;
+
 export interface ListLlmAnalyticsEvaluationReportsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -705,13 +1007,28 @@ export interface ListLlmAnalyticsEvaluationReportsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListLlmAnalyticsEvaluationReportsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListLlmAnalyticsEvaluationReportsRequest>;
+
 export type PaginatedEvaluationReportListResultsList = Array<EvaluationReport>;
+const PaginatedEvaluationReportListResultsList = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<PaginatedEvaluationReportListResultsList>;
+
 export interface PaginatedEvaluationReportList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedEvaluationReportListResultsList;
 }
+const PaginatedEvaluationReportList = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<PaginatedEvaluationReportList>;
+
 export interface ListLlmAnalyticsEvaluationReportsRunsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -722,16 +1039,33 @@ export interface ListLlmAnalyticsEvaluationReportsRunsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListLlmAnalyticsEvaluationReportsRunsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListLlmAnalyticsEvaluationReportsRunsRequest>;
+
 /** * `generation` - Generation * `trace` - Trace * `session` - Session */
 export type EvaluationTargetEnum = "generation" | "trace" | "session";
+const EvaluationTargetEnum = S.String;
+
 export interface EvaluationReportSection {
   /** Agent-generated section heading. */
   title?: string;
   /** Markdown narrative for this section. */
   content?: string;
 }
+const EvaluationReportSection = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<EvaluationReportSection>;
+
 /** Ordered narrative sections in the report. */
 export type EvaluationReportRunContentSectionsList = Array<EvaluationReportSection>;
+const EvaluationReportRunContentSectionsList = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<EvaluationReportRunContentSectionsList>;
+
 export interface EvaluationReportCitation {
   /** Optional generation UUID for generation-target report citations. */
   generation_id?: string;
@@ -742,21 +1076,45 @@ export interface EvaluationReportCitation {
   /** Short explanation of why this example is cited. */
   reason?: string;
 }
+const EvaluationReportCitation = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<EvaluationReportCitation>;
+
 /** References grounding findings in the report. */
 export type EvaluationReportRunContentCitationsList = Array<EvaluationReportCitation>;
+const EvaluationReportRunContentCitationsList = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<EvaluationReportRunContentCitationsList>;
+
 /** * `completed` - completed * `metrics_unavailable` - metrics_unavailable */
 export type GenerationStatusEnum = "completed" | "metrics_unavailable";
+const GenerationStatusEnum = S.String;
+
 export interface EvaluationReportMetricsOutputConfigOptionsItem {
   /** Stable category key. */
   key: string;
   /** Category display label. */
   label: string;
 }
+const EvaluationReportMetricsOutputConfigOptionsItem = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<EvaluationReportMetricsOutputConfigOptionsItem>;
+
 /** Categorical output options. Keys identify stored results; labels are displayed to users. */
 export type EvaluationReportMetricsOutputConfigOptionsList =
   Array<EvaluationReportMetricsOutputConfigOptionsItem>;
+const EvaluationReportMetricsOutputConfigOptionsList = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<EvaluationReportMetricsOutputConfigOptionsList>;
+
 /** Select one category or multiple categories. Multiple selection allows an empty result. Defaults to single. */
 export type EvaluationReportMetricsOutputConfigSelectionMode = "single" | "multiple";
+const EvaluationReportMetricsOutputConfigSelectionMode = S.String;
+
 /** Pass at or above (gte), or at or below (lte), the threshold. */
 export type EvaluationReportMetricsOutputConfigPassingRuleCase0Operator = "gte" | "lte";
 export interface EvaluationReportMetricsOutputConfigPassingRuleCase0 {
@@ -775,6 +1133,9 @@ export interface EvaluationReportMetricsOutputConfigPassingRuleCase1 {
 export type EvaluationReportMetricsOutputConfigPassingRule =
   | EvaluationReportMetricsOutputConfigPassingRuleCase0
   | EvaluationReportMetricsOutputConfigPassingRuleCase1;
+const EvaluationReportMetricsOutputConfigPassingRule =
+  S.Unknown as any as S.Schema<EvaluationReportMetricsOutputConfigPassingRule>;
+
 /** Output configuration and passing rule used for both report periods. */
 export interface EvaluationReportMetricsOutputConfig {
   /** Whether the evaluation can return N/A for non-applicable generations. */
@@ -794,16 +1155,37 @@ export interface EvaluationReportMetricsOutputConfig {
   /** Optional numeric or categorical passing rule. Null removes the rule; historical results use the current rule. */
   passing_rule?: EvaluationReportMetricsOutputConfigPassingRule | null;
 }
+const EvaluationReportMetricsOutputConfig = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<EvaluationReportMetricsOutputConfig>;
+
 /** * `boolean` - Boolean (Pass/Fail) * `numeric` - Numeric * `categorical` - Categorical * `sentiment` - Sentiment */
 export type OutputTypeEnum = "boolean" | "numeric" | "categorical" | "sentiment";
+const OutputTypeEnum = S.String;
+
 /** Count by output-specific result label, such as pass/fail/N/A or positive/neutral/negative. */
 export type EvaluationReportMetricsResultCountsMap = { [key: string]: number | undefined };
+const EvaluationReportMetricsResultCountsMap = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<EvaluationReportMetricsResultCountsMap>;
+
 /** Percentage by output-specific result label, from 0 to 100. */
 export type EvaluationReportMetricsResultRatesMap = { [key: string]: number | undefined };
+const EvaluationReportMetricsResultRatesMap =
+  EvaluationReportMetricsResultCountsMap as any as S.Schema<EvaluationReportMetricsResultRatesMap>;
+
 /** Count by result label for the previous period, or null when unavailable. */
 export type EvaluationReportMetricsPreviousResultCountsMap = { [key: string]: number | undefined };
+const EvaluationReportMetricsPreviousResultCountsMap =
+  EvaluationReportMetricsResultCountsMap as any as S.Schema<EvaluationReportMetricsPreviousResultCountsMap>;
+
 /** Percentage by result label for the previous period, or null when unavailable. */
 export type EvaluationReportMetricsPreviousResultRatesMap = { [key: string]: number | undefined };
+const EvaluationReportMetricsPreviousResultRatesMap =
+  EvaluationReportMetricsResultCountsMap as any as S.Schema<EvaluationReportMetricsPreviousResultRatesMap>;
+
 export interface EvaluationReportMetrics {
   /** Output configuration and passing rule used for both report periods. */
   output_config?: EvaluationReportMetricsOutputConfig;
@@ -830,6 +1212,11 @@ export interface EvaluationReportMetrics {
   /** Pass percentage for boolean, numeric, or categorical results in the previous period, or null when unavailable. */
   previous_pass_rate?: number | null;
 }
+const EvaluationReportMetrics = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<EvaluationReportMetrics>;
+
 export interface EvaluationReportRunContent {
   /** Evaluation target analyzed by this report run. Legacy runs without this field targeted generations. * `generation` - Generation * `trace` - Trace * `session` - Session */
   evaluation_target?: EvaluationTargetEnum;
@@ -844,6 +1231,11 @@ export interface EvaluationReportRunContent {
   /** Structured metrics for completed reports, or null when metrics were temporarily unavailable. */
   metrics?: EvaluationReportMetrics | null;
 }
+const EvaluationReportRunContent = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<EvaluationReportRunContent>;
+
 /** * `pending` - Pending * `generated` - Generated * `delivered` - Delivered * `partial_failure` - Partial Failure * `failed` - Failed */
 export type EvaluationReportRunDeliveryStatusEnum =
   | "pending"
@@ -851,8 +1243,13 @@ export type EvaluationReportRunDeliveryStatusEnum =
   | "delivered"
   | "partial_failure"
   | "failed";
+const EvaluationReportRunDeliveryStatusEnum = S.String;
+
 /** Delivery error messages. Empty when all configured deliveries succeeded. */
 export type EvaluationReportRunDeliveryErrorsList = Array<string>;
+const EvaluationReportRunDeliveryErrorsList =
+  CategoricalScorePassingRuleCategoriesList as any as S.Schema<EvaluationReportRunDeliveryErrorsList>;
+
 export interface EvaluationReportRun {
   /** UUID of this report run. */
   id?: string;
@@ -873,13 +1270,25 @@ export interface EvaluationReportRun {
   /** When this report run was created. */
   created_at?: string;
 }
+const EvaluationReportRun = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<EvaluationReportRun>;
+
 export type PaginatedEvaluationReportRunListResultsList = Array<EvaluationReportRun>;
+const PaginatedEvaluationReportRunListResultsList = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<PaginatedEvaluationReportRunListResultsList>;
+
 export interface PaginatedEvaluationReportRunList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedEvaluationReportRunListResultsList;
 }
+const PaginatedEvaluationReportRunList = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<PaginatedEvaluationReportRunList>;
+
 export interface ListLlmAnalyticsParserRecipesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -888,13 +1297,28 @@ export interface ListLlmAnalyticsParserRecipesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListLlmAnalyticsParserRecipesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ListLlmAnalyticsParserRecipesRequest>;
+
 export type PaginatedParserRecipeListResultsList = Array<ParserRecipe>;
+const PaginatedParserRecipeListResultsList = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<PaginatedParserRecipeListResultsList>;
+
 export interface PaginatedParserRecipeList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedParserRecipeListResultsList;
 }
+const PaginatedParserRecipeList = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<PaginatedParserRecipeList>;
+
 export interface ListLlmAnalyticsProviderKeysRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -903,13 +1327,28 @@ export interface ListLlmAnalyticsProviderKeysRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListLlmAnalyticsProviderKeysRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ListLlmAnalyticsProviderKeysRequest>;
+
 export type PaginatedLLMProviderKeyListOutputResultsList = Array<LLMProviderKeyOutput>;
+const PaginatedLLMProviderKeyListOutputResultsList = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<PaginatedLLMProviderKeyListOutputResultsList>;
+
 export interface PaginatedLLMProviderKeyListOutput {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedLLMProviderKeyListOutputResultsList;
 }
+const PaginatedLLMProviderKeyListOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<PaginatedLLMProviderKeyListOutput>;
+
 export interface ListLlmAnalyticsReviewQueueItemsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -928,13 +1367,28 @@ export interface ListLlmAnalyticsReviewQueueItemsRequest {
   /** Filter by multiple trace IDs separated by commas. */
   trace_id__in?: string;
 }
+const ListLlmAnalyticsReviewQueueItemsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ListLlmAnalyticsReviewQueueItemsRequest>;
+
 export type PaginatedReviewQueueItemListResultsList = Array<ReviewQueueItem>;
+const PaginatedReviewQueueItemListResultsList = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<PaginatedReviewQueueItemListResultsList>;
+
 export interface PaginatedReviewQueueItemList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedReviewQueueItemListResultsList;
 }
+const PaginatedReviewQueueItemList = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<PaginatedReviewQueueItemList>;
+
 export interface ListLlmAnalyticsReviewQueuesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -948,13 +1402,28 @@ export interface ListLlmAnalyticsReviewQueuesRequest {
   /** Search review queue names. */
   search?: string;
 }
+const ListLlmAnalyticsReviewQueuesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListLlmAnalyticsReviewQueuesRequest>;
+
 export type PaginatedReviewQueueListResultsList = Array<ReviewQueue>;
+const PaginatedReviewQueueListResultsList = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<PaginatedReviewQueueListResultsList>;
+
 export interface PaginatedReviewQueueList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedReviewQueueListResultsList;
 }
+const PaginatedReviewQueueList = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<PaginatedReviewQueueList>;
+
 export interface ListLlmAnalyticsScoreDefinitionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -971,13 +1440,28 @@ export interface ListLlmAnalyticsScoreDefinitionsRequest {
   /** Search scorers by name or description. */
   search?: string;
 }
+const ListLlmAnalyticsScoreDefinitionsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ListLlmAnalyticsScoreDefinitionsRequest>;
+
 export type PaginatedScoreDefinitionListResultsList = Array<ScoreDefinition>;
+const PaginatedScoreDefinitionListResultsList = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<PaginatedScoreDefinitionListResultsList>;
+
 export interface PaginatedScoreDefinitionList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedScoreDefinitionListResultsList;
 }
+const PaginatedScoreDefinitionList = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<PaginatedScoreDefinitionList>;
+
 export interface ListLlmAnalyticsScoreDefinitionsVersionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -988,8 +1472,18 @@ export interface ListLlmAnalyticsScoreDefinitionsVersionsRequest {
   /** Maximum versions to return. */
   limit?: number;
 }
+const ListLlmAnalyticsScoreDefinitionsVersionsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ListLlmAnalyticsScoreDefinitionsVersionsRequest>;
+
 /** Versions on this page, newest first. */
 export type ScoreDefinitionVersionPageResultsList = Array<ScoreDefinitionVersion>;
+const ScoreDefinitionVersionPageResultsList = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ScoreDefinitionVersionPageResultsList>;
+
 export interface ScoreDefinitionVersionPage {
   /** Total immutable versions for this scorer. */
   count: number;
@@ -998,6 +1492,11 @@ export interface ScoreDefinitionVersionPage {
   /** Versions on this page, newest first. */
   results: ScoreDefinitionVersionPageResultsList;
 }
+const ScoreDefinitionVersionPage = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ScoreDefinitionVersionPage>;
+
 export interface ListLlmAnalyticsTraceReviewsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1018,48 +1517,105 @@ export interface ListLlmAnalyticsTraceReviewsRequest {
   /** Filter by multiple trace IDs separated by commas. */
   trace_id__in?: string;
 }
+const ListLlmAnalyticsTraceReviewsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ListLlmAnalyticsTraceReviewsRequest>;
+
 export type PaginatedTraceReviewListResultsList = Array<TraceReview>;
+const PaginatedTraceReviewListResultsList = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<PaginatedTraceReviewListResultsList>;
+
 export interface PaginatedTraceReviewList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedTraceReviewListResultsList;
 }
+const PaginatedTraceReviewList = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<PaginatedTraceReviewList>;
+
 export interface LlmAnalyticsClusteringJobsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this clustering job. */
   id: string;
 }
+const LlmAnalyticsClusteringJobsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<LlmAnalyticsClusteringJobsDestroyRequest>;
+
 export interface LlmAnalyticsClusteringJobsDestroyResponse {}
+const LlmAnalyticsClusteringJobsDestroyResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<LlmAnalyticsClusteringJobsDestroyResponse>;
+
 export interface LlmAnalyticsEvaluationReportsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this evaluation report. */
   id: string;
 }
+const LlmAnalyticsEvaluationReportsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<LlmAnalyticsEvaluationReportsDestroyRequest>;
+
 export interface LlmAnalyticsEvaluationReportsDestroyResponse {}
+const LlmAnalyticsEvaluationReportsDestroyResponse =
+  LlmAnalyticsClusteringJobsDestroyResponse as any as S.Schema<LlmAnalyticsEvaluationReportsDestroyResponse>;
+
 export interface LlmAnalyticsEvaluationReportsGenerateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this evaluation report. */
   id: string;
 }
+const LlmAnalyticsEvaluationReportsGenerateCreateRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<LlmAnalyticsEvaluationReportsGenerateCreateRequest>;
+
 export interface LlmAnalyticsEvaluationReportsGenerateCreateResponse {}
+const LlmAnalyticsEvaluationReportsGenerateCreateResponse =
+  LlmAnalyticsClusteringJobsDestroyResponse as any as S.Schema<LlmAnalyticsEvaluationReportsGenerateCreateResponse>;
+
 export interface LlmAnalyticsParserRecipesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this parser recipe. */
   id: string;
 }
+const LlmAnalyticsParserRecipesDestroyRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<LlmAnalyticsParserRecipesDestroyRequest>;
+
 export interface LlmAnalyticsParserRecipesDestroyResponse {}
+const LlmAnalyticsParserRecipesDestroyResponse =
+  LlmAnalyticsClusteringJobsDestroyResponse as any as S.Schema<LlmAnalyticsParserRecipesDestroyResponse>;
+
 export interface LlmAnalyticsProviderKeysDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this llm provider key. */
   id: string;
 }
+const LlmAnalyticsProviderKeysDestroyRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<LlmAnalyticsProviderKeysDestroyRequest>;
+
 export interface LlmAnalyticsProviderKeysDestroyResponse {}
+const LlmAnalyticsProviderKeysDestroyResponse =
+  LlmAnalyticsClusteringJobsDestroyResponse as any as S.Schema<LlmAnalyticsProviderKeysDestroyResponse>;
+
 export interface LlmAnalyticsProviderKeysValidateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1078,33 +1634,65 @@ export interface LlmAnalyticsProviderKeysValidateCreateRequest {
   api_version?: string;
   set_as_active?: boolean;
 }
+const LlmAnalyticsProviderKeysValidateCreateRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<LlmAnalyticsProviderKeysValidateCreateRequest>;
+
 export interface LlmAnalyticsTraceReviewsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this trace review. */
   id: string;
 }
+const LlmAnalyticsTraceReviewsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<LlmAnalyticsTraceReviewsDestroyRequest>;
+
 export interface LlmAnalyticsTraceReviewsDestroyResponse {}
+const LlmAnalyticsTraceReviewsDestroyResponse =
+  LlmAnalyticsClusteringJobsDestroyResponse as any as S.Schema<LlmAnalyticsTraceReviewsDestroyResponse>;
+
 export interface ReviewLlmAnalyticsQueueItemsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this review queue item. */
   id: string;
 }
+const ReviewLlmAnalyticsQueueItemsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ReviewLlmAnalyticsQueueItemsDestroyRequest>;
+
 export interface ReviewLlmAnalyticsQueueItemsDestroyResponse {}
+const ReviewLlmAnalyticsQueueItemsDestroyResponse =
+  LlmAnalyticsClusteringJobsDestroyResponse as any as S.Schema<ReviewLlmAnalyticsQueueItemsDestroyResponse>;
+
 export interface ReviewLlmAnalyticsQueuesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this review queue. */
   id: string;
 }
+const ReviewLlmAnalyticsQueuesDestroyRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ReviewLlmAnalyticsQueuesDestroyRequest>;
+
 export interface ReviewLlmAnalyticsQueuesDestroyResponse {}
+const ReviewLlmAnalyticsQueuesDestroyResponse =
+  LlmAnalyticsClusteringJobsDestroyResponse as any as S.Schema<ReviewLlmAnalyticsQueuesDestroyResponse>;
+
 export type UpdateLlmAnalyticsClusteringJobRequestEventFiltersItemMap = {
   [key: string]: unknown | undefined;
 };
 /** PostHog property filters that scope this clustering job. Empty array means no filters. */
 export type UpdateLlmAnalyticsClusteringJobRequestEventFiltersList =
   Array<UpdateLlmAnalyticsClusteringJobRequestEventFiltersItemMap>;
+const UpdateLlmAnalyticsClusteringJobRequestEventFiltersList =
+  ClusteringConfigEventFiltersList as any as S.Schema<UpdateLlmAnalyticsClusteringJobRequestEventFiltersList>;
+
 export interface UpdateLlmAnalyticsClusteringJobRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1116,12 +1704,25 @@ export interface UpdateLlmAnalyticsClusteringJobRequest {
   event_filters?: UpdateLlmAnalyticsClusteringJobRequestEventFiltersList;
   enabled?: boolean;
 }
+const UpdateLlmAnalyticsClusteringJobRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<UpdateLlmAnalyticsClusteringJobRequest>;
+
 export type UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersItemMap = {
   [key: string]: unknown | undefined;
 };
+const UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersItemMap =
+  CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersItemMap as any as S.Schema<UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersItemMap>;
+
 /** PostHog property filters that scope this clustering job. Empty array means no filters. */
 export type UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersList =
   Array<UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersItemMap>;
+const UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersList = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersList>;
+
 export interface UpdateLlmAnalyticsClusteringJobsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1133,6 +1734,11 @@ export interface UpdateLlmAnalyticsClusteringJobsPartialRequest {
   event_filters?: UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersList;
   enabled?: boolean;
 }
+const UpdateLlmAnalyticsClusteringJobsPartialRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<UpdateLlmAnalyticsClusteringJobsPartialRequest>;
+
 export interface UpdateLlmAnalyticsEvaluationReportRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1157,6 +1763,11 @@ export interface UpdateLlmAnalyticsEvaluationReportRequest {
   /** Maximum count-triggered report runs per calendar day (UTC). Min 1, max 24 (one per cooldown window). Defaults to 10. */
   daily_run_cap?: number;
 }
+const UpdateLlmAnalyticsEvaluationReportRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<UpdateLlmAnalyticsEvaluationReportRequest>;
+
 export interface EvaluationReportUpdate {
   id: string;
   /** UUID of the evaluation this report config belongs to. */
@@ -1194,6 +1805,11 @@ export interface EvaluationReportUpdate {
   created_by: number | null;
   created_at: string;
 }
+const EvaluationReportUpdate = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<EvaluationReportUpdate>;
+
 export interface UpdateLlmAnalyticsEvaluationReportsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1218,6 +1834,11 @@ export interface UpdateLlmAnalyticsEvaluationReportsPartialRequest {
   /** Maximum count-triggered report runs per calendar day (UTC). Min 1, max 24 (one per cooldown window). Defaults to 10. */
   daily_run_cap?: number;
 }
+const UpdateLlmAnalyticsEvaluationReportsPartialRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<UpdateLlmAnalyticsEvaluationReportsPartialRequest>;
+
 export interface UpdateLlmAnalyticsParserRecipesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1228,6 +1849,11 @@ export interface UpdateLlmAnalyticsParserRecipesPartialRequest {
   /** Raw YAML recipe source. Must parse as YAML; recipe semantics are compiled and validated client-side. */
   source?: string;
 }
+const UpdateLlmAnalyticsParserRecipesPartialRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<UpdateLlmAnalyticsParserRecipesPartialRequest>;
+
 export interface UpdateLlmAnalyticsProviderKeyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1246,6 +1872,11 @@ export interface UpdateLlmAnalyticsProviderKeyRequest {
   api_version?: string;
   set_as_active?: boolean;
 }
+const UpdateLlmAnalyticsProviderKeyRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<UpdateLlmAnalyticsProviderKeyRequest>;
+
 export interface UpdateLlmAnalyticsProviderKeysPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1264,6 +1895,11 @@ export interface UpdateLlmAnalyticsProviderKeysPartialRequest {
   api_version?: string;
   set_as_active?: boolean;
 }
+const UpdateLlmAnalyticsProviderKeysPartialRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<UpdateLlmAnalyticsProviderKeysPartialRequest>;
+
 export interface UpdateLlmAnalyticsReviewQueueItemPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1272,6 +1908,11 @@ export interface UpdateLlmAnalyticsReviewQueueItemPartialRequest {
   /** Review queue ID that should own this pending trace. */
   queue_id?: string;
 }
+const UpdateLlmAnalyticsReviewQueueItemPartialRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<UpdateLlmAnalyticsReviewQueueItemPartialRequest>;
+
 export interface UpdateLlmAnalyticsReviewQueuePartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1280,6 +1921,11 @@ export interface UpdateLlmAnalyticsReviewQueuePartialRequest {
   /** Human-readable queue name. */
   name?: string;
 }
+const UpdateLlmAnalyticsReviewQueuePartialRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<UpdateLlmAnalyticsReviewQueuePartialRequest>;
+
 export interface UpdateLlmAnalyticsScoreDefinitionsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1292,8 +1938,16 @@ export interface UpdateLlmAnalyticsScoreDefinitionsPartialRequest {
   /** Whether the scorer is archived. */
   archived?: boolean;
 }
+const UpdateLlmAnalyticsScoreDefinitionsPartialRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<UpdateLlmAnalyticsScoreDefinitionsPartialRequest>;
+
 /** Full desired score set for this review. Omit scorers you want to leave blank. */
 export type UpdateLlmAnalyticsTraceReviewsPartialRequestScoresList = Array<TraceReviewScoreWrite>;
+const UpdateLlmAnalyticsTraceReviewsPartialRequestScoresList =
+  CreateLlmAnalyticsTraceReviewRequestScoresList as any as S.Schema<UpdateLlmAnalyticsTraceReviewsPartialRequestScoresList>;
+
 export interface UpdateLlmAnalyticsTraceReviewsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1308,6 +1962,11 @@ export interface UpdateLlmAnalyticsTraceReviewsPartialRequest {
   /** Optional review queue ID for queue-context saves. When provided, the matching pending queue item is cleared after the review is saved. If omitted, any pending queue item for the same trace is cleared. */
   queue_id?: string | null;
 }
+const UpdateLlmAnalyticsTraceReviewsPartialRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<UpdateLlmAnalyticsTraceReviewsPartialRequest>;
+
 export type CreateLlmAnalyticsClusteringConfigSetEventFilterError = PosthogOpError;
 /** Team-level clustering configuration (event filters for automated pipelines). */
 export const createLlmAnalyticsClusteringConfigSetEventFilter: API.OperationMethod<
@@ -1316,8 +1975,8 @@ export const createLlmAnalyticsClusteringConfigSetEventFilter: API.OperationMeth
   CreateLlmAnalyticsClusteringConfigSetEventFilterError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateLlmAnalyticsClusteringConfigSetEventFilterRequest>,
-  output: __S(5) as any as S.Schema<ClusteringConfig>,
+  input: CreateLlmAnalyticsClusteringConfigSetEventFilterRequest,
+  output: ClusteringConfig,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1331,8 +1990,8 @@ export const createLlmAnalyticsClusteringJob: API.OperationMethod<
   CreateLlmAnalyticsClusteringJobError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateLlmAnalyticsClusteringJobRequest>,
-  output: __S(7) as any as S.Schema<ClusteringJob>,
+  input: CreateLlmAnalyticsClusteringJobRequest,
+  output: ClusteringJob,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1346,8 +2005,8 @@ export const createLlmAnalyticsClusteringRun: API.OperationMethod<
   CreateLlmAnalyticsClusteringRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateLlmAnalyticsClusteringRunRequest>,
-  output: __S(9) as any as S.Schema<ClusteringRunRequest>,
+  input: CreateLlmAnalyticsClusteringRunRequest,
+  output: ClusteringRunRequest,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1361,8 +2020,8 @@ export const createLlmAnalyticsEvaluationConfigSetActiveKey: API.OperationMethod
   CreateLlmAnalyticsEvaluationConfigSetActiveKeyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CreateLlmAnalyticsEvaluationConfigSetActiveKeyRequest>,
-  output: __S(13) as any as S.Schema<EvaluationConfigOutput>,
+  input: CreateLlmAnalyticsEvaluationConfigSetActiveKeyRequest,
+  output: EvaluationConfigOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1376,8 +2035,8 @@ export const createLlmAnalyticsEvaluationReport: API.OperationMethod<
   CreateLlmAnalyticsEvaluationReportError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<CreateLlmAnalyticsEvaluationReportRequest>,
-  output: __S(15) as any as S.Schema<EvaluationReport>,
+  input: CreateLlmAnalyticsEvaluationReportRequest,
+  output: EvaluationReport,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1390,8 +2049,8 @@ export const createLlmAnalyticsParserRecipe: API.OperationMethod<
   CreateLlmAnalyticsParserRecipeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CreateLlmAnalyticsParserRecipeRequest>,
-  output: __S(17) as any as S.Schema<ParserRecipe>,
+  input: CreateLlmAnalyticsParserRecipeRequest,
+  output: ParserRecipe,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1404,8 +2063,8 @@ export const createLlmAnalyticsProviderKey: API.OperationMethod<
   CreateLlmAnalyticsProviderKeyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CreateLlmAnalyticsProviderKeyRequest>,
-  output: __S(12) as any as S.Schema<LLMProviderKeyOutput>,
+  input: CreateLlmAnalyticsProviderKeyRequest,
+  output: LLMProviderKeyOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1419,8 +2078,8 @@ export const createLlmAnalyticsProviderKeyValidation: API.OperationMethod<
   CreateLlmAnalyticsProviderKeyValidationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<CreateLlmAnalyticsProviderKeyValidationRequest>,
-  output: __S(20) as any as S.Schema<CreateLlmAnalyticsProviderKeyValidationResponse>,
+  input: CreateLlmAnalyticsProviderKeyValidationRequest,
+  output: CreateLlmAnalyticsProviderKeyValidationResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1433,8 +2092,8 @@ export const createLlmAnalyticsReviewQueue: API.OperationMethod<
   CreateLlmAnalyticsReviewQueueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<CreateLlmAnalyticsReviewQueueRequest>,
-  output: __S(22) as any as S.Schema<ReviewQueue>,
+  input: CreateLlmAnalyticsReviewQueueRequest,
+  output: ReviewQueue,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1447,8 +2106,8 @@ export const createLlmAnalyticsReviewQueueItem: API.OperationMethod<
   CreateLlmAnalyticsReviewQueueItemError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateLlmAnalyticsReviewQueueItemRequest>,
-  output: __S(24) as any as S.Schema<ReviewQueueItem>,
+  input: CreateLlmAnalyticsReviewQueueItemRequest,
+  output: ReviewQueueItem,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1461,8 +2120,8 @@ export const createLlmAnalyticsScoreDefinition: API.OperationMethod<
   CreateLlmAnalyticsScoreDefinitionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<CreateLlmAnalyticsScoreDefinitionRequest>,
-  output: __S(27) as any as S.Schema<ScoreDefinition>,
+  input: CreateLlmAnalyticsScoreDefinitionRequest,
+  output: ScoreDefinition,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1475,8 +2134,8 @@ export const createLlmAnalyticsScoreDefinitionsNewVersion: API.OperationMethod<
   CreateLlmAnalyticsScoreDefinitionsNewVersionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<CreateLlmAnalyticsScoreDefinitionsNewVersionRequest>,
-  output: __S(27) as any as S.Schema<ScoreDefinition>,
+  input: CreateLlmAnalyticsScoreDefinitionsNewVersionRequest,
+  output: ScoreDefinition,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1489,8 +2148,8 @@ export const createLlmAnalyticsTraceReview: API.OperationMethod<
   CreateLlmAnalyticsTraceReviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<CreateLlmAnalyticsTraceReviewRequest>,
-  output: __S(34) as any as S.Schema<TraceReview>,
+  input: CreateLlmAnalyticsTraceReviewRequest,
+  output: TraceReview,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1504,8 +2163,8 @@ export const createLlmAnalyticsTranslate: API.OperationMethod<
   CreateLlmAnalyticsTranslateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<CreateLlmAnalyticsTranslateRequest>,
-  output: __S(20) as any as S.Schema<CreateLlmAnalyticsTranslateResponse>,
+  input: CreateLlmAnalyticsTranslateRequest,
+  output: CreateLlmAnalyticsTranslateResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1519,8 +2178,8 @@ export const getLlmAnalyticsClusteringJob: API.OperationMethod<
   GetLlmAnalyticsClusteringJobError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GetLlmAnalyticsClusteringJobRequest>,
-  output: __S(7) as any as S.Schema<ClusteringJob>,
+  input: GetLlmAnalyticsClusteringJobRequest,
+  output: ClusteringJob,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1534,8 +2193,8 @@ export const getLlmAnalyticsEvaluationConfig: API.OperationMethod<
   GetLlmAnalyticsEvaluationConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<GetLlmAnalyticsEvaluationConfigRequest>,
-  output: __S(13) as any as S.Schema<EvaluationConfigOutput>,
+  input: GetLlmAnalyticsEvaluationConfigRequest,
+  output: EvaluationConfigOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1549,8 +2208,8 @@ export const getLlmAnalyticsEvaluationReport: API.OperationMethod<
   GetLlmAnalyticsEvaluationReportError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<GetLlmAnalyticsEvaluationReportRequest>,
-  output: __S(15) as any as S.Schema<EvaluationReport>,
+  input: GetLlmAnalyticsEvaluationReportRequest,
+  output: EvaluationReport,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1564,8 +2223,8 @@ export const getLlmAnalyticsModel: API.OperationMethod<
   GetLlmAnalyticsModelError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<GetLlmAnalyticsModelRequest>,
-  output: __S(44) as any as S.Schema<LLMModelsListResponse>,
+  input: GetLlmAnalyticsModelRequest,
+  output: LLMModelsListResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1578,8 +2237,8 @@ export const getLlmAnalyticsParserRecipe: API.OperationMethod<
   GetLlmAnalyticsParserRecipeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<GetLlmAnalyticsParserRecipeRequest>,
-  output: __S(17) as any as S.Schema<ParserRecipe>,
+  input: GetLlmAnalyticsParserRecipeRequest,
+  output: ParserRecipe,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1592,8 +2251,8 @@ export const getLlmAnalyticsProviderKey: API.OperationMethod<
   GetLlmAnalyticsProviderKeyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<GetLlmAnalyticsProviderKeyRequest>,
-  output: __S(12) as any as S.Schema<LLMProviderKeyOutput>,
+  input: GetLlmAnalyticsProviderKeyRequest,
+  output: LLMProviderKeyOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1607,8 +2266,8 @@ export const getLlmAnalyticsProviderKeysDependentConfig: API.OperationMethod<
   GetLlmAnalyticsProviderKeysDependentConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<GetLlmAnalyticsProviderKeysDependentConfigRequest>,
-  output: __S(12) as any as S.Schema<LLMProviderKeyOutput>,
+  input: GetLlmAnalyticsProviderKeysDependentConfigRequest,
+  output: LLMProviderKeyOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1621,8 +2280,8 @@ export const getLlmAnalyticsReviewQueue: API.OperationMethod<
   GetLlmAnalyticsReviewQueueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<GetLlmAnalyticsReviewQueueRequest>,
-  output: __S(22) as any as S.Schema<ReviewQueue>,
+  input: GetLlmAnalyticsReviewQueueRequest,
+  output: ReviewQueue,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1635,8 +2294,8 @@ export const getLlmAnalyticsReviewQueueItem: API.OperationMethod<
   GetLlmAnalyticsReviewQueueItemError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetLlmAnalyticsReviewQueueItemRequest>,
-  output: __S(24) as any as S.Schema<ReviewQueueItem>,
+  input: GetLlmAnalyticsReviewQueueItemRequest,
+  output: ReviewQueueItem,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1649,8 +2308,8 @@ export const getLlmAnalyticsScoreDefinition: API.OperationMethod<
   GetLlmAnalyticsScoreDefinitionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<GetLlmAnalyticsScoreDefinitionRequest>,
-  output: __S(27) as any as S.Schema<ScoreDefinition>,
+  input: GetLlmAnalyticsScoreDefinitionRequest,
+  output: ScoreDefinition,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1663,8 +2322,8 @@ export const getLlmAnalyticsScoreDefinitionsVersion: API.OperationMethod<
   GetLlmAnalyticsScoreDefinitionsVersionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<GetLlmAnalyticsScoreDefinitionsVersionRequest>,
-  output: __S(52) as any as S.Schema<ScoreDefinitionVersion>,
+  input: GetLlmAnalyticsScoreDefinitionsVersionRequest,
+  output: ScoreDefinitionVersion,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1677,8 +2336,8 @@ export const getLlmAnalyticsTraceReview: API.OperationMethod<
   GetLlmAnalyticsTraceReviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<GetLlmAnalyticsTraceReviewRequest>,
-  output: __S(34) as any as S.Schema<TraceReview>,
+  input: GetLlmAnalyticsTraceReviewRequest,
+  output: TraceReview,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1692,8 +2351,8 @@ export const listLlmAnalyticsClusteringConfig: API.OperationMethod<
   ListLlmAnalyticsClusteringConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<ListLlmAnalyticsClusteringConfigRequest>,
-  output: __S(5) as any as S.Schema<ClusteringConfig>,
+  input: ListLlmAnalyticsClusteringConfigRequest,
+  output: ClusteringConfig,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1707,8 +2366,8 @@ export const listLlmAnalyticsClusteringJobs: API.OperationMethod<
   ListLlmAnalyticsClusteringJobsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<ListLlmAnalyticsClusteringJobsRequest>,
-  output: __S(57) as any as S.Schema<PaginatedClusteringJobList>,
+  input: ListLlmAnalyticsClusteringJobsRequest,
+  output: PaginatedClusteringJobList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1722,8 +2381,8 @@ export const listLlmAnalyticsEvaluationReports: API.OperationMethod<
   ListLlmAnalyticsEvaluationReportsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<ListLlmAnalyticsEvaluationReportsRequest>,
-  output: __S(60) as any as S.Schema<PaginatedEvaluationReportList>,
+  input: ListLlmAnalyticsEvaluationReportsRequest,
+  output: PaginatedEvaluationReportList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1737,8 +2396,8 @@ export const listLlmAnalyticsEvaluationReportsRuns: API.OperationMethod<
   ListLlmAnalyticsEvaluationReportsRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<ListLlmAnalyticsEvaluationReportsRunsRequest>,
-  output: __S(74) as any as S.Schema<PaginatedEvaluationReportRunList>,
+  input: ListLlmAnalyticsEvaluationReportsRunsRequest,
+  output: PaginatedEvaluationReportRunList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1751,8 +2410,8 @@ export const listLlmAnalyticsParserRecipes: API.OperationMethod<
   ListLlmAnalyticsParserRecipesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<ListLlmAnalyticsParserRecipesRequest>,
-  output: __S(77) as any as S.Schema<PaginatedParserRecipeList>,
+  input: ListLlmAnalyticsParserRecipesRequest,
+  output: PaginatedParserRecipeList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1765,8 +2424,8 @@ export const listLlmAnalyticsProviderKeys: API.OperationMethod<
   ListLlmAnalyticsProviderKeysError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<ListLlmAnalyticsProviderKeysRequest>,
-  output: __S(80) as any as S.Schema<PaginatedLLMProviderKeyListOutput>,
+  input: ListLlmAnalyticsProviderKeysRequest,
+  output: PaginatedLLMProviderKeyListOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1779,8 +2438,8 @@ export const listLlmAnalyticsReviewQueueItems: API.OperationMethod<
   ListLlmAnalyticsReviewQueueItemsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<ListLlmAnalyticsReviewQueueItemsRequest>,
-  output: __S(83) as any as S.Schema<PaginatedReviewQueueItemList>,
+  input: ListLlmAnalyticsReviewQueueItemsRequest,
+  output: PaginatedReviewQueueItemList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1793,8 +2452,8 @@ export const listLlmAnalyticsReviewQueues: API.OperationMethod<
   ListLlmAnalyticsReviewQueuesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<ListLlmAnalyticsReviewQueuesRequest>,
-  output: __S(86) as any as S.Schema<PaginatedReviewQueueList>,
+  input: ListLlmAnalyticsReviewQueuesRequest,
+  output: PaginatedReviewQueueList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1807,8 +2466,8 @@ export const listLlmAnalyticsScoreDefinitions: API.OperationMethod<
   ListLlmAnalyticsScoreDefinitionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<ListLlmAnalyticsScoreDefinitionsRequest>,
-  output: __S(89) as any as S.Schema<PaginatedScoreDefinitionList>,
+  input: ListLlmAnalyticsScoreDefinitionsRequest,
+  output: PaginatedScoreDefinitionList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1821,8 +2480,8 @@ export const listLlmAnalyticsScoreDefinitionsVersions: API.OperationMethod<
   ListLlmAnalyticsScoreDefinitionsVersionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<ListLlmAnalyticsScoreDefinitionsVersionsRequest>,
-  output: __S(92) as any as S.Schema<ScoreDefinitionVersionPage>,
+  input: ListLlmAnalyticsScoreDefinitionsVersionsRequest,
+  output: ScoreDefinitionVersionPage,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1835,8 +2494,8 @@ export const listLlmAnalyticsTraceReviews: API.OperationMethod<
   ListLlmAnalyticsTraceReviewsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<ListLlmAnalyticsTraceReviewsRequest>,
-  output: __S(95) as any as S.Schema<PaginatedTraceReviewList>,
+  input: ListLlmAnalyticsTraceReviewsRequest,
+  output: PaginatedTraceReviewList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1850,8 +2509,8 @@ export const llmAnalyticsClusteringJobsDestroy: API.OperationMethod<
   LlmAnalyticsClusteringJobsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<LlmAnalyticsClusteringJobsDestroyRequest>,
-  output: __S(97) as any as S.Schema<LlmAnalyticsClusteringJobsDestroyResponse>,
+  input: LlmAnalyticsClusteringJobsDestroyRequest,
+  output: LlmAnalyticsClusteringJobsDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1865,8 +2524,8 @@ export const llmAnalyticsEvaluationReportsDestroy: API.OperationMethod<
   LlmAnalyticsEvaluationReportsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<LlmAnalyticsEvaluationReportsDestroyRequest>,
-  output: __S(97) as any as S.Schema<LlmAnalyticsEvaluationReportsDestroyResponse>,
+  input: LlmAnalyticsEvaluationReportsDestroyRequest,
+  output: LlmAnalyticsEvaluationReportsDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1880,8 +2539,8 @@ export const llmAnalyticsEvaluationReportsGenerateCreate: API.OperationMethod<
   LlmAnalyticsEvaluationReportsGenerateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<LlmAnalyticsEvaluationReportsGenerateCreateRequest>,
-  output: __S(97) as any as S.Schema<LlmAnalyticsEvaluationReportsGenerateCreateResponse>,
+  input: LlmAnalyticsEvaluationReportsGenerateCreateRequest,
+  output: LlmAnalyticsEvaluationReportsGenerateCreateResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1894,8 +2553,8 @@ export const llmAnalyticsParserRecipesDestroy: API.OperationMethod<
   LlmAnalyticsParserRecipesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<LlmAnalyticsParserRecipesDestroyRequest>,
-  output: __S(97) as any as S.Schema<LlmAnalyticsParserRecipesDestroyResponse>,
+  input: LlmAnalyticsParserRecipesDestroyRequest,
+  output: LlmAnalyticsParserRecipesDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1908,8 +2567,8 @@ export const llmAnalyticsProviderKeysDestroy: API.OperationMethod<
   LlmAnalyticsProviderKeysDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<LlmAnalyticsProviderKeysDestroyRequest>,
-  output: __S(97) as any as S.Schema<LlmAnalyticsProviderKeysDestroyResponse>,
+  input: LlmAnalyticsProviderKeysDestroyRequest,
+  output: LlmAnalyticsProviderKeysDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1922,8 +2581,8 @@ export const llmAnalyticsProviderKeysValidateCreate: API.OperationMethod<
   LlmAnalyticsProviderKeysValidateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<LlmAnalyticsProviderKeysValidateCreateRequest>,
-  output: __S(12) as any as S.Schema<LLMProviderKeyOutput>,
+  input: LlmAnalyticsProviderKeysValidateCreateRequest,
+  output: LLMProviderKeyOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1936,8 +2595,8 @@ export const llmAnalyticsTraceReviewsDestroy: API.OperationMethod<
   LlmAnalyticsTraceReviewsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<LlmAnalyticsTraceReviewsDestroyRequest>,
-  output: __S(97) as any as S.Schema<LlmAnalyticsTraceReviewsDestroyResponse>,
+  input: LlmAnalyticsTraceReviewsDestroyRequest,
+  output: LlmAnalyticsTraceReviewsDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1950,8 +2609,8 @@ export const reviewLlmAnalyticsQueueItemsDestroy: API.OperationMethod<
   ReviewLlmAnalyticsQueueItemsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<ReviewLlmAnalyticsQueueItemsDestroyRequest>,
-  output: __S(97) as any as S.Schema<ReviewLlmAnalyticsQueueItemsDestroyResponse>,
+  input: ReviewLlmAnalyticsQueueItemsDestroyRequest,
+  output: ReviewLlmAnalyticsQueueItemsDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1964,8 +2623,8 @@ export const reviewLlmAnalyticsQueuesDestroy: API.OperationMethod<
   ReviewLlmAnalyticsQueuesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<ReviewLlmAnalyticsQueuesDestroyRequest>,
-  output: __S(97) as any as S.Schema<ReviewLlmAnalyticsQueuesDestroyResponse>,
+  input: ReviewLlmAnalyticsQueuesDestroyRequest,
+  output: ReviewLlmAnalyticsQueuesDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1979,8 +2638,8 @@ export const updateLlmAnalyticsClusteringJob: API.OperationMethod<
   UpdateLlmAnalyticsClusteringJobError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<UpdateLlmAnalyticsClusteringJobRequest>,
-  output: __S(7) as any as S.Schema<ClusteringJob>,
+  input: UpdateLlmAnalyticsClusteringJobRequest,
+  output: ClusteringJob,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1994,8 +2653,8 @@ export const updateLlmAnalyticsClusteringJobsPartial: API.OperationMethod<
   UpdateLlmAnalyticsClusteringJobsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<UpdateLlmAnalyticsClusteringJobsPartialRequest>,
-  output: __S(7) as any as S.Schema<ClusteringJob>,
+  input: UpdateLlmAnalyticsClusteringJobsPartialRequest,
+  output: ClusteringJob,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2009,8 +2668,8 @@ export const updateLlmAnalyticsEvaluationReport: API.OperationMethod<
   UpdateLlmAnalyticsEvaluationReportError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<UpdateLlmAnalyticsEvaluationReportRequest>,
-  output: __S(110) as any as S.Schema<EvaluationReportUpdate>,
+  input: UpdateLlmAnalyticsEvaluationReportRequest,
+  output: EvaluationReportUpdate,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2024,8 +2683,8 @@ export const updateLlmAnalyticsEvaluationReportsPartial: API.OperationMethod<
   UpdateLlmAnalyticsEvaluationReportsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<UpdateLlmAnalyticsEvaluationReportsPartialRequest>,
-  output: __S(110) as any as S.Schema<EvaluationReportUpdate>,
+  input: UpdateLlmAnalyticsEvaluationReportsPartialRequest,
+  output: EvaluationReportUpdate,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2038,8 +2697,8 @@ export const updateLlmAnalyticsParserRecipesPartial: API.OperationMethod<
   UpdateLlmAnalyticsParserRecipesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<UpdateLlmAnalyticsParserRecipesPartialRequest>,
-  output: __S(17) as any as S.Schema<ParserRecipe>,
+  input: UpdateLlmAnalyticsParserRecipesPartialRequest,
+  output: ParserRecipe,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2052,8 +2711,8 @@ export const updateLlmAnalyticsProviderKey: API.OperationMethod<
   UpdateLlmAnalyticsProviderKeyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<UpdateLlmAnalyticsProviderKeyRequest>,
-  output: __S(12) as any as S.Schema<LLMProviderKeyOutput>,
+  input: UpdateLlmAnalyticsProviderKeyRequest,
+  output: LLMProviderKeyOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2066,8 +2725,8 @@ export const updateLlmAnalyticsProviderKeysPartial: API.OperationMethod<
   UpdateLlmAnalyticsProviderKeysPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<UpdateLlmAnalyticsProviderKeysPartialRequest>,
-  output: __S(12) as any as S.Schema<LLMProviderKeyOutput>,
+  input: UpdateLlmAnalyticsProviderKeysPartialRequest,
+  output: LLMProviderKeyOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2080,8 +2739,8 @@ export const updateLlmAnalyticsReviewQueueItemPartial: API.OperationMethod<
   UpdateLlmAnalyticsReviewQueueItemPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115) as any as S.Schema<UpdateLlmAnalyticsReviewQueueItemPartialRequest>,
-  output: __S(24) as any as S.Schema<ReviewQueueItem>,
+  input: UpdateLlmAnalyticsReviewQueueItemPartialRequest,
+  output: ReviewQueueItem,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2094,8 +2753,8 @@ export const updateLlmAnalyticsReviewQueuePartial: API.OperationMethod<
   UpdateLlmAnalyticsReviewQueuePartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<UpdateLlmAnalyticsReviewQueuePartialRequest>,
-  output: __S(22) as any as S.Schema<ReviewQueue>,
+  input: UpdateLlmAnalyticsReviewQueuePartialRequest,
+  output: ReviewQueue,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2108,8 +2767,8 @@ export const updateLlmAnalyticsScoreDefinitionsPartial: API.OperationMethod<
   UpdateLlmAnalyticsScoreDefinitionsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<UpdateLlmAnalyticsScoreDefinitionsPartialRequest>,
-  output: __S(27) as any as S.Schema<ScoreDefinition>,
+  input: UpdateLlmAnalyticsScoreDefinitionsPartialRequest,
+  output: ScoreDefinition,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2122,8 +2781,8 @@ export const updateLlmAnalyticsTraceReviewsPartial: API.OperationMethod<
   UpdateLlmAnalyticsTraceReviewsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<UpdateLlmAnalyticsTraceReviewsPartialRequest>,
-  output: __S(34) as any as S.Schema<TraceReview>,
+  input: UpdateLlmAnalyticsTraceReviewsPartialRequest,
+  output: TraceReview,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2135,12 +2794,12 @@ function __c0(j: number): any {
     case 0:
       return S.Record(S.String, S.Unknown);
     case 1:
-      return S.Array(__S(0));
+      return S.Array(CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersItemMap);
     case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          event_filters: __S(1),
+          event_filters: CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -2154,11 +2813,11 @@ function __c0(j: number): any {
     case 3:
       return S.Record(S.String, S.Unknown);
     case 4:
-      return S.Array(__S(3));
+      return S.Array(ClusteringConfigEventFiltersItemMap);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          event_filters: __S(4),
+          event_filters: ClusteringConfigEventFiltersList,
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -2168,8 +2827,8 @@ function __c0(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          analysis_level: S.optional(S.String),
-          event_filters: S.optional(__S(4)),
+          analysis_level: S.optional(AnalysisLevelEnum),
+          event_filters: S.optional(CreateLlmAnalyticsClusteringJobRequestEventFiltersList),
           enabled: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -2186,8 +2845,8 @@ function __c0(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          analysis_level: S.optional(S.String),
-          event_filters: S.optional(__S(4)),
+          analysis_level: S.optional(AnalysisLevelEnum),
+          event_filters: S.optional(ClusteringJobEventFiltersList),
           enabled: S.optional(S.Boolean),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
@@ -2203,17 +2862,17 @@ function __c1(j: number): any {
           project_id: S.String.pipe(T.Label()),
           lookback_days: S.optional(S.Number),
           max_samples: S.optional(S.Number),
-          embedding_normalization: S.optional(S.String),
-          dimensionality_reduction_method: S.optional(S.String),
+          embedding_normalization: S.optional(EmbeddingNormalizationEnum),
+          dimensionality_reduction_method: S.optional(DimensionalityReductionMethodEnum),
           dimensionality_reduction_ndims: S.optional(S.Number),
-          clustering_method: S.optional(S.String),
+          clustering_method: S.optional(ClusteringMethodEnum),
           min_cluster_size_fraction: S.optional(S.Number),
           hdbscan_min_samples: S.optional(S.Number),
           kmeans_min_k: S.optional(S.Number),
           kmeans_max_k: S.optional(S.Number),
           run_label: S.optional(S.String),
-          visualization_method: S.optional(S.String),
-          event_filters: S.optional(__S(4)),
+          visualization_method: S.optional(VisualizationMethodEnum),
+          event_filters: S.optional(CreateLlmAnalyticsClusteringRunRequestEventFiltersList),
           clustering_job_id: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -2230,17 +2889,17 @@ function __c1(j: number): any {
         S.Struct({
           lookback_days: S.optional(S.Number),
           max_samples: S.optional(S.Number),
-          embedding_normalization: S.optional(S.String),
-          dimensionality_reduction_method: S.optional(S.String),
+          embedding_normalization: S.optional(EmbeddingNormalizationEnum),
+          dimensionality_reduction_method: S.optional(DimensionalityReductionMethodEnum),
           dimensionality_reduction_ndims: S.optional(S.Number),
-          clustering_method: S.optional(S.String),
+          clustering_method: S.optional(ClusteringMethodEnum),
           min_cluster_size_fraction: S.optional(S.Number),
           hdbscan_min_samples: S.optional(S.Number),
           kmeans_min_k: S.optional(S.Number),
           kmeans_max_k: S.optional(S.Number),
           run_label: S.optional(S.String),
-          visualization_method: S.optional(S.String),
-          event_filters: S.optional(__S(4)),
+          visualization_method: S.optional(VisualizationMethodEnum),
+          event_filters: S.optional(ClusteringRunRequestEventFiltersList),
           clustering_job_id: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ClusteringRunRequest" });
@@ -2269,17 +2928,17 @@ function __c1(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(3))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          provider: S.optional(S.String),
+          provider: S.optional(LLMProviderEnum),
           name: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(LLMProviderKeyStateEnum),
           error_message: S.optional(S.NullOr(S.String)),
           api_key_masked: S.optional(S.String),
           base_url_display: S.optional(S.NullOr(S.String)),
@@ -2287,14 +2946,14 @@ function __c1(j: number): any {
           azure_endpoint_display: S.optional(S.NullOr(S.String)),
           api_version_display: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(11))),
+          created_by: S.optional(S.NullOr(UserBasic)),
           last_used_at: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "LLMProviderKeyOutput" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          active_provider_key: S.NullOr(__S(12)),
+          active_provider_key: S.NullOr(LLMProviderKeyOutput),
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -2304,7 +2963,7 @@ function __c1(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           evaluation: S.optional(S.String),
-          frequency: S.optional(S.String),
+          frequency: S.optional(EvaluationReportFrequencyEnum),
           rrule: S.optional(S.String),
           delivery_targets: S.optional(S.Unknown),
           max_sample_size: S.optional(S.Number),
@@ -2328,7 +2987,7 @@ function __c1(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           evaluation: S.optional(S.String),
-          frequency: S.optional(S.String),
+          frequency: S.optional(EvaluationReportFrequencyEnum),
           rrule: S.optional(S.String),
           starts_at: S.optional(S.NullOr(S.String)),
           timezone_name: S.optional(S.String),
@@ -2374,7 +3033,7 @@ function __c2(j: number): any {
           id: S.String,
           name: S.String,
           source: S.String,
-          created_by: S.NullOr(__S(11)),
+          created_by: S.NullOr(UserBasic),
           created_at: S.String,
           updated_at: S.NullOr(S.String),
         }),
@@ -2383,7 +3042,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          provider: S.optional(S.String),
+          provider: S.optional(LLMProviderEnum),
           name: S.optional(S.String),
           api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
           base_url: S.optional(S.String),
@@ -2416,7 +3075,9 @@ function __c2(j: number): any {
         identifier: "CreateLlmAnalyticsProviderKeyValidationRequest",
       });
     case 4:
-      return S.suspend(() => __S(3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        CreateLlmAnalyticsProviderKeyValidationResponseBodyMap.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "CreateLlmAnalyticsProviderKeyValidationResponse",
       });
     case 5:
@@ -2442,7 +3103,7 @@ function __c2(j: number): any {
           pending_item_count: S.optional(S.Number),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(__S(11))),
+          created_by: S.optional(S.NullOr(UserBasic)),
           team: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ReviewQueue" });
@@ -2475,7 +3136,7 @@ function __c3(j: number): any {
           trace_id: S.optional(S.String),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(__S(11))),
+          created_by: S.optional(S.NullOr(UserBasic)),
           team: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ReviewQueueItem" });
@@ -2487,9 +3148,9 @@ function __c3(j: number): any {
           project_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          kind: S.optional(S.String),
+          kind: S.optional(ScoreDefinitionKindEnum),
           archived: S.optional(S.Boolean),
-          config: S.optional(S.Unknown),
+          config: S.optional(ScoreDefinitionConfig),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2506,12 +3167,12 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          kind: S.optional(S.String),
+          kind: S.optional(ScoreDefinitionKindEnum),
           archived: S.optional(S.Boolean),
           current_version: S.optional(S.Number),
           current_version_id: S.optional(S.NullOr(S.String)),
-          config: S.optional(S.Unknown),
-          created_by: S.optional(S.NullOr(__S(11))),
+          config: S.optional(ScoreDefinitionConfig),
+          created_by: S.optional(S.NullOr(UserBasic)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.NullOr(S.String)),
           team: S.optional(S.Number),
@@ -2524,7 +3185,7 @@ function __c3(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          config: S.optional(S.Unknown),
+          config: S.optional(ScoreDefinitionConfig),
           base_version: S.optional(S.Number),
         }).pipe(
           T.Http({
@@ -2541,20 +3202,20 @@ function __c3(j: number): any {
         S.Struct({
           definition_id: S.optional(S.String),
           definition_version_id: S.optional(S.NullOr(S.String)),
-          categorical_values: S.optional(S.NullOr(__S(25))),
+          categorical_values: S.optional(S.NullOr(TraceReviewScoreWriteCategoricalValuesList)),
           numeric_value: S.optional(S.NullOr(S.String)),
           boolean_value: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "TraceReviewScoreWrite" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(TraceReviewScoreWrite);
     case 7:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           trace_id: S.optional(S.String),
           comment: S.optional(S.NullOr(S.String)),
-          scores: S.optional(__S(30)),
+          scores: S.optional(CreateLlmAnalyticsTraceReviewRequestScoresList),
           queue_id: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -2580,8 +3241,8 @@ function __c4(j: number): any {
           definition_archived: S.optional(S.Boolean),
           definition_version_id: S.optional(S.String),
           definition_version: S.optional(S.Number),
-          definition_config: S.optional(S.Unknown),
-          categorical_values: S.optional(S.NullOr(__S(25))),
+          definition_config: S.optional(ScoreDefinitionConfig),
+          categorical_values: S.optional(S.NullOr(TraceReviewScoreCategoricalValuesList)),
           numeric_value: S.optional(S.NullOr(S.String)),
           boolean_value: S.optional(S.NullOr(S.Boolean)),
           created_at: S.optional(S.String),
@@ -2589,7 +3250,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "TraceReviewScore" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(TraceReviewScore);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2599,9 +3260,9 @@ function __c4(j: number): any {
           comment: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(__S(11))),
-          reviewed_by: S.optional(S.NullOr(__S(11))),
-          scores: S.optional(__S(33)),
+          created_by: S.optional(S.NullOr(UserBasic)),
+          reviewed_by: S.optional(S.NullOr(UserBasic)),
+          scores: S.optional(TraceReviewScoresList),
           team: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TraceReview" });
@@ -2670,7 +3331,7 @@ function __c4(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           key_id: S.optional(S.String.pipe(T.Query())),
-          provider: S.optional(S.String.pipe(T.Query())),
+          provider: S.optional(GetLlmAnalyticsModelRequestProvider.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2693,7 +3354,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "LLMModelInfo" });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(LLMModelInfo);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2703,12 +3364,12 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "LLMProviderModelsSummary" });
     case 3:
-      return S.Array(__S(42));
+      return S.Array(LLMProviderModelsSummary);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          models: __S(41),
-          providers: __S(43),
+          models: LLMModelsListResponseModelsList,
+          providers: LLMModelsListResponseProvidersList,
         }),
       ).annotate({ identifier: "LLMModelsListResponse" });
     case 5:
@@ -2827,10 +3488,10 @@ function __c6(j: number): any {
           id: S.String,
           definition_id: S.String,
           version: S.Number,
-          kind: S.String,
-          config: S.Unknown,
+          kind: ScoreDefinitionKindEnum,
+          config: ScoreDefinitionConfig,
           created_at: S.String,
-          created_by: S.NullOr(__S(11)),
+          created_by: S.NullOr(UserBasic),
         }),
       ).annotate({ identifier: "ScoreDefinitionVersion" });
     case 5:
@@ -2883,14 +3544,14 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(ClusteringJob);
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(56)),
+          results: S.optional(PaginatedClusteringJobListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedClusteringJobList",
@@ -2913,14 +3574,14 @@ function __c7(j: number): any {
         identifier: "ListLlmAnalyticsEvaluationReportsRequest",
       });
     case 3:
-      return S.Array(__S(15));
+      return S.Array(EvaluationReport);
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(59)),
+          results: S.optional(PaginatedEvaluationReportListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedEvaluationReportList",
@@ -2950,7 +3611,7 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "EvaluationReportSection" });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(EvaluationReportSection);
   }
 }
 function __c8(j: number): any {
@@ -2965,7 +3626,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "EvaluationReportCitation" });
     case 1:
-      return S.Array(__S(64));
+      return S.Array(EvaluationReportCitation);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2976,7 +3637,7 @@ function __c8(j: number): any {
         identifier: "EvaluationReportMetricsOutputConfigOptionsItem",
       });
     case 3:
-      return S.Array(__S(66));
+      return S.Array(EvaluationReportMetricsOutputConfigOptionsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2985,9 +3646,9 @@ function __c8(j: number): any {
           min: S.optional(S.NullOr(S.Number)),
           max: S.optional(S.NullOr(S.Number)),
           step: S.optional(S.NullOr(S.Number)),
-          options: S.optional(__S(67)),
-          selection_mode: S.optional(S.String),
-          passing_rule: S.optional(S.NullOr(S.Unknown)),
+          options: S.optional(EvaluationReportMetricsOutputConfigOptionsList),
+          selection_mode: S.optional(EvaluationReportMetricsOutputConfigSelectionMode),
+          passing_rule: S.optional(S.NullOr(EvaluationReportMetricsOutputConfigPassingRule)),
         }),
       ).annotate({
         identifier: "EvaluationReportMetricsOutputConfig",
@@ -2997,16 +3658,20 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          output_config: S.optional(__S(68)),
-          output_type: S.optional(S.String),
+          output_config: S.optional(EvaluationReportMetricsOutputConfig),
+          output_type: S.optional(OutputTypeEnum),
           total_runs: S.optional(S.Number),
-          result_counts: S.optional(__S(69)),
-          result_rates: S.optional(__S(69)),
+          result_counts: S.optional(EvaluationReportMetricsResultCountsMap),
+          result_rates: S.optional(EvaluationReportMetricsResultRatesMap),
           period_start: S.optional(S.String),
           period_end: S.optional(S.String),
           previous_total_runs: S.optional(S.NullOr(S.Number)),
-          previous_result_counts: S.optional(S.NullOr(__S(69))),
-          previous_result_rates: S.optional(S.NullOr(__S(69))),
+          previous_result_counts: S.optional(
+            S.NullOr(EvaluationReportMetricsPreviousResultCountsMap),
+          ),
+          previous_result_rates: S.optional(
+            S.NullOr(EvaluationReportMetricsPreviousResultRatesMap),
+          ),
           pass_rate: S.optional(S.NullOr(S.Number)),
           previous_pass_rate: S.optional(S.NullOr(S.Number)),
         }),
@@ -3014,12 +3679,12 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          evaluation_target: S.optional(S.String),
+          evaluation_target: S.optional(EvaluationTargetEnum),
           title: S.optional(S.String),
-          sections: S.optional(__S(63)),
-          citations: S.optional(__S(65)),
-          generation_status: S.optional(S.String),
-          metrics: S.optional(S.NullOr(__S(70))),
+          sections: S.optional(EvaluationReportRunContentSectionsList),
+          citations: S.optional(EvaluationReportRunContentCitationsList),
+          generation_status: S.optional(GenerationStatusEnum),
+          metrics: S.optional(S.NullOr(EvaluationReportMetrics)),
         }),
       ).annotate({
         identifier: "EvaluationReportRunContent",
@@ -3033,24 +3698,24 @@ function __c9(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           report: S.optional(S.String),
-          content: S.optional(__S(71)),
-          metadata: S.optional(S.NullOr(__S(70))),
+          content: S.optional(EvaluationReportRunContent),
+          metadata: S.optional(S.NullOr(EvaluationReportMetrics)),
           period_start: S.optional(S.String),
           period_end: S.optional(S.String),
-          delivery_status: S.optional(S.String),
-          delivery_errors: S.optional(__S(25)),
+          delivery_status: S.optional(EvaluationReportRunDeliveryStatusEnum),
+          delivery_errors: S.optional(EvaluationReportRunDeliveryErrorsList),
           created_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "EvaluationReportRun" });
     case 1:
-      return S.Array(__S(72));
+      return S.Array(EvaluationReportRun);
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(73)),
+          results: S.optional(PaginatedEvaluationReportRunListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedEvaluationReportRunList",
@@ -3072,14 +3737,14 @@ function __c9(j: number): any {
         identifier: "ListLlmAnalyticsParserRecipesRequest",
       });
     case 4:
-      return S.Array(__S(17));
+      return S.Array(ParserRecipe);
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(76),
+          results: PaginatedParserRecipeListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedParserRecipeList",
@@ -3101,7 +3766,7 @@ function __c9(j: number): any {
         identifier: "ListLlmAnalyticsProviderKeysRequest",
       });
     case 7:
-      return S.Array(__S(12));
+      return S.Array(LLMProviderKeyOutput);
   }
 }
 function __c10(j: number): any {
@@ -3112,7 +3777,7 @@ function __c10(j: number): any {
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(79)),
+          results: S.optional(PaginatedLLMProviderKeyListOutputResultsList),
         }),
       ).annotate({
         identifier: "PaginatedLLMProviderKeyListOutput",
@@ -3139,14 +3804,14 @@ function __c10(j: number): any {
         identifier: "ListLlmAnalyticsReviewQueueItemsRequest",
       });
     case 2:
-      return S.Array(__S(24));
+      return S.Array(ReviewQueueItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(82)),
+          results: S.optional(PaginatedReviewQueueItemListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedReviewQueueItemList",
@@ -3171,14 +3836,14 @@ function __c10(j: number): any {
         identifier: "ListLlmAnalyticsReviewQueuesRequest",
       });
     case 5:
-      return S.Array(__S(22));
+      return S.Array(ReviewQueue);
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(85)),
+          results: S.optional(PaginatedReviewQueueListResultsList),
         }),
       ).annotate({ identifier: "PaginatedReviewQueueList" });
     case 7:
@@ -3206,14 +3871,14 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(27));
+      return S.Array(ScoreDefinition);
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(88)),
+          results: S.optional(PaginatedScoreDefinitionListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedScoreDefinitionList",
@@ -3236,13 +3901,13 @@ function __c11(j: number): any {
         identifier: "ListLlmAnalyticsScoreDefinitionsVersionsRequest",
       });
     case 3:
-      return S.Array(__S(52));
+      return S.Array(ScoreDefinitionVersion);
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next_cursor: S.NullOr(S.String),
-          results: __S(91),
+          results: ScoreDefinitionVersionPageResultsList,
         }),
       ).annotate({
         identifier: "ScoreDefinitionVersionPage",
@@ -3270,14 +3935,14 @@ function __c11(j: number): any {
         identifier: "ListLlmAnalyticsTraceReviewsRequest",
       });
     case 6:
-      return S.Array(__S(34));
+      return S.Array(TraceReview);
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(94)),
+          results: S.optional(PaginatedTraceReviewListResultsList),
         }),
       ).annotate({ identifier: "PaginatedTraceReviewList" });
   }
@@ -3368,7 +4033,7 @@ function __c12(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          provider: S.optional(S.String),
+          provider: S.optional(LLMProviderEnum),
           name: S.optional(S.String),
           api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
           base_url: S.optional(S.String),
@@ -3441,8 +4106,8 @@ function __c13(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          analysis_level: S.optional(S.String),
-          event_filters: S.optional(__S(4)),
+          analysis_level: S.optional(AnalysisLevelEnum),
+          event_filters: S.optional(UpdateLlmAnalyticsClusteringJobRequestEventFiltersList),
           enabled: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -3455,15 +4120,15 @@ function __c13(j: number): any {
         identifier: "UpdateLlmAnalyticsClusteringJobRequest",
       });
     case 3:
-      return S.Array(__S(0));
+      return S.Array(UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersItemMap);
     case 4:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          analysis_level: S.optional(S.String),
-          event_filters: S.optional(__S(107)),
+          analysis_level: S.optional(AnalysisLevelEnum),
+          event_filters: S.optional(UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersList),
           enabled: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -3480,7 +4145,7 @@ function __c13(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          frequency: S.optional(S.String),
+          frequency: S.optional(EvaluationReportFrequencyEnum),
           rrule: S.optional(S.String),
           delivery_targets: S.optional(S.Unknown),
           max_sample_size: S.optional(S.Number),
@@ -3504,7 +4169,7 @@ function __c13(j: number): any {
         S.Struct({
           id: S.String,
           evaluation: S.String,
-          frequency: S.optional(S.String),
+          frequency: S.optional(EvaluationReportFrequencyEnum),
           rrule: S.optional(S.String),
           starts_at: S.NullOr(S.String),
           timezone_name: S.String,
@@ -3529,7 +4194,7 @@ function __c13(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          frequency: S.optional(S.String),
+          frequency: S.optional(EvaluationReportFrequencyEnum),
           rrule: S.optional(S.String),
           delivery_targets: S.optional(S.Unknown),
           max_sample_size: S.optional(S.Number),
@@ -3574,7 +4239,7 @@ function __c14(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          provider: S.optional(S.String),
+          provider: S.optional(LLMProviderEnum),
           name: S.optional(S.String),
           api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
           base_url: S.optional(S.String),
@@ -3597,7 +4262,7 @@ function __c14(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          provider: S.optional(S.String),
+          provider: S.optional(LLMProviderEnum),
           name: S.optional(S.String),
           api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
           base_url: S.optional(S.String),
@@ -3672,7 +4337,7 @@ function __c14(j: number): any {
           id: S.String.pipe(T.Label()),
           trace_id: S.optional(S.String),
           comment: S.optional(S.NullOr(S.String)),
-          scores: S.optional(__S(30)),
+          scores: S.optional(UpdateLlmAnalyticsTraceReviewsPartialRequestScoresList),
           queue_id: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -3684,44 +4349,5 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "UpdateLlmAnalyticsTraceReviewsPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
   }
 }

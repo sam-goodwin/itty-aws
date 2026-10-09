@@ -7,22 +7,34 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type AppliancesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const AppliancesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AppliancesCreateOrUpdateRequestTagsMap>;
+
 /** Represents a supported Fabric/Infra. (AKSEdge etc...). */
 export type AppliancePropertiesInputDistro = "AKSEdge";
+const AppliancePropertiesInputDistro = S.String;
+
 /** Information about the connected appliance. */
 export type Provider = "VMWare" | "HCI" | "SCVMM";
+const Provider = S.String;
+
 /** Contains infrastructure information about the Appliance */
 export interface AppliancePropertiesInfrastructureConfig {
   /** Information about the connected appliance. */
   provider?: Provider | (string & {});
 }
+const AppliancePropertiesInfrastructureConfig = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AppliancePropertiesInfrastructureConfig>;
+
 /** Properties for an appliance. */
 export interface AppliancePropertiesInput {
   /** Represents a supported Fabric/Infra. (AKSEdge etc...). */
@@ -34,13 +46,22 @@ export interface AppliancePropertiesInput {
   /** Version of the Appliance */
   version?: string;
 }
+const AppliancePropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AppliancePropertiesInput>;
+
 /** The identity type. */
 export type ResourceIdentityType = "SystemAssigned" | "None";
+const ResourceIdentityType = S.String;
+
 /** Identity for the resource. */
 export interface IdentityInput {
   /** The identity type. */
   type?: ResourceIdentityType | (string & {});
 }
+const IdentityInput = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<IdentityInput>;
+
 export interface AppliancesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -57,10 +78,19 @@ export interface AppliancesCreateOrUpdateRequest {
   /** Identity for the resource. */
   identity?: IdentityInput;
 }
+const AppliancesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AppliancesCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -76,10 +106,17 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<SystemData>;
+
 /** Resource tags. */
 export type AppliancesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const AppliancesCreateOrUpdateResponseTagsMap =
+  AppliancesCreateOrUpdateRequestTagsMap as any as S.Schema<AppliancesCreateOrUpdateResponseTagsMap>;
+
 /** Represents a supported Fabric/Infra. (AKSEdge etc...). */
 export type AppliancePropertiesDistro = "AKSEdge";
+const AppliancePropertiesDistro = S.String;
+
 /** Appliance's health and state of connection to on-prem. This list of values is not exhaustive. */
 export type Status =
   | "WaitingForHeartbeat"
@@ -114,6 +151,8 @@ export type Status =
   | "UpgradeFailed"
   | "Offline"
   | "None";
+const Status = S.String;
+
 /** Properties for an appliance. */
 export interface ApplianceProperties {
   /** Represents a supported Fabric/Infra. (AKSEdge etc...). */
@@ -129,6 +168,8 @@ export interface ApplianceProperties {
   /** Version of the Appliance */
   version?: string;
 }
+const ApplianceProperties = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ApplianceProperties>;
+
 /** Identity for the resource. */
 export interface Identity {
   /** The principal ID of resource identity. */
@@ -138,6 +179,8 @@ export interface Identity {
   /** The identity type. */
   type?: ResourceIdentityType;
 }
+const Identity = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Identity>;
+
 export interface AppliancesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -156,6 +199,11 @@ export interface AppliancesCreateOrUpdateResponse {
   /** Identity for the resource. */
   identity?: Identity;
 }
+const AppliancesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AppliancesCreateOrUpdateResponse>;
+
 export interface DeleteApplianceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -164,7 +212,17 @@ export interface DeleteApplianceRequest {
   /** Appliances name. */
   resourceName: string;
 }
+const DeleteApplianceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteApplianceRequest>;
+
 export interface DeleteApplianceResponse {}
+const DeleteApplianceResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteApplianceResponse>;
+
 export interface GetApplianceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -173,8 +231,13 @@ export interface GetApplianceRequest {
   /** Appliances name. */
   resourceName: string;
 }
+const GetApplianceRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetApplianceRequest>;
+
 /** Resource tags. */
 export type GetApplianceResponseTagsMap = { [key: string]: string | undefined };
+const GetApplianceResponseTagsMap =
+  AppliancesCreateOrUpdateRequestTagsMap as any as S.Schema<GetApplianceResponseTagsMap>;
+
 export interface GetApplianceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -193,15 +256,27 @@ export interface GetApplianceResponse {
   /** Identity for the resource. */
   identity?: Identity;
 }
+const GetApplianceResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetApplianceResponse>;
+
 export interface GetApplianceTelemetryConfigRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const GetApplianceTelemetryConfigRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetApplianceTelemetryConfigRequest>;
+
 /** The Get Telemetry Config Result appliance. */
 export interface ApplianceGetTelemetryConfigResult {
   /** Telemetry instrumentation key. */
   telemetryInstrumentationKey?: string;
 }
+const ApplianceGetTelemetryConfigResult = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ApplianceGetTelemetryConfigResult>;
+
 export interface GetApplianceUpgradeGraphRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -212,6 +287,11 @@ export interface GetApplianceUpgradeGraphRequest {
   /** Upgrade graph version, ex - stable */
   upgradeGraph: string;
 }
+const GetApplianceUpgradeGraphRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetApplianceUpgradeGraphRequest>;
+
 /** The SupportedVersionCatalogVersionData object for appliance. */
 export interface SupportedVersionCatalogVersionData {
   /** The image audience name for the version available for upgrade. */
@@ -223,6 +303,11 @@ export interface SupportedVersionCatalogVersionData {
   /** The image version for the version available for upgrade. */
   version?: string;
 }
+const SupportedVersionCatalogVersionData = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<SupportedVersionCatalogVersionData>;
+
 /** The SupportedVersionCatalogVersion object for appliance. */
 export interface SupportedVersionCatalogVersion {
   /** The newer supported version catalog version data. */
@@ -232,11 +317,21 @@ export interface SupportedVersionCatalogVersion {
   /** The catalog version namespace for the version available for upgrade. */
   namespace?: string;
 }
+const SupportedVersionCatalogVersion = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<SupportedVersionCatalogVersion>;
+
 /** The SupportedVersionMetadata object for appliance. */
 export interface SupportedVersionMetadata {
   /** The newer supported version catalog version. */
   catalogVersion?: SupportedVersionCatalogVersion;
 }
+const SupportedVersionMetadata = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<SupportedVersionMetadata>;
+
 /** The SupportedVersion object for appliance. */
 export interface SupportedVersion {
   /** This is the metadata of the supported newer version. */
@@ -244,8 +339,15 @@ export interface SupportedVersion {
   /** The newer version available for upgrade. */
   version?: string;
 }
+const SupportedVersion = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<SupportedVersion>;
+
 /** This contains the current version and supported upgrade versions. */
 export type UpgradeGraphPropertiesSupportedVersionsList = Array<SupportedVersion>;
+const UpgradeGraphPropertiesSupportedVersionsList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<UpgradeGraphPropertiesSupportedVersionsList>;
+
 /** The Upgrade Graph Properties for appliance. */
 export interface UpgradeGraphProperties {
   /** The current appliance version */
@@ -253,6 +355,11 @@ export interface UpgradeGraphProperties {
   /** This contains the current version and supported upgrade versions. */
   supportedVersions?: UpgradeGraphPropertiesSupportedVersionsList;
 }
+const UpgradeGraphProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<UpgradeGraphProperties>;
+
 /** The Upgrade Graph for appliance. */
 export interface UpgradeGraph {
   /** The appliance resource path */
@@ -262,12 +369,19 @@ export interface UpgradeGraph {
   /** The properties of supported version */
   properties?: UpgradeGraphProperties;
 }
+const UpgradeGraph = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<UpgradeGraph>;
+
 export interface ListApplianceByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListApplianceByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListApplianceByResourceGroupRequest>;
+
 /** Resource tags. */
 export type ApplianceTagsMap = { [key: string]: string | undefined };
 /** Appliances definition. */
@@ -289,8 +403,15 @@ export interface Appliance {
   /** Identity for the resource. */
   identity?: Identity;
 }
+const Appliance = GetApplianceResponse as any as S.Schema<Appliance>;
+
 /** The Appliance items on this page */
 export type ApplianceListResultValueList = Array<Appliance>;
+const ApplianceListResultValueList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ApplianceListResultValueList>;
+
 /** Paged collection of Appliance items */
 export interface ApplianceListResult {
   /** The Appliance items on this page */
@@ -298,10 +419,17 @@ export interface ApplianceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ApplianceListResult = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ApplianceListResult>;
+
 export interface ListApplianceBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListApplianceBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListApplianceBySubscriptionRequest>;
+
 export interface ListApplianceClusterUserCredentialRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -310,6 +438,11 @@ export interface ListApplianceClusterUserCredentialRequest {
   /** Appliances name. */
   resourceName: string;
 }
+const ListApplianceClusterUserCredentialRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ListApplianceClusterUserCredentialRequest>;
+
 /** Contains the REP (rendezvous endpoint) and "Listener" access token from notification service (NS). */
 export interface HybridConnectionConfig {
   /** Timestamp when this token will be expired. */
@@ -321,8 +454,15 @@ export interface HybridConnectionConfig {
   /** Listener access token */
   token?: string;
 }
+const HybridConnectionConfig = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<HybridConnectionConfig>;
+
 /** Name which contains the role of the kubeconfig. */
 export type AccessProfileType = "clusterUser" | "clusterCustomerUser";
+const AccessProfileType = S.String;
+
 /** Cluster User Credential appliance. */
 export interface ApplianceCredentialKubeconfig {
   /** Name which contains the role of the kubeconfig. */
@@ -330,8 +470,18 @@ export interface ApplianceCredentialKubeconfig {
   /** Contains the kubeconfig value. */
   value?: string;
 }
+const ApplianceCredentialKubeconfig = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ApplianceCredentialKubeconfig>;
+
 /** The list of appliance kubeconfigs. */
 export type ApplianceListCredentialResultsKubeconfigsList = Array<ApplianceCredentialKubeconfig>;
+const ApplianceListCredentialResultsKubeconfigsList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ApplianceListCredentialResultsKubeconfigsList>;
+
 /** The List Cluster User Credential appliance. */
 export interface ApplianceListCredentialResults {
   /** Contains the REP (rendezvous endpoint) and "Listener" access token from notification service (NS). */
@@ -339,6 +489,11 @@ export interface ApplianceListCredentialResults {
   /** The list of appliance kubeconfigs. */
   kubeconfigs?: ApplianceListCredentialResultsKubeconfigsList;
 }
+const ApplianceListCredentialResults = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ApplianceListCredentialResults>;
+
 export interface ListApplianceKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -349,17 +504,32 @@ export interface ListApplianceKeysRequest {
   /** This sets the type of artifact being returned, when empty no artifact endpoint is returned. */
   artifactType?: string;
 }
+const ListApplianceKeysRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ListApplianceKeysRequest>;
+
 /** Appliance ArtifactProfile definition. */
 export interface ArtifactProfile {
   /** Endpoint is the URL to upload artifacts to. */
   endpoint?: string;
 }
+const ArtifactProfile = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ArtifactProfile>;
+
 /** Map of artifacts that contains a list of ArtifactProfile used to upload artifacts such as logs. */
 export type ApplianceListKeysResultsArtifactProfilesMap = {
   [key: string]: ArtifactProfile | undefined;
 };
+const ApplianceListKeysResultsArtifactProfilesMap = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ApplianceListKeysResultsArtifactProfilesMap>;
+
 /** The list of appliance kubeconfigs. */
 export type ApplianceListKeysResultsKubeconfigsList = Array<ApplianceCredentialKubeconfig>;
+const ApplianceListKeysResultsKubeconfigsList =
+  ApplianceListCredentialResultsKubeconfigsList as any as S.Schema<ApplianceListKeysResultsKubeconfigsList>;
+
 /** Appliance SSHKey definition. */
 export interface SSHKey {
   /** Certificate associated with the public key if the key is signed. */
@@ -373,8 +543,15 @@ export interface SSHKey {
   /** Public Key. */
   publicKey?: string;
 }
+const SSHKey = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<SSHKey>;
+
 /** Map of Customer User Public, Private SSH Keys and Certificate when available. */
 export type ApplianceListKeysResultsSshKeysMap = { [key: string]: SSHKey | undefined };
+const ApplianceListKeysResultsSshKeysMap = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ApplianceListKeysResultsSshKeysMap>;
+
 /** The List Cluster Keys Results appliance. */
 export interface ApplianceListKeysResults {
   /** Map of artifacts that contains a list of ArtifactProfile used to upload artifacts such as logs. */
@@ -384,7 +561,17 @@ export interface ApplianceListKeysResults {
   /** Map of Customer User Public, Private SSH Keys and Certificate when available. */
   sshKeys?: ApplianceListKeysResultsSshKeysMap;
 }
+const ApplianceListKeysResults = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ApplianceListKeysResults>;
+
 export interface ListApplianceOperationsRequest {}
+const ListApplianceOperationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListApplianceOperationsRequest>;
+
 /** Describes the properties of an Appliances Operation Value Display. */
 export interface ApplianceOperationValueDisplay {
   /** The description of the operation. */
@@ -396,6 +583,11 @@ export interface ApplianceOperationValueDisplay {
   /** The display name of the resource the operation applies to. */
   resource?: string;
 }
+const ApplianceOperationValueDisplay = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ApplianceOperationValueDisplay>;
+
 /** Appliances operation. */
 export interface ApplianceOperation {
   /** Describes the properties of an Appliances Operation Value Display. */
@@ -407,8 +599,15 @@ export interface ApplianceOperation {
   /** The origin of the compute operation. */
   origin?: string;
 }
+const ApplianceOperation = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ApplianceOperation>;
+
 /** The ApplianceOperation items on this page */
 export type ApplianceOperationsListValueList = Array<ApplianceOperation>;
+const ApplianceOperationsListValueList = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ApplianceOperationsListValueList>;
+
 /** Paged collection of ApplianceOperation items */
 export interface ApplianceOperationsList {
   /** The ApplianceOperation items on this page */
@@ -416,8 +615,16 @@ export interface ApplianceOperationsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ApplianceOperationsList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ApplianceOperationsList>;
+
 /** Resource tags */
 export type UpdateApplianceRequestTagsMap = { [key: string]: string | undefined };
+const UpdateApplianceRequestTagsMap =
+  AppliancesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateApplianceRequestTagsMap>;
+
 export interface UpdateApplianceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -428,6 +635,11 @@ export interface UpdateApplianceRequest {
   /** Resource tags */
   tags?: UpdateApplianceRequestTagsMap;
 }
+const UpdateApplianceRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<UpdateApplianceRequest>;
+
 /** Resource tags. */
 export type UpdateApplianceResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateApplianceResponse {
@@ -448,6 +660,8 @@ export interface UpdateApplianceResponse {
   /** Identity for the resource. */
   identity?: Identity;
 }
+const UpdateApplianceResponse = GetApplianceResponse as any as S.Schema<UpdateApplianceResponse>;
+
 export type AppliancesCreateOrUpdateError = AzureOpError;
 /** Creates or updates an Appliance. Creates or updates an Appliance in the specified Subscription and Resource Group. */
 export const AppliancesCreateOrUpdate: API.OperationMethod<
@@ -456,8 +670,8 @@ export const AppliancesCreateOrUpdate: API.OperationMethod<
   AppliancesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<AppliancesCreateOrUpdateRequest>,
-  output: __S(8) as any as S.Schema<AppliancesCreateOrUpdateResponse>,
+  input: AppliancesCreateOrUpdateRequest,
+  output: AppliancesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -471,8 +685,8 @@ export const DeleteAppliance: API.OperationMethod<
   DeleteApplianceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeleteApplianceRequest>,
-  output: __S(10) as any as S.Schema<DeleteApplianceResponse>,
+  input: DeleteApplianceRequest,
+  output: DeleteApplianceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -486,8 +700,8 @@ export const GetAppliance: API.OperationMethod<
   GetApplianceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetApplianceRequest>,
-  output: __S(12) as any as S.Schema<GetApplianceResponse>,
+  input: GetApplianceRequest,
+  output: GetApplianceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -501,8 +715,8 @@ export const GetApplianceTelemetryConfig: API.OperationMethod<
   GetApplianceTelemetryConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<GetApplianceTelemetryConfigRequest>,
-  output: __S(14) as any as S.Schema<ApplianceGetTelemetryConfigResult>,
+  input: GetApplianceTelemetryConfigRequest,
+  output: ApplianceGetTelemetryConfigResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -516,8 +730,8 @@ export const GetApplianceUpgradeGraph: API.OperationMethod<
   GetApplianceUpgradeGraphError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<GetApplianceUpgradeGraphRequest>,
-  output: __S(22) as any as S.Schema<UpgradeGraph>,
+  input: GetApplianceUpgradeGraphRequest,
+  output: UpgradeGraph,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -531,8 +745,8 @@ export const ListApplianceByResourceGroup: API.OperationMethod<
   ListApplianceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<ListApplianceByResourceGroupRequest>,
-  output: __S(25) as any as S.Schema<ApplianceListResult>,
+  input: ListApplianceByResourceGroupRequest,
+  output: ApplianceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -546,8 +760,8 @@ export const ListApplianceBySubscription: API.OperationMethod<
   ListApplianceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<ListApplianceBySubscriptionRequest>,
-  output: __S(25) as any as S.Schema<ApplianceListResult>,
+  input: ListApplianceBySubscriptionRequest,
+  output: ApplianceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -561,8 +775,8 @@ export const ListApplianceClusterUserCredential: API.OperationMethod<
   ListApplianceClusterUserCredentialError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<ListApplianceClusterUserCredentialRequest>,
-  output: __S(31) as any as S.Schema<ApplianceListCredentialResults>,
+  input: ListApplianceClusterUserCredentialRequest,
+  output: ApplianceListCredentialResults,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -576,8 +790,8 @@ export const ListApplianceKeys: API.OperationMethod<
   ListApplianceKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<ListApplianceKeysRequest>,
-  output: __S(37) as any as S.Schema<ApplianceListKeysResults>,
+  input: ListApplianceKeysRequest,
+  output: ApplianceListKeysResults,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -591,8 +805,8 @@ export const ListApplianceOperations: API.OperationMethod<
   ListApplianceOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<ListApplianceOperationsRequest>,
-  output: __S(42) as any as S.Schema<ApplianceOperationsList>,
+  input: ListApplianceOperationsRequest,
+  output: ApplianceOperationsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -606,8 +820,8 @@ export const UpdateAppliance: API.OperationMethod<
   UpdateApplianceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<UpdateApplianceRequest>,
-  output: __S(12) as any as S.Schema<UpdateApplianceResponse>,
+  input: UpdateApplianceRequest,
+  output: UpdateApplianceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -621,7 +835,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provider: S.optional(S.String),
+          provider: S.optional(Provider),
         }),
       ).annotate({
         identifier: "AppliancePropertiesInfrastructureConfig",
@@ -629,8 +843,8 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          distro: S.optional(S.String),
-          infrastructureConfig: S.optional(__S(1)),
+          distro: S.optional(AppliancePropertiesInputDistro),
+          infrastructureConfig: S.optional(AppliancePropertiesInfrastructureConfig),
           publicKey: S.optional(S.String),
           version: S.optional(S.String),
         }),
@@ -638,7 +852,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(ResourceIdentityType),
         }),
       ).annotate({ identifier: "IdentityInput" });
     case 4:
@@ -647,10 +861,10 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(AppliancesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(2)),
-          identity: S.optional(__S(3)),
+          properties: S.optional(AppliancePropertiesInput),
+          identity: S.optional(IdentityInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -666,21 +880,21 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          distro: S.optional(S.String),
-          infrastructureConfig: S.optional(__S(1)),
+          distro: S.optional(AppliancePropertiesDistro),
+          infrastructureConfig: S.optional(AppliancePropertiesInfrastructureConfig),
           provisioningState: S.optional(S.String),
           publicKey: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(Status),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplianceProperties" });
@@ -689,7 +903,7 @@ function __c0(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(ResourceIdentityType),
         }),
       ).annotate({ identifier: "Identity" });
   }
@@ -702,11 +916,11 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(AppliancesCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(6)),
-          identity: S.optional(__S(7)),
+          properties: S.optional(ApplianceProperties),
+          identity: S.optional(Identity),
         }),
       ).annotate({
         identifier: "AppliancesCreateOrUpdateResponse",
@@ -751,11 +965,11 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetApplianceResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(6)),
-          identity: S.optional(__S(7)),
+          properties: S.optional(ApplianceProperties),
+          identity: S.optional(Identity),
         }),
       ).annotate({ identifier: "GetApplianceResponse" });
     case 5:
@@ -817,7 +1031,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(16)),
+          data: S.optional(SupportedVersionCatalogVersionData),
           name: S.optional(S.String),
           namespace: S.optional(S.String),
         }),
@@ -827,23 +1041,23 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          catalogVersion: S.optional(__S(17)),
+          catalogVersion: S.optional(SupportedVersionCatalogVersion),
         }),
       ).annotate({ identifier: "SupportedVersionMetadata" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(18)),
+          metadata: S.optional(SupportedVersionMetadata),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "SupportedVersion" });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(SupportedVersion);
     case 5:
       return S.suspend(() =>
         S.Struct({
           applianceVersion: S.optional(S.String),
-          supportedVersions: S.optional(__S(20)),
+          supportedVersions: S.optional(UpgradeGraphPropertiesSupportedVersionsList),
         }),
       ).annotate({ identifier: "UpgradeGraphProperties" });
     case 6:
@@ -851,7 +1065,7 @@ function __c2(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(21)),
+          properties: S.optional(UpgradeGraphProperties),
         }),
       ).annotate({ identifier: "UpgradeGraph" });
     case 7:
@@ -875,11 +1089,11 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(12));
+      return S.Array(Appliance);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(24),
+          value: ApplianceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplianceListResult" });
@@ -927,19 +1141,19 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
+          name: S.optional(AccessProfileType),
           value: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ApplianceCredentialKubeconfig",
       });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(ApplianceCredentialKubeconfig);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          hybridConnectionConfig: S.optional(__S(28)),
-          kubeconfigs: S.optional(__S(30)),
+          hybridConnectionConfig: S.optional(HybridConnectionConfig),
+          kubeconfigs: S.optional(ApplianceListCredentialResultsKubeconfigsList),
         }),
       ).annotate({
         identifier: "ApplianceListCredentialResults",
@@ -971,7 +1185,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "ArtifactProfile" });
     case 2:
-      return S.Record(S.String, __S(33));
+      return S.Record(S.String, ArtifactProfile);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -983,13 +1197,13 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "SSHKey" });
     case 4:
-      return S.Record(S.String, __S(35));
+      return S.Record(S.String, SSHKey);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          artifactProfiles: S.optional(__S(34)),
-          kubeconfigs: S.optional(__S(30)),
-          sshKeys: S.optional(__S(36)),
+          artifactProfiles: S.optional(ApplianceListKeysResultsArtifactProfilesMap),
+          kubeconfigs: S.optional(ApplianceListKeysResultsKubeconfigsList),
+          sshKeys: S.optional(ApplianceListKeysResultsSshKeysMap),
         }),
       ).annotate({ identifier: "ApplianceListKeysResults" });
     case 6:
@@ -1023,18 +1237,18 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          display: S.optional(__S(39)),
+          display: S.optional(ApplianceOperationValueDisplay),
           isDataAction: S.optional(S.Boolean),
           name: S.optional(S.String),
           origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplianceOperation" });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(ApplianceOperation);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(41),
+          value: ApplianceOperationsListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplianceOperationsList" });
@@ -1044,7 +1258,7 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateApplianceRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1054,26 +1268,5 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateApplianceRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

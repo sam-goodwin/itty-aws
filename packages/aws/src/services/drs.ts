@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "drs",
   serviceShapeName: "ElasticDisasterRecoveryService",
@@ -159,7 +157,7 @@ export class ValidationException
       code: /*@__PURE__*/ S.optional(S.String),
       reason: /*@__PURE__*/ S.optional(S.String),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(227)).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -172,6 +170,10 @@ export interface AssociateSourceNetworkStackRequest {
   sourceNetworkID: string;
   cfnStackName: string | redacted.Redacted<string>;
 }
+const AssociateSourceNetworkStackRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AssociateSourceNetworkStackRequest>;
 export type JobID = string;
 export type ARN = string;
 export type JobType = string;
@@ -194,7 +196,12 @@ export interface LaunchActionParameter {
   value?: string;
   type?: string;
 }
+const LaunchActionParameter = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<LaunchActionParameter>;
 export type LaunchActionParameters = { [key: string]: LaunchActionParameter | undefined };
+const LaunchActionParameters = /*@__PURE__*/ __L.at(__c0, 2);
 export type LaunchActionDescription = string;
 export type LaunchActionCategory = string;
 export interface LaunchAction {
@@ -210,6 +217,7 @@ export interface LaunchAction {
   description?: string;
   category?: string;
 }
+const LaunchAction = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<LaunchAction>;
 export type LaunchActionRunId = string;
 export type LaunchActionRunStatus = string;
 export type FailureReason = string;
@@ -219,27 +227,39 @@ export interface LaunchActionRun {
   status?: string;
   failureReason?: string;
 }
+const LaunchActionRun = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<LaunchActionRun>;
 export type LaunchActionRuns = LaunchActionRun[];
+const LaunchActionRuns = /*@__PURE__*/ __L.at(__c0, 5);
 export interface LaunchActionsStatus {
   ssmAgentDiscoveryDatetime?: string;
   runs?: LaunchActionRun[];
 }
+const LaunchActionsStatus = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<LaunchActionsStatus>;
 export interface ParticipatingServer {
   sourceServerID?: string;
   recoveryInstanceID?: string;
   launchStatus?: string;
   launchActionsStatus?: LaunchActionsStatus;
 }
+const ParticipatingServer = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ParticipatingServer>;
 export type ParticipatingServers = ParticipatingServer[];
+const ParticipatingServers = /*@__PURE__*/ __L.at(__c1, 0);
 export type TagKey = string;
 export type TagValue = string;
 export type TagsMap = { [key: string]: string | undefined };
+const TagsMap = /*@__PURE__*/ __L.at(__c1, 1);
 export type ParticipatingResourceID = { sourceNetworkID: string };
+const ParticipatingResourceID = /*@__PURE__*/ __L.at(__c1, 2);
 export interface ParticipatingResource {
   participatingResourceID?: ParticipatingResourceID;
   launchStatus?: string;
 }
+const ParticipatingResource = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ParticipatingResource>;
 export type ParticipatingResources = ParticipatingResource[];
+const ParticipatingResources = /*@__PURE__*/ __L.at(__c1, 4);
 export interface Job {
   jobID: string;
   arn?: string;
@@ -252,19 +272,29 @@ export interface Job {
   tags?: { [key: string]: string | undefined };
   participatingResources?: ParticipatingResource[];
 }
+const Job = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Job>;
 export interface AssociateSourceNetworkStackResponse {
   job?: Job;
 }
+const AssociateSourceNetworkStackResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<AssociateSourceNetworkStackResponse>;
 export type StrictDRSARN = string;
 export interface CancelRecoveryPlanExecutionRequest {
   recoveryPlanExecutionArn: string;
 }
+const CancelRecoveryPlanExecutionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CancelRecoveryPlanExecutionRequest>;
 export type RecoveryPlanExecutionMode = string;
 export type RecoveryPlanExecutionStatus = string;
 export interface ErrorDetail {
   message: string;
   code: string;
 }
+const ErrorDetail = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ErrorDetail>;
 export interface RecoveryPlanExecution {
   recoveryPlanExecutionArn: string;
   recoveryPlanArn: string;
@@ -275,14 +305,26 @@ export interface RecoveryPlanExecution {
   errorDetail?: ErrorDetail;
   tags?: { [key: string]: string | undefined };
 }
+const RecoveryPlanExecution = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<RecoveryPlanExecution>;
 export interface CancelRecoveryPlanExecutionResponse {
   recoveryPlanExecution: RecoveryPlanExecution;
 }
+const CancelRecoveryPlanExecutionResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CancelRecoveryPlanExecutionResponse>;
 export type SourceServerARN = string;
 export interface CreateExtendedSourceServerRequest {
   sourceServerArn: string;
   tags?: { [key: string]: string | undefined };
 }
+const CreateExtendedSourceServerRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateExtendedSourceServerRequest>;
 export type LastLaunchResult = string;
 export type ISO8601DurationString = string;
 export type BoundedString = string;
@@ -296,7 +338,12 @@ export interface DataReplicationInfoReplicatedDisk {
   backloggedStorageBytes?: number;
   volumeStatus?: string;
 }
+const DataReplicationInfoReplicatedDisk = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DataReplicationInfoReplicatedDisk>;
 export type DataReplicationInfoReplicatedDisks = DataReplicationInfoReplicatedDisk[];
+const DataReplicationInfoReplicatedDisks = /*@__PURE__*/ __L.at(__c2, 5);
 export type DataReplicationState = string;
 export type DataReplicationInitiationStepName = string;
 export type DataReplicationInitiationStepStatus = string;
@@ -304,18 +351,28 @@ export interface DataReplicationInitiationStep {
   name?: string;
   status?: string;
 }
+const DataReplicationInitiationStep = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DataReplicationInitiationStep>;
 export type DataReplicationInitiationSteps = DataReplicationInitiationStep[];
+const DataReplicationInitiationSteps = /*@__PURE__*/ __L.at(__c2, 7);
 export interface DataReplicationInitiation {
   startDateTime?: string;
   nextAttemptDateTime?: string;
   steps?: DataReplicationInitiationStep[];
 }
+const DataReplicationInitiation = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DataReplicationInitiation>;
 export type DataReplicationErrorString = string;
 export type LargeBoundedString = string;
 export interface DataReplicationError {
   error?: string;
   rawError?: string;
 }
+const DataReplicationError = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<DataReplicationError>;
 export type AwsAvailabilityZone = string;
 export type OutpostARN = string;
 export interface DataReplicationInfo {
@@ -328,16 +385,22 @@ export interface DataReplicationInfo {
   stagingAvailabilityZone?: string;
   stagingOutpostArn?: string;
 }
+const DataReplicationInfo = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DataReplicationInfo>;
 export type LastLaunchType = string;
 export interface LifeCycleLastLaunchInitiated {
   apiCallDateTime?: string;
   jobID?: string;
   type?: string;
 }
+const LifeCycleLastLaunchInitiated = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<LifeCycleLastLaunchInitiated>;
 export interface LifeCycleLastLaunch {
   initiated?: LifeCycleLastLaunchInitiated;
   status?: string;
 }
+const LifeCycleLastLaunch = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<LifeCycleLastLaunch>;
 export interface LifeCycle {
   addedToServiceDateTime?: string;
   firstByteDateTime?: string;
@@ -345,6 +408,7 @@ export interface LifeCycle {
   lastSeenByServiceDateTime?: string;
   lastLaunch?: LifeCycleLastLaunch;
 }
+const LifeCycle = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<LifeCycle>;
 export type EC2InstanceType = string;
 export type EC2InstanceID = string;
 export interface IdentificationHints {
@@ -353,26 +417,35 @@ export interface IdentificationHints {
   vmWareUuid?: string;
   awsInstanceID?: string;
 }
+const IdentificationHints = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<IdentificationHints>;
 export type IPsList = string[];
+const IPsList = /*@__PURE__*/ __L.at(__c3, 7);
 export interface NetworkInterface {
   macAddress?: string;
   ips?: string[];
   isPrimary?: boolean;
 }
+const NetworkInterface = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<NetworkInterface>;
 export type NetworkInterfaces = NetworkInterface[];
+const NetworkInterfaces = /*@__PURE__*/ __L.at(__c4, 1);
 export interface Disk {
   deviceName?: string;
   bytes?: number;
 }
+const Disk = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Disk>;
 export type Disks = Disk[];
+const Disks = /*@__PURE__*/ __L.at(__c4, 3);
 export interface CPU {
   cores?: number;
   modelName?: string;
 }
+const CPU = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<CPU>;
 export type Cpus = CPU[];
+const Cpus = /*@__PURE__*/ __L.at(__c4, 5);
 export interface OS {
   fullString?: string;
 }
+const OS = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<OS>;
 export type SourceServerArchitecture = string;
 export interface SourceProperties {
   lastUpdatedDateTime?: string;
@@ -386,6 +459,7 @@ export interface SourceProperties {
   supportsNitroInstances?: boolean;
   architecture?: string;
 }
+const SourceProperties = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<SourceProperties>;
 export type ExtensionStatus = string;
 export type AccountID = string;
 export interface StagingArea {
@@ -394,6 +468,7 @@ export interface StagingArea {
   stagingSourceServerArn?: string;
   errorMessage?: string;
 }
+const StagingArea = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<StagingArea>;
 export type AwsRegion = string;
 export interface SourceCloudProperties {
   originAccountID?: string;
@@ -401,6 +476,10 @@ export interface SourceCloudProperties {
   originAvailabilityZone?: string;
   sourceOutpostArn?: string;
 }
+const SourceCloudProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<SourceCloudProperties>;
 export type ReplicationDirection = string;
 export type AgentVersion = string;
 export interface SourceServer {
@@ -419,14 +498,20 @@ export interface SourceServer {
   sourceNetworkID?: string;
   agentVersion?: string;
 }
+const SourceServer = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<SourceServer>;
 export interface CreateExtendedSourceServerResponse {
   sourceServer?: SourceServer;
 }
+const CreateExtendedSourceServerResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateExtendedSourceServerResponse>;
 export type LaunchDisposition = string;
 export type TargetInstanceTypeRightSizingMethod = string;
 export interface Licensing {
   osByol?: boolean;
 }
+const Licensing = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<Licensing>;
 export type RecoveryMode = string;
 export interface CreateLaunchConfigurationTemplateRequest {
   tags?: { [key: string]: string | undefined };
@@ -440,6 +525,10 @@ export interface CreateLaunchConfigurationTemplateRequest {
   launchIntoSourceInstance?: boolean;
   recoveryMode?: string;
 }
+const CreateLaunchConfigurationTemplateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreateLaunchConfigurationTemplateRequest>;
 export type LaunchConfigurationTemplateID = string;
 export interface LaunchConfigurationTemplate {
   launchConfigurationTemplateID?: string;
@@ -455,9 +544,17 @@ export interface LaunchConfigurationTemplate {
   launchIntoSourceInstance?: boolean;
   recoveryMode?: string;
 }
+const LaunchConfigurationTemplate = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<LaunchConfigurationTemplate>;
 export interface CreateLaunchConfigurationTemplateResponse {
   launchConfigurationTemplate?: LaunchConfigurationTemplate;
 }
+const CreateLaunchConfigurationTemplateResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreateLaunchConfigurationTemplateResponse>;
 export type RecoveryPlanName = string;
 export type RecoveryPlanDescription = string;
 export type ClientIdempotencyToken = string;
@@ -467,6 +564,10 @@ export interface CreateRecoveryPlanRequest {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
+const CreateRecoveryPlanRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreateRecoveryPlanRequest>;
 export type RecoveryPlanStatus = string;
 export interface RecoveryPlan {
   recoveryPlanArn: string;
@@ -477,9 +578,14 @@ export interface RecoveryPlan {
   updatedAt: string;
   tags?: { [key: string]: string | undefined };
 }
+const RecoveryPlan = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<RecoveryPlan>;
 export interface CreateRecoveryPlanResponse {
   recoveryPlan: RecoveryPlan;
 }
+const CreateRecoveryPlanResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<CreateRecoveryPlanResponse>;
 export type RecoveryPlanStepName = string;
 export type RecoveryPlanStepOrder = number;
 export type RecoveryPlanServerImpactLevel = string;
@@ -487,17 +593,28 @@ export interface RecoveryPlanServer {
   serverArn: string;
   impactLevel?: string;
 }
+const RecoveryPlanServer = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<RecoveryPlanServer>;
 export type RecoveryPlanServers = RecoveryPlanServer[];
+const RecoveryPlanServers = /*@__PURE__*/ __L.at(__c6, 4);
 export interface ServerStepConfiguration {
   servers: RecoveryPlanServer[];
 }
+const ServerStepConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ServerStepConfiguration>;
 export type WaitDurationMinutes = number;
 export interface WaitStepConfiguration {
   waitDurationMinutes: number;
 }
+const WaitStepConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<WaitStepConfiguration>;
 export type RecoveryPlanStepConfiguration =
   | { serverStepConfiguration: ServerStepConfiguration; waitStepConfiguration?: never }
   | { serverStepConfiguration?: never; waitStepConfiguration: WaitStepConfiguration };
+const RecoveryPlanStepConfiguration = /*@__PURE__*/ __L.at(__c6, 7);
 export interface CreateRecoveryPlanStepRequest {
   recoveryPlanArn: string;
   stepName: string;
@@ -505,6 +622,10 @@ export interface CreateRecoveryPlanStepRequest {
   configuration: RecoveryPlanStepConfiguration;
   clientToken?: string;
 }
+const CreateRecoveryPlanStepRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<CreateRecoveryPlanStepRequest>;
 export interface RecoveryPlanStep {
   recoveryPlanStepArn: string;
   stepOrder: number;
@@ -513,12 +634,19 @@ export interface RecoveryPlanStep {
   createdAt: string;
   updatedAt: string;
 }
+const RecoveryPlanStep = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<RecoveryPlanStep>;
 export interface CreateRecoveryPlanStepResponse {
   recoveryPlanStep: RecoveryPlanStep;
 }
+const CreateRecoveryPlanStepResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<CreateRecoveryPlanStepResponse>;
 export type SubnetID = string;
 export type SecurityGroupID = string;
 export type ReplicationServersSecurityGroupsIDs = string[];
+const ReplicationServersSecurityGroupsIDs =
+  IPsList as any as S.Schema<ReplicationServersSecurityGroupsIDs>;
 export type ReplicationConfigurationDefaultLargeStagingDiskType = string;
 export type ReplicationConfigurationEbsEncryption = string;
 export type ReplicationConfigurationDataPlaneRouting = string;
@@ -531,7 +659,9 @@ export interface PITPolicyRule {
   retentionDuration: number;
   enabled?: boolean;
 }
+const PITPolicyRule = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<PITPolicyRule>;
 export type PITPolicy = PITPolicyRule[];
+const PITPolicy = /*@__PURE__*/ __L.at(__c7, 4);
 export type InternetProtocol = string;
 export interface CreateReplicationConfigurationTemplateRequest {
   stagingAreaSubnetId: string;
@@ -551,6 +681,10 @@ export interface CreateReplicationConfigurationTemplateRequest {
   autoReplicateNewDisks?: boolean;
   internetProtocol?: string;
 }
+const CreateReplicationConfigurationTemplateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<CreateReplicationConfigurationTemplateRequest>;
 export type ReplicationConfigurationTemplateID = string;
 export interface ReplicationConfigurationTemplate {
   replicationConfigurationTemplateID: string;
@@ -572,6 +706,10 @@ export interface ReplicationConfigurationTemplate {
   autoReplicateNewDisks?: boolean;
   internetProtocol?: string;
 }
+const ReplicationConfigurationTemplate = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ReplicationConfigurationTemplate>;
 export type VpcID = string;
 export interface CreateSourceNetworkRequest {
   vpcID: string;
@@ -579,78 +717,158 @@ export interface CreateSourceNetworkRequest {
   originRegion: string;
   tags?: { [key: string]: string | undefined };
 }
+const CreateSourceNetworkRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<CreateSourceNetworkRequest>;
 export interface CreateSourceNetworkResponse {
   sourceNetworkID?: string;
 }
+const CreateSourceNetworkResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<CreateSourceNetworkResponse>;
 export interface DeleteJobRequest {
   jobID: string;
 }
+const DeleteJobRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<DeleteJobRequest>;
 export interface DeleteJobResponse {}
+const DeleteJobResponse = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<DeleteJobResponse>;
 export type LaunchActionResourceId = string;
 export interface DeleteLaunchActionRequest {
   resourceId: string;
   actionId: string;
 }
+const DeleteLaunchActionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DeleteLaunchActionRequest>;
 export interface DeleteLaunchActionResponse {}
+const DeleteLaunchActionResponse = DeleteJobResponse as any as S.Schema<DeleteLaunchActionResponse>;
 export interface DeleteLaunchConfigurationTemplateRequest {
   launchConfigurationTemplateID: string;
 }
+const DeleteLaunchConfigurationTemplateRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<DeleteLaunchConfigurationTemplateRequest>;
 export interface DeleteLaunchConfigurationTemplateResponse {}
+const DeleteLaunchConfigurationTemplateResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DeleteLaunchConfigurationTemplateResponse>;
 export interface DeleteRecoveryInstanceRequest {
   recoveryInstanceID: string;
 }
+const DeleteRecoveryInstanceRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DeleteRecoveryInstanceRequest>;
 export interface DeleteRecoveryInstanceResponse {}
+const DeleteRecoveryInstanceResponse =
+  DeleteJobResponse as any as S.Schema<DeleteRecoveryInstanceResponse>;
 export interface DeleteRecoveryPlanRequest {
   recoveryPlanArn: string;
 }
+const DeleteRecoveryPlanRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DeleteRecoveryPlanRequest>;
 export interface DeleteRecoveryPlanResponse {
   recoveryPlanArn: string;
 }
+const DeleteRecoveryPlanResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<DeleteRecoveryPlanResponse>;
 export interface DeleteRecoveryPlanExecutionRequest {
   recoveryPlanExecutionArn: string;
 }
+const DeleteRecoveryPlanExecutionRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<DeleteRecoveryPlanExecutionRequest>;
 export interface DeleteRecoveryPlanExecutionResponse {
   recoveryPlanExecutionArn: string;
 }
+const DeleteRecoveryPlanExecutionResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DeleteRecoveryPlanExecutionResponse>;
 export interface DeleteRecoveryPlanStepRequest {
   recoveryPlanStepArn: string;
 }
+const DeleteRecoveryPlanStepRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<DeleteRecoveryPlanStepRequest>;
 export interface DeleteRecoveryPlanStepResponse {
   recoveryPlanStepArn: string;
 }
+const DeleteRecoveryPlanStepResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DeleteRecoveryPlanStepResponse>;
 export interface DeleteReplicationConfigurationTemplateRequest {
   replicationConfigurationTemplateID: string;
 }
+const DeleteReplicationConfigurationTemplateRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DeleteReplicationConfigurationTemplateRequest>;
 export interface DeleteReplicationConfigurationTemplateResponse {}
+const DeleteReplicationConfigurationTemplateResponse =
+  DeleteLaunchConfigurationTemplateResponse as any as S.Schema<DeleteReplicationConfigurationTemplateResponse>;
 export interface DeleteSourceNetworkRequest {
   sourceNetworkID: string;
 }
+const DeleteSourceNetworkRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<DeleteSourceNetworkRequest>;
 export interface DeleteSourceNetworkResponse {}
+const DeleteSourceNetworkResponse =
+  DeleteJobResponse as any as S.Schema<DeleteSourceNetworkResponse>;
 export interface DeleteSourceServerRequest {
   sourceServerID: string;
 }
+const DeleteSourceServerRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<DeleteSourceServerRequest>;
 export interface DeleteSourceServerResponse {}
+const DeleteSourceServerResponse = DeleteJobResponse as any as S.Schema<DeleteSourceServerResponse>;
 export type PaginationToken = string;
 export interface DescribeJobLogItemsRequest {
   jobID: string;
   maxResults?: number;
   nextToken?: string;
 }
+const DescribeJobLogItemsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<DescribeJobLogItemsRequest>;
 export type JobLogEvent = string;
 export type EbsSnapshot = string;
 export type ConversionMap = { [key: string]: string | undefined };
+const ConversionMap = /*@__PURE__*/ __L.at(__c10, 1);
 export type VolumeToConversionMap = {
   [key: string]: { [key: string]: string | undefined } | undefined;
 };
+const VolumeToConversionMap = /*@__PURE__*/ __L.at(__c10, 2);
 export type VolumeToSizeMap = { [key: string]: number | undefined };
+const VolumeToSizeMap = /*@__PURE__*/ __L.at(__c10, 3);
 export type ProductCodeId = string;
 export type ProductCodeMode = string;
 export interface ProductCode {
   productCodeId?: string;
   productCodeMode?: string;
 }
+const ProductCode = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<ProductCode>;
 export type ProductCodes = ProductCode[];
+const ProductCodes = /*@__PURE__*/ __L.at(__c10, 5);
 export type VolumeToProductCodes = { [key: string]: ProductCode[] | undefined };
+const VolumeToProductCodes = /*@__PURE__*/ __L.at(__c10, 6);
 export interface ConversionProperties {
   volumeToConversionMap?: { [key: string]: { [key: string]: string | undefined } | undefined };
   rootVolumeName?: string;
@@ -659,13 +877,19 @@ export interface ConversionProperties {
   volumeToVolumeSize?: { [key: string]: number | undefined };
   volumeToProductCodes?: { [key: string]: ProductCode[] | undefined };
 }
+const ConversionProperties = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ConversionProperties>;
 export interface SourceNetworkData {
   sourceNetworkID?: string;
   sourceVpc?: string;
   targetVpc?: string;
   stackName?: string;
 }
+const SourceNetworkData = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<SourceNetworkData>;
 export type EventResourceData = { sourceNetworkData: SourceNetworkData };
+const EventResourceData = /*@__PURE__*/ __L.at(__c11, 1);
 export type JobEventAttemptCount = number;
 export interface JobLogEventData {
   sourceServerID?: string;
@@ -677,55 +901,94 @@ export interface JobLogEventData {
   attemptCount?: number;
   maxAttemptsCount?: number;
 }
+const JobLogEventData = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<JobLogEventData>;
 export interface JobLog {
   logDateTime?: string;
   event?: string;
   eventData?: JobLogEventData;
 }
+const JobLog = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<JobLog>;
 export type JobLogs = JobLog[];
+const JobLogs = /*@__PURE__*/ __L.at(__c11, 4);
 export interface DescribeJobLogItemsResponse {
   items?: JobLog[];
   nextToken?: string;
 }
+const DescribeJobLogItemsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<DescribeJobLogItemsResponse>;
 export type DescribeJobsRequestFiltersJobIDs = string[];
+const DescribeJobsRequestFiltersJobIDs =
+  IPsList as any as S.Schema<DescribeJobsRequestFiltersJobIDs>;
 export interface DescribeJobsRequestFilters {
   jobIDs?: string[];
   fromDate?: string;
   toDate?: string;
 }
+const DescribeJobsRequestFilters = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<DescribeJobsRequestFilters>;
 export interface DescribeJobsRequest {
   filters?: DescribeJobsRequestFilters;
   maxResults?: number;
   nextToken?: string;
 }
+const DescribeJobsRequest = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<DescribeJobsRequest>;
 export type JobsList = Job[];
+const JobsList = /*@__PURE__*/ __L.at(__c12, 0);
 export interface DescribeJobsResponse {
   items?: Job[];
   nextToken?: string;
 }
+const DescribeJobsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<DescribeJobsResponse>;
 export type LaunchConfigurationTemplateIDs = string[];
+const LaunchConfigurationTemplateIDs = IPsList as any as S.Schema<LaunchConfigurationTemplateIDs>;
 export type MaxResultsType = number;
 export interface DescribeLaunchConfigurationTemplatesRequest {
   launchConfigurationTemplateIDs?: string[];
   maxResults?: number;
   nextToken?: string;
 }
+const DescribeLaunchConfigurationTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<DescribeLaunchConfigurationTemplatesRequest>;
 export type LaunchConfigurationTemplates = LaunchConfigurationTemplate[];
+const LaunchConfigurationTemplates = /*@__PURE__*/ __L.at(__c12, 3);
 export interface DescribeLaunchConfigurationTemplatesResponse {
   items?: LaunchConfigurationTemplate[];
   nextToken?: string;
 }
+const DescribeLaunchConfigurationTemplatesResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<DescribeLaunchConfigurationTemplatesResponse>;
 export type RecoveryInstanceIDs = string[];
+const RecoveryInstanceIDs = IPsList as any as S.Schema<RecoveryInstanceIDs>;
 export type SourceServerIDs = string[];
+const SourceServerIDs = IPsList as any as S.Schema<SourceServerIDs>;
 export interface DescribeRecoveryInstancesRequestFilters {
   recoveryInstanceIDs?: string[];
   sourceServerIDs?: string[];
 }
+const DescribeRecoveryInstancesRequestFilters = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<DescribeRecoveryInstancesRequestFilters>;
 export interface DescribeRecoveryInstancesRequest {
   filters?: DescribeRecoveryInstancesRequestFilters;
   maxResults?: number;
   nextToken?: string;
 }
+const DescribeRecoveryInstancesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<DescribeRecoveryInstancesRequest>;
 export type EC2InstanceState = string;
 export type FailbackState = string;
 export type FailbackLaunchType = string;
@@ -741,6 +1004,10 @@ export interface RecoveryInstanceFailback {
   elapsedReplicationDuration?: string;
   failbackLaunchType?: string;
 }
+const RecoveryInstanceFailback = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<RecoveryInstanceFailback>;
 export interface RecoveryInstanceDataReplicationInfoReplicatedDisk {
   deviceName?: string;
   totalStorageBytes?: number;
@@ -748,8 +1015,13 @@ export interface RecoveryInstanceDataReplicationInfoReplicatedDisk {
   rescannedStorageBytes?: number;
   backloggedStorageBytes?: number;
 }
+const RecoveryInstanceDataReplicationInfoReplicatedDisk = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<RecoveryInstanceDataReplicationInfoReplicatedDisk>;
 export type RecoveryInstanceDataReplicationInfoReplicatedDisks =
   RecoveryInstanceDataReplicationInfoReplicatedDisk[];
+const RecoveryInstanceDataReplicationInfoReplicatedDisks = /*@__PURE__*/ __L.at(__c13, 1);
 export type RecoveryInstanceDataReplicationState = string;
 export type RecoveryInstanceDataReplicationInitiationStepName = string;
 export type RecoveryInstanceDataReplicationInitiationStepStatus = string;
@@ -757,17 +1029,28 @@ export interface RecoveryInstanceDataReplicationInitiationStep {
   name?: string;
   status?: string;
 }
+const RecoveryInstanceDataReplicationInitiationStep =
+  DataReplicationInitiationStep as any as S.Schema<RecoveryInstanceDataReplicationInitiationStep>;
 export type RecoveryInstanceDataReplicationInitiationSteps =
   RecoveryInstanceDataReplicationInitiationStep[];
+const RecoveryInstanceDataReplicationInitiationSteps = /*@__PURE__*/ __L.at(__c13, 2);
 export interface RecoveryInstanceDataReplicationInitiation {
   startDateTime?: string;
   steps?: RecoveryInstanceDataReplicationInitiationStep[];
 }
+const RecoveryInstanceDataReplicationInitiation = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<RecoveryInstanceDataReplicationInitiation>;
 export type FailbackReplicationError = string;
 export interface RecoveryInstanceDataReplicationError {
   error?: string;
   rawError?: string;
 }
+const RecoveryInstanceDataReplicationError = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<RecoveryInstanceDataReplicationError>;
 export interface RecoveryInstanceDataReplicationInfo {
   lagDuration?: string;
   etaDateTime?: string;
@@ -778,13 +1061,22 @@ export interface RecoveryInstanceDataReplicationInfo {
   stagingAvailabilityZone?: string;
   stagingOutpostArn?: string;
 }
+const RecoveryInstanceDataReplicationInfo = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<RecoveryInstanceDataReplicationInfo>;
 export type EbsVolumeID = string;
 export interface RecoveryInstanceDisk {
   internalDeviceName?: string;
   bytes?: number;
   ebsVolumeID?: string;
 }
+const RecoveryInstanceDisk = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<RecoveryInstanceDisk>;
 export type RecoveryInstanceDisks = RecoveryInstanceDisk[];
+const RecoveryInstanceDisks = /*@__PURE__*/ __L.at(__c13, 7);
 export interface RecoveryInstanceProperties {
   lastUpdatedDateTime?: string;
   identificationHints?: IdentificationHints;
@@ -794,6 +1086,10 @@ export interface RecoveryInstanceProperties {
   ramBytes?: number;
   os?: OS;
 }
+const RecoveryInstanceProperties = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<RecoveryInstanceProperties>;
 export type OriginEnvironment = string;
 export interface RecoveryInstance {
   ec2InstanceID?: string;
@@ -813,15 +1109,25 @@ export interface RecoveryInstance {
   agentVersion?: string;
   sourceOutpostArn?: string;
 }
+const RecoveryInstance = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<RecoveryInstance>;
 export type DescribeRecoveryInstancesItems = RecoveryInstance[];
+const DescribeRecoveryInstancesItems = /*@__PURE__*/ __L.at(__c14, 2);
 export interface DescribeRecoveryInstancesResponse {
   nextToken?: string;
   items?: RecoveryInstance[];
 }
+const DescribeRecoveryInstancesResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<DescribeRecoveryInstancesResponse>;
 export interface DescribeRecoverySnapshotsRequestFilters {
   fromDateTime?: string;
   toDateTime?: string;
 }
+const DescribeRecoverySnapshotsRequestFilters = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<DescribeRecoverySnapshotsRequestFilters>;
 export type RecoverySnapshotsOrder = string;
 export interface DescribeRecoverySnapshotsRequest {
   sourceServerID: string;
@@ -830,8 +1136,13 @@ export interface DescribeRecoverySnapshotsRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const DescribeRecoverySnapshotsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<DescribeRecoverySnapshotsRequest>;
 export type RecoverySnapshotID = string;
 export type EbsSnapshotsList = string[];
+const EbsSnapshotsList = IPsList as any as S.Schema<EbsSnapshotsList>;
 export interface RecoverySnapshot {
   snapshotID: string;
   sourceServerID: string;
@@ -839,33 +1150,60 @@ export interface RecoverySnapshot {
   timestamp?: string;
   ebsSnapshots?: string[];
 }
+const RecoverySnapshot = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<RecoverySnapshot>;
 export type RecoverySnapshotsList = RecoverySnapshot[];
+const RecoverySnapshotsList = /*@__PURE__*/ __L.at(__c14, 7);
 export interface DescribeRecoverySnapshotsResponse {
   items?: RecoverySnapshot[];
   nextToken?: string;
 }
+const DescribeRecoverySnapshotsResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<DescribeRecoverySnapshotsResponse>;
 export type ReplicationConfigurationTemplateIDs = string[];
+const ReplicationConfigurationTemplateIDs =
+  IPsList as any as S.Schema<ReplicationConfigurationTemplateIDs>;
 export interface DescribeReplicationConfigurationTemplatesRequest {
   replicationConfigurationTemplateIDs?: string[];
   maxResults?: number;
   nextToken?: string;
 }
+const DescribeReplicationConfigurationTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<DescribeReplicationConfigurationTemplatesRequest>;
 export type ReplicationConfigurationTemplates = ReplicationConfigurationTemplate[];
+const ReplicationConfigurationTemplates = /*@__PURE__*/ __L.at(__c15, 2);
 export interface DescribeReplicationConfigurationTemplatesResponse {
   items?: ReplicationConfigurationTemplate[];
   nextToken?: string;
 }
+const DescribeReplicationConfigurationTemplatesResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<DescribeReplicationConfigurationTemplatesResponse>;
 export type DescribeSourceNetworksRequestFiltersIDs = string[];
+const DescribeSourceNetworksRequestFiltersIDs =
+  IPsList as any as S.Schema<DescribeSourceNetworksRequestFiltersIDs>;
 export interface DescribeSourceNetworksRequestFilters {
   sourceNetworkIDs?: string[];
   originAccountID?: string;
   originRegion?: string;
 }
+const DescribeSourceNetworksRequestFilters = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<DescribeSourceNetworksRequestFilters>;
 export interface DescribeSourceNetworksRequest {
   filters?: DescribeSourceNetworksRequestFilters;
   maxResults?: number;
   nextToken?: string;
 }
+const DescribeSourceNetworksRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<DescribeSourceNetworksRequest>;
 export type ReplicationStatus = string;
 export type SensitiveBoundedString = string | redacted.Redacted<string>;
 export type RecoveryResult = string;
@@ -874,6 +1212,7 @@ export interface RecoveryLifeCycle {
   jobID?: string;
   lastRecoveryResult?: string;
 }
+const RecoveryLifeCycle = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<RecoveryLifeCycle>;
 export interface SourceNetwork {
   sourceNetworkID?: string;
   sourceVpcID?: string;
@@ -887,44 +1226,88 @@ export interface SourceNetwork {
   lastRecovery?: RecoveryLifeCycle;
   launchedVpcID?: string;
 }
+const SourceNetwork = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<SourceNetwork>;
 export type SourceNetworksList = SourceNetwork[];
+const SourceNetworksList = /*@__PURE__*/ __L.at(__c16, 0);
 export interface DescribeSourceNetworksResponse {
   items?: SourceNetwork[];
   nextToken?: string;
 }
+const DescribeSourceNetworksResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<DescribeSourceNetworksResponse>;
 export type DescribeSourceServersRequestFiltersIDs = string[];
+const DescribeSourceServersRequestFiltersIDs =
+  IPsList as any as S.Schema<DescribeSourceServersRequestFiltersIDs>;
 export type AccountIDs = string[];
+const AccountIDs = IPsList as any as S.Schema<AccountIDs>;
 export interface DescribeSourceServersRequestFilters {
   sourceServerIDs?: string[];
   hardwareId?: string;
   stagingAccountIDs?: string[];
 }
+const DescribeSourceServersRequestFilters = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<DescribeSourceServersRequestFilters>;
 export interface DescribeSourceServersRequest {
   filters?: DescribeSourceServersRequestFilters;
   maxResults?: number;
   nextToken?: string;
 }
+const DescribeSourceServersRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<DescribeSourceServersRequest>;
 export type SourceServersList = SourceServer[];
+const SourceServersList = /*@__PURE__*/ __L.at(__c16, 4);
 export interface DescribeSourceServersResponse {
   items?: SourceServer[];
   nextToken?: string;
 }
+const DescribeSourceServersResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<DescribeSourceServersResponse>;
 export interface DisconnectRecoveryInstanceRequest {
   recoveryInstanceID: string;
 }
+const DisconnectRecoveryInstanceRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<DisconnectRecoveryInstanceRequest>;
 export interface DisconnectRecoveryInstanceResponse {}
+const DisconnectRecoveryInstanceResponse =
+  DeleteLaunchConfigurationTemplateResponse as any as S.Schema<DisconnectRecoveryInstanceResponse>;
 export interface DisconnectSourceServerRequest {
   sourceServerID: string;
 }
+const DisconnectSourceServerRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<DisconnectSourceServerRequest>;
 export interface ExportSourceNetworkCfnTemplateRequest {
   sourceNetworkID: string;
 }
+const ExportSourceNetworkCfnTemplateRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<ExportSourceNetworkCfnTemplateRequest>;
 export interface ExportSourceNetworkCfnTemplateResponse {
   s3DestinationUrl?: string;
 }
+const ExportSourceNetworkCfnTemplateResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<ExportSourceNetworkCfnTemplateResponse>;
 export interface GetFailbackReplicationConfigurationRequest {
   recoveryInstanceID: string;
 }
+const GetFailbackReplicationConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<GetFailbackReplicationConfigurationRequest>;
 export interface GetFailbackReplicationConfigurationResponse {
   recoveryInstanceID: string;
   name?: string;
@@ -932,13 +1315,25 @@ export interface GetFailbackReplicationConfigurationResponse {
   usePrivateIP?: boolean;
   internetProtocol?: string;
 }
+const GetFailbackReplicationConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<GetFailbackReplicationConfigurationResponse>;
 export interface GetLaunchConfigurationRequest {
   sourceServerID: string;
 }
+const GetLaunchConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<GetLaunchConfigurationRequest>;
 export type SmallBoundedString = string;
 export interface LaunchIntoInstanceProperties {
   launchIntoEC2InstanceID?: string;
 }
+const LaunchIntoInstanceProperties = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<LaunchIntoInstanceProperties>;
 export interface LaunchConfiguration {
   sourceServerID?: string;
   name?: string;
@@ -952,37 +1347,66 @@ export interface LaunchConfiguration {
   launchIntoInstanceProperties?: LaunchIntoInstanceProperties;
   recoveryMode?: string;
 }
+const LaunchConfiguration = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<LaunchConfiguration>;
 export interface GetRecoveryPlanRequest {
   recoveryPlanArn: string;
 }
+const GetRecoveryPlanRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<GetRecoveryPlanRequest>;
 export interface GetRecoveryPlanResponse {
   recoveryPlan: RecoveryPlan;
 }
+const GetRecoveryPlanResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<GetRecoveryPlanResponse>;
 export interface GetRecoveryPlanExecutionRequest {
   recoveryPlanExecutionArn: string;
 }
+const GetRecoveryPlanExecutionRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<GetRecoveryPlanExecutionRequest>;
 export interface GetRecoveryPlanExecutionResponse {
   recoveryPlanExecution: RecoveryPlanExecution;
 }
+const GetRecoveryPlanExecutionResponse =
+  CancelRecoveryPlanExecutionResponse as any as S.Schema<GetRecoveryPlanExecutionResponse>;
 export interface GetRecoveryPlanExecutionStepRequest {
   recoveryPlanExecutionStepArn: string;
 }
+const GetRecoveryPlanExecutionStepRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<GetRecoveryPlanExecutionStepRequest>;
 export type RecoveryPlanExecutionStepStatus = string;
 export interface RecoveryPlanExecutionServer {
   serverArn: string;
   impactLevel?: string;
   jobID?: string;
 }
+const RecoveryPlanExecutionServer = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<RecoveryPlanExecutionServer>;
 export type RecoveryPlanExecutionServers = RecoveryPlanExecutionServer[];
+const RecoveryPlanExecutionServers = /*@__PURE__*/ __L.at(__c18, 4);
 export interface ExecutionServerStepConfiguration {
   servers: RecoveryPlanExecutionServer[];
 }
+const ExecutionServerStepConfiguration = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<ExecutionServerStepConfiguration>;
 export type RecoveryPlanExecutionStepConfiguration =
   | {
       executionServerStepConfiguration: ExecutionServerStepConfiguration;
       waitStepConfiguration?: never;
     }
   | { executionServerStepConfiguration?: never; waitStepConfiguration: WaitStepConfiguration };
+const RecoveryPlanExecutionStepConfiguration = /*@__PURE__*/ __L.at(__c18, 6);
 export interface RecoveryPlanExecutionStep {
   recoveryPlanExecutionStepArn: string;
   stepIndex: number;
@@ -994,18 +1418,36 @@ export interface RecoveryPlanExecutionStep {
   createdAt: string;
   updatedAt: string;
 }
+const RecoveryPlanExecutionStep = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<RecoveryPlanExecutionStep>;
 export interface GetRecoveryPlanExecutionStepResponse {
   recoveryPlanExecutionStep: RecoveryPlanExecutionStep;
 }
+const GetRecoveryPlanExecutionStepResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<GetRecoveryPlanExecutionStepResponse>;
 export interface GetRecoveryPlanStepRequest {
   recoveryPlanStepArn: string;
 }
+const GetRecoveryPlanStepRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<GetRecoveryPlanStepRequest>;
 export interface GetRecoveryPlanStepResponse {
   recoveryPlanStep: RecoveryPlanStep;
 }
+const GetRecoveryPlanStepResponse =
+  CreateRecoveryPlanStepResponse as any as S.Schema<GetRecoveryPlanStepResponse>;
 export interface GetReplicationConfigurationRequest {
   sourceServerID: string;
 }
+const GetReplicationConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<GetReplicationConfigurationRequest>;
 export type ReplicationConfigurationReplicatedDiskStagingDiskType = string;
 export interface ReplicationConfigurationReplicatedDisk {
   deviceName?: string;
@@ -1015,7 +1457,12 @@ export interface ReplicationConfigurationReplicatedDisk {
   throughput?: number;
   optimizedStagingDiskType?: string;
 }
+const ReplicationConfigurationReplicatedDisk = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<ReplicationConfigurationReplicatedDisk>;
 export type ReplicationConfigurationReplicatedDisks = ReplicationConfigurationReplicatedDisk[];
+const ReplicationConfigurationReplicatedDisks = /*@__PURE__*/ __L.at(__c19, 4);
 export interface ReplicationConfiguration {
   sourceServerID?: string;
   name?: string;
@@ -1036,45 +1483,82 @@ export interface ReplicationConfiguration {
   autoReplicateNewDisks?: boolean;
   internetProtocol?: string;
 }
+const ReplicationConfiguration = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ReplicationConfiguration>;
 export interface InitializeServiceRequest {}
+const InitializeServiceRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<InitializeServiceRequest>;
 export interface InitializeServiceResponse {}
+const InitializeServiceResponse = DeleteJobResponse as any as S.Schema<InitializeServiceResponse>;
 export type MaxResultsReplicatingSourceServers = number;
 export interface ListExtensibleSourceServersRequest {
   stagingAccountID: string;
   maxResults?: number;
   nextToken?: string;
 }
+const ListExtensibleSourceServersRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<ListExtensibleSourceServersRequest>;
 export interface StagingSourceServer {
   hostname?: string;
   arn?: string;
   tags?: { [key: string]: string | undefined };
 }
+const StagingSourceServer = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<StagingSourceServer>;
 export type StagingSourceServersList = StagingSourceServer[];
+const StagingSourceServersList = /*@__PURE__*/ __L.at(__c20, 1);
 export interface ListExtensibleSourceServersResponse {
   items?: StagingSourceServer[];
   nextToken?: string;
 }
+const ListExtensibleSourceServersResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<ListExtensibleSourceServersResponse>;
 export type LaunchActionIds = string[];
+const LaunchActionIds = IPsList as any as S.Schema<LaunchActionIds>;
 export interface LaunchActionsRequestFilters {
   actionIds?: string[];
 }
+const LaunchActionsRequestFilters = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<LaunchActionsRequestFilters>;
 export interface ListLaunchActionsRequest {
   resourceId: string;
   filters?: LaunchActionsRequestFilters;
   maxResults?: number;
   nextToken?: string;
 }
+const ListLaunchActionsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<ListLaunchActionsRequest>;
 export type LaunchActions = LaunchAction[];
+const LaunchActions = /*@__PURE__*/ __L.at(__c20, 5);
 export interface ListLaunchActionsResponse {
   items?: LaunchAction[];
   nextToken?: string;
 }
+const ListLaunchActionsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<ListLaunchActionsResponse>;
 export interface ListRecoveryPlanExecutionsRequest {
   recoveryPlanArn?: string;
   status?: string;
   maxResults?: number;
   nextToken?: string;
 }
+const ListRecoveryPlanExecutionsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<ListRecoveryPlanExecutionsRequest>;
 export interface RecoveryPlanExecutionSummary {
   recoveryPlanExecutionArn: string;
   recoveryPlanArn: string;
@@ -1083,20 +1567,37 @@ export interface RecoveryPlanExecutionSummary {
   startedAt: string;
   errorDetail?: ErrorDetail;
 }
+const RecoveryPlanExecutionSummary = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<RecoveryPlanExecutionSummary>;
 export type RecoveryPlanExecutionSummaryList = RecoveryPlanExecutionSummary[];
+const RecoveryPlanExecutionSummaryList = /*@__PURE__*/ __L.at(__c21, 1);
 export interface ListRecoveryPlanExecutionsResponse {
   recoveryPlanExecutions: RecoveryPlanExecutionSummary[];
   nextToken?: string;
 }
+const ListRecoveryPlanExecutionsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<ListRecoveryPlanExecutionsResponse>;
 export interface ListRecoveryPlanExecutionStepsFilter {
   status?: string;
 }
+const ListRecoveryPlanExecutionStepsFilter = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<ListRecoveryPlanExecutionStepsFilter>;
 export interface ListRecoveryPlanExecutionStepsRequest {
   recoveryPlanExecutionArn: string;
   filter?: ListRecoveryPlanExecutionStepsFilter;
   maxResults?: number;
   nextToken?: string;
 }
+const ListRecoveryPlanExecutionStepsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<ListRecoveryPlanExecutionStepsRequest>;
 export interface RecoveryPlanExecutionStepSummary {
   recoveryPlanExecutionStepArn: string;
   stepName: string;
@@ -1105,15 +1606,28 @@ export interface RecoveryPlanExecutionStepSummary {
   configuration: RecoveryPlanExecutionStepConfiguration;
   errorDetail?: ErrorDetail;
 }
+const RecoveryPlanExecutionStepSummary = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<RecoveryPlanExecutionStepSummary>;
 export type RecoveryPlanExecutionStepSummaryList = RecoveryPlanExecutionStepSummary[];
+const RecoveryPlanExecutionStepSummaryList = /*@__PURE__*/ __L.at(__c21, 6);
 export interface ListRecoveryPlanExecutionStepsResponse {
   recoveryPlanExecutionSteps: RecoveryPlanExecutionStepSummary[];
   nextToken?: string;
 }
+const ListRecoveryPlanExecutionStepsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<ListRecoveryPlanExecutionStepsResponse>;
 export interface ListRecoveryPlansRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListRecoveryPlansRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<ListRecoveryPlansRequest>;
 export interface RecoveryPlanSummary {
   recoveryPlanArn: string;
   name: string;
@@ -1121,39 +1635,72 @@ export interface RecoveryPlanSummary {
   createdAt: string;
   updatedAt: string;
 }
+const RecoveryPlanSummary = /*@__PURE__*/ __L.at(__c22, 1) as any as S.Schema<RecoveryPlanSummary>;
 export type RecoveryPlanSummaryList = RecoveryPlanSummary[];
+const RecoveryPlanSummaryList = /*@__PURE__*/ __L.at(__c22, 2);
 export interface ListRecoveryPlansResponse {
   recoveryPlans: RecoveryPlanSummary[];
   nextToken?: string;
 }
+const ListRecoveryPlansResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<ListRecoveryPlansResponse>;
 export interface ListRecoveryPlanStepsRequest {
   recoveryPlanArn: string;
   maxResults?: number;
   nextToken?: string;
 }
+const ListRecoveryPlanStepsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<ListRecoveryPlanStepsRequest>;
 export type RecoveryPlanStepList = RecoveryPlanStep[];
+const RecoveryPlanStepList = /*@__PURE__*/ __L.at(__c22, 5);
 export interface ListRecoveryPlanStepsResponse {
   recoveryPlanSteps: RecoveryPlanStep[];
   nextToken?: string;
 }
+const ListRecoveryPlanStepsResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<ListRecoveryPlanStepsResponse>;
 export interface ListStagingAccountsRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListStagingAccountsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<ListStagingAccountsRequest>;
 export interface Account {
   accountID?: string;
 }
+const Account = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<Account>;
 export type Accounts = Account[];
+const Accounts = /*@__PURE__*/ __L.at(__c23, 1);
 export interface ListStagingAccountsResponse {
   accounts?: Account[];
   nextToken?: string;
 }
+const ListStagingAccountsResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<ListStagingAccountsResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutLaunchActionRequest {
   resourceId: string;
   actionCode: string;
@@ -1167,6 +1714,10 @@ export interface PutLaunchActionRequest {
   parameters?: { [key: string]: LaunchActionParameter | undefined };
   description: string;
 }
+const PutLaunchActionRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<PutLaunchActionRequest>;
 export interface PutLaunchActionResponse {
   resourceId?: string;
   actionId?: string;
@@ -1181,55 +1732,112 @@ export interface PutLaunchActionResponse {
   description?: string;
   category?: string;
 }
+const PutLaunchActionResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<PutLaunchActionResponse>;
 export type RecoveryPlanStepArnList = string[];
+const RecoveryPlanStepArnList = IPsList as any as S.Schema<RecoveryPlanStepArnList>;
 export interface ReorderRecoveryPlanStepsRequest {
   recoveryPlanArn: string;
   orderedStepArns: string[];
 }
+const ReorderRecoveryPlanStepsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<ReorderRecoveryPlanStepsRequest>;
 export interface ReorderRecoveryPlanStepsResponse {
   recoveryPlanSteps: RecoveryPlanStep[];
 }
+const ReorderRecoveryPlanStepsResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<ReorderRecoveryPlanStepsResponse>;
 export interface RetryDataReplicationRequest {
   sourceServerID: string;
 }
+const RetryDataReplicationRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<RetryDataReplicationRequest>;
 export interface RetryRecoveryPlanExecutionStepRequest {
   recoveryPlanExecutionStepArn: string;
 }
+const RetryRecoveryPlanExecutionStepRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<RetryRecoveryPlanExecutionStepRequest>;
 export interface RetryRecoveryPlanExecutionStepResponse {
   recoveryPlanExecutionStep: RecoveryPlanExecutionStep;
 }
+const RetryRecoveryPlanExecutionStepResponse =
+  GetRecoveryPlanExecutionStepResponse as any as S.Schema<RetryRecoveryPlanExecutionStepResponse>;
 export interface ReverseReplicationRequest {
   recoveryInstanceID: string;
 }
+const ReverseReplicationRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<ReverseReplicationRequest>;
 export interface ReverseReplicationResponse {
   reversedDirectionSourceServerArn?: string;
 }
+const ReverseReplicationResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<ReverseReplicationResponse>;
 export type StartFailbackRequestRecoveryInstanceIDs = string[];
+const StartFailbackRequestRecoveryInstanceIDs =
+  IPsList as any as S.Schema<StartFailbackRequestRecoveryInstanceIDs>;
 export interface StartFailbackLaunchRequest {
   recoveryInstanceIDs: string[];
   tags?: { [key: string]: string | undefined };
 }
+const StartFailbackLaunchRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<StartFailbackLaunchRequest>;
 export interface StartFailbackLaunchResponse {
   job?: Job;
 }
+const StartFailbackLaunchResponse =
+  AssociateSourceNetworkStackResponse as any as S.Schema<StartFailbackLaunchResponse>;
 export interface StartRecoveryRequestSourceServer {
   sourceServerID: string;
   recoverySnapshotID?: string;
 }
+const StartRecoveryRequestSourceServer = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<StartRecoveryRequestSourceServer>;
 export type StartRecoveryRequestSourceServers = StartRecoveryRequestSourceServer[];
+const StartRecoveryRequestSourceServers = /*@__PURE__*/ __L.at(__c24, 7);
 export interface StartRecoveryRequest {
   sourceServers: StartRecoveryRequestSourceServer[];
   isDrill?: boolean;
   tags?: { [key: string]: string | undefined };
 }
+const StartRecoveryRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<StartRecoveryRequest>;
 export interface StartRecoveryResponse {
   job?: Job;
 }
+const StartRecoveryResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<StartRecoveryResponse>;
 export interface RecoveryPlanExecutionSourceServer {
   sourceServerID: string;
   recoverySnapshotID: string;
 }
+const RecoveryPlanExecutionSourceServer = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<RecoveryPlanExecutionSourceServer>;
 export type RecoveryPlanExecutionSourceServerList = RecoveryPlanExecutionSourceServer[];
+const RecoveryPlanExecutionSourceServerList = /*@__PURE__*/ __L.at(__c25, 3);
 export interface StartRecoveryPlanExecutionRequest {
   recoveryPlanArn: string;
   mode: string;
@@ -1237,69 +1845,132 @@ export interface StartRecoveryPlanExecutionRequest {
   sourceServers?: RecoveryPlanExecutionSourceServer[];
   tags?: { [key: string]: string | undefined };
 }
+const StartRecoveryPlanExecutionRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<StartRecoveryPlanExecutionRequest>;
 export interface StartRecoveryPlanExecutionResponse {
   recoveryPlanExecution: RecoveryPlanExecution;
 }
+const StartRecoveryPlanExecutionResponse =
+  CancelRecoveryPlanExecutionResponse as any as S.Schema<StartRecoveryPlanExecutionResponse>;
 export interface StartReplicationRequest {
   sourceServerID: string;
 }
+const StartReplicationRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<StartReplicationRequest>;
 export interface StartReplicationResponse {
   sourceServer?: SourceServer;
 }
+const StartReplicationResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<StartReplicationResponse>;
 export interface StartSourceNetworkRecoveryRequestNetworkEntry {
   sourceNetworkID: string;
   cfnStackName?: string | redacted.Redacted<string>;
 }
+const StartSourceNetworkRecoveryRequestNetworkEntry = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<StartSourceNetworkRecoveryRequestNetworkEntry>;
 export type StartSourceNetworkRecoveryRequestNetworkEntries =
   StartSourceNetworkRecoveryRequestNetworkEntry[];
+const StartSourceNetworkRecoveryRequestNetworkEntries = /*@__PURE__*/ __L.at(__c26, 0);
 export interface StartSourceNetworkRecoveryRequest {
   sourceNetworks: StartSourceNetworkRecoveryRequestNetworkEntry[];
   deployAsNew?: boolean;
   tags?: { [key: string]: string | undefined };
 }
+const StartSourceNetworkRecoveryRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<StartSourceNetworkRecoveryRequest>;
 export interface StartSourceNetworkRecoveryResponse {
   job?: Job;
 }
+const StartSourceNetworkRecoveryResponse =
+  AssociateSourceNetworkStackResponse as any as S.Schema<StartSourceNetworkRecoveryResponse>;
 export interface StartSourceNetworkReplicationRequest {
   sourceNetworkID: string;
 }
+const StartSourceNetworkReplicationRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<StartSourceNetworkReplicationRequest>;
 export interface StartSourceNetworkReplicationResponse {
   sourceNetwork?: SourceNetwork;
 }
+const StartSourceNetworkReplicationResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<StartSourceNetworkReplicationResponse>;
 export interface StopFailbackRequest {
   recoveryInstanceID: string;
 }
+const StopFailbackRequest = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<StopFailbackRequest>;
 export interface StopFailbackResponse {}
+const StopFailbackResponse = DeleteJobResponse as any as S.Schema<StopFailbackResponse>;
 export interface StopReplicationRequest {
   sourceServerID: string;
 }
+const StopReplicationRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<StopReplicationRequest>;
 export interface StopReplicationResponse {
   sourceServer?: SourceServer;
 }
+const StopReplicationResponse =
+  StartReplicationResponse as any as S.Schema<StopReplicationResponse>;
 export interface StopSourceNetworkReplicationRequest {
   sourceNetworkID: string;
 }
+const StopSourceNetworkReplicationRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<StopSourceNetworkReplicationRequest>;
 export interface StopSourceNetworkReplicationResponse {
   sourceNetwork?: SourceNetwork;
 }
+const StopSourceNetworkReplicationResponse =
+  StartSourceNetworkReplicationResponse as any as S.Schema<StopSourceNetworkReplicationResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = DeleteJobResponse as any as S.Schema<TagResourceResponse>;
 export type RecoveryInstancesForTerminationRequest = string[];
+const RecoveryInstancesForTerminationRequest =
+  IPsList as any as S.Schema<RecoveryInstancesForTerminationRequest>;
 export interface TerminateRecoveryInstancesRequest {
   recoveryInstanceIDs: string[];
 }
+const TerminateRecoveryInstancesRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<TerminateRecoveryInstancesRequest>;
 export interface TerminateRecoveryInstancesResponse {
   job?: Job;
 }
+const TerminateRecoveryInstancesResponse =
+  AssociateSourceNetworkStackResponse as any as S.Schema<TerminateRecoveryInstancesResponse>;
 export type TagKeys = string[];
+const TagKeys = IPsList as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = DeleteJobResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateFailbackReplicationConfigurationRequest {
   recoveryInstanceID: string;
   name?: string;
@@ -1307,7 +1978,13 @@ export interface UpdateFailbackReplicationConfigurationRequest {
   usePrivateIP?: boolean;
   internetProtocol?: string;
 }
+const UpdateFailbackReplicationConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<UpdateFailbackReplicationConfigurationRequest>;
 export interface UpdateFailbackReplicationConfigurationResponse {}
+const UpdateFailbackReplicationConfigurationResponse =
+  DeleteLaunchConfigurationTemplateResponse as any as S.Schema<UpdateFailbackReplicationConfigurationResponse>;
 export interface UpdateLaunchConfigurationRequest {
   sourceServerID: string;
   name?: string;
@@ -1320,6 +1997,10 @@ export interface UpdateLaunchConfigurationRequest {
   launchIntoInstanceProperties?: LaunchIntoInstanceProperties;
   recoveryMode?: string;
 }
+const UpdateLaunchConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<UpdateLaunchConfigurationRequest>;
 export interface UpdateLaunchConfigurationTemplateRequest {
   launchConfigurationTemplateID: string;
   launchDisposition?: string;
@@ -1332,34 +2013,58 @@ export interface UpdateLaunchConfigurationTemplateRequest {
   launchIntoSourceInstance?: boolean;
   recoveryMode?: string;
 }
+const UpdateLaunchConfigurationTemplateRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<UpdateLaunchConfigurationTemplateRequest>;
 export interface UpdateLaunchConfigurationTemplateResponse {
   launchConfigurationTemplate?: LaunchConfigurationTemplate;
 }
+const UpdateLaunchConfigurationTemplateResponse =
+  CreateLaunchConfigurationTemplateResponse as any as S.Schema<UpdateLaunchConfigurationTemplateResponse>;
 export interface UpdateRecoveryPlanRequest {
   recoveryPlanArn: string;
   name?: string;
   description?: string;
 }
+const UpdateRecoveryPlanRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<UpdateRecoveryPlanRequest>;
 export interface UpdateRecoveryPlanResponse {
   recoveryPlan: RecoveryPlan;
 }
+const UpdateRecoveryPlanResponse =
+  CreateRecoveryPlanResponse as any as S.Schema<UpdateRecoveryPlanResponse>;
 export interface UpdateRecoveryPlanExecutionStepRequest {
   recoveryPlanExecutionStepArn: string;
   status?: string;
   servers?: RecoveryPlanServer[];
   waitDurationMinutes?: number;
 }
+const UpdateRecoveryPlanExecutionStepRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<UpdateRecoveryPlanExecutionStepRequest>;
 export interface UpdateRecoveryPlanExecutionStepResponse {
   recoveryPlanExecutionStep: RecoveryPlanExecutionStep;
 }
+const UpdateRecoveryPlanExecutionStepResponse =
+  GetRecoveryPlanExecutionStepResponse as any as S.Schema<UpdateRecoveryPlanExecutionStepResponse>;
 export interface UpdateRecoveryPlanStepRequest {
   recoveryPlanStepArn: string;
   stepName?: string;
   configuration?: RecoveryPlanStepConfiguration;
 }
+const UpdateRecoveryPlanStepRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<UpdateRecoveryPlanStepRequest>;
 export interface UpdateRecoveryPlanStepResponse {
   recoveryPlanStep: RecoveryPlanStep;
 }
+const UpdateRecoveryPlanStepResponse =
+  CreateRecoveryPlanStepResponse as any as S.Schema<UpdateRecoveryPlanStepResponse>;
 export interface UpdateReplicationConfigurationRequest {
   sourceServerID: string;
   name?: string;
@@ -1380,6 +2085,10 @@ export interface UpdateReplicationConfigurationRequest {
   autoReplicateNewDisks?: boolean;
   internetProtocol?: string;
 }
+const UpdateReplicationConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<UpdateReplicationConfigurationRequest>;
 export interface UpdateReplicationConfigurationTemplateRequest {
   replicationConfigurationTemplateID: string;
   arn?: string;
@@ -1399,12 +2108,21 @@ export interface UpdateReplicationConfigurationTemplateRequest {
   autoReplicateNewDisks?: boolean;
   internetProtocol?: string;
 }
+const UpdateReplicationConfigurationTemplateRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<UpdateReplicationConfigurationTemplateRequest>;
 export type ValidationExceptionReason = string;
 export interface ValidationExceptionField {
   name?: string;
   message?: string;
 }
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c28, 3);
 export type AssociateSourceNetworkStackError =
   | ConflictException
   | InternalServerException
@@ -1423,8 +2141,8 @@ export const associateSourceNetworkStack: API.OperationMethod<
   AssociateSourceNetworkStackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AssociateSourceNetworkStackRequest>,
-  output: __S(14) as any as S.Schema<AssociateSourceNetworkStackResponse>,
+  input: AssociateSourceNetworkStackRequest,
+  output: AssociateSourceNetworkStackResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1457,8 +2175,8 @@ export const cancelRecoveryPlanExecution: API.OperationMethod<
   CancelRecoveryPlanExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<CancelRecoveryPlanExecutionRequest>,
-  output: __S(18) as any as S.Schema<CancelRecoveryPlanExecutionResponse>,
+  input: CancelRecoveryPlanExecutionRequest,
+  output: CancelRecoveryPlanExecutionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1491,8 +2209,8 @@ export const createExtendedSourceServer: API.OperationMethod<
   CreateExtendedSourceServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<CreateExtendedSourceServerRequest>,
-  output: __S(43) as any as S.Schema<CreateExtendedSourceServerResponse>,
+  input: CreateExtendedSourceServerRequest,
+  output: CreateExtendedSourceServerResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1524,8 +2242,8 @@ export const createLaunchConfigurationTemplate: API.OperationMethod<
   CreateLaunchConfigurationTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<CreateLaunchConfigurationTemplateRequest>,
-  output: __S(47) as any as S.Schema<CreateLaunchConfigurationTemplateResponse>,
+  input: CreateLaunchConfigurationTemplateRequest,
+  output: CreateLaunchConfigurationTemplateResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1557,8 +2275,8 @@ export const createRecoveryPlan: API.OperationMethod<
   CreateRecoveryPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<CreateRecoveryPlanRequest>,
-  output: __S(50) as any as S.Schema<CreateRecoveryPlanResponse>,
+  input: CreateRecoveryPlanRequest,
+  output: CreateRecoveryPlanResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1592,8 +2310,8 @@ export const createRecoveryPlanStep: API.OperationMethod<
   CreateRecoveryPlanStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<CreateRecoveryPlanStepRequest>,
-  output: __S(58) as any as S.Schema<CreateRecoveryPlanStepResponse>,
+  input: CreateRecoveryPlanStepRequest,
+  output: CreateRecoveryPlanStepResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1626,8 +2344,8 @@ export const createReplicationConfigurationTemplate: API.OperationMethod<
   CreateReplicationConfigurationTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<CreateReplicationConfigurationTemplateRequest>,
-  output: __S(62) as any as S.Schema<ReplicationConfigurationTemplate>,
+  input: CreateReplicationConfigurationTemplateRequest,
+  output: ReplicationConfigurationTemplate,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1659,8 +2377,8 @@ export const createSourceNetwork: API.OperationMethod<
   CreateSourceNetworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<CreateSourceNetworkRequest>,
-  output: __S(64) as any as S.Schema<CreateSourceNetworkResponse>,
+  input: CreateSourceNetworkRequest,
+  output: CreateSourceNetworkResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1691,8 +2409,8 @@ export const deleteJob: API.OperationMethod<
   DeleteJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<DeleteJobRequest>,
-  output: __S(66) as any as S.Schema<DeleteJobResponse>,
+  input: DeleteJobRequest,
+  output: DeleteJobResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1721,8 +2439,8 @@ export const deleteLaunchAction: API.OperationMethod<
   DeleteLaunchActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<DeleteLaunchActionRequest>,
-  output: __S(66) as any as S.Schema<DeleteLaunchActionResponse>,
+  input: DeleteLaunchActionRequest,
+  output: DeleteLaunchActionResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1751,8 +2469,8 @@ export const deleteLaunchConfigurationTemplate: API.OperationMethod<
   DeleteLaunchConfigurationTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<DeleteLaunchConfigurationTemplateRequest>,
-  output: __S(69) as any as S.Schema<DeleteLaunchConfigurationTemplateResponse>,
+  input: DeleteLaunchConfigurationTemplateRequest,
+  output: DeleteLaunchConfigurationTemplateResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1781,8 +2499,8 @@ export const deleteRecoveryInstance: API.OperationMethod<
   DeleteRecoveryInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<DeleteRecoveryInstanceRequest>,
-  output: __S(66) as any as S.Schema<DeleteRecoveryInstanceResponse>,
+  input: DeleteRecoveryInstanceRequest,
+  output: DeleteRecoveryInstanceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1813,8 +2531,8 @@ export const deleteRecoveryPlan: API.OperationMethod<
   DeleteRecoveryPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<DeleteRecoveryPlanRequest>,
-  output: __S(72) as any as S.Schema<DeleteRecoveryPlanResponse>,
+  input: DeleteRecoveryPlanRequest,
+  output: DeleteRecoveryPlanResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1847,8 +2565,8 @@ export const deleteRecoveryPlanExecution: API.OperationMethod<
   DeleteRecoveryPlanExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<DeleteRecoveryPlanExecutionRequest>,
-  output: __S(74) as any as S.Schema<DeleteRecoveryPlanExecutionResponse>,
+  input: DeleteRecoveryPlanExecutionRequest,
+  output: DeleteRecoveryPlanExecutionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1881,8 +2599,8 @@ export const deleteRecoveryPlanStep: API.OperationMethod<
   DeleteRecoveryPlanStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<DeleteRecoveryPlanStepRequest>,
-  output: __S(76) as any as S.Schema<DeleteRecoveryPlanStepResponse>,
+  input: DeleteRecoveryPlanStepRequest,
+  output: DeleteRecoveryPlanStepResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1913,8 +2631,8 @@ export const deleteReplicationConfigurationTemplate: API.OperationMethod<
   DeleteReplicationConfigurationTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<DeleteReplicationConfigurationTemplateRequest>,
-  output: __S(69) as any as S.Schema<DeleteReplicationConfigurationTemplateResponse>,
+  input: DeleteReplicationConfigurationTemplateRequest,
+  output: DeleteReplicationConfigurationTemplateResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1943,8 +2661,8 @@ export const deleteSourceNetwork: API.OperationMethod<
   DeleteSourceNetworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<DeleteSourceNetworkRequest>,
-  output: __S(66) as any as S.Schema<DeleteSourceNetworkResponse>,
+  input: DeleteSourceNetworkRequest,
+  output: DeleteSourceNetworkResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1973,8 +2691,8 @@ export const deleteSourceServer: API.OperationMethod<
   DeleteSourceServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<DeleteSourceServerRequest>,
-  output: __S(66) as any as S.Schema<DeleteSourceServerResponse>,
+  input: DeleteSourceServerRequest,
+  output: DeleteSourceServerResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2003,8 +2721,8 @@ export const describeJobLogItems: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   JobLog
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(80) as any as S.Schema<DescribeJobLogItemsRequest>,
-  output: __S(93) as any as S.Schema<DescribeJobLogItemsResponse>,
+  input: DescribeJobLogItemsRequest,
+  output: DescribeJobLogItemsResponse,
   errors: [
     InternalServerException,
     ThrottlingException,
@@ -2038,8 +2756,8 @@ export const describeJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Job
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(95) as any as S.Schema<DescribeJobsRequest>,
-  output: __S(97) as any as S.Schema<DescribeJobsResponse>,
+  input: DescribeJobsRequest,
+  output: DescribeJobsResponse,
   errors: [
     InternalServerException,
     ThrottlingException,
@@ -2074,8 +2792,8 @@ export const describeLaunchConfigurationTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LaunchConfigurationTemplate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(98) as any as S.Schema<DescribeLaunchConfigurationTemplatesRequest>,
-  output: __S(100) as any as S.Schema<DescribeLaunchConfigurationTemplatesResponse>,
+  input: DescribeLaunchConfigurationTemplatesRequest,
+  output: DescribeLaunchConfigurationTemplatesResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2110,8 +2828,8 @@ export const describeRecoveryInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecoveryInstance
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(102) as any as S.Schema<DescribeRecoveryInstancesRequest>,
-  output: __S(115) as any as S.Schema<DescribeRecoveryInstancesResponse>,
+  input: DescribeRecoveryInstancesRequest,
+  output: DescribeRecoveryInstancesResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2146,8 +2864,8 @@ export const describeRecoverySnapshots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecoverySnapshot
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(117) as any as S.Schema<DescribeRecoverySnapshotsRequest>,
-  output: __S(120) as any as S.Schema<DescribeRecoverySnapshotsResponse>,
+  input: DescribeRecoverySnapshotsRequest,
+  output: DescribeRecoverySnapshotsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2183,8 +2901,8 @@ export const describeReplicationConfigurationTemplates: API.PaginatedOperationMe
   Credentials | HttpClient.HttpClient,
   ReplicationConfigurationTemplate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(121) as any as S.Schema<DescribeReplicationConfigurationTemplatesRequest>,
-  output: __S(123) as any as S.Schema<DescribeReplicationConfigurationTemplatesResponse>,
+  input: DescribeReplicationConfigurationTemplatesRequest,
+  output: DescribeReplicationConfigurationTemplatesResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2219,8 +2937,8 @@ export const describeSourceNetworks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SourceNetwork
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(125) as any as S.Schema<DescribeSourceNetworksRequest>,
-  output: __S(129) as any as S.Schema<DescribeSourceNetworksResponse>,
+  input: DescribeSourceNetworksRequest,
+  output: DescribeSourceNetworksResponse,
   errors: [
     InternalServerException,
     ThrottlingException,
@@ -2254,8 +2972,8 @@ export const describeSourceServers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SourceServer
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(131) as any as S.Schema<DescribeSourceServersRequest>,
-  output: __S(133) as any as S.Schema<DescribeSourceServersResponse>,
+  input: DescribeSourceServersRequest,
+  output: DescribeSourceServersResponse,
   errors: [
     InternalServerException,
     ThrottlingException,
@@ -2290,8 +3008,8 @@ export const disconnectRecoveryInstance: API.OperationMethod<
   DisconnectRecoveryInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134) as any as S.Schema<DisconnectRecoveryInstanceRequest>,
-  output: __S(69) as any as S.Schema<DisconnectRecoveryInstanceResponse>,
+  input: DisconnectRecoveryInstanceRequest,
+  output: DisconnectRecoveryInstanceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2321,8 +3039,8 @@ export const disconnectSourceServer: API.OperationMethod<
   DisconnectSourceServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<DisconnectSourceServerRequest>,
-  output: __S(42) as any as S.Schema<SourceServer>,
+  input: DisconnectSourceServerRequest,
+  output: SourceServer,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2352,8 +3070,8 @@ export const exportSourceNetworkCfnTemplate: API.OperationMethod<
   ExportSourceNetworkCfnTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<ExportSourceNetworkCfnTemplateRequest>,
-  output: __S(137) as any as S.Schema<ExportSourceNetworkCfnTemplateResponse>,
+  input: ExportSourceNetworkCfnTemplateRequest,
+  output: ExportSourceNetworkCfnTemplateResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2382,8 +3100,8 @@ export const getFailbackReplicationConfiguration: API.OperationMethod<
   GetFailbackReplicationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<GetFailbackReplicationConfigurationRequest>,
-  output: __S(139) as any as S.Schema<GetFailbackReplicationConfigurationResponse>,
+  input: GetFailbackReplicationConfigurationRequest,
+  output: GetFailbackReplicationConfigurationResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2410,8 +3128,8 @@ export const getLaunchConfiguration: API.OperationMethod<
   GetLaunchConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<GetLaunchConfigurationRequest>,
-  output: __S(142) as any as S.Schema<LaunchConfiguration>,
+  input: GetLaunchConfigurationRequest,
+  output: LaunchConfiguration,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2440,8 +3158,8 @@ export const getRecoveryPlan: API.OperationMethod<
   GetRecoveryPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143) as any as S.Schema<GetRecoveryPlanRequest>,
-  output: __S(144) as any as S.Schema<GetRecoveryPlanResponse>,
+  input: GetRecoveryPlanRequest,
+  output: GetRecoveryPlanResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2472,8 +3190,8 @@ export const getRecoveryPlanExecution: API.OperationMethod<
   GetRecoveryPlanExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<GetRecoveryPlanExecutionRequest>,
-  output: __S(18) as any as S.Schema<GetRecoveryPlanExecutionResponse>,
+  input: GetRecoveryPlanExecutionRequest,
+  output: GetRecoveryPlanExecutionResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2504,8 +3222,8 @@ export const getRecoveryPlanExecutionStep: API.OperationMethod<
   GetRecoveryPlanExecutionStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<GetRecoveryPlanExecutionStepRequest>,
-  output: __S(152) as any as S.Schema<GetRecoveryPlanExecutionStepResponse>,
+  input: GetRecoveryPlanExecutionStepRequest,
+  output: GetRecoveryPlanExecutionStepResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2536,8 +3254,8 @@ export const getRecoveryPlanStep: API.OperationMethod<
   GetRecoveryPlanStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<GetRecoveryPlanStepRequest>,
-  output: __S(58) as any as S.Schema<GetRecoveryPlanStepResponse>,
+  input: GetRecoveryPlanStepRequest,
+  output: GetRecoveryPlanStepResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2567,8 +3285,8 @@ export const getReplicationConfiguration: API.OperationMethod<
   GetReplicationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<GetReplicationConfigurationRequest>,
-  output: __S(157) as any as S.Schema<ReplicationConfiguration>,
+  input: GetReplicationConfigurationRequest,
+  output: ReplicationConfiguration,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2596,8 +3314,8 @@ export const initializeService: API.OperationMethod<
   InitializeServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158) as any as S.Schema<InitializeServiceRequest>,
-  output: __S(66) as any as S.Schema<InitializeServiceResponse>,
+  input: InitializeServiceRequest,
+  output: InitializeServiceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2626,8 +3344,8 @@ export const listExtensibleSourceServers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   StagingSourceServer
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(159) as any as S.Schema<ListExtensibleSourceServersRequest>,
-  output: __S(162) as any as S.Schema<ListExtensibleSourceServersResponse>,
+  input: ListExtensibleSourceServersRequest,
+  output: ListExtensibleSourceServersResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2663,8 +3381,8 @@ export const listLaunchActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LaunchAction
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(164) as any as S.Schema<ListLaunchActionsRequest>,
-  output: __S(166) as any as S.Schema<ListLaunchActionsResponse>,
+  input: ListLaunchActionsRequest,
+  output: ListLaunchActionsResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2700,8 +3418,8 @@ export const listRecoveryPlanExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecoveryPlanExecutionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(167) as any as S.Schema<ListRecoveryPlanExecutionsRequest>,
-  output: __S(170) as any as S.Schema<ListRecoveryPlanExecutionsResponse>,
+  input: ListRecoveryPlanExecutionsRequest,
+  output: ListRecoveryPlanExecutionsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2738,8 +3456,8 @@ export const listRecoveryPlanExecutionSteps: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecoveryPlanExecutionStepSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(172) as any as S.Schema<ListRecoveryPlanExecutionStepsRequest>,
-  output: __S(175) as any as S.Schema<ListRecoveryPlanExecutionStepsResponse>,
+  input: ListRecoveryPlanExecutionStepsRequest,
+  output: ListRecoveryPlanExecutionStepsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2776,8 +3494,8 @@ export const listRecoveryPlans: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecoveryPlanSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(176) as any as S.Schema<ListRecoveryPlansRequest>,
-  output: __S(179) as any as S.Schema<ListRecoveryPlansResponse>,
+  input: ListRecoveryPlansRequest,
+  output: ListRecoveryPlansResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2814,8 +3532,8 @@ export const listRecoveryPlanSteps: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecoveryPlanStep
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(180) as any as S.Schema<ListRecoveryPlanStepsRequest>,
-  output: __S(182) as any as S.Schema<ListRecoveryPlanStepsResponse>,
+  input: ListRecoveryPlanStepsRequest,
+  output: ListRecoveryPlanStepsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2852,8 +3570,8 @@ export const listStagingAccounts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Account
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(183) as any as S.Schema<ListStagingAccountsRequest>,
-  output: __S(186) as any as S.Schema<ListStagingAccountsResponse>,
+  input: ListStagingAccountsRequest,
+  output: ListStagingAccountsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2888,8 +3606,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(188) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2919,8 +3637,8 @@ export const putLaunchAction: API.OperationMethod<
   PutLaunchActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189) as any as S.Schema<PutLaunchActionRequest>,
-  output: __S(190) as any as S.Schema<PutLaunchActionResponse>,
+  input: PutLaunchActionRequest,
+  output: PutLaunchActionResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2952,8 +3670,8 @@ export const reorderRecoveryPlanSteps: API.OperationMethod<
   ReorderRecoveryPlanStepsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191) as any as S.Schema<ReorderRecoveryPlanStepsRequest>,
-  output: __S(192) as any as S.Schema<ReorderRecoveryPlanStepsResponse>,
+  input: ReorderRecoveryPlanStepsRequest,
+  output: ReorderRecoveryPlanStepsResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2984,8 +3702,8 @@ export const retryDataReplication: API.OperationMethod<
   RetryDataReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<RetryDataReplicationRequest>,
-  output: __S(42) as any as S.Schema<SourceServer>,
+  input: RetryDataReplicationRequest,
+  output: SourceServer,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -3016,8 +3734,8 @@ export const retryRecoveryPlanExecutionStep: API.OperationMethod<
   RetryRecoveryPlanExecutionStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194) as any as S.Schema<RetryRecoveryPlanExecutionStepRequest>,
-  output: __S(152) as any as S.Schema<RetryRecoveryPlanExecutionStepResponse>,
+  input: RetryRecoveryPlanExecutionStepRequest,
+  output: RetryRecoveryPlanExecutionStepResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3050,8 +3768,8 @@ export const reverseReplication: API.OperationMethod<
   ReverseReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195) as any as S.Schema<ReverseReplicationRequest>,
-  output: __S(196) as any as S.Schema<ReverseReplicationResponse>,
+  input: ReverseReplicationRequest,
+  output: ReverseReplicationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3083,8 +3801,8 @@ export const startFailbackLaunch: API.OperationMethod<
   StartFailbackLaunchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197) as any as S.Schema<StartFailbackLaunchRequest>,
-  output: __S(14) as any as S.Schema<StartFailbackLaunchResponse>,
+  input: StartFailbackLaunchRequest,
+  output: StartFailbackLaunchResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3114,8 +3832,8 @@ export const startRecovery: API.OperationMethod<
   StartRecoveryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200) as any as S.Schema<StartRecoveryRequest>,
-  output: __S(201) as any as S.Schema<StartRecoveryResponse>,
+  input: StartRecoveryRequest,
+  output: StartRecoveryResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3147,8 +3865,8 @@ export const startRecoveryPlanExecution: API.OperationMethod<
   StartRecoveryPlanExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204) as any as S.Schema<StartRecoveryPlanExecutionRequest>,
-  output: __S(18) as any as S.Schema<StartRecoveryPlanExecutionResponse>,
+  input: StartRecoveryPlanExecutionRequest,
+  output: StartRecoveryPlanExecutionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3180,8 +3898,8 @@ export const startReplication: API.OperationMethod<
   StartReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205) as any as S.Schema<StartReplicationRequest>,
-  output: __S(206) as any as S.Schema<StartReplicationResponse>,
+  input: StartReplicationRequest,
+  output: StartReplicationResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3211,8 +3929,8 @@ export const startSourceNetworkRecovery: API.OperationMethod<
   StartSourceNetworkRecoveryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209) as any as S.Schema<StartSourceNetworkRecoveryRequest>,
-  output: __S(14) as any as S.Schema<StartSourceNetworkRecoveryResponse>,
+  input: StartSourceNetworkRecoveryRequest,
+  output: StartSourceNetworkRecoveryResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3242,8 +3960,8 @@ export const startSourceNetworkReplication: API.OperationMethod<
   StartSourceNetworkReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210) as any as S.Schema<StartSourceNetworkReplicationRequest>,
-  output: __S(211) as any as S.Schema<StartSourceNetworkReplicationResponse>,
+  input: StartSourceNetworkReplicationRequest,
+  output: StartSourceNetworkReplicationResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3271,8 +3989,8 @@ export const stopFailback: API.OperationMethod<
   StopFailbackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212) as any as S.Schema<StopFailbackRequest>,
-  output: __S(66) as any as S.Schema<StopFailbackResponse>,
+  input: StopFailbackRequest,
+  output: StopFailbackResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -3300,8 +4018,8 @@ export const stopReplication: API.OperationMethod<
   StopReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213) as any as S.Schema<StopReplicationRequest>,
-  output: __S(206) as any as S.Schema<StopReplicationResponse>,
+  input: StopReplicationRequest,
+  output: StopReplicationResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3331,8 +4049,8 @@ export const stopSourceNetworkReplication: API.OperationMethod<
   StopSourceNetworkReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214) as any as S.Schema<StopSourceNetworkReplicationRequest>,
-  output: __S(211) as any as S.Schema<StopSourceNetworkReplicationResponse>,
+  input: StopSourceNetworkReplicationRequest,
+  output: StopSourceNetworkReplicationResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3362,8 +4080,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215) as any as S.Schema<TagResourceRequest>,
-  output: __S(66) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3392,8 +4110,8 @@ export const terminateRecoveryInstances: API.OperationMethod<
   TerminateRecoveryInstancesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216) as any as S.Schema<TerminateRecoveryInstancesRequest>,
-  output: __S(14) as any as S.Schema<TerminateRecoveryInstancesResponse>,
+  input: TerminateRecoveryInstancesRequest,
+  output: TerminateRecoveryInstancesResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3422,8 +4140,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217) as any as S.Schema<UntagResourceRequest>,
-  output: __S(66) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3452,8 +4170,8 @@ export const updateFailbackReplicationConfiguration: API.OperationMethod<
   UpdateFailbackReplicationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218) as any as S.Schema<UpdateFailbackReplicationConfigurationRequest>,
-  output: __S(69) as any as S.Schema<UpdateFailbackReplicationConfigurationResponse>,
+  input: UpdateFailbackReplicationConfigurationRequest,
+  output: UpdateFailbackReplicationConfigurationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3483,8 +4201,8 @@ export const updateLaunchConfiguration: API.OperationMethod<
   UpdateLaunchConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219) as any as S.Schema<UpdateLaunchConfigurationRequest>,
-  output: __S(142) as any as S.Schema<LaunchConfiguration>,
+  input: UpdateLaunchConfigurationRequest,
+  output: LaunchConfiguration,
   errors: [
     ConflictException,
     InternalServerException,
@@ -3515,8 +4233,8 @@ export const updateLaunchConfigurationTemplate: API.OperationMethod<
   UpdateLaunchConfigurationTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220) as any as S.Schema<UpdateLaunchConfigurationTemplateRequest>,
-  output: __S(47) as any as S.Schema<UpdateLaunchConfigurationTemplateResponse>,
+  input: UpdateLaunchConfigurationTemplateRequest,
+  output: UpdateLaunchConfigurationTemplateResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3548,8 +4266,8 @@ export const updateRecoveryPlan: API.OperationMethod<
   UpdateRecoveryPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221) as any as S.Schema<UpdateRecoveryPlanRequest>,
-  output: __S(50) as any as S.Schema<UpdateRecoveryPlanResponse>,
+  input: UpdateRecoveryPlanRequest,
+  output: UpdateRecoveryPlanResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3582,8 +4300,8 @@ export const updateRecoveryPlanExecutionStep: API.OperationMethod<
   UpdateRecoveryPlanExecutionStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222) as any as S.Schema<UpdateRecoveryPlanExecutionStepRequest>,
-  output: __S(152) as any as S.Schema<UpdateRecoveryPlanExecutionStepResponse>,
+  input: UpdateRecoveryPlanExecutionStepRequest,
+  output: UpdateRecoveryPlanExecutionStepResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3616,8 +4334,8 @@ export const updateRecoveryPlanStep: API.OperationMethod<
   UpdateRecoveryPlanStepError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223) as any as S.Schema<UpdateRecoveryPlanStepRequest>,
-  output: __S(58) as any as S.Schema<UpdateRecoveryPlanStepResponse>,
+  input: UpdateRecoveryPlanStepRequest,
+  output: UpdateRecoveryPlanStepResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3650,8 +4368,8 @@ export const updateReplicationConfiguration: API.OperationMethod<
   UpdateReplicationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224) as any as S.Schema<UpdateReplicationConfigurationRequest>,
-  output: __S(157) as any as S.Schema<ReplicationConfiguration>,
+  input: UpdateReplicationConfigurationRequest,
+  output: ReplicationConfiguration,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3683,8 +4401,8 @@ export const updateReplicationConfigurationTemplate: API.OperationMethod<
   UpdateReplicationConfigurationTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225) as any as S.Schema<UpdateReplicationConfigurationTemplateRequest>,
-  output: __S(62) as any as S.Schema<ReplicationConfigurationTemplate>,
+  input: UpdateReplicationConfigurationTemplateRequest,
+  output: ReplicationConfigurationTemplate,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3721,7 +4439,7 @@ function __c0(j: number): any {
         S.Struct({ value: S.optional(S.String), type: S.optional(S.String) }),
       ).annotate({ identifier: "LaunchActionParameter" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(1).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ LaunchActionParameter.pipe(S.optional));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3733,7 +4451,7 @@ function __c0(j: number): any {
           order: S.optional(S.Number),
           actionVersion: S.optional(S.String),
           optional: S.optional(S.Boolean),
-          parameters: S.optional(__S(2)),
+          parameters: S.optional(LaunchActionParameters),
           description: S.optional(S.String),
           category: S.optional(S.String),
         }),
@@ -3741,19 +4459,19 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(__S(3)),
+          action: S.optional(LaunchAction),
           runId: S.optional(S.String),
           status: S.optional(S.String),
           failureReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "LaunchActionRun" });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(LaunchActionRun);
     case 6:
       return S.suspend(() =>
         S.Struct({
           ssmAgentDiscoveryDatetime: S.optional(S.String),
-          runs: S.optional(__S(5)),
+          runs: S.optional(LaunchActionRuns),
         }),
       ).annotate({ identifier: "LaunchActionsStatus" });
     case 7:
@@ -3762,7 +4480,7 @@ function __c0(j: number): any {
           sourceServerID: S.optional(S.String),
           recoveryInstanceID: S.optional(S.String),
           launchStatus: S.optional(S.String),
-          launchActionsStatus: S.optional(__S(6)),
+          launchActionsStatus: S.optional(LaunchActionsStatus),
         }),
       ).annotate({ identifier: "ParticipatingServer" });
   }
@@ -3770,7 +4488,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(ParticipatingServer);
     case 1:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 2:
@@ -3778,12 +4496,12 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          participatingResourceID: S.optional(__S(10)),
+          participatingResourceID: S.optional(ParticipatingResourceID),
           launchStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "ParticipatingResource" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(ParticipatingResource);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3794,13 +4512,13 @@ function __c1(j: number): any {
           creationDateTime: S.optional(S.String),
           endDateTime: S.optional(S.String),
           status: S.optional(S.String),
-          participatingServers: S.optional(__S(8)),
-          tags: S.optional(__S(9)),
-          participatingResources: S.optional(__S(12)),
+          participatingServers: S.optional(ParticipatingServers),
+          tags: S.optional(TagsMap),
+          participatingResources: S.optional(ParticipatingResources),
         }),
       ).annotate({ identifier: "Job" });
     case 6:
-      return S.suspend(() => S.Struct({ job: S.optional(__S(13)) })).annotate({
+      return S.suspend(() => S.Struct({ job: S.optional(Job) })).annotate({
         identifier: "AssociateSourceNetworkStackResponse",
       });
     case 7:
@@ -3835,17 +4553,17 @@ function __c2(j: number): any {
           status: S.String,
           startedAt: S.String,
           completedAt: S.optional(S.String),
-          errorDetail: S.optional(__S(16)),
-          tags: S.optional(__S(9)),
+          errorDetail: S.optional(ErrorDetail),
+          tags: S.optional(TagsMap),
         }),
       ).annotate({ identifier: "RecoveryPlanExecution" });
     case 2:
-      return S.suspend(() => S.Struct({ recoveryPlanExecution: __S(17) })).annotate({
+      return S.suspend(() => S.Struct({ recoveryPlanExecution: RecoveryPlanExecution })).annotate({
         identifier: "CancelRecoveryPlanExecutionResponse",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ sourceServerArn: S.String, tags: S.optional(__S(9)) }).pipe(
+        S.Struct({ sourceServerArn: S.String, tags: S.optional(TagsMap) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateExtendedSourceServer" }),
             svc,
@@ -3872,7 +4590,7 @@ function __c2(j: number): any {
         identifier: "DataReplicationInfoReplicatedDisk",
       });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(DataReplicationInfoReplicatedDisk);
     case 6:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), status: S.optional(S.String) }),
@@ -3880,7 +4598,7 @@ function __c2(j: number): any {
         identifier: "DataReplicationInitiationStep",
       });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(DataReplicationInitiationStep);
   }
 }
 function __c3(j: number): any {
@@ -3890,7 +4608,7 @@ function __c3(j: number): any {
         S.Struct({
           startDateTime: S.optional(S.String),
           nextAttemptDateTime: S.optional(S.String),
-          steps: S.optional(__S(23)),
+          steps: S.optional(DataReplicationInitiationSteps),
         }),
       ).annotate({
         identifier: "DataReplicationInitiation",
@@ -3904,10 +4622,10 @@ function __c3(j: number): any {
         S.Struct({
           lagDuration: S.optional(S.String),
           etaDateTime: S.optional(S.String),
-          replicatedDisks: S.optional(__S(21)),
+          replicatedDisks: S.optional(DataReplicationInfoReplicatedDisks),
           dataReplicationState: S.optional(S.String),
-          dataReplicationInitiation: S.optional(__S(24)),
-          dataReplicationError: S.optional(__S(25)),
+          dataReplicationInitiation: S.optional(DataReplicationInitiation),
+          dataReplicationError: S.optional(DataReplicationError),
           stagingAvailabilityZone: S.optional(S.String),
           stagingOutpostArn: S.optional(S.String),
         }),
@@ -3925,7 +4643,7 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          initiated: S.optional(__S(27)),
+          initiated: S.optional(LifeCycleLastLaunchInitiated),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "LifeCycleLastLaunch" });
@@ -3936,7 +4654,7 @@ function __c3(j: number): any {
           firstByteDateTime: S.optional(S.String),
           elapsedReplicationDuration: S.optional(S.String),
           lastSeenByServiceDateTime: S.optional(S.String),
-          lastLaunch: S.optional(__S(28)),
+          lastLaunch: S.optional(LifeCycleLastLaunch),
         }),
       ).annotate({ identifier: "LifeCycle" });
     case 6:
@@ -3958,24 +4676,24 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           macAddress: S.optional(S.String),
-          ips: S.optional(__S(31)),
+          ips: S.optional(IPsList),
           isPrimary: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "NetworkInterface" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(NetworkInterface);
     case 2:
       return S.suspend(() =>
         S.Struct({ deviceName: S.optional(S.String), bytes: S.optional(S.Number) }),
       ).annotate({ identifier: "Disk" });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(Disk);
     case 4:
       return S.suspend(() =>
         S.Struct({ cores: S.optional(S.Number), modelName: S.optional(S.String) }),
       ).annotate({ identifier: "CPU" });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(CPU);
     case 6:
       return S.suspend(() => S.Struct({ fullString: S.optional(S.String) })).annotate({
         identifier: "OS",
@@ -3985,12 +4703,12 @@ function __c4(j: number): any {
         S.Struct({
           lastUpdatedDateTime: S.optional(S.String),
           recommendedInstanceType: S.optional(S.String),
-          identificationHints: S.optional(__S(30)),
-          networkInterfaces: S.optional(__S(33)),
-          disks: S.optional(__S(35)),
-          cpus: S.optional(__S(37)),
+          identificationHints: S.optional(IdentificationHints),
+          networkInterfaces: S.optional(NetworkInterfaces),
+          disks: S.optional(Disks),
+          cpus: S.optional(Cpus),
           ramBytes: S.optional(S.Number),
-          os: S.optional(__S(38)),
+          os: S.optional(OS),
           supportsNitroInstances: S.optional(S.Boolean),
           architecture: S.optional(S.String),
         }),
@@ -4022,14 +4740,14 @@ function __c5(j: number): any {
         S.Struct({
           sourceServerID: S.optional(S.String),
           arn: S.optional(S.String),
-          tags: S.optional(__S(9)),
+          tags: S.optional(TagsMap),
           recoveryInstanceId: S.optional(S.String),
           lastLaunchResult: S.optional(S.String),
-          dataReplicationInfo: S.optional(__S(26)),
-          lifeCycle: S.optional(__S(29)),
-          sourceProperties: S.optional(__S(39)),
-          stagingArea: S.optional(__S(40)),
-          sourceCloudProperties: S.optional(__S(41)),
+          dataReplicationInfo: S.optional(DataReplicationInfo),
+          lifeCycle: S.optional(LifeCycle),
+          sourceProperties: S.optional(SourceProperties),
+          stagingArea: S.optional(StagingArea),
+          sourceCloudProperties: S.optional(SourceCloudProperties),
           replicationDirection: S.optional(S.String),
           reversedDirectionSourceServerArn: S.optional(S.String),
           sourceNetworkID: S.optional(S.String),
@@ -4037,7 +4755,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "SourceServer" });
     case 3:
-      return S.suspend(() => S.Struct({ sourceServer: S.optional(__S(42)) })).annotate({
+      return S.suspend(() => S.Struct({ sourceServer: S.optional(SourceServer) })).annotate({
         identifier: "CreateExtendedSourceServerResponse",
       });
     case 4:
@@ -4047,12 +4765,12 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(9)),
+          tags: S.optional(TagsMap),
           launchDisposition: S.optional(S.String),
           targetInstanceTypeRightSizingMethod: S.optional(S.String),
           copyPrivateIp: S.optional(S.Boolean),
           copyTags: S.optional(S.Boolean),
-          licensing: S.optional(__S(44)),
+          licensing: S.optional(Licensing),
           exportBucketArn: S.optional(S.String),
           postLaunchEnabled: S.optional(S.Boolean),
           launchIntoSourceInstance: S.optional(S.Boolean),
@@ -4075,12 +4793,12 @@ function __c5(j: number): any {
         S.Struct({
           launchConfigurationTemplateID: S.optional(S.String),
           arn: S.optional(S.String),
-          tags: S.optional(__S(9)),
+          tags: S.optional(TagsMap),
           launchDisposition: S.optional(S.String),
           targetInstanceTypeRightSizingMethod: S.optional(S.String),
           copyPrivateIp: S.optional(S.Boolean),
           copyTags: S.optional(S.Boolean),
-          licensing: S.optional(__S(44)),
+          licensing: S.optional(Licensing),
           exportBucketArn: S.optional(S.String),
           postLaunchEnabled: S.optional(S.Boolean),
           launchIntoSourceInstance: S.optional(S.Boolean),
@@ -4091,7 +4809,7 @@ function __c5(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ launchConfigurationTemplate: S.optional(__S(46)) }),
+        S.Struct({ launchConfigurationTemplate: S.optional(LaunchConfigurationTemplate) }),
       ).annotate({
         identifier: "CreateLaunchConfigurationTemplateResponse",
       });
@@ -4105,7 +4823,7 @@ function __c6(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(9)),
+          tags: S.optional(TagsMap),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateRecoveryPlan" }),
@@ -4128,11 +4846,11 @@ function __c6(j: number): any {
           status: S.String,
           createdAt: S.String,
           updatedAt: S.String,
-          tags: S.optional(__S(9)),
+          tags: S.optional(TagsMap),
         }),
       ).annotate({ identifier: "RecoveryPlan" });
     case 2:
-      return S.suspend(() => S.Struct({ recoveryPlan: __S(49) })).annotate({
+      return S.suspend(() => S.Struct({ recoveryPlan: RecoveryPlan })).annotate({
         identifier: "CreateRecoveryPlanResponse",
       });
     case 3:
@@ -4140,9 +4858,9 @@ function __c6(j: number): any {
         S.Struct({ serverArn: S.String, impactLevel: S.optional(S.String) }),
       ).annotate({ identifier: "RecoveryPlanServer" });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(RecoveryPlanServer);
     case 5:
-      return S.suspend(() => S.Struct({ servers: __S(52) })).annotate({
+      return S.suspend(() => S.Struct({ servers: RecoveryPlanServers })).annotate({
         identifier: "ServerStepConfiguration",
       });
     case 6:
@@ -4151,8 +4869,8 @@ function __c6(j: number): any {
       });
     case 7:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ serverStepConfiguration: __S(53) }),
-        /*@__PURE__*/ S.Struct({ waitStepConfiguration: __S(54) }),
+        /*@__PURE__*/ S.Struct({ serverStepConfiguration: ServerStepConfiguration }),
+        /*@__PURE__*/ S.Struct({ waitStepConfiguration: WaitStepConfiguration }),
       ]);
   }
 }
@@ -4164,7 +4882,7 @@ function __c7(j: number): any {
           recoveryPlanArn: S.String,
           stepName: S.String,
           stepOrder: S.optional(S.Number),
-          configuration: __S(55),
+          configuration: RecoveryPlanStepConfiguration,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -4185,13 +4903,13 @@ function __c7(j: number): any {
           recoveryPlanStepArn: S.String,
           stepOrder: S.Number,
           stepName: S.String,
-          configuration: __S(55),
+          configuration: RecoveryPlanStepConfiguration,
           createdAt: S.String,
           updatedAt: S.String,
         }),
       ).annotate({ identifier: "RecoveryPlanStep" });
     case 2:
-      return S.suspend(() => S.Struct({ recoveryPlanStep: __S(57) })).annotate({
+      return S.suspend(() => S.Struct({ recoveryPlanStep: RecoveryPlanStep })).annotate({
         identifier: "CreateRecoveryPlanStepResponse",
       });
     case 3:
@@ -4205,13 +4923,13 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "PITPolicyRule" });
     case 4:
-      return S.Array(__S(59));
+      return S.Array(PITPolicyRule);
     case 5:
       return S.suspend(() =>
         S.Struct({
           stagingAreaSubnetId: S.String,
           associateDefaultSecurityGroup: S.optional(S.Boolean),
-          replicationServersSecurityGroupsIDs: __S(31),
+          replicationServersSecurityGroupsIDs: ReplicationServersSecurityGroupsIDs,
           replicationServerInstanceType: S.optional(S.String),
           useDedicatedReplicationServer: S.optional(S.Boolean),
           defaultLargeStagingDiskType: S.optional(S.String),
@@ -4220,9 +4938,9 @@ function __c7(j: number): any {
           bandwidthThrottling: S.Number,
           dataPlaneRouting: S.optional(S.String),
           createPublicIP: S.optional(S.Boolean),
-          stagingAreaTags: __S(9),
-          pitPolicy: __S(60),
-          tags: S.optional(__S(9)),
+          stagingAreaTags: TagsMap,
+          pitPolicy: PITPolicy,
+          tags: S.optional(TagsMap),
           autoReplicateNewDisks: S.optional(S.Boolean),
           internetProtocol: S.optional(S.String),
         }).pipe(
@@ -4245,7 +4963,7 @@ function __c7(j: number): any {
           arn: S.optional(S.String),
           stagingAreaSubnetId: S.optional(S.String),
           associateDefaultSecurityGroup: S.optional(S.Boolean),
-          replicationServersSecurityGroupsIDs: S.optional(__S(31)),
+          replicationServersSecurityGroupsIDs: S.optional(ReplicationServersSecurityGroupsIDs),
           replicationServerInstanceType: S.optional(S.String),
           useDedicatedReplicationServer: S.optional(S.Boolean),
           defaultLargeStagingDiskType: S.optional(S.String),
@@ -4254,9 +4972,9 @@ function __c7(j: number): any {
           bandwidthThrottling: S.optional(S.Number),
           dataPlaneRouting: S.optional(S.String),
           createPublicIP: S.optional(S.Boolean),
-          stagingAreaTags: S.optional(__S(9)),
-          tags: S.optional(__S(9)),
-          pitPolicy: S.optional(__S(60)),
+          stagingAreaTags: S.optional(TagsMap),
+          tags: S.optional(TagsMap),
+          pitPolicy: S.optional(PITPolicy),
           autoReplicateNewDisks: S.optional(S.Boolean),
           internetProtocol: S.optional(S.String),
         }),
@@ -4269,7 +4987,7 @@ function __c7(j: number): any {
           vpcID: S.String,
           originAccountID: S.String,
           originRegion: S.String,
-          tags: S.optional(__S(9)),
+          tags: S.optional(TagsMap),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateSourceNetwork" }),
@@ -4482,7 +5200,7 @@ function __c10(j: number): any {
     case 1:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(81).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ ConversionMap.pipe(S.optional));
     case 3:
       return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
     case 4:
@@ -4490,18 +5208,18 @@ function __c10(j: number): any {
         S.Struct({ productCodeId: S.optional(S.String), productCodeMode: S.optional(S.String) }),
       ).annotate({ identifier: "ProductCode" });
     case 5:
-      return S.Array(__S(84));
+      return S.Array(ProductCode);
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(85).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ ProductCodes.pipe(S.optional));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          volumeToConversionMap: S.optional(__S(82)),
+          volumeToConversionMap: S.optional(VolumeToConversionMap),
           rootVolumeName: S.optional(S.String),
           forceUefi: S.optional(S.Boolean),
           dataTimestamp: S.optional(S.String),
-          volumeToVolumeSize: S.optional(__S(83)),
-          volumeToProductCodes: S.optional(__S(86)),
+          volumeToVolumeSize: S.optional(VolumeToSizeMap),
+          volumeToProductCodes: S.optional(VolumeToProductCodes),
         }),
       ).annotate({ identifier: "ConversionProperties" });
   }
@@ -4518,7 +5236,7 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "SourceNetworkData" });
     case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ sourceNetworkData: __S(88) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ sourceNetworkData: SourceNetworkData })]);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4526,8 +5244,8 @@ function __c11(j: number): any {
           conversionServerID: S.optional(S.String),
           targetInstanceID: S.optional(S.String),
           rawError: S.optional(S.String),
-          conversionProperties: S.optional(__S(87)),
-          eventResourceData: S.optional(__S(89)),
+          conversionProperties: S.optional(ConversionProperties),
+          eventResourceData: S.optional(EventResourceData),
           attemptCount: S.optional(S.Number),
           maxAttemptsCount: S.optional(S.Number),
         }),
@@ -4537,21 +5255,21 @@ function __c11(j: number): any {
         S.Struct({
           logDateTime: S.optional(S.String),
           event: S.optional(S.String),
-          eventData: S.optional(__S(90)),
+          eventData: S.optional(JobLogEventData),
         }),
       ).annotate({ identifier: "JobLog" });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(JobLog);
     case 5:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(92)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(JobLogs), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeJobLogItemsResponse",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          jobIDs: S.optional(__S(31)),
+          jobIDs: S.optional(DescribeJobsRequestFiltersJobIDs),
           fromDate: S.optional(S.String),
           toDate: S.optional(S.String),
         }),
@@ -4561,7 +5279,7 @@ function __c11(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(94)),
+          filters: S.optional(DescribeJobsRequestFilters),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -4573,15 +5291,15 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(13));
+      return S.Array(Job);
     case 1:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(96)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(JobsList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "DescribeJobsResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          launchConfigurationTemplateIDs: S.optional(__S(31)),
+          launchConfigurationTemplateIDs: S.optional(LaunchConfigurationTemplateIDs),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -4598,11 +5316,11 @@ function __c12(j: number): any {
         identifier: "DescribeLaunchConfigurationTemplatesRequest",
       });
     case 3:
-      return S.Array(__S(46));
+      return S.Array(LaunchConfigurationTemplate);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(99)),
+          items: S.optional(LaunchConfigurationTemplates),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4611,8 +5329,8 @@ function __c12(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          recoveryInstanceIDs: S.optional(__S(31)),
-          sourceServerIDs: S.optional(__S(31)),
+          recoveryInstanceIDs: S.optional(RecoveryInstanceIDs),
+          sourceServerIDs: S.optional(SourceServerIDs),
         }),
       ).annotate({
         identifier: "DescribeRecoveryInstancesRequestFilters",
@@ -4620,7 +5338,7 @@ function __c12(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(101)),
+          filters: S.optional(DescribeRecoveryInstancesRequestFilters),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -4668,14 +5386,14 @@ function __c13(j: number): any {
         identifier: "RecoveryInstanceDataReplicationInfoReplicatedDisk",
       });
     case 1:
-      return S.Array(__S(104));
+      return S.Array(RecoveryInstanceDataReplicationInfoReplicatedDisk);
     case 2:
-      return S.Array(__S(22));
+      return S.Array(RecoveryInstanceDataReplicationInitiationStep);
     case 3:
       return S.suspend(() =>
         S.Struct({
           startDateTime: S.optional(S.String),
-          steps: S.optional(__S(106)),
+          steps: S.optional(RecoveryInstanceDataReplicationInitiationSteps),
         }),
       ).annotate({
         identifier: "RecoveryInstanceDataReplicationInitiation",
@@ -4691,10 +5409,10 @@ function __c13(j: number): any {
         S.Struct({
           lagDuration: S.optional(S.String),
           etaDateTime: S.optional(S.String),
-          replicatedDisks: S.optional(__S(105)),
+          replicatedDisks: S.optional(RecoveryInstanceDataReplicationInfoReplicatedDisks),
           dataReplicationState: S.optional(S.String),
-          dataReplicationInitiation: S.optional(__S(107)),
-          dataReplicationError: S.optional(__S(108)),
+          dataReplicationInitiation: S.optional(RecoveryInstanceDataReplicationInitiation),
+          dataReplicationError: S.optional(RecoveryInstanceDataReplicationError),
           stagingAvailabilityZone: S.optional(S.String),
           stagingOutpostArn: S.optional(S.String),
         }),
@@ -4710,7 +5428,7 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "RecoveryInstanceDisk" });
     case 7:
-      return S.Array(__S(110));
+      return S.Array(RecoveryInstanceDisk);
   }
 }
 function __c14(j: number): any {
@@ -4719,12 +5437,12 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lastUpdatedDateTime: S.optional(S.String),
-          identificationHints: S.optional(__S(30)),
-          networkInterfaces: S.optional(__S(33)),
-          disks: S.optional(__S(111)),
-          cpus: S.optional(__S(37)),
+          identificationHints: S.optional(IdentificationHints),
+          networkInterfaces: S.optional(NetworkInterfaces),
+          disks: S.optional(RecoveryInstanceDisks),
+          cpus: S.optional(Cpus),
           ramBytes: S.optional(S.Number),
-          os: S.optional(__S(38)),
+          os: S.optional(OS),
         }),
       ).annotate({
         identifier: "RecoveryInstanceProperties",
@@ -4738,10 +5456,10 @@ function __c14(j: number): any {
           recoveryInstanceID: S.optional(S.String),
           sourceServerID: S.optional(S.String),
           arn: S.optional(S.String),
-          tags: S.optional(__S(9)),
-          failback: S.optional(__S(103)),
-          dataReplicationInfo: S.optional(__S(109)),
-          recoveryInstanceProperties: S.optional(__S(112)),
+          tags: S.optional(TagsMap),
+          failback: S.optional(RecoveryInstanceFailback),
+          dataReplicationInfo: S.optional(RecoveryInstanceDataReplicationInfo),
+          recoveryInstanceProperties: S.optional(RecoveryInstanceProperties),
           pointInTimeSnapshotDateTime: S.optional(S.String),
           isDrill: S.optional(S.Boolean),
           originEnvironment: S.optional(S.String),
@@ -4751,12 +5469,12 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "RecoveryInstance" });
     case 2:
-      return S.Array(__S(113));
+      return S.Array(RecoveryInstance);
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          items: S.optional(__S(114)),
+          items: S.optional(DescribeRecoveryInstancesItems),
         }),
       ).annotate({
         identifier: "DescribeRecoveryInstancesResponse",
@@ -4771,7 +5489,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sourceServerID: S.String,
-          filters: S.optional(__S(116)),
+          filters: S.optional(DescribeRecoverySnapshotsRequestFilters),
           order: S.optional(S.String),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
@@ -4795,25 +5513,25 @@ function __c14(j: number): any {
           sourceServerID: S.String,
           expectedTimestamp: S.String,
           timestamp: S.optional(S.String),
-          ebsSnapshots: S.optional(__S(31)),
+          ebsSnapshots: S.optional(EbsSnapshotsList),
         }),
       ).annotate({ identifier: "RecoverySnapshot" });
     case 7:
-      return S.Array(__S(118));
+      return S.Array(RecoverySnapshot);
   }
 }
 function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(119)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(RecoverySnapshotsList), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeRecoverySnapshotsResponse",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          replicationConfigurationTemplateIDs: S.optional(__S(31)),
+          replicationConfigurationTemplateIDs: S.optional(ReplicationConfigurationTemplateIDs),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -4830,11 +5548,11 @@ function __c15(j: number): any {
         identifier: "DescribeReplicationConfigurationTemplatesRequest",
       });
     case 2:
-      return S.Array(__S(62));
+      return S.Array(ReplicationConfigurationTemplate);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(122)),
+          items: S.optional(ReplicationConfigurationTemplates),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4843,7 +5561,7 @@ function __c15(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          sourceNetworkIDs: S.optional(__S(31)),
+          sourceNetworkIDs: S.optional(DescribeSourceNetworksRequestFiltersIDs),
           originAccountID: S.optional(S.String),
           originRegion: S.optional(S.String),
         }),
@@ -4853,7 +5571,7 @@ function __c15(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(124)),
+          filters: S.optional(DescribeSourceNetworksRequestFilters),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -4883,13 +5601,13 @@ function __c15(j: number): any {
           sourceNetworkID: S.optional(S.String),
           sourceVpcID: S.optional(S.String),
           arn: S.optional(S.String),
-          tags: S.optional(__S(9)),
+          tags: S.optional(TagsMap),
           replicationStatus: S.optional(S.String),
           replicationStatusDetails: S.optional(SensitiveString),
           cfnStackName: S.optional(SensitiveString),
           sourceRegion: S.optional(S.String),
           sourceAccountID: S.optional(S.String),
-          lastRecovery: S.optional(__S(126)),
+          lastRecovery: S.optional(RecoveryLifeCycle),
           launchedVpcID: S.optional(S.String),
         }),
       ).annotate({ identifier: "SourceNetwork" });
@@ -4898,19 +5616,19 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(127));
+      return S.Array(SourceNetwork);
     case 1:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(128)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(SourceNetworksList), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeSourceNetworksResponse",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sourceServerIDs: S.optional(__S(31)),
+          sourceServerIDs: S.optional(DescribeSourceServersRequestFiltersIDs),
           hardwareId: S.optional(S.String),
-          stagingAccountIDs: S.optional(__S(31)),
+          stagingAccountIDs: S.optional(AccountIDs),
         }),
       ).annotate({
         identifier: "DescribeSourceServersRequestFilters",
@@ -4918,7 +5636,7 @@ function __c16(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(130)),
+          filters: S.optional(DescribeSourceServersRequestFilters),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -4935,10 +5653,10 @@ function __c16(j: number): any {
         identifier: "DescribeSourceServersRequest",
       });
     case 4:
-      return S.Array(__S(42));
+      return S.Array(SourceServer);
     case 5:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(132)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(SourceServersList), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeSourceServersResponse",
       });
@@ -5051,9 +5769,9 @@ function __c17(j: number): any {
           targetInstanceTypeRightSizingMethod: S.optional(S.String),
           copyPrivateIp: S.optional(S.Boolean),
           copyTags: S.optional(S.Boolean),
-          licensing: S.optional(__S(44)),
+          licensing: S.optional(Licensing),
           postLaunchEnabled: S.optional(S.Boolean),
-          launchIntoInstanceProperties: S.optional(__S(141)),
+          launchIntoInstanceProperties: S.optional(LaunchIntoInstanceProperties),
           recoveryMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "LaunchConfiguration" });
@@ -5068,7 +5786,7 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ recoveryPlan: __S(49) })).annotate({
+      return S.suspend(() => S.Struct({ recoveryPlan: RecoveryPlan })).annotate({
         identifier: "GetRecoveryPlanResponse",
       });
     case 1:
@@ -5112,17 +5830,17 @@ function __c18(j: number): any {
         identifier: "RecoveryPlanExecutionServer",
       });
     case 4:
-      return S.Array(__S(147));
+      return S.Array(RecoveryPlanExecutionServer);
     case 5:
-      return S.suspend(() => S.Struct({ servers: __S(148) })).annotate({
+      return S.suspend(() => S.Struct({ servers: RecoveryPlanExecutionServers })).annotate({
         identifier: "ExecutionServerStepConfiguration",
       });
     case 6:
       return S.Union([
         /*@__PURE__*/ S.Struct({
-          executionServerStepConfiguration: __S(149),
+          executionServerStepConfiguration: ExecutionServerStepConfiguration,
         }),
-        /*@__PURE__*/ S.Struct({ waitStepConfiguration: __S(54) }),
+        /*@__PURE__*/ S.Struct({ waitStepConfiguration: WaitStepConfiguration }),
       ]);
     case 7:
       return S.suspend(() =>
@@ -5131,8 +5849,8 @@ function __c18(j: number): any {
           stepIndex: S.Number,
           status: S.String,
           stepName: S.String,
-          configuration: __S(150),
-          errorDetail: S.optional(__S(16)),
+          configuration: RecoveryPlanExecutionStepConfiguration,
+          errorDetail: S.optional(ErrorDetail),
           attempt: S.Number,
           createdAt: S.String,
           updatedAt: S.String,
@@ -5145,7 +5863,9 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ recoveryPlanExecutionStep: __S(151) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ recoveryPlanExecutionStep: RecoveryPlanExecutionStep }),
+      ).annotate({
         identifier: "GetRecoveryPlanExecutionStepResponse",
       });
     case 1:
@@ -5192,7 +5912,7 @@ function __c19(j: number): any {
         identifier: "ReplicationConfigurationReplicatedDisk",
       });
     case 4:
-      return S.Array(__S(155));
+      return S.Array(ReplicationConfigurationReplicatedDisk);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5200,18 +5920,18 @@ function __c19(j: number): any {
           name: S.optional(S.String),
           stagingAreaSubnetId: S.optional(S.String),
           associateDefaultSecurityGroup: S.optional(S.Boolean),
-          replicationServersSecurityGroupsIDs: S.optional(__S(31)),
+          replicationServersSecurityGroupsIDs: S.optional(ReplicationServersSecurityGroupsIDs),
           replicationServerInstanceType: S.optional(S.String),
           useDedicatedReplicationServer: S.optional(S.Boolean),
           defaultLargeStagingDiskType: S.optional(S.String),
-          replicatedDisks: S.optional(__S(156)),
+          replicatedDisks: S.optional(ReplicationConfigurationReplicatedDisks),
           ebsEncryption: S.optional(S.String),
           ebsEncryptionKeyArn: S.optional(S.String),
           bandwidthThrottling: S.optional(S.Number),
           dataPlaneRouting: S.optional(S.String),
           createPublicIP: S.optional(S.Boolean),
-          stagingAreaTags: S.optional(__S(9)),
-          pitPolicy: S.optional(__S(60)),
+          stagingAreaTags: S.optional(TagsMap),
+          pitPolicy: S.optional(PITPolicy),
           autoReplicateNewDisks: S.optional(S.Boolean),
           internetProtocol: S.optional(S.String),
         }),
@@ -5257,26 +5977,26 @@ function __c20(j: number): any {
         S.Struct({
           hostname: S.optional(S.String),
           arn: S.optional(S.String),
-          tags: S.optional(__S(9)),
+          tags: S.optional(TagsMap),
         }),
       ).annotate({ identifier: "StagingSourceServer" });
     case 1:
-      return S.Array(__S(160));
+      return S.Array(StagingSourceServer);
     case 2:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(161)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(StagingSourceServersList), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListExtensibleSourceServersResponse",
       });
     case 3:
-      return S.suspend(() => S.Struct({ actionIds: S.optional(__S(31)) })).annotate({
+      return S.suspend(() => S.Struct({ actionIds: S.optional(LaunchActionIds) })).annotate({
         identifier: "LaunchActionsRequestFilters",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
-          filters: S.optional(__S(163)),
+          filters: S.optional(LaunchActionsRequestFilters),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -5291,10 +6011,10 @@ function __c20(j: number): any {
         ),
       ).annotate({ identifier: "ListLaunchActionsRequest" });
     case 5:
-      return S.Array(__S(3));
+      return S.Array(LaunchAction);
     case 6:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(165)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(LaunchActions), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListLaunchActionsResponse",
       });
@@ -5330,17 +6050,17 @@ function __c21(j: number): any {
           mode: S.String,
           status: S.String,
           startedAt: S.String,
-          errorDetail: S.optional(__S(16)),
+          errorDetail: S.optional(ErrorDetail),
         }),
       ).annotate({
         identifier: "RecoveryPlanExecutionSummary",
       });
     case 1:
-      return S.Array(__S(168));
+      return S.Array(RecoveryPlanExecutionSummary);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          recoveryPlanExecutions: __S(169),
+          recoveryPlanExecutions: RecoveryPlanExecutionSummaryList,
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5354,7 +6074,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           recoveryPlanExecutionArn: S.String,
-          filter: S.optional(__S(171)),
+          filter: S.optional(ListRecoveryPlanExecutionStepsFilter),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -5377,18 +6097,18 @@ function __c21(j: number): any {
           stepName: S.String,
           stepIndex: S.Number,
           status: S.String,
-          configuration: __S(150),
-          errorDetail: S.optional(__S(16)),
+          configuration: RecoveryPlanExecutionStepConfiguration,
+          errorDetail: S.optional(ErrorDetail),
         }),
       ).annotate({
         identifier: "RecoveryPlanExecutionStepSummary",
       });
     case 6:
-      return S.Array(__S(173));
+      return S.Array(RecoveryPlanExecutionStepSummary);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          recoveryPlanExecutionSteps: __S(174),
+          recoveryPlanExecutionSteps: RecoveryPlanExecutionStepSummaryList,
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5422,10 +6142,10 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "RecoveryPlanSummary" });
     case 2:
-      return S.Array(__S(177));
+      return S.Array(RecoveryPlanSummary);
     case 3:
       return S.suspend(() =>
-        S.Struct({ recoveryPlans: __S(178), nextToken: S.optional(S.String) }),
+        S.Struct({ recoveryPlans: RecoveryPlanSummaryList, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListRecoveryPlansResponse",
       });
@@ -5449,10 +6169,10 @@ function __c22(j: number): any {
         identifier: "ListRecoveryPlanStepsRequest",
       });
     case 5:
-      return S.Array(__S(57));
+      return S.Array(RecoveryPlanStep);
     case 6:
       return S.suspend(() =>
-        S.Struct({ recoveryPlanSteps: __S(181), nextToken: S.optional(S.String) }),
+        S.Struct({ recoveryPlanSteps: RecoveryPlanStepList, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListRecoveryPlanStepsResponse",
       });
@@ -5483,10 +6203,10 @@ function __c23(j: number): any {
         identifier: "Account",
       });
     case 1:
-      return S.Array(__S(184));
+      return S.Array(Account);
     case 2:
       return S.suspend(() =>
-        S.Struct({ accounts: S.optional(__S(185)), nextToken: S.optional(S.String) }),
+        S.Struct({ accounts: S.optional(Accounts), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListStagingAccountsResponse",
       });
@@ -5506,7 +6226,7 @@ function __c23(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(9)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(TagsMap) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 5:
@@ -5521,7 +6241,7 @@ function __c23(j: number): any {
           name: S.String,
           actionVersion: S.String,
           category: S.String,
-          parameters: S.optional(__S(2)),
+          parameters: S.optional(LaunchActionParameters),
           description: S.String,
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/PutLaunchAction" }), svc, auth, proto, ver, rules),
@@ -5539,14 +6259,14 @@ function __c23(j: number): any {
           order: S.optional(S.Number),
           actionVersion: S.optional(S.String),
           optional: S.optional(S.Boolean),
-          parameters: S.optional(__S(2)),
+          parameters: S.optional(LaunchActionParameters),
           description: S.optional(S.String),
           category: S.optional(S.String),
         }),
       ).annotate({ identifier: "PutLaunchActionResponse" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ recoveryPlanArn: S.String, orderedStepArns: __S(31) }).pipe(
+        S.Struct({ recoveryPlanArn: S.String, orderedStepArns: RecoveryPlanStepArnList }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/ReorderRecoveryPlanSteps" }),
             svc,
@@ -5564,7 +6284,7 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ recoveryPlanSteps: __S(181) })).annotate({
+      return S.suspend(() => S.Struct({ recoveryPlanSteps: RecoveryPlanStepList })).annotate({
         identifier: "ReorderRecoveryPlanStepsResponse",
       });
     case 1:
@@ -5621,8 +6341,8 @@ function __c24(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          recoveryInstanceIDs: __S(31),
-          tags: S.optional(__S(9)),
+          recoveryInstanceIDs: StartFailbackRequestRecoveryInstanceIDs,
+          tags: S.optional(TagsMap),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/StartFailbackLaunch" }),
@@ -5643,7 +6363,7 @@ function __c24(j: number): any {
         identifier: "StartRecoveryRequestSourceServer",
       });
     case 7:
-      return S.Array(__S(198));
+      return S.Array(StartRecoveryRequestSourceServer);
   }
 }
 function __c25(j: number): any {
@@ -5651,15 +6371,15 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sourceServers: __S(199),
+          sourceServers: StartRecoveryRequestSourceServers,
           isDrill: S.optional(S.Boolean),
-          tags: S.optional(__S(9)),
+          tags: S.optional(TagsMap),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/StartRecovery" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StartRecoveryRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ job: S.optional(__S(13)) })).annotate({
+      return S.suspend(() => S.Struct({ job: S.optional(Job) })).annotate({
         identifier: "StartRecoveryResponse",
       });
     case 2:
@@ -5669,15 +6389,15 @@ function __c25(j: number): any {
         identifier: "RecoveryPlanExecutionSourceServer",
       });
     case 3:
-      return S.Array(__S(202));
+      return S.Array(RecoveryPlanExecutionSourceServer);
     case 4:
       return S.suspend(() =>
         S.Struct({
           recoveryPlanArn: S.String,
           mode: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          sourceServers: S.optional(__S(203)),
-          tags: S.optional(__S(9)),
+          sourceServers: S.optional(RecoveryPlanExecutionSourceServerList),
+          tags: S.optional(TagsMap),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/StartRecoveryPlanExecution" }),
@@ -5698,7 +6418,7 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "StartReplicationRequest" });
     case 6:
-      return S.suspend(() => S.Struct({ sourceServer: S.optional(__S(42)) })).annotate({
+      return S.suspend(() => S.Struct({ sourceServer: S.optional(SourceServer) })).annotate({
         identifier: "StartReplicationResponse",
       });
     case 7:
@@ -5712,13 +6432,13 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(207));
+      return S.Array(StartSourceNetworkRecoveryRequestNetworkEntry);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sourceNetworks: __S(208),
+          sourceNetworks: StartSourceNetworkRecoveryRequestNetworkEntries,
           deployAsNew: S.optional(S.Boolean),
-          tags: S.optional(__S(9)),
+          tags: S.optional(TagsMap),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/StartSourceNetworkRecovery" }),
@@ -5748,7 +6468,7 @@ function __c26(j: number): any {
         identifier: "StartSourceNetworkReplicationRequest",
       });
     case 3:
-      return S.suspend(() => S.Struct({ sourceNetwork: S.optional(__S(127)) })).annotate({
+      return S.suspend(() => S.Struct({ sourceNetwork: S.optional(SourceNetwork) })).annotate({
         identifier: "StartSourceNetworkReplicationResponse",
       });
     case 4:
@@ -5780,7 +6500,7 @@ function __c26(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: __S(9) }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagsMap }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -5797,7 +6517,7 @@ function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ recoveryInstanceIDs: __S(31) }).pipe(
+        S.Struct({ recoveryInstanceIDs: RecoveryInstancesForTerminationRequest }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/TerminateRecoveryInstances" }),
             svc,
@@ -5814,7 +6534,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(31).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -5856,9 +6576,9 @@ function __c27(j: number): any {
           targetInstanceTypeRightSizingMethod: S.optional(S.String),
           copyPrivateIp: S.optional(S.Boolean),
           copyTags: S.optional(S.Boolean),
-          licensing: S.optional(__S(44)),
+          licensing: S.optional(Licensing),
           postLaunchEnabled: S.optional(S.Boolean),
-          launchIntoInstanceProperties: S.optional(__S(141)),
+          launchIntoInstanceProperties: S.optional(LaunchIntoInstanceProperties),
           recoveryMode: S.optional(S.String),
         }).pipe(
           T.all(
@@ -5881,7 +6601,7 @@ function __c27(j: number): any {
           targetInstanceTypeRightSizingMethod: S.optional(S.String),
           copyPrivateIp: S.optional(S.Boolean),
           copyTags: S.optional(S.Boolean),
-          licensing: S.optional(__S(44)),
+          licensing: S.optional(Licensing),
           exportBucketArn: S.optional(S.String),
           postLaunchEnabled: S.optional(S.Boolean),
           launchIntoSourceInstance: S.optional(S.Boolean),
@@ -5923,7 +6643,7 @@ function __c27(j: number): any {
         S.Struct({
           recoveryPlanExecutionStepArn: S.String,
           status: S.optional(S.String),
-          servers: S.optional(__S(52)),
+          servers: S.optional(RecoveryPlanServers),
           waitDurationMinutes: S.optional(S.Number),
         }).pipe(
           T.all(
@@ -5943,7 +6663,7 @@ function __c27(j: number): any {
         S.Struct({
           recoveryPlanStepArn: S.String,
           stepName: S.optional(S.String),
-          configuration: S.optional(__S(55)),
+          configuration: S.optional(RecoveryPlanStepConfiguration),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/UpdateRecoveryPlanStep" }),
@@ -5968,18 +6688,18 @@ function __c28(j: number): any {
           name: S.optional(S.String),
           stagingAreaSubnetId: S.optional(S.String),
           associateDefaultSecurityGroup: S.optional(S.Boolean),
-          replicationServersSecurityGroupsIDs: S.optional(__S(31)),
+          replicationServersSecurityGroupsIDs: S.optional(ReplicationServersSecurityGroupsIDs),
           replicationServerInstanceType: S.optional(S.String),
           useDedicatedReplicationServer: S.optional(S.Boolean),
           defaultLargeStagingDiskType: S.optional(S.String),
-          replicatedDisks: S.optional(__S(156)),
+          replicatedDisks: S.optional(ReplicationConfigurationReplicatedDisks),
           ebsEncryption: S.optional(S.String),
           ebsEncryptionKeyArn: S.optional(S.String),
           bandwidthThrottling: S.optional(S.Number),
           dataPlaneRouting: S.optional(S.String),
           createPublicIP: S.optional(S.Boolean),
-          stagingAreaTags: S.optional(__S(9)),
-          pitPolicy: S.optional(__S(60)),
+          stagingAreaTags: S.optional(TagsMap),
+          pitPolicy: S.optional(PITPolicy),
           autoReplicateNewDisks: S.optional(S.Boolean),
           internetProtocol: S.optional(S.String),
         }).pipe(
@@ -6002,7 +6722,7 @@ function __c28(j: number): any {
           arn: S.optional(S.String),
           stagingAreaSubnetId: S.optional(S.String),
           associateDefaultSecurityGroup: S.optional(S.Boolean),
-          replicationServersSecurityGroupsIDs: S.optional(__S(31)),
+          replicationServersSecurityGroupsIDs: S.optional(ReplicationServersSecurityGroupsIDs),
           replicationServerInstanceType: S.optional(S.String),
           useDedicatedReplicationServer: S.optional(S.Boolean),
           defaultLargeStagingDiskType: S.optional(S.String),
@@ -6011,8 +6731,8 @@ function __c28(j: number): any {
           bandwidthThrottling: S.optional(S.Number),
           dataPlaneRouting: S.optional(S.String),
           createPublicIP: S.optional(S.Boolean),
-          stagingAreaTags: S.optional(__S(9)),
-          pitPolicy: S.optional(__S(60)),
+          stagingAreaTags: S.optional(TagsMap),
+          pitPolicy: S.optional(PITPolicy),
           autoReplicateNewDisks: S.optional(S.Boolean),
           internetProtocol: S.optional(S.String),
         }).pipe(
@@ -6033,73 +6753,6 @@ function __c28(j: number): any {
         S.Struct({ name: S.optional(S.String), message: S.optional(S.String) }),
       ).annotate({ identifier: "ValidationExceptionField" });
     case 3:
-      return S.Array(__S(226));
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
+      return S.Array(ValidationExceptionField);
   }
 }

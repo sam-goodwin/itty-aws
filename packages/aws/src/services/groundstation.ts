@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "GroundStation",
   serviceShapeName: "GroundStation",
@@ -128,70 +126,100 @@ export type Uuid = string;
 export interface CancelContactRequest {
   contactId: string;
 }
+const CancelContactRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CancelContactRequest>;
 export type VersionId = number;
 export interface ContactIdResponse {
   contactId?: string;
   versionId?: number;
 }
+const ContactIdResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ContactIdResponse>;
 export type SafeName = string;
 export type FrequencyUnits = "GHz" | "MHz" | "kHz" | (string & {});
+const FrequencyUnits = S.String;
+
 export interface Frequency {
   value: number;
   units: FrequencyUnits;
 }
+const Frequency = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Frequency>;
 export type BandwidthUnits = "GHz" | "MHz" | "kHz" | (string & {});
 export interface FrequencyBandwidth {
   value: number;
   units: BandwidthUnits;
 }
+const FrequencyBandwidth = Frequency as any as S.Schema<FrequencyBandwidth>;
 export type Polarization = "RIGHT_HAND" | "LEFT_HAND" | "NONE" | (string & {});
+const Polarization = S.String;
+
 export interface SpectrumConfig {
   centerFrequency: Frequency;
   bandwidth: FrequencyBandwidth;
   polarization?: Polarization;
 }
+const SpectrumConfig = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SpectrumConfig>;
 export interface AntennaDownlinkConfig {
   spectrumConfig: SpectrumConfig;
 }
+const AntennaDownlinkConfig = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AntennaDownlinkConfig>;
 export type Criticality = "REQUIRED" | "PREFERRED" | "REMOVED" | (string & {});
+const Criticality = S.String;
+
 export interface TrackingConfig {
   autotrack: Criticality;
 }
+const TrackingConfig = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<TrackingConfig>;
 export interface DataflowEndpointConfig {
   dataflowEndpointName: string;
   dataflowEndpointRegion?: string;
 }
+const DataflowEndpointConfig = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DataflowEndpointConfig>;
 export type JsonString = string;
 export interface DemodulationConfig {
   unvalidatedJSON: string;
 }
+const DemodulationConfig = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DemodulationConfig>;
 export interface DecodeConfig {
   unvalidatedJSON: string;
 }
+const DecodeConfig = DemodulationConfig as any as S.Schema<DecodeConfig>;
 export interface AntennaDownlinkDemodDecodeConfig {
   spectrumConfig: SpectrumConfig;
   demodulationConfig: DemodulationConfig;
   decodeConfig: DecodeConfig;
 }
+const AntennaDownlinkDemodDecodeConfig = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AntennaDownlinkDemodDecodeConfig>;
 export interface UplinkSpectrumConfig {
   centerFrequency: Frequency;
   polarization?: Polarization;
 }
+const UplinkSpectrumConfig = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<UplinkSpectrumConfig>;
 export type EirpUnits = "dBW" | (string & {});
 export interface Eirp {
   value: number;
   units: EirpUnits;
 }
+const Eirp = Frequency as any as S.Schema<Eirp>;
 export interface AntennaUplinkConfig {
   transmitDisabled?: boolean;
   spectrumConfig: UplinkSpectrumConfig;
   targetEirp: Eirp;
 }
+const AntennaUplinkConfig = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<AntennaUplinkConfig>;
 export type ConfigArn = string;
 export interface UplinkEchoConfig {
   enabled: boolean;
   antennaUplinkConfigArn: string;
 }
+const UplinkEchoConfig = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<UplinkEchoConfig>;
 export type BucketArn = string;
 export type RoleArn = string;
 export type S3KeyPrefix = string;
@@ -200,17 +228,26 @@ export interface S3RecordingConfig {
   roleArn: string;
   prefix?: string;
 }
+const S3RecordingConfig = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<S3RecordingConfig>;
 export type TelemetrySinkType = "KINESIS_DATA_STREAM" | (string & {});
+const TelemetrySinkType = S.String;
+
 export type KinesisDataStreamArn = string;
 export interface KinesisDataStreamData {
   kinesisRoleArn: string;
   kinesisDataStreamArn: string;
 }
+const KinesisDataStreamData = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<KinesisDataStreamData>;
 export type TelemetrySinkData = { kinesisDataStreamData: KinesisDataStreamData };
+const TelemetrySinkData = /*@__PURE__*/ __L.at(__c1, 6);
 export interface TelemetrySinkConfig {
   telemetrySinkType: TelemetrySinkType;
   telemetrySinkData: TelemetrySinkData;
 }
+const TelemetrySinkConfig = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<TelemetrySinkConfig>;
 export type ConfigTypeData =
   | {
       antennaDownlinkConfig: AntennaDownlinkConfig;
@@ -292,12 +329,15 @@ export type ConfigTypeData =
       s3RecordingConfig?: never;
       telemetrySinkConfig: TelemetrySinkConfig;
     };
+const ConfigTypeData = /*@__PURE__*/ __L.at(__c2, 0);
 export type TagsMap = { [key: string]: string | undefined };
+const TagsMap = /*@__PURE__*/ __L.at(__c2, 1);
 export interface CreateConfigRequest {
   name: string;
   configData: ConfigTypeData;
   tags?: { [key: string]: string | undefined };
 }
+const CreateConfigRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CreateConfigRequest>;
 export type ConfigCapabilityType =
   | "antenna-downlink"
   | "antenna-downlink-demod-decode"
@@ -308,22 +348,29 @@ export type ConfigCapabilityType =
   | "s3-recording"
   | "telemetry-sink"
   | (string & {});
+const ConfigCapabilityType = S.String;
+
 export interface ConfigIdResponse {
   configId?: string;
   configType?: ConfigCapabilityType;
   configArn?: string;
 }
+const ConfigIdResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ConfigIdResponse>;
 export type SubnetList = string[];
+const SubnetList = /*@__PURE__*/ __L.at(__c2, 4);
 export type SecurityGroupIdList = string[];
+const SecurityGroupIdList = SubnetList as any as S.Schema<SecurityGroupIdList>;
 export interface SecurityDetails {
   subnetIds: string[];
   securityGroupIds: string[];
   roleArn: string;
 }
+const SecurityDetails = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<SecurityDetails>;
 export interface SocketAddress {
   name: string;
   port: number;
 }
+const SocketAddress = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<SocketAddress>;
 export type EndpointStatus =
   | "created"
   | "creating"
@@ -331,31 +378,45 @@ export type EndpointStatus =
   | "deleting"
   | "failed"
   | (string & {});
+const EndpointStatus = S.String;
+
 export interface DataflowEndpoint {
   name?: string;
   address?: SocketAddress;
   status?: EndpointStatus;
   mtu?: number;
 }
+const DataflowEndpoint = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DataflowEndpoint>;
 export interface ConnectionDetails {
   socketAddress: SocketAddress;
   mtu?: number;
 }
+const ConnectionDetails = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ConnectionDetails>;
 export type IpV4Address = string;
 export interface IntegerRange {
   minimum: number;
   maximum: number;
 }
+const IntegerRange = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<IntegerRange>;
 export interface RangedSocketAddress {
   name: string;
   portRange: IntegerRange;
 }
+const RangedSocketAddress = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<RangedSocketAddress>;
 export interface RangedConnectionDetails {
   socketAddress: RangedSocketAddress;
   mtu?: number;
 }
+const RangedConnectionDetails = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<RangedConnectionDetails>;
 export type AgentStatus = "SUCCESS" | "FAILED" | "ACTIVE" | "INACTIVE" | (string & {});
+const AgentStatus = S.String;
+
 export type AuditResults = "HEALTHY" | "UNHEALTHY" | (string & {});
+const AuditResults = S.String;
+
 export interface AwsGroundStationAgentEndpoint {
   name: string;
   egressAddress: ConnectionDetails;
@@ -363,29 +424,53 @@ export interface AwsGroundStationAgentEndpoint {
   agentStatus?: AgentStatus;
   auditResults?: AuditResults;
 }
+const AwsGroundStationAgentEndpoint = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<AwsGroundStationAgentEndpoint>;
 export interface UplinkConnectionDetails {
   ingressAddressAndPort: ConnectionDetails;
   agentIpAndPortAddress: RangedConnectionDetails;
 }
+const UplinkConnectionDetails = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<UplinkConnectionDetails>;
 export type UplinkDataflowDetails = { agentConnectionDetails: UplinkConnectionDetails };
+const UplinkDataflowDetails = /*@__PURE__*/ __L.at(__c3, 6);
 export interface UplinkAwsGroundStationAgentEndpointDetails {
   name: string;
   dataflowDetails: UplinkDataflowDetails;
   agentStatus?: AgentStatus;
   auditResults?: AuditResults;
 }
+const UplinkAwsGroundStationAgentEndpointDetails = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<UplinkAwsGroundStationAgentEndpointDetails>;
 export interface DownlinkConnectionDetails {
   agentIpAndPortAddress: RangedConnectionDetails;
   egressAddressAndPort: ConnectionDetails;
 }
+const DownlinkConnectionDetails = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<DownlinkConnectionDetails>;
 export type DownlinkDataflowDetails = { agentConnectionDetails: DownlinkConnectionDetails };
+const DownlinkDataflowDetails = /*@__PURE__*/ __L.at(__c4, 1);
 export interface DownlinkAwsGroundStationAgentEndpointDetails {
   name: string;
   dataflowDetails: DownlinkDataflowDetails;
   agentStatus?: AgentStatus;
   auditResults?: AuditResults;
 }
+const DownlinkAwsGroundStationAgentEndpointDetails = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<DownlinkAwsGroundStationAgentEndpointDetails>;
 export type CapabilityHealth = "HEALTHY" | "UNHEALTHY" | (string & {});
+const CapabilityHealth = S.String;
+
 export type CapabilityHealthReason =
   | "NO_REGISTERED_AGENT"
   | "INVALID_IP_OWNERSHIP"
@@ -395,7 +480,10 @@ export type CapabilityHealthReason =
   | "DATAPLANE_FAILURE"
   | "HEALTHY"
   | (string & {});
+const CapabilityHealthReason = S.String;
+
 export type CapabilityHealthReasonList = CapabilityHealthReason[];
+const CapabilityHealthReasonList = /*@__PURE__*/ __L.at(__c4, 3);
 export interface EndpointDetails {
   securityDetails?: SecurityDetails;
   endpoint?: DataflowEndpoint;
@@ -405,7 +493,9 @@ export interface EndpointDetails {
   healthStatus?: CapabilityHealth;
   healthReasons?: CapabilityHealthReason[];
 }
+const EndpointDetails = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<EndpointDetails>;
 export type EndpointDetailsList = EndpointDetails[];
+const EndpointDetailsList = /*@__PURE__*/ __L.at(__c4, 5);
 export type DataflowEndpointGroupDurationInSeconds = number;
 export interface CreateDataflowEndpointGroupRequest {
   endpointDetails: EndpointDetails[];
@@ -413,17 +503,33 @@ export interface CreateDataflowEndpointGroupRequest {
   contactPrePassDurationSeconds?: number;
   contactPostPassDurationSeconds?: number;
 }
+const CreateDataflowEndpointGroupRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateDataflowEndpointGroupRequest>;
 export interface DataflowEndpointGroupIdResponse {
   dataflowEndpointGroupId?: string;
 }
+const DataflowEndpointGroupIdResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<DataflowEndpointGroupIdResponse>;
 export interface UplinkAwsGroundStationAgentEndpoint {
   name: string;
   dataflowDetails: UplinkDataflowDetails;
 }
+const UplinkAwsGroundStationAgentEndpoint = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<UplinkAwsGroundStationAgentEndpoint>;
 export interface DownlinkAwsGroundStationAgentEndpoint {
   name: string;
   dataflowDetails: DownlinkDataflowDetails;
 }
+const DownlinkAwsGroundStationAgentEndpoint = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<DownlinkAwsGroundStationAgentEndpoint>;
 export type CreateEndpointDetails =
   | {
       uplinkAwsGroundStationAgentEndpoint: UplinkAwsGroundStationAgentEndpoint;
@@ -433,16 +539,24 @@ export type CreateEndpointDetails =
       uplinkAwsGroundStationAgentEndpoint?: never;
       downlinkAwsGroundStationAgentEndpoint: DownlinkAwsGroundStationAgentEndpoint;
     };
+const CreateEndpointDetails = /*@__PURE__*/ __L.at(__c5, 2);
 export type CreateEndpointDetailsList = CreateEndpointDetails[];
+const CreateEndpointDetailsList = /*@__PURE__*/ __L.at(__c5, 3);
 export interface CreateDataflowEndpointGroupV2Request {
   endpoints: CreateEndpointDetails[];
   contactPrePassDurationSeconds?: number;
   contactPostPassDurationSeconds?: number;
   tags?: { [key: string]: string | undefined };
 }
+const CreateDataflowEndpointGroupV2Request = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreateDataflowEndpointGroupV2Request>;
 export interface CreateDataflowEndpointGroupV2Response {
   dataflowEndpointGroupId?: string;
 }
+const CreateDataflowEndpointGroupV2Response =
+  DataflowEndpointGroupIdResponse as any as S.Schema<CreateDataflowEndpointGroupV2Response>;
 export type CustomerEphemerisPriority = number;
 export type KeyArn = string;
 export type S3BucketName = string;
@@ -453,60 +567,77 @@ export interface S3Object {
   key?: string;
   version?: string;
 }
+const S3Object = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<S3Object>;
 export type TleLineOne = string;
 export type TleLineTwo = string;
 export interface TimeRange {
   startTime: Date;
   endTime: Date;
 }
+const TimeRange = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<TimeRange>;
 export interface TLEData {
   tleLine1: string;
   tleLine2: string;
   validTimeRange: TimeRange;
 }
+const TLEData = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<TLEData>;
 export type TLEDataList = TLEData[];
+const TLEDataList = /*@__PURE__*/ __L.at(__c6, 0);
 export interface TLEEphemeris {
   s3Object?: S3Object;
   tleData?: TLEData[];
 }
+const TLEEphemeris = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<TLEEphemeris>;
 export type UnboundedString = string;
 export interface OEMEphemeris {
   s3Object?: S3Object;
   oemData?: string;
 }
+const OEMEphemeris = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<OEMEphemeris>;
 export type GroundStationName = string;
 export type AngleUnits = "DEGREE_ANGLE" | "RADIAN" | (string & {});
+const AngleUnits = S.String;
+
 export interface ISO8601TimeRange {
   startTime: Date;
   endTime: Date;
 }
+const ISO8601TimeRange = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ISO8601TimeRange>;
 export interface TimeAzEl {
   dt: number;
   az: number;
   el: number;
 }
+const TimeAzEl = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<TimeAzEl>;
 export type TimeAzElList = TimeAzEl[];
+const TimeAzElList = /*@__PURE__*/ __L.at(__c6, 5);
 export interface AzElSegment {
   referenceEpoch: Date;
   validTimeRange: ISO8601TimeRange;
   azElList: TimeAzEl[];
 }
+const AzElSegment = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<AzElSegment>;
 export type AzElSegmentList = AzElSegment[];
+const AzElSegmentList = /*@__PURE__*/ __L.at(__c6, 7);
 export interface AzElSegments {
   angleUnit: AngleUnits;
   azElSegmentList: AzElSegment[];
 }
+const AzElSegments = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<AzElSegments>;
 export type AzElSegmentsData =
   | { s3Object: S3Object; azElData?: never }
   | { s3Object?: never; azElData: AzElSegments };
+const AzElSegmentsData = /*@__PURE__*/ __L.at(__c7, 1);
 export interface AzElEphemeris {
   groundStation: string;
   data: AzElSegmentsData;
 }
+const AzElEphemeris = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<AzElEphemeris>;
 export type EphemerisData =
   | { tle: TLEEphemeris; oem?: never; azEl?: never }
   | { tle?: never; oem: OEMEphemeris; azEl?: never }
   | { tle?: never; oem?: never; azEl: AzElEphemeris };
+const EphemerisData = /*@__PURE__*/ __L.at(__c7, 3);
 export interface CreateEphemerisRequest {
   satelliteId?: string;
   enabled?: boolean;
@@ -517,19 +648,27 @@ export interface CreateEphemerisRequest {
   ephemeris?: EphemerisData;
   tags?: { [key: string]: string | undefined };
 }
+const CreateEphemerisRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<CreateEphemerisRequest>;
 export interface EphemerisIdResponse {
   ephemerisId?: string;
 }
+const EphemerisIdResponse = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<EphemerisIdResponse>;
 export type DurationInSeconds = number;
 export type PositiveDurationInSeconds = number;
 export type DataflowEdge = string[];
+const DataflowEdge = SubnetList as any as S.Schema<DataflowEdge>;
 export type DataflowEdgeList = string[][];
+const DataflowEdgeList = /*@__PURE__*/ __L.at(__c7, 6);
 export type KeyAliasArn = string;
 export type KeyAliasName = string;
 export type KmsKey =
   | { kmsKeyArn: string; kmsAliasArn?: never; kmsAliasName?: never }
   | { kmsKeyArn?: never; kmsAliasArn: string; kmsAliasName?: never }
   | { kmsKeyArn?: never; kmsAliasArn?: never; kmsAliasName: string };
+const KmsKey = /*@__PURE__*/ __L.at(__c7, 7);
 export interface CreateMissionProfileRequest {
   name: string;
   contactPrePassDurationSeconds?: number;
@@ -542,25 +681,50 @@ export interface CreateMissionProfileRequest {
   streamsKmsKey?: KmsKey;
   streamsKmsRole?: string;
 }
+const CreateMissionProfileRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<CreateMissionProfileRequest>;
 export interface MissionProfileIdResponse {
   missionProfileId?: string;
 }
+const MissionProfileIdResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<MissionProfileIdResponse>;
 export interface DeleteConfigRequest {
   configId: string;
   configType: ConfigCapabilityType;
 }
+const DeleteConfigRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<DeleteConfigRequest>;
 export interface DeleteDataflowEndpointGroupRequest {
   dataflowEndpointGroupId: string;
 }
+const DeleteDataflowEndpointGroupRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DeleteDataflowEndpointGroupRequest>;
 export interface DeleteEphemerisRequest {
   ephemerisId: string;
 }
+const DeleteEphemerisRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<DeleteEphemerisRequest>;
 export interface DeleteMissionProfileRequest {
   missionProfileId: string;
 }
+const DeleteMissionProfileRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DeleteMissionProfileRequest>;
 export interface DescribeContactRequest {
   contactId: string;
 }
+const DescribeContactRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DescribeContactRequest>;
 export type MissionProfileArn = string;
 export type SatelliteArn = string;
 export type ContactStatus =
@@ -578,17 +742,25 @@ export type ContactStatus =
   | "CANCELLING"
   | "AWS_FAILED"
   | (string & {});
+const ContactStatus = S.String;
+
 export interface Elevation {
   value: number;
   unit: AngleUnits;
 }
+const Elevation = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<Elevation>;
 export interface AntennaDemodDecodeDetails {
   outputNode?: string;
 }
+const AntennaDemodDecodeDetails = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<AntennaDemodDecodeDetails>;
 export interface S3RecordingDetails {
   bucketArn?: string;
   keyTemplate?: string;
 }
+const S3RecordingDetails = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<S3RecordingDetails>;
 export type ConfigDetails =
   | {
       endpointDetails: EndpointDetails;
@@ -605,51 +777,74 @@ export type ConfigDetails =
       antennaDemodDecodeDetails?: never;
       s3RecordingDetails: S3RecordingDetails;
     };
+const ConfigDetails = /*@__PURE__*/ __L.at(__c9, 2);
 export interface Source {
   configType?: ConfigCapabilityType;
   configId?: string;
   configDetails?: ConfigDetails;
   dataflowSourceRegion?: string;
 }
+const Source = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<Source>;
 export interface Destination {
   configType?: ConfigCapabilityType;
   configId?: string;
   configDetails?: ConfigDetails;
   dataflowDestinationRegion?: string;
 }
+const Destination = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<Destination>;
 export interface DataflowDetail {
   source?: Source;
   destination?: Destination;
   errorMessage?: string;
 }
+const DataflowDetail = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<DataflowDetail>;
 export type DataflowList = DataflowDetail[];
+const DataflowList = /*@__PURE__*/ __L.at(__c9, 6);
 export interface AzElProgramTrackSettings {
   ephemerisId: string;
 }
+const AzElProgramTrackSettings = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<AzElProgramTrackSettings>;
 export interface OemProgramTrackSettings {
   ephemerisId: string;
 }
+const OemProgramTrackSettings =
+  AzElProgramTrackSettings as any as S.Schema<OemProgramTrackSettings>;
 export interface TleProgramTrackSettings {
   ephemerisId: string;
 }
+const TleProgramTrackSettings =
+  AzElProgramTrackSettings as any as S.Schema<TleProgramTrackSettings>;
 export type ProgramTrackSettings =
   | { azEl: AzElProgramTrackSettings; oem?: never; tle?: never }
   | { azEl?: never; oem: OemProgramTrackSettings; tle?: never }
   | { azEl?: never; oem?: never; tle: TleProgramTrackSettings };
+const ProgramTrackSettings = /*@__PURE__*/ __L.at(__c10, 0);
 export interface TrackingOverrides {
   programTrackSettings?: ProgramTrackSettings;
 }
+const TrackingOverrides = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<TrackingOverrides>;
 export type EphemerisType = "TLE" | "OEM" | "AZ_EL" | "SERVICE_MANAGED" | (string & {});
+const EphemerisType = S.String;
+
 export interface EphemerisResponseData {
   ephemerisId?: string;
   ephemerisType: EphemerisType;
 }
+const EphemerisResponseData = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<EphemerisResponseData>;
 export type VersionStatus =
   | "UPDATING"
   | "ACTIVE"
   | "SUPERSEDED"
   | "FAILED_TO_UPDATE"
   | (string & {});
+const VersionStatus = S.String;
+
 export type VersionFailureReasonCode =
   | "INTERNAL_ERROR"
   | "INVALID_SATELLITE_ARN"
@@ -665,6 +860,8 @@ export type VersionFailureReasonCode =
   | "AZEL_EPHEMERIS_TIME_RANGE_INVALID"
   | (string & {});
 export type VersionFailureReasonCodes = VersionFailureReasonCode[];
+const VersionFailureReasonCodes =
+  CapabilityHealthReasonList as any as S.Schema<VersionFailureReasonCodes>;
 export interface ContactVersion {
   versionId?: number;
   created?: Date;
@@ -675,6 +872,7 @@ export interface ContactVersion {
   failureCodes?: VersionFailureReasonCode[];
   failureMessage?: string;
 }
+const ContactVersion = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<ContactVersion>;
 export interface DescribeContactResponse {
   contactId?: string;
   missionProfileArn?: string;
@@ -696,10 +894,18 @@ export interface DescribeContactResponse {
   ephemeris?: EphemerisResponseData;
   version?: ContactVersion;
 }
+const DescribeContactResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<DescribeContactResponse>;
 export interface DescribeContactVersionRequest {
   contactId: string;
   versionId: number;
 }
+const DescribeContactVersionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<DescribeContactVersionRequest>;
 export interface DescribeContactVersionResponse {
   contactId?: string;
   missionProfileArn?: string;
@@ -721,9 +927,17 @@ export interface DescribeContactVersionResponse {
   ephemeris?: EphemerisResponseData;
   version?: ContactVersion;
 }
+const DescribeContactVersionResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<DescribeContactVersionResponse>;
 export interface DescribeEphemerisRequest {
   ephemerisId: string;
 }
+const DescribeEphemerisRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<DescribeEphemerisRequest>;
 export type EphemerisStatus =
   | "VALIDATING"
   | "INVALID"
@@ -732,15 +946,22 @@ export type EphemerisStatus =
   | "DISABLED"
   | "EXPIRED"
   | (string & {});
+const EphemerisStatus = S.String;
+
 export type EphemerisPriority = number;
 export interface EphemerisDescription {
   sourceS3Object?: S3Object;
   ephemerisData?: string;
 }
+const EphemerisDescription = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<EphemerisDescription>;
 export type EphemerisTypeDescription =
   | { tle: EphemerisDescription; oem?: never; azEl?: never }
   | { tle?: never; oem: EphemerisDescription; azEl?: never }
   | { tle?: never; oem?: never; azEl: EphemerisDescription };
+const EphemerisTypeDescription = /*@__PURE__*/ __L.at(__c11, 1);
 export type EphemerisInvalidReason =
   | "METADATA_INVALID"
   | "TIME_RANGE_INVALID"
@@ -748,6 +969,8 @@ export type EphemerisInvalidReason =
   | "KMS_KEY_INVALID"
   | "VALIDATION_ERROR"
   | (string & {});
+const EphemerisInvalidReason = S.String;
+
 export type EphemerisErrorCode =
   | "INTERNAL_ERROR"
   | "MISMATCHED_SATCAT_ID"
@@ -788,12 +1011,19 @@ export type EphemerisErrorCode =
   | "AZ_EL_SEGMENT_END_TIME_TOO_LATE"
   | "AZ_EL_TOTAL_DURATION_EXCEEDED"
   | (string & {});
+const EphemerisErrorCode = S.String;
+
 export type ErrorString = string;
 export interface EphemerisErrorReason {
   errorCode: EphemerisErrorCode;
   errorMessage: string;
 }
+const EphemerisErrorReason = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<EphemerisErrorReason>;
 export type EphemerisErrorReasonList = EphemerisErrorReason[];
+const EphemerisErrorReasonList = /*@__PURE__*/ __L.at(__c11, 3);
 export interface DescribeEphemerisResponse {
   ephemerisId?: string;
   satelliteId?: string;
@@ -807,26 +1037,47 @@ export interface DescribeEphemerisResponse {
   invalidReason?: EphemerisInvalidReason;
   errorReasons?: EphemerisErrorReason[];
 }
+const DescribeEphemerisResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<DescribeEphemerisResponse>;
 export interface GetAgentConfigurationRequest {
   agentId: string;
 }
+const GetAgentConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GetAgentConfigurationRequest>;
 export interface GetAgentConfigurationResponse {
   agentId?: string;
   taskingDocument?: string;
 }
+const GetAgentConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<GetAgentConfigurationResponse>;
 export interface GetAgentTaskResponseUrlRequest {
   agentId: string;
   taskId: string;
 }
+const GetAgentTaskResponseUrlRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GetAgentTaskResponseUrlRequest>;
 export interface GetAgentTaskResponseUrlResponse {
   agentId: string;
   taskId: string;
   presignedLogUrl: string;
 }
+const GetAgentTaskResponseUrlResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<GetAgentTaskResponseUrlResponse>;
 export interface GetConfigRequest {
   configId: string;
   configType: ConfigCapabilityType;
 }
+const GetConfigRequest = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<GetConfigRequest>;
 export interface GetConfigResponse {
   configId: string;
   configArn: string;
@@ -835,9 +1086,14 @@ export interface GetConfigResponse {
   configData: ConfigTypeData;
   tags?: { [key: string]: string | undefined };
 }
+const GetConfigResponse = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<GetConfigResponse>;
 export interface GetDataflowEndpointGroupRequest {
   dataflowEndpointGroupId: string;
 }
+const GetDataflowEndpointGroupRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<GetDataflowEndpointGroupRequest>;
 export type DataflowEndpointGroupArn = string;
 export interface GetDataflowEndpointGroupResponse {
   dataflowEndpointGroupId?: string;
@@ -847,12 +1103,20 @@ export interface GetDataflowEndpointGroupResponse {
   contactPrePassDurationSeconds?: number;
   contactPostPassDurationSeconds?: number;
 }
+const GetDataflowEndpointGroupResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GetDataflowEndpointGroupResponse>;
 export type Month = number;
 export type Year = number;
 export interface GetMinuteUsageRequest {
   month: number;
   year: number;
 }
+const GetMinuteUsageRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GetMinuteUsageRequest>;
 export interface GetMinuteUsageResponse {
   isReservedMinutesCustomer?: boolean;
   totalReservedMinuteAllocation?: number;
@@ -860,9 +1124,17 @@ export interface GetMinuteUsageResponse {
   totalScheduledMinutes?: number;
   estimatedMinutesRemaining?: number;
 }
+const GetMinuteUsageResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<GetMinuteUsageResponse>;
 export interface GetMissionProfileRequest {
   missionProfileId: string;
 }
+const GetMissionProfileRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<GetMissionProfileRequest>;
 export type AWSRegion = string;
 export interface GetMissionProfileResponse {
   missionProfileId?: string;
@@ -879,18 +1151,27 @@ export interface GetMissionProfileResponse {
   streamsKmsKey?: KmsKey;
   streamsKmsRole?: string;
 }
+const GetMissionProfileResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<GetMissionProfileResponse>;
 export interface GetSatelliteRequest {
   satelliteId: string;
 }
+const GetSatelliteRequest = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<GetSatelliteRequest>;
 export type NoradSatelliteID = number;
 export type GroundStationIdList = string[];
+const GroundStationIdList = SubnetList as any as S.Schema<GroundStationIdList>;
 export type EphemerisSource = "CUSTOMER_PROVIDED" | "SPACE_TRACK" | (string & {});
+const EphemerisSource = S.String;
+
 export interface EphemerisMetaData {
   source: EphemerisSource;
   ephemerisId?: string;
   epoch?: Date;
   name?: string;
 }
+const EphemerisMetaData = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<EphemerisMetaData>;
 export interface GetSatelliteResponse {
   satelliteId?: string;
   satelliteArn?: string;
@@ -898,6 +1179,10 @@ export interface GetSatelliteResponse {
   groundStations?: string[];
   currentEphemeris?: EphemerisMetaData;
 }
+const GetSatelliteResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<GetSatelliteResponse>;
 export type PaginationMaxResults = number;
 export type PaginationToken = string;
 export interface ListAntennasRequest {
@@ -905,37 +1190,51 @@ export interface ListAntennasRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListAntennasRequest = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<ListAntennasRequest>;
 export type AntennaName = string;
 export interface AntennaListItem {
   groundStationName: string;
   antennaName: string;
   region: string;
 }
+const AntennaListItem = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<AntennaListItem>;
 export type AntennaList = AntennaListItem[];
+const AntennaList = /*@__PURE__*/ __L.at(__c13, 6);
 export interface ListAntennasResponse {
   antennaList: AntennaListItem[];
   nextToken?: string;
 }
+const ListAntennasResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<ListAntennasResponse>;
 export interface ListConfigsRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListConfigsRequest = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<ListConfigsRequest>;
 export interface ConfigListItem {
   configId?: string;
   configType?: ConfigCapabilityType;
   configArn?: string;
   name?: string;
 }
+const ConfigListItem = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<ConfigListItem>;
 export type ConfigList = ConfigListItem[];
+const ConfigList = /*@__PURE__*/ __L.at(__c14, 2);
 export interface ListConfigsResponse {
   nextToken?: string;
   configList?: ConfigListItem[];
 }
+const ListConfigsResponse = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<ListConfigsResponse>;
 export type StatusList = ContactStatus[];
+const StatusList = CapabilityHealthReasonList as any as S.Schema<StatusList>;
 export interface AzElEphemerisFilter {
   id: string;
 }
+const AzElEphemerisFilter = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<AzElEphemerisFilter>;
 export type EphemerisFilter = { azEl: AzElEphemerisFilter };
+const EphemerisFilter = /*@__PURE__*/ __L.at(__c14, 5);
 export interface ListContactsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -947,6 +1246,7 @@ export interface ListContactsRequest {
   missionProfileArn?: string;
   ephemeris?: EphemerisFilter;
 }
+const ListContactsRequest = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<ListContactsRequest>;
 export interface ContactData {
   contactId?: string;
   missionProfileArn?: string;
@@ -966,35 +1266,64 @@ export interface ContactData {
   ephemeris?: EphemerisResponseData;
   version?: ContactVersion;
 }
+const ContactData = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<ContactData>;
 export type ContactList = ContactData[];
+const ContactList = /*@__PURE__*/ __L.at(__c15, 0);
 export interface ListContactsResponse {
   nextToken?: string;
   contactList?: ContactData[];
 }
+const ListContactsResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ListContactsResponse>;
 export interface ListContactVersionsRequest {
   contactId: string;
   maxResults?: number;
   nextToken?: string;
 }
+const ListContactVersionsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ListContactVersionsRequest>;
 export type ContactVersionsList = ContactVersion[];
+const ContactVersionsList = /*@__PURE__*/ __L.at(__c15, 3);
 export interface ListContactVersionsResponse {
   nextToken?: string;
   contactVersionsList?: ContactVersion[];
 }
+const ListContactVersionsResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<ListContactVersionsResponse>;
 export interface ListDataflowEndpointGroupsRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListDataflowEndpointGroupsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ListDataflowEndpointGroupsRequest>;
 export interface DataflowEndpointListItem {
   dataflowEndpointGroupId?: string;
   dataflowEndpointGroupArn?: string;
 }
+const DataflowEndpointListItem = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<DataflowEndpointListItem>;
 export type DataflowEndpointGroupList = DataflowEndpointListItem[];
+const DataflowEndpointGroupList = /*@__PURE__*/ __L.at(__c15, 7);
 export interface ListDataflowEndpointGroupsResponse {
   nextToken?: string;
   dataflowEndpointGroupList?: DataflowEndpointListItem[];
 }
+const ListDataflowEndpointGroupsResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ListDataflowEndpointGroupsResponse>;
 export type EphemerisStatusList = EphemerisStatus[];
+const EphemerisStatusList = CapabilityHealthReasonList as any as S.Schema<EphemerisStatusList>;
 export interface ListEphemeridesRequest {
   satelliteId?: string;
   ephemerisType?: EphemerisType;
@@ -1004,6 +1333,10 @@ export interface ListEphemeridesRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListEphemeridesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ListEphemeridesRequest>;
 export interface EphemerisItem {
   ephemerisId?: string;
   ephemerisType?: EphemerisType;
@@ -1014,13 +1347,23 @@ export interface EphemerisItem {
   name?: string;
   sourceS3Object?: S3Object;
 }
+const EphemerisItem = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<EphemerisItem>;
 export type EphemeridesList = EphemerisItem[];
+const EphemeridesList = /*@__PURE__*/ __L.at(__c16, 3);
 export interface ListEphemeridesResponse {
   nextToken?: string;
   ephemerides?: EphemerisItem[];
 }
+const ListEphemeridesResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ListEphemeridesResponse>;
 export type ReservationType = "MAINTENANCE" | "CONTACT" | (string & {});
+const ReservationType = S.String;
+
 export type ReservationTypeFilterList = ReservationType[];
+const ReservationTypeFilterList =
+  CapabilityHealthReasonList as any as S.Schema<ReservationTypeFilterList>;
 export interface ListGroundStationReservationsRequest {
   groundStationId: string;
   startTime: Date;
@@ -1029,16 +1372,31 @@ export interface ListGroundStationReservationsRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListGroundStationReservationsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ListGroundStationReservationsRequest>;
 export type MaintenanceType = "PLANNED" | "UNPLANNED" | (string & {});
+const MaintenanceType = S.String;
+
 export interface MaintenanceReservationDetails {
   maintenanceType: MaintenanceType;
 }
+const MaintenanceReservationDetails = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<MaintenanceReservationDetails>;
 export interface ContactReservationDetails {
   contactId?: string;
 }
+const ContactReservationDetails = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ContactReservationDetails>;
 export type ReservationDetails =
   | { maintenance: MaintenanceReservationDetails; contact?: never }
   | { maintenance?: never; contact: ContactReservationDetails };
+const ReservationDetails = /*@__PURE__*/ __L.at(__c17, 0);
 export interface GroundStationReservationListItem {
   reservationType: ReservationType;
   groundStationId: string;
@@ -1047,45 +1405,81 @@ export interface GroundStationReservationListItem {
   endTime: Date;
   reservationDetails: ReservationDetails;
 }
+const GroundStationReservationListItem = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<GroundStationReservationListItem>;
 export type GroundStationReservationList = GroundStationReservationListItem[];
+const GroundStationReservationList = /*@__PURE__*/ __L.at(__c17, 2);
 export interface ListGroundStationReservationsResponse {
   reservationList: GroundStationReservationListItem[];
   nextToken?: string;
 }
+const ListGroundStationReservationsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ListGroundStationReservationsResponse>;
 export interface ListGroundStationsRequest {
   satelliteId?: string;
   maxResults?: number;
   nextToken?: string;
 }
+const ListGroundStationsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<ListGroundStationsRequest>;
 export interface GroundStationData {
   groundStationId?: string;
   groundStationName?: string;
   region?: string;
 }
+const GroundStationData = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<GroundStationData>;
 export type GroundStationList = GroundStationData[];
+const GroundStationList = /*@__PURE__*/ __L.at(__c17, 6);
 export interface ListGroundStationsResponse {
   nextToken?: string;
   groundStationList?: GroundStationData[];
 }
+const ListGroundStationsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<ListGroundStationsResponse>;
 export interface ListMissionProfilesRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListMissionProfilesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<ListMissionProfilesRequest>;
 export interface MissionProfileListItem {
   missionProfileId?: string;
   missionProfileArn?: string;
   region?: string;
   name?: string;
 }
+const MissionProfileListItem = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<MissionProfileListItem>;
 export type MissionProfileList = MissionProfileListItem[];
+const MissionProfileList = /*@__PURE__*/ __L.at(__c18, 2);
 export interface ListMissionProfilesResponse {
   nextToken?: string;
   missionProfileList?: MissionProfileListItem[];
 }
+const ListMissionProfilesResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<ListMissionProfilesResponse>;
 export interface ListSatellitesRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListSatellitesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<ListSatellitesRequest>;
 export interface SatelliteListItem {
   satelliteId?: string;
   satelliteArn?: string;
@@ -1093,37 +1487,58 @@ export interface SatelliteListItem {
   groundStations?: string[];
   currentEphemeris?: EphemerisMetaData;
 }
+const SatelliteListItem = GetSatelliteResponse as any as S.Schema<SatelliteListItem>;
 export type SatelliteList = SatelliteListItem[];
+const SatelliteList = /*@__PURE__*/ __L.at(__c18, 5);
 export interface ListSatellitesResponse {
   nextToken?: string;
   satellites?: SatelliteListItem[];
 }
+const ListSatellitesResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<ListSatellitesResponse>;
 export type AnyArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export type IpAddressList = string[];
+const IpAddressList = SubnetList as any as S.Schema<IpAddressList>;
 export type CapabilityArn = string;
 export type CapabilityArnList = string[];
+const CapabilityArnList = SubnetList as any as S.Schema<CapabilityArnList>;
 export interface DiscoveryData {
   publicIpAddresses: string[];
   privateIpAddresses: string[];
   capabilityArns: string[];
 }
+const DiscoveryData = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<DiscoveryData>;
 export type VersionString = string;
 export type InstanceId = string;
 export type InstanceType = string;
 export type AgentCpuCoresList = number[];
+const AgentCpuCoresList = /*@__PURE__*/ __L.at(__c19, 2);
 export type ComponentTypeString = string;
 export type VersionStringList = string[];
+const VersionStringList = SubnetList as any as S.Schema<VersionStringList>;
 export interface ComponentVersion {
   componentType: string;
   versions: string[];
 }
+const ComponentVersion = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<ComponentVersion>;
 export type ComponentVersionList = ComponentVersion[];
+const ComponentVersionList = /*@__PURE__*/ __L.at(__c19, 4);
 export interface AgentDetails {
   agentVersion: string;
   instanceId: string;
@@ -1132,14 +1547,23 @@ export interface AgentDetails {
   agentCpuCores?: number[];
   componentVersions: ComponentVersion[];
 }
+const AgentDetails = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<AgentDetails>;
 export interface RegisterAgentRequest {
   discoveryData: DiscoveryData;
   agentDetails: AgentDetails;
   tags?: { [key: string]: string | undefined };
 }
+const RegisterAgentRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<RegisterAgentRequest>;
 export interface RegisterAgentResponse {
   agentId?: string;
 }
+const RegisterAgentResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<RegisterAgentResponse>;
 export interface ReserveContactRequest {
   missionProfileArn: string;
   satelliteArn?: string;
@@ -1149,22 +1573,36 @@ export interface ReserveContactRequest {
   tags?: { [key: string]: string | undefined };
   trackingOverrides?: TrackingOverrides;
 }
+const ReserveContactRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ReserveContactRequest>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
+const TagKeys = SubnetList as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type SignatureMap = { [key: string]: boolean | undefined };
+const SignatureMap = /*@__PURE__*/ __L.at(__c20, 4);
 export interface AggregateStatus {
   status: AgentStatus;
   signatureMap?: { [key: string]: boolean | undefined };
 }
+const AggregateStatus = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<AggregateStatus>;
 export interface ComponentStatusData {
   componentType: string;
   capabilityArn: string;
@@ -1174,22 +1612,33 @@ export interface ComponentStatusData {
   packetsDropped?: number;
   dataflowId: string;
 }
+const ComponentStatusData = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<ComponentStatusData>;
 export type ComponentStatusList = ComponentStatusData[];
+const ComponentStatusList = /*@__PURE__*/ __L.at(__c20, 7);
 export interface UpdateAgentStatusRequest {
   agentId: string;
   taskId: string;
   aggregateStatus: AggregateStatus;
   componentStatuses: ComponentStatusData[];
 }
+const UpdateAgentStatusRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<UpdateAgentStatusRequest>;
 export interface UpdateAgentStatusResponse {
   agentId: string;
 }
+const UpdateAgentStatusResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<UpdateAgentStatusResponse>;
 export interface UpdateConfigRequest {
   configId: string;
   name: string;
   configType: ConfigCapabilityType;
   configData: ConfigTypeData;
 }
+const UpdateConfigRequest = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<UpdateConfigRequest>;
 export type ClientToken = string;
 export interface UpdateContactRequest {
   contactId: string;
@@ -1197,16 +1646,25 @@ export interface UpdateContactRequest {
   trackingOverrides?: TrackingOverrides;
   satelliteArn?: string;
 }
+const UpdateContactRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<UpdateContactRequest>;
 export interface UpdateContactResponse {
   contactId?: string;
   versionId?: number;
 }
+const UpdateContactResponse = ContactIdResponse as any as S.Schema<UpdateContactResponse>;
 export interface UpdateEphemerisRequest {
   ephemerisId: string;
   enabled: boolean;
   name?: string;
   priority?: number;
 }
+const UpdateEphemerisRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<UpdateEphemerisRequest>;
 export interface UpdateMissionProfileRequest {
   missionProfileId: string;
   name?: string;
@@ -1219,6 +1677,10 @@ export interface UpdateMissionProfileRequest {
   streamsKmsKey?: KmsKey;
   streamsKmsRole?: string;
 }
+const UpdateMissionProfileRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<UpdateMissionProfileRequest>;
 export type CancelContactError =
   | DependencyException
   | InvalidParameterException
@@ -1239,8 +1701,8 @@ export const cancelContact: API.OperationMethod<
   CancelContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CancelContactRequest>,
-  output: __S(1) as any as S.Schema<ContactIdResponse>,
+  input: CancelContactRequest,
+  output: ContactIdResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1264,8 +1726,8 @@ export const createConfig: API.OperationMethod<
   CreateConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CreateConfigRequest>,
-  output: __S(19) as any as S.Schema<ConfigIdResponse>,
+  input: CreateConfigRequest,
+  output: ConfigIdResponse,
   errors: [
     DependencyException,
     InvalidParameterException,
@@ -1295,8 +1757,8 @@ export const createDataflowEndpointGroup: API.OperationMethod<
   CreateDataflowEndpointGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<CreateDataflowEndpointGroupRequest>,
-  output: __S(39) as any as S.Schema<DataflowEndpointGroupIdResponse>,
+  input: CreateDataflowEndpointGroupRequest,
+  output: DataflowEndpointGroupIdResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1322,8 +1784,8 @@ export const createDataflowEndpointGroupV2: API.OperationMethod<
   CreateDataflowEndpointGroupV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<CreateDataflowEndpointGroupV2Request>,
-  output: __S(39) as any as S.Schema<CreateDataflowEndpointGroupV2Response>,
+  input: CreateDataflowEndpointGroupV2Request,
+  output: CreateDataflowEndpointGroupV2Response,
   errors: [
     DependencyException,
     InvalidParameterException,
@@ -1349,8 +1811,8 @@ export const createEphemeris: API.OperationMethod<
   CreateEphemerisError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<CreateEphemerisRequest>,
-  output: __S(61) as any as S.Schema<EphemerisIdResponse>,
+  input: CreateEphemerisRequest,
+  output: EphemerisIdResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1373,8 +1835,8 @@ export const createMissionProfile: API.OperationMethod<
   CreateMissionProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<CreateMissionProfileRequest>,
-  output: __S(65) as any as S.Schema<MissionProfileIdResponse>,
+  input: CreateMissionProfileRequest,
+  output: MissionProfileIdResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1395,8 +1857,8 @@ export const deleteConfig: API.OperationMethod<
   DeleteConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<DeleteConfigRequest>,
-  output: __S(19) as any as S.Schema<ConfigIdResponse>,
+  input: DeleteConfigRequest,
+  output: ConfigIdResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1417,8 +1879,8 @@ export const deleteDataflowEndpointGroup: API.OperationMethod<
   DeleteDataflowEndpointGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<DeleteDataflowEndpointGroupRequest>,
-  output: __S(39) as any as S.Schema<DataflowEndpointGroupIdResponse>,
+  input: DeleteDataflowEndpointGroupRequest,
+  output: DataflowEndpointGroupIdResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1440,8 +1902,8 @@ export const deleteEphemeris: API.OperationMethod<
   DeleteEphemerisError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<DeleteEphemerisRequest>,
-  output: __S(61) as any as S.Schema<EphemerisIdResponse>,
+  input: DeleteEphemerisRequest,
+  output: EphemerisIdResponse,
   errors: [
     DependencyException,
     InvalidParameterException,
@@ -1467,8 +1929,8 @@ export const deleteMissionProfile: API.OperationMethod<
   DeleteMissionProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<DeleteMissionProfileRequest>,
-  output: __S(65) as any as S.Schema<MissionProfileIdResponse>,
+  input: DeleteMissionProfileRequest,
+  output: MissionProfileIdResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1489,8 +1951,8 @@ export const describeContact: API.OperationMethod<
   DescribeContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<DescribeContactRequest>,
-  output: __S(84) as any as S.Schema<DescribeContactResponse>,
+  input: DescribeContactRequest,
+  output: DescribeContactResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1511,8 +1973,8 @@ export const describeContactVersion: API.OperationMethod<
   DescribeContactVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<DescribeContactVersionRequest>,
-  output: __S(86) as any as S.Schema<DescribeContactVersionResponse>,
+  input: DescribeContactVersionRequest,
+  output: DescribeContactVersionResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1533,8 +1995,8 @@ export const describeEphemeris: API.OperationMethod<
   DescribeEphemerisError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<DescribeEphemerisRequest>,
-  output: __S(92) as any as S.Schema<DescribeEphemerisResponse>,
+  input: DescribeEphemerisRequest,
+  output: DescribeEphemerisResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1557,8 +2019,8 @@ export const getAgentConfiguration: API.OperationMethod<
   GetAgentConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<GetAgentConfigurationRequest>,
-  output: __S(94) as any as S.Schema<GetAgentConfigurationResponse>,
+  input: GetAgentConfigurationRequest,
+  output: GetAgentConfigurationResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1581,8 +2043,8 @@ export const getAgentTaskResponseUrl: API.OperationMethod<
   GetAgentTaskResponseUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<GetAgentTaskResponseUrlRequest>,
-  output: __S(96) as any as S.Schema<GetAgentTaskResponseUrlResponse>,
+  input: GetAgentTaskResponseUrlRequest,
+  output: GetAgentTaskResponseUrlResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1605,8 +2067,8 @@ export const getConfig: API.OperationMethod<
   GetConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<GetConfigRequest>,
-  output: __S(98) as any as S.Schema<GetConfigResponse>,
+  input: GetConfigRequest,
+  output: GetConfigResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1627,8 +2089,8 @@ export const getDataflowEndpointGroup: API.OperationMethod<
   GetDataflowEndpointGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<GetDataflowEndpointGroupRequest>,
-  output: __S(100) as any as S.Schema<GetDataflowEndpointGroupResponse>,
+  input: GetDataflowEndpointGroupRequest,
+  output: GetDataflowEndpointGroupResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1649,8 +2111,8 @@ export const getMinuteUsage: API.OperationMethod<
   GetMinuteUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<GetMinuteUsageRequest>,
-  output: __S(102) as any as S.Schema<GetMinuteUsageResponse>,
+  input: GetMinuteUsageRequest,
+  output: GetMinuteUsageResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1671,8 +2133,8 @@ export const getMissionProfile: API.OperationMethod<
   GetMissionProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<GetMissionProfileRequest>,
-  output: __S(104) as any as S.Schema<GetMissionProfileResponse>,
+  input: GetMissionProfileRequest,
+  output: GetMissionProfileResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1693,8 +2155,8 @@ export const getSatellite: API.OperationMethod<
   GetSatelliteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<GetSatelliteRequest>,
-  output: __S(107) as any as S.Schema<GetSatelliteResponse>,
+  input: GetSatelliteRequest,
+  output: GetSatelliteResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1712,8 +2174,8 @@ export const listAntennas: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AntennaListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(108) as any as S.Schema<ListAntennasRequest>,
-  output: __S(111) as any as S.Schema<ListAntennasResponse>,
+  input: ListAntennasRequest,
+  output: ListAntennasResponse,
   errors: [DependencyException, InvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1741,8 +2203,8 @@ export const listConfigs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConfigListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(112) as any as S.Schema<ListConfigsRequest>,
-  output: __S(115) as any as S.Schema<ListConfigsResponse>,
+  input: ListConfigsRequest,
+  output: ListConfigsResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1772,8 +2234,8 @@ export const listContacts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ContactData
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(118) as any as S.Schema<ListContactsRequest>,
-  output: __S(121) as any as S.Schema<ListContactsResponse>,
+  input: ListContactsRequest,
+  output: ListContactsResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1801,8 +2263,8 @@ export const listContactVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ContactVersion
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(122) as any as S.Schema<ListContactVersionsRequest>,
-  output: __S(124) as any as S.Schema<ListContactVersionsResponse>,
+  input: ListContactVersionsRequest,
+  output: ListContactVersionsResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1830,8 +2292,8 @@ export const listDataflowEndpointGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataflowEndpointListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(125) as any as S.Schema<ListDataflowEndpointGroupsRequest>,
-  output: __S(128) as any as S.Schema<ListDataflowEndpointGroupsResponse>,
+  input: ListDataflowEndpointGroupsRequest,
+  output: ListDataflowEndpointGroupsResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1859,8 +2321,8 @@ export const listEphemerides: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EphemerisItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(129) as any as S.Schema<ListEphemeridesRequest>,
-  output: __S(132) as any as S.Schema<ListEphemeridesResponse>,
+  input: ListEphemeridesRequest,
+  output: ListEphemeridesResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1887,8 +2349,8 @@ export const listGroundStationReservations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GroundStationReservationListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(133) as any as S.Schema<ListGroundStationReservationsRequest>,
-  output: __S(139) as any as S.Schema<ListGroundStationReservationsResponse>,
+  input: ListGroundStationReservationsRequest,
+  output: ListGroundStationReservationsResponse,
   errors: [DependencyException, InvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1916,8 +2378,8 @@ export const listGroundStations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GroundStationData
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(140) as any as S.Schema<ListGroundStationsRequest>,
-  output: __S(143) as any as S.Schema<ListGroundStationsResponse>,
+  input: ListGroundStationsRequest,
+  output: ListGroundStationsResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1945,8 +2407,8 @@ export const listMissionProfiles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MissionProfileListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(144) as any as S.Schema<ListMissionProfilesRequest>,
-  output: __S(147) as any as S.Schema<ListMissionProfilesResponse>,
+  input: ListMissionProfilesRequest,
+  output: ListMissionProfilesResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1974,8 +2436,8 @@ export const listSatellites: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SatelliteListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(148) as any as S.Schema<ListSatellitesRequest>,
-  output: __S(150) as any as S.Schema<ListSatellitesResponse>,
+  input: ListSatellitesRequest,
+  output: ListSatellitesResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2002,8 +2464,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(152) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2026,8 +2488,8 @@ export const registerAgent: API.OperationMethod<
   RegisterAgentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158) as any as S.Schema<RegisterAgentRequest>,
-  output: __S(159) as any as S.Schema<RegisterAgentResponse>,
+  input: RegisterAgentRequest,
+  output: RegisterAgentResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2049,8 +2511,8 @@ export const reserveContact: API.OperationMethod<
   ReserveContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160) as any as S.Schema<ReserveContactRequest>,
-  output: __S(1) as any as S.Schema<ContactIdResponse>,
+  input: ReserveContactRequest,
+  output: ContactIdResponse,
   errors: [
     DependencyException,
     InvalidParameterException,
@@ -2076,8 +2538,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161) as any as S.Schema<TagResourceRequest>,
-  output: __S(162) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2098,8 +2560,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<UntagResourceRequest>,
-  output: __S(162) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2122,8 +2584,8 @@ export const updateAgentStatus: API.OperationMethod<
   UpdateAgentStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<UpdateAgentStatusRequest>,
-  output: __S(169) as any as S.Schema<UpdateAgentStatusResponse>,
+  input: UpdateAgentStatusRequest,
+  output: UpdateAgentStatusResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2146,8 +2608,8 @@ export const updateConfig: API.OperationMethod<
   UpdateConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170) as any as S.Schema<UpdateConfigRequest>,
-  output: __S(19) as any as S.Schema<ConfigIdResponse>,
+  input: UpdateConfigRequest,
+  output: ConfigIdResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2169,8 +2631,8 @@ export const updateContact: API.OperationMethod<
   UpdateContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171) as any as S.Schema<UpdateContactRequest>,
-  output: __S(1) as any as S.Schema<UpdateContactResponse>,
+  input: UpdateContactRequest,
+  output: UpdateContactResponse,
   errors: [
     DependencyException,
     InvalidParameterException,
@@ -2196,8 +2658,8 @@ export const updateEphemeris: API.OperationMethod<
   UpdateEphemerisError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172) as any as S.Schema<UpdateEphemerisRequest>,
-  output: __S(61) as any as S.Schema<EphemerisIdResponse>,
+  input: UpdateEphemerisRequest,
+  output: EphemerisIdResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2220,8 +2682,8 @@ export const updateMissionProfile: API.OperationMethod<
   UpdateMissionProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173) as any as S.Schema<UpdateMissionProfileRequest>,
-  output: __S(65) as any as S.Schema<MissionProfileIdResponse>,
+  input: UpdateMissionProfileRequest,
+  output: MissionProfileIdResponse,
   errors: [DependencyException, InvalidParameterException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2249,23 +2711,23 @@ function __c0(j: number): any {
         S.Struct({ contactId: S.optional(S.String), versionId: S.optional(S.Number) }),
       ).annotate({ identifier: "ContactIdResponse" });
     case 2:
-      return S.suspend(() => S.Struct({ value: S.Number, units: S.String })).annotate({
+      return S.suspend(() => S.Struct({ value: S.Number, units: FrequencyUnits })).annotate({
         identifier: "Frequency",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          centerFrequency: __S(2),
-          bandwidth: __S(2),
-          polarization: S.optional(S.String),
+          centerFrequency: Frequency,
+          bandwidth: FrequencyBandwidth,
+          polarization: S.optional(Polarization),
         }),
       ).annotate({ identifier: "SpectrumConfig" });
     case 4:
-      return S.suspend(() => S.Struct({ spectrumConfig: __S(3) })).annotate({
+      return S.suspend(() => S.Struct({ spectrumConfig: SpectrumConfig })).annotate({
         identifier: "AntennaDownlinkConfig",
       });
     case 5:
-      return S.suspend(() => S.Struct({ autotrack: S.String })).annotate({
+      return S.suspend(() => S.Struct({ autotrack: Criticality })).annotate({
         identifier: "TrackingConfig",
       });
     case 6:
@@ -2283,23 +2745,23 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          spectrumConfig: __S(3),
-          demodulationConfig: __S(7),
-          decodeConfig: __S(7),
+          spectrumConfig: SpectrumConfig,
+          demodulationConfig: DemodulationConfig,
+          decodeConfig: DecodeConfig,
         }),
       ).annotate({
         identifier: "AntennaDownlinkDemodDecodeConfig",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ centerFrequency: __S(2), polarization: S.optional(S.String) }),
+        S.Struct({ centerFrequency: Frequency, polarization: S.optional(Polarization) }),
       ).annotate({ identifier: "UplinkSpectrumConfig" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           transmitDisabled: S.optional(S.Boolean),
-          spectrumConfig: __S(9),
-          targetEirp: __S(2),
+          spectrumConfig: UplinkSpectrumConfig,
+          targetEirp: Eirp,
         }),
       ).annotate({ identifier: "AntennaUplinkConfig" });
     case 3:
@@ -2315,10 +2777,10 @@ function __c1(j: number): any {
         S.Struct({ kinesisRoleArn: S.String, kinesisDataStreamArn: S.String }),
       ).annotate({ identifier: "KinesisDataStreamData" });
     case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ kinesisDataStreamData: __S(13) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ kinesisDataStreamData: KinesisDataStreamData })]);
     case 7:
       return S.suspend(() =>
-        S.Struct({ telemetrySinkType: S.String, telemetrySinkData: __S(14) }),
+        S.Struct({ telemetrySinkType: TelemetrySinkType, telemetrySinkData: TelemetrySinkData }),
       ).annotate({ identifier: "TelemetrySinkConfig" });
   }
 }
@@ -2326,22 +2788,22 @@ function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ antennaDownlinkConfig: __S(4) }),
-        /*@__PURE__*/ S.Struct({ trackingConfig: __S(5) }),
-        /*@__PURE__*/ S.Struct({ dataflowEndpointConfig: __S(6) }),
+        /*@__PURE__*/ S.Struct({ antennaDownlinkConfig: AntennaDownlinkConfig }),
+        /*@__PURE__*/ S.Struct({ trackingConfig: TrackingConfig }),
+        /*@__PURE__*/ S.Struct({ dataflowEndpointConfig: DataflowEndpointConfig }),
         /*@__PURE__*/ S.Struct({
-          antennaDownlinkDemodDecodeConfig: __S(8),
+          antennaDownlinkDemodDecodeConfig: AntennaDownlinkDemodDecodeConfig,
         }),
-        /*@__PURE__*/ S.Struct({ antennaUplinkConfig: __S(10) }),
-        /*@__PURE__*/ S.Struct({ uplinkEchoConfig: __S(11) }),
-        /*@__PURE__*/ S.Struct({ s3RecordingConfig: __S(12) }),
-        /*@__PURE__*/ S.Struct({ telemetrySinkConfig: __S(15) }),
+        /*@__PURE__*/ S.Struct({ antennaUplinkConfig: AntennaUplinkConfig }),
+        /*@__PURE__*/ S.Struct({ uplinkEchoConfig: UplinkEchoConfig }),
+        /*@__PURE__*/ S.Struct({ s3RecordingConfig: S3RecordingConfig }),
+        /*@__PURE__*/ S.Struct({ telemetrySinkConfig: TelemetrySinkConfig }),
       ]);
     case 1:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 2:
       return S.suspend(() =>
-        S.Struct({ name: S.String, configData: __S(16), tags: S.optional(__S(17)) }).pipe(
+        S.Struct({ name: S.String, configData: ConfigTypeData, tags: S.optional(TagsMap) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/config" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateConfigRequest" });
@@ -2349,7 +2811,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           configId: S.optional(S.String),
-          configType: S.optional(S.String),
+          configType: S.optional(ConfigCapabilityType),
           configArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigIdResponse" });
@@ -2358,8 +2820,8 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          subnetIds: __S(20),
-          securityGroupIds: __S(20),
+          subnetIds: SubnetList,
+          securityGroupIds: SecurityGroupIdList,
           roleArn: S.String,
         }),
       ).annotate({ identifier: "SecurityDetails" });
@@ -2371,8 +2833,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          address: S.optional(__S(22)),
-          status: S.optional(S.String),
+          address: S.optional(SocketAddress),
+          status: S.optional(EndpointStatus),
           mtu: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DataflowEndpoint" });
@@ -2382,28 +2844,28 @@ function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ socketAddress: __S(22), mtu: S.optional(S.Number) }),
+        S.Struct({ socketAddress: SocketAddress, mtu: S.optional(S.Number) }),
       ).annotate({ identifier: "ConnectionDetails" });
     case 1:
       return S.suspend(() => S.Struct({ minimum: S.Number, maximum: S.Number })).annotate({
         identifier: "IntegerRange",
       });
     case 2:
-      return S.suspend(() => S.Struct({ name: S.String, portRange: __S(25) })).annotate({
+      return S.suspend(() => S.Struct({ name: S.String, portRange: IntegerRange })).annotate({
         identifier: "RangedSocketAddress",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ socketAddress: __S(26), mtu: S.optional(S.Number) }),
+        S.Struct({ socketAddress: RangedSocketAddress, mtu: S.optional(S.Number) }),
       ).annotate({ identifier: "RangedConnectionDetails" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          egressAddress: __S(24),
-          ingressAddress: __S(27),
-          agentStatus: S.optional(S.String),
-          auditResults: S.optional(S.String),
+          egressAddress: ConnectionDetails,
+          ingressAddress: RangedConnectionDetails,
+          agentStatus: S.optional(AgentStatus),
+          auditResults: S.optional(AuditResults),
         }),
       ).annotate({
         identifier: "AwsGroundStationAgentEndpoint",
@@ -2411,19 +2873,19 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ingressAddressAndPort: __S(24),
-          agentIpAndPortAddress: __S(27),
+          ingressAddressAndPort: ConnectionDetails,
+          agentIpAndPortAddress: RangedConnectionDetails,
         }),
       ).annotate({ identifier: "UplinkConnectionDetails" });
     case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ agentConnectionDetails: __S(29) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ agentConnectionDetails: UplinkConnectionDetails })]);
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          dataflowDetails: __S(30),
-          agentStatus: S.optional(S.String),
-          auditResults: S.optional(S.String),
+          dataflowDetails: UplinkDataflowDetails,
+          agentStatus: S.optional(AgentStatus),
+          auditResults: S.optional(AuditResults),
         }),
       ).annotate({
         identifier: "UplinkAwsGroundStationAgentEndpointDetails",
@@ -2435,46 +2897,52 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          agentIpAndPortAddress: __S(27),
-          egressAddressAndPort: __S(24),
+          agentIpAndPortAddress: RangedConnectionDetails,
+          egressAddressAndPort: ConnectionDetails,
         }),
       ).annotate({
         identifier: "DownlinkConnectionDetails",
       });
     case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ agentConnectionDetails: __S(32) })]);
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ agentConnectionDetails: DownlinkConnectionDetails }),
+      ]);
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          dataflowDetails: __S(33),
-          agentStatus: S.optional(S.String),
-          auditResults: S.optional(S.String),
+          dataflowDetails: DownlinkDataflowDetails,
+          agentStatus: S.optional(AgentStatus),
+          auditResults: S.optional(AuditResults),
         }),
       ).annotate({
         identifier: "DownlinkAwsGroundStationAgentEndpointDetails",
       });
     case 3:
-      return S.Array(S.String);
+      return S.Array(CapabilityHealthReason);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          securityDetails: S.optional(__S(21)),
-          endpoint: S.optional(__S(23)),
-          awsGroundStationAgentEndpoint: S.optional(__S(28)),
-          uplinkAwsGroundStationAgentEndpoint: S.optional(__S(31)),
-          downlinkAwsGroundStationAgentEndpoint: S.optional(__S(34)),
-          healthStatus: S.optional(S.String),
-          healthReasons: S.optional(__S(35)),
+          securityDetails: S.optional(SecurityDetails),
+          endpoint: S.optional(DataflowEndpoint),
+          awsGroundStationAgentEndpoint: S.optional(AwsGroundStationAgentEndpoint),
+          uplinkAwsGroundStationAgentEndpoint: S.optional(
+            UplinkAwsGroundStationAgentEndpointDetails,
+          ),
+          downlinkAwsGroundStationAgentEndpoint: S.optional(
+            DownlinkAwsGroundStationAgentEndpointDetails,
+          ),
+          healthStatus: S.optional(CapabilityHealth),
+          healthReasons: S.optional(CapabilityHealthReasonList),
         }),
       ).annotate({ identifier: "EndpointDetails" });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(EndpointDetails);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          endpointDetails: __S(37),
-          tags: S.optional(__S(17)),
+          endpointDetails: EndpointDetailsList,
+          tags: S.optional(TagsMap),
           contactPrePassDurationSeconds: S.optional(S.Number),
           contactPostPassDurationSeconds: S.optional(S.Number),
         }).pipe(
@@ -2499,31 +2967,35 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ name: S.String, dataflowDetails: __S(30) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ name: S.String, dataflowDetails: UplinkDataflowDetails }),
+      ).annotate({
         identifier: "UplinkAwsGroundStationAgentEndpoint",
       });
     case 1:
-      return S.suspend(() => S.Struct({ name: S.String, dataflowDetails: __S(33) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ name: S.String, dataflowDetails: DownlinkDataflowDetails }),
+      ).annotate({
         identifier: "DownlinkAwsGroundStationAgentEndpoint",
       });
     case 2:
       return S.Union([
         /*@__PURE__*/ S.Struct({
-          uplinkAwsGroundStationAgentEndpoint: __S(40),
+          uplinkAwsGroundStationAgentEndpoint: UplinkAwsGroundStationAgentEndpoint,
         }),
         /*@__PURE__*/ S.Struct({
-          downlinkAwsGroundStationAgentEndpoint: __S(41),
+          downlinkAwsGroundStationAgentEndpoint: DownlinkAwsGroundStationAgentEndpoint,
         }),
       ]);
     case 3:
-      return S.Array(__S(42));
+      return S.Array(CreateEndpointDetails);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          endpoints: __S(43),
+          endpoints: CreateEndpointDetailsList,
           contactPrePassDurationSeconds: S.optional(S.Number),
           contactPostPassDurationSeconds: S.optional(S.Number),
-          tags: S.optional(__S(17)),
+          tags: S.optional(TagsMap),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/dataflowEndpointGroupV2" }),
@@ -2554,21 +3026,21 @@ function __c5(j: number): any {
       ).annotate({ identifier: "TimeRange" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ tleLine1: S.String, tleLine2: S.String, validTimeRange: __S(46) }),
+        S.Struct({ tleLine1: S.String, tleLine2: S.String, validTimeRange: TimeRange }),
       ).annotate({ identifier: "TLEData" });
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(TLEData);
     case 1:
       return S.suspend(() =>
-        S.Struct({ s3Object: S.optional(__S(45)), tleData: S.optional(__S(48)) }),
+        S.Struct({ s3Object: S.optional(S3Object), tleData: S.optional(TLEDataList) }),
       ).annotate({ identifier: "TLEEphemeris" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ s3Object: S.optional(__S(45)), oemData: S.optional(S.String) }),
+        S.Struct({ s3Object: S.optional(S3Object), oemData: S.optional(S.String) }),
       ).annotate({ identifier: "OEMEphemeris" });
     case 3:
       return S.suspend(() =>
@@ -2582,39 +3054,39 @@ function __c6(j: number): any {
         identifier: "TimeAzEl",
       });
     case 5:
-      return S.Array(__S(52));
+      return S.Array(TimeAzEl);
     case 6:
       return S.suspend(() =>
         S.Struct({
           referenceEpoch: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          validTimeRange: __S(51),
-          azElList: __S(53),
+          validTimeRange: ISO8601TimeRange,
+          azElList: TimeAzElList,
         }),
       ).annotate({ identifier: "AzElSegment" });
     case 7:
-      return S.Array(__S(54));
+      return S.Array(AzElSegment);
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ angleUnit: S.String, azElSegmentList: __S(55) })).annotate({
-        identifier: "AzElSegments",
-      });
+      return S.suspend(() =>
+        S.Struct({ angleUnit: AngleUnits, azElSegmentList: AzElSegmentList }),
+      ).annotate({ identifier: "AzElSegments" });
     case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ s3Object: __S(45) }),
-        /*@__PURE__*/ S.Struct({ azElData: __S(56) }),
+        /*@__PURE__*/ S.Struct({ s3Object: S3Object }),
+        /*@__PURE__*/ S.Struct({ azElData: AzElSegments }),
       ]);
     case 2:
-      return S.suspend(() => S.Struct({ groundStation: S.String, data: __S(57) })).annotate({
-        identifier: "AzElEphemeris",
-      });
+      return S.suspend(() =>
+        S.Struct({ groundStation: S.String, data: AzElSegmentsData }),
+      ).annotate({ identifier: "AzElEphemeris" });
     case 3:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ tle: __S(49) }),
-        /*@__PURE__*/ S.Struct({ oem: __S(50) }),
-        /*@__PURE__*/ S.Struct({ azEl: __S(58) }),
+        /*@__PURE__*/ S.Struct({ tle: TLEEphemeris }),
+        /*@__PURE__*/ S.Struct({ oem: OEMEphemeris }),
+        /*@__PURE__*/ S.Struct({ azEl: AzElEphemeris }),
       ]);
     case 4:
       return S.suspend(() =>
@@ -2625,8 +3097,8 @@ function __c7(j: number): any {
           expirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           name: S.String,
           kmsKeyArn: S.optional(S.String),
-          ephemeris: S.optional(__S(59)),
-          tags: S.optional(__S(17)),
+          ephemeris: S.optional(EphemerisData),
+          tags: S.optional(TagsMap),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/ephemeris" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateEphemerisRequest" });
     case 5:
@@ -2634,7 +3106,7 @@ function __c7(j: number): any {
         identifier: "EphemerisIdResponse",
       });
     case 6:
-      return S.Array(__S(20));
+      return S.Array(DataflowEdge);
     case 7:
       return S.Union([
         /*@__PURE__*/ S.Struct({ kmsKeyArn: S.String }),
@@ -2652,11 +3124,11 @@ function __c8(j: number): any {
           contactPrePassDurationSeconds: S.optional(S.Number),
           contactPostPassDurationSeconds: S.optional(S.Number),
           minimumViableContactDurationSeconds: S.Number,
-          dataflowEdges: __S(62),
+          dataflowEdges: DataflowEdgeList,
           trackingConfigArn: S.String,
           telemetrySinkConfigArn: S.optional(S.String),
-          tags: S.optional(__S(17)),
-          streamsKmsKey: S.optional(__S(63)),
+          tags: S.optional(TagsMap),
+          streamsKmsKey: S.optional(KmsKey),
           streamsKmsRole: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/missionprofile" }), svc, auth, proto, ver, rules),
@@ -2672,7 +3144,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           configId: S.String.pipe(T.HttpLabel("configId")),
-          configType: S.String.pipe(T.HttpLabel("configType")),
+          configType: ConfigCapabilityType.pipe(T.HttpLabel("configType")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/config/{configType}/{configId}" }),
@@ -2743,7 +3215,7 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "DescribeContactRequest" });
     case 7:
-      return S.suspend(() => S.Struct({ value: S.Number, unit: S.String })).annotate({
+      return S.suspend(() => S.Struct({ value: S.Number, unit: AngleUnits })).annotate({
         identifier: "Elevation",
       });
   }
@@ -2760,38 +3232,38 @@ function __c9(j: number): any {
       ).annotate({ identifier: "S3RecordingDetails" });
     case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ endpointDetails: __S(36) }),
-        /*@__PURE__*/ S.Struct({ antennaDemodDecodeDetails: __S(72) }),
-        /*@__PURE__*/ S.Struct({ s3RecordingDetails: __S(73) }),
+        /*@__PURE__*/ S.Struct({ endpointDetails: EndpointDetails }),
+        /*@__PURE__*/ S.Struct({ antennaDemodDecodeDetails: AntennaDemodDecodeDetails }),
+        /*@__PURE__*/ S.Struct({ s3RecordingDetails: S3RecordingDetails }),
       ]);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          configType: S.optional(S.String),
+          configType: S.optional(ConfigCapabilityType),
           configId: S.optional(S.String),
-          configDetails: S.optional(__S(74)),
+          configDetails: S.optional(ConfigDetails),
           dataflowSourceRegion: S.optional(S.String),
         }),
       ).annotate({ identifier: "Source" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          configType: S.optional(S.String),
+          configType: S.optional(ConfigCapabilityType),
           configId: S.optional(S.String),
-          configDetails: S.optional(__S(74)),
+          configDetails: S.optional(ConfigDetails),
           dataflowDestinationRegion: S.optional(S.String),
         }),
       ).annotate({ identifier: "Destination" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(__S(75)),
-          destination: S.optional(__S(76)),
+          source: S.optional(Source),
+          destination: S.optional(Destination),
           errorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataflowDetail" });
     case 6:
-      return S.Array(__S(77));
+      return S.Array(DataflowDetail);
     case 7:
       return S.suspend(() => S.Struct({ ephemerisId: S.String })).annotate({
         identifier: "AzElProgramTrackSettings",
@@ -2802,17 +3274,17 @@ function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ azEl: __S(79) }),
-        /*@__PURE__*/ S.Struct({ oem: __S(79) }),
-        /*@__PURE__*/ S.Struct({ tle: __S(79) }),
+        /*@__PURE__*/ S.Struct({ azEl: AzElProgramTrackSettings }),
+        /*@__PURE__*/ S.Struct({ oem: OemProgramTrackSettings }),
+        /*@__PURE__*/ S.Struct({ tle: TleProgramTrackSettings }),
       ]);
     case 1:
-      return S.suspend(() => S.Struct({ programTrackSettings: S.optional(__S(80)) })).annotate({
-        identifier: "TrackingOverrides",
-      });
+      return S.suspend(() =>
+        S.Struct({ programTrackSettings: S.optional(ProgramTrackSettings) }),
+      ).annotate({ identifier: "TrackingOverrides" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ephemerisId: S.optional(S.String), ephemerisType: S.String }),
+        S.Struct({ ephemerisId: S.optional(S.String), ephemerisType: EphemerisType }),
       ).annotate({ identifier: "EphemerisResponseData" });
     case 3:
       return S.suspend(() =>
@@ -2822,8 +3294,8 @@ function __c10(j: number): any {
           activated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           superseded: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(S.String),
-          failureCodes: S.optional(__S(35)),
+          status: S.optional(VersionStatus),
+          failureCodes: S.optional(VersionFailureReasonCodes),
           failureMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContactVersion" });
@@ -2838,17 +3310,17 @@ function __c10(j: number): any {
           prePassStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           postPassEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           groundStation: S.optional(S.String),
-          contactStatus: S.optional(S.String),
+          contactStatus: S.optional(ContactStatus),
           errorMessage: S.optional(S.String),
-          maximumElevation: S.optional(__S(71)),
-          tags: S.optional(__S(17)),
+          maximumElevation: S.optional(Elevation),
+          tags: S.optional(TagsMap),
           region: S.optional(S.String),
-          dataflowList: S.optional(__S(78)),
+          dataflowList: S.optional(DataflowList),
           visibilityStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           visibilityEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          trackingOverrides: S.optional(__S(81)),
-          ephemeris: S.optional(__S(82)),
-          version: S.optional(__S(83)),
+          trackingOverrides: S.optional(TrackingOverrides),
+          ephemeris: S.optional(EphemerisResponseData),
+          version: S.optional(ContactVersion),
         }),
       ).annotate({ identifier: "DescribeContactResponse" });
     case 5:
@@ -2880,17 +3352,17 @@ function __c10(j: number): any {
           prePassStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           postPassEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           groundStation: S.optional(S.String),
-          contactStatus: S.optional(S.String),
+          contactStatus: S.optional(ContactStatus),
           errorMessage: S.optional(S.String),
-          maximumElevation: S.optional(__S(71)),
-          tags: S.optional(__S(17)),
+          maximumElevation: S.optional(Elevation),
+          tags: S.optional(TagsMap),
           region: S.optional(S.String),
-          dataflowList: S.optional(__S(78)),
+          dataflowList: S.optional(DataflowList),
           visibilityStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           visibilityEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          trackingOverrides: S.optional(__S(81)),
-          ephemeris: S.optional(__S(82)),
-          version: S.optional(__S(83)),
+          trackingOverrides: S.optional(TrackingOverrides),
+          ephemeris: S.optional(EphemerisResponseData),
+          version: S.optional(ContactVersion),
         }),
       ).annotate({
         identifier: "DescribeContactVersionResponse",
@@ -2914,34 +3386,34 @@ function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ sourceS3Object: S.optional(__S(45)), ephemerisData: S.optional(S.String) }),
+        S.Struct({ sourceS3Object: S.optional(S3Object), ephemerisData: S.optional(S.String) }),
       ).annotate({ identifier: "EphemerisDescription" });
     case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ tle: __S(88) }),
-        /*@__PURE__*/ S.Struct({ oem: __S(88) }),
-        /*@__PURE__*/ S.Struct({ azEl: __S(88) }),
+        /*@__PURE__*/ S.Struct({ tle: EphemerisDescription }),
+        /*@__PURE__*/ S.Struct({ oem: EphemerisDescription }),
+        /*@__PURE__*/ S.Struct({ azEl: EphemerisDescription }),
       ]);
     case 2:
-      return S.suspend(() => S.Struct({ errorCode: S.String, errorMessage: S.String })).annotate({
-        identifier: "EphemerisErrorReason",
-      });
+      return S.suspend(() =>
+        S.Struct({ errorCode: EphemerisErrorCode, errorMessage: S.String }),
+      ).annotate({ identifier: "EphemerisErrorReason" });
     case 3:
-      return S.Array(__S(90));
+      return S.Array(EphemerisErrorReason);
     case 4:
       return S.suspend(() =>
         S.Struct({
           ephemerisId: S.optional(S.String),
           satelliteId: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(EphemerisStatus),
           priority: S.optional(S.Number),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           enabled: S.optional(S.Boolean),
           name: S.optional(S.String),
-          tags: S.optional(__S(17)),
-          suppliedData: S.optional(__S(89)),
-          invalidReason: S.optional(S.String),
-          errorReasons: S.optional(__S(91)),
+          tags: S.optional(TagsMap),
+          suppliedData: S.optional(EphemerisTypeDescription),
+          invalidReason: S.optional(EphemerisInvalidReason),
+          errorReasons: S.optional(EphemerisErrorReasonList),
         }),
       ).annotate({
         identifier: "DescribeEphemerisResponse",
@@ -2999,7 +3471,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           configId: S.String.pipe(T.HttpLabel("configId")),
-          configType: S.String.pipe(T.HttpLabel("configType")),
+          configType: ConfigCapabilityType.pipe(T.HttpLabel("configType")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/config/{configType}/{configId}" }),
@@ -3017,9 +3489,9 @@ function __c12(j: number): any {
           configId: S.String,
           configArn: S.String,
           name: S.String,
-          configType: S.optional(S.String),
-          configData: __S(16),
-          tags: S.optional(__S(17)),
+          configType: S.optional(ConfigCapabilityType),
+          configData: ConfigTypeData,
+          tags: S.optional(TagsMap),
         }),
       ).annotate({ identifier: "GetConfigResponse" });
     case 3:
@@ -3044,8 +3516,8 @@ function __c12(j: number): any {
         S.Struct({
           dataflowEndpointGroupId: S.optional(S.String),
           dataflowEndpointGroupArn: S.optional(S.String),
-          endpointsDetails: S.optional(__S(37)),
-          tags: S.optional(__S(17)),
+          endpointsDetails: S.optional(EndpointDetailsList),
+          tags: S.optional(TagsMap),
           contactPrePassDurationSeconds: S.optional(S.Number),
           contactPostPassDurationSeconds: S.optional(S.Number),
         }),
@@ -3095,11 +3567,11 @@ function __c13(j: number): any {
           contactPrePassDurationSeconds: S.optional(S.Number),
           contactPostPassDurationSeconds: S.optional(S.Number),
           minimumViableContactDurationSeconds: S.optional(S.Number),
-          dataflowEdges: S.optional(__S(62)),
+          dataflowEdges: S.optional(DataflowEdgeList),
           trackingConfigArn: S.optional(S.String),
           telemetrySinkConfigArn: S.optional(S.String),
-          tags: S.optional(__S(17)),
-          streamsKmsKey: S.optional(__S(63)),
+          tags: S.optional(TagsMap),
+          streamsKmsKey: S.optional(KmsKey),
           streamsKmsRole: S.optional(S.String),
         }),
       ).annotate({
@@ -3121,7 +3593,7 @@ function __c13(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          source: S.String,
+          source: EphemerisSource,
           ephemerisId: S.optional(S.String),
           epoch: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           name: S.optional(S.String),
@@ -3133,8 +3605,8 @@ function __c13(j: number): any {
           satelliteId: S.optional(S.String),
           satelliteArn: S.optional(S.String),
           noradSatelliteID: S.optional(S.Number),
-          groundStations: S.optional(__S(20)),
-          currentEphemeris: S.optional(__S(106)),
+          groundStations: S.optional(GroundStationIdList),
+          currentEphemeris: S.optional(EphemerisMetaData),
         }),
       ).annotate({ identifier: "GetSatelliteResponse" });
     case 4:
@@ -3159,10 +3631,10 @@ function __c13(j: number): any {
         S.Struct({ groundStationName: S.String, antennaName: S.String, region: S.String }),
       ).annotate({ identifier: "AntennaListItem" });
     case 6:
-      return S.Array(__S(109));
+      return S.Array(AntennaListItem);
     case 7:
       return S.suspend(() =>
-        S.Struct({ antennaList: __S(110), nextToken: S.optional(S.String) }),
+        S.Struct({ antennaList: AntennaList, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAntennasResponse" });
   }
 }
@@ -3179,35 +3651,35 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           configId: S.optional(S.String),
-          configType: S.optional(S.String),
+          configType: S.optional(ConfigCapabilityType),
           configArn: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigListItem" });
     case 2:
-      return S.Array(__S(113));
+      return S.Array(ConfigListItem);
     case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), configList: S.optional(__S(114)) }),
+        S.Struct({ nextToken: S.optional(S.String), configList: S.optional(ConfigList) }),
       ).annotate({ identifier: "ListConfigsResponse" });
     case 4:
       return S.suspend(() => S.Struct({ id: S.String })).annotate({
         identifier: "AzElEphemerisFilter",
       });
     case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ azEl: __S(116) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ azEl: AzElEphemerisFilter })]);
     case 6:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
-          statusList: __S(35),
+          statusList: StatusList,
           startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           groundStation: S.optional(S.String),
           satelliteArn: S.optional(S.String),
           missionProfileArn: S.optional(S.String),
-          ephemeris: S.optional(__S(117)),
+          ephemeris: S.optional(EphemerisFilter),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/contacts" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListContactsRequest" });
     case 7:
@@ -3221,15 +3693,15 @@ function __c14(j: number): any {
           prePassStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           postPassEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           groundStation: S.optional(S.String),
-          contactStatus: S.optional(S.String),
+          contactStatus: S.optional(ContactStatus),
           errorMessage: S.optional(S.String),
-          maximumElevation: S.optional(__S(71)),
+          maximumElevation: S.optional(Elevation),
           region: S.optional(S.String),
-          tags: S.optional(__S(17)),
+          tags: S.optional(TagsMap),
           visibilityStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           visibilityEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ephemeris: S.optional(__S(82)),
-          version: S.optional(__S(83)),
+          ephemeris: S.optional(EphemerisResponseData),
+          version: S.optional(ContactVersion),
         }),
       ).annotate({ identifier: "ContactData" });
   }
@@ -3237,10 +3709,10 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(119));
+      return S.Array(ContactData);
     case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), contactList: S.optional(__S(120)) }),
+        S.Struct({ nextToken: S.optional(S.String), contactList: S.optional(ContactList) }),
       ).annotate({ identifier: "ListContactsResponse" });
     case 2:
       return S.suspend(() =>
@@ -3262,12 +3734,12 @@ function __c15(j: number): any {
         identifier: "ListContactVersionsRequest",
       });
     case 3:
-      return S.Array(__S(83));
+      return S.Array(ContactVersion);
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          contactVersionsList: S.optional(__S(123)),
+          contactVersionsList: S.optional(ContactVersionsList),
         }),
       ).annotate({
         identifier: "ListContactVersionsResponse",
@@ -3298,7 +3770,7 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "DataflowEndpointListItem" });
     case 7:
-      return S.Array(__S(126));
+      return S.Array(DataflowEndpointListItem);
   }
 }
 function __c16(j: number): any {
@@ -3307,7 +3779,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          dataflowEndpointGroupList: S.optional(__S(127)),
+          dataflowEndpointGroupList: S.optional(DataflowEndpointGroupList),
         }),
       ).annotate({
         identifier: "ListDataflowEndpointGroupsResponse",
@@ -3316,10 +3788,10 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           satelliteId: S.optional(S.String),
-          ephemerisType: S.optional(S.String),
+          ephemerisType: S.optional(EphemerisType),
           startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          statusList: S.optional(__S(35)),
+          statusList: S.optional(EphemerisStatusList),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
         }).pipe(
@@ -3330,20 +3802,20 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ephemerisId: S.optional(S.String),
-          ephemerisType: S.optional(S.String),
-          status: S.optional(S.String),
+          ephemerisType: S.optional(EphemerisType),
+          status: S.optional(EphemerisStatus),
           priority: S.optional(S.Number),
           enabled: S.optional(S.Boolean),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           name: S.optional(S.String),
-          sourceS3Object: S.optional(__S(45)),
+          sourceS3Object: S.optional(S3Object),
         }),
       ).annotate({ identifier: "EphemerisItem" });
     case 3:
-      return S.Array(__S(130));
+      return S.Array(EphemerisItem);
     case 4:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), ephemerides: S.optional(__S(131)) }),
+        S.Struct({ nextToken: S.optional(S.String), ephemerides: S.optional(EphemeridesList) }),
       ).annotate({ identifier: "ListEphemeridesResponse" });
     case 5:
       return S.suspend(() =>
@@ -3351,7 +3823,9 @@ function __c16(j: number): any {
           groundStationId: S.String.pipe(T.HttpLabel("groundStationId")),
           startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(T.HttpQuery("startTime")),
           endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(T.HttpQuery("endTime")),
-          reservationTypes: S.optional(__S(35)).pipe(T.HttpQuery("reservationTypes")),
+          reservationTypes: S.optional(ReservationTypeFilterList).pipe(
+            T.HttpQuery("reservationTypes"),
+          ),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
         }).pipe(
@@ -3368,7 +3842,7 @@ function __c16(j: number): any {
         identifier: "ListGroundStationReservationsRequest",
       });
     case 6:
-      return S.suspend(() => S.Struct({ maintenanceType: S.String })).annotate({
+      return S.suspend(() => S.Struct({ maintenanceType: MaintenanceType })).annotate({
         identifier: "MaintenanceReservationDetails",
       });
     case 7:
@@ -3381,28 +3855,28 @@ function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ maintenance: __S(134) }),
-        /*@__PURE__*/ S.Struct({ contact: __S(135) }),
+        /*@__PURE__*/ S.Struct({ maintenance: MaintenanceReservationDetails }),
+        /*@__PURE__*/ S.Struct({ contact: ContactReservationDetails }),
       ]);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          reservationType: S.String,
+          reservationType: ReservationType,
           groundStationId: S.String,
           antennaName: S.String,
           startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          reservationDetails: __S(136),
+          reservationDetails: ReservationDetails,
         }),
       ).annotate({
         identifier: "GroundStationReservationListItem",
       });
     case 2:
-      return S.Array(__S(137));
+      return S.Array(GroundStationReservationListItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          reservationList: __S(138),
+          reservationList: GroundStationReservationList,
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3429,12 +3903,12 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "GroundStationData" });
     case 6:
-      return S.Array(__S(141));
+      return S.Array(GroundStationData);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          groundStationList: S.optional(__S(142)),
+          groundStationList: S.optional(GroundStationList),
         }),
       ).annotate({
         identifier: "ListGroundStationsResponse",
@@ -3464,12 +3938,12 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "MissionProfileListItem" });
     case 2:
-      return S.Array(__S(145));
+      return S.Array(MissionProfileListItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          missionProfileList: S.optional(__S(146)),
+          missionProfileList: S.optional(MissionProfileList),
         }),
       ).annotate({
         identifier: "ListMissionProfilesResponse",
@@ -3482,10 +3956,10 @@ function __c18(j: number): any {
         }).pipe(T.all(T.Http({ method: "GET", uri: "/satellite" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListSatellitesRequest" });
     case 5:
-      return S.Array(__S(107));
+      return S.Array(SatelliteListItem);
     case 6:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), satellites: S.optional(__S(149)) }),
+        S.Struct({ nextToken: S.optional(S.String), satellites: S.optional(SatelliteList) }),
       ).annotate({ identifier: "ListSatellitesResponse" });
     case 7:
       return S.suspend(() =>
@@ -3507,42 +3981,42 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(17)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(TagsMap) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          publicIpAddresses: __S(20),
-          privateIpAddresses: __S(20),
-          capabilityArns: __S(20),
+          publicIpAddresses: IpAddressList,
+          privateIpAddresses: IpAddressList,
+          capabilityArns: CapabilityArnList,
         }),
       ).annotate({ identifier: "DiscoveryData" });
     case 2:
       return S.Array(S.Number);
     case 3:
-      return S.suspend(() => S.Struct({ componentType: S.String, versions: __S(20) })).annotate({
-        identifier: "ComponentVersion",
-      });
+      return S.suspend(() =>
+        S.Struct({ componentType: S.String, versions: VersionStringList }),
+      ).annotate({ identifier: "ComponentVersion" });
     case 4:
-      return S.Array(__S(155));
+      return S.Array(ComponentVersion);
     case 5:
       return S.suspend(() =>
         S.Struct({
           agentVersion: S.String,
           instanceId: S.String,
           instanceType: S.String,
-          reservedCpuCores: S.optional(__S(154)),
-          agentCpuCores: S.optional(__S(154)),
-          componentVersions: __S(156),
+          reservedCpuCores: S.optional(AgentCpuCoresList),
+          agentCpuCores: S.optional(AgentCpuCoresList),
+          componentVersions: ComponentVersionList,
         }),
       ).annotate({ identifier: "AgentDetails" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          discoveryData: __S(153),
-          agentDetails: __S(157),
-          tags: S.optional(__S(17)),
+          discoveryData: DiscoveryData,
+          agentDetails: AgentDetails,
+          tags: S.optional(TagsMap),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/agent" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "RegisterAgentRequest" });
     case 7:
@@ -3561,13 +4035,13 @@ function __c20(j: number): any {
           startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           groundStation: S.String,
-          tags: S.optional(__S(17)),
-          trackingOverrides: S.optional(__S(81)),
+          tags: S.optional(TagsMap),
+          trackingOverrides: S.optional(TrackingOverrides),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/contact" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ReserveContactRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: __S(17) }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagsMap }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -3586,7 +4060,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(20).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -3602,14 +4076,14 @@ function __c20(j: number): any {
       return S.Record(S.String, /*@__PURE__*/ S.Boolean.pipe(S.optional));
     case 5:
       return S.suspend(() =>
-        S.Struct({ status: S.String, signatureMap: S.optional(__S(164)) }),
+        S.Struct({ status: AgentStatus, signatureMap: S.optional(SignatureMap) }),
       ).annotate({ identifier: "AggregateStatus" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           componentType: S.String,
           capabilityArn: S.String,
-          status: S.String,
+          status: AgentStatus,
           bytesSent: S.optional(S.Number),
           bytesReceived: S.optional(S.Number),
           packetsDropped: S.optional(S.Number),
@@ -3617,7 +4091,7 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "ComponentStatusData" });
     case 7:
-      return S.Array(__S(166));
+      return S.Array(ComponentStatusData);
   }
 }
 function __c21(j: number): any {
@@ -3627,8 +4101,8 @@ function __c21(j: number): any {
         S.Struct({
           agentId: S.String.pipe(T.HttpLabel("agentId")),
           taskId: S.String,
-          aggregateStatus: __S(165),
-          componentStatuses: __S(167),
+          aggregateStatus: AggregateStatus,
+          componentStatuses: ComponentStatusList,
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/agent/{agentId}" }), svc, auth, proto, ver, rules),
         ),
@@ -3642,8 +4116,8 @@ function __c21(j: number): any {
         S.Struct({
           configId: S.String.pipe(T.HttpLabel("configId")),
           name: S.String,
-          configType: S.String.pipe(T.HttpLabel("configType")),
-          configData: __S(16),
+          configType: ConfigCapabilityType.pipe(T.HttpLabel("configType")),
+          configData: ConfigTypeData,
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/config/{configType}/{configId}" }),
@@ -3660,7 +4134,7 @@ function __c21(j: number): any {
         S.Struct({
           contactId: S.String.pipe(T.HttpLabel("contactId")),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          trackingOverrides: S.optional(__S(81)),
+          trackingOverrides: S.optional(TrackingOverrides),
           satelliteArn: S.optional(S.String),
         }).pipe(
           T.all(
@@ -3699,10 +4173,10 @@ function __c21(j: number): any {
           contactPrePassDurationSeconds: S.optional(S.Number),
           contactPostPassDurationSeconds: S.optional(S.Number),
           minimumViableContactDurationSeconds: S.optional(S.Number),
-          dataflowEdges: S.optional(__S(62)),
+          dataflowEdges: S.optional(DataflowEdgeList),
           trackingConfigArn: S.optional(S.String),
           telemetrySinkConfigArn: S.optional(S.String),
-          streamsKmsKey: S.optional(__S(63)),
+          streamsKmsKey: S.optional(KmsKey),
           streamsKmsRole: S.optional(S.String),
         }).pipe(
           T.all(
@@ -3717,58 +4191,5 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdateMissionProfileRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
   }
 }

@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -65,18 +63,26 @@ export class NotFound
   ) {}
 
 export type PermissionRoleEnum = "ROLE_UNSPECIFIED" | "OWNER" | "WRITER";
+const PermissionRoleEnum = S.String;
+
 /** Describes a single Group. */
 export interface Group {
   /** The group email. */
   email?: string;
 }
+const Group = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Group>;
+
 /** Describes a single Google Family. */
 export interface Family {}
+const Family = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Family>;
+
 /** Describes a single user. */
 export interface User {
   /** The user's email. */
   email?: string;
 }
+const User = Group as any as S.Schema<User>;
+
 /** A single permission on the note. Associates a `member` with a `role`. */
 export interface Permission {
   /** The email associated with the member. If set on create, the `email` field in the `User` or `Group` message must either be empty or match this field. On read, may be unset if the member does not have an associated email. */
@@ -94,6 +100,8 @@ export interface Permission {
   /** Output only. Whether this member has been deleted. If the member is recovered, this value is set to false and the recovered member retains the role on the note. */
   deleted?: boolean;
 }
+const Permission = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Permission>;
+
 /** The request to add a single permission on the note. */
 export interface CreatePermissionRequest {
   /** Required. The parent note where this permission will be created. Format: `notes/{note}` */
@@ -101,38 +109,79 @@ export interface CreatePermissionRequest {
   /** Required. The permission to create. One of Permission.email, User.email or Group.email must be supplied. */
   permission?: Permission;
 }
+const CreatePermissionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreatePermissionRequest>;
+
 export type CreatePermissionRequestList = Array<CreatePermissionRequest>;
+const CreatePermissionRequestList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreatePermissionRequestList>;
+
 /** The request to add one or more permissions on the note. Currently, only the `WRITER` role may be specified. If adding a permission fails, then the entire request fails and no changes are made. */
 export interface BatchCreatePermissionsRequest {
   /** The request message specifying the resources to create. */
   requests?: CreatePermissionRequestList;
 }
+const BatchCreatePermissionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<BatchCreatePermissionsRequest>;
+
 export interface BatchCreateNotesPermissionsRequest {
   /** The parent resource shared by all Permissions being created. Format: `notes/{note}` If this is set, the parent field in the CreatePermission messages must either be empty or match this field. */
   parent: string;
   /** Request body */
   body?: BatchCreatePermissionsRequest;
 }
+const BatchCreateNotesPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<BatchCreateNotesPermissionsRequest>;
+
 export type PermissionList = Array<Permission>;
+const PermissionList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<PermissionList>;
+
 /** The response for creating permissions on a note. */
 export interface BatchCreatePermissionsResponse {
   /** Permissions created. */
   permissions?: PermissionList;
 }
+const BatchCreatePermissionsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<BatchCreatePermissionsResponse>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<StringList>;
+
 /** The request to remove one or more permissions from a note. A permission with the `OWNER` role can't be removed. If removing a permission fails, then the entire request fails and no changes are made. Returns a 400 bad request error if a specified permission does not exist on the note. */
 export interface BatchDeletePermissionsRequest {
   /** Required. The names of the permissions to delete. Format: `notes/{note}/permissions/{permission}` */
   names?: StringList;
 }
+const BatchDeletePermissionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<BatchDeletePermissionsRequest>;
+
 export interface BatchDeleteNotesPermissionsRequest {
   /** The parent resource shared by all permissions being deleted. Format: `notes/{note}` If this is set, the parent of all of the permissions specified in the DeletePermissionRequest messages must match this field. */
   parent: string;
   /** Request body */
   body?: BatchDeletePermissionsRequest;
 }
+const BatchDeleteNotesPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<BatchDeleteNotesPermissionsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = Family as any as S.Schema<Empty>;
+
 /** An attachment to a note. */
 export interface Attachment {
   /** The resource name; */
@@ -140,12 +189,18 @@ export interface Attachment {
   /** The MIME types (IANA media types) in which the attachment is available. */
   mimeType?: StringList;
 }
+const Attachment = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Attachment>;
+
 export type AttachmentList = Array<Attachment>;
+const AttachmentList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AttachmentList>;
+
 /** The block of text for a single text section or list item. */
 export interface TextContent {
   /** The text of the note. The limits on this vary with the specific field using this type. */
   text?: string;
 }
+const TextContent = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<TextContent>;
+
 /** A single list item in a note's list. */
 export interface ListItem {
   /** Whether this item has been checked off or not. */
@@ -155,12 +210,18 @@ export interface ListItem {
   /** If set, list of list items nested under this list item. Only one level of nesting is allowed. */
   childListItems?: ListItemList;
 }
+const ListItem = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ListItem>;
+
 export type ListItemList = Array<ListItem>;
+const ListItemList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ListItemList>;
+
 /** The list of items for a single list note. */
 export interface ListContent {
   /** The items in the list. The number of items must be less than 1,000. */
   listItems?: ListItemList;
 }
+const ListContent = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ListContent>;
+
 /** The content of the note. */
 export interface Section {
   /** Used if this section's content is a block of text. The length of the text content must be less than 20,000 characters. */
@@ -168,6 +229,8 @@ export interface Section {
   /** Used if this section's content is a list. */
   list?: ListContent;
 }
+const Section = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Section>;
+
 /** A single note. */
 export interface Note {
   /** Output only. The list of permissions set on the note. Contains at least one entry for the note owner. */
@@ -189,24 +252,34 @@ export interface Note {
   /** The body of the note. */
   body?: Section;
 }
+const Note = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Note>;
+
 export interface CreateNotesRequest {
   /** Request body */
   body?: Note;
 }
+const CreateNotesRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CreateNotesRequest>;
+
 export interface DeleteNotesRequest {
   /** Required. Name of the note to delete. */
   name: string;
 }
+const DeleteNotesRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<DeleteNotesRequest>;
+
 export interface DownloadMediaRequest {
   /** Required. The name of the attachment. */
   name: string;
   /** The IANA MIME type format requested. The requested MIME type must be one specified in the attachment.mime_type. Required when downloading attachment media and ignored otherwise. */
   mimeType?: string;
 }
+const DownloadMediaRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<DownloadMediaRequest>;
+
 export interface GetNotesRequest {
   /** Required. Name of the resource. */
   name: string;
 }
+const GetNotesRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GetNotesRequest>;
+
 export interface ListNotesRequest {
   /** The previous page's `next_page_token` field. */
   pageToken?: string;
@@ -215,7 +288,11 @@ export interface ListNotesRequest {
   /** The maximum number of results to return. */
   pageSize?: number;
 }
+const ListNotesRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ListNotesRequest>;
+
 export type NoteList = Array<Note>;
+const NoteList = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<NoteList>;
+
 /** The response when listing a page of notes. */
 export interface ListNotesResponse {
   /** A page of notes. */
@@ -223,6 +300,8 @@ export interface ListNotesResponse {
   /** Next page's `page_token` field. */
   nextPageToken?: string;
 }
+const ListNotesResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ListNotesResponse>;
+
 export type BatchCreateNotesPermissionsError =
   | NotFound
   | Forbidden
@@ -236,8 +315,8 @@ export const batchCreateNotesPermissions: API.OperationMethod<
   BatchCreateNotesPermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<BatchCreateNotesPermissionsRequest>,
-  output: __S(8) as any as S.Schema<BatchCreatePermissionsResponse>,
+  input: BatchCreateNotesPermissionsRequest,
+  output: BatchCreatePermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -256,8 +335,8 @@ export const batchDeleteNotesPermissions: API.OperationMethod<
   BatchDeleteNotesPermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<BatchDeleteNotesPermissionsRequest>,
-  output: __S(1) as any as S.Schema<Empty>,
+  input: BatchDeleteNotesPermissionsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -271,8 +350,8 @@ export const createNotes: API.OperationMethod<
   CreateNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CreateNotesRequest>,
-  output: __S(19) as any as S.Schema<Note>,
+  input: CreateNotesRequest,
+  output: Note,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -286,8 +365,8 @@ export const deleteNotes: API.OperationMethod<
   DeleteNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<DeleteNotesRequest>,
-  output: __S(1) as any as S.Schema<Empty>,
+  input: DeleteNotesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -301,8 +380,8 @@ export const downloadMedia: API.OperationMethod<
   DownloadMediaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<DownloadMediaRequest>,
-  output: __S(12) as any as S.Schema<Attachment>,
+  input: DownloadMediaRequest,
+  output: Attachment,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -312,8 +391,8 @@ export type GetNotesError = NotFound | Forbidden | GcpOpError;
 /** Gets a note. */
 export const getNotes: API.OperationMethod<GetNotesRequest, Note, GetNotesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(23) as any as S.Schema<GetNotesRequest>,
-    output: __S(19) as any as S.Schema<Note>,
+    input: GetNotesRequest,
+    output: Note,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -328,8 +407,8 @@ export const listNotes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListNotesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(24) as any as S.Schema<ListNotesRequest>,
-  output: __S(26) as any as S.Schema<ListNotesResponse>,
+  input: ListNotesRequest,
+  output: ListNotesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -353,11 +432,11 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
-          role: S.optional(S.String),
+          role: S.optional(PermissionRoleEnum),
           name: S.optional(S.String),
-          group: S.optional(__S(0)),
-          family: S.optional(__S(1)),
-          user: S.optional(__S(0)),
+          group: S.optional(Group),
+          family: S.optional(Family),
+          user: S.optional(User),
           deleted: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Permission" });
@@ -365,15 +444,15 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.optional(S.String),
-          permission: S.optional(__S(2)),
+          permission: S.optional(Permission),
         }),
       ).annotate({ identifier: "CreatePermissionRequest" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(CreatePermissionRequest);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(4)),
+          requests: S.optional(CreatePermissionRequestList),
         }),
       ).annotate({
         identifier: "BatchCreatePermissionsRequest",
@@ -382,7 +461,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(5).pipe(T.HttpBody())),
+          body: S.optional(BatchCreatePermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -394,7 +473,7 @@ function __c0(j: number): any {
         identifier: "BatchCreateNotesPermissionsRequest",
       });
     case 7:
-      return S.Array(__S(2));
+      return S.Array(Permission);
   }
 }
 function __c1(j: number): any {
@@ -402,7 +481,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(7)),
+          permissions: S.optional(PermissionList),
         }),
       ).annotate({
         identifier: "BatchCreatePermissionsResponse",
@@ -412,7 +491,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          names: S.optional(__S(9)),
+          names: S.optional(StringList),
         }),
       ).annotate({
         identifier: "BatchDeletePermissionsRequest",
@@ -421,7 +500,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(10).pipe(T.HttpBody())),
+          body: S.optional(BatchDeletePermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -436,11 +515,11 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          mimeType: S.optional(__S(9)),
+          mimeType: S.optional(StringList),
         }),
       ).annotate({ identifier: "Attachment" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(Attachment);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -451,8 +530,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           checked: S.optional(S.Boolean),
-          text: S.optional(__S(14)),
-          childListItems: S.optional(S.suspend(() => __S(16))),
+          text: S.optional(TextContent),
+          childListItems: S.optional(S.suspend(() => ListItemList)),
         }),
       ).annotate({ identifier: "ListItem" });
   }
@@ -460,38 +539,38 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(ListItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          listItems: S.optional(__S(16)),
+          listItems: S.optional(ListItemList),
         }),
       ).annotate({ identifier: "ListContent" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          text: S.optional(__S(14)),
-          list: S.optional(__S(17)),
+          text: S.optional(TextContent),
+          list: S.optional(ListContent),
         }),
       ).annotate({ identifier: "Section" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(7)),
+          permissions: S.optional(PermissionList),
           trashTime: S.optional(S.String),
           name: S.optional(S.String),
           trashed: S.optional(S.Boolean),
-          attachments: S.optional(__S(13)),
+          attachments: S.optional(AttachmentList),
           createTime: S.optional(S.String),
           title: S.optional(S.String),
           updateTime: S.optional(S.String),
-          body: S.optional(__S(18)),
+          body: S.optional(Section),
         }),
       ).annotate({ identifier: "Note" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(19).pipe(T.HttpBody())),
+          body: S.optional(Note.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "POST", uri: "v1/notes", baseUrl: "https://keep.googleapis.com/" }),
         ),
@@ -536,30 +615,13 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListNotesRequest" });
     case 1:
-      return S.Array(__S(19));
+      return S.Array(Note);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          notes: S.optional(__S(25)),
+          notes: S.optional(NoteList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListNotesResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

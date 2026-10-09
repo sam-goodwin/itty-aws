@@ -7,8 +7,6 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
@@ -16,24 +14,61 @@ export interface AddWebhookTokenEnvironmentRequest {
   tokenId?: string;
   environmentId?: string;
 }
+const AddWebhookTokenEnvironmentRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddWebhookTokenEnvironmentRequest>;
+
 export interface AddWebhookTokenEnvironmentResponse {}
+const AddWebhookTokenEnvironmentResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AddWebhookTokenEnvironmentResponse>;
+
 export interface CreateWebhookTokenRequest {
   scoped?: boolean;
   name?: string;
 }
+const CreateWebhookTokenRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateWebhookTokenRequest>;
+
 export interface CreateWebhookTokenResponse {
   tokenId?: string;
   tokenSecret?: string | Redacted.Redacted<string>;
 }
+const CreateWebhookTokenResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateWebhookTokenResponse>;
+
 export interface DeleteWebhookTokenRequest {
   tokenId?: string;
 }
+const DeleteWebhookTokenRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeleteWebhookTokenRequest>;
+
 export interface DeleteWebhookTokenResponse {}
+const DeleteWebhookTokenResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteWebhookTokenResponse>;
+
 export interface ListWebhookTokenRequest {}
+const ListWebhookTokenRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListWebhookTokenRequest>;
+
 export interface UserIdentity {
   userId?: string;
   username?: string;
 }
+const UserIdentity = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<UserIdentity>;
+
 /** Additional URL suffix added for ephemeral Apps */
 export interface WebhookToken {
   tokenId?: string;
@@ -42,26 +77,60 @@ export interface WebhookToken {
   name?: string;
   createdBy?: UserIdentity;
 }
+const WebhookToken = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<WebhookToken>;
+
 export type WebhookTokenList2 = Array<WebhookToken>;
+const WebhookTokenList2 = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<WebhookTokenList2>;
+
 export interface ListWebhookTokenResponse {
   tokens?: WebhookTokenList2;
 }
+const ListWebhookTokenResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListWebhookTokenResponse>;
+
 export interface ListWebhookTokenEnvironmentRequest {
   tokenId?: string;
 }
+const ListWebhookTokenEnvironmentRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListWebhookTokenEnvironmentRequest>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<StringList>;
+
 export interface ListWebhookTokenEnvironmentResponse {
   environmentIds?: StringList;
 }
+const ListWebhookTokenEnvironmentResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ListWebhookTokenEnvironmentResponse>;
+
 export interface RemoveWebhookTokenEnvironmentRequest {
   tokenId?: string;
   environmentId?: string;
 }
+const RemoveWebhookTokenEnvironmentRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<RemoveWebhookTokenEnvironmentRequest>;
+
 export interface RemoveWebhookTokenEnvironmentResponse {}
+const RemoveWebhookTokenEnvironmentResponse =
+  AddWebhookTokenEnvironmentResponse as any as S.Schema<RemoveWebhookTokenEnvironmentResponse>;
+
 export interface UpdateWebhookTokenRequest {
   tokenId?: string;
   name?: string;
 }
+const UpdateWebhookTokenRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<UpdateWebhookTokenRequest>;
+
 export interface UpdateWebhookTokenResponse {
   tokenId?: string;
   createdAt?: number;
@@ -69,12 +138,27 @@ export interface UpdateWebhookTokenResponse {
   name?: string;
   createdBy?: UserIdentity;
 }
+const UpdateWebhookTokenResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<UpdateWebhookTokenResponse>;
+
 export interface WebhookTokenListForEnvironmentRequest {
   environmentName?: string;
 }
+const WebhookTokenListForEnvironmentRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<WebhookTokenListForEnvironmentRequest>;
+
 export interface WebhookTokenListForEnvironmentResponse {
   tokens?: WebhookTokenList2;
 }
+const WebhookTokenListForEnvironmentResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<WebhookTokenListForEnvironmentResponse>;
+
 export type AddWebhookTokenEnvironmentError = ModalOpError;
 export const addWebhookTokenEnvironment: API.OperationMethod<
   AddWebhookTokenEnvironmentRequest,
@@ -82,8 +166,8 @@ export const addWebhookTokenEnvironment: API.OperationMethod<
   AddWebhookTokenEnvironmentError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AddWebhookTokenEnvironmentRequest>,
-  output: __S(1) as any as S.Schema<AddWebhookTokenEnvironmentResponse>,
+  input: AddWebhookTokenEnvironmentRequest,
+  output: AddWebhookTokenEnvironmentResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -97,8 +181,8 @@ export const createWebhookToken: API.OperationMethod<
   CreateWebhookTokenError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateWebhookTokenRequest>,
-  output: __S(3) as any as S.Schema<CreateWebhookTokenResponse>,
+  input: CreateWebhookTokenRequest,
+  output: CreateWebhookTokenResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -111,8 +195,8 @@ export const deleteWebhookToken: API.OperationMethod<
   DeleteWebhookTokenError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DeleteWebhookTokenRequest>,
-  output: __S(5) as any as S.Schema<DeleteWebhookTokenResponse>,
+  input: DeleteWebhookTokenRequest,
+  output: DeleteWebhookTokenResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -125,8 +209,8 @@ export const listWebhookToken: API.OperationMethod<
   ListWebhookTokenError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<ListWebhookTokenRequest>,
-  output: __S(10) as any as S.Schema<ListWebhookTokenResponse>,
+  input: ListWebhookTokenRequest,
+  output: ListWebhookTokenResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -139,8 +223,8 @@ export const listWebhookTokenEnvironment: API.OperationMethod<
   ListWebhookTokenEnvironmentError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<ListWebhookTokenEnvironmentRequest>,
-  output: __S(13) as any as S.Schema<ListWebhookTokenEnvironmentResponse>,
+  input: ListWebhookTokenEnvironmentRequest,
+  output: ListWebhookTokenEnvironmentResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -153,8 +237,8 @@ export const removeWebhookTokenEnvironment: API.OperationMethod<
   RemoveWebhookTokenEnvironmentError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<RemoveWebhookTokenEnvironmentRequest>,
-  output: __S(1) as any as S.Schema<RemoveWebhookTokenEnvironmentResponse>,
+  input: RemoveWebhookTokenEnvironmentRequest,
+  output: RemoveWebhookTokenEnvironmentResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -167,8 +251,8 @@ export const updateWebhookToken: API.OperationMethod<
   UpdateWebhookTokenError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<UpdateWebhookTokenRequest>,
-  output: __S(16) as any as S.Schema<UpdateWebhookTokenResponse>,
+  input: UpdateWebhookTokenRequest,
+  output: UpdateWebhookTokenResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -181,8 +265,8 @@ export const webhookTokenListForEnvironment: API.OperationMethod<
   WebhookTokenListForEnvironmentError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<WebhookTokenListForEnvironmentRequest>,
-  output: __S(18) as any as S.Schema<WebhookTokenListForEnvironmentResponse>,
+  input: WebhookTokenListForEnvironmentRequest,
+  output: WebhookTokenListForEnvironmentResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -276,15 +360,15 @@ function __c1(j: number): any {
           createdAt: S.optional(S.Number),
           scoped: S.optional(S.Boolean),
           name: S.optional(S.String),
-          createdBy: S.optional(__S(7)),
+          createdBy: S.optional(UserIdentity),
         }),
       ).annotate({ identifier: "WebhookToken" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(WebhookToken);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          tokens: S.optional(__S(9)),
+          tokens: S.optional(WebhookTokenList2),
         }),
       ).annotate({ identifier: "ListWebhookTokenResponse" });
     case 3:
@@ -306,7 +390,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          environmentIds: S.optional(__S(12)),
+          environmentIds: S.optional(StringList),
         }),
       ).annotate({
         identifier: "ListWebhookTokenEnvironmentResponse",
@@ -352,7 +436,7 @@ function __c2(j: number): any {
           createdAt: S.optional(S.Number),
           scoped: S.optional(S.Boolean),
           name: S.optional(S.String),
-          createdBy: S.optional(__S(7)),
+          createdBy: S.optional(UserIdentity),
         }),
       ).annotate({
         identifier: "UpdateWebhookTokenResponse",
@@ -374,25 +458,10 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          tokens: S.optional(__S(9)),
+          tokens: S.optional(WebhookTokenList2),
         }),
       ).annotate({
         identifier: "WebhookTokenListForEnvironmentResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

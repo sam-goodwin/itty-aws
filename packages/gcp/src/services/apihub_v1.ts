@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -80,20 +78,39 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface GoogleLongrunningCancelOperationRequest {}
+const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GoogleLongrunningCancelOperationRequest>;
+
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Empty>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<StringList>;
+
 /** The attribute values of data type string or JSON. */
 export interface GoogleCloudApihubV1StringAttributeValues {
   /** Required. The attribute values in case attribute data type is string or JSON. */
   values?: StringList;
 }
+const GoogleCloudApihubV1StringAttributeValues = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GoogleCloudApihubV1StringAttributeValues>;
+
 /** The value that can be assigned to the attribute when the data type is enum. */
 export interface GoogleCloudApihubV1AllowedValue {
   /** Required. The display name of the allowed value. */
@@ -105,12 +122,27 @@ export interface GoogleCloudApihubV1AllowedValue {
   /** Required. The ID of the allowed value. * If provided, the same will be used. The service will throw an error if the specified id is already used by another allowed value in the same attribute resource. * If not provided, a system generated id derived from the display name will be used. In this case, the service will handle conflict resolution by adding a system generated suffix in case of duplicates. This value should be 3-500 characters, and valid characters are /a-z[0-9]-_/. */
   id?: string;
 }
+const GoogleCloudApihubV1AllowedValue = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GoogleCloudApihubV1AllowedValue>;
+
 export type GoogleCloudApihubV1AllowedValueList = Array<GoogleCloudApihubV1AllowedValue>;
+const GoogleCloudApihubV1AllowedValueList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GoogleCloudApihubV1AllowedValueList>;
+
 /** The attribute values of data type enum. */
 export interface GoogleCloudApihubV1EnumAttributeValues {
   /** Required. The attribute values in case attribute data type is enum. */
   values?: GoogleCloudApihubV1AllowedValueList;
 }
+const GoogleCloudApihubV1EnumAttributeValues = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1EnumAttributeValues>;
+
 /** The attribute values associated with resource. */
 export interface GoogleCloudApihubV1AttributeValues {
   /** The attribute values associated with a resource in case attribute data type is string. */
@@ -124,7 +156,14 @@ export interface GoogleCloudApihubV1AttributeValues {
   /** The attribute values associated with a resource in case attribute data type is JSON. */
   jsonValues?: GoogleCloudApihubV1StringAttributeValues;
 }
+const GoogleCloudApihubV1AttributeValues = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1AttributeValues>;
+
 export type GoogleCloudApihubV1SourceMetadataSourceTypeEnum = "SOURCE_TYPE_UNSPECIFIED" | "PLUGIN";
+const GoogleCloudApihubV1SourceMetadataSourceTypeEnum = S.String;
+
 /** PluginInstanceActionSource represents the plugin instance action source. */
 export interface GoogleCloudApihubV1PluginInstanceActionSource {
   /** Output only. The resource name of the source plugin instance. Format is `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}` */
@@ -132,6 +171,11 @@ export interface GoogleCloudApihubV1PluginInstanceActionSource {
   /** Output only. The id of the plugin instance action. */
   actionId?: string;
 }
+const GoogleCloudApihubV1PluginInstanceActionSource = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GoogleCloudApihubV1PluginInstanceActionSource>;
+
 /** SourceMetadata represents the metadata for a resource at the source. */
 export interface GoogleCloudApihubV1SourceMetadata {
   /** Output only. The type of the source. */
@@ -145,7 +189,17 @@ export interface GoogleCloudApihubV1SourceMetadata {
   /** Output only. The time at which the resource was last updated at the source. */
   originalResourceUpdateTime?: string;
 }
+const GoogleCloudApihubV1SourceMetadata = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1SourceMetadata>;
+
 export type GoogleCloudApihubV1SourceMetadataList = Array<GoogleCloudApihubV1SourceMetadata>;
+const GoogleCloudApihubV1SourceMetadataList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GoogleCloudApihubV1SourceMetadataList>;
+
 /** Owner details. */
 export interface GoogleCloudApihubV1Owner {
   /** Required. The email of the owner. */
@@ -153,14 +207,29 @@ export interface GoogleCloudApihubV1Owner {
   /** Optional. The name of the owner. */
   displayName?: string;
 }
+const GoogleCloudApihubV1Owner = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GoogleCloudApihubV1Owner>;
+
 export type GoogleCloudApihubV1AttributeValuesMap = {
   [key: string]: GoogleCloudApihubV1AttributeValues | undefined;
 };
+const GoogleCloudApihubV1AttributeValuesMap = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GoogleCloudApihubV1AttributeValuesMap>;
+
 /** Documentation details. */
 export interface GoogleCloudApihubV1Documentation {
   /** Optional. The uri of the externally hosted documentation. */
   externalUri?: string;
 }
+const GoogleCloudApihubV1Documentation = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GoogleCloudApihubV1Documentation>;
+
 /** An API resource in the API Hub. */
 export interface GoogleCloudApihubV1Api {
   /** Optional. The style of the API. This maps to the following system defined attribute: `projects/{project}/locations/{location}/attributes/system-api-style` attribute. The number of values for this attribute will be based on the cardinality of the attribute. The same can be retrieved via GetAttribute API. All values should be from the list of allowed values defined for the attribute. */
@@ -206,15 +275,24 @@ export interface GoogleCloudApihubV1Api {
   /** Optional. The description of the API resource. */
   description?: string;
 }
+const GoogleCloudApihubV1Api = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1Api>;
+
 export type GoogleCloudApihubV1SpecParsingModeEnum =
   | "PARSING_MODE_UNSPECIFIED"
   | "RELAXED"
   | "STRICT";
+const GoogleCloudApihubV1SpecParsingModeEnum = S.String;
+
 export type GoogleCloudApihubV1OpenApiSpecDetailsFormatEnum =
   | "FORMAT_UNSPECIFIED"
   | "OPEN_API_SPEC_2_0"
   | "OPEN_API_SPEC_3_0"
   | "OPEN_API_SPEC_3_1";
+const GoogleCloudApihubV1OpenApiSpecDetailsFormatEnum = S.String;
+
 /** OpenApiSpecDetails contains the details parsed from an OpenAPI spec in addition to the fields mentioned in SpecDetails. */
 export interface GoogleCloudApihubV1OpenApiSpecDetails {
   /** Output only. The format of the spec. */
@@ -224,6 +302,11 @@ export interface GoogleCloudApihubV1OpenApiSpecDetails {
   /** Output only. Owner details for the spec. This maps to `info.contact` in OpenAPI spec. */
   owner?: GoogleCloudApihubV1Owner;
 }
+const GoogleCloudApihubV1OpenApiSpecDetails = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1OpenApiSpecDetails>;
+
 /** SpecDetails contains the details parsed from supported spec types. */
 export interface GoogleCloudApihubV1SpecDetails {
   /** Output only. The description of the spec. */
@@ -231,12 +314,19 @@ export interface GoogleCloudApihubV1SpecDetails {
   /** Output only. Additional details apart from `OperationDetails` parsed from an OpenAPI spec. The OperationDetails parsed from the spec can be obtained by using ListAPIOperations method. */
   openApiSpecDetails?: GoogleCloudApihubV1OpenApiSpecDetails;
 }
+const GoogleCloudApihubV1SpecDetails = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GoogleCloudApihubV1SpecDetails>;
+
 export type GoogleCloudApihubV1IssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "SEVERITY_ERROR"
   | "SEVERITY_WARNING"
   | "SEVERITY_INFO"
   | "SEVERITY_HINT";
+const GoogleCloudApihubV1IssueSeverityEnum = S.String;
+
 /** Point within the file (line and character). */
 export interface GoogleCloudApihubV1Point {
   /** Required. Line number (zero-indexed). */
@@ -244,6 +334,11 @@ export interface GoogleCloudApihubV1Point {
   /** Required. Character position within the line (zero-indexed). */
   character?: number;
 }
+const GoogleCloudApihubV1Point = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1Point>;
+
 /** Object describing where in the file the issue was found. */
 export interface GoogleCloudApihubV1Range {
   /** Required. Start of the issue. */
@@ -251,6 +346,11 @@ export interface GoogleCloudApihubV1Range {
   /** Required. End of the issue. */
   end?: GoogleCloudApihubV1Point;
 }
+const GoogleCloudApihubV1Range = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GoogleCloudApihubV1Range>;
+
 /** Issue contains the details of a single issue found by the linter. */
 export interface GoogleCloudApihubV1Issue {
   /** Required. Severity level of the rule violation. */
@@ -264,13 +364,25 @@ export interface GoogleCloudApihubV1Issue {
   /** Required. Human-readable message describing the issue found by the linter. */
   message?: string;
 }
+const GoogleCloudApihubV1Issue = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GoogleCloudApihubV1Issue>;
+
 export type GoogleCloudApihubV1IssueList = Array<GoogleCloudApihubV1Issue>;
+const GoogleCloudApihubV1IssueList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GoogleCloudApihubV1IssueList>;
+
 export type GoogleCloudApihubV1SummaryEntrySeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "SEVERITY_ERROR"
   | "SEVERITY_WARNING"
   | "SEVERITY_INFO"
   | "SEVERITY_HINT";
+const GoogleCloudApihubV1SummaryEntrySeverityEnum = S.String;
+
 /** Count of issues with a given severity. */
 export interface GoogleCloudApihubV1SummaryEntry {
   /** Required. Severity of the issue. */
@@ -278,12 +390,26 @@ export interface GoogleCloudApihubV1SummaryEntry {
   /** Required. Count of issues with the given severity. */
   count?: number;
 }
+const GoogleCloudApihubV1SummaryEntry = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GoogleCloudApihubV1SummaryEntry>;
+
 export type GoogleCloudApihubV1SummaryEntryList = Array<GoogleCloudApihubV1SummaryEntry>;
+const GoogleCloudApihubV1SummaryEntryList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1SummaryEntryList>;
+
 export type GoogleCloudApihubV1LintResponseLinterEnum = "LINTER_UNSPECIFIED" | "SPECTRAL" | "OTHER";
+const GoogleCloudApihubV1LintResponseLinterEnum = S.String;
+
 export type GoogleCloudApihubV1LintResponseStateEnum =
   | "LINT_STATE_UNSPECIFIED"
   | "LINT_STATE_SUCCESS"
   | "LINT_STATE_ERROR";
+const GoogleCloudApihubV1LintResponseStateEnum = S.String;
+
 /** LintResponse contains the response from the linter. */
 export interface GoogleCloudApihubV1LintResponse {
   /** Required. Timestamp when the linting response was generated. */
@@ -299,7 +425,14 @@ export interface GoogleCloudApihubV1LintResponse {
   /** Required. Lint state represents success or failure for linting. */
   state?: GoogleCloudApihubV1LintResponseStateEnum | (string & {});
 }
+const GoogleCloudApihubV1LintResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1LintResponse>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<StringMap>;
+
 /** The spec contents. */
 export interface GoogleCloudApihubV1SpecContents {
   /** Required. The contents of the spec. */
@@ -307,10 +440,17 @@ export interface GoogleCloudApihubV1SpecContents {
   /** Required. The mime type of the content for example application/json, application/yaml, application/wsdl etc. */
   mimeType?: string;
 }
+const GoogleCloudApihubV1SpecContents = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1SpecContents>;
+
 export type GoogleCloudApihubV1AdditionalSpecContentSpecContentTypeEnum =
   | "SPEC_CONTENT_TYPE_UNSPECIFIED"
   | "BOOSTED_SPEC_CONTENT"
   | "GATEWAY_OPEN_API_SPEC";
+const GoogleCloudApihubV1AdditionalSpecContentSpecContentTypeEnum = S.String;
+
 /** The additional spec content for the spec. This contains the metadata and the last update time for the additional spec content. */
 export interface GoogleCloudApihubV1AdditionalSpecContent {
   /** Optional. The labels of the spec content e.g. specboost addon version. */
@@ -324,8 +464,18 @@ export interface GoogleCloudApihubV1AdditionalSpecContent {
   /** Output only. The time at which the spec content was last updated. */
   updateTime?: string;
 }
+const GoogleCloudApihubV1AdditionalSpecContent = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GoogleCloudApihubV1AdditionalSpecContent>;
+
 export type GoogleCloudApihubV1AdditionalSpecContentList =
   Array<GoogleCloudApihubV1AdditionalSpecContent>;
+const GoogleCloudApihubV1AdditionalSpecContentList = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GoogleCloudApihubV1AdditionalSpecContentList>;
+
 /** Represents a spec associated with an API version in the API Hub. Note that specs of various types can be uploaded, however parsing of details is supported for OpenAPI spec currently. */
 export interface GoogleCloudApihubV1Spec {
   /** Required. The display name of the spec. This can contain the file name of the spec. */
@@ -359,6 +509,11 @@ export interface GoogleCloudApihubV1Spec {
   /** Output only. The time at which the spec was created. */
   createTime?: string;
 }
+const GoogleCloudApihubV1Spec = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GoogleCloudApihubV1Spec>;
+
 /** The metadata associated with a spec of the API version. */
 export interface GoogleCloudApihubV1SpecMetadata {
   /** Required. The spec resource to be pushed to Hub's collect layer. The ID of the spec will be generated by Hub. */
@@ -372,7 +527,17 @@ export interface GoogleCloudApihubV1SpecMetadata {
   /** Optional. The gateway-side URIs of deployments that serve this spec. If provided, the API Hub service creates links between this spec and the deployments identified by these URIs. URIs that don't match any known deployment are ignored; a subsequent ingestion cycle that includes the missing deployment will re-establish the link. The maximum number of URIs allowed is 100. */
   deploymentResourceUris?: StringList;
 }
+const GoogleCloudApihubV1SpecMetadata = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GoogleCloudApihubV1SpecMetadata>;
+
 export type GoogleCloudApihubV1SpecMetadataList = Array<GoogleCloudApihubV1SpecMetadata>;
+const GoogleCloudApihubV1SpecMetadataList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1SpecMetadataList>;
+
 /** Represents a version of the API resource in API hub. This is also referred to as the API version. */
 export interface GoogleCloudApihubV1Version {
   /** Optional. The list of user defined attributes associated with the Version resource. The key is the attribute name. It will be of the format: `projects/{project}/locations/{location}/attributes/{attribute}`. The value is the attribute values associated with the resource. */
@@ -408,6 +573,11 @@ export interface GoogleCloudApihubV1Version {
   /** Optional. The deployments linked directly to this API version. Only directly-linked deployments are returned; deployments linked to this version's specs or operations are not included. Note: A particular API version could be deployed to multiple deployments (for dev deployment, UAT deployment, etc) Format is `projects/{project}/locations/{location}/deployments/{deployment}` */
   deployments?: StringList;
 }
+const GoogleCloudApihubV1Version = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1Version>;
+
 /** Details of the deployment where APIs are hosted. A deployment could represent an Apigee proxy, API gateway, other Google Cloud services or non-Google Cloud services as well. A deployment entity is a root level entity in the API hub and exists independent of any API. */
 export interface GoogleCloudApihubV1Deployment {
   /** Optional. The description of the deployment. */
@@ -453,6 +623,11 @@ export interface GoogleCloudApihubV1Deployment {
   /** Required. The resource URI identifies the deployment within its gateway. For Apigee gateways, its recommended to use the format: organizations/{org}/environments/{env}/apis/{api}. For ex: if a proxy with name `orders` is deployed in `staging` environment of `cymbal` organization, the resource URI would be: `organizations/cymbal/environments/staging/apis/orders`. */
   resourceUri?: string;
 }
+const GoogleCloudApihubV1Deployment = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GoogleCloudApihubV1Deployment>;
+
 /** The metadata associated with a deployment. */
 export interface GoogleCloudApihubV1DeploymentMetadata {
   /** Required. Timestamp indicating when the deployment was last updated at the source. */
@@ -464,8 +639,18 @@ export interface GoogleCloudApihubV1DeploymentMetadata {
   /** Optional. Timestamp indicating when the deployment was created at the source. */
   originalCreateTime?: string;
 }
+const GoogleCloudApihubV1DeploymentMetadata = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1DeploymentMetadata>;
+
 export type GoogleCloudApihubV1DeploymentMetadataList =
   Array<GoogleCloudApihubV1DeploymentMetadata>;
+const GoogleCloudApihubV1DeploymentMetadataList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GoogleCloudApihubV1DeploymentMetadataList>;
+
 /** The metadata associated with a version of the API resource. */
 export interface GoogleCloudApihubV1VersionMetadata {
   /** Optional. The specs associated with this version. Note that an API version can be associated with multiple specs. */
@@ -481,7 +666,17 @@ export interface GoogleCloudApihubV1VersionMetadata {
   /** Optional. The unique identifier of the version in the system where it was originally created. */
   originalId?: string;
 }
+const GoogleCloudApihubV1VersionMetadata = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GoogleCloudApihubV1VersionMetadata>;
+
 export type GoogleCloudApihubV1VersionMetadataList = Array<GoogleCloudApihubV1VersionMetadata>;
+const GoogleCloudApihubV1VersionMetadataList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GoogleCloudApihubV1VersionMetadataList>;
+
 /** The API metadata. */
 export interface GoogleCloudApihubV1APIMetadata {
   /** Required. The API resource to be pushed to Hub's collect layer. The ID of the API resource will be generated by Hub to ensure uniqueness across all APIs across systems. */
@@ -495,21 +690,43 @@ export interface GoogleCloudApihubV1APIMetadata {
   /** Required. Timestamp indicating when the API was last updated at the source. */
   originalUpdateTime?: string;
 }
+const GoogleCloudApihubV1APIMetadata = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GoogleCloudApihubV1APIMetadata>;
+
 export type GoogleCloudApihubV1APIMetadataList = Array<GoogleCloudApihubV1APIMetadata>;
+const GoogleCloudApihubV1APIMetadataList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1APIMetadataList>;
+
 /** The message to hold repeated API metadata. */
 export interface GoogleCloudApihubV1ApiMetadataList {
   /** Required. The list of API metadata. */
   apiMetadata?: GoogleCloudApihubV1APIMetadataList;
 }
+const GoogleCloudApihubV1ApiMetadataList = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1ApiMetadataList>;
+
 /** The API data to be collected. */
 export interface GoogleCloudApihubV1ApiData {
   /** Optional. The list of API metadata. */
   apiMetadataList?: GoogleCloudApihubV1ApiMetadataList;
 }
+const GoogleCloudApihubV1ApiData = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GoogleCloudApihubV1ApiData>;
+
 export type GoogleCloudApihubV1CollectApiDataRequestCollectionTypeEnum =
   | "COLLECTION_TYPE_UNSPECIFIED"
   | "COLLECTION_TYPE_UPSERT"
   | "COLLECTION_TYPE_DELETE";
+const GoogleCloudApihubV1CollectApiDataRequestCollectionTypeEnum = S.String;
+
 /** The CollectApiData method's request. */
 export interface GoogleCloudApihubV1CollectApiDataRequest {
   /** Required. The plugin instance collecting the API data. Format: `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}`. */
@@ -521,14 +738,28 @@ export interface GoogleCloudApihubV1CollectApiDataRequest {
   /** Required. The type of collection. Applies to all entries in api_data. */
   collectionType?: GoogleCloudApihubV1CollectApiDataRequestCollectionTypeEnum | (string & {});
 }
+const GoogleCloudApihubV1CollectApiDataRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1CollectApiDataRequest>;
+
 export interface CollectApiDataProjectsLocationsRequest {
   /** Required. The regional location of the API hub instance and its resources. Format: `projects/{project}/locations/{location}` */
   location: string;
   /** Request body */
   body?: GoogleCloudApihubV1CollectApiDataRequest;
 }
+const CollectApiDataProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CollectApiDataProjectsLocationsRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -538,6 +769,8 @@ export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
+const GoogleRpcStatus = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<GoogleRpcStatus>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -551,6 +784,11 @@ export interface GoogleLongrunningOperation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
+const GoogleLongrunningOperation = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GoogleLongrunningOperation>;
+
 export type GoogleCloudApihubV1HttpOperationConfigMethodEnum =
   | "METHOD_UNSPECIFIED"
   | "GET"
@@ -561,6 +799,8 @@ export type GoogleCloudApihubV1HttpOperationConfigMethodEnum =
   | "HEAD"
   | "PATCH"
   | "TRACE";
+const GoogleCloudApihubV1HttpOperationConfigMethodEnum = S.String;
+
 /** Identifies a single API Hub operation by spec resource name + HTTP path + HTTP method. */
 export interface GoogleCloudApihubV1HttpOperationConfig {
   /** Required. HTTP path of the operation within the referenced spec. Match is exact (no template substitution): the path here must appear verbatim on an APIOperationRevision belonging to the spec. */
@@ -570,6 +810,11 @@ export interface GoogleCloudApihubV1HttpOperationConfig {
   /** Required. HTTP method of the operation within the referenced spec. (GET / PUT / POST / DELETE / OPTIONS / HEAD / PATCH / TRACE). */
   method?: GoogleCloudApihubV1HttpOperationConfigMethodEnum | (string & {});
 }
+const GoogleCloudApihubV1HttpOperationConfig = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1HttpOperationConfig>;
+
 /** API hub Operation config. */
 export interface GoogleCloudApihubV1OperationConfig {
   /** Full API Hub operation resource name: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/operations/{operation}` */
@@ -577,6 +822,11 @@ export interface GoogleCloudApihubV1OperationConfig {
   /** The HTTP operation config. */
   httpOperation?: GoogleCloudApihubV1HttpOperationConfig;
 }
+const GoogleCloudApihubV1OperationConfig = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GoogleCloudApihubV1OperationConfig>;
+
 /** A tool exposed by the MCP server. Each tool wraps exactly one API Hub operation under a caller-supplied identifier. */
 export interface GoogleCloudApihubV1McpToolConfig {
   /** Required. Description of what the tool does and how it is used. Description serves as key reference for the agent to know about the tool capabilities. */
@@ -586,7 +836,17 @@ export interface GoogleCloudApihubV1McpToolConfig {
   /** Required. Caller-supplied identifier for the tool; each tool must have a unique identifier. This will be by used by agents to invoke the tool. Tool ID must be unique across all tools in the given MCP server configuration. */
   toolId?: string;
 }
+const GoogleCloudApihubV1McpToolConfig = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1McpToolConfig>;
+
 export type GoogleCloudApihubV1McpToolConfigList = Array<GoogleCloudApihubV1McpToolConfig>;
+const GoogleCloudApihubV1McpToolConfigList = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GoogleCloudApihubV1McpToolConfigList>;
+
 /** Metadata for the server configuration in Apigee X. */
 export interface GoogleCloudApihubV1MetaData {
   /** Optional. Display name for the server. For apigee target, this will be used as revision display name. */
@@ -594,6 +854,11 @@ export interface GoogleCloudApihubV1MetaData {
   /** Optional. Description for the server. For apigee target, this will be used as revision description. */
   description?: string;
 }
+const GoogleCloudApihubV1MetaData = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GoogleCloudApihubV1MetaData>;
+
 /** The target configuration for Apigee X. Note: If this API is called while an earlier deployment is still in progress, the earlier deployment will be aborted and a new deployment will be triggered. */
 export interface GoogleCloudApihubV1ApigeeXTargetDetails {
   /** Required. The runtime project that hosts the Apigee X organization. This must be one of the runtime projects attached to the API Hub host project. */
@@ -607,6 +872,11 @@ export interface GoogleCloudApihubV1ApigeeXTargetDetails {
   /** Required. This name identifies the proxy resource in Apigee. It typically follows a standard alphanumeric format (e.g., "mcp-discovery-server"). */
   proxy?: string;
 }
+const GoogleCloudApihubV1ApigeeXTargetDetails = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GoogleCloudApihubV1ApigeeXTargetDetails>;
+
 /** MCP-specific server configuration. */
 export interface GoogleCloudApihubV1McpServerConfig {
   /** Required. The tools to expose on the MCP server. */
@@ -614,26 +884,48 @@ export interface GoogleCloudApihubV1McpServerConfig {
   /** Optional. The target Apigee X configuration. */
   apigeeXTargetDetails?: GoogleCloudApihubV1ApigeeXTargetDetails;
 }
+const GoogleCloudApihubV1McpServerConfig = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<GoogleCloudApihubV1McpServerConfig>;
+
 /** Request message for ApiHub.ConfigureAndDeployServer. */
 export interface GoogleCloudApihubV1ConfigureAndDeployServerRequest {
   /** MCP (Model Context Protocol) server configuration. */
   mcpServerConfig?: GoogleCloudApihubV1McpServerConfig;
 }
+const GoogleCloudApihubV1ConfigureAndDeployServerRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1ConfigureAndDeployServerRequest>;
+
 export interface ConfigureAndDeployServerProjectsLocationsServersRequest {
   /** Required. Format: `projects/{project}/locations/{location}` */
   parent: string;
   /** Request body */
   body?: GoogleCloudApihubV1ConfigureAndDeployServerRequest;
 }
+const ConfigureAndDeployServerProjectsLocationsServersRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ConfigureAndDeployServerProjectsLocationsServersRequest>;
+
 /** The configuration for Agent Registry sync. */
 export interface GoogleCloudApihubV1AgentRegistrySyncConfig {
   /** Optional. If true, the MCP data sync to the Agent Registry will be disabled. The default value is false. */
   disabled?: boolean;
 }
+const GoogleCloudApihubV1AgentRegistrySyncConfig = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GoogleCloudApihubV1AgentRegistrySyncConfig>;
+
 export type GoogleCloudApihubV1ConfigEncryptionTypeEnum =
   | "ENCRYPTION_TYPE_UNSPECIFIED"
   | "GMEK"
   | "CMEK";
+const GoogleCloudApihubV1ConfigEncryptionTypeEnum = S.String;
+
 /** Available configurations to provision an ApiHub Instance. */
 export interface GoogleCloudApihubV1Config {
   /** Optional. The configuration for syncing MCP data in the API Hub instance to the Agent Registry. */
@@ -647,6 +939,11 @@ export interface GoogleCloudApihubV1Config {
   /** Optional. The name of the Vertex AI location where the data store is stored. */
   vertexLocation?: string;
 }
+const GoogleCloudApihubV1Config = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1Config>;
+
 export type GoogleCloudApihubV1ApiHubInstanceStateEnum =
   | "STATE_UNSPECIFIED"
   | "INACTIVE"
@@ -655,6 +952,8 @@ export type GoogleCloudApihubV1ApiHubInstanceStateEnum =
   | "UPDATING"
   | "DELETING"
   | "FAILED";
+const GoogleCloudApihubV1ApiHubInstanceStateEnum = S.String;
+
 /** An ApiHubInstance represents the instance resources of the API Hub. Currently, only one ApiHub instance is allowed for each project. */
 export interface GoogleCloudApihubV1ApiHubInstance {
   /** Output only. Last update timestamp. */
@@ -674,6 +973,11 @@ export interface GoogleCloudApihubV1ApiHubInstance {
   /** Optional. Description of the ApiHub instance. */
   description?: string;
 }
+const GoogleCloudApihubV1ApiHubInstance = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GoogleCloudApihubV1ApiHubInstance>;
+
 export interface CreateProjectsLocationsApiHubInstancesRequest {
   /** Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are `/a-z[0-9]-_/`. */
   apiHubInstanceId?: string;
@@ -682,6 +986,11 @@ export interface CreateProjectsLocationsApiHubInstancesRequest {
   /** Request body */
   body?: GoogleCloudApihubV1ApiHubInstance;
 }
+const CreateProjectsLocationsApiHubInstancesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<CreateProjectsLocationsApiHubInstancesRequest>;
+
 export interface CreateProjectsLocationsApisRequest {
   /** Required. The parent resource for the API resource. Format: `projects/{project}/locations/{location}` */
   parent: string;
@@ -690,6 +999,11 @@ export interface CreateProjectsLocationsApisRequest {
   /** Request body */
   body?: GoogleCloudApihubV1Api;
 }
+const CreateProjectsLocationsApisRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<CreateProjectsLocationsApisRequest>;
+
 export interface CreateProjectsLocationsApisVersionsRequest {
   /** Required. The parent resource for API version. Format: `projects/{project}/locations/{location}/apis/{api}` */
   parent: string;
@@ -698,6 +1012,11 @@ export interface CreateProjectsLocationsApisVersionsRequest {
   /** Request body */
   body?: GoogleCloudApihubV1Version;
 }
+const CreateProjectsLocationsApisVersionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<CreateProjectsLocationsApisVersionsRequest>;
+
 export type GoogleCloudApihubV1HttpOperationMethodEnum =
   | "METHOD_UNSPECIFIED"
   | "GET"
@@ -708,6 +1027,8 @@ export type GoogleCloudApihubV1HttpOperationMethodEnum =
   | "HEAD"
   | "PATCH"
   | "TRACE";
+const GoogleCloudApihubV1HttpOperationMethodEnum = S.String;
+
 /** The path details derived from the spec. */
 export interface GoogleCloudApihubV1Path {
   /** Optional. Complete path relative to server endpoint. Note: Even though this field is optional, it is required for CreateApiOperation API and we will fail the request if not provided. */
@@ -715,6 +1036,11 @@ export interface GoogleCloudApihubV1Path {
   /** Optional. A short description for the path applicable to all operations. */
   description?: string;
 }
+const GoogleCloudApihubV1Path = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1Path>;
+
 /** The HTTP Operation. */
 export interface GoogleCloudApihubV1HttpOperation {
   /** Optional. Operation method Note: Even though this field is optional, it is required for CreateApiOperation API and we will fail the request if not provided. */
@@ -722,6 +1048,11 @@ export interface GoogleCloudApihubV1HttpOperation {
   /** Optional. The path details for the Operation. Note: Even though this field is optional, it is required for CreateApiOperation API and we will fail the request if not provided. */
   path?: GoogleCloudApihubV1Path;
 }
+const GoogleCloudApihubV1HttpOperation = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1HttpOperation>;
+
 /** Annotations for a Tool. */
 export interface GoogleCloudApihubV1ToolAnnotations {
   /** Optional. Hint indicating if the tool is idempotent. */
@@ -737,11 +1068,21 @@ export interface GoogleCloudApihubV1ToolAnnotations {
   /** Optional. Hint indicating if the tool may have destructive side effects. */
   destructiveHint?: boolean;
 }
+const GoogleCloudApihubV1ToolAnnotations = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<GoogleCloudApihubV1ToolAnnotations>;
+
 /** The operation schema needed for an operation. */
 export interface GoogleCloudApihubV1OperationSchema {
   /** The JSON schema. Only valid JSON is accepted but semantic validation of schema is not supported right now. */
   jsonSchema?: DocumentMap;
 }
+const GoogleCloudApihubV1OperationSchema = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1OperationSchema>;
+
 /** Details describing an MCP Tool. */
 export interface GoogleCloudApihubV1McpTool {
   /** Required. The name of the tool, unique within its parent scope (version). */
@@ -757,6 +1098,11 @@ export interface GoogleCloudApihubV1McpTool {
   /** Optional. Input schema for the operation. This can be parsed only from MCP schema type. */
   inputSchema?: GoogleCloudApihubV1OperationSchema;
 }
+const GoogleCloudApihubV1McpTool = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GoogleCloudApihubV1McpTool>;
+
 /** The operation details parsed from the spec. */
 export interface GoogleCloudApihubV1OperationDetails {
   /** Optional. Description of the operation behavior. For OpenAPI spec, this will map to `operation.description` in the spec, in case description is empty, `operation.summary` will be used. */
@@ -770,6 +1116,11 @@ export interface GoogleCloudApihubV1OperationDetails {
   /** The MCP Tool Operation. */
   mcpTool?: GoogleCloudApihubV1McpTool;
 }
+const GoogleCloudApihubV1OperationDetails = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<GoogleCloudApihubV1OperationDetails>;
+
 /** Represents an operation contained in an API version in the API Hub. An operation is added/updated/deleted in an API version when a new spec is added or an existing spec is updated/deleted in a version. Currently, an operation will be created only corresponding to OpenAPI spec as parsing is supported for OpenAPI spec. Alternatively operations can be managed via create,update and delete APIs, creation of apiOperation can be possible only for version with no parsed operations and update/delete can be possible only for operations created via create API. */
 export interface GoogleCloudApihubV1ApiOperation {
   /** Output only. The name of the spec will be of the format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}` Note:The name of the spec will be empty if the operation is created via CreateApiOperation API. */
@@ -789,6 +1140,11 @@ export interface GoogleCloudApihubV1ApiOperation {
   /** Optional. The list of user defined attributes associated with the API operation resource. The key is the attribute name. It will be of the format: `projects/{project}/locations/{location}/attributes/{attribute}`. The value is the attribute values associated with the resource. */
   attributes?: GoogleCloudApihubV1AttributeValuesMap;
 }
+const GoogleCloudApihubV1ApiOperation = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GoogleCloudApihubV1ApiOperation>;
+
 export interface CreateProjectsLocationsApisVersionsOperationsRequest {
   /** Required. The parent resource for the operation resource. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}` */
   parent: string;
@@ -797,6 +1153,11 @@ export interface CreateProjectsLocationsApisVersionsOperationsRequest {
   /** Request body */
   body?: GoogleCloudApihubV1ApiOperation;
 }
+const CreateProjectsLocationsApisVersionsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<CreateProjectsLocationsApisVersionsOperationsRequest>;
+
 export interface CreateProjectsLocationsApisVersionsSpecsRequest {
   /** Optional. The ID to use for the spec, which will become the final component of the spec's resource name. This field is optional. * If provided, the same will be used. The service will throw an error if the specified id is already used by another spec in the API resource. * If not provided, a system generated id will be used. This value should be 4-500 characters, overall resource name which will be of format `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}`, its length is limited to 1000 characters and valid characters are /a-z[0-9]-_/. */
   specId?: string;
@@ -805,16 +1166,25 @@ export interface CreateProjectsLocationsApisVersionsSpecsRequest {
   /** Request body */
   body?: GoogleCloudApihubV1Spec;
 }
+const CreateProjectsLocationsApisVersionsSpecsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<CreateProjectsLocationsApisVersionsSpecsRequest>;
+
 export type GoogleCloudApihubV1AttributeDefinitionTypeEnum =
   | "DEFINITION_TYPE_UNSPECIFIED"
   | "SYSTEM_DEFINED"
   | "USER_DEFINED";
+const GoogleCloudApihubV1AttributeDefinitionTypeEnum = S.String;
+
 export type GoogleCloudApihubV1AttributeDataTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
   | "ENUM"
   | "JSON"
   | "STRING"
   | "URI";
+const GoogleCloudApihubV1AttributeDataTypeEnum = S.String;
+
 export type GoogleCloudApihubV1AttributeScopeEnum =
   | "SCOPE_UNSPECIFIED"
   | "API"
@@ -826,6 +1196,8 @@ export type GoogleCloudApihubV1AttributeScopeEnum =
   | "DEFINITION"
   | "EXTERNAL_API"
   | "PLUGIN";
+const GoogleCloudApihubV1AttributeScopeEnum = S.String;
+
 /** An attribute in the API Hub. An attribute is a name value pair which can be attached to different resources in the API hub based on the scope of the attribute. Attributes can either be pre-defined by the API Hub or created by users. */
 export interface GoogleCloudApihubV1Attribute {
   /** Output only. The time at which the attribute was created. */
@@ -851,6 +1223,11 @@ export interface GoogleCloudApihubV1Attribute {
   /** Optional. The maximum number of values that the attribute can have when associated with an API Hub resource. Cardinality 1 would represent a single-valued attribute. It must not be less than 1 or greater than 20. If not specified, the cardinality would be set to 1 by default and represent a single-valued attribute. */
   cardinality?: number;
 }
+const GoogleCloudApihubV1Attribute = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1Attribute>;
+
 export interface CreateProjectsLocationsAttributesRequest {
   /** Required. The parent resource for Attribute. Format: `projects/{project}/locations/{location}` */
   parent: string;
@@ -859,6 +1236,11 @@ export interface CreateProjectsLocationsAttributesRequest {
   /** Request body */
   body?: GoogleCloudApihubV1Attribute;
 }
+const CreateProjectsLocationsAttributesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<CreateProjectsLocationsAttributesRequest>;
+
 /** The details of the Application Integration endpoint to be triggered for curation. */
 export interface GoogleCloudApihubV1ApplicationIntegrationEndpointDetails {
   /** Required. The endpoint URI should be a valid REST URI for triggering an Application Integration. Format: `https://integrations.googleapis.com/v1/{name=projects/*\/locations/*\/integrations/*}:execute` or `https://{location}-integrations.googleapis.com/v1/{name=projects/*\/locations/*\/integrations/*}:execute` */
@@ -866,11 +1248,21 @@ export interface GoogleCloudApihubV1ApplicationIntegrationEndpointDetails {
   /** Required. The API trigger ID of the Application Integration workflow. */
   triggerId?: string;
 }
+const GoogleCloudApihubV1ApplicationIntegrationEndpointDetails = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1ApplicationIntegrationEndpointDetails>;
+
 /** The endpoint to be triggered for curation. The endpoint will be invoked with a request payload containing ApiMetadata. Response should contain curated data in the form of ApiMetadata. */
 export interface GoogleCloudApihubV1Endpoint {
   /** Required. The details of the Application Integration endpoint to be triggered for curation. */
   applicationIntegrationEndpointDetails?: GoogleCloudApihubV1ApplicationIntegrationEndpointDetails;
 }
+const GoogleCloudApihubV1Endpoint = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<GoogleCloudApihubV1Endpoint>;
+
 /** The plugin instance and associated action that is using the curation. */
 export interface GoogleCloudApihubV1PluginInstanceActionID {
   /** Output only. Plugin instance that is using the curation. Format is `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}` */
@@ -878,16 +1270,28 @@ export interface GoogleCloudApihubV1PluginInstanceActionID {
   /** Output only. The action ID that is using the curation. This should map to one of the action IDs specified in action configs in the plugin. */
   actionId?: string;
 }
+const GoogleCloudApihubV1PluginInstanceActionID =
+  GoogleCloudApihubV1PluginInstanceActionSource as any as S.Schema<GoogleCloudApihubV1PluginInstanceActionID>;
+
 export type GoogleCloudApihubV1PluginInstanceActionIDList =
   Array<GoogleCloudApihubV1PluginInstanceActionID>;
+const GoogleCloudApihubV1PluginInstanceActionIDList = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GoogleCloudApihubV1PluginInstanceActionIDList>;
+
 export type GoogleCloudApihubV1CurationLastExecutionStateEnum =
   | "LAST_EXECUTION_STATE_UNSPECIFIED"
   | "SUCCEEDED"
   | "FAILED";
+const GoogleCloudApihubV1CurationLastExecutionStateEnum = S.String;
+
 export type GoogleCloudApihubV1CurationLastExecutionErrorCodeEnum =
   | "ERROR_CODE_UNSPECIFIED"
   | "INTERNAL_ERROR"
   | "UNAUTHORIZED";
+const GoogleCloudApihubV1CurationLastExecutionErrorCodeEnum = S.String;
+
 /** A curation resource in the API Hub. */
 export interface GoogleCloudApihubV1Curation {
   /** Output only. The time at which the curation was last updated. */
@@ -911,6 +1315,11 @@ export interface GoogleCloudApihubV1Curation {
   /** Output only. Error message describing the failure, if any, during the last execution of the curation. */
   lastExecutionErrorMessage?: string;
 }
+const GoogleCloudApihubV1Curation = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<GoogleCloudApihubV1Curation>;
+
 export interface CreateProjectsLocationsCurationsRequest {
   /** Required. The parent resource for the curation resource. Format: `projects/{project}/locations/{location}` */
   parent: string;
@@ -919,6 +1328,11 @@ export interface CreateProjectsLocationsCurationsRequest {
   /** Request body */
   body?: GoogleCloudApihubV1Curation;
 }
+const CreateProjectsLocationsCurationsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<CreateProjectsLocationsCurationsRequest>;
+
 /** Reference to an entity participating in a dependency. */
 export interface GoogleCloudApihubV1DependencyEntityReference {
   /** Output only. Display name of the entity. */
@@ -928,13 +1342,22 @@ export interface GoogleCloudApihubV1DependencyEntityReference {
   /** The resource name of an operation in the API Hub. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/operations/{operation}` */
   operationResourceName?: string;
 }
+const GoogleCloudApihubV1DependencyEntityReference = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1DependencyEntityReference>;
+
 export type GoogleCloudApihubV1DependencyDiscoveryModeEnum =
   | "DISCOVERY_MODE_UNSPECIFIED"
   | "MANUAL";
+const GoogleCloudApihubV1DependencyDiscoveryModeEnum = S.String;
+
 export type GoogleCloudApihubV1DependencyErrorDetailErrorEnum =
   | "ERROR_UNSPECIFIED"
   | "SUPPLIER_NOT_FOUND"
   | "SUPPLIER_RECREATED";
+const GoogleCloudApihubV1DependencyErrorDetailErrorEnum = S.String;
+
 /** Details describing error condition of a dependency. */
 export interface GoogleCloudApihubV1DependencyErrorDetail {
   /** Optional. Timestamp at which the error was found. */
@@ -942,7 +1365,14 @@ export interface GoogleCloudApihubV1DependencyErrorDetail {
   /** Optional. Error in the dependency. */
   error?: GoogleCloudApihubV1DependencyErrorDetailErrorEnum | (string & {});
 }
+const GoogleCloudApihubV1DependencyErrorDetail = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1DependencyErrorDetail>;
+
 export type GoogleCloudApihubV1DependencyStateEnum = "STATE_UNSPECIFIED" | "PROPOSED" | "VALIDATED";
+const GoogleCloudApihubV1DependencyStateEnum = S.String;
+
 /** A dependency resource defined in the API hub describes a dependency directed from a consumer to a supplier entity. A dependency can be defined between two Operations or between an Operation and External API. */
 export interface GoogleCloudApihubV1Dependency {
   /** Required. Immutable. The entity acting as the supplier in the dependency. */
@@ -966,6 +1396,11 @@ export interface GoogleCloudApihubV1Dependency {
   /** Optional. The list of user defined attributes associated with the dependency resource. The key is the attribute name. It will be of the format: `projects/{project}/locations/{location}/attributes/{attribute}`. The value is the attribute values associated with the resource. */
   attributes?: GoogleCloudApihubV1AttributeValuesMap;
 }
+const GoogleCloudApihubV1Dependency = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<GoogleCloudApihubV1Dependency>;
+
 export interface CreateProjectsLocationsDependenciesRequest {
   /** Optional. The ID to use for the dependency resource, which will become the final component of the dependency's resource name. This field is optional. * If provided, the same will be used. The service will throw an error if duplicate id is provided by the client. * If not provided, a system generated id will be used. This value should be 4-500 characters, and valid characters are `a-z[0-9]-_`. */
   dependencyId?: string;
@@ -974,6 +1409,11 @@ export interface CreateProjectsLocationsDependenciesRequest {
   /** Request body */
   body?: GoogleCloudApihubV1Dependency;
 }
+const CreateProjectsLocationsDependenciesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<CreateProjectsLocationsDependenciesRequest>;
+
 export interface CreateProjectsLocationsDeploymentsRequest {
   /** Required. The parent resource for the deployment resource. Format: `projects/{project}/locations/{location}` */
   parent: string;
@@ -982,6 +1422,11 @@ export interface CreateProjectsLocationsDeploymentsRequest {
   /** Request body */
   body?: GoogleCloudApihubV1Deployment;
 }
+const CreateProjectsLocationsDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<CreateProjectsLocationsDeploymentsRequest>;
+
 /** An external API represents an API being provided by external sources. This can be used to model third-party APIs and can be used to define dependencies. */
 export interface GoogleCloudApihubV1ExternalApi {
   /** Output only. Last update timestamp. */
@@ -1003,6 +1448,11 @@ export interface GoogleCloudApihubV1ExternalApi {
   /** Optional. List of paths served by this API. */
   paths?: StringList;
 }
+const GoogleCloudApihubV1ExternalApi = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<GoogleCloudApihubV1ExternalApi>;
+
 export interface CreateProjectsLocationsExternalApisRequest {
   /** Required. The parent resource for the External API resource. Format: `projects/{project}/locations/{location}` */
   parent: string;
@@ -1011,6 +1461,11 @@ export interface CreateProjectsLocationsExternalApisRequest {
   /** Request body */
   body?: GoogleCloudApihubV1ExternalApi;
 }
+const CreateProjectsLocationsExternalApisRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<CreateProjectsLocationsExternalApisRequest>;
+
 /** Host project registration refers to the registration of a Google cloud project with Api Hub as a host project. This is the project where Api Hub is provisioned. It acts as the consumer project for the Api Hub instance provisioned. Multiple runtime projects can be attached to the host project and these attachments define the scope of Api Hub. */
 export interface GoogleCloudApihubV1HostProjectRegistration {
   /** Required. Immutable. Google cloud project name in the format: "projects/abc" or "projects/123". As input, project name with either project id or number are accepted. As output, this field will contain project number. */
@@ -1020,6 +1475,11 @@ export interface GoogleCloudApihubV1HostProjectRegistration {
   /** Output only. The time at which the host project registration was created. */
   createTime?: string;
 }
+const GoogleCloudApihubV1HostProjectRegistration = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<GoogleCloudApihubV1HostProjectRegistration>;
+
 export interface CreateProjectsLocationsHostProjectRegistrationsRequest {
   /** Required. The parent resource for the host project. Format: `projects/{project}/locations/{location}` */
   parent: string;
@@ -1028,7 +1488,14 @@ export interface CreateProjectsLocationsHostProjectRegistrationsRequest {
   /** Request body */
   body?: GoogleCloudApihubV1HostProjectRegistration;
 }
+const CreateProjectsLocationsHostProjectRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<CreateProjectsLocationsHostProjectRegistrationsRequest>;
+
 export type GoogleCloudApihubV1PluginStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED";
+const GoogleCloudApihubV1PluginStateEnum = S.String;
+
 export type GoogleCloudApihubV1PluginGatewayTypeEnum =
   | "GATEWAY_TYPE_UNSPECIFIED"
   | "APIGEE_X_AND_HYBRID"
@@ -1040,6 +1507,8 @@ export type GoogleCloudApihubV1PluginGatewayTypeEnum =
   | "OTHERS"
   | "AWS_API_GATEWAY"
   | "AZURE_API_MANAGEMENT";
+const GoogleCloudApihubV1PluginGatewayTypeEnum = S.String;
+
 export type GoogleCloudApihubV1AuthConfigTemplateSupportedAuthTypesItemEnum =
   | "AUTH_TYPE_UNSPECIFIED"
   | "NO_AUTH"
@@ -1047,14 +1516,26 @@ export type GoogleCloudApihubV1AuthConfigTemplateSupportedAuthTypesItemEnum =
   | "USER_PASSWORD"
   | "API_KEY"
   | "OAUTH2_CLIENT_CREDENTIALS";
+const GoogleCloudApihubV1AuthConfigTemplateSupportedAuthTypesItemEnum = S.String;
+
 export type GoogleCloudApihubV1AuthConfigTemplateSupportedAuthTypesItemEnumList = Array<
   GoogleCloudApihubV1AuthConfigTemplateSupportedAuthTypesItemEnum | (string & {})
 >;
+const GoogleCloudApihubV1AuthConfigTemplateSupportedAuthTypesItemEnumList = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1AuthConfigTemplateSupportedAuthTypesItemEnumList>;
+
 /** Config for Google service account authentication. */
 export interface GoogleCloudApihubV1GoogleServiceAccountConfig {
   /** Required. The service account to be used for authenticating request. The `iam.serviceAccounts.getAccessToken` permission should be granted on this service account to the impersonator service account. */
   serviceAccount?: string;
 }
+const GoogleCloudApihubV1GoogleServiceAccountConfig = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<GoogleCloudApihubV1GoogleServiceAccountConfig>;
+
 /** AuthConfigTemplate represents the authentication template for a plugin. */
 export interface GoogleCloudApihubV1AuthConfigTemplate {
   /** Required. The list of authentication types supported by the plugin. */
@@ -1062,6 +1543,11 @@ export interface GoogleCloudApihubV1AuthConfigTemplate {
   /** Optional. The service account of the plugin hosting service. This service account should be granted the required permissions on the Auth Config parameters provided while creating the plugin instances corresponding to this plugin. For example, if the plugin instance auth config requires a secret manager secret, the service account should be granted the secretmanager.versions.access permission on the corresponding secret, if the plugin instance auth config contains a service account, the service account should be granted the iam.serviceAccounts.getAccessToken permission on the corresponding service account. */
   serviceAccount?: GoogleCloudApihubV1GoogleServiceAccountConfig;
 }
+const GoogleCloudApihubV1AuthConfigTemplate = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1AuthConfigTemplate>;
+
 /** ConfigValueOption represents an option for a config variable of type enum or multi select. */
 export interface GoogleCloudApihubV1ConfigValueOption {
   /** Required. Id of the option. */
@@ -1071,7 +1557,17 @@ export interface GoogleCloudApihubV1ConfigValueOption {
   /** Required. Display name of the option. */
   displayName?: string;
 }
+const GoogleCloudApihubV1ConfigValueOption = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<GoogleCloudApihubV1ConfigValueOption>;
+
 export type GoogleCloudApihubV1ConfigValueOptionList = Array<GoogleCloudApihubV1ConfigValueOption>;
+const GoogleCloudApihubV1ConfigValueOptionList = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<GoogleCloudApihubV1ConfigValueOptionList>;
+
 export type GoogleCloudApihubV1ConfigVariableTemplateValueTypeEnum =
   | "VALUE_TYPE_UNSPECIFIED"
   | "STRING"
@@ -1082,6 +1578,8 @@ export type GoogleCloudApihubV1ConfigVariableTemplateValueTypeEnum =
   | "MULTI_SELECT"
   | "MULTI_STRING"
   | "MULTI_INT";
+const GoogleCloudApihubV1ConfigVariableTemplateValueTypeEnum = S.String;
+
 /** ConfigVariableTemplate represents a configuration variable template present in a Plugin Config. */
 export interface GoogleCloudApihubV1ConfigVariableTemplate {
   /** Optional. Flag represents that this `ConfigVariable` must be provided for a PluginInstance. */
@@ -1099,8 +1597,18 @@ export interface GoogleCloudApihubV1ConfigVariableTemplate {
   /** Optional. Description. */
   description?: string;
 }
+const GoogleCloudApihubV1ConfigVariableTemplate = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GoogleCloudApihubV1ConfigVariableTemplate>;
+
 export type GoogleCloudApihubV1ConfigVariableTemplateList =
   Array<GoogleCloudApihubV1ConfigVariableTemplate>;
+const GoogleCloudApihubV1ConfigVariableTemplateList = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<GoogleCloudApihubV1ConfigVariableTemplateList>;
+
 /** ConfigTemplate represents the configuration template for a plugin. */
 export interface GoogleCloudApihubV1ConfigTemplate {
   /** Optional. The authentication template for the plugin. */
@@ -1108,24 +1616,40 @@ export interface GoogleCloudApihubV1ConfigTemplate {
   /** Optional. The list of additional configuration variables for the plugin's configuration. */
   additionalConfigTemplate?: GoogleCloudApihubV1ConfigVariableTemplateList;
 }
+const GoogleCloudApihubV1ConfigTemplate = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1ConfigTemplate>;
+
 export type GoogleCloudApihubV1PluginOwnershipTypeEnum =
   | "OWNERSHIP_TYPE_UNSPECIFIED"
   | "SYSTEM_OWNED"
   | "USER_OWNED";
+const GoogleCloudApihubV1PluginOwnershipTypeEnum = S.String;
+
 /** The information related to the service implemented by the plugin developer, used to invoke the plugin's functionality. */
 export interface GoogleCloudApihubV1HostingService {
   /** Optional. The URI of the service implemented by the plugin developer, used to invoke the plugin's functionality. This information is only required for user defined plugins. */
   serviceUri?: string;
 }
+const GoogleCloudApihubV1HostingService = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1HostingService>;
+
 export type GoogleCloudApihubV1PluginPluginCategoryEnum =
   | "PLUGIN_CATEGORY_UNSPECIFIED"
   | "API_GATEWAY"
   | "API_PRODUCER";
+const GoogleCloudApihubV1PluginPluginCategoryEnum = S.String;
+
 export type GoogleCloudApihubV1PluginActionConfigTriggerModeEnum =
   | "TRIGGER_MODE_UNSPECIFIED"
   | "API_HUB_ON_DEMAND_TRIGGER"
   | "API_HUB_SCHEDULE_TRIGGER"
   | "NON_API_HUB_MANAGED";
+const GoogleCloudApihubV1PluginActionConfigTriggerModeEnum = S.String;
+
 /** PluginActionConfig represents the configuration of an action supported by a plugin. */
 export interface GoogleCloudApihubV1PluginActionConfig {
   /** Required. The description of the operation performed by the action. */
@@ -1137,8 +1661,18 @@ export interface GoogleCloudApihubV1PluginActionConfig {
   /** Required. The trigger mode supported by the action. */
   triggerMode?: GoogleCloudApihubV1PluginActionConfigTriggerModeEnum | (string & {});
 }
+const GoogleCloudApihubV1PluginActionConfig = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<GoogleCloudApihubV1PluginActionConfig>;
+
 export type GoogleCloudApihubV1PluginActionConfigList =
   Array<GoogleCloudApihubV1PluginActionConfig>;
+const GoogleCloudApihubV1PluginActionConfigList = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1PluginActionConfigList>;
+
 /** A plugin resource in the API Hub. */
 export interface GoogleCloudApihubV1Plugin {
   /** Output only. Represents the state of the plugin. Note this field will not be set for plugins developed via plugin framework as the state will be managed at plugin instance level. */
@@ -1170,6 +1704,11 @@ export interface GoogleCloudApihubV1Plugin {
   /** Optional. The configuration of actions supported by the plugin. **REQUIRED**: This field must be provided when creating or updating a Plugin. The server will reject requests if this field is missing. */
   actionsConfig?: GoogleCloudApihubV1PluginActionConfigList;
 }
+const GoogleCloudApihubV1Plugin = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<GoogleCloudApihubV1Plugin>;
+
 export interface CreateProjectsLocationsPluginsRequest {
   /** Optional. The ID to use for the Plugin resource, which will become the final component of the Plugin's resource name. This field is optional. * If provided, the same will be used. The service will throw an error if the specified id is already used by another Plugin resource in the API hub instance. * If not provided, a system generated id will be used. This value should be 4-63 characters, overall resource name which will be of format `projects/{project}/locations/{location}/plugins/{plugin}`, its length is limited to 1000 characters and valid characters are /a-z[0-9]-_/. */
   pluginId?: string;
@@ -1178,6 +1717,11 @@ export interface CreateProjectsLocationsPluginsRequest {
   /** Request body */
   body?: GoogleCloudApihubV1Plugin;
 }
+const CreateProjectsLocationsPluginsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<CreateProjectsLocationsPluginsRequest>;
+
 export type GoogleCloudApihubV1PluginInstanceStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -1186,6 +1730,8 @@ export type GoogleCloudApihubV1PluginInstanceStateEnum =
   | "ERROR"
   | "FAILED"
   | "DELETING";
+const GoogleCloudApihubV1PluginInstanceStateEnum = S.String;
+
 /** Message representing the source environment details. */
 export interface GoogleCloudApihubV1SourceEnvironment {
   /** Optional. The time at which the environment was created at the source. */
@@ -1197,30 +1743,60 @@ export interface GoogleCloudApihubV1SourceEnvironment {
   /** Required. The name of the environment at the source. This should map to Deployment. */
   sourceEnvironment?: string;
 }
+const GoogleCloudApihubV1SourceEnvironment = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GoogleCloudApihubV1SourceEnvironment>;
+
 export type GoogleCloudApihubV1SourceEnvironmentMap = {
   [key: string]: GoogleCloudApihubV1SourceEnvironment | undefined;
 };
+const GoogleCloudApihubV1SourceEnvironmentMap = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<GoogleCloudApihubV1SourceEnvironmentMap>;
+
 /** The config variable value of data type multi select. */
 export interface GoogleCloudApihubV1MultiSelectValues {
   /** Optional. The config variable value of data type multi select. */
   values?: GoogleCloudApihubV1ConfigValueOptionList;
 }
+const GoogleCloudApihubV1MultiSelectValues = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1MultiSelectValues>;
+
 /** Secret provides a reference to entries in Secret Manager. */
 export interface GoogleCloudApihubV1Secret {
   /** Required. The resource name of the secret version in the format, format as: `projects/*\/secrets/*\/versions/*`. */
   secretVersion?: string;
 }
+const GoogleCloudApihubV1Secret = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1Secret>;
+
 /** The config variable value of data type multi string. */
 export interface GoogleCloudApihubV1MultiStringValues {
   /** Optional. The config variable value of data type multi string. */
   values?: StringList;
 }
+const GoogleCloudApihubV1MultiStringValues =
+  GoogleCloudApihubV1StringAttributeValues as any as S.Schema<GoogleCloudApihubV1MultiStringValues>;
+
 export type IntegerList = Array<number>;
+const IntegerList = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<IntegerList>;
+
 /** The config variable value of data type multi int. */
 export interface GoogleCloudApihubV1MultiIntValues {
   /** Optional. The config variable value of data type multi int. */
   values?: IntegerList;
 }
+const GoogleCloudApihubV1MultiIntValues = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1MultiIntValues>;
+
 /** ConfigVariable represents a additional configuration variable present in a PluginInstance Config or AuthConfig, based on a ConfigVariableTemplate. */
 export interface GoogleCloudApihubV1ConfigVariable {
   /** Optional. The config variable value in case of config variable of type enum. */
@@ -1242,17 +1818,31 @@ export interface GoogleCloudApihubV1ConfigVariable {
   /** Optional. The config variable value in case of config variable of type multi integer. */
   multiIntValues?: GoogleCloudApihubV1MultiIntValues;
 }
+const GoogleCloudApihubV1ConfigVariable = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<GoogleCloudApihubV1ConfigVariable>;
+
 export type GoogleCloudApihubV1ConfigVariableMap = {
   [key: string]: GoogleCloudApihubV1ConfigVariable | undefined;
 };
+const GoogleCloudApihubV1ConfigVariableMap = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<GoogleCloudApihubV1ConfigVariableMap>;
+
 export type GoogleCloudApihubV1ExecutionStatusCurrentExecutionStateEnum =
   | "CURRENT_EXECUTION_STATE_UNSPECIFIED"
   | "RUNNING"
   | "NOT_RUNNING";
+const GoogleCloudApihubV1ExecutionStatusCurrentExecutionStateEnum = S.String;
+
 export type GoogleCloudApihubV1LastExecutionResultEnum =
   | "RESULT_UNSPECIFIED"
   | "SUCCEEDED"
   | "FAILED";
+const GoogleCloudApihubV1LastExecutionResultEnum = S.String;
+
 /** The result of the last execution of the plugin instance. */
 export interface GoogleCloudApihubV1LastExecution {
   /** Output only. The result of the last execution of the plugin instance. */
@@ -1266,6 +1856,11 @@ export interface GoogleCloudApihubV1LastExecution {
   /** Output only. The last execution end time of the plugin instance. */
   endTime?: string;
 }
+const GoogleCloudApihubV1LastExecution = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<GoogleCloudApihubV1LastExecution>;
+
 /** The execution status for the plugin instance. */
 export interface GoogleCloudApihubV1ExecutionStatus {
   /** Output only. The current state of the execution. */
@@ -1275,15 +1870,27 @@ export interface GoogleCloudApihubV1ExecutionStatus {
   /** Output only. The last execution of the plugin instance. */
   lastExecution?: GoogleCloudApihubV1LastExecution;
 }
+const GoogleCloudApihubV1ExecutionStatus = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<GoogleCloudApihubV1ExecutionStatus>;
+
 /** Custom curation information for this plugin instance. */
 export interface GoogleCloudApihubV1CustomCuration {
   /** Required. The unique name of the curation resource. This will be the name of the curation resource in the format: `projects/{project}/locations/{location}/curations/{curation}` */
   curation?: string;
 }
+const GoogleCloudApihubV1CustomCuration = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1CustomCuration>;
+
 export type GoogleCloudApihubV1CurationConfigCurationTypeEnum =
   | "CURATION_TYPE_UNSPECIFIED"
   | "DEFAULT_CURATION_FOR_API_METADATA"
   | "CUSTOM_CURATION_FOR_API_METADATA";
+const GoogleCloudApihubV1CurationConfigCurationTypeEnum = S.String;
+
 /** The curation information for this plugin instance. */
 export interface GoogleCloudApihubV1CurationConfig {
   /** Optional. Custom curation information for this plugin instance. */
@@ -1291,10 +1898,17 @@ export interface GoogleCloudApihubV1CurationConfig {
   /** Required. The curation type for this plugin instance. */
   curationType?: GoogleCloudApihubV1CurationConfigCurationTypeEnum | (string & {});
 }
+const GoogleCloudApihubV1CurationConfig = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1CurationConfig>;
+
 export type GoogleCloudApihubV1ResourceConfigActionTypeEnum =
   | "ACTION_TYPE_UNSPECIFIED"
   | "SYNC_METADATA"
   | "SYNC_RUNTIME_DATA";
+const GoogleCloudApihubV1ResourceConfigActionTypeEnum = S.String;
+
 /** The configuration of resources created for a given plugin instance action. */
 export interface GoogleCloudApihubV1ResourceConfig {
   /** Output only. The pubsub topic to publish the data to. Format is projects/{project}/topics/{topic} */
@@ -1302,6 +1916,11 @@ export interface GoogleCloudApihubV1ResourceConfig {
   /** Output only. The type of the action. */
   actionType?: GoogleCloudApihubV1ResourceConfigActionTypeEnum | (string & {});
 }
+const GoogleCloudApihubV1ResourceConfig = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<GoogleCloudApihubV1ResourceConfig>;
+
 export type GoogleCloudApihubV1PluginInstanceActionStateEnum =
   | "STATE_UNSPECIFIED"
   | "ENABLED"
@@ -1309,6 +1928,8 @@ export type GoogleCloudApihubV1PluginInstanceActionStateEnum =
   | "ENABLING"
   | "DISABLING"
   | "ERROR";
+const GoogleCloudApihubV1PluginInstanceActionStateEnum = S.String;
+
 /** PluginInstanceAction represents an action which can be executed in the plugin instance. */
 export interface GoogleCloudApihubV1PluginInstanceAction {
   /** Required. This should map to one of the action id specified in actions_config in the plugin. */
@@ -1328,8 +1949,18 @@ export interface GoogleCloudApihubV1PluginInstanceAction {
   /** Optional. The time zone for the schedule cron expression. If not provided, UTC will be used. */
   scheduleTimeZone?: string;
 }
+const GoogleCloudApihubV1PluginInstanceAction = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1PluginInstanceAction>;
+
 export type GoogleCloudApihubV1PluginInstanceActionList =
   Array<GoogleCloudApihubV1PluginInstanceAction>;
+const GoogleCloudApihubV1PluginInstanceActionList = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<GoogleCloudApihubV1PluginInstanceActionList>;
+
 /** Parameters to support Username and Password Authentication. */
 export interface GoogleCloudApihubV1UserPasswordConfig {
   /** Required. Username. */
@@ -1337,6 +1968,11 @@ export interface GoogleCloudApihubV1UserPasswordConfig {
   /** Required. Secret version reference containing the password. The `secretmanager.versions.access` permission should be granted to the service account accessing the secret. */
   password?: GoogleCloudApihubV1Secret;
 }
+const GoogleCloudApihubV1UserPasswordConfig = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<GoogleCloudApihubV1UserPasswordConfig>;
+
 /** Parameters to support Oauth 2.0 client credentials grant authentication. See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details. */
 export interface GoogleCloudApihubV1Oauth2ClientCredentialsConfig {
   /** Required. Secret version reference containing the client secret. The `secretmanager.versions.access` permission should be granted to the service account accessing the secret. */
@@ -1344,6 +1980,11 @@ export interface GoogleCloudApihubV1Oauth2ClientCredentialsConfig {
   /** Required. The client identifier. */
   clientId?: string;
 }
+const GoogleCloudApihubV1Oauth2ClientCredentialsConfig = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<GoogleCloudApihubV1Oauth2ClientCredentialsConfig>;
+
 export type GoogleCloudApihubV1AuthConfigAuthTypeEnum =
   | "AUTH_TYPE_UNSPECIFIED"
   | "NO_AUTH"
@@ -1351,6 +1992,8 @@ export type GoogleCloudApihubV1AuthConfigAuthTypeEnum =
   | "USER_PASSWORD"
   | "API_KEY"
   | "OAUTH2_CLIENT_CREDENTIALS";
+const GoogleCloudApihubV1AuthConfigAuthTypeEnum = S.String;
+
 export type GoogleCloudApihubV1ApiKeyConfigHttpElementLocationEnum =
   | "HTTP_ELEMENT_LOCATION_UNSPECIFIED"
   | "QUERY"
@@ -1358,6 +2001,8 @@ export type GoogleCloudApihubV1ApiKeyConfigHttpElementLocationEnum =
   | "PATH"
   | "BODY"
   | "COOKIE";
+const GoogleCloudApihubV1ApiKeyConfigHttpElementLocationEnum = S.String;
+
 /** Config for authentication with API key. */
 export interface GoogleCloudApihubV1ApiKeyConfig {
   /** Required. The name of the SecretManager secret version resource storing the API key. Format: `projects/{project}/secrets/{secrete}/versions/{version}`. The `secretmanager.versions.access` permission should be granted to the service account accessing the secret. */
@@ -1367,6 +2012,11 @@ export interface GoogleCloudApihubV1ApiKeyConfig {
   /** Required. The parameter name of the API key. E.g. If the API request is "https://example.com/act?api_key=", "api_key" would be the parameter name. */
   name?: string;
 }
+const GoogleCloudApihubV1ApiKeyConfig = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GoogleCloudApihubV1ApiKeyConfig>;
+
 /** AuthConfig represents the authentication information. */
 export interface GoogleCloudApihubV1AuthConfig {
   /** User Password. */
@@ -1380,6 +2030,11 @@ export interface GoogleCloudApihubV1AuthConfig {
   /** Api Key Config. */
   apiKeyConfig?: GoogleCloudApihubV1ApiKeyConfig;
 }
+const GoogleCloudApihubV1AuthConfig = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1AuthConfig>;
+
 /** Represents a plugin instance resource in the API Hub. A PluginInstance is a specific instance of a hub plugin with its own configuration, state, and execution details. */
 export interface GoogleCloudApihubV1PluginInstance {
   /** Optional. The source project id of the plugin instance. This will be the id of runtime project in case of Google Cloud based plugins and org id in case of non-Google Cloud based plugins. This field will be a required field for Google provided on-ramp plugins. */
@@ -1405,6 +2060,11 @@ export interface GoogleCloudApihubV1PluginInstance {
   /** Optional. The authentication information for this plugin instance. */
   authConfig?: GoogleCloudApihubV1AuthConfig;
 }
+const GoogleCloudApihubV1PluginInstance = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1PluginInstance>;
+
 export interface CreateProjectsLocationsPluginsInstancesRequest {
   /** Optional. The ID to use for the plugin instance, which will become the final component of the plugin instance's resource name. This field is optional. * If provided, the same will be used. The service will throw an error if the specified id is already used by another plugin instance in the plugin resource. * If not provided, a system generated id will be used. This value should be 4-63 characters, and valid characters are /a-z[0-9]-_/. */
   pluginInstanceId?: string;
@@ -1413,6 +2073,11 @@ export interface CreateProjectsLocationsPluginsInstancesRequest {
   /** Request body */
   body?: GoogleCloudApihubV1PluginInstance;
 }
+const CreateProjectsLocationsPluginsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<CreateProjectsLocationsPluginsInstancesRequest>;
+
 /** Runtime project attachment represents an attachment from the runtime project to the host project. Api Hub looks for deployments in the attached runtime projects and creates corresponding resources in Api Hub for the discovered deployments. */
 export interface GoogleCloudApihubV1RuntimeProjectAttachment {
   /** Identifier. The resource name of a runtime project attachment. Format: "projects/{project}/locations/{location}/runtimeProjectAttachments/{runtime_project_attachment}". */
@@ -1422,6 +2087,11 @@ export interface GoogleCloudApihubV1RuntimeProjectAttachment {
   /** Required. Immutable. Google cloud project name in the format: "projects/abc" or "projects/123". As input, project name with either project id or number are accepted. As output, this field will contain project number. */
   runtimeProject?: string;
 }
+const GoogleCloudApihubV1RuntimeProjectAttachment = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1RuntimeProjectAttachment>;
+
 export interface CreateProjectsLocationsRuntimeProjectAttachmentsRequest {
   /** Required. The parent resource for the Runtime Project Attachment. Format: `projects/{project}/locations/{location}` */
   parent: string;
@@ -1430,77 +2100,162 @@ export interface CreateProjectsLocationsRuntimeProjectAttachmentsRequest {
   /** Request body */
   body?: GoogleCloudApihubV1RuntimeProjectAttachment;
 }
+const CreateProjectsLocationsRuntimeProjectAttachmentsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<CreateProjectsLocationsRuntimeProjectAttachmentsRequest>;
+
 export interface DeleteProjectsLocationsApiHubInstancesRequest {
   /** Required. The name of the Api Hub instance to delete. Format: `projects/{project}/locations/{location}/apiHubInstances/{apiHubInstance}`. */
   name: string;
 }
+const DeleteProjectsLocationsApiHubInstancesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<DeleteProjectsLocationsApiHubInstancesRequest>;
+
 export interface DeleteProjectsLocationsApisRequest {
   /** Optional. If set to true, any versions from this API will also be deleted. Otherwise, the request will only work if the API has no versions. */
   force?: boolean;
   /** Required. The name of the API resource to delete. Format: `projects/{project}/locations/{location}/apis/{api}` */
   name: string;
 }
+const DeleteProjectsLocationsApisRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<DeleteProjectsLocationsApisRequest>;
+
 export interface DeleteProjectsLocationsApisVersionsRequest {
   /** Required. The name of the version to delete. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}` */
   name: string;
   /** Optional. If set to true, any specs from this version will also be deleted. Otherwise, the request will only work if the version has no specs. */
   force?: boolean;
 }
+const DeleteProjectsLocationsApisVersionsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<DeleteProjectsLocationsApisVersionsRequest>;
+
 export interface DeleteProjectsLocationsApisVersionsOperationsRequest {
   /** Required. The name of the operation resource to delete. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/operations/{operation}` */
   name: string;
 }
+const DeleteProjectsLocationsApisVersionsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<DeleteProjectsLocationsApisVersionsOperationsRequest>;
+
 export interface DeleteProjectsLocationsApisVersionsSpecsRequest {
   /** Required. The name of the spec to delete. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}` */
   name: string;
 }
+const DeleteProjectsLocationsApisVersionsSpecsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<DeleteProjectsLocationsApisVersionsSpecsRequest>;
+
 export interface DeleteProjectsLocationsAttributesRequest {
   /** Required. The name of the attribute to delete. Format: `projects/{project}/locations/{location}/attributes/{attribute}` */
   name: string;
 }
+const DeleteProjectsLocationsAttributesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<DeleteProjectsLocationsAttributesRequest>;
+
 export interface DeleteProjectsLocationsCurationsRequest {
   /** Required. The name of the curation resource to delete. Format: `projects/{project}/locations/{location}/curations/{curation}` */
   name: string;
 }
+const DeleteProjectsLocationsCurationsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<DeleteProjectsLocationsCurationsRequest>;
+
 export interface DeleteProjectsLocationsDependenciesRequest {
   /** Required. The name of the dependency resource to delete. Format: `projects/{project}/locations/{location}/dependencies/{dependency}` */
   name: string;
 }
+const DeleteProjectsLocationsDependenciesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<DeleteProjectsLocationsDependenciesRequest>;
+
 export interface DeleteProjectsLocationsDeploymentsRequest {
   /** Required. The name of the deployment resource to delete. Format: `projects/{project}/locations/{location}/deployments/{deployment}` */
   name: string;
 }
+const DeleteProjectsLocationsDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<DeleteProjectsLocationsDeploymentsRequest>;
+
 export interface DeleteProjectsLocationsExternalApisRequest {
   /** Required. The name of the External API resource to delete. Format: `projects/{project}/locations/{location}/externalApis/{externalApi}` */
   name: string;
 }
+const DeleteProjectsLocationsExternalApisRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<DeleteProjectsLocationsExternalApisRequest>;
+
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+
 export interface DeleteProjectsLocationsPluginsRequest {
   /** Required. The name of the Plugin resource to delete. Format: `projects/{project}/locations/{location}/plugins/{plugin}` */
   name: string;
 }
+const DeleteProjectsLocationsPluginsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<DeleteProjectsLocationsPluginsRequest>;
+
 export interface DeleteProjectsLocationsPluginsInstancesRequest {
   /** Required. The name of the plugin instance to delete. Format: `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}`. */
   name: string;
 }
+const DeleteProjectsLocationsPluginsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<DeleteProjectsLocationsPluginsInstancesRequest>;
+
 export interface DeleteProjectsLocationsRuntimeProjectAttachmentsRequest {
   /** Required. The name of the Runtime Project Attachment to delete. Format: `projects/{project}/locations/{location}/runtimeProjectAttachments/{runtime_project_attachment}` */
   name: string;
 }
+const DeleteProjectsLocationsRuntimeProjectAttachmentsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<DeleteProjectsLocationsRuntimeProjectAttachmentsRequest>;
+
 /** The DisablePluginInstanceAction method's request. */
 export interface GoogleCloudApihubV1DisablePluginInstanceActionRequest {
   /** Required. The action id to disable. */
   actionId?: string;
 }
+const GoogleCloudApihubV1DisablePluginInstanceActionRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1DisablePluginInstanceActionRequest>;
+
 export interface DisableActionProjectsLocationsPluginsInstancesRequest {
   /** Required. The name of the plugin instance to disable. Format: `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}` */
   name: string;
   /** Request body */
   body?: GoogleCloudApihubV1DisablePluginInstanceActionRequest;
 }
+const DisableActionProjectsLocationsPluginsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<DisableActionProjectsLocationsPluginsInstancesRequest>;
+
 /** The DisablePlugin method's request. */
 export type GoogleCloudApihubV1DisablePluginRequest = GoogleLongrunningCancelOperationRequest;
 export interface DisableProjectsLocationsPluginsRequest {
@@ -1509,17 +2264,30 @@ export interface DisableProjectsLocationsPluginsRequest {
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
+const DisableProjectsLocationsPluginsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<DisableProjectsLocationsPluginsRequest>;
+
 /** The EnablePluginInstanceAction method's request. */
 export interface GoogleCloudApihubV1EnablePluginInstanceActionRequest {
   /** Required. The action id to enable. */
   actionId?: string;
 }
+const GoogleCloudApihubV1EnablePluginInstanceActionRequest =
+  GoogleCloudApihubV1DisablePluginInstanceActionRequest as any as S.Schema<GoogleCloudApihubV1EnablePluginInstanceActionRequest>;
+
 export interface EnableActionProjectsLocationsPluginsInstancesRequest {
   /** Required. The name of the plugin instance to enable. Format: `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}` */
   name: string;
   /** Request body */
   body?: GoogleCloudApihubV1EnablePluginInstanceActionRequest;
 }
+const EnableActionProjectsLocationsPluginsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<EnableActionProjectsLocationsPluginsInstancesRequest>;
+
 /** The EnablePlugin method's request. */
 export type GoogleCloudApihubV1EnablePluginRequest = GoogleLongrunningCancelOperationRequest;
 export interface EnableProjectsLocationsPluginsRequest {
@@ -1528,26 +2296,46 @@ export interface EnableProjectsLocationsPluginsRequest {
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
+const EnableProjectsLocationsPluginsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<EnableProjectsLocationsPluginsRequest>;
+
 /** The details for the action to execute. */
 export interface GoogleCloudApihubV1ActionExecutionDetail {
   /** Required. The action id of the plugin to execute. */
   actionId?: string;
 }
+const GoogleCloudApihubV1ActionExecutionDetail =
+  GoogleCloudApihubV1DisablePluginInstanceActionRequest as any as S.Schema<GoogleCloudApihubV1ActionExecutionDetail>;
+
 /** The ExecutePluginInstanceAction method's request. */
 export interface GoogleCloudApihubV1ExecutePluginInstanceActionRequest {
   /** Required. The execution details for the action to execute. */
   actionExecutionDetail?: GoogleCloudApihubV1ActionExecutionDetail;
 }
+const GoogleCloudApihubV1ExecutePluginInstanceActionRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1ExecutePluginInstanceActionRequest>;
+
 export interface ExecuteActionProjectsLocationsPluginsInstancesRequest {
   /** Required. The name of the plugin instance to execute. Format: `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}` */
   name: string;
   /** Request body */
   body?: GoogleCloudApihubV1ExecutePluginInstanceActionRequest;
 }
+const ExecuteActionProjectsLocationsPluginsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<ExecuteActionProjectsLocationsPluginsInstancesRequest>;
+
 export type FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsSpecContentTypeEnum =
   | "SPEC_CONTENT_TYPE_UNSPECIFIED"
   | "BOOSTED_SPEC_CONTENT"
   | "GATEWAY_OPEN_API_SPEC";
+const FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsSpecContentTypeEnum = S.String;
+
 export interface FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsRequest {
   /** Optional. The type of the spec contents to be retrieved. */
   specContentType?:
@@ -1556,15 +2344,27 @@ export interface FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsReq
   /** Required. The name of the spec whose contents need to be retrieved. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}` */
   name: string;
 }
+const FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsRequest>;
+
 /** The FetchAdditionalSpecContent method's response. */
 export interface GoogleCloudApihubV1FetchAdditionalSpecContentResponse {
   /** The additional spec content. */
   additionalSpecContent?: GoogleCloudApihubV1AdditionalSpecContent;
 }
+const GoogleCloudApihubV1FetchAdditionalSpecContentResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1FetchAdditionalSpecContentResponse>;
+
 export type RetrieveApiViewsProjectsLocationsViewEnum =
   | "API_VIEW_TYPE_UNSPECIFIED"
   | "MCP_SERVER"
   | "MCP_TOOL";
+const RetrieveApiViewsProjectsLocationsViewEnum = S.String;
+
 export interface GetApiViewsProjectsLocationsRequest {
   /** Optional. A page token, received from a previous `RetrieveApiViews` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
@@ -1577,6 +2377,11 @@ export interface GetApiViewsProjectsLocationsRequest {
   /** Required. The parent resource name. Format: `projects/{project}/locations/{location}`. */
   parent: string;
 }
+const GetApiViewsProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<GetApiViewsProjectsLocationsRequest>;
+
 /** A flattened view of an API, its version and one of the linked deployments. */
 export interface GoogleCloudApihubV1FlattenedApiVersionDeploymentView {
   /** Optional. The version. */
@@ -1586,6 +2391,11 @@ export interface GoogleCloudApihubV1FlattenedApiVersionDeploymentView {
   /** Optional. The API. */
   api?: GoogleCloudApihubV1Api;
 }
+const GoogleCloudApihubV1FlattenedApiVersionDeploymentView = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<GoogleCloudApihubV1FlattenedApiVersionDeploymentView>;
+
 /** A flattened view of an API, its version, one of its operations and one of the linked deployments. If there are no deployments linked to the operation then the result will be empty. */
 export interface GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView {
   /** Optional. The API operation. */
@@ -1597,6 +2407,11 @@ export interface GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView {
   /** Optional. The deployment. */
   deployment?: GoogleCloudApihubV1Deployment;
 }
+const GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView>;
+
 /** The view of an API. */
 export interface GoogleCloudApihubV1ApiView {
   /** MCP server view. */
@@ -1604,7 +2419,17 @@ export interface GoogleCloudApihubV1ApiView {
   /** MCP tools view. */
   mcpToolView?: GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView;
 }
+const GoogleCloudApihubV1ApiView = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<GoogleCloudApihubV1ApiView>;
+
 export type GoogleCloudApihubV1ApiViewList = Array<GoogleCloudApihubV1ApiView>;
+const GoogleCloudApihubV1ApiViewList = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1ApiViewList>;
+
 /** The RetrieveApiViews method's response. */
 export interface GoogleCloudApihubV1RetrieveApiViewsResponse {
   /** Output only. The list of API views. */
@@ -1612,14 +2437,29 @@ export interface GoogleCloudApihubV1RetrieveApiViewsResponse {
   /** Next page token. */
   nextPageToken?: string;
 }
+const GoogleCloudApihubV1RetrieveApiViewsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1RetrieveApiViewsResponse>;
+
 export interface GetContentsProjectsLocationsApisVersionsSpecsRequest {
   /** Required. The name of the spec whose contents need to be retrieved. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}` */
   name: string;
 }
+const GetContentsProjectsLocationsApisVersionsSpecsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<GetContentsProjectsLocationsApisVersionsSpecsRequest>;
+
 export interface GetContentsProjectsLocationsPluginsStyleGuideRequest {
   /** Required. The name of the StyleGuide whose contents need to be retrieved. There is exactly one style guide resource per project per location. The expected format is `projects/{project}/locations/{location}/plugins/{plugin}/styleGuide`. */
   name: string;
 }
+const GetContentsProjectsLocationsPluginsStyleGuideRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<GetContentsProjectsLocationsPluginsStyleGuideRequest>;
+
 /** The style guide contents. */
 export interface GoogleCloudApihubV1StyleGuideContents {
   /** Required. The mime type of the content. */
@@ -1627,10 +2467,20 @@ export interface GoogleCloudApihubV1StyleGuideContents {
   /** Required. The contents of the style guide. */
   contents?: string;
 }
+const GoogleCloudApihubV1StyleGuideContents = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<GoogleCloudApihubV1StyleGuideContents>;
+
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
+const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<GetProjectsLocationsRequest>;
+
 /** A resource that represents a Google Cloud location. */
 export interface GoogleCloudLocationLocation {
   /** Service-specific metadata. For example the available capacity at the given location. */
@@ -1644,20 +2494,34 @@ export interface GoogleCloudLocationLocation {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
+const GoogleCloudLocationLocation = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<GoogleCloudLocationLocation>;
+
 export interface GetProjectsLocationsAddonsRequest {
   /** Required. The name of the addon to get. Format: `projects/{project}/locations/{location}/addons/{addon}`. */
   name: string;
 }
+const GetProjectsLocationsAddonsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<GetProjectsLocationsAddonsRequest>;
+
 export type GoogleCloudApihubV1AddonDataSourceEnum =
   | "DATA_SOURCE_UNSPECIFIED"
   | "PLUGIN_INSTANCE"
   | "ALL_DATA";
+const GoogleCloudApihubV1AddonDataSourceEnum = S.String;
+
 export type GoogleCloudApihubV1AddonStateEnum =
   | "ADDON_STATE_UNSPECIFIED"
   | "ACTIVE"
   | "UPDATING"
   | "ERROR"
   | "INACTIVE";
+const GoogleCloudApihubV1AddonStateEnum = S.String;
+
 /** Filter for environments. */
 export interface GoogleCloudApihubV1EnvironmentFilter {
   /** Optional. If provided, only environments in this list are matched. This field is ignored if `all_environments` is true. */
@@ -1665,11 +2529,21 @@ export interface GoogleCloudApihubV1EnvironmentFilter {
   /** Optional. Indicates if this filter should match all environments or only a subset of environments. If set to true, all environments are matched. */
   allEnvironments?: boolean;
 }
+const GoogleCloudApihubV1EnvironmentFilter = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1EnvironmentFilter>;
+
 /** Configuration for Apigee OPDK gateways. Applicability of a filter is determined by the filter being provided. If none of the filters are provided the addon will be enabled for all data brought in by the gateway plugin instance. */
 export interface GoogleCloudApihubV1ApigeeOPDKConfig {
   /** Optional. The filter to apply on the resources managed by the gateway plugin instance. If provided this filter applies environment specific filtering. */
   environmentFilter?: GoogleCloudApihubV1EnvironmentFilter;
 }
+const GoogleCloudApihubV1ApigeeOPDKConfig = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1ApigeeOPDKConfig>;
+
 /** Configuration for Apigee Edge gateways. Applicability of a filter is determined by the filter being provided. If none of the filters are provided the addon will be enabled for all data brought in by the gateway plugin instance. */
 export type GoogleCloudApihubV1ApigeeEdgeConfig = GoogleCloudApihubV1ApigeeOPDKConfig;
 /** Configuration for Apigee X and Apigee Hybrid gateways. Applicability of a filter is determined by the filter being provided. If none of the filters are provided the addon will be enabled for all data brought in by the gateway plugin instance. */
@@ -1685,18 +2559,38 @@ export interface GoogleCloudApihubV1GatewayPluginConfig {
   /** Configuration for Apigee X and Apigee Hybrid gateways. */
   apigeeXHybridConfig?: GoogleCloudApihubV1ApigeeOPDKConfig;
 }
+const GoogleCloudApihubV1GatewayPluginConfig = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<GoogleCloudApihubV1GatewayPluginConfig>;
+
 export type GoogleCloudApihubV1GatewayPluginConfigList =
   Array<GoogleCloudApihubV1GatewayPluginConfig>;
+const GoogleCloudApihubV1GatewayPluginConfigList = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1GatewayPluginConfigList>;
+
 /** Configuration for gateway plugin addons. This is used to specify the list of gateway plugin configs for which the addon is enabled. */
 export interface GoogleCloudApihubV1GatewayPluginAddonConfig {
   /** Required. The list of gateway plugin configs for which the addon is enabled. Each gateway plugin config should have a unique plugin instance. */
   gatewayPluginConfigs?: GoogleCloudApihubV1GatewayPluginConfigList;
 }
+const GoogleCloudApihubV1GatewayPluginAddonConfig = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<GoogleCloudApihubV1GatewayPluginAddonConfig>;
+
 /** Configuration for addons which act on all data in the API hub. This is used to specify if the addon is enabled for all data in the API hub. */
 export interface GoogleCloudApihubV1AllDataAddonConfig {
   /** Required. If true, the addon is enabled for all data in the API hub. */
   enabled?: boolean;
 }
+const GoogleCloudApihubV1AllDataAddonConfig = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<GoogleCloudApihubV1AllDataAddonConfig>;
+
 /** Configuration for the addon. */
 export interface GoogleCloudApihubV1AddonConfig {
   /** Configuration for gateway plugin addons. */
@@ -1704,6 +2598,11 @@ export interface GoogleCloudApihubV1AddonConfig {
   /** Configuration for addons which act on all data in the API hub. */
   allDataAddonConfig?: GoogleCloudApihubV1AllDataAddonConfig;
 }
+const GoogleCloudApihubV1AddonConfig = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<GoogleCloudApihubV1AddonConfig>;
+
 /** Addon resource. */
 export interface GoogleCloudApihubV1Addon {
   /** Required. The data source on which the addon operates. This determines which field in the `config` oneof is used. */
@@ -1725,22 +2624,47 @@ export interface GoogleCloudApihubV1Addon {
   /** Optional. The description of the addon. */
   description?: string;
 }
+const GoogleCloudApihubV1Addon = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<GoogleCloudApihubV1Addon>;
+
 export interface GetProjectsLocationsApiHubInstancesRequest {
   /** Required. The name of the Api Hub instance to retrieve. Format: `projects/{project}/locations/{location}/apiHubInstances/{apiHubInstance}`. */
   name: string;
 }
+const GetProjectsLocationsApiHubInstancesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<GetProjectsLocationsApiHubInstancesRequest>;
+
 export interface GetProjectsLocationsApisRequest {
   /** Required. The name of the API resource to retrieve. Format: `projects/{project}/locations/{location}/apis/{api}` */
   name: string;
 }
+const GetProjectsLocationsApisRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<GetProjectsLocationsApisRequest>;
+
 export interface GetProjectsLocationsApisVersionsRequest {
   /** Required. The name of the API version to retrieve. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}` */
   name: string;
 }
+const GetProjectsLocationsApisVersionsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<GetProjectsLocationsApisVersionsRequest>;
+
 export interface GetProjectsLocationsApisVersionsDefinitionsRequest {
   /** Required. The name of the definition to retrieve. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/definitions/{definition}` */
   name: string;
 }
+const GetProjectsLocationsApisVersionsDefinitionsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<GetProjectsLocationsApisVersionsDefinitionsRequest>;
+
 /** The schema details derived from the spec. Currently, this entity is supported for OpenAPI spec only. For OpenAPI spec, this maps to the schema defined in the `definitions` section for OpenAPI 2.0 version and in `components.schemas` section for OpenAPI 3.0 and 3.1 version. */
 export interface GoogleCloudApihubV1Schema {
   /** Output only. The raw value of the schema definition corresponding to the schema name in the spec. */
@@ -1748,7 +2672,14 @@ export interface GoogleCloudApihubV1Schema {
   /** Output only. The display name of the schema. This will map to the name of the schema in the spec. */
   displayName?: string;
 }
+const GoogleCloudApihubV1Schema = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<GoogleCloudApihubV1Schema>;
+
 export type GoogleCloudApihubV1DefinitionTypeEnum = "TYPE_UNSPECIFIED" | "SCHEMA";
+const GoogleCloudApihubV1DefinitionTypeEnum = S.String;
+
 /** Represents a definition for example schema, request, response definitions contained in an API version. A definition is added/updated/deleted in an API version when a new spec is added or an existing spec is updated/deleted in a version. Currently, definition will be created only corresponding to OpenAPI spec as parsing is supported for OpenAPI spec. Also, within OpenAPI spec, only `schema` object is supported. */
 export interface GoogleCloudApihubV1Definition {
   /** Identifier. The name of the definition. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/definitions/{definition}` */
@@ -1766,45 +2697,90 @@ export interface GoogleCloudApihubV1Definition {
   /** Output only. The type of the definition. */
   type?: GoogleCloudApihubV1DefinitionTypeEnum;
 }
+const GoogleCloudApihubV1Definition = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<GoogleCloudApihubV1Definition>;
+
 export interface GetProjectsLocationsApisVersionsOperationsRequest {
   /** Required. The name of the operation to retrieve. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/operations/{operation}` */
   name: string;
 }
+const GetProjectsLocationsApisVersionsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<GetProjectsLocationsApisVersionsOperationsRequest>;
+
 export interface GetProjectsLocationsApisVersionsSpecsRequest {
   /** Required. The name of the spec to retrieve. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}` */
   name: string;
 }
+const GetProjectsLocationsApisVersionsSpecsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<GetProjectsLocationsApisVersionsSpecsRequest>;
+
 export interface GetProjectsLocationsAttributesRequest {
   /** Required. The name of the attribute to retrieve. Format: `projects/{project}/locations/{location}/attributes/{attribute}` */
   name: string;
 }
+const GetProjectsLocationsAttributesRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<GetProjectsLocationsAttributesRequest>;
+
 export interface GetProjectsLocationsCurationsRequest {
   /** Required. The name of the curation resource to retrieve. Format: `projects/{project}/locations/{location}/curations/{curation}` */
   name: string;
 }
+const GetProjectsLocationsCurationsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<GetProjectsLocationsCurationsRequest>;
+
 export interface GetProjectsLocationsDependenciesRequest {
   /** Required. The name of the dependency resource to retrieve. Format: `projects/{project}/locations/{location}/dependencies/{dependency}` */
   name: string;
 }
+const GetProjectsLocationsDependenciesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<GetProjectsLocationsDependenciesRequest>;
+
 export interface GetProjectsLocationsDeploymentsRequest {
   /** Required. The name of the deployment resource to retrieve. Format: `projects/{project}/locations/{location}/deployments/{deployment}` */
   name: string;
 }
+const GetProjectsLocationsDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<GetProjectsLocationsDeploymentsRequest>;
+
 export interface GetProjectsLocationsDiscoveredApiObservationsRequest {
   /** Required. The name of the DiscoveredApiObservation to retrieve. Format: projects/{project}/locations/{location}/discoveredApiObservations/{discovered_api_observation} */
   name: string;
 }
+const GetProjectsLocationsDiscoveredApiObservationsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<GetProjectsLocationsDiscoveredApiObservationsRequest>;
+
 export type GoogleCloudApihubV1DiscoveredApiObservationSourceTypesItemEnum =
   | "SOURCE_TYPE_UNSPECIFIED"
   | "GCP_XLB"
   | "GCP_ILB";
 export type GoogleCloudApihubV1DiscoveredApiObservationSourceTypesItemEnumList =
   Array<GoogleCloudApihubV1DiscoveredApiObservationSourceTypesItemEnum>;
+const GoogleCloudApihubV1DiscoveredApiObservationSourceTypesItemEnumList =
+  GoogleCloudApihubV1AuthConfigTemplateSupportedAuthTypesItemEnumList as any as S.Schema<GoogleCloudApihubV1DiscoveredApiObservationSourceTypesItemEnumList>;
+
 export type GoogleCloudApihubV1DiscoveredApiObservationStyleEnum =
   | "STYLE_UNSPECIFIED"
   | "REST"
   | "GRPC"
   | "GRAPHQL";
+const GoogleCloudApihubV1DiscoveredApiObservationStyleEnum = S.String;
+
 /** Respresents an API Observation observed in one of the sources. */
 export interface GoogleCloudApihubV1DiscoveredApiObservation {
   /** Output only. The number of unknown API Operations. */
@@ -1836,14 +2812,27 @@ export interface GoogleCloudApihubV1DiscoveredApiObservation {
   /** Optional. For an observation pushed from a Google Cloud resource, this would be the Google Cloud project id. */
   origin?: string;
 }
+const GoogleCloudApihubV1DiscoveredApiObservation = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<GoogleCloudApihubV1DiscoveredApiObservation>;
+
 export interface GetProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest {
   /** Required. The name of the DiscoveredApiOperation to retrieve. Format: projects/{project}/locations/{location}/discoveredApiObservations/{discovered_api_observation}/discoveredApiOperations/{discovered_api_operation} */
   name: string;
 }
+const GetProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest =
+  /*@__PURE__*/ __L.at(
+    __c22,
+    5,
+  ) as any as S.Schema<GetProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest>;
+
 export type GoogleCloudApihubV1DiscoveredApiOperationClassificationEnum =
   | "CLASSIFICATION_UNSPECIFIED"
   | "KNOWN"
   | "UNKNOWN";
+const GoogleCloudApihubV1DiscoveredApiOperationClassificationEnum = S.String;
+
 export type GoogleCloudApihubV1PathParamDataTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
   | "BOOL"
@@ -1851,6 +2840,8 @@ export type GoogleCloudApihubV1PathParamDataTypeEnum =
   | "FLOAT"
   | "STRING"
   | "UUID";
+const GoogleCloudApihubV1PathParamDataTypeEnum = S.String;
+
 /** HTTP Path parameter. */
 export interface GoogleCloudApihubV1PathParam {
   /** Optional. Data type of path param */
@@ -1858,7 +2849,17 @@ export interface GoogleCloudApihubV1PathParam {
   /** Optional. Segment location in the path, 1-indexed */
   position?: number;
 }
+const GoogleCloudApihubV1PathParam = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<GoogleCloudApihubV1PathParam>;
+
 export type GoogleCloudApihubV1PathParamList = Array<GoogleCloudApihubV1PathParam>;
+const GoogleCloudApihubV1PathParamList = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1PathParamList>;
+
 export type GoogleCloudApihubV1HeaderDataTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
   | "BOOL"
@@ -1866,6 +2867,8 @@ export type GoogleCloudApihubV1HeaderDataTypeEnum =
   | "FLOAT"
   | "STRING"
   | "UUID";
+const GoogleCloudApihubV1HeaderDataTypeEnum = S.String;
+
 /** An aggregation of HTTP header occurrences. */
 export interface GoogleCloudApihubV1Header {
   /** The number of occurrences of this Header across transactions. */
@@ -1875,12 +2878,27 @@ export interface GoogleCloudApihubV1Header {
   /** Data type of header */
   dataType?: GoogleCloudApihubV1HeaderDataTypeEnum;
 }
+const GoogleCloudApihubV1Header = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1Header>;
+
 export type GoogleCloudApihubV1HeaderMap = { [key: string]: GoogleCloudApihubV1Header | undefined };
+const GoogleCloudApihubV1HeaderMap = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<GoogleCloudApihubV1HeaderMap>;
+
 /** An aggregation of HTTP requests. */
 export interface GoogleCloudApihubV1HttpRequest {
   /** Optional. Unordered map from header name to header metadata */
   headers?: GoogleCloudApihubV1HeaderMap;
 }
+const GoogleCloudApihubV1HttpRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1HttpRequest>;
+
 export type GoogleCloudApihubV1QueryParamDataTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
   | "BOOL"
@@ -1888,6 +2906,8 @@ export type GoogleCloudApihubV1QueryParamDataTypeEnum =
   | "FLOAT"
   | "STRING"
   | "UUID";
+const GoogleCloudApihubV1QueryParamDataTypeEnum = S.String;
+
 /** An aggregation of HTTP query parameter occurrences. */
 export interface GoogleCloudApihubV1QueryParam {
   /** Required. Name of query param */
@@ -1897,9 +2917,19 @@ export interface GoogleCloudApihubV1QueryParam {
   /** Optional. Data type of path param */
   dataType?: GoogleCloudApihubV1QueryParamDataTypeEnum;
 }
+const GoogleCloudApihubV1QueryParam = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<GoogleCloudApihubV1QueryParam>;
+
 export type GoogleCloudApihubV1QueryParamMap = {
   [key: string]: GoogleCloudApihubV1QueryParam | undefined;
 };
+const GoogleCloudApihubV1QueryParamMap = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<GoogleCloudApihubV1QueryParamMap>;
+
 /** An aggregation of HTTP responses. */
 export interface GoogleCloudApihubV1HttpResponse {
   /** Optional. Map of status code to observed count */
@@ -1907,6 +2937,11 @@ export interface GoogleCloudApihubV1HttpResponse {
   /** Optional. Unordered map from header name to header metadata */
   headers?: GoogleCloudApihubV1HeaderMap;
 }
+const GoogleCloudApihubV1HttpResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<GoogleCloudApihubV1HttpResponse>;
+
 /** An HTTP-based API Operation, sometimes called a "REST" Operation. */
 export interface GoogleCloudApihubV1HttpOperationDetails {
   /** Optional. Path params of HttpOperation */
@@ -1920,12 +2955,27 @@ export interface GoogleCloudApihubV1HttpOperationDetails {
   /** Optional. Response metadata. */
   response?: GoogleCloudApihubV1HttpResponse;
 }
+const GoogleCloudApihubV1HttpOperationDetails = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<GoogleCloudApihubV1HttpOperationDetails>;
+
 /** MatchResult represents the result of matching a discovered API operation with a catalog API operation. */
 export interface GoogleCloudApihubV1MatchResult {
   /** Output only. The name of the matched API Operation. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/operations/{operation}` */
   name?: string;
 }
+const GoogleCloudApihubV1MatchResult = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1MatchResult>;
+
 export type GoogleCloudApihubV1MatchResultList = Array<GoogleCloudApihubV1MatchResult>;
+const GoogleCloudApihubV1MatchResultList = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1MatchResultList>;
+
 /** DiscoveredApiOperation represents an API Operation observed in one of the sources. */
 export interface GoogleCloudApihubV1DiscoveredApiOperation {
   /** Optional. First seen time stamp */
@@ -1949,35 +2999,77 @@ export interface GoogleCloudApihubV1DiscoveredApiOperation {
   /** Output only. The list of matched results for the discovered API operation. This will be populated only if the classification is known. The current usecase is for a single match. Keeping it repeated to support multiple matches in future. */
   matchResults?: GoogleCloudApihubV1MatchResultList;
 }
+const GoogleCloudApihubV1DiscoveredApiOperation = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<GoogleCloudApihubV1DiscoveredApiOperation>;
+
 export interface GetProjectsLocationsExternalApisRequest {
   /** Required. The name of the External API resource to retrieve. Format: `projects/{project}/locations/{location}/externalApis/{externalApi}` */
   name: string;
 }
+const GetProjectsLocationsExternalApisRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<GetProjectsLocationsExternalApisRequest>;
+
 export interface GetProjectsLocationsHostProjectRegistrationsRequest {
   /** Required. Host project registration resource name. projects/{project}/locations/{location}/hostProjectRegistrations/{host_project_registration_id} */
   name: string;
 }
+const GetProjectsLocationsHostProjectRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<GetProjectsLocationsHostProjectRegistrationsRequest>;
+
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+
 export interface GetProjectsLocationsPluginsRequest {
   /** Required. The name of the plugin to retrieve. Format: `projects/{project}/locations/{location}/plugins/{plugin}`. */
   name: string;
 }
+const GetProjectsLocationsPluginsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<GetProjectsLocationsPluginsRequest>;
+
 export interface GetProjectsLocationsPluginsInstancesRequest {
   /** Required. The name of the plugin instance to retrieve. Format: `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}` */
   name: string;
 }
+const GetProjectsLocationsPluginsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<GetProjectsLocationsPluginsInstancesRequest>;
+
 export interface GetProjectsLocationsRuntimeProjectAttachmentsRequest {
   /** Required. The name of the API resource to retrieve. Format: `projects/{project}/locations/{location}/runtimeProjectAttachments/{runtime_project_attachment}` */
   name: string;
 }
+const GetProjectsLocationsRuntimeProjectAttachmentsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<GetProjectsLocationsRuntimeProjectAttachmentsRequest>;
+
 export interface GetStyleGuideProjectsLocationsPluginsRequest {
   /** Required. The name of the spec to retrieve. Format: `projects/{project}/locations/{location}/plugins/{plugin}/styleGuide`. */
   name: string;
 }
+const GetStyleGuideProjectsLocationsPluginsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<GetStyleGuideProjectsLocationsPluginsRequest>;
+
 export type GoogleCloudApihubV1StyleGuideLinterEnum = "LINTER_UNSPECIFIED" | "SPECTRAL" | "OTHER";
+const GoogleCloudApihubV1StyleGuideLinterEnum = S.String;
+
 /** Represents a singleton style guide resource to be used for linting Open API specs. */
 export interface GoogleCloudApihubV1StyleGuide {
   /** Required. Target linter for the style guide. */
@@ -1987,6 +3079,11 @@ export interface GoogleCloudApihubV1StyleGuide {
   /** Identifier. The name of the style guide. Format: `projects/{project}/locations/{location}/plugins/{plugin}/styleGuide` */
   name?: string;
 }
+const GoogleCloudApihubV1StyleGuide = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<GoogleCloudApihubV1StyleGuide>;
+
 /** The LintSpec method's request. */
 export type GoogleCloudApihubV1LintSpecRequest = GoogleLongrunningCancelOperationRequest;
 export interface LintProjectsLocationsApisVersionsSpecsRequest {
@@ -1995,6 +3092,11 @@ export interface LintProjectsLocationsApisVersionsSpecsRequest {
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
+const LintProjectsLocationsApisVersionsSpecsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<LintProjectsLocationsApisVersionsSpecsRequest>;
+
 export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
@@ -2007,7 +3109,17 @@ export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
+const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<ListProjectsLocationsRequest>;
+
 export type GoogleCloudLocationLocationList = Array<GoogleCloudLocationLocation>;
+const GoogleCloudLocationLocationList = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<GoogleCloudLocationLocationList>;
+
 /** The response message for Locations.ListLocations. */
 export interface GoogleCloudLocationListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -2015,6 +3127,11 @@ export interface GoogleCloudLocationListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
+const GoogleCloudLocationListLocationsResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<GoogleCloudLocationListLocationsResponse>;
+
 export interface ListProjectsLocationsAddonsRequest {
   /** Required. The parent resource where this addon will be created. Format: `projects/{project}/locations/{location}`. */
   parent: string;
@@ -2025,7 +3142,17 @@ export interface ListProjectsLocationsAddonsRequest {
   /** Optional. A page token, received from a previous `ListAddons` call. Provide this to retrieve the subsequent page. When paginating, all other parameters (except page_size) provided to `ListAddons` must match the call that provided the page token. */
   pageToken?: string;
 }
+const ListProjectsLocationsAddonsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<ListProjectsLocationsAddonsRequest>;
+
 export type GoogleCloudApihubV1AddonList = Array<GoogleCloudApihubV1Addon>;
+const GoogleCloudApihubV1AddonList = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1AddonList>;
+
 /** The ListAddons method's response. */
 export interface GoogleCloudApihubV1ListAddonsResponse {
   /** The list of addons. */
@@ -2033,6 +3160,11 @@ export interface GoogleCloudApihubV1ListAddonsResponse {
   /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
+const GoogleCloudApihubV1ListAddonsResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1ListAddonsResponse>;
+
 export interface ListProjectsLocationsApisRequest {
   /** Optional. A page token, received from a previous `ListApis` call. Provide this to retrieve the subsequent page. When paginating, all other parameters (except page_size) provided to `ListApis` must match the call that provided the page token. */
   pageToken?: string;
@@ -2043,7 +3175,17 @@ export interface ListProjectsLocationsApisRequest {
   /** Optional. An expression that filters the list of ApiResources. A filter expression consists of a field name, a comparison operator, and a value for filtering. The value must be a string. The comparison operator must be one of: `<`, `>`, `:` or `=`. Filters are not case sensitive. The following fields in the `ApiResource` are eligible for filtering: * `owner.email` - The email of the team which owns the ApiResource. Allowed comparison operators: `=`. * `create_time` - The time at which the ApiResource was created. The value should be in the (RFC3339)[https://tools.ietf.org/html/rfc3339] format. Allowed comparison operators: `>` and `<`. * `display_name` - The display name of the ApiResource. Allowed comparison operators: `=`. * `target_user.enum_values.values.id` - The allowed value id of the target users attribute associated with the ApiResource. Allowed comparison operator is `:`. * `target_user.enum_values.values.display_name` - The allowed value display name of the target users attribute associated with the ApiResource. Allowed comparison operator is `:`. * `team.enum_values.values.id` - The allowed value id of the team attribute associated with the ApiResource. Allowed comparison operator is `:`. * `team.enum_values.values.display_name` - The allowed value display name of the team attribute associated with the ApiResource. Allowed comparison operator is `:`. * `business_unit.enum_values.values.id` - The allowed value id of the business unit attribute associated with the ApiResource. Allowed comparison operator is `:`. * `business_unit.enum_values.values.display_name` - The allowed value display name of the business unit attribute associated with the ApiResource. Allowed comparison operator is `:`. * `maturity_level.enum_values.values.id` - The allowed value id of the maturity level attribute associated with the ApiResource. Allowed comparison operator is `:`. * `maturity_level.enum_values.values.display_name` - The allowed value display name of the maturity level attribute associated with the ApiResource. Allowed comparison operator is `:`. * `api_style.enum_values.values.id` - The allowed value id of the api style attribute associated with the ApiResource. Allowed comparison operator is `:`. * `api_style.enum_values.values.display_name` - The allowed value display name of the api style attribute associated with the ApiResource. Allowed comparison operator is `:`. * `attributes.projects/test-project-id/locations/test-location-id/ attributes/user-defined-attribute-id.enum_values.values.id` - The allowed value id of the user defined enum attribute associated with the Resource. Allowed comparison operator is `:`. Here user-defined-attribute-enum-id is a placeholder that can be replaced with any user defined enum attribute name. * `attributes.projects/test-project-id/locations/test-location-id/ attributes/user-defined-attribute-id.enum_values.values.display_name` - The allowed value display name of the user defined enum attribute associated with the Resource. Allowed comparison operator is `:`. Here user-defined-attribute-enum-display-name is a placeholder that can be replaced with any user defined enum attribute enum name. * `attributes.projects/test-project-id/locations/test-location-id/ attributes/user-defined-attribute-id.string_values.values` - The allowed value of the user defined string attribute associated with the Resource. Allowed comparison operator is `:`. Here user-defined-attribute-string is a placeholder that can be replaced with any user defined string attribute name. * `attributes.projects/test-project-id/locations/test-location-id/ attributes/user-defined-attribute-id.json_values.values` - The allowed value of the user defined JSON attribute associated with the Resource. Allowed comparison operator is `:`. Here user-defined-attribute-json is a placeholder that can be replaced with any user defined JSON attribute name. A filter function is also supported in the filter string. The filter function is `id(name)`. The `id(name)` function returns the id of the resource name. For example, `id(name) = \"api-1\"` is equivalent to `name = \"projects/test-project-id/locations/test-location-id/apis/api-1\"` provided the parent is `projects/test-project-id/locations/test-location-id`. Another supported filter function is `plugins(source_metadata)`. This function filters for resources that are associated with a specific plugin. For example, `plugins(source_metadata) : "projects/test-project-id/locations/test-location-id/plugins/test-plugin-id"` will return resources sourced from the given plugin. Expressions are combined with either `AND` logic operator or `OR` logical operator but not both of them together i.e. only one of the `AND` or `OR` operator can be used throughout the filter string and both the operators cannot be used together. No other logical operators are supported. At most three filter fields are allowed in the filter string and if provided more than that then `INVALID_ARGUMENT` error is returned by the API. Here are a few examples: * `owner.email = \"apihub@google.com\"` - - The owner team email is _apihub@google.com_. * `owner.email = \"apihub@google.com\" AND create_time < \"2021-08-15T14:50:00Z\" AND create_time > \"2021-08-10T12:00:00Z\"` - The owner team email is _apihub@google.com_ and the api was created before _2021-08-15 14:50:00 UTC_ and after _2021-08-10 12:00:00 UTC_. * `owner.email = \"apihub@google.com\" OR team.enum_values.values.id: apihub-team-id` - The filter string specifies the APIs where the owner team email is _apihub@google.com_ or the id of the allowed value associated with the team attribute is _apihub-team-id_. * `owner.email = \"apihub@google.com\" OR team.enum_values.values.display_name: ApiHub Team` - The filter string specifies the APIs where the owner team email is _apihub@google.com_ or the display name of the allowed value associated with the team attribute is `ApiHub Team`. * `owner.email = \"apihub@google.com\" AND attributes.projects/test-project-id/locations/test-location-id/ attributes/17650f90-4a29-4971-b3c0-d5532da3764b.enum_values.values.id: test_enum_id AND attributes.projects/test-project-id/locations/test-location-id/ attributes/1765\0f90-4a29-5431-b3d0-d5532da3764c.string_values.values: test_string_value` - The filter string specifies the APIs where the owner team email is _apihub@google.com_ and the id of the allowed value associated with the user defined attribute of type enum is _test_enum_id_ and the value of the user defined attribute of type string is _test_.. */
   filter?: string;
 }
+const ListProjectsLocationsApisRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<ListProjectsLocationsApisRequest>;
+
 export type GoogleCloudApihubV1ApiList = Array<GoogleCloudApihubV1Api>;
+const GoogleCloudApihubV1ApiList = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1ApiList>;
+
 /** The ListApis method's response. */
 export interface GoogleCloudApihubV1ListApisResponse {
   /** The API resources present in the API hub. */
@@ -2051,6 +3193,11 @@ export interface GoogleCloudApihubV1ListApisResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const GoogleCloudApihubV1ListApisResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<GoogleCloudApihubV1ListApisResponse>;
+
 export interface ListProjectsLocationsApisVersionsRequest {
   /** Optional. A page token, received from a previous `ListVersions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters (except page_size) provided to `ListVersions` must match the call that provided the page token. */
   pageToken?: string;
@@ -2061,7 +3208,17 @@ export interface ListProjectsLocationsApisVersionsRequest {
   /** Optional. The maximum number of versions to return. The service may return fewer than this value. If unspecified, at most 50 versions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
+const ListProjectsLocationsApisVersionsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<ListProjectsLocationsApisVersionsRequest>;
+
 export type GoogleCloudApihubV1VersionList = Array<GoogleCloudApihubV1Version>;
+const GoogleCloudApihubV1VersionList = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<GoogleCloudApihubV1VersionList>;
+
 /** The ListVersions method's response. */
 export interface GoogleCloudApihubV1ListVersionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2069,6 +3226,11 @@ export interface GoogleCloudApihubV1ListVersionsResponse {
   /** The versions corresponding to an API. */
   versions?: GoogleCloudApihubV1VersionList;
 }
+const GoogleCloudApihubV1ListVersionsResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<GoogleCloudApihubV1ListVersionsResponse>;
+
 export interface ListProjectsLocationsApisVersionsOperationsRequest {
   /** Required. The parent which owns this collection of operations i.e., the API version. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}` */
   parent: string;
@@ -2079,7 +3241,17 @@ export interface ListProjectsLocationsApisVersionsOperationsRequest {
   /** Optional. The maximum number of operations to return. The service may return fewer than this value. If unspecified, at most 50 operations will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
+const ListProjectsLocationsApisVersionsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<ListProjectsLocationsApisVersionsOperationsRequest>;
+
 export type GoogleCloudApihubV1ApiOperationList = Array<GoogleCloudApihubV1ApiOperation>;
+const GoogleCloudApihubV1ApiOperationList = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1ApiOperationList>;
+
 /** The ListApiOperations method's response. */
 export interface GoogleCloudApihubV1ListApiOperationsResponse {
   /** The operations corresponding to an API version. */
@@ -2087,6 +3259,11 @@ export interface GoogleCloudApihubV1ListApiOperationsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const GoogleCloudApihubV1ListApiOperationsResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<GoogleCloudApihubV1ListApiOperationsResponse>;
+
 export interface ListProjectsLocationsApisVersionsSpecsRequest {
   /** Optional. The maximum number of specs to return. The service may return fewer than this value. If unspecified, at most 50 specs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -2097,7 +3274,17 @@ export interface ListProjectsLocationsApisVersionsSpecsRequest {
   /** Optional. A page token, received from a previous `ListSpecs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSpecs` must match the call that provided the page token. */
   pageToken?: string;
 }
+const ListProjectsLocationsApisVersionsSpecsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<ListProjectsLocationsApisVersionsSpecsRequest>;
+
 export type GoogleCloudApihubV1SpecList = Array<GoogleCloudApihubV1Spec>;
+const GoogleCloudApihubV1SpecList = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<GoogleCloudApihubV1SpecList>;
+
 /** The ListSpecs method's response. */
 export interface GoogleCloudApihubV1ListSpecsResponse {
   /** The specs corresponding to an API Version. */
@@ -2105,6 +3292,11 @@ export interface GoogleCloudApihubV1ListSpecsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const GoogleCloudApihubV1ListSpecsResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<GoogleCloudApihubV1ListSpecsResponse>;
+
 export interface ListProjectsLocationsAttributesRequest {
   /** Optional. A page token, received from a previous `ListAttributes` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAttributes` must match the call that provided the page token. */
   pageToken?: string;
@@ -2115,7 +3307,17 @@ export interface ListProjectsLocationsAttributesRequest {
   /** Optional. The maximum number of attribute resources to return. The service may return fewer than this value. If unspecified, at most 50 attributes will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
+const ListProjectsLocationsAttributesRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<ListProjectsLocationsAttributesRequest>;
+
 export type GoogleCloudApihubV1AttributeList = Array<GoogleCloudApihubV1Attribute>;
+const GoogleCloudApihubV1AttributeList = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<GoogleCloudApihubV1AttributeList>;
+
 /** The ListAttributes method's response. */
 export interface GoogleCloudApihubV1ListAttributesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2123,6 +3325,11 @@ export interface GoogleCloudApihubV1ListAttributesResponse {
   /** The list of all attributes. */
   attributes?: GoogleCloudApihubV1AttributeList;
 }
+const GoogleCloudApihubV1ListAttributesResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1ListAttributesResponse>;
+
 export interface ListProjectsLocationsCurationsRequest {
   /** Optional. A page token, received from a previous `ListCurations` call. Provide this to retrieve the subsequent page. When paginating, all other parameters (except page_size) provided to `ListCurations` must match the call that provided the page token. */
   pageToken?: string;
@@ -2133,7 +3340,17 @@ export interface ListProjectsLocationsCurationsRequest {
   /** Optional. An expression that filters the list of curation resources. A filter expression consists of a field name, a comparison operator, and a value for filtering. The value must be a string. The comparison operator must be one of: `<`, `>`, `:` or `=`. Filters are case insensitive. The following fields in the `curation resource` are eligible for filtering: * `create_time` - The time at which the curation was created. The value should be in the (RFC3339)[https://tools.ietf.org/html/rfc3339] format. Allowed comparison operators: `>` and `<`. * `display_name` - The display name of the curation. Allowed comparison operators: `=`. * `state` - The state of the curation. Allowed comparison operators: `=`. Expressions are combined with either `AND` logic operator or `OR` logical operator but not both of them together i.e. only one of the `AND` or `OR` operator can be used throughout the filter string and both the operators cannot be used together. No other logical operators are supported. At most three filter fields are allowed in the filter string and if provided more than that then `INVALID_ARGUMENT` error is returned by the API. Here are a few examples: * `create_time < \"2021-08-15T14:50:00Z\" AND create_time > \"2021-08-10T12:00:00Z\"` - The curation resource was created before _2021-08-15 14:50:00 UTC_ and after _2021-08-10 12:00:00 UTC_. */
   filter?: string;
 }
+const ListProjectsLocationsCurationsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<ListProjectsLocationsCurationsRequest>;
+
 export type GoogleCloudApihubV1CurationList = Array<GoogleCloudApihubV1Curation>;
+const GoogleCloudApihubV1CurationList = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<GoogleCloudApihubV1CurationList>;
+
 /** The ListCurations method's response. */
 export interface GoogleCloudApihubV1ListCurationsResponse {
   /** The curation resources present in the API hub. */
@@ -2141,6 +3358,11 @@ export interface GoogleCloudApihubV1ListCurationsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const GoogleCloudApihubV1ListCurationsResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1ListCurationsResponse>;
+
 export interface ListProjectsLocationsDependenciesRequest {
   /** Optional. A page token, received from a previous `ListDependencies` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDependencies` must match the call that provided the page token. */
   pageToken?: string;
@@ -2151,7 +3373,17 @@ export interface ListProjectsLocationsDependenciesRequest {
   /** Optional. An expression that filters the list of Dependencies. A filter expression consists of a field name, a comparison operator, and a value for filtering. The value must be a string. Allowed comparison operator is `=`. Filters are not case sensitive. The following fields in the `Dependency` are eligible for filtering: * `consumer.operation_resource_name` - The operation resource name for the consumer entity involved in a dependency. Allowed comparison operators: `=`. * `consumer.external_api_resource_name` - The external api resource name for the consumer entity involved in a dependency. Allowed comparison operators: `=`. * `supplier.operation_resource_name` - The operation resource name for the supplier entity involved in a dependency. Allowed comparison operators: `=`. * `supplier.external_api_resource_name` - The external api resource name for the supplier entity involved in a dependency. Allowed comparison operators: `=`. Expressions are combined with either `AND` logic operator or `OR` logical operator but not both of them together i.e. only one of the `AND` or `OR` operator can be used throughout the filter string and both the operators cannot be used together. No other logical operators are supported. At most three filter fields are allowed in the filter string and if provided more than that then `INVALID_ARGUMENT` error is returned by the API. For example, `consumer.operation_resource_name = \"projects/p1/locations/global/apis/a1/versions/v1/operations/o1\" OR supplier.operation_resource_name = \"projects/p1/locations/global/apis/a1/versions/v1/operations/o1\"` - The dependencies with either consumer or supplier operation resource name as _projects/p1/locations/global/apis/a1/versions/v1/operations/o1_. */
   filter?: string;
 }
+const ListProjectsLocationsDependenciesRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<ListProjectsLocationsDependenciesRequest>;
+
 export type GoogleCloudApihubV1DependencyList = Array<GoogleCloudApihubV1Dependency>;
+const GoogleCloudApihubV1DependencyList = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<GoogleCloudApihubV1DependencyList>;
+
 /** The ListDependencies method's response. */
 export interface GoogleCloudApihubV1ListDependenciesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2159,6 +3391,11 @@ export interface GoogleCloudApihubV1ListDependenciesResponse {
   /** The dependency resources present in the API hub. */
   dependencies?: GoogleCloudApihubV1DependencyList;
 }
+const GoogleCloudApihubV1ListDependenciesResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<GoogleCloudApihubV1ListDependenciesResponse>;
+
 export interface ListProjectsLocationsDeploymentsRequest {
   /** Optional. The maximum number of deployment resources to return. The service may return fewer than this value. If unspecified, at most 50 deployments will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -2169,7 +3406,17 @@ export interface ListProjectsLocationsDeploymentsRequest {
   /** Optional. An expression that filters the list of Deployments. A filter expression consists of a field name, a comparison operator, and a value for filtering. The value must be a string. The comparison operator must be one of: `<`, `>` or `=`. Filters are not case sensitive. The following fields in the `Deployments` are eligible for filtering: * `display_name` - The display name of the Deployment. Allowed comparison operators: `=`. * `create_time` - The time at which the Deployment was created. The value should be in the (RFC3339)[https://tools.ietf.org/html/rfc3339] format. Allowed comparison operators: `>` and `<`. * `resource_uri` - A URI to the deployment resource. Allowed comparison operators: `=`. * `api_versions` - The API versions linked to this deployment. Allowed comparison operators: `:`. * `source_project` - The project/organization at source for the deployment. Allowed comparison operators: `=`. * `source_environment` - The environment at source for the deployment. Allowed comparison operators: `=`. * `deployment_type.enum_values.values.id` - The allowed value id of the deployment_type attribute associated with the Deployment. Allowed comparison operators: `:`. * `deployment_type.enum_values.values.display_name` - The allowed value display name of the deployment_type attribute associated with the Deployment. Allowed comparison operators: `:`. * `slo.string_values.values` -The allowed string value of the slo attribute associated with the deployment. Allowed comparison operators: `:`. * `environment.enum_values.values.id` - The allowed value id of the environment attribute associated with the deployment. Allowed comparison operators: `:`. * `environment.enum_values.values.display_name` - The allowed value display name of the environment attribute associated with the deployment. Allowed comparison operators: `:`. * `attributes.projects/test-project-id/locations/test-location-id/ attributes/user-defined-attribute-id.enum_values.values.id` - The allowed value id of the user defined enum attribute associated with the Resource. Allowed comparison operator is `:`. Here user-defined-attribute-enum-id is a placeholder that can be replaced with any user defined enum attribute name. * `attributes.projects/test-project-id/locations/test-location-id/ attributes/user-defined-attribute-id.enum_values.values.display_name` - The allowed value display name of the user defined enum attribute associated with the Resource. Allowed comparison operator is `:`. Here user-defined-attribute-enum-display-name is a placeholder that can be replaced with any user defined enum attribute enum name. * `attributes.projects/test-project-id/locations/test-location-id/ attributes/user-defined-attribute-id.string_values.values` - The allowed value of the user defined string attribute associated with the Resource. Allowed comparison operator is `:`. Here user-defined-attribute-string is a placeholder that can be replaced with any user defined string attribute name. * `attributes.projects/test-project-id/locations/test-location-id/ attributes/user-defined-attribute-id.json_values.values` - The allowed value of the user defined JSON attribute associated with the Resource. Allowed comparison operator is `:`. Here user-defined-attribute-json is a placeholder that can be replaced with any user defined JSON attribute name. A filter function is also supported in the filter string. The filter function is `id(name)`. The `id(name)` function returns the id of the resource name. For example, `id(name) = \"deployment-1\"` is equivalent to `name = \"projects/test-project-id/locations/test-location-id/deployments/deployment-1\"` provided the parent is `projects/test-project-id/locations/test-location-id`. Expressions are combined with either `AND` logic operator or `OR` logical operator but not both of them together i.e. only one of the `AND` or `OR` operator can be used throughout the filter string and both the operators cannot be used together. No other logical operators are supported. At most three filter fields are allowed in the filter string and if provided more than that then `INVALID_ARGUMENT` error is returned by the API. Here are a few examples: * `environment.enum_values.values.id: staging-id` - The allowed value id of the environment attribute associated with the Deployment is _staging-id_. * `environment.enum_values.values.display_name: \"Staging Deployment\"` - The allowed value display name of the environment attribute associated with the Deployment is `Staging Deployment`. * `environment.enum_values.values.id: production-id AND create_time < \"2021-08-15T14:50:00Z\" AND create_time > \"2021-08-10T12:00:00Z\"` - The allowed value id of the environment attribute associated with the Deployment is _production-id_ and Deployment was created before _2021-08-15 14:50:00 UTC_ and after _2021-08-10 12:00:00 UTC_. * `environment.enum_values.values.id: production-id OR slo.string_values.values: \"99.99%\"` - The allowed value id of the environment attribute Deployment is _production-id_ or string value of the slo attribute is _99.99%_. * `environment.enum_values.values.id: staging-id AND attributes.projects/test-project-id/locations/test-location-id/ attributes/17650f90-4a29-4971-b3c0-d5532da3764b.string_values.values: test` - The filter string specifies that the allowed value id of the environment attribute associated with the Deployment is _staging-id_ and the value of the user defined attribute of type string is _test_. */
   filter?: string;
 }
+const ListProjectsLocationsDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<ListProjectsLocationsDeploymentsRequest>;
+
 export type GoogleCloudApihubV1DeploymentList = Array<GoogleCloudApihubV1Deployment>;
+const GoogleCloudApihubV1DeploymentList = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1DeploymentList>;
+
 /** The ListDeployments method's response. */
 export interface GoogleCloudApihubV1ListDeploymentsResponse {
   /** The deployment resources present in the API hub. */
@@ -2177,6 +3424,11 @@ export interface GoogleCloudApihubV1ListDeploymentsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const GoogleCloudApihubV1ListDeploymentsResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1ListDeploymentsResponse>;
+
 export interface ListProjectsLocationsDiscoveredApiObservationsRequest {
   /** Optional. A page token, received from a previous `ListApiObservations` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiObservations` must match the call that provided the page token. */
   pageToken?: string;
@@ -2185,8 +3437,18 @@ export interface ListProjectsLocationsDiscoveredApiObservationsRequest {
   /** Required. The parent, which owns this collection of ApiObservations. Format: projects/{project}/locations/{location} */
   parent: string;
 }
+const ListProjectsLocationsDiscoveredApiObservationsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<ListProjectsLocationsDiscoveredApiObservationsRequest>;
+
 export type GoogleCloudApihubV1DiscoveredApiObservationList =
   Array<GoogleCloudApihubV1DiscoveredApiObservation>;
+const GoogleCloudApihubV1DiscoveredApiObservationList = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1DiscoveredApiObservationList>;
+
 /** Message for response to listing DiscoveredApiObservations */
 export interface GoogleCloudApihubV1ListDiscoveredApiObservationsResponse {
   /** The DiscoveredApiObservation from the specified project and location. */
@@ -2194,6 +3456,11 @@ export interface GoogleCloudApihubV1ListDiscoveredApiObservationsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const GoogleCloudApihubV1ListDiscoveredApiObservationsResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<GoogleCloudApihubV1ListDiscoveredApiObservationsResponse>;
+
 export interface ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest {
   /** Optional. A page token, received from a previous `ListDiscoveredApiApiOperations` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDiscoveredApiApiOperations` must match the call that provided the page token. */
   pageToken?: string;
@@ -2202,8 +3469,19 @@ export interface ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOper
   /** Required. The parent, which owns this collection of DiscoveredApiOperations. Format: projects/{project}/locations/{location}/discoveredApiObservations/{discovered_api_observation} */
   parent: string;
 }
+const ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest =
+  /*@__PURE__*/ __L.at(
+    __c29,
+    4,
+  ) as any as S.Schema<ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest>;
+
 export type GoogleCloudApihubV1DiscoveredApiOperationList =
   Array<GoogleCloudApihubV1DiscoveredApiOperation>;
+const GoogleCloudApihubV1DiscoveredApiOperationList = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<GoogleCloudApihubV1DiscoveredApiOperationList>;
+
 /** Message for response to listing DiscoveredApiOperations */
 export interface GoogleCloudApihubV1ListDiscoveredApiOperationsResponse {
   /** The DiscoveredApiOperations from the specified project, location and DiscoveredApiObservation. */
@@ -2211,6 +3489,11 @@ export interface GoogleCloudApihubV1ListDiscoveredApiOperationsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const GoogleCloudApihubV1ListDiscoveredApiOperationsResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<GoogleCloudApihubV1ListDiscoveredApiOperationsResponse>;
+
 export interface ListProjectsLocationsExternalApisRequest {
   /** Optional. A page token, received from a previous `ListExternalApis` call. Provide this to retrieve the subsequent page. When paginating, all other parameters (except page_size) provided to `ListExternalApis` must match the call that provided the page token. */
   pageToken?: string;
@@ -2219,7 +3502,17 @@ export interface ListProjectsLocationsExternalApisRequest {
   /** Optional. The maximum number of External API resources to return. The service may return fewer than this value. If unspecified, at most 50 ExternalApis will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
+const ListProjectsLocationsExternalApisRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<ListProjectsLocationsExternalApisRequest>;
+
 export type GoogleCloudApihubV1ExternalApiList = Array<GoogleCloudApihubV1ExternalApi>;
+const GoogleCloudApihubV1ExternalApiList = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1ExternalApiList>;
+
 /** The ListExternalApis method's response. */
 export interface GoogleCloudApihubV1ListExternalApisResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2227,6 +3520,11 @@ export interface GoogleCloudApihubV1ListExternalApisResponse {
   /** The External API resources present in the API hub. */
   externalApis?: GoogleCloudApihubV1ExternalApiList;
 }
+const GoogleCloudApihubV1ListExternalApisResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<GoogleCloudApihubV1ListExternalApisResponse>;
+
 export interface ListProjectsLocationsHostProjectRegistrationsRequest {
   /** Required. The parent, which owns this collection of host projects. Format: `projects/*\/locations/*` */
   parent: string;
@@ -2239,8 +3537,18 @@ export interface ListProjectsLocationsHostProjectRegistrationsRequest {
   /** Optional. A page token, received from a previous `ListHostProjectRegistrations` call. Provide this to retrieve the subsequent page. When paginating, all other parameters (except page_size) provided to `ListHostProjectRegistrations` must match the call that provided the page token. */
   pageToken?: string;
 }
+const ListProjectsLocationsHostProjectRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<ListProjectsLocationsHostProjectRegistrationsRequest>;
+
 export type GoogleCloudApihubV1HostProjectRegistrationList =
   Array<GoogleCloudApihubV1HostProjectRegistration>;
+const GoogleCloudApihubV1HostProjectRegistrationList = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<GoogleCloudApihubV1HostProjectRegistrationList>;
+
 /** The ListHostProjectRegistrations method's response. */
 export interface GoogleCloudApihubV1ListHostProjectRegistrationsResponse {
   /** The list of host project registrations. */
@@ -2248,6 +3556,11 @@ export interface GoogleCloudApihubV1ListHostProjectRegistrationsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const GoogleCloudApihubV1ListHostProjectRegistrationsResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<GoogleCloudApihubV1ListHostProjectRegistrationsResponse>;
+
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
@@ -2260,7 +3573,17 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
+const GoogleLongrunningOperationList = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<GoogleLongrunningOperationList>;
+
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunningListOperationsResponse {
   /** The standard List next-page token. */
@@ -2270,6 +3593,11 @@ export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
+const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
+
 export interface ListProjectsLocationsPluginsRequest {
   /** Optional. The maximum number of hub plugins to return. The service may return fewer than this value. If unspecified, at most 50 hub plugins will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -2280,7 +3608,17 @@ export interface ListProjectsLocationsPluginsRequest {
   /** Optional. An expression that filters the list of plugins. A filter expression consists of a field name, a comparison operator, and a value for filtering. The value must be a string. The comparison operator must be one of: `<`, `>` or `=`. Filters are not case sensitive. The following fields in the `Plugins` are eligible for filtering: * `plugin_category` - The category of the Plugin. Allowed comparison operators: `=`. Expressions are combined with either `AND` logic operator or `OR` logical operator but not both of them together i.e. only one of the `AND` or `OR` operator can be used throughout the filter string and both the operators cannot be used together. No other logical operators are supported. At most three filter fields are allowed in the filter string and if provided more than that then `INVALID_ARGUMENT` error is returned by the API. Here are a few examples: * `plugin_category = ON_RAMP` - The plugin is of category on ramp. */
   filter?: string;
 }
+const ListProjectsLocationsPluginsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<ListProjectsLocationsPluginsRequest>;
+
 export type GoogleCloudApihubV1PluginList = Array<GoogleCloudApihubV1Plugin>;
+const GoogleCloudApihubV1PluginList = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<GoogleCloudApihubV1PluginList>;
+
 /** The ListPlugins method's response. */
 export interface GoogleCloudApihubV1ListPluginsResponse {
   /** The plugins from the specified parent resource. */
@@ -2288,6 +3626,11 @@ export interface GoogleCloudApihubV1ListPluginsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const GoogleCloudApihubV1ListPluginsResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1ListPluginsResponse>;
+
 export interface ListProjectsLocationsPluginsInstancesRequest {
   /** Optional. The maximum number of hub plugins to return. The service may return fewer than this value. If unspecified, at most 50 hub plugins will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -2298,7 +3641,17 @@ export interface ListProjectsLocationsPluginsInstancesRequest {
   /** Optional. An expression that filters the list of plugin instances. A filter expression consists of a field name, a comparison operator, and a value for filtering. The value must be a string. The comparison operator must be one of: `<`, `>` or `=`. Filters are not case sensitive. The following fields in the `PluginInstances` are eligible for filtering: * `state` - The state of the Plugin Instance. Allowed comparison operators: `=`. * `source_project_id` - The source project id of the Plugin Instance. Allowed comparison operators: `=`. A filter function is also supported in the filter string. The filter function is `id(name)`. The `id(name)` function returns the id of the resource name. For example, `id(name) = \"plugin-instance-1\"` is equivalent to `name = \"projects/test-project-id/locations/test-location-id/plugins/plugin-1/instances/plugin-instance-1\"` provided the parent is `projects/test-project-id/locations/test-location-id/plugins/plugin-1`. Expressions are combined with either `AND` logic operator or `OR` logical operator but not both of them together i.e. only one of the `AND` or `OR` operator can be used throughout the filter string and both the operators cannot be used together. No other logical operators are supported. At most three filter fields are allowed in the filter string and if provided more than that then `INVALID_ARGUMENT` error is returned by the API. Here are a few examples: * `state = ENABLED` - The plugin instance is in enabled state. */
   filter?: string;
 }
+const ListProjectsLocationsPluginsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<ListProjectsLocationsPluginsInstancesRequest>;
+
 export type GoogleCloudApihubV1PluginInstanceList = Array<GoogleCloudApihubV1PluginInstance>;
+const GoogleCloudApihubV1PluginInstanceList = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<GoogleCloudApihubV1PluginInstanceList>;
+
 /** The ListPluginInstances method's response. */
 export interface GoogleCloudApihubV1ListPluginInstancesResponse {
   /** The plugin instances from the specified parent resource. */
@@ -2306,6 +3659,11 @@ export interface GoogleCloudApihubV1ListPluginInstancesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const GoogleCloudApihubV1ListPluginInstancesResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<GoogleCloudApihubV1ListPluginInstancesResponse>;
+
 export interface ListProjectsLocationsRuntimeProjectAttachmentsRequest {
   /** Optional. Hint for how to order the results. */
   orderBy?: string;
@@ -2318,8 +3676,18 @@ export interface ListProjectsLocationsRuntimeProjectAttachmentsRequest {
   /** Required. The parent, which owns this collection of runtime project attachments. Format: `projects/{project}/locations/{location}` */
   parent: string;
 }
+const ListProjectsLocationsRuntimeProjectAttachmentsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<ListProjectsLocationsRuntimeProjectAttachmentsRequest>;
+
 export type GoogleCloudApihubV1RuntimeProjectAttachmentList =
   Array<GoogleCloudApihubV1RuntimeProjectAttachment>;
+const GoogleCloudApihubV1RuntimeProjectAttachmentList = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1RuntimeProjectAttachmentList>;
+
 /** The ListRuntimeProjectAttachments method's response. */
 export interface GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2327,45 +3695,84 @@ export interface GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse {
   /** List of runtime project attachments. */
   runtimeProjectAttachments?: GoogleCloudApihubV1RuntimeProjectAttachmentList;
 }
+const GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse>;
+
 export interface LookupProjectsLocationsApiHubInstancesRequest {
   /** Required. There will always be only one Api Hub instance for a Google Cloud project across all locations. The parent resource for the Api Hub instance resource. Format: `projects/{project}/locations/{location}` */
   parent: string;
 }
+const LookupProjectsLocationsApiHubInstancesRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<LookupProjectsLocationsApiHubInstancesRequest>;
+
 /** The LookupApiHubInstance method's response.` */
 export interface GoogleCloudApihubV1LookupApiHubInstanceResponse {
   /** API Hub instance for a project if it exists, empty otherwise. */
   apiHubInstance?: GoogleCloudApihubV1ApiHubInstance;
 }
+const GoogleCloudApihubV1LookupApiHubInstanceResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1LookupApiHubInstanceResponse>;
+
 export interface LookupRuntimeProjectAttachmentProjectsLocationsRequest {
   /** Required. Runtime project ID to look up runtime project attachment for. Lookup happens across all regions. Expected format: `projects/{project}/locations/{location}`. */
   name: string;
 }
+const LookupRuntimeProjectAttachmentProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<LookupRuntimeProjectAttachmentProjectsLocationsRequest>;
+
 /** The ListRuntimeProjectAttachments method's response. */
 export interface GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse {
   /** Runtime project attachment for a project if exists, empty otherwise. */
   runtimeProjectAttachment?: GoogleCloudApihubV1RuntimeProjectAttachment;
 }
+const GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse>;
+
 /** The ManageAddonConfig method's request. */
 export interface GoogleCloudApihubV1ManageAddonConfigRequest {
   /** Required. The config of the addon to be managed. This config will replace the config present in the addon. The type of the config should match the config type already present in the addon. */
   config?: GoogleCloudApihubV1AddonConfig;
 }
+const GoogleCloudApihubV1ManageAddonConfigRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<GoogleCloudApihubV1ManageAddonConfigRequest>;
+
 export interface ManageConfigProjectsLocationsAddonsRequest {
   /** Required. The name of the addon for which the config is to be managed. Format: `projects/{project}/locations/{location}/addons/{addon}`. */
   name: string;
   /** Request body */
   body?: GoogleCloudApihubV1ManageAddonConfigRequest;
 }
+const ManageConfigProjectsLocationsAddonsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<ManageConfigProjectsLocationsAddonsRequest>;
+
 export type GoogleCloudApihubV1ManagePluginInstanceSourceDataRequestDataTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
   | "PROXY_DEPLOYMENT_MANIFEST"
   | "ENVIRONMENT_MANIFEST"
   | "PROXY_BUNDLE"
   | "SHARED_FLOW_BUNDLE";
+const GoogleCloudApihubV1ManagePluginInstanceSourceDataRequestDataTypeEnum = S.String;
+
 export type GoogleCloudApihubV1ManagePluginInstanceSourceDataRequestActionEnum =
   | "ACTION_UNSPECIFIED"
   | "UPLOAD"
   | "DELETE";
+const GoogleCloudApihubV1ManagePluginInstanceSourceDataRequestActionEnum = S.String;
+
 /** The ManagePluginInstanceSourceData method's request. */
 export interface GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest {
   /** Required. Type of data to be managed. */
@@ -2377,14 +3784,29 @@ export interface GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest {
   /** Required. Data to be managed. */
   data?: string;
 }
+const GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest>;
+
 export interface ManageSourceDataProjectsLocationsPluginsInstancesRequest {
   /** Required. The name of the plugin instance for which data needs to be managed. Format: `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}` */
   name: string;
   /** Request body */
   body?: GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest;
 }
+const ManageSourceDataProjectsLocationsPluginsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<ManageSourceDataProjectsLocationsPluginsInstancesRequest>;
+
 /** The ManagePluginInstanceSourceData method's response. */
 export interface GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse {}
+const GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse>;
+
 export interface PatchProjectsLocationsApiHubInstancesRequest {
   /** Identifier. Format: `projects/{project}/locations/{location}/apiHubInstances/{apiHubInstance}`. */
   name: string;
@@ -2393,6 +3815,11 @@ export interface PatchProjectsLocationsApiHubInstancesRequest {
   /** Request body */
   body?: GoogleCloudApihubV1ApiHubInstance;
 }
+const PatchProjectsLocationsApiHubInstancesRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<PatchProjectsLocationsApiHubInstancesRequest>;
+
 export interface PatchProjectsLocationsApisRequest {
   /** Required. The list of fields to update. */
   updateMask?: string;
@@ -2401,6 +3828,11 @@ export interface PatchProjectsLocationsApisRequest {
   /** Request body */
   body?: GoogleCloudApihubV1Api;
 }
+const PatchProjectsLocationsApisRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<PatchProjectsLocationsApisRequest>;
+
 export interface PatchProjectsLocationsApisVersionsRequest {
   /** Identifier. The name of the version. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}` */
   name: string;
@@ -2409,6 +3841,11 @@ export interface PatchProjectsLocationsApisVersionsRequest {
   /** Request body */
   body?: GoogleCloudApihubV1Version;
 }
+const PatchProjectsLocationsApisVersionsRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  4,
+) as any as S.Schema<PatchProjectsLocationsApisVersionsRequest>;
+
 export interface PatchProjectsLocationsApisVersionsOperationsRequest {
   /** Required. The list of fields to update. */
   updateMask?: string;
@@ -2417,6 +3854,11 @@ export interface PatchProjectsLocationsApisVersionsOperationsRequest {
   /** Request body */
   body?: GoogleCloudApihubV1ApiOperation;
 }
+const PatchProjectsLocationsApisVersionsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<PatchProjectsLocationsApisVersionsOperationsRequest>;
+
 export interface PatchProjectsLocationsApisVersionsSpecsRequest {
   /** Identifier. The name of the spec. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}` */
   name: string;
@@ -2425,6 +3867,11 @@ export interface PatchProjectsLocationsApisVersionsSpecsRequest {
   /** Request body */
   body?: GoogleCloudApihubV1Spec;
 }
+const PatchProjectsLocationsApisVersionsSpecsRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  6,
+) as any as S.Schema<PatchProjectsLocationsApisVersionsSpecsRequest>;
+
 export interface PatchProjectsLocationsAttributesRequest {
   /** Required. The list of fields to update. */
   updateMask?: string;
@@ -2433,6 +3880,11 @@ export interface PatchProjectsLocationsAttributesRequest {
   /** Request body */
   body?: GoogleCloudApihubV1Attribute;
 }
+const PatchProjectsLocationsAttributesRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<PatchProjectsLocationsAttributesRequest>;
+
 export interface PatchProjectsLocationsCurationsRequest {
   /** Identifier. The name of the curation. Format: `projects/{project}/locations/{location}/curations/{curation}` */
   name: string;
@@ -2441,6 +3893,11 @@ export interface PatchProjectsLocationsCurationsRequest {
   /** Request body */
   body?: GoogleCloudApihubV1Curation;
 }
+const PatchProjectsLocationsCurationsRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<PatchProjectsLocationsCurationsRequest>;
+
 export interface PatchProjectsLocationsDependenciesRequest {
   /** Required. The list of fields to update. */
   updateMask?: string;
@@ -2449,6 +3906,11 @@ export interface PatchProjectsLocationsDependenciesRequest {
   /** Request body */
   body?: GoogleCloudApihubV1Dependency;
 }
+const PatchProjectsLocationsDependenciesRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<PatchProjectsLocationsDependenciesRequest>;
+
 export interface PatchProjectsLocationsDeploymentsRequest {
   /** Identifier. The name of the deployment. Format: `projects/{project}/locations/{location}/deployments/{deployment}` */
   name: string;
@@ -2457,6 +3919,11 @@ export interface PatchProjectsLocationsDeploymentsRequest {
   /** Request body */
   body?: GoogleCloudApihubV1Deployment;
 }
+const PatchProjectsLocationsDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<PatchProjectsLocationsDeploymentsRequest>;
+
 export interface PatchProjectsLocationsExternalApisRequest {
   /** Required. The list of fields to update. */
   updateMask?: string;
@@ -2465,6 +3932,11 @@ export interface PatchProjectsLocationsExternalApisRequest {
   /** Request body */
   body?: GoogleCloudApihubV1ExternalApi;
 }
+const PatchProjectsLocationsExternalApisRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<PatchProjectsLocationsExternalApisRequest>;
+
 export interface PatchProjectsLocationsPluginsInstancesRequest {
   /** Optional. The list of fields to update. */
   updateMask?: string;
@@ -2473,6 +3945,11 @@ export interface PatchProjectsLocationsPluginsInstancesRequest {
   /** Request body */
   body?: GoogleCloudApihubV1PluginInstance;
 }
+const PatchProjectsLocationsPluginsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<PatchProjectsLocationsPluginsInstancesRequest>;
+
 /** The SearchResources method's request. */
 export interface GoogleCloudApihubV1SearchResourcesRequest {
   /** Required. The free text search query. This query can contain keywords which could be related to any detail of the API-Hub resources such display names, descriptions, attributes etc. */
@@ -2484,12 +3961,22 @@ export interface GoogleCloudApihubV1SearchResourcesRequest {
   /** Optional. An expression that filters the list of search results. A filter expression consists of a field name, a comparison operator, and a value for filtering. The value must be a string, a number, or a boolean. The comparison operator must be `=`. Filters are not case sensitive. The following field names are eligible for filtering: * `resource_type` - The type of resource in the search results. Must be one of the following: `Api`, `ApiOperation`, `Deployment`, `Definition`, `Spec` or `Version`. This field can only be specified once in the filter. Here are is an example: * `resource_type = Api` - The resource_type is _Api_. */
   filter?: string;
 }
+const GoogleCloudApihubV1SearchResourcesRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<GoogleCloudApihubV1SearchResourcesRequest>;
+
 export interface SearchResourcesProjectsLocationsRequest {
   /** Required. The resource name of the location which will be of the type `projects/{project_id}/locations/{location_id}`. This field is used to identify the instance of API-Hub in which resources should be searched. */
   location: string;
   /** Request body */
   body?: GoogleCloudApihubV1SearchResourcesRequest;
 }
+const SearchResourcesProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<SearchResourcesProjectsLocationsRequest>;
+
 /** ApiHubResource is one of the resources such as Api, Operation, Deployment, Definition, Spec and Version resources stored in API-Hub. */
 export interface GoogleCloudApihubV1ApiHubResource {
   /** This represents Deployment resource in search results. Only name, display_name, description, deployment_type and api_versions fields are populated in search results. */
@@ -2505,12 +3992,27 @@ export interface GoogleCloudApihubV1ApiHubResource {
   /** This represents Spec resource in search results. Only name, display_name, description, spec_type and documentation fields are populated in search results. */
   spec?: GoogleCloudApihubV1Spec;
 }
+const GoogleCloudApihubV1ApiHubResource = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<GoogleCloudApihubV1ApiHubResource>;
+
 /** Represents the search results. */
 export interface GoogleCloudApihubV1SearchResult {
   /** This represents the ApiHubResource. Note: Only selected fields of the resources are populated in response. */
   resource?: GoogleCloudApihubV1ApiHubResource;
 }
+const GoogleCloudApihubV1SearchResult = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<GoogleCloudApihubV1SearchResult>;
+
 export type GoogleCloudApihubV1SearchResultList = Array<GoogleCloudApihubV1SearchResult>;
+const GoogleCloudApihubV1SearchResultList = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<GoogleCloudApihubV1SearchResultList>;
+
 /** Response for the SearchResources method. */
 export interface GoogleCloudApihubV1SearchResourcesResponse {
   /** List of search results according to the filter and search query specified. The order of search results represents the ranking. */
@@ -2518,6 +4020,11 @@ export interface GoogleCloudApihubV1SearchResourcesResponse {
   /** Pass this token in the SearchResourcesRequest to continue to list results. If all results have been returned, this field is an empty string or not present in the response. */
   nextPageToken?: string;
 }
+const GoogleCloudApihubV1SearchResourcesResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<GoogleCloudApihubV1SearchResourcesResponse>;
+
 export interface UpdateStyleGuideProjectsLocationsPluginsRequest {
   /** Identifier. The name of the style guide. Format: `projects/{project}/locations/{location}/plugins/{plugin}/styleGuide` */
   name: string;
@@ -2526,6 +4033,11 @@ export interface UpdateStyleGuideProjectsLocationsPluginsRequest {
   /** Request body */
   body?: GoogleCloudApihubV1StyleGuide;
 }
+const UpdateStyleGuideProjectsLocationsPluginsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<UpdateStyleGuideProjectsLocationsPluginsRequest>;
+
 export type CancelProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -2540,8 +4052,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: CancelProjectsLocationsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2561,8 +4073,8 @@ export const collectApiDataProjectsLocations: API.OperationMethod<
   CollectApiDataProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<CollectApiDataProjectsLocationsRequest>,
-  output: __S(47) as any as S.Schema<GoogleLongrunningOperation>,
+  input: CollectApiDataProjectsLocationsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2582,8 +4094,8 @@ export const configureAndDeployServerProjectsLocationsServers: API.OperationMeth
   ConfigureAndDeployServerProjectsLocationsServersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<ConfigureAndDeployServerProjectsLocationsServersRequest>,
-  output: __S(47) as any as S.Schema<GoogleLongrunningOperation>,
+  input: ConfigureAndDeployServerProjectsLocationsServersRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2603,8 +4115,8 @@ export const createProjectsLocationsApiHubInstances: API.OperationMethod<
   CreateProjectsLocationsApiHubInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<CreateProjectsLocationsApiHubInstancesRequest>,
-  output: __S(47) as any as S.Schema<GoogleLongrunningOperation>,
+  input: CreateProjectsLocationsApiHubInstancesRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2624,8 +4136,8 @@ export const createProjectsLocationsApis: API.OperationMethod<
   CreateProjectsLocationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<CreateProjectsLocationsApisRequest>,
-  output: __S(15) as any as S.Schema<GoogleCloudApihubV1Api>,
+  input: CreateProjectsLocationsApisRequest,
+  output: GoogleCloudApihubV1Api,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2645,8 +4157,8 @@ export const createProjectsLocationsApisVersions: API.OperationMethod<
   CreateProjectsLocationsApisVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<CreateProjectsLocationsApisVersionsRequest>,
-  output: __S(32) as any as S.Schema<GoogleCloudApihubV1Version>,
+  input: CreateProjectsLocationsApisVersionsRequest,
+  output: GoogleCloudApihubV1Version,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2666,8 +4178,8 @@ export const createProjectsLocationsApisVersionsOperations: API.OperationMethod<
   CreateProjectsLocationsApisVersionsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<CreateProjectsLocationsApisVersionsOperationsRequest>,
-  output: __S(69) as any as S.Schema<GoogleCloudApihubV1ApiOperation>,
+  input: CreateProjectsLocationsApisVersionsOperationsRequest,
+  output: GoogleCloudApihubV1ApiOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2687,8 +4199,8 @@ export const createProjectsLocationsApisVersionsSpecs: API.OperationMethod<
   CreateProjectsLocationsApisVersionsSpecsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<CreateProjectsLocationsApisVersionsSpecsRequest>,
-  output: __S(29) as any as S.Schema<GoogleCloudApihubV1Spec>,
+  input: CreateProjectsLocationsApisVersionsSpecsRequest,
+  output: GoogleCloudApihubV1Spec,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2708,8 +4220,8 @@ export const createProjectsLocationsAttributes: API.OperationMethod<
   CreateProjectsLocationsAttributesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<CreateProjectsLocationsAttributesRequest>,
-  output: __S(72) as any as S.Schema<GoogleCloudApihubV1Attribute>,
+  input: CreateProjectsLocationsAttributesRequest,
+  output: GoogleCloudApihubV1Attribute,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2729,8 +4241,8 @@ export const createProjectsLocationsCurations: API.OperationMethod<
   CreateProjectsLocationsCurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<CreateProjectsLocationsCurationsRequest>,
-  output: __S(77) as any as S.Schema<GoogleCloudApihubV1Curation>,
+  input: CreateProjectsLocationsCurationsRequest,
+  output: GoogleCloudApihubV1Curation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2750,8 +4262,8 @@ export const createProjectsLocationsDependencies: API.OperationMethod<
   CreateProjectsLocationsDependenciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<CreateProjectsLocationsDependenciesRequest>,
-  output: __S(81) as any as S.Schema<GoogleCloudApihubV1Dependency>,
+  input: CreateProjectsLocationsDependenciesRequest,
+  output: GoogleCloudApihubV1Dependency,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2771,8 +4283,8 @@ export const createProjectsLocationsDeployments: API.OperationMethod<
   CreateProjectsLocationsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<CreateProjectsLocationsDeploymentsRequest>,
-  output: __S(33) as any as S.Schema<GoogleCloudApihubV1Deployment>,
+  input: CreateProjectsLocationsDeploymentsRequest,
+  output: GoogleCloudApihubV1Deployment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2792,8 +4304,8 @@ export const createProjectsLocationsExternalApis: API.OperationMethod<
   CreateProjectsLocationsExternalApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<CreateProjectsLocationsExternalApisRequest>,
-  output: __S(84) as any as S.Schema<GoogleCloudApihubV1ExternalApi>,
+  input: CreateProjectsLocationsExternalApisRequest,
+  output: GoogleCloudApihubV1ExternalApi,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2813,8 +4325,8 @@ export const createProjectsLocationsHostProjectRegistrations: API.OperationMetho
   CreateProjectsLocationsHostProjectRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<CreateProjectsLocationsHostProjectRegistrationsRequest>,
-  output: __S(86) as any as S.Schema<GoogleCloudApihubV1HostProjectRegistration>,
+  input: CreateProjectsLocationsHostProjectRegistrationsRequest,
+  output: GoogleCloudApihubV1HostProjectRegistration,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2834,8 +4346,8 @@ export const createProjectsLocationsPlugins: API.OperationMethod<
   CreateProjectsLocationsPluginsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<CreateProjectsLocationsPluginsRequest>,
-  output: __S(99) as any as S.Schema<GoogleCloudApihubV1Plugin>,
+  input: CreateProjectsLocationsPluginsRequest,
+  output: GoogleCloudApihubV1Plugin,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2855,8 +4367,8 @@ export const createProjectsLocationsPluginsInstances: API.OperationMethod<
   CreateProjectsLocationsPluginsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<CreateProjectsLocationsPluginsInstancesRequest>,
-  output: __S(47) as any as S.Schema<GoogleLongrunningOperation>,
+  input: CreateProjectsLocationsPluginsInstancesRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2876,8 +4388,8 @@ export const createProjectsLocationsRuntimeProjectAttachments: API.OperationMeth
   CreateProjectsLocationsRuntimeProjectAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<CreateProjectsLocationsRuntimeProjectAttachmentsRequest>,
-  output: __S(122) as any as S.Schema<GoogleCloudApihubV1RuntimeProjectAttachment>,
+  input: CreateProjectsLocationsRuntimeProjectAttachmentsRequest,
+  output: GoogleCloudApihubV1RuntimeProjectAttachment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2897,8 +4409,8 @@ export const deleteProjectsLocationsApiHubInstances: API.OperationMethod<
   DeleteProjectsLocationsApiHubInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<DeleteProjectsLocationsApiHubInstancesRequest>,
-  output: __S(47) as any as S.Schema<GoogleLongrunningOperation>,
+  input: DeleteProjectsLocationsApiHubInstancesRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2918,8 +4430,8 @@ export const deleteProjectsLocationsApis: API.OperationMethod<
   DeleteProjectsLocationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<DeleteProjectsLocationsApisRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsApisRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2939,8 +4451,8 @@ export const deleteProjectsLocationsApisVersions: API.OperationMethod<
   DeleteProjectsLocationsApisVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<DeleteProjectsLocationsApisVersionsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsApisVersionsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2960,8 +4472,8 @@ export const deleteProjectsLocationsApisVersionsOperations: API.OperationMethod<
   DeleteProjectsLocationsApisVersionsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<DeleteProjectsLocationsApisVersionsOperationsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsApisVersionsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2981,8 +4493,8 @@ export const deleteProjectsLocationsApisVersionsSpecs: API.OperationMethod<
   DeleteProjectsLocationsApisVersionsSpecsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128) as any as S.Schema<DeleteProjectsLocationsApisVersionsSpecsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsApisVersionsSpecsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3002,8 +4514,8 @@ export const deleteProjectsLocationsAttributes: API.OperationMethod<
   DeleteProjectsLocationsAttributesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<DeleteProjectsLocationsAttributesRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsAttributesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3023,8 +4535,8 @@ export const deleteProjectsLocationsCurations: API.OperationMethod<
   DeleteProjectsLocationsCurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130) as any as S.Schema<DeleteProjectsLocationsCurationsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsCurationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3044,8 +4556,8 @@ export const deleteProjectsLocationsDependencies: API.OperationMethod<
   DeleteProjectsLocationsDependenciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<DeleteProjectsLocationsDependenciesRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsDependenciesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3065,8 +4577,8 @@ export const deleteProjectsLocationsDeployments: API.OperationMethod<
   DeleteProjectsLocationsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<DeleteProjectsLocationsDeploymentsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsDeploymentsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3086,8 +4598,8 @@ export const deleteProjectsLocationsExternalApis: API.OperationMethod<
   DeleteProjectsLocationsExternalApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133) as any as S.Schema<DeleteProjectsLocationsExternalApisRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsExternalApisRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3107,8 +4619,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3128,8 +4640,8 @@ export const deleteProjectsLocationsPlugins: API.OperationMethod<
   DeleteProjectsLocationsPluginsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<DeleteProjectsLocationsPluginsRequest>,
-  output: __S(47) as any as S.Schema<GoogleLongrunningOperation>,
+  input: DeleteProjectsLocationsPluginsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3149,8 +4661,8 @@ export const deleteProjectsLocationsPluginsInstances: API.OperationMethod<
   DeleteProjectsLocationsPluginsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<DeleteProjectsLocationsPluginsInstancesRequest>,
-  output: __S(47) as any as S.Schema<GoogleLongrunningOperation>,
+  input: DeleteProjectsLocationsPluginsInstancesRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3170,8 +4682,8 @@ export const deleteProjectsLocationsRuntimeProjectAttachments: API.OperationMeth
   DeleteProjectsLocationsRuntimeProjectAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<DeleteProjectsLocationsRuntimeProjectAttachmentsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsRuntimeProjectAttachmentsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3191,8 +4703,8 @@ export const disableActionProjectsLocationsPluginsInstances: API.OperationMethod
   DisableActionProjectsLocationsPluginsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<DisableActionProjectsLocationsPluginsInstancesRequest>,
-  output: __S(47) as any as S.Schema<GoogleLongrunningOperation>,
+  input: DisableActionProjectsLocationsPluginsInstancesRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3212,8 +4724,8 @@ export const disableProjectsLocationsPlugins: API.OperationMethod<
   DisableProjectsLocationsPluginsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<DisableProjectsLocationsPluginsRequest>,
-  output: __S(99) as any as S.Schema<GoogleCloudApihubV1Plugin>,
+  input: DisableProjectsLocationsPluginsRequest,
+  output: GoogleCloudApihubV1Plugin,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3233,8 +4745,8 @@ export const enableActionProjectsLocationsPluginsInstances: API.OperationMethod<
   EnableActionProjectsLocationsPluginsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141) as any as S.Schema<EnableActionProjectsLocationsPluginsInstancesRequest>,
-  output: __S(47) as any as S.Schema<GoogleLongrunningOperation>,
+  input: EnableActionProjectsLocationsPluginsInstancesRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3254,8 +4766,8 @@ export const enableProjectsLocationsPlugins: API.OperationMethod<
   EnableProjectsLocationsPluginsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<EnableProjectsLocationsPluginsRequest>,
-  output: __S(99) as any as S.Schema<GoogleCloudApihubV1Plugin>,
+  input: EnableProjectsLocationsPluginsRequest,
+  output: GoogleCloudApihubV1Plugin,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3275,8 +4787,8 @@ export const executeActionProjectsLocationsPluginsInstances: API.OperationMethod
   ExecuteActionProjectsLocationsPluginsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144) as any as S.Schema<ExecuteActionProjectsLocationsPluginsInstancesRequest>,
-  output: __S(47) as any as S.Schema<GoogleLongrunningOperation>,
+  input: ExecuteActionProjectsLocationsPluginsInstancesRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3294,10 +4806,8 @@ export const fetchAdditionalSpecContentProjectsLocationsApisVersionsSpecs: API.O
   FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    145,
-  ) as any as S.Schema<FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsRequest>,
-  output: __S(146) as any as S.Schema<GoogleCloudApihubV1FetchAdditionalSpecContentResponse>,
+  input: FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsRequest,
+  output: GoogleCloudApihubV1FetchAdditionalSpecContentResponse,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3312,8 +4822,8 @@ export const getApiViewsProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApihubV1RetrieveApiViewsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(147) as any as S.Schema<GetApiViewsProjectsLocationsRequest>,
-  output: __S(152) as any as S.Schema<GoogleCloudApihubV1RetrieveApiViewsResponse>,
+  input: GetApiViewsProjectsLocationsRequest,
+  output: GoogleCloudApihubV1RetrieveApiViewsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3332,8 +4842,8 @@ export const getContentsProjectsLocationsApisVersionsSpecs: API.OperationMethod<
   GetContentsProjectsLocationsApisVersionsSpecsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<GetContentsProjectsLocationsApisVersionsSpecsRequest>,
-  output: __S(26) as any as S.Schema<GoogleCloudApihubV1SpecContents>,
+  input: GetContentsProjectsLocationsApisVersionsSpecsRequest,
+  output: GoogleCloudApihubV1SpecContents,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3351,8 +4861,8 @@ export const getContentsProjectsLocationsPluginsStyleGuide: API.OperationMethod<
   GetContentsProjectsLocationsPluginsStyleGuideError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<GetContentsProjectsLocationsPluginsStyleGuideRequest>,
-  output: __S(155) as any as S.Schema<GoogleCloudApihubV1StyleGuideContents>,
+  input: GetContentsProjectsLocationsPluginsStyleGuideRequest,
+  output: GoogleCloudApihubV1StyleGuideContents,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3366,8 +4876,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(157) as any as S.Schema<GoogleCloudLocationLocation>,
+  input: GetProjectsLocationsRequest,
+  output: GoogleCloudLocationLocation,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3385,8 +4895,8 @@ export const getProjectsLocationsAddons: API.OperationMethod<
   GetProjectsLocationsAddonsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158) as any as S.Schema<GetProjectsLocationsAddonsRequest>,
-  output: __S(166) as any as S.Schema<GoogleCloudApihubV1Addon>,
+  input: GetProjectsLocationsAddonsRequest,
+  output: GoogleCloudApihubV1Addon,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3404,8 +4914,8 @@ export const getProjectsLocationsApiHubInstances: API.OperationMethod<
   GetProjectsLocationsApiHubInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<GetProjectsLocationsApiHubInstancesRequest>,
-  output: __S(59) as any as S.Schema<GoogleCloudApihubV1ApiHubInstance>,
+  input: GetProjectsLocationsApiHubInstancesRequest,
+  output: GoogleCloudApihubV1ApiHubInstance,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3423,8 +4933,8 @@ export const getProjectsLocationsApis: API.OperationMethod<
   GetProjectsLocationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<GetProjectsLocationsApisRequest>,
-  output: __S(15) as any as S.Schema<GoogleCloudApihubV1Api>,
+  input: GetProjectsLocationsApisRequest,
+  output: GoogleCloudApihubV1Api,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3442,8 +4952,8 @@ export const getProjectsLocationsApisVersions: API.OperationMethod<
   GetProjectsLocationsApisVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<GetProjectsLocationsApisVersionsRequest>,
-  output: __S(32) as any as S.Schema<GoogleCloudApihubV1Version>,
+  input: GetProjectsLocationsApisVersionsRequest,
+  output: GoogleCloudApihubV1Version,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3461,8 +4971,8 @@ export const getProjectsLocationsApisVersionsDefinitions: API.OperationMethod<
   GetProjectsLocationsApisVersionsDefinitionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170) as any as S.Schema<GetProjectsLocationsApisVersionsDefinitionsRequest>,
-  output: __S(172) as any as S.Schema<GoogleCloudApihubV1Definition>,
+  input: GetProjectsLocationsApisVersionsDefinitionsRequest,
+  output: GoogleCloudApihubV1Definition,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3480,8 +4990,8 @@ export const getProjectsLocationsApisVersionsOperations: API.OperationMethod<
   GetProjectsLocationsApisVersionsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173) as any as S.Schema<GetProjectsLocationsApisVersionsOperationsRequest>,
-  output: __S(69) as any as S.Schema<GoogleCloudApihubV1ApiOperation>,
+  input: GetProjectsLocationsApisVersionsOperationsRequest,
+  output: GoogleCloudApihubV1ApiOperation,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3499,8 +5009,8 @@ export const getProjectsLocationsApisVersionsSpecs: API.OperationMethod<
   GetProjectsLocationsApisVersionsSpecsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174) as any as S.Schema<GetProjectsLocationsApisVersionsSpecsRequest>,
-  output: __S(29) as any as S.Schema<GoogleCloudApihubV1Spec>,
+  input: GetProjectsLocationsApisVersionsSpecsRequest,
+  output: GoogleCloudApihubV1Spec,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3518,8 +5028,8 @@ export const getProjectsLocationsAttributes: API.OperationMethod<
   GetProjectsLocationsAttributesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<GetProjectsLocationsAttributesRequest>,
-  output: __S(72) as any as S.Schema<GoogleCloudApihubV1Attribute>,
+  input: GetProjectsLocationsAttributesRequest,
+  output: GoogleCloudApihubV1Attribute,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3537,8 +5047,8 @@ export const getProjectsLocationsCurations: API.OperationMethod<
   GetProjectsLocationsCurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<GetProjectsLocationsCurationsRequest>,
-  output: __S(77) as any as S.Schema<GoogleCloudApihubV1Curation>,
+  input: GetProjectsLocationsCurationsRequest,
+  output: GoogleCloudApihubV1Curation,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3556,8 +5066,8 @@ export const getProjectsLocationsDependencies: API.OperationMethod<
   GetProjectsLocationsDependenciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<GetProjectsLocationsDependenciesRequest>,
-  output: __S(81) as any as S.Schema<GoogleCloudApihubV1Dependency>,
+  input: GetProjectsLocationsDependenciesRequest,
+  output: GoogleCloudApihubV1Dependency,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3575,8 +5085,8 @@ export const getProjectsLocationsDeployments: API.OperationMethod<
   GetProjectsLocationsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178) as any as S.Schema<GetProjectsLocationsDeploymentsRequest>,
-  output: __S(33) as any as S.Schema<GoogleCloudApihubV1Deployment>,
+  input: GetProjectsLocationsDeploymentsRequest,
+  output: GoogleCloudApihubV1Deployment,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3594,8 +5104,8 @@ export const getProjectsLocationsDiscoveredApiObservations: API.OperationMethod<
   GetProjectsLocationsDiscoveredApiObservationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<GetProjectsLocationsDiscoveredApiObservationsRequest>,
-  output: __S(180) as any as S.Schema<GoogleCloudApihubV1DiscoveredApiObservation>,
+  input: GetProjectsLocationsDiscoveredApiObservationsRequest,
+  output: GoogleCloudApihubV1DiscoveredApiObservation,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3613,10 +5123,8 @@ export const getProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperation
   GetProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    181,
-  ) as any as S.Schema<GetProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest>,
-  output: __S(193) as any as S.Schema<GoogleCloudApihubV1DiscoveredApiOperation>,
+  input: GetProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest,
+  output: GoogleCloudApihubV1DiscoveredApiOperation,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3634,8 +5142,8 @@ export const getProjectsLocationsExternalApis: API.OperationMethod<
   GetProjectsLocationsExternalApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194) as any as S.Schema<GetProjectsLocationsExternalApisRequest>,
-  output: __S(84) as any as S.Schema<GoogleCloudApihubV1ExternalApi>,
+  input: GetProjectsLocationsExternalApisRequest,
+  output: GoogleCloudApihubV1ExternalApi,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3653,8 +5161,8 @@ export const getProjectsLocationsHostProjectRegistrations: API.OperationMethod<
   GetProjectsLocationsHostProjectRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195) as any as S.Schema<GetProjectsLocationsHostProjectRegistrationsRequest>,
-  output: __S(86) as any as S.Schema<GoogleCloudApihubV1HostProjectRegistration>,
+  input: GetProjectsLocationsHostProjectRegistrationsRequest,
+  output: GoogleCloudApihubV1HostProjectRegistration,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3672,8 +5180,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(47) as any as S.Schema<GoogleLongrunningOperation>,
+  input: GetProjectsLocationsOperationsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3691,8 +5199,8 @@ export const getProjectsLocationsPlugins: API.OperationMethod<
   GetProjectsLocationsPluginsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197) as any as S.Schema<GetProjectsLocationsPluginsRequest>,
-  output: __S(99) as any as S.Schema<GoogleCloudApihubV1Plugin>,
+  input: GetProjectsLocationsPluginsRequest,
+  output: GoogleCloudApihubV1Plugin,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3710,8 +5218,8 @@ export const getProjectsLocationsPluginsInstances: API.OperationMethod<
   GetProjectsLocationsPluginsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198) as any as S.Schema<GetProjectsLocationsPluginsInstancesRequest>,
-  output: __S(120) as any as S.Schema<GoogleCloudApihubV1PluginInstance>,
+  input: GetProjectsLocationsPluginsInstancesRequest,
+  output: GoogleCloudApihubV1PluginInstance,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3729,8 +5237,8 @@ export const getProjectsLocationsRuntimeProjectAttachments: API.OperationMethod<
   GetProjectsLocationsRuntimeProjectAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199) as any as S.Schema<GetProjectsLocationsRuntimeProjectAttachmentsRequest>,
-  output: __S(122) as any as S.Schema<GoogleCloudApihubV1RuntimeProjectAttachment>,
+  input: GetProjectsLocationsRuntimeProjectAttachmentsRequest,
+  output: GoogleCloudApihubV1RuntimeProjectAttachment,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3748,8 +5256,8 @@ export const getStyleGuideProjectsLocationsPlugins: API.OperationMethod<
   GetStyleGuideProjectsLocationsPluginsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200) as any as S.Schema<GetStyleGuideProjectsLocationsPluginsRequest>,
-  output: __S(201) as any as S.Schema<GoogleCloudApihubV1StyleGuide>,
+  input: GetStyleGuideProjectsLocationsPluginsRequest,
+  output: GoogleCloudApihubV1StyleGuide,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3769,8 +5277,8 @@ export const lintProjectsLocationsApisVersionsSpecs: API.OperationMethod<
   LintProjectsLocationsApisVersionsSpecsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202) as any as S.Schema<LintProjectsLocationsApisVersionsSpecsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: LintProjectsLocationsApisVersionsSpecsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3785,8 +5293,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudLocationListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(203) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(205) as any as S.Schema<GoogleCloudLocationListLocationsResponse>,
+  input: ListProjectsLocationsRequest,
+  output: GoogleCloudLocationListLocationsResponse,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3806,8 +5314,8 @@ export const listProjectsLocationsAddons: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApihubV1ListAddonsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(206) as any as S.Schema<ListProjectsLocationsAddonsRequest>,
-  output: __S(208) as any as S.Schema<GoogleCloudApihubV1ListAddonsResponse>,
+  input: ListProjectsLocationsAddonsRequest,
+  output: GoogleCloudApihubV1ListAddonsResponse,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3827,8 +5335,8 @@ export const listProjectsLocationsApis: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApihubV1ListApisResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(209) as any as S.Schema<ListProjectsLocationsApisRequest>,
-  output: __S(211) as any as S.Schema<GoogleCloudApihubV1ListApisResponse>,
+  input: ListProjectsLocationsApisRequest,
+  output: GoogleCloudApihubV1ListApisResponse,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3848,8 +5356,8 @@ export const listProjectsLocationsApisVersions: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApihubV1ListVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(212) as any as S.Schema<ListProjectsLocationsApisVersionsRequest>,
-  output: __S(214) as any as S.Schema<GoogleCloudApihubV1ListVersionsResponse>,
+  input: ListProjectsLocationsApisVersionsRequest,
+  output: GoogleCloudApihubV1ListVersionsResponse,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3869,8 +5377,8 @@ export const listProjectsLocationsApisVersionsOperations: API.PaginatedOperation
   GcpOpContext,
   GoogleCloudApihubV1ListApiOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(215) as any as S.Schema<ListProjectsLocationsApisVersionsOperationsRequest>,
-  output: __S(217) as any as S.Schema<GoogleCloudApihubV1ListApiOperationsResponse>,
+  input: ListProjectsLocationsApisVersionsOperationsRequest,
+  output: GoogleCloudApihubV1ListApiOperationsResponse,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3890,8 +5398,8 @@ export const listProjectsLocationsApisVersionsSpecs: API.PaginatedOperationMetho
   GcpOpContext,
   GoogleCloudApihubV1ListSpecsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(218) as any as S.Schema<ListProjectsLocationsApisVersionsSpecsRequest>,
-  output: __S(220) as any as S.Schema<GoogleCloudApihubV1ListSpecsResponse>,
+  input: ListProjectsLocationsApisVersionsSpecsRequest,
+  output: GoogleCloudApihubV1ListSpecsResponse,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3911,8 +5419,8 @@ export const listProjectsLocationsAttributes: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApihubV1ListAttributesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(221) as any as S.Schema<ListProjectsLocationsAttributesRequest>,
-  output: __S(223) as any as S.Schema<GoogleCloudApihubV1ListAttributesResponse>,
+  input: ListProjectsLocationsAttributesRequest,
+  output: GoogleCloudApihubV1ListAttributesResponse,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3932,8 +5440,8 @@ export const listProjectsLocationsCurations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApihubV1ListCurationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(224) as any as S.Schema<ListProjectsLocationsCurationsRequest>,
-  output: __S(226) as any as S.Schema<GoogleCloudApihubV1ListCurationsResponse>,
+  input: ListProjectsLocationsCurationsRequest,
+  output: GoogleCloudApihubV1ListCurationsResponse,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3953,8 +5461,8 @@ export const listProjectsLocationsDependencies: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApihubV1ListDependenciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(227) as any as S.Schema<ListProjectsLocationsDependenciesRequest>,
-  output: __S(229) as any as S.Schema<GoogleCloudApihubV1ListDependenciesResponse>,
+  input: ListProjectsLocationsDependenciesRequest,
+  output: GoogleCloudApihubV1ListDependenciesResponse,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3974,8 +5482,8 @@ export const listProjectsLocationsDeployments: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApihubV1ListDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(230) as any as S.Schema<ListProjectsLocationsDeploymentsRequest>,
-  output: __S(232) as any as S.Schema<GoogleCloudApihubV1ListDeploymentsResponse>,
+  input: ListProjectsLocationsDeploymentsRequest,
+  output: GoogleCloudApihubV1ListDeploymentsResponse,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3995,8 +5503,8 @@ export const listProjectsLocationsDiscoveredApiObservations: API.PaginatedOperat
   GcpOpContext,
   GoogleCloudApihubV1ListDiscoveredApiObservationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(233) as any as S.Schema<ListProjectsLocationsDiscoveredApiObservationsRequest>,
-  output: __S(235) as any as S.Schema<GoogleCloudApihubV1ListDiscoveredApiObservationsResponse>,
+  input: ListProjectsLocationsDiscoveredApiObservationsRequest,
+  output: GoogleCloudApihubV1ListDiscoveredApiObservationsResponse,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4016,10 +5524,8 @@ export const listProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperatio
   GcpOpContext,
   GoogleCloudApihubV1ListDiscoveredApiOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(
-    236,
-  ) as any as S.Schema<ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest>,
-  output: __S(238) as any as S.Schema<GoogleCloudApihubV1ListDiscoveredApiOperationsResponse>,
+  input: ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest,
+  output: GoogleCloudApihubV1ListDiscoveredApiOperationsResponse,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4039,8 +5545,8 @@ export const listProjectsLocationsExternalApis: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApihubV1ListExternalApisResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(239) as any as S.Schema<ListProjectsLocationsExternalApisRequest>,
-  output: __S(241) as any as S.Schema<GoogleCloudApihubV1ListExternalApisResponse>,
+  input: ListProjectsLocationsExternalApisRequest,
+  output: GoogleCloudApihubV1ListExternalApisResponse,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4060,8 +5566,8 @@ export const listProjectsLocationsHostProjectRegistrations: API.PaginatedOperati
   GcpOpContext,
   GoogleCloudApihubV1ListHostProjectRegistrationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(242) as any as S.Schema<ListProjectsLocationsHostProjectRegistrationsRequest>,
-  output: __S(244) as any as S.Schema<GoogleCloudApihubV1ListHostProjectRegistrationsResponse>,
+  input: ListProjectsLocationsHostProjectRegistrationsRequest,
+  output: GoogleCloudApihubV1ListHostProjectRegistrationsResponse,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4081,8 +5587,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(245) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(247) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: ListProjectsLocationsOperationsRequest,
+  output: GoogleLongrunningListOperationsResponse,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4102,8 +5608,8 @@ export const listProjectsLocationsPlugins: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudApihubV1ListPluginsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(248) as any as S.Schema<ListProjectsLocationsPluginsRequest>,
-  output: __S(250) as any as S.Schema<GoogleCloudApihubV1ListPluginsResponse>,
+  input: ListProjectsLocationsPluginsRequest,
+  output: GoogleCloudApihubV1ListPluginsResponse,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4123,8 +5629,8 @@ export const listProjectsLocationsPluginsInstances: API.PaginatedOperationMethod
   GcpOpContext,
   GoogleCloudApihubV1ListPluginInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(251) as any as S.Schema<ListProjectsLocationsPluginsInstancesRequest>,
-  output: __S(253) as any as S.Schema<GoogleCloudApihubV1ListPluginInstancesResponse>,
+  input: ListProjectsLocationsPluginsInstancesRequest,
+  output: GoogleCloudApihubV1ListPluginInstancesResponse,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4144,8 +5650,8 @@ export const listProjectsLocationsRuntimeProjectAttachments: API.PaginatedOperat
   GcpOpContext,
   GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(254) as any as S.Schema<ListProjectsLocationsRuntimeProjectAttachmentsRequest>,
-  output: __S(256) as any as S.Schema<GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse>,
+  input: ListProjectsLocationsRuntimeProjectAttachmentsRequest,
+  output: GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4164,8 +5670,8 @@ export const lookupProjectsLocationsApiHubInstances: API.OperationMethod<
   LookupProjectsLocationsApiHubInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257) as any as S.Schema<LookupProjectsLocationsApiHubInstancesRequest>,
-  output: __S(258) as any as S.Schema<GoogleCloudApihubV1LookupApiHubInstanceResponse>,
+  input: LookupProjectsLocationsApiHubInstancesRequest,
+  output: GoogleCloudApihubV1LookupApiHubInstanceResponse,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4183,8 +5689,8 @@ export const lookupRuntimeProjectAttachmentProjectsLocations: API.OperationMetho
   LookupRuntimeProjectAttachmentProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259) as any as S.Schema<LookupRuntimeProjectAttachmentProjectsLocationsRequest>,
-  output: __S(260) as any as S.Schema<GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse>,
+  input: LookupRuntimeProjectAttachmentProjectsLocationsRequest,
+  output: GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse,
   errors: [NotFound, Forbidden, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4204,8 +5710,8 @@ export const manageConfigProjectsLocationsAddons: API.OperationMethod<
   ManageConfigProjectsLocationsAddonsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262) as any as S.Schema<ManageConfigProjectsLocationsAddonsRequest>,
-  output: __S(47) as any as S.Schema<GoogleLongrunningOperation>,
+  input: ManageConfigProjectsLocationsAddonsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4225,8 +5731,8 @@ export const manageSourceDataProjectsLocationsPluginsInstances: API.OperationMet
   ManageSourceDataProjectsLocationsPluginsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264) as any as S.Schema<ManageSourceDataProjectsLocationsPluginsInstancesRequest>,
-  output: __S(265) as any as S.Schema<GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse>,
+  input: ManageSourceDataProjectsLocationsPluginsInstancesRequest,
+  output: GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4246,8 +5752,8 @@ export const patchProjectsLocationsApiHubInstances: API.OperationMethod<
   PatchProjectsLocationsApiHubInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266) as any as S.Schema<PatchProjectsLocationsApiHubInstancesRequest>,
-  output: __S(47) as any as S.Schema<GoogleLongrunningOperation>,
+  input: PatchProjectsLocationsApiHubInstancesRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4267,8 +5773,8 @@ export const patchProjectsLocationsApis: API.OperationMethod<
   PatchProjectsLocationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267) as any as S.Schema<PatchProjectsLocationsApisRequest>,
-  output: __S(15) as any as S.Schema<GoogleCloudApihubV1Api>,
+  input: PatchProjectsLocationsApisRequest,
+  output: GoogleCloudApihubV1Api,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4288,8 +5794,8 @@ export const patchProjectsLocationsApisVersions: API.OperationMethod<
   PatchProjectsLocationsApisVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268) as any as S.Schema<PatchProjectsLocationsApisVersionsRequest>,
-  output: __S(32) as any as S.Schema<GoogleCloudApihubV1Version>,
+  input: PatchProjectsLocationsApisVersionsRequest,
+  output: GoogleCloudApihubV1Version,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4309,8 +5815,8 @@ export const patchProjectsLocationsApisVersionsOperations: API.OperationMethod<
   PatchProjectsLocationsApisVersionsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269) as any as S.Schema<PatchProjectsLocationsApisVersionsOperationsRequest>,
-  output: __S(69) as any as S.Schema<GoogleCloudApihubV1ApiOperation>,
+  input: PatchProjectsLocationsApisVersionsOperationsRequest,
+  output: GoogleCloudApihubV1ApiOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4330,8 +5836,8 @@ export const patchProjectsLocationsApisVersionsSpecs: API.OperationMethod<
   PatchProjectsLocationsApisVersionsSpecsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270) as any as S.Schema<PatchProjectsLocationsApisVersionsSpecsRequest>,
-  output: __S(29) as any as S.Schema<GoogleCloudApihubV1Spec>,
+  input: PatchProjectsLocationsApisVersionsSpecsRequest,
+  output: GoogleCloudApihubV1Spec,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4351,8 +5857,8 @@ export const patchProjectsLocationsAttributes: API.OperationMethod<
   PatchProjectsLocationsAttributesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271) as any as S.Schema<PatchProjectsLocationsAttributesRequest>,
-  output: __S(72) as any as S.Schema<GoogleCloudApihubV1Attribute>,
+  input: PatchProjectsLocationsAttributesRequest,
+  output: GoogleCloudApihubV1Attribute,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4372,8 +5878,8 @@ export const patchProjectsLocationsCurations: API.OperationMethod<
   PatchProjectsLocationsCurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272) as any as S.Schema<PatchProjectsLocationsCurationsRequest>,
-  output: __S(77) as any as S.Schema<GoogleCloudApihubV1Curation>,
+  input: PatchProjectsLocationsCurationsRequest,
+  output: GoogleCloudApihubV1Curation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4393,8 +5899,8 @@ export const patchProjectsLocationsDependencies: API.OperationMethod<
   PatchProjectsLocationsDependenciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273) as any as S.Schema<PatchProjectsLocationsDependenciesRequest>,
-  output: __S(81) as any as S.Schema<GoogleCloudApihubV1Dependency>,
+  input: PatchProjectsLocationsDependenciesRequest,
+  output: GoogleCloudApihubV1Dependency,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4414,8 +5920,8 @@ export const patchProjectsLocationsDeployments: API.OperationMethod<
   PatchProjectsLocationsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274) as any as S.Schema<PatchProjectsLocationsDeploymentsRequest>,
-  output: __S(33) as any as S.Schema<GoogleCloudApihubV1Deployment>,
+  input: PatchProjectsLocationsDeploymentsRequest,
+  output: GoogleCloudApihubV1Deployment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4435,8 +5941,8 @@ export const patchProjectsLocationsExternalApis: API.OperationMethod<
   PatchProjectsLocationsExternalApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275) as any as S.Schema<PatchProjectsLocationsExternalApisRequest>,
-  output: __S(84) as any as S.Schema<GoogleCloudApihubV1ExternalApi>,
+  input: PatchProjectsLocationsExternalApisRequest,
+  output: GoogleCloudApihubV1ExternalApi,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4456,8 +5962,8 @@ export const patchProjectsLocationsPluginsInstances: API.OperationMethod<
   PatchProjectsLocationsPluginsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276) as any as S.Schema<PatchProjectsLocationsPluginsInstancesRequest>,
-  output: __S(120) as any as S.Schema<GoogleCloudApihubV1PluginInstance>,
+  input: PatchProjectsLocationsPluginsInstancesRequest,
+  output: GoogleCloudApihubV1PluginInstance,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4477,8 +5983,8 @@ export const searchResourcesProjectsLocations: API.OperationMethod<
   SearchResourcesProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278) as any as S.Schema<SearchResourcesProjectsLocationsRequest>,
-  output: __S(282) as any as S.Schema<GoogleCloudApihubV1SearchResourcesResponse>,
+  input: SearchResourcesProjectsLocationsRequest,
+  output: GoogleCloudApihubV1SearchResourcesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4498,8 +6004,8 @@ export const updateStyleGuideProjectsLocationsPlugins: API.OperationMethod<
   UpdateStyleGuideProjectsLocationsPluginsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283) as any as S.Schema<UpdateStyleGuideProjectsLocationsPluginsRequest>,
-  output: __S(201) as any as S.Schema<GoogleCloudApihubV1StyleGuide>,
+  input: UpdateStyleGuideProjectsLocationsPluginsRequest,
+  output: GoogleCloudApihubV1StyleGuide,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ApiHubNotProvisioned, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4516,7 +6022,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4536,7 +6042,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(3)),
+          values: S.optional(StringList),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1StringAttributeValues",
@@ -4553,11 +6059,11 @@ function __c0(j: number): any {
         identifier: "GoogleCloudApihubV1AllowedValue",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(GoogleCloudApihubV1AllowedValue);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(6)),
+          values: S.optional(GoogleCloudApihubV1AllowedValueList),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1EnumAttributeValues",
@@ -4569,11 +6075,11 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          stringValues: S.optional(__S(4)),
+          stringValues: S.optional(GoogleCloudApihubV1StringAttributeValues),
           attribute: S.optional(S.String),
-          uriValues: S.optional(__S(4)),
-          enumValues: S.optional(__S(7)),
-          jsonValues: S.optional(__S(4)),
+          uriValues: S.optional(GoogleCloudApihubV1StringAttributeValues),
+          enumValues: S.optional(GoogleCloudApihubV1EnumAttributeValues),
+          jsonValues: S.optional(GoogleCloudApihubV1StringAttributeValues),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1AttributeValues",
@@ -4590,9 +6096,9 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sourceType: S.optional(S.String),
+          sourceType: S.optional(GoogleCloudApihubV1SourceMetadataSourceTypeEnum),
           originalResourceId: S.optional(S.String),
-          pluginInstanceActionSource: S.optional(__S(9)),
+          pluginInstanceActionSource: S.optional(GoogleCloudApihubV1PluginInstanceActionSource),
           originalResourceCreateTime: S.optional(S.String),
           originalResourceUpdateTime: S.optional(S.String),
         }),
@@ -4600,7 +6106,7 @@ function __c1(j: number): any {
         identifier: "GoogleCloudApihubV1SourceMetadata",
       });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(GoogleCloudApihubV1SourceMetadata);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4609,7 +6115,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "GoogleCloudApihubV1Owner" });
     case 5:
-      return S.Record(S.String, __S(8));
+      return S.Record(S.String, GoogleCloudApihubV1AttributeValues);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -4621,26 +6127,26 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          apiStyle: S.optional(__S(8)),
-          team: S.optional(__S(8)),
-          targetUser: S.optional(__S(8)),
-          apiFunctionalRequirements: S.optional(__S(8)),
-          maturityLevel: S.optional(__S(8)),
-          apiTechnicalRequirements: S.optional(__S(8)),
-          versions: S.optional(__S(3)),
+          apiStyle: S.optional(GoogleCloudApihubV1AttributeValues),
+          team: S.optional(GoogleCloudApihubV1AttributeValues),
+          targetUser: S.optional(GoogleCloudApihubV1AttributeValues),
+          apiFunctionalRequirements: S.optional(GoogleCloudApihubV1AttributeValues),
+          maturityLevel: S.optional(GoogleCloudApihubV1AttributeValues),
+          apiTechnicalRequirements: S.optional(GoogleCloudApihubV1AttributeValues),
+          versions: S.optional(StringList),
           displayName: S.optional(S.String),
           fingerprint: S.optional(S.String),
-          sourceMetadata: S.optional(__S(11)),
-          owner: S.optional(__S(12)),
+          sourceMetadata: S.optional(GoogleCloudApihubV1SourceMetadataList),
+          owner: S.optional(GoogleCloudApihubV1Owner),
           updateTime: S.optional(S.String),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
           selectedVersion: S.optional(S.String),
-          apiRequirements: S.optional(__S(8)),
-          attributes: S.optional(__S(13)),
-          businessUnit: S.optional(__S(8)),
-          serviceType: S.optional(__S(8)),
-          documentation: S.optional(__S(14)),
+          apiRequirements: S.optional(GoogleCloudApihubV1AttributeValues),
+          attributes: S.optional(GoogleCloudApihubV1AttributeValuesMap),
+          businessUnit: S.optional(GoogleCloudApihubV1AttributeValues),
+          serviceType: S.optional(GoogleCloudApihubV1AttributeValues),
+          documentation: S.optional(GoogleCloudApihubV1Documentation),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleCloudApihubV1Api" });
@@ -4651,9 +6157,9 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          format: S.optional(S.String),
+          format: S.optional(GoogleCloudApihubV1OpenApiSpecDetailsFormatEnum),
           version: S.optional(S.String),
-          owner: S.optional(__S(12)),
+          owner: S.optional(GoogleCloudApihubV1Owner),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1OpenApiSpecDetails",
@@ -4662,7 +6168,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          openApiSpecDetails: S.optional(__S(16)),
+          openApiSpecDetails: S.optional(GoogleCloudApihubV1OpenApiSpecDetails),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1SpecDetails",
@@ -4677,33 +6183,33 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          start: S.optional(__S(18)),
-          end: S.optional(__S(18)),
+          start: S.optional(GoogleCloudApihubV1Point),
+          end: S.optional(GoogleCloudApihubV1Point),
         }),
       ).annotate({ identifier: "GoogleCloudApihubV1Range" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          severity: S.optional(S.String),
+          severity: S.optional(GoogleCloudApihubV1IssueSeverityEnum),
           code: S.optional(S.String),
-          range: S.optional(__S(19)),
-          path: S.optional(__S(3)),
+          range: S.optional(GoogleCloudApihubV1Range),
+          path: S.optional(StringList),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleCloudApihubV1Issue" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(GoogleCloudApihubV1Issue);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          severity: S.optional(S.String),
+          severity: S.optional(GoogleCloudApihubV1SummaryEntrySeverityEnum),
           count: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1SummaryEntry",
       });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(GoogleCloudApihubV1SummaryEntry);
   }
 }
 function __c3(j: number): any {
@@ -4712,11 +6218,11 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
-          issues: S.optional(__S(21)),
-          summary: S.optional(__S(23)),
+          issues: S.optional(GoogleCloudApihubV1IssueList),
+          summary: S.optional(GoogleCloudApihubV1SummaryEntryList),
           source: S.optional(S.String),
-          linter: S.optional(S.String),
-          state: S.optional(S.String),
+          linter: S.optional(GoogleCloudApihubV1LintResponseLinterEnum),
+          state: S.optional(GoogleCloudApihubV1LintResponseStateEnum),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1LintResponse",
@@ -4735,51 +6241,51 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(25)),
+          labels: S.optional(StringMap),
           createTime: S.optional(S.String),
-          specContents: S.optional(__S(26)),
-          specContentType: S.optional(S.String),
+          specContents: S.optional(GoogleCloudApihubV1SpecContents),
+          specContentType: S.optional(GoogleCloudApihubV1AdditionalSpecContentSpecContentTypeEnum),
           updateTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1AdditionalSpecContent",
       });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(GoogleCloudApihubV1AdditionalSpecContent);
     case 5:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          sourceMetadata: S.optional(__S(11)),
-          deployments: S.optional(__S(3)),
-          parsingMode: S.optional(S.String),
-          details: S.optional(__S(17)),
-          attributes: S.optional(__S(13)),
-          lintResponse: S.optional(__S(24)),
+          sourceMetadata: S.optional(GoogleCloudApihubV1SourceMetadataList),
+          deployments: S.optional(StringList),
+          parsingMode: S.optional(GoogleCloudApihubV1SpecParsingModeEnum),
+          details: S.optional(GoogleCloudApihubV1SpecDetails),
+          attributes: S.optional(GoogleCloudApihubV1AttributeValuesMap),
+          lintResponse: S.optional(GoogleCloudApihubV1LintResponse),
           name: S.optional(S.String),
           sourceUri: S.optional(S.String),
-          additionalSpecContents: S.optional(__S(28)),
+          additionalSpecContents: S.optional(GoogleCloudApihubV1AdditionalSpecContentList),
           updateTime: S.optional(S.String),
-          documentation: S.optional(__S(14)),
-          specType: S.optional(__S(8)),
-          contents: S.optional(__S(26)),
+          documentation: S.optional(GoogleCloudApihubV1Documentation),
+          specType: S.optional(GoogleCloudApihubV1AttributeValues),
+          contents: S.optional(GoogleCloudApihubV1SpecContents),
           createTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleCloudApihubV1Spec" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          spec: S.optional(__S(29)),
+          spec: S.optional(GoogleCloudApihubV1Spec),
           originalCreateTime: S.optional(S.String),
           originalId: S.optional(S.String),
           originalUpdateTime: S.optional(S.String),
-          deploymentResourceUris: S.optional(__S(3)),
+          deploymentResourceUris: S.optional(StringList),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1SpecMetadata",
       });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(GoogleCloudApihubV1SpecMetadata);
   }
 }
 function __c4(j: number): any {
@@ -4787,22 +6293,22 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(__S(13)),
+          attributes: S.optional(GoogleCloudApihubV1AttributeValuesMap),
           createTime: S.optional(S.String),
-          lifecycle: S.optional(__S(8)),
-          sourceMetadata: S.optional(__S(11)),
-          specs: S.optional(__S(3)),
+          lifecycle: S.optional(GoogleCloudApihubV1AttributeValues),
+          sourceMetadata: S.optional(GoogleCloudApihubV1SourceMetadataList),
+          specs: S.optional(StringList),
           updateTime: S.optional(S.String),
           description: S.optional(S.String),
-          definitions: S.optional(__S(3)),
+          definitions: S.optional(StringList),
           selectedDeployment: S.optional(S.String),
-          apiOperations: S.optional(__S(3)),
+          apiOperations: S.optional(StringList),
           name: S.optional(S.String),
-          accreditation: S.optional(__S(8)),
+          accreditation: S.optional(GoogleCloudApihubV1AttributeValues),
           displayName: S.optional(S.String),
-          documentation: S.optional(__S(14)),
-          compliance: S.optional(__S(8)),
-          deployments: S.optional(__S(3)),
+          documentation: S.optional(GoogleCloudApihubV1Documentation),
+          compliance: S.optional(GoogleCloudApihubV1AttributeValues),
+          deployments: S.optional(StringList),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1Version",
@@ -4811,25 +6317,25 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          endpoints: S.optional(__S(3)),
+          endpoints: S.optional(StringList),
           sourceEnvironment: S.optional(S.String),
-          specs: S.optional(__S(3)),
-          managementUrl: S.optional(__S(8)),
+          specs: S.optional(StringList),
+          managementUrl: S.optional(GoogleCloudApihubV1AttributeValues),
           sourceProject: S.optional(S.String),
-          slo: S.optional(__S(8)),
-          environment: S.optional(__S(8)),
-          apiOperations: S.optional(__S(3)),
+          slo: S.optional(GoogleCloudApihubV1AttributeValues),
+          environment: S.optional(GoogleCloudApihubV1AttributeValues),
+          apiOperations: S.optional(StringList),
           createTime: S.optional(S.String),
-          sourceMetadata: S.optional(__S(11)),
-          sourceUri: S.optional(__S(8)),
+          sourceMetadata: S.optional(GoogleCloudApihubV1SourceMetadataList),
+          sourceUri: S.optional(GoogleCloudApihubV1AttributeValues),
           sourceRevision: S.optional(S.String),
-          deploymentType: S.optional(__S(8)),
+          deploymentType: S.optional(GoogleCloudApihubV1AttributeValues),
           updateTime: S.optional(S.String),
           displayName: S.optional(S.String),
-          documentation: S.optional(__S(14)),
+          documentation: S.optional(GoogleCloudApihubV1Documentation),
           name: S.optional(S.String),
-          apiVersions: S.optional(__S(3)),
-          attributes: S.optional(__S(13)),
+          apiVersions: S.optional(StringList),
+          attributes: S.optional(GoogleCloudApihubV1AttributeValuesMap),
           resourceUri: S.optional(S.String),
         }),
       ).annotate({
@@ -4840,21 +6346,21 @@ function __c4(j: number): any {
         S.Struct({
           originalUpdateTime: S.optional(S.String),
           originalId: S.optional(S.String),
-          deployment: S.optional(__S(33)),
+          deployment: S.optional(GoogleCloudApihubV1Deployment),
           originalCreateTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1DeploymentMetadata",
       });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(GoogleCloudApihubV1DeploymentMetadata);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          specs: S.optional(__S(31)),
-          version: S.optional(__S(32)),
+          specs: S.optional(GoogleCloudApihubV1SpecMetadataList),
+          version: S.optional(GoogleCloudApihubV1Version),
           originalUpdateTime: S.optional(S.String),
-          deployments: S.optional(__S(35)),
+          deployments: S.optional(GoogleCloudApihubV1DeploymentMetadataList),
           originalCreateTime: S.optional(S.String),
           originalId: S.optional(S.String),
         }),
@@ -4862,13 +6368,13 @@ function __c4(j: number): any {
         identifier: "GoogleCloudApihubV1VersionMetadata",
       });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(GoogleCloudApihubV1VersionMetadata);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          api: S.optional(__S(15)),
+          api: S.optional(GoogleCloudApihubV1Api),
           originalId: S.optional(S.String),
-          versions: S.optional(__S(37)),
+          versions: S.optional(GoogleCloudApihubV1VersionMetadataList),
           originalCreateTime: S.optional(S.String),
           originalUpdateTime: S.optional(S.String),
         }),
@@ -4876,7 +6382,7 @@ function __c4(j: number): any {
         identifier: "GoogleCloudApihubV1APIMetadata",
       });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(GoogleCloudApihubV1APIMetadata);
   }
 }
 function __c5(j: number): any {
@@ -4884,7 +6390,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          apiMetadata: S.optional(__S(39)),
+          apiMetadata: S.optional(GoogleCloudApihubV1APIMetadataList),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1ApiMetadataList",
@@ -4892,7 +6398,7 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          apiMetadataList: S.optional(__S(40)),
+          apiMetadataList: S.optional(GoogleCloudApihubV1ApiMetadataList),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1ApiData",
@@ -4901,9 +6407,9 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pluginInstance: S.optional(S.String),
-          apiData: S.optional(__S(41)),
+          apiData: S.optional(GoogleCloudApihubV1ApiData),
           actionId: S.optional(S.String),
-          collectionType: S.optional(S.String),
+          collectionType: S.optional(GoogleCloudApihubV1CollectApiDataRequestCollectionTypeEnum),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1CollectApiDataRequest",
@@ -4912,7 +6418,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.String.pipe(T.Label()),
-          body: S.optional(__S(42).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1CollectApiDataRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4926,11 +6432,11 @@ function __c5(j: number): any {
     case 4:
       return S.Record(S.String, S.Unknown);
     case 5:
-      return S.Array(__S(44));
+      return S.Array(DocumentMap);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(45)),
+          details: S.optional(DocumentMapList),
           code: S.optional(S.Number),
           message: S.optional(S.String),
         }),
@@ -4938,11 +6444,11 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(46)),
+          error: S.optional(GoogleRpcStatus),
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
-          metadata: S.optional(__S(44)),
-          response: S.optional(__S(44)),
+          metadata: S.optional(DocumentMap),
+          response: S.optional(DocumentMap),
         }),
       ).annotate({
         identifier: "GoogleLongrunningOperation",
@@ -4956,7 +6462,7 @@ function __c6(j: number): any {
         S.Struct({
           path: S.optional(S.String),
           spec: S.optional(S.String),
-          method: S.optional(S.String),
+          method: S.optional(GoogleCloudApihubV1HttpOperationConfigMethodEnum),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1HttpOperationConfig",
@@ -4965,7 +6471,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           operation: S.optional(S.String),
-          httpOperation: S.optional(__S(48)),
+          httpOperation: S.optional(GoogleCloudApihubV1HttpOperationConfig),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1OperationConfig",
@@ -4974,14 +6480,14 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          operation: S.optional(__S(49)),
+          operation: S.optional(GoogleCloudApihubV1OperationConfig),
           toolId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1McpToolConfig",
       });
     case 3:
-      return S.Array(__S(50));
+      return S.Array(GoogleCloudApihubV1McpToolConfig);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4995,7 +6501,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           targetProject: S.optional(S.String),
-          metadata: S.optional(__S(52)),
+          metadata: S.optional(GoogleCloudApihubV1MetaData),
           deployedRevision: S.optional(S.String),
           environment: S.optional(S.String),
           proxy: S.optional(S.String),
@@ -5006,8 +6512,8 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          tools: S.optional(__S(51)),
-          apigeeXTargetDetails: S.optional(__S(53)),
+          tools: S.optional(GoogleCloudApihubV1McpToolConfigList),
+          apigeeXTargetDetails: S.optional(GoogleCloudApihubV1ApigeeXTargetDetails),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1McpServerConfig",
@@ -5015,7 +6521,7 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          mcpServerConfig: S.optional(__S(54)),
+          mcpServerConfig: S.optional(GoogleCloudApihubV1McpServerConfig),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1ConfigureAndDeployServerRequest",
@@ -5028,7 +6534,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(55).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1ConfigureAndDeployServerRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5050,9 +6556,9 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          agentRegistrySyncConfig: S.optional(__S(57)),
+          agentRegistrySyncConfig: S.optional(GoogleCloudApihubV1AgentRegistrySyncConfig),
           cmekKeyName: S.optional(S.String),
-          encryptionType: S.optional(S.String),
+          encryptionType: S.optional(GoogleCloudApihubV1ConfigEncryptionTypeEnum),
           disableSearch: S.optional(S.Boolean),
           vertexLocation: S.optional(S.String),
         }),
@@ -5063,9 +6569,9 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          labels: S.optional(__S(25)),
-          config: S.optional(__S(58)),
-          state: S.optional(S.String),
+          labels: S.optional(StringMap),
+          config: S.optional(GoogleCloudApihubV1Config),
+          state: S.optional(GoogleCloudApihubV1ApiHubInstanceStateEnum),
           stateMessage: S.optional(S.String),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
@@ -5079,7 +6585,7 @@ function __c7(j: number): any {
         S.Struct({
           apiHubInstanceId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(59).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1ApiHubInstance.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5095,7 +6601,7 @@ function __c7(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           apiId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(15).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1Api.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5111,7 +6617,7 @@ function __c7(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           versionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(32).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1Version.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5136,8 +6642,8 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          method: S.optional(S.String),
-          path: S.optional(__S(63)),
+          method: S.optional(GoogleCloudApihubV1HttpOperationMethodEnum),
+          path: S.optional(GoogleCloudApihubV1Path),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1HttpOperation",
@@ -5149,7 +6655,7 @@ function __c8(j: number): any {
           openWorldHint: S.optional(S.Boolean),
           readOnlyHint: S.optional(S.Boolean),
           title: S.optional(S.String),
-          additionalHints: S.optional(__S(25)),
+          additionalHints: S.optional(StringMap),
           destructiveHint: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -5158,7 +6664,7 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          jsonSchema: S.optional(__S(44)),
+          jsonSchema: S.optional(DocumentMap),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1OperationSchema",
@@ -5168,10 +6674,10 @@ function __c8(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
-          annotations: S.optional(__S(65)),
-          outputSchema: S.optional(__S(66)),
+          annotations: S.optional(GoogleCloudApihubV1ToolAnnotations),
+          outputSchema: S.optional(GoogleCloudApihubV1OperationSchema),
           title: S.optional(S.String),
-          inputSchema: S.optional(__S(66)),
+          inputSchema: S.optional(GoogleCloudApihubV1OperationSchema),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1McpTool",
@@ -5180,10 +6686,10 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          httpOperation: S.optional(__S(64)),
-          documentation: S.optional(__S(14)),
+          httpOperation: S.optional(GoogleCloudApihubV1HttpOperation),
+          documentation: S.optional(GoogleCloudApihubV1Documentation),
           deprecated: S.optional(S.Boolean),
-          mcpTool: S.optional(__S(67)),
+          mcpTool: S.optional(GoogleCloudApihubV1McpTool),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1OperationDetails",
@@ -5193,12 +6699,12 @@ function __c8(j: number): any {
         S.Struct({
           spec: S.optional(S.String),
           name: S.optional(S.String),
-          deployments: S.optional(__S(3)),
+          deployments: S.optional(StringList),
           createTime: S.optional(S.String),
-          details: S.optional(__S(68)),
+          details: S.optional(GoogleCloudApihubV1OperationDetails),
           updateTime: S.optional(S.String),
-          sourceMetadata: S.optional(__S(11)),
-          attributes: S.optional(__S(13)),
+          sourceMetadata: S.optional(GoogleCloudApihubV1SourceMetadataList),
+          attributes: S.optional(GoogleCloudApihubV1AttributeValuesMap),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1ApiOperation",
@@ -5208,7 +6714,7 @@ function __c8(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           apiOperationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(69).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1ApiOperation.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5224,7 +6730,7 @@ function __c8(j: number): any {
         S.Struct({
           specId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(29).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1Spec.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5244,13 +6750,13 @@ function __c9(j: number): any {
         S.Struct({
           createTime: S.optional(S.String),
           name: S.optional(S.String),
-          definitionType: S.optional(S.String),
-          allowedValues: S.optional(__S(6)),
+          definitionType: S.optional(GoogleCloudApihubV1AttributeDefinitionTypeEnum),
+          allowedValues: S.optional(GoogleCloudApihubV1AllowedValueList),
           mandatory: S.optional(S.Boolean),
           updateTime: S.optional(S.String),
-          dataType: S.optional(S.String),
+          dataType: S.optional(GoogleCloudApihubV1AttributeDataTypeEnum),
           displayName: S.optional(S.String),
-          scope: S.optional(S.String),
+          scope: S.optional(GoogleCloudApihubV1AttributeScopeEnum),
           description: S.optional(S.String),
           cardinality: S.optional(S.Number),
         }),
@@ -5262,7 +6768,7 @@ function __c9(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           attributeId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(72).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1Attribute.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5285,25 +6791,27 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          applicationIntegrationEndpointDetails: S.optional(__S(74)),
+          applicationIntegrationEndpointDetails: S.optional(
+            GoogleCloudApihubV1ApplicationIntegrationEndpointDetails,
+          ),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1Endpoint",
       });
     case 4:
-      return S.Array(__S(9));
+      return S.Array(GoogleCloudApihubV1PluginInstanceActionID);
     case 5:
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
-          endpoint: S.optional(__S(75)),
+          endpoint: S.optional(GoogleCloudApihubV1Endpoint),
           description: S.optional(S.String),
           createTime: S.optional(S.String),
           displayName: S.optional(S.String),
-          pluginInstanceActions: S.optional(__S(76)),
-          lastExecutionState: S.optional(S.String),
-          lastExecutionErrorCode: S.optional(S.String),
+          pluginInstanceActions: S.optional(GoogleCloudApihubV1PluginInstanceActionIDList),
+          lastExecutionState: S.optional(GoogleCloudApihubV1CurationLastExecutionStateEnum),
+          lastExecutionErrorCode: S.optional(GoogleCloudApihubV1CurationLastExecutionErrorCodeEnum),
           lastExecutionErrorMessage: S.optional(S.String),
         }),
       ).annotate({
@@ -5314,7 +6822,7 @@ function __c9(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           curationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(77).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1Curation.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5343,7 +6851,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           errorTime: S.optional(S.String),
-          error: S.optional(S.String),
+          error: S.optional(GoogleCloudApihubV1DependencyErrorDetailErrorEnum),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1DependencyErrorDetail",
@@ -5351,16 +6859,16 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          supplier: S.optional(__S(79)),
+          supplier: S.optional(GoogleCloudApihubV1DependencyEntityReference),
           createTime: S.optional(S.String),
           description: S.optional(S.String),
-          discoveryMode: S.optional(S.String),
+          discoveryMode: S.optional(GoogleCloudApihubV1DependencyDiscoveryModeEnum),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
-          errorDetail: S.optional(__S(80)),
-          state: S.optional(S.String),
-          consumer: S.optional(__S(79)),
-          attributes: S.optional(__S(13)),
+          errorDetail: S.optional(GoogleCloudApihubV1DependencyErrorDetail),
+          state: S.optional(GoogleCloudApihubV1DependencyStateEnum),
+          consumer: S.optional(GoogleCloudApihubV1DependencyEntityReference),
+          attributes: S.optional(GoogleCloudApihubV1AttributeValuesMap),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1Dependency",
@@ -5370,7 +6878,7 @@ function __c10(j: number): any {
         S.Struct({
           dependencyId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(81).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1Dependency.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5386,7 +6894,7 @@ function __c10(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           deploymentId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(33).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1Deployment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5402,13 +6910,13 @@ function __c10(j: number): any {
         S.Struct({
           updateTime: S.optional(S.String),
           displayName: S.optional(S.String),
-          documentation: S.optional(__S(14)),
-          endpoints: S.optional(__S(3)),
+          documentation: S.optional(GoogleCloudApihubV1Documentation),
+          endpoints: S.optional(StringList),
           createTime: S.optional(S.String),
           description: S.optional(S.String),
           name: S.optional(S.String),
-          attributes: S.optional(__S(13)),
-          paths: S.optional(__S(3)),
+          attributes: S.optional(GoogleCloudApihubV1AttributeValuesMap),
+          paths: S.optional(StringList),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1ExternalApi",
@@ -5418,7 +6926,7 @@ function __c10(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           externalApiId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(84).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1ExternalApi.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5444,7 +6952,7 @@ function __c10(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           hostProjectRegistrationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(86).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1HostProjectRegistration.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5460,7 +6968,7 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(GoogleCloudApihubV1AuthConfigTemplateSupportedAuthTypesItemEnum);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5472,8 +6980,10 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          supportedAuthTypes: S.optional(__S(88)),
-          serviceAccount: S.optional(__S(89)),
+          supportedAuthTypes: S.optional(
+            GoogleCloudApihubV1AuthConfigTemplateSupportedAuthTypesItemEnumList,
+          ),
+          serviceAccount: S.optional(GoogleCloudApihubV1GoogleServiceAccountConfig),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1AuthConfigTemplate",
@@ -5489,15 +6999,15 @@ function __c11(j: number): any {
         identifier: "GoogleCloudApihubV1ConfigValueOption",
       });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(GoogleCloudApihubV1ConfigValueOption);
     case 5:
       return S.suspend(() =>
         S.Struct({
           required: S.optional(S.Boolean),
           id: S.optional(S.String),
-          enumOptions: S.optional(__S(92)),
-          valueType: S.optional(S.String),
-          multiSelectOptions: S.optional(__S(92)),
+          enumOptions: S.optional(GoogleCloudApihubV1ConfigValueOptionList),
+          valueType: S.optional(GoogleCloudApihubV1ConfigVariableTemplateValueTypeEnum),
+          multiSelectOptions: S.optional(GoogleCloudApihubV1ConfigValueOptionList),
           validationRegex: S.optional(S.String),
           description: S.optional(S.String),
         }),
@@ -5505,12 +7015,12 @@ function __c11(j: number): any {
         identifier: "GoogleCloudApihubV1ConfigVariableTemplate",
       });
     case 6:
-      return S.Array(__S(93));
+      return S.Array(GoogleCloudApihubV1ConfigVariableTemplate);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          authConfigTemplate: S.optional(__S(90)),
-          additionalConfigTemplate: S.optional(__S(94)),
+          authConfigTemplate: S.optional(GoogleCloudApihubV1AuthConfigTemplate),
+          additionalConfigTemplate: S.optional(GoogleCloudApihubV1ConfigVariableTemplateList),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1ConfigTemplate",
@@ -5533,30 +7043,30 @@ function __c12(j: number): any {
           description: S.optional(S.String),
           displayName: S.optional(S.String),
           id: S.optional(S.String),
-          triggerMode: S.optional(S.String),
+          triggerMode: S.optional(GoogleCloudApihubV1PluginActionConfigTriggerModeEnum),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1PluginActionConfig",
       });
     case 2:
-      return S.Array(__S(97));
+      return S.Array(GoogleCloudApihubV1PluginActionConfig);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(GoogleCloudApihubV1PluginStateEnum),
           description: S.optional(S.String),
-          documentation: S.optional(__S(14)),
-          gatewayType: S.optional(S.String),
+          documentation: S.optional(GoogleCloudApihubV1Documentation),
+          gatewayType: S.optional(GoogleCloudApihubV1PluginGatewayTypeEnum),
           createTime: S.optional(S.String),
-          configTemplate: S.optional(__S(95)),
+          configTemplate: S.optional(GoogleCloudApihubV1ConfigTemplate),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
-          ownershipType: S.optional(S.String),
-          hostingService: S.optional(__S(96)),
+          ownershipType: S.optional(GoogleCloudApihubV1PluginOwnershipTypeEnum),
+          hostingService: S.optional(GoogleCloudApihubV1HostingService),
           displayName: S.optional(S.String),
-          type: S.optional(__S(8)),
-          pluginCategory: S.optional(S.String),
-          actionsConfig: S.optional(__S(98)),
+          type: S.optional(GoogleCloudApihubV1AttributeValues),
+          pluginCategory: S.optional(GoogleCloudApihubV1PluginPluginCategoryEnum),
+          actionsConfig: S.optional(GoogleCloudApihubV1PluginActionConfigList),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1Plugin",
@@ -5566,7 +7076,7 @@ function __c12(j: number): any {
         S.Struct({
           pluginId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(99).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1Plugin.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5589,11 +7099,11 @@ function __c12(j: number): any {
         identifier: "GoogleCloudApihubV1SourceEnvironment",
       });
     case 6:
-      return S.Record(S.String, __S(101));
+      return S.Record(S.String, GoogleCloudApihubV1SourceEnvironment);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(92)),
+          values: S.optional(GoogleCloudApihubV1ConfigValueOptionList),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1MultiSelectValues",
@@ -5615,7 +7125,7 @@ function __c13(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(105)),
+          values: S.optional(IntegerList),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1MultiIntValues",
@@ -5623,25 +7133,25 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          enumValue: S.optional(__S(91)),
+          enumValue: S.optional(GoogleCloudApihubV1ConfigValueOption),
           intValue: S.optional(S.String),
-          multiSelectValues: S.optional(__S(103)),
+          multiSelectValues: S.optional(GoogleCloudApihubV1MultiSelectValues),
           boolValue: S.optional(S.Boolean),
           stringValue: S.optional(S.String),
-          secretValue: S.optional(__S(104)),
-          multiStringValues: S.optional(__S(4)),
+          secretValue: S.optional(GoogleCloudApihubV1Secret),
+          multiStringValues: S.optional(GoogleCloudApihubV1MultiStringValues),
           key: S.optional(S.String),
-          multiIntValues: S.optional(__S(106)),
+          multiIntValues: S.optional(GoogleCloudApihubV1MultiIntValues),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1ConfigVariable",
       });
     case 4:
-      return S.Record(S.String, __S(107));
+      return S.Record(S.String, GoogleCloudApihubV1ConfigVariable);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(S.String),
+          result: S.optional(GoogleCloudApihubV1LastExecutionResultEnum),
           errorMessage: S.optional(S.String),
           startTime: S.optional(S.String),
           resultMetadata: S.optional(S.String),
@@ -5653,8 +7163,10 @@ function __c13(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          currentExecutionState: S.optional(S.String),
-          lastExecution: S.optional(__S(109)),
+          currentExecutionState: S.optional(
+            GoogleCloudApihubV1ExecutionStatusCurrentExecutionStateEnum,
+          ),
+          lastExecution: S.optional(GoogleCloudApihubV1LastExecution),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1ExecutionStatus",
@@ -5674,8 +7186,8 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          customCuration: S.optional(__S(111)),
-          curationType: S.optional(S.String),
+          customCuration: S.optional(GoogleCloudApihubV1CustomCuration),
+          curationType: S.optional(GoogleCloudApihubV1CurationConfigCurationTypeEnum),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1CurationConfig",
@@ -5684,7 +7196,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pubsubTopic: S.optional(S.String),
-          actionType: S.optional(S.String),
+          actionType: S.optional(GoogleCloudApihubV1ResourceConfigActionTypeEnum),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1ResourceConfig",
@@ -5693,10 +7205,10 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           actionId: S.optional(S.String),
-          hubInstanceAction: S.optional(__S(110)),
-          curationConfig: S.optional(__S(112)),
-          resourceConfig: S.optional(__S(113)),
-          state: S.optional(S.String),
+          hubInstanceAction: S.optional(GoogleCloudApihubV1ExecutionStatus),
+          curationConfig: S.optional(GoogleCloudApihubV1CurationConfig),
+          resourceConfig: S.optional(GoogleCloudApihubV1ResourceConfig),
+          state: S.optional(GoogleCloudApihubV1PluginInstanceActionStateEnum),
           serviceAccount: S.optional(S.String),
           scheduleCronExpression: S.optional(S.String),
           scheduleTimeZone: S.optional(S.String),
@@ -5705,12 +7217,12 @@ function __c14(j: number): any {
         identifier: "GoogleCloudApihubV1PluginInstanceAction",
       });
     case 3:
-      return S.Array(__S(114));
+      return S.Array(GoogleCloudApihubV1PluginInstanceAction);
     case 4:
       return S.suspend(() =>
         S.Struct({
           username: S.optional(S.String),
-          password: S.optional(__S(104)),
+          password: S.optional(GoogleCloudApihubV1Secret),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1UserPasswordConfig",
@@ -5718,7 +7230,7 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          clientSecret: S.optional(__S(104)),
+          clientSecret: S.optional(GoogleCloudApihubV1Secret),
           clientId: S.optional(S.String),
         }),
       ).annotate({
@@ -5727,8 +7239,8 @@ function __c14(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          apiKey: S.optional(__S(104)),
-          httpElementLocation: S.optional(S.String),
+          apiKey: S.optional(GoogleCloudApihubV1Secret),
+          httpElementLocation: S.optional(GoogleCloudApihubV1ApiKeyConfigHttpElementLocationEnum),
           name: S.optional(S.String),
         }),
       ).annotate({
@@ -5737,11 +7249,13 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          userPasswordConfig: S.optional(__S(116)),
-          oauth2ClientCredentialsConfig: S.optional(__S(117)),
-          authType: S.optional(S.String),
-          googleServiceAccountConfig: S.optional(__S(89)),
-          apiKeyConfig: S.optional(__S(118)),
+          userPasswordConfig: S.optional(GoogleCloudApihubV1UserPasswordConfig),
+          oauth2ClientCredentialsConfig: S.optional(
+            GoogleCloudApihubV1Oauth2ClientCredentialsConfig,
+          ),
+          authType: S.optional(GoogleCloudApihubV1AuthConfigAuthTypeEnum),
+          googleServiceAccountConfig: S.optional(GoogleCloudApihubV1GoogleServiceAccountConfig),
+          apiKeyConfig: S.optional(GoogleCloudApihubV1ApiKeyConfig),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1AuthConfig",
@@ -5756,14 +7270,14 @@ function __c15(j: number): any {
           sourceProjectId: S.optional(S.String),
           errorMessage: S.optional(S.String),
           name: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(GoogleCloudApihubV1PluginInstanceStateEnum),
           updateTime: S.optional(S.String),
-          sourceEnvironmentsConfig: S.optional(__S(102)),
-          additionalConfig: S.optional(__S(108)),
+          sourceEnvironmentsConfig: S.optional(GoogleCloudApihubV1SourceEnvironmentMap),
+          additionalConfig: S.optional(GoogleCloudApihubV1ConfigVariableMap),
           displayName: S.optional(S.String),
-          actions: S.optional(__S(115)),
+          actions: S.optional(GoogleCloudApihubV1PluginInstanceActionList),
           createTime: S.optional(S.String),
-          authConfig: S.optional(__S(119)),
+          authConfig: S.optional(GoogleCloudApihubV1AuthConfig),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1PluginInstance",
@@ -5773,7 +7287,7 @@ function __c15(j: number): any {
         S.Struct({
           pluginInstanceId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(120).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1PluginInstance.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5799,7 +7313,7 @@ function __c15(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           runtimeProjectAttachmentId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(122).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1RuntimeProjectAttachment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6028,7 +7542,9 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(138).pipe(T.HttpBody())),
+          body: S.optional(
+            GoogleCloudApihubV1DisablePluginInstanceActionRequest.pipe(T.HttpBody()),
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6043,7 +7559,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6058,7 +7574,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(138).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1EnablePluginInstanceActionRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6073,7 +7589,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6087,7 +7603,7 @@ function __c17(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          actionExecutionDetail: S.optional(__S(138)),
+          actionExecutionDetail: S.optional(GoogleCloudApihubV1ActionExecutionDetail),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1ExecutePluginInstanceActionRequest",
@@ -6100,7 +7616,9 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(143).pipe(T.HttpBody())),
+          body: S.optional(
+            GoogleCloudApihubV1ExecutePluginInstanceActionRequest.pipe(T.HttpBody()),
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6114,7 +7632,11 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          specContentType: S.optional(S.String.pipe(T.Query())),
+          specContentType: S.optional(
+            FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsSpecContentTypeEnum.pipe(
+              T.Query(),
+            ),
+          ),
           name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -6129,7 +7651,7 @@ function __c18(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          additionalSpecContent: S.optional(__S(27)),
+          additionalSpecContent: S.optional(GoogleCloudApihubV1AdditionalSpecContent),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1FetchAdditionalSpecContentResponse",
@@ -6138,7 +7660,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(RetrieveApiViewsProjectsLocationsViewEnum.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
@@ -6155,9 +7677,9 @@ function __c18(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          version: S.optional(__S(32)),
-          deployment: S.optional(__S(33)),
-          api: S.optional(__S(15)),
+          version: S.optional(GoogleCloudApihubV1Version),
+          deployment: S.optional(GoogleCloudApihubV1Deployment),
+          api: S.optional(GoogleCloudApihubV1Api),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1FlattenedApiVersionDeploymentView",
@@ -6165,10 +7687,10 @@ function __c18(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          apiOperation: S.optional(__S(69)),
-          version: S.optional(__S(32)),
-          api: S.optional(__S(15)),
-          deployment: S.optional(__S(33)),
+          apiOperation: S.optional(GoogleCloudApihubV1ApiOperation),
+          version: S.optional(GoogleCloudApihubV1Version),
+          api: S.optional(GoogleCloudApihubV1Api),
+          deployment: S.optional(GoogleCloudApihubV1Deployment),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView",
@@ -6176,14 +7698,14 @@ function __c18(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          mcpServerView: S.optional(__S(148)),
-          mcpToolView: S.optional(__S(149)),
+          mcpServerView: S.optional(GoogleCloudApihubV1FlattenedApiVersionDeploymentView),
+          mcpToolView: S.optional(GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1ApiView",
       });
     case 7:
-      return S.Array(__S(150));
+      return S.Array(GoogleCloudApihubV1ApiView);
   }
 }
 function __c19(j: number): any {
@@ -6191,7 +7713,7 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          apiViews: S.optional(__S(151)),
+          apiViews: S.optional(GoogleCloudApihubV1ApiViewList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6247,9 +7769,9 @@ function __c19(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(44)),
+          metadata: S.optional(DocumentMap),
           displayName: S.optional(S.String),
-          labels: S.optional(__S(25)),
+          labels: S.optional(StringMap),
           name: S.optional(S.String),
           locationId: S.optional(S.String),
         }),
@@ -6269,7 +7791,7 @@ function __c19(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          environments: S.optional(__S(3)),
+          environments: S.optional(StringList),
           allEnvironments: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -6282,7 +7804,7 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          environmentFilter: S.optional(__S(159)),
+          environmentFilter: S.optional(GoogleCloudApihubV1EnvironmentFilter),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1ApigeeOPDKConfig",
@@ -6290,20 +7812,20 @@ function __c20(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          apigeeOpdkConfig: S.optional(__S(160)),
-          apigeeEdgeConfig: S.optional(__S(160)),
+          apigeeOpdkConfig: S.optional(GoogleCloudApihubV1ApigeeOPDKConfig),
+          apigeeEdgeConfig: S.optional(GoogleCloudApihubV1ApigeeOPDKConfig),
           pluginInstance: S.optional(S.String),
-          apigeeXHybridConfig: S.optional(__S(160)),
+          apigeeXHybridConfig: S.optional(GoogleCloudApihubV1ApigeeOPDKConfig),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1GatewayPluginConfig",
       });
     case 2:
-      return S.Array(__S(161));
+      return S.Array(GoogleCloudApihubV1GatewayPluginConfig);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          gatewayPluginConfigs: S.optional(__S(162)),
+          gatewayPluginConfigs: S.optional(GoogleCloudApihubV1GatewayPluginConfigList),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1GatewayPluginAddonConfig",
@@ -6319,8 +7841,8 @@ function __c20(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          gatewayPluginAddonConfig: S.optional(__S(163)),
-          allDataAddonConfig: S.optional(__S(164)),
+          gatewayPluginAddonConfig: S.optional(GoogleCloudApihubV1GatewayPluginAddonConfig),
+          allDataAddonConfig: S.optional(GoogleCloudApihubV1AllDataAddonConfig),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1AddonConfig",
@@ -6328,14 +7850,14 @@ function __c20(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          dataSource: S.optional(S.String),
-          state: S.optional(S.String),
+          dataSource: S.optional(GoogleCloudApihubV1AddonDataSourceEnum),
+          state: S.optional(GoogleCloudApihubV1AddonStateEnum),
           boostSpecGeminiRegionId: S.optional(S.String),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
           displayName: S.optional(S.String),
           updateTime: S.optional(S.String),
-          config: S.optional(__S(165)),
+          config: S.optional(GoogleCloudApihubV1AddonConfig),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleCloudApihubV1Addon" });
@@ -6398,10 +7920,10 @@ function __c21(j: number): any {
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
           spec: S.optional(S.String),
-          schema: S.optional(__S(171)),
-          attributes: S.optional(__S(13)),
+          schema: S.optional(GoogleCloudApihubV1Schema),
+          attributes: S.optional(GoogleCloudApihubV1AttributeValuesMap),
           createTime: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(GoogleCloudApihubV1DefinitionTypeEnum),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1Definition",
@@ -6485,16 +8007,18 @@ function __c22(j: number): any {
         S.Struct({
           unknownOperationsCount: S.optional(S.String),
           hostname: S.optional(S.String),
-          sourceMetadata: S.optional(__S(10)),
-          serverIps: S.optional(__S(3)),
+          sourceMetadata: S.optional(GoogleCloudApihubV1SourceMetadata),
+          serverIps: S.optional(StringList),
           updateTime: S.optional(S.String),
-          sourceTypes: S.optional(__S(88)),
-          sourceLocations: S.optional(__S(3)),
+          sourceTypes: S.optional(
+            GoogleCloudApihubV1DiscoveredApiObservationSourceTypesItemEnumList,
+          ),
+          sourceLocations: S.optional(StringList),
           createTime: S.optional(S.String),
           lastEventDetectedTime: S.optional(S.String),
           name: S.optional(S.String),
           knownOperationsCount: S.optional(S.String),
-          style: S.optional(S.String),
+          style: S.optional(GoogleCloudApihubV1DiscoveredApiObservationStyleEnum),
           apiOperationCount: S.optional(S.String),
           origin: S.optional(S.String),
         }),
@@ -6514,14 +8038,14 @@ function __c22(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          dataType: S.optional(S.String),
+          dataType: S.optional(GoogleCloudApihubV1PathParamDataTypeEnum),
           position: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1PathParam",
       });
     case 7:
-      return S.Array(__S(182));
+      return S.Array(GoogleCloudApihubV1PathParam);
   }
 }
 function __c23(j: number): any {
@@ -6531,17 +8055,17 @@ function __c23(j: number): any {
         S.Struct({
           count: S.optional(S.String),
           name: S.optional(S.String),
-          dataType: S.optional(S.String),
+          dataType: S.optional(GoogleCloudApihubV1HeaderDataTypeEnum),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1Header",
       });
     case 1:
-      return S.Record(S.String, __S(184));
+      return S.Record(S.String, GoogleCloudApihubV1Header);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          headers: S.optional(__S(185)),
+          headers: S.optional(GoogleCloudApihubV1HeaderMap),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1HttpRequest",
@@ -6551,18 +8075,18 @@ function __c23(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           count: S.optional(S.String),
-          dataType: S.optional(S.String),
+          dataType: S.optional(GoogleCloudApihubV1QueryParamDataTypeEnum),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1QueryParam",
       });
     case 4:
-      return S.Record(S.String, __S(187));
+      return S.Record(S.String, GoogleCloudApihubV1QueryParam);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          responseCodes: S.optional(__S(25)),
-          headers: S.optional(__S(185)),
+          responseCodes: S.optional(StringMap),
+          headers: S.optional(GoogleCloudApihubV1HeaderMap),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1HttpResponse",
@@ -6570,11 +8094,11 @@ function __c23(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          pathParams: S.optional(__S(183)),
-          httpOperation: S.optional(__S(64)),
-          request: S.optional(__S(186)),
-          queryParams: S.optional(__S(188)),
-          response: S.optional(__S(189)),
+          pathParams: S.optional(GoogleCloudApihubV1PathParamList),
+          httpOperation: S.optional(GoogleCloudApihubV1HttpOperation),
+          request: S.optional(GoogleCloudApihubV1HttpRequest),
+          queryParams: S.optional(GoogleCloudApihubV1QueryParamMap),
+          response: S.optional(GoogleCloudApihubV1HttpResponse),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1HttpOperationDetails",
@@ -6592,20 +8116,20 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(191));
+      return S.Array(GoogleCloudApihubV1MatchResult);
     case 1:
       return S.suspend(() =>
         S.Struct({
           firstSeenTime: S.optional(S.String),
-          classification: S.optional(S.String),
+          classification: S.optional(GoogleCloudApihubV1DiscoveredApiOperationClassificationEnum),
           updateTime: S.optional(S.String),
-          httpOperation: S.optional(__S(190)),
+          httpOperation: S.optional(GoogleCloudApihubV1HttpOperationDetails),
           lastSeenTime: S.optional(S.String),
-          sourceMetadata: S.optional(__S(10)),
+          sourceMetadata: S.optional(GoogleCloudApihubV1SourceMetadata),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
           count: S.optional(S.String),
-          matchResults: S.optional(__S(192)),
+          matchResults: S.optional(GoogleCloudApihubV1MatchResultList),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1DiscoveredApiOperation",
@@ -6687,8 +8211,8 @@ function __c25(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          linter: S.optional(S.String),
-          contents: S.optional(__S(155)),
+          linter: S.optional(GoogleCloudApihubV1StyleGuideLinterEnum),
+          contents: S.optional(GoogleCloudApihubV1StyleGuideContents),
           name: S.optional(S.String),
         }),
       ).annotate({
@@ -6698,7 +8222,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6715,7 +8239,7 @@ function __c25(j: number): any {
           name: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(3).pipe(T.Query())),
+          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -6728,11 +8252,11 @@ function __c25(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 4:
-      return S.Array(__S(157));
+      return S.Array(GoogleCloudLocationLocation);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(204)),
+          locations: S.optional(GoogleCloudLocationLocationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6756,7 +8280,7 @@ function __c25(j: number): any {
         identifier: "ListProjectsLocationsAddonsRequest",
       });
     case 7:
-      return S.Array(__S(166));
+      return S.Array(GoogleCloudApihubV1Addon);
   }
 }
 function __c26(j: number): any {
@@ -6764,7 +8288,7 @@ function __c26(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          addons: S.optional(__S(207)),
+          addons: S.optional(GoogleCloudApihubV1AddonList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6788,11 +8312,11 @@ function __c26(j: number): any {
         identifier: "ListProjectsLocationsApisRequest",
       });
     case 2:
-      return S.Array(__S(15));
+      return S.Array(GoogleCloudApihubV1Api);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          apis: S.optional(__S(210)),
+          apis: S.optional(GoogleCloudApihubV1ApiList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6816,12 +8340,12 @@ function __c26(j: number): any {
         identifier: "ListProjectsLocationsApisVersionsRequest",
       });
     case 5:
-      return S.Array(__S(32));
+      return S.Array(GoogleCloudApihubV1Version);
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          versions: S.optional(__S(213)),
+          versions: S.optional(GoogleCloudApihubV1VersionList),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1ListVersionsResponse",
@@ -6848,11 +8372,11 @@ function __c26(j: number): any {
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(69));
+      return S.Array(GoogleCloudApihubV1ApiOperation);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          apiOperations: S.optional(__S(216)),
+          apiOperations: S.optional(GoogleCloudApihubV1ApiOperationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6876,11 +8400,11 @@ function __c27(j: number): any {
         identifier: "ListProjectsLocationsApisVersionsSpecsRequest",
       });
     case 3:
-      return S.Array(__S(29));
+      return S.Array(GoogleCloudApihubV1Spec);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          specs: S.optional(__S(219)),
+          specs: S.optional(GoogleCloudApihubV1SpecList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6904,12 +8428,12 @@ function __c27(j: number): any {
         identifier: "ListProjectsLocationsAttributesRequest",
       });
     case 6:
-      return S.Array(__S(72));
+      return S.Array(GoogleCloudApihubV1Attribute);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          attributes: S.optional(__S(222)),
+          attributes: S.optional(GoogleCloudApihubV1AttributeList),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1ListAttributesResponse",
@@ -6936,11 +8460,11 @@ function __c28(j: number): any {
         identifier: "ListProjectsLocationsCurationsRequest",
       });
     case 1:
-      return S.Array(__S(77));
+      return S.Array(GoogleCloudApihubV1Curation);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          curations: S.optional(__S(225)),
+          curations: S.optional(GoogleCloudApihubV1CurationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6964,12 +8488,12 @@ function __c28(j: number): any {
         identifier: "ListProjectsLocationsDependenciesRequest",
       });
     case 4:
-      return S.Array(__S(81));
+      return S.Array(GoogleCloudApihubV1Dependency);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          dependencies: S.optional(__S(228)),
+          dependencies: S.optional(GoogleCloudApihubV1DependencyList),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1ListDependenciesResponse",
@@ -6992,7 +8516,7 @@ function __c28(j: number): any {
         identifier: "ListProjectsLocationsDeploymentsRequest",
       });
     case 7:
-      return S.Array(__S(33));
+      return S.Array(GoogleCloudApihubV1Deployment);
   }
 }
 function __c29(j: number): any {
@@ -7000,7 +8524,7 @@ function __c29(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          deployments: S.optional(__S(231)),
+          deployments: S.optional(GoogleCloudApihubV1DeploymentList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7023,11 +8547,11 @@ function __c29(j: number): any {
         identifier: "ListProjectsLocationsDiscoveredApiObservationsRequest",
       });
     case 2:
-      return S.Array(__S(180));
+      return S.Array(GoogleCloudApihubV1DiscoveredApiObservation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          discoveredApiObservations: S.optional(__S(234)),
+          discoveredApiObservations: S.optional(GoogleCloudApihubV1DiscoveredApiObservationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7050,11 +8574,11 @@ function __c29(j: number): any {
         identifier: "ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest",
       });
     case 5:
-      return S.Array(__S(193));
+      return S.Array(GoogleCloudApihubV1DiscoveredApiOperation);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          discoveredApiOperations: S.optional(__S(237)),
+          discoveredApiOperations: S.optional(GoogleCloudApihubV1DiscoveredApiOperationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7081,12 +8605,12 @@ function __c29(j: number): any {
 function __c30(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(84));
+      return S.Array(GoogleCloudApihubV1ExternalApi);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          externalApis: S.optional(__S(240)),
+          externalApis: S.optional(GoogleCloudApihubV1ExternalApiList),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1ListExternalApisResponse",
@@ -7110,11 +8634,11 @@ function __c30(j: number): any {
         identifier: "ListProjectsLocationsHostProjectRegistrationsRequest",
       });
     case 3:
-      return S.Array(__S(86));
+      return S.Array(GoogleCloudApihubV1HostProjectRegistration);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          hostProjectRegistrations: S.optional(__S(243)),
+          hostProjectRegistrations: S.optional(GoogleCloudApihubV1HostProjectRegistrationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7139,13 +8663,13 @@ function __c30(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 6:
-      return S.Array(__S(47));
+      return S.Array(GoogleLongrunningOperation);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(246)),
-          unreachable: S.optional(__S(3)),
+          operations: S.optional(GoogleLongrunningOperationList),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
@@ -7172,11 +8696,11 @@ function __c31(j: number): any {
         identifier: "ListProjectsLocationsPluginsRequest",
       });
     case 1:
-      return S.Array(__S(99));
+      return S.Array(GoogleCloudApihubV1Plugin);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          plugins: S.optional(__S(249)),
+          plugins: S.optional(GoogleCloudApihubV1PluginList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7200,11 +8724,11 @@ function __c31(j: number): any {
         identifier: "ListProjectsLocationsPluginsInstancesRequest",
       });
     case 4:
-      return S.Array(__S(120));
+      return S.Array(GoogleCloudApihubV1PluginInstance);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pluginInstances: S.optional(__S(252)),
+          pluginInstances: S.optional(GoogleCloudApihubV1PluginInstanceList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7229,7 +8753,7 @@ function __c31(j: number): any {
         identifier: "ListProjectsLocationsRuntimeProjectAttachmentsRequest",
       });
     case 7:
-      return S.Array(__S(122));
+      return S.Array(GoogleCloudApihubV1RuntimeProjectAttachment);
   }
 }
 function __c32(j: number): any {
@@ -7238,7 +8762,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          runtimeProjectAttachments: S.optional(__S(255)),
+          runtimeProjectAttachments: S.optional(GoogleCloudApihubV1RuntimeProjectAttachmentList),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse",
@@ -7260,7 +8784,7 @@ function __c32(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          apiHubInstance: S.optional(__S(59)),
+          apiHubInstance: S.optional(GoogleCloudApihubV1ApiHubInstance),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1LookupApiHubInstanceResponse",
@@ -7282,7 +8806,7 @@ function __c32(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          runtimeProjectAttachment: S.optional(__S(122)),
+          runtimeProjectAttachment: S.optional(GoogleCloudApihubV1RuntimeProjectAttachment),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse",
@@ -7290,7 +8814,7 @@ function __c32(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(__S(165)),
+          config: S.optional(GoogleCloudApihubV1AddonConfig),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1ManageAddonConfigRequest",
@@ -7299,7 +8823,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(261).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1ManageAddonConfigRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7313,8 +8837,10 @@ function __c32(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dataType: S.optional(S.String),
-          action: S.optional(S.String),
+          dataType: S.optional(
+            GoogleCloudApihubV1ManagePluginInstanceSourceDataRequestDataTypeEnum,
+          ),
+          action: S.optional(GoogleCloudApihubV1ManagePluginInstanceSourceDataRequestActionEnum),
           relativePath: S.optional(S.String),
           data: S.optional(S.String),
         }),
@@ -7329,7 +8855,9 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(263).pipe(T.HttpBody())),
+          body: S.optional(
+            GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest.pipe(T.HttpBody()),
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7349,7 +8877,7 @@ function __c33(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(59).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1ApiHubInstance.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apihub.googleapis.com/" }),
         ),
@@ -7361,7 +8889,7 @@ function __c33(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(15).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1Api.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apihub.googleapis.com/" }),
         ),
@@ -7373,7 +8901,7 @@ function __c33(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(32).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1Version.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apihub.googleapis.com/" }),
         ),
@@ -7385,7 +8913,7 @@ function __c33(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(69).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1ApiOperation.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apihub.googleapis.com/" }),
         ),
@@ -7397,7 +8925,7 @@ function __c33(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(29).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1Spec.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apihub.googleapis.com/" }),
         ),
@@ -7409,7 +8937,7 @@ function __c33(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(72).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1Attribute.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apihub.googleapis.com/" }),
         ),
@@ -7425,7 +8953,7 @@ function __c34(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(77).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1Curation.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apihub.googleapis.com/" }),
         ),
@@ -7437,7 +8965,7 @@ function __c34(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(81).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1Dependency.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apihub.googleapis.com/" }),
         ),
@@ -7449,7 +8977,7 @@ function __c34(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(33).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1Deployment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apihub.googleapis.com/" }),
         ),
@@ -7461,7 +8989,7 @@ function __c34(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(84).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1ExternalApi.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apihub.googleapis.com/" }),
         ),
@@ -7473,7 +9001,7 @@ function __c34(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(120).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1PluginInstance.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apihub.googleapis.com/" }),
         ),
@@ -7495,7 +9023,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.String.pipe(T.Label()),
-          body: S.optional(__S(277).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1SearchResourcesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7509,12 +9037,12 @@ function __c34(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          deployment: S.optional(__S(33)),
-          api: S.optional(__S(15)),
-          operation: S.optional(__S(69)),
-          version: S.optional(__S(32)),
-          definition: S.optional(__S(172)),
-          spec: S.optional(__S(29)),
+          deployment: S.optional(GoogleCloudApihubV1Deployment),
+          api: S.optional(GoogleCloudApihubV1Api),
+          operation: S.optional(GoogleCloudApihubV1ApiOperation),
+          version: S.optional(GoogleCloudApihubV1Version),
+          definition: S.optional(GoogleCloudApihubV1Definition),
+          spec: S.optional(GoogleCloudApihubV1Spec),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1ApiHubResource",
@@ -7526,17 +9054,17 @@ function __c35(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(279)),
+          resource: S.optional(GoogleCloudApihubV1ApiHubResource),
         }),
       ).annotate({
         identifier: "GoogleCloudApihubV1SearchResult",
       });
     case 1:
-      return S.Array(__S(280));
+      return S.Array(GoogleCloudApihubV1SearchResult);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          searchResults: S.optional(__S(281)),
+          searchResults: S.optional(GoogleCloudApihubV1SearchResultList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7547,93 +9075,12 @@ function __c35(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(201).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudApihubV1StyleGuide.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://apihub.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateStyleGuideProjectsLocationsPluginsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
   }
 }

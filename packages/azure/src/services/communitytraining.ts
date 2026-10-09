@@ -7,13 +7,16 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type CreateCommunityTrainingRequestTagsMap = { [key: string]: string | undefined };
+const CreateCommunityTrainingRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateCommunityTrainingRequestTagsMap>;
+
 /** Details of the Community CommunityTraining Identity Configuration */
 export interface IdentityConfigurationProperties {
   /** The identity type of the Community Training Resource */
@@ -35,6 +38,11 @@ export interface IdentityConfigurationProperties {
   /** The custom login parameters for the Community Training Resource */
   customLoginParameters?: string;
 }
+const IdentityConfigurationProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<IdentityConfigurationProperties>;
+
 /** The status of the current operation. */
 export type ProvisioningState =
   | "Succeeded"
@@ -44,6 +52,8 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
+const ProvisioningState = S.String;
+
 /** Details of the Community CommunityTraining. */
 export interface CommunityTrainingProperties {
   /** The portal name (website name) of the Community Training instance */
@@ -63,8 +73,15 @@ export interface CommunityTrainingProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState | (string & {});
 }
+const CommunityTrainingProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CommunityTrainingProperties>;
+
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
 export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
+const SkuTier = S.String;
+
 /** The resource model definition representing SKU */
 export interface CreateCommunityTrainingRequestSku {
   /** The name of the SKU. Ex - P3. It is typically a letter+number code */
@@ -77,6 +94,11 @@ export interface CreateCommunityTrainingRequestSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
+const CreateCommunityTrainingRequestSku = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateCommunityTrainingRequestSku>;
+
 export interface CreateCommunityTrainingRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -93,10 +115,19 @@ export interface CreateCommunityTrainingRequest {
   /** The resource model definition representing SKU */
   sku?: CreateCommunityTrainingRequestSku;
 }
+const CreateCommunityTrainingRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateCommunityTrainingRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -112,8 +143,13 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<SystemData>;
+
 /** Resource tags. */
 export type CreateCommunityTrainingResponseTagsMap = { [key: string]: string | undefined };
+const CreateCommunityTrainingResponseTagsMap =
+  CreateCommunityTrainingRequestTagsMap as any as S.Schema<CreateCommunityTrainingResponseTagsMap>;
+
 /** The resource model definition representing SKU */
 export interface CreateCommunityTrainingResponseSku {
   /** The name of the SKU. Ex - P3. It is typically a letter+number code */
@@ -126,6 +162,9 @@ export interface CreateCommunityTrainingResponseSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
+const CreateCommunityTrainingResponseSku =
+  CreateCommunityTrainingRequestSku as any as S.Schema<CreateCommunityTrainingResponseSku>;
+
 export interface CreateCommunityTrainingResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -144,6 +183,11 @@ export interface CreateCommunityTrainingResponse {
   /** The resource model definition representing SKU */
   sku?: CreateCommunityTrainingResponseSku;
 }
+const CreateCommunityTrainingResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateCommunityTrainingResponse>;
+
 export interface DeleteCommunityTrainingRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -152,7 +196,17 @@ export interface DeleteCommunityTrainingRequest {
   /** The name of the Community Training Resource */
   communityTrainingName: string;
 }
+const DeleteCommunityTrainingRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteCommunityTrainingRequest>;
+
 export interface DeleteCommunityTrainingResponse {}
+const DeleteCommunityTrainingResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteCommunityTrainingResponse>;
+
 export interface GetCommunityTrainingRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -161,6 +215,11 @@ export interface GetCommunityTrainingRequest {
   /** The name of the Community Training Resource */
   communityTrainingName: string;
 }
+const GetCommunityTrainingRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetCommunityTrainingRequest>;
+
 /** Resource tags. */
 export type GetCommunityTrainingResponseTagsMap = { [key: string]: string | undefined };
 /** The resource model definition representing SKU */
@@ -183,14 +242,25 @@ export interface GetCommunityTrainingResponse {
   /** The resource model definition representing SKU */
   sku?: CreateCommunityTrainingResponseSku;
 }
+const GetCommunityTrainingResponse =
+  CreateCommunityTrainingResponse as any as S.Schema<GetCommunityTrainingResponse>;
+
 export interface ListCommunityTrainingByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListCommunityTrainingByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListCommunityTrainingByResourceGroupRequest>;
+
 /** Resource tags. */
 export type CommunityTrainingTagsMap = { [key: string]: string | undefined };
+const CommunityTrainingTagsMap =
+  CreateCommunityTrainingRequestTagsMap as any as S.Schema<CommunityTrainingTagsMap>;
+
 /** The resource model definition representing SKU */
 export type CommunityTrainingSku = CreateCommunityTrainingResponseSku;
 /** A CommunityProviderHub resource */
@@ -212,8 +282,15 @@ export interface CommunityTraining {
   /** The resource model definition representing SKU */
   sku?: CreateCommunityTrainingResponseSku;
 }
+const CommunityTraining = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CommunityTraining>;
+
 /** The CommunityTraining items on this page */
 export type CommunityTrainingListResultValueList = Array<CommunityTraining>;
+const CommunityTrainingListResultValueList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CommunityTrainingListResultValueList>;
+
 /** The response of a CommunityTraining list operation. */
 export interface CommunityTrainingListResult {
   /** The CommunityTraining items on this page */
@@ -221,11 +298,26 @@ export interface CommunityTrainingListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const CommunityTrainingListResult = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CommunityTrainingListResult>;
+
 export interface ListCommunityTrainingBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListCommunityTrainingBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ListCommunityTrainingBySubscriptionRequest>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -237,10 +329,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -254,18 +352,33 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListOperationsResponse>;
+
 /** The resource model definition representing SKU */
 export type UpdateCommunityTrainingRequestSku = CreateCommunityTrainingRequestSku;
 /** Resource tags. */
 export type UpdateCommunityTrainingRequestTagsMap = { [key: string]: string | undefined };
+const UpdateCommunityTrainingRequestTagsMap =
+  CreateCommunityTrainingRequestTagsMap as any as S.Schema<UpdateCommunityTrainingRequestTagsMap>;
+
 /** Details of the Community CommunityTraining Identity Configuration */
 export interface IdentityConfigurationPropertiesUpdate {
   /** The identity type of the Community Training Resource */
@@ -287,11 +400,21 @@ export interface IdentityConfigurationPropertiesUpdate {
   /** The custom login parameters for the Community Training Resource */
   customLoginParameters?: string;
 }
+const IdentityConfigurationPropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<IdentityConfigurationPropertiesUpdate>;
+
 /** The updatable properties of the CommunityTraining. */
 export interface CommunityTrainingUpdateProperties {
   /** The identity configuration of the Community Training resource */
   identityConfiguration?: IdentityConfigurationPropertiesUpdate;
 }
+const CommunityTrainingUpdateProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CommunityTrainingUpdateProperties>;
+
 export interface UpdateCommunityTrainingRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -306,6 +429,11 @@ export interface UpdateCommunityTrainingRequest {
   /** The resource-specific properties for this resource. */
   properties?: CommunityTrainingUpdateProperties;
 }
+const UpdateCommunityTrainingRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<UpdateCommunityTrainingRequest>;
+
 /** Resource tags. */
 export type UpdateCommunityTrainingResponseTagsMap = { [key: string]: string | undefined };
 /** The resource model definition representing SKU */
@@ -328,6 +456,9 @@ export interface UpdateCommunityTrainingResponse {
   /** The resource model definition representing SKU */
   sku?: CreateCommunityTrainingResponseSku;
 }
+const UpdateCommunityTrainingResponse =
+  CreateCommunityTrainingResponse as any as S.Schema<UpdateCommunityTrainingResponse>;
+
 export type CreateCommunityTrainingError = AzureOpError;
 /** Create a CommunityTraining */
 export const CreateCommunityTraining: API.OperationMethod<
@@ -336,8 +467,8 @@ export const CreateCommunityTraining: API.OperationMethod<
   CreateCommunityTrainingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateCommunityTrainingRequest>,
-  output: __S(6) as any as S.Schema<CreateCommunityTrainingResponse>,
+  input: CreateCommunityTrainingRequest,
+  output: CreateCommunityTrainingResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -351,8 +482,8 @@ export const DeleteCommunityTraining: API.OperationMethod<
   DeleteCommunityTrainingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DeleteCommunityTrainingRequest>,
-  output: __S(8) as any as S.Schema<DeleteCommunityTrainingResponse>,
+  input: DeleteCommunityTrainingRequest,
+  output: DeleteCommunityTrainingResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -366,8 +497,8 @@ export const GetCommunityTraining: API.OperationMethod<
   GetCommunityTrainingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<GetCommunityTrainingRequest>,
-  output: __S(6) as any as S.Schema<GetCommunityTrainingResponse>,
+  input: GetCommunityTrainingRequest,
+  output: GetCommunityTrainingResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -381,8 +512,8 @@ export const ListCommunityTrainingByResourceGroup: API.OperationMethod<
   ListCommunityTrainingByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<ListCommunityTrainingByResourceGroupRequest>,
-  output: __S(13) as any as S.Schema<CommunityTrainingListResult>,
+  input: ListCommunityTrainingByResourceGroupRequest,
+  output: CommunityTrainingListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -396,8 +527,8 @@ export const ListCommunityTrainingBySubscription: API.OperationMethod<
   ListCommunityTrainingBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<ListCommunityTrainingBySubscriptionRequest>,
-  output: __S(13) as any as S.Schema<CommunityTrainingListResult>,
+  input: ListCommunityTrainingBySubscriptionRequest,
+  output: CommunityTrainingListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -411,8 +542,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<ListOperationsRequest>,
-  output: __S(19) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -426,8 +557,8 @@ export const UpdateCommunityTraining: API.OperationMethod<
   UpdateCommunityTrainingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<UpdateCommunityTrainingRequest>,
-  output: __S(6) as any as S.Schema<UpdateCommunityTrainingResponse>,
+  input: UpdateCommunityTrainingRequest,
+  output: UpdateCommunityTrainingResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -461,10 +592,10 @@ function __c0(j: number): any {
           portalAdminEmailAddress: S.String,
           portalOwnerOrganizationName: S.String,
           portalOwnerEmailAddress: S.String,
-          identityConfiguration: __S(1),
+          identityConfiguration: IdentityConfigurationProperties,
           zoneRedundancyEnabled: S.Boolean,
           disasterRecoveryEnabled: S.Boolean,
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "CommunityTrainingProperties",
@@ -473,7 +604,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          tier: S.optional(S.String),
+          tier: S.optional(SkuTier),
           size: S.optional(S.String),
           family: S.optional(S.String),
           capacity: S.optional(S.Number),
@@ -487,10 +618,10 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           communityTrainingName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(CreateCommunityTrainingRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(2)),
-          sku: S.optional(__S(3)),
+          properties: S.optional(CommunityTrainingProperties),
+          sku: S.optional(CreateCommunityTrainingRequestSku),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -506,10 +637,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -519,11 +650,11 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateCommunityTrainingResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(2)),
-          sku: S.optional(__S(3)),
+          properties: S.optional(CommunityTrainingProperties),
+          sku: S.optional(CreateCommunityTrainingResponseSku),
         }),
       ).annotate({
         identifier: "CreateCommunityTrainingResponse",
@@ -592,19 +723,19 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CommunityTrainingTagsMap),
           location: S.String,
-          properties: S.optional(__S(2)),
-          sku: S.optional(__S(3)),
+          properties: S.optional(CommunityTrainingProperties),
+          sku: S.optional(CreateCommunityTrainingResponseSku),
         }),
       ).annotate({ identifier: "CommunityTraining" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(CommunityTraining);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(12),
+          value: CommunityTrainingListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -654,17 +785,17 @@ function __c2(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(16)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(Operation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(18)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -687,7 +818,7 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          identityConfiguration: S.optional(__S(20)),
+          identityConfiguration: S.optional(IdentityConfigurationPropertiesUpdate),
         }),
       ).annotate({
         identifier: "CommunityTrainingUpdateProperties",
@@ -698,9 +829,9 @@ function __c2(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           communityTrainingName: S.String.pipe(T.Label()),
-          sku: S.optional(__S(3)),
-          tags: S.optional(__S(0)),
-          properties: S.optional(__S(21)),
+          sku: S.optional(CreateCommunityTrainingRequestSku),
+          tags: S.optional(UpdateCommunityTrainingRequestTagsMap),
+          properties: S.optional(CommunityTrainingUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -712,20 +843,5 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdateCommunityTrainingRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

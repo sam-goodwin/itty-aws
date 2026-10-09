@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -42,22 +40,53 @@ export interface GetJsSnippetResolveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const GetJsSnippetResolveRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetJsSnippetResolveRequest>;
+
 export type GetJsSnippetResolveResponseBodyMap = { [key: string]: unknown | undefined };
+const GetJsSnippetResolveResponseBodyMap = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GetJsSnippetResolveResponseBodyMap>;
+
 export type GetJsSnippetResolveResponse = GetJsSnippetResolveResponseBodyMap;
+const GetJsSnippetResolveResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetJsSnippetResolveResponse>;
+
 export interface GetJsSnippetVersionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const GetJsSnippetVersionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GetJsSnippetVersionRequest>;
+
 export type GetJsSnippetVersionResponseBodyMap = { [key: string]: unknown | undefined };
 export type GetJsSnippetVersionResponse = GetJsSnippetVersionResponseBodyMap;
+const GetJsSnippetVersionResponse =
+  GetJsSnippetResolveResponse as any as S.Schema<GetJsSnippetVersionResponse>;
+
 export interface UpdateJsSnippetVersionPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Version pin: null for latest, "1.358.0" for exact, "1" for major, "1.358" for minor */
   js_snippet_version?: string | null;
 }
+const UpdateJsSnippetVersionPartialRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<UpdateJsSnippetVersionPartialRequest>;
+
 export type UpdateJsSnippetVersionPartialResponseBodyMap = { [key: string]: unknown | undefined };
 export type UpdateJsSnippetVersionPartialResponse = UpdateJsSnippetVersionPartialResponseBodyMap;
+const UpdateJsSnippetVersionPartialResponse =
+  GetJsSnippetResolveResponse as any as S.Schema<UpdateJsSnippetVersionPartialResponse>;
+
 export type GetJsSnippetResolveError = Forbidden | NotFound | PosthogOpError;
 /** Preview what a given pin would resolve to, without saving it. */
 export const getJsSnippetResolve: API.OperationMethod<
@@ -66,8 +95,8 @@ export const getJsSnippetResolve: API.OperationMethod<
   GetJsSnippetResolveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetJsSnippetResolveRequest>,
-  output: __S(2) as any as S.Schema<GetJsSnippetResolveResponse>,
+  input: GetJsSnippetResolveRequest,
+  output: GetJsSnippetResolveResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -81,8 +110,8 @@ export const getJsSnippetVersion: API.OperationMethod<
   GetJsSnippetVersionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<GetJsSnippetVersionRequest>,
-  output: __S(2) as any as S.Schema<GetJsSnippetVersionResponse>,
+  input: GetJsSnippetVersionRequest,
+  output: GetJsSnippetVersionResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -96,8 +125,8 @@ export const updateJsSnippetVersionPartial: API.OperationMethod<
   UpdateJsSnippetVersionPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<UpdateJsSnippetVersionPartialRequest>,
-  output: __S(2) as any as S.Schema<UpdateJsSnippetVersionPartialResponse>,
+  input: UpdateJsSnippetVersionPartialRequest,
+  output: UpdateJsSnippetVersionPartialResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -123,9 +152,11 @@ function __c0(j: number): any {
     case 1:
       return S.Record(S.String, S.Unknown);
     case 2:
-      return S.suspend(() => __S(1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetJsSnippetResolveResponse",
-      });
+      return S.suspend(() => GetJsSnippetResolveResponseBodyMap.pipe(T.RawResponseRoot())).annotate(
+        {
+          identifier: "GetJsSnippetResolveResponse",
+        },
+      );
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -155,16 +186,5 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "UpdateJsSnippetVersionPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

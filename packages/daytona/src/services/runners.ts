@@ -7,15 +7,20 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
 /** Tags to associate with the runner */
 export type CreateRunnerRequestTagsList = Array<string>;
+const CreateRunnerRequestTagsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateRunnerRequestTagsList>;
+
 /** The sandbox class supported by the runner. Defaults to container when omitted or null. */
 export type CreateRunnerSandboxClass = "container" | "linux-vm" | "windows";
+const CreateRunnerSandboxClass = S.String;
+
 export interface CreateRunnerRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
@@ -26,12 +31,16 @@ export interface CreateRunnerRequest {
   /** The sandbox class supported by the runner. Defaults to container when omitted or null. */
   sandboxClass?: CreateRunnerSandboxClass | (string & {}) | null;
 }
+const CreateRunnerRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateRunnerRequest>;
+
 export interface CreateRunnerResponse {
   /** The ID of the runner */
   id: string;
   /** The API key for the runner */
   apiKey: string | Redacted.Redacted<string>;
 }
+const CreateRunnerResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateRunnerResponse>;
+
 export interface DeleteRunnerRequest {
   /** Runner ID */
   id: string;
@@ -40,17 +49,36 @@ export interface DeleteRunnerRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const DeleteRunnerRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DeleteRunnerRequest>;
+
 export interface DeleteRunnerResponse {}
+const DeleteRunnerResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DeleteRunnerResponse>;
+
 export interface GetInfoForAuthenticatedRunnerRequest {}
+const GetInfoForAuthenticatedRunnerRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetInfoForAuthenticatedRunnerRequest>;
+
 export type SandboxClass = "linux-vm" | "container" | "windows";
+const SandboxClass = S.String;
+
 /** The state of the runner */
 export type RunnerState = "initializing" | "ready" | "disabled" | "decommissioned" | "unresponsive";
+const RunnerState = S.String;
+
 /** Tags associated with the runner */
 export type RunnerFullTagsList = Array<string>;
+const RunnerFullTagsList = CreateRunnerRequestTagsList as any as S.Schema<RunnerFullTagsList>;
+
 /** The class of the runner. Deprecated and always returns "container" for backward compatibility - use sandboxClass instead. */
 export type RunnerClass = "container";
+const RunnerClass = S.String;
+
 /** The type of the region */
 export type RegionType = "shared" | "dedicated" | "custom";
+const RegionType = S.String;
+
 export interface RunnerFull {
   /** The ID of the runner */
   id: string;
@@ -121,14 +149,20 @@ export interface RunnerFull {
   /** The region type of the runner */
   regionType?: RegionType;
 }
+const RunnerFull = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<RunnerFull>;
+
 export interface GetRunnerRequest {
   /** Runner ID */
   id: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetRunnerRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetRunnerRequest>;
+
 /** Tags associated with the runner */
 export type RunnerTagsList = Array<string>;
+const RunnerTagsList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<RunnerTagsList>;
+
 export interface Runner {
   /** The ID of the runner */
   id: string;
@@ -195,17 +229,34 @@ export interface Runner {
   /** Deprecated runner class property */
   class?: string;
 }
+const Runner = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Runner>;
+
 export interface GetRunnerBySandboxIdRequest {
   sandboxId: string;
 }
+const GetRunnerBySandboxIdRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetRunnerBySandboxIdRequest>;
+
 export interface GetRunnerFullByIdRequest {
   /** Runner ID */
   id: string;
 }
+const GetRunnerFullByIdRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetRunnerFullByIdRequest>;
+
 export interface GetRunnersBySnapshotRefRequest {
   /** Snapshot ref */
   ref: string;
 }
+const GetRunnersBySnapshotRefRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetRunnersBySnapshotRefRequest>;
+
 export interface RunnerSnapshotDto {
   /** Runner snapshot ID */
   runnerSnapshotId: string;
@@ -214,20 +265,54 @@ export interface RunnerSnapshotDto {
   /** Runner domain */
   runnerDomain?: string;
 }
+const RunnerSnapshotDto = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<RunnerSnapshotDto>;
+
 export type GetRunnersBySnapshotRefResponseBodyList = Array<RunnerSnapshotDto>;
+const GetRunnersBySnapshotRefResponseBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetRunnersBySnapshotRefResponseBodyList>;
+
 export type GetRunnersBySnapshotRefResponse = GetRunnersBySnapshotRefResponseBodyList;
+const GetRunnersBySnapshotRefResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetRunnersBySnapshotRefResponse>;
+
 export interface GetSnapshotRefsForAuthenticatedRunnerRequest {}
+const GetSnapshotRefsForAuthenticatedRunnerRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetSnapshotRefsForAuthenticatedRunnerRequest>;
+
 export type GetSnapshotRefsForAuthenticatedRunnerResponseBodyList = Array<string>;
+const GetSnapshotRefsForAuthenticatedRunnerResponseBodyList =
+  CreateRunnerRequestTagsList as any as S.Schema<GetSnapshotRefsForAuthenticatedRunnerResponseBodyList>;
+
 export type GetSnapshotRefsForAuthenticatedRunnerResponse =
   GetSnapshotRefsForAuthenticatedRunnerResponseBodyList;
+const GetSnapshotRefsForAuthenticatedRunnerResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetSnapshotRefsForAuthenticatedRunnerResponse>;
+
 export interface ListRunnersRequest {
   /** Filter runners by region ID */
   regionId?: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const ListRunnersRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ListRunnersRequest>;
+
 export type ListRunnersResponseBodyList = Array<Runner>;
+const ListRunnersResponseBodyList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListRunnersResponseBodyList>;
+
 export type ListRunnersResponse = ListRunnersResponseBodyList;
+const ListRunnersResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ListRunnersResponse>;
+
 export interface RunnerHealthMetrics {
   /** Current CPU load average */
   currentCpuLoadAverage: number;
@@ -258,6 +343,8 @@ export interface RunnerHealthMetrics {
   /** GPU model name */
   gpuType?: string;
 }
+const RunnerHealthMetrics = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<RunnerHealthMetrics>;
+
 export interface RunnerServiceHealth {
   /** Name of the service being checked */
   serviceName: string;
@@ -266,8 +353,15 @@ export interface RunnerServiceHealth {
   /** Error reason if the service is unhealthy */
   errorReason?: string;
 }
+const RunnerServiceHealth = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<RunnerServiceHealth>;
+
 /** Health status of individual services on the runner */
 export type RunnerHealthcheckRequestServiceHealthList = Array<RunnerServiceHealth>;
+const RunnerHealthcheckRequestServiceHealthList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<RunnerHealthcheckRequestServiceHealthList>;
+
 export interface RunnerHealthcheckRequest {
   /** Runner metrics */
   metrics?: RunnerHealthMetrics;
@@ -282,19 +376,37 @@ export interface RunnerHealthcheckRequest {
   /** Runner app version */
   appVersion: string;
 }
+const RunnerHealthcheckRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<RunnerHealthcheckRequest>;
+
 export interface RunnerHealthcheckResponse {}
+const RunnerHealthcheckResponse =
+  DeleteRunnerResponse as any as S.Schema<RunnerHealthcheckResponse>;
+
 export interface UpdateRunnerDrainingRequest {
   /** Runner ID */
   id: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const UpdateRunnerDrainingRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<UpdateRunnerDrainingRequest>;
+
 export interface UpdateRunnerSchedulingRequest {
   /** Runner ID */
   id: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const UpdateRunnerSchedulingRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<UpdateRunnerSchedulingRequest>;
+
 export type CreateRunnerError = DaytonaOpError;
 /** Create runner */
 export const createRunner: API.OperationMethod<
@@ -303,8 +415,8 @@ export const createRunner: API.OperationMethod<
   CreateRunnerError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateRunnerRequest>,
-  output: __S(2) as any as S.Schema<CreateRunnerResponse>,
+  input: CreateRunnerRequest,
+  output: CreateRunnerResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -318,8 +430,8 @@ export const deleteRunner: API.OperationMethod<
   DeleteRunnerError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<DeleteRunnerRequest>,
-  output: __S(4) as any as S.Schema<DeleteRunnerResponse>,
+  input: DeleteRunnerRequest,
+  output: DeleteRunnerResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -333,8 +445,8 @@ export const getInfoForAuthenticatedRunner: API.OperationMethod<
   GetInfoForAuthenticatedRunnerError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<GetInfoForAuthenticatedRunnerRequest>,
-  output: __S(6) as any as S.Schema<RunnerFull>,
+  input: GetInfoForAuthenticatedRunnerRequest,
+  output: RunnerFull,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -348,8 +460,8 @@ export const getRunner: API.OperationMethod<
   GetRunnerError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<GetRunnerRequest>,
-  output: __S(9) as any as S.Schema<Runner>,
+  input: GetRunnerRequest,
+  output: Runner,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -363,8 +475,8 @@ export const getRunnerBySandboxId: API.OperationMethod<
   GetRunnerBySandboxIdError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<GetRunnerBySandboxIdRequest>,
-  output: __S(6) as any as S.Schema<RunnerFull>,
+  input: GetRunnerBySandboxIdRequest,
+  output: RunnerFull,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -378,8 +490,8 @@ export const getRunnerFullById: API.OperationMethod<
   GetRunnerFullByIdError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetRunnerFullByIdRequest>,
-  output: __S(6) as any as S.Schema<RunnerFull>,
+  input: GetRunnerFullByIdRequest,
+  output: RunnerFull,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -393,8 +505,8 @@ export const getRunnersBySnapshotRef: API.OperationMethod<
   GetRunnersBySnapshotRefError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<GetRunnersBySnapshotRefRequest>,
-  output: __S(15) as any as S.Schema<GetRunnersBySnapshotRefResponse>,
+  input: GetRunnersBySnapshotRefRequest,
+  output: GetRunnersBySnapshotRefResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -408,8 +520,8 @@ export const getSnapshotRefsForAuthenticatedRunner: API.OperationMethod<
   GetSnapshotRefsForAuthenticatedRunnerError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetSnapshotRefsForAuthenticatedRunnerRequest>,
-  output: __S(17) as any as S.Schema<GetSnapshotRefsForAuthenticatedRunnerResponse>,
+  input: GetSnapshotRefsForAuthenticatedRunnerRequest,
+  output: GetSnapshotRefsForAuthenticatedRunnerResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -423,8 +535,8 @@ export const listRunners: API.OperationMethod<
   ListRunnersError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<ListRunnersRequest>,
-  output: __S(20) as any as S.Schema<ListRunnersResponse>,
+  input: ListRunnersRequest,
+  output: ListRunnersResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -438,8 +550,8 @@ export const runnerHealthcheck: API.OperationMethod<
   RunnerHealthcheckError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<RunnerHealthcheckRequest>,
-  output: __S(4) as any as S.Schema<RunnerHealthcheckResponse>,
+  input: RunnerHealthcheckRequest,
+  output: RunnerHealthcheckResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -453,8 +565,8 @@ export const updateRunnerDraining: API.OperationMethod<
   UpdateRunnerDrainingError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<UpdateRunnerDrainingRequest>,
-  output: __S(9) as any as S.Schema<Runner>,
+  input: UpdateRunnerDrainingRequest,
+  output: Runner,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -468,8 +580,8 @@ export const updateRunnerScheduling: API.OperationMethod<
   UpdateRunnerSchedulingError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<UpdateRunnerSchedulingRequest>,
-  output: __S(9) as any as S.Schema<Runner>,
+  input: UpdateRunnerSchedulingRequest,
+  output: Runner,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -486,8 +598,8 @@ function __c0(j: number): any {
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
           regionId: S.String,
           name: S.String,
-          tags: S.optional(__S(0)),
-          sandboxClass: S.optional(S.NullOr(S.String)),
+          tags: S.optional(CreateRunnerRequestTagsList),
+          sandboxClass: S.optional(S.NullOr(CreateRunnerSandboxClass)),
         }).pipe(T.Http({ method: "POST", uri: "/runners", code: 200 })),
       ).annotate({ identifier: "CreateRunnerRequest" });
     case 2:
@@ -527,7 +639,7 @@ function __c0(j: number): any {
           disk: S.Number,
           gpu: S.optional(S.Number),
           gpuType: S.optional(S.String),
-          sandboxClass: S.optional(S.String),
+          sandboxClass: S.optional(SandboxClass),
           currentCpuUsagePercentage: S.optional(S.Number),
           currentMemoryUsagePercentage: S.optional(S.Number),
           currentDiskUsagePercentage: S.optional(S.Number),
@@ -539,19 +651,19 @@ function __c0(j: number): any {
           availabilityScore: S.optional(S.Number),
           region: S.String,
           name: S.String,
-          state: S.String,
+          state: RunnerState,
           lastChecked: S.optional(S.String),
           unschedulable: S.Boolean,
-          tags: __S(0),
+          tags: RunnerFullTagsList,
           createdAt: S.String,
           updatedAt: S.String,
           version: S.String,
           apiVersion: S.String,
-          runnerClass: S.String,
+          runnerClass: RunnerClass,
           appVersion: S.optional(S.String),
           class: S.optional(S.String),
           apiKey: S.String.pipe(T.SensitiveValue({})),
-          regionType: S.optional(S.String),
+          regionType: S.optional(RegionType),
         }),
       ).annotate({ identifier: "RunnerFull" });
     case 7:
@@ -579,7 +691,7 @@ function __c1(j: number): any {
           disk: S.Number,
           gpu: S.optional(S.Number),
           gpuType: S.optional(S.String),
-          sandboxClass: S.optional(S.String),
+          sandboxClass: S.optional(SandboxClass),
           currentCpuUsagePercentage: S.optional(S.Number),
           currentMemoryUsagePercentage: S.optional(S.Number),
           currentDiskUsagePercentage: S.optional(S.Number),
@@ -591,15 +703,15 @@ function __c1(j: number): any {
           availabilityScore: S.optional(S.Number),
           region: S.String,
           name: S.String,
-          state: S.String,
+          state: RunnerState,
           lastChecked: S.optional(S.String),
           unschedulable: S.Boolean,
-          tags: __S(8),
+          tags: RunnerTagsList,
           createdAt: S.String,
           updatedAt: S.String,
           version: S.String,
           apiVersion: S.String,
-          runnerClass: S.String,
+          runnerClass: RunnerClass,
           appVersion: S.optional(S.String),
           class: S.optional(S.String),
         }),
@@ -635,9 +747,11 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "RunnerSnapshotDto" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(RunnerSnapshotDto);
     case 7:
-      return S.suspend(() => __S(14).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetRunnersBySnapshotRefResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetRunnersBySnapshotRefResponse",
       });
   }
@@ -651,7 +765,9 @@ function __c2(j: number): any {
         identifier: "GetSnapshotRefsForAuthenticatedRunnerRequest",
       });
     case 1:
-      return S.suspend(() => __S(0).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetSnapshotRefsForAuthenticatedRunnerResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetSnapshotRefsForAuthenticatedRunnerResponse",
       });
     case 2:
@@ -662,9 +778,9 @@ function __c2(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/runners", code: 200 })),
       ).annotate({ identifier: "ListRunnersRequest" });
     case 3:
-      return S.Array(__S(9));
+      return S.Array(Runner);
     case 4:
-      return S.suspend(() => __S(19).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListRunnersResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListRunnersResponse",
       });
     case 5:
@@ -695,7 +811,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "RunnerServiceHealth" });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(RunnerServiceHealth);
   }
 }
 function __c3(j: number): any {
@@ -703,8 +819,8 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metrics: S.optional(__S(21)),
-          serviceHealth: S.optional(__S(23)),
+          metrics: S.optional(RunnerHealthMetrics),
+          serviceHealth: S.optional(RunnerHealthcheckRequestServiceHealthList),
           domain: S.optional(S.String),
           proxyUrl: S.optional(S.String),
           apiUrl: S.optional(S.String),
@@ -729,22 +845,5 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UpdateRunnerSchedulingRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

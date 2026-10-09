@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -65,6 +63,11 @@ export interface CreateAuthorizedUserRequestElevation {
   /** Reuse an existing elevated session (for SMS/email 2FA users). */
   use_finance_session?: boolean | null;
 }
+const CreateAuthorizedUserRequestElevation = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateAuthorizedUserRequestElevation>;
+
 /** System roles accepted by legacy authorized-user mutations */
 export type GrantableAuthorizedUserRoles =
   | "owner"
@@ -73,6 +76,8 @@ export type GrantableAuthorizedUserRoles =
   | "sales_manager"
   | "moderator"
   | "advertiser";
+const GrantableAuthorizedUserRoles = S.String;
+
 export interface CreateAuthorizedUserRequest {
   /** The ID of the company to add the authorized user to. */
   account_id: string;
@@ -85,6 +90,11 @@ export interface CreateAuthorizedUserRequest {
   /** The ID of the user to add as an authorized user. */
   user_id: string;
 }
+const CreateAuthorizedUserRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateAuthorizedUserRequest>;
+
 /** The company this authorized user has access to. */
 export interface AuthorizedUserCompany {
   /** The unique identifier for the company. */
@@ -92,6 +102,11 @@ export interface AuthorizedUserCompany {
   /** The display name of the company shown to customers. */
   title: string;
 }
+const AuthorizedUserCompany = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AuthorizedUserCompany>;
+
 /** Possible roles an authorized user can have */
 export type AuthorizedUserRoles =
   | "owner"
@@ -105,6 +120,8 @@ export type AuthorizedUserRoles =
   | "manager"
   | "workforce"
   | "custom";
+const AuthorizedUserRoles = S.String;
+
 /** The user account linked to this authorized user record. */
 export interface AuthorizedUserUser {
   /** The user's email address. Requires the member:email:read permission to access. Null if not authorized. */
@@ -116,6 +133,8 @@ export interface AuthorizedUserUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
+const AuthorizedUserUser = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AuthorizedUserUser>;
+
 /** A user who belongs to a company's team with access determined by their assigned role. */
 export interface AuthorizedUser {
   /** The company this authorized user has access to. */
@@ -127,16 +146,33 @@ export interface AuthorizedUser {
   /** The user account linked to this authorized user record. */
   user: AuthorizedUserUser;
 }
+const AuthorizedUser = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AuthorizedUser>;
+
 export interface DeleteAuthorizedUserRequest {
   /** The ID of the authorized user or user to remove. */
   id: string;
   account_id?: string;
 }
+const DeleteAuthorizedUserRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteAuthorizedUserRequest>;
+
 export type DeleteAuthorizedUserResponse = boolean;
+const DeleteAuthorizedUserResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DeleteAuthorizedUserResponse>;
+
 export interface GetAuthorizedUserRequest {
   /** The unique identifier of the authorized user to retrieve. */
   id: string;
 }
+const GetAuthorizedUserRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetAuthorizedUserRequest>;
+
 export interface ListAuthorizedUserRequest {
   after?: string;
   before?: string;
@@ -148,6 +184,11 @@ export interface ListAuthorizedUserRequest {
   created_after?: string;
   account_id?: string;
 }
+const ListAuthorizedUserRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListAuthorizedUserRequest>;
+
 /** The company this authorized user has access to. */
 export type AuthorizedUserListItemCompany = AuthorizedUserCompany;
 /** The user account linked to this authorized user record. */
@@ -163,8 +204,15 @@ export interface AuthorizedUserListItem {
   /** The user account linked to this authorized user record. */
   user: AuthorizedUserUser;
 }
+const AuthorizedUserListItem = AuthorizedUser as any as S.Schema<AuthorizedUserListItem>;
+
 /** A list of nodes. */
 export type ListAuthorizedUserResponseDataList = Array<AuthorizedUserListItem>;
+const ListAuthorizedUserResponseDataList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListAuthorizedUserResponseDataList>;
+
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -176,12 +224,19 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
+const PageInfo = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<PageInfo>;
+
 export interface ListAuthorizedUserResponse {
   /** A list of nodes. */
   data: ListAuthorizedUserResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
+const ListAuthorizedUserResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListAuthorizedUserResponse>;
+
 export type CreateAuthorizedUserError =
   | BadRequest
   | Forbidden
@@ -195,8 +250,8 @@ export const createAuthorizedUser: API.OperationMethod<
   CreateAuthorizedUserError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateAuthorizedUserRequest>,
-  output: __S(4) as any as S.Schema<AuthorizedUser>,
+  input: CreateAuthorizedUserRequest,
+  output: AuthorizedUser,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -215,8 +270,8 @@ export const deleteAuthorizedUser: API.OperationMethod<
   DeleteAuthorizedUserError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<DeleteAuthorizedUserRequest>,
-  output: __S(6) as any as S.Schema<DeleteAuthorizedUserResponse>,
+  input: DeleteAuthorizedUserRequest,
+  output: DeleteAuthorizedUserResponse,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -235,8 +290,8 @@ export const getAuthorizedUser: API.OperationMethod<
   GetAuthorizedUserError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<GetAuthorizedUserRequest>,
-  output: __S(4) as any as S.Schema<AuthorizedUser>,
+  input: GetAuthorizedUserRequest,
+  output: AuthorizedUser,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -257,8 +312,8 @@ export const listAuthorizedUser: API.PaginatedOperationMethod<
   AuthorizedUserListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(8) as any as S.Schema<ListAuthorizedUserRequest>,
-    output: __S(11) as any as S.Schema<ListAuthorizedUserResponse>,
+    input: ListAuthorizedUserRequest,
+    output: ListAuthorizedUserResponse,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -295,8 +350,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
-          elevation: S.optional(S.NullOr(__S(0))),
-          role: S.String,
+          elevation: S.optional(S.NullOr(CreateAuthorizedUserRequestElevation)),
+          role: GrantableAuthorizedUserRoles,
           send_emails: S.optional(S.NullOr(S.Boolean)),
           user_id: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/authorized_users", code: 200 })),
@@ -322,10 +377,10 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          company: __S(2),
+          company: AuthorizedUserCompany,
           id: S.String,
-          role: S.String,
-          user: __S(3),
+          role: AuthorizedUserRoles,
+          user: AuthorizedUserUser,
         }),
       ).annotate({ identifier: "AuthorizedUser" });
     case 5:
@@ -359,7 +414,7 @@ function __c1(j: number): any {
           first: S.optional(S.Number.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
           user_id: S.optional(S.String.pipe(T.Query())),
-          role: S.optional(S.String.pipe(T.Query())),
+          role: S.optional(AuthorizedUserRoles.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
           account_id: S.optional(S.String.pipe(T.Query())),
@@ -368,7 +423,7 @@ function __c1(j: number): any {
         identifier: "ListAuthorizedUserRequest",
       });
     case 1:
-      return S.Array(__S(4));
+      return S.Array(AuthorizedUserListItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -381,24 +436,11 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(9),
-          page_info: __S(10),
+          data: ListAuthorizedUserResponseDataList,
+          page_info: PageInfo,
         }),
       ).annotate({
         identifier: "ListAuthorizedUserResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

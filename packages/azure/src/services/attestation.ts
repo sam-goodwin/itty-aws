@@ -6,17 +6,24 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** The tags that will be assigned to the attestation provider. */
 export type CreateAttestationProviderRequestTagsMap = { [key: string]: string | undefined };
+const CreateAttestationProviderRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateAttestationProviderRequestTagsMap>;
+
 /** Controls whether traffic from the public network is allowed to access the Attestation Provider APIs. */
 export type AttestationServiceCreationSpecificParamsPublicNetworkAccess = "Enabled" | "Disabled";
+const AttestationServiceCreationSpecificParamsPublicNetworkAccess = S.String;
+
 /** The "x5c" (X.509 certificate chain) parameter contains a chain of one or more PKIX certificates [RFC5280]. The certificate chain is represented as a JSON array of certificate value strings. Each string in the array is a base64-encoded (Section 4 of [RFC4648] -- not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value. The PKIX certificate containing the key value MUST be the first certificate. */
 export type JsonWebKeyX5cList = Array<string>;
+const JsonWebKeyX5cList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<JsonWebKeyX5cList>;
+
 export interface JsonWebKey {
   /** The "alg" (algorithm) parameter identifies the algorithm intended for use with the key. The values used should either be registered in the IANA "JSON Web Signature and Encryption Algorithms" registry established by [JWA] or be a value that contains a Collision- Resistant Name. */
   alg?: string;
@@ -53,16 +60,27 @@ export interface JsonWebKey {
   /** Y coordinate for the Elliptic Curve point */
   y?: string;
 }
+const JsonWebKey = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<JsonWebKey>;
+
 /** The value of the "keys" parameter is an array of JWK values. By default, the order of the JWK values within the array does not imply an order of preference among them, although applications of JWK Sets can choose to assign a meaning to the order for their purposes, if desired. */
 export type JsonWebKeySetKeysList = Array<JsonWebKey>;
+const JsonWebKeySetKeysList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<JsonWebKeySetKeysList>;
+
 export interface JsonWebKeySet {
   /** The value of the "keys" parameter is an array of JWK values. By default, the order of the JWK values within the array does not imply an order of preference among them, although applications of JWK Sets can choose to assign a meaning to the order for their purposes, if desired. */
   keys?: JsonWebKeySetKeysList;
 }
+const JsonWebKeySet = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<JsonWebKeySet>;
+
 /** The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs. */
 export type AttestationServiceCreationSpecificParamsTpmAttestationAuthentication =
   | "Enabled"
   | "Disabled";
+const AttestationServiceCreationSpecificParamsTpmAttestationAuthentication = S.String;
+
 /** Client supplied parameters used to create a new attestation provider. */
 export interface AttestationServiceCreationSpecificParams {
   /** Controls whether traffic from the public network is allowed to access the Attestation Provider APIs. */
@@ -74,6 +92,11 @@ export interface AttestationServiceCreationSpecificParams {
     | AttestationServiceCreationSpecificParamsTpmAttestationAuthentication
     | (string & {});
 }
+const AttestationServiceCreationSpecificParams = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AttestationServiceCreationSpecificParams>;
+
 export interface CreateAttestationProviderRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -88,10 +111,19 @@ export interface CreateAttestationProviderRequest {
   /** Properties of the attestation provider */
   properties: AttestationServiceCreationSpecificParams;
 }
+const CreateAttestationProviderRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateAttestationProviderRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -107,19 +139,32 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SystemData>;
+
 /** Resource tags. */
 export type CreateAttestationProviderResponseTagsMap = { [key: string]: string | undefined };
+const CreateAttestationProviderResponseTagsMap =
+  CreateAttestationProviderRequestTagsMap as any as S.Schema<CreateAttestationProviderResponseTagsMap>;
+
 /** Status of attestation service. */
 export type AttestationServiceStatus = "Ready" | "NotReady" | "Error";
+const AttestationServiceStatus = S.String;
+
 /** Controls whether traffic from the public network is allowed to access the Attestation Provider APIs. */
 export type StatusResultPublicNetworkAccess = "Enabled" | "Disabled";
+const StatusResultPublicNetworkAccess = S.String;
+
 /** The Private Endpoint resource. */
 export interface PrivateEndpoint {
   /** The ARM identifier for Private Endpoint */
   id?: string;
 }
+const PrivateEndpoint = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<PrivateEndpoint>;
+
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
+const PrivateEndpointServiceConnectionStatus = S.String;
+
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
@@ -129,12 +174,19 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<PrivateLinkServiceConnectionState>;
+
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
   | "Failed";
+const PrivateEndpointConnectionProvisioningState = S.String;
+
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionProperties {
   /** The resource of private end point. */
@@ -144,6 +196,11 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<PrivateEndpointConnectionProperties>;
+
 /** The Private Endpoint Connection resource. */
 export interface StatusResultPrivateEndpointConnectionsItem {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -157,11 +214,23 @@ export interface StatusResultPrivateEndpointConnectionsItem {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const StatusResultPrivateEndpointConnectionsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<StatusResultPrivateEndpointConnectionsItem>;
+
 /** List of private endpoint connections associated with the attestation provider. */
 export type StatusResultPrivateEndpointConnectionsList =
   Array<StatusResultPrivateEndpointConnectionsItem>;
+const StatusResultPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<StatusResultPrivateEndpointConnectionsList>;
+
 /** The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs. */
 export type StatusResultTpmAttestationAuthentication = "Enabled" | "Disabled";
+const StatusResultTpmAttestationAuthentication = S.String;
+
 /** Status of attestation service. */
 export interface StatusResult {
   /** Trust model for the attestation provider. */
@@ -177,6 +246,8 @@ export interface StatusResult {
   /** The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs. */
   tpmAttestationAuthentication?: StatusResultTpmAttestationAuthentication;
 }
+const StatusResult = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<StatusResult>;
+
 export interface CreateAttestationProviderResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -193,11 +264,18 @@ export interface CreateAttestationProviderResponse {
   /** Describes Attestation service status. */
   properties?: StatusResult;
 }
+const CreateAttestationProviderResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateAttestationProviderResponse>;
+
 /** The Private Endpoint resource. */
 export interface PrivateEndpointInput {
   /** The ARM identifier for Private Endpoint. */
   id?: string;
 }
+const PrivateEndpointInput = PrivateEndpoint as any as S.Schema<PrivateEndpointInput>;
+
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionPropertiesInput {
   /** The resource of private end point. */
@@ -205,6 +283,11 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
+const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
 export interface CreatePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -219,6 +302,11 @@ export interface CreatePrivateEndpointConnectionRequest {
   /** Fully qualified ARM resource ID of the private endpoint connection. Required by the service. */
   id?: string;
 }
+const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreatePrivateEndpointConnectionRequest>;
+
 export interface CreatePrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -231,6 +319,9 @@ export interface CreatePrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const CreatePrivateEndpointConnectionResponse =
+  StatusResultPrivateEndpointConnectionsItem as any as S.Schema<CreatePrivateEndpointConnectionResponse>;
+
 export interface DeleteAttestationProviderRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -239,7 +330,17 @@ export interface DeleteAttestationProviderRequest {
   /** Name of the attestation provider. */
   providerName: string;
 }
+const DeleteAttestationProviderRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DeleteAttestationProviderRequest>;
+
 export interface DeleteAttestationProviderResponse {}
+const DeleteAttestationProviderResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DeleteAttestationProviderResponse>;
+
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -250,7 +351,15 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource */
   privateEndpointConnectionName: string;
 }
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
+
 export interface DeletePrivateEndpointConnectionResponse {}
+const DeletePrivateEndpointConnectionResponse =
+  DeleteAttestationProviderResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+
 export interface GetAttestationProviderRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -259,6 +368,11 @@ export interface GetAttestationProviderRequest {
   /** Name of the attestation provider. */
   providerName: string;
 }
+const GetAttestationProviderRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetAttestationProviderRequest>;
+
 /** Resource tags. */
 export type GetAttestationProviderResponseTagsMap = { [key: string]: string | undefined };
 export interface GetAttestationProviderResponse {
@@ -277,12 +391,20 @@ export interface GetAttestationProviderResponse {
   /** Describes Attestation service status. */
   properties?: StatusResult;
 }
+const GetAttestationProviderResponse =
+  CreateAttestationProviderResponse as any as S.Schema<GetAttestationProviderResponse>;
+
 export interface GetAttestationProviderDefaultByLocationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of Azure region. */
   location: string;
 }
+const GetAttestationProviderDefaultByLocationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetAttestationProviderDefaultByLocationRequest>;
+
 /** Resource tags. */
 export type GetAttestationProviderDefaultByLocationResponseTagsMap = {
   [key: string]: string | undefined;
@@ -303,6 +425,9 @@ export interface GetAttestationProviderDefaultByLocationResponse {
   /** Describes Attestation service status. */
   properties?: StatusResult;
 }
+const GetAttestationProviderDefaultByLocationResponse =
+  CreateAttestationProviderResponse as any as S.Schema<GetAttestationProviderDefaultByLocationResponse>;
+
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -313,6 +438,11 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource */
   privateEndpointConnectionName: string;
 }
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
+
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -325,24 +455,36 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const GetPrivateEndpointConnectionResponse =
+  StatusResultPrivateEndpointConnectionsItem as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+
 export interface ListAttestationProviderByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListAttestationProviderByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListAttestationProviderByResourceGroupRequest>;
+
 /** The type of identity that created the resource. */
 export type AttestationProviderListResultSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const AttestationProviderListResultSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type AttestationProviderListResultSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const AttestationProviderListResultSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface AttestationProviderListResultSystemData {
   /** The identity that created the resource. */
@@ -358,8 +500,16 @@ export interface AttestationProviderListResultSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const AttestationProviderListResultSystemData = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<AttestationProviderListResultSystemData>;
+
 /** Resource tags. */
 export type AttestationProviderTagsMap = { [key: string]: string | undefined };
+const AttestationProviderTagsMap =
+  CreateAttestationProviderRequestTagsMap as any as S.Schema<AttestationProviderTagsMap>;
+
 /** Attestation service response message. */
 export interface AttestationProvider {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -377,8 +527,15 @@ export interface AttestationProvider {
   /** Describes Attestation service status. */
   properties?: StatusResult;
 }
+const AttestationProvider = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<AttestationProvider>;
+
 /** Attestation Provider array. */
 export type AttestationProviderListResultValueList = Array<AttestationProvider>;
+const AttestationProviderListResultValueList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<AttestationProviderListResultValueList>;
+
 /** Attestation Providers List. */
 export interface AttestationProviderListResult {
   /** Metadata pertaining to creation and last modification of the resource. */
@@ -386,15 +543,35 @@ export interface AttestationProviderListResult {
   /** Attestation Provider array. */
   value?: AttestationProviderListResultValueList;
 }
+const AttestationProviderListResult = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<AttestationProviderListResult>;
+
 export interface ListAttestationProviderDefaultRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListAttestationProviderDefaultRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ListAttestationProviderDefaultRequest>;
+
 export interface ListAttestationProvidersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListAttestationProvidersRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListAttestationProvidersRequest>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** The type of identity that created the resource. */
 export type OperationListSystemDataCreatedByType =
   | "User"
@@ -422,6 +599,8 @@ export interface OperationListSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const OperationListSystemData = SystemData as any as S.Schema<OperationListSystemData>;
+
 /** Display object with properties of the operation. */
 export interface OperationsDisplayDefinition {
   /** Resource provider of the operation. */
@@ -433,6 +612,11 @@ export interface OperationsDisplayDefinition {
   /** Description of the operation. */
   description?: string;
 }
+const OperationsDisplayDefinition = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<OperationsDisplayDefinition>;
+
 /** Specifications of the Log for Microsoft Azure Attestation */
 export interface LogSpecification {
   /** Name of the log */
@@ -440,18 +624,29 @@ export interface LogSpecification {
   /** Localized friendly display name of the log */
   displayName?: string;
 }
+const LogSpecification = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<LogSpecification>;
+
 /** Specifications of the Log for Microsoft Azure Attestation */
 export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
+const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
+
 /** Service specification payload */
 export interface ServiceSpecification {
   /** Specifications of the Log for Microsoft Azure Attestation */
   logSpecifications?: ServiceSpecificationLogSpecificationsList;
 }
+const ServiceSpecification = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ServiceSpecification>;
+
 /** Extra Operation properties */
 export interface OperationProperties {
   /** Service specifications of the operation */
   serviceSpecification?: ServiceSpecification;
 }
+const OperationProperties = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<OperationProperties>;
+
 /** Definition object with the name and properties of an operation. */
 export interface OperationsDefinition {
   /** Name of the operation. */
@@ -461,8 +656,15 @@ export interface OperationsDefinition {
   /** Properties of the operation */
   properties?: OperationProperties;
 }
+const OperationsDefinition = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<OperationsDefinition>;
+
 /** List of supported operations. */
 export type OperationListValueList = Array<OperationsDefinition>;
+const OperationListValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<OperationListValueList>;
+
 /** List of supported operations. */
 export interface OperationList {
   /** Metadata pertaining to creation and last modification of the resource. */
@@ -470,6 +672,8 @@ export interface OperationList {
   /** List of supported operations. */
   value?: OperationListValueList;
 }
+const OperationList = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<OperationList>;
+
 export interface ListPrivateEndpointConnectionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -478,12 +682,20 @@ export interface ListPrivateEndpointConnectionsRequest {
   /** Name of the attestation provider. */
   providerName: string;
 }
+const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListPrivateEndpointConnectionsRequest>;
+
 /** The Private Endpoint Connection resource. */
 export type PrivateEndpointConnectionListResultValueItem =
   StatusResultPrivateEndpointConnectionsItem;
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
   Array<StatusResultPrivateEndpointConnectionsItem>;
+const PrivateEndpointConnectionListResultValueList =
+  StatusResultPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+
 /** The response of a PrivateEndpointConnection list operation. */
 export interface PrivateEndpointConnectionListResult {
   /** The PrivateEndpointConnection items on this page */
@@ -491,6 +703,11 @@ export interface PrivateEndpointConnectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PrivateEndpointConnectionListResult = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<PrivateEndpointConnectionListResult>;
+
 export interface ListPrivateLinkResourceByProviderRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -499,10 +716,21 @@ export interface ListPrivateLinkResourceByProviderRequest {
   /** Name of the attestation provider. */
   providerName: string;
 }
+const ListPrivateLinkResourceByProviderRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ListPrivateLinkResourceByProviderRequest>;
+
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
+const PrivateLinkResourcePropertiesRequiredMembersList =
+  JsonWebKeyX5cList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  JsonWebKeyX5cList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
   /** The private link resource group id. */
@@ -512,6 +740,11 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource Private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
+const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<PrivateLinkResourceProperties>;
+
 /** A private link resource */
 export interface PrivateLinkResourceListResultValueItem {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -525,8 +758,18 @@ export interface PrivateLinkResourceListResultValueItem {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
+const PrivateLinkResourceListResultValueItem = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<PrivateLinkResourceListResultValueItem>;
+
 /** The PrivateLinkResource items on this page */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResourceListResultValueItem>;
+const PrivateLinkResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<PrivateLinkResourceListResultValueList>;
+
 /** The response of a PrivateLinkResource list operation. */
 export interface PrivateLinkResourceListResult {
   /** The PrivateLinkResource items on this page */
@@ -534,14 +777,26 @@ export interface PrivateLinkResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PrivateLinkResourceListResult = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<PrivateLinkResourceListResult>;
+
 /** The tags that will be assigned to the attestation provider. */
 export type UpdateAttestationProviderRequestTagsMap = { [key: string]: string | undefined };
+const UpdateAttestationProviderRequestTagsMap =
+  CreateAttestationProviderRequestTagsMap as any as S.Schema<UpdateAttestationProviderRequestTagsMap>;
+
 /** Controls whether traffic from the public network is allowed to access the Attestation Provider APIs. */
 export type AttestationServicePatchSpecificParamsPublicNetworkAccess = "Enabled" | "Disabled";
+const AttestationServicePatchSpecificParamsPublicNetworkAccess = S.String;
+
 /** The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs. */
 export type AttestationServicePatchSpecificParamsTpmAttestationAuthentication =
   | "Enabled"
   | "Disabled";
+const AttestationServicePatchSpecificParamsTpmAttestationAuthentication = S.String;
+
 /** Client supplied parameters used to patch an existing attestation provider. */
 export interface AttestationServicePatchSpecificParams {
   /** Controls whether traffic from the public network is allowed to access the Attestation Provider APIs. */
@@ -551,6 +806,11 @@ export interface AttestationServicePatchSpecificParams {
     | AttestationServicePatchSpecificParamsTpmAttestationAuthentication
     | (string & {});
 }
+const AttestationServicePatchSpecificParams = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<AttestationServicePatchSpecificParams>;
+
 export interface UpdateAttestationProviderRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -563,6 +823,11 @@ export interface UpdateAttestationProviderRequest {
   /** Properties of the attestation provider */
   properties?: AttestationServicePatchSpecificParams;
 }
+const UpdateAttestationProviderRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<UpdateAttestationProviderRequest>;
+
 /** Resource tags. */
 export type UpdateAttestationProviderResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateAttestationProviderResponse {
@@ -581,6 +846,9 @@ export interface UpdateAttestationProviderResponse {
   /** Describes Attestation service status. */
   properties?: StatusResult;
 }
+const UpdateAttestationProviderResponse =
+  CreateAttestationProviderResponse as any as S.Schema<UpdateAttestationProviderResponse>;
+
 export type CreateAttestationProviderError = AzureOpError;
 /** Creates or updates an Attestation Provider. */
 export const CreateAttestationProvider: API.OperationMethod<
@@ -589,8 +857,8 @@ export const CreateAttestationProvider: API.OperationMethod<
   CreateAttestationProviderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateAttestationProviderRequest>,
-  output: __S(14) as any as S.Schema<CreateAttestationProviderResponse>,
+  input: CreateAttestationProviderRequest,
+  output: CreateAttestationProviderResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -604,8 +872,8 @@ export const CreatePrivateEndpointConnection: API.OperationMethod<
   CreatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
-  output: __S(11) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
+  input: CreatePrivateEndpointConnectionRequest,
+  output: CreatePrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -619,8 +887,8 @@ export const DeleteAttestationProvider: API.OperationMethod<
   DeleteAttestationProviderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<DeleteAttestationProviderRequest>,
-  output: __S(18) as any as S.Schema<DeleteAttestationProviderResponse>,
+  input: DeleteAttestationProviderRequest,
+  output: DeleteAttestationProviderResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -634,8 +902,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(18) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: DeletePrivateEndpointConnectionRequest,
+  output: DeletePrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -649,8 +917,8 @@ export const GetAttestationProvider: API.OperationMethod<
   GetAttestationProviderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<GetAttestationProviderRequest>,
-  output: __S(14) as any as S.Schema<GetAttestationProviderResponse>,
+  input: GetAttestationProviderRequest,
+  output: GetAttestationProviderResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -664,8 +932,8 @@ export const GetAttestationProviderDefaultByLocation: API.OperationMethod<
   GetAttestationProviderDefaultByLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetAttestationProviderDefaultByLocationRequest>,
-  output: __S(14) as any as S.Schema<GetAttestationProviderDefaultByLocationResponse>,
+  input: GetAttestationProviderDefaultByLocationRequest,
+  output: GetAttestationProviderDefaultByLocationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -679,8 +947,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(11) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: GetPrivateEndpointConnectionRequest,
+  output: GetPrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -694,8 +962,8 @@ export const ListAttestationProviderByResourceGroup: API.OperationMethod<
   ListAttestationProviderByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<ListAttestationProviderByResourceGroupRequest>,
-  output: __S(27) as any as S.Schema<AttestationProviderListResult>,
+  input: ListAttestationProviderByResourceGroupRequest,
+  output: AttestationProviderListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -709,8 +977,8 @@ export const ListAttestationProviderDefault: API.OperationMethod<
   ListAttestationProviderDefaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<ListAttestationProviderDefaultRequest>,
-  output: __S(27) as any as S.Schema<AttestationProviderListResult>,
+  input: ListAttestationProviderDefaultRequest,
+  output: AttestationProviderListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -724,8 +992,8 @@ export const ListAttestationProviders: API.OperationMethod<
   ListAttestationProvidersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<ListAttestationProvidersRequest>,
-  output: __S(27) as any as S.Schema<AttestationProviderListResult>,
+  input: ListAttestationProvidersRequest,
+  output: AttestationProviderListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -739,8 +1007,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<ListOperationsRequest>,
-  output: __S(38) as any as S.Schema<OperationList>,
+  input: ListOperationsRequest,
+  output: OperationList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -754,8 +1022,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
-  output: __S(40) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: ListPrivateEndpointConnectionsRequest,
+  output: PrivateEndpointConnectionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -769,8 +1037,8 @@ export const ListPrivateLinkResourceByProvider: API.OperationMethod<
   ListPrivateLinkResourceByProviderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<ListPrivateLinkResourceByProviderRequest>,
-  output: __S(45) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: ListPrivateLinkResourceByProviderRequest,
+  output: PrivateLinkResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -784,8 +1052,8 @@ export const UpdateAttestationProvider: API.OperationMethod<
   UpdateAttestationProviderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<UpdateAttestationProviderRequest>,
-  output: __S(14) as any as S.Schema<UpdateAttestationProviderResponse>,
+  input: UpdateAttestationProviderRequest,
+  output: UpdateAttestationProviderResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -816,24 +1084,28 @@ function __c0(j: number): any {
           qi: S.optional(S.String),
           use: S.optional(S.String),
           x: S.optional(S.String),
-          x5c: S.optional(__S(1)),
+          x5c: S.optional(JsonWebKeyX5cList),
           y: S.optional(S.String),
         }),
       ).annotate({ identifier: "JsonWebKey" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(JsonWebKey);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(__S(3)),
+          keys: S.optional(JsonWebKeySetKeysList),
         }),
       ).annotate({ identifier: "JsonWebKeySet" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          publicNetworkAccess: S.optional(S.String),
-          policySigningCertificates: S.optional(__S(4)),
-          tpmAttestationAuthentication: S.optional(S.String),
+          publicNetworkAccess: S.optional(
+            AttestationServiceCreationSpecificParamsPublicNetworkAccess,
+          ),
+          policySigningCertificates: S.optional(JsonWebKeySet),
+          tpmAttestationAuthentication: S.optional(
+            AttestationServiceCreationSpecificParamsTpmAttestationAuthentication,
+          ),
         }),
       ).annotate({
         identifier: "AttestationServiceCreationSpecificParams",
@@ -845,8 +1117,8 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           providerName: S.String.pipe(T.Label()),
           location: S.String,
-          tags: S.optional(__S(0)),
-          properties: __S(5),
+          tags: S.optional(CreateAttestationProviderRequestTagsMap),
+          properties: AttestationServiceCreationSpecificParams,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -862,10 +1134,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -882,7 +1154,7 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(PrivateEndpointServiceConnectionStatus),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -892,9 +1164,9 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(8)),
-          privateLinkServiceConnectionState: __S(9),
-          provisioningState: S.optional(S.String),
+          privateEndpoint: S.optional(PrivateEndpoint),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+          provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -905,23 +1177,23 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(10)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateEndpointConnectionProperties),
         }),
       ).annotate({
         identifier: "StatusResultPrivateEndpointConnectionsItem",
       });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(StatusResultPrivateEndpointConnectionsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           trustModel: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(AttestationServiceStatus),
           attestUri: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(12)),
-          tpmAttestationAuthentication: S.optional(S.String),
+          publicNetworkAccess: S.optional(StatusResultPublicNetworkAccess),
+          privateEndpointConnections: S.optional(StatusResultPrivateEndpointConnectionsList),
+          tpmAttestationAuthentication: S.optional(StatusResultTpmAttestationAuthentication),
         }),
       ).annotate({ identifier: "StatusResult" });
     case 6:
@@ -930,10 +1202,10 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateAttestationProviderResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(13)),
+          properties: S.optional(StatusResult),
         }),
       ).annotate({
         identifier: "CreateAttestationProviderResponse",
@@ -941,8 +1213,8 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(8)),
-          privateLinkServiceConnectionState: __S(9),
+          privateEndpoint: S.optional(PrivateEndpointInput),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
@@ -958,7 +1230,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           providerName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(15)),
+          properties: S.optional(PrivateEndpointConnectionPropertiesInput),
           id: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1085,10 +1357,10 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(AttestationProviderListResultSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(AttestationProviderListResultSystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -1100,19 +1372,19 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(AttestationProviderTagsMap),
           location: S.String,
-          properties: S.optional(__S(13)),
+          properties: S.optional(StatusResult),
         }),
       ).annotate({ identifier: "AttestationProvider" });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(AttestationProvider);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          systemData: S.optional(__S(24)),
-          value: S.optional(__S(26)),
+          systemData: S.optional(AttestationProviderListResultSystemData),
+          value: S.optional(AttestationProviderListResultValueList),
         }),
       ).annotate({
         identifier: "AttestationProviderListResult",
@@ -1181,34 +1453,34 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "LogSpecification" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(LogSpecification);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          logSpecifications: S.optional(__S(33)),
+          logSpecifications: S.optional(ServiceSpecificationLogSpecificationsList),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(34)),
+          serviceSpecification: S.optional(ServiceSpecification),
         }),
       ).annotate({ identifier: "OperationProperties" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(31)),
-          properties: S.optional(__S(35)),
+          display: S.optional(OperationsDisplayDefinition),
+          properties: S.optional(OperationProperties),
         }),
       ).annotate({ identifier: "OperationsDefinition" });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(OperationsDefinition);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          systemData: S.optional(__S(7)),
-          value: S.optional(__S(37)),
+          systemData: S.optional(OperationListSystemData),
+          value: S.optional(OperationListValueList),
         }),
       ).annotate({ identifier: "OperationList" });
     case 7:
@@ -1235,7 +1507,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(12),
+          value: PrivateEndpointConnectionListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1262,8 +1534,8 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(1)),
-          requiredZoneNames: S.optional(__S(1)),
+          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
+          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -1274,18 +1546,18 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(42)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateLinkResourceProperties),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceListResultValueItem",
       });
     case 4:
-      return S.Array(__S(43));
+      return S.Array(PrivateLinkResourceListResultValueItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(44),
+          value: PrivateLinkResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1294,8 +1566,10 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          publicNetworkAccess: S.optional(S.String),
-          tpmAttestationAuthentication: S.optional(S.String),
+          publicNetworkAccess: S.optional(AttestationServicePatchSpecificParamsPublicNetworkAccess),
+          tpmAttestationAuthentication: S.optional(
+            AttestationServicePatchSpecificParamsTpmAttestationAuthentication,
+          ),
         }),
       ).annotate({
         identifier: "AttestationServicePatchSpecificParams",
@@ -1306,8 +1580,8 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           providerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
-          properties: S.optional(__S(46)),
+          tags: S.optional(UpdateAttestationProviderRequestTagsMap),
+          properties: S.optional(AttestationServicePatchSpecificParams),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1319,26 +1593,5 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateAttestationProviderRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

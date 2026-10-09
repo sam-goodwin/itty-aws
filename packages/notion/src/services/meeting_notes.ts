@@ -7,8 +7,6 @@ import { UnknownNotionError } from "../errors.ts";
 import { NotionProtocol, type NotionOpError, type NotionOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { NotionOpError, NotionOpContext };
 
@@ -37,11 +35,18 @@ export type CreateMeetingNoteRequestLanguage =
   | "ar"
   | "he"
   | "pl";
+const CreateMeetingNoteRequestLanguage = S.String;
+
 /** Optional processing settings. */
 export interface CreateMeetingNoteRequestOptions {
   /** Whether to start summary generation after transcription. */
   kickoff_summary?: boolean;
 }
+const CreateMeetingNoteRequestOptions = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateMeetingNoteRequestOptions>;
+
 /** Audio or video source for the meeting note. */
 export interface CreateMeetingNoteRequestSource {
   /** Always "file_upload". */
@@ -49,6 +54,11 @@ export interface CreateMeetingNoteRequestSource {
   /** ID of a completed public API file upload. */
   file_upload_id: string;
 }
+const CreateMeetingNoteRequestSource = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateMeetingNoteRequestSource>;
+
 /** Parent page for the new meeting note. */
 export interface CreateMeetingNoteRequestParent {
   /** Always "page_id". */
@@ -56,6 +66,11 @@ export interface CreateMeetingNoteRequestParent {
   /** Page ID where the meeting note should be created. Required for file_upload sources. */
   page_id: string;
 }
+const CreateMeetingNoteRequestParent = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateMeetingNoteRequestParent>;
+
 export interface CreateMeetingNoteRequest {
   /** Title for the meeting note. */
   title?: string;
@@ -68,6 +83,11 @@ export interface CreateMeetingNoteRequest {
   /** Parent page for the new meeting note. */
   parent?: CreateMeetingNoteRequestParent;
 }
+const CreateMeetingNoteRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateMeetingNoteRequest>;
+
 export interface CreateMeetingNoteResponseBodyCase0 {
   /** Always "block". */
   object: string;
@@ -96,6 +116,8 @@ export type ApiColor =
   | "purple_background"
   | "pink_background"
   | "red_background";
+const ApiColor = S.String;
+
 export interface AnnotationResponse {
   bold: boolean;
   italic: boolean;
@@ -104,10 +126,17 @@ export interface AnnotationResponse {
   code: boolean;
   color: ApiColor;
 }
+const AnnotationResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AnnotationResponse>;
+
 export interface RichTextItemResponseTextLink {
   /** The URL of the link. */
   url: string;
 }
+const RichTextItemResponseTextLink = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<RichTextItemResponseTextLink>;
+
 /** If a rich text object's type value is `text`, then the corresponding text field contains an object including the text content and any inline link. */
 export interface RichTextItemResponseText {
   /** The actual text content of the text. */
@@ -115,11 +144,21 @@ export interface RichTextItemResponseText {
   /** An object with information about any inline link in this text, if included. */
   link: RichTextItemResponseTextLink | null;
 }
+const RichTextItemResponseText = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<RichTextItemResponseText>;
+
 export interface PartialUserObjectResponse {
   id: string;
   /** Always `user` */
   object: string;
 }
+const PartialUserObjectResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<PartialUserObjectResponse>;
+
 /** Details about the person, when the `type` of the user is `person`. */
 export interface UserObjectResponsePerson {
   /** The email of the person. */
@@ -324,11 +363,19 @@ export type RichTextItemResponseMention =
   | RichTextItemResponseMentionCase5
   | RichTextItemResponseMentionCase6
   | RichTextItemResponseMentionCase7;
+const RichTextItemResponseMention =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<RichTextItemResponseMention>;
+
 /** Notion supports inline LaTeX equations as rich text objects with a type value of `equation`. */
 export interface RichTextItemResponseEquation {
   /** A KaTeX compatible string. */
   expression: string;
 }
+const RichTextItemResponseEquation = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<RichTextItemResponseEquation>;
+
 export interface RichTextItemResponse {
   /** The plain text content of the rich text object, without any styling. */
   plain_text: string | Redacted.Redacted<string>;
@@ -345,8 +392,15 @@ export interface RichTextItemResponse {
   /** Notion supports inline LaTeX equations as rich text objects with a type value of `equation`. */
   equation?: RichTextItemResponseEquation;
 }
+const RichTextItemResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<RichTextItemResponse>;
+
 /** Title of the meeting note as rich text. */
 export type CreateMeetingNoteResponseBodyCase1MeetingNotesTitleList = Array<RichTextItemResponse>;
+const CreateMeetingNoteResponseBodyCase1MeetingNotesTitleList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateMeetingNoteResponseBodyCase1MeetingNotesTitleList>;
+
 /** Current processing status of the meeting note transcription. */
 export type CreateMeetingNoteResponseBodyCase1MeetingNotesStatus =
   | "transcription_not_started"
@@ -364,9 +418,20 @@ export interface CreateMeetingNoteResponseBodyCase1MeetingNotesChildren {
   /** Block ID of the transcript tab. */
   transcript_block_id?: string;
 }
+const CreateMeetingNoteResponseBodyCase1MeetingNotesChildren = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateMeetingNoteResponseBodyCase1MeetingNotesChildren>;
+
 /** List of attendee user IDs. */
 export type CreateMeetingNoteResponseBodyCase1MeetingNotesCalendarEventAttendeesList =
   Array<string>;
+const CreateMeetingNoteResponseBodyCase1MeetingNotesCalendarEventAttendeesList =
+  /*@__PURE__*/ __L.at(
+    __c1,
+    4,
+  ) as any as S.Schema<CreateMeetingNoteResponseBodyCase1MeetingNotesCalendarEventAttendeesList>;
+
 /** Calendar event metadata associated with this meeting note. */
 export interface CreateMeetingNoteResponseBodyCase1MeetingNotesCalendarEvent {
   /** ISO-8601 start time of the calendar event. */
@@ -383,6 +448,11 @@ export interface CreateMeetingNoteResponseBodyCase1MeetingNotesRecording {
   /** ISO-8601 timestamp when the recording ended. */
   end_time?: string;
 }
+const CreateMeetingNoteResponseBodyCase1MeetingNotesRecording = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateMeetingNoteResponseBodyCase1MeetingNotesRecording>;
+
 /** Meeting note content fields. */
 export interface CreateMeetingNoteResponseBodyCase1MeetingNotes {
   /** Title of the meeting note as rich text. */
@@ -421,9 +491,19 @@ export interface CreateMeetingNoteResponseBodyCase1 {
 export type CreateMeetingNoteResponseBody =
   | CreateMeetingNoteResponseBodyCase0
   | CreateMeetingNoteResponseBodyCase1;
+const CreateMeetingNoteResponseBody =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<CreateMeetingNoteResponseBody>;
+
 export type CreateMeetingNoteResponse = CreateMeetingNoteResponseBody;
+const CreateMeetingNoteResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateMeetingNoteResponse>;
+
 /** Operator for combinator filters. */
 export type QueryMeetingNotesRequestFilterOperator = "and" | "or";
+const QueryMeetingNotesRequestFilterOperator = S.String;
+
 /** Which meeting-note property to filter on. Prefer the short names; the schema URI form is accepted for compatibility. */
 export type QueryMeetingNotesRequestFilterFiltersItemCase0Property =
   | "title"
@@ -882,9 +962,17 @@ export interface QueryMeetingNotesRequestFilterFiltersItemCase1 {
 export type QueryMeetingNotesRequestFilterFiltersItem =
   | QueryMeetingNotesRequestFilterFiltersItemCase0
   | QueryMeetingNotesRequestFilterFiltersItemCase1;
+const QueryMeetingNotesRequestFilterFiltersItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryMeetingNotesRequestFilterFiltersItem>;
+
 /** Nested filters; each may be a combinator (and/or) or property filter. */
 export type QueryMeetingNotesRequestFilterFiltersList =
   Array<QueryMeetingNotesRequestFilterFiltersItem>;
+const QueryMeetingNotesRequestFilterFiltersList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<QueryMeetingNotesRequestFilterFiltersList>;
+
 /** Optional filter for querying meeting notes. Supports combinator (and/or) and property filters on title, attendees, created_time, created_by, last_edited_time, last_edited_by. */
 export interface QueryMeetingNotesRequestFilter {
   /** Operator for combinator filters. */
@@ -892,6 +980,11 @@ export interface QueryMeetingNotesRequestFilter {
   /** Nested filters; each may be a combinator (and/or) or property filter. */
   filters?: QueryMeetingNotesRequestFilterFiltersList;
 }
+const QueryMeetingNotesRequestFilter = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<QueryMeetingNotesRequestFilter>;
+
 /** Property name to sort by. */
 export type QueryMeetingNotesRequestSortItemProperty =
   | "title"
@@ -900,16 +993,30 @@ export type QueryMeetingNotesRequestSortItemProperty =
   | "created_by"
   | "last_edited_time"
   | "last_edited_by";
+const QueryMeetingNotesRequestSortItemProperty = S.String;
+
 /** Sort direction. Must be 'ascending' or 'descending'. */
 export type QueryMeetingNotesRequestSortItemDirection = "ascending" | "descending";
+const QueryMeetingNotesRequestSortItemDirection = S.String;
+
 export interface QueryMeetingNotesRequestSortItem {
   /** Property name to sort by. */
   property: QueryMeetingNotesRequestSortItemProperty | (string & {});
   /** Sort direction. Must be 'ascending' or 'descending'. */
   direction: QueryMeetingNotesRequestSortItemDirection | (string & {});
 }
+const QueryMeetingNotesRequestSortItem = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<QueryMeetingNotesRequestSortItem>;
+
 /** Optional sort order for the results. Each entry specifies a property name and direction. */
 export type QueryMeetingNotesRequestSortList = Array<QueryMeetingNotesRequestSortItem>;
+const QueryMeetingNotesRequestSortList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<QueryMeetingNotesRequestSortList>;
+
 export interface QueryMeetingNotesRequest {
   /** Optional filter for querying meeting notes. Supports combinator (and/or) and property filters on title, attendees, created_time, created_by, last_edited_time, last_edited_by. */
   filter?: QueryMeetingNotesRequestFilter;
@@ -918,8 +1025,16 @@ export interface QueryMeetingNotesRequest {
   /** Maximum number of results to return. Defaults to 50. */
   limit?: number;
 }
+const QueryMeetingNotesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<QueryMeetingNotesRequest>;
+
 /** Title of the meeting note as rich text. */
 export type QueryMeetingNotesResponseResultsItemMeetingNotesTitleList = Array<RichTextItemResponse>;
+const QueryMeetingNotesResponseResultsItemMeetingNotesTitleList =
+  CreateMeetingNoteResponseBodyCase1MeetingNotesTitleList as any as S.Schema<QueryMeetingNotesResponseResultsItemMeetingNotesTitleList>;
+
 /** Current processing status of the meeting note transcription. */
 export type QueryMeetingNotesResponseResultsItemMeetingNotesStatus =
   | "transcription_not_started"
@@ -928,12 +1043,17 @@ export type QueryMeetingNotesResponseResultsItemMeetingNotesStatus =
   | "transcription_failed"
   | "summary_in_progress"
   | "notes_ready";
+const QueryMeetingNotesResponseResultsItemMeetingNotesStatus = S.String;
+
 /** Block IDs for each tab (summary, notes, transcript). */
 export type QueryMeetingNotesResponseResultsItemMeetingNotesChildren =
   CreateMeetingNoteResponseBodyCase1MeetingNotesChildren;
 /** List of attendee user IDs. */
 export type QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEventAttendeesList =
   Array<string>;
+const QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEventAttendeesList =
+  CreateMeetingNoteResponseBodyCase1MeetingNotesCalendarEventAttendeesList as any as S.Schema<QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEventAttendeesList>;
+
 /** Calendar event metadata associated with this meeting note. */
 export interface QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEvent {
   /** ISO-8601 start time of the calendar event. */
@@ -943,6 +1063,11 @@ export interface QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEvent {
   /** List of attendee user IDs. */
   attendees?: QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEventAttendeesList;
 }
+const QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEvent = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEvent>;
+
 /** Start and end times of the actual recording. */
 export type QueryMeetingNotesResponseResultsItemMeetingNotesRecording =
   CreateMeetingNoteResponseBodyCase1MeetingNotesRecording;
@@ -959,6 +1084,11 @@ export interface QueryMeetingNotesResponseResultsItemMeetingNotes {
   /** Start and end times of the actual recording. */
   recording?: CreateMeetingNoteResponseBodyCase1MeetingNotesRecording;
 }
+const QueryMeetingNotesResponseResultsItemMeetingNotes = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<QueryMeetingNotesResponseResultsItemMeetingNotes>;
+
 export interface QueryMeetingNotesResponseResultsItem {
   /** Always "block". */
   object: string;
@@ -981,14 +1111,29 @@ export interface QueryMeetingNotesResponseResultsItem {
   /** Whether this meeting note is in the trash. */
   in_trash: boolean;
 }
+const QueryMeetingNotesResponseResultsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<QueryMeetingNotesResponseResultsItem>;
+
 /** Meeting note block objects. */
 export type QueryMeetingNotesResponseResultsList = Array<QueryMeetingNotesResponseResultsItem>;
+const QueryMeetingNotesResponseResultsList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<QueryMeetingNotesResponseResultsList>;
+
 export interface QueryMeetingNotesResponse {
   /** Meeting note block objects. */
   results: QueryMeetingNotesResponseResultsList;
   /** Whether additional results exist beyond the returned limit. */
   has_more: boolean;
 }
+const QueryMeetingNotesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<QueryMeetingNotesResponse>;
+
 export type CreateMeetingNoteError = NotionOpError;
 /** Create a meeting note */
 export const createMeetingNote: API.OperationMethod<
@@ -997,8 +1142,8 @@ export const createMeetingNote: API.OperationMethod<
   CreateMeetingNoteError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateMeetingNoteRequest>,
-  output: __S(14) as any as S.Schema<CreateMeetingNoteResponse>,
+  input: CreateMeetingNoteRequest,
+  output: CreateMeetingNoteResponse,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -1012,8 +1157,8 @@ export const queryMeetingNotes: API.OperationMethod<
   QueryMeetingNotesError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<QueryMeetingNotesRequest>,
-  output: __S(24) as any as S.Schema<QueryMeetingNotesResponse>,
+  input: QueryMeetingNotesRequest,
+  output: QueryMeetingNotesResponse,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -1052,10 +1197,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
-          language: S.optional(S.String),
-          options: S.optional(__S(0)),
-          source: S.optional(__S(1)),
-          parent: S.optional(__S(2)),
+          language: S.optional(CreateMeetingNoteRequestLanguage),
+          options: S.optional(CreateMeetingNoteRequestOptions),
+          source: S.optional(CreateMeetingNoteRequestSource),
+          parent: S.optional(CreateMeetingNoteRequestParent),
         }).pipe(T.Http({ method: "POST", uri: "/v1/blocks/meeting_notes", code: 200 })),
       ).annotate({ identifier: "CreateMeetingNoteRequest" });
     case 4:
@@ -1066,7 +1211,7 @@ function __c0(j: number): any {
           strikethrough: S.Boolean,
           underline: S.Boolean,
           code: S.Boolean,
-          color: S.String,
+          color: ApiColor,
         }),
       ).annotate({ identifier: "AnnotationResponse" });
     case 5:
@@ -1081,7 +1226,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           content: S.String,
-          link: S.NullOr(__S(5)),
+          link: S.NullOr(RichTextItemResponseTextLink),
         }),
       ).annotate({ identifier: "RichTextItemResponseText" });
     case 7:
@@ -1110,15 +1255,15 @@ function __c1(j: number): any {
         S.Struct({
           plain_text: S.String.pipe(T.SensitiveValue({})),
           href: S.NullOr(S.String),
-          annotations: __S(4),
+          annotations: AnnotationResponse,
           type: S.optional(S.String),
-          text: S.optional(__S(6)),
-          mention: S.optional(S.Unknown),
-          equation: S.optional(__S(8)),
+          text: S.optional(RichTextItemResponseText),
+          mention: S.optional(RichTextItemResponseMention),
+          equation: S.optional(RichTextItemResponseEquation),
         }),
       ).annotate({ identifier: "RichTextItemResponse" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(RichTextItemResponse);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1141,11 +1286,11 @@ function __c1(j: number): any {
         identifier: "CreateMeetingNoteResponseBodyCase1MeetingNotesRecording",
       });
     case 6:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => CreateMeetingNoteResponseBody.pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateMeetingNoteResponse",
       });
     case 7:
-      return S.Array(S.Unknown);
+      return S.Array(QueryMeetingNotesRequestFilterFiltersItem);
   }
 }
 function __c2(j: number): any {
@@ -1153,8 +1298,8 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          operator: S.String,
-          filters: S.optional(__S(15)),
+          operator: QueryMeetingNotesRequestFilterOperator,
+          filters: S.optional(QueryMeetingNotesRequestFilterFiltersList),
         }),
       ).annotate({
         identifier: "QueryMeetingNotesRequestFilter",
@@ -1162,19 +1307,19 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          property: S.String,
-          direction: S.String,
+          property: QueryMeetingNotesRequestSortItemProperty,
+          direction: QueryMeetingNotesRequestSortItemDirection,
         }),
       ).annotate({
         identifier: "QueryMeetingNotesRequestSortItem",
       });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(QueryMeetingNotesRequestSortItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          filter: S.optional(__S(16)),
-          sort: S.optional(__S(18)),
+          filter: S.optional(QueryMeetingNotesRequestFilter),
+          sort: S.optional(QueryMeetingNotesRequestSortList),
           limit: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/v1/blocks/meeting_notes/query", code: 200 })),
       ).annotate({ identifier: "QueryMeetingNotesRequest" });
@@ -1183,7 +1328,9 @@ function __c2(j: number): any {
         S.Struct({
           start_time: S.String,
           end_time: S.String,
-          attendees: S.optional(__S(12)),
+          attendees: S.optional(
+            QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEventAttendeesList,
+          ),
         }),
       ).annotate({
         identifier: "QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEvent",
@@ -1191,11 +1338,11 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          title: S.optional(__S(10)),
-          status: S.optional(S.String),
-          children: S.optional(__S(11)),
-          calendar_event: S.optional(__S(20)),
-          recording: S.optional(__S(13)),
+          title: S.optional(QueryMeetingNotesResponseResultsItemMeetingNotesTitleList),
+          status: S.optional(QueryMeetingNotesResponseResultsItemMeetingNotesStatus),
+          children: S.optional(CreateMeetingNoteResponseBodyCase1MeetingNotesChildren),
+          calendar_event: S.optional(QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEvent),
+          recording: S.optional(CreateMeetingNoteResponseBodyCase1MeetingNotesRecording),
         }),
       ).annotate({
         identifier: "QueryMeetingNotesResponseResultsItemMeetingNotes",
@@ -1206,11 +1353,11 @@ function __c2(j: number): any {
           object: S.String,
           id: S.String,
           type: S.String,
-          meeting_notes: __S(21),
+          meeting_notes: QueryMeetingNotesResponseResultsItemMeetingNotes,
           created_time: S.String,
           last_edited_time: S.String,
-          created_by: __S(7),
-          last_edited_by: __S(7),
+          created_by: PartialUserObjectResponse,
+          last_edited_by: PartialUserObjectResponse,
           has_children: S.Boolean,
           in_trash: S.Boolean,
         }),
@@ -1218,7 +1365,7 @@ function __c2(j: number): any {
         identifier: "QueryMeetingNotesResponseResultsItem",
       });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(QueryMeetingNotesResponseResultsItem);
   }
 }
 function __c3(j: number): any {
@@ -1226,28 +1373,11 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          results: __S(23),
+          results: QueryMeetingNotesResponseResultsList,
           has_more: S.Boolean,
         }),
       ).annotate({
         identifier: "QueryMeetingNotesResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

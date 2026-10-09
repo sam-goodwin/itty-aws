@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "codestar notifications",
   serviceShapeName: "CodeStarNotifications_20191015",
@@ -131,6 +129,7 @@ export class ValidationException
 export type NotificationRuleName = string | redacted.Redacted<string>;
 export type EventTypeId = string;
 export type EventTypeIds = string[];
+const EventTypeIds = /*@__PURE__*/ __L.at(__c0, 0);
 export type NotificationRuleResource = string;
 export type TargetType = string;
 export type TargetAddress = string | redacted.Redacted<string>;
@@ -138,13 +137,20 @@ export interface Target {
   TargetType?: string;
   TargetAddress?: string | redacted.Redacted<string>;
 }
+const Target = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Target>;
 export type Targets = Target[];
+const Targets = /*@__PURE__*/ __L.at(__c0, 2);
 export type DetailType = "BASIC" | "FULL" | (string & {});
+const DetailType = S.String;
+
 export type ClientRequestToken = string;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
+const Tags = /*@__PURE__*/ __L.at(__c0, 3);
 export type NotificationRuleStatus = "ENABLED" | "DISABLED" | (string & {});
+const NotificationRuleStatus = S.String;
+
 export interface CreateNotificationRuleRequest {
   Name: string | redacted.Redacted<string>;
   EventTypeIds: string[];
@@ -155,25 +161,45 @@ export interface CreateNotificationRuleRequest {
   Tags?: { [key: string]: string | undefined };
   Status?: NotificationRuleStatus;
 }
+const CreateNotificationRuleRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateNotificationRuleRequest>;
 export type NotificationRuleArn = string;
 export interface CreateNotificationRuleResult {
   Arn?: string;
 }
+const CreateNotificationRuleResult = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateNotificationRuleResult>;
 export interface DeleteNotificationRuleRequest {
   Arn: string;
 }
+const DeleteNotificationRuleRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DeleteNotificationRuleRequest>;
 export interface DeleteNotificationRuleResult {
   Arn?: string;
 }
+const DeleteNotificationRuleResult =
+  CreateNotificationRuleResult as any as S.Schema<DeleteNotificationRuleResult>;
 export type ForceUnsubscribeAll = boolean;
 export interface DeleteTargetRequest {
   TargetAddress: string | redacted.Redacted<string>;
   ForceUnsubscribeAll?: boolean;
 }
+const DeleteTargetRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DeleteTargetRequest>;
 export interface DeleteTargetResult {}
+const DeleteTargetResult = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DeleteTargetResult>;
 export interface DescribeNotificationRuleRequest {
   Arn: string;
 }
+const DescribeNotificationRuleRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DescribeNotificationRuleRequest>;
 export type ServiceName = string;
 export type EventTypeName = string;
 export type ResourceType = string;
@@ -183,7 +209,9 @@ export interface EventTypeSummary {
   EventTypeName?: string;
   ResourceType?: string;
 }
+const EventTypeSummary = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<EventTypeSummary>;
 export type EventTypeBatch = EventTypeSummary[];
+const EventTypeBatch = /*@__PURE__*/ __L.at(__c1, 3);
 export type TargetStatus =
   | "PENDING"
   | "ACTIVE"
@@ -191,12 +219,16 @@ export type TargetStatus =
   | "INACTIVE"
   | "DEACTIVATED"
   | (string & {});
+const TargetStatus = S.String;
+
 export interface TargetSummary {
   TargetAddress?: string | redacted.Redacted<string>;
   TargetType?: string;
   TargetStatus?: TargetStatus;
 }
+const TargetSummary = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<TargetSummary>;
 export type TargetsBatch = TargetSummary[];
+const TargetsBatch = /*@__PURE__*/ __L.at(__c1, 5);
 export type NotificationRuleCreatedBy = string;
 export type CreatedTimestamp = Date;
 export type LastModifiedTimestamp = Date;
@@ -213,13 +245,21 @@ export interface DescribeNotificationRuleResult {
   LastModifiedTimestamp?: Date;
   Tags?: { [key: string]: string | undefined };
 }
+const DescribeNotificationRuleResult = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DescribeNotificationRuleResult>;
 export type ListEventTypesFilterName = "RESOURCE_TYPE" | "SERVICE_NAME" | (string & {});
+const ListEventTypesFilterName = S.String;
+
 export type ListEventTypesFilterValue = string;
 export interface ListEventTypesFilter {
   Name: ListEventTypesFilterName;
   Value: string;
 }
+const ListEventTypesFilter = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ListEventTypesFilter>;
 export type ListEventTypesFilters = ListEventTypesFilter[];
+const ListEventTypesFilters = /*@__PURE__*/ __L.at(__c2, 0);
 export type NextToken = string;
 export type MaxResults = number;
 export interface ListEventTypesRequest {
@@ -227,43 +267,76 @@ export interface ListEventTypesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListEventTypesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListEventTypesRequest>;
 export interface ListEventTypesResult {
   EventTypes?: EventTypeSummary[];
   NextToken?: string;
 }
+const ListEventTypesResult = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ListEventTypesResult>;
 export type ListNotificationRulesFilterName =
   | "EVENT_TYPE_ID"
   | "CREATED_BY"
   | "RESOURCE"
   | "TARGET_ADDRESS"
   | (string & {});
+const ListNotificationRulesFilterName = S.String;
+
 export type ListNotificationRulesFilterValue = string;
 export interface ListNotificationRulesFilter {
   Name: ListNotificationRulesFilterName;
   Value: string;
 }
+const ListNotificationRulesFilter = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListNotificationRulesFilter>;
 export type ListNotificationRulesFilters = ListNotificationRulesFilter[];
+const ListNotificationRulesFilters = /*@__PURE__*/ __L.at(__c2, 4);
 export interface ListNotificationRulesRequest {
   Filters?: ListNotificationRulesFilter[];
   NextToken?: string;
   MaxResults?: number;
 }
+const ListNotificationRulesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ListNotificationRulesRequest>;
 export type NotificationRuleId = string;
 export interface NotificationRuleSummary {
   Id?: string;
   Arn?: string;
 }
+const NotificationRuleSummary = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<NotificationRuleSummary>;
 export type NotificationRuleBatch = NotificationRuleSummary[];
+const NotificationRuleBatch = /*@__PURE__*/ __L.at(__c2, 7);
 export interface ListNotificationRulesResult {
   NextToken?: string;
   NotificationRules?: NotificationRuleSummary[];
 }
+const ListNotificationRulesResult = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListNotificationRulesResult>;
 export interface ListTagsForResourceRequest {
   Arn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResult {
   Tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResult = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListTagsForResourceResult>;
 export type ListTargetsFilterName =
   | "TARGET_TYPE"
   | "TARGET_ADDRESS"
@@ -275,43 +348,55 @@ export interface ListTargetsFilter {
   Value: string;
 }
 export type ListTargetsFilters = ListTargetsFilter[];
+const ListTargetsFilters = ListEventTypesFilters as any as S.Schema<ListTargetsFilters>;
 export interface ListTargetsRequest {
   Filters?: ListTargetsFilter[];
   NextToken?: string;
   MaxResults?: number;
 }
+const ListTargetsRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ListTargetsRequest>;
 export interface ListTargetsResult {
   Targets?: TargetSummary[];
   NextToken?: string;
 }
+const ListTargetsResult = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ListTargetsResult>;
 export interface SubscribeRequest {
   Arn: string;
   Target: Target;
   ClientRequestToken?: string;
 }
+const SubscribeRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<SubscribeRequest>;
 export interface SubscribeResult {
   Arn?: string;
 }
+const SubscribeResult = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<SubscribeResult>;
 export interface TagResourceRequest {
   Arn: string;
   Tags: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResult {
   Tags?: { [key: string]: string | undefined };
 }
+const TagResourceResult = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<TagResourceResult>;
 export interface UnsubscribeRequest {
   Arn: string;
   TargetAddress: string | redacted.Redacted<string>;
 }
+const UnsubscribeRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<UnsubscribeRequest>;
 export interface UnsubscribeResult {
   Arn: string;
 }
+const UnsubscribeResult = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<UnsubscribeResult>;
 export type TagKeys = string[];
+const TagKeys = EventTypeIds as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   Arn: string;
   TagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResult {}
+const UntagResourceResult = DeleteTargetResult as any as S.Schema<UntagResourceResult>;
 export interface UpdateNotificationRuleRequest {
   Arn: string;
   Name?: string | redacted.Redacted<string>;
@@ -320,7 +405,13 @@ export interface UpdateNotificationRuleRequest {
   Targets?: Target[];
   DetailType?: DetailType;
 }
+const UpdateNotificationRuleRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<UpdateNotificationRuleRequest>;
 export interface UpdateNotificationRuleResult {}
+const UpdateNotificationRuleResult =
+  DeleteTargetResult as any as S.Schema<UpdateNotificationRuleResult>;
 export type Message = string;
 export type CreateNotificationRuleError =
   | AccessDeniedException
@@ -341,8 +432,8 @@ export const createNotificationRule: API.OperationMethod<
   CreateNotificationRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateNotificationRuleRequest>,
-  output: __S(5) as any as S.Schema<CreateNotificationRuleResult>,
+  input: CreateNotificationRuleRequest,
+  output: CreateNotificationRuleResult,
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
@@ -370,8 +461,8 @@ export const deleteNotificationRule: API.OperationMethod<
   DeleteNotificationRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DeleteNotificationRuleRequest>,
-  output: __S(5) as any as S.Schema<DeleteNotificationRuleResult>,
+  input: DeleteNotificationRuleRequest,
+  output: DeleteNotificationRuleResult,
   errors: [ConcurrentModificationException, LimitExceededException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -388,8 +479,8 @@ export const deleteTarget: API.OperationMethod<
   DeleteTargetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DeleteTargetRequest>,
-  output: __S(8) as any as S.Schema<DeleteTargetResult>,
+  input: DeleteTargetRequest,
+  output: DeleteTargetResult,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -409,8 +500,8 @@ export const describeNotificationRule: API.OperationMethod<
   DescribeNotificationRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DescribeNotificationRuleRequest>,
-  output: __S(14) as any as S.Schema<DescribeNotificationRuleResult>,
+  input: DescribeNotificationRuleRequest,
+  output: DescribeNotificationRuleResult,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -428,8 +519,8 @@ export const listEventTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventTypeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(17) as any as S.Schema<ListEventTypesRequest>,
-  output: __S(18) as any as S.Schema<ListEventTypesResult>,
+  input: ListEventTypesRequest,
+  output: ListEventTypesResult,
   errors: [InvalidNextTokenException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -456,8 +547,8 @@ export const listNotificationRules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NotificationRuleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(21) as any as S.Schema<ListNotificationRulesRequest>,
-  output: __S(24) as any as S.Schema<ListNotificationRulesResult>,
+  input: ListNotificationRulesRequest,
+  output: ListNotificationRulesResult,
   errors: [InvalidNextTokenException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -483,8 +574,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(26) as any as S.Schema<ListTagsForResourceResult>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResult,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -502,8 +593,8 @@ export const listTargets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TargetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(27) as any as S.Schema<ListTargetsRequest>,
-  output: __S(28) as any as S.Schema<ListTargetsResult>,
+  input: ListTargetsRequest,
+  output: ListTargetsResult,
   errors: [InvalidNextTokenException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -532,8 +623,8 @@ export const subscribe: API.OperationMethod<
   SubscribeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<SubscribeRequest>,
-  output: __S(30) as any as S.Schema<SubscribeResult>,
+  input: SubscribeRequest,
+  output: SubscribeResult,
   errors: [ConfigurationException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -555,8 +646,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<TagResourceRequest>,
-  output: __S(32) as any as S.Schema<TagResourceResult>,
+  input: TagResourceRequest,
+  output: TagResourceResult,
   errors: [
     ConcurrentModificationException,
     LimitExceededException,
@@ -580,8 +671,8 @@ export const unsubscribe: API.OperationMethod<
   UnsubscribeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<UnsubscribeRequest>,
-  output: __S(34) as any as S.Schema<UnsubscribeResult>,
+  input: UnsubscribeRequest,
+  output: UnsubscribeResult,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -604,8 +695,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<UntagResourceRequest>,
-  output: __S(8) as any as S.Schema<UntagResourceResult>,
+  input: UntagResourceRequest,
+  output: UntagResourceResult,
   errors: [
     ConcurrentModificationException,
     LimitExceededException,
@@ -635,8 +726,8 @@ export const updateNotificationRule: API.OperationMethod<
   UpdateNotificationRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<UpdateNotificationRuleRequest>,
-  output: __S(8) as any as S.Schema<UpdateNotificationRuleResult>,
+  input: UpdateNotificationRuleRequest,
+  output: UpdateNotificationRuleResult,
   errors: [ConfigurationException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -653,20 +744,20 @@ function __c0(j: number): any {
         S.Struct({ TargetType: S.optional(S.String), TargetAddress: S.optional(SensitiveString) }),
       ).annotate({ identifier: "Target" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(Target);
     case 3:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 4:
       return S.suspend(() =>
         S.Struct({
           Name: SensitiveString,
-          EventTypeIds: __S(0),
+          EventTypeIds: EventTypeIds,
           Resource: S.String,
-          Targets: __S(2),
-          DetailType: S.String,
+          Targets: Targets,
+          DetailType: DetailType,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(3)),
-          Status: S.optional(S.String),
+          Tags: S.optional(Tags),
+          Status: S.optional(NotificationRuleStatus),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/createNotificationRule" }),
@@ -741,49 +832,49 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "EventTypeSummary" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(EventTypeSummary);
     case 4:
       return S.suspend(() =>
         S.Struct({
           TargetAddress: S.optional(SensitiveString),
           TargetType: S.optional(S.String),
-          TargetStatus: S.optional(S.String),
+          TargetStatus: S.optional(TargetStatus),
         }),
       ).annotate({ identifier: "TargetSummary" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(TargetSummary);
     case 6:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
           Name: S.optional(SensitiveString),
-          EventTypes: S.optional(__S(11)),
+          EventTypes: S.optional(EventTypeBatch),
           Resource: S.optional(S.String),
-          Targets: S.optional(__S(13)),
-          DetailType: S.optional(S.String),
+          Targets: S.optional(TargetsBatch),
+          DetailType: S.optional(DetailType),
           CreatedBy: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(NotificationRuleStatus),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(3)),
+          Tags: S.optional(Tags),
         }),
       ).annotate({
         identifier: "DescribeNotificationRuleResult",
       });
     case 7:
-      return S.suspend(() => S.Struct({ Name: S.String, Value: S.String })).annotate({
-        identifier: "ListEventTypesFilter",
-      });
+      return S.suspend(() =>
+        S.Struct({ Name: ListEventTypesFilterName, Value: S.String }),
+      ).annotate({ identifier: "ListEventTypesFilter" });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(ListEventTypesFilter);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(16)),
+          Filters: S.optional(ListEventTypesFilters),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(
@@ -792,18 +883,20 @@ function __c2(j: number): any {
       ).annotate({ identifier: "ListEventTypesRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ EventTypes: S.optional(__S(11)), NextToken: S.optional(S.String) }),
+        S.Struct({ EventTypes: S.optional(EventTypeBatch), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListEventTypesResult" });
     case 3:
-      return S.suspend(() => S.Struct({ Name: S.String, Value: S.String })).annotate({
+      return S.suspend(() =>
+        S.Struct({ Name: ListNotificationRulesFilterName, Value: S.String }),
+      ).annotate({
         identifier: "ListNotificationRulesFilter",
       });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(ListNotificationRulesFilter);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(20)),
+          Filters: S.optional(ListNotificationRulesFilters),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(
@@ -824,7 +917,7 @@ function __c2(j: number): any {
         S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String) }),
       ).annotate({ identifier: "NotificationRuleSummary" });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(NotificationRuleSummary);
   }
 }
 function __c3(j: number): any {
@@ -833,7 +926,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          NotificationRules: S.optional(__S(23)),
+          NotificationRules: S.optional(NotificationRuleBatch),
         }),
       ).annotate({
         identifier: "ListNotificationRulesResult",
@@ -854,13 +947,13 @@ function __c3(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(3)) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(Tags) })).annotate({
         identifier: "ListTagsForResourceResult",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(16)),
+          Filters: S.optional(ListTargetsFilters),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(
@@ -869,11 +962,11 @@ function __c3(j: number): any {
       ).annotate({ identifier: "ListTargetsRequest" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Targets: S.optional(__S(13)), NextToken: S.optional(S.String) }),
+        S.Struct({ Targets: S.optional(TargetsBatch), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTargetsResult" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Arn: S.String, Target: __S(1), ClientRequestToken: S.optional(S.String) }).pipe(
+        S.Struct({ Arn: S.String, Target: Target, ClientRequestToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/subscribe" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "SubscribeRequest" });
@@ -883,7 +976,7 @@ function __c3(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Arn: S.String, Tags: __S(3) }).pipe(
+        S.Struct({ Arn: S.String, Tags: Tags }).pipe(
           T.all(T.Http({ method: "POST", uri: "/tagResource" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -892,7 +985,7 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(3)) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(Tags) })).annotate({
         identifier: "TagResourceResult",
       });
     case 1:
@@ -909,7 +1002,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Arn: S.String.pipe(T.HttpLabel("Arn")),
-          TagKeys: __S(0).pipe(T.HttpQuery("tagKeys")),
+          TagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/untagResource/{Arn}" }),
@@ -926,10 +1019,10 @@ function __c4(j: number): any {
         S.Struct({
           Arn: S.String,
           Name: S.optional(SensitiveString),
-          Status: S.optional(S.String),
-          EventTypeIds: S.optional(__S(0)),
-          Targets: S.optional(__S(2)),
-          DetailType: S.optional(S.String),
+          Status: S.optional(NotificationRuleStatus),
+          EventTypeIds: S.optional(EventTypeIds),
+          Targets: S.optional(Targets),
+          DetailType: S.optional(DetailType),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/updateNotificationRule" }),
@@ -943,24 +1036,5 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "UpdateNotificationRuleRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -66,12 +64,22 @@ export class NotFound
 
 /** Message for fetching SCM read token. */
 export interface FetchReadTokenRequest {}
+const FetchReadTokenRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<FetchReadTokenRequest>;
+
 export interface AccessReadTokenProjectsLocationsConnectionsRepositoriesRequest {
   /** Required. The resource name of the repository in the format `projects/*\/locations/*\/connections/*\/repositories/*`. */
   repository: string;
   /** Request body */
   body?: FetchReadTokenRequest;
 }
+const AccessReadTokenProjectsLocationsConnectionsRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AccessReadTokenProjectsLocationsConnectionsRepositoriesRequest>;
+
 /** Message for responding to get read token. */
 export interface FetchReadTokenResponse {
   /** Expiration timestamp. Can be empty if unknown or non-expiring. */
@@ -79,6 +87,11 @@ export interface FetchReadTokenResponse {
   /** The token content. */
   token?: string;
 }
+const FetchReadTokenResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<FetchReadTokenResponse>;
+
 /** Message for fetching SCM read/write token. */
 export type FetchReadWriteTokenRequest = FetchReadTokenRequest;
 export interface AccessReadWriteTokenProjectsLocationsConnectionsRepositoriesRequest {
@@ -87,6 +100,11 @@ export interface AccessReadWriteTokenProjectsLocationsConnectionsRepositoriesReq
   /** Request body */
   body?: FetchReadTokenRequest;
 }
+const AccessReadWriteTokenProjectsLocationsConnectionsRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AccessReadWriteTokenProjectsLocationsConnectionsRepositoriesRequest>;
+
 /** Message for responding to get read/write token. */
 export interface FetchReadWriteTokenResponse {
   /** The token content. */
@@ -94,7 +112,14 @@ export interface FetchReadWriteTokenResponse {
   /** Expiration timestamp. Can be empty if unknown or non-expiring. */
   expirationTime?: string;
 }
+const FetchReadWriteTokenResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<FetchReadWriteTokenResponse>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StringMap>;
+
 /** A repository associated to a parent connection. */
 export interface Repository {
   /** Output only. External ID of the webhook created for the repository. */
@@ -112,6 +137,8 @@ export interface Repository {
   /** Output only. Server assigned timestamp for when the connection was created. */
   createTime?: string;
 }
+const Repository = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Repository>;
+
 /** Message for creating a Repository. */
 export interface CreateRepositoryRequest {
   /** Required. The repository to create. */
@@ -121,20 +148,44 @@ export interface CreateRepositoryRequest {
   /** Required. The ID to use for the repository, which will become the final component of the repository's resource name. This ID should be unique in the connection. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@. */
   repositoryId?: string;
 }
+const CreateRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateRepositoryRequest>;
+
 export type CreateRepositoryRequestList = Array<CreateRepositoryRequest>;
+const CreateRepositoryRequestList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateRepositoryRequestList>;
+
 /** Message for creating repositoritories in batch. */
 export interface BatchCreateRepositoriesRequest {
   /** Required. The request messages specifying the repositories to create. */
   requests?: CreateRepositoryRequestList;
 }
+const BatchCreateRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<BatchCreateRepositoriesRequest>;
+
 export interface BatchCreateProjectsLocationsConnectionsRepositoriesRequest {
   /** Required. The connection to contain all the repositories being created. Format: projects/*\/locations/*\/connections/* The parent field in the CreateRepositoryRequest messages must either be empty or match this field. */
   parent: string;
   /** Request body */
   body?: BatchCreateRepositoriesRequest;
 }
+const BatchCreateProjectsLocationsConnectionsRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<BatchCreateProjectsLocationsConnectionsRepositoriesRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -144,6 +195,8 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
+const Status = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Status>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -157,6 +210,8 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
+const Operation = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Operation>;
+
 /** The request message for Operations.CancelOperation. */
 export type CancelOperationRequest = FetchReadTokenRequest;
 export interface CancelProjectsLocationsOperationsRequest {
@@ -165,8 +220,15 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: FetchReadTokenRequest;
 }
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = FetchReadTokenRequest as any as S.Schema<Empty>;
+
 /** Represents a personal access token that authorized the Connection, and associated metadata. */
 export interface UserCredential {
   /** Output only. The username associated to this token. */
@@ -174,11 +236,18 @@ export interface UserCredential {
   /** Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*\/secrets/*\/versions/*`. */
   userTokenSecretVersion?: string;
 }
+const UserCredential = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<UserCredential>;
+
 /** ServiceDirectoryConfig represents Service Directory configuration for a connection. */
 export interface GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig {
   /** Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}. */
   service?: string;
 }
+const GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig>;
+
 /** Configuration for connections to Bitbucket Data Center. */
 export interface BitbucketDataCenterConfig {
   /** Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*\/secrets/*\/versions/*`. */
@@ -196,6 +265,11 @@ export interface BitbucketDataCenterConfig {
   /** Optional. Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet. */
   serviceDirectoryConfig?: GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig;
 }
+const BitbucketDataCenterConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<BitbucketDataCenterConfig>;
+
 /** Configuration for connections to gitlab.com or an instance of GitLab Enterprise. */
 export interface GoogleDevtoolsCloudbuildV2GitLabConfig {
   /** Required. A GitLab personal access token with the `api` scope access. */
@@ -213,6 +287,11 @@ export interface GoogleDevtoolsCloudbuildV2GitLabConfig {
   /** Required. A GitLab personal access token with the minimum `read_api` scope access. */
   readAuthorizerCredential?: UserCredential;
 }
+const GoogleDevtoolsCloudbuildV2GitLabConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GoogleDevtoolsCloudbuildV2GitLabConfig>;
+
 /** Configuration for connections to an instance of GitHub Enterprise. */
 export interface GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig {
   /** Optional. The URL-friendly name of the GitHub App. */
@@ -236,12 +315,19 @@ export interface GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig {
   /** Optional. Id of the GitHub App created from the manifest. */
   appId?: string;
 }
+const GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig>;
+
 export type InstallationStateStageEnum =
   | "STAGE_UNSPECIFIED"
   | "PENDING_CREATE_APP"
   | "PENDING_USER_OAUTH"
   | "PENDING_INSTALL_APP"
   | "COMPLETE";
+const InstallationStateStageEnum = S.String;
+
 /** Describes stage and necessary actions to be taken by the user to complete the installation. Used for GitHub and GitHub Enterprise based connections. */
 export interface InstallationState {
   /** Output only. Link to follow for next action. Empty string if the installation is already complete. */
@@ -251,6 +337,8 @@ export interface InstallationState {
   /** Output only. Current step of the installation process. */
   stage?: InstallationStateStageEnum | (string & {});
 }
+const InstallationState = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<InstallationState>;
+
 /** Configuration for connections to Bitbucket Cloud. */
 export interface BitbucketCloudConfig {
   /** Required. An access token with the `repository` access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate the credentials. */
@@ -262,6 +350,8 @@ export interface BitbucketCloudConfig {
   /** Required. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*\/secrets/*\/versions/*`. */
   webhookSecretSecretVersion?: string;
 }
+const BitbucketCloudConfig = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<BitbucketCloudConfig>;
+
 /** Represents an OAuth token of the account that authorized the Connection, and associated metadata. */
 export interface OAuthCredential {
   /** Output only. The username associated to this token. */
@@ -269,6 +359,8 @@ export interface OAuthCredential {
   /** Optional. A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*\/secrets/*\/versions/*`. */
   oauthTokenSecretVersion?: string;
 }
+const OAuthCredential = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<OAuthCredential>;
+
 /** Configuration for connections to github.com. */
 export interface GitHubConfig {
   /** Optional. OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App. */
@@ -276,6 +368,8 @@ export interface GitHubConfig {
   /** Optional. GitHub App installation id. */
   appInstallationId?: string;
 }
+const GitHubConfig = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GitHubConfig>;
+
 /** A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Data Center, Bitbucket Cloud or GitLab. */
 export interface Connection {
   /** Configuration for connections to Bitbucket Data Center. */
@@ -305,6 +399,8 @@ export interface Connection {
   /** Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled. */
   disabled?: boolean;
 }
+const Connection = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Connection>;
+
 export interface CreateProjectsLocationsConnectionsRequest {
   /** Required. Project and location where the connection will be created. Format: `projects/*\/locations/*`. */
   parent: string;
@@ -313,6 +409,11 @@ export interface CreateProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: Connection;
 }
+const CreateProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateProjectsLocationsConnectionsRequest>;
+
 export interface CreateProjectsLocationsConnectionsRepositoriesRequest {
   /** Required. The connection to contain the repository. If the request is part of a BatchCreateRepositoriesRequest, this field should be empty or match the parent specified there. */
   parent: string;
@@ -321,6 +422,11 @@ export interface CreateProjectsLocationsConnectionsRepositoriesRequest {
   /** Request body */
   body?: Repository;
 }
+const CreateProjectsLocationsConnectionsRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateProjectsLocationsConnectionsRepositoriesRequest>;
+
 export interface DeleteProjectsLocationsConnectionsRequest {
   /** If set, validate the request, but do not actually post it. */
   validateOnly?: boolean;
@@ -329,6 +435,11 @@ export interface DeleteProjectsLocationsConnectionsRequest {
   /** The current etag of the connection. If an etag is provided and does not match the current etag of the connection, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
+const DeleteProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DeleteProjectsLocationsConnectionsRequest>;
+
 export interface DeleteProjectsLocationsConnectionsRepositoriesRequest {
   /** If set, validate the request, but do not actually post it. */
   validateOnly?: boolean;
@@ -337,10 +448,17 @@ export interface DeleteProjectsLocationsConnectionsRepositoriesRequest {
   /** The current etag of the repository. If an etag is provided and does not match the current etag of the repository, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
+const DeleteProjectsLocationsConnectionsRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DeleteProjectsLocationsConnectionsRepositoriesRequest>;
+
 export type FetchGitRefsProjectsLocationsConnectionsRepositoriesRefTypeEnum =
   | "REF_TYPE_UNSPECIFIED"
   | "TAG"
   | "BRANCH";
+const FetchGitRefsProjectsLocationsConnectionsRepositoriesRefTypeEnum = S.String;
+
 export interface FetchGitRefsProjectsLocationsConnectionsRepositoriesRequest {
   /** Optional. Page start. */
   pageToken?: string;
@@ -351,7 +469,14 @@ export interface FetchGitRefsProjectsLocationsConnectionsRepositoriesRequest {
   /** Required. The resource name of the repository in the format `projects/*\/locations/*\/connections/*\/repositories/*`. */
   repository: string;
 }
+const FetchGitRefsProjectsLocationsConnectionsRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<FetchGitRefsProjectsLocationsConnectionsRepositoriesRequest>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<StringList>;
+
 /** Response for fetching git refs */
 export interface FetchGitRefsResponse {
   /** Name of the refs fetched. */
@@ -359,6 +484,8 @@ export interface FetchGitRefsResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
+const FetchGitRefsResponse = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<FetchGitRefsResponse>;
+
 export interface FetchLinkableRepositoriesProjectsLocationsConnectionsRequest {
   /** Required. The name of the Connection. Format: `projects/*\/locations/*\/connections/*`. */
   connection: string;
@@ -367,7 +494,14 @@ export interface FetchLinkableRepositoriesProjectsLocationsConnectionsRequest {
   /** Number of results to return in the list. Default to 20. */
   pageSize?: number;
 }
+const FetchLinkableRepositoriesProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<FetchLinkableRepositoriesProjectsLocationsConnectionsRequest>;
+
 export type RepositoryList = Array<Repository>;
+const RepositoryList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<RepositoryList>;
+
 /** Response message for FetchLinkableRepositories. */
 export interface FetchLinkableRepositoriesResponse {
   /** A token identifying a page of results the server should return. */
@@ -375,12 +509,22 @@ export interface FetchLinkableRepositoriesResponse {
   /** repositories ready to be created. */
   repositories?: RepositoryList;
 }
+const FetchLinkableRepositoriesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<FetchLinkableRepositoriesResponse>;
+
 export interface GetIamPolicyProjectsLocationsConnectionsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
+const GetIamPolicyProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetIamPolicyProjectsLocationsConnectionsRequest>;
+
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
@@ -392,6 +536,8 @@ export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
+const Expr = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Expr>;
+
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
@@ -401,12 +547,18 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
+const Binding = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Binding>;
+
 export type BindingList = Array<Binding>;
+const BindingList = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<BindingList>;
+
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
+const AuditLogConfigLogTypeEnum = S.String;
+
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
@@ -414,7 +566,11 @@ export interface AuditLogConfig {
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
+const AuditLogConfig = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<AuditLogConfig>;
+
 export type AuditLogConfigList = Array<AuditLogConfig>;
+const AuditLogConfigList = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<AuditLogConfigList>;
+
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -422,7 +578,11 @@ export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: AuditLogConfigList;
 }
+const AuditConfig = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<AuditConfig>;
+
 export type AuditConfigList = Array<AuditConfig>;
+const AuditConfigList = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<AuditConfigList>;
+
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
@@ -434,10 +594,17 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
 }
+const Policy = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<Policy>;
+
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
+const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GetProjectsLocationsRequest>;
+
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
@@ -451,18 +618,35 @@ export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
 }
+const Location = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Location>;
+
 export interface GetProjectsLocationsConnectionsRequest {
   /** Required. The name of the Connection to retrieve. Format: `projects/*\/locations/*\/connections/*`. */
   name: string;
 }
+const GetProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetProjectsLocationsConnectionsRequest>;
+
 export interface GetProjectsLocationsConnectionsRepositoriesRequest {
   /** Required. The name of the Repository to retrieve. Format: `projects/*\/locations/*\/connections/*\/repositories/*`. */
   name: string;
 }
+const GetProjectsLocationsConnectionsRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetProjectsLocationsConnectionsRepositoriesRequest>;
+
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
@@ -475,7 +659,14 @@ export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
+const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListProjectsLocationsRequest>;
+
 export type LocationList = Array<Location>;
+const LocationList = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<LocationList>;
+
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -483,6 +674,11 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
+const ListLocationsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ListLocationsResponse>;
+
 export interface ListProjectsLocationsConnectionsRequest {
   /** Optional. If set to true, the response will return partial results when some regions are unreachable. If set to false, the response will fail if any region is unreachable. */
   returnPartialSuccess?: boolean;
@@ -493,7 +689,14 @@ export interface ListProjectsLocationsConnectionsRequest {
   /** Number of results to return in the list. */
   pageSize?: number;
 }
+const ListProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ListProjectsLocationsConnectionsRequest>;
+
 export type ConnectionList = Array<Connection>;
+const ConnectionList = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ConnectionList>;
+
 /** Message for response to listing Connections. */
 export interface ListConnectionsResponse {
   /** A token identifying a page of results the server should return. */
@@ -503,6 +706,11 @@ export interface ListConnectionsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
+const ListConnectionsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListConnectionsResponse>;
+
 export interface ListProjectsLocationsConnectionsRepositoriesRequest {
   /** Number of results to return in the list. */
   pageSize?: number;
@@ -515,6 +723,11 @@ export interface ListProjectsLocationsConnectionsRepositoriesRequest {
   /** Optional. If set to true, the response will return partial results when some regions are unreachable. If set to false, the response will fail if any region is unreachable. */
   returnPartialSuccess?: boolean;
 }
+const ListProjectsLocationsConnectionsRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ListProjectsLocationsConnectionsRepositoriesRequest>;
+
 /** Message for response to listing Repositories. */
 export interface ListRepositoriesResponse {
   /** The list of Repositories. */
@@ -524,6 +737,11 @@ export interface ListRepositoriesResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
+const ListRepositoriesResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ListRepositoriesResponse>;
+
 export interface PatchProjectsLocationsConnectionsRequest {
   /** The list of fields to be updated. */
   updateMask?: string;
@@ -536,6 +754,11 @@ export interface PatchProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: Connection;
 }
+const PatchProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<PatchProjectsLocationsConnectionsRequest>;
+
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface HttpBody {
   /** The HTTP Content-Type header value specifying the content type of the body. */
@@ -545,6 +768,8 @@ export interface HttpBody {
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
   extensions?: DocumentMapList;
 }
+const HttpBody = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<HttpBody>;
+
 export interface ProcessWebhookProjectsLocationsConnectionsRequest {
   /** Arbitrary additional key to find the matching repository for a webhook event if needed. */
   webhookKey?: string;
@@ -553,6 +778,11 @@ export interface ProcessWebhookProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: HttpBody;
 }
+const ProcessWebhookProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ProcessWebhookProjectsLocationsConnectionsRequest>;
+
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -560,28 +790,48 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
+const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<SetIamPolicyRequest>;
+
 export interface SetIamPolicyProjectsLocationsConnectionsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<SetIamPolicyProjectsLocationsConnectionsRequest>;
+
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
+const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<TestIamPermissionsRequest>;
+
 export interface TestIamPermissionsProjectsLocationsConnectionsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsConnectionsRequest>;
+
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
+const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
+
 export type AccessReadTokenProjectsLocationsConnectionsRepositoriesError =
   | NotFound
   | Forbidden
@@ -595,8 +845,8 @@ export const accessReadTokenProjectsLocationsConnectionsRepositories: API.Operat
   AccessReadTokenProjectsLocationsConnectionsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AccessReadTokenProjectsLocationsConnectionsRepositoriesRequest>,
-  output: __S(2) as any as S.Schema<FetchReadTokenResponse>,
+  input: AccessReadTokenProjectsLocationsConnectionsRepositoriesRequest,
+  output: FetchReadTokenResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -615,10 +865,8 @@ export const accessReadWriteTokenProjectsLocationsConnectionsRepositories: API.O
   AccessReadWriteTokenProjectsLocationsConnectionsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    3,
-  ) as any as S.Schema<AccessReadWriteTokenProjectsLocationsConnectionsRepositoriesRequest>,
-  output: __S(4) as any as S.Schema<FetchReadWriteTokenResponse>,
+  input: AccessReadWriteTokenProjectsLocationsConnectionsRepositoriesRequest,
+  output: FetchReadWriteTokenResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -637,8 +885,8 @@ export const batchCreateProjectsLocationsConnectionsRepositories: API.OperationM
   BatchCreateProjectsLocationsConnectionsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<BatchCreateProjectsLocationsConnectionsRepositoriesRequest>,
-  output: __S(14) as any as S.Schema<Operation>,
+  input: BatchCreateProjectsLocationsConnectionsRepositoriesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -657,8 +905,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: CancelProjectsLocationsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -677,8 +925,8 @@ export const createProjectsLocationsConnections: API.OperationMethod<
   CreateProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<CreateProjectsLocationsConnectionsRequest>,
-  output: __S(14) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsConnectionsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -697,8 +945,8 @@ export const createProjectsLocationsConnectionsRepositories: API.OperationMethod
   CreateProjectsLocationsConnectionsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<CreateProjectsLocationsConnectionsRepositoriesRequest>,
-  output: __S(14) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsConnectionsRepositoriesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -717,8 +965,8 @@ export const deleteProjectsLocationsConnections: API.OperationMethod<
   DeleteProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<DeleteProjectsLocationsConnectionsRequest>,
-  output: __S(14) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsConnectionsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -737,8 +985,8 @@ export const deleteProjectsLocationsConnectionsRepositories: API.OperationMethod
   DeleteProjectsLocationsConnectionsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<DeleteProjectsLocationsConnectionsRepositoriesRequest>,
-  output: __S(14) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsConnectionsRepositoriesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -756,8 +1004,8 @@ export const fetchGitRefsProjectsLocationsConnectionsRepositories: API.Paginated
   GcpOpContext,
   FetchGitRefsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(30) as any as S.Schema<FetchGitRefsProjectsLocationsConnectionsRepositoriesRequest>,
-  output: __S(32) as any as S.Schema<FetchGitRefsResponse>,
+  input: FetchGitRefsProjectsLocationsConnectionsRepositoriesRequest,
+  output: FetchGitRefsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -776,8 +1024,8 @@ export const fetchLinkableRepositoriesProjectsLocationsConnections: API.Paginate
   GcpOpContext,
   FetchLinkableRepositoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(33) as any as S.Schema<FetchLinkableRepositoriesProjectsLocationsConnectionsRequest>,
-  output: __S(35) as any as S.Schema<FetchLinkableRepositoriesResponse>,
+  input: FetchLinkableRepositoriesProjectsLocationsConnectionsRequest,
+  output: FetchLinkableRepositoriesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -792,8 +1040,8 @@ export const getIamPolicyProjectsLocationsConnections: API.OperationMethod<
   GetIamPolicyProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GetIamPolicyProjectsLocationsConnectionsRequest>,
-  output: __S(44) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsConnectionsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -807,8 +1055,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(46) as any as S.Schema<Location>,
+  input: GetProjectsLocationsRequest,
+  output: Location,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -822,8 +1070,8 @@ export const getProjectsLocationsConnections: API.OperationMethod<
   GetProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<GetProjectsLocationsConnectionsRequest>,
-  output: __S(25) as any as S.Schema<Connection>,
+  input: GetProjectsLocationsConnectionsRequest,
+  output: Connection,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -837,8 +1085,8 @@ export const getProjectsLocationsConnectionsRepositories: API.OperationMethod<
   GetProjectsLocationsConnectionsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<GetProjectsLocationsConnectionsRepositoriesRequest>,
-  output: __S(6) as any as S.Schema<Repository>,
+  input: GetProjectsLocationsConnectionsRepositoriesRequest,
+  output: Repository,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -852,8 +1100,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(14) as any as S.Schema<Operation>,
+  input: GetProjectsLocationsOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -868,8 +1116,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(50) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(52) as any as S.Schema<ListLocationsResponse>,
+  input: ListProjectsLocationsRequest,
+  output: ListLocationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -885,8 +1133,8 @@ export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
   GcpOpContext,
   ListConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(53) as any as S.Schema<ListProjectsLocationsConnectionsRequest>,
-  output: __S(55) as any as S.Schema<ListConnectionsResponse>,
+  input: ListProjectsLocationsConnectionsRequest,
+  output: ListConnectionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -902,8 +1150,8 @@ export const listProjectsLocationsConnectionsRepositories: API.PaginatedOperatio
   GcpOpContext,
   ListRepositoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(56) as any as S.Schema<ListProjectsLocationsConnectionsRepositoriesRequest>,
-  output: __S(57) as any as S.Schema<ListRepositoriesResponse>,
+  input: ListProjectsLocationsConnectionsRepositoriesRequest,
+  output: ListRepositoriesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -923,8 +1171,8 @@ export const patchProjectsLocationsConnections: API.OperationMethod<
   PatchProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<PatchProjectsLocationsConnectionsRequest>,
-  output: __S(14) as any as S.Schema<Operation>,
+  input: PatchProjectsLocationsConnectionsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -943,8 +1191,8 @@ export const processWebhookProjectsLocationsConnections: API.OperationMethod<
   ProcessWebhookProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<ProcessWebhookProjectsLocationsConnectionsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: ProcessWebhookProjectsLocationsConnectionsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -963,8 +1211,8 @@ export const setIamPolicyProjectsLocationsConnections: API.OperationMethod<
   SetIamPolicyProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<SetIamPolicyProjectsLocationsConnectionsRequest>,
-  output: __S(44) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsConnectionsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -983,8 +1231,8 @@ export const testIamPermissionsProjectsLocationsConnections: API.OperationMethod
   TestIamPermissionsProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<TestIamPermissionsProjectsLocationsConnectionsRequest>,
-  output: __S(63) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsConnectionsRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1001,7 +1249,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           repository: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(FetchReadTokenRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1023,7 +1271,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           repository: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(FetchReadTokenRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1050,7 +1298,7 @@ function __c0(j: number): any {
         S.Struct({
           webhookId: S.optional(S.String),
           etag: S.optional(S.String),
-          annotations: S.optional(__S(5)),
+          annotations: S.optional(StringMap),
           remoteUri: S.optional(S.String),
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
@@ -1060,7 +1308,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          repository: S.optional(__S(6)),
+          repository: S.optional(Repository),
           parent: S.optional(S.String),
           repositoryId: S.optional(S.String),
         }),
@@ -1070,11 +1318,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(CreateRepositoryRequest);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(8)),
+          requests: S.optional(CreateRepositoryRequestList),
         }),
       ).annotate({
         identifier: "BatchCreateRepositoriesRequest",
@@ -1083,7 +1331,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(9).pipe(T.HttpBody())),
+          body: S.optional(BatchCreateRepositoriesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1097,22 +1345,22 @@ function __c1(j: number): any {
     case 3:
       return S.Record(S.String, S.Unknown);
     case 4:
-      return S.Array(__S(11));
+      return S.Array(DocumentMap);
     case 5:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
           message: S.optional(S.String),
-          details: S.optional(__S(12)),
+          details: S.optional(DocumentMapList),
         }),
       ).annotate({ identifier: "Status" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           done: S.optional(S.Boolean),
-          response: S.optional(__S(11)),
-          error: S.optional(__S(13)),
-          metadata: S.optional(__S(11)),
+          response: S.optional(DocumentMap),
+          error: S.optional(Status),
+          metadata: S.optional(DocumentMap),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
@@ -1120,7 +1368,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(FetchReadTokenRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1155,11 +1403,11 @@ function __c2(j: number): any {
         S.Struct({
           webhookSecretSecretVersion: S.optional(S.String),
           serverVersion: S.optional(S.String),
-          authorizerCredential: S.optional(__S(16)),
-          readAuthorizerCredential: S.optional(__S(16)),
+          authorizerCredential: S.optional(UserCredential),
+          readAuthorizerCredential: S.optional(UserCredential),
           sslCa: S.optional(S.String),
           hostUri: S.optional(S.String),
-          serviceDirectoryConfig: S.optional(__S(17)),
+          serviceDirectoryConfig: S.optional(GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig),
         }),
       ).annotate({
         identifier: "BitbucketDataCenterConfig",
@@ -1167,13 +1415,13 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          authorizerCredential: S.optional(__S(16)),
+          authorizerCredential: S.optional(UserCredential),
           serverVersion: S.optional(S.String),
           hostUri: S.optional(S.String),
-          serviceDirectoryConfig: S.optional(__S(17)),
+          serviceDirectoryConfig: S.optional(GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig),
           webhookSecretSecretVersion: S.optional(S.String),
           sslCa: S.optional(S.String),
-          readAuthorizerCredential: S.optional(__S(16)),
+          readAuthorizerCredential: S.optional(UserCredential),
         }),
       ).annotate({
         identifier: "GoogleDevtoolsCloudbuildV2GitLabConfig",
@@ -1186,7 +1434,7 @@ function __c2(j: number): any {
           appInstallationId: S.optional(S.String),
           privateKeySecretVersion: S.optional(S.String),
           serverVersion: S.optional(S.String),
-          serviceDirectoryConfig: S.optional(__S(17)),
+          serviceDirectoryConfig: S.optional(GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig),
           webhookSecretSecretVersion: S.optional(S.String),
           apiKey: S.optional(S.String),
           sslCa: S.optional(S.String),
@@ -1200,14 +1448,14 @@ function __c2(j: number): any {
         S.Struct({
           actionUri: S.optional(S.String),
           message: S.optional(S.String),
-          stage: S.optional(S.String),
+          stage: S.optional(InstallationStateStageEnum),
         }),
       ).annotate({ identifier: "InstallationState" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          readAuthorizerCredential: S.optional(__S(16)),
-          authorizerCredential: S.optional(__S(16)),
+          readAuthorizerCredential: S.optional(UserCredential),
+          authorizerCredential: S.optional(UserCredential),
           workspace: S.optional(S.String),
           webhookSecretSecretVersion: S.optional(S.String),
         }),
@@ -1226,25 +1474,25 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          authorizerCredential: S.optional(__S(23)),
+          authorizerCredential: S.optional(OAuthCredential),
           appInstallationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "GitHubConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          bitbucketDataCenterConfig: S.optional(__S(18)),
+          bitbucketDataCenterConfig: S.optional(BitbucketDataCenterConfig),
           updateTime: S.optional(S.String),
-          gitlabConfig: S.optional(__S(19)),
-          githubEnterpriseConfig: S.optional(__S(20)),
+          gitlabConfig: S.optional(GoogleDevtoolsCloudbuildV2GitLabConfig),
+          githubEnterpriseConfig: S.optional(GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
           reconciling: S.optional(S.Boolean),
-          installationState: S.optional(__S(21)),
-          annotations: S.optional(__S(5)),
-          bitbucketCloudConfig: S.optional(__S(22)),
+          installationState: S.optional(InstallationState),
+          annotations: S.optional(StringMap),
+          bitbucketCloudConfig: S.optional(BitbucketCloudConfig),
           etag: S.optional(S.String),
-          githubConfig: S.optional(__S(24)),
+          githubConfig: S.optional(GitHubConfig),
           disabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Connection" });
@@ -1253,7 +1501,7 @@ function __c3(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           connectionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(25).pipe(T.HttpBody())),
+          body: S.optional(Connection.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1269,7 +1517,7 @@ function __c3(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           repositoryId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(6).pipe(T.HttpBody())),
+          body: S.optional(Repository.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1317,7 +1565,9 @@ function __c3(j: number): any {
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          refType: S.optional(S.String.pipe(T.Query())),
+          refType: S.optional(
+            FetchGitRefsProjectsLocationsConnectionsRepositoriesRefTypeEnum.pipe(T.Query()),
+          ),
           repository: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1338,7 +1588,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          refNames: S.optional(__S(31)),
+          refNames: S.optional(StringList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "FetchGitRefsResponse" });
@@ -1359,12 +1609,12 @@ function __c4(j: number): any {
         identifier: "FetchLinkableRepositoriesProjectsLocationsConnectionsRequest",
       });
     case 2:
-      return S.Array(__S(6));
+      return S.Array(Repository);
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          repositories: S.optional(__S(34)),
+          repositories: S.optional(RepositoryList),
         }),
       ).annotate({
         identifier: "FetchLinkableRepositoriesResponse",
@@ -1396,13 +1646,13 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(__S(31)),
+          members: S.optional(StringList),
           role: S.optional(S.String),
-          condition: S.optional(__S(37)),
+          condition: S.optional(Expr),
         }),
       ).annotate({ identifier: "Binding" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(Binding);
   }
 }
 function __c5(j: number): any {
@@ -1410,26 +1660,26 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          exemptedMembers: S.optional(__S(31)),
-          logType: S.optional(S.String),
+          exemptedMembers: S.optional(StringList),
+          logType: S.optional(AuditLogConfigLogTypeEnum),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(AuditLogConfig);
     case 2:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(__S(41)),
+          auditLogConfigs: S.optional(AuditLogConfigList),
         }),
       ).annotate({ identifier: "AuditConfig" });
     case 3:
-      return S.Array(__S(42));
+      return S.Array(AuditConfig);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          bindings: S.optional(__S(39)),
-          auditConfigs: S.optional(__S(43)),
+          bindings: S.optional(BindingList),
+          auditConfigs: S.optional(AuditConfigList),
           etag: S.optional(S.String),
           version: S.optional(S.Number),
         }),
@@ -1451,10 +1701,10 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(5)),
+          labels: S.optional(StringMap),
           displayName: S.optional(S.String),
           locationId: S.optional(S.String),
-          metadata: S.optional(__S(11)),
+          metadata: S.optional(DocumentMap),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
@@ -1508,7 +1758,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(31).pipe(T.Query())),
+          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1523,11 +1773,11 @@ function __c6(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 3:
-      return S.Array(__S(46));
+      return S.Array(Location);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(51)),
+          locations: S.optional(LocationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
@@ -1549,13 +1799,13 @@ function __c6(j: number): any {
         identifier: "ListProjectsLocationsConnectionsRequest",
       });
     case 6:
-      return S.Array(__S(25));
+      return S.Array(Connection);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          connections: S.optional(__S(54)),
-          unreachable: S.optional(__S(31)),
+          connections: S.optional(ConnectionList),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({ identifier: "ListConnectionsResponse" });
   }
@@ -1583,9 +1833,9 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          repositories: S.optional(__S(34)),
+          repositories: S.optional(RepositoryList),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(31)),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({ identifier: "ListRepositoriesResponse" });
     case 2:
@@ -1595,7 +1845,7 @@ function __c7(j: number): any {
           name: S.String.pipe(T.Label()),
           etag: S.optional(S.String.pipe(T.Query())),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(25).pipe(T.HttpBody())),
+          body: S.optional(Connection.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1611,7 +1861,7 @@ function __c7(j: number): any {
         S.Struct({
           contentType: S.optional(S.String),
           data: S.optional(S.String),
-          extensions: S.optional(__S(12)),
+          extensions: S.optional(DocumentMapList),
         }),
       ).annotate({ identifier: "HttpBody" });
     case 4:
@@ -1619,7 +1869,7 @@ function __c7(j: number): any {
         S.Struct({
           webhookKey: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(59).pipe(T.HttpBody())),
+          body: S.optional(HttpBody.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1633,7 +1883,7 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(44)),
+          policy: S.optional(Policy),
           updateMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
@@ -1641,7 +1891,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(61).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1655,7 +1905,7 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(31)),
+          permissions: S.optional(StringList),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -1668,7 +1918,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(63).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1679,32 +1929,5 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsConnectionsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
   }
 }

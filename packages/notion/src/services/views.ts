@@ -7,8 +7,6 @@ import { paginateCursor } from "../pagination.ts";
 import { NotionProtocol, type NotionOpError, type NotionOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { NotionOpError, NotionOpContext };
 
@@ -24,9 +22,18 @@ export type ViewTypeRequest =
   | "chart"
   | "map"
   | "dashboard";
+const ViewTypeRequest = S.String;
+
 export type ViewSortsRequest = Array<unknown>;
+const ViewSortsRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ViewSortsRequest>;
+
 /** Quick filters to pin in the view's filter bar. Keys are property names or IDs. Values are filter conditions (same shape as a property filter but without the property field). Each quick filter appears as a clickable pill above the view, independent of the advanced filter. */
 export type CreateViewRequestQuickFiltersMap = { [key: string]: unknown | undefined };
+const CreateViewRequestQuickFiltersMap = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateViewRequestQuickFiltersMap>;
+
 /** The parent page for the new linked database block. */
 export interface CreateDatabaseForViewRequestParent {
   /** The parent type. Must be "page_id". */
@@ -34,6 +41,11 @@ export interface CreateDatabaseForViewRequestParent {
   /** The ID of the page to create the database on. */
   page_id: string;
 }
+const CreateDatabaseForViewRequestParent = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateDatabaseForViewRequestParent>;
+
 /** Where to place the new database block within the parent page. Defaults to appending at the end. */
 export interface CreateDatabaseForViewRequestPosition {
   /** Position type. "after_block" places the new database after the specified block in the page. */
@@ -41,12 +53,22 @@ export interface CreateDatabaseForViewRequestPosition {
   /** The ID of an existing block in the page. The new database will be placed after this block. */
   block_id: string;
 }
+const CreateDatabaseForViewRequestPosition = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateDatabaseForViewRequestPosition>;
+
 export interface CreateDatabaseForViewRequest {
   /** The parent page for the new linked database block. */
   parent: CreateDatabaseForViewRequestParent;
   /** Where to place the new database block within the parent page. Defaults to appending at the end. */
   position?: CreateDatabaseForViewRequestPosition;
 }
+const CreateDatabaseForViewRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateDatabaseForViewRequest>;
+
 /** How to display status properties (select dropdown or checkbox). */
 export type ViewPropertyConfigRequestStatusShowAs = "select" | "checkbox";
 /** Property width mode in compact card layouts (board/gallery). */
@@ -590,6 +612,8 @@ export type ViewConfigRequest =
   | MapViewConfigRequest
   | FormViewConfigRequest
   | ChartViewConfigRequest;
+const ViewConfigRequest = /*@__PURE__*/ S.Unknown as any as S.Schema<ViewConfigRequest>;
+
 export interface ViewPositionRequestCase0 {
   /** Position type. "start" places the view as the first tab. */
   type: string;
@@ -609,6 +633,8 @@ export type ViewPositionRequest =
   | ViewPositionRequestCase0
   | ViewPositionRequestCase1
   | ViewPositionRequestCase2;
+const ViewPositionRequest = /*@__PURE__*/ S.Unknown as any as S.Schema<ViewPositionRequest>;
+
 export interface WidgetPlacementRequestCase0 {
   /** Placement type. "new_row" creates a new row containing the widget. */
   type: string;
@@ -623,6 +649,8 @@ export interface WidgetPlacementRequestCase1 {
 }
 /** Where to place the new widget in the dashboard. "new_row" creates a new row, "existing_row" adds to an existing row side-by-side with other widgets. */
 export type WidgetPlacementRequest = WidgetPlacementRequestCase0 | WidgetPlacementRequestCase1;
+const WidgetPlacementRequest = /*@__PURE__*/ S.Unknown as any as S.Schema<WidgetPlacementRequest>;
+
 export interface CreateViewRequest {
   /** The ID of the data source this view should be scoped to. */
   data_source_id: string;
@@ -649,12 +677,19 @@ export interface CreateViewRequest {
   /** Where to place the new widget in a dashboard view. Only applicable when view_id is provided. Defaults to creating a new row at the end. */
   placement?: WidgetPlacementRequest;
 }
+const CreateViewRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateViewRequest>;
+
 export interface DatabaseParentResponse {
   /** The parent type. */
   type: string;
   /** The ID of the parent database. */
   database_id: string;
 }
+const DatabaseParentResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DatabaseParentResponse>;
+
 /** The view type. */
 export type PartialDataSourceViewObjectResponseType =
   | "table"
@@ -667,6 +702,8 @@ export type PartialDataSourceViewObjectResponseType =
   | "chart"
   | "map"
   | "dashboard";
+const PartialDataSourceViewObjectResponseType = S.String;
+
 export interface PartialDataSourceViewObjectResponse {
   /** The object type name. */
   object: string;
@@ -677,6 +714,11 @@ export interface PartialDataSourceViewObjectResponse {
   /** The view type. */
   type: PartialDataSourceViewObjectResponseType;
 }
+const PartialDataSourceViewObjectResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<PartialDataSourceViewObjectResponse>;
+
 /** The view type. */
 export type DataSourceViewObjectResponseType =
   | "table"
@@ -838,12 +880,16 @@ export type ViewFilterResponse =
   | ViewFilterResponseCase2;
 /** Sort direction. */
 export type PropertySortResponseDirection = "ascending" | "descending";
+const PropertySortResponseDirection = S.String;
+
 export interface PropertySortResponse {
   /** The name or ID of the property to sort by. */
   property: string;
   /** Sort direction. */
   direction: PropertySortResponseDirection;
 }
+const PropertySortResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<PropertySortResponse>;
+
 /** The timestamp to sort by. */
 export type TimestampSortResponseTimestamp = "created_time" | "last_edited_time";
 /** Sort direction. */
@@ -1516,28 +1562,54 @@ export interface DataSourceViewObjectResponse {
 export type CreateViewResponseBody =
   | PartialDataSourceViewObjectResponse
   | DataSourceViewObjectResponse;
+const CreateViewResponseBody = /*@__PURE__*/ S.Unknown as any as S.Schema<CreateViewResponseBody>;
+
 export type CreateViewResponse = CreateViewResponseBody;
+const CreateViewResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CreateViewResponse>;
+
 export interface CreateViewQueryRequest {
   view_id: string;
   /** The number of results to return per page. Maximum: 100 */
   page_size?: number;
 }
+const CreateViewQueryRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateViewQueryRequest>;
+
 export interface PageReferenceResponse {
   /** The object type. */
   object: string;
   /** The object ID. */
   id: string;
 }
+const PageReferenceResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<PageReferenceResponse>;
+
 /** The page results for this page. */
 export type ViewQueryResponseResultsList = Array<PageReferenceResponse>;
+const ViewQueryResponseResultsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ViewQueryResponseResultsList>;
+
 /** Whether the result set is complete or incomplete. `incomplete` means the response does not include all rows that match the query parameters (e.g. due to a server-side pagination depth limit). */
 export type RequestStatusResponseType = "complete" | "incomplete";
+const RequestStatusResponseType = S.String;
+
 export interface RequestStatusResponse {
   /** Whether the result set is complete or incomplete. `incomplete` means the response does not include all rows that match the query parameters (e.g. due to a server-side pagination depth limit). */
   type: RequestStatusResponseType;
   /** Why the result set is incomplete. Only present when `type` is `incomplete`. */
   incomplete_reason?: string;
 }
+const RequestStatusResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<RequestStatusResponse>;
+
 export interface ViewQueryResponse {
   /** The object type. */
   object: string;
@@ -1558,13 +1630,22 @@ export interface ViewQueryResponse {
   /** Set to `{ type: 'incomplete', incomplete_reason: 'query_result_limit_reached' }` when the view's underlying data source has more rows matching this query than the server-side pagination depth limit allows. */
   request_status?: RequestStatusResponse;
 }
+const ViewQueryResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ViewQueryResponse>;
+
 export interface DeleteViewRequest {
   view_id: string;
 }
+const DeleteViewRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DeleteViewRequest>;
+
 export interface DeleteViewQueryRequest {
   view_id: string;
   query_id: string;
 }
+const DeleteViewQueryRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DeleteViewQueryRequest>;
+
 export interface DeletedViewQueryResponse {
   /** The object type. */
   object: string;
@@ -1573,26 +1654,52 @@ export interface DeletedViewQueryResponse {
   /** Whether the view query was deleted. */
   deleted: boolean;
 }
+const DeletedViewQueryResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DeletedViewQueryResponse>;
+
 export interface GetViewRequest {
   view_id: string;
 }
+const GetViewRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetViewRequest>;
+
 export type GetViewResponseBody =
   | PartialDataSourceViewObjectResponse
   | DataSourceViewObjectResponse;
+const GetViewResponseBody = /*@__PURE__*/ S.Unknown as any as S.Schema<GetViewResponseBody>;
+
 export type GetViewResponse = GetViewResponseBody;
+const GetViewResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetViewResponse>;
+
 export interface GetViewQueryResultsRequest {
   view_id: string;
   query_id: string;
   start_cursor?: string;
   page_size?: number;
 }
+const GetViewQueryResultsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetViewQueryResultsRequest>;
+
 export interface PartialPageObjectResponse {
   /** The page object type name. */
   object: string;
   /** The ID of the page. */
   id: string;
 }
+const PartialPageObjectResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<PartialPageObjectResponse>;
+
 export type GetViewQueryResultsResponseResultsList = Array<PartialPageObjectResponse>;
+const GetViewQueryResultsResponseResultsList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetViewQueryResultsResponseResultsList>;
+
 export interface GetViewQueryResultsResponse {
   /** Always `list` */
   object: string;
@@ -1604,12 +1711,19 @@ export interface GetViewQueryResultsResponse {
   page: unknown;
   request_status?: RequestStatusResponse;
 }
+const GetViewQueryResultsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetViewQueryResultsResponse>;
+
 export interface ListViewsRequest {
   database_id?: string;
   data_source_id?: string;
   start_cursor?: string;
   page_size?: number;
 }
+const ListViewsRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ListViewsRequest>;
+
 export interface DataSourceViewReferenceResponse {
   /** The object type name. */
   object: string;
@@ -1617,6 +1731,9 @@ export interface DataSourceViewReferenceResponse {
   id: string;
 }
 export type ListViewsResponseResultsList = Array<DataSourceViewReferenceResponse>;
+const ListViewsResponseResultsList =
+  GetViewQueryResultsResponseResultsList as any as S.Schema<ListViewsResponseResultsList>;
+
 export interface ListViewsResponse {
   /** Always `list` */
   object: string;
@@ -1628,6 +1745,8 @@ export interface ListViewsResponse {
   view: unknown;
   request_status?: RequestStatusResponse;
 }
+const ListViewsResponse = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ListViewsResponse>;
+
 /** One of: `ascending`, `descending` */
 export type SortDirectionRequest = "ascending" | "descending";
 export interface ViewPropertySortRequest {
@@ -1636,8 +1755,20 @@ export interface ViewPropertySortRequest {
   /** Sort direction. */
   direction: SortDirectionRequest | (string & {});
 }
+const ViewPropertySortRequest = PropertySortResponse as any as S.Schema<ViewPropertySortRequest>;
+
 export type ViewPropertySortsRequest = Array<ViewPropertySortRequest>;
+const ViewPropertySortsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ViewPropertySortsRequest>;
+
 export type UpdateViewRequestQuickFiltersMap = { [key: string]: unknown | null | undefined };
+const UpdateViewRequestQuickFiltersMap = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<UpdateViewRequestQuickFiltersMap>;
+
 export interface UpdateViewRequest {
   view_id: string;
   /** New name for the view. */
@@ -1651,10 +1782,16 @@ export interface UpdateViewRequest {
   /** View presentation configuration. The type field must match the view type. Individual nullable fields within the configuration can be set to null to clear them. */
   configuration?: ViewConfigRequest;
 }
+const UpdateViewRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<UpdateViewRequest>;
+
 export type UpdateViewResponseBody =
   | PartialDataSourceViewObjectResponse
   | DataSourceViewObjectResponse;
+const UpdateViewResponseBody = /*@__PURE__*/ S.Unknown as any as S.Schema<UpdateViewResponseBody>;
+
 export type UpdateViewResponse = UpdateViewResponseBody;
+const UpdateViewResponse = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<UpdateViewResponse>;
+
 export type CreateViewError = NotionOpError;
 /** Create a view */
 export const createView: API.OperationMethod<
@@ -1663,8 +1800,8 @@ export const createView: API.OperationMethod<
   CreateViewError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreateViewRequest>,
-  output: __S(9) as any as S.Schema<CreateViewResponse>,
+  input: CreateViewRequest,
+  output: CreateViewResponse,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -1678,8 +1815,8 @@ export const createViewQuery: API.OperationMethod<
   CreateViewQueryError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CreateViewQueryRequest>,
-  output: __S(14) as any as S.Schema<ViewQueryResponse>,
+  input: CreateViewQueryRequest,
+  output: ViewQueryResponse,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -1693,8 +1830,8 @@ export const deleteView: API.OperationMethod<
   DeleteViewError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DeleteViewRequest>,
-  output: __S(7) as any as S.Schema<PartialDataSourceViewObjectResponse>,
+  input: DeleteViewRequest,
+  output: PartialDataSourceViewObjectResponse,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -1708,8 +1845,8 @@ export const deleteViewQuery: API.OperationMethod<
   DeleteViewQueryError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<DeleteViewQueryRequest>,
-  output: __S(17) as any as S.Schema<DeletedViewQueryResponse>,
+  input: DeleteViewQueryRequest,
+  output: DeletedViewQueryResponse,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -1723,8 +1860,8 @@ export const getView: API.OperationMethod<
   GetViewError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<GetViewRequest>,
-  output: __S(19) as any as S.Schema<GetViewResponse>,
+  input: GetViewRequest,
+  output: GetViewResponse,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -1740,8 +1877,8 @@ export const getViewQueryResults: API.PaginatedOperationMethod<
   PartialPageObjectResponse
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(20) as any as S.Schema<GetViewQueryResultsRequest>,
-    output: __S(23) as any as S.Schema<GetViewQueryResultsResponse>,
+    input: GetViewQueryResultsRequest,
+    output: GetViewQueryResultsResponse,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -1765,8 +1902,8 @@ export const listViews: API.PaginatedOperationMethod<
   DataSourceViewReferenceResponse
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(24) as any as S.Schema<ListViewsRequest>,
-    output: __S(25) as any as S.Schema<ListViewsResponse>,
+    input: ListViewsRequest,
+    output: ListViewsResponse,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -1788,8 +1925,8 @@ export const updateView: API.OperationMethod<
   UpdateViewError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<UpdateViewRequest>,
-  output: __S(29) as any as S.Schema<UpdateViewResponse>,
+  input: UpdateViewRequest,
+  output: UpdateViewResponse,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -1823,8 +1960,8 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          parent: __S(2),
-          position: S.optional(__S(3)),
+          parent: CreateDatabaseForViewRequestParent,
+          position: S.optional(CreateDatabaseForViewRequestPosition),
         }),
       ).annotate({
         identifier: "CreateDatabaseForViewRequest",
@@ -1834,16 +1971,16 @@ function __c0(j: number): any {
         S.Struct({
           data_source_id: S.String,
           name: S.String,
-          type: S.String,
+          type: ViewTypeRequest,
           database_id: S.optional(S.String),
           view_id: S.optional(S.String),
           filter: S.optional(S.Unknown),
-          sorts: S.optional(__S(0)),
-          quick_filters: S.optional(__S(1)),
-          create_database: S.optional(__S(4)),
-          configuration: S.optional(S.Unknown),
-          position: S.optional(S.Unknown),
-          placement: S.optional(S.Unknown),
+          sorts: S.optional(ViewSortsRequest),
+          quick_filters: S.optional(CreateViewRequestQuickFiltersMap),
+          create_database: S.optional(CreateDatabaseForViewRequest),
+          configuration: S.optional(ViewConfigRequest),
+          position: S.optional(ViewPositionRequest),
+          placement: S.optional(WidgetPlacementRequest),
         }).pipe(T.Http({ method: "POST", uri: "/v1/views", code: 200 })),
       ).annotate({ identifier: "CreateViewRequest" });
     case 6:
@@ -1858,8 +1995,8 @@ function __c0(j: number): any {
         S.Struct({
           object: S.String,
           id: S.String,
-          parent: __S(6),
-          type: S.String,
+          parent: DatabaseParentResponse,
+          type: PartialDataSourceViewObjectResponseType,
         }),
       ).annotate({
         identifier: "PartialDataSourceViewObjectResponse",
@@ -1872,11 +2009,11 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           property: S.String,
-          direction: S.String,
+          direction: PropertySortResponseDirection,
         }),
       ).annotate({ identifier: "PropertySortResponse" });
     case 1:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => CreateViewResponseBody.pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateViewResponse",
       });
     case 2:
@@ -1894,11 +2031,11 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "PageReferenceResponse" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(PageReferenceResponse);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: RequestStatusResponseType,
           incomplete_reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "RequestStatusResponse" });
@@ -1910,10 +2047,10 @@ function __c1(j: number): any {
           view_id: S.String,
           expires_at: S.String,
           total_count: S.Number,
-          results: __S(12),
+          results: ViewQueryResponseResultsList,
           next_cursor: S.NullOr(S.String),
           has_more: S.Boolean,
-          request_status: S.optional(__S(13)),
+          request_status: S.optional(RequestStatusResponse),
         }),
       ).annotate({ identifier: "ViewQueryResponse" });
     case 7:
@@ -1950,7 +2087,7 @@ function __c2(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/views/{view_id}", code: 200 })),
       ).annotate({ identifier: "GetViewRequest" });
     case 3:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetViewResponseBody.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetViewResponse",
       });
     case 4:
@@ -1976,17 +2113,17 @@ function __c2(j: number): any {
         identifier: "PartialPageObjectResponse",
       });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(PartialPageObjectResponse);
     case 7:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
           next_cursor: S.NullOr(S.String),
           has_more: S.Boolean,
-          results: __S(22),
+          results: GetViewQueryResultsResponseResultsList,
           type: S.String,
           page: S.Unknown,
-          request_status: S.optional(__S(13)),
+          request_status: S.optional(RequestStatusResponse),
         }),
       ).annotate({
         identifier: "GetViewQueryResultsResponse",
@@ -2010,14 +2147,14 @@ function __c3(j: number): any {
           object: S.String,
           next_cursor: S.NullOr(S.String),
           has_more: S.Boolean,
-          results: __S(22),
+          results: ListViewsResponseResultsList,
           type: S.String,
           view: S.Unknown,
-          request_status: S.optional(__S(13)),
+          request_status: S.optional(RequestStatusResponse),
         }),
       ).annotate({ identifier: "ListViewsResponse" });
     case 2:
-      return S.Array(__S(8));
+      return S.Array(ViewPropertySortRequest);
     case 3:
       return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
     case 4:
@@ -2026,31 +2163,14 @@ function __c3(j: number): any {
           view_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           filter: S.optional(S.NullOr(S.Unknown)),
-          sorts: S.optional(S.NullOr(__S(26))),
-          quick_filters: S.optional(S.NullOr(__S(27))),
-          configuration: S.optional(S.Unknown),
+          sorts: S.optional(S.NullOr(ViewPropertySortsRequest)),
+          quick_filters: S.optional(S.NullOr(UpdateViewRequestQuickFiltersMap)),
+          configuration: S.optional(ViewConfigRequest),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/views/{view_id}", code: 200 })),
       ).annotate({ identifier: "UpdateViewRequest" });
     case 5:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => UpdateViewResponseBody.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateViewResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

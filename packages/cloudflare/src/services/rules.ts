@@ -12,8 +12,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -64,6 +62,8 @@ export class ListNotFound
   ) {}
 
 export type ListsCreateRequestKind = "ip" | "redirect" | "hostname" | "asn";
+const ListsCreateRequestKind = S.String;
+
 export interface CreateListRequest {
   /** The Account ID for this resource. */
   accountId: string;
@@ -74,7 +74,11 @@ export interface CreateListRequest {
   /** An informative summary of the list. */
   description?: string;
 }
+const CreateListRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateListRequest>;
+
 export type ListsCreateResponseKind = "ip" | "redirect" | "hostname" | "asn";
+const ListsCreateResponseKind = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateListResponse {
   /** The unique ID of the list. */
@@ -94,6 +98,8 @@ export interface CreateListResponse {
   /** An informative summary of the list. */
   description?: string | null;
 }
+const CreateListResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateListResponse>;
+
 export interface ListsItemsCreateRequestBodyItemListsListItemIPComment {
   /** An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR. */
   ip: string;
@@ -144,7 +150,14 @@ export type ListsItemsCreateRequestBodyItem =
   | ListsItemsCreateRequestBodyItemListsListItemRedirectComment
   | ListsItemsCreateRequestBodyItemListsListItemHostnameComment
   | ListsItemsCreateRequestBodyItemListsListItemASNComment;
+const ListsItemsCreateRequestBodyItem = /*@__PURE__*/ __L.at(__c0, 2);
+
 export type ListsItemsCreateRequestBodyList = Array<ListsItemsCreateRequestBodyItem>;
+const ListsItemsCreateRequestBodyList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ListsItemsCreateRequestBodyList>;
+
 export interface CreateListItemRequest {
   /** The Account ID for this resource. */
   accountId: string;
@@ -152,27 +165,51 @@ export interface CreateListItemRequest {
   listId: string;
   body: ListsItemsCreateRequestBodyList;
 }
+const CreateListItemRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateListItemRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateListItemResponse {
   /** The unique operation ID of the asynchronous action. */
   operationId: string;
 }
+const CreateListItemResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateListItemResponse>;
+
 export interface DeleteListRequest {
   /** The Account ID for this resource. */
   accountId: string;
   /** The unique ID of the list. */
   listId: string;
 }
+const DeleteListRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DeleteListRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteListResponse {
   /** The unique ID of the list. */
   id: string;
 }
+const DeleteListResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DeleteListResponse>;
+
 export interface ListsItemsDeleteRequestItemsItem {
   /** Defines the unique ID of the item in the List. */
   id: string;
 }
+const ListsItemsDeleteRequestItemsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListsItemsDeleteRequestItemsItem>;
+
 export type ListsItemsDeleteRequestItemsList = Array<ListsItemsDeleteRequestItemsItem>;
+const ListsItemsDeleteRequestItemsList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListsItemsDeleteRequestItemsList>;
+
 export interface DeleteListItemRequest {
   /** The Account ID for this resource. */
   accountId: string;
@@ -181,17 +218,26 @@ export interface DeleteListItemRequest {
   /** The list items to delete, identified by their unique IDs. */
   items?: ListsItemsDeleteRequestItemsList;
 }
+const DeleteListItemRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteListItemRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteListItemResponse {
   /** The unique operation ID of the asynchronous action. */
   operationId: string;
 }
+const DeleteListItemResponse = CreateListItemResponse as any as S.Schema<DeleteListItemResponse>;
+
 export interface GetListRequest {
   /** The Account ID for this resource. */
   accountId: string;
   /** The unique ID of the list. */
   listId: string;
 }
+const GetListRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetListRequest>;
+
 export type ListsGetResponseKind = "ip" | "redirect" | "hostname" | "asn";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetListResponse {
@@ -212,12 +258,19 @@ export interface GetListResponse {
   /** An informative summary of the list. */
   description?: string | null;
 }
+const GetListResponse = CreateListResponse as any as S.Schema<GetListResponse>;
+
 export interface GetListBulkOperationRequest {
   /** The Account ID for this resource. */
   accountId: string;
   /** The unique operation ID of the asynchronous action. */
   operationId: string;
 }
+const GetListBulkOperationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetListBulkOperationRequest>;
+
 export type ListsBulkOperationsGetResultListsBulkOperationPendingOrRunningStatus =
   | "pending"
   | "running";
@@ -251,7 +304,14 @@ export type ListsBulkOperationsGetResult =
   | ListsBulkOperationsGetResultListsBulkOperationPendingOrRunning
   | ListsBulkOperationsGetResultListsBulkOperationCompleted
   | ListsBulkOperationsGetResultListsBulkOperationFailed;
+const ListsBulkOperationsGetResult = /*@__PURE__*/ __L.at(__c1, 5);
+
 export type GetListBulkOperationResponse = ListsBulkOperationsGetResult;
+const GetListBulkOperationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetListBulkOperationResponse>;
+
 export interface GetListItemRequest {
   /** The Account ID for this resource. */
   accountId: string;
@@ -260,6 +320,8 @@ export interface GetListItemRequest {
   /** Defines the unique ID of the item in the List. */
   itemId: string;
 }
+const GetListItemRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetListItemRequest>;
+
 export interface ListsItemsGetResultListsListItemIPFull {
   /** Defines the unique ID of the item in the List. */
   id: string;
@@ -328,7 +390,11 @@ export type ListsItemsGetResult =
   | ListsItemsGetResultListsListItemHostnameFull
   | ListsItemsGetResultListsListItemRedirectFull
   | ListsItemsGetResultListsListItemASNFull;
+const ListsItemsGetResult = /*@__PURE__*/ __L.at(__c2, 0);
+
 export type GetListItemResponse = ListsItemsGetResult;
+const GetListItemResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetListItemResponse>;
+
 export interface ListListItemsRequest {
   /** The Account ID for this resource. */
   accountId: string;
@@ -341,6 +407,8 @@ export interface ListListItemsRequest {
   /** A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly. */
   search?: string;
 }
+const ListListItemsRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ListListItemsRequest>;
+
 export type ListsItemsListResultItemListsListItemIPFull = ListsItemsGetResultListsListItemIPFull;
 export type ListsItemsListResultItemListsListItemHostnameFullHostname =
   ListsItemsGetResultListsListItemHostnameFullHostname;
@@ -378,18 +446,34 @@ export type ListsItemsListResultItem =
   | ListsItemsGetResultListsListItemHostnameFull
   | ListsItemsListResultItemListsListItemRedirectFull
   | ListsItemsGetResultListsListItemASNFull;
+const ListsItemsListResultItem = /*@__PURE__*/ __L.at(__c2, 3);
+
 export type ListsItemsListResultList = Array<ListsItemsListResultItem>;
+const ListsItemsListResultList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListsItemsListResultList>;
+
 export interface ListListItemsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListsItemsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListListItemsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ListListItemsResponse>;
+
 export interface ListListsRequest {
   /** The Account ID for this resource. */
   accountId: string;
 }
+const ListListsRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ListListsRequest>;
+
 export type ListsListResultItemKind = "ip" | "redirect" | "hostname" | "asn";
+const ListsListResultItemKind = S.String;
+
 export interface ListsListResultItem {
   /** The unique ID of the list. */
   id: string;
@@ -408,13 +492,19 @@ export interface ListsListResultItem {
   /** An informative summary of the list. */
   description?: string | null;
 }
+const ListsListResultItem = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ListsListResultItem>;
+
 export type ListsListResultList = Array<ListsListResultItem>;
+const ListsListResultList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ListsListResultList>;
+
 export interface ListListsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListListsResponse = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ListListsResponse>;
+
 export interface UpdateListRequest {
   /** The Account ID for this resource. */
   accountId: string;
@@ -423,6 +513,8 @@ export interface UpdateListRequest {
   /** An informative summary of the list. */
   description?: string;
 }
+const UpdateListRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<UpdateListRequest>;
+
 export type ListsUpdateResponseKind = "ip" | "redirect" | "hostname" | "asn";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateListResponse {
@@ -443,6 +535,8 @@ export interface UpdateListResponse {
   /** An informative summary of the list. */
   description?: string | null;
 }
+const UpdateListResponse = CreateListResponse as any as S.Schema<UpdateListResponse>;
+
 export type ListsItemsUpdateRequestBodyItemListsListItemIPComment =
   ListsItemsCreateRequestBodyItemListsListItemIPComment;
 export type ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedirectStatusCode =
@@ -478,7 +572,14 @@ export type ListsItemsUpdateRequestBodyItem =
   | ListsItemsUpdateRequestBodyItemListsListItemRedirectComment
   | ListsItemsCreateRequestBodyItemListsListItemHostnameComment
   | ListsItemsCreateRequestBodyItemListsListItemASNComment;
+const ListsItemsUpdateRequestBodyItem = /*@__PURE__*/ __L.at(__c3, 3);
+
 export type ListsItemsUpdateRequestBodyList = Array<ListsItemsUpdateRequestBodyItem>;
+const ListsItemsUpdateRequestBodyList = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ListsItemsUpdateRequestBodyList>;
+
 export interface UpdateListItemRequest {
   /** The Account ID for this resource. */
   accountId: string;
@@ -486,11 +587,18 @@ export interface UpdateListItemRequest {
   listId: string;
   body: ListsItemsUpdateRequestBodyList;
 }
+const UpdateListItemRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<UpdateListItemRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateListItemResponse {
   /** The unique operation ID of the asynchronous action. */
   operationId: string;
 }
+const UpdateListItemResponse = CreateListItemResponse as any as S.Schema<UpdateListItemResponse>;
+
 export type CreateListError = ListAlreadyExists | Forbidden | CloudflareOpError;
 /** Creates a new list of the specified kind. */
 export const createList: API.OperationMethod<
@@ -499,8 +607,8 @@ export const createList: API.OperationMethod<
   CreateListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateListRequest>,
-  output: __S(1) as any as S.Schema<CreateListResponse>,
+  input: CreateListRequest,
+  output: CreateListResponse,
   errors: [ListAlreadyExists, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -514,8 +622,8 @@ export const createListItem: API.OperationMethod<
   CreateListItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateListItemRequest>,
-  output: __S(5) as any as S.Schema<CreateListItemResponse>,
+  input: CreateListItemRequest,
+  output: CreateListItemResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -529,8 +637,8 @@ export const deleteList: API.OperationMethod<
   DeleteListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DeleteListRequest>,
-  output: __S(7) as any as S.Schema<DeleteListResponse>,
+  input: DeleteListRequest,
+  output: DeleteListResponse,
   errors: [ListNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -544,8 +652,8 @@ export const deleteListItem: API.OperationMethod<
   DeleteListItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeleteListItemRequest>,
-  output: __S(5) as any as S.Schema<DeleteListItemResponse>,
+  input: DeleteListItemRequest,
+  output: DeleteListItemResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -559,8 +667,8 @@ export const getList: API.OperationMethod<
   GetListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetListRequest>,
-  output: __S(1) as any as S.Schema<GetListResponse>,
+  input: GetListRequest,
+  output: GetListResponse,
   errors: [ListNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -574,8 +682,8 @@ export const getListBulkOperation: API.OperationMethod<
   GetListBulkOperationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<GetListBulkOperationRequest>,
-  output: __S(14) as any as S.Schema<GetListBulkOperationResponse>,
+  input: GetListBulkOperationRequest,
+  output: GetListBulkOperationResponse,
   errors: [ListNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -589,8 +697,8 @@ export const getListItem: API.OperationMethod<
   GetListItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<GetListItemRequest>,
-  output: __S(17) as any as S.Schema<GetListItemResponse>,
+  input: GetListItemRequest,
+  output: GetListItemResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -606,8 +714,8 @@ export const listListItems: API.PaginatedOperationMethod<
   ListsItemsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(18) as any as S.Schema<ListListItemsRequest>,
-    output: __S(21) as any as S.Schema<ListListItemsResponse>,
+    input: ListListItemsRequest,
+    output: ListListItemsResponse,
     errors: [ListNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -631,8 +739,8 @@ export const listLists: API.PaginatedOperationMethod<
   ListsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(22) as any as S.Schema<ListListsRequest>,
-    output: __S(25) as any as S.Schema<ListListsResponse>,
+    input: ListListsRequest,
+    output: ListListsResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -649,8 +757,8 @@ export const updateList: API.OperationMethod<
   UpdateListError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<UpdateListRequest>,
-  output: __S(1) as any as S.Schema<UpdateListResponse>,
+  input: UpdateListRequest,
+  output: UpdateListResponse,
   errors: [ListNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -664,8 +772,8 @@ export const updateListItem: API.OperationMethod<
   UpdateListItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<UpdateListItemRequest>,
-  output: __S(5) as any as S.Schema<UpdateListItemResponse>,
+  input: UpdateListItemRequest,
+  output: UpdateListItemResponse,
   errors: [ListNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -678,7 +786,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          kind: S.String,
+          kind: ListsCreateRequestKind,
           name: S.String,
           description: S.optional(S.String),
         })
@@ -690,7 +798,7 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           createdOn: S.String.pipe(T.Body("created_on")),
-          kind: S.String,
+          kind: ListsCreateResponseKind,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
           numItems: S.Number.pipe(T.Body("num_items")),
@@ -708,13 +816,13 @@ function __c0(j: number): any {
         ]),
       );
     case 3:
-      return S.Array(__S(2));
+      return S.Array(ListsItemsCreateRequestBodyItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           listId: S.String.pipe(T.Label("list_id")),
-          body: __S(3).pipe(T.HttpBody()),
+          body: ListsItemsCreateRequestBodyList.pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({
@@ -765,13 +873,13 @@ function __c1(j: number): any {
         identifier: "ListsItemsDeleteRequestItemsItem",
       });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(ListsItemsDeleteRequestItemsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           listId: S.String.pipe(T.Label("list_id")),
-          items: S.optional(__S(9)),
+          items: S.optional(ListsItemsDeleteRequestItemsList),
         })
           .pipe(
             T.Http({
@@ -824,7 +932,7 @@ function __c1(j: number): any {
       );
     case 6:
       return S.suspend(() =>
-        __S(13).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        ListsBulkOperationsGetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetListBulkOperationResponse",
       });
@@ -859,7 +967,7 @@ function __c2(j: number): any {
       );
     case 1:
       return S.suspend(() =>
-        __S(16).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        ListsItemsGetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetListItemResponse" });
     case 2:
       return S.suspend(() =>
@@ -889,11 +997,11 @@ function __c2(j: number): any {
         ]),
       );
     case 4:
-      return S.Array(__S(19));
+      return S.Array(ListsItemsListResultItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: __S(20).pipe(T.EnvelopePayload()),
+          result: ListsItemsListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListListItemsResponse" });
@@ -910,7 +1018,7 @@ function __c2(j: number): any {
         S.Struct({
           id: S.String,
           createdOn: S.String.pipe(T.Body("created_on")),
-          kind: S.String,
+          kind: ListsListResultItemKind,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
           numItems: S.Number.pipe(T.Body("num_items")),
@@ -923,11 +1031,11 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(ListsListResultItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          result: __S(24).pipe(T.EnvelopePayload()),
+          result: ListsListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListListsResponse" });
@@ -957,13 +1065,13 @@ function __c3(j: number): any {
         ]),
       );
     case 4:
-      return S.Array(__S(27));
+      return S.Array(ListsItemsUpdateRequestBodyItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           listId: S.String.pipe(T.Label("list_id")),
-          body: __S(28).pipe(T.HttpBody()),
+          body: ListsItemsUpdateRequestBodyList.pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({
@@ -974,22 +1082,5 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateListItemRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

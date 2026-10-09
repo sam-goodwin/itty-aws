@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "NotificationsContacts",
   serviceShapeName: "NotificationsContacts",
@@ -125,11 +123,11 @@ export class ValidationException
     "ValidationException",
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-      reason: /*@__PURE__*/ S.suspend(() => S.String).annotate({
+      reason: /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(19)).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -142,27 +140,54 @@ export interface ActivateEmailContactRequest {
   arn: string;
   code: string | redacted.Redacted<string>;
 }
+const ActivateEmailContactRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ActivateEmailContactRequest>;
 export interface ActivateEmailContactResponse {}
+const ActivateEmailContactResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ActivateEmailContactResponse>;
 export type EmailContactName = string | redacted.Redacted<string>;
 export type EmailContactAddress = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
+const TagMap = /*@__PURE__*/ __L.at(__c0, 2);
 export interface CreateEmailContactRequest {
   name: string | redacted.Redacted<string>;
   emailAddress: string;
   tags?: { [key: string]: string | undefined };
 }
+const CreateEmailContactRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateEmailContactRequest>;
 export interface CreateEmailContactResponse {
   arn: string;
 }
+const CreateEmailContactResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateEmailContactResponse>;
 export interface DeleteEmailContactRequest {
   arn: string;
 }
+const DeleteEmailContactRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteEmailContactRequest>;
 export interface DeleteEmailContactResponse {}
+const DeleteEmailContactResponse =
+  ActivateEmailContactResponse as any as S.Schema<DeleteEmailContactResponse>;
 export interface GetEmailContactRequest {
   arn: string;
 }
+const GetEmailContactRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetEmailContactRequest>;
 export type SensitiveEmailContactAddress = string | redacted.Redacted<string>;
 export type EmailContactStatus = string;
 export type CreationTime = Date;
@@ -175,50 +200,91 @@ export interface EmailContact {
   creationTime: Date;
   updateTime: Date;
 }
+const EmailContact = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<EmailContact>;
 export interface GetEmailContactResponse {
   emailContact: EmailContact;
 }
+const GetEmailContactResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetEmailContactResponse>;
 export interface ListEmailContactsRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListEmailContactsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListEmailContactsRequest>;
 export type EmailContacts = EmailContact[];
+const EmailContacts = /*@__PURE__*/ __L.at(__c1, 2);
 export interface ListEmailContactsResponse {
   nextToken?: string;
   emailContacts: EmailContact[];
 }
+const ListEmailContactsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListEmailContactsResponse>;
 export interface ListTagsForResourceRequest {
   arn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface SendActivationCodeRequest {
   arn: string;
 }
+const SendActivationCodeRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<SendActivationCodeRequest>;
 export interface SendActivationCodeResponse {}
+const SendActivationCodeResponse =
+  ActivateEmailContactResponse as any as S.Schema<SendActivationCodeResponse>;
 export interface TagResourceRequest {
   arn: string;
   tags: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = ActivateEmailContactResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
+const TagKeys = /*@__PURE__*/ __L.at(__c2, 0);
 export interface UntagResourceRequest {
   arn: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse =
+  ActivateEmailContactResponse as any as S.Schema<UntagResourceResponse>;
 export type ErrorMessage = string;
 export type ResourceId = string;
 export type ResourceType = string;
 export type ServiceCode = string;
 export type QuotaCode = string;
 export type ValidationExceptionReason = "fieldValidationFailed" | "other" | (string & {});
+const ValidationExceptionReason = S.String;
+
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c2, 3);
 export type ActivateEmailContactError =
   | AccessDeniedException
   | ConflictException
@@ -236,8 +302,8 @@ export const activateEmailContact: API.OperationMethod<
   ActivateEmailContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ActivateEmailContactRequest>,
-  output: __S(1) as any as S.Schema<ActivateEmailContactResponse>,
+  input: ActivateEmailContactRequest,
+  output: ActivateEmailContactResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -268,8 +334,8 @@ export const createEmailContact: API.OperationMethod<
   CreateEmailContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateEmailContactRequest>,
-  output: __S(4) as any as S.Schema<CreateEmailContactResponse>,
+  input: CreateEmailContactRequest,
+  output: CreateEmailContactResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -302,8 +368,8 @@ export const deleteEmailContact: API.OperationMethod<
   DeleteEmailContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<DeleteEmailContactRequest>,
-  output: __S(1) as any as S.Schema<DeleteEmailContactResponse>,
+  input: DeleteEmailContactRequest,
+  output: DeleteEmailContactResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -333,8 +399,8 @@ export const getEmailContact: API.OperationMethod<
   GetEmailContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetEmailContactRequest>,
-  output: __S(8) as any as S.Schema<GetEmailContactResponse>,
+  input: GetEmailContactRequest,
+  output: GetEmailContactResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -363,8 +429,8 @@ export const listEmailContacts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EmailContact
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(9) as any as S.Schema<ListEmailContactsRequest>,
-  output: __S(11) as any as S.Schema<ListEmailContactsResponse>,
+  input: ListEmailContactsRequest,
+  output: ListEmailContactsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -398,8 +464,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(13) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -431,8 +497,8 @@ export const sendActivationCode: API.OperationMethod<
   SendActivationCodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<SendActivationCodeRequest>,
-  output: __S(1) as any as S.Schema<SendActivationCodeResponse>,
+  input: SendActivationCodeRequest,
+  output: SendActivationCodeResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -462,8 +528,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<TagResourceRequest>,
-  output: __S(1) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -492,8 +558,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<UntagResourceRequest>,
-  output: __S(1) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -535,7 +601,7 @@ function __c0(j: number): any {
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 3:
       return S.suspend(() =>
-        S.Struct({ name: SensitiveString, emailAddress: S.String, tags: S.optional(__S(2)) }).pipe(
+        S.Struct({ name: SensitiveString, emailAddress: S.String, tags: S.optional(TagMap) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/2022-09-19/emailcontacts" }),
             svc,
@@ -596,7 +662,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ emailContact: __S(7) })).annotate({
+      return S.suspend(() => S.Struct({ emailContact: EmailContact })).annotate({
         identifier: "GetEmailContactResponse",
       });
     case 1:
@@ -609,10 +675,10 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListEmailContactsRequest" });
     case 2:
-      return S.Array(__S(7));
+      return S.Array(EmailContact);
     case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), emailContacts: __S(10) }),
+        S.Struct({ nextToken: S.optional(S.String), emailContacts: EmailContacts }),
       ).annotate({
         identifier: "ListEmailContactsResponse",
       });
@@ -625,7 +691,7 @@ function __c1(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 5:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(2)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 6:
@@ -645,7 +711,7 @@ function __c1(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")), tags: __S(2) }).pipe(
+        S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")), tags: TagMap }).pipe(
           T.all(T.Http({ method: "POST", uri: "/tags/{arn}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -659,7 +725,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           arn: S.String.pipe(T.HttpLabel("arn")),
-          tagKeys: __S(16).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(T.Http({ method: "DELETE", uri: "/tags/{arn}" }), svc, auth, proto, ver, rules),
         ),
@@ -669,21 +735,6 @@ function __c2(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 3:
-      return S.Array(__S(18));
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
+      return S.Array(ValidationExceptionField);
   }
 }

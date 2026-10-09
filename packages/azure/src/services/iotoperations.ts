@@ -6,15 +6,20 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** AkriConnector properties. */
 export interface AkriConnectorPropertiesInput {}
+const AkriConnectorPropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AkriConnectorPropertiesInput>;
+
 /** The enum defining type of ExtendedLocation accepted. */
 export type ExtendedLocationType = "CustomLocation";
+const ExtendedLocationType = S.String;
+
 /** Extended location is an extension of Azure locations. They provide a way to use their Azure ARC enabled Kubernetes clusters as target locations for deploying Azure services instances. */
 export interface ExtendedLocation {
   /** The name of the extended location. */
@@ -22,6 +27,8 @@ export interface ExtendedLocation {
   /** Type of ExtendedLocation. */
   type: ExtendedLocationType | (string & {});
 }
+const ExtendedLocation = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ExtendedLocation>;
+
 export interface AkriConnectorCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -38,10 +45,19 @@ export interface AkriConnectorCreateOrUpdateRequest {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const AkriConnectorCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AkriConnectorCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -57,6 +73,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SystemData>;
+
 /** The enum defining status of resource. */
 export type ProvisioningState =
   | "Succeeded"
@@ -66,6 +84,8 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
+const ProvisioningState = S.String;
+
 /** AkriConnector allocated device. */
 export interface AkriConnectorAllocatedDevice {
   /** The name of the inbound endpoint for the device. */
@@ -73,10 +93,22 @@ export interface AkriConnectorAllocatedDevice {
   /** The name of the device. */
   deviceName: string;
 }
+const AkriConnectorAllocatedDevice = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AkriConnectorAllocatedDevice>;
+
 /** The allocated devices for the connector. */
 export type AkriConnectorPropertiesAllocatedDevicesList = Array<AkriConnectorAllocatedDevice>;
+const AkriConnectorPropertiesAllocatedDevicesList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AkriConnectorPropertiesAllocatedDevicesList>;
+
 /** The health state of the resource. */
 export type ResourceHealthState = "Available" | "Degraded" | "Unavailable" | "Unknown";
+const ResourceHealthState = S.String;
+
 /** Represents the health state of a resource. */
 export interface ResourceHealthStatus {
   /** The high-level health status of the resource. */
@@ -90,17 +122,23 @@ export interface ResourceHealthStatus {
   /** Unique, CamelCase reason code describing the cause of the last health state transition. */
   reasonCode?: string;
 }
+const ResourceHealthStatus = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ResourceHealthStatus>;
+
 /** AkriConnector status. */
 export interface AkriConnectorStatus {
   /** The health state of the AkriConnector. */
   healthState?: ResourceHealthStatus;
 }
+const AkriConnectorStatus = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<AkriConnectorStatus>;
+
 /** The health state of the resource. */
 export type AkriConnectorPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
   | "Unknown";
+const AkriConnectorPropertiesHealthState = S.String;
+
 /** AkriConnector properties. */
 export interface AkriConnectorProperties {
   /** The status of the last operation. */
@@ -112,6 +150,11 @@ export interface AkriConnectorProperties {
   /** The health state of the resource. */
   healthState?: AkriConnectorPropertiesHealthState;
 }
+const AkriConnectorProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AkriConnectorProperties>;
+
 export interface AkriConnectorCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -126,6 +169,11 @@ export interface AkriConnectorCreateOrUpdateResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const AkriConnectorCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<AkriConnectorCreateOrUpdateResponse>;
+
 /** AkriConnectorTemplateAioMetadata properties. */
 export interface AkriConnectorTemplateAioMetadata {
   /** The minimum version of AIO required for the connector. */
@@ -133,8 +181,15 @@ export interface AkriConnectorTemplateAioMetadata {
   /** The maximum version of AIO required for the connector. */
   aioMaxVersion?: string;
 }
+const AkriConnectorTemplateAioMetadata = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<AkriConnectorTemplateAioMetadata>;
+
 /** Runtime configuration types. */
 export type AkriConnectorTemplateRuntimeConfigurationType = "ManagedConfiguration";
+const AkriConnectorTemplateRuntimeConfigurationType = S.String;
+
 /** AkriConnectorTemplateRuntimeConfiguration properties. */
 export interface AkriConnectorTemplateRuntimeConfiguration {
   /** Runtime configuration type for the Connector template. */
@@ -142,16 +197,31 @@ export interface AkriConnectorTemplateRuntimeConfiguration {
   /** The managed configuration settings. Only for `ManagedConfiguration` (polymorphic subtype `AkriConnectorTemplateManagedConfiguration`). */
   managedConfigurationSettings?: unknown;
 }
+const AkriConnectorTemplateRuntimeConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<AkriConnectorTemplateRuntimeConfiguration>;
+
 /** AkriConnectorsDiagnostic Log properties. */
 export interface AkriConnectorsDiagnosticsLogs {
   /** The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'. */
   level?: string;
 }
+const AkriConnectorsDiagnosticsLogs = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<AkriConnectorsDiagnosticsLogs>;
+
 /** AkriConnectorTemplateDiagnostics properties. */
 export interface AkriConnectorTemplateDiagnostics {
   /** The log settings for the Connector template. */
   logs: AkriConnectorsDiagnosticsLogs;
 }
+const AkriConnectorTemplateDiagnostics = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<AkriConnectorTemplateDiagnostics>;
+
 /** AkriConnectorTemplateDeviceInboundEndpointType properties. */
 export interface AkriConnectorTemplateDeviceInboundEndpointType {
   /** The display name of the device inbound endpoint. */
@@ -161,11 +231,23 @@ export interface AkriConnectorTemplateDeviceInboundEndpointType {
   /** The version of the device inbound endpoint. */
   version?: string;
 }
+const AkriConnectorTemplateDeviceInboundEndpointType = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<AkriConnectorTemplateDeviceInboundEndpointType>;
+
 /** Device inbound endpoint types. */
 export type AkriConnectorTemplatePropertiesInputDeviceInboundEndpointTypesList =
   Array<AkriConnectorTemplateDeviceInboundEndpointType>;
+const AkriConnectorTemplatePropertiesInputDeviceInboundEndpointTypesList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<AkriConnectorTemplatePropertiesInputDeviceInboundEndpointTypesList>;
+
 /** AkriConnectorsMqttAuthenticationMethod properties. */
 export type AkriConnectorsMqttAuthenticationMethod = "ServiceAccountToken";
+const AkriConnectorsMqttAuthenticationMethod = S.String;
+
 /** AkriConnectorsMqttAuthentication properties. */
 export interface AkriConnectorsMqttAuthentication {
   /** The authentication method for the MQTT connection. */
@@ -173,10 +255,19 @@ export interface AkriConnectorsMqttAuthentication {
   /** The service account token for the MQTT connection. Only for `ServiceAccountToken` (polymorphic subtype `AkriConnectorsServiceAccountAuthentication`). */
   serviceAccountTokenSettings?: unknown;
 }
+const AkriConnectorsMqttAuthentication = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<AkriConnectorsMqttAuthentication>;
+
 /** Mqtt protocol types. */
 export type AkriConnectorsMqttProtocolType = "Mqtt";
+const AkriConnectorsMqttProtocolType = S.String;
+
 /** Mode for TLS. */
 export type TlsPropertiesMode = "Enabled" | "Disabled";
+const TlsPropertiesMode = S.String;
+
 /** Tls properties */
 export interface TlsProperties {
   /** Mode for TLS. */
@@ -184,6 +275,8 @@ export interface TlsProperties {
   /** Trusted CA certificate config map. */
   trustedCaCertificateConfigMapRef?: string;
 }
+const TlsProperties = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<TlsProperties>;
+
 /** AkriConnectorsMqttConnectionConfiguration properties. */
 export interface AkriConnectorsMqttConnectionConfiguration {
   /** Authentication properties. */
@@ -201,6 +294,11 @@ export interface AkriConnectorsMqttConnectionConfiguration {
   /** TLS configuration. */
   tls?: TlsProperties;
 }
+const AkriConnectorsMqttConnectionConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<AkriConnectorsMqttConnectionConfiguration>;
+
 /** AkriConnectorTemplate properties. */
 export interface AkriConnectorTemplatePropertiesInput {
   /** Metadata about AIO. */
@@ -216,6 +314,11 @@ export interface AkriConnectorTemplatePropertiesInput {
   /** A reference to a connector metadata document reference in a container registry. */
   connectorMetadataRef?: string;
 }
+const AkriConnectorTemplatePropertiesInput = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<AkriConnectorTemplatePropertiesInput>;
+
 export interface AkriConnectorTemplateCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -230,15 +333,27 @@ export interface AkriConnectorTemplateCreateOrUpdateRequest {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const AkriConnectorTemplateCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<AkriConnectorTemplateCreateOrUpdateRequest>;
+
 /** Device inbound endpoint types. */
 export type AkriConnectorTemplatePropertiesDeviceInboundEndpointTypesList =
   Array<AkriConnectorTemplateDeviceInboundEndpointType>;
+const AkriConnectorTemplatePropertiesDeviceInboundEndpointTypesList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<AkriConnectorTemplatePropertiesDeviceInboundEndpointTypesList>;
+
 /** The health state of the resource. */
 export type AkriConnectorTemplatePropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
   | "Unknown";
+const AkriConnectorTemplatePropertiesHealthState = S.String;
+
 /** AkriConnectorTemplate properties. */
 export interface AkriConnectorTemplateProperties {
   /** The status of the last operation. */
@@ -258,6 +373,11 @@ export interface AkriConnectorTemplateProperties {
   /** The health state of the resource. */
   healthState?: AkriConnectorTemplatePropertiesHealthState;
 }
+const AkriConnectorTemplateProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<AkriConnectorTemplateProperties>;
+
 export interface AkriConnectorTemplateCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -272,6 +392,11 @@ export interface AkriConnectorTemplateCreateOrUpdateResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const AkriConnectorTemplateCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<AkriConnectorTemplateCreateOrUpdateResponse>;
+
 /** AkriService properties. */
 export type AkriServicePropertiesInput = AkriConnectorPropertiesInput;
 export interface AkriServiceCreateOrUpdateRequest {
@@ -288,11 +413,18 @@ export interface AkriServiceCreateOrUpdateRequest {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const AkriServiceCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<AkriServiceCreateOrUpdateRequest>;
+
 /** AkriService status. */
 export interface AkriServiceStatus {
   /** The health state of the AkriService. */
   healthState?: ResourceHealthStatus;
 }
+const AkriServiceStatus = AkriConnectorStatus as any as S.Schema<AkriServiceStatus>;
+
 /** AkriService properties. */
 export interface AkriServiceProperties {
   /** The status of the last operation. */
@@ -300,6 +432,11 @@ export interface AkriServiceProperties {
   /** The status for the service. */
   status?: AkriServiceStatus;
 }
+const AkriServiceProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<AkriServiceProperties>;
+
 export interface AkriServiceCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -314,20 +451,42 @@ export interface AkriServiceCreateOrUpdateResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const AkriServiceCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<AkriServiceCreateOrUpdateResponse>;
+
 /** Broker Authentication Mode */
 export type BrokerAuthenticationMethod = "Custom" | "ServiceAccountToken" | "X509";
+const BrokerAuthenticationMethod = S.String;
+
 /** X509 Certificate Authentication properties. */
 export interface X509ManualCertificate {
   /** Kubernetes secret containing an X.509 client certificate. This is a reference to the secret through an identifying name, not the secret itself. */
   secretRef: string;
 }
+const X509ManualCertificate = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<X509ManualCertificate>;
+
 /** Custom Authentication properties */
 export interface BrokerAuthenticatorCustomAuth {
   /** X509 Custom Auth type details. */
   x509: X509ManualCertificate;
 }
+const BrokerAuthenticatorCustomAuth = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<BrokerAuthenticatorCustomAuth>;
+
 /** Additional HTTP headers to pass to the custom authentication server. */
 export type BrokerAuthenticatorMethodCustomHeadersMap = { [key: string]: string | undefined };
+const BrokerAuthenticatorMethodCustomHeadersMap = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<BrokerAuthenticatorMethodCustomHeadersMap>;
+
 /** Custom method for BrokerAuthentication */
 export interface BrokerAuthenticatorMethodCustom {
   /** Optional authentication needed for authenticating with the custom authentication server. */
@@ -339,17 +498,35 @@ export interface BrokerAuthenticatorMethodCustom {
   /** Additional HTTP headers to pass to the custom authentication server. */
   headers?: BrokerAuthenticatorMethodCustomHeadersMap;
 }
+const BrokerAuthenticatorMethodCustom = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<BrokerAuthenticatorMethodCustom>;
+
 /** List of allowed audience. */
 export type BrokerAuthenticatorMethodSatAudiencesList = Array<string>;
+const BrokerAuthenticatorMethodSatAudiencesList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<BrokerAuthenticatorMethodSatAudiencesList>;
+
 /** Service Account Token for BrokerAuthentication */
 export interface BrokerAuthenticatorMethodSat {
   /** List of allowed audience. */
   audiences: BrokerAuthenticatorMethodSatAudiencesList;
 }
+const BrokerAuthenticatorMethodSat = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<BrokerAuthenticatorMethodSat>;
+
 /** Attributes object. */
 export type BrokerAuthenticatorMethodX509AttributesAttributesMap = {
   [key: string]: string | undefined;
 };
+const BrokerAuthenticatorMethodX509AttributesAttributesMap =
+  BrokerAuthenticatorMethodCustomHeadersMap as any as S.Schema<BrokerAuthenticatorMethodX509AttributesAttributesMap>;
+
 /** BrokerAuthenticatorMethodX509Attributes properties. */
 export interface BrokerAuthenticatorMethodX509Attributes {
   /** Attributes object. */
@@ -357,12 +534,24 @@ export interface BrokerAuthenticatorMethodX509Attributes {
   /** Subject of the X509 attribute. */
   subject: string;
 }
+const BrokerAuthenticatorMethodX509Attributes = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<BrokerAuthenticatorMethodX509Attributes>;
+
 /** X509 authorization attributes properties. */
 export type BrokerAuthenticatorMethodX509AuthorizationAttributesMap = {
   [key: string]: BrokerAuthenticatorMethodX509Attributes | undefined;
 };
+const BrokerAuthenticatorMethodX509AuthorizationAttributesMap = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<BrokerAuthenticatorMethodX509AuthorizationAttributesMap>;
+
 /** X509 authentication validation methods. */
 export type BrokerAuthenticatorValidationMethods = "None" | "AzureDeviceRegistry";
+const BrokerAuthenticatorValidationMethods = S.String;
+
 /** X509 for BrokerAuthentication. */
 export interface BrokerAuthenticatorMethodX509 {
   /** X509 authorization attributes properties. */
@@ -372,6 +561,11 @@ export interface BrokerAuthenticatorMethodX509 {
   /** X509 authentication attributes properties. */
   additionalValidation?: BrokerAuthenticatorValidationMethods | (string & {});
 }
+const BrokerAuthenticatorMethodX509 = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<BrokerAuthenticatorMethodX509>;
+
 /** Set of broker authentication policies. Only one method is supported for each entry. */
 export interface BrokerAuthenticatorMethods {
   /** Custom authentication configuration. */
@@ -383,14 +577,29 @@ export interface BrokerAuthenticatorMethods {
   /** X.509 authentication configuration. */
   x509Settings?: BrokerAuthenticatorMethodX509;
 }
+const BrokerAuthenticatorMethods = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<BrokerAuthenticatorMethods>;
+
 /** Defines a set of Broker authentication methods to be used on `BrokerListeners`. For each array element one authenticator type supported. */
 export type BrokerAuthenticationPropertiesInputAuthenticationMethodsList =
   Array<BrokerAuthenticatorMethods>;
+const BrokerAuthenticationPropertiesInputAuthenticationMethodsList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<BrokerAuthenticationPropertiesInputAuthenticationMethodsList>;
+
 /** BrokerAuthentication Resource properties */
 export interface BrokerAuthenticationPropertiesInput {
   /** Defines a set of Broker authentication methods to be used on `BrokerListeners`. For each array element one authenticator type supported. */
   authenticationMethods: BrokerAuthenticationPropertiesInputAuthenticationMethodsList;
 }
+const BrokerAuthenticationPropertiesInput = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<BrokerAuthenticationPropertiesInput>;
+
 export interface BrokerAuthenticationCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -407,15 +616,25 @@ export interface BrokerAuthenticationCreateOrUpdateRequest {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const BrokerAuthenticationCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<BrokerAuthenticationCreateOrUpdateRequest>;
+
 /** Defines a set of Broker authentication methods to be used on `BrokerListeners`. For each array element one authenticator type supported. */
 export type BrokerAuthenticationPropertiesAuthenticationMethodsList =
   Array<BrokerAuthenticatorMethods>;
+const BrokerAuthenticationPropertiesAuthenticationMethodsList =
+  BrokerAuthenticationPropertiesInputAuthenticationMethodsList as any as S.Schema<BrokerAuthenticationPropertiesAuthenticationMethodsList>;
+
 /** The health state of the resource. */
 export type BrokerAuthenticationPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
   | "Unknown";
+const BrokerAuthenticationPropertiesHealthState = S.String;
+
 /** BrokerAuthentication Resource properties */
 export interface BrokerAuthenticationProperties {
   /** Defines a set of Broker authentication methods to be used on `BrokerListeners`. For each array element one authenticator type supported. */
@@ -425,6 +644,11 @@ export interface BrokerAuthenticationProperties {
   /** The health state of the resource. */
   healthState?: BrokerAuthenticationPropertiesHealthState;
 }
+const BrokerAuthenticationProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<BrokerAuthenticationProperties>;
+
 export interface BrokerAuthenticationCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -439,14 +663,29 @@ export interface BrokerAuthenticationCreateOrUpdateResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const BrokerAuthenticationCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<BrokerAuthenticationCreateOrUpdateResponse>;
+
 /** Enable caching of the authorization rules. */
 export type AuthorizationConfigCache = "Enabled" | "Disabled";
+const AuthorizationConfigCache = S.String;
+
 /** BrokerResourceDefinitionMethods methods allowed */
 export type BrokerResourceDefinitionMethods = "Connect" | "Publish" | "Subscribe";
+const BrokerResourceDefinitionMethods = S.String;
+
 /** A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection. This subfield may be set if the method is Connect. */
 export type BrokerResourceRuleClientIdsList = Array<string>;
+const BrokerResourceRuleClientIdsList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<BrokerResourceRuleClientIdsList>;
+
 /** A list of topics or topic patterns that match the topics that the clients can publish or subscribe to. This subfield is required if the method is Publish or Subscribe. */
 export type BrokerResourceRuleTopicsList = Array<string>;
+const BrokerResourceRuleTopicsList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<BrokerResourceRuleTopicsList>;
+
 /** Broker Resource Rule properties. This defines the objects that represent the actions or topics, such as - method.Connect, method.Publish, etc. */
 export interface BrokerResourceRule {
   /** Give access for a Broker method (i.e., Connect, Subscribe, or Publish). */
@@ -456,15 +695,36 @@ export interface BrokerResourceRule {
   /** A list of topics or topic patterns that match the topics that the clients can publish or subscribe to. This subfield is required if the method is Publish or Subscribe. */
   topics?: BrokerResourceRuleTopicsList;
 }
+const BrokerResourceRule = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<BrokerResourceRule>;
+
 /** Give access to Broker methods and topics. */
 export type AuthorizationRuleBrokerResourcesList = Array<BrokerResourceRule>;
+const AuthorizationRuleBrokerResourcesList = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<AuthorizationRuleBrokerResourcesList>;
+
 export type PrincipalDefinitionAttributesItemMap = { [key: string]: string | undefined };
+const PrincipalDefinitionAttributesItemMap =
+  BrokerAuthenticatorMethodCustomHeadersMap as any as S.Schema<PrincipalDefinitionAttributesItemMap>;
+
 /** A list of key-value pairs that match the attributes of the clients. The attributes are case-sensitive and must match the attributes provided by the clients during authentication. */
 export type PrincipalDefinitionAttributesList = Array<PrincipalDefinitionAttributesItemMap>;
+const PrincipalDefinitionAttributesList = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<PrincipalDefinitionAttributesList>;
+
 /** A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection. */
 export type PrincipalDefinitionClientIdsList = Array<string>;
+const PrincipalDefinitionClientIdsList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<PrincipalDefinitionClientIdsList>;
+
 /** A list of usernames that match the clients. The usernames are case-sensitive and must match the usernames provided by the clients during authentication. */
 export type PrincipalDefinitionUsernamesList = Array<string>;
+const PrincipalDefinitionUsernamesList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<PrincipalDefinitionUsernamesList>;
+
 /** PrincipalDefinition properties of Rule */
 export interface PrincipalDefinition {
   /** A list of key-value pairs that match the attributes of the clients. The attributes are case-sensitive and must match the attributes provided by the clients during authentication. */
@@ -474,12 +734,21 @@ export interface PrincipalDefinition {
   /** A list of usernames that match the clients. The usernames are case-sensitive and must match the usernames provided by the clients during authentication. */
   usernames?: PrincipalDefinitionUsernamesList;
 }
+const PrincipalDefinition = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<PrincipalDefinition>;
+
 /** StateStoreResourceKeyTypes properties */
 export type StateStoreResourceKeyTypes = "Pattern" | "String" | "Binary";
+const StateStoreResourceKeyTypes = S.String;
+
 /** Give access to state store keys for the corresponding principals defined. When key type is pattern set glob-style pattern (e.g., '*', 'clients/*'). */
 export type StateStoreResourceRuleKeysList = Array<string>;
+const StateStoreResourceRuleKeysList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<StateStoreResourceRuleKeysList>;
+
 /** StateStoreResourceDefinitionMethods methods allowed */
 export type StateStoreResourceDefinitionMethods = "Read" | "Write" | "ReadWrite";
+const StateStoreResourceDefinitionMethods = S.String;
+
 /** State Store Resource Rule properties. */
 export interface StateStoreResourceRule {
   /** Allowed keyTypes pattern, string, binary. The key type used for matching, for example pattern tries to match the key to a glob-style pattern and string checks key is equal to value provided in keys. */
@@ -489,8 +758,18 @@ export interface StateStoreResourceRule {
   /** Give access for `Read`, `Write` and `ReadWrite` access level. */
   method: StateStoreResourceDefinitionMethods | (string & {});
 }
+const StateStoreResourceRule = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<StateStoreResourceRule>;
+
 /** Give access to state store resources. */
 export type AuthorizationRuleStateStoreResourcesList = Array<StateStoreResourceRule>;
+const AuthorizationRuleStateStoreResourcesList = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<AuthorizationRuleStateStoreResourcesList>;
+
 /** AuthorizationConfig Rule Properties */
 export interface AuthorizationRule {
   /** Give access to Broker methods and topics. */
@@ -500,8 +779,15 @@ export interface AuthorizationRule {
   /** Give access to state store resources. */
   stateStoreResources?: AuthorizationRuleStateStoreResourcesList;
 }
+const AuthorizationRule = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<AuthorizationRule>;
+
 /** The authorization rules to follow. If no rule is set, but Authorization Resource is used that would mean DenyAll. */
 export type AuthorizationConfigRulesList = Array<AuthorizationRule>;
+const AuthorizationConfigRulesList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<AuthorizationConfigRulesList>;
+
 /** Broker AuthorizationConfig properties */
 export interface AuthorizationConfig {
   /** Enable caching of the authorization rules. */
@@ -509,11 +795,18 @@ export interface AuthorizationConfig {
   /** The authorization rules to follow. If no rule is set, but Authorization Resource is used that would mean DenyAll. */
   rules?: AuthorizationConfigRulesList;
 }
+const AuthorizationConfig = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<AuthorizationConfig>;
+
 /** BrokerAuthorization Resource properties */
 export interface BrokerAuthorizationPropertiesInput {
   /** The list of authorization policies supported by the Authorization Resource. */
   authorizationPolicies: AuthorizationConfig;
 }
+const BrokerAuthorizationPropertiesInput = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<BrokerAuthorizationPropertiesInput>;
+
 export interface BrokerAuthorizationCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -530,12 +823,19 @@ export interface BrokerAuthorizationCreateOrUpdateRequest {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const BrokerAuthorizationCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<BrokerAuthorizationCreateOrUpdateRequest>;
+
 /** The health state of the resource. */
 export type BrokerAuthorizationPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
   | "Unknown";
+const BrokerAuthorizationPropertiesHealthState = S.String;
+
 /** BrokerAuthorization Resource properties */
 export interface BrokerAuthorizationProperties {
   /** The list of authorization policies supported by the Authorization Resource. */
@@ -545,6 +845,11 @@ export interface BrokerAuthorizationProperties {
   /** The health state of the resource. */
   healthState?: BrokerAuthorizationPropertiesHealthState;
 }
+const BrokerAuthorizationProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<BrokerAuthorizationProperties>;
+
 export interface BrokerAuthorizationCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -559,8 +864,15 @@ export interface BrokerAuthorizationCreateOrUpdateResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const BrokerAuthorizationCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<BrokerAuthorizationCreateOrUpdateResponse>;
+
 /** The strategy to use for dropping messages from the queue. */
 export type SubscriberQueueLimitStrategy = "None" | "DropOldest";
+const SubscriberQueueLimitStrategy = S.String;
+
 /** The settings of Subscriber Queue Limit. */
 export interface SubscriberQueueLimit {
   /** The maximum length of the queue before messages start getting dropped. */
@@ -568,6 +880,8 @@ export interface SubscriberQueueLimit {
   /** The strategy to use for dropping messages from the queue. */
   strategy?: SubscriberQueueLimitStrategy | (string & {});
 }
+const SubscriberQueueLimit = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<SubscriberQueueLimit>;
+
 /** The settings of Client Config. */
 export interface ClientConfig {
   /** Upper bound of Session Expiry Interval, in seconds. */
@@ -583,8 +897,12 @@ export interface ClientConfig {
   /** Upper bound of a client's Keep Alive, in seconds. */
   maxKeepAliveSeconds?: number;
 }
+const ClientConfig = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ClientConfig>;
+
 /** The setting to enable or disable encryption of internal Traffic. */
 export type AdvancedSettingsEncryptInternalTraffic = "Enabled" | "Disabled";
+const AdvancedSettingsEncryptInternalTraffic = S.String;
+
 /** Private key algorithm types. */
 export type PrivateKeyAlgorithm =
   | "Ec256"
@@ -594,8 +912,12 @@ export type PrivateKeyAlgorithm =
   | "Rsa2048"
   | "Rsa4096"
   | "Rsa8192";
+const PrivateKeyAlgorithm = S.String;
+
 /** Private key rotation policy. */
 export type PrivateKeyRotationPolicy = "Always" | "Never";
+const PrivateKeyRotationPolicy = S.String;
+
 /** Cert Manager private key properties */
 export interface CertManagerPrivateKey {
   /** algorithm for private key. */
@@ -603,6 +925,11 @@ export interface CertManagerPrivateKey {
   /** cert-manager private key rotationPolicy. */
   rotationPolicy: PrivateKeyRotationPolicy | (string & {});
 }
+const CertManagerPrivateKey = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<CertManagerPrivateKey>;
+
 /** Cert Manager Cert properties */
 export interface CertManagerCertOptions {
   /** Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes. */
@@ -612,6 +939,11 @@ export interface CertManagerCertOptions {
   /** Configuration of certificate private key. */
   privateKey: CertManagerPrivateKey;
 }
+const CertManagerCertOptions = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<CertManagerCertOptions>;
+
 /** Broker Advanced Settings */
 export interface AdvancedSettings {
   /** Configurations related to All Clients. */
@@ -621,6 +953,8 @@ export interface AdvancedSettings {
   /** Certificate rotation and private key configuration. */
   internalCerts?: CertManagerCertOptions;
 }
+const AdvancedSettings = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<AdvancedSettings>;
+
 /** Desired properties of the backend instances of the broker */
 export interface BackendChain {
   /** The desired number of physical backend partitions. */
@@ -630,6 +964,8 @@ export interface BackendChain {
   /** Number of logical backend workers per replica (pod). */
   workers?: number;
 }
+const BackendChain = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<BackendChain>;
+
 /** The desired properties of the frontend instances of the Broker */
 export interface Frontend {
   /** The desired number of frontend instances (pods). */
@@ -637,6 +973,8 @@ export interface Frontend {
   /** Number of logical frontend workers per instance (pod). */
   workers?: number;
 }
+const Frontend = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<Frontend>;
+
 /** Cardinality properties */
 export interface Cardinality {
   /** The backend broker desired properties */
@@ -644,6 +982,8 @@ export interface Cardinality {
   /** The frontend desired properties */
   frontend: Frontend;
 }
+const Cardinality = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<Cardinality>;
+
 /** Diagnostic Log properties */
 export type DiagnosticsLogs = AkriConnectorsDiagnosticsLogs;
 /** Diagnostic Metrics properties */
@@ -651,8 +991,12 @@ export interface Metrics {
   /** The prometheus port to expose the metrics. */
   prometheusPort?: number;
 }
+const Metrics = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<Metrics>;
+
 /** The toggle to enable/disable self check. */
 export type SelfCheckMode = "Enabled" | "Disabled";
+const SelfCheckMode = S.String;
+
 /** Broker Diagnostic Self check properties */
 export interface SelfCheck {
   /** The toggle to enable/disable self check. */
@@ -662,10 +1006,16 @@ export interface SelfCheck {
   /** The timeout for self check. */
   timeoutSeconds?: number;
 }
+const SelfCheck = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<SelfCheck>;
+
 /** The toggle to enable/disable traces. */
 export type TracesMode = "Enabled" | "Disabled";
+const TracesMode = S.String;
+
 /** The toggle to enable/disable self tracing. */
 export type SelfTracingMode = "Enabled" | "Disabled";
+const SelfTracingMode = S.String;
+
 /** Diagnostic Self tracing properties */
 export interface SelfTracing {
   /** The toggle to enable/disable self tracing. */
@@ -673,6 +1023,8 @@ export interface SelfTracing {
   /** The self tracing interval. */
   intervalSeconds?: number;
 }
+const SelfTracing = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<SelfTracing>;
+
 /** Broker Diagnostic Trace properties */
 export interface Traces {
   /** The toggle to enable/disable traces. */
@@ -684,6 +1036,8 @@ export interface Traces {
   /** The span channel capacity. */
   spanChannelCapacity?: number;
 }
+const Traces = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<Traces>;
+
 /** Broker Diagnostic Setting properties */
 export interface BrokerDiagnostics {
   /** Diagnostic log settings for the resource. */
@@ -695,8 +1049,13 @@ export interface BrokerDiagnostics {
   /** The trace properties. */
   traces?: Traces;
 }
+const BrokerDiagnostics = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<BrokerDiagnostics>;
+
 /** AccessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1 */
 export type VolumeClaimSpecAccessModesList = Array<string>;
+const VolumeClaimSpecAccessModesList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<VolumeClaimSpecAccessModesList>;
+
 /** Kubernetes reference */
 export interface LocalKubernetesReference {
   /** APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required. */
@@ -706,6 +1065,11 @@ export interface LocalKubernetesReference {
   /** Name is the name of resource being referenced */
   name: string;
 }
+const LocalKubernetesReference = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<LocalKubernetesReference>;
+
 /** Kubernetes reference */
 export interface KubernetesReference {
   /** APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required. */
@@ -717,18 +1081,36 @@ export interface KubernetesReference {
   /** Namespace is the namespace of the resource being referenced. This field is required when the resource has a namespace. */
   namespace?: string;
 }
+const KubernetesReference = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<KubernetesReference>;
+
 /** Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/ */
 export type VolumeClaimResourceRequirementsLimitsMap = { [key: string]: string | undefined };
+const VolumeClaimResourceRequirementsLimitsMap =
+  BrokerAuthenticatorMethodCustomHeadersMap as any as S.Schema<VolumeClaimResourceRequirementsLimitsMap>;
+
 /** Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/ */
 export type VolumeClaimResourceRequirementsRequestsMap = { [key: string]: string | undefined };
+const VolumeClaimResourceRequirementsRequestsMap =
+  BrokerAuthenticatorMethodCustomHeadersMap as any as S.Schema<VolumeClaimResourceRequirementsRequestsMap>;
+
 /** VolumeClaimResourceRequirementsClaims properties. */
 export interface VolumeClaimResourceRequirementsClaims {
   /** Name of the resource. This must match the name of a resource in spec.resourceClaims. */
   name: string;
 }
+const VolumeClaimResourceRequirementsClaims = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<VolumeClaimResourceRequirementsClaims>;
+
 /** Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. This is an alpha field and requires enabling the DynamicResourceAllocation feature gate. This field is immutable. It can only be set for containers. */
 export type VolumeClaimResourceRequirementsClaimsList =
   Array<VolumeClaimResourceRequirementsClaims>;
+const VolumeClaimResourceRequirementsClaimsList = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<VolumeClaimResourceRequirementsClaimsList>;
+
 /** VolumeClaimResourceRequirements properties */
 export interface VolumeClaimResourceRequirements {
   /** Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/ */
@@ -738,10 +1120,20 @@ export interface VolumeClaimResourceRequirements {
   /** Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. This is an alpha field and requires enabling the DynamicResourceAllocation feature gate. This field is immutable. It can only be set for containers. */
   claims?: VolumeClaimResourceRequirementsClaimsList;
 }
+const VolumeClaimResourceRequirements = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<VolumeClaimResourceRequirements>;
+
 /** Valid operators are In, NotIn, Exists and DoesNotExist. */
 export type OperatorValues = "In" | "NotIn" | "Exists" | "DoesNotExist";
+const OperatorValues = S.String;
+
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
 export type VolumeClaimSpecSelectorMatchExpressionsValuesList = Array<string>;
+const VolumeClaimSpecSelectorMatchExpressionsValuesList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<VolumeClaimSpecSelectorMatchExpressionsValuesList>;
+
 /** VolumeClaimSpecSelectorMatchExpressions properties */
 export interface VolumeClaimSpecSelectorMatchExpressions {
   /** key is the label key that the selector applies to. */
@@ -751,11 +1143,24 @@ export interface VolumeClaimSpecSelectorMatchExpressions {
   /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
   values?: VolumeClaimSpecSelectorMatchExpressionsValuesList;
 }
+const VolumeClaimSpecSelectorMatchExpressions = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<VolumeClaimSpecSelectorMatchExpressions>;
+
 /** MatchExpressions is a list of label selector requirements. The requirements are ANDed. */
 export type VolumeClaimSpecSelectorMatchExpressionsList =
   Array<VolumeClaimSpecSelectorMatchExpressions>;
+const VolumeClaimSpecSelectorMatchExpressionsList = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<VolumeClaimSpecSelectorMatchExpressionsList>;
+
 /** MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed. */
 export type VolumeClaimSpecSelectorMatchLabelsMap = { [key: string]: string | undefined };
+const VolumeClaimSpecSelectorMatchLabelsMap =
+  BrokerAuthenticatorMethodCustomHeadersMap as any as S.Schema<VolumeClaimSpecSelectorMatchLabelsMap>;
+
 /** VolumeClaimSpecSelector properties */
 export interface VolumeClaimSpecSelector {
   /** MatchExpressions is a list of label selector requirements. The requirements are ANDed. */
@@ -763,6 +1168,11 @@ export interface VolumeClaimSpecSelector {
   /** MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed. */
   matchLabels?: VolumeClaimSpecSelectorMatchLabelsMap;
 }
+const VolumeClaimSpecSelector = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<VolumeClaimSpecSelector>;
+
 /** VolumeClaimSpec properties */
 export interface VolumeClaimSpec {
   /** VolumeName is the binding reference to the PersistentVolume backing this claim. */
@@ -782,6 +1192,8 @@ export interface VolumeClaimSpec {
   /** A label query over volumes to consider for binding. */
   selector?: VolumeClaimSpecSelector;
 }
+const VolumeClaimSpec = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<VolumeClaimSpec>;
+
 /** DiskBackedMessageBuffer properties */
 export interface DiskBackedMessageBuffer {
   /** The max size of the message buffer on disk. If a PVC template is specified using one of ephemeralVolumeClaimSpec or persistentVolumeClaimSpec, then this size is used as the request and limit sizes of that template. If neither ephemeralVolumeClaimSpec nor persistentVolumeClaimSpec are specified, then an emptyDir volume is mounted with this size as its limit. See <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir> for details. */
@@ -791,19 +1203,37 @@ export interface DiskBackedMessageBuffer {
   /** Use the specified persistent volume claim template to mount a persistent volume for the message buffer. */
   persistentVolumeClaimSpec?: VolumeClaimSpec;
 }
+const DiskBackedMessageBuffer = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DiskBackedMessageBuffer>;
+
 /** The toggle to enable/disable cpu resource limits. */
 export type GenerateResourceLimitsCpu = "Enabled" | "Disabled";
+const GenerateResourceLimitsCpu = S.String;
+
 /** GenerateResourceLimits properties */
 export interface GenerateResourceLimits {
   /** The toggle to enable/disable cpu resource limits. */
   cpu?: GenerateResourceLimitsCpu | (string & {});
 }
+const GenerateResourceLimits = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<GenerateResourceLimits>;
+
 /** Handling of high-priority messages during backpressure state. */
 export type HighPriorityMessagesBackpressureHandling = "Accept" | "Reject";
+const HighPriorityMessagesBackpressureHandling = S.String;
+
 /** Memory profile of Broker. */
 export type BrokerPropertiesInputMemoryProfile = "Tiny" | "Low" | "Medium" | "High";
+const BrokerPropertiesInputMemoryProfile = S.String;
+
 /** Broker Persistence Policy Mode values. */
 export type BrokerPersistencePolicyMode = "All" | "None" | "Custom";
+const BrokerPersistencePolicyMode = S.String;
+
 /** Broker Retain policy properties. */
 export interface BrokerRetainMessagesPolicy {
   /** 'All' to persist all retain messages, 'None' to not persist any, 'Custom' to persist only the specified topics. */
@@ -811,6 +1241,11 @@ export interface BrokerRetainMessagesPolicy {
   /** Settings for the policy. Only for `Custom` (polymorphic subtype `BrokerRetainMessagesCustomPolicy`). */
   retainSettings?: unknown;
 }
+const BrokerRetainMessagesPolicy = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<BrokerRetainMessagesPolicy>;
+
 /** Broker State Store Policy. */
 export interface BrokerStateStorePolicy {
   /** 'All' to persist all keys, 'None' to not persist any, 'Custom' to persist only the specified keys. */
@@ -818,6 +1253,11 @@ export interface BrokerStateStorePolicy {
   /** Settings for the policy. Only for `Custom` (polymorphic subtype `BrokerStateStoreCustomPolicy`). */
   stateStoreSettings?: unknown;
 }
+const BrokerStateStorePolicy = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<BrokerStateStorePolicy>;
+
 /** Broker Subscriber Queue Policy properties. */
 export interface BrokerSubscriberQueuePolicy {
   /** 'All' to persist all subscriber queues, 'None' to not persist any, 'Custom' to persist only the specified queues. */
@@ -825,13 +1265,25 @@ export interface BrokerSubscriberQueuePolicy {
   /** Custom policy, required if mode is Custom. Subscriber queues from all groups are persisted to disk (logical OR). Only for `Custom` (polymorphic subtype `BrokerSubscriberQueueCustomPolicy`). */
   subscriberQueueSettings?: unknown;
 }
+const BrokerSubscriberQueuePolicy = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<BrokerSubscriberQueuePolicy>;
+
 /** Mode properties */
 export type OperationalMode = "Enabled" | "Disabled";
+const OperationalMode = S.String;
+
 /** Broker Persistence Encryption properties. */
 export interface BrokerPersistenceEncryption {
   /** Determines if encryption is enabled. */
   mode: OperationalMode | (string & {});
 }
+const BrokerPersistenceEncryption = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<BrokerPersistenceEncryption>;
+
 /** Disk persistence configuration. When persistence is enabled, certain items (non-performance-critical data) selected for persistence will reside only on disk. Below are the affected items: - Retained messages will be stored on disk only. - WILL messages will be stored on disk only. - DSS key/value pairs will be stored on disk only, except for performance-critical items like timed locks, which remain in both disk and memory for improved performance. Optional. Everything is in-memory if not set. Note: if configured, all MQTT session states are written to disk. */
 export interface BrokerPersistence {
   /** The max size of the message buffer on disk. If a PVC template is specified using persistentVolumeClaimSpec Then this size is used as the request and limit sizes of that template. If a PVC template isn't specified Then local-path provisioner is requested with this size limit. Required. */
@@ -847,6 +1299,8 @@ export interface BrokerPersistence {
   /** Controls settings related to encryption of the persistence database. Optional, defaults to enabling encryption. */
   encryption?: BrokerPersistenceEncryption;
 }
+const BrokerPersistence = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<BrokerPersistence>;
+
 /** Broker Resource properties */
 export interface BrokerPropertiesInput {
   /** Advanced settings of Broker. */
@@ -868,6 +1322,11 @@ export interface BrokerPropertiesInput {
   /** The persistence settings of the Broker. */
   persistence?: BrokerPersistence;
 }
+const BrokerPropertiesInput = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<BrokerPropertiesInput>;
+
 export interface BrokerCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -882,15 +1341,26 @@ export interface BrokerCreateOrUpdateRequest {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const BrokerCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<BrokerCreateOrUpdateRequest>;
+
 /** Memory profile of Broker. */
 export type BrokerPropertiesMemoryProfile = "Tiny" | "Low" | "Medium" | "High";
+const BrokerPropertiesMemoryProfile = S.String;
+
 /** BrokerStatus status. */
 export interface BrokerStatus {
   /** The health state of the Broker. */
   healthState?: ResourceHealthStatus;
 }
+const BrokerStatus = AkriConnectorStatus as any as S.Schema<BrokerStatus>;
+
 /** The health state of the resource. */
 export type BrokerPropertiesHealthState = "Available" | "Degraded" | "Unavailable" | "Unknown";
+const BrokerPropertiesHealthState = S.String;
+
 /** Broker Resource properties */
 export interface BrokerProperties {
   /** Advanced settings of Broker. */
@@ -916,6 +1386,8 @@ export interface BrokerProperties {
   /** The health state of the resource. */
   healthState?: BrokerPropertiesHealthState;
 }
+const BrokerProperties = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<BrokerProperties>;
+
 export interface BrokerCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -930,12 +1402,23 @@ export interface BrokerCreateOrUpdateResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const BrokerCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<BrokerCreateOrUpdateResponse>;
+
 /** Protocol to use for client connections. */
 export type ListenerPortProtocol = "Mqtt" | "WebSockets";
+const ListenerPortProtocol = S.String;
+
 /** Broker Authentication Mode */
 export type TlsCertMethodMode = "Automatic" | "Manual";
+const TlsCertMethodMode = S.String;
+
 /** CertManagerIssuerKind properties */
 export type CertManagerIssuerKind = "Issuer" | "ClusterIssuer";
+const CertManagerIssuerKind = S.String;
+
 /** Cert-Manager issuerRef properties */
 export interface CertManagerIssuerRef {
   /** group of issuer. */
@@ -945,10 +1428,21 @@ export interface CertManagerIssuerRef {
   /** name of issuer. */
   name: string;
 }
+const CertManagerIssuerRef = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<CertManagerIssuerRef>;
+
 /** DNS SANs. */
 export type SanForCertDnsList = Array<string>;
+const SanForCertDnsList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<SanForCertDnsList>;
+
 /** IP address SANs. */
 export type SanForCertIpList = Array<string>;
+const SanForCertIpList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<SanForCertIpList>;
+
 /** Subject Alternative Names (SANs) for certificate. */
 export interface SanForCert {
   /** DNS SANs. */
@@ -956,6 +1450,8 @@ export interface SanForCert {
   /** IP address SANs. */
   ip: SanForCertIpList;
 }
+const SanForCert = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<SanForCert>;
+
 /** Automatic TLS server certificate management with cert-manager */
 export interface CertManagerCertificateSpec {
   /** Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes. */
@@ -971,6 +1467,11 @@ export interface CertManagerCertificateSpec {
   /** Additional Subject Alternative Names (SANs) to include in the certificate. */
   san?: SanForCert;
 }
+const CertManagerCertificateSpec = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<CertManagerCertificateSpec>;
+
 /** Collection of different TLS types, NOTE- Enum at a time only one of them needs to be supported */
 export interface TlsCertMethod {
   /** Mode of TLS server certificate management. */
@@ -980,6 +1481,8 @@ export interface TlsCertMethod {
   /** Option 2 - Manual TLS server certificate management through a defined secret. */
   manual?: X509ManualCertificate;
 }
+const TlsCertMethod = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<TlsCertMethod>;
+
 /** Defines a TCP port on which a `BrokerListener` listens. */
 export interface ListenerPort {
   /** Reference to client authentication settings. Omit to disable authentication. */
@@ -995,10 +1498,19 @@ export interface ListenerPort {
   /** TLS server certificate settings for this port. Omit to disable TLS. */
   tls?: TlsCertMethod;
 }
+const ListenerPort = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<ListenerPort>;
+
 /** Ports on which this listener accepts client connections. */
 export type BrokerListenerPropertiesInputPortsList = Array<ListenerPort>;
+const BrokerListenerPropertiesInputPortsList = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<BrokerListenerPropertiesInputPortsList>;
+
 /** Kubernetes Service type of this listener. */
 export type BrokerListenerPropertiesInputServiceType = "ClusterIp" | "LoadBalancer" | "NodePort";
+const BrokerListenerPropertiesInputServiceType = S.String;
+
 /** Defines a Broker listener. A listener is a collection of ports on which the broker accepts connections from clients. */
 export interface BrokerListenerPropertiesInput {
   /** Kubernetes Service name of this listener. */
@@ -1008,6 +1520,11 @@ export interface BrokerListenerPropertiesInput {
   /** Kubernetes Service type of this listener. */
   serviceType?: BrokerListenerPropertiesInputServiceType | (string & {});
 }
+const BrokerListenerPropertiesInput = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<BrokerListenerPropertiesInput>;
+
 export interface BrokerListenerCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1024,16 +1541,28 @@ export interface BrokerListenerCreateOrUpdateRequest {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const BrokerListenerCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<BrokerListenerCreateOrUpdateRequest>;
+
 /** Ports on which this listener accepts client connections. */
 export type BrokerListenerPropertiesPortsList = Array<ListenerPort>;
+const BrokerListenerPropertiesPortsList =
+  BrokerListenerPropertiesInputPortsList as any as S.Schema<BrokerListenerPropertiesPortsList>;
+
 /** Kubernetes Service type of this listener. */
 export type BrokerListenerPropertiesServiceType = "ClusterIp" | "LoadBalancer" | "NodePort";
+const BrokerListenerPropertiesServiceType = S.String;
+
 /** The health state of the resource. */
 export type BrokerListenerPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
   | "Unknown";
+const BrokerListenerPropertiesHealthState = S.String;
+
 /** Defines a Broker listener. A listener is a collection of ports on which the broker accepts connections from clients. */
 export interface BrokerListenerProperties {
   /** Kubernetes Service name of this listener. */
@@ -1047,6 +1576,11 @@ export interface BrokerListenerProperties {
   /** The health state of the resource. */
   healthState?: BrokerListenerPropertiesHealthState;
 }
+const BrokerListenerProperties = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<BrokerListenerProperties>;
+
 export interface BrokerListenerCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1061,14 +1595,28 @@ export interface BrokerListenerCreateOrUpdateResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const BrokerListenerCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<BrokerListenerCreateOrUpdateResponse>;
+
 /** Mode for Dataflow. Optional; defaults to Enabled. */
 export type DataflowPropertiesInputMode = "Enabled" | "Disabled";
+const DataflowPropertiesInputMode = S.String;
+
 /** Dataflow Operation Type properties */
 export type OperationType = "Source" | "Destination" | "BuiltInTransformation";
+const OperationType = S.String;
+
 /** Content is a JSON Schema. Allowed: JSON Schema/draft-7. */
 export type DataflowSourceOperationSettingsSerializationFormat = "Json";
+const DataflowSourceOperationSettingsSerializationFormat = S.String;
+
 /** List of source locations. Can be Broker or Kafka topics. Supports wildcards # and +. */
 export type DataflowSourceOperationSettingsDataSourcesList = Array<string>;
+const DataflowSourceOperationSettingsDataSourcesList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<DataflowSourceOperationSettingsDataSourcesList>;
+
 /** Dataflow Source Operation properties */
 export interface DataflowSourceOperationSettings {
   /** Reference to the Dataflow Endpoint resource. Can only be of Broker and Kafka type. */
@@ -1082,10 +1630,20 @@ export interface DataflowSourceOperationSettings {
   /** List of source locations. Can be Broker or Kafka topics. Supports wildcards # and +. */
   dataSources: DataflowSourceOperationSettingsDataSourcesList;
 }
+const DataflowSourceOperationSettings = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<DataflowSourceOperationSettings>;
+
 /** Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json */
 export type DataflowBuiltInTransformationSettingsSerializationFormat = "Delta" | "Json" | "Parquet";
+const DataflowBuiltInTransformationSettingsSerializationFormat = S.String;
+
 /** List of fields for enriching from the Broker State Store. */
 export type DataflowBuiltInTransformationDatasetInputsList = Array<string>;
+const DataflowBuiltInTransformationDatasetInputsList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<DataflowBuiltInTransformationDatasetInputsList>;
+
 /** Dataflow BuiltIn Transformation dataset properties */
 export interface DataflowBuiltInTransformationDataset {
   /** The key of the dataset. */
@@ -1099,13 +1657,28 @@ export interface DataflowBuiltInTransformationDataset {
   /** Condition to enrich data from Broker State Store. Example: $1 < 0 || $1 > $2 (Assuming inputs section $1 and $2 are provided) */
   expression?: string;
 }
+const DataflowBuiltInTransformationDataset = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<DataflowBuiltInTransformationDataset>;
+
 /** Enrich data from Broker State Store. Dataset references a key in Broker State Store. */
 export type DataflowBuiltInTransformationSettingsDatasetsList =
   Array<DataflowBuiltInTransformationDataset>;
+const DataflowBuiltInTransformationSettingsDatasetsList = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<DataflowBuiltInTransformationSettingsDatasetsList>;
+
 /** The type of dataflow operation. */
 export type DataflowBuiltInTransformationFilterType = "Filter";
+const DataflowBuiltInTransformationFilterType = S.String;
+
 /** List of fields for filtering in JSON path expression. */
 export type DataflowBuiltInTransformationFilterInputsList = Array<string>;
+const DataflowBuiltInTransformationFilterInputsList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<DataflowBuiltInTransformationFilterInputsList>;
+
 /** Dataflow BuiltIn Transformation filter properties */
 export interface DataflowBuiltInTransformationFilter {
   /** The type of dataflow operation. */
@@ -1117,9 +1690,19 @@ export interface DataflowBuiltInTransformationFilter {
   /** Condition to filter data. Can reference input fields with {n} where n is the index of the input field starting from 1. Example: $1 < 0 || $1 > $2 (Assuming inputs section $1 and $2 are provided) */
   expression: string;
 }
+const DataflowBuiltInTransformationFilter = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<DataflowBuiltInTransformationFilter>;
+
 /** Filters input record or datapoints based on condition. */
 export type DataflowBuiltInTransformationSettingsFilterList =
   Array<DataflowBuiltInTransformationFilter>;
+const DataflowBuiltInTransformationSettingsFilterList = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<DataflowBuiltInTransformationSettingsFilterList>;
+
 /** Dataflow type mapping properties */
 export type DataflowMappingType =
   | "NewProperties"
@@ -1127,8 +1710,13 @@ export type DataflowMappingType =
   | "Compute"
   | "PassThrough"
   | "BuiltInFunction";
+const DataflowMappingType = S.String;
+
 /** List of fields for mapping in JSON path expression. */
 export type DataflowBuiltInTransformationMapInputsList = Array<string>;
+const DataflowBuiltInTransformationMapInputsList =
+  BrokerAuthenticatorMethodSatAudiencesList as any as S.Schema<DataflowBuiltInTransformationMapInputsList>;
+
 /** Dataflow BuiltIn Transformation map properties */
 export interface DataflowBuiltInTransformationMap {
   /** Type of transformation. */
@@ -1142,8 +1730,18 @@ export interface DataflowBuiltInTransformationMap {
   /** Where and how the input fields to be organized in the output record. */
   output: string;
 }
+const DataflowBuiltInTransformationMap = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<DataflowBuiltInTransformationMap>;
+
 /** Maps input to output message. */
 export type DataflowBuiltInTransformationSettingsMapList = Array<DataflowBuiltInTransformationMap>;
+const DataflowBuiltInTransformationSettingsMapList = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<DataflowBuiltInTransformationSettingsMapList>;
+
 /** Dataflow BuiltIn Transformation properties */
 export interface DataflowBuiltInTransformationSettings {
   /** Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json */
@@ -1157,8 +1755,15 @@ export interface DataflowBuiltInTransformationSettings {
   /** Maps input to output message. */
   map?: DataflowBuiltInTransformationSettingsMapList;
 }
+const DataflowBuiltInTransformationSettings = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<DataflowBuiltInTransformationSettings>;
+
 /** Dataflow Destination Header Action Types */
 export type DataflowHeaderActionType = "AddIfNotPresent" | "Remove" | "AddOrReplace";
+const DataflowHeaderActionType = S.String;
+
 /** Dataflow Destination Header Action properties */
 export interface DataflowDestinationHeaderAction {
   /** The type of header operation to perform. */
@@ -1168,9 +1773,19 @@ export interface DataflowDestinationHeaderAction {
   /** The value of the header to add. Only for `AddIfNotPresent` (polymorphic subtype `DataflowDestinationAddIfNotPresentHeaderAction`). */
   value?: string;
 }
+const DataflowDestinationHeaderAction = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<DataflowDestinationHeaderAction>;
+
 /** Headers for the output data. */
 export type DataflowDestinationOperationSettingsHeadersList =
   Array<DataflowDestinationHeaderAction>;
+const DataflowDestinationOperationSettingsHeadersList = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<DataflowDestinationOperationSettingsHeadersList>;
+
 /** Dataflow Destination Operation properties */
 export interface DataflowDestinationOperationSettings {
   /** Reference to the Endpoint CR. Can be of Broker, Kafka, Fabric, ADLS, ADX type. */
@@ -1180,6 +1795,11 @@ export interface DataflowDestinationOperationSettings {
   /** Headers for the output data. */
   headers?: DataflowDestinationOperationSettingsHeadersList;
 }
+const DataflowDestinationOperationSettings = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<DataflowDestinationOperationSettings>;
+
 /** Dataflow Operation properties. NOTE - One only method is allowed to be used for one entry. */
 export interface DataflowOperation {
   /** Type of operation. */
@@ -1193,8 +1813,15 @@ export interface DataflowOperation {
   /** Destination configuration. */
   destinationSettings?: DataflowDestinationOperationSettings;
 }
+const DataflowOperation = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<DataflowOperation>;
+
 /** List of operations including source and destination references as well as transformation. */
 export type DataflowPropertiesInputOperationsList = Array<DataflowOperation>;
+const DataflowPropertiesInputOperationsList = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<DataflowPropertiesInputOperationsList>;
+
 /** Dataflow Resource properties */
 export interface DataflowPropertiesInput {
   /** Mode for Dataflow. Optional; defaults to Enabled. */
@@ -1204,6 +1831,11 @@ export interface DataflowPropertiesInput {
   /** List of operations including source and destination references as well as transformation. */
   operations: DataflowPropertiesInputOperationsList;
 }
+const DataflowPropertiesInput = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<DataflowPropertiesInput>;
+
 export interface DataflowCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1220,17 +1852,31 @@ export interface DataflowCreateOrUpdateRequest {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const DataflowCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<DataflowCreateOrUpdateRequest>;
+
 /** Mode for Dataflow. Optional; defaults to Enabled. */
 export type DataflowPropertiesMode = "Enabled" | "Disabled";
+const DataflowPropertiesMode = S.String;
+
 /** List of operations including source and destination references as well as transformation. */
 export type DataflowPropertiesOperationsList = Array<DataflowOperation>;
+const DataflowPropertiesOperationsList =
+  DataflowPropertiesInputOperationsList as any as S.Schema<DataflowPropertiesOperationsList>;
+
 /** DataflowStatus status. */
 export interface DataflowStatus {
   /** The health state of the Dataflow. */
   healthState?: ResourceHealthStatus;
 }
+const DataflowStatus = AkriConnectorStatus as any as S.Schema<DataflowStatus>;
+
 /** The health state of the resource. */
 export type DataflowPropertiesHealthState = "Available" | "Degraded" | "Unavailable" | "Unknown";
+const DataflowPropertiesHealthState = S.String;
+
 /** Dataflow Resource properties */
 export interface DataflowProperties {
   /** Mode for Dataflow. Optional; defaults to Enabled. */
@@ -1246,6 +1892,8 @@ export interface DataflowProperties {
   /** The health state of the resource. */
   healthState?: DataflowPropertiesHealthState;
 }
+const DataflowProperties = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<DataflowProperties>;
+
 export interface DataflowCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1260,6 +1908,11 @@ export interface DataflowCreateOrUpdateResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const DataflowCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<DataflowCreateOrUpdateResponse>;
+
 /** DataflowEndpoint Type properties */
 export type EndpointType =
   | "DataExplorer"
@@ -1269,6 +1922,8 @@ export type EndpointType =
   | "LocalStorage"
   | "Mqtt"
   | "OpenTelemetry";
+const EndpointType = S.String;
+
 /** DataflowEndpoint Host Type properties */
 export type DataflowEndpointHostType =
   | "FabricRT"
@@ -1277,13 +1932,22 @@ export type DataflowEndpointHostType =
   | "Eventhub"
   | "CustomMqtt"
   | "CustomKafka";
+const DataflowEndpointHostType = S.String;
+
 /** Managed Identity Method */
 export type ManagedIdentityMethod = "SystemAssignedManagedIdentity" | "UserAssignedManagedIdentity";
+const ManagedIdentityMethod = S.String;
+
 /** DataflowEndpoint Authentication SystemAssignedManagedIdentity properties */
 export interface DataflowEndpointAuthenticationSystemAssignedManagedIdentity {
   /** Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration. */
   audience?: string;
 }
+const DataflowEndpointAuthenticationSystemAssignedManagedIdentity = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<DataflowEndpointAuthenticationSystemAssignedManagedIdentity>;
+
 /** DataflowEndpoint Authentication UserAssignedManagedIdentity properties */
 export interface DataflowEndpointAuthenticationUserAssignedManagedIdentity {
   /** Client ID for the user-assigned managed identity. */
@@ -1293,6 +1957,11 @@ export interface DataflowEndpointAuthenticationUserAssignedManagedIdentity {
   /** Tenant ID. */
   tenantId: string;
 }
+const DataflowEndpointAuthenticationUserAssignedManagedIdentity = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<DataflowEndpointAuthenticationUserAssignedManagedIdentity>;
+
 /** Azure Data Explorer Authentication properties. NOTE - only authentication property is allowed per entry. */
 export interface DataflowEndpointDataExplorerAuthentication {
   /** Mode of Authentication. */
@@ -1302,6 +1971,11 @@ export interface DataflowEndpointDataExplorerAuthentication {
   /** User-assigned managed identity authentication. */
   userAssignedManagedIdentitySettings?: DataflowEndpointAuthenticationUserAssignedManagedIdentity;
 }
+const DataflowEndpointDataExplorerAuthentication = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<DataflowEndpointDataExplorerAuthentication>;
+
 /** Batching configuration */
 export interface BatchingConfiguration {
   /** Batching latency in seconds. */
@@ -1309,6 +1983,11 @@ export interface BatchingConfiguration {
   /** Maximum number of messages in a batch. */
   maxMessages?: number;
 }
+const BatchingConfiguration = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<BatchingConfiguration>;
+
 /** Azure Data Explorer endpoint properties */
 export interface DataflowEndpointDataExplorer {
   /** Authentication configuration. NOTE - only authentication property is allowed per entry. */
@@ -1320,16 +1999,28 @@ export interface DataflowEndpointDataExplorer {
   /** Azure Data Explorer endpoint batching configuration. */
   batching?: BatchingConfiguration;
 }
+const DataflowEndpointDataExplorer = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<DataflowEndpointDataExplorer>;
+
 /** DataflowEndpoint Data Lake Storage Authentication Method properties */
 export type DataLakeStorageAuthMethod =
   | "SystemAssignedManagedIdentity"
   | "UserAssignedManagedIdentity"
   | "AccessToken";
+const DataLakeStorageAuthMethod = S.String;
+
 /** DataflowEndpoint Authentication Access Token properties */
 export interface DataflowEndpointAuthenticationAccessToken {
   /** Token secret name. */
   secretRef: string;
 }
+const DataflowEndpointAuthenticationAccessToken = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<DataflowEndpointAuthenticationAccessToken>;
+
 /** Azure Data Lake endpoint Authentication properties. NOTE Enum - Only one method is supported for one entry */
 export interface DataflowEndpointDataLakeStorageAuthentication {
   /** Mode of Authentication. */
@@ -1341,6 +2032,11 @@ export interface DataflowEndpointDataLakeStorageAuthentication {
   /** User-assigned managed identity authentication. */
   userAssignedManagedIdentitySettings?: DataflowEndpointAuthenticationUserAssignedManagedIdentity;
 }
+const DataflowEndpointDataLakeStorageAuthentication = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<DataflowEndpointDataLakeStorageAuthentication>;
+
 /** Azure Data Lake endpoint properties */
 export interface DataflowEndpointDataLakeStorage {
   /** Authentication configuration. NOTE - only authentication property is allowed per entry. */
@@ -1350,6 +2046,11 @@ export interface DataflowEndpointDataLakeStorage {
   /** Azure Data Lake endpoint batching configuration. */
   batching?: BatchingConfiguration;
 }
+const DataflowEndpointDataLakeStorage = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<DataflowEndpointDataLakeStorage>;
+
 /** Microsoft Fabric endpoint. Authentication properties. NOTE - Only one method is supported for one entry */
 export type DataflowEndpointFabricOneLakeAuthentication =
   DataflowEndpointDataExplorerAuthentication;
@@ -1360,8 +2061,15 @@ export interface DataflowEndpointFabricOneLakeNames {
   /** Workspace name. */
   workspaceName: string;
 }
+const DataflowEndpointFabricOneLakeNames = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<DataflowEndpointFabricOneLakeNames>;
+
 /** DataflowEndpoint Fabric Path Type properties */
 export type DataflowEndpointFabricPathType = "Files" | "Tables";
+const DataflowEndpointFabricPathType = S.String;
+
 /** Microsoft Fabric endpoint properties */
 export interface DataflowEndpointFabricOneLake {
   /** Authentication configuration. NOTE - only one authentication property is allowed per entry. */
@@ -1375,6 +2083,11 @@ export interface DataflowEndpointFabricOneLake {
   /** Batching configuration. */
   batching?: BatchingConfiguration;
 }
+const DataflowEndpointFabricOneLake = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<DataflowEndpointFabricOneLake>;
+
 /** DataflowEndpoint Kafka Authentication Method properties */
 export type KafkaAuthMethod =
   | "SystemAssignedManagedIdentity"
@@ -1382,8 +2095,12 @@ export type KafkaAuthMethod =
   | "Sasl"
   | "X509Certificate"
   | "Anonymous";
+const KafkaAuthMethod = S.String;
+
 /** DataflowEndpoint Authentication Sasl Type properties */
 export type DataflowEndpointAuthenticationSaslType = "Plain" | "ScramSha256" | "ScramSha512";
+const DataflowEndpointAuthenticationSaslType = S.String;
+
 /** DataflowEndpoint Authentication Sasl properties */
 export interface DataflowEndpointAuthenticationSasl {
   /** Type of SASL authentication. Can be PLAIN, SCRAM-SHA-256, or SCRAM-SHA-512. */
@@ -1391,11 +2108,19 @@ export interface DataflowEndpointAuthenticationSasl {
   /** Token secret name. */
   secretRef: string;
 }
+const DataflowEndpointAuthenticationSasl = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<DataflowEndpointAuthenticationSasl>;
+
 /** DataflowEndpoint Authentication X509 properties */
 export interface DataflowEndpointAuthenticationX509 {
   /** Secret reference of the X.509 certificate. */
   secretRef: string;
 }
+const DataflowEndpointAuthenticationX509 =
+  DataflowEndpointAuthenticationAccessToken as any as S.Schema<DataflowEndpointAuthenticationX509>;
+
 /** Kafka endpoint Authentication properties. NOTE - only authentication property is allowed per entry */
 export interface DataflowEndpointKafkaAuthentication {
   /** Mode of Authentication. */
@@ -1409,8 +2134,15 @@ export interface DataflowEndpointKafkaAuthentication {
   /** X.509 certificate authentication. */
   x509CertificateSettings?: DataflowEndpointAuthenticationX509;
 }
+const DataflowEndpointKafkaAuthentication = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<DataflowEndpointKafkaAuthentication>;
+
 /** Mode for batching. */
 export type DataflowEndpointKafkaBatchingMode = "Enabled" | "Disabled";
+const DataflowEndpointKafkaBatchingMode = S.String;
+
 /** Kafka endpoint Batching properties */
 export interface DataflowEndpointKafkaBatching {
   /** Mode for batching. */
@@ -1422,16 +2154,31 @@ export interface DataflowEndpointKafkaBatching {
   /** Maximum number of messages in a batch. */
   maxMessages?: number;
 }
+const DataflowEndpointKafkaBatching = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<DataflowEndpointKafkaBatching>;
+
 /** Copy Broker properties. No effect if the endpoint is used as a source or if the dataflow doesn't have an Broker source. */
 export type DataflowEndpointKafkaCopyMqttProperties = "Enabled" | "Disabled";
+const DataflowEndpointKafkaCopyMqttProperties = S.String;
+
 /** Compression. Can be none, gzip, lz4, or snappy. No effect if the endpoint is used as a source. */
 export type DataflowEndpointKafkaCompression = "None" | "Gzip" | "Snappy" | "Lz4";
+const DataflowEndpointKafkaCompression = S.String;
+
 /** Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source. */
 export type DataflowEndpointKafkaKafkaAcks = "Zero" | "One" | "All";
+const DataflowEndpointKafkaKafkaAcks = S.String;
+
 /** Partition handling strategy. Can be default or static. No effect if the endpoint is used as a source. */
 export type DataflowEndpointKafkaPartitionStrategy = "Default" | "Static" | "Topic" | "Property";
+const DataflowEndpointKafkaPartitionStrategy = S.String;
+
 /** How to map events to the cloud. */
 export type CloudEventAttributeType = "Propagate" | "CreateOrRemap";
+const CloudEventAttributeType = S.String;
+
 /** Kafka endpoint properties */
 export interface DataflowEndpointKafka {
   /** Authentication configuration. NOTE - only authentication property is allowed per entry. */
@@ -1455,11 +2202,21 @@ export interface DataflowEndpointKafka {
   /** Cloud event mapping config. */
   cloudEventAttributes?: CloudEventAttributeType | (string & {});
 }
+const DataflowEndpointKafka = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<DataflowEndpointKafka>;
+
 /** Local persistent volume endpoint properties */
 export interface DataflowEndpointLocalStorage {
   /** Persistent volume claim name. */
   persistentVolumeClaimRef: string;
 }
+const DataflowEndpointLocalStorage = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<DataflowEndpointLocalStorage>;
+
 /** DataflowEndpoint Mqtt Authentication Method properties */
 export type MqttAuthMethod =
   | "SystemAssignedManagedIdentity"
@@ -1467,11 +2224,18 @@ export type MqttAuthMethod =
   | "ServiceAccountToken"
   | "X509Certificate"
   | "Anonymous";
+const MqttAuthMethod = S.String;
+
 /** Service Account Token for BrokerAuthentication */
 export interface DataflowEndpointAuthenticationServiceAccountToken {
   /** Audience of the service account. Optional, defaults to the broker internal service account audience. */
   audience: string;
 }
+const DataflowEndpointAuthenticationServiceAccountToken = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<DataflowEndpointAuthenticationServiceAccountToken>;
+
 /** Mqtt endpoint Authentication properties. NOTE - only authentication property is allowed per entry. */
 export interface DataflowEndpointMqttAuthentication {
   /** Mode of Authentication. */
@@ -1485,10 +2249,19 @@ export interface DataflowEndpointMqttAuthentication {
   /** X.509 certificate authentication. */
   x509CertificateSettings?: DataflowEndpointAuthenticationX509;
 }
+const DataflowEndpointMqttAuthentication = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<DataflowEndpointMqttAuthentication>;
+
 /** Enable or disable websockets. */
 export type DataflowEndpointMqttProtocol = "Mqtt" | "WebSockets";
+const DataflowEndpointMqttProtocol = S.String;
+
 /** Whether or not to keep the retain setting. */
 export type DataflowEndpointMqttRetain = "Keep" | "Never";
+const DataflowEndpointMqttRetain = S.String;
+
 /** Broker endpoint properties */
 export interface DataflowEndpointMqtt {
   /** authentication properties. DEFAULT: kubernetes.audience=aio-internal. NOTE - Enum field only property is allowed */
@@ -1514,11 +2287,18 @@ export interface DataflowEndpointMqtt {
   /** Cloud event mapping config. */
   cloudEventAttributes?: CloudEventAttributeType | (string & {});
 }
+const DataflowEndpointMqtt = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<DataflowEndpointMqtt>;
+
 /** Dataflow OpenTelemetry authentication method values. */
 export type DataflowOpenTelemetryAuthenticationMethod =
   | "ServiceAccountToken"
   | "X509Certificate"
   | "Anonymous";
+const DataflowOpenTelemetryAuthenticationMethod = S.String;
+
 /** Dataflow OpenTelemetry authentication properties. */
 export interface DataflowOpenTelemetryAuthentication {
   /** The authentication method. */
@@ -1530,6 +2310,11 @@ export interface DataflowOpenTelemetryAuthentication {
   /** X.509 certificate authentication settings. Only for `X509Certificate` (polymorphic subtype `DataflowOpenTelemetryX509CertificateAuthentication`). */
   x509CertificateSettings?: DataflowEndpointAuthenticationX509;
 }
+const DataflowOpenTelemetryAuthentication = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<DataflowOpenTelemetryAuthentication>;
+
 /** OpenTelemetry endpoint properties. */
 export interface DataflowEndpointOpenTelemetry {
   /** Host of the OpenTelemetry in the form of <host>:<port>. */
@@ -1541,6 +2326,11 @@ export interface DataflowEndpointOpenTelemetry {
   /** Authentication properties for OpenTelemetry endpoints */
   authentication: DataflowOpenTelemetryAuthentication;
 }
+const DataflowEndpointOpenTelemetry = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<DataflowEndpointOpenTelemetry>;
+
 /** DataflowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource */
 export interface DataflowEndpointPropertiesInput {
   /** Endpoint Type. */
@@ -1562,6 +2352,11 @@ export interface DataflowEndpointPropertiesInput {
   /** OpenTelemetry endpoint. */
   openTelemetrySettings?: DataflowEndpointOpenTelemetry;
 }
+const DataflowEndpointPropertiesInput = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<DataflowEndpointPropertiesInput>;
+
 export interface DataflowEndpointCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1576,12 +2371,19 @@ export interface DataflowEndpointCreateOrUpdateRequest {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const DataflowEndpointCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<DataflowEndpointCreateOrUpdateRequest>;
+
 /** The health state of the resource. */
 export type DataflowEndpointPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
   | "Unknown";
+const DataflowEndpointPropertiesHealthState = S.String;
+
 /** DataflowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource */
 export interface DataflowEndpointProperties {
   /** Endpoint Type. */
@@ -1607,6 +2409,11 @@ export interface DataflowEndpointProperties {
   /** The health state of the resource. */
   healthState?: DataflowEndpointPropertiesHealthState;
 }
+const DataflowEndpointProperties = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<DataflowEndpointProperties>;
+
 export interface DataflowEndpointCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1621,10 +2428,19 @@ export interface DataflowEndpointCreateOrUpdateResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const DataflowEndpointCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<DataflowEndpointCreateOrUpdateResponse>;
+
 /** The mode of the dataflow graph. */
 export type DataflowGraphPropertiesInputMode = "Enabled" | "Disabled";
+const DataflowGraphPropertiesInputMode = S.String;
+
 /** DataflowGraph node types. */
 export type DataflowGraphNodeType = "Source" | "Graph" | "Destination";
+const DataflowGraphNodeType = S.String;
+
 /** DataflowGraph node properties. */
 export interface DataflowGraphNode {
   /** Name of the node. */
@@ -1638,14 +2454,23 @@ export interface DataflowGraphNode {
   /** Source configuration. Only for `Source` (polymorphic subtype `DataflowGraphSourceNode`). */
   sourceSettings?: unknown;
 }
+const DataflowGraphNode = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<DataflowGraphNode>;
+
 /** List of nodes in the dataflow graph. */
 export type DataflowGraphPropertiesInputNodesList = Array<DataflowGraphNode>;
+const DataflowGraphPropertiesInputNodesList = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<DataflowGraphPropertiesInputNodesList>;
+
 /** Serialization format for dataflow graph connection. */
 export type DataflowGraphConnectionSchemaSerializationFormat =
   | "Delta"
   | "Json"
   | "Parquet"
   | "Avro";
+const DataflowGraphConnectionSchemaSerializationFormat = S.String;
+
 /** DataflowGraph connection node output schema settings. */
 export interface DataflowGraphConnectionSchemaSettings {
   /** Output serialization format. */
@@ -1653,6 +2478,11 @@ export interface DataflowGraphConnectionSchemaSettings {
   /** Reference to the schema that describes the output of the transformation. */
   schemaRef?: string;
 }
+const DataflowGraphConnectionSchemaSettings = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<DataflowGraphConnectionSchemaSettings>;
+
 /** DataflowGraph DataflowGraphNode Connection Input. */
 export interface DataflowGraphConnectionInput {
   /** Name of the input node. */
@@ -1660,11 +2490,19 @@ export interface DataflowGraphConnectionInput {
   /** Schema settings for the input node. */
   schema?: DataflowGraphConnectionSchemaSettings;
 }
+const DataflowGraphConnectionInput = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<DataflowGraphConnectionInput>;
+
 /** DataflowGraph DataflowGraphNode Connection Output. */
 export interface DataflowGraphConnectionOutput {
   /** Name of the destination node. */
   name: string;
 }
+const DataflowGraphConnectionOutput =
+  VolumeClaimResourceRequirementsClaims as any as S.Schema<DataflowGraphConnectionOutput>;
+
 /** DataflowGraph DataflowGraphNode Connection. */
 export interface DataflowGraphNodeConnection {
   /** Information about the source node. */
@@ -1672,8 +2510,18 @@ export interface DataflowGraphNodeConnection {
   /** Information about the destination node. */
   to: DataflowGraphConnectionOutput;
 }
+const DataflowGraphNodeConnection = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<DataflowGraphNodeConnection>;
+
 /** List of connections between nodes in the dataflow graph. */
 export type DataflowGraphPropertiesInputNodeConnectionsList = Array<DataflowGraphNodeConnection>;
+const DataflowGraphPropertiesInputNodeConnectionsList = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<DataflowGraphPropertiesInputNodeConnectionsList>;
+
 /** DataflowGraph properties. */
 export interface DataflowGraphPropertiesInput {
   /** The mode of the dataflow graph. */
@@ -1685,6 +2533,11 @@ export interface DataflowGraphPropertiesInput {
   /** List of connections between nodes in the dataflow graph. */
   nodeConnections: DataflowGraphPropertiesInputNodeConnectionsList;
 }
+const DataflowGraphPropertiesInput = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<DataflowGraphPropertiesInput>;
+
 export interface DataflowGraphCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1701,23 +2554,40 @@ export interface DataflowGraphCreateOrUpdateRequest {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const DataflowGraphCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<DataflowGraphCreateOrUpdateRequest>;
+
 /** The mode of the dataflow graph. */
 export type DataflowGraphPropertiesMode = "Enabled" | "Disabled";
+const DataflowGraphPropertiesMode = S.String;
+
 /** List of nodes in the dataflow graph. */
 export type DataflowGraphPropertiesNodesList = Array<DataflowGraphNode>;
+const DataflowGraphPropertiesNodesList =
+  DataflowGraphPropertiesInputNodesList as any as S.Schema<DataflowGraphPropertiesNodesList>;
+
 /** List of connections between nodes in the dataflow graph. */
 export type DataflowGraphPropertiesNodeConnectionsList = Array<DataflowGraphNodeConnection>;
+const DataflowGraphPropertiesNodeConnectionsList =
+  DataflowGraphPropertiesInputNodeConnectionsList as any as S.Schema<DataflowGraphPropertiesNodeConnectionsList>;
+
 /** DataflowGraph status. */
 export interface DataflowGraphStatus {
   /** The health state of the DataflowGraph. */
   healthState?: ResourceHealthStatus;
 }
+const DataflowGraphStatus = AkriConnectorStatus as any as S.Schema<DataflowGraphStatus>;
+
 /** The health state of the resource. */
 export type DataflowGraphPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
   | "Unknown";
+const DataflowGraphPropertiesHealthState = S.String;
+
 /** DataflowGraph properties. */
 export interface DataflowGraphProperties {
   /** The mode of the dataflow graph. */
@@ -1735,6 +2605,11 @@ export interface DataflowGraphProperties {
   /** The health state of the resource. */
   healthState?: DataflowGraphPropertiesHealthState;
 }
+const DataflowGraphProperties = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<DataflowGraphProperties>;
+
 export interface DataflowGraphCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1749,6 +2624,11 @@ export interface DataflowGraphCreateOrUpdateResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const DataflowGraphCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<DataflowGraphCreateOrUpdateResponse>;
+
 /** DataflowProfile Diagnostics properties */
 export interface ProfileDiagnostics {
   /** Diagnostic log settings for the resource. */
@@ -1756,6 +2636,8 @@ export interface ProfileDiagnostics {
   /** The metrics settings for the resource. */
   metrics?: Metrics;
 }
+const ProfileDiagnostics = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<ProfileDiagnostics>;
+
 /** DataflowProfile Resource properties */
 export interface DataflowProfilePropertiesInput {
   /** Spec defines the desired identities of NBC diagnostics settings. */
@@ -1763,6 +2645,11 @@ export interface DataflowProfilePropertiesInput {
   /** To manually scale the dataflow profile, specify the maximum number of instances you want to run. */
   instanceCount?: number;
 }
+const DataflowProfilePropertiesInput = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<DataflowProfilePropertiesInput>;
+
 export interface DataflowProfileCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1777,17 +2664,26 @@ export interface DataflowProfileCreateOrUpdateRequest {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const DataflowProfileCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<DataflowProfileCreateOrUpdateRequest>;
+
 /** DataflowProfile status. */
 export interface DataflowProfileStatus {
   /** The health state of the DataflowProfile. */
   healthState?: ResourceHealthStatus;
 }
+const DataflowProfileStatus = AkriConnectorStatus as any as S.Schema<DataflowProfileStatus>;
+
 /** The health state of the resource. */
 export type DataflowProfilePropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
   | "Unknown";
+const DataflowProfilePropertiesHealthState = S.String;
+
 /** DataflowProfile Resource properties */
 export interface DataflowProfileProperties {
   /** Spec defines the desired identities of NBC diagnostics settings. */
@@ -1801,6 +2697,11 @@ export interface DataflowProfileProperties {
   /** The health state of the resource. */
   healthState?: DataflowProfilePropertiesHealthState;
 }
+const DataflowProfileProperties = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<DataflowProfileProperties>;
+
 export interface DataflowProfileCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1815,6 +2716,11 @@ export interface DataflowProfileCreateOrUpdateResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const DataflowProfileCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<DataflowProfileCreateOrUpdateResponse>;
+
 export interface DeleteAkriConnectorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1827,7 +2733,15 @@ export interface DeleteAkriConnectorRequest {
   /** Name of AkriConnector resource. */
   connectorName: string;
 }
+const DeleteAkriConnectorRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<DeleteAkriConnectorRequest>;
+
 export interface DeleteAkriConnectorResponse {}
+const DeleteAkriConnectorResponse =
+  AkriConnectorPropertiesInput as any as S.Schema<DeleteAkriConnectorResponse>;
+
 export interface DeleteAkriConnectorTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1838,7 +2752,17 @@ export interface DeleteAkriConnectorTemplateRequest {
   /** Name of AkriConnectorTemplate resource. */
   akriConnectorTemplateName: string;
 }
+const DeleteAkriConnectorTemplateRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<DeleteAkriConnectorTemplateRequest>;
+
 export interface DeleteAkriConnectorTemplateResponse {}
+const DeleteAkriConnectorTemplateResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<DeleteAkriConnectorTemplateResponse>;
+
 export interface DeleteAkriServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1849,7 +2773,15 @@ export interface DeleteAkriServiceRequest {
   /** Name of AkriService resource. */
   akriServiceName: string;
 }
+const DeleteAkriServiceRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<DeleteAkriServiceRequest>;
+
 export interface DeleteAkriServiceResponse {}
+const DeleteAkriServiceResponse =
+  AkriConnectorPropertiesInput as any as S.Schema<DeleteAkriServiceResponse>;
+
 export interface DeleteBrokerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1860,7 +2792,11 @@ export interface DeleteBrokerRequest {
   /** Name of broker. */
   brokerName: string;
 }
+const DeleteBrokerRequest = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<DeleteBrokerRequest>;
+
 export interface DeleteBrokerResponse {}
+const DeleteBrokerResponse = AkriConnectorPropertiesInput as any as S.Schema<DeleteBrokerResponse>;
+
 export interface DeleteBrokerAuthenticationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1873,7 +2809,15 @@ export interface DeleteBrokerAuthenticationRequest {
   /** Name of Instance broker authentication resource */
   authenticationName: string;
 }
+const DeleteBrokerAuthenticationRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<DeleteBrokerAuthenticationRequest>;
+
 export interface DeleteBrokerAuthenticationResponse {}
+const DeleteBrokerAuthenticationResponse =
+  DeleteAkriConnectorTemplateResponse as any as S.Schema<DeleteBrokerAuthenticationResponse>;
+
 export interface DeleteBrokerAuthorizationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1886,7 +2830,15 @@ export interface DeleteBrokerAuthorizationRequest {
   /** Name of Instance broker authorization resource */
   authorizationName: string;
 }
+const DeleteBrokerAuthorizationRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<DeleteBrokerAuthorizationRequest>;
+
 export interface DeleteBrokerAuthorizationResponse {}
+const DeleteBrokerAuthorizationResponse =
+  DeleteAkriConnectorTemplateResponse as any as S.Schema<DeleteBrokerAuthorizationResponse>;
+
 export interface DeleteBrokerListenerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1899,7 +2851,15 @@ export interface DeleteBrokerListenerRequest {
   /** Name of Instance broker listener resource */
   listenerName: string;
 }
+const DeleteBrokerListenerRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<DeleteBrokerListenerRequest>;
+
 export interface DeleteBrokerListenerResponse {}
+const DeleteBrokerListenerResponse =
+  AkriConnectorPropertiesInput as any as S.Schema<DeleteBrokerListenerResponse>;
+
 export interface DeleteDataflowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1912,7 +2872,15 @@ export interface DeleteDataflowRequest {
   /** Name of Instance dataflowProfile dataflow resource */
   dataflowName: string;
 }
+const DeleteDataflowRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<DeleteDataflowRequest>;
+
 export interface DeleteDataflowResponse {}
+const DeleteDataflowResponse =
+  AkriConnectorPropertiesInput as any as S.Schema<DeleteDataflowResponse>;
+
 export interface DeleteDataflowEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1923,7 +2891,15 @@ export interface DeleteDataflowEndpointRequest {
   /** Name of Instance dataflowEndpoint resource */
   dataflowEndpointName: string;
 }
+const DeleteDataflowEndpointRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<DeleteDataflowEndpointRequest>;
+
 export interface DeleteDataflowEndpointResponse {}
+const DeleteDataflowEndpointResponse =
+  AkriConnectorPropertiesInput as any as S.Schema<DeleteDataflowEndpointResponse>;
+
 export interface DeleteDataflowGraphRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1936,7 +2912,15 @@ export interface DeleteDataflowGraphRequest {
   /** Name of Instance dataflowEndpoint resource. */
   dataflowGraphName: string;
 }
+const DeleteDataflowGraphRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<DeleteDataflowGraphRequest>;
+
 export interface DeleteDataflowGraphResponse {}
+const DeleteDataflowGraphResponse =
+  AkriConnectorPropertiesInput as any as S.Schema<DeleteDataflowGraphResponse>;
+
 export interface DeleteDataflowProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1947,7 +2931,15 @@ export interface DeleteDataflowProfileRequest {
   /** Name of Instance dataflowProfile resource */
   dataflowProfileName: string;
 }
+const DeleteDataflowProfileRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<DeleteDataflowProfileRequest>;
+
 export interface DeleteDataflowProfileResponse {}
+const DeleteDataflowProfileResponse =
+  AkriConnectorPropertiesInput as any as S.Schema<DeleteDataflowProfileResponse>;
+
 export interface DeleteInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1956,7 +2948,15 @@ export interface DeleteInstanceRequest {
   /** Name of instance. */
   instanceName: string;
 }
+const DeleteInstanceRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<DeleteInstanceRequest>;
+
 export interface DeleteInstanceResponse {}
+const DeleteInstanceResponse =
+  AkriConnectorPropertiesInput as any as S.Schema<DeleteInstanceResponse>;
+
 export interface DeleteRegistryEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1967,7 +2967,15 @@ export interface DeleteRegistryEndpointRequest {
   /** Name of RegistryEndpoint resource */
   registryEndpointName: string;
 }
+const DeleteRegistryEndpointRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<DeleteRegistryEndpointRequest>;
+
 export interface DeleteRegistryEndpointResponse {}
+const DeleteRegistryEndpointResponse =
+  AkriConnectorPropertiesInput as any as S.Schema<DeleteRegistryEndpointResponse>;
+
 export interface GetAkriConnectorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1980,6 +2988,11 @@ export interface GetAkriConnectorRequest {
   /** Name of AkriConnector resource. */
   connectorName: string;
 }
+const GetAkriConnectorRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<GetAkriConnectorRequest>;
+
 export interface GetAkriConnectorResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1994,6 +3007,11 @@ export interface GetAkriConnectorResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const GetAkriConnectorResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<GetAkriConnectorResponse>;
+
 export interface GetAkriConnectorTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2004,6 +3022,11 @@ export interface GetAkriConnectorTemplateRequest {
   /** Name of AkriConnectorTemplate resource. */
   akriConnectorTemplateName: string;
 }
+const GetAkriConnectorTemplateRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<GetAkriConnectorTemplateRequest>;
+
 export interface GetAkriConnectorTemplateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2018,6 +3041,9 @@ export interface GetAkriConnectorTemplateResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const GetAkriConnectorTemplateResponse =
+  AkriConnectorTemplateCreateOrUpdateResponse as any as S.Schema<GetAkriConnectorTemplateResponse>;
+
 export interface GetAkriServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2028,6 +3054,11 @@ export interface GetAkriServiceRequest {
   /** Name of AkriService resource. */
   akriServiceName: string;
 }
+const GetAkriServiceRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<GetAkriServiceRequest>;
+
 export interface GetAkriServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2042,6 +3073,11 @@ export interface GetAkriServiceResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const GetAkriServiceResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<GetAkriServiceResponse>;
+
 export interface GetBrokerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2052,6 +3088,8 @@ export interface GetBrokerRequest {
   /** Name of broker. */
   brokerName: string;
 }
+const GetBrokerRequest = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<GetBrokerRequest>;
+
 export interface GetBrokerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2066,6 +3104,8 @@ export interface GetBrokerResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const GetBrokerResponse = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<GetBrokerResponse>;
+
 export interface GetBrokerAuthenticationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2078,6 +3118,11 @@ export interface GetBrokerAuthenticationRequest {
   /** Name of Instance broker authentication resource */
   authenticationName: string;
 }
+const GetBrokerAuthenticationRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<GetBrokerAuthenticationRequest>;
+
 export interface GetBrokerAuthenticationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2092,6 +3137,9 @@ export interface GetBrokerAuthenticationResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const GetBrokerAuthenticationResponse =
+  BrokerAuthenticationCreateOrUpdateResponse as any as S.Schema<GetBrokerAuthenticationResponse>;
+
 export interface GetBrokerAuthorizationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2104,6 +3152,11 @@ export interface GetBrokerAuthorizationRequest {
   /** Name of Instance broker authorization resource */
   authorizationName: string;
 }
+const GetBrokerAuthorizationRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<GetBrokerAuthorizationRequest>;
+
 export interface GetBrokerAuthorizationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2118,6 +3171,9 @@ export interface GetBrokerAuthorizationResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const GetBrokerAuthorizationResponse =
+  BrokerAuthorizationCreateOrUpdateResponse as any as S.Schema<GetBrokerAuthorizationResponse>;
+
 export interface GetBrokerListenerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2130,6 +3186,11 @@ export interface GetBrokerListenerRequest {
   /** Name of Instance broker listener resource */
   listenerName: string;
 }
+const GetBrokerListenerRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<GetBrokerListenerRequest>;
+
 export interface GetBrokerListenerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2144,6 +3205,9 @@ export interface GetBrokerListenerResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const GetBrokerListenerResponse =
+  BrokerListenerCreateOrUpdateResponse as any as S.Schema<GetBrokerListenerResponse>;
+
 export interface GetDataflowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2156,6 +3220,8 @@ export interface GetDataflowRequest {
   /** Name of Instance dataflowProfile dataflow resource */
   dataflowName: string;
 }
+const GetDataflowRequest = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<GetDataflowRequest>;
+
 export interface GetDataflowResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2170,6 +3236,8 @@ export interface GetDataflowResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const GetDataflowResponse = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<GetDataflowResponse>;
+
 export interface GetDataflowEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2180,6 +3248,11 @@ export interface GetDataflowEndpointRequest {
   /** Name of Instance dataflowEndpoint resource */
   dataflowEndpointName: string;
 }
+const GetDataflowEndpointRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<GetDataflowEndpointRequest>;
+
 export interface GetDataflowEndpointResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2194,6 +3267,9 @@ export interface GetDataflowEndpointResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const GetDataflowEndpointResponse =
+  DataflowEndpointCreateOrUpdateResponse as any as S.Schema<GetDataflowEndpointResponse>;
+
 export interface GetDataflowGraphRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2206,6 +3282,11 @@ export interface GetDataflowGraphRequest {
   /** Name of Instance dataflowEndpoint resource. */
   dataflowGraphName: string;
 }
+const GetDataflowGraphRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<GetDataflowGraphRequest>;
+
 export interface GetDataflowGraphResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2220,6 +3301,11 @@ export interface GetDataflowGraphResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const GetDataflowGraphResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<GetDataflowGraphResponse>;
+
 export interface GetDataflowProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2230,6 +3316,11 @@ export interface GetDataflowProfileRequest {
   /** Name of Instance dataflowProfile resource */
   dataflowProfileName: string;
 }
+const GetDataflowProfileRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<GetDataflowProfileRequest>;
+
 export interface GetDataflowProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2244,6 +3335,9 @@ export interface GetDataflowProfileResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const GetDataflowProfileResponse =
+  DataflowProfileCreateOrUpdateResponse as any as S.Schema<GetDataflowProfileResponse>;
+
 export interface GetInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2252,24 +3346,40 @@ export interface GetInstanceRequest {
   /** Name of instance. */
   instanceName: string;
 }
+const GetInstanceRequest = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<GetInstanceRequest>;
+
 /** Resource tags. */
 export type GetInstanceResponseTagsMap = { [key: string]: string | undefined };
+const GetInstanceResponseTagsMap =
+  BrokerAuthenticatorMethodCustomHeadersMap as any as S.Schema<GetInstanceResponseTagsMap>;
+
 /** The reference to the Schema Registry for this AIO Instance. */
 export interface SchemaRegistryRef {
   /** The resource ID of the Schema Registry. */
   resourceId: string;
 }
+const SchemaRegistryRef = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<SchemaRegistryRef>;
+
 /** The reference to the AIO Secret provider class. */
 export interface SecretProviderClassRef {
   /** The resource ID of the AIO Secret provider class. */
   resourceId: string;
 }
+const SecretProviderClassRef = SchemaRegistryRef as any as S.Schema<SecretProviderClassRef>;
+
 /** The enum defining mode of a feature. */
 export type InstanceFeatureMode = "Stable" | "Preview" | "Disabled";
+const InstanceFeatureMode = S.String;
+
 /** The settings of the feature. */
 export type InstanceFeatureSettingsMap = {
   [key: string]: OperationalMode | (string & {}) | undefined;
 };
+const InstanceFeatureSettingsMap = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<InstanceFeatureSettingsMap>;
+
 /** The features of the AIO Instance. */
 export interface InstanceFeature {
   /** The state of the feature. */
@@ -2277,15 +3387,29 @@ export interface InstanceFeature {
   /** The settings of the feature. */
   settings?: InstanceFeatureSettingsMap;
 }
+const InstanceFeature = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<InstanceFeature>;
+
 /** The features of the AIO Instance. */
 export type InstancePropertiesFeaturesMap = { [key: string]: InstanceFeature | undefined };
+const InstancePropertiesFeaturesMap = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<InstancePropertiesFeaturesMap>;
+
 /** Azure Device Registry Namespace reference. */
 export interface AzureDeviceRegistryNamespaceRef {
   /** The resource ID of the Azure Device Registry Namespace. */
   resourceId: string;
 }
+const AzureDeviceRegistryNamespaceRef = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<AzureDeviceRegistryNamespaceRef>;
+
 /** The health state of the resource. */
 export type InstancePropertiesHealthState = "Available" | "Degraded" | "Unavailable" | "Unknown";
+const InstancePropertiesHealthState = S.String;
+
 /** The properties of the Instance resource. */
 export interface InstanceProperties {
   /** Detailed description of the Instance. */
@@ -2305,12 +3429,16 @@ export interface InstanceProperties {
   /** The health state of the resource. */
   healthState?: InstancePropertiesHealthState;
 }
+const InstanceProperties = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<InstanceProperties>;
+
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
+const ManagedServiceIdentityType = S.String;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -2318,8 +3446,18 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
+const UserAssignedIdentity = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<UserAssignedIdentity>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | null | undefined };
+const UserAssignedIdentities = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<UserAssignedIdentities>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetInstanceResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -2329,13 +3467,22 @@ export interface GetInstanceResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
+const GetInstanceResponseIdentity = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<GetInstanceResponseIdentity>;
+
 /** The set of supported SKU names for an AIO Instance. */
 export type InstanceSkuName = "Essentials" | "Standard";
+const InstanceSkuName = S.String;
+
 /** The billing SKU for an AIO Instance. */
 export interface InstanceSku {
   /** The name of the SKU. Determines the billing meter applied to this instance. */
   name: InstanceSkuName | (string & {});
 }
+const InstanceSku = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<InstanceSku>;
+
 export interface GetInstanceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2358,6 +3505,8 @@ export interface GetInstanceResponse {
   /** The billing SKU for the AIO Instance. Defaults to Standard. */
   sku?: InstanceSku;
 }
+const GetInstanceResponse = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<GetInstanceResponse>;
+
 export interface GetRegistryEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2368,12 +3517,19 @@ export interface GetRegistryEndpointRequest {
   /** Name of RegistryEndpoint resource */
   registryEndpointName: string;
 }
+const GetRegistryEndpointRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<GetRegistryEndpointRequest>;
+
 /** The authentication method. */
 export type RegistryEndpointAuthenticationMethod =
   | "SystemAssignedManagedIdentity"
   | "UserAssignedManagedIdentity"
   | "Anonymous"
   | "ArtifactPullSecret";
+const RegistryEndpointAuthenticationMethod = S.String;
+
 /** Model for RegistryEndpointAuthentication */
 export interface RegistryEndpointAuthentication {
   /** The authentication method. */
@@ -2387,14 +3543,23 @@ export interface RegistryEndpointAuthentication {
   /** User assigned managed identity properties Only for `UserAssignedManagedIdentity` (polymorphic subtype `RegistryEndpointUserAssignedIdentityAuthentication`). */
   userAssignedManagedIdentitySettings?: unknown;
 }
+const RegistryEndpointAuthentication = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<RegistryEndpointAuthentication>;
+
 /** The health state of the resource. */
 export type RegistryEndpointPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
   | "Unknown";
+const RegistryEndpointPropertiesHealthState = S.String;
+
 /** RegistryEndpointTrustedSigningKeyType values */
 export type RegistryEndpointTrustedSigningKeyType = "Secret" | "ConfigMap";
+const RegistryEndpointTrustedSigningKeyType = S.String;
+
 /** RegistryEndpoint Trust properties */
 export interface RegistryEndpointTrustedSigningKey {
   /** The trust type for the registry endpoint. */
@@ -2404,8 +3569,18 @@ export interface RegistryEndpointTrustedSigningKey {
   /** The name of the secret. Only for `Secret` (polymorphic subtype `RegistryEndpointTrustedSigningKeySecret`). */
   secretRef?: string;
 }
+const RegistryEndpointTrustedSigningKey = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<RegistryEndpointTrustedSigningKey>;
+
 /** The signing certificate authorities used by artifacts in the registry endpoint */
 export type RegistryEndpointPropertiesCodeSigningCasList = Array<RegistryEndpointTrustedSigningKey>;
+const RegistryEndpointPropertiesCodeSigningCasList = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<RegistryEndpointPropertiesCodeSigningCasList>;
+
 /** RegistryEndpoint properties */
 export interface RegistryEndpointProperties {
   /** The Container Registry endpoint hostname. */
@@ -2419,6 +3594,11 @@ export interface RegistryEndpointProperties {
   /** The signing certificate authorities used by artifacts in the registry endpoint */
   codeSigningCas?: RegistryEndpointPropertiesCodeSigningCasList;
 }
+const RegistryEndpointProperties = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<RegistryEndpointProperties>;
+
 export interface GetRegistryEndpointResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2433,10 +3613,21 @@ export interface GetRegistryEndpointResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const GetRegistryEndpointResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<GetRegistryEndpointResponse>;
+
 /** Resource tags. */
 export type InstanceCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const InstanceCreateOrUpdateRequestTagsMap =
+  BrokerAuthenticatorMethodCustomHeadersMap as any as S.Schema<InstanceCreateOrUpdateRequestTagsMap>;
+
 /** The features of the AIO Instance. */
 export type InstancePropertiesInputFeaturesMap = { [key: string]: InstanceFeature | undefined };
+const InstancePropertiesInputFeaturesMap =
+  InstancePropertiesFeaturesMap as any as S.Schema<InstancePropertiesInputFeaturesMap>;
+
 /** The properties of the Instance resource. */
 export interface InstancePropertiesInput {
   /** Detailed description of the Instance. */
@@ -2450,17 +3641,32 @@ export interface InstancePropertiesInput {
   /** The Azure Device Registry Namespace used by Assets, Discovered Assets and devices */
   adrNamespaceRef?: AzureDeviceRegistryNamespaceRef;
 }
+const InstancePropertiesInput = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<InstancePropertiesInput>;
+
 /** User assigned identity properties */
 export type UserAssignedIdentityInput = AkriConnectorPropertiesInput;
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
   [key: string]: AkriConnectorPropertiesInput | null | undefined;
 };
+const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface InstanceCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
+const InstanceCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<InstanceCreateOrUpdateRequestIdentity>;
+
 export interface InstanceCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2481,8 +3687,16 @@ export interface InstanceCreateOrUpdateRequest {
   /** The billing SKU for the AIO Instance. Defaults to Standard. */
   sku?: InstanceSku;
 }
+const InstanceCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<InstanceCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type InstanceCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const InstanceCreateOrUpdateResponseTagsMap =
+  BrokerAuthenticatorMethodCustomHeadersMap as any as S.Schema<InstanceCreateOrUpdateResponseTagsMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type InstanceCreateOrUpdateResponseIdentity = GetInstanceResponseIdentity;
 export interface InstanceCreateOrUpdateResponse {
@@ -2507,6 +3721,11 @@ export interface InstanceCreateOrUpdateResponse {
   /** The billing SKU for the AIO Instance. Defaults to Standard. */
   sku?: InstanceSku;
 }
+const InstanceCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<InstanceCreateOrUpdateResponse>;
+
 export interface ListAkriConnectorByTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2517,6 +3736,11 @@ export interface ListAkriConnectorByTemplateRequest {
   /** Name of AkriConnectorTemplate resource. */
   akriConnectorTemplateName: string;
 }
+const ListAkriConnectorByTemplateRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<ListAkriConnectorByTemplateRequest>;
+
 /** AkriConnector resource. */
 export interface AkriConnectorResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2532,8 +3756,15 @@ export interface AkriConnectorResource {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const AkriConnectorResource = GetAkriConnectorResponse as any as S.Schema<AkriConnectorResource>;
+
 /** The AkriConnectorResource items on this page */
 export type AkriConnectorResourceListResultValueList = Array<AkriConnectorResource>;
+const AkriConnectorResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<AkriConnectorResourceListResultValueList>;
+
 /** The response of a AkriConnectorResource list operation. */
 export interface AkriConnectorResourceListResult {
   /** The AkriConnectorResource items on this page */
@@ -2541,6 +3772,11 @@ export interface AkriConnectorResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const AkriConnectorResourceListResult = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<AkriConnectorResourceListResult>;
+
 export interface ListAkriConnectorTemplateByInstanceResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2549,6 +3785,11 @@ export interface ListAkriConnectorTemplateByInstanceResourceRequest {
   /** Name of instance. */
   instanceName: string;
 }
+const ListAkriConnectorTemplateByInstanceResourceRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<ListAkriConnectorTemplateByInstanceResourceRequest>;
+
 /** AkriConnectorTemplate resource. */
 export interface AkriConnectorTemplateResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2564,8 +3805,16 @@ export interface AkriConnectorTemplateResource {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const AkriConnectorTemplateResource =
+  AkriConnectorTemplateCreateOrUpdateResponse as any as S.Schema<AkriConnectorTemplateResource>;
+
 /** The AkriConnectorTemplateResource items on this page */
 export type AkriConnectorTemplateResourceListResultValueList = Array<AkriConnectorTemplateResource>;
+const AkriConnectorTemplateResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<AkriConnectorTemplateResourceListResultValueList>;
+
 /** The response of a AkriConnectorTemplateResource list operation. */
 export interface AkriConnectorTemplateResourceListResult {
   /** The AkriConnectorTemplateResource items on this page */
@@ -2573,6 +3822,11 @@ export interface AkriConnectorTemplateResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const AkriConnectorTemplateResourceListResult = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<AkriConnectorTemplateResourceListResult>;
+
 export interface ListAkriServiceByInstanceResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2581,6 +3835,11 @@ export interface ListAkriServiceByInstanceResourceRequest {
   /** Name of instance. */
   instanceName: string;
 }
+const ListAkriServiceByInstanceResourceRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<ListAkriServiceByInstanceResourceRequest>;
+
 /** AkriService resource. */
 export interface AkriServiceResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2596,8 +3855,15 @@ export interface AkriServiceResource {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const AkriServiceResource = GetAkriServiceResponse as any as S.Schema<AkriServiceResource>;
+
 /** The AkriServiceResource items on this page */
 export type AkriServiceResourceListResultValueList = Array<AkriServiceResource>;
+const AkriServiceResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<AkriServiceResourceListResultValueList>;
+
 /** The response of a AkriServiceResource list operation. */
 export interface AkriServiceResourceListResult {
   /** The AkriServiceResource items on this page */
@@ -2605,6 +3871,11 @@ export interface AkriServiceResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const AkriServiceResourceListResult = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<AkriServiceResourceListResult>;
+
 export interface ListBrokerAuthenticationByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2615,6 +3886,11 @@ export interface ListBrokerAuthenticationByResourceGroupRequest {
   /** Name of broker. */
   brokerName: string;
 }
+const ListBrokerAuthenticationByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<ListBrokerAuthenticationByResourceGroupRequest>;
+
 /** Instance broker authentication resource */
 export interface BrokerAuthenticationResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2630,8 +3906,16 @@ export interface BrokerAuthenticationResource {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const BrokerAuthenticationResource =
+  BrokerAuthenticationCreateOrUpdateResponse as any as S.Schema<BrokerAuthenticationResource>;
+
 /** The BrokerAuthenticationResource items on this page */
 export type BrokerAuthenticationResourceListResultValueList = Array<BrokerAuthenticationResource>;
+const BrokerAuthenticationResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<BrokerAuthenticationResourceListResultValueList>;
+
 /** The response of a BrokerAuthenticationResource list operation. */
 export interface BrokerAuthenticationResourceListResult {
   /** The BrokerAuthenticationResource items on this page */
@@ -2639,6 +3923,11 @@ export interface BrokerAuthenticationResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const BrokerAuthenticationResourceListResult = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<BrokerAuthenticationResourceListResult>;
+
 export interface ListBrokerAuthorizationByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2649,6 +3938,11 @@ export interface ListBrokerAuthorizationByResourceGroupRequest {
   /** Name of broker. */
   brokerName: string;
 }
+const ListBrokerAuthorizationByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<ListBrokerAuthorizationByResourceGroupRequest>;
+
 /** Instance broker authorizations resource */
 export interface BrokerAuthorizationResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2664,8 +3958,16 @@ export interface BrokerAuthorizationResource {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const BrokerAuthorizationResource =
+  BrokerAuthorizationCreateOrUpdateResponse as any as S.Schema<BrokerAuthorizationResource>;
+
 /** The BrokerAuthorizationResource items on this page */
 export type BrokerAuthorizationResourceListResultValueList = Array<BrokerAuthorizationResource>;
+const BrokerAuthorizationResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<BrokerAuthorizationResourceListResultValueList>;
+
 /** The response of a BrokerAuthorizationResource list operation. */
 export interface BrokerAuthorizationResourceListResult {
   /** The BrokerAuthorizationResource items on this page */
@@ -2673,6 +3975,11 @@ export interface BrokerAuthorizationResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const BrokerAuthorizationResourceListResult = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<BrokerAuthorizationResourceListResult>;
+
 export interface ListBrokerByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2681,6 +3988,11 @@ export interface ListBrokerByResourceGroupRequest {
   /** Name of instance. */
   instanceName: string;
 }
+const ListBrokerByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<ListBrokerByResourceGroupRequest>;
+
 /** Instance broker resource */
 export interface BrokerResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2696,8 +4008,15 @@ export interface BrokerResource {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const BrokerResource = GetBrokerResponse as any as S.Schema<BrokerResource>;
+
 /** The BrokerResource items on this page */
 export type BrokerResourceListResultValueList = Array<BrokerResource>;
+const BrokerResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<BrokerResourceListResultValueList>;
+
 /** The response of a BrokerResource list operation. */
 export interface BrokerResourceListResult {
   /** The BrokerResource items on this page */
@@ -2705,6 +4024,11 @@ export interface BrokerResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const BrokerResourceListResult = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<BrokerResourceListResult>;
+
 export interface ListBrokerListenerByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2715,6 +4039,11 @@ export interface ListBrokerListenerByResourceGroupRequest {
   /** Name of broker. */
   brokerName: string;
 }
+const ListBrokerListenerByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<ListBrokerListenerByResourceGroupRequest>;
+
 /** Instance broker resource */
 export interface BrokerListenerResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2730,8 +4059,18 @@ export interface BrokerListenerResource {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const BrokerListenerResource = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<BrokerListenerResource>;
+
 /** The BrokerListenerResource items on this page */
 export type BrokerListenerResourceListResultValueList = Array<BrokerListenerResource>;
+const BrokerListenerResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<BrokerListenerResourceListResultValueList>;
+
 /** The response of a BrokerListenerResource list operation. */
 export interface BrokerListenerResourceListResult {
   /** The BrokerListenerResource items on this page */
@@ -2739,6 +4078,11 @@ export interface BrokerListenerResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const BrokerListenerResourceListResult = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<BrokerListenerResourceListResult>;
+
 export interface ListDataflowByProfileResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2749,6 +4093,11 @@ export interface ListDataflowByProfileResourceRequest {
   /** Name of Instance dataflowProfile resource */
   dataflowProfileName: string;
 }
+const ListDataflowByProfileResourceRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<ListDataflowByProfileResourceRequest>;
+
 /** Instance dataflowProfile dataflow resource */
 export interface DataflowResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2764,8 +4113,15 @@ export interface DataflowResource {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const DataflowResource = GetDataflowResponse as any as S.Schema<DataflowResource>;
+
 /** The DataflowResource items on this page */
 export type DataflowResourceListResultValueList = Array<DataflowResource>;
+const DataflowResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<DataflowResourceListResultValueList>;
+
 /** The response of a DataflowResource list operation. */
 export interface DataflowResourceListResult {
   /** The DataflowResource items on this page */
@@ -2773,6 +4129,11 @@ export interface DataflowResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DataflowResourceListResult = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<DataflowResourceListResult>;
+
 export interface ListDataflowEndpointByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2781,6 +4142,11 @@ export interface ListDataflowEndpointByResourceGroupRequest {
   /** Name of instance. */
   instanceName: string;
 }
+const ListDataflowEndpointByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<ListDataflowEndpointByResourceGroupRequest>;
+
 /** Instance dataflowEndpoint resource */
 export interface DataflowEndpointResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2796,8 +4162,18 @@ export interface DataflowEndpointResource {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const DataflowEndpointResource = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<DataflowEndpointResource>;
+
 /** The DataflowEndpointResource items on this page */
 export type DataflowEndpointResourceListResultValueList = Array<DataflowEndpointResource>;
+const DataflowEndpointResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<DataflowEndpointResourceListResultValueList>;
+
 /** The response of a DataflowEndpointResource list operation. */
 export interface DataflowEndpointResourceListResult {
   /** The DataflowEndpointResource items on this page */
@@ -2805,6 +4181,11 @@ export interface DataflowEndpointResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DataflowEndpointResourceListResult = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<DataflowEndpointResourceListResult>;
+
 export interface ListDataflowGraphByDataflowProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2815,6 +4196,11 @@ export interface ListDataflowGraphByDataflowProfileRequest {
   /** Name of Instance dataflowProfile resource */
   dataflowProfileName: string;
 }
+const ListDataflowGraphByDataflowProfileRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<ListDataflowGraphByDataflowProfileRequest>;
+
 /** Instance dataflowEndpoint resource. */
 export interface DataflowGraphResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2830,8 +4216,15 @@ export interface DataflowGraphResource {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const DataflowGraphResource = GetDataflowGraphResponse as any as S.Schema<DataflowGraphResource>;
+
 /** The DataflowGraphResource items on this page */
 export type DataflowGraphResourceListResultValueList = Array<DataflowGraphResource>;
+const DataflowGraphResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<DataflowGraphResourceListResultValueList>;
+
 /** The response of a DataflowGraphResource list operation. */
 export interface DataflowGraphResourceListResult {
   /** The DataflowGraphResource items on this page */
@@ -2839,6 +4232,11 @@ export interface DataflowGraphResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DataflowGraphResourceListResult = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<DataflowGraphResourceListResult>;
+
 export interface ListDataflowProfileByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2847,6 +4245,11 @@ export interface ListDataflowProfileByResourceGroupRequest {
   /** Name of instance. */
   instanceName: string;
 }
+const ListDataflowProfileByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<ListDataflowProfileByResourceGroupRequest>;
+
 /** Instance dataflowProfile resource */
 export interface DataflowProfileResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2862,8 +4265,18 @@ export interface DataflowProfileResource {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const DataflowProfileResource = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<DataflowProfileResource>;
+
 /** The DataflowProfileResource items on this page */
 export type DataflowProfileResourceListResultValueList = Array<DataflowProfileResource>;
+const DataflowProfileResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<DataflowProfileResourceListResultValueList>;
+
 /** The response of a DataflowProfileResource list operation. */
 export interface DataflowProfileResourceListResult {
   /** The DataflowProfileResource items on this page */
@@ -2871,12 +4284,22 @@ export interface DataflowProfileResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DataflowProfileResourceListResult = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<DataflowProfileResourceListResult>;
+
 export interface ListInstanceByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListInstanceByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<ListInstanceByResourceGroupRequest>;
+
 /** Resource tags. */
 export type InstanceResourceTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2904,8 +4327,15 @@ export interface InstanceResource {
   /** The billing SKU for the AIO Instance. Defaults to Standard. */
   sku?: InstanceSku;
 }
+const InstanceResource = GetInstanceResponse as any as S.Schema<InstanceResource>;
+
 /** The InstanceResource items on this page */
 export type InstanceResourceListResultValueList = Array<InstanceResource>;
+const InstanceResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<InstanceResourceListResultValueList>;
+
 /** The response of a InstanceResource list operation. */
 export interface InstanceResourceListResult {
   /** The InstanceResource items on this page */
@@ -2913,11 +4343,26 @@ export interface InstanceResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const InstanceResourceListResult = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<InstanceResourceListResult>;
+
 export interface ListInstanceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListInstanceBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<ListInstanceBySubscriptionRequest>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -2929,10 +4374,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c31, 0) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -2946,14 +4397,26 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c31, 1) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListRegistryEndpointByInstanceResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2962,6 +4425,11 @@ export interface ListRegistryEndpointByInstanceResourceRequest {
   /** Name of instance. */
   instanceName: string;
 }
+const ListRegistryEndpointByInstanceResourceRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<ListRegistryEndpointByInstanceResourceRequest>;
+
 /** RegistryEndpoint resource */
 export interface RegistryEndpointResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2977,8 +4445,18 @@ export interface RegistryEndpointResource {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const RegistryEndpointResource = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<RegistryEndpointResource>;
+
 /** The RegistryEndpointResource items on this page */
 export type RegistryEndpointResourceListResultValueList = Array<RegistryEndpointResource>;
+const RegistryEndpointResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<RegistryEndpointResourceListResultValueList>;
+
 /** The response of a RegistryEndpointResource list operation. */
 export interface RegistryEndpointResourceListResult {
   /** The RegistryEndpointResource items on this page */
@@ -2986,9 +4464,17 @@ export interface RegistryEndpointResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const RegistryEndpointResourceListResult = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<RegistryEndpointResourceListResult>;
+
 /** The signing certificate authorities used by artifacts in the registry endpoint */
 export type RegistryEndpointPropertiesInputCodeSigningCasList =
   Array<RegistryEndpointTrustedSigningKey>;
+const RegistryEndpointPropertiesInputCodeSigningCasList =
+  RegistryEndpointPropertiesCodeSigningCasList as any as S.Schema<RegistryEndpointPropertiesInputCodeSigningCasList>;
+
 /** RegistryEndpoint properties */
 export interface RegistryEndpointPropertiesInput {
   /** The Container Registry endpoint hostname. */
@@ -2998,6 +4484,11 @@ export interface RegistryEndpointPropertiesInput {
   /** The signing certificate authorities used by artifacts in the registry endpoint */
   codeSigningCas?: RegistryEndpointPropertiesInputCodeSigningCasList;
 }
+const RegistryEndpointPropertiesInput = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<RegistryEndpointPropertiesInput>;
+
 export interface RegistryEndpointCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3012,6 +4503,11 @@ export interface RegistryEndpointCreateOrUpdateRequest {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const RegistryEndpointCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<RegistryEndpointCreateOrUpdateRequest>;
+
 export interface RegistryEndpointCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3026,8 +4522,14 @@ export interface RegistryEndpointCreateOrUpdateResponse {
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
+const RegistryEndpointCreateOrUpdateResponse =
+  GetRegistryEndpointResponse as any as S.Schema<RegistryEndpointCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type UpdateInstanceRequestTagsMap = { [key: string]: string | undefined };
+const UpdateInstanceRequestTagsMap =
+  BrokerAuthenticatorMethodCustomHeadersMap as any as S.Schema<UpdateInstanceRequestTagsMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateInstanceRequestIdentity = InstanceCreateOrUpdateRequestIdentity;
 export interface UpdateInstanceRequest {
@@ -3042,6 +4544,11 @@ export interface UpdateInstanceRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: InstanceCreateOrUpdateRequestIdentity;
 }
+const UpdateInstanceRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<UpdateInstanceRequest>;
+
 /** Resource tags. */
 export type UpdateInstanceResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -3068,6 +4575,8 @@ export interface UpdateInstanceResponse {
   /** The billing SKU for the AIO Instance. Defaults to Standard. */
   sku?: InstanceSku;
 }
+const UpdateInstanceResponse = GetInstanceResponse as any as S.Schema<UpdateInstanceResponse>;
+
 export type AkriConnectorCreateOrUpdateError = AzureOpError;
 /** Create a AkriConnectorResource */
 export const AkriConnectorCreateOrUpdate: API.OperationMethod<
@@ -3076,8 +4585,8 @@ export const AkriConnectorCreateOrUpdate: API.OperationMethod<
   AkriConnectorCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<AkriConnectorCreateOrUpdateRequest>,
-  output: __S(9) as any as S.Schema<AkriConnectorCreateOrUpdateResponse>,
+  input: AkriConnectorCreateOrUpdateRequest,
+  output: AkriConnectorCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3091,8 +4600,8 @@ export const AkriConnectorTemplateCreateOrUpdate: API.OperationMethod<
   AkriConnectorTemplateCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<AkriConnectorTemplateCreateOrUpdateRequest>,
-  output: __S(23) as any as S.Schema<AkriConnectorTemplateCreateOrUpdateResponse>,
+  input: AkriConnectorTemplateCreateOrUpdateRequest,
+  output: AkriConnectorTemplateCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3106,8 +4615,8 @@ export const AkriServiceCreateOrUpdate: API.OperationMethod<
   AkriServiceCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<AkriServiceCreateOrUpdateRequest>,
-  output: __S(26) as any as S.Schema<AkriServiceCreateOrUpdateResponse>,
+  input: AkriServiceCreateOrUpdateRequest,
+  output: AkriServiceCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3121,8 +4630,8 @@ export const BrokerAuthenticationCreateOrUpdate: API.OperationMethod<
   BrokerAuthenticationCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<BrokerAuthenticationCreateOrUpdateRequest>,
-  output: __S(41) as any as S.Schema<BrokerAuthenticationCreateOrUpdateResponse>,
+  input: BrokerAuthenticationCreateOrUpdateRequest,
+  output: BrokerAuthenticationCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3136,8 +4645,8 @@ export const BrokerAuthorizationCreateOrUpdate: API.OperationMethod<
   BrokerAuthorizationCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<BrokerAuthorizationCreateOrUpdateRequest>,
-  output: __S(54) as any as S.Schema<BrokerAuthorizationCreateOrUpdateResponse>,
+  input: BrokerAuthorizationCreateOrUpdateRequest,
+  output: BrokerAuthorizationCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3151,8 +4660,8 @@ export const BrokerCreateOrUpdate: API.OperationMethod<
   BrokerCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<BrokerCreateOrUpdateRequest>,
-  output: __S(87) as any as S.Schema<BrokerCreateOrUpdateResponse>,
+  input: BrokerCreateOrUpdateRequest,
+  output: BrokerCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3166,8 +4675,8 @@ export const BrokerListenerCreateOrUpdate: API.OperationMethod<
   BrokerListenerCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<BrokerListenerCreateOrUpdateRequest>,
-  output: __S(97) as any as S.Schema<BrokerListenerCreateOrUpdateResponse>,
+  input: BrokerListenerCreateOrUpdateRequest,
+  output: BrokerListenerCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3181,8 +4690,8 @@ export const DataflowCreateOrUpdate: API.OperationMethod<
   DataflowCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<DataflowCreateOrUpdateRequest>,
-  output: __S(114) as any as S.Schema<DataflowCreateOrUpdateResponse>,
+  input: DataflowCreateOrUpdateRequest,
+  output: DataflowCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3196,8 +4705,8 @@ export const DataflowEndpointCreateOrUpdate: API.OperationMethod<
   DataflowEndpointCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<DataflowEndpointCreateOrUpdateRequest>,
-  output: __S(138) as any as S.Schema<DataflowEndpointCreateOrUpdateResponse>,
+  input: DataflowEndpointCreateOrUpdateRequest,
+  output: DataflowEndpointCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3211,8 +4720,8 @@ export const DataflowGraphCreateOrUpdate: API.OperationMethod<
   DataflowGraphCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<DataflowGraphCreateOrUpdateRequest>,
-  output: __S(148) as any as S.Schema<DataflowGraphCreateOrUpdateResponse>,
+  input: DataflowGraphCreateOrUpdateRequest,
+  output: DataflowGraphCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3226,8 +4735,8 @@ export const DataflowProfileCreateOrUpdate: API.OperationMethod<
   DataflowProfileCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<DataflowProfileCreateOrUpdateRequest>,
-  output: __S(153) as any as S.Schema<DataflowProfileCreateOrUpdateResponse>,
+  input: DataflowProfileCreateOrUpdateRequest,
+  output: DataflowProfileCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3241,8 +4750,8 @@ export const DeleteAkriConnector: API.OperationMethod<
   DeleteAkriConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<DeleteAkriConnectorRequest>,
-  output: __S(0) as any as S.Schema<DeleteAkriConnectorResponse>,
+  input: DeleteAkriConnectorRequest,
+  output: DeleteAkriConnectorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3256,8 +4765,8 @@ export const DeleteAkriConnectorTemplate: API.OperationMethod<
   DeleteAkriConnectorTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155) as any as S.Schema<DeleteAkriConnectorTemplateRequest>,
-  output: __S(156) as any as S.Schema<DeleteAkriConnectorTemplateResponse>,
+  input: DeleteAkriConnectorTemplateRequest,
+  output: DeleteAkriConnectorTemplateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3271,8 +4780,8 @@ export const DeleteAkriService: API.OperationMethod<
   DeleteAkriServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157) as any as S.Schema<DeleteAkriServiceRequest>,
-  output: __S(0) as any as S.Schema<DeleteAkriServiceResponse>,
+  input: DeleteAkriServiceRequest,
+  output: DeleteAkriServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3286,8 +4795,8 @@ export const DeleteBroker: API.OperationMethod<
   DeleteBrokerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158) as any as S.Schema<DeleteBrokerRequest>,
-  output: __S(0) as any as S.Schema<DeleteBrokerResponse>,
+  input: DeleteBrokerRequest,
+  output: DeleteBrokerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3301,8 +4810,8 @@ export const DeleteBrokerAuthentication: API.OperationMethod<
   DeleteBrokerAuthenticationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159) as any as S.Schema<DeleteBrokerAuthenticationRequest>,
-  output: __S(156) as any as S.Schema<DeleteBrokerAuthenticationResponse>,
+  input: DeleteBrokerAuthenticationRequest,
+  output: DeleteBrokerAuthenticationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3316,8 +4825,8 @@ export const DeleteBrokerAuthorization: API.OperationMethod<
   DeleteBrokerAuthorizationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160) as any as S.Schema<DeleteBrokerAuthorizationRequest>,
-  output: __S(156) as any as S.Schema<DeleteBrokerAuthorizationResponse>,
+  input: DeleteBrokerAuthorizationRequest,
+  output: DeleteBrokerAuthorizationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3331,8 +4840,8 @@ export const DeleteBrokerListener: API.OperationMethod<
   DeleteBrokerListenerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161) as any as S.Schema<DeleteBrokerListenerRequest>,
-  output: __S(0) as any as S.Schema<DeleteBrokerListenerResponse>,
+  input: DeleteBrokerListenerRequest,
+  output: DeleteBrokerListenerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3346,8 +4855,8 @@ export const DeleteDataflow: API.OperationMethod<
   DeleteDataflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162) as any as S.Schema<DeleteDataflowRequest>,
-  output: __S(0) as any as S.Schema<DeleteDataflowResponse>,
+  input: DeleteDataflowRequest,
+  output: DeleteDataflowResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3361,8 +4870,8 @@ export const DeleteDataflowEndpoint: API.OperationMethod<
   DeleteDataflowEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<DeleteDataflowEndpointRequest>,
-  output: __S(0) as any as S.Schema<DeleteDataflowEndpointResponse>,
+  input: DeleteDataflowEndpointRequest,
+  output: DeleteDataflowEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3376,8 +4885,8 @@ export const DeleteDataflowGraph: API.OperationMethod<
   DeleteDataflowGraphError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164) as any as S.Schema<DeleteDataflowGraphRequest>,
-  output: __S(0) as any as S.Schema<DeleteDataflowGraphResponse>,
+  input: DeleteDataflowGraphRequest,
+  output: DeleteDataflowGraphResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3391,8 +4900,8 @@ export const DeleteDataflowProfile: API.OperationMethod<
   DeleteDataflowProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165) as any as S.Schema<DeleteDataflowProfileRequest>,
-  output: __S(0) as any as S.Schema<DeleteDataflowProfileResponse>,
+  input: DeleteDataflowProfileRequest,
+  output: DeleteDataflowProfileResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3406,8 +4915,8 @@ export const DeleteInstance: API.OperationMethod<
   DeleteInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<DeleteInstanceRequest>,
-  output: __S(0) as any as S.Schema<DeleteInstanceResponse>,
+  input: DeleteInstanceRequest,
+  output: DeleteInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3421,8 +4930,8 @@ export const DeleteRegistryEndpoint: API.OperationMethod<
   DeleteRegistryEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<DeleteRegistryEndpointRequest>,
-  output: __S(0) as any as S.Schema<DeleteRegistryEndpointResponse>,
+  input: DeleteRegistryEndpointRequest,
+  output: DeleteRegistryEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3436,8 +4945,8 @@ export const GetAkriConnector: API.OperationMethod<
   GetAkriConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<GetAkriConnectorRequest>,
-  output: __S(169) as any as S.Schema<GetAkriConnectorResponse>,
+  input: GetAkriConnectorRequest,
+  output: GetAkriConnectorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3451,8 +4960,8 @@ export const GetAkriConnectorTemplate: API.OperationMethod<
   GetAkriConnectorTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170) as any as S.Schema<GetAkriConnectorTemplateRequest>,
-  output: __S(23) as any as S.Schema<GetAkriConnectorTemplateResponse>,
+  input: GetAkriConnectorTemplateRequest,
+  output: GetAkriConnectorTemplateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3466,8 +4975,8 @@ export const GetAkriService: API.OperationMethod<
   GetAkriServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171) as any as S.Schema<GetAkriServiceRequest>,
-  output: __S(172) as any as S.Schema<GetAkriServiceResponse>,
+  input: GetAkriServiceRequest,
+  output: GetAkriServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3481,8 +4990,8 @@ export const GetBroker: API.OperationMethod<
   GetBrokerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173) as any as S.Schema<GetBrokerRequest>,
-  output: __S(174) as any as S.Schema<GetBrokerResponse>,
+  input: GetBrokerRequest,
+  output: GetBrokerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3496,8 +5005,8 @@ export const GetBrokerAuthentication: API.OperationMethod<
   GetBrokerAuthenticationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<GetBrokerAuthenticationRequest>,
-  output: __S(41) as any as S.Schema<GetBrokerAuthenticationResponse>,
+  input: GetBrokerAuthenticationRequest,
+  output: GetBrokerAuthenticationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3511,8 +5020,8 @@ export const GetBrokerAuthorization: API.OperationMethod<
   GetBrokerAuthorizationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<GetBrokerAuthorizationRequest>,
-  output: __S(54) as any as S.Schema<GetBrokerAuthorizationResponse>,
+  input: GetBrokerAuthorizationRequest,
+  output: GetBrokerAuthorizationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3526,8 +5035,8 @@ export const GetBrokerListener: API.OperationMethod<
   GetBrokerListenerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<GetBrokerListenerRequest>,
-  output: __S(97) as any as S.Schema<GetBrokerListenerResponse>,
+  input: GetBrokerListenerRequest,
+  output: GetBrokerListenerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3541,8 +5050,8 @@ export const GetDataflow: API.OperationMethod<
   GetDataflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178) as any as S.Schema<GetDataflowRequest>,
-  output: __S(179) as any as S.Schema<GetDataflowResponse>,
+  input: GetDataflowRequest,
+  output: GetDataflowResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3556,8 +5065,8 @@ export const GetDataflowEndpoint: API.OperationMethod<
   GetDataflowEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180) as any as S.Schema<GetDataflowEndpointRequest>,
-  output: __S(138) as any as S.Schema<GetDataflowEndpointResponse>,
+  input: GetDataflowEndpointRequest,
+  output: GetDataflowEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3571,8 +5080,8 @@ export const GetDataflowGraph: API.OperationMethod<
   GetDataflowGraphError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<GetDataflowGraphRequest>,
-  output: __S(182) as any as S.Schema<GetDataflowGraphResponse>,
+  input: GetDataflowGraphRequest,
+  output: GetDataflowGraphResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3586,8 +5095,8 @@ export const GetDataflowProfile: API.OperationMethod<
   GetDataflowProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183) as any as S.Schema<GetDataflowProfileRequest>,
-  output: __S(153) as any as S.Schema<GetDataflowProfileResponse>,
+  input: GetDataflowProfileRequest,
+  output: GetDataflowProfileResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3601,8 +5110,8 @@ export const GetInstance: API.OperationMethod<
   GetInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184) as any as S.Schema<GetInstanceRequest>,
-  output: __S(195) as any as S.Schema<GetInstanceResponse>,
+  input: GetInstanceRequest,
+  output: GetInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3616,8 +5125,8 @@ export const GetRegistryEndpoint: API.OperationMethod<
   GetRegistryEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196) as any as S.Schema<GetRegistryEndpointRequest>,
-  output: __S(201) as any as S.Schema<GetRegistryEndpointResponse>,
+  input: GetRegistryEndpointRequest,
+  output: GetRegistryEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3631,8 +5140,8 @@ export const InstanceCreateOrUpdate: API.OperationMethod<
   InstanceCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205) as any as S.Schema<InstanceCreateOrUpdateRequest>,
-  output: __S(206) as any as S.Schema<InstanceCreateOrUpdateResponse>,
+  input: InstanceCreateOrUpdateRequest,
+  output: InstanceCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3646,8 +5155,8 @@ export const ListAkriConnectorByTemplate: API.OperationMethod<
   ListAkriConnectorByTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207) as any as S.Schema<ListAkriConnectorByTemplateRequest>,
-  output: __S(209) as any as S.Schema<AkriConnectorResourceListResult>,
+  input: ListAkriConnectorByTemplateRequest,
+  output: AkriConnectorResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3661,8 +5170,8 @@ export const ListAkriConnectorTemplateByInstanceResource: API.OperationMethod<
   ListAkriConnectorTemplateByInstanceResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210) as any as S.Schema<ListAkriConnectorTemplateByInstanceResourceRequest>,
-  output: __S(212) as any as S.Schema<AkriConnectorTemplateResourceListResult>,
+  input: ListAkriConnectorTemplateByInstanceResourceRequest,
+  output: AkriConnectorTemplateResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3676,8 +5185,8 @@ export const ListAkriServiceByInstanceResource: API.OperationMethod<
   ListAkriServiceByInstanceResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213) as any as S.Schema<ListAkriServiceByInstanceResourceRequest>,
-  output: __S(215) as any as S.Schema<AkriServiceResourceListResult>,
+  input: ListAkriServiceByInstanceResourceRequest,
+  output: AkriServiceResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3691,8 +5200,8 @@ export const ListBrokerAuthenticationByResourceGroup: API.OperationMethod<
   ListBrokerAuthenticationByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216) as any as S.Schema<ListBrokerAuthenticationByResourceGroupRequest>,
-  output: __S(218) as any as S.Schema<BrokerAuthenticationResourceListResult>,
+  input: ListBrokerAuthenticationByResourceGroupRequest,
+  output: BrokerAuthenticationResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3706,8 +5215,8 @@ export const ListBrokerAuthorizationByResourceGroup: API.OperationMethod<
   ListBrokerAuthorizationByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219) as any as S.Schema<ListBrokerAuthorizationByResourceGroupRequest>,
-  output: __S(221) as any as S.Schema<BrokerAuthorizationResourceListResult>,
+  input: ListBrokerAuthorizationByResourceGroupRequest,
+  output: BrokerAuthorizationResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3721,8 +5230,8 @@ export const ListBrokerByResourceGroup: API.OperationMethod<
   ListBrokerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222) as any as S.Schema<ListBrokerByResourceGroupRequest>,
-  output: __S(224) as any as S.Schema<BrokerResourceListResult>,
+  input: ListBrokerByResourceGroupRequest,
+  output: BrokerResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3736,8 +5245,8 @@ export const ListBrokerListenerByResourceGroup: API.OperationMethod<
   ListBrokerListenerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225) as any as S.Schema<ListBrokerListenerByResourceGroupRequest>,
-  output: __S(228) as any as S.Schema<BrokerListenerResourceListResult>,
+  input: ListBrokerListenerByResourceGroupRequest,
+  output: BrokerListenerResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3751,8 +5260,8 @@ export const ListDataflowByProfileResource: API.OperationMethod<
   ListDataflowByProfileResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229) as any as S.Schema<ListDataflowByProfileResourceRequest>,
-  output: __S(231) as any as S.Schema<DataflowResourceListResult>,
+  input: ListDataflowByProfileResourceRequest,
+  output: DataflowResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3766,8 +5275,8 @@ export const ListDataflowEndpointByResourceGroup: API.OperationMethod<
   ListDataflowEndpointByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232) as any as S.Schema<ListDataflowEndpointByResourceGroupRequest>,
-  output: __S(235) as any as S.Schema<DataflowEndpointResourceListResult>,
+  input: ListDataflowEndpointByResourceGroupRequest,
+  output: DataflowEndpointResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3781,8 +5290,8 @@ export const ListDataflowGraphByDataflowProfile: API.OperationMethod<
   ListDataflowGraphByDataflowProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236) as any as S.Schema<ListDataflowGraphByDataflowProfileRequest>,
-  output: __S(238) as any as S.Schema<DataflowGraphResourceListResult>,
+  input: ListDataflowGraphByDataflowProfileRequest,
+  output: DataflowGraphResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3796,8 +5305,8 @@ export const ListDataflowProfileByResourceGroup: API.OperationMethod<
   ListDataflowProfileByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239) as any as S.Schema<ListDataflowProfileByResourceGroupRequest>,
-  output: __S(242) as any as S.Schema<DataflowProfileResourceListResult>,
+  input: ListDataflowProfileByResourceGroupRequest,
+  output: DataflowProfileResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3811,8 +5320,8 @@ export const ListInstanceByResourceGroup: API.OperationMethod<
   ListInstanceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243) as any as S.Schema<ListInstanceByResourceGroupRequest>,
-  output: __S(245) as any as S.Schema<InstanceResourceListResult>,
+  input: ListInstanceByResourceGroupRequest,
+  output: InstanceResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3826,8 +5335,8 @@ export const ListInstanceBySubscription: API.OperationMethod<
   ListInstanceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246) as any as S.Schema<ListInstanceBySubscriptionRequest>,
-  output: __S(245) as any as S.Schema<InstanceResourceListResult>,
+  input: ListInstanceBySubscriptionRequest,
+  output: InstanceResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3841,8 +5350,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247) as any as S.Schema<ListOperationsRequest>,
-  output: __S(251) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3856,8 +5365,8 @@ export const ListRegistryEndpointByInstanceResource: API.OperationMethod<
   ListRegistryEndpointByInstanceResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252) as any as S.Schema<ListRegistryEndpointByInstanceResourceRequest>,
-  output: __S(255) as any as S.Schema<RegistryEndpointResourceListResult>,
+  input: ListRegistryEndpointByInstanceResourceRequest,
+  output: RegistryEndpointResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3871,8 +5380,8 @@ export const RegistryEndpointCreateOrUpdate: API.OperationMethod<
   RegistryEndpointCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257) as any as S.Schema<RegistryEndpointCreateOrUpdateRequest>,
-  output: __S(201) as any as S.Schema<RegistryEndpointCreateOrUpdateResponse>,
+  input: RegistryEndpointCreateOrUpdateRequest,
+  output: RegistryEndpointCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3886,8 +5395,8 @@ export const UpdateInstance: API.OperationMethod<
   UpdateInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258) as any as S.Schema<UpdateInstanceRequest>,
-  output: __S(195) as any as S.Schema<UpdateInstanceResponse>,
+  input: UpdateInstanceRequest,
+  output: UpdateInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3904,7 +5413,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: S.String,
+          type: ExtendedLocationType,
         }),
       ).annotate({ identifier: "ExtendedLocation" });
     case 2:
@@ -3915,8 +5424,8 @@ function __c0(j: number): any {
           instanceName: S.String.pipe(T.Label()),
           akriConnectorTemplateName: S.String.pipe(T.Label()),
           connectorName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(0)),
-          extendedLocation: S.optional(__S(1)),
+          properties: S.optional(AkriConnectorPropertiesInput),
+          extendedLocation: S.optional(ExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3932,10 +5441,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -3949,11 +5458,11 @@ function __c0(j: number): any {
         identifier: "AkriConnectorAllocatedDevice",
       });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(AkriConnectorAllocatedDevice);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(ResourceHealthState),
           lastTransitionTime: S.optional(S.String),
           lastUpdateTime: S.optional(S.String),
           message: S.optional(S.String),
@@ -3963,7 +5472,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          healthState: S.optional(__S(6)),
+          healthState: S.optional(ResourceHealthStatus),
         }),
       ).annotate({ identifier: "AkriConnectorStatus" });
   }
@@ -3973,10 +5482,10 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          allocatedDevices: S.optional(__S(5)),
-          status: S.optional(__S(7)),
-          healthState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
+          allocatedDevices: S.optional(AkriConnectorPropertiesAllocatedDevicesList),
+          status: S.optional(AkriConnectorStatus),
+          healthState: S.optional(AkriConnectorPropertiesHealthState),
         }),
       ).annotate({ identifier: "AkriConnectorProperties" });
     case 1:
@@ -3985,9 +5494,9 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(8)),
-          extendedLocation: S.optional(__S(1)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AkriConnectorProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({
         identifier: "AkriConnectorCreateOrUpdateResponse",
@@ -4004,7 +5513,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          runtimeConfigurationType: S.String,
+          runtimeConfigurationType: AkriConnectorTemplateRuntimeConfigurationType,
           managedConfigurationSettings: S.optional(S.Unknown),
         }),
       ).annotate({
@@ -4021,7 +5530,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          logs: __S(12),
+          logs: AkriConnectorsDiagnosticsLogs,
         }),
       ).annotate({
         identifier: "AkriConnectorTemplateDiagnostics",
@@ -4037,7 +5546,7 @@ function __c1(j: number): any {
         identifier: "AkriConnectorTemplateDeviceInboundEndpointType",
       });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(AkriConnectorTemplateDeviceInboundEndpointType);
   }
 }
 function __c2(j: number): any {
@@ -4045,7 +5554,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          method: S.String,
+          method: AkriConnectorsMqttAuthenticationMethod,
           serviceAccountTokenSettings: S.optional(S.Unknown),
         }),
       ).annotate({
@@ -4054,20 +5563,20 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(S.String),
+          mode: S.optional(TlsPropertiesMode),
           trustedCaCertificateConfigMapRef: S.optional(S.String),
         }),
       ).annotate({ identifier: "TlsProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          authentication: S.optional(__S(16)),
+          authentication: S.optional(AkriConnectorsMqttAuthentication),
           host: S.optional(S.String),
-          protocol: S.optional(S.String),
+          protocol: S.optional(AkriConnectorsMqttProtocolType),
           keepAliveSeconds: S.optional(S.Number),
           maxInflightMessages: S.optional(S.Number),
           sessionExpirySeconds: S.optional(S.Number),
-          tls: S.optional(__S(17)),
+          tls: S.optional(TlsProperties),
         }),
       ).annotate({
         identifier: "AkriConnectorsMqttConnectionConfiguration",
@@ -4075,11 +5584,12 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          aioMetadata: S.optional(__S(10)),
-          runtimeConfiguration: __S(11),
-          diagnostics: S.optional(__S(13)),
-          deviceInboundEndpointTypes: __S(15),
-          mqttConnectionConfiguration: S.optional(__S(18)),
+          aioMetadata: S.optional(AkriConnectorTemplateAioMetadata),
+          runtimeConfiguration: AkriConnectorTemplateRuntimeConfiguration,
+          diagnostics: S.optional(AkriConnectorTemplateDiagnostics),
+          deviceInboundEndpointTypes:
+            AkriConnectorTemplatePropertiesInputDeviceInboundEndpointTypesList,
+          mqttConnectionConfiguration: S.optional(AkriConnectorsMqttConnectionConfiguration),
           connectorMetadataRef: S.optional(S.String),
         }),
       ).annotate({
@@ -4092,8 +5602,8 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
           akriConnectorTemplateName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(19)),
-          extendedLocation: S.optional(__S(1)),
+          properties: S.optional(AkriConnectorTemplatePropertiesInput),
+          extendedLocation: S.optional(ExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4106,18 +5616,18 @@ function __c2(j: number): any {
         identifier: "AkriConnectorTemplateCreateOrUpdateRequest",
       });
     case 5:
-      return S.Array(__S(14));
+      return S.Array(AkriConnectorTemplateDeviceInboundEndpointType);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          aioMetadata: S.optional(__S(10)),
-          runtimeConfiguration: __S(11),
-          diagnostics: S.optional(__S(13)),
-          deviceInboundEndpointTypes: __S(21),
-          mqttConnectionConfiguration: S.optional(__S(18)),
+          provisioningState: S.optional(ProvisioningState),
+          aioMetadata: S.optional(AkriConnectorTemplateAioMetadata),
+          runtimeConfiguration: AkriConnectorTemplateRuntimeConfiguration,
+          diagnostics: S.optional(AkriConnectorTemplateDiagnostics),
+          deviceInboundEndpointTypes: AkriConnectorTemplatePropertiesDeviceInboundEndpointTypesList,
+          mqttConnectionConfiguration: S.optional(AkriConnectorsMqttConnectionConfiguration),
           connectorMetadataRef: S.optional(S.String),
-          healthState: S.optional(S.String),
+          healthState: S.optional(AkriConnectorTemplatePropertiesHealthState),
         }),
       ).annotate({
         identifier: "AkriConnectorTemplateProperties",
@@ -4128,9 +5638,9 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(22)),
-          extendedLocation: S.optional(__S(1)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AkriConnectorTemplateProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({
         identifier: "AkriConnectorTemplateCreateOrUpdateResponse",
@@ -4146,8 +5656,8 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
           akriServiceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(0)),
-          extendedLocation: S.optional(__S(1)),
+          properties: S.optional(AkriConnectorPropertiesInput),
+          extendedLocation: S.optional(ExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4162,8 +5672,8 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          status: S.optional(__S(7)),
+          provisioningState: S.optional(ProvisioningState),
+          status: S.optional(AkriServiceStatus),
         }),
       ).annotate({ identifier: "AkriServiceProperties" });
     case 2:
@@ -4172,9 +5682,9 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(25)),
-          extendedLocation: S.optional(__S(1)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AkriServiceProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({
         identifier: "AkriServiceCreateOrUpdateResponse",
@@ -4188,7 +5698,7 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          x509: __S(27),
+          x509: X509ManualCertificate,
         }),
       ).annotate({
         identifier: "BrokerAuthenticatorCustomAuth",
@@ -4198,10 +5708,10 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          auth: S.optional(__S(28)),
+          auth: S.optional(BrokerAuthenticatorCustomAuth),
           caCertConfigMap: S.optional(S.String),
           endpoint: S.String,
-          headers: S.optional(__S(29)),
+          headers: S.optional(BrokerAuthenticatorMethodCustomHeadersMap),
         }),
       ).annotate({
         identifier: "BrokerAuthenticatorMethodCustom",
@@ -4215,7 +5725,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          audiences: __S(31),
+          audiences: BrokerAuthenticatorMethodSatAudiencesList,
         }),
       ).annotate({
         identifier: "BrokerAuthenticatorMethodSat",
@@ -4223,20 +5733,22 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          attributes: __S(29),
+          attributes: BrokerAuthenticatorMethodX509AttributesAttributesMap,
           subject: S.String,
         }),
       ).annotate({
         identifier: "BrokerAuthenticatorMethodX509Attributes",
       });
     case 2:
-      return S.Record(S.String, __S(33));
+      return S.Record(S.String, BrokerAuthenticatorMethodX509Attributes);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          authorizationAttributes: S.optional(__S(34)),
+          authorizationAttributes: S.optional(
+            BrokerAuthenticatorMethodX509AuthorizationAttributesMap,
+          ),
           trustedClientCaCert: S.optional(S.String),
-          additionalValidation: S.optional(S.String),
+          additionalValidation: S.optional(BrokerAuthenticatorValidationMethods),
         }),
       ).annotate({
         identifier: "BrokerAuthenticatorMethodX509",
@@ -4244,20 +5756,20 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          method: S.String,
-          customSettings: S.optional(__S(30)),
-          serviceAccountTokenSettings: S.optional(__S(32)),
-          x509Settings: S.optional(__S(35)),
+          method: BrokerAuthenticationMethod,
+          customSettings: S.optional(BrokerAuthenticatorMethodCustom),
+          serviceAccountTokenSettings: S.optional(BrokerAuthenticatorMethodSat),
+          x509Settings: S.optional(BrokerAuthenticatorMethodX509),
         }),
       ).annotate({
         identifier: "BrokerAuthenticatorMethods",
       });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(BrokerAuthenticatorMethods);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          authenticationMethods: __S(37),
+          authenticationMethods: BrokerAuthenticationPropertiesInputAuthenticationMethodsList,
         }),
       ).annotate({
         identifier: "BrokerAuthenticationPropertiesInput",
@@ -4270,8 +5782,8 @@ function __c4(j: number): any {
           instanceName: S.String.pipe(T.Label()),
           brokerName: S.String.pipe(T.Label()),
           authenticationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(38)),
-          extendedLocation: S.optional(__S(1)),
+          properties: S.optional(BrokerAuthenticationPropertiesInput),
+          extendedLocation: S.optional(ExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4290,9 +5802,9 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          authenticationMethods: __S(37),
-          provisioningState: S.optional(S.String),
-          healthState: S.optional(S.String),
+          authenticationMethods: BrokerAuthenticationPropertiesAuthenticationMethodsList,
+          provisioningState: S.optional(ProvisioningState),
+          healthState: S.optional(BrokerAuthenticationPropertiesHealthState),
         }),
       ).annotate({
         identifier: "BrokerAuthenticationProperties",
@@ -4303,9 +5815,9 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(40)),
-          extendedLocation: S.optional(__S(1)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BrokerAuthenticationProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({
         identifier: "BrokerAuthenticationCreateOrUpdateResponse",
@@ -4313,33 +5825,33 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          method: S.String,
-          clientIds: S.optional(__S(31)),
-          topics: S.optional(__S(31)),
+          method: BrokerResourceDefinitionMethods,
+          clientIds: S.optional(BrokerResourceRuleClientIdsList),
+          topics: S.optional(BrokerResourceRuleTopicsList),
         }),
       ).annotate({ identifier: "BrokerResourceRule" });
     case 3:
-      return S.Array(__S(42));
+      return S.Array(BrokerResourceRule);
     case 4:
-      return S.Array(__S(29));
+      return S.Array(PrincipalDefinitionAttributesItemMap);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(__S(44)),
-          clientIds: S.optional(__S(31)),
-          usernames: S.optional(__S(31)),
+          attributes: S.optional(PrincipalDefinitionAttributesList),
+          clientIds: S.optional(PrincipalDefinitionClientIdsList),
+          usernames: S.optional(PrincipalDefinitionUsernamesList),
         }),
       ).annotate({ identifier: "PrincipalDefinition" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          keyType: S.String,
-          keys: __S(31),
-          method: S.String,
+          keyType: StateStoreResourceKeyTypes,
+          keys: StateStoreResourceRuleKeysList,
+          method: StateStoreResourceDefinitionMethods,
         }),
       ).annotate({ identifier: "StateStoreResourceRule" });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(StateStoreResourceRule);
   }
 }
 function __c6(j: number): any {
@@ -4347,24 +5859,24 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          brokerResources: __S(43),
-          principals: __S(45),
-          stateStoreResources: S.optional(__S(47)),
+          brokerResources: AuthorizationRuleBrokerResourcesList,
+          principals: PrincipalDefinition,
+          stateStoreResources: S.optional(AuthorizationRuleStateStoreResourcesList),
         }),
       ).annotate({ identifier: "AuthorizationRule" });
     case 1:
-      return S.Array(__S(48));
+      return S.Array(AuthorizationRule);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cache: S.optional(S.String),
-          rules: S.optional(__S(49)),
+          cache: S.optional(AuthorizationConfigCache),
+          rules: S.optional(AuthorizationConfigRulesList),
         }),
       ).annotate({ identifier: "AuthorizationConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          authorizationPolicies: __S(50),
+          authorizationPolicies: AuthorizationConfig,
         }),
       ).annotate({
         identifier: "BrokerAuthorizationPropertiesInput",
@@ -4377,8 +5889,8 @@ function __c6(j: number): any {
           instanceName: S.String.pipe(T.Label()),
           brokerName: S.String.pipe(T.Label()),
           authorizationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(51)),
-          extendedLocation: S.optional(__S(1)),
+          properties: S.optional(BrokerAuthorizationPropertiesInput),
+          extendedLocation: S.optional(ExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4393,9 +5905,9 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          authorizationPolicies: __S(50),
-          provisioningState: S.optional(S.String),
-          healthState: S.optional(S.String),
+          authorizationPolicies: AuthorizationConfig,
+          provisioningState: S.optional(ProvisioningState),
+          healthState: S.optional(BrokerAuthorizationPropertiesHealthState),
         }),
       ).annotate({
         identifier: "BrokerAuthorizationProperties",
@@ -4406,9 +5918,9 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(53)),
-          extendedLocation: S.optional(__S(1)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BrokerAuthorizationProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({
         identifier: "BrokerAuthorizationCreateOrUpdateResponse",
@@ -4417,7 +5929,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           length: S.optional(S.Number),
-          strategy: S.optional(S.String),
+          strategy: S.optional(SubscriberQueueLimitStrategy),
         }),
       ).annotate({ identifier: "SubscriberQueueLimit" });
   }
@@ -4430,7 +5942,7 @@ function __c7(j: number): any {
           maxSessionExpirySeconds: S.optional(S.Number),
           maxMessageExpirySeconds: S.optional(S.Number),
           maxPacketSizeBytes: S.optional(S.Number),
-          subscriberQueueLimit: S.optional(__S(55)),
+          subscriberQueueLimit: S.optional(SubscriberQueueLimit),
           maxReceiveMaximum: S.optional(S.Number),
           maxKeepAliveSeconds: S.optional(S.Number),
         }),
@@ -4438,8 +5950,8 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          algorithm: S.String,
-          rotationPolicy: S.String,
+          algorithm: PrivateKeyAlgorithm,
+          rotationPolicy: PrivateKeyRotationPolicy,
         }),
       ).annotate({ identifier: "CertManagerPrivateKey" });
     case 2:
@@ -4447,15 +5959,15 @@ function __c7(j: number): any {
         S.Struct({
           duration: S.String,
           renewBefore: S.String,
-          privateKey: __S(57),
+          privateKey: CertManagerPrivateKey,
         }),
       ).annotate({ identifier: "CertManagerCertOptions" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          clients: S.optional(__S(56)),
-          encryptInternalTraffic: S.optional(S.String),
-          internalCerts: S.optional(__S(58)),
+          clients: S.optional(ClientConfig),
+          encryptInternalTraffic: S.optional(AdvancedSettingsEncryptInternalTraffic),
+          internalCerts: S.optional(CertManagerCertOptions),
         }),
       ).annotate({ identifier: "AdvancedSettings" });
     case 4:
@@ -4476,8 +5988,8 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          backendChain: __S(60),
-          frontend: __S(61),
+          backendChain: BackendChain,
+          frontend: Frontend,
         }),
       ).annotate({ identifier: "Cardinality" });
     case 7:
@@ -4493,7 +6005,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(S.String),
+          mode: S.optional(SelfCheckMode),
           intervalSeconds: S.optional(S.Number),
           timeoutSeconds: S.optional(S.Number),
         }),
@@ -4501,26 +6013,26 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(S.String),
+          mode: S.optional(SelfTracingMode),
           intervalSeconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SelfTracing" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(S.String),
+          mode: S.optional(TracesMode),
           cacheSizeMegabytes: S.optional(S.Number),
-          selfTracing: S.optional(__S(65)),
+          selfTracing: S.optional(SelfTracing),
           spanChannelCapacity: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Traces" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          logs: S.optional(__S(12)),
-          metrics: S.optional(__S(63)),
-          selfCheck: S.optional(__S(64)),
-          traces: S.optional(__S(66)),
+          logs: S.optional(AkriConnectorsDiagnosticsLogs),
+          metrics: S.optional(Metrics),
+          selfCheck: S.optional(SelfCheck),
+          traces: S.optional(Traces),
         }),
       ).annotate({ identifier: "BrokerDiagnostics" });
     case 4:
@@ -4549,7 +6061,7 @@ function __c8(j: number): any {
         identifier: "VolumeClaimResourceRequirementsClaims",
       });
     case 7:
-      return S.Array(__S(70));
+      return S.Array(VolumeClaimResourceRequirementsClaims);
   }
 }
 function __c9(j: number): any {
@@ -4557,9 +6069,9 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          limits: S.optional(__S(29)),
-          requests: S.optional(__S(29)),
-          claims: S.optional(__S(71)),
+          limits: S.optional(VolumeClaimResourceRequirementsLimitsMap),
+          requests: S.optional(VolumeClaimResourceRequirementsRequestsMap),
+          claims: S.optional(VolumeClaimResourceRequirementsClaimsList),
         }),
       ).annotate({
         identifier: "VolumeClaimResourceRequirements",
@@ -4568,19 +6080,19 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          operator: S.String,
-          values: S.optional(__S(31)),
+          operator: OperatorValues,
+          values: S.optional(VolumeClaimSpecSelectorMatchExpressionsValuesList),
         }),
       ).annotate({
         identifier: "VolumeClaimSpecSelectorMatchExpressions",
       });
     case 2:
-      return S.Array(__S(73));
+      return S.Array(VolumeClaimSpecSelectorMatchExpressions);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          matchExpressions: S.optional(__S(74)),
-          matchLabels: S.optional(__S(29)),
+          matchExpressions: S.optional(VolumeClaimSpecSelectorMatchExpressionsList),
+          matchLabels: S.optional(VolumeClaimSpecSelectorMatchLabelsMap),
         }),
       ).annotate({ identifier: "VolumeClaimSpecSelector" });
     case 4:
@@ -4589,31 +6101,31 @@ function __c9(j: number): any {
           volumeName: S.optional(S.String),
           volumeMode: S.optional(S.String),
           storageClassName: S.optional(S.String),
-          accessModes: S.optional(__S(31)),
-          dataSource: S.optional(__S(68)),
-          dataSourceRef: S.optional(__S(69)),
-          resources: S.optional(__S(72)),
-          selector: S.optional(__S(75)),
+          accessModes: S.optional(VolumeClaimSpecAccessModesList),
+          dataSource: S.optional(LocalKubernetesReference),
+          dataSourceRef: S.optional(KubernetesReference),
+          resources: S.optional(VolumeClaimResourceRequirements),
+          selector: S.optional(VolumeClaimSpecSelector),
         }),
       ).annotate({ identifier: "VolumeClaimSpec" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           maxSize: S.String,
-          ephemeralVolumeClaimSpec: S.optional(__S(76)),
-          persistentVolumeClaimSpec: S.optional(__S(76)),
+          ephemeralVolumeClaimSpec: S.optional(VolumeClaimSpec),
+          persistentVolumeClaimSpec: S.optional(VolumeClaimSpec),
         }),
       ).annotate({ identifier: "DiskBackedMessageBuffer" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          cpu: S.optional(S.String),
+          cpu: S.optional(GenerateResourceLimitsCpu),
         }),
       ).annotate({ identifier: "GenerateResourceLimits" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          mode: S.String,
+          mode: BrokerPersistencePolicyMode,
           retainSettings: S.optional(S.Unknown),
         }),
       ).annotate({
@@ -4626,14 +6138,14 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          mode: S.String,
+          mode: BrokerPersistencePolicyMode,
           stateStoreSettings: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "BrokerStateStorePolicy" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mode: S.String,
+          mode: BrokerPersistencePolicyMode,
           subscriberQueueSettings: S.optional(S.Unknown),
         }),
       ).annotate({
@@ -4642,7 +6154,7 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          mode: S.String,
+          mode: OperationalMode,
         }),
       ).annotate({
         identifier: "BrokerPersistenceEncryption",
@@ -4651,24 +6163,26 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           maxSize: S.String,
-          persistentVolumeClaimSpec: S.optional(__S(76)),
-          retain: S.optional(__S(79)),
-          stateStore: S.optional(__S(80)),
-          subscriberQueue: S.optional(__S(81)),
-          encryption: S.optional(__S(82)),
+          persistentVolumeClaimSpec: S.optional(VolumeClaimSpec),
+          retain: S.optional(BrokerRetainMessagesPolicy),
+          stateStore: S.optional(BrokerStateStorePolicy),
+          subscriberQueue: S.optional(BrokerSubscriberQueuePolicy),
+          encryption: S.optional(BrokerPersistenceEncryption),
         }),
       ).annotate({ identifier: "BrokerPersistence" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          advanced: S.optional(__S(59)),
-          cardinality: S.optional(__S(62)),
-          diagnostics: S.optional(__S(67)),
-          diskBackedMessageBuffer: S.optional(__S(77)),
-          generateResourceLimits: S.optional(__S(78)),
-          highPriorityMessagesBackpressureHandling: S.optional(S.String),
-          memoryProfile: S.optional(S.String),
-          persistence: S.optional(__S(83)),
+          advanced: S.optional(AdvancedSettings),
+          cardinality: S.optional(Cardinality),
+          diagnostics: S.optional(BrokerDiagnostics),
+          diskBackedMessageBuffer: S.optional(DiskBackedMessageBuffer),
+          generateResourceLimits: S.optional(GenerateResourceLimits),
+          highPriorityMessagesBackpressureHandling: S.optional(
+            HighPriorityMessagesBackpressureHandling,
+          ),
+          memoryProfile: S.optional(BrokerPropertiesInputMemoryProfile),
+          persistence: S.optional(BrokerPersistence),
         }),
       ).annotate({ identifier: "BrokerPropertiesInput" });
     case 5:
@@ -4678,8 +6192,8 @@ function __c10(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
           brokerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(84)),
-          extendedLocation: S.optional(__S(1)),
+          properties: S.optional(BrokerPropertiesInput),
+          extendedLocation: S.optional(ExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4694,17 +6208,19 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          advanced: S.optional(__S(59)),
-          cardinality: S.optional(__S(62)),
-          diagnostics: S.optional(__S(67)),
-          diskBackedMessageBuffer: S.optional(__S(77)),
-          generateResourceLimits: S.optional(__S(78)),
-          highPriorityMessagesBackpressureHandling: S.optional(S.String),
-          memoryProfile: S.optional(S.String),
-          persistence: S.optional(__S(83)),
-          provisioningState: S.optional(S.String),
-          status: S.optional(__S(7)),
-          healthState: S.optional(S.String),
+          advanced: S.optional(AdvancedSettings),
+          cardinality: S.optional(Cardinality),
+          diagnostics: S.optional(BrokerDiagnostics),
+          diskBackedMessageBuffer: S.optional(DiskBackedMessageBuffer),
+          generateResourceLimits: S.optional(GenerateResourceLimits),
+          highPriorityMessagesBackpressureHandling: S.optional(
+            HighPriorityMessagesBackpressureHandling,
+          ),
+          memoryProfile: S.optional(BrokerPropertiesMemoryProfile),
+          persistence: S.optional(BrokerPersistence),
+          provisioningState: S.optional(ProvisioningState),
+          status: S.optional(BrokerStatus),
+          healthState: S.optional(BrokerPropertiesHealthState),
         }),
       ).annotate({ identifier: "BrokerProperties" });
     case 7:
@@ -4713,9 +6229,9 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(86)),
-          extendedLocation: S.optional(__S(1)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BrokerProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({
         identifier: "BrokerCreateOrUpdateResponse",
@@ -4728,15 +6244,15 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           group: S.optional(S.String),
-          kind: S.String,
+          kind: CertManagerIssuerKind,
           name: S.String,
         }),
       ).annotate({ identifier: "CertManagerIssuerRef" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dns: __S(31),
-          ip: __S(31),
+          dns: SanForCertDnsList,
+          ip: SanForCertIpList,
         }),
       ).annotate({ identifier: "SanForCert" });
     case 2:
@@ -4745,9 +6261,9 @@ function __c11(j: number): any {
           duration: S.optional(S.String),
           secretName: S.optional(S.String),
           renewBefore: S.optional(S.String),
-          issuerRef: __S(88),
-          privateKey: S.optional(__S(57)),
-          san: S.optional(__S(89)),
+          issuerRef: CertManagerIssuerRef,
+          privateKey: S.optional(CertManagerPrivateKey),
+          san: S.optional(SanForCert),
         }),
       ).annotate({
         identifier: "CertManagerCertificateSpec",
@@ -4755,9 +6271,9 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          mode: S.String,
-          certManagerCertificateSpec: S.optional(__S(90)),
-          manual: S.optional(__S(27)),
+          mode: TlsCertMethodMode,
+          certManagerCertificateSpec: S.optional(CertManagerCertificateSpec),
+          manual: S.optional(X509ManualCertificate),
         }),
       ).annotate({ identifier: "TlsCertMethod" });
     case 4:
@@ -4767,18 +6283,18 @@ function __c11(j: number): any {
           authorizationRef: S.optional(S.String),
           nodePort: S.optional(S.Number),
           port: S.Number,
-          protocol: S.optional(S.String),
-          tls: S.optional(__S(91)),
+          protocol: S.optional(ListenerPortProtocol),
+          tls: S.optional(TlsCertMethod),
         }),
       ).annotate({ identifier: "ListenerPort" });
     case 5:
-      return S.Array(__S(92));
+      return S.Array(ListenerPort);
     case 6:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.optional(S.String),
-          ports: __S(93),
-          serviceType: S.optional(S.String),
+          ports: BrokerListenerPropertiesInputPortsList,
+          serviceType: S.optional(BrokerListenerPropertiesInputServiceType),
         }),
       ).annotate({
         identifier: "BrokerListenerPropertiesInput",
@@ -4791,8 +6307,8 @@ function __c11(j: number): any {
           instanceName: S.String.pipe(T.Label()),
           brokerName: S.String.pipe(T.Label()),
           listenerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(94)),
-          extendedLocation: S.optional(__S(1)),
+          properties: S.optional(BrokerListenerPropertiesInput),
+          extendedLocation: S.optional(ExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4812,10 +6328,10 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.optional(S.String),
-          ports: __S(93),
-          serviceType: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          healthState: S.optional(S.String),
+          ports: BrokerListenerPropertiesPortsList,
+          serviceType: S.optional(BrokerListenerPropertiesServiceType),
+          provisioningState: S.optional(ProvisioningState),
+          healthState: S.optional(BrokerListenerPropertiesHealthState),
         }),
       ).annotate({ identifier: "BrokerListenerProperties" });
     case 1:
@@ -4824,9 +6340,9 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(96)),
-          extendedLocation: S.optional(__S(1)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BrokerListenerProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({
         identifier: "BrokerListenerCreateOrUpdateResponse",
@@ -4836,9 +6352,9 @@ function __c12(j: number): any {
         S.Struct({
           endpointRef: S.String,
           assetRef: S.optional(S.String),
-          serializationFormat: S.optional(S.String),
+          serializationFormat: S.optional(DataflowSourceOperationSettingsSerializationFormat),
           schemaRef: S.optional(S.String),
-          dataSources: __S(31),
+          dataSources: DataflowSourceOperationSettingsDataSourcesList,
         }),
       ).annotate({
         identifier: "DataflowSourceOperationSettings",
@@ -4849,33 +6365,33 @@ function __c12(j: number): any {
           key: S.String,
           description: S.optional(S.String),
           schemaRef: S.optional(S.String),
-          inputs: __S(31),
+          inputs: DataflowBuiltInTransformationDatasetInputsList,
           expression: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DataflowBuiltInTransformationDataset",
       });
     case 4:
-      return S.Array(__S(99));
+      return S.Array(DataflowBuiltInTransformationDataset);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(DataflowBuiltInTransformationFilterType),
           description: S.optional(S.String),
-          inputs: __S(31),
+          inputs: DataflowBuiltInTransformationFilterInputsList,
           expression: S.String,
         }),
       ).annotate({
         identifier: "DataflowBuiltInTransformationFilter",
       });
     case 6:
-      return S.Array(__S(101));
+      return S.Array(DataflowBuiltInTransformationFilter);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(DataflowMappingType),
           description: S.optional(S.String),
-          inputs: __S(31),
+          inputs: DataflowBuiltInTransformationMapInputsList,
           expression: S.optional(S.String),
           output: S.String,
         }),
@@ -4887,15 +6403,15 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(103));
+      return S.Array(DataflowBuiltInTransformationMap);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          serializationFormat: S.optional(S.String),
+          serializationFormat: S.optional(DataflowBuiltInTransformationSettingsSerializationFormat),
           schemaRef: S.optional(S.String),
-          datasets: S.optional(__S(100)),
-          filter: S.optional(__S(102)),
-          map: S.optional(__S(104)),
+          datasets: S.optional(DataflowBuiltInTransformationSettingsDatasetsList),
+          filter: S.optional(DataflowBuiltInTransformationSettingsFilterList),
+          map: S.optional(DataflowBuiltInTransformationSettingsMapList),
         }),
       ).annotate({
         identifier: "DataflowBuiltInTransformationSettings",
@@ -4903,7 +6419,7 @@ function __c13(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          actionType: S.String,
+          actionType: DataflowHeaderActionType,
           key: S.optional(S.String),
           value: S.optional(S.String),
         }),
@@ -4911,13 +6427,13 @@ function __c13(j: number): any {
         identifier: "DataflowDestinationHeaderAction",
       });
     case 3:
-      return S.Array(__S(106));
+      return S.Array(DataflowDestinationHeaderAction);
     case 4:
       return S.suspend(() =>
         S.Struct({
           endpointRef: S.String,
           dataDestination: S.String,
-          headers: S.optional(__S(107)),
+          headers: S.optional(DataflowDestinationOperationSettingsHeadersList),
         }),
       ).annotate({
         identifier: "DataflowDestinationOperationSettings",
@@ -4925,21 +6441,21 @@ function __c13(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          operationType: S.String,
+          operationType: OperationType,
           name: S.optional(S.String),
-          sourceSettings: S.optional(__S(98)),
-          builtInTransformationSettings: S.optional(__S(105)),
-          destinationSettings: S.optional(__S(108)),
+          sourceSettings: S.optional(DataflowSourceOperationSettings),
+          builtInTransformationSettings: S.optional(DataflowBuiltInTransformationSettings),
+          destinationSettings: S.optional(DataflowDestinationOperationSettings),
         }),
       ).annotate({ identifier: "DataflowOperation" });
     case 6:
-      return S.Array(__S(109));
+      return S.Array(DataflowOperation);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(S.String),
-          requestDiskPersistence: S.optional(S.String),
-          operations: __S(110),
+          mode: S.optional(DataflowPropertiesInputMode),
+          requestDiskPersistence: S.optional(OperationalMode),
+          operations: DataflowPropertiesInputOperationsList,
         }),
       ).annotate({ identifier: "DataflowPropertiesInput" });
   }
@@ -4954,8 +6470,8 @@ function __c14(j: number): any {
           instanceName: S.String.pipe(T.Label()),
           dataflowProfileName: S.String.pipe(T.Label()),
           dataflowName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(111)),
-          extendedLocation: S.optional(__S(1)),
+          properties: S.optional(DataflowPropertiesInput),
+          extendedLocation: S.optional(ExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4970,12 +6486,12 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(S.String),
-          requestDiskPersistence: S.optional(S.String),
-          operations: __S(110),
-          provisioningState: S.optional(S.String),
-          status: S.optional(__S(7)),
-          healthState: S.optional(S.String),
+          mode: S.optional(DataflowPropertiesMode),
+          requestDiskPersistence: S.optional(OperationalMode),
+          operations: DataflowPropertiesOperationsList,
+          provisioningState: S.optional(ProvisioningState),
+          status: S.optional(DataflowStatus),
+          healthState: S.optional(DataflowPropertiesHealthState),
         }),
       ).annotate({ identifier: "DataflowProperties" });
     case 2:
@@ -4984,9 +6500,9 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(113)),
-          extendedLocation: S.optional(__S(1)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DataflowProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({
         identifier: "DataflowCreateOrUpdateResponse",
@@ -5012,9 +6528,13 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          method: S.String,
-          systemAssignedManagedIdentitySettings: S.optional(__S(115)),
-          userAssignedManagedIdentitySettings: S.optional(__S(116)),
+          method: ManagedIdentityMethod,
+          systemAssignedManagedIdentitySettings: S.optional(
+            DataflowEndpointAuthenticationSystemAssignedManagedIdentity,
+          ),
+          userAssignedManagedIdentitySettings: S.optional(
+            DataflowEndpointAuthenticationUserAssignedManagedIdentity,
+          ),
         }),
       ).annotate({
         identifier: "DataflowEndpointDataExplorerAuthentication",
@@ -5029,10 +6549,10 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          authentication: __S(117),
+          authentication: DataflowEndpointDataExplorerAuthentication,
           database: S.String,
           host: S.String,
-          batching: S.optional(__S(118)),
+          batching: S.optional(BatchingConfiguration),
         }),
       ).annotate({
         identifier: "DataflowEndpointDataExplorer",
@@ -5052,10 +6572,14 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          method: S.String,
-          accessTokenSettings: S.optional(__S(120)),
-          systemAssignedManagedIdentitySettings: S.optional(__S(115)),
-          userAssignedManagedIdentitySettings: S.optional(__S(116)),
+          method: DataLakeStorageAuthMethod,
+          accessTokenSettings: S.optional(DataflowEndpointAuthenticationAccessToken),
+          systemAssignedManagedIdentitySettings: S.optional(
+            DataflowEndpointAuthenticationSystemAssignedManagedIdentity,
+          ),
+          userAssignedManagedIdentitySettings: S.optional(
+            DataflowEndpointAuthenticationUserAssignedManagedIdentity,
+          ),
         }),
       ).annotate({
         identifier: "DataflowEndpointDataLakeStorageAuthentication",
@@ -5063,9 +6587,9 @@ function __c15(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          authentication: __S(121),
+          authentication: DataflowEndpointDataLakeStorageAuthentication,
           host: S.String,
-          batching: S.optional(__S(118)),
+          batching: S.optional(BatchingConfiguration),
         }),
       ).annotate({
         identifier: "DataflowEndpointDataLakeStorage",
@@ -5082,11 +6606,11 @@ function __c15(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          authentication: __S(117),
-          names: __S(123),
-          oneLakePathType: S.String,
+          authentication: DataflowEndpointDataExplorerAuthentication,
+          names: DataflowEndpointFabricOneLakeNames,
+          oneLakePathType: DataflowEndpointFabricPathType,
           host: S.String,
-          batching: S.optional(__S(118)),
+          batching: S.optional(BatchingConfiguration),
         }),
       ).annotate({
         identifier: "DataflowEndpointFabricOneLake",
@@ -5094,7 +6618,7 @@ function __c15(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          saslType: S.String,
+          saslType: DataflowEndpointAuthenticationSaslType,
           secretRef: S.String,
         }),
       ).annotate({
@@ -5103,11 +6627,15 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          method: S.String,
-          systemAssignedManagedIdentitySettings: S.optional(__S(115)),
-          userAssignedManagedIdentitySettings: S.optional(__S(116)),
-          saslSettings: S.optional(__S(125)),
-          x509CertificateSettings: S.optional(__S(120)),
+          method: KafkaAuthMethod,
+          systemAssignedManagedIdentitySettings: S.optional(
+            DataflowEndpointAuthenticationSystemAssignedManagedIdentity,
+          ),
+          userAssignedManagedIdentitySettings: S.optional(
+            DataflowEndpointAuthenticationUserAssignedManagedIdentity,
+          ),
+          saslSettings: S.optional(DataflowEndpointAuthenticationSasl),
+          x509CertificateSettings: S.optional(DataflowEndpointAuthenticationX509),
         }),
       ).annotate({
         identifier: "DataflowEndpointKafkaAuthentication",
@@ -5115,7 +6643,7 @@ function __c15(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(S.String),
+          mode: S.optional(DataflowEndpointKafkaBatchingMode),
           latencyMs: S.optional(S.Number),
           maxBytes: S.optional(S.Number),
           maxMessages: S.optional(S.Number),
@@ -5130,16 +6658,16 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          authentication: __S(126),
+          authentication: DataflowEndpointKafkaAuthentication,
           consumerGroupId: S.optional(S.String),
           host: S.String,
-          batching: S.optional(__S(127)),
-          copyMqttProperties: S.optional(S.String),
-          compression: S.optional(S.String),
-          kafkaAcks: S.optional(S.String),
-          partitionStrategy: S.optional(S.String),
-          tls: S.optional(__S(17)),
-          cloudEventAttributes: S.optional(S.String),
+          batching: S.optional(DataflowEndpointKafkaBatching),
+          copyMqttProperties: S.optional(DataflowEndpointKafkaCopyMqttProperties),
+          compression: S.optional(DataflowEndpointKafkaCompression),
+          kafkaAcks: S.optional(DataflowEndpointKafkaKafkaAcks),
+          partitionStrategy: S.optional(DataflowEndpointKafkaPartitionStrategy),
+          tls: S.optional(TlsProperties),
+          cloudEventAttributes: S.optional(CloudEventAttributeType),
         }),
       ).annotate({ identifier: "DataflowEndpointKafka" });
     case 1:
@@ -5161,11 +6689,17 @@ function __c16(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          method: S.String,
-          systemAssignedManagedIdentitySettings: S.optional(__S(115)),
-          userAssignedManagedIdentitySettings: S.optional(__S(116)),
-          serviceAccountTokenSettings: S.optional(__S(130)),
-          x509CertificateSettings: S.optional(__S(120)),
+          method: MqttAuthMethod,
+          systemAssignedManagedIdentitySettings: S.optional(
+            DataflowEndpointAuthenticationSystemAssignedManagedIdentity,
+          ),
+          userAssignedManagedIdentitySettings: S.optional(
+            DataflowEndpointAuthenticationUserAssignedManagedIdentity,
+          ),
+          serviceAccountTokenSettings: S.optional(
+            DataflowEndpointAuthenticationServiceAccountToken,
+          ),
+          x509CertificateSettings: S.optional(DataflowEndpointAuthenticationX509),
         }),
       ).annotate({
         identifier: "DataflowEndpointMqttAuthentication",
@@ -5173,26 +6707,28 @@ function __c16(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          authentication: __S(131),
+          authentication: DataflowEndpointMqttAuthentication,
           clientIdPrefix: S.optional(S.String),
           host: S.optional(S.String),
-          protocol: S.optional(S.String),
+          protocol: S.optional(DataflowEndpointMqttProtocol),
           keepAliveSeconds: S.optional(S.Number),
-          retain: S.optional(S.String),
+          retain: S.optional(DataflowEndpointMqttRetain),
           maxInflightMessages: S.optional(S.Number),
           qos: S.optional(S.Number),
           sessionExpirySeconds: S.optional(S.Number),
-          tls: S.optional(__S(17)),
-          cloudEventAttributes: S.optional(S.String),
+          tls: S.optional(TlsProperties),
+          cloudEventAttributes: S.optional(CloudEventAttributeType),
         }),
       ).annotate({ identifier: "DataflowEndpointMqtt" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          method: S.String,
+          method: DataflowOpenTelemetryAuthenticationMethod,
           anonymousSettings: S.optional(S.Unknown),
-          serviceAccountTokenSettings: S.optional(__S(130)),
-          x509CertificateSettings: S.optional(__S(120)),
+          serviceAccountTokenSettings: S.optional(
+            DataflowEndpointAuthenticationServiceAccountToken,
+          ),
+          x509CertificateSettings: S.optional(DataflowEndpointAuthenticationX509),
         }),
       ).annotate({
         identifier: "DataflowOpenTelemetryAuthentication",
@@ -5201,9 +6737,9 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           host: S.String,
-          batching: S.optional(__S(118)),
-          tls: S.optional(__S(17)),
-          authentication: __S(133),
+          batching: S.optional(BatchingConfiguration),
+          tls: S.optional(TlsProperties),
+          authentication: DataflowOpenTelemetryAuthentication,
         }),
       ).annotate({
         identifier: "DataflowEndpointOpenTelemetry",
@@ -5211,15 +6747,15 @@ function __c16(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          endpointType: S.String,
-          hostType: S.optional(S.String),
-          dataExplorerSettings: S.optional(__S(119)),
-          dataLakeStorageSettings: S.optional(__S(122)),
-          fabricOneLakeSettings: S.optional(__S(124)),
-          kafkaSettings: S.optional(__S(128)),
-          localStorageSettings: S.optional(__S(129)),
-          mqttSettings: S.optional(__S(132)),
-          openTelemetrySettings: S.optional(__S(134)),
+          endpointType: EndpointType,
+          hostType: S.optional(DataflowEndpointHostType),
+          dataExplorerSettings: S.optional(DataflowEndpointDataExplorer),
+          dataLakeStorageSettings: S.optional(DataflowEndpointDataLakeStorage),
+          fabricOneLakeSettings: S.optional(DataflowEndpointFabricOneLake),
+          kafkaSettings: S.optional(DataflowEndpointKafka),
+          localStorageSettings: S.optional(DataflowEndpointLocalStorage),
+          mqttSettings: S.optional(DataflowEndpointMqtt),
+          openTelemetrySettings: S.optional(DataflowEndpointOpenTelemetry),
         }),
       ).annotate({
         identifier: "DataflowEndpointPropertiesInput",
@@ -5235,8 +6771,8 @@ function __c17(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
           dataflowEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(135)),
-          extendedLocation: S.optional(__S(1)),
+          properties: S.optional(DataflowEndpointPropertiesInput),
+          extendedLocation: S.optional(ExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5251,17 +6787,17 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          endpointType: S.String,
-          hostType: S.optional(S.String),
-          dataExplorerSettings: S.optional(__S(119)),
-          dataLakeStorageSettings: S.optional(__S(122)),
-          fabricOneLakeSettings: S.optional(__S(124)),
-          kafkaSettings: S.optional(__S(128)),
-          localStorageSettings: S.optional(__S(129)),
-          mqttSettings: S.optional(__S(132)),
-          openTelemetrySettings: S.optional(__S(134)),
-          provisioningState: S.optional(S.String),
-          healthState: S.optional(S.String),
+          endpointType: EndpointType,
+          hostType: S.optional(DataflowEndpointHostType),
+          dataExplorerSettings: S.optional(DataflowEndpointDataExplorer),
+          dataLakeStorageSettings: S.optional(DataflowEndpointDataLakeStorage),
+          fabricOneLakeSettings: S.optional(DataflowEndpointFabricOneLake),
+          kafkaSettings: S.optional(DataflowEndpointKafka),
+          localStorageSettings: S.optional(DataflowEndpointLocalStorage),
+          mqttSettings: S.optional(DataflowEndpointMqtt),
+          openTelemetrySettings: S.optional(DataflowEndpointOpenTelemetry),
+          provisioningState: S.optional(ProvisioningState),
+          healthState: S.optional(DataflowEndpointPropertiesHealthState),
         }),
       ).annotate({
         identifier: "DataflowEndpointProperties",
@@ -5272,9 +6808,9 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(137)),
-          extendedLocation: S.optional(__S(1)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DataflowEndpointProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({
         identifier: "DataflowEndpointCreateOrUpdateResponse",
@@ -5283,18 +6819,18 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          nodeType: S.String,
+          nodeType: DataflowGraphNodeType,
           destinationSettings: S.optional(S.Unknown),
           graphSettings: S.optional(S.Unknown),
           sourceSettings: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "DataflowGraphNode" });
     case 4:
-      return S.Array(__S(139));
+      return S.Array(DataflowGraphNode);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          serializationFormat: S.optional(S.String),
+          serializationFormat: S.optional(DataflowGraphConnectionSchemaSerializationFormat),
           schemaRef: S.optional(S.String),
         }),
       ).annotate({
@@ -5304,7 +6840,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          schema: S.optional(__S(141)),
+          schema: S.optional(DataflowGraphConnectionSchemaSettings),
         }),
       ).annotate({
         identifier: "DataflowGraphConnectionInput",
@@ -5312,8 +6848,8 @@ function __c17(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          from: __S(142),
-          to: __S(70),
+          from: DataflowGraphConnectionInput,
+          to: DataflowGraphConnectionOutput,
         }),
       ).annotate({
         identifier: "DataflowGraphNodeConnection",
@@ -5323,14 +6859,14 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(143));
+      return S.Array(DataflowGraphNodeConnection);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(S.String),
-          requestDiskPersistence: S.optional(S.String),
-          nodes: __S(140),
-          nodeConnections: __S(144),
+          mode: S.optional(DataflowGraphPropertiesInputMode),
+          requestDiskPersistence: S.optional(OperationalMode),
+          nodes: DataflowGraphPropertiesInputNodesList,
+          nodeConnections: DataflowGraphPropertiesInputNodeConnectionsList,
         }),
       ).annotate({
         identifier: "DataflowGraphPropertiesInput",
@@ -5343,8 +6879,8 @@ function __c18(j: number): any {
           instanceName: S.String.pipe(T.Label()),
           dataflowProfileName: S.String.pipe(T.Label()),
           dataflowGraphName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(145)),
-          extendedLocation: S.optional(__S(1)),
+          properties: S.optional(DataflowGraphPropertiesInput),
+          extendedLocation: S.optional(ExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5359,13 +6895,13 @@ function __c18(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(S.String),
-          requestDiskPersistence: S.optional(S.String),
-          nodes: __S(140),
-          nodeConnections: __S(144),
-          provisioningState: S.optional(S.String),
-          status: S.optional(__S(7)),
-          healthState: S.optional(S.String),
+          mode: S.optional(DataflowGraphPropertiesMode),
+          requestDiskPersistence: S.optional(OperationalMode),
+          nodes: DataflowGraphPropertiesNodesList,
+          nodeConnections: DataflowGraphPropertiesNodeConnectionsList,
+          provisioningState: S.optional(ProvisioningState),
+          status: S.optional(DataflowGraphStatus),
+          healthState: S.optional(DataflowGraphPropertiesHealthState),
         }),
       ).annotate({ identifier: "DataflowGraphProperties" });
     case 4:
@@ -5374,9 +6910,9 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(147)),
-          extendedLocation: S.optional(__S(1)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DataflowGraphProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({
         identifier: "DataflowGraphCreateOrUpdateResponse",
@@ -5384,14 +6920,14 @@ function __c18(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          logs: S.optional(__S(12)),
-          metrics: S.optional(__S(63)),
+          logs: S.optional(AkriConnectorsDiagnosticsLogs),
+          metrics: S.optional(Metrics),
         }),
       ).annotate({ identifier: "ProfileDiagnostics" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          diagnostics: S.optional(__S(149)),
+          diagnostics: S.optional(ProfileDiagnostics),
           instanceCount: S.optional(S.Number),
         }),
       ).annotate({
@@ -5404,8 +6940,8 @@ function __c18(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
           dataflowProfileName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(150)),
-          extendedLocation: S.optional(__S(1)),
+          properties: S.optional(DataflowProfilePropertiesInput),
+          extendedLocation: S.optional(ExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5424,11 +6960,11 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          diagnostics: S.optional(__S(149)),
+          diagnostics: S.optional(ProfileDiagnostics),
           instanceCount: S.optional(S.Number),
-          provisioningState: S.optional(S.String),
-          status: S.optional(__S(7)),
-          healthState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
+          status: S.optional(DataflowProfileStatus),
+          healthState: S.optional(DataflowProfilePropertiesHealthState),
         }),
       ).annotate({
         identifier: "DataflowProfileProperties",
@@ -5439,9 +6975,9 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(152)),
-          extendedLocation: S.optional(__S(1)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DataflowProfileProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({
         identifier: "DataflowProfileCreateOrUpdateResponse",
@@ -5712,9 +7248,9 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(8)),
-          extendedLocation: S.optional(__S(1)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AkriConnectorProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({ identifier: "GetAkriConnectorResponse" });
     case 2:
@@ -5757,9 +7293,9 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(25)),
-          extendedLocation: S.optional(__S(1)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AkriServiceProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({ identifier: "GetAkriServiceResponse" });
     case 5:
@@ -5784,9 +7320,9 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(86)),
-          extendedLocation: S.optional(__S(1)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BrokerProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({ identifier: "GetBrokerResponse" });
     case 7:
@@ -5871,9 +7407,9 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(113)),
-          extendedLocation: S.optional(__S(1)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DataflowProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({ identifier: "GetDataflowResponse" });
     case 4:
@@ -5917,9 +7453,9 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(147)),
-          extendedLocation: S.optional(__S(1)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DataflowGraphProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({ identifier: "GetDataflowGraphResponse" });
     case 7:
@@ -5966,16 +7502,16 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "SchemaRegistryRef" });
     case 2:
-      return S.Record(S.String, S.String);
+      return S.Record(S.String, OperationalMode);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(S.String),
-          settings: S.optional(__S(186)),
+          mode: S.optional(InstanceFeatureMode),
+          settings: S.optional(InstanceFeatureSettingsMap),
         }),
       ).annotate({ identifier: "InstanceFeature" });
     case 4:
-      return S.Record(S.String, __S(187));
+      return S.Record(S.String, InstanceFeature);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5988,13 +7524,13 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           version: S.optional(S.String),
-          schemaRegistryRef: __S(185),
-          defaultSecretProviderClassRef: S.optional(__S(185)),
-          features: S.optional(__S(188)),
-          adrNamespaceRef: S.optional(__S(189)),
-          healthState: S.optional(S.String),
+          schemaRegistryRef: SchemaRegistryRef,
+          defaultSecretProviderClassRef: S.optional(SecretProviderClassRef),
+          features: S.optional(InstancePropertiesFeaturesMap),
+          adrNamespaceRef: S.optional(AzureDeviceRegistryNamespaceRef),
+          healthState: S.optional(InstancePropertiesHealthState),
         }),
       ).annotate({ identifier: "InstanceProperties" });
     case 7:
@@ -6009,14 +7545,14 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(191)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
     case 1:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(192)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(UserAssignedIdentities),
         }),
       ).annotate({
         identifier: "GetInstanceResponseIdentity",
@@ -6024,7 +7560,7 @@ function __c24(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
+          name: InstanceSkuName,
         }),
       ).annotate({ identifier: "InstanceSku" });
     case 3:
@@ -6033,13 +7569,13 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          tags: S.optional(__S(29)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetInstanceResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(190)),
-          extendedLocation: __S(1),
-          identity: S.optional(__S(193)),
-          sku: S.optional(__S(194)),
+          properties: S.optional(InstanceProperties),
+          extendedLocation: ExtendedLocation,
+          identity: S.optional(GetInstanceResponseIdentity),
+          sku: S.optional(InstanceSku),
         }),
       ).annotate({ identifier: "GetInstanceResponse" });
     case 4:
@@ -6063,7 +7599,7 @@ function __c24(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          method: S.String,
+          method: RegistryEndpointAuthenticationMethod,
           anonymousSettings: S.optional(S.Unknown),
           artifactPullSecretSettings: S.optional(S.Unknown),
           systemAssignedManagedIdentitySettings: S.optional(S.Unknown),
@@ -6075,7 +7611,7 @@ function __c24(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: RegistryEndpointTrustedSigningKeyType,
           configMapRef: S.optional(S.String),
           secretRef: S.optional(S.String),
         }),
@@ -6083,7 +7619,7 @@ function __c24(j: number): any {
         identifier: "RegistryEndpointTrustedSigningKey",
       });
     case 7:
-      return S.Array(__S(198));
+      return S.Array(RegistryEndpointTrustedSigningKey);
   }
 }
 function __c25(j: number): any {
@@ -6092,10 +7628,10 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           host: S.String,
-          authentication: __S(197),
-          provisioningState: S.optional(S.String),
-          healthState: S.optional(S.String),
-          codeSigningCas: S.optional(__S(199)),
+          authentication: RegistryEndpointAuthentication,
+          provisioningState: S.optional(ProvisioningState),
+          healthState: S.optional(RegistryEndpointPropertiesHealthState),
+          codeSigningCas: S.optional(RegistryEndpointPropertiesCodeSigningCasList),
         }),
       ).annotate({
         identifier: "RegistryEndpointProperties",
@@ -6106,9 +7642,9 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(200)),
-          extendedLocation: S.optional(__S(1)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(RegistryEndpointProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({
         identifier: "GetRegistryEndpointResponse",
@@ -6117,19 +7653,19 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          schemaRegistryRef: __S(185),
-          defaultSecretProviderClassRef: S.optional(__S(185)),
-          features: S.optional(__S(188)),
-          adrNamespaceRef: S.optional(__S(189)),
+          schemaRegistryRef: SchemaRegistryRef,
+          defaultSecretProviderClassRef: S.optional(SecretProviderClassRef),
+          features: S.optional(InstancePropertiesInputFeaturesMap),
+          adrNamespaceRef: S.optional(AzureDeviceRegistryNamespaceRef),
         }),
       ).annotate({ identifier: "InstancePropertiesInput" });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(0)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(AkriConnectorPropertiesInput));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(203)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
         }),
       ).annotate({
         identifier: "InstanceCreateOrUpdateRequestIdentity",
@@ -6140,12 +7676,12 @@ function __c25(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(29)),
+          tags: S.optional(InstanceCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(202)),
-          extendedLocation: __S(1),
-          identity: S.optional(__S(204)),
-          sku: S.optional(__S(194)),
+          properties: S.optional(InstancePropertiesInput),
+          extendedLocation: ExtendedLocation,
+          identity: S.optional(InstanceCreateOrUpdateRequestIdentity),
+          sku: S.optional(InstanceSku),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6163,13 +7699,13 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          tags: S.optional(__S(29)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(InstanceCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(190)),
-          extendedLocation: __S(1),
-          identity: S.optional(__S(193)),
-          sku: S.optional(__S(194)),
+          properties: S.optional(InstanceProperties),
+          extendedLocation: ExtendedLocation,
+          identity: S.optional(GetInstanceResponseIdentity),
+          sku: S.optional(InstanceSku),
         }),
       ).annotate({
         identifier: "InstanceCreateOrUpdateResponse",
@@ -6197,11 +7733,11 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(169));
+      return S.Array(AkriConnectorResource);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(208),
+          value: AkriConnectorResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6225,11 +7761,11 @@ function __c26(j: number): any {
         identifier: "ListAkriConnectorTemplateByInstanceResourceRequest",
       });
     case 3:
-      return S.Array(__S(23));
+      return S.Array(AkriConnectorTemplateResource);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(211),
+          value: AkriConnectorTemplateResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6253,11 +7789,11 @@ function __c26(j: number): any {
         identifier: "ListAkriServiceByInstanceResourceRequest",
       });
     case 6:
-      return S.Array(__S(172));
+      return S.Array(AkriServiceResource);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(214),
+          value: AkriServiceResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6286,11 +7822,11 @@ function __c27(j: number): any {
         identifier: "ListBrokerAuthenticationByResourceGroupRequest",
       });
     case 1:
-      return S.Array(__S(41));
+      return S.Array(BrokerAuthenticationResource);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(217),
+          value: BrokerAuthenticationResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6315,11 +7851,11 @@ function __c27(j: number): any {
         identifier: "ListBrokerAuthorizationByResourceGroupRequest",
       });
     case 4:
-      return S.Array(__S(54));
+      return S.Array(BrokerAuthorizationResource);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(220),
+          value: BrokerAuthorizationResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6343,7 +7879,7 @@ function __c27(j: number): any {
         identifier: "ListBrokerByResourceGroupRequest",
       });
     case 7:
-      return S.Array(__S(174));
+      return S.Array(BrokerResource);
   }
 }
 function __c28(j: number): any {
@@ -6351,7 +7887,7 @@ function __c28(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(223),
+          value: BrokerResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BrokerResourceListResult" });
@@ -6379,17 +7915,17 @@ function __c28(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(96)),
-          extendedLocation: S.optional(__S(1)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BrokerListenerProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({ identifier: "BrokerListenerResource" });
     case 3:
-      return S.Array(__S(226));
+      return S.Array(BrokerListenerResource);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(227),
+          value: BrokerListenerResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6414,11 +7950,11 @@ function __c28(j: number): any {
         identifier: "ListDataflowByProfileResourceRequest",
       });
     case 6:
-      return S.Array(__S(179));
+      return S.Array(DataflowResource);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(230),
+          value: DataflowResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6451,17 +7987,17 @@ function __c29(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(137)),
-          extendedLocation: S.optional(__S(1)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DataflowEndpointProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({ identifier: "DataflowEndpointResource" });
     case 2:
-      return S.Array(__S(233));
+      return S.Array(DataflowEndpointResource);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(234),
+          value: DataflowEndpointResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6486,11 +8022,11 @@ function __c29(j: number): any {
         identifier: "ListDataflowGraphByDataflowProfileRequest",
       });
     case 5:
-      return S.Array(__S(182));
+      return S.Array(DataflowGraphResource);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(237),
+          value: DataflowGraphResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6523,17 +8059,17 @@ function __c30(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(152)),
-          extendedLocation: S.optional(__S(1)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DataflowProfileProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({ identifier: "DataflowProfileResource" });
     case 1:
-      return S.Array(__S(240));
+      return S.Array(DataflowProfileResource);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(241),
+          value: DataflowProfileResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6556,11 +8092,11 @@ function __c30(j: number): any {
         identifier: "ListInstanceByResourceGroupRequest",
       });
     case 4:
-      return S.Array(__S(195));
+      return S.Array(InstanceResource);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(244),
+          value: InstanceResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6610,17 +8146,17 @@ function __c31(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(248)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 2:
-      return S.Array(__S(249));
+      return S.Array(Operation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(250)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -6647,17 +8183,17 @@ function __c31(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(200)),
-          extendedLocation: S.optional(__S(1)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(RegistryEndpointProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({ identifier: "RegistryEndpointResource" });
     case 6:
-      return S.Array(__S(253));
+      return S.Array(RegistryEndpointResource);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(254),
+          value: RegistryEndpointResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6671,8 +8207,8 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           host: S.String,
-          authentication: __S(197),
-          codeSigningCas: S.optional(__S(199)),
+          authentication: RegistryEndpointAuthentication,
+          codeSigningCas: S.optional(RegistryEndpointPropertiesInputCodeSigningCasList),
         }),
       ).annotate({
         identifier: "RegistryEndpointPropertiesInput",
@@ -6684,8 +8220,8 @@ function __c32(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
           registryEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(256)),
-          extendedLocation: S.optional(__S(1)),
+          properties: S.optional(RegistryEndpointPropertiesInput),
+          extendedLocation: S.optional(ExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6703,8 +8239,8 @@ function __c32(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(29)),
-          identity: S.optional(__S(204)),
+          tags: S.optional(UpdateInstanceRequestTagsMap),
+          identity: S.optional(InstanceCreateOrUpdateRequestIdentity),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6714,80 +8250,5 @@ function __c32(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateInstanceRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
   }
 }

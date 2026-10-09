@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -19,10 +17,22 @@ export interface ActivatePartnerTopicRequest {
   /** Name of the partner topic. */
   partnerTopicName: string;
 }
+const ActivatePartnerTopicRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ActivatePartnerTopicRequest>;
+
 /** Tags of the resource. */
 export type ActivatePartnerTopicResponseTagsMap = { [key: string]: string | undefined };
+const ActivatePartnerTopicResponseTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ActivatePartnerTopicResponseTagsMap>;
+
 /** The kind of event type used. */
 export type EventTypeInfoKind = "Inline";
+const EventTypeInfoKind = S.String;
+
 /** Additional information about every inline event. */
 export interface InlineEventProperties {
   /** The description for the inline event. */
@@ -34,8 +44,18 @@ export interface InlineEventProperties {
   /** The dataSchemaUrl for the inline event. */
   dataSchemaUrl?: string;
 }
+const InlineEventProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<InlineEventProperties>;
+
 /** A collection of inline event types for the resource. The inline event type keys are of type string which represents the name of the event. An example of a valid inline event name is "Contoso.OrderCreated". The inline event type values are of type InlineEventProperties and will contain additional information for every inline event type. */
 export type EventTypeInfoInlineEventTypesMap = { [key: string]: InlineEventProperties | undefined };
+const EventTypeInfoInlineEventTypesMap = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<EventTypeInfoInlineEventTypesMap>;
+
 /** The event type information for Channels. */
 export interface EventTypeInfo {
   /** The kind of event type used. */
@@ -43,6 +63,8 @@ export interface EventTypeInfo {
   /** A collection of inline event types for the resource. The inline event type keys are of type string which represents the name of the event. An example of a valid inline event name is "Contoso.OrderCreated". The inline event type values are of type InlineEventProperties and will contain additional information for every inline event type. */
   inlineEventTypes?: EventTypeInfoInlineEventTypesMap;
 }
+const EventTypeInfo = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<EventTypeInfo>;
+
 /** Provisioning state of the partner topic. */
 export type PartnerTopicPropertiesProvisioningState =
   | "Creating"
@@ -52,8 +74,12 @@ export type PartnerTopicPropertiesProvisioningState =
   | "Canceled"
   | "Failed"
   | "IdleDueToMirroredChannelResourceDeletion";
+const PartnerTopicPropertiesProvisioningState = S.String;
+
 /** Activation state of the partner topic. */
 export type PartnerTopicPropertiesActivationState = "NeverActivated" | "Activated" | "Deactivated";
+const PartnerTopicPropertiesActivationState = S.String;
+
 /** Properties of the Partner Topic. */
 export interface PartnerTopicProperties {
   /** The immutableId of the corresponding partner registration. */
@@ -73,18 +99,27 @@ export interface PartnerTopicProperties {
   /** Context or helpful message that can be used during the approval process by the subscriber. */
   messageForActivation?: string;
 }
+const PartnerTopicProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<PartnerTopicProperties>;
+
 /** The type of identity that created the resource. */
 export type ActivatePartnerTopicResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const ActivatePartnerTopicResponseSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type ActivatePartnerTopicResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const ActivatePartnerTopicResponseSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ActivatePartnerTopicResponseSystemData {
   /** The identity that created the resource. */
@@ -100,12 +135,19 @@ export interface ActivatePartnerTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const ActivatePartnerTopicResponseSystemData = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ActivatePartnerTopicResponseSystemData>;
+
 /** The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity. */
 export type IdentityInfoType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned";
+const IdentityInfoType = S.String;
+
 /** The information about the user identity. */
 export interface UserIdentityProperties {
   /** The principal id of user assigned identity. */
@@ -113,10 +155,20 @@ export interface UserIdentityProperties {
   /** The client id of user assigned identity. */
   clientId?: string;
 }
+const UserIdentityProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<UserIdentityProperties>;
+
 /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. This property is currently not used and reserved for future usage. */
 export type IdentityInfoUserAssignedIdentitiesMap = {
   [key: string]: UserIdentityProperties | undefined;
 };
+const IdentityInfoUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<IdentityInfoUserAssignedIdentitiesMap>;
+
 /** The identity information for the resource. */
 export interface IdentityInfo {
   /** The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity. */
@@ -128,6 +180,8 @@ export interface IdentityInfo {
   /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. This property is currently not used and reserved for future usage. */
   userAssignedIdentities?: IdentityInfoUserAssignedIdentitiesMap;
 }
+const IdentityInfo = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<IdentityInfo>;
+
 export interface ActivatePartnerTopicResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -146,6 +200,11 @@ export interface ActivatePartnerTopicResponse {
   /** Identity information for the Partner Topic resource. */
   identity?: IdentityInfo;
 }
+const ActivatePartnerTopicResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ActivatePartnerTopicResponse>;
+
 export interface AuthorizePartnerConfigurationPartnerRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -158,6 +217,11 @@ export interface AuthorizePartnerConfigurationPartnerRequest {
   /** Expiration time of the partner authorization. If this timer expires, any request from this partner to create, update or delete resources in subscriber's context will fail. If specified, the allowed values are between 1 to the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration. If not specified, the default value will be the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration or 7 if this value is not specified. */
   authorizationExpirationTimeInUtc?: string;
 }
+const AuthorizePartnerConfigurationPartnerRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<AuthorizePartnerConfigurationPartnerRequest>;
+
 /** Information about the partner. */
 export interface Partner {
   /** The immutableId of the corresponding partner registration. */
@@ -167,8 +231,15 @@ export interface Partner {
   /** Expiration time of the partner authorization. If this timer expires, any request from this partner to create, update or delete resources in subscriber's context will fail. If specified, the allowed values are between 1 to the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration. If not specified, the default value will be the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration or 7 if this value is not specified. */
   authorizationExpirationTimeInUtc?: string;
 }
+const Partner = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Partner>;
+
 /** The list of authorized partners. */
 export type PartnerAuthorizationAuthorizedPartnersListList = Array<Partner>;
+const PartnerAuthorizationAuthorizedPartnersListList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<PartnerAuthorizationAuthorizedPartnersListList>;
+
 /** The partner authorization details. */
 export interface PartnerAuthorization {
   /** Time used to validate the authorization expiration time for each authorized partner. If DefaultMaximumExpirationTimeInDays is not specified, the default is 7 days. Otherwise, allowed values are between 1 and 365 days. */
@@ -176,6 +247,8 @@ export interface PartnerAuthorization {
   /** The list of authorized partners. */
   authorizedPartnersList?: PartnerAuthorizationAuthorizedPartnersListList;
 }
+const PartnerAuthorization = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<PartnerAuthorization>;
+
 /** Provisioning state of the partner configuration. */
 export type PartnerConfigurationPropertiesProvisioningState =
   | "Creating"
@@ -184,6 +257,8 @@ export type PartnerConfigurationPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
+const PartnerConfigurationPropertiesProvisioningState = S.String;
+
 /** Properties of the partner configuration. */
 export interface PartnerConfigurationProperties {
   /** The details of authorized partners. */
@@ -191,18 +266,27 @@ export interface PartnerConfigurationProperties {
   /** Provisioning state of the partner configuration. */
   provisioningState?: PartnerConfigurationPropertiesProvisioningState | (string & {});
 }
+const PartnerConfigurationProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<PartnerConfigurationProperties>;
+
 /** The type of identity that created the resource. */
 export type AuthorizePartnerConfigurationPartnerResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const AuthorizePartnerConfigurationPartnerResponseSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type AuthorizePartnerConfigurationPartnerResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const AuthorizePartnerConfigurationPartnerResponseSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface AuthorizePartnerConfigurationPartnerResponseSystemData {
   /** The identity that created the resource. */
@@ -218,10 +302,18 @@ export interface AuthorizePartnerConfigurationPartnerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const AuthorizePartnerConfigurationPartnerResponseSystemData = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<AuthorizePartnerConfigurationPartnerResponseSystemData>;
+
 /** Tags of the resource. */
 export type AuthorizePartnerConfigurationPartnerResponseTagsMap = {
   [key: string]: string | undefined;
 };
+const AuthorizePartnerConfigurationPartnerResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<AuthorizePartnerConfigurationPartnerResponseTagsMap>;
+
 export interface AuthorizePartnerConfigurationPartnerResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -238,6 +330,11 @@ export interface AuthorizePartnerConfigurationPartnerResponse {
   /** Tags of the resource. */
   tags?: AuthorizePartnerConfigurationPartnerResponseTagsMap;
 }
+const AuthorizePartnerConfigurationPartnerResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<AuthorizePartnerConfigurationPartnerResponse>;
+
 /** The properties of CA certificate. */
 export interface CaCertificatePropertiesInput {
   /** Description for the CA Certificate resource. */
@@ -245,6 +342,11 @@ export interface CaCertificatePropertiesInput {
   /** Base64 encoded PEM (Privacy Enhanced Mail) format certificate data. */
   encodedCertificate?: string;
 }
+const CaCertificatePropertiesInput = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CaCertificatePropertiesInput>;
+
 export interface CaCertificatesCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -257,6 +359,11 @@ export interface CaCertificatesCreateOrUpdateRequest {
   /** The properties of CA certificate. */
   properties?: CaCertificatePropertiesInput;
 }
+const CaCertificatesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CaCertificatesCreateOrUpdateRequest>;
+
 /** Provisioning state of the CA Certificate resource. */
 export type CaCertificatePropertiesProvisioningState =
   | "Creating"
@@ -266,6 +373,8 @@ export type CaCertificatePropertiesProvisioningState =
   | "Canceled"
   | "Failed"
   | "Deleted";
+const CaCertificatePropertiesProvisioningState = S.String;
+
 /** The properties of CA certificate. */
 export interface CaCertificateProperties {
   /** Description for the CA Certificate resource. */
@@ -279,6 +388,11 @@ export interface CaCertificateProperties {
   /** Provisioning state of the CA Certificate resource. */
   provisioningState?: CaCertificatePropertiesProvisioningState;
 }
+const CaCertificateProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CaCertificateProperties>;
+
 /** The type of identity that created the resource. */
 export type CaCertificatesCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -306,6 +420,9 @@ export interface CaCertificatesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const CaCertificatesCreateOrUpdateResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<CaCertificatesCreateOrUpdateResponseSystemData>;
+
 export interface CaCertificatesCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -318,8 +435,15 @@ export interface CaCertificatesCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: CaCertificatesCreateOrUpdateResponseSystemData;
 }
+const CaCertificatesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CaCertificatesCreateOrUpdateResponse>;
+
 /** The type of the event channel which represents the direction flow of events. */
 export type ChannelPropertiesChannelType = "PartnerTopic";
+const ChannelPropertiesChannelType = S.String;
+
 /** Properties of the corresponding partner topic of a Channel. */
 export interface PartnerTopicInfo {
   /** Azure subscription ID of the subscriber. The partner topic associated with the channel will be created under this Azure subscription. */
@@ -333,6 +457,8 @@ export interface PartnerTopicInfo {
   /** The source information is provided by the publisher to determine the scope or context from which the events are originating. This information can be used by the subscriber during the approval process of the created partner topic. */
   source?: string;
 }
+const PartnerTopicInfo = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<PartnerTopicInfo>;
+
 /** Provisioning state of the channel. */
 export type ChannelPropertiesProvisioningState =
   | "Creating"
@@ -342,8 +468,12 @@ export type ChannelPropertiesProvisioningState =
   | "Canceled"
   | "Failed"
   | "IdleDueToMirroredPartnerTopicDeletion";
+const ChannelPropertiesProvisioningState = S.String;
+
 /** The readiness state of the corresponding partner topic. */
 export type ChannelPropertiesReadinessState = "NeverActivated" | "Activated";
+const ChannelPropertiesReadinessState = S.String;
+
 /** Properties of the Channel. */
 export interface ChannelProperties {
   /** The type of the event channel which represents the direction flow of events. */
@@ -359,6 +489,8 @@ export interface ChannelProperties {
   /** Expiration time of the channel. If this timer expires while the corresponding partner topic is never activated, the channel and corresponding partner topic are deleted. */
   expirationTimeIfNotActivatedUtc?: string;
 }
+const ChannelProperties = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ChannelProperties>;
+
 export interface ChannelsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -371,6 +503,11 @@ export interface ChannelsCreateOrUpdateRequest {
   /** Properties of the Channel. */
   properties?: ChannelProperties;
 }
+const ChannelsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ChannelsCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type ChannelsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -398,6 +535,9 @@ export interface ChannelsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const ChannelsCreateOrUpdateResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<ChannelsCreateOrUpdateResponseSystemData>;
+
 export interface ChannelsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -410,6 +550,11 @@ export interface ChannelsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ChannelsCreateOrUpdateResponseSystemData;
 }
+const ChannelsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ChannelsCreateOrUpdateResponse>;
+
 /** The properties of client group. */
 export interface ClientGroupPropertiesInput {
   /** Description for the Client Group resource. */
@@ -417,6 +562,11 @@ export interface ClientGroupPropertiesInput {
   /** The grouping query for the clients. Example : attributes.keyName IN ['a', 'b', 'c']. */
   query?: string;
 }
+const ClientGroupPropertiesInput = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ClientGroupPropertiesInput>;
+
 export interface ClientGroupsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -429,6 +579,11 @@ export interface ClientGroupsCreateOrUpdateRequest {
   /** The properties of client group. */
   properties?: ClientGroupPropertiesInput;
 }
+const ClientGroupsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ClientGroupsCreateOrUpdateRequest>;
+
 /** Provisioning state of the ClientGroup resource. */
 export type ClientGroupPropertiesProvisioningState =
   | "Creating"
@@ -438,6 +593,8 @@ export type ClientGroupPropertiesProvisioningState =
   | "Canceled"
   | "Failed"
   | "Deleted";
+const ClientGroupPropertiesProvisioningState = S.String;
+
 /** The properties of client group. */
 export interface ClientGroupProperties {
   /** Description for the Client Group resource. */
@@ -447,6 +604,11 @@ export interface ClientGroupProperties {
   /** Provisioning state of the ClientGroup resource. */
   provisioningState?: ClientGroupPropertiesProvisioningState;
 }
+const ClientGroupProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ClientGroupProperties>;
+
 /** The type of identity that created the resource. */
 export type ClientGroupsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -474,6 +636,9 @@ export interface ClientGroupsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const ClientGroupsCreateOrUpdateResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<ClientGroupsCreateOrUpdateResponseSystemData>;
+
 export interface ClientGroupsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -486,6 +651,11 @@ export interface ClientGroupsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ClientGroupsCreateOrUpdateResponseSystemData;
 }
+const ClientGroupsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ClientGroupsCreateOrUpdateResponse>;
+
 /** The validation scheme used to authenticate the client. Default value is SubjectMatchesAuthenticationName. */
 export type ClientCertificateAuthenticationValidationScheme =
   | "SubjectMatchesAuthenticationName"
@@ -494,8 +664,15 @@ export type ClientCertificateAuthenticationValidationScheme =
   | "IpMatchesAuthenticationName"
   | "EmailMatchesAuthenticationName"
   | "ThumbprintMatch";
+const ClientCertificateAuthenticationValidationScheme = S.String;
+
 /** The list of thumbprints that are allowed during client authentication. This property is required only if the validationScheme is 'ThumbprintMatch'. */
 export type ClientCertificateAuthenticationAllowedThumbprintsList = Array<string>;
+const ClientCertificateAuthenticationAllowedThumbprintsList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ClientCertificateAuthenticationAllowedThumbprintsList>;
+
 /** The certificate authentication properties for the client. */
 export interface ClientCertificateAuthentication {
   /** The validation scheme used to authenticate the client. Default value is SubjectMatchesAuthenticationName. */
@@ -503,10 +680,22 @@ export interface ClientCertificateAuthentication {
   /** The list of thumbprints that are allowed during client authentication. This property is required only if the validationScheme is 'ThumbprintMatch'. */
   allowedThumbprints?: ClientCertificateAuthenticationAllowedThumbprintsList;
 }
+const ClientCertificateAuthentication = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ClientCertificateAuthentication>;
+
 /** Indicates if the client is enabled or not. Default value is Enabled. */
 export type ClientPropertiesInputState = "Enabled" | "Disabled";
+const ClientPropertiesInputState = S.String;
+
 /** Attributes for the client. Supported values are int, bool, string, string[]. Example: "attributes": { "room": "345", "floor": 12, "deviceTypes": ["Fan", "Light"] } */
 export type ClientPropertiesInputAttributesMap = { [key: string]: unknown | undefined };
+const ClientPropertiesInputAttributesMap = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ClientPropertiesInputAttributesMap>;
+
 /** The properties of client. */
 export interface ClientPropertiesInput {
   /** Description for the Client resource. */
@@ -520,6 +709,11 @@ export interface ClientPropertiesInput {
   /** Attributes for the client. Supported values are int, bool, string, string[]. Example: "attributes": { "room": "345", "floor": 12, "deviceTypes": ["Fan", "Light"] } */
   attributes?: ClientPropertiesInputAttributesMap;
 }
+const ClientPropertiesInput = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ClientPropertiesInput>;
+
 export interface ClientsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -532,10 +726,20 @@ export interface ClientsCreateOrUpdateRequest {
   /** The properties of client. */
   properties?: ClientPropertiesInput;
 }
+const ClientsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ClientsCreateOrUpdateRequest>;
+
 /** Indicates if the client is enabled or not. Default value is Enabled. */
 export type ClientPropertiesState = "Enabled" | "Disabled";
+const ClientPropertiesState = S.String;
+
 /** Attributes for the client. Supported values are int, bool, string, string[]. Example: "attributes": { "room": "345", "floor": 12, "deviceTypes": ["Fan", "Light"] } */
 export type ClientPropertiesAttributesMap = { [key: string]: unknown | undefined };
+const ClientPropertiesAttributesMap =
+  ClientPropertiesInputAttributesMap as any as S.Schema<ClientPropertiesAttributesMap>;
+
 /** Provisioning state of the Client resource. */
 export type ClientPropertiesProvisioningState =
   | "Creating"
@@ -545,6 +749,8 @@ export type ClientPropertiesProvisioningState =
   | "Canceled"
   | "Failed"
   | "Deleted";
+const ClientPropertiesProvisioningState = S.String;
+
 /** The properties of client. */
 export interface ClientProperties {
   /** Description for the Client resource. */
@@ -560,6 +766,8 @@ export interface ClientProperties {
   /** Provisioning state of the Client resource. */
   provisioningState?: ClientPropertiesProvisioningState;
 }
+const ClientProperties = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<ClientProperties>;
+
 /** The type of identity that created the resource. */
 export type ClientsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -587,6 +795,9 @@ export interface ClientsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const ClientsCreateOrUpdateResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<ClientsCreateOrUpdateResponseSystemData>;
+
 export interface ClientsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -599,6 +810,11 @@ export interface ClientsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ClientsCreateOrUpdateResponseSystemData;
 }
+const ClientsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ClientsCreateOrUpdateResponse>;
+
 export interface DeactivatePartnerTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -607,8 +823,16 @@ export interface DeactivatePartnerTopicRequest {
   /** Name of the partner topic. */
   partnerTopicName: string;
 }
+const DeactivatePartnerTopicRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DeactivatePartnerTopicRequest>;
+
 /** Tags of the resource. */
 export type DeactivatePartnerTopicResponseTagsMap = { [key: string]: string | undefined };
+const DeactivatePartnerTopicResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<DeactivatePartnerTopicResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type DeactivatePartnerTopicResponseSystemDataCreatedByType =
   | "User"
@@ -636,6 +860,9 @@ export interface DeactivatePartnerTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const DeactivatePartnerTopicResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<DeactivatePartnerTopicResponseSystemData>;
+
 export interface DeactivatePartnerTopicResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -654,6 +881,11 @@ export interface DeactivatePartnerTopicResponse {
   /** Identity information for the Partner Topic resource. */
   identity?: IdentityInfo;
 }
+const DeactivatePartnerTopicResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<DeactivatePartnerTopicResponse>;
+
 export interface DeleteCaCertificateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -664,7 +896,17 @@ export interface DeleteCaCertificateRequest {
   /** Name of the CA certificate. */
   caCertificateName: string;
 }
+const DeleteCaCertificateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<DeleteCaCertificateRequest>;
+
 export interface DeleteCaCertificateResponse {}
+const DeleteCaCertificateResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<DeleteCaCertificateResponse>;
+
 export interface DeleteChannelRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -675,7 +917,11 @@ export interface DeleteChannelRequest {
   /** Name of the channel. */
   channelName: string;
 }
+const DeleteChannelRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<DeleteChannelRequest>;
+
 export interface DeleteChannelResponse {}
+const DeleteChannelResponse = DeleteCaCertificateResponse as any as S.Schema<DeleteChannelResponse>;
+
 export interface DeleteClientRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -686,7 +932,11 @@ export interface DeleteClientRequest {
   /** Name of the client. */
   clientName: string;
 }
+const DeleteClientRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<DeleteClientRequest>;
+
 export interface DeleteClientResponse {}
+const DeleteClientResponse = DeleteCaCertificateResponse as any as S.Schema<DeleteClientResponse>;
+
 export interface DeleteClientGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -697,7 +947,15 @@ export interface DeleteClientGroupRequest {
   /** Name of the client group. */
   clientGroupName: string;
 }
+const DeleteClientGroupRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DeleteClientGroupRequest>;
+
 export interface DeleteClientGroupResponse {}
+const DeleteClientGroupResponse =
+  DeleteCaCertificateResponse as any as S.Schema<DeleteClientGroupResponse>;
+
 export interface DeleteDomainRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -706,7 +964,11 @@ export interface DeleteDomainRequest {
   /** Name of the domain. */
   domainName: string;
 }
+const DeleteDomainRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<DeleteDomainRequest>;
+
 export interface DeleteDomainResponse {}
+const DeleteDomainResponse = DeleteCaCertificateResponse as any as S.Schema<DeleteDomainResponse>;
+
 export interface DeleteDomainEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -717,7 +979,17 @@ export interface DeleteDomainEventSubscriptionRequest {
   /** Name of the event subscription to be deleted. */
   eventSubscriptionName: string;
 }
+const DeleteDomainEventSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DeleteDomainEventSubscriptionRequest>;
+
 export interface DeleteDomainEventSubscriptionResponse {}
+const DeleteDomainEventSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DeleteDomainEventSubscriptionResponse>;
+
 export interface DeleteDomainTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -728,7 +1000,15 @@ export interface DeleteDomainTopicRequest {
   /** Name of the domain topic. */
   domainTopicName: string;
 }
+const DeleteDomainTopicRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DeleteDomainTopicRequest>;
+
 export interface DeleteDomainTopicResponse {}
+const DeleteDomainTopicResponse =
+  DeleteCaCertificateResponse as any as S.Schema<DeleteDomainTopicResponse>;
+
 export interface DeleteDomainTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -741,14 +1021,32 @@ export interface DeleteDomainTopicEventSubscriptionRequest {
   /** Name of the event subscription to be deleted. */
   eventSubscriptionName: string;
 }
+const DeleteDomainTopicEventSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DeleteDomainTopicEventSubscriptionRequest>;
+
 export interface DeleteDomainTopicEventSubscriptionResponse {}
+const DeleteDomainTopicEventSubscriptionResponse =
+  DeleteDomainEventSubscriptionResponse as any as S.Schema<DeleteDomainTopicEventSubscriptionResponse>;
+
 export interface DeleteEventSubscriptionRequest {
   /** The scope of the event subscription. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic. */
   scope: string;
   /** Name of the event subscription to be deleted. */
   eventSubscriptionName: string;
 }
+const DeleteEventSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<DeleteEventSubscriptionRequest>;
+
 export interface DeleteEventSubscriptionResponse {}
+const DeleteEventSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DeleteEventSubscriptionResponse>;
+
 export interface DeleteNamespaceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -757,7 +1055,15 @@ export interface DeleteNamespaceRequest {
   /** Name of the namespace. */
   namespaceName: string;
 }
+const DeleteNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DeleteNamespaceRequest>;
+
 export interface DeleteNamespaceResponse {}
+const DeleteNamespaceResponse =
+  DeleteCaCertificateResponse as any as S.Schema<DeleteNamespaceResponse>;
+
 export interface DeleteNamespaceTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -768,7 +1074,15 @@ export interface DeleteNamespaceTopicRequest {
   /** Name of the topic. */
   topicName: string;
 }
+const DeleteNamespaceTopicRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DeleteNamespaceTopicRequest>;
+
 export interface DeleteNamespaceTopicResponse {}
+const DeleteNamespaceTopicResponse =
+  DeleteCaCertificateResponse as any as S.Schema<DeleteNamespaceTopicResponse>;
+
 export interface DeleteNamespaceTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -781,14 +1095,30 @@ export interface DeleteNamespaceTopicEventSubscriptionRequest {
   /** Name of the event subscription to be deleted. */
   eventSubscriptionName: string;
 }
+const DeleteNamespaceTopicEventSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DeleteNamespaceTopicEventSubscriptionRequest>;
+
 export interface DeleteNamespaceTopicEventSubscriptionResponse {}
+const DeleteNamespaceTopicEventSubscriptionResponse =
+  DeleteDomainEventSubscriptionResponse as any as S.Schema<DeleteNamespaceTopicEventSubscriptionResponse>;
+
 export interface DeletePartnerConfigurationRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the resource group within the user's subscription. */
   resourceGroupName: string;
 }
+const DeletePartnerConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<DeletePartnerConfigurationRequest>;
+
 export interface DeletePartnerConfigurationResponse {}
+const DeletePartnerConfigurationResponse =
+  DeleteDomainEventSubscriptionResponse as any as S.Schema<DeletePartnerConfigurationResponse>;
+
 export interface DeletePartnerNamespaceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -797,7 +1127,15 @@ export interface DeletePartnerNamespaceRequest {
   /** Name of the partner namespace. */
   partnerNamespaceName: string;
 }
+const DeletePartnerNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<DeletePartnerNamespaceRequest>;
+
 export interface DeletePartnerNamespaceResponse {}
+const DeletePartnerNamespaceResponse =
+  DeleteCaCertificateResponse as any as S.Schema<DeletePartnerNamespaceResponse>;
+
 export interface DeletePartnerRegistrationRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -806,7 +1144,15 @@ export interface DeletePartnerRegistrationRequest {
   /** Name of the partner registration. */
   partnerRegistrationName: string;
 }
+const DeletePartnerRegistrationRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DeletePartnerRegistrationRequest>;
+
 export interface DeletePartnerRegistrationResponse {}
+const DeletePartnerRegistrationResponse =
+  DeleteDomainEventSubscriptionResponse as any as S.Schema<DeletePartnerRegistrationResponse>;
+
 export interface DeletePartnerTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -815,7 +1161,15 @@ export interface DeletePartnerTopicRequest {
   /** Name of the partner topic. */
   partnerTopicName: string;
 }
+const DeletePartnerTopicRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DeletePartnerTopicRequest>;
+
 export interface DeletePartnerTopicResponse {}
+const DeletePartnerTopicResponse =
+  DeleteCaCertificateResponse as any as S.Schema<DeletePartnerTopicResponse>;
+
 export interface DeletePartnerTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -826,7 +1180,15 @@ export interface DeletePartnerTopicEventSubscriptionRequest {
   /** Name of the event subscription to be deleted. */
   eventSubscriptionName: string;
 }
+const DeletePartnerTopicEventSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<DeletePartnerTopicEventSubscriptionRequest>;
+
 export interface DeletePartnerTopicEventSubscriptionResponse {}
+const DeletePartnerTopicEventSubscriptionResponse =
+  DeleteDomainEventSubscriptionResponse as any as S.Schema<DeletePartnerTopicEventSubscriptionResponse>;
+
 export interface DeletePermissionBindingRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -837,12 +1199,22 @@ export interface DeletePermissionBindingRequest {
   /** Name of the permission binding. */
   permissionBindingName: string;
 }
+const DeletePermissionBindingRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<DeletePermissionBindingRequest>;
+
 export interface DeletePermissionBindingResponse {}
+const DeletePermissionBindingResponse =
+  DeleteEventSubscriptionResponse as any as S.Schema<DeletePermissionBindingResponse>;
+
 export type DeletePrivateEndpointConnectionRequestParentType =
   | "topics"
   | "domains"
   | "partnerNamespaces"
   | "namespaces";
+const DeletePrivateEndpointConnectionRequestParentType = S.String;
+
 export interface DeletePrivateEndpointConnectionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -855,7 +1227,15 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection connection. */
   privateEndpointConnectionName: string;
 }
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
+
 export interface DeletePrivateEndpointConnectionResponse {}
+const DeletePrivateEndpointConnectionResponse =
+  DeleteDomainEventSubscriptionResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+
 export interface DeleteSystemTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -864,7 +1244,15 @@ export interface DeleteSystemTopicRequest {
   /** Name of the system topic. */
   systemTopicName: string;
 }
+const DeleteSystemTopicRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<DeleteSystemTopicRequest>;
+
 export interface DeleteSystemTopicResponse {}
+const DeleteSystemTopicResponse =
+  DeleteCaCertificateResponse as any as S.Schema<DeleteSystemTopicResponse>;
+
 export interface DeleteSystemTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -875,7 +1263,15 @@ export interface DeleteSystemTopicEventSubscriptionRequest {
   /** Name of the event subscription to be deleted. */
   eventSubscriptionName: string;
 }
+const DeleteSystemTopicEventSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DeleteSystemTopicEventSubscriptionRequest>;
+
 export interface DeleteSystemTopicEventSubscriptionResponse {}
+const DeleteSystemTopicEventSubscriptionResponse =
+  DeleteDomainEventSubscriptionResponse as any as S.Schema<DeleteSystemTopicEventSubscriptionResponse>;
+
 export interface DeleteTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -884,7 +1280,11 @@ export interface DeleteTopicRequest {
   /** Name of the topic. */
   topicName: string;
 }
+const DeleteTopicRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<DeleteTopicRequest>;
+
 export interface DeleteTopicResponse {}
+const DeleteTopicResponse = DeleteCaCertificateResponse as any as S.Schema<DeleteTopicResponse>;
+
 export interface DeleteTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -895,7 +1295,15 @@ export interface DeleteTopicEventSubscriptionRequest {
   /** Name of the event subscription to be deleted. */
   eventSubscriptionName: string;
 }
+const DeleteTopicEventSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DeleteTopicEventSubscriptionRequest>;
+
 export interface DeleteTopicEventSubscriptionResponse {}
+const DeleteTopicEventSubscriptionResponse =
+  DeleteDomainEventSubscriptionResponse as any as S.Schema<DeleteTopicEventSubscriptionResponse>;
+
 export interface DeleteTopicSpaceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -906,7 +1314,15 @@ export interface DeleteTopicSpaceRequest {
   /** Name of the Topic space. */
   topicSpaceName: string;
 }
+const DeleteTopicSpaceRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DeleteTopicSpaceRequest>;
+
 export interface DeleteTopicSpaceResponse {}
+const DeleteTopicSpaceResponse =
+  DeleteCaCertificateResponse as any as S.Schema<DeleteTopicSpaceResponse>;
+
 /** Type of the endpoint for the event subscription destination. */
 export type EventSubscriptionDestinationEndpointType =
   | "WebHook"
@@ -918,6 +1334,8 @@ export type EventSubscriptionDestinationEndpointType =
   | "AzureFunction"
   | "MonitorAlert"
   | "NamespaceTopic";
+const EventSubscriptionDestinationEndpointType = S.String;
+
 /** Information about the destination for an event subscription. */
 export interface EventSubscriptionDestination {
   /** Type of the endpoint for the event subscription destination. */
@@ -925,8 +1343,15 @@ export interface EventSubscriptionDestination {
   /** Endpoint-type-specific destination properties (polymorphic on `endpointType`), e.g. `{ resourceId, queueName }` for StorageQueue. */
   properties?: unknown;
 }
+const EventSubscriptionDestination = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<EventSubscriptionDestination>;
+
 /** The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'. */
 export type EventSubscriptionIdentityType = "SystemAssigned" | "UserAssigned";
+const EventSubscriptionIdentityType = S.String;
+
 /** The identity information with the event subscription. */
 export interface EventSubscriptionIdentity {
   /** The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'. */
@@ -934,6 +1359,11 @@ export interface EventSubscriptionIdentity {
   /** The user identity associated with the resource. */
   userAssignedIdentity?: string;
 }
+const EventSubscriptionIdentity = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<EventSubscriptionIdentity>;
+
 /** Information about the delivery for an event subscription with resource identity. */
 export interface DeliveryWithResourceIdentity {
   /** The identity to use when delivering events. */
@@ -941,8 +1371,16 @@ export interface DeliveryWithResourceIdentity {
   /** Information about the destination where events have to be delivered for the event subscription. Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery. */
   destination?: EventSubscriptionDestination;
 }
+const DeliveryWithResourceIdentity = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<DeliveryWithResourceIdentity>;
+
 /** A list of applicable event types that need to be part of the event subscription. If it is desired to subscribe to all default event types, set the IncludedEventTypes to null. */
 export type EventSubscriptionFilterIncludedEventTypesList = Array<string>;
+const EventSubscriptionFilterIncludedEventTypesList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<EventSubscriptionFilterIncludedEventTypesList>;
+
 /** The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others. */
 export type AdvancedFilterOperatorType =
   | "NumberIn"
@@ -964,6 +1402,8 @@ export type AdvancedFilterOperatorType =
   | "StringNotContains"
   | "IsNullOrUndefined"
   | "IsNotNull";
+const AdvancedFilterOperatorType = S.String;
+
 /** This is the base type that represents an advanced filter. To configure an advanced filter, do not directly instantiate an object of this class. Instead, instantiate an object of a derived class such as BoolEqualsAdvancedFilter, NumberInAdvancedFilter, StringEqualsAdvancedFilter etc. depending on the type of the key based on which you want to filter. */
 export interface AdvancedFilter {
   /** The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others. */
@@ -975,8 +1415,15 @@ export interface AdvancedFilter {
   /** Comparison values for NumberIn/StringIn/StringContains/NumberInRange-style operators (polymorphic on `operatorType`). */
   values?: unknown;
 }
+const AdvancedFilter = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<AdvancedFilter>;
+
 /** An array of advanced filters that are used for filtering event subscriptions. */
 export type EventSubscriptionFilterAdvancedFiltersList = Array<AdvancedFilter>;
+const EventSubscriptionFilterAdvancedFiltersList = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<EventSubscriptionFilterAdvancedFiltersList>;
+
 /** Filter for the Event Subscription. */
 export interface EventSubscriptionFilter {
   /** An optional string to filter events for an event subscription based on a resource path prefix. The format of this depends on the publisher of the events. Wildcard characters are not supported in this path. */
@@ -992,13 +1439,23 @@ export interface EventSubscriptionFilter {
   /** An array of advanced filters that are used for filtering event subscriptions. */
   advancedFilters?: EventSubscriptionFilterAdvancedFiltersList;
 }
+const EventSubscriptionFilter = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<EventSubscriptionFilter>;
+
 /** List of user defined labels. */
 export type EventSubscriptionPropertiesInputLabelsList = Array<string>;
+const EventSubscriptionPropertiesInputLabelsList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<EventSubscriptionPropertiesInputLabelsList>;
+
 /** The event delivery schema for the event subscription. */
 export type EventSubscriptionPropertiesInputEventDeliverySchema =
   | "EventGridSchema"
   | "CustomInputSchema"
   | "CloudEventSchemaV1_0";
+const EventSubscriptionPropertiesInputEventDeliverySchema = S.String;
+
 /** Information about the retry policy for an event subscription. */
 export interface RetryPolicy {
   /** Maximum number of delivery retry attempts for events. */
@@ -1006,8 +1463,12 @@ export interface RetryPolicy {
   /** Time To Live (in minutes) for events. */
   eventTimeToLiveInMinutes?: number;
 }
+const RetryPolicy = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<RetryPolicy>;
+
 /** Type of the endpoint for the dead letter destination */
 export type DeadLetterDestinationEndpointType = "StorageBlob";
+const DeadLetterDestinationEndpointType = S.String;
+
 /** Information about the dead letter destination for an event subscription. To configure a deadletter destination, do not directly instantiate an object of this class. Instead, instantiate an object of a derived class. Currently, StorageBlobDeadLetterDestination is the only class that derives from this class. */
 export interface DeadLetterDestination {
   /** Type of the endpoint for the dead letter destination */
@@ -1015,6 +1476,11 @@ export interface DeadLetterDestination {
   /** Endpoint-type-specific dead-letter properties (polymorphic on `endpointType`), e.g. `{ resourceId, blobContainerName }` for StorageBlob. */
   properties?: unknown;
 }
+const DeadLetterDestination = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<DeadLetterDestination>;
+
 /** Information about the deadletter destination with resource identity. */
 export interface DeadLetterWithResourceIdentity {
   /** The identity to use when dead-lettering events. */
@@ -1022,6 +1488,11 @@ export interface DeadLetterWithResourceIdentity {
   /** Information about the destination where events have to be delivered for the event subscription. Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during dead-lettering. */
   deadLetterDestination?: DeadLetterDestination;
 }
+const DeadLetterWithResourceIdentity = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DeadLetterWithResourceIdentity>;
+
 /** Properties of the Event Subscription. */
 export interface EventSubscriptionPropertiesInput {
   /** Information about the destination where events have to be delivered for the event subscription. Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering. */
@@ -1043,6 +1514,11 @@ export interface EventSubscriptionPropertiesInput {
   /** The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination. Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering. */
   deadLetterWithResourceIdentity?: DeadLetterWithResourceIdentity;
 }
+const EventSubscriptionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<EventSubscriptionPropertiesInput>;
+
 export interface DomainEventSubscriptionsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1055,6 +1531,11 @@ export interface DomainEventSubscriptionsCreateOrUpdateRequest {
   /** Properties of the event subscription. */
   properties?: EventSubscriptionPropertiesInput;
 }
+const DomainEventSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DomainEventSubscriptionsCreateOrUpdateRequest>;
+
 /** Provisioning state of the event subscription. */
 export type EventSubscriptionPropertiesProvisioningState =
   | "Creating"
@@ -1064,13 +1545,20 @@ export type EventSubscriptionPropertiesProvisioningState =
   | "Canceled"
   | "Failed"
   | "AwaitingManualAction";
+const EventSubscriptionPropertiesProvisioningState = S.String;
+
 /** List of user defined labels. */
 export type EventSubscriptionPropertiesLabelsList = Array<string>;
+const EventSubscriptionPropertiesLabelsList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<EventSubscriptionPropertiesLabelsList>;
+
 /** The event delivery schema for the event subscription. */
 export type EventSubscriptionPropertiesEventDeliverySchema =
   | "EventGridSchema"
   | "CustomInputSchema"
   | "CloudEventSchemaV1_0";
+const EventSubscriptionPropertiesEventDeliverySchema = S.String;
+
 /** Properties of the Event Subscription. */
 export interface EventSubscriptionProperties {
   /** Name of the topic of the event subscription. */
@@ -1096,18 +1584,27 @@ export interface EventSubscriptionProperties {
   /** The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination. Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering. */
   deadLetterWithResourceIdentity?: DeadLetterWithResourceIdentity;
 }
+const EventSubscriptionProperties = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<EventSubscriptionProperties>;
+
 /** The type of identity that created the resource. */
 export type DomainEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const DomainEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type DomainEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const DomainEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface DomainEventSubscriptionsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -1123,6 +1620,11 @@ export interface DomainEventSubscriptionsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const DomainEventSubscriptionsCreateOrUpdateResponseSystemData = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<DomainEventSubscriptionsCreateOrUpdateResponseSystemData>;
+
 export interface DomainEventSubscriptionsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -1135,17 +1637,31 @@ export interface DomainEventSubscriptionsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: DomainEventSubscriptionsCreateOrUpdateResponseSystemData;
 }
+const DomainEventSubscriptionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<DomainEventSubscriptionsCreateOrUpdateResponse>;
+
 /** Tags of the resource. */
 export type DomainsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const DomainsCreateOrUpdateRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<DomainsCreateOrUpdateRequestTagsMap>;
+
 /** Minimum TLS version of the publisher allowed to publish to this domain */
 export type DomainPropertiesInputMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
+const DomainPropertiesInputMinimumTlsVersionAllowed = S.String;
+
 /** This determines the format that Event Grid should expect for incoming events published to the Event Grid Domain Resource. */
 export type DomainPropertiesInputInputSchema =
   | "EventGridSchema"
   | "CustomEventSchema"
   | "CloudEventSchemaV1_0";
+const DomainPropertiesInputInputSchema = S.String;
+
 /** Type of the custom mapping */
 export type InputSchemaMappingInputSchemaMappingType = "Json";
+const InputSchemaMappingInputSchemaMappingType = S.String;
+
 /** By default, Event Grid expects events to be in the Event Grid event schema. Specifying an input schema mapping enables publishing to Event Grid using a custom input schema. Currently, the only supported type of InputSchemaMapping is 'JsonInputSchemaMapping'. */
 export interface InputSchemaMapping {
   /** Type of the custom mapping */
@@ -1153,20 +1669,35 @@ export interface InputSchemaMapping {
   /** Mapping-type-specific properties (polymorphic on `inputSchemaMappingType`), e.g. JSON field mappings for `Json`. */
   properties?: unknown;
 }
+const InputSchemaMapping = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<InputSchemaMapping>;
+
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.DomainProperties.InboundIpRules" /> */
 export type DomainPropertiesInputPublicNetworkAccess = "Enabled" | "Disabled";
+const DomainPropertiesInputPublicNetworkAccess = S.String;
+
 /** Action to perform based on the match or no match of the IpMask. */
 export type InboundIpRuleAction = "Allow";
+const InboundIpRuleAction = S.String;
+
 export interface InboundIpRule {
   /** IP Address in CIDR notation e.g., 10.0.0.0/8. */
   ipMask?: string;
   /** Action to perform based on the match or no match of the IpMask. */
   action?: InboundIpRuleAction | (string & {});
 }
+const InboundIpRule = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<InboundIpRule>;
+
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type DomainPropertiesInputInboundIpRulesList = Array<InboundIpRule>;
+const DomainPropertiesInputInboundIpRulesList = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<DomainPropertiesInputInboundIpRulesList>;
+
 /** Data Residency Boundary of the resource. */
 export type DomainPropertiesInputDataResidencyBoundary = "WithinGeopair" | "WithinRegion";
+const DomainPropertiesInputDataResidencyBoundary = S.String;
+
 /** Properties of the Event Grid Domain Resource. */
 export interface DomainPropertiesInput {
   /** Minimum TLS version of the publisher allowed to publish to this domain */
@@ -1190,6 +1721,11 @@ export interface DomainPropertiesInput {
   /** Data Residency Boundary of the resource. */
   dataResidencyBoundary?: DomainPropertiesInputDataResidencyBoundary | (string & {});
 }
+const DomainPropertiesInput = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<DomainPropertiesInput>;
+
 export interface DomainsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1206,17 +1742,32 @@ export interface DomainsCreateOrUpdateRequest {
   /** Identity information for the Event Grid Domain resource. */
   identity?: IdentityInfo;
 }
+const DomainsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<DomainsCreateOrUpdateRequest>;
+
 /** Tags of the resource. */
 export type DomainsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const DomainsCreateOrUpdateResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<DomainsCreateOrUpdateResponseTagsMap>;
+
 /** PrivateEndpoint information. */
 export interface PrivateEndpoint {
   /** The ARM identifier for Private Endpoint. */
   id?: string;
 }
+const PrivateEndpoint = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<PrivateEndpoint>;
+
 /** GroupIds from the private link service resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
+const PrivateEndpointConnectionPropertiesGroupIdsList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
+
 /** Status of the connection. */
 export type ConnectionStateStatus = "Pending" | "Approved" | "Rejected" | "Disconnected";
+const ConnectionStateStatus = S.String;
+
 /** ConnectionState information. */
 export interface ConnectionState {
   /** Status of the connection. */
@@ -1226,6 +1777,8 @@ export interface ConnectionState {
   /** Actions required (if any). */
   actionsRequired?: string;
 }
+const ConnectionState = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ConnectionState>;
+
 /** Provisioning state of the Private Endpoint Connection. */
 export type PrivateEndpointConnectionPropertiesProvisioningState =
   | "Creating"
@@ -1234,6 +1787,8 @@ export type PrivateEndpointConnectionPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
+const PrivateEndpointConnectionPropertiesProvisioningState = S.String;
+
 /** Properties of the private endpoint connection resource. */
 export interface PrivateEndpointConnectionProperties {
   /** The Private Endpoint resource for this Connection. */
@@ -1245,6 +1800,11 @@ export interface PrivateEndpointConnectionProperties {
   /** Provisioning state of the Private Endpoint Connection. */
   provisioningState?: PrivateEndpointConnectionPropertiesProvisioningState | (string & {});
 }
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<PrivateEndpointConnectionProperties>;
+
 export interface PrivateEndpointConnection {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -1255,8 +1815,18 @@ export interface PrivateEndpointConnection {
   /** Properties of the PrivateEndpointConnection. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const PrivateEndpointConnection = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<PrivateEndpointConnection>;
+
 /** List of private endpoint connections. */
 export type DomainPropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
+const DomainPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<DomainPropertiesPrivateEndpointConnectionsList>;
+
 /** Provisioning state of the Event Grid Domain Resource. */
 export type DomainPropertiesProvisioningState =
   | "Creating"
@@ -1265,19 +1835,32 @@ export type DomainPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
+const DomainPropertiesProvisioningState = S.String;
+
 /** Minimum TLS version of the publisher allowed to publish to this domain */
 export type DomainPropertiesMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
+const DomainPropertiesMinimumTlsVersionAllowed = S.String;
+
 /** This determines the format that Event Grid should expect for incoming events published to the Event Grid Domain Resource. */
 export type DomainPropertiesInputSchema =
   | "EventGridSchema"
   | "CustomEventSchema"
   | "CloudEventSchemaV1_0";
+const DomainPropertiesInputSchema = S.String;
+
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.DomainProperties.InboundIpRules" /> */
 export type DomainPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
+const DomainPropertiesPublicNetworkAccess = S.String;
+
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type DomainPropertiesInboundIpRulesList = Array<InboundIpRule>;
+const DomainPropertiesInboundIpRulesList =
+  DomainPropertiesInputInboundIpRulesList as any as S.Schema<DomainPropertiesInboundIpRulesList>;
+
 /** Data Residency Boundary of the resource. */
 export type DomainPropertiesDataResidencyBoundary = "WithinGeopair" | "WithinRegion";
+const DomainPropertiesDataResidencyBoundary = S.String;
+
 /** Properties of the Event Grid Domain Resource. */
 export interface DomainProperties {
   /** List of private endpoint connections. */
@@ -1309,6 +1892,8 @@ export interface DomainProperties {
   /** Data Residency Boundary of the resource. */
   dataResidencyBoundary?: DomainPropertiesDataResidencyBoundary;
 }
+const DomainProperties = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<DomainProperties>;
+
 /** The type of identity that created the resource. */
 export type DomainsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -1336,6 +1921,9 @@ export interface DomainsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const DomainsCreateOrUpdateResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<DomainsCreateOrUpdateResponseSystemData>;
+
 export interface DomainsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -1354,6 +1942,11 @@ export interface DomainsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: DomainsCreateOrUpdateResponseSystemData;
 }
+const DomainsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<DomainsCreateOrUpdateResponse>;
+
 export interface DomainTopicEventSubscriptionsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1368,18 +1961,27 @@ export interface DomainTopicEventSubscriptionsCreateOrUpdateRequest {
   /** Properties of the event subscription. */
   properties?: EventSubscriptionPropertiesInput;
 }
+const DomainTopicEventSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<DomainTopicEventSubscriptionsCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -1395,6 +1997,11 @@ export interface DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemData = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemData>;
+
 export interface DomainTopicEventSubscriptionsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -1407,6 +2014,11 @@ export interface DomainTopicEventSubscriptionsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemData;
 }
+const DomainTopicEventSubscriptionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<DomainTopicEventSubscriptionsCreateOrUpdateResponse>;
+
 export interface DomainTopicsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1417,6 +2029,11 @@ export interface DomainTopicsCreateOrUpdateRequest {
   /** Name of the domain topic. */
   domainTopicName: string;
 }
+const DomainTopicsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<DomainTopicsCreateOrUpdateRequest>;
+
 /** Provisioning state of the domain topic. */
 export type DomainTopicPropertiesProvisioningState =
   | "Creating"
@@ -1425,11 +2042,18 @@ export type DomainTopicPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
+const DomainTopicPropertiesProvisioningState = S.String;
+
 /** Properties of the Domain Topic. */
 export interface DomainTopicProperties {
   /** Provisioning state of the domain topic. */
   provisioningState?: DomainTopicPropertiesProvisioningState;
 }
+const DomainTopicProperties = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<DomainTopicProperties>;
+
 /** The type of identity that created the resource. */
 export type DomainTopicsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -1457,6 +2081,9 @@ export interface DomainTopicsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const DomainTopicsCreateOrUpdateResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<DomainTopicsCreateOrUpdateResponseSystemData>;
+
 export interface DomainTopicsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -1469,6 +2096,11 @@ export interface DomainTopicsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: DomainTopicsCreateOrUpdateResponseSystemData;
 }
+const DomainTopicsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<DomainTopicsCreateOrUpdateResponse>;
+
 export interface EventSubscriptionsCreateOrUpdateRequest {
   /** The identifier of the resource to which the event subscription needs to be created or updated. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic. */
   scope: string;
@@ -1477,6 +2109,11 @@ export interface EventSubscriptionsCreateOrUpdateRequest {
   /** Properties of the event subscription. */
   properties?: EventSubscriptionPropertiesInput;
 }
+const EventSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<EventSubscriptionsCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type EventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -1504,6 +2141,9 @@ export interface EventSubscriptionsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const EventSubscriptionsCreateOrUpdateResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<EventSubscriptionsCreateOrUpdateResponseSystemData>;
+
 export interface EventSubscriptionsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -1516,6 +2156,11 @@ export interface EventSubscriptionsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: EventSubscriptionsCreateOrUpdateResponseSystemData;
 }
+const EventSubscriptionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<EventSubscriptionsCreateOrUpdateResponse>;
+
 export interface GetCaCertificateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1526,6 +2171,11 @@ export interface GetCaCertificateRequest {
   /** Name of the CA certificate. */
   caCertificateName: string;
 }
+const GetCaCertificateRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GetCaCertificateRequest>;
+
 /** The type of identity that created the resource. */
 export type GetCaCertificateResponseSystemDataCreatedByType =
   | "User"
@@ -1553,6 +2203,9 @@ export interface GetCaCertificateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetCaCertificateResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetCaCertificateResponseSystemData>;
+
 export interface GetCaCertificateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -1565,6 +2218,11 @@ export interface GetCaCertificateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetCaCertificateResponseSystemData;
 }
+const GetCaCertificateResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GetCaCertificateResponse>;
+
 export interface GetChannelRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1575,6 +2233,8 @@ export interface GetChannelRequest {
   /** Name of the channel. */
   channelName: string;
 }
+const GetChannelRequest = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<GetChannelRequest>;
+
 /** The type of identity that created the resource. */
 export type GetChannelResponseSystemDataCreatedByType =
   | "User"
@@ -1602,6 +2262,9 @@ export interface GetChannelResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetChannelResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetChannelResponseSystemData>;
+
 export interface GetChannelResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -1614,6 +2277,8 @@ export interface GetChannelResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetChannelResponseSystemData;
 }
+const GetChannelResponse = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<GetChannelResponse>;
+
 export interface GetChannelFullUrlRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1624,11 +2289,21 @@ export interface GetChannelFullUrlRequest {
   /** Name of the Channel. */
   channelName: string;
 }
+const GetChannelFullUrlRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<GetChannelFullUrlRequest>;
+
 /** Full endpoint URL of an event subscription */
 export interface EventSubscriptionFullUrl {
   /** The URL that represents the endpoint of the destination of an event subscription. */
   endpointUrl?: string;
 }
+const EventSubscriptionFullUrl = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<EventSubscriptionFullUrl>;
+
 export interface GetClientRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1639,6 +2314,8 @@ export interface GetClientRequest {
   /** Name of the client. */
   clientName: string;
 }
+const GetClientRequest = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<GetClientRequest>;
+
 /** The type of identity that created the resource. */
 export type GetClientResponseSystemDataCreatedByType =
   | "User"
@@ -1666,6 +2343,9 @@ export interface GetClientResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetClientResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetClientResponseSystemData>;
+
 export interface GetClientResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -1678,6 +2358,8 @@ export interface GetClientResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetClientResponseSystemData;
 }
+const GetClientResponse = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<GetClientResponse>;
+
 export interface GetClientGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1688,6 +2370,11 @@ export interface GetClientGroupRequest {
   /** Name of the client group. */
   clientGroupName: string;
 }
+const GetClientGroupRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<GetClientGroupRequest>;
+
 /** The type of identity that created the resource. */
 export type GetClientGroupResponseSystemDataCreatedByType =
   | "User"
@@ -1715,6 +2402,9 @@ export interface GetClientGroupResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetClientGroupResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetClientGroupResponseSystemData>;
+
 export interface GetClientGroupResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -1727,6 +2417,11 @@ export interface GetClientGroupResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetClientGroupResponseSystemData;
 }
+const GetClientGroupResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<GetClientGroupResponse>;
+
 export interface GetDomainRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1735,8 +2430,13 @@ export interface GetDomainRequest {
   /** Name of the domain. */
   domainName: string;
 }
+const GetDomainRequest = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<GetDomainRequest>;
+
 /** Tags of the resource. */
 export type GetDomainResponseTagsMap = { [key: string]: string | undefined };
+const GetDomainResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetDomainResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type GetDomainResponseSystemDataCreatedByType =
   | "User"
@@ -1764,6 +2464,9 @@ export interface GetDomainResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetDomainResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetDomainResponseSystemData>;
+
 export interface GetDomainResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -1782,6 +2485,8 @@ export interface GetDomainResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetDomainResponseSystemData;
 }
+const GetDomainResponse = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<GetDomainResponse>;
+
 export interface GetDomainEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1792,6 +2497,11 @@ export interface GetDomainEventSubscriptionRequest {
   /** Name of the event subscription to be found. */
   eventSubscriptionName: string;
 }
+const GetDomainEventSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<GetDomainEventSubscriptionRequest>;
+
 /** The type of identity that created the resource. */
 export type GetDomainEventSubscriptionResponseSystemDataCreatedByType =
   | "User"
@@ -1819,6 +2529,9 @@ export interface GetDomainEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetDomainEventSubscriptionResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetDomainEventSubscriptionResponseSystemData>;
+
 export interface GetDomainEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -1831,6 +2544,11 @@ export interface GetDomainEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetDomainEventSubscriptionResponseSystemData;
 }
+const GetDomainEventSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<GetDomainEventSubscriptionResponse>;
+
 export interface GetDomainEventSubscriptionDeliveryAttributesRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1841,8 +2559,15 @@ export interface GetDomainEventSubscriptionDeliveryAttributesRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
+const GetDomainEventSubscriptionDeliveryAttributesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<GetDomainEventSubscriptionDeliveryAttributesRequest>;
+
 /** Type of the delivery attribute or header name. */
 export type DeliveryAttributeMappingType = "Static" | "Dynamic";
+const DeliveryAttributeMappingType = S.String;
+
 /** Delivery attribute mapping details. */
 export interface DeliveryAttributeMapping {
   /** Name of the delivery attribute or header. */
@@ -1850,13 +2575,28 @@ export interface DeliveryAttributeMapping {
   /** Type of the delivery attribute or header name. */
   type: DeliveryAttributeMappingType;
 }
+const DeliveryAttributeMapping = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<DeliveryAttributeMapping>;
+
 /** A collection of DeliveryAttributeMapping */
 export type DeliveryAttributeListResultValueList = Array<DeliveryAttributeMapping>;
+const DeliveryAttributeListResultValueList = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<DeliveryAttributeListResultValueList>;
+
 /** Result of the Get delivery attributes operation. */
 export interface DeliveryAttributeListResult {
   /** A collection of DeliveryAttributeMapping */
   value?: DeliveryAttributeListResultValueList;
 }
+const DeliveryAttributeListResult = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<DeliveryAttributeListResult>;
+
 export interface GetDomainEventSubscriptionFullUrlRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1867,6 +2607,11 @@ export interface GetDomainEventSubscriptionFullUrlRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
+const GetDomainEventSubscriptionFullUrlRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GetDomainEventSubscriptionFullUrlRequest>;
+
 export interface GetDomainTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1877,6 +2622,11 @@ export interface GetDomainTopicRequest {
   /** Name of the topic. */
   domainTopicName: string;
 }
+const GetDomainTopicRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<GetDomainTopicRequest>;
+
 /** The type of identity that created the resource. */
 export type GetDomainTopicResponseSystemDataCreatedByType =
   | "User"
@@ -1904,6 +2654,9 @@ export interface GetDomainTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetDomainTopicResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetDomainTopicResponseSystemData>;
+
 export interface GetDomainTopicResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -1916,6 +2669,11 @@ export interface GetDomainTopicResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetDomainTopicResponseSystemData;
 }
+const GetDomainTopicResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<GetDomainTopicResponse>;
+
 export interface GetDomainTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1928,6 +2686,11 @@ export interface GetDomainTopicEventSubscriptionRequest {
   /** Name of the event subscription to be found. */
   eventSubscriptionName: string;
 }
+const GetDomainTopicEventSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<GetDomainTopicEventSubscriptionRequest>;
+
 /** The type of identity that created the resource. */
 export type GetDomainTopicEventSubscriptionResponseSystemDataCreatedByType =
   | "User"
@@ -1967,6 +2730,9 @@ export interface GetDomainTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetDomainTopicEventSubscriptionResponseSystemData;
 }
+const GetDomainTopicEventSubscriptionResponse =
+  EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<GetDomainTopicEventSubscriptionResponse>;
+
 export interface GetDomainTopicEventSubscriptionDeliveryAttributesRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1979,6 +2745,11 @@ export interface GetDomainTopicEventSubscriptionDeliveryAttributesRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
+const GetDomainTopicEventSubscriptionDeliveryAttributesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<GetDomainTopicEventSubscriptionDeliveryAttributesRequest>;
+
 export interface GetDomainTopicEventSubscriptionFullUrlRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1991,12 +2762,22 @@ export interface GetDomainTopicEventSubscriptionFullUrlRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
+const GetDomainTopicEventSubscriptionFullUrlRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<GetDomainTopicEventSubscriptionFullUrlRequest>;
+
 export interface GetEventSubscriptionRequest {
   /** The scope of the event subscription. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic. */
   scope: string;
   /** Name of the event subscription to be found. */
   eventSubscriptionName: string;
 }
+const GetEventSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<GetEventSubscriptionRequest>;
+
 /** The type of identity that created the resource. */
 export type GetEventSubscriptionResponseSystemDataCreatedByType =
   | "User"
@@ -2036,22 +2817,40 @@ export interface GetEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetEventSubscriptionResponseSystemData;
 }
+const GetEventSubscriptionResponse =
+  GetDomainEventSubscriptionResponse as any as S.Schema<GetEventSubscriptionResponse>;
+
 export interface GetEventSubscriptionDeliveryAttributesRequest {
   /** The scope of the event subscription. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic. */
   scope: string;
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
+const GetEventSubscriptionDeliveryAttributesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<GetEventSubscriptionDeliveryAttributesRequest>;
+
 export interface GetEventSubscriptionFullUrlRequest {
   /** The scope of the event subscription. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic. */
   scope: string;
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
+const GetEventSubscriptionFullUrlRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<GetEventSubscriptionFullUrlRequest>;
+
 export interface GetExtensionTopicRequest {
   /** The identifier of the resource to which extension topic is queried. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for Azure resource. */
   scope: string;
 }
+const GetExtensionTopicRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<GetExtensionTopicRequest>;
+
 /** Properties of the Extension Topic */
 export interface ExtensionTopicProperties {
   /** Description of the extension topic. */
@@ -2059,6 +2858,11 @@ export interface ExtensionTopicProperties {
   /** System topic resource id which is mapped to the source. */
   systemTopic?: string;
 }
+const ExtensionTopicProperties = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ExtensionTopicProperties>;
+
 /** The type of identity that created the resource. */
 export type GetExtensionTopicResponseSystemDataCreatedByType =
   | "User"
@@ -2086,6 +2890,9 @@ export interface GetExtensionTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetExtensionTopicResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetExtensionTopicResponseSystemData>;
+
 export interface GetExtensionTopicResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -2098,6 +2905,11 @@ export interface GetExtensionTopicResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetExtensionTopicResponseSystemData;
 }
+const GetExtensionTopicResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<GetExtensionTopicResponse>;
+
 export interface GetNamespaceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2106,10 +2918,18 @@ export interface GetNamespaceRequest {
   /** Name of the namespace. */
   namespaceName: string;
 }
+const GetNamespaceRequest = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<GetNamespaceRequest>;
+
 /** Tags of the resource. */
 export type GetNamespaceResponseTagsMap = { [key: string]: string | undefined };
+const GetNamespaceResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetNamespaceResponseTagsMap>;
+
 /** List of private endpoint connections. */
 export type NamespacePropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
+const NamespacePropertiesPrivateEndpointConnectionsList =
+  DomainPropertiesPrivateEndpointConnectionsList as any as S.Schema<NamespacePropertiesPrivateEndpointConnectionsList>;
+
 /** Provisioning state of the namespace resource. */
 export type NamespacePropertiesProvisioningState =
   | "Creating"
@@ -2122,13 +2942,19 @@ export type NamespacePropertiesProvisioningState =
   | "DeleteFailed"
   | "CreateFailed"
   | "UpdatedFailed";
+const NamespacePropertiesProvisioningState = S.String;
+
 /** Validation state for the custom domain. This is a read only property and is initially set to 'Pending' and will be updated to 'Approved' by Event Grid only after ownership of the domain name has been successfully validated. */
 export type CustomDomainConfigurationValidationState =
   | "Pending"
   | "Approved"
   | "ErrorRetrievingDnsRecord";
+const CustomDomainConfigurationValidationState = S.String;
+
 /** The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'. */
 export type CustomDomainIdentityType = "SystemAssigned" | "UserAssigned";
+const CustomDomainIdentityType = S.String;
+
 /** The identity information for retrieving the certificate for the custom domain. */
 export interface CustomDomainIdentity {
   /** The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'. */
@@ -2136,6 +2962,11 @@ export interface CustomDomainIdentity {
   /** The user identity associated with the resource. */
   userAssignedIdentity?: string;
 }
+const CustomDomainIdentity = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<CustomDomainIdentity>;
+
 /** A custom domain configuration that allows users to publish to their own domain name. */
 export interface CustomDomainConfiguration {
   /** Fully Qualified Domain Name (FQDN) for the custom domain. */
@@ -2151,8 +2982,18 @@ export interface CustomDomainConfiguration {
   /** Expected DNS TXT record value. Event Grid will check for a TXT record with this value in the DNS record set of the custom domain name to prove ownership over the domain. */
   expectedTxtRecordValue?: string;
 }
+const CustomDomainConfiguration = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<CustomDomainConfiguration>;
+
 /** List of custom domain configurations for the namespace. */
 export type TopicsConfigurationCustomDomainsList = Array<CustomDomainConfiguration>;
+const TopicsConfigurationCustomDomainsList = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<TopicsConfigurationCustomDomainsList>;
+
 /** Properties of the Topics Configuration. */
 export interface TopicsConfiguration {
   /** The hostname for the topics configuration. This is a read-only property. */
@@ -2160,10 +3001,16 @@ export interface TopicsConfiguration {
   /** List of custom domain configurations for the namespace. */
   customDomains?: TopicsConfigurationCustomDomainsList;
 }
+const TopicsConfiguration = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<TopicsConfiguration>;
+
 /** Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled. */
 export type TopicSpacesConfigurationState = "Disabled" | "Enabled";
+const TopicSpacesConfigurationState = S.String;
+
 /** Static routing enrichment value type. For e.g. this property value can be 'String'. */
 export type StaticRoutingEnrichmentValueType = "String";
+const StaticRoutingEnrichmentValueType = S.String;
+
 /** Static routing enrichment details. */
 export interface StaticRoutingEnrichment {
   /** Static routing enrichment key. */
@@ -2171,18 +3018,40 @@ export interface StaticRoutingEnrichment {
   /** Static routing enrichment value type. For e.g. this property value can be 'String'. */
   valueType: StaticRoutingEnrichmentValueType | (string & {});
 }
+const StaticRoutingEnrichment = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<StaticRoutingEnrichment>;
+
 export type RoutingEnrichmentsStaticList = Array<StaticRoutingEnrichment>;
+const RoutingEnrichmentsStaticList = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<RoutingEnrichmentsStaticList>;
+
 export interface DynamicRoutingEnrichment {
   /** Dynamic routing enrichment key. */
   key?: string;
   /** Dynamic routing enrichment value. */
   value?: string;
 }
+const DynamicRoutingEnrichment = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<DynamicRoutingEnrichment>;
+
 export type RoutingEnrichmentsDynamicList = Array<DynamicRoutingEnrichment>;
+const RoutingEnrichmentsDynamicList = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<RoutingEnrichmentsDynamicList>;
+
 export interface RoutingEnrichments {
   static?: RoutingEnrichmentsStaticList;
   dynamic?: RoutingEnrichmentsDynamicList;
 }
+const RoutingEnrichments = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<RoutingEnrichments>;
+
 /** Routing identity type for topic spaces configuration. */
 export type RoutingIdentityInfoType = "None" | "SystemAssigned" | "UserAssigned";
 /** Routing identity info for topic spaces configuration. */
@@ -2191,8 +3060,13 @@ export interface RoutingIdentityInfo {
   type?: RoutingIdentityInfoType | (string & {});
   userAssignedIdentity?: string;
 }
+const RoutingIdentityInfo = CustomDomainIdentity as any as S.Schema<RoutingIdentityInfo>;
+
 /** List of custom domain configurations for the namespace. */
 export type TopicSpacesConfigurationCustomDomainsList = Array<CustomDomainConfiguration>;
+const TopicSpacesConfigurationCustomDomainsList =
+  TopicsConfigurationCustomDomainsList as any as S.Schema<TopicSpacesConfigurationCustomDomainsList>;
+
 /** Properties of the Topic Spaces Configuration. */
 export interface TopicSpacesConfiguration {
   /** Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled. */
@@ -2212,12 +3086,24 @@ export interface TopicSpacesConfiguration {
   /** List of custom domain configurations for the namespace. */
   customDomains?: TopicSpacesConfigurationCustomDomainsList;
 }
+const TopicSpacesConfiguration = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<TopicSpacesConfiguration>;
+
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PubSub.NamespaceProperties.InboundIpRules" /> */
 export type NamespacePropertiesPublicNetworkAccess = "Enabled" | "Disabled";
+const NamespacePropertiesPublicNetworkAccess = S.String;
+
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type NamespacePropertiesInboundIpRulesList = Array<InboundIpRule>;
+const NamespacePropertiesInboundIpRulesList =
+  DomainPropertiesInputInboundIpRulesList as any as S.Schema<NamespacePropertiesInboundIpRulesList>;
+
 /** Minimum TLS version of the publisher allowed to publish to this namespace. Only TLS version 1.2 is supported. */
 export type NamespacePropertiesMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
+const NamespacePropertiesMinimumTlsVersionAllowed = S.String;
+
 /** Properties of the namespace resource. */
 export interface NamespaceProperties {
   /** List of private endpoint connections. */
@@ -2237,8 +3123,12 @@ export interface NamespaceProperties {
   /** Minimum TLS version of the publisher allowed to publish to this namespace. Only TLS version 1.2 is supported. */
   minimumTlsVersionAllowed?: NamespacePropertiesMinimumTlsVersionAllowed;
 }
+const NamespaceProperties = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<NamespaceProperties>;
+
 /** The name of the SKU. */
 export type NamespaceSkuName = "Standard";
+const NamespaceSkuName = S.String;
+
 /** Represents available Sku pricing tiers. */
 export interface NamespaceSku {
   /** The name of the SKU. */
@@ -2246,6 +3136,8 @@ export interface NamespaceSku {
   /** Specifies the number of Throughput Units that defines the capacity for the namespace. The property default value is 1 which signifies 1 Throughput Unit = 1MB/s ingress and 2MB/s egress per namespace. Min capacity is 1 and max allowed capacity is 20. */
   capacity?: number;
 }
+const NamespaceSku = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<NamespaceSku>;
+
 /** The type of identity that created the resource. */
 export type GetNamespaceResponseSystemDataCreatedByType =
   | "User"
@@ -2273,6 +3165,9 @@ export interface GetNamespaceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetNamespaceResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetNamespaceResponseSystemData>;
+
 export interface GetNamespaceResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -2293,6 +3188,11 @@ export interface GetNamespaceResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetNamespaceResponseSystemData;
 }
+const GetNamespaceResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<GetNamespaceResponse>;
+
 export interface GetNamespaceTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2303,6 +3203,11 @@ export interface GetNamespaceTopicRequest {
   /** Name of the namespace topic. */
   topicName: string;
 }
+const GetNamespaceTopicRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<GetNamespaceTopicRequest>;
+
 /** Provisioning state of the namespace topic. */
 export type NamespaceTopicPropertiesProvisioningState =
   | "Creating"
@@ -2315,10 +3220,16 @@ export type NamespaceTopicPropertiesProvisioningState =
   | "DeleteFailed"
   | "CreateFailed"
   | "UpdatedFailed";
+const NamespaceTopicPropertiesProvisioningState = S.String;
+
 /** Publisher type of the namespace topic. */
 export type NamespaceTopicPropertiesPublisherType = "Custom";
+const NamespaceTopicPropertiesPublisherType = S.String;
+
 /** This determines the format that is expected for incoming events published to the topic. */
 export type NamespaceTopicPropertiesInputSchema = "CloudEventSchemaV1_0";
+const NamespaceTopicPropertiesInputSchema = S.String;
+
 /** Properties of the namespace topic. */
 export interface NamespaceTopicProperties {
   /** Provisioning state of the namespace topic. */
@@ -2330,6 +3241,11 @@ export interface NamespaceTopicProperties {
   /** Event retention for the namespace topic expressed in days. The property default value is 1 day. Min event retention duration value is 1 day and max event retention duration value is 1 day. */
   eventRetentionInDays?: number;
 }
+const NamespaceTopicProperties = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<NamespaceTopicProperties>;
+
 /** The type of identity that created the resource. */
 export type GetNamespaceTopicResponseSystemDataCreatedByType =
   | "User"
@@ -2357,6 +3273,9 @@ export interface GetNamespaceTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetNamespaceTopicResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetNamespaceTopicResponseSystemData>;
+
 export interface GetNamespaceTopicResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -2369,6 +3288,11 @@ export interface GetNamespaceTopicResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetNamespaceTopicResponseSystemData;
 }
+const GetNamespaceTopicResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<GetNamespaceTopicResponse>;
+
 export interface GetNamespaceTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2381,6 +3305,11 @@ export interface GetNamespaceTopicEventSubscriptionRequest {
   /** Name of the event subscription to be found. */
   eventSubscriptionName: string;
 }
+const GetNamespaceTopicEventSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<GetNamespaceTopicEventSubscriptionRequest>;
+
 /** Provisioning state of the event subscription. */
 export type SubscriptionPropertiesProvisioningState =
   | "Creating"
@@ -2394,8 +3323,12 @@ export type SubscriptionPropertiesProvisioningState =
   | "DeleteFailed"
   | "CreateFailed"
   | "UpdatedFailed";
+const SubscriptionPropertiesProvisioningState = S.String;
+
 /** Delivery mode of the event subscription. */
 export type DeliveryConfigurationDeliveryMode = "Queue" | "Push";
+const DeliveryConfigurationDeliveryMode = S.String;
+
 /** Properties of the Queue info for event subscription. */
 export interface QueueInfo {
   /** Maximum period in seconds in which once the message is in received (by the client) state and waiting to be accepted, released or rejected. If this time elapsed after a message has been received by the client and not transitioned into accepted (not processed), released or rejected, the message is available for redelivery. This is an optional field, where default is 60 seconds, minimum is 60 seconds and maximum is 300 seconds. */
@@ -2407,6 +3340,8 @@ export interface QueueInfo {
   /** Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published. This duration value is expressed using the following format: \'P(n)Y(n)M(n)DT(n)H(n)M(n)S\', where: - (n) is replaced by the value of each time element that follows the (n). - P is the duration (or Period) designator and is always placed at the beginning of the duration. - Y is the year designator, and it follows the value for the number of years. - M is the month designator, and it follows the value for the number of months. - W is the week designator, and it follows the value for the number of weeks. - D is the day designator, and it follows the value for the number of days. - T is the time designator, and it precedes the time components. - H is the hour designator, and it follows the value for the number of hours. - M is the minute designator, and it follows the value for the number of minutes. - S is the second designator, and it follows the value for the number of seconds. This duration value cannot be set greater than the topic's EventRetentionInDays. It is is an optional field where its minimum value is 1 minute, and its maximum is determined by topic's EventRetentionInDays value. The followings are examples of valid values: - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes. - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day. */
   eventTimeToLive?: string;
 }
+const QueueInfo = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<QueueInfo>;
+
 /** Properties of the destination info for event subscription supporting push. */
 export interface PushInfo {
   /** The maximum delivery count of the events. */
@@ -2420,6 +3355,8 @@ export interface PushInfo {
   /** Information about the destination where events have to be delivered for the event subscription. Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery. */
   destination?: EventSubscriptionDestination;
 }
+const PushInfo = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<PushInfo>;
+
 /** Properties of the delivery configuration information of the event subscription. */
 export interface DeliveryConfiguration {
   /** Delivery mode of the event subscription. */
@@ -2429,10 +3366,20 @@ export interface DeliveryConfiguration {
   /** This property should be populated when deliveryMode is push and represents information about the push subscription. */
   push?: PushInfo;
 }
+const DeliveryConfiguration = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<DeliveryConfiguration>;
+
 /** The event delivery schema for the event subscription. */
 export type SubscriptionPropertiesEventDeliverySchema = "CloudEventSchemaV1_0";
+const SubscriptionPropertiesEventDeliverySchema = S.String;
+
 /** A list of applicable event types that need to be part of the event subscription. If it is desired to subscribe to all default event types, set the IncludedEventTypes to null. */
 export type FiltersConfigurationIncludedEventTypesList = Array<string>;
+const FiltersConfigurationIncludedEventTypesList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<FiltersConfigurationIncludedEventTypesList>;
+
 /** The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others. */
 export type FilterOperatorType =
   | "NumberIn"
@@ -2467,6 +3414,9 @@ export interface Filter {
 }
 /** An array of filters that are used for filtering event subscriptions. */
 export type FiltersConfigurationFiltersList = Array<Filter>;
+const FiltersConfigurationFiltersList =
+  EventSubscriptionFilterAdvancedFiltersList as any as S.Schema<FiltersConfigurationFiltersList>;
+
 /** Filters configuration for the Event Subscription. */
 export interface FiltersConfiguration {
   /** A list of applicable event types that need to be part of the event subscription. If it is desired to subscribe to all default event types, set the IncludedEventTypes to null. */
@@ -2474,6 +3424,11 @@ export interface FiltersConfiguration {
   /** An array of filters that are used for filtering event subscriptions. */
   filters?: FiltersConfigurationFiltersList;
 }
+const FiltersConfiguration = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<FiltersConfiguration>;
+
 /** Properties of the event subscription. */
 export interface SubscriptionProperties {
   /** Provisioning state of the event subscription. */
@@ -2487,6 +3442,11 @@ export interface SubscriptionProperties {
   /** Expiration time of the event subscription. */
   expirationTimeUtc?: string;
 }
+const SubscriptionProperties = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<SubscriptionProperties>;
+
 /** The type of identity that created the resource. */
 export type GetNamespaceTopicEventSubscriptionResponseSystemDataCreatedByType =
   | "User"
@@ -2514,6 +3474,9 @@ export interface GetNamespaceTopicEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetNamespaceTopicEventSubscriptionResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<GetNamespaceTopicEventSubscriptionResponseSystemData>;
+
 export interface GetNamespaceTopicEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -2526,6 +3489,11 @@ export interface GetNamespaceTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetNamespaceTopicEventSubscriptionResponseSystemData;
 }
+const GetNamespaceTopicEventSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<GetNamespaceTopicEventSubscriptionResponse>;
+
 export interface GetNamespaceTopicEventSubscriptionDeliveryAttributesRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2538,6 +3506,11 @@ export interface GetNamespaceTopicEventSubscriptionDeliveryAttributesRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
+const GetNamespaceTopicEventSubscriptionDeliveryAttributesRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<GetNamespaceTopicEventSubscriptionDeliveryAttributesRequest>;
+
 export interface GetNamespaceTopicEventSubscriptionFullUrlRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2550,17 +3523,29 @@ export interface GetNamespaceTopicEventSubscriptionFullUrlRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
+const GetNamespaceTopicEventSubscriptionFullUrlRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<GetNamespaceTopicEventSubscriptionFullUrlRequest>;
+
 /** Full endpoint URL of an event subscription */
 export interface SubscriptionFullUrl {
   /** The URL that represents the endpoint of the destination of an event subscription. */
   endpointUrl?: string;
 }
+const SubscriptionFullUrl = EventSubscriptionFullUrl as any as S.Schema<SubscriptionFullUrl>;
+
 export interface GetPartnerConfigurationRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the resource group within the user's subscription. */
   resourceGroupName: string;
 }
+const GetPartnerConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<GetPartnerConfigurationRequest>;
+
 /** The type of identity that created the resource. */
 export type GetPartnerConfigurationResponseSystemDataCreatedByType =
   | "User"
@@ -2588,8 +3573,14 @@ export interface GetPartnerConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetPartnerConfigurationResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetPartnerConfigurationResponseSystemData>;
+
 /** Tags of the resource. */
 export type GetPartnerConfigurationResponseTagsMap = { [key: string]: string | undefined };
+const GetPartnerConfigurationResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetPartnerConfigurationResponseTagsMap>;
+
 export interface GetPartnerConfigurationResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -2606,6 +3597,11 @@ export interface GetPartnerConfigurationResponse {
   /** Tags of the resource. */
   tags?: GetPartnerConfigurationResponseTagsMap;
 }
+const GetPartnerConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<GetPartnerConfigurationResponse>;
+
 export interface GetPartnerNamespaceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2614,11 +3610,22 @@ export interface GetPartnerNamespaceRequest {
   /** Name of the partner namespace. */
   partnerNamespaceName: string;
 }
+const GetPartnerNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<GetPartnerNamespaceRequest>;
+
 /** Tags of the resource. */
 export type GetPartnerNamespaceResponseTagsMap = { [key: string]: string | undefined };
+const GetPartnerNamespaceResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetPartnerNamespaceResponseTagsMap>;
+
 /** List of private endpoint connections. */
 export type PartnerNamespacePropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
+const PartnerNamespacePropertiesPrivateEndpointConnectionsList =
+  DomainPropertiesPrivateEndpointConnectionsList as any as S.Schema<PartnerNamespacePropertiesPrivateEndpointConnectionsList>;
+
 /** Provisioning state of the partner namespace. */
 export type PartnerNamespacePropertiesProvisioningState =
   | "Creating"
@@ -2627,16 +3634,27 @@ export type PartnerNamespacePropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
+const PartnerNamespacePropertiesProvisioningState = S.String;
+
 /** Minimum TLS version of the publisher allowed to publish to this partner namespace */
 export type PartnerNamespacePropertiesMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
+const PartnerNamespacePropertiesMinimumTlsVersionAllowed = S.String;
+
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceProperties.InboundIpRules" /> */
 export type PartnerNamespacePropertiesPublicNetworkAccess = "Enabled" | "Disabled";
+const PartnerNamespacePropertiesPublicNetworkAccess = S.String;
+
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type PartnerNamespacePropertiesInboundIpRulesList = Array<InboundIpRule>;
+const PartnerNamespacePropertiesInboundIpRulesList =
+  DomainPropertiesInputInboundIpRulesList as any as S.Schema<PartnerNamespacePropertiesInboundIpRulesList>;
+
 /** This determines if events published to this partner namespace should use the source attribute in the event payload or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic. */
 export type PartnerNamespacePropertiesPartnerTopicRoutingMode =
   | "SourceEventAttribute"
   | "ChannelNameHeader";
+const PartnerNamespacePropertiesPartnerTopicRoutingMode = S.String;
+
 /** Properties of the partner namespace. */
 export interface PartnerNamespaceProperties {
   /** List of private endpoint connections. */
@@ -2658,6 +3676,11 @@ export interface PartnerNamespaceProperties {
   /** This determines if events published to this partner namespace should use the source attribute in the event payload or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic. */
   partnerTopicRoutingMode?: PartnerNamespacePropertiesPartnerTopicRoutingMode;
 }
+const PartnerNamespaceProperties = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<PartnerNamespaceProperties>;
+
 /** The type of identity that created the resource. */
 export type GetPartnerNamespaceResponseSystemDataCreatedByType =
   | "User"
@@ -2685,6 +3708,9 @@ export interface GetPartnerNamespaceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetPartnerNamespaceResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetPartnerNamespaceResponseSystemData>;
+
 export interface GetPartnerNamespaceResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -2701,6 +3727,11 @@ export interface GetPartnerNamespaceResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetPartnerNamespaceResponseSystemData;
 }
+const GetPartnerNamespaceResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<GetPartnerNamespaceResponse>;
+
 export interface GetPartnerRegistrationRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2709,8 +3740,16 @@ export interface GetPartnerRegistrationRequest {
   /** Name of the partner registration. */
   partnerRegistrationName: string;
 }
+const GetPartnerRegistrationRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<GetPartnerRegistrationRequest>;
+
 /** Tags of the resource. */
 export type GetPartnerRegistrationResponseTagsMap = { [key: string]: string | undefined };
+const GetPartnerRegistrationResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetPartnerRegistrationResponseTagsMap>;
+
 /** Provisioning state of the partner registration. */
 export type PartnerRegistrationPropertiesProvisioningState =
   | "Creating"
@@ -2719,6 +3758,8 @@ export type PartnerRegistrationPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
+const PartnerRegistrationPropertiesProvisioningState = S.String;
+
 /** Properties of the partner registration. */
 export interface PartnerRegistrationProperties {
   /** Provisioning state of the partner registration. */
@@ -2726,6 +3767,11 @@ export interface PartnerRegistrationProperties {
   /** The immutableId of the corresponding partner registration. Note: This property is marked for deprecation and is not supported in any future GA API version */
   partnerRegistrationImmutableId?: string;
 }
+const PartnerRegistrationProperties = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<PartnerRegistrationProperties>;
+
 /** The type of identity that created the resource. */
 export type GetPartnerRegistrationResponseSystemDataCreatedByType =
   | "User"
@@ -2753,6 +3799,9 @@ export interface GetPartnerRegistrationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetPartnerRegistrationResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetPartnerRegistrationResponseSystemData>;
+
 export interface GetPartnerRegistrationResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -2769,6 +3818,11 @@ export interface GetPartnerRegistrationResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetPartnerRegistrationResponseSystemData;
 }
+const GetPartnerRegistrationResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<GetPartnerRegistrationResponse>;
+
 export interface GetPartnerTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2777,8 +3831,16 @@ export interface GetPartnerTopicRequest {
   /** Name of the partner topic. */
   partnerTopicName: string;
 }
+const GetPartnerTopicRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<GetPartnerTopicRequest>;
+
 /** Tags of the resource. */
 export type GetPartnerTopicResponseTagsMap = { [key: string]: string | undefined };
+const GetPartnerTopicResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetPartnerTopicResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type GetPartnerTopicResponseSystemDataCreatedByType =
   | "User"
@@ -2806,6 +3868,9 @@ export interface GetPartnerTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetPartnerTopicResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetPartnerTopicResponseSystemData>;
+
 export interface GetPartnerTopicResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -2824,6 +3889,11 @@ export interface GetPartnerTopicResponse {
   /** Identity information for the Partner Topic resource. */
   identity?: IdentityInfo;
 }
+const GetPartnerTopicResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<GetPartnerTopicResponse>;
+
 export interface GetPartnerTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2834,6 +3904,11 @@ export interface GetPartnerTopicEventSubscriptionRequest {
   /** Name of the event subscription to be found. */
   eventSubscriptionName: string;
 }
+const GetPartnerTopicEventSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<GetPartnerTopicEventSubscriptionRequest>;
+
 /** The type of identity that created the resource. */
 export type GetPartnerTopicEventSubscriptionResponseSystemDataCreatedByType =
   | "User"
@@ -2873,6 +3948,9 @@ export interface GetPartnerTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetPartnerTopicEventSubscriptionResponseSystemData;
 }
+const GetPartnerTopicEventSubscriptionResponse =
+  EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<GetPartnerTopicEventSubscriptionResponse>;
+
 export interface GetPartnerTopicEventSubscriptionDeliveryAttributesRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2883,6 +3961,11 @@ export interface GetPartnerTopicEventSubscriptionDeliveryAttributesRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
+const GetPartnerTopicEventSubscriptionDeliveryAttributesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<GetPartnerTopicEventSubscriptionDeliveryAttributesRequest>;
+
 export interface GetPartnerTopicEventSubscriptionFullUrlRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2893,6 +3976,11 @@ export interface GetPartnerTopicEventSubscriptionFullUrlRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
+const GetPartnerTopicEventSubscriptionFullUrlRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<GetPartnerTopicEventSubscriptionFullUrlRequest>;
+
 export interface GetPermissionBindingRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2903,8 +3991,15 @@ export interface GetPermissionBindingRequest {
   /** Name of the permission binding. */
   permissionBindingName: string;
 }
+const GetPermissionBindingRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<GetPermissionBindingRequest>;
+
 /** The allowed permission. */
 export type PermissionBindingPropertiesPermission = "Publisher" | "Subscriber";
+const PermissionBindingPropertiesPermission = S.String;
+
 /** Provisioning state of the PermissionBinding resource. */
 export type PermissionBindingPropertiesProvisioningState =
   | "Creating"
@@ -2914,6 +4009,8 @@ export type PermissionBindingPropertiesProvisioningState =
   | "Canceled"
   | "Failed"
   | "Deleted";
+const PermissionBindingPropertiesProvisioningState = S.String;
+
 /** The properties of permission binding. */
 export interface PermissionBindingProperties {
   /** Description for the Permission Binding resource. */
@@ -2927,6 +4024,11 @@ export interface PermissionBindingProperties {
   /** Provisioning state of the PermissionBinding resource. */
   provisioningState?: PermissionBindingPropertiesProvisioningState;
 }
+const PermissionBindingProperties = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<PermissionBindingProperties>;
+
 /** The type of identity that created the resource. */
 export type GetPermissionBindingResponseSystemDataCreatedByType =
   | "User"
@@ -2954,6 +4056,9 @@ export interface GetPermissionBindingResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetPermissionBindingResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetPermissionBindingResponseSystemData>;
+
 export interface GetPermissionBindingResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -2966,11 +4071,18 @@ export interface GetPermissionBindingResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetPermissionBindingResponseSystemData;
 }
+const GetPermissionBindingResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<GetPermissionBindingResponse>;
+
 export type GetPrivateEndpointConnectionRequestParentType =
   | "topics"
   | "domains"
   | "partnerNamespaces"
   | "namespaces";
+const GetPrivateEndpointConnectionRequestParentType = S.String;
+
 export interface GetPrivateEndpointConnectionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2983,6 +4095,11 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection connection. */
   privateEndpointConnectionName: string;
 }
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
+
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -2993,6 +4110,9 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Properties of the PrivateEndpointConnection. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const GetPrivateEndpointConnectionResponse =
+  PrivateEndpointConnection as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+
 export interface GetPrivateLinkResourceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3005,14 +4125,30 @@ export interface GetPrivateLinkResourceRequest {
   /** The name of private link resource will be either topic, domain, partnerNamespace or namespace. */
   privateLinkResourceName: string;
 }
+const GetPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<GetPrivateLinkResourceRequest>;
+
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
+const PrivateLinkResourcePropertiesRequiredMembersList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+
 export interface PrivateLinkResourceProperties {
   groupId?: string;
   displayName?: string;
   requiredMembers?: PrivateLinkResourcePropertiesRequiredMembersList;
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
+const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<PrivateLinkResourceProperties>;
+
 /** Information of the private link resource. */
 export interface PrivateLinkResource {
   /** Properties of the private link resource. */
@@ -3024,6 +4160,8 @@ export interface PrivateLinkResource {
   /** Type of the resource. */
   type?: string;
 }
+const PrivateLinkResource = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<PrivateLinkResource>;
+
 export interface GetSystemTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3032,8 +4170,16 @@ export interface GetSystemTopicRequest {
   /** Name of the system topic. */
   systemTopicName: string;
 }
+const GetSystemTopicRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<GetSystemTopicRequest>;
+
 /** Tags of the resource. */
 export type GetSystemTopicResponseTagsMap = { [key: string]: string | undefined };
+const GetSystemTopicResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetSystemTopicResponseTagsMap>;
+
 /** Provisioning state of the system topic. */
 export type SystemTopicPropertiesProvisioningState =
   | "Creating"
@@ -3042,6 +4188,8 @@ export type SystemTopicPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
+const SystemTopicPropertiesProvisioningState = S.String;
+
 /** Properties of the System Topic. */
 export interface SystemTopicProperties {
   /** Provisioning state of the system topic. */
@@ -3053,6 +4201,11 @@ export interface SystemTopicProperties {
   /** Metric resource id for the system topic. */
   metricResourceId?: string;
 }
+const SystemTopicProperties = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<SystemTopicProperties>;
+
 /** The type of identity that created the resource. */
 export type GetSystemTopicResponseSystemDataCreatedByType =
   | "User"
@@ -3080,6 +4233,9 @@ export interface GetSystemTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetSystemTopicResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetSystemTopicResponseSystemData>;
+
 export interface GetSystemTopicResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -3098,6 +4254,11 @@ export interface GetSystemTopicResponse {
   /** Identity information for the resource. */
   identity?: IdentityInfo;
 }
+const GetSystemTopicResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<GetSystemTopicResponse>;
+
 export interface GetSystemTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3108,6 +4269,11 @@ export interface GetSystemTopicEventSubscriptionRequest {
   /** Name of the event subscription to be found. */
   eventSubscriptionName: string;
 }
+const GetSystemTopicEventSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<GetSystemTopicEventSubscriptionRequest>;
+
 /** The type of identity that created the resource. */
 export type GetSystemTopicEventSubscriptionResponseSystemDataCreatedByType =
   | "User"
@@ -3147,6 +4313,9 @@ export interface GetSystemTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetSystemTopicEventSubscriptionResponseSystemData;
 }
+const GetSystemTopicEventSubscriptionResponse =
+  EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<GetSystemTopicEventSubscriptionResponse>;
+
 export interface GetSystemTopicEventSubscriptionDeliveryAttributesRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3157,6 +4326,11 @@ export interface GetSystemTopicEventSubscriptionDeliveryAttributesRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
+const GetSystemTopicEventSubscriptionDeliveryAttributesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<GetSystemTopicEventSubscriptionDeliveryAttributesRequest>;
+
 export interface GetSystemTopicEventSubscriptionFullUrlRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3167,6 +4341,11 @@ export interface GetSystemTopicEventSubscriptionFullUrlRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
+const GetSystemTopicEventSubscriptionFullUrlRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<GetSystemTopicEventSubscriptionFullUrlRequest>;
+
 export interface GetTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3175,10 +4354,18 @@ export interface GetTopicRequest {
   /** Name of the topic. */
   topicName: string;
 }
+const GetTopicRequest = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<GetTopicRequest>;
+
 /** Tags of the resource. */
 export type GetTopicResponseTagsMap = { [key: string]: string | undefined };
+const GetTopicResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetTopicResponseTagsMap>;
+
 /** List of private endpoint connections. */
 export type TopicPropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
+const TopicPropertiesPrivateEndpointConnectionsList =
+  DomainPropertiesPrivateEndpointConnectionsList as any as S.Schema<TopicPropertiesPrivateEndpointConnectionsList>;
+
 /** Provisioning state of the topic. */
 export type TopicPropertiesProvisioningState =
   | "Creating"
@@ -3187,19 +4374,32 @@ export type TopicPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
+const TopicPropertiesProvisioningState = S.String;
+
 /** Minimum TLS version of the publisher allowed to publish to this topic */
 export type TopicPropertiesMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
+const TopicPropertiesMinimumTlsVersionAllowed = S.String;
+
 /** This determines the format that Event Grid should expect for incoming events published to the topic. */
 export type TopicPropertiesInputSchema =
   | "EventGridSchema"
   | "CustomEventSchema"
   | "CloudEventSchemaV1_0";
+const TopicPropertiesInputSchema = S.String;
+
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" /> */
 export type TopicPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
+const TopicPropertiesPublicNetworkAccess = S.String;
+
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type TopicPropertiesInboundIpRulesList = Array<InboundIpRule>;
+const TopicPropertiesInboundIpRulesList =
+  DomainPropertiesInputInboundIpRulesList as any as S.Schema<TopicPropertiesInboundIpRulesList>;
+
 /** Data Residency Boundary of the resource. */
 export type TopicPropertiesDataResidencyBoundary = "WithinGeopair" | "WithinRegion";
+const TopicPropertiesDataResidencyBoundary = S.String;
+
 /** Properties of the Topic. */
 export interface TopicProperties {
   /** List of private endpoint connections. */
@@ -3227,6 +4427,8 @@ export interface TopicProperties {
   /** Data Residency Boundary of the resource. */
   dataResidencyBoundary?: TopicPropertiesDataResidencyBoundary;
 }
+const TopicProperties = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<TopicProperties>;
+
 /** The type of identity that created the resource. */
 export type GetTopicResponseSystemDataCreatedByType =
   | "User"
@@ -3254,6 +4456,9 @@ export interface GetTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetTopicResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetTopicResponseSystemData>;
+
 export interface GetTopicResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -3272,6 +4477,8 @@ export interface GetTopicResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetTopicResponseSystemData;
 }
+const GetTopicResponse = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<GetTopicResponse>;
+
 export interface GetTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3282,6 +4489,11 @@ export interface GetTopicEventSubscriptionRequest {
   /** Name of the event subscription to be found. */
   eventSubscriptionName: string;
 }
+const GetTopicEventSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<GetTopicEventSubscriptionRequest>;
+
 /** The type of identity that created the resource. */
 export type GetTopicEventSubscriptionResponseSystemDataCreatedByType =
   | "User"
@@ -3321,6 +4533,9 @@ export interface GetTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetTopicEventSubscriptionResponseSystemData;
 }
+const GetTopicEventSubscriptionResponse =
+  GetDomainEventSubscriptionResponse as any as S.Schema<GetTopicEventSubscriptionResponse>;
+
 export interface GetTopicEventSubscriptionDeliveryAttributesRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3331,6 +4546,11 @@ export interface GetTopicEventSubscriptionDeliveryAttributesRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
+const GetTopicEventSubscriptionDeliveryAttributesRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<GetTopicEventSubscriptionDeliveryAttributesRequest>;
+
 export interface GetTopicEventSubscriptionFullUrlRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3341,6 +4561,11 @@ export interface GetTopicEventSubscriptionFullUrlRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
+const GetTopicEventSubscriptionFullUrlRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<GetTopicEventSubscriptionFullUrlRequest>;
+
 export interface GetTopicSpaceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3351,8 +4576,16 @@ export interface GetTopicSpaceRequest {
   /** Name of the Topic space. */
   topicSpaceName: string;
 }
+const GetTopicSpaceRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<GetTopicSpaceRequest>;
+
 /** The topic filters in the topic space. Example: "topicTemplates": [ "devices/foo/bar", "devices/topic1/+", "devices/${principal.name}/${principal.attributes.keyName}" ]. */
 export type TopicSpacePropertiesTopicTemplatesList = Array<string>;
+const TopicSpacePropertiesTopicTemplatesList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<TopicSpacePropertiesTopicTemplatesList>;
+
 /** Provisioning state of the TopicSpace resource. */
 export type TopicSpacePropertiesProvisioningState =
   | "Creating"
@@ -3362,6 +4595,8 @@ export type TopicSpacePropertiesProvisioningState =
   | "Canceled"
   | "Failed"
   | "Deleted";
+const TopicSpacePropertiesProvisioningState = S.String;
+
 /** The properties of topic space. */
 export interface TopicSpaceProperties {
   /** Description for the Topic Space resource. */
@@ -3371,6 +4606,11 @@ export interface TopicSpaceProperties {
   /** Provisioning state of the TopicSpace resource. */
   provisioningState?: TopicSpacePropertiesProvisioningState;
 }
+const TopicSpaceProperties = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<TopicSpaceProperties>;
+
 /** The type of identity that created the resource. */
 export type GetTopicSpaceResponseSystemDataCreatedByType =
   | "User"
@@ -3398,6 +4638,9 @@ export interface GetTopicSpaceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetTopicSpaceResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetTopicSpaceResponseSystemData>;
+
 export interface GetTopicSpaceResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -3410,12 +4653,21 @@ export interface GetTopicSpaceResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetTopicSpaceResponseSystemData;
 }
+const GetTopicSpaceResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<GetTopicSpaceResponse>;
+
 export interface GetTopicTypeRequest {
   /** Name of the topic type. */
   topicTypeName: string;
 }
+const GetTopicTypeRequest = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<GetTopicTypeRequest>;
+
 /** Region type of the resource. */
 export type TopicTypePropertiesResourceRegionType = "RegionalResource" | "GlobalResource";
+const TopicTypePropertiesResourceRegionType = S.String;
+
 /** Provisioning state of the topic type. */
 export type TopicTypePropertiesProvisioningState =
   | "Creating"
@@ -3424,23 +4676,45 @@ export type TopicTypePropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
+const TopicTypePropertiesProvisioningState = S.String;
+
 /** List of locations supported by this topic type. */
 export type TopicTypePropertiesSupportedLocationsList = Array<string>;
+const TopicTypePropertiesSupportedLocationsList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<TopicTypePropertiesSupportedLocationsList>;
+
 export type TopicTypePropertiesSupportedScopesForSourceItem =
   | "Resource"
   | "ResourceGroup"
   | "AzureSubscription"
   | "ManagementGroup";
+const TopicTypePropertiesSupportedScopesForSourceItem = S.String;
+
 /** Supported source scopes. */
 export type TopicTypePropertiesSupportedScopesForSourceList =
   Array<TopicTypePropertiesSupportedScopesForSourceItem>;
+const TopicTypePropertiesSupportedScopesForSourceList = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<TopicTypePropertiesSupportedScopesForSourceList>;
+
 export interface TopicTypeAdditionalEnforcedPermission {
   permissionName?: string;
   isDataAction?: boolean;
 }
+const TopicTypeAdditionalEnforcedPermission = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<TopicTypeAdditionalEnforcedPermission>;
+
 /** Permissions which are enforced for creating and updating system topics of this this topic type. */
 export type TopicTypePropertiesAdditionalEnforcedPermissionsList =
   Array<TopicTypeAdditionalEnforcedPermission>;
+const TopicTypePropertiesAdditionalEnforcedPermissionsList = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<TopicTypePropertiesAdditionalEnforcedPermissionsList>;
+
 /** Properties of a topic type. */
 export interface TopicTypeProperties {
   /** Namespace of the provider of the topic type. */
@@ -3464,6 +4738,8 @@ export interface TopicTypeProperties {
   /** Permissions which are enforced for creating and updating system topics of this this topic type. */
   additionalEnforcedPermissions?: TopicTypePropertiesAdditionalEnforcedPermissionsList;
 }
+const TopicTypeProperties = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<TopicTypeProperties>;
+
 export interface GetTopicTypeResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -3474,10 +4750,20 @@ export interface GetTopicTypeResponse {
   /** Properties of the topic type info */
   properties?: TopicTypeProperties;
 }
+const GetTopicTypeResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<GetTopicTypeResponse>;
+
 export interface GetVerifiedPartnerRequest {
   /** Name of the verified partner. */
   verifiedPartnerName: string;
 }
+const GetVerifiedPartnerRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<GetVerifiedPartnerRequest>;
+
 /** Information about the partner. */
 export interface PartnerDetails {
   /** This is short description about the partner. The length of this description should not exceed 256 characters. */
@@ -3487,6 +4773,8 @@ export interface PartnerDetails {
   /** URI of the partner website that can be used by Azure customers to setup Event Grid integration on an event source. */
   setupUri?: string;
 }
+const PartnerDetails = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<PartnerDetails>;
+
 /** Provisioning state of the verified partner. */
 export type VerifiedPartnerPropertiesProvisioningState =
   | "Creating"
@@ -3495,6 +4783,8 @@ export type VerifiedPartnerPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
+const VerifiedPartnerPropertiesProvisioningState = S.String;
+
 /** Properties of the verified partner. */
 export interface VerifiedPartnerProperties {
   /** ImmutableId of the corresponding partner registration. */
@@ -3508,6 +4798,11 @@ export interface VerifiedPartnerProperties {
   /** Provisioning state of the verified partner. */
   provisioningState?: VerifiedPartnerPropertiesProvisioningState;
 }
+const VerifiedPartnerProperties = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<VerifiedPartnerProperties>;
+
 /** The type of identity that created the resource. */
 export type GetVerifiedPartnerResponseSystemDataCreatedByType =
   | "User"
@@ -3535,6 +4830,9 @@ export interface GetVerifiedPartnerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetVerifiedPartnerResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetVerifiedPartnerResponseSystemData>;
+
 export interface GetVerifiedPartnerResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -3547,6 +4845,11 @@ export interface GetVerifiedPartnerResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetVerifiedPartnerResponseSystemData;
 }
+const GetVerifiedPartnerResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<GetVerifiedPartnerResponse>;
+
 export interface ListCaCertificateByNamespaceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3559,18 +4862,27 @@ export interface ListCaCertificateByNamespaceRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListCaCertificateByNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<ListCaCertificateByNamespaceRequest>;
+
 /** The type of identity that created the resource. */
 export type CaCertificateSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const CaCertificateSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type CaCertificateSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const CaCertificateSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface CaCertificateSystemData {
   /** The identity that created the resource. */
@@ -3586,6 +4898,11 @@ export interface CaCertificateSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const CaCertificateSystemData = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<CaCertificateSystemData>;
+
 /** The CA Certificate resource. */
 export interface CaCertificate {
   /** Fully qualified identifier of the resource. */
@@ -3599,8 +4916,15 @@ export interface CaCertificate {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: CaCertificateSystemData;
 }
+const CaCertificate = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<CaCertificate>;
+
 /** A collection of CA Certificate. */
 export type CaCertificatesListResultValueList = Array<CaCertificate>;
+const CaCertificatesListResultValueList = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<CaCertificatesListResultValueList>;
+
 /** Result of the List CA Certificate operation. */
 export interface CaCertificatesListResult {
   /** A collection of CA Certificate. */
@@ -3608,6 +4932,11 @@ export interface CaCertificatesListResult {
   /** A link for the next page of CA Certificate. */
   nextLink?: string;
 }
+const CaCertificatesListResult = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<CaCertificatesListResult>;
+
 export interface ListChannelByPartnerNamespaceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3620,6 +4949,11 @@ export interface ListChannelByPartnerNamespaceRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListChannelByPartnerNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<ListChannelByPartnerNamespaceRequest>;
+
 /** The type of identity that created the resource. */
 export type ChannelSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
 /** The type of identity that last modified the resource. */
@@ -3643,6 +4977,8 @@ export interface ChannelSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const ChannelSystemData = CaCertificateSystemData as any as S.Schema<ChannelSystemData>;
+
 /** Channel info. */
 export interface Channel {
   /** Fully qualified identifier of the resource. */
@@ -3656,8 +4992,15 @@ export interface Channel {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ChannelSystemData;
 }
+const Channel = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<Channel>;
+
 /** A collection of Channels. */
 export type ChannelsListResultValueList = Array<Channel>;
+const ChannelsListResultValueList = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<ChannelsListResultValueList>;
+
 /** Result of the List Channels operation */
 export interface ChannelsListResult {
   /** A collection of Channels. */
@@ -3665,6 +5008,8 @@ export interface ChannelsListResult {
   /** A link for the next page of channels. */
   nextLink?: string;
 }
+const ChannelsListResult = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<ChannelsListResult>;
+
 export interface ListClientByNamespaceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3677,6 +5022,11 @@ export interface ListClientByNamespaceRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListClientByNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<ListClientByNamespaceRequest>;
+
 /** The type of identity that created the resource. */
 export type ClientSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
 /** The type of identity that last modified the resource. */
@@ -3696,6 +5046,8 @@ export interface ClientSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const ClientSystemData = CaCertificateSystemData as any as S.Schema<ClientSystemData>;
+
 /** The Client resource. */
 export interface Client {
   /** Fully qualified identifier of the resource. */
@@ -3709,8 +5061,15 @@ export interface Client {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ClientSystemData;
 }
+const Client = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<Client>;
+
 /** A collection of Client. */
 export type ClientsListResultValueList = Array<Client>;
+const ClientsListResultValueList = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<ClientsListResultValueList>;
+
 /** Result of the List Client operation. */
 export interface ClientsListResult {
   /** A collection of Client. */
@@ -3718,6 +5077,8 @@ export interface ClientsListResult {
   /** A link for the next page of Client. */
   nextLink?: string;
 }
+const ClientsListResult = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<ClientsListResult>;
+
 export interface ListClientGroupByNamespaceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3730,6 +5091,11 @@ export interface ListClientGroupByNamespaceRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListClientGroupByNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<ListClientGroupByNamespaceRequest>;
+
 /** The type of identity that created the resource. */
 export type ClientGroupSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
 /** The type of identity that last modified the resource. */
@@ -3753,6 +5119,8 @@ export interface ClientGroupSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const ClientGroupSystemData = CaCertificateSystemData as any as S.Schema<ClientGroupSystemData>;
+
 /** The Client group resource. */
 export interface ClientGroup {
   /** Fully qualified identifier of the resource. */
@@ -3766,8 +5134,15 @@ export interface ClientGroup {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ClientGroupSystemData;
 }
+const ClientGroup = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<ClientGroup>;
+
 /** A collection of Client Group. */
 export type ClientGroupsListResultValueList = Array<ClientGroup>;
+const ClientGroupsListResultValueList = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<ClientGroupsListResultValueList>;
+
 /** Result of the List Client Group operation. */
 export interface ClientGroupsListResult {
   /** A collection of Client Group. */
@@ -3775,6 +5150,11 @@ export interface ClientGroupsListResult {
   /** A link for the next page of Client Group. */
   nextLink?: string;
 }
+const ClientGroupsListResult = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<ClientGroupsListResult>;
+
 export interface ListDomainByResourceGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3785,8 +5165,15 @@ export interface ListDomainByResourceGroupRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListDomainByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<ListDomainByResourceGroupRequest>;
+
 /** Tags of the resource. */
 export type DomainTagsMap = { [key: string]: string | undefined };
+const DomainTagsMap = ActivatePartnerTopicResponseTagsMap as any as S.Schema<DomainTagsMap>;
+
 /** The type of identity that created the resource. */
 export type DomainSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
 /** The type of identity that last modified the resource. */
@@ -3806,6 +5193,8 @@ export interface DomainSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const DomainSystemData = CaCertificateSystemData as any as S.Schema<DomainSystemData>;
+
 /** EventGrid Domain. */
 export interface Domain {
   /** Fully qualified identifier of the resource. */
@@ -3825,8 +5214,15 @@ export interface Domain {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: DomainSystemData;
 }
+const Domain = /*@__PURE__*/ __L.at(__c27, 3) as any as S.Schema<Domain>;
+
 /** A collection of Domains. */
 export type DomainsListResultValueList = Array<Domain>;
+const DomainsListResultValueList = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<DomainsListResultValueList>;
+
 /** Result of the List Domains operation. */
 export interface DomainsListResult {
   /** A collection of Domains. */
@@ -3834,6 +5230,8 @@ export interface DomainsListResult {
   /** A link for the next page of domains. */
   nextLink?: string;
 }
+const DomainsListResult = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<DomainsListResult>;
+
 export interface ListDomainBySubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3842,6 +5240,11 @@ export interface ListDomainBySubscriptionRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListDomainBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<ListDomainBySubscriptionRequest>;
+
 export interface ListDomainEventSubscriptionsRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3854,6 +5257,11 @@ export interface ListDomainEventSubscriptionsRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListDomainEventSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<ListDomainEventSubscriptionsRequest>;
+
 /** The type of identity that created the resource. */
 export type EventSubscriptionSystemDataCreatedByType =
   | "User"
@@ -3881,6 +5289,9 @@ export interface EventSubscriptionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const EventSubscriptionSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<EventSubscriptionSystemData>;
+
 /** Event Subscription. */
 export interface EventSubscription {
   /** Fully qualified identifier of the resource. */
@@ -3894,8 +5305,15 @@ export interface EventSubscription {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: EventSubscriptionSystemData;
 }
+const EventSubscription = /*@__PURE__*/ __L.at(__c28, 0) as any as S.Schema<EventSubscription>;
+
 /** A collection of EventSubscriptions */
 export type EventSubscriptionsListResultValueList = Array<EventSubscription>;
+const EventSubscriptionsListResultValueList = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<EventSubscriptionsListResultValueList>;
+
 /** Result of the List EventSubscriptions operation */
 export interface EventSubscriptionsListResult {
   /** A collection of EventSubscriptions */
@@ -3903,6 +5321,11 @@ export interface EventSubscriptionsListResult {
   /** A link for the next page of event subscriptions */
   nextLink?: string;
 }
+const EventSubscriptionsListResult = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<EventSubscriptionsListResult>;
+
 export interface ListDomainSharedAccessKeysRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3911,6 +5334,11 @@ export interface ListDomainSharedAccessKeysRequest {
   /** Name of the domain. */
   domainName: string;
 }
+const ListDomainSharedAccessKeysRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<ListDomainSharedAccessKeysRequest>;
+
 /** Shared access keys of the Domain. */
 export interface DomainSharedAccessKeys {
   /** Shared access key1 for the domain. */
@@ -3918,6 +5346,11 @@ export interface DomainSharedAccessKeys {
   /** Shared access key2 for the domain. */
   key2?: string;
 }
+const DomainSharedAccessKeys = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<DomainSharedAccessKeys>;
+
 export interface ListDomainTopicByDomainRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3930,6 +5363,11 @@ export interface ListDomainTopicByDomainRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListDomainTopicByDomainRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<ListDomainTopicByDomainRequest>;
+
 /** The type of identity that created the resource. */
 export type DomainTopicSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
 /** The type of identity that last modified the resource. */
@@ -3953,6 +5391,8 @@ export interface DomainTopicSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const DomainTopicSystemData = CaCertificateSystemData as any as S.Schema<DomainTopicSystemData>;
+
 /** Domain Topic. */
 export interface DomainTopic {
   /** Fully qualified identifier of the resource. */
@@ -3966,8 +5406,15 @@ export interface DomainTopic {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: DomainTopicSystemData;
 }
+const DomainTopic = /*@__PURE__*/ __L.at(__c28, 6) as any as S.Schema<DomainTopic>;
+
 /** A collection of Domain Topics. */
 export type DomainTopicsListResultValueList = Array<DomainTopic>;
+const DomainTopicsListResultValueList = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<DomainTopicsListResultValueList>;
+
 /** Result of the List Domain Topics operation. */
 export interface DomainTopicsListResult {
   /** A collection of Domain Topics. */
@@ -3975,6 +5422,11 @@ export interface DomainTopicsListResult {
   /** A link for the next page of domain topics. */
   nextLink?: string;
 }
+const DomainTopicsListResult = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<DomainTopicsListResult>;
+
 export interface ListDomainTopicEventSubscriptionsRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3989,6 +5441,11 @@ export interface ListDomainTopicEventSubscriptionsRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListDomainTopicEventSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<ListDomainTopicEventSubscriptionsRequest>;
+
 export interface ListEventSubscriptionByDomainTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4003,6 +5460,11 @@ export interface ListEventSubscriptionByDomainTopicRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListEventSubscriptionByDomainTopicRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<ListEventSubscriptionByDomainTopicRequest>;
+
 export interface ListEventSubscriptionByResourceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4019,6 +5481,11 @@ export interface ListEventSubscriptionByResourceRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListEventSubscriptionByResourceRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<ListEventSubscriptionByResourceRequest>;
+
 export interface ListEventSubscriptionGlobalByResourceGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4029,6 +5496,11 @@ export interface ListEventSubscriptionGlobalByResourceGroupRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListEventSubscriptionGlobalByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<ListEventSubscriptionGlobalByResourceGroupRequest>;
+
 export interface ListEventSubscriptionGlobalByResourceGroupForTopicTypeRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4041,6 +5513,11 @@ export interface ListEventSubscriptionGlobalByResourceGroupForTopicTypeRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListEventSubscriptionGlobalByResourceGroupForTopicTypeRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<ListEventSubscriptionGlobalByResourceGroupForTopicTypeRequest>;
+
 export interface ListEventSubscriptionGlobalBySubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4049,6 +5526,11 @@ export interface ListEventSubscriptionGlobalBySubscriptionRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListEventSubscriptionGlobalBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<ListEventSubscriptionGlobalBySubscriptionRequest>;
+
 export interface ListEventSubscriptionGlobalBySubscriptionForTopicTypeRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4059,6 +5541,11 @@ export interface ListEventSubscriptionGlobalBySubscriptionForTopicTypeRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListEventSubscriptionGlobalBySubscriptionForTopicTypeRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<ListEventSubscriptionGlobalBySubscriptionForTopicTypeRequest>;
+
 export interface ListEventSubscriptionRegionalByResourceGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4071,6 +5558,11 @@ export interface ListEventSubscriptionRegionalByResourceGroupRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListEventSubscriptionRegionalByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<ListEventSubscriptionRegionalByResourceGroupRequest>;
+
 export interface ListEventSubscriptionRegionalByResourceGroupForTopicTypeRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4085,6 +5577,11 @@ export interface ListEventSubscriptionRegionalByResourceGroupForTopicTypeRequest
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListEventSubscriptionRegionalByResourceGroupForTopicTypeRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<ListEventSubscriptionRegionalByResourceGroupForTopicTypeRequest>;
+
 export interface ListEventSubscriptionRegionalBySubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4095,6 +5592,11 @@ export interface ListEventSubscriptionRegionalBySubscriptionRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListEventSubscriptionRegionalBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<ListEventSubscriptionRegionalBySubscriptionRequest>;
+
 export interface ListEventSubscriptionRegionalBySubscriptionForTopicTypeRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4107,6 +5609,11 @@ export interface ListEventSubscriptionRegionalBySubscriptionForTopicTypeRequest 
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListEventSubscriptionRegionalBySubscriptionForTopicTypeRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<ListEventSubscriptionRegionalBySubscriptionForTopicTypeRequest>;
+
 export interface ListNamespaceByResourceGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4117,8 +5624,15 @@ export interface ListNamespaceByResourceGroupRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListNamespaceByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<ListNamespaceByResourceGroupRequest>;
+
 /** Tags of the resource. */
 export type NamespaceTagsMap = { [key: string]: string | undefined };
+const NamespaceTagsMap = ActivatePartnerTopicResponseTagsMap as any as S.Schema<NamespaceTagsMap>;
+
 /** The type of identity that created the resource. */
 export type NamespaceSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
 /** The type of identity that last modified the resource. */
@@ -4142,6 +5656,8 @@ export interface NamespaceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const NamespaceSystemData = CaCertificateSystemData as any as S.Schema<NamespaceSystemData>;
+
 /** Namespace resource. */
 export interface Namespace {
   /** Fully qualified identifier of the resource. */
@@ -4163,8 +5679,15 @@ export interface Namespace {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: NamespaceSystemData;
 }
+const Namespace = /*@__PURE__*/ __L.at(__c30, 5) as any as S.Schema<Namespace>;
+
 /** A collection of namespaces. */
 export type NamespacesListResultValueList = Array<Namespace>;
+const NamespacesListResultValueList = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<NamespacesListResultValueList>;
+
 /** Result of the List Namespaces operation. */
 export interface NamespacesListResult {
   /** A collection of namespaces. */
@@ -4172,6 +5695,11 @@ export interface NamespacesListResult {
   /** A link for the next page of namespaces. */
   nextLink?: string;
 }
+const NamespacesListResult = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<NamespacesListResult>;
+
 export interface ListNamespaceBySubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4180,6 +5708,11 @@ export interface ListNamespaceBySubscriptionRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListNamespaceBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<ListNamespaceBySubscriptionRequest>;
+
 export interface ListNamespaceSharedAccessKeysRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4188,6 +5721,11 @@ export interface ListNamespaceSharedAccessKeysRequest {
   /** Name of the namespace. */
   namespaceName: string;
 }
+const ListNamespaceSharedAccessKeysRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<ListNamespaceSharedAccessKeysRequest>;
+
 /** Shared access keys of the Namespace. */
 export interface NamespaceSharedAccessKeys {
   /** Shared access key1 for the namespace. */
@@ -4195,6 +5733,11 @@ export interface NamespaceSharedAccessKeys {
   /** Shared access key2 for the namespace. */
   key2?: string;
 }
+const NamespaceSharedAccessKeys = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<NamespaceSharedAccessKeys>;
+
 export interface ListNamespaceTopicByNamespaceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4207,6 +5750,11 @@ export interface ListNamespaceTopicByNamespaceRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListNamespaceTopicByNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<ListNamespaceTopicByNamespaceRequest>;
+
 /** The type of identity that created the resource. */
 export type NamespaceTopicSystemDataCreatedByType =
   | "User"
@@ -4234,6 +5782,9 @@ export interface NamespaceTopicSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const NamespaceTopicSystemData =
+  CaCertificateSystemData as any as S.Schema<NamespaceTopicSystemData>;
+
 /** Namespace topic details. */
 export interface NamespaceTopic {
   /** Fully qualified identifier of the resource. */
@@ -4247,8 +5798,15 @@ export interface NamespaceTopic {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: NamespaceTopicSystemData;
 }
+const NamespaceTopic = /*@__PURE__*/ __L.at(__c31, 4) as any as S.Schema<NamespaceTopic>;
+
 /** A collection of namespace topics. */
 export type NamespaceTopicsListResultValueList = Array<NamespaceTopic>;
+const NamespaceTopicsListResultValueList = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<NamespaceTopicsListResultValueList>;
+
 /** Result of the List namespace topics operation. */
 export interface NamespaceTopicsListResult {
   /** A collection of namespace topics. */
@@ -4256,6 +5814,11 @@ export interface NamespaceTopicsListResult {
   /** A link for the next page of namespace topics. */
   nextLink?: string;
 }
+const NamespaceTopicsListResult = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<NamespaceTopicsListResult>;
+
 export interface ListNamespaceTopicEventSubscriptionByNamespaceTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4270,6 +5833,11 @@ export interface ListNamespaceTopicEventSubscriptionByNamespaceTopicRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListNamespaceTopicEventSubscriptionByNamespaceTopicRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<ListNamespaceTopicEventSubscriptionByNamespaceTopicRequest>;
+
 /** The type of identity that created the resource. */
 export type SubscriptionSystemDataCreatedByType =
   | "User"
@@ -4297,6 +5865,8 @@ export interface SubscriptionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SubscriptionSystemData = CaCertificateSystemData as any as S.Schema<SubscriptionSystemData>;
+
 /** Event Subscription. */
 export interface Subscription {
   /** Fully qualified identifier of the resource. */
@@ -4310,8 +5880,15 @@ export interface Subscription {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: SubscriptionSystemData;
 }
+const Subscription = /*@__PURE__*/ __L.at(__c32, 0) as any as S.Schema<Subscription>;
+
 /** A collection of Subscriptions. */
 export type SubscriptionsListResultValueList = Array<Subscription>;
+const SubscriptionsListResultValueList = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<SubscriptionsListResultValueList>;
+
 /** Result of the List event subscriptions operation. */
 export interface SubscriptionsListResult {
   /** A collection of Subscriptions. */
@@ -4319,6 +5896,11 @@ export interface SubscriptionsListResult {
   /** A link for the next page of event subscriptions */
   nextLink?: string;
 }
+const SubscriptionsListResult = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<SubscriptionsListResult>;
+
 export interface ListNamespaceTopicSharedAccessKeysRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4329,6 +5911,11 @@ export interface ListNamespaceTopicSharedAccessKeysRequest {
   /** Name of the topic. */
   topicName: string;
 }
+const ListNamespaceTopicSharedAccessKeysRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<ListNamespaceTopicSharedAccessKeysRequest>;
+
 /** Shared access keys of the Topic */
 export interface TopicSharedAccessKeys {
   /** Shared access key1 for the topic. */
@@ -4336,7 +5923,14 @@ export interface TopicSharedAccessKeys {
   /** Shared access key2 for the topic. */
   key2?: string;
 }
+const TopicSharedAccessKeys = DomainSharedAccessKeys as any as S.Schema<TopicSharedAccessKeys>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Information about an operation */
 export interface OperationInfo {
   /** Name of the provider */
@@ -4348,6 +5942,8 @@ export interface OperationInfo {
   /** Description of the operation */
   description?: string;
 }
+const OperationInfo = /*@__PURE__*/ __L.at(__c32, 5) as any as S.Schema<OperationInfo>;
+
 /** Represents an operation returned by the GetOperations request. */
 export interface Operation {
   /** Name of the operation. */
@@ -4361,19 +5957,36 @@ export interface Operation {
   /** Properties of the operation. */
   properties?: unknown;
 }
+const Operation = /*@__PURE__*/ __L.at(__c32, 6) as any as S.Schema<Operation>;
+
 /** A collection of operations */
 export type OperationsListResultValueList = Array<Operation>;
+const OperationsListResultValueList = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<OperationsListResultValueList>;
+
 /** Result of the List Operations operation */
 export interface OperationsListResult {
   /** A collection of operations */
   value?: OperationsListResultValueList;
 }
+const OperationsListResult = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<OperationsListResult>;
+
 export interface ListPartnerConfigurationByResourceGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the resource group within the user's subscription. */
   resourceGroupName: string;
 }
+const ListPartnerConfigurationByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<ListPartnerConfigurationByResourceGroupRequest>;
+
 /** The type of identity that created the resource. */
 export type PartnerConfigurationSystemDataCreatedByType =
   | "User"
@@ -4401,8 +6014,14 @@ export interface PartnerConfigurationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const PartnerConfigurationSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<PartnerConfigurationSystemData>;
+
 /** Tags of the resource. */
 export type PartnerConfigurationTagsMap = { [key: string]: string | undefined };
+const PartnerConfigurationTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerConfigurationTagsMap>;
+
 /** Partner configuration information */
 export interface PartnerConfiguration {
   /** Fully qualified identifier of the resource. */
@@ -4420,8 +6039,18 @@ export interface PartnerConfiguration {
   /** Tags of the resource. */
   tags?: PartnerConfigurationTagsMap;
 }
+const PartnerConfiguration = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<PartnerConfiguration>;
+
 /** A collection of partner configurations. */
 export type PartnerConfigurationsListResultValueList = Array<PartnerConfiguration>;
+const PartnerConfigurationsListResultValueList = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<PartnerConfigurationsListResultValueList>;
+
 /** Result of the List partner configurations operation */
 export interface PartnerConfigurationsListResult {
   /** A collection of partner configurations. */
@@ -4429,6 +6058,11 @@ export interface PartnerConfigurationsListResult {
   /** A link for the next page of partner configurations. */
   nextLink?: string;
 }
+const PartnerConfigurationsListResult = /*@__PURE__*/ __L.at(
+  __c33,
+  4,
+) as any as S.Schema<PartnerConfigurationsListResult>;
+
 export interface ListPartnerConfigurationBySubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4437,6 +6071,11 @@ export interface ListPartnerConfigurationBySubscriptionRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListPartnerConfigurationBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<ListPartnerConfigurationBySubscriptionRequest>;
+
 export interface ListPartnerNamespaceByResourceGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4447,8 +6086,16 @@ export interface ListPartnerNamespaceByResourceGroupRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListPartnerNamespaceByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  6,
+) as any as S.Schema<ListPartnerNamespaceByResourceGroupRequest>;
+
 /** Tags of the resource. */
 export type PartnerNamespaceTagsMap = { [key: string]: string | undefined };
+const PartnerNamespaceTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerNamespaceTagsMap>;
+
 /** The type of identity that created the resource. */
 export type PartnerNamespaceSystemDataCreatedByType =
   | "User"
@@ -4476,6 +6123,9 @@ export interface PartnerNamespaceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const PartnerNamespaceSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<PartnerNamespaceSystemData>;
+
 /** EventGrid Partner Namespace. */
 export interface PartnerNamespace {
   /** Fully qualified identifier of the resource. */
@@ -4493,8 +6143,15 @@ export interface PartnerNamespace {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PartnerNamespaceSystemData;
 }
+const PartnerNamespace = /*@__PURE__*/ __L.at(__c33, 7) as any as S.Schema<PartnerNamespace>;
+
 /** A collection of partner namespaces. */
 export type PartnerNamespacesListResultValueList = Array<PartnerNamespace>;
+const PartnerNamespacesListResultValueList = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<PartnerNamespacesListResultValueList>;
+
 /** Result of the List Partner Namespaces operation */
 export interface PartnerNamespacesListResult {
   /** A collection of partner namespaces. */
@@ -4502,6 +6159,11 @@ export interface PartnerNamespacesListResult {
   /** A link for the next page of partner namespaces. */
   nextLink?: string;
 }
+const PartnerNamespacesListResult = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<PartnerNamespacesListResult>;
+
 export interface ListPartnerNamespaceBySubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4510,6 +6172,11 @@ export interface ListPartnerNamespaceBySubscriptionRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListPartnerNamespaceBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<ListPartnerNamespaceBySubscriptionRequest>;
+
 export interface ListPartnerNamespaceSharedAccessKeysRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4518,6 +6185,11 @@ export interface ListPartnerNamespaceSharedAccessKeysRequest {
   /** Name of the partner namespace. */
   partnerNamespaceName: string;
 }
+const ListPartnerNamespaceSharedAccessKeysRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<ListPartnerNamespaceSharedAccessKeysRequest>;
+
 /** Shared access keys of the partner namespace. */
 export interface PartnerNamespaceSharedAccessKeys {
   /** Shared access key1 for the partner namespace. */
@@ -4525,6 +6197,9 @@ export interface PartnerNamespaceSharedAccessKeys {
   /** Shared access key2 for the partner namespace. */
   key2?: string;
 }
+const PartnerNamespaceSharedAccessKeys =
+  NamespaceSharedAccessKeys as any as S.Schema<PartnerNamespaceSharedAccessKeys>;
+
 export interface ListPartnerRegistrationByResourceGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4535,8 +6210,16 @@ export interface ListPartnerRegistrationByResourceGroupRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListPartnerRegistrationByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<ListPartnerRegistrationByResourceGroupRequest>;
+
 /** Tags of the resource. */
 export type PartnerRegistrationTagsMap = { [key: string]: string | undefined };
+const PartnerRegistrationTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerRegistrationTagsMap>;
+
 /** The type of identity that created the resource. */
 export type PartnerRegistrationSystemDataCreatedByType =
   | "User"
@@ -4564,6 +6247,9 @@ export interface PartnerRegistrationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const PartnerRegistrationSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<PartnerRegistrationSystemData>;
+
 /** Information about a partner registration. */
 export interface PartnerRegistration {
   /** Fully qualified identifier of the resource. */
@@ -4581,8 +6267,15 @@ export interface PartnerRegistration {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PartnerRegistrationSystemData;
 }
+const PartnerRegistration = /*@__PURE__*/ __L.at(__c34, 5) as any as S.Schema<PartnerRegistration>;
+
 /** A collection of partner registrations. */
 export type PartnerRegistrationsListResultValueList = Array<PartnerRegistration>;
+const PartnerRegistrationsListResultValueList = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<PartnerRegistrationsListResultValueList>;
+
 /** Result of the List Partner Registrations operation. */
 export interface PartnerRegistrationsListResult {
   /** A collection of partner registrations. */
@@ -4590,6 +6283,11 @@ export interface PartnerRegistrationsListResult {
   /** A link for the next page of partner registrations. */
   nextLink?: string;
 }
+const PartnerRegistrationsListResult = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<PartnerRegistrationsListResult>;
+
 export interface ListPartnerRegistrationBySubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4598,6 +6296,11 @@ export interface ListPartnerRegistrationBySubscriptionRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListPartnerRegistrationBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<ListPartnerRegistrationBySubscriptionRequest>;
+
 export interface ListPartnerTopicByResourceGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4608,8 +6311,16 @@ export interface ListPartnerTopicByResourceGroupRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListPartnerTopicByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<ListPartnerTopicByResourceGroupRequest>;
+
 /** Tags of the resource. */
 export type PartnerTopicTagsMap = { [key: string]: string | undefined };
+const PartnerTopicTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerTopicTagsMap>;
+
 /** The type of identity that created the resource. */
 export type PartnerTopicSystemDataCreatedByType =
   | "User"
@@ -4637,6 +6348,8 @@ export interface PartnerTopicSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const PartnerTopicSystemData = CaCertificateSystemData as any as S.Schema<PartnerTopicSystemData>;
+
 /** Event Grid Partner Topic. */
 export interface PartnerTopic {
   /** Fully qualified identifier of the resource. */
@@ -4656,8 +6369,15 @@ export interface PartnerTopic {
   /** Identity information for the Partner Topic resource. */
   identity?: IdentityInfo;
 }
+const PartnerTopic = /*@__PURE__*/ __L.at(__c35, 2) as any as S.Schema<PartnerTopic>;
+
 /** A collection of partner topics. */
 export type PartnerTopicsListResultValueList = Array<PartnerTopic>;
+const PartnerTopicsListResultValueList = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<PartnerTopicsListResultValueList>;
+
 /** Result of the List Partner Topics operation. */
 export interface PartnerTopicsListResult {
   /** A collection of partner topics. */
@@ -4665,6 +6385,11 @@ export interface PartnerTopicsListResult {
   /** A link for the next page of partner topics. */
   nextLink?: string;
 }
+const PartnerTopicsListResult = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<PartnerTopicsListResult>;
+
 export interface ListPartnerTopicBySubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4673,6 +6398,11 @@ export interface ListPartnerTopicBySubscriptionRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListPartnerTopicBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<ListPartnerTopicBySubscriptionRequest>;
+
 export interface ListPartnerTopicEventSubscriptionByPartnerTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4685,6 +6415,11 @@ export interface ListPartnerTopicEventSubscriptionByPartnerTopicRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListPartnerTopicEventSubscriptionByPartnerTopicRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  6,
+) as any as S.Schema<ListPartnerTopicEventSubscriptionByPartnerTopicRequest>;
+
 export interface ListPermissionBindingByNamespaceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4697,6 +6432,11 @@ export interface ListPermissionBindingByNamespaceRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListPermissionBindingByNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<ListPermissionBindingByNamespaceRequest>;
+
 /** The type of identity that created the resource. */
 export type PermissionBindingSystemDataCreatedByType =
   | "User"
@@ -4724,6 +6464,9 @@ export interface PermissionBindingSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const PermissionBindingSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<PermissionBindingSystemData>;
+
 /** The Permission binding resource. */
 export interface PermissionBinding {
   /** Fully qualified identifier of the resource. */
@@ -4737,8 +6480,15 @@ export interface PermissionBinding {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PermissionBindingSystemData;
 }
+const PermissionBinding = /*@__PURE__*/ __L.at(__c36, 0) as any as S.Schema<PermissionBinding>;
+
 /** A collection of Permission Binding. */
 export type PermissionBindingsListResultValueList = Array<PermissionBinding>;
+const PermissionBindingsListResultValueList = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<PermissionBindingsListResultValueList>;
+
 /** Result of the List Permission Binding operation. */
 export interface PermissionBindingsListResult {
   /** A collection of Permission Binding. */
@@ -4746,11 +6496,18 @@ export interface PermissionBindingsListResult {
   /** A link for the next page of Permission Binding. */
   nextLink?: string;
 }
+const PermissionBindingsListResult = /*@__PURE__*/ __L.at(
+  __c36,
+  2,
+) as any as S.Schema<PermissionBindingsListResult>;
+
 export type ListPrivateEndpointConnectionByResourceRequestParentType =
   | "topics"
   | "domains"
   | "partnerNamespaces"
   | "namespaces";
+const ListPrivateEndpointConnectionByResourceRequestParentType = S.String;
+
 export interface ListPrivateEndpointConnectionByResourceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4765,8 +6522,16 @@ export interface ListPrivateEndpointConnectionByResourceRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListPrivateEndpointConnectionByResourceRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<ListPrivateEndpointConnectionByResourceRequest>;
+
 /** A collection of private endpoint connection resources. */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
+const PrivateEndpointConnectionListResultValueList =
+  DomainPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+
 /** Result of the list of all private endpoint connections operation. */
 export interface PrivateEndpointConnectionListResult {
   /** A collection of private endpoint connection resources. */
@@ -4774,6 +6539,11 @@ export interface PrivateEndpointConnectionListResult {
   /** A link for the next page of private endpoint connection resources. */
   nextLink?: string;
 }
+const PrivateEndpointConnectionListResult = /*@__PURE__*/ __L.at(
+  __c36,
+  4,
+) as any as S.Schema<PrivateEndpointConnectionListResult>;
+
 export interface ListPrivateLinkResourceByResourceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4788,8 +6558,18 @@ export interface ListPrivateLinkResourceByResourceRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListPrivateLinkResourceByResourceRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<ListPrivateLinkResourceByResourceRequest>;
+
 /** A collection of private link resources */
 export type PrivateLinkResourcesListResultValueList = Array<PrivateLinkResource>;
+const PrivateLinkResourcesListResultValueList = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<PrivateLinkResourcesListResultValueList>;
+
 /** Result of the List private link resources operation. */
 export interface PrivateLinkResourcesListResult {
   /** A collection of private link resources */
@@ -4797,6 +6577,11 @@ export interface PrivateLinkResourcesListResult {
   /** A link for the next page of private link resources. */
   nextLink?: string;
 }
+const PrivateLinkResourcesListResult = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<PrivateLinkResourcesListResult>;
+
 export interface ListSystemTopicByResourceGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4807,8 +6592,16 @@ export interface ListSystemTopicByResourceGroupRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListSystemTopicByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<ListSystemTopicByResourceGroupRequest>;
+
 /** Tags of the resource. */
 export type SystemTopicTagsMap = { [key: string]: string | undefined };
+const SystemTopicTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<SystemTopicTagsMap>;
+
 /** The type of identity that created the resource. */
 export type SystemTopicSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
 /** The type of identity that last modified the resource. */
@@ -4832,6 +6625,8 @@ export interface SystemTopicSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemTopicSystemData = CaCertificateSystemData as any as S.Schema<SystemTopicSystemData>;
+
 /** EventGrid System Topic. */
 export interface SystemTopic {
   /** Fully qualified identifier of the resource. */
@@ -4851,8 +6646,15 @@ export interface SystemTopic {
   /** Identity information for the resource. */
   identity?: IdentityInfo;
 }
+const SystemTopic = /*@__PURE__*/ __L.at(__c37, 1) as any as S.Schema<SystemTopic>;
+
 /** A collection of system Topics. */
 export type SystemTopicsListResultValueList = Array<SystemTopic>;
+const SystemTopicsListResultValueList = /*@__PURE__*/ __L.at(
+  __c37,
+  2,
+) as any as S.Schema<SystemTopicsListResultValueList>;
+
 /** Result of the List System topics operation. */
 export interface SystemTopicsListResult {
   /** A collection of system Topics. */
@@ -4860,6 +6662,11 @@ export interface SystemTopicsListResult {
   /** A link for the next page of topics. */
   nextLink?: string;
 }
+const SystemTopicsListResult = /*@__PURE__*/ __L.at(
+  __c37,
+  3,
+) as any as S.Schema<SystemTopicsListResult>;
+
 export interface ListSystemTopicBySubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4868,6 +6675,11 @@ export interface ListSystemTopicBySubscriptionRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListSystemTopicBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  4,
+) as any as S.Schema<ListSystemTopicBySubscriptionRequest>;
+
 export interface ListSystemTopicEventSubscriptionBySystemTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4880,6 +6692,11 @@ export interface ListSystemTopicEventSubscriptionBySystemTopicRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListSystemTopicEventSubscriptionBySystemTopicRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<ListSystemTopicEventSubscriptionBySystemTopicRequest>;
+
 export interface ListTopicByResourceGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4890,8 +6707,15 @@ export interface ListTopicByResourceGroupRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListTopicByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<ListTopicByResourceGroupRequest>;
+
 /** Tags of the resource. */
 export type TopicTagsMap = { [key: string]: string | undefined };
+const TopicTagsMap = ActivatePartnerTopicResponseTagsMap as any as S.Schema<TopicTagsMap>;
+
 /** The type of identity that created the resource. */
 export type TopicSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
 /** The type of identity that last modified the resource. */
@@ -4911,6 +6735,8 @@ export interface TopicSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const TopicSystemData = CaCertificateSystemData as any as S.Schema<TopicSystemData>;
+
 /** EventGrid Topic */
 export interface Topic {
   /** Fully qualified identifier of the resource. */
@@ -4930,8 +6756,15 @@ export interface Topic {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: TopicSystemData;
 }
+const Topic = /*@__PURE__*/ __L.at(__c37, 7) as any as S.Schema<Topic>;
+
 /** A collection of Topics */
 export type TopicsListResultValueList = Array<Topic>;
+const TopicsListResultValueList = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<TopicsListResultValueList>;
+
 /** Result of the List Topics operation */
 export interface TopicsListResult {
   /** A collection of Topics */
@@ -4939,6 +6772,8 @@ export interface TopicsListResult {
   /** A link for the next page of topics */
   nextLink?: string;
 }
+const TopicsListResult = /*@__PURE__*/ __L.at(__c38, 1) as any as S.Schema<TopicsListResult>;
+
 export interface ListTopicBySubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4947,6 +6782,11 @@ export interface ListTopicBySubscriptionRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListTopicBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<ListTopicBySubscriptionRequest>;
+
 export interface ListTopicEventSubscriptionsRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4959,6 +6799,11 @@ export interface ListTopicEventSubscriptionsRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListTopicEventSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<ListTopicEventSubscriptionsRequest>;
+
 export interface ListTopicEventTypesRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4971,6 +6816,11 @@ export interface ListTopicEventTypesRequest {
   /** Name of the topic. */
   resourceName: string;
 }
+const ListTopicEventTypesRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  4,
+) as any as S.Schema<ListTopicEventTypesRequest>;
+
 /** Properties of the event type */
 export interface EventTypeProperties {
   /** Display name of the event type. */
@@ -4982,6 +6832,8 @@ export interface EventTypeProperties {
   /** IsInDefaultSet flag of the event type. */
   isInDefaultSet?: boolean;
 }
+const EventTypeProperties = /*@__PURE__*/ __L.at(__c38, 5) as any as S.Schema<EventTypeProperties>;
+
 /** Event Type for a subject under a topic */
 export interface EventType {
   /** Fully qualified identifier of the resource. */
@@ -4993,13 +6845,25 @@ export interface EventType {
   /** Properties of the event type. */
   properties?: EventTypeProperties;
 }
+const EventType = /*@__PURE__*/ __L.at(__c38, 6) as any as S.Schema<EventType>;
+
 /** A collection of event types */
 export type EventTypesListResultValueList = Array<EventType>;
+const EventTypesListResultValueList = /*@__PURE__*/ __L.at(
+  __c38,
+  7,
+) as any as S.Schema<EventTypesListResultValueList>;
+
 /** Result of the List Event Types operation */
 export interface EventTypesListResult {
   /** A collection of event types */
   value?: EventTypesListResultValueList;
 }
+const EventTypesListResult = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<EventTypesListResult>;
+
 export interface ListTopicSharedAccessKeysRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5008,6 +6872,11 @@ export interface ListTopicSharedAccessKeysRequest {
   /** Name of the topic. */
   topicName: string;
 }
+const ListTopicSharedAccessKeysRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  1,
+) as any as S.Schema<ListTopicSharedAccessKeysRequest>;
+
 export interface ListTopicSpaceByNamespaceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5020,6 +6889,11 @@ export interface ListTopicSpaceByNamespaceRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListTopicSpaceByNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  2,
+) as any as S.Schema<ListTopicSpaceByNamespaceRequest>;
+
 /** The type of identity that created the resource. */
 export type TopicSpaceSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
 /** The type of identity that last modified the resource. */
@@ -5043,6 +6917,8 @@ export interface TopicSpaceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const TopicSpaceSystemData = CaCertificateSystemData as any as S.Schema<TopicSpaceSystemData>;
+
 /** The Topic space resource. */
 export interface TopicSpace {
   /** Fully qualified identifier of the resource. */
@@ -5056,8 +6932,15 @@ export interface TopicSpace {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: TopicSpaceSystemData;
 }
+const TopicSpace = /*@__PURE__*/ __L.at(__c39, 3) as any as S.Schema<TopicSpace>;
+
 /** A collection of Topic Space. */
 export type TopicSpacesListResultValueList = Array<TopicSpace>;
+const TopicSpacesListResultValueList = /*@__PURE__*/ __L.at(
+  __c39,
+  4,
+) as any as S.Schema<TopicSpacesListResultValueList>;
+
 /** Result of the List Topic Space operation. */
 export interface TopicSpacesListResult {
   /** A collection of Topic Space. */
@@ -5065,11 +6948,26 @@ export interface TopicSpacesListResult {
   /** A link for the next page of Topic Space. */
   nextLink?: string;
 }
+const TopicSpacesListResult = /*@__PURE__*/ __L.at(
+  __c39,
+  5,
+) as any as S.Schema<TopicSpacesListResult>;
+
 export interface ListTopicTypeEventTypesRequest {
   /** Name of the topic type. */
   topicTypeName: string;
 }
+const ListTopicTypeEventTypesRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  6,
+) as any as S.Schema<ListTopicTypeEventTypesRequest>;
+
 export interface ListTopicTypesRequest {}
+const ListTopicTypesRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<ListTopicTypesRequest>;
+
 /** Properties of a topic type info. */
 export interface TopicTypeInfo {
   /** Fully qualified identifier of the resource. */
@@ -5081,19 +6979,36 @@ export interface TopicTypeInfo {
   /** Properties of the topic type info */
   properties?: TopicTypeProperties;
 }
+const TopicTypeInfo = GetTopicTypeResponse as any as S.Schema<TopicTypeInfo>;
+
 /** A collection of topic types */
 export type TopicTypesListResultValueList = Array<TopicTypeInfo>;
+const TopicTypesListResultValueList = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<TopicTypesListResultValueList>;
+
 /** Result of the List Topic Types operation */
 export interface TopicTypesListResult {
   /** A collection of topic types */
   value?: TopicTypesListResultValueList;
 }
+const TopicTypesListResult = /*@__PURE__*/ __L.at(
+  __c40,
+  1,
+) as any as S.Schema<TopicTypesListResult>;
+
 export interface ListVerifiedPartnersRequest {
   /** The query used to filter the search results using OData syntax. Filtering is permitted on the 'name' property only and with limited number of OData operations. These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal). No arithmetic operations are supported. The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'. The following is not a valid filter example: $filter=location eq 'westus'. */
   _filter?: string;
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
+const ListVerifiedPartnersRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<ListVerifiedPartnersRequest>;
+
 /** The type of identity that created the resource. */
 export type VerifiedPartnerSystemDataCreatedByType =
   | "User"
@@ -5121,6 +7036,9 @@ export interface VerifiedPartnerSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const VerifiedPartnerSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<VerifiedPartnerSystemData>;
+
 /** Verified partner information */
 export interface VerifiedPartner {
   /** Fully qualified identifier of the resource. */
@@ -5134,8 +7052,15 @@ export interface VerifiedPartner {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: VerifiedPartnerSystemData;
 }
+const VerifiedPartner = /*@__PURE__*/ __L.at(__c40, 3) as any as S.Schema<VerifiedPartner>;
+
 /** A collection of verified partners. */
 export type VerifiedPartnersListResultValueList = Array<VerifiedPartner>;
+const VerifiedPartnersListResultValueList = /*@__PURE__*/ __L.at(
+  __c40,
+  4,
+) as any as S.Schema<VerifiedPartnersListResultValueList>;
+
 /** Result of the List verified partners operation */
 export interface VerifiedPartnersListResult {
   /** A collection of verified partners. */
@@ -5143,26 +7068,57 @@ export interface VerifiedPartnersListResult {
   /** A link for the next page of verified partners if any. */
   nextLink?: string;
 }
+const VerifiedPartnersListResult = /*@__PURE__*/ __L.at(
+  __c40,
+  5,
+) as any as S.Schema<VerifiedPartnersListResult>;
+
 /** Tags of the resource. */
 export type NamespacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const NamespacesCreateOrUpdateRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<NamespacesCreateOrUpdateRequestTagsMap>;
+
 export interface PrivateEndpointConnectionInput {
   /** Properties of the PrivateEndpointConnection. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const PrivateEndpointConnectionInput = /*@__PURE__*/ __L.at(
+  __c40,
+  6,
+) as any as S.Schema<PrivateEndpointConnectionInput>;
+
 /** List of private endpoint connections. */
 export type NamespacePropertiesInputPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnectionInput>;
+const NamespacePropertiesInputPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
+  __c40,
+  7,
+) as any as S.Schema<NamespacePropertiesInputPrivateEndpointConnectionsList>;
+
 /** List of custom domain configurations for the namespace. */
 export type TopicsConfigurationInputCustomDomainsList = Array<CustomDomainConfiguration>;
+const TopicsConfigurationInputCustomDomainsList =
+  TopicsConfigurationCustomDomainsList as any as S.Schema<TopicsConfigurationInputCustomDomainsList>;
+
 /** Properties of the Topics Configuration. */
 export interface TopicsConfigurationInput {
   /** List of custom domain configurations for the namespace. */
   customDomains?: TopicsConfigurationInputCustomDomainsList;
 }
+const TopicsConfigurationInput = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<TopicsConfigurationInput>;
+
 /** Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled. */
 export type TopicSpacesConfigurationInputState = "Disabled" | "Enabled";
+const TopicSpacesConfigurationInputState = S.String;
+
 /** List of custom domain configurations for the namespace. */
 export type TopicSpacesConfigurationInputCustomDomainsList = Array<CustomDomainConfiguration>;
+const TopicSpacesConfigurationInputCustomDomainsList =
+  TopicsConfigurationCustomDomainsList as any as S.Schema<TopicSpacesConfigurationInputCustomDomainsList>;
+
 /** Properties of the Topic Spaces Configuration. */
 export interface TopicSpacesConfigurationInput {
   /** Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled. */
@@ -5180,12 +7136,24 @@ export interface TopicSpacesConfigurationInput {
   /** List of custom domain configurations for the namespace. */
   customDomains?: TopicSpacesConfigurationInputCustomDomainsList;
 }
+const TopicSpacesConfigurationInput = /*@__PURE__*/ __L.at(
+  __c41,
+  1,
+) as any as S.Schema<TopicSpacesConfigurationInput>;
+
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PubSub.NamespaceProperties.InboundIpRules" /> */
 export type NamespacePropertiesInputPublicNetworkAccess = "Enabled" | "Disabled";
+const NamespacePropertiesInputPublicNetworkAccess = S.String;
+
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type NamespacePropertiesInputInboundIpRulesList = Array<InboundIpRule>;
+const NamespacePropertiesInputInboundIpRulesList =
+  DomainPropertiesInputInboundIpRulesList as any as S.Schema<NamespacePropertiesInputInboundIpRulesList>;
+
 /** Minimum TLS version of the publisher allowed to publish to this namespace. Only TLS version 1.2 is supported. */
 export type NamespacePropertiesInputMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
+const NamespacePropertiesInputMinimumTlsVersionAllowed = S.String;
+
 /** Properties of the namespace resource. */
 export interface NamespacePropertiesInput {
   /** List of private endpoint connections. */
@@ -5203,6 +7171,11 @@ export interface NamespacePropertiesInput {
   /** Minimum TLS version of the publisher allowed to publish to this namespace. Only TLS version 1.2 is supported. */
   minimumTlsVersionAllowed?: NamespacePropertiesInputMinimumTlsVersionAllowed | (string & {});
 }
+const NamespacePropertiesInput = /*@__PURE__*/ __L.at(
+  __c41,
+  2,
+) as any as S.Schema<NamespacePropertiesInput>;
+
 export interface NamespacesCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5221,8 +7194,16 @@ export interface NamespacesCreateOrUpdateRequest {
   /** Identity information for the Namespace resource. */
   identity?: IdentityInfo;
 }
+const NamespacesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  3,
+) as any as S.Schema<NamespacesCreateOrUpdateRequest>;
+
 /** Tags of the resource. */
 export type NamespacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const NamespacesCreateOrUpdateResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<NamespacesCreateOrUpdateResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type NamespacesCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -5250,6 +7231,9 @@ export interface NamespacesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const NamespacesCreateOrUpdateResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<NamespacesCreateOrUpdateResponseSystemData>;
+
 export interface NamespacesCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -5270,8 +7254,15 @@ export interface NamespacesCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: NamespacesCreateOrUpdateResponseSystemData;
 }
+const NamespacesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c41,
+  4,
+) as any as S.Schema<NamespacesCreateOrUpdateResponse>;
+
 /** The event delivery schema for the event subscription. */
 export type SubscriptionPropertiesInputEventDeliverySchema = "CloudEventSchemaV1_0";
+const SubscriptionPropertiesInputEventDeliverySchema = S.String;
+
 /** Properties of the event subscription. */
 export interface SubscriptionPropertiesInput {
   /** Information about the delivery configuration of the event subscription. */
@@ -5283,6 +7274,11 @@ export interface SubscriptionPropertiesInput {
   /** Expiration time of the event subscription. */
   expirationTimeUtc?: string;
 }
+const SubscriptionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c41,
+  5,
+) as any as S.Schema<SubscriptionPropertiesInput>;
+
 export interface NamespaceTopicEventSubscriptionsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5297,6 +7293,11 @@ export interface NamespaceTopicEventSubscriptionsCreateOrUpdateRequest {
   /** Properties of the event subscription. */
   properties?: SubscriptionPropertiesInput;
 }
+const NamespaceTopicEventSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  6,
+) as any as S.Schema<NamespaceTopicEventSubscriptionsCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -5324,6 +7325,9 @@ export interface NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemDat
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemData =
+  DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemData as any as S.Schema<NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemData>;
+
 export interface NamespaceTopicEventSubscriptionsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -5336,10 +7340,19 @@ export interface NamespaceTopicEventSubscriptionsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemData;
 }
+const NamespaceTopicEventSubscriptionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c41,
+  7,
+) as any as S.Schema<NamespaceTopicEventSubscriptionsCreateOrUpdateResponse>;
+
 /** Publisher type of the namespace topic. */
 export type NamespaceTopicPropertiesInputPublisherType = "Custom";
+const NamespaceTopicPropertiesInputPublisherType = S.String;
+
 /** This determines the format that is expected for incoming events published to the topic. */
 export type NamespaceTopicPropertiesInputInputSchema = "CloudEventSchemaV1_0";
+const NamespaceTopicPropertiesInputInputSchema = S.String;
+
 /** Properties of the namespace topic. */
 export interface NamespaceTopicPropertiesInput {
   /** Publisher type of the namespace topic. */
@@ -5349,6 +7362,11 @@ export interface NamespaceTopicPropertiesInput {
   /** Event retention for the namespace topic expressed in days. The property default value is 1 day. Min event retention duration value is 1 day and max event retention duration value is 1 day. */
   eventRetentionInDays?: number;
 }
+const NamespaceTopicPropertiesInput = /*@__PURE__*/ __L.at(
+  __c42,
+  0,
+) as any as S.Schema<NamespaceTopicPropertiesInput>;
+
 export interface NamespaceTopicsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5361,6 +7379,11 @@ export interface NamespaceTopicsCreateOrUpdateRequest {
   /** Properties of the namespace topic. */
   properties?: NamespaceTopicPropertiesInput;
 }
+const NamespaceTopicsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  1,
+) as any as S.Schema<NamespaceTopicsCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type NamespaceTopicsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -5388,6 +7411,9 @@ export interface NamespaceTopicsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const NamespaceTopicsCreateOrUpdateResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<NamespaceTopicsCreateOrUpdateResponseSystemData>;
+
 export interface NamespaceTopicsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -5400,10 +7426,18 @@ export interface NamespaceTopicsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: NamespaceTopicsCreateOrUpdateResponseSystemData;
 }
+const NamespaceTopicsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c42,
+  2,
+) as any as S.Schema<NamespaceTopicsCreateOrUpdateResponse>;
+
 /** Tags of the resource. */
 export type PartnerConfigurationsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const PartnerConfigurationsCreateOrUpdateRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerConfigurationsCreateOrUpdateRequestTagsMap>;
+
 export interface PartnerConfigurationsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5416,6 +7450,11 @@ export interface PartnerConfigurationsCreateOrUpdateRequest {
   /** Tags of the resource. */
   tags?: PartnerConfigurationsCreateOrUpdateRequestTagsMap;
 }
+const PartnerConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  3,
+) as any as S.Schema<PartnerConfigurationsCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type PartnerConfigurationsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -5443,10 +7482,16 @@ export interface PartnerConfigurationsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const PartnerConfigurationsCreateOrUpdateResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<PartnerConfigurationsCreateOrUpdateResponseSystemData>;
+
 /** Tags of the resource. */
 export type PartnerConfigurationsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
+const PartnerConfigurationsCreateOrUpdateResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerConfigurationsCreateOrUpdateResponseTagsMap>;
+
 export interface PartnerConfigurationsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -5463,6 +7508,11 @@ export interface PartnerConfigurationsCreateOrUpdateResponse {
   /** Tags of the resource. */
   tags?: PartnerConfigurationsCreateOrUpdateResponseTagsMap;
 }
+const PartnerConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c42,
+  4,
+) as any as S.Schema<PartnerConfigurationsCreateOrUpdateResponse>;
+
 export interface PartnerConfigurationsUnauthorizePartnerRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5475,6 +7525,11 @@ export interface PartnerConfigurationsUnauthorizePartnerRequest {
   /** Expiration time of the partner authorization. If this timer expires, any request from this partner to create, update or delete resources in subscriber's context will fail. If specified, the allowed values are between 1 to the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration. If not specified, the default value will be the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration or 7 if this value is not specified. */
   authorizationExpirationTimeInUtc?: string;
 }
+const PartnerConfigurationsUnauthorizePartnerRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  5,
+) as any as S.Schema<PartnerConfigurationsUnauthorizePartnerRequest>;
+
 /** The type of identity that created the resource. */
 export type PartnerConfigurationsUnauthorizePartnerResponseSystemDataCreatedByType =
   | "User"
@@ -5502,10 +7557,16 @@ export interface PartnerConfigurationsUnauthorizePartnerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const PartnerConfigurationsUnauthorizePartnerResponseSystemData =
+  DomainEventSubscriptionsCreateOrUpdateResponseSystemData as any as S.Schema<PartnerConfigurationsUnauthorizePartnerResponseSystemData>;
+
 /** Tags of the resource. */
 export type PartnerConfigurationsUnauthorizePartnerResponseTagsMap = {
   [key: string]: string | undefined;
 };
+const PartnerConfigurationsUnauthorizePartnerResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerConfigurationsUnauthorizePartnerResponseTagsMap>;
+
 export interface PartnerConfigurationsUnauthorizePartnerResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -5522,18 +7583,35 @@ export interface PartnerConfigurationsUnauthorizePartnerResponse {
   /** Tags of the resource. */
   tags?: PartnerConfigurationsUnauthorizePartnerResponseTagsMap;
 }
+const PartnerConfigurationsUnauthorizePartnerResponse = /*@__PURE__*/ __L.at(
+  __c42,
+  6,
+) as any as S.Schema<PartnerConfigurationsUnauthorizePartnerResponse>;
+
 /** Tags of the resource. */
 export type PartnerNamespacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const PartnerNamespacesCreateOrUpdateRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerNamespacesCreateOrUpdateRequestTagsMap>;
+
 /** Minimum TLS version of the publisher allowed to publish to this partner namespace */
 export type PartnerNamespacePropertiesInputMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
+const PartnerNamespacePropertiesInputMinimumTlsVersionAllowed = S.String;
+
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceProperties.InboundIpRules" /> */
 export type PartnerNamespacePropertiesInputPublicNetworkAccess = "Enabled" | "Disabled";
+const PartnerNamespacePropertiesInputPublicNetworkAccess = S.String;
+
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type PartnerNamespacePropertiesInputInboundIpRulesList = Array<InboundIpRule>;
+const PartnerNamespacePropertiesInputInboundIpRulesList =
+  DomainPropertiesInputInboundIpRulesList as any as S.Schema<PartnerNamespacePropertiesInputInboundIpRulesList>;
+
 /** This determines if events published to this partner namespace should use the source attribute in the event payload or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic. */
 export type PartnerNamespacePropertiesInputPartnerTopicRoutingMode =
   | "SourceEventAttribute"
   | "ChannelNameHeader";
+const PartnerNamespacePropertiesInputPartnerTopicRoutingMode = S.String;
+
 /** Properties of the partner namespace. */
 export interface PartnerNamespacePropertiesInput {
   /** The fully qualified ARM Id of the partner registration that should be associated with this partner namespace. This takes the following format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}. */
@@ -5551,6 +7629,11 @@ export interface PartnerNamespacePropertiesInput {
   /** This determines if events published to this partner namespace should use the source attribute in the event payload or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic. */
   partnerTopicRoutingMode?: PartnerNamespacePropertiesInputPartnerTopicRoutingMode | (string & {});
 }
+const PartnerNamespacePropertiesInput = /*@__PURE__*/ __L.at(
+  __c42,
+  7,
+) as any as S.Schema<PartnerNamespacePropertiesInput>;
+
 export interface PartnerNamespacesCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5565,8 +7648,16 @@ export interface PartnerNamespacesCreateOrUpdateRequest {
   /** Properties of the Partner Namespace. */
   properties?: PartnerNamespacePropertiesInput;
 }
+const PartnerNamespacesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  0,
+) as any as S.Schema<PartnerNamespacesCreateOrUpdateRequest>;
+
 /** Tags of the resource. */
 export type PartnerNamespacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const PartnerNamespacesCreateOrUpdateResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerNamespacesCreateOrUpdateResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type PartnerNamespacesCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -5594,6 +7685,9 @@ export interface PartnerNamespacesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const PartnerNamespacesCreateOrUpdateResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<PartnerNamespacesCreateOrUpdateResponseSystemData>;
+
 export interface PartnerNamespacesCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -5610,15 +7704,28 @@ export interface PartnerNamespacesCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PartnerNamespacesCreateOrUpdateResponseSystemData;
 }
+const PartnerNamespacesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c43,
+  1,
+) as any as S.Schema<PartnerNamespacesCreateOrUpdateResponse>;
+
 /** Tags of the resource. */
 export type PartnerRegistrationsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const PartnerRegistrationsCreateOrUpdateRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerRegistrationsCreateOrUpdateRequestTagsMap>;
+
 /** Properties of the partner registration. */
 export interface PartnerRegistrationPropertiesInput {
   /** The immutableId of the corresponding partner registration. Note: This property is marked for deprecation and is not supported in any future GA API version */
   partnerRegistrationImmutableId?: string;
 }
+const PartnerRegistrationPropertiesInput = /*@__PURE__*/ __L.at(
+  __c43,
+  2,
+) as any as S.Schema<PartnerRegistrationPropertiesInput>;
+
 export interface PartnerRegistrationsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5633,10 +7740,18 @@ export interface PartnerRegistrationsCreateOrUpdateRequest {
   /** Properties of the partner registration. */
   properties?: PartnerRegistrationPropertiesInput;
 }
+const PartnerRegistrationsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  3,
+) as any as S.Schema<PartnerRegistrationsCreateOrUpdateRequest>;
+
 /** Tags of the resource. */
 export type PartnerRegistrationsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
+const PartnerRegistrationsCreateOrUpdateResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerRegistrationsCreateOrUpdateResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type PartnerRegistrationsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -5664,6 +7779,9 @@ export interface PartnerRegistrationsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const PartnerRegistrationsCreateOrUpdateResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<PartnerRegistrationsCreateOrUpdateResponseSystemData>;
+
 export interface PartnerRegistrationsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -5680,6 +7798,11 @@ export interface PartnerRegistrationsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PartnerRegistrationsCreateOrUpdateResponseSystemData;
 }
+const PartnerRegistrationsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c43,
+  4,
+) as any as S.Schema<PartnerRegistrationsCreateOrUpdateResponse>;
+
 export interface PartnerTopicEventSubscriptionsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5692,6 +7815,11 @@ export interface PartnerTopicEventSubscriptionsCreateOrUpdateRequest {
   /** Properties of the event subscription. */
   properties?: EventSubscriptionPropertiesInput;
 }
+const PartnerTopicEventSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  5,
+) as any as S.Schema<PartnerTopicEventSubscriptionsCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -5731,13 +7859,21 @@ export interface PartnerTopicEventSubscriptionsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemData;
 }
+const PartnerTopicEventSubscriptionsCreateOrUpdateResponse =
+  DomainTopicEventSubscriptionsCreateOrUpdateResponse as any as S.Schema<PartnerTopicEventSubscriptionsCreateOrUpdateResponse>;
+
 /** Tags of the resource. */
 export type PartnerTopicsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const PartnerTopicsCreateOrUpdateRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerTopicsCreateOrUpdateRequestTagsMap>;
+
 /** Activation state of the partner topic. */
 export type PartnerTopicPropertiesInputActivationState =
   | "NeverActivated"
   | "Activated"
   | "Deactivated";
+const PartnerTopicPropertiesInputActivationState = S.String;
+
 /** Properties of the Partner Topic. */
 export interface PartnerTopicPropertiesInput {
   /** The immutableId of the corresponding partner registration. */
@@ -5755,6 +7891,11 @@ export interface PartnerTopicPropertiesInput {
   /** Context or helpful message that can be used during the approval process by the subscriber. */
   messageForActivation?: string;
 }
+const PartnerTopicPropertiesInput = /*@__PURE__*/ __L.at(
+  __c43,
+  6,
+) as any as S.Schema<PartnerTopicPropertiesInput>;
+
 export interface PartnerTopicsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5771,8 +7912,16 @@ export interface PartnerTopicsCreateOrUpdateRequest {
   /** Identity information for the Partner Topic resource. */
   identity?: IdentityInfo;
 }
+const PartnerTopicsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  7,
+) as any as S.Schema<PartnerTopicsCreateOrUpdateRequest>;
+
 /** Tags of the resource. */
 export type PartnerTopicsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const PartnerTopicsCreateOrUpdateResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerTopicsCreateOrUpdateResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type PartnerTopicsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -5800,6 +7949,9 @@ export interface PartnerTopicsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const PartnerTopicsCreateOrUpdateResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<PartnerTopicsCreateOrUpdateResponseSystemData>;
+
 export interface PartnerTopicsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -5818,8 +7970,15 @@ export interface PartnerTopicsCreateOrUpdateResponse {
   /** Identity information for the Partner Topic resource. */
   identity?: IdentityInfo;
 }
+const PartnerTopicsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c44,
+  0,
+) as any as S.Schema<PartnerTopicsCreateOrUpdateResponse>;
+
 /** The allowed permission. */
 export type PermissionBindingPropertiesInputPermission = "Publisher" | "Subscriber";
+const PermissionBindingPropertiesInputPermission = S.String;
+
 /** The properties of permission binding. */
 export interface PermissionBindingPropertiesInput {
   /** Description for the Permission Binding resource. */
@@ -5831,6 +7990,11 @@ export interface PermissionBindingPropertiesInput {
   /** The name of the client group resource that the permission is bound to. The client group needs to be a resource under the same namespace the permission binding is a part of. */
   clientGroupName?: string;
 }
+const PermissionBindingPropertiesInput = /*@__PURE__*/ __L.at(
+  __c44,
+  1,
+) as any as S.Schema<PermissionBindingPropertiesInput>;
+
 export interface PermissionBindingsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5843,6 +8007,11 @@ export interface PermissionBindingsCreateOrUpdateRequest {
   /** The properties of permission binding. */
   properties?: PermissionBindingPropertiesInput;
 }
+const PermissionBindingsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  2,
+) as any as S.Schema<PermissionBindingsCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type PermissionBindingsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -5870,6 +8039,9 @@ export interface PermissionBindingsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const PermissionBindingsCreateOrUpdateResponseSystemData =
+  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<PermissionBindingsCreateOrUpdateResponseSystemData>;
+
 export interface PermissionBindingsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -5882,6 +8054,11 @@ export interface PermissionBindingsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PermissionBindingsCreateOrUpdateResponseSystemData;
 }
+const PermissionBindingsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c44,
+  3,
+) as any as S.Schema<PermissionBindingsCreateOrUpdateResponse>;
+
 export interface RegenerateDomainKeyRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5892,6 +8069,11 @@ export interface RegenerateDomainKeyRequest {
   /** Key name to regenerate key1 or key2. */
   keyName: string;
 }
+const RegenerateDomainKeyRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  4,
+) as any as S.Schema<RegenerateDomainKeyRequest>;
+
 export interface RegenerateNamespaceKeyRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5902,6 +8084,11 @@ export interface RegenerateNamespaceKeyRequest {
   /** Key name to regenerate key1 or key2. */
   keyName: string;
 }
+const RegenerateNamespaceKeyRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  5,
+) as any as S.Schema<RegenerateNamespaceKeyRequest>;
+
 export interface RegenerateNamespaceTopicKeyRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5914,6 +8101,11 @@ export interface RegenerateNamespaceTopicKeyRequest {
   /** Key name to regenerate key1 or key2 */
   keyName: string;
 }
+const RegenerateNamespaceTopicKeyRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  6,
+) as any as S.Schema<RegenerateNamespaceTopicKeyRequest>;
+
 export interface RegeneratePartnerNamespaceKeyRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5924,6 +8116,11 @@ export interface RegeneratePartnerNamespaceKeyRequest {
   /** Key name to regenerate (key1 or key2). */
   keyName: string;
 }
+const RegeneratePartnerNamespaceKeyRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  7,
+) as any as S.Schema<RegeneratePartnerNamespaceKeyRequest>;
+
 export interface RegenerateTopicKeyRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5934,6 +8131,11 @@ export interface RegenerateTopicKeyRequest {
   /** Key name to regenerate key1 or key2 */
   keyName: string;
 }
+const RegenerateTopicKeyRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  0,
+) as any as S.Schema<RegenerateTopicKeyRequest>;
+
 export interface SystemTopicEventSubscriptionsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5946,6 +8148,11 @@ export interface SystemTopicEventSubscriptionsCreateOrUpdateRequest {
   /** Properties of the event subscription. */
   properties?: EventSubscriptionPropertiesInput;
 }
+const SystemTopicEventSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  1,
+) as any as S.Schema<SystemTopicEventSubscriptionsCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -5985,8 +8192,14 @@ export interface SystemTopicEventSubscriptionsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemData;
 }
+const SystemTopicEventSubscriptionsCreateOrUpdateResponse =
+  DomainTopicEventSubscriptionsCreateOrUpdateResponse as any as S.Schema<SystemTopicEventSubscriptionsCreateOrUpdateResponse>;
+
 /** Tags of the resource. */
 export type SystemTopicsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const SystemTopicsCreateOrUpdateRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<SystemTopicsCreateOrUpdateRequestTagsMap>;
+
 /** Properties of the System Topic. */
 export interface SystemTopicPropertiesInput {
   /** Source for the system topic. */
@@ -5994,6 +8207,11 @@ export interface SystemTopicPropertiesInput {
   /** TopicType for the system topic. */
   topicType?: string;
 }
+const SystemTopicPropertiesInput = /*@__PURE__*/ __L.at(
+  __c45,
+  2,
+) as any as S.Schema<SystemTopicPropertiesInput>;
+
 export interface SystemTopicsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -6010,8 +8228,16 @@ export interface SystemTopicsCreateOrUpdateRequest {
   /** Identity information for the resource. */
   identity?: IdentityInfo;
 }
+const SystemTopicsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  3,
+) as any as S.Schema<SystemTopicsCreateOrUpdateRequest>;
+
 /** Tags of the resource. */
 export type SystemTopicsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const SystemTopicsCreateOrUpdateResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<SystemTopicsCreateOrUpdateResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type SystemTopicsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -6039,6 +8265,9 @@ export interface SystemTopicsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemTopicsCreateOrUpdateResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<SystemTopicsCreateOrUpdateResponseSystemData>;
+
 export interface SystemTopicsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -6057,6 +8286,11 @@ export interface SystemTopicsCreateOrUpdateResponse {
   /** Identity information for the resource. */
   identity?: IdentityInfo;
 }
+const SystemTopicsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c45,
+  4,
+) as any as S.Schema<SystemTopicsCreateOrUpdateResponse>;
+
 export interface TopicEventSubscriptionsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -6069,6 +8303,11 @@ export interface TopicEventSubscriptionsCreateOrUpdateRequest {
   /** Properties of the event subscription. */
   properties?: EventSubscriptionPropertiesInput;
 }
+const TopicEventSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  5,
+) as any as S.Schema<TopicEventSubscriptionsCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type TopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -6108,21 +8347,38 @@ export interface TopicEventSubscriptionsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: TopicEventSubscriptionsCreateOrUpdateResponseSystemData;
 }
+const TopicEventSubscriptionsCreateOrUpdateResponse =
+  EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<TopicEventSubscriptionsCreateOrUpdateResponse>;
+
 /** Tags of the resource. */
 export type TopicsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const TopicsCreateOrUpdateRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<TopicsCreateOrUpdateRequestTagsMap>;
+
 /** Minimum TLS version of the publisher allowed to publish to this topic */
 export type TopicPropertiesInputMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
+const TopicPropertiesInputMinimumTlsVersionAllowed = S.String;
+
 /** This determines the format that Event Grid should expect for incoming events published to the topic. */
 export type TopicPropertiesInputInputSchema =
   | "EventGridSchema"
   | "CustomEventSchema"
   | "CloudEventSchemaV1_0";
+const TopicPropertiesInputInputSchema = S.String;
+
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" /> */
 export type TopicPropertiesInputPublicNetworkAccess = "Enabled" | "Disabled";
+const TopicPropertiesInputPublicNetworkAccess = S.String;
+
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type TopicPropertiesInputInboundIpRulesList = Array<InboundIpRule>;
+const TopicPropertiesInputInboundIpRulesList =
+  DomainPropertiesInputInboundIpRulesList as any as S.Schema<TopicPropertiesInputInboundIpRulesList>;
+
 /** Data Residency Boundary of the resource. */
 export type TopicPropertiesInputDataResidencyBoundary = "WithinGeopair" | "WithinRegion";
+const TopicPropertiesInputDataResidencyBoundary = S.String;
+
 /** Properties of the Topic. */
 export interface TopicPropertiesInput {
   /** Event Type Information for the user topic. This information is provided by the publisher and can be used by the subscriber to view different types of events that are published. */
@@ -6142,6 +8398,11 @@ export interface TopicPropertiesInput {
   /** Data Residency Boundary of the resource. */
   dataResidencyBoundary?: TopicPropertiesInputDataResidencyBoundary | (string & {});
 }
+const TopicPropertiesInput = /*@__PURE__*/ __L.at(
+  __c45,
+  6,
+) as any as S.Schema<TopicPropertiesInput>;
+
 export interface TopicsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -6158,8 +8419,16 @@ export interface TopicsCreateOrUpdateRequest {
   /** Identity information for the resource. */
   identity?: IdentityInfo;
 }
+const TopicsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  7,
+) as any as S.Schema<TopicsCreateOrUpdateRequest>;
+
 /** Tags of the resource. */
 export type TopicsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const TopicsCreateOrUpdateResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<TopicsCreateOrUpdateResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type TopicsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -6187,6 +8456,9 @@ export interface TopicsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const TopicsCreateOrUpdateResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<TopicsCreateOrUpdateResponseSystemData>;
+
 export interface TopicsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -6205,8 +8477,16 @@ export interface TopicsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: TopicsCreateOrUpdateResponseSystemData;
 }
+const TopicsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c46,
+  0,
+) as any as S.Schema<TopicsCreateOrUpdateResponse>;
+
 /** The topic filters in the topic space. Example: "topicTemplates": [ "devices/foo/bar", "devices/topic1/+", "devices/${principal.name}/${principal.attributes.keyName}" ]. */
 export type TopicSpacePropertiesInputTopicTemplatesList = Array<string>;
+const TopicSpacePropertiesInputTopicTemplatesList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<TopicSpacePropertiesInputTopicTemplatesList>;
+
 /** The properties of topic space. */
 export interface TopicSpacePropertiesInput {
   /** Description for the Topic Space resource. */
@@ -6214,6 +8494,11 @@ export interface TopicSpacePropertiesInput {
   /** The topic filters in the topic space. Example: "topicTemplates": [ "devices/foo/bar", "devices/topic1/+", "devices/${principal.name}/${principal.attributes.keyName}" ]. */
   topicTemplates?: TopicSpacePropertiesInputTopicTemplatesList;
 }
+const TopicSpacePropertiesInput = /*@__PURE__*/ __L.at(
+  __c46,
+  1,
+) as any as S.Schema<TopicSpacePropertiesInput>;
+
 export interface TopicSpacesCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -6226,6 +8511,11 @@ export interface TopicSpacesCreateOrUpdateRequest {
   /** The properties of topic space. */
   properties?: TopicSpacePropertiesInput;
 }
+const TopicSpacesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  2,
+) as any as S.Schema<TopicSpacesCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type TopicSpacesCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -6253,6 +8543,9 @@ export interface TopicSpacesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const TopicSpacesCreateOrUpdateResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<TopicSpacesCreateOrUpdateResponseSystemData>;
+
 export interface TopicSpacesCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -6265,11 +8558,21 @@ export interface TopicSpacesCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: TopicSpacesCreateOrUpdateResponseSystemData;
 }
+const TopicSpacesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c46,
+  3,
+) as any as S.Schema<TopicSpacesCreateOrUpdateResponse>;
+
 /** Update properties for the corresponding partner topic of a channel. */
 export interface PartnerUpdateTopicInfo {
   /** Event type info for the partner topic */
   eventTypeInfo?: EventTypeInfo;
 }
+const PartnerUpdateTopicInfo = /*@__PURE__*/ __L.at(
+  __c46,
+  4,
+) as any as S.Schema<PartnerUpdateTopicInfo>;
+
 /** Properties of the channel update parameters. */
 export interface ChannelUpdateParametersProperties {
   /** Expiration time of the channel. If this timer expires while the corresponding partner topic or partner destination is never activated, the channel and corresponding partner topic or partner destination are deleted. */
@@ -6277,6 +8580,11 @@ export interface ChannelUpdateParametersProperties {
   /** Partner topic properties which can be updated if the channel is of type PartnerTopic. */
   partnerTopicInfo?: PartnerUpdateTopicInfo;
 }
+const ChannelUpdateParametersProperties = /*@__PURE__*/ __L.at(
+  __c46,
+  5,
+) as any as S.Schema<ChannelUpdateParametersProperties>;
+
 export interface UpdateChannelRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -6288,17 +8596,36 @@ export interface UpdateChannelRequest {
   channelName: string;
   properties?: ChannelUpdateParametersProperties;
 }
+const UpdateChannelRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  6,
+) as any as S.Schema<UpdateChannelRequest>;
+
 export interface UpdateChannelResponse {}
+const UpdateChannelResponse = DeleteCaCertificateResponse as any as S.Schema<UpdateChannelResponse>;
+
 /** Tags of the domains resource. */
 export type UpdateDomainRequestTagsMap = { [key: string]: string | undefined };
+const UpdateDomainRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdateDomainRequestTagsMap>;
+
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.DomainUpdateParameterProperties.InboundIpRules" /> */
 export type DomainUpdateParameterPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
+const DomainUpdateParameterPropertiesPublicNetworkAccess = S.String;
+
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type DomainUpdateParameterPropertiesInboundIpRulesList = Array<InboundIpRule>;
+const DomainUpdateParameterPropertiesInboundIpRulesList =
+  DomainPropertiesInputInboundIpRulesList as any as S.Schema<DomainUpdateParameterPropertiesInboundIpRulesList>;
+
 /** Minimum TLS version of the publisher allowed to publish to this domain */
 export type DomainUpdateParameterPropertiesMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
+const DomainUpdateParameterPropertiesMinimumTlsVersionAllowed = S.String;
+
 /** The data residency boundary for the domain. */
 export type DomainUpdateParameterPropertiesDataResidencyBoundary = "WithinGeopair" | "WithinRegion";
+const DomainUpdateParameterPropertiesDataResidencyBoundary = S.String;
+
 /** Information of domain update parameter properties. */
 export interface DomainUpdateParameterProperties {
   /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.DomainUpdateParameterProperties.InboundIpRules" /> */
@@ -6320,6 +8647,11 @@ export interface DomainUpdateParameterProperties {
   /** The eventTypeInfo for the domain. */
   eventTypeInfo?: EventTypeInfo;
 }
+const DomainUpdateParameterProperties = /*@__PURE__*/ __L.at(
+  __c46,
+  7,
+) as any as S.Schema<DomainUpdateParameterProperties>;
+
 export interface UpdateDomainRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -6334,14 +8666,23 @@ export interface UpdateDomainRequest {
   /** Identity information for the resource. */
   identity?: IdentityInfo;
 }
+const UpdateDomainRequest = /*@__PURE__*/ __L.at(__c47, 0) as any as S.Schema<UpdateDomainRequest>;
+
 export interface UpdateDomainResponse {}
+const UpdateDomainResponse = DeleteCaCertificateResponse as any as S.Schema<UpdateDomainResponse>;
+
 /** List of user defined labels. */
 export type UpdateDomainEventSubscriptionRequestLabelsList = Array<string>;
+const UpdateDomainEventSubscriptionRequestLabelsList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<UpdateDomainEventSubscriptionRequestLabelsList>;
+
 /** The event delivery schema for the event subscription. */
 export type UpdateDomainEventSubscriptionRequestEventDeliverySchema =
   | "EventGridSchema"
   | "CustomInputSchema"
   | "CloudEventSchemaV1_0";
+const UpdateDomainEventSubscriptionRequestEventDeliverySchema = S.String;
+
 export interface UpdateDomainEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -6370,6 +8711,11 @@ export interface UpdateDomainEventSubscriptionRequest {
   /** The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination. Uses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering. */
   deadLetterWithResourceIdentity?: DeadLetterWithResourceIdentity;
 }
+const UpdateDomainEventSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  1,
+) as any as S.Schema<UpdateDomainEventSubscriptionRequest>;
+
 /** The type of identity that created the resource. */
 export type UpdateDomainEventSubscriptionResponseSystemDataCreatedByType =
   | "User"
@@ -6409,13 +8755,21 @@ export interface UpdateDomainEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateDomainEventSubscriptionResponseSystemData;
 }
+const UpdateDomainEventSubscriptionResponse =
+  EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<UpdateDomainEventSubscriptionResponse>;
+
 /** List of user defined labels. */
 export type UpdateDomainTopicEventSubscriptionRequestLabelsList = Array<string>;
+const UpdateDomainTopicEventSubscriptionRequestLabelsList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<UpdateDomainTopicEventSubscriptionRequestLabelsList>;
+
 /** The event delivery schema for the event subscription. */
 export type UpdateDomainTopicEventSubscriptionRequestEventDeliverySchema =
   | "EventGridSchema"
   | "CustomInputSchema"
   | "CloudEventSchemaV1_0";
+const UpdateDomainTopicEventSubscriptionRequestEventDeliverySchema = S.String;
+
 export interface UpdateDomainTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -6448,6 +8802,11 @@ export interface UpdateDomainTopicEventSubscriptionRequest {
   /** The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination. Uses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering. */
   deadLetterWithResourceIdentity?: DeadLetterWithResourceIdentity;
 }
+const UpdateDomainTopicEventSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  2,
+) as any as S.Schema<UpdateDomainTopicEventSubscriptionRequest>;
+
 /** The type of identity that created the resource. */
 export type UpdateDomainTopicEventSubscriptionResponseSystemDataCreatedByType =
   | "User"
@@ -6487,13 +8846,21 @@ export interface UpdateDomainTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateDomainTopicEventSubscriptionResponseSystemData;
 }
+const UpdateDomainTopicEventSubscriptionResponse =
+  EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<UpdateDomainTopicEventSubscriptionResponse>;
+
 /** List of user defined labels. */
 export type UpdateEventSubscriptionRequestLabelsList = Array<string>;
+const UpdateEventSubscriptionRequestLabelsList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<UpdateEventSubscriptionRequestLabelsList>;
+
 /** The event delivery schema for the event subscription. */
 export type UpdateEventSubscriptionRequestEventDeliverySchema =
   | "EventGridSchema"
   | "CustomInputSchema"
   | "CloudEventSchemaV1_0";
+const UpdateEventSubscriptionRequestEventDeliverySchema = S.String;
+
 export interface UpdateEventSubscriptionRequest {
   /** The scope of existing event subscription. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic. */
   scope: string;
@@ -6518,6 +8885,11 @@ export interface UpdateEventSubscriptionRequest {
   /** The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination. Uses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering. */
   deadLetterWithResourceIdentity?: DeadLetterWithResourceIdentity;
 }
+const UpdateEventSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  3,
+) as any as S.Schema<UpdateEventSubscriptionRequest>;
+
 /** The type of identity that created the resource. */
 export type UpdateEventSubscriptionResponseSystemDataCreatedByType =
   | "User"
@@ -6557,12 +8929,23 @@ export interface UpdateEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateEventSubscriptionResponseSystemData;
 }
+const UpdateEventSubscriptionResponse =
+  GetDomainEventSubscriptionResponse as any as S.Schema<UpdateEventSubscriptionResponse>;
+
 /** Tags of the namespace resource. */
 export type UpdateNamespaceRequestTagsMap = { [key: string]: string | undefined };
+const UpdateNamespaceRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdateNamespaceRequestTagsMap>;
+
 /** Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled. */
 export type UpdateTopicSpacesConfigurationInfoState = "Disabled" | "Enabled";
+const UpdateTopicSpacesConfigurationInfoState = S.String;
+
 /** Custom domain info for topic spaces configuration. */
 export type UpdateTopicSpacesConfigurationInfoCustomDomainsList = Array<CustomDomainConfiguration>;
+const UpdateTopicSpacesConfigurationInfoCustomDomainsList =
+  TopicsConfigurationCustomDomainsList as any as S.Schema<UpdateTopicSpacesConfigurationInfoCustomDomainsList>;
+
 /** Properties of the topic spaces configuration info of a namespace. */
 export interface UpdateTopicSpacesConfigurationInfo {
   /** Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled. */
@@ -6580,17 +8963,35 @@ export interface UpdateTopicSpacesConfigurationInfo {
   /** Custom domain info for topic spaces configuration. */
   customDomains?: UpdateTopicSpacesConfigurationInfoCustomDomainsList;
 }
+const UpdateTopicSpacesConfigurationInfo = /*@__PURE__*/ __L.at(
+  __c47,
+  4,
+) as any as S.Schema<UpdateTopicSpacesConfigurationInfo>;
+
 /** Custom domain info for topics configuration. */
 export type UpdateTopicsConfigurationInfoCustomDomainsList = Array<CustomDomainConfiguration>;
+const UpdateTopicsConfigurationInfoCustomDomainsList =
+  TopicsConfigurationCustomDomainsList as any as S.Schema<UpdateTopicsConfigurationInfoCustomDomainsList>;
+
 /** Properties of the topics configuration info of a namespace. */
 export interface UpdateTopicsConfigurationInfo {
   /** Custom domain info for topics configuration. */
   customDomains?: UpdateTopicsConfigurationInfoCustomDomainsList;
 }
+const UpdateTopicsConfigurationInfo = /*@__PURE__*/ __L.at(
+  __c47,
+  5,
+) as any as S.Schema<UpdateTopicsConfigurationInfo>;
+
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PubSub.NamespaceUpdateParameterProperties.InboundIpRules" /> */
 export type NamespaceUpdateParameterPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
+const NamespaceUpdateParameterPropertiesPublicNetworkAccess = S.String;
+
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type NamespaceUpdateParameterPropertiesInboundIpRulesList = Array<InboundIpRule>;
+const NamespaceUpdateParameterPropertiesInboundIpRulesList =
+  DomainPropertiesInputInboundIpRulesList as any as S.Schema<NamespaceUpdateParameterPropertiesInboundIpRulesList>;
+
 /** Information of namespace update parameter properties. */
 export interface NamespaceUpdateParameterProperties {
   /** Topic spaces configuration properties that can be updated. */
@@ -6602,6 +9003,11 @@ export interface NamespaceUpdateParameterProperties {
   /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
   inboundIpRules?: NamespaceUpdateParameterPropertiesInboundIpRulesList;
 }
+const NamespaceUpdateParameterProperties = /*@__PURE__*/ __L.at(
+  __c47,
+  6,
+) as any as S.Schema<NamespaceUpdateParameterProperties>;
+
 export interface UpdateNamespaceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -6618,8 +9024,16 @@ export interface UpdateNamespaceRequest {
   /** Properties of the namespace resource. */
   properties?: NamespaceUpdateParameterProperties;
 }
+const UpdateNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  7,
+) as any as S.Schema<UpdateNamespaceRequest>;
+
 /** Tags of the resource. */
 export type UpdateNamespaceResponseTagsMap = { [key: string]: string | undefined };
+const UpdateNamespaceResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdateNamespaceResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type UpdateNamespaceResponseSystemDataCreatedByType =
   | "User"
@@ -6647,6 +9061,9 @@ export interface UpdateNamespaceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const UpdateNamespaceResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<UpdateNamespaceResponseSystemData>;
+
 export interface UpdateNamespaceResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -6667,11 +9084,21 @@ export interface UpdateNamespaceResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateNamespaceResponseSystemData;
 }
+const UpdateNamespaceResponse = /*@__PURE__*/ __L.at(
+  __c48,
+  0,
+) as any as S.Schema<UpdateNamespaceResponse>;
+
 /** Information of namespace topic update parameter properties. */
 export interface NamespaceTopicUpdateParameterProperties {
   /** Event retention for the namespace topic expressed in days. The property default value is 1 day. Min event retention duration value is 1 day and max event retention duration value is 1 day. */
   eventRetentionInDays?: number;
 }
+const NamespaceTopicUpdateParameterProperties = /*@__PURE__*/ __L.at(
+  __c48,
+  1,
+) as any as S.Schema<NamespaceTopicUpdateParameterProperties>;
+
 export interface UpdateNamespaceTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -6684,6 +9111,11 @@ export interface UpdateNamespaceTopicRequest {
   /** Properties of the namespace topic resource. */
   properties?: NamespaceTopicUpdateParameterProperties;
 }
+const UpdateNamespaceTopicRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  2,
+) as any as S.Schema<UpdateNamespaceTopicRequest>;
+
 /** The type of identity that created the resource. */
 export type UpdateNamespaceTopicResponseSystemDataCreatedByType =
   | "User"
@@ -6723,6 +9155,9 @@ export interface UpdateNamespaceTopicResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateNamespaceTopicResponseSystemData;
 }
+const UpdateNamespaceTopicResponse =
+  GetNamespaceTopicResponse as any as S.Schema<UpdateNamespaceTopicResponse>;
+
 /** The event delivery schema for the event subscription. */
 export type SubscriptionUpdateParametersPropertiesEventDeliverySchema = "CloudEventSchemaV1_0";
 /** Properties of the Event Subscription update parameters. */
@@ -6736,6 +9171,9 @@ export interface SubscriptionUpdateParametersProperties {
   /** Expiration time of the event subscription. */
   expirationTimeUtc?: string;
 }
+const SubscriptionUpdateParametersProperties =
+  SubscriptionPropertiesInput as any as S.Schema<SubscriptionUpdateParametersProperties>;
+
 export interface UpdateNamespaceTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -6749,6 +9187,11 @@ export interface UpdateNamespaceTopicEventSubscriptionRequest {
   eventSubscriptionName: string;
   properties?: SubscriptionUpdateParametersProperties;
 }
+const UpdateNamespaceTopicEventSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  3,
+) as any as S.Schema<UpdateNamespaceTopicEventSubscriptionRequest>;
+
 /** The type of identity that created the resource. */
 export type UpdateNamespaceTopicEventSubscriptionResponseSystemDataCreatedByType =
   | "User"
@@ -6788,13 +9231,24 @@ export interface UpdateNamespaceTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateNamespaceTopicEventSubscriptionResponseSystemData;
 }
+const UpdateNamespaceTopicEventSubscriptionResponse =
+  GetNamespaceTopicEventSubscriptionResponse as any as S.Schema<UpdateNamespaceTopicEventSubscriptionResponse>;
+
 /** Tags of the partner configuration resource. */
 export type UpdatePartnerConfigurationRequestTagsMap = { [key: string]: string | undefined };
+const UpdatePartnerConfigurationRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdatePartnerConfigurationRequestTagsMap>;
+
 /** Information of partner configuration update parameter properties. */
 export interface PartnerConfigurationUpdateParameterProperties {
   /** The default time used to validate the maximum expiration time for each authorized partners in days. Allowed values ar between 1 and 365 days. */
   defaultMaximumExpirationTimeInDays?: number;
 }
+const PartnerConfigurationUpdateParameterProperties = /*@__PURE__*/ __L.at(
+  __c48,
+  4,
+) as any as S.Schema<PartnerConfigurationUpdateParameterProperties>;
+
 export interface UpdatePartnerConfigurationRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -6805,6 +9259,11 @@ export interface UpdatePartnerConfigurationRequest {
   /** Properties of the Topic resource. */
   properties?: PartnerConfigurationUpdateParameterProperties;
 }
+const UpdatePartnerConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  5,
+) as any as S.Schema<UpdatePartnerConfigurationRequest>;
+
 /** The type of identity that created the resource. */
 export type UpdatePartnerConfigurationResponseSystemDataCreatedByType =
   | "User"
@@ -6832,8 +9291,14 @@ export interface UpdatePartnerConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const UpdatePartnerConfigurationResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<UpdatePartnerConfigurationResponseSystemData>;
+
 /** Tags of the resource. */
 export type UpdatePartnerConfigurationResponseTagsMap = { [key: string]: string | undefined };
+const UpdatePartnerConfigurationResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdatePartnerConfigurationResponseTagsMap>;
+
 export interface UpdatePartnerConfigurationResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -6850,17 +9315,32 @@ export interface UpdatePartnerConfigurationResponse {
   /** Tags of the resource. */
   tags?: UpdatePartnerConfigurationResponseTagsMap;
 }
+const UpdatePartnerConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c48,
+  6,
+) as any as S.Schema<UpdatePartnerConfigurationResponse>;
+
 /** Tags of the Partner Namespace. */
 export type UpdatePartnerNamespaceRequestTagsMap = { [key: string]: string | undefined };
+const UpdatePartnerNamespaceRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdatePartnerNamespaceRequestTagsMap>;
+
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceUpdateParameterProperties.InboundIpRules" /> */
 export type PartnerNamespaceUpdateParameterPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
+const PartnerNamespaceUpdateParameterPropertiesPublicNetworkAccess = S.String;
+
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type PartnerNamespaceUpdateParameterPropertiesInboundIpRulesList = Array<InboundIpRule>;
+const PartnerNamespaceUpdateParameterPropertiesInboundIpRulesList =
+  DomainPropertiesInputInboundIpRulesList as any as S.Schema<PartnerNamespaceUpdateParameterPropertiesInboundIpRulesList>;
+
 /** Minimum TLS version of the publisher allowed to publish to this domain */
 export type PartnerNamespaceUpdateParameterPropertiesMinimumTlsVersionAllowed =
   | "1.0"
   | "1.1"
   | "1.2";
+const PartnerNamespaceUpdateParameterPropertiesMinimumTlsVersionAllowed = S.String;
+
 /** Information of Partner Namespace update parameter properties. */
 export interface PartnerNamespaceUpdateParameterProperties {
   /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceUpdateParameterProperties.InboundIpRules" /> */
@@ -6876,6 +9356,11 @@ export interface PartnerNamespaceUpdateParameterProperties {
   /** This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the partner namespace. */
   disableLocalAuth?: boolean;
 }
+const PartnerNamespaceUpdateParameterProperties = /*@__PURE__*/ __L.at(
+  __c48,
+  7,
+) as any as S.Schema<PartnerNamespaceUpdateParameterProperties>;
+
 export interface UpdatePartnerNamespaceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -6888,9 +9373,20 @@ export interface UpdatePartnerNamespaceRequest {
   /** Properties of the Partner Namespace. */
   properties?: PartnerNamespaceUpdateParameterProperties;
 }
+const UpdatePartnerNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  0,
+) as any as S.Schema<UpdatePartnerNamespaceRequest>;
+
 export interface UpdatePartnerNamespaceResponse {}
+const UpdatePartnerNamespaceResponse =
+  DeleteCaCertificateResponse as any as S.Schema<UpdatePartnerNamespaceResponse>;
+
 /** Tags of the partner registration resource. */
 export type UpdatePartnerRegistrationRequestTagsMap = { [key: string]: string | undefined };
+const UpdatePartnerRegistrationRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdatePartnerRegistrationRequestTagsMap>;
+
 export interface UpdatePartnerRegistrationRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -6901,9 +9397,20 @@ export interface UpdatePartnerRegistrationRequest {
   /** Tags of the partner registration resource. */
   tags?: UpdatePartnerRegistrationRequestTagsMap;
 }
+const UpdatePartnerRegistrationRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  1,
+) as any as S.Schema<UpdatePartnerRegistrationRequest>;
+
 export interface UpdatePartnerRegistrationResponse {}
+const UpdatePartnerRegistrationResponse =
+  DeleteDomainEventSubscriptionResponse as any as S.Schema<UpdatePartnerRegistrationResponse>;
+
 /** Tags of the Partner Topic resource. */
 export type UpdatePartnerTopicRequestTagsMap = { [key: string]: string | undefined };
+const UpdatePartnerTopicRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdatePartnerTopicRequestTagsMap>;
+
 export interface UpdatePartnerTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -6916,14 +9423,27 @@ export interface UpdatePartnerTopicRequest {
   /** Identity information for the Partner Topic resource. */
   identity?: IdentityInfo;
 }
+const UpdatePartnerTopicRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  2,
+) as any as S.Schema<UpdatePartnerTopicRequest>;
+
 export interface UpdatePartnerTopicResponse {}
+const UpdatePartnerTopicResponse =
+  DeleteCaCertificateResponse as any as S.Schema<UpdatePartnerTopicResponse>;
+
 /** List of user defined labels. */
 export type UpdatePartnerTopicEventSubscriptionRequestLabelsList = Array<string>;
+const UpdatePartnerTopicEventSubscriptionRequestLabelsList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<UpdatePartnerTopicEventSubscriptionRequestLabelsList>;
+
 /** The event delivery schema for the event subscription. */
 export type UpdatePartnerTopicEventSubscriptionRequestEventDeliverySchema =
   | "EventGridSchema"
   | "CustomInputSchema"
   | "CloudEventSchemaV1_0";
+const UpdatePartnerTopicEventSubscriptionRequestEventDeliverySchema = S.String;
+
 export interface UpdatePartnerTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -6954,6 +9474,11 @@ export interface UpdatePartnerTopicEventSubscriptionRequest {
   /** The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination. Uses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering. */
   deadLetterWithResourceIdentity?: DeadLetterWithResourceIdentity;
 }
+const UpdatePartnerTopicEventSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  3,
+) as any as S.Schema<UpdatePartnerTopicEventSubscriptionRequest>;
+
 /** The type of identity that created the resource. */
 export type UpdatePartnerTopicEventSubscriptionResponseSystemDataCreatedByType =
   | "User"
@@ -6993,11 +9518,16 @@ export interface UpdatePartnerTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdatePartnerTopicEventSubscriptionResponseSystemData;
 }
+const UpdatePartnerTopicEventSubscriptionResponse =
+  EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<UpdatePartnerTopicEventSubscriptionResponse>;
+
 export type UpdatePrivateEndpointConnectionRequestParentType =
   | "topics"
   | "domains"
   | "partnerNamespaces"
   | "namespaces";
+const UpdatePrivateEndpointConnectionRequestParentType = S.String;
+
 export interface UpdatePrivateEndpointConnectionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -7012,6 +9542,11 @@ export interface UpdatePrivateEndpointConnectionRequest {
   /** Properties of the PrivateEndpointConnection. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const UpdatePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  4,
+) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>;
+
 export interface UpdatePrivateEndpointConnectionResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -7022,8 +9557,14 @@ export interface UpdatePrivateEndpointConnectionResponse {
   /** Properties of the PrivateEndpointConnection. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const UpdatePrivateEndpointConnectionResponse =
+  PrivateEndpointConnection as any as S.Schema<UpdatePrivateEndpointConnectionResponse>;
+
 /** Tags of the system topic. */
 export type UpdateSystemTopicRequestTagsMap = { [key: string]: string | undefined };
+const UpdateSystemTopicRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdateSystemTopicRequestTagsMap>;
+
 export interface UpdateSystemTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -7036,8 +9577,16 @@ export interface UpdateSystemTopicRequest {
   /** Resource identity information. */
   identity?: IdentityInfo;
 }
+const UpdateSystemTopicRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  5,
+) as any as S.Schema<UpdateSystemTopicRequest>;
+
 /** Tags of the resource. */
 export type UpdateSystemTopicResponseTagsMap = { [key: string]: string | undefined };
+const UpdateSystemTopicResponseTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdateSystemTopicResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type UpdateSystemTopicResponseSystemDataCreatedByType =
   | "User"
@@ -7065,6 +9614,9 @@ export interface UpdateSystemTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const UpdateSystemTopicResponseSystemData =
+  ActivatePartnerTopicResponseSystemData as any as S.Schema<UpdateSystemTopicResponseSystemData>;
+
 export interface UpdateSystemTopicResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -7083,13 +9635,23 @@ export interface UpdateSystemTopicResponse {
   /** Identity information for the resource. */
   identity?: IdentityInfo;
 }
+const UpdateSystemTopicResponse = /*@__PURE__*/ __L.at(
+  __c49,
+  6,
+) as any as S.Schema<UpdateSystemTopicResponse>;
+
 /** List of user defined labels. */
 export type UpdateSystemTopicEventSubscriptionRequestLabelsList = Array<string>;
+const UpdateSystemTopicEventSubscriptionRequestLabelsList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<UpdateSystemTopicEventSubscriptionRequestLabelsList>;
+
 /** The event delivery schema for the event subscription. */
 export type UpdateSystemTopicEventSubscriptionRequestEventDeliverySchema =
   | "EventGridSchema"
   | "CustomInputSchema"
   | "CloudEventSchemaV1_0";
+const UpdateSystemTopicEventSubscriptionRequestEventDeliverySchema = S.String;
+
 export interface UpdateSystemTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -7120,6 +9682,11 @@ export interface UpdateSystemTopicEventSubscriptionRequest {
   /** The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination. Uses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering. */
   deadLetterWithResourceIdentity?: DeadLetterWithResourceIdentity;
 }
+const UpdateSystemTopicEventSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  7,
+) as any as S.Schema<UpdateSystemTopicEventSubscriptionRequest>;
+
 /** The type of identity that created the resource. */
 export type UpdateSystemTopicEventSubscriptionResponseSystemDataCreatedByType =
   | "User"
@@ -7159,16 +9726,31 @@ export interface UpdateSystemTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateSystemTopicEventSubscriptionResponseSystemData;
 }
+const UpdateSystemTopicEventSubscriptionResponse =
+  EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<UpdateSystemTopicEventSubscriptionResponse>;
+
 /** Tags of the Topic resource. */
 export type UpdateTopicRequestTagsMap = { [key: string]: string | undefined };
+const UpdateTopicRequestTagsMap =
+  ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdateTopicRequestTagsMap>;
+
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicUpdateParameterProperties.InboundIpRules" /> */
 export type TopicUpdateParameterPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
+const TopicUpdateParameterPropertiesPublicNetworkAccess = S.String;
+
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type TopicUpdateParameterPropertiesInboundIpRulesList = Array<InboundIpRule>;
+const TopicUpdateParameterPropertiesInboundIpRulesList =
+  DomainPropertiesInputInboundIpRulesList as any as S.Schema<TopicUpdateParameterPropertiesInboundIpRulesList>;
+
 /** Minimum TLS version of the publisher allowed to publish to this domain */
 export type TopicUpdateParameterPropertiesMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
+const TopicUpdateParameterPropertiesMinimumTlsVersionAllowed = S.String;
+
 /** The data residency boundary for the topic. */
 export type TopicUpdateParameterPropertiesDataResidencyBoundary = "WithinGeopair" | "WithinRegion";
+const TopicUpdateParameterPropertiesDataResidencyBoundary = S.String;
+
 /** Information of topic update parameter properties. */
 export interface TopicUpdateParameterProperties {
   /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicUpdateParameterProperties.InboundIpRules" /> */
@@ -7184,6 +9766,11 @@ export interface TopicUpdateParameterProperties {
   /** The eventTypeInfo for the topic. */
   eventTypeInfo?: EventTypeInfo;
 }
+const TopicUpdateParameterProperties = /*@__PURE__*/ __L.at(
+  __c50,
+  0,
+) as any as S.Schema<TopicUpdateParameterProperties>;
+
 export interface UpdateTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -7198,14 +9785,23 @@ export interface UpdateTopicRequest {
   /** Properties of the Topic resource. */
   properties?: TopicUpdateParameterProperties;
 }
+const UpdateTopicRequest = /*@__PURE__*/ __L.at(__c50, 1) as any as S.Schema<UpdateTopicRequest>;
+
 export interface UpdateTopicResponse {}
+const UpdateTopicResponse = DeleteCaCertificateResponse as any as S.Schema<UpdateTopicResponse>;
+
 /** List of user defined labels. */
 export type UpdateTopicEventSubscriptionRequestLabelsList = Array<string>;
+const UpdateTopicEventSubscriptionRequestLabelsList =
+  ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<UpdateTopicEventSubscriptionRequestLabelsList>;
+
 /** The event delivery schema for the event subscription. */
 export type UpdateTopicEventSubscriptionRequestEventDeliverySchema =
   | "EventGridSchema"
   | "CustomInputSchema"
   | "CloudEventSchemaV1_0";
+const UpdateTopicEventSubscriptionRequestEventDeliverySchema = S.String;
+
 export interface UpdateTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -7234,6 +9830,11 @@ export interface UpdateTopicEventSubscriptionRequest {
   /** The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination. Uses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering. */
   deadLetterWithResourceIdentity?: DeadLetterWithResourceIdentity;
 }
+const UpdateTopicEventSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  2,
+) as any as S.Schema<UpdateTopicEventSubscriptionRequest>;
+
 /** The type of identity that created the resource. */
 export type UpdateTopicEventSubscriptionResponseSystemDataCreatedByType =
   | "User"
@@ -7273,6 +9874,9 @@ export interface UpdateTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateTopicEventSubscriptionResponseSystemData;
 }
+const UpdateTopicEventSubscriptionResponse =
+  EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<UpdateTopicEventSubscriptionResponse>;
+
 export interface ValidateNamespaceCustomDomainOwnershipRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -7281,12 +9885,26 @@ export interface ValidateNamespaceCustomDomainOwnershipRequest {
   /** Name of the Namespace. */
   namespaceName: string;
 }
+const ValidateNamespaceCustomDomainOwnershipRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  3,
+) as any as S.Schema<ValidateNamespaceCustomDomainOwnershipRequest>;
+
 /** List of custom domain configurations for the namespace under topics configuration. */
 export type CustomDomainOwnershipValidationResultCustomDomainsForTopicsConfigurationList =
   Array<CustomDomainConfiguration>;
+const CustomDomainOwnershipValidationResultCustomDomainsForTopicsConfigurationList =
+  /*@__PURE__*/ __L.at(
+    __c50,
+    4,
+  ) as any as S.Schema<CustomDomainOwnershipValidationResultCustomDomainsForTopicsConfigurationList>;
+
 /** List of custom domain configurations for the namespace under topic spaces configuration. */
 export type CustomDomainOwnershipValidationResultCustomDomainsForTopicSpacesConfigurationList =
   Array<CustomDomainConfiguration>;
+const CustomDomainOwnershipValidationResultCustomDomainsForTopicSpacesConfigurationList =
+  CustomDomainOwnershipValidationResultCustomDomainsForTopicsConfigurationList as any as S.Schema<CustomDomainOwnershipValidationResultCustomDomainsForTopicSpacesConfigurationList>;
+
 /** Namespace custom domain ownership validation result. */
 export interface CustomDomainOwnershipValidationResult {
   /** List of custom domain configurations for the namespace under topics configuration. */
@@ -7294,6 +9912,11 @@ export interface CustomDomainOwnershipValidationResult {
   /** List of custom domain configurations for the namespace under topic spaces configuration. */
   customDomainsForTopicSpacesConfiguration?: CustomDomainOwnershipValidationResultCustomDomainsForTopicSpacesConfigurationList;
 }
+const CustomDomainOwnershipValidationResult = /*@__PURE__*/ __L.at(
+  __c50,
+  5,
+) as any as S.Schema<CustomDomainOwnershipValidationResult>;
+
 export type ActivatePartnerTopicError = AzureOpError;
 /** Activate a partner topic. Activate a newly created partner topic. */
 export const ActivatePartnerTopic: API.OperationMethod<
@@ -7302,8 +9925,8 @@ export const ActivatePartnerTopic: API.OperationMethod<
   ActivatePartnerTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ActivatePartnerTopicRequest>,
-  output: __S(10) as any as S.Schema<ActivatePartnerTopicResponse>,
+  input: ActivatePartnerTopicRequest,
+  output: ActivatePartnerTopicResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7317,8 +9940,8 @@ export const AuthorizePartnerConfigurationPartner: API.OperationMethod<
   AuthorizePartnerConfigurationPartnerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<AuthorizePartnerConfigurationPartnerRequest>,
-  output: __S(17) as any as S.Schema<AuthorizePartnerConfigurationPartnerResponse>,
+  input: AuthorizePartnerConfigurationPartnerRequest,
+  output: AuthorizePartnerConfigurationPartnerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7332,8 +9955,8 @@ export const CaCertificatesCreateOrUpdate: API.OperationMethod<
   CaCertificatesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<CaCertificatesCreateOrUpdateRequest>,
-  output: __S(21) as any as S.Schema<CaCertificatesCreateOrUpdateResponse>,
+  input: CaCertificatesCreateOrUpdateRequest,
+  output: CaCertificatesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7347,8 +9970,8 @@ export const ChannelsCreateOrUpdate: API.OperationMethod<
   ChannelsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<ChannelsCreateOrUpdateRequest>,
-  output: __S(25) as any as S.Schema<ChannelsCreateOrUpdateResponse>,
+  input: ChannelsCreateOrUpdateRequest,
+  output: ChannelsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7362,8 +9985,8 @@ export const ClientGroupsCreateOrUpdate: API.OperationMethod<
   ClientGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<ClientGroupsCreateOrUpdateRequest>,
-  output: __S(29) as any as S.Schema<ClientGroupsCreateOrUpdateResponse>,
+  input: ClientGroupsCreateOrUpdateRequest,
+  output: ClientGroupsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7377,8 +10000,8 @@ export const ClientsCreateOrUpdate: API.OperationMethod<
   ClientsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<ClientsCreateOrUpdateRequest>,
-  output: __S(36) as any as S.Schema<ClientsCreateOrUpdateResponse>,
+  input: ClientsCreateOrUpdateRequest,
+  output: ClientsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7392,8 +10015,8 @@ export const DeactivatePartnerTopic: API.OperationMethod<
   DeactivatePartnerTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<DeactivatePartnerTopicRequest>,
-  output: __S(38) as any as S.Schema<DeactivatePartnerTopicResponse>,
+  input: DeactivatePartnerTopicRequest,
+  output: DeactivatePartnerTopicResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7407,8 +10030,8 @@ export const DeleteCaCertificate: API.OperationMethod<
   DeleteCaCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<DeleteCaCertificateRequest>,
-  output: __S(40) as any as S.Schema<DeleteCaCertificateResponse>,
+  input: DeleteCaCertificateRequest,
+  output: DeleteCaCertificateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7422,8 +10045,8 @@ export const DeleteChannel: API.OperationMethod<
   DeleteChannelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<DeleteChannelRequest>,
-  output: __S(40) as any as S.Schema<DeleteChannelResponse>,
+  input: DeleteChannelRequest,
+  output: DeleteChannelResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7437,8 +10060,8 @@ export const DeleteClient: API.OperationMethod<
   DeleteClientError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<DeleteClientRequest>,
-  output: __S(40) as any as S.Schema<DeleteClientResponse>,
+  input: DeleteClientRequest,
+  output: DeleteClientResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7452,8 +10075,8 @@ export const DeleteClientGroup: API.OperationMethod<
   DeleteClientGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<DeleteClientGroupRequest>,
-  output: __S(40) as any as S.Schema<DeleteClientGroupResponse>,
+  input: DeleteClientGroupRequest,
+  output: DeleteClientGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7467,8 +10090,8 @@ export const DeleteDomain: API.OperationMethod<
   DeleteDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<DeleteDomainRequest>,
-  output: __S(40) as any as S.Schema<DeleteDomainResponse>,
+  input: DeleteDomainRequest,
+  output: DeleteDomainResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7482,8 +10105,8 @@ export const DeleteDomainEventSubscription: API.OperationMethod<
   DeleteDomainEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<DeleteDomainEventSubscriptionRequest>,
-  output: __S(46) as any as S.Schema<DeleteDomainEventSubscriptionResponse>,
+  input: DeleteDomainEventSubscriptionRequest,
+  output: DeleteDomainEventSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7497,8 +10120,8 @@ export const DeleteDomainTopic: API.OperationMethod<
   DeleteDomainTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<DeleteDomainTopicRequest>,
-  output: __S(40) as any as S.Schema<DeleteDomainTopicResponse>,
+  input: DeleteDomainTopicRequest,
+  output: DeleteDomainTopicResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7512,8 +10135,8 @@ export const DeleteDomainTopicEventSubscription: API.OperationMethod<
   DeleteDomainTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<DeleteDomainTopicEventSubscriptionRequest>,
-  output: __S(46) as any as S.Schema<DeleteDomainTopicEventSubscriptionResponse>,
+  input: DeleteDomainTopicEventSubscriptionRequest,
+  output: DeleteDomainTopicEventSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7527,8 +10150,8 @@ export const DeleteEventSubscription: API.OperationMethod<
   DeleteEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<DeleteEventSubscriptionRequest>,
-  output: __S(50) as any as S.Schema<DeleteEventSubscriptionResponse>,
+  input: DeleteEventSubscriptionRequest,
+  output: DeleteEventSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7542,8 +10165,8 @@ export const DeleteNamespace: API.OperationMethod<
   DeleteNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<DeleteNamespaceRequest>,
-  output: __S(40) as any as S.Schema<DeleteNamespaceResponse>,
+  input: DeleteNamespaceRequest,
+  output: DeleteNamespaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7557,8 +10180,8 @@ export const DeleteNamespaceTopic: API.OperationMethod<
   DeleteNamespaceTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<DeleteNamespaceTopicRequest>,
-  output: __S(40) as any as S.Schema<DeleteNamespaceTopicResponse>,
+  input: DeleteNamespaceTopicRequest,
+  output: DeleteNamespaceTopicResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7572,8 +10195,8 @@ export const DeleteNamespaceTopicEventSubscription: API.OperationMethod<
   DeleteNamespaceTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<DeleteNamespaceTopicEventSubscriptionRequest>,
-  output: __S(46) as any as S.Schema<DeleteNamespaceTopicEventSubscriptionResponse>,
+  input: DeleteNamespaceTopicEventSubscriptionRequest,
+  output: DeleteNamespaceTopicEventSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7587,8 +10210,8 @@ export const DeletePartnerConfiguration: API.OperationMethod<
   DeletePartnerConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<DeletePartnerConfigurationRequest>,
-  output: __S(46) as any as S.Schema<DeletePartnerConfigurationResponse>,
+  input: DeletePartnerConfigurationRequest,
+  output: DeletePartnerConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7602,8 +10225,8 @@ export const DeletePartnerNamespace: API.OperationMethod<
   DeletePartnerNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<DeletePartnerNamespaceRequest>,
-  output: __S(40) as any as S.Schema<DeletePartnerNamespaceResponse>,
+  input: DeletePartnerNamespaceRequest,
+  output: DeletePartnerNamespaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7617,8 +10240,8 @@ export const DeletePartnerRegistration: API.OperationMethod<
   DeletePartnerRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<DeletePartnerRegistrationRequest>,
-  output: __S(46) as any as S.Schema<DeletePartnerRegistrationResponse>,
+  input: DeletePartnerRegistrationRequest,
+  output: DeletePartnerRegistrationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7632,8 +10255,8 @@ export const DeletePartnerTopic: API.OperationMethod<
   DeletePartnerTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<DeletePartnerTopicRequest>,
-  output: __S(40) as any as S.Schema<DeletePartnerTopicResponse>,
+  input: DeletePartnerTopicRequest,
+  output: DeletePartnerTopicResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7647,8 +10270,8 @@ export const DeletePartnerTopicEventSubscription: API.OperationMethod<
   DeletePartnerTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<DeletePartnerTopicEventSubscriptionRequest>,
-  output: __S(46) as any as S.Schema<DeletePartnerTopicEventSubscriptionResponse>,
+  input: DeletePartnerTopicEventSubscriptionRequest,
+  output: DeletePartnerTopicEventSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7662,8 +10285,8 @@ export const DeletePermissionBinding: API.OperationMethod<
   DeletePermissionBindingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<DeletePermissionBindingRequest>,
-  output: __S(50) as any as S.Schema<DeletePermissionBindingResponse>,
+  input: DeletePermissionBindingRequest,
+  output: DeletePermissionBindingResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7677,8 +10300,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(46) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: DeletePrivateEndpointConnectionRequest,
+  output: DeletePrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7692,8 +10315,8 @@ export const DeleteSystemTopic: API.OperationMethod<
   DeleteSystemTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<DeleteSystemTopicRequest>,
-  output: __S(40) as any as S.Schema<DeleteSystemTopicResponse>,
+  input: DeleteSystemTopicRequest,
+  output: DeleteSystemTopicResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7707,8 +10330,8 @@ export const DeleteSystemTopicEventSubscription: API.OperationMethod<
   DeleteSystemTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<DeleteSystemTopicEventSubscriptionRequest>,
-  output: __S(46) as any as S.Schema<DeleteSystemTopicEventSubscriptionResponse>,
+  input: DeleteSystemTopicEventSubscriptionRequest,
+  output: DeleteSystemTopicEventSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7722,8 +10345,8 @@ export const DeleteTopic: API.OperationMethod<
   DeleteTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<DeleteTopicRequest>,
-  output: __S(40) as any as S.Schema<DeleteTopicResponse>,
+  input: DeleteTopicRequest,
+  output: DeleteTopicResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7737,8 +10360,8 @@ export const DeleteTopicEventSubscription: API.OperationMethod<
   DeleteTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<DeleteTopicEventSubscriptionRequest>,
-  output: __S(46) as any as S.Schema<DeleteTopicEventSubscriptionResponse>,
+  input: DeleteTopicEventSubscriptionRequest,
+  output: DeleteTopicEventSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7752,8 +10375,8 @@ export const DeleteTopicSpace: API.OperationMethod<
   DeleteTopicSpaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<DeleteTopicSpaceRequest>,
-  output: __S(40) as any as S.Schema<DeleteTopicSpaceResponse>,
+  input: DeleteTopicSpaceRequest,
+  output: DeleteTopicSpaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7767,8 +10390,8 @@ export const DomainEventSubscriptionsCreateOrUpdate: API.OperationMethod<
   DomainEventSubscriptionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<DomainEventSubscriptionsCreateOrUpdateRequest>,
-  output: __S(79) as any as S.Schema<DomainEventSubscriptionsCreateOrUpdateResponse>,
+  input: DomainEventSubscriptionsCreateOrUpdateRequest,
+  output: DomainEventSubscriptionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7782,8 +10405,8 @@ export const DomainsCreateOrUpdate: API.OperationMethod<
   DomainsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<DomainsCreateOrUpdateRequest>,
-  output: __S(91) as any as S.Schema<DomainsCreateOrUpdateResponse>,
+  input: DomainsCreateOrUpdateRequest,
+  output: DomainsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7797,8 +10420,8 @@ export const DomainTopicEventSubscriptionsCreateOrUpdate: API.OperationMethod<
   DomainTopicEventSubscriptionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<DomainTopicEventSubscriptionsCreateOrUpdateRequest>,
-  output: __S(94) as any as S.Schema<DomainTopicEventSubscriptionsCreateOrUpdateResponse>,
+  input: DomainTopicEventSubscriptionsCreateOrUpdateRequest,
+  output: DomainTopicEventSubscriptionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7812,8 +10435,8 @@ export const DomainTopicsCreateOrUpdate: API.OperationMethod<
   DomainTopicsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<DomainTopicsCreateOrUpdateRequest>,
-  output: __S(97) as any as S.Schema<DomainTopicsCreateOrUpdateResponse>,
+  input: DomainTopicsCreateOrUpdateRequest,
+  output: DomainTopicsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7827,8 +10450,8 @@ export const EventSubscriptionsCreateOrUpdate: API.OperationMethod<
   EventSubscriptionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<EventSubscriptionsCreateOrUpdateRequest>,
-  output: __S(99) as any as S.Schema<EventSubscriptionsCreateOrUpdateResponse>,
+  input: EventSubscriptionsCreateOrUpdateRequest,
+  output: EventSubscriptionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7842,8 +10465,8 @@ export const GetCaCertificate: API.OperationMethod<
   GetCaCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<GetCaCertificateRequest>,
-  output: __S(101) as any as S.Schema<GetCaCertificateResponse>,
+  input: GetCaCertificateRequest,
+  output: GetCaCertificateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7857,8 +10480,8 @@ export const GetChannel: API.OperationMethod<
   GetChannelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<GetChannelRequest>,
-  output: __S(103) as any as S.Schema<GetChannelResponse>,
+  input: GetChannelRequest,
+  output: GetChannelResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7872,8 +10495,8 @@ export const GetChannelFullUrl: API.OperationMethod<
   GetChannelFullUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<GetChannelFullUrlRequest>,
-  output: __S(105) as any as S.Schema<EventSubscriptionFullUrl>,
+  input: GetChannelFullUrlRequest,
+  output: EventSubscriptionFullUrl,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7887,8 +10510,8 @@ export const GetClient: API.OperationMethod<
   GetClientError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<GetClientRequest>,
-  output: __S(107) as any as S.Schema<GetClientResponse>,
+  input: GetClientRequest,
+  output: GetClientResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7902,8 +10525,8 @@ export const GetClientGroup: API.OperationMethod<
   GetClientGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<GetClientGroupRequest>,
-  output: __S(109) as any as S.Schema<GetClientGroupResponse>,
+  input: GetClientGroupRequest,
+  output: GetClientGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7917,8 +10540,8 @@ export const GetDomain: API.OperationMethod<
   GetDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<GetDomainRequest>,
-  output: __S(111) as any as S.Schema<GetDomainResponse>,
+  input: GetDomainRequest,
+  output: GetDomainResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7932,8 +10555,8 @@ export const GetDomainEventSubscription: API.OperationMethod<
   GetDomainEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<GetDomainEventSubscriptionRequest>,
-  output: __S(113) as any as S.Schema<GetDomainEventSubscriptionResponse>,
+  input: GetDomainEventSubscriptionRequest,
+  output: GetDomainEventSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7947,8 +10570,8 @@ export const GetDomainEventSubscriptionDeliveryAttributes: API.OperationMethod<
   GetDomainEventSubscriptionDeliveryAttributesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<GetDomainEventSubscriptionDeliveryAttributesRequest>,
-  output: __S(117) as any as S.Schema<DeliveryAttributeListResult>,
+  input: GetDomainEventSubscriptionDeliveryAttributesRequest,
+  output: DeliveryAttributeListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7962,8 +10585,8 @@ export const GetDomainEventSubscriptionFullUrl: API.OperationMethod<
   GetDomainEventSubscriptionFullUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<GetDomainEventSubscriptionFullUrlRequest>,
-  output: __S(105) as any as S.Schema<EventSubscriptionFullUrl>,
+  input: GetDomainEventSubscriptionFullUrlRequest,
+  output: EventSubscriptionFullUrl,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7977,8 +10600,8 @@ export const GetDomainTopic: API.OperationMethod<
   GetDomainTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<GetDomainTopicRequest>,
-  output: __S(120) as any as S.Schema<GetDomainTopicResponse>,
+  input: GetDomainTopicRequest,
+  output: GetDomainTopicResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7992,8 +10615,8 @@ export const GetDomainTopicEventSubscription: API.OperationMethod<
   GetDomainTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<GetDomainTopicEventSubscriptionRequest>,
-  output: __S(99) as any as S.Schema<GetDomainTopicEventSubscriptionResponse>,
+  input: GetDomainTopicEventSubscriptionRequest,
+  output: GetDomainTopicEventSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8007,8 +10630,8 @@ export const GetDomainTopicEventSubscriptionDeliveryAttributes: API.OperationMet
   GetDomainTopicEventSubscriptionDeliveryAttributesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<GetDomainTopicEventSubscriptionDeliveryAttributesRequest>,
-  output: __S(117) as any as S.Schema<DeliveryAttributeListResult>,
+  input: GetDomainTopicEventSubscriptionDeliveryAttributesRequest,
+  output: DeliveryAttributeListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8022,8 +10645,8 @@ export const GetDomainTopicEventSubscriptionFullUrl: API.OperationMethod<
   GetDomainTopicEventSubscriptionFullUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<GetDomainTopicEventSubscriptionFullUrlRequest>,
-  output: __S(105) as any as S.Schema<EventSubscriptionFullUrl>,
+  input: GetDomainTopicEventSubscriptionFullUrlRequest,
+  output: EventSubscriptionFullUrl,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8037,8 +10660,8 @@ export const GetEventSubscription: API.OperationMethod<
   GetEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<GetEventSubscriptionRequest>,
-  output: __S(113) as any as S.Schema<GetEventSubscriptionResponse>,
+  input: GetEventSubscriptionRequest,
+  output: GetEventSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8052,8 +10675,8 @@ export const GetEventSubscriptionDeliveryAttributes: API.OperationMethod<
   GetEventSubscriptionDeliveryAttributesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<GetEventSubscriptionDeliveryAttributesRequest>,
-  output: __S(117) as any as S.Schema<DeliveryAttributeListResult>,
+  input: GetEventSubscriptionDeliveryAttributesRequest,
+  output: DeliveryAttributeListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8067,8 +10690,8 @@ export const GetEventSubscriptionFullUrl: API.OperationMethod<
   GetEventSubscriptionFullUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<GetEventSubscriptionFullUrlRequest>,
-  output: __S(105) as any as S.Schema<EventSubscriptionFullUrl>,
+  input: GetEventSubscriptionFullUrlRequest,
+  output: EventSubscriptionFullUrl,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8082,8 +10705,8 @@ export const GetExtensionTopic: API.OperationMethod<
   GetExtensionTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<GetExtensionTopicRequest>,
-  output: __S(129) as any as S.Schema<GetExtensionTopicResponse>,
+  input: GetExtensionTopicRequest,
+  output: GetExtensionTopicResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8097,8 +10720,8 @@ export const GetNamespace: API.OperationMethod<
   GetNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130) as any as S.Schema<GetNamespaceRequest>,
-  output: __S(143) as any as S.Schema<GetNamespaceResponse>,
+  input: GetNamespaceRequest,
+  output: GetNamespaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8112,8 +10735,8 @@ export const GetNamespaceTopic: API.OperationMethod<
   GetNamespaceTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144) as any as S.Schema<GetNamespaceTopicRequest>,
-  output: __S(146) as any as S.Schema<GetNamespaceTopicResponse>,
+  input: GetNamespaceTopicRequest,
+  output: GetNamespaceTopicResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8127,8 +10750,8 @@ export const GetNamespaceTopicEventSubscription: API.OperationMethod<
   GetNamespaceTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147) as any as S.Schema<GetNamespaceTopicEventSubscriptionRequest>,
-  output: __S(153) as any as S.Schema<GetNamespaceTopicEventSubscriptionResponse>,
+  input: GetNamespaceTopicEventSubscriptionRequest,
+  output: GetNamespaceTopicEventSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8142,8 +10765,8 @@ export const GetNamespaceTopicEventSubscriptionDeliveryAttributes: API.Operation
   GetNamespaceTopicEventSubscriptionDeliveryAttributesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<GetNamespaceTopicEventSubscriptionDeliveryAttributesRequest>,
-  output: __S(117) as any as S.Schema<DeliveryAttributeListResult>,
+  input: GetNamespaceTopicEventSubscriptionDeliveryAttributesRequest,
+  output: DeliveryAttributeListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8157,8 +10780,8 @@ export const GetNamespaceTopicEventSubscriptionFullUrl: API.OperationMethod<
   GetNamespaceTopicEventSubscriptionFullUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155) as any as S.Schema<GetNamespaceTopicEventSubscriptionFullUrlRequest>,
-  output: __S(105) as any as S.Schema<SubscriptionFullUrl>,
+  input: GetNamespaceTopicEventSubscriptionFullUrlRequest,
+  output: SubscriptionFullUrl,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8172,8 +10795,8 @@ export const GetPartnerConfiguration: API.OperationMethod<
   GetPartnerConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156) as any as S.Schema<GetPartnerConfigurationRequest>,
-  output: __S(157) as any as S.Schema<GetPartnerConfigurationResponse>,
+  input: GetPartnerConfigurationRequest,
+  output: GetPartnerConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8187,8 +10810,8 @@ export const GetPartnerNamespace: API.OperationMethod<
   GetPartnerNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158) as any as S.Schema<GetPartnerNamespaceRequest>,
-  output: __S(160) as any as S.Schema<GetPartnerNamespaceResponse>,
+  input: GetPartnerNamespaceRequest,
+  output: GetPartnerNamespaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8202,8 +10825,8 @@ export const GetPartnerRegistration: API.OperationMethod<
   GetPartnerRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161) as any as S.Schema<GetPartnerRegistrationRequest>,
-  output: __S(163) as any as S.Schema<GetPartnerRegistrationResponse>,
+  input: GetPartnerRegistrationRequest,
+  output: GetPartnerRegistrationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8217,8 +10840,8 @@ export const GetPartnerTopic: API.OperationMethod<
   GetPartnerTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164) as any as S.Schema<GetPartnerTopicRequest>,
-  output: __S(165) as any as S.Schema<GetPartnerTopicResponse>,
+  input: GetPartnerTopicRequest,
+  output: GetPartnerTopicResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8232,8 +10855,8 @@ export const GetPartnerTopicEventSubscription: API.OperationMethod<
   GetPartnerTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<GetPartnerTopicEventSubscriptionRequest>,
-  output: __S(99) as any as S.Schema<GetPartnerTopicEventSubscriptionResponse>,
+  input: GetPartnerTopicEventSubscriptionRequest,
+  output: GetPartnerTopicEventSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8247,8 +10870,8 @@ export const GetPartnerTopicEventSubscriptionDeliveryAttributes: API.OperationMe
   GetPartnerTopicEventSubscriptionDeliveryAttributesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<GetPartnerTopicEventSubscriptionDeliveryAttributesRequest>,
-  output: __S(117) as any as S.Schema<DeliveryAttributeListResult>,
+  input: GetPartnerTopicEventSubscriptionDeliveryAttributesRequest,
+  output: DeliveryAttributeListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8262,8 +10885,8 @@ export const GetPartnerTopicEventSubscriptionFullUrl: API.OperationMethod<
   GetPartnerTopicEventSubscriptionFullUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<GetPartnerTopicEventSubscriptionFullUrlRequest>,
-  output: __S(105) as any as S.Schema<EventSubscriptionFullUrl>,
+  input: GetPartnerTopicEventSubscriptionFullUrlRequest,
+  output: EventSubscriptionFullUrl,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8277,8 +10900,8 @@ export const GetPermissionBinding: API.OperationMethod<
   GetPermissionBindingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<GetPermissionBindingRequest>,
-  output: __S(171) as any as S.Schema<GetPermissionBindingResponse>,
+  input: GetPermissionBindingRequest,
+  output: GetPermissionBindingResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8292,8 +10915,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(88) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: GetPrivateEndpointConnectionRequest,
+  output: GetPrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8307,8 +10930,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(175) as any as S.Schema<PrivateLinkResource>,
+  input: GetPrivateLinkResourceRequest,
+  output: PrivateLinkResource,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8322,8 +10945,8 @@ export const GetSystemTopic: API.OperationMethod<
   GetSystemTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<GetSystemTopicRequest>,
-  output: __S(178) as any as S.Schema<GetSystemTopicResponse>,
+  input: GetSystemTopicRequest,
+  output: GetSystemTopicResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8337,8 +10960,8 @@ export const GetSystemTopicEventSubscription: API.OperationMethod<
   GetSystemTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<GetSystemTopicEventSubscriptionRequest>,
-  output: __S(99) as any as S.Schema<GetSystemTopicEventSubscriptionResponse>,
+  input: GetSystemTopicEventSubscriptionRequest,
+  output: GetSystemTopicEventSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8352,8 +10975,8 @@ export const GetSystemTopicEventSubscriptionDeliveryAttributes: API.OperationMet
   GetSystemTopicEventSubscriptionDeliveryAttributesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180) as any as S.Schema<GetSystemTopicEventSubscriptionDeliveryAttributesRequest>,
-  output: __S(117) as any as S.Schema<DeliveryAttributeListResult>,
+  input: GetSystemTopicEventSubscriptionDeliveryAttributesRequest,
+  output: DeliveryAttributeListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8367,8 +10990,8 @@ export const GetSystemTopicEventSubscriptionFullUrl: API.OperationMethod<
   GetSystemTopicEventSubscriptionFullUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<GetSystemTopicEventSubscriptionFullUrlRequest>,
-  output: __S(105) as any as S.Schema<EventSubscriptionFullUrl>,
+  input: GetSystemTopicEventSubscriptionFullUrlRequest,
+  output: EventSubscriptionFullUrl,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8382,8 +11005,8 @@ export const GetTopic: API.OperationMethod<
   GetTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<GetTopicRequest>,
-  output: __S(184) as any as S.Schema<GetTopicResponse>,
+  input: GetTopicRequest,
+  output: GetTopicResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8397,8 +11020,8 @@ export const GetTopicEventSubscription: API.OperationMethod<
   GetTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<GetTopicEventSubscriptionRequest>,
-  output: __S(113) as any as S.Schema<GetTopicEventSubscriptionResponse>,
+  input: GetTopicEventSubscriptionRequest,
+  output: GetTopicEventSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8412,8 +11035,8 @@ export const GetTopicEventSubscriptionDeliveryAttributes: API.OperationMethod<
   GetTopicEventSubscriptionDeliveryAttributesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<GetTopicEventSubscriptionDeliveryAttributesRequest>,
-  output: __S(117) as any as S.Schema<DeliveryAttributeListResult>,
+  input: GetTopicEventSubscriptionDeliveryAttributesRequest,
+  output: DeliveryAttributeListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8427,8 +11050,8 @@ export const GetTopicEventSubscriptionFullUrl: API.OperationMethod<
   GetTopicEventSubscriptionFullUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<GetTopicEventSubscriptionFullUrlRequest>,
-  output: __S(105) as any as S.Schema<EventSubscriptionFullUrl>,
+  input: GetTopicEventSubscriptionFullUrlRequest,
+  output: EventSubscriptionFullUrl,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8442,8 +11065,8 @@ export const GetTopicSpace: API.OperationMethod<
   GetTopicSpaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188) as any as S.Schema<GetTopicSpaceRequest>,
-  output: __S(190) as any as S.Schema<GetTopicSpaceResponse>,
+  input: GetTopicSpaceRequest,
+  output: GetTopicSpaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8457,8 +11080,8 @@ export const GetTopicType: API.OperationMethod<
   GetTopicTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191) as any as S.Schema<GetTopicTypeRequest>,
-  output: __S(196) as any as S.Schema<GetTopicTypeResponse>,
+  input: GetTopicTypeRequest,
+  output: GetTopicTypeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8472,8 +11095,8 @@ export const GetVerifiedPartner: API.OperationMethod<
   GetVerifiedPartnerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197) as any as S.Schema<GetVerifiedPartnerRequest>,
-  output: __S(200) as any as S.Schema<GetVerifiedPartnerResponse>,
+  input: GetVerifiedPartnerRequest,
+  output: GetVerifiedPartnerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8487,8 +11110,8 @@ export const ListCaCertificateByNamespace: API.OperationMethod<
   ListCaCertificateByNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201) as any as S.Schema<ListCaCertificateByNamespaceRequest>,
-  output: __S(205) as any as S.Schema<CaCertificatesListResult>,
+  input: ListCaCertificateByNamespaceRequest,
+  output: CaCertificatesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8502,8 +11125,8 @@ export const ListChannelByPartnerNamespace: API.OperationMethod<
   ListChannelByPartnerNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206) as any as S.Schema<ListChannelByPartnerNamespaceRequest>,
-  output: __S(209) as any as S.Schema<ChannelsListResult>,
+  input: ListChannelByPartnerNamespaceRequest,
+  output: ChannelsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8517,8 +11140,8 @@ export const ListClientByNamespace: API.OperationMethod<
   ListClientByNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210) as any as S.Schema<ListClientByNamespaceRequest>,
-  output: __S(213) as any as S.Schema<ClientsListResult>,
+  input: ListClientByNamespaceRequest,
+  output: ClientsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8532,8 +11155,8 @@ export const ListClientGroupByNamespace: API.OperationMethod<
   ListClientGroupByNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214) as any as S.Schema<ListClientGroupByNamespaceRequest>,
-  output: __S(217) as any as S.Schema<ClientGroupsListResult>,
+  input: ListClientGroupByNamespaceRequest,
+  output: ClientGroupsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8547,8 +11170,8 @@ export const ListDomainByResourceGroup: API.OperationMethod<
   ListDomainByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218) as any as S.Schema<ListDomainByResourceGroupRequest>,
-  output: __S(221) as any as S.Schema<DomainsListResult>,
+  input: ListDomainByResourceGroupRequest,
+  output: DomainsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8562,8 +11185,8 @@ export const ListDomainBySubscription: API.OperationMethod<
   ListDomainBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222) as any as S.Schema<ListDomainBySubscriptionRequest>,
-  output: __S(221) as any as S.Schema<DomainsListResult>,
+  input: ListDomainBySubscriptionRequest,
+  output: DomainsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8577,8 +11200,8 @@ export const ListDomainEventSubscriptions: API.OperationMethod<
   ListDomainEventSubscriptionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223) as any as S.Schema<ListDomainEventSubscriptionsRequest>,
-  output: __S(226) as any as S.Schema<EventSubscriptionsListResult>,
+  input: ListDomainEventSubscriptionsRequest,
+  output: EventSubscriptionsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8592,8 +11215,8 @@ export const ListDomainSharedAccessKeys: API.OperationMethod<
   ListDomainSharedAccessKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227) as any as S.Schema<ListDomainSharedAccessKeysRequest>,
-  output: __S(228) as any as S.Schema<DomainSharedAccessKeys>,
+  input: ListDomainSharedAccessKeysRequest,
+  output: DomainSharedAccessKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8607,8 +11230,8 @@ export const ListDomainTopicByDomain: API.OperationMethod<
   ListDomainTopicByDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229) as any as S.Schema<ListDomainTopicByDomainRequest>,
-  output: __S(232) as any as S.Schema<DomainTopicsListResult>,
+  input: ListDomainTopicByDomainRequest,
+  output: DomainTopicsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8622,8 +11245,8 @@ export const ListDomainTopicEventSubscriptions: API.OperationMethod<
   ListDomainTopicEventSubscriptionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233) as any as S.Schema<ListDomainTopicEventSubscriptionsRequest>,
-  output: __S(226) as any as S.Schema<EventSubscriptionsListResult>,
+  input: ListDomainTopicEventSubscriptionsRequest,
+  output: EventSubscriptionsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8637,8 +11260,8 @@ export const ListEventSubscriptionByDomainTopic: API.OperationMethod<
   ListEventSubscriptionByDomainTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234) as any as S.Schema<ListEventSubscriptionByDomainTopicRequest>,
-  output: __S(226) as any as S.Schema<EventSubscriptionsListResult>,
+  input: ListEventSubscriptionByDomainTopicRequest,
+  output: EventSubscriptionsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8652,8 +11275,8 @@ export const ListEventSubscriptionByResource: API.OperationMethod<
   ListEventSubscriptionByResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235) as any as S.Schema<ListEventSubscriptionByResourceRequest>,
-  output: __S(226) as any as S.Schema<EventSubscriptionsListResult>,
+  input: ListEventSubscriptionByResourceRequest,
+  output: EventSubscriptionsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8667,8 +11290,8 @@ export const ListEventSubscriptionGlobalByResourceGroup: API.OperationMethod<
   ListEventSubscriptionGlobalByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236) as any as S.Schema<ListEventSubscriptionGlobalByResourceGroupRequest>,
-  output: __S(226) as any as S.Schema<EventSubscriptionsListResult>,
+  input: ListEventSubscriptionGlobalByResourceGroupRequest,
+  output: EventSubscriptionsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8682,8 +11305,8 @@ export const ListEventSubscriptionGlobalByResourceGroupForTopicType: API.Operati
   ListEventSubscriptionGlobalByResourceGroupForTopicTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237) as any as S.Schema<ListEventSubscriptionGlobalByResourceGroupForTopicTypeRequest>,
-  output: __S(226) as any as S.Schema<EventSubscriptionsListResult>,
+  input: ListEventSubscriptionGlobalByResourceGroupForTopicTypeRequest,
+  output: EventSubscriptionsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8697,8 +11320,8 @@ export const ListEventSubscriptionGlobalBySubscription: API.OperationMethod<
   ListEventSubscriptionGlobalBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238) as any as S.Schema<ListEventSubscriptionGlobalBySubscriptionRequest>,
-  output: __S(226) as any as S.Schema<EventSubscriptionsListResult>,
+  input: ListEventSubscriptionGlobalBySubscriptionRequest,
+  output: EventSubscriptionsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8712,8 +11335,8 @@ export const ListEventSubscriptionGlobalBySubscriptionForTopicType: API.Operatio
   ListEventSubscriptionGlobalBySubscriptionForTopicTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239) as any as S.Schema<ListEventSubscriptionGlobalBySubscriptionForTopicTypeRequest>,
-  output: __S(226) as any as S.Schema<EventSubscriptionsListResult>,
+  input: ListEventSubscriptionGlobalBySubscriptionForTopicTypeRequest,
+  output: EventSubscriptionsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8727,8 +11350,8 @@ export const ListEventSubscriptionRegionalByResourceGroup: API.OperationMethod<
   ListEventSubscriptionRegionalByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240) as any as S.Schema<ListEventSubscriptionRegionalByResourceGroupRequest>,
-  output: __S(226) as any as S.Schema<EventSubscriptionsListResult>,
+  input: ListEventSubscriptionRegionalByResourceGroupRequest,
+  output: EventSubscriptionsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8742,10 +11365,8 @@ export const ListEventSubscriptionRegionalByResourceGroupForTopicType: API.Opera
   ListEventSubscriptionRegionalByResourceGroupForTopicTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    241,
-  ) as any as S.Schema<ListEventSubscriptionRegionalByResourceGroupForTopicTypeRequest>,
-  output: __S(226) as any as S.Schema<EventSubscriptionsListResult>,
+  input: ListEventSubscriptionRegionalByResourceGroupForTopicTypeRequest,
+  output: EventSubscriptionsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8759,8 +11380,8 @@ export const ListEventSubscriptionRegionalBySubscription: API.OperationMethod<
   ListEventSubscriptionRegionalBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242) as any as S.Schema<ListEventSubscriptionRegionalBySubscriptionRequest>,
-  output: __S(226) as any as S.Schema<EventSubscriptionsListResult>,
+  input: ListEventSubscriptionRegionalBySubscriptionRequest,
+  output: EventSubscriptionsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8774,10 +11395,8 @@ export const ListEventSubscriptionRegionalBySubscriptionForTopicType: API.Operat
   ListEventSubscriptionRegionalBySubscriptionForTopicTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    243,
-  ) as any as S.Schema<ListEventSubscriptionRegionalBySubscriptionForTopicTypeRequest>,
-  output: __S(226) as any as S.Schema<EventSubscriptionsListResult>,
+  input: ListEventSubscriptionRegionalBySubscriptionForTopicTypeRequest,
+  output: EventSubscriptionsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8791,8 +11410,8 @@ export const ListNamespaceByResourceGroup: API.OperationMethod<
   ListNamespaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244) as any as S.Schema<ListNamespaceByResourceGroupRequest>,
-  output: __S(247) as any as S.Schema<NamespacesListResult>,
+  input: ListNamespaceByResourceGroupRequest,
+  output: NamespacesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8806,8 +11425,8 @@ export const ListNamespaceBySubscription: API.OperationMethod<
   ListNamespaceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248) as any as S.Schema<ListNamespaceBySubscriptionRequest>,
-  output: __S(247) as any as S.Schema<NamespacesListResult>,
+  input: ListNamespaceBySubscriptionRequest,
+  output: NamespacesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8821,8 +11440,8 @@ export const ListNamespaceSharedAccessKeys: API.OperationMethod<
   ListNamespaceSharedAccessKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249) as any as S.Schema<ListNamespaceSharedAccessKeysRequest>,
-  output: __S(250) as any as S.Schema<NamespaceSharedAccessKeys>,
+  input: ListNamespaceSharedAccessKeysRequest,
+  output: NamespaceSharedAccessKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8836,8 +11455,8 @@ export const ListNamespaceTopicByNamespace: API.OperationMethod<
   ListNamespaceTopicByNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251) as any as S.Schema<ListNamespaceTopicByNamespaceRequest>,
-  output: __S(254) as any as S.Schema<NamespaceTopicsListResult>,
+  input: ListNamespaceTopicByNamespaceRequest,
+  output: NamespaceTopicsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8851,8 +11470,8 @@ export const ListNamespaceTopicEventSubscriptionByNamespaceTopic: API.OperationM
   ListNamespaceTopicEventSubscriptionByNamespaceTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255) as any as S.Schema<ListNamespaceTopicEventSubscriptionByNamespaceTopicRequest>,
-  output: __S(258) as any as S.Schema<SubscriptionsListResult>,
+  input: ListNamespaceTopicEventSubscriptionByNamespaceTopicRequest,
+  output: SubscriptionsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8866,8 +11485,8 @@ export const ListNamespaceTopicSharedAccessKeys: API.OperationMethod<
   ListNamespaceTopicSharedAccessKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259) as any as S.Schema<ListNamespaceTopicSharedAccessKeysRequest>,
-  output: __S(228) as any as S.Schema<TopicSharedAccessKeys>,
+  input: ListNamespaceTopicSharedAccessKeysRequest,
+  output: TopicSharedAccessKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8881,8 +11500,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260) as any as S.Schema<ListOperationsRequest>,
-  output: __S(264) as any as S.Schema<OperationsListResult>,
+  input: ListOperationsRequest,
+  output: OperationsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8896,8 +11515,8 @@ export const ListPartnerConfigurationByResourceGroup: API.OperationMethod<
   ListPartnerConfigurationByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265) as any as S.Schema<ListPartnerConfigurationByResourceGroupRequest>,
-  output: __S(268) as any as S.Schema<PartnerConfigurationsListResult>,
+  input: ListPartnerConfigurationByResourceGroupRequest,
+  output: PartnerConfigurationsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8911,8 +11530,8 @@ export const ListPartnerConfigurationBySubscription: API.OperationMethod<
   ListPartnerConfigurationBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269) as any as S.Schema<ListPartnerConfigurationBySubscriptionRequest>,
-  output: __S(268) as any as S.Schema<PartnerConfigurationsListResult>,
+  input: ListPartnerConfigurationBySubscriptionRequest,
+  output: PartnerConfigurationsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8926,8 +11545,8 @@ export const ListPartnerNamespaceByResourceGroup: API.OperationMethod<
   ListPartnerNamespaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270) as any as S.Schema<ListPartnerNamespaceByResourceGroupRequest>,
-  output: __S(273) as any as S.Schema<PartnerNamespacesListResult>,
+  input: ListPartnerNamespaceByResourceGroupRequest,
+  output: PartnerNamespacesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8941,8 +11560,8 @@ export const ListPartnerNamespaceBySubscription: API.OperationMethod<
   ListPartnerNamespaceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274) as any as S.Schema<ListPartnerNamespaceBySubscriptionRequest>,
-  output: __S(273) as any as S.Schema<PartnerNamespacesListResult>,
+  input: ListPartnerNamespaceBySubscriptionRequest,
+  output: PartnerNamespacesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8956,8 +11575,8 @@ export const ListPartnerNamespaceSharedAccessKeys: API.OperationMethod<
   ListPartnerNamespaceSharedAccessKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275) as any as S.Schema<ListPartnerNamespaceSharedAccessKeysRequest>,
-  output: __S(250) as any as S.Schema<PartnerNamespaceSharedAccessKeys>,
+  input: ListPartnerNamespaceSharedAccessKeysRequest,
+  output: PartnerNamespaceSharedAccessKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8971,8 +11590,8 @@ export const ListPartnerRegistrationByResourceGroup: API.OperationMethod<
   ListPartnerRegistrationByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276) as any as S.Schema<ListPartnerRegistrationByResourceGroupRequest>,
-  output: __S(279) as any as S.Schema<PartnerRegistrationsListResult>,
+  input: ListPartnerRegistrationByResourceGroupRequest,
+  output: PartnerRegistrationsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8986,8 +11605,8 @@ export const ListPartnerRegistrationBySubscription: API.OperationMethod<
   ListPartnerRegistrationBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280) as any as S.Schema<ListPartnerRegistrationBySubscriptionRequest>,
-  output: __S(279) as any as S.Schema<PartnerRegistrationsListResult>,
+  input: ListPartnerRegistrationBySubscriptionRequest,
+  output: PartnerRegistrationsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9001,8 +11620,8 @@ export const ListPartnerTopicByResourceGroup: API.OperationMethod<
   ListPartnerTopicByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281) as any as S.Schema<ListPartnerTopicByResourceGroupRequest>,
-  output: __S(284) as any as S.Schema<PartnerTopicsListResult>,
+  input: ListPartnerTopicByResourceGroupRequest,
+  output: PartnerTopicsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9016,8 +11635,8 @@ export const ListPartnerTopicBySubscription: API.OperationMethod<
   ListPartnerTopicBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285) as any as S.Schema<ListPartnerTopicBySubscriptionRequest>,
-  output: __S(284) as any as S.Schema<PartnerTopicsListResult>,
+  input: ListPartnerTopicBySubscriptionRequest,
+  output: PartnerTopicsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9031,8 +11650,8 @@ export const ListPartnerTopicEventSubscriptionByPartnerTopic: API.OperationMetho
   ListPartnerTopicEventSubscriptionByPartnerTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286) as any as S.Schema<ListPartnerTopicEventSubscriptionByPartnerTopicRequest>,
-  output: __S(226) as any as S.Schema<EventSubscriptionsListResult>,
+  input: ListPartnerTopicEventSubscriptionByPartnerTopicRequest,
+  output: EventSubscriptionsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9046,8 +11665,8 @@ export const ListPermissionBindingByNamespace: API.OperationMethod<
   ListPermissionBindingByNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287) as any as S.Schema<ListPermissionBindingByNamespaceRequest>,
-  output: __S(290) as any as S.Schema<PermissionBindingsListResult>,
+  input: ListPermissionBindingByNamespaceRequest,
+  output: PermissionBindingsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9061,8 +11680,8 @@ export const ListPrivateEndpointConnectionByResource: API.OperationMethod<
   ListPrivateEndpointConnectionByResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291) as any as S.Schema<ListPrivateEndpointConnectionByResourceRequest>,
-  output: __S(292) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: ListPrivateEndpointConnectionByResourceRequest,
+  output: PrivateEndpointConnectionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9076,8 +11695,8 @@ export const ListPrivateLinkResourceByResource: API.OperationMethod<
   ListPrivateLinkResourceByResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293) as any as S.Schema<ListPrivateLinkResourceByResourceRequest>,
-  output: __S(295) as any as S.Schema<PrivateLinkResourcesListResult>,
+  input: ListPrivateLinkResourceByResourceRequest,
+  output: PrivateLinkResourcesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9091,8 +11710,8 @@ export const ListSystemTopicByResourceGroup: API.OperationMethod<
   ListSystemTopicByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296) as any as S.Schema<ListSystemTopicByResourceGroupRequest>,
-  output: __S(299) as any as S.Schema<SystemTopicsListResult>,
+  input: ListSystemTopicByResourceGroupRequest,
+  output: SystemTopicsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9106,8 +11725,8 @@ export const ListSystemTopicBySubscription: API.OperationMethod<
   ListSystemTopicBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300) as any as S.Schema<ListSystemTopicBySubscriptionRequest>,
-  output: __S(299) as any as S.Schema<SystemTopicsListResult>,
+  input: ListSystemTopicBySubscriptionRequest,
+  output: SystemTopicsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9121,8 +11740,8 @@ export const ListSystemTopicEventSubscriptionBySystemTopic: API.OperationMethod<
   ListSystemTopicEventSubscriptionBySystemTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301) as any as S.Schema<ListSystemTopicEventSubscriptionBySystemTopicRequest>,
-  output: __S(226) as any as S.Schema<EventSubscriptionsListResult>,
+  input: ListSystemTopicEventSubscriptionBySystemTopicRequest,
+  output: EventSubscriptionsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9136,8 +11755,8 @@ export const ListTopicByResourceGroup: API.OperationMethod<
   ListTopicByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302) as any as S.Schema<ListTopicByResourceGroupRequest>,
-  output: __S(305) as any as S.Schema<TopicsListResult>,
+  input: ListTopicByResourceGroupRequest,
+  output: TopicsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9151,8 +11770,8 @@ export const ListTopicBySubscription: API.OperationMethod<
   ListTopicBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306) as any as S.Schema<ListTopicBySubscriptionRequest>,
-  output: __S(305) as any as S.Schema<TopicsListResult>,
+  input: ListTopicBySubscriptionRequest,
+  output: TopicsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9166,8 +11785,8 @@ export const ListTopicEventSubscriptions: API.OperationMethod<
   ListTopicEventSubscriptionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307) as any as S.Schema<ListTopicEventSubscriptionsRequest>,
-  output: __S(226) as any as S.Schema<EventSubscriptionsListResult>,
+  input: ListTopicEventSubscriptionsRequest,
+  output: EventSubscriptionsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9181,8 +11800,8 @@ export const ListTopicEventTypes: API.OperationMethod<
   ListTopicEventTypesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308) as any as S.Schema<ListTopicEventTypesRequest>,
-  output: __S(312) as any as S.Schema<EventTypesListResult>,
+  input: ListTopicEventTypesRequest,
+  output: EventTypesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9196,8 +11815,8 @@ export const ListTopicSharedAccessKeys: API.OperationMethod<
   ListTopicSharedAccessKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313) as any as S.Schema<ListTopicSharedAccessKeysRequest>,
-  output: __S(228) as any as S.Schema<TopicSharedAccessKeys>,
+  input: ListTopicSharedAccessKeysRequest,
+  output: TopicSharedAccessKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9211,8 +11830,8 @@ export const ListTopicSpaceByNamespace: API.OperationMethod<
   ListTopicSpaceByNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314) as any as S.Schema<ListTopicSpaceByNamespaceRequest>,
-  output: __S(317) as any as S.Schema<TopicSpacesListResult>,
+  input: ListTopicSpaceByNamespaceRequest,
+  output: TopicSpacesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9226,8 +11845,8 @@ export const ListTopicTypeEventTypes: API.OperationMethod<
   ListTopicTypeEventTypesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318) as any as S.Schema<ListTopicTypeEventTypesRequest>,
-  output: __S(312) as any as S.Schema<EventTypesListResult>,
+  input: ListTopicTypeEventTypesRequest,
+  output: EventTypesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9241,8 +11860,8 @@ export const ListTopicTypes: API.OperationMethod<
   ListTopicTypesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319) as any as S.Schema<ListTopicTypesRequest>,
-  output: __S(321) as any as S.Schema<TopicTypesListResult>,
+  input: ListTopicTypesRequest,
+  output: TopicTypesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9256,8 +11875,8 @@ export const ListVerifiedPartners: API.OperationMethod<
   ListVerifiedPartnersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322) as any as S.Schema<ListVerifiedPartnersRequest>,
-  output: __S(325) as any as S.Schema<VerifiedPartnersListResult>,
+  input: ListVerifiedPartnersRequest,
+  output: VerifiedPartnersListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9271,8 +11890,8 @@ export const NamespacesCreateOrUpdate: API.OperationMethod<
   NamespacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331) as any as S.Schema<NamespacesCreateOrUpdateRequest>,
-  output: __S(332) as any as S.Schema<NamespacesCreateOrUpdateResponse>,
+  input: NamespacesCreateOrUpdateRequest,
+  output: NamespacesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9286,8 +11905,8 @@ export const NamespaceTopicEventSubscriptionsCreateOrUpdate: API.OperationMethod
   NamespaceTopicEventSubscriptionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334) as any as S.Schema<NamespaceTopicEventSubscriptionsCreateOrUpdateRequest>,
-  output: __S(335) as any as S.Schema<NamespaceTopicEventSubscriptionsCreateOrUpdateResponse>,
+  input: NamespaceTopicEventSubscriptionsCreateOrUpdateRequest,
+  output: NamespaceTopicEventSubscriptionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9301,8 +11920,8 @@ export const NamespaceTopicsCreateOrUpdate: API.OperationMethod<
   NamespaceTopicsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337) as any as S.Schema<NamespaceTopicsCreateOrUpdateRequest>,
-  output: __S(338) as any as S.Schema<NamespaceTopicsCreateOrUpdateResponse>,
+  input: NamespaceTopicsCreateOrUpdateRequest,
+  output: NamespaceTopicsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9316,8 +11935,8 @@ export const PartnerConfigurationsCreateOrUpdate: API.OperationMethod<
   PartnerConfigurationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339) as any as S.Schema<PartnerConfigurationsCreateOrUpdateRequest>,
-  output: __S(340) as any as S.Schema<PartnerConfigurationsCreateOrUpdateResponse>,
+  input: PartnerConfigurationsCreateOrUpdateRequest,
+  output: PartnerConfigurationsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9331,8 +11950,8 @@ export const PartnerConfigurationsUnauthorizePartner: API.OperationMethod<
   PartnerConfigurationsUnauthorizePartnerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341) as any as S.Schema<PartnerConfigurationsUnauthorizePartnerRequest>,
-  output: __S(342) as any as S.Schema<PartnerConfigurationsUnauthorizePartnerResponse>,
+  input: PartnerConfigurationsUnauthorizePartnerRequest,
+  output: PartnerConfigurationsUnauthorizePartnerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9346,8 +11965,8 @@ export const PartnerNamespacesCreateOrUpdate: API.OperationMethod<
   PartnerNamespacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344) as any as S.Schema<PartnerNamespacesCreateOrUpdateRequest>,
-  output: __S(345) as any as S.Schema<PartnerNamespacesCreateOrUpdateResponse>,
+  input: PartnerNamespacesCreateOrUpdateRequest,
+  output: PartnerNamespacesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9361,8 +11980,8 @@ export const PartnerRegistrationsCreateOrUpdate: API.OperationMethod<
   PartnerRegistrationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347) as any as S.Schema<PartnerRegistrationsCreateOrUpdateRequest>,
-  output: __S(348) as any as S.Schema<PartnerRegistrationsCreateOrUpdateResponse>,
+  input: PartnerRegistrationsCreateOrUpdateRequest,
+  output: PartnerRegistrationsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9376,8 +11995,8 @@ export const PartnerTopicEventSubscriptionsCreateOrUpdate: API.OperationMethod<
   PartnerTopicEventSubscriptionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349) as any as S.Schema<PartnerTopicEventSubscriptionsCreateOrUpdateRequest>,
-  output: __S(94) as any as S.Schema<PartnerTopicEventSubscriptionsCreateOrUpdateResponse>,
+  input: PartnerTopicEventSubscriptionsCreateOrUpdateRequest,
+  output: PartnerTopicEventSubscriptionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9391,8 +12010,8 @@ export const PartnerTopicsCreateOrUpdate: API.OperationMethod<
   PartnerTopicsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351) as any as S.Schema<PartnerTopicsCreateOrUpdateRequest>,
-  output: __S(352) as any as S.Schema<PartnerTopicsCreateOrUpdateResponse>,
+  input: PartnerTopicsCreateOrUpdateRequest,
+  output: PartnerTopicsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9406,8 +12025,8 @@ export const PermissionBindingsCreateOrUpdate: API.OperationMethod<
   PermissionBindingsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(354) as any as S.Schema<PermissionBindingsCreateOrUpdateRequest>,
-  output: __S(355) as any as S.Schema<PermissionBindingsCreateOrUpdateResponse>,
+  input: PermissionBindingsCreateOrUpdateRequest,
+  output: PermissionBindingsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9421,8 +12040,8 @@ export const RegenerateDomainKey: API.OperationMethod<
   RegenerateDomainKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(356) as any as S.Schema<RegenerateDomainKeyRequest>,
-  output: __S(228) as any as S.Schema<DomainSharedAccessKeys>,
+  input: RegenerateDomainKeyRequest,
+  output: DomainSharedAccessKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9436,8 +12055,8 @@ export const RegenerateNamespaceKey: API.OperationMethod<
   RegenerateNamespaceKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357) as any as S.Schema<RegenerateNamespaceKeyRequest>,
-  output: __S(250) as any as S.Schema<NamespaceSharedAccessKeys>,
+  input: RegenerateNamespaceKeyRequest,
+  output: NamespaceSharedAccessKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9451,8 +12070,8 @@ export const RegenerateNamespaceTopicKey: API.OperationMethod<
   RegenerateNamespaceTopicKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358) as any as S.Schema<RegenerateNamespaceTopicKeyRequest>,
-  output: __S(228) as any as S.Schema<TopicSharedAccessKeys>,
+  input: RegenerateNamespaceTopicKeyRequest,
+  output: TopicSharedAccessKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9466,8 +12085,8 @@ export const RegeneratePartnerNamespaceKey: API.OperationMethod<
   RegeneratePartnerNamespaceKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359) as any as S.Schema<RegeneratePartnerNamespaceKeyRequest>,
-  output: __S(250) as any as S.Schema<PartnerNamespaceSharedAccessKeys>,
+  input: RegeneratePartnerNamespaceKeyRequest,
+  output: PartnerNamespaceSharedAccessKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9481,8 +12100,8 @@ export const RegenerateTopicKey: API.OperationMethod<
   RegenerateTopicKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360) as any as S.Schema<RegenerateTopicKeyRequest>,
-  output: __S(228) as any as S.Schema<TopicSharedAccessKeys>,
+  input: RegenerateTopicKeyRequest,
+  output: TopicSharedAccessKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9496,8 +12115,8 @@ export const SystemTopicEventSubscriptionsCreateOrUpdate: API.OperationMethod<
   SystemTopicEventSubscriptionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361) as any as S.Schema<SystemTopicEventSubscriptionsCreateOrUpdateRequest>,
-  output: __S(94) as any as S.Schema<SystemTopicEventSubscriptionsCreateOrUpdateResponse>,
+  input: SystemTopicEventSubscriptionsCreateOrUpdateRequest,
+  output: SystemTopicEventSubscriptionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9511,8 +12130,8 @@ export const SystemTopicsCreateOrUpdate: API.OperationMethod<
   SystemTopicsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(363) as any as S.Schema<SystemTopicsCreateOrUpdateRequest>,
-  output: __S(364) as any as S.Schema<SystemTopicsCreateOrUpdateResponse>,
+  input: SystemTopicsCreateOrUpdateRequest,
+  output: SystemTopicsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9526,8 +12145,8 @@ export const TopicEventSubscriptionsCreateOrUpdate: API.OperationMethod<
   TopicEventSubscriptionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(365) as any as S.Schema<TopicEventSubscriptionsCreateOrUpdateRequest>,
-  output: __S(99) as any as S.Schema<TopicEventSubscriptionsCreateOrUpdateResponse>,
+  input: TopicEventSubscriptionsCreateOrUpdateRequest,
+  output: TopicEventSubscriptionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9541,8 +12160,8 @@ export const TopicsCreateOrUpdate: API.OperationMethod<
   TopicsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(367) as any as S.Schema<TopicsCreateOrUpdateRequest>,
-  output: __S(368) as any as S.Schema<TopicsCreateOrUpdateResponse>,
+  input: TopicsCreateOrUpdateRequest,
+  output: TopicsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9556,8 +12175,8 @@ export const TopicSpacesCreateOrUpdate: API.OperationMethod<
   TopicSpacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(370) as any as S.Schema<TopicSpacesCreateOrUpdateRequest>,
-  output: __S(371) as any as S.Schema<TopicSpacesCreateOrUpdateResponse>,
+  input: TopicSpacesCreateOrUpdateRequest,
+  output: TopicSpacesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9571,8 +12190,8 @@ export const UpdateChannel: API.OperationMethod<
   UpdateChannelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374) as any as S.Schema<UpdateChannelRequest>,
-  output: __S(40) as any as S.Schema<UpdateChannelResponse>,
+  input: UpdateChannelRequest,
+  output: UpdateChannelResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9586,8 +12205,8 @@ export const UpdateDomain: API.OperationMethod<
   UpdateDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376) as any as S.Schema<UpdateDomainRequest>,
-  output: __S(40) as any as S.Schema<UpdateDomainResponse>,
+  input: UpdateDomainRequest,
+  output: UpdateDomainResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9601,8 +12220,8 @@ export const UpdateDomainEventSubscription: API.OperationMethod<
   UpdateDomainEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(377) as any as S.Schema<UpdateDomainEventSubscriptionRequest>,
-  output: __S(99) as any as S.Schema<UpdateDomainEventSubscriptionResponse>,
+  input: UpdateDomainEventSubscriptionRequest,
+  output: UpdateDomainEventSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9616,8 +12235,8 @@ export const UpdateDomainTopicEventSubscription: API.OperationMethod<
   UpdateDomainTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378) as any as S.Schema<UpdateDomainTopicEventSubscriptionRequest>,
-  output: __S(99) as any as S.Schema<UpdateDomainTopicEventSubscriptionResponse>,
+  input: UpdateDomainTopicEventSubscriptionRequest,
+  output: UpdateDomainTopicEventSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9631,8 +12250,8 @@ export const UpdateEventSubscription: API.OperationMethod<
   UpdateEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(379) as any as S.Schema<UpdateEventSubscriptionRequest>,
-  output: __S(113) as any as S.Schema<UpdateEventSubscriptionResponse>,
+  input: UpdateEventSubscriptionRequest,
+  output: UpdateEventSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9646,8 +12265,8 @@ export const UpdateNamespace: API.OperationMethod<
   UpdateNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(383) as any as S.Schema<UpdateNamespaceRequest>,
-  output: __S(384) as any as S.Schema<UpdateNamespaceResponse>,
+  input: UpdateNamespaceRequest,
+  output: UpdateNamespaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9661,8 +12280,8 @@ export const UpdateNamespaceTopic: API.OperationMethod<
   UpdateNamespaceTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(386) as any as S.Schema<UpdateNamespaceTopicRequest>,
-  output: __S(146) as any as S.Schema<UpdateNamespaceTopicResponse>,
+  input: UpdateNamespaceTopicRequest,
+  output: UpdateNamespaceTopicResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9676,8 +12295,8 @@ export const UpdateNamespaceTopicEventSubscription: API.OperationMethod<
   UpdateNamespaceTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(387) as any as S.Schema<UpdateNamespaceTopicEventSubscriptionRequest>,
-  output: __S(153) as any as S.Schema<UpdateNamespaceTopicEventSubscriptionResponse>,
+  input: UpdateNamespaceTopicEventSubscriptionRequest,
+  output: UpdateNamespaceTopicEventSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9691,8 +12310,8 @@ export const UpdatePartnerConfiguration: API.OperationMethod<
   UpdatePartnerConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(389) as any as S.Schema<UpdatePartnerConfigurationRequest>,
-  output: __S(390) as any as S.Schema<UpdatePartnerConfigurationResponse>,
+  input: UpdatePartnerConfigurationRequest,
+  output: UpdatePartnerConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9706,8 +12325,8 @@ export const UpdatePartnerNamespace: API.OperationMethod<
   UpdatePartnerNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392) as any as S.Schema<UpdatePartnerNamespaceRequest>,
-  output: __S(40) as any as S.Schema<UpdatePartnerNamespaceResponse>,
+  input: UpdatePartnerNamespaceRequest,
+  output: UpdatePartnerNamespaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9721,8 +12340,8 @@ export const UpdatePartnerRegistration: API.OperationMethod<
   UpdatePartnerRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(393) as any as S.Schema<UpdatePartnerRegistrationRequest>,
-  output: __S(46) as any as S.Schema<UpdatePartnerRegistrationResponse>,
+  input: UpdatePartnerRegistrationRequest,
+  output: UpdatePartnerRegistrationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9736,8 +12355,8 @@ export const UpdatePartnerTopic: API.OperationMethod<
   UpdatePartnerTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394) as any as S.Schema<UpdatePartnerTopicRequest>,
-  output: __S(40) as any as S.Schema<UpdatePartnerTopicResponse>,
+  input: UpdatePartnerTopicRequest,
+  output: UpdatePartnerTopicResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9751,8 +12370,8 @@ export const UpdatePartnerTopicEventSubscription: API.OperationMethod<
   UpdatePartnerTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395) as any as S.Schema<UpdatePartnerTopicEventSubscriptionRequest>,
-  output: __S(99) as any as S.Schema<UpdatePartnerTopicEventSubscriptionResponse>,
+  input: UpdatePartnerTopicEventSubscriptionRequest,
+  output: UpdatePartnerTopicEventSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9766,8 +12385,8 @@ export const UpdatePrivateEndpointConnection: API.OperationMethod<
   UpdatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(396) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>,
-  output: __S(88) as any as S.Schema<UpdatePrivateEndpointConnectionResponse>,
+  input: UpdatePrivateEndpointConnectionRequest,
+  output: UpdatePrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9781,8 +12400,8 @@ export const UpdateSystemTopic: API.OperationMethod<
   UpdateSystemTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(397) as any as S.Schema<UpdateSystemTopicRequest>,
-  output: __S(398) as any as S.Schema<UpdateSystemTopicResponse>,
+  input: UpdateSystemTopicRequest,
+  output: UpdateSystemTopicResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9796,8 +12415,8 @@ export const UpdateSystemTopicEventSubscription: API.OperationMethod<
   UpdateSystemTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(399) as any as S.Schema<UpdateSystemTopicEventSubscriptionRequest>,
-  output: __S(99) as any as S.Schema<UpdateSystemTopicEventSubscriptionResponse>,
+  input: UpdateSystemTopicEventSubscriptionRequest,
+  output: UpdateSystemTopicEventSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9811,8 +12430,8 @@ export const UpdateTopic: API.OperationMethod<
   UpdateTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401) as any as S.Schema<UpdateTopicRequest>,
-  output: __S(40) as any as S.Schema<UpdateTopicResponse>,
+  input: UpdateTopicRequest,
+  output: UpdateTopicResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9826,8 +12445,8 @@ export const UpdateTopicEventSubscription: API.OperationMethod<
   UpdateTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(402) as any as S.Schema<UpdateTopicEventSubscriptionRequest>,
-  output: __S(99) as any as S.Schema<UpdateTopicEventSubscriptionResponse>,
+  input: UpdateTopicEventSubscriptionRequest,
+  output: UpdateTopicEventSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9841,8 +12460,8 @@ export const ValidateNamespaceCustomDomainOwnership: API.OperationMethod<
   ValidateNamespaceCustomDomainOwnershipError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(403) as any as S.Schema<ValidateNamespaceCustomDomainOwnershipRequest>,
-  output: __S(405) as any as S.Schema<CustomDomainOwnershipValidationResult>,
+  input: ValidateNamespaceCustomDomainOwnershipRequest,
+  output: CustomDomainOwnershipValidationResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9880,12 +12499,12 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "InlineEventProperties" });
     case 3:
-      return S.Record(S.String, __S(2));
+      return S.Record(S.String, InlineEventProperties);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          kind: S.optional(S.String),
-          inlineEventTypes: S.optional(__S(3)),
+          kind: S.optional(EventTypeInfoKind),
+          inlineEventTypes: S.optional(EventTypeInfoInlineEventTypesMap),
         }),
       ).annotate({ identifier: "EventTypeInfo" });
     case 5:
@@ -9893,10 +12512,10 @@ function __c0(j: number): any {
         S.Struct({
           partnerRegistrationImmutableId: S.optional(S.String),
           source: S.optional(S.String),
-          eventTypeInfo: S.optional(__S(4)),
+          eventTypeInfo: S.optional(EventTypeInfo),
           expirationTimeIfNotActivatedUtc: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          activationState: S.optional(S.String),
+          provisioningState: S.optional(PartnerTopicPropertiesProvisioningState),
+          activationState: S.optional(PartnerTopicPropertiesActivationState),
           partnerTopicFriendlyDescription: S.optional(S.String),
           messageForActivation: S.optional(S.String),
         }),
@@ -9905,10 +12524,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(ActivatePartnerTopicResponseSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(ActivatePartnerTopicResponseSystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -9926,14 +12545,14 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(7));
+      return S.Record(S.String, UserIdentityProperties);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(IdentityInfoType),
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(8)),
+          userAssignedIdentities: S.optional(IdentityInfoUserAssignedIdentitiesMap),
         }),
       ).annotate({ identifier: "IdentityInfo" });
     case 2:
@@ -9943,10 +12562,10 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(5)),
-          systemData: S.optional(__S(6)),
-          identity: S.optional(__S(9)),
+          tags: S.optional(ActivatePartnerTopicResponseTagsMap),
+          properties: S.optional(PartnerTopicProperties),
+          systemData: S.optional(ActivatePartnerTopicResponseSystemData),
+          identity: S.optional(IdentityInfo),
         }),
       ).annotate({
         identifier: "ActivatePartnerTopicResponse",
@@ -9979,19 +12598,19 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Partner" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(Partner);
     case 6:
       return S.suspend(() =>
         S.Struct({
           defaultMaximumExpirationTimeInDays: S.optional(S.Number),
-          authorizedPartnersList: S.optional(__S(13)),
+          authorizedPartnersList: S.optional(PartnerAuthorizationAuthorizedPartnersListList),
         }),
       ).annotate({ identifier: "PartnerAuthorization" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          partnerAuthorization: S.optional(__S(14)),
-          provisioningState: S.optional(S.String),
+          partnerAuthorization: S.optional(PartnerAuthorization),
+          provisioningState: S.optional(PartnerConfigurationPropertiesProvisioningState),
         }),
       ).annotate({
         identifier: "PartnerConfigurationProperties",
@@ -10004,10 +12623,14 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(
+            AuthorizePartnerConfigurationPartnerResponseSystemDataCreatedByType,
+          ),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(
+            AuthorizePartnerConfigurationPartnerResponseSystemDataLastModifiedByType,
+          ),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -10019,10 +12642,10 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(15)),
-          systemData: S.optional(__S(16)),
+          properties: S.optional(PartnerConfigurationProperties),
+          systemData: S.optional(AuthorizePartnerConfigurationPartnerResponseSystemData),
           location: S.optional(S.String),
-          tags: S.optional(__S(1)),
+          tags: S.optional(AuthorizePartnerConfigurationPartnerResponseTagsMap),
         }),
       ).annotate({
         identifier: "AuthorizePartnerConfigurationPartnerResponse",
@@ -10043,7 +12666,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           caCertificateName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(18)),
+          properties: S.optional(CaCertificatePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10062,7 +12685,7 @@ function __c2(j: number): any {
           encodedCertificate: S.optional(S.String),
           issueTimeInUtc: S.optional(S.String),
           expiryTimeInUtc: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(CaCertificatePropertiesProvisioningState),
         }),
       ).annotate({ identifier: "CaCertificateProperties" });
     case 5:
@@ -10071,8 +12694,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(20)),
-          systemData: S.optional(__S(16)),
+          properties: S.optional(CaCertificateProperties),
+          systemData: S.optional(CaCertificatesCreateOrUpdateResponseSystemData),
         }),
       ).annotate({
         identifier: "CaCertificatesCreateOrUpdateResponse",
@@ -10083,18 +12706,18 @@ function __c2(j: number): any {
           azureSubscriptionId: S.optional(S.String),
           resourceGroupName: S.optional(S.String),
           name: S.optional(S.String),
-          eventTypeInfo: S.optional(__S(4)),
+          eventTypeInfo: S.optional(EventTypeInfo),
           source: S.optional(S.String),
         }),
       ).annotate({ identifier: "PartnerTopicInfo" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          channelType: S.optional(S.String),
-          partnerTopicInfo: S.optional(__S(22)),
+          channelType: S.optional(ChannelPropertiesChannelType),
+          partnerTopicInfo: S.optional(PartnerTopicInfo),
           messageForActivation: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          readinessState: S.optional(S.String),
+          provisioningState: S.optional(ChannelPropertiesProvisioningState),
+          readinessState: S.optional(ChannelPropertiesReadinessState),
           expirationTimeIfNotActivatedUtc: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChannelProperties" });
@@ -10109,7 +12732,7 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           partnerNamespaceName: S.String.pipe(T.Label()),
           channelName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(23)),
+          properties: S.optional(ChannelProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10127,8 +12750,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(23)),
-          systemData: S.optional(__S(6)),
+          properties: S.optional(ChannelProperties),
+          systemData: S.optional(ChannelsCreateOrUpdateResponseSystemData),
         }),
       ).annotate({
         identifier: "ChannelsCreateOrUpdateResponse",
@@ -10149,7 +12772,7 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           clientGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(26)),
+          properties: S.optional(ClientGroupPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10166,7 +12789,7 @@ function __c3(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           query: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ClientGroupPropertiesProvisioningState),
         }),
       ).annotate({ identifier: "ClientGroupProperties" });
     case 5:
@@ -10175,8 +12798,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(28)),
-          systemData: S.optional(__S(6)),
+          properties: S.optional(ClientGroupProperties),
+          systemData: S.optional(ClientGroupsCreateOrUpdateResponseSystemData),
         }),
       ).annotate({
         identifier: "ClientGroupsCreateOrUpdateResponse",
@@ -10186,8 +12809,8 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          validationScheme: S.optional(S.String),
-          allowedThumbprints: S.optional(__S(30)),
+          validationScheme: S.optional(ClientCertificateAuthenticationValidationScheme),
+          allowedThumbprints: S.optional(ClientCertificateAuthenticationAllowedThumbprintsList),
         }),
       ).annotate({
         identifier: "ClientCertificateAuthentication",
@@ -10203,9 +12826,9 @@ function __c4(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           authenticationName: S.optional(S.String),
-          clientCertificateAuthentication: S.optional(__S(31)),
-          state: S.optional(S.String),
-          attributes: S.optional(__S(32)),
+          clientCertificateAuthentication: S.optional(ClientCertificateAuthentication),
+          state: S.optional(ClientPropertiesInputState),
+          attributes: S.optional(ClientPropertiesInputAttributesMap),
         }),
       ).annotate({ identifier: "ClientPropertiesInput" });
     case 2:
@@ -10215,7 +12838,7 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           clientName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33)),
+          properties: S.optional(ClientPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10232,10 +12855,10 @@ function __c4(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           authenticationName: S.optional(S.String),
-          clientCertificateAuthentication: S.optional(__S(31)),
-          state: S.optional(S.String),
-          attributes: S.optional(__S(32)),
-          provisioningState: S.optional(S.String),
+          clientCertificateAuthentication: S.optional(ClientCertificateAuthentication),
+          state: S.optional(ClientPropertiesState),
+          attributes: S.optional(ClientPropertiesAttributesMap),
+          provisioningState: S.optional(ClientPropertiesProvisioningState),
         }),
       ).annotate({ identifier: "ClientProperties" });
     case 4:
@@ -10244,8 +12867,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(35)),
-          systemData: S.optional(__S(6)),
+          properties: S.optional(ClientProperties),
+          systemData: S.optional(ClientsCreateOrUpdateResponseSystemData),
         }),
       ).annotate({
         identifier: "ClientsCreateOrUpdateResponse",
@@ -10274,10 +12897,10 @@ function __c4(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(5)),
-          systemData: S.optional(__S(6)),
-          identity: S.optional(__S(9)),
+          tags: S.optional(DeactivatePartnerTopicResponseTagsMap),
+          properties: S.optional(PartnerTopicProperties),
+          systemData: S.optional(DeactivatePartnerTopicResponseSystemData),
+          identity: S.optional(IdentityInfo),
         }),
       ).annotate({
         identifier: "DeactivatePartnerTopicResponse",
@@ -10616,7 +13239,7 @@ function __c7(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          parentType: S.String.pipe(T.Label()),
+          parentType: DeletePrivateEndpointConnectionRequestParentType.pipe(T.Label()),
           parentName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
         }).pipe(
@@ -10719,7 +13342,7 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          endpointType: S.String,
+          endpointType: EventSubscriptionDestinationEndpointType,
           properties: S.optional(S.Unknown),
         }),
       ).annotate({
@@ -10728,7 +13351,7 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(EventSubscriptionIdentityType),
           userAssignedIdentity: S.optional(S.String),
         }),
       ).annotate({
@@ -10737,8 +13360,8 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          identity: S.optional(__S(67)),
-          destination: S.optional(__S(66)),
+          identity: S.optional(EventSubscriptionIdentity),
+          destination: S.optional(EventSubscriptionDestination),
         }),
       ).annotate({
         identifier: "DeliveryWithResourceIdentity",
@@ -10746,23 +13369,23 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          operatorType: S.String,
+          operatorType: AdvancedFilterOperatorType,
           key: S.optional(S.String),
           value: S.optional(S.Unknown),
           values: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "AdvancedFilter" });
     case 6:
-      return S.Array(__S(69));
+      return S.Array(AdvancedFilter);
     case 7:
       return S.suspend(() =>
         S.Struct({
           subjectBeginsWith: S.optional(S.String),
           subjectEndsWith: S.optional(S.String),
-          includedEventTypes: S.optional(__S(30)),
+          includedEventTypes: S.optional(EventSubscriptionFilterIncludedEventTypesList),
           isSubjectCaseSensitive: S.optional(S.Boolean),
           enableAdvancedFilteringOnArrays: S.optional(S.Boolean),
-          advancedFilters: S.optional(__S(70)),
+          advancedFilters: S.optional(EventSubscriptionFilterAdvancedFiltersList),
         }),
       ).annotate({ identifier: "EventSubscriptionFilter" });
   }
@@ -10779,15 +13402,15 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          endpointType: S.String,
+          endpointType: DeadLetterDestinationEndpointType,
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "DeadLetterDestination" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          identity: S.optional(__S(67)),
-          deadLetterDestination: S.optional(__S(73)),
+          identity: S.optional(EventSubscriptionIdentity),
+          deadLetterDestination: S.optional(DeadLetterDestination),
         }),
       ).annotate({
         identifier: "DeadLetterWithResourceIdentity",
@@ -10795,15 +13418,15 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          destination: S.optional(__S(66)),
-          deliveryWithResourceIdentity: S.optional(__S(68)),
-          filter: S.optional(__S(71)),
-          labels: S.optional(__S(30)),
+          destination: S.optional(EventSubscriptionDestination),
+          deliveryWithResourceIdentity: S.optional(DeliveryWithResourceIdentity),
+          filter: S.optional(EventSubscriptionFilter),
+          labels: S.optional(EventSubscriptionPropertiesInputLabelsList),
           expirationTimeUtc: S.optional(S.String),
-          eventDeliverySchema: S.optional(S.String),
-          retryPolicy: S.optional(__S(72)),
-          deadLetterDestination: S.optional(__S(73)),
-          deadLetterWithResourceIdentity: S.optional(__S(74)),
+          eventDeliverySchema: S.optional(EventSubscriptionPropertiesInputEventDeliverySchema),
+          retryPolicy: S.optional(RetryPolicy),
+          deadLetterDestination: S.optional(DeadLetterDestination),
+          deadLetterWithResourceIdentity: S.optional(DeadLetterWithResourceIdentity),
         }),
       ).annotate({
         identifier: "EventSubscriptionPropertiesInput",
@@ -10815,7 +13438,7 @@ function __c9(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(75)),
+          properties: S.optional(EventSubscriptionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10831,16 +13454,16 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           topic: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          destination: S.optional(__S(66)),
-          deliveryWithResourceIdentity: S.optional(__S(68)),
-          filter: S.optional(__S(71)),
-          labels: S.optional(__S(30)),
+          provisioningState: S.optional(EventSubscriptionPropertiesProvisioningState),
+          destination: S.optional(EventSubscriptionDestination),
+          deliveryWithResourceIdentity: S.optional(DeliveryWithResourceIdentity),
+          filter: S.optional(EventSubscriptionFilter),
+          labels: S.optional(EventSubscriptionPropertiesLabelsList),
           expirationTimeUtc: S.optional(S.String),
-          eventDeliverySchema: S.optional(S.String),
-          retryPolicy: S.optional(__S(72)),
-          deadLetterDestination: S.optional(__S(73)),
-          deadLetterWithResourceIdentity: S.optional(__S(74)),
+          eventDeliverySchema: S.optional(EventSubscriptionPropertiesEventDeliverySchema),
+          retryPolicy: S.optional(RetryPolicy),
+          deadLetterDestination: S.optional(DeadLetterDestination),
+          deadLetterWithResourceIdentity: S.optional(DeadLetterWithResourceIdentity),
         }),
       ).annotate({
         identifier: "EventSubscriptionProperties",
@@ -10849,10 +13472,14 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(
+            DomainEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType,
+          ),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(
+            DomainEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType,
+          ),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -10864,8 +13491,8 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(77)),
-          systemData: S.optional(__S(78)),
+          properties: S.optional(EventSubscriptionProperties),
+          systemData: S.optional(DomainEventSubscriptionsCreateOrUpdateResponseSystemData),
         }),
       ).annotate({
         identifier: "DomainEventSubscriptionsCreateOrUpdateResponse",
@@ -10877,7 +13504,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          inputSchemaMappingType: S.String,
+          inputSchemaMappingType: InputSchemaMappingInputSchemaMappingType,
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "InputSchemaMapping" });
@@ -10885,24 +13512,24 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ipMask: S.optional(S.String),
-          action: S.optional(S.String),
+          action: S.optional(InboundIpRuleAction),
         }),
       ).annotate({ identifier: "InboundIpRule" });
     case 2:
-      return S.Array(__S(81));
+      return S.Array(InboundIpRule);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          minimumTlsVersionAllowed: S.optional(S.String),
-          inputSchema: S.optional(S.String),
-          eventTypeInfo: S.optional(__S(4)),
-          inputSchemaMapping: S.optional(__S(80)),
-          publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(82)),
+          minimumTlsVersionAllowed: S.optional(DomainPropertiesInputMinimumTlsVersionAllowed),
+          inputSchema: S.optional(DomainPropertiesInputInputSchema),
+          eventTypeInfo: S.optional(EventTypeInfo),
+          inputSchemaMapping: S.optional(InputSchemaMapping),
+          publicNetworkAccess: S.optional(DomainPropertiesInputPublicNetworkAccess),
+          inboundIpRules: S.optional(DomainPropertiesInputInboundIpRulesList),
           disableLocalAuth: S.optional(S.Boolean),
           autoCreateTopicWithFirstSubscription: S.optional(S.Boolean),
           autoDeleteTopicWithLastSubscription: S.optional(S.Boolean),
-          dataResidencyBoundary: S.optional(S.String),
+          dataResidencyBoundary: S.optional(DomainPropertiesInputDataResidencyBoundary),
         }),
       ).annotate({ identifier: "DomainPropertiesInput" });
     case 4:
@@ -10912,9 +13539,9 @@ function __c10(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(83)),
-          identity: S.optional(__S(9)),
+          tags: S.optional(DomainsCreateOrUpdateRequestTagsMap),
+          properties: S.optional(DomainPropertiesInput),
+          identity: S.optional(IdentityInfo),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10935,7 +13562,7 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(ConnectionStateStatus),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -10943,10 +13570,10 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(85)),
-          groupIds: S.optional(__S(30)),
-          privateLinkServiceConnectionState: S.optional(__S(86)),
-          provisioningState: S.optional(S.String),
+          privateEndpoint: S.optional(PrivateEndpoint),
+          groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
+          privateLinkServiceConnectionState: S.optional(ConnectionState),
+          provisioningState: S.optional(PrivateEndpointConnectionPropertiesProvisioningState),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -10961,30 +13588,30 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(87)),
+          properties: S.optional(PrivateEndpointConnectionProperties),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnection",
       });
     case 1:
-      return S.Array(__S(88));
+      return S.Array(PrivateEndpointConnection);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          privateEndpointConnections: S.optional(__S(89)),
-          provisioningState: S.optional(S.String),
-          minimumTlsVersionAllowed: S.optional(S.String),
+          privateEndpointConnections: S.optional(DomainPropertiesPrivateEndpointConnectionsList),
+          provisioningState: S.optional(DomainPropertiesProvisioningState),
+          minimumTlsVersionAllowed: S.optional(DomainPropertiesMinimumTlsVersionAllowed),
           endpoint: S.optional(S.String),
-          inputSchema: S.optional(S.String),
-          eventTypeInfo: S.optional(__S(4)),
-          inputSchemaMapping: S.optional(__S(80)),
+          inputSchema: S.optional(DomainPropertiesInputSchema),
+          eventTypeInfo: S.optional(EventTypeInfo),
+          inputSchemaMapping: S.optional(InputSchemaMapping),
           metricResourceId: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(82)),
+          publicNetworkAccess: S.optional(DomainPropertiesPublicNetworkAccess),
+          inboundIpRules: S.optional(DomainPropertiesInboundIpRulesList),
           disableLocalAuth: S.optional(S.Boolean),
           autoCreateTopicWithFirstSubscription: S.optional(S.Boolean),
           autoDeleteTopicWithLastSubscription: S.optional(S.Boolean),
-          dataResidencyBoundary: S.optional(S.String),
+          dataResidencyBoundary: S.optional(DomainPropertiesDataResidencyBoundary),
         }),
       ).annotate({ identifier: "DomainProperties" });
     case 3:
@@ -10994,10 +13621,10 @@ function __c11(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(90)),
-          identity: S.optional(__S(9)),
-          systemData: S.optional(__S(6)),
+          tags: S.optional(DomainsCreateOrUpdateResponseTagsMap),
+          properties: S.optional(DomainProperties),
+          identity: S.optional(IdentityInfo),
+          systemData: S.optional(DomainsCreateOrUpdateResponseSystemData),
         }),
       ).annotate({
         identifier: "DomainsCreateOrUpdateResponse",
@@ -11010,7 +13637,7 @@ function __c11(j: number): any {
           domainName: S.String.pipe(T.Label()),
           topicName: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(75)),
+          properties: S.optional(EventSubscriptionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11026,10 +13653,14 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(
+            DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType,
+          ),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(
+            DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType,
+          ),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -11041,8 +13672,8 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(77)),
-          systemData: S.optional(__S(93)),
+          properties: S.optional(EventSubscriptionProperties),
+          systemData: S.optional(DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemData),
         }),
       ).annotate({
         identifier: "DomainTopicEventSubscriptionsCreateOrUpdateResponse",
@@ -11072,7 +13703,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(DomainTopicPropertiesProvisioningState),
         }),
       ).annotate({ identifier: "DomainTopicProperties" });
     case 1:
@@ -11081,8 +13712,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(96)),
-          systemData: S.optional(__S(6)),
+          properties: S.optional(DomainTopicProperties),
+          systemData: S.optional(DomainTopicsCreateOrUpdateResponseSystemData),
         }),
       ).annotate({
         identifier: "DomainTopicsCreateOrUpdateResponse",
@@ -11092,7 +13723,7 @@ function __c12(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(75)),
+          properties: S.optional(EventSubscriptionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11110,8 +13741,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(77)),
-          systemData: S.optional(__S(16)),
+          properties: S.optional(EventSubscriptionProperties),
+          systemData: S.optional(EventSubscriptionsCreateOrUpdateResponseSystemData),
         }),
       ).annotate({
         identifier: "EventSubscriptionsCreateOrUpdateResponse",
@@ -11138,8 +13769,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(20)),
-          systemData: S.optional(__S(6)),
+          properties: S.optional(CaCertificateProperties),
+          systemData: S.optional(GetCaCertificateResponseSystemData),
         }),
       ).annotate({ identifier: "GetCaCertificateResponse" });
     case 6:
@@ -11164,8 +13795,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(23)),
-          systemData: S.optional(__S(6)),
+          properties: S.optional(ChannelProperties),
+          systemData: S.optional(GetChannelResponseSystemData),
         }),
       ).annotate({ identifier: "GetChannelResponse" });
   }
@@ -11216,8 +13847,8 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(35)),
-          systemData: S.optional(__S(6)),
+          properties: S.optional(ClientProperties),
+          systemData: S.optional(GetClientResponseSystemData),
         }),
       ).annotate({ identifier: "GetClientResponse" });
     case 4:
@@ -11242,8 +13873,8 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(28)),
-          systemData: S.optional(__S(6)),
+          properties: S.optional(ClientGroupProperties),
+          systemData: S.optional(GetClientGroupResponseSystemData),
         }),
       ).annotate({ identifier: "GetClientGroupResponse" });
     case 6:
@@ -11268,10 +13899,10 @@ function __c13(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(90)),
-          identity: S.optional(__S(9)),
-          systemData: S.optional(__S(6)),
+          tags: S.optional(GetDomainResponseTagsMap),
+          properties: S.optional(DomainProperties),
+          identity: S.optional(IdentityInfo),
+          systemData: S.optional(GetDomainResponseSystemData),
         }),
       ).annotate({ identifier: "GetDomainResponse" });
   }
@@ -11302,8 +13933,8 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(77)),
-          systemData: S.optional(__S(6)),
+          properties: S.optional(EventSubscriptionProperties),
+          systemData: S.optional(GetDomainEventSubscriptionResponseSystemData),
         }),
       ).annotate({
         identifier: "GetDomainEventSubscriptionResponse",
@@ -11330,15 +13961,15 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          type: S.String,
+          type: DeliveryAttributeMappingType,
         }),
       ).annotate({ identifier: "DeliveryAttributeMapping" });
     case 4:
-      return S.Array(__S(115));
+      return S.Array(DeliveryAttributeMapping);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(116)),
+          value: S.optional(DeliveryAttributeListResultValueList),
         }),
       ).annotate({
         identifier: "DeliveryAttributeListResult",
@@ -11387,8 +14018,8 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(96)),
-          systemData: S.optional(__S(6)),
+          properties: S.optional(DomainTopicProperties),
+          systemData: S.optional(GetDomainTopicResponseSystemData),
         }),
       ).annotate({ identifier: "GetDomainTopicResponse" });
     case 1:
@@ -11526,8 +14157,8 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(128)),
-          systemData: S.optional(__S(6)),
+          properties: S.optional(ExtensionTopicProperties),
+          systemData: S.optional(GetExtensionTopicResponseSystemData),
         }),
       ).annotate({
         identifier: "GetExtensionTopicResponse",
@@ -11550,7 +14181,7 @@ function __c16(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(CustomDomainIdentityType),
           userAssignedIdentity: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomDomainIdentity" });
@@ -11558,8 +14189,8 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fullyQualifiedDomainName: S.String,
-          validationState: S.optional(S.String),
-          identity: S.optional(__S(131)),
+          validationState: S.optional(CustomDomainConfigurationValidationState),
+          identity: S.optional(CustomDomainIdentity),
           certificateUrl: S.optional(S.String),
           expectedTxtRecordName: S.optional(S.String),
           expectedTxtRecordValue: S.optional(S.String),
@@ -11568,19 +14199,19 @@ function __c16(j: number): any {
         identifier: "CustomDomainConfiguration",
       });
     case 5:
-      return S.Array(__S(132));
+      return S.Array(CustomDomainConfiguration);
     case 6:
       return S.suspend(() =>
         S.Struct({
           hostname: S.optional(S.String),
-          customDomains: S.optional(__S(133)),
+          customDomains: S.optional(TopicsConfigurationCustomDomainsList),
         }),
       ).annotate({ identifier: "TopicsConfiguration" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          valueType: S.String,
+          valueType: StaticRoutingEnrichmentValueType,
         }),
       ).annotate({ identifier: "StaticRoutingEnrichment" });
   }
@@ -11588,7 +14219,7 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(135));
+      return S.Array(StaticRoutingEnrichment);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11597,44 +14228,44 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "DynamicRoutingEnrichment" });
     case 2:
-      return S.Array(__S(137));
+      return S.Array(DynamicRoutingEnrichment);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          static: S.optional(__S(136)),
-          dynamic: S.optional(__S(138)),
+          static: S.optional(RoutingEnrichmentsStaticList),
+          dynamic: S.optional(RoutingEnrichmentsDynamicList),
         }),
       ).annotate({ identifier: "RoutingEnrichments" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(TopicSpacesConfigurationState),
           routeTopicResourceId: S.optional(S.String),
           hostname: S.optional(S.String),
-          routingEnrichments: S.optional(__S(139)),
+          routingEnrichments: S.optional(RoutingEnrichments),
           maximumSessionExpiryInHours: S.optional(S.Number),
           maximumClientSessionsPerAuthenticationName: S.optional(S.Number),
-          routingIdentityInfo: S.optional(__S(131)),
-          customDomains: S.optional(__S(133)),
+          routingIdentityInfo: S.optional(RoutingIdentityInfo),
+          customDomains: S.optional(TopicSpacesConfigurationCustomDomainsList),
         }),
       ).annotate({ identifier: "TopicSpacesConfiguration" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          privateEndpointConnections: S.optional(__S(89)),
-          provisioningState: S.optional(S.String),
-          topicsConfiguration: S.optional(__S(134)),
-          topicSpacesConfiguration: S.optional(__S(140)),
+          privateEndpointConnections: S.optional(NamespacePropertiesPrivateEndpointConnectionsList),
+          provisioningState: S.optional(NamespacePropertiesProvisioningState),
+          topicsConfiguration: S.optional(TopicsConfiguration),
+          topicSpacesConfiguration: S.optional(TopicSpacesConfiguration),
           isZoneRedundant: S.optional(S.Boolean),
-          publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(82)),
-          minimumTlsVersionAllowed: S.optional(S.String),
+          publicNetworkAccess: S.optional(NamespacePropertiesPublicNetworkAccess),
+          inboundIpRules: S.optional(NamespacePropertiesInboundIpRulesList),
+          minimumTlsVersionAllowed: S.optional(NamespacePropertiesMinimumTlsVersionAllowed),
         }),
       ).annotate({ identifier: "NamespaceProperties" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
+          name: S.optional(NamespaceSkuName),
           capacity: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NamespaceSku" });
@@ -11645,11 +14276,11 @@ function __c17(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(141)),
-          sku: S.optional(__S(142)),
-          identity: S.optional(__S(9)),
-          systemData: S.optional(__S(6)),
+          tags: S.optional(GetNamespaceResponseTagsMap),
+          properties: S.optional(NamespaceProperties),
+          sku: S.optional(NamespaceSku),
+          identity: S.optional(IdentityInfo),
+          systemData: S.optional(GetNamespaceResponseSystemData),
         }),
       ).annotate({ identifier: "GetNamespaceResponse" });
   }
@@ -11675,9 +14306,9 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          publisherType: S.optional(S.String),
-          inputSchema: S.optional(S.String),
+          provisioningState: S.optional(NamespaceTopicPropertiesProvisioningState),
+          publisherType: S.optional(NamespaceTopicPropertiesPublisherType),
+          inputSchema: S.optional(NamespaceTopicPropertiesInputSchema),
           eventRetentionInDays: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NamespaceTopicProperties" });
@@ -11687,8 +14318,8 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(145)),
-          systemData: S.optional(__S(6)),
+          properties: S.optional(NamespaceTopicProperties),
+          systemData: S.optional(GetNamespaceTopicResponseSystemData),
         }),
       ).annotate({
         identifier: "GetNamespaceTopicResponse",
@@ -11717,7 +14348,7 @@ function __c18(j: number): any {
         S.Struct({
           receiveLockDurationInSeconds: S.optional(S.Number),
           maxDeliveryCount: S.optional(S.Number),
-          deadLetterDestinationWithResourceIdentity: S.optional(__S(74)),
+          deadLetterDestinationWithResourceIdentity: S.optional(DeadLetterWithResourceIdentity),
           eventTimeToLive: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueueInfo" });
@@ -11726,24 +14357,24 @@ function __c18(j: number): any {
         S.Struct({
           maxDeliveryCount: S.optional(S.Number),
           eventTimeToLive: S.optional(S.String),
-          deadLetterDestinationWithResourceIdentity: S.optional(__S(74)),
-          deliveryWithResourceIdentity: S.optional(__S(68)),
-          destination: S.optional(__S(66)),
+          deadLetterDestinationWithResourceIdentity: S.optional(DeadLetterWithResourceIdentity),
+          deliveryWithResourceIdentity: S.optional(DeliveryWithResourceIdentity),
+          destination: S.optional(EventSubscriptionDestination),
         }),
       ).annotate({ identifier: "PushInfo" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          deliveryMode: S.optional(S.String),
-          queue: S.optional(__S(148)),
-          push: S.optional(__S(149)),
+          deliveryMode: S.optional(DeliveryConfigurationDeliveryMode),
+          queue: S.optional(QueueInfo),
+          push: S.optional(PushInfo),
         }),
       ).annotate({ identifier: "DeliveryConfiguration" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          includedEventTypes: S.optional(__S(30)),
-          filters: S.optional(__S(70)),
+          includedEventTypes: S.optional(FiltersConfigurationIncludedEventTypesList),
+          filters: S.optional(FiltersConfigurationFiltersList),
         }),
       ).annotate({ identifier: "FiltersConfiguration" });
   }
@@ -11753,10 +14384,10 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          deliveryConfiguration: S.optional(__S(150)),
-          eventDeliverySchema: S.optional(S.String),
-          filtersConfiguration: S.optional(__S(151)),
+          provisioningState: S.optional(SubscriptionPropertiesProvisioningState),
+          deliveryConfiguration: S.optional(DeliveryConfiguration),
+          eventDeliverySchema: S.optional(SubscriptionPropertiesEventDeliverySchema),
+          filtersConfiguration: S.optional(FiltersConfiguration),
           expirationTimeUtc: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubscriptionProperties" });
@@ -11766,8 +14397,8 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(152)),
-          systemData: S.optional(__S(16)),
+          properties: S.optional(SubscriptionProperties),
+          systemData: S.optional(GetNamespaceTopicEventSubscriptionResponseSystemData),
         }),
       ).annotate({
         identifier: "GetNamespaceTopicEventSubscriptionResponse",
@@ -11832,10 +14463,10 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(15)),
-          systemData: S.optional(__S(6)),
+          properties: S.optional(PartnerConfigurationProperties),
+          systemData: S.optional(GetPartnerConfigurationResponseSystemData),
           location: S.optional(S.String),
-          tags: S.optional(__S(1)),
+          tags: S.optional(GetPartnerConfigurationResponseTagsMap),
         }),
       ).annotate({
         identifier: "GetPartnerConfigurationResponse",
@@ -11860,15 +14491,17 @@ function __c19(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          privateEndpointConnections: S.optional(__S(89)),
-          provisioningState: S.optional(S.String),
+          privateEndpointConnections: S.optional(
+            PartnerNamespacePropertiesPrivateEndpointConnectionsList,
+          ),
+          provisioningState: S.optional(PartnerNamespacePropertiesProvisioningState),
           partnerRegistrationFullyQualifiedId: S.optional(S.String),
-          minimumTlsVersionAllowed: S.optional(S.String),
+          minimumTlsVersionAllowed: S.optional(PartnerNamespacePropertiesMinimumTlsVersionAllowed),
           endpoint: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(82)),
+          publicNetworkAccess: S.optional(PartnerNamespacePropertiesPublicNetworkAccess),
+          inboundIpRules: S.optional(PartnerNamespacePropertiesInboundIpRulesList),
           disableLocalAuth: S.optional(S.Boolean),
-          partnerTopicRoutingMode: S.optional(S.String),
+          partnerTopicRoutingMode: S.optional(PartnerNamespacePropertiesPartnerTopicRoutingMode),
         }),
       ).annotate({
         identifier: "PartnerNamespaceProperties",
@@ -11884,9 +14517,9 @@ function __c20(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(159)),
-          systemData: S.optional(__S(6)),
+          tags: S.optional(GetPartnerNamespaceResponseTagsMap),
+          properties: S.optional(PartnerNamespaceProperties),
+          systemData: S.optional(GetPartnerNamespaceResponseSystemData),
         }),
       ).annotate({
         identifier: "GetPartnerNamespaceResponse",
@@ -11911,7 +14544,7 @@ function __c20(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(PartnerRegistrationPropertiesProvisioningState),
           partnerRegistrationImmutableId: S.optional(S.String),
         }),
       ).annotate({
@@ -11924,9 +14557,9 @@ function __c20(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(162)),
-          systemData: S.optional(__S(6)),
+          tags: S.optional(GetPartnerRegistrationResponseTagsMap),
+          properties: S.optional(PartnerRegistrationProperties),
+          systemData: S.optional(GetPartnerRegistrationResponseSystemData),
         }),
       ).annotate({
         identifier: "GetPartnerRegistrationResponse",
@@ -11953,10 +14586,10 @@ function __c20(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(5)),
-          systemData: S.optional(__S(6)),
-          identity: S.optional(__S(9)),
+          tags: S.optional(GetPartnerTopicResponseTagsMap),
+          properties: S.optional(PartnerTopicProperties),
+          systemData: S.optional(GetPartnerTopicResponseSystemData),
+          identity: S.optional(IdentityInfo),
         }),
       ).annotate({ identifier: "GetPartnerTopicResponse" });
     case 6:
@@ -12040,9 +14673,9 @@ function __c21(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           topicSpaceName: S.optional(S.String),
-          permission: S.optional(S.String),
+          permission: S.optional(PermissionBindingPropertiesPermission),
           clientGroupName: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(PermissionBindingPropertiesProvisioningState),
         }),
       ).annotate({
         identifier: "PermissionBindingProperties",
@@ -12053,8 +14686,8 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(170)),
-          systemData: S.optional(__S(6)),
+          properties: S.optional(PermissionBindingProperties),
+          systemData: S.optional(GetPermissionBindingResponseSystemData),
         }),
       ).annotate({
         identifier: "GetPermissionBindingResponse",
@@ -12064,7 +14697,7 @@ function __c21(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          parentType: S.String.pipe(T.Label()),
+          parentType: GetPrivateEndpointConnectionRequestParentType.pipe(T.Label()),
           parentName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
         }).pipe(
@@ -12102,8 +14735,8 @@ function __c21(j: number): any {
         S.Struct({
           groupId: S.optional(S.String),
           displayName: S.optional(S.String),
-          requiredMembers: S.optional(__S(30)),
-          requiredZoneNames: S.optional(__S(30)),
+          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
+          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -12111,7 +14744,7 @@ function __c21(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(174)),
+          properties: S.optional(PrivateLinkResourceProperties),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
@@ -12139,7 +14772,7 @@ function __c22(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(SystemTopicPropertiesProvisioningState),
           source: S.optional(S.String),
           topicType: S.optional(S.String),
           metricResourceId: S.optional(S.String),
@@ -12152,10 +14785,10 @@ function __c22(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(177)),
-          systemData: S.optional(__S(6)),
-          identity: S.optional(__S(9)),
+          tags: S.optional(GetSystemTopicResponseTagsMap),
+          properties: S.optional(SystemTopicProperties),
+          systemData: S.optional(GetSystemTopicResponseSystemData),
+          identity: S.optional(IdentityInfo),
         }),
       ).annotate({ identifier: "GetSystemTopicResponse" });
     case 3:
@@ -12230,18 +14863,18 @@ function __c22(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          privateEndpointConnections: S.optional(__S(89)),
-          provisioningState: S.optional(S.String),
+          privateEndpointConnections: S.optional(TopicPropertiesPrivateEndpointConnectionsList),
+          provisioningState: S.optional(TopicPropertiesProvisioningState),
           endpoint: S.optional(S.String),
-          eventTypeInfo: S.optional(__S(4)),
-          minimumTlsVersionAllowed: S.optional(S.String),
-          inputSchema: S.optional(S.String),
-          inputSchemaMapping: S.optional(__S(80)),
+          eventTypeInfo: S.optional(EventTypeInfo),
+          minimumTlsVersionAllowed: S.optional(TopicPropertiesMinimumTlsVersionAllowed),
+          inputSchema: S.optional(TopicPropertiesInputSchema),
+          inputSchemaMapping: S.optional(InputSchemaMapping),
           metricResourceId: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(82)),
+          publicNetworkAccess: S.optional(TopicPropertiesPublicNetworkAccess),
+          inboundIpRules: S.optional(TopicPropertiesInboundIpRulesList),
           disableLocalAuth: S.optional(S.Boolean),
-          dataResidencyBoundary: S.optional(S.String),
+          dataResidencyBoundary: S.optional(TopicPropertiesDataResidencyBoundary),
         }),
       ).annotate({ identifier: "TopicProperties" });
   }
@@ -12255,10 +14888,10 @@ function __c23(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(183)),
-          identity: S.optional(__S(9)),
-          systemData: S.optional(__S(6)),
+          tags: S.optional(GetTopicResponseTagsMap),
+          properties: S.optional(TopicProperties),
+          identity: S.optional(IdentityInfo),
+          systemData: S.optional(GetTopicResponseSystemData),
         }),
       ).annotate({ identifier: "GetTopicResponse" });
     case 1:
@@ -12335,8 +14968,8 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          topicTemplates: S.optional(__S(30)),
-          provisioningState: S.optional(S.String),
+          topicTemplates: S.optional(TopicSpacePropertiesTopicTemplatesList),
+          provisioningState: S.optional(TopicSpacePropertiesProvisioningState),
         }),
       ).annotate({ identifier: "TopicSpaceProperties" });
     case 6:
@@ -12345,8 +14978,8 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(189)),
-          systemData: S.optional(__S(6)),
+          properties: S.optional(TopicSpaceProperties),
+          systemData: S.optional(GetTopicSpaceResponseSystemData),
         }),
       ).annotate({ identifier: "GetTopicSpaceResponse" });
     case 7:
@@ -12367,7 +15000,7 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(TopicTypePropertiesSupportedScopesForSourceItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12378,20 +15011,22 @@ function __c24(j: number): any {
         identifier: "TopicTypeAdditionalEnforcedPermission",
       });
     case 2:
-      return S.Array(__S(193));
+      return S.Array(TopicTypeAdditionalEnforcedPermission);
     case 3:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          resourceRegionType: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          supportedLocations: S.optional(__S(30)),
+          resourceRegionType: S.optional(TopicTypePropertiesResourceRegionType),
+          provisioningState: S.optional(TopicTypePropertiesProvisioningState),
+          supportedLocations: S.optional(TopicTypePropertiesSupportedLocationsList),
           sourceResourceFormat: S.optional(S.String),
-          supportedScopesForSource: S.optional(__S(192)),
+          supportedScopesForSource: S.optional(TopicTypePropertiesSupportedScopesForSourceList),
           areRegionalAndGlobalSourcesSupported: S.optional(S.Boolean),
-          additionalEnforcedPermissions: S.optional(__S(194)),
+          additionalEnforcedPermissions: S.optional(
+            TopicTypePropertiesAdditionalEnforcedPermissionsList,
+          ),
         }),
       ).annotate({ identifier: "TopicTypeProperties" });
     case 4:
@@ -12400,7 +15035,7 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(195)),
+          properties: S.optional(TopicTypeProperties),
         }),
       ).annotate({ identifier: "GetTopicTypeResponse" });
     case 5:
@@ -12432,8 +15067,8 @@ function __c24(j: number): any {
           partnerRegistrationImmutableId: S.optional(S.String),
           organizationName: S.optional(S.String),
           partnerDisplayName: S.optional(S.String),
-          partnerTopicDetails: S.optional(__S(198)),
-          provisioningState: S.optional(S.String),
+          partnerTopicDetails: S.optional(PartnerDetails),
+          provisioningState: S.optional(VerifiedPartnerPropertiesProvisioningState),
         }),
       ).annotate({
         identifier: "VerifiedPartnerProperties",
@@ -12448,8 +15083,8 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(199)),
-          systemData: S.optional(__S(6)),
+          properties: S.optional(VerifiedPartnerProperties),
+          systemData: S.optional(GetVerifiedPartnerResponseSystemData),
         }),
       ).annotate({
         identifier: "GetVerifiedPartnerResponse",
@@ -12477,10 +15112,10 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(CaCertificateSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(CaCertificateSystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "CaCertificateSystemData" });
@@ -12490,16 +15125,16 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(20)),
-          systemData: S.optional(__S(202)),
+          properties: S.optional(CaCertificateProperties),
+          systemData: S.optional(CaCertificateSystemData),
         }),
       ).annotate({ identifier: "CaCertificate" });
     case 4:
-      return S.Array(__S(203));
+      return S.Array(CaCertificate);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(204)),
+          value: S.optional(CaCertificatesListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CaCertificatesListResult" });
@@ -12528,8 +15163,8 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(23)),
-          systemData: S.optional(__S(202)),
+          properties: S.optional(ChannelProperties),
+          systemData: S.optional(ChannelSystemData),
         }),
       ).annotate({ identifier: "Channel" });
   }
@@ -12537,11 +15172,11 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(207));
+      return S.Array(Channel);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(208)),
+          value: S.optional(ChannelsListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChannelsListResult" });
@@ -12570,16 +15205,16 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(35)),
-          systemData: S.optional(__S(202)),
+          properties: S.optional(ClientProperties),
+          systemData: S.optional(ClientSystemData),
         }),
       ).annotate({ identifier: "Client" });
     case 4:
-      return S.Array(__S(211));
+      return S.Array(Client);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(212)),
+          value: S.optional(ClientsListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClientsListResult" });
@@ -12608,8 +15243,8 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(28)),
-          systemData: S.optional(__S(202)),
+          properties: S.optional(ClientGroupProperties),
+          systemData: S.optional(ClientGroupSystemData),
         }),
       ).annotate({ identifier: "ClientGroup" });
   }
@@ -12617,11 +15252,11 @@ function __c26(j: number): any {
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(215));
+      return S.Array(ClientGroup);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(216)),
+          value: S.optional(ClientGroupsListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClientGroupsListResult" });
@@ -12650,18 +15285,18 @@ function __c27(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(90)),
-          identity: S.optional(__S(9)),
-          systemData: S.optional(__S(202)),
+          tags: S.optional(DomainTagsMap),
+          properties: S.optional(DomainProperties),
+          identity: S.optional(IdentityInfo),
+          systemData: S.optional(DomainSystemData),
         }),
       ).annotate({ identifier: "Domain" });
     case 4:
-      return S.Array(__S(219));
+      return S.Array(Domain);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(220)),
+          value: S.optional(DomainsListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainsListResult" });
@@ -12711,16 +15346,16 @@ function __c28(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(77)),
-          systemData: S.optional(__S(6)),
+          properties: S.optional(EventSubscriptionProperties),
+          systemData: S.optional(EventSubscriptionSystemData),
         }),
       ).annotate({ identifier: "EventSubscription" });
     case 1:
-      return S.Array(__S(224));
+      return S.Array(EventSubscription);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(225)),
+          value: S.optional(EventSubscriptionsListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12775,12 +15410,12 @@ function __c28(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(96)),
-          systemData: S.optional(__S(202)),
+          properties: S.optional(DomainTopicProperties),
+          systemData: S.optional(DomainTopicSystemData),
         }),
       ).annotate({ identifier: "DomainTopic" });
     case 7:
-      return S.Array(__S(230));
+      return S.Array(DomainTopic);
   }
 }
 function __c29(j: number): any {
@@ -12788,7 +15423,7 @@ function __c29(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(231)),
+          value: S.optional(DomainTopicsListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainTopicsListResult" });
@@ -13030,19 +15665,19 @@ function __c30(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(141)),
-          sku: S.optional(__S(142)),
-          identity: S.optional(__S(9)),
-          systemData: S.optional(__S(202)),
+          tags: S.optional(NamespaceTagsMap),
+          properties: S.optional(NamespaceProperties),
+          sku: S.optional(NamespaceSku),
+          identity: S.optional(IdentityInfo),
+          systemData: S.optional(NamespaceSystemData),
         }),
       ).annotate({ identifier: "Namespace" });
     case 6:
-      return S.Array(__S(245));
+      return S.Array(Namespace);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(246)),
+          value: S.optional(NamespacesListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NamespacesListResult" });
@@ -13118,16 +15753,16 @@ function __c31(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(145)),
-          systemData: S.optional(__S(202)),
+          properties: S.optional(NamespaceTopicProperties),
+          systemData: S.optional(NamespaceTopicSystemData),
         }),
       ).annotate({ identifier: "NamespaceTopic" });
     case 5:
-      return S.Array(__S(252));
+      return S.Array(NamespaceTopic);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(253)),
+          value: S.optional(NamespaceTopicsListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -13163,16 +15798,16 @@ function __c32(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(152)),
-          systemData: S.optional(__S(202)),
+          properties: S.optional(SubscriptionProperties),
+          systemData: S.optional(SubscriptionSystemData),
         }),
       ).annotate({ identifier: "Subscription" });
     case 1:
-      return S.Array(__S(256));
+      return S.Array(Subscription);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(257)),
+          value: S.optional(SubscriptionsListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubscriptionsListResult" });
@@ -13218,14 +15853,14 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(261)),
+          display: S.optional(OperationInfo),
           origin: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Operation" });
     case 7:
-      return S.Array(__S(262));
+      return S.Array(Operation);
   }
 }
 function __c33(j: number): any {
@@ -13233,7 +15868,7 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(263)),
+          value: S.optional(OperationsListResultValueList),
         }),
       ).annotate({ identifier: "OperationsListResult" });
     case 1:
@@ -13258,18 +15893,18 @@ function __c33(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(15)),
-          systemData: S.optional(__S(6)),
+          properties: S.optional(PartnerConfigurationProperties),
+          systemData: S.optional(PartnerConfigurationSystemData),
           location: S.optional(S.String),
-          tags: S.optional(__S(1)),
+          tags: S.optional(PartnerConfigurationTagsMap),
         }),
       ).annotate({ identifier: "PartnerConfiguration" });
     case 3:
-      return S.Array(__S(266));
+      return S.Array(PartnerConfiguration);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(267)),
+          value: S.optional(PartnerConfigurationsListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -13317,9 +15952,9 @@ function __c33(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(159)),
-          systemData: S.optional(__S(6)),
+          tags: S.optional(PartnerNamespaceTagsMap),
+          properties: S.optional(PartnerNamespaceProperties),
+          systemData: S.optional(PartnerNamespaceSystemData),
         }),
       ).annotate({ identifier: "PartnerNamespace" });
   }
@@ -13327,11 +15962,11 @@ function __c33(j: number): any {
 function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(271));
+      return S.Array(PartnerNamespace);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(272)),
+          value: S.optional(PartnerNamespacesListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -13396,17 +16031,17 @@ function __c34(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(162)),
-          systemData: S.optional(__S(6)),
+          tags: S.optional(PartnerRegistrationTagsMap),
+          properties: S.optional(PartnerRegistrationProperties),
+          systemData: S.optional(PartnerRegistrationSystemData),
         }),
       ).annotate({ identifier: "PartnerRegistration" });
     case 6:
-      return S.Array(__S(277));
+      return S.Array(PartnerRegistration);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(278)),
+          value: S.optional(PartnerRegistrationsListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -13458,18 +16093,18 @@ function __c35(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(5)),
-          systemData: S.optional(__S(202)),
-          identity: S.optional(__S(9)),
+          tags: S.optional(PartnerTopicTagsMap),
+          properties: S.optional(PartnerTopicProperties),
+          systemData: S.optional(PartnerTopicSystemData),
+          identity: S.optional(IdentityInfo),
         }),
       ).annotate({ identifier: "PartnerTopic" });
     case 3:
-      return S.Array(__S(282));
+      return S.Array(PartnerTopic);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(283)),
+          value: S.optional(PartnerTopicsListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PartnerTopicsListResult" });
@@ -13538,16 +16173,16 @@ function __c36(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(170)),
-          systemData: S.optional(__S(6)),
+          properties: S.optional(PermissionBindingProperties),
+          systemData: S.optional(PermissionBindingSystemData),
         }),
       ).annotate({ identifier: "PermissionBinding" });
     case 1:
-      return S.Array(__S(288));
+      return S.Array(PermissionBinding);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(289)),
+          value: S.optional(PermissionBindingsListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -13558,7 +16193,7 @@ function __c36(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          parentType: S.String.pipe(T.Label()),
+          parentType: ListPrivateEndpointConnectionByResourceRequestParentType.pipe(T.Label()),
           parentName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
@@ -13576,7 +16211,7 @@ function __c36(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(89)),
+          value: S.optional(PrivateEndpointConnectionListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -13603,11 +16238,11 @@ function __c36(j: number): any {
         identifier: "ListPrivateLinkResourceByResourceRequest",
       });
     case 6:
-      return S.Array(__S(175));
+      return S.Array(PrivateLinkResource);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(294)),
+          value: S.optional(PrivateLinkResourcesListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -13642,18 +16277,18 @@ function __c37(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(177)),
-          systemData: S.optional(__S(202)),
-          identity: S.optional(__S(9)),
+          tags: S.optional(SystemTopicTagsMap),
+          properties: S.optional(SystemTopicProperties),
+          systemData: S.optional(SystemTopicSystemData),
+          identity: S.optional(IdentityInfo),
         }),
       ).annotate({ identifier: "SystemTopic" });
     case 2:
-      return S.Array(__S(297));
+      return S.Array(SystemTopic);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(298)),
+          value: S.optional(SystemTopicsListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemTopicsListResult" });
@@ -13718,10 +16353,10 @@ function __c37(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(183)),
-          identity: S.optional(__S(9)),
-          systemData: S.optional(__S(202)),
+          tags: S.optional(TopicTagsMap),
+          properties: S.optional(TopicProperties),
+          identity: S.optional(IdentityInfo),
+          systemData: S.optional(TopicSystemData),
         }),
       ).annotate({ identifier: "Topic" });
   }
@@ -13729,11 +16364,11 @@ function __c37(j: number): any {
 function __c38(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(303));
+      return S.Array(Topic);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(304)),
+          value: S.optional(TopicsListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TopicsListResult" });
@@ -13807,11 +16442,11 @@ function __c38(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(309)),
+          properties: S.optional(EventTypeProperties),
         }),
       ).annotate({ identifier: "EventType" });
     case 7:
-      return S.Array(__S(310));
+      return S.Array(EventType);
   }
 }
 function __c39(j: number): any {
@@ -13819,7 +16454,7 @@ function __c39(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(311)),
+          value: S.optional(EventTypesListResultValueList),
         }),
       ).annotate({ identifier: "EventTypesListResult" });
     case 1:
@@ -13864,16 +16499,16 @@ function __c39(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(189)),
-          systemData: S.optional(__S(202)),
+          properties: S.optional(TopicSpaceProperties),
+          systemData: S.optional(TopicSpaceSystemData),
         }),
       ).annotate({ identifier: "TopicSpace" });
     case 4:
-      return S.Array(__S(315));
+      return S.Array(TopicSpace);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(316)),
+          value: S.optional(TopicSpacesListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TopicSpacesListResult" });
@@ -13908,11 +16543,11 @@ function __c39(j: number): any {
 function __c40(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(196));
+      return S.Array(TopicTypeInfo);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(320)),
+          value: S.optional(TopicTypesListResultValueList),
         }),
       ).annotate({ identifier: "TopicTypesListResult" });
     case 2:
@@ -13937,16 +16572,16 @@ function __c40(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(199)),
-          systemData: S.optional(__S(6)),
+          properties: S.optional(VerifiedPartnerProperties),
+          systemData: S.optional(VerifiedPartnerSystemData),
         }),
       ).annotate({ identifier: "VerifiedPartner" });
     case 4:
-      return S.Array(__S(323));
+      return S.Array(VerifiedPartner);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(324)),
+          value: S.optional(VerifiedPartnersListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -13955,13 +16590,13 @@ function __c40(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(87)),
+          properties: S.optional(PrivateEndpointConnectionProperties),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionInput",
       });
     case 7:
-      return S.Array(__S(326));
+      return S.Array(PrivateEndpointConnectionInput);
   }
 }
 function __c41(j: number): any {
@@ -13969,19 +16604,19 @@ function __c41(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          customDomains: S.optional(__S(133)),
+          customDomains: S.optional(TopicsConfigurationInputCustomDomainsList),
         }),
       ).annotate({ identifier: "TopicsConfigurationInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(TopicSpacesConfigurationInputState),
           routeTopicResourceId: S.optional(S.String),
-          routingEnrichments: S.optional(__S(139)),
+          routingEnrichments: S.optional(RoutingEnrichments),
           maximumSessionExpiryInHours: S.optional(S.Number),
           maximumClientSessionsPerAuthenticationName: S.optional(S.Number),
-          routingIdentityInfo: S.optional(__S(131)),
-          customDomains: S.optional(__S(133)),
+          routingIdentityInfo: S.optional(RoutingIdentityInfo),
+          customDomains: S.optional(TopicSpacesConfigurationInputCustomDomainsList),
         }),
       ).annotate({
         identifier: "TopicSpacesConfigurationInput",
@@ -13989,13 +16624,15 @@ function __c41(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          privateEndpointConnections: S.optional(__S(327)),
-          topicsConfiguration: S.optional(__S(328)),
-          topicSpacesConfiguration: S.optional(__S(329)),
+          privateEndpointConnections: S.optional(
+            NamespacePropertiesInputPrivateEndpointConnectionsList,
+          ),
+          topicsConfiguration: S.optional(TopicsConfigurationInput),
+          topicSpacesConfiguration: S.optional(TopicSpacesConfigurationInput),
           isZoneRedundant: S.optional(S.Boolean),
-          publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(82)),
-          minimumTlsVersionAllowed: S.optional(S.String),
+          publicNetworkAccess: S.optional(NamespacePropertiesInputPublicNetworkAccess),
+          inboundIpRules: S.optional(NamespacePropertiesInputInboundIpRulesList),
+          minimumTlsVersionAllowed: S.optional(NamespacePropertiesInputMinimumTlsVersionAllowed),
         }),
       ).annotate({ identifier: "NamespacePropertiesInput" });
     case 3:
@@ -14005,10 +16642,10 @@ function __c41(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(330)),
-          sku: S.optional(__S(142)),
-          identity: S.optional(__S(9)),
+          tags: S.optional(NamespacesCreateOrUpdateRequestTagsMap),
+          properties: S.optional(NamespacePropertiesInput),
+          sku: S.optional(NamespaceSku),
+          identity: S.optional(IdentityInfo),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14027,11 +16664,11 @@ function __c41(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(141)),
-          sku: S.optional(__S(142)),
-          identity: S.optional(__S(9)),
-          systemData: S.optional(__S(6)),
+          tags: S.optional(NamespacesCreateOrUpdateResponseTagsMap),
+          properties: S.optional(NamespaceProperties),
+          sku: S.optional(NamespaceSku),
+          identity: S.optional(IdentityInfo),
+          systemData: S.optional(NamespacesCreateOrUpdateResponseSystemData),
         }),
       ).annotate({
         identifier: "NamespacesCreateOrUpdateResponse",
@@ -14039,9 +16676,9 @@ function __c41(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          deliveryConfiguration: S.optional(__S(150)),
-          eventDeliverySchema: S.optional(S.String),
-          filtersConfiguration: S.optional(__S(151)),
+          deliveryConfiguration: S.optional(DeliveryConfiguration),
+          eventDeliverySchema: S.optional(SubscriptionPropertiesInputEventDeliverySchema),
+          filtersConfiguration: S.optional(FiltersConfiguration),
           expirationTimeUtc: S.optional(S.String),
         }),
       ).annotate({
@@ -14055,7 +16692,7 @@ function __c41(j: number): any {
           namespaceName: S.String.pipe(T.Label()),
           topicName: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(333)),
+          properties: S.optional(SubscriptionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14073,8 +16710,8 @@ function __c41(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(152)),
-          systemData: S.optional(__S(93)),
+          properties: S.optional(SubscriptionProperties),
+          systemData: S.optional(NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemData),
         }),
       ).annotate({
         identifier: "NamespaceTopicEventSubscriptionsCreateOrUpdateResponse",
@@ -14086,8 +16723,8 @@ function __c42(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          publisherType: S.optional(S.String),
-          inputSchema: S.optional(S.String),
+          publisherType: S.optional(NamespaceTopicPropertiesInputPublisherType),
+          inputSchema: S.optional(NamespaceTopicPropertiesInputInputSchema),
           eventRetentionInDays: S.optional(S.Number),
         }),
       ).annotate({
@@ -14100,7 +16737,7 @@ function __c42(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           topicName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(336)),
+          properties: S.optional(NamespaceTopicPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14118,8 +16755,8 @@ function __c42(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(145)),
-          systemData: S.optional(__S(16)),
+          properties: S.optional(NamespaceTopicProperties),
+          systemData: S.optional(NamespaceTopicsCreateOrUpdateResponseSystemData),
         }),
       ).annotate({
         identifier: "NamespaceTopicsCreateOrUpdateResponse",
@@ -14129,9 +16766,9 @@ function __c42(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(15)),
+          properties: S.optional(PartnerConfigurationProperties),
           location: S.optional(S.String),
-          tags: S.optional(__S(1)),
+          tags: S.optional(PartnerConfigurationsCreateOrUpdateRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14149,10 +16786,10 @@ function __c42(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(15)),
-          systemData: S.optional(__S(16)),
+          properties: S.optional(PartnerConfigurationProperties),
+          systemData: S.optional(PartnerConfigurationsCreateOrUpdateResponseSystemData),
           location: S.optional(S.String),
-          tags: S.optional(__S(1)),
+          tags: S.optional(PartnerConfigurationsCreateOrUpdateResponseTagsMap),
         }),
       ).annotate({
         identifier: "PartnerConfigurationsCreateOrUpdateResponse",
@@ -14182,10 +16819,10 @@ function __c42(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(15)),
-          systemData: S.optional(__S(78)),
+          properties: S.optional(PartnerConfigurationProperties),
+          systemData: S.optional(PartnerConfigurationsUnauthorizePartnerResponseSystemData),
           location: S.optional(S.String),
-          tags: S.optional(__S(1)),
+          tags: S.optional(PartnerConfigurationsUnauthorizePartnerResponseTagsMap),
         }),
       ).annotate({
         identifier: "PartnerConfigurationsUnauthorizePartnerResponse",
@@ -14194,11 +16831,15 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           partnerRegistrationFullyQualifiedId: S.optional(S.String),
-          minimumTlsVersionAllowed: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(82)),
+          minimumTlsVersionAllowed: S.optional(
+            PartnerNamespacePropertiesInputMinimumTlsVersionAllowed,
+          ),
+          publicNetworkAccess: S.optional(PartnerNamespacePropertiesInputPublicNetworkAccess),
+          inboundIpRules: S.optional(PartnerNamespacePropertiesInputInboundIpRulesList),
           disableLocalAuth: S.optional(S.Boolean),
-          partnerTopicRoutingMode: S.optional(S.String),
+          partnerTopicRoutingMode: S.optional(
+            PartnerNamespacePropertiesInputPartnerTopicRoutingMode,
+          ),
         }),
       ).annotate({
         identifier: "PartnerNamespacePropertiesInput",
@@ -14214,8 +16855,8 @@ function __c43(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           partnerNamespaceName: S.String.pipe(T.Label()),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(343)),
+          tags: S.optional(PartnerNamespacesCreateOrUpdateRequestTagsMap),
+          properties: S.optional(PartnerNamespacePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14234,9 +16875,9 @@ function __c43(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(159)),
-          systemData: S.optional(__S(16)),
+          tags: S.optional(PartnerNamespacesCreateOrUpdateResponseTagsMap),
+          properties: S.optional(PartnerNamespaceProperties),
+          systemData: S.optional(PartnerNamespacesCreateOrUpdateResponseSystemData),
         }),
       ).annotate({
         identifier: "PartnerNamespacesCreateOrUpdateResponse",
@@ -14256,8 +16897,8 @@ function __c43(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           partnerRegistrationName: S.String.pipe(T.Label()),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(346)),
+          tags: S.optional(PartnerRegistrationsCreateOrUpdateRequestTagsMap),
+          properties: S.optional(PartnerRegistrationPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14276,9 +16917,9 @@ function __c43(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(162)),
-          systemData: S.optional(__S(16)),
+          tags: S.optional(PartnerRegistrationsCreateOrUpdateResponseTagsMap),
+          properties: S.optional(PartnerRegistrationProperties),
+          systemData: S.optional(PartnerRegistrationsCreateOrUpdateResponseSystemData),
         }),
       ).annotate({
         identifier: "PartnerRegistrationsCreateOrUpdateResponse",
@@ -14290,7 +16931,7 @@ function __c43(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           partnerTopicName: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(75)),
+          properties: S.optional(EventSubscriptionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14307,9 +16948,9 @@ function __c43(j: number): any {
         S.Struct({
           partnerRegistrationImmutableId: S.optional(S.String),
           source: S.optional(S.String),
-          eventTypeInfo: S.optional(__S(4)),
+          eventTypeInfo: S.optional(EventTypeInfo),
           expirationTimeIfNotActivatedUtc: S.optional(S.String),
-          activationState: S.optional(S.String),
+          activationState: S.optional(PartnerTopicPropertiesInputActivationState),
           partnerTopicFriendlyDescription: S.optional(S.String),
           messageForActivation: S.optional(S.String),
         }),
@@ -14323,9 +16964,9 @@ function __c43(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           partnerTopicName: S.String.pipe(T.Label()),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(350)),
-          identity: S.optional(__S(9)),
+          tags: S.optional(PartnerTopicsCreateOrUpdateRequestTagsMap),
+          properties: S.optional(PartnerTopicPropertiesInput),
+          identity: S.optional(IdentityInfo),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14348,10 +16989,10 @@ function __c44(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(5)),
-          systemData: S.optional(__S(6)),
-          identity: S.optional(__S(9)),
+          tags: S.optional(PartnerTopicsCreateOrUpdateResponseTagsMap),
+          properties: S.optional(PartnerTopicProperties),
+          systemData: S.optional(PartnerTopicsCreateOrUpdateResponseSystemData),
+          identity: S.optional(IdentityInfo),
         }),
       ).annotate({
         identifier: "PartnerTopicsCreateOrUpdateResponse",
@@ -14361,7 +17002,7 @@ function __c44(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           topicSpaceName: S.optional(S.String),
-          permission: S.optional(S.String),
+          permission: S.optional(PermissionBindingPropertiesInputPermission),
           clientGroupName: S.optional(S.String),
         }),
       ).annotate({
@@ -14374,7 +17015,7 @@ function __c44(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           permissionBindingName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(353)),
+          properties: S.optional(PermissionBindingPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14392,8 +17033,8 @@ function __c44(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(170)),
-          systemData: S.optional(__S(16)),
+          properties: S.optional(PermissionBindingProperties),
+          systemData: S.optional(PermissionBindingsCreateOrUpdateResponseSystemData),
         }),
       ).annotate({
         identifier: "PermissionBindingsCreateOrUpdateResponse",
@@ -14500,7 +17141,7 @@ function __c45(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           systemTopicName: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(75)),
+          properties: S.optional(EventSubscriptionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14528,9 +17169,9 @@ function __c45(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           systemTopicName: S.String.pipe(T.Label()),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(362)),
-          identity: S.optional(__S(9)),
+          tags: S.optional(SystemTopicsCreateOrUpdateRequestTagsMap),
+          properties: S.optional(SystemTopicPropertiesInput),
+          identity: S.optional(IdentityInfo),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14549,10 +17190,10 @@ function __c45(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(177)),
-          systemData: S.optional(__S(6)),
-          identity: S.optional(__S(9)),
+          tags: S.optional(SystemTopicsCreateOrUpdateResponseTagsMap),
+          properties: S.optional(SystemTopicProperties),
+          systemData: S.optional(SystemTopicsCreateOrUpdateResponseSystemData),
+          identity: S.optional(IdentityInfo),
         }),
       ).annotate({
         identifier: "SystemTopicsCreateOrUpdateResponse",
@@ -14564,7 +17205,7 @@ function __c45(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           topicName: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(75)),
+          properties: S.optional(EventSubscriptionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14579,14 +17220,14 @@ function __c45(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          eventTypeInfo: S.optional(__S(4)),
-          minimumTlsVersionAllowed: S.optional(S.String),
-          inputSchema: S.optional(S.String),
-          inputSchemaMapping: S.optional(__S(80)),
-          publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(82)),
+          eventTypeInfo: S.optional(EventTypeInfo),
+          minimumTlsVersionAllowed: S.optional(TopicPropertiesInputMinimumTlsVersionAllowed),
+          inputSchema: S.optional(TopicPropertiesInputInputSchema),
+          inputSchemaMapping: S.optional(InputSchemaMapping),
+          publicNetworkAccess: S.optional(TopicPropertiesInputPublicNetworkAccess),
+          inboundIpRules: S.optional(TopicPropertiesInputInboundIpRulesList),
           disableLocalAuth: S.optional(S.Boolean),
-          dataResidencyBoundary: S.optional(S.String),
+          dataResidencyBoundary: S.optional(TopicPropertiesInputDataResidencyBoundary),
         }),
       ).annotate({ identifier: "TopicPropertiesInput" });
     case 7:
@@ -14596,9 +17237,9 @@ function __c45(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           topicName: S.String.pipe(T.Label()),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(366)),
-          identity: S.optional(__S(9)),
+          tags: S.optional(TopicsCreateOrUpdateRequestTagsMap),
+          properties: S.optional(TopicPropertiesInput),
+          identity: S.optional(IdentityInfo),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14621,10 +17262,10 @@ function __c46(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(183)),
-          identity: S.optional(__S(9)),
-          systemData: S.optional(__S(6)),
+          tags: S.optional(TopicsCreateOrUpdateResponseTagsMap),
+          properties: S.optional(TopicProperties),
+          identity: S.optional(IdentityInfo),
+          systemData: S.optional(TopicsCreateOrUpdateResponseSystemData),
         }),
       ).annotate({
         identifier: "TopicsCreateOrUpdateResponse",
@@ -14633,7 +17274,7 @@ function __c46(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          topicTemplates: S.optional(__S(30)),
+          topicTemplates: S.optional(TopicSpacePropertiesInputTopicTemplatesList),
         }),
       ).annotate({
         identifier: "TopicSpacePropertiesInput",
@@ -14645,7 +17286,7 @@ function __c46(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           topicSpaceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(369)),
+          properties: S.optional(TopicSpacePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14663,8 +17304,8 @@ function __c46(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(189)),
-          systemData: S.optional(__S(6)),
+          properties: S.optional(TopicSpaceProperties),
+          systemData: S.optional(TopicSpacesCreateOrUpdateResponseSystemData),
         }),
       ).annotate({
         identifier: "TopicSpacesCreateOrUpdateResponse",
@@ -14672,14 +17313,14 @@ function __c46(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          eventTypeInfo: S.optional(__S(4)),
+          eventTypeInfo: S.optional(EventTypeInfo),
         }),
       ).annotate({ identifier: "PartnerUpdateTopicInfo" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           expirationTimeIfNotActivatedUtc: S.optional(S.String),
-          partnerTopicInfo: S.optional(__S(372)),
+          partnerTopicInfo: S.optional(PartnerUpdateTopicInfo),
         }),
       ).annotate({
         identifier: "ChannelUpdateParametersProperties",
@@ -14691,7 +17332,7 @@ function __c46(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           partnerNamespaceName: S.String.pipe(T.Label()),
           channelName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(373)),
+          properties: S.optional(ChannelUpdateParametersProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14704,14 +17345,16 @@ function __c46(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(82)),
-          minimumTlsVersionAllowed: S.optional(S.String),
+          publicNetworkAccess: S.optional(DomainUpdateParameterPropertiesPublicNetworkAccess),
+          inboundIpRules: S.optional(DomainUpdateParameterPropertiesInboundIpRulesList),
+          minimumTlsVersionAllowed: S.optional(
+            DomainUpdateParameterPropertiesMinimumTlsVersionAllowed,
+          ),
           disableLocalAuth: S.optional(S.Boolean),
           autoCreateTopicWithFirstSubscription: S.optional(S.Boolean),
           autoDeleteTopicWithLastSubscription: S.optional(S.Boolean),
-          dataResidencyBoundary: S.optional(S.String),
-          eventTypeInfo: S.optional(__S(4)),
+          dataResidencyBoundary: S.optional(DomainUpdateParameterPropertiesDataResidencyBoundary),
+          eventTypeInfo: S.optional(EventTypeInfo),
         }),
       ).annotate({
         identifier: "DomainUpdateParameterProperties",
@@ -14726,9 +17369,9 @@ function __c47(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(375)),
-          identity: S.optional(__S(9)),
+          tags: S.optional(UpdateDomainRequestTagsMap),
+          properties: S.optional(DomainUpdateParameterProperties),
+          identity: S.optional(IdentityInfo),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14745,15 +17388,15 @@ function __c47(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          destination: S.optional(__S(66)),
-          deliveryWithResourceIdentity: S.optional(__S(68)),
-          filter: S.optional(__S(71)),
-          labels: S.optional(__S(30)),
+          destination: S.optional(EventSubscriptionDestination),
+          deliveryWithResourceIdentity: S.optional(DeliveryWithResourceIdentity),
+          filter: S.optional(EventSubscriptionFilter),
+          labels: S.optional(UpdateDomainEventSubscriptionRequestLabelsList),
           expirationTimeUtc: S.optional(S.String),
-          eventDeliverySchema: S.optional(S.String),
-          retryPolicy: S.optional(__S(72)),
-          deadLetterDestination: S.optional(__S(73)),
-          deadLetterWithResourceIdentity: S.optional(__S(74)),
+          eventDeliverySchema: S.optional(UpdateDomainEventSubscriptionRequestEventDeliverySchema),
+          retryPolicy: S.optional(RetryPolicy),
+          deadLetterDestination: S.optional(DeadLetterDestination),
+          deadLetterWithResourceIdentity: S.optional(DeadLetterWithResourceIdentity),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14773,15 +17416,17 @@ function __c47(j: number): any {
           domainName: S.String.pipe(T.Label()),
           topicName: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          destination: S.optional(__S(66)),
-          deliveryWithResourceIdentity: S.optional(__S(68)),
-          filter: S.optional(__S(71)),
-          labels: S.optional(__S(30)),
+          destination: S.optional(EventSubscriptionDestination),
+          deliveryWithResourceIdentity: S.optional(DeliveryWithResourceIdentity),
+          filter: S.optional(EventSubscriptionFilter),
+          labels: S.optional(UpdateDomainTopicEventSubscriptionRequestLabelsList),
           expirationTimeUtc: S.optional(S.String),
-          eventDeliverySchema: S.optional(S.String),
-          retryPolicy: S.optional(__S(72)),
-          deadLetterDestination: S.optional(__S(73)),
-          deadLetterWithResourceIdentity: S.optional(__S(74)),
+          eventDeliverySchema: S.optional(
+            UpdateDomainTopicEventSubscriptionRequestEventDeliverySchema,
+          ),
+          retryPolicy: S.optional(RetryPolicy),
+          deadLetterDestination: S.optional(DeadLetterDestination),
+          deadLetterWithResourceIdentity: S.optional(DeadLetterWithResourceIdentity),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14798,15 +17443,15 @@ function __c47(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          destination: S.optional(__S(66)),
-          deliveryWithResourceIdentity: S.optional(__S(68)),
-          filter: S.optional(__S(71)),
-          labels: S.optional(__S(30)),
+          destination: S.optional(EventSubscriptionDestination),
+          deliveryWithResourceIdentity: S.optional(DeliveryWithResourceIdentity),
+          filter: S.optional(EventSubscriptionFilter),
+          labels: S.optional(UpdateEventSubscriptionRequestLabelsList),
           expirationTimeUtc: S.optional(S.String),
-          eventDeliverySchema: S.optional(S.String),
-          retryPolicy: S.optional(__S(72)),
-          deadLetterDestination: S.optional(__S(73)),
-          deadLetterWithResourceIdentity: S.optional(__S(74)),
+          eventDeliverySchema: S.optional(UpdateEventSubscriptionRequestEventDeliverySchema),
+          retryPolicy: S.optional(RetryPolicy),
+          deadLetterDestination: S.optional(DeadLetterDestination),
+          deadLetterWithResourceIdentity: S.optional(DeadLetterWithResourceIdentity),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14821,13 +17466,13 @@ function __c47(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(UpdateTopicSpacesConfigurationInfoState),
           routeTopicResourceId: S.optional(S.String),
-          routingEnrichments: S.optional(__S(139)),
+          routingEnrichments: S.optional(RoutingEnrichments),
           maximumSessionExpiryInHours: S.optional(S.Number),
           maximumClientSessionsPerAuthenticationName: S.optional(S.Number),
-          routingIdentityInfo: S.optional(__S(131)),
-          customDomains: S.optional(__S(133)),
+          routingIdentityInfo: S.optional(RoutingIdentityInfo),
+          customDomains: S.optional(UpdateTopicSpacesConfigurationInfoCustomDomainsList),
         }),
       ).annotate({
         identifier: "UpdateTopicSpacesConfigurationInfo",
@@ -14835,7 +17480,7 @@ function __c47(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          customDomains: S.optional(__S(133)),
+          customDomains: S.optional(UpdateTopicsConfigurationInfoCustomDomainsList),
         }),
       ).annotate({
         identifier: "UpdateTopicsConfigurationInfo",
@@ -14843,10 +17488,10 @@ function __c47(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          topicSpacesConfiguration: S.optional(__S(380)),
-          topicsConfiguration: S.optional(__S(381)),
-          publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(82)),
+          topicSpacesConfiguration: S.optional(UpdateTopicSpacesConfigurationInfo),
+          topicsConfiguration: S.optional(UpdateTopicsConfigurationInfo),
+          publicNetworkAccess: S.optional(NamespaceUpdateParameterPropertiesPublicNetworkAccess),
+          inboundIpRules: S.optional(NamespaceUpdateParameterPropertiesInboundIpRulesList),
         }),
       ).annotate({
         identifier: "NamespaceUpdateParameterProperties",
@@ -14857,10 +17502,10 @@ function __c47(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1)),
-          identity: S.optional(__S(9)),
-          sku: S.optional(__S(142)),
-          properties: S.optional(__S(382)),
+          tags: S.optional(UpdateNamespaceRequestTagsMap),
+          identity: S.optional(IdentityInfo),
+          sku: S.optional(NamespaceSku),
+          properties: S.optional(NamespaceUpdateParameterProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14881,11 +17526,11 @@ function __c48(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(141)),
-          sku: S.optional(__S(142)),
-          identity: S.optional(__S(9)),
-          systemData: S.optional(__S(6)),
+          tags: S.optional(UpdateNamespaceResponseTagsMap),
+          properties: S.optional(NamespaceProperties),
+          sku: S.optional(NamespaceSku),
+          identity: S.optional(IdentityInfo),
+          systemData: S.optional(UpdateNamespaceResponseSystemData),
         }),
       ).annotate({ identifier: "UpdateNamespaceResponse" });
     case 1:
@@ -14903,7 +17548,7 @@ function __c48(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           topicName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(385)),
+          properties: S.optional(NamespaceTopicUpdateParameterProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14923,7 +17568,7 @@ function __c48(j: number): any {
           namespaceName: S.String.pipe(T.Label()),
           topicName: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(333)),
+          properties: S.optional(SubscriptionUpdateParametersProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14948,8 +17593,8 @@ function __c48(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(388)),
+          tags: S.optional(UpdatePartnerConfigurationRequestTagsMap),
+          properties: S.optional(PartnerConfigurationUpdateParameterProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14967,10 +17612,10 @@ function __c48(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(15)),
-          systemData: S.optional(__S(6)),
+          properties: S.optional(PartnerConfigurationProperties),
+          systemData: S.optional(UpdatePartnerConfigurationResponseSystemData),
           location: S.optional(S.String),
-          tags: S.optional(__S(1)),
+          tags: S.optional(UpdatePartnerConfigurationResponseTagsMap),
         }),
       ).annotate({
         identifier: "UpdatePartnerConfigurationResponse",
@@ -14978,9 +17623,13 @@ function __c48(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(82)),
-          minimumTlsVersionAllowed: S.optional(S.String),
+          publicNetworkAccess: S.optional(
+            PartnerNamespaceUpdateParameterPropertiesPublicNetworkAccess,
+          ),
+          inboundIpRules: S.optional(PartnerNamespaceUpdateParameterPropertiesInboundIpRulesList),
+          minimumTlsVersionAllowed: S.optional(
+            PartnerNamespaceUpdateParameterPropertiesMinimumTlsVersionAllowed,
+          ),
           disableLocalAuth: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -14996,8 +17645,8 @@ function __c49(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           partnerNamespaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(391)),
+          tags: S.optional(UpdatePartnerNamespaceRequestTagsMap),
+          properties: S.optional(PartnerNamespaceUpdateParameterProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15015,7 +17664,7 @@ function __c49(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           partnerRegistrationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1)),
+          tags: S.optional(UpdatePartnerRegistrationRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15033,8 +17682,8 @@ function __c49(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           partnerTopicName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1)),
-          identity: S.optional(__S(9)),
+          tags: S.optional(UpdatePartnerTopicRequestTagsMap),
+          identity: S.optional(IdentityInfo),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15053,15 +17702,17 @@ function __c49(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           partnerTopicName: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          destination: S.optional(__S(66)),
-          deliveryWithResourceIdentity: S.optional(__S(68)),
-          filter: S.optional(__S(71)),
-          labels: S.optional(__S(30)),
+          destination: S.optional(EventSubscriptionDestination),
+          deliveryWithResourceIdentity: S.optional(DeliveryWithResourceIdentity),
+          filter: S.optional(EventSubscriptionFilter),
+          labels: S.optional(UpdatePartnerTopicEventSubscriptionRequestLabelsList),
           expirationTimeUtc: S.optional(S.String),
-          eventDeliverySchema: S.optional(S.String),
-          retryPolicy: S.optional(__S(72)),
-          deadLetterDestination: S.optional(__S(73)),
-          deadLetterWithResourceIdentity: S.optional(__S(74)),
+          eventDeliverySchema: S.optional(
+            UpdatePartnerTopicEventSubscriptionRequestEventDeliverySchema,
+          ),
+          retryPolicy: S.optional(RetryPolicy),
+          deadLetterDestination: S.optional(DeadLetterDestination),
+          deadLetterWithResourceIdentity: S.optional(DeadLetterWithResourceIdentity),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15078,10 +17729,10 @@ function __c49(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          parentType: S.String.pipe(T.Label()),
+          parentType: UpdatePrivateEndpointConnectionRequestParentType.pipe(T.Label()),
           parentName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(87)),
+          properties: S.optional(PrivateEndpointConnectionProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15099,8 +17750,8 @@ function __c49(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           systemTopicName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1)),
-          identity: S.optional(__S(9)),
+          tags: S.optional(UpdateSystemTopicRequestTagsMap),
+          identity: S.optional(IdentityInfo),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15117,10 +17768,10 @@ function __c49(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(1)),
-          properties: S.optional(__S(177)),
-          systemData: S.optional(__S(6)),
-          identity: S.optional(__S(9)),
+          tags: S.optional(UpdateSystemTopicResponseTagsMap),
+          properties: S.optional(SystemTopicProperties),
+          systemData: S.optional(UpdateSystemTopicResponseSystemData),
+          identity: S.optional(IdentityInfo),
         }),
       ).annotate({
         identifier: "UpdateSystemTopicResponse",
@@ -15132,15 +17783,17 @@ function __c49(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           systemTopicName: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          destination: S.optional(__S(66)),
-          deliveryWithResourceIdentity: S.optional(__S(68)),
-          filter: S.optional(__S(71)),
-          labels: S.optional(__S(30)),
+          destination: S.optional(EventSubscriptionDestination),
+          deliveryWithResourceIdentity: S.optional(DeliveryWithResourceIdentity),
+          filter: S.optional(EventSubscriptionFilter),
+          labels: S.optional(UpdateSystemTopicEventSubscriptionRequestLabelsList),
           expirationTimeUtc: S.optional(S.String),
-          eventDeliverySchema: S.optional(S.String),
-          retryPolicy: S.optional(__S(72)),
-          deadLetterDestination: S.optional(__S(73)),
-          deadLetterWithResourceIdentity: S.optional(__S(74)),
+          eventDeliverySchema: S.optional(
+            UpdateSystemTopicEventSubscriptionRequestEventDeliverySchema,
+          ),
+          retryPolicy: S.optional(RetryPolicy),
+          deadLetterDestination: S.optional(DeadLetterDestination),
+          deadLetterWithResourceIdentity: S.optional(DeadLetterWithResourceIdentity),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15159,12 +17812,14 @@ function __c50(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(82)),
-          minimumTlsVersionAllowed: S.optional(S.String),
+          publicNetworkAccess: S.optional(TopicUpdateParameterPropertiesPublicNetworkAccess),
+          inboundIpRules: S.optional(TopicUpdateParameterPropertiesInboundIpRulesList),
+          minimumTlsVersionAllowed: S.optional(
+            TopicUpdateParameterPropertiesMinimumTlsVersionAllowed,
+          ),
           disableLocalAuth: S.optional(S.Boolean),
-          dataResidencyBoundary: S.optional(S.String),
-          eventTypeInfo: S.optional(__S(4)),
+          dataResidencyBoundary: S.optional(TopicUpdateParameterPropertiesDataResidencyBoundary),
+          eventTypeInfo: S.optional(EventTypeInfo),
         }),
       ).annotate({
         identifier: "TopicUpdateParameterProperties",
@@ -15175,9 +17830,9 @@ function __c50(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           topicName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1)),
-          identity: S.optional(__S(9)),
-          properties: S.optional(__S(400)),
+          tags: S.optional(UpdateTopicRequestTagsMap),
+          identity: S.optional(IdentityInfo),
+          properties: S.optional(TopicUpdateParameterProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15194,15 +17849,15 @@ function __c50(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           topicName: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          destination: S.optional(__S(66)),
-          deliveryWithResourceIdentity: S.optional(__S(68)),
-          filter: S.optional(__S(71)),
-          labels: S.optional(__S(30)),
+          destination: S.optional(EventSubscriptionDestination),
+          deliveryWithResourceIdentity: S.optional(DeliveryWithResourceIdentity),
+          filter: S.optional(EventSubscriptionFilter),
+          labels: S.optional(UpdateTopicEventSubscriptionRequestLabelsList),
           expirationTimeUtc: S.optional(S.String),
-          eventDeliverySchema: S.optional(S.String),
-          retryPolicy: S.optional(__S(72)),
-          deadLetterDestination: S.optional(__S(73)),
-          deadLetterWithResourceIdentity: S.optional(__S(74)),
+          eventDeliverySchema: S.optional(UpdateTopicEventSubscriptionRequestEventDeliverySchema),
+          retryPolicy: S.optional(RetryPolicy),
+          deadLetterDestination: S.optional(DeadLetterDestination),
+          deadLetterWithResourceIdentity: S.optional(DeadLetterWithResourceIdentity),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15232,126 +17887,19 @@ function __c50(j: number): any {
         identifier: "ValidateNamespaceCustomDomainOwnershipRequest",
       });
     case 4:
-      return S.Array(__S(132));
+      return S.Array(CustomDomainConfiguration);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          customDomainsForTopicsConfiguration: S.optional(__S(404)),
-          customDomainsForTopicSpacesConfiguration: S.optional(__S(404)),
+          customDomainsForTopicsConfiguration: S.optional(
+            CustomDomainOwnershipValidationResultCustomDomainsForTopicsConfigurationList,
+          ),
+          customDomainsForTopicSpacesConfiguration: S.optional(
+            CustomDomainOwnershipValidationResultCustomDomainsForTopicSpacesConfigurationList,
+          ),
         }),
       ).annotate({
         identifier: "CustomDomainOwnershipValidationResult",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
-    case 41:
-      return __c41(i & 7);
-    case 42:
-      return __c42(i & 7);
-    case 43:
-      return __c43(i & 7);
-    case 44:
-      return __c44(i & 7);
-    case 45:
-      return __c45(i & 7);
-    case 46:
-      return __c46(i & 7);
-    case 47:
-      return __c47(i & 7);
-    case 48:
-      return __c48(i & 7);
-    case 49:
-      return __c49(i & 7);
-    case 50:
-      return __c50(i & 7);
   }
 }

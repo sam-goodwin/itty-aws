@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -40,6 +38,11 @@ export class UnprocessableEntity
 
 /** Adds one or more email addresses to your GitHub account. Must contain at least one email address. **Note:** Alternatively, you can pass a single email address or an `array` of emails addresses directly, but we recommend that you pass an object using the `emails` key. */
 export type AddEmailForAuthenticatedUserRequestBodyCase0EmailsList = Array<string>;
+const AddEmailForAuthenticatedUserRequestBodyCase0EmailsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddEmailForAuthenticatedUserRequestBodyCase0EmailsList>;
+
 export interface AddEmailForAuthenticatedUserRequestBodyCase0 {
   /** Adds one or more email addresses to your GitHub account. Must contain at least one email address. **Note:** Alternatively, you can pass a single email address or an `array` of emails addresses directly, but we recommend that you pass an object using the `emails` key. */
   emails: AddEmailForAuthenticatedUserRequestBodyCase0EmailsList;
@@ -49,9 +52,17 @@ export type AddEmailForAuthenticatedUserRequestBody =
   | AddEmailForAuthenticatedUserRequestBodyCase0
   | AddEmailForAuthenticatedUserRequestBodyCase1List
   | string;
+const AddEmailForAuthenticatedUserRequestBody =
+  S.Unknown as any as S.Schema<AddEmailForAuthenticatedUserRequestBody>;
+
 export interface AddEmailForAuthenticatedUserRequest {
   body?: AddEmailForAuthenticatedUserRequestBody;
 }
+const AddEmailForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AddEmailForAuthenticatedUserRequest>;
+
 /** Email */
 export interface Email {
   email: string;
@@ -59,57 +70,132 @@ export interface Email {
   verified: boolean;
   visibility: string | null;
 }
+const Email = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Email>;
+
 export type AddEmailForAuthenticatedUserResponseBodyList = Array<Email>;
+const AddEmailForAuthenticatedUserResponseBodyList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AddEmailForAuthenticatedUserResponseBodyList>;
+
 export type AddEmailForAuthenticatedUserResponse = AddEmailForAuthenticatedUserResponseBodyList;
+const AddEmailForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AddEmailForAuthenticatedUserResponse>;
+
 /** Full URLs for the social media profiles to add. */
 export type AddSocialAccountForAuthenticatedUserRequestAccountUrlsList = Array<string>;
+const AddSocialAccountForAuthenticatedUserRequestAccountUrlsList =
+  AddEmailForAuthenticatedUserRequestBodyCase0EmailsList as any as S.Schema<AddSocialAccountForAuthenticatedUserRequestAccountUrlsList>;
+
 export interface AddSocialAccountForAuthenticatedUserRequest {
   /** Full URLs for the social media profiles to add. */
   account_urls: AddSocialAccountForAuthenticatedUserRequestAccountUrlsList;
 }
+const AddSocialAccountForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AddSocialAccountForAuthenticatedUserRequest>;
+
 /** Social media account */
 export interface SocialAccount {
   provider: string;
   url: string;
 }
+const SocialAccount = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<SocialAccount>;
+
 export type AddSocialAccountForAuthenticatedUserResponseBodyList = Array<SocialAccount>;
+const AddSocialAccountForAuthenticatedUserResponseBodyList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AddSocialAccountForAuthenticatedUserResponseBodyList>;
+
 export type AddSocialAccountForAuthenticatedUserResponse =
   AddSocialAccountForAuthenticatedUserResponseBodyList;
+const AddSocialAccountForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AddSocialAccountForAuthenticatedUserResponse>;
+
 export interface BlockRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
+const BlockRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<BlockRequest>;
+
 export interface BlockResponse {}
+const BlockResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<BlockResponse>;
+
 export interface CheckBlockedRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
+const CheckBlockedRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CheckBlockedRequest>;
+
 export interface CheckBlockedResponse {}
+const CheckBlockedResponse = BlockResponse as any as S.Schema<CheckBlockedResponse>;
+
 export interface CheckFollowingForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
   target_user: string;
 }
+const CheckFollowingForUserRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CheckFollowingForUserRequest>;
+
 export interface CheckFollowingForUserResponse {}
+const CheckFollowingForUserResponse =
+  BlockResponse as any as S.Schema<CheckFollowingForUserResponse>;
+
 export interface CheckPersonIsFollowedByAuthenticatedRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
+const CheckPersonIsFollowedByAuthenticatedRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CheckPersonIsFollowedByAuthenticatedRequest>;
+
 export interface CheckPersonIsFollowedByAuthenticatedResponse {}
+const CheckPersonIsFollowedByAuthenticatedResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CheckPersonIsFollowedByAuthenticatedResponse>;
+
 export interface CreateGpgKeyForAuthenticatedUserRequest {
   /** A descriptive name for the new key. */
   name?: string;
   /** A GPG key in ASCII-armored format. */
   armored_public_key: string;
 }
+const CreateGpgKeyForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateGpgKeyForAuthenticatedUserRequest>;
+
 export interface GpgKeyEmailsItem {
   email?: string;
   verified?: boolean;
 }
+const GpgKeyEmailsItem = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GpgKeyEmailsItem>;
+
 export type GpgKeyEmailsList = Array<GpgKeyEmailsItem>;
+const GpgKeyEmailsList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GpgKeyEmailsList>;
+
 export type GpgKeySubkeysItemEmailsItem = GpgKeyEmailsItem;
 export type GpgKeySubkeysItemEmailsList = Array<GpgKeyEmailsItem>;
+const GpgKeySubkeysItemEmailsList =
+  GpgKeyEmailsList as any as S.Schema<GpgKeySubkeysItemEmailsList>;
+
 export type GpgKeySubkeysItemSubkeysList = Array<unknown>;
+const GpgKeySubkeysItemSubkeysList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GpgKeySubkeysItemSubkeysList>;
+
 export interface GpgKeySubkeysItem {
   id?: number;
   primary_key_id?: number;
@@ -126,7 +212,11 @@ export interface GpgKeySubkeysItem {
   raw_key?: string | null;
   revoked?: boolean;
 }
+const GpgKeySubkeysItem = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GpgKeySubkeysItem>;
+
 export type GpgKeySubkeysList = Array<GpgKeySubkeysItem>;
+const GpgKeySubkeysList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GpgKeySubkeysList>;
+
 /** A unique encryption key */
 export interface GpgKey {
   id: number;
@@ -145,12 +235,19 @@ export interface GpgKey {
   revoked: boolean;
   raw_key: string | null;
 }
+const GpgKey = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GpgKey>;
+
 export interface CreatePublicSshKeyForAuthenticatedUserRequest {
   /** A descriptive name for the new key. */
   title?: string;
   /** The public SSH key to add to your GitHub account. */
   key: string;
 }
+const CreatePublicSshKeyForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreatePublicSshKeyForAuthenticatedUserRequest>;
+
 /** Key */
 export interface Key {
   key: string;
@@ -162,12 +259,19 @@ export interface Key {
   read_only: boolean;
   last_used?: string | null;
 }
+const Key = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Key>;
+
 export interface CreateSshSigningKeyForAuthenticatedUserRequest {
   /** A descriptive name for the new key. */
   title?: string;
   /** The public SSH key to add to your GitHub account. For more information, see "[Checking for existing SSH keys](https://docs.github.com/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys)." */
   key: string;
 }
+const CreateSshSigningKeyForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateSshSigningKeyForAuthenticatedUserRequest>;
+
 /** A public SSH key used to sign Git commits */
 export interface SshSigningKey {
   key: string;
@@ -175,6 +279,8 @@ export interface SshSigningKey {
   title: string;
   created_at: string;
 }
+const SshSigningKey = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<SshSigningKey>;
+
 /** List of subject digests associated with the artifact attestations to delete. */
 export type DeleteAttestationsBulkRequestBodyCase0SubjectDigestsList = Array<string>;
 export interface DeleteAttestationsBulkRequestBodyCase0 {
@@ -191,26 +297,53 @@ export interface DeleteAttestationsBulkRequestBodyCase1 {
 export type DeleteAttestationsBulkRequestBody =
   | DeleteAttestationsBulkRequestBodyCase0
   | DeleteAttestationsBulkRequestBodyCase1;
+const DeleteAttestationsBulkRequestBody =
+  S.Unknown as any as S.Schema<DeleteAttestationsBulkRequestBody>;
+
 export interface DeleteAttestationsBulkRequest {
   /** The handle for the GitHub user account. */
   username: string;
   body: DeleteAttestationsBulkRequestBody;
 }
+const DeleteAttestationsBulkRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DeleteAttestationsBulkRequest>;
+
 export interface DeleteAttestationsBulkResponse {}
+const DeleteAttestationsBulkResponse =
+  BlockResponse as any as S.Schema<DeleteAttestationsBulkResponse>;
+
 export interface DeleteAttestationsByIdRequest {
   /** The handle for the GitHub user account. */
   username: string;
   /** Attestation ID */
   attestation_id: number;
 }
+const DeleteAttestationsByIdRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DeleteAttestationsByIdRequest>;
+
 export interface DeleteAttestationsByIdResponse {}
+const DeleteAttestationsByIdResponse =
+  BlockResponse as any as S.Schema<DeleteAttestationsByIdResponse>;
+
 export interface DeleteAttestationsBySubjectDigestRequest {
   /** The handle for the GitHub user account. */
   username: string;
   /** Subject Digest */
   subject_digest: string;
 }
+const DeleteAttestationsBySubjectDigestRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DeleteAttestationsBySubjectDigestRequest>;
+
 export interface DeleteAttestationsBySubjectDigestResponse {}
+const DeleteAttestationsBySubjectDigestResponse =
+  CheckPersonIsFollowedByAuthenticatedResponse as any as S.Schema<DeleteAttestationsBySubjectDigestResponse>;
+
 /** Email addresses associated with the GitHub user account. */
 export type DeleteEmailForAuthenticatedUserRequestBodyCase0EmailsList = Array<string>;
 /** Deletes one or more email addresses from your GitHub account. Must contain at least one email address. **Note:** Alternatively, you can pass a single email address or an `array` of emails addresses directly, but we recommend that you pass an object using the `emails` key. */
@@ -223,44 +356,101 @@ export type DeleteEmailForAuthenticatedUserRequestBody =
   | DeleteEmailForAuthenticatedUserRequestBodyCase0
   | DeleteEmailForAuthenticatedUserRequestBodyCase1List
   | string;
+const DeleteEmailForAuthenticatedUserRequestBody =
+  S.Unknown as any as S.Schema<DeleteEmailForAuthenticatedUserRequestBody>;
+
 export interface DeleteEmailForAuthenticatedUserRequest {
   body?: DeleteEmailForAuthenticatedUserRequestBody;
 }
+const DeleteEmailForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DeleteEmailForAuthenticatedUserRequest>;
+
 export interface DeleteEmailForAuthenticatedUserResponse {}
+const DeleteEmailForAuthenticatedUserResponse =
+  CheckPersonIsFollowedByAuthenticatedResponse as any as S.Schema<DeleteEmailForAuthenticatedUserResponse>;
+
 export interface DeleteGpgKeyForAuthenticatedUserRequest {
   /** The unique identifier of the GPG key. */
   gpg_key_id: number;
 }
+const DeleteGpgKeyForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DeleteGpgKeyForAuthenticatedUserRequest>;
+
 export interface DeleteGpgKeyForAuthenticatedUserResponse {}
+const DeleteGpgKeyForAuthenticatedUserResponse =
+  CheckPersonIsFollowedByAuthenticatedResponse as any as S.Schema<DeleteGpgKeyForAuthenticatedUserResponse>;
+
 export interface DeletePublicSshKeyForAuthenticatedUserRequest {
   /** The unique identifier of the key. */
   key_id: number;
 }
+const DeletePublicSshKeyForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DeletePublicSshKeyForAuthenticatedUserRequest>;
+
 export interface DeletePublicSshKeyForAuthenticatedUserResponse {}
+const DeletePublicSshKeyForAuthenticatedUserResponse =
+  CheckPersonIsFollowedByAuthenticatedResponse as any as S.Schema<DeletePublicSshKeyForAuthenticatedUserResponse>;
+
 /** Full URLs for the social media profiles to delete. */
 export type DeleteSocialAccountForAuthenticatedUserRequestAccountUrlsList = Array<string>;
+const DeleteSocialAccountForAuthenticatedUserRequestAccountUrlsList =
+  AddEmailForAuthenticatedUserRequestBodyCase0EmailsList as any as S.Schema<DeleteSocialAccountForAuthenticatedUserRequestAccountUrlsList>;
+
 export interface DeleteSocialAccountForAuthenticatedUserRequest {
   /** Full URLs for the social media profiles to delete. */
   account_urls: DeleteSocialAccountForAuthenticatedUserRequestAccountUrlsList;
 }
+const DeleteSocialAccountForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<DeleteSocialAccountForAuthenticatedUserRequest>;
+
 export interface DeleteSocialAccountForAuthenticatedUserResponse {}
+const DeleteSocialAccountForAuthenticatedUserResponse =
+  CheckPersonIsFollowedByAuthenticatedResponse as any as S.Schema<DeleteSocialAccountForAuthenticatedUserResponse>;
+
 export interface DeleteSshSigningKeyForAuthenticatedUserRequest {
   /** The unique identifier of the SSH signing key. */
   ssh_signing_key_id: number;
 }
+const DeleteSshSigningKeyForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<DeleteSshSigningKeyForAuthenticatedUserRequest>;
+
 export interface DeleteSshSigningKeyForAuthenticatedUserResponse {}
+const DeleteSshSigningKeyForAuthenticatedUserResponse =
+  CheckPersonIsFollowedByAuthenticatedResponse as any as S.Schema<DeleteSshSigningKeyForAuthenticatedUserResponse>;
+
 export interface FollowRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
+const FollowRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<FollowRequest>;
+
 export interface FollowResponse {}
+const FollowResponse = BlockResponse as any as S.Schema<FollowResponse>;
+
 export interface GetAuthenticatedRequest {}
+const GetAuthenticatedRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetAuthenticatedRequest>;
+
 export interface PrivateUserPlan {
   collaborators: number;
   name: string;
   space: number;
   private_repos: number;
 }
+const PrivateUserPlan = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<PrivateUserPlan>;
+
 /** Private User */
 export interface PrivateUser {
   login: string;
@@ -307,6 +497,8 @@ export interface PrivateUser {
   business_plus?: boolean;
   ldap_dn?: string;
 }
+const PrivateUser = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<PrivateUser>;
+
 export type PublicUserPlan = PrivateUserPlan;
 /** Public User */
 export interface PublicUser {
@@ -352,24 +544,48 @@ export interface PublicUser {
   collaborators?: number;
 }
 export type GetAuthenticatedResponseBody = PrivateUser | PublicUser;
+const GetAuthenticatedResponseBody = S.Unknown as any as S.Schema<GetAuthenticatedResponseBody>;
+
 export type GetAuthenticatedResponse = GetAuthenticatedResponseBody;
+const GetAuthenticatedResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetAuthenticatedResponse>;
+
 export interface GetByIdRequest {
   /** account_id parameter */
   account_id: number;
 }
+const GetByIdRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<GetByIdRequest>;
+
 export type GetByIdResponseBody = PrivateUser | PublicUser;
+const GetByIdResponseBody = S.Unknown as any as S.Schema<GetByIdResponseBody>;
+
 export type GetByIdResponse = GetByIdResponseBody;
+const GetByIdResponse = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<GetByIdResponse>;
+
 export interface GetByUsernameRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
+const GetByUsernameRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<GetByUsernameRequest>;
+
 export type GetByUsernameResponseBody = PrivateUser | PublicUser;
+const GetByUsernameResponseBody = S.Unknown as any as S.Schema<GetByUsernameResponseBody>;
+
 export type GetByUsernameResponse = GetByUsernameResponseBody;
+const GetByUsernameResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GetByUsernameResponse>;
+
 export type GetContextForUserRequestSubjectType =
   | "organization"
   | "repository"
   | "issue"
   | "pull_request";
+const GetContextForUserRequestSubjectType = S.String;
+
 export interface GetContextForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -378,33 +594,67 @@ export interface GetContextForUserRequest {
   /** Uses the ID for the `subject_type` you specified. **Required** when using `subject_type`. */
   subject_id?: string;
 }
+const GetContextForUserRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetContextForUserRequest>;
+
 export interface HovercardContextsItem {
   message: string;
   octicon: string;
 }
+const HovercardContextsItem = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<HovercardContextsItem>;
+
 export type HovercardContextsList = Array<HovercardContextsItem>;
+const HovercardContextsList = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<HovercardContextsList>;
+
 /** Hovercard */
 export interface Hovercard {
   contexts: HovercardContextsList;
 }
+const Hovercard = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Hovercard>;
+
 export interface GetGpgKeyForAuthenticatedUserRequest {
   /** The unique identifier of the GPG key. */
   gpg_key_id: number;
 }
+const GetGpgKeyForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetGpgKeyForAuthenticatedUserRequest>;
+
 export interface GetPublicSshKeyForAuthenticatedUserRequest {
   /** The unique identifier of the key. */
   key_id: number;
 }
+const GetPublicSshKeyForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetPublicSshKeyForAuthenticatedUserRequest>;
+
 export interface GetSshSigningKeyForAuthenticatedUserRequest {
   /** The unique identifier of the SSH signing key. */
   ssh_signing_key_id: number;
 }
+const GetSshSigningKeyForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetSshSigningKeyForAuthenticatedUserRequest>;
+
 export interface ListRequest {
   /** A user ID. Only return users with an ID greater than this ID. */
   since?: number;
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
+const ListRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ListRequest>;
+
 /** A GitHub user. */
 export interface SimpleUser {
   name?: string | null;
@@ -430,8 +680,14 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
+const SimpleUser = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<SimpleUser>;
+
 export type ListResponseBodyList = Array<SimpleUser>;
+const ListResponseBodyList = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ListResponseBodyList>;
+
 export type ListResponse = ListResponseBodyList;
+const ListResponse = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ListResponse>;
+
 export interface ListAttestationsRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -446,18 +702,38 @@ export interface ListAttestationsRequest {
   /** Optional filter for fetching attestations with a given predicate type. This option accepts `provenance`, `sbom`, `release`, or freeform text for custom predicate types. */
   predicate_type?: string;
 }
+const ListAttestationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListAttestationsRequest>;
+
 export type ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap = {
   [key: string]: unknown | undefined;
 };
+const ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap>;
+
 export type ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap = {
   [key: string]: unknown | undefined;
 };
+const ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap>;
+
 /** The attestation's Sigstore Bundle. Refer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information. */
 export interface ListAttestationsResponseAttestationsItemBundle {
   mediaType?: string;
   verificationMaterial?: ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap;
   dsseEnvelope?: ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap;
 }
+const ListAttestationsResponseAttestationsItemBundle = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ListAttestationsResponseAttestationsItemBundle>;
+
 export interface ListAttestationsResponseAttestationsItem {
   /** The attestation's Sigstore Bundle. Refer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information. */
   bundle?: ListAttestationsResponseAttestationsItemBundle;
@@ -465,13 +741,31 @@ export interface ListAttestationsResponseAttestationsItem {
   bundle_url?: string;
   initiator?: string;
 }
+const ListAttestationsResponseAttestationsItem = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListAttestationsResponseAttestationsItem>;
+
 export type ListAttestationsResponseAttestationsList =
   Array<ListAttestationsResponseAttestationsItem>;
+const ListAttestationsResponseAttestationsList = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListAttestationsResponseAttestationsList>;
+
 export interface ListAttestationsResponse {
   attestations?: ListAttestationsResponseAttestationsList;
 }
+const ListAttestationsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ListAttestationsResponse>;
+
 /** List of subject digests to fetch attestations for. */
 export type ListAttestationsBulkRequestSubjectDigestsList = Array<string>;
+const ListAttestationsBulkRequestSubjectDigestsList =
+  AddEmailForAuthenticatedUserRequestBodyCase0EmailsList as any as S.Schema<ListAttestationsBulkRequestSubjectDigestsList>;
+
 export interface ListAttestationsBulkRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -486,29 +780,60 @@ export interface ListAttestationsBulkRequest {
   /** Optional filter for fetching attestations with a given predicate type. This option accepts `provenance`, `sbom`, `release`, or freeform text for custom predicate types. */
   predicate_type?: string;
 }
+const ListAttestationsBulkRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListAttestationsBulkRequest>;
+
 export type ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap =
   { [key: string]: unknown | undefined };
+const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap =
+  ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap>;
+
 export type ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap = {
   [key: string]: unknown | undefined;
 };
+const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap =
+  ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap>;
+
 /** The bundle of the attestation. */
 export interface ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundle {
   mediaType?: string;
   verificationMaterial?: ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap;
   dsseEnvelope?: ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap;
 }
+const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundle = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundle>;
+
 export interface ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem {
   /** The bundle of the attestation. */
   bundle?: ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundle;
   repository_id?: number;
   bundle_url?: string;
 }
+const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem>;
+
 export type ListAttestationsBulkResponseAttestationsSubjectDigestsValueList =
   Array<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem>;
+const ListAttestationsBulkResponseAttestationsSubjectDigestsValueList = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueList>;
+
 /** Mapping of subject digest to bundles. */
 export type ListAttestationsBulkResponseAttestationsSubjectDigestsMap = {
   [key: string]: ListAttestationsBulkResponseAttestationsSubjectDigestsValueList | null | undefined;
 };
+const ListAttestationsBulkResponseAttestationsSubjectDigestsMap = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsMap>;
+
 /** Information about the current page. */
 export interface ListAttestationsBulkResponsePageInfo {
   /** Indicates whether there is a next page. */
@@ -520,46 +845,93 @@ export interface ListAttestationsBulkResponsePageInfo {
   /** The cursor to the previous page. */
   previous?: string;
 }
+const ListAttestationsBulkResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ListAttestationsBulkResponsePageInfo>;
+
 export interface ListAttestationsBulkResponse {
   /** Mapping of subject digest to bundles. */
   attestations_subject_digests?: ListAttestationsBulkResponseAttestationsSubjectDigestsMap;
   /** Information about the current page. */
   page_info?: ListAttestationsBulkResponsePageInfo;
 }
+const ListAttestationsBulkResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ListAttestationsBulkResponse>;
+
 export interface ListBlockedByAuthenticatedUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListBlockedByAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ListBlockedByAuthenticatedUserRequest>;
+
 export type ListBlockedByAuthenticatedUserResponseBodyList = Array<SimpleUser>;
+const ListBlockedByAuthenticatedUserResponseBodyList =
+  ListResponseBodyList as any as S.Schema<ListBlockedByAuthenticatedUserResponseBodyList>;
+
 export type ListBlockedByAuthenticatedUserResponse = ListBlockedByAuthenticatedUserResponseBodyList;
+const ListBlockedByAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ListBlockedByAuthenticatedUserResponse>;
+
 export interface ListEmailsForAuthenticatedUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListEmailsForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListEmailsForAuthenticatedUserRequest>;
+
 export type ListEmailsForAuthenticatedUserResponseBodyList = Array<Email>;
 export type ListEmailsForAuthenticatedUserResponse = ListEmailsForAuthenticatedUserResponseBodyList;
+const ListEmailsForAuthenticatedUserResponse =
+  AddEmailForAuthenticatedUserResponse as any as S.Schema<ListEmailsForAuthenticatedUserResponse>;
+
 export interface ListFollowedByAuthenticatedUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListFollowedByAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListFollowedByAuthenticatedUserRequest>;
+
 export type ListFollowedByAuthenticatedUserResponseBodyList = Array<SimpleUser>;
 export type ListFollowedByAuthenticatedUserResponse =
   ListFollowedByAuthenticatedUserResponseBodyList;
+const ListFollowedByAuthenticatedUserResponse =
+  ListBlockedByAuthenticatedUserResponse as any as S.Schema<ListFollowedByAuthenticatedUserResponse>;
+
 export interface ListFollowersForAuthenticatedUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListFollowersForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ListFollowersForAuthenticatedUserRequest>;
+
 export type ListFollowersForAuthenticatedUserResponseBodyList = Array<SimpleUser>;
 export type ListFollowersForAuthenticatedUserResponse =
   ListFollowersForAuthenticatedUserResponseBodyList;
+const ListFollowersForAuthenticatedUserResponse =
+  ListBlockedByAuthenticatedUserResponse as any as S.Schema<ListFollowersForAuthenticatedUserResponse>;
+
 export interface ListFollowersForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -568,8 +940,16 @@ export interface ListFollowersForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListFollowersForUserRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListFollowersForUserRequest>;
+
 export type ListFollowersForUserResponseBodyList = Array<SimpleUser>;
 export type ListFollowersForUserResponse = ListFollowersForUserResponseBodyList;
+const ListFollowersForUserResponse =
+  ListBlockedByAuthenticatedUserResponse as any as S.Schema<ListFollowersForUserResponse>;
+
 export interface ListFollowingForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -578,17 +958,40 @@ export interface ListFollowingForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListFollowingForUserRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListFollowingForUserRequest>;
+
 export type ListFollowingForUserResponseBodyList = Array<SimpleUser>;
 export type ListFollowingForUserResponse = ListFollowingForUserResponseBodyList;
+const ListFollowingForUserResponse =
+  ListBlockedByAuthenticatedUserResponse as any as S.Schema<ListFollowingForUserResponse>;
+
 export interface ListGpgKeysForAuthenticatedUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListGpgKeysForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ListGpgKeysForAuthenticatedUserRequest>;
+
 export type ListGpgKeysForAuthenticatedUserResponseBodyList = Array<GpgKey>;
+const ListGpgKeysForAuthenticatedUserResponseBodyList = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ListGpgKeysForAuthenticatedUserResponseBodyList>;
+
 export type ListGpgKeysForAuthenticatedUserResponse =
   ListGpgKeysForAuthenticatedUserResponseBodyList;
+const ListGpgKeysForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ListGpgKeysForAuthenticatedUserResponse>;
+
 export interface ListGpgKeysForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -597,17 +1000,33 @@ export interface ListGpgKeysForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListGpgKeysForUserRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ListGpgKeysForUserRequest>;
+
 export type ListGpgKeysForUserResponseBodyList = Array<GpgKey>;
 export type ListGpgKeysForUserResponse = ListGpgKeysForUserResponseBodyList;
+const ListGpgKeysForUserResponse =
+  ListGpgKeysForAuthenticatedUserResponse as any as S.Schema<ListGpgKeysForUserResponse>;
+
 export interface ListPublicEmailsForAuthenticatedUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListPublicEmailsForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ListPublicEmailsForAuthenticatedUserRequest>;
+
 export type ListPublicEmailsForAuthenticatedUserResponseBodyList = Array<Email>;
 export type ListPublicEmailsForAuthenticatedUserResponse =
   ListPublicEmailsForAuthenticatedUserResponseBodyList;
+const ListPublicEmailsForAuthenticatedUserResponse =
+  AddEmailForAuthenticatedUserResponse as any as S.Schema<ListPublicEmailsForAuthenticatedUserResponse>;
+
 export interface ListPublicKeysForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -616,6 +1035,11 @@ export interface ListPublicKeysForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListPublicKeysForUserRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListPublicKeysForUserRequest>;
+
 /** Key Simple */
 export interface KeySimple {
   id: number;
@@ -623,26 +1047,61 @@ export interface KeySimple {
   created_at?: string;
   last_used?: string | null;
 }
+const KeySimple = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<KeySimple>;
+
 export type ListPublicKeysForUserResponseBodyList = Array<KeySimple>;
+const ListPublicKeysForUserResponseBodyList = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListPublicKeysForUserResponseBodyList>;
+
 export type ListPublicKeysForUserResponse = ListPublicKeysForUserResponseBodyList;
+const ListPublicKeysForUserResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ListPublicKeysForUserResponse>;
+
 export interface ListPublicSshKeysForAuthenticatedUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListPublicSshKeysForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListPublicSshKeysForAuthenticatedUserRequest>;
+
 export type ListPublicSshKeysForAuthenticatedUserResponseBodyList = Array<Key>;
+const ListPublicSshKeysForAuthenticatedUserResponseBodyList = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ListPublicSshKeysForAuthenticatedUserResponseBodyList>;
+
 export type ListPublicSshKeysForAuthenticatedUserResponse =
   ListPublicSshKeysForAuthenticatedUserResponseBodyList;
+const ListPublicSshKeysForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ListPublicSshKeysForAuthenticatedUserResponse>;
+
 export interface ListSocialAccountsForAuthenticatedUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListSocialAccountsForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ListSocialAccountsForAuthenticatedUserRequest>;
+
 export type ListSocialAccountsForAuthenticatedUserResponseBodyList = Array<SocialAccount>;
 export type ListSocialAccountsForAuthenticatedUserResponse =
   ListSocialAccountsForAuthenticatedUserResponseBodyList;
+const ListSocialAccountsForAuthenticatedUserResponse =
+  AddSocialAccountForAuthenticatedUserResponse as any as S.Schema<ListSocialAccountsForAuthenticatedUserResponse>;
+
 export interface ListSocialAccountsForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -651,17 +1110,40 @@ export interface ListSocialAccountsForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListSocialAccountsForUserRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ListSocialAccountsForUserRequest>;
+
 export type ListSocialAccountsForUserResponseBodyList = Array<SocialAccount>;
 export type ListSocialAccountsForUserResponse = ListSocialAccountsForUserResponseBodyList;
+const ListSocialAccountsForUserResponse =
+  AddSocialAccountForAuthenticatedUserResponse as any as S.Schema<ListSocialAccountsForUserResponse>;
+
 export interface ListSshSigningKeysForAuthenticatedUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListSshSigningKeysForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ListSshSigningKeysForAuthenticatedUserRequest>;
+
 export type ListSshSigningKeysForAuthenticatedUserResponseBodyList = Array<SshSigningKey>;
+const ListSshSigningKeysForAuthenticatedUserResponseBodyList = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ListSshSigningKeysForAuthenticatedUserResponseBodyList>;
+
 export type ListSshSigningKeysForAuthenticatedUserResponse =
   ListSshSigningKeysForAuthenticatedUserResponseBodyList;
+const ListSshSigningKeysForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ListSshSigningKeysForAuthenticatedUserResponse>;
+
 export interface ListSshSigningKeysForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -670,27 +1152,53 @@ export interface ListSshSigningKeysForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListSshSigningKeysForUserRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ListSshSigningKeysForUserRequest>;
+
 export type ListSshSigningKeysForUserResponseBodyList = Array<SshSigningKey>;
 export type ListSshSigningKeysForUserResponse = ListSshSigningKeysForUserResponseBodyList;
+const ListSshSigningKeysForUserResponse =
+  ListSshSigningKeysForAuthenticatedUserResponse as any as S.Schema<ListSshSigningKeysForUserResponse>;
+
 /** Denotes whether an email is publicly visible. */
 export type SetPrimaryEmailVisibilityForAuthenticatedUserRequestVisibility = "public" | "private";
+const SetPrimaryEmailVisibilityForAuthenticatedUserRequestVisibility = S.String;
+
 export interface SetPrimaryEmailVisibilityForAuthenticatedUserRequest {
   /** Denotes whether an email is publicly visible. */
   visibility: SetPrimaryEmailVisibilityForAuthenticatedUserRequestVisibility | (string & {});
 }
+const SetPrimaryEmailVisibilityForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<SetPrimaryEmailVisibilityForAuthenticatedUserRequest>;
+
 export type SetPrimaryEmailVisibilityForAuthenticatedUserResponseBodyList = Array<Email>;
 export type SetPrimaryEmailVisibilityForAuthenticatedUserResponse =
   SetPrimaryEmailVisibilityForAuthenticatedUserResponseBodyList;
+const SetPrimaryEmailVisibilityForAuthenticatedUserResponse =
+  AddEmailForAuthenticatedUserResponse as any as S.Schema<SetPrimaryEmailVisibilityForAuthenticatedUserResponse>;
+
 export interface UnblockRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
+const UnblockRequest = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<UnblockRequest>;
+
 export interface UnblockResponse {}
+const UnblockResponse = BlockResponse as any as S.Schema<UnblockResponse>;
+
 export interface UnfollowRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
+const UnfollowRequest = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<UnfollowRequest>;
+
 export interface UnfollowResponse {}
+const UnfollowResponse = BlockResponse as any as S.Schema<UnfollowResponse>;
+
 export interface UpdateAuthenticatedRequest {
   /** The new name of the user. */
   name?: string;
@@ -709,6 +1217,11 @@ export interface UpdateAuthenticatedRequest {
   /** The new short biography of the user. */
   bio?: string;
 }
+const UpdateAuthenticatedRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<UpdateAuthenticatedRequest>;
+
 export type AddEmailForAuthenticatedUserError =
   | Forbidden
   | NotFound
@@ -721,8 +1234,8 @@ export const addEmailForAuthenticatedUser: API.OperationMethod<
   AddEmailForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AddEmailForAuthenticatedUserRequest>,
-  output: __S(4) as any as S.Schema<AddEmailForAuthenticatedUserResponse>,
+  input: AddEmailForAuthenticatedUserRequest,
+  output: AddEmailForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -740,8 +1253,8 @@ export const addSocialAccountForAuthenticatedUser: API.OperationMethod<
   AddSocialAccountForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<AddSocialAccountForAuthenticatedUserRequest>,
-  output: __S(8) as any as S.Schema<AddSocialAccountForAuthenticatedUserResponse>,
+  input: AddSocialAccountForAuthenticatedUserRequest,
+  output: AddSocialAccountForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -751,8 +1264,8 @@ export type BlockError = Forbidden | NotFound | UnprocessableEntity | GithubOpEr
 /** Block a user Blocks the given user and returns a 204. If the authenticated user cannot block the given user a 422 is returned. */
 export const block: API.OperationMethod<BlockRequest, BlockResponse, BlockError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(9) as any as S.Schema<BlockRequest>,
-    output: __S(10) as any as S.Schema<BlockResponse>,
+    input: BlockRequest,
+    output: BlockResponse,
     errors: [Forbidden, NotFound, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -766,8 +1279,8 @@ export const checkBlocked: API.OperationMethod<
   CheckBlockedError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CheckBlockedRequest>,
-  output: __S(10) as any as S.Schema<CheckBlockedResponse>,
+  input: CheckBlockedRequest,
+  output: CheckBlockedResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -781,8 +1294,8 @@ export const checkFollowingForUser: API.OperationMethod<
   CheckFollowingForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CheckFollowingForUserRequest>,
-  output: __S(10) as any as S.Schema<CheckFollowingForUserResponse>,
+  input: CheckFollowingForUserRequest,
+  output: CheckFollowingForUserResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -796,8 +1309,8 @@ export const checkPersonIsFollowedByAuthenticated: API.OperationMethod<
   CheckPersonIsFollowedByAuthenticatedError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CheckPersonIsFollowedByAuthenticatedRequest>,
-  output: __S(14) as any as S.Schema<CheckPersonIsFollowedByAuthenticatedResponse>,
+  input: CheckPersonIsFollowedByAuthenticatedRequest,
+  output: CheckPersonIsFollowedByAuthenticatedResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -815,8 +1328,8 @@ export const createGpgKeyForAuthenticatedUser: API.OperationMethod<
   CreateGpgKeyForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<CreateGpgKeyForAuthenticatedUserRequest>,
-  output: __S(21) as any as S.Schema<GpgKey>,
+  input: CreateGpgKeyForAuthenticatedUserRequest,
+  output: GpgKey,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -834,8 +1347,8 @@ export const createPublicSshKeyForAuthenticatedUser: API.OperationMethod<
   CreatePublicSshKeyForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<CreatePublicSshKeyForAuthenticatedUserRequest>,
-  output: __S(23) as any as S.Schema<Key>,
+  input: CreatePublicSshKeyForAuthenticatedUserRequest,
+  output: Key,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -853,8 +1366,8 @@ export const createSshSigningKeyForAuthenticatedUser: API.OperationMethod<
   CreateSshSigningKeyForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<CreateSshSigningKeyForAuthenticatedUserRequest>,
-  output: __S(25) as any as S.Schema<SshSigningKey>,
+  input: CreateSshSigningKeyForAuthenticatedUserRequest,
+  output: SshSigningKey,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -868,8 +1381,8 @@ export const deleteAttestationsBulk: API.OperationMethod<
   DeleteAttestationsBulkError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<DeleteAttestationsBulkRequest>,
-  output: __S(10) as any as S.Schema<DeleteAttestationsBulkResponse>,
+  input: DeleteAttestationsBulkRequest,
+  output: DeleteAttestationsBulkResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -883,8 +1396,8 @@ export const deleteAttestationsById: API.OperationMethod<
   DeleteAttestationsByIdError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<DeleteAttestationsByIdRequest>,
-  output: __S(10) as any as S.Schema<DeleteAttestationsByIdResponse>,
+  input: DeleteAttestationsByIdRequest,
+  output: DeleteAttestationsByIdResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -898,8 +1411,8 @@ export const deleteAttestationsBySubjectDigest: API.OperationMethod<
   DeleteAttestationsBySubjectDigestError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<DeleteAttestationsBySubjectDigestRequest>,
-  output: __S(14) as any as S.Schema<DeleteAttestationsBySubjectDigestResponse>,
+  input: DeleteAttestationsBySubjectDigestRequest,
+  output: DeleteAttestationsBySubjectDigestResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -917,8 +1430,8 @@ export const deleteEmailForAuthenticatedUser: API.OperationMethod<
   DeleteEmailForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<DeleteEmailForAuthenticatedUserRequest>,
-  output: __S(14) as any as S.Schema<DeleteEmailForAuthenticatedUserResponse>,
+  input: DeleteEmailForAuthenticatedUserRequest,
+  output: DeleteEmailForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -936,8 +1449,8 @@ export const deleteGpgKeyForAuthenticatedUser: API.OperationMethod<
   DeleteGpgKeyForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<DeleteGpgKeyForAuthenticatedUserRequest>,
-  output: __S(14) as any as S.Schema<DeleteGpgKeyForAuthenticatedUserResponse>,
+  input: DeleteGpgKeyForAuthenticatedUserRequest,
+  output: DeleteGpgKeyForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -951,8 +1464,8 @@ export const deletePublicSshKeyForAuthenticatedUser: API.OperationMethod<
   DeletePublicSshKeyForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<DeletePublicSshKeyForAuthenticatedUserRequest>,
-  output: __S(14) as any as S.Schema<DeletePublicSshKeyForAuthenticatedUserResponse>,
+  input: DeletePublicSshKeyForAuthenticatedUserRequest,
+  output: DeletePublicSshKeyForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -970,8 +1483,8 @@ export const deleteSocialAccountForAuthenticatedUser: API.OperationMethod<
   DeleteSocialAccountForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<DeleteSocialAccountForAuthenticatedUserRequest>,
-  output: __S(14) as any as S.Schema<DeleteSocialAccountForAuthenticatedUserResponse>,
+  input: DeleteSocialAccountForAuthenticatedUserRequest,
+  output: DeleteSocialAccountForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -985,8 +1498,8 @@ export const deleteSshSigningKeyForAuthenticatedUser: API.OperationMethod<
   DeleteSshSigningKeyForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<DeleteSshSigningKeyForAuthenticatedUserRequest>,
-  output: __S(14) as any as S.Schema<DeleteSshSigningKeyForAuthenticatedUserResponse>,
+  input: DeleteSshSigningKeyForAuthenticatedUserRequest,
+  output: DeleteSshSigningKeyForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1000,8 +1513,8 @@ export const follow: API.OperationMethod<
   FollowError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<FollowRequest>,
-  output: __S(10) as any as S.Schema<FollowResponse>,
+  input: FollowRequest,
+  output: FollowResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1015,8 +1528,8 @@ export const getAuthenticated: API.OperationMethod<
   GetAuthenticatedError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<GetAuthenticatedRequest>,
-  output: __S(38) as any as S.Schema<GetAuthenticatedResponse>,
+  input: GetAuthenticatedRequest,
+  output: GetAuthenticatedResponse,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1030,8 +1543,8 @@ export const getById: API.OperationMethod<
   GetByIdError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<GetByIdRequest>,
-  output: __S(40) as any as S.Schema<GetByIdResponse>,
+  input: GetByIdRequest,
+  output: GetByIdResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1045,8 +1558,8 @@ export const getByUsername: API.OperationMethod<
   GetByUsernameError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<GetByUsernameRequest>,
-  output: __S(42) as any as S.Schema<GetByUsernameResponse>,
+  input: GetByUsernameRequest,
+  output: GetByUsernameResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1060,8 +1573,8 @@ export const getContextForUser: API.OperationMethod<
   GetContextForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<GetContextForUserRequest>,
-  output: __S(46) as any as S.Schema<Hovercard>,
+  input: GetContextForUserRequest,
+  output: Hovercard,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1075,8 +1588,8 @@ export const getGpgKeyForAuthenticatedUser: API.OperationMethod<
   GetGpgKeyForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<GetGpgKeyForAuthenticatedUserRequest>,
-  output: __S(21) as any as S.Schema<GpgKey>,
+  input: GetGpgKeyForAuthenticatedUserRequest,
+  output: GpgKey,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1090,8 +1603,8 @@ export const getPublicSshKeyForAuthenticatedUser: API.OperationMethod<
   GetPublicSshKeyForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<GetPublicSshKeyForAuthenticatedUserRequest>,
-  output: __S(23) as any as S.Schema<Key>,
+  input: GetPublicSshKeyForAuthenticatedUserRequest,
+  output: Key,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1105,8 +1618,8 @@ export const getSshSigningKeyForAuthenticatedUser: API.OperationMethod<
   GetSshSigningKeyForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetSshSigningKeyForAuthenticatedUserRequest>,
-  output: __S(25) as any as S.Schema<SshSigningKey>,
+  input: GetSshSigningKeyForAuthenticatedUserRequest,
+  output: SshSigningKey,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1116,8 +1629,8 @@ export type ListError = GithubOpError;
 /** List users Lists all users, in the order that they signed up on GitHub. This list includes personal user accounts and organization accounts. Note: Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of users. */
 export const list: API.OperationMethod<ListRequest, ListResponse, ListError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(50) as any as S.Schema<ListRequest>,
-    output: __S(53) as any as S.Schema<ListResponse>,
+    input: ListRequest,
+    output: ListResponse,
     errors: [],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -1131,8 +1644,8 @@ export const listAttestations: API.OperationMethod<
   ListAttestationsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<ListAttestationsRequest>,
-  output: __S(60) as any as S.Schema<ListAttestationsResponse>,
+  input: ListAttestationsRequest,
+  output: ListAttestationsResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1146,8 +1659,8 @@ export const listAttestationsBulk: API.OperationMethod<
   ListAttestationsBulkError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<ListAttestationsBulkRequest>,
-  output: __S(67) as any as S.Schema<ListAttestationsBulkResponse>,
+  input: ListAttestationsBulkRequest,
+  output: ListAttestationsBulkResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1161,8 +1674,8 @@ export const listBlockedByAuthenticatedUser: API.OperationMethod<
   ListBlockedByAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<ListBlockedByAuthenticatedUserRequest>,
-  output: __S(69) as any as S.Schema<ListBlockedByAuthenticatedUserResponse>,
+  input: ListBlockedByAuthenticatedUserRequest,
+  output: ListBlockedByAuthenticatedUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1176,8 +1689,8 @@ export const listEmailsForAuthenticatedUser: API.OperationMethod<
   ListEmailsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<ListEmailsForAuthenticatedUserRequest>,
-  output: __S(4) as any as S.Schema<ListEmailsForAuthenticatedUserResponse>,
+  input: ListEmailsForAuthenticatedUserRequest,
+  output: ListEmailsForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1191,8 +1704,8 @@ export const listFollowedByAuthenticatedUser: API.OperationMethod<
   ListFollowedByAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<ListFollowedByAuthenticatedUserRequest>,
-  output: __S(69) as any as S.Schema<ListFollowedByAuthenticatedUserResponse>,
+  input: ListFollowedByAuthenticatedUserRequest,
+  output: ListFollowedByAuthenticatedUserResponse,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1206,8 +1719,8 @@ export const listFollowersForAuthenticatedUser: API.OperationMethod<
   ListFollowersForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<ListFollowersForAuthenticatedUserRequest>,
-  output: __S(69) as any as S.Schema<ListFollowersForAuthenticatedUserResponse>,
+  input: ListFollowersForAuthenticatedUserRequest,
+  output: ListFollowersForAuthenticatedUserResponse,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1221,8 +1734,8 @@ export const listFollowersForUser: API.OperationMethod<
   ListFollowersForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<ListFollowersForUserRequest>,
-  output: __S(69) as any as S.Schema<ListFollowersForUserResponse>,
+  input: ListFollowersForUserRequest,
+  output: ListFollowersForUserResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1236,8 +1749,8 @@ export const listFollowingForUser: API.OperationMethod<
   ListFollowingForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<ListFollowingForUserRequest>,
-  output: __S(69) as any as S.Schema<ListFollowingForUserResponse>,
+  input: ListFollowingForUserRequest,
+  output: ListFollowingForUserResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1251,8 +1764,8 @@ export const listGpgKeysForAuthenticatedUser: API.OperationMethod<
   ListGpgKeysForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<ListGpgKeysForAuthenticatedUserRequest>,
-  output: __S(77) as any as S.Schema<ListGpgKeysForAuthenticatedUserResponse>,
+  input: ListGpgKeysForAuthenticatedUserRequest,
+  output: ListGpgKeysForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1266,8 +1779,8 @@ export const listGpgKeysForUser: API.OperationMethod<
   ListGpgKeysForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<ListGpgKeysForUserRequest>,
-  output: __S(77) as any as S.Schema<ListGpgKeysForUserResponse>,
+  input: ListGpgKeysForUserRequest,
+  output: ListGpgKeysForUserResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1281,8 +1794,8 @@ export const listPublicEmailsForAuthenticatedUser: API.OperationMethod<
   ListPublicEmailsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<ListPublicEmailsForAuthenticatedUserRequest>,
-  output: __S(4) as any as S.Schema<ListPublicEmailsForAuthenticatedUserResponse>,
+  input: ListPublicEmailsForAuthenticatedUserRequest,
+  output: ListPublicEmailsForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1296,8 +1809,8 @@ export const listPublicKeysForUser: API.OperationMethod<
   ListPublicKeysForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<ListPublicKeysForUserRequest>,
-  output: __S(83) as any as S.Schema<ListPublicKeysForUserResponse>,
+  input: ListPublicKeysForUserRequest,
+  output: ListPublicKeysForUserResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1311,8 +1824,8 @@ export const listPublicSshKeysForAuthenticatedUser: API.OperationMethod<
   ListPublicSshKeysForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<ListPublicSshKeysForAuthenticatedUserRequest>,
-  output: __S(86) as any as S.Schema<ListPublicSshKeysForAuthenticatedUserResponse>,
+  input: ListPublicSshKeysForAuthenticatedUserRequest,
+  output: ListPublicSshKeysForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1326,8 +1839,8 @@ export const listSocialAccountsForAuthenticatedUser: API.OperationMethod<
   ListSocialAccountsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<ListSocialAccountsForAuthenticatedUserRequest>,
-  output: __S(8) as any as S.Schema<ListSocialAccountsForAuthenticatedUserResponse>,
+  input: ListSocialAccountsForAuthenticatedUserRequest,
+  output: ListSocialAccountsForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1341,8 +1854,8 @@ export const listSocialAccountsForUser: API.OperationMethod<
   ListSocialAccountsForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<ListSocialAccountsForUserRequest>,
-  output: __S(8) as any as S.Schema<ListSocialAccountsForUserResponse>,
+  input: ListSocialAccountsForUserRequest,
+  output: ListSocialAccountsForUserResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1356,8 +1869,8 @@ export const listSshSigningKeysForAuthenticatedUser: API.OperationMethod<
   ListSshSigningKeysForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<ListSshSigningKeysForAuthenticatedUserRequest>,
-  output: __S(91) as any as S.Schema<ListSshSigningKeysForAuthenticatedUserResponse>,
+  input: ListSshSigningKeysForAuthenticatedUserRequest,
+  output: ListSshSigningKeysForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1371,8 +1884,8 @@ export const listSshSigningKeysForUser: API.OperationMethod<
   ListSshSigningKeysForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<ListSshSigningKeysForUserRequest>,
-  output: __S(91) as any as S.Schema<ListSshSigningKeysForUserResponse>,
+  input: ListSshSigningKeysForUserRequest,
+  output: ListSshSigningKeysForUserResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1390,8 +1903,8 @@ export const setPrimaryEmailVisibilityForAuthenticatedUser: API.OperationMethod<
   SetPrimaryEmailVisibilityForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<SetPrimaryEmailVisibilityForAuthenticatedUserRequest>,
-  output: __S(4) as any as S.Schema<SetPrimaryEmailVisibilityForAuthenticatedUserResponse>,
+  input: SetPrimaryEmailVisibilityForAuthenticatedUserRequest,
+  output: SetPrimaryEmailVisibilityForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1405,8 +1918,8 @@ export const unblock: API.OperationMethod<
   UnblockError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<UnblockRequest>,
-  output: __S(10) as any as S.Schema<UnblockResponse>,
+  input: UnblockRequest,
+  output: UnblockResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1420,8 +1933,8 @@ export const unfollow: API.OperationMethod<
   UnfollowError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<UnfollowRequest>,
-  output: __S(10) as any as S.Schema<UnfollowResponse>,
+  input: UnfollowRequest,
+  output: UnfollowResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1435,8 +1948,8 @@ export const updateAuthenticated: API.OperationMethod<
   UpdateAuthenticatedError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<UpdateAuthenticatedRequest>,
-  output: __S(37) as any as S.Schema<PrivateUser>,
+  input: UpdateAuthenticatedRequest,
+  output: PrivateUser,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1450,7 +1963,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+          body: S.optional(AddEmailForAuthenticatedUserRequestBody.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/user/emails", code: 200 })),
       ).annotate({
         identifier: "AddEmailForAuthenticatedUserRequest",
@@ -1465,15 +1978,17 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Email" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(Email);
     case 4:
-      return S.suspend(() => __S(3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        AddEmailForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "AddEmailForAuthenticatedUserResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          account_urls: __S(0),
+          account_urls: AddSocialAccountForAuthenticatedUserRequestAccountUrlsList,
         }).pipe(T.Http({ method: "POST", uri: "/user/social_accounts", code: 200 })),
       ).annotate({
         identifier: "AddSocialAccountForAuthenticatedUserRequest",
@@ -1486,13 +2001,15 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "SocialAccount" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(SocialAccount);
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(7).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        AddSocialAccountForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "AddSocialAccountForAuthenticatedUserResponse",
       });
     case 1:
@@ -1555,7 +2072,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "GpgKeyEmailsItem" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(GpgKeyEmailsItem);
     case 2:
       return S.Array(S.Unknown);
     case 3:
@@ -1565,8 +2082,8 @@ function __c2(j: number): any {
           primary_key_id: S.optional(S.Number),
           key_id: S.optional(S.String),
           public_key: S.optional(S.String),
-          emails: S.optional(__S(17)),
-          subkeys: S.optional(__S(18)),
+          emails: S.optional(GpgKeySubkeysItemEmailsList),
+          subkeys: S.optional(GpgKeySubkeysItemSubkeysList),
           can_sign: S.optional(S.Boolean),
           can_encrypt_comms: S.optional(S.Boolean),
           can_encrypt_storage: S.optional(S.Boolean),
@@ -1578,7 +2095,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "GpgKeySubkeysItem" });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(GpgKeySubkeysItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1587,8 +2104,8 @@ function __c2(j: number): any {
           primary_key_id: S.NullOr(S.Number),
           key_id: S.String,
           public_key: S.String,
-          emails: __S(17),
-          subkeys: __S(20),
+          emails: GpgKeyEmailsList,
+          subkeys: GpgKeySubkeysList,
           can_sign: S.Boolean,
           can_encrypt_comms: S.Boolean,
           can_encrypt_storage: S.Boolean,
@@ -1647,7 +2164,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
-          body: S.Unknown.pipe(T.HttpBody()),
+          body: DeleteAttestationsBulkRequestBody.pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1691,7 +2208,7 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+          body: S.optional(DeleteEmailForAuthenticatedUserRequestBody.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "DELETE", uri: "/user/emails", code: 200 })),
       ).annotate({
         identifier: "DeleteEmailForAuthenticatedUserRequest",
@@ -1719,7 +2236,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          account_urls: __S(0),
+          account_urls: DeleteSocialAccountForAuthenticatedUserRequestAccountUrlsList,
         }).pipe(T.Http({ method: "DELETE", uri: "/user/social_accounts", code: 200 })),
       ).annotate({
         identifier: "DeleteSocialAccountForAuthenticatedUserRequest",
@@ -1800,13 +2317,13 @@ function __c4(j: number): any {
           disk_usage: S.Number,
           collaborators: S.Number,
           two_factor_authentication: S.Boolean,
-          plan: S.optional(__S(36)),
+          plan: S.optional(PrivateUserPlan),
           business_plus: S.optional(S.Boolean),
           ldap_dn: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateUser" });
     case 6:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetAuthenticatedResponseBody.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetAuthenticatedResponse",
       });
     case 7:
@@ -1820,7 +2337,7 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetByIdResponseBody.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetByIdResponse",
       });
     case 1:
@@ -1830,14 +2347,14 @@ function __c5(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/users/{username}", code: 200 })),
       ).annotate({ identifier: "GetByUsernameRequest" });
     case 2:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetByUsernameResponseBody.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetByUsernameResponse",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
-          subject_type: S.optional(S.String.pipe(T.Query())),
+          subject_type: S.optional(GetContextForUserRequestSubjectType.pipe(T.Query())),
           subject_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/users/{username}/hovercard", code: 200 })),
       ).annotate({ identifier: "GetContextForUserRequest" });
@@ -1849,11 +2366,11 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "HovercardContextsItem" });
     case 5:
-      return S.Array(__S(44));
+      return S.Array(HovercardContextsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          contexts: __S(45),
+          contexts: HovercardContextsList,
         }),
       ).annotate({ identifier: "Hovercard" });
     case 7:
@@ -1921,9 +2438,9 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "SimpleUser" });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(SimpleUser);
     case 5:
-      return S.suspend(() => __S(52).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListResponse",
       });
     case 6:
@@ -1955,8 +2472,10 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           mediaType: S.optional(S.String),
-          verificationMaterial: S.optional(__S(55)),
-          dsseEnvelope: S.optional(__S(56)),
+          verificationMaterial: S.optional(
+            ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap,
+          ),
+          dsseEnvelope: S.optional(ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap),
         }),
       ).annotate({
         identifier: "ListAttestationsResponseAttestationsItemBundle",
@@ -1964,7 +2483,7 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          bundle: S.optional(__S(57)),
+          bundle: S.optional(ListAttestationsResponseAttestationsItemBundle),
           repository_id: S.optional(S.Number),
           bundle_url: S.optional(S.String),
           initiator: S.optional(S.String),
@@ -1973,11 +2492,11 @@ function __c7(j: number): any {
         identifier: "ListAttestationsResponseAttestationsItem",
       });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(ListAttestationsResponseAttestationsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          attestations: S.optional(__S(59)),
+          attestations: S.optional(ListAttestationsResponseAttestationsList),
         }),
       ).annotate({ identifier: "ListAttestationsResponse" });
     case 5:
@@ -1987,7 +2506,7 @@ function __c7(j: number): any {
           per_page: S.optional(S.Number.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
-          subject_digests: __S(0),
+          subject_digests: ListAttestationsBulkRequestSubjectDigestsList,
           predicate_type: S.optional(S.String),
         }).pipe(
           T.Http({ method: "POST", uri: "/users/{username}/attestations/bulk-list", code: 200 }),
@@ -1999,8 +2518,12 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           mediaType: S.optional(S.String),
-          verificationMaterial: S.optional(__S(55)),
-          dsseEnvelope: S.optional(__S(55)),
+          verificationMaterial: S.optional(
+            ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap,
+          ),
+          dsseEnvelope: S.optional(
+            ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap,
+          ),
         }),
       ).annotate({
         identifier: "ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundle",
@@ -2008,7 +2531,7 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          bundle: S.optional(__S(62)),
+          bundle: S.optional(ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundle),
           repository_id: S.optional(S.Number),
           bundle_url: S.optional(S.String),
         }),
@@ -2020,9 +2543,12 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem);
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(64)));
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ S.NullOr(ListAttestationsBulkResponseAttestationsSubjectDigestsValueList),
+      );
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2037,8 +2563,10 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          attestations_subject_digests: S.optional(__S(65)),
-          page_info: S.optional(__S(66)),
+          attestations_subject_digests: S.optional(
+            ListAttestationsBulkResponseAttestationsSubjectDigestsMap,
+          ),
+          page_info: S.optional(ListAttestationsBulkResponsePageInfo),
         }),
       ).annotate({
         identifier: "ListAttestationsBulkResponse",
@@ -2053,7 +2581,9 @@ function __c8(j: number): any {
         identifier: "ListBlockedByAuthenticatedUserRequest",
       });
     case 5:
-      return S.suspend(() => __S(52).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListBlockedByAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListBlockedByAuthenticatedUserResponse",
       });
     case 6:
@@ -2117,9 +2647,11 @@ function __c9(j: number): any {
         identifier: "ListGpgKeysForAuthenticatedUserRequest",
       });
     case 4:
-      return S.Array(__S(21));
+      return S.Array(GpgKey);
     case 5:
-      return S.suspend(() => __S(76).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListGpgKeysForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListGpgKeysForAuthenticatedUserResponse",
       });
     case 6:
@@ -2165,9 +2697,11 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "KeySimple" });
     case 2:
-      return S.Array(__S(81));
+      return S.Array(KeySimple);
     case 3:
-      return S.suspend(() => __S(82).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicKeysForUserResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicKeysForUserResponse",
       });
     case 4:
@@ -2180,9 +2714,11 @@ function __c10(j: number): any {
         identifier: "ListPublicSshKeysForAuthenticatedUserRequest",
       });
     case 5:
-      return S.Array(__S(23));
+      return S.Array(Key);
     case 6:
-      return S.suspend(() => __S(85).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPublicSshKeysForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPublicSshKeysForAuthenticatedUserResponse",
       });
     case 7:
@@ -2218,9 +2754,11 @@ function __c11(j: number): any {
         identifier: "ListSshSigningKeysForAuthenticatedUserRequest",
       });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(SshSigningKey);
     case 3:
-      return S.suspend(() => __S(90).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListSshSigningKeysForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListSshSigningKeysForAuthenticatedUserResponse",
       });
     case 4:
@@ -2236,7 +2774,7 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          visibility: S.String,
+          visibility: SetPrimaryEmailVisibilityForAuthenticatedUserRequestVisibility,
         }).pipe(T.Http({ method: "PATCH", uri: "/user/email/visibility", code: 200 })),
       ).annotate({
         identifier: "SetPrimaryEmailVisibilityForAuthenticatedUserRequest",
@@ -2272,40 +2810,5 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "UpdateAuthenticatedRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
   }
 }

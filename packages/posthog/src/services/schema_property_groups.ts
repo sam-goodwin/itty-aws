@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -40,6 +38,8 @@ export class NotFound
 
 /** * `DateTime` - DateTime * `String` - String * `Numeric` - Numeric * `Boolean` - Boolean * `Object` - Object */
 export type SchemaPropertyTypeEnum = "DateTime" | "String" | "Numeric" | "Boolean" | "Object";
+const SchemaPropertyTypeEnum = S.String;
+
 export interface SchemaPropertyGroupPropertyInput {
   name?: string;
   property_type?: SchemaPropertyTypeEnum | (string & {});
@@ -47,8 +47,18 @@ export interface SchemaPropertyGroupPropertyInput {
   is_optional_in_types?: boolean;
   description?: string;
 }
+const SchemaPropertyGroupPropertyInput = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<SchemaPropertyGroupPropertyInput>;
+
 export type CreateSchemaPropertyGroupRequestPropertiesList =
   Array<SchemaPropertyGroupPropertyInput>;
+const CreateSchemaPropertyGroupRequestPropertiesList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateSchemaPropertyGroupRequestPropertiesList>;
+
 export interface CreateSchemaPropertyGroupRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -56,6 +66,11 @@ export interface CreateSchemaPropertyGroupRequest {
   description?: string;
   properties?: CreateSchemaPropertyGroupRequestPropertiesList;
 }
+const CreateSchemaPropertyGroupRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateSchemaPropertyGroupRequest>;
+
 export interface SchemaPropertyGroupProperty {
   id?: string;
   name?: string;
@@ -66,13 +81,35 @@ export interface SchemaPropertyGroupProperty {
   created_at?: string;
   updated_at?: string;
 }
+const SchemaPropertyGroupProperty = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<SchemaPropertyGroupProperty>;
+
 export type SchemaPropertyGroupPropertiesList = Array<SchemaPropertyGroupProperty>;
+const SchemaPropertyGroupPropertiesList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<SchemaPropertyGroupPropertiesList>;
+
 export interface EventDefinitionBasic {
   id?: string;
   name?: string;
 }
+const EventDefinitionBasic = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<EventDefinitionBasic>;
+
 export type SchemaPropertyGroupEventsList = Array<EventDefinitionBasic>;
+const SchemaPropertyGroupEventsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<SchemaPropertyGroupEventsList>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -86,6 +123,8 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -97,6 +136,8 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<UserBasic>;
+
 export interface SchemaPropertyGroup {
   id?: string;
   name?: string;
@@ -107,12 +148,19 @@ export interface SchemaPropertyGroup {
   updated_at?: string;
   created_by?: UserBasic | null;
 }
+const SchemaPropertyGroup = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<SchemaPropertyGroup>;
+
 export interface GetSchemaPropertyGroupRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this schema property group. */
   id: string;
 }
+const GetSchemaPropertyGroupRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetSchemaPropertyGroupRequest>;
+
 export interface ListSchemaPropertyGroupsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -121,22 +169,50 @@ export interface ListSchemaPropertyGroupsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListSchemaPropertyGroupsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListSchemaPropertyGroupsRequest>;
+
 export type PaginatedSchemaPropertyGroupListResultsList = Array<SchemaPropertyGroup>;
+const PaginatedSchemaPropertyGroupListResultsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<PaginatedSchemaPropertyGroupListResultsList>;
+
 export interface PaginatedSchemaPropertyGroupList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedSchemaPropertyGroupListResultsList;
 }
+const PaginatedSchemaPropertyGroupList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<PaginatedSchemaPropertyGroupList>;
+
 export interface SchemaPropertyGroupsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this schema property group. */
   id: string;
 }
+const SchemaPropertyGroupsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<SchemaPropertyGroupsDestroyRequest>;
+
 export interface SchemaPropertyGroupsDestroyResponse {}
+const SchemaPropertyGroupsDestroyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<SchemaPropertyGroupsDestroyResponse>;
+
 export type UpdateSchemaPropertyGroupRequestPropertiesList =
   Array<SchemaPropertyGroupPropertyInput>;
+const UpdateSchemaPropertyGroupRequestPropertiesList =
+  CreateSchemaPropertyGroupRequestPropertiesList as any as S.Schema<UpdateSchemaPropertyGroupRequestPropertiesList>;
+
 export interface UpdateSchemaPropertyGroupRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -146,8 +222,16 @@ export interface UpdateSchemaPropertyGroupRequest {
   description?: string;
   properties?: UpdateSchemaPropertyGroupRequestPropertiesList;
 }
+const UpdateSchemaPropertyGroupRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<UpdateSchemaPropertyGroupRequest>;
+
 export type UpdateSchemaPropertyGroupsPartialRequestPropertiesList =
   Array<SchemaPropertyGroupPropertyInput>;
+const UpdateSchemaPropertyGroupsPartialRequestPropertiesList =
+  CreateSchemaPropertyGroupRequestPropertiesList as any as S.Schema<UpdateSchemaPropertyGroupsPartialRequestPropertiesList>;
+
 export interface UpdateSchemaPropertyGroupsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -157,6 +241,11 @@ export interface UpdateSchemaPropertyGroupsPartialRequest {
   description?: string;
   properties?: UpdateSchemaPropertyGroupsPartialRequestPropertiesList;
 }
+const UpdateSchemaPropertyGroupsPartialRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<UpdateSchemaPropertyGroupsPartialRequest>;
+
 export type CreateSchemaPropertyGroupError = BadRequest | Forbidden | NotFound | PosthogOpError;
 export const createSchemaPropertyGroup: API.OperationMethod<
   CreateSchemaPropertyGroupRequest,
@@ -164,8 +253,8 @@ export const createSchemaPropertyGroup: API.OperationMethod<
   CreateSchemaPropertyGroupError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateSchemaPropertyGroupRequest>,
-  output: __S(9) as any as S.Schema<SchemaPropertyGroup>,
+  input: CreateSchemaPropertyGroupRequest,
+  output: SchemaPropertyGroup,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -178,8 +267,8 @@ export const getSchemaPropertyGroup: API.OperationMethod<
   GetSchemaPropertyGroupError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<GetSchemaPropertyGroupRequest>,
-  output: __S(9) as any as S.Schema<SchemaPropertyGroup>,
+  input: GetSchemaPropertyGroupRequest,
+  output: SchemaPropertyGroup,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -192,8 +281,8 @@ export const listSchemaPropertyGroups: API.OperationMethod<
   ListSchemaPropertyGroupsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<ListSchemaPropertyGroupsRequest>,
-  output: __S(13) as any as S.Schema<PaginatedSchemaPropertyGroupList>,
+  input: ListSchemaPropertyGroupsRequest,
+  output: PaginatedSchemaPropertyGroupList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -206,8 +295,8 @@ export const schemaPropertyGroupsDestroy: API.OperationMethod<
   SchemaPropertyGroupsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<SchemaPropertyGroupsDestroyRequest>,
-  output: __S(15) as any as S.Schema<SchemaPropertyGroupsDestroyResponse>,
+  input: SchemaPropertyGroupsDestroyRequest,
+  output: SchemaPropertyGroupsDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -220,8 +309,8 @@ export const updateSchemaPropertyGroup: API.OperationMethod<
   UpdateSchemaPropertyGroupError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<UpdateSchemaPropertyGroupRequest>,
-  output: __S(9) as any as S.Schema<SchemaPropertyGroup>,
+  input: UpdateSchemaPropertyGroupRequest,
+  output: SchemaPropertyGroup,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -238,8 +327,8 @@ export const updateSchemaPropertyGroupsPartial: API.OperationMethod<
   UpdateSchemaPropertyGroupsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<UpdateSchemaPropertyGroupsPartialRequest>,
-  output: __S(9) as any as S.Schema<SchemaPropertyGroup>,
+  input: UpdateSchemaPropertyGroupsPartialRequest,
+  output: SchemaPropertyGroup,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -252,7 +341,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          property_type: S.optional(S.String),
+          property_type: S.optional(SchemaPropertyTypeEnum),
           is_required: S.optional(S.Boolean),
           is_optional_in_types: S.optional(S.Boolean),
           description: S.optional(S.String),
@@ -261,14 +350,14 @@ function __c0(j: number): any {
         identifier: "SchemaPropertyGroupPropertyInput",
       });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(SchemaPropertyGroupPropertyInput);
     case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          properties: S.optional(__S(1)),
+          properties: S.optional(CreateSchemaPropertyGroupRequestPropertiesList),
         }).pipe(
           T.Http({
             method: "POST",
@@ -284,7 +373,7 @@ function __c0(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          property_type: S.optional(S.String),
+          property_type: S.optional(SchemaPropertyTypeEnum),
           is_required: S.optional(S.Boolean),
           is_optional_in_types: S.optional(S.Boolean),
           description: S.optional(S.String),
@@ -295,7 +384,7 @@ function __c0(j: number): any {
         identifier: "SchemaPropertyGroupProperty",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(SchemaPropertyGroupProperty);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -304,7 +393,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "EventDefinitionBasic" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(EventDefinitionBasic);
     case 7:
       return S.Record(S.String, S.Unknown);
   }
@@ -321,8 +410,8 @@ function __c1(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(7))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 1:
@@ -331,11 +420,11 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          properties: S.optional(__S(4)),
-          events: S.optional(__S(6)),
+          properties: S.optional(SchemaPropertyGroupPropertiesList),
+          events: S.optional(SchemaPropertyGroupEventsList),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(8))),
+          created_by: S.optional(S.NullOr(UserBasic)),
         }),
       ).annotate({ identifier: "SchemaPropertyGroup" });
     case 2:
@@ -370,14 +459,14 @@ function __c1(j: number): any {
         identifier: "ListSchemaPropertyGroupsRequest",
       });
     case 4:
-      return S.Array(__S(9));
+      return S.Array(SchemaPropertyGroup);
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(12)),
+          results: S.optional(PaginatedSchemaPropertyGroupListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedSchemaPropertyGroupList",
@@ -412,7 +501,7 @@ function __c2(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          properties: S.optional(__S(1)),
+          properties: S.optional(UpdateSchemaPropertyGroupRequestPropertiesList),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -430,7 +519,7 @@ function __c2(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          properties: S.optional(__S(1)),
+          properties: S.optional(UpdateSchemaPropertyGroupsPartialRequestPropertiesList),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -441,20 +530,5 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdateSchemaPropertyGroupsPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

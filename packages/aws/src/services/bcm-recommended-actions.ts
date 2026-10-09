@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "BCM Recommended Actions",
   serviceShapeName: "AWSBillingAndCostManagementRecommendedActions",
@@ -99,11 +97,11 @@ export class ValidationException
     "ValidationException",
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-      reason: /*@__PURE__*/ S.suspend(() => S.String).annotate({
+      reason: /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(10)).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -117,18 +115,26 @@ export class ValidationException
     ),
   ).pipe(C.withBadRequestError) {}
 export type FilterName = "FEATURE" | "SEVERITY" | "TYPE" | (string & {});
+const FilterName = S.String;
+
 export type MatchOption = "EQUALS" | "NOT_EQUALS" | (string & {});
+const MatchOption = S.String;
+
 export type FilterValue = string;
 export type FilterValues = string[];
+const FilterValues = /*@__PURE__*/ __L.at(__c0, 0);
 export interface ActionFilter {
   key: FilterName;
   matchOption: MatchOption;
   values: string[];
 }
+const ActionFilter = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ActionFilter>;
 export type ActionFilterList = ActionFilter[];
+const ActionFilterList = /*@__PURE__*/ __L.at(__c0, 2);
 export interface RequestFilter {
   actions?: ActionFilter[];
 }
+const RequestFilter = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<RequestFilter>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListRecommendedActionsRequest {
@@ -136,6 +142,10 @@ export interface ListRecommendedActionsRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListRecommendedActionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ListRecommendedActionsRequest>;
 export type ActionType =
   | "ADD_ALTERNATE_BILLING_CONTACT"
   | "CREATE_ANOMALY_MONITOR"
@@ -158,8 +168,12 @@ export type ActionType =
   | "UPDATE_TAX_EXEMPTION_CERTIFICATE"
   | "UPDATE_TAX_REGISTRATION_NUMBER"
   | (string & {});
+const ActionType = S.String;
+
 export type AccountId = string;
 export type Severity = "INFO" | "WARNING" | "CRITICAL" | (string & {});
+const Severity = S.String;
+
 export type Feature =
   | "ACCOUNT"
   | "BUDGETS"
@@ -172,9 +186,13 @@ export type Feature =
   | "SAVINGS_PLANS"
   | "TAX_SETTINGS"
   | (string & {});
+const Feature = S.String;
+
 export type Context = { [key: string]: string | undefined };
+const Context = /*@__PURE__*/ __L.at(__c0, 5);
 export type NextStep = string;
 export type NextSteps = string[];
+const NextSteps = FilterValues as any as S.Schema<NextSteps>;
 export interface RecommendedAction {
   id?: string;
   type?: ActionType;
@@ -185,22 +203,35 @@ export interface RecommendedAction {
   nextSteps?: string[];
   lastUpdatedTimeStamp?: string;
 }
+const RecommendedAction = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<RecommendedAction>;
 export type RecommendedActions = RecommendedAction[];
+const RecommendedActions = /*@__PURE__*/ __L.at(__c0, 7);
 export interface ListRecommendedActionsResponse {
   recommendedActions: RecommendedAction[];
   nextToken?: string;
 }
+const ListRecommendedActionsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListRecommendedActionsResponse>;
 export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
   | "fieldValidationFailed"
   | "other"
   | (string & {});
+const ValidationExceptionReason = S.String;
+
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c1, 2);
 export type ListRecommendedActionsError =
   | AccessDeniedException
   | InternalServerException
@@ -217,8 +248,8 @@ export const listRecommendedActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecommendedAction
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4) as any as S.Schema<ListRecommendedActionsRequest>,
-  output: __S(8) as any as S.Schema<ListRecommendedActionsResponse>,
+  input: ListRecommendedActionsRequest,
+  output: ListRecommendedActionsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -243,18 +274,18 @@ function __c0(j: number): any {
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
-        S.Struct({ key: S.String, matchOption: S.String, values: __S(0) }),
+        S.Struct({ key: FilterName, matchOption: MatchOption, values: FilterValues }),
       ).annotate({ identifier: "ActionFilter" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(ActionFilter);
     case 3:
-      return S.suspend(() => S.Struct({ actions: S.optional(__S(2)) })).annotate({
+      return S.suspend(() => S.Struct({ actions: S.optional(ActionFilterList) })).annotate({
         identifier: "RequestFilter",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          filter: S.optional(__S(3)),
+          filter: S.optional(RequestFilter),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -267,24 +298,24 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(ActionType),
           accountId: S.optional(S.String),
-          severity: S.optional(S.String),
-          feature: S.optional(S.String),
-          context: S.optional(__S(5)),
-          nextSteps: S.optional(__S(0)),
+          severity: S.optional(Severity),
+          feature: S.optional(Feature),
+          context: S.optional(Context),
+          nextSteps: S.optional(NextSteps),
           lastUpdatedTimeStamp: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecommendedAction" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(RecommendedAction);
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ recommendedActions: __S(7), nextToken: S.optional(S.String) }),
+        S.Struct({ recommendedActions: RecommendedActions, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListRecommendedActionsResponse",
       });
@@ -293,19 +324,6 @@ function __c1(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 2:
-      return S.Array(__S(9));
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
+      return S.Array(ValidationExceptionField);
   }
 }

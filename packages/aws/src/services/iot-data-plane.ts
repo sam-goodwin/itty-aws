@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "IoT Data Plane",
   serviceShapeName: "IotMoonrakerService",
@@ -189,21 +187,38 @@ export interface DeleteConnectionRequest {
   cleanSession?: boolean;
   preventWillMessage?: boolean;
 }
+const DeleteConnectionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeleteConnectionRequest>;
 export interface DeleteConnectionResponse {}
+const DeleteConnectionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<DeleteConnectionResponse>;
 export type ThingName = string;
 export type ShadowName = string;
 export interface DeleteThingShadowRequest {
   thingName: string;
   shadowName?: string;
 }
+const DeleteThingShadowRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteThingShadowRequest>;
 export interface DeleteThingShadowResponse {
   payload: T.StreamingOutputBody;
 }
+const DeleteThingShadowResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeleteThingShadowResponse>;
 export type IncludeSocketInformation = boolean;
 export interface GetConnectionRequest {
   clientId: string;
   includeSocketInformation?: boolean;
 }
+const GetConnectionRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetConnectionRequest>;
 export type Connected = boolean;
 export type SourceIp = string;
 export type SourcePort = number;
@@ -229,10 +244,18 @@ export interface GetConnectionResponse {
   clientId?: string;
   vpcEndpointId?: string;
 }
+const GetConnectionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetConnectionResponse>;
 export type Topic = string;
 export interface GetRetainedMessageRequest {
   topic: string;
 }
+const GetRetainedMessageRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetRetainedMessageRequest>;
 export type Payload = Uint8Array;
 export type Qos = number;
 export type UserPropertiesBlob = Uint8Array;
@@ -243,13 +266,25 @@ export interface GetRetainedMessageResponse {
   lastModifiedTime?: number;
   userProperties?: Uint8Array;
 }
+const GetRetainedMessageResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetRetainedMessageResponse>;
 export interface GetThingShadowRequest {
   thingName: string;
   shadowName?: string;
 }
+const GetThingShadowRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetThingShadowRequest>;
 export interface GetThingShadowResponse {
   payload?: T.StreamingOutputBody;
 }
+const GetThingShadowResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetThingShadowResponse>;
 export type NextToken = string;
 export type PageSize = number;
 export interface ListNamedShadowsForThingRequest {
@@ -257,17 +292,30 @@ export interface ListNamedShadowsForThingRequest {
   nextToken?: string;
   pageSize?: number;
 }
+const ListNamedShadowsForThingRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListNamedShadowsForThingRequest>;
 export type NamedShadowList = string[];
+const NamedShadowList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface ListNamedShadowsForThingResponse {
   results?: string[];
   nextToken?: string;
   timestamp?: number;
 }
+const ListNamedShadowsForThingResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ListNamedShadowsForThingResponse>;
 export type MaxResults = number;
 export interface ListRetainedMessagesRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListRetainedMessagesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ListRetainedMessagesRequest>;
 export type PayloadSize = number;
 export interface RetainedMessageSummary {
   topic?: string;
@@ -275,29 +323,50 @@ export interface RetainedMessageSummary {
   qos?: number;
   lastModifiedTime?: number;
 }
+const RetainedMessageSummary = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<RetainedMessageSummary>;
 export type RetainedMessageList = RetainedMessageSummary[];
+const RetainedMessageList = /*@__PURE__*/ __L.at(__c1, 7);
 export interface ListRetainedMessagesResponse {
   retainedTopics?: RetainedMessageSummary[];
   nextToken?: string;
 }
+const ListRetainedMessagesResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListRetainedMessagesResponse>;
 export interface ListSubscriptionsRequest {
   clientId: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListSubscriptionsRequest>;
 export type TopicFilter = string;
 export interface SubscriptionSummary {
   topicFilter: string;
   qos: number;
 }
+const SubscriptionSummary = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<SubscriptionSummary>;
 export type SubscriptionList = SubscriptionSummary[];
+const SubscriptionList = /*@__PURE__*/ __L.at(__c2, 3);
 export interface ListSubscriptionsResponse {
   subscriptions?: SubscriptionSummary[];
   nextToken?: string;
 }
+const ListSubscriptionsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListSubscriptionsResponse>;
 export type Retain = boolean;
 export type SynthesizedJsonUserProperties = string;
 export type PayloadFormatIndicator = "UNSPECIFIED_BYTES" | "UTF8_DATA" | (string & {});
+const PayloadFormatIndicator = S.String;
+
 export type ContentType = string;
 export type ResponseTopic = string;
 export type CorrelationData = string;
@@ -314,7 +383,9 @@ export interface PublishRequest {
   correlationData?: string;
   messageExpiry?: number;
 }
+const PublishRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<PublishRequest>;
 export interface PublishResponse {}
+const PublishResponse = DeleteConnectionResponse as any as S.Schema<PublishResponse>;
 export type Confirmation = boolean;
 export type TimeoutInSeconds = number;
 export interface SendDirectMessageRequest {
@@ -329,20 +400,36 @@ export interface SendDirectMessageRequest {
   payloadFormatIndicator?: PayloadFormatIndicator;
   correlationData?: string;
 }
+const SendDirectMessageRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<SendDirectMessageRequest>;
 export type ResponseMessage = string;
 export type TraceId = string;
 export interface SendDirectMessageResponse {
   message?: string;
   traceId?: string;
 }
+const SendDirectMessageResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<SendDirectMessageResponse>;
 export interface UpdateThingShadowRequest {
   thingName: string;
   shadowName?: string;
   payload: T.StreamingInputBody;
 }
+const UpdateThingShadowRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<UpdateThingShadowRequest>;
 export interface UpdateThingShadowResponse {
   payload?: T.StreamingOutputBody;
 }
+const UpdateThingShadowResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<UpdateThingShadowResponse>;
 export type ErrorMessage = string;
 export type DeleteConnectionError =
   | ForbiddenException
@@ -362,8 +449,8 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeleteConnectionRequest>,
-  output: __S(1) as any as S.Schema<DeleteConnectionResponse>,
+  input: DeleteConnectionRequest,
+  output: DeleteConnectionResponse,
   errors: [
     ForbiddenException,
     InternalFailureException,
@@ -400,8 +487,8 @@ export const deleteThingShadow: API.OperationMethod<
   DeleteThingShadowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteThingShadowRequest>,
-  output: __S(3) as any as S.Schema<DeleteThingShadowResponse>,
+  input: DeleteThingShadowRequest,
+  output: DeleteThingShadowResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -436,8 +523,8 @@ export const getConnection: API.OperationMethod<
   GetConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetConnectionRequest>,
-  output: __S(5) as any as S.Schema<GetConnectionResponse>,
+  input: GetConnectionRequest,
+  output: GetConnectionResponse,
   errors: [
     ForbiddenException,
     InternalFailureException,
@@ -478,8 +565,8 @@ export const getRetainedMessage: API.OperationMethod<
   GetRetainedMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetRetainedMessageRequest>,
-  output: __S(7) as any as S.Schema<GetRetainedMessageResponse>,
+  input: GetRetainedMessageRequest,
+  output: GetRetainedMessageResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -520,8 +607,8 @@ export const getThingShadow: API.OperationMethod<
   GetThingShadowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<GetThingShadowRequest>,
-  output: __S(9) as any as S.Schema<GetThingShadowResponse>,
+  input: GetThingShadowRequest,
+  output: GetThingShadowResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -559,8 +646,8 @@ export const listNamedShadowsForThing: API.OperationMethod<
   ListNamedShadowsForThingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<ListNamedShadowsForThingRequest>,
-  output: __S(12) as any as S.Schema<ListNamedShadowsForThingResponse>,
+  input: ListNamedShadowsForThingRequest,
+  output: ListNamedShadowsForThingResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -608,8 +695,8 @@ export const listRetainedMessages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RetainedMessageSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(13) as any as S.Schema<ListRetainedMessagesRequest>,
-  output: __S(16) as any as S.Schema<ListRetainedMessagesResponse>,
+  input: ListRetainedMessagesRequest,
+  output: ListRetainedMessagesResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -649,8 +736,8 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SubscriptionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(17) as any as S.Schema<ListSubscriptionsRequest>,
-  output: __S(20) as any as S.Schema<ListSubscriptionsResponse>,
+  input: ListSubscriptionsRequest,
+  output: ListSubscriptionsResponse,
   errors: [
     ForbiddenException,
     InternalFailureException,
@@ -695,8 +782,8 @@ export const publish: API.OperationMethod<
   PublishError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<PublishRequest>,
-  output: __S(1) as any as S.Schema<PublishResponse>,
+  input: PublishRequest,
+  output: PublishResponse,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -737,8 +824,8 @@ export const sendDirectMessage: API.OperationMethod<
   SendDirectMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<SendDirectMessageRequest>,
-  output: __S(23) as any as S.Schema<SendDirectMessageResponse>,
+  input: SendDirectMessageRequest,
+  output: SendDirectMessageResponse,
   errors: [
     ForbiddenException,
     GatewayTimeoutException,
@@ -780,8 +867,8 @@ export const updateThingShadow: API.OperationMethod<
   UpdateThingShadowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<UpdateThingShadowRequest>,
-  output: __S(25) as any as S.Schema<UpdateThingShadowResponse>,
+  input: UpdateThingShadowRequest,
+  output: UpdateThingShadowResponse,
   errors: [
     ConflictException,
     InternalFailureException,
@@ -960,7 +1047,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(11)),
+          results: S.optional(NamedShadowList),
           nextToken: S.optional(S.String),
           timestamp: S.optional(S.Number),
         }),
@@ -988,7 +1075,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "RetainedMessageSummary" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(RetainedMessageSummary);
   }
 }
 function __c2(j: number): any {
@@ -996,7 +1083,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          retainedTopics: S.optional(__S(15)),
+          retainedTopics: S.optional(RetainedMessageList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1024,10 +1111,10 @@ function __c2(j: number): any {
         identifier: "SubscriptionSummary",
       });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(SubscriptionSummary);
     case 4:
       return S.suspend(() =>
-        S.Struct({ subscriptions: S.optional(__S(19)), nextToken: S.optional(S.String) }),
+        S.Struct({ subscriptions: S.optional(SubscriptionList), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListSubscriptionsResponse",
       });
@@ -1039,7 +1126,7 @@ function __c2(j: number): any {
           retain: S.optional(S.Boolean).pipe(T.HttpQuery("retain")),
           payload: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
           userProperties: S.optional(S.String).pipe(T.HttpHeader("x-amz-mqtt5-user-properties")),
-          payloadFormatIndicator: S.optional(S.String).pipe(
+          payloadFormatIndicator: S.optional(PayloadFormatIndicator).pipe(
             T.HttpHeader("x-amz-mqtt5-payload-format-indicator"),
           ),
           contentType: S.optional(S.String).pipe(T.HttpQuery("contentType")),
@@ -1061,7 +1148,7 @@ function __c2(j: number): any {
           timeout: S.optional(S.Number).pipe(T.HttpQuery("timeout")),
           payload: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
           userProperties: S.optional(S.String).pipe(T.HttpHeader("x-amz-mqtt5-user-properties")),
-          payloadFormatIndicator: S.optional(S.String).pipe(
+          payloadFormatIndicator: S.optional(PayloadFormatIndicator).pipe(
             T.HttpHeader("x-amz-mqtt5-payload-format-indicator"),
           ),
           correlationData: S.optional(S.String).pipe(T.HttpHeader("x-amz-mqtt5-correlation-data")),
@@ -1109,22 +1196,5 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UpdateThingShadowResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

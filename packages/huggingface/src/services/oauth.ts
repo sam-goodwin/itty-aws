@@ -10,14 +10,19 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
 export interface GetUserInfoRequest {}
+const GetUserInfoRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetUserInfoRequest>;
+
 /** Hardware SKU as [type, vendor, model] */
 export type GetUserInfoResponseHardwareItemsItemSkuList = Array<unknown>;
+const GetUserInfoResponseHardwareItemsItemSkuList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GetUserInfoResponseHardwareItemsItemSkuList>;
+
 export interface GetUserInfoResponseHardwareItemsItem {
   /** Hardware SKU as [type, vendor, model] */
   sku: GetUserInfoResponseHardwareItemsItemSkuList;
@@ -27,40 +32,77 @@ export interface GetUserInfoResponseHardwareItemsItem {
   num: number;
   isPrimary?: boolean;
 }
+const GetUserInfoResponseHardwareItemsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetUserInfoResponseHardwareItemsItem>;
+
 /** The user's hardware items, if the `profile` scope is granted and the user did not set them as private */
 export type GetUserInfoResponseHardwareItemsList = Array<GetUserInfoResponseHardwareItemsItem>;
+const GetUserInfoResponseHardwareItemsList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GetUserInfoResponseHardwareItemsList>;
+
 /** Whether the user is on prepaid or postpaid billing */
 export type GetUserInfoResponseBillingMode = "prepaid" | "postpaid";
+const GetUserInfoResponseBillingMode = S.String;
+
 export type GetUserInfoResponseOrgsItemPlan = "team" | "enterprise" | "plus" | "academia";
+const GetUserInfoResponseOrgsItemPlan = S.String;
+
 export type GetUserInfoResponseOrgsItemBillingMode = "prepaid" | "postpaid";
+const GetUserInfoResponseOrgsItemBillingMode = S.String;
+
 export type GetUserInfoResponseOrgsItemRoleInOrg =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
+const GetUserInfoResponseOrgsItemRoleInOrg = S.String;
+
 export type GetUserInfoResponseOrgsItemSecurityRestrictionsItem =
   | "mfa"
   | "token-policy"
   | "token-revoked"
   | "sso"
   | "ip";
+const GetUserInfoResponseOrgsItemSecurityRestrictionsItem = S.String;
+
 /** Current security restrictions for accessing data in this organization with current authentication method */
 export type GetUserInfoResponseOrgsItemSecurityRestrictionsList =
   Array<GetUserInfoResponseOrgsItemSecurityRestrictionsItem>;
+const GetUserInfoResponseOrgsItemSecurityRestrictionsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetUserInfoResponseOrgsItemSecurityRestrictionsList>;
+
 export type GetUserInfoResponseOrgsItemResourceGroupsItemRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
+const GetUserInfoResponseOrgsItemResourceGroupsItemRole = S.String;
+
 export interface GetUserInfoResponseOrgsItemResourceGroupsItem {
   sub: string;
   name: string;
   role: GetUserInfoResponseOrgsItemResourceGroupsItemRole;
 }
+const GetUserInfoResponseOrgsItemResourceGroupsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetUserInfoResponseOrgsItemResourceGroupsItem>;
+
 export type GetUserInfoResponseOrgsItemResourceGroupsList =
   Array<GetUserInfoResponseOrgsItemResourceGroupsItem>;
+const GetUserInfoResponseOrgsItemResourceGroupsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetUserInfoResponseOrgsItemResourceGroupsList>;
+
 export interface GetUserInfoResponseOrgsItem {
   /** ID of the organization */
   sub: string;
@@ -78,7 +120,17 @@ export interface GetUserInfoResponseOrgsItem {
   securityRestrictions?: GetUserInfoResponseOrgsItemSecurityRestrictionsList;
   resourceGroups?: GetUserInfoResponseOrgsItemResourceGroupsList;
 }
+const GetUserInfoResponseOrgsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetUserInfoResponseOrgsItem>;
+
 export type GetUserInfoResponseOrgsList = Array<GetUserInfoResponseOrgsItem>;
+const GetUserInfoResponseOrgsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetUserInfoResponseOrgsList>;
+
 export interface GetUserInfoResponse {
   /** ID of the user */
   sub: string;
@@ -106,17 +158,31 @@ export interface GetUserInfoResponse {
   billingMode?: GetUserInfoResponseBillingMode;
   orgs: GetUserInfoResponseOrgsList;
 }
+const GetUserInfoResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetUserInfoResponse>;
+
 export interface InitiateDeviceAuthorizationRequest {
   client_id: string;
   scope?: string;
 }
+const InitiateDeviceAuthorizationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<InitiateDeviceAuthorizationRequest>;
+
 export interface InitiateDeviceAuthorizationResponse {
   device_code: string;
   user_code: string;
   verification_uri: string;
   expires_in: number;
 }
+const InitiateDeviceAuthorizationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<InitiateDeviceAuthorizationResponse>;
+
 export interface PostUserInfoRequest {}
+const PostUserInfoRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<PostUserInfoRequest>;
+
 /** Hardware SKU as [type, vendor, model] */
 export type PostUserInfoResponseHardwareItemsItemSkuList = Array<unknown>;
 export interface PostUserInfoResponseHardwareItemsItem {
@@ -130,8 +196,13 @@ export interface PostUserInfoResponseHardwareItemsItem {
 }
 /** The user's hardware items, if the `profile` scope is granted and the user did not set them as private */
 export type PostUserInfoResponseHardwareItemsList = Array<PostUserInfoResponseHardwareItemsItem>;
+const PostUserInfoResponseHardwareItemsList =
+  GetUserInfoResponseHardwareItemsList as any as S.Schema<PostUserInfoResponseHardwareItemsList>;
+
 /** Whether the user is on prepaid or postpaid billing */
 export type PostUserInfoResponseBillingMode = "prepaid" | "postpaid";
+const PostUserInfoResponseBillingMode = S.String;
+
 export type PostUserInfoResponseOrgsItemPlan = "team" | "enterprise" | "plus" | "academia";
 export type PostUserInfoResponseOrgsItemBillingMode = "prepaid" | "postpaid";
 export type PostUserInfoResponseOrgsItemRoleInOrg =
@@ -180,6 +251,9 @@ export interface PostUserInfoResponseOrgsItem {
   resourceGroups?: PostUserInfoResponseOrgsItemResourceGroupsList;
 }
 export type PostUserInfoResponseOrgsList = Array<PostUserInfoResponseOrgsItem>;
+const PostUserInfoResponseOrgsList =
+  GetUserInfoResponseOrgsList as any as S.Schema<PostUserInfoResponseOrgsList>;
+
 export interface PostUserInfoResponse {
   /** ID of the user */
   sub: string;
@@ -207,12 +281,24 @@ export interface PostUserInfoResponse {
   billingMode?: PostUserInfoResponseBillingMode;
   orgs: PostUserInfoResponseOrgsList;
 }
+const PostUserInfoResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<PostUserInfoResponse>;
+
 export type RegisterOAuthAppRequestRedirectUrisList = Array<string>;
+const RegisterOAuthAppRequestRedirectUrisList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<RegisterOAuthAppRequestRedirectUrisList>;
+
 export type RegisterOAuthAppRequestContactsList = Array<string>;
+const RegisterOAuthAppRequestContactsList =
+  RegisterOAuthAppRequestRedirectUrisList as any as S.Schema<RegisterOAuthAppRequestContactsList>;
+
 export type RegisterOAuthAppRequestTokenEndpointAuthMethod =
   | "client_secret_basic"
   | "none"
   | "client_secret_post";
+const RegisterOAuthAppRequestTokenEndpointAuthMethod = S.String;
+
 export interface RegisterOAuthAppRequest {
   redirect_uris?: RegisterOAuthAppRequestRedirectUrisList;
   client_name?: string;
@@ -224,18 +310,34 @@ export interface RegisterOAuthAppRequest {
   software_id?: string;
   software_version?: string;
 }
+const RegisterOAuthAppRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<RegisterOAuthAppRequest>;
+
 export type RegisterOAuthAppResponseRedirectUrisList = Array<string>;
+const RegisterOAuthAppResponseRedirectUrisList =
+  RegisterOAuthAppRequestRedirectUrisList as any as S.Schema<RegisterOAuthAppResponseRedirectUrisList>;
+
 export type RegisterOAuthAppResponseGrantTypesItem =
   | "urn:ietf:params:oauth:grant-type:token-exchange"
   | "urn:ietf:params:oauth:grant-type:device_code"
   | "authorization_code"
   | "refresh_token";
 export type RegisterOAuthAppResponseGrantTypesList = Array<RegisterOAuthAppResponseGrantTypesItem>;
+const RegisterOAuthAppResponseGrantTypesList =
+  GetUserInfoResponseOrgsItemSecurityRestrictionsList as any as S.Schema<RegisterOAuthAppResponseGrantTypesList>;
+
 export type RegisterOAuthAppResponseContactsList = Array<string>;
+const RegisterOAuthAppResponseContactsList =
+  RegisterOAuthAppRequestRedirectUrisList as any as S.Schema<RegisterOAuthAppResponseContactsList>;
+
 export type RegisterOAuthAppResponseTokenEndpointAuthMethod =
   | "client_secret_basic"
   | "none"
   | "client_secret_post";
+const RegisterOAuthAppResponseTokenEndpointAuthMethod = S.String;
+
 export interface RegisterOAuthAppResponse {
   client_id: string;
   client_secret?: string | Redacted.Redacted<string>;
@@ -252,6 +354,11 @@ export interface RegisterOAuthAppResponse {
   software_id?: string;
   software_version?: string;
 }
+const RegisterOAuthAppResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<RegisterOAuthAppResponse>;
+
 export type GetUserInfoError = HuggingFaceOpError;
 /** Get user info Get information about the user. Only available through oauth access tokens. Information varies depending on the scope of the oauth app and what permissions the user granted to the oauth app. */
 export const getUserInfo: API.OperationMethod<
@@ -260,8 +367,8 @@ export const getUserInfo: API.OperationMethod<
   GetUserInfoError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetUserInfoRequest>,
-  output: __S(9) as any as S.Schema<GetUserInfoResponse>,
+  input: GetUserInfoRequest,
+  output: GetUserInfoResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -275,8 +382,8 @@ export const initiateDeviceAuthorization: API.OperationMethod<
   InitiateDeviceAuthorizationError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<InitiateDeviceAuthorizationRequest>,
-  output: __S(11) as any as S.Schema<InitiateDeviceAuthorizationResponse>,
+  input: InitiateDeviceAuthorizationRequest,
+  output: InitiateDeviceAuthorizationResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -290,8 +397,8 @@ export const postUserInfo: API.OperationMethod<
   PostUserInfoError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<PostUserInfoRequest>,
-  output: __S(13) as any as S.Schema<PostUserInfoResponse>,
+  input: PostUserInfoRequest,
+  output: PostUserInfoResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -305,8 +412,8 @@ export const registerOAuthApp: API.OperationMethod<
   RegisterOAuthAppError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<RegisterOAuthAppRequest>,
-  output: __S(16) as any as S.Schema<RegisterOAuthAppResponse>,
+  input: RegisterOAuthAppRequest,
+  output: RegisterOAuthAppResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -324,7 +431,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sku: __S(1),
+          sku: GetUserInfoResponseHardwareItemsItemSkuList,
           mem: S.Number,
           num: S.Number,
           isPrimary: S.optional(S.Boolean),
@@ -333,21 +440,21 @@ function __c0(j: number): any {
         identifier: "GetUserInfoResponseHardwareItemsItem",
       });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(GetUserInfoResponseHardwareItemsItem);
     case 4:
-      return S.Array(S.String);
+      return S.Array(GetUserInfoResponseOrgsItemSecurityRestrictionsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           sub: S.String,
           name: S.String,
-          role: S.String,
+          role: GetUserInfoResponseOrgsItemResourceGroupsItemRole,
         }),
       ).annotate({
         identifier: "GetUserInfoResponseOrgsItemResourceGroupsItem",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(GetUserInfoResponseOrgsItemResourceGroupsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -355,12 +462,12 @@ function __c0(j: number): any {
           name: S.String,
           picture: S.String,
           preferred_username: S.String,
-          plan: S.optional(S.String),
+          plan: S.optional(GetUserInfoResponseOrgsItemPlan),
           canPay: S.optional(S.Boolean),
-          billingMode: S.optional(S.String),
-          roleInOrg: S.optional(S.String),
-          securityRestrictions: S.optional(__S(4)),
-          resourceGroups: S.optional(__S(6)),
+          billingMode: S.optional(GetUserInfoResponseOrgsItemBillingMode),
+          roleInOrg: S.optional(GetUserInfoResponseOrgsItemRoleInOrg),
+          securityRestrictions: S.optional(GetUserInfoResponseOrgsItemSecurityRestrictionsList),
+          resourceGroups: S.optional(GetUserInfoResponseOrgsItemResourceGroupsList),
         }),
       ).annotate({
         identifier: "GetUserInfoResponseOrgsItem",
@@ -370,7 +477,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(GetUserInfoResponseOrgsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -382,11 +489,11 @@ function __c1(j: number): any {
           website: S.optional(S.String),
           email: S.optional(S.String),
           email_verified: S.optional(S.Boolean),
-          hardwareItems: S.optional(__S(3)),
+          hardwareItems: S.optional(GetUserInfoResponseHardwareItemsList),
           isPro: S.Boolean,
           canPay: S.optional(S.Boolean),
-          billingMode: S.optional(S.String),
-          orgs: __S(8),
+          billingMode: S.optional(GetUserInfoResponseBillingMode),
+          orgs: GetUserInfoResponseOrgsList,
         }),
       ).annotate({ identifier: "GetUserInfoResponse" });
     case 2:
@@ -424,11 +531,11 @@ function __c1(j: number): any {
           website: S.optional(S.String),
           email: S.optional(S.String),
           email_verified: S.optional(S.Boolean),
-          hardwareItems: S.optional(__S(3)),
+          hardwareItems: S.optional(PostUserInfoResponseHardwareItemsList),
           isPro: S.Boolean,
           canPay: S.optional(S.Boolean),
-          billingMode: S.optional(S.String),
-          orgs: __S(8),
+          billingMode: S.optional(PostUserInfoResponseBillingMode),
+          orgs: PostUserInfoResponseOrgsList,
         }),
       ).annotate({ identifier: "PostUserInfoResponse" });
     case 6:
@@ -436,13 +543,13 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          redirect_uris: S.optional(__S(14)),
+          redirect_uris: S.optional(RegisterOAuthAppRequestRedirectUrisList),
           client_name: S.optional(S.String),
           client_uri: S.optional(S.String),
           logo_uri: S.optional(S.String),
           scope: S.optional(S.String),
-          contacts: S.optional(__S(14)),
-          token_endpoint_auth_method: S.optional(S.String),
+          contacts: S.optional(RegisterOAuthAppRequestContactsList),
+          token_endpoint_auth_method: S.optional(RegisterOAuthAppRequestTokenEndpointAuthMethod),
           software_id: S.optional(S.String),
           software_version: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/oauth/register", code: 200 })),
@@ -458,32 +565,17 @@ function __c2(j: number): any {
           client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           client_id_issued_at: S.Number,
           client_secret_expires_at: S.Number,
-          redirect_uris: __S(14),
+          redirect_uris: RegisterOAuthAppResponseRedirectUrisList,
           client_name: S.optional(S.String),
           client_uri: S.optional(S.String),
           logo_uri: S.optional(S.String),
           scope: S.String,
-          grant_types: __S(4),
-          contacts: S.optional(__S(14)),
-          token_endpoint_auth_method: S.optional(S.String),
+          grant_types: RegisterOAuthAppResponseGrantTypesList,
+          contacts: S.optional(RegisterOAuthAppResponseContactsList),
+          token_endpoint_auth_method: S.optional(RegisterOAuthAppResponseTokenEndpointAuthMethod),
           software_id: S.optional(S.String),
           software_version: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegisterOAuthAppResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

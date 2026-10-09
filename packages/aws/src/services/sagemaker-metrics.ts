@@ -7,8 +7,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "SageMaker Metrics",
   serviceShapeName: "SageMakerMetricsService",
@@ -81,8 +79,14 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
 export type MetricName = string;
 export type SageMakerResourceArn = string;
 export type MetricStatistic = "Min" | "Max" | "Avg" | "Count" | "StdDev" | "Last" | (string & {});
+const MetricStatistic = S.String;
+
 export type Period = "OneMinute" | "FiveMinute" | "OneHour" | "IterationNumber" | (string & {});
+const Period = S.String;
+
 export type XAxisType = "IterationNumber" | "Timestamp" | (string & {});
+const XAxisType = S.String;
+
 export interface MetricQuery {
   MetricName?: string;
   ResourceArn?: string;
@@ -92,26 +96,38 @@ export interface MetricQuery {
   Start?: number;
   End?: number;
 }
+const MetricQuery = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<MetricQuery>;
 export type MetricQueryList = MetricQuery[];
+const MetricQueryList = /*@__PURE__*/ __L.at(__c0, 1);
 export interface BatchGetMetricsRequest {
   MetricQueries?: MetricQuery[];
 }
+const BatchGetMetricsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<BatchGetMetricsRequest>;
 export type MetricQueryResultStatus =
   | "Complete"
   | "Truncated"
   | "InternalError"
   | "ValidationError"
   | (string & {});
+const MetricQueryResultStatus = S.String;
+
 export type Message = string;
 export type XAxisValues = number[];
+const XAxisValues = /*@__PURE__*/ __L.at(__c0, 3);
 export type MetricValues = number[];
+const MetricValues = XAxisValues as any as S.Schema<MetricValues>;
 export interface MetricQueryResult {
   Status?: MetricQueryResultStatus;
   Message?: string;
   XAxisValues?: number[];
   MetricValues?: number[];
 }
+const MetricQueryResult = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<MetricQueryResult>;
 export type MetricQueryResultList = MetricQueryResult[];
+const MetricQueryResultList = /*@__PURE__*/ __L.at(__c0, 5);
 export interface BatchGetMetricsResponse {
   MetricQueryResults?: (MetricQueryResult & {
     Status: MetricQueryResultStatus;
@@ -119,6 +135,10 @@ export interface BatchGetMetricsResponse {
     MetricValues: MetricValues;
   })[];
 }
+const BatchGetMetricsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<BatchGetMetricsResponse>;
 export type ExperimentEntityName = string;
 export type Step = number;
 export interface RawMetricData {
@@ -127,25 +147,42 @@ export interface RawMetricData {
   Step?: number;
   Value?: number;
 }
+const RawMetricData = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<RawMetricData>;
 export type RawMetricDataList = RawMetricData[];
+const RawMetricDataList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface BatchPutMetricsRequest {
   TrialComponentName?: string;
   MetricData?: RawMetricData[];
 }
+const BatchPutMetricsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<BatchPutMetricsRequest>;
 export type PutMetricsErrorCode =
   | "METRIC_LIMIT_EXCEEDED"
   | "INTERNAL_ERROR"
   | "VALIDATION_ERROR"
   | "CONFLICT_ERROR"
   | (string & {});
+const PutMetricsErrorCode = S.String;
+
 export interface BatchPutMetricsError_ {
   Code?: PutMetricsErrorCode;
   MetricIndex?: number;
 }
+const BatchPutMetricsError_ = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<BatchPutMetricsError_>;
 export type BatchPutMetricsErrorList = BatchPutMetricsError_[];
+const BatchPutMetricsErrorList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface BatchPutMetricsResponse {
   Errors?: BatchPutMetricsError_[];
 }
+const BatchPutMetricsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<BatchPutMetricsResponse>;
 export type BatchGetMetricsError = CommonErrors;
 /**
  * Used to retrieve training metrics from SageMaker.
@@ -156,8 +193,8 @@ export const batchGetMetrics: API.OperationMethod<
   BatchGetMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<BatchGetMetricsRequest>,
-  output: __S(6) as any as S.Schema<BatchGetMetricsResponse>,
+  input: BatchGetMetricsRequest,
+  output: BatchGetMetricsResponse,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -174,8 +211,8 @@ export const batchPutMetrics: API.OperationMethod<
   BatchPutMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<BatchPutMetricsRequest>,
-  output: __S(12) as any as S.Schema<BatchPutMetricsResponse>,
+  input: BatchPutMetricsRequest,
+  output: BatchPutMetricsResponse,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -190,18 +227,18 @@ function __c0(j: number): any {
         S.Struct({
           MetricName: S.optional(S.String),
           ResourceArn: S.optional(S.String),
-          MetricStat: S.optional(S.String),
-          Period: S.optional(S.String),
-          XAxisType: S.optional(S.String),
+          MetricStat: S.optional(MetricStatistic),
+          Period: S.optional(Period),
+          XAxisType: S.optional(XAxisType),
           Start: S.optional(S.Number),
           End: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MetricQuery" });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(MetricQuery);
     case 2:
       return S.suspend(() =>
-        S.Struct({ MetricQueries: S.optional(__S(1)) }).pipe(
+        S.Struct({ MetricQueries: S.optional(MetricQueryList) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/BatchGetMetrics" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "BatchGetMetricsRequest" });
@@ -210,18 +247,18 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(S.String),
+          Status: S.optional(MetricQueryResultStatus),
           Message: S.optional(S.String),
-          XAxisValues: S.optional(__S(3)),
-          MetricValues: S.optional(__S(3)),
+          XAxisValues: S.optional(XAxisValues),
+          MetricValues: S.optional(MetricValues),
         }),
       ).annotate({ identifier: "MetricQueryResult" });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(MetricQueryResult);
     case 6:
-      return S.suspend(() => S.Struct({ MetricQueryResults: S.optional(__S(5)) })).annotate({
-        identifier: "BatchGetMetricsResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({ MetricQueryResults: S.optional(MetricQueryResultList) }),
+      ).annotate({ identifier: "BatchGetMetricsResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -236,38 +273,25 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(RawMetricData);
     case 1:
       return S.suspend(() =>
         S.Struct({
           TrialComponentName: S.optional(S.String),
-          MetricData: S.optional(__S(8)),
+          MetricData: S.optional(RawMetricDataList),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/BatchPutMetrics" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "BatchPutMetricsRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Code: S.optional(S.String), MetricIndex: S.optional(S.Number) }),
+        S.Struct({ Code: S.optional(PutMetricsErrorCode), MetricIndex: S.optional(S.Number) }),
       ).annotate({ identifier: "BatchPutMetricsError" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(BatchPutMetricsError_);
     case 4:
-      return S.suspend(() => S.Struct({ Errors: S.optional(__S(11)) })).annotate({
+      return S.suspend(() => S.Struct({ Errors: S.optional(BatchPutMetricsErrorList) })).annotate({
         identifier: "BatchPutMetricsResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

@@ -8,8 +8,6 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -54,6 +52,8 @@ export interface Credentials {
   access_key?: string;
   access_secret?: string | Redacted.Redacted<string>;
 }
+const Credentials = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Credentials>;
+
 /** Provide an upstream repository this project is a proxy for */
 export interface CreateProxyRequest {
   credentials?: Credentials;
@@ -64,6 +64,8 @@ export interface CreateProxyRequest {
   /** Upstream registry url to proxy */
   url: string;
 }
+const CreateProxyRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateProxyRequest>;
+
 export interface CreateArtifactoryRequest {
   /** Project identifier. */
   projectId: string;
@@ -76,10 +78,17 @@ export interface CreateArtifactoryRequest {
   /** If proxy configuration is provided, this project will be created as a proxy-cache for the upstream registry. */
   proxy?: CreateProxyRequest;
 }
+const CreateArtifactoryRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateArtifactoryRequest>;
+
 /** Credentials for upstream registry, redacted */
 export interface RedactedCredentials {
   access_key?: string;
 }
+const RedactedCredentials = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<RedactedCredentials>;
+
 /** Replication settings for a proxy-cache artifactory */
 export interface Proxy {
   credentials?: RedactedCredentials;
@@ -90,6 +99,8 @@ export interface Proxy {
   /** Upstream registry url to proxy */
   url: string;
 }
+const Proxy = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Proxy>;
+
 /** Artifactory Information. */
 export interface Artifactory {
   /** How many bytes of quota is consumed. Read Only. */
@@ -108,6 +119,8 @@ export interface Artifactory {
   /** How many users does this artifactory have. Read Only. */
   user_count: number;
 }
+const Artifactory = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Artifactory>;
+
 export interface DeleteArtifactoryRequest {
   /** Project identifier. */
   projectId: string;
@@ -116,7 +129,17 @@ export interface DeleteArtifactoryRequest {
   /** Artifactory identifier. */
   artifactoryId: string;
 }
+const DeleteArtifactoryRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DeleteArtifactoryRequest>;
+
 export interface DeleteArtifactoryResponse {}
+const DeleteArtifactoryResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteArtifactoryResponse>;
+
 export interface GetArtifactoryRequest {
   /** Project identifier. */
   projectId: string;
@@ -125,6 +148,11 @@ export interface GetArtifactoryRequest {
   /** Artifactory identifier. */
   artifactoryId: string;
 }
+const GetArtifactoryRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetArtifactoryRequest>;
+
 export interface ListArtifactoriesRequest {
   /** Project identifier. */
   projectId: string;
@@ -135,32 +163,61 @@ export interface ListArtifactoriesRequest {
   /** A page token, received from a previous `ListArtifactories` call. Provide this to retrieve the subsequent page. */
   next_page_token?: string;
 }
+const ListArtifactoriesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListArtifactoriesRequest>;
+
 export type ArtifactoryListArtifactoriesList = Array<Artifactory>;
+const ArtifactoryListArtifactoriesList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ArtifactoryListArtifactoriesList>;
+
 /** A list of artifactories inside a STACKIT project. */
 export interface ArtifactoryList {
   artifactories: ArtifactoryListArtifactoriesList;
   /** A token to retrieve the next page of results. Pass this value as `page_token` in the subsequent request. If empty, there are no more pages. */
   next_page_token?: string;
 }
+const ArtifactoryList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ArtifactoryList>;
+
 export interface ListReplicationAdaptersRequest {
   /** Project identifier. */
   projectId: string;
   /** STACKIT region identification */
   regionId: string;
 }
+const ListReplicationAdaptersRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ListReplicationAdaptersRequest>;
+
 export interface ReplicationAdapter {
   /** Human-friendly name of the provider the adapter relates to. */
   display_name: string;
   /** Identifies the replication adapter */
   registry_type: string;
 }
+const ReplicationAdapter = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ReplicationAdapter>;
+
 export type ReplicationAdapterListReplicationAdaptersList = Array<ReplicationAdapter>;
+const ReplicationAdapterListReplicationAdaptersList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ReplicationAdapterListReplicationAdaptersList>;
+
 /** A list of replication adapters */
 export interface ReplicationAdapterList {
   /** A token to retrieve the next page of results. Pass this value as `page_token` in the subsequent request. If empty, there are no more pages. */
   next_page_token?: string;
   replication_adapters: ReplicationAdapterListReplicationAdaptersList;
 }
+const ReplicationAdapterList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ReplicationAdapterList>;
+
 /** Update an upstream repository for a proxy-cache project */
 export interface UpdateProxyRequest {
   credentials?: Credentials;
@@ -169,6 +226,8 @@ export interface UpdateProxyRequest {
   /** Upstream registry url to proxy */
   url?: string;
 }
+const UpdateProxyRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<UpdateProxyRequest>;
+
 export interface PatchArtifactoryRequest {
   /** Project identifier. */
   projectId: string;
@@ -178,6 +237,11 @@ export interface PatchArtifactoryRequest {
   artifactoryId: string;
   proxy?: UpdateProxyRequest;
 }
+const PatchArtifactoryRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<PatchArtifactoryRequest>;
+
 export type CreateArtifactoryError = BadRequest | Forbidden | NotFound | Conflict | StackitOpError;
 /** Creates an artifactory Creates an artifactory associated to the specified project. */
 export const createArtifactory: API.OperationMethod<
@@ -186,8 +250,8 @@ export const createArtifactory: API.OperationMethod<
   CreateArtifactoryError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateArtifactoryRequest>,
-  output: __S(5) as any as S.Schema<Artifactory>,
+  input: CreateArtifactoryRequest,
+  output: Artifactory,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -201,8 +265,8 @@ export const deleteArtifactory: API.OperationMethod<
   DeleteArtifactoryError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DeleteArtifactoryRequest>,
-  output: __S(7) as any as S.Schema<DeleteArtifactoryResponse>,
+  input: DeleteArtifactoryRequest,
+  output: DeleteArtifactoryResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -216,8 +280,8 @@ export const getArtifactory: API.OperationMethod<
   GetArtifactoryError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<GetArtifactoryRequest>,
-  output: __S(5) as any as S.Schema<Artifactory>,
+  input: GetArtifactoryRequest,
+  output: Artifactory,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -231,8 +295,8 @@ export const listArtifactories: API.OperationMethod<
   ListArtifactoriesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<ListArtifactoriesRequest>,
-  output: __S(11) as any as S.Schema<ArtifactoryList>,
+  input: ListArtifactoriesRequest,
+  output: ArtifactoryList,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -246,8 +310,8 @@ export const listReplicationAdapters: API.OperationMethod<
   ListReplicationAdaptersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<ListReplicationAdaptersRequest>,
-  output: __S(15) as any as S.Schema<ReplicationAdapterList>,
+  input: ListReplicationAdaptersRequest,
+  output: ReplicationAdapterList,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -261,8 +325,8 @@ export const patchArtifactory: API.OperationMethod<
   PatchArtifactoryError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<PatchArtifactoryRequest>,
-  output: __S(5) as any as S.Schema<Artifactory>,
+  input: PatchArtifactoryRequest,
+  output: Artifactory,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -281,7 +345,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          credentials: S.optional(__S(0)),
+          credentials: S.optional(Credentials),
           description: S.optional(S.String),
           registry_type: S.String,
           url: S.String,
@@ -294,7 +358,7 @@ function __c0(j: number): any {
           regionId: S.String.pipe(T.Label()),
           claim: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String,
-          proxy: S.optional(__S(1)),
+          proxy: S.optional(CreateProxyRequest),
         }).pipe(
           T.Http({
             method: "POST",
@@ -313,7 +377,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          credentials: S.optional(__S(3)),
+          credentials: S.optional(RedactedCredentials),
           description: S.optional(S.String),
           registry_type: S.String,
           url: S.String,
@@ -326,7 +390,7 @@ function __c0(j: number): any {
           create_time: S.String,
           id: S.String,
           name: S.String,
-          proxy: S.optional(__S(4)),
+          proxy: S.optional(Proxy),
           state: S.String,
           url: S.String,
           user_count: S.Number,
@@ -387,11 +451,11 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListArtifactoriesRequest" });
     case 2:
-      return S.Array(__S(5));
+      return S.Array(Artifactory);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          artifactories: __S(10),
+          artifactories: ArtifactoryListArtifactoriesList,
           next_page_token: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArtifactoryList" });
@@ -419,12 +483,12 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ReplicationAdapter" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(ReplicationAdapter);
     case 7:
       return S.suspend(() =>
         S.Struct({
           next_page_token: S.optional(S.String),
-          replication_adapters: __S(14),
+          replication_adapters: ReplicationAdapterListReplicationAdaptersList,
         }),
       ).annotate({ identifier: "ReplicationAdapterList" });
   }
@@ -434,7 +498,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          credentials: S.optional(__S(0)),
+          credentials: S.optional(Credentials),
           description: S.optional(S.String),
           url: S.optional(S.String),
         }),
@@ -445,7 +509,7 @@ function __c2(j: number): any {
           projectId: S.String.pipe(T.Label()),
           regionId: S.String.pipe(T.Label()),
           artifactoryId: S.String.pipe(T.Label()),
-          proxy: S.optional(__S(16)),
+          proxy: S.optional(UpdateProxyRequest),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -455,20 +519,5 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchArtifactoryRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

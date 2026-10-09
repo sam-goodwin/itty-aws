@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -85,6 +83,8 @@ export type ContentAdsSettingsTypeEnum =
   | "ARTICLE"
   | "MATCHED_CONTENT"
   | "LINK";
+const ContentAdsSettingsTypeEnum = S.String;
+
 /** Settings specific to content ads (AFC). */
 export interface ContentAdsSettings {
   /** Required. Size of the ad unit. e.g. "728x90", "1x3" (for responsive ad units). */
@@ -92,7 +92,11 @@ export interface ContentAdsSettings {
   /** Required. Type of the ad unit. */
   type?: ContentAdsSettingsTypeEnum | (string & {});
 }
+const ContentAdsSettings = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ContentAdsSettings>;
+
 export type AdUnitStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "ARCHIVED";
+const AdUnitStateEnum = S.String;
+
 /** Representation of an ad unit. An ad unit represents a saved ad unit with a specific set of ad settings that have been customized within an account. */
 export interface AdUnit {
   /** Required. Settings specific to content ads (AFC). */
@@ -106,12 +110,19 @@ export interface AdUnit {
   /** Required. State of the ad unit. */
   state?: AdUnitStateEnum | (string & {});
 }
+const AdUnit = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AdUnit>;
+
 export interface CreateAccountsAdclientsAdunitsRequest {
   /** Required. Ad client to create an ad unit under. Format: accounts/{account}/adclients/{adclient} */
   parent: string;
   /** Request body */
   body?: AdUnit;
 }
+const CreateAccountsAdclientsAdunitsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateAccountsAdclientsAdunitsRequest>;
+
 /** Representation of a custom channel. */
 export interface CustomChannel {
   /** Output only. Resource name of the custom channel. Format: accounts/{account}/adclients/{adclient}/customchannels/{customchannel} */
@@ -123,18 +134,32 @@ export interface CustomChannel {
   /** Output only. Unique ID of the custom channel as used in the `CUSTOM_CHANNEL_ID` reporting dimension. */
   reportingDimensionId?: string;
 }
+const CustomChannel = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CustomChannel>;
+
 export interface CreateAccountsAdclientsCustomchannelsRequest {
   /** Required. The ad client to create a custom channel under. Format: accounts/{account}/adclients/{adclient} */
   parent: string;
   /** Request body */
   body?: CustomChannel;
 }
+const CreateAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateAccountsAdclientsCustomchannelsRequest>;
+
 export interface DeleteAccountsAdclientsCustomchannelsRequest {
   /** Required. Name of the custom channel to delete. Format: accounts/{account}/adclients/{adclient}/customchannels/{customchannel} */
   name: string;
 }
+const DeleteAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteAccountsAdclientsCustomchannelsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Empty>;
+
 export type GenerateAccountsReportsMetricsEnum =
   | "METRIC_UNSPECIFIED"
   | "PAGE_VIEWS"
@@ -173,9 +198,16 @@ export type GenerateAccountsReportsMetricsEnum =
   | "FUNNEL_IMPRESSIONS"
   | "FUNNEL_CLICKS"
   | "FUNNEL_RPM";
+const GenerateAccountsReportsMetricsEnum = S.String;
+
 export type GenerateAccountsReportsMetricsEnumList = Array<
   GenerateAccountsReportsMetricsEnum | (string & {})
 >;
+const GenerateAccountsReportsMetricsEnumList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GenerateAccountsReportsMetricsEnumList>;
+
 export type GenerateAccountsReportsDimensionsEnum =
   | "DIMENSION_UNSPECIFIED"
   | "DATE"
@@ -237,7 +269,12 @@ export type GenerateAccountsReportsDimensionsEnum =
 export type GenerateAccountsReportsDimensionsEnumList = Array<
   GenerateAccountsReportsDimensionsEnum | (string & {})
 >;
+const GenerateAccountsReportsDimensionsEnumList =
+  GenerateAccountsReportsMetricsEnumList as any as S.Schema<GenerateAccountsReportsDimensionsEnumList>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<StringList>;
+
 export type GenerateAccountsReportsDateRangeEnum =
   | "REPORTING_DATE_RANGE_UNSPECIFIED"
   | "CUSTOM"
@@ -247,10 +284,14 @@ export type GenerateAccountsReportsDateRangeEnum =
   | "YEAR_TO_DATE"
   | "LAST_7_DAYS"
   | "LAST_30_DAYS";
+const GenerateAccountsReportsDateRangeEnum = S.String;
+
 export type GenerateAccountsReportsReportingTimeZoneEnum =
   | "REPORTING_TIME_ZONE_UNSPECIFIED"
   | "ACCOUNT_TIME_ZONE"
   | "GOOGLE_TIME_ZONE";
+const GenerateAccountsReportsReportingTimeZoneEnum = S.String;
+
 export interface GenerateAccountsReportsRequest {
   /** The [ISO-4217 currency code](https://en.wikipedia.org/wiki/ISO_4217) to use when reporting on monetary metrics. Defaults to the account's currency if not set. */
   currencyCode?: string;
@@ -285,6 +326,11 @@ export interface GenerateAccountsReportsRequest {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   "startDate.day"?: number;
 }
+const GenerateAccountsReportsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GenerateAccountsReportsRequest>;
+
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Adsense_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
@@ -294,6 +340,8 @@ export interface Adsense_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   day?: number;
 }
+const Adsense_Date = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Adsense_Date>;
+
 export type HeaderTypeEnum =
   | "HEADER_TYPE_UNSPECIFIED"
   | "DIMENSION"
@@ -302,6 +350,8 @@ export type HeaderTypeEnum =
   | "METRIC_CURRENCY"
   | "METRIC_MILLISECONDS"
   | "METRIC_DECIMAL";
+const HeaderTypeEnum = S.String;
+
 /** The header information of the columns requested in the report. */
 export interface Header {
   /** The [ISO-4217 currency code](https://en.wikipedia.org/wiki/ISO_4217) of this column. Only present if the header type is METRIC_CURRENCY. */
@@ -311,19 +361,31 @@ export interface Header {
   /** Required. Name of the header. */
   name?: string;
 }
+const Header = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Header>;
+
 export type HeaderList = Array<Header>;
+const HeaderList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<HeaderList>;
+
 /** Cell representation. */
 export interface Cell {
   /** Value in the cell. The dimension cells contain strings, and the metric cells contain numbers. */
   value?: string;
 }
+const Cell = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Cell>;
+
 export type CellList = Array<Cell>;
+const CellList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CellList>;
+
 /** Row representation. */
 export interface Row {
   /** Cells in the row. */
   cells?: CellList;
 }
+const Row = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Row>;
+
 export type RowList = Array<Row>;
+const RowList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<RowList>;
+
 /** Result of a generated report. */
 export interface ReportResult {
   /** Required. End date of the range (inclusive). */
@@ -343,6 +405,8 @@ export interface ReportResult {
   /** The total number of rows matched by the report request. */
   totalMatchedRows?: string;
 }
+const ReportResult = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ReportResult>;
+
 export type GenerateAccountsReportsSavedDateRangeEnum =
   | "REPORTING_DATE_RANGE_UNSPECIFIED"
   | "CUSTOM"
@@ -352,10 +416,14 @@ export type GenerateAccountsReportsSavedDateRangeEnum =
   | "YEAR_TO_DATE"
   | "LAST_7_DAYS"
   | "LAST_30_DAYS";
+const GenerateAccountsReportsSavedDateRangeEnum = S.String;
+
 export type GenerateAccountsReportsSavedReportingTimeZoneEnum =
   | "REPORTING_TIME_ZONE_UNSPECIFIED"
   | "ACCOUNT_TIME_ZONE"
   | "GOOGLE_TIME_ZONE";
+const GenerateAccountsReportsSavedReportingTimeZoneEnum = S.String;
+
 export interface GenerateAccountsReportsSavedRequest {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   "startDate.year"?: number;
@@ -380,6 +448,11 @@ export interface GenerateAccountsReportsSavedRequest {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   "endDate.year"?: number;
 }
+const GenerateAccountsReportsSavedRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GenerateAccountsReportsSavedRequest>;
+
 export type GenerateCsvAccountsReportsMetricsEnum =
   | "METRIC_UNSPECIFIED"
   | "PAGE_VIEWS"
@@ -421,6 +494,9 @@ export type GenerateCsvAccountsReportsMetricsEnum =
 export type GenerateCsvAccountsReportsMetricsEnumList = Array<
   GenerateCsvAccountsReportsMetricsEnum | (string & {})
 >;
+const GenerateCsvAccountsReportsMetricsEnumList =
+  GenerateAccountsReportsMetricsEnumList as any as S.Schema<GenerateCsvAccountsReportsMetricsEnumList>;
+
 export type GenerateCsvAccountsReportsDimensionsEnum =
   | "DIMENSION_UNSPECIFIED"
   | "DATE"
@@ -482,10 +558,15 @@ export type GenerateCsvAccountsReportsDimensionsEnum =
 export type GenerateCsvAccountsReportsDimensionsEnumList = Array<
   GenerateCsvAccountsReportsDimensionsEnum | (string & {})
 >;
+const GenerateCsvAccountsReportsDimensionsEnumList =
+  GenerateAccountsReportsMetricsEnumList as any as S.Schema<GenerateCsvAccountsReportsDimensionsEnumList>;
+
 export type GenerateCsvAccountsReportsReportingTimeZoneEnum =
   | "REPORTING_TIME_ZONE_UNSPECIFIED"
   | "ACCOUNT_TIME_ZONE"
   | "GOOGLE_TIME_ZONE";
+const GenerateCsvAccountsReportsReportingTimeZoneEnum = S.String;
+
 export type GenerateCsvAccountsReportsDateRangeEnum =
   | "REPORTING_DATE_RANGE_UNSPECIFIED"
   | "CUSTOM"
@@ -495,6 +576,8 @@ export type GenerateCsvAccountsReportsDateRangeEnum =
   | "YEAR_TO_DATE"
   | "LAST_7_DAYS"
   | "LAST_30_DAYS";
+const GenerateCsvAccountsReportsDateRangeEnum = S.String;
+
 export interface GenerateCsvAccountsReportsRequest {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   "endDate.month"?: number;
@@ -529,8 +612,17 @@ export interface GenerateCsvAccountsReportsRequest {
   /** The [ISO-4217 currency code](https://en.wikipedia.org/wiki/ISO_4217) to use when reporting on monetary metrics. Defaults to the account's currency if not set. */
   currencyCode?: string;
 }
+const GenerateCsvAccountsReportsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GenerateCsvAccountsReportsRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<DocumentMapList>;
+
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface HttpBody {
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
@@ -540,10 +632,14 @@ export interface HttpBody {
   /** The HTTP request/response body as raw binary. */
   data?: string;
 }
+const HttpBody = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<HttpBody>;
+
 export type GenerateCsvAccountsReportsSavedReportingTimeZoneEnum =
   | "REPORTING_TIME_ZONE_UNSPECIFIED"
   | "ACCOUNT_TIME_ZONE"
   | "GOOGLE_TIME_ZONE";
+const GenerateCsvAccountsReportsSavedReportingTimeZoneEnum = S.String;
+
 export type GenerateCsvAccountsReportsSavedDateRangeEnum =
   | "REPORTING_DATE_RANGE_UNSPECIFIED"
   | "CUSTOM"
@@ -553,6 +649,8 @@ export type GenerateCsvAccountsReportsSavedDateRangeEnum =
   | "YEAR_TO_DATE"
   | "LAST_7_DAYS"
   | "LAST_30_DAYS";
+const GenerateCsvAccountsReportsSavedDateRangeEnum = S.String;
+
 export interface GenerateCsvAccountsReportsSavedRequest {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   "endDate.day"?: number;
@@ -577,10 +675,17 @@ export interface GenerateCsvAccountsReportsSavedRequest {
   /** Date range of the report, if unset the range will be considered CUSTOM. */
   dateRange?: GenerateCsvAccountsReportsSavedDateRangeEnum | (string & {});
 }
+const GenerateCsvAccountsReportsSavedRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GenerateCsvAccountsReportsSavedRequest>;
+
 export interface GetAccountsRequest {
   /** Required. Account to get information about. Format: accounts/{account} */
   name: string;
 }
+const GetAccountsRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GetAccountsRequest>;
+
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
 export interface TimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
@@ -588,7 +693,11 @@ export interface TimeZone {
   /** Optional. IANA Time Zone Database version number. For example "2019a". */
   version?: string;
 }
+const TimeZone = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<TimeZone>;
+
 export type AccountStateEnum = "STATE_UNSPECIFIED" | "READY" | "NEEDS_ATTENTION" | "CLOSED";
+const AccountStateEnum = S.String;
+
 /** Representation of an account. */
 export interface Account {
   /** Output only. Display name of this account. */
@@ -606,11 +715,20 @@ export interface Account {
   /** Output only. State of the account. */
   state?: AccountStateEnum;
 }
+const Account = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Account>;
+
 export interface GetAccountsAdclientsRequest {
   /** Required. The name of the ad client to retrieve. Format: accounts/{account}/adclients/{adclient} */
   name: string;
 }
+const GetAccountsAdclientsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetAccountsAdclientsRequest>;
+
 export type AdClientStateEnum = "STATE_UNSPECIFIED" | "READY" | "GETTING_READY" | "REQUIRES_REVIEW";
+const AdClientStateEnum = S.String;
+
 /** Representation of an ad client. An ad client represents a user's subscription with a specific AdSense product. */
 export interface AdClient {
   /** Output only. Unique ID of the ad client as used in the `AD_CLIENT_ID` reporting dimension. Present only if the ad client supports reporting. */
@@ -622,18 +740,35 @@ export interface AdClient {
   /** Output only. Reporting product code of the ad client. For example, "AFC" for AdSense for Content. Corresponds to the `PRODUCT_CODE` dimension, and present only if the ad client supports reporting. */
   productCode?: string;
 }
+const AdClient = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<AdClient>;
+
 export interface GetAccountsAdclientsAdunitsRequest {
   /** Required. AdUnit to get information about. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit} */
   name: string;
 }
+const GetAccountsAdclientsAdunitsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetAccountsAdclientsAdunitsRequest>;
+
 export interface GetAccountsAdclientsCustomchannelsRequest {
   /** Required. Name of the custom channel. Format: accounts/{account}/adclients/{adclient}/customchannels/{customchannel} */
   name: string;
 }
+const GetAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetAccountsAdclientsCustomchannelsRequest>;
+
 export interface GetAccountsAdclientsUrlchannelsRequest {
   /** Required. The name of the url channel to retrieve. Format: accounts/{account}/adclients/{adclient}/urlchannels/{urlchannel} */
   name: string;
 }
+const GetAccountsAdclientsUrlchannelsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetAccountsAdclientsUrlchannelsRequest>;
+
 /** Representation of a URL channel. URL channels allow you to track the performance of particular pages in your site; see [URL channels](https://support.google.com/adsense/answer/2923836) for more information. */
 export interface UrlChannel {
   /** URI pattern of the channel. Does not include "http://" or "https://". Example: www.example.com/home */
@@ -643,15 +778,24 @@ export interface UrlChannel {
   /** Output only. Unique ID of the custom channel as used in the `URL_CHANNEL_ID` reporting dimension. */
   reportingDimensionId?: string;
 }
+const UrlChannel = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<UrlChannel>;
+
 export interface GetAccountsPolicyIssuesRequest {
   /** Required. Name of the policy issue. Format: accounts/{account}/policyIssues/{policy_issue} */
   name: string;
 }
+const GetAccountsPolicyIssuesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetAccountsPolicyIssuesRequest>;
+
 export type PolicyIssueEntityTypeEnum =
   | "ENTITY_TYPE_UNSPECIFIED"
   | "SITE"
   | "SITE_SECTION"
   | "PAGE";
+const PolicyIssueEntityTypeEnum = S.String;
+
 export type PolicyIssueActionEnum =
   | "ENFORCEMENT_ACTION_UNSPECIFIED"
   | "WARNED"
@@ -659,11 +803,15 @@ export type PolicyIssueActionEnum =
   | "AD_SERVING_DISABLED"
   | "AD_SERVED_WITH_CLICK_CONFIRMATION"
   | "AD_PERSONALIZATION_RESTRICTED";
+const PolicyIssueActionEnum = S.String;
+
 export type PolicyTopicTypeEnum =
   | "POLICY_TOPIC_TYPE_UNSPECIFIED"
   | "POLICY"
   | "ADVERTISER_PREFERENCE"
   | "REGULATORY";
+const PolicyTopicTypeEnum = S.String;
+
 /** Information about a particular policy topic. A policy topic represents a single class of policy issue that can impact ad serving for your site. For example, sexual content or having ads that obscure your content. A single policy issue can have multiple policy topics for a single entity. */
 export interface PolicyTopic {
   /** Required. Deprecated. Always set to false. */
@@ -673,7 +821,11 @@ export interface PolicyTopic {
   /** Optional. The type of policy topic. For example, "POLICY" represents all the policy topics that are related to the Google Publisher Policy (GPP). See https://support.google.com/adsense/answer/15689616. */
   type?: PolicyTopicTypeEnum;
 }
+const PolicyTopic = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<PolicyTopic>;
+
 export type PolicyTopicList = Array<PolicyTopic>;
+const PolicyTopicList = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<PolicyTopicList>;
+
 /** Representation of a policy issue for a single entity (site, site-section, or page). All issues for a single entity are represented by a single PolicyIssue resource, though that PolicyIssue can have multiple causes (or "topics") that can change over time. Policy issues are removed if there are no issues detected recently or if there's a recent successful appeal for the entity. */
 export interface PolicyIssue {
   /** Required. Hostname/domain of the entity (for example "foo.com" or "www.foo.com"). This _should_ be a bare domain/host name without any protocol. This will be present for all policy issues. */
@@ -701,16 +853,25 @@ export interface PolicyIssue {
   /** Required. The date (in the America/Los_Angeles timezone) when policy violations were last detected on the entity. */
   lastDetectedDate?: Adsense_Date;
 }
+const PolicyIssue = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<PolicyIssue>;
+
 export interface GetAccountsSitesRequest {
   /** Required. Name of the site. Format: accounts/{account}/sites/{site} */
   name: string;
 }
+const GetAccountsSitesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetAccountsSitesRequest>;
+
 export type SiteStateEnum =
   | "STATE_UNSPECIFIED"
   | "REQUIRES_REVIEW"
   | "GETTING_READY"
   | "READY"
   | "NEEDS_ATTENTION";
+const SiteStateEnum = S.String;
+
 /** Representation of a Site. */
 export interface Site {
   /** Output only. State of a site. */
@@ -724,10 +885,17 @@ export interface Site {
   /** Domain (or subdomain) of the site, e.g. "example.com" or "www.example.com". This is used in the `OWNED_SITE_DOMAIN_NAME` reporting dimension. */
   domain?: string;
 }
+const Site = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Site>;
+
 export interface GetAdBlockingRecoveryTagAccountsRequest {
   /** Required. The name of the account to get the tag for. Format: accounts/{account} */
   name: string;
 }
+const GetAdBlockingRecoveryTagAccountsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<GetAdBlockingRecoveryTagAccountsRequest>;
+
 /** Representation of an ad blocking recovery tag. See https://support.google.com/adsense/answer/11575177. */
 export interface AdBlockingRecoveryTag {
   /** Error protection code that can be used in conjunction with the tag. It'll display a message to users if an [ad blocking extension blocks their access to your site](https://support.google.com/adsense/answer/11575480). */
@@ -735,10 +903,20 @@ export interface AdBlockingRecoveryTag {
   /** The ad blocking recovery tag. Note that the message generated by the tag can be blocked by an ad blocking extension. If this is not your desired outcome, then you'll need to use it in conjunction with the error protection code. */
   tag?: string;
 }
+const AdBlockingRecoveryTag = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<AdBlockingRecoveryTag>;
+
 export interface GetAdcodeAccountsAdclientsRequest {
   /** Required. Name of the ad client for which to get the adcode. Format: accounts/{account}/adclients/{adclient} */
   name: string;
 }
+const GetAdcodeAccountsAdclientsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetAdcodeAccountsAdclientsRequest>;
+
 /** Representation of the AdSense code for a given ad client. For more information, see [About the AdSense code](https://support.google.com/adsense/answer/9274634). */
 export interface AdClientAdCode {
   /** Output only. The AdSense code snippet to add to the head of an AMP page. */
@@ -748,19 +926,33 @@ export interface AdClientAdCode {
   /** Output only. The AdSense code snippet to add to the head of an HTML page. */
   adCode?: string;
 }
+const AdClientAdCode = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<AdClientAdCode>;
+
 export interface GetAdcodeAccountsAdclientsAdunitsRequest {
   /** Required. Name of the adunit for which to get the adcode. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit} */
   name: string;
 }
+const GetAdcodeAccountsAdclientsAdunitsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetAdcodeAccountsAdclientsAdunitsRequest>;
+
 /** Representation of the ad unit code for a given ad unit. For more information, see [About the AdSense code](https://support.google.com/adsense/answer/9274634) and [Where to place the ad code in your HTML](https://support.google.com/adsense/answer/9190028). */
 export interface AdUnitAdCode {
   /** Output only. The code snippet to add to the body of an HTML page. */
   adCode?: string;
 }
+const AdUnitAdCode = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<AdUnitAdCode>;
+
 export interface GetSavedAccountsReportsRequest {
   /** Required. The name of the saved report to retrieve. Format: accounts/{account}/reports/{report} */
   name: string;
 }
+const GetSavedAccountsReportsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GetSavedAccountsReportsRequest>;
+
 /** Representation of a saved report. */
 export interface SavedReport {
   /** Output only. Resource name of the report. Format: accounts/{account}/reports/{report} */
@@ -768,13 +960,19 @@ export interface SavedReport {
   /** Report title as specified by publisher. */
   title?: string;
 }
+const SavedReport = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<SavedReport>;
+
 export interface ListAccountsRequest {
   /** A page token, received from a previous `ListAccounts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccounts` must match the call that provided the page token. */
   pageToken?: string;
   /** The maximum number of accounts to include in the response, used for paging. If unspecified, at most 10000 accounts will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
   pageSize?: number;
 }
+const ListAccountsRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ListAccountsRequest>;
+
 export type AccountList = Array<Account>;
+const AccountList = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<AccountList>;
+
 /** Response definition for the account list rpc. */
 export interface ListAccountsResponse {
   /** The accounts returned in this list response. */
@@ -782,6 +980,8 @@ export interface ListAccountsResponse {
   /** Continuation token used to page through accounts. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
+const ListAccountsResponse = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ListAccountsResponse>;
+
 export interface ListAccountsAdclientsRequest {
   /** A page token, received from a previous `ListAdClients` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAdClients` must match the call that provided the page token. */
   pageToken?: string;
@@ -790,7 +990,14 @@ export interface ListAccountsAdclientsRequest {
   /** The maximum number of ad clients to include in the response, used for paging. If unspecified, at most 10000 ad clients will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
   pageSize?: number;
 }
+const ListAccountsAdclientsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListAccountsAdclientsRequest>;
+
 export type AdClientList = Array<AdClient>;
+const AdClientList = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<AdClientList>;
+
 /** Response definition for the ad client list rpc. */
 export interface ListAdClientsResponse {
   /** Continuation token used to page through ad clients. To retrieve the next page of the results, set the next request's "page_token" value to this. */
@@ -798,6 +1005,11 @@ export interface ListAdClientsResponse {
   /** The ad clients returned in this list response. */
   adClients?: AdClientList;
 }
+const ListAdClientsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ListAdClientsResponse>;
+
 export interface ListAccountsAdclientsAdunitsRequest {
   /** A page token, received from a previous `ListAdUnits` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAdUnits` must match the call that provided the page token. */
   pageToken?: string;
@@ -806,7 +1018,14 @@ export interface ListAccountsAdclientsAdunitsRequest {
   /** The maximum number of ad units to include in the response, used for paging. If unspecified, at most 10000 ad units will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
   pageSize?: number;
 }
+const ListAccountsAdclientsAdunitsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ListAccountsAdclientsAdunitsRequest>;
+
 export type AdUnitList = Array<AdUnit>;
+const AdUnitList = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<AdUnitList>;
+
 /** Response definition for the adunit list rpc. */
 export interface ListAdUnitsResponse {
   /** Continuation token used to page through ad units. To retrieve the next page of the results, set the next request's "page_token" value to this. */
@@ -814,6 +1033,8 @@ export interface ListAdUnitsResponse {
   /** The ad units returned in the list response. */
   adUnits?: AdUnitList;
 }
+const ListAdUnitsResponse = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ListAdUnitsResponse>;
+
 export interface ListAccountsAdclientsCustomchannelsRequest {
   /** A page token, received from a previous `ListCustomChannels` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCustomChannels` must match the call that provided the page token. */
   pageToken?: string;
@@ -822,7 +1043,14 @@ export interface ListAccountsAdclientsCustomchannelsRequest {
   /** Required. The ad client which owns the collection of custom channels. Format: accounts/{account}/adclients/{adclient} */
   parent: string;
 }
+const ListAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ListAccountsAdclientsCustomchannelsRequest>;
+
 export type CustomChannelList = Array<CustomChannel>;
+const CustomChannelList = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<CustomChannelList>;
+
 /** Response definition for the custom channel list rpc. */
 export interface ListCustomChannelsResponse {
   /** The custom channels returned in this list response. */
@@ -830,6 +1058,11 @@ export interface ListCustomChannelsResponse {
   /** Continuation token used to page through alerts. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
+const ListCustomChannelsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListCustomChannelsResponse>;
+
 export interface ListAccountsAdclientsUrlchannelsRequest {
   /** A page token, received from a previous `ListUrlChannels` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListUrlChannels` must match the call that provided the page token. */
   pageToken?: string;
@@ -838,7 +1071,14 @@ export interface ListAccountsAdclientsUrlchannelsRequest {
   /** The maximum number of url channels to include in the response, used for paging. If unspecified, at most 10000 url channels will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
   pageSize?: number;
 }
+const ListAccountsAdclientsUrlchannelsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListAccountsAdclientsUrlchannelsRequest>;
+
 export type UrlChannelList = Array<UrlChannel>;
+const UrlChannelList = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<UrlChannelList>;
+
 /** Response definition for the url channels list rpc. */
 export interface ListUrlChannelsResponse {
   /** Continuation token used to page through url channels. To retrieve the next page of the results, set the next request's "page_token" value to this. */
@@ -846,13 +1086,25 @@ export interface ListUrlChannelsResponse {
   /** The url channels returned in this list response. */
   urlChannels?: UrlChannelList;
 }
+const ListUrlChannelsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListUrlChannelsResponse>;
+
 export interface ListAccountsAlertsRequest {
   /** Required. The account which owns the collection of alerts. Format: accounts/{account} */
   parent: string;
   /** The language to use for translating alert messages. If unspecified, this defaults to the user's display language. If the given language is not supported, alerts will be returned in English. The language is specified as an [IETF BCP-47 language code](https://en.wikipedia.org/wiki/IETF_language_tag). */
   languageCode?: string;
 }
+const ListAccountsAlertsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListAccountsAlertsRequest>;
+
 export type AlertSeverityEnum = "SEVERITY_UNSPECIFIED" | "INFO" | "WARNING" | "SEVERE";
+const AlertSeverityEnum = S.String;
+
 /** Representation of an alert. */
 export interface Alert {
   /** Output only. Resource name of the alert. Format: accounts/{account}/alerts/{alert} */
@@ -864,16 +1116,27 @@ export interface Alert {
   /** Output only. Severity of this alert. */
   severity?: AlertSeverityEnum;
 }
+const Alert = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<Alert>;
+
 export type AlertList = Array<Alert>;
+const AlertList = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<AlertList>;
+
 /** Response definition for the alerts list rpc. */
 export interface ListAlertsResponse {
   /** The alerts returned in this list response. */
   alerts?: AlertList;
 }
+const ListAlertsResponse = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<ListAlertsResponse>;
+
 export interface ListAccountsPaymentsRequest {
   /** Required. The account which owns the collection of payments. Format: accounts/{account} */
   parent: string;
 }
+const ListAccountsPaymentsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ListAccountsPaymentsRequest>;
+
 /** Representation of an unpaid or paid payment. See [Payment timelines for AdSense](https://support.google.com/adsense/answer/7164703) for more information about payments and the [YouTube homepage and payments account](https://support.google.com/adsense/answer/11622510) article for information about dedicated payments accounts for YouTube. */
 export interface Payment {
   /** Output only. For paid earnings, the date that the payment was credited. For unpaid earnings, this field is empty. Payment dates are always returned in the billing timezone (America/Los_Angeles). */
@@ -883,12 +1146,18 @@ export interface Payment {
   /** Output only. The amount of unpaid or paid earnings, as a formatted string, including the currency. E.g. "¥1,235 JPY", "$1,234.57", "£87.65". */
   amount?: string;
 }
+const Payment = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<Payment>;
+
 export type PaymentList = Array<Payment>;
+const PaymentList = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<PaymentList>;
+
 /** Response definition for the payments list rpc. */
 export interface ListPaymentsResponse {
   /** The payments returned in this list response. */
   payments?: PaymentList;
 }
+const ListPaymentsResponse = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ListPaymentsResponse>;
+
 export interface ListAccountsPolicyIssuesRequest {
   /** A page token, received from a previous `ListPolicyIssues` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPolicyIssues` must match the call that provided the page token. */
   pageToken?: string;
@@ -897,7 +1166,14 @@ export interface ListAccountsPolicyIssuesRequest {
   /** The maximum number of policy issues to include in the response, used for paging. If unspecified, at most 10000 policy issues will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
   pageSize?: number;
 }
+const ListAccountsPolicyIssuesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListAccountsPolicyIssuesRequest>;
+
 export type PolicyIssueList = Array<PolicyIssue>;
+const PolicyIssueList = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<PolicyIssueList>;
+
 /** Response definition for the policy issues list rpc. Policy issues are reported only if the publisher has at least one AFC ad client in READY or GETTING_READY state. If the publisher has no such AFC ad client, the response will be an empty list. */
 export interface ListPolicyIssuesResponse {
   /** Continuation token used to page through policy issues. To retrieve the next page of the results, set the next request's "page_token" value to this. */
@@ -905,6 +1181,11 @@ export interface ListPolicyIssuesResponse {
   /** The policy issues returned in the list response. */
   policyIssues?: PolicyIssueList;
 }
+const ListPolicyIssuesResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ListPolicyIssuesResponse>;
+
 export interface ListAccountsReportsSavedRequest {
   /** The maximum number of reports to include in the response, used for paging. If unspecified, at most 10000 reports will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
   pageSize?: number;
@@ -913,7 +1194,14 @@ export interface ListAccountsReportsSavedRequest {
   /** A page token, received from a previous `ListSavedReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSavedReports` must match the call that provided the page token. */
   pageToken?: string;
 }
+const ListAccountsReportsSavedRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListAccountsReportsSavedRequest>;
+
 export type SavedReportList = Array<SavedReport>;
+const SavedReportList = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<SavedReportList>;
+
 /** Response definition for the saved reports list rpc. */
 export interface ListSavedReportsResponse {
   /** The reports returned in this list response. */
@@ -921,6 +1209,11 @@ export interface ListSavedReportsResponse {
   /** Continuation token used to page through reports. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
+const ListSavedReportsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ListSavedReportsResponse>;
+
 export interface ListAccountsSitesRequest {
   /** Required. The account which owns the collection of sites. Format: accounts/{account} */
   parent: string;
@@ -929,7 +1222,14 @@ export interface ListAccountsSitesRequest {
   /** A page token, received from a previous `ListSites` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSites` must match the call that provided the page token. */
   pageToken?: string;
 }
+const ListAccountsSitesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ListAccountsSitesRequest>;
+
 export type SiteList = Array<Site>;
+const SiteList = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<SiteList>;
+
 /** Response definition for the sites list rpc. */
 export interface ListSitesResponse {
   /** The sites returned in this list response. */
@@ -937,6 +1237,8 @@ export interface ListSitesResponse {
   /** Continuation token used to page through sites. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
+const ListSitesResponse = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<ListSitesResponse>;
+
 export interface ListChildAccountsAccountsRequest {
   /** A page token, received from a previous `ListChildAccounts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListChildAccounts` must match the call that provided the page token. */
   pageToken?: string;
@@ -945,6 +1247,11 @@ export interface ListChildAccountsAccountsRequest {
   /** Required. The parent account, which owns the child accounts. Format: accounts/{account} */
   parent: string;
 }
+const ListChildAccountsAccountsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ListChildAccountsAccountsRequest>;
+
 /** Response definition for the child account list rpc. */
 export interface ListChildAccountsResponse {
   /** Continuation token used to page through accounts. To retrieve the next page of the results, set the next request's "page_token" value to this. */
@@ -952,6 +1259,11 @@ export interface ListChildAccountsResponse {
   /** The accounts returned in this list response. */
   accounts?: AccountList;
 }
+const ListChildAccountsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListChildAccountsResponse>;
+
 export interface ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest {
   /** A page token, received from a previous `ListLinkedAdUnits` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListLinkedAdUnits` must match the call that provided the page token. */
   pageToken?: string;
@@ -960,6 +1272,11 @@ export interface ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest {
   /** Required. The custom channel which owns the collection of ad units. Format: accounts/{account}/adclients/{adclient}/customchannels/{customchannel} */
   parent: string;
 }
+const ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest>;
+
 /** Response definition for the ad units linked to a custom channel list rpc. */
 export interface ListLinkedAdUnitsResponse {
   /** The ad units returned in the list response. */
@@ -967,6 +1284,11 @@ export interface ListLinkedAdUnitsResponse {
   /** Continuation token used to page through ad units. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
+const ListLinkedAdUnitsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListLinkedAdUnitsResponse>;
+
 export interface ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest {
   /** The maximum number of custom channels to include in the response, used for paging. If unspecified, at most 10000 custom channels will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
   pageSize?: number;
@@ -975,6 +1297,11 @@ export interface ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest {
   /** Required. The ad unit which owns the collection of custom channels. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit} */
   parent: string;
 }
+const ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest>;
+
 /** Response definition for the custom channels linked to an adunit list rpc. */
 export interface ListLinkedCustomChannelsResponse {
   /** The custom channels returned in this list response. */
@@ -982,6 +1309,9 @@ export interface ListLinkedCustomChannelsResponse {
   /** Continuation token used to page through alerts. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
+const ListLinkedCustomChannelsResponse =
+  ListCustomChannelsResponse as any as S.Schema<ListLinkedCustomChannelsResponse>;
+
 export interface PatchAccountsAdclientsAdunitsRequest {
   /** The list of fields to update. If empty, a full update is performed. */
   updateMask?: string;
@@ -990,6 +1320,11 @@ export interface PatchAccountsAdclientsAdunitsRequest {
   /** Request body */
   body?: AdUnit;
 }
+const PatchAccountsAdclientsAdunitsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<PatchAccountsAdclientsAdunitsRequest>;
+
 export interface PatchAccountsAdclientsCustomchannelsRequest {
   /** Output only. Resource name of the custom channel. Format: accounts/{account}/adclients/{adclient}/customchannels/{customchannel} */
   name: string;
@@ -998,6 +1333,11 @@ export interface PatchAccountsAdclientsCustomchannelsRequest {
   /** Request body */
   body?: CustomChannel;
 }
+const PatchAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<PatchAccountsAdclientsCustomchannelsRequest>;
+
 export type CreateAccountsAdclientsAdunitsError =
   | NotFound
   | Forbidden
@@ -1012,8 +1352,8 @@ export const createAccountsAdclientsAdunits: API.OperationMethod<
   CreateAccountsAdclientsAdunitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateAccountsAdclientsAdunitsRequest>,
-  output: __S(1) as any as S.Schema<AdUnit>,
+  input: CreateAccountsAdclientsAdunitsRequest,
+  output: AdUnit,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1033,8 +1373,8 @@ export const createAccountsAdclientsCustomchannels: API.OperationMethod<
   CreateAccountsAdclientsCustomchannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateAccountsAdclientsCustomchannelsRequest>,
-  output: __S(3) as any as S.Schema<CustomChannel>,
+  input: CreateAccountsAdclientsCustomchannelsRequest,
+  output: CustomChannel,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1054,8 +1394,8 @@ export const deleteAccountsAdclientsCustomchannels: API.OperationMethod<
   DeleteAccountsAdclientsCustomchannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<DeleteAccountsAdclientsCustomchannelsRequest>,
-  output: __S(6) as any as S.Schema<Empty>,
+  input: DeleteAccountsAdclientsCustomchannelsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1069,8 +1409,8 @@ export const generateAccountsReports: API.OperationMethod<
   GenerateAccountsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<GenerateAccountsReportsRequest>,
-  output: __S(17) as any as S.Schema<ReportResult>,
+  input: GenerateAccountsReportsRequest,
+  output: ReportResult,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1088,8 +1428,8 @@ export const generateAccountsReportsSaved: API.OperationMethod<
   GenerateAccountsReportsSavedError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<GenerateAccountsReportsSavedRequest>,
-  output: __S(17) as any as S.Schema<ReportResult>,
+  input: GenerateAccountsReportsSavedRequest,
+  output: ReportResult,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1107,8 +1447,8 @@ export const generateCsvAccountsReports: API.OperationMethod<
   GenerateCsvAccountsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GenerateCsvAccountsReportsRequest>,
-  output: __S(22) as any as S.Schema<HttpBody>,
+  input: GenerateCsvAccountsReportsRequest,
+  output: HttpBody,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1126,8 +1466,8 @@ export const generateCsvAccountsReportsSaved: API.OperationMethod<
   GenerateCsvAccountsReportsSavedError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<GenerateCsvAccountsReportsSavedRequest>,
-  output: __S(22) as any as S.Schema<HttpBody>,
+  input: GenerateCsvAccountsReportsSavedRequest,
+  output: HttpBody,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1141,8 +1481,8 @@ export const getAccounts: API.OperationMethod<
   GetAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetAccountsRequest>,
-  output: __S(26) as any as S.Schema<Account>,
+  input: GetAccountsRequest,
+  output: Account,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1156,8 +1496,8 @@ export const getAccountsAdclients: API.OperationMethod<
   GetAccountsAdclientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<GetAccountsAdclientsRequest>,
-  output: __S(28) as any as S.Schema<AdClient>,
+  input: GetAccountsAdclientsRequest,
+  output: AdClient,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1175,8 +1515,8 @@ export const getAccountsAdclientsAdunits: API.OperationMethod<
   GetAccountsAdclientsAdunitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<GetAccountsAdclientsAdunitsRequest>,
-  output: __S(1) as any as S.Schema<AdUnit>,
+  input: GetAccountsAdclientsAdunitsRequest,
+  output: AdUnit,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1194,8 +1534,8 @@ export const getAccountsAdclientsCustomchannels: API.OperationMethod<
   GetAccountsAdclientsCustomchannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<GetAccountsAdclientsCustomchannelsRequest>,
-  output: __S(3) as any as S.Schema<CustomChannel>,
+  input: GetAccountsAdclientsCustomchannelsRequest,
+  output: CustomChannel,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1213,8 +1553,8 @@ export const getAccountsAdclientsUrlchannels: API.OperationMethod<
   GetAccountsAdclientsUrlchannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GetAccountsAdclientsUrlchannelsRequest>,
-  output: __S(32) as any as S.Schema<UrlChannel>,
+  input: GetAccountsAdclientsUrlchannelsRequest,
+  output: UrlChannel,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1228,8 +1568,8 @@ export const getAccountsPolicyIssues: API.OperationMethod<
   GetAccountsPolicyIssuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<GetAccountsPolicyIssuesRequest>,
-  output: __S(36) as any as S.Schema<PolicyIssue>,
+  input: GetAccountsPolicyIssuesRequest,
+  output: PolicyIssue,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1243,8 +1583,8 @@ export const getAccountsSites: API.OperationMethod<
   GetAccountsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<GetAccountsSitesRequest>,
-  output: __S(38) as any as S.Schema<Site>,
+  input: GetAccountsSitesRequest,
+  output: Site,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1262,8 +1602,8 @@ export const getAdBlockingRecoveryTagAccounts: API.OperationMethod<
   GetAdBlockingRecoveryTagAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<GetAdBlockingRecoveryTagAccountsRequest>,
-  output: __S(40) as any as S.Schema<AdBlockingRecoveryTag>,
+  input: GetAdBlockingRecoveryTagAccountsRequest,
+  output: AdBlockingRecoveryTag,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1281,8 +1621,8 @@ export const getAdcodeAccountsAdclients: API.OperationMethod<
   GetAdcodeAccountsAdclientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<GetAdcodeAccountsAdclientsRequest>,
-  output: __S(42) as any as S.Schema<AdClientAdCode>,
+  input: GetAdcodeAccountsAdclientsRequest,
+  output: AdClientAdCode,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1300,8 +1640,8 @@ export const getAdcodeAccountsAdclientsAdunits: API.OperationMethod<
   GetAdcodeAccountsAdclientsAdunitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<GetAdcodeAccountsAdclientsAdunitsRequest>,
-  output: __S(44) as any as S.Schema<AdUnitAdCode>,
+  input: GetAdcodeAccountsAdclientsAdunitsRequest,
+  output: AdUnitAdCode,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1315,8 +1655,8 @@ export const getSavedAccountsReports: API.OperationMethod<
   GetSavedAccountsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<GetSavedAccountsReportsRequest>,
-  output: __S(46) as any as S.Schema<SavedReport>,
+  input: GetSavedAccountsReportsRequest,
+  output: SavedReport,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1331,8 +1671,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(47) as any as S.Schema<ListAccountsRequest>,
-  output: __S(49) as any as S.Schema<ListAccountsResponse>,
+  input: ListAccountsRequest,
+  output: ListAccountsResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1348,8 +1688,8 @@ export const listAccountsAdclients: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAdClientsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(50) as any as S.Schema<ListAccountsAdclientsRequest>,
-  output: __S(52) as any as S.Schema<ListAdClientsResponse>,
+  input: ListAccountsAdclientsRequest,
+  output: ListAdClientsResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1369,8 +1709,8 @@ export const listAccountsAdclientsAdunits: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAdUnitsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(53) as any as S.Schema<ListAccountsAdclientsAdunitsRequest>,
-  output: __S(55) as any as S.Schema<ListAdUnitsResponse>,
+  input: ListAccountsAdclientsAdunitsRequest,
+  output: ListAdUnitsResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1390,8 +1730,8 @@ export const listAccountsAdclientsCustomchannels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCustomChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(56) as any as S.Schema<ListAccountsAdclientsCustomchannelsRequest>,
-  output: __S(58) as any as S.Schema<ListCustomChannelsResponse>,
+  input: ListAccountsAdclientsCustomchannelsRequest,
+  output: ListCustomChannelsResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1411,8 +1751,8 @@ export const listAccountsAdclientsUrlchannels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUrlChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59) as any as S.Schema<ListAccountsAdclientsUrlchannelsRequest>,
-  output: __S(61) as any as S.Schema<ListUrlChannelsResponse>,
+  input: ListAccountsAdclientsUrlchannelsRequest,
+  output: ListUrlChannelsResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1427,8 +1767,8 @@ export const listAccountsAlerts: API.OperationMethod<
   ListAccountsAlertsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<ListAccountsAlertsRequest>,
-  output: __S(65) as any as S.Schema<ListAlertsResponse>,
+  input: ListAccountsAlertsRequest,
+  output: ListAlertsResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1442,8 +1782,8 @@ export const listAccountsPayments: API.OperationMethod<
   ListAccountsPaymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<ListAccountsPaymentsRequest>,
-  output: __S(69) as any as S.Schema<ListPaymentsResponse>,
+  input: ListAccountsPaymentsRequest,
+  output: ListPaymentsResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1458,8 +1798,8 @@ export const listAccountsPolicyIssues: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPolicyIssuesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(70) as any as S.Schema<ListAccountsPolicyIssuesRequest>,
-  output: __S(72) as any as S.Schema<ListPolicyIssuesResponse>,
+  input: ListAccountsPolicyIssuesRequest,
+  output: ListPolicyIssuesResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1475,8 +1815,8 @@ export const listAccountsReportsSaved: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSavedReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(73) as any as S.Schema<ListAccountsReportsSavedRequest>,
-  output: __S(75) as any as S.Schema<ListSavedReportsResponse>,
+  input: ListAccountsReportsSavedRequest,
+  output: ListSavedReportsResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1492,8 +1832,8 @@ export const listAccountsSites: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSitesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(76) as any as S.Schema<ListAccountsSitesRequest>,
-  output: __S(78) as any as S.Schema<ListSitesResponse>,
+  input: ListAccountsSitesRequest,
+  output: ListSitesResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1509,8 +1849,8 @@ export const listChildAccountsAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListChildAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(79) as any as S.Schema<ListChildAccountsAccountsRequest>,
-  output: __S(80) as any as S.Schema<ListChildAccountsResponse>,
+  input: ListChildAccountsAccountsRequest,
+  output: ListChildAccountsResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1530,8 +1870,8 @@ export const listLinkedAdUnitsAccountsAdclientsCustomchannels: API.PaginatedOper
   GcpOpContext,
   ListLinkedAdUnitsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(81) as any as S.Schema<ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest>,
-  output: __S(82) as any as S.Schema<ListLinkedAdUnitsResponse>,
+  input: ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest,
+  output: ListLinkedAdUnitsResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1551,8 +1891,8 @@ export const listLinkedCustomChannelsAccountsAdclientsAdunits: API.PaginatedOper
   GcpOpContext,
   ListLinkedCustomChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(83) as any as S.Schema<ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest>,
-  output: __S(58) as any as S.Schema<ListLinkedCustomChannelsResponse>,
+  input: ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest,
+  output: ListLinkedCustomChannelsResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1573,8 +1913,8 @@ export const patchAccountsAdclientsAdunits: API.OperationMethod<
   PatchAccountsAdclientsAdunitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<PatchAccountsAdclientsAdunitsRequest>,
-  output: __S(1) as any as S.Schema<AdUnit>,
+  input: PatchAccountsAdclientsAdunitsRequest,
+  output: AdUnit,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1594,8 +1934,8 @@ export const patchAccountsAdclientsCustomchannels: API.OperationMethod<
   PatchAccountsAdclientsCustomchannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<PatchAccountsAdclientsCustomchannelsRequest>,
-  output: __S(3) as any as S.Schema<CustomChannel>,
+  input: PatchAccountsAdclientsCustomchannelsRequest,
+  output: CustomChannel,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1608,24 +1948,24 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           size: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(ContentAdsSettingsTypeEnum),
         }),
       ).annotate({ identifier: "ContentAdsSettings" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          contentAdsSettings: S.optional(__S(0)),
+          contentAdsSettings: S.optional(ContentAdsSettings),
           reportingDimensionId: S.optional(S.String),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(AdUnitStateEnum),
         }),
       ).annotate({ identifier: "AdUnit" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(1).pipe(T.HttpBody())),
+          body: S.optional(AdUnit.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1649,7 +1989,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(3).pipe(T.HttpBody())),
+          body: S.optional(CustomChannel.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1679,7 +2019,7 @@ function __c0(j: number): any {
         identifier: "Empty",
       });
     case 7:
-      return S.Array(S.String);
+      return S.Array(GenerateAccountsReportsMetricsEnum);
   }
 }
 function __c1(j: number): any {
@@ -1692,16 +2032,18 @@ function __c1(j: number): any {
           currencyCode: S.optional(S.String.pipe(T.Query())),
           account: S.String.pipe(T.Label()),
           limit: S.optional(S.Number.pipe(T.Query())),
-          metrics: S.optional(__S(7).pipe(T.Query())),
+          metrics: S.optional(GenerateAccountsReportsMetricsEnumList.pipe(T.Query())),
           "endDate.month": S.optional(S.Number.pipe(T.Query())),
           "endDate.day": S.optional(S.Number.pipe(T.Query())),
-          dimensions: S.optional(__S(7).pipe(T.Query())),
+          dimensions: S.optional(GenerateAccountsReportsDimensionsEnumList.pipe(T.Query())),
           "startDate.year": S.optional(S.Number.pipe(T.Query())),
-          filters: S.optional(__S(8).pipe(T.Query())),
-          dateRange: S.optional(S.String.pipe(T.Query())),
+          filters: S.optional(StringList.pipe(T.Query())),
+          dateRange: S.optional(GenerateAccountsReportsDateRangeEnum.pipe(T.Query())),
           "startDate.month": S.optional(S.Number.pipe(T.Query())),
-          reportingTimeZone: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(__S(8).pipe(T.Query())),
+          reportingTimeZone: S.optional(
+            GenerateAccountsReportsReportingTimeZoneEnum.pipe(T.Query()),
+          ),
+          orderBy: S.optional(StringList.pipe(T.Query())),
           "endDate.year": S.optional(S.Number.pipe(T.Query())),
           languageCode: S.optional(S.String.pipe(T.Query())),
           "startDate.day": S.optional(S.Number.pipe(T.Query())),
@@ -1727,12 +2069,12 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           currencyCode: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(HeaderTypeEnum),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Header" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(Header);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1740,11 +2082,11 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Cell" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(Cell);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          cells: S.optional(__S(14)),
+          cells: S.optional(CellList),
         }),
       ).annotate({ identifier: "Row" });
   }
@@ -1752,17 +2094,17 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(Row);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          endDate: S.optional(__S(10)),
-          headers: S.optional(__S(12)),
-          rows: S.optional(__S(16)),
-          warnings: S.optional(__S(8)),
-          startDate: S.optional(__S(10)),
-          totals: S.optional(__S(15)),
-          averages: S.optional(__S(15)),
+          endDate: S.optional(Adsense_Date),
+          headers: S.optional(HeaderList),
+          rows: S.optional(RowList),
+          warnings: S.optional(StringList),
+          startDate: S.optional(Adsense_Date),
+          totals: S.optional(Row),
+          averages: S.optional(Row),
           totalMatchedRows: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportResult" });
@@ -1771,11 +2113,13 @@ function __c2(j: number): any {
         S.Struct({
           "startDate.year": S.optional(S.Number.pipe(T.Query())),
           "endDate.day": S.optional(S.Number.pipe(T.Query())),
-          dateRange: S.optional(S.String.pipe(T.Query())),
+          dateRange: S.optional(GenerateAccountsReportsSavedDateRangeEnum.pipe(T.Query())),
           currencyCode: S.optional(S.String.pipe(T.Query())),
           "endDate.month": S.optional(S.Number.pipe(T.Query())),
           "startDate.month": S.optional(S.Number.pipe(T.Query())),
-          reportingTimeZone: S.optional(S.String.pipe(T.Query())),
+          reportingTimeZone: S.optional(
+            GenerateAccountsReportsSavedReportingTimeZoneEnum.pipe(T.Query()),
+          ),
           name: S.String.pipe(T.Label()),
           languageCode: S.optional(S.String.pipe(T.Query())),
           "startDate.day": S.optional(S.Number.pipe(T.Query())),
@@ -1797,17 +2141,19 @@ function __c2(j: number): any {
           account: S.String.pipe(T.Label()),
           "startDate.year": S.optional(S.Number.pipe(T.Query())),
           languageCode: S.optional(S.String.pipe(T.Query())),
-          metrics: S.optional(__S(7).pipe(T.Query())),
+          metrics: S.optional(GenerateCsvAccountsReportsMetricsEnumList.pipe(T.Query())),
           "endDate.year": S.optional(S.Number.pipe(T.Query())),
-          dimensions: S.optional(__S(7).pipe(T.Query())),
-          filters: S.optional(__S(8).pipe(T.Query())),
+          dimensions: S.optional(GenerateCsvAccountsReportsDimensionsEnumList.pipe(T.Query())),
+          filters: S.optional(StringList.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          reportingTimeZone: S.optional(S.String.pipe(T.Query())),
+          reportingTimeZone: S.optional(
+            GenerateCsvAccountsReportsReportingTimeZoneEnum.pipe(T.Query()),
+          ),
           "startDate.month": S.optional(S.Number.pipe(T.Query())),
           "endDate.day": S.optional(S.Number.pipe(T.Query())),
-          orderBy: S.optional(__S(8).pipe(T.Query())),
+          orderBy: S.optional(StringList.pipe(T.Query())),
           "startDate.day": S.optional(S.Number.pipe(T.Query())),
-          dateRange: S.optional(S.String.pipe(T.Query())),
+          dateRange: S.optional(GenerateCsvAccountsReportsDateRangeEnum.pipe(T.Query())),
           currencyCode: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -1822,11 +2168,11 @@ function __c2(j: number): any {
     case 4:
       return S.Record(S.String, S.Unknown);
     case 5:
-      return S.Array(__S(20));
+      return S.Array(DocumentMap);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          extensions: S.optional(__S(21)),
+          extensions: S.optional(DocumentMapList),
           contentType: S.optional(S.String),
           data: S.optional(S.String),
         }),
@@ -1836,7 +2182,9 @@ function __c2(j: number): any {
         S.Struct({
           "endDate.day": S.optional(S.Number.pipe(T.Query())),
           currencyCode: S.optional(S.String.pipe(T.Query())),
-          reportingTimeZone: S.optional(S.String.pipe(T.Query())),
+          reportingTimeZone: S.optional(
+            GenerateCsvAccountsReportsSavedReportingTimeZoneEnum.pipe(T.Query()),
+          ),
           "startDate.day": S.optional(S.Number.pipe(T.Query())),
           "endDate.year": S.optional(S.Number.pipe(T.Query())),
           languageCode: S.optional(S.String.pipe(T.Query())),
@@ -1844,7 +2192,7 @@ function __c2(j: number): any {
           "startDate.year": S.optional(S.Number.pipe(T.Query())),
           "startDate.month": S.optional(S.Number.pipe(T.Query())),
           "endDate.month": S.optional(S.Number.pipe(T.Query())),
-          dateRange: S.optional(S.String.pipe(T.Query())),
+          dateRange: S.optional(GenerateCsvAccountsReportsSavedDateRangeEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1878,12 +2226,12 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          timeZone: S.optional(__S(25)),
+          timeZone: S.optional(TimeZone),
           createTime: S.optional(S.String),
           premium: S.optional(S.Boolean),
-          pendingTasks: S.optional(__S(8)),
+          pendingTasks: S.optional(StringList),
           name: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(AccountStateEnum),
         }),
       ).annotate({ identifier: "Account" });
     case 3:
@@ -1901,7 +2249,7 @@ function __c3(j: number): any {
         S.Struct({
           reportingDimensionId: S.optional(S.String),
           name: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(AdClientStateEnum),
           productCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdClient" });
@@ -1962,26 +2310,26 @@ function __c4(j: number): any {
         S.Struct({
           mustFix: S.optional(S.Boolean),
           topic: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(PolicyTopicTypeEnum),
         }),
       ).annotate({ identifier: "PolicyTopic" });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(PolicyTopic);
     case 4:
       return S.suspend(() =>
         S.Struct({
           site: S.optional(S.String),
-          entityType: S.optional(S.String),
-          action: S.optional(S.String),
+          entityType: S.optional(PolicyIssueEntityTypeEnum),
+          action: S.optional(PolicyIssueActionEnum),
           name: S.optional(S.String),
           adRequestCount: S.optional(S.String),
-          adClients: S.optional(__S(8)),
+          adClients: S.optional(StringList),
           siteSection: S.optional(S.String),
-          policyTopics: S.optional(__S(35)),
-          warningEscalationDate: S.optional(__S(10)),
-          firstDetectedDate: S.optional(__S(10)),
+          policyTopics: S.optional(PolicyTopicList),
+          warningEscalationDate: S.optional(Adsense_Date),
+          firstDetectedDate: S.optional(Adsense_Date),
           uri: S.optional(S.String),
-          lastDetectedDate: S.optional(__S(10)),
+          lastDetectedDate: S.optional(Adsense_Date),
         }),
       ).annotate({ identifier: "PolicyIssue" });
     case 5:
@@ -1995,7 +2343,7 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(SiteStateEnum),
           reportingDimensionId: S.optional(S.String),
           autoAdsEnabled: S.optional(S.Boolean),
           name: S.optional(S.String),
@@ -2104,11 +2452,11 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(26));
+      return S.Array(Account);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          accounts: S.optional(__S(48)),
+          accounts: S.optional(AccountList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAccountsResponse" });
@@ -2129,12 +2477,12 @@ function __c6(j: number): any {
         identifier: "ListAccountsAdclientsRequest",
       });
     case 3:
-      return S.Array(__S(28));
+      return S.Array(AdClient);
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          adClients: S.optional(__S(51)),
+          adClients: S.optional(AdClientList),
         }),
       ).annotate({ identifier: "ListAdClientsResponse" });
     case 5:
@@ -2154,12 +2502,12 @@ function __c6(j: number): any {
         identifier: "ListAccountsAdclientsAdunitsRequest",
       });
     case 6:
-      return S.Array(__S(1));
+      return S.Array(AdUnit);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          adUnits: S.optional(__S(54)),
+          adUnits: S.optional(AdUnitList),
         }),
       ).annotate({ identifier: "ListAdUnitsResponse" });
   }
@@ -2183,11 +2531,11 @@ function __c7(j: number): any {
         identifier: "ListAccountsAdclientsCustomchannelsRequest",
       });
     case 1:
-      return S.Array(__S(3));
+      return S.Array(CustomChannel);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          customChannels: S.optional(__S(57)),
+          customChannels: S.optional(CustomChannelList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2210,12 +2558,12 @@ function __c7(j: number): any {
         identifier: "ListAccountsAdclientsUrlchannelsRequest",
       });
     case 4:
-      return S.Array(__S(32));
+      return S.Array(UrlChannel);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          urlChannels: S.optional(__S(60)),
+          urlChannels: S.optional(UrlChannelList),
         }),
       ).annotate({ identifier: "ListUrlChannelsResponse" });
     case 6:
@@ -2239,7 +2587,7 @@ function __c7(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           message: S.optional(S.String),
-          severity: S.optional(S.String),
+          severity: S.optional(AlertSeverityEnum),
         }),
       ).annotate({ identifier: "Alert" });
   }
@@ -2247,11 +2595,11 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(Alert);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          alerts: S.optional(__S(64)),
+          alerts: S.optional(AlertList),
         }),
       ).annotate({ identifier: "ListAlertsResponse" });
     case 2:
@@ -2271,17 +2619,17 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          date: S.optional(__S(10)),
+          date: S.optional(Adsense_Date),
           name: S.optional(S.String),
           amount: S.optional(S.String),
         }),
       ).annotate({ identifier: "Payment" });
     case 4:
-      return S.Array(__S(67));
+      return S.Array(Payment);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          payments: S.optional(__S(68)),
+          payments: S.optional(PaymentList),
         }),
       ).annotate({ identifier: "ListPaymentsResponse" });
     case 6:
@@ -2301,7 +2649,7 @@ function __c8(j: number): any {
         identifier: "ListAccountsPolicyIssuesRequest",
       });
     case 7:
-      return S.Array(__S(36));
+      return S.Array(PolicyIssue);
   }
 }
 function __c9(j: number): any {
@@ -2310,7 +2658,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          policyIssues: S.optional(__S(71)),
+          policyIssues: S.optional(PolicyIssueList),
         }),
       ).annotate({ identifier: "ListPolicyIssuesResponse" });
     case 1:
@@ -2330,11 +2678,11 @@ function __c9(j: number): any {
         identifier: "ListAccountsReportsSavedRequest",
       });
     case 2:
-      return S.Array(__S(46));
+      return S.Array(SavedReport);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          savedReports: S.optional(__S(74)),
+          savedReports: S.optional(SavedReportList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSavedReportsResponse" });
@@ -2353,11 +2701,11 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "ListAccountsSitesRequest" });
     case 5:
-      return S.Array(__S(38));
+      return S.Array(Site);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sites: S.optional(__S(77)),
+          sites: S.optional(SiteList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSitesResponse" });
@@ -2385,7 +2733,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          accounts: S.optional(__S(48)),
+          accounts: S.optional(AccountList),
         }),
       ).annotate({
         identifier: "ListChildAccountsResponse",
@@ -2409,7 +2757,7 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          adUnits: S.optional(__S(54)),
+          adUnits: S.optional(AdUnitList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2436,7 +2784,7 @@ function __c10(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(1).pipe(T.HttpBody())),
+          body: S.optional(AdUnit.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2452,7 +2800,7 @@ function __c10(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(3).pipe(T.HttpBody())),
+          body: S.optional(CustomChannel.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2463,36 +2811,5 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "PatchAccountsAdclientsCustomchannelsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
   }
 }

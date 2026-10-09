@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -65,6 +63,8 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
+
 /** Request to create a subnetwork in a previously peered service network. */
 export interface AddSubnetworkRequest {
   /** Optional. The starting address of a range. The address must be a valid IPv4 address in the x.x.x.x format. This value combined with the IP prefix range is the CIDR range for the subnet. The range must be within the allocated range that is assigned to the private connection. If the CIDR range isn't available, the call fails. */
@@ -84,14 +84,25 @@ export interface AddSubnetworkRequest {
   /** An optional description of the subnet. */
   description?: string;
 }
+const AddSubnetworkRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AddSubnetworkRequest>;
+
 export interface AddSubnetworkServicesRequest {
   /** Required. A tenant project in the service producer organization, in the following format: services/{service}/{collection-id}/{resource-id}. {collection-id} is the cloud resource collection type that represents the tenant project. Only `projects` are supported. {resource-id} is the tenant project numeric id, such as `123456`. {service} the name of the peering service, such as `service-peering.example.com`. This service must already be enabled in the service consumer's project. */
   parent: string;
   /** Request body */
   body?: AddSubnetworkRequest;
 }
+const AddSubnetworkServicesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AddSubnetworkServicesRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -101,6 +112,8 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
+const Status = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Status>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -114,6 +127,8 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
+const Operation = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Operation>;
+
 /** Represents a private connection resource. A private connection is implemented as a VPC Network Peering connection between a service producer's VPC network and a service consumer's VPC network. */
 export interface GoogleCloudServicenetworkingV1betaConnection {
   /** Output only. The name of the peering service that's associated with this connection, in the following format: `services/{service name}`. */
@@ -125,29 +140,56 @@ export interface GoogleCloudServicenetworkingV1betaConnection {
   /** Output only. The name of the VPC Network Peering connection that was created by the service producer. */
   peering?: string;
 }
+const GoogleCloudServicenetworkingV1betaConnection = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GoogleCloudServicenetworkingV1betaConnection>;
+
 export interface CreateServicesConnectionsRequest {
   /** The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. */
   parent: string;
   /** Request body */
   body?: GoogleCloudServicenetworkingV1betaConnection;
 }
+const CreateServicesConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateServicesConnectionsRequest>;
+
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetOperationsRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetOperationsRequest>;
+
 export interface ListServicesConnectionsRequest {
   /** The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. If you specify `-` as the parameter value, all configured public peering services are listed. */
   parent: string;
   /** The name of service consumer's VPC network that's connected with service producer network through a private connection. The network name must be in the following format: `projects/{project}/global/networks/{network}`. {project} is a project number, such as in `12345` that includes the VPC service consumer's VPC network. {network} is the name of the service consumer's VPC network. */
   network?: string;
 }
+const ListServicesConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListServicesConnectionsRequest>;
+
 export type GoogleCloudServicenetworkingV1betaConnectionList =
   Array<GoogleCloudServicenetworkingV1betaConnection>;
+const GoogleCloudServicenetworkingV1betaConnectionList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GoogleCloudServicenetworkingV1betaConnectionList>;
+
 /** ListConnectionsResponse is the response to list peering states for the given service and consumer project. */
 export interface ListConnectionsResponse {
   /** The list of Connections. */
   connections?: GoogleCloudServicenetworkingV1betaConnectionList;
 }
+const ListConnectionsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ListConnectionsResponse>;
+
 /** Request to search for an unused range within allocated ranges. */
 export interface SearchRangeRequest {
   /** Network name in the consumer project. This network must have been already peered with a shared VPC network using CreateConnection method. Must be in a form 'projects/{project}/global/networks/{network}'. {project} is a project number, as in '12345' {network} is network name. */
@@ -155,12 +197,19 @@ export interface SearchRangeRequest {
   /** Required. The prefix length of the IP range. Use usual CIDR range notation. For example, '30' to find unused x.x.x.x/30 CIDR range. Actual range will be determined using allocated range for the consumer peered network and returned in the result. */
   ipPrefixLength?: number;
 }
+const SearchRangeRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<SearchRangeRequest>;
+
 export interface SearchRangeServicesRequest {
   /** Required. This is in a form services/{service}. {service} the name of the private access management service, for example 'service-peering.example.com'. */
   parent: string;
   /** Request body */
   body?: SearchRangeRequest;
 }
+const SearchRangeServicesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<SearchRangeServicesRequest>;
+
 export interface UpdateConnectionsServicesRequest {
   /** The update mask. If this is omitted, it defaults to "*". You can only update the listed peering ranges. */
   updateMask?: string;
@@ -171,6 +220,11 @@ export interface UpdateConnectionsServicesRequest {
   /** Request body */
   body?: GoogleCloudServicenetworkingV1betaConnection;
 }
+const UpdateConnectionsServicesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<UpdateConnectionsServicesRequest>;
+
 export type AddSubnetworkServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** For service producers, provisions a new subnet in a peered service's shared VPC network in the requested region and with the requested size that's expressed as a CIDR range (number of leading bits of ipV4 network mask). The method checks against the assigned allocated ranges to find a non-conflicting IP address range. The method will reuse a subnet if subsequent calls contain the same subnet name, region, and prefix length. This method will make producer's tenant project to be a shared VPC service project as needed. The response from the `get` operation will be of type `Subnetwork` if the operation successfully completes. */
 export const addSubnetworkServices: API.OperationMethod<
@@ -179,8 +233,8 @@ export const addSubnetworkServices: API.OperationMethod<
   AddSubnetworkServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<AddSubnetworkServicesRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: AddSubnetworkServicesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -199,8 +253,8 @@ export const createServicesConnections: API.OperationMethod<
   CreateServicesConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateServicesConnectionsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: CreateServicesConnectionsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -214,8 +268,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<GetOperationsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: GetOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -229,8 +283,8 @@ export const listServicesConnections: API.OperationMethod<
   ListServicesConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<ListServicesConnectionsRequest>,
-  output: __S(12) as any as S.Schema<ListConnectionsResponse>,
+  input: ListServicesConnectionsRequest,
+  output: ListConnectionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -244,8 +298,8 @@ export const searchRangeServices: API.OperationMethod<
   SearchRangeServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<SearchRangeServicesRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: SearchRangeServicesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -264,8 +318,8 @@ export const updateConnectionsServices: API.OperationMethod<
   UpdateConnectionsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<UpdateConnectionsServicesRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: UpdateConnectionsServicesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -280,7 +334,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           requestedAddress: S.optional(S.String),
-          subnetworkUsers: S.optional(__S(0)),
+          subnetworkUsers: S.optional(StringList),
           consumer: S.optional(S.String),
           ipPrefixLength: S.optional(S.Number),
           region: S.optional(S.String),
@@ -293,7 +347,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(1).pipe(T.HttpBody())),
+          body: S.optional(AddSubnetworkRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -307,11 +361,11 @@ function __c0(j: number): any {
     case 3:
       return S.Record(S.String, S.Unknown);
     case 4:
-      return S.Array(__S(3));
+      return S.Array(DocumentMap);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(4)),
+          details: S.optional(DocumentMapList),
           code: S.optional(S.Number),
           message: S.optional(S.String),
         }),
@@ -319,11 +373,11 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(3)),
+          metadata: S.optional(DocumentMap),
           done: S.optional(S.Boolean),
-          error: S.optional(__S(5)),
+          error: S.optional(Status),
           name: S.optional(S.String),
-          response: S.optional(__S(3)),
+          response: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "Operation" });
     case 7:
@@ -331,7 +385,7 @@ function __c0(j: number): any {
         S.Struct({
           service: S.optional(S.String),
           network: S.optional(S.String),
-          reservedPeeringRanges: S.optional(__S(0)),
+          reservedPeeringRanges: S.optional(StringList),
           peering: S.optional(S.String),
         }),
       ).annotate({
@@ -345,7 +399,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(7).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudServicenetworkingV1betaConnection.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -384,11 +438,11 @@ function __c1(j: number): any {
         identifier: "ListServicesConnectionsRequest",
       });
     case 3:
-      return S.Array(__S(7));
+      return S.Array(GoogleCloudServicenetworkingV1betaConnection);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          connections: S.optional(__S(11)),
+          connections: S.optional(GoogleCloudServicenetworkingV1betaConnectionList),
         }),
       ).annotate({ identifier: "ListConnectionsResponse" });
     case 5:
@@ -402,7 +456,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(13).pipe(T.HttpBody())),
+          body: S.optional(SearchRangeRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -419,7 +473,7 @@ function __c1(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           force: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(7).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudServicenetworkingV1betaConnection.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -430,18 +484,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateConnectionsServicesRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

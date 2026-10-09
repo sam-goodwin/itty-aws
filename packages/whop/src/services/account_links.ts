@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -49,6 +47,8 @@ export class UnprocessableEntity
 
 /** The different use cases for generating an account link. */
 export type AccountLinkUseCases = "account_onboarding" | "payouts_portal";
+const AccountLinkUseCases = S.String;
+
 export interface CreateAccountLinkRequest {
   /** The unique identifier of the company to generate the link for, starting with 'biz_'. Must be a sub-merchant of the API key's company. */
   account_id: string;
@@ -59,6 +59,11 @@ export interface CreateAccountLinkRequest {
   /** The purpose of the account link, such as hosted payouts portal or hosted KYC onboarding. */
   use_case: AccountLinkUseCases | (string & {});
 }
+const CreateAccountLinkRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateAccountLinkRequest>;
+
 /** A temporary, time-limited URL that grants a user access to an external account management page. */
 export interface AccountLink {
   /** The timestamp after which this account link URL is no longer valid. */
@@ -66,6 +71,8 @@ export interface AccountLink {
   /** The temporary URL to redirect the user to for account access. Expires at the time specified by expires_at. */
   url: string;
 }
+const AccountLink = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AccountLink>;
+
 export type CreateAccountLinkError =
   | BadRequest
   | Forbidden
@@ -79,8 +86,8 @@ export const createAccountLink: API.OperationMethod<
   CreateAccountLinkError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateAccountLinkRequest>,
-  output: __S(1) as any as S.Schema<AccountLink>,
+  input: CreateAccountLinkRequest,
+  output: AccountLink,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -95,7 +102,7 @@ function __c0(j: number): any {
           account_id: S.String,
           refresh_url: S.String,
           return_url: S.String,
-          use_case: S.String,
+          use_case: AccountLinkUseCases,
         }).pipe(T.Http({ method: "POST", uri: "/account_links", code: 200 })),
       ).annotate({ identifier: "CreateAccountLinkRequest" });
     case 1:
@@ -105,16 +112,5 @@ function __c0(j: number): any {
           url: S.String,
         }),
       ).annotate({ identifier: "AccountLink" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 1) {
-    case 0:
-      return __c0(i & 1);
   }
 }

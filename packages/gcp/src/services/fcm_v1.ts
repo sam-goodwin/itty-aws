@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -73,6 +71,8 @@ export interface TopicSubscription {
   /** Output only. Time when the subscription was created. */
   createTime?: string;
 }
+const TopicSubscription = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<TopicSubscription>;
+
 export interface CreateProjectsRegistrationsTopicSubscriptionsRequest {
   /** Required. The ID to use for the subscription, which is the topic name. This will become the last segment of the TopicSubscription's resource name. Topic names match the pattern of "[a-zA-Z0-9-_.~%]{1,900}". */
   topicName?: string;
@@ -81,18 +81,35 @@ export interface CreateProjectsRegistrationsTopicSubscriptionsRequest {
   /** Request body */
   body?: TopicSubscription;
 }
+const CreateProjectsRegistrationsTopicSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateProjectsRegistrationsTopicSubscriptionsRequest>;
+
 export interface DeleteProjectsRegistrationsTopicSubscriptionsRequest {
   /** Optional. If set to true, and the topic subscription is not found, the request will succeed but no action will be taken on the server. */
   allowMissing?: boolean;
   /** Required. The name of the topic subscription to delete. Format: projects/{project}/registrations/{registration}/topicSubscriptions/{topicSubscription} */
   name: string;
 }
+const DeleteProjectsRegistrationsTopicSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteProjectsRegistrationsTopicSubscriptionsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Empty>;
+
 export interface GetProjectsRegistrationsTopicSubscriptionsRequest {
   /** Required. The name of the topic subscription to retrieve. Format: projects/{project}/registrations/{registration}/topicSubscriptions/{topicSubscription} */
   name: string;
 }
+const GetProjectsRegistrationsTopicSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetProjectsRegistrationsTopicSubscriptionsRequest>;
+
 export interface ListProjectsRegistrationsTopicSubscriptionsRequest {
   /** Optional. The maximum number of subscriptions to return. The service may return fewer than this value. If unspecified, at most 1000 subscriptions will be returned. The maximum value is 2000; values above 2000 will be coerced to 2000. */
   pageSize?: number;
@@ -101,7 +118,17 @@ export interface ListProjectsRegistrationsTopicSubscriptionsRequest {
   /** Required. The parent resource, which owns this collection of subscriptions. Format: projects/{project}/registrations/{registration} The {registration} part can be an FID or an FCM Token. */
   parent: string;
 }
+const ListProjectsRegistrationsTopicSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListProjectsRegistrationsTopicSubscriptionsRequest>;
+
 export type TopicSubscriptionList = Array<TopicSubscription>;
+const TopicSubscriptionList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<TopicSubscriptionList>;
+
 /** Response message for ListTopicSubscriptions. */
 export interface ListTopicSubscriptionsResponse {
   /** The topic subscriptions for the instance. */
@@ -109,6 +136,11 @@ export interface ListTopicSubscriptionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListTopicSubscriptionsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListTopicSubscriptionsResponse>;
+
 export interface PatchProjectsRegistrationsTopicSubscriptionsRequest {
   /** Optional. If set to true, and the topic subscription is not found, a new topic subscription will be created. */
   allowMissing?: boolean;
@@ -117,6 +149,11 @@ export interface PatchProjectsRegistrationsTopicSubscriptionsRequest {
   /** Request body */
   body?: TopicSubscription;
 }
+const PatchProjectsRegistrationsTopicSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<PatchProjectsRegistrationsTopicSubscriptionsRequest>;
+
 /** Basic notification template to use across all platforms. */
 export interface Notification {
   /** The notification's body text. */
@@ -126,13 +163,21 @@ export interface Notification {
   /** Contains the URL of an image that is going to be downloaded on the device and displayed in a notification. JPEG, PNG, BMP have full support across platforms. Animated GIF and video only work on iOS. WebP and HEIF have varying levels of support across platforms and platform versions. Android has 1MB image size limit. Quota usage and implications/costs for hosting image on Firebase Storage: https://firebase.google.com/pricing */
   image?: string;
 }
+const Notification = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Notification>;
+
 /** Platform independent options for features provided by the FCM SDKs. */
 export interface FcmOptions {
   /** Label associated with the message's analytics data. */
   analyticsLabel?: string;
 }
+const FcmOptions = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<FcmOptions>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DocumentMap>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<StringMap>;
+
 /** Options for features provided by the FCM SDK for iOS. */
 export interface ApnsFcmOptions {
   /** Contains the URL of an image that is going to be displayed in a notification. If present, it will override google.firebase.fcm.v1.Notification.image. */
@@ -140,6 +185,8 @@ export interface ApnsFcmOptions {
   /** Label associated with the message's analytics data. */
   analyticsLabel?: string;
 }
+const ApnsFcmOptions = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ApnsFcmOptions>;
+
 /** [Apple Push Notification Service](https://goo.gl/MXRTPa) specific options. */
 export interface ApnsConfig {
   /** APNs payload as a JSON object, including both `aps` dictionary and custom payload. See [Payload Key Reference](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification). If present, it overrides google.firebase.fcm.v1.Notification.title and google.firebase.fcm.v1.Notification.body. */
@@ -151,6 +198,8 @@ export interface ApnsConfig {
   /** Options for features provided by the FCM SDK for iOS. */
   fcmOptions?: ApnsFcmOptions;
 }
+const ApnsConfig = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ApnsConfig>;
+
 /** Options for features provided by the FCM SDK for Web. */
 export interface WebpushFcmOptions {
   /** The link to open when the user clicks on the notification. For all URL values, HTTPS is required. */
@@ -158,6 +207,8 @@ export interface WebpushFcmOptions {
   /** Label associated with the message's analytics data. */
   analyticsLabel?: string;
 }
+const WebpushFcmOptions = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<WebpushFcmOptions>;
+
 /** [Webpush protocol](https://tools.ietf.org/html/rfc8030) options. */
 export interface WebpushConfig {
   /** HTTP headers defined in webpush protocol. Refer to [Webpush protocol](https://tools.ietf.org/html/rfc8030#section-5) for supported headers, e.g. "TTL": "15". */
@@ -169,9 +220,13 @@ export interface WebpushConfig {
   /** Options for features provided by the FCM SDK for Web. */
   fcmOptions?: WebpushFcmOptions;
 }
+const WebpushConfig = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<WebpushConfig>;
+
 /** Options for features provided by the FCM SDK for Android. */
 export type AndroidFcmOptions = FcmOptions;
 export type AndroidConfigPriorityEnum = "NORMAL" | "HIGH";
+const AndroidConfigPriorityEnum = S.String;
+
 export type AndroidNotificationNotificationPriorityEnum =
   | "PRIORITY_UNSPECIFIED"
   | "PRIORITY_MIN"
@@ -179,17 +234,25 @@ export type AndroidNotificationNotificationPriorityEnum =
   | "PRIORITY_DEFAULT"
   | "PRIORITY_HIGH"
   | "PRIORITY_MAX";
+const AndroidNotificationNotificationPriorityEnum = S.String;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<StringList>;
+
 export type AndroidNotificationProxyEnum =
   | "PROXY_UNSPECIFIED"
   | "ALLOW"
   | "DENY"
   | "IF_PRIORITY_LOWERED";
+const AndroidNotificationProxyEnum = S.String;
+
 export type AndroidNotificationVisibilityEnum =
   | "VISIBILITY_UNSPECIFIED"
   | "PRIVATE"
   | "PUBLIC"
   | "SECRET";
+const AndroidNotificationVisibilityEnum = S.String;
+
 /** Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the absolute color space that should be used to interpret the RGB value--for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(''); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(''); }; // ... */
 export interface Color {
   /** The amount of green in the color as a value in the interval [0, 1]. */
@@ -201,6 +264,8 @@ export interface Color {
   /** The fraction of this color that should be applied to the pixel. That is, the final pixel color is defined by the equation: `pixel color = alpha * (this color) + (1.0 - alpha) * (background color)` This means that a value of 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to a completely transparent color. This uses a wrapper message rather than a simple float scalar so that it is possible to distinguish between a default value and the value being unset. If omitted, this color object is rendered as a solid color (as if the alpha value had been explicitly given a value of 1.0). */
   alpha?: number;
 }
+const Color = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Color>;
+
 /** Settings to control notification LED. */
 export interface LightSettings {
   /** Required. Along with `light_on_duration`, define the blink rate of LED flashes. Resolution defined by [proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration) */
@@ -210,6 +275,8 @@ export interface LightSettings {
   /** Required. Set `color` of the LED with [google.type.Color](https://github.com/googleapis/googleapis/blob/master/google/type/color.proto). */
   color?: Color;
 }
+const LightSettings = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<LightSettings>;
+
 /** Notification to send to android devices. */
 export interface AndroidNotification {
   /** The [notification's channel id](https://developer.android.com/guide/topics/ui/notifiers/notifications#ManageChannels) (new in Android O). The app must create a channel with this channel ID before any notification with this channel ID is received. If you don't send this channel ID in the request, or if the channel ID provided has not yet been created by the app, FCM uses the channel ID specified in the app manifest. */
@@ -267,6 +334,8 @@ export interface AndroidNotification {
   /** The action associated with a user click on the notification. If specified, an activity with a matching intent filter is launched when a user clicks on the notification. */
   clickAction?: string;
 }
+const AndroidNotification = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<AndroidNotification>;
+
 /** Android specific options for messages sent through [FCM connection server](https://goo.gl/4GLdUl). */
 export interface AndroidConfig {
   /** Arbitrary key/value payload. If present, it will override google.firebase.fcm.v1.Message.data. */
@@ -290,6 +359,8 @@ export interface AndroidConfig {
   /** Optional. If set to true, messages will be allowed to be delivered to the app while the device is connected over a restricted satellite network. This should only be enabled for messages that can be handled over a restricted satellite network and only for apps that are enabled to work over a restricted satellite network. Note that the ability of the app to connect to a restricted satellite network is dependent on the carrier's settings and the device model. */
   restrictedSatelliteOk?: boolean;
 }
+const AndroidConfig = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<AndroidConfig>;
+
 /** Message to send by Firebase Cloud Messaging Service. */
 export interface Message {
   /** [Firebase Installation ID (FID)](/docs/cloud-messaging/android/get-started#access-firebase-installation-id) to send a message to. */
@@ -315,6 +386,8 @@ export interface Message {
   /** Input only. Android specific options for messages sent through [FCM connection server](https://goo.gl/4GLdUl). */
   android?: AndroidConfig;
 }
+const Message = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Message>;
+
 /** Request to send a message to specified target. */
 export interface SendMessageRequest {
   /** Required. Message to send. */
@@ -322,12 +395,19 @@ export interface SendMessageRequest {
   /** Flag for testing the request without actually delivering the message. */
   validateOnly?: boolean;
 }
+const SendMessageRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<SendMessageRequest>;
+
 export interface SendProjectsMessagesRequest {
   /** Required. It contains the Firebase project id (i.e. the unique identifier for your Firebase project), in the format of `projects/{project_id}`. The numeric project number with no padding is also supported in the format of `projects/{project_number}`. */
   parent: string;
   /** Request body */
   body?: SendMessageRequest;
 }
+const SendProjectsMessagesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<SendProjectsMessagesRequest>;
+
 export type CreateProjectsRegistrationsTopicSubscriptionsError =
   | NotFound
   | Forbidden
@@ -341,8 +421,8 @@ export const createProjectsRegistrationsTopicSubscriptions: API.OperationMethod<
   CreateProjectsRegistrationsTopicSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateProjectsRegistrationsTopicSubscriptionsRequest>,
-  output: __S(0) as any as S.Schema<TopicSubscription>,
+  input: CreateProjectsRegistrationsTopicSubscriptionsRequest,
+  output: TopicSubscription,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -361,8 +441,8 @@ export const deleteProjectsRegistrationsTopicSubscriptions: API.OperationMethod<
   DeleteProjectsRegistrationsTopicSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteProjectsRegistrationsTopicSubscriptionsRequest>,
-  output: __S(3) as any as S.Schema<Empty>,
+  input: DeleteProjectsRegistrationsTopicSubscriptionsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -376,8 +456,8 @@ export const getProjectsRegistrationsTopicSubscriptions: API.OperationMethod<
   GetProjectsRegistrationsTopicSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetProjectsRegistrationsTopicSubscriptionsRequest>,
-  output: __S(0) as any as S.Schema<TopicSubscription>,
+  input: GetProjectsRegistrationsTopicSubscriptionsRequest,
+  output: TopicSubscription,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -392,8 +472,8 @@ export const listProjectsRegistrationsTopicSubscriptions: API.PaginatedOperation
   GcpOpContext,
   ListTopicSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(5) as any as S.Schema<ListProjectsRegistrationsTopicSubscriptionsRequest>,
-  output: __S(7) as any as S.Schema<ListTopicSubscriptionsResponse>,
+  input: ListProjectsRegistrationsTopicSubscriptionsRequest,
+  output: ListTopicSubscriptionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -413,8 +493,8 @@ export const patchProjectsRegistrationsTopicSubscriptions: API.OperationMethod<
   PatchProjectsRegistrationsTopicSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<PatchProjectsRegistrationsTopicSubscriptionsRequest>,
-  output: __S(0) as any as S.Schema<TopicSubscription>,
+  input: PatchProjectsRegistrationsTopicSubscriptionsRequest,
+  output: TopicSubscription,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -428,8 +508,8 @@ export const sendProjectsMessages: API.OperationMethod<
   SendProjectsMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<SendProjectsMessagesRequest>,
-  output: __S(22) as any as S.Schema<Message>,
+  input: SendProjectsMessagesRequest,
+  output: Message,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -451,7 +531,7 @@ function __c0(j: number): any {
         S.Struct({
           topicName: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(TopicSubscription.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -504,11 +584,11 @@ function __c0(j: number): any {
         identifier: "ListProjectsRegistrationsTopicSubscriptionsRequest",
       });
     case 6:
-      return S.Array(__S(0));
+      return S.Array(TopicSubscription);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          topicSubscriptions: S.optional(__S(6)),
+          topicSubscriptions: S.optional(TopicSubscriptionList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -523,7 +603,7 @@ function __c1(j: number): any {
         S.Struct({
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(TopicSubscription.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://fcm.googleapis.com/" }),
         ),
@@ -558,10 +638,10 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          payload: S.optional(__S(11)),
+          payload: S.optional(DocumentMap),
           liveActivityToken: S.optional(S.String),
-          headers: S.optional(__S(12)),
-          fcmOptions: S.optional(__S(13)),
+          headers: S.optional(StringMap),
+          fcmOptions: S.optional(ApnsFcmOptions),
         }),
       ).annotate({ identifier: "ApnsConfig" });
     case 7:
@@ -578,10 +658,10 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          headers: S.optional(__S(12)),
-          notification: S.optional(__S(11)),
-          data: S.optional(__S(12)),
-          fcmOptions: S.optional(__S(15)),
+          headers: S.optional(StringMap),
+          notification: S.optional(DocumentMap),
+          data: S.optional(StringMap),
+          fcmOptions: S.optional(WebpushFcmOptions),
         }),
       ).annotate({ identifier: "WebpushConfig" });
     case 1:
@@ -600,7 +680,7 @@ function __c2(j: number): any {
         S.Struct({
           lightOffDuration: S.optional(S.String),
           lightOnDuration: S.optional(S.String),
-          color: S.optional(__S(18)),
+          color: S.optional(Color),
         }),
       ).annotate({ identifier: "LightSettings" });
     case 4:
@@ -608,12 +688,12 @@ function __c2(j: number): any {
         S.Struct({
           channelId: S.optional(S.String),
           notificationCount: S.optional(S.Number),
-          notificationPriority: S.optional(S.String),
+          notificationPriority: S.optional(AndroidNotificationNotificationPriorityEnum),
           defaultSound: S.optional(S.Boolean),
           bypassProxyNotification: S.optional(S.Boolean),
           defaultVibrateTimings: S.optional(S.Boolean),
           title: S.optional(S.String),
-          bodyLocArgs: S.optional(__S(17)),
+          bodyLocArgs: S.optional(StringList),
           titleLocKey: S.optional(S.String),
           image: S.optional(S.String),
           sound: S.optional(S.String),
@@ -621,15 +701,15 @@ function __c2(j: number): any {
           localOnly: S.optional(S.Boolean),
           icon: S.optional(S.String),
           bodyLocKey: S.optional(S.String),
-          titleLocArgs: S.optional(__S(17)),
-          proxy: S.optional(S.String),
+          titleLocArgs: S.optional(StringList),
+          proxy: S.optional(AndroidNotificationProxyEnum),
           defaultLightSettings: S.optional(S.Boolean),
           body: S.optional(S.String),
-          vibrateTimings: S.optional(__S(17)),
+          vibrateTimings: S.optional(StringList),
           tag: S.optional(S.String),
           color: S.optional(S.String),
-          visibility: S.optional(S.String),
-          lightSettings: S.optional(__S(19)),
+          visibility: S.optional(AndroidNotificationVisibilityEnum),
+          lightSettings: S.optional(LightSettings),
           eventTime: S.optional(S.String),
           sticky: S.optional(S.Boolean),
           clickAction: S.optional(S.String),
@@ -638,14 +718,14 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(12)),
-          fcmOptions: S.optional(__S(10)),
+          data: S.optional(StringMap),
+          fcmOptions: S.optional(FcmOptions),
           ttl: S.optional(S.String),
           collapseKey: S.optional(S.String),
           restrictedPackageName: S.optional(S.String),
-          priority: S.optional(S.String),
+          priority: S.optional(AndroidConfigPriorityEnum),
           directBootOk: S.optional(S.Boolean),
-          notification: S.optional(__S(20)),
+          notification: S.optional(AndroidNotification),
           bandwidthConstrainedOk: S.optional(S.Boolean),
           restrictedSatelliteOk: S.optional(S.Boolean),
         }),
@@ -654,22 +734,22 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fid: S.optional(S.String),
-          notification: S.optional(__S(9)),
-          fcmOptions: S.optional(__S(10)),
+          notification: S.optional(Notification),
+          fcmOptions: S.optional(FcmOptions),
           token: S.optional(S.String),
-          apns: S.optional(__S(14)),
-          data: S.optional(__S(12)),
+          apns: S.optional(ApnsConfig),
+          data: S.optional(StringMap),
           condition: S.optional(S.String),
           topic: S.optional(S.String),
-          webpush: S.optional(__S(16)),
+          webpush: S.optional(WebpushConfig),
           name: S.optional(S.String),
-          android: S.optional(__S(21)),
+          android: S.optional(AndroidConfig),
         }),
       ).annotate({ identifier: "Message" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(__S(22)),
+          message: S.optional(Message),
           validateOnly: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SendMessageRequest" });
@@ -681,7 +761,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(23).pipe(T.HttpBody())),
+          body: S.optional(SendMessageRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -692,22 +772,5 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "SendProjectsMessagesRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

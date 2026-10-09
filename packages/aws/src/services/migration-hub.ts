@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Migration Hub",
   serviceShapeName: "AWSMigrationHub",
@@ -128,6 +126,7 @@ export interface CreatedArtifact {
   Name: string;
   Description?: string;
 }
+const CreatedArtifact = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreatedArtifact>;
 export type DryRun = boolean;
 export interface AssociateCreatedArtifactRequest {
   ProgressUpdateStream: string;
@@ -135,20 +134,37 @@ export interface AssociateCreatedArtifactRequest {
   CreatedArtifact: CreatedArtifact;
   DryRun?: boolean;
 }
+const AssociateCreatedArtifactRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AssociateCreatedArtifactRequest>;
 export interface AssociateCreatedArtifactResult {}
+const AssociateCreatedArtifactResult = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AssociateCreatedArtifactResult>;
 export type ConfigurationId = string;
 export type DiscoveredResourceDescription = string;
 export interface DiscoveredResource {
   ConfigurationId: string;
   Description?: string;
 }
+const DiscoveredResource = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DiscoveredResource>;
 export interface AssociateDiscoveredResourceRequest {
   ProgressUpdateStream: string;
   MigrationTaskName: string;
   DiscoveredResource: DiscoveredResource;
   DryRun?: boolean;
 }
+const AssociateDiscoveredResourceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AssociateDiscoveredResourceRequest>;
 export interface AssociateDiscoveredResourceResult {}
+const AssociateDiscoveredResourceResult = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AssociateDiscoveredResourceResult>;
 export type SourceResourceName = string;
 export type SourceResourceDescription = string;
 export type StatusDetail = string;
@@ -157,44 +173,80 @@ export interface SourceResource {
   Description?: string;
   StatusDetail?: string;
 }
+const SourceResource = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<SourceResource>;
 export interface AssociateSourceResourceRequest {
   ProgressUpdateStream: string;
   MigrationTaskName: string;
   SourceResource: SourceResource;
   DryRun?: boolean;
 }
+const AssociateSourceResourceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AssociateSourceResourceRequest>;
 export interface AssociateSourceResourceResult {}
+const AssociateSourceResourceResult =
+  AssociateCreatedArtifactResult as any as S.Schema<AssociateSourceResourceResult>;
 export interface CreateProgressUpdateStreamRequest {
   ProgressUpdateStreamName: string;
   DryRun?: boolean;
 }
+const CreateProgressUpdateStreamRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateProgressUpdateStreamRequest>;
 export interface CreateProgressUpdateStreamResult {}
+const CreateProgressUpdateStreamResult =
+  AssociateDiscoveredResourceResult as any as S.Schema<CreateProgressUpdateStreamResult>;
 export interface DeleteProgressUpdateStreamRequest {
   ProgressUpdateStreamName: string;
   DryRun?: boolean;
 }
+const DeleteProgressUpdateStreamRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteProgressUpdateStreamRequest>;
 export interface DeleteProgressUpdateStreamResult {}
+const DeleteProgressUpdateStreamResult =
+  AssociateDiscoveredResourceResult as any as S.Schema<DeleteProgressUpdateStreamResult>;
 export type ApplicationId = string;
 export interface DescribeApplicationStateRequest {
   ApplicationId: string;
 }
+const DescribeApplicationStateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DescribeApplicationStateRequest>;
 export type ApplicationStatus = "NOT_STARTED" | "IN_PROGRESS" | "COMPLETED" | (string & {});
+const ApplicationStatus = S.String;
+
 export type UpdateDateTime = Date;
 export interface DescribeApplicationStateResult {
   ApplicationStatus?: ApplicationStatus;
   LastUpdatedTime?: Date;
 }
+const DescribeApplicationStateResult = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DescribeApplicationStateResult>;
 export interface DescribeMigrationTaskRequest {
   ProgressUpdateStream: string;
   MigrationTaskName: string;
 }
+const DescribeMigrationTaskRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DescribeMigrationTaskRequest>;
 export type Status = "NOT_STARTED" | "IN_PROGRESS" | "FAILED" | "COMPLETED" | (string & {});
+const Status = S.String;
+
 export type ProgressPercent = number;
 export interface Task {
   Status: Status;
   StatusDetail?: string;
   ProgressPercent?: number;
 }
+const Task = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Task>;
 export type ResourceAttributeType =
   | "IPV4_ADDRESS"
   | "IPV6_ADDRESS"
@@ -207,12 +259,16 @@ export type ResourceAttributeType =
   | "BIOS_ID"
   | "MOTHERBOARD_SERIAL_NUMBER"
   | (string & {});
+const ResourceAttributeType = S.String;
+
 export type ResourceAttributeValue = string;
 export interface ResourceAttribute {
   Type: ResourceAttributeType;
   Value: string;
 }
+const ResourceAttribute = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ResourceAttribute>;
 export type LatestResourceAttributeList = ResourceAttribute[];
+const LatestResourceAttributeList = /*@__PURE__*/ __L.at(__c1, 7);
 export interface MigrationTask {
   ProgressUpdateStream?: string;
   MigrationTaskName?: string;
@@ -220,37 +276,67 @@ export interface MigrationTask {
   UpdateDateTime?: Date;
   ResourceAttributeList?: ResourceAttribute[];
 }
+const MigrationTask = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<MigrationTask>;
 export interface DescribeMigrationTaskResult {
   MigrationTask?: MigrationTask;
 }
+const DescribeMigrationTaskResult = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DescribeMigrationTaskResult>;
 export interface DisassociateCreatedArtifactRequest {
   ProgressUpdateStream: string;
   MigrationTaskName: string;
   CreatedArtifactName: string;
   DryRun?: boolean;
 }
+const DisassociateCreatedArtifactRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DisassociateCreatedArtifactRequest>;
 export interface DisassociateCreatedArtifactResult {}
+const DisassociateCreatedArtifactResult =
+  AssociateDiscoveredResourceResult as any as S.Schema<DisassociateCreatedArtifactResult>;
 export interface DisassociateDiscoveredResourceRequest {
   ProgressUpdateStream: string;
   MigrationTaskName: string;
   ConfigurationId: string;
   DryRun?: boolean;
 }
+const DisassociateDiscoveredResourceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DisassociateDiscoveredResourceRequest>;
 export interface DisassociateDiscoveredResourceResult {}
+const DisassociateDiscoveredResourceResult =
+  AssociateDiscoveredResourceResult as any as S.Schema<DisassociateDiscoveredResourceResult>;
 export interface DisassociateSourceResourceRequest {
   ProgressUpdateStream: string;
   MigrationTaskName: string;
   SourceResourceName: string;
   DryRun?: boolean;
 }
+const DisassociateSourceResourceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DisassociateSourceResourceRequest>;
 export interface DisassociateSourceResourceResult {}
+const DisassociateSourceResourceResult =
+  AssociateDiscoveredResourceResult as any as S.Schema<DisassociateSourceResourceResult>;
 export interface ImportMigrationTaskRequest {
   ProgressUpdateStream: string;
   MigrationTaskName: string;
   DryRun?: boolean;
 }
+const ImportMigrationTaskRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ImportMigrationTaskRequest>;
 export interface ImportMigrationTaskResult {}
+const ImportMigrationTaskResult =
+  AssociateCreatedArtifactResult as any as S.Schema<ImportMigrationTaskResult>;
 export type ApplicationIds = string[];
+const ApplicationIds = /*@__PURE__*/ __L.at(__c2, 6);
 export type Token = string;
 export type MaxResults = number;
 export interface ListApplicationStatesRequest {
@@ -258,16 +344,26 @@ export interface ListApplicationStatesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListApplicationStatesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListApplicationStatesRequest>;
 export interface ApplicationState {
   ApplicationId?: string;
   ApplicationStatus?: ApplicationStatus;
   LastUpdatedTime?: Date;
 }
+const ApplicationState = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ApplicationState>;
 export type ApplicationStateList = ApplicationState[];
+const ApplicationStateList = /*@__PURE__*/ __L.at(__c3, 1);
 export interface ListApplicationStatesResult {
   ApplicationStateList?: ApplicationState[];
   NextToken?: string;
 }
+const ListApplicationStatesResult = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListApplicationStatesResult>;
 export type MaxResultsCreatedArtifacts = number;
 export interface ListCreatedArtifactsRequest {
   ProgressUpdateStream: string;
@@ -275,11 +371,20 @@ export interface ListCreatedArtifactsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListCreatedArtifactsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ListCreatedArtifactsRequest>;
 export type CreatedArtifactList = CreatedArtifact[];
+const CreatedArtifactList = /*@__PURE__*/ __L.at(__c3, 4);
 export interface ListCreatedArtifactsResult {
   NextToken?: string;
   CreatedArtifactList?: CreatedArtifact[];
 }
+const ListCreatedArtifactsResult = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListCreatedArtifactsResult>;
 export type MaxResultsResources = number;
 export interface ListDiscoveredResourcesRequest {
   ProgressUpdateStream: string;
@@ -287,17 +392,30 @@ export interface ListDiscoveredResourcesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListDiscoveredResourcesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ListDiscoveredResourcesRequest>;
 export type DiscoveredResourceList = DiscoveredResource[];
+const DiscoveredResourceList = /*@__PURE__*/ __L.at(__c3, 7);
 export interface ListDiscoveredResourcesResult {
   NextToken?: string;
   DiscoveredResourceList?: DiscoveredResource[];
 }
+const ListDiscoveredResourcesResult = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ListDiscoveredResourcesResult>;
 export type ResourceName = string;
 export interface ListMigrationTasksRequest {
   NextToken?: string;
   MaxResults?: number;
   ResourceName?: string;
 }
+const ListMigrationTasksRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListMigrationTasksRequest>;
 export interface MigrationTaskSummary {
   ProgressUpdateStream?: string;
   MigrationTaskName?: string;
@@ -306,40 +424,71 @@ export interface MigrationTaskSummary {
   StatusDetail?: string;
   UpdateDateTime?: Date;
 }
+const MigrationTaskSummary = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<MigrationTaskSummary>;
 export type MigrationTaskSummaryList = MigrationTaskSummary[];
+const MigrationTaskSummaryList = /*@__PURE__*/ __L.at(__c4, 3);
 export interface ListMigrationTasksResult {
   NextToken?: string;
   MigrationTaskSummaryList?: MigrationTaskSummary[];
 }
+const ListMigrationTasksResult = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListMigrationTasksResult>;
 export interface ListMigrationTaskUpdatesRequest {
   ProgressUpdateStream: string;
   MigrationTaskName: string;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListMigrationTaskUpdatesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListMigrationTaskUpdatesRequest>;
 export type UpdateType = "MIGRATION_TASK_STATE_UPDATED" | (string & {});
+const UpdateType = S.String;
+
 export interface MigrationTaskUpdate {
   UpdateDateTime?: Date;
   UpdateType?: UpdateType;
   MigrationTaskState?: Task;
 }
+const MigrationTaskUpdate = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<MigrationTaskUpdate>;
 export type MigrationTaskUpdateList = MigrationTaskUpdate[];
+const MigrationTaskUpdateList = /*@__PURE__*/ __L.at(__c4, 7);
 export interface ListMigrationTaskUpdatesResult {
   NextToken?: string;
   MigrationTaskUpdateList?: MigrationTaskUpdate[];
 }
+const ListMigrationTaskUpdatesResult = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListMigrationTaskUpdatesResult>;
 export interface ListProgressUpdateStreamsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListProgressUpdateStreamsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ListProgressUpdateStreamsRequest>;
 export interface ProgressUpdateStreamSummary {
   ProgressUpdateStreamName?: string;
 }
+const ProgressUpdateStreamSummary = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ProgressUpdateStreamSummary>;
 export type ProgressUpdateStreamSummaryList = ProgressUpdateStreamSummary[];
+const ProgressUpdateStreamSummaryList = /*@__PURE__*/ __L.at(__c5, 3);
 export interface ListProgressUpdateStreamsResult {
   ProgressUpdateStreamSummaryList?: ProgressUpdateStreamSummary[];
   NextToken?: string;
 }
+const ListProgressUpdateStreamsResult = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListProgressUpdateStreamsResult>;
 export type MaxResultsSourceResources = number;
 export interface ListSourceResourcesRequest {
   ProgressUpdateStream: string;
@@ -347,18 +496,33 @@ export interface ListSourceResourcesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListSourceResourcesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListSourceResourcesRequest>;
 export type SourceResourceList = SourceResource[];
+const SourceResourceList = /*@__PURE__*/ __L.at(__c5, 6);
 export interface ListSourceResourcesResult {
   NextToken?: string;
   SourceResourceList?: SourceResource[];
 }
+const ListSourceResourcesResult = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListSourceResourcesResult>;
 export interface NotifyApplicationStateRequest {
   ApplicationId: string;
   Status: ApplicationStatus;
   UpdateDateTime?: Date;
   DryRun?: boolean;
 }
+const NotifyApplicationStateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<NotifyApplicationStateRequest>;
 export interface NotifyApplicationStateResult {}
+const NotifyApplicationStateResult =
+  AssociateCreatedArtifactResult as any as S.Schema<NotifyApplicationStateResult>;
 export type NextUpdateSeconds = number;
 export interface NotifyMigrationTaskStateRequest {
   ProgressUpdateStream: string;
@@ -368,15 +532,28 @@ export interface NotifyMigrationTaskStateRequest {
   NextUpdateSeconds: number;
   DryRun?: boolean;
 }
+const NotifyMigrationTaskStateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<NotifyMigrationTaskStateRequest>;
 export interface NotifyMigrationTaskStateResult {}
+const NotifyMigrationTaskStateResult =
+  AssociateCreatedArtifactResult as any as S.Schema<NotifyMigrationTaskStateResult>;
 export type ResourceAttributeList = ResourceAttribute[];
+const ResourceAttributeList = LatestResourceAttributeList as any as S.Schema<ResourceAttributeList>;
 export interface PutResourceAttributesRequest {
   ProgressUpdateStream: string;
   MigrationTaskName: string;
   ResourceAttributeList: ResourceAttribute[];
   DryRun?: boolean;
 }
+const PutResourceAttributesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<PutResourceAttributesRequest>;
 export interface PutResourceAttributesResult {}
+const PutResourceAttributesResult =
+  AssociateCreatedArtifactResult as any as S.Schema<PutResourceAttributesResult>;
 export type ErrorMessage = string;
 export type RetryAfterSeconds = number;
 export type AssociateCreatedArtifactError =
@@ -411,8 +588,8 @@ export const associateCreatedArtifact: API.OperationMethod<
   AssociateCreatedArtifactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AssociateCreatedArtifactRequest>,
-  output: __S(2) as any as S.Schema<AssociateCreatedArtifactResult>,
+  input: AssociateCreatedArtifactRequest,
+  output: AssociateCreatedArtifactResult,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -451,8 +628,8 @@ export const associateDiscoveredResource: API.OperationMethod<
   AssociateDiscoveredResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<AssociateDiscoveredResourceRequest>,
-  output: __S(5) as any as S.Schema<AssociateDiscoveredResourceResult>,
+  input: AssociateDiscoveredResourceRequest,
+  output: AssociateDiscoveredResourceResult,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -490,8 +667,8 @@ export const associateSourceResource: API.OperationMethod<
   AssociateSourceResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<AssociateSourceResourceRequest>,
-  output: __S(2) as any as S.Schema<AssociateSourceResourceResult>,
+  input: AssociateSourceResourceRequest,
+  output: AssociateSourceResourceResult,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -530,8 +707,8 @@ export const createProgressUpdateStream: API.OperationMethod<
   CreateProgressUpdateStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateProgressUpdateStreamRequest>,
-  output: __S(5) as any as S.Schema<CreateProgressUpdateStreamResult>,
+  input: CreateProgressUpdateStreamRequest,
+  output: CreateProgressUpdateStreamResult,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -589,8 +766,8 @@ export const deleteProgressUpdateStream: API.OperationMethod<
   DeleteProgressUpdateStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeleteProgressUpdateStreamRequest>,
-  output: __S(5) as any as S.Schema<DeleteProgressUpdateStreamResult>,
+  input: DeleteProgressUpdateStreamRequest,
+  output: DeleteProgressUpdateStreamResult,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -626,8 +803,8 @@ export const describeApplicationState: API.OperationMethod<
   DescribeApplicationStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DescribeApplicationStateRequest>,
-  output: __S(11) as any as S.Schema<DescribeApplicationStateResult>,
+  input: DescribeApplicationStateRequest,
+  output: DescribeApplicationStateResult,
   errors: [
     AccessDeniedException,
     HomeRegionNotSetException,
@@ -661,8 +838,8 @@ export const describeMigrationTask: API.OperationMethod<
   DescribeMigrationTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DescribeMigrationTaskRequest>,
-  output: __S(17) as any as S.Schema<DescribeMigrationTaskResult>,
+  input: DescribeMigrationTaskRequest,
+  output: DescribeMigrationTaskResult,
   errors: [
     AccessDeniedException,
     HomeRegionNotSetException,
@@ -708,8 +885,8 @@ export const disassociateCreatedArtifact: API.OperationMethod<
   DisassociateCreatedArtifactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<DisassociateCreatedArtifactRequest>,
-  output: __S(5) as any as S.Schema<DisassociateCreatedArtifactResult>,
+  input: DisassociateCreatedArtifactRequest,
+  output: DisassociateCreatedArtifactResult,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -747,8 +924,8 @@ export const disassociateDiscoveredResource: API.OperationMethod<
   DisassociateDiscoveredResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<DisassociateDiscoveredResourceRequest>,
-  output: __S(5) as any as S.Schema<DisassociateDiscoveredResourceResult>,
+  input: DisassociateDiscoveredResourceRequest,
+  output: DisassociateDiscoveredResourceResult,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -784,8 +961,8 @@ export const disassociateSourceResource: API.OperationMethod<
   DisassociateSourceResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<DisassociateSourceResourceRequest>,
-  output: __S(5) as any as S.Schema<DisassociateSourceResourceResult>,
+  input: DisassociateSourceResourceRequest,
+  output: DisassociateSourceResourceResult,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -825,8 +1002,8 @@ export const importMigrationTask: API.OperationMethod<
   ImportMigrationTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<ImportMigrationTaskRequest>,
-  output: __S(2) as any as S.Schema<ImportMigrationTaskResult>,
+  input: ImportMigrationTaskRequest,
+  output: ImportMigrationTaskResult,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -863,8 +1040,8 @@ export const listApplicationStates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationState
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(23) as any as S.Schema<ListApplicationStatesRequest>,
-  output: __S(26) as any as S.Schema<ListApplicationStatesResult>,
+  input: ListApplicationStatesRequest,
+  output: ListApplicationStatesResult,
   errors: [
     AccessDeniedException,
     HomeRegionNotSetException,
@@ -912,8 +1089,8 @@ export const listCreatedArtifacts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CreatedArtifact
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(27) as any as S.Schema<ListCreatedArtifactsRequest>,
-  output: __S(29) as any as S.Schema<ListCreatedArtifactsResult>,
+  input: ListCreatedArtifactsRequest,
+  output: ListCreatedArtifactsResult,
   errors: [
     AccessDeniedException,
     HomeRegionNotSetException,
@@ -953,8 +1130,8 @@ export const listDiscoveredResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DiscoveredResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(30) as any as S.Schema<ListDiscoveredResourcesRequest>,
-  output: __S(32) as any as S.Schema<ListDiscoveredResourcesResult>,
+  input: ListDiscoveredResourcesRequest,
+  output: ListDiscoveredResourcesResult,
   errors: [
     AccessDeniedException,
     HomeRegionNotSetException,
@@ -1003,8 +1180,8 @@ export const listMigrationTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MigrationTaskSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(33) as any as S.Schema<ListMigrationTasksRequest>,
-  output: __S(36) as any as S.Schema<ListMigrationTasksResult>,
+  input: ListMigrationTasksRequest,
+  output: ListMigrationTasksResult,
   errors: [
     AccessDeniedException,
     HomeRegionNotSetException,
@@ -1045,8 +1222,8 @@ export const listMigrationTaskUpdates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MigrationTaskUpdate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(37) as any as S.Schema<ListMigrationTaskUpdatesRequest>,
-  output: __S(40) as any as S.Schema<ListMigrationTaskUpdatesResult>,
+  input: ListMigrationTaskUpdatesRequest,
+  output: ListMigrationTaskUpdatesResult,
   errors: [
     AccessDeniedException,
     InternalServerError,
@@ -1084,8 +1261,8 @@ export const listProgressUpdateStreams: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProgressUpdateStreamSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(41) as any as S.Schema<ListProgressUpdateStreamsRequest>,
-  output: __S(44) as any as S.Schema<ListProgressUpdateStreamsResult>,
+  input: ListProgressUpdateStreamsRequest,
+  output: ListProgressUpdateStreamsResult,
   errors: [
     AccessDeniedException,
     HomeRegionNotSetException,
@@ -1124,8 +1301,8 @@ export const listSourceResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SourceResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(45) as any as S.Schema<ListSourceResourcesRequest>,
-  output: __S(47) as any as S.Schema<ListSourceResourcesResult>,
+  input: ListSourceResourcesRequest,
+  output: ListSourceResourcesResult,
   errors: [
     AccessDeniedException,
     InternalServerError,
@@ -1169,8 +1346,8 @@ export const notifyApplicationState: API.OperationMethod<
   NotifyApplicationStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<NotifyApplicationStateRequest>,
-  output: __S(2) as any as S.Schema<NotifyApplicationStateResult>,
+  input: NotifyApplicationStateRequest,
+  output: NotifyApplicationStateResult,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -1218,8 +1395,8 @@ export const notifyMigrationTaskState: API.OperationMethod<
   NotifyMigrationTaskStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<NotifyMigrationTaskStateRequest>,
-  output: __S(2) as any as S.Schema<NotifyMigrationTaskStateResult>,
+  input: NotifyMigrationTaskStateRequest,
+  output: NotifyMigrationTaskStateResult,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -1273,8 +1450,8 @@ export const putResourceAttributes: API.OperationMethod<
   PutResourceAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<PutResourceAttributesRequest>,
-  output: __S(2) as any as S.Schema<PutResourceAttributesResult>,
+  input: PutResourceAttributesRequest,
+  output: PutResourceAttributesResult,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -1303,7 +1480,7 @@ function __c0(j: number): any {
         S.Struct({
           ProgressUpdateStream: S.String,
           MigrationTaskName: S.String,
-          CreatedArtifact: __S(0),
+          CreatedArtifact: CreatedArtifact,
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -1322,7 +1499,7 @@ function __c0(j: number): any {
         S.Struct({
           ProgressUpdateStream: S.String,
           MigrationTaskName: S.String,
-          DiscoveredResource: __S(3),
+          DiscoveredResource: DiscoveredResource,
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -1345,7 +1522,7 @@ function __c0(j: number): any {
         S.Struct({
           ProgressUpdateStream: S.String,
           MigrationTaskName: S.String,
-          SourceResource: __S(6),
+          SourceResource: SourceResource,
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -1382,7 +1559,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ApplicationStatus: S.optional(S.String),
+          ApplicationStatus: S.optional(ApplicationStatus),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
@@ -1399,17 +1576,17 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Status: S.String,
+          Status: Status,
           StatusDetail: S.optional(S.String),
           ProgressPercent: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Task" });
     case 6:
-      return S.suspend(() => S.Struct({ Type: S.String, Value: S.String })).annotate({
+      return S.suspend(() => S.Struct({ Type: ResourceAttributeType, Value: S.String })).annotate({
         identifier: "ResourceAttribute",
       });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(ResourceAttribute);
   }
 }
 function __c2(j: number): any {
@@ -1419,13 +1596,13 @@ function __c2(j: number): any {
         S.Struct({
           ProgressUpdateStream: S.optional(S.String),
           MigrationTaskName: S.optional(S.String),
-          Task: S.optional(__S(13)),
+          Task: S.optional(Task),
           UpdateDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ResourceAttributeList: S.optional(__S(15)),
+          ResourceAttributeList: S.optional(LatestResourceAttributeList),
         }),
       ).annotate({ identifier: "MigrationTask" });
     case 1:
-      return S.suspend(() => S.Struct({ MigrationTask: S.optional(__S(16)) })).annotate({
+      return S.suspend(() => S.Struct({ MigrationTask: S.optional(MigrationTask) })).annotate({
         identifier: "DescribeMigrationTaskResult",
       });
     case 2:
@@ -1476,7 +1653,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ApplicationIds: S.optional(__S(22)),
+          ApplicationIds: S.optional(ApplicationIds),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -1491,16 +1668,16 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
-          ApplicationStatus: S.optional(S.String),
+          ApplicationStatus: S.optional(ApplicationStatus),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ApplicationState" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(ApplicationState);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ApplicationStateList: S.optional(__S(25)),
+          ApplicationStateList: S.optional(ApplicationStateList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1518,12 +1695,12 @@ function __c3(j: number): any {
         identifier: "ListCreatedArtifactsRequest",
       });
     case 4:
-      return S.Array(__S(0));
+      return S.Array(CreatedArtifact);
     case 5:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          CreatedArtifactList: S.optional(__S(28)),
+          CreatedArtifactList: S.optional(CreatedArtifactList),
         }),
       ).annotate({
         identifier: "ListCreatedArtifactsResult",
@@ -1540,7 +1717,7 @@ function __c3(j: number): any {
         identifier: "ListDiscoveredResourcesRequest",
       });
     case 7:
-      return S.Array(__S(3));
+      return S.Array(DiscoveredResource);
   }
 }
 function __c4(j: number): any {
@@ -1549,7 +1726,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          DiscoveredResourceList: S.optional(__S(31)),
+          DiscoveredResourceList: S.optional(DiscoveredResourceList),
         }),
       ).annotate({
         identifier: "ListDiscoveredResourcesResult",
@@ -1569,19 +1746,19 @@ function __c4(j: number): any {
         S.Struct({
           ProgressUpdateStream: S.optional(S.String),
           MigrationTaskName: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(Status),
           ProgressPercent: S.optional(S.Number),
           StatusDetail: S.optional(S.String),
           UpdateDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "MigrationTaskSummary" });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(MigrationTaskSummary);
     case 4:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          MigrationTaskSummaryList: S.optional(__S(35)),
+          MigrationTaskSummaryList: S.optional(MigrationTaskSummaryList),
         }),
       ).annotate({ identifier: "ListMigrationTasksResult" });
     case 5:
@@ -1599,12 +1776,12 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           UpdateDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          UpdateType: S.optional(S.String),
-          MigrationTaskState: S.optional(__S(13)),
+          UpdateType: S.optional(UpdateType),
+          MigrationTaskState: S.optional(Task),
         }),
       ).annotate({ identifier: "MigrationTaskUpdate" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(MigrationTaskUpdate);
   }
 }
 function __c5(j: number): any {
@@ -1613,7 +1790,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          MigrationTaskUpdateList: S.optional(__S(39)),
+          MigrationTaskUpdateList: S.optional(MigrationTaskUpdateList),
         }),
       ).annotate({
         identifier: "ListMigrationTaskUpdatesResult",
@@ -1633,11 +1810,11 @@ function __c5(j: number): any {
         },
       );
     case 3:
-      return S.Array(__S(42));
+      return S.Array(ProgressUpdateStreamSummary);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ProgressUpdateStreamSummaryList: S.optional(__S(43)),
+          ProgressUpdateStreamSummaryList: S.optional(ProgressUpdateStreamSummaryList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1655,12 +1832,12 @@ function __c5(j: number): any {
         identifier: "ListSourceResourcesRequest",
       });
     case 6:
-      return S.Array(__S(6));
+      return S.Array(SourceResource);
     case 7:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          SourceResourceList: S.optional(__S(46)),
+          SourceResourceList: S.optional(SourceResourceList),
         }),
       ).annotate({
         identifier: "ListSourceResourcesResult",
@@ -1673,7 +1850,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String,
-          Status: S.String,
+          Status: ApplicationStatus,
           UpdateDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -1685,7 +1862,7 @@ function __c6(j: number): any {
         S.Struct({
           ProgressUpdateStream: S.String,
           MigrationTaskName: S.String,
-          Task: __S(13),
+          Task: Task,
           UpdateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           NextUpdateSeconds: S.Number,
           DryRun: S.optional(S.Boolean),
@@ -1698,34 +1875,11 @@ function __c6(j: number): any {
         S.Struct({
           ProgressUpdateStream: S.String,
           MigrationTaskName: S.String,
-          ResourceAttributeList: __S(15),
+          ResourceAttributeList: ResourceAttributeList,
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PutResourceAttributesRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

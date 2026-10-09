@@ -7,8 +7,6 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
@@ -18,17 +16,34 @@ export interface ChangeImageProtectionRequest {
   /** If true, prevents the snapshot from being deleted. */
   delete?: boolean;
 }
+const ChangeImageProtectionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ChangeImageProtectionRequest>;
+
 /** Status of the Action. */
 export type ChangeImageProtectionResponseActionStatus = "running" | "success" | "error";
+const ChangeImageProtectionResponseActionStatus = S.String;
+
 export interface ChangeImageProtectionResponseActionResourcesItem {
   /** ID of the Resource. */
   id: number;
   /** Type of the Resource. */
   type: string;
 }
+const ChangeImageProtectionResponseActionResourcesItem = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ChangeImageProtectionResponseActionResourcesItem>;
+
 /** Resources the Action relates to. */
 export type ChangeImageProtectionResponseActionResourcesList =
   Array<ChangeImageProtectionResponseActionResourcesItem>;
+const ChangeImageProtectionResponseActionResourcesList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ChangeImageProtectionResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface ChangeImageProtectionResponseActionError {
   /** Fixed error code for machines. */
@@ -36,6 +51,11 @@ export interface ChangeImageProtectionResponseActionError {
   /** Error message for humans. */
   message: string;
 }
+const ChangeImageProtectionResponseActionError = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ChangeImageProtectionResponseActionError>;
+
 export interface ChangeImageProtectionResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -54,20 +74,40 @@ export interface ChangeImageProtectionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: ChangeImageProtectionResponseActionError | null;
 }
+const ChangeImageProtectionResponseAction = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ChangeImageProtectionResponseAction>;
+
 export interface ChangeImageProtectionResponse {
   action: ChangeImageProtectionResponseAction;
 }
+const ChangeImageProtectionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ChangeImageProtectionResponse>;
+
 export interface GetImagesActionRequest {
   /** ID of the Action. */
   id: number;
 }
+const GetImagesActionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetImagesActionRequest>;
+
 /** Status of the Action. */
 export type GetImagesActionResponseActionStatus = "running" | "success" | "error";
+const GetImagesActionResponseActionStatus = S.String;
+
 export type GetImagesActionResponseActionResourcesItem =
   ChangeImageProtectionResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type GetImagesActionResponseActionResourcesList =
   Array<ChangeImageProtectionResponseActionResourcesItem>;
+const GetImagesActionResponseActionResourcesList =
+  ChangeImageProtectionResponseActionResourcesList as any as S.Schema<GetImagesActionResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetImagesActionResponseActionError = ChangeImageProtectionResponseActionError;
 export interface GetImagesActionResponseAction {
@@ -88,9 +128,19 @@ export interface GetImagesActionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: ChangeImageProtectionResponseActionError | null;
 }
+const GetImagesActionResponseAction = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetImagesActionResponseAction>;
+
 export interface GetImagesActionResponse {
   action: GetImagesActionResponseAction;
 }
+const GetImagesActionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetImagesActionResponse>;
+
 export type ListImageActionsRequestSortItem =
   | "id"
   | "id:asc"
@@ -107,14 +157,24 @@ export type ListImageActionsRequestSortItem =
   | "finished"
   | "finished:asc"
   | "finished:desc";
+const ListImageActionsRequestSortItem = S.String;
+
 export type ListImageActionsRequestSortList = Array<
   ListImageActionsRequestSortItem | (string & {})
 >;
+const ListImageActionsRequestSortList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListImageActionsRequestSortList>;
+
 /** Status of the Action. */
 export type ListImageActionsRequestStatusItem = "running" | "success" | "error";
 export type ListImageActionsRequestStatusList = Array<
   ListImageActionsRequestStatusItem | (string & {})
 >;
+const ListImageActionsRequestStatusList =
+  ListImageActionsRequestSortList as any as S.Schema<ListImageActionsRequestStatusList>;
+
 export interface ListImageActionsRequest {
   /** ID of the Image. */
   id: number;
@@ -127,13 +187,23 @@ export interface ListImageActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
+const ListImageActionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListImageActionsRequest>;
+
 /** Status of the Action. */
 export type ListImageActionsResponseActionsItemStatus = "running" | "success" | "error";
+const ListImageActionsResponseActionsItemStatus = S.String;
+
 export type ListImageActionsResponseActionsItemResourcesItem =
   ChangeImageProtectionResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ListImageActionsResponseActionsItemResourcesList =
   Array<ChangeImageProtectionResponseActionResourcesItem>;
+const ListImageActionsResponseActionsItemResourcesList =
+  ChangeImageProtectionResponseActionResourcesList as any as S.Schema<ListImageActionsResponseActionsItemResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListImageActionsResponseActionsItemError = ChangeImageProtectionResponseActionError;
 export interface ListImageActionsResponseActionsItem {
@@ -154,7 +224,17 @@ export interface ListImageActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: ChangeImageProtectionResponseActionError | null;
 }
+const ListImageActionsResponseActionsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListImageActionsResponseActionsItem>;
+
 export type ListImageActionsResponseActionsList = Array<ListImageActionsResponseActionsItem>;
+const ListImageActionsResponseActionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ListImageActionsResponseActionsList>;
+
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListImageActionsResponseMetaPagination {
   /** Current page number. */
@@ -170,15 +250,35 @@ export interface ListImageActionsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
+const ListImageActionsResponseMetaPagination = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ListImageActionsResponseMetaPagination>;
+
 export interface ListImageActionsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListImageActionsResponseMetaPagination;
 }
+const ListImageActionsResponseMeta = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ListImageActionsResponseMeta>;
+
 export interface ListImageActionsResponse {
   actions: ListImageActionsResponseActionsList;
   meta: ListImageActionsResponseMeta;
 }
+const ListImageActionsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListImageActionsResponse>;
+
 export type ListImagesActionsRequestIdList = Array<number>;
+const ListImagesActionsRequestIdList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListImagesActionsRequestIdList>;
+
 export type ListImagesActionsRequestSortItem =
   | "id"
   | "id:asc"
@@ -198,11 +298,17 @@ export type ListImagesActionsRequestSortItem =
 export type ListImagesActionsRequestSortList = Array<
   ListImagesActionsRequestSortItem | (string & {})
 >;
+const ListImagesActionsRequestSortList =
+  ListImageActionsRequestSortList as any as S.Schema<ListImagesActionsRequestSortList>;
+
 /** Status of the Action. */
 export type ListImagesActionsRequestStatusItem = "running" | "success" | "error";
 export type ListImagesActionsRequestStatusList = Array<
   ListImagesActionsRequestStatusItem | (string & {})
 >;
+const ListImagesActionsRequestStatusList =
+  ListImageActionsRequestSortList as any as S.Schema<ListImagesActionsRequestStatusList>;
+
 export interface ListImagesActionsRequest {
   /** Filter the actions by ID. May be used multiple times. The response will only contain actions matching the specified IDs. */
   id?: ListImagesActionsRequestIdList;
@@ -215,13 +321,23 @@ export interface ListImagesActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
+const ListImagesActionsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListImagesActionsRequest>;
+
 /** Status of the Action. */
 export type ListImagesActionsResponseActionsItemStatus = "running" | "success" | "error";
+const ListImagesActionsResponseActionsItemStatus = S.String;
+
 export type ListImagesActionsResponseActionsItemResourcesItem =
   ChangeImageProtectionResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ListImagesActionsResponseActionsItemResourcesList =
   Array<ChangeImageProtectionResponseActionResourcesItem>;
+const ListImagesActionsResponseActionsItemResourcesList =
+  ChangeImageProtectionResponseActionResourcesList as any as S.Schema<ListImagesActionsResponseActionsItemResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListImagesActionsResponseActionsItemError = ChangeImageProtectionResponseActionError;
 export interface ListImagesActionsResponseActionsItem {
@@ -242,7 +358,17 @@ export interface ListImagesActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: ChangeImageProtectionResponseActionError | null;
 }
+const ListImagesActionsResponseActionsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListImagesActionsResponseActionsItem>;
+
 export type ListImagesActionsResponseActionsList = Array<ListImagesActionsResponseActionsItem>;
+const ListImagesActionsResponseActionsList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListImagesActionsResponseActionsList>;
+
 /** See "[Pagination](#description/pagination)" for more information. */
 export type ListImagesActionsResponseMetaPagination = ListImageActionsResponseMetaPagination;
 export type ListImagesActionsResponseMeta = ListImageActionsResponseMeta;
@@ -250,6 +376,11 @@ export interface ListImagesActionsResponse {
   actions: ListImagesActionsResponseActionsList;
   meta: ListImageActionsResponseMeta;
 }
+const ListImagesActionsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListImagesActionsResponse>;
+
 export type ChangeImageProtectionError = HetznerOpError;
 /** Change Image Protection Changes the protection configuration of the Image. Can only be used on snapshots. */
 export const changeImageProtection: API.OperationMethod<
@@ -258,8 +389,8 @@ export const changeImageProtection: API.OperationMethod<
   ChangeImageProtectionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ChangeImageProtectionRequest>,
-  output: __S(5) as any as S.Schema<ChangeImageProtectionResponse>,
+  input: ChangeImageProtectionRequest,
+  output: ChangeImageProtectionResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -273,8 +404,8 @@ export const getImagesAction: API.OperationMethod<
   GetImagesActionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetImagesActionRequest>,
-  output: __S(8) as any as S.Schema<GetImagesActionResponse>,
+  input: GetImagesActionRequest,
+  output: GetImagesActionResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -290,8 +421,8 @@ export const listImageActions: API.PaginatedOperationMethod<
   ListImageActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(10) as any as S.Schema<ListImageActionsRequest>,
-    output: __S(15) as any as S.Schema<ListImageActionsResponse>,
+    input: ListImageActionsRequest,
+    output: ListImageActionsResponse,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -316,8 +447,8 @@ export const listImagesActions: API.PaginatedOperationMethod<
   ListImagesActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(17) as any as S.Schema<ListImagesActionsRequest>,
-    output: __S(20) as any as S.Schema<ListImagesActionsResponse>,
+    input: ListImagesActionsRequest,
+    output: ListImagesActionsResponse,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -356,7 +487,7 @@ function __c0(j: number): any {
         identifier: "ChangeImageProtectionResponseActionResourcesItem",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(ChangeImageProtectionResponseActionResourcesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -371,12 +502,12 @@ function __c0(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ChangeImageProtectionResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: ChangeImageProtectionResponseActionResourcesList,
+          error: S.NullOr(ChangeImageProtectionResponseActionError),
         }),
       ).annotate({
         identifier: "ChangeImageProtectionResponseAction",
@@ -384,7 +515,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: __S(4),
+          action: ChangeImageProtectionResponseAction,
         }),
       ).annotate({
         identifier: "ChangeImageProtectionResponse",
@@ -400,12 +531,12 @@ function __c0(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: GetImagesActionResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: GetImagesActionResponseActionResourcesList,
+          error: S.NullOr(ChangeImageProtectionResponseActionError),
         }),
       ).annotate({
         identifier: "GetImagesActionResponseAction",
@@ -417,17 +548,17 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: __S(7),
+          action: GetImagesActionResponseAction,
         }),
       ).annotate({ identifier: "GetImagesActionResponse" });
     case 1:
-      return S.Array(S.String);
+      return S.Array(ListImageActionsRequestSortItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          sort: S.optional(__S(9).pipe(T.Query())),
-          status: S.optional(__S(9).pipe(T.Query())),
+          sort: S.optional(ListImageActionsRequestSortList.pipe(T.Query())),
+          status: S.optional(ListImageActionsRequestStatusList.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/images/{id}/actions", code: 200 })),
@@ -437,18 +568,18 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ListImageActionsResponseActionsItemStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: ListImageActionsResponseActionsItemResourcesList,
+          error: S.NullOr(ChangeImageProtectionResponseActionError),
         }),
       ).annotate({
         identifier: "ListImageActionsResponseActionsItem",
       });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(ListImageActionsResponseActionsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -465,7 +596,7 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(13),
+          pagination: ListImageActionsResponseMetaPagination,
         }),
       ).annotate({
         identifier: "ListImageActionsResponseMeta",
@@ -473,8 +604,8 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(12),
-          meta: __S(14),
+          actions: ListImageActionsResponseActionsList,
+          meta: ListImageActionsResponseMeta,
         }),
       ).annotate({ identifier: "ListImageActionsResponse" });
   }
@@ -486,9 +617,9 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(__S(16).pipe(T.Query())),
-          sort: S.optional(__S(9).pipe(T.Query())),
-          status: S.optional(__S(9).pipe(T.Query())),
+          id: S.optional(ListImagesActionsRequestIdList.pipe(T.Query())),
+          sort: S.optional(ListImagesActionsRequestSortList.pipe(T.Query())),
+          status: S.optional(ListImagesActionsRequestStatusList.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/images/actions", code: 200 })),
@@ -498,41 +629,26 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ListImagesActionsResponseActionsItemStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: ListImagesActionsResponseActionsItemResourcesList,
+          error: S.NullOr(ChangeImageProtectionResponseActionError),
         }),
       ).annotate({
         identifier: "ListImagesActionsResponseActionsItem",
       });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(ListImagesActionsResponseActionsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(19),
-          meta: __S(14),
+          actions: ListImagesActionsResponseActionsList,
+          meta: ListImageActionsResponseMeta,
         }),
       ).annotate({
         identifier: "ListImagesActionsResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

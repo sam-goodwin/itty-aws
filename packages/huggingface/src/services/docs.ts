@@ -9,8 +9,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
@@ -19,6 +17,11 @@ export interface FullTextSearchDocsRequest {
   limit?: number;
   domain?: string;
 }
+const FullTextSearchDocsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<FullTextSearchDocsRequest>;
+
 export interface FullTextSearchDocsResponseHitsItemFormatted {
   url?: string;
   hierarchy_lvl0?: string;
@@ -31,6 +34,11 @@ export interface FullTextSearchDocsResponseHitsItemFormatted {
   content?: string;
   anchor?: string;
 }
+const FullTextSearchDocsResponseHitsItemFormatted = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<FullTextSearchDocsResponseHitsItemFormatted>;
+
 export interface FullTextSearchDocsResponseHitsItem {
   url: string;
   hierarchy_lvl0?: string;
@@ -44,18 +52,47 @@ export interface FullTextSearchDocsResponseHitsItem {
   anchor?: string;
   _formatted?: FullTextSearchDocsResponseHitsItemFormatted;
 }
+const FullTextSearchDocsResponseHitsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<FullTextSearchDocsResponseHitsItem>;
+
 export type FullTextSearchDocsResponseHitsList = Array<FullTextSearchDocsResponseHitsItem>;
+const FullTextSearchDocsResponseHitsList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<FullTextSearchDocsResponseHitsList>;
+
 export interface FullTextSearchDocsResponse {
   hits: FullTextSearchDocsResponseHitsList;
 }
+const FullTextSearchDocsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<FullTextSearchDocsResponse>;
+
 export interface ListDocsRequest {}
+const ListDocsRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ListDocsRequest>;
+
 export interface ListDocsResponseBodyItem {
   id: string;
   url: string;
   category?: string;
 }
+const ListDocsResponseBodyItem = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListDocsResponseBodyItem>;
+
 export type ListDocsResponseBodyList = Array<ListDocsResponseBodyItem>;
+const ListDocsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListDocsResponseBodyList>;
+
 export type ListDocsResponse = ListDocsResponseBodyList;
+const ListDocsResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ListDocsResponse>;
+
 export type SearchDocsRequestProduct =
   | "hub"
   | "transformers"
@@ -118,15 +155,29 @@ export type SearchDocsRequestProduct =
   | "kernels"
   | "google-cloud"
   | "xet";
+const SearchDocsRequestProduct = S.String;
+
 export interface SearchDocsRequest {
   q: string;
   product?: SearchDocsRequestProduct | (string & {});
   limit?: number;
 }
+const SearchDocsRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<SearchDocsRequest>;
+
 export type SearchDocsResponseBodyItemVectorsEmbeddingsList = Array<number>;
+const SearchDocsResponseBodyItemVectorsEmbeddingsList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<SearchDocsResponseBodyItemVectorsEmbeddingsList>;
+
 export interface SearchDocsResponseBodyItemVectors {
   embeddings: SearchDocsResponseBodyItemVectorsEmbeddingsList;
 }
+const SearchDocsResponseBodyItemVectors = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<SearchDocsResponseBodyItemVectors>;
+
 export interface SearchDocsResponseBodyItem {
   id: string;
   _vectors: SearchDocsResponseBodyItemVectors;
@@ -140,8 +191,20 @@ export interface SearchDocsResponseBodyItem {
   heading4?: string;
   heading5?: string;
 }
+const SearchDocsResponseBodyItem = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<SearchDocsResponseBodyItem>;
+
 export type SearchDocsResponseBodyList = Array<SearchDocsResponseBodyItem>;
+const SearchDocsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<SearchDocsResponseBodyList>;
+
 export type SearchDocsResponse = SearchDocsResponseBodyList;
+const SearchDocsResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<SearchDocsResponse>;
+
 export type FullTextSearchDocsError = HuggingFaceOpError;
 /** Full-text search docs Full-text search across Hugging Face documentation */
 export const fullTextSearchDocs: API.OperationMethod<
@@ -150,8 +213,8 @@ export const fullTextSearchDocs: API.OperationMethod<
   FullTextSearchDocsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<FullTextSearchDocsRequest>,
-  output: __S(4) as any as S.Schema<FullTextSearchDocsResponse>,
+  input: FullTextSearchDocsRequest,
+  output: FullTextSearchDocsResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -165,8 +228,8 @@ export const listDocs: API.OperationMethod<
   ListDocsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<ListDocsRequest>,
-  output: __S(8) as any as S.Schema<ListDocsResponse>,
+  input: ListDocsRequest,
+  output: ListDocsResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -180,8 +243,8 @@ export const searchDocs: API.OperationMethod<
   SearchDocsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<SearchDocsRequest>,
-  output: __S(14) as any as S.Schema<SearchDocsResponse>,
+  input: SearchDocsRequest,
+  output: SearchDocsResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -230,17 +293,17 @@ function __c0(j: number): any {
           hierarchy_lvl6: S.optional(S.String),
           content: S.optional(S.String),
           anchor: S.optional(S.String),
-          _formatted: S.optional(__S(1)),
+          _formatted: S.optional(FullTextSearchDocsResponseHitsItemFormatted),
         }),
       ).annotate({
         identifier: "FullTextSearchDocsResponseHitsItem",
       });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(FullTextSearchDocsResponseHitsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          hits: __S(3),
+          hits: FullTextSearchDocsResponseHitsList,
         }),
       ).annotate({
         identifier: "FullTextSearchDocsResponse",
@@ -258,20 +321,20 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ListDocsResponseBodyItem" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(ListDocsResponseBodyItem);
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(7).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListDocsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDocsResponse",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
           q: S.String.pipe(T.Query()),
-          product: S.optional(S.String.pipe(T.Query())),
+          product: S.optional(SearchDocsRequestProduct.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/docs/search", code: 200 })),
       ).annotate({ identifier: "SearchDocsRequest" });
@@ -280,7 +343,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          embeddings: __S(10),
+          embeddings: SearchDocsResponseBodyItemVectorsEmbeddingsList,
         }),
       ).annotate({
         identifier: "SearchDocsResponseBodyItemVectors",
@@ -289,7 +352,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          _vectors: __S(11),
+          _vectors: SearchDocsResponseBodyItemVectors,
           heading1: S.String,
           text: S.String,
           product: S.String,
@@ -304,23 +367,10 @@ function __c1(j: number): any {
         identifier: "SearchDocsResponseBodyItem",
       });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(SearchDocsResponseBodyItem);
     case 6:
-      return S.suspend(() => __S(13).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => SearchDocsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "SearchDocsResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

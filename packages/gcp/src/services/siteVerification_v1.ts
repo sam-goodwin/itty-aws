@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -85,40 +83,82 @@ export interface DeleteWebResourceRequest {
   /** The id of a verified site or domain. */
   id: string;
 }
+const DeleteWebResourceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeleteWebResourceRequest>;
+
 export interface DeleteWebResourceResponse {}
+const DeleteWebResourceResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<DeleteWebResourceResponse>;
+
 export interface SiteVerificationWebResourceGettokenRequestSite {
   /** The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to INET_DOMAIN, the site identifier is a domain name. */
   identifier?: string;
   /** The type of resource to be verified. Can be SITE or INET_DOMAIN (domain name). */
   type?: string;
 }
+const SiteVerificationWebResourceGettokenRequestSite = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<SiteVerificationWebResourceGettokenRequestSite>;
+
 export interface SiteVerificationWebResourceGettokenRequest {
   /** The verification method that will be used to verify this site. For sites, 'FILE' or 'META' methods may be used. For domains, only 'DNS' may be used. */
   verificationMethod?: string;
   /** The site for which a verification token will be generated. */
   site?: SiteVerificationWebResourceGettokenRequestSite;
 }
+const SiteVerificationWebResourceGettokenRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<SiteVerificationWebResourceGettokenRequest>;
+
 export interface GetTokenWebResourceRequest {
   /** Request body */
   body?: SiteVerificationWebResourceGettokenRequest;
 }
+const GetTokenWebResourceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetTokenWebResourceRequest>;
+
 export interface SiteVerificationWebResourceGettokenResponse {
   /** The verification token. The token must be placed appropriately in order for verification to succeed. */
   token?: string;
   /** The verification method to use in conjunction with this token. For FILE, the token should be placed in the top-level directory of the site, stored inside a file of the same name. For META, the token should be placed in the HEAD tag of the default page that is loaded for the site. For DNS, the token should be placed in a TXT record of the domain. */
   method?: string;
 }
+const SiteVerificationWebResourceGettokenResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<SiteVerificationWebResourceGettokenResponse>;
+
 export interface GetWebResourceRequest {
   /** The id of a verified site or domain. */
   id: string;
 }
+const GetWebResourceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetWebResourceRequest>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<StringList>;
+
 export interface SiteVerificationWebResourceResourceSite {
   /** The site type. Can be SITE or INET_DOMAIN (domain name). */
   type?: string;
   /** The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to INET_DOMAIN, the site identifier is a domain name. */
   identifier?: string;
 }
+const SiteVerificationWebResourceResourceSite = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<SiteVerificationWebResourceResourceSite>;
+
 export interface SiteVerificationWebResourceResource {
   /** The string used to identify this site. This value should be used in the "id" portion of the REST URL for the Get, Update, and Delete operations. */
   id?: string;
@@ -127,30 +167,65 @@ export interface SiteVerificationWebResourceResource {
   /** The address and type of a site that is verified or will be verified. */
   site?: SiteVerificationWebResourceResourceSite;
 }
+const SiteVerificationWebResourceResource = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<SiteVerificationWebResourceResource>;
+
 export interface InsertWebResourceRequest {
   /** The method to use for verifying a site or domain. */
   verificationMethod: string;
   /** Request body */
   body?: SiteVerificationWebResourceResource;
 }
+const InsertWebResourceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<InsertWebResourceRequest>;
+
 export interface ListWebResourceRequest {}
+const ListWebResourceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListWebResourceRequest>;
+
 export type SiteVerificationWebResourceResourceList = Array<SiteVerificationWebResourceResource>;
+const SiteVerificationWebResourceResourceList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<SiteVerificationWebResourceResourceList>;
+
 export interface SiteVerificationWebResourceListResponse {
   /** The list of sites that are owned by the authenticated user. */
   items?: SiteVerificationWebResourceResourceList;
 }
+const SiteVerificationWebResourceListResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<SiteVerificationWebResourceListResponse>;
+
 export interface PatchWebResourceRequest {
   /** The id of a verified site or domain. */
   id: string;
   /** Request body */
   body?: SiteVerificationWebResourceResource;
 }
+const PatchWebResourceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<PatchWebResourceRequest>;
+
 export interface UpdateWebResourceRequest {
   /** The id of a verified site or domain. */
   id: string;
   /** Request body */
   body?: SiteVerificationWebResourceResource;
 }
+const UpdateWebResourceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<UpdateWebResourceRequest>;
+
 export type DeleteWebResourceError =
   | NotFound
   | Forbidden
@@ -165,8 +240,8 @@ export const deleteWebResource: API.OperationMethod<
   DeleteWebResourceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeleteWebResourceRequest>,
-  output: __S(1) as any as S.Schema<DeleteWebResourceResponse>,
+  input: DeleteWebResourceRequest,
+  output: DeleteWebResourceResponse,
   errors: [
     NotFound,
     Forbidden,
@@ -193,8 +268,8 @@ export const getTokenWebResource: API.OperationMethod<
   GetTokenWebResourceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetTokenWebResourceRequest>,
-  output: __S(5) as any as S.Schema<SiteVerificationWebResourceGettokenResponse>,
+  input: GetTokenWebResourceRequest,
+  output: SiteVerificationWebResourceGettokenResponse,
   errors: [
     NotFound,
     Forbidden,
@@ -219,8 +294,8 @@ export const getWebResource: API.OperationMethod<
   GetWebResourceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetWebResourceRequest>,
-  output: __S(9) as any as S.Schema<SiteVerificationWebResourceResource>,
+  input: GetWebResourceRequest,
+  output: SiteVerificationWebResourceResource,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -240,8 +315,8 @@ export const insertWebResource: API.OperationMethod<
   InsertWebResourceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<InsertWebResourceRequest>,
-  output: __S(9) as any as S.Schema<SiteVerificationWebResourceResource>,
+  input: InsertWebResourceRequest,
+  output: SiteVerificationWebResourceResource,
   errors: [
     NotFound,
     Forbidden,
@@ -266,8 +341,8 @@ export const listWebResource: API.OperationMethod<
   ListWebResourceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<ListWebResourceRequest>,
-  output: __S(13) as any as S.Schema<SiteVerificationWebResourceListResponse>,
+  input: ListWebResourceRequest,
+  output: SiteVerificationWebResourceListResponse,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -287,8 +362,8 @@ export const patchWebResource: API.OperationMethod<
   PatchWebResourceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<PatchWebResourceRequest>,
-  output: __S(9) as any as S.Schema<SiteVerificationWebResourceResource>,
+  input: PatchWebResourceRequest,
+  output: SiteVerificationWebResourceResource,
   errors: [
     NotFound,
     Forbidden,
@@ -315,8 +390,8 @@ export const updateWebResource: API.OperationMethod<
   UpdateWebResourceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<UpdateWebResourceRequest>,
-  output: __S(9) as any as S.Schema<SiteVerificationWebResourceResource>,
+  input: UpdateWebResourceRequest,
+  output: SiteVerificationWebResourceResource,
   errors: [
     NotFound,
     Forbidden,
@@ -361,7 +436,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           verificationMethod: S.optional(S.String),
-          site: S.optional(__S(2)),
+          site: S.optional(SiteVerificationWebResourceGettokenRequestSite),
         }),
       ).annotate({
         identifier: "SiteVerificationWebResourceGettokenRequest",
@@ -369,7 +444,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(3).pipe(T.HttpBody())),
+          body: S.optional(SiteVerificationWebResourceGettokenRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -420,8 +495,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          owners: S.optional(__S(7)),
-          site: S.optional(__S(8)),
+          owners: S.optional(StringList),
+          site: S.optional(SiteVerificationWebResourceResourceSite),
         }),
       ).annotate({
         identifier: "SiteVerificationWebResourceResource",
@@ -430,7 +505,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           verificationMethod: S.String.pipe(T.Query()),
-          body: S.optional(__S(9).pipe(T.HttpBody())),
+          body: S.optional(SiteVerificationWebResourceResource.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -450,11 +525,11 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListWebResourceRequest" });
     case 4:
-      return S.Array(__S(9));
+      return S.Array(SiteVerificationWebResourceResource);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(12)),
+          items: S.optional(SiteVerificationWebResourceResourceList),
         }),
       ).annotate({
         identifier: "SiteVerificationWebResourceListResponse",
@@ -463,7 +538,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          body: S.optional(__S(9).pipe(T.HttpBody())),
+          body: S.optional(SiteVerificationWebResourceResource.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -476,7 +551,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          body: S.optional(__S(9).pipe(T.HttpBody())),
+          body: S.optional(SiteVerificationWebResourceResource.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -485,18 +560,5 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWebResourceRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

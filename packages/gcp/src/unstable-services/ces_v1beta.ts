@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -65,19 +63,35 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
+
 /** Request message for AgentService.BatchDeleteConversations. */
 export interface BatchDeleteConversationsRequest {
   /** Required. The resource names of the conversations to delete. */
   conversations?: StringList;
 }
+const BatchDeleteConversationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BatchDeleteConversationsRequest>;
+
 export interface BatchDeleteProjectsLocationsAppsConversationsRequest {
   /** Required. The resource name of the app to delete conversations from. Format: `projects/{project}/locations/{location}/apps/{app}` */
   parent: string;
   /** Request body */
   body?: BatchDeleteConversationsRequest;
 }
+const BatchDeleteProjectsLocationsAppsConversationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<BatchDeleteProjectsLocationsAppsConversationsRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -87,6 +101,8 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
+const Status = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Status>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -100,32 +116,61 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
+const Operation = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Operation>;
+
 /** Request to cancel an assistant session's in-flight turn. */
 export interface CancelAssistantTurnRequest {
   /** Optional. The turn to cancel; empty cancels whichever turn is running. A cancel naming a turn that is no longer the running one is a no-op. */
   turnId?: string;
 }
+const CancelAssistantTurnRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CancelAssistantTurnRequest>;
+
 export interface CancelAssistantTurnProjectsLocationsAppsAssistantSessionsRequest {
   /** Required. The assistant session whose in-flight turn to cancel. */
   name: string;
   /** Request body */
   body?: CancelAssistantTurnRequest;
 }
+const CancelAssistantTurnProjectsLocationsAppsAssistantSessionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CancelAssistantTurnProjectsLocationsAppsAssistantSessionsRequest>;
+
 /** Response for CancelAssistantTurn. */
 export interface CancelAssistantTurnResponse {
   /** Whether an in-flight turn was found and asked to stop (directly on this task, or through an epoch preemption for a turn hosted elsewhere). */
   cancelled?: boolean;
 }
+const CancelAssistantTurnResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CancelAssistantTurnResponse>;
+
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
+const CancelOperationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CancelOperationRequest>;
+
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+
 /** Request message for AssistantService.ChatAiAssistant. */
 export interface ChatAiAssistantRequest {
   /** Optional. Opaque onboarding context token returned by SessionService.GenerateOnboardingSuggestions. When set and still fresh, the server reuses the onboarding snapshot computed for the zero state instead of recomputing it for the first conversation turn. */
@@ -137,17 +182,29 @@ export interface ChatAiAssistantRequest {
   /** Required. The assistant session to be used to run the assistant. Format: `projects/{project}/locations/{location}/apps/{app}/assistantSessions/{assistant_session}` */
   assistantSession?: string;
 }
+const ChatAiAssistantRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ChatAiAssistantRequest>;
+
 export interface ChatAiAssistantProjectsLocationsAppsRequest {
   /** Required. The app to run assistant for. Format: `projects/{project}/locations/{location}/apps/{app}` */
   app: string;
   /** Request body */
   body?: ChatAiAssistantRequest;
 }
+const ChatAiAssistantProjectsLocationsAppsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ChatAiAssistantProjectsLocationsAppsRequest>;
+
 /** Session checkpoint containing inferred user intent for session title and UI. */
 export interface SessionCheckpoint {
   /** Inferred user goal or topic for the session (e.g. "Building E-Commerce Support Agent"). */
   userIntent?: string;
 }
+const SessionCheckpoint = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<SessionCheckpoint>;
+
 /** Represents a UI event payload. */
 export interface UiEvent {
   /** The media type (MIME type) indicating the format of the UI event payload (e.g., "application/json+a2ui"). */
@@ -155,6 +212,8 @@ export interface UiEvent {
   /** The JSON payload representing the A2UI surface. */
   jsonPayload?: string;
 }
+const UiEvent = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<UiEvent>;
+
 /** Response message for AssistantService.ChatAiAssistant. */
 export interface ChatAiAssistantResponse {
   /** Session checkpoint/compaction recap event containing user intent and rolling summary. */
@@ -170,8 +229,17 @@ export interface ChatAiAssistantResponse {
   /** Unique identifier for the event. */
   eventId?: string;
 }
+const ChatAiAssistantResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ChatAiAssistantResponse>;
+
 export type Ces_SchemaMap = { [key: string]: Ces_Schema | undefined };
+const Ces_SchemaMap = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Ces_SchemaMap>;
+
 export type Ces_SchemaList = Array<Ces_Schema>;
+const Ces_SchemaList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Ces_SchemaList>;
+
 export type Ces_SchemaTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "STRING"
@@ -180,6 +248,8 @@ export type Ces_SchemaTypeEnum =
   | "BOOLEAN"
   | "OBJECT"
   | "ARRAY";
+const Ces_SchemaTypeEnum = S.String;
+
 /** Represents a select subset of an OpenAPI 3.0 schema object. */
 export interface Ces_Schema {
   /** Optional. Maximum value for Type.INTEGER and Type.NUMBER. */
@@ -221,6 +291,8 @@ export interface Ces_Schema {
   /** Optional. The title of the schema. */
   title?: string;
 }
+const Ces_Schema = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Ces_Schema>;
+
 /** Defines the structure and metadata for a variable. */
 export interface AppVariableDeclaration {
   /** Required. The name of the variable. The name must start with a letter or underscore and contain only letters, numbers, or underscores. */
@@ -230,13 +302,25 @@ export interface AppVariableDeclaration {
   /** Required. The schema of the variable. */
   schema?: Ces_Schema;
 }
+const AppVariableDeclaration = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<AppVariableDeclaration>;
+
 export type AppVariableDeclarationList = Array<AppVariableDeclaration>;
+const AppVariableDeclarationList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<AppVariableDeclarationList>;
+
 export type EvaluationPersonaSpeechConfigEnvironmentEnum =
   | "BACKGROUND_ENVIRONMENT_UNSPECIFIED"
   | "CALL_CENTER"
   | "TRAFFIC"
   | "KIDS_NOISE"
   | "CAFE";
+const EvaluationPersonaSpeechConfigEnvironmentEnum = S.String;
+
 /** Configuration for Text-to-Speech generation. */
 export interface EvaluationPersonaSpeechConfig {
   /** Optional. The speaking rate. 1.0 is normal. Lower is slower (e.g., 0.8), higher is faster (e.g., 1.5). Useful for testing how the agent handles fast talkers. */
@@ -246,6 +330,11 @@ export interface EvaluationPersonaSpeechConfig {
   /** Optional. The specific voice identifier/accent to use. Example: "en-US-Wavenet-D" or "en-GB-Standard-A" */
   voiceId?: string;
 }
+const EvaluationPersonaSpeechConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<EvaluationPersonaSpeechConfig>;
+
 /** A persona represents an end user in an evaluation. */
 export interface EvaluationPersona {
   /** Required. The display name of the persona. Unique within an app. */
@@ -259,20 +348,37 @@ export interface EvaluationPersona {
   /** Required. The unique identifier of the persona. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationPersonas/{evaluationPersona}` */
   name?: string;
 }
+const EvaluationPersona = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<EvaluationPersona>;
+
 export type EvaluationPersonaList = Array<EvaluationPersona>;
+const EvaluationPersonaList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<EvaluationPersonaList>;
+
 export type EvaluationMetricsThresholdsScenarioHallucinationMetricBehaviorEnum =
   | "HALLUCINATION_METRIC_BEHAVIOR_UNSPECIFIED"
   | "DISABLED"
   | "ENABLED";
+const EvaluationMetricsThresholdsScenarioHallucinationMetricBehaviorEnum = S.String;
+
 /** Expectation level metrics thresholds. */
 export interface EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds {
   /** Optional. The success threshold for individual tool invocation parameter correctness. Must be a float between 0 and 1. Default is 1.0. */
   toolInvocationParameterCorrectnessThreshold?: number;
 }
+const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds =
+  /*@__PURE__*/ __L.at(
+    __c3,
+    1,
+  ) as any as S.Schema<EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds>;
+
 export type EvaluationMetricsThresholdsToolMatchingSettingsExtraToolCallBehaviorEnum =
   | "EXTRA_TOOL_CALL_BEHAVIOR_UNSPECIFIED"
   | "FAIL"
   | "ALLOW";
+const EvaluationMetricsThresholdsToolMatchingSettingsExtraToolCallBehaviorEnum = S.String;
+
 /** Settings for matching tool calls. */
 export interface EvaluationMetricsThresholdsToolMatchingSettings {
   /** Optional. Behavior for extra tool calls. Defaults to FAIL. */
@@ -280,10 +386,18 @@ export interface EvaluationMetricsThresholdsToolMatchingSettings {
     | EvaluationMetricsThresholdsToolMatchingSettingsExtraToolCallBehaviorEnum
     | (string & {});
 }
+const EvaluationMetricsThresholdsToolMatchingSettings = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<EvaluationMetricsThresholdsToolMatchingSettings>;
+
 export type EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsSemanticSimilarityChannelEnum =
   | "SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED"
   | "TEXT"
   | "AUDIO";
+const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsSemanticSimilarityChannelEnum =
+  S.String;
+
 /** Turn level metrics thresholds. */
 export interface EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds {
   /** Optional. The success threshold for overall tool invocation correctness. Must be a float between 0 and 1. Default is 1.0. */
@@ -295,6 +409,12 @@ export interface EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTur
     | EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsSemanticSimilarityChannelEnum
     | (string & {});
 }
+const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds =
+  /*@__PURE__*/ __L.at(
+    __c3,
+    3,
+  ) as any as S.Schema<EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds>;
+
 /** Settings for golden evaluations. */
 export interface EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds {
   /** Optional. The expectation level metrics thresholds. */
@@ -304,14 +424,23 @@ export interface EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds {
   /** Optional. The turn level metrics thresholds. */
   turnLevelMetricsThresholds?: EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds;
 }
+const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds>;
+
 export type EvaluationMetricsThresholdsGoldenHallucinationMetricBehaviorEnum =
   | "HALLUCINATION_METRIC_BEHAVIOR_UNSPECIFIED"
   | "DISABLED"
   | "ENABLED";
+const EvaluationMetricsThresholdsGoldenHallucinationMetricBehaviorEnum = S.String;
+
 export type EvaluationMetricsThresholdsHallucinationMetricBehaviorEnum =
   | "HALLUCINATION_METRIC_BEHAVIOR_UNSPECIFIED"
   | "DISABLED"
   | "ENABLED";
+const EvaluationMetricsThresholdsHallucinationMetricBehaviorEnum = S.String;
+
 /** Threshold settings for metrics in an Evaluation. */
 export interface EvaluationMetricsThresholds {
   /** Optional. The hallucination metric behavior for scenario evaluations. */
@@ -329,10 +458,17 @@ export interface EvaluationMetricsThresholds {
     | EvaluationMetricsThresholdsHallucinationMetricBehaviorEnum
     | (string & {});
 }
+const EvaluationMetricsThresholds = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<EvaluationMetricsThresholds>;
+
 export type DataStoreSettingsEngineTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "ENGINE_TYPE_SEARCH"
   | "ENGINE_TYPE_CHAT";
+const DataStoreSettingsEngineTypeEnum = S.String;
+
 /** An engine to which the data stores are connected. See Vertex AI Search: https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction. */
 export interface DataStoreSettingsEngine {
   /** Output only. The resource name of the engine. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` */
@@ -340,22 +476,38 @@ export interface DataStoreSettingsEngine {
   /** Output only. The type of the engine. */
   type?: DataStoreSettingsEngineTypeEnum | (string & {});
 }
+const DataStoreSettingsEngine = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DataStoreSettingsEngine>;
+
 export type DataStoreSettingsEngineList = Array<DataStoreSettingsEngine>;
+const DataStoreSettingsEngineList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DataStoreSettingsEngineList>;
+
 /** Data store related settings for the app. */
 export interface DataStoreSettings {
   /** Output only. The engines for the app. */
   engines?: DataStoreSettingsEngineList;
 }
+const DataStoreSettings = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DataStoreSettings>;
+
 /** TimeZone settings of the app. */
 export interface TimeZoneSettings {
   /** Optional. The time zone of the app from the [time zone database](https://www.iana.org/time-zones), e.g., America/Los_Angeles, Europe/Paris. */
   timeZone?: string;
 }
+const TimeZoneSettings = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<TimeZoneSettings>;
+
 /** VPC-SC settings for the app. */
 export interface VpcScSettings {
   /** Optional. The allowed HTTP(s) origins that OpenAPI tools in the App are able to directly call when VPC Service Controls are enabled. These strings must match the origin exactly, including the port if specified. For example, "https://example.com" or "https://example.com:443". This list does not yet apply to Python tools that may make direct HTTP calls. */
   allowedOrigins?: StringList;
 }
+const VpcScSettings = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<VpcScSettings>;
+
 /** Language settings of the app. */
 export interface LanguageSettings {
   /** Optional. The default language code of the app. */
@@ -367,12 +519,16 @@ export interface LanguageSettings {
   /** Optional. Deprecated: This feature is no longer supported. Use `enable_multilingual_support` instead to improve handling of multilingual input. The action to perform when an agent receives input in an unsupported language. This can be a predefined action or a custom tool call. Valid values are: - A tool's full resource name, which triggers a specific tool execution. - A predefined system action, such as "escalate" or "exit", which triggers an EndSession signal with corresponding metadata to terminate the conversation. */
   fallbackAction?: string;
 }
+const LanguageSettings = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<LanguageSettings>;
+
 export type ModelSettingsThinkingLevelEnum =
   | "THINKING_LEVEL_UNSPECIFIED"
   | "DEFAULT"
   | "LOW"
   | "MEDIUM"
   | "HIGH";
+const ModelSettingsThinkingLevelEnum = S.String;
+
 /** Model settings contains various configurations for the LLM model. */
 export interface ModelSettings {
   /** Optional. The LLM model that the agent should use. If not set, the agent will inherit the model from its parent agent. */
@@ -382,6 +538,8 @@ export interface ModelSettings {
   /** Optional. If set, this temperature will be used for the LLM model. Temperature controls the randomness of the model's responses. Lower temperatures produce responses that are more predictable. Higher temperatures produce responses that are more creative. */
   temperature?: number;
 }
+const ModelSettings = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ModelSettings>;
+
 /** Settings for custom client certificates. */
 export interface ClientCertificateSettings {
   /** Optional. The name of the SecretManager secret version resource storing the passphrase to decrypt the private key. Should be left unset if the private key is not encrypted. Format: `projects/{project}/secrets/{secret}/versions/{version}` */
@@ -391,16 +549,27 @@ export interface ClientCertificateSettings {
   /** Required. The TLS certificate encoded in PEM format. This string must include the begin header and end footer lines. */
   tlsCertificate?: string;
 }
+const ClientCertificateSettings = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ClientCertificateSettings>;
+
 export type AppToolExecutionModeEnum =
   | "TOOL_EXECUTION_MODE_UNSPECIFIED"
   | "PARALLEL"
   | "SEQUENTIAL";
+const AppToolExecutionModeEnum = S.String;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<StringMap>;
+
 /** Settings to describe the Cloud Logging behaviors for the app. */
 export interface CloudLoggingSettings {
   /** Optional. Whether to enable Cloud Logging for the sessions. */
   enableCloudLogging?: boolean;
 }
+const CloudLoggingSettings = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<CloudLoggingSettings>;
+
 /** Configuration for how the audio interactions should be recorded. */
 export interface AudioRecordingConfig {
   /** Optional. The [Cloud Storage](https://cloud.google.com/storage) bucket to store the session audio recordings. The URI must start with "gs://". Please choose a bucket location that meets your data residency requirements. Note: If the Cloud Storage bucket is in a different project from the app, you should grant `storage.objects.create` permission to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`. */
@@ -408,6 +577,8 @@ export interface AudioRecordingConfig {
   /** Optional. The Cloud Storage path prefix for audio recordings. This prefix can include the following placeholders, which will be dynamically substituted at serving time: - $project: project ID - $location: app location - $app: app ID - $date: session date in YYYY-MM-DD format - $session: session ID If the path prefix is not specified, the default prefix `$project/$location/$app/$date/$session/` will be used. */
   gcsPathPrefix?: string;
 }
+const AudioRecordingConfig = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<AudioRecordingConfig>;
+
 /** Settings to describe the BigQuery export behaviors for the app. */
 export interface BigQueryExportSettings {
   /** Optional. The **project ID** of the BigQuery dataset to export the data to. Note: If the BigQuery dataset is in a different project from the app, you should grant `roles/bigquery.admin` role to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`. */
@@ -417,6 +588,11 @@ export interface BigQueryExportSettings {
   /** Optional. The BigQuery **dataset ID** to export the data to. */
   dataset?: string;
 }
+const BigQueryExportSettings = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<BigQueryExportSettings>;
+
 /** Settings to describe the conversation logging behaviors for the app. */
 export interface ConversationLoggingSettings {
   /** Optional. Controls the retention window for the conversation. If not set, the conversation will be retained for 365 days. */
@@ -424,11 +600,21 @@ export interface ConversationLoggingSettings {
   /** Optional. Whether to disable conversation logging for the sessions. */
   disableConversationLogging?: boolean;
 }
+const ConversationLoggingSettings = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ConversationLoggingSettings>;
+
 /** Settings to describe the conversation data collection behaviors for LLM analysis metrics pipeline. */
 export interface MetricAnalysisSettings {
   /** Optional. Whether to collect conversation data for llm analysis metrics. If true, conversation data will not be collected for llm analysis metrics; otherwise, conversation data will be collected. */
   llmMetricsOptedOut?: boolean;
 }
+const MetricAnalysisSettings = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<MetricAnalysisSettings>;
+
 /** Configuration to instruct how sensitive data should be handled. */
 export interface RedactionConfig {
   /** Optional. [DLP](https://cloud.google.com/dlp/docs) deidentify template name to instruct on how to de-identify content. Format: `projects/{project}/locations/{location}/deidentifyTemplates/{deidentify_template}` */
@@ -438,6 +624,8 @@ export interface RedactionConfig {
   /** Optional. If true, redaction will be applied in various logging scenarios, including conversation history, Cloud Logging and audio recording. */
   enableRedaction?: boolean;
 }
+const RedactionConfig = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<RedactionConfig>;
+
 /** Settings to describe the logging behaviors for the app. */
 export interface LoggingSettings {
   /** Optional. Settings to describe the Cloud Logging behaviors for the app. */
@@ -459,16 +647,25 @@ export interface LoggingSettings {
   /** Optional. Configures an additional recording of unredacted audio. This can be used to maintain a raw audio copy when audio redaction is enabled, typically for auditing or monitoring purposes. */
   unredactedAudioRecordingConfig?: AudioRecordingConfig;
 }
+const LoggingSettings = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<LoggingSettings>;
+
 export type ErrorHandlingSettingsErrorHandlingStrategyEnum =
   | "ERROR_HANDLING_STRATEGY_UNSPECIFIED"
   | "NONE"
   | "FALLBACK_RESPONSE"
   | "END_SESSION";
+const ErrorHandlingSettingsErrorHandlingStrategyEnum = S.String;
+
 /** Configuration for ending the session in case of system errors (e.g. LLM errors). */
 export interface ErrorHandlingSettingsEndSessionConfig {
   /** Optional. Whether to escalate the session in EndSession. If session is escalated, metadata in EndSession will contain `session_escalated = true`. See https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/deploy/google-telephony-platform#transfer_a_call_to_a_human_agent for details. */
   escalateSession?: boolean;
 }
+const ErrorHandlingSettingsEndSessionConfig = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ErrorHandlingSettingsEndSessionConfig>;
+
 /** Configuration for handling fallback responses. */
 export interface ErrorHandlingSettingsFallbackResponseConfig {
   /** Optional. The maximum number of fallback attempts to make before the agent emitting EndSession Signal. */
@@ -476,6 +673,11 @@ export interface ErrorHandlingSettingsFallbackResponseConfig {
   /** Optional. The fallback messages in case of system errors (e.g. LLM errors), mapped by [supported language code](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language). */
   customFallbackMessages?: StringMap;
 }
+const ErrorHandlingSettingsFallbackResponseConfig = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ErrorHandlingSettingsFallbackResponseConfig>;
+
 /** Settings to describe how errors should be handled in the app. */
 export interface ErrorHandlingSettings {
   /** Optional. The strategy to use for error handling. */
@@ -485,11 +687,18 @@ export interface ErrorHandlingSettings {
   /** Optional. Configuration for handling fallback responses. */
   fallbackResponseConfig?: ErrorHandlingSettingsFallbackResponseConfig;
 }
+const ErrorHandlingSettings = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ErrorHandlingSettings>;
+
 /** Settings for dashboards associated with the app, that show up in the Monitoring view. */
 export interface DashboardSettings {
   /** Optional. The resource name of the default Contact Center Insights dashboard associated with the app. This is the dashboard that will be displayed when users navigate to the Monitoring view for the app. Format: `projects/{project}/locations/{location}/dashboards/{dashboard}` */
   defaultDashboard?: string;
 }
+const DashboardSettings = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<DashboardSettings>;
+
 /** Configuration specific to Instagram deployments. */
 export interface ChannelProfileInstagramConfig {
   /** Output only. The fetched Meta business profile thumbnail URL. */
@@ -501,6 +710,11 @@ export interface ChannelProfileInstagramConfig {
   /** Output only. The fetched Meta business page name. */
   displayName?: string;
 }
+const ChannelProfileInstagramConfig = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ChannelProfileInstagramConfig>;
+
 export type ChannelProfileChannelTypeEnum =
   | "UNKNOWN"
   | "WEB_UI"
@@ -513,6 +727,8 @@ export type ChannelProfileChannelTypeEnum =
   | "CONTACT_CENTER_INTEGRATION"
   | "WHATSAPP"
   | "INSTAGRAM";
+const ChannelProfileChannelTypeEnum = S.String;
+
 /** Configuration specific to WhatsApp deployments. */
 export interface ChannelProfileWhatsAppConfig {
   /** Output only. The fetched Meta business page name. */
@@ -528,13 +744,27 @@ export interface ChannelProfileWhatsAppConfig {
   /** Required. The Meta phone number ID. */
   phoneNumberId?: string;
 }
+const ChannelProfileWhatsAppConfig = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ChannelProfileWhatsAppConfig>;
+
 export type ChannelProfilePersonaPropertyPersonaEnum = "UNKNOWN" | "CONCISE" | "CHATTY";
+const ChannelProfilePersonaPropertyPersonaEnum = S.String;
+
 /** Represents the persona property of a channel. */
 export interface ChannelProfilePersonaProperty {
   /** Optional. The persona of the channel. */
   persona?: ChannelProfilePersonaPropertyPersonaEnum | (string & {});
 }
+const ChannelProfilePersonaProperty = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ChannelProfilePersonaProperty>;
+
 export type ChannelProfileWebWidgetConfigThemeEnum = "THEME_UNSPECIFIED" | "LIGHT" | "DARK";
+const ChannelProfileWebWidgetConfigThemeEnum = S.String;
+
 /** Security settings for the web widget. */
 export interface ChannelProfileWebWidgetConfigSecuritySettings {
   /** Optional. Indicates whether public access to the web widget is enabled. If `true`, the web widget will be publicly accessible. If `false`, the web widget must be integrated with your own authentication and authorization system to return valid credentials for accessing the CES agent. */
@@ -546,12 +776,19 @@ export interface ChannelProfileWebWidgetConfigSecuritySettings {
   /** Optional. The origins that are allowed to host the web widget. An origin is defined by RFC 6454. If empty, all origins are allowed. A maximum of 100 origins is allowed. Example: "https://example.com" */
   allowedOrigins?: StringList;
 }
+const ChannelProfileWebWidgetConfigSecuritySettings = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ChannelProfileWebWidgetConfigSecuritySettings>;
+
 export type ChannelProfileWebWidgetConfigModalityEnum =
   | "MODALITY_UNSPECIFIED"
   | "CHAT_AND_VOICE"
   | "VOICE_ONLY"
   | "CHAT_ONLY"
   | "CHAT_VOICE_AND_VIDEO";
+const ChannelProfileWebWidgetConfigModalityEnum = S.String;
+
 /** Message for configuration for the web widget. */
 export interface ChannelProfileWebWidgetConfig {
   /** Optional. The theme of the web widget. */
@@ -563,6 +800,11 @@ export interface ChannelProfileWebWidgetConfig {
   /** Optional. The modality of the web widget. */
   modality?: ChannelProfileWebWidgetConfigModalityEnum | (string & {});
 }
+const ChannelProfileWebWidgetConfig = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ChannelProfileWebWidgetConfig>;
+
 /** A ChannelProfile configures the agent's behavior for a specific communication channel, such as web UI or telephony. */
 export interface ChannelProfile {
   /** Optional. Configuration specific to Instagram deployments. */
@@ -584,16 +826,28 @@ export interface ChannelProfile {
   /** Optional. The noise suppression level of the channel profile. Available values are "low", "moderate", "high", "very_high". */
   noiseSuppressionLevel?: string;
 }
+const ChannelProfile = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ChannelProfile>;
+
 /** Configuration for the user goal met metrics for the evaluation. To disable the metric, set the message but do not set the `enable_user_goal_met_metrics` field to true (or explicitly set it to false). To unset the configuration and fallback to the default behavior, omit the message entirely. */
 export interface EvaluationMetricsConfigUserGoalMetMetricsConfig {
   /** Optional. Whether to calculate the user goal met metrics for the evaluation. */
   enableUserGoalMetMetrics?: boolean;
 }
+const EvaluationMetricsConfigUserGoalMetMetricsConfig = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<EvaluationMetricsConfigUserGoalMetMetricsConfig>;
+
 /** Configuration for the expectation level metrics for the evaluation. To disable the metric, set the message but do not set the `enable_expectations_met_metrics` field to true (or explicitly set it to false). To unset the configuration and fallback to the default behavior, omit the message entirely. */
 export interface EvaluationMetricsConfigExpectationsMetMetricsConfig {
   /** Optional. Whether to calculate the expectation level metrics for the evaluation. */
   enableExpectationsMetMetrics?: boolean;
 }
+const EvaluationMetricsConfigExpectationsMetMetricsConfig = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<EvaluationMetricsConfigExpectationsMetMetricsConfig>;
+
 /** Configuration for the scenario metrics for the evaluation. */
 export interface EvaluationMetricsConfigScenarioMetricsConfig {
   /** Optional. Configuration for user goal met metrics. */
@@ -601,16 +855,31 @@ export interface EvaluationMetricsConfigScenarioMetricsConfig {
   /** Optional. Configuration for expectation level metrics. */
   expectationsMetMetricsConfig?: EvaluationMetricsConfigExpectationsMetMetricsConfig;
 }
+const EvaluationMetricsConfigScenarioMetricsConfig = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<EvaluationMetricsConfigScenarioMetricsConfig>;
+
 /** Configuration for correctness metrics for the evaluation. To disable the metric, set the message but do not set the `enable_tool_correctness_metrics` field to true (or explicitly set it to false). To unset the configuration and fallback to the default behavior, omit the message entirely. */
 export interface EvaluationMetricsConfigToolCorrectnessMetricsConfig {
   /** Optional. Whether to calculate tool correctness metrics for the evaluation. */
   enableToolCorrectnessMetrics?: boolean;
 }
+const EvaluationMetricsConfigToolCorrectnessMetricsConfig = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<EvaluationMetricsConfigToolCorrectnessMetricsConfig>;
+
 /** Configuration for similarity metrics for the evaluation. To disable the metric, set the message but do not set the `enable_semantic_similarity_metrics` field to true (or explicitly set it to false). To unset the configuration and fallback to the default behavior, omit the message entirely. */
 export interface EvaluationMetricsConfigSemanticSimilarityMetricsConfig {
   /** Optional. Whether to calculate semantic similarity metrics for the evaluation. */
   enableSemanticSimilarityMetrics?: boolean;
 }
+const EvaluationMetricsConfigSemanticSimilarityMetricsConfig = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<EvaluationMetricsConfigSemanticSimilarityMetricsConfig>;
+
 /** Configuration for the golden metrics for the evaluation. */
 export interface EvaluationMetricsConfigGoldenMetricsConfig {
   /** Optional. Configuration for step level tool correctness metrics. */
@@ -620,6 +889,11 @@ export interface EvaluationMetricsConfigGoldenMetricsConfig {
   /** Optional. Configuration for turn level tool correctness metrics. */
   toolCorrectnessMetricsConfig?: EvaluationMetricsConfigToolCorrectnessMetricsConfig;
 }
+const EvaluationMetricsConfigGoldenMetricsConfig = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<EvaluationMetricsConfigGoldenMetricsConfig>;
+
 /** Configures the metrics for an evaluation. */
 export interface EvaluationMetricsConfig {
   /** Optional. Configuration for the scenario metrics for the evaluation. */
@@ -627,35 +901,57 @@ export interface EvaluationMetricsConfig {
   /** Optional. Configuration for the golden metrics for the evaluation. */
   goldenMetricsConfig?: EvaluationMetricsConfigGoldenMetricsConfig;
 }
+const EvaluationMetricsConfig = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<EvaluationMetricsConfig>;
+
 export type EvaluationSettingsGoldenEvaluationToolCallBehaviourEnum =
   | "EVALUATION_TOOL_CALL_BEHAVIOUR_UNSPECIFIED"
   | "REAL"
   | "FAKE";
+const EvaluationSettingsGoldenEvaluationToolCallBehaviourEnum = S.String;
+
 export type EvaluationSettingsScenarioEvaluationToolCallBehaviourEnum =
   | "EVALUATION_TOOL_CALL_BEHAVIOUR_UNSPECIFIED"
   | "REAL"
   | "FAKE";
+const EvaluationSettingsScenarioEvaluationToolCallBehaviourEnum = S.String;
+
 export type EvaluationSettingsGoldenRunMethodEnum =
   | "GOLDEN_RUN_METHOD_UNSPECIFIED"
   | "STABLE"
   | "NAIVE";
+const EvaluationSettingsGoldenRunMethodEnum = S.String;
+
 export type EvaluationSettingsScenarioExecutionModeEnum =
   | "SCENARIO_EXECUTION_MODE_UNSPECIFIED"
   | "QUALITY_OPTIMIZED"
   | "SPEED_OPTIMIZED";
+const EvaluationSettingsScenarioExecutionModeEnum = S.String;
+
 export type EvaluationRunCachingSettingsRunCachingModeEnum =
   | "EVALUATION_RUN_CACHING_MODE_UNSPECIFIED"
   | "FORCE_RUN"
   | "SKIP_IF_UNCHANGED";
+const EvaluationRunCachingSettingsRunCachingModeEnum = S.String;
+
 /** Settings for evaluation run caching. */
 export interface EvaluationRunCachingSettings {
   /** Optional. The caching mode to use for the evaluation run. If not set, default to FORCE_RUN. */
   runCachingMode?: EvaluationRunCachingSettingsRunCachingModeEnum | (string & {});
 }
+const EvaluationRunCachingSettings = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<EvaluationRunCachingSettings>;
+
 export type EvaluationSettingsScenarioConversationInitiatorEnum =
   | "SCENARIO_CONVERSATION_INITIATOR_UNSPECIFIED"
   | "USER"
   | "AGENT";
+const EvaluationSettingsScenarioConversationInitiatorEnum = S.String;
+
 /** Settings for evaluation. */
 export interface EvaluationSettings {
   /** Optional. Configures the default metrics for evaluations. */
@@ -679,6 +975,8 @@ export interface EvaluationSettings {
     | EvaluationSettingsScenarioConversationInitiatorEnum
     | (string & {});
 }
+const EvaluationSettings = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<EvaluationSettings>;
+
 /** Configuration for how the user barge-in activities should be handled. */
 export interface BargeInConfig {
   /** Optional. Deprecated: `disable_barge_in` is deprecated in favor of `disable_barge_in_control` in ChannelProfile. Disables user barge-in while the agent is speaking. If true, user input during agent response playback will be ignored. */
@@ -686,11 +984,15 @@ export interface BargeInConfig {
   /** Optional. If enabled, the agent will adapt its next response based on the assumption that the user hasn't heard the full preceding agent message. This should not be used in scenarios where agent responses are displayed visually. */
   bargeInAwareness?: boolean;
 }
+const BargeInConfig = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<BargeInConfig>;
+
 export type AmbientSoundConfigPrebuiltAmbientNoiseEnum =
   | "PREBUILT_AMBIENT_NOISE_UNSPECIFIED"
   | "RETAIL_STORE"
   | "CONVENTION_HALL"
   | "OUTDOOR";
+const AmbientSoundConfigPrebuiltAmbientNoiseEnum = S.String;
+
 /** Configuration for the ambient sound to be played with the synthesized agent response, to enhance the naturalness of the conversation. */
 export interface AmbientSoundConfig {
   /** Optional. Name of the prebuilt ambient sound. Valid values are: - "coffee_shop" - "keyboard" - "keypad" - "hum" - "office_1" - "office_2" - "office_3" - "room_1" - "room_2" - "room_3" - "room_4" - "room_5" - "air_conditioner" */
@@ -702,12 +1004,18 @@ export interface AmbientSoundConfig {
   /** Optional. Ambient noise as a mono-channel, 16kHz WAV file stored in [Cloud Storage](https://cloud.google.com/storage). Note: Please make sure the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com` has `storage.objects.get` permission to the Cloud Storage object. */
   gcsUri?: string;
 }
+const AmbientSoundConfig = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<AmbientSoundConfig>;
+
 export type CustomVoiceSampleVoiceInstructionModeEnum =
   | "VOICE_INSTRUCTION_MODE_UNSPECIFIED"
   | "NO_INSTRUCTION"
   | "GENERATE_INSTRUCTION"
   | "CUSTOM_INSTRUCTION";
+const CustomVoiceSampleVoiceInstructionModeEnum = S.String;
+
 export type CustomVoiceSampleWarningTypeEnum = "WARNING_TYPE_UNSPECIFIED" | "LOW_AUDIO_LEVEL";
+const CustomVoiceSampleWarningTypeEnum = S.String;
+
 /** A warning message encountered during voice sample processing. */
 export interface CustomVoiceSampleWarning {
   /** Output only. A human-readable description of the warning. */
@@ -715,7 +1023,17 @@ export interface CustomVoiceSampleWarning {
   /** Output only. The type of the warning. */
   type?: CustomVoiceSampleWarningTypeEnum | (string & {});
 }
+const CustomVoiceSampleWarning = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<CustomVoiceSampleWarning>;
+
 export type CustomVoiceSampleWarningList = Array<CustomVoiceSampleWarning>;
+const CustomVoiceSampleWarningList = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<CustomVoiceSampleWarningList>;
+
 /** Configuration for a custom voice sample used for voice cloning. */
 export interface CustomVoiceSample {
   /** Optional. Natural language instructions for voice style, tone, pacing, or pronunciation. */
@@ -735,7 +1053,14 @@ export interface CustomVoiceSample {
   /** Optional. Consent audio for voice cloning. */
   consentAudioGcsUri?: string;
 }
+const CustomVoiceSample = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<CustomVoiceSample>;
+
 export type CustomVoiceSampleList = Array<CustomVoiceSample>;
+const CustomVoiceSampleList = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<CustomVoiceSampleList>;
+
 /** Configuration for how the agent response should be synthesized. */
 export interface SynthesizeSpeechConfig {
   /** Optional. The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code. For the list of available voices, please refer to [Supported voices and languages](https://cloud.google.com/text-to-speech/docs/voices) from Cloud Text-to-Speech. */
@@ -747,7 +1072,17 @@ export interface SynthesizeSpeechConfig {
   /** Optional. The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. Values outside of the range [0.25, 2.0] will return an error. */
   speakingRate?: number;
 }
+const SynthesizeSpeechConfig = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<SynthesizeSpeechConfig>;
+
 export type SynthesizeSpeechConfigMap = { [key: string]: SynthesizeSpeechConfig | undefined };
+const SynthesizeSpeechConfigMap = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<SynthesizeSpeechConfigMap>;
+
 /** Configuration for how the input and output audio should be processed and delivered. */
 export interface AudioProcessingConfig {
   /** Optional. Configures the agent behavior for the user barge-in activities. */
@@ -761,6 +1096,11 @@ export interface AudioProcessingConfig {
   /** Optional. Configuration of how the agent response should be synthesized, mapping from the language code to SynthesizeSpeechConfig. If the configuration for the specified language code is not found, the configuration for the root language code will be used. For example, if the map contains "en-us" and "en", and the specified language code is "en-gb", then "en" configuration will be used. Note: Language code is case-insensitive. */
   synthesizeSpeechConfigs?: SynthesizeSpeechConfigMap;
 }
+const AudioProcessingConfig = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<AudioProcessingConfig>;
+
 /** An app serves as a top-level container for a group of agents, including the root agent and its sub-agents, along with their associated configurations. These agents work together to achieve specific goals within the app's context. */
 export interface App {
   /** Optional. The declarations of the variables. */
@@ -826,6 +1166,8 @@ export interface App {
   /** Optional. Audio processing configuration of the app. */
   audioProcessingConfig?: AudioProcessingConfig;
 }
+const App = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<App>;
+
 export interface CreateProjectsLocationsAppsRequest {
   /** Optional. The ID to use for the app, which will become the final component of the app's resource name. If not provided, a unique ID will be automatically assigned for the app. */
   appId?: string;
@@ -834,6 +1176,11 @@ export interface CreateProjectsLocationsAppsRequest {
   /** Request body */
   body?: App;
 }
+const CreateProjectsLocationsAppsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<CreateProjectsLocationsAppsRequest>;
+
 /** A callback defines the custom logic to be executed at various stages of agent interaction. */
 export interface Callback {
   /** Optional. Whether the callback is disabled. Disabled callbacks are ignored by the agent. */
@@ -845,7 +1192,11 @@ export interface Callback {
   /** Optional. If enabled, the callback will also be executed on intermediate model outputs. This setting only affects after model callback. **ENABLE WITH CAUTION**. Typically after model callback only needs to be executed after receiving all model responses. Enabling proactive execution may have negative implication on the execution cost and latency, and should only be enabled in rare situations. */
   proactiveExecutionEnabled?: boolean;
 }
+const Callback = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<Callback>;
+
 export type CallbackList = Array<Callback>;
+const CallbackList = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<CallbackList>;
+
 /** Declares a combination of a target URL, transport and protocol version for interacting with the agent. This allows agents to expose the same functionality over multiple protocol binding mechanisms. */
 export interface AgentInterface {
   /** Required. The protocol binding supported at this URL. This is an open form string, to be easily extended for other protocol bindings. The core ones officially supported are `JSONRPC`, `GRPC` and `HTTP+JSON`. */
@@ -857,7 +1208,11 @@ export interface AgentInterface {
   /** Required. The version of the A2A protocol this interface exposes. Use the latest supported minor version per major version. Examples: "0.3", "1.0" */
   protocolVersion?: string;
 }
+const AgentInterface = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<AgentInterface>;
+
 export type AgentInterfaceList = Array<AgentInterface>;
+const AgentInterfaceList = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<AgentInterfaceList>;
+
 /** Represents a distinct capability or function that an agent can perform. */
 export interface AgentSkill {
   /** Required. A detailed description of the skill. */
@@ -875,7 +1230,11 @@ export interface AgentSkill {
   /** Example prompts or scenarios that this skill can handle. */
   examples?: StringList;
 }
+const AgentSkill = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<AgentSkill>;
+
 export type AgentSkillList = Array<AgentSkill>;
+const AgentSkillList = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<AgentSkillList>;
+
 /** AgentCard conveys key information about a remote agent. It is a trimmed version of the AgentCard defined in the A2A protocol https://a2a-protocol.org/dev/specification/#441-agentcard */
 export interface AgentCard {
   /** Required. A human-readable name for the agent. */
@@ -889,7 +1248,11 @@ export interface AgentCard {
   /** Required. Skills represent a unit of ability an agent can perform. This may somewhat abstract but represents a more focused set of actions that the agent is highly likely to succeed at. */
   skills?: AgentSkillList;
 }
+const AgentCard = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<AgentCard>;
+
 export type OAuthConfigOauthGrantTypeEnum = "OAUTH_GRANT_TYPE_UNSPECIFIED" | "CLIENT_CREDENTIAL";
+const OAuthConfigOauthGrantTypeEnum = S.String;
+
 /** Configurations for authentication with OAuth. */
 export interface OAuthConfig {
   /** Required. The name of the SecretManager secret version resource storing the client secret. Format: `projects/{project}/secrets/{secret}/versions/{version}` Note: You should grant `roles/secretmanager.secretAccessor` role to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`. */
@@ -903,10 +1266,14 @@ export interface OAuthConfig {
   /** Required. OAuth grant types. */
   oauthGrantType?: OAuthConfigOauthGrantTypeEnum | (string & {});
 }
+const OAuthConfig = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<OAuthConfig>;
+
 export type ApiKeyConfigRequestLocationEnum =
   | "REQUEST_LOCATION_UNSPECIFIED"
   | "HEADER"
   | "QUERY_STRING";
+const ApiKeyConfigRequestLocationEnum = S.String;
+
 /** Configurations for authentication with API key. */
 export interface ApiKeyConfig {
   /** Required. The parameter name or the header name of the API key. E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name. */
@@ -916,11 +1283,15 @@ export interface ApiKeyConfig {
   /** Required. Key location in the request. */
   requestLocation?: ApiKeyConfigRequestLocationEnum | (string & {});
 }
+const ApiKeyConfig = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<ApiKeyConfig>;
+
 /** Configurations for authentication with a bearer token. */
 export interface BearerTokenConfig {
   /** Required. The bearer token. Must be in the format `$context.variables.`. */
   token?: string;
 }
+const BearerTokenConfig = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<BearerTokenConfig>;
+
 /** Configurations for authentication with [ID token](https://cloud.google.com/docs/authentication/token-types#id) generated from service agent. */
 export type ServiceAgentIdTokenAuthConfig = CancelOperationRequest;
 /** Configurations for authentication using a custom service account. */
@@ -930,6 +1301,11 @@ export interface ServiceAccountAuthConfig {
   /** Optional. The OAuth scopes to grant. If not specified, the default scope `https://www.googleapis.com/auth/cloud-platform` is used. */
   scopes?: StringList;
 }
+const ServiceAccountAuthConfig = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ServiceAccountAuthConfig>;
+
 /** Authentication information required for API calls. */
 export interface ApiAuthentication {
   /** Optional. Config for OAuth. */
@@ -943,6 +1319,8 @@ export interface ApiAuthentication {
   /** Optional. Config for service account authentication. */
   serviceAccountAuthConfig?: ServiceAccountAuthConfig;
 }
+const ApiAuthentication = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<ApiAuthentication>;
+
 /** Shared configuration for connecting to a remote [A2A](https://github.com/a2aproject/A2A) agent. */
 export interface RemoteA2aConfig {
   /** Optional. Mapping of output variable names of remote agent to GECX variable names. */
@@ -960,30 +1338,45 @@ export interface RemoteA2aConfig {
   /** Optional. If not empty, interactions with the remote A2A agent will use this context ID. This context_id field can refer to a session variable like `$context.variables.order_agent_session_id`. */
   contextId?: string;
 }
+const RemoteA2aConfig = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<RemoteA2aConfig>;
+
 /** The agent which will transfer execution to a remote [A2A](https://github.com/a2aproject/A2A) agent. */
 export interface AgentRemoteA2aAgent {
   /** Required. The A2A connection configuration. */
   a2aConfig?: RemoteA2aConfig;
 }
+const AgentRemoteA2aAgent = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<AgentRemoteA2aAgent>;
+
 export type TransferRuleDirectionEnum =
   | "DIRECTION_UNSPECIFIED"
   | "PARENT_TO_CHILD"
   | "CHILD_TO_PARENT";
+const TransferRuleDirectionEnum = S.String;
+
 /** Expression condition based on session state. */
 export interface ExpressionCondition {
   /** Required. The string representation of cloud.api.Expression condition. */
   expression?: string;
 }
+const ExpressionCondition = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<ExpressionCondition>;
+
 /** A rule that prevents the planner from transferring to the target agent. */
 export interface TransferRuleDisablePlannerTransfer {
   /** Required. If the condition evaluates to true, planner will not be allowed to transfer to the target agent. */
   expressionCondition?: ExpressionCondition;
 }
+const TransferRuleDisablePlannerTransfer = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<TransferRuleDisablePlannerTransfer>;
+
 /** Python code block to evaluate the condition. */
 export interface PythonCodeCondition {
   /** Required. The python code to execute. */
   pythonCode?: string;
 }
+const PythonCodeCondition = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<PythonCodeCondition>;
+
 /** Deterministic transfer rule. When the condition evaluates to true, the transfer occurs. */
 export interface TransferRuleDeterministicTransfer {
   /** Optional. A rule that uses Python code block to evaluate the conditions. If the condition evaluates to true, the transfer occurs. */
@@ -991,6 +1384,11 @@ export interface TransferRuleDeterministicTransfer {
   /** Optional. A rule that evaluates a session state condition. If the condition evaluates to true, the transfer occurs. */
   expressionCondition?: ExpressionCondition;
 }
+const TransferRuleDeterministicTransfer = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<TransferRuleDeterministicTransfer>;
+
 /** Rule for transferring to a specific agent. */
 export interface TransferRule {
   /** Required. The direction of the transfer. */
@@ -1002,7 +1400,11 @@ export interface TransferRule {
   /** Optional. A rule that immediately transfers to the target agent when the condition is met. */
   deterministicTransfer?: TransferRuleDeterministicTransfer;
 }
+const TransferRule = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<TransferRule>;
+
 export type TransferRuleList = Array<TransferRule>;
+const TransferRuleList = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<TransferRuleList>;
+
 /** Default agent type. The agent uses instructions and callbacks specified in the agent to perform the task using a large language model. */
 export type AgentLlmAgent = CancelOperationRequest;
 /** The agent which will transfer execution to a remote [Dialogflow CX](https://docs.cloud.google.com/dialogflow/cx/docs/concept/agent) agent. The Dialogflow agent will process subsequent user queries until the session ends or flow ends, and the control is transferred back to the parent CES agent. */
@@ -1022,6 +1424,11 @@ export interface AgentRemoteDialogflowAgent {
   /** Optional. The flow ID of the flow in the Dialogflow agent. */
   flowId?: string;
 }
+const AgentRemoteDialogflowAgent = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<AgentRemoteDialogflowAgent>;
+
 /** A toolset with a selection of its tools. */
 export interface AgentAgentToolset {
   /** Optional. The tools IDs to filter the toolset. */
@@ -1029,7 +1436,14 @@ export interface AgentAgentToolset {
   /** Required. The resource name of the toolset. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}` */
   toolset?: string;
 }
+const AgentAgentToolset = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<AgentAgentToolset>;
+
 export type AgentAgentToolsetList = Array<AgentAgentToolset>;
+const AgentAgentToolsetList = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<AgentAgentToolsetList>;
+
 /** An agent acts as the fundamental building block that provides instructions to the Large Language Model (LLM) for executing specific tasks. */
 export interface Agent {
   /** Optional. The callbacks to execute before the model is called. If there are multiple calls to the model, the callback will be executed multiple times. The provided callbacks are executed sequentially in the exact order they are given in the list. If a callback returns an overridden response, execution stops and any remaining callbacks are skipped. */
@@ -1081,6 +1495,8 @@ export interface Agent {
   /** Output only. Timestamp when the agent was last updated. */
   updateTime?: string;
 }
+const Agent = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<Agent>;
+
 export interface CreateProjectsLocationsAppsAgentsRequest {
   /** Optional. The ID to use for the agent, which will become the final component of the agent's resource name. If not provided, a unique ID will be automatically assigned for the agent. */
   agentId?: string;
@@ -1089,6 +1505,11 @@ export interface CreateProjectsLocationsAppsAgentsRequest {
   /** Request body */
   body?: Agent;
 }
+const CreateProjectsLocationsAppsAgentsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<CreateProjectsLocationsAppsAgentsRequest>;
+
 /** Payload with a type. */
 export interface TypedPayload {
   /** Required. The display name of the payload. */
@@ -1100,6 +1521,8 @@ export interface TypedPayload {
   /** Required. The value of the payload. */
   value?: DocumentMap;
 }
+const TypedPayload = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<TypedPayload>;
+
 /** A chunk of data in an assistant message. */
 export interface AssistantChunk {
   /** Optional. Thought generated by the model. */
@@ -1113,7 +1536,11 @@ export interface AssistantChunk {
   /** Optional. Timestamp when the chunk was created or emitted. */
   createTime?: string;
 }
+const AssistantChunk = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<AssistantChunk>;
+
 export type AssistantChunkList = Array<AssistantChunk>;
+const AssistantChunkList = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<AssistantChunkList>;
+
 /** A message in an assistant session. */
 export interface AssistantMessage {
   /** Required. Timestamp when the message was sent or received. */
@@ -1125,7 +1552,14 @@ export interface AssistantMessage {
   /** Required. Role within the conversation "user" or "model". */
   role?: string;
 }
+const AssistantMessage = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<AssistantMessage>;
+
 export type AssistantMessageList = Array<AssistantMessage>;
+const AssistantMessageList = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<AssistantMessageList>;
+
 /** Request message for AssistantService.CreateAssistantSession. */
 export interface CreateAssistantSessionRequest {
   /** Optional. The ID to use for the assistant session, which will become the final component of the assistant session's resource name. If not provided, a unique ID will be automatically assigned for the assistant session. */
@@ -1133,12 +1567,22 @@ export interface CreateAssistantSessionRequest {
   /** Optional. The messages to seed the assistant session with. */
   assistantSessionMessages?: AssistantMessageList;
 }
+const CreateAssistantSessionRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<CreateAssistantSessionRequest>;
+
 export interface CreateProjectsLocationsAppsAssistantSessionsRequest {
   /** Required. The app to create the assistant session in Format: `projects/{project}/locations/{location}/apps/{app}` */
   parent: string;
   /** Request body */
   body?: CreateAssistantSessionRequest;
 }
+const CreateProjectsLocationsAppsAssistantSessionsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<CreateProjectsLocationsAppsAssistantSessionsRequest>;
+
 /** A document artifact generated by the assistant within a session, stored as a file in the customer's Cloud Storage bucket. */
 export interface AssistantSessionArtifact {
   /** Output only. The Cloud Storage object holding the artifact content. Example: "gs://{project}-agent-assist-artifacts/agent-assist-generated/1_tdd.md" */
@@ -1154,23 +1598,42 @@ export interface AssistantSessionArtifact {
   /** Output only. The file name shown to the user, e.g. "hotel_booking_tdd.md". */
   displayName?: string;
 }
+const AssistantSessionArtifact = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<AssistantSessionArtifact>;
+
 export type AssistantSessionArtifactList = Array<AssistantSessionArtifact>;
+const AssistantSessionArtifactList = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<AssistantSessionArtifactList>;
+
 /** Suggested user responses from the assistant agent. */
 export interface UserResponseSuggestions {
   /** Required. The assistant suggested user responses. These are suggestions for the user on how to interact with the assistant. */
   suggestions?: StringList;
 }
+const UserResponseSuggestions = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<UserResponseSuggestions>;
+
 export type AssistantSessionStateEnum =
   | "ASSISTANT_SESSION_STATE_UNSPECIFIED"
   | "PROCESSING"
   | "IDLE"
   | "PENDING_REVIEW";
+const AssistantSessionStateEnum = S.String;
+
 export type ActiveTurnInfoStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "RUNNING"
   | "DISCONNECTED"
   | "RESUMING"
   | "ABANDONED";
+const ActiveTurnInfoStatusEnum = S.String;
+
 /** Live-attachment info for a session turn that is currently running, disconnected from its client, or parked for pickup by another server task. */
 export interface ActiveTurnInfo {
   /** Identifies the turn; echoed by resume snapshots on the streaming API. */
@@ -1184,6 +1647,8 @@ export interface ActiveTurnInfo {
   /** Output only. When the turn will be wound down if no client attaches. */
   orphanDeadlineTime?: string;
 }
+const ActiveTurnInfo = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<ActiveTurnInfo>;
+
 /** An assistant session represents a conversation between a user and the assistant agent. */
 export interface AssistantSession {
   /** Output only. The user who initiated the session. */
@@ -1209,12 +1674,16 @@ export interface AssistantSession {
   /** Output only. Attachment info for this session's currently running turn. Unset when no turn is running. */
   activeTurn?: ActiveTurnInfo;
 }
+const AssistantSession = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<AssistantSession>;
+
 export type ExperimentConfigVersionReleaseStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
   | "RUNNING"
   | "DONE"
   | "EXPIRED";
+const ExperimentConfigVersionReleaseStateEnum = S.String;
+
 /** Traffic allocation for the version release. */
 export interface ExperimentConfigVersionReleaseTrafficAllocation {
   /** Optional. Id of the traffic allocation. Free format string, up to 128 characters. */
@@ -1224,8 +1693,18 @@ export interface ExperimentConfigVersionReleaseTrafficAllocation {
   /** Optional. Traffic percentage of the traffic allocation. Must be between 0 and 100. */
   trafficPercentage?: number;
 }
+const ExperimentConfigVersionReleaseTrafficAllocation = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ExperimentConfigVersionReleaseTrafficAllocation>;
+
 export type ExperimentConfigVersionReleaseTrafficAllocationList =
   Array<ExperimentConfigVersionReleaseTrafficAllocation>;
+const ExperimentConfigVersionReleaseTrafficAllocationList = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ExperimentConfigVersionReleaseTrafficAllocationList>;
+
 /** Version release for the experiment. */
 export interface ExperimentConfigVersionRelease {
   /** Optional. State of the version release. */
@@ -1233,11 +1712,18 @@ export interface ExperimentConfigVersionRelease {
   /** Optional. Traffic allocations for the version release. */
   trafficAllocations?: ExperimentConfigVersionReleaseTrafficAllocationList;
 }
+const ExperimentConfigVersionRelease = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ExperimentConfigVersionRelease>;
+
 /** Experiment for the deployment. */
 export interface ExperimentConfig {
   /** Optional. Version release for the experiment. */
   versionRelease?: ExperimentConfigVersionRelease;
 }
+const ExperimentConfig = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<ExperimentConfig>;
+
 /** Ephemeral Meta credentials for WhatsApp native integration. */
 export interface WhatsAppCredentials {
   /** Required. The Meta auth code provided by the embedded signup flow. */
@@ -1253,11 +1739,15 @@ export interface WhatsAppCredentials {
   /** Required. The Business Account ID to use for the phone number. */
   businessAccountId?: string;
 }
+const WhatsAppCredentials = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<WhatsAppCredentials>;
+
 export type DeploymentModalityEnum =
   | "MODALITY_UNSPECIFIED"
   | "MODALITY_TEXT"
   | "MODALITY_VOICE"
   | "MODALITY_VIDEO";
+const DeploymentModalityEnum = S.String;
+
 /** Ephemeral Meta credentials for Instagram native integration. */
 export interface InstagramCredentials {
   /** Optional. The Conversation Profile ID to use for the deployment. */
@@ -1265,11 +1755,21 @@ export interface InstagramCredentials {
   /** Required. The Meta auth code provided by the embedded signup flow. */
   authCode?: string;
 }
+const InstagramCredentials = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<InstagramCredentials>;
+
 /** Configuration and status for Agent Registry deployment. */
 export interface AgentRegistryDeployment {
   /** Optional. Output only. The resource name of the deployed Agent Registry service. Format: `projects/{project}/locations/{location}/services/{service}` */
   agentRegistryServiceName?: string;
 }
+const AgentRegistryDeployment = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<AgentRegistryDeployment>;
+
 /** A deployment represents an immutable, queryable version of the app. It is used to deploy an app version with a specific channel profile. */
 export interface Deployment {
   /** Optional. Experiment configuration for the deployment. */
@@ -1299,6 +1799,8 @@ export interface Deployment {
   /** Required. Display name of the deployment. */
   displayName?: string;
 }
+const Deployment = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<Deployment>;
+
 export interface CreateProjectsLocationsAppsDeploymentsRequest {
   /** Required. The parent app. Format: `projects/{project}/locations/{location}/apps/{app}` */
   parent: string;
@@ -1307,19 +1809,44 @@ export interface CreateProjectsLocationsAppsDeploymentsRequest {
   /** Request body */
   body?: Deployment;
 }
+const CreateProjectsLocationsAppsDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<CreateProjectsLocationsAppsDeploymentsRequest>;
+
 /** Metrics for turn latency. */
 export interface AggregatedMetricsTurnLatencyMetrics {
   /** Output only. The average latency of the turns. */
   averageLatency?: string;
 }
+const AggregatedMetricsTurnLatencyMetrics = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<AggregatedMetricsTurnLatencyMetrics>;
+
 export type AggregatedMetricsTurnLatencyMetricsList = Array<AggregatedMetricsTurnLatencyMetrics>;
+const AggregatedMetricsTurnLatencyMetricsList = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<AggregatedMetricsTurnLatencyMetricsList>;
+
 /** Metrics for semantic similarity results. */
 export interface AggregatedMetricsSemanticSimilarityMetrics {
   /** Output only. The average semantic similarity score (0-4). */
   score?: number;
 }
+const AggregatedMetricsSemanticSimilarityMetrics = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<AggregatedMetricsSemanticSimilarityMetrics>;
+
 export type AggregatedMetricsSemanticSimilarityMetricsList =
   Array<AggregatedMetricsSemanticSimilarityMetrics>;
+const AggregatedMetricsSemanticSimilarityMetricsList = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<AggregatedMetricsSemanticSimilarityMetricsList>;
+
 /** Metrics for tool call latency. */
 export interface AggregatedMetricsToolCallLatencyMetrics {
   /** Output only. The name of the tool. */
@@ -1327,8 +1854,18 @@ export interface AggregatedMetricsToolCallLatencyMetrics {
   /** Output only. The average latency of the tool calls. */
   averageLatency?: string;
 }
+const AggregatedMetricsToolCallLatencyMetrics = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<AggregatedMetricsToolCallLatencyMetrics>;
+
 export type AggregatedMetricsToolCallLatencyMetricsList =
   Array<AggregatedMetricsToolCallLatencyMetrics>;
+const AggregatedMetricsToolCallLatencyMetricsList = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<AggregatedMetricsToolCallLatencyMetricsList>;
+
 /** Metrics for hallucination results. */
 export interface AggregatedMetricsHallucinationMetrics {
   /** Output only. The average hallucination score (0 to 1). */
@@ -1336,6 +1873,9 @@ export interface AggregatedMetricsHallucinationMetrics {
 }
 export type AggregatedMetricsHallucinationMetricsList =
   Array<AggregatedMetricsHallucinationMetrics>;
+const AggregatedMetricsHallucinationMetricsList =
+  AggregatedMetricsSemanticSimilarityMetricsList as any as S.Schema<AggregatedMetricsHallucinationMetricsList>;
+
 /** Metrics for a single tool. */
 export interface AggregatedMetricsToolMetrics {
   /** Output only. The number of times the tool passed. */
@@ -1345,7 +1885,17 @@ export interface AggregatedMetricsToolMetrics {
   /** Output only. The name of the tool. */
   tool?: string;
 }
+const AggregatedMetricsToolMetrics = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<AggregatedMetricsToolMetrics>;
+
 export type AggregatedMetricsToolMetricsList = Array<AggregatedMetricsToolMetrics>;
+const AggregatedMetricsToolMetricsList = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<AggregatedMetricsToolMetricsList>;
+
 /** Metrics aggregated per turn. */
 export interface AggregatedMetricsMetricsByTurn {
   /** Output only. Metrics for turn latency within this turn. */
@@ -1361,7 +1911,17 @@ export interface AggregatedMetricsMetricsByTurn {
   /** Output only. Metrics for each tool within this turn. */
   toolMetrics?: AggregatedMetricsToolMetricsList;
 }
+const AggregatedMetricsMetricsByTurn = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<AggregatedMetricsMetricsByTurn>;
+
 export type AggregatedMetricsMetricsByTurnList = Array<AggregatedMetricsMetricsByTurn>;
+const AggregatedMetricsMetricsByTurnList = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<AggregatedMetricsMetricsByTurnList>;
+
 /** Metrics aggregated per app version. */
 export interface AggregatedMetricsMetricsByAppVersion {
   /** Output only. Metrics aggregated per turn within this app version. */
@@ -1383,12 +1943,24 @@ export interface AggregatedMetricsMetricsByAppVersion {
   /** Output only. Metrics for semantic similarity within this app version. */
   semanticSimilarityMetrics?: AggregatedMetricsSemanticSimilarityMetricsList;
 }
+const AggregatedMetricsMetricsByAppVersion = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<AggregatedMetricsMetricsByAppVersion>;
+
 export type AggregatedMetricsMetricsByAppVersionList = Array<AggregatedMetricsMetricsByAppVersion>;
+const AggregatedMetricsMetricsByAppVersionList = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<AggregatedMetricsMetricsByAppVersionList>;
+
 /** Aggregated metrics for an evaluation or evaluation dataset. */
 export interface AggregatedMetrics {
   /** Output only. Aggregated metrics, grouped by app version ID. */
   metricsByAppVersion?: AggregatedMetricsMetricsByAppVersionList;
 }
+const AggregatedMetrics = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<AggregatedMetrics>;
+
 /** An evaluation dataset represents a set of evaluations that are grouped together basaed on shared tags. */
 export interface EvaluationDataset {
   /** Output only. Timestamp when the evaluation dataset was last updated. */
@@ -1410,6 +1982,8 @@ export interface EvaluationDataset {
   /** Identifier. The unique identifier of this evaluation dataset. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationDatasets/{evaluationDataset}` */
   name?: string;
 }
+const EvaluationDataset = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<EvaluationDataset>;
+
 export interface CreateProjectsLocationsAppsEvaluationDatasetsRequest {
   /** Required. The app to create the evaluation for. Format: `projects/{project}/locations/{location}/apps/{app}` */
   parent: string;
@@ -1418,11 +1992,21 @@ export interface CreateProjectsLocationsAppsEvaluationDatasetsRequest {
   /** Request body */
   body?: EvaluationDataset;
 }
+const CreateProjectsLocationsAppsEvaluationDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<CreateProjectsLocationsAppsEvaluationDatasetsRequest>;
+
 /** Configuration for LLM-based evaluation criteria. */
 export interface EvaluationExpectationLlmCriteria {
   /** Required. The prompt/instructions provided to the LLM judge. */
   prompt?: string;
 }
+const EvaluationExpectationLlmCriteria = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<EvaluationExpectationLlmCriteria>;
+
 /** An evaluation expectation represents a specific criteria to evaluate against. */
 export interface EvaluationExpectation {
   /** Required. User-defined display name. Must be unique within the app. */
@@ -1440,6 +2024,11 @@ export interface EvaluationExpectation {
   /** Optional. Evaluation criteria based on an LLM prompt. */
   llmCriteria?: EvaluationExpectationLlmCriteria;
 }
+const EvaluationExpectation = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<EvaluationExpectation>;
+
 export interface CreateProjectsLocationsAppsEvaluationExpectationsRequest {
   /** Optional. The ID to use for the evaluation expectation, which will become the final component of the evaluation expectation's resource name. If not provided, a unique ID will be automatically assigned for the evaluation expectation. */
   evaluationExpectationId?: string;
@@ -1448,6 +2037,11 @@ export interface CreateProjectsLocationsAppsEvaluationExpectationsRequest {
   /** Request body */
   body?: EvaluationExpectation;
 }
+const CreateProjectsLocationsAppsEvaluationExpectationsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<CreateProjectsLocationsAppsEvaluationExpectationsRequest>;
+
 export type EvaluationResultExecutionStateEnum =
   | "EXECUTION_STATE_UNSPECIFIED"
   | "QUEUED"
@@ -1455,10 +2049,14 @@ export type EvaluationResultExecutionStateEnum =
   | "COMPLETED"
   | "ERROR"
   | "CANCELLED";
+const EvaluationResultExecutionStateEnum = S.String;
+
 export type EvaluationResultGoldenRunMethodEnum =
   | "GOLDEN_RUN_METHOD_UNSPECIFIED"
   | "STABLE"
   | "NAIVE";
+const EvaluationResultGoldenRunMethodEnum = S.String;
+
 /** The result of a user goal satisfaction check for a conversation. */
 export interface EvaluationResultUserGoalSatisfactionResult {
   /** Output only. The label associated with each score. Score 2: Graceful Handoff Score 1: User Task Satisfied Score 0: User Task Not Satisfied Score -1: User Task Unspecified */
@@ -1468,11 +2066,18 @@ export interface EvaluationResultUserGoalSatisfactionResult {
   /** Output only. The user task satisfaction score. Can be -1, 0, 1, 2. */
   score?: number;
 }
+const EvaluationResultUserGoalSatisfactionResult = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<EvaluationResultUserGoalSatisfactionResult>;
+
 export type EvaluationResultEvaluationExpectationResultOutcomeEnum =
   | "OUTCOME_UNSPECIFIED"
   | "PASS"
   | "FAIL"
   | "SKIPPED";
+const EvaluationResultEvaluationExpectationResultOutcomeEnum = S.String;
+
 /** The result of a single evaluation expectation. */
 export interface EvaluationResultEvaluationExpectationResult {
   /** Output only. The evaluation expectation. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluation_expectation}` */
@@ -1484,8 +2089,18 @@ export interface EvaluationResultEvaluationExpectationResult {
   /** Output only. The prompt that was used for the evaluation. */
   prompt?: string;
 }
+const EvaluationResultEvaluationExpectationResult = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<EvaluationResultEvaluationExpectationResult>;
+
 export type EvaluationResultEvaluationExpectationResultList =
   Array<EvaluationResultEvaluationExpectationResult>;
+const EvaluationResultEvaluationExpectationResultList = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<EvaluationResultEvaluationExpectationResultList>;
+
 /** A tool that is created from a toolset. */
 export interface ToolsetTool {
   /** Optional. The tool ID to filter the tools to retrieve the schema for. */
@@ -1493,12 +2108,16 @@ export interface ToolsetTool {
   /** Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}` */
   toolset?: string;
 }
+const ToolsetTool = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<ToolsetTool>;
+
 export type EvaluationResultSpanLatencyTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TOOL"
   | "USER_CALLBACK"
   | "GUARDRAIL"
   | "LLM";
+const EvaluationResultSpanLatencyTypeEnum = S.String;
+
 /** The latency of a span execution. */
 export interface EvaluationResultSpanLatency {
   /** Output only. The toolset tool identifier. */
@@ -1520,12 +2139,24 @@ export interface EvaluationResultSpanLatency {
   /** Output only. The end time of span. */
   endTime?: string;
 }
+const EvaluationResultSpanLatency = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<EvaluationResultSpanLatency>;
+
 export type EvaluationResultSpanLatencyList = Array<EvaluationResultSpanLatency>;
+const EvaluationResultSpanLatencyList = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<EvaluationResultSpanLatencyList>;
+
 export type EvaluationResultScenarioExpectationOutcomeOutcomeEnum =
   | "OUTCOME_UNSPECIFIED"
   | "PASS"
   | "FAIL"
   | "SKIPPED";
+const EvaluationResultScenarioExpectationOutcomeOutcomeEnum = S.String;
+
 /** The execution result of a specific tool from the client or the agent. */
 export interface ToolResponse {
   /** Optional. The toolset tool that got executed. */
@@ -1543,6 +2174,8 @@ export interface ToolResponse {
   /** Output only. The id of the tool call that caused this one, when it was issued by a sub-agent working on behalf of a parent call. Empty for top-level calls. Lets a client group a sub-agent's work under the call that started it instead of rendering every step as a sibling. */
   parentToolCallId?: string;
 }
+const ToolResponse = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<ToolResponse>;
+
 /** Request for the client or the agent to execute the specified tool. */
 export interface ToolCall {
   /** Output only. Display name of the tool. */
@@ -1560,6 +2193,8 @@ export interface ToolCall {
   /** Optional. The name of the tool to execute. Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` */
   tool?: string;
 }
+const ToolCall = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<ToolCall>;
+
 /** The observed tool call and response. */
 export interface EvaluationResultScenarioExpectationOutcomeObservedToolCall {
   /** Output only. The observed tool response. */
@@ -1567,6 +2202,11 @@ export interface EvaluationResultScenarioExpectationOutcomeObservedToolCall {
   /** Output only. The observed tool call. */
   toolCall?: ToolCall;
 }
+const EvaluationResultScenarioExpectationOutcomeObservedToolCall = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<EvaluationResultScenarioExpectationOutcomeObservedToolCall>;
+
 /** Represents an image input or output in the conversation. */
 export interface Image {
   /** Optional. The alternative text for the image. */
@@ -1576,6 +2216,8 @@ export interface Image {
   /** Required. The IANA standard MIME type of the source data. Supported image types includes: * image/png * image/jpeg * image/webp */
   mimeType?: string;
 }
+const Image = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<Image>;
+
 /** Represents a blob input or output in the conversation. */
 export interface Blob {
   /** Required. The IANA standard MIME type of the source data. */
@@ -1583,6 +2225,8 @@ export interface Blob {
   /** Required. Raw bytes of the blob. */
   data?: string;
 }
+const Blob = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<Blob>;
+
 /** Represents an event indicating the transfer of a conversation to a different agent. */
 export interface AgentTransfer {
   /** Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}` */
@@ -1590,6 +2234,8 @@ export interface AgentTransfer {
   /** Output only. Display name of the agent. */
   displayName?: string;
 }
+const AgentTransfer = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<AgentTransfer>;
+
 /** A chunk of content within a message. */
 export interface Chunk {
   /** Optional. Tool execution request. */
@@ -1613,7 +2259,11 @@ export interface Chunk {
   /** Optional. Custom payload data. */
   payload?: DocumentMap;
 }
+const Chunk = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<Chunk>;
+
 export type ChunkList = Array<Chunk>;
+const ChunkList = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<ChunkList>;
+
 /** A message within a conversation. */
 export interface Message {
   /** Optional. Content of the message as a series of chunks. */
@@ -1623,6 +2273,8 @@ export interface Message {
   /** Optional. The role within the conversation, e.g., user, agent. */
   role?: string;
 }
+const Message = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<Message>;
+
 /** The tool call and response pair to be evaluated. */
 export interface EvaluationScenarioExpectationToolExpectation {
   /** Required. The expected tool call, with the parameters of interest specified. Any parameters not specified will be hallucinated by the LLM. */
@@ -1630,6 +2282,11 @@ export interface EvaluationScenarioExpectationToolExpectation {
   /** Required. The tool response to mock, with the parameters of interest specified. Any parameters not specified will be hallucinated by the LLM. */
   mockToolResponse?: ToolResponse;
 }
+const EvaluationScenarioExpectationToolExpectation = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<EvaluationScenarioExpectationToolExpectation>;
+
 /** The expectation to evaluate the conversation produced by the simulation. */
 export interface EvaluationScenarioExpectation {
   /** Optional. The agent response to be evaluated. */
@@ -1637,6 +2294,11 @@ export interface EvaluationScenarioExpectation {
   /** Optional. The tool call and response pair to be evaluated. */
   toolExpectation?: EvaluationScenarioExpectationToolExpectation;
 }
+const EvaluationScenarioExpectation = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<EvaluationScenarioExpectation>;
+
 /** The outcome of a scenario expectation. */
 export interface EvaluationResultScenarioExpectationOutcome {
   /** Output only. The outcome of the ScenarioExpectation. */
@@ -1648,8 +2310,18 @@ export interface EvaluationResultScenarioExpectationOutcome {
   /** Output only. The observed agent response. */
   observedAgentResponse?: Message;
 }
+const EvaluationResultScenarioExpectationOutcome = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<EvaluationResultScenarioExpectationOutcome>;
+
 export type EvaluationResultScenarioExpectationOutcomeList =
   Array<EvaluationResultScenarioExpectationOutcome>;
+const EvaluationResultScenarioExpectationOutcomeList = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<EvaluationResultScenarioExpectationOutcomeList>;
+
 /** The result of the task completion check for the conversation. */
 export interface EvaluationResultTaskCompletionResult {
   /** Output only. The explanation for the task completion score. */
@@ -1659,6 +2331,11 @@ export interface EvaluationResultTaskCompletionResult {
   /** Output only. The task completion score. Can be -1, 0, 1 */
   score?: number;
 }
+const EvaluationResultTaskCompletionResult = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<EvaluationResultTaskCompletionResult>;
+
 /** Facts about the user as a key value pair. */
 export interface EvaluationScenarioUserFact {
   /** Required. The name of the user fact. */
@@ -1666,7 +2343,17 @@ export interface EvaluationScenarioUserFact {
   /** Required. The value of the user fact. */
   value?: string;
 }
+const EvaluationScenarioUserFact = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<EvaluationScenarioUserFact>;
+
 export type EvaluationScenarioUserFactList = Array<EvaluationScenarioUserFact>;
+const EvaluationScenarioUserFactList = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<EvaluationScenarioUserFactList>;
+
 /** The outcome of the evaluation against the rubric. */
 export interface EvaluationResultScenarioRubricOutcome {
   /** Output only. The rater's response to the rubric. */
@@ -1676,8 +2363,18 @@ export interface EvaluationResultScenarioRubricOutcome {
   /** Output only. The score of the conversation against the rubric. */
   score?: number;
 }
+const EvaluationResultScenarioRubricOutcome = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<EvaluationResultScenarioRubricOutcome>;
+
 export type EvaluationResultScenarioRubricOutcomeList =
   Array<EvaluationResultScenarioRubricOutcome>;
+const EvaluationResultScenarioRubricOutcomeList = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<EvaluationResultScenarioRubricOutcomeList>;
+
 /** The latency of a tool call execution. */
 export interface EvaluationResultToolCallLatency {
   /** Output only. The latency of the tool call execution. */
@@ -1691,7 +2388,17 @@ export interface EvaluationResultToolCallLatency {
   /** Output only. The name of the tool that got executed. Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`. */
   tool?: string;
 }
+const EvaluationResultToolCallLatency = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<EvaluationResultToolCallLatency>;
+
 export type EvaluationResultToolCallLatencyList = Array<EvaluationResultToolCallLatency>;
+const EvaluationResultToolCallLatencyList = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<EvaluationResultToolCallLatencyList>;
+
 /** The result of the hallucination check for a single turn. */
 export interface EvaluationResultHallucinationResult {
   /** Output only. The label associated with each score. Score 1: Justified Score 0: Not Justified Score -1: No Claim To Assess */
@@ -1701,7 +2408,17 @@ export interface EvaluationResultHallucinationResult {
   /** Output only. The explanation for the hallucination score. */
   explanation?: string;
 }
+const EvaluationResultHallucinationResult = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<EvaluationResultHallucinationResult>;
+
 export type EvaluationResultHallucinationResultList = Array<EvaluationResultHallucinationResult>;
+const EvaluationResultHallucinationResultList = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<EvaluationResultHallucinationResultList>;
+
 /** The outcome of a scenario evaluation. */
 export interface EvaluationResultScenarioResult {
   /** Output only. The result of the user goal satisfaction check. */
@@ -1731,11 +2448,18 @@ export interface EvaluationResultScenarioResult {
   /** Output only. The result of the hallucination check. There will be one hallucination result for each turn in the conversation. */
   hallucinationResult?: EvaluationResultHallucinationResultList;
 }
+const EvaluationResultScenarioResult = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<EvaluationResultScenarioResult>;
+
 export type EvaluationResultOverallToolInvocationResultOutcomeEnum =
   | "OUTCOME_UNSPECIFIED"
   | "PASS"
   | "FAIL"
   | "SKIPPED";
+const EvaluationResultOverallToolInvocationResultOutcomeEnum = S.String;
+
 /** The result of the overall tool invocation check. */
 export interface EvaluationResultOverallToolInvocationResult {
   /** The overall tool invocation score for this turn. This indicates the overall percent of tools from the expected turn that were actually invoked. */
@@ -1743,11 +2467,18 @@ export interface EvaluationResultOverallToolInvocationResult {
   /** Output only. The outcome of the tool invocation check. This is determined by comparing the tool_invocation_score to the overall_tool_invocation_correctness_threshold. If the score is equal to or above the threshold, the outcome will be PASS. Otherwise, the outcome will be FAIL. */
   outcome?: EvaluationResultOverallToolInvocationResultOutcomeEnum | (string & {});
 }
+const EvaluationResultOverallToolInvocationResult = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<EvaluationResultOverallToolInvocationResult>;
+
 export type EvaluationResultSemanticSimilarityResultOutcomeEnum =
   | "OUTCOME_UNSPECIFIED"
   | "PASS"
   | "FAIL"
   | "SKIPPED";
+const EvaluationResultSemanticSimilarityResultOutcomeEnum = S.String;
+
 /** The result of the semantic similarity check. */
 export interface EvaluationResultSemanticSimilarityResult {
   /** Output only. The outcome of the semantic similarity check. This is determined by comparing the score to the semantic_similarity_success_threshold. If the score is equal to or above the threshold, the outcome will be PASS. Otherwise, the outcome will be FAIL. */
@@ -1759,6 +2490,11 @@ export interface EvaluationResultSemanticSimilarityResult {
   /** Output only. The semantic similarity score. Can be 0, 1, 2, 3, or 4. */
   score?: number;
 }
+const EvaluationResultSemanticSimilarityResult = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<EvaluationResultSemanticSimilarityResult>;
+
 export type EvaluationErrorInfoErrorTypeEnum =
   | "ERROR_TYPE_UNSPECIFIED"
   | "RUNTIME_FAILURE"
@@ -1767,6 +2503,8 @@ export type EvaluationErrorInfoErrorTypeEnum =
   | "EVALUATION_UPDATE_FAILURE"
   | "QUOTA_EXHAUSTED"
   | "USER_SIMULATION_FAILURE";
+const EvaluationErrorInfoErrorTypeEnum = S.String;
+
 /** Information about an error encountered during an evaluation execution. */
 export interface EvaluationErrorInfo {
   /** Output only. The user facing error message. */
@@ -1778,21 +2516,32 @@ export interface EvaluationErrorInfo {
   /** Output only. The error message. */
   errorMessage?: string;
 }
+const EvaluationErrorInfo = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<EvaluationErrorInfo>;
+
 export type EvaluationResultGoldenExpectationOutcomeOutcomeEnum =
   | "OUTCOME_UNSPECIFIED"
   | "PASS"
   | "FAIL"
   | "SKIPPED";
+const EvaluationResultGoldenExpectationOutcomeOutcomeEnum = S.String;
+
 export type EvaluationGoldenExpectationComparisonTypeEnum =
   | "COMPARISON_TYPE_UNSPECIFIED"
   | "EQUALS"
   | "CONTAINS"
   | "SEMANTIC_SIMILARITY";
+const EvaluationGoldenExpectationComparisonTypeEnum = S.String;
+
 /** Configuration for the hallucination metrics for the evaluation. To disable the metric, set the message but do not set the `enable_hallucination_metrics` field to true (or explicitly set it to false). To unset the configuration and fallback to the default behavior, omit the message entirely. */
 export interface EvaluationMetricsConfigHallucinationMetricsConfig {
   /** Optional. Whether to calculate hallucination metrics for the evaluation. */
   enableHallucinationMetrics?: boolean;
 }
+const EvaluationMetricsConfigHallucinationMetricsConfig = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<EvaluationMetricsConfigHallucinationMetricsConfig>;
+
 /** Represents a single, checkable requirement. */
 export interface EvaluationGoldenExpectation {
   /** Optional. Check that the agent transferred the conversation to a different agent. */
@@ -1822,11 +2571,18 @@ export interface EvaluationGoldenExpectation {
   /** Optional. Check that a specific tool had the expected response. */
   toolResponse?: ToolResponse;
 }
+const EvaluationGoldenExpectation = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<EvaluationGoldenExpectation>;
+
 export type EvaluationResultGoldenExpectationOutcomeToolInvocationResultOutcomeEnum =
   | "OUTCOME_UNSPECIFIED"
   | "PASS"
   | "FAIL"
   | "SKIPPED";
+const EvaluationResultGoldenExpectationOutcomeToolInvocationResultOutcomeEnum = S.String;
+
 /** The result of the tool invocation check. */
 export interface EvaluationResultGoldenExpectationOutcomeToolInvocationResult {
   /** Output only. The tool invocation parameter correctness score. This indicates the percent of parameters from the expected tool call that were also present in the actual tool call. */
@@ -1836,6 +2592,11 @@ export interface EvaluationResultGoldenExpectationOutcomeToolInvocationResult {
   /** Output only. The outcome of the tool invocation check. This is determined by comparing the parameter_correctness_score to the threshold. If the score is equal to or above the threshold, the outcome will be PASS. Otherwise, the outcome will be FAIL. */
   outcome?: EvaluationResultGoldenExpectationOutcomeToolInvocationResultOutcomeEnum | (string & {});
 }
+const EvaluationResultGoldenExpectationOutcomeToolInvocationResult = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<EvaluationResultGoldenExpectationOutcomeToolInvocationResult>;
+
 /** Specifies the expectation and the result of that expectation. */
 export interface EvaluationResultGoldenExpectationOutcome {
   /** Output only. The result of the semantic similarity check. */
@@ -1857,8 +2618,18 @@ export interface EvaluationResultGoldenExpectationOutcome {
   /** Output only. The result of the tool response expectation. */
   observedToolResponse?: ToolResponse;
 }
+const EvaluationResultGoldenExpectationOutcome = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<EvaluationResultGoldenExpectationOutcome>;
+
 export type EvaluationResultGoldenExpectationOutcomeList =
   Array<EvaluationResultGoldenExpectationOutcome>;
+const EvaluationResultGoldenExpectationOutcomeList = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<EvaluationResultGoldenExpectationOutcomeList>;
+
 /** The result of running a single turn of the golden conversation. */
 export interface EvaluationResultGoldenResultTurnReplayResult {
   /** Output only. The latency of each tool call in the turn. */
@@ -1884,8 +2655,18 @@ export interface EvaluationResultGoldenResultTurnReplayResult {
   /** Output only. Deprecated. Use OverallToolInvocationResult instead. */
   toolInvocationScore?: number;
 }
+const EvaluationResultGoldenResultTurnReplayResult = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<EvaluationResultGoldenResultTurnReplayResult>;
+
 export type EvaluationResultGoldenResultTurnReplayResultList =
   Array<EvaluationResultGoldenResultTurnReplayResult>;
+const EvaluationResultGoldenResultTurnReplayResultList = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<EvaluationResultGoldenResultTurnReplayResultList>;
+
 /** The result of a golden evaluation. */
 export interface EvaluationResultGoldenResult {
   /** Output only. The results of the evaluation expectations. */
@@ -1893,7 +2674,14 @@ export interface EvaluationResultGoldenResult {
   /** Output only. The result of running each turn of the golden conversation. */
   turnReplayResults?: EvaluationResultGoldenResultTurnReplayResultList;
 }
+const EvaluationResultGoldenResult = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<EvaluationResultGoldenResult>;
+
 export type SpanList = Array<Span>;
+const SpanList = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<SpanList>;
+
 /** A span is a unit of work or a single operation during the request processing. */
 export interface Span {
   /** Output only. The end time of the span. */
@@ -1909,20 +2697,28 @@ export interface Span {
   /** Output only. The name of the span. */
   name?: string;
 }
+const Span = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<Span>;
+
 export type EvaluationResultEvaluationStatusEnum =
   | "OUTCOME_UNSPECIFIED"
   | "PASS"
   | "FAIL"
   | "SKIPPED";
+const EvaluationResultEvaluationStatusEnum = S.String;
+
 export type EvaluationConfigToolCallBehaviourEnum =
   | "EVALUATION_TOOL_CALL_BEHAVIOUR_UNSPECIFIED"
   | "REAL"
   | "FAKE";
+const EvaluationConfigToolCallBehaviourEnum = S.String;
+
 export type InputAudioConfigAudioEncodingEnum =
   | "AUDIO_ENCODING_UNSPECIFIED"
   | "LINEAR16"
   | "MULAW"
   | "ALAW";
+const InputAudioConfigAudioEncodingEnum = S.String;
+
 /** InputAudioConfig configures how the CES agent should interpret the incoming audio data. */
 export interface InputAudioConfig {
   /** Optional. Whether to enable noise suppression on the input audio. Available values are "low", "moderate", "high", "very_high". */
@@ -1932,11 +2728,15 @@ export interface InputAudioConfig {
   /** Required. The sample rate (in Hertz) of the input audio data. */
   sampleRateHertz?: number;
 }
+const InputAudioConfig = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<InputAudioConfig>;
+
 export type OutputAudioConfigAudioEncodingEnum =
   | "AUDIO_ENCODING_UNSPECIFIED"
   | "LINEAR16"
   | "MULAW"
   | "ALAW";
+const OutputAudioConfigAudioEncodingEnum = S.String;
+
 /** OutputAudioConfig configures how the CES agent should synthesize outgoing audio responses. */
 export interface OutputAudioConfig {
   /** Required. The encoding of the output audio data. */
@@ -1944,10 +2744,14 @@ export interface OutputAudioConfig {
   /** Required. The sample rate (in Hertz) of the output audio data. */
   sampleRateHertz?: number;
 }
+const OutputAudioConfig = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<OutputAudioConfig>;
+
 export type EvaluationConfigEvaluationChannelEnum =
   | "EVALUATION_CHANNEL_UNSPECIFIED"
   | "TEXT"
   | "AUDIO";
+const EvaluationConfigEvaluationChannelEnum = S.String;
+
 /** EvaluationConfig configures settings for running the evaluation. */
 export interface EvaluationConfig {
   /** Optional. Specifies whether the evaluation should use real tool calls or fake tools. */
@@ -1959,9 +2763,13 @@ export interface EvaluationConfig {
   /** Optional. The channel to evaluate. */
   evaluationChannel?: EvaluationConfigEvaluationChannelEnum | (string & {});
 }
+const EvaluationConfig = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<EvaluationConfig>;
+
 export type EvaluationResultOutcomeMetadataEnum =
   | "OUTCOME_METADATA_UNSPECIFIED"
   | "GRACEFUL_HANDOFF";
+const EvaluationResultOutcomeMetadataEnum = S.String;
+
 /** An evaluation result represents the output of running an Evaluation. */
 export interface EvaluationResult {
   /** Required. Display name of the Evaluation Result. Unique within an Evaluation. By default, it has the following format: " result - ". */
@@ -2007,21 +2815,39 @@ export interface EvaluationResult {
   /** Identifier. The unique identifier of the evaluation result. Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}/results/{result}` */
   name?: string;
 }
+const EvaluationResult = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<EvaluationResult>;
+
 export type EvaluationResultList = Array<EvaluationResult>;
+const EvaluationResultList = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<EvaluationResultList>;
+
 export type EvaluationScenarioTaskCompletionBehaviorEnum =
   | "TASK_COMPLETION_BEHAVIOR_UNSPECIFIED"
   | "TASK_SATISFIED"
   | "TASK_REJECTED";
+const EvaluationScenarioTaskCompletionBehaviorEnum = S.String;
+
 export type EvaluationScenarioExpectationList = Array<EvaluationScenarioExpectation>;
+const EvaluationScenarioExpectationList = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<EvaluationScenarioExpectationList>;
+
 export type EvaluationScenarioScenarioExecutionModeEnum =
   | "SCENARIO_EXECUTION_MODE_UNSPECIFIED"
   | "QUALITY_OPTIMIZED"
   | "SPEED_OPTIMIZED";
+const EvaluationScenarioScenarioExecutionModeEnum = S.String;
+
 export type EvaluationScenarioUserGoalBehaviorEnum =
   | "USER_GOAL_BEHAVIOR_UNSPECIFIED"
   | "USER_GOAL_SATISFIED"
   | "USER_GOAL_REJECTED"
   | "USER_GOAL_IGNORED";
+const EvaluationScenarioUserGoalBehaviorEnum = S.String;
+
 /** The config for a scenario */
 export interface EvaluationScenario {
   /** Optional. Deprecated. Use user_goal_behavior instead. */
@@ -2045,6 +2871,8 @@ export interface EvaluationScenario {
   /** Required. The task to be targeted by the scenario. */
   task?: string;
 }
+const EvaluationScenario = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<EvaluationScenario>;
+
 /** Event input. */
 export interface Event {
   /** Optional. Additional variables associated with the event. */
@@ -2052,12 +2880,18 @@ export interface Event {
   /** Required. The name of the event. */
   event?: string;
 }
+const Event = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<Event>;
+
 export type ToolResponseList = Array<ToolResponse>;
+const ToolResponseList = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<ToolResponseList>;
+
 /** Execution results for the requested tool calls from the client. */
 export interface ToolResponses {
   /** Optional. The list of tool execution results. */
   toolResponses?: ToolResponseList;
 }
+const ToolResponses = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<ToolResponses>;
+
 /** Input for the session. */
 export interface SessionInput {
   /** Optional. Audio data from the end user. */
@@ -2079,6 +2913,8 @@ export interface SessionInput {
   /** Optional. Blob data from the end user. */
   blob?: Blob;
 }
+const SessionInput = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<SessionInput>;
+
 /** A step defines a singular action to happen during the evaluation. */
 export interface EvaluationStep {
   /** Optional. User input for the conversation. */
@@ -2088,11 +2924,17 @@ export interface EvaluationStep {
   /** Optional. Transfer the conversation to a different agent. */
   agentTransfer?: AgentTransfer;
 }
+const EvaluationStep = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<EvaluationStep>;
+
 export type EvaluationStepList = Array<EvaluationStep>;
+const EvaluationStepList = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<EvaluationStepList>;
+
 export type EvaluationGoldenTurnHallucinationMetricBehaviorOverrideEnum =
   | "HALLUCINATION_METRIC_BEHAVIOR_UNSPECIFIED"
   | "DISABLED"
   | "ENABLED";
+const EvaluationGoldenTurnHallucinationMetricBehaviorOverrideEnum = S.String;
+
 /** A golden turn defines a single turn in a golden conversation. */
 export interface EvaluationGoldenTurn {
   /** Optional. The root span of the golden turn for processing and maintaining audio information. The uri for the audio must contain audio saved in 16Khz sample rate. */
@@ -2106,7 +2948,17 @@ export interface EvaluationGoldenTurn {
     | EvaluationGoldenTurnHallucinationMetricBehaviorOverrideEnum
     | (string & {});
 }
+const EvaluationGoldenTurn = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<EvaluationGoldenTurn>;
+
 export type EvaluationGoldenTurnList = Array<EvaluationGoldenTurn>;
+const EvaluationGoldenTurnList = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<EvaluationGoldenTurnList>;
+
 /** The steps required to replay a golden conversation. */
 export interface EvaluationGolden {
   /** Required. The golden turns required to replay a golden conversation. The maximum number of allowed turns is 100. */
@@ -2114,6 +2966,8 @@ export interface EvaluationGolden {
   /** Optional. The evaluation expectations to evaluate the replayed conversation against. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluationExpectation}` */
   evaluationExpectations?: StringList;
 }
+const EvaluationGolden = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<EvaluationGolden>;
+
 /** An evaluation represents all of the information needed to simulate and evaluate an agent. */
 export interface Evaluation {
   /** Output only. Whether the evaluation is invalid. This can happen if an evaluation is referencing a tool, toolset, or agent that has since been deleted. */
@@ -2155,6 +3009,8 @@ export interface Evaluation {
   /** Output only. The user who last updated the evaluation. */
   lastUpdatedBy?: string;
 }
+const Evaluation = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<Evaluation>;
+
 export interface CreateProjectsLocationsAppsEvaluationsRequest {
   /** Required. The app to create the evaluation for. Format: `projects/{project}/locations/{location}/apps/{app}` */
   parent: string;
@@ -2163,7 +3019,14 @@ export interface CreateProjectsLocationsAppsEvaluationsRequest {
   /** Request body */
   body?: Evaluation;
 }
+const CreateProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<CreateProjectsLocationsAppsEvaluationsRequest>;
+
 export type MessageList = Array<Message>;
+const MessageList = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<MessageList>;
+
 /** An example represents a sample conversation between the user and the agent(s). */
 export interface Example {
   /** Optional. The agent that initially handles the conversation. If not specified, the example represents a conversation that is handled by the root agent. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}` */
@@ -2185,6 +3048,8 @@ export interface Example {
   /** Etag used to ensure the object hasn't changed during a read-modify-write operation. If the etag is empty, the update will overwrite any concurrent changes. */
   etag?: string;
 }
+const Example = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<Example>;
+
 export interface CreateProjectsLocationsAppsExamplesRequest {
   /** Optional. The ID to use for the example, which will become the final component of the example's resource name. If not provided, a unique ID will be automatically assigned for the example. */
   exampleId?: string;
@@ -2193,10 +3058,17 @@ export interface CreateProjectsLocationsAppsExamplesRequest {
   /** Request body */
   body?: Example;
 }
+const CreateProjectsLocationsAppsExamplesRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<CreateProjectsLocationsAppsExamplesRequest>;
+
 export type GuardrailSupervisorDetectionModeEnum =
   | "DETECTION_MODE_UNSPECIFIED"
   | "NON_BLOCKING"
   | "BLOCKING";
+const GuardrailSupervisorDetectionModeEnum = S.String;
+
 export type GuardrailSupervisorTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "INVALID_TEXT"
@@ -2207,6 +3079,8 @@ export type GuardrailSupervisorTypeEnum =
   | "CUSTOM"
   | "CHOPPY_AUDIO"
   | "PROFANITY";
+const GuardrailSupervisorTypeEnum = S.String;
+
 /** Guardrail that runs supervisor intervention. */
 export interface GuardrailSupervisor {
   /** Optional. The detection mode of the supervisor. */
@@ -2214,6 +3088,8 @@ export interface GuardrailSupervisor {
   /** Optional. The type of the supervisor. */
   type?: GuardrailSupervisorTypeEnum | (string & {});
 }
+const GuardrailSupervisor = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<GuardrailSupervisor>;
+
 export type GuardrailModelSafetySafetySettingCategoryEnum =
   | "HARM_CATEGORY_UNSPECIFIED"
   | "HARM_CATEGORY_HATE_SPEECH"
@@ -2222,6 +3098,8 @@ export type GuardrailModelSafetySafetySettingCategoryEnum =
   | "HARM_CATEGORY_SEXUALLY_EXPLICIT"
   | "HARM_CATEGORY_PROFANITY"
   | "HARM_CATEGORY_TOXIC";
+const GuardrailModelSafetySafetySettingCategoryEnum = S.String;
+
 export type GuardrailModelSafetySafetySettingThresholdEnum =
   | "HARM_BLOCK_THRESHOLD_UNSPECIFIED"
   | "BLOCK_LOW_AND_ABOVE"
@@ -2229,6 +3107,8 @@ export type GuardrailModelSafetySafetySettingThresholdEnum =
   | "BLOCK_ONLY_HIGH"
   | "BLOCK_NONE"
   | "OFF";
+const GuardrailModelSafetySafetySettingThresholdEnum = S.String;
+
 /** Safety setting. */
 export interface GuardrailModelSafetySafetySetting {
   /** Required. The harm category. */
@@ -2236,22 +3116,44 @@ export interface GuardrailModelSafetySafetySetting {
   /** Required. The harm block threshold. */
   threshold?: GuardrailModelSafetySafetySettingThresholdEnum | (string & {});
 }
+const GuardrailModelSafetySafetySetting = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<GuardrailModelSafetySafetySetting>;
+
 export type GuardrailModelSafetySafetySettingList = Array<GuardrailModelSafetySafetySetting>;
+const GuardrailModelSafetySafetySettingList = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<GuardrailModelSafetySafetySettingList>;
+
 /** Model safety settings overrides. When this is set, it will override the default settings and trigger the guardrail if the response is considered unsafe. */
 export interface GuardrailModelSafety {
   /** Required. List of safety settings. */
   safetySettings?: GuardrailModelSafetySafetySettingList;
 }
+const GuardrailModelSafety = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<GuardrailModelSafety>;
+
 /** Configuration for default system security settings. */
 export interface GuardrailLlmPromptSecurityDefaultSecuritySettings {
   /** Output only. The default prompt template used by the system. This field is for display purposes to show the user what prompt the system uses by default. It is OUTPUT_ONLY. */
   defaultPromptTemplate?: string;
 }
+const GuardrailLlmPromptSecurityDefaultSecuritySettings = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<GuardrailLlmPromptSecurityDefaultSecuritySettings>;
+
 export type GuardrailLlmPolicyPolicyScopeEnum =
   | "POLICY_SCOPE_UNSPECIFIED"
   | "USER_QUERY"
   | "AGENT_RESPONSE"
   | "USER_QUERY_AND_AGENT_RESPONSE";
+const GuardrailLlmPolicyPolicyScopeEnum = S.String;
+
 /** Guardrail that blocks the conversation if the LLM response is considered violating the policy based on the LLM classification. */
 export interface GuardrailLlmPolicy {
   /** Optional. Model settings. */
@@ -2267,6 +3169,8 @@ export interface GuardrailLlmPolicy {
   /** Optional. If an error occurs during the policy check, fail open and do not trigger the guardrail. */
   failOpen?: boolean;
 }
+const GuardrailLlmPolicy = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<GuardrailLlmPolicy>;
+
 /** Guardrail that blocks the conversation if the input is considered unsafe based on the LLM classification. */
 export interface GuardrailLlmPromptSecurity {
   /** Optional. Determines the behavior when the guardrail encounters an LLM error. - If true: the guardrail is bypassed. - If false (default): the guardrail triggers/blocks. Note: If a custom policy is provided, this field is ignored in favor of the policy's 'fail_open' configuration. */
@@ -2276,11 +3180,18 @@ export interface GuardrailLlmPromptSecurity {
   /** Optional. Use a user-defined LlmPolicy to configure the security guardrail. */
   customPolicy?: GuardrailLlmPolicy;
 }
+const GuardrailLlmPromptSecurity = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<GuardrailLlmPromptSecurity>;
+
 export type GuardrailContentFilterMatchTypeEnum =
   | "MATCH_TYPE_UNSPECIFIED"
   | "SIMPLE_STRING_MATCH"
   | "WORD_BOUNDARY_STRING_MATCH"
   | "REGEXP_MATCH";
+const GuardrailContentFilterMatchTypeEnum = S.String;
+
 /** Guardrail that bans certain content from being used in the conversation. */
 export interface GuardrailContentFilter {
   /** Optional. List of banned phrases. Applies only to user inputs. */
@@ -2294,6 +3205,11 @@ export interface GuardrailContentFilter {
   /** Optional. List of banned phrases. Applies only to agent responses. */
   bannedContentsInAgentResponse?: StringList;
 }
+const GuardrailContentFilter = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<GuardrailContentFilter>;
+
 /** Guardrail that blocks the conversation based on the code callbacks provided. */
 export interface GuardrailCodeCallback {
   /** Optional. The callback to execute before the agent is called. Each callback function is expected to return a structure (e.g., a dict or object) containing at least: - 'decision': Either 'OK' or 'TRIGGER'. - 'reason': A string explaining the decision. A 'TRIGGER' decision may halt further processing. */
@@ -2305,11 +3221,21 @@ export interface GuardrailCodeCallback {
   /** Optional. The callback to execute after the agent is called. Each callback function is expected to return a structure (e.g., a dict or object) containing at least: - 'decision': Either 'OK' or 'TRIGGER'. - 'reason': A string explaining the decision. A 'TRIGGER' decision may halt further processing. */
   afterAgentCallback?: Callback;
 }
+const GuardrailCodeCallback = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<GuardrailCodeCallback>;
+
 /** The agent will transfer the conversation to a different agent. */
 export interface TriggerActionTransferAgent {
   /** Required. The name of the agent to transfer the conversation to. The agent must be in the same app as the current agent. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}` */
   agent?: string;
 }
+const TriggerActionTransferAgent = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<TriggerActionTransferAgent>;
+
 /** Represents a response from the agent. */
 export interface TriggerActionResponse {
   /** Required. Text for the agent to respond with. */
@@ -2317,17 +3243,35 @@ export interface TriggerActionResponse {
   /** Optional. Whether the response is disabled. Disabled responses are not used by the agent. */
   disabled?: boolean;
 }
+const TriggerActionResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<TriggerActionResponse>;
+
 export type TriggerActionResponseList = Array<TriggerActionResponse>;
+const TriggerActionResponseList = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<TriggerActionResponseList>;
+
 /** The agent will immediately respond with a preconfigured response. */
 export interface TriggerActionRespondImmediately {
   /** Required. The canned responses for the agent to choose from. The response is chosen randomly. */
   responses?: TriggerActionResponseList;
 }
+const TriggerActionRespondImmediately = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<TriggerActionRespondImmediately>;
+
 /** The agent will immediately respond with a generative answer. */
 export interface TriggerActionGenerativeAnswer {
   /** Required. The prompt to use for the generative answer. */
   prompt?: string;
 }
+const TriggerActionGenerativeAnswer =
+  EvaluationExpectationLlmCriteria as any as S.Schema<TriggerActionGenerativeAnswer>;
+
 /** Action that is taken when a certain precondition is met. */
 export interface TriggerAction {
   /** Optional. Transfer the conversation to a different agent. */
@@ -2337,6 +3281,8 @@ export interface TriggerAction {
   /** Optional. Respond with a generative answer. */
   generativeAnswer?: TriggerActionGenerativeAnswer;
 }
+const TriggerAction = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<TriggerAction>;
+
 /** Guardrail contains a list of checks and balances to keep the agents safe and secure. */
 export interface Guardrail {
   /** Optional. Guardrail that runs supervisor intervention. */
@@ -2368,6 +3314,8 @@ export interface Guardrail {
   /** Etag used to ensure the object hasn't changed during a read-modify-write operation. If the etag is empty, the update will overwrite any concurrent changes. */
   etag?: string;
 }
+const Guardrail = /*@__PURE__*/ __L.at(__c27, 1) as any as S.Schema<Guardrail>;
+
 export interface CreateProjectsLocationsAppsGuardrailsRequest {
   /** Required. The resource name of the app to create a guardrail in. */
   parent: string;
@@ -2376,13 +3324,22 @@ export interface CreateProjectsLocationsAppsGuardrailsRequest {
   /** Request body */
   body?: Guardrail;
 }
+const CreateProjectsLocationsAppsGuardrailsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<CreateProjectsLocationsAppsGuardrailsRequest>;
+
 export type IntegerList = Array<number>;
+const IntegerList = /*@__PURE__*/ __L.at(__c27, 3) as any as S.Schema<IntegerList>;
+
 export type ScheduledEvaluationRunSchedulingConfigFrequencyEnum =
   | "FREQUENCY_UNSPECIFIED"
   | "NONE"
   | "DAILY"
   | "WEEKLY"
   | "BIWEEKLY";
+const ScheduledEvaluationRunSchedulingConfigFrequencyEnum = S.String;
+
 /** Eval scheduling configuration details */
 export interface ScheduledEvaluationRunSchedulingConfig {
   /** Optional. The days of the week to run the eval. Applicable only for Weekly and Biweekly frequencies. 1 is Monday, 2 is Tuesday, ..., 7 is Sunday. */
@@ -2392,10 +3349,17 @@ export interface ScheduledEvaluationRunSchedulingConfig {
   /** Required. Timestamp when the eval should start. */
   startTime?: string;
 }
+const ScheduledEvaluationRunSchedulingConfig = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<ScheduledEvaluationRunSchedulingConfig>;
+
 export type RunEvaluationRequestGoldenRunMethodEnum =
   | "GOLDEN_RUN_METHOD_UNSPECIFIED"
   | "STABLE"
   | "NAIVE";
+const RunEvaluationRequestGoldenRunMethodEnum = S.String;
+
 /** Configuration for running an evaluation for a specific persona. */
 export interface PersonaRunConfig {
   /** Optional. The number of tasks to run for the persona. */
@@ -2403,12 +3367,21 @@ export interface PersonaRunConfig {
   /** Optional. The persona to use for the evaluation. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationPersonas/{evaluationPersona}` */
   persona?: string;
 }
+const PersonaRunConfig = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<PersonaRunConfig>;
+
 export type PersonaRunConfigList = Array<PersonaRunConfig>;
+const PersonaRunConfigList = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<PersonaRunConfigList>;
+
 export type OptimizationConfigStatusEnum =
   | "OPTIMIZATION_STATUS_UNSPECIFIED"
   | "RUNNING"
   | "COMPLETED"
   | "ERROR";
+const OptimizationConfigStatusEnum = S.String;
+
 /** Configuration for running the optimization step after the evaluation run. */
 export interface OptimizationConfig {
   /** Output only. The error message if the optimization run failed. */
@@ -2426,6 +3399,8 @@ export interface OptimizationConfig {
   /** Output only. The summary of the loss report. */
   reportSummary?: string;
 }
+const OptimizationConfig = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<OptimizationConfig>;
+
 /** Request message for EvaluationService.RunEvaluation. */
 export interface RunEvaluationRequest {
   /** Optional. Whether to generate a latency report for the evaluation run. */
@@ -2455,6 +3430,11 @@ export interface RunEvaluationRequest {
   /** Optional. Configuration for running the optimization step after the evaluation run. If not set, the optimization step will not be run. */
   optimizationConfig?: OptimizationConfig;
 }
+const RunEvaluationRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<RunEvaluationRequest>;
+
 /** Represents a scheduled evaluation run configuration. */
 export interface ScheduledEvaluationRun {
   /** Output only. Timestamp when the scheduled evaluation run was created. */
@@ -2486,6 +3466,11 @@ export interface ScheduledEvaluationRun {
   /** Required. The RunEvaluationRequest to schedule */
   request?: RunEvaluationRequest;
 }
+const ScheduledEvaluationRun = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<ScheduledEvaluationRun>;
+
 export interface CreateProjectsLocationsAppsScheduledEvaluationRunsRequest {
   /** Required. The app to create the scheduled evaluation run for. Format: `projects/{project}/locations/{location}/apps/{app}` */
   parent: string;
@@ -2494,7 +3479,14 @@ export interface CreateProjectsLocationsAppsScheduledEvaluationRunsRequest {
   /** Request body */
   body?: ScheduledEvaluationRun;
 }
+const CreateProjectsLocationsAppsScheduledEvaluationRunsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<CreateProjectsLocationsAppsScheduledEvaluationRunsRequest>;
+
 export type ToolExecutionTypeEnum = "EXECUTION_TYPE_UNSPECIFIED" | "SYNCHRONOUS" | "ASYNCHRONOUS";
+const ToolExecutionTypeEnum = S.String;
+
 /** Pre-defined system tool. */
 export interface SystemTool {
   /** Required. The name of the system tool. */
@@ -2502,6 +3494,8 @@ export interface SystemTool {
   /** Output only. The description of the system tool. */
   description?: string;
 }
+const SystemTool = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<SystemTool>;
+
 /** Represents a client-side function that the agent can invoke. When the tool is chosen by the agent, control is handed off to the client. The client is responsible for executing the function and returning the result as a ToolResponse to continue the interaction with the agent. */
 export interface ClientFunction {
   /** Optional. The function description. */
@@ -2513,10 +3507,14 @@ export interface ClientFunction {
   /** Optional. The schema of the function parameters. */
   parameters?: Ces_Schema;
 }
+const ClientFunction = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<ClientFunction>;
+
 export type FileSearchToolCorpusTypeEnum =
   | "CORPUS_TYPE_UNSPECIFIED"
   | "USER_OWNED"
   | "FULLY_MANAGED";
+const FileSearchToolCorpusTypeEnum = S.String;
+
 /** The file search tool allows the agent to search across the files uploaded by the app/agent developer. It has presets to give relatively good quality search over the uploaded files and summarization of the retrieved results. */
 export interface FileSearchTool {
   /** Required. The tool name. */
@@ -2528,11 +3526,18 @@ export interface FileSearchTool {
   /** Optional. The type of the corpus. Default is FULLY_MANAGED. */
   corpusType?: FileSearchToolCorpusTypeEnum | (string & {});
 }
+const FileSearchTool = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<FileSearchTool>;
+
 /** Configuration for tools using Service Directory. */
 export interface ServiceDirectoryConfig {
   /** Required. The name of [Service Directory](https://cloud.google.com/service-directory) service. Format: `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`. Location of the service directory must be the same as the location of the app. */
   service?: string;
 }
+const ServiceDirectoryConfig = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<ServiceDirectoryConfig>;
+
 /** The CA certificate. */
 export interface TlsConfigCaCert {
   /** Required. The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, CES will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command: ``` openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'") ``` */
@@ -2540,12 +3545,18 @@ export interface TlsConfigCaCert {
   /** Required. The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates. */
   displayName?: string;
 }
+const TlsConfigCaCert = /*@__PURE__*/ __L.at(__c28, 7) as any as S.Schema<TlsConfigCaCert>;
+
 export type TlsConfigCaCertList = Array<TlsConfigCaCert>;
+const TlsConfigCaCertList = /*@__PURE__*/ __L.at(__c29, 0) as any as S.Schema<TlsConfigCaCertList>;
+
 /** The TLS configuration. */
 export interface TlsConfig {
   /** Required. Specifies a list of allowed custom CA certificates for HTTPS verification. */
   caCerts?: TlsConfigCaCertList;
 }
+const TlsConfig = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<TlsConfig>;
+
 /** A remote API tool defined by an OpenAPI schema. */
 export interface OpenApiTool {
   /** Optional. The description of the tool. If not provided, the description of the tool will be derived from the OpenAPI schema, from `operation.description` or `operation.summary`. */
@@ -2565,11 +3576,15 @@ export interface OpenApiTool {
   /** Optional. If true, the agent will ignore unknown fields in the API response. */
   ignoreUnknownFields?: boolean;
 }
+const OpenApiTool = /*@__PURE__*/ __L.at(__c29, 2) as any as S.Schema<OpenApiTool>;
+
 /** A code block to be executed instead of a real tool call. */
 export interface CodeBlock {
   /** Required. Python code which will be invoked in tool fake mode. Expected Python function signature - To catch all tool calls: def fake_tool_call(tool: Tool, input: dict[str, Any], callback_context: CallbackContext) -> Optional[dict[str, Any]]: To catch a specific tool call: def fake_{tool_id}(tool: Tool, input: dict[str, Any], callback_context: CallbackContext) -> Optional[dict[str, Any]]: If the function returns None, the real tool will be invoked instead. */
   pythonCode?: string;
 }
+const CodeBlock = PythonCodeCondition as any as S.Schema<CodeBlock>;
+
 /** Configuration for tool behavior in fake mode. */
 export interface ToolFakeConfig {
   /** Optional. Code block which will be executed instead of a real tool call. */
@@ -2577,7 +3592,11 @@ export interface ToolFakeConfig {
   /** Optional. Whether the tool is using fake mode. */
   enableFakeMode?: boolean;
 }
+const ToolFakeConfig = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<ToolFakeConfig>;
+
 export type McpToolStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "INACTIVE" | "STALE";
+const McpToolStateEnum = S.String;
+
 /** An MCP tool. See https://modelcontextprotocol.io/specification/2025-06-18/server/tools for more details. */
 export interface McpTool {
   /** Required. The name of the MCP tool. */
@@ -2603,13 +3622,19 @@ export interface McpTool {
   /** Optional. The schema of the input arguments of the MCP tool. */
   inputSchema?: Ces_Schema;
 }
+const McpTool = /*@__PURE__*/ __L.at(__c29, 4) as any as S.Schema<McpTool>;
+
 export type DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecInterpolationTypeEnum =
   | "INTERPOLATION_TYPE_UNSPECIFIED"
   | "LINEAR";
+const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecInterpolationTypeEnum = S.String;
+
 export type DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecAttributeTypeEnum =
   | "ATTRIBUTE_TYPE_UNSPECIFIED"
   | "NUMERICAL"
   | "FRESHNESS";
+const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecAttributeTypeEnum = S.String;
+
 /** The control points used to define the curve. The curve defined through these control points can only be monotonically increasing or decreasing(constant values are acceptable). */
 export interface DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint {
   /** Optional. Can be one of: 1. The numerical field value. 2. The duration spec for freshness: The value must be formatted as an XSD `dayTimeDuration` value (a restricted subset of an ISO 8601 duration value). The pattern for this is: `nDnM]`. */
@@ -2617,8 +3642,19 @@ export interface DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControl
   /** Optional. The value between -1 to 1 by which to boost the score if the attribute_value evaluates to the value specified above. */
   boostAmount?: number;
 }
+const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
+
 export type DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPointList =
   Array<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
+const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPointList =
+  /*@__PURE__*/ __L.at(
+    __c29,
+    6,
+  ) as any as S.Schema<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPointList>;
+
 /** Specification for custom ranking based on customer specified attribute value. It provides more controls for customized ranking than the simple (condition, boost) combination above. */
 export interface DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec {
   /** Optional. The interpolation type to be applied to connect the control points listed below. */
@@ -2634,6 +3670,11 @@ export interface DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec {
   /** Optional. The control points used to define the curve. The monotonic function (defined through the interpolation_type above) passes through the control points listed here. */
   controlPoints?: DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPointList;
 }
+const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec>;
+
 /** Boost specification for a condition. */
 export interface DataStoreToolBoostSpecConditionBoostSpec {
   /** Optional. Strength of the boost, which should be in [-1, 1]. Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the suggestions a big promotion. However, it does not necessarily mean that the top result will be a boosted suggestion. Setting to -1.0 gives the suggestions a big demotion. However, other suggestions that are relevant might still be shown. Setting to 0.0 means no boost applied. The boosting condition is ignored. */
@@ -2643,14 +3684,34 @@ export interface DataStoreToolBoostSpecConditionBoostSpec {
   /** Required. An expression which specifies a boost condition. The syntax is the same as filter expression syntax. Currently, the only supported condition is a list of BCP-47 lang codes. Example: To boost suggestions in languages en or fr: (lang_code: ANY("en", "fr")) */
   condition?: string;
 }
+const DataStoreToolBoostSpecConditionBoostSpec = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<DataStoreToolBoostSpecConditionBoostSpec>;
+
 export type DataStoreToolBoostSpecConditionBoostSpecList =
   Array<DataStoreToolBoostSpecConditionBoostSpec>;
+const DataStoreToolBoostSpecConditionBoostSpecList = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<DataStoreToolBoostSpecConditionBoostSpecList>;
+
 /** Boost specification to boost certain documents. */
 export interface DataStoreToolBoostSpec {
   /** Required. A list of boosting specifications. */
   conditionBoostSpecs?: DataStoreToolBoostSpecConditionBoostSpecList;
 }
+const DataStoreToolBoostSpec = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<DataStoreToolBoostSpec>;
+
 export type DataStoreToolBoostSpecList = Array<DataStoreToolBoostSpec>;
+const DataStoreToolBoostSpecList = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<DataStoreToolBoostSpecList>;
+
 /** Boost specifications to boost certain documents. For more information, please refer to https://cloud.google.com/generative-ai-app-builder/docs/boosting. */
 export interface DataStoreToolBoostSpecs {
   /** Required. The Data Store where the boosting configuration is applied. Full resource name of DataStore, such as projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}. */
@@ -2658,11 +3719,23 @@ export interface DataStoreToolBoostSpecs {
   /** Required. A list of boosting specifications. */
   spec?: DataStoreToolBoostSpecList;
 }
+const DataStoreToolBoostSpecs = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<DataStoreToolBoostSpecs>;
+
 export type DataStoreToolBoostSpecsList = Array<DataStoreToolBoostSpecs>;
+const DataStoreToolBoostSpecsList = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<DataStoreToolBoostSpecsList>;
+
 export type DataStoreToolFilterParameterBehaviorEnum =
   | "FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED"
   | "ALWAYS_INCLUDE"
   | "NEVER_INCLUDE";
+const DataStoreToolFilterParameterBehaviorEnum = S.String;
+
 /** Rewriter configuration. */
 export interface DataStoreToolRewriterConfig {
   /** Optional. Whether the rewriter is disabled. */
@@ -2672,6 +3745,11 @@ export interface DataStoreToolRewriterConfig {
   /** Optional. The prompt definition. If not set, default prompt will be used. */
   prompt?: string;
 }
+const DataStoreToolRewriterConfig = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<DataStoreToolRewriterConfig>;
+
 /** Grounding configuration. */
 export interface DataStoreToolGroundingConfig {
   /** Optional. The groundedness threshold of the answer based on the retrieved sources. The value has a configurable range of [1, 5]. The level is used to threshold the groundedness of the answer, meaning that all responses with a groundedness score below the threshold will fall back to returning relevant snippets only. For example, a level of 3 means that the groundedness score must be 3 or higher for the response to be returned. */
@@ -2679,10 +3757,17 @@ export interface DataStoreToolGroundingConfig {
   /** Optional. Whether grounding is disabled. */
   disabled?: boolean;
 }
+const DataStoreToolGroundingConfig = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<DataStoreToolGroundingConfig>;
+
 export type DataStoreToolModalityConfigModalityTypeEnum =
   | "MODALITY_TYPE_UNSPECIFIED"
   | "TEXT"
   | "AUDIO";
+const DataStoreToolModalityConfigModalityTypeEnum = S.String;
+
 /** Snippets configuration. */
 export interface DataStoreToolSnippetsConfig {
   /** Optional. Whether snippets are enabled. */
@@ -2690,6 +3775,11 @@ export interface DataStoreToolSnippetsConfig {
   /** Optional. Number of snippets to return per query. If unset, returns all snippets from the service by default. */
   maxSnippets?: number;
 }
+const DataStoreToolSnippetsConfig = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<DataStoreToolSnippetsConfig>;
+
 /** Summarization configuration. */
 export interface DataStoreToolSummarizationConfig {
   /** Optional. Configurations for the LLM model. */
@@ -2699,6 +3789,11 @@ export interface DataStoreToolSummarizationConfig {
   /** Optional. The prompt definition. If not set, default prompt will be used. */
   prompt?: string;
 }
+const DataStoreToolSummarizationConfig = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<DataStoreToolSummarizationConfig>;
+
 /** If specified, will apply the given configuration for the specified modality. */
 export interface DataStoreToolModalityConfig {
   /** Optional. The rewriter config. */
@@ -2712,11 +3807,23 @@ export interface DataStoreToolModalityConfig {
   /** Optional. The summarization config. */
   summarizationConfig?: DataStoreToolSummarizationConfig;
 }
+const DataStoreToolModalityConfig = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<DataStoreToolModalityConfig>;
+
 export type DataStoreToolModalityConfigList = Array<DataStoreToolModalityConfig>;
+const DataStoreToolModalityConfigList = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<DataStoreToolModalityConfigList>;
+
 export type DataStoreDocumentProcessingModeEnum =
   | "DOCUMENT_PROCESSING_MODE_UNSPECIFIED"
   | "DOCUMENTS"
   | "CHUNKS";
+const DataStoreDocumentProcessingModeEnum = S.String;
+
 /** The connector config for the data store connection. */
 export interface DataStoreConnectorConfig {
   /** Display name of the collection the data store belongs to. */
@@ -2726,12 +3833,19 @@ export interface DataStoreConnectorConfig {
   /** The name of the data source. Example: `salesforce`, `jira`, `confluence`, `bigquery`. */
   dataSource?: string;
 }
+const DataStoreConnectorConfig = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<DataStoreConnectorConfig>;
+
 export type DataStoreTypeEnum =
   | "DATA_STORE_TYPE_UNSPECIFIED"
   | "PUBLIC_WEB"
   | "UNSTRUCTURED"
   | "FAQ"
   | "CONNECTOR";
+const DataStoreTypeEnum = S.String;
+
 /** A DataStore resource in Vertex AI Search. */
 export interface DataStore {
   /** Output only. Timestamp when the data store was created. */
@@ -2747,6 +3861,8 @@ export interface DataStore {
   /** Output only. The type of the data store. This field is readonly and populated by the server. */
   type?: DataStoreTypeEnum | (string & {});
 }
+const DataStore = /*@__PURE__*/ __L.at(__c31, 5) as any as S.Schema<DataStore>;
+
 /** Configuration for searching within a specific DataStore. */
 export interface DataStoreToolDataStoreSource {
   /** Optional. Filter specification for the DataStore. See: https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata */
@@ -2754,7 +3870,17 @@ export interface DataStoreToolDataStoreSource {
   /** Optional. The data store. */
   dataStore?: DataStore;
 }
+const DataStoreToolDataStoreSource = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<DataStoreToolDataStoreSource>;
+
 export type DataStoreToolDataStoreSourceList = Array<DataStoreToolDataStoreSource>;
+const DataStoreToolDataStoreSourceList = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<DataStoreToolDataStoreSourceList>;
+
 /** Configuration for searching within an Engine, potentially targeting specific DataStores. */
 export interface DataStoreToolEngineSource {
   /** Optional. A filter applied to the search across the Engine. Not relevant and not used if 'data_store_sources' is provided. See: https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata */
@@ -2764,6 +3890,11 @@ export interface DataStoreToolEngineSource {
   /** Optional. Use to target specific DataStores within the Engine. If empty, the search applies to all DataStores associated with the Engine. */
   dataStoreSources?: DataStoreToolDataStoreSourceList;
 }
+const DataStoreToolEngineSource = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<DataStoreToolEngineSource>;
+
 /** Tool to retrieve from Vertex AI Search datastore or engine for grounding. Accepts either a datastore or an engine, but not both. See Vertex AI Search: https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction. */
 export interface DataStoreTool {
   /** Required. The data store tool name. */
@@ -2781,11 +3912,18 @@ export interface DataStoreTool {
   /** Optional. Search within a single specific DataStore. */
   dataStoreSource?: DataStoreToolDataStoreSource;
 }
+const DataStoreTool = /*@__PURE__*/ __L.at(__c32, 1) as any as S.Schema<DataStoreTool>;
+
 /** Oauth 2.0 Authorization Code authentication configuration. */
 export interface EndUserAuthConfigOauth2AuthCodeConfig {
   /** Required. Oauth token parameter name to pass through. Must be in the format `$context.variables.`. */
   oauthToken?: string;
 }
+const EndUserAuthConfigOauth2AuthCodeConfig = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<EndUserAuthConfigOauth2AuthCodeConfig>;
+
 /** JWT Profile Oauth 2.0 Authorization Grant authentication configuration. */
 export interface EndUserAuthConfigOauth2JwtBearerConfig {
   /** Required. Issuer parameter name to pass through. Must be in the format `$context.variables.`. */
@@ -2795,6 +3933,11 @@ export interface EndUserAuthConfigOauth2JwtBearerConfig {
   /** Required. Subject parameter name to pass through. Must be in the format `$context.variables.`. */
   subject?: string;
 }
+const EndUserAuthConfigOauth2JwtBearerConfig = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<EndUserAuthConfigOauth2JwtBearerConfig>;
+
 /** End-user authentication configuration used for Connection calls. The field values must be the names of context variables in the format `$context.variables.`. */
 export interface EndUserAuthConfig {
   /** Oauth 2.0 Authorization Code authentication. */
@@ -2802,6 +3945,8 @@ export interface EndUserAuthConfig {
   /** JWT Profile Oauth 2.0 Authorization Grant authentication. */
   oauth2JwtBearerConfig?: EndUserAuthConfigOauth2JwtBearerConfig;
 }
+const EndUserAuthConfig = /*@__PURE__*/ __L.at(__c32, 4) as any as S.Schema<EndUserAuthConfig>;
+
 export type ActionEntityOperationOperationEnum =
   | "OPERATION_TYPE_UNSPECIFIED"
   | "LIST"
@@ -2809,6 +3954,8 @@ export type ActionEntityOperationOperationEnum =
   | "CREATE"
   | "UPDATE"
   | "DELETE";
+const ActionEntityOperationOperationEnum = S.String;
+
 /** Entity CRUD operation specification. */
 export interface ActionEntityOperation {
   /** Required. ID of the entity. */
@@ -2816,6 +3963,11 @@ export interface ActionEntityOperation {
   /** Required. Operation to perform on the entity. */
   operation?: ActionEntityOperationOperationEnum | (string & {});
 }
+const ActionEntityOperation = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<ActionEntityOperation>;
+
 /** Configuration of an Action for the tool to use. Note: This can be either an Action or an Operation. See https://cloud.google.com/integration-connectors/docs/entities-operation-action for details. */
 export interface Action {
   /** Optional. Entity fields to use as inputs for the operation. If no fields are specified, all fields of the Entity will be used. */
@@ -2827,6 +3979,8 @@ export interface Action {
   /** ID of a Connection action for the tool to use. */
   connectionActionId?: string;
 }
+const Action = /*@__PURE__*/ __L.at(__c32, 6) as any as S.Schema<Action>;
+
 /** A ConnectorTool allows connections to different integrations. See: https://cloud.google.com/integration-connectors/docs/overview. */
 export interface ConnectorTool {
   /** Optional. Configures how authentication is handled in Integration Connectors. By default, an admin authentication is passed in the Integration Connectors API requests. You can override it with a different end-user authentication config. **Note**: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise, the ConnectorTool creation will fail. See https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override for details. */
@@ -2840,6 +3994,8 @@ export interface ConnectorTool {
   /** Required. Action for the tool to use. */
   action?: Action;
 }
+const ConnectorTool = /*@__PURE__*/ __L.at(__c32, 7) as any as S.Schema<ConnectorTool>;
+
 /** Represents a tool that allows the agent to call another remote agent. */
 export interface RemoteAgentTool {
   /** Optional. Mapping of input variable names of remote agent to GECX variable names. */
@@ -2857,6 +4013,8 @@ export interface RemoteAgentTool {
   /** Required. The name of the tool. */
   name?: string;
 }
+const RemoteAgentTool = /*@__PURE__*/ __L.at(__c33, 0) as any as S.Schema<RemoteAgentTool>;
+
 /** Prompt settings used by the model when processing or summarizing the google search results. */
 export interface GoogleSearchToolPromptConfig {
   /** Optional. Defines the prompt used for the system instructions when interacting with the agent in voice conversations. If not set, default prompt will be used. */
@@ -2864,6 +4022,11 @@ export interface GoogleSearchToolPromptConfig {
   /** Optional. Defines the prompt used for the system instructions when interacting with the agent in chat conversations. If not set, default prompt will be used. */
   textPrompt?: string;
 }
+const GoogleSearchToolPromptConfig = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<GoogleSearchToolPromptConfig>;
+
 /** Represents a tool to perform Google web searches for grounding. See https://cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool#google-search. */
 export interface GoogleSearchTool {
   /** Required. The name of the tool. */
@@ -2879,6 +4042,8 @@ export interface GoogleSearchTool {
   /** Optional. Prompt instructions passed to planner on how the search results should be processed for text and voice. */
   promptConfig?: GoogleSearchToolPromptConfig;
 }
+const GoogleSearchTool = /*@__PURE__*/ __L.at(__c33, 2) as any as S.Schema<GoogleSearchTool>;
+
 /** Represents a tool that allows the agent to call another agent. */
 export interface AgentTool {
   /** Optional. Description of the tool's purpose. */
@@ -2888,7 +4053,11 @@ export interface AgentTool {
   /** Required. The name of the agent tool. */
   name?: string;
 }
+const AgentTool = /*@__PURE__*/ __L.at(__c33, 3) as any as S.Schema<AgentTool>;
+
 export type WidgetToolDataMappingModeEnum = "MODE_UNSPECIFIED" | "FIELD_MAPPING" | "PYTHON_SCRIPT";
+const WidgetToolDataMappingModeEnum = S.String;
+
 /** A Python function tool. */
 export interface PythonFunction {
   /** Optional. The Python code to execute for the tool. */
@@ -2900,6 +4069,8 @@ export interface PythonFunction {
   /** Optional. Service Directory configuration for the tool. */
   serviceDirectoryConfig?: ServiceDirectoryConfig;
 }
+const PythonFunction = /*@__PURE__*/ __L.at(__c33, 4) as any as S.Schema<PythonFunction>;
+
 /** Configuration for mapping data from a source tool to the widget's input parameters. */
 export interface WidgetToolDataMapping {
   /** Optional. A map of widget input parameter fields to the corresponding output fields of the source tool. */
@@ -2913,6 +4084,11 @@ export interface WidgetToolDataMapping {
   /** Optional. Configuration for a Python function used to transform the source tool's output into the widget's input format. */
   pythonFunction?: PythonFunction;
 }
+const WidgetToolDataMapping = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<WidgetToolDataMapping>;
+
 export type WidgetToolWidgetTypeEnum =
   | "WIDGET_TYPE_UNSPECIFIED"
   | "CUSTOM"
@@ -2927,11 +4103,15 @@ export type WidgetToolWidgetTypeEnum =
   | "APPOINTMENT_DETAILS"
   | "APPOINTMENT_SCHEDULER"
   | "CONTACT_FORM";
+const WidgetToolWidgetTypeEnum = S.String;
+
 export type WidgetToolTextResponseConfigTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "NONE"
   | "LLM_GENERATED"
   | "STATIC";
+const WidgetToolTextResponseConfigTypeEnum = S.String;
+
 /** Configuration for the text response returned with the widget. */
 export interface WidgetToolTextResponseConfig {
   /** Optional. The strategy for providing the text response. */
@@ -2941,6 +4121,11 @@ export interface WidgetToolTextResponseConfig {
   /** Optional. Instruction for the LLM on how to generate the text response. Used as the description for the text response parameter if type is LLM_GENERATED. */
   textResponseInstruction?: string;
 }
+const WidgetToolTextResponseConfig = /*@__PURE__*/ __L.at(
+  __c33,
+  6,
+) as any as S.Schema<WidgetToolTextResponseConfig>;
+
 /** Represents a widget tool that the agent can invoke. When the tool is chosen by the agent, agent will return the widget to the client. The client is responsible for processing the widget and generating the next user query to continue the interaction with the agent. */
 export interface WidgetTool {
   /** Optional. Configuration for rendering the widget. */
@@ -2958,6 +4143,8 @@ export interface WidgetTool {
   /** Required. The display name of the widget tool. */
   name?: string;
 }
+const WidgetTool = /*@__PURE__*/ __L.at(__c33, 7) as any as S.Schema<WidgetTool>;
+
 /** A tool represents an action that the CES agent can take to achieve certain goals. */
 export interface Tool {
   /** Optional. The execution type of the tool. */
@@ -3005,6 +4192,8 @@ export interface Tool {
   /** Optional. The python function tool. */
   pythonFunction?: PythonFunction;
 }
+const Tool = /*@__PURE__*/ __L.at(__c34, 0) as any as S.Schema<Tool>;
+
 export interface CreateProjectsLocationsAppsToolsRequest {
   /** Required. The resource name of the app to create a tool in. */
   parent: string;
@@ -3013,7 +4202,14 @@ export interface CreateProjectsLocationsAppsToolsRequest {
   /** Request body */
   body?: Tool;
 }
+const CreateProjectsLocationsAppsToolsRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<CreateProjectsLocationsAppsToolsRequest>;
+
 export type ActionList = Array<Action>;
+const ActionList = /*@__PURE__*/ __L.at(__c34, 2) as any as S.Schema<ActionList>;
+
 /** A toolset that generates tools from an Integration Connectors Connection. */
 export interface ConnectorToolset {
   /** Required. The list of connector actions/entity operations to generate tools for. */
@@ -3023,6 +4219,8 @@ export interface ConnectorToolset {
   /** Optional. Configures how authentication is handled in Integration Connectors. By default, an admin authentication is passed in the Integration Connectors API requests. You can override it with a different end-user authentication config. **Note**: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise, the Toolset creation will fail. See: https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override */
   authConfig?: EndUserAuthConfig;
 }
+const ConnectorToolset = /*@__PURE__*/ __L.at(__c34, 3) as any as S.Schema<ConnectorToolset>;
+
 /** A toolset that contains a list of tools that are defined by an OpenAPI schema. */
 export interface OpenApiToolset {
   /** Optional. If true, the agent will ignore unknown fields in the API response for all operations defined in the OpenAPI schema. */
@@ -3038,10 +4236,14 @@ export interface OpenApiToolset {
   /** Required. The OpenAPI schema of the toolset. */
   openApiSchema?: string;
 }
+const OpenApiToolset = /*@__PURE__*/ __L.at(__c34, 4) as any as S.Schema<OpenApiToolset>;
+
 export type ToolsetExecutionTypeEnum =
   | "EXECUTION_TYPE_UNSPECIFIED"
   | "SYNCHRONOUS"
   | "ASYNCHRONOUS";
+const ToolsetExecutionTypeEnum = S.String;
+
 /** Container for a tool's core definition elements that are snapshot. Schemas in the snapshot are used as-is and cannot be overridden. */
 export interface McpToolDefinition {
   /** Output only. The schema of the output arguments of the MCP tool. */
@@ -3051,6 +4253,8 @@ export interface McpToolDefinition {
   /** Output only. The schema of the input arguments of the MCP tool. */
   inputSchema?: Ces_Schema;
 }
+const McpToolDefinition = /*@__PURE__*/ __L.at(__c34, 5) as any as S.Schema<McpToolDefinition>;
+
 /** Overrides associated with a given tool in a Toolset. This enables "pinning" or "overriding" of tool definitions from the external dynamic server. */
 export interface McpToolOverride {
   /** Output only. If present, this tool is "Pinned" and uses the snapshot values as fallbacks if the server becomes temporarily unavailable or if no Override is present. */
@@ -3062,7 +4266,11 @@ export interface McpToolOverride {
   /** Optional. If present, this tool uses this name in the Agent instead of the original name. This is primarily used as an alias if the MCP server offers poorly named tools. */
   nameOverride?: string;
 }
+const McpToolOverride = /*@__PURE__*/ __L.at(__c34, 6) as any as S.Schema<McpToolOverride>;
+
 export type McpToolOverrideList = Array<McpToolOverride>;
+const McpToolOverrideList = /*@__PURE__*/ __L.at(__c34, 7) as any as S.Schema<McpToolOverrideList>;
+
 /** A toolset that contains a list of tools that are offered by the MCP server. */
 export interface McpToolset {
   /** Optional. The TLS configuration. Includes the custom server certificates that the client should trust. */
@@ -3078,6 +4286,8 @@ export interface McpToolset {
   /** Optional. Service Directory configuration for VPC-SC, used to resolve service names within a perimeter. */
   serviceDirectoryConfig?: ServiceDirectoryConfig;
 }
+const McpToolset = /*@__PURE__*/ __L.at(__c35, 0) as any as S.Schema<McpToolset>;
+
 /** A toolset represents a group of dynamically managed tools that can be used by the agent. */
 export interface Toolset {
   /** Output only. Timestamp when the toolset was created. */
@@ -3105,6 +4315,8 @@ export interface Toolset {
   /** Optional. The description of the toolset. */
   description?: string;
 }
+const Toolset = /*@__PURE__*/ __L.at(__c35, 1) as any as S.Schema<Toolset>;
+
 export interface CreateProjectsLocationsAppsToolsetsRequest {
   /** Required. The resource name of the app to create a toolset in. */
   parent: string;
@@ -3113,11 +4325,26 @@ export interface CreateProjectsLocationsAppsToolsetsRequest {
   /** Request body */
   body?: Toolset;
 }
+const CreateProjectsLocationsAppsToolsetsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<CreateProjectsLocationsAppsToolsetsRequest>;
+
 export type AgentList = Array<Agent>;
+const AgentList = /*@__PURE__*/ __L.at(__c35, 3) as any as S.Schema<AgentList>;
+
 export type ToolList = Array<Tool>;
+const ToolList = /*@__PURE__*/ __L.at(__c35, 4) as any as S.Schema<ToolList>;
+
 export type GuardrailList = Array<Guardrail>;
+const GuardrailList = /*@__PURE__*/ __L.at(__c35, 5) as any as S.Schema<GuardrailList>;
+
 export type ToolsetList = Array<Toolset>;
+const ToolsetList = /*@__PURE__*/ __L.at(__c35, 6) as any as S.Schema<ToolsetList>;
+
 export type ExampleList = Array<Example>;
+const ExampleList = /*@__PURE__*/ __L.at(__c35, 7) as any as S.Schema<ExampleList>;
+
 /** A snapshot of the app. */
 export interface AppSnapshot {
   /** Optional. List of agents in the app. */
@@ -3133,6 +4360,8 @@ export interface AppSnapshot {
   /** Optional. List of examples in the app. */
   examples?: ExampleList;
 }
+const AppSnapshot = /*@__PURE__*/ __L.at(__c36, 0) as any as S.Schema<AppSnapshot>;
+
 /** In Customer Engagement Suite (CES), an app version is a snapshot of the app at a specific point in time. It is immutable and cannot be modified once created. */
 export interface AppVersion {
   /** Output only. Email of the user who created the app version. */
@@ -3152,6 +4381,8 @@ export interface AppVersion {
   /** Output only. Etag used to ensure the object hasn't changed during a read-modify-write operation. If the etag is empty, the update will overwrite any concurrent changes. */
   etag?: string;
 }
+const AppVersion = /*@__PURE__*/ __L.at(__c36, 1) as any as S.Schema<AppVersion>;
+
 export interface CreateProjectsLocationsAppsVersionsRequest {
   /** Required. The resource name of the app to create an app version in. */
   parent: string;
@@ -3160,12 +4391,22 @@ export interface CreateProjectsLocationsAppsVersionsRequest {
   /** Request body */
   body?: AppVersion;
 }
+const CreateProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  2,
+) as any as S.Schema<CreateProjectsLocationsAppsVersionsRequest>;
+
 export interface DeleteProjectsLocationsAppsRequest {
   /** Optional. The current etag of the app. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the app, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
   /** Required. The resource name of the app to delete. */
   name: string;
 }
+const DeleteProjectsLocationsAppsRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<DeleteProjectsLocationsAppsRequest>;
+
 export interface DeleteProjectsLocationsAppsAgentsRequest {
   /** Required. The resource name of the agent to delete. */
   name: string;
@@ -3174,44 +4415,81 @@ export interface DeleteProjectsLocationsAppsAgentsRequest {
   /** Optional. The current etag of the agent. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the agent, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
+const DeleteProjectsLocationsAppsAgentsRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  4,
+) as any as S.Schema<DeleteProjectsLocationsAppsAgentsRequest>;
+
 export interface DeleteProjectsLocationsAppsAssistantSessionsRequest {
   /** Required. The name of the assistant session to delete. Format: `projects/{project}/locations/{location}/apps/{app}/assistantSessions/{assistant_session}` */
   name: string;
 }
+const DeleteProjectsLocationsAppsAssistantSessionsRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<DeleteProjectsLocationsAppsAssistantSessionsRequest>;
+
 export type DeleteProjectsLocationsAppsConversationsSourceEnum =
   | "SOURCE_UNSPECIFIED"
   | "LIVE"
   | "SIMULATOR"
   | "EVAL"
   | "AGENT_TOOL";
+const DeleteProjectsLocationsAppsConversationsSourceEnum = S.String;
+
 export interface DeleteProjectsLocationsAppsConversationsRequest {
   /** Required. The resource name of the conversation to delete. */
   name: string;
   /** Optional. Indicate the source of the conversation. If not set, Source.Live will be applied by default. */
   source?: DeleteProjectsLocationsAppsConversationsSourceEnum | (string & {});
 }
+const DeleteProjectsLocationsAppsConversationsRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<DeleteProjectsLocationsAppsConversationsRequest>;
+
 export interface DeleteProjectsLocationsAppsDeploymentsRequest {
   /** Required. The name of the deployment to delete. Format: `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}` */
   name: string;
   /** Optional. The etag of the deployment. If an etag is provided and does not match the current etag of the deployment, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
+const DeleteProjectsLocationsAppsDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<DeleteProjectsLocationsAppsDeploymentsRequest>;
+
 export interface DeleteProjectsLocationsAppsEvaluationDatasetsRequest {
   /** Required. The resource name of the evaluation dataset to delete. */
   name: string;
   /** Optional. The current etag of the evaluation dataset. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the evaluation dataset, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
+const DeleteProjectsLocationsAppsEvaluationDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<DeleteProjectsLocationsAppsEvaluationDatasetsRequest>;
+
 export interface DeleteProjectsLocationsAppsEvaluationExpectationsRequest {
   /** Optional. The current etag of the evaluation expectation. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the evaluation expectation, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
   /** Required. The resource name of the evaluation expectation to delete. */
   name: string;
 }
+const DeleteProjectsLocationsAppsEvaluationExpectationsRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  1,
+) as any as S.Schema<DeleteProjectsLocationsAppsEvaluationExpectationsRequest>;
+
 export interface DeleteProjectsLocationsAppsEvaluationRunsRequest {
   /** Required. The resource name of the evaluation run to delete. */
   name: string;
 }
+const DeleteProjectsLocationsAppsEvaluationRunsRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  2,
+) as any as S.Schema<DeleteProjectsLocationsAppsEvaluationRunsRequest>;
+
 export interface DeleteProjectsLocationsAppsEvaluationsRequest {
   /** Required. The resource name of the evaluation to delete. */
   name: string;
@@ -3220,16 +4498,31 @@ export interface DeleteProjectsLocationsAppsEvaluationsRequest {
   /** Optional. Indicates whether to forcefully delete the evaluation, even if it is still referenced by evaluation datasets. * If `force = false`, the deletion will fail if any datasets still reference the evaluation. * If `force = true`, all existing references from datasets will be removed and the evaluation will be deleted. */
   force?: boolean;
 }
+const DeleteProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  3,
+) as any as S.Schema<DeleteProjectsLocationsAppsEvaluationsRequest>;
+
 export interface DeleteProjectsLocationsAppsEvaluationsResultsRequest {
   /** Required. The resource name of the evaluation result to delete. */
   name: string;
 }
+const DeleteProjectsLocationsAppsEvaluationsResultsRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  4,
+) as any as S.Schema<DeleteProjectsLocationsAppsEvaluationsResultsRequest>;
+
 export interface DeleteProjectsLocationsAppsExamplesRequest {
   /** Optional. The current etag of the example. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the example, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
   /** Required. The resource name of the example to delete. */
   name: string;
 }
+const DeleteProjectsLocationsAppsExamplesRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<DeleteProjectsLocationsAppsExamplesRequest>;
+
 export interface DeleteProjectsLocationsAppsGuardrailsRequest {
   /** Required. The resource name of the guardrail to delete. */
   name: string;
@@ -3238,12 +4531,22 @@ export interface DeleteProjectsLocationsAppsGuardrailsRequest {
   /** Optional. The current etag of the guardrail. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the guardrail, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
+const DeleteProjectsLocationsAppsGuardrailsRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<DeleteProjectsLocationsAppsGuardrailsRequest>;
+
 export interface DeleteProjectsLocationsAppsScheduledEvaluationRunsRequest {
   /** Required. The resource name of the scheduled evaluation run to delete. */
   name: string;
   /** Optional. The etag of the ScheduledEvaluationRun. If provided, it must match the server's etag. */
   etag?: string;
 }
+const DeleteProjectsLocationsAppsScheduledEvaluationRunsRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<DeleteProjectsLocationsAppsScheduledEvaluationRunsRequest>;
+
 export interface DeleteProjectsLocationsAppsToolsRequest {
   /** Required. The resource name of the tool to delete. */
   name: string;
@@ -3252,6 +4555,11 @@ export interface DeleteProjectsLocationsAppsToolsRequest {
   /** Optional. Indicates whether to forcefully delete the tool, even if it is still referenced by agents/examples. * If `force = false`, the deletion will fail if any agents still reference the tool. * If `force = true`, all existing references from agents will be removed and the tool will be deleted. */
   force?: boolean;
 }
+const DeleteProjectsLocationsAppsToolsRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<DeleteProjectsLocationsAppsToolsRequest>;
+
 export interface DeleteProjectsLocationsAppsToolsetsRequest {
   /** Optional. Indicates whether to forcefully delete the toolset, even if it is still referenced by app/agents. * If `force = false`, the deletion fails if any agents still reference the toolset. * If `force = true`, all existing references from agents will be removed and the toolset will be deleted. */
   force?: boolean;
@@ -3260,16 +4568,31 @@ export interface DeleteProjectsLocationsAppsToolsetsRequest {
   /** Required. The resource name of the toolset to delete. */
   name: string;
 }
+const DeleteProjectsLocationsAppsToolsetsRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  1,
+) as any as S.Schema<DeleteProjectsLocationsAppsToolsetsRequest>;
+
 export interface DeleteProjectsLocationsAppsVersionsRequest {
   /** Optional. The current etag of the app version. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the app version, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
   /** Required. The resource name of the app version to delete. */
   name: string;
 }
+const DeleteProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<DeleteProjectsLocationsAppsVersionsRequest>;
+
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+
 /** A mocked tool call. Expresses the target tool + a pattern to match against that tool's args / inputs. If the pattern matches, then the mock response will be returned. */
 export interface MockedToolCall {
   /** Optional. The toolset to mock. */
@@ -3283,11 +4606,17 @@ export interface MockedToolCall {
   /** Optional. Deprecated. Use tool_identifier instead. */
   tool?: string;
 }
+const MockedToolCall = /*@__PURE__*/ __L.at(__c38, 4) as any as S.Schema<MockedToolCall>;
+
 export type MockedToolCallList = Array<MockedToolCall>;
+const MockedToolCallList = /*@__PURE__*/ __L.at(__c38, 5) as any as S.Schema<MockedToolCallList>;
+
 export type MockConfigUnmatchedToolCallBehaviorEnum =
   | "UNMATCHED_TOOL_CALL_BEHAVIOR_UNSPECIFIED"
   | "FAIL"
   | "PASS_THROUGH";
+const MockConfigUnmatchedToolCallBehaviorEnum = S.String;
+
 /** Mock tool calls configuration for the session. */
 export interface MockConfig {
   /** Optional. All tool calls to mock for the duration of the session. */
@@ -3295,6 +4624,8 @@ export interface MockConfig {
   /** Required. Beavhior for tool calls that don't match any args patterns in mocked_tool_calls. */
   unmatchedToolCallBehavior?: MockConfigUnmatchedToolCallBehaviorEnum | (string & {});
 }
+const MockConfig = /*@__PURE__*/ __L.at(__c38, 6) as any as S.Schema<MockConfig>;
+
 /** Request message for ToolService.ExecuteTool. */
 export interface ExecuteToolRequest {
   /** Optional. The input parameters and values for the tool in JSON object format. */
@@ -3310,12 +4641,19 @@ export interface ExecuteToolRequest {
   /** Optional. The name of the tool to execute. Format: projects/{project}/locations/{location}/apps/{app}/tools/{tool} */
   tool?: string;
 }
+const ExecuteToolRequest = /*@__PURE__*/ __L.at(__c38, 7) as any as S.Schema<ExecuteToolRequest>;
+
 export interface ExecuteToolProjectsLocationsAppsRequest {
   /** Required. The resource name of the app which the tool/toolset belongs to. Format: `projects/{project}/locations/{location}/apps/{app}` */
   parent: string;
   /** Request body */
   body?: ExecuteToolRequest;
 }
+const ExecuteToolProjectsLocationsAppsRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<ExecuteToolProjectsLocationsAppsRequest>;
+
 /** Represents a single web search query and its associated search uri. */
 export interface WebSearchQuery {
   /** The search query text. */
@@ -3323,7 +4661,11 @@ export interface WebSearchQuery {
   /** The URI to the Google Search results page for the query. */
   uri?: string;
 }
+const WebSearchQuery = /*@__PURE__*/ __L.at(__c39, 1) as any as S.Schema<WebSearchQuery>;
+
 export type WebSearchQueryList = Array<WebSearchQuery>;
+const WebSearchQueryList = /*@__PURE__*/ __L.at(__c39, 2) as any as S.Schema<WebSearchQueryList>;
+
 /** Search suggestions from Google Search Tool. */
 export interface GoogleSearchSuggestions {
   /** Compliant HTML and CSS styling for search suggestions. The provided HTML and CSS automatically adapts to your device settings, displaying in either light or dark mode indicated by `@media(prefers-color-scheme)`. */
@@ -3331,6 +4673,11 @@ export interface GoogleSearchSuggestions {
   /** List of queries used to perform the google search along with the search result URIs forming the search suggestions. */
   webSearchQueries?: WebSearchQueryList;
 }
+const GoogleSearchSuggestions = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<GoogleSearchSuggestions>;
+
 /** An inline citation in the response text. */
 export interface CitationsInlineCitation {
   /** The starting index (in bytes) of the text segment in the agent response. */
@@ -3340,7 +4687,17 @@ export interface CitationsInlineCitation {
   /** The indices of the cited chunks that back this text segment. Indices refer to the elements in `cited_chunks`. */
   citedChunkIndices?: IntegerList;
 }
+const CitationsInlineCitation = /*@__PURE__*/ __L.at(
+  __c39,
+  4,
+) as any as S.Schema<CitationsInlineCitation>;
+
 export type CitationsInlineCitationList = Array<CitationsInlineCitation>;
+const CitationsInlineCitationList = /*@__PURE__*/ __L.at(
+  __c39,
+  5,
+) as any as S.Schema<CitationsInlineCitationList>;
+
 /** Piece of cited information. */
 export interface CitationsCitedChunk {
   /** Whether this citation requires attribution to be shown to the end users. */
@@ -3352,7 +4709,14 @@ export interface CitationsCitedChunk {
   /** Title of the cited document. */
   title?: string;
 }
+const CitationsCitedChunk = /*@__PURE__*/ __L.at(__c39, 6) as any as S.Schema<CitationsCitedChunk>;
+
 export type CitationsCitedChunkList = Array<CitationsCitedChunk>;
+const CitationsCitedChunkList = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<CitationsCitedChunkList>;
+
 /** Citations associated with the agent response. */
 export interface Citations {
   /** Optional. List of inline citations in the agent response. */
@@ -3360,6 +4724,8 @@ export interface Citations {
   /** List of cited pieces of information. */
   citedChunks?: CitationsCitedChunkList;
 }
+const Citations = /*@__PURE__*/ __L.at(__c40, 0) as any as S.Schema<Citations>;
+
 /** Response message for ToolService.ExecuteTool. */
 export interface ExecuteToolResponse {
   /** The suggestions returned from Google Search as a result of invoking the Google Search Tool during the tool execution. */
@@ -3375,7 +4741,11 @@ export interface ExecuteToolResponse {
   /** The toolset tool that got executed. */
   toolsetTool?: ToolsetTool;
 }
+const ExecuteToolResponse = /*@__PURE__*/ __L.at(__c40, 1) as any as S.Schema<ExecuteToolResponse>;
+
 export type ExportAppRequestExportFormatEnum = "EXPORT_FORMAT_UNSPECIFIED" | "JSON" | "YAML";
+const ExportAppRequestExportFormatEnum = S.String;
+
 /** Request message for AgentService.ExportApp. */
 export interface ExportAppRequest {
   /** Optional. The resource name of the app version to export. Format: `projects/{project}/locations/{location}/apps/{app}/versions/{version}`. */
@@ -3385,13 +4755,22 @@ export interface ExportAppRequest {
   /** Optional. The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to which to export the app. The format of this URI must be `gs:///`. The exported app archive will be written directly to the specified GCS object. */
   gcsUri?: string;
 }
+const ExportAppRequest = /*@__PURE__*/ __L.at(__c40, 2) as any as S.Schema<ExportAppRequest>;
+
 export interface ExportAppProjectsLocationsAppsRequest {
   /** Required. The resource name of the app to export. */
   name: string;
   /** Request body */
   body?: ExportAppRequest;
 }
+const ExportAppProjectsLocationsAppsRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  3,
+) as any as S.Schema<ExportAppProjectsLocationsAppsRequest>;
+
 export type ExportOptionsExportFormatEnum = "EXPORT_FORMAT_UNSPECIFIED" | "JSON" | "YAML";
+const ExportOptionsExportFormatEnum = S.String;
+
 /** Options for exporting CES evaluation resources. */
 export interface ExportOptions {
   /** Optional. The format to export the evaluation results in. Defaults to JSON if not specified. */
@@ -3399,6 +4778,8 @@ export interface ExportOptions {
   /** Optional. The Google Cloud Storage URI to write the exported Evaluation Results to. */
   gcsUri?: string;
 }
+const ExportOptions = /*@__PURE__*/ __L.at(__c40, 4) as any as S.Schema<ExportOptions>;
+
 /** Request message for EvaluationService.ExportEvaluationRuns. */
 export interface ExportEvaluationRunsRequest {
   /** Required. The resource names of the evaluation runs to export. */
@@ -3406,12 +4787,22 @@ export interface ExportEvaluationRunsRequest {
   /** Optional. The export options for the evaluation runs. */
   exportOptions?: ExportOptions;
 }
+const ExportEvaluationRunsRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  5,
+) as any as S.Schema<ExportEvaluationRunsRequest>;
+
 export interface ExportProjectsLocationsAppsEvaluationRunsRequest {
   /** Required. The resource name of the app to export evaluation runs from. Format: `projects/{project}/locations/{location}/apps/{app}` */
   parent: string;
   /** Request body */
   body?: ExportEvaluationRunsRequest;
 }
+const ExportProjectsLocationsAppsEvaluationRunsRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  6,
+) as any as S.Schema<ExportProjectsLocationsAppsEvaluationRunsRequest>;
+
 /** Request message for EvaluationService.ExportEvaluations. */
 export interface ExportEvaluationsRequest {
   /** Optional. The export options for the evaluations. */
@@ -3423,12 +4814,22 @@ export interface ExportEvaluationsRequest {
   /** Required. The resource names of the evaluations to export. */
   names?: StringList;
 }
+const ExportEvaluationsRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  7,
+) as any as S.Schema<ExportEvaluationsRequest>;
+
 export interface ExportProjectsLocationsAppsEvaluationsRequest {
   /** Required. The resource name of the app to export evaluations from. Format: `projects/{project}/locations/{location}/apps/{app}` */
   parent: string;
   /** Request body */
   body?: ExportEvaluationsRequest;
 }
+const ExportProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<ExportProjectsLocationsAppsEvaluationsRequest>;
+
 /** Request message for EvaluationService.ExportEvaluationResults. */
 export interface ExportEvaluationResultsRequest {
   /** Required. The resource names of the evaluation results to export. */
@@ -3436,12 +4837,20 @@ export interface ExportEvaluationResultsRequest {
   /** Optional. The export options for the evaluation results. */
   exportOptions?: ExportOptions;
 }
+const ExportEvaluationResultsRequest =
+  ExportEvaluationRunsRequest as any as S.Schema<ExportEvaluationResultsRequest>;
+
 export interface ExportProjectsLocationsAppsEvaluationsResultsRequest {
   /** Required. The resource name of the evaluation to export evaluation results from. Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}` */
   parent: string;
   /** Request body */
   body?: ExportEvaluationResultsRequest;
 }
+const ExportProjectsLocationsAppsEvaluationsResultsRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  1,
+) as any as S.Schema<ExportProjectsLocationsAppsEvaluationsResultsRequest>;
+
 /** File provided as raw bytes. */
 export interface FileContextFileBytes {
   /** Required. The name of the file provided as raw bytes. */
@@ -3451,12 +4860,21 @@ export interface FileContextFileBytes {
   /** Required. The IANA standard MIME type of the source data. */
   mimeType?: string;
 }
+const FileContextFileBytes = /*@__PURE__*/ __L.at(
+  __c41,
+  2,
+) as any as S.Schema<FileContextFileBytes>;
+
 /** Files to be used as context. Files can be provided as raw bytes. */
 export interface FileContext {
   /** Optional. File provided as raw bytes. */
   fileBytes?: FileContextFileBytes;
 }
+const FileContext = /*@__PURE__*/ __L.at(__c41, 3) as any as S.Schema<FileContext>;
+
 export type FileContextList = Array<FileContext>;
+const FileContextList = /*@__PURE__*/ __L.at(__c41, 4) as any as S.Schema<FileContextList>;
+
 /** The configuration to be used to generate an operation in the Open API schema. */
 export interface GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfig {
   /** Required. The uri of the tool. This should include query and path parameters if any. */
@@ -3468,8 +4886,20 @@ export interface GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGen
   /** Required. The path of the tool to be appended to the base uri. This should include query and path parameters if any. */
   path?: string;
 }
+const GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfig =
+  /*@__PURE__*/ __L.at(
+    __c41,
+    5,
+  ) as any as S.Schema<GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfig>;
+
 export type GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfigList =
   Array<GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfig>;
+const GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfigList =
+  /*@__PURE__*/ __L.at(
+    __c41,
+    6,
+  ) as any as S.Schema<GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfigList>;
+
 /** The configuration to be used to generate an Open API schema. */
 export interface GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfig {
   /** Required. The list of operations to be added to the Open API schema. */
@@ -3477,6 +4907,12 @@ export interface GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGen
   /** Required. The base uri of the tool. */
   uri?: string;
 }
+const GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfig =
+  /*@__PURE__*/ __L.at(
+    __c41,
+    7,
+  ) as any as S.Schema<GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfig>;
+
 /** The configuration to be used to generate a tool. */
 export interface GenerateAppResourceRequestToolGenerationConfig {
   /** Optional. The files to be used as context. */
@@ -3486,6 +4922,11 @@ export interface GenerateAppResourceRequestToolGenerationConfig {
   /** Optional. The context which describes the tool to be generated. This can be empty if the tool request & response are provided. */
   context?: string;
 }
+const GenerateAppResourceRequestToolGenerationConfig = /*@__PURE__*/ __L.at(
+  __c42,
+  0,
+) as any as S.Schema<GenerateAppResourceRequestToolGenerationConfig>;
+
 /** The app version context specifying the base snapshot and target agent. */
 export interface GenerateAppResourceRequestAppVersionContext {
   /** The resource name of the target agent to be used by the LLM assistant. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}` */
@@ -3493,6 +4934,11 @@ export interface GenerateAppResourceRequestAppVersionContext {
   /** The resource name of the app version to be used by the LLM assistant. Format: `projects/{project}/locations/{location}/apps/{app}/versions/{version}` */
   appVersion?: string;
 }
+const GenerateAppResourceRequestAppVersionContext = /*@__PURE__*/ __L.at(
+  __c42,
+  1,
+) as any as S.Schema<GenerateAppResourceRequestAppVersionContext>;
+
 /** The issue identified. */
 export interface QualityReportIssue {
   /** Optional. Proposed solution to fix the issue by modifying instructions or tools. */
@@ -3502,7 +4948,14 @@ export interface QualityReportIssue {
   /** Optional. Description of the issue found. */
   description?: string;
 }
+const QualityReportIssue = /*@__PURE__*/ __L.at(__c42, 2) as any as S.Schema<QualityReportIssue>;
+
 export type QualityReportIssueList = Array<QualityReportIssue>;
+const QualityReportIssueList = /*@__PURE__*/ __L.at(
+  __c42,
+  3,
+) as any as S.Schema<QualityReportIssueList>;
+
 /** Issues identified for a single agent. */
 export interface QualityReportAgentIssues {
   /** Optional. List of issues found for this agent. */
@@ -3510,7 +4963,17 @@ export interface QualityReportAgentIssues {
   /** Optional. The name of the agent to which the issues are related. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}` */
   agent?: string;
 }
+const QualityReportAgentIssues = /*@__PURE__*/ __L.at(
+  __c42,
+  4,
+) as any as S.Schema<QualityReportAgentIssues>;
+
 export type QualityReportAgentIssuesList = Array<QualityReportAgentIssues>;
+const QualityReportAgentIssuesList = /*@__PURE__*/ __L.at(
+  __c42,
+  5,
+) as any as S.Schema<QualityReportAgentIssuesList>;
+
 /** The report describing any identified quality issues in the app. */
 export interface QualityReport {
   /** Optional. The issues grouped by agent. */
@@ -3520,20 +4983,34 @@ export interface QualityReport {
   /** Optional. A list of evaluation runs used to generate the quality report. Format: `projects/{project}/locations/{location}/evaluationRuns/{evaluationRun}`. */
   evaluationRuns?: StringList;
 }
+const QualityReport = /*@__PURE__*/ __L.at(__c42, 6) as any as S.Schema<QualityReport>;
+
 /** The configuration to be used for hill climbing fixes. */
 export interface GenerateAppResourceRequestHillClimbingFixConfig {
   /** Required. The quality report used to inform the instruction following fix. */
   qualityReport?: QualityReport;
 }
+const GenerateAppResourceRequestHillClimbingFixConfig = /*@__PURE__*/ __L.at(
+  __c42,
+  7,
+) as any as S.Schema<GenerateAppResourceRequestHillClimbingFixConfig>;
+
 /** The configuration to be used to generate the evaluations. */
 export interface GenerateAppResourceRequestEvaluationGenerationConfig {
   /** Optional. The insights dataset to be used to fetch conversation data for generating the evaluations. Format: `projects/{project}/locations/{location}/datasets/{dataset}`. */
   datasetId?: string;
 }
+const GenerateAppResourceRequestEvaluationGenerationConfig = /*@__PURE__*/ __L.at(
+  __c43,
+  0,
+) as any as S.Schema<GenerateAppResourceRequestEvaluationGenerationConfig>;
+
 export type GenerateAppResourceRequestQualityReportGenerationConfigAlgorithmEnum =
   | "LOSS_ATTRIBUTION_ALGORITHM_UNSPECIFIED"
   | "APP_CENTRIC"
   | "AGENT_CENTRIC";
+const GenerateAppResourceRequestQualityReportGenerationConfigAlgorithmEnum = S.String;
+
 /** The configuration to be used for quality report generation. */
 export interface GenerateAppResourceRequestQualityReportGenerationConfig {
   /** Required. The evaluation run used to inform quality report analysis. */
@@ -3541,6 +5018,11 @@ export interface GenerateAppResourceRequestQualityReportGenerationConfig {
   /** Optional. The loss attribution algorithm to use. */
   algorithm?: GenerateAppResourceRequestQualityReportGenerationConfigAlgorithmEnum | (string & {});
 }
+const GenerateAppResourceRequestQualityReportGenerationConfig = /*@__PURE__*/ __L.at(
+  __c43,
+  1,
+) as any as S.Schema<GenerateAppResourceRequestQualityReportGenerationConfig>;
+
 /** The configuration to be used to generate the app. */
 export interface GenerateAppResourceRequestAppGenerationConfig {
   /** Optional. The files to be used as context. */
@@ -3554,6 +5036,11 @@ export interface GenerateAppResourceRequestAppGenerationConfig {
   /** Optional. The context which describes the requirements of the agents & tools to be generated. */
   context?: string;
 }
+const GenerateAppResourceRequestAppGenerationConfig = /*@__PURE__*/ __L.at(
+  __c43,
+  2,
+) as any as S.Schema<GenerateAppResourceRequestAppGenerationConfig>;
+
 /** The configuration to be used to generate the evaluation personas. */
 export type GenerateAppResourceRequestEvaluationPersonasGenerationConfig = CancelOperationRequest;
 /** The instructions to be used to refine a part of the resource. The part of the resource can be specified with a start index, end index and a field mask. For example, if you want to refine a part of the agent instructions you can specify the index of the first character of the instructions, the index of the last character of the instructions and the field mask as "instructions". */
@@ -3567,8 +5054,18 @@ export interface GenerateAppResourceRequestRefineInstructions {
   /** Required. The instructions to refine the resource. */
   instructions?: string;
 }
+const GenerateAppResourceRequestRefineInstructions = /*@__PURE__*/ __L.at(
+  __c43,
+  3,
+) as any as S.Schema<GenerateAppResourceRequestRefineInstructions>;
+
 export type GenerateAppResourceRequestRefineInstructionsList =
   Array<GenerateAppResourceRequestRefineInstructions>;
+const GenerateAppResourceRequestRefineInstructionsList = /*@__PURE__*/ __L.at(
+  __c43,
+  4,
+) as any as S.Schema<GenerateAppResourceRequestRefineInstructionsList>;
+
 /** Request message for AgentService.GenerateAppResource. */
 export interface GenerateAppResourceRequest {
   /** Optional. The configuration to be used to generate the tool. */
@@ -3594,12 +5091,22 @@ export interface GenerateAppResourceRequest {
   /** Optional. List of refine instructions to be used to refine the resource. */
   refineInstructions?: GenerateAppResourceRequestRefineInstructionsList;
 }
+const GenerateAppResourceRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  5,
+) as any as S.Schema<GenerateAppResourceRequest>;
+
 export interface GenerateAppResourceProjectsLocationsAppsRequest {
   /** Required. The resource name of the app to generate the resource for. */
   parent: string;
   /** Request body */
   body?: GenerateAppResourceRequest;
 }
+const GenerateAppResourceProjectsLocationsAppsRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  6,
+) as any as S.Schema<GenerateAppResourceProjectsLocationsAppsRequest>;
+
 /** Request message for WidgetService.GenerateChatToken. */
 export interface GenerateChatTokenRequest {
   /** Optional. The reCAPTCHA token generated by the client-side chat widget. */
@@ -3609,12 +5116,22 @@ export interface GenerateChatTokenRequest {
   /** Optional. Indicates if live handoff is enabled for the session. */
   liveHandoffEnabled?: boolean;
 }
+const GenerateChatTokenRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  7,
+) as any as S.Schema<GenerateChatTokenRequest>;
+
 export interface GenerateChatTokenProjectsLocationsAppsSessionsRequest {
   /** Required. The session name to generate the chat token for. Format: projects/{project}/locations/{location}/apps/{app}/sessions/{session} */
   name: string;
   /** Request body */
   body?: GenerateChatTokenRequest;
 }
+const GenerateChatTokenProjectsLocationsAppsSessionsRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  0,
+) as any as S.Schema<GenerateChatTokenProjectsLocationsAppsSessionsRequest>;
+
 /** Response message for WidgetService.GenerateChatToken. */
 export interface GenerateChatTokenResponse {
   /** The session scoped token for chat widget to authenticate with Session APIs. */
@@ -3622,16 +5139,25 @@ export interface GenerateChatTokenResponse {
   /** The time at which the chat token expires. */
   expireTime?: string;
 }
+const GenerateChatTokenResponse = /*@__PURE__*/ __L.at(
+  __c44,
+  1,
+) as any as S.Schema<GenerateChatTokenResponse>;
+
 export type GenerateEvaluationRequestEvaluationTypeEnum =
   | "EVALUATION_TYPE_UNSPECIFIED"
   | "GOLDEN"
   | "SCENARIO";
+const GenerateEvaluationRequestEvaluationTypeEnum = S.String;
+
 export type GenerateEvaluationRequestSourceEnum =
   | "SOURCE_UNSPECIFIED"
   | "LIVE"
   | "SIMULATOR"
   | "EVAL"
   | "AGENT_TOOL";
+const GenerateEvaluationRequestSourceEnum = S.String;
+
 /** Request message for EvaluationService.GenerateEvaluation. */
 export interface GenerateEvaluationRequest {
   /** Optional. The type of evaluation to generate. Defaults to GOLDEN if unspecified. */
@@ -3639,28 +5165,53 @@ export interface GenerateEvaluationRequest {
   /** Optional. Indicate the source of the conversation. If not set, all sources will be searched. */
   source?: GenerateEvaluationRequestSourceEnum | (string & {});
 }
+const GenerateEvaluationRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  2,
+) as any as S.Schema<GenerateEvaluationRequest>;
+
 export interface GenerateEvaluationProjectsLocationsAppsConversationsRequest {
   /** Required. The conversation to create the golden evaluation for. Format: `projects/{project}/locations/{location}/apps/{app}/conversations/{conversation}` */
   conversation: string;
   /** Request body */
   body?: GenerateEvaluationRequest;
 }
+const GenerateEvaluationProjectsLocationsAppsConversationsRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  3,
+) as any as S.Schema<GenerateEvaluationProjectsLocationsAppsConversationsRequest>;
+
 /** Request message for SessionService.GenerateOnboardingSuggestions. */
 export interface GenerateOnboardingSuggestionsRequest {
   /** Optional. Maximum number of suggestions to return. Defaults to 4 when unset. */
   maxSuggestions?: number;
 }
+const GenerateOnboardingSuggestionsRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  4,
+) as any as S.Schema<GenerateOnboardingSuggestionsRequest>;
+
 export interface GenerateOnboardingSuggestionsProjectsLocationsAppsRequest {
   /** Required. The app whose zero state is being rendered. Format: `projects/{project}/locations/{location}/apps/{app}` */
   name: string;
   /** Request body */
   body?: GenerateOnboardingSuggestionsRequest;
 }
+const GenerateOnboardingSuggestionsProjectsLocationsAppsRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  5,
+) as any as S.Schema<GenerateOnboardingSuggestionsProjectsLocationsAppsRequest>;
+
 /** Parameters for the load_session action. */
 export interface AssistantSuggestionLoadSession {
   /** Identifier of the assistant session to open (the final segment of the AssistantSession resource name). */
   assistantSessionId?: string;
 }
+const AssistantSuggestionLoadSession = /*@__PURE__*/ __L.at(
+  __c44,
+  6,
+) as any as S.Schema<AssistantSuggestionLoadSession>;
+
 export type AssistantSuggestionIconEnum =
   | "ICON_UNSPECIFIED"
   | "RESUME"
@@ -3669,7 +5220,11 @@ export type AssistantSuggestionIconEnum =
   | "DEPLOY"
   | "EXPLORE"
   | "FIX";
+const AssistantSuggestionIconEnum = S.String;
+
 export type AssistantSuggestionSourceEnum = "SOURCE_UNSPECIFIED" | "RULE" | "LLM_RANKED";
+const AssistantSuggestionSourceEnum = S.String;
+
 /** A single personalized onboarding suggestion chip for the AI assistant's zero state. */
 export interface AssistantSuggestion {
   /** Prefill the composer with this text; the user reviews and sends. */
@@ -3691,12 +5246,21 @@ export interface AssistantSuggestion {
   /** Rule-table candidate type in kebab-case (e.g. "resume-pending-review"), for metrics. */
   candidateType?: string;
 }
+const AssistantSuggestion = /*@__PURE__*/ __L.at(__c44, 7) as any as S.Schema<AssistantSuggestion>;
+
 export type AssistantSuggestionList = Array<AssistantSuggestion>;
+const AssistantSuggestionList = /*@__PURE__*/ __L.at(
+  __c45,
+  0,
+) as any as S.Schema<AssistantSuggestionList>;
+
 export type GenerateOnboardingSuggestionsResponseUserProfileEnum =
   | "USER_PROFILE_UNSPECIFIED"
   | "NEW"
   | "EXPLORING"
   | "RETURNING";
+const GenerateOnboardingSuggestionsResponseUserProfileEnum = S.String;
+
 /** Response message for SessionService.GenerateOnboardingSuggestions. */
 export interface GenerateOnboardingSuggestionsResponse {
   /** Opaque token capturing the onboarding snapshot used to generate these suggestions. Clients echo it on the first StreamChatAiAssistantRequest so the server can reuse the snapshot. */
@@ -3706,10 +5270,20 @@ export interface GenerateOnboardingSuggestionsResponse {
   /** Classification of the requesting user's history. */
   userProfile?: GenerateOnboardingSuggestionsResponseUserProfileEnum;
 }
+const GenerateOnboardingSuggestionsResponse = /*@__PURE__*/ __L.at(
+  __c45,
+  1,
+) as any as S.Schema<GenerateOnboardingSuggestionsResponse>;
+
 export interface GetExtendedAgentCardProjectsLocationsAppsRequest {
   /** Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the Agent Card when that field is set. */
   tenant: string;
 }
+const GetExtendedAgentCardProjectsLocationsAppsRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  2,
+) as any as S.Schema<GetExtendedAgentCardProjectsLocationsAppsRequest>;
+
 /** A declaration of a protocol extension supported by an Agent. */
 export interface LfA2aV1AgentExtension {
   /** A human-readable description of how this agent uses the extension. */
@@ -3721,7 +5295,17 @@ export interface LfA2aV1AgentExtension {
   /** The unique URI identifying the extension. */
   uri?: string;
 }
+const LfA2aV1AgentExtension = /*@__PURE__*/ __L.at(
+  __c45,
+  3,
+) as any as S.Schema<LfA2aV1AgentExtension>;
+
 export type LfA2aV1AgentExtensionList = Array<LfA2aV1AgentExtension>;
+const LfA2aV1AgentExtensionList = /*@__PURE__*/ __L.at(
+  __c45,
+  4,
+) as any as S.Schema<LfA2aV1AgentExtensionList>;
+
 /** Defines optional capabilities supported by an agent. */
 export interface LfA2aV1AgentCapabilities {
   /** Indicates if the agent supports sending push notifications for asynchronous task updates. */
@@ -3733,6 +5317,11 @@ export interface LfA2aV1AgentCapabilities {
   /** Indicates if the agent supports providing an extended agent card when authenticated. */
   extendedAgentCard?: boolean;
 }
+const LfA2aV1AgentCapabilities = /*@__PURE__*/ __L.at(
+  __c45,
+  5,
+) as any as S.Schema<LfA2aV1AgentCapabilities>;
+
 /** AgentCardSignature represents a JWS signature of an AgentCard. This follows the JSON format of an RFC 7515 JSON Web Signature (JWS). */
 export interface LfA2aV1AgentCardSignature {
   /** Required. Required. The protected JWS header for the signature. This is always a base64url-encoded JSON object. */
@@ -3742,7 +5331,17 @@ export interface LfA2aV1AgentCardSignature {
   /** The unprotected JWS header values. */
   header?: DocumentMap;
 }
+const LfA2aV1AgentCardSignature = /*@__PURE__*/ __L.at(
+  __c45,
+  6,
+) as any as S.Schema<LfA2aV1AgentCardSignature>;
+
 export type LfA2aV1AgentCardSignatureList = Array<LfA2aV1AgentCardSignature>;
+const LfA2aV1AgentCardSignatureList = /*@__PURE__*/ __L.at(
+  __c45,
+  7,
+) as any as S.Schema<LfA2aV1AgentCardSignatureList>;
+
 /** Declares a combination of a target URL, transport and protocol version for interacting with the agent. This allows agents to expose the same functionality over multiple protocol binding mechanisms. */
 export interface LfA2aV1AgentInterface {
   /** Required. The protocol binding supported at this URL. This is an open form string, to be easily extended for other protocol bindings. The core ones officially supported are `JSONRPC`, `GRPC` and `HTTP+JSON`. */
@@ -3754,19 +5353,46 @@ export interface LfA2aV1AgentInterface {
   /** Optional. An opaque string used for routing requests to a specific agent or tenant when multiple agents are served behind a single A2A endpoint. When set, clients MUST include this value in the `tenant` field of all request messages sent to this interface. The server is responsible for interpreting the value and routing requests accordingly; the protocol does not define its format or semantics. */
   tenant?: string;
 }
+const LfA2aV1AgentInterface = /*@__PURE__*/ __L.at(
+  __c46,
+  0,
+) as any as S.Schema<LfA2aV1AgentInterface>;
+
 export type LfA2aV1AgentInterfaceList = Array<LfA2aV1AgentInterface>;
+const LfA2aV1AgentInterfaceList = /*@__PURE__*/ __L.at(
+  __c46,
+  1,
+) as any as S.Schema<LfA2aV1AgentInterfaceList>;
+
 /** protolint:disable REPEATED_FIELD_NAMES_PLURALIZED A list of strings. */
 export interface LfA2aV1StringList {
   /** The individual string values. */
   list?: StringList;
 }
+const LfA2aV1StringList = /*@__PURE__*/ __L.at(__c46, 2) as any as S.Schema<LfA2aV1StringList>;
+
 export type LfA2aV1StringListMap = { [key: string]: LfA2aV1StringList | undefined };
+const LfA2aV1StringListMap = /*@__PURE__*/ __L.at(
+  __c46,
+  3,
+) as any as S.Schema<LfA2aV1StringListMap>;
+
 /** Defines the security requirements for an agent. */
 export interface LfA2aV1SecurityRequirement {
   /** A map of security schemes to the required scopes. */
   schemes?: LfA2aV1StringListMap;
 }
+const LfA2aV1SecurityRequirement = /*@__PURE__*/ __L.at(
+  __c46,
+  4,
+) as any as S.Schema<LfA2aV1SecurityRequirement>;
+
 export type LfA2aV1SecurityRequirementList = Array<LfA2aV1SecurityRequirement>;
+const LfA2aV1SecurityRequirementList = /*@__PURE__*/ __L.at(
+  __c46,
+  5,
+) as any as S.Schema<LfA2aV1SecurityRequirementList>;
+
 /** Defines a security scheme using an API key. */
 export interface LfA2aV1APIKeySecurityScheme {
   /** An optional description for the security scheme. */
@@ -3776,11 +5402,21 @@ export interface LfA2aV1APIKeySecurityScheme {
   /** Required. The name of the header, query, or cookie parameter to be used. */
   name?: string;
 }
+const LfA2aV1APIKeySecurityScheme = /*@__PURE__*/ __L.at(
+  __c46,
+  6,
+) as any as S.Schema<LfA2aV1APIKeySecurityScheme>;
+
 /** Defines a security scheme using mTLS authentication. */
 export interface LfA2aV1MutualTlsSecurityScheme {
   /** An optional description for the security scheme. */
   description?: string;
 }
+const LfA2aV1MutualTlsSecurityScheme = /*@__PURE__*/ __L.at(
+  __c46,
+  7,
+) as any as S.Schema<LfA2aV1MutualTlsSecurityScheme>;
+
 /** Deprecated: Use Authorization Code + PKCE or Device Code. */
 export interface LfA2aV1PasswordOAuthFlow {
   /** The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS. */
@@ -3790,6 +5426,11 @@ export interface LfA2aV1PasswordOAuthFlow {
   /** The available scopes for the OAuth2 security scheme. A map between the scope name and a short description for it. The map MAY be empty. */
   scopes?: StringMap;
 }
+const LfA2aV1PasswordOAuthFlow = /*@__PURE__*/ __L.at(
+  __c47,
+  0,
+) as any as S.Schema<LfA2aV1PasswordOAuthFlow>;
+
 /** Defines configuration details for the OAuth 2.0 Authorization Code flow. */
 export interface LfA2aV1AuthorizationCodeOAuthFlow {
   /** Indicates if PKCE (RFC 7636) is required for this flow. PKCE should always be used for public clients and is recommended for all clients. */
@@ -3803,6 +5444,11 @@ export interface LfA2aV1AuthorizationCodeOAuthFlow {
   /** Required. The authorization URL to be used for this flow. */
   authorizationUrl?: string;
 }
+const LfA2aV1AuthorizationCodeOAuthFlow = /*@__PURE__*/ __L.at(
+  __c47,
+  1,
+) as any as S.Schema<LfA2aV1AuthorizationCodeOAuthFlow>;
+
 /** Deprecated: Use Authorization Code + PKCE instead. */
 export interface LfA2aV1ImplicitOAuthFlow {
   /** The authorization URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS */
@@ -3812,6 +5458,11 @@ export interface LfA2aV1ImplicitOAuthFlow {
   /** The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS. */
   refreshUrl?: string;
 }
+const LfA2aV1ImplicitOAuthFlow = /*@__PURE__*/ __L.at(
+  __c47,
+  2,
+) as any as S.Schema<LfA2aV1ImplicitOAuthFlow>;
+
 /** Defines configuration details for the OAuth 2.0 Client Credentials flow. */
 export interface LfA2aV1ClientCredentialsOAuthFlow {
   /** The URL to be used for obtaining refresh tokens. */
@@ -3821,6 +5472,11 @@ export interface LfA2aV1ClientCredentialsOAuthFlow {
   /** Required. The token URL to be used for this flow. */
   tokenUrl?: string;
 }
+const LfA2aV1ClientCredentialsOAuthFlow = /*@__PURE__*/ __L.at(
+  __c47,
+  3,
+) as any as S.Schema<LfA2aV1ClientCredentialsOAuthFlow>;
+
 /** Defines configuration details for the OAuth 2.0 Device Code flow (RFC 8628). This flow is designed for input-constrained devices such as IoT devices, and CLI tools where the user authenticates on a separate device. */
 export interface LfA2aV1DeviceCodeOAuthFlow {
   /** The URL to be used for obtaining refresh tokens. */
@@ -3832,6 +5488,11 @@ export interface LfA2aV1DeviceCodeOAuthFlow {
   /** Required. The device authorization endpoint URL. */
   deviceAuthorizationUrl?: string;
 }
+const LfA2aV1DeviceCodeOAuthFlow = /*@__PURE__*/ __L.at(
+  __c47,
+  4,
+) as any as S.Schema<LfA2aV1DeviceCodeOAuthFlow>;
+
 /** Defines the configuration for the supported OAuth 2.0 flows. */
 export interface LfA2aV1OAuthFlows {
   /** Deprecated: Use Authorization Code + PKCE or Device Code. */
@@ -3845,6 +5506,8 @@ export interface LfA2aV1OAuthFlows {
   /** Configuration for the OAuth Device Code flow. */
   deviceCode?: LfA2aV1DeviceCodeOAuthFlow;
 }
+const LfA2aV1OAuthFlows = /*@__PURE__*/ __L.at(__c47, 5) as any as S.Schema<LfA2aV1OAuthFlows>;
+
 /** Defines a security scheme using OAuth 2.0. */
 export interface LfA2aV1OAuth2SecurityScheme {
   /** URL to the OAuth2 authorization server metadata [RFC 8414](https://datatracker.ietf.org/doc/html/rfc8414). TLS is required. */
@@ -3854,6 +5517,11 @@ export interface LfA2aV1OAuth2SecurityScheme {
   /** An optional description for the security scheme. */
   description?: string;
 }
+const LfA2aV1OAuth2SecurityScheme = /*@__PURE__*/ __L.at(
+  __c47,
+  6,
+) as any as S.Schema<LfA2aV1OAuth2SecurityScheme>;
+
 /** Defines a security scheme using HTTP authentication. */
 export interface LfA2aV1HTTPAuthSecurityScheme {
   /** Required. The name of the HTTP Authentication scheme to be used in the Authorization header, as defined in RFC7235 (e.g., "Bearer"). This value should be registered in the IANA Authentication Scheme registry. */
@@ -3863,6 +5531,11 @@ export interface LfA2aV1HTTPAuthSecurityScheme {
   /** A hint to the client to identify how the bearer token is formatted (e.g., "JWT"). Primarily for documentation purposes. */
   bearerFormat?: string;
 }
+const LfA2aV1HTTPAuthSecurityScheme = /*@__PURE__*/ __L.at(
+  __c47,
+  7,
+) as any as S.Schema<LfA2aV1HTTPAuthSecurityScheme>;
+
 /** Defines a security scheme using OpenID Connect. */
 export interface LfA2aV1OpenIdConnectSecurityScheme {
   /** Required. The [OpenID Connect Discovery URL](https://openid.net/specs/openid-connect-discovery-1_0.html) for the OIDC provider's metadata. */
@@ -3870,6 +5543,11 @@ export interface LfA2aV1OpenIdConnectSecurityScheme {
   /** An optional description for the security scheme. */
   description?: string;
 }
+const LfA2aV1OpenIdConnectSecurityScheme = /*@__PURE__*/ __L.at(
+  __c48,
+  0,
+) as any as S.Schema<LfA2aV1OpenIdConnectSecurityScheme>;
+
 /** Defines a security scheme that can be used to secure an agent's endpoints. This is a discriminated union type based on the OpenAPI 3.2 Security Scheme Object. See: https://spec.openapis.org/oas/v3.2.0.html#security-scheme-object */
 export interface LfA2aV1SecurityScheme {
   /** API key-based authentication. */
@@ -3883,7 +5561,17 @@ export interface LfA2aV1SecurityScheme {
   /** OpenID Connect authentication. */
   openIdConnectSecurityScheme?: LfA2aV1OpenIdConnectSecurityScheme;
 }
+const LfA2aV1SecurityScheme = /*@__PURE__*/ __L.at(
+  __c48,
+  1,
+) as any as S.Schema<LfA2aV1SecurityScheme>;
+
 export type LfA2aV1SecuritySchemeMap = { [key: string]: LfA2aV1SecurityScheme | undefined };
+const LfA2aV1SecuritySchemeMap = /*@__PURE__*/ __L.at(
+  __c48,
+  2,
+) as any as S.Schema<LfA2aV1SecuritySchemeMap>;
+
 /** Represents the service provider of an agent. */
 export interface LfA2aV1AgentProvider {
   /** Required. A URL for the agent provider's website or relevant documentation. Example: "https://ai.google.dev" */
@@ -3891,6 +5579,11 @@ export interface LfA2aV1AgentProvider {
   /** Required. The name of the agent provider's organization. Example: "Google" */
   organization?: string;
 }
+const LfA2aV1AgentProvider = /*@__PURE__*/ __L.at(
+  __c48,
+  3,
+) as any as S.Schema<LfA2aV1AgentProvider>;
+
 /** Represents a distinct capability or function that an agent can perform. */
 export interface LfA2aV1AgentSkill {
   /** Required. A detailed description of the skill. */
@@ -3910,7 +5603,14 @@ export interface LfA2aV1AgentSkill {
   /** The set of supported output media types for this skill, overriding the agent's defaults. */
   outputModes?: StringList;
 }
+const LfA2aV1AgentSkill = /*@__PURE__*/ __L.at(__c48, 4) as any as S.Schema<LfA2aV1AgentSkill>;
+
 export type LfA2aV1AgentSkillList = Array<LfA2aV1AgentSkill>;
+const LfA2aV1AgentSkillList = /*@__PURE__*/ __L.at(
+  __c48,
+  5,
+) as any as S.Schema<LfA2aV1AgentSkillList>;
+
 /** A self-describing manifest for an agent. It provides essential metadata including the agent's identity, capabilities, skills, supported communication methods, and security requirements. Next ID: 20 */
 export interface LfA2aV1AgentCard {
   /** Required. A2A Capability set supported by the agent. */
@@ -3942,18 +5642,35 @@ export interface LfA2aV1AgentCard {
   /** Required. Skills represent the abilities of an agent. It is largely a descriptive concept but represents a more focused set of behaviors that the agent is likely to succeed at. */
   skills?: LfA2aV1AgentSkillList;
 }
+const LfA2aV1AgentCard = /*@__PURE__*/ __L.at(__c48, 6) as any as S.Schema<LfA2aV1AgentCard>;
+
 export interface GetExtendedAgentCardProjectsLocationsAppsDeploymentsRequest {
   /** Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the Agent Card when that field is set. */
   tenant: string;
 }
+const GetExtendedAgentCardProjectsLocationsAppsDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  7,
+) as any as S.Schema<GetExtendedAgentCardProjectsLocationsAppsDeploymentsRequest>;
+
 export interface GetExtendedAgentCardProjectsLocationsAppsVersionsRequest {
   /** Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the Agent Card when that field is set. */
   tenant: string;
 }
+const GetExtendedAgentCardProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  0,
+) as any as S.Schema<GetExtendedAgentCardProjectsLocationsAppsVersionsRequest>;
+
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
+const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  1,
+) as any as S.Schema<GetProjectsLocationsRequest>;
+
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
@@ -3967,22 +5684,44 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
+const Location = /*@__PURE__*/ __L.at(__c49, 2) as any as S.Schema<Location>;
+
 export interface GetProjectsLocationsAppsRequest {
   /** Required. The resource name of the app to retrieve. */
   name: string;
 }
+const GetProjectsLocationsAppsRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  3,
+) as any as S.Schema<GetProjectsLocationsAppsRequest>;
+
 export interface GetProjectsLocationsAppsAgentsRequest {
   /** Required. The resource name of the agent to retrieve. */
   name: string;
 }
+const GetProjectsLocationsAppsAgentsRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  4,
+) as any as S.Schema<GetProjectsLocationsAppsAgentsRequest>;
+
 export interface GetProjectsLocationsAppsAssistantSessionsRequest {
   /** Required. The name of the assistant session to retrieve. Format: `projects/{project}/locations/{location}/apps/{app}/assistantSessions/{assistant_session}` */
   name: string;
 }
+const GetProjectsLocationsAppsAssistantSessionsRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  5,
+) as any as S.Schema<GetProjectsLocationsAppsAssistantSessionsRequest>;
+
 export interface GetProjectsLocationsAppsChangelogsRequest {
   /** Required. The resource name of the changelog to retrieve. */
   name: string;
 }
+const GetProjectsLocationsAppsChangelogsRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  6,
+) as any as S.Schema<GetProjectsLocationsAppsChangelogsRequest>;
+
 /** Changelogs represent a change made to the app or to an resource within the app. */
 export interface Changelog {
   /** Output only. The resource that was changed. */
@@ -4010,18 +5749,27 @@ export interface Changelog {
   /** Output only. The original resource before the change. */
   originalResource?: DocumentMap;
 }
+const Changelog = /*@__PURE__*/ __L.at(__c49, 7) as any as S.Schema<Changelog>;
+
 export type GetProjectsLocationsAppsConversationsSourceEnum =
   | "SOURCE_UNSPECIFIED"
   | "LIVE"
   | "SIMULATOR"
   | "EVAL"
   | "AGENT_TOOL";
+const GetProjectsLocationsAppsConversationsSourceEnum = S.String;
+
 export interface GetProjectsLocationsAppsConversationsRequest {
   /** Required. The resource name of the conversation to retrieve. */
   name: string;
   /** Optional. Indicate the source of the conversation. If not set, all source will be searched. */
   source?: GetProjectsLocationsAppsConversationsSourceEnum | (string & {});
 }
+const GetProjectsLocationsAppsConversationsRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  0,
+) as any as S.Schema<GetProjectsLocationsAppsConversationsRequest>;
+
 /** All information about a single turn in the conversation. */
 export interface ConversationTurn {
   /** Optional. The intended ground-truth text from the Simulated Caller (Polysynth). Only populated when word error rate metrics are enabled. */
@@ -4031,13 +5779,22 @@ export interface ConversationTurn {
   /** Optional. The root span of the action processing. */
   rootSpan?: Span;
 }
+const ConversationTurn = /*@__PURE__*/ __L.at(__c50, 1) as any as S.Schema<ConversationTurn>;
+
 export type ConversationTurnList = Array<ConversationTurn>;
+const ConversationTurnList = /*@__PURE__*/ __L.at(
+  __c50,
+  2,
+) as any as S.Schema<ConversationTurnList>;
+
 export type ConversationSourceEnum =
   | "SOURCE_UNSPECIFIED"
   | "LIVE"
   | "SIMULATOR"
   | "EVAL"
   | "AGENT_TOOL";
+const ConversationSourceEnum = S.String;
+
 export type ConversationInputTypesItemEnum =
   | "INPUT_TYPE_UNSPECIFIED"
   | "INPUT_TYPE_TEXT"
@@ -4047,12 +5804,21 @@ export type ConversationInputTypesItemEnum =
   | "INPUT_TYPE_BLOB"
   | "INPUT_TYPE_TOOL_RESPONSE"
   | "INPUT_TYPE_VARIABLES";
+const ConversationInputTypesItemEnum = S.String;
+
 export type ConversationInputTypesItemEnumList = Array<ConversationInputTypesItemEnum>;
+const ConversationInputTypesItemEnumList = /*@__PURE__*/ __L.at(
+  __c50,
+  3,
+) as any as S.Schema<ConversationInputTypesItemEnumList>;
+
 export type ConversationChannelTypeEnum =
   | "CHANNEL_TYPE_UNSPECIFIED"
   | "TEXT"
   | "AUDIO"
   | "MULTIMODAL";
+const ConversationChannelTypeEnum = S.String;
+
 /** A conversation represents an interaction between an end user and the CES app. */
 export interface Conversation {
   /** Output only. Timestamp when the conversation was completed. */
@@ -4082,22 +5848,44 @@ export interface Conversation {
   /** Identifier. The unique identifier of the conversation. Format: `projects/{project}/locations/{location}/apps/{app}/conversations/{conversation}` */
   name?: string;
 }
+const Conversation = /*@__PURE__*/ __L.at(__c50, 4) as any as S.Schema<Conversation>;
+
 export interface GetProjectsLocationsAppsDeploymentsRequest {
   /** Required. The name of the deployment. Format: `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}` */
   name: string;
 }
+const GetProjectsLocationsAppsDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  5,
+) as any as S.Schema<GetProjectsLocationsAppsDeploymentsRequest>;
+
 export interface GetProjectsLocationsAppsEvaluationDatasetsRequest {
   /** Required. The resource name of the evaluation dataset to retrieve. */
   name: string;
 }
+const GetProjectsLocationsAppsEvaluationDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  6,
+) as any as S.Schema<GetProjectsLocationsAppsEvaluationDatasetsRequest>;
+
 export interface GetProjectsLocationsAppsEvaluationExpectationsRequest {
   /** Required. The resource name of the evaluation expectation to retrieve. */
   name: string;
 }
+const GetProjectsLocationsAppsEvaluationExpectationsRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  7,
+) as any as S.Schema<GetProjectsLocationsAppsEvaluationExpectationsRequest>;
+
 export interface GetProjectsLocationsAppsEvaluationRunsRequest {
   /** Required. The resource name of the evaluation run to retrieve. */
   name: string;
 }
+const GetProjectsLocationsAppsEvaluationRunsRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  0,
+) as any as S.Schema<GetProjectsLocationsAppsEvaluationRunsRequest>;
+
 /** Contains the summary of passed and failed result counts for a specific evaluation in an evaluation run. */
 export interface EvaluationRunEvaluationRunSummary {
   /** Output only. Number of passed results for the associated Evaluation in this run. */
@@ -4107,14 +5895,26 @@ export interface EvaluationRunEvaluationRunSummary {
   /** Output only. Number of error results for the associated Evaluation in this run. */
   errorCount?: number;
 }
+const EvaluationRunEvaluationRunSummary = /*@__PURE__*/ __L.at(
+  __c51,
+  1,
+) as any as S.Schema<EvaluationRunEvaluationRunSummary>;
+
 export type EvaluationRunEvaluationRunSummaryMap = {
   [key: string]: EvaluationRunEvaluationRunSummary | undefined;
 };
+const EvaluationRunEvaluationRunSummaryMap = /*@__PURE__*/ __L.at(
+  __c51,
+  2,
+) as any as S.Schema<EvaluationRunEvaluationRunSummaryMap>;
+
 export type EvaluationRunEvaluationTypeEnum =
   | "EVALUATION_TYPE_UNSPECIFIED"
   | "GOLDEN"
   | "SCENARIO"
   | "MIXED";
+const EvaluationRunEvaluationTypeEnum = S.String;
+
 export type EvaluationRunStateEnum =
   | "EVALUATION_RUN_STATE_UNSPECIFIED"
   | "QUEUED"
@@ -4122,6 +5922,8 @@ export type EvaluationRunStateEnum =
   | "COMPLETED"
   | "ERROR"
   | "CANCELLED";
+const EvaluationRunStateEnum = S.String;
+
 /** Latency metrics for a component. */
 export interface LatencyReportLatencyMetrics {
   /** Output only. The 50th percentile latency. */
@@ -4133,6 +5935,11 @@ export interface LatencyReportLatencyMetrics {
   /** Output only. The 90th percentile latency. */
   p90Latency?: string;
 }
+const LatencyReportLatencyMetrics = /*@__PURE__*/ __L.at(
+  __c51,
+  3,
+) as any as S.Schema<LatencyReportLatencyMetrics>;
+
 /** Latency metrics for a single LLM call. */
 export interface LatencyReportLlmCallLatency {
   /** Output only. The name of the model. */
@@ -4140,7 +5947,17 @@ export interface LatencyReportLlmCallLatency {
   /** Output only. The latency metrics for the LLM call. */
   latencyMetrics?: LatencyReportLatencyMetrics;
 }
+const LatencyReportLlmCallLatency = /*@__PURE__*/ __L.at(
+  __c51,
+  4,
+) as any as S.Schema<LatencyReportLlmCallLatency>;
+
 export type LatencyReportLlmCallLatencyList = Array<LatencyReportLlmCallLatency>;
+const LatencyReportLlmCallLatencyList = /*@__PURE__*/ __L.at(
+  __c51,
+  5,
+) as any as S.Schema<LatencyReportLlmCallLatencyList>;
+
 /** Latency metrics for a single guardrail. */
 export interface LatencyReportGuardrailLatency {
   /** Output only. The name of the guardrail. Format: `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`. */
@@ -4150,7 +5967,17 @@ export interface LatencyReportGuardrailLatency {
   /** Output only. The latency metrics for the guardrail. */
   latencyMetrics?: LatencyReportLatencyMetrics;
 }
+const LatencyReportGuardrailLatency = /*@__PURE__*/ __L.at(
+  __c51,
+  6,
+) as any as S.Schema<LatencyReportGuardrailLatency>;
+
 export type LatencyReportGuardrailLatencyList = Array<LatencyReportGuardrailLatency>;
+const LatencyReportGuardrailLatencyList = /*@__PURE__*/ __L.at(
+  __c51,
+  7,
+) as any as S.Schema<LatencyReportGuardrailLatencyList>;
+
 /** Latency metrics for a single tool. */
 export interface LatencyReportToolLatency {
   /** Output only. Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`. */
@@ -4162,7 +5989,17 @@ export interface LatencyReportToolLatency {
   /** Output only. The display name of the tool. */
   toolDisplayName?: string;
 }
+const LatencyReportToolLatency = /*@__PURE__*/ __L.at(
+  __c52,
+  0,
+) as any as S.Schema<LatencyReportToolLatency>;
+
 export type LatencyReportToolLatencyList = Array<LatencyReportToolLatency>;
+const LatencyReportToolLatencyList = /*@__PURE__*/ __L.at(
+  __c52,
+  1,
+) as any as S.Schema<LatencyReportToolLatencyList>;
+
 /** Latency metrics for a single callback. */
 export interface LatencyReportCallbackLatency {
   /** Output only. The latency metrics for the callback. */
@@ -4170,7 +6007,17 @@ export interface LatencyReportCallbackLatency {
   /** Output only. The stage of the callback. */
   stage?: string;
 }
+const LatencyReportCallbackLatency = /*@__PURE__*/ __L.at(
+  __c52,
+  2,
+) as any as S.Schema<LatencyReportCallbackLatency>;
+
 export type LatencyReportCallbackLatencyList = Array<LatencyReportCallbackLatency>;
+const LatencyReportCallbackLatencyList = /*@__PURE__*/ __L.at(
+  __c52,
+  3,
+) as any as S.Schema<LatencyReportCallbackLatencyList>;
+
 /** Latency report for the evaluation run. */
 export interface LatencyReport {
   /** Output only. Unordered list. Latency metrics for each LLM call. */
@@ -4184,6 +6031,8 @@ export interface LatencyReport {
   /** Output only. Unordered list. Latency metrics for each callback. */
   callbackLatencies?: LatencyReportCallbackLatencyList;
 }
+const LatencyReport = /*@__PURE__*/ __L.at(__c52, 4) as any as S.Schema<LatencyReport>;
+
 /** The progress of the evaluation run. */
 export interface EvaluationRunProgress {
   /** Output only. Total number of evaluation results in this run. */
@@ -4199,7 +6048,14 @@ export interface EvaluationRunProgress {
   /** Output only. Number of evaluation results that failed to execute. (EvaluationResult.execution_state is ERROR). */
   errorCount?: number;
 }
+const EvaluationRunProgress = /*@__PURE__*/ __L.at(
+  __c52,
+  5,
+) as any as S.Schema<EvaluationRunProgress>;
+
 export type EvaluationRunGoldenRunMethodEnum = "GOLDEN_RUN_METHOD_UNSPECIFIED" | "STABLE" | "NAIVE";
+const EvaluationRunGoldenRunMethodEnum = S.String;
+
 /** An evaluation run represents an all the evaluation results from an evaluation execution. */
 export interface EvaluationRun {
   /** Output only. Map of evaluation name to EvaluationRunSummary. */
@@ -4253,50 +6109,104 @@ export interface EvaluationRun {
   /** Output only. The configuration to use for the run per persona. */
   personaRunConfigs?: PersonaRunConfigList;
 }
+const EvaluationRun = /*@__PURE__*/ __L.at(__c52, 6) as any as S.Schema<EvaluationRun>;
+
 export interface GetProjectsLocationsAppsEvaluationsRequest {
   /** Required. The resource name of the evaluation to retrieve. */
   name: string;
 }
+const GetProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  7,
+) as any as S.Schema<GetProjectsLocationsAppsEvaluationsRequest>;
+
 export interface GetProjectsLocationsAppsEvaluationsResultsRequest {
   /** Required. The resource name of the evaluation result to retrieve. */
   name: string;
 }
+const GetProjectsLocationsAppsEvaluationsResultsRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  0,
+) as any as S.Schema<GetProjectsLocationsAppsEvaluationsResultsRequest>;
+
 export interface GetProjectsLocationsAppsExamplesRequest {
   /** Required. The resource name of the example to retrieve. */
   name: string;
 }
+const GetProjectsLocationsAppsExamplesRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  1,
+) as any as S.Schema<GetProjectsLocationsAppsExamplesRequest>;
+
 export interface GetProjectsLocationsAppsGuardrailsRequest {
   /** Required. The resource name of the guardrail to retrieve. */
   name: string;
 }
+const GetProjectsLocationsAppsGuardrailsRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  2,
+) as any as S.Schema<GetProjectsLocationsAppsGuardrailsRequest>;
+
 export interface GetProjectsLocationsAppsScheduledEvaluationRunsRequest {
   /** Required. The resource name of the scheduled evaluation run to retrieve. */
   name: string;
 }
+const GetProjectsLocationsAppsScheduledEvaluationRunsRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  3,
+) as any as S.Schema<GetProjectsLocationsAppsScheduledEvaluationRunsRequest>;
+
 export interface GetProjectsLocationsAppsToolsRequest {
   /** Required. The resource name of the tool to retrieve. */
   name: string;
 }
+const GetProjectsLocationsAppsToolsRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  4,
+) as any as S.Schema<GetProjectsLocationsAppsToolsRequest>;
+
 export interface GetProjectsLocationsAppsToolsetsRequest {
   /** Required. The resource name of the toolset to retrieve. */
   name: string;
 }
+const GetProjectsLocationsAppsToolsetsRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  5,
+) as any as S.Schema<GetProjectsLocationsAppsToolsetsRequest>;
+
 export interface GetProjectsLocationsAppsVersionsRequest {
   /** Required. The resource name of the app version to retrieve. */
   name: string;
 }
+const GetProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  6,
+) as any as S.Schema<GetProjectsLocationsAppsVersionsRequest>;
+
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  7,
+) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+
 export interface GetSecuritySettingsProjectsLocationsRequest {
   /** Required. The resource name of the security settings to retrieve. Format: `projects/{project}/locations/{location}/securitySettings` */
   name: string;
 }
+const GetSecuritySettingsProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  0,
+) as any as S.Schema<GetSecuritySettingsProjectsLocationsRequest>;
+
 export type EndpointControlPolicyEnforcementScopeEnum =
   | "ENFORCEMENT_SCOPE_UNSPECIFIED"
   | "VPCSC_ONLY"
   | "ALWAYS";
+const EndpointControlPolicyEnforcementScopeEnum = S.String;
+
 /** Defines project/location level endpoint control policy. */
 export interface EndpointControlPolicy {
   /** Optional. The allowed HTTP(s) origins that tools in the App are able to directly call. The enforcement depends on the value of enforcement_scope and the VPC-SC status of the project. If a port number is not provided, all ports will be allowed. Otherwise, the port number must match exactly. For example, "https://example.com" will match "https://example.com:443" and any other port. "https://example.com:443" will only match "https://example.com:443". */
@@ -4304,6 +6214,11 @@ export interface EndpointControlPolicy {
   /** Optional. The scope in which this policy's allowed_origins list is enforced. */
   enforcementScope?: EndpointControlPolicyEnforcementScopeEnum | (string & {});
 }
+const EndpointControlPolicy = /*@__PURE__*/ __L.at(
+  __c54,
+  1,
+) as any as S.Schema<EndpointControlPolicy>;
+
 /** Project/Location level security settings for CES. */
 export interface SecuritySettings {
   /** Output only. Create time of the security settings. */
@@ -4317,6 +6232,8 @@ export interface SecuritySettings {
   /** Optional. Endpoint control related settings. */
   endpointControlPolicy?: EndpointControlPolicy;
 }
+const SecuritySettings = /*@__PURE__*/ __L.at(__c54, 2) as any as S.Schema<SecuritySettings>;
+
 /** Request message for ToolService.RetrieveToolSchema. */
 export interface RetrieveToolSchemaRequest {
   /** Optional. The name of the tool to retrieve the schema for. Format: projects/{project}/locations/{location}/apps/{app}/tools/{tool} */
@@ -4324,12 +6241,22 @@ export interface RetrieveToolSchemaRequest {
   /** Optional. The toolset tool to retrieve the schema for. Only one tool should match the predicate from the toolset. Otherwise, an error will be returned. */
   toolsetTool?: ToolsetTool;
 }
+const RetrieveToolSchemaRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  3,
+) as any as S.Schema<RetrieveToolSchemaRequest>;
+
 export interface GetToolSchemaProjectsLocationsAppsRequest {
   /** Required. The resource name of the app which the tool/toolset belongs to. Format: `projects/{project}/locations/{location}/apps/{app}` */
   parent: string;
   /** Request body */
   body?: RetrieveToolSchemaRequest;
 }
+const GetToolSchemaProjectsLocationsAppsRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  4,
+) as any as S.Schema<GetToolSchemaProjectsLocationsAppsRequest>;
+
 /** Response message for ToolService.RetrieveToolSchema. */
 export interface RetrieveToolSchemaResponse {
   /** The name of the tool that the schema is for. Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` */
@@ -4341,6 +6268,11 @@ export interface RetrieveToolSchemaResponse {
   /** The schema of the tool output parameters. */
   outputSchema?: Ces_Schema;
 }
+const RetrieveToolSchemaResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  5,
+) as any as S.Schema<RetrieveToolSchemaResponse>;
+
 /** Request message for ToolService.RetrieveTools. */
 export interface RetrieveToolsRequest {
   /** Optional. If true, the returned tools will contain raw descriptions and schemas directly from the server, bypassing any stored persistence configurations (overrides/snapshots). */
@@ -4348,21 +6280,38 @@ export interface RetrieveToolsRequest {
   /** Optional. The identifiers of the tools to retrieve from the toolset. If empty, all tools in the toolset will be returned. */
   toolIds?: StringList;
 }
+const RetrieveToolsRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  6,
+) as any as S.Schema<RetrieveToolsRequest>;
+
 export interface GetToolsProjectsLocationsAppsToolsetsRequest {
   /** Required. The name of the toolset to retrieve the tools for. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}` */
   toolset: string;
   /** Request body */
   body?: RetrieveToolsRequest;
 }
+const GetToolsProjectsLocationsAppsToolsetsRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  7,
+) as any as S.Schema<GetToolsProjectsLocationsAppsToolsetsRequest>;
+
 /** Response message for ToolService.RetrieveTools. */
 export interface RetrieveToolsResponse {
   /** The list of tools that are included in the specified toolset. */
   tools?: ToolList;
 }
+const RetrieveToolsResponse = /*@__PURE__*/ __L.at(
+  __c55,
+  0,
+) as any as S.Schema<RetrieveToolsResponse>;
+
 export type ImportAppRequestImportOptionsConflictResolutionStrategyEnum =
   | "CONFLICT_RESOLUTION_STRATEGY_UNSPECIFIED"
   | "REPLACE"
   | "OVERWRITE";
+const ImportAppRequestImportOptionsConflictResolutionStrategyEnum = S.String;
+
 /** Configuration options for the app import process. These options control how the import behaves, particularly when conflicts arise with existing app data. */
 export interface ImportAppRequestImportOptions {
   /** Optional. Flag for dry-running the import process. If set to true, the import process will only perform validations and will not make any changes to the existing app or create a new one. */
@@ -4372,6 +6321,11 @@ export interface ImportAppRequestImportOptions {
     | ImportAppRequestImportOptionsConflictResolutionStrategyEnum
     | (string & {});
 }
+const ImportAppRequestImportOptions = /*@__PURE__*/ __L.at(
+  __c55,
+  1,
+) as any as S.Schema<ImportAppRequestImportOptions>;
+
 /** Request message for AgentService.ImportApp. */
 export interface ImportAppRequest {
   /** The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI from which to import app. The format of this URI must be `gs:///`. */
@@ -4391,22 +6345,34 @@ export interface ImportAppRequest {
   /** Optional. The ID to use for the imported app. * If not specified, a unique ID will be automatically assigned for the app. * Otherwise, the imported app will use this ID as the final component of its resource name. If an app with the same ID already exists at the specified location in the project, the content of the existing app will be replaced. */
   appId?: string;
 }
+const ImportAppRequest = /*@__PURE__*/ __L.at(__c55, 2) as any as S.Schema<ImportAppRequest>;
+
 export interface ImportAppProjectsLocationsAppsRequest {
   /** Required. The parent resource name with the location of the app to import. */
   parent: string;
   /** Request body */
   body?: ImportAppRequest;
 }
+const ImportAppProjectsLocationsAppsRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  3,
+) as any as S.Schema<ImportAppProjectsLocationsAppsRequest>;
+
 /** A list of conversation resource names. */
 export interface ImportEvaluationsRequestConversationList {
   /** Optional. Conversation resource names. */
   conversations?: StringList;
 }
+const ImportEvaluationsRequestConversationList =
+  BatchDeleteConversationsRequest as any as S.Schema<ImportEvaluationsRequestConversationList>;
+
 export type ImportEvaluationsRequestImportOptionsConflictResolutionStrategyEnum =
   | "CONFLICT_RESOLUTION_STRATEGY_UNSPECIFIED"
   | "OVERWRITE"
   | "SKIP"
   | "DUPLICATE";
+const ImportEvaluationsRequestImportOptionsConflictResolutionStrategyEnum = S.String;
+
 /** Configuration options for the evaluation import process. These options control how the import behaves, particularly when conflicts arise with existing evaluations data. */
 export interface ImportEvaluationsRequestImportOptions {
   /** Optional. The strategy to use when resolving conflicts during import. */
@@ -4414,6 +6380,11 @@ export interface ImportEvaluationsRequestImportOptions {
     | ImportEvaluationsRequestImportOptionsConflictResolutionStrategyEnum
     | (string & {});
 }
+const ImportEvaluationsRequestImportOptions = /*@__PURE__*/ __L.at(
+  __c55,
+  4,
+) as any as S.Schema<ImportEvaluationsRequestImportOptions>;
+
 /** Request message for EvaluationService.ImportEvaluations. */
 export interface ImportEvaluationsRequest {
   /** The conversations to import the evaluations from. */
@@ -4425,12 +6396,22 @@ export interface ImportEvaluationsRequest {
   /** Raw bytes representing the csv file with the evaluations structure. */
   csvContent?: string;
 }
+const ImportEvaluationsRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  5,
+) as any as S.Schema<ImportEvaluationsRequest>;
+
 export interface ImportEvaluationsProjectsLocationsAppsRequest {
   /** Required. The app to import the evaluations into. Format: `projects/{project}/locations/{location}/apps/{app}` */
   parent: string;
   /** Request body */
   body?: ImportEvaluationsRequest;
 }
+const ImportEvaluationsProjectsLocationsAppsRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  6,
+) as any as S.Schema<ImportEvaluationsProjectsLocationsAppsRequest>;
+
 export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
@@ -4443,7 +6424,14 @@ export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
 }
+const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  7,
+) as any as S.Schema<ListProjectsLocationsRequest>;
+
 export type LocationList = Array<Location>;
+const LocationList = /*@__PURE__*/ __L.at(__c56, 0) as any as S.Schema<LocationList>;
+
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -4451,6 +6439,11 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
+const ListLocationsResponse = /*@__PURE__*/ __L.at(
+  __c56,
+  1,
+) as any as S.Schema<ListLocationsResponse>;
+
 export interface ListProjectsLocationsAppsRequest {
   /** Optional. The next_page_token value returned from a previous list AgentService.ListApps call. */
   pageToken?: string;
@@ -4463,7 +6456,14 @@ export interface ListProjectsLocationsAppsRequest {
   /** Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
 }
+const ListProjectsLocationsAppsRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  2,
+) as any as S.Schema<ListProjectsLocationsAppsRequest>;
+
 export type AppList = Array<App>;
+const AppList = /*@__PURE__*/ __L.at(__c56, 3) as any as S.Schema<AppList>;
+
 /** Response message for AgentService.ListApps. */
 export interface ListAppsResponse {
   /** A token that can be sent as ListAppsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
@@ -4473,6 +6473,8 @@ export interface ListAppsResponse {
   /** Unordered list. Locations that could not be reached. */
   unreachable?: StringList;
 }
+const ListAppsResponse = /*@__PURE__*/ __L.at(__c56, 4) as any as S.Schema<ListAppsResponse>;
+
 export interface ListProjectsLocationsAppsAgentsRequest {
   /** Optional. Filter to be applied when listing the agents. See https://google.aip.dev/160 for more details. */
   filter?: string;
@@ -4485,6 +6487,11 @@ export interface ListProjectsLocationsAppsAgentsRequest {
   /** Required. The resource name of the app to list agents from. */
   parent: string;
 }
+const ListProjectsLocationsAppsAgentsRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  5,
+) as any as S.Schema<ListProjectsLocationsAppsAgentsRequest>;
+
 /** Response message for AgentService.ListAgents. */
 export interface ListAgentsResponse {
   /** A token that can be sent as ListAgentsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
@@ -4492,6 +6499,8 @@ export interface ListAgentsResponse {
   /** The list of agents. */
   agents?: AgentList;
 }
+const ListAgentsResponse = /*@__PURE__*/ __L.at(__c56, 6) as any as S.Schema<ListAgentsResponse>;
+
 export interface ListProjectsLocationsAppsAssistantSessionsRequest {
   /** Required. The app to list assistant sessions from. Format: `projects/{project}/locations/{location}/apps/{app}` */
   parent: string;
@@ -4502,7 +6511,17 @@ export interface ListProjectsLocationsAppsAssistantSessionsRequest {
   /** Optional. Filter to be applied when listing the assistant sessions. See https://google.aip.dev/160 for more details. */
   filter?: string;
 }
+const ListProjectsLocationsAppsAssistantSessionsRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  7,
+) as any as S.Schema<ListProjectsLocationsAppsAssistantSessionsRequest>;
+
 export type AssistantSessionList = Array<AssistantSession>;
+const AssistantSessionList = /*@__PURE__*/ __L.at(
+  __c57,
+  0,
+) as any as S.Schema<AssistantSessionList>;
+
 /** Response message for AssistantService.ListAssistantSessions. */
 export interface ListAssistantSessionsResponse {
   /** Optional. A token that can be sent as ListAssistantSessionsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
@@ -4510,6 +6529,11 @@ export interface ListAssistantSessionsResponse {
   /** The list of assistant sessions. */
   assistantSessions?: AssistantSessionList;
 }
+const ListAssistantSessionsResponse = /*@__PURE__*/ __L.at(
+  __c57,
+  1,
+) as any as S.Schema<ListAssistantSessionsResponse>;
+
 export interface ListProjectsLocationsAppsChangelogsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
@@ -4522,7 +6546,14 @@ export interface ListProjectsLocationsAppsChangelogsRequest {
   /** Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
 }
+const ListProjectsLocationsAppsChangelogsRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  2,
+) as any as S.Schema<ListProjectsLocationsAppsChangelogsRequest>;
+
 export type ChangelogList = Array<Changelog>;
+const ChangelogList = /*@__PURE__*/ __L.at(__c57, 3) as any as S.Schema<ChangelogList>;
+
 /** Response message for AgentService.ListChangelogs. */
 export interface ListChangelogsResponse {
   /** The list of changelogs. */
@@ -4530,6 +6561,11 @@ export interface ListChangelogsResponse {
   /** A token that can be sent as ListChangelogsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListChangelogsResponse = /*@__PURE__*/ __L.at(
+  __c57,
+  4,
+) as any as S.Schema<ListChangelogsResponse>;
+
 export type ListProjectsLocationsAppsConversationsSourcesEnum =
   | "SOURCE_UNSPECIFIED"
   | "LIVE"
@@ -4539,12 +6575,17 @@ export type ListProjectsLocationsAppsConversationsSourcesEnum =
 export type ListProjectsLocationsAppsConversationsSourcesEnumList = Array<
   ListProjectsLocationsAppsConversationsSourcesEnum | (string & {})
 >;
+const ListProjectsLocationsAppsConversationsSourcesEnumList =
+  ConversationInputTypesItemEnumList as any as S.Schema<ListProjectsLocationsAppsConversationsSourcesEnumList>;
+
 export type ListProjectsLocationsAppsConversationsSourceEnum =
   | "SOURCE_UNSPECIFIED"
   | "LIVE"
   | "SIMULATOR"
   | "EVAL"
   | "AGENT_TOOL";
+const ListProjectsLocationsAppsConversationsSourceEnum = S.String;
+
 export interface ListProjectsLocationsAppsConversationsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
@@ -4559,7 +6600,14 @@ export interface ListProjectsLocationsAppsConversationsRequest {
   /** Optional. Indicate the source of the conversation. If not set, Source.Live will be applied by default. Will be deprecated in favor of `sources` field. */
   source?: ListProjectsLocationsAppsConversationsSourceEnum | (string & {});
 }
+const ListProjectsLocationsAppsConversationsRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  5,
+) as any as S.Schema<ListProjectsLocationsAppsConversationsRequest>;
+
 export type ConversationList = Array<Conversation>;
+const ConversationList = /*@__PURE__*/ __L.at(__c57, 6) as any as S.Schema<ConversationList>;
+
 /** Response message for AgentService.ListConversations. */
 export interface ListConversationsResponse {
   /** The list of conversations. */
@@ -4567,6 +6615,11 @@ export interface ListConversationsResponse {
   /** A token that can be sent as ListConversationsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListConversationsResponse = /*@__PURE__*/ __L.at(
+  __c57,
+  7,
+) as any as S.Schema<ListConversationsResponse>;
+
 export interface ListProjectsLocationsAppsDeploymentsRequest {
   /** Optional. A page token, received from a previous `ListDeployments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDeployments` must match the call that provided the page token. */
   pageToken?: string;
@@ -4577,7 +6630,14 @@ export interface ListProjectsLocationsAppsDeploymentsRequest {
   /** Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
 }
+const ListProjectsLocationsAppsDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  0,
+) as any as S.Schema<ListProjectsLocationsAppsDeploymentsRequest>;
+
 export type DeploymentList = Array<Deployment>;
+const DeploymentList = /*@__PURE__*/ __L.at(__c58, 1) as any as S.Schema<DeploymentList>;
+
 /** Response message for AgentService.ListDeployments. */
 export interface ListDeploymentsResponse {
   /** The list of deployments. */
@@ -4585,6 +6645,11 @@ export interface ListDeploymentsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListDeploymentsResponse = /*@__PURE__*/ __L.at(
+  __c58,
+  2,
+) as any as S.Schema<ListDeploymentsResponse>;
+
 export interface ListProjectsLocationsAppsEvaluationDatasetsRequest {
   /** Optional. The next_page_token value returned from a previous list EvaluationService.ListEvaluationDatasets call. */
   pageToken?: string;
@@ -4597,7 +6662,17 @@ export interface ListProjectsLocationsAppsEvaluationDatasetsRequest {
   /** Required. The resource name of the app to list evaluation datasets from. */
   parent: string;
 }
+const ListProjectsLocationsAppsEvaluationDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  3,
+) as any as S.Schema<ListProjectsLocationsAppsEvaluationDatasetsRequest>;
+
 export type EvaluationDatasetList = Array<EvaluationDataset>;
+const EvaluationDatasetList = /*@__PURE__*/ __L.at(
+  __c58,
+  4,
+) as any as S.Schema<EvaluationDatasetList>;
+
 /** Response message for EvaluationService.ListEvaluationDatasets. */
 export interface ListEvaluationDatasetsResponse {
   /** A token that can be sent as ListEvaluationDatasetsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
@@ -4605,6 +6680,11 @@ export interface ListEvaluationDatasetsResponse {
   /** The list of evaluation datasets. */
   evaluationDatasets?: EvaluationDatasetList;
 }
+const ListEvaluationDatasetsResponse = /*@__PURE__*/ __L.at(
+  __c58,
+  5,
+) as any as S.Schema<ListEvaluationDatasetsResponse>;
+
 export interface ListProjectsLocationsAppsEvaluationExpectationsRequest {
   /** Required. The resource name of the app to list evaluation expectations from. */
   parent: string;
@@ -4617,7 +6697,17 @@ export interface ListProjectsLocationsAppsEvaluationExpectationsRequest {
   /** Optional. The next_page_token value returned from a previous list EvaluationService.ListEvaluationExpectations call. */
   pageToken?: string;
 }
+const ListProjectsLocationsAppsEvaluationExpectationsRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  6,
+) as any as S.Schema<ListProjectsLocationsAppsEvaluationExpectationsRequest>;
+
 export type EvaluationExpectationList = Array<EvaluationExpectation>;
+const EvaluationExpectationList = /*@__PURE__*/ __L.at(
+  __c58,
+  7,
+) as any as S.Schema<EvaluationExpectationList>;
+
 /** Response message for EvaluationService.ListEvaluationExpectations. */
 export interface ListEvaluationExpectationsResponse {
   /** A token that can be sent as ListEvaluationExpectationsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
@@ -4625,6 +6715,11 @@ export interface ListEvaluationExpectationsResponse {
   /** The list of evaluation expectations. */
   evaluationExpectations?: EvaluationExpectationList;
 }
+const ListEvaluationExpectationsResponse = /*@__PURE__*/ __L.at(
+  __c59,
+  0,
+) as any as S.Schema<ListEvaluationExpectationsResponse>;
+
 export interface ListProjectsLocationsAppsEvaluationRunsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
@@ -4637,7 +6732,14 @@ export interface ListProjectsLocationsAppsEvaluationRunsRequest {
   /** Optional. Field to sort by. Only "name" and "create_time", and "update_time" are supported. Time fields are ordered in descending order, and the name field is ordered in ascending order. If not included, "update_time" will be the default. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
 }
+const ListProjectsLocationsAppsEvaluationRunsRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  1,
+) as any as S.Schema<ListProjectsLocationsAppsEvaluationRunsRequest>;
+
 export type EvaluationRunList = Array<EvaluationRun>;
+const EvaluationRunList = /*@__PURE__*/ __L.at(__c59, 2) as any as S.Schema<EvaluationRunList>;
+
 /** Response message for EvaluationService.ListEvaluationRuns. */
 export interface ListEvaluationRunsResponse {
   /** A token that can be sent as ListEvaluationRunsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
@@ -4645,6 +6747,11 @@ export interface ListEvaluationRunsResponse {
   /** The list of evaluation runs. */
   evaluationRuns?: EvaluationRunList;
 }
+const ListEvaluationRunsResponse = /*@__PURE__*/ __L.at(
+  __c59,
+  3,
+) as any as S.Schema<ListEvaluationRunsResponse>;
+
 export interface ListProjectsLocationsAppsEvaluationsRequest {
   /** Optional. Deprecated: Use evaluation_filter and evaluation_run_filter instead. */
   filter?: string;
@@ -4663,7 +6770,14 @@ export interface ListProjectsLocationsAppsEvaluationsRequest {
   /** Optional. Filter to be applied on the evaluation when listing the evaluations. See https://google.aip.dev/160 for more details. Supported fields: evaluation_datasets */
   evaluationFilter?: string;
 }
+const ListProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  4,
+) as any as S.Schema<ListProjectsLocationsAppsEvaluationsRequest>;
+
 export type EvaluationList = Array<Evaluation>;
+const EvaluationList = /*@__PURE__*/ __L.at(__c59, 5) as any as S.Schema<EvaluationList>;
+
 /** Response message for EvaluationService.ListEvaluations. */
 export interface ListEvaluationsResponse {
   /** The list of evaluations. */
@@ -4671,6 +6785,11 @@ export interface ListEvaluationsResponse {
   /** A token that can be sent as ListEvaluationsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListEvaluationsResponse = /*@__PURE__*/ __L.at(
+  __c59,
+  6,
+) as any as S.Schema<ListEvaluationsResponse>;
+
 export interface ListProjectsLocationsAppsEvaluationsResultsRequest {
   /** Optional. The next_page_token value returned from a previous list EvaluationService.ListEvaluationResults call. */
   pageToken?: string;
@@ -4683,6 +6802,11 @@ export interface ListProjectsLocationsAppsEvaluationsResultsRequest {
   /** Required. The resource name of the evaluation to list evaluation results from. To filter by evaluation run, use `-` as the evaluation ID and specify the evaluation run ID in the filter. For example: `projects/{project}/locations/{location}/apps/{app}/evaluations/-` */
   parent: string;
 }
+const ListProjectsLocationsAppsEvaluationsResultsRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  7,
+) as any as S.Schema<ListProjectsLocationsAppsEvaluationsResultsRequest>;
+
 /** Response message for EvaluationService.ListEvaluationResults. */
 export interface ListEvaluationResultsResponse {
   /** A token that can be sent as ListEvaluationResultsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
@@ -4690,6 +6814,11 @@ export interface ListEvaluationResultsResponse {
   /** The list of evaluation results. */
   evaluationResults?: EvaluationResultList;
 }
+const ListEvaluationResultsResponse = /*@__PURE__*/ __L.at(
+  __c60,
+  0,
+) as any as S.Schema<ListEvaluationResultsResponse>;
+
 export interface ListProjectsLocationsAppsExamplesRequest {
   /** Optional. Filter to be applied when listing the examples. See https://google.aip.dev/160 for more details. */
   filter?: string;
@@ -4702,6 +6831,11 @@ export interface ListProjectsLocationsAppsExamplesRequest {
   /** Required. The resource name of the app to list examples from. */
   parent: string;
 }
+const ListProjectsLocationsAppsExamplesRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  1,
+) as any as S.Schema<ListProjectsLocationsAppsExamplesRequest>;
+
 /** Response message for AgentService.ListExamples. */
 export interface ListExamplesResponse {
   /** The list of examples. */
@@ -4709,6 +6843,11 @@ export interface ListExamplesResponse {
   /** A token that can be sent as ListExamplesRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListExamplesResponse = /*@__PURE__*/ __L.at(
+  __c60,
+  2,
+) as any as S.Schema<ListExamplesResponse>;
+
 export interface ListProjectsLocationsAppsGuardrailsRequest {
   /** Optional. Filter to be applied when listing the guardrails. See https://google.aip.dev/160 for more details. */
   filter?: string;
@@ -4721,6 +6860,11 @@ export interface ListProjectsLocationsAppsGuardrailsRequest {
   /** Required. The resource name of the app to list guardrails from. */
   parent: string;
 }
+const ListProjectsLocationsAppsGuardrailsRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  3,
+) as any as S.Schema<ListProjectsLocationsAppsGuardrailsRequest>;
+
 /** Response message for AgentService.ListGuardrails. */
 export interface ListGuardrailsResponse {
   /** A token that can be sent as ListGuardrailsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
@@ -4728,6 +6872,11 @@ export interface ListGuardrailsResponse {
   /** The list of guardrails. */
   guardrails?: GuardrailList;
 }
+const ListGuardrailsResponse = /*@__PURE__*/ __L.at(
+  __c60,
+  4,
+) as any as S.Schema<ListGuardrailsResponse>;
+
 export interface ListProjectsLocationsAppsScheduledEvaluationRunsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
@@ -4740,7 +6889,17 @@ export interface ListProjectsLocationsAppsScheduledEvaluationRunsRequest {
   /** Optional. Filter to be applied when listing the scheduled evaluation runs. See https://google.aip.dev/160 for more details. Currently supports filtering by: * request.evaluations:evaluation_id * request.evaluation_dataset:evaluation_dataset_id */
   filter?: string;
 }
+const ListProjectsLocationsAppsScheduledEvaluationRunsRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  5,
+) as any as S.Schema<ListProjectsLocationsAppsScheduledEvaluationRunsRequest>;
+
 export type ScheduledEvaluationRunList = Array<ScheduledEvaluationRun>;
+const ScheduledEvaluationRunList = /*@__PURE__*/ __L.at(
+  __c60,
+  6,
+) as any as S.Schema<ScheduledEvaluationRunList>;
+
 /** Response message for EvaluationService.ListScheduledEvaluationRuns. */
 export interface ListScheduledEvaluationRunsResponse {
   /** A token that can be sent as ListScheduledEvaluationRunsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
@@ -4748,6 +6907,11 @@ export interface ListScheduledEvaluationRunsResponse {
   /** The list of scheduled evaluation runs. */
   scheduledEvaluationRuns?: ScheduledEvaluationRunList;
 }
+const ListScheduledEvaluationRunsResponse = /*@__PURE__*/ __L.at(
+  __c60,
+  7,
+) as any as S.Schema<ListScheduledEvaluationRunsResponse>;
+
 export interface ListProjectsLocationsAppsToolsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
@@ -4760,6 +6924,11 @@ export interface ListProjectsLocationsAppsToolsRequest {
   /** Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
 }
+const ListProjectsLocationsAppsToolsRequest = /*@__PURE__*/ __L.at(
+  __c61,
+  0,
+) as any as S.Schema<ListProjectsLocationsAppsToolsRequest>;
+
 /** Response message for AgentService.ListTools. */
 export interface ListToolsResponse {
   /** The list of tools. */
@@ -4767,6 +6936,8 @@ export interface ListToolsResponse {
   /** A token that can be sent as ListToolsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListToolsResponse = /*@__PURE__*/ __L.at(__c61, 1) as any as S.Schema<ListToolsResponse>;
+
 export interface ListProjectsLocationsAppsToolsetsRequest {
   /** Optional. Filter to be applied when listing the toolsets. See https://google.aip.dev/160 for more details. */
   filter?: string;
@@ -4779,6 +6950,11 @@ export interface ListProjectsLocationsAppsToolsetsRequest {
   /** Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
 }
+const ListProjectsLocationsAppsToolsetsRequest = /*@__PURE__*/ __L.at(
+  __c61,
+  2,
+) as any as S.Schema<ListProjectsLocationsAppsToolsetsRequest>;
+
 /** Response message for AgentService.ListToolsets. */
 export interface ListToolsetsResponse {
   /** The list of toolsets. */
@@ -4786,6 +6962,11 @@ export interface ListToolsetsResponse {
   /** A token that can be sent as ListToolsetsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListToolsetsResponse = /*@__PURE__*/ __L.at(
+  __c61,
+  3,
+) as any as S.Schema<ListToolsetsResponse>;
+
 export interface ListProjectsLocationsAppsVersionsRequest {
   /** Optional. Filter to be applied when listing the app versions. See https://google.aip.dev/160 for more details. */
   filter?: string;
@@ -4798,7 +6979,14 @@ export interface ListProjectsLocationsAppsVersionsRequest {
   /** Optional. The next_page_token value returned from a previous list AgentService.ListAppVersions call. */
   pageToken?: string;
 }
+const ListProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ __L.at(
+  __c61,
+  4,
+) as any as S.Schema<ListProjectsLocationsAppsVersionsRequest>;
+
 export type AppVersionList = Array<AppVersion>;
+const AppVersionList = /*@__PURE__*/ __L.at(__c61, 5) as any as S.Schema<AppVersionList>;
+
 /** Response message for AgentService.ListAppVersions. */
 export interface ListAppVersionsResponse {
   /** The list of app versions. */
@@ -4806,6 +6994,11 @@ export interface ListAppVersionsResponse {
   /** A token that can be sent as ListAppVersionsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListAppVersionsResponse = /*@__PURE__*/ __L.at(
+  __c61,
+  6,
+) as any as S.Schema<ListAppVersionsResponse>;
+
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
@@ -4818,7 +7011,14 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c61,
+  7,
+) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+
 export type OperationList = Array<Operation>;
+const OperationList = /*@__PURE__*/ __L.at(__c62, 0) as any as S.Schema<OperationList>;
+
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -4828,6 +7028,11 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c62,
+  1,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface PatchProjectsLocationsAppsRequest {
   /** Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated. */
   updateMask?: string;
@@ -4836,6 +7041,11 @@ export interface PatchProjectsLocationsAppsRequest {
   /** Request body */
   body?: App;
 }
+const PatchProjectsLocationsAppsRequest = /*@__PURE__*/ __L.at(
+  __c62,
+  2,
+) as any as S.Schema<PatchProjectsLocationsAppsRequest>;
+
 export interface PatchProjectsLocationsAppsAgentsRequest {
   /** Identifier. The unique identifier of the agent. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}` */
   name: string;
@@ -4844,6 +7054,11 @@ export interface PatchProjectsLocationsAppsAgentsRequest {
   /** Request body */
   body?: Agent;
 }
+const PatchProjectsLocationsAppsAgentsRequest = /*@__PURE__*/ __L.at(
+  __c62,
+  3,
+) as any as S.Schema<PatchProjectsLocationsAppsAgentsRequest>;
+
 export interface PatchProjectsLocationsAppsDeploymentsRequest {
   /** Optional. The list of fields to update. */
   updateMask?: string;
@@ -4852,6 +7067,11 @@ export interface PatchProjectsLocationsAppsDeploymentsRequest {
   /** Request body */
   body?: Deployment;
 }
+const PatchProjectsLocationsAppsDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c62,
+  4,
+) as any as S.Schema<PatchProjectsLocationsAppsDeploymentsRequest>;
+
 export interface PatchProjectsLocationsAppsEvaluationDatasetsRequest {
   /** Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated. */
   updateMask?: string;
@@ -4860,6 +7080,11 @@ export interface PatchProjectsLocationsAppsEvaluationDatasetsRequest {
   /** Request body */
   body?: EvaluationDataset;
 }
+const PatchProjectsLocationsAppsEvaluationDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c62,
+  5,
+) as any as S.Schema<PatchProjectsLocationsAppsEvaluationDatasetsRequest>;
+
 export interface PatchProjectsLocationsAppsEvaluationExpectationsRequest {
   /** Identifier. The unique identifier of this evaluation expectation. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluation_expectation}` */
   name: string;
@@ -4868,6 +7093,11 @@ export interface PatchProjectsLocationsAppsEvaluationExpectationsRequest {
   /** Request body */
   body?: EvaluationExpectation;
 }
+const PatchProjectsLocationsAppsEvaluationExpectationsRequest = /*@__PURE__*/ __L.at(
+  __c62,
+  6,
+) as any as S.Schema<PatchProjectsLocationsAppsEvaluationExpectationsRequest>;
+
 export interface PatchProjectsLocationsAppsEvaluationsRequest {
   /** Identifier. The unique identifier of this evaluation. Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}` */
   name: string;
@@ -4876,6 +7106,11 @@ export interface PatchProjectsLocationsAppsEvaluationsRequest {
   /** Request body */
   body?: Evaluation;
 }
+const PatchProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ __L.at(
+  __c62,
+  7,
+) as any as S.Schema<PatchProjectsLocationsAppsEvaluationsRequest>;
+
 export interface PatchProjectsLocationsAppsExamplesRequest {
   /** Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated. */
   updateMask?: string;
@@ -4884,6 +7119,11 @@ export interface PatchProjectsLocationsAppsExamplesRequest {
   /** Request body */
   body?: Example;
 }
+const PatchProjectsLocationsAppsExamplesRequest = /*@__PURE__*/ __L.at(
+  __c63,
+  0,
+) as any as S.Schema<PatchProjectsLocationsAppsExamplesRequest>;
+
 export interface PatchProjectsLocationsAppsGuardrailsRequest {
   /** Identifier. The unique identifier of the guardrail. Format: `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}` */
   name: string;
@@ -4892,6 +7132,11 @@ export interface PatchProjectsLocationsAppsGuardrailsRequest {
   /** Request body */
   body?: Guardrail;
 }
+const PatchProjectsLocationsAppsGuardrailsRequest = /*@__PURE__*/ __L.at(
+  __c63,
+  1,
+) as any as S.Schema<PatchProjectsLocationsAppsGuardrailsRequest>;
+
 export interface PatchProjectsLocationsAppsScheduledEvaluationRunsRequest {
   /** Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated. */
   updateMask?: string;
@@ -4900,6 +7145,11 @@ export interface PatchProjectsLocationsAppsScheduledEvaluationRunsRequest {
   /** Request body */
   body?: ScheduledEvaluationRun;
 }
+const PatchProjectsLocationsAppsScheduledEvaluationRunsRequest = /*@__PURE__*/ __L.at(
+  __c63,
+  2,
+) as any as S.Schema<PatchProjectsLocationsAppsScheduledEvaluationRunsRequest>;
+
 export interface PatchProjectsLocationsAppsToolsRequest {
   /** Identifier. The resource name of the tool. Format: * `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` for standalone tools. * `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}/tools/{tool}` for tools retrieved from a toolset. These tools are dynamic and output-only; they cannot be referenced directly where a tool is expected. */
   name: string;
@@ -4908,6 +7158,11 @@ export interface PatchProjectsLocationsAppsToolsRequest {
   /** Request body */
   body?: Tool;
 }
+const PatchProjectsLocationsAppsToolsRequest = /*@__PURE__*/ __L.at(
+  __c63,
+  3,
+) as any as S.Schema<PatchProjectsLocationsAppsToolsRequest>;
+
 export interface PatchProjectsLocationsAppsToolsetsRequest {
   /** Identifier. The unique identifier of the toolset. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}` */
   name: string;
@@ -4916,6 +7171,11 @@ export interface PatchProjectsLocationsAppsToolsetsRequest {
   /** Request body */
   body?: Toolset;
 }
+const PatchProjectsLocationsAppsToolsetsRequest = /*@__PURE__*/ __L.at(
+  __c63,
+  4,
+) as any as S.Schema<PatchProjectsLocationsAppsToolsetsRequest>;
+
 export interface PatchProjectsLocationsAppsVersionsRequest {
   /** Optional. The list of fields to update. If empty, fields `display_name` and `description` will be updated. */
   updateMask?: string;
@@ -4924,6 +7184,11 @@ export interface PatchProjectsLocationsAppsVersionsRequest {
   /** Request body */
   body?: AppVersion;
 }
+const PatchProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ __L.at(
+  __c63,
+  5,
+) as any as S.Schema<PatchProjectsLocationsAppsVersionsRequest>;
+
 /** Request message for AgentService.RestoreAppVersion */
 export type RestoreAppVersionRequest = CancelOperationRequest;
 export interface RestoreProjectsLocationsAppsVersionsRequest {
@@ -4932,11 +7197,18 @@ export interface RestoreProjectsLocationsAppsVersionsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
+const RestoreProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ __L.at(
+  __c63,
+  6,
+) as any as S.Schema<RestoreProjectsLocationsAppsVersionsRequest>;
+
 export type RunAssistantRequestInteractionTypeEnum =
   | "INTERACTION_TYPE_UNSPECIFIED"
   | "NEW_MESSAGE"
   | "POLL"
   | "DISMISS";
+const RunAssistantRequestInteractionTypeEnum = S.String;
+
 /** Request message for AssistantService.RunAssistant. */
 export interface RunAssistantRequest {
   /** Optional. Different interaction types for the assistant message. */
@@ -4946,12 +7218,19 @@ export interface RunAssistantRequest {
   /** Required. The assistant session to be used to run the assistant. Format: `projects/{project}/locations/{location}/apps/{app}/assistantSessions/{assistant_session}` */
   assistantSession?: string;
 }
+const RunAssistantRequest = /*@__PURE__*/ __L.at(__c63, 7) as any as S.Schema<RunAssistantRequest>;
+
 export interface RunAssistantProjectsLocationsAppsRequest {
   /** Required. The app to run assistant for. Format: `projects/{project}/locations/{location}/apps/{app}` */
   app: string;
   /** Request body */
   body?: RunAssistantRequest;
 }
+const RunAssistantProjectsLocationsAppsRequest = /*@__PURE__*/ __L.at(
+  __c64,
+  0,
+) as any as S.Schema<RunAssistantProjectsLocationsAppsRequest>;
+
 /** The output from the assistant agent. */
 export interface AssistantOutput {
   /** Required. The response from the assistant agent. */
@@ -4959,11 +7238,15 @@ export interface AssistantOutput {
   /** Output only. Suggested user responses from the assistant agent. */
   userResponseSuggestions?: UserResponseSuggestions;
 }
+const AssistantOutput = /*@__PURE__*/ __L.at(__c64, 1) as any as S.Schema<AssistantOutput>;
+
 export type RunAssistantResponseStateEnum =
   | "ASSISTANT_SESSION_STATE_UNSPECIFIED"
   | "PROCESSING"
   | "IDLE"
   | "PENDING_REVIEW";
+const RunAssistantResponseStateEnum = S.String;
+
 /** Response message for AssistantService.RunAssistant. */
 export interface RunAssistantResponse {
   /** Required. The output from the assistant agent. */
@@ -4971,12 +7254,22 @@ export interface RunAssistantResponse {
   /** Output only. The status of the assistant session. */
   state?: RunAssistantResponseStateEnum;
 }
+const RunAssistantResponse = /*@__PURE__*/ __L.at(
+  __c64,
+  2,
+) as any as S.Schema<RunAssistantResponse>;
+
 export interface RunEvaluationProjectsLocationsAppsRequest {
   /** Required. The app to evaluate. Format: `projects/{project}/locations/{location}/apps/{app}` */
   app: string;
   /** Request body */
   body?: RunEvaluationRequest;
 }
+const RunEvaluationProjectsLocationsAppsRequest = /*@__PURE__*/ __L.at(
+  __c64,
+  3,
+) as any as S.Schema<RunEvaluationProjectsLocationsAppsRequest>;
+
 /** Request message for EvaluationService.RunEvaluationResultMetrics. */
 export type RunEvaluationResultMetricsRequest = CancelOperationRequest;
 export interface RunEvaluationResultMetricsProjectsLocationsAppsEvaluationsResultsRequest {
@@ -4985,6 +7278,12 @@ export interface RunEvaluationResultMetricsProjectsLocationsAppsEvaluationsResul
   /** Request body */
   body?: CancelOperationRequest;
 }
+const RunEvaluationResultMetricsProjectsLocationsAppsEvaluationsResultsRequest =
+  /*@__PURE__*/ __L.at(
+    __c64,
+    4,
+  ) as any as S.Schema<RunEvaluationResultMetricsProjectsLocationsAppsEvaluationsResultsRequest>;
+
 /** [QueryParameters](https://cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#queryparameters) to send to the remote [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents) agent when the session control is transferred to the remote agent. */
 export interface SessionConfigRemoteDialogflowQueryParameters {
   /** Optional. The end user metadata to be sent in [QueryParameters](https://cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#queryparameters). */
@@ -4994,6 +7293,11 @@ export interface SessionConfigRemoteDialogflowQueryParameters {
   /** Optional. The HTTP headers to be sent as webhook_headers in [QueryParameters](https://cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#queryparameters). */
   webhookHeaders?: StringMap;
 }
+const SessionConfigRemoteDialogflowQueryParameters = /*@__PURE__*/ __L.at(
+  __c64,
+  5,
+) as any as S.Schema<SessionConfigRemoteDialogflowQueryParameters>;
+
 /** The configuration for the session. */
 export interface SessionConfig {
   /** Optional. The historical context of the session, including user inputs, agent responses, and other messages. Typically, CES agent would manage session automatically so client doesn't need to explicitly populate this field. However, client can optionally override the historical contexts to force the session start from certain state. */
@@ -5017,7 +7321,11 @@ export interface SessionConfig {
   /** Optional. The time zone of the user. If provided, the agent will use the time zone for date and time related variables. Otherwise, the agent will use the time zone specified in the App.time_zone_settings. The format is the IANA Time Zone Database time zone, e.g. "America/Los_Angeles". */
   timeZone?: string;
 }
+const SessionConfig = /*@__PURE__*/ __L.at(__c64, 6) as any as S.Schema<SessionConfig>;
+
 export type SessionInputList = Array<SessionInput>;
+const SessionInputList = /*@__PURE__*/ __L.at(__c64, 7) as any as S.Schema<SessionInputList>;
+
 /** Request message for SessionService.RunSession. */
 export interface RunSessionRequest {
   /** Required. The configuration for the session. */
@@ -5025,18 +7333,29 @@ export interface RunSessionRequest {
   /** Required. Inputs for the session. */
   inputs?: SessionInputList;
 }
+const RunSessionRequest = /*@__PURE__*/ __L.at(__c65, 0) as any as S.Schema<RunSessionRequest>;
+
 export interface RunSessionProjectsLocationsAppsSessionsRequest {
   /** Required. The unique identifier of the session. Format: `projects/{project}/locations/{location}/apps/{app}/sessions/{session}` */
   session: string;
   /** Request body */
   body?: RunSessionRequest;
 }
+const RunSessionProjectsLocationsAppsSessionsRequest = /*@__PURE__*/ __L.at(
+  __c65,
+  1,
+) as any as S.Schema<RunSessionProjectsLocationsAppsSessionsRequest>;
+
 export type ToolCallList = Array<ToolCall>;
+const ToolCallList = /*@__PURE__*/ __L.at(__c65, 2) as any as S.Schema<ToolCallList>;
+
 /** Request for the client to execute the tools and return the execution results before continuing the session. */
 export interface ToolCalls {
   /** Optional. The list of tool calls to execute. */
   toolCalls?: ToolCallList;
 }
+const ToolCalls = /*@__PURE__*/ __L.at(__c65, 3) as any as S.Schema<ToolCalls>;
+
 /** Contains execution details during the processing. */
 export interface SessionOutputDiagnosticInfo {
   /** List of the messages that happened during the processing. */
@@ -5044,11 +7363,18 @@ export interface SessionOutputDiagnosticInfo {
   /** A trace of the entire request processing, represented as a root span. This span can contain nested child spans for specific operations. */
   rootSpan?: Span;
 }
+const SessionOutputDiagnosticInfo = /*@__PURE__*/ __L.at(
+  __c65,
+  4,
+) as any as S.Schema<SessionOutputDiagnosticInfo>;
+
 /** Indicates the session has terminated, due to either successful completion (e.g. user says "Good bye!" ) or an agent escalation. The agent will not process any further inputs after session is terminated and the client should half-close and disconnect after receiving all remaining responses from the agent. */
 export interface EndSession {
   /** Optional. Provides additional information about the end session signal, such as the reason for ending the session. */
   metadata?: DocumentMap;
 }
+const EndSession = /*@__PURE__*/ __L.at(__c65, 5) as any as S.Schema<EndSession>;
+
 /** Output for the session. */
 export interface SessionOutput {
   /** The suggestions returned from Google Search as a result of invoking the GoogleSearchTool. */
@@ -5076,12 +7402,18 @@ export interface SessionOutput {
   /** Intermediate progress update from the CES agent. */
   progress?: string;
 }
+const SessionOutput = /*@__PURE__*/ __L.at(__c65, 6) as any as S.Schema<SessionOutput>;
+
 export type SessionOutputList = Array<SessionOutput>;
+const SessionOutputList = /*@__PURE__*/ __L.at(__c65, 7) as any as S.Schema<SessionOutputList>;
+
 /** Response message for SessionService.RunSession. */
 export interface RunSessionResponse {
   /** Outputs for the session. */
   outputs?: SessionOutputList;
 }
+const RunSessionResponse = /*@__PURE__*/ __L.at(__c66, 0) as any as S.Schema<RunSessionResponse>;
+
 /** `Part` represents a container for a section of communication content. Parts can be purely textual, some sort of file (image, video, etc) or a structured data blob (i.e. JSON). */
 export interface LfA2aV1Part {
   /** The string content of the `text` part. */
@@ -5099,8 +7431,14 @@ export interface LfA2aV1Part {
   /** An optional `filename` for the file (e.g., "document.pdf"). */
   filename?: string;
 }
+const LfA2aV1Part = /*@__PURE__*/ __L.at(__c66, 1) as any as S.Schema<LfA2aV1Part>;
+
 export type LfA2aV1PartList = Array<LfA2aV1Part>;
+const LfA2aV1PartList = /*@__PURE__*/ __L.at(__c66, 2) as any as S.Schema<LfA2aV1PartList>;
+
 export type LfA2aV1MessageRoleEnum = "ROLE_UNSPECIFIED" | "ROLE_USER" | "ROLE_AGENT";
+const LfA2aV1MessageRoleEnum = S.String;
+
 /** `Message` is one unit of communication between client and server. It can be associated with a context and/or a task. For server messages, `context_id` must be provided, and `task_id` only if a task was created. For client messages, both fields are optional, with the caveat that if both are provided, they have to match (the `context_id` has to be the one that is set on the task). If only `task_id` is provided, the server will infer `context_id` from it. */
 export interface LfA2aV1Message {
   /** Optional. The context id of the message. If set, the message will be associated with the given context. */
@@ -5120,6 +7458,8 @@ export interface LfA2aV1Message {
   /** Required. Identifies the sender of the message. */
   role?: LfA2aV1MessageRoleEnum | (string & {});
 }
+const LfA2aV1Message = /*@__PURE__*/ __L.at(__c66, 3) as any as S.Schema<LfA2aV1Message>;
+
 /** Defines authentication details, used for push notifications. */
 export interface LfA2aV1AuthenticationInfo {
   /** Required. HTTP Authentication Scheme from the [IANA registry](https://www.iana.org/assignments/http-authschemes/). Examples: `Bearer`, `Basic`, `Digest`. Scheme names are case-insensitive per [RFC 9110 Section 11.1](https://www.rfc-editor.org/rfc/rfc9110#section-11.1). */
@@ -5127,6 +7467,11 @@ export interface LfA2aV1AuthenticationInfo {
   /** Push Notification credentials. Format depends on the scheme (e.g., token for Bearer). */
   credentials?: string;
 }
+const LfA2aV1AuthenticationInfo = /*@__PURE__*/ __L.at(
+  __c66,
+  4,
+) as any as S.Schema<LfA2aV1AuthenticationInfo>;
+
 /** A container associating a push notification configuration with a specific task. */
 export interface LfA2aV1TaskPushNotificationConfig {
   /** Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the Agent Card when that field is set. */
@@ -5142,6 +7487,11 @@ export interface LfA2aV1TaskPushNotificationConfig {
   /** Required. The URL where the notification should be sent. */
   url?: string;
 }
+const LfA2aV1TaskPushNotificationConfig = /*@__PURE__*/ __L.at(
+  __c66,
+  5,
+) as any as S.Schema<LfA2aV1TaskPushNotificationConfig>;
+
 /** Configuration of a send message request. */
 export interface LfA2aV1SendMessageConfiguration {
   /** A list of media types the client is prepared to accept for response parts. Agents SHOULD use this to tailor their output. */
@@ -5153,6 +7503,11 @@ export interface LfA2aV1SendMessageConfiguration {
   /** Configuration for the agent to send push notifications for task updates. Task id should be empty when sending this configuration in a `SendMessage` request. */
   taskPushNotificationConfig?: LfA2aV1TaskPushNotificationConfig;
 }
+const LfA2aV1SendMessageConfiguration = /*@__PURE__*/ __L.at(
+  __c66,
+  6,
+) as any as S.Schema<LfA2aV1SendMessageConfiguration>;
+
 /** Represents a request for the `SendMessage` method. */
 export interface LfA2aV1SendMessageRequest {
   /** A flexible key-value map for passing additional context or parameters. */
@@ -5162,12 +7517,22 @@ export interface LfA2aV1SendMessageRequest {
   /** Configuration for the send request. */
   configuration?: LfA2aV1SendMessageConfiguration;
 }
+const LfA2aV1SendMessageRequest = /*@__PURE__*/ __L.at(
+  __c66,
+  7,
+) as any as S.Schema<LfA2aV1SendMessageRequest>;
+
 export interface SendProjectsLocationsAppsDeploymentsMessageRequest {
   /** Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the Agent Card when that field is set. */
   tenant: string;
   /** Request body */
   body?: LfA2aV1SendMessageRequest;
 }
+const SendProjectsLocationsAppsDeploymentsMessageRequest = /*@__PURE__*/ __L.at(
+  __c67,
+  0,
+) as any as S.Schema<SendProjectsLocationsAppsDeploymentsMessageRequest>;
+
 export type LfA2aV1TaskStatusStateEnum =
   | "TASK_STATE_UNSPECIFIED"
   | "TASK_STATE_SUBMITTED"
@@ -5178,6 +7543,8 @@ export type LfA2aV1TaskStatusStateEnum =
   | "TASK_STATE_INPUT_REQUIRED"
   | "TASK_STATE_REJECTED"
   | "TASK_STATE_AUTH_REQUIRED";
+const LfA2aV1TaskStatusStateEnum = S.String;
+
 /** A container for the status of a task */
 export interface LfA2aV1TaskStatus {
   /** Required. The current state of this task. */
@@ -5187,6 +7554,8 @@ export interface LfA2aV1TaskStatus {
   /** A message associated with the status. */
   message?: LfA2aV1Message;
 }
+const LfA2aV1TaskStatus = /*@__PURE__*/ __L.at(__c67, 1) as any as S.Schema<LfA2aV1TaskStatus>;
+
 /** Artifacts represent task outputs. */
 export interface LfA2aV1Artifact {
   /** Optional. A human readable description of the artifact. */
@@ -5202,8 +7571,14 @@ export interface LfA2aV1Artifact {
   /** Optional. Metadata included with the artifact. */
   metadata?: DocumentMap;
 }
+const LfA2aV1Artifact = /*@__PURE__*/ __L.at(__c67, 2) as any as S.Schema<LfA2aV1Artifact>;
+
 export type LfA2aV1ArtifactList = Array<LfA2aV1Artifact>;
+const LfA2aV1ArtifactList = /*@__PURE__*/ __L.at(__c67, 3) as any as S.Schema<LfA2aV1ArtifactList>;
+
 export type LfA2aV1MessageList = Array<LfA2aV1Message>;
+const LfA2aV1MessageList = /*@__PURE__*/ __L.at(__c67, 4) as any as S.Schema<LfA2aV1MessageList>;
+
 /** `Task` is the core unit of action for A2A. It has a current status and when results are created for the task they are stored in the artifact. If there are multiple turns for a task, these are stored in history. */
 export interface LfA2aV1Task {
   /** protolint:enable REPEATED_FIELD_NAMES_PLURALIZED A key/value object to store custom metadata about a task. */
@@ -5219,6 +7594,8 @@ export interface LfA2aV1Task {
   /** protolint:disable REPEATED_FIELD_NAMES_PLURALIZED The history of interactions from a `Task`. */
   history?: LfA2aV1MessageList;
 }
+const LfA2aV1Task = /*@__PURE__*/ __L.at(__c67, 5) as any as S.Schema<LfA2aV1Task>;
+
 /** Represents the response for the `SendMessage` method. */
 export interface LfA2aV1SendMessageResponse {
   /** A message from the agent. */
@@ -5226,18 +7603,33 @@ export interface LfA2aV1SendMessageResponse {
   /** The task created or updated by the message. */
   task?: LfA2aV1Task;
 }
+const LfA2aV1SendMessageResponse = /*@__PURE__*/ __L.at(
+  __c67,
+  6,
+) as any as S.Schema<LfA2aV1SendMessageResponse>;
+
 export interface SendProjectsLocationsAppsMessageRequest {
   /** Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the Agent Card when that field is set. */
   tenant: string;
   /** Request body */
   body?: LfA2aV1SendMessageRequest;
 }
+const SendProjectsLocationsAppsMessageRequest = /*@__PURE__*/ __L.at(
+  __c67,
+  7,
+) as any as S.Schema<SendProjectsLocationsAppsMessageRequest>;
+
 export interface SendProjectsLocationsAppsVersionsMessageRequest {
   /** Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the Agent Card when that field is set. */
   tenant: string;
   /** Request body */
   body?: LfA2aV1SendMessageRequest;
 }
+const SendProjectsLocationsAppsVersionsMessageRequest = /*@__PURE__*/ __L.at(
+  __c68,
+  0,
+) as any as S.Schema<SendProjectsLocationsAppsVersionsMessageRequest>;
+
 export type StreamChatAiAssistantRequestClientCapabilitiesItemEnum =
   | "CLIENT_CAPABILITY_UNSPECIFIED"
   | "CONFIRMATION_CARDS"
@@ -5245,6 +7637,9 @@ export type StreamChatAiAssistantRequestClientCapabilitiesItemEnum =
 export type StreamChatAiAssistantRequestClientCapabilitiesItemEnumList = Array<
   StreamChatAiAssistantRequestClientCapabilitiesItemEnum | (string & {})
 >;
+const StreamChatAiAssistantRequestClientCapabilitiesItemEnumList =
+  ConversationInputTypesItemEnumList as any as S.Schema<StreamChatAiAssistantRequestClientCapabilitiesItemEnumList>;
+
 /** The user's answer to an AssistantConfirmationRequest, sent on the next SessionService.StreamChatAiAssistant call to resume the paused agent. */
 export interface AssistantConfirmationResponse {
   /** The chosen option's submit_text, or free-form user text. The paused action is cancelled and the text is handed to the agent to act on. */
@@ -5254,6 +7649,11 @@ export interface AssistantConfirmationResponse {
   /** The AssistantConfirmationRequest.confirmation_id being answered. */
   confirmationId?: string;
 }
+const AssistantConfirmationResponse = /*@__PURE__*/ __L.at(
+  __c68,
+  1,
+) as any as S.Schema<AssistantConfirmationResponse>;
+
 /** Event sent by the client or background worker to resume an assistant session after an asynchronous Long-Running Operation (LRO) completes. */
 export interface OperationCompletedEvent {
   /** The primary resource targeted or produced by the operation (e.g. evaluation run ID, app ID, dataset ID). */
@@ -5271,6 +7671,11 @@ export interface OperationCompletedEvent {
   /** Optional structured result metadata (e.g. pass_rate, total_examples, export_uri). */
   metadata?: DocumentMap;
 }
+const OperationCompletedEvent = /*@__PURE__*/ __L.at(
+  __c68,
+  2,
+) as any as S.Schema<OperationCompletedEvent>;
+
 /** Request message for SessionService.StreamChatAiAssistant. */
 export interface StreamChatAiAssistantRequest {
   /** Optional. Response features this client can render. The server only emits events that need a capability (e.g. `confirmation_request`) when the capability is declared, so older clients never receive events they would silently drop. */
@@ -5290,13 +7695,25 @@ export interface StreamChatAiAssistantRequest {
   /** Optional. Resumes an assistant session paused waiting for a client-managed long-running operation to complete. */
   operationCompletedEvent?: OperationCompletedEvent;
 }
+const StreamChatAiAssistantRequest = /*@__PURE__*/ __L.at(
+  __c68,
+  3,
+) as any as S.Schema<StreamChatAiAssistantRequest>;
+
 export interface StreamChatAiAssistantProjectsLocationsAppsAssistantSessionsRequest {
   /** Required. The assistant session to be used to run the assistant. Format: `projects/{project}/locations/{location}/apps/{app}/assistantSessions/{assistant_session}` */
   name: string;
   /** Request body */
   body?: StreamChatAiAssistantRequest;
 }
+const StreamChatAiAssistantProjectsLocationsAppsAssistantSessionsRequest = /*@__PURE__*/ __L.at(
+  __c68,
+  4,
+) as any as S.Schema<StreamChatAiAssistantProjectsLocationsAppsAssistantSessionsRequest>;
+
 export type TurnHandoffEventReasonEnum = "REASON_UNSPECIFIED" | "SERVER_RESTART";
+const TurnHandoffEventReasonEnum = S.String;
+
 /** Emitted before this task stops serving the stream mid-turn (e.g. a server restart). The turn's state is persisted; a reconnect carrying resume_from_sequence_number continues it on another task. */
 export interface TurnHandoffEvent {
   /** Identifies the turn to resume. */
@@ -5304,6 +7721,8 @@ export interface TurnHandoffEvent {
   /** Why the stream is handing off. */
   reason?: TurnHandoffEventReasonEnum;
 }
+const TurnHandoffEvent = /*@__PURE__*/ __L.at(__c68, 5) as any as S.Schema<TurnHandoffEvent>;
+
 export type ArtifactChunkStateEnum =
   | "STATE_UNSPECIFIED"
   | "STARTED"
@@ -5311,6 +7730,8 @@ export type ArtifactChunkStateEnum =
   | "FINALIZED"
   | "FAILED"
   | "CLOSED";
+const ArtifactChunkStateEnum = S.String;
+
 /** A streamed fragment of a document artifact (e.g. a markdown TDD) that the assistant is generating. Content deltas stream while the document is being written so clients can render a live preview; the FINALIZED chunk carries the GCS URI once the file has been persisted. */
 export interface ArtifactChunk {
   /** Incremental artifact content. Set on DELTA chunks. */
@@ -5326,6 +7747,8 @@ export interface ArtifactChunk {
   /** The file name shown to the user, e.g. "hotel_booking_tdd.md". Set on STARTED (and repeated on FINALIZED). */
   displayName?: string;
 }
+const ArtifactChunk = /*@__PURE__*/ __L.at(__c68, 6) as any as S.Schema<ArtifactChunk>;
+
 /** A single selectable option. */
 export interface OptionQuestionsChunkOption {
   /** Short plain-text option title (no markdown, no numbering). */
@@ -5335,7 +7758,17 @@ export interface OptionQuestionsChunkOption {
   /** Optional message text to send when the option is chosen; defaults to `title` when empty. */
   submitText?: string;
 }
+const OptionQuestionsChunkOption = /*@__PURE__*/ __L.at(
+  __c68,
+  7,
+) as any as S.Schema<OptionQuestionsChunkOption>;
+
 export type OptionQuestionsChunkOptionList = Array<OptionQuestionsChunkOption>;
+const OptionQuestionsChunkOptionList = /*@__PURE__*/ __L.at(
+  __c69,
+  0,
+) as any as S.Schema<OptionQuestionsChunkOptionList>;
+
 /** One question with its options. */
 export interface OptionQuestionsChunkQuestion {
   /** The question header text. */
@@ -5343,7 +7776,17 @@ export interface OptionQuestionsChunkQuestion {
   /** The selectable options, in presentation order. */
   options?: OptionQuestionsChunkOptionList;
 }
+const OptionQuestionsChunkQuestion = /*@__PURE__*/ __L.at(
+  __c69,
+  1,
+) as any as S.Schema<OptionQuestionsChunkQuestion>;
+
 export type OptionQuestionsChunkQuestionList = Array<OptionQuestionsChunkQuestion>;
+const OptionQuestionsChunkQuestionList = /*@__PURE__*/ __L.at(
+  __c69,
+  2,
+) as any as S.Schema<OptionQuestionsChunkQuestionList>;
+
 /** A blocking question or confirmation the assistant needs answered before an agent action can proceed. The requesting agent is paused and resumes only when the answer arrives on a later StreamChatAiAssistantRequest.confirmation_response. */
 export interface AssistantConfirmationRequest {
   /** Label for the declining action of a binary confirmation (e.g. "Not yet"). Unset when `questions` is populated. */
@@ -5363,10 +7806,17 @@ export interface AssistantConfirmationRequest {
   /** Identifier correlating this request with its response. Opaque to clients; must be echoed verbatim on the answering request. */
   confirmationId?: string;
 }
+const AssistantConfirmationRequest = /*@__PURE__*/ __L.at(
+  __c69,
+  3,
+) as any as S.Schema<AssistantConfirmationRequest>;
+
 export type TurnMetadataContractStreamingPhaseEnum =
   | "CONTRACT_STREAMING_PHASE_UNSPECIFIED"
   | "DRAFTING"
   | "REVISING";
+const TurnMetadataContractStreamingPhaseEnum = S.String;
+
 /** Turn-level metadata and intent categorization. */
 export interface TurnMetadata {
   /** Set on the terminal event of a contract draft whose every placeholder is resolved (contract_progress is 100%), whether or not the draft was published. Clients complete and dismiss the contract progress display on it; publication is reported separately by contract_finalized. */
@@ -5378,7 +7828,14 @@ export interface TurnMetadata {
   /** Set on the final artifact event of a turn whose contract draft was published (a revision was activated). Terminal for the clarification flow of this draft: contract_progress is authoritative and complete. */
   contractFinalized?: boolean;
 }
+const TurnMetadata = /*@__PURE__*/ __L.at(__c69, 4) as any as S.Schema<TurnMetadata>;
+
 export type StreamChatAiAssistantResponseList = Array<StreamChatAiAssistantResponse>;
+const StreamChatAiAssistantResponseList = /*@__PURE__*/ __L.at(
+  __c69,
+  5,
+) as any as S.Schema<StreamChatAiAssistantResponseList>;
+
 /** A compacted replay of an in-flight turn: everything needed to render the turn's visible output so far, plus the position live events continue from. */
 export interface TurnResumeSnapshot {
   /** The position this snapshot represents. Live events follow with sequence_number strictly greater than this. When lower than the resume_from_sequence_number the client requested, flushed progress lags what the client already rendered: the client must discard its rendered content of this turn beyond this position before applying the snapshot. */
@@ -5390,11 +7847,15 @@ export interface TurnResumeSnapshot {
   /** Identifies the turn being attached to. */
   turnId?: string;
 }
+const TurnResumeSnapshot = /*@__PURE__*/ __L.at(__c69, 6) as any as S.Schema<TurnResumeSnapshot>;
+
 export type TurnCompletedEventReasonEnum =
   | "REASON_UNSPECIFIED"
   | "COMPLETED"
   | "ABANDONED"
   | "RESUME_UNAVAILABLE";
+const TurnCompletedEventReasonEnum = S.String;
+
 /** Terminal event of a turn (see StreamChatAiAssistantResponse.turn_completed). */
 export interface TurnCompletedEvent {
   /** Why the turn ended. */
@@ -5404,11 +7865,18 @@ export interface TurnCompletedEvent {
   /** Identifier of the turn that ended; matches TurnResumeSnapshot.turn_id and ActiveTurnInfo.turn_id. */
   turnId?: string;
 }
+const TurnCompletedEvent = /*@__PURE__*/ __L.at(__c69, 7) as any as S.Schema<TurnCompletedEvent>;
+
 /** Structured clarification options the assistant asks the user to choose among, transduced server-side out of the model's turn (the option block is stripped from the streamed and persisted text). The console renders a keyboard-navigable option list docked above the composer. */
 export interface OptionQuestionsChunk {
   /** The questions asked this turn. More than one entry drives the console's "1 of N" pager. */
   questions?: OptionQuestionsChunkQuestionList;
 }
+const OptionQuestionsChunk = /*@__PURE__*/ __L.at(
+  __c70,
+  0,
+) as any as S.Schema<OptionQuestionsChunk>;
+
 /** Response message for SessionService.StreamChatAiAssistant. */
 export interface StreamChatAiAssistantResponse {
   /** Timestamp when the event occurred. */
@@ -5448,12 +7916,22 @@ export interface StreamChatAiAssistantResponse {
   /** Optional. UI event payload. */
   uiEvent?: UiEvent;
 }
+const StreamChatAiAssistantResponse = /*@__PURE__*/ __L.at(
+  __c70,
+  1,
+) as any as S.Schema<StreamChatAiAssistantResponse>;
+
 export interface StreamProjectsLocationsAppsDeploymentsMessageRequest {
   /** Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the Agent Card when that field is set. */
   tenant: string;
   /** Request body */
   body?: LfA2aV1SendMessageRequest;
 }
+const StreamProjectsLocationsAppsDeploymentsMessageRequest = /*@__PURE__*/ __L.at(
+  __c70,
+  2,
+) as any as S.Schema<StreamProjectsLocationsAppsDeploymentsMessageRequest>;
+
 /** A task delta where an artifact has been generated. */
 export interface LfA2aV1TaskArtifactUpdateEvent {
   /** If true, the content of this artifact should be appended to a previously sent artifact with the same ID. */
@@ -5469,6 +7947,11 @@ export interface LfA2aV1TaskArtifactUpdateEvent {
   /** Required. The ID of the task for this artifact. */
   taskId?: string;
 }
+const LfA2aV1TaskArtifactUpdateEvent = /*@__PURE__*/ __L.at(
+  __c70,
+  3,
+) as any as S.Schema<LfA2aV1TaskArtifactUpdateEvent>;
+
 /** An event sent by the agent to notify the client of a change in a task's status. */
 export interface LfA2aV1TaskStatusUpdateEvent {
   /** Required. The ID of the context that the task belongs to. */
@@ -5480,6 +7963,11 @@ export interface LfA2aV1TaskStatusUpdateEvent {
   /** Required. The new status of the task. */
   status?: LfA2aV1TaskStatus;
 }
+const LfA2aV1TaskStatusUpdateEvent = /*@__PURE__*/ __L.at(
+  __c70,
+  4,
+) as any as S.Schema<LfA2aV1TaskStatusUpdateEvent>;
+
 /** A wrapper object used in streaming operations to encapsulate different types of response data. */
 export interface LfA2aV1StreamResponse {
   /** A Message object containing a message from the agent. */
@@ -5491,24 +7979,44 @@ export interface LfA2aV1StreamResponse {
   /** A Task object containing the current state of the task. */
   task?: LfA2aV1Task;
 }
+const LfA2aV1StreamResponse = /*@__PURE__*/ __L.at(
+  __c70,
+  5,
+) as any as S.Schema<LfA2aV1StreamResponse>;
+
 export interface StreamProjectsLocationsAppsMessageRequest {
   /** Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the Agent Card when that field is set. */
   tenant: string;
   /** Request body */
   body?: LfA2aV1SendMessageRequest;
 }
+const StreamProjectsLocationsAppsMessageRequest = /*@__PURE__*/ __L.at(
+  __c70,
+  6,
+) as any as S.Schema<StreamProjectsLocationsAppsMessageRequest>;
+
 export interface StreamProjectsLocationsAppsVersionsMessageRequest {
   /** Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the Agent Card when that field is set. */
   tenant: string;
   /** Request body */
   body?: LfA2aV1SendMessageRequest;
 }
+const StreamProjectsLocationsAppsVersionsMessageRequest = /*@__PURE__*/ __L.at(
+  __c70,
+  7,
+) as any as S.Schema<StreamProjectsLocationsAppsVersionsMessageRequest>;
+
 export interface StreamRunSessionProjectsLocationsAppsSessionsRequest {
   /** Required. The unique identifier of the session. Format: `projects/{project}/locations/{location}/apps/{app}/sessions/{session}` */
   session: string;
   /** Request body */
   body?: RunSessionRequest;
 }
+const StreamRunSessionProjectsLocationsAppsSessionsRequest = /*@__PURE__*/ __L.at(
+  __c71,
+  0,
+) as any as S.Schema<StreamRunSessionProjectsLocationsAppsSessionsRequest>;
+
 /** Request message for EvaluationService.TestPersonaVoice. */
 export interface TestPersonaVoiceRequest {
   /** Required. The text to test the voice for. */
@@ -5516,17 +8024,32 @@ export interface TestPersonaVoiceRequest {
   /** Required. The persona ID to test the voice for. Also accepts "default". */
   personaId?: string;
 }
+const TestPersonaVoiceRequest = /*@__PURE__*/ __L.at(
+  __c71,
+  1,
+) as any as S.Schema<TestPersonaVoiceRequest>;
+
 export interface TestPersonaVoiceProjectsLocationsAppsRequest {
   /** Required. the resource name of the app to test the persona voice for. Format: `projects/{project}/locations/{location}/apps/{app}` */
   app: string;
   /** Request body */
   body?: TestPersonaVoiceRequest;
 }
+const TestPersonaVoiceProjectsLocationsAppsRequest = /*@__PURE__*/ __L.at(
+  __c71,
+  2,
+) as any as S.Schema<TestPersonaVoiceProjectsLocationsAppsRequest>;
+
 /** Response message for EvaluationService.TestPersonaVoice. */
 export interface TestPersonaVoiceResponse {
   /** The audio data bytes of the synthesized voice. */
   audio?: string;
 }
+const TestPersonaVoiceResponse = /*@__PURE__*/ __L.at(
+  __c71,
+  3,
+) as any as S.Schema<TestPersonaVoiceResponse>;
+
 export interface UpdateSecuritySettingsProjectsLocationsRequest {
   /** Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated. */
   updateMask?: string;
@@ -5535,6 +8058,11 @@ export interface UpdateSecuritySettingsProjectsLocationsRequest {
   /** Request body */
   body?: SecuritySettings;
 }
+const UpdateSecuritySettingsProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c71,
+  4,
+) as any as S.Schema<UpdateSecuritySettingsProjectsLocationsRequest>;
+
 /** Request message for EvaluationService.UploadEvaluationAudio. */
 export interface UploadEvaluationAudioRequest {
   /** Required. The raw audio bytes. The format of the audio must be single-channel LINEAR16 with a sample rate of 16kHz (default InputAudioConfig). */
@@ -5542,12 +8070,22 @@ export interface UploadEvaluationAudioRequest {
   /** Optional. The Google Cloud Storage URI of the previously uploaded audio file to be deleted. Format: `gs:///` */
   previousAudioGcsUri?: string;
 }
+const UploadEvaluationAudioRequest = /*@__PURE__*/ __L.at(
+  __c71,
+  5,
+) as any as S.Schema<UploadEvaluationAudioRequest>;
+
 export interface UploadEvaluationAudioProjectsLocationsAppsEvaluationsRequest {
   /** Required. The resource name of the Evaluation for which to upload the evaluation audio. Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}` */
   name: string;
   /** Request body */
   body?: UploadEvaluationAudioRequest;
 }
+const UploadEvaluationAudioProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ __L.at(
+  __c71,
+  6,
+) as any as S.Schema<UploadEvaluationAudioProjectsLocationsAppsEvaluationsRequest>;
+
 /** Response message for EvaluationService.UploadEvaluationAudio. */
 export interface UploadEvaluationAudioResponse {
   /** The Google Cloud Storage URI where the uploaded audio file is stored. Format: `gs:///` */
@@ -5557,6 +8095,11 @@ export interface UploadEvaluationAudioResponse {
   /** The transcript of the audio, generated by Cloud Speech-to-Text. */
   transcript?: string;
 }
+const UploadEvaluationAudioResponse = /*@__PURE__*/ __L.at(
+  __c71,
+  7,
+) as any as S.Schema<UploadEvaluationAudioResponse>;
+
 export type BatchDeleteProjectsLocationsAppsConversationsError =
   | NotFound
   | Forbidden
@@ -5570,8 +8113,8 @@ export const batchDeleteProjectsLocationsAppsConversations: API.OperationMethod<
   BatchDeleteProjectsLocationsAppsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<BatchDeleteProjectsLocationsAppsConversationsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: BatchDeleteProjectsLocationsAppsConversationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5590,10 +8133,8 @@ export const cancelAssistantTurnProjectsLocationsAppsAssistantSessions: API.Oper
   CancelAssistantTurnProjectsLocationsAppsAssistantSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    8,
-  ) as any as S.Schema<CancelAssistantTurnProjectsLocationsAppsAssistantSessionsRequest>,
-  output: __S(9) as any as S.Schema<CancelAssistantTurnResponse>,
+  input: CancelAssistantTurnProjectsLocationsAppsAssistantSessionsRequest,
+  output: CancelAssistantTurnResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5612,8 +8153,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(10) as any as S.Schema<Empty>,
+  input: CancelProjectsLocationsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5632,8 +8173,8 @@ export const chatAiAssistantProjectsLocationsApps: API.OperationMethod<
   ChatAiAssistantProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<ChatAiAssistantProjectsLocationsAppsRequest>,
-  output: __S(16) as any as S.Schema<ChatAiAssistantResponse>,
+  input: ChatAiAssistantProjectsLocationsAppsRequest,
+  output: ChatAiAssistantResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5652,8 +8193,8 @@ export const createProjectsLocationsApps: API.OperationMethod<
   CreateProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<CreateProjectsLocationsAppsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsAppsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5672,8 +8213,8 @@ export const createProjectsLocationsAppsAgents: API.OperationMethod<
   CreateProjectsLocationsAppsAgentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<CreateProjectsLocationsAppsAgentsRequest>,
-  output: __S(99) as any as S.Schema<Agent>,
+  input: CreateProjectsLocationsAppsAgentsRequest,
+  output: Agent,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5692,8 +8233,8 @@ export const createProjectsLocationsAppsAssistantSessions: API.OperationMethod<
   CreateProjectsLocationsAppsAssistantSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<CreateProjectsLocationsAppsAssistantSessionsRequest>,
-  output: __S(112) as any as S.Schema<AssistantSession>,
+  input: CreateProjectsLocationsAppsAssistantSessionsRequest,
+  output: AssistantSession,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5712,8 +8253,8 @@ export const createProjectsLocationsAppsDeployments: API.OperationMethod<
   CreateProjectsLocationsAppsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<CreateProjectsLocationsAppsDeploymentsRequest>,
-  output: __S(120) as any as S.Schema<Deployment>,
+  input: CreateProjectsLocationsAppsDeploymentsRequest,
+  output: Deployment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5732,8 +8273,8 @@ export const createProjectsLocationsAppsEvaluationDatasets: API.OperationMethod<
   CreateProjectsLocationsAppsEvaluationDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<CreateProjectsLocationsAppsEvaluationDatasetsRequest>,
-  output: __S(135) as any as S.Schema<EvaluationDataset>,
+  input: CreateProjectsLocationsAppsEvaluationDatasetsRequest,
+  output: EvaluationDataset,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5752,8 +8293,8 @@ export const createProjectsLocationsAppsEvaluationExpectations: API.OperationMet
   CreateProjectsLocationsAppsEvaluationExpectationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<CreateProjectsLocationsAppsEvaluationExpectationsRequest>,
-  output: __S(138) as any as S.Schema<EvaluationExpectation>,
+  input: CreateProjectsLocationsAppsEvaluationExpectationsRequest,
+  output: EvaluationExpectation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5772,8 +8313,8 @@ export const createProjectsLocationsAppsEvaluations: API.OperationMethod<
   CreateProjectsLocationsAppsEvaluationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199) as any as S.Schema<CreateProjectsLocationsAppsEvaluationsRequest>,
-  output: __S(198) as any as S.Schema<Evaluation>,
+  input: CreateProjectsLocationsAppsEvaluationsRequest,
+  output: Evaluation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5792,8 +8333,8 @@ export const createProjectsLocationsAppsExamples: API.OperationMethod<
   CreateProjectsLocationsAppsExamplesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202) as any as S.Schema<CreateProjectsLocationsAppsExamplesRequest>,
-  output: __S(201) as any as S.Schema<Example>,
+  input: CreateProjectsLocationsAppsExamplesRequest,
+  output: Example,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5812,8 +8353,8 @@ export const createProjectsLocationsAppsGuardrails: API.OperationMethod<
   CreateProjectsLocationsAppsGuardrailsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218) as any as S.Schema<CreateProjectsLocationsAppsGuardrailsRequest>,
-  output: __S(217) as any as S.Schema<Guardrail>,
+  input: CreateProjectsLocationsAppsGuardrailsRequest,
+  output: Guardrail,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5832,8 +8373,8 @@ export const createProjectsLocationsAppsScheduledEvaluationRuns: API.OperationMe
   CreateProjectsLocationsAppsScheduledEvaluationRunsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226) as any as S.Schema<CreateProjectsLocationsAppsScheduledEvaluationRunsRequest>,
-  output: __S(225) as any as S.Schema<ScheduledEvaluationRun>,
+  input: CreateProjectsLocationsAppsScheduledEvaluationRunsRequest,
+  output: ScheduledEvaluationRun,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5852,8 +8393,8 @@ export const createProjectsLocationsAppsTools: API.OperationMethod<
   CreateProjectsLocationsAppsToolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273) as any as S.Schema<CreateProjectsLocationsAppsToolsRequest>,
-  output: __S(272) as any as S.Schema<Tool>,
+  input: CreateProjectsLocationsAppsToolsRequest,
+  output: Tool,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5872,8 +8413,8 @@ export const createProjectsLocationsAppsToolsets: API.OperationMethod<
   CreateProjectsLocationsAppsToolsetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282) as any as S.Schema<CreateProjectsLocationsAppsToolsetsRequest>,
-  output: __S(281) as any as S.Schema<Toolset>,
+  input: CreateProjectsLocationsAppsToolsetsRequest,
+  output: Toolset,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5892,8 +8433,8 @@ export const createProjectsLocationsAppsVersions: API.OperationMethod<
   CreateProjectsLocationsAppsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290) as any as S.Schema<CreateProjectsLocationsAppsVersionsRequest>,
-  output: __S(289) as any as S.Schema<AppVersion>,
+  input: CreateProjectsLocationsAppsVersionsRequest,
+  output: AppVersion,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5912,8 +8453,8 @@ export const deleteProjectsLocationsApps: API.OperationMethod<
   DeleteProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291) as any as S.Schema<DeleteProjectsLocationsAppsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsAppsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5932,8 +8473,8 @@ export const deleteProjectsLocationsAppsAgents: API.OperationMethod<
   DeleteProjectsLocationsAppsAgentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292) as any as S.Schema<DeleteProjectsLocationsAppsAgentsRequest>,
-  output: __S(10) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsAppsAgentsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5952,8 +8493,8 @@ export const deleteProjectsLocationsAppsAssistantSessions: API.OperationMethod<
   DeleteProjectsLocationsAppsAssistantSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293) as any as S.Schema<DeleteProjectsLocationsAppsAssistantSessionsRequest>,
-  output: __S(10) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsAppsAssistantSessionsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5972,8 +8513,8 @@ export const deleteProjectsLocationsAppsConversations: API.OperationMethod<
   DeleteProjectsLocationsAppsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294) as any as S.Schema<DeleteProjectsLocationsAppsConversationsRequest>,
-  output: __S(10) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsAppsConversationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5992,8 +8533,8 @@ export const deleteProjectsLocationsAppsDeployments: API.OperationMethod<
   DeleteProjectsLocationsAppsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295) as any as S.Schema<DeleteProjectsLocationsAppsDeploymentsRequest>,
-  output: __S(10) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsAppsDeploymentsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6012,8 +8553,8 @@ export const deleteProjectsLocationsAppsEvaluationDatasets: API.OperationMethod<
   DeleteProjectsLocationsAppsEvaluationDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296) as any as S.Schema<DeleteProjectsLocationsAppsEvaluationDatasetsRequest>,
-  output: __S(10) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsAppsEvaluationDatasetsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6032,8 +8573,8 @@ export const deleteProjectsLocationsAppsEvaluationExpectations: API.OperationMet
   DeleteProjectsLocationsAppsEvaluationExpectationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297) as any as S.Schema<DeleteProjectsLocationsAppsEvaluationExpectationsRequest>,
-  output: __S(10) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsAppsEvaluationExpectationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6052,8 +8593,8 @@ export const deleteProjectsLocationsAppsEvaluationRuns: API.OperationMethod<
   DeleteProjectsLocationsAppsEvaluationRunsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298) as any as S.Schema<DeleteProjectsLocationsAppsEvaluationRunsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsAppsEvaluationRunsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6072,8 +8613,8 @@ export const deleteProjectsLocationsAppsEvaluations: API.OperationMethod<
   DeleteProjectsLocationsAppsEvaluationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299) as any as S.Schema<DeleteProjectsLocationsAppsEvaluationsRequest>,
-  output: __S(10) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsAppsEvaluationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6092,8 +8633,8 @@ export const deleteProjectsLocationsAppsEvaluationsResults: API.OperationMethod<
   DeleteProjectsLocationsAppsEvaluationsResultsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300) as any as S.Schema<DeleteProjectsLocationsAppsEvaluationsResultsRequest>,
-  output: __S(10) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsAppsEvaluationsResultsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6112,8 +8653,8 @@ export const deleteProjectsLocationsAppsExamples: API.OperationMethod<
   DeleteProjectsLocationsAppsExamplesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301) as any as S.Schema<DeleteProjectsLocationsAppsExamplesRequest>,
-  output: __S(10) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsAppsExamplesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6132,8 +8673,8 @@ export const deleteProjectsLocationsAppsGuardrails: API.OperationMethod<
   DeleteProjectsLocationsAppsGuardrailsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302) as any as S.Schema<DeleteProjectsLocationsAppsGuardrailsRequest>,
-  output: __S(10) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsAppsGuardrailsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6152,8 +8693,8 @@ export const deleteProjectsLocationsAppsScheduledEvaluationRuns: API.OperationMe
   DeleteProjectsLocationsAppsScheduledEvaluationRunsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303) as any as S.Schema<DeleteProjectsLocationsAppsScheduledEvaluationRunsRequest>,
-  output: __S(10) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsAppsScheduledEvaluationRunsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6172,8 +8713,8 @@ export const deleteProjectsLocationsAppsTools: API.OperationMethod<
   DeleteProjectsLocationsAppsToolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304) as any as S.Schema<DeleteProjectsLocationsAppsToolsRequest>,
-  output: __S(10) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsAppsToolsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6192,8 +8733,8 @@ export const deleteProjectsLocationsAppsToolsets: API.OperationMethod<
   DeleteProjectsLocationsAppsToolsetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305) as any as S.Schema<DeleteProjectsLocationsAppsToolsetsRequest>,
-  output: __S(10) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsAppsToolsetsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6212,8 +8753,8 @@ export const deleteProjectsLocationsAppsVersions: API.OperationMethod<
   DeleteProjectsLocationsAppsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306) as any as S.Schema<DeleteProjectsLocationsAppsVersionsRequest>,
-  output: __S(10) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsAppsVersionsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6232,8 +8773,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(10) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6252,8 +8793,8 @@ export const executeToolProjectsLocationsApps: API.OperationMethod<
   ExecuteToolProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312) as any as S.Schema<ExecuteToolProjectsLocationsAppsRequest>,
-  output: __S(321) as any as S.Schema<ExecuteToolResponse>,
+  input: ExecuteToolProjectsLocationsAppsRequest,
+  output: ExecuteToolResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6272,8 +8813,8 @@ export const exportAppProjectsLocationsApps: API.OperationMethod<
   ExportAppProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323) as any as S.Schema<ExportAppProjectsLocationsAppsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: ExportAppProjectsLocationsAppsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6292,8 +8833,8 @@ export const exportProjectsLocationsAppsEvaluationRuns: API.OperationMethod<
   ExportProjectsLocationsAppsEvaluationRunsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326) as any as S.Schema<ExportProjectsLocationsAppsEvaluationRunsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: ExportProjectsLocationsAppsEvaluationRunsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6312,8 +8853,8 @@ export const exportProjectsLocationsAppsEvaluations: API.OperationMethod<
   ExportProjectsLocationsAppsEvaluationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328) as any as S.Schema<ExportProjectsLocationsAppsEvaluationsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: ExportProjectsLocationsAppsEvaluationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6332,8 +8873,8 @@ export const exportProjectsLocationsAppsEvaluationsResults: API.OperationMethod<
   ExportProjectsLocationsAppsEvaluationsResultsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329) as any as S.Schema<ExportProjectsLocationsAppsEvaluationsResultsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: ExportProjectsLocationsAppsEvaluationsResultsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6352,8 +8893,8 @@ export const generateAppResourceProjectsLocationsApps: API.OperationMethod<
   GenerateAppResourceProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350) as any as S.Schema<GenerateAppResourceProjectsLocationsAppsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: GenerateAppResourceProjectsLocationsAppsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6372,8 +8913,8 @@ export const generateChatTokenProjectsLocationsAppsSessions: API.OperationMethod
   GenerateChatTokenProjectsLocationsAppsSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352) as any as S.Schema<GenerateChatTokenProjectsLocationsAppsSessionsRequest>,
-  output: __S(353) as any as S.Schema<GenerateChatTokenResponse>,
+  input: GenerateChatTokenProjectsLocationsAppsSessionsRequest,
+  output: GenerateChatTokenResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6392,8 +8933,8 @@ export const generateEvaluationProjectsLocationsAppsConversations: API.Operation
   GenerateEvaluationProjectsLocationsAppsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355) as any as S.Schema<GenerateEvaluationProjectsLocationsAppsConversationsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: GenerateEvaluationProjectsLocationsAppsConversationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6412,8 +8953,8 @@ export const generateOnboardingSuggestionsProjectsLocationsApps: API.OperationMe
   GenerateOnboardingSuggestionsProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357) as any as S.Schema<GenerateOnboardingSuggestionsProjectsLocationsAppsRequest>,
-  output: __S(361) as any as S.Schema<GenerateOnboardingSuggestionsResponse>,
+  input: GenerateOnboardingSuggestionsProjectsLocationsAppsRequest,
+  output: GenerateOnboardingSuggestionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6427,8 +8968,8 @@ export const getExtendedAgentCardProjectsLocationsApps: API.OperationMethod<
   GetExtendedAgentCardProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362) as any as S.Schema<GetExtendedAgentCardProjectsLocationsAppsRequest>,
-  output: __S(390) as any as S.Schema<LfA2aV1AgentCard>,
+  input: GetExtendedAgentCardProjectsLocationsAppsRequest,
+  output: LfA2aV1AgentCard,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6445,8 +8986,8 @@ export const getExtendedAgentCardProjectsLocationsAppsDeployments: API.Operation
   GetExtendedAgentCardProjectsLocationsAppsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391) as any as S.Schema<GetExtendedAgentCardProjectsLocationsAppsDeploymentsRequest>,
-  output: __S(390) as any as S.Schema<LfA2aV1AgentCard>,
+  input: GetExtendedAgentCardProjectsLocationsAppsDeploymentsRequest,
+  output: LfA2aV1AgentCard,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6463,8 +9004,8 @@ export const getExtendedAgentCardProjectsLocationsAppsVersions: API.OperationMet
   GetExtendedAgentCardProjectsLocationsAppsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392) as any as S.Schema<GetExtendedAgentCardProjectsLocationsAppsVersionsRequest>,
-  output: __S(390) as any as S.Schema<LfA2aV1AgentCard>,
+  input: GetExtendedAgentCardProjectsLocationsAppsVersionsRequest,
+  output: LfA2aV1AgentCard,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6478,8 +9019,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(393) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(394) as any as S.Schema<Location>,
+  input: GetProjectsLocationsRequest,
+  output: Location,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6493,8 +9034,8 @@ export const getProjectsLocationsApps: API.OperationMethod<
   GetProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395) as any as S.Schema<GetProjectsLocationsAppsRequest>,
-  output: __S(74) as any as S.Schema<App>,
+  input: GetProjectsLocationsAppsRequest,
+  output: App,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6508,8 +9049,8 @@ export const getProjectsLocationsAppsAgents: API.OperationMethod<
   GetProjectsLocationsAppsAgentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(396) as any as S.Schema<GetProjectsLocationsAppsAgentsRequest>,
-  output: __S(99) as any as S.Schema<Agent>,
+  input: GetProjectsLocationsAppsAgentsRequest,
+  output: Agent,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6523,8 +9064,8 @@ export const getProjectsLocationsAppsAssistantSessions: API.OperationMethod<
   GetProjectsLocationsAppsAssistantSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(397) as any as S.Schema<GetProjectsLocationsAppsAssistantSessionsRequest>,
-  output: __S(112) as any as S.Schema<AssistantSession>,
+  input: GetProjectsLocationsAppsAssistantSessionsRequest,
+  output: AssistantSession,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6538,8 +9079,8 @@ export const getProjectsLocationsAppsChangelogs: API.OperationMethod<
   GetProjectsLocationsAppsChangelogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398) as any as S.Schema<GetProjectsLocationsAppsChangelogsRequest>,
-  output: __S(399) as any as S.Schema<Changelog>,
+  input: GetProjectsLocationsAppsChangelogsRequest,
+  output: Changelog,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6553,8 +9094,8 @@ export const getProjectsLocationsAppsConversations: API.OperationMethod<
   GetProjectsLocationsAppsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400) as any as S.Schema<GetProjectsLocationsAppsConversationsRequest>,
-  output: __S(404) as any as S.Schema<Conversation>,
+  input: GetProjectsLocationsAppsConversationsRequest,
+  output: Conversation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6568,8 +9109,8 @@ export const getProjectsLocationsAppsDeployments: API.OperationMethod<
   GetProjectsLocationsAppsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405) as any as S.Schema<GetProjectsLocationsAppsDeploymentsRequest>,
-  output: __S(120) as any as S.Schema<Deployment>,
+  input: GetProjectsLocationsAppsDeploymentsRequest,
+  output: Deployment,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6583,8 +9124,8 @@ export const getProjectsLocationsAppsEvaluationDatasets: API.OperationMethod<
   GetProjectsLocationsAppsEvaluationDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(406) as any as S.Schema<GetProjectsLocationsAppsEvaluationDatasetsRequest>,
-  output: __S(135) as any as S.Schema<EvaluationDataset>,
+  input: GetProjectsLocationsAppsEvaluationDatasetsRequest,
+  output: EvaluationDataset,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6598,8 +9139,8 @@ export const getProjectsLocationsAppsEvaluationExpectations: API.OperationMethod
   GetProjectsLocationsAppsEvaluationExpectationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407) as any as S.Schema<GetProjectsLocationsAppsEvaluationExpectationsRequest>,
-  output: __S(138) as any as S.Schema<EvaluationExpectation>,
+  input: GetProjectsLocationsAppsEvaluationExpectationsRequest,
+  output: EvaluationExpectation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6613,8 +9154,8 @@ export const getProjectsLocationsAppsEvaluationRuns: API.OperationMethod<
   GetProjectsLocationsAppsEvaluationRunsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408) as any as S.Schema<GetProjectsLocationsAppsEvaluationRunsRequest>,
-  output: __S(422) as any as S.Schema<EvaluationRun>,
+  input: GetProjectsLocationsAppsEvaluationRunsRequest,
+  output: EvaluationRun,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6628,8 +9169,8 @@ export const getProjectsLocationsAppsEvaluations: API.OperationMethod<
   GetProjectsLocationsAppsEvaluationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423) as any as S.Schema<GetProjectsLocationsAppsEvaluationsRequest>,
-  output: __S(198) as any as S.Schema<Evaluation>,
+  input: GetProjectsLocationsAppsEvaluationsRequest,
+  output: Evaluation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6643,8 +9184,8 @@ export const getProjectsLocationsAppsEvaluationsResults: API.OperationMethod<
   GetProjectsLocationsAppsEvaluationsResultsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424) as any as S.Schema<GetProjectsLocationsAppsEvaluationsResultsRequest>,
-  output: __S(185) as any as S.Schema<EvaluationResult>,
+  input: GetProjectsLocationsAppsEvaluationsResultsRequest,
+  output: EvaluationResult,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6658,8 +9199,8 @@ export const getProjectsLocationsAppsExamples: API.OperationMethod<
   GetProjectsLocationsAppsExamplesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(425) as any as S.Schema<GetProjectsLocationsAppsExamplesRequest>,
-  output: __S(201) as any as S.Schema<Example>,
+  input: GetProjectsLocationsAppsExamplesRequest,
+  output: Example,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6673,8 +9214,8 @@ export const getProjectsLocationsAppsGuardrails: API.OperationMethod<
   GetProjectsLocationsAppsGuardrailsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426) as any as S.Schema<GetProjectsLocationsAppsGuardrailsRequest>,
-  output: __S(217) as any as S.Schema<Guardrail>,
+  input: GetProjectsLocationsAppsGuardrailsRequest,
+  output: Guardrail,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6691,8 +9232,8 @@ export const getProjectsLocationsAppsScheduledEvaluationRuns: API.OperationMetho
   GetProjectsLocationsAppsScheduledEvaluationRunsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(427) as any as S.Schema<GetProjectsLocationsAppsScheduledEvaluationRunsRequest>,
-  output: __S(225) as any as S.Schema<ScheduledEvaluationRun>,
+  input: GetProjectsLocationsAppsScheduledEvaluationRunsRequest,
+  output: ScheduledEvaluationRun,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6706,8 +9247,8 @@ export const getProjectsLocationsAppsTools: API.OperationMethod<
   GetProjectsLocationsAppsToolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(428) as any as S.Schema<GetProjectsLocationsAppsToolsRequest>,
-  output: __S(272) as any as S.Schema<Tool>,
+  input: GetProjectsLocationsAppsToolsRequest,
+  output: Tool,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6721,8 +9262,8 @@ export const getProjectsLocationsAppsToolsets: API.OperationMethod<
   GetProjectsLocationsAppsToolsetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(429) as any as S.Schema<GetProjectsLocationsAppsToolsetsRequest>,
-  output: __S(281) as any as S.Schema<Toolset>,
+  input: GetProjectsLocationsAppsToolsetsRequest,
+  output: Toolset,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6736,8 +9277,8 @@ export const getProjectsLocationsAppsVersions: API.OperationMethod<
   GetProjectsLocationsAppsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(430) as any as S.Schema<GetProjectsLocationsAppsVersionsRequest>,
-  output: __S(289) as any as S.Schema<AppVersion>,
+  input: GetProjectsLocationsAppsVersionsRequest,
+  output: AppVersion,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6751,8 +9292,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: GetProjectsLocationsOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6766,8 +9307,8 @@ export const getSecuritySettingsProjectsLocations: API.OperationMethod<
   GetSecuritySettingsProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432) as any as S.Schema<GetSecuritySettingsProjectsLocationsRequest>,
-  output: __S(434) as any as S.Schema<SecuritySettings>,
+  input: GetSecuritySettingsProjectsLocationsRequest,
+  output: SecuritySettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6786,8 +9327,8 @@ export const getToolSchemaProjectsLocationsApps: API.OperationMethod<
   GetToolSchemaProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436) as any as S.Schema<GetToolSchemaProjectsLocationsAppsRequest>,
-  output: __S(437) as any as S.Schema<RetrieveToolSchemaResponse>,
+  input: GetToolSchemaProjectsLocationsAppsRequest,
+  output: RetrieveToolSchemaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6806,8 +9347,8 @@ export const getToolsProjectsLocationsAppsToolsets: API.OperationMethod<
   GetToolsProjectsLocationsAppsToolsetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(439) as any as S.Schema<GetToolsProjectsLocationsAppsToolsetsRequest>,
-  output: __S(440) as any as S.Schema<RetrieveToolsResponse>,
+  input: GetToolsProjectsLocationsAppsToolsetsRequest,
+  output: RetrieveToolsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6826,8 +9367,8 @@ export const importAppProjectsLocationsApps: API.OperationMethod<
   ImportAppProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(443) as any as S.Schema<ImportAppProjectsLocationsAppsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: ImportAppProjectsLocationsAppsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6846,8 +9387,8 @@ export const importEvaluationsProjectsLocationsApps: API.OperationMethod<
   ImportEvaluationsProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(446) as any as S.Schema<ImportEvaluationsProjectsLocationsAppsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: ImportEvaluationsProjectsLocationsAppsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6862,8 +9403,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(447) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(449) as any as S.Schema<ListLocationsResponse>,
+  input: ListProjectsLocationsRequest,
+  output: ListLocationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6879,8 +9420,8 @@ export const listProjectsLocationsApps: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(450) as any as S.Schema<ListProjectsLocationsAppsRequest>,
-  output: __S(452) as any as S.Schema<ListAppsResponse>,
+  input: ListProjectsLocationsAppsRequest,
+  output: ListAppsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6896,8 +9437,8 @@ export const listProjectsLocationsAppsAgents: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAgentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(453) as any as S.Schema<ListProjectsLocationsAppsAgentsRequest>,
-  output: __S(454) as any as S.Schema<ListAgentsResponse>,
+  input: ListProjectsLocationsAppsAgentsRequest,
+  output: ListAgentsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6913,8 +9454,8 @@ export const listProjectsLocationsAppsAssistantSessions: API.PaginatedOperationM
   GcpOpContext,
   ListAssistantSessionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(455) as any as S.Schema<ListProjectsLocationsAppsAssistantSessionsRequest>,
-  output: __S(457) as any as S.Schema<ListAssistantSessionsResponse>,
+  input: ListProjectsLocationsAppsAssistantSessionsRequest,
+  output: ListAssistantSessionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6930,8 +9471,8 @@ export const listProjectsLocationsAppsChangelogs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListChangelogsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(458) as any as S.Schema<ListProjectsLocationsAppsChangelogsRequest>,
-  output: __S(460) as any as S.Schema<ListChangelogsResponse>,
+  input: ListProjectsLocationsAppsChangelogsRequest,
+  output: ListChangelogsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6947,8 +9488,8 @@ export const listProjectsLocationsAppsConversations: API.PaginatedOperationMetho
   GcpOpContext,
   ListConversationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(461) as any as S.Schema<ListProjectsLocationsAppsConversationsRequest>,
-  output: __S(463) as any as S.Schema<ListConversationsResponse>,
+  input: ListProjectsLocationsAppsConversationsRequest,
+  output: ListConversationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6964,8 +9505,8 @@ export const listProjectsLocationsAppsDeployments: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(464) as any as S.Schema<ListProjectsLocationsAppsDeploymentsRequest>,
-  output: __S(466) as any as S.Schema<ListDeploymentsResponse>,
+  input: ListProjectsLocationsAppsDeploymentsRequest,
+  output: ListDeploymentsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6981,8 +9522,8 @@ export const listProjectsLocationsAppsEvaluationDatasets: API.PaginatedOperation
   GcpOpContext,
   ListEvaluationDatasetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(467) as any as S.Schema<ListProjectsLocationsAppsEvaluationDatasetsRequest>,
-  output: __S(469) as any as S.Schema<ListEvaluationDatasetsResponse>,
+  input: ListProjectsLocationsAppsEvaluationDatasetsRequest,
+  output: ListEvaluationDatasetsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7001,8 +9542,8 @@ export const listProjectsLocationsAppsEvaluationExpectations: API.PaginatedOpera
   GcpOpContext,
   ListEvaluationExpectationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(470) as any as S.Schema<ListProjectsLocationsAppsEvaluationExpectationsRequest>,
-  output: __S(472) as any as S.Schema<ListEvaluationExpectationsResponse>,
+  input: ListProjectsLocationsAppsEvaluationExpectationsRequest,
+  output: ListEvaluationExpectationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7018,8 +9559,8 @@ export const listProjectsLocationsAppsEvaluationRuns: API.PaginatedOperationMeth
   GcpOpContext,
   ListEvaluationRunsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(473) as any as S.Schema<ListProjectsLocationsAppsEvaluationRunsRequest>,
-  output: __S(475) as any as S.Schema<ListEvaluationRunsResponse>,
+  input: ListProjectsLocationsAppsEvaluationRunsRequest,
+  output: ListEvaluationRunsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7035,8 +9576,8 @@ export const listProjectsLocationsAppsEvaluations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListEvaluationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(476) as any as S.Schema<ListProjectsLocationsAppsEvaluationsRequest>,
-  output: __S(478) as any as S.Schema<ListEvaluationsResponse>,
+  input: ListProjectsLocationsAppsEvaluationsRequest,
+  output: ListEvaluationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7052,8 +9593,8 @@ export const listProjectsLocationsAppsEvaluationsResults: API.PaginatedOperation
   GcpOpContext,
   ListEvaluationResultsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(479) as any as S.Schema<ListProjectsLocationsAppsEvaluationsResultsRequest>,
-  output: __S(480) as any as S.Schema<ListEvaluationResultsResponse>,
+  input: ListProjectsLocationsAppsEvaluationsResultsRequest,
+  output: ListEvaluationResultsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7069,8 +9610,8 @@ export const listProjectsLocationsAppsExamples: API.PaginatedOperationMethod<
   GcpOpContext,
   ListExamplesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(481) as any as S.Schema<ListProjectsLocationsAppsExamplesRequest>,
-  output: __S(482) as any as S.Schema<ListExamplesResponse>,
+  input: ListProjectsLocationsAppsExamplesRequest,
+  output: ListExamplesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7086,8 +9627,8 @@ export const listProjectsLocationsAppsGuardrails: API.PaginatedOperationMethod<
   GcpOpContext,
   ListGuardrailsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(483) as any as S.Schema<ListProjectsLocationsAppsGuardrailsRequest>,
-  output: __S(484) as any as S.Schema<ListGuardrailsResponse>,
+  input: ListProjectsLocationsAppsGuardrailsRequest,
+  output: ListGuardrailsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7106,8 +9647,8 @@ export const listProjectsLocationsAppsScheduledEvaluationRuns: API.PaginatedOper
   GcpOpContext,
   ListScheduledEvaluationRunsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(485) as any as S.Schema<ListProjectsLocationsAppsScheduledEvaluationRunsRequest>,
-  output: __S(487) as any as S.Schema<ListScheduledEvaluationRunsResponse>,
+  input: ListProjectsLocationsAppsScheduledEvaluationRunsRequest,
+  output: ListScheduledEvaluationRunsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7123,8 +9664,8 @@ export const listProjectsLocationsAppsTools: API.PaginatedOperationMethod<
   GcpOpContext,
   ListToolsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(488) as any as S.Schema<ListProjectsLocationsAppsToolsRequest>,
-  output: __S(489) as any as S.Schema<ListToolsResponse>,
+  input: ListProjectsLocationsAppsToolsRequest,
+  output: ListToolsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7140,8 +9681,8 @@ export const listProjectsLocationsAppsToolsets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListToolsetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(490) as any as S.Schema<ListProjectsLocationsAppsToolsetsRequest>,
-  output: __S(491) as any as S.Schema<ListToolsetsResponse>,
+  input: ListProjectsLocationsAppsToolsetsRequest,
+  output: ListToolsetsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7157,8 +9698,8 @@ export const listProjectsLocationsAppsVersions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAppVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(492) as any as S.Schema<ListProjectsLocationsAppsVersionsRequest>,
-  output: __S(494) as any as S.Schema<ListAppVersionsResponse>,
+  input: ListProjectsLocationsAppsVersionsRequest,
+  output: ListAppVersionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7174,8 +9715,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(495) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(497) as any as S.Schema<ListOperationsResponse>,
+  input: ListProjectsLocationsOperationsRequest,
+  output: ListOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7195,8 +9736,8 @@ export const patchProjectsLocationsApps: API.OperationMethod<
   PatchProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(498) as any as S.Schema<PatchProjectsLocationsAppsRequest>,
-  output: __S(74) as any as S.Schema<App>,
+  input: PatchProjectsLocationsAppsRequest,
+  output: App,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7215,8 +9756,8 @@ export const patchProjectsLocationsAppsAgents: API.OperationMethod<
   PatchProjectsLocationsAppsAgentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(499) as any as S.Schema<PatchProjectsLocationsAppsAgentsRequest>,
-  output: __S(99) as any as S.Schema<Agent>,
+  input: PatchProjectsLocationsAppsAgentsRequest,
+  output: Agent,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7235,8 +9776,8 @@ export const patchProjectsLocationsAppsDeployments: API.OperationMethod<
   PatchProjectsLocationsAppsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(500) as any as S.Schema<PatchProjectsLocationsAppsDeploymentsRequest>,
-  output: __S(120) as any as S.Schema<Deployment>,
+  input: PatchProjectsLocationsAppsDeploymentsRequest,
+  output: Deployment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7255,8 +9796,8 @@ export const patchProjectsLocationsAppsEvaluationDatasets: API.OperationMethod<
   PatchProjectsLocationsAppsEvaluationDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(501) as any as S.Schema<PatchProjectsLocationsAppsEvaluationDatasetsRequest>,
-  output: __S(135) as any as S.Schema<EvaluationDataset>,
+  input: PatchProjectsLocationsAppsEvaluationDatasetsRequest,
+  output: EvaluationDataset,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7275,8 +9816,8 @@ export const patchProjectsLocationsAppsEvaluationExpectations: API.OperationMeth
   PatchProjectsLocationsAppsEvaluationExpectationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(502) as any as S.Schema<PatchProjectsLocationsAppsEvaluationExpectationsRequest>,
-  output: __S(138) as any as S.Schema<EvaluationExpectation>,
+  input: PatchProjectsLocationsAppsEvaluationExpectationsRequest,
+  output: EvaluationExpectation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7295,8 +9836,8 @@ export const patchProjectsLocationsAppsEvaluations: API.OperationMethod<
   PatchProjectsLocationsAppsEvaluationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(503) as any as S.Schema<PatchProjectsLocationsAppsEvaluationsRequest>,
-  output: __S(198) as any as S.Schema<Evaluation>,
+  input: PatchProjectsLocationsAppsEvaluationsRequest,
+  output: Evaluation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7315,8 +9856,8 @@ export const patchProjectsLocationsAppsExamples: API.OperationMethod<
   PatchProjectsLocationsAppsExamplesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(504) as any as S.Schema<PatchProjectsLocationsAppsExamplesRequest>,
-  output: __S(201) as any as S.Schema<Example>,
+  input: PatchProjectsLocationsAppsExamplesRequest,
+  output: Example,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7335,8 +9876,8 @@ export const patchProjectsLocationsAppsGuardrails: API.OperationMethod<
   PatchProjectsLocationsAppsGuardrailsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(505) as any as S.Schema<PatchProjectsLocationsAppsGuardrailsRequest>,
-  output: __S(217) as any as S.Schema<Guardrail>,
+  input: PatchProjectsLocationsAppsGuardrailsRequest,
+  output: Guardrail,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7355,8 +9896,8 @@ export const patchProjectsLocationsAppsScheduledEvaluationRuns: API.OperationMet
   PatchProjectsLocationsAppsScheduledEvaluationRunsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(506) as any as S.Schema<PatchProjectsLocationsAppsScheduledEvaluationRunsRequest>,
-  output: __S(225) as any as S.Schema<ScheduledEvaluationRun>,
+  input: PatchProjectsLocationsAppsScheduledEvaluationRunsRequest,
+  output: ScheduledEvaluationRun,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7375,8 +9916,8 @@ export const patchProjectsLocationsAppsTools: API.OperationMethod<
   PatchProjectsLocationsAppsToolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(507) as any as S.Schema<PatchProjectsLocationsAppsToolsRequest>,
-  output: __S(272) as any as S.Schema<Tool>,
+  input: PatchProjectsLocationsAppsToolsRequest,
+  output: Tool,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7395,8 +9936,8 @@ export const patchProjectsLocationsAppsToolsets: API.OperationMethod<
   PatchProjectsLocationsAppsToolsetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(508) as any as S.Schema<PatchProjectsLocationsAppsToolsetsRequest>,
-  output: __S(281) as any as S.Schema<Toolset>,
+  input: PatchProjectsLocationsAppsToolsetsRequest,
+  output: Toolset,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7415,8 +9956,8 @@ export const patchProjectsLocationsAppsVersions: API.OperationMethod<
   PatchProjectsLocationsAppsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(509) as any as S.Schema<PatchProjectsLocationsAppsVersionsRequest>,
-  output: __S(289) as any as S.Schema<AppVersion>,
+  input: PatchProjectsLocationsAppsVersionsRequest,
+  output: AppVersion,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7435,8 +9976,8 @@ export const restoreProjectsLocationsAppsVersions: API.OperationMethod<
   RestoreProjectsLocationsAppsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(510) as any as S.Schema<RestoreProjectsLocationsAppsVersionsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: RestoreProjectsLocationsAppsVersionsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7455,8 +9996,8 @@ export const runAssistantProjectsLocationsApps: API.OperationMethod<
   RunAssistantProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512) as any as S.Schema<RunAssistantProjectsLocationsAppsRequest>,
-  output: __S(514) as any as S.Schema<RunAssistantResponse>,
+  input: RunAssistantProjectsLocationsAppsRequest,
+  output: RunAssistantResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7475,8 +10016,8 @@ export const runEvaluationProjectsLocationsApps: API.OperationMethod<
   RunEvaluationProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(515) as any as S.Schema<RunEvaluationProjectsLocationsAppsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: RunEvaluationProjectsLocationsAppsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7495,10 +10036,8 @@ export const runEvaluationResultMetricsProjectsLocationsAppsEvaluationsResults: 
   RunEvaluationResultMetricsProjectsLocationsAppsEvaluationsResultsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    516,
-  ) as any as S.Schema<RunEvaluationResultMetricsProjectsLocationsAppsEvaluationsResultsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: RunEvaluationResultMetricsProjectsLocationsAppsEvaluationsResultsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7517,8 +10056,8 @@ export const runSessionProjectsLocationsAppsSessions: API.OperationMethod<
   RunSessionProjectsLocationsAppsSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(521) as any as S.Schema<RunSessionProjectsLocationsAppsSessionsRequest>,
-  output: __S(528) as any as S.Schema<RunSessionResponse>,
+  input: RunSessionProjectsLocationsAppsSessionsRequest,
+  output: RunSessionResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7537,8 +10076,8 @@ export const sendProjectsLocationsAppsDeploymentsMessage: API.OperationMethod<
   SendProjectsLocationsAppsDeploymentsMessageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(536) as any as S.Schema<SendProjectsLocationsAppsDeploymentsMessageRequest>,
-  output: __S(542) as any as S.Schema<LfA2aV1SendMessageResponse>,
+  input: SendProjectsLocationsAppsDeploymentsMessageRequest,
+  output: LfA2aV1SendMessageResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7557,8 +10096,8 @@ export const sendProjectsLocationsAppsMessage: API.OperationMethod<
   SendProjectsLocationsAppsMessageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(543) as any as S.Schema<SendProjectsLocationsAppsMessageRequest>,
-  output: __S(542) as any as S.Schema<LfA2aV1SendMessageResponse>,
+  input: SendProjectsLocationsAppsMessageRequest,
+  output: LfA2aV1SendMessageResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7577,8 +10116,8 @@ export const sendProjectsLocationsAppsVersionsMessage: API.OperationMethod<
   SendProjectsLocationsAppsVersionsMessageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544) as any as S.Schema<SendProjectsLocationsAppsVersionsMessageRequest>,
-  output: __S(542) as any as S.Schema<LfA2aV1SendMessageResponse>,
+  input: SendProjectsLocationsAppsVersionsMessageRequest,
+  output: LfA2aV1SendMessageResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7597,10 +10136,8 @@ export const streamChatAiAssistantProjectsLocationsAppsAssistantSessions: API.Op
   StreamChatAiAssistantProjectsLocationsAppsAssistantSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    548,
-  ) as any as S.Schema<StreamChatAiAssistantProjectsLocationsAppsAssistantSessionsRequest>,
-  output: __S(561) as any as S.Schema<StreamChatAiAssistantResponse>,
+  input: StreamChatAiAssistantProjectsLocationsAppsAssistantSessionsRequest,
+  output: StreamChatAiAssistantResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7619,8 +10156,8 @@ export const streamProjectsLocationsAppsDeploymentsMessage: API.OperationMethod<
   StreamProjectsLocationsAppsDeploymentsMessageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(562) as any as S.Schema<StreamProjectsLocationsAppsDeploymentsMessageRequest>,
-  output: __S(565) as any as S.Schema<LfA2aV1StreamResponse>,
+  input: StreamProjectsLocationsAppsDeploymentsMessageRequest,
+  output: LfA2aV1StreamResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7639,8 +10176,8 @@ export const streamProjectsLocationsAppsMessage: API.OperationMethod<
   StreamProjectsLocationsAppsMessageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(566) as any as S.Schema<StreamProjectsLocationsAppsMessageRequest>,
-  output: __S(565) as any as S.Schema<LfA2aV1StreamResponse>,
+  input: StreamProjectsLocationsAppsMessageRequest,
+  output: LfA2aV1StreamResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7659,8 +10196,8 @@ export const streamProjectsLocationsAppsVersionsMessage: API.OperationMethod<
   StreamProjectsLocationsAppsVersionsMessageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(567) as any as S.Schema<StreamProjectsLocationsAppsVersionsMessageRequest>,
-  output: __S(565) as any as S.Schema<LfA2aV1StreamResponse>,
+  input: StreamProjectsLocationsAppsVersionsMessageRequest,
+  output: LfA2aV1StreamResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7679,8 +10216,8 @@ export const streamRunSessionProjectsLocationsAppsSessions: API.OperationMethod<
   StreamRunSessionProjectsLocationsAppsSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(568) as any as S.Schema<StreamRunSessionProjectsLocationsAppsSessionsRequest>,
-  output: __S(528) as any as S.Schema<RunSessionResponse>,
+  input: StreamRunSessionProjectsLocationsAppsSessionsRequest,
+  output: RunSessionResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7699,8 +10236,8 @@ export const testPersonaVoiceProjectsLocationsApps: API.OperationMethod<
   TestPersonaVoiceProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(570) as any as S.Schema<TestPersonaVoiceProjectsLocationsAppsRequest>,
-  output: __S(571) as any as S.Schema<TestPersonaVoiceResponse>,
+  input: TestPersonaVoiceProjectsLocationsAppsRequest,
+  output: TestPersonaVoiceResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7719,8 +10256,8 @@ export const updateSecuritySettingsProjectsLocations: API.OperationMethod<
   UpdateSecuritySettingsProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(572) as any as S.Schema<UpdateSecuritySettingsProjectsLocationsRequest>,
-  output: __S(434) as any as S.Schema<SecuritySettings>,
+  input: UpdateSecuritySettingsProjectsLocationsRequest,
+  output: SecuritySettings,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7739,8 +10276,8 @@ export const uploadEvaluationAudioProjectsLocationsAppsEvaluations: API.Operatio
   UploadEvaluationAudioProjectsLocationsAppsEvaluationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(574) as any as S.Schema<UploadEvaluationAudioProjectsLocationsAppsEvaluationsRequest>,
-  output: __S(575) as any as S.Schema<UploadEvaluationAudioResponse>,
+  input: UploadEvaluationAudioProjectsLocationsAppsEvaluationsRequest,
+  output: UploadEvaluationAudioResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7754,7 +10291,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          conversations: S.optional(__S(0)),
+          conversations: S.optional(StringList),
         }),
       ).annotate({
         identifier: "BatchDeleteConversationsRequest",
@@ -7763,7 +10300,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(1).pipe(T.HttpBody())),
+          body: S.optional(BatchDeleteConversationsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7777,11 +10314,11 @@ function __c0(j: number): any {
     case 3:
       return S.Record(S.String, S.Unknown);
     case 4:
-      return S.Array(__S(3));
+      return S.Array(DocumentMap);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(4)),
+          details: S.optional(DocumentMapList),
           code: S.optional(S.Number),
           message: S.optional(S.String),
         }),
@@ -7789,10 +10326,10 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(5)),
-          metadata: S.optional(__S(3)),
+          error: S.optional(Status),
+          metadata: S.optional(DocumentMap),
           done: S.optional(S.Boolean),
-          response: S.optional(__S(3)),
+          response: S.optional(DocumentMap),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
@@ -7812,7 +10349,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(7).pipe(T.HttpBody())),
+          body: S.optional(CancelAssistantTurnRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7839,7 +10376,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(10).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7855,7 +10392,7 @@ function __c1(j: number): any {
         S.Struct({
           contextToken: S.optional(S.String),
           message: S.optional(S.String),
-          attachedGcsUris: S.optional(__S(0)),
+          attachedGcsUris: S.optional(StringList),
           assistantSession: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChatAiAssistantRequest" });
@@ -7863,7 +10400,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           app: S.String.pipe(T.Label()),
-          body: S.optional(__S(12).pipe(T.HttpBody())),
+          body: S.optional(ChatAiAssistantRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7894,9 +10431,9 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sessionCheckpoint: S.optional(__S(14)),
+          sessionCheckpoint: S.optional(SessionCheckpoint),
           eventTime: S.optional(S.String),
-          uiEvent: S.optional(__S(15)),
+          uiEvent: S.optional(UiEvent),
           statusMessage: S.optional(S.String),
           textChunk: S.optional(S.String),
           eventId: S.optional(S.String),
@@ -7905,10 +10442,10 @@ function __c2(j: number): any {
     case 1:
       return S.Record(
         S.String,
-        S.suspend(() => __S(19)),
+        S.suspend(() => Ces_Schema),
       );
     case 2:
-      return S.Array(S.suspend(() => __S(19)));
+      return S.Array(S.suspend(() => Ces_Schema));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -7917,19 +10454,19 @@ function __c2(j: number): any {
           minimum: S.optional(S.Number),
           ref: S.optional(S.String),
           maxItems: S.optional(S.String),
-          additionalProperties: S.optional(__S(19)),
-          defs: S.optional(__S(17)),
-          anyOf: S.optional(__S(18)),
-          required: S.optional(__S(0)),
-          prefixItems: S.optional(__S(18)),
+          additionalProperties: S.optional(Ces_Schema),
+          defs: S.optional(Ces_SchemaMap),
+          anyOf: S.optional(Ces_SchemaList),
+          required: S.optional(StringList),
+          prefixItems: S.optional(Ces_SchemaList),
           description: S.optional(S.String),
           minItems: S.optional(S.String),
           nullable: S.optional(S.Boolean),
-          items: S.optional(__S(19)),
-          properties: S.optional(__S(17)),
+          items: S.optional(Ces_Schema),
+          properties: S.optional(Ces_SchemaMap),
           default: S.optional(S.Unknown),
-          enum: S.optional(__S(0)),
-          type: S.optional(S.String),
+          enum: S.optional(StringList),
+          type: S.optional(Ces_SchemaTypeEnum),
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "Ces_Schema" });
@@ -7938,16 +10475,16 @@ function __c2(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
-          schema: S.optional(__S(19)),
+          schema: S.optional(Ces_Schema),
         }),
       ).annotate({ identifier: "AppVariableDeclaration" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(AppVariableDeclaration);
     case 6:
       return S.suspend(() =>
         S.Struct({
           speakingRate: S.optional(S.Number),
-          environment: S.optional(S.String),
+          environment: S.optional(EvaluationPersonaSpeechConfigEnvironmentEnum),
           voiceId: S.optional(S.String),
         }),
       ).annotate({
@@ -7957,7 +10494,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          speechConfig: S.optional(__S(22)),
+          speechConfig: S.optional(EvaluationPersonaSpeechConfig),
           description: S.optional(S.String),
           personality: S.optional(S.String),
           name: S.optional(S.String),
@@ -7968,7 +10505,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(EvaluationPersona);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7981,7 +10518,9 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          extraToolCallBehavior: S.optional(S.String),
+          extraToolCallBehavior: S.optional(
+            EvaluationMetricsThresholdsToolMatchingSettingsExtraToolCallBehaviorEnum,
+          ),
         }),
       ).annotate({
         identifier: "EvaluationMetricsThresholdsToolMatchingSettings",
@@ -7991,7 +10530,9 @@ function __c3(j: number): any {
         S.Struct({
           overallToolInvocationCorrectnessThreshold: S.optional(S.Number),
           semanticSimilaritySuccessThreshold: S.optional(S.Number),
-          semanticSimilarityChannel: S.optional(S.String),
+          semanticSimilarityChannel: S.optional(
+            EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsSemanticSimilarityChannelEnum,
+          ),
         }),
       ).annotate({
         identifier:
@@ -8000,9 +10541,13 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          expectationLevelMetricsThresholds: S.optional(__S(25)),
-          toolMatchingSettings: S.optional(__S(26)),
-          turnLevelMetricsThresholds: S.optional(__S(27)),
+          expectationLevelMetricsThresholds: S.optional(
+            EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds,
+          ),
+          toolMatchingSettings: S.optional(EvaluationMetricsThresholdsToolMatchingSettings),
+          turnLevelMetricsThresholds: S.optional(
+            EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds,
+          ),
         }),
       ).annotate({
         identifier: "EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds",
@@ -8010,10 +10555,18 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          scenarioHallucinationMetricBehavior: S.optional(S.String),
-          goldenEvaluationMetricsThresholds: S.optional(__S(28)),
-          goldenHallucinationMetricBehavior: S.optional(S.String),
-          hallucinationMetricBehavior: S.optional(S.String),
+          scenarioHallucinationMetricBehavior: S.optional(
+            EvaluationMetricsThresholdsScenarioHallucinationMetricBehaviorEnum,
+          ),
+          goldenEvaluationMetricsThresholds: S.optional(
+            EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds,
+          ),
+          goldenHallucinationMetricBehavior: S.optional(
+            EvaluationMetricsThresholdsGoldenHallucinationMetricBehaviorEnum,
+          ),
+          hallucinationMetricBehavior: S.optional(
+            EvaluationMetricsThresholdsHallucinationMetricBehaviorEnum,
+          ),
         }),
       ).annotate({
         identifier: "EvaluationMetricsThresholds",
@@ -8022,11 +10575,11 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(DataStoreSettingsEngineTypeEnum),
         }),
       ).annotate({ identifier: "DataStoreSettingsEngine" });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(DataStoreSettingsEngine);
   }
 }
 function __c4(j: number): any {
@@ -8034,7 +10587,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          engines: S.optional(__S(31)),
+          engines: S.optional(DataStoreSettingsEngineList),
         }),
       ).annotate({ identifier: "DataStoreSettings" });
     case 1:
@@ -8046,7 +10599,7 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          allowedOrigins: S.optional(__S(0)),
+          allowedOrigins: S.optional(StringList),
         }),
       ).annotate({ identifier: "VpcScSettings" });
     case 3:
@@ -8054,7 +10607,7 @@ function __c4(j: number): any {
         S.Struct({
           defaultLanguageCode: S.optional(S.String),
           enableMultilingualSupport: S.optional(S.Boolean),
-          supportedLanguageCodes: S.optional(__S(0)),
+          supportedLanguageCodes: S.optional(StringList),
           fallbackAction: S.optional(S.String),
         }),
       ).annotate({ identifier: "LanguageSettings" });
@@ -8062,7 +10615,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           model: S.optional(S.String),
-          thinkingLevel: S.optional(S.String),
+          thinkingLevel: S.optional(ModelSettingsThinkingLevelEnum),
           temperature: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ModelSettings" });
@@ -8129,15 +10682,15 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          cloudLoggingSettings: S.optional(__S(39)),
-          evaluationAudioRecordingConfig: S.optional(__S(40)),
-          bigqueryExportSettings: S.optional(__S(41)),
-          conversationLoggingSettings: S.optional(__S(42)),
-          metricAnalysisSettings: S.optional(__S(43)),
-          audioRecordingConfig: S.optional(__S(40)),
-          redactionConfig: S.optional(__S(44)),
-          unredactedBigqueryExportSettings: S.optional(__S(41)),
-          unredactedAudioRecordingConfig: S.optional(__S(40)),
+          cloudLoggingSettings: S.optional(CloudLoggingSettings),
+          evaluationAudioRecordingConfig: S.optional(AudioRecordingConfig),
+          bigqueryExportSettings: S.optional(BigQueryExportSettings),
+          conversationLoggingSettings: S.optional(ConversationLoggingSettings),
+          metricAnalysisSettings: S.optional(MetricAnalysisSettings),
+          audioRecordingConfig: S.optional(AudioRecordingConfig),
+          redactionConfig: S.optional(RedactionConfig),
+          unredactedBigqueryExportSettings: S.optional(BigQueryExportSettings),
+          unredactedAudioRecordingConfig: S.optional(AudioRecordingConfig),
         }),
       ).annotate({ identifier: "LoggingSettings" });
     case 6:
@@ -8152,7 +10705,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           maxFallbackAttempts: S.optional(S.Number),
-          customFallbackMessages: S.optional(__S(38)),
+          customFallbackMessages: S.optional(StringMap),
         }),
       ).annotate({
         identifier: "ErrorHandlingSettingsFallbackResponseConfig",
@@ -8164,9 +10717,9 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          errorHandlingStrategy: S.optional(S.String),
-          endSessionConfig: S.optional(__S(46)),
-          fallbackResponseConfig: S.optional(__S(47)),
+          errorHandlingStrategy: S.optional(ErrorHandlingSettingsErrorHandlingStrategyEnum),
+          endSessionConfig: S.optional(ErrorHandlingSettingsEndSessionConfig),
+          fallbackResponseConfig: S.optional(ErrorHandlingSettingsFallbackResponseConfig),
         }),
       ).annotate({ identifier: "ErrorHandlingSettings" });
     case 1:
@@ -8202,7 +10755,7 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          persona: S.optional(S.String),
+          persona: S.optional(ChannelProfilePersonaPropertyPersonaEnum),
         }),
       ).annotate({
         identifier: "ChannelProfilePersonaProperty",
@@ -8213,7 +10766,7 @@ function __c6(j: number): any {
           enablePublicAccess: S.optional(S.Boolean),
           enableRecaptcha: S.optional(S.Boolean),
           enableOriginCheck: S.optional(S.Boolean),
-          allowedOrigins: S.optional(__S(0)),
+          allowedOrigins: S.optional(StringList),
         }),
       ).annotate({
         identifier: "ChannelProfileWebWidgetConfigSecuritySettings",
@@ -8221,10 +10774,10 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          theme: S.optional(S.String),
-          securitySettings: S.optional(__S(53)),
+          theme: S.optional(ChannelProfileWebWidgetConfigThemeEnum),
+          securitySettings: S.optional(ChannelProfileWebWidgetConfigSecuritySettings),
           webWidgetTitle: S.optional(S.String),
-          modality: S.optional(S.String),
+          modality: S.optional(ChannelProfileWebWidgetConfigModalityEnum),
         }),
       ).annotate({
         identifier: "ChannelProfileWebWidgetConfig",
@@ -8232,14 +10785,14 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          instagramConfig: S.optional(__S(50)),
+          instagramConfig: S.optional(ChannelProfileInstagramConfig),
           disableBargeInControl: S.optional(S.Boolean),
-          channelType: S.optional(S.String),
+          channelType: S.optional(ChannelProfileChannelTypeEnum),
           disableDtmf: S.optional(S.Boolean),
-          whatsappConfig: S.optional(__S(51)),
-          personaProperty: S.optional(__S(52)),
+          whatsappConfig: S.optional(ChannelProfileWhatsAppConfig),
+          personaProperty: S.optional(ChannelProfilePersonaProperty),
           profileId: S.optional(S.String),
-          webWidgetConfig: S.optional(__S(54)),
+          webWidgetConfig: S.optional(ChannelProfileWebWidgetConfig),
           noiseSuppressionLevel: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChannelProfile" });
@@ -8266,8 +10819,10 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          userGoalMetMetricsConfig: S.optional(__S(56)),
-          expectationsMetMetricsConfig: S.optional(__S(57)),
+          userGoalMetMetricsConfig: S.optional(EvaluationMetricsConfigUserGoalMetMetricsConfig),
+          expectationsMetMetricsConfig: S.optional(
+            EvaluationMetricsConfigExpectationsMetMetricsConfig,
+          ),
         }),
       ).annotate({
         identifier: "EvaluationMetricsConfigScenarioMetricsConfig",
@@ -8291,9 +10846,15 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          stepToolCorrectnessMetricsConfig: S.optional(__S(59)),
-          semanticSimilarityMetricsConfig: S.optional(__S(60)),
-          toolCorrectnessMetricsConfig: S.optional(__S(59)),
+          stepToolCorrectnessMetricsConfig: S.optional(
+            EvaluationMetricsConfigToolCorrectnessMetricsConfig,
+          ),
+          semanticSimilarityMetricsConfig: S.optional(
+            EvaluationMetricsConfigSemanticSimilarityMetricsConfig,
+          ),
+          toolCorrectnessMetricsConfig: S.optional(
+            EvaluationMetricsConfigToolCorrectnessMetricsConfig,
+          ),
         }),
       ).annotate({
         identifier: "EvaluationMetricsConfigGoldenMetricsConfig",
@@ -8301,14 +10862,14 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          scenarioMetricsConfig: S.optional(__S(58)),
-          goldenMetricsConfig: S.optional(__S(61)),
+          scenarioMetricsConfig: S.optional(EvaluationMetricsConfigScenarioMetricsConfig),
+          goldenMetricsConfig: S.optional(EvaluationMetricsConfigGoldenMetricsConfig),
         }),
       ).annotate({ identifier: "EvaluationMetricsConfig" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          runCachingMode: S.optional(S.String),
+          runCachingMode: S.optional(EvaluationRunCachingSettingsRunCachingModeEnum),
         }),
       ).annotate({
         identifier: "EvaluationRunCachingSettings",
@@ -8320,13 +10881,19 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metricsConfig: S.optional(__S(62)),
-          goldenEvaluationToolCallBehaviour: S.optional(S.String),
-          scenarioEvaluationToolCallBehaviour: S.optional(S.String),
-          goldenRunMethod: S.optional(S.String),
-          scenarioExecutionMode: S.optional(S.String),
-          evaluationRunCachingSettings: S.optional(__S(63)),
-          scenarioConversationInitiator: S.optional(S.String),
+          metricsConfig: S.optional(EvaluationMetricsConfig),
+          goldenEvaluationToolCallBehaviour: S.optional(
+            EvaluationSettingsGoldenEvaluationToolCallBehaviourEnum,
+          ),
+          scenarioEvaluationToolCallBehaviour: S.optional(
+            EvaluationSettingsScenarioEvaluationToolCallBehaviourEnum,
+          ),
+          goldenRunMethod: S.optional(EvaluationSettingsGoldenRunMethodEnum),
+          scenarioExecutionMode: S.optional(EvaluationSettingsScenarioExecutionModeEnum),
+          evaluationRunCachingSettings: S.optional(EvaluationRunCachingSettings),
+          scenarioConversationInitiator: S.optional(
+            EvaluationSettingsScenarioConversationInitiatorEnum,
+          ),
         }),
       ).annotate({ identifier: "EvaluationSettings" });
     case 1:
@@ -8341,7 +10908,7 @@ function __c8(j: number): any {
         S.Struct({
           prebuiltAmbientSound: S.optional(S.String),
           volumeGainDb: S.optional(S.Number),
-          prebuiltAmbientNoise: S.optional(S.String),
+          prebuiltAmbientNoise: S.optional(AmbientSoundConfigPrebuiltAmbientNoiseEnum),
           gcsUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "AmbientSoundConfig" });
@@ -8349,26 +10916,26 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(CustomVoiceSampleWarningTypeEnum),
         }),
       ).annotate({ identifier: "CustomVoiceSampleWarning" });
     case 4:
-      return S.Array(__S(67));
+      return S.Array(CustomVoiceSampleWarning);
     case 5:
       return S.suspend(() =>
         S.Struct({
           voiceInstruction: S.optional(S.String),
           name: S.optional(S.String),
           previewText: S.optional(S.String),
-          voiceInstructionMode: S.optional(S.String),
-          warnings: S.optional(__S(68)),
+          voiceInstructionMode: S.optional(CustomVoiceSampleVoiceInstructionModeEnum),
+          warnings: S.optional(CustomVoiceSampleWarningList),
           previewAudioContent: S.optional(S.String),
           voiceSampleGcsUri: S.optional(S.String),
           consentAudioGcsUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomVoiceSample" });
     case 6:
-      return S.Array(__S(69));
+      return S.Array(CustomVoiceSample);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -8383,51 +10950,51 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(71));
+      return S.Record(S.String, SynthesizeSpeechConfig);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          bargeInConfig: S.optional(__S(65)),
-          ambientSoundConfig: S.optional(__S(66)),
-          customVoiceSamples: S.optional(__S(70)),
+          bargeInConfig: S.optional(BargeInConfig),
+          ambientSoundConfig: S.optional(AmbientSoundConfig),
+          customVoiceSamples: S.optional(CustomVoiceSampleList),
           inactivityTimeout: S.optional(S.String),
-          synthesizeSpeechConfigs: S.optional(__S(72)),
+          synthesizeSpeechConfigs: S.optional(SynthesizeSpeechConfigMap),
         }),
       ).annotate({ identifier: "AudioProcessingConfig" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          variableDeclarations: S.optional(__S(21)),
+          variableDeclarations: S.optional(AppVariableDeclarationList),
           description: S.optional(S.String),
-          evaluationPersonas: S.optional(__S(24)),
-          guardrails: S.optional(__S(0)),
+          evaluationPersonas: S.optional(EvaluationPersonaList),
+          guardrails: S.optional(StringList),
           locked: S.optional(S.Boolean),
-          evaluationMetricsThresholds: S.optional(__S(29)),
-          dataStoreSettings: S.optional(__S(32)),
+          evaluationMetricsThresholds: S.optional(EvaluationMetricsThresholds),
+          dataStoreSettings: S.optional(DataStoreSettings),
           name: S.optional(S.String),
           pinned: S.optional(S.Boolean),
-          timeZoneSettings: S.optional(__S(33)),
+          timeZoneSettings: S.optional(TimeZoneSettings),
           updateTime: S.optional(S.String),
-          vpcScSettings: S.optional(__S(34)),
-          languageSettings: S.optional(__S(35)),
-          modelSettings: S.optional(__S(36)),
-          clientCertificateSettings: S.optional(__S(37)),
+          vpcScSettings: S.optional(VpcScSettings),
+          languageSettings: S.optional(LanguageSettings),
+          modelSettings: S.optional(ModelSettings),
+          clientCertificateSettings: S.optional(ClientCertificateSettings),
           createTime: S.optional(S.String),
-          toolExecutionMode: S.optional(S.String),
-          metadata: S.optional(__S(38)),
+          toolExecutionMode: S.optional(AppToolExecutionModeEnum),
+          metadata: S.optional(StringMap),
           rootAgent: S.optional(S.String),
-          loggingSettings: S.optional(__S(45)),
-          errorHandlingSettings: S.optional(__S(48)),
+          loggingSettings: S.optional(LoggingSettings),
+          errorHandlingSettings: S.optional(ErrorHandlingSettings),
           globalInstruction: S.optional(S.String),
           etag: S.optional(S.String),
-          dashboardSettings: S.optional(__S(49)),
+          dashboardSettings: S.optional(DashboardSettings),
           displayName: S.optional(S.String),
-          defaultChannelProfile: S.optional(__S(55)),
-          predefinedVariableDeclarations: S.optional(__S(21)),
+          defaultChannelProfile: S.optional(ChannelProfile),
+          predefinedVariableDeclarations: S.optional(AppVariableDeclarationList),
           deploymentCount: S.optional(S.Number),
-          validationErrors: S.optional(__S(0)),
-          evaluationSettings: S.optional(__S(64)),
-          audioProcessingConfig: S.optional(__S(73)),
+          validationErrors: S.optional(StringList),
+          evaluationSettings: S.optional(EvaluationSettings),
+          audioProcessingConfig: S.optional(AudioProcessingConfig),
         }),
       ).annotate({ identifier: "App" });
     case 3:
@@ -8435,7 +11002,7 @@ function __c9(j: number): any {
         S.Struct({
           appId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(74).pipe(T.HttpBody())),
+          body: S.optional(App.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8456,7 +11023,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "Callback" });
     case 5:
-      return S.Array(__S(76));
+      return S.Array(Callback);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -8467,7 +11034,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "AgentInterface" });
     case 7:
-      return S.Array(__S(78));
+      return S.Array(AgentInterface);
   }
 }
 function __c10(j: number): any {
@@ -8477,23 +11044,23 @@ function __c10(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           name: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          inputModes: S.optional(__S(0)),
+          tags: S.optional(StringList),
+          inputModes: S.optional(StringList),
           id: S.optional(S.String),
-          outputModes: S.optional(__S(0)),
-          examples: S.optional(__S(0)),
+          outputModes: S.optional(StringList),
+          examples: S.optional(StringList),
         }),
       ).annotate({ identifier: "AgentSkill" });
     case 1:
-      return S.Array(__S(80));
+      return S.Array(AgentSkill);
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
           version: S.optional(S.String),
-          supportedInterfaces: S.optional(__S(79)),
-          skills: S.optional(__S(81)),
+          supportedInterfaces: S.optional(AgentInterfaceList),
+          skills: S.optional(AgentSkillList),
         }),
       ).annotate({ identifier: "AgentCard" });
     case 3:
@@ -8502,8 +11069,8 @@ function __c10(j: number): any {
           clientSecretVersion: S.optional(S.String),
           clientId: S.optional(S.String),
           tokenEndpoint: S.optional(S.String),
-          scopes: S.optional(__S(0)),
-          oauthGrantType: S.optional(S.String),
+          scopes: S.optional(StringList),
+          oauthGrantType: S.optional(OAuthConfigOauthGrantTypeEnum),
         }),
       ).annotate({ identifier: "OAuthConfig" });
     case 4:
@@ -8511,7 +11078,7 @@ function __c10(j: number): any {
         S.Struct({
           keyName: S.optional(S.String),
           apiKeySecretVersion: S.optional(S.String),
-          requestLocation: S.optional(S.String),
+          requestLocation: S.optional(ApiKeyConfigRequestLocationEnum),
         }),
       ).annotate({ identifier: "ApiKeyConfig" });
     case 5:
@@ -8524,17 +11091,17 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceAccount: S.optional(S.String),
-          scopes: S.optional(__S(0)),
+          scopes: S.optional(StringList),
         }),
       ).annotate({ identifier: "ServiceAccountAuthConfig" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          oauthConfig: S.optional(__S(83)),
-          apiKeyConfig: S.optional(__S(84)),
-          bearerTokenConfig: S.optional(__S(85)),
-          serviceAgentIdTokenAuthConfig: S.optional(__S(10)),
-          serviceAccountAuthConfig: S.optional(__S(86)),
+          oauthConfig: S.optional(OAuthConfig),
+          apiKeyConfig: S.optional(ApiKeyConfig),
+          bearerTokenConfig: S.optional(BearerTokenConfig),
+          serviceAgentIdTokenAuthConfig: S.optional(CancelOperationRequest),
+          serviceAccountAuthConfig: S.optional(ServiceAccountAuthConfig),
         }),
       ).annotate({ identifier: "ApiAuthentication" });
   }
@@ -8544,19 +11111,19 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          outputVariableMapping: S.optional(__S(38)),
+          outputVariableMapping: S.optional(StringMap),
           streamingEnabled: S.optional(S.Boolean),
-          inputVariableMapping: S.optional(__S(38)),
-          agentCard: S.optional(__S(82)),
+          inputVariableMapping: S.optional(StringMap),
+          agentCard: S.optional(AgentCard),
           agentRegistry: S.optional(S.String),
-          apiAuthentication: S.optional(__S(87)),
+          apiAuthentication: S.optional(ApiAuthentication),
           contextId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RemoteA2aConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          a2aConfig: S.optional(__S(88)),
+          a2aConfig: S.optional(RemoteA2aConfig),
         }),
       ).annotate({ identifier: "AgentRemoteA2aAgent" });
     case 2:
@@ -8568,7 +11135,7 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          expressionCondition: S.optional(__S(90)),
+          expressionCondition: S.optional(ExpressionCondition),
         }),
       ).annotate({
         identifier: "TransferRuleDisablePlannerTransfer",
@@ -8582,8 +11149,8 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pythonCodeCondition: S.optional(__S(92)),
-          expressionCondition: S.optional(__S(90)),
+          pythonCodeCondition: S.optional(PythonCodeCondition),
+          expressionCondition: S.optional(ExpressionCondition),
         }),
       ).annotate({
         identifier: "TransferRuleDeterministicTransfer",
@@ -8591,14 +11158,14 @@ function __c11(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          direction: S.optional(S.String),
-          disablePlannerTransfer: S.optional(__S(91)),
+          direction: S.optional(TransferRuleDirectionEnum),
+          disablePlannerTransfer: S.optional(TransferRuleDisablePlannerTransfer),
           childAgent: S.optional(S.String),
-          deterministicTransfer: S.optional(__S(93)),
+          deterministicTransfer: S.optional(TransferRuleDeterministicTransfer),
         }),
       ).annotate({ identifier: "TransferRule" });
     case 7:
-      return S.Array(__S(94));
+      return S.Array(TransferRule);
   }
 }
 function __c12(j: number): any {
@@ -8606,11 +11173,11 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          inputVariableMapping: S.optional(__S(38)),
+          inputVariableMapping: S.optional(StringMap),
           environmentId: S.optional(S.String),
           agent: S.optional(S.String),
           respectResponseInterruptionSettings: S.optional(S.Boolean),
-          outputVariableMapping: S.optional(__S(38)),
+          outputVariableMapping: S.optional(StringMap),
           languageCodeVariable: S.optional(S.String),
           flowId: S.optional(S.String),
         }),
@@ -8620,38 +11187,38 @@ function __c12(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          toolIds: S.optional(__S(0)),
+          toolIds: S.optional(StringList),
           toolset: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentAgentToolset" });
     case 2:
-      return S.Array(__S(97));
+      return S.Array(AgentAgentToolset);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          beforeModelCallbacks: S.optional(__S(77)),
-          childAgents: S.optional(__S(0)),
-          remoteA2aAgent: S.optional(__S(89)),
-          validationErrors: S.optional(__S(0)),
-          beforeToolCallbacks: S.optional(__S(77)),
+          beforeModelCallbacks: S.optional(CallbackList),
+          childAgents: S.optional(StringList),
+          remoteA2aAgent: S.optional(AgentRemoteA2aAgent),
+          validationErrors: S.optional(StringList),
+          beforeToolCallbacks: S.optional(CallbackList),
           instruction: S.optional(S.String),
-          transferRules: S.optional(__S(95)),
-          afterAgentCallbacks: S.optional(__S(77)),
-          guardrails: S.optional(__S(0)),
+          transferRules: S.optional(TransferRuleList),
+          afterAgentCallbacks: S.optional(CallbackList),
+          guardrails: S.optional(StringList),
           name: S.optional(S.String),
           generatedSummary: S.optional(S.String),
-          afterToolCallbacks: S.optional(__S(77)),
+          afterToolCallbacks: S.optional(CallbackList),
           etag: S.optional(S.String),
-          llmAgent: S.optional(__S(10)),
-          beforeAgentCallbacks: S.optional(__S(77)),
-          remoteDialogflowAgent: S.optional(__S(96)),
+          llmAgent: S.optional(CancelOperationRequest),
+          beforeAgentCallbacks: S.optional(CallbackList),
+          remoteDialogflowAgent: S.optional(AgentRemoteDialogflowAgent),
           createTime: S.optional(S.String),
-          toolsets: S.optional(__S(98)),
+          toolsets: S.optional(AgentAgentToolsetList),
           displayName: S.optional(S.String),
-          afterModelCallbacks: S.optional(__S(77)),
-          modelSettings: S.optional(__S(36)),
+          afterModelCallbacks: S.optional(CallbackList),
+          modelSettings: S.optional(ModelSettings),
           description: S.optional(S.String),
-          tools: S.optional(__S(0)),
+          tools: S.optional(StringList),
           updateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Agent" });
@@ -8660,7 +11227,7 @@ function __c12(j: number): any {
         S.Struct({
           agentId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(99).pipe(T.HttpBody())),
+          body: S.optional(Agent.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8675,23 +11242,23 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          metadata: S.optional(__S(3)),
+          metadata: S.optional(DocumentMap),
           type: S.optional(S.String),
-          value: S.optional(__S(3)),
+          value: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "TypedPayload" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           thought: S.optional(S.String),
-          payload: S.optional(__S(3)),
+          payload: S.optional(DocumentMap),
           text: S.optional(S.String),
-          typedPayload: S.optional(__S(101)),
+          typedPayload: S.optional(TypedPayload),
           createTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssistantChunk" });
     case 7:
-      return S.Array(__S(102));
+      return S.Array(AssistantChunk);
   }
 }
 function __c13(j: number): any {
@@ -8700,18 +11267,18 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           eventTime: S.optional(S.String),
-          attachedGcsUris: S.optional(__S(0)),
-          chunks: S.optional(__S(103)),
+          attachedGcsUris: S.optional(StringList),
+          chunks: S.optional(AssistantChunkList),
           role: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssistantMessage" });
     case 1:
-      return S.Array(__S(104));
+      return S.Array(AssistantMessage);
     case 2:
       return S.suspend(() =>
         S.Struct({
           assistantSessionId: S.optional(S.String),
-          assistantSessionMessages: S.optional(__S(105)),
+          assistantSessionMessages: S.optional(AssistantMessageList),
         }),
       ).annotate({
         identifier: "CreateAssistantSessionRequest",
@@ -8720,7 +11287,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(106).pipe(T.HttpBody())),
+          body: S.optional(CreateAssistantSessionRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8743,11 +11310,11 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "AssistantSessionArtifact" });
     case 5:
-      return S.Array(__S(108));
+      return S.Array(AssistantSessionArtifact);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          suggestions: S.optional(__S(0)),
+          suggestions: S.optional(StringList),
         }),
       ).annotate({ identifier: "UserResponseSuggestions" });
     case 7:
@@ -8756,7 +11323,7 @@ function __c13(j: number): any {
           turnId: S.optional(S.String),
           startTime: S.optional(S.String),
           lastProgressTime: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(ActiveTurnInfoStatusEnum),
           orphanDeadlineTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActiveTurnInfo" });
@@ -8769,15 +11336,15 @@ function __c14(j: number): any {
         S.Struct({
           requestor: S.optional(S.String),
           createTime: S.optional(S.String),
-          artifacts: S.optional(__S(109)),
-          userResponseSuggestions: S.optional(__S(110)),
-          sessionCheckpoint: S.optional(__S(14)),
+          artifacts: S.optional(AssistantSessionArtifactList),
+          userResponseSuggestions: S.optional(UserResponseSuggestions),
+          sessionCheckpoint: S.optional(SessionCheckpoint),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(AssistantSessionStateEnum),
           updateTime: S.optional(S.String),
-          messages: S.optional(__S(105)),
-          activeTurn: S.optional(__S(111)),
+          messages: S.optional(AssistantMessageList),
+          activeTurn: S.optional(ActiveTurnInfo),
         }),
       ).annotate({ identifier: "AssistantSession" });
     case 1:
@@ -8791,12 +11358,12 @@ function __c14(j: number): any {
         identifier: "ExperimentConfigVersionReleaseTrafficAllocation",
       });
     case 2:
-      return S.Array(__S(113));
+      return S.Array(ExperimentConfigVersionReleaseTrafficAllocation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
-          trafficAllocations: S.optional(__S(114)),
+          state: S.optional(ExperimentConfigVersionReleaseStateEnum),
+          trafficAllocations: S.optional(ExperimentConfigVersionReleaseTrafficAllocationList),
         }),
       ).annotate({
         identifier: "ExperimentConfigVersionRelease",
@@ -8804,7 +11371,7 @@ function __c14(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          versionRelease: S.optional(__S(115)),
+          versionRelease: S.optional(ExperimentConfigVersionRelease),
         }),
       ).annotate({ identifier: "ExperimentConfig" });
     case 5:
@@ -8838,15 +11405,15 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          experimentConfig: S.optional(__S(116)),
+          experimentConfig: S.optional(ExperimentConfig),
           updateTime: S.optional(S.String),
-          whatsappCredentials: S.optional(__S(117)),
-          modality: S.optional(S.String),
+          whatsappCredentials: S.optional(WhatsAppCredentials),
+          modality: S.optional(DeploymentModalityEnum),
           createTime: S.optional(S.String),
-          instagramCredentials: S.optional(__S(118)),
-          agentRegistryDeployment: S.optional(__S(119)),
-          channelProfile: S.optional(__S(55)),
-          modelSettings: S.optional(__S(36)),
+          instagramCredentials: S.optional(InstagramCredentials),
+          agentRegistryDeployment: S.optional(AgentRegistryDeployment),
+          channelProfile: S.optional(ChannelProfile),
+          modelSettings: S.optional(ModelSettings),
           appVersion: S.optional(S.String),
           etag: S.optional(S.String),
           name: S.optional(S.String),
@@ -8858,7 +11425,7 @@ function __c15(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           deploymentId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(120).pipe(T.HttpBody())),
+          body: S.optional(Deployment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8878,7 +11445,7 @@ function __c15(j: number): any {
         identifier: "AggregatedMetricsTurnLatencyMetrics",
       });
     case 3:
-      return S.Array(__S(122));
+      return S.Array(AggregatedMetricsTurnLatencyMetrics);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -8888,7 +11455,7 @@ function __c15(j: number): any {
         identifier: "AggregatedMetricsSemanticSimilarityMetrics",
       });
     case 5:
-      return S.Array(__S(124));
+      return S.Array(AggregatedMetricsSemanticSimilarityMetrics);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -8899,7 +11466,7 @@ function __c15(j: number): any {
         identifier: "AggregatedMetricsToolCallLatencyMetrics",
       });
     case 7:
-      return S.Array(__S(126));
+      return S.Array(AggregatedMetricsToolCallLatencyMetrics);
   }
 }
 function __c16(j: number): any {
@@ -8915,56 +11482,56 @@ function __c16(j: number): any {
         identifier: "AggregatedMetricsToolMetrics",
       });
     case 1:
-      return S.Array(__S(128));
+      return S.Array(AggregatedMetricsToolMetrics);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          turnLatencyMetrics: S.optional(__S(123)),
-          semanticSimilarityMetrics: S.optional(__S(125)),
+          turnLatencyMetrics: S.optional(AggregatedMetricsTurnLatencyMetricsList),
+          semanticSimilarityMetrics: S.optional(AggregatedMetricsSemanticSimilarityMetricsList),
           turnIndex: S.optional(S.Number),
-          toolCallLatencyMetrics: S.optional(__S(127)),
-          hallucinationMetrics: S.optional(__S(125)),
-          toolMetrics: S.optional(__S(129)),
+          toolCallLatencyMetrics: S.optional(AggregatedMetricsToolCallLatencyMetricsList),
+          hallucinationMetrics: S.optional(AggregatedMetricsHallucinationMetricsList),
+          toolMetrics: S.optional(AggregatedMetricsToolMetricsList),
         }),
       ).annotate({
         identifier: "AggregatedMetricsMetricsByTurn",
       });
     case 3:
-      return S.Array(__S(130));
+      return S.Array(AggregatedMetricsMetricsByTurn);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          metricsByTurn: S.optional(__S(131)),
-          turnLatencyMetrics: S.optional(__S(123)),
-          toolCallLatencyMetrics: S.optional(__S(127)),
+          metricsByTurn: S.optional(AggregatedMetricsMetricsByTurnList),
+          turnLatencyMetrics: S.optional(AggregatedMetricsTurnLatencyMetricsList),
+          toolCallLatencyMetrics: S.optional(AggregatedMetricsToolCallLatencyMetricsList),
           appVersionId: S.optional(S.String),
-          toolMetrics: S.optional(__S(129)),
+          toolMetrics: S.optional(AggregatedMetricsToolMetricsList),
           failCount: S.optional(S.Number),
           passCount: S.optional(S.Number),
-          hallucinationMetrics: S.optional(__S(125)),
-          semanticSimilarityMetrics: S.optional(__S(125)),
+          hallucinationMetrics: S.optional(AggregatedMetricsHallucinationMetricsList),
+          semanticSimilarityMetrics: S.optional(AggregatedMetricsSemanticSimilarityMetricsList),
         }),
       ).annotate({
         identifier: "AggregatedMetricsMetricsByAppVersion",
       });
     case 5:
-      return S.Array(__S(132));
+      return S.Array(AggregatedMetricsMetricsByAppVersion);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metricsByAppVersion: S.optional(__S(133)),
+          metricsByAppVersion: S.optional(AggregatedMetricsMetricsByAppVersionList),
         }),
       ).annotate({ identifier: "AggregatedMetrics" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          evaluations: S.optional(__S(0)),
+          evaluations: S.optional(StringList),
           lastUpdatedBy: S.optional(S.String),
           createdBy: S.optional(S.String),
           createTime: S.optional(S.String),
           displayName: S.optional(S.String),
-          aggregatedMetrics: S.optional(__S(134)),
+          aggregatedMetrics: S.optional(AggregatedMetrics),
           etag: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -8978,7 +11545,7 @@ function __c17(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           evaluationDatasetId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(135).pipe(T.HttpBody())),
+          body: S.optional(EvaluationDataset.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9005,8 +11572,8 @@ function __c17(j: number): any {
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          llmCriteria: S.optional(__S(137)),
+          tags: S.optional(StringList),
+          llmCriteria: S.optional(EvaluationExpectationLlmCriteria),
         }),
       ).annotate({ identifier: "EvaluationExpectation" });
     case 3:
@@ -9014,7 +11581,7 @@ function __c17(j: number): any {
         S.Struct({
           evaluationExpectationId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(138).pipe(T.HttpBody())),
+          body: S.optional(EvaluationExpectation.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9040,14 +11607,14 @@ function __c17(j: number): any {
         S.Struct({
           evaluationExpectation: S.optional(S.String),
           explanation: S.optional(S.String),
-          outcome: S.optional(S.String),
+          outcome: S.optional(EvaluationResultEvaluationExpectationResultOutcomeEnum),
           prompt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EvaluationResultEvaluationExpectationResult",
       });
     case 6:
-      return S.Array(__S(141));
+      return S.Array(EvaluationResultEvaluationExpectationResult);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -9062,30 +11629,30 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          toolset: S.optional(__S(143)),
+          toolset: S.optional(ToolsetTool),
           executionLatency: S.optional(S.String),
           model: S.optional(S.String),
           displayName: S.optional(S.String),
           resource: S.optional(S.String),
           callback: S.optional(S.String),
           startTime: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(EvaluationResultSpanLatencyTypeEnum),
           endTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EvaluationResultSpanLatency",
       });
     case 1:
-      return S.Array(__S(144));
+      return S.Array(EvaluationResultSpanLatency);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          toolsetTool: S.optional(__S(143)),
+          toolsetTool: S.optional(ToolsetTool),
           agentName: S.optional(S.String),
           displayName: S.optional(S.String),
           tool: S.optional(S.String),
           id: S.optional(S.String),
-          response: S.optional(__S(3)),
+          response: S.optional(DocumentMap),
           parentToolCallId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ToolResponse" });
@@ -9093,9 +11660,9 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          toolsetTool: S.optional(__S(143)),
+          toolsetTool: S.optional(ToolsetTool),
           parentToolCallId: S.optional(S.String),
-          args: S.optional(__S(3)),
+          args: S.optional(DocumentMap),
           id: S.optional(S.String),
           agentName: S.optional(S.String),
           tool: S.optional(S.String),
@@ -9104,8 +11671,8 @@ function __c18(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          toolResponse: S.optional(__S(146)),
-          toolCall: S.optional(__S(147)),
+          toolResponse: S.optional(ToolResponse),
+          toolCall: S.optional(ToolCall),
         }),
       ).annotate({
         identifier: "EvaluationResultScenarioExpectationOutcomeObservedToolCall",
@@ -9139,24 +11706,24 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          toolCall: S.optional(__S(147)),
+          toolCall: S.optional(ToolCall),
           transcript: S.optional(S.String),
-          image: S.optional(__S(149)),
-          blob: S.optional(__S(150)),
-          defaultVariables: S.optional(__S(3)),
-          toolResponse: S.optional(__S(146)),
-          agentTransfer: S.optional(__S(151)),
-          updatedVariables: S.optional(__S(3)),
+          image: S.optional(Image),
+          blob: S.optional(Blob),
+          defaultVariables: S.optional(DocumentMap),
+          toolResponse: S.optional(ToolResponse),
+          agentTransfer: S.optional(AgentTransfer),
+          updatedVariables: S.optional(DocumentMap),
           text: S.optional(S.String),
-          payload: S.optional(__S(3)),
+          payload: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "Chunk" });
     case 1:
-      return S.Array(__S(152));
+      return S.Array(Chunk);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          chunks: S.optional(__S(153)),
+          chunks: S.optional(ChunkList),
           eventTime: S.optional(S.String),
           role: S.optional(S.String),
         }),
@@ -9164,8 +11731,8 @@ function __c19(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          expectedToolCall: S.optional(__S(147)),
-          mockToolResponse: S.optional(__S(146)),
+          expectedToolCall: S.optional(ToolCall),
+          mockToolResponse: S.optional(ToolResponse),
         }),
       ).annotate({
         identifier: "EvaluationScenarioExpectationToolExpectation",
@@ -9173,8 +11740,8 @@ function __c19(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          agentResponse: S.optional(__S(154)),
-          toolExpectation: S.optional(__S(155)),
+          agentResponse: S.optional(Message),
+          toolExpectation: S.optional(EvaluationScenarioExpectationToolExpectation),
         }),
       ).annotate({
         identifier: "EvaluationScenarioExpectation",
@@ -9182,16 +11749,16 @@ function __c19(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          outcome: S.optional(S.String),
-          observedToolCall: S.optional(__S(148)),
-          expectation: S.optional(__S(156)),
-          observedAgentResponse: S.optional(__S(154)),
+          outcome: S.optional(EvaluationResultScenarioExpectationOutcomeOutcomeEnum),
+          observedToolCall: S.optional(EvaluationResultScenarioExpectationOutcomeObservedToolCall),
+          expectation: S.optional(EvaluationScenarioExpectation),
+          observedAgentResponse: S.optional(Message),
         }),
       ).annotate({
         identifier: "EvaluationResultScenarioExpectationOutcome",
       });
     case 6:
-      return S.Array(__S(157));
+      return S.Array(EvaluationResultScenarioExpectationOutcome);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -9216,7 +11783,7 @@ function __c20(j: number): any {
         identifier: "EvaluationScenarioUserFact",
       });
     case 1:
-      return S.Array(__S(160));
+      return S.Array(EvaluationScenarioUserFact);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9228,7 +11795,7 @@ function __c20(j: number): any {
         identifier: "EvaluationResultScenarioRubricOutcome",
       });
     case 3:
-      return S.Array(__S(162));
+      return S.Array(EvaluationResultScenarioRubricOutcome);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -9242,7 +11809,7 @@ function __c20(j: number): any {
         identifier: "EvaluationResultToolCallLatency",
       });
     case 5:
-      return S.Array(__S(164));
+      return S.Array(EvaluationResultToolCallLatency);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -9254,7 +11821,7 @@ function __c20(j: number): any {
         identifier: "EvaluationResultHallucinationResult",
       });
     case 7:
-      return S.Array(__S(166));
+      return S.Array(EvaluationResultHallucinationResult);
   }
 }
 function __c21(j: number): any {
@@ -9262,19 +11829,19 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          userGoalSatisfactionResult: S.optional(__S(140)),
+          userGoalSatisfactionResult: S.optional(EvaluationResultUserGoalSatisfactionResult),
           task: S.optional(S.String),
-          evaluationExpectationResults: S.optional(__S(142)),
-          spanLatencies: S.optional(__S(145)),
+          evaluationExpectationResults: S.optional(EvaluationResultEvaluationExpectationResultList),
+          spanLatencies: S.optional(EvaluationResultSpanLatencyList),
           taskCompleted: S.optional(S.Boolean),
-          expectationOutcomes: S.optional(__S(158)),
-          taskCompletionResult: S.optional(__S(159)),
-          userFacts: S.optional(__S(161)),
-          rubricOutcomes: S.optional(__S(163)),
-          toolCallLatencies: S.optional(__S(165)),
+          expectationOutcomes: S.optional(EvaluationResultScenarioExpectationOutcomeList),
+          taskCompletionResult: S.optional(EvaluationResultTaskCompletionResult),
+          userFacts: S.optional(EvaluationScenarioUserFactList),
+          rubricOutcomes: S.optional(EvaluationResultScenarioRubricOutcomeList),
+          toolCallLatencies: S.optional(EvaluationResultToolCallLatencyList),
           conversation: S.optional(S.String),
           allExpectationsSatisfied: S.optional(S.Boolean),
-          hallucinationResult: S.optional(__S(167)),
+          hallucinationResult: S.optional(EvaluationResultHallucinationResultList),
         }),
       ).annotate({
         identifier: "EvaluationResultScenarioResult",
@@ -9283,7 +11850,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           toolInvocationScore: S.optional(S.Number),
-          outcome: S.optional(S.String),
+          outcome: S.optional(EvaluationResultOverallToolInvocationResultOutcomeEnum),
         }),
       ).annotate({
         identifier: "EvaluationResultOverallToolInvocationResult",
@@ -9291,7 +11858,7 @@ function __c21(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          outcome: S.optional(S.String),
+          outcome: S.optional(EvaluationResultSemanticSimilarityResultOutcomeEnum),
           label: S.optional(S.String),
           explanation: S.optional(S.String),
           score: S.optional(S.Number),
@@ -9303,7 +11870,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userFacingErrorMessage: S.optional(S.String),
-          errorType: S.optional(S.String),
+          errorType: S.optional(EvaluationErrorInfoErrorTypeEnum),
           sessionId: S.optional(S.String),
           errorMessage: S.optional(S.String),
         }),
@@ -9319,19 +11886,25 @@ function __c21(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          agentTransfer: S.optional(__S(151)),
-          toolCall: S.optional(__S(147)),
-          updatedVariables: S.optional(__S(3)),
+          agentTransfer: S.optional(AgentTransfer),
+          toolCall: S.optional(ToolCall),
+          updatedVariables: S.optional(DocumentMap),
           note: S.optional(S.String),
-          comparisonType: S.optional(S.String),
+          comparisonType: S.optional(EvaluationGoldenExpectationComparisonTypeEnum),
           skipEvaluation: S.optional(S.Boolean),
-          mockToolResponse: S.optional(__S(146)),
-          agentResponse: S.optional(__S(154)),
-          expectationLevelMetricsThresholdsOverride: S.optional(__S(25)),
-          agentResponseSemanticSimilarityMetricsConfigOverride: S.optional(__S(60)),
-          agentResponseHallucinationMetricsConfigOverride: S.optional(__S(172)),
+          mockToolResponse: S.optional(ToolResponse),
+          agentResponse: S.optional(Message),
+          expectationLevelMetricsThresholdsOverride: S.optional(
+            EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds,
+          ),
+          agentResponseSemanticSimilarityMetricsConfigOverride: S.optional(
+            EvaluationMetricsConfigSemanticSimilarityMetricsConfig,
+          ),
+          agentResponseHallucinationMetricsConfigOverride: S.optional(
+            EvaluationMetricsConfigHallucinationMetricsConfig,
+          ),
           noToolCalls: S.optional(S.Boolean),
-          toolResponse: S.optional(__S(146)),
+          toolResponse: S.optional(ToolResponse),
         }),
       ).annotate({
         identifier: "EvaluationGoldenExpectation",
@@ -9341,7 +11914,9 @@ function __c21(j: number): any {
         S.Struct({
           parameterCorrectnessScore: S.optional(S.Number),
           explanation: S.optional(S.String),
-          outcome: S.optional(S.String),
+          outcome: S.optional(
+            EvaluationResultGoldenExpectationOutcomeToolInvocationResultOutcomeEnum,
+          ),
         }),
       ).annotate({
         identifier: "EvaluationResultGoldenExpectationOutcomeToolInvocationResult",
@@ -9349,15 +11924,17 @@ function __c21(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          semanticSimilarityResult: S.optional(__S(170)),
-          outcome: S.optional(S.String),
-          expectation: S.optional(__S(173)),
-          observedPayload: S.optional(__S(3)),
-          observedToolCall: S.optional(__S(147)),
-          observedAgentTransfer: S.optional(__S(151)),
-          toolInvocationResult: S.optional(__S(174)),
-          observedAgentResponse: S.optional(__S(154)),
-          observedToolResponse: S.optional(__S(146)),
+          semanticSimilarityResult: S.optional(EvaluationResultSemanticSimilarityResult),
+          outcome: S.optional(EvaluationResultGoldenExpectationOutcomeOutcomeEnum),
+          expectation: S.optional(EvaluationGoldenExpectation),
+          observedPayload: S.optional(DocumentMap),
+          observedToolCall: S.optional(ToolCall),
+          observedAgentTransfer: S.optional(AgentTransfer),
+          toolInvocationResult: S.optional(
+            EvaluationResultGoldenExpectationOutcomeToolInvocationResult,
+          ),
+          observedAgentResponse: S.optional(Message),
+          observedToolResponse: S.optional(ToolResponse),
         }),
       ).annotate({
         identifier: "EvaluationResultGoldenExpectationOutcome",
@@ -9367,46 +11944,46 @@ function __c21(j: number): any {
 function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(175));
+      return S.Array(EvaluationResultGoldenExpectationOutcome);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          toolCallLatencies: S.optional(__S(165)),
-          overallToolInvocationResult: S.optional(__S(169)),
-          semanticSimilarityResult: S.optional(__S(170)),
+          toolCallLatencies: S.optional(EvaluationResultToolCallLatencyList),
+          overallToolInvocationResult: S.optional(EvaluationResultOverallToolInvocationResult),
+          semanticSimilarityResult: S.optional(EvaluationResultSemanticSimilarityResult),
           toolOrderedInvocationScore: S.optional(S.Number),
-          errorInfo: S.optional(__S(171)),
+          errorInfo: S.optional(EvaluationErrorInfo),
           conversation: S.optional(S.String),
           turnLatency: S.optional(S.String),
-          spanLatencies: S.optional(__S(145)),
-          expectationOutcome: S.optional(__S(176)),
-          hallucinationResult: S.optional(__S(166)),
+          spanLatencies: S.optional(EvaluationResultSpanLatencyList),
+          expectationOutcome: S.optional(EvaluationResultGoldenExpectationOutcomeList),
+          hallucinationResult: S.optional(EvaluationResultHallucinationResult),
           toolInvocationScore: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "EvaluationResultGoldenResultTurnReplayResult",
       });
     case 2:
-      return S.Array(__S(177));
+      return S.Array(EvaluationResultGoldenResultTurnReplayResult);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          evaluationExpectationResults: S.optional(__S(142)),
-          turnReplayResults: S.optional(__S(178)),
+          evaluationExpectationResults: S.optional(EvaluationResultEvaluationExpectationResultList),
+          turnReplayResults: S.optional(EvaluationResultGoldenResultTurnReplayResultList),
         }),
       ).annotate({
         identifier: "EvaluationResultGoldenResult",
       });
     case 4:
-      return S.Array(S.suspend(() => __S(181)));
+      return S.Array(S.suspend(() => Span));
     case 5:
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
           startTime: S.optional(S.String),
           duration: S.optional(S.String),
-          attributes: S.optional(__S(3)),
-          childSpans: S.optional(__S(180)),
+          attributes: S.optional(DocumentMap),
+          childSpans: S.optional(SpanList),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Span" });
@@ -9414,14 +11991,14 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           noiseSuppressionLevel: S.optional(S.String),
-          audioEncoding: S.optional(S.String),
+          audioEncoding: S.optional(InputAudioConfigAudioEncodingEnum),
           sampleRateHertz: S.optional(S.Number),
         }),
       ).annotate({ identifier: "InputAudioConfig" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          audioEncoding: S.optional(S.String),
+          audioEncoding: S.optional(OutputAudioConfigAudioEncodingEnum),
           sampleRateHertz: S.optional(S.Number),
         }),
       ).annotate({ identifier: "OutputAudioConfig" });
@@ -9432,70 +12009,70 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          toolCallBehaviour: S.optional(S.String),
-          inputAudioConfig: S.optional(__S(182)),
-          outputAudioConfig: S.optional(__S(183)),
-          evaluationChannel: S.optional(S.String),
+          toolCallBehaviour: S.optional(EvaluationConfigToolCallBehaviourEnum),
+          inputAudioConfig: S.optional(InputAudioConfig),
+          outputAudioConfig: S.optional(OutputAudioConfig),
+          evaluationChannel: S.optional(EvaluationConfigEvaluationChannelEnum),
         }),
       ).annotate({ identifier: "EvaluationConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          executionState: S.optional(S.String),
-          goldenRunMethod: S.optional(S.String),
+          executionState: S.optional(EvaluationResultExecutionStateEnum),
+          goldenRunMethod: S.optional(EvaluationResultGoldenRunMethodEnum),
           evaluationRun: S.optional(S.String),
-          scenarioResult: S.optional(__S(168)),
-          evaluationMetricsThresholds: S.optional(__S(29)),
+          scenarioResult: S.optional(EvaluationResultScenarioResult),
+          evaluationMetricsThresholds: S.optional(EvaluationMetricsThresholds),
           appVersionDisplayName: S.optional(S.String),
           appVersion: S.optional(S.String),
-          persona: S.optional(__S(23)),
-          goldenResult: S.optional(__S(179)),
-          error: S.optional(__S(5)),
+          persona: S.optional(EvaluationPersona),
+          goldenResult: S.optional(EvaluationResultGoldenResult),
+          error: S.optional(Status),
           initiatedBy: S.optional(S.String),
           changelog: S.optional(S.String),
           createTime: S.optional(S.String),
-          rootSpan: S.optional(__S(181)),
+          rootSpan: S.optional(Span),
           changelogCreateTime: S.optional(S.String),
-          evaluationStatus: S.optional(S.String),
-          errorInfo: S.optional(__S(171)),
-          config: S.optional(__S(184)),
-          outcomeMetadata: S.optional(S.String),
+          evaluationStatus: S.optional(EvaluationResultEvaluationStatusEnum),
+          errorInfo: S.optional(EvaluationErrorInfo),
+          config: S.optional(EvaluationConfig),
+          outcomeMetadata: S.optional(EvaluationResultOutcomeMetadataEnum),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "EvaluationResult" });
     case 2:
-      return S.Array(__S(185));
+      return S.Array(EvaluationResult);
     case 3:
-      return S.Array(__S(156));
+      return S.Array(EvaluationScenarioExpectation);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          taskCompletionBehavior: S.optional(S.String),
-          evaluationExpectations: S.optional(__S(0)),
+          taskCompletionBehavior: S.optional(EvaluationScenarioTaskCompletionBehaviorEnum),
+          evaluationExpectations: S.optional(StringList),
           maxTurns: S.optional(S.Number),
-          rubrics: S.optional(__S(0)),
-          scenarioExpectations: S.optional(__S(187)),
-          scenarioExecutionMode: S.optional(S.String),
-          userFacts: S.optional(__S(161)),
-          variableOverrides: S.optional(__S(3)),
-          userGoalBehavior: S.optional(S.String),
+          rubrics: S.optional(StringList),
+          scenarioExpectations: S.optional(EvaluationScenarioExpectationList),
+          scenarioExecutionMode: S.optional(EvaluationScenarioScenarioExecutionModeEnum),
+          userFacts: S.optional(EvaluationScenarioUserFactList),
+          variableOverrides: S.optional(DocumentMap),
+          userGoalBehavior: S.optional(EvaluationScenarioUserGoalBehaviorEnum),
           task: S.optional(S.String),
         }),
       ).annotate({ identifier: "EvaluationScenario" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          variables: S.optional(__S(3)),
+          variables: S.optional(DocumentMap),
           event: S.optional(S.String),
         }),
       ).annotate({ identifier: "Event" });
     case 6:
-      return S.Array(__S(146));
+      return S.Array(ToolResponse);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          toolResponses: S.optional(__S(190)),
+          toolResponses: S.optional(ToolResponseList),
         }),
       ).annotate({ identifier: "ToolResponses" });
   }
@@ -9508,63 +12085,67 @@ function __c24(j: number): any {
           audio: S.optional(S.String),
           text: S.optional(S.String),
           dtmf: S.optional(S.String),
-          variables: S.optional(__S(3)),
+          variables: S.optional(DocumentMap),
           willContinue: S.optional(S.Boolean),
-          image: S.optional(__S(149)),
-          event: S.optional(__S(189)),
-          toolResponses: S.optional(__S(191)),
-          blob: S.optional(__S(150)),
+          image: S.optional(Image),
+          event: S.optional(Event),
+          toolResponses: S.optional(ToolResponses),
+          blob: S.optional(Blob),
         }),
       ).annotate({ identifier: "SessionInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          userInput: S.optional(__S(192)),
-          expectation: S.optional(__S(173)),
-          agentTransfer: S.optional(__S(151)),
+          userInput: S.optional(SessionInput),
+          expectation: S.optional(EvaluationGoldenExpectation),
+          agentTransfer: S.optional(AgentTransfer),
         }),
       ).annotate({ identifier: "EvaluationStep" });
     case 2:
-      return S.Array(__S(193));
+      return S.Array(EvaluationStep);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          rootSpan: S.optional(__S(181)),
-          turnLevelMetricsThresholdsOverride: S.optional(__S(27)),
-          steps: S.optional(__S(194)),
-          hallucinationMetricBehaviorOverride: S.optional(S.String),
+          rootSpan: S.optional(Span),
+          turnLevelMetricsThresholdsOverride: S.optional(
+            EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds,
+          ),
+          steps: S.optional(EvaluationStepList),
+          hallucinationMetricBehaviorOverride: S.optional(
+            EvaluationGoldenTurnHallucinationMetricBehaviorOverrideEnum,
+          ),
         }),
       ).annotate({ identifier: "EvaluationGoldenTurn" });
     case 4:
-      return S.Array(__S(195));
+      return S.Array(EvaluationGoldenTurn);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          turns: S.optional(__S(196)),
-          evaluationExpectations: S.optional(__S(0)),
+          turns: S.optional(EvaluationGoldenTurnList),
+          evaluationExpectations: S.optional(StringList),
         }),
       ).annotate({ identifier: "EvaluationGolden" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           invalid: S.optional(S.Boolean),
-          lastTenResults: S.optional(__S(186)),
+          lastTenResults: S.optional(EvaluationResultList),
           name: S.optional(S.String),
-          evaluationMetricsThresholdOverride: S.optional(__S(29)),
-          aggregatedMetrics: S.optional(__S(134)),
-          lastCompletedResult: S.optional(__S(185)),
-          evaluationDatasets: S.optional(__S(0)),
+          evaluationMetricsThresholdOverride: S.optional(EvaluationMetricsThresholds),
+          aggregatedMetrics: S.optional(AggregatedMetrics),
+          lastCompletedResult: S.optional(EvaluationResult),
+          evaluationDatasets: S.optional(StringList),
           etag: S.optional(S.String),
           description: S.optional(S.String),
-          scenario: S.optional(__S(188)),
-          tags: S.optional(__S(0)),
+          scenario: S.optional(EvaluationScenario),
+          tags: S.optional(StringList),
           updateTime: S.optional(S.String),
           createdBy: S.optional(S.String),
-          evaluationRuns: S.optional(__S(0)),
+          evaluationRuns: S.optional(StringList),
           displayName: S.optional(S.String),
-          golden: S.optional(__S(197)),
+          golden: S.optional(EvaluationGolden),
           createTime: S.optional(S.String),
-          evaluationMetricsConfigOverride: S.optional(__S(62)),
+          evaluationMetricsConfigOverride: S.optional(EvaluationMetricsConfig),
           lastUpdatedBy: S.optional(S.String),
         }),
       ).annotate({ identifier: "Evaluation" });
@@ -9573,7 +12154,7 @@ function __c24(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           evaluationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(198).pipe(T.HttpBody())),
+          body: S.optional(Evaluation.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9589,12 +12170,12 @@ function __c24(j: number): any {
 function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(154));
+      return S.Array(Message);
     case 1:
       return S.suspend(() =>
         S.Struct({
           entryAgent: S.optional(S.String),
-          messages: S.optional(__S(200)),
+          messages: S.optional(MessageList),
           createTime: S.optional(S.String),
           displayName: S.optional(S.String),
           invalid: S.optional(S.Boolean),
@@ -9609,7 +12190,7 @@ function __c25(j: number): any {
         S.Struct({
           exampleId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(201).pipe(T.HttpBody())),
+          body: S.optional(Example.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9623,25 +12204,25 @@ function __c25(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          detectionMode: S.optional(S.String),
-          type: S.optional(S.String),
+          detectionMode: S.optional(GuardrailSupervisorDetectionModeEnum),
+          type: S.optional(GuardrailSupervisorTypeEnum),
         }),
       ).annotate({ identifier: "GuardrailSupervisor" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(S.String),
-          threshold: S.optional(S.String),
+          category: S.optional(GuardrailModelSafetySafetySettingCategoryEnum),
+          threshold: S.optional(GuardrailModelSafetySafetySettingThresholdEnum),
         }),
       ).annotate({
         identifier: "GuardrailModelSafetySafetySetting",
       });
     case 5:
-      return S.Array(__S(204));
+      return S.Array(GuardrailModelSafetySafetySetting);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          safetySettings: S.optional(__S(205)),
+          safetySettings: S.optional(GuardrailModelSafetySafetySettingList),
         }),
       ).annotate({ identifier: "GuardrailModelSafety" });
     case 7:
@@ -9659,10 +12240,10 @@ function __c26(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          modelSettings: S.optional(__S(36)),
+          modelSettings: S.optional(ModelSettings),
           allowShortUtterance: S.optional(S.Boolean),
           prompt: S.optional(S.String),
-          policyScope: S.optional(S.String),
+          policyScope: S.optional(GuardrailLlmPolicyPolicyScopeEnum),
           maxConversationMessages: S.optional(S.Number),
           failOpen: S.optional(S.Boolean),
         }),
@@ -9671,8 +12252,8 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           failOpen: S.optional(S.Boolean),
-          defaultSettings: S.optional(__S(207)),
-          customPolicy: S.optional(__S(208)),
+          defaultSettings: S.optional(GuardrailLlmPromptSecurityDefaultSecuritySettings),
+          customPolicy: S.optional(GuardrailLlmPolicy),
         }),
       ).annotate({
         identifier: "GuardrailLlmPromptSecurity",
@@ -9680,20 +12261,20 @@ function __c26(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          bannedContentsInUserInput: S.optional(__S(0)),
-          bannedContents: S.optional(__S(0)),
-          matchType: S.optional(S.String),
+          bannedContentsInUserInput: S.optional(StringList),
+          bannedContents: S.optional(StringList),
+          matchType: S.optional(GuardrailContentFilterMatchTypeEnum),
           disregardDiacritics: S.optional(S.Boolean),
-          bannedContentsInAgentResponse: S.optional(__S(0)),
+          bannedContentsInAgentResponse: S.optional(StringList),
         }),
       ).annotate({ identifier: "GuardrailContentFilter" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          beforeAgentCallback: S.optional(__S(76)),
-          afterModelCallback: S.optional(__S(76)),
-          beforeModelCallback: S.optional(__S(76)),
-          afterAgentCallback: S.optional(__S(76)),
+          beforeAgentCallback: S.optional(Callback),
+          afterModelCallback: S.optional(Callback),
+          beforeModelCallback: S.optional(Callback),
+          afterAgentCallback: S.optional(Callback),
         }),
       ).annotate({ identifier: "GuardrailCodeCallback" });
     case 4:
@@ -9712,11 +12293,11 @@ function __c26(j: number): any {
         }),
       ).annotate({ identifier: "TriggerActionResponse" });
     case 6:
-      return S.Array(__S(213));
+      return S.Array(TriggerActionResponse);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          responses: S.optional(__S(214)),
+          responses: S.optional(TriggerActionResponseList),
         }),
       ).annotate({
         identifier: "TriggerActionRespondImmediately",
@@ -9728,25 +12309,25 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          transferAgent: S.optional(__S(212)),
-          respondImmediately: S.optional(__S(215)),
-          generativeAnswer: S.optional(__S(137)),
+          transferAgent: S.optional(TriggerActionTransferAgent),
+          respondImmediately: S.optional(TriggerActionRespondImmediately),
+          generativeAnswer: S.optional(TriggerActionGenerativeAnswer),
         }),
       ).annotate({ identifier: "TriggerAction" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          supervisor: S.optional(__S(203)),
-          modelSafety: S.optional(__S(206)),
-          llmPromptSecurity: S.optional(__S(209)),
+          supervisor: S.optional(GuardrailSupervisor),
+          modelSafety: S.optional(GuardrailModelSafety),
+          llmPromptSecurity: S.optional(GuardrailLlmPromptSecurity),
           displayName: S.optional(S.String),
-          contentFilter: S.optional(__S(210)),
-          llmPolicy: S.optional(__S(208)),
+          contentFilter: S.optional(GuardrailContentFilter),
+          llmPolicy: S.optional(GuardrailLlmPolicy),
           description: S.optional(S.String),
-          codeCallback: S.optional(__S(211)),
+          codeCallback: S.optional(GuardrailCodeCallback),
           enabled: S.optional(S.Boolean),
           updateTime: S.optional(S.String),
-          action: S.optional(__S(216)),
+          action: S.optional(TriggerAction),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
           etag: S.optional(S.String),
@@ -9757,7 +12338,7 @@ function __c27(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           guardrailId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(217).pipe(T.HttpBody())),
+          body: S.optional(Guardrail.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9773,8 +12354,8 @@ function __c27(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          daysOfWeek: S.optional(__S(219)),
-          frequency: S.optional(S.String),
+          daysOfWeek: S.optional(IntegerList),
+          frequency: S.optional(ScheduledEvaluationRunSchedulingConfigFrequencyEnum),
           startTime: S.optional(S.String),
         }),
       ).annotate({
@@ -9788,16 +12369,16 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "PersonaRunConfig" });
     case 6:
-      return S.Array(__S(221));
+      return S.Array(PersonaRunConfig);
     case 7:
       return S.suspend(() =>
         S.Struct({
           errorMessage: S.optional(S.String),
           shouldSuggestFix: S.optional(S.Boolean),
-          lossReport: S.optional(__S(3)),
+          lossReport: S.optional(DocumentMap),
           assistantSession: S.optional(S.String),
           generateLossReport: S.optional(S.Boolean),
-          status: S.optional(S.String),
+          status: S.optional(OptimizationConfigStatusEnum),
           reportSummary: S.optional(S.String),
         }),
       ).annotate({ identifier: "OptimizationConfig" });
@@ -9809,18 +12390,18 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           generateLatencyReport: S.optional(S.Boolean),
-          evaluations: S.optional(__S(0)),
+          evaluations: S.optional(StringList),
           app: S.optional(S.String),
-          goldenRunMethod: S.optional(S.String),
-          config: S.optional(__S(184)),
+          goldenRunMethod: S.optional(RunEvaluationRequestGoldenRunMethodEnum),
+          config: S.optional(EvaluationConfig),
           runCount: S.optional(S.Number),
           scheduledEvaluationRun: S.optional(S.String),
           displayName: S.optional(S.String),
           evaluationDataset: S.optional(S.String),
           appVersion: S.optional(S.String),
-          evaluationRunCachingSettings: S.optional(__S(63)),
-          personaRunConfigs: S.optional(__S(222)),
-          optimizationConfig: S.optional(__S(223)),
+          evaluationRunCachingSettings: S.optional(EvaluationRunCachingSettings),
+          personaRunConfigs: S.optional(PersonaRunConfigList),
+          optimizationConfig: S.optional(OptimizationConfig),
         }),
       ).annotate({ identifier: "RunEvaluationRequest" });
     case 1:
@@ -9836,10 +12417,10 @@ function __c28(j: number): any {
           nextScheduledExecutionTime: S.optional(S.String),
           lastUpdatedBy: S.optional(S.String),
           description: S.optional(S.String),
-          schedulingConfig: S.optional(__S(220)),
+          schedulingConfig: S.optional(ScheduledEvaluationRunSchedulingConfig),
           name: S.optional(S.String),
           etag: S.optional(S.String),
-          request: S.optional(__S(224)),
+          request: S.optional(RunEvaluationRequest),
         }),
       ).annotate({ identifier: "ScheduledEvaluationRun" });
     case 2:
@@ -9847,7 +12428,7 @@ function __c28(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           scheduledEvaluationRunId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(225).pipe(T.HttpBody())),
+          body: S.optional(ScheduledEvaluationRun.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9869,9 +12450,9 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          response: S.optional(__S(19)),
+          response: S.optional(Ces_Schema),
           name: S.optional(S.String),
-          parameters: S.optional(__S(19)),
+          parameters: S.optional(Ces_Schema),
         }),
       ).annotate({ identifier: "ClientFunction" });
     case 5:
@@ -9880,7 +12461,7 @@ function __c28(j: number): any {
           name: S.optional(S.String),
           fileCorpus: S.optional(S.String),
           description: S.optional(S.String),
-          corpusType: S.optional(S.String),
+          corpusType: S.optional(FileSearchToolCorpusTypeEnum),
         }),
       ).annotate({ identifier: "FileSearchTool" });
     case 6:
@@ -9901,22 +12482,22 @@ function __c28(j: number): any {
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(231));
+      return S.Array(TlsConfigCaCert);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          caCerts: S.optional(__S(232)),
+          caCerts: S.optional(TlsConfigCaCertList),
         }),
       ).annotate({ identifier: "TlsConfig" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          serviceDirectoryConfig: S.optional(__S(230)),
+          serviceDirectoryConfig: S.optional(ServiceDirectoryConfig),
           name: S.optional(S.String),
           openApiSchema: S.optional(S.String),
-          tlsConfig: S.optional(__S(233)),
-          apiAuthentication: S.optional(__S(87)),
+          tlsConfig: S.optional(TlsConfig),
+          apiAuthentication: S.optional(ApiAuthentication),
           url: S.optional(S.String),
           ignoreUnknownFields: S.optional(S.Boolean),
         }),
@@ -9924,7 +12505,7 @@ function __c29(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          codeBlock: S.optional(__S(92)),
+          codeBlock: S.optional(CodeBlock),
           enableFakeMode: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ToolFakeConfig" });
@@ -9932,16 +12513,16 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          apiAuthentication: S.optional(__S(87)),
-          outputSchema: S.optional(__S(19)),
-          state: S.optional(S.String),
-          tlsConfig: S.optional(__S(233)),
-          serviceDirectoryConfig: S.optional(__S(230)),
+          apiAuthentication: S.optional(ApiAuthentication),
+          outputSchema: S.optional(Ces_Schema),
+          state: S.optional(McpToolStateEnum),
+          tlsConfig: S.optional(TlsConfig),
+          serviceDirectoryConfig: S.optional(ServiceDirectoryConfig),
           serverAddress: S.optional(S.String),
-          customHeaders: S.optional(__S(38)),
+          customHeaders: S.optional(StringMap),
           description: S.optional(S.String),
           nameOverride: S.optional(S.String),
-          inputSchema: S.optional(__S(19)),
+          inputSchema: S.optional(Ces_Schema),
         }),
       ).annotate({ identifier: "McpTool" });
     case 5:
@@ -9954,14 +12535,20 @@ function __c29(j: number): any {
         identifier: "DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint",
       });
     case 6:
-      return S.Array(__S(237));
+      return S.Array(DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          interpolationType: S.optional(S.String),
+          interpolationType: S.optional(
+            DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecInterpolationTypeEnum,
+          ),
           fieldName: S.optional(S.String),
-          attributeType: S.optional(S.String),
-          controlPoints: S.optional(__S(238)),
+          attributeType: S.optional(
+            DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecAttributeTypeEnum,
+          ),
+          controlPoints: S.optional(
+            DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPointList,
+          ),
         }),
       ).annotate({
         identifier: "DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec",
@@ -9974,36 +12561,36 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           boost: S.optional(S.Number),
-          boostControlSpec: S.optional(__S(239)),
+          boostControlSpec: S.optional(DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec),
           condition: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DataStoreToolBoostSpecConditionBoostSpec",
       });
     case 1:
-      return S.Array(__S(240));
+      return S.Array(DataStoreToolBoostSpecConditionBoostSpec);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          conditionBoostSpecs: S.optional(__S(241)),
+          conditionBoostSpecs: S.optional(DataStoreToolBoostSpecConditionBoostSpecList),
         }),
       ).annotate({ identifier: "DataStoreToolBoostSpec" });
     case 3:
-      return S.Array(__S(242));
+      return S.Array(DataStoreToolBoostSpec);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dataStores: S.optional(__S(0)),
-          spec: S.optional(__S(243)),
+          dataStores: S.optional(StringList),
+          spec: S.optional(DataStoreToolBoostSpecList),
         }),
       ).annotate({ identifier: "DataStoreToolBoostSpecs" });
     case 5:
-      return S.Array(__S(244));
+      return S.Array(DataStoreToolBoostSpecs);
     case 6:
       return S.suspend(() =>
         S.Struct({
           disabled: S.optional(S.Boolean),
-          modelSettings: S.optional(__S(36)),
+          modelSettings: S.optional(ModelSettings),
           prompt: S.optional(S.String),
         }),
       ).annotate({
@@ -10034,7 +12621,7 @@ function __c31(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          modelSettings: S.optional(__S(36)),
+          modelSettings: S.optional(ModelSettings),
           disabled: S.optional(S.Boolean),
           prompt: S.optional(S.String),
         }),
@@ -10044,17 +12631,17 @@ function __c31(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          rewriterConfig: S.optional(__S(246)),
-          groundingConfig: S.optional(__S(247)),
-          modalityType: S.optional(S.String),
-          snippetsConfig: S.optional(__S(248)),
-          summarizationConfig: S.optional(__S(249)),
+          rewriterConfig: S.optional(DataStoreToolRewriterConfig),
+          groundingConfig: S.optional(DataStoreToolGroundingConfig),
+          modalityType: S.optional(DataStoreToolModalityConfigModalityTypeEnum),
+          snippetsConfig: S.optional(DataStoreToolSnippetsConfig),
+          summarizationConfig: S.optional(DataStoreToolSummarizationConfig),
         }),
       ).annotate({
         identifier: "DataStoreToolModalityConfig",
       });
     case 3:
-      return S.Array(__S(250));
+      return S.Array(DataStoreToolModalityConfig);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -10068,23 +12655,23 @@ function __c31(j: number): any {
         S.Struct({
           createTime: S.optional(S.String),
           name: S.optional(S.String),
-          documentProcessingMode: S.optional(S.String),
+          documentProcessingMode: S.optional(DataStoreDocumentProcessingModeEnum),
           displayName: S.optional(S.String),
-          connectorConfig: S.optional(__S(252)),
-          type: S.optional(S.String),
+          connectorConfig: S.optional(DataStoreConnectorConfig),
+          type: S.optional(DataStoreTypeEnum),
         }),
       ).annotate({ identifier: "DataStore" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String),
-          dataStore: S.optional(__S(253)),
+          dataStore: S.optional(DataStore),
         }),
       ).annotate({
         identifier: "DataStoreToolDataStoreSource",
       });
     case 7:
-      return S.Array(__S(254));
+      return S.Array(DataStoreToolDataStoreSource);
   }
 }
 function __c32(j: number): any {
@@ -10094,7 +12681,7 @@ function __c32(j: number): any {
         S.Struct({
           filter: S.optional(S.String),
           engine: S.optional(S.String),
-          dataStoreSources: S.optional(__S(255)),
+          dataStoreSources: S.optional(DataStoreToolDataStoreSourceList),
         }),
       ).annotate({
         identifier: "DataStoreToolEngineSource",
@@ -10103,12 +12690,12 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          boostSpecs: S.optional(__S(245)),
-          filterParameterBehavior: S.optional(S.String),
-          modalityConfigs: S.optional(__S(251)),
+          boostSpecs: S.optional(DataStoreToolBoostSpecsList),
+          filterParameterBehavior: S.optional(DataStoreToolFilterParameterBehaviorEnum),
+          modalityConfigs: S.optional(DataStoreToolModalityConfigList),
           description: S.optional(S.String),
-          engineSource: S.optional(__S(256)),
-          dataStoreSource: S.optional(__S(254)),
+          engineSource: S.optional(DataStoreToolEngineSource),
+          dataStoreSource: S.optional(DataStoreToolDataStoreSource),
         }),
       ).annotate({ identifier: "DataStoreTool" });
     case 2:
@@ -10132,34 +12719,34 @@ function __c32(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          oauth2AuthCodeConfig: S.optional(__S(258)),
-          oauth2JwtBearerConfig: S.optional(__S(259)),
+          oauth2AuthCodeConfig: S.optional(EndUserAuthConfigOauth2AuthCodeConfig),
+          oauth2JwtBearerConfig: S.optional(EndUserAuthConfigOauth2JwtBearerConfig),
         }),
       ).annotate({ identifier: "EndUserAuthConfig" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           entityId: S.optional(S.String),
-          operation: S.optional(S.String),
+          operation: S.optional(ActionEntityOperationOperationEnum),
         }),
       ).annotate({ identifier: "ActionEntityOperation" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          inputFields: S.optional(__S(0)),
-          entityOperation: S.optional(__S(261)),
-          outputFields: S.optional(__S(0)),
+          inputFields: S.optional(StringList),
+          entityOperation: S.optional(ActionEntityOperation),
+          outputFields: S.optional(StringList),
           connectionActionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Action" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          authConfig: S.optional(__S(260)),
+          authConfig: S.optional(EndUserAuthConfig),
           name: S.optional(S.String),
           connection: S.optional(S.String),
           description: S.optional(S.String),
-          action: S.optional(__S(262)),
+          action: S.optional(Action),
         }),
       ).annotate({ identifier: "ConnectorTool" });
   }
@@ -10169,11 +12756,11 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          inputVariableMapping: S.optional(__S(38)),
-          agentCard: S.optional(__S(82)),
+          inputVariableMapping: S.optional(StringMap),
+          agentCard: S.optional(AgentCard),
           description: S.optional(S.String),
-          outputVariableMapping: S.optional(__S(38)),
-          apiAuthentication: S.optional(__S(87)),
+          outputVariableMapping: S.optional(StringMap),
+          apiAuthentication: S.optional(ApiAuthentication),
           statefulAgent: S.optional(S.Boolean),
           name: S.optional(S.String),
         }),
@@ -10192,10 +12779,10 @@ function __c33(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
-          contextUrls: S.optional(__S(0)),
-          preferredDomains: S.optional(__S(0)),
-          excludeDomains: S.optional(__S(0)),
-          promptConfig: S.optional(__S(265)),
+          contextUrls: S.optional(StringList),
+          preferredDomains: S.optional(StringList),
+          excludeDomains: S.optional(StringList),
+          promptConfig: S.optional(GoogleSearchToolPromptConfig),
         }),
       ).annotate({ identifier: "GoogleSearchTool" });
     case 3:
@@ -10212,23 +12799,23 @@ function __c33(j: number): any {
           pythonCode: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          serviceDirectoryConfig: S.optional(__S(230)),
+          serviceDirectoryConfig: S.optional(ServiceDirectoryConfig),
         }),
       ).annotate({ identifier: "PythonFunction" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          fieldMappings: S.optional(__S(38)),
-          mode: S.optional(S.String),
+          fieldMappings: S.optional(StringMap),
+          mode: S.optional(WidgetToolDataMappingModeEnum),
           pythonScript: S.optional(S.String),
           sourceToolName: S.optional(S.String),
-          pythonFunction: S.optional(__S(268)),
+          pythonFunction: S.optional(PythonFunction),
         }),
       ).annotate({ identifier: "WidgetToolDataMapping" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(WidgetToolTextResponseConfigTypeEnum),
           staticText: S.optional(S.String),
           textResponseInstruction: S.optional(S.String),
         }),
@@ -10238,12 +12825,12 @@ function __c33(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          uiConfig: S.optional(__S(3)),
+          uiConfig: S.optional(DocumentMap),
           description: S.optional(S.String),
-          dataMapping: S.optional(__S(269)),
-          widgetType: S.optional(S.String),
-          textResponseConfig: S.optional(__S(270)),
-          parameters: S.optional(__S(19)),
+          dataMapping: S.optional(WidgetToolDataMapping),
+          widgetType: S.optional(WidgetToolWidgetTypeEnum),
+          textResponseConfig: S.optional(WidgetToolTextResponseConfig),
+          parameters: S.optional(Ces_Schema),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "WidgetTool" });
@@ -10254,28 +12841,28 @@ function __c34(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          executionType: S.optional(S.String),
-          systemTool: S.optional(__S(227)),
-          clientFunction: S.optional(__S(228)),
+          executionType: S.optional(ToolExecutionTypeEnum),
+          systemTool: S.optional(SystemTool),
+          clientFunction: S.optional(ClientFunction),
           timeout: S.optional(S.String),
-          fileSearchTool: S.optional(__S(229)),
-          openApiTool: S.optional(__S(234)),
+          fileSearchTool: S.optional(FileSearchTool),
+          openApiTool: S.optional(OpenApiTool),
           readOnly: S.optional(S.Boolean),
-          toolFakeConfig: S.optional(__S(235)),
-          mcpTool: S.optional(__S(236)),
-          dataStoreTool: S.optional(__S(257)),
+          toolFakeConfig: S.optional(ToolFakeConfig),
+          mcpTool: S.optional(McpTool),
+          dataStoreTool: S.optional(DataStoreTool),
           createTime: S.optional(S.String),
           displayName: S.optional(S.String),
-          connectorTool: S.optional(__S(263)),
+          connectorTool: S.optional(ConnectorTool),
           name: S.optional(S.String),
-          remoteAgentTool: S.optional(__S(264)),
+          remoteAgentTool: S.optional(RemoteAgentTool),
           generatedSummary: S.optional(S.String),
           updateTime: S.optional(S.String),
           etag: S.optional(S.String),
-          googleSearchTool: S.optional(__S(266)),
-          agentTool: S.optional(__S(267)),
-          widgetTool: S.optional(__S(271)),
-          pythonFunction: S.optional(__S(268)),
+          googleSearchTool: S.optional(GoogleSearchTool),
+          agentTool: S.optional(AgentTool),
+          widgetTool: S.optional(WidgetTool),
+          pythonFunction: S.optional(PythonFunction),
         }),
       ).annotate({ identifier: "Tool" });
     case 1:
@@ -10283,7 +12870,7 @@ function __c34(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           toolId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(272).pipe(T.HttpBody())),
+          body: S.optional(Tool.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10295,13 +12882,13 @@ function __c34(j: number): any {
         identifier: "CreateProjectsLocationsAppsToolsRequest",
       });
     case 2:
-      return S.Array(__S(262));
+      return S.Array(Action);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          connectorActions: S.optional(__S(274)),
+          connectorActions: S.optional(ActionList),
           connection: S.optional(S.String),
-          authConfig: S.optional(__S(260)),
+          authConfig: S.optional(EndUserAuthConfig),
         }),
       ).annotate({ identifier: "ConnectorToolset" });
     case 4:
@@ -10309,31 +12896,31 @@ function __c34(j: number): any {
         S.Struct({
           ignoreUnknownFields: S.optional(S.Boolean),
           url: S.optional(S.String),
-          serviceDirectoryConfig: S.optional(__S(230)),
-          tlsConfig: S.optional(__S(233)),
-          apiAuthentication: S.optional(__S(87)),
+          serviceDirectoryConfig: S.optional(ServiceDirectoryConfig),
+          tlsConfig: S.optional(TlsConfig),
+          apiAuthentication: S.optional(ApiAuthentication),
           openApiSchema: S.optional(S.String),
         }),
       ).annotate({ identifier: "OpenApiToolset" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          outputSchema: S.optional(__S(19)),
+          outputSchema: S.optional(Ces_Schema),
           description: S.optional(S.String),
-          inputSchema: S.optional(__S(19)),
+          inputSchema: S.optional(Ces_Schema),
         }),
       ).annotate({ identifier: "McpToolDefinition" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          snapshot: S.optional(__S(277)),
+          snapshot: S.optional(McpToolDefinition),
           tool: S.optional(S.String),
           descriptionOverride: S.optional(S.String),
           nameOverride: S.optional(S.String),
         }),
       ).annotate({ identifier: "McpToolOverride" });
     case 7:
-      return S.Array(__S(278));
+      return S.Array(McpToolOverride);
   }
 }
 function __c35(j: number): any {
@@ -10341,28 +12928,28 @@ function __c35(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tlsConfig: S.optional(__S(233)),
-          apiAuthentication: S.optional(__S(87)),
-          toolOverrides: S.optional(__S(279)),
+          tlsConfig: S.optional(TlsConfig),
+          apiAuthentication: S.optional(ApiAuthentication),
+          toolOverrides: S.optional(McpToolOverrideList),
           serverAddress: S.optional(S.String),
-          customHeaders: S.optional(__S(38)),
-          serviceDirectoryConfig: S.optional(__S(230)),
+          customHeaders: S.optional(StringMap),
+          serviceDirectoryConfig: S.optional(ServiceDirectoryConfig),
         }),
       ).annotate({ identifier: "McpToolset" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
-          connectorToolset: S.optional(__S(275)),
-          openApiToolset: S.optional(__S(276)),
+          connectorToolset: S.optional(ConnectorToolset),
+          openApiToolset: S.optional(OpenApiToolset),
           displayName: S.optional(S.String),
           timeout: S.optional(S.String),
-          executionType: S.optional(S.String),
+          executionType: S.optional(ToolsetExecutionTypeEnum),
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
-          toolFakeConfig: S.optional(__S(235)),
+          toolFakeConfig: S.optional(ToolFakeConfig),
           etag: S.optional(S.String),
-          mcpToolset: S.optional(__S(280)),
+          mcpToolset: S.optional(McpToolset),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "Toolset" });
@@ -10371,7 +12958,7 @@ function __c35(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           toolsetId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(281).pipe(T.HttpBody())),
+          body: S.optional(Toolset.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10383,15 +12970,15 @@ function __c35(j: number): any {
         identifier: "CreateProjectsLocationsAppsToolsetsRequest",
       });
     case 3:
-      return S.Array(__S(99));
+      return S.Array(Agent);
     case 4:
-      return S.Array(__S(272));
+      return S.Array(Tool);
     case 5:
-      return S.Array(__S(217));
+      return S.Array(Guardrail);
     case 6:
-      return S.Array(__S(281));
+      return S.Array(Toolset);
     case 7:
-      return S.Array(__S(201));
+      return S.Array(Example);
   }
 }
 function __c36(j: number): any {
@@ -10399,19 +12986,19 @@ function __c36(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          agents: S.optional(__S(283)),
-          tools: S.optional(__S(284)),
-          guardrails: S.optional(__S(285)),
-          app: S.optional(__S(74)),
-          toolsets: S.optional(__S(286)),
-          examples: S.optional(__S(287)),
+          agents: S.optional(AgentList),
+          tools: S.optional(ToolList),
+          guardrails: S.optional(GuardrailList),
+          app: S.optional(App),
+          toolsets: S.optional(ToolsetList),
+          examples: S.optional(ExampleList),
         }),
       ).annotate({ identifier: "AppSnapshot" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           creator: S.optional(S.String),
-          snapshot: S.optional(__S(288)),
+          snapshot: S.optional(AppSnapshot),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
@@ -10425,7 +13012,7 @@ function __c36(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           appVersionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(289).pipe(T.HttpBody())),
+          body: S.optional(AppVersion.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10485,7 +13072,7 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          source: S.optional(S.String.pipe(T.Query())),
+          source: S.optional(DeleteProjectsLocationsAppsConversationsSourceEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -10703,30 +13290,30 @@ function __c38(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          toolset: S.optional(__S(143)),
+          toolset: S.optional(ToolsetTool),
           toolId: S.optional(S.String),
-          mockResponse: S.optional(__S(3)),
-          expectedArgsPattern: S.optional(__S(3)),
+          mockResponse: S.optional(DocumentMap),
+          expectedArgsPattern: S.optional(DocumentMap),
           tool: S.optional(S.String),
         }),
       ).annotate({ identifier: "MockedToolCall" });
     case 5:
-      return S.Array(__S(308));
+      return S.Array(MockedToolCall);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          mockedToolCalls: S.optional(__S(309)),
-          unmatchedToolCallBehavior: S.optional(S.String),
+          mockedToolCalls: S.optional(MockedToolCallList),
+          unmatchedToolCallBehavior: S.optional(MockConfigUnmatchedToolCallBehaviorEnum),
         }),
       ).annotate({ identifier: "MockConfig" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          args: S.optional(__S(3)),
-          variables: S.optional(__S(3)),
-          mockConfig: S.optional(__S(310)),
-          context: S.optional(__S(3)),
-          toolsetTool: S.optional(__S(143)),
+          args: S.optional(DocumentMap),
+          variables: S.optional(DocumentMap),
+          mockConfig: S.optional(MockConfig),
+          context: S.optional(DocumentMap),
+          toolsetTool: S.optional(ToolsetTool),
           tool: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExecuteToolRequest" });
@@ -10738,7 +13325,7 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(311).pipe(T.HttpBody())),
+          body: S.optional(ExecuteToolRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10757,12 +13344,12 @@ function __c39(j: number): any {
         }),
       ).annotate({ identifier: "WebSearchQuery" });
     case 2:
-      return S.Array(__S(313));
+      return S.Array(WebSearchQuery);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          htmls: S.optional(__S(0)),
-          webSearchQueries: S.optional(__S(314)),
+          htmls: S.optional(StringList),
+          webSearchQueries: S.optional(WebSearchQueryList),
         }),
       ).annotate({ identifier: "GoogleSearchSuggestions" });
     case 4:
@@ -10770,11 +13357,11 @@ function __c39(j: number): any {
         S.Struct({
           startIndex: S.optional(S.Number),
           endIndex: S.optional(S.Number),
-          citedChunkIndices: S.optional(__S(219)),
+          citedChunkIndices: S.optional(IntegerList),
         }),
       ).annotate({ identifier: "CitationsInlineCitation" });
     case 5:
-      return S.Array(__S(316));
+      return S.Array(CitationsInlineCitation);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -10785,7 +13372,7 @@ function __c39(j: number): any {
         }),
       ).annotate({ identifier: "CitationsCitedChunk" });
     case 7:
-      return S.Array(__S(318));
+      return S.Array(CitationsCitedChunk);
   }
 }
 function __c40(j: number): any {
@@ -10793,26 +13380,26 @@ function __c40(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          inlineCitations: S.optional(__S(317)),
-          citedChunks: S.optional(__S(319)),
+          inlineCitations: S.optional(CitationsInlineCitationList),
+          citedChunks: S.optional(CitationsCitedChunkList),
         }),
       ).annotate({ identifier: "Citations" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          googleSearchSuggestions: S.optional(__S(315)),
-          citations: S.optional(__S(320)),
+          googleSearchSuggestions: S.optional(GoogleSearchSuggestions),
+          citations: S.optional(Citations),
           tool: S.optional(S.String),
-          response: S.optional(__S(3)),
-          variables: S.optional(__S(3)),
-          toolsetTool: S.optional(__S(143)),
+          response: S.optional(DocumentMap),
+          variables: S.optional(DocumentMap),
+          toolsetTool: S.optional(ToolsetTool),
         }),
       ).annotate({ identifier: "ExecuteToolResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           appVersion: S.optional(S.String),
-          exportFormat: S.optional(S.String),
+          exportFormat: S.optional(ExportAppRequestExportFormatEnum),
           gcsUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExportAppRequest" });
@@ -10820,7 +13407,7 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(322).pipe(T.HttpBody())),
+          body: S.optional(ExportAppRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10834,15 +13421,15 @@ function __c40(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          exportFormat: S.optional(S.String),
+          exportFormat: S.optional(ExportOptionsExportFormatEnum),
           gcsUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExportOptions" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          names: S.optional(__S(0)),
-          exportOptions: S.optional(__S(324)),
+          names: S.optional(StringList),
+          exportOptions: S.optional(ExportOptions),
         }),
       ).annotate({
         identifier: "ExportEvaluationRunsRequest",
@@ -10851,7 +13438,7 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(325).pipe(T.HttpBody())),
+          body: S.optional(ExportEvaluationRunsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10865,10 +13452,10 @@ function __c40(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          exportOptions: S.optional(__S(324)),
+          exportOptions: S.optional(ExportOptions),
           includeEvaluations: S.optional(S.Boolean),
           includeEvaluationResults: S.optional(S.Boolean),
-          names: S.optional(__S(0)),
+          names: S.optional(StringList),
         }),
       ).annotate({ identifier: "ExportEvaluationsRequest" });
   }
@@ -10879,7 +13466,7 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(327).pipe(T.HttpBody())),
+          body: S.optional(ExportEvaluationsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10894,7 +13481,7 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(325).pipe(T.HttpBody())),
+          body: S.optional(ExportEvaluationResultsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10916,11 +13503,11 @@ function __c41(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          fileBytes: S.optional(__S(330)),
+          fileBytes: S.optional(FileContextFileBytes),
         }),
       ).annotate({ identifier: "FileContext" });
     case 4:
-      return S.Array(__S(331));
+      return S.Array(FileContext);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -10934,11 +13521,15 @@ function __c41(j: number): any {
           "GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfig",
       });
     case 6:
-      return S.Array(__S(333));
+      return S.Array(
+        GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfig,
+      );
     case 7:
       return S.suspend(() =>
         S.Struct({
-          operationGenerationConfigs: S.optional(__S(334)),
+          operationGenerationConfigs: S.optional(
+            GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfigList,
+          ),
           uri: S.optional(S.String),
         }),
       ).annotate({
@@ -10951,8 +13542,10 @@ function __c42(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          fileContexts: S.optional(__S(332)),
-          openApiToolsetGenerationConfig: S.optional(__S(335)),
+          fileContexts: S.optional(FileContextList),
+          openApiToolsetGenerationConfig: S.optional(
+            GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfig,
+          ),
           context: S.optional(S.String),
         }),
       ).annotate({
@@ -10976,28 +13569,28 @@ function __c42(j: number): any {
         }),
       ).annotate({ identifier: "QualityReportIssue" });
     case 3:
-      return S.Array(__S(338));
+      return S.Array(QualityReportIssue);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          issues: S.optional(__S(339)),
+          issues: S.optional(QualityReportIssueList),
           agent: S.optional(S.String),
         }),
       ).annotate({ identifier: "QualityReportAgentIssues" });
     case 5:
-      return S.Array(__S(340));
+      return S.Array(QualityReportAgentIssues);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          issues: S.optional(__S(341)),
-          generalIssues: S.optional(__S(339)),
-          evaluationRuns: S.optional(__S(0)),
+          issues: S.optional(QualityReportAgentIssuesList),
+          generalIssues: S.optional(QualityReportIssueList),
+          evaluationRuns: S.optional(StringList),
         }),
       ).annotate({ identifier: "QualityReport" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          qualityReport: S.optional(__S(342)),
+          qualityReport: S.optional(QualityReport),
         }),
       ).annotate({
         identifier: "GenerateAppResourceRequestHillClimbingFixConfig",
@@ -11018,7 +13611,9 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           evaluationRun: S.optional(S.String),
-          algorithm: S.optional(S.String),
+          algorithm: S.optional(
+            GenerateAppResourceRequestQualityReportGenerationConfigAlgorithmEnum,
+          ),
         }),
       ).annotate({
         identifier: "GenerateAppResourceRequestQualityReportGenerationConfig",
@@ -11026,7 +13621,7 @@ function __c43(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          fileContexts: S.optional(__S(332)),
+          fileContexts: S.optional(FileContextList),
           datasetId: S.optional(S.String),
           generateEvaluations: S.optional(S.Boolean),
           gcsLocation: S.optional(S.String),
@@ -11047,21 +13642,25 @@ function __c43(j: number): any {
         identifier: "GenerateAppResourceRequestRefineInstructions",
       });
     case 4:
-      return S.Array(__S(347));
+      return S.Array(GenerateAppResourceRequestRefineInstructions);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          toolGenerationConfig: S.optional(__S(336)),
-          appVersionContext: S.optional(__S(337)),
-          toolset: S.optional(__S(281)),
-          tool: S.optional(__S(272)),
-          hillClimbingFixConfig: S.optional(__S(343)),
-          evaluationGenerationConfig: S.optional(__S(344)),
-          qualityReportGenerationConfig: S.optional(__S(345)),
-          appGenerationConfig: S.optional(__S(346)),
-          agent: S.optional(__S(99)),
-          evaluationPersonasGenerationConfig: S.optional(__S(10)),
-          refineInstructions: S.optional(__S(348)),
+          toolGenerationConfig: S.optional(GenerateAppResourceRequestToolGenerationConfig),
+          appVersionContext: S.optional(GenerateAppResourceRequestAppVersionContext),
+          toolset: S.optional(Toolset),
+          tool: S.optional(Tool),
+          hillClimbingFixConfig: S.optional(GenerateAppResourceRequestHillClimbingFixConfig),
+          evaluationGenerationConfig: S.optional(
+            GenerateAppResourceRequestEvaluationGenerationConfig,
+          ),
+          qualityReportGenerationConfig: S.optional(
+            GenerateAppResourceRequestQualityReportGenerationConfig,
+          ),
+          appGenerationConfig: S.optional(GenerateAppResourceRequestAppGenerationConfig),
+          agent: S.optional(Agent),
+          evaluationPersonasGenerationConfig: S.optional(CancelOperationRequest),
+          refineInstructions: S.optional(GenerateAppResourceRequestRefineInstructionsList),
         }),
       ).annotate({
         identifier: "GenerateAppResourceRequest",
@@ -11070,7 +13669,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(349).pipe(T.HttpBody())),
+          body: S.optional(GenerateAppResourceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11097,7 +13696,7 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(351).pipe(T.HttpBody())),
+          body: S.optional(GenerateChatTokenRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11120,8 +13719,8 @@ function __c44(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          evaluationType: S.optional(S.String),
-          source: S.optional(S.String),
+          evaluationType: S.optional(GenerateEvaluationRequestEvaluationTypeEnum),
+          source: S.optional(GenerateEvaluationRequestSourceEnum),
         }),
       ).annotate({
         identifier: "GenerateEvaluationRequest",
@@ -11130,7 +13729,7 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           conversation: S.String.pipe(T.Label()),
-          body: S.optional(__S(354).pipe(T.HttpBody())),
+          body: S.optional(GenerateEvaluationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11153,7 +13752,7 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(356).pipe(T.HttpBody())),
+          body: S.optional(GenerateOnboardingSuggestionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11179,9 +13778,9 @@ function __c44(j: number): any {
           sendMessage: S.optional(S.String),
           label: S.optional(S.String),
           rationale: S.optional(S.String),
-          loadSession: S.optional(__S(358)),
-          icon: S.optional(S.String),
-          source: S.optional(S.String),
+          loadSession: S.optional(AssistantSuggestionLoadSession),
+          icon: S.optional(AssistantSuggestionIconEnum),
+          source: S.optional(AssistantSuggestionSourceEnum),
           suggestionId: S.optional(S.String),
           candidateType: S.optional(S.String),
         }),
@@ -11191,13 +13790,13 @@ function __c44(j: number): any {
 function __c45(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(359));
+      return S.Array(AssistantSuggestion);
     case 1:
       return S.suspend(() =>
         S.Struct({
           contextToken: S.optional(S.String),
-          suggestions: S.optional(__S(360)),
-          userProfile: S.optional(S.String),
+          suggestions: S.optional(AssistantSuggestionList),
+          userProfile: S.optional(GenerateOnboardingSuggestionsResponseUserProfileEnum),
         }),
       ).annotate({
         identifier: "GenerateOnboardingSuggestionsResponse",
@@ -11221,18 +13820,18 @@ function __c45(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           required: S.optional(S.Boolean),
-          params: S.optional(__S(3)),
+          params: S.optional(DocumentMap),
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "LfA2aV1AgentExtension" });
     case 4:
-      return S.Array(__S(363));
+      return S.Array(LfA2aV1AgentExtension);
     case 5:
       return S.suspend(() =>
         S.Struct({
           pushNotifications: S.optional(S.Boolean),
           streaming: S.optional(S.Boolean),
-          extensions: S.optional(__S(364)),
+          extensions: S.optional(LfA2aV1AgentExtensionList),
           extendedAgentCard: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "LfA2aV1AgentCapabilities" });
@@ -11241,13 +13840,13 @@ function __c45(j: number): any {
         S.Struct({
           protected: S.optional(S.String),
           signature: S.optional(S.String),
-          header: S.optional(__S(3)),
+          header: S.optional(DocumentMap),
         }),
       ).annotate({
         identifier: "LfA2aV1AgentCardSignature",
       });
     case 7:
-      return S.Array(__S(366));
+      return S.Array(LfA2aV1AgentCardSignature);
   }
 }
 function __c46(j: number): any {
@@ -11262,25 +13861,25 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "LfA2aV1AgentInterface" });
     case 1:
-      return S.Array(__S(368));
+      return S.Array(LfA2aV1AgentInterface);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          list: S.optional(__S(0)),
+          list: S.optional(StringList),
         }),
       ).annotate({ identifier: "LfA2aV1StringList" });
     case 3:
-      return S.Record(S.String, __S(370));
+      return S.Record(S.String, LfA2aV1StringList);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          schemes: S.optional(__S(371)),
+          schemes: S.optional(LfA2aV1StringListMap),
         }),
       ).annotate({
         identifier: "LfA2aV1SecurityRequirement",
       });
     case 5:
-      return S.Array(__S(372));
+      return S.Array(LfA2aV1SecurityRequirement);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -11308,7 +13907,7 @@ function __c47(j: number): any {
         S.Struct({
           refreshUrl: S.optional(S.String),
           tokenUrl: S.optional(S.String),
-          scopes: S.optional(__S(38)),
+          scopes: S.optional(StringMap),
         }),
       ).annotate({ identifier: "LfA2aV1PasswordOAuthFlow" });
     case 1:
@@ -11317,7 +13916,7 @@ function __c47(j: number): any {
           pkceRequired: S.optional(S.Boolean),
           refreshUrl: S.optional(S.String),
           tokenUrl: S.optional(S.String),
-          scopes: S.optional(__S(38)),
+          scopes: S.optional(StringMap),
           authorizationUrl: S.optional(S.String),
         }),
       ).annotate({
@@ -11327,7 +13926,7 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           authorizationUrl: S.optional(S.String),
-          scopes: S.optional(__S(38)),
+          scopes: S.optional(StringMap),
           refreshUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "LfA2aV1ImplicitOAuthFlow" });
@@ -11335,7 +13934,7 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           refreshUrl: S.optional(S.String),
-          scopes: S.optional(__S(38)),
+          scopes: S.optional(StringMap),
           tokenUrl: S.optional(S.String),
         }),
       ).annotate({
@@ -11346,7 +13945,7 @@ function __c47(j: number): any {
         S.Struct({
           refreshUrl: S.optional(S.String),
           tokenUrl: S.optional(S.String),
-          scopes: S.optional(__S(38)),
+          scopes: S.optional(StringMap),
           deviceAuthorizationUrl: S.optional(S.String),
         }),
       ).annotate({
@@ -11355,18 +13954,18 @@ function __c47(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          password: S.optional(__S(376)),
-          authorizationCode: S.optional(__S(377)),
-          implicit: S.optional(__S(378)),
-          clientCredentials: S.optional(__S(379)),
-          deviceCode: S.optional(__S(380)),
+          password: S.optional(LfA2aV1PasswordOAuthFlow),
+          authorizationCode: S.optional(LfA2aV1AuthorizationCodeOAuthFlow),
+          implicit: S.optional(LfA2aV1ImplicitOAuthFlow),
+          clientCredentials: S.optional(LfA2aV1ClientCredentialsOAuthFlow),
+          deviceCode: S.optional(LfA2aV1DeviceCodeOAuthFlow),
         }),
       ).annotate({ identifier: "LfA2aV1OAuthFlows" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           oauth2MetadataUrl: S.optional(S.String),
-          flows: S.optional(__S(381)),
+          flows: S.optional(LfA2aV1OAuthFlows),
           description: S.optional(S.String),
         }),
       ).annotate({
@@ -11398,15 +13997,15 @@ function __c48(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          apiKeySecurityScheme: S.optional(__S(374)),
-          mtlsSecurityScheme: S.optional(__S(375)),
-          oauth2SecurityScheme: S.optional(__S(382)),
-          httpAuthSecurityScheme: S.optional(__S(383)),
-          openIdConnectSecurityScheme: S.optional(__S(384)),
+          apiKeySecurityScheme: S.optional(LfA2aV1APIKeySecurityScheme),
+          mtlsSecurityScheme: S.optional(LfA2aV1MutualTlsSecurityScheme),
+          oauth2SecurityScheme: S.optional(LfA2aV1OAuth2SecurityScheme),
+          httpAuthSecurityScheme: S.optional(LfA2aV1HTTPAuthSecurityScheme),
+          openIdConnectSecurityScheme: S.optional(LfA2aV1OpenIdConnectSecurityScheme),
         }),
       ).annotate({ identifier: "LfA2aV1SecurityScheme" });
     case 2:
-      return S.Record(S.String, __S(385));
+      return S.Record(S.String, LfA2aV1SecurityScheme);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -11418,34 +14017,34 @@ function __c48(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          inputModes: S.optional(__S(0)),
-          securityRequirements: S.optional(__S(373)),
+          inputModes: S.optional(StringList),
+          securityRequirements: S.optional(LfA2aV1SecurityRequirementList),
           name: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(StringList),
           id: S.optional(S.String),
-          examples: S.optional(__S(0)),
-          outputModes: S.optional(__S(0)),
+          examples: S.optional(StringList),
+          outputModes: S.optional(StringList),
         }),
       ).annotate({ identifier: "LfA2aV1AgentSkill" });
     case 5:
-      return S.Array(__S(388));
+      return S.Array(LfA2aV1AgentSkill);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          capabilities: S.optional(__S(365)),
-          signatures: S.optional(__S(367)),
-          defaultInputModes: S.optional(__S(0)),
-          defaultOutputModes: S.optional(__S(0)),
+          capabilities: S.optional(LfA2aV1AgentCapabilities),
+          signatures: S.optional(LfA2aV1AgentCardSignatureList),
+          defaultInputModes: S.optional(StringList),
+          defaultOutputModes: S.optional(StringList),
           description: S.optional(S.String),
-          supportedInterfaces: S.optional(__S(369)),
-          securityRequirements: S.optional(__S(373)),
+          supportedInterfaces: S.optional(LfA2aV1AgentInterfaceList),
+          securityRequirements: S.optional(LfA2aV1SecurityRequirementList),
           iconUrl: S.optional(S.String),
           documentationUrl: S.optional(S.String),
           name: S.optional(S.String),
-          securitySchemes: S.optional(__S(386)),
-          provider: S.optional(__S(387)),
+          securitySchemes: S.optional(LfA2aV1SecuritySchemeMap),
+          provider: S.optional(LfA2aV1AgentProvider),
           version: S.optional(S.String),
-          skills: S.optional(__S(389)),
+          skills: S.optional(LfA2aV1AgentSkillList),
         }),
       ).annotate({ identifier: "LfA2aV1AgentCard" });
     case 7:
@@ -11493,9 +14092,9 @@ function __c49(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(3)),
+          metadata: S.optional(DocumentMap),
           name: S.optional(S.String),
-          labels: S.optional(__S(38)),
+          labels: S.optional(StringMap),
           displayName: S.optional(S.String),
           locationId: S.optional(S.String),
         }),
@@ -11548,13 +14147,13 @@ function __c49(j: number): any {
           author: S.optional(S.String),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
-          newResource: S.optional(__S(3)),
+          newResource: S.optional(DocumentMap),
           sequenceNumber: S.optional(S.String),
           action: S.optional(S.String),
           description: S.optional(S.String),
           createTime: S.optional(S.String),
-          dependentResources: S.optional(__S(4)),
-          originalResource: S.optional(__S(3)),
+          dependentResources: S.optional(DocumentMapList),
+          originalResource: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "Changelog" });
   }
@@ -11565,7 +14164,7 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          source: S.optional(S.String.pipe(T.Query())),
+          source: S.optional(GetProjectsLocationsAppsConversationsSourceEnum.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" }),
         ),
@@ -11576,29 +14175,29 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userIntendedText: S.optional(S.String),
-          messages: S.optional(__S(200)),
-          rootSpan: S.optional(__S(181)),
+          messages: S.optional(MessageList),
+          rootSpan: S.optional(Span),
         }),
       ).annotate({ identifier: "ConversationTurn" });
     case 2:
-      return S.Array(__S(401));
+      return S.Array(ConversationTurn);
     case 3:
-      return S.Array(S.String);
+      return S.Array(ConversationInputTypesItemEnum);
     case 4:
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
-          turns: S.optional(__S(402)),
-          messages: S.optional(__S(200)),
+          turns: S.optional(ConversationTurnList),
+          messages: S.optional(MessageList),
           turnCount: S.optional(S.Number),
           languageCode: S.optional(S.String),
           entryAgent: S.optional(S.String),
-          source: S.optional(S.String),
+          source: S.optional(ConversationSourceEnum),
           startTime: S.optional(S.String),
           appVersion: S.optional(S.String),
-          inputTypes: S.optional(__S(403)),
+          inputTypes: S.optional(ConversationInputTypesItemEnumList),
           deployment: S.optional(S.String),
-          channelType: S.optional(S.String),
+          channelType: S.optional(ConversationChannelTypeEnum),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Conversation" });
@@ -11657,7 +14256,7 @@ function __c51(j: number): any {
         identifier: "EvaluationRunEvaluationRunSummary",
       });
     case 2:
-      return S.Record(S.String, __S(409));
+      return S.Record(S.String, EvaluationRunEvaluationRunSummary);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -11673,25 +14272,25 @@ function __c51(j: number): any {
       return S.suspend(() =>
         S.Struct({
           model: S.optional(S.String),
-          latencyMetrics: S.optional(__S(411)),
+          latencyMetrics: S.optional(LatencyReportLatencyMetrics),
         }),
       ).annotate({
         identifier: "LatencyReportLlmCallLatency",
       });
     case 5:
-      return S.Array(__S(412));
+      return S.Array(LatencyReportLlmCallLatency);
     case 6:
       return S.suspend(() =>
         S.Struct({
           guardrail: S.optional(S.String),
           guardrailDisplayName: S.optional(S.String),
-          latencyMetrics: S.optional(__S(411)),
+          latencyMetrics: S.optional(LatencyReportLatencyMetrics),
         }),
       ).annotate({
         identifier: "LatencyReportGuardrailLatency",
       });
     case 7:
-      return S.Array(__S(414));
+      return S.Array(LatencyReportGuardrailLatency);
   }
 }
 function __c52(j: number): any {
@@ -11700,32 +14299,32 @@ function __c52(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tool: S.optional(S.String),
-          latencyMetrics: S.optional(__S(411)),
-          toolsetTool: S.optional(__S(143)),
+          latencyMetrics: S.optional(LatencyReportLatencyMetrics),
+          toolsetTool: S.optional(ToolsetTool),
           toolDisplayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "LatencyReportToolLatency" });
     case 1:
-      return S.Array(__S(416));
+      return S.Array(LatencyReportToolLatency);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          latencyMetrics: S.optional(__S(411)),
+          latencyMetrics: S.optional(LatencyReportLatencyMetrics),
           stage: S.optional(S.String),
         }),
       ).annotate({
         identifier: "LatencyReportCallbackLatency",
       });
     case 3:
-      return S.Array(__S(418));
+      return S.Array(LatencyReportCallbackLatency);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          llmCallLatencies: S.optional(__S(413)),
-          guardrailLatencies: S.optional(__S(415)),
-          toolLatencies: S.optional(__S(417)),
+          llmCallLatencies: S.optional(LatencyReportLlmCallLatencyList),
+          guardrailLatencies: S.optional(LatencyReportGuardrailLatencyList),
+          toolLatencies: S.optional(LatencyReportToolLatencyList),
           sessionCount: S.optional(S.Number),
-          callbackLatencies: S.optional(__S(419)),
+          callbackLatencies: S.optional(LatencyReportCallbackLatencyList),
         }),
       ).annotate({ identifier: "LatencyReport" });
     case 5:
@@ -11742,31 +14341,31 @@ function __c52(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          evaluationRunSummaries: S.optional(__S(410)),
-          evaluationResults: S.optional(__S(0)),
+          evaluationRunSummaries: S.optional(EvaluationRunEvaluationRunSummaryMap),
+          evaluationResults: S.optional(StringList),
           createTime: S.optional(S.String),
-          evaluations: S.optional(__S(0)),
-          config: S.optional(__S(184)),
+          evaluations: S.optional(StringList),
+          config: S.optional(EvaluationConfig),
           initiatedBy: S.optional(S.String),
-          evaluationType: S.optional(S.String),
+          evaluationType: S.optional(EvaluationRunEvaluationTypeEnum),
           changelogCreateTime: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(EvaluationRunStateEnum),
           displayName: S.optional(S.String),
           changelog: S.optional(S.String),
           appVersionDisplayName: S.optional(S.String),
-          latencyReport: S.optional(__S(420)),
+          latencyReport: S.optional(LatencyReport),
           appVersion: S.optional(S.String),
           evaluationDataset: S.optional(S.String),
           operation: S.optional(S.String),
-          errorInfo: S.optional(__S(171)),
-          progress: S.optional(__S(421)),
+          errorInfo: S.optional(EvaluationErrorInfo),
+          progress: S.optional(EvaluationRunProgress),
           scheduledEvaluationRun: S.optional(S.String),
           runCount: S.optional(S.Number),
-          goldenRunMethod: S.optional(S.String),
-          optimizationConfig: S.optional(__S(223)),
+          goldenRunMethod: S.optional(EvaluationRunGoldenRunMethodEnum),
+          optimizationConfig: S.optional(OptimizationConfig),
           name: S.optional(S.String),
-          error: S.optional(__S(5)),
-          personaRunConfigs: S.optional(__S(222)),
+          error: S.optional(Status),
+          personaRunConfigs: S.optional(PersonaRunConfigList),
         }),
       ).annotate({ identifier: "EvaluationRun" });
     case 7:
@@ -11880,8 +14479,8 @@ function __c54(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          allowedOrigins: S.optional(__S(0)),
-          enforcementScope: S.optional(S.String),
+          allowedOrigins: S.optional(StringList),
+          enforcementScope: S.optional(EndpointControlPolicyEnforcementScopeEnum),
         }),
       ).annotate({ identifier: "EndpointControlPolicy" });
     case 2:
@@ -11891,14 +14490,14 @@ function __c54(j: number): any {
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
           etag: S.optional(S.String),
-          endpointControlPolicy: S.optional(__S(433)),
+          endpointControlPolicy: S.optional(EndpointControlPolicy),
         }),
       ).annotate({ identifier: "SecuritySettings" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           tool: S.optional(S.String),
-          toolsetTool: S.optional(__S(143)),
+          toolsetTool: S.optional(ToolsetTool),
         }),
       ).annotate({
         identifier: "RetrieveToolSchemaRequest",
@@ -11907,7 +14506,7 @@ function __c54(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(435).pipe(T.HttpBody())),
+          body: S.optional(RetrieveToolSchemaRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11922,9 +14521,9 @@ function __c54(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tool: S.optional(S.String),
-          toolsetTool: S.optional(__S(143)),
-          inputSchema: S.optional(__S(19)),
-          outputSchema: S.optional(__S(19)),
+          toolsetTool: S.optional(ToolsetTool),
+          inputSchema: S.optional(Ces_Schema),
+          outputSchema: S.optional(Ces_Schema),
         }),
       ).annotate({
         identifier: "RetrieveToolSchemaResponse",
@@ -11933,14 +14532,14 @@ function __c54(j: number): any {
       return S.suspend(() =>
         S.Struct({
           bypassPersistenceConfig: S.optional(S.Boolean),
-          toolIds: S.optional(__S(0)),
+          toolIds: S.optional(StringList),
         }),
       ).annotate({ identifier: "RetrieveToolsRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           toolset: S.String.pipe(T.Label()),
-          body: S.optional(__S(438).pipe(T.HttpBody())),
+          body: S.optional(RetrieveToolsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11958,14 +14557,16 @@ function __c55(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tools: S.optional(__S(284)),
+          tools: S.optional(ToolList),
         }),
       ).annotate({ identifier: "RetrieveToolsResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean),
-          conflictResolutionStrategy: S.optional(S.String),
+          conflictResolutionStrategy: S.optional(
+            ImportAppRequestImportOptionsConflictResolutionStrategyEnum,
+          ),
         }),
       ).annotate({
         identifier: "ImportAppRequestImportOptions",
@@ -11977,7 +14578,7 @@ function __c55(j: number): any {
           appContent: S.optional(S.String),
           jsonPatchGcsUri: S.optional(S.String),
           ignoreAppLock: S.optional(S.Boolean),
-          importOptions: S.optional(__S(441)),
+          importOptions: S.optional(ImportAppRequestImportOptions),
           displayName: S.optional(S.String),
           jsonPatchContent: S.optional(S.String),
           appId: S.optional(S.String),
@@ -11987,7 +14588,7 @@ function __c55(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(442).pipe(T.HttpBody())),
+          body: S.optional(ImportAppRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12001,7 +14602,9 @@ function __c55(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          conflictResolutionStrategy: S.optional(S.String),
+          conflictResolutionStrategy: S.optional(
+            ImportEvaluationsRequestImportOptionsConflictResolutionStrategyEnum,
+          ),
         }),
       ).annotate({
         identifier: "ImportEvaluationsRequestImportOptions",
@@ -12009,8 +14612,8 @@ function __c55(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          conversationList: S.optional(__S(1)),
-          importOptions: S.optional(__S(444)),
+          conversationList: S.optional(ImportEvaluationsRequestConversationList),
+          importOptions: S.optional(ImportEvaluationsRequestImportOptions),
           gcsUri: S.optional(S.String),
           csvContent: S.optional(S.String),
         }),
@@ -12019,7 +14622,7 @@ function __c55(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(445).pipe(T.HttpBody())),
+          body: S.optional(ImportEvaluationsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12037,7 +14640,7 @@ function __c55(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(0).pipe(T.Query())),
+          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -12053,12 +14656,12 @@ function __c55(j: number): any {
 function __c56(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(394));
+      return S.Array(Location);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(448)),
+          locations: S.optional(LocationList),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
     case 2:
@@ -12080,13 +14683,13 @@ function __c56(j: number): any {
         identifier: "ListProjectsLocationsAppsRequest",
       });
     case 3:
-      return S.Array(__S(74));
+      return S.Array(App);
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          apps: S.optional(__S(451)),
-          unreachable: S.optional(__S(0)),
+          apps: S.optional(AppList),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({ identifier: "ListAppsResponse" });
     case 5:
@@ -12111,7 +14714,7 @@ function __c56(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          agents: S.optional(__S(283)),
+          agents: S.optional(AgentList),
         }),
       ).annotate({ identifier: "ListAgentsResponse" });
     case 7:
@@ -12136,12 +14739,12 @@ function __c56(j: number): any {
 function __c57(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(112));
+      return S.Array(AssistantSession);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          assistantSessions: S.optional(__S(456)),
+          assistantSessions: S.optional(AssistantSessionList),
         }),
       ).annotate({
         identifier: "ListAssistantSessionsResponse",
@@ -12165,11 +14768,11 @@ function __c57(j: number): any {
         identifier: "ListProjectsLocationsAppsChangelogsRequest",
       });
     case 3:
-      return S.Array(__S(399));
+      return S.Array(Changelog);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          changelogs: S.optional(__S(459)),
+          changelogs: S.optional(ChangelogList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListChangelogsResponse" });
@@ -12179,9 +14782,11 @@ function __c57(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          sources: S.optional(__S(403).pipe(T.Query())),
+          sources: S.optional(
+            ListProjectsLocationsAppsConversationsSourcesEnumList.pipe(T.Query()),
+          ),
           parent: S.String.pipe(T.Label()),
-          source: S.optional(S.String.pipe(T.Query())),
+          source: S.optional(ListProjectsLocationsAppsConversationsSourceEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -12193,11 +14798,11 @@ function __c57(j: number): any {
         identifier: "ListProjectsLocationsAppsConversationsRequest",
       });
     case 6:
-      return S.Array(__S(404));
+      return S.Array(Conversation);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          conversations: S.optional(__S(462)),
+          conversations: S.optional(ConversationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -12225,11 +14830,11 @@ function __c58(j: number): any {
         identifier: "ListProjectsLocationsAppsDeploymentsRequest",
       });
     case 1:
-      return S.Array(__S(120));
+      return S.Array(Deployment);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          deployments: S.optional(__S(465)),
+          deployments: S.optional(DeploymentList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDeploymentsResponse" });
@@ -12252,12 +14857,12 @@ function __c58(j: number): any {
         identifier: "ListProjectsLocationsAppsEvaluationDatasetsRequest",
       });
     case 4:
-      return S.Array(__S(135));
+      return S.Array(EvaluationDataset);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          evaluationDatasets: S.optional(__S(468)),
+          evaluationDatasets: S.optional(EvaluationDatasetList),
         }),
       ).annotate({
         identifier: "ListEvaluationDatasetsResponse",
@@ -12281,7 +14886,7 @@ function __c58(j: number): any {
         identifier: "ListProjectsLocationsAppsEvaluationExpectationsRequest",
       });
     case 7:
-      return S.Array(__S(138));
+      return S.Array(EvaluationExpectation);
   }
 }
 function __c59(j: number): any {
@@ -12290,7 +14895,7 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          evaluationExpectations: S.optional(__S(471)),
+          evaluationExpectations: S.optional(EvaluationExpectationList),
         }),
       ).annotate({
         identifier: "ListEvaluationExpectationsResponse",
@@ -12314,12 +14919,12 @@ function __c59(j: number): any {
         identifier: "ListProjectsLocationsAppsEvaluationRunsRequest",
       });
     case 2:
-      return S.Array(__S(422));
+      return S.Array(EvaluationRun);
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          evaluationRuns: S.optional(__S(474)),
+          evaluationRuns: S.optional(EvaluationRunList),
         }),
       ).annotate({
         identifier: "ListEvaluationRunsResponse",
@@ -12346,11 +14951,11 @@ function __c59(j: number): any {
         identifier: "ListProjectsLocationsAppsEvaluationsRequest",
       });
     case 5:
-      return S.Array(__S(198));
+      return S.Array(Evaluation);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          evaluations: S.optional(__S(477)),
+          evaluations: S.optional(EvaluationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListEvaluationsResponse" });
@@ -12380,7 +14985,7 @@ function __c60(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          evaluationResults: S.optional(__S(186)),
+          evaluationResults: S.optional(EvaluationResultList),
         }),
       ).annotate({
         identifier: "ListEvaluationResultsResponse",
@@ -12406,7 +15011,7 @@ function __c60(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          examples: S.optional(__S(287)),
+          examples: S.optional(ExampleList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListExamplesResponse" });
@@ -12432,7 +15037,7 @@ function __c60(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          guardrails: S.optional(__S(285)),
+          guardrails: S.optional(GuardrailList),
         }),
       ).annotate({ identifier: "ListGuardrailsResponse" });
     case 5:
@@ -12454,12 +15059,12 @@ function __c60(j: number): any {
         identifier: "ListProjectsLocationsAppsScheduledEvaluationRunsRequest",
       });
     case 6:
-      return S.Array(__S(225));
+      return S.Array(ScheduledEvaluationRun);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          scheduledEvaluationRuns: S.optional(__S(486)),
+          scheduledEvaluationRuns: S.optional(ScheduledEvaluationRunList),
         }),
       ).annotate({
         identifier: "ListScheduledEvaluationRunsResponse",
@@ -12489,7 +15094,7 @@ function __c61(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          tools: S.optional(__S(284)),
+          tools: S.optional(ToolList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListToolsResponse" });
@@ -12514,7 +15119,7 @@ function __c61(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          toolsets: S.optional(__S(286)),
+          toolsets: S.optional(ToolsetList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListToolsetsResponse" });
@@ -12537,11 +15142,11 @@ function __c61(j: number): any {
         identifier: "ListProjectsLocationsAppsVersionsRequest",
       });
     case 5:
-      return S.Array(__S(289));
+      return S.Array(AppVersion);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          appVersions: S.optional(__S(493)),
+          appVersions: S.optional(AppVersionList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAppVersionsResponse" });
@@ -12568,13 +15173,13 @@ function __c61(j: number): any {
 function __c62(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(6));
+      return S.Array(Operation);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(0)),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(496)),
+          operations: S.optional(OperationList),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 2:
@@ -12582,7 +15187,7 @@ function __c62(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(74).pipe(T.HttpBody())),
+          body: S.optional(App.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12598,7 +15203,7 @@ function __c62(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(99).pipe(T.HttpBody())),
+          body: S.optional(Agent.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12614,7 +15219,7 @@ function __c62(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(120).pipe(T.HttpBody())),
+          body: S.optional(Deployment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12630,7 +15235,7 @@ function __c62(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(135).pipe(T.HttpBody())),
+          body: S.optional(EvaluationDataset.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12646,7 +15251,7 @@ function __c62(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(138).pipe(T.HttpBody())),
+          body: S.optional(EvaluationExpectation.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12662,7 +15267,7 @@ function __c62(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(198).pipe(T.HttpBody())),
+          body: S.optional(Evaluation.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12682,7 +15287,7 @@ function __c63(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(201).pipe(T.HttpBody())),
+          body: S.optional(Example.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12698,7 +15303,7 @@ function __c63(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(217).pipe(T.HttpBody())),
+          body: S.optional(Guardrail.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12714,7 +15319,7 @@ function __c63(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(225).pipe(T.HttpBody())),
+          body: S.optional(ScheduledEvaluationRun.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12730,7 +15335,7 @@ function __c63(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(272).pipe(T.HttpBody())),
+          body: S.optional(Tool.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12746,7 +15351,7 @@ function __c63(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(281).pipe(T.HttpBody())),
+          body: S.optional(Toolset.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12762,7 +15367,7 @@ function __c63(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(289).pipe(T.HttpBody())),
+          body: S.optional(AppVersion.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12777,7 +15382,7 @@ function __c63(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(10).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12791,8 +15396,8 @@ function __c63(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          interactionType: S.optional(S.String),
-          message: S.optional(__S(104)),
+          interactionType: S.optional(RunAssistantRequestInteractionTypeEnum),
+          message: S.optional(AssistantMessage),
           assistantSession: S.optional(S.String),
         }),
       ).annotate({ identifier: "RunAssistantRequest" });
@@ -12804,7 +15409,7 @@ function __c64(j: number): any {
       return S.suspend(() =>
         S.Struct({
           app: S.String.pipe(T.Label()),
-          body: S.optional(__S(511).pipe(T.HttpBody())),
+          body: S.optional(RunAssistantRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12818,22 +15423,22 @@ function __c64(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(__S(104)),
-          userResponseSuggestions: S.optional(__S(110)),
+          message: S.optional(AssistantMessage),
+          userResponseSuggestions: S.optional(UserResponseSuggestions),
         }),
       ).annotate({ identifier: "AssistantOutput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          output: S.optional(__S(513)),
-          state: S.optional(S.String),
+          output: S.optional(AssistantOutput),
+          state: S.optional(RunAssistantResponseStateEnum),
         }),
       ).annotate({ identifier: "RunAssistantResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           app: S.String.pipe(T.Label()),
-          body: S.optional(__S(224).pipe(T.HttpBody())),
+          body: S.optional(RunEvaluationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12848,7 +15453,7 @@ function __c64(j: number): any {
       return S.suspend(() =>
         S.Struct({
           evaluationResultId: S.String.pipe(T.Label()),
-          body: S.optional(__S(10).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12862,9 +15467,9 @@ function __c64(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          endUserMetadata: S.optional(__S(3)),
-          payload: S.optional(__S(3)),
-          webhookHeaders: S.optional(__S(38)),
+          endUserMetadata: S.optional(DocumentMap),
+          payload: S.optional(DocumentMap),
+          webhookHeaders: S.optional(StringMap),
         }),
       ).annotate({
         identifier: "SessionConfigRemoteDialogflowQueryParameters",
@@ -12872,20 +15477,20 @@ function __c64(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          historicalContexts: S.optional(__S(200)),
+          historicalContexts: S.optional(MessageList),
           excludeDiagnosticInfo: S.optional(S.Boolean),
-          inputAudioConfig: S.optional(__S(182)),
+          inputAudioConfig: S.optional(InputAudioConfig),
           deployment: S.optional(S.String),
-          remoteDialogflowQueryParameters: S.optional(__S(517)),
+          remoteDialogflowQueryParameters: S.optional(SessionConfigRemoteDialogflowQueryParameters),
           useToolFakes: S.optional(S.Boolean),
-          outputAudioConfig: S.optional(__S(183)),
+          outputAudioConfig: S.optional(OutputAudioConfig),
           enableTextStreaming: S.optional(S.Boolean),
           entryAgent: S.optional(S.String),
           timeZone: S.optional(S.String),
         }),
       ).annotate({ identifier: "SessionConfig" });
     case 7:
-      return S.Array(__S(192));
+      return S.Array(SessionInput);
   }
 }
 function __c65(j: number): any {
@@ -12893,15 +15498,15 @@ function __c65(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(__S(518)),
-          inputs: S.optional(__S(519)),
+          config: S.optional(SessionConfig),
+          inputs: S.optional(SessionInputList),
         }),
       ).annotate({ identifier: "RunSessionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           session: S.String.pipe(T.Label()),
-          body: S.optional(__S(520).pipe(T.HttpBody())),
+          body: S.optional(RunSessionRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12913,18 +15518,18 @@ function __c65(j: number): any {
         identifier: "RunSessionProjectsLocationsAppsSessionsRequest",
       });
     case 2:
-      return S.Array(__S(147));
+      return S.Array(ToolCall);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          toolCalls: S.optional(__S(522)),
+          toolCalls: S.optional(ToolCallList),
         }),
       ).annotate({ identifier: "ToolCalls" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(__S(200)),
-          rootSpan: S.optional(__S(181)),
+          messages: S.optional(MessageList),
+          rootSpan: S.optional(Span),
         }),
       ).annotate({
         identifier: "SessionOutputDiagnosticInfo",
@@ -12932,28 +15537,28 @@ function __c65(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(3)),
+          metadata: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "EndSession" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          googleSearchSuggestions: S.optional(__S(315)),
-          toolCalls: S.optional(__S(523)),
-          image: S.optional(__S(149)),
+          googleSearchSuggestions: S.optional(GoogleSearchSuggestions),
+          toolCalls: S.optional(ToolCalls),
+          image: S.optional(Image),
           turnCompleted: S.optional(S.Boolean),
-          payload: S.optional(__S(3)),
+          payload: S.optional(DocumentMap),
           text: S.optional(S.String),
           turnIndex: S.optional(S.Number),
-          citations: S.optional(__S(320)),
+          citations: S.optional(Citations),
           audio: S.optional(S.String),
-          diagnosticInfo: S.optional(__S(524)),
-          endSession: S.optional(__S(525)),
+          diagnosticInfo: S.optional(SessionOutputDiagnosticInfo),
+          endSession: S.optional(EndSession),
           progress: S.optional(S.String),
         }),
       ).annotate({ identifier: "SessionOutput" });
     case 7:
-      return S.Array(__S(526));
+      return S.Array(SessionOutput);
   }
 }
 function __c66(j: number): any {
@@ -12961,7 +15566,7 @@ function __c66(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          outputs: S.optional(__S(527)),
+          outputs: S.optional(SessionOutputList),
         }),
       ).annotate({ identifier: "RunSessionResponse" });
     case 1:
@@ -12970,25 +15575,25 @@ function __c66(j: number): any {
           text: S.optional(S.String),
           url: S.optional(S.String),
           data: S.optional(S.Unknown),
-          metadata: S.optional(__S(3)),
+          metadata: S.optional(DocumentMap),
           mediaType: S.optional(S.String),
           raw: S.optional(S.String),
           filename: S.optional(S.String),
         }),
       ).annotate({ identifier: "LfA2aV1Part" });
     case 2:
-      return S.Array(__S(529));
+      return S.Array(LfA2aV1Part);
     case 3:
       return S.suspend(() =>
         S.Struct({
           contextId: S.optional(S.String),
-          referenceTaskIds: S.optional(__S(0)),
-          metadata: S.optional(__S(3)),
-          extensions: S.optional(__S(0)),
-          parts: S.optional(__S(530)),
+          referenceTaskIds: S.optional(StringList),
+          metadata: S.optional(DocumentMap),
+          extensions: S.optional(StringList),
+          parts: S.optional(LfA2aV1PartList),
           taskId: S.optional(S.String),
           messageId: S.optional(S.String),
-          role: S.optional(S.String),
+          role: S.optional(LfA2aV1MessageRoleEnum),
         }),
       ).annotate({ identifier: "LfA2aV1Message" });
     case 4:
@@ -13005,7 +15610,7 @@ function __c66(j: number): any {
         S.Struct({
           tenant: S.optional(S.String),
           token: S.optional(S.String),
-          authentication: S.optional(__S(532)),
+          authentication: S.optional(LfA2aV1AuthenticationInfo),
           taskId: S.optional(S.String),
           id: S.optional(S.String),
           url: S.optional(S.String),
@@ -13016,10 +15621,10 @@ function __c66(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          acceptedOutputModes: S.optional(__S(0)),
+          acceptedOutputModes: S.optional(StringList),
           historyLength: S.optional(S.Number),
           returnImmediately: S.optional(S.Boolean),
-          taskPushNotificationConfig: S.optional(__S(533)),
+          taskPushNotificationConfig: S.optional(LfA2aV1TaskPushNotificationConfig),
         }),
       ).annotate({
         identifier: "LfA2aV1SendMessageConfiguration",
@@ -13027,9 +15632,9 @@ function __c66(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(3)),
-          message: S.optional(__S(531)),
-          configuration: S.optional(__S(534)),
+          metadata: S.optional(DocumentMap),
+          message: S.optional(LfA2aV1Message),
+          configuration: S.optional(LfA2aV1SendMessageConfiguration),
         }),
       ).annotate({
         identifier: "LfA2aV1SendMessageRequest",
@@ -13042,7 +15647,7 @@ function __c67(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tenant: S.String.pipe(T.Label()),
-          body: S.optional(__S(535).pipe(T.HttpBody())),
+          body: S.optional(LfA2aV1SendMessageRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13056,9 +15661,9 @@ function __c67(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(LfA2aV1TaskStatusStateEnum),
           timestamp: S.optional(S.String),
-          message: S.optional(__S(531)),
+          message: S.optional(LfA2aV1Message),
         }),
       ).annotate({ identifier: "LfA2aV1TaskStatus" });
     case 2:
@@ -13066,32 +15671,32 @@ function __c67(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           artifactId: S.optional(S.String),
-          parts: S.optional(__S(530)),
+          parts: S.optional(LfA2aV1PartList),
           name: S.optional(S.String),
-          extensions: S.optional(__S(0)),
-          metadata: S.optional(__S(3)),
+          extensions: S.optional(StringList),
+          metadata: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "LfA2aV1Artifact" });
     case 3:
-      return S.Array(__S(538));
+      return S.Array(LfA2aV1Artifact);
     case 4:
-      return S.Array(__S(531));
+      return S.Array(LfA2aV1Message);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(3)),
-          status: S.optional(__S(537)),
-          artifacts: S.optional(__S(539)),
+          metadata: S.optional(DocumentMap),
+          status: S.optional(LfA2aV1TaskStatus),
+          artifacts: S.optional(LfA2aV1ArtifactList),
           contextId: S.optional(S.String),
           id: S.optional(S.String),
-          history: S.optional(__S(540)),
+          history: S.optional(LfA2aV1MessageList),
         }),
       ).annotate({ identifier: "LfA2aV1Task" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(__S(531)),
-          task: S.optional(__S(541)),
+          message: S.optional(LfA2aV1Message),
+          task: S.optional(LfA2aV1Task),
         }),
       ).annotate({
         identifier: "LfA2aV1SendMessageResponse",
@@ -13100,7 +15705,7 @@ function __c67(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tenant: S.String.pipe(T.Label()),
-          body: S.optional(__S(535).pipe(T.HttpBody())),
+          body: S.optional(LfA2aV1SendMessageRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13119,7 +15724,7 @@ function __c68(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tenant: S.String.pipe(T.Label()),
-          body: S.optional(__S(535).pipe(T.HttpBody())),
+          body: S.optional(LfA2aV1SendMessageRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13148,21 +15753,23 @@ function __c68(j: number): any {
           operationType: S.optional(S.String),
           status: S.optional(S.String),
           deduplicationToken: S.optional(S.String),
-          error: S.optional(__S(5)),
-          metadata: S.optional(__S(3)),
+          error: S.optional(Status),
+          metadata: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "OperationCompletedEvent" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          clientCapabilities: S.optional(__S(403)),
-          attachedGcsUris: S.optional(__S(0)),
+          clientCapabilities: S.optional(
+            StreamChatAiAssistantRequestClientCapabilitiesItemEnumList,
+          ),
+          attachedGcsUris: S.optional(StringList),
           contextToken: S.optional(S.String),
           attachOnly: S.optional(S.Boolean),
           message: S.optional(S.String),
           resumeFromSequenceNumber: S.optional(S.String),
-          confirmationResponse: S.optional(__S(545)),
-          operationCompletedEvent: S.optional(__S(546)),
+          confirmationResponse: S.optional(AssistantConfirmationResponse),
+          operationCompletedEvent: S.optional(OperationCompletedEvent),
         }),
       ).annotate({
         identifier: "StreamChatAiAssistantRequest",
@@ -13171,7 +15778,7 @@ function __c68(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(547).pipe(T.HttpBody())),
+          body: S.optional(StreamChatAiAssistantRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13186,7 +15793,7 @@ function __c68(j: number): any {
       return S.suspend(() =>
         S.Struct({
           turnId: S.optional(S.String),
-          reason: S.optional(S.String),
+          reason: S.optional(TurnHandoffEventReasonEnum),
         }),
       ).annotate({ identifier: "TurnHandoffEvent" });
     case 6:
@@ -13195,7 +15802,7 @@ function __c68(j: number): any {
           contentDelta: S.optional(S.String),
           mimeType: S.optional(S.String),
           artifactId: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(ArtifactChunkStateEnum),
           gcsUri: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
@@ -13215,18 +15822,18 @@ function __c68(j: number): any {
 function __c69(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(551));
+      return S.Array(OptionQuestionsChunkOption);
     case 1:
       return S.suspend(() =>
         S.Struct({
           question: S.optional(S.String),
-          options: S.optional(__S(552)),
+          options: S.optional(OptionQuestionsChunkOptionList),
         }),
       ).annotate({
         identifier: "OptionQuestionsChunkQuestion",
       });
     case 2:
-      return S.Array(__S(553));
+      return S.Array(OptionQuestionsChunkQuestion);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -13236,7 +15843,7 @@ function __c69(j: number): any {
           tool: S.optional(S.String),
           expireTime: S.optional(S.String),
           agentName: S.optional(S.String),
-          questions: S.optional(__S(554)),
+          questions: S.optional(OptionQuestionsChunkQuestionList),
           confirmationId: S.optional(S.String),
         }),
       ).annotate({
@@ -13247,17 +15854,17 @@ function __c69(j: number): any {
         S.Struct({
           contractDraftComplete: S.optional(S.Boolean),
           contractRelated: S.optional(S.Boolean),
-          contractStreamingPhase: S.optional(S.String),
+          contractStreamingPhase: S.optional(TurnMetadataContractStreamingPhaseEnum),
           contractFinalized: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "TurnMetadata" });
     case 5:
-      return S.Array(S.suspend(() => __S(561)));
+      return S.Array(S.suspend(() => StreamChatAiAssistantResponse));
     case 6:
       return S.suspend(() =>
         S.Struct({
           resolvedSequenceNumber: S.optional(S.String),
-          events: S.optional(__S(557)),
+          events: S.optional(StreamChatAiAssistantResponseList),
           orphanDeadlineTime: S.optional(S.String),
           turnId: S.optional(S.String),
         }),
@@ -13265,7 +15872,7 @@ function __c69(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          reason: S.optional(S.String),
+          reason: S.optional(TurnCompletedEventReasonEnum),
           finalSequenceNumber: S.optional(S.String),
           turnId: S.optional(S.String),
         }),
@@ -13277,30 +15884,30 @@ function __c70(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          questions: S.optional(__S(554)),
+          questions: S.optional(OptionQuestionsChunkQuestionList),
         }),
       ).annotate({ identifier: "OptionQuestionsChunk" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           eventTime: S.optional(S.String),
-          handoff: S.optional(__S(549)),
+          handoff: S.optional(TurnHandoffEvent),
           sequenceNumber: S.optional(S.String),
-          artifactChunk: S.optional(__S(550)),
+          artifactChunk: S.optional(ArtifactChunk),
           eventId: S.optional(S.String),
           turnInProgress: S.optional(S.Boolean),
-          confirmationRequest: S.optional(__S(555)),
-          sessionCheckpoint: S.optional(__S(14)),
-          turnMetadata: S.optional(__S(556)),
+          confirmationRequest: S.optional(AssistantConfirmationRequest),
+          sessionCheckpoint: S.optional(SessionCheckpoint),
+          turnMetadata: S.optional(TurnMetadata),
           textChunk: S.optional(S.String),
-          resumeSnapshot: S.optional(__S(558)),
-          turnCompleted: S.optional(__S(559)),
-          optionQuestionsChunk: S.optional(__S(560)),
-          status: S.optional(__S(5)),
-          toolResponse: S.optional(__S(146)),
+          resumeSnapshot: S.optional(TurnResumeSnapshot),
+          turnCompleted: S.optional(TurnCompletedEvent),
+          optionQuestionsChunk: S.optional(OptionQuestionsChunk),
+          status: S.optional(Status),
+          toolResponse: S.optional(ToolResponse),
           thoughtChunk: S.optional(S.String),
-          toolCall: S.optional(__S(147)),
-          uiEvent: S.optional(__S(15)),
+          toolCall: S.optional(ToolCall),
+          uiEvent: S.optional(UiEvent),
         }),
       ).annotate({
         identifier: "StreamChatAiAssistantResponse",
@@ -13309,7 +15916,7 @@ function __c70(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tenant: S.String.pipe(T.Label()),
-          body: S.optional(__S(535).pipe(T.HttpBody())),
+          body: S.optional(LfA2aV1SendMessageRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13324,9 +15931,9 @@ function __c70(j: number): any {
       return S.suspend(() =>
         S.Struct({
           append: S.optional(S.Boolean),
-          metadata: S.optional(__S(3)),
+          metadata: S.optional(DocumentMap),
           lastChunk: S.optional(S.Boolean),
-          artifact: S.optional(__S(538)),
+          artifact: S.optional(LfA2aV1Artifact),
           contextId: S.optional(S.String),
           taskId: S.optional(S.String),
         }),
@@ -13337,9 +15944,9 @@ function __c70(j: number): any {
       return S.suspend(() =>
         S.Struct({
           contextId: S.optional(S.String),
-          metadata: S.optional(__S(3)),
+          metadata: S.optional(DocumentMap),
           taskId: S.optional(S.String),
-          status: S.optional(__S(537)),
+          status: S.optional(LfA2aV1TaskStatus),
         }),
       ).annotate({
         identifier: "LfA2aV1TaskStatusUpdateEvent",
@@ -13347,17 +15954,17 @@ function __c70(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(__S(531)),
-          artifactUpdate: S.optional(__S(563)),
-          statusUpdate: S.optional(__S(564)),
-          task: S.optional(__S(541)),
+          message: S.optional(LfA2aV1Message),
+          artifactUpdate: S.optional(LfA2aV1TaskArtifactUpdateEvent),
+          statusUpdate: S.optional(LfA2aV1TaskStatusUpdateEvent),
+          task: S.optional(LfA2aV1Task),
         }),
       ).annotate({ identifier: "LfA2aV1StreamResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           tenant: S.String.pipe(T.Label()),
-          body: S.optional(__S(535).pipe(T.HttpBody())),
+          body: S.optional(LfA2aV1SendMessageRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13372,7 +15979,7 @@ function __c70(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tenant: S.String.pipe(T.Label()),
-          body: S.optional(__S(535).pipe(T.HttpBody())),
+          body: S.optional(LfA2aV1SendMessageRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13391,7 +15998,7 @@ function __c71(j: number): any {
       return S.suspend(() =>
         S.Struct({
           session: S.String.pipe(T.Label()),
-          body: S.optional(__S(520).pipe(T.HttpBody())),
+          body: S.optional(RunSessionRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13413,7 +16020,7 @@ function __c71(j: number): any {
       return S.suspend(() =>
         S.Struct({
           app: S.String.pipe(T.Label()),
-          body: S.optional(__S(569).pipe(T.HttpBody())),
+          body: S.optional(TestPersonaVoiceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13435,7 +16042,7 @@ function __c71(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(434).pipe(T.HttpBody())),
+          body: S.optional(SecuritySettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13459,7 +16066,7 @@ function __c71(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(573).pipe(T.HttpBody())),
+          body: S.optional(UploadEvaluationAudioRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13480,158 +16087,5 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "UploadEvaluationAudioResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
-    case 41:
-      return __c41(i & 7);
-    case 42:
-      return __c42(i & 7);
-    case 43:
-      return __c43(i & 7);
-    case 44:
-      return __c44(i & 7);
-    case 45:
-      return __c45(i & 7);
-    case 46:
-      return __c46(i & 7);
-    case 47:
-      return __c47(i & 7);
-    case 48:
-      return __c48(i & 7);
-    case 49:
-      return __c49(i & 7);
-    case 50:
-      return __c50(i & 7);
-    case 51:
-      return __c51(i & 7);
-    case 52:
-      return __c52(i & 7);
-    case 53:
-      return __c53(i & 7);
-    case 54:
-      return __c54(i & 7);
-    case 55:
-      return __c55(i & 7);
-    case 56:
-      return __c56(i & 7);
-    case 57:
-      return __c57(i & 7);
-    case 58:
-      return __c58(i & 7);
-    case 59:
-      return __c59(i & 7);
-    case 60:
-      return __c60(i & 7);
-    case 61:
-      return __c61(i & 7);
-    case 62:
-      return __c62(i & 7);
-    case 63:
-      return __c63(i & 7);
-    case 64:
-      return __c64(i & 7);
-    case 65:
-      return __c65(i & 7);
-    case 66:
-      return __c66(i & 7);
-    case 67:
-      return __c67(i & 7);
-    case 68:
-      return __c68(i & 7);
-    case 69:
-      return __c69(i & 7);
-    case 70:
-      return __c70(i & 7);
-    case 71:
-      return __c71(i & 7);
   }
 }

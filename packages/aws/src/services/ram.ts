@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "RAM",
   serviceShapeName: "AmazonResourceSharing",
@@ -364,13 +362,21 @@ export interface AcceptResourceShareInvitationRequest {
   resourceShareInvitationArn: string;
   clientToken?: string;
 }
+const AcceptResourceShareInvitationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AcceptResourceShareInvitationRequest>;
 export type ResourceShareInvitationStatus =
   | "PENDING"
   | "ACCEPTED"
   | "REJECTED"
   | "EXPIRED"
   | (string & {});
+const ResourceShareInvitationStatus = S.String;
+
 export type ResourceShareAssociationType = "PRINCIPAL" | "RESOURCE" | "SOURCE" | (string & {});
+const ResourceShareAssociationType = S.String;
+
 export type ResourceShareAssociationStatus =
   | "ASSOCIATING"
   | "ASSOCIATED"
@@ -381,6 +387,8 @@ export type ResourceShareAssociationStatus =
   | "SUSPENDING"
   | "RESTORING"
   | (string & {});
+const ResourceShareAssociationStatus = S.String;
+
 export interface ResourceShareAssociation {
   resourceShareArn?: string;
   resourceShareName?: string;
@@ -392,7 +400,12 @@ export interface ResourceShareAssociation {
   lastUpdatedTime?: Date;
   external?: boolean;
 }
+const ResourceShareAssociation = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ResourceShareAssociation>;
 export type ResourceShareAssociationList = ResourceShareAssociation[];
+const ResourceShareAssociationList = /*@__PURE__*/ __L.at(__c0, 2);
 export interface ResourceShareInvitation {
   resourceShareInvitationArn?: string;
   resourceShareName?: string;
@@ -404,13 +417,24 @@ export interface ResourceShareInvitation {
   resourceShareAssociations?: ResourceShareAssociation[];
   receiverArn?: string;
 }
+const ResourceShareInvitation = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ResourceShareInvitation>;
 export interface AcceptResourceShareInvitationResponse {
   resourceShareInvitation?: ResourceShareInvitation;
   clientToken?: string;
 }
+const AcceptResourceShareInvitationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AcceptResourceShareInvitationResponse>;
 export type ResourceArnList = string[];
+const ResourceArnList = /*@__PURE__*/ __L.at(__c0, 5);
 export type PrincipalArnOrIdList = string[];
+const PrincipalArnOrIdList = ResourceArnList as any as S.Schema<PrincipalArnOrIdList>;
 export type SourceArnOrAccountList = string[];
+const SourceArnOrAccountList = ResourceArnList as any as S.Schema<SourceArnOrAccountList>;
 export interface AssociateResourceShareRequest {
   resourceShareArn: string;
   resourceArns?: string[];
@@ -418,10 +442,18 @@ export interface AssociateResourceShareRequest {
   clientToken?: string;
   sources?: string[];
 }
+const AssociateResourceShareRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AssociateResourceShareRequest>;
 export interface AssociateResourceShareResponse {
   resourceShareAssociations?: ResourceShareAssociation[];
   clientToken?: string;
 }
+const AssociateResourceShareResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AssociateResourceShareResponse>;
 export interface AssociateResourceSharePermissionRequest {
   resourceShareArn: string;
   permissionArn: string;
@@ -429,10 +461,18 @@ export interface AssociateResourceSharePermissionRequest {
   clientToken?: string;
   permissionVersion?: number;
 }
+const AssociateResourceSharePermissionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AssociateResourceSharePermissionRequest>;
 export interface AssociateResourceSharePermissionResponse {
   returnValue?: boolean;
   clientToken?: string;
 }
+const AssociateResourceSharePermissionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<AssociateResourceSharePermissionResponse>;
 export type PermissionName = string;
 export type Policy = string;
 export type TagKey = string;
@@ -441,7 +481,9 @@ export interface Tag {
   key?: string;
   value?: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Tag>;
 export type TagList = Tag[];
+const TagList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface CreatePermissionRequest {
   name: string;
   resourceType: string;
@@ -449,12 +491,20 @@ export interface CreatePermissionRequest {
   clientToken?: string;
   tags?: Tag[];
 }
+const CreatePermissionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreatePermissionRequest>;
 export type PermissionType = "CUSTOMER_MANAGED" | "AWS_MANAGED" | (string & {});
+const PermissionType = S.String;
+
 export type PermissionFeatureSet =
   | "CREATED_FROM_POLICY"
   | "PROMOTING_TO_STANDARD"
   | "STANDARD"
   | (string & {});
+const PermissionFeatureSet = S.String;
+
 export interface ResourceSharePermissionSummary {
   arn?: string;
   version?: string;
@@ -469,21 +519,35 @@ export interface ResourceSharePermissionSummary {
   featureSet?: PermissionFeatureSet;
   tags?: Tag[];
 }
+const ResourceSharePermissionSummary = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ResourceSharePermissionSummary>;
 export interface CreatePermissionResponse {
   permission?: ResourceSharePermissionSummary;
   clientToken?: string;
 }
+const CreatePermissionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreatePermissionResponse>;
 export interface CreatePermissionVersionRequest {
   permissionArn: string;
   policyTemplate: string;
   clientToken?: string;
 }
+const CreatePermissionVersionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreatePermissionVersionRequest>;
 export type PermissionStatus =
   | "ATTACHABLE"
   | "UNATTACHABLE"
   | "DELETING"
   | "DELETED"
   | (string & {});
+const PermissionStatus = S.String;
+
 export interface ResourceSharePermissionDetail {
   arn?: string;
   version?: string;
@@ -499,14 +563,27 @@ export interface ResourceSharePermissionDetail {
   status?: PermissionStatus;
   tags?: Tag[];
 }
+const ResourceSharePermissionDetail = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ResourceSharePermissionDetail>;
 export interface CreatePermissionVersionResponse {
   permission?: ResourceSharePermissionDetail;
   clientToken?: string;
 }
+const CreatePermissionVersionResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreatePermissionVersionResponse>;
 export type PermissionArnList = string[];
+const PermissionArnList = ResourceArnList as any as S.Schema<PermissionArnList>;
 export interface ResourceShareConfiguration {
   retainSharingOnAccountLeaveOrganization?: boolean;
 }
+const ResourceShareConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ResourceShareConfiguration>;
 export interface CreateResourceShareRequest {
   name: string;
   resourceArns?: string[];
@@ -518,6 +595,10 @@ export interface CreateResourceShareRequest {
   sources?: string[];
   resourceShareConfiguration?: ResourceShareConfiguration;
 }
+const CreateResourceShareRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateResourceShareRequest>;
 export type ResourceShareStatus =
   | "PENDING"
   | "ACTIVE"
@@ -525,11 +606,15 @@ export type ResourceShareStatus =
   | "DELETING"
   | "DELETED"
   | (string & {});
+const ResourceShareStatus = S.String;
+
 export type ResourceShareFeatureSet =
   | "CREATED_FROM_POLICY"
   | "PROMOTING_TO_STANDARD"
   | "STANDARD"
   | (string & {});
+const ResourceShareFeatureSet = S.String;
+
 export interface ResourceShare {
   resourceShareArn?: string;
   name?: string;
@@ -543,37 +628,66 @@ export interface ResourceShare {
   featureSet?: ResourceShareFeatureSet;
   resourceShareConfiguration?: ResourceShareConfiguration;
 }
+const ResourceShare = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ResourceShare>;
 export interface CreateResourceShareResponse {
   resourceShare?: ResourceShare;
   clientToken?: string;
 }
+const CreateResourceShareResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateResourceShareResponse>;
 export interface DeletePermissionRequest {
   permissionArn: string;
   clientToken?: string;
 }
+const DeletePermissionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DeletePermissionRequest>;
 export interface DeletePermissionResponse {
   returnValue?: boolean;
   clientToken?: string;
   permissionStatus?: PermissionStatus;
 }
+const DeletePermissionResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DeletePermissionResponse>;
 export interface DeletePermissionVersionRequest {
   permissionArn: string;
   permissionVersion: number;
   clientToken?: string;
 }
+const DeletePermissionVersionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DeletePermissionVersionRequest>;
 export interface DeletePermissionVersionResponse {
   returnValue?: boolean;
   clientToken?: string;
   permissionStatus?: PermissionStatus;
 }
+const DeletePermissionVersionResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DeletePermissionVersionResponse>;
 export interface DeleteResourceShareRequest {
   resourceShareArn: string;
   clientToken?: string;
 }
+const DeleteResourceShareRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DeleteResourceShareRequest>;
 export interface DeleteResourceShareResponse {
   returnValue?: boolean;
   clientToken?: string;
 }
+const DeleteResourceShareResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DeleteResourceShareResponse>;
 export interface DisassociateResourceShareRequest {
   resourceShareArn: string;
   resourceArns?: string[];
@@ -581,30 +695,55 @@ export interface DisassociateResourceShareRequest {
   clientToken?: string;
   sources?: string[];
 }
+const DisassociateResourceShareRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DisassociateResourceShareRequest>;
 export interface DisassociateResourceShareResponse {
   resourceShareAssociations?: ResourceShareAssociation[];
   clientToken?: string;
 }
+const DisassociateResourceShareResponse =
+  AssociateResourceShareResponse as any as S.Schema<DisassociateResourceShareResponse>;
 export interface DisassociateResourceSharePermissionRequest {
   resourceShareArn: string;
   permissionArn: string;
   clientToken?: string;
 }
+const DisassociateResourceSharePermissionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DisassociateResourceSharePermissionRequest>;
 export interface DisassociateResourceSharePermissionResponse {
   returnValue?: boolean;
   clientToken?: string;
 }
+const DisassociateResourceSharePermissionResponse =
+  AssociateResourceSharePermissionResponse as any as S.Schema<DisassociateResourceSharePermissionResponse>;
 export interface EnableSharingWithAwsOrganizationRequest {}
+const EnableSharingWithAwsOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<EnableSharingWithAwsOrganizationRequest>;
 export interface EnableSharingWithAwsOrganizationResponse {
   returnValue?: boolean;
 }
+const EnableSharingWithAwsOrganizationResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<EnableSharingWithAwsOrganizationResponse>;
 export interface GetPermissionRequest {
   permissionArn: string;
   permissionVersion?: number;
 }
+const GetPermissionRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GetPermissionRequest>;
 export interface GetPermissionResponse {
   permission?: ResourceSharePermissionDetail;
 }
+const GetPermissionResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetPermissionResponse>;
 export type MaxResults = number;
 export interface GetResourcePoliciesRequest {
   resourceArns: string[];
@@ -612,12 +751,22 @@ export interface GetResourcePoliciesRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const GetResourcePoliciesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetResourcePoliciesRequest>;
 export type PolicyList = string[];
+const PolicyList = ResourceArnList as any as S.Schema<PolicyList>;
 export interface GetResourcePoliciesResponse {
   policies?: string[];
   nextToken?: string;
 }
+const GetResourcePoliciesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetResourcePoliciesResponse>;
 export type ResourceShareArnList = string[];
+const ResourceShareArnList = ResourceArnList as any as S.Schema<ResourceShareArnList>;
 export interface GetResourceShareAssociationsRequest {
   associationType: ResourceShareAssociationType;
   resourceShareArns?: string[];
@@ -627,29 +776,53 @@ export interface GetResourceShareAssociationsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const GetResourceShareAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetResourceShareAssociationsRequest>;
 export interface GetResourceShareAssociationsResponse {
   resourceShareAssociations?: ResourceShareAssociation[];
   nextToken?: string;
 }
+const GetResourceShareAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetResourceShareAssociationsResponse>;
 export type ResourceShareInvitationArnList = string[];
+const ResourceShareInvitationArnList =
+  ResourceArnList as any as S.Schema<ResourceShareInvitationArnList>;
 export interface GetResourceShareInvitationsRequest {
   resourceShareInvitationArns?: string[];
   resourceShareArns?: string[];
   nextToken?: string;
   maxResults?: number;
 }
+const GetResourceShareInvitationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetResourceShareInvitationsRequest>;
 export type ResourceShareInvitationList = ResourceShareInvitation[];
+const ResourceShareInvitationList = /*@__PURE__*/ __L.at(__c4, 7);
 export interface GetResourceShareInvitationsResponse {
   resourceShareInvitations?: ResourceShareInvitation[];
   nextToken?: string;
 }
+const GetResourceShareInvitationsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GetResourceShareInvitationsResponse>;
 export type ResourceOwner = "SELF" | "OTHER-ACCOUNTS" | (string & {});
+const ResourceOwner = S.String;
+
 export type TagValueList = string[];
+const TagValueList = /*@__PURE__*/ __L.at(__c5, 1);
 export interface TagFilter {
   tagKey?: string;
   tagValues?: string[];
 }
+const TagFilter = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<TagFilter>;
 export type TagFilters = TagFilter[];
+const TagFilters = /*@__PURE__*/ __L.at(__c5, 3);
 export interface GetResourceSharesRequest {
   resourceShareArns?: string[];
   resourceShareStatus?: ResourceShareStatus;
@@ -661,18 +834,33 @@ export interface GetResourceSharesRequest {
   permissionArn?: string;
   permissionVersion?: number;
 }
+const GetResourceSharesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GetResourceSharesRequest>;
 export type ResourceShareList = ResourceShare[];
+const ResourceShareList = /*@__PURE__*/ __L.at(__c5, 5);
 export interface GetResourceSharesResponse {
   resourceShares?: ResourceShare[];
   nextToken?: string;
 }
+const GetResourceSharesResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<GetResourceSharesResponse>;
 export type ResourceRegionScopeFilter = "ALL" | "REGIONAL" | "GLOBAL" | (string & {});
+const ResourceRegionScopeFilter = S.String;
+
 export interface ListPendingInvitationResourcesRequest {
   resourceShareInvitationArn: string;
   nextToken?: string;
   maxResults?: number;
   resourceRegionScope?: ResourceRegionScopeFilter;
 }
+const ListPendingInvitationResourcesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListPendingInvitationResourcesRequest>;
 export type ResourceStatus =
   | "AVAILABLE"
   | "ZONAL_RESOURCE_INACCESSIBLE"
@@ -680,7 +868,11 @@ export type ResourceStatus =
   | "UNAVAILABLE"
   | "PENDING"
   | (string & {});
+const ResourceStatus = S.String;
+
 export type ResourceRegionScope = "REGIONAL" | "GLOBAL" | (string & {});
+const ResourceRegionScope = S.String;
+
 export interface Resource {
   arn?: string;
   type?: string;
@@ -692,11 +884,17 @@ export interface Resource {
   lastUpdatedTime?: Date;
   resourceRegionScope?: ResourceRegionScope;
 }
+const Resource = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Resource>;
 export type ResourceList = Resource[];
+const ResourceList = /*@__PURE__*/ __L.at(__c6, 1);
 export interface ListPendingInvitationResourcesResponse {
   resources?: Resource[];
   nextToken?: string;
 }
+const ListPendingInvitationResourcesResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListPendingInvitationResourcesResponse>;
 export interface ListPermissionAssociationsRequest {
   permissionArn?: string;
   permissionVersion?: number;
@@ -707,6 +905,10 @@ export interface ListPermissionAssociationsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListPermissionAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ListPermissionAssociationsRequest>;
 export interface AssociatedPermission {
   arn?: string;
   permissionVersion?: string;
@@ -717,32 +919,57 @@ export interface AssociatedPermission {
   lastUpdatedTime?: Date;
   resourceShareArn?: string;
 }
+const AssociatedPermission = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<AssociatedPermission>;
 export type AssociatedPermissionList = AssociatedPermission[];
+const AssociatedPermissionList = /*@__PURE__*/ __L.at(__c6, 5);
 export interface ListPermissionAssociationsResponse {
   permissions?: AssociatedPermission[];
   nextToken?: string;
 }
+const ListPermissionAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListPermissionAssociationsResponse>;
 export type PermissionTypeFilter = "ALL" | "AWS_MANAGED" | "CUSTOMER_MANAGED" | (string & {});
+const PermissionTypeFilter = S.String;
+
 export interface ListPermissionsRequest {
   resourceType?: string;
   nextToken?: string;
   maxResults?: number;
   permissionType?: PermissionTypeFilter;
 }
+const ListPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListPermissionsRequest>;
 export type ResourceSharePermissionList = ResourceSharePermissionSummary[];
+const ResourceSharePermissionList = /*@__PURE__*/ __L.at(__c7, 0);
 export interface ListPermissionsResponse {
   permissions?: ResourceSharePermissionSummary[];
   nextToken?: string;
 }
+const ListPermissionsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ListPermissionsResponse>;
 export interface ListPermissionVersionsRequest {
   permissionArn: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListPermissionVersionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListPermissionVersionsRequest>;
 export interface ListPermissionVersionsResponse {
   permissions?: ResourceSharePermissionSummary[];
   nextToken?: string;
 }
+const ListPermissionVersionsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListPermissionVersionsResponse>;
 export interface ListPrincipalsRequest {
   resourceOwner: ResourceOwner;
   resourceArn?: string;
@@ -752,6 +979,10 @@ export interface ListPrincipalsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListPrincipalsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ListPrincipalsRequest>;
 export interface Principal {
   id?: string;
   resourceShareArn?: string;
@@ -759,23 +990,37 @@ export interface Principal {
   lastUpdatedTime?: Date;
   external?: boolean;
 }
+const Principal = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<Principal>;
 export type PrincipalList = Principal[];
+const PrincipalList = /*@__PURE__*/ __L.at(__c7, 6);
 export interface ListPrincipalsResponse {
   principals?: Principal[];
   nextToken?: string;
 }
+const ListPrincipalsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListPrincipalsResponse>;
 export type ReplacePermissionAssociationsWorkIdList = string[];
+const ReplacePermissionAssociationsWorkIdList =
+  ResourceArnList as any as S.Schema<ReplacePermissionAssociationsWorkIdList>;
 export type ReplacePermissionAssociationsWorkStatus =
   | "IN_PROGRESS"
   | "COMPLETED"
   | "FAILED"
   | (string & {});
+const ReplacePermissionAssociationsWorkStatus = S.String;
+
 export interface ListReplacePermissionAssociationsWorkRequest {
   workIds?: string[];
   status?: ReplacePermissionAssociationsWorkStatus;
   nextToken?: string;
   maxResults?: number;
 }
+const ListReplacePermissionAssociationsWorkRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListReplacePermissionAssociationsWorkRequest>;
 export interface ReplacePermissionAssociationsWork {
   id?: string;
   fromPermissionArn?: string;
@@ -787,11 +1032,20 @@ export interface ReplacePermissionAssociationsWork {
   creationTime?: Date;
   lastUpdatedTime?: Date;
 }
+const ReplacePermissionAssociationsWork = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ReplacePermissionAssociationsWork>;
 export type ReplacePermissionAssociationsWorkList = ReplacePermissionAssociationsWork[];
+const ReplacePermissionAssociationsWorkList = /*@__PURE__*/ __L.at(__c8, 2);
 export interface ListReplacePermissionAssociationsWorkResponse {
   replacePermissionAssociationsWorks?: ReplacePermissionAssociationsWork[];
   nextToken?: string;
 }
+const ListReplacePermissionAssociationsWorkResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ListReplacePermissionAssociationsWorkResponse>;
 export interface ListResourcesRequest {
   resourceOwner: ResourceOwner;
   principal?: string;
@@ -802,34 +1056,58 @@ export interface ListResourcesRequest {
   maxResults?: number;
   resourceRegionScope?: ResourceRegionScopeFilter;
 }
+const ListResourcesRequest = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<ListResourcesRequest>;
 export interface ListResourcesResponse {
   resources?: Resource[];
   nextToken?: string;
 }
+const ListResourcesResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ListResourcesResponse>;
 export interface ListResourceSharePermissionsRequest {
   resourceShareArn: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListResourceSharePermissionsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListResourceSharePermissionsRequest>;
 export interface ListResourceSharePermissionsResponse {
   permissions?: ResourceSharePermissionSummary[];
   nextToken?: string;
 }
+const ListResourceSharePermissionsResponse =
+  ListPermissionVersionsResponse as any as S.Schema<ListResourceSharePermissionsResponse>;
 export interface ListResourceTypesRequest {
   nextToken?: string;
   maxResults?: number;
   resourceRegionScope?: ResourceRegionScopeFilter;
 }
+const ListResourceTypesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListResourceTypesRequest>;
 export interface ServiceNameAndResourceType {
   resourceType?: string;
   serviceName?: string;
   resourceRegionScope?: ResourceRegionScope;
 }
+const ServiceNameAndResourceType = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ServiceNameAndResourceType>;
 export type ServiceNameAndResourceTypeList = ServiceNameAndResourceType[];
+const ServiceNameAndResourceTypeList = /*@__PURE__*/ __L.at(__c9, 1);
 export interface ListResourceTypesResponse {
   resourceTypes?: ServiceNameAndResourceType[];
   nextToken?: string;
 }
+const ListResourceTypesResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListResourceTypesResponse>;
 export interface ListSourceAssociationsRequest {
   resourceShareArns?: string[];
   sourceId?: string;
@@ -838,6 +1116,10 @@ export interface ListSourceAssociationsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListSourceAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ListSourceAssociationsRequest>;
 export interface AssociatedSource {
   resourceShareArn?: string;
   sourceId?: string;
@@ -847,76 +1129,130 @@ export interface AssociatedSource {
   creationTime?: Date;
   statusMessage?: string;
 }
+const AssociatedSource = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<AssociatedSource>;
 export type AssociatedSourceList = AssociatedSource[];
+const AssociatedSourceList = /*@__PURE__*/ __L.at(__c9, 5);
 export interface ListSourceAssociationsResponse {
   sourceAssociations?: AssociatedSource[];
   nextToken?: string;
 }
+const ListSourceAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ListSourceAssociationsResponse>;
 export interface PromotePermissionCreatedFromPolicyRequest {
   permissionArn: string;
   name: string;
   clientToken?: string;
 }
+const PromotePermissionCreatedFromPolicyRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<PromotePermissionCreatedFromPolicyRequest>;
 export interface PromotePermissionCreatedFromPolicyResponse {
   permission?: ResourceSharePermissionSummary;
   clientToken?: string;
 }
+const PromotePermissionCreatedFromPolicyResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<PromotePermissionCreatedFromPolicyResponse>;
 export interface PromoteResourceShareCreatedFromPolicyRequest {
   resourceShareArn: string;
 }
+const PromoteResourceShareCreatedFromPolicyRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<PromoteResourceShareCreatedFromPolicyRequest>;
 export interface PromoteResourceShareCreatedFromPolicyResponse {
   returnValue?: boolean;
 }
+const PromoteResourceShareCreatedFromPolicyResponse =
+  EnableSharingWithAwsOrganizationResponse as any as S.Schema<PromoteResourceShareCreatedFromPolicyResponse>;
 export interface RejectResourceShareInvitationRequest {
   resourceShareInvitationArn: string;
   clientToken?: string;
 }
+const RejectResourceShareInvitationRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<RejectResourceShareInvitationRequest>;
 export interface RejectResourceShareInvitationResponse {
   resourceShareInvitation?: ResourceShareInvitation;
   clientToken?: string;
 }
+const RejectResourceShareInvitationResponse =
+  AcceptResourceShareInvitationResponse as any as S.Schema<RejectResourceShareInvitationResponse>;
 export interface ReplacePermissionAssociationsRequest {
   fromPermissionArn: string;
   fromPermissionVersion?: number;
   toPermissionArn: string;
   clientToken?: string;
 }
+const ReplacePermissionAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ReplacePermissionAssociationsRequest>;
 export interface ReplacePermissionAssociationsResponse {
   replacePermissionAssociationsWork?: ReplacePermissionAssociationsWork;
   clientToken?: string;
 }
+const ReplacePermissionAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ReplacePermissionAssociationsResponse>;
 export interface SetDefaultPermissionVersionRequest {
   permissionArn: string;
   permissionVersion: number;
   clientToken?: string;
 }
+const SetDefaultPermissionVersionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<SetDefaultPermissionVersionRequest>;
 export interface SetDefaultPermissionVersionResponse {
   returnValue?: boolean;
   clientToken?: string;
 }
+const SetDefaultPermissionVersionResponse =
+  DeleteResourceShareResponse as any as S.Schema<SetDefaultPermissionVersionResponse>;
 export interface TagResourceRequest {
   resourceShareArn?: string;
   tags: Tag[];
   resourceArn?: string;
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
+const TagKeyList = TagValueList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceShareArn?: string;
   tagKeys: string[];
   resourceArn?: string;
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateResourceShareRequest {
   resourceShareArn: string;
   name?: string;
   allowExternalPrincipals?: boolean;
   clientToken?: string;
 }
+const UpdateResourceShareRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<UpdateResourceShareRequest>;
 export interface UpdateResourceShareResponse {
   resourceShare?: ResourceShare;
   clientToken?: string;
 }
+const UpdateResourceShareResponse =
+  CreateResourceShareResponse as any as S.Schema<UpdateResourceShareResponse>;
 export type AcceptResourceShareInvitationError =
   | IdempotentParameterMismatchException
   | InvalidClientTokenException
@@ -940,8 +1276,8 @@ export const acceptResourceShareInvitation: API.OperationMethod<
   AcceptResourceShareInvitationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AcceptResourceShareInvitationRequest>,
-  output: __S(4) as any as S.Schema<AcceptResourceShareInvitationResponse>,
+  input: AcceptResourceShareInvitationRequest,
+  output: AcceptResourceShareInvitationResponse,
   errors: [
     IdempotentParameterMismatchException,
     InvalidClientTokenException,
@@ -983,8 +1319,8 @@ export const associateResourceShare: API.OperationMethod<
   AssociateResourceShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<AssociateResourceShareRequest>,
-  output: __S(7) as any as S.Schema<AssociateResourceShareResponse>,
+  input: AssociateResourceShareRequest,
+  output: AssociateResourceShareResponse,
   errors: [
     IdempotentParameterMismatchException,
     InvalidClientTokenException,
@@ -1024,8 +1360,8 @@ export const associateResourceSharePermission: API.OperationMethod<
   AssociateResourceSharePermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<AssociateResourceSharePermissionRequest>,
-  output: __S(9) as any as S.Schema<AssociateResourceSharePermissionResponse>,
+  input: AssociateResourceSharePermissionRequest,
+  output: AssociateResourceSharePermissionResponse,
   errors: [
     InvalidClientTokenException,
     InvalidParameterException,
@@ -1062,8 +1398,8 @@ export const createPermission: API.OperationMethod<
   CreatePermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CreatePermissionRequest>,
-  output: __S(14) as any as S.Schema<CreatePermissionResponse>,
+  input: CreatePermissionRequest,
+  output: CreatePermissionResponse,
   errors: [
     IdempotentParameterMismatchException,
     InvalidClientTokenException,
@@ -1108,8 +1444,8 @@ export const createPermissionVersion: API.OperationMethod<
   CreatePermissionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<CreatePermissionVersionRequest>,
-  output: __S(17) as any as S.Schema<CreatePermissionVersionResponse>,
+  input: CreatePermissionVersionRequest,
+  output: CreatePermissionVersionResponse,
   errors: [
     IdempotentParameterMismatchException,
     InvalidClientTokenException,
@@ -1157,8 +1493,8 @@ export const createResourceShare: API.OperationMethod<
   CreateResourceShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<CreateResourceShareRequest>,
-  output: __S(21) as any as S.Schema<CreateResourceShareResponse>,
+  input: CreateResourceShareRequest,
+  output: CreateResourceShareResponse,
   errors: [
     IdempotentParameterMismatchException,
     InvalidClientTokenException,
@@ -1199,8 +1535,8 @@ export const deletePermission: API.OperationMethod<
   DeletePermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<DeletePermissionRequest>,
-  output: __S(23) as any as S.Schema<DeletePermissionResponse>,
+  input: DeletePermissionRequest,
+  output: DeletePermissionResponse,
   errors: [
     IdempotentParameterMismatchException,
     InvalidClientTokenException,
@@ -1238,8 +1574,8 @@ export const deletePermissionVersion: API.OperationMethod<
   DeletePermissionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<DeletePermissionVersionRequest>,
-  output: __S(25) as any as S.Schema<DeletePermissionVersionResponse>,
+  input: DeletePermissionVersionRequest,
+  output: DeletePermissionVersionResponse,
   errors: [
     IdempotentParameterMismatchException,
     InvalidClientTokenException,
@@ -1279,8 +1615,8 @@ export const deleteResourceShare: API.OperationMethod<
   DeleteResourceShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<DeleteResourceShareRequest>,
-  output: __S(27) as any as S.Schema<DeleteResourceShareResponse>,
+  input: DeleteResourceShareRequest,
+  output: DeleteResourceShareResponse,
   errors: [
     IdempotentParameterMismatchException,
     InvalidClientTokenException,
@@ -1321,8 +1657,8 @@ export const disassociateResourceShare: API.OperationMethod<
   DisassociateResourceShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<DisassociateResourceShareRequest>,
-  output: __S(7) as any as S.Schema<DisassociateResourceShareResponse>,
+  input: DisassociateResourceShareRequest,
+  output: DisassociateResourceShareResponse,
   errors: [
     IdempotentParameterMismatchException,
     InvalidClientTokenException,
@@ -1362,8 +1698,8 @@ export const disassociateResourceSharePermission: API.OperationMethod<
   DisassociateResourceSharePermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<DisassociateResourceSharePermissionRequest>,
-  output: __S(9) as any as S.Schema<DisassociateResourceSharePermissionResponse>,
+  input: DisassociateResourceSharePermissionRequest,
+  output: DisassociateResourceSharePermissionResponse,
   errors: [
     InvalidClientTokenException,
     InvalidParameterException,
@@ -1403,8 +1739,8 @@ export const enableSharingWithAwsOrganization: API.OperationMethod<
   EnableSharingWithAwsOrganizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<EnableSharingWithAwsOrganizationRequest>,
-  output: __S(31) as any as S.Schema<EnableSharingWithAwsOrganizationResponse>,
+  input: EnableSharingWithAwsOrganizationRequest,
+  output: EnableSharingWithAwsOrganizationResponse,
   errors: [OperationNotPermittedException, ServerInternalException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1428,8 +1764,8 @@ export const getPermission: API.OperationMethod<
   GetPermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<GetPermissionRequest>,
-  output: __S(33) as any as S.Schema<GetPermissionResponse>,
+  input: GetPermissionRequest,
+  output: GetPermissionResponse,
   errors: [
     InvalidParameterException,
     MalformedArnException,
@@ -1468,8 +1804,8 @@ export const getResourcePolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(34) as any as S.Schema<GetResourcePoliciesRequest>,
-  output: __S(35) as any as S.Schema<GetResourcePoliciesResponse>,
+  input: GetResourcePoliciesRequest,
+  output: GetResourcePoliciesResponse,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -1514,8 +1850,8 @@ export const getResourceShareAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(36) as any as S.Schema<GetResourceShareAssociationsRequest>,
-  output: __S(37) as any as S.Schema<GetResourceShareAssociationsResponse>,
+  input: GetResourceShareAssociationsRequest,
+  output: GetResourceShareAssociationsResponse,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -1561,8 +1897,8 @@ export const getResourceShareInvitations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(38) as any as S.Schema<GetResourceShareInvitationsRequest>,
-  output: __S(40) as any as S.Schema<GetResourceShareInvitationsResponse>,
+  input: GetResourceShareInvitationsRequest,
+  output: GetResourceShareInvitationsResponse,
   errors: [
     InvalidMaxResultsException,
     InvalidNextTokenException,
@@ -1607,8 +1943,8 @@ export const getResourceShares: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(44) as any as S.Schema<GetResourceSharesRequest>,
-  output: __S(46) as any as S.Schema<GetResourceSharesResponse>,
+  input: GetResourceSharesRequest,
+  output: GetResourceSharesResponse,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -1656,8 +1992,8 @@ export const listPendingInvitationResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(47) as any as S.Schema<ListPendingInvitationResourcesRequest>,
-  output: __S(50) as any as S.Schema<ListPendingInvitationResourcesResponse>,
+  input: ListPendingInvitationResourcesRequest,
+  output: ListPendingInvitationResourcesResponse,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -1704,8 +2040,8 @@ export const listPermissionAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(51) as any as S.Schema<ListPermissionAssociationsRequest>,
-  output: __S(54) as any as S.Schema<ListPermissionAssociationsResponse>,
+  input: ListPermissionAssociationsRequest,
+  output: ListPermissionAssociationsResponse,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -1747,8 +2083,8 @@ export const listPermissions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(55) as any as S.Schema<ListPermissionsRequest>,
-  output: __S(57) as any as S.Schema<ListPermissionsResponse>,
+  input: ListPermissionsRequest,
+  output: ListPermissionsResponse,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -1791,8 +2127,8 @@ export const listPermissionVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(58) as any as S.Schema<ListPermissionVersionsRequest>,
-  output: __S(59) as any as S.Schema<ListPermissionVersionsResponse>,
+  input: ListPermissionVersionsRequest,
+  output: ListPermissionVersionsResponse,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -1837,8 +2173,8 @@ export const listPrincipals: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(60) as any as S.Schema<ListPrincipalsRequest>,
-  output: __S(63) as any as S.Schema<ListPrincipalsResponse>,
+  input: ListPrincipalsRequest,
+  output: ListPrincipalsResponse,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -1880,8 +2216,8 @@ export const listReplacePermissionAssociationsWork: API.PaginatedOperationMethod
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(64) as any as S.Schema<ListReplacePermissionAssociationsWorkRequest>,
-  output: __S(67) as any as S.Schema<ListReplacePermissionAssociationsWorkResponse>,
+  input: ListReplacePermissionAssociationsWorkRequest,
+  output: ListReplacePermissionAssociationsWorkResponse,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -1924,8 +2260,8 @@ export const listResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(68) as any as S.Schema<ListResourcesRequest>,
-  output: __S(69) as any as S.Schema<ListResourcesResponse>,
+  input: ListResourcesRequest,
+  output: ListResourcesResponse,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -1970,8 +2306,8 @@ export const listResourceSharePermissions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(70) as any as S.Schema<ListResourceSharePermissionsRequest>,
-  output: __S(59) as any as S.Schema<ListResourceSharePermissionsResponse>,
+  input: ListResourceSharePermissionsRequest,
+  output: ListResourceSharePermissionsResponse,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -2007,8 +2343,8 @@ export const listResourceTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(71) as any as S.Schema<ListResourceTypesRequest>,
-  output: __S(74) as any as S.Schema<ListResourceTypesResponse>,
+  input: ListResourceTypesRequest,
+  output: ListResourceTypesResponse,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -2045,8 +2381,8 @@ export const listSourceAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssociatedSource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(75) as any as S.Schema<ListSourceAssociationsRequest>,
-  output: __S(78) as any as S.Schema<ListSourceAssociationsResponse>,
+  input: ListSourceAssociationsRequest,
+  output: ListSourceAssociationsResponse,
   errors: [
     InvalidNextTokenException,
     InvalidParameterException,
@@ -2111,8 +2447,8 @@ export const promotePermissionCreatedFromPolicy: API.OperationMethod<
   PromotePermissionCreatedFromPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<PromotePermissionCreatedFromPolicyRequest>,
-  output: __S(80) as any as S.Schema<PromotePermissionCreatedFromPolicyResponse>,
+  input: PromotePermissionCreatedFromPolicyRequest,
+  output: PromotePermissionCreatedFromPolicyResponse,
   errors: [
     InvalidParameterException,
     InvalidPolicyException,
@@ -2162,8 +2498,8 @@ export const promoteResourceShareCreatedFromPolicy: API.OperationMethod<
   PromoteResourceShareCreatedFromPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<PromoteResourceShareCreatedFromPolicyRequest>,
-  output: __S(31) as any as S.Schema<PromoteResourceShareCreatedFromPolicyResponse>,
+  input: PromoteResourceShareCreatedFromPolicyRequest,
+  output: PromoteResourceShareCreatedFromPolicyResponse,
   errors: [
     InvalidParameterException,
     InvalidStateTransitionException,
@@ -2202,8 +2538,8 @@ export const rejectResourceShareInvitation: API.OperationMethod<
   RejectResourceShareInvitationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<RejectResourceShareInvitationRequest>,
-  output: __S(4) as any as S.Schema<RejectResourceShareInvitationResponse>,
+  input: RejectResourceShareInvitationRequest,
+  output: RejectResourceShareInvitationResponse,
   errors: [
     IdempotentParameterMismatchException,
     InvalidClientTokenException,
@@ -2255,8 +2591,8 @@ export const replacePermissionAssociations: API.OperationMethod<
   ReplacePermissionAssociationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<ReplacePermissionAssociationsRequest>,
-  output: __S(84) as any as S.Schema<ReplacePermissionAssociationsResponse>,
+  input: ReplacePermissionAssociationsRequest,
+  output: ReplacePermissionAssociationsResponse,
   errors: [
     IdempotentParameterMismatchException,
     InvalidClientTokenException,
@@ -2292,8 +2628,8 @@ export const setDefaultPermissionVersion: API.OperationMethod<
   SetDefaultPermissionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<SetDefaultPermissionVersionRequest>,
-  output: __S(27) as any as S.Schema<SetDefaultPermissionVersionResponse>,
+  input: SetDefaultPermissionVersionRequest,
+  output: SetDefaultPermissionVersionResponse,
   errors: [
     IdempotentParameterMismatchException,
     InvalidClientTokenException,
@@ -2330,8 +2666,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<TagResourceRequest>,
-  output: __S(87) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     InvalidParameterException,
     MalformedArnException,
@@ -2363,8 +2699,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<UntagResourceRequest>,
-  output: __S(87) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     InvalidParameterException,
     MalformedArnException,
@@ -2397,8 +2733,8 @@ export const updateResourceShare: API.OperationMethod<
   UpdateResourceShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<UpdateResourceShareRequest>,
-  output: __S(21) as any as S.Schema<UpdateResourceShareResponse>,
+  input: UpdateResourceShareRequest,
+  output: UpdateResourceShareResponse,
   errors: [
     IdempotentParameterMismatchException,
     InvalidClientTokenException,
@@ -2439,8 +2775,8 @@ function __c0(j: number): any {
           resourceShareArn: S.optional(S.String),
           resourceShareName: S.optional(S.String),
           associatedEntity: S.optional(S.String),
-          associationType: S.optional(S.String),
-          status: S.optional(S.String),
+          associationType: S.optional(ResourceShareAssociationType),
+          status: S.optional(ResourceShareAssociationStatus),
           statusMessage: S.optional(S.String),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -2449,7 +2785,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "ResourceShareAssociation" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(1).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+        /*@__PURE__*/ ResourceShareAssociation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
           identifier: "ResourceShareAssociation",
         }),
       );
@@ -2462,15 +2798,15 @@ function __c0(j: number): any {
           senderAccountId: S.optional(S.String),
           receiverAccountId: S.optional(S.String),
           invitationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(S.String),
-          resourceShareAssociations: S.optional(__S(2)),
+          status: S.optional(ResourceShareInvitationStatus),
+          resourceShareAssociations: S.optional(ResourceShareAssociationList),
           receiverArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceShareInvitation" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          resourceShareInvitation: S.optional(__S(3)),
+          resourceShareInvitation: S.optional(ResourceShareInvitation),
           clientToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2482,10 +2818,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceShareArn: S.String,
-          resourceArns: S.optional(__S(5)),
-          principals: S.optional(__S(5)),
+          resourceArns: S.optional(ResourceArnList),
+          principals: S.optional(PrincipalArnOrIdList),
           clientToken: S.optional(S.String),
-          sources: S.optional(__S(5)),
+          sources: S.optional(SourceArnOrAccountList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/associateresourceshare" }),
@@ -2502,7 +2838,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          resourceShareAssociations: S.optional(__S(2)),
+          resourceShareAssociations: S.optional(ResourceShareAssociationList),
           clientToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2544,7 +2880,7 @@ function __c1(j: number): any {
         S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
       ).annotate({ identifier: "Tag" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(Tag);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2552,7 +2888,7 @@ function __c1(j: number): any {
           resourceType: S.String,
           policyTemplate: S.String,
           clientToken: S.optional(S.String),
-          tags: S.optional(__S(11)),
+          tags: S.optional(TagList),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/createpermission" }), svc, auth, proto, ver, rules),
         ),
@@ -2569,9 +2905,9 @@ function __c1(j: number): any {
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           isResourceTypeDefault: S.optional(S.Boolean),
-          permissionType: S.optional(S.String),
-          featureSet: S.optional(S.String),
-          tags: S.optional(__S(11)),
+          permissionType: S.optional(PermissionType),
+          featureSet: S.optional(PermissionFeatureSet),
+          tags: S.optional(TagList),
         }),
       ).annotate({
         identifier: "ResourceSharePermissionSummary",
@@ -2579,7 +2915,7 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          permission: S.optional(__S(13)),
+          permission: S.optional(ResourceSharePermissionSummary),
           clientToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreatePermissionResponse" });
@@ -2618,10 +2954,10 @@ function __c2(j: number): any {
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           isResourceTypeDefault: S.optional(S.Boolean),
-          permissionType: S.optional(S.String),
-          featureSet: S.optional(S.String),
-          status: S.optional(S.String),
-          tags: S.optional(__S(11)),
+          permissionType: S.optional(PermissionType),
+          featureSet: S.optional(PermissionFeatureSet),
+          status: S.optional(PermissionStatus),
+          tags: S.optional(TagList),
         }),
       ).annotate({
         identifier: "ResourceSharePermissionDetail",
@@ -2629,7 +2965,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          permission: S.optional(__S(16)),
+          permission: S.optional(ResourceSharePermissionDetail),
           clientToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2645,14 +2981,14 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          resourceArns: S.optional(__S(5)),
-          principals: S.optional(__S(5)),
-          tags: S.optional(__S(11)),
+          resourceArns: S.optional(ResourceArnList),
+          principals: S.optional(PrincipalArnOrIdList),
+          tags: S.optional(TagList),
           allowExternalPrincipals: S.optional(S.Boolean),
           clientToken: S.optional(S.String),
-          permissionArns: S.optional(__S(5)),
-          sources: S.optional(__S(5)),
-          resourceShareConfiguration: S.optional(__S(18)),
+          permissionArns: S.optional(PermissionArnList),
+          sources: S.optional(SourceArnOrAccountList),
+          resourceShareConfiguration: S.optional(ResourceShareConfiguration),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/createresourceshare" }),
@@ -2673,18 +3009,18 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           owningAccountId: S.optional(S.String),
           allowExternalPrincipals: S.optional(S.Boolean),
-          status: S.optional(S.String),
+          status: S.optional(ResourceShareStatus),
           statusMessage: S.optional(S.String),
-          tags: S.optional(__S(11)),
+          tags: S.optional(TagList),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          featureSet: S.optional(S.String),
-          resourceShareConfiguration: S.optional(__S(18)),
+          featureSet: S.optional(ResourceShareFeatureSet),
+          resourceShareConfiguration: S.optional(ResourceShareConfiguration),
         }),
       ).annotate({ identifier: "ResourceShare" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ resourceShare: S.optional(__S(20)), clientToken: S.optional(S.String) }),
+        S.Struct({ resourceShare: S.optional(ResourceShare), clientToken: S.optional(S.String) }),
       ).annotate({
         identifier: "CreateResourceShareResponse",
       });
@@ -2709,7 +3045,7 @@ function __c2(j: number): any {
         S.Struct({
           returnValue: S.optional(S.Boolean).pipe(T.XmlName("return")),
           clientToken: S.optional(S.String),
-          permissionStatus: S.optional(S.String),
+          permissionStatus: S.optional(PermissionStatus),
         }),
       ).annotate({ identifier: "DeletePermissionResponse" });
   }
@@ -2740,7 +3076,7 @@ function __c3(j: number): any {
         S.Struct({
           returnValue: S.optional(S.Boolean).pipe(T.XmlName("return")),
           clientToken: S.optional(S.String),
-          permissionStatus: S.optional(S.String),
+          permissionStatus: S.optional(PermissionStatus),
         }),
       ).annotate({
         identifier: "DeletePermissionVersionResponse",
@@ -2776,10 +3112,10 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceShareArn: S.String,
-          resourceArns: S.optional(__S(5)),
-          principals: S.optional(__S(5)),
+          resourceArns: S.optional(ResourceArnList),
+          principals: S.optional(PrincipalArnOrIdList),
           clientToken: S.optional(S.String),
-          sources: S.optional(__S(5)),
+          sources: S.optional(SourceArnOrAccountList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/disassociateresourceshare" }),
@@ -2844,13 +3180,13 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "GetPermissionRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ permission: S.optional(__S(16)) })).annotate({
-        identifier: "GetPermissionResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({ permission: S.optional(ResourceSharePermissionDetail) }),
+      ).annotate({ identifier: "GetPermissionResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resourceArns: __S(5),
+          resourceArns: ResourceArnList,
           principal: S.optional(S.String),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
@@ -2869,18 +3205,18 @@ function __c4(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ policies: S.optional(__S(5)), nextToken: S.optional(S.String) }),
+        S.Struct({ policies: S.optional(PolicyList), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "GetResourcePoliciesResponse",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          associationType: S.String,
-          resourceShareArns: S.optional(__S(5)),
+          associationType: ResourceShareAssociationType,
+          resourceShareArns: S.optional(ResourceShareArnList),
           resourceArn: S.optional(S.String),
           principal: S.optional(S.String),
-          associationStatus: S.optional(S.String),
+          associationStatus: S.optional(ResourceShareAssociationStatus),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -2899,7 +3235,7 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          resourceShareAssociations: S.optional(__S(2)),
+          resourceShareAssociations: S.optional(ResourceShareAssociationList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2908,8 +3244,8 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resourceShareInvitationArns: S.optional(__S(5)),
-          resourceShareArns: S.optional(__S(5)),
+          resourceShareInvitationArns: S.optional(ResourceShareInvitationArnList),
+          resourceShareArns: S.optional(ResourceShareArnList),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -2927,7 +3263,7 @@ function __c4(j: number): any {
       });
     case 7:
       return S.Array(
-        /*@__PURE__*/ __S(3).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+        /*@__PURE__*/ ResourceShareInvitation.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
           identifier: "ResourceShareInvitation",
         }),
       );
@@ -2938,7 +3274,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resourceShareInvitations: S.optional(__S(39)),
+          resourceShareInvitations: S.optional(ResourceShareInvitationList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2948,18 +3284,18 @@ function __c5(j: number): any {
       return S.Array(S.String);
     case 2:
       return S.suspend(() =>
-        S.Struct({ tagKey: S.optional(S.String), tagValues: S.optional(__S(41)) }),
+        S.Struct({ tagKey: S.optional(S.String), tagValues: S.optional(TagValueList) }),
       ).annotate({ identifier: "TagFilter" });
     case 3:
-      return S.Array(__S(42));
+      return S.Array(TagFilter);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          resourceShareArns: S.optional(__S(5)),
-          resourceShareStatus: S.optional(S.String),
-          resourceOwner: S.String,
+          resourceShareArns: S.optional(ResourceShareArnList),
+          resourceShareStatus: S.optional(ResourceShareStatus),
+          resourceOwner: ResourceOwner,
           name: S.optional(S.String),
-          tagFilters: S.optional(__S(43)),
+          tagFilters: S.optional(TagFilters),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
           permissionArn: S.optional(S.String),
@@ -2977,14 +3313,14 @@ function __c5(j: number): any {
       ).annotate({ identifier: "GetResourceSharesRequest" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(20).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+        /*@__PURE__*/ ResourceShare.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
           identifier: "ResourceShare",
         }),
       );
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resourceShares: S.optional(__S(45)),
+          resourceShares: S.optional(ResourceShareList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2996,7 +3332,7 @@ function __c5(j: number): any {
           resourceShareInvitationArn: S.String,
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          resourceRegionScope: S.optional(S.String),
+          resourceRegionScope: S.optional(ResourceRegionScopeFilter),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/listpendinginvitationresources" }),
@@ -3021,22 +3357,22 @@ function __c6(j: number): any {
           type: S.optional(S.String),
           resourceShareArn: S.optional(S.String),
           resourceGroupArn: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(ResourceStatus),
           statusMessage: S.optional(S.String),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          resourceRegionScope: S.optional(S.String),
+          resourceRegionScope: S.optional(ResourceRegionScope),
         }),
       ).annotate({ identifier: "Resource" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(48).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+        /*@__PURE__*/ Resource.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
           identifier: "Resource",
         }),
       );
     case 2:
       return S.suspend(() =>
-        S.Struct({ resources: S.optional(__S(49)), nextToken: S.optional(S.String) }),
+        S.Struct({ resources: S.optional(ResourceList), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListPendingInvitationResourcesResponse",
       });
@@ -3045,9 +3381,9 @@ function __c6(j: number): any {
         S.Struct({
           permissionArn: S.optional(S.String),
           permissionVersion: S.optional(S.Number),
-          associationStatus: S.optional(S.String),
+          associationStatus: S.optional(ResourceShareAssociationStatus),
           resourceType: S.optional(S.String),
-          featureSet: S.optional(S.String),
+          featureSet: S.optional(PermissionFeatureSet),
           defaultVersion: S.optional(S.Boolean),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
@@ -3072,21 +3408,21 @@ function __c6(j: number): any {
           defaultVersion: S.optional(S.Boolean),
           resourceType: S.optional(S.String),
           status: S.optional(S.String),
-          featureSet: S.optional(S.String),
+          featureSet: S.optional(PermissionFeatureSet),
           lastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           resourceShareArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssociatedPermission" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(52).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+        /*@__PURE__*/ AssociatedPermission.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
           identifier: "AssociatedPermission",
         }),
       );
     case 6:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(53)),
+          permissions: S.optional(AssociatedPermissionList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3098,7 +3434,7 @@ function __c6(j: number): any {
           resourceType: S.optional(S.String),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          permissionType: S.optional(S.String),
+          permissionType: S.optional(PermissionTypeFilter),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/listpermissions" }), svc, auth, proto, ver, rules),
         ),
@@ -3109,14 +3445,16 @@ function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ __S(13).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "ResourceSharePermissionSummary",
-        }),
+        /*@__PURE__*/ ResourceSharePermissionSummary.pipe(/*@__PURE__*/ T.XmlName("item")).annotate(
+          {
+            identifier: "ResourceSharePermissionSummary",
+          },
+        ),
       );
     case 1:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(56)),
+          permissions: S.optional(ResourceSharePermissionList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPermissionsResponse" });
@@ -3142,7 +3480,7 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(56)),
+          permissions: S.optional(ResourceSharePermissionList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3151,11 +3489,11 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          resourceOwner: S.String,
+          resourceOwner: ResourceOwner,
           resourceArn: S.optional(S.String),
-          principals: S.optional(__S(5)),
+          principals: S.optional(PrincipalArnOrIdList),
           resourceType: S.optional(S.String),
-          resourceShareArns: S.optional(__S(5)),
+          resourceShareArns: S.optional(ResourceShareArnList),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -3174,13 +3512,13 @@ function __c7(j: number): any {
       ).annotate({ identifier: "Principal" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ __S(61).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+        /*@__PURE__*/ Principal.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
           identifier: "Principal",
         }),
       );
     case 7:
       return S.suspend(() =>
-        S.Struct({ principals: S.optional(__S(62)), nextToken: S.optional(S.String) }),
+        S.Struct({ principals: S.optional(PrincipalList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListPrincipalsResponse" });
   }
 }
@@ -3189,8 +3527,8 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          workIds: S.optional(__S(5)),
-          status: S.optional(S.String),
+          workIds: S.optional(ReplacePermissionAssociationsWorkIdList),
+          status: S.optional(ReplacePermissionAssociationsWorkStatus),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -3214,7 +3552,7 @@ function __c8(j: number): any {
           fromPermissionVersion: S.optional(S.String),
           toPermissionArn: S.optional(S.String),
           toPermissionVersion: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(ReplacePermissionAssociationsWorkStatus),
           statusMessage: S.optional(S.String),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3224,14 +3562,16 @@ function __c8(j: number): any {
       });
     case 2:
       return S.Array(
-        /*@__PURE__*/ __S(65).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+        /*@__PURE__*/ ReplacePermissionAssociationsWork.pipe(
+          /*@__PURE__*/ T.XmlName("item"),
+        ).annotate({
           identifier: "ReplacePermissionAssociationsWork",
         }),
       );
     case 3:
       return S.suspend(() =>
         S.Struct({
-          replacePermissionAssociationsWorks: S.optional(__S(66)),
+          replacePermissionAssociationsWorks: S.optional(ReplacePermissionAssociationsWorkList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3240,21 +3580,21 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          resourceOwner: S.String,
+          resourceOwner: ResourceOwner,
           principal: S.optional(S.String),
           resourceType: S.optional(S.String),
-          resourceArns: S.optional(__S(5)),
-          resourceShareArns: S.optional(__S(5)),
+          resourceArns: S.optional(ResourceArnList),
+          resourceShareArns: S.optional(ResourceShareArnList),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          resourceRegionScope: S.optional(S.String),
+          resourceRegionScope: S.optional(ResourceRegionScopeFilter),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/listresources" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListResourcesRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ resources: S.optional(__S(49)), nextToken: S.optional(S.String) }),
+        S.Struct({ resources: S.optional(ResourceList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListResourcesResponse" });
     case 6:
       return S.suspend(() =>
@@ -3280,7 +3620,7 @@ function __c8(j: number): any {
         S.Struct({
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          resourceRegionScope: S.optional(S.String),
+          resourceRegionScope: S.optional(ResourceRegionScopeFilter),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/listresourcetypes" }),
@@ -3301,21 +3641,21 @@ function __c9(j: number): any {
         S.Struct({
           resourceType: S.optional(S.String),
           serviceName: S.optional(S.String),
-          resourceRegionScope: S.optional(S.String),
+          resourceRegionScope: S.optional(ResourceRegionScope),
         }),
       ).annotate({
         identifier: "ServiceNameAndResourceType",
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(72).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+        /*@__PURE__*/ ServiceNameAndResourceType.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
           identifier: "ServiceNameAndResourceType",
         }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resourceTypes: S.optional(__S(73)),
+          resourceTypes: S.optional(ServiceNameAndResourceTypeList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3324,10 +3664,10 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resourceShareArns: S.optional(__S(5)),
+          resourceShareArns: S.optional(ResourceShareArnList),
           sourceId: S.optional(S.String),
           sourceType: S.optional(S.String),
-          associationStatus: S.optional(S.String),
+          associationStatus: S.optional(ResourceShareAssociationStatus),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -3357,14 +3697,14 @@ function __c9(j: number): any {
       ).annotate({ identifier: "AssociatedSource" });
     case 5:
       return S.Array(
-        /*@__PURE__*/ __S(76).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+        /*@__PURE__*/ AssociatedSource.pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
           identifier: "AssociatedSource",
         }),
       );
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sourceAssociations: S.optional(__S(77)),
+          sourceAssociations: S.optional(AssociatedSourceList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3396,7 +3736,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          permission: S.optional(__S(13)),
+          permission: S.optional(ResourceSharePermissionSummary),
           clientToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3455,7 +3795,7 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          replacePermissionAssociationsWork: S.optional(__S(65)),
+          replacePermissionAssociationsWork: S.optional(ReplacePermissionAssociationsWork),
           clientToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3484,7 +3824,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceShareArn: S.optional(S.String),
-          tags: __S(11),
+          tags: TagList,
           resourceArn: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/tagresource" }), svc, auth, proto, ver, rules),
@@ -3502,7 +3842,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceShareArn: S.optional(S.String),
-          tagKeys: __S(41),
+          tagKeys: TagKeyList,
           resourceArn: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/untagresource" }), svc, auth, proto, ver, rules),
@@ -3528,38 +3868,5 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "UpdateResourceShareRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
   }
 }

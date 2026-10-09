@@ -12,8 +12,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -65,6 +63,8 @@ export class InvalidHealthcheckEndpoint
   ) {}
 
 export type EndpointHealthchecksCreateRequestCheckType = "icmp";
+const EndpointHealthchecksCreateRequestCheckType = S.String;
+
 export interface CreateEndpointHealthcheckRequest {
   /** Identifier */
   accountId: string;
@@ -75,7 +75,14 @@ export interface CreateEndpointHealthcheckRequest {
   /** Optional name associated with this check */
   name?: string;
 }
+const CreateEndpointHealthcheckRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateEndpointHealthcheckRequest>;
+
 export type EndpointHealthchecksCreateResponseCheckType = "icmp";
+const EndpointHealthchecksCreateResponseCheckType = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateEndpointHealthcheckResponse {
   /** type of check to perform */
@@ -87,9 +94,24 @@ export interface CreateEndpointHealthcheckResponse {
   /** Optional name associated with this check */
   name?: string | null;
 }
+const CreateEndpointHealthcheckResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateEndpointHealthcheckResponse>;
+
 export type TraceroutesCreateRequestTargetsList = Array<string>;
+const TraceroutesCreateRequestTargetsList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<TraceroutesCreateRequestTargetsList>;
+
 export type TraceroutesCreateRequestColosList = Array<string>;
+const TraceroutesCreateRequestColosList =
+  TraceroutesCreateRequestTargetsList as any as S.Schema<TraceroutesCreateRequestColosList>;
+
 export type TraceroutesCreateRequestOptionsPacketType = "icmp" | "tcp" | "udp" | "gre" | "gre+icmp";
+const TraceroutesCreateRequestOptionsPacketType = S.String;
+
 export interface TraceroutesCreateRequestOptions {
   /** Max TTL. */
   maxTtl?: number;
@@ -102,6 +124,11 @@ export interface TraceroutesCreateRequestOptions {
   /** Set the time (in seconds) to wait for a response to a probe. */
   waitTime?: number;
 }
+const TraceroutesCreateRequestOptions = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<TraceroutesCreateRequestOptions>;
+
 export interface CreateTracerouteRequest {
   /** Identifier */
   accountId: string;
@@ -110,19 +137,36 @@ export interface CreateTracerouteRequest {
   colos?: TraceroutesCreateRequestColosList;
   options?: TraceroutesCreateRequestOptions;
 }
+const CreateTracerouteRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateTracerouteRequest>;
+
 export interface TraceroutesCreateResultItemColosItemColo {
   /** Source colo city. */
   city?: string | null;
   /** Source colo name. */
   name?: string | null;
 }
+const TraceroutesCreateResultItemColosItemColo = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<TraceroutesCreateResultItemColosItemColo>;
+
 export type TraceroutesCreateResultItemColosItemError =
   | ""
   | "Could not gather traceroute data: Code 1"
   | "Could not gather traceroute data: Code 2"
   | "Could not gather traceroute data: Code 3"
   | "Could not gather traceroute data: Code 4";
+const TraceroutesCreateResultItemColosItemError = S.String;
+
 export type TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList = Array<string>;
+const TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList>;
+
 export interface TraceroutesCreateResultItemColosItemHopsItemNodesItem {
   /** AS number associated with the node object. */
   asn?: string | null;
@@ -143,8 +187,18 @@ export interface TraceroutesCreateResultItemColosItemHopsItemNodesItem {
   /** Standard deviation of the RTTs in ms. */
   stdDevRttMs?: number | null;
 }
+const TraceroutesCreateResultItemColosItemHopsItemNodesItem = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<TraceroutesCreateResultItemColosItemHopsItemNodesItem>;
+
 export type TraceroutesCreateResultItemColosItemHopsItemNodesList =
   Array<TraceroutesCreateResultItemColosItemHopsItemNodesItem>;
+const TraceroutesCreateResultItemColosItemHopsItemNodesList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<TraceroutesCreateResultItemColosItemHopsItemNodesList>;
+
 export interface TraceroutesCreateResultItemColosItemHopsItem {
   /** An array of node objects. */
   nodes?: TraceroutesCreateResultItemColosItemHopsItemNodesList | null;
@@ -155,8 +209,18 @@ export interface TraceroutesCreateResultItemColosItemHopsItem {
   /** The time to live (TTL). */
   packetsTtl?: number | null;
 }
+const TraceroutesCreateResultItemColosItemHopsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<TraceroutesCreateResultItemColosItemHopsItem>;
+
 export type TraceroutesCreateResultItemColosItemHopsList =
   Array<TraceroutesCreateResultItemColosItemHopsItem>;
+const TraceroutesCreateResultItemColosItemHopsList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<TraceroutesCreateResultItemColosItemHopsList>;
+
 export interface TraceroutesCreateResultItemColosItem {
   colo?: TraceroutesCreateResultItemColosItemColo | null;
   /** Errors resulting from collecting traceroute from colo to target. */
@@ -167,32 +231,72 @@ export interface TraceroutesCreateResultItemColosItem {
   /** Total time of traceroute in ms. */
   tracerouteTimeMs?: number | null;
 }
+const TraceroutesCreateResultItemColosItem = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<TraceroutesCreateResultItemColosItem>;
+
 export type TraceroutesCreateResultItemColosList = Array<TraceroutesCreateResultItemColosItem>;
+const TraceroutesCreateResultItemColosList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<TraceroutesCreateResultItemColosList>;
+
 export interface TraceroutesCreateResultItem {
   colos?: TraceroutesCreateResultItemColosList | null;
   /** The target hostname, IPv6, or IPv6 address. */
   target?: string | null;
 }
+const TraceroutesCreateResultItem = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<TraceroutesCreateResultItem>;
+
 export type TraceroutesCreateResultList = Array<TraceroutesCreateResultItem>;
+const TraceroutesCreateResultList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<TraceroutesCreateResultList>;
+
 export interface CreateTracerouteResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: TraceroutesCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const CreateTracerouteResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateTracerouteResponse>;
+
 export interface DeleteEndpointHealthcheckRequest {
   /** Identifier */
   accountId: string;
   /** UUID. */
   id: string;
 }
+const DeleteEndpointHealthcheckRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DeleteEndpointHealthcheckRequest>;
+
 export interface DeleteEndpointHealthcheckResponse {}
+const DeleteEndpointHealthcheckResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DeleteEndpointHealthcheckResponse>;
+
 export interface GetEndpointHealthcheckRequest {
   /** Identifier */
   accountId: string;
   /** UUID. */
   id: string;
 }
+const GetEndpointHealthcheckRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetEndpointHealthcheckRequest>;
+
 export type EndpointHealthchecksGetResponseCheckType = "icmp";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetEndpointHealthcheckResponse {
@@ -205,11 +309,21 @@ export interface GetEndpointHealthcheckResponse {
   /** Optional name associated with this check */
   name?: string | null;
 }
+const GetEndpointHealthcheckResponse =
+  CreateEndpointHealthcheckResponse as any as S.Schema<GetEndpointHealthcheckResponse>;
+
 export interface ListEndpointHealthchecksRequest {
   /** Identifier */
   accountId: string;
 }
+const ListEndpointHealthchecksRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListEndpointHealthchecksRequest>;
+
 export type EndpointHealthchecksListResponseCheckType = "icmp";
+const EndpointHealthchecksListResponseCheckType = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListEndpointHealthchecksItem {
   /** type of check to perform */
@@ -221,9 +335,26 @@ export interface ListEndpointHealthchecksItem {
   /** Optional name associated with this check */
   name?: string | null;
 }
+const ListEndpointHealthchecksItem = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListEndpointHealthchecksItem>;
+
 export type ListEndpointHealthchecksItemsList = Array<ListEndpointHealthchecksItem>;
+const ListEndpointHealthchecksItemsList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ListEndpointHealthchecksItemsList>;
+
 export type ListEndpointHealthchecksResponse = ListEndpointHealthchecksItemsList;
+const ListEndpointHealthchecksResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListEndpointHealthchecksResponse>;
+
 export type EndpointHealthchecksUpdateRequestCheckType = "icmp";
+const EndpointHealthchecksUpdateRequestCheckType = S.String;
+
 export interface UpdateEndpointHealthcheckRequest {
   /** Identifier */
   accountId: string;
@@ -236,6 +367,11 @@ export interface UpdateEndpointHealthcheckRequest {
   /** Optional name associated with this check */
   name?: string;
 }
+const UpdateEndpointHealthcheckRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<UpdateEndpointHealthcheckRequest>;
+
 export type EndpointHealthchecksUpdateResponseCheckType = "icmp";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateEndpointHealthcheckResponse {
@@ -248,6 +384,9 @@ export interface UpdateEndpointHealthcheckResponse {
   /** Optional name associated with this check */
   name?: string | null;
 }
+const UpdateEndpointHealthcheckResponse =
+  CreateEndpointHealthcheckResponse as any as S.Schema<UpdateEndpointHealthcheckResponse>;
+
 export type CreateEndpointHealthcheckError =
   | InvalidHealthcheckEndpoint
   | Forbidden
@@ -259,8 +398,8 @@ export const createEndpointHealthcheck: API.OperationMethod<
   CreateEndpointHealthcheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateEndpointHealthcheckRequest>,
-  output: __S(1) as any as S.Schema<CreateEndpointHealthcheckResponse>,
+  input: CreateEndpointHealthcheckRequest,
+  output: CreateEndpointHealthcheckResponse,
   errors: [InvalidHealthcheckEndpoint, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -276,8 +415,8 @@ export const createTraceroute: API.PaginatedOperationMethod<
   TraceroutesCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(4) as any as S.Schema<CreateTracerouteRequest>,
-    output: __S(15) as any as S.Schema<CreateTracerouteResponse>,
+    input: CreateTracerouteRequest,
+    output: CreateTracerouteResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -297,8 +436,8 @@ export const deleteEndpointHealthcheck: API.OperationMethod<
   DeleteEndpointHealthcheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<DeleteEndpointHealthcheckRequest>,
-  output: __S(17) as any as S.Schema<DeleteEndpointHealthcheckResponse>,
+  input: DeleteEndpointHealthcheckRequest,
+  output: DeleteEndpointHealthcheckResponse,
   errors: [EndpointHealthcheckNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -315,8 +454,8 @@ export const getEndpointHealthcheck: API.OperationMethod<
   GetEndpointHealthcheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<GetEndpointHealthcheckRequest>,
-  output: __S(1) as any as S.Schema<GetEndpointHealthcheckResponse>,
+  input: GetEndpointHealthcheckRequest,
+  output: GetEndpointHealthcheckResponse,
   errors: [EndpointHealthcheckNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -330,8 +469,8 @@ export const listEndpointHealthchecks: API.OperationMethod<
   ListEndpointHealthchecksError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<ListEndpointHealthchecksRequest>,
-  output: __S(22) as any as S.Schema<ListEndpointHealthchecksResponse>,
+  input: ListEndpointHealthchecksRequest,
+  output: ListEndpointHealthchecksResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -349,8 +488,8 @@ export const updateEndpointHealthcheck: API.OperationMethod<
   UpdateEndpointHealthcheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<UpdateEndpointHealthcheckRequest>,
-  output: __S(1) as any as S.Schema<UpdateEndpointHealthcheckResponse>,
+  input: UpdateEndpointHealthcheckRequest,
+  output: UpdateEndpointHealthcheckResponse,
   errors: [
     EndpointHealthcheckNotFound,
     InvalidHealthcheckEndpoint,
@@ -369,7 +508,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          checkType: S.String.pipe(T.Body("check_type")),
+          checkType: EndpointHealthchecksCreateRequestCheckType.pipe(T.Body("check_type")),
           endpoint: S.String,
           name: S.optional(S.String),
         })
@@ -387,7 +526,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          checkType: S.String.pipe(T.Body("check_type")),
+          checkType: EndpointHealthchecksCreateResponseCheckType.pipe(T.Body("check_type")),
           endpoint: S.String,
           id: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
@@ -401,7 +540,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           maxTtl: S.optional(S.Number.pipe(T.Body("max_ttl"))),
-          packetType: S.optional(S.String.pipe(T.Body("packet_type"))),
+          packetType: S.optional(
+            TraceroutesCreateRequestOptionsPacketType.pipe(T.Body("packet_type")),
+          ),
           packetsPerTtl: S.optional(S.Number.pipe(T.Body("packets_per_ttl"))),
           port: S.optional(S.Number),
           waitTime: S.optional(S.Number.pipe(T.Body("wait_time"))),
@@ -413,9 +554,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          targets: __S(2),
-          colos: S.optional(__S(2)),
-          options: S.optional(__S(3)),
+          targets: TraceroutesCreateRequestTargetsList,
+          colos: S.optional(TraceroutesCreateRequestColosList),
+          options: S.optional(TraceroutesCreateRequestOptions),
         })
           .pipe(
             T.Http({
@@ -442,7 +583,9 @@ function __c0(j: number): any {
         S.Struct({
           asn: S.optional(S.NullOr(S.String)),
           ip: S.optional(S.NullOr(S.String)),
-          labels: S.optional(S.NullOr(__S(6))),
+          labels: S.optional(
+            S.NullOr(TraceroutesCreateResultItemColosItemHopsItemNodesItemLabelsList),
+          ),
           maxRttMs: S.optional(S.NullOr(S.Number).pipe(T.Body("max_rtt_ms"))),
           meanRttMs: S.optional(S.NullOr(S.Number).pipe(T.Body("mean_rtt_ms"))),
           minRttMs: S.optional(S.NullOr(S.Number).pipe(T.Body("min_rtt_ms"))),
@@ -458,11 +601,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(TraceroutesCreateResultItemColosItemHopsItemNodesItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          nodes: S.optional(S.NullOr(__S(8))),
+          nodes: S.optional(S.NullOr(TraceroutesCreateResultItemColosItemHopsItemNodesList)),
           packetsLost: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_lost"))),
           packetsSent: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_sent"))),
           packetsTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_ttl"))),
@@ -471,13 +614,13 @@ function __c1(j: number): any {
         identifier: "TraceroutesCreateResultItemColosItemHopsItem",
       });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(TraceroutesCreateResultItemColosItemHopsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          colo: S.optional(S.NullOr(__S(5))),
-          error: S.optional(S.NullOr(S.String)),
-          hops: S.optional(S.NullOr(__S(10))),
+          colo: S.optional(S.NullOr(TraceroutesCreateResultItemColosItemColo)),
+          error: S.optional(S.NullOr(TraceroutesCreateResultItemColosItemError)),
+          hops: S.optional(S.NullOr(TraceroutesCreateResultItemColosItemHopsList)),
           targetSummary: S.optional(S.NullOr(S.Unknown).pipe(T.Body("target_summary"))),
           tracerouteTimeMs: S.optional(S.NullOr(S.Number).pipe(T.Body("traceroute_time_ms"))),
         }),
@@ -485,22 +628,22 @@ function __c1(j: number): any {
         identifier: "TraceroutesCreateResultItemColosItem",
       });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(TraceroutesCreateResultItemColosItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          colos: S.optional(S.NullOr(__S(12))),
+          colos: S.optional(S.NullOr(TraceroutesCreateResultItemColosList)),
           target: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "TraceroutesCreateResultItem",
       });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(TraceroutesCreateResultItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: __S(14).pipe(T.EnvelopePayload()),
+          result: TraceroutesCreateResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateTracerouteResponse" });
@@ -565,7 +708,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          checkType: S.String.pipe(T.Body("check_type")),
+          checkType: EndpointHealthchecksListResponseCheckType.pipe(T.Body("check_type")),
           endpoint: S.String,
           id: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
@@ -574,10 +717,13 @@ function __c2(j: number): any {
         identifier: "ListEndpointHealthchecksItem",
       });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(ListEndpointHealthchecksItem);
     case 6:
       return S.suspend(() =>
-        __S(21).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        ListEndpointHealthchecksItemsList.pipe(
+          T.EnvelopePayloadRoot(),
+          T.KeyDictionary(KEY_DICTIONARY),
+        ),
       ).annotate({
         identifier: "ListEndpointHealthchecksResponse",
       });
@@ -586,7 +732,7 @@ function __c2(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           id: S.String.pipe(T.Label()),
-          checkType: S.String.pipe(T.Body("check_type")),
+          checkType: EndpointHealthchecksUpdateRequestCheckType.pipe(T.Body("check_type")),
           endpoint: S.String,
           name: S.optional(S.String),
         })
@@ -601,20 +747,5 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdateEndpointHealthcheckRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

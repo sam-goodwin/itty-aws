@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -44,7 +42,17 @@ export interface CreateWarehouseSavedQueryFolderRequest {
   /** Display name for the folder used to organize saved queries in the SQL editor sidebar. */
   name?: string;
 }
+const CreateWarehouseSavedQueryFolderRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateWarehouseSavedQueryFolderRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -58,6 +66,8 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -69,6 +79,8 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<UserBasic>;
+
 /** Mixin for serializers to add user access control fields */
 export interface DataWarehouseSavedQueryFolder {
   id?: string;
@@ -80,18 +92,43 @@ export interface DataWarehouseSavedQueryFolder {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
+const DataWarehouseSavedQueryFolder = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DataWarehouseSavedQueryFolder>;
+
 export interface GetWarehouseSavedQueryFolderRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this data warehouse saved query folder. */
   id: string;
 }
+const GetWarehouseSavedQueryFolderRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetWarehouseSavedQueryFolderRequest>;
+
 export interface ListWarehouseSavedQueryFoldersRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const ListWarehouseSavedQueryFoldersRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListWarehouseSavedQueryFoldersRequest>;
+
 export type ListWarehouseSavedQueryFoldersResponseBodyList = Array<DataWarehouseSavedQueryFolder>;
+const ListWarehouseSavedQueryFoldersResponseBodyList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListWarehouseSavedQueryFoldersResponseBodyList>;
+
 export type ListWarehouseSavedQueryFoldersResponse = ListWarehouseSavedQueryFoldersResponseBodyList;
+const ListWarehouseSavedQueryFoldersResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListWarehouseSavedQueryFoldersResponse>;
+
 export interface UpdateWarehouseSavedQueryFoldersPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -100,13 +137,28 @@ export interface UpdateWarehouseSavedQueryFoldersPartialRequest {
   /** Display name for the folder used to organize saved queries in the SQL editor sidebar. */
   name?: string;
 }
+const UpdateWarehouseSavedQueryFoldersPartialRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<UpdateWarehouseSavedQueryFoldersPartialRequest>;
+
 export interface WarehouseSavedQueryFoldersDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this data warehouse saved query folder. */
   id: string;
 }
+const WarehouseSavedQueryFoldersDestroyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<WarehouseSavedQueryFoldersDestroyRequest>;
+
 export interface WarehouseSavedQueryFoldersDestroyResponse {}
+const WarehouseSavedQueryFoldersDestroyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<WarehouseSavedQueryFoldersDestroyResponse>;
+
 export type CreateWarehouseSavedQueryFolderError =
   | BadRequest
   | Forbidden
@@ -118,8 +170,8 @@ export const createWarehouseSavedQueryFolder: API.OperationMethod<
   CreateWarehouseSavedQueryFolderError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateWarehouseSavedQueryFolderRequest>,
-  output: __S(3) as any as S.Schema<DataWarehouseSavedQueryFolder>,
+  input: CreateWarehouseSavedQueryFolderRequest,
+  output: DataWarehouseSavedQueryFolder,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -132,8 +184,8 @@ export const getWarehouseSavedQueryFolder: API.OperationMethod<
   GetWarehouseSavedQueryFolderError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetWarehouseSavedQueryFolderRequest>,
-  output: __S(3) as any as S.Schema<DataWarehouseSavedQueryFolder>,
+  input: GetWarehouseSavedQueryFolderRequest,
+  output: DataWarehouseSavedQueryFolder,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -146,8 +198,8 @@ export const listWarehouseSavedQueryFolders: API.OperationMethod<
   ListWarehouseSavedQueryFoldersError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<ListWarehouseSavedQueryFoldersRequest>,
-  output: __S(7) as any as S.Schema<ListWarehouseSavedQueryFoldersResponse>,
+  input: ListWarehouseSavedQueryFoldersRequest,
+  output: ListWarehouseSavedQueryFoldersResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -164,8 +216,8 @@ export const updateWarehouseSavedQueryFoldersPartial: API.OperationMethod<
   UpdateWarehouseSavedQueryFoldersPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<UpdateWarehouseSavedQueryFoldersPartialRequest>,
-  output: __S(3) as any as S.Schema<DataWarehouseSavedQueryFolder>,
+  input: UpdateWarehouseSavedQueryFoldersPartialRequest,
+  output: DataWarehouseSavedQueryFolder,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -178,8 +230,8 @@ export const warehouseSavedQueryFoldersDestroy: API.OperationMethod<
   WarehouseSavedQueryFoldersDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<WarehouseSavedQueryFoldersDestroyRequest>,
-  output: __S(10) as any as S.Schema<WarehouseSavedQueryFoldersDestroyResponse>,
+  input: WarehouseSavedQueryFoldersDestroyRequest,
+  output: WarehouseSavedQueryFoldersDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -215,8 +267,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 3:
@@ -225,7 +277,7 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(2))),
+          created_by: S.optional(S.NullOr(UserBasic)),
           view_count: S.optional(S.Number),
           user_access_level: S.optional(S.NullOr(S.String)),
         }),
@@ -262,9 +314,11 @@ function __c0(j: number): any {
         identifier: "ListWarehouseSavedQueryFoldersRequest",
       });
     case 6:
-      return S.Array(__S(3));
+      return S.Array(DataWarehouseSavedQueryFolder);
     case 7:
-      return S.suspend(() => __S(6).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListWarehouseSavedQueryFoldersResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListWarehouseSavedQueryFoldersResponse",
       });
   }
@@ -306,18 +360,5 @@ function __c1(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "WarehouseSavedQueryFoldersDestroyResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

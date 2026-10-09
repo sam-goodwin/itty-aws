@@ -9,8 +9,6 @@ import { paginateCursor } from "../pagination.ts";
 import { InngestProtocol, type InngestOpError, type InngestOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { InngestOpError, InngestOpContext };
 
@@ -62,28 +60,42 @@ export class UnprocessableEntity
 export interface CancelV2RunRequest {
   runId: string;
 }
+const CancelV2RunRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CancelV2RunRequest>;
+
 export interface V2CancelRunData {
   /** Cancelled run ID */
   runId?: string;
 }
+const V2CancelRunData = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<V2CancelRunData>;
+
 export interface V2TimeRange {
   from?: string;
   until?: string;
 }
+const V2TimeRange = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<V2TimeRange>;
+
 export interface V2ResponseMetadata {
   cachedUntil?: string;
   fetchedAt?: string;
   timeRange?: V2TimeRange;
 }
+const V2ResponseMetadata = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<V2ResponseMetadata>;
+
 export interface V2CancelRunResponse {
   data?: V2CancelRunData;
   metadata?: V2ResponseMetadata;
 }
+const V2CancelRunResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<V2CancelRunResponse>;
+
 export interface CreateV2EnvRequest {
   id?: string;
   name?: string;
 }
+const CreateV2EnvRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateV2EnvRequest>;
+
 export type V2EnvType = "PRODUCTION" | "TEST" | "BRANCH";
+const V2EnvType = S.String;
+
 export interface V2Env {
   createdAt?: string;
   id?: string;
@@ -91,14 +103,23 @@ export interface V2Env {
   name?: string;
   type?: V2EnvType;
 }
+const V2Env = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<V2Env>;
+
 export interface V2CreateEnvResponse {
   data?: V2Env;
   metadata?: V2ResponseMetadata;
 }
+const V2CreateEnvResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<V2CreateEnvResponse>;
+
 export interface CreateV2PartnerAccountRequest {
   email?: string;
   name?: string;
 }
+const CreateV2PartnerAccountRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateV2PartnerAccountRequest>;
+
 export interface V2CreateAccountData {
   apiKey?: string | Redacted.Redacted<string>;
   createdAt?: string;
@@ -107,21 +128,43 @@ export interface V2CreateAccountData {
   name?: string;
   updatedAt?: string;
 }
+const V2CreateAccountData = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<V2CreateAccountData>;
+
 export interface V2CreateAccountResponse {
   data?: V2CreateAccountData;
   metadata?: V2ResponseMetadata;
 }
+const V2CreateAccountResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<V2CreateAccountResponse>;
+
 export type CreateV2SandboxRequestEnvironmentMap = { [key: string]: string | undefined };
+const CreateV2SandboxRequestEnvironmentMap = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateV2SandboxRequestEnvironmentMap>;
+
 export interface CreateV2SandboxRequest {
   environment?: CreateV2SandboxRequestEnvironmentMap;
   memoryMb?: number;
   name?: string;
   vcpu?: number;
 }
+const CreateV2SandboxRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateV2SandboxRequest>;
+
 export interface V2SandboxResourceSpec {
   memoryMb?: number;
   vcpu?: number;
 }
+const V2SandboxResourceSpec = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<V2SandboxResourceSpec>;
+
 export type V2SandboxStatus =
   | "UNSPECIFIED"
   | "PENDING"
@@ -131,6 +174,8 @@ export type V2SandboxStatus =
   | "TERMINATING"
   | "TERMINATED"
   | "FAILED";
+const V2SandboxStatus = S.String;
+
 export interface V2Sandbox {
   createdAt?: string;
   endedAt?: string;
@@ -143,19 +188,33 @@ export interface V2Sandbox {
   status?: V2SandboxStatus;
   vpcId?: string;
 }
+const V2Sandbox = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<V2Sandbox>;
+
 export interface V2SandboxResponseMetadata {
   fetchedAt?: string;
 }
+const V2SandboxResponseMetadata = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<V2SandboxResponseMetadata>;
+
 export interface V2CreateSandboxResponse {
   data?: V2Sandbox;
   metadata?: V2SandboxResponseMetadata;
 }
+const V2CreateSandboxResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<V2CreateSandboxResponse>;
+
 export interface V2ScoreExperiment {
   /** Experiment ID */
   id?: string;
   /** Experiment variant */
   variant?: string;
 }
+const V2ScoreExperiment = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<V2ScoreExperiment>;
+
 export interface V2CreateScoreInput {
   experiment?: V2ScoreExperiment;
   /** Score name; must be at most 128 UTF-8 bytes */
@@ -165,13 +224,22 @@ export interface V2CreateScoreInput {
   /** Score value; must be a finite number or a boolean */
   value?: unknown;
 }
+const V2CreateScoreInput = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<V2CreateScoreInput>;
+
 /** Scores to record for the run. The REST request body is this array. Writes are applied in order and are not atomic; if a later score fails, earlier scores may already be recorded. Score writes are best-effort: run and step targets are not validated before writing, and scores for targets that do not exist may not surface in queries. Maximum 100 scores. */
 export type CreateV2ScoreRequestBodyList = Array<V2CreateScoreInput>;
+const CreateV2ScoreRequestBodyList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateV2ScoreRequestBodyList>;
+
 export interface CreateV2ScoreRequest {
   /** Run ID (ULID) of the function run to score */
   runId: string;
   body: CreateV2ScoreRequestBodyList;
 }
+const CreateV2ScoreRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CreateV2ScoreRequest>;
+
 export interface V2Score {
   experiment?: V2ScoreExperiment;
   /** Score name */
@@ -183,19 +251,40 @@ export interface V2Score {
   /** Score value */
   value?: unknown;
 }
+const V2Score = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<V2Score>;
+
 export type V2CreateScoreResponseDataList = Array<V2Score>;
+const V2CreateScoreResponseDataList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<V2CreateScoreResponseDataList>;
+
 export interface V2CreateScoreResponse {
   data?: V2CreateScoreResponseDataList;
   metadata?: V2ResponseMetadata;
 }
+const V2CreateScoreResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<V2CreateScoreResponse>;
+
 /** Allow or deny specific events, e.g. 'orders/payment.created', or 'orders/*' for all orders. Only events in this list will be either allowed or denied. */
 export type V2EventFilterEventsList = Array<string>;
+const V2EventFilterEventsList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<V2EventFilterEventsList>;
+
 export type V2FilterType = "ALLOW" | "DENY";
+const V2FilterType = S.String;
+
 export interface V2EventFilter {
   /** Allow or deny specific events, e.g. 'orders/payment.created', or 'orders/*' for all orders. Only events in this list will be either allowed or denied. */
   events?: V2EventFilterEventsList;
   filter?: V2FilterType | (string & {});
 }
+const V2EventFilter = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<V2EventFilter>;
+
 export interface CreateV2WebhookRequest {
   eventFilter?: V2EventFilter;
   /** Descriptive name for the webhook */
@@ -205,6 +294,11 @@ export interface CreateV2WebhookRequest {
   /** The inline JS transform function for incoming events */
   transform?: string;
 }
+const CreateV2WebhookRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateV2WebhookRequest>;
+
 export interface V2Webhook {
   createdAt?: string;
   environment?: string;
@@ -216,12 +310,25 @@ export interface V2Webhook {
   updatedAt?: string;
   url?: string;
 }
+const V2Webhook = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<V2Webhook>;
+
 export interface V2CreateWebhookResponse {
   data?: V2Webhook;
   metadata?: V2ResponseMetadata;
 }
+const V2CreateWebhookResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<V2CreateWebhookResponse>;
+
 export type ExecV2SandboxRequestCommandList = Array<string>;
+const ExecV2SandboxRequestCommandList =
+  V2EventFilterEventsList as any as S.Schema<ExecV2SandboxRequestCommandList>;
+
 export type ExecV2SandboxRequestEnvironmentMap = { [key: string]: string | undefined };
+const ExecV2SandboxRequestEnvironmentMap =
+  CreateV2SandboxRequestEnvironmentMap as any as S.Schema<ExecV2SandboxRequestEnvironmentMap>;
+
 export interface ExecV2SandboxRequest {
   sandboxId: string;
   command?: ExecV2SandboxRequestCommandList;
@@ -229,17 +336,31 @@ export interface ExecV2SandboxRequest {
   environment?: ExecV2SandboxRequestEnvironmentMap;
   timeout?: string;
 }
+const ExecV2SandboxRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ExecV2SandboxRequest>;
+
 export interface V2ExecSandboxData {
   encoding?: string;
   exitCode?: number;
   stderr?: string;
   stdout?: string;
 }
+const V2ExecSandboxData = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<V2ExecSandboxData>;
+
 export interface V2ExecSandboxResponse {
   data?: V2ExecSandboxData;
   metadata?: V2SandboxResponseMetadata;
 }
+const V2ExecSandboxResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<V2ExecSandboxResponse>;
+
 export interface FetchV2AccountRequest {}
+const FetchV2AccountRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<FetchV2AccountRequest>;
+
 export interface V2Account {
   createdAt?: string;
   email?: string;
@@ -247,33 +368,62 @@ export interface V2Account {
   name?: string;
   updatedAt?: string;
 }
+const V2Account = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<V2Account>;
+
 export interface V2FetchAccountResponse {
   data?: V2Account;
   metadata?: V2ResponseMetadata;
 }
+const V2FetchAccountResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<V2FetchAccountResponse>;
+
 export interface FetchV2AccountEnvsRequest {
   /** Pagination cursor from previous response */
   cursor?: string;
   /** Number of environments to return per page (min: 1, max: 250) */
   limit?: number;
 }
+const FetchV2AccountEnvsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<FetchV2AccountEnvsRequest>;
+
 export type V2FetchAccountEnvsResponseDataList = Array<V2Env>;
+const V2FetchAccountEnvsResponseDataList = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<V2FetchAccountEnvsResponseDataList>;
+
 export interface V2Page {
   cursor?: string;
   hasMore?: boolean;
   limit?: number;
 }
+const V2Page = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<V2Page>;
+
 export interface V2FetchAccountEnvsResponse {
   data: V2FetchAccountEnvsResponseDataList;
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
+const V2FetchAccountEnvsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<V2FetchAccountEnvsResponse>;
+
 export interface FetchV2AccountEventKeysRequest {
   /** Pagination cursor from previous response */
   cursor?: string;
   /** Number of event keys to return per page (min: 1, max: 100) */
   limit?: number;
 }
+const FetchV2AccountEventKeysRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<FetchV2AccountEventKeysRequest>;
+
 export interface V2EventKey {
   createdAt?: string;
   environment?: string;
@@ -281,18 +431,35 @@ export interface V2EventKey {
   key?: string;
   name?: string;
 }
+const V2EventKey = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<V2EventKey>;
+
 export type V2FetchAccountEventKeysResponseDataList = Array<V2EventKey>;
+const V2FetchAccountEventKeysResponseDataList = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<V2FetchAccountEventKeysResponseDataList>;
+
 export interface V2FetchAccountEventKeysResponse {
   data: V2FetchAccountEventKeysResponseDataList;
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
+const V2FetchAccountEventKeysResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<V2FetchAccountEventKeysResponse>;
+
 export interface FetchV2AccountSigningKeysRequest {
   /** Pagination cursor from previous response */
   cursor?: string;
   /** Number of signing keys to return per page (min: 1, max: 100) */
   limit?: number;
 }
+const FetchV2AccountSigningKeysRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<FetchV2AccountSigningKeysRequest>;
+
 export type V2SigningKey = V2EventKey;
 export type V2FetchAccountSigningKeysResponseDataList = Array<V2EventKey>;
 export interface V2FetchAccountSigningKeysResponse {
@@ -300,24 +467,46 @@ export interface V2FetchAccountSigningKeysResponse {
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
+const V2FetchAccountSigningKeysResponse =
+  V2FetchAccountEventKeysResponse as any as S.Schema<V2FetchAccountSigningKeysResponse>;
+
 export interface FetchV2PartnerAccountsRequest {
   /** Pagination cursor from previous response */
   cursor?: string;
   /** Number of accounts to return per page (min: 1, max: 1000) */
   limit?: number;
 }
+const FetchV2PartnerAccountsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<FetchV2PartnerAccountsRequest>;
+
 export type V2FetchAccountsResponseDataList = Array<V2Account>;
+const V2FetchAccountsResponseDataList = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<V2FetchAccountsResponseDataList>;
+
 export interface V2FetchAccountsResponse {
   data: V2FetchAccountsResponseDataList;
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
+const V2FetchAccountsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<V2FetchAccountsResponse>;
+
 export interface GetV2AppRequest {
   /** The user-defined app ID */
   appId: string;
 }
+const GetV2AppRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<GetV2AppRequest>;
+
 /** Status of the latest sync. `success` and `duplicate` are successful terminal states. `duplicate` means the sync payload matched the previous successful sync, so no function configuration changes were applied. `error` is a failed terminal state, and `pending` means the sync is still in progress. */
 export type V2AppSyncStatus = "pending" | "success" | "error" | "duplicate";
+const V2AppSyncStatus = S.String;
+
 export interface V2AppSync {
   /** App version reported by the latest sync, if set */
   appVersion?: string;
@@ -336,7 +525,11 @@ export interface V2AppSync {
   /** URL of the Inngest endpoint in the app, if synced via URL */
   url?: string;
 }
+const V2AppSync = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<V2AppSync>;
+
 export type V2AppMethod = "UNSPECIFIED" | "SERVE" | "CONNECT" | "API";
+const V2AppMethod = S.String;
+
 export interface V2App {
   /** User-defined app version, if set */
   appVersion?: string;
@@ -355,10 +548,14 @@ export interface V2App {
   /** App name */
   name?: string;
 }
+const V2App = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<V2App>;
+
 export interface V2GetAppResponse {
   data?: V2App;
   metadata?: V2ResponseMetadata;
 }
+const V2GetAppResponse = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<V2GetAppResponse>;
+
 export interface GetV2AppsRequest {
   /** Pagination cursor from previous response */
   cursor?: string;
@@ -367,12 +564,21 @@ export interface GetV2AppsRequest {
   /** Whether to return archived apps instead of active apps */
   archived?: boolean;
 }
+const GetV2AppsRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<GetV2AppsRequest>;
+
 export type V2GetAppsResponseDataList = Array<V2App>;
+const V2GetAppsResponseDataList = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<V2GetAppsResponseDataList>;
+
 export interface V2GetAppsResponse {
   data: V2GetAppsResponseDataList;
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
+const V2GetAppsResponse = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<V2GetAppsResponse>;
+
 export interface GetV2EventRunsRequest {
   eventId: string;
   includeOutput?: boolean;
@@ -381,14 +587,23 @@ export interface GetV2EventRunsRequest {
   /** Number of runs to return per page (min: 1, max: 40) */
   limit?: number;
 }
+const GetV2EventRunsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<GetV2EventRunsRequest>;
+
 export interface V2AppRef {
   id?: string;
 }
+const V2AppRef = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<V2AppRef>;
+
 export interface V2FunctionRef {
   app?: V2AppRef;
   id?: string;
   name?: string;
 }
+const V2FunctionRef = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<V2FunctionRef>;
+
 export type V2FunctionRunStatus =
   | "UNSPECIFIED"
   | "QUEUED"
@@ -396,7 +611,12 @@ export type V2FunctionRunStatus =
   | "COMPLETED"
   | "FAILED"
   | "CANCELLED";
+const V2FunctionRunStatus = S.String;
+
 export type V2RunTriggerEventIdsList = Array<string>;
+const V2RunTriggerEventIdsList =
+  V2EventFilterEventsList as any as S.Schema<V2RunTriggerEventIdsList>;
+
 export interface V2RunTrigger {
   batchId?: string;
   cronSchedule?: string;
@@ -404,6 +624,8 @@ export interface V2RunTrigger {
   eventName?: string;
   isBatch?: boolean;
 }
+const V2RunTrigger = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<V2RunTrigger>;
+
 export interface V2FunctionRun {
   app?: V2AppRef;
   durationMs?: string;
@@ -416,12 +638,24 @@ export interface V2FunctionRun {
   status?: V2FunctionRunStatus;
   trigger?: V2RunTrigger;
 }
+const V2FunctionRun = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<V2FunctionRun>;
+
 export type V2GetEventRunsResponseDataList = Array<V2FunctionRun>;
+const V2GetEventRunsResponseDataList = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<V2GetEventRunsResponseDataList>;
+
 export interface V2GetEventRunsResponse {
   data: V2GetEventRunsResponseDataList;
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
+const V2GetEventRunsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<V2GetEventRunsResponse>;
+
 export interface GetV2ExperimentRequest {
   appId: string;
   functionId: string;
@@ -431,24 +665,59 @@ export interface GetV2ExperimentRequest {
   from?: string;
   until?: string;
 }
+const GetV2ExperimentRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<GetV2ExperimentRequest>;
+
 export interface V2ExperimentVariantWeight {
   variantName?: string;
   weight?: number;
 }
+const V2ExperimentVariantWeight = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<V2ExperimentVariantWeight>;
+
 export type V2ExperimentDetailVariantWeightsList = Array<V2ExperimentVariantWeight>;
+const V2ExperimentDetailVariantWeightsList = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<V2ExperimentDetailVariantWeightsList>;
+
 export interface V2ExperimentVariantMetric {
   avg?: number;
   key?: string;
   max?: number;
   min?: number;
 }
+const V2ExperimentVariantMetric = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<V2ExperimentVariantMetric>;
+
 export type V2ExperimentVariantMetricsMetricsList = Array<V2ExperimentVariantMetric>;
+const V2ExperimentVariantMetricsMetricsList = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<V2ExperimentVariantMetricsMetricsList>;
+
 export interface V2ExperimentVariantMetrics {
   metrics?: V2ExperimentVariantMetricsMetricsList;
   runCount?: number;
   variantName?: string;
 }
+const V2ExperimentVariantMetrics = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<V2ExperimentVariantMetrics>;
+
 export type V2ExperimentDetailVariantsList = Array<V2ExperimentVariantMetrics>;
+const V2ExperimentDetailVariantsList = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<V2ExperimentDetailVariantsList>;
+
 export interface V2ExperimentDetail {
   firstSeen?: string;
   id?: string;
@@ -457,61 +726,129 @@ export interface V2ExperimentDetail {
   variantWeights?: V2ExperimentDetailVariantWeightsList;
   variants?: V2ExperimentDetailVariantsList;
 }
+const V2ExperimentDetail = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<V2ExperimentDetail>;
+
 export interface V2GetExperimentResponse {
   data?: V2ExperimentDetail;
   metadata?: V2ResponseMetadata;
 }
+const V2GetExperimentResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<V2GetExperimentResponse>;
+
 export interface GetV2FunctionRequest {
   appId: string;
   functionId: string;
 }
+const GetV2FunctionRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<GetV2FunctionRequest>;
+
 export type V2FunctionApp = V2AppRef;
 export interface V2FunctionCancellationConfiguration {
   condition?: string;
   event?: string;
   timeout?: string;
 }
+const V2FunctionCancellationConfiguration = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<V2FunctionCancellationConfiguration>;
+
 export type V2FunctionConfigurationCancellationsList = Array<V2FunctionCancellationConfiguration>;
+const V2FunctionConfigurationCancellationsList = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<V2FunctionConfigurationCancellationsList>;
+
 export interface V2FunctionConcurrencyLimitConfiguration {
   isPlanLimit?: boolean;
   value?: number;
 }
+const V2FunctionConcurrencyLimitConfiguration = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<V2FunctionConcurrencyLimitConfiguration>;
+
 export type V2FunctionConcurrencyScope = "UNSPECIFIED" | "ACCOUNT" | "ENVIRONMENT" | "FUNCTION";
+const V2FunctionConcurrencyScope = S.String;
+
 export interface V2FunctionConcurrencyConfiguration {
   key?: string;
   limit?: V2FunctionConcurrencyLimitConfiguration;
   scope?: V2FunctionConcurrencyScope;
 }
+const V2FunctionConcurrencyConfiguration = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<V2FunctionConcurrencyConfiguration>;
+
 export type V2FunctionConfigurationConcurrencyList = Array<V2FunctionConcurrencyConfiguration>;
+const V2FunctionConfigurationConcurrencyList = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<V2FunctionConfigurationConcurrencyList>;
+
 export interface V2FunctionDebounceConfiguration {
   key?: string;
   period?: string;
 }
+const V2FunctionDebounceConfiguration = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<V2FunctionDebounceConfiguration>;
+
 export interface V2FunctionEventsBatchConfiguration {
   key?: string;
   maxSize?: number;
   timeout?: string;
 }
+const V2FunctionEventsBatchConfiguration = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<V2FunctionEventsBatchConfiguration>;
+
 export interface V2FunctionRateLimitConfiguration {
   key?: string;
   limit?: number;
   period?: string;
 }
+const V2FunctionRateLimitConfiguration = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<V2FunctionRateLimitConfiguration>;
+
 export interface V2FunctionRetryConfiguration {
   isDefault?: boolean;
   value?: number;
 }
+const V2FunctionRetryConfiguration = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<V2FunctionRetryConfiguration>;
+
 export type V2FunctionSingletonMode = "UNSPECIFIED" | "SKIP" | "CANCEL";
+const V2FunctionSingletonMode = S.String;
+
 export interface V2FunctionSingletonConfiguration {
   key?: string;
   mode?: V2FunctionSingletonMode;
 }
+const V2FunctionSingletonConfiguration = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<V2FunctionSingletonConfiguration>;
+
 export interface V2FunctionThrottleConfiguration {
   burst?: number;
   key?: string;
   limit?: number;
   period?: string;
 }
+const V2FunctionThrottleConfiguration = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<V2FunctionThrottleConfiguration>;
+
 export interface V2FunctionConfiguration {
   cancellations?: V2FunctionConfigurationCancellationsList;
   concurrency?: V2FunctionConfigurationConcurrencyList;
@@ -523,17 +860,36 @@ export interface V2FunctionConfiguration {
   singleton?: V2FunctionSingletonConfiguration;
   throttle?: V2FunctionThrottleConfiguration;
 }
+const V2FunctionConfiguration = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<V2FunctionConfiguration>;
+
 export interface V2FunctionFailureHandler {
   name?: string;
   slug?: string;
 }
+const V2FunctionFailureHandler = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<V2FunctionFailureHandler>;
+
 export type V2FunctionTriggerType = "UNSPECIFIED" | "EVENT" | "CRON";
+const V2FunctionTriggerType = S.String;
+
 export interface V2FunctionTrigger {
   if?: string;
   type?: V2FunctionTriggerType;
   value?: string;
 }
+const V2FunctionTrigger = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<V2FunctionTrigger>;
+
 export type V2FunctionTriggersList = Array<V2FunctionTrigger>;
+const V2FunctionTriggersList = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<V2FunctionTriggersList>;
+
 export interface V2Function {
   app?: V2AppRef;
   configuration?: V2FunctionConfiguration;
@@ -545,18 +901,35 @@ export interface V2Function {
   slug?: string;
   triggers?: V2FunctionTriggersList;
 }
+const V2Function = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<V2Function>;
+
 export interface V2GetFunctionResponse {
   data?: V2Function;
   metadata?: V2ResponseMetadata;
 }
+const V2GetFunctionResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<V2GetFunctionResponse>;
+
 export interface GetV2FunctionRunRequest {
   runId: string;
   includeOutput?: boolean;
 }
+const GetV2FunctionRunRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GetV2FunctionRunRequest>;
+
 export interface V2GetFunctionRunResponse {
   data?: V2FunctionRun;
   metadata?: V2ResponseMetadata;
 }
+const V2GetFunctionRunResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<V2GetFunctionRunResponse>;
+
 export interface GetV2FunctionsRequest {
   appId: string;
   /** Pagination cursor from previous response */
@@ -564,25 +937,60 @@ export interface GetV2FunctionsRequest {
   /** Number of functions to return per page (min: 1, max: 100) */
   limit?: number;
 }
+const GetV2FunctionsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<GetV2FunctionsRequest>;
+
 export type V2GetFunctionsResponseDataList = Array<V2Function>;
+const V2GetFunctionsResponseDataList = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<V2GetFunctionsResponseDataList>;
+
 export interface V2GetFunctionsResponse {
   data: V2GetFunctionsResponseDataList;
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
+const V2GetFunctionsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<V2GetFunctionsResponse>;
+
 export interface GetV2FunctionTraceRequest {
   runId: string;
   includeOutput?: boolean;
 }
+const GetV2FunctionTraceRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GetV2FunctionTraceRequest>;
+
 export type V2TraceSpanChildrenList = Array<V2TraceSpan>;
+const V2TraceSpanChildrenList = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<V2TraceSpanChildrenList>;
+
 export type V2TraceSpanMetadataValuesMap = { [key: string]: string | undefined };
+const V2TraceSpanMetadataValuesMap =
+  CreateV2SandboxRequestEnvironmentMap as any as S.Schema<V2TraceSpanMetadataValuesMap>;
+
 export interface V2TraceSpanMetadata {
   kind?: string;
   scope?: string;
   updatedAt?: string;
   values?: V2TraceSpanMetadataValuesMap;
 }
+const V2TraceSpanMetadata = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<V2TraceSpanMetadata>;
+
 export type V2TraceSpanMetadataList = Array<V2TraceSpanMetadata>;
+const V2TraceSpanMetadataList = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<V2TraceSpanMetadataList>;
+
 export type V2TraceSpanStatus =
   | "UNKNOWN"
   | "RUNNING"
@@ -591,6 +999,8 @@ export type V2TraceSpanStatus =
   | "WAITING"
   | "CANCELLED"
   | "SKIPPED";
+const V2TraceSpanStatus = S.String;
+
 export type V2TraceStepOp =
   | "UNSPECIFIED"
   | "RUN"
@@ -600,6 +1010,8 @@ export type V2TraceStepOp =
   | "SEND_EVENT"
   | "AI_GATEWAY"
   | "WAIT_FOR_SIGNAL";
+const V2TraceStepOp = S.String;
+
 export interface V2TraceSpan {
   children?: V2TraceSpanChildrenList;
   durationMs?: string;
@@ -615,26 +1027,47 @@ export interface V2TraceSpan {
   stepId?: string;
   stepOp?: V2TraceStepOp;
 }
+const V2TraceSpan = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<V2TraceSpan>;
+
 export interface V2FunctionTrace {
   rootSpan?: V2TraceSpan;
   runId?: string;
 }
+const V2FunctionTrace = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<V2FunctionTrace>;
+
 export interface V2GetFunctionTraceResponse {
   data?: V2FunctionTrace;
   metadata?: V2ResponseMetadata;
 }
+const V2GetFunctionTraceResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<V2GetFunctionTraceResponse>;
+
 export interface GetV2SandboxRequest {
   sandboxId: string;
 }
+const GetV2SandboxRequest = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<GetV2SandboxRequest>;
+
 export interface V2GetSandboxResponse {
   data?: V2Sandbox;
   metadata?: V2SandboxResponseMetadata;
 }
+const V2GetSandboxResponse = V2CreateSandboxResponse as any as S.Schema<V2GetSandboxResponse>;
+
 export interface GetV2SandboxProcessRequest {
   sandboxId: string;
   processId: string;
 }
+const GetV2SandboxProcessRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GetV2SandboxProcessRequest>;
+
 export type V2SandboxProcessCommandList = Array<string>;
+const V2SandboxProcessCommandList =
+  V2EventFilterEventsList as any as S.Schema<V2SandboxProcessCommandList>;
+
 export type V2SandboxProcessState =
   | "UNSPECIFIED"
   | "STARTING"
@@ -643,6 +1076,8 @@ export type V2SandboxProcessState =
   | "KILLED"
   | "FAILED"
   | "LOST";
+const V2SandboxProcessState = S.String;
+
 export interface V2SandboxProcess {
   command?: V2SandboxProcessCommandList;
   endedAt?: string;
@@ -653,30 +1088,61 @@ export interface V2SandboxProcess {
   state?: V2SandboxProcessState;
   terminationSignal?: number;
 }
+const V2SandboxProcess = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<V2SandboxProcess>;
+
 export interface V2GetSandboxProcessResponse {
   data?: V2SandboxProcess;
   metadata?: V2SandboxResponseMetadata;
 }
+const V2GetSandboxProcessResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<V2GetSandboxProcessResponse>;
+
 export interface GetV2SandboxProcessOutputRequest {
   sandboxId: string;
   processId: string;
   tailBytes?: number;
 }
+const GetV2SandboxProcessOutputRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<GetV2SandboxProcessOutputRequest>;
+
 export type V2SandboxLogStream = "UNSPECIFIED" | "STDOUT" | "STDERR";
+const V2SandboxLogStream = S.String;
+
 export interface V2SandboxLogChunk {
   at?: string;
   data?: string;
   encoding?: string;
   stream?: V2SandboxLogStream;
 }
+const V2SandboxLogChunk = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<V2SandboxLogChunk>;
+
 export type V2GetSandboxProcessOutputDataChunksList = Array<V2SandboxLogChunk>;
+const V2GetSandboxProcessOutputDataChunksList = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<V2GetSandboxProcessOutputDataChunksList>;
+
 export interface V2GetSandboxProcessOutputData {
   chunks?: V2GetSandboxProcessOutputDataChunksList;
 }
+const V2GetSandboxProcessOutputData = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<V2GetSandboxProcessOutputData>;
+
 export interface V2GetSandboxProcessOutputResponse {
   data?: V2GetSandboxProcessOutputData;
   metadata?: V2SandboxResponseMetadata;
 }
+const V2GetSandboxProcessOutputResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<V2GetSandboxProcessOutputResponse>;
+
 export interface InvokeV2FunctionRequest {
   /** The ID of the app containing the function */
   appId: string;
@@ -687,6 +1153,11 @@ export interface InvokeV2FunctionRequest {
   /** Optional idempotency key to handle duplicate requests within a given idempotency period. */
   idempotencyKey?: string;
 }
+const InvokeV2FunctionRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<InvokeV2FunctionRequest>;
+
 export interface V2InvokeFunctionData {
   /** Timestamp when the function execution completed (if finished) */
   completedAt?: string;
@@ -701,10 +1172,20 @@ export interface V2InvokeFunctionData {
   /** Timestamp when the function execution started (if started) */
   startedAt?: string;
 }
+const V2InvokeFunctionData = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<V2InvokeFunctionData>;
+
 export interface V2InvokeFunctionResponse {
   data?: V2InvokeFunctionData;
   metadata?: V2ResponseMetadata;
 }
+const V2InvokeFunctionResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<V2InvokeFunctionResponse>;
+
 export interface ListV2ExperimentsRequest {
   /** Pagination cursor from previous response */
   cursor?: string;
@@ -715,7 +1196,15 @@ export interface ListV2ExperimentsRequest {
   from?: string;
   until?: string;
 }
+const ListV2ExperimentsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<ListV2ExperimentsRequest>;
+
 export type V2ExperimentVariantsList = Array<string>;
+const V2ExperimentVariantsList =
+  V2EventFilterEventsList as any as S.Schema<V2ExperimentVariantsList>;
+
 export interface V2Experiment {
   firstSeen?: string;
   function?: V2FunctionRef;
@@ -726,12 +1215,24 @@ export interface V2Experiment {
   variantCount?: number;
   variants?: V2ExperimentVariantsList;
 }
+const V2Experiment = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<V2Experiment>;
+
 export type V2ListExperimentsResponseDataList = Array<V2Experiment>;
+const V2ListExperimentsResponseDataList = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<V2ListExperimentsResponseDataList>;
+
 export interface V2ListExperimentsResponse {
   data: V2ListExperimentsResponseDataList;
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
+const V2ListExperimentsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<V2ListExperimentsResponse>;
+
 export interface ListV2Experiments2Request {
   appId: string;
   functionId: string;
@@ -742,7 +1243,15 @@ export interface ListV2Experiments2Request {
   from?: string;
   until?: string;
 }
+const ListV2Experiments2Request = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<ListV2Experiments2Request>;
+
 export type ListV2FunctionRunsRequestStatusList = Array<string>;
+const ListV2FunctionRunsRequestStatusList =
+  V2EventFilterEventsList as any as S.Schema<ListV2FunctionRunsRequestStatusList>;
+
 export interface ListV2FunctionRunsRequest {
   appId: string;
   functionId: string;
@@ -764,33 +1273,71 @@ export interface ListV2FunctionRunsRequest {
   /** Sort direction. Accepts ASC or DESC. */
   order?: string;
 }
+const ListV2FunctionRunsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ListV2FunctionRunsRequest>;
+
 export type V2ListFunctionRunsResponseDataList = Array<V2FunctionRun>;
+const V2ListFunctionRunsResponseDataList =
+  V2GetEventRunsResponseDataList as any as S.Schema<V2ListFunctionRunsResponseDataList>;
+
 export interface V2ListFunctionRunsResponse {
   data: V2ListFunctionRunsResponseDataList;
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
+const V2ListFunctionRunsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<V2ListFunctionRunsResponse>;
+
 export interface ListV2InsightsEventSchemasRequest {
   /** Pagination cursor from previous response */
   cursor?: string;
   /** Number of event schemas to return per page (min: 1, max: 100) */
   limit?: number;
 }
+const ListV2InsightsEventSchemasRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ListV2InsightsEventSchemasRequest>;
+
 export interface V2InsightsEventSchema {
   /** Event type name */
   name?: string;
   /** JSON Schema describing the shape of this event's data, represented as a nested JSON object */
   schema?: unknown;
 }
+const V2InsightsEventSchema = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<V2InsightsEventSchema>;
+
 /** Paginated list of event type schemas */
 export type V2ListInsightsEventSchemasResponseDataList = Array<V2InsightsEventSchema>;
+const V2ListInsightsEventSchemasResponseDataList = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<V2ListInsightsEventSchemasResponseDataList>;
+
 export interface V2ListInsightsEventSchemasResponse {
   /** Paginated list of event type schemas */
   data: V2ListInsightsEventSchemasResponseDataList;
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
+const V2ListInsightsEventSchemasResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<V2ListInsightsEventSchemasResponse>;
+
 export interface ListV2InsightsTablesRequest {}
+const ListV2InsightsTablesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ListV2InsightsTablesRequest>;
+
 export interface V2InsightsTableColumn {
   /** Human-readable description of the column and the data it contains */
   description?: string;
@@ -799,8 +1346,18 @@ export interface V2InsightsTableColumn {
   /** Data type of the column (e.g., 'String', 'Int64', 'Array(String)', etc.) */
   type?: string;
 }
+const V2InsightsTableColumn = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<V2InsightsTableColumn>;
+
 /** Columns available in this table */
 export type V2InsightsTableColumnsList = Array<V2InsightsTableColumn>;
+const V2InsightsTableColumnsList = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<V2InsightsTableColumnsList>;
+
 export interface V2InsightsTable {
   /** Columns available in this table */
   columns?: V2InsightsTableColumnsList;
@@ -809,16 +1366,37 @@ export interface V2InsightsTable {
   /** Name of the table, used when writing queries */
   name?: string;
 }
+const V2InsightsTable = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<V2InsightsTable>;
+
 /** List of available tables that can be queried via the Insights query endpoint */
 export type V2ListInsightsTablesResponseDataList = Array<V2InsightsTable>;
+const V2ListInsightsTablesResponseDataList = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<V2ListInsightsTablesResponseDataList>;
+
 export interface V2ListInsightsTablesResponse {
   /** List of available tables that can be queried via the Insights query endpoint */
   data?: V2ListInsightsTablesResponseDataList;
   metadata?: V2ResponseMetadata;
 }
+const V2ListInsightsTablesResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<V2ListInsightsTablesResponse>;
+
 export type ListV2RunsRequestStatusList = Array<string>;
+const ListV2RunsRequestStatusList =
+  V2EventFilterEventsList as any as S.Schema<ListV2RunsRequestStatusList>;
+
 export type ListV2RunsRequestAppIdList = Array<string>;
+const ListV2RunsRequestAppIdList =
+  V2EventFilterEventsList as any as S.Schema<ListV2RunsRequestAppIdList>;
+
 export type ListV2RunsRequestFunctionIdList = Array<string>;
+const ListV2RunsRequestFunctionIdList =
+  V2EventFilterEventsList as any as S.Schema<ListV2RunsRequestFunctionIdList>;
+
 export interface ListV2RunsRequest {
   includeOutput?: boolean;
   /** Pagination cursor from previous response */
@@ -842,34 +1420,68 @@ export interface ListV2RunsRequest {
   /** Sort direction. Accepts ASC or DESC. */
   order?: string;
 }
+const ListV2RunsRequest = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<ListV2RunsRequest>;
+
 export type V2ListRunsResponseDataList = Array<V2FunctionRun>;
 export interface V2ListRunsResponse {
   data: V2ListRunsResponseDataList;
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
+const V2ListRunsResponse = V2GetEventRunsResponse as any as S.Schema<V2ListRunsResponse>;
+
 export interface ListV2SandboxesRequest {
   cursor?: string;
   limit?: number;
 }
+const ListV2SandboxesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ListV2SandboxesRequest>;
+
 export type V2ListSandboxesResponseDataList = Array<V2Sandbox>;
+const V2ListSandboxesResponseDataList = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<V2ListSandboxesResponseDataList>;
+
 export type V2SandboxPage = V2Page;
 export interface V2ListSandboxesResponse {
   data: V2ListSandboxesResponseDataList;
   metadata?: V2SandboxResponseMetadata;
   page?: V2Page;
 }
+const V2ListSandboxesResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<V2ListSandboxesResponse>;
+
 export interface ListV2SandboxProcessesRequest {
   sandboxId: string;
   cursor?: string;
   limit?: number;
 }
+const ListV2SandboxProcessesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ListV2SandboxProcessesRequest>;
+
 export type V2ListSandboxProcessesResponseDataList = Array<V2SandboxProcess>;
+const V2ListSandboxProcessesResponseDataList = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<V2ListSandboxProcessesResponseDataList>;
+
 export interface V2ListSandboxProcessesResponse {
   data: V2ListSandboxProcessesResponseDataList;
   metadata?: V2SandboxResponseMetadata;
   page?: V2Page;
 }
+const V2ListSandboxProcessesResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<V2ListSandboxProcessesResponse>;
+
 export interface ListV2SessionKeysRequest {
   search?: string;
   /** Pagination cursor from previous response */
@@ -877,16 +1489,33 @@ export interface ListV2SessionKeysRequest {
   /** Number of sessions to return per page (min: 1, max: 100) */
   limit?: number;
 }
+const ListV2SessionKeysRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<ListV2SessionKeysRequest>;
+
 export interface V2SessionKey {
   createdAt?: string;
   id?: string;
 }
+const V2SessionKey = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<V2SessionKey>;
+
 export type V2ListSessionKeysResponseDataList = Array<V2SessionKey>;
+const V2ListSessionKeysResponseDataList = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<V2ListSessionKeysResponseDataList>;
+
 export interface V2ListSessionKeysResponse {
   data: V2ListSessionKeysResponseDataList;
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
+const V2ListSessionKeysResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<V2ListSessionKeysResponse>;
+
 export interface ListV2SessionRunsRequest {
   sessionKey: string;
   sessionId: string;
@@ -897,6 +1526,11 @@ export interface ListV2SessionRunsRequest {
   from?: string;
   until?: string;
 }
+const ListV2SessionRunsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<ListV2SessionRunsRequest>;
+
 export interface V2SessionRun {
   endedAt?: string;
   eventName?: string;
@@ -906,12 +1540,24 @@ export interface V2SessionRun {
   startedAt?: string;
   status?: V2FunctionRunStatus;
 }
+const V2SessionRun = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<V2SessionRun>;
+
 export type V2ListSessionRunsResponseDataList = Array<V2SessionRun>;
+const V2ListSessionRunsResponseDataList = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<V2ListSessionRunsResponseDataList>;
+
 export interface V2ListSessionRunsResponse {
   data: V2ListSessionRunsResponseDataList;
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
+const V2ListSessionRunsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<V2ListSessionRunsResponse>;
+
 export interface ListV2SessionsRequest {
   sessionKey: string;
   search?: string;
@@ -922,7 +1568,17 @@ export interface ListV2SessionsRequest {
   from?: string;
   until?: string;
 }
+const ListV2SessionsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<ListV2SessionsRequest>;
+
 export type V2SessionGroupFunctionsList = Array<V2FunctionRef>;
+const V2SessionGroupFunctionsList = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<V2SessionGroupFunctionsList>;
+
 export interface V2SessionGroup {
   failedRunCount?: number;
   failureRate?: number;
@@ -931,39 +1587,80 @@ export interface V2SessionGroup {
   lastActiveAt?: string;
   runCount?: number;
 }
+const V2SessionGroup = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<V2SessionGroup>;
+
 export type V2ListSessionsResponseDataList = Array<V2SessionGroup>;
+const V2ListSessionsResponseDataList = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<V2ListSessionsResponseDataList>;
+
 export interface V2ListSessionsResponse {
   data: V2ListSessionsResponseDataList;
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
+const V2ListSessionsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<V2ListSessionsResponse>;
+
 export interface ListV2WebhooksRequest {
   /** Pagination cursor from previous response */
   cursor?: string;
   /** Number of webhooks to return per page (min: 1, max: 100) */
   limit?: number;
 }
+const ListV2WebhooksRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<ListV2WebhooksRequest>;
+
 export type V2ListWebhooksResponseDataList = Array<V2Webhook>;
+const V2ListWebhooksResponseDataList = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<V2ListWebhooksResponseDataList>;
+
 export interface V2ListWebhooksResponse {
   data: V2ListWebhooksResponseDataList;
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
+const V2ListWebhooksResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<V2ListWebhooksResponse>;
+
 export interface PatchV2EnvRequest {
   /** The ID of the environment to update */
   id: string;
   /** Updates the archived status of the environment. Set to true to archive the environment or false to unarchive it. */
   isArchived?: boolean;
 }
+const PatchV2EnvRequest = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<PatchV2EnvRequest>;
+
 export interface V2PatchEnvsResponse {
   data?: V2Env;
   metadata?: V2ResponseMetadata;
 }
+const V2PatchEnvsResponse = V2CreateEnvResponse as any as S.Schema<V2PatchEnvsResponse>;
+
 export interface ReadV2SandboxFileRequest {
   sandboxId: string;
   path?: string;
 }
+const ReadV2SandboxFileRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ReadV2SandboxFileRequest>;
+
 export type ReadV2SandboxFileResponse = string;
+const ReadV2SandboxFileResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ReadV2SandboxFileResponse>;
+
 export interface SendV2EventRequest {
   /** JSON object containing event data */
   data?: unknown;
@@ -976,45 +1673,81 @@ export interface SendV2EventRequest {
   /** Deprecated user data. Put user data in the data field instead. */
   user?: unknown;
 }
+const SendV2EventRequest = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<SendV2EventRequest>;
+
 export interface V2SendEventData {
   /** Internal event ID assigned by Inngest */
   eventId?: string;
 }
+const V2SendEventData = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<V2SendEventData>;
+
 export interface V2SendEventResponse {
   data?: V2SendEventData;
   metadata?: V2ResponseMetadata;
 }
+const V2SendEventResponse = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<V2SendEventResponse>;
+
 export interface SignalV2SandboxProcessRequest {
   sandboxId: string;
   processId: string;
   includeChildren?: boolean;
   signal?: number;
 }
+const SignalV2SandboxProcessRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<SignalV2SandboxProcessRequest>;
+
 export type SignalV2SandboxProcessResponse = unknown;
+const SignalV2SandboxProcessResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<SignalV2SandboxProcessResponse>;
+
 export type StartV2SandboxProcessRequestCommandList = Array<string>;
+const StartV2SandboxProcessRequestCommandList =
+  V2EventFilterEventsList as any as S.Schema<StartV2SandboxProcessRequestCommandList>;
+
 export type StartV2SandboxProcessRequestEnvironmentMap = { [key: string]: string | undefined };
+const StartV2SandboxProcessRequestEnvironmentMap =
+  CreateV2SandboxRequestEnvironmentMap as any as S.Schema<StartV2SandboxProcessRequestEnvironmentMap>;
+
 export interface StartV2SandboxProcessRequest {
   sandboxId: string;
   command?: StartV2SandboxProcessRequestCommandList;
   cwd?: string;
   environment?: StartV2SandboxProcessRequestEnvironmentMap;
 }
+const StartV2SandboxProcessRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<StartV2SandboxProcessRequest>;
+
 export interface V2StartSandboxProcessResponse {
   data?: V2SandboxProcess;
   metadata?: V2SandboxResponseMetadata;
 }
+const V2StartSandboxProcessResponse =
+  V2GetSandboxProcessResponse as any as S.Schema<V2StartSandboxProcessResponse>;
+
 export interface SyncV2AppRequest {
   /** App ID */
   appId: string;
   /** URL for the Inngest endpoint in the app */
   url?: string;
 }
+const SyncV2AppRequest = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<SyncV2AppRequest>;
+
 export interface V2SyncAppError {
   code?: string;
   message?: string;
 }
+const V2SyncAppError = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<V2SyncAppError>;
+
 /** Status of the sync. `success` and `duplicate` are successful terminal states. `duplicate` means the sync payload matched the previous successful sync, so no function configuration changes were applied. `error` is a failed terminal state, and `pending` means the sync is still in progress. */
 export type V2SyncAppDataStatus = "pending" | "success" | "error" | "duplicate";
+const V2SyncAppDataStatus = S.String;
+
 export interface V2SyncAppData {
   /** App ID */
   appId?: string;
@@ -1024,21 +1757,38 @@ export interface V2SyncAppData {
   /** Status of the sync. `success` and `duplicate` are successful terminal states. `duplicate` means the sync payload matched the previous successful sync, so no function configuration changes were applied. `error` is a failed terminal state, and `pending` means the sync is still in progress. */
   status?: V2SyncAppDataStatus;
 }
+const V2SyncAppData = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<V2SyncAppData>;
+
 export interface V2SyncAppResponse {
   data?: V2SyncAppData;
   metadata?: V2ResponseMetadata;
 }
+const V2SyncAppResponse = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<V2SyncAppResponse>;
+
 export interface V2DestroySandboxRequest {
   sandboxId: string;
 }
+const V2DestroySandboxRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<V2DestroySandboxRequest>;
+
 export interface V2DestroySandboxResponse {
   data?: V2Sandbox;
   metadata?: V2SandboxResponseMetadata;
 }
+const V2DestroySandboxResponse =
+  V2CreateSandboxResponse as any as S.Schema<V2DestroySandboxResponse>;
+
 export interface V2QueryInsightsRequest {
   /** The insights query to execute, written in modified ClickHouse SQL */
   query?: string;
 }
+const V2QueryInsightsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<V2QueryInsightsRequest>;
+
 export type V2InsightsOutputColumnType =
   | "VALUE_TYPE_UNSPECIFIED"
   | "STRING"
@@ -1046,13 +1796,25 @@ export type V2InsightsOutputColumnType =
   | "BOOLEAN"
   | "DATETIME"
   | "COMPLEX";
+const V2InsightsOutputColumnType = S.String;
+
 export interface V2InsightsOutputColumn {
   /** Name of the column in the insights query result */
   name?: string;
   type?: V2InsightsOutputColumnType;
 }
+const V2InsightsOutputColumn = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<V2InsightsOutputColumn>;
+
 /** Column metadata for the insights query result */
 export type V2QueryInsightsDataColumnsList = Array<V2InsightsOutputColumn>;
+const V2QueryInsightsDataColumnsList = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<V2QueryInsightsDataColumnsList>;
+
 export interface V2InsightsDiagnosticPosition {
   /** Snippet of the query string around the position to provide context for the diagnostic */
   context?: string;
@@ -1061,7 +1823,14 @@ export interface V2InsightsDiagnosticPosition {
   /** Starting character index in the query string where the diagnostic applies */
   start?: number;
 }
+const V2InsightsDiagnosticPosition = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<V2InsightsDiagnosticPosition>;
+
 export type V2InsightsDiagnosticSeverity = "SEVERITY_UNSPECIFIED" | "ERROR" | "WARNING" | "INFO";
+const V2InsightsDiagnosticSeverity = S.String;
+
 export interface V2InsightsDiagnostic {
   /** Machine-readable code representing the type of diagnostic */
   code?: string;
@@ -1070,16 +1839,38 @@ export interface V2InsightsDiagnostic {
   position?: V2InsightsDiagnosticPosition;
   severity?: V2InsightsDiagnosticSeverity;
 }
+const V2InsightsDiagnostic = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<V2InsightsDiagnostic>;
+
 /** Any non-fatal diagnostics related to the insights query execution */
 export type V2QueryInsightsDataDiagnosticsList = Array<V2InsightsDiagnostic>;
+const V2QueryInsightsDataDiagnosticsList = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<V2QueryInsightsDataDiagnosticsList>;
+
 /** Values for a single row of the insights query result, where each value corresponds to a column. The value is represented as a JSON object to allow for flexible typing (e.g., string, number, boolean, etc.) */
 export type V2InsightsRowValuesList = Array<unknown>;
+const V2InsightsRowValuesList = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<V2InsightsRowValuesList>;
+
 export interface V2InsightsRow {
   /** Values for a single row of the insights query result, where each value corresponds to a column. The value is represented as a JSON object to allow for flexible typing (e.g., string, number, boolean, etc.) */
   values?: V2InsightsRowValuesList;
 }
+const V2InsightsRow = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<V2InsightsRow>;
+
 /** Rows of the insights query result, where each row contains a list of values corresponding to the columns */
 export type V2QueryInsightsDataRowsList = Array<V2InsightsRow>;
+const V2QueryInsightsDataRowsList = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<V2QueryInsightsDataRowsList>;
+
 export interface V2QueryInsightsData {
   /** Column metadata for the insights query result */
   columns?: V2QueryInsightsDataColumnsList;
@@ -1088,36 +1879,65 @@ export interface V2QueryInsightsData {
   /** Rows of the insights query result, where each row contains a list of values corresponding to the columns */
   rows?: V2QueryInsightsDataRowsList;
 }
+const V2QueryInsightsData = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<V2QueryInsightsData>;
+
 export interface V2QueryInsightsResponse {
   data?: V2QueryInsightsData;
   metadata?: V2ResponseMetadata;
 }
+const V2QueryInsightsResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<V2QueryInsightsResponse>;
+
 export interface V2QueryInsightsPromptRequest {
   /** Natural language description of the query to generate */
   prompt?: string;
 }
+const V2QueryInsightsPromptRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<V2QueryInsightsPromptRequest>;
+
 export interface V2QueryInsightsPromptData {
   /** The generated Insights SQL query */
   sql?: string;
   /** A natural language summary of the generated query, useful for explaining the query's intent to agents */
   summary?: string;
 }
+const V2QueryInsightsPromptData = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<V2QueryInsightsPromptData>;
+
 export interface V2QueryInsightsPromptResponse {
   data?: V2QueryInsightsPromptData;
   metadata?: V2ResponseMetadata;
 }
+const V2QueryInsightsPromptResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<V2QueryInsightsPromptResponse>;
+
 /** Optional replacement step input as a JSON array */
 export type V2RerunFromStepInputList = Array<unknown>;
+const V2RerunFromStepInputList =
+  V2InsightsRowValuesList as any as S.Schema<V2RerunFromStepInputList>;
+
 export interface V2RerunFromStep {
   /** Optional replacement step input as a JSON array */
   input?: V2RerunFromStepInputList;
   /** User-defined step name to rerun from */
   stepId?: string;
 }
+const V2RerunFromStep = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<V2RerunFromStep>;
+
 export interface V2RerunRequest {
   runId: string;
   fromStep?: V2RerunFromStep;
 }
+const V2RerunRequest = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<V2RerunRequest>;
+
 export interface V2RerunData {
   /** New run ID created by the rerun */
   runId?: string;
@@ -1126,40 +1946,77 @@ export interface V2RerunResponse {
   data?: V2RerunData;
   metadata?: V2ResponseMetadata;
 }
+const V2RerunResponse = V2CancelRunResponse as any as S.Schema<V2RerunResponse>;
+
 export interface V2StreamSandboxLogsRequest {
   sandboxId: string;
   follow?: boolean;
 }
+const V2StreamSandboxLogsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<V2StreamSandboxLogsRequest>;
+
 /** `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the serialized message. Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional generated methods of the Any type. Example 1: Pack and unpack a message in C++. Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ... } Example 2: Pack and unpack a message in Java. Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); } // or ... if (any.isSameTypeAs(Foo.getDefaultInstance())) { foo = any.unpack(Foo.getDefaultInstance()); } Example 3: Pack and unpack a message in Python. foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ... Example 4: Pack and unpack a message in Go foo := &pb.Foo{...} any, err := anypb.New(foo) if err != nil { ... } ... foo := &pb.Foo{} if err := any.UnmarshalTo(foo); err != nil { ... } The pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for example "foo.bar.com/x/y.z" will yield type name "y.z". JSON ==== The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message, with an additional field `@type` which contains the type URL. Example: package google.profile; message Person { string first_name = 1; string last_name = 2; } { "@type": "type.googleapis.com/google.profile.Person", "firstName": <string>, "lastName": <string> } If the embedded message type is well-known and has a custom JSON representation, that representation will be embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for message [google.protobuf.Duration][]): { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" } */
 export interface ProtobufAny {
   /** A URL/resource name that uniquely identifies the type of the serialized protocol buffer message. This string must contain at least one "/" character. The last segment of the URL's path must represent the fully qualified name of the type (as in `path/google.protobuf.Duration`). The name should be in a canonical form (e.g., leading "." is not accepted). In practice, teams usually precompile into the binary all types that they expect it to use in the context of Any. However, for URLs which use the scheme `http`, `https`, or no scheme, one can optionally set up a type server that maps type URLs to message definitions as follows: * If no scheme is provided, `https` is assumed. * An HTTP GET on the URL must yield a [google.protobuf.Type][] value in binary format, or produce an error. * Applications are allowed to cache lookup results based on the URL, or have them precompiled into a binary to avoid any lookup. Therefore, binary compatibility needs to be preserved on changes to types. (Use versioned type names to manage breaking changes.) Note: this functionality is not currently available in the official protobuf release, and it is not used for type URLs beginning with type.googleapis.com. As of May 2023, there are no widely used type server implementations and no plans to implement one. Schemes other than `http`, `https` (or the empty scheme) might be used with implementation specific semantics. */
   _type?: string;
 }
+const ProtobufAny = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<ProtobufAny>;
+
 export type RpcStatusDetailsList = Array<ProtobufAny>;
+const RpcStatusDetailsList = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<RpcStatusDetailsList>;
+
 export interface RpcStatus {
   code?: number;
   details?: RpcStatusDetailsList;
   message?: string;
 }
+const RpcStatus = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<RpcStatus>;
+
 export interface V2StreamSandboxLogsResponse {
   data?: V2SandboxLogChunk;
 }
+const V2StreamSandboxLogsResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<V2StreamSandboxLogsResponse>;
+
 export interface V2StreamSandboxLogsResponse2 {
   error?: RpcStatus;
   result?: V2StreamSandboxLogsResponse;
 }
+const V2StreamSandboxLogsResponse2 = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<V2StreamSandboxLogsResponse2>;
+
 export interface V2StreamSandboxProcessOutputRequest {
   sandboxId: string;
   processId: string;
   tailBytes?: number;
 }
+const V2StreamSandboxProcessOutputRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<V2StreamSandboxProcessOutputRequest>;
+
 export type V2StreamSandboxProcessOutputResponse = V2StreamSandboxLogsResponse;
 export interface V2StreamSandboxProcessOutputResponse2 {
   error?: RpcStatus;
   result?: V2StreamSandboxLogsResponse;
 }
+const V2StreamSandboxProcessOutputResponse2 =
+  V2StreamSandboxLogsResponse2 as any as S.Schema<V2StreamSandboxProcessOutputResponse2>;
+
 /** Application specific response metadata. Must be set in the first response for streaming APIs. */
 export type V2WriteSandboxFileRequestExtensionsList = Array<ProtobufAny>;
+const V2WriteSandboxFileRequestExtensionsList =
+  RpcStatusDetailsList as any as S.Schema<V2WriteSandboxFileRequestExtensionsList>;
+
 export interface V2WriteSandboxFileRequest {
   sandboxId: string;
   path?: string;
@@ -1171,23 +2028,46 @@ export interface V2WriteSandboxFileRequest {
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
   extensions?: V2WriteSandboxFileRequestExtensionsList;
 }
+const V2WriteSandboxFileRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<V2WriteSandboxFileRequest>;
+
 export interface V2WriteSandboxFileData {
   bytesWritten?: string;
   path?: string;
 }
+const V2WriteSandboxFileData = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<V2WriteSandboxFileData>;
+
 export interface V2WriteSandboxFileResponse {
   data?: V2WriteSandboxFileData;
   metadata?: V2SandboxResponseMetadata;
 }
+const V2WriteSandboxFileResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<V2WriteSandboxFileResponse>;
+
 export interface WaitV2SandboxProcessRequest {
   sandboxId: string;
   processId: string;
   timeout?: string;
 }
+const WaitV2SandboxProcessRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<WaitV2SandboxProcessRequest>;
+
 export interface V2WaitSandboxProcessResponse {
   data?: V2SandboxProcess;
   metadata?: V2SandboxResponseMetadata;
 }
+const V2WaitSandboxProcessResponse =
+  V2GetSandboxProcessResponse as any as S.Schema<V2WaitSandboxProcessResponse>;
+
 export type CancelV2RunError = InngestOpError;
 /** Cancel function run Cancels an in-progress function run */
 export const cancelV2Run: API.OperationMethod<
@@ -1196,8 +2076,8 @@ export const cancelV2Run: API.OperationMethod<
   CancelV2RunError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CancelV2RunRequest>,
-  output: __S(4) as any as S.Schema<V2CancelRunResponse>,
+  input: CancelV2RunRequest,
+  output: V2CancelRunResponse,
   errors: [UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -1211,8 +2091,8 @@ export const createV2Env: API.OperationMethod<
   CreateV2EnvError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreateV2EnvRequest>,
-  output: __S(7) as any as S.Schema<V2CreateEnvResponse>,
+  input: CreateV2EnvRequest,
+  output: V2CreateEnvResponse,
   errors: [BadRequest, Forbidden, Conflict, UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -1226,8 +2106,8 @@ export const createV2PartnerAccount: API.OperationMethod<
   CreateV2PartnerAccountError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateV2PartnerAccountRequest>,
-  output: __S(10) as any as S.Schema<V2CreateAccountResponse>,
+  input: CreateV2PartnerAccountRequest,
+  output: V2CreateAccountResponse,
   errors: [BadRequest, Forbidden, Conflict, UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -1241,8 +2121,8 @@ export const createV2Sandbox: API.OperationMethod<
   CreateV2SandboxError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CreateV2SandboxRequest>,
-  output: __S(16) as any as S.Schema<V2CreateSandboxResponse>,
+  input: CreateV2SandboxRequest,
+  output: V2CreateSandboxResponse,
   errors: [UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -1256,8 +2136,8 @@ export const createV2Score: API.OperationMethod<
   CreateV2ScoreError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CreateV2ScoreRequest>,
-  output: __S(23) as any as S.Schema<V2CreateScoreResponse>,
+  input: CreateV2ScoreRequest,
+  output: V2CreateScoreResponse,
   errors: [UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -1276,8 +2156,8 @@ export const createV2Webhook: API.OperationMethod<
   CreateV2WebhookError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<CreateV2WebhookRequest>,
-  output: __S(28) as any as S.Schema<V2CreateWebhookResponse>,
+  input: CreateV2WebhookRequest,
+  output: V2CreateWebhookResponse,
   errors: [BadRequest, Forbidden, Conflict, UnprocessableEntity, UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -1291,8 +2171,8 @@ export const execV2Sandbox: API.OperationMethod<
   ExecV2SandboxError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<ExecV2SandboxRequest>,
-  output: __S(31) as any as S.Schema<V2ExecSandboxResponse>,
+  input: ExecV2SandboxRequest,
+  output: V2ExecSandboxResponse,
   errors: [UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -1306,8 +2186,8 @@ export const fetchV2Account: API.OperationMethod<
   FetchV2AccountError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<FetchV2AccountRequest>,
-  output: __S(34) as any as S.Schema<V2FetchAccountResponse>,
+  input: FetchV2AccountRequest,
+  output: V2FetchAccountResponse,
   errors: [Forbidden, UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -1323,8 +2203,8 @@ export const fetchV2AccountEnvs: API.PaginatedOperationMethod<
   V2Env
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(35) as any as S.Schema<FetchV2AccountEnvsRequest>,
-    output: __S(38) as any as S.Schema<V2FetchAccountEnvsResponse>,
+    input: FetchV2AccountEnvsRequest,
+    output: V2FetchAccountEnvsResponse,
     errors: [BadRequest, Forbidden, NotFound, UnknownInngestError],
     protocol: InngestProtocol,
     retry: Retry.Retry,
@@ -1349,8 +2229,8 @@ export const fetchV2AccountEventKeys: API.PaginatedOperationMethod<
   V2EventKey
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(39) as any as S.Schema<FetchV2AccountEventKeysRequest>,
-    output: __S(42) as any as S.Schema<V2FetchAccountEventKeysResponse>,
+    input: FetchV2AccountEventKeysRequest,
+    output: V2FetchAccountEventKeysResponse,
     errors: [BadRequest, Forbidden, NotFound, UnknownInngestError],
     protocol: InngestProtocol,
     retry: Retry.Retry,
@@ -1375,8 +2255,8 @@ export const fetchV2AccountSigningKeys: API.PaginatedOperationMethod<
   V2EventKey
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(43) as any as S.Schema<FetchV2AccountSigningKeysRequest>,
-    output: __S(42) as any as S.Schema<V2FetchAccountSigningKeysResponse>,
+    input: FetchV2AccountSigningKeysRequest,
+    output: V2FetchAccountSigningKeysResponse,
     errors: [BadRequest, Forbidden, NotFound, UnknownInngestError],
     protocol: InngestProtocol,
     retry: Retry.Retry,
@@ -1401,8 +2281,8 @@ export const fetchV2PartnerAccounts: API.PaginatedOperationMethod<
   V2Account
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(44) as any as S.Schema<FetchV2PartnerAccountsRequest>,
-    output: __S(46) as any as S.Schema<V2FetchAccountsResponse>,
+    input: FetchV2PartnerAccountsRequest,
+    output: V2FetchAccountsResponse,
     errors: [BadRequest, Forbidden, UnknownInngestError],
     protocol: InngestProtocol,
     retry: Retry.Retry,
@@ -1425,8 +2305,8 @@ export const getV2App: API.OperationMethod<
   GetV2AppError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<GetV2AppRequest>,
-  output: __S(50) as any as S.Schema<V2GetAppResponse>,
+  input: GetV2AppRequest,
+  output: V2GetAppResponse,
   errors: [UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -1442,8 +2322,8 @@ export const getV2Apps: API.PaginatedOperationMethod<
   V2App
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(51) as any as S.Schema<GetV2AppsRequest>,
-    output: __S(53) as any as S.Schema<V2GetAppsResponse>,
+    input: GetV2AppsRequest,
+    output: V2GetAppsResponse,
     errors: [UnknownInngestError],
     protocol: InngestProtocol,
     retry: Retry.Retry,
@@ -1468,8 +2348,8 @@ export const getV2EventRuns: API.PaginatedOperationMethod<
   V2FunctionRun
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(54) as any as S.Schema<GetV2EventRunsRequest>,
-    output: __S(60) as any as S.Schema<V2GetEventRunsResponse>,
+    input: GetV2EventRunsRequest,
+    output: V2GetEventRunsResponse,
     errors: [UnknownInngestError],
     protocol: InngestProtocol,
     retry: Retry.Retry,
@@ -1492,8 +2372,8 @@ export const getV2Experiment: API.OperationMethod<
   GetV2ExperimentError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<GetV2ExperimentRequest>,
-  output: __S(69) as any as S.Schema<V2GetExperimentResponse>,
+  input: GetV2ExperimentRequest,
+  output: V2GetExperimentResponse,
   errors: [UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -1507,8 +2387,8 @@ export const getV2Function: API.OperationMethod<
   GetV2FunctionError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<GetV2FunctionRequest>,
-  output: __S(87) as any as S.Schema<V2GetFunctionResponse>,
+  input: GetV2FunctionRequest,
+  output: V2GetFunctionResponse,
   errors: [UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -1522,8 +2402,8 @@ export const getV2FunctionRun: API.OperationMethod<
   GetV2FunctionRunError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<GetV2FunctionRunRequest>,
-  output: __S(89) as any as S.Schema<V2GetFunctionRunResponse>,
+  input: GetV2FunctionRunRequest,
+  output: V2GetFunctionRunResponse,
   errors: [UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -1539,8 +2419,8 @@ export const getV2Functions: API.PaginatedOperationMethod<
   V2Function
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(90) as any as S.Schema<GetV2FunctionsRequest>,
-    output: __S(92) as any as S.Schema<V2GetFunctionsResponse>,
+    input: GetV2FunctionsRequest,
+    output: V2GetFunctionsResponse,
     errors: [UnknownInngestError],
     protocol: InngestProtocol,
     retry: Retry.Retry,
@@ -1563,8 +2443,8 @@ export const getV2FunctionTrace: API.OperationMethod<
   GetV2FunctionTraceError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<GetV2FunctionTraceRequest>,
-  output: __S(99) as any as S.Schema<V2GetFunctionTraceResponse>,
+  input: GetV2FunctionTraceRequest,
+  output: V2GetFunctionTraceResponse,
   errors: [UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -1578,8 +2458,8 @@ export const getV2Sandbox: API.OperationMethod<
   GetV2SandboxError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<GetV2SandboxRequest>,
-  output: __S(16) as any as S.Schema<V2GetSandboxResponse>,
+  input: GetV2SandboxRequest,
+  output: V2GetSandboxResponse,
   errors: [UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -1593,8 +2473,8 @@ export const getV2SandboxProcess: API.OperationMethod<
   GetV2SandboxProcessError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<GetV2SandboxProcessRequest>,
-  output: __S(103) as any as S.Schema<V2GetSandboxProcessResponse>,
+  input: GetV2SandboxProcessRequest,
+  output: V2GetSandboxProcessResponse,
   errors: [UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -1608,8 +2488,8 @@ export const getV2SandboxProcessOutput: API.OperationMethod<
   GetV2SandboxProcessOutputError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<GetV2SandboxProcessOutputRequest>,
-  output: __S(108) as any as S.Schema<V2GetSandboxProcessOutputResponse>,
+  input: GetV2SandboxProcessOutputRequest,
+  output: V2GetSandboxProcessOutputResponse,
   errors: [UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -1629,8 +2509,8 @@ export const invokeV2Function: API.OperationMethod<
   InvokeV2FunctionError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<InvokeV2FunctionRequest>,
-  output: __S(111) as any as S.Schema<V2InvokeFunctionResponse>,
+  input: InvokeV2FunctionRequest,
+  output: V2InvokeFunctionResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -1646,8 +2526,8 @@ export const listV2Experiments: API.PaginatedOperationMethod<
   V2Experiment
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(112) as any as S.Schema<ListV2ExperimentsRequest>,
-    output: __S(115) as any as S.Schema<V2ListExperimentsResponse>,
+    input: ListV2ExperimentsRequest,
+    output: V2ListExperimentsResponse,
     errors: [UnknownInngestError],
     protocol: InngestProtocol,
     retry: Retry.Retry,
@@ -1672,8 +2552,8 @@ export const listV2Experiments2: API.PaginatedOperationMethod<
   V2Experiment
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(116) as any as S.Schema<ListV2Experiments2Request>,
-    output: __S(115) as any as S.Schema<V2ListExperimentsResponse>,
+    input: ListV2Experiments2Request,
+    output: V2ListExperimentsResponse,
     errors: [UnknownInngestError],
     protocol: InngestProtocol,
     retry: Retry.Retry,
@@ -1698,8 +2578,8 @@ export const listV2FunctionRuns: API.PaginatedOperationMethod<
   V2FunctionRun
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(117) as any as S.Schema<ListV2FunctionRunsRequest>,
-    output: __S(118) as any as S.Schema<V2ListFunctionRunsResponse>,
+    input: ListV2FunctionRunsRequest,
+    output: V2ListFunctionRunsResponse,
     errors: [UnknownInngestError],
     protocol: InngestProtocol,
     retry: Retry.Retry,
@@ -1724,8 +2604,8 @@ export const listV2InsightsEventSchemas: API.PaginatedOperationMethod<
   V2InsightsEventSchema
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(119) as any as S.Schema<ListV2InsightsEventSchemasRequest>,
-    output: __S(122) as any as S.Schema<V2ListInsightsEventSchemasResponse>,
+    input: ListV2InsightsEventSchemasRequest,
+    output: V2ListInsightsEventSchemasResponse,
     errors: [BadRequest, Forbidden, UnknownInngestError],
     protocol: InngestProtocol,
     retry: Retry.Retry,
@@ -1748,8 +2628,8 @@ export const listV2InsightsTables: API.OperationMethod<
   ListV2InsightsTablesError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<ListV2InsightsTablesRequest>,
-  output: __S(128) as any as S.Schema<V2ListInsightsTablesResponse>,
+  input: ListV2InsightsTablesRequest,
+  output: V2ListInsightsTablesResponse,
   errors: [Forbidden, UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -1765,8 +2645,8 @@ export const listV2Runs: API.PaginatedOperationMethod<
   V2FunctionRun
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(129) as any as S.Schema<ListV2RunsRequest>,
-    output: __S(60) as any as S.Schema<V2ListRunsResponse>,
+    input: ListV2RunsRequest,
+    output: V2ListRunsResponse,
     errors: [UnknownInngestError],
     protocol: InngestProtocol,
     retry: Retry.Retry,
@@ -1791,8 +2671,8 @@ export const listV2Sandboxes: API.PaginatedOperationMethod<
   V2Sandbox
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(130) as any as S.Schema<ListV2SandboxesRequest>,
-    output: __S(132) as any as S.Schema<V2ListSandboxesResponse>,
+    input: ListV2SandboxesRequest,
+    output: V2ListSandboxesResponse,
     errors: [UnknownInngestError],
     protocol: InngestProtocol,
     retry: Retry.Retry,
@@ -1817,8 +2697,8 @@ export const listV2SandboxProcesses: API.PaginatedOperationMethod<
   V2SandboxProcess
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(133) as any as S.Schema<ListV2SandboxProcessesRequest>,
-    output: __S(135) as any as S.Schema<V2ListSandboxProcessesResponse>,
+    input: ListV2SandboxProcessesRequest,
+    output: V2ListSandboxProcessesResponse,
     errors: [UnknownInngestError],
     protocol: InngestProtocol,
     retry: Retry.Retry,
@@ -1843,8 +2723,8 @@ export const listV2SessionKeys: API.PaginatedOperationMethod<
   V2SessionKey
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(136) as any as S.Schema<ListV2SessionKeysRequest>,
-    output: __S(139) as any as S.Schema<V2ListSessionKeysResponse>,
+    input: ListV2SessionKeysRequest,
+    output: V2ListSessionKeysResponse,
     errors: [UnknownInngestError],
     protocol: InngestProtocol,
     retry: Retry.Retry,
@@ -1869,8 +2749,8 @@ export const listV2SessionRuns: API.PaginatedOperationMethod<
   V2SessionRun
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(140) as any as S.Schema<ListV2SessionRunsRequest>,
-    output: __S(143) as any as S.Schema<V2ListSessionRunsResponse>,
+    input: ListV2SessionRunsRequest,
+    output: V2ListSessionRunsResponse,
     errors: [UnknownInngestError],
     protocol: InngestProtocol,
     retry: Retry.Retry,
@@ -1895,8 +2775,8 @@ export const listV2Sessions: API.PaginatedOperationMethod<
   V2SessionGroup
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(144) as any as S.Schema<ListV2SessionsRequest>,
-    output: __S(148) as any as S.Schema<V2ListSessionsResponse>,
+    input: ListV2SessionsRequest,
+    output: V2ListSessionsResponse,
     errors: [UnknownInngestError],
     protocol: InngestProtocol,
     retry: Retry.Retry,
@@ -1921,8 +2801,8 @@ export const listV2Webhooks: API.PaginatedOperationMethod<
   V2Webhook
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(149) as any as S.Schema<ListV2WebhooksRequest>,
-    output: __S(151) as any as S.Schema<V2ListWebhooksResponse>,
+    input: ListV2WebhooksRequest,
+    output: V2ListWebhooksResponse,
     errors: [BadRequest, Forbidden, UnknownInngestError],
     protocol: InngestProtocol,
     retry: Retry.Retry,
@@ -1950,8 +2830,8 @@ export const patchV2Env: API.OperationMethod<
   PatchV2EnvError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152) as any as S.Schema<PatchV2EnvRequest>,
-  output: __S(7) as any as S.Schema<V2PatchEnvsResponse>,
+  input: PatchV2EnvRequest,
+  output: V2PatchEnvsResponse,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -1965,8 +2845,8 @@ export const readV2SandboxFile: API.OperationMethod<
   ReadV2SandboxFileError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<ReadV2SandboxFileRequest>,
-  output: __S(154) as any as S.Schema<ReadV2SandboxFileResponse>,
+  input: ReadV2SandboxFileRequest,
+  output: ReadV2SandboxFileResponse,
   errors: [UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -1980,8 +2860,8 @@ export const sendV2Event: API.OperationMethod<
   SendV2EventError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155) as any as S.Schema<SendV2EventRequest>,
-  output: __S(157) as any as S.Schema<V2SendEventResponse>,
+  input: SendV2EventRequest,
+  output: V2SendEventResponse,
   errors: [BadRequest, Forbidden, UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -1995,8 +2875,8 @@ export const signalV2SandboxProcess: API.OperationMethod<
   SignalV2SandboxProcessError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158) as any as S.Schema<SignalV2SandboxProcessRequest>,
-  output: __S(159) as any as S.Schema<SignalV2SandboxProcessResponse>,
+  input: SignalV2SandboxProcessRequest,
+  output: SignalV2SandboxProcessResponse,
   errors: [UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -2010,8 +2890,8 @@ export const startV2SandboxProcess: API.OperationMethod<
   StartV2SandboxProcessError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160) as any as S.Schema<StartV2SandboxProcessRequest>,
-  output: __S(103) as any as S.Schema<V2StartSandboxProcessResponse>,
+  input: StartV2SandboxProcessRequest,
+  output: V2StartSandboxProcessResponse,
   errors: [UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -2030,8 +2910,8 @@ export const syncV2App: API.OperationMethod<
   SyncV2AppError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161) as any as S.Schema<SyncV2AppRequest>,
-  output: __S(164) as any as S.Schema<V2SyncAppResponse>,
+  input: SyncV2AppRequest,
+  output: V2SyncAppResponse,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -2045,8 +2925,8 @@ export const v2DestroySandbox: API.OperationMethod<
   V2DestroySandboxError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165) as any as S.Schema<V2DestroySandboxRequest>,
-  output: __S(16) as any as S.Schema<V2DestroySandboxResponse>,
+  input: V2DestroySandboxRequest,
+  output: V2DestroySandboxResponse,
   errors: [UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -2065,8 +2945,8 @@ export const v2QueryInsights: API.OperationMethod<
   V2QueryInsightsError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<V2QueryInsightsRequest>,
-  output: __S(176) as any as S.Schema<V2QueryInsightsResponse>,
+  input: V2QueryInsightsRequest,
+  output: V2QueryInsightsResponse,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -2084,8 +2964,8 @@ export const v2QueryInsightsPrompt: API.OperationMethod<
   V2QueryInsightsPromptError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<V2QueryInsightsPromptRequest>,
-  output: __S(179) as any as S.Schema<V2QueryInsightsPromptResponse>,
+  input: V2QueryInsightsPromptRequest,
+  output: V2QueryInsightsPromptResponse,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -2099,8 +2979,8 @@ export const v2Rerun: API.OperationMethod<
   V2RerunError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<V2RerunRequest>,
-  output: __S(4) as any as S.Schema<V2RerunResponse>,
+  input: V2RerunRequest,
+  output: V2RerunResponse,
   errors: [UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -2114,8 +2994,8 @@ export const v2StreamSandboxLogs: API.OperationMethod<
   V2StreamSandboxLogsError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<V2StreamSandboxLogsRequest>,
-  output: __S(187) as any as S.Schema<V2StreamSandboxLogsResponse2>,
+  input: V2StreamSandboxLogsRequest,
+  output: V2StreamSandboxLogsResponse2,
   errors: [UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -2129,8 +3009,8 @@ export const v2StreamSandboxProcessOutput: API.OperationMethod<
   V2StreamSandboxProcessOutputError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188) as any as S.Schema<V2StreamSandboxProcessOutputRequest>,
-  output: __S(187) as any as S.Schema<V2StreamSandboxProcessOutputResponse2>,
+  input: V2StreamSandboxProcessOutputRequest,
+  output: V2StreamSandboxProcessOutputResponse2,
   errors: [UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -2144,8 +3024,8 @@ export const v2WriteSandboxFile: API.OperationMethod<
   V2WriteSandboxFileError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189) as any as S.Schema<V2WriteSandboxFileRequest>,
-  output: __S(191) as any as S.Schema<V2WriteSandboxFileResponse>,
+  input: V2WriteSandboxFileRequest,
+  output: V2WriteSandboxFileResponse,
   errors: [UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -2159,8 +3039,8 @@ export const waitV2SandboxProcess: API.OperationMethod<
   WaitV2SandboxProcessError,
   InngestOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192) as any as S.Schema<WaitV2SandboxProcessRequest>,
-  output: __S(103) as any as S.Schema<V2WaitSandboxProcessResponse>,
+  input: WaitV2SandboxProcessRequest,
+  output: V2WaitSandboxProcessResponse,
   errors: [UnknownInngestError],
   protocol: InngestProtocol,
   retry: Retry.Retry,
@@ -2193,14 +3073,14 @@ function __c0(j: number): any {
         S.Struct({
           cachedUntil: S.optional(S.String),
           fetchedAt: S.optional(S.String),
-          timeRange: S.optional(__S(2)),
+          timeRange: S.optional(V2TimeRange),
         }),
       ).annotate({ identifier: "V2ResponseMetadata" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(1)),
-          metadata: S.optional(__S(3)),
+          data: S.optional(V2CancelRunData),
+          metadata: S.optional(V2ResponseMetadata),
         }),
       ).annotate({ identifier: "V2CancelRunResponse" });
     case 5:
@@ -2217,14 +3097,14 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           isArchived: S.optional(S.Boolean),
           name: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(V2EnvType),
         }),
       ).annotate({ identifier: "V2Env" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(6)),
-          metadata: S.optional(__S(3)),
+          data: S.optional(V2Env),
+          metadata: S.optional(V2ResponseMetadata),
         }),
       ).annotate({ identifier: "V2CreateEnvResponse" });
   }
@@ -2254,8 +3134,8 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(9)),
-          metadata: S.optional(__S(3)),
+          data: S.optional(V2CreateAccountData),
+          metadata: S.optional(V2ResponseMetadata),
         }),
       ).annotate({ identifier: "V2CreateAccountResponse" });
     case 3:
@@ -2263,7 +3143,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          environment: S.optional(__S(11)),
+          environment: S.optional(CreateV2SandboxRequestEnvironmentMap),
           memoryMb: S.optional(S.Number),
           name: S.optional(S.String),
           vcpu: S.optional(S.Number),
@@ -2285,9 +3165,9 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           imageRef: S.optional(S.String),
           name: S.optional(S.String),
-          resources: S.optional(__S(13)),
+          resources: S.optional(V2SandboxResourceSpec),
           startedAt: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(V2SandboxStatus),
           vpcId: S.optional(S.String),
         }),
       ).annotate({ identifier: "V2Sandbox" });
@@ -2306,8 +3186,8 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(14)),
-          metadata: S.optional(__S(15)),
+          data: S.optional(V2Sandbox),
+          metadata: S.optional(V2SandboxResponseMetadata),
         }),
       ).annotate({ identifier: "V2CreateSandboxResponse" });
     case 1:
@@ -2320,25 +3200,25 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          experiment: S.optional(__S(17)),
+          experiment: S.optional(V2ScoreExperiment),
           name: S.optional(S.String),
           stepId: S.optional(S.String),
           value: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "V2CreateScoreInput" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(V2CreateScoreInput);
     case 4:
       return S.suspend(() =>
         S.Struct({
           runId: S.String.pipe(T.Label()),
-          body: __S(19).pipe(T.HttpBody()),
+          body: CreateV2ScoreRequestBodyList.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/runs/{runId}/scores", code: 200 })),
       ).annotate({ identifier: "CreateV2ScoreRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          experiment: S.optional(__S(17)),
+          experiment: S.optional(V2ScoreExperiment),
           name: S.optional(S.String),
           runId: S.optional(S.String),
           stepId: S.optional(S.String),
@@ -2346,12 +3226,12 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "V2Score" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(V2Score);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(22)),
-          metadata: S.optional(__S(3)),
+          data: S.optional(V2CreateScoreResponseDataList),
+          metadata: S.optional(V2ResponseMetadata),
         }),
       ).annotate({ identifier: "V2CreateScoreResponse" });
   }
@@ -2363,14 +3243,14 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          events: S.optional(__S(24)),
-          filter: S.optional(S.String),
+          events: S.optional(V2EventFilterEventsList),
+          filter: S.optional(V2FilterType),
         }),
       ).annotate({ identifier: "V2EventFilter" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          eventFilter: S.optional(__S(25)),
+          eventFilter: S.optional(V2EventFilter),
           name: S.optional(S.String),
           response: S.optional(S.String),
           transform: S.optional(S.String),
@@ -2381,7 +3261,7 @@ function __c3(j: number): any {
         S.Struct({
           createdAt: S.optional(S.String),
           environment: S.optional(S.String),
-          eventFilter: S.optional(__S(25)),
+          eventFilter: S.optional(V2EventFilter),
           id: S.optional(S.String),
           name: S.optional(S.String),
           response: S.optional(S.String),
@@ -2393,17 +3273,17 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(27)),
-          metadata: S.optional(__S(3)),
+          data: S.optional(V2Webhook),
+          metadata: S.optional(V2ResponseMetadata),
         }),
       ).annotate({ identifier: "V2CreateWebhookResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           sandboxId: S.String.pipe(T.Label()),
-          command: S.optional(__S(24)),
+          command: S.optional(ExecV2SandboxRequestCommandList),
           cwd: S.optional(S.String),
-          environment: S.optional(__S(11)),
+          environment: S.optional(ExecV2SandboxRequestEnvironmentMap),
           timeout: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/sandboxes/{sandboxId}/exec", code: 200 })),
       ).annotate({ identifier: "ExecV2SandboxRequest" });
@@ -2419,8 +3299,8 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(30)),
-          metadata: S.optional(__S(15)),
+          data: S.optional(V2ExecSandboxData),
+          metadata: S.optional(V2SandboxResponseMetadata),
         }),
       ).annotate({ identifier: "V2ExecSandboxResponse" });
   }
@@ -2444,8 +3324,8 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(33)),
-          metadata: S.optional(__S(3)),
+          data: S.optional(V2Account),
+          metadata: S.optional(V2ResponseMetadata),
         }),
       ).annotate({ identifier: "V2FetchAccountResponse" });
     case 3:
@@ -2458,7 +3338,7 @@ function __c4(j: number): any {
         identifier: "FetchV2AccountEnvsRequest",
       });
     case 4:
-      return S.Array(__S(6));
+      return S.Array(V2Env);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2470,9 +3350,9 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(36),
-          metadata: S.optional(__S(3)),
-          page: S.optional(__S(37)),
+          data: V2FetchAccountEnvsResponseDataList,
+          metadata: S.optional(V2ResponseMetadata),
+          page: S.optional(V2Page),
         }),
       ).annotate({
         identifier: "V2FetchAccountEnvsResponse",
@@ -2501,13 +3381,13 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "V2EventKey" });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(V2EventKey);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(41),
-          metadata: S.optional(__S(3)),
-          page: S.optional(__S(37)),
+          data: V2FetchAccountEventKeysResponseDataList,
+          metadata: S.optional(V2ResponseMetadata),
+          page: S.optional(V2Page),
         }),
       ).annotate({
         identifier: "V2FetchAccountEventKeysResponse",
@@ -2531,13 +3411,13 @@ function __c5(j: number): any {
         identifier: "FetchV2PartnerAccountsRequest",
       });
     case 5:
-      return S.Array(__S(33));
+      return S.Array(V2Account);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(45),
-          metadata: S.optional(__S(3)),
-          page: S.optional(__S(37)),
+          data: V2FetchAccountsResponseDataList,
+          metadata: S.optional(V2ResponseMetadata),
+          page: S.optional(V2Page),
         }),
       ).annotate({ identifier: "V2FetchAccountsResponse" });
     case 7:
@@ -2558,7 +3438,7 @@ function __c6(j: number): any {
           framework: S.optional(S.String),
           sdkLanguage: S.optional(S.String),
           sdkVersion: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(V2AppSyncStatus),
           syncedAt: S.optional(S.String),
           url: S.optional(S.String),
         }),
@@ -2572,16 +3452,16 @@ function __c6(j: number): any {
           functionCount: S.optional(S.Number),
           id: S.optional(S.String),
           isArchived: S.optional(S.Boolean),
-          latestSync: S.optional(__S(48)),
-          method: S.optional(S.String),
+          latestSync: S.optional(V2AppSync),
+          method: S.optional(V2AppMethod),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "V2App" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(49)),
-          metadata: S.optional(__S(3)),
+          data: S.optional(V2App),
+          metadata: S.optional(V2ResponseMetadata),
         }),
       ).annotate({ identifier: "V2GetAppResponse" });
     case 3:
@@ -2593,13 +3473,13 @@ function __c6(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/apps", code: 200 })),
       ).annotate({ identifier: "GetV2AppsRequest" });
     case 4:
-      return S.Array(__S(49));
+      return S.Array(V2App);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(52),
-          metadata: S.optional(__S(3)),
-          page: S.optional(__S(37)),
+          data: V2GetAppsResponseDataList,
+          metadata: S.optional(V2ResponseMetadata),
+          page: S.optional(V2Page),
         }),
       ).annotate({ identifier: "V2GetAppsResponse" });
     case 6:
@@ -2624,7 +3504,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          app: S.optional(__S(55)),
+          app: S.optional(V2AppRef),
           id: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -2634,7 +3514,7 @@ function __c7(j: number): any {
         S.Struct({
           batchId: S.optional(S.String),
           cronSchedule: S.optional(S.String),
-          eventIds: S.optional(__S(24)),
+          eventIds: S.optional(V2RunTriggerEventIdsList),
           eventName: S.optional(S.String),
           isBatch: S.optional(S.Boolean),
         }),
@@ -2642,26 +3522,26 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          app: S.optional(__S(55)),
+          app: S.optional(V2AppRef),
           durationMs: S.optional(S.String),
           endedAt: S.optional(S.String),
-          function: S.optional(__S(56)),
+          function: S.optional(V2FunctionRef),
           id: S.optional(S.String),
           output: S.optional(S.Unknown),
           queuedAt: S.optional(S.String),
           startedAt: S.optional(S.String),
-          status: S.optional(S.String),
-          trigger: S.optional(__S(57)),
+          status: S.optional(V2FunctionRunStatus),
+          trigger: S.optional(V2RunTrigger),
         }),
       ).annotate({ identifier: "V2FunctionRun" });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(V2FunctionRun);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(59),
-          metadata: S.optional(__S(3)),
-          page: S.optional(__S(37)),
+          data: V2GetEventRunsResponseDataList,
+          metadata: S.optional(V2ResponseMetadata),
+          page: S.optional(V2Page),
         }),
       ).annotate({ identifier: "V2GetEventRunsResponse" });
     case 5:
@@ -2691,7 +3571,7 @@ function __c7(j: number): any {
         identifier: "V2ExperimentVariantWeight",
       });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(V2ExperimentVariantWeight);
   }
 }
 function __c8(j: number): any {
@@ -2708,11 +3588,11 @@ function __c8(j: number): any {
         identifier: "V2ExperimentVariantMetric",
       });
     case 1:
-      return S.Array(__S(64));
+      return S.Array(V2ExperimentVariantMetric);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metrics: S.optional(__S(65)),
+          metrics: S.optional(V2ExperimentVariantMetricsMetricsList),
           runCount: S.optional(S.Number),
           variantName: S.optional(S.String),
         }),
@@ -2720,7 +3600,7 @@ function __c8(j: number): any {
         identifier: "V2ExperimentVariantMetrics",
       });
     case 3:
-      return S.Array(__S(66));
+      return S.Array(V2ExperimentVariantMetrics);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2728,15 +3608,15 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           lastSeen: S.optional(S.String),
           selectionStrategy: S.optional(S.String),
-          variantWeights: S.optional(__S(63)),
-          variants: S.optional(__S(67)),
+          variantWeights: S.optional(V2ExperimentDetailVariantWeightsList),
+          variants: S.optional(V2ExperimentDetailVariantsList),
         }),
       ).annotate({ identifier: "V2ExperimentDetail" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(68)),
-          metadata: S.optional(__S(3)),
+          data: S.optional(V2ExperimentDetail),
+          metadata: S.optional(V2ResponseMetadata),
         }),
       ).annotate({ identifier: "V2GetExperimentResponse" });
     case 6:
@@ -2761,7 +3641,7 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71));
+      return S.Array(V2FunctionCancellationConfiguration);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2775,14 +3655,14 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          limit: S.optional(__S(73)),
-          scope: S.optional(S.String),
+          limit: S.optional(V2FunctionConcurrencyLimitConfiguration),
+          scope: S.optional(V2FunctionConcurrencyScope),
         }),
       ).annotate({
         identifier: "V2FunctionConcurrencyConfiguration",
       });
     case 3:
-      return S.Array(__S(74));
+      return S.Array(V2FunctionConcurrencyConfiguration);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2829,7 +3709,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          mode: S.optional(S.String),
+          mode: S.optional(V2FunctionSingletonMode),
         }),
       ).annotate({
         identifier: "V2FunctionSingletonConfiguration",
@@ -2848,15 +3728,15 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cancellations: S.optional(__S(72)),
-          concurrency: S.optional(__S(75)),
-          debounce: S.optional(__S(76)),
-          eventsBatch: S.optional(__S(77)),
+          cancellations: S.optional(V2FunctionConfigurationCancellationsList),
+          concurrency: S.optional(V2FunctionConfigurationConcurrencyList),
+          debounce: S.optional(V2FunctionDebounceConfiguration),
+          eventsBatch: S.optional(V2FunctionEventsBatchConfiguration),
           priority: S.optional(S.String),
-          rateLimit: S.optional(__S(78)),
-          retries: S.optional(__S(79)),
-          singleton: S.optional(__S(80)),
-          throttle: S.optional(__S(81)),
+          rateLimit: S.optional(V2FunctionRateLimitConfiguration),
+          retries: S.optional(V2FunctionRetryConfiguration),
+          singleton: S.optional(V2FunctionSingletonConfiguration),
+          throttle: S.optional(V2FunctionThrottleConfiguration),
         }),
       ).annotate({ identifier: "V2FunctionConfiguration" });
     case 3:
@@ -2870,31 +3750,31 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           if: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(V2FunctionTriggerType),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "V2FunctionTrigger" });
     case 5:
-      return S.Array(__S(84));
+      return S.Array(V2FunctionTrigger);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          app: S.optional(__S(55)),
-          configuration: S.optional(__S(82)),
-          failureHandler: S.optional(__S(83)),
+          app: S.optional(V2AppRef),
+          configuration: S.optional(V2FunctionConfiguration),
+          failureHandler: S.optional(V2FunctionFailureHandler),
           id: S.optional(S.String),
           isArchived: S.optional(S.Boolean),
           isPaused: S.optional(S.Boolean),
           name: S.optional(S.String),
           slug: S.optional(S.String),
-          triggers: S.optional(__S(85)),
+          triggers: S.optional(V2FunctionTriggersList),
         }),
       ).annotate({ identifier: "V2Function" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(86)),
-          metadata: S.optional(__S(3)),
+          data: S.optional(V2Function),
+          metadata: S.optional(V2ResponseMetadata),
         }),
       ).annotate({ identifier: "V2GetFunctionResponse" });
   }
@@ -2911,8 +3791,8 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(58)),
-          metadata: S.optional(__S(3)),
+          data: S.optional(V2FunctionRun),
+          metadata: S.optional(V2ResponseMetadata),
         }),
       ).annotate({ identifier: "V2GetFunctionRunResponse" });
     case 2:
@@ -2924,13 +3804,13 @@ function __c11(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/apps/{appId}/functions", code: 200 })),
       ).annotate({ identifier: "GetV2FunctionsRequest" });
     case 3:
-      return S.Array(__S(86));
+      return S.Array(V2Function);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(91),
-          metadata: S.optional(__S(3)),
-          page: S.optional(__S(37)),
+          data: V2GetFunctionsResponseDataList,
+          metadata: S.optional(V2ResponseMetadata),
+          page: S.optional(V2Page),
         }),
       ).annotate({ identifier: "V2GetFunctionsResponse" });
     case 5:
@@ -2943,14 +3823,14 @@ function __c11(j: number): any {
         identifier: "GetV2FunctionTraceRequest",
       });
     case 6:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(97)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => V2TraceSpan));
     case 7:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           scope: S.optional(S.String),
           updatedAt: S.optional(S.String),
-          values: S.optional(__S(11)),
+          values: S.optional(V2TraceSpanMetadataValuesMap),
         }),
       ).annotate({ identifier: "V2TraceSpanMetadata" });
   }
@@ -2958,37 +3838,37 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95));
+      return S.Array(V2TraceSpanMetadata);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          children: S.optional(__S(94)),
+          children: S.optional(V2TraceSpanChildrenList),
           durationMs: S.optional(S.String),
           endedAt: S.optional(S.String),
           id: S.optional(S.String),
           input: S.optional(S.Unknown),
-          metadata: S.optional(__S(96)),
+          metadata: S.optional(V2TraceSpanMetadataList),
           name: S.optional(S.String),
           output: S.optional(S.Unknown),
           queuedAt: S.optional(S.String),
           startedAt: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(V2TraceSpanStatus),
           stepId: S.optional(S.String),
-          stepOp: S.optional(S.String),
+          stepOp: S.optional(V2TraceStepOp),
         }),
       ).annotate({ identifier: "V2TraceSpan" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          rootSpan: S.optional(__S(97)),
+          rootSpan: S.optional(V2TraceSpan),
           runId: S.optional(S.String),
         }),
       ).annotate({ identifier: "V2FunctionTrace" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(98)),
-          metadata: S.optional(__S(3)),
+          data: S.optional(V2FunctionTrace),
+          metadata: S.optional(V2ResponseMetadata),
         }),
       ).annotate({
         identifier: "V2GetFunctionTraceResponse",
@@ -3013,21 +3893,21 @@ function __c12(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          command: S.optional(__S(24)),
+          command: S.optional(V2SandboxProcessCommandList),
           endedAt: S.optional(S.String),
           exitCode: S.optional(S.Number),
           id: S.optional(S.String),
           pid: S.optional(S.Number),
           startedAt: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(V2SandboxProcessState),
           terminationSignal: S.optional(S.Number),
         }),
       ).annotate({ identifier: "V2SandboxProcess" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(102)),
-          metadata: S.optional(__S(15)),
+          data: S.optional(V2SandboxProcess),
+          metadata: S.optional(V2SandboxResponseMetadata),
         }),
       ).annotate({
         identifier: "V2GetSandboxProcessResponse",
@@ -3058,15 +3938,15 @@ function __c13(j: number): any {
           at: S.optional(S.String),
           data: S.optional(S.String),
           encoding: S.optional(S.String),
-          stream: S.optional(S.String),
+          stream: S.optional(V2SandboxLogStream),
         }),
       ).annotate({ identifier: "V2SandboxLogChunk" });
     case 2:
-      return S.Array(__S(105));
+      return S.Array(V2SandboxLogChunk);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          chunks: S.optional(__S(106)),
+          chunks: S.optional(V2GetSandboxProcessOutputDataChunksList),
         }),
       ).annotate({
         identifier: "V2GetSandboxProcessOutputData",
@@ -3074,8 +3954,8 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(107)),
-          metadata: S.optional(__S(15)),
+          data: S.optional(V2GetSandboxProcessOutputData),
+          metadata: S.optional(V2SandboxResponseMetadata),
         }),
       ).annotate({
         identifier: "V2GetSandboxProcessOutputResponse",
@@ -3105,8 +3985,8 @@ function __c13(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(110)),
-          metadata: S.optional(__S(3)),
+          data: S.optional(V2InvokeFunctionData),
+          metadata: S.optional(V2ResponseMetadata),
         }),
       ).annotate({ identifier: "V2InvokeFunctionResponse" });
   }
@@ -3128,23 +4008,23 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           firstSeen: S.optional(S.String),
-          function: S.optional(__S(56)),
+          function: S.optional(V2FunctionRef),
           id: S.optional(S.String),
           lastSeen: S.optional(S.String),
           selectionStrategy: S.optional(S.String),
           totalRuns: S.optional(S.Number),
           variantCount: S.optional(S.Number),
-          variants: S.optional(__S(24)),
+          variants: S.optional(V2ExperimentVariantsList),
         }),
       ).annotate({ identifier: "V2Experiment" });
     case 2:
-      return S.Array(__S(113));
+      return S.Array(V2Experiment);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(114),
-          metadata: S.optional(__S(3)),
-          page: S.optional(__S(37)),
+          data: V2ListExperimentsResponseDataList,
+          metadata: S.optional(V2ResponseMetadata),
+          page: S.optional(V2Page),
         }),
       ).annotate({
         identifier: "V2ListExperimentsResponse",
@@ -3179,7 +4059,7 @@ function __c14(j: number): any {
           from: S.optional(S.String.pipe(T.Query())),
           until: S.optional(S.String.pipe(T.Query())),
           timeField: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(__S(24).pipe(T.Query())),
+          status: S.optional(ListV2FunctionRunsRequestStatusList.pipe(T.Query())),
           isDeferred: S.optional(S.Boolean.pipe(T.Query())),
           order: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -3191,9 +4071,9 @@ function __c14(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(59),
-          metadata: S.optional(__S(3)),
-          page: S.optional(__S(37)),
+          data: V2ListFunctionRunsResponseDataList,
+          metadata: S.optional(V2ResponseMetadata),
+          page: S.optional(V2Page),
         }),
       ).annotate({
         identifier: "V2ListFunctionRunsResponse",
@@ -3219,13 +4099,13 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "V2InsightsEventSchema" });
     case 1:
-      return S.Array(__S(120));
+      return S.Array(V2InsightsEventSchema);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(121),
-          metadata: S.optional(__S(3)),
-          page: S.optional(__S(37)),
+          data: V2ListInsightsEventSchemasResponseDataList,
+          metadata: S.optional(V2ResponseMetadata),
+          page: S.optional(V2Page),
         }),
       ).annotate({
         identifier: "V2ListInsightsEventSchemasResponse",
@@ -3245,17 +4125,17 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "V2InsightsTableColumn" });
     case 5:
-      return S.Array(__S(124));
+      return S.Array(V2InsightsTableColumn);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(__S(125)),
+          columns: S.optional(V2InsightsTableColumnsList),
           description: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "V2InsightsTable" });
     case 7:
-      return S.Array(__S(126));
+      return S.Array(V2InsightsTable);
   }
 }
 function __c16(j: number): any {
@@ -3263,8 +4143,8 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(127)),
-          metadata: S.optional(__S(3)),
+          data: S.optional(V2ListInsightsTablesResponseDataList),
+          metadata: S.optional(V2ResponseMetadata),
         }),
       ).annotate({
         identifier: "V2ListInsightsTablesResponse",
@@ -3278,9 +4158,9 @@ function __c16(j: number): any {
           from: S.optional(S.String.pipe(T.Query())),
           until: S.optional(S.String.pipe(T.Query())),
           timeField: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(__S(24).pipe(T.Query())),
-          appId: S.optional(__S(24).pipe(T.Query())),
-          functionId: S.optional(__S(24).pipe(T.Query())),
+          status: S.optional(ListV2RunsRequestStatusList.pipe(T.Query())),
+          appId: S.optional(ListV2RunsRequestAppIdList.pipe(T.Query())),
+          functionId: S.optional(ListV2RunsRequestFunctionIdList.pipe(T.Query())),
           isDeferred: S.optional(S.Boolean.pipe(T.Query())),
           order: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/runs", code: 200 })),
@@ -3293,13 +4173,13 @@ function __c16(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/sandboxes", code: 200 })),
       ).annotate({ identifier: "ListV2SandboxesRequest" });
     case 3:
-      return S.Array(__S(14));
+      return S.Array(V2Sandbox);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(131),
-          metadata: S.optional(__S(15)),
-          page: S.optional(__S(37)),
+          data: V2ListSandboxesResponseDataList,
+          metadata: S.optional(V2SandboxResponseMetadata),
+          page: S.optional(V2Page),
         }),
       ).annotate({ identifier: "V2ListSandboxesResponse" });
     case 5:
@@ -3313,13 +4193,13 @@ function __c16(j: number): any {
         identifier: "ListV2SandboxProcessesRequest",
       });
     case 6:
-      return S.Array(__S(102));
+      return S.Array(V2SandboxProcess);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(134),
-          metadata: S.optional(__S(15)),
-          page: S.optional(__S(37)),
+          data: V2ListSandboxProcessesResponseDataList,
+          metadata: S.optional(V2SandboxResponseMetadata),
+          page: S.optional(V2Page),
         }),
       ).annotate({
         identifier: "V2ListSandboxProcessesResponse",
@@ -3344,13 +4224,13 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "V2SessionKey" });
     case 2:
-      return S.Array(__S(137));
+      return S.Array(V2SessionKey);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(138),
-          metadata: S.optional(__S(3)),
-          page: S.optional(__S(37)),
+          data: V2ListSessionKeysResponseDataList,
+          metadata: S.optional(V2ResponseMetadata),
+          page: S.optional(V2Page),
         }),
       ).annotate({
         identifier: "V2ListSessionKeysResponse",
@@ -3373,21 +4253,21 @@ function __c17(j: number): any {
         S.Struct({
           endedAt: S.optional(S.String),
           eventName: S.optional(S.String),
-          function: S.optional(__S(56)),
+          function: S.optional(V2FunctionRef),
           id: S.optional(S.String),
           queuedAt: S.optional(S.String),
           startedAt: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(V2FunctionRunStatus),
         }),
       ).annotate({ identifier: "V2SessionRun" });
     case 6:
-      return S.Array(__S(141));
+      return S.Array(V2SessionRun);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(142),
-          metadata: S.optional(__S(3)),
-          page: S.optional(__S(37)),
+          data: V2ListSessionRunsResponseDataList,
+          metadata: S.optional(V2ResponseMetadata),
+          page: S.optional(V2Page),
         }),
       ).annotate({
         identifier: "V2ListSessionRunsResponse",
@@ -3408,26 +4288,26 @@ function __c18(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/sessions/{sessionKey}", code: 200 })),
       ).annotate({ identifier: "ListV2SessionsRequest" });
     case 1:
-      return S.Array(__S(56));
+      return S.Array(V2FunctionRef);
     case 2:
       return S.suspend(() =>
         S.Struct({
           failedRunCount: S.optional(S.Number),
           failureRate: S.optional(S.Number),
-          functions: S.optional(__S(145)),
+          functions: S.optional(V2SessionGroupFunctionsList),
           id: S.optional(S.String),
           lastActiveAt: S.optional(S.String),
           runCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "V2SessionGroup" });
     case 3:
-      return S.Array(__S(146));
+      return S.Array(V2SessionGroup);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(147),
-          metadata: S.optional(__S(3)),
-          page: S.optional(__S(37)),
+          data: V2ListSessionsResponseDataList,
+          metadata: S.optional(V2ResponseMetadata),
+          page: S.optional(V2Page),
         }),
       ).annotate({ identifier: "V2ListSessionsResponse" });
     case 5:
@@ -3438,13 +4318,13 @@ function __c18(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/env/webhooks", code: 200 })),
       ).annotate({ identifier: "ListV2WebhooksRequest" });
     case 6:
-      return S.Array(__S(27));
+      return S.Array(V2Webhook);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(150),
-          metadata: S.optional(__S(3)),
-          page: S.optional(__S(37)),
+          data: V2ListWebhooksResponseDataList,
+          metadata: S.optional(V2ResponseMetadata),
+          page: S.optional(V2Page),
         }),
       ).annotate({ identifier: "V2ListWebhooksResponse" });
   }
@@ -3488,8 +4368,8 @@ function __c19(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(156)),
-          metadata: S.optional(__S(3)),
+          data: S.optional(V2SendEventData),
+          metadata: S.optional(V2ResponseMetadata),
         }),
       ).annotate({ identifier: "V2SendEventResponse" });
     case 6:
@@ -3521,9 +4401,9 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sandboxId: S.String.pipe(T.Label()),
-          command: S.optional(__S(24)),
+          command: S.optional(StartV2SandboxProcessRequestCommandList),
           cwd: S.optional(S.String),
-          environment: S.optional(__S(11)),
+          environment: S.optional(StartV2SandboxProcessRequestEnvironmentMap),
         }).pipe(T.Http({ method: "POST", uri: "/sandboxes/{sandboxId}/processes", code: 200 })),
       ).annotate({
         identifier: "StartV2SandboxProcessRequest",
@@ -3546,16 +4426,16 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           appId: S.optional(S.String),
-          error: S.optional(__S(162)),
+          error: S.optional(V2SyncAppError),
           id: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(V2SyncAppDataStatus),
         }),
       ).annotate({ identifier: "V2SyncAppData" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(163)),
-          metadata: S.optional(__S(3)),
+          data: S.optional(V2SyncAppData),
+          metadata: S.optional(V2ResponseMetadata),
         }),
       ).annotate({ identifier: "V2SyncAppResponse" });
     case 5:
@@ -3574,7 +4454,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(V2InsightsOutputColumnType),
         }),
       ).annotate({ identifier: "V2InsightsOutputColumn" });
   }
@@ -3582,7 +4462,7 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(167));
+      return S.Array(V2InsightsOutputColumn);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3598,28 +4478,28 @@ function __c21(j: number): any {
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
-          position: S.optional(__S(169)),
-          severity: S.optional(S.String),
+          position: S.optional(V2InsightsDiagnosticPosition),
+          severity: S.optional(V2InsightsDiagnosticSeverity),
         }),
       ).annotate({ identifier: "V2InsightsDiagnostic" });
     case 3:
-      return S.Array(__S(170));
+      return S.Array(V2InsightsDiagnostic);
     case 4:
       return S.Array(S.Unknown);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(172)),
+          values: S.optional(V2InsightsRowValuesList),
         }),
       ).annotate({ identifier: "V2InsightsRow" });
     case 6:
-      return S.Array(__S(173));
+      return S.Array(V2InsightsRow);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(__S(168)),
-          diagnostics: S.optional(__S(171)),
-          rows: S.optional(__S(174)),
+          columns: S.optional(V2QueryInsightsDataColumnsList),
+          diagnostics: S.optional(V2QueryInsightsDataDiagnosticsList),
+          rows: S.optional(V2QueryInsightsDataRowsList),
         }),
       ).annotate({ identifier: "V2QueryInsightsData" });
   }
@@ -3629,8 +4509,8 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(175)),
-          metadata: S.optional(__S(3)),
+          data: S.optional(V2QueryInsightsData),
+          metadata: S.optional(V2ResponseMetadata),
         }),
       ).annotate({ identifier: "V2QueryInsightsResponse" });
     case 1:
@@ -3653,8 +4533,8 @@ function __c22(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(178)),
-          metadata: S.optional(__S(3)),
+          data: S.optional(V2QueryInsightsPromptData),
+          metadata: S.optional(V2ResponseMetadata),
         }),
       ).annotate({
         identifier: "V2QueryInsightsPromptResponse",
@@ -3662,7 +4542,7 @@ function __c22(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          input: S.optional(__S(172)),
+          input: S.optional(V2RerunFromStepInputList),
           stepId: S.optional(S.String),
         }),
       ).annotate({ identifier: "V2RerunFromStep" });
@@ -3670,7 +4550,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           runId: S.String.pipe(T.Label()),
-          fromStep: S.optional(__S(180)),
+          fromStep: S.optional(V2RerunFromStep),
         }).pipe(T.Http({ method: "POST", uri: "/runs/{runId}/rerun", code: 200 })),
       ).annotate({ identifier: "V2RerunRequest" });
     case 6:
@@ -3693,19 +4573,19 @@ function __c22(j: number): any {
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(183));
+      return S.Array(ProtobufAny);
     case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
-          details: S.optional(__S(184)),
+          details: S.optional(RpcStatusDetailsList),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "RpcStatus" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(105)),
+          data: S.optional(V2SandboxLogChunk),
         }),
       ).annotate({
         identifier: "V2StreamSandboxLogsResponse",
@@ -3713,8 +4593,8 @@ function __c23(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(185)),
-          result: S.optional(__S(186)),
+          error: S.optional(RpcStatus),
+          result: S.optional(V2StreamSandboxLogsResponse),
         }),
       ).annotate({
         identifier: "V2StreamSandboxLogsResponse2",
@@ -3743,7 +4623,7 @@ function __c23(j: number): any {
           mode: S.optional(S.String.pipe(T.Query())),
           contentType: S.optional(S.String),
           data: S.optional(S.String),
-          extensions: S.optional(__S(184)),
+          extensions: S.optional(V2WriteSandboxFileRequestExtensionsList),
         }).pipe(T.Http({ method: "PUT", uri: "/sandboxes/{sandboxId}/files", code: 200 })),
       ).annotate({
         identifier: "V2WriteSandboxFileRequest",
@@ -3758,8 +4638,8 @@ function __c23(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(190)),
-          metadata: S.optional(__S(15)),
+          data: S.optional(V2WriteSandboxFileData),
+          metadata: S.optional(V2SandboxResponseMetadata),
         }),
       ).annotate({
         identifier: "V2WriteSandboxFileResponse",
@@ -3784,64 +4664,5 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "WaitV2SandboxProcessRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
   }
 }

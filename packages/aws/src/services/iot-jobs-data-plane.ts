@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "IoT Jobs Data Plane",
   serviceShapeName: "IotLaserThingJobManagerExternalService",
@@ -158,6 +156,10 @@ export interface DescribeJobExecutionRequest {
   includeJobDocument?: boolean;
   executionNumber?: number;
 }
+const DescribeJobExecutionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DescribeJobExecutionRequest>;
 export type JobId = string;
 export type JobExecutionStatus =
   | "QUEUED"
@@ -169,9 +171,12 @@ export type JobExecutionStatus =
   | "REMOVED"
   | "CANCELED"
   | (string & {});
+const JobExecutionStatus = S.String;
+
 export type DetailsKey = string;
 export type DetailsValue = string;
 export type DetailsMap = { [key: string]: string | undefined };
+const DetailsMap = /*@__PURE__*/ __L.at(__c0, 1);
 export type QueuedAt = number;
 export type StartedAt = number;
 export type LastUpdatedAt = number;
@@ -191,12 +196,21 @@ export interface JobExecution {
   executionNumber?: number;
   jobDocument?: string;
 }
+const JobExecution = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<JobExecution>;
 export interface DescribeJobExecutionResponse {
   execution?: JobExecution;
 }
+const DescribeJobExecutionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DescribeJobExecutionResponse>;
 export interface GetPendingJobExecutionsRequest {
   thingName: string;
 }
+const GetPendingJobExecutionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetPendingJobExecutionsRequest>;
 export interface JobExecutionSummary {
   jobId?: string;
   queuedAt?: number;
@@ -205,11 +219,17 @@ export interface JobExecutionSummary {
   versionNumber?: number;
   executionNumber?: number;
 }
+const JobExecutionSummary = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<JobExecutionSummary>;
 export type JobExecutionSummaryList = JobExecutionSummary[];
+const JobExecutionSummaryList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface GetPendingJobExecutionsResponse {
   inProgressJobs?: JobExecutionSummary[];
   queuedJobs?: JobExecutionSummary[];
 }
+const GetPendingJobExecutionsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetPendingJobExecutionsResponse>;
 export type TargetArn = string;
 export type CommandArn = string;
 export type CommandParameterName = string;
@@ -229,7 +249,12 @@ export interface CommandParameterValue {
   BIN?: Uint8Array;
   UL?: string;
 }
+const CommandParameterValue = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CommandParameterValue>;
 export type CommandExecutionParameterMap = { [key: string]: CommandParameterValue | undefined };
+const CommandExecutionParameterMap = /*@__PURE__*/ __L.at(__c1, 1);
 export type CommandExecutionTimeoutInSeconds = number;
 export type ClientRequestTokenV2 = string;
 export interface StartCommandExecutionRequest {
@@ -239,19 +264,33 @@ export interface StartCommandExecutionRequest {
   executionTimeoutSeconds?: number;
   clientToken?: string;
 }
+const StartCommandExecutionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<StartCommandExecutionRequest>;
 export type CommandExecutionId = string;
 export interface StartCommandExecutionResponse {
   executionId?: string;
 }
+const StartCommandExecutionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<StartCommandExecutionResponse>;
 export type StepTimeoutInMinutes = number;
 export interface StartNextPendingJobExecutionRequest {
   thingName: string;
   statusDetails?: { [key: string]: string | undefined };
   stepTimeoutInMinutes?: number;
 }
+const StartNextPendingJobExecutionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<StartNextPendingJobExecutionRequest>;
 export interface StartNextPendingJobExecutionResponse {
   execution?: JobExecution;
 }
+const StartNextPendingJobExecutionResponse =
+  DescribeJobExecutionResponse as any as S.Schema<StartNextPendingJobExecutionResponse>;
 export type ExpectedVersion = number;
 export type IncludeExecutionState = boolean;
 export interface UpdateJobExecutionRequest {
@@ -265,15 +304,24 @@ export interface UpdateJobExecutionRequest {
   includeJobDocument?: boolean;
   executionNumber?: number;
 }
+const UpdateJobExecutionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<UpdateJobExecutionRequest>;
 export interface JobExecutionState {
   status?: JobExecutionStatus;
   statusDetails?: { [key: string]: string | undefined };
   versionNumber?: number;
 }
+const JobExecutionState = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<JobExecutionState>;
 export interface UpdateJobExecutionResponse {
   executionState?: JobExecutionState;
   jobDocument?: string;
 }
+const UpdateJobExecutionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<UpdateJobExecutionResponse>;
 export type ErrorMessage = string;
 export type BinaryBlob = Uint8Array;
 export type ResourceId = string;
@@ -296,8 +344,8 @@ export const describeJobExecution: API.OperationMethod<
   DescribeJobExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DescribeJobExecutionRequest>,
-  output: __S(3) as any as S.Schema<DescribeJobExecutionResponse>,
+  input: DescribeJobExecutionRequest,
+  output: DescribeJobExecutionResponse,
   errors: [
     CertificateValidationException,
     InvalidRequestException,
@@ -329,8 +377,8 @@ export const getPendingJobExecutions: API.OperationMethod<
   GetPendingJobExecutionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetPendingJobExecutionsRequest>,
-  output: __S(7) as any as S.Schema<GetPendingJobExecutionsResponse>,
+  input: GetPendingJobExecutionsRequest,
+  output: GetPendingJobExecutionsResponse,
   errors: [
     CertificateValidationException,
     InvalidRequestException,
@@ -361,8 +409,8 @@ export const startCommandExecution: API.OperationMethod<
   StartCommandExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<StartCommandExecutionRequest>,
-  output: __S(11) as any as S.Schema<StartCommandExecutionResponse>,
+  input: StartCommandExecutionRequest,
+  output: StartCommandExecutionResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -395,8 +443,8 @@ export const startNextPendingJobExecution: API.OperationMethod<
   StartNextPendingJobExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<StartNextPendingJobExecutionRequest>,
-  output: __S(3) as any as S.Schema<StartNextPendingJobExecutionResponse>,
+  input: StartNextPendingJobExecutionRequest,
+  output: StartNextPendingJobExecutionResponse,
   errors: [
     CertificateValidationException,
     InvalidRequestException,
@@ -428,8 +476,8 @@ export const updateJobExecution: API.OperationMethod<
   UpdateJobExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<UpdateJobExecutionRequest>,
-  output: __S(15) as any as S.Schema<UpdateJobExecutionResponse>,
+  input: UpdateJobExecutionRequest,
+  output: UpdateJobExecutionResponse,
   errors: [
     CertificateValidationException,
     InvalidRequestException,
@@ -473,8 +521,8 @@ function __c0(j: number): any {
         S.Struct({
           jobId: S.optional(S.String),
           thingName: S.optional(S.String),
-          status: S.optional(S.String),
-          statusDetails: S.optional(__S(1)),
+          status: S.optional(JobExecutionStatus),
+          statusDetails: S.optional(DetailsMap),
           queuedAt: S.optional(S.Number),
           startedAt: S.optional(S.Number),
           lastUpdatedAt: S.optional(S.Number),
@@ -485,7 +533,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "JobExecution" });
     case 3:
-      return S.suspend(() => S.Struct({ execution: S.optional(__S(2)) })).annotate({
+      return S.suspend(() => S.Struct({ execution: S.optional(JobExecution) })).annotate({
         identifier: "DescribeJobExecutionResponse",
       });
     case 4:
@@ -515,12 +563,12 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "JobExecutionSummary" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(JobExecutionSummary);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          inProgressJobs: S.optional(__S(6)),
-          queuedJobs: S.optional(__S(6)),
+          inProgressJobs: S.optional(JobExecutionSummaryList),
+          queuedJobs: S.optional(JobExecutionSummaryList),
         }),
       ).annotate({
         identifier: "GetPendingJobExecutionsResponse",
@@ -542,13 +590,13 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "CommandParameterValue" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(8).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ CommandParameterValue.pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
           targetArn: S.String,
           commandArn: S.String,
-          parameters: S.optional(__S(9)),
+          parameters: S.optional(CommandExecutionParameterMap),
           executionTimeoutSeconds: S.optional(S.Number),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -572,7 +620,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           thingName: S.String.pipe(T.HttpLabel("thingName")),
-          statusDetails: S.optional(__S(1)),
+          statusDetails: S.optional(DetailsMap),
           stepTimeoutInMinutes: S.optional(S.Number),
         }).pipe(
           T.all(
@@ -592,8 +640,8 @@ function __c1(j: number): any {
         S.Struct({
           jobId: S.String.pipe(T.HttpLabel("jobId")),
           thingName: S.String.pipe(T.HttpLabel("thingName")),
-          status: S.String,
-          statusDetails: S.optional(__S(1)),
+          status: JobExecutionStatus,
+          statusDetails: S.optional(DetailsMap),
           stepTimeoutInMinutes: S.optional(S.Number),
           expectedVersion: S.optional(S.Number),
           includeJobExecutionState: S.optional(S.Boolean),
@@ -615,32 +663,19 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
-          statusDetails: S.optional(__S(1)),
+          status: S.optional(JobExecutionStatus),
+          statusDetails: S.optional(DetailsMap),
           versionNumber: S.optional(S.Number),
         }),
       ).annotate({ identifier: "JobExecutionState" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          executionState: S.optional(__S(14)),
+          executionState: S.optional(JobExecutionState),
           jobDocument: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateJobExecutionResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

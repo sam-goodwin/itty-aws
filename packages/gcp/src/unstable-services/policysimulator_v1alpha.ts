@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -42,8 +40,17 @@ export interface GetFoldersLocationsAccessPolicySimulationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetFoldersLocationsAccessPolicySimulationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetFoldersLocationsAccessPolicySimulationsOperationsRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -53,6 +60,8 @@ export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
+const GoogleRpcStatus = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GoogleRpcStatus>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -66,42 +75,89 @@ export interface GoogleLongrunningOperation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
+const GoogleLongrunningOperation = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GoogleLongrunningOperation>;
+
 export interface GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest>;
+
 export interface GetFoldersLocationsReplaysOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetFoldersLocationsReplaysOperationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetFoldersLocationsReplaysOperationsRequest>;
+
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetOperationsRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetOperationsRequest>;
+
 export interface GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest>;
+
 export interface GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest>;
+
 export interface GetOrganizationsLocationsReplaysOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetOrganizationsLocationsReplaysOperationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetOrganizationsLocationsReplaysOperationsRequest>;
+
 export interface GetProjectsLocationsAccessPolicySimulationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetProjectsLocationsAccessPolicySimulationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetProjectsLocationsAccessPolicySimulationsOperationsRequest>;
+
 export interface GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest>;
+
 export interface GetProjectsLocationsReplaysOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetProjectsLocationsReplaysOperationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetProjectsLocationsReplaysOperationsRequest>;
+
 export interface ListFoldersLocationsReplaysOperationsRequest {
   /** The standard list filter. */
   filter?: string;
@@ -114,8 +170,20 @@ export interface ListFoldersLocationsReplaysOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
+const ListFoldersLocationsReplaysOperationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ListFoldersLocationsReplaysOperationsRequest>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<StringList>;
+
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
+const GoogleLongrunningOperationList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GoogleLongrunningOperationList>;
+
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -125,6 +193,11 @@ export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: GoogleLongrunningOperationList;
 }
+const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
+
 export interface ListOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
@@ -137,6 +210,11 @@ export interface ListOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListOperationsRequest>;
+
 export interface ListOrganizationsLocationsReplaysOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
@@ -149,6 +227,11 @@ export interface ListOrganizationsLocationsReplaysOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
+const ListOrganizationsLocationsReplaysOperationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListOrganizationsLocationsReplaysOperationsRequest>;
+
 export interface ListProjectsLocationsReplaysOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
@@ -161,6 +244,11 @@ export interface ListProjectsLocationsReplaysOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
+const ListProjectsLocationsReplaysOperationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListProjectsLocationsReplaysOperationsRequest>;
+
 export type GetFoldersLocationsAccessPolicySimulationsOperationsError =
   | NotFound
   | Forbidden
@@ -172,8 +260,8 @@ export const getFoldersLocationsAccessPolicySimulationsOperations: API.Operation
   GetFoldersLocationsAccessPolicySimulationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetFoldersLocationsAccessPolicySimulationsOperationsRequest>,
-  output: __S(4) as any as S.Schema<GoogleLongrunningOperation>,
+  input: GetFoldersLocationsAccessPolicySimulationsOperationsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -190,8 +278,8 @@ export const getFoldersLocationsOrgPolicyViolationsPreviewsOperations: API.Opera
   GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest>,
-  output: __S(4) as any as S.Schema<GoogleLongrunningOperation>,
+  input: GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -205,8 +293,8 @@ export const getFoldersLocationsReplaysOperations: API.OperationMethod<
   GetFoldersLocationsReplaysOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetFoldersLocationsReplaysOperationsRequest>,
-  output: __S(4) as any as S.Schema<GoogleLongrunningOperation>,
+  input: GetFoldersLocationsReplaysOperationsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -220,8 +308,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<GetOperationsRequest>,
-  output: __S(4) as any as S.Schema<GoogleLongrunningOperation>,
+  input: GetOperationsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -238,10 +326,8 @@ export const getOrganizationsLocationsAccessPolicySimulationsOperations: API.Ope
   GetOrganizationsLocationsAccessPolicySimulationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    8,
-  ) as any as S.Schema<GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest>,
-  output: __S(4) as any as S.Schema<GoogleLongrunningOperation>,
+  input: GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -258,10 +344,8 @@ export const getOrganizationsLocationsOrgPolicyViolationsPreviewsOperations: API
   GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    9,
-  ) as any as S.Schema<GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest>,
-  output: __S(4) as any as S.Schema<GoogleLongrunningOperation>,
+  input: GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -275,8 +359,8 @@ export const getOrganizationsLocationsReplaysOperations: API.OperationMethod<
   GetOrganizationsLocationsReplaysOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<GetOrganizationsLocationsReplaysOperationsRequest>,
-  output: __S(4) as any as S.Schema<GoogleLongrunningOperation>,
+  input: GetOrganizationsLocationsReplaysOperationsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -293,8 +377,8 @@ export const getProjectsLocationsAccessPolicySimulationsOperations: API.Operatio
   GetProjectsLocationsAccessPolicySimulationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetProjectsLocationsAccessPolicySimulationsOperationsRequest>,
-  output: __S(4) as any as S.Schema<GoogleLongrunningOperation>,
+  input: GetProjectsLocationsAccessPolicySimulationsOperationsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -311,10 +395,8 @@ export const getProjectsLocationsOrgPolicyViolationsPreviewsOperations: API.Oper
   GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    12,
-  ) as any as S.Schema<GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest>,
-  output: __S(4) as any as S.Schema<GoogleLongrunningOperation>,
+  input: GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -328,8 +410,8 @@ export const getProjectsLocationsReplaysOperations: API.OperationMethod<
   GetProjectsLocationsReplaysOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<GetProjectsLocationsReplaysOperationsRequest>,
-  output: __S(4) as any as S.Schema<GoogleLongrunningOperation>,
+  input: GetProjectsLocationsReplaysOperationsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -344,8 +426,8 @@ export const listFoldersLocationsReplaysOperations: API.PaginatedOperationMethod
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(14) as any as S.Schema<ListFoldersLocationsReplaysOperationsRequest>,
-  output: __S(17) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: ListFoldersLocationsReplaysOperationsRequest,
+  output: GoogleLongrunningListOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -361,8 +443,8 @@ export const listOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(18) as any as S.Schema<ListOperationsRequest>,
-  output: __S(17) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: GoogleLongrunningListOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -378,8 +460,8 @@ export const listOrganizationsLocationsReplaysOperations: API.PaginatedOperation
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(19) as any as S.Schema<ListOrganizationsLocationsReplaysOperationsRequest>,
-  output: __S(17) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: ListOrganizationsLocationsReplaysOperationsRequest,
+  output: GoogleLongrunningListOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -395,8 +477,8 @@ export const listProjectsLocationsReplaysOperations: API.PaginatedOperationMetho
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(20) as any as S.Schema<ListProjectsLocationsReplaysOperationsRequest>,
-  output: __S(17) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: ListProjectsLocationsReplaysOperationsRequest,
+  output: GoogleLongrunningListOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -423,23 +505,23 @@ function __c0(j: number): any {
     case 1:
       return S.Record(S.String, S.Unknown);
     case 2:
-      return S.Array(__S(1));
+      return S.Array(DocumentMap);
     case 3:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(__S(2)),
+          details: S.optional(DocumentMapList),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GoogleRpcStatus" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(1)),
-          error: S.optional(__S(3)),
+          metadata: S.optional(DocumentMap),
+          error: S.optional(GoogleRpcStatus),
           done: S.optional(S.Boolean),
           name: S.optional(S.String),
-          response: S.optional(__S(1)),
+          response: S.optional(DocumentMap),
         }),
       ).annotate({
         identifier: "GoogleLongrunningOperation",
@@ -597,13 +679,13 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(4));
+      return S.Array(GoogleLongrunningOperation);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(15)),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(16)),
+          operations: S.optional(GoogleLongrunningOperationList),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
@@ -660,20 +742,5 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsReplaysOperationsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -26,6 +24,11 @@ export interface CancelWebAnalyticsContentAutopilotRunRequest {
   /** A UUID string identifying this content autopilot run. */
   id: string;
 }
+const CancelWebAnalyticsContentAutopilotRunRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CancelWebAnalyticsContentAutopilotRunRequest>;
+
 /** * `pending` - Pending * `generating` - Generating * `ready_for_review` - Ready for review * `completed` - Completed * `canceled` - Canceled * `failed` - Failed */
 export type ContentAutopilotRunRunStatusEnum =
   | "pending"
@@ -34,14 +37,29 @@ export type ContentAutopilotRunRunStatusEnum =
   | "completed"
   | "canceled"
   | "failed";
+const ContentAutopilotRunRunStatusEnum = S.String;
+
 /** * `standard` - Standard * `lower` - Lower */
 export type ContentAutopilotSnapshotConfidenceEnum = "standard" | "lower";
+const ContentAutopilotSnapshotConfidenceEnum = S.String;
+
 /** Public sources authorized for this run. */
 export type ContentAutopilotSnapshotSourceUrlsList = Array<string>;
+const ContentAutopilotSnapshotSourceUrlsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ContentAutopilotSnapshotSourceUrlsList>;
+
 /** Site paths authorized for this run. */
 export type ContentAutopilotSnapshotContentBoundariesList = Array<string>;
+const ContentAutopilotSnapshotContentBoundariesList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotSnapshotContentBoundariesList>;
+
 /** Editorial rules captured for this run. */
 export type ContentAutopilotSnapshotBrandRulesList = Array<string>;
+const ContentAutopilotSnapshotBrandRulesList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotSnapshotBrandRulesList>;
+
 export interface ContentAutopilotSnapshot {
   /** Site domain used for the run. */
   domain?: string;
@@ -54,14 +72,29 @@ export interface ContentAutopilotSnapshot {
   /** Editorial rules captured for this run. */
   brand_rules?: ContentAutopilotSnapshotBrandRulesList;
 }
+const ContentAutopilotSnapshot = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ContentAutopilotSnapshot>;
+
 export interface ContentAutopilotError {
   /** Stable machine-readable error code. */
   error_code: string;
   /** Error explanation suitable for the review workspace. */
   message: string;
 }
+const ContentAutopilotError = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ContentAutopilotError>;
+
 /** Inspectable workflow errors from this run. */
 export type ContentAutopilotRunErrorsList = Array<ContentAutopilotError>;
+const ContentAutopilotRunErrorsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ContentAutopilotRunErrorsList>;
+
 export interface ContentAutopilotRun {
   id: string;
   /** Site profile used by this run. */
@@ -76,16 +109,27 @@ export interface ContentAutopilotRun {
   updated_at: string;
   completed_at: string | null;
 }
+const ContentAutopilotRun = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ContentAutopilotRun>;
+
 export interface DismissWebAnalyticsContentAutopilotOpportunityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this content autopilot opportunity. */
   id: string;
 }
+const DismissWebAnalyticsContentAutopilotOpportunityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DismissWebAnalyticsContentAutopilotOpportunityRequest>;
+
 /** * `ai_visibility_gap` - AI visibility gap */
 export type ContentAutopilotOpportunityKindEnum = "ai_visibility_gap";
+const ContentAutopilotOpportunityKindEnum = S.String;
+
 /** * `new_content` - New content * `page_improvement` - Page improvement */
 export type ContentAutopilotProposalProposalTypeEnum = "new_content" | "page_improvement";
+const ContentAutopilotProposalProposalTypeEnum = S.String;
+
 /** * `poor_ctr` - Poor click-through rate * `content_gap` - Content gap * `organic_decline` - Organic decline * `ai_visibility_gap` - AI visibility gap * `site_hygiene` - Site hygiene */
 export type OpportunityKindEnum =
   | "poor_ctr"
@@ -93,6 +137,8 @@ export type OpportunityKindEnum =
   | "organic_decline"
   | "ai_visibility_gap"
   | "site_hygiene";
+const OpportunityKindEnum = S.String;
+
 export interface ContentAutopilotEvidence {
   /** Reason the opportunity was selected. * `poor_ctr` - Poor click-through rate * `content_gap` - Content gap * `organic_decline` - Organic decline * `ai_visibility_gap` - AI visibility gap * `site_hygiene` - Site hygiene */
   opportunity_kind: OpportunityKindEnum;
@@ -103,20 +149,48 @@ export interface ContentAutopilotEvidence {
   /** Search query supported by this evidence. */
   query?: string;
 }
+const ContentAutopilotEvidence = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ContentAutopilotEvidence>;
+
 /** Why this opportunity was selected. */
 export type ContentAutopilotOpportunityEvidenceList = Array<ContentAutopilotEvidence>;
+const ContentAutopilotOpportunityEvidenceList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ContentAutopilotOpportunityEvidenceList>;
+
 /** Engines that answered the prompt. */
 export type ContentAutopilotCitationGapEnginesList = Array<string>;
+const ContentAutopilotCitationGapEnginesList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotCitationGapEnginesList>;
+
 /** Engines that never cited the site in the window. */
 export type ContentAutopilotCitationGapEnginesNotCitingList = Array<string>;
+const ContentAutopilotCitationGapEnginesNotCitingList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotCitationGapEnginesNotCitingList>;
+
 /** Other sites' pages the engines cited, most frequent first. */
 export type ContentAutopilotCitationGapCompetitorUrlsList = Array<string>;
+const ContentAutopilotCitationGapCompetitorUrlsList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotCitationGapCompetitorUrlsList>;
+
 /** Domains the engines cited instead, most frequent first. */
 export type ContentAutopilotCitationGapCompetitorDomainsList = Array<string>;
+const ContentAutopilotCitationGapCompetitorDomainsList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotCitationGapCompetitorDomainsList>;
+
 /** Web searches the engines ran while answering. */
 export type ContentAutopilotCitationGapEngineSearchQueriesList = Array<string>;
+const ContentAutopilotCitationGapEngineSearchQueriesList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotCitationGapEngineSearchQueriesList>;
+
 /** Site pages the engines cited when they did cite the site. */
 export type ContentAutopilotCitationGapOurCitedUrlsList = Array<string>;
+const ContentAutopilotCitationGapOurCitedUrlsList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotCitationGapOurCitedUrlsList>;
+
 export interface ContentAutopilotEngineAnswer {
   /** Answer engine that gave the answer. */
   engine: string;
@@ -125,8 +199,18 @@ export interface ContentAutopilotEngineAnswer {
   /** When the answer was recorded, in ISO 8601. */
   checked_at: string;
 }
+const ContentAutopilotEngineAnswer = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ContentAutopilotEngineAnswer>;
+
 /** Most recent answer per engine. */
 export type ContentAutopilotCitationGapLatestAnswersList = Array<ContentAutopilotEngineAnswer>;
+const ContentAutopilotCitationGapLatestAnswersList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ContentAutopilotCitationGapLatestAnswersList>;
+
 export interface ContentAutopilotCitationGap {
   /** Successful citation checks in the lookback window. */
   checks: number;
@@ -153,8 +237,15 @@ export interface ContentAutopilotCitationGap {
   /** When the prompt was last checked, in ISO 8601. */
   last_checked_at: string;
 }
+const ContentAutopilotCitationGap = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ContentAutopilotCitationGap>;
+
 /** * `new` - New * `dismissed` - Dismissed * `queued` - Queued * `drafted` - Drafted */
 export type ContentAutopilotOpportunityStatusEnum = "new" | "dismissed" | "queued" | "drafted";
+const ContentAutopilotOpportunityStatusEnum = S.String;
+
 export interface ContentAutopilotOpportunity {
   id: string;
   /** Site profile this opportunity belongs to. */
@@ -184,18 +275,39 @@ export interface ContentAutopilotOpportunity {
   created_at: string;
   updated_at: string;
 }
+const ContentAutopilotOpportunity = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ContentAutopilotOpportunity>;
+
 export interface ContentAutopilotFrontmatterEntry {
   /** Frontmatter field name. */
   key: string;
   /** Serialized frontmatter value. */
   value: string;
 }
+const ContentAutopilotFrontmatterEntry = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ContentAutopilotFrontmatterEntry>;
+
 /** Ordered frontmatter entries. */
 export type ContentAutopilotPackageFrontmatterList = Array<ContentAutopilotFrontmatterEntry>;
+const ContentAutopilotPackageFrontmatterList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ContentAutopilotPackageFrontmatterList>;
+
 /** Validated same-origin internal links included in the content. */
 export type ContentAutopilotPackageInternalLinksList = Array<string>;
+const ContentAutopilotPackageInternalLinksList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotPackageInternalLinksList>;
+
 /** Portable source notes included with the export. */
 export type ContentAutopilotPackageSourceNotesList = Array<string>;
+const ContentAutopilotPackageSourceNotesList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotPackageSourceNotesList>;
+
 export interface ContentAutopilotPackage {
   /** Repository-relative Markdown or MDX file path. */
   file_path: string;
@@ -216,6 +328,11 @@ export interface ContentAutopilotPackage {
   /** Suggested llms.txt entry for the page. */
   llms_txt_line?: string;
 }
+const ContentAutopilotPackage = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ContentAutopilotPackage>;
+
 export interface EditWebAnalyticsContentAutopilotProposalRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -226,6 +343,11 @@ export interface EditWebAnalyticsContentAutopilotProposalRequest {
   /** Updated structured package to save with the proposal. */
   content_package: ContentAutopilotPackage;
 }
+const EditWebAnalyticsContentAutopilotProposalRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<EditWebAnalyticsContentAutopilotProposalRequest>;
+
 /** * `generating` - Generating * `ready_for_review` - Ready for review * `rejected` - Rejected * `exported` - Exported * `failed` - Failed */
 export type ContentAutopilotProposalLifecycleStatusEnum =
   | "generating"
@@ -233,8 +355,13 @@ export type ContentAutopilotProposalLifecycleStatusEnum =
   | "rejected"
   | "exported"
   | "failed";
+const ContentAutopilotProposalLifecycleStatusEnum = S.String;
+
 /** Performance evidence for this proposal. */
 export type ContentAutopilotProposalEvidenceList = Array<ContentAutopilotEvidence>;
+const ContentAutopilotProposalEvidenceList =
+  ContentAutopilotOpportunityEvidenceList as any as S.Schema<ContentAutopilotProposalEvidenceList>;
+
 export interface ContentAutopilotValidationCheck {
   /** Stable identifier for the validation gate. */
   check_key: string;
@@ -247,30 +374,67 @@ export interface ContentAutopilotValidationCheck {
   /** Whether failure prevents export. */
   blocking: boolean;
 }
+const ContentAutopilotValidationCheck = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ContentAutopilotValidationCheck>;
+
 /** Factual, brand, intent, originality, linking, crawlability, and schema checks. */
 export type ContentAutopilotValidationReportChecksList = Array<ContentAutopilotValidationCheck>;
+const ContentAutopilotValidationReportChecksList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ContentAutopilotValidationReportChecksList>;
+
 export interface ContentAutopilotValidationReport {
   /** Whether every blocking validation passed. */
   passed: boolean;
   /** Factual, brand, intent, originality, linking, crawlability, and schema checks. */
   checks: ContentAutopilotValidationReportChecksList;
 }
+const ContentAutopilotValidationReport = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ContentAutopilotValidationReport>;
+
 /** Site pages the brief asked to read for facts. */
 export type ContentAutopilotBriefSitePagesToReadList = Array<string>;
+const ContentAutopilotBriefSitePagesToReadList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotBriefSitePagesToReadList>;
+
 export interface ContentAutopilotBriefCompetitor {
   /** Product to compare against. */
   name: string;
   /** The product's own page to research. */
   url: string;
 }
+const ContentAutopilotBriefCompetitor = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ContentAutopilotBriefCompetitor>;
+
 /** Products the brief asked to research for a comparison. */
 export type ContentAutopilotBriefCompetitorsToResearchList = Array<ContentAutopilotBriefCompetitor>;
+const ContentAutopilotBriefCompetitorsToResearchList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ContentAutopilotBriefCompetitorsToResearchList>;
+
 /** Planned sections, in order. */
 export type ContentAutopilotBriefOutlineList = Array<string>;
+const ContentAutopilotBriefOutlineList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotBriefOutlineList>;
+
 /** Questions the page must answer. */
 export type ContentAutopilotBriefQuestionsToAnswerList = Array<string>;
+const ContentAutopilotBriefQuestionsToAnswerList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotBriefQuestionsToAnswerList>;
+
 /** Topics the cited competitor pages cover that the site's pages don't. */
 export type ContentAutopilotBriefCompetitorCoverageList = Array<string>;
+const ContentAutopilotBriefCompetitorCoverageList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotBriefCompetitorCoverageList>;
+
 export interface ContentAutopilotBrief {
   /** What the person asking wants to know or decide. */
   intent?: string;
@@ -297,8 +461,15 @@ export interface ContentAutopilotBrief {
   /** What the question means, when AI answer engines misread which product or company it asks about. */
   disambiguation?: string;
 }
+const ContentAutopilotBrief = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ContentAutopilotBrief>;
+
 /** * `site` - site * `competitor` - competitor */
 export type ContentAutopilotSourceLedgerEntryKindEnum = "site" | "competitor";
+const ContentAutopilotSourceLedgerEntryKindEnum = S.String;
+
 export interface ContentAutopilotSourceLedgerEntry {
   /** Factual claim the draft makes. */
   claim: string;
@@ -309,8 +480,18 @@ export interface ContentAutopilotSourceLedgerEntry {
   /** Whether the source is one of the site's pages or a competitor's own page. * `site` - site * `competitor` - competitor */
   kind?: ContentAutopilotSourceLedgerEntryKindEnum;
 }
+const ContentAutopilotSourceLedgerEntry = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ContentAutopilotSourceLedgerEntry>;
+
 /** Factual claims in the draft and the site pages that support them. */
 export type ContentAutopilotProposalSourceLedgerList = Array<ContentAutopilotSourceLedgerEntry>;
+const ContentAutopilotProposalSourceLedgerList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ContentAutopilotProposalSourceLedgerList>;
+
 export interface ContentAutopilotProposal {
   id: string;
   /** Run that generated this proposal. */
@@ -342,12 +523,22 @@ export interface ContentAutopilotProposal {
   created_at: string;
   updated_at: string;
 }
+const ContentAutopilotProposal = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ContentAutopilotProposal>;
+
 export interface ExportWebAnalyticsContentAutopilotProposalRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this content autopilot proposal. */
   id: string;
 }
+const ExportWebAnalyticsContentAutopilotProposalRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ExportWebAnalyticsContentAutopilotProposalRequest>;
+
 export interface ContentAutopilotExportResponse {
   /** Suggested export filename. */
   filename: string;
@@ -356,50 +547,106 @@ export interface ContentAutopilotExportResponse {
   /** Structured JSON package for a CMS adapter. */
   content_package: ContentAutopilotPackage;
 }
+const ContentAutopilotExportResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ContentAutopilotExportResponse>;
+
 export interface FetchWebAnalyticsLlmsTxtRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Public HTTP or HTTPS URL of the llms.txt file to load. */
   url: string;
 }
+const FetchWebAnalyticsLlmsTxtRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<FetchWebAnalyticsLlmsTxtRequest>;
+
 export interface LlmsTxtFetchResponse {
   /** UTF-8 contents of the fetched llms.txt file. */
   content: string;
   /** Final public URL after redirects. */
   url: string;
 }
+const LlmsTxtFetchResponse = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<LlmsTxtFetchResponse>;
+
 export interface RefreshWebAnalyticsContentAutopilotOpportunityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Site profile to refresh opportunities for. */
   profile_id: string;
 }
+const RefreshWebAnalyticsContentAutopilotOpportunityRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<RefreshWebAnalyticsContentAutopilotOpportunityRequest>;
+
 export type RefreshWebAnalyticsContentAutopilotOpportunityResponseBodyList =
   Array<ContentAutopilotOpportunity>;
+const RefreshWebAnalyticsContentAutopilotOpportunityResponseBodyList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<RefreshWebAnalyticsContentAutopilotOpportunityResponseBodyList>;
+
 export type RefreshWebAnalyticsContentAutopilotOpportunityResponse =
   RefreshWebAnalyticsContentAutopilotOpportunityResponseBodyList;
+const RefreshWebAnalyticsContentAutopilotOpportunityResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<RefreshWebAnalyticsContentAutopilotOpportunityResponse>;
+
 export interface RegenerateWebAnalyticsContentAutopilotProposalRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this content autopilot proposal. */
   id: string;
 }
+const RegenerateWebAnalyticsContentAutopilotProposalRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<RegenerateWebAnalyticsContentAutopilotProposalRequest>;
+
 export interface RegenerateWebAnalyticsContentAutopilotProposalResponse {}
+const RegenerateWebAnalyticsContentAutopilotProposalResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<RegenerateWebAnalyticsContentAutopilotProposalResponse>;
+
 export interface RejectWebAnalyticsContentAutopilotProposalRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this content autopilot proposal. */
   id: string;
 }
+const RejectWebAnalyticsContentAutopilotProposalRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<RejectWebAnalyticsContentAutopilotProposalRequest>;
+
 export interface StartWebAnalyticsContentAutopilotRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Site profile to research. */
   profile_id: string;
 }
+const StartWebAnalyticsContentAutopilotRunRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<StartWebAnalyticsContentAutopilotRunRequest>;
+
 export interface StartWebAnalyticsContentAutopilotRunResponse {}
+const StartWebAnalyticsContentAutopilotRunResponse =
+  RegenerateWebAnalyticsContentAutopilotProposalResponse as any as S.Schema<StartWebAnalyticsContentAutopilotRunResponse>;
+
 /** Opportunities to draft, up to 5 at a time. */
 export type WebAnalyticsContentAutopilotOpportunitiesDraftRequestOpportunityIdsList = Array<string>;
+const WebAnalyticsContentAutopilotOpportunitiesDraftRequestOpportunityIdsList =
+  /*@__PURE__*/ __L.at(
+    __c4,
+    5,
+  ) as any as S.Schema<WebAnalyticsContentAutopilotOpportunitiesDraftRequestOpportunityIdsList>;
+
 export interface WebAnalyticsContentAutopilotOpportunitiesDraftRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -408,19 +655,41 @@ export interface WebAnalyticsContentAutopilotOpportunitiesDraftRequest {
   /** Opportunities to draft, up to 5 at a time. */
   opportunity_ids: WebAnalyticsContentAutopilotOpportunitiesDraftRequestOpportunityIdsList;
 }
+const WebAnalyticsContentAutopilotOpportunitiesDraftRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<WebAnalyticsContentAutopilotOpportunitiesDraftRequest>;
+
 export interface WebAnalyticsContentAutopilotOpportunitiesDraftResponse {}
+const WebAnalyticsContentAutopilotOpportunitiesDraftResponse =
+  RegenerateWebAnalyticsContentAutopilotProposalResponse as any as S.Schema<WebAnalyticsContentAutopilotOpportunitiesDraftResponse>;
+
 export interface WebAnalyticsContentAutopilotProfilesDiscoverRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Public site URL to inspect for onboarding defaults. */
   domain: string;
 }
+const WebAnalyticsContentAutopilotProfilesDiscoverRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<WebAnalyticsContentAutopilotProfilesDiscoverRequest>;
+
 /** Detected sitemap URLs or an editable conventional suggestion. */
 export type ContentAutopilotSiteDiscoveryResponseSourceUrlsList = Array<string>;
+const ContentAutopilotSiteDiscoveryResponseSourceUrlsList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotSiteDiscoveryResponseSourceUrlsList>;
+
 /** Editable same-origin path boundaries. */
 export type ContentAutopilotSiteDiscoveryResponseContentBoundariesList = Array<string>;
+const ContentAutopilotSiteDiscoveryResponseContentBoundariesList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotSiteDiscoveryResponseContentBoundariesList>;
+
 /** Non-blocking discovery warnings. */
 export type ContentAutopilotSiteDiscoveryResponseWarningsList = Array<string>;
+const ContentAutopilotSiteDiscoveryResponseWarningsList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<ContentAutopilotSiteDiscoveryResponseWarningsList>;
+
 export interface ContentAutopilotSiteDiscoveryResponse {
   /** Site name inferred from the homepage or hostname. */
   name: string;
@@ -435,6 +704,11 @@ export interface ContentAutopilotSiteDiscoveryResponse {
   /** Non-blocking discovery warnings. */
   warnings: ContentAutopilotSiteDiscoveryResponseWarningsList;
 }
+const ContentAutopilotSiteDiscoveryResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ContentAutopilotSiteDiscoveryResponse>;
+
 export interface WebAnalyticsRecapRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -443,8 +717,15 @@ export interface WebAnalyticsRecapRequest {
   /** Lookback window in days (1-90). Defaults to 7. */
   days?: number;
 }
+const WebAnalyticsRecapRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<WebAnalyticsRecapRequest>;
+
 /** * `Up` - Up * `Down` - Down */
 export type WoWChangeDirectionEnum = "Up" | "Down";
+const WoWChangeDirectionEnum = S.String;
+
 export interface WoWChange {
   /** Absolute percentage change, rounded to nearest integer. */
   percent?: number;
@@ -457,6 +738,8 @@ export interface WoWChange {
   /** Verbose label, e.g. 'Up 12% from prior period'. */
   long_text?: string;
 }
+const WoWChange = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<WoWChange>;
+
 export interface NumericMetric {
   /** Value for the most recent period. */
   current?: number;
@@ -465,6 +748,8 @@ export interface NumericMetric {
   /** Period-over-period change, null when not meaningful. */
   change?: WoWChange | null;
 }
+const NumericMetric = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<NumericMetric>;
+
 export interface DurationMetric {
   /** Human-readable duration, e.g. '2m 34s'. */
   current?: string;
@@ -473,6 +758,8 @@ export interface DurationMetric {
   /** Period-over-period change, null when not meaningful. */
   change?: WoWChange | null;
 }
+const DurationMetric = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<DurationMetric>;
+
 export interface TopPage {
   /** Host for the page, if recorded. */
   host?: string;
@@ -483,8 +770,15 @@ export interface TopPage {
   /** Period-over-period change in visitors, null when not meaningful. */
   change?: WoWChange | null;
 }
+const TopPage = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<TopPage>;
+
 /** Top 5 pages by unique visitors. */
 export type WebAnalyticsRecapResponseTopPagesList = Array<TopPage>;
+const WebAnalyticsRecapResponseTopPagesList = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<WebAnalyticsRecapResponseTopPagesList>;
+
 export interface TopSource {
   /** Initial referring domain. */
   name?: string;
@@ -493,8 +787,15 @@ export interface TopSource {
   /** Period-over-period change in visitors, null when not meaningful. */
   change?: WoWChange | null;
 }
+const TopSource = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<TopSource>;
+
 /** Top 5 traffic sources by unique visitors. */
 export type WebAnalyticsRecapResponseTopSourcesList = Array<TopSource>;
+const WebAnalyticsRecapResponseTopSourcesList = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<WebAnalyticsRecapResponseTopSourcesList>;
+
 export interface Goal {
   /** Goal name (action name). */
   name?: string;
@@ -503,12 +804,24 @@ export interface Goal {
   /** Period-over-period change in conversions, null when not meaningful. */
   change?: WoWChange | null;
 }
+const Goal = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<Goal>;
+
 /** Goal conversions. */
 export type WebAnalyticsRecapResponseGoalsList = Array<Goal>;
+const WebAnalyticsRecapResponseGoalsList = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<WebAnalyticsRecapResponseGoalsList>;
+
 /** * `ok` - OK * `no_web_sessions` - No web sessions * `no_sessions` - No sessions * `unknown` - Unknown */
 export type DigestDataStatusEnum = "ok" | "no_web_sessions" | "no_sessions" | "unknown";
+const DigestDataStatusEnum = S.String;
+
 /** Metric definitions to use when you compare the digest with a direct query. */
 export type DigestMetadataNotesList = Array<string>;
+const DigestMetadataNotesList =
+  ContentAutopilotSnapshotSourceUrlsList as any as S.Schema<DigestMetadataNotesList>;
+
 export interface DigestMetadata {
   /** How to read the headline numbers. 'ok': the headline has pageviews or sessions in the period. 'no_web_sessions': the headline is zero, but the project has sessions in the period. None of them contain a $pageview or $screen event from a non-test account. Query the sessions table directly to count them. 'no_sessions': the project has no sessions in the period. 'unknown': the headline is zero, and the check for other sessions in the period failed. Query the sessions table directly to count them. * `ok` - OK * `no_web_sessions` - No web sessions * `no_sessions` - No sessions * `unknown` - Unknown */
   data_status: DigestDataStatusEnum;
@@ -523,6 +836,8 @@ export interface DigestMetadata {
   /** Metric definitions to use when you compare the digest with a direct query. */
   notes: DigestMetadataNotesList;
 }
+const DigestMetadata = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<DigestMetadata>;
+
 export interface RecapPersona {
   /** Stable persona identifier. One of: just_getting_started, conversion_machine, traffic_magnet, crowd_favorite, search_hog, word_of_mouth, loyal_following, rising_star, steady_hog. */
   id: string;
@@ -535,6 +850,8 @@ export interface RecapPersona {
   /** Hex accent color for rendering the persona card. */
   color: string;
 }
+const RecapPersona = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<RecapPersona>;
+
 export interface RecapHighlight {
   /** Stable highlight identifier, e.g. 'milestone', 'rising_page', 'top_source'. */
   id: string;
@@ -547,8 +864,15 @@ export interface RecapHighlight {
   /** Supporting sentence for the highlight. */
   detail: string;
 }
+const RecapHighlight = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<RecapHighlight>;
+
 /** Up to three screenshot-worthy superlatives for the week. */
 export type WebAnalyticsRecapResponseHighlightsList = Array<RecapHighlight>;
+const WebAnalyticsRecapResponseHighlightsList = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<WebAnalyticsRecapResponseHighlightsList>;
+
 export interface WebAnalyticsRecapResponse {
   /** Unique visitors. */
   visitors: NumericMetric;
@@ -585,6 +909,11 @@ export interface WebAnalyticsRecapResponse {
   /** Canonical link to this project's weekly recap. */
   recap_url: string;
 }
+const WebAnalyticsRecapResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<WebAnalyticsRecapResponse>;
+
 export interface WebAnalyticsWeeklyDigestRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -593,12 +922,26 @@ export interface WebAnalyticsWeeklyDigestRequest {
   /** Lookback window in days (1-90). Defaults to 7. */
   days?: number;
 }
+const WebAnalyticsWeeklyDigestRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<WebAnalyticsWeeklyDigestRequest>;
+
 /** Top 5 pages by unique visitors. */
 export type WeeklyDigestResponseTopPagesList = Array<TopPage>;
+const WeeklyDigestResponseTopPagesList =
+  WebAnalyticsRecapResponseTopPagesList as any as S.Schema<WeeklyDigestResponseTopPagesList>;
+
 /** Top 5 traffic sources by unique visitors. */
 export type WeeklyDigestResponseTopSourcesList = Array<TopSource>;
+const WeeklyDigestResponseTopSourcesList =
+  WebAnalyticsRecapResponseTopSourcesList as any as S.Schema<WeeklyDigestResponseTopSourcesList>;
+
 /** Goal conversions. */
 export type WeeklyDigestResponseGoalsList = Array<Goal>;
+const WeeklyDigestResponseGoalsList =
+  WebAnalyticsRecapResponseGoalsList as any as S.Schema<WeeklyDigestResponseGoalsList>;
+
 export interface WeeklyDigestResponse {
   /** Unique visitors. */
   visitors?: NumericMetric;
@@ -621,6 +964,8 @@ export interface WeeklyDigestResponse {
   /** Link to the Web analytics dashboard for this project. */
   dashboard_url?: string;
 }
+const WeeklyDigestResponse = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<WeeklyDigestResponse>;
+
 export type CancelWebAnalyticsContentAutopilotRunError = PosthogOpError;
 /** Cancel a content autopilot run Stops a pending or generating run without creating content writes. */
 export const cancelWebAnalyticsContentAutopilotRun: API.OperationMethod<
@@ -629,8 +974,8 @@ export const cancelWebAnalyticsContentAutopilotRun: API.OperationMethod<
   CancelWebAnalyticsContentAutopilotRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CancelWebAnalyticsContentAutopilotRunRequest>,
-  output: __S(5) as any as S.Schema<ContentAutopilotRun>,
+  input: CancelWebAnalyticsContentAutopilotRunRequest,
+  output: ContentAutopilotRun,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -644,8 +989,8 @@ export const dismissWebAnalyticsContentAutopilotOpportunity: API.OperationMethod
   DismissWebAnalyticsContentAutopilotOpportunityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DismissWebAnalyticsContentAutopilotOpportunityRequest>,
-  output: __S(12) as any as S.Schema<ContentAutopilotOpportunity>,
+  input: DismissWebAnalyticsContentAutopilotOpportunityRequest,
+  output: ContentAutopilotOpportunity,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -659,8 +1004,8 @@ export const editWebAnalyticsContentAutopilotProposal: API.OperationMethod<
   EditWebAnalyticsContentAutopilotProposalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<EditWebAnalyticsContentAutopilotProposalRequest>,
-  output: __S(25) as any as S.Schema<ContentAutopilotProposal>,
+  input: EditWebAnalyticsContentAutopilotProposalRequest,
+  output: ContentAutopilotProposal,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -674,8 +1019,8 @@ export const exportWebAnalyticsContentAutopilotProposal: API.OperationMethod<
   ExportWebAnalyticsContentAutopilotProposalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<ExportWebAnalyticsContentAutopilotProposalRequest>,
-  output: __S(27) as any as S.Schema<ContentAutopilotExportResponse>,
+  input: ExportWebAnalyticsContentAutopilotProposalRequest,
+  output: ContentAutopilotExportResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -689,8 +1034,8 @@ export const fetchWebAnalyticsLlmsTxt: API.OperationMethod<
   FetchWebAnalyticsLlmsTxtError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<FetchWebAnalyticsLlmsTxtRequest>,
-  output: __S(29) as any as S.Schema<LlmsTxtFetchResponse>,
+  input: FetchWebAnalyticsLlmsTxtRequest,
+  output: LlmsTxtFetchResponse,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -704,8 +1049,8 @@ export const refreshWebAnalyticsContentAutopilotOpportunity: API.OperationMethod
   RefreshWebAnalyticsContentAutopilotOpportunityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<RefreshWebAnalyticsContentAutopilotOpportunityRequest>,
-  output: __S(32) as any as S.Schema<RefreshWebAnalyticsContentAutopilotOpportunityResponse>,
+  input: RefreshWebAnalyticsContentAutopilotOpportunityRequest,
+  output: RefreshWebAnalyticsContentAutopilotOpportunityResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -719,8 +1064,8 @@ export const regenerateWebAnalyticsContentAutopilotProposal: API.OperationMethod
   RegenerateWebAnalyticsContentAutopilotProposalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<RegenerateWebAnalyticsContentAutopilotProposalRequest>,
-  output: __S(34) as any as S.Schema<RegenerateWebAnalyticsContentAutopilotProposalResponse>,
+  input: RegenerateWebAnalyticsContentAutopilotProposalRequest,
+  output: RegenerateWebAnalyticsContentAutopilotProposalResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -734,8 +1079,8 @@ export const rejectWebAnalyticsContentAutopilotProposal: API.OperationMethod<
   RejectWebAnalyticsContentAutopilotProposalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<RejectWebAnalyticsContentAutopilotProposalRequest>,
-  output: __S(25) as any as S.Schema<ContentAutopilotProposal>,
+  input: RejectWebAnalyticsContentAutopilotProposalRequest,
+  output: ContentAutopilotProposal,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -749,8 +1094,8 @@ export const startWebAnalyticsContentAutopilotRun: API.OperationMethod<
   StartWebAnalyticsContentAutopilotRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<StartWebAnalyticsContentAutopilotRunRequest>,
-  output: __S(34) as any as S.Schema<StartWebAnalyticsContentAutopilotRunResponse>,
+  input: StartWebAnalyticsContentAutopilotRunRequest,
+  output: StartWebAnalyticsContentAutopilotRunResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -764,8 +1109,8 @@ export const webAnalyticsContentAutopilotOpportunitiesDraft: API.OperationMethod
   WebAnalyticsContentAutopilotOpportunitiesDraftError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<WebAnalyticsContentAutopilotOpportunitiesDraftRequest>,
-  output: __S(34) as any as S.Schema<WebAnalyticsContentAutopilotOpportunitiesDraftResponse>,
+  input: WebAnalyticsContentAutopilotOpportunitiesDraftRequest,
+  output: WebAnalyticsContentAutopilotOpportunitiesDraftResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -779,8 +1124,8 @@ export const webAnalyticsContentAutopilotProfilesDiscover: API.OperationMethod<
   WebAnalyticsContentAutopilotProfilesDiscoverError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<WebAnalyticsContentAutopilotProfilesDiscoverRequest>,
-  output: __S(40) as any as S.Schema<ContentAutopilotSiteDiscoveryResponse>,
+  input: WebAnalyticsContentAutopilotProfilesDiscoverRequest,
+  output: ContentAutopilotSiteDiscoveryResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -794,8 +1139,8 @@ export const webAnalyticsRecap: API.OperationMethod<
   WebAnalyticsRecapError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<WebAnalyticsRecapRequest>,
-  output: __S(55) as any as S.Schema<WebAnalyticsRecapResponse>,
+  input: WebAnalyticsRecapRequest,
+  output: WebAnalyticsRecapResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -809,8 +1154,8 @@ export const webAnalyticsWeeklyDigest: API.OperationMethod<
   WebAnalyticsWeeklyDigestError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<WebAnalyticsWeeklyDigestRequest>,
-  output: __S(57) as any as S.Schema<WeeklyDigestResponse>,
+  input: WebAnalyticsWeeklyDigestRequest,
+  output: WeeklyDigestResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -840,10 +1185,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
-          confidence: S.optional(S.String),
-          source_urls: S.optional(__S(1)),
-          content_boundaries: S.optional(__S(1)),
-          brand_rules: S.optional(__S(1)),
+          confidence: S.optional(ContentAutopilotSnapshotConfidenceEnum),
+          source_urls: S.optional(ContentAutopilotSnapshotSourceUrlsList),
+          content_boundaries: S.optional(ContentAutopilotSnapshotContentBoundariesList),
+          brand_rules: S.optional(ContentAutopilotSnapshotBrandRulesList),
         }),
       ).annotate({ identifier: "ContentAutopilotSnapshot" });
     case 3:
@@ -854,15 +1199,15 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ContentAutopilotError" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(ContentAutopilotError);
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           profile_id: S.String,
-          run_status: S.String,
-          input_snapshot: __S(2),
-          errors: __S(4),
+          run_status: ContentAutopilotRunRunStatusEnum,
+          input_snapshot: ContentAutopilotSnapshot,
+          errors: ContentAutopilotRunErrorsList,
           created_at: S.String,
           updated_at: S.String,
           completed_at: S.NullOr(S.String),
@@ -886,7 +1231,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          opportunity_kind: S.String,
+          opportunity_kind: OpportunityKindEnum,
           explanation: S.String,
           page_url: S.optional(S.String),
           query: S.optional(S.String),
@@ -897,7 +1242,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(ContentAutopilotEvidence);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -909,7 +1254,7 @@ function __c1(j: number): any {
         identifier: "ContentAutopilotEngineAnswer",
       });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(ContentAutopilotEngineAnswer);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -917,13 +1262,13 @@ function __c1(j: number): any {
           cited_checks: S.Number,
           mentioned_checks: S.optional(S.Number),
           citation_rate: S.Number,
-          engines: __S(1),
-          engines_not_citing: __S(1),
-          competitor_urls: __S(1),
-          competitor_domains: __S(1),
-          engine_search_queries: __S(1),
-          our_cited_urls: __S(1),
-          latest_answers: __S(10),
+          engines: ContentAutopilotCitationGapEnginesList,
+          engines_not_citing: ContentAutopilotCitationGapEnginesNotCitingList,
+          competitor_urls: ContentAutopilotCitationGapCompetitorUrlsList,
+          competitor_domains: ContentAutopilotCitationGapCompetitorDomainsList,
+          engine_search_queries: ContentAutopilotCitationGapEngineSearchQueriesList,
+          our_cited_urls: ContentAutopilotCitationGapOurCitedUrlsList,
+          latest_answers: ContentAutopilotCitationGapLatestAnswersList,
           last_checked_at: S.String,
         }),
       ).annotate({
@@ -936,14 +1281,14 @@ function __c1(j: number): any {
           profile_id: S.String,
           run_id: S.NullOr(S.String),
           proposal_id: S.NullOr(S.String),
-          kind: S.String,
+          kind: ContentAutopilotOpportunityKindEnum,
           title: S.String,
           score: S.Number,
-          recommended_type: S.String,
+          recommended_type: ContentAutopilotProposalProposalTypeEnum,
           target_url: S.String,
-          evidence: __S(8),
-          gap: __S(11),
-          status: S.String,
+          evidence: ContentAutopilotOpportunityEvidenceList,
+          gap: ContentAutopilotCitationGap,
+          status: ContentAutopilotOpportunityStatusEnum,
           last_refreshed_at: S.String,
           created_at: S.String,
           updated_at: S.String,
@@ -961,7 +1306,7 @@ function __c1(j: number): any {
         identifier: "ContentAutopilotFrontmatterEntry",
       });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(ContentAutopilotFrontmatterEntry);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -969,9 +1314,9 @@ function __c1(j: number): any {
           title: S.String,
           description: S.String,
           slug: S.String,
-          frontmatter: __S(14),
-          internal_links: __S(1),
-          source_notes: __S(1),
+          frontmatter: ContentAutopilotPackageFrontmatterList,
+          internal_links: ContentAutopilotPackageInternalLinksList,
+          source_notes: ContentAutopilotPackageSourceNotesList,
           json_ld: S.optional(S.String),
           llms_txt_line: S.optional(S.String),
         }),
@@ -986,7 +1331,7 @@ function __c2(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           proposed_markdown: S.String,
-          content_package: __S(15),
+          content_package: ContentAutopilotPackage,
         }).pipe(
           T.Http({
             method: "POST",
@@ -1010,12 +1355,12 @@ function __c2(j: number): any {
         identifier: "ContentAutopilotValidationCheck",
       });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(ContentAutopilotValidationCheck);
     case 3:
       return S.suspend(() =>
         S.Struct({
           passed: S.Boolean,
-          checks: __S(18),
+          checks: ContentAutopilotValidationReportChecksList,
         }),
       ).annotate({
         identifier: "ContentAutopilotValidationReport",
@@ -1030,7 +1375,7 @@ function __c2(j: number): any {
         identifier: "ContentAutopilotBriefCompetitor",
       });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(ContentAutopilotBriefCompetitor);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1038,12 +1383,12 @@ function __c2(j: number): any {
           audience: S.optional(S.String),
           recommended_type: S.optional(S.String),
           target_page: S.optional(S.String),
-          site_pages_to_read: S.optional(__S(1)),
-          competitors_to_research: S.optional(__S(21)),
+          site_pages_to_read: S.optional(ContentAutopilotBriefSitePagesToReadList),
+          competitors_to_research: S.optional(ContentAutopilotBriefCompetitorsToResearchList),
           working_title: S.optional(S.String),
-          outline: S.optional(__S(1)),
-          questions_to_answer: S.optional(__S(1)),
-          competitor_coverage: S.optional(__S(1)),
+          outline: S.optional(ContentAutopilotBriefOutlineList),
+          questions_to_answer: S.optional(ContentAutopilotBriefQuestionsToAnswerList),
+          competitor_coverage: S.optional(ContentAutopilotBriefCompetitorCoverageList),
           engine_answer_summary: S.optional(S.String),
           disambiguation: S.optional(S.String),
         }),
@@ -1054,7 +1399,7 @@ function __c2(j: number): any {
           claim: S.String,
           source_url: S.String,
           quote: S.String,
-          kind: S.optional(S.String),
+          kind: S.optional(ContentAutopilotSourceLedgerEntryKindEnum),
         }),
       ).annotate({
         identifier: "ContentAutopilotSourceLedgerEntry",
@@ -1064,24 +1409,24 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(ContentAutopilotSourceLedgerEntry);
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           run_id: S.String,
-          proposal_type: S.String,
-          lifecycle_status: S.String,
+          proposal_type: ContentAutopilotProposalProposalTypeEnum,
+          lifecycle_status: ContentAutopilotProposalLifecycleStatusEnum,
           title: S.String,
           target_query: S.String,
           target_url: S.String,
-          evidence: __S(8),
-          validation_report: __S(19),
-          content_package: __S(15),
+          evidence: ContentAutopilotProposalEvidenceList,
+          validation_report: ContentAutopilotValidationReport,
+          content_package: ContentAutopilotPackage,
           original_markdown: S.String,
           proposed_markdown: S.String,
-          brief: __S(22),
-          source_ledger: __S(24),
+          brief: ContentAutopilotBrief,
+          source_ledger: ContentAutopilotProposalSourceLedgerList,
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -1106,7 +1451,7 @@ function __c3(j: number): any {
         S.Struct({
           filename: S.String,
           markdown: S.String,
-          content_package: __S(15),
+          content_package: ContentAutopilotPackage,
         }),
       ).annotate({
         identifier: "ContentAutopilotExportResponse",
@@ -1149,13 +1494,15 @@ function __c3(j: number): any {
         identifier: "RefreshWebAnalyticsContentAutopilotOpportunityRequest",
       });
     case 7:
-      return S.Array(__S(12));
+      return S.Array(ContentAutopilotOpportunity);
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(31).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        RefreshWebAnalyticsContentAutopilotOpportunityResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "RefreshWebAnalyticsContentAutopilotOpportunityResponse",
       });
     case 1:
@@ -1214,7 +1561,7 @@ function __c4(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           profile_id: S.String,
-          opportunity_ids: __S(37),
+          opportunity_ids: WebAnalyticsContentAutopilotOpportunitiesDraftRequestOpportunityIdsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -1249,10 +1596,10 @@ function __c5(j: number): any {
         S.Struct({
           name: S.String,
           domain: S.String,
-          source_urls: __S(1),
-          content_boundaries: __S(1),
+          source_urls: ContentAutopilotSiteDiscoveryResponseSourceUrlsList,
+          content_boundaries: ContentAutopilotSiteDiscoveryResponseContentBoundariesList,
           sitemap_detected: S.Boolean,
-          warnings: __S(1),
+          warnings: ContentAutopilotSiteDiscoveryResponseWarningsList,
         }),
       ).annotate({
         identifier: "ContentAutopilotSiteDiscoveryResponse",
@@ -1275,7 +1622,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           percent: S.optional(S.Number),
-          direction: S.optional(S.String),
+          direction: S.optional(WoWChangeDirectionEnum),
           color: S.optional(S.String),
           text: S.optional(S.String),
           long_text: S.optional(S.String),
@@ -1286,7 +1633,7 @@ function __c5(j: number): any {
         S.Struct({
           current: S.optional(S.Number),
           previous: S.optional(S.NullOr(S.Number)),
-          change: S.optional(S.NullOr(__S(42))),
+          change: S.optional(S.NullOr(WoWChange)),
         }),
       ).annotate({ identifier: "NumericMetric" });
     case 4:
@@ -1294,7 +1641,7 @@ function __c5(j: number): any {
         S.Struct({
           current: S.optional(S.String),
           previous: S.optional(S.NullOr(S.String)),
-          change: S.optional(S.NullOr(__S(42))),
+          change: S.optional(S.NullOr(WoWChange)),
         }),
       ).annotate({ identifier: "DurationMetric" });
     case 5:
@@ -1303,17 +1650,17 @@ function __c5(j: number): any {
           host: S.optional(S.String),
           path: S.optional(S.String),
           visitors: S.optional(S.Number),
-          change: S.optional(S.NullOr(__S(42))),
+          change: S.optional(S.NullOr(WoWChange)),
         }),
       ).annotate({ identifier: "TopPage" });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(TopPage);
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           visitors: S.optional(S.Number),
-          change: S.optional(S.NullOr(__S(42))),
+          change: S.optional(S.NullOr(WoWChange)),
         }),
       ).annotate({ identifier: "TopSource" });
   }
@@ -1321,26 +1668,26 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(TopSource);
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           conversions: S.optional(S.Number),
-          change: S.optional(S.NullOr(__S(42))),
+          change: S.optional(S.NullOr(WoWChange)),
         }),
       ).annotate({ identifier: "Goal" });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(Goal);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data_status: S.String,
+          data_status: DigestDataStatusEnum,
           date_from: S.String,
           date_to: S.String,
           timezone: S.String,
           filter_test_accounts: S.Boolean,
-          notes: __S(1),
+          notes: DigestMetadataNotesList,
         }),
       ).annotate({ identifier: "DigestMetadata" });
     case 4:
@@ -1364,22 +1711,22 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "RecapHighlight" });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(RecapHighlight);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          visitors: __S(43),
-          pageviews: __S(43),
-          sessions: __S(43),
-          bounce_rate: __S(43),
-          avg_session_duration: __S(44),
-          top_pages: __S(46),
-          top_sources: __S(48),
-          goals: __S(50),
-          metadata: __S(51),
+          visitors: NumericMetric,
+          pageviews: NumericMetric,
+          sessions: NumericMetric,
+          bounce_rate: NumericMetric,
+          avg_session_duration: DurationMetric,
+          top_pages: WebAnalyticsRecapResponseTopPagesList,
+          top_sources: WebAnalyticsRecapResponseTopSourcesList,
+          goals: WebAnalyticsRecapResponseGoalsList,
+          metadata: DigestMetadata,
           dashboard_url: S.String,
-          persona: __S(52),
-          highlights: __S(54),
+          persona: RecapPersona,
+          highlights: WebAnalyticsRecapResponseHighlightsList,
           period_label: S.String,
           period_start: S.String,
           period_end: S.String,
@@ -1412,42 +1759,17 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          visitors: S.optional(__S(43)),
-          pageviews: S.optional(__S(43)),
-          sessions: S.optional(__S(43)),
-          bounce_rate: S.optional(__S(43)),
-          avg_session_duration: S.optional(__S(44)),
-          top_pages: S.optional(__S(46)),
-          top_sources: S.optional(__S(48)),
-          goals: S.optional(__S(50)),
-          metadata: S.optional(__S(51)),
+          visitors: S.optional(NumericMetric),
+          pageviews: S.optional(NumericMetric),
+          sessions: S.optional(NumericMetric),
+          bounce_rate: S.optional(NumericMetric),
+          avg_session_duration: S.optional(DurationMetric),
+          top_pages: S.optional(WeeklyDigestResponseTopPagesList),
+          top_sources: S.optional(WeeklyDigestResponseTopSourcesList),
+          goals: S.optional(WeeklyDigestResponseGoalsList),
+          metadata: S.optional(DigestMetadata),
           dashboard_url: S.optional(S.String),
         }),
       ).annotate({ identifier: "WeeklyDigestResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
   }
 }

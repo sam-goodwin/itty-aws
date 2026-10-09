@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -85,6 +83,8 @@ export type PkixPublicKeySignatureAlgorithmEnum =
   | "ECDSA_P521_SHA512"
   | "EC_SIGN_P521_SHA512"
   | "ML_DSA_65";
+const PkixPublicKeySignatureAlgorithmEnum = S.String;
+
 /** A public key in the PkixPublicKey [format](https://tools.ietf.org/html/rfc5280#section-4.1.2.7). Public keys of this type are typically textually encoded using the PEM format. */
 export interface PkixPublicKey {
   /** A PEM-encoded public key, as described in https://tools.ietf.org/html/rfc7468#section-13 */
@@ -94,6 +94,8 @@ export interface PkixPublicKey {
   /** Optional. The ID of this public key. Signatures verified by Binary Authorization must include the ID of the public key that can be used to verify them. The ID must match exactly contents of the `key_id` field exactly. The ID may be explicitly provided by the caller, but it MUST be a valid RFC3986 URI. If `key_id` is left blank and this `PkixPublicKey` is not used in the context of a wrapper (see next paragraph), a default key ID will be computed based on the digest of the DER encoding of the public key. If this `PkixPublicKey` is used in the context of a wrapper that has its own notion of key ID (e.g. `AttestorPublicKey`), then this field can either match that value exactly, or be left blank, in which case it behaves exactly as though it is equal to that wrapper value. */
   keyId?: string;
 }
+const PkixPublicKey = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<PkixPublicKey>;
+
 /** An attestor public key that will be used to verify attestations signed by this attestor. */
 export interface AttestorPublicKey {
   /** ASCII-armored representation of a PGP public key, as the entire output by the command `gpg --export --armor foo@example.com` (either LF or CRLF line endings). When using this field, `id` should be left blank. The Binary Authorization API handlers will calculate the ID and fill it in automatically. Binary Authorization computes this ID as the OpenPGP RFC4880 V4 fingerprint, represented as upper-case hex. If `id` is provided by the caller, it will be overwritten by the API-calculated ID. */
@@ -105,7 +107,14 @@ export interface AttestorPublicKey {
   /** Optional. A descriptive comment. This field may be updated. */
   comment?: string;
 }
+const AttestorPublicKey = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AttestorPublicKey>;
+
 export type AttestorPublicKeyList = Array<AttestorPublicKey>;
+const AttestorPublicKeyList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AttestorPublicKeyList>;
+
 /** An user owned Grafeas note references a Grafeas Attestation.Authority Note created by the user. */
 export interface UserOwnedGrafeasNote {
   /** Required. The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/[PROJECT_ID]/notes/*`. This field may not be updated. A project ID must be used, not a project number. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency. */
@@ -115,6 +124,8 @@ export interface UserOwnedGrafeasNote {
   /** Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist. */
   publicKeys?: AttestorPublicKeyList;
 }
+const UserOwnedGrafeasNote = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<UserOwnedGrafeasNote>;
+
 /** An attestor that attests to container image artifacts. An existing attestor cannot be modified except where indicated. */
 export interface Attestor {
   /** Output only. Time when the attestor was last updated. */
@@ -128,6 +139,8 @@ export interface Attestor {
   /** Required. The resource name, in the format: `projects/*\/attestors/*`. This field may not be updated. */
   name?: string;
 }
+const Attestor = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Attestor>;
+
 export interface CreateProjectsAttestorsRequest {
   /** Required. The parent of this attestor. */
   parent: string;
@@ -136,12 +149,21 @@ export interface CreateProjectsAttestorsRequest {
   /** Request body */
   body?: Attestor;
 }
+const CreateProjectsAttestorsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateProjectsAttestorsRequest>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StringList>;
+
 /** Images that are exempted from normal checks based on name pattern only. */
 export interface ImageAllowlist {
   /** Required. A disjunction of image patterns to allow. If any of these patterns match, then the image is considered exempted by this allowlist. */
   allowPattern?: StringList;
 }
+const ImageAllowlist = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ImageAllowlist>;
+
 /** A scope specifier for `CheckSet` objects. */
 export interface Scope {
   /** Optional. Matches all Kubernetes service accounts in the provided namespace, unless a more specific `kubernetes_service_account` scope already matched. */
@@ -149,6 +171,8 @@ export interface Scope {
   /** Optional. Matches a single Kubernetes service account, e.g. `my-namespace:my-service-account`. `kubernetes_service_account` scope is always more specific than `kubernetes_namespace` scope for the same namespace. */
   kubernetesServiceAccount?: string;
 }
+const Scope = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Scope>;
+
 export type VulnerabilityCheckMaximumFixableSeverityEnum =
   | "MAXIMUM_ALLOWED_SEVERITY_UNSPECIFIED"
   | "BLOCK_ALL"
@@ -158,6 +182,8 @@ export type VulnerabilityCheckMaximumFixableSeverityEnum =
   | "HIGH"
   | "CRITICAL"
   | "ALLOW_ALL";
+const VulnerabilityCheckMaximumFixableSeverityEnum = S.String;
+
 export type VulnerabilityCheckMaximumUnfixableSeverityEnum =
   | "MAXIMUM_ALLOWED_SEVERITY_UNSPECIFIED"
   | "BLOCK_ALL"
@@ -167,6 +193,8 @@ export type VulnerabilityCheckMaximumUnfixableSeverityEnum =
   | "HIGH"
   | "CRITICAL"
   | "ALLOW_ALL";
+const VulnerabilityCheckMaximumUnfixableSeverityEnum = S.String;
+
 /** An image vulnerability check, which rejects images that violate the configured vulnerability rules. */
 export interface VulnerabilityCheck {
   /** Required. The threshold for severity for which a fix is currently available. This field is required and must be set. */
@@ -180,17 +208,25 @@ export interface VulnerabilityCheck {
   /** Optional. The projects where vulnerabilities are stored as Container Analysis Occurrences. Each project is expressed in the resource format of `projects/[PROJECT_ID]`, e.g., `projects/my-gcp-project`. An attempt will be made for each project to fetch vulnerabilities, and all valid vulnerabilities will be used to check against the vulnerability policy. If no valid scan is found in all projects configured here, an error will be returned for the check. Maximum number of `container_analysis_vulnerability_projects` allowed in each `VulnerabilityCheck` is 10. */
   containerAnalysisVulnerabilityProjects?: StringList;
 }
+const VulnerabilityCheck = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<VulnerabilityCheck>;
+
 /** An image freshness check, which rejects images that were uploaded before the set number of days ago to the supported repositories. */
 export interface ImageFreshnessCheck {
   /** Required. The max number of days that is allowed since the image was uploaded. Must be greater than zero. */
   maxUploadAgeDays?: number;
 }
+const ImageFreshnessCheck = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ImageFreshnessCheck>;
+
 export type PkixPublicKeyList = Array<PkixPublicKey>;
+const PkixPublicKeyList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<PkixPublicKeyList>;
+
 /** A bundle of PKIX public keys, used to authenticate attestation signatures. Generally, a signature is considered to be authenticated by a `PkixPublicKeySet` if any of the public keys verify it (i.e. it is an "OR" of the keys). */
 export interface PkixPublicKeySet {
   /** Required. `pkix_public_keys` must have at least one entry. */
   pkixPublicKeys?: PkixPublicKeyList;
 }
+const PkixPublicKeySet = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<PkixPublicKeySet>;
+
 /** An attestation authenticator that will be used to verify attestations. Typically this is just a set of public keys. Conceptually, an authenticator can be treated as always returning either "authenticated" or "not authenticated" when presented with a signed attestation (almost always assumed to be a [DSSE](https://github.com/secure-systems-lab/dsse) attestation). The details of how an authenticator makes this decision are specific to the type of 'authenticator' that this message wraps. */
 export interface AttestationAuthenticator {
   /** Optional. A set of raw PKIX SubjectPublicKeyInfo format public keys. If any public key in the set validates the attestation signature, then the signature is considered authenticated (i.e. any one key is sufficient to authenticate). */
@@ -198,7 +234,17 @@ export interface AttestationAuthenticator {
   /** Optional. A user-provided name for this `AttestationAuthenticator`. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results. */
   displayName?: string;
 }
+const AttestationAuthenticator = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<AttestationAuthenticator>;
+
 export type AttestationAuthenticatorList = Array<AttestationAuthenticator>;
+const AttestationAuthenticatorList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<AttestationAuthenticatorList>;
+
 /** Require a signed [DSSE](https://github.com/secure-systems-lab/dsse) attestation with type SimpleSigning. */
 export interface SimpleSigningAttestationCheck {
   /** Required. The authenticators required by this check to verify an attestation. Typically this is one or more PKIX public keys for signature verification. Only one authenticator needs to consider an attestation verified in order for an attestation to be considered fully authenticated. In otherwords, this list of authenticators is an "OR" of the authenticator results. At least one authenticator is required. */
@@ -206,12 +252,21 @@ export interface SimpleSigningAttestationCheck {
   /** Optional. The projects where attestations are stored as Container Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Only one attestation needs to successfully verify an image for this check to pass, so a single verified attestation found in any of `container_analysis_attestation_projects` is sufficient for the check to pass. A project ID must be used, not a project number. When fetching Occurrences from Container Analysis, only `AttestationOccurrence` kinds are considered. In the future, additional Occurrence kinds may be added to the query. Maximum number of `container_analysis_attestation_projects` allowed in each `SimpleSigningAttestationCheck` is 10. */
   containerAnalysisAttestationProjects?: StringList;
 }
+const SimpleSigningAttestationCheck = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<SimpleSigningAttestationCheck>;
+
 /** Specifies the locations for fetching the provenance attestations. */
 export interface AttestationSource {
   /** The IDs of the Google Cloud projects that store the SLSA attestations as Container Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Maximum number of `container_analysis_attestation_projects` allowed in each `AttestationSource` is 10. */
   containerAnalysisAttestationProjects?: StringList;
 }
+const AttestationSource = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<AttestationSource>;
+
 export type VerificationRuleTrustedBuilderEnum = "BUILDER_UNSPECIFIED" | "GOOGLE_CLOUD_BUILD";
+const VerificationRuleTrustedBuilderEnum = S.String;
+
 /** Specifies verification rules for evaluating the SLSA attestations including: which builders to trust, where to fetch the SLSA attestations generated by those builders, and other builder-specific evaluation rules such as which source repositories are trusted. An image is considered verified by the rule if any of the fetched SLSA attestations is verified. */
 export interface VerificationRule {
   /** Specifies where to fetch the provenances attestations generated by the builder (group). */
@@ -225,23 +280,38 @@ export interface VerificationRule {
   /** Each verification rule is used for evaluation against provenances generated by a specific builder (group). For some of the builders, such as the Google Cloud Build, users don't need to explicitly specify their roots of trust in the policy since the evaluation service can automatically fetch them based on the builder (group). */
   trustedBuilder?: VerificationRuleTrustedBuilderEnum | (string & {});
 }
+const VerificationRule = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<VerificationRule>;
+
 export type VerificationRuleList = Array<VerificationRule>;
+const VerificationRuleList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<VerificationRuleList>;
+
 /** A SLSA provenance attestation check, which ensures that images are built by a trusted builder using source code from its trusted repositories only. */
 export interface SlsaCheck {
   /** Specifies a list of verification rules for the SLSA attestations. An image is considered compliant with the SlsaCheck if any of the rules are satisfied. */
   rules?: VerificationRuleList;
 }
+const SlsaCheck = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<SlsaCheck>;
+
 /** A Sigstore public key. `SigstorePublicKey` is the public key material used to authenticate Sigstore signatures. */
 export interface SigstorePublicKey {
   /** The public key material in PEM format. */
   publicKeyPem?: string;
 }
+const SigstorePublicKey = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<SigstorePublicKey>;
+
 export type SigstorePublicKeyList = Array<SigstorePublicKey>;
+const SigstorePublicKeyList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<SigstorePublicKeyList>;
+
 /** A bundle of Sigstore public keys, used to verify Sigstore signatures. A signature is authenticated by a `SigstorePublicKeySet` if any of the keys verify it. */
 export interface SigstorePublicKeySet {
   /** Required. `public_keys` must have at least one entry. */
   publicKeys?: SigstorePublicKeyList;
 }
+const SigstorePublicKeySet = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<SigstorePublicKeySet>;
+
 /** A Sigstore authority, used to verify signatures that are created by Sigstore. An authority is analogous to an attestation authenticator, verifying that a signature is valid or invalid. */
 export interface SigstoreAuthority {
   /** Required. A simple set of public keys. A signature is considered valid if any keys in the set validate the signature. */
@@ -249,17 +319,34 @@ export interface SigstoreAuthority {
   /** Optional. A user-provided name for this `SigstoreAuthority`. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results. */
   displayName?: string;
 }
+const SigstoreAuthority = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<SigstoreAuthority>;
+
 export type SigstoreAuthorityList = Array<SigstoreAuthority>;
+const SigstoreAuthorityList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<SigstoreAuthorityList>;
+
 /** A Sigstore signature check, which verifies the Sigstore signature associated with an image. */
 export interface SigstoreSignatureCheck {
   /** Required. The authorities required by this check to verify the signature. A signature only needs to be verified by one authority to pass the check. */
   sigstoreAuthorities?: SigstoreAuthorityList;
 }
+const SigstoreSignatureCheck = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<SigstoreSignatureCheck>;
+
 /** A trusted directory check, which rejects images that do not come from the set of user-configured trusted directories. */
 export interface TrustedDirectoryCheck {
   /** Required. List of trusted directory patterns. A pattern is in the form "registry/path/to/directory". The registry domain part is defined as two or more dot-separated words, e.g., `us.pkg.dev`, or `gcr.io`. Additionally, `*` can be used in three ways as wildcards: 1. leading `*` to match varying prefixes in registry subdomain (useful for location prefixes); 2. trailing `*` after registry/ to match varying endings; 3. trailing `**` after registry/ to match "/" as well. For example: -- `gcr.io/my-project/my-repo` is valid to match a single directory -- `*-docker.pkg.dev/my-project/my-repo` or `*.gcr.io/my-project` are valid to match varying prefixes -- `gcr.io/my-project/*` will match all direct directories in `my-project` -- `gcr.io/my-project/**` would match all directories in `my-project` -- `gcr.i*` is not allowed since the registry is not completely specified -- `sub*domain.gcr.io/nginx` is not valid because only leading `*` or trailing `*` are allowed. -- `*pkg.dev/my-project/my-repo` is not valid because leading `*` can only match subdomain -- `**-docker.pkg.dev` is not valid because one leading `*` is allowed, and that it cannot match `/` */
   trustedDirPatterns?: StringList;
 }
+const TrustedDirectoryCheck = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<TrustedDirectoryCheck>;
+
 /** A single check to perform against a Pod. Checks are grouped into `CheckSet` objects, which are defined by the top-level policy. */
 export interface Check {
   /** Optional. Require that an image does not contain vulnerabilities that violate the configured rules, such as based on severity levels. */
@@ -281,7 +368,11 @@ export interface Check {
   /** Optional. Require that an image lives in a trusted directory. */
   trustedDirectoryCheck?: TrustedDirectoryCheck;
 }
+const Check = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Check>;
+
 export type CheckList = Array<Check>;
+const CheckList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<CheckList>;
+
 /** A conjunction of policy checks, scoped to a particular namespace or Kubernetes service account. In order for evaluation of a `CheckSet` to return "allowed" for a given image in a given Pod, one of the following conditions must be satisfied: * The image is explicitly exempted by an entry in `image_allowlist`, OR * ALL of the `checks` evaluate to "allowed". */
 export interface CheckSet {
   /** Optional. The scope to which this `CheckSet` applies. If unset or an empty string (the default), applies to all namespaces and service accounts. See the `Scope` message documentation for details on scoping rules. */
@@ -293,7 +384,11 @@ export interface CheckSet {
   /** Optional. The checks to apply. The ultimate result of evaluating the check set will be "allow" if and only if every check in `checks` evaluates to "allow". If `checks` is empty, the default behavior is "always allow". */
   checks?: CheckList;
 }
+const CheckSet = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CheckSet>;
+
 export type CheckSetList = Array<CheckSet>;
+const CheckSetList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<CheckSetList>;
+
 /** A Binary Authorization policy for a GKE cluster. This is one type of policy that can occur as a `PlatformPolicy`. */
 export interface GkePolicy {
   /** Optional. Images exempted from this policy. If any of the patterns match the image being evaluated, the rest of the policy will not be evaluated. */
@@ -301,6 +396,8 @@ export interface GkePolicy {
   /** Optional. The `CheckSet` objects to apply, scoped by namespace or namespace and service account. Exactly one `CheckSet` will be evaluated for a given Pod (unless the list is empty, in which case the behavior is "always allow"). If multiple `CheckSet` objects have scopes that match the namespace and service account of the Pod being evaluated, only the `CheckSet` with the MOST SPECIFIC scope will match. `CheckSet` objects must be listed in order of decreasing specificity, i.e. if a scope matches a given service account (which must include the namespace), it must come before a `CheckSet` with a scope matching just that namespace. This property is enforced by server-side validation. The purpose of this restriction is to ensure that if more than one `CheckSet` matches a given Pod, the `CheckSet` that will be evaluated will always be the first in the list to match (because if any other matches, it must be less specific). If `check_sets` is empty, the default behavior is to allow all images. If `check_sets` is non-empty, the last `check_sets` entry must always be a `CheckSet` with no scope set, i.e. a catchall to handle any situation not caught by the preceding `CheckSet` objects. */
   checkSets?: CheckSetList;
 }
+const GkePolicy = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GkePolicy>;
+
 /** A Binary Authorization platform policy for deployments on various platforms. */
 export interface PlatformPolicy {
   /** Output only. The relative resource name of the Binary Authorization platform policy, in the form of `projects/*\/platforms/*\/policies/*`. */
@@ -314,6 +411,8 @@ export interface PlatformPolicy {
   /** Output only. Time when the policy was last updated. */
   updateTime?: string;
 }
+const PlatformPolicy = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<PlatformPolicy>;
+
 export interface CreateProjectsPlatformsPoliciesRequest {
   /** Required. The platform policy ID. */
   policyId?: string;
@@ -322,55 +421,94 @@ export interface CreateProjectsPlatformsPoliciesRequest {
   /** Request body */
   body?: PlatformPolicy;
 }
+const CreateProjectsPlatformsPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateProjectsPlatformsPoliciesRequest>;
+
 export interface DeleteProjectsAttestorsRequest {
   /** Required. The name of the attestors to delete, in the format `projects/*\/attestors/*`. */
   name: string;
 }
+const DeleteProjectsAttestorsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<DeleteProjectsAttestorsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<Empty>;
+
 export interface DeleteProjectsPlatformsPoliciesRequest {
   /** Required. The name of the platform policy to delete, in the format `projects/*\/platforms/*\/policies/*`. */
   name: string;
   /** Optional. Used to prevent deleting the policy when another request has updated it since it was retrieved. */
   etag?: string;
 }
+const DeleteProjectsPlatformsPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DeleteProjectsPlatformsPoliciesRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<DocumentMap>;
+
 /** Request message for PlatformPolicyEvaluationService.EvaluateGkePolicy. */
 export interface EvaluateGkePolicyRequest {
   /** Required. JSON or YAML blob representing a Kubernetes resource. */
   resource?: DocumentMap;
 }
+const EvaluateGkePolicyRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<EvaluateGkePolicyRequest>;
+
 export interface EvaluateProjectsPlatformsGkePoliciesRequest {
   /** Required. The name of the platform policy to evaluate in the format `projects/*\/platforms/*\/policies/*`. */
   name: string;
   /** Request body */
   body?: EvaluateGkePolicyRequest;
 }
+const EvaluateProjectsPlatformsGkePoliciesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<EvaluateProjectsPlatformsGkePoliciesRequest>;
+
 export type EvaluateGkePolicyResponseVerdictEnum =
   | "VERDICT_UNSPECIFIED"
   | "CONFORMANT"
   | "NON_CONFORMANT"
   | "ERROR";
+const EvaluateGkePolicyResponseVerdictEnum = S.String;
+
 export type ImageResultVerdictEnum =
   | "IMAGE_VERDICT_UNSPECIFIED"
   | "CONFORMANT"
   | "NON_CONFORMANT"
   | "ERROR";
+const ImageResultVerdictEnum = S.String;
+
 /** Result of evaluating an image name allowlist. */
 export interface AllowlistResult {
   /** The allowlist pattern that the image matched. */
   matchedPattern?: string;
 }
+const AllowlistResult = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<AllowlistResult>;
+
 export type EvaluationResultVerdictEnum =
   | "CHECK_VERDICT_UNSPECIFIED"
   | "CONFORMANT"
   | "NON_CONFORMANT"
   | "ERROR";
+const EvaluationResultVerdictEnum = S.String;
+
 /** Result of evaluating one check. */
 export interface EvaluationResult {
   /** The result of evaluating this check. */
   verdict?: EvaluationResultVerdictEnum;
 }
+const EvaluationResult = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<EvaluationResult>;
+
 /** Result of evaluating one check. */
 export interface CheckResult {
   /** Explanation of this check result. */
@@ -386,12 +524,18 @@ export interface CheckResult {
   /** The name of the check. */
   displayName?: string;
 }
+const CheckResult = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<CheckResult>;
+
 export type CheckResultList = Array<CheckResult>;
+const CheckResultList = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<CheckResultList>;
+
 /** Result of evaluating one or more checks. */
 export interface CheckResults {
   /** Per-check details. */
   results?: CheckResultList;
 }
+const CheckResults = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<CheckResults>;
+
 /** Result of evaluating one check set. */
 export interface CheckSetResult {
   /** The index of the check set. */
@@ -407,6 +551,8 @@ export interface CheckSetResult {
   /** If checks were evaluated, contains the results of evaluating each check. */
   checkResults?: CheckResults;
 }
+const CheckSetResult = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<CheckSetResult>;
+
 /** Result of evaluating one image. */
 export interface ImageResult {
   /** The result of evaluating this image. */
@@ -420,12 +566,18 @@ export interface ImageResult {
   /** If a check set was evaluated, contains the result of the check set. Empty if there were no check sets. */
   checkSetResult?: CheckSetResult;
 }
+const ImageResult = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<ImageResult>;
+
 export type ImageResultList = Array<ImageResult>;
+const ImageResultList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ImageResultList>;
+
 export type PodResultVerdictEnum =
   | "POD_VERDICT_UNSPECIFIED"
   | "CONFORMANT"
   | "NON_CONFORMANT"
   | "ERROR";
+const PodResultVerdictEnum = S.String;
+
 /** Result of evaluating the whole GKE policy for one Pod. */
 export interface PodResult {
   /** Per-image details. */
@@ -439,7 +591,11 @@ export interface PodResult {
   /** The Kubernetes service account of the Pod. */
   kubernetesServiceAccount?: string;
 }
+const PodResult = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<PodResult>;
+
 export type PodResultList = Array<PodResult>;
+const PodResultList = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<PodResultList>;
+
 /** Response message for PlatformPolicyEvaluationService.EvaluateGkePolicy. */
 export interface EvaluateGkePolicyResponse {
   /** The result of evaluating all Pods in the request. */
@@ -447,12 +603,22 @@ export interface EvaluateGkePolicyResponse {
   /** Evaluation result for each Pod contained in the request. */
   results?: PodResultList;
 }
+const EvaluateGkePolicyResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<EvaluateGkePolicyResponse>;
+
 export interface GetIamPolicyProjectsAttestorsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
+const GetIamPolicyProjectsAttestorsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GetIamPolicyProjectsAttestorsRequest>;
+
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
@@ -464,6 +630,8 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
+const Expr = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<Expr>;
+
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
@@ -473,7 +641,11 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
+const Binding = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<Binding>;
+
 export type BindingList = Array<Binding>;
+const BindingList = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<BindingList>;
+
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface IamPolicy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -483,25 +655,41 @@ export interface IamPolicy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
+const IamPolicy = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<IamPolicy>;
+
 export interface GetIamPolicyProjectsPolicyRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
+const GetIamPolicyProjectsPolicyRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<GetIamPolicyProjectsPolicyRequest>;
+
 export interface GetPolicyProjectsRequest {
   /** Required. The resource name of the policy to retrieve, in the format `projects/*\/policy`. */
   name: string;
 }
+const GetPolicyProjectsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GetPolicyProjectsRequest>;
+
 export type AdmissionRuleEvaluationModeEnum =
   | "EVALUATION_MODE_UNSPECIFIED"
   | "ALWAYS_ALLOW"
   | "REQUIRE_ATTESTATION"
   | "ALWAYS_DENY";
+const AdmissionRuleEvaluationModeEnum = S.String;
+
 export type AdmissionRuleEnforcementModeEnum =
   | "ENFORCEMENT_MODE_UNSPECIFIED"
   | "ENFORCED_BLOCK_AND_AUDIT_LOG"
   | "DRYRUN_AUDIT_LOG_ONLY";
+const AdmissionRuleEnforcementModeEnum = S.String;
+
 /** An admission rule specifies either that all container images used in a pod creation request must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be denied. Images matching an admission allowlist pattern are exempted from admission rules and will never block a pod creation. */
 export interface AdmissionRule {
   /** Required. How this admission rule will be evaluated. */
@@ -511,17 +699,33 @@ export interface AdmissionRule {
   /** Required. The action when a pod creation is denied by the admission rule. */
   enforcementMode?: AdmissionRuleEnforcementModeEnum | (string & {});
 }
+const AdmissionRule = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<AdmissionRule>;
+
 export type AdmissionRuleMap = { [key: string]: AdmissionRule | undefined };
+const AdmissionRuleMap = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<AdmissionRuleMap>;
+
 export type PolicyGlobalPolicyEvaluationModeEnum =
   | "GLOBAL_POLICY_EVALUATION_MODE_UNSPECIFIED"
   | "ENABLE"
   | "DISABLE";
+const PolicyGlobalPolicyEvaluationModeEnum = S.String;
+
 /** An admission allowlist pattern exempts images from checks by admission rules. */
 export interface AdmissionWhitelistPattern {
   /** An image name pattern to allowlist, in the form `registry/path/to/image`. This supports a trailing `*` wildcard, but this is allowed only in text after the `registry/` part. This also supports a trailing `**` wildcard which matches subdirectories of a given entry. */
   namePattern?: string;
 }
+const AdmissionWhitelistPattern = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<AdmissionWhitelistPattern>;
+
 export type AdmissionWhitelistPatternList = Array<AdmissionWhitelistPattern>;
+const AdmissionWhitelistPatternList = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<AdmissionWhitelistPatternList>;
+
 /** A policy for container image binary authorization. */
 export interface Policy {
   /** Optional. A valid policy has only one of the following rule maps non-empty, i.e. only one of `cluster_admission_rules`, `kubernetes_namespace_admission_rules`, `kubernetes_service_account_admission_rules`, or `istio_service_identity_admission_rules` can be non-empty. Per-cluster admission rules. Cluster spec format: `location.clusterId`. There can be at most one admission rule per cluster spec. A `location` is either a compute zone (e.g. us-central1-a) or a region (e.g. us-central1). For `clusterId` syntax restrictions see https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters. */
@@ -547,18 +751,35 @@ export interface Policy {
   /** Optional. A checksum, returned by the server, that can be sent on update requests to ensure the policy has an up-to-date value before attempting to update it. See https://google.aip.dev/154. */
   etag?: string;
 }
+const Policy = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<Policy>;
+
 export interface GetPolicySystempolicyRequest {
   /** Required. The resource name, in the format `locations/*\/policy`. Note that the system policy is not associated with a project. */
   name: string;
 }
+const GetPolicySystempolicyRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetPolicySystempolicyRequest>;
+
 export interface GetProjectsAttestorsRequest {
   /** Required. The name of the attestor to retrieve, in the format `projects/*\/attestors/*`. */
   name: string;
 }
+const GetProjectsAttestorsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GetProjectsAttestorsRequest>;
+
 export interface GetProjectsPlatformsPoliciesRequest {
   /** Required. The name of the platform policy to retrieve in the format `projects/*\/platforms/*\/policies/*`. */
   name: string;
 }
+const GetProjectsPlatformsPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<GetProjectsPlatformsPoliciesRequest>;
+
 export interface ListProjectsAttestorsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListAttestorsResponse.next_page_token returned from the previous call to the `ListAttestors` method. */
   pageToken?: string;
@@ -567,7 +788,14 @@ export interface ListProjectsAttestorsRequest {
   /** Required. The resource name of the project associated with the attestors, in the format `projects/*`. */
   parent: string;
 }
+const ListProjectsAttestorsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ListProjectsAttestorsRequest>;
+
 export type AttestorList = Array<Attestor>;
+const AttestorList = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<AttestorList>;
+
 /** Response message for BinauthzManagementServiceV1.ListAttestors. */
 export interface ListAttestorsResponse {
   /** The list of attestors. */
@@ -575,6 +803,11 @@ export interface ListAttestorsResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListAttestorsRequest.page_token field in the subsequent call to the `ListAttestors` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
+const ListAttestorsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ListAttestorsResponse>;
+
 export interface ListProjectsPlatformsPoliciesRequest {
   /** Required. The resource name of the platform associated with the platform policies using the format `projects/*\/platforms/*`. */
   parent: string;
@@ -583,7 +816,14 @@ export interface ListProjectsPlatformsPoliciesRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListPlatformPoliciesResponse.next_page_token returned from the previous call to the `ListPlatformPolicies` method. */
   pageToken?: string;
 }
+const ListProjectsPlatformsPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ListProjectsPlatformsPoliciesRequest>;
+
 export type PlatformPolicyList = Array<PlatformPolicy>;
+const PlatformPolicyList = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<PlatformPolicyList>;
+
 /** Response message for PlatformPolicyManagementService.ListPlatformPolicies. */
 export interface ListPlatformPoliciesResponse {
   /** The list of platform policies. */
@@ -591,63 +831,113 @@ export interface ListPlatformPoliciesResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListPlatformPoliciesRequest.page_token field in the subsequent call to the `ListPlatformPolicies` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
+const ListPlatformPoliciesResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListPlatformPoliciesResponse>;
+
 export interface ReplacePlatformPolicyProjectsPlatformsPoliciesRequest {
   /** Output only. The relative resource name of the Binary Authorization platform policy, in the form of `projects/*\/platforms/*\/policies/*`. */
   name: string;
   /** Request body */
   body?: PlatformPolicy;
 }
+const ReplacePlatformPolicyProjectsPlatformsPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ReplacePlatformPolicyProjectsPlatformsPoliciesRequest>;
+
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: IamPolicy;
 }
+const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<SetIamPolicyRequest>;
+
 export interface SetIamPolicyProjectsAttestorsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsAttestorsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<SetIamPolicyProjectsAttestorsRequest>;
+
 export interface SetIamPolicyProjectsPolicyRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsPolicyRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<SetIamPolicyProjectsPolicyRequest>;
+
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
+const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<TestIamPermissionsRequest>;
+
 export interface TestIamPermissionsProjectsAttestorsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsAttestorsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<TestIamPermissionsProjectsAttestorsRequest>;
+
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
+const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
+
 export interface TestIamPermissionsProjectsPolicyRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsPolicyRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<TestIamPermissionsProjectsPolicyRequest>;
+
 export interface UpdatePolicyProjectsRequest {
   /** Output only. The resource name, in the format `projects/*\/policy`. There is at most one policy per project. */
   name: string;
   /** Request body */
   body?: Policy;
 }
+const UpdatePolicyProjectsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<UpdatePolicyProjectsRequest>;
+
 export interface UpdateProjectsAttestorsRequest {
   /** Required. The resource name, in the format: `projects/*\/attestors/*`. This field may not be updated. */
   name: string;
   /** Request body */
   body?: Attestor;
 }
+const UpdateProjectsAttestorsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<UpdateProjectsAttestorsRequest>;
+
 /** Verifiers (e.g. Kritis implementations) MUST verify signatures with respect to the trust anchors defined in policy (e.g. a Kritis policy). Typically this means that the verifier has been configured with a map from `public_key_id` to public key material (and any required parameters, e.g. signing algorithm). In particular, verification implementations MUST NOT treat the signature `public_key_id` as anything more than a key lookup hint. The `public_key_id` DOES NOT validate or authenticate a public key; it only provides a mechanism for quickly selecting a public key ALREADY CONFIGURED on the verifier through a trusted channel. Verification implementations MUST reject signatures in any of the following circumstances: * The `public_key_id` is not recognized by the verifier. * The public key that `public_key_id` refers to does not verify the signature with respect to the payload. The `signature` contents SHOULD NOT be "attached" (where the payload is included with the serialized `signature` bytes). Verifiers MUST ignore any "attached" payload and only verify signatures with respect to explicitly provided payload (e.g. a `payload` field on the proto message that holds this Signature, or the canonical serialization of the proto message that holds this signature). */
 export interface Signature {
   /** The content of the signature, an opaque bytestring. The payload that this signature verifies MUST be unambiguously provided with the Signature during verification. A wrapper message might provide the payload explicitly. Alternatively, a message might have a canonical serialization that can always be unambiguously computed to derive the payload. */
@@ -655,12 +945,20 @@ export interface Signature {
   /** The identifier for the public key that verifies this signature. * The `public_key_id` is required. * The `public_key_id` SHOULD be an RFC3986 conformant URI. * When possible, the `public_key_id` SHOULD be an immutable reference, such as a cryptographic digest. Examples of valid `public_key_id`s: OpenPGP V4 public key fingerprint: * "openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA" See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr for more details on this scheme. RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization): * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU" * "nih:///sha-256;703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5" */
   publicKeyId?: string;
 }
+const Signature = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<Signature>;
+
 export type SignatureList = Array<Signature>;
+const SignatureList = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<SignatureList>;
+
 export interface Jwt {
   /** The compact encoding of a JWS, which is always three base64 encoded strings joined by periods. For details, see: https://tools.ietf.org/html/rfc7515.html#section-3.1 */
   compactJwt?: string;
 }
+const Jwt = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<Jwt>;
+
 export type JwtList = Array<Jwt>;
+const JwtList = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<JwtList>;
+
 /** Occurrence that represents a single "attestation". The authenticity of an attestation can be verified using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature is sufficient to establish trust. In this circumstance, the authority to which this attestation is attached is primarily useful for lookup (how to find this attestation if you already know the authority and artifact to be verified) and intent (for which authority this attestation was intended to sign. */
 export interface AttestationOccurrence {
   /** One or more signatures over `serialized_payload`. Verifier implementations should consider this attestation message verified if at least one `signature` verifies `serialized_payload`. See `Signature` in common.proto for more details on signature structure and verification. */
@@ -670,6 +968,11 @@ export interface AttestationOccurrence {
   /** Required. The serialized payload that is verified by one or more `signatures`. */
   serializedPayload?: string;
 }
+const AttestationOccurrence = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<AttestationOccurrence>;
+
 /** Request message for ValidationHelperV1.ValidateAttestationOccurrence. */
 export interface ValidateAttestationOccurrenceRequest {
   /** Required. An AttestationOccurrence to be checked that it can be verified by the `Attestor`. It does not have to be an existing entity in Container Analysis. It must otherwise be a valid `AttestationOccurrence`. */
@@ -679,16 +982,28 @@ export interface ValidateAttestationOccurrenceRequest {
   /** Required. The resource name of the Note to which the containing Occurrence is associated. */
   occurrenceNote?: string;
 }
+const ValidateAttestationOccurrenceRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ValidateAttestationOccurrenceRequest>;
+
 export interface ValidateAttestationOccurrenceProjectsAttestorsRequest {
   /** Required. The resource name of the Attestor of the occurrence, in the format `projects/*\/attestors/*`. */
   attestor: string;
   /** Request body */
   body?: ValidateAttestationOccurrenceRequest;
 }
+const ValidateAttestationOccurrenceProjectsAttestorsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ValidateAttestationOccurrenceProjectsAttestorsRequest>;
+
 export type ValidateAttestationOccurrenceResponseResultEnum =
   | "RESULT_UNSPECIFIED"
   | "VERIFIED"
   | "ATTESTATION_NOT_VERIFIABLE";
+const ValidateAttestationOccurrenceResponseResultEnum = S.String;
+
 /** Response message for ValidationHelperV1.ValidateAttestationOccurrence. */
 export interface ValidateAttestationOccurrenceResponse {
   /** The result of the Attestation validation. */
@@ -696,6 +1011,11 @@ export interface ValidateAttestationOccurrenceResponse {
   /** The reason for denial if the Attestation couldn't be validated. */
   denialReason?: string;
 }
+const ValidateAttestationOccurrenceResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ValidateAttestationOccurrenceResponse>;
+
 export type CreateProjectsAttestorsError =
   | NotFound
   | Forbidden
@@ -709,8 +1029,8 @@ export const createProjectsAttestors: API.OperationMethod<
   CreateProjectsAttestorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreateProjectsAttestorsRequest>,
-  output: __S(4) as any as S.Schema<Attestor>,
+  input: CreateProjectsAttestorsRequest,
+  output: Attestor,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -729,8 +1049,8 @@ export const createProjectsPlatformsPolicies: API.OperationMethod<
   CreateProjectsPlatformsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<CreateProjectsPlatformsPoliciesRequest>,
-  output: __S(32) as any as S.Schema<PlatformPolicy>,
+  input: CreateProjectsPlatformsPoliciesRequest,
+  output: PlatformPolicy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -749,8 +1069,8 @@ export const deleteProjectsAttestors: API.OperationMethod<
   DeleteProjectsAttestorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<DeleteProjectsAttestorsRequest>,
-  output: __S(35) as any as S.Schema<Empty>,
+  input: DeleteProjectsAttestorsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -769,8 +1089,8 @@ export const deleteProjectsPlatformsPolicies: API.OperationMethod<
   DeleteProjectsPlatformsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<DeleteProjectsPlatformsPoliciesRequest>,
-  output: __S(35) as any as S.Schema<Empty>,
+  input: DeleteProjectsPlatformsPoliciesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -789,8 +1109,8 @@ export const evaluateProjectsPlatformsGkePolicies: API.OperationMethod<
   EvaluateProjectsPlatformsGkePoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<EvaluateProjectsPlatformsGkePoliciesRequest>,
-  output: __S(50) as any as S.Schema<EvaluateGkePolicyResponse>,
+  input: EvaluateProjectsPlatformsGkePoliciesRequest,
+  output: EvaluateGkePolicyResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -804,8 +1124,8 @@ export const getIamPolicyProjectsAttestors: API.OperationMethod<
   GetIamPolicyProjectsAttestorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<GetIamPolicyProjectsAttestorsRequest>,
-  output: __S(55) as any as S.Schema<IamPolicy>,
+  input: GetIamPolicyProjectsAttestorsRequest,
+  output: IamPolicy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -819,8 +1139,8 @@ export const getIamPolicyProjectsPolicy: API.OperationMethod<
   GetIamPolicyProjectsPolicyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<GetIamPolicyProjectsPolicyRequest>,
-  output: __S(55) as any as S.Schema<IamPolicy>,
+  input: GetIamPolicyProjectsPolicyRequest,
+  output: IamPolicy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -834,8 +1154,8 @@ export const getPolicyProjects: API.OperationMethod<
   GetPolicyProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<GetPolicyProjectsRequest>,
-  output: __S(62) as any as S.Schema<Policy>,
+  input: GetPolicyProjectsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -849,8 +1169,8 @@ export const getPolicySystempolicy: API.OperationMethod<
   GetPolicySystempolicyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<GetPolicySystempolicyRequest>,
-  output: __S(62) as any as S.Schema<Policy>,
+  input: GetPolicySystempolicyRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -864,8 +1184,8 @@ export const getProjectsAttestors: API.OperationMethod<
   GetProjectsAttestorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<GetProjectsAttestorsRequest>,
-  output: __S(4) as any as S.Schema<Attestor>,
+  input: GetProjectsAttestorsRequest,
+  output: Attestor,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -879,8 +1199,8 @@ export const getProjectsPlatformsPolicies: API.OperationMethod<
   GetProjectsPlatformsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<GetProjectsPlatformsPoliciesRequest>,
-  output: __S(32) as any as S.Schema<PlatformPolicy>,
+  input: GetProjectsPlatformsPoliciesRequest,
+  output: PlatformPolicy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -895,8 +1215,8 @@ export const listProjectsAttestors: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAttestorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(66) as any as S.Schema<ListProjectsAttestorsRequest>,
-  output: __S(68) as any as S.Schema<ListAttestorsResponse>,
+  input: ListProjectsAttestorsRequest,
+  output: ListAttestorsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -912,8 +1232,8 @@ export const listProjectsPlatformsPolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPlatformPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(69) as any as S.Schema<ListProjectsPlatformsPoliciesRequest>,
-  output: __S(71) as any as S.Schema<ListPlatformPoliciesResponse>,
+  input: ListProjectsPlatformsPoliciesRequest,
+  output: ListPlatformPoliciesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -933,8 +1253,8 @@ export const replacePlatformPolicyProjectsPlatformsPolicies: API.OperationMethod
   ReplacePlatformPolicyProjectsPlatformsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<ReplacePlatformPolicyProjectsPlatformsPoliciesRequest>,
-  output: __S(32) as any as S.Schema<PlatformPolicy>,
+  input: ReplacePlatformPolicyProjectsPlatformsPoliciesRequest,
+  output: PlatformPolicy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -953,8 +1273,8 @@ export const setIamPolicyProjectsAttestors: API.OperationMethod<
   SetIamPolicyProjectsAttestorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<SetIamPolicyProjectsAttestorsRequest>,
-  output: __S(55) as any as S.Schema<IamPolicy>,
+  input: SetIamPolicyProjectsAttestorsRequest,
+  output: IamPolicy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -973,8 +1293,8 @@ export const setIamPolicyProjectsPolicy: API.OperationMethod<
   SetIamPolicyProjectsPolicyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<SetIamPolicyProjectsPolicyRequest>,
-  output: __S(55) as any as S.Schema<IamPolicy>,
+  input: SetIamPolicyProjectsPolicyRequest,
+  output: IamPolicy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -993,8 +1313,8 @@ export const testIamPermissionsProjectsAttestors: API.OperationMethod<
   TestIamPermissionsProjectsAttestorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<TestIamPermissionsProjectsAttestorsRequest>,
-  output: __S(76) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsAttestorsRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1013,8 +1333,8 @@ export const testIamPermissionsProjectsPolicy: API.OperationMethod<
   TestIamPermissionsProjectsPolicyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<TestIamPermissionsProjectsPolicyRequest>,
-  output: __S(76) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsPolicyRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1028,8 +1348,8 @@ export const updatePolicyProjects: API.OperationMethod<
   UpdatePolicyProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<UpdatePolicyProjectsRequest>,
-  output: __S(62) as any as S.Schema<Policy>,
+  input: UpdatePolicyProjectsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1048,8 +1368,8 @@ export const updateProjectsAttestors: API.OperationMethod<
   UpdateProjectsAttestorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<UpdateProjectsAttestorsRequest>,
-  output: __S(4) as any as S.Schema<Attestor>,
+  input: UpdateProjectsAttestorsRequest,
+  output: Attestor,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1068,8 +1388,8 @@ export const validateAttestationOccurrenceProjectsAttestors: API.OperationMethod
   ValidateAttestationOccurrenceProjectsAttestorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<ValidateAttestationOccurrenceProjectsAttestorsRequest>,
-  output: __S(88) as any as S.Schema<ValidateAttestationOccurrenceResponse>,
+  input: ValidateAttestationOccurrenceProjectsAttestorsRequest,
+  output: ValidateAttestationOccurrenceResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1082,7 +1402,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           publicKeyPem: S.optional(S.String),
-          signatureAlgorithm: S.optional(S.String),
+          signatureAlgorithm: S.optional(PkixPublicKeySignatureAlgorithmEnum),
           keyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "PkixPublicKey" });
@@ -1091,25 +1411,25 @@ function __c0(j: number): any {
         S.Struct({
           asciiArmoredPgpPublicKey: S.optional(S.String),
           id: S.optional(S.String),
-          pkixPublicKey: S.optional(__S(0)),
+          pkixPublicKey: S.optional(PkixPublicKey),
           comment: S.optional(S.String),
         }),
       ).annotate({ identifier: "AttestorPublicKey" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(AttestorPublicKey);
     case 3:
       return S.suspend(() =>
         S.Struct({
           noteReference: S.optional(S.String),
           delegationServiceAccountEmail: S.optional(S.String),
-          publicKeys: S.optional(__S(2)),
+          publicKeys: S.optional(AttestorPublicKeyList),
         }),
       ).annotate({ identifier: "UserOwnedGrafeasNote" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          userOwnedGrafeasNote: S.optional(__S(3)),
+          userOwnedGrafeasNote: S.optional(UserOwnedGrafeasNote),
           etag: S.optional(S.String),
           description: S.optional(S.String),
           name: S.optional(S.String),
@@ -1120,7 +1440,7 @@ function __c0(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           attestorId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(4).pipe(T.HttpBody())),
+          body: S.optional(Attestor.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1136,7 +1456,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          allowPattern: S.optional(__S(6)),
+          allowPattern: S.optional(StringList),
         }),
       ).annotate({ identifier: "ImageAllowlist" });
   }
@@ -1153,11 +1473,11 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          maximumFixableSeverity: S.optional(S.String),
-          blockedCves: S.optional(__S(6)),
-          maximumUnfixableSeverity: S.optional(S.String),
-          allowedCves: S.optional(__S(6)),
-          containerAnalysisVulnerabilityProjects: S.optional(__S(6)),
+          maximumFixableSeverity: S.optional(VulnerabilityCheckMaximumFixableSeverityEnum),
+          blockedCves: S.optional(StringList),
+          maximumUnfixableSeverity: S.optional(VulnerabilityCheckMaximumUnfixableSeverityEnum),
+          allowedCves: S.optional(StringList),
+          containerAnalysisVulnerabilityProjects: S.optional(StringList),
         }),
       ).annotate({ identifier: "VulnerabilityCheck" });
     case 2:
@@ -1167,27 +1487,27 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ImageFreshnessCheck" });
     case 3:
-      return S.Array(__S(0));
+      return S.Array(PkixPublicKey);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          pkixPublicKeys: S.optional(__S(11)),
+          pkixPublicKeys: S.optional(PkixPublicKeyList),
         }),
       ).annotate({ identifier: "PkixPublicKeySet" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pkixPublicKeySet: S.optional(__S(12)),
+          pkixPublicKeySet: S.optional(PkixPublicKeySet),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "AttestationAuthenticator" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(AttestationAuthenticator);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          attestationAuthenticators: S.optional(__S(14)),
-          containerAnalysisAttestationProjects: S.optional(__S(6)),
+          attestationAuthenticators: S.optional(AttestationAuthenticatorList),
+          containerAnalysisAttestationProjects: S.optional(StringList),
         }),
       ).annotate({
         identifier: "SimpleSigningAttestationCheck",
@@ -1199,25 +1519,25 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          containerAnalysisAttestationProjects: S.optional(__S(6)),
+          containerAnalysisAttestationProjects: S.optional(StringList),
         }),
       ).annotate({ identifier: "AttestationSource" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          attestationSource: S.optional(__S(16)),
-          trustedSourceRepoPatterns: S.optional(__S(6)),
+          attestationSource: S.optional(AttestationSource),
+          trustedSourceRepoPatterns: S.optional(StringList),
           customConstraints: S.optional(S.String),
           configBasedBuildRequired: S.optional(S.Boolean),
-          trustedBuilder: S.optional(S.String),
+          trustedBuilder: S.optional(VerificationRuleTrustedBuilderEnum),
         }),
       ).annotate({ identifier: "VerificationRule" });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(VerificationRule);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(18)),
+          rules: S.optional(VerificationRuleList),
         }),
       ).annotate({ identifier: "SlsaCheck" });
     case 4:
@@ -1227,17 +1547,17 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "SigstorePublicKey" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(SigstorePublicKey);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          publicKeys: S.optional(__S(21)),
+          publicKeys: S.optional(SigstorePublicKeyList),
         }),
       ).annotate({ identifier: "SigstorePublicKeySet" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          publicKeySet: S.optional(__S(22)),
+          publicKeySet: S.optional(SigstorePublicKeySet),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "SigstoreAuthority" });
@@ -1246,51 +1566,51 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(SigstoreAuthority);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sigstoreAuthorities: S.optional(__S(24)),
+          sigstoreAuthorities: S.optional(SigstoreAuthorityList),
         }),
       ).annotate({ identifier: "SigstoreSignatureCheck" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          trustedDirPatterns: S.optional(__S(6)),
+          trustedDirPatterns: S.optional(StringList),
         }),
       ).annotate({ identifier: "TrustedDirectoryCheck" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          vulnerabilityCheck: S.optional(__S(9)),
-          imageFreshnessCheck: S.optional(__S(10)),
-          simpleSigningAttestationCheck: S.optional(__S(15)),
+          vulnerabilityCheck: S.optional(VulnerabilityCheck),
+          imageFreshnessCheck: S.optional(ImageFreshnessCheck),
+          simpleSigningAttestationCheck: S.optional(SimpleSigningAttestationCheck),
           alwaysDeny: S.optional(S.Boolean),
-          slsaCheck: S.optional(__S(19)),
-          sigstoreSignatureCheck: S.optional(__S(25)),
+          slsaCheck: S.optional(SlsaCheck),
+          sigstoreSignatureCheck: S.optional(SigstoreSignatureCheck),
           displayName: S.optional(S.String),
-          imageAllowlist: S.optional(__S(7)),
-          trustedDirectoryCheck: S.optional(__S(26)),
+          imageAllowlist: S.optional(ImageAllowlist),
+          trustedDirectoryCheck: S.optional(TrustedDirectoryCheck),
         }),
       ).annotate({ identifier: "Check" });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(Check);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          scope: S.optional(__S(8)),
-          imageAllowlist: S.optional(__S(7)),
+          scope: S.optional(Scope),
+          imageAllowlist: S.optional(ImageAllowlist),
           displayName: S.optional(S.String),
-          checks: S.optional(__S(28)),
+          checks: S.optional(CheckList),
         }),
       ).annotate({ identifier: "CheckSet" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(CheckSet);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          imageAllowlist: S.optional(__S(7)),
-          checkSets: S.optional(__S(30)),
+          imageAllowlist: S.optional(ImageAllowlist),
+          checkSets: S.optional(CheckSetList),
         }),
       ).annotate({ identifier: "GkePolicy" });
   }
@@ -1302,7 +1622,7 @@ function __c4(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
-          gkePolicy: S.optional(__S(31)),
+          gkePolicy: S.optional(GkePolicy),
           etag: S.optional(S.String),
           updateTime: S.optional(S.String),
         }),
@@ -1312,7 +1632,7 @@ function __c4(j: number): any {
         S.Struct({
           policyId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(32).pipe(T.HttpBody())),
+          body: S.optional(PlatformPolicy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1361,14 +1681,14 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(37)),
+          resource: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "EvaluateGkePolicyRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(38).pipe(T.HttpBody())),
+          body: S.optional(EvaluateGkePolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1392,51 +1712,51 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          verdict: S.optional(S.String),
+          verdict: S.optional(EvaluationResultVerdictEnum),
         }),
       ).annotate({ identifier: "EvaluationResult" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           explanation: S.optional(S.String),
-          evaluationResult: S.optional(__S(41)),
-          allowlistResult: S.optional(__S(40)),
+          evaluationResult: S.optional(EvaluationResult),
+          allowlistResult: S.optional(AllowlistResult),
           type: S.optional(S.String),
           index: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "CheckResult" });
     case 3:
-      return S.Array(__S(42));
+      return S.Array(CheckResult);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(43)),
+          results: S.optional(CheckResultList),
         }),
       ).annotate({ identifier: "CheckResults" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           index: S.optional(S.String),
-          allowlistResult: S.optional(__S(40)),
+          allowlistResult: S.optional(AllowlistResult),
           explanation: S.optional(S.String),
           displayName: S.optional(S.String),
-          scope: S.optional(__S(8)),
-          checkResults: S.optional(__S(44)),
+          scope: S.optional(Scope),
+          checkResults: S.optional(CheckResults),
         }),
       ).annotate({ identifier: "CheckSetResult" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          verdict: S.optional(S.String),
+          verdict: S.optional(ImageResultVerdictEnum),
           imageUri: S.optional(S.String),
-          allowlistResult: S.optional(__S(40)),
+          allowlistResult: S.optional(AllowlistResult),
           explanation: S.optional(S.String),
-          checkSetResult: S.optional(__S(45)),
+          checkSetResult: S.optional(CheckSetResult),
         }),
       ).annotate({ identifier: "ImageResult" });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(ImageResult);
   }
 }
 function __c6(j: number): any {
@@ -1444,20 +1764,20 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          imageResults: S.optional(__S(47)),
+          imageResults: S.optional(ImageResultList),
           podName: S.optional(S.String),
-          verdict: S.optional(S.String),
+          verdict: S.optional(PodResultVerdictEnum),
           kubernetesNamespace: S.optional(S.String),
           kubernetesServiceAccount: S.optional(S.String),
         }),
       ).annotate({ identifier: "PodResult" });
     case 1:
-      return S.Array(__S(48));
+      return S.Array(PodResult);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          verdict: S.optional(S.String),
-          results: S.optional(__S(49)),
+          verdict: S.optional(EvaluateGkePolicyResponseVerdictEnum),
+          results: S.optional(PodResultList),
         }),
       ).annotate({
         identifier: "EvaluateGkePolicyResponse",
@@ -1489,19 +1809,19 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(__S(6)),
-          condition: S.optional(__S(52)),
+          members: S.optional(StringList),
+          condition: S.optional(Expr),
           role: S.optional(S.String),
         }),
       ).annotate({ identifier: "Binding" });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(Binding);
     case 7:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.Number),
           etag: S.optional(S.String),
-          bindings: S.optional(__S(54)),
+          bindings: S.optional(BindingList),
         }),
       ).annotate({ identifier: "IamPolicy" });
   }
@@ -1538,13 +1858,13 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          evaluationMode: S.optional(S.String),
-          requireAttestationsBy: S.optional(__S(6)),
-          enforcementMode: S.optional(S.String),
+          evaluationMode: S.optional(AdmissionRuleEvaluationModeEnum),
+          requireAttestationsBy: S.optional(StringList),
+          enforcementMode: S.optional(AdmissionRuleEnforcementModeEnum),
         }),
       ).annotate({ identifier: "AdmissionRule" });
     case 3:
-      return S.Record(S.String, __S(58));
+      return S.Record(S.String, AdmissionRule);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1554,20 +1874,20 @@ function __c7(j: number): any {
         identifier: "AdmissionWhitelistPattern",
       });
     case 5:
-      return S.Array(__S(60));
+      return S.Array(AdmissionWhitelistPattern);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          clusterAdmissionRules: S.optional(__S(59)),
-          globalPolicyEvaluationMode: S.optional(S.String),
-          kubernetesNamespaceAdmissionRules: S.optional(__S(59)),
-          kubernetesServiceAccountAdmissionRules: S.optional(__S(59)),
-          admissionWhitelistPatterns: S.optional(__S(61)),
+          clusterAdmissionRules: S.optional(AdmissionRuleMap),
+          globalPolicyEvaluationMode: S.optional(PolicyGlobalPolicyEvaluationModeEnum),
+          kubernetesNamespaceAdmissionRules: S.optional(AdmissionRuleMap),
+          kubernetesServiceAccountAdmissionRules: S.optional(AdmissionRuleMap),
+          admissionWhitelistPatterns: S.optional(AdmissionWhitelistPatternList),
           description: S.optional(S.String),
           updateTime: S.optional(S.String),
-          istioServiceIdentityAdmissionRules: S.optional(__S(59)),
+          istioServiceIdentityAdmissionRules: S.optional(AdmissionRuleMap),
           name: S.optional(S.String),
-          defaultAdmissionRule: S.optional(__S(58)),
+          defaultAdmissionRule: S.optional(AdmissionRule),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Policy" });
@@ -1634,11 +1954,11 @@ function __c8(j: number): any {
         identifier: "ListProjectsAttestorsRequest",
       });
     case 3:
-      return S.Array(__S(4));
+      return S.Array(Attestor);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          attestors: S.optional(__S(67)),
+          attestors: S.optional(AttestorList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAttestorsResponse" });
@@ -1659,11 +1979,11 @@ function __c8(j: number): any {
         identifier: "ListProjectsPlatformsPoliciesRequest",
       });
     case 6:
-      return S.Array(__S(32));
+      return S.Array(PlatformPolicy);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          platformPolicies: S.optional(__S(70)),
+          platformPolicies: S.optional(PlatformPolicyList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1677,7 +1997,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(32).pipe(T.HttpBody())),
+          body: S.optional(PlatformPolicy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1691,14 +2011,14 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(55)),
+          policy: S.optional(IamPolicy),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(73).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1713,7 +2033,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(73).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1727,7 +2047,7 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(6)),
+          permissions: S.optional(StringList),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -1736,7 +2056,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(76).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1751,7 +2071,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(76).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1766,7 +2086,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(62).pipe(T.HttpBody())),
+          body: S.optional(Policy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1785,7 +2105,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(4).pipe(T.HttpBody())),
+          body: S.optional(Attestor.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1804,7 +2124,7 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "Signature" });
     case 2:
-      return S.Array(__S(81));
+      return S.Array(Signature);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1812,19 +2132,19 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "Jwt" });
     case 4:
-      return S.Array(__S(83));
+      return S.Array(Jwt);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          signatures: S.optional(__S(82)),
-          jwts: S.optional(__S(84)),
+          signatures: S.optional(SignatureList),
+          jwts: S.optional(JwtList),
           serializedPayload: S.optional(S.String),
         }),
       ).annotate({ identifier: "AttestationOccurrence" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          attestation: S.optional(__S(85)),
+          attestation: S.optional(AttestationOccurrence),
           occurrenceResourceUri: S.optional(S.String),
           occurrenceNote: S.optional(S.String),
         }),
@@ -1835,7 +2155,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           attestor: S.String.pipe(T.Label()),
-          body: S.optional(__S(86).pipe(T.HttpBody())),
+          body: S.optional(ValidateAttestationOccurrenceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1853,44 +2173,11 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(S.String),
+          result: S.optional(ValidateAttestationOccurrenceResponseResultEnum),
           denialReason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ValidateAttestationOccurrenceResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
   }
 }

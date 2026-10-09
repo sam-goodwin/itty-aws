@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Pricing",
   serviceShapeName: "AWSPriceListService",
@@ -138,17 +136,28 @@ export interface DescribeServicesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeServicesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DescribeServicesRequest>;
 export type AttributeNameList = string[];
+const AttributeNameList = /*@__PURE__*/ __L.at(__c0, 1);
 export interface Service {
   ServiceCode: string;
   AttributeNames?: string[];
 }
+const Service = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Service>;
 export type ServiceList = Service[];
+const ServiceList = /*@__PURE__*/ __L.at(__c0, 3);
 export interface DescribeServicesResponse {
   Services?: Service[];
   FormatVersion?: string;
   NextToken?: string;
 }
+const DescribeServicesResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DescribeServicesResponse>;
 export type GetAttributeValuesMaxResults = number;
 export interface GetAttributeValuesRequest {
   ServiceCode: string;
@@ -156,23 +165,41 @@ export interface GetAttributeValuesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const GetAttributeValuesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetAttributeValuesRequest>;
 export interface AttributeValue {
   Value?: string;
 }
+const AttributeValue = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AttributeValue>;
 export type AttributeValueList = AttributeValue[];
+const AttributeValueList = /*@__PURE__*/ __L.at(__c0, 7);
 export interface GetAttributeValuesResponse {
   AttributeValues?: AttributeValue[];
   NextToken?: string;
 }
+const GetAttributeValuesResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetAttributeValuesResponse>;
 export type PriceListArn = string;
 export type FileFormat = string;
 export interface GetPriceListFileUrlRequest {
   PriceListArn: string;
   FileFormat: string;
 }
+const GetPriceListFileUrlRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetPriceListFileUrlRequest>;
 export interface GetPriceListFileUrlResponse {
   Url?: string;
 }
+const GetPriceListFileUrlResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetPriceListFileUrlResponse>;
 export type FilterType =
   | "TERM_MATCH"
   | "EQUALS"
@@ -180,6 +207,8 @@ export type FilterType =
   | "ANY_OF"
   | "NONE_OF"
   | (string & {});
+const FilterType = S.String;
+
 export type Field = string;
 export type Value = string;
 export interface Filter {
@@ -187,7 +216,9 @@ export interface Filter {
   Field: string;
   Value: string;
 }
+const Filter = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Filter>;
 export type Filters = Filter[];
+const Filters = /*@__PURE__*/ __L.at(__c1, 4);
 export type GetProductsMaxResults = number;
 export interface GetProductsRequest {
   ServiceCode: string;
@@ -196,13 +227,16 @@ export interface GetProductsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const GetProductsRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetProductsRequest>;
 export type SynthesizedJsonPriceListJsonItem = string;
 export type PriceListJsonItems = string[];
+const PriceListJsonItems = AttributeNameList as any as S.Schema<PriceListJsonItems>;
 export interface GetProductsResponse {
   FormatVersion?: string;
   PriceList?: string[];
   NextToken?: string;
 }
+const GetProductsResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetProductsResponse>;
 export type ServiceCode = string;
 export type EffectiveDate = Date;
 export type RegionCode = string;
@@ -216,18 +250,29 @@ export interface ListPriceListsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListPriceListsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListPriceListsRequest>;
 export type FileFormats = string[];
+const FileFormats = AttributeNameList as any as S.Schema<FileFormats>;
 export interface PriceList {
   PriceListArn?: string;
   RegionCode?: string;
   CurrencyCode?: string;
   FileFormats?: string[];
 }
+const PriceList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<PriceList>;
 export type PriceLists = PriceList[];
+const PriceLists = /*@__PURE__*/ __L.at(__c2, 1);
 export interface ListPriceListsResponse {
   PriceLists?: PriceList[];
   NextToken?: string;
 }
+const ListPriceListsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListPriceListsResponse>;
 export type ErrorMessage = string;
 export type DescribeServicesError =
   | AccessDeniedException
@@ -248,8 +293,8 @@ export const describeServices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Service
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(0) as any as S.Schema<DescribeServicesRequest>,
-  output: __S(4) as any as S.Schema<DescribeServicesResponse>,
+  input: DescribeServicesRequest,
+  output: DescribeServicesResponse,
   errors: [
     AccessDeniedException,
     ExpiredNextTokenException,
@@ -289,8 +334,8 @@ export const getAttributeValues: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AttributeValue
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(5) as any as S.Schema<GetAttributeValuesRequest>,
-  output: __S(8) as any as S.Schema<GetAttributeValuesResponse>,
+  input: GetAttributeValuesRequest,
+  output: GetAttributeValuesResponse,
   errors: [
     AccessDeniedException,
     ExpiredNextTokenException,
@@ -330,8 +375,8 @@ export const getPriceListFileUrl: API.OperationMethod<
   GetPriceListFileUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<GetPriceListFileUrlRequest>,
-  output: __S(10) as any as S.Schema<GetPriceListFileUrlResponse>,
+  input: GetPriceListFileUrlRequest,
+  output: GetPriceListFileUrlResponse,
   errors: [
     AccessDeniedException,
     InternalErrorException,
@@ -364,8 +409,8 @@ export const getProducts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SynthesizedJsonPriceListJsonItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(13) as any as S.Schema<GetProductsRequest>,
-  output: __S(14) as any as S.Schema<GetProductsResponse>,
+  input: GetProductsRequest,
+  output: GetProductsResponse,
   errors: [
     AccessDeniedException,
     ExpiredNextTokenException,
@@ -408,8 +453,8 @@ export const listPriceLists: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PriceList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(15) as any as S.Schema<ListPriceListsRequest>,
-  output: __S(18) as any as S.Schema<ListPriceListsResponse>,
+  input: ListPriceListsRequest,
+  output: ListPriceListsResponse,
   errors: [
     AccessDeniedException,
     ExpiredNextTokenException,
@@ -447,14 +492,14 @@ function __c0(j: number): any {
       return S.Array(S.String);
     case 2:
       return S.suspend(() =>
-        S.Struct({ ServiceCode: S.String, AttributeNames: S.optional(__S(1)) }),
+        S.Struct({ ServiceCode: S.String, AttributeNames: S.optional(AttributeNameList) }),
       ).annotate({ identifier: "Service" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(Service);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Services: S.optional(__S(3)),
+          Services: S.optional(ServiceList),
           FormatVersion: S.optional(S.String),
           NextToken: S.optional(S.String),
         }),
@@ -475,7 +520,7 @@ function __c0(j: number): any {
         identifier: "AttributeValue",
       });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(AttributeValue);
   }
 }
 function __c1(j: number): any {
@@ -483,7 +528,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AttributeValues: S.optional(__S(7)),
+          AttributeValues: S.optional(AttributeValueList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -503,15 +548,15 @@ function __c1(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ Type: S.String, Field: S.String, Value: S.String }),
+        S.Struct({ Type: FilterType, Field: S.String, Value: S.String }),
       ).annotate({ identifier: "Filter" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(Filter);
     case 5:
       return S.suspend(() =>
         S.Struct({
           ServiceCode: S.String,
-          Filters: S.optional(__S(12)),
+          Filters: S.optional(Filters),
           FormatVersion: S.optional(S.String),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
@@ -521,7 +566,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           FormatVersion: S.optional(S.String),
-          PriceList: S.optional(__S(1)),
+          PriceList: S.optional(PriceListJsonItems),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetProductsResponse" });
@@ -546,29 +591,14 @@ function __c2(j: number): any {
           PriceListArn: S.optional(S.String),
           RegionCode: S.optional(S.String),
           CurrencyCode: S.optional(S.String),
-          FileFormats: S.optional(__S(1)),
+          FileFormats: S.optional(FileFormats),
         }),
       ).annotate({ identifier: "PriceList" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(PriceList);
     case 2:
       return S.suspend(() =>
-        S.Struct({ PriceLists: S.optional(__S(17)), NextToken: S.optional(S.String) }),
+        S.Struct({ PriceLists: S.optional(PriceLists), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListPriceListsResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

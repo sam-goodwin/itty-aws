@@ -8,8 +8,6 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -60,8 +58,15 @@ export interface CreateAuthenticationRequest {
   /** Scopes defines the OIDC scopes to request. */
   scopes?: string;
 }
+const CreateAuthenticationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateAuthenticationRequest>;
+
 /** The current status of the authentication definition. */
 export type AuthenticationStatus = "Creating" | "Updating" | "Deleting" | "Ready" | "Error";
+const AuthenticationStatus = S.String;
+
 /** Describes an authentication definition associated to a STACKIT Git instance. The provider type will be an openidConnect type. */
 export interface Authentication {
   /** The well-known configuration url to use for this authentication definition. */
@@ -85,9 +90,15 @@ export interface Authentication {
   /** Provides additional information or error details when the status is 'Error'. */
   status_message?: string;
 }
+const Authentication = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Authentication>;
+
 /** A list of CIDR network addresses that are allowed to access the instance. */
 export type Acl = Array<string>;
+const Acl = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Acl>;
+
 export type CreateInstanceRequestFlavor = "git-10" | "git-100";
+const CreateInstanceRequestFlavor = S.String;
+
 export interface CreateInstanceRequest {
   /** Project identifier. */
   projectId: string;
@@ -96,14 +107,23 @@ export interface CreateInstanceRequest {
   /** A user chosen name to distinguish multiple STACKIT Git instances. */
   name: string;
 }
+const CreateInstanceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateInstanceRequest>;
+
 /** Restricted ACL for instance access. */
 export type InstanceAclList = Array<string>;
+const InstanceAclList = Acl as any as S.Schema<InstanceAclList>;
+
 /** Default email notifications. */
 export type FeatureToggleDefaultEmailNotifications =
   | "enabled"
   | "disabled"
   | "onmention"
   | "andyourown";
+const FeatureToggleDefaultEmailNotifications = S.String;
+
 /** Feature toggles for instance pipelines */
 export interface Pipelines {
   /** The action URL for the pipelines */
@@ -111,6 +131,8 @@ export interface Pipelines {
   /** Enable pipelines for this instance */
   enabled?: boolean | null;
 }
+const Pipelines = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Pipelines>;
+
 /** Feature toggles for the instance. */
 export interface FeatureToggle {
   /** Default email notifications. */
@@ -119,8 +141,12 @@ export interface FeatureToggle {
   enable_local_login?: boolean | null;
   pipelines?: Pipelines;
 }
+const FeatureToggle = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<FeatureToggle>;
+
 /** Object that represents the labels of an object. Regex for keys: `^(?=.{1,63}$)([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$`. Regex for values: `^(?=.{0,63}$)(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])*$`. The `stackit-` prefix is reserved and cannot be used for Keys. */
 export type Labels = { [key: string]: string | undefined };
+const Labels = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Labels>;
+
 /** The current state of the STACKIT Git instance. */
 export type InstanceState =
   | "Creating"
@@ -129,6 +155,8 @@ export type InstanceState =
   | "Deleting"
   | "Ready"
   | "Error";
+const InstanceState = S.String;
+
 /** Describes a STACKIT Git instance. */
 export interface Instance {
   /** Restricted ACL for instance access. */
@@ -156,7 +184,14 @@ export interface Instance {
   /** The current version of STACKIT Git deployed to the instance. */
   version: string;
 }
+const Instance = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Instance>;
+
 export type CreateRunnerRequestLabelsList = Array<string>;
+const CreateRunnerRequestLabelsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateRunnerRequestLabelsList>;
+
 export interface CreateRunnerRequest {
   /** Project identifier. */
   projectId: string;
@@ -164,7 +199,11 @@ export interface CreateRunnerRequest {
   instanceId: string;
   labels: CreateRunnerRequestLabelsList;
 }
+const CreateRunnerRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CreateRunnerRequest>;
+
 export type RunnerLabelsList = Array<string>;
+const RunnerLabelsList = CreateRunnerRequestLabelsList as any as S.Schema<RunnerLabelsList>;
+
 /** Describes a runner associated to a STACKIT Git instance. */
 export interface Runner {
   created_at: string;
@@ -173,6 +212,8 @@ export interface Runner {
   /** The current status of the runner. */
   status: string;
 }
+const Runner = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Runner>;
+
 export interface CreateUserRequest {
   /** Project identifier. */
   projectId: string;
@@ -189,6 +230,8 @@ export interface CreateUserRequest {
   /** A user chosen username to distinguish multiple STACKIT Git instance Users. */
   username: string;
 }
+const CreateUserRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CreateUserRequest>;
+
 /** Describes a STACKIT Git instance User. */
 export interface User {
   /** A user chosen email to distinguish multiple STACKIT Git instance Users. */
@@ -200,6 +243,8 @@ export interface User {
   /** A user chosen username to distinguish multiple STACKIT Git instance Users. */
   username: string;
 }
+const User = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<User>;
+
 export interface DeleteAuthenticationRequest {
   /** Project identifier. */
   projectId: string;
@@ -208,21 +253,43 @@ export interface DeleteAuthenticationRequest {
   /** Authentication Source identifier. */
   authenticationId: string;
 }
+const DeleteAuthenticationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteAuthenticationRequest>;
+
 export interface DeleteAuthenticationResponse {}
+const DeleteAuthenticationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DeleteAuthenticationResponse>;
+
 export interface DeleteInstanceRequest {
   /** Project identifier. */
   projectId: string;
   /** Instance identifier. */
   instanceId: string;
 }
+const DeleteInstanceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DeleteInstanceRequest>;
+
 export interface DeleteInstanceResponse {}
+const DeleteInstanceResponse =
+  DeleteAuthenticationResponse as any as S.Schema<DeleteInstanceResponse>;
+
 export interface DeleteRunnerRequest {
   /** Project identifier. */
   projectId: string;
   /** Instance identifier. */
   instanceId: string;
 }
+const DeleteRunnerRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DeleteRunnerRequest>;
+
 export interface DeleteRunnerResponse {}
+const DeleteRunnerResponse = DeleteAuthenticationResponse as any as S.Schema<DeleteRunnerResponse>;
+
 export interface DeleteUserRequest {
   /** Project identifier. */
   projectId: string;
@@ -231,7 +298,11 @@ export interface DeleteUserRequest {
   /** Instance User identifier. */
   username: string;
 }
+const DeleteUserRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DeleteUserRequest>;
+
 export interface DeleteUserResponse {}
+const DeleteUserResponse = DeleteAuthenticationResponse as any as S.Schema<DeleteUserResponse>;
+
 export interface GetAuthenticationRequest {
   /** Project identifier. */
   projectId: string;
@@ -240,18 +311,27 @@ export interface GetAuthenticationRequest {
   /** Authentication Source identifier. */
   authenticationId: string;
 }
+const GetAuthenticationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetAuthenticationRequest>;
+
 export interface GetInstanceRequest {
   /** Project identifier. */
   projectId: string;
   /** Instance identifier. */
   instanceId: string;
 }
+const GetInstanceRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetInstanceRequest>;
+
 export interface GetRunnerRequest {
   /** Project identifier. */
   projectId: string;
   /** Instance identifier. */
   instanceId: string;
 }
+const GetRunnerRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GetRunnerRequest>;
+
 export interface GetUserRequest {
   /** Project identifier. */
   projectId: string;
@@ -260,7 +340,11 @@ export interface GetUserRequest {
   /** Instance User identifier. */
   username: string;
 }
+const GetUserRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GetUserRequest>;
+
 export interface GetUserResponse {}
+const GetUserResponse = DeleteAuthenticationResponse as any as S.Schema<GetUserResponse>;
+
 export interface GetUsersRequest {
   /** Project identifier. */
   projectId: string;
@@ -269,7 +353,11 @@ export interface GetUsersRequest {
   /** Page number for pagination (1-indexed). Each page contains up to 50 users. */
   page?: number;
 }
+const GetUsersRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GetUsersRequest>;
+
 export type ListUsersUsersList = Array<User>;
+const ListUsersUsersList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ListUsersUsersList>;
+
 /** A paginated list of STACKIT Git instance Users. */
 export interface ListUsers {
   /** Number of users returned in this page. */
@@ -280,23 +368,41 @@ export interface ListUsers {
   totalPages: number;
   users: ListUsersUsersList;
 }
+const ListUsers = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ListUsers>;
+
 export interface ListAuthenticationRequest {
   /** Project identifier. */
   projectId: string;
   /** Instance identifier. */
   instanceId: string;
 }
+const ListAuthenticationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListAuthenticationRequest>;
+
 export type AuthenticationListAuthenticationList = Array<Authentication>;
+const AuthenticationListAuthenticationList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<AuthenticationListAuthenticationList>;
+
 /** A list of authentications belonging to an Instance. */
 export interface AuthenticationList {
   authentication: AuthenticationListAuthenticationList;
 }
+const AuthenticationList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<AuthenticationList>;
+
 export interface ListFlavorsRequest {
   /** Project identifier. */
   projectId: string;
 }
+const ListFlavorsRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ListFlavorsRequest>;
+
 /** Defines the flavor availability. */
 export type FlavorAvailability = "available" | "unavailable" | "internal" | "deprecated";
+const FlavorAvailability = S.String;
+
 /** Describes a STACKIT Git Flavor. */
 export interface Flavor {
   /** Defines the flavor availability. */
@@ -310,24 +416,47 @@ export interface Flavor {
   /** SAP article number. */
   sku: string;
 }
+const Flavor = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<Flavor>;
+
 export type ListFlavorsFlavorsList = Array<Flavor>;
+const ListFlavorsFlavorsList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ListFlavorsFlavorsList>;
+
 /** A list of STACKIT Git Flavors. */
 export interface ListFlavors {
   flavors: ListFlavorsFlavorsList;
 }
+const ListFlavors = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ListFlavors>;
+
 export interface ListInstancesRequest {
   /** Project identifier. */
   projectId: string;
 }
+const ListInstancesRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ListInstancesRequest>;
+
 export type ListInstancesInstancesList = Array<Instance>;
+const ListInstancesInstancesList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListInstancesInstancesList>;
+
 /** A list of STACKIT Git instances. */
 export interface ListInstances {
   instances: ListInstancesInstancesList;
 }
+const ListInstances = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ListInstances>;
+
 export interface ListRunnerRuntimesRequest {
   /** Project identifier. */
   projectId: string;
 }
+const ListRunnerRuntimesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListRunnerRuntimesRequest>;
+
 /** Describes a STACKIT Git Runner runtime. */
 export interface RunnerRuntime {
   /** Indicates the availability of the runner label */
@@ -341,11 +470,20 @@ export interface RunnerRuntime {
   /** Runtime label. */
   label: string;
 }
+const RunnerRuntime = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<RunnerRuntime>;
+
 export type RunnerRuntimeListItemsList = Array<RunnerRuntime>;
+const RunnerRuntimeListItemsList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<RunnerRuntimeListItemsList>;
+
 /** A list of STACKIT Git RunnerLabels. */
 export interface RunnerRuntimeList {
   items: RunnerRuntimeListItemsList;
 }
+const RunnerRuntimeList = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<RunnerRuntimeList>;
+
 export interface PatchAuthenticationRequest {
   /** Project identifier. */
   projectId: string;
@@ -366,6 +504,11 @@ export interface PatchAuthenticationRequest {
   /** Scopes defines the OIDC scopes to request. */
   scopes?: string;
 }
+const PatchAuthenticationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<PatchAuthenticationRequest>;
+
 export interface PatchInstanceRequest {
   /** Project identifier. */
   projectId: string;
@@ -377,6 +520,8 @@ export interface PatchInstanceRequest {
   feature_toggle?: FeatureToggle;
   labels?: Labels;
 }
+const PatchInstanceRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<PatchInstanceRequest>;
+
 export interface UpdateUserRequest {
   /** Project identifier. */
   projectId: string;
@@ -391,6 +536,8 @@ export interface UpdateUserRequest {
   /** A user password to allow user/pass instance login. */
   password?: string | Redacted.Redacted<string>;
 }
+const UpdateUserRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<UpdateUserRequest>;
+
 export type CreateAuthenticationError = BadRequest | NotFound | Conflict | StackitOpError;
 /** Creates an authentication source Creates an authentication source for the corresponding STACKIT Git instance */
 export const createAuthentication: API.OperationMethod<
@@ -399,8 +546,8 @@ export const createAuthentication: API.OperationMethod<
   CreateAuthenticationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateAuthenticationRequest>,
-  output: __S(1) as any as S.Schema<Authentication>,
+  input: CreateAuthenticationRequest,
+  output: Authentication,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -414,8 +561,8 @@ export const createInstance: API.OperationMethod<
   CreateInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateInstanceRequest>,
-  output: __S(7) as any as S.Schema<Instance>,
+  input: CreateInstanceRequest,
+  output: Instance,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -429,8 +576,8 @@ export const createRunner: API.OperationMethod<
   CreateRunnerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CreateRunnerRequest>,
-  output: __S(10) as any as S.Schema<Runner>,
+  input: CreateRunnerRequest,
+  output: Runner,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -444,8 +591,8 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CreateUserRequest>,
-  output: __S(12) as any as S.Schema<User>,
+  input: CreateUserRequest,
+  output: User,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -459,8 +606,8 @@ export const deleteAuthentication: API.OperationMethod<
   DeleteAuthenticationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<DeleteAuthenticationRequest>,
-  output: __S(14) as any as S.Schema<DeleteAuthenticationResponse>,
+  input: DeleteAuthenticationRequest,
+  output: DeleteAuthenticationResponse,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -474,8 +621,8 @@ export const deleteInstance: API.OperationMethod<
   DeleteInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DeleteInstanceRequest>,
-  output: __S(14) as any as S.Schema<DeleteInstanceResponse>,
+  input: DeleteInstanceRequest,
+  output: DeleteInstanceResponse,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -489,8 +636,8 @@ export const deleteRunner: API.OperationMethod<
   DeleteRunnerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<DeleteRunnerRequest>,
-  output: __S(14) as any as S.Schema<DeleteRunnerResponse>,
+  input: DeleteRunnerRequest,
+  output: DeleteRunnerResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -504,8 +651,8 @@ export const deleteUser: API.OperationMethod<
   DeleteUserError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<DeleteUserRequest>,
-  output: __S(14) as any as S.Schema<DeleteUserResponse>,
+  input: DeleteUserRequest,
+  output: DeleteUserResponse,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -519,8 +666,8 @@ export const getAuthentication: API.OperationMethod<
   GetAuthenticationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<GetAuthenticationRequest>,
-  output: __S(1) as any as S.Schema<Authentication>,
+  input: GetAuthenticationRequest,
+  output: Authentication,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -534,8 +681,8 @@ export const getInstance: API.OperationMethod<
   GetInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetInstanceRequest>,
-  output: __S(7) as any as S.Schema<Instance>,
+  input: GetInstanceRequest,
+  output: Instance,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -549,8 +696,8 @@ export const getRunner: API.OperationMethod<
   GetRunnerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<GetRunnerRequest>,
-  output: __S(10) as any as S.Schema<Runner>,
+  input: GetRunnerRequest,
+  output: Runner,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -564,8 +711,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetUserRequest>,
-  output: __S(14) as any as S.Schema<GetUserResponse>,
+  input: GetUserRequest,
+  output: GetUserResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -579,8 +726,8 @@ export const getUsers: API.OperationMethod<
   GetUsersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<GetUsersRequest>,
-  output: __S(24) as any as S.Schema<ListUsers>,
+  input: GetUsersRequest,
+  output: ListUsers,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -594,8 +741,8 @@ export const listAuthentication: API.OperationMethod<
   ListAuthenticationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<ListAuthenticationRequest>,
-  output: __S(27) as any as S.Schema<AuthenticationList>,
+  input: ListAuthenticationRequest,
+  output: AuthenticationList,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -609,8 +756,8 @@ export const listFlavors2: API.OperationMethod<
   ListFlavors2Error,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<ListFlavorsRequest>,
-  output: __S(31) as any as S.Schema<ListFlavors>,
+  input: ListFlavorsRequest,
+  output: ListFlavors,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -624,8 +771,8 @@ export const listInstances2: API.OperationMethod<
   ListInstances2Error,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<ListInstancesRequest>,
-  output: __S(34) as any as S.Schema<ListInstances>,
+  input: ListInstancesRequest,
+  output: ListInstances,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -639,8 +786,8 @@ export const listRunnerRuntimes: API.OperationMethod<
   ListRunnerRuntimesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<ListRunnerRuntimesRequest>,
-  output: __S(38) as any as S.Schema<RunnerRuntimeList>,
+  input: ListRunnerRuntimesRequest,
+  output: RunnerRuntimeList,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -654,8 +801,8 @@ export const patchAuthentication: API.OperationMethod<
   PatchAuthenticationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<PatchAuthenticationRequest>,
-  output: __S(1) as any as S.Schema<Authentication>,
+  input: PatchAuthenticationRequest,
+  output: Authentication,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -669,8 +816,8 @@ export const patchInstance: API.OperationMethod<
   PatchInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<PatchInstanceRequest>,
-  output: __S(7) as any as S.Schema<Instance>,
+  input: PatchInstanceRequest,
+  output: Instance,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -684,8 +831,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<UpdateUserRequest>,
-  output: __S(12) as any as S.Schema<User>,
+  input: UpdateUserRequest,
+  output: User,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -728,7 +875,7 @@ function __c0(j: number): any {
           name: S.String,
           provider: S.String,
           scopes: S.String,
-          status: S.String,
+          status: AuthenticationStatus,
           status_message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Authentication" });
@@ -738,8 +885,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          acl: S.optional(__S(2)),
-          flavor: S.optional(S.String),
+          acl: S.optional(Acl),
+          flavor: S.optional(CreateInstanceRequestFlavor),
           name: S.String,
         }).pipe(
           T.Http({
@@ -760,9 +907,9 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          default_email_notifications: S.optional(S.NullOr(S.String)),
+          default_email_notifications: S.optional(S.NullOr(FeatureToggleDefaultEmailNotifications)),
           enable_local_login: S.optional(S.NullOr(S.Boolean)),
-          pipelines: S.optional(__S(4)),
+          pipelines: S.optional(Pipelines),
         }),
       ).annotate({ identifier: "FeatureToggle" });
     case 6:
@@ -770,17 +917,17 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          acl: __S(2),
+          acl: InstanceAclList,
           admin_login: S.Boolean,
           consumed_disk: S.String,
           consumed_object_storage: S.String,
           created: S.String,
-          feature_toggle: __S(5),
+          feature_toggle: FeatureToggle,
           flavor: S.String,
           id: S.String,
-          labels: S.optional(__S(6)),
+          labels: S.optional(Labels),
           name: S.String,
-          state: S.String,
+          state: InstanceState,
           url: S.String,
           version: S.String,
         }),
@@ -796,7 +943,7 @@ function __c1(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          labels: __S(8),
+          labels: CreateRunnerRequestLabelsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -811,7 +958,7 @@ function __c1(j: number): any {
         S.Struct({
           created_at: S.String,
           id: S.String,
-          labels: __S(8),
+          labels: RunnerLabelsList,
           status: S.String,
         }),
       ).annotate({ identifier: "Runner" });
@@ -985,7 +1132,7 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "GetUsersRequest" });
     case 7:
-      return S.Array(__S(12));
+      return S.Array(User);
   }
 }
 function __c3(j: number): any {
@@ -996,7 +1143,7 @@ function __c3(j: number): any {
           itemsCount: S.Number,
           offset: S.Number,
           totalPages: S.Number,
-          users: __S(23),
+          users: ListUsersUsersList,
         }),
       ).annotate({ identifier: "ListUsers" });
     case 1:
@@ -1016,11 +1163,11 @@ function __c3(j: number): any {
         identifier: "ListAuthenticationRequest",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(Authentication);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          authentication: __S(26),
+          authentication: AuthenticationListAuthenticationList,
         }),
       ).annotate({ identifier: "AuthenticationList" });
     case 4:
@@ -1039,7 +1186,7 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          availability: S.String,
+          availability: FlavorAvailability,
           description: S.String,
           display_name: S.String,
           id: S.String,
@@ -1047,11 +1194,11 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "Flavor" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(Flavor);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          flavors: __S(30),
+          flavors: ListFlavorsFlavorsList,
         }),
       ).annotate({ identifier: "ListFlavors" });
   }
@@ -1072,11 +1219,11 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "ListInstancesRequest" });
     case 1:
-      return S.Array(__S(7));
+      return S.Array(Instance);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          instances: __S(33),
+          instances: ListInstancesInstancesList,
         }),
       ).annotate({ identifier: "ListInstances" });
     case 3:
@@ -1105,11 +1252,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "RunnerRuntime" });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(RunnerRuntime);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          items: __S(37),
+          items: RunnerRuntimeListItemsList,
         }),
       ).annotate({ identifier: "RunnerRuntimeList" });
     case 7:
@@ -1144,10 +1291,10 @@ function __c5(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          acl: S.optional(S.NullOr(__S(2))),
+          acl: S.optional(S.NullOr(Acl)),
           admin_login: S.optional(S.Boolean),
-          feature_toggle: S.optional(__S(5)),
-          labels: S.optional(__S(6)),
+          feature_toggle: S.optional(FeatureToggle),
+          labels: S.optional(Labels),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1175,26 +1322,5 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateUserRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

@@ -8,8 +8,6 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -42,13 +40,19 @@ export class NotFound
 
 /** Container argument override. */
 export type ContainerArgsList = Array<string>;
+const ContainerArgsList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ContainerArgsList>;
+
 /** Container command override. */
 export type ContainerCommandList = Array<string>;
+const ContainerCommandList = ContainerArgsList as any as S.Schema<ContainerCommandList>;
+
 /** EnvVarType identifies the origin of an environment variable. - ENV_FROM_SOURCE_TYPE_UNSPECIFIED: Used as zero value. - ENV_FROM_SOURCE_TYPE_MANUAL: Environment source from a literal value. - ENV_FROM_SOURCE_TYPE_SECRET: Environment source from a secret. */
 export type EnvVarType =
   | "ENV_FROM_SOURCE_TYPE_UNSPECIFIED"
   | "ENV_FROM_SOURCE_TYPE_MANUAL"
   | "ENV_FROM_SOURCE_TYPE_SECRET";
+const EnvVarType = S.String;
+
 /** EnvVar defines a single environment variable. */
 export interface EnvVar {
   /** Environment variable key. */
@@ -57,8 +61,15 @@ export interface EnvVar {
   /** Environment variable value. */
   value: string;
 }
+const EnvVar = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<EnvVar>;
+
 /** Environment variables exposed to the container. */
 export type ContainerEnvironmentVariablesList = Array<EnvVar>;
+const ContainerEnvironmentVariablesList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ContainerEnvironmentVariablesList>;
+
 /** Container describes a simplified container configuration for the application. */
 export interface Container {
   /** Container argument override. */
@@ -76,10 +87,19 @@ export interface Container {
   /** Container name. */
   name: string;
 }
+const Container = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Container>;
+
 /** Containers to deploy for the application. */
 export type CreateApplicationRequestContainersList = Array<Container>;
+const CreateApplicationRequestContainersList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateApplicationRequestContainersList>;
+
 /** Allowed destination CIDRs for Ingress traffic. */
 export type NetworkIngressAclList = Array<string>;
+const NetworkIngressAclList = ContainerArgsList as any as S.Schema<NetworkIngressAclList>;
+
 /** Network configuration for an application. */
 export interface Network {
   /** Allowed destination CIDRs for Ingress traffic. */
@@ -91,19 +111,35 @@ export interface Network {
   /** Whether the application should be accessible from the internet. */
   publicIngress?: boolean;
 }
+const Network = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Network>;
+
 export interface ApplicationRegistryCredentialsAuth {
   /** Password to authenticate to the registry. Omit or set to null to indicate deletion in updates. */
   password?: string | Redacted.Redacted<string>;
   url: string;
   user: string;
 }
+const ApplicationRegistryCredentialsAuth = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ApplicationRegistryCredentialsAuth>;
+
 export type ApplicationRegistryAuthType = "AUTH_TYPE_NONE" | "AUTH_TYPE_CREDENTIALS";
+const ApplicationRegistryAuthType = S.String;
+
 export interface ApplicationRegistry {
   credentials?: ApplicationRegistryCredentialsAuth;
   type: ApplicationRegistryAuthType | (string & {});
 }
+const ApplicationRegistry = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ApplicationRegistry>;
+
 /** Image registry configuration for the application. */
 export type CreateApplicationRequestRegistryList = Array<ApplicationRegistry>;
+const CreateApplicationRequestRegistryList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateApplicationRequestRegistryList>;
+
 /** - CURRENT_STATUS_UNSPECIFIED: Used as zero value. - CURRENT_STATUS_PROGRESSING: Applications replicas are being created. - CURRENT_STATUS_RUNNING: Application is ready and has the desired replicas running. - CURRENT_STATUS_FAILED: Application is not available and has some error. - CURRENT_STATUS_IDLE: Application is ready but is scaled to 0 replicas. - CURRENT_STATUS_NONE: Application is stopped. */
 export type CurrentStatus =
   | "CURRENT_STATUS_UNSPECIFIED"
@@ -112,16 +148,27 @@ export type CurrentStatus =
   | "CURRENT_STATUS_FAILED"
   | "CURRENT_STATUS_IDLE"
   | "CURRENT_STATUS_NONE";
+const CurrentStatus = S.String;
+
 export interface RuntimeStatusInput {
   currentStatus?: CurrentStatus | (string & {});
 }
+const RuntimeStatusInput = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<RuntimeStatusInput>;
+
 /** CustomRuleParameter defines a single scaler parameter. */
 export interface CustomRuleParameter {
   name: string;
   value: string;
 }
+const CustomRuleParameter = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CustomRuleParameter>;
+
 /** Scaler parameters. */
 export type CustomScaleRuleParametersList = Array<CustomRuleParameter>;
+const CustomScaleRuleParametersList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CustomScaleRuleParametersList>;
+
 /** CustomRuleSecretMapping maps a scaler parameter to an environment secret. */
 export interface CustomRuleSecretMapping {
   /** Secret parameter name. */
@@ -129,8 +176,18 @@ export interface CustomRuleSecretMapping {
   /** Environment secret name. */
   secret: string | Redacted.Redacted<string>;
 }
+const CustomRuleSecretMapping = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CustomRuleSecretMapping>;
+
 /** Secret mappings for the scaler. */
 export type CustomScaleRuleSecretsMappingList = Array<CustomRuleSecretMapping>;
+const CustomScaleRuleSecretsMappingList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CustomScaleRuleSecretsMappingList>;
+
 /** CustomScaleRule defines parameters for custom scalers (e.g., KEDA). */
 export interface CustomScaleRule {
   /** Scaler parameters. */
@@ -140,6 +197,8 @@ export interface CustomScaleRule {
   /** Scaler type. */
   type: string;
 }
+const CustomScaleRule = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CustomScaleRule>;
+
 /** HttpScaleRule defines parameters for HTTP-based scaling. */
 export interface HttpScaleRule {
   /** Target concurrency per instance. */
@@ -147,8 +206,12 @@ export interface HttpScaleRule {
   /** Target requests per second per instance. */
   rps?: number;
 }
+const HttpScaleRule = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<HttpScaleRule>;
+
 /** - RULE_TYPE_UNSPECIFIED: Used as zero value. - RULE_TYPE_HTTP: HTTP scaling rule. - RULE_TYPE_CUSTOM: Custom scaling rule (e.g. KEDA). */
 export type RuleType = "RULE_TYPE_UNSPECIFIED" | "RULE_TYPE_HTTP" | "RULE_TYPE_CUSTOM";
+const RuleType = S.String;
+
 /** ScaleRule defines one autoscaling trigger. */
 export interface ScaleRule {
   customRule?: CustomScaleRule;
@@ -157,8 +220,12 @@ export interface ScaleRule {
   name: string;
   type: RuleType | (string & {});
 }
+const ScaleRule = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ScaleRule>;
+
 /** Scaling rules. */
 export type AutoScalingRulesList = Array<ScaleRule>;
+const AutoScalingRulesList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<AutoScalingRulesList>;
+
 /** AutoScaling configuration. */
 export interface AutoScaling {
   /** Allow automatically scale to zero. */
@@ -170,19 +237,27 @@ export interface AutoScaling {
   /** Scaling rules. */
   rules: AutoScalingRulesList;
 }
+const AutoScaling = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<AutoScaling>;
+
 /** ManualScaling configuration. */
 export interface ManualScaling {
   /** Number of instances to run. */
   instances: number;
 }
+const ManualScaling = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ManualScaling>;
+
 /** - SCALING_TYPE_UNSPECIFIED: Used as zero value. - SCALING_TYPE_AUTO: Auto scaling based on rules. - SCALING_TYPE_MANUAL: Manual scaling with fixed number of instances. */
 export type ScalingType = "SCALING_TYPE_UNSPECIFIED" | "SCALING_TYPE_AUTO" | "SCALING_TYPE_MANUAL";
+const ScalingType = S.String;
+
 /** Scaling configuration for the application. */
 export interface Scaling {
   autoScaling?: AutoScaling;
   manualScaling?: ManualScaling;
   type: ScalingType | (string & {});
 }
+const Scaling = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Scaling>;
+
 /** ApplicationSecret defines a single secret key-value pair. */
 export interface ApplicationSecret {
   /** Secret key. */
@@ -190,8 +265,15 @@ export interface ApplicationSecret {
   /** Secret value. Omit or set to null to keep the existing value unchanged. */
   value?: string;
 }
+const ApplicationSecret = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ApplicationSecret>;
+
 /** Secrets associated with the application. */
 export type CreateApplicationRequestSecretsList = Array<ApplicationSecret>;
+const CreateApplicationRequestSecretsList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateApplicationRequestSecretsList>;
+
 export interface CreateApplicationRequest {
   /** Project to create the application in. */
   projectId: string;
@@ -211,26 +293,51 @@ export interface CreateApplicationRequest {
   /** Indicates if the application resources are stopped. */
   stopped?: boolean;
 }
+const CreateApplicationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateApplicationRequest>;
+
 /** Containers to deploy for the application. */
 export type ApplicationContainersList = Array<Container>;
+const ApplicationContainersList =
+  CreateApplicationRequestContainersList as any as S.Schema<ApplicationContainersList>;
+
 /** Image registry configuration for the application. */
 export type ApplicationRegistryList = Array<ApplicationRegistry>;
+const ApplicationRegistryList =
+  CreateApplicationRequestRegistryList as any as S.Schema<ApplicationRegistryList>;
+
 /** Failure reasons collected from workload conditions. */
 export type RuntimeStatusFailureReasonsList = Array<string>;
+const RuntimeStatusFailureReasonsList =
+  ContainerArgsList as any as S.Schema<RuntimeStatusFailureReasonsList>;
+
 /** - INSTANCE_STATUS_PROGRESSING: Instance is being created. - INSTANCE_STATUS_RUNNING: Instance is available and running. - INSTANCE_STATUS_FAILED: Instance is not available and has some error. */
 export type InstanceStatus =
   | "INSTANCE_STATUS_PROGRESSING"
   | "INSTANCE_STATUS_RUNNING"
   | "INSTANCE_STATUS_FAILED";
+const InstanceStatus = S.String;
+
 /** Application instance summary. */
 export interface Instance {
   /** Instance's name. */
   name?: string;
   status?: InstanceStatus;
 }
+const Instance = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Instance>;
+
 export type RuntimeStatusInstancesList = Array<Instance>;
+const RuntimeStatusInstancesList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<RuntimeStatusInstancesList>;
+
 /** Known URLs for the running application. */
 export type RuntimeStatusUrlsList = Array<string>;
+const RuntimeStatusUrlsList = ContainerArgsList as any as S.Schema<RuntimeStatusUrlsList>;
+
 export interface RuntimeStatus {
   currentStatus?: CurrentStatus;
   /** Failure reasons collected from workload conditions. */
@@ -243,8 +350,13 @@ export interface RuntimeStatus {
   /** Known URLs for the running application. */
   urls?: RuntimeStatusUrlsList;
 }
+const RuntimeStatus = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<RuntimeStatus>;
+
 /** Secrets associated with the application. */
 export type ApplicationSecretsList = Array<ApplicationSecret>;
+const ApplicationSecretsList =
+  CreateApplicationRequestSecretsList as any as S.Schema<ApplicationSecretsList>;
+
 /** Application describes a deployable multi-container workload instance. */
 export interface Application {
   /** Containers to deploy for the application. */
@@ -267,11 +379,15 @@ export interface Application {
   /** Indicates if the application resources are stopped. */
   stopped?: boolean;
 }
+const Application = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Application>;
+
 /** - ENVIRONMENT_STATUS_UNSPECIFIED: Used as zero value. - ENVIRONMENT_STATUS_PROGRESSING: Environment is being created. - ENVIRONMENT_STATUS_CREATED: Environment is successfully created. */
 export type EnvironmentStatus =
   | "ENVIRONMENT_STATUS_UNSPECIFIED"
   | "ENVIRONMENT_STATUS_PROGRESSING"
   | "ENVIRONMENT_STATUS_CREATED";
+const EnvironmentStatus = S.String;
+
 export interface CreateEnvironmentRequest {
   /** Parent project resource name to create under */
   projectId: string;
@@ -279,6 +395,11 @@ export interface CreateEnvironmentRequest {
   displayName: string;
   status?: EnvironmentStatus | (string & {});
 }
+const CreateEnvironmentRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateEnvironmentRequest>;
+
 /** Environment describes an isolated container scope within a project. */
 export interface Environment {
   /** Creation date in RFC3339 format. */
@@ -291,6 +412,8 @@ export interface Environment {
   id?: string;
   status?: EnvironmentStatus;
 }
+const Environment = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<Environment>;
+
 export interface DeleteApplicationRequest {
   /** Project to delete the application in. */
   projectId: string;
@@ -299,6 +422,11 @@ export interface DeleteApplicationRequest {
   /** Application id to delete. */
   applicationId: string;
 }
+const DeleteApplicationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DeleteApplicationRequest>;
+
 export interface GetApplicationRequest {
   /** Project to fetch the application from. */
   projectId: string;
@@ -307,6 +435,11 @@ export interface GetApplicationRequest {
   /** Application id to fetch. */
   applicationId: string;
 }
+const GetApplicationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetApplicationRequest>;
+
 export interface GetApplicationEventsRequest {
   /** Project to fetch the application from. */
   projectId: string;
@@ -315,18 +448,35 @@ export interface GetApplicationEventsRequest {
   /** Application id to fetch. */
   applicationId: string;
 }
+const GetApplicationEventsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetApplicationEventsRequest>;
+
 /** Event defines an event line. */
 export interface Event {
   /** Event message. */
   message?: string;
 }
+const Event = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Event>;
+
 /** Events list. */
 export type GetApplicationEventsResponseEventsList = Array<Event>;
+const GetApplicationEventsResponseEventsList = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetApplicationEventsResponseEventsList>;
+
 /** GetApplicationEventsResponse contains an application's events list. */
 export interface GetApplicationEventsResponse {
   /** Events list. */
   events?: GetApplicationEventsResponseEventsList;
 }
+const GetApplicationEventsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetApplicationEventsResponse>;
+
 export interface GetApplicationLogsRequest {
   /** Project to fetch the application from. */
   projectId: string;
@@ -341,6 +491,11 @@ export interface GetApplicationLogsRequest {
   /** Get previous failed execution of the container. */
   previous?: boolean;
 }
+const GetApplicationLogsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetApplicationLogsRequest>;
+
 /** Log defines a log line. */
 export interface Log {
   /** Log message. */
@@ -348,21 +503,36 @@ export interface Log {
 }
 /** Logs list. */
 export type GetApplicationLogsResponseLogsList = Array<Log>;
+const GetApplicationLogsResponseLogsList =
+  GetApplicationEventsResponseEventsList as any as S.Schema<GetApplicationLogsResponseLogsList>;
+
 /** GetApplicationLogsResponse contains an application's logs list. */
 export interface GetApplicationLogsResponse {
   /** Logs list. */
   logs?: GetApplicationLogsResponseLogsList;
 }
+const GetApplicationLogsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetApplicationLogsResponse>;
+
 export interface GetEnvironmentRequest {
   /** Parent project resource name to fetch under. */
   projectId: string;
   /** Environment identifier, for example: default. */
   environmentId: string;
 }
+const GetEnvironmentRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetEnvironmentRequest>;
+
 export interface GetOverviewRequest {
   /** Parent project resource name to list under. */
   projectId: string;
 }
+const GetOverviewRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<GetOverviewRequest>;
+
 /** Summary describes the current status of a project. */
 export interface Summary {
   /** Number of applications running in a project. */
@@ -370,16 +540,25 @@ export interface Summary {
   /** Number of applications created in a project. */
   applicationsTotal?: number;
 }
+const Summary = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Summary>;
+
 /** GetOverviewResponse contains a summary of the current state of the project's application. */
 export interface GetOverviewResponse {
   summary: Summary;
 }
+const GetOverviewResponse = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<GetOverviewResponse>;
+
 export interface ListApplicationsRequest {
   /** Project to list the applications in. */
   projectId: string;
   /** environment to list the applications in. */
   environmentId: string;
 }
+const ListApplicationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListApplicationsRequest>;
+
 /** ApplicationSummary describes a summary of an application. */
 export interface ApplicationSummary {
   /** Number of containers. */
@@ -406,17 +585,34 @@ export interface ApplicationSummary {
   /** Application's published URL. */
   url?: string;
 }
+const ApplicationSummary = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ApplicationSummary>;
+
 /** Applications under the requested parent. */
 export type ListApplicationsResponseItemsList = Array<ApplicationSummary>;
+const ListApplicationsResponseItemsList = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListApplicationsResponseItemsList>;
+
 /** ListApplicationsResponse contains applications and pagination metadata. */
 export interface ListApplicationsResponse {
   /** Applications under the requested parent. */
   items?: ListApplicationsResponseItemsList;
 }
+const ListApplicationsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListApplicationsResponse>;
+
 export interface ListEnvironmentsRequest {
   /** Parent project resource name to list under. */
   projectId: string;
 }
+const ListEnvironmentsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ListEnvironmentsRequest>;
+
 /** Environment summary. */
 export interface EnvironmentSummary {
   /** Amount of applications in the environment. */
@@ -430,23 +626,49 @@ export interface EnvironmentSummary {
   /** Environment identifier, for example: default. */
   id?: string;
 }
+const EnvironmentSummary = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<EnvironmentSummary>;
+
 /** Environments under the requested parent. */
 export type ListEnvironmentsResponseItemsList = Array<EnvironmentSummary>;
+const ListEnvironmentsResponseItemsList = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListEnvironmentsResponseItemsList>;
+
 /** ListEnvironmentsResponse contains environments and pagination metadata. */
 export interface ListEnvironmentsResponse {
   /** Environments under the requested parent. */
   items?: ListEnvironmentsResponseItemsList;
 }
+const ListEnvironmentsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ListEnvironmentsResponse>;
+
 export interface ListProjectApplicationsRequest {
   /** Project to list the applications in. */
   projectId: string;
 }
+const ListProjectApplicationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListProjectApplicationsRequest>;
+
 /** Containers to deploy for the application. */
 export type UpdateApplicationRequestContainersList = Array<Container>;
+const UpdateApplicationRequestContainersList =
+  CreateApplicationRequestContainersList as any as S.Schema<UpdateApplicationRequestContainersList>;
+
 /** Image registry configuration for the application. */
 export type UpdateApplicationRequestRegistryList = Array<ApplicationRegistry>;
+const UpdateApplicationRequestRegistryList =
+  CreateApplicationRequestRegistryList as any as S.Schema<UpdateApplicationRequestRegistryList>;
+
 /** Secrets associated with the application. */
 export type UpdateApplicationRequestSecretsList = Array<ApplicationSecret>;
+const UpdateApplicationRequestSecretsList =
+  CreateApplicationRequestSecretsList as any as S.Schema<UpdateApplicationRequestSecretsList>;
+
 export interface UpdateApplicationRequest {
   /** Project to update the application in. */
   projectId: string;
@@ -465,6 +687,11 @@ export interface UpdateApplicationRequest {
   /** Indicates if the application resources are stopped. */
   stopped?: boolean;
 }
+const UpdateApplicationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<UpdateApplicationRequest>;
+
 export type CreateApplicationError = BadRequest | Conflict | StackitOpError;
 /** Creates a new application within a environment. */
 export const createApplication: API.OperationMethod<
@@ -473,8 +700,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(27) as any as S.Schema<Application>,
+  input: CreateApplicationRequest,
+  output: Application,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -488,8 +715,8 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<CreateEnvironmentRequest>,
-  output: __S(29) as any as S.Schema<Environment>,
+  input: CreateEnvironmentRequest,
+  output: Environment,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -503,8 +730,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(27) as any as S.Schema<Application>,
+  input: DeleteApplicationRequest,
+  output: Application,
   errors: [NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -518,8 +745,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GetApplicationRequest>,
-  output: __S(27) as any as S.Schema<Application>,
+  input: GetApplicationRequest,
+  output: Application,
   errors: [NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -533,8 +760,8 @@ export const getApplicationEvents: API.OperationMethod<
   GetApplicationEventsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<GetApplicationEventsRequest>,
-  output: __S(35) as any as S.Schema<GetApplicationEventsResponse>,
+  input: GetApplicationEventsRequest,
+  output: GetApplicationEventsResponse,
   errors: [NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -548,8 +775,8 @@ export const getApplicationLogs: API.OperationMethod<
   GetApplicationLogsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GetApplicationLogsRequest>,
-  output: __S(37) as any as S.Schema<GetApplicationLogsResponse>,
+  input: GetApplicationLogsRequest,
+  output: GetApplicationLogsResponse,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -563,8 +790,8 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<GetEnvironmentRequest>,
-  output: __S(29) as any as S.Schema<Environment>,
+  input: GetEnvironmentRequest,
+  output: Environment,
   errors: [NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -578,8 +805,8 @@ export const getOverview: API.OperationMethod<
   GetOverviewError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<GetOverviewRequest>,
-  output: __S(41) as any as S.Schema<GetOverviewResponse>,
+  input: GetOverviewRequest,
+  output: GetOverviewResponse,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -593,8 +820,8 @@ export const listApplications: API.OperationMethod<
   ListApplicationsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(45) as any as S.Schema<ListApplicationsResponse>,
+  input: ListApplicationsRequest,
+  output: ListApplicationsResponse,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -608,8 +835,8 @@ export const listEnvironments: API.OperationMethod<
   ListEnvironmentsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<ListEnvironmentsRequest>,
-  output: __S(49) as any as S.Schema<ListEnvironmentsResponse>,
+  input: ListEnvironmentsRequest,
+  output: ListEnvironmentsResponse,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -623,8 +850,8 @@ export const listProjectApplications: API.OperationMethod<
   ListProjectApplicationsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<ListProjectApplicationsRequest>,
-  output: __S(45) as any as S.Schema<ListApplicationsResponse>,
+  input: ListProjectApplicationsRequest,
+  output: ListApplicationsResponse,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -638,8 +865,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(27) as any as S.Schema<Application>,
+  input: UpdateApplicationRequest,
+  output: Application,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -654,30 +881,30 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          origin: S.optional(S.String),
+          origin: S.optional(EnvVarType),
           value: S.String,
         }),
       ).annotate({ identifier: "EnvVar" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(EnvVar);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          args: S.optional(__S(0)),
-          command: S.optional(__S(0)),
+          args: S.optional(ContainerArgsList),
+          command: S.optional(ContainerCommandList),
           cpu: S.optional(S.Number),
-          environmentVariables: S.optional(__S(2)),
+          environmentVariables: S.optional(ContainerEnvironmentVariablesList),
           image: S.String,
           memory: S.optional(S.Number),
           name: S.String,
         }),
       ).annotate({ identifier: "Container" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(Container);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ingressAcl: S.optional(__S(0)),
+          ingressAcl: S.optional(NetworkIngressAclList),
           internalPort: S.optional(S.Number),
           port: S.optional(S.Number),
           publicIngress: S.optional(S.Boolean),
@@ -696,8 +923,8 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          credentials: S.optional(__S(6)),
-          type: S.String,
+          credentials: S.optional(ApplicationRegistryCredentialsAuth),
+          type: ApplicationRegistryAuthType,
         }),
       ).annotate({ identifier: "ApplicationRegistry" });
   }
@@ -705,11 +932,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(ApplicationRegistry);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          currentStatus: S.optional(S.String),
+          currentStatus: S.optional(CurrentStatus),
         }),
       ).annotate({ identifier: "RuntimeStatusInput" });
     case 2:
@@ -720,7 +947,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "CustomRuleParameter" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(CustomRuleParameter);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -729,12 +956,12 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "CustomRuleSecretMapping" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(CustomRuleSecretMapping);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(11)),
-          secretsMapping: S.optional(__S(13)),
+          parameters: S.optional(CustomScaleRuleParametersList),
+          secretsMapping: S.optional(CustomScaleRuleSecretsMappingList),
           type: S.String,
         }),
       ).annotate({ identifier: "CustomScaleRule" });
@@ -752,21 +979,21 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          customRule: S.optional(__S(14)),
-          httpRule: S.optional(__S(15)),
+          customRule: S.optional(CustomScaleRule),
+          httpRule: S.optional(HttpScaleRule),
           name: S.String,
-          type: S.String,
+          type: RuleType,
         }),
       ).annotate({ identifier: "ScaleRule" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(ScaleRule);
     case 2:
       return S.suspend(() =>
         S.Struct({
           allowScaleToZero: S.optional(S.Boolean),
           maxInstances: S.Number,
           minInstances: S.Number,
-          rules: __S(17),
+          rules: AutoScalingRulesList,
         }),
       ).annotate({ identifier: "AutoScaling" });
     case 3:
@@ -778,9 +1005,9 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          autoScaling: S.optional(__S(18)),
-          manualScaling: S.optional(__S(19)),
-          type: S.String,
+          autoScaling: S.optional(AutoScaling),
+          manualScaling: S.optional(ManualScaling),
+          type: ScalingType,
         }),
       ).annotate({ identifier: "Scaling" });
     case 5:
@@ -791,19 +1018,19 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "ApplicationSecret" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(ApplicationSecret);
     case 7:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           environmentId: S.String.pipe(T.Label()),
-          containers: __S(4),
+          containers: CreateApplicationRequestContainersList,
           displayName: S.String,
-          network: S.optional(__S(5)),
-          registry: S.optional(__S(8)),
-          runtimeStatus: S.optional(__S(9)),
-          scaling: __S(20),
-          secrets: S.optional(__S(22)),
+          network: S.optional(Network),
+          registry: S.optional(CreateApplicationRequestRegistryList),
+          runtimeStatus: S.optional(RuntimeStatusInput),
+          scaling: Scaling,
+          secrets: S.optional(CreateApplicationRequestSecretsList),
           stopped: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -822,35 +1049,35 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(InstanceStatus),
         }),
       ).annotate({ identifier: "Instance" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(Instance);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          currentStatus: S.optional(S.String),
-          failureReasons: S.optional(__S(0)),
-          instances: S.optional(__S(25)),
+          currentStatus: S.optional(CurrentStatus),
+          failureReasons: S.optional(RuntimeStatusFailureReasonsList),
+          instances: S.optional(RuntimeStatusInstancesList),
           internalUrl: S.optional(S.String),
           lastDeployment: S.optional(S.String),
-          urls: S.optional(__S(0)),
+          urls: S.optional(RuntimeStatusUrlsList),
         }),
       ).annotate({ identifier: "RuntimeStatus" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          containers: __S(4),
+          containers: ApplicationContainersList,
           displayName: S.String,
           environmentId: S.optional(S.String),
           environmentName: S.optional(S.String),
           id: S.optional(S.String),
-          network: S.optional(__S(5)),
-          registry: S.optional(__S(8)),
-          runtimeStatus: S.optional(__S(26)),
-          scaling: __S(20),
-          secrets: S.optional(__S(22)),
+          network: S.optional(Network),
+          registry: S.optional(ApplicationRegistryList),
+          runtimeStatus: S.optional(RuntimeStatus),
+          scaling: Scaling,
+          secrets: S.optional(ApplicationSecretsList),
           stopped: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Application" });
@@ -859,7 +1086,7 @@ function __c3(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           displayName: S.String,
-          status: S.optional(S.String),
+          status: S.optional(EnvironmentStatus),
         }).pipe(
           T.Http({
             method: "POST",
@@ -876,7 +1103,7 @@ function __c3(j: number): any {
           default: S.optional(S.Boolean),
           displayName: S.String,
           id: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(EnvironmentStatus),
         }),
       ).annotate({ identifier: "Environment" });
     case 6:
@@ -937,11 +1164,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "Event" });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(Event);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          events: S.optional(__S(34)),
+          events: S.optional(GetApplicationEventsResponseEventsList),
         }),
       ).annotate({
         identifier: "GetApplicationEventsResponse",
@@ -969,7 +1196,7 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          logs: S.optional(__S(34)),
+          logs: S.optional(GetApplicationLogsResponseLogsList),
         }),
       ).annotate({
         identifier: "GetApplicationLogsResponse",
@@ -1015,7 +1242,7 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          summary: __S(40),
+          summary: Summary,
         }),
       ).annotate({ identifier: "GetOverviewResponse" });
     case 2:
@@ -1044,17 +1271,17 @@ function __c5(j: number): any {
           instances: S.optional(S.Number),
           internalUrl: S.optional(S.String),
           lastDeployment: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(CurrentStatus),
           stopped: S.optional(S.Boolean),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationSummary" });
     case 4:
-      return S.Array(__S(43));
+      return S.Array(ApplicationSummary);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(44)),
+          items: S.optional(ListApplicationsResponseItemsList),
         }),
       ).annotate({ identifier: "ListApplicationsResponse" });
     case 6:
@@ -1085,11 +1312,11 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(EnvironmentSummary);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(48)),
+          items: S.optional(ListEnvironmentsResponseItemsList),
         }),
       ).annotate({ identifier: "ListEnvironmentsResponse" });
     case 2:
@@ -1113,11 +1340,11 @@ function __c6(j: number): any {
           projectId: S.String.pipe(T.Label()),
           environmentId: S.String.pipe(T.Label()),
           applicationId: S.String.pipe(T.Label()),
-          containers: S.optional(__S(4)),
-          network: S.optional(__S(5)),
-          registry: S.optional(__S(8)),
-          scaling: S.optional(__S(20)),
-          secrets: S.optional(__S(22)),
+          containers: S.optional(UpdateApplicationRequestContainersList),
+          network: S.optional(Network),
+          registry: S.optional(UpdateApplicationRequestRegistryList),
+          scaling: S.optional(Scaling),
+          secrets: S.optional(UpdateApplicationRequestSecretsList),
           stopped: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -1128,28 +1355,5 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateApplicationRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

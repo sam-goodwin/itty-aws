@@ -10,8 +10,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -21,20 +19,36 @@ export interface DeleteRequest {
   /** Extractor type. */
   extractor: string;
 }
+const DeleteRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DeleteRequest>;
+
 export type DeleteResponse = unknown;
+const DeleteResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DeleteResponse>;
+
 export interface GetRequest {
   /** Cloudflare account ID. */
   accountId: string;
   /** Extractor type. */
   extractor: string;
 }
+const GetRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetRequest>;
+
 export interface GetResponseRulesItemFieldsItem {
   /** Wirefilter value expression. */
   expression: string;
   /** Field name. */
   name: string;
 }
+const GetResponseRulesItemFieldsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GetResponseRulesItemFieldsItem>;
+
 export type GetResponseRulesItemFieldsList = Array<GetResponseRulesItemFieldsItem>;
+const GetResponseRulesItemFieldsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetResponseRulesItemFieldsList>;
+
 export interface GetResponseRulesItem {
   fields: GetResponseRulesItemFieldsList;
   /** Stable rule identifier. */
@@ -42,24 +56,43 @@ export interface GetResponseRulesItem {
   /** Human-readable rule description. */
   description?: string | null;
 }
+const GetResponseRulesItem = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetResponseRulesItem>;
+
 export type GetResponseRulesList = Array<GetResponseRulesItem>;
+const GetResponseRulesList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetResponseRulesList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
   /** Extractor type. */
   extractor: string;
   rules: GetResponseRulesList;
 }
+const GetResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetResponse>;
+
 export interface UpdateRequestRulesItemFieldsItem {
   expression: string;
   name: string;
 }
 export type UpdateRequestRulesItemFieldsList = Array<UpdateRequestRulesItemFieldsItem>;
+const UpdateRequestRulesItemFieldsList =
+  GetResponseRulesItemFieldsList as any as S.Schema<UpdateRequestRulesItemFieldsList>;
+
 export interface UpdateRequestRulesItem {
   fields: UpdateRequestRulesItemFieldsList;
   ref: string;
   description?: string;
 }
+const UpdateRequestRulesItem = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<UpdateRequestRulesItem>;
+
 export type UpdateRequestRulesList = Array<UpdateRequestRulesItem>;
+const UpdateRequestRulesList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<UpdateRequestRulesList>;
+
 export interface UpdateRequest {
   /** Cloudflare account ID. */
   accountId: string;
@@ -67,6 +100,8 @@ export interface UpdateRequest {
   extractor: string;
   rules: UpdateRequestRulesList;
 }
+const UpdateRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<UpdateRequest>;
+
 export type UpdateResponseRulesItemFieldsItem = GetResponseRulesItemFieldsItem;
 export type UpdateResponseRulesItemFieldsList = Array<GetResponseRulesItemFieldsItem>;
 export interface UpdateResponseRulesItem {
@@ -83,6 +118,8 @@ export interface UpdateResponse {
   extractor: string;
   rules: UpdateResponseRulesList;
 }
+const UpdateResponse = GetResponse as any as S.Schema<UpdateResponse>;
+
 export type DeleteError = CloudflareOpError;
 /** Deletes all custom extraction rules for an extractor type. */
 export const Delete: API.OperationMethod<
@@ -91,8 +128,8 @@ export const Delete: API.OperationMethod<
   DeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeleteRequest>,
-  output: __S(1) as any as S.Schema<DeleteResponse>,
+  input: DeleteRequest,
+  output: DeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -102,8 +139,8 @@ export type GetError = CloudflareOpError;
 /** Retrieves the custom extraction rules configured for a given extractor type. */
 export const get: API.OperationMethod<GetRequest, GetResponse, GetError, CloudflareOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(2) as any as S.Schema<GetRequest>,
-    output: __S(7) as any as S.Schema<GetResponse>,
+    input: GetRequest,
+    output: GetResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflareProtocol,
     retry: Retry.Retry,
@@ -117,8 +154,8 @@ export const update: API.OperationMethod<
   UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<UpdateRequest>,
-  output: __S(7) as any as S.Schema<UpdateResponse>,
+  input: UpdateRequest,
+  output: UpdateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -167,22 +204,22 @@ function __c0(j: number): any {
         identifier: "GetResponseRulesItemFieldsItem",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(GetResponseRulesItemFieldsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          fields: __S(4),
+          fields: GetResponseRulesItemFieldsList,
           ref: S.String,
           description: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "GetResponseRulesItem" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(GetResponseRulesItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           extractor: S.String,
-          rules: __S(6),
+          rules: GetResponseRulesList,
         }),
       ).annotate({ identifier: "GetResponse" });
   }
@@ -192,19 +229,19 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          fields: __S(4),
+          fields: UpdateRequestRulesItemFieldsList,
           ref: S.String,
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateRequestRulesItem" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(UpdateRequestRulesItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           extractor: S.String.pipe(T.Label()),
-          rules: __S(9),
+          rules: UpdateRequestRulesList,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -213,18 +250,5 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

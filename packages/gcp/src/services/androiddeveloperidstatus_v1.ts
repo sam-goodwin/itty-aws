@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -44,11 +42,18 @@ export interface CheckPackagesPackageRegistrationStatusRequest {
   /** Optional. The SHA-256 fingerprint of the public certificate represented as a 64-character lowercase hexadecimal string without any colons or separators (e.g., `d6ac89ed1d0a805aad4b087d06d5f41645b814480b133fbc867ef7498d069e06`). */
   certificateFingerprint?: string;
 }
+const CheckPackagesPackageRegistrationStatusRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CheckPackagesPackageRegistrationStatusRequest>;
+
 export type PackageRegistrationStatusStateEnum =
   | "REGISTRATION_STATE_UNSPECIFIED"
   | "REGISTERED"
   | "NOT_REGISTERED"
   | "REGISTERED_WITH_ANOTHER_CERTIFICATE_FINGERPRINT";
+const PackageRegistrationStatusStateEnum = S.String;
+
 /** Resource message PackageRegistrationStatus. */
 export interface PackageRegistrationStatus {
   /** Output only. The SHA-256 fingerprint of the public certificate represented as a 64-character lowercase hexadecimal string without any colons or separators (e.g., `d6ac89ed1d0a805aad4b087d06d5f41645b814480b133fbc867ef7498d069e06`). */
@@ -58,6 +63,11 @@ export interface PackageRegistrationStatus {
   /** Identifier. The name of the package registration status resource. Format: packages/{package}/packageRegistrationStatus `{package}` must follow the specific format: The fully-qualified Android package name with dots ('.') replaced by hyphens ('-') (e.g., `com-example-app` instead of `com.example.app`). */
   name?: string;
 }
+const PackageRegistrationStatus = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<PackageRegistrationStatus>;
+
 export type CheckPackagesPackageRegistrationStatusError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the Android Developer ID registration status for a given package. */
 export const checkPackagesPackageRegistrationStatus: API.OperationMethod<
@@ -66,8 +76,8 @@ export const checkPackagesPackageRegistrationStatus: API.OperationMethod<
   CheckPackagesPackageRegistrationStatusError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CheckPackagesPackageRegistrationStatusRequest>,
-  output: __S(1) as any as S.Schema<PackageRegistrationStatus>,
+  input: CheckPackagesPackageRegistrationStatusRequest,
+  output: PackageRegistrationStatus,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -95,22 +105,11 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           certificateFingerprint: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(PackageRegistrationStatusStateEnum),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PackageRegistrationStatus",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 1) {
-    case 0:
-      return __c0(i & 1);
   }
 }

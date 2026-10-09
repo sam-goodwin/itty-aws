@@ -6,13 +6,16 @@ import { SlackError, SlackRateLimited } from "../errors.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
 /** The list of users to register as participants in the Call. [Read more on how to specify users here](/apis/web-api/using-the-calls-api#users). */
 export type AddCallRequestUsersList = Array<unknown>;
+const AddCallRequestUsersList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddCallRequestUsersList>;
+
 export interface AddCallRequest {
   /** An ID supplied by the 3rd-party Call provider. It must be unique across all Calls from that service. */
   external_unique_id: string;
@@ -31,57 +34,92 @@ export interface AddCallRequest {
   /** The list of users to register as participants in the Call. [Read more on how to specify users here](/apis/web-api/using-the-calls-api#users). */
   users?: AddCallRequestUsersList;
 }
+const AddCallRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AddCallRequest>;
+
 export interface AddCallResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   call: unknown;
 }
+const AddCallResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AddCallResponse>;
+
 /** The list of users to add as participants in the Call. [Read more on how to specify users here](/apis/web-api/using-the-calls-api#users). */
 export type AddParticipantRequestUsersList = Array<unknown>;
+const AddParticipantRequestUsersList =
+  AddCallRequestUsersList as any as S.Schema<AddParticipantRequestUsersList>;
+
 export interface AddParticipantRequest {
   /** `id` returned by the [`calls.add`](/reference/methods/calls.add) method. */
   id: string;
   /** The list of users to add as participants in the Call. [Read more on how to specify users here](/apis/web-api/using-the-calls-api#users). */
   users: AddParticipantRequestUsersList;
 }
+const AddParticipantRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AddParticipantRequest>;
+
 export interface AddParticipantResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   call: unknown;
 }
+const AddParticipantResponse = AddCallResponse as any as S.Schema<AddParticipantResponse>;
+
 export interface CallsEndRequest {
   /** `id` returned when registering the call using the [`calls.add`](/reference/methods/calls.add) method. */
   id: string;
   /** Call duration in seconds */
   duration?: number;
 }
+const CallsEndRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CallsEndRequest>;
+
 export interface CallsEndResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   call: unknown;
 }
+const CallsEndResponse = AddCallResponse as any as S.Schema<CallsEndResponse>;
+
 export interface CallsInfoRequest {
   /** `id` of the Call returned by the [`calls.add`](/reference/methods/calls.add) method. */
   id: string;
 }
+const CallsInfoRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CallsInfoRequest>;
+
 export interface CallsInfoResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   call: unknown;
 }
+const CallsInfoResponse = AddCallResponse as any as S.Schema<CallsInfoResponse>;
+
 /** The list of users to remove as participants in the Call. [Read more on how to specify users here](/apis/web-api/using-the-calls-api#users). */
 export type RemoveParticipantRequestUsersList = Array<unknown>;
+const RemoveParticipantRequestUsersList =
+  AddCallRequestUsersList as any as S.Schema<RemoveParticipantRequestUsersList>;
+
 export interface RemoveParticipantRequest {
   /** `id` returned by the [`calls.add`](/reference/methods/calls.add) method. */
   id: string;
   /** The list of users to remove as participants in the Call. [Read more on how to specify users here](/apis/web-api/using-the-calls-api#users). */
   users: RemoveParticipantRequestUsersList;
 }
+const RemoveParticipantRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<RemoveParticipantRequest>;
+
 export interface RemoveParticipantResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   call: unknown;
 }
+const RemoveParticipantResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<RemoveParticipantResponse>;
+
 export interface UpdateCallRequest {
   /** `id` returned by the [`calls.add`](/reference/methods/calls.add) method. */
   id: string;
@@ -92,11 +130,15 @@ export interface UpdateCallRequest {
   /** When supplied, available Slack clients will attempt to directly launch the 3rd-party Call with this URL. */
   desktop_app_join_url?: string;
 }
+const UpdateCallRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<UpdateCallRequest>;
+
 export interface UpdateCallResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   call: unknown;
 }
+const UpdateCallResponse = AddCallResponse as any as S.Schema<UpdateCallResponse>;
+
 export type AddCallError = SlackOpError;
 /** Registers a new Call. Required scopes -- bot: `calls:write`; user: `calls:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `internal_error` -- An unexpected error has occurred while trying to register the Call. - `invalid_created_by` -- The `created_by` user ID is invalid. - `invalid_start_time` -- The start time is invalid. - `not_authorized` -- The specified user is not authorized to create a Call in this channel. - `not_implemented` -- This method is not available. - `user_not_found` -- A specified user wasn't found. See https://docs.slack.dev/reference/methods/calls.add */
 export const addCall: API.OperationMethod<
@@ -105,8 +147,8 @@ export const addCall: API.OperationMethod<
   AddCallError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AddCallRequest>,
-  output: __S(2) as any as S.Schema<AddCallResponse>,
+  input: AddCallRequest,
+  output: AddCallResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -120,8 +162,8 @@ export const addParticipant: API.OperationMethod<
   AddParticipantError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<AddParticipantRequest>,
-  output: __S(2) as any as S.Schema<AddParticipantResponse>,
+  input: AddParticipantRequest,
+  output: AddParticipantResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -135,8 +177,8 @@ export const callsEnd: API.OperationMethod<
   CallsEndError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CallsEndRequest>,
-  output: __S(2) as any as S.Schema<CallsEndResponse>,
+  input: CallsEndRequest,
+  output: CallsEndResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -150,8 +192,8 @@ export const callsInfo: API.OperationMethod<
   CallsInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CallsInfoRequest>,
-  output: __S(2) as any as S.Schema<CallsInfoResponse>,
+  input: CallsInfoRequest,
+  output: CallsInfoResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -165,8 +207,8 @@ export const removeParticipant: API.OperationMethod<
   RemoveParticipantError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<RemoveParticipantRequest>,
-  output: __S(7) as any as S.Schema<RemoveParticipantResponse>,
+  input: RemoveParticipantRequest,
+  output: RemoveParticipantResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -180,8 +222,8 @@ export const updateCall: API.OperationMethod<
   UpdateCallError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<UpdateCallRequest>,
-  output: __S(2) as any as S.Schema<UpdateCallResponse>,
+  input: UpdateCallRequest,
+  output: UpdateCallResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -202,7 +244,7 @@ function __c0(j: number): any {
           date_start: S.optional(S.Number),
           title: S.optional(S.String),
           created_by: S.optional(S.String),
-          users: S.optional(__S(0)),
+          users: S.optional(AddCallRequestUsersList),
         }).pipe(T.Http({ method: "POST", uri: "/calls.add", code: 200 })),
       ).annotate({ identifier: "AddCallRequest" });
     case 2:
@@ -216,7 +258,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          users: __S(0),
+          users: AddParticipantRequestUsersList,
         }).pipe(T.Http({ method: "POST", uri: "/calls.participants.add", code: 200 })),
       ).annotate({ identifier: "AddParticipantRequest" });
     case 4:
@@ -236,7 +278,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          users: __S(0),
+          users: RemoveParticipantRequestUsersList,
         }).pipe(T.Http({ method: "POST", uri: "/calls.participants.remove", code: 200 })),
       ).annotate({ identifier: "RemoveParticipantRequest" });
     case 7:
@@ -261,18 +303,5 @@ function __c1(j: number): any {
           desktop_app_join_url: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/calls.update", code: 200 })),
       ).annotate({ identifier: "UpdateCallRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

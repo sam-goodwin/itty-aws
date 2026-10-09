@@ -6,8 +6,6 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
@@ -18,20 +16,44 @@ export interface ClickRequest {
   x?: number;
   y?: number;
 }
+const ClickRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ClickRequest>;
+
 export interface MouseClickResponse {
   x?: number;
   y?: number;
 }
+const MouseClickResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<MouseClickResponse>;
+
 export interface DeleteRecordingRequest {
   /** Recording ID */
   id: string;
 }
+const DeleteRecordingRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteRecordingRequest>;
+
 export interface DeleteRecordingResponse {}
+const DeleteRecordingResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeleteRecordingResponse>;
+
 export interface DownloadRecordingRequest {
   /** Recording ID */
   id: string;
 }
+const DownloadRecordingRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DownloadRecordingRequest>;
+
 export type DownloadRecordingResponse = unknown;
+const DownloadRecordingResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DownloadRecordingResponse>;
+
 export interface DragRequest {
   button?: string;
   endX?: number;
@@ -39,11 +61,20 @@ export interface DragRequest {
   startX?: number;
   startY?: number;
 }
+const DragRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DragRequest>;
+
 export interface MouseDragResponse {
   x?: number;
   y?: number;
 }
+const MouseDragResponse = MouseClickResponse as any as S.Schema<MouseDragResponse>;
+
 export type FindAccessibilityNodesRequestStatesList = Array<string>;
+const FindAccessibilityNodesRequestStatesList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<FindAccessibilityNodesRequestStatesList>;
+
 export interface FindAccessibilityNodesRequest {
   limit?: number;
   name?: string;
@@ -54,15 +85,33 @@ export interface FindAccessibilityNodesRequest {
   scope?: string;
   states?: FindAccessibilityNodesRequestStatesList;
 }
+const FindAccessibilityNodesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<FindAccessibilityNodesRequest>;
+
 export type ComputeruseAccessibilityNodeActionsList = Array<string>;
+const ComputeruseAccessibilityNodeActionsList =
+  FindAccessibilityNodesRequestStatesList as any as S.Schema<ComputeruseAccessibilityNodeActionsList>;
+
 export interface AccessibilityBounds {
   height?: number;
   width?: number;
   x?: number;
   y?: number;
 }
+const AccessibilityBounds = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AccessibilityBounds>;
+
 export type ComputeruseAccessibilityNodeChildrenList = Array<ComputeruseAccessibilityNode>;
+const ComputeruseAccessibilityNodeChildrenList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ComputeruseAccessibilityNodeChildrenList>;
+
 export type ComputeruseAccessibilityNodeStatesList = Array<string>;
+const ComputeruseAccessibilityNodeStatesList =
+  FindAccessibilityNodesRequestStatesList as any as S.Schema<ComputeruseAccessibilityNodeStatesList>;
+
 export interface ComputeruseAccessibilityNode {
   actions?: ComputeruseAccessibilityNodeActionsList;
   bounds?: AccessibilityBounds;
@@ -73,15 +122,38 @@ export interface ComputeruseAccessibilityNode {
   role?: string;
   states?: ComputeruseAccessibilityNodeStatesList;
 }
+const ComputeruseAccessibilityNode = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ComputeruseAccessibilityNode>;
+
 export type AccessibilityNodesResponseMatchesList = Array<ComputeruseAccessibilityNode>;
+const AccessibilityNodesResponseMatchesList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<AccessibilityNodesResponseMatchesList>;
+
 export interface AccessibilityNodesResponse {
   matches?: AccessibilityNodesResponseMatchesList;
   truncated?: boolean;
 }
+const AccessibilityNodesResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<AccessibilityNodesResponse>;
+
 export interface FocusAccessibilityNodeRequest {
   id: string;
 }
+const FocusAccessibilityNodeRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<FocusAccessibilityNodeRequest>;
+
 export type FocusAccessibilityNodeResponse = unknown;
+const FocusAccessibilityNodeResponse =
+  DownloadRecordingResponse as any as S.Schema<FocusAccessibilityNodeResponse>;
+
 export interface GetAccessibilityTreeRequest {
   /** Scope: focused | pid | all (default: focused) */
   scope?: string;
@@ -90,16 +162,46 @@ export interface GetAccessibilityTreeRequest {
   /** Max tree depth (-1 unbounded, 0 root only; default -1) */
   maxDepth?: number;
 }
+const GetAccessibilityTreeRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetAccessibilityTreeRequest>;
+
 export interface AccessibilityTreeResponse {
   root?: ComputeruseAccessibilityNode;
   truncated?: boolean;
 }
+const AccessibilityTreeResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<AccessibilityTreeResponse>;
+
 export interface GetComputerUseStatusRequest {}
+const GetComputerUseStatusRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetComputerUseStatusRequest>;
+
 export interface ComputerUseStatusResponse {
   status?: string;
 }
+const ComputerUseStatusResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ComputerUseStatusResponse>;
+
 export interface GetComputerUseSystemStatusRequest {}
+const GetComputerUseSystemStatusRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetComputerUseSystemStatusRequest>;
+
 export interface GetDisplayInfoRequest {}
+const GetDisplayInfoRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetDisplayInfoRequest>;
+
 export interface DisplayInfo {
   height?: number;
   id?: number;
@@ -108,43 +210,88 @@ export interface DisplayInfo {
   x?: number;
   y?: number;
 }
+const DisplayInfo = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<DisplayInfo>;
+
 export type DisplayInfoResponseDisplaysList = Array<DisplayInfo>;
+const DisplayInfoResponseDisplaysList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DisplayInfoResponseDisplaysList>;
+
 export interface DisplayInfoResponse {
   displays?: DisplayInfoResponseDisplaysList;
 }
+const DisplayInfoResponse = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DisplayInfoResponse>;
+
 export interface GetMousePositionRequest {}
+const GetMousePositionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetMousePositionRequest>;
+
 export interface MousePositionResponse {
   x?: number;
   y?: number;
 }
+const MousePositionResponse = MouseClickResponse as any as S.Schema<MousePositionResponse>;
+
 export interface GetProcessErrorsRequest {
   /** Process name to get errors for */
   processName: string;
 }
+const GetProcessErrorsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetProcessErrorsRequest>;
+
 export interface ProcessErrorsResponse {
   errors?: string;
   processName?: string;
 }
+const ProcessErrorsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ProcessErrorsResponse>;
+
 export interface GetProcessLogsRequest {
   /** Process name to get logs for */
   processName: string;
 }
+const GetProcessLogsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetProcessLogsRequest>;
+
 export interface ProcessLogsResponse {
   logs?: string;
   processName?: string;
 }
+const ProcessLogsResponse = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ProcessLogsResponse>;
+
 export interface GetProcessStatusRequest {
   /** Process name to check */
   processName: string;
 }
+const GetProcessStatusRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetProcessStatusRequest>;
+
 export interface ProcessStatusResponse {
   processName?: string;
   running?: boolean;
 }
+const ProcessStatusResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ProcessStatusResponse>;
+
 export interface GetRecordingRequest {
   /** Recording ID */
   id: string;
 }
+const GetRecordingRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GetRecordingRequest>;
+
 export interface Recording {
   durationSeconds?: number;
   endTime?: string;
@@ -155,7 +302,11 @@ export interface Recording {
   startTime: string;
   status: string;
 }
+const Recording = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Recording>;
+
 export interface GetWindowsRequest {}
+const GetWindowsRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<GetWindowsRequest>;
+
 export interface WindowInfo {
   height?: number;
   id?: number;
@@ -165,45 +316,100 @@ export interface WindowInfo {
   x?: number;
   y?: number;
 }
+const WindowInfo = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<WindowInfo>;
+
 export type WindowsResponseWindowsList = Array<WindowInfo>;
+const WindowsResponseWindowsList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<WindowsResponseWindowsList>;
+
 export interface WindowsResponse {
   windows?: WindowsResponseWindowsList;
 }
+const WindowsResponse = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<WindowsResponse>;
+
 export interface InvokeAccessibilityNodeRequest {
   action?: string;
   id: string;
 }
+const InvokeAccessibilityNodeRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<InvokeAccessibilityNodeRequest>;
+
 export type InvokeAccessibilityNodeResponse = unknown;
+const InvokeAccessibilityNodeResponse =
+  DownloadRecordingResponse as any as S.Schema<InvokeAccessibilityNodeResponse>;
+
 export interface ListRecordingsRequest {}
+const ListRecordingsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListRecordingsRequest>;
+
 export type ListRecordingsResponseRecordingsList = Array<Recording>;
+const ListRecordingsResponseRecordingsList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListRecordingsResponseRecordingsList>;
+
 export interface ListRecordingsResponse {
   recordings: ListRecordingsResponseRecordingsList;
 }
+const ListRecordingsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListRecordingsResponse>;
+
 export interface MoveMouseRequest {
   x?: number;
   y?: number;
 }
+const MoveMouseRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<MoveMouseRequest>;
+
 export interface PressHotkeyRequest {
   /** e.g., "ctrl+c", "cmd+v" */
   keys?: string;
 }
+const PressHotkeyRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<PressHotkeyRequest>;
+
 export type PressHotkeyResponse = unknown;
+const PressHotkeyResponse = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<PressHotkeyResponse>;
+
 /** ctrl, alt, shift, cmd */
 export type PressKeyRequestModifiersList = Array<string>;
+const PressKeyRequestModifiersList =
+  FindAccessibilityNodesRequestStatesList as any as S.Schema<PressKeyRequestModifiersList>;
+
 export interface PressKeyRequest {
   key?: string;
   /** ctrl, alt, shift, cmd */
   modifiers?: PressKeyRequestModifiersList;
 }
+const PressKeyRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<PressKeyRequest>;
+
 export type PressKeyResponse = unknown;
+const PressKeyResponse = PressHotkeyResponse as any as S.Schema<PressKeyResponse>;
+
 export interface RestartProcessRequest {
   /** Process name to restart */
   processName: string;
 }
+const RestartProcessRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<RestartProcessRequest>;
+
 export interface ProcessRestartResponse {
   message?: string;
   processName?: string;
 }
+const ProcessRestartResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ProcessRestartResponse>;
+
 export interface ScrollRequest {
   amount?: number;
   /** up, down */
@@ -211,38 +417,82 @@ export interface ScrollRequest {
   x?: number;
   y?: number;
 }
+const ScrollRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ScrollRequest>;
+
 export interface ScrollResponse {
   success?: boolean;
 }
+const ScrollResponse = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<ScrollResponse>;
+
 export interface SetAccessibilityNodeValueRequest {
   id: string;
   value?: string;
 }
+const SetAccessibilityNodeValueRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<SetAccessibilityNodeValueRequest>;
+
 export type SetAccessibilityNodeValueResponse = unknown;
+const SetAccessibilityNodeValueResponse =
+  DownloadRecordingResponse as any as S.Schema<SetAccessibilityNodeValueResponse>;
+
 export interface StartComputerUseRequest {}
+const StartComputerUseRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<StartComputerUseRequest>;
+
 export interface ProcessStatus {
   autoRestart?: boolean;
   pid?: number;
   priority?: number;
   running?: boolean;
 }
+const ProcessStatus = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ProcessStatus>;
+
 export type ComputerUseStartResponseStatusMap = { [key: string]: ProcessStatus | undefined };
+const ComputerUseStartResponseStatusMap = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ComputerUseStartResponseStatusMap>;
+
 export interface ComputerUseStartResponse {
   message?: string;
   status?: ComputerUseStartResponseStatusMap;
 }
+const ComputerUseStartResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ComputerUseStartResponse>;
+
 export interface StartRecordingRequest {
   label?: string;
 }
+const StartRecordingRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<StartRecordingRequest>;
+
 export interface StopComputerUseRequest {}
+const StopComputerUseRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<StopComputerUseRequest>;
+
 export type ComputerUseStopResponseStatusMap = { [key: string]: ProcessStatus | undefined };
 export interface ComputerUseStopResponse {
   message?: string;
   status?: ComputerUseStopResponseStatusMap;
 }
+const ComputerUseStopResponse =
+  ComputerUseStartResponse as any as S.Schema<ComputerUseStopResponse>;
+
 export interface StopRecordingRequest {
   id: string;
 }
+const StopRecordingRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<StopRecordingRequest>;
+
 export interface TakeCompressedRegionScreenshotRequest {
   /** X coordinate of the region */
   x: number;
@@ -261,15 +511,24 @@ export interface TakeCompressedRegionScreenshotRequest {
   /** Scale factor (0.1-1.0) */
   scale?: number;
 }
+const TakeCompressedRegionScreenshotRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<TakeCompressedRegionScreenshotRequest>;
+
 export interface Position {
   x?: number;
   y?: number;
 }
+const Position = MouseClickResponse as any as S.Schema<Position>;
+
 export interface ScreenshotResponse {
   cursorPosition?: Position;
   screenshot?: string;
   sizeBytes?: number;
 }
+const ScreenshotResponse = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ScreenshotResponse>;
+
 export interface TakeCompressedScreenshotRequest {
   /** Whether to show cursor in screenshot */
   showCursor?: boolean;
@@ -280,6 +539,11 @@ export interface TakeCompressedScreenshotRequest {
   /** Scale factor (0.1-1.0) */
   scale?: number;
 }
+const TakeCompressedScreenshotRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<TakeCompressedScreenshotRequest>;
+
 export interface TakeRegionScreenshotRequest {
   /** X coordinate of the region */
   x: number;
@@ -292,16 +556,30 @@ export interface TakeRegionScreenshotRequest {
   /** Whether to show cursor in screenshot */
   showCursor?: boolean;
 }
+const TakeRegionScreenshotRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<TakeRegionScreenshotRequest>;
+
 export interface TakeScreenshotRequest {
   /** Whether to show cursor in screenshot */
   showCursor?: boolean;
 }
+const TakeScreenshotRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<TakeScreenshotRequest>;
+
 export interface TypeTextRequest {
   /** milliseconds between keystrokes */
   delay?: number;
   text?: string;
 }
+const TypeTextRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<TypeTextRequest>;
+
 export type TypeTextResponse = unknown;
+const TypeTextResponse = PressHotkeyResponse as any as S.Schema<TypeTextResponse>;
+
 export type ClickError = DaytonaOpError;
 /** Click mouse button Click the mouse button at the specified coordinates */
 export const click: API.OperationMethod<
@@ -310,8 +588,8 @@ export const click: API.OperationMethod<
   ClickError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ClickRequest>,
-  output: __S(1) as any as S.Schema<MouseClickResponse>,
+  input: ClickRequest,
+  output: MouseClickResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -325,8 +603,8 @@ export const deleteRecording: API.OperationMethod<
   DeleteRecordingError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteRecordingRequest>,
-  output: __S(3) as any as S.Schema<DeleteRecordingResponse>,
+  input: DeleteRecordingRequest,
+  output: DeleteRecordingResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -340,8 +618,8 @@ export const downloadRecording: API.OperationMethod<
   DownloadRecordingError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DownloadRecordingRequest>,
-  output: __S(5) as any as S.Schema<DownloadRecordingResponse>,
+  input: DownloadRecordingRequest,
+  output: DownloadRecordingResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -355,8 +633,8 @@ export const drag: API.OperationMethod<
   DragError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DragRequest>,
-  output: __S(1) as any as S.Schema<MouseDragResponse>,
+  input: DragRequest,
+  output: MouseDragResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -370,8 +648,8 @@ export const findAccessibilityNodes: API.OperationMethod<
   FindAccessibilityNodesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<FindAccessibilityNodesRequest>,
-  output: __S(13) as any as S.Schema<AccessibilityNodesResponse>,
+  input: FindAccessibilityNodesRequest,
+  output: AccessibilityNodesResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -385,8 +663,8 @@ export const focusAccessibilityNode: API.OperationMethod<
   FocusAccessibilityNodeError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<FocusAccessibilityNodeRequest>,
-  output: __S(5) as any as S.Schema<FocusAccessibilityNodeResponse>,
+  input: FocusAccessibilityNodeRequest,
+  output: FocusAccessibilityNodeResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -400,8 +678,8 @@ export const getAccessibilityTree: API.OperationMethod<
   GetAccessibilityTreeError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<GetAccessibilityTreeRequest>,
-  output: __S(16) as any as S.Schema<AccessibilityTreeResponse>,
+  input: GetAccessibilityTreeRequest,
+  output: AccessibilityTreeResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -415,8 +693,8 @@ export const getComputerUseStatus: API.OperationMethod<
   GetComputerUseStatusError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<GetComputerUseStatusRequest>,
-  output: __S(18) as any as S.Schema<ComputerUseStatusResponse>,
+  input: GetComputerUseStatusRequest,
+  output: ComputerUseStatusResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -430,8 +708,8 @@ export const getComputerUseSystemStatus: API.OperationMethod<
   GetComputerUseSystemStatusError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetComputerUseSystemStatusRequest>,
-  output: __S(18) as any as S.Schema<ComputerUseStatusResponse>,
+  input: GetComputerUseSystemStatusRequest,
+  output: ComputerUseStatusResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -445,8 +723,8 @@ export const getDisplayInfo: API.OperationMethod<
   GetDisplayInfoError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<GetDisplayInfoRequest>,
-  output: __S(23) as any as S.Schema<DisplayInfoResponse>,
+  input: GetDisplayInfoRequest,
+  output: DisplayInfoResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -460,8 +738,8 @@ export const getMousePosition: API.OperationMethod<
   GetMousePositionError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetMousePositionRequest>,
-  output: __S(1) as any as S.Schema<MousePositionResponse>,
+  input: GetMousePositionRequest,
+  output: MousePositionResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -475,8 +753,8 @@ export const getProcessErrors: API.OperationMethod<
   GetProcessErrorsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<GetProcessErrorsRequest>,
-  output: __S(26) as any as S.Schema<ProcessErrorsResponse>,
+  input: GetProcessErrorsRequest,
+  output: ProcessErrorsResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -490,8 +768,8 @@ export const getProcessLogs: API.OperationMethod<
   GetProcessLogsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<GetProcessLogsRequest>,
-  output: __S(28) as any as S.Schema<ProcessLogsResponse>,
+  input: GetProcessLogsRequest,
+  output: ProcessLogsResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -505,8 +783,8 @@ export const getProcessStatus: API.OperationMethod<
   GetProcessStatusError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<GetProcessStatusRequest>,
-  output: __S(30) as any as S.Schema<ProcessStatusResponse>,
+  input: GetProcessStatusRequest,
+  output: ProcessStatusResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -520,8 +798,8 @@ export const getRecording: API.OperationMethod<
   GetRecordingError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GetRecordingRequest>,
-  output: __S(32) as any as S.Schema<Recording>,
+  input: GetRecordingRequest,
+  output: Recording,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -535,8 +813,8 @@ export const getWindows: API.OperationMethod<
   GetWindowsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<GetWindowsRequest>,
-  output: __S(36) as any as S.Schema<WindowsResponse>,
+  input: GetWindowsRequest,
+  output: WindowsResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -550,8 +828,8 @@ export const invokeAccessibilityNode: API.OperationMethod<
   InvokeAccessibilityNodeError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<InvokeAccessibilityNodeRequest>,
-  output: __S(5) as any as S.Schema<InvokeAccessibilityNodeResponse>,
+  input: InvokeAccessibilityNodeRequest,
+  output: InvokeAccessibilityNodeResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -565,8 +843,8 @@ export const listRecordings: API.OperationMethod<
   ListRecordingsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<ListRecordingsRequest>,
-  output: __S(40) as any as S.Schema<ListRecordingsResponse>,
+  input: ListRecordingsRequest,
+  output: ListRecordingsResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -580,8 +858,8 @@ export const moveMouse: API.OperationMethod<
   MoveMouseError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<MoveMouseRequest>,
-  output: __S(1) as any as S.Schema<MousePositionResponse>,
+  input: MoveMouseRequest,
+  output: MousePositionResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -595,8 +873,8 @@ export const pressHotkey: API.OperationMethod<
   PressHotkeyError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<PressHotkeyRequest>,
-  output: __S(43) as any as S.Schema<PressHotkeyResponse>,
+  input: PressHotkeyRequest,
+  output: PressHotkeyResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -610,8 +888,8 @@ export const pressKey: API.OperationMethod<
   PressKeyError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<PressKeyRequest>,
-  output: __S(43) as any as S.Schema<PressKeyResponse>,
+  input: PressKeyRequest,
+  output: PressKeyResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -625,8 +903,8 @@ export const restartProcess: API.OperationMethod<
   RestartProcessError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<RestartProcessRequest>,
-  output: __S(46) as any as S.Schema<ProcessRestartResponse>,
+  input: RestartProcessRequest,
+  output: ProcessRestartResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -640,8 +918,8 @@ export const scroll: API.OperationMethod<
   ScrollError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<ScrollRequest>,
-  output: __S(48) as any as S.Schema<ScrollResponse>,
+  input: ScrollRequest,
+  output: ScrollResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -655,8 +933,8 @@ export const setAccessibilityNodeValue: API.OperationMethod<
   SetAccessibilityNodeValueError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<SetAccessibilityNodeValueRequest>,
-  output: __S(5) as any as S.Schema<SetAccessibilityNodeValueResponse>,
+  input: SetAccessibilityNodeValueRequest,
+  output: SetAccessibilityNodeValueResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -670,8 +948,8 @@ export const startComputerUse: API.OperationMethod<
   StartComputerUseError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<StartComputerUseRequest>,
-  output: __S(53) as any as S.Schema<ComputerUseStartResponse>,
+  input: StartComputerUseRequest,
+  output: ComputerUseStartResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -685,8 +963,8 @@ export const startRecording: API.OperationMethod<
   StartRecordingError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<StartRecordingRequest>,
-  output: __S(32) as any as S.Schema<Recording>,
+  input: StartRecordingRequest,
+  output: Recording,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -700,8 +978,8 @@ export const stopComputerUse: API.OperationMethod<
   StopComputerUseError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<StopComputerUseRequest>,
-  output: __S(53) as any as S.Schema<ComputerUseStopResponse>,
+  input: StopComputerUseRequest,
+  output: ComputerUseStopResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -715,8 +993,8 @@ export const stopRecording: API.OperationMethod<
   StopRecordingError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<StopRecordingRequest>,
-  output: __S(32) as any as S.Schema<Recording>,
+  input: StopRecordingRequest,
+  output: Recording,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -730,8 +1008,8 @@ export const takeCompressedRegionScreenshot: API.OperationMethod<
   TakeCompressedRegionScreenshotError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<TakeCompressedRegionScreenshotRequest>,
-  output: __S(58) as any as S.Schema<ScreenshotResponse>,
+  input: TakeCompressedRegionScreenshotRequest,
+  output: ScreenshotResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -745,8 +1023,8 @@ export const takeCompressedScreenshot: API.OperationMethod<
   TakeCompressedScreenshotError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<TakeCompressedScreenshotRequest>,
-  output: __S(58) as any as S.Schema<ScreenshotResponse>,
+  input: TakeCompressedScreenshotRequest,
+  output: ScreenshotResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -760,8 +1038,8 @@ export const takeRegionScreenshot: API.OperationMethod<
   TakeRegionScreenshotError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<TakeRegionScreenshotRequest>,
-  output: __S(58) as any as S.Schema<ScreenshotResponse>,
+  input: TakeRegionScreenshotRequest,
+  output: ScreenshotResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -775,8 +1053,8 @@ export const takeScreenshot: API.OperationMethod<
   TakeScreenshotError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<TakeScreenshotRequest>,
-  output: __S(58) as any as S.Schema<ScreenshotResponse>,
+  input: TakeScreenshotRequest,
+  output: ScreenshotResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -790,8 +1068,8 @@ export const typeText: API.OperationMethod<
   TypeTextError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<TypeTextRequest>,
-  output: __S(43) as any as S.Schema<TypeTextResponse>,
+  input: TypeTextRequest,
+  output: TypeTextResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -861,7 +1139,7 @@ function __c1(j: number): any {
           pid: S.optional(S.Number),
           role: S.optional(S.String),
           scope: S.optional(S.String),
-          states: S.optional(__S(7)),
+          states: S.optional(FindAccessibilityNodesRequestStatesList),
         }).pipe(T.Http({ method: "POST", uri: "/computeruse/a11y/find", code: 200 })),
       ).annotate({
         identifier: "FindAccessibilityNodesRequest",
@@ -876,28 +1154,28 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "AccessibilityBounds" });
     case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(11)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => ComputeruseAccessibilityNode));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(__S(7)),
-          bounds: S.optional(__S(9)),
-          children: S.optional(__S(10)),
+          actions: S.optional(ComputeruseAccessibilityNodeActionsList),
+          bounds: S.optional(AccessibilityBounds),
+          children: S.optional(ComputeruseAccessibilityNodeChildrenList),
           description: S.optional(S.String),
           id: S.optional(S.String),
           name: S.optional(S.String),
           role: S.optional(S.String),
-          states: S.optional(__S(7)),
+          states: S.optional(ComputeruseAccessibilityNodeStatesList),
         }),
       ).annotate({
         identifier: "ComputeruseAccessibilityNode",
       });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(ComputeruseAccessibilityNode);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          matches: S.optional(__S(12)),
+          matches: S.optional(AccessibilityNodesResponseMatchesList),
           truncated: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -928,7 +1206,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          root: S.optional(__S(11)),
+          root: S.optional(ComputeruseAccessibilityNode),
           truncated: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -970,11 +1248,11 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "DisplayInfo" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(DisplayInfo);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          displays: S.optional(__S(22)),
+          displays: S.optional(DisplayInfoResponseDisplaysList),
         }),
       ).annotate({ identifier: "DisplayInfoResponse" });
   }
@@ -1072,11 +1350,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "WindowInfo" });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(WindowInfo);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          windows: S.optional(__S(35)),
+          windows: S.optional(WindowsResponseWindowsList),
         }),
       ).annotate({ identifier: "WindowsResponse" });
     case 5:
@@ -1093,7 +1371,7 @@ function __c4(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/computeruse/recordings", code: 200 })),
       ).annotate({ identifier: "ListRecordingsRequest" });
     case 7:
-      return S.Array(__S(32));
+      return S.Array(Recording);
   }
 }
 function __c5(j: number): any {
@@ -1101,7 +1379,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          recordings: __S(39),
+          recordings: ListRecordingsResponseRecordingsList,
         }),
       ).annotate({ identifier: "ListRecordingsResponse" });
     case 1:
@@ -1125,7 +1403,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          modifiers: S.optional(__S(7)),
+          modifiers: S.optional(PressKeyRequestModifiersList),
         }).pipe(T.Http({ method: "POST", uri: "/computeruse/keyboard/key", code: 200 })),
       ).annotate({ identifier: "PressKeyRequest" });
     case 5:
@@ -1185,12 +1463,12 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "ProcessStatus" });
     case 4:
-      return S.Record(S.String, __S(51));
+      return S.Record(S.String, ProcessStatus);
     case 5:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          status: S.optional(__S(52)),
+          status: S.optional(ComputerUseStartResponseStatusMap),
         }),
       ).annotate({ identifier: "ComputerUseStartResponse" });
     case 6:
@@ -1233,7 +1511,7 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cursorPosition: S.optional(__S(1)),
+          cursorPosition: S.optional(Position),
           screenshot: S.optional(S.String),
           sizeBytes: S.optional(S.Number),
         }),
@@ -1274,30 +1552,5 @@ function __c7(j: number): any {
           text: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/computeruse/keyboard/type", code: 200 })),
       ).annotate({ identifier: "TypeTextRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
   }
 }

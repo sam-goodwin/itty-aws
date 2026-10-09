@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -139,6 +137,8 @@ export type LegacyCurrencies =
   | "awg"
   | "whop_usd"
   | "xau";
+const LegacyCurrencies = S.String;
+
 export interface CreateTopupRequest {
   /** The unique identifier of the company to add funds to, starting with 'biz_'. */
   account_id: string;
@@ -149,6 +149,8 @@ export interface CreateTopupRequest {
   /** The unique identifier of the stored payment method to charge for the top-up. */
   payment_method_id: string;
 }
+const CreateTopupRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateTopupRequest>;
+
 /** The status of a receipt */
 export type LegacyReceiptStatus =
   | "draft"
@@ -159,6 +161,8 @@ export type LegacyReceiptStatus =
   | "uncollectible"
   | "unresolved"
   | "void";
+const LegacyReceiptStatus = S.String;
+
 /** A payment represents a completed or attempted charge. Payments track the amount, status, currency, and payment method used. */
 export interface Topup {
   /** The datetime the payment was created. */
@@ -176,6 +180,8 @@ export interface Topup {
   /** The total to show to the creator (excluding buyer fees). */
   total: number | null;
 }
+const Topup = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Topup>;
+
 export type CreateTopupError =
   | BadRequest
   | Forbidden
@@ -189,8 +195,8 @@ export const createTopup: API.OperationMethod<
   CreateTopupError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateTopupRequest>,
-  output: __S(1) as any as S.Schema<Topup>,
+  input: CreateTopupRequest,
+  output: Topup,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -204,7 +210,7 @@ function __c0(j: number): any {
         S.Struct({
           account_id: S.String,
           amount: S.Number,
-          currency: S.String,
+          currency: LegacyCurrencies,
           payment_method_id: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/topups", code: 200 })),
       ).annotate({ identifier: "CreateTopupRequest" });
@@ -212,24 +218,13 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           created_at: S.String,
-          currency: S.NullOr(S.String),
+          currency: S.NullOr(LegacyCurrencies),
           failure_message: S.NullOr(S.String),
           id: S.String,
           paid_at: S.NullOr(S.String),
-          status: S.NullOr(S.String),
+          status: S.NullOr(LegacyReceiptStatus),
           total: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "Topup" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 1) {
-    case 0:
-      return __c0(i & 1);
   }
 }

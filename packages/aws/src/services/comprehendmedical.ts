@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "ComprehendMedical",
   serviceShapeName: "ComprehendMedical_20181030",
@@ -128,6 +126,10 @@ export type JobId = string;
 export interface DescribeEntitiesDetectionV2JobRequest {
   JobId: string;
 }
+const DescribeEntitiesDetectionV2JobRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DescribeEntitiesDetectionV2JobRequest>;
 export type JobName = string;
 export type JobStatus =
   | "SUBMITTED"
@@ -138,6 +140,8 @@ export type JobStatus =
   | "STOP_REQUESTED"
   | "STOPPED"
   | (string & {});
+const JobStatus = S.String;
+
 export type AnyLengthString = string;
 export type S3Bucket = string;
 export type S3Key = string;
@@ -145,11 +149,15 @@ export interface InputDataConfig {
   S3Bucket: string;
   S3Key?: string;
 }
+const InputDataConfig = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<InputDataConfig>;
 export interface OutputDataConfig {
   S3Bucket: string;
   S3Key?: string;
 }
+const OutputDataConfig = InputDataConfig as any as S.Schema<OutputDataConfig>;
 export type LanguageCode = "en" | (string & {});
+const LanguageCode = S.String;
+
 export type IamRoleArn = string;
 export type ManifestFilePath = string;
 export type KMSKey = string;
@@ -170,37 +178,73 @@ export interface ComprehendMedicalAsyncJobProperties {
   KMSKey?: string;
   ModelVersion?: string;
 }
+const ComprehendMedicalAsyncJobProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ComprehendMedicalAsyncJobProperties>;
 export interface DescribeEntitiesDetectionV2JobResponse {
   ComprehendMedicalAsyncJobProperties?: ComprehendMedicalAsyncJobProperties;
 }
+const DescribeEntitiesDetectionV2JobResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DescribeEntitiesDetectionV2JobResponse>;
 export interface DescribeICD10CMInferenceJobRequest {
   JobId: string;
 }
+const DescribeICD10CMInferenceJobRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DescribeICD10CMInferenceJobRequest>;
 export interface DescribeICD10CMInferenceJobResponse {
   ComprehendMedicalAsyncJobProperties?: ComprehendMedicalAsyncJobProperties;
 }
+const DescribeICD10CMInferenceJobResponse =
+  DescribeEntitiesDetectionV2JobResponse as any as S.Schema<DescribeICD10CMInferenceJobResponse>;
 export interface DescribePHIDetectionJobRequest {
   JobId: string;
 }
+const DescribePHIDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DescribePHIDetectionJobRequest>;
 export interface DescribePHIDetectionJobResponse {
   ComprehendMedicalAsyncJobProperties?: ComprehendMedicalAsyncJobProperties;
 }
+const DescribePHIDetectionJobResponse =
+  DescribeEntitiesDetectionV2JobResponse as any as S.Schema<DescribePHIDetectionJobResponse>;
 export interface DescribeRxNormInferenceJobRequest {
   JobId: string;
 }
+const DescribeRxNormInferenceJobRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DescribeRxNormInferenceJobRequest>;
 export interface DescribeRxNormInferenceJobResponse {
   ComprehendMedicalAsyncJobProperties?: ComprehendMedicalAsyncJobProperties;
 }
+const DescribeRxNormInferenceJobResponse =
+  DescribeEntitiesDetectionV2JobResponse as any as S.Schema<DescribeRxNormInferenceJobResponse>;
 export interface DescribeSNOMEDCTInferenceJobRequest {
   JobId: string;
 }
+const DescribeSNOMEDCTInferenceJobRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DescribeSNOMEDCTInferenceJobRequest>;
 export interface DescribeSNOMEDCTInferenceJobResponse {
   ComprehendMedicalAsyncJobProperties?: ComprehendMedicalAsyncJobProperties;
 }
+const DescribeSNOMEDCTInferenceJobResponse =
+  DescribeEntitiesDetectionV2JobResponse as any as S.Schema<DescribeSNOMEDCTInferenceJobResponse>;
 export type BoundedLengthString = string;
 export interface DetectEntitiesRequest {
   Text: string;
 }
+const DetectEntitiesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DetectEntitiesRequest>;
 export type EntityType =
   | "MEDICATION"
   | "MEDICAL_CONDITION"
@@ -210,6 +254,8 @@ export type EntityType =
   | "TIME_EXPRESSION"
   | "BEHAVIORAL_ENVIRONMENTAL_SOCIAL"
   | (string & {});
+const EntityType = S.String;
+
 export type EntitySubType =
   | "NAME"
   | "DX_NAME"
@@ -257,6 +303,8 @@ export type EntitySubType =
   | "ALCOHOL_CONSUMPTION"
   | "REC_DRUG_USE"
   | (string & {});
+const EntitySubType = S.String;
+
 export type AttributeName =
   | "SIGN"
   | "SYMPTOM"
@@ -268,11 +316,15 @@ export type AttributeName =
   | "PAST_HISTORY"
   | "FUTURE"
   | (string & {});
+const AttributeName = S.String;
+
 export interface Trait {
   Name?: AttributeName;
   Score?: number;
 }
+const Trait = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Trait>;
 export type TraitList = Trait[];
+const TraitList = /*@__PURE__*/ __L.at(__c1, 2);
 export type RelationshipType =
   | "EVERY"
   | "WITH_DOSAGE"
@@ -297,6 +349,8 @@ export type RelationshipType =
   | "USAGE"
   | "QUALITY"
   | (string & {});
+const RelationshipType = S.String;
+
 export interface Attribute {
   Type?: EntitySubType;
   Score?: number;
@@ -309,7 +363,9 @@ export interface Attribute {
   Category?: EntityType;
   Traits?: Trait[];
 }
+const Attribute = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Attribute>;
 export type AttributeList = Attribute[];
+const AttributeList = /*@__PURE__*/ __L.at(__c1, 4);
 export interface Entity {
   Id?: number;
   BeginOffset?: number;
@@ -321,41 +377,62 @@ export interface Entity {
   Traits?: Trait[];
   Attributes?: Attribute[];
 }
+const Entity = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Entity>;
 export type EntityList = Entity[];
+const EntityList = /*@__PURE__*/ __L.at(__c1, 6);
 export interface UnmappedAttribute {
   Type?: EntityType;
   Attribute?: Attribute;
 }
+const UnmappedAttribute = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<UnmappedAttribute>;
 export type UnmappedAttributeList = UnmappedAttribute[];
+const UnmappedAttributeList = /*@__PURE__*/ __L.at(__c2, 0);
 export interface DetectEntitiesResponse {
   Entities: Entity[];
   UnmappedAttributes?: UnmappedAttribute[];
   PaginationToken?: string;
   ModelVersion: string;
 }
+const DetectEntitiesResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DetectEntitiesResponse>;
 export interface DetectEntitiesV2Request {
   Text: string;
 }
+const DetectEntitiesV2Request = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DetectEntitiesV2Request>;
 export interface DetectEntitiesV2Response {
   Entities: Entity[];
   UnmappedAttributes?: UnmappedAttribute[];
   PaginationToken?: string;
   ModelVersion: string;
 }
+const DetectEntitiesV2Response =
+  DetectEntitiesResponse as any as S.Schema<DetectEntitiesV2Response>;
 export interface DetectPHIRequest {
   Text: string;
 }
+const DetectPHIRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DetectPHIRequest>;
 export interface DetectPHIResponse {
   Entities: Entity[];
   PaginationToken?: string;
   ModelVersion: string;
 }
+const DetectPHIResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DetectPHIResponse>;
 export type OntologyLinkingBoundedLengthString = string;
 export interface InferICD10CMRequest {
   Text: string;
 }
+const InferICD10CMRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<InferICD10CMRequest>;
 export type ICD10CMEntityCategory = "MEDICAL_CONDITION" | (string & {});
+const ICD10CMEntityCategory = S.String;
+
 export type ICD10CMEntityType = "DX_NAME" | "TIME_EXPRESSION" | (string & {});
+const ICD10CMEntityType = S.String;
+
 export type ICD10CMAttributeType =
   | "ACUITY"
   | "DIRECTION"
@@ -365,6 +442,8 @@ export type ICD10CMAttributeType =
   | "TIME_TO_DX_NAME"
   | "TIME_EXPRESSION"
   | (string & {});
+const ICD10CMAttributeType = S.String;
+
 export type ICD10CMTraitName =
   | "NEGATION"
   | "DIAGNOSIS"
@@ -379,7 +458,10 @@ export interface ICD10CMTrait {
   Score?: number;
 }
 export type ICD10CMTraitList = ICD10CMTrait[];
+const ICD10CMTraitList = TraitList as any as S.Schema<ICD10CMTraitList>;
 export type ICD10CMRelationshipType = "OVERLAP" | "SYSTEM_ORGAN_SITE" | "QUALITY" | (string & {});
+const ICD10CMRelationshipType = S.String;
+
 export interface ICD10CMAttribute {
   Type?: ICD10CMAttributeType;
   Score?: number;
@@ -392,13 +474,17 @@ export interface ICD10CMAttribute {
   Category?: ICD10CMEntityType;
   RelationshipType?: ICD10CMRelationshipType;
 }
+const ICD10CMAttribute = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ICD10CMAttribute>;
 export type ICD10CMAttributeList = ICD10CMAttribute[];
+const ICD10CMAttributeList = /*@__PURE__*/ __L.at(__c2, 7);
 export interface ICD10CMConcept {
   Description?: string;
   Code?: string;
   Score?: number;
 }
+const ICD10CMConcept = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ICD10CMConcept>;
 export type ICD10CMConceptList = ICD10CMConcept[];
+const ICD10CMConceptList = /*@__PURE__*/ __L.at(__c3, 1);
 export interface ICD10CMEntity {
   Id?: number;
   Text?: string;
@@ -411,17 +497,25 @@ export interface ICD10CMEntity {
   Traits?: ICD10CMTrait[];
   ICD10CMConcepts?: ICD10CMConcept[];
 }
+const ICD10CMEntity = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ICD10CMEntity>;
 export type ICD10CMEntityList = ICD10CMEntity[];
+const ICD10CMEntityList = /*@__PURE__*/ __L.at(__c3, 3);
 export interface InferICD10CMResponse {
   Entities: ICD10CMEntity[];
   PaginationToken?: string;
   ModelVersion?: string;
 }
+const InferICD10CMResponse = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<InferICD10CMResponse>;
 export interface InferRxNormRequest {
   Text: string;
 }
+const InferRxNormRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<InferRxNormRequest>;
 export type RxNormEntityCategory = "MEDICATION" | (string & {});
+const RxNormEntityCategory = S.String;
+
 export type RxNormEntityType = "BRAND_NAME" | "GENERIC_NAME" | (string & {});
+const RxNormEntityType = S.String;
+
 export type RxNormAttributeType =
   | "DOSAGE"
   | "DURATION"
@@ -431,12 +525,15 @@ export type RxNormAttributeType =
   | "ROUTE_OR_MODE"
   | "STRENGTH"
   | (string & {});
+const RxNormAttributeType = S.String;
+
 export type RxNormTraitName = "NEGATION" | "PAST_HISTORY" | (string & {});
 export interface RxNormTrait {
   Name?: RxNormTraitName;
   Score?: number;
 }
 export type RxNormTraitList = RxNormTrait[];
+const RxNormTraitList = TraitList as any as S.Schema<RxNormTraitList>;
 export interface RxNormAttribute {
   Type?: RxNormAttributeType;
   Score?: number;
@@ -447,13 +544,16 @@ export interface RxNormAttribute {
   Text?: string;
   Traits?: RxNormTrait[];
 }
+const RxNormAttribute = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<RxNormAttribute>;
 export type RxNormAttributeList = RxNormAttribute[];
+const RxNormAttributeList = /*@__PURE__*/ __L.at(__c3, 7);
 export interface RxNormConcept {
   Description?: string;
   Code?: string;
   Score?: number;
 }
 export type RxNormConceptList = RxNormConcept[];
+const RxNormConceptList = ICD10CMConceptList as any as S.Schema<RxNormConceptList>;
 export interface RxNormEntity {
   Id?: number;
   Text?: string;
@@ -466,26 +566,34 @@ export interface RxNormEntity {
   Traits?: RxNormTrait[];
   RxNormConcepts?: RxNormConcept[];
 }
+const RxNormEntity = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<RxNormEntity>;
 export type RxNormEntityList = RxNormEntity[];
+const RxNormEntityList = /*@__PURE__*/ __L.at(__c4, 1);
 export interface InferRxNormResponse {
   Entities: RxNormEntity[];
   PaginationToken?: string;
   ModelVersion?: string;
 }
+const InferRxNormResponse = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<InferRxNormResponse>;
 export interface InferSNOMEDCTRequest {
   Text: string;
 }
+const InferSNOMEDCTRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<InferSNOMEDCTRequest>;
 export type SNOMEDCTEntityCategory =
   | "MEDICAL_CONDITION"
   | "ANATOMY"
   | "TEST_TREATMENT_PROCEDURE"
   | (string & {});
+const SNOMEDCTEntityCategory = S.String;
+
 export type SNOMEDCTEntityType =
   | "DX_NAME"
   | "TEST_NAME"
   | "PROCEDURE_NAME"
   | "TREATMENT_NAME"
   | (string & {});
+const SNOMEDCTEntityType = S.String;
+
 export type SNOMEDCTAttributeType =
   | "ACUITY"
   | "QUALITY"
@@ -494,6 +602,8 @@ export type SNOMEDCTAttributeType =
   | "TEST_VALUE"
   | "TEST_UNIT"
   | (string & {});
+const SNOMEDCTAttributeType = S.String;
+
 export type SNOMEDCTRelationshipType =
   | "ACUITY"
   | "QUALITY"
@@ -503,6 +613,8 @@ export type SNOMEDCTRelationshipType =
   | "SYSTEM_ORGAN_SITE"
   | "TEST_UNIT"
   | (string & {});
+const SNOMEDCTRelationshipType = S.String;
+
 export type SNOMEDCTTraitName =
   | "NEGATION"
   | "DIAGNOSIS"
@@ -519,12 +631,14 @@ export interface SNOMEDCTTrait {
   Score?: number;
 }
 export type SNOMEDCTTraitList = SNOMEDCTTrait[];
+const SNOMEDCTTraitList = TraitList as any as S.Schema<SNOMEDCTTraitList>;
 export interface SNOMEDCTConcept {
   Description?: string;
   Code?: string;
   Score?: number;
 }
 export type SNOMEDCTConceptList = SNOMEDCTConcept[];
+const SNOMEDCTConceptList = ICD10CMConceptList as any as S.Schema<SNOMEDCTConceptList>;
 export interface SNOMEDCTAttribute {
   Category?: SNOMEDCTEntityCategory;
   Type?: SNOMEDCTAttributeType;
@@ -538,7 +652,9 @@ export interface SNOMEDCTAttribute {
   Traits?: SNOMEDCTTrait[];
   SNOMEDCTConcepts?: SNOMEDCTConcept[];
 }
+const SNOMEDCTAttribute = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<SNOMEDCTAttribute>;
 export type SNOMEDCTAttributeList = SNOMEDCTAttribute[];
+const SNOMEDCTAttributeList = /*@__PURE__*/ __L.at(__c4, 5);
 export interface SNOMEDCTEntity {
   Id?: number;
   Text?: string;
@@ -551,15 +667,19 @@ export interface SNOMEDCTEntity {
   Traits?: SNOMEDCTTrait[];
   SNOMEDCTConcepts?: SNOMEDCTConcept[];
 }
+const SNOMEDCTEntity = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<SNOMEDCTEntity>;
 export type SNOMEDCTEntityList = SNOMEDCTEntity[];
+const SNOMEDCTEntityList = /*@__PURE__*/ __L.at(__c4, 7);
 export interface SNOMEDCTDetails {
   Edition?: string;
   Language?: string;
   VersionDate?: string;
 }
+const SNOMEDCTDetails = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<SNOMEDCTDetails>;
 export interface Characters {
   OriginalTextCharacters?: number;
 }
+const Characters = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Characters>;
 export interface InferSNOMEDCTResponse {
   Entities: SNOMEDCTEntity[];
   PaginationToken?: string;
@@ -567,59 +687,100 @@ export interface InferSNOMEDCTResponse {
   SNOMEDCTDetails?: SNOMEDCTDetails;
   Characters?: Characters;
 }
+const InferSNOMEDCTResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<InferSNOMEDCTResponse>;
 export interface ComprehendMedicalAsyncJobFilter {
   JobName?: string;
   JobStatus?: JobStatus;
   SubmitTimeBefore?: Date;
   SubmitTimeAfter?: Date;
 }
+const ComprehendMedicalAsyncJobFilter = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ComprehendMedicalAsyncJobFilter>;
 export type MaxResultsInteger = number;
 export interface ListEntitiesDetectionV2JobsRequest {
   Filter?: ComprehendMedicalAsyncJobFilter;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListEntitiesDetectionV2JobsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListEntitiesDetectionV2JobsRequest>;
 export type ComprehendMedicalAsyncJobPropertiesList = ComprehendMedicalAsyncJobProperties[];
+const ComprehendMedicalAsyncJobPropertiesList = /*@__PURE__*/ __L.at(__c5, 5);
 export interface ListEntitiesDetectionV2JobsResponse {
   ComprehendMedicalAsyncJobPropertiesList?: ComprehendMedicalAsyncJobProperties[];
   NextToken?: string;
 }
+const ListEntitiesDetectionV2JobsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ListEntitiesDetectionV2JobsResponse>;
 export interface ListICD10CMInferenceJobsRequest {
   Filter?: ComprehendMedicalAsyncJobFilter;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListICD10CMInferenceJobsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListICD10CMInferenceJobsRequest>;
 export interface ListICD10CMInferenceJobsResponse {
   ComprehendMedicalAsyncJobPropertiesList?: ComprehendMedicalAsyncJobProperties[];
   NextToken?: string;
 }
+const ListICD10CMInferenceJobsResponse =
+  ListEntitiesDetectionV2JobsResponse as any as S.Schema<ListICD10CMInferenceJobsResponse>;
 export interface ListPHIDetectionJobsRequest {
   Filter?: ComprehendMedicalAsyncJobFilter;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListPHIDetectionJobsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListPHIDetectionJobsRequest>;
 export interface ListPHIDetectionJobsResponse {
   ComprehendMedicalAsyncJobPropertiesList?: ComprehendMedicalAsyncJobProperties[];
   NextToken?: string;
 }
+const ListPHIDetectionJobsResponse =
+  ListEntitiesDetectionV2JobsResponse as any as S.Schema<ListPHIDetectionJobsResponse>;
 export interface ListRxNormInferenceJobsRequest {
   Filter?: ComprehendMedicalAsyncJobFilter;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListRxNormInferenceJobsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ListRxNormInferenceJobsRequest>;
 export interface ListRxNormInferenceJobsResponse {
   ComprehendMedicalAsyncJobPropertiesList?: ComprehendMedicalAsyncJobProperties[];
   NextToken?: string;
 }
+const ListRxNormInferenceJobsResponse =
+  ListEntitiesDetectionV2JobsResponse as any as S.Schema<ListRxNormInferenceJobsResponse>;
 export interface ListSNOMEDCTInferenceJobsRequest {
   Filter?: ComprehendMedicalAsyncJobFilter;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListSNOMEDCTInferenceJobsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListSNOMEDCTInferenceJobsRequest>;
 export interface ListSNOMEDCTInferenceJobsResponse {
   ComprehendMedicalAsyncJobPropertiesList?: ComprehendMedicalAsyncJobProperties[];
   NextToken?: string;
 }
+const ListSNOMEDCTInferenceJobsResponse =
+  ListEntitiesDetectionV2JobsResponse as any as S.Schema<ListSNOMEDCTInferenceJobsResponse>;
 export type ClientRequestTokenString = string;
 export interface StartEntitiesDetectionV2JobRequest {
   InputDataConfig: InputDataConfig;
@@ -630,9 +791,17 @@ export interface StartEntitiesDetectionV2JobRequest {
   KMSKey?: string;
   LanguageCode: LanguageCode;
 }
+const StartEntitiesDetectionV2JobRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<StartEntitiesDetectionV2JobRequest>;
 export interface StartEntitiesDetectionV2JobResponse {
   JobId?: string;
 }
+const StartEntitiesDetectionV2JobResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<StartEntitiesDetectionV2JobResponse>;
 export interface StartICD10CMInferenceJobRequest {
   InputDataConfig: InputDataConfig;
   OutputDataConfig: OutputDataConfig;
@@ -642,9 +811,15 @@ export interface StartICD10CMInferenceJobRequest {
   KMSKey?: string;
   LanguageCode: LanguageCode;
 }
+const StartICD10CMInferenceJobRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<StartICD10CMInferenceJobRequest>;
 export interface StartICD10CMInferenceJobResponse {
   JobId?: string;
 }
+const StartICD10CMInferenceJobResponse =
+  StartEntitiesDetectionV2JobResponse as any as S.Schema<StartICD10CMInferenceJobResponse>;
 export interface StartPHIDetectionJobRequest {
   InputDataConfig: InputDataConfig;
   OutputDataConfig: OutputDataConfig;
@@ -654,9 +829,15 @@ export interface StartPHIDetectionJobRequest {
   KMSKey?: string;
   LanguageCode: LanguageCode;
 }
+const StartPHIDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<StartPHIDetectionJobRequest>;
 export interface StartPHIDetectionJobResponse {
   JobId?: string;
 }
+const StartPHIDetectionJobResponse =
+  StartEntitiesDetectionV2JobResponse as any as S.Schema<StartPHIDetectionJobResponse>;
 export interface StartRxNormInferenceJobRequest {
   InputDataConfig: InputDataConfig;
   OutputDataConfig: OutputDataConfig;
@@ -666,9 +847,15 @@ export interface StartRxNormInferenceJobRequest {
   KMSKey?: string;
   LanguageCode: LanguageCode;
 }
+const StartRxNormInferenceJobRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<StartRxNormInferenceJobRequest>;
 export interface StartRxNormInferenceJobResponse {
   JobId?: string;
 }
+const StartRxNormInferenceJobResponse =
+  StartEntitiesDetectionV2JobResponse as any as S.Schema<StartRxNormInferenceJobResponse>;
 export interface StartSNOMEDCTInferenceJobRequest {
   InputDataConfig: InputDataConfig;
   OutputDataConfig: OutputDataConfig;
@@ -678,39 +865,75 @@ export interface StartSNOMEDCTInferenceJobRequest {
   KMSKey?: string;
   LanguageCode: LanguageCode;
 }
+const StartSNOMEDCTInferenceJobRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<StartSNOMEDCTInferenceJobRequest>;
 export interface StartSNOMEDCTInferenceJobResponse {
   JobId?: string;
 }
+const StartSNOMEDCTInferenceJobResponse =
+  StartEntitiesDetectionV2JobResponse as any as S.Schema<StartSNOMEDCTInferenceJobResponse>;
 export interface StopEntitiesDetectionV2JobRequest {
   JobId: string;
 }
+const StopEntitiesDetectionV2JobRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<StopEntitiesDetectionV2JobRequest>;
 export interface StopEntitiesDetectionV2JobResponse {
   JobId?: string;
 }
+const StopEntitiesDetectionV2JobResponse =
+  StartEntitiesDetectionV2JobResponse as any as S.Schema<StopEntitiesDetectionV2JobResponse>;
 export interface StopICD10CMInferenceJobRequest {
   JobId: string;
 }
+const StopICD10CMInferenceJobRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<StopICD10CMInferenceJobRequest>;
 export interface StopICD10CMInferenceJobResponse {
   JobId?: string;
 }
+const StopICD10CMInferenceJobResponse =
+  StartEntitiesDetectionV2JobResponse as any as S.Schema<StopICD10CMInferenceJobResponse>;
 export interface StopPHIDetectionJobRequest {
   JobId: string;
 }
+const StopPHIDetectionJobRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<StopPHIDetectionJobRequest>;
 export interface StopPHIDetectionJobResponse {
   JobId?: string;
 }
+const StopPHIDetectionJobResponse =
+  StartEntitiesDetectionV2JobResponse as any as S.Schema<StopPHIDetectionJobResponse>;
 export interface StopRxNormInferenceJobRequest {
   JobId: string;
 }
+const StopRxNormInferenceJobRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<StopRxNormInferenceJobRequest>;
 export interface StopRxNormInferenceJobResponse {
   JobId?: string;
 }
+const StopRxNormInferenceJobResponse =
+  StartEntitiesDetectionV2JobResponse as any as S.Schema<StopRxNormInferenceJobResponse>;
 export interface StopSNOMEDCTInferenceJobRequest {
   JobId: string;
 }
+const StopSNOMEDCTInferenceJobRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<StopSNOMEDCTInferenceJobRequest>;
 export interface StopSNOMEDCTInferenceJobResponse {
   JobId?: string;
 }
+const StopSNOMEDCTInferenceJobResponse =
+  StartEntitiesDetectionV2JobResponse as any as S.Schema<StopSNOMEDCTInferenceJobResponse>;
 export type DescribeEntitiesDetectionV2JobError =
   | InternalServerException
   | InvalidRequestException
@@ -727,8 +950,8 @@ export const describeEntitiesDetectionV2Job: API.OperationMethod<
   DescribeEntitiesDetectionV2JobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DescribeEntitiesDetectionV2JobRequest>,
-  output: __S(3) as any as S.Schema<DescribeEntitiesDetectionV2JobResponse>,
+  input: DescribeEntitiesDetectionV2JobRequest,
+  output: DescribeEntitiesDetectionV2JobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -756,8 +979,8 @@ export const describeICD10CMInferenceJob: API.OperationMethod<
   DescribeICD10CMInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DescribeICD10CMInferenceJobRequest>,
-  output: __S(3) as any as S.Schema<DescribeICD10CMInferenceJobResponse>,
+  input: DescribeICD10CMInferenceJobRequest,
+  output: DescribeICD10CMInferenceJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -785,8 +1008,8 @@ export const describePHIDetectionJob: API.OperationMethod<
   DescribePHIDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<DescribePHIDetectionJobRequest>,
-  output: __S(3) as any as S.Schema<DescribePHIDetectionJobResponse>,
+  input: DescribePHIDetectionJobRequest,
+  output: DescribePHIDetectionJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -814,8 +1037,8 @@ export const describeRxNormInferenceJob: API.OperationMethod<
   DescribeRxNormInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DescribeRxNormInferenceJobRequest>,
-  output: __S(3) as any as S.Schema<DescribeRxNormInferenceJobResponse>,
+  input: DescribeRxNormInferenceJobRequest,
+  output: DescribeRxNormInferenceJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -842,8 +1065,8 @@ export const describeSNOMEDCTInferenceJob: API.OperationMethod<
   DescribeSNOMEDCTInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DescribeSNOMEDCTInferenceJobRequest>,
-  output: __S(3) as any as S.Schema<DescribeSNOMEDCTInferenceJobResponse>,
+  input: DescribeSNOMEDCTInferenceJobRequest,
+  output: DescribeSNOMEDCTInferenceJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -876,8 +1099,8 @@ export const detectEntities: API.OperationMethod<
   DetectEntitiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<DetectEntitiesRequest>,
-  output: __S(17) as any as S.Schema<DetectEntitiesResponse>,
+  input: DetectEntitiesRequest,
+  output: DetectEntitiesResponse,
   errors: [
     InternalServerException,
     InvalidEncodingException,
@@ -919,8 +1142,8 @@ export const detectEntitiesV2: API.OperationMethod<
   DetectEntitiesV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<DetectEntitiesV2Request>,
-  output: __S(17) as any as S.Schema<DetectEntitiesV2Response>,
+  input: DetectEntitiesV2Request,
+  output: DetectEntitiesV2Response,
   errors: [
     InternalServerException,
     InvalidEncodingException,
@@ -953,8 +1176,8 @@ export const detectPHI: API.OperationMethod<
   DetectPHIError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<DetectPHIRequest>,
-  output: __S(20) as any as S.Schema<DetectPHIResponse>,
+  input: DetectPHIRequest,
+  output: DetectPHIResponse,
   errors: [
     InternalServerException,
     InvalidEncodingException,
@@ -988,8 +1211,8 @@ export const inferICD10CM: API.OperationMethod<
   InferICD10CMError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<InferICD10CMRequest>,
-  output: __S(28) as any as S.Schema<InferICD10CMResponse>,
+  input: InferICD10CMRequest,
+  output: InferICD10CMResponse,
   errors: [
     InternalServerException,
     InvalidEncodingException,
@@ -1022,8 +1245,8 @@ export const inferRxNorm: API.OperationMethod<
   InferRxNormError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<InferRxNormRequest>,
-  output: __S(34) as any as S.Schema<InferRxNormResponse>,
+  input: InferRxNormRequest,
+  output: InferRxNormResponse,
   errors: [
     InternalServerException,
     InvalidEncodingException,
@@ -1054,8 +1277,8 @@ export const inferSNOMEDCT: API.OperationMethod<
   InferSNOMEDCTError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<InferSNOMEDCTRequest>,
-  output: __S(42) as any as S.Schema<InferSNOMEDCTResponse>,
+  input: InferSNOMEDCTRequest,
+  output: InferSNOMEDCTResponse,
   errors: [
     InternalServerException,
     InvalidEncodingException,
@@ -1084,8 +1307,8 @@ export const listEntitiesDetectionV2Jobs: API.OperationMethod<
   ListEntitiesDetectionV2JobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<ListEntitiesDetectionV2JobsRequest>,
-  output: __S(46) as any as S.Schema<ListEntitiesDetectionV2JobsResponse>,
+  input: ListEntitiesDetectionV2JobsRequest,
+  output: ListEntitiesDetectionV2JobsResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1112,8 +1335,8 @@ export const listICD10CMInferenceJobs: API.OperationMethod<
   ListICD10CMInferenceJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<ListICD10CMInferenceJobsRequest>,
-  output: __S(46) as any as S.Schema<ListICD10CMInferenceJobsResponse>,
+  input: ListICD10CMInferenceJobsRequest,
+  output: ListICD10CMInferenceJobsResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1141,8 +1364,8 @@ export const listPHIDetectionJobs: API.OperationMethod<
   ListPHIDetectionJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<ListPHIDetectionJobsRequest>,
-  output: __S(46) as any as S.Schema<ListPHIDetectionJobsResponse>,
+  input: ListPHIDetectionJobsRequest,
+  output: ListPHIDetectionJobsResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1169,8 +1392,8 @@ export const listRxNormInferenceJobs: API.OperationMethod<
   ListRxNormInferenceJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<ListRxNormInferenceJobsRequest>,
-  output: __S(46) as any as S.Schema<ListRxNormInferenceJobsResponse>,
+  input: ListRxNormInferenceJobsRequest,
+  output: ListRxNormInferenceJobsResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1197,8 +1420,8 @@ export const listSNOMEDCTInferenceJobs: API.OperationMethod<
   ListSNOMEDCTInferenceJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<ListSNOMEDCTInferenceJobsRequest>,
-  output: __S(46) as any as S.Schema<ListSNOMEDCTInferenceJobsResponse>,
+  input: ListSNOMEDCTInferenceJobsRequest,
+  output: ListSNOMEDCTInferenceJobsResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1226,8 +1449,8 @@ export const startEntitiesDetectionV2Job: API.OperationMethod<
   StartEntitiesDetectionV2JobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<StartEntitiesDetectionV2JobRequest>,
-  output: __S(52) as any as S.Schema<StartEntitiesDetectionV2JobResponse>,
+  input: StartEntitiesDetectionV2JobRequest,
+  output: StartEntitiesDetectionV2JobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1256,8 +1479,8 @@ export const startICD10CMInferenceJob: API.OperationMethod<
   StartICD10CMInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<StartICD10CMInferenceJobRequest>,
-  output: __S(52) as any as S.Schema<StartICD10CMInferenceJobResponse>,
+  input: StartICD10CMInferenceJobRequest,
+  output: StartICD10CMInferenceJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1285,8 +1508,8 @@ export const startPHIDetectionJob: API.OperationMethod<
   StartPHIDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<StartPHIDetectionJobRequest>,
-  output: __S(52) as any as S.Schema<StartPHIDetectionJobResponse>,
+  input: StartPHIDetectionJobRequest,
+  output: StartPHIDetectionJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1315,8 +1538,8 @@ export const startRxNormInferenceJob: API.OperationMethod<
   StartRxNormInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<StartRxNormInferenceJobRequest>,
-  output: __S(52) as any as S.Schema<StartRxNormInferenceJobResponse>,
+  input: StartRxNormInferenceJobRequest,
+  output: StartRxNormInferenceJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1343,8 +1566,8 @@ export const startSNOMEDCTInferenceJob: API.OperationMethod<
   StartSNOMEDCTInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<StartSNOMEDCTInferenceJobRequest>,
-  output: __S(52) as any as S.Schema<StartSNOMEDCTInferenceJobResponse>,
+  input: StartSNOMEDCTInferenceJobRequest,
+  output: StartSNOMEDCTInferenceJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1370,8 +1593,8 @@ export const stopEntitiesDetectionV2Job: API.OperationMethod<
   StopEntitiesDetectionV2JobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<StopEntitiesDetectionV2JobRequest>,
-  output: __S(52) as any as S.Schema<StopEntitiesDetectionV2JobResponse>,
+  input: StopEntitiesDetectionV2JobRequest,
+  output: StopEntitiesDetectionV2JobResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1392,8 +1615,8 @@ export const stopICD10CMInferenceJob: API.OperationMethod<
   StopICD10CMInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<StopICD10CMInferenceJobRequest>,
-  output: __S(52) as any as S.Schema<StopICD10CMInferenceJobResponse>,
+  input: StopICD10CMInferenceJobRequest,
+  output: StopICD10CMInferenceJobResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1414,8 +1637,8 @@ export const stopPHIDetectionJob: API.OperationMethod<
   StopPHIDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<StopPHIDetectionJobRequest>,
-  output: __S(52) as any as S.Schema<StopPHIDetectionJobResponse>,
+  input: StopPHIDetectionJobRequest,
+  output: StopPHIDetectionJobResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1436,8 +1659,8 @@ export const stopRxNormInferenceJob: API.OperationMethod<
   StopRxNormInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<StopRxNormInferenceJobRequest>,
-  output: __S(52) as any as S.Schema<StopRxNormInferenceJobResponse>,
+  input: StopRxNormInferenceJobRequest,
+  output: StopRxNormInferenceJobResponse,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1459,8 +1682,8 @@ export const stopSNOMEDCTInferenceJob: API.OperationMethod<
   StopSNOMEDCTInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<StopSNOMEDCTInferenceJobRequest>,
-  output: __S(52) as any as S.Schema<StopSNOMEDCTInferenceJobResponse>,
+  input: StopSNOMEDCTInferenceJobRequest,
+  output: StopSNOMEDCTInferenceJobResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1492,14 +1715,14 @@ function __c0(j: number): any {
         S.Struct({
           JobId: S.optional(S.String),
           JobName: S.optional(S.String),
-          JobStatus: S.optional(S.String),
+          JobStatus: S.optional(JobStatus),
           Message: S.optional(S.String),
           SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ExpirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          InputDataConfig: S.optional(__S(1)),
-          OutputDataConfig: S.optional(__S(1)),
-          LanguageCode: S.optional(S.String),
+          InputDataConfig: S.optional(InputDataConfig),
+          OutputDataConfig: S.optional(OutputDataConfig),
+          LanguageCode: S.optional(LanguageCode),
           DataAccessRoleArn: S.optional(S.String),
           ManifestFilePath: S.optional(S.String),
           KMSKey: S.optional(S.String),
@@ -1511,7 +1734,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ComprehendMedicalAsyncJobProperties: S.optional(__S(2)),
+          ComprehendMedicalAsyncJobProperties: S.optional(ComprehendMedicalAsyncJobProperties),
         }),
       ).annotate({
         identifier: "DescribeEntitiesDetectionV2JobResponse",
@@ -1560,27 +1783,27 @@ function __c1(j: number): any {
       ).annotate({ identifier: "DetectEntitiesRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Score: S.optional(S.Number) }),
+        S.Struct({ Name: S.optional(AttributeName), Score: S.optional(S.Number) }),
       ).annotate({ identifier: "Trait" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(Trait);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Type: S.optional(S.String),
+          Type: S.optional(EntitySubType),
           Score: S.optional(S.Number),
           RelationshipScore: S.optional(S.Number),
-          RelationshipType: S.optional(S.String),
+          RelationshipType: S.optional(RelationshipType),
           Id: S.optional(S.Number),
           BeginOffset: S.optional(S.Number),
           EndOffset: S.optional(S.Number),
           Text: S.optional(S.String),
-          Category: S.optional(S.String),
-          Traits: S.optional(__S(10)),
+          Category: S.optional(EntityType),
+          Traits: S.optional(TraitList),
         }),
       ).annotate({ identifier: "Attribute" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(Attribute);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1589,29 +1812,29 @@ function __c1(j: number): any {
           EndOffset: S.optional(S.Number),
           Score: S.optional(S.Number),
           Text: S.optional(S.String),
-          Category: S.optional(S.String),
-          Type: S.optional(S.String),
-          Traits: S.optional(__S(10)),
-          Attributes: S.optional(__S(12)),
+          Category: S.optional(EntityType),
+          Type: S.optional(EntitySubType),
+          Traits: S.optional(TraitList),
+          Attributes: S.optional(AttributeList),
         }),
       ).annotate({ identifier: "Entity" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(Entity);
     case 7:
       return S.suspend(() =>
-        S.Struct({ Type: S.optional(S.String), Attribute: S.optional(__S(11)) }),
+        S.Struct({ Type: S.optional(EntityType), Attribute: S.optional(Attribute) }),
       ).annotate({ identifier: "UnmappedAttribute" });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(UnmappedAttribute);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Entities: __S(14),
-          UnmappedAttributes: S.optional(__S(16)),
+          Entities: EntityList,
+          UnmappedAttributes: S.optional(UnmappedAttributeList),
           PaginationToken: S.optional(S.String),
           ModelVersion: S.String,
         }),
@@ -1631,7 +1854,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Entities: __S(14),
+          Entities: EntityList,
           PaginationToken: S.optional(S.String),
           ModelVersion: S.String,
         }),
@@ -1645,20 +1868,20 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Type: S.optional(S.String),
+          Type: S.optional(ICD10CMAttributeType),
           Score: S.optional(S.Number),
           RelationshipScore: S.optional(S.Number),
           Id: S.optional(S.Number),
           BeginOffset: S.optional(S.Number),
           EndOffset: S.optional(S.Number),
           Text: S.optional(S.String),
-          Traits: S.optional(__S(10)),
-          Category: S.optional(S.String),
-          RelationshipType: S.optional(S.String),
+          Traits: S.optional(ICD10CMTraitList),
+          Category: S.optional(ICD10CMEntityType),
+          RelationshipType: S.optional(ICD10CMRelationshipType),
         }),
       ).annotate({ identifier: "ICD10CMAttribute" });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(ICD10CMAttribute);
   }
 }
 function __c3(j: number): any {
@@ -1672,28 +1895,28 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "ICD10CMConcept" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(ICD10CMConcept);
     case 2:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.Number),
           Text: S.optional(S.String),
-          Category: S.optional(S.String),
-          Type: S.optional(S.String),
+          Category: S.optional(ICD10CMEntityCategory),
+          Type: S.optional(ICD10CMEntityType),
           Score: S.optional(S.Number),
           BeginOffset: S.optional(S.Number),
           EndOffset: S.optional(S.Number),
-          Attributes: S.optional(__S(23)),
-          Traits: S.optional(__S(10)),
-          ICD10CMConcepts: S.optional(__S(25)),
+          Attributes: S.optional(ICD10CMAttributeList),
+          Traits: S.optional(ICD10CMTraitList),
+          ICD10CMConcepts: S.optional(ICD10CMConceptList),
         }),
       ).annotate({ identifier: "ICD10CMEntity" });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(ICD10CMEntity);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Entities: __S(27),
+          Entities: ICD10CMEntityList,
           PaginationToken: S.optional(S.String),
           ModelVersion: S.optional(S.String),
         }),
@@ -1707,18 +1930,18 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Type: S.optional(S.String),
+          Type: S.optional(RxNormAttributeType),
           Score: S.optional(S.Number),
           RelationshipScore: S.optional(S.Number),
           Id: S.optional(S.Number),
           BeginOffset: S.optional(S.Number),
           EndOffset: S.optional(S.Number),
           Text: S.optional(S.String),
-          Traits: S.optional(__S(10)),
+          Traits: S.optional(RxNormTraitList),
         }),
       ).annotate({ identifier: "RxNormAttribute" });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(RxNormAttribute);
   }
 }
 function __c4(j: number): any {
@@ -1728,22 +1951,22 @@ function __c4(j: number): any {
         S.Struct({
           Id: S.optional(S.Number),
           Text: S.optional(S.String),
-          Category: S.optional(S.String),
-          Type: S.optional(S.String),
+          Category: S.optional(RxNormEntityCategory),
+          Type: S.optional(RxNormEntityType),
           Score: S.optional(S.Number),
           BeginOffset: S.optional(S.Number),
           EndOffset: S.optional(S.Number),
-          Attributes: S.optional(__S(31)),
-          Traits: S.optional(__S(10)),
-          RxNormConcepts: S.optional(__S(25)),
+          Attributes: S.optional(RxNormAttributeList),
+          Traits: S.optional(RxNormTraitList),
+          RxNormConcepts: S.optional(RxNormConceptList),
         }),
       ).annotate({ identifier: "RxNormEntity" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(RxNormEntity);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Entities: __S(33),
+          Entities: RxNormEntityList,
           PaginationToken: S.optional(S.String),
           ModelVersion: S.optional(S.String),
         }),
@@ -1757,38 +1980,38 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Category: S.optional(S.String),
-          Type: S.optional(S.String),
+          Category: S.optional(SNOMEDCTEntityCategory),
+          Type: S.optional(SNOMEDCTAttributeType),
           Score: S.optional(S.Number),
           RelationshipScore: S.optional(S.Number),
-          RelationshipType: S.optional(S.String),
+          RelationshipType: S.optional(SNOMEDCTRelationshipType),
           Id: S.optional(S.Number),
           BeginOffset: S.optional(S.Number),
           EndOffset: S.optional(S.Number),
           Text: S.optional(S.String),
-          Traits: S.optional(__S(10)),
-          SNOMEDCTConcepts: S.optional(__S(25)),
+          Traits: S.optional(SNOMEDCTTraitList),
+          SNOMEDCTConcepts: S.optional(SNOMEDCTConceptList),
         }),
       ).annotate({ identifier: "SNOMEDCTAttribute" });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(SNOMEDCTAttribute);
     case 6:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.Number),
           Text: S.optional(S.String),
-          Category: S.optional(S.String),
-          Type: S.optional(S.String),
+          Category: S.optional(SNOMEDCTEntityCategory),
+          Type: S.optional(SNOMEDCTEntityType),
           Score: S.optional(S.Number),
           BeginOffset: S.optional(S.Number),
           EndOffset: S.optional(S.Number),
-          Attributes: S.optional(__S(37)),
-          Traits: S.optional(__S(10)),
-          SNOMEDCTConcepts: S.optional(__S(25)),
+          Attributes: S.optional(SNOMEDCTAttributeList),
+          Traits: S.optional(SNOMEDCTTraitList),
+          SNOMEDCTConcepts: S.optional(SNOMEDCTConceptList),
         }),
       ).annotate({ identifier: "SNOMEDCTEntity" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(SNOMEDCTEntity);
   }
 }
 function __c5(j: number): any {
@@ -1808,18 +2031,18 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Entities: __S(39),
+          Entities: SNOMEDCTEntityList,
           PaginationToken: S.optional(S.String),
           ModelVersion: S.optional(S.String),
-          SNOMEDCTDetails: S.optional(__S(40)),
-          Characters: S.optional(__S(41)),
+          SNOMEDCTDetails: S.optional(SNOMEDCTDetails),
+          Characters: S.optional(Characters),
         }),
       ).annotate({ identifier: "InferSNOMEDCTResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           JobName: S.optional(S.String),
-          JobStatus: S.optional(S.String),
+          JobStatus: S.optional(JobStatus),
           SubmitTimeBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           SubmitTimeAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -1829,7 +2052,7 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(43)),
+          Filter: S.optional(ComprehendMedicalAsyncJobFilter),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -1837,11 +2060,13 @@ function __c5(j: number): any {
         identifier: "ListEntitiesDetectionV2JobsRequest",
       });
     case 5:
-      return S.Array(__S(2));
+      return S.Array(ComprehendMedicalAsyncJobProperties);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ComprehendMedicalAsyncJobPropertiesList: S.optional(__S(45)),
+          ComprehendMedicalAsyncJobPropertiesList: S.optional(
+            ComprehendMedicalAsyncJobPropertiesList,
+          ),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1850,7 +2075,7 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(43)),
+          Filter: S.optional(ComprehendMedicalAsyncJobFilter),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -1864,7 +2089,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(43)),
+          Filter: S.optional(ComprehendMedicalAsyncJobFilter),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -1874,7 +2099,7 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(43)),
+          Filter: S.optional(ComprehendMedicalAsyncJobFilter),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -1884,7 +2109,7 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(43)),
+          Filter: S.optional(ComprehendMedicalAsyncJobFilter),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -1894,13 +2119,13 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(1),
-          OutputDataConfig: __S(1),
+          InputDataConfig: InputDataConfig,
+          OutputDataConfig: OutputDataConfig,
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           KMSKey: S.optional(S.String),
-          LanguageCode: S.String,
+          LanguageCode: LanguageCode,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartEntitiesDetectionV2JobRequest",
@@ -1912,13 +2137,13 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(1),
-          OutputDataConfig: __S(1),
+          InputDataConfig: InputDataConfig,
+          OutputDataConfig: OutputDataConfig,
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           KMSKey: S.optional(S.String),
-          LanguageCode: S.String,
+          LanguageCode: LanguageCode,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartICD10CMInferenceJobRequest",
@@ -1926,13 +2151,13 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(1),
-          OutputDataConfig: __S(1),
+          InputDataConfig: InputDataConfig,
+          OutputDataConfig: OutputDataConfig,
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           KMSKey: S.optional(S.String),
-          LanguageCode: S.String,
+          LanguageCode: LanguageCode,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartPHIDetectionJobRequest",
@@ -1940,13 +2165,13 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(1),
-          OutputDataConfig: __S(1),
+          InputDataConfig: InputDataConfig,
+          OutputDataConfig: OutputDataConfig,
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           KMSKey: S.optional(S.String),
-          LanguageCode: S.String,
+          LanguageCode: LanguageCode,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartRxNormInferenceJobRequest",
@@ -1958,13 +2183,13 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(1),
-          OutputDataConfig: __S(1),
+          InputDataConfig: InputDataConfig,
+          OutputDataConfig: OutputDataConfig,
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           KMSKey: S.optional(S.String),
-          LanguageCode: S.String,
+          LanguageCode: LanguageCode,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartSNOMEDCTInferenceJobRequest",
@@ -2009,30 +2234,5 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "StopSNOMEDCTInferenceJobRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
   }
 }

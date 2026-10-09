@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -73,15 +71,32 @@ export interface GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsReques
   /** Required. The encrypted state passed back from the consent flow. */
   userIdValidationState?: string;
 }
+const GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsRequest>;
+
 export interface FinalizeProjectsLocationsAuthProvidersCredentialsRequest {
   /** Required. The resource name of the auth provider. Format: `projects/{project}/locations/{location}/authProviders/{auth_provider}` */
   authProvider: string;
   /** Request body */
   body?: GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsRequest;
 }
+const FinalizeProjectsLocationsAuthProvidersCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<FinalizeProjectsLocationsAuthProvidersCredentialsRequest>;
+
 /** Response message for `FinalizeCredentials`. Intentionally empty. */
 export interface GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsResponse {}
+const GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsResponse>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<StringList>;
+
 /** Request message for `RetrieveCredentials`. */
 export interface GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsRequest {
   /** Required. The identity of the end user. */
@@ -93,14 +108,29 @@ export interface GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsReques
   /** Optional. The URI to redirect the user to after consent is completed. This field is required for auth providers using the 3-legged OAuth flow. For other auth provider types, this field is unused but not rejected. */
   continueUri?: string;
 }
+const GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsRequest>;
+
 export interface GetProjectsLocationsAuthProvidersCredentialsRequest {
   /** Required. The resource name of the auth provider. Format: `projects/{project}/locations/{location}/authProviders/{auth_provider}` */
   authProvider: string;
   /** Request body */
   body?: GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsRequest;
 }
+const GetProjectsLocationsAuthProvidersCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetProjectsLocationsAuthProvidersCredentialsRequest>;
+
 /** Indicates that the credential retrieval is pending. The caller should retry the `RetrieveCredentials` request after some time. */
 export interface GoogleCloudAgentidentitycredentialsV1_Pending {}
+const GoogleCloudAgentidentitycredentialsV1_Pending = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_Pending>;
+
 /** Indicates the user has rejected the permission delegation or canceled the request. */
 export type GoogleCloudAgentidentitycredentialsV1_ConsentRejected =
   GoogleCloudAgentidentitycredentialsV1_Pending;
@@ -113,6 +143,11 @@ export interface GoogleCloudAgentidentitycredentialsV1_UriConsentRequired {
   /** Output only. The unique ID of the credentials retrieval operation. */
   uid?: string;
 }
+const GoogleCloudAgentidentitycredentialsV1_UriConsentRequired = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_UriConsentRequired>;
+
 /** Message indicating successful retrieval of credentials. */
 export interface GoogleCloudAgentidentitycredentialsV1_Success {
   /** The HTTP header name where the token should be placed. */
@@ -124,6 +159,11 @@ export interface GoogleCloudAgentidentitycredentialsV1_Success {
   /** The retrieved access token or credential for the end user. On an MCP tool call, for an invalid token the OAuth spec states that this should return `401` or `403`, but MCP servers may implement this differently. If you get any flavor of `PERMISSION_DENIED`, retry your original request to `RetrieveCredentials` with force_refresh_token set to the expired/invalid token string, which will fetch a new token or initiate a new consent flow. */
   token?: string;
 }
+const GoogleCloudAgentidentitycredentialsV1_Success = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_Success>;
+
 /** Response message for `RetrieveCredentials`. Contains the access tokens and related artifacts. */
 export interface GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsResponse {
   /** Message indicating credential retrieval is pending. */
@@ -135,6 +175,11 @@ export interface GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsRespon
   /** Message indicating credentials were successfully retrieved. */
   success?: GoogleCloudAgentidentitycredentialsV1_Success;
 }
+const GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsResponse>;
+
 export type FinalizeProjectsLocationsAuthProvidersCredentialsError =
   | NotFound
   | Forbidden
@@ -148,10 +193,8 @@ export const finalizeProjectsLocationsAuthProvidersCredentials: API.OperationMet
   FinalizeProjectsLocationsAuthProvidersCredentialsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<FinalizeProjectsLocationsAuthProvidersCredentialsRequest>,
-  output: __S(
-    2,
-  ) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsResponse>,
+  input: FinalizeProjectsLocationsAuthProvidersCredentialsRequest,
+  output: GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -170,10 +213,8 @@ export const getProjectsLocationsAuthProvidersCredentials: API.OperationMethod<
   GetProjectsLocationsAuthProvidersCredentialsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<GetProjectsLocationsAuthProvidersCredentialsRequest>,
-  output: __S(
-    9,
-  ) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsResponse>,
+  input: GetProjectsLocationsAuthProvidersCredentialsRequest,
+  output: GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -196,7 +237,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           authProvider: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(
+            GoogleCloudAgentidentitycredentialsV1_FinalizeCredentialsRequest.pipe(T.HttpBody()),
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -218,7 +261,7 @@ function __c0(j: number): any {
         S.Struct({
           userId: S.optional(S.String),
           forceRefreshToken: S.optional(S.String),
-          scopes: S.optional(__S(3)),
+          scopes: S.optional(StringList),
           continueUri: S.optional(S.String),
         }),
       ).annotate({
@@ -228,7 +271,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           authProvider: S.String.pipe(T.Label()),
-          body: S.optional(__S(4).pipe(T.HttpBody())),
+          body: S.optional(
+            GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsRequest.pipe(T.HttpBody()),
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -262,7 +307,7 @@ function __c1(j: number): any {
         S.Struct({
           header: S.optional(S.String),
           expireTime: S.optional(S.String),
-          scopes: S.optional(__S(3)),
+          scopes: S.optional(StringList),
           token: S.optional(S.String),
         }),
       ).annotate({
@@ -271,26 +316,13 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          pending: S.optional(__S(6)),
-          consentRejected: S.optional(__S(6)),
-          uriConsentRequired: S.optional(__S(7)),
-          success: S.optional(__S(8)),
+          pending: S.optional(GoogleCloudAgentidentitycredentialsV1_Pending),
+          consentRejected: S.optional(GoogleCloudAgentidentitycredentialsV1_Pending),
+          uriConsentRequired: S.optional(GoogleCloudAgentidentitycredentialsV1_UriConsentRequired),
+          success: S.optional(GoogleCloudAgentidentitycredentialsV1_Success),
         }),
       ).annotate({
         identifier: "GoogleCloudAgentidentitycredentialsV1_RetrieveCredentialsResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

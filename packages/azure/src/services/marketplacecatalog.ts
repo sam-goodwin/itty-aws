@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -29,24 +27,58 @@ export interface GetProductGetByBillingAccountRequest {
   /** Optional to pass the sku id to filter to a specific sku within the product. If not specified, the response will include all skus of the product. */
   skuId?: string;
 }
+const GetProductGetByBillingAccountRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetProductGetByBillingAccountRequest>;
+
 /** Array of product categories */
 export type ProductDetailsCategoryIdsList = Array<string>;
+const ProductDetailsCategoryIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ProductDetailsCategoryIdsList>;
+
 /** List of industry IDs the item belongs to */
 export type ProductDetailsIndustryIdsList = Array<string>;
+const ProductDetailsIndustryIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductDetailsIndustryIdsList>;
+
 /** Displays certification and qualification badges earned by the product for marketplace visibility. - `PreferredSolution` - Microsoft-recognized solution meeting specific quality and partnership criteria - `PowerBICertified` - Certified compatibility and integration with Microsoft Power BI platform - `AdditionalPurchaseRequirement` - Product requires additional purchases or subscriptions for full functionality */
 export type ProductDetailsBadgesList = Array<string>;
+const ProductDetailsBadgesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductDetailsBadgesList>;
+
 /** Operating system info for this product */
 export type ProductDetailsOperatingSystemsList = Array<string>;
+const ProductDetailsOperatingSystemsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductDetailsOperatingSystemsList>;
+
 /** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing - `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details - `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products - `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products - `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer */
 export type ProductDetailsPricingTypesList = Array<string>;
+const ProductDetailsPricingTypesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductDetailsPricingTypesList>;
+
 /** Categorizes products by customer rating thresholds for marketplace filtering and discovery. - `AboveOne` - Products with customer ratings exceeding 1.0 stars based on marketplace reviews - `AboveTwo` - Products with customer ratings exceeding 2.0 stars based on marketplace reviews - `AboveThree` - Products with customer ratings exceeding 3.0 stars based on marketplace reviews - `AboveFour` - Products with customer ratings exceeding 4.0 stars based on marketplace reviews */
 export type ProductDetailsRatingBucketsList = Array<string>;
+const ProductDetailsRatingBucketsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductDetailsRatingBucketsList>;
+
 /** Maps to the list of compatible products */
 export type ProductDetailsSupportedProductsList = Array<string>;
+const ProductDetailsSupportedProductsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductDetailsSupportedProductsList>;
+
 /** Product categories the offer belongs to */
 export type ProductDetailsApplicableProductsList = Array<string>;
+const ProductDetailsApplicableProductsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductDetailsApplicableProductsList>;
+
 /** List of locations which are available on the SKUs */
 export type ProductDetailsLocationsList = Array<string>;
+const ProductDetailsLocationsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductDetailsLocationsList>;
+
 /** Represents a SKU attribute, which consists of a key and value. The attributes may differ across various services. */
 export interface Attribute {
   /** The attribute key */
@@ -54,8 +86,15 @@ export interface Attribute {
   /** The attribute value */
   value?: string;
 }
+const Attribute = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Attribute>;
+
 /** Set of products attributes */
 export type ProductDetailsAttributesList = Array<Attribute>;
+const ProductDetailsAttributesList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ProductDetailsAttributesList>;
+
 /** Video preview image */
 export interface PreviewImage_2 {
   /** Image caption */
@@ -65,6 +104,8 @@ export interface PreviewImage_2 {
   /** Purpose of the image */
   imagePurpose?: string;
 }
+const PreviewImage_2 = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<PreviewImage_2>;
+
 /** Product Video */
 export interface ProductVideo_2 {
   /** Video Caption */
@@ -76,8 +117,15 @@ export interface ProductVideo_2 {
   /** Preview image */
   previewImage?: PreviewImage_2;
 }
+const ProductVideo_2 = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ProductVideo_2>;
+
 /** List of product videos */
 export type ProductDetailsVideosList = Array<ProductVideo_2>;
+const ProductDetailsVideosList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ProductDetailsVideosList>;
+
 /** Includes link to the product image */
 export interface Image_2 {
   /** Image id */
@@ -87,8 +135,15 @@ export interface Image_2 {
   /** Image type */
   type?: string;
 }
+const Image_2 = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Image_2>;
+
 /** List of images */
 export type ImageGroupItemsList_2 = Array<Image_2>;
+const ImageGroupItemsList_2 = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ImageGroupItemsList_2>;
+
 /** List of image objects */
 export interface ImageGroup_2 {
   /** Context of the image group */
@@ -96,10 +151,20 @@ export interface ImageGroup_2 {
   /** List of images */
   items?: ImageGroupItemsList_2;
 }
+const ImageGroup_2 = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ImageGroup_2>;
+
 /** List of Images */
 export type ProductDetailsImagesList = Array<ImageGroup_2>;
+const ProductDetailsImagesList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ProductDetailsImagesList>;
+
 /** List of linked add ins provided for the item */
 export type ProductDetailsLinkedAddInsList = Array<string>;
+const ProductDetailsLinkedAddInsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductDetailsLinkedAddInsList>;
+
 /** Represents a link item read from the gallery item package */
 export interface LinkProperties_2 {
   /** Id of the link */
@@ -109,10 +174,20 @@ export interface LinkProperties_2 {
   /** Uri of the link */
   uri?: string;
 }
+const LinkProperties_2 = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<LinkProperties_2>;
+
 /** List of Links provided for the item */
 export type ProductDetailsLinksList = Array<LinkProperties_2>;
+const ProductDetailsLinksList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ProductDetailsLinksList>;
+
 /** List of screenshot image URIs */
 export type ProductDetailsScreenshotUrisList = Array<string>;
+const ProductDetailsScreenshotUrisList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductDetailsScreenshotUrisList>;
+
 /** Represents a model for stop sell related information */
 export interface StopSellInfo_2 {
   /** A value indicating when the sale of this item is going to be stopped */
@@ -124,6 +199,8 @@ export interface StopSellInfo_2 {
   /** A value indicating an ID of an alternative plan of the same offer */
   alternativePlanId?: string;
 }
+const StopSellInfo_2 = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<StopSellInfo_2>;
+
 /** Includes links to the learning and marketing materials as configured by the publisher */
 export interface MarketingMaterial_2 {
   /** Path to the marketing site */
@@ -131,6 +208,8 @@ export interface MarketingMaterial_2 {
   /** Path to the learn site */
   learnUri?: string;
 }
+const MarketingMaterial_2 = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<MarketingMaterial_2>;
+
 /** Plan level resources and configuration files */
 export interface Artifact_2 {
   /** Artifact name */
@@ -140,8 +219,15 @@ export interface Artifact_2 {
   /** Defines the artifact resource type and its role in the marketplace offering deployment process. - `Template` - Primary Azure Resource Manager template containing the main deployment configuration - `Fragment` - Nested Azure Resource Manager template referenced by the primary template for modular deployments - `Custom` - Publisher-defined artifact with specialized deployment or configuration requirements - `Metadata` - Supplementary information and configuration data supporting the deployment process */
   artifactType: string;
 }
+const Artifact_2 = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Artifact_2>;
+
 /** List of artifacts */
 export type ProductDetailsArtifactsList = Array<Artifact_2>;
+const ProductDetailsArtifactsList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ProductDetailsArtifactsList>;
+
 /** Additional metadata */
 export interface PlanMetadata {
   /** The VM image generation (applicable to Virtual Machine products only) */
@@ -149,14 +235,28 @@ export interface PlanMetadata {
   /** Pointing to a planId which holds the alternative stack reference */
   altStackReference?: string;
 }
+const PlanMetadata = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<PlanMetadata>;
+
 /** Plan CategoryIds */
 export type PlanDetailsCategoryIdsList = Array<string>;
+const PlanDetailsCategoryIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PlanDetailsCategoryIdsList>;
+
 /** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing - `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details - `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products - `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products - `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer */
 export type PlanDetailsPricingTypesList = Array<string>;
+const PlanDetailsPricingTypesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PlanDetailsPricingTypesList>;
+
 /** Defines the security enhancement level for virtual machine deployments. Applies exclusively to Virtual Machine product types. - `None` - Standard virtual machine security without additional protection features - `Trusted` - Trusted Launch security with secure boot and virtual Trusted Platform Module capabilities - `Confidential` - Confidential computing with memory encryption and attestation for sensitive workloads */
 export type PlanDetailsVmSecuritytypesList = Array<string>;
+const PlanDetailsVmSecuritytypesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PlanDetailsVmSecuritytypesList>;
+
 /** List of allowed actions */
 export type AvailabilityActionsList = Array<string>;
+const AvailabilityActionsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<AvailabilityActionsList>;
+
 /** Retail price with currency */
 export interface Price_2 {
   /** Currency code i.e. 'USD' */
@@ -168,6 +268,8 @@ export interface Price_2 {
   /** Manufacturer's suggested retail price for the item */
   msrp: number;
 }
+const Price_2 = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Price_2>;
+
 /** Included quantity properties */
 export interface IncludedQuantityProperty_2 {
   /** Term id */
@@ -175,8 +277,18 @@ export interface IncludedQuantityProperty_2 {
   /** Included quantity */
   quantity?: string;
 }
+const IncludedQuantityProperty_2 = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<IncludedQuantityProperty_2>;
+
 /** Included quantity properties */
 export type MeterIncludedQuantityPropertiesList_2 = Array<IncludedQuantityProperty_2>;
+const MeterIncludedQuantityPropertiesList_2 = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<MeterIncludedQuantityPropertiesList_2>;
+
 /** Applicable billing meter information */
 export interface Meter_2 {
   /** Meter id */
@@ -192,6 +304,8 @@ export interface Meter_2 {
   /** Included quantity properties */
   includedQuantityProperties?: MeterIncludedQuantityPropertiesList_2;
 }
+const Meter_2 = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Meter_2>;
+
 /** Term description parameters */
 export interface TermDescriptionParameter_2 {
   /** Description parameter */
@@ -199,13 +313,25 @@ export interface TermDescriptionParameter_2 {
   /** Parameter's value */
   value?: string;
 }
+const TermDescriptionParameter_2 = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<TermDescriptionParameter_2>;
+
 /** Term description parameters */
 export type TermTermDescriptionParametersList_2 = Array<TermDescriptionParameter_2>;
+const TermTermDescriptionParametersList_2 = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<TermTermDescriptionParametersList_2>;
+
 /** Proration policy */
 export interface ProrationPolicy_2 {
   /** Minimum prorated units */
   minimumProratedUnits?: string;
 }
+const ProrationPolicy_2 = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ProrationPolicy_2>;
+
 /** Renew Billing Plan */
 export interface BillingPlan_2 {
   /** Billing period */
@@ -217,6 +343,8 @@ export interface BillingPlan_2 {
   /** Retail price with currency */
   price?: Price_2;
 }
+const BillingPlan_2 = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<BillingPlan_2>;
+
 /** Defines lifecycle management policy */
 export interface LifecyclePolicy {
   /** Grace period duration where customers retain access to their product. Examples: 'P1M' (1 month), 'P30D' (30 days), 'P0D' (0 days) */
@@ -226,8 +354,12 @@ export interface LifecyclePolicy {
   /** Lockout period duration */
   lockoutDuration?: string;
 }
+const LifecyclePolicy = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<LifecyclePolicy>;
+
 /** Term Actions */
 export type TermActionsList = Array<string>;
+const TermActionsList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<TermActionsList>;
+
 /** Applicable term */
 export interface Term_2 {
   /** Term description parameters */
@@ -261,8 +393,15 @@ export interface Term_2 {
   /** Term Actions */
   actions?: TermActionsList;
 }
+const Term_2 = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<Term_2>;
+
 /** List of applicable terms */
 export type AvailabilityTermsList = Array<Term_2>;
+const AvailabilityTermsList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<AvailabilityTermsList>;
+
 /** A prerequisite product */
 export interface PrerequisiteProduct {
   /** Base plan id */
@@ -272,8 +411,15 @@ export interface PrerequisiteProduct {
   /** Maximum seats */
   maxSeats?: number;
 }
+const PrerequisiteProduct = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<PrerequisiteProduct>;
+
 /** Prerequisite products */
 export type PrerequisiteConstraintProductsList = Array<PrerequisiteProduct>;
+const PrerequisiteConstraintProductsList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<PrerequisiteConstraintProductsList>;
+
 /** Defines minimum and maximum seat limits for a specific constraint type */
 export interface MinMaxSeatsConstraint {
   /** Constraint type */
@@ -283,6 +429,11 @@ export interface MinMaxSeatsConstraint {
   /** Maximum seats */
   maxSeats?: number;
 }
+const MinMaxSeatsConstraint = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<MinMaxSeatsConstraint>;
+
 /** Lookback window for a prerequisite constraint */
 export interface LookbackWindow {
   /** Lookback window type */
@@ -290,6 +441,8 @@ export interface LookbackWindow {
   /** Lookback window period */
   period?: string;
 }
+const LookbackWindow = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<LookbackWindow>;
+
 /** A single prerequisite constraint */
 export interface PrerequisiteConstraint {
   /** Prerequisite products */
@@ -299,6 +452,11 @@ export interface PrerequisiteConstraint {
   /** Lookback window */
   lookbackWindow?: LookbackWindow;
 }
+const PrerequisiteConstraint = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<PrerequisiteConstraint>;
+
 /** Prerequisite constraints for the availability */
 export interface PrerequisiteConstraints {
   /** Constraint requiring all of the specified prerequisites to be met */
@@ -308,13 +466,26 @@ export interface PrerequisiteConstraints {
   /** Constraint requiring none of the specified prerequisites to be met */
   mustHaveNone?: PrerequisiteConstraint;
 }
+const PrerequisiteConstraints = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<PrerequisiteConstraints>;
+
 /** List of subscription statuses of which any must be satisfied */
 export type SubscriptionStatusConstraintsRequireAnyOfList = Array<string>;
+const SubscriptionStatusConstraintsRequireAnyOfList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SubscriptionStatusConstraintsRequireAnyOfList>;
+
 /** Subscription status eligibility constraints for the availability */
 export interface SubscriptionStatusConstraints {
   /** List of subscription statuses of which any must be satisfied */
   requireAnyOf?: SubscriptionStatusConstraintsRequireAnyOfList;
 }
+const SubscriptionStatusConstraints = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<SubscriptionStatusConstraints>;
+
 /** Pricing benefit applicable to the availability (e.g. percent discounts) */
 export interface PricingBenefit {
   /** Rank of the pricing benefit */
@@ -324,6 +495,8 @@ export interface PricingBenefit {
   /** Value of the pricing benefit (e.g. 0.2 for a 20% discount) */
   value?: number;
 }
+const PricingBenefit = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<PricingBenefit>;
+
 /** Availability for a given plan */
 export interface Availability {
   /** The document id */
@@ -349,17 +522,34 @@ export interface Availability {
   /** Pricing benefit applicable to the availability (e.g. percent discounts) */
   pricingBenefit?: PricingBenefit;
 }
+const Availability = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Availability>;
+
 /** List of availabilities for this plan */
 export type PlanDetailsAvailabilitiesList = Array<Availability>;
+const PlanDetailsAvailabilitiesList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<PlanDetailsAvailabilitiesList>;
+
 /** Files related to the marketplace item */
 export type PlanDetailsArtifactsList = Array<Artifact_2>;
+const PlanDetailsArtifactsList =
+  ProductDetailsArtifactsList as any as S.Schema<PlanDetailsArtifactsList>;
+
 /** Represents a billing component model */
 export interface BillingComponent_2 {
   /** Billing Tag */
   billingTag?: string;
 }
+const BillingComponent_2 = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<BillingComponent_2>;
+
 /** Billing components */
 export type PlanDetailsBillingComponentsList = Array<BillingComponent_2>;
+const PlanDetailsBillingComponentsList = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<PlanDetailsBillingComponentsList>;
+
 /** The percentage discount for 3rd party virtual machines software reservations */
 export interface PurchaseDurationDiscount_2 {
   /** The duration */
@@ -367,14 +557,33 @@ export interface PurchaseDurationDiscount_2 {
   /** The discount percentage */
   discountPercentage: number;
 }
+const PurchaseDurationDiscount_2 = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<PurchaseDurationDiscount_2>;
+
 /** List of purchase duration discounts */
 export type PlanDetailsPurchaseDurationDiscountsList = Array<PurchaseDurationDiscount_2>;
+const PlanDetailsPurchaseDurationDiscountsList = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<PlanDetailsPurchaseDurationDiscountsList>;
+
 /** List of certifications */
 export type PlanDetailsCertificationsList = Array<LinkProperties_2>;
+const PlanDetailsCertificationsList =
+  ProductDetailsLinksList as any as S.Schema<PlanDetailsCertificationsList>;
+
 /** Plan labels */
 export type PlanDetailsPlanLabelsList = Array<string>;
+const PlanDetailsPlanLabelsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PlanDetailsPlanLabelsList>;
+
 /** Set of SKU attributes (varies per sku type), where each attribute is represented by a pair of key (attribute name) and value(attribute value) */
 export type PlanDetailsSkuAttributesList = Array<Attribute>;
+const PlanDetailsSkuAttributesList =
+  ProductDetailsAttributesList as any as S.Schema<PlanDetailsSkuAttributesList>;
+
 /** The SKU properties, contains some of the attributes for faster OData filter */
 export interface SkuProperties {
   /** The sku category */
@@ -394,6 +603,8 @@ export interface SkuProperties {
   /** The access tier, such as 'Standard' */
   accessTier?: string;
 }
+const SkuProperties = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<SkuProperties>;
+
 /** SKU price related properties */
 export interface OfferingProperties {
   /** The product code (UPN) */
@@ -409,8 +620,15 @@ export interface OfferingProperties {
   /** Entitlement, Consumption or Reservation */
   type?: string;
 }
+const OfferingProperties = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<OfferingProperties>;
+
 /** SKU price related properties. */
 export type PlanDetailsOfferingPropertiesList = Array<OfferingProperties>;
+const PlanDetailsOfferingPropertiesList = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<PlanDetailsOfferingPropertiesList>;
+
 /** Attributes that define fulfillment timing and delay handling */
 export interface FulfillmentAttributes {
   /** Timing configuration for product fulfillment */
@@ -418,6 +636,11 @@ export interface FulfillmentAttributes {
   /** Mitigation explanation for delayed fulfillment */
   fulfillmentDelayMitigation?: string;
 }
+const FulfillmentAttributes = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<FulfillmentAttributes>;
+
 /** Configuration for additional products bundled with early access pass SKUs */
 export interface ProductFulfillmentConfig {
   /** Product and SKU ID for bundled products included with the license */
@@ -425,8 +648,18 @@ export interface ProductFulfillmentConfig {
   /** Quantity of the bundled product per license */
   defaultKeyActivationCount?: number;
 }
+const ProductFulfillmentConfig = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ProductFulfillmentConfig>;
+
 /** Bundled products included defining additional product/SKU combinations */
 export type FulfillmentDataAdditionalProductsList = Array<ProductFulfillmentConfig>;
+const FulfillmentDataAdditionalProductsList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<FulfillmentDataAdditionalProductsList>;
+
 /** Contains fulfillment configuration and instructions */
 export interface FulfillmentData {
   /** Differentiates between fulfillment types */
@@ -436,6 +669,8 @@ export interface FulfillmentData {
   /** Bundled products included defining additional product/SKU combinations */
   additionalProducts?: FulfillmentDataAdditionalProductsList;
 }
+const FulfillmentData = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<FulfillmentData>;
+
 /** Benefit information for a plan */
 export interface Benefit {
   /** Benefit type */
@@ -451,10 +686,22 @@ export interface Benefit {
   /** Base product code */
   baseProductCode?: string;
 }
+const Benefit = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<Benefit>;
+
 /** Provides promotion data */
 export type PlanDetailsBenefitsList = Array<Benefit>;
+const PlanDetailsBenefitsList = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<PlanDetailsBenefitsList>;
+
 /** Seat constraint configurations defining minimum and maximum seat limits */
 export type ConstraintsDataSeatConstraintsList = Array<MinMaxSeatsConstraint>;
+const ConstraintsDataSeatConstraintsList = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ConstraintsDataSeatConstraintsList>;
+
 /** Defines ownership restrictions and limits for SKU assets */
 export interface AssetOwnershipLimit {
   /** Limit type */
@@ -464,10 +711,20 @@ export interface AssetOwnershipLimit {
   /** Maximum number of assets */
   maxAssets?: number;
 }
+const AssetOwnershipLimit = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<AssetOwnershipLimit>;
+
 /** Asset ownership limits */
 export type ConstraintsDataAssetOwnershipLimitsList = Array<AssetOwnershipLimit>;
+const ConstraintsDataAssetOwnershipLimitsList = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ConstraintsDataAssetOwnershipLimitsList>;
+
 /** SKU IDs */
 export type PrerequisiteSetSkuIdsList = Array<string>;
+const PrerequisiteSetSkuIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PrerequisiteSetSkuIdsList>;
+
 /** Prerequisite set */
 export interface PrerequisiteSet {
   /** Product ID */
@@ -475,10 +732,20 @@ export interface PrerequisiteSet {
   /** SKU IDs */
   skuIds?: PrerequisiteSetSkuIdsList;
 }
+const PrerequisiteSet = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<PrerequisiteSet>;
+
 /** Prerequisite sets where all specified SKUs must be owned */
 export type PrerequisitesMustHaveAllList = Array<PrerequisiteSet>;
+const PrerequisitesMustHaveAllList = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<PrerequisitesMustHaveAllList>;
+
 /** Prerequisite sets where any one of the specified SKUs must be owned */
 export type PrerequisitesMustHaveAnyList = Array<PrerequisiteSet>;
+const PrerequisitesMustHaveAnyList =
+  PrerequisitesMustHaveAllList as any as S.Schema<PrerequisitesMustHaveAnyList>;
+
 /** Minimum and maximum percentage seats constraint */
 export interface MinMaxPercentageSeatsConstraint {
   /** Constraint type */
@@ -488,8 +755,18 @@ export interface MinMaxPercentageSeatsConstraint {
   /** Maximum percent seats */
   maxPercentSeats?: number;
 }
+const MinMaxPercentageSeatsConstraint = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<MinMaxPercentageSeatsConstraint>;
+
 /** Percentage-based seat constraints for prerequisite SKUs */
 export type PrerequisitesSeatConstraintsList = Array<MinMaxPercentageSeatsConstraint>;
+const PrerequisitesSeatConstraintsList = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<PrerequisitesSeatConstraintsList>;
+
 /** Defines prerequisite SKU requirements and seat constraints */
 export interface Prerequisites {
   /** Prerequisite sets where all specified SKUs must be owned */
@@ -499,6 +776,8 @@ export interface Prerequisites {
   /** Percentage-based seat constraints for prerequisite SKUs */
   seatConstraints?: PrerequisitesSeatConstraintsList;
 }
+const Prerequisites = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<Prerequisites>;
+
 /** Constraints data for a plan */
 export interface ConstraintsData {
   /** Seat constraint configurations defining minimum and maximum seat limits */
@@ -508,6 +787,8 @@ export interface ConstraintsData {
   /** Lists eligible prerequisite SKUs */
   prerequisiteSkus?: Prerequisites;
 }
+const ConstraintsData = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ConstraintsData>;
+
 /** Meter type description value */
 export interface MeterTypeDescriptionValue {
   /** The type of meter */
@@ -515,6 +796,11 @@ export interface MeterTypeDescriptionValue {
   /** The unit of measurement for the meter */
   unitOfMeasure?: string;
 }
+const MeterTypeDescriptionValue = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<MeterTypeDescriptionValue>;
+
 /** Meter type description */
 export interface MeterTypeDescription {
   /** Meter Type Description key */
@@ -522,8 +808,15 @@ export interface MeterTypeDescription {
   /** Meter type description value */
   value?: MeterTypeDescriptionValue;
 }
+const MeterTypeDescription = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<MeterTypeDescription>;
+
 /** Meter type descriptions */
 export type PlanDetailsMeterTypeDescriptionsList = Array<MeterTypeDescription>;
+const PlanDetailsMeterTypeDescriptionsList = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<PlanDetailsMeterTypeDescriptionsList>;
+
 /** Returns the full set of Plan attributes */
 export interface PlanDetails {
   /** Plan identifier */
@@ -653,8 +946,15 @@ export interface PlanDetails {
   /** Sku name */
   skuName?: string;
 }
+const PlanDetails = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<PlanDetails>;
+
 /** Full set of plan/SKU attributes */
 export type ProductDetailsPlansList = Array<PlanDetails>;
+const ProductDetailsPlansList = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ProductDetailsPlansList>;
+
 /** Returns the full set of Product attributes */
 export interface ProductDetails {
   /** Product display name */
@@ -790,6 +1090,8 @@ export interface ProductDetails {
   /** The product code */
   productCode?: string;
 }
+const ProductDetails = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ProductDetails>;
+
 export interface GetProductGetByBillingProfileRequest {
   /** The ID of the target billing account. */
   billingAccountId: string;
@@ -810,6 +1112,11 @@ export interface GetProductGetByBillingProfileRequest {
   /** Optional to pass the sku id to filter to a specific sku within the product. If not specified, the response will include all skus of the product. */
   skuId?: string;
 }
+const GetProductGetByBillingProfileRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<GetProductGetByBillingProfileRequest>;
+
 export interface GetProductGetBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -830,6 +1137,11 @@ export interface GetProductGetBySubscriptionRequest {
   /** Indicates whether to use the tenant in context to fetch the product. By default, lookUpOfferInTenantLevel is set to FALSE. */
   lookUpOfferInTenantLevel?: boolean;
 }
+const GetProductGetBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetProductGetBySubscriptionRequest>;
+
 export interface GetProductGetByTenantRequest {
   /** The ID of the product */
   productId: string;
@@ -850,6 +1162,11 @@ export interface GetProductGetByTenantRequest {
   /** Optional to pass the sku id to filter to a specific sku within the product. If not specified, the response will include all skus of the product. */
   skuId?: string;
 }
+const GetProductGetByTenantRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<GetProductGetByTenantRequest>;
+
 export interface GetSkusByBillingAccountRequest {
   /** The ID of the target billing account. */
   billingAccountId: string;
@@ -862,6 +1179,11 @@ export interface GetSkusByBillingAccountRequest {
   /** Include availabilities whose start date is in the future. Default is false. */
   includeFutureAvailabilities?: boolean;
 }
+const GetSkusByBillingAccountRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<GetSkusByBillingAccountRequest>;
+
 /** Key-value attribute pair. */
 export interface Attribute_2 {
   /** The attribute key. */
@@ -871,8 +1193,14 @@ export interface Attribute_2 {
 }
 /** The product attributes. */
 export type GetSkusByBillingAccountResponseProductAttributesList = Array<Attribute_2>;
+const GetSkusByBillingAccountResponseProductAttributesList =
+  ProductDetailsAttributesList as any as S.Schema<GetSkusByBillingAccountResponseProductAttributesList>;
+
 /** The SKU attributes. */
 export type GetSkusByBillingAccountResponseSkuAttributesList = Array<Attribute_2>;
+const GetSkusByBillingAccountResponseSkuAttributesList =
+  ProductDetailsAttributesList as any as S.Schema<GetSkusByBillingAccountResponseSkuAttributesList>;
+
 /** SKU properties, can be different per each service family. */
 export interface SkuProperties_2 {
   /** The SKU category. */
@@ -892,6 +1220,8 @@ export interface SkuProperties_2 {
   /** The access tier, such as 'Standard'. */
   accessTier?: string;
 }
+const SkuProperties_2 = SkuProperties as any as S.Schema<SkuProperties_2>;
+
 /** Offering properties such as: product code (UPN), term id, meter type, offering id. */
 export interface OfferingProperties_2 {
   /** The meter type. */
@@ -907,36 +1237,85 @@ export interface OfferingProperties_2 {
   /** The pricing property type (e.g., Consumption, Reservation, Entitlement). */
   type?: string;
 }
+const OfferingProperties_2 = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<OfferingProperties_2>;
+
 /** Offering properties such as: product code (UPN), term id, meter type, offering id. */
 export type GetSkusByBillingAccountResponseOfferingPropertiesList = Array<OfferingProperties_2>;
+const GetSkusByBillingAccountResponseOfferingPropertiesList = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<GetSkusByBillingAccountResponseOfferingPropertiesList>;
+
 /** AAD SKU identifiers. */
 export type SkuAlternateIdsAadSkuIdList = Array<string>;
+const SkuAlternateIdsAadSkuIdList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SkuAlternateIdsAadSkuIdList>;
+
 /** Legacy offer GUID identifiers. */
 export type SkuAlternateIdsLegacyOfferGuidList = Array<string>;
+const SkuAlternateIdsLegacyOfferGuidList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SkuAlternateIdsLegacyOfferGuidList>;
+
 /** Applicable promotion identifiers. */
 export type SkuAlternateIdsApplicablePromotionList = Array<string>;
+const SkuAlternateIdsApplicablePromotionList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SkuAlternateIdsApplicablePromotionList>;
+
 /** Add-on parent identifiers. */
 export type SkuAlternateIdsAddOnParentList = Array<string>;
+const SkuAlternateIdsAddOnParentList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SkuAlternateIdsAddOnParentList>;
+
 /** Applicable future price concession identifiers. */
 export type SkuAlternateIdsApplicableFuturePriceConcessionList = Array<string>;
+const SkuAlternateIdsApplicableFuturePriceConcessionList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SkuAlternateIdsApplicableFuturePriceConcessionList>;
+
 /** Benefit SKU identifiers. */
 export type SkuAlternateIdsBenefitSkuList = Array<string>;
+const SkuAlternateIdsBenefitSkuList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SkuAlternateIdsBenefitSkuList>;
+
 /** Included in bundle identifiers. */
 export type SkuAlternateIdsIncludedInBundleList = Array<string>;
+const SkuAlternateIdsIncludedInBundleList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SkuAlternateIdsIncludedInBundleList>;
+
 /** Associated SKU identifiers. */
 export type SkuAlternateIdsAssociatedSkuList = Array<string>;
+const SkuAlternateIdsAssociatedSkuList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SkuAlternateIdsAssociatedSkuList>;
+
 /** Applicable promotion product identifiers. */
 export type ProductAlternateIdsApplicablePromotionList = Array<string>;
+const ProductAlternateIdsApplicablePromotionList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductAlternateIdsApplicablePromotionList>;
+
 /** Add-on parent product identifiers. */
 export type ProductAlternateIdsAddOnParentList = Array<string>;
+const ProductAlternateIdsAddOnParentList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductAlternateIdsAddOnParentList>;
+
 /** Applicable future price concession product identifiers. */
 export type ProductAlternateIdsApplicableFuturePriceConcessionList = Array<string>;
+const ProductAlternateIdsApplicableFuturePriceConcessionList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductAlternateIdsApplicableFuturePriceConcessionList>;
+
 /** Benefit SKU product identifiers. */
 export type ProductAlternateIdsBenefitSkuList = Array<string>;
+const ProductAlternateIdsBenefitSkuList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductAlternateIdsBenefitSkuList>;
+
 /** Included in bundle product identifiers. */
 export type ProductAlternateIdsIncludedInBundleList = Array<string>;
+const ProductAlternateIdsIncludedInBundleList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductAlternateIdsIncludedInBundleList>;
+
 /** Associated SKU product identifiers. */
 export type ProductAlternateIdsAssociatedSkuList = Array<string>;
+const ProductAlternateIdsAssociatedSkuList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductAlternateIdsAssociatedSkuList>;
+
 /** Product-level alternate ids (product id without SKU id), used for OData lookup on SKUs of a specific product. */
 export interface ProductAlternateIds {
   /** Applicable promotion product identifiers. */
@@ -952,6 +1331,8 @@ export interface ProductAlternateIds {
   /** Associated SKU product identifiers. */
   associatedSku?: ProductAlternateIdsAssociatedSkuList;
 }
+const ProductAlternateIds = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ProductAlternateIds>;
+
 /** Alternate ids for the SKU. */
 export interface SkuAlternateIds {
   /** AAD SKU identifiers. */
@@ -973,10 +1354,18 @@ export interface SkuAlternateIds {
   /** Product-level alternate ids (product id without SKU id), used for OData lookup on SKUs of a specific product. */
   products?: ProductAlternateIds;
 }
+const SkuAlternateIds = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<SkuAlternateIds>;
+
 /** Category IDs for this SKU. */
 export type GetSkusByBillingAccountResponseCategoryIdsList = Array<string>;
+const GetSkusByBillingAccountResponseCategoryIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<GetSkusByBillingAccountResponseCategoryIdsList>;
+
 /** Pricing audiences for the SKU. */
 export type GetSkusByBillingAccountResponsePricingAudiencesList = Array<string>;
+const GetSkusByBillingAccountResponsePricingAudiencesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<GetSkusByBillingAccountResponsePricingAudiencesList>;
+
 /** Retail price with currency */
 export type Price_3 = Price_2;
 /** Included quantity properties for a meter */
@@ -998,6 +1387,8 @@ export interface Meter_3 {
   /** Included quantity properties */
   includedQuantityProperties?: MeterIncludedQuantityPropertiesList_3;
 }
+const Meter_3 = Meter_2 as any as S.Schema<Meter_3>;
+
 /** Term description parameters */
 export type TermDescriptionParameter_3 = TermDescriptionParameter_2;
 /** Term description parameters */
@@ -1043,6 +1434,8 @@ export interface Term_3 {
 }
 /** List of applicable terms */
 export type AvailabilityTermsList_2 = Array<Term_3>;
+const AvailabilityTermsList_2 = AvailabilityTermsList as any as S.Schema<AvailabilityTermsList_2>;
+
 /** Availability for a given plan */
 export interface Availability_2 {
   /** The document id */
@@ -1062,8 +1455,15 @@ export interface Availability_2 {
   /** Display rank */
   displayRank: number;
 }
+const Availability_2 = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<Availability_2>;
+
 /** Availabilities for this SKU. */
 export type GetSkusByBillingAccountResponseAvailabilitiesList = Array<Availability_2>;
+const GetSkusByBillingAccountResponseAvailabilitiesList = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<GetSkusByBillingAccountResponseAvailabilitiesList>;
+
 export interface GetSkusByBillingAccountResponse {
   /** The unique id of the product. */
   productId: string;
@@ -1144,6 +1544,11 @@ export interface GetSkusByBillingAccountResponse {
   /** Availabilities for this SKU. */
   availabilities?: GetSkusByBillingAccountResponseAvailabilitiesList;
 }
+const GetSkusByBillingAccountResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<GetSkusByBillingAccountResponse>;
+
 export interface GetSkusByBillingProfileRequest {
   /** The ID of the target billing account. */
   billingAccountId: string;
@@ -1158,6 +1563,11 @@ export interface GetSkusByBillingProfileRequest {
   /** Include availabilities whose start date is in the future. Default is false. */
   includeFutureAvailabilities?: boolean;
 }
+const GetSkusByBillingProfileRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<GetSkusByBillingProfileRequest>;
+
 /** The product attributes. */
 export type GetSkusByBillingProfileResponseProductAttributesList = Array<Attribute_2>;
 /** The SKU attributes. */
@@ -1250,6 +1660,9 @@ export interface GetSkusByBillingProfileResponse {
   /** Availabilities for this SKU. */
   availabilities?: GetSkusByBillingProfileResponseAvailabilitiesList;
 }
+const GetSkusByBillingProfileResponse =
+  GetSkusByBillingAccountResponse as any as S.Schema<GetSkusByBillingProfileResponse>;
+
 export interface ListEdgeZonesProductsRequest {
   /** Subscription id of the caller */
   subscriptionId: string;
@@ -1266,9 +1679,21 @@ export interface ListEdgeZonesProductsRequest {
   /** The optional page continuation token that is used in the event of paginated result. */
   _skipToken?: string;
 }
+const ListEdgeZonesProductsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListEdgeZonesProductsRequest>;
+
 export type Store = "Appsource" | "AMP" | "Ibiza" | "Cosell" | "DakotaDownstream";
+const Store = S.String;
+
 /** The list of the storefronts for which this offer is designated */
 export type CatalogItemDeterminedStorefrontsList = Array<Store>;
+const CatalogItemDeterminedStorefrontsList = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<CatalogItemDeterminedStorefrontsList>;
+
 export type OfferType =
   | "None"
   | "DevService"
@@ -1292,7 +1717,11 @@ export type OfferType =
   | "PowerBIVisuals"
   | "Office365"
   | "AADApps";
+const OfferType = S.String;
+
 export type StopSellReason = "EndOfSupport" | "SecurityIssue" | "Other";
+const StopSellReason = S.String;
+
 export interface StopSellInfo {
   /** A value indicating when the sale of this item is going to be stopped */
   startDate?: string | null;
@@ -1303,52 +1732,106 @@ export interface StopSellInfo {
   /** A value indicating an ID of an alternative plan of the same offer */
   alternativePlanId?: string | null;
 }
+const StopSellInfo = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<StopSellInfo>;
+
 export interface MarketingMaterial {
   /** Path to the marketing site */
   path?: string | null;
   /** Path to the learn site */
   learnUri?: string | null;
 }
+const MarketingMaterial = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<MarketingMaterial>;
+
 /** Markets for the item */
 export type CatalogItemMarketsList = Array<string>;
+const CatalogItemMarketsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemMarketsList>;
+
 /** ISV contact details */
 export type CatalogItemIsvContactDetailsMap = { [key: string]: string | undefined };
+const CatalogItemIsvContactDetailsMap = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<CatalogItemIsvContactDetailsMap>;
+
 export type LegalTermsType = "None" | "EA";
+const LegalTermsType = S.String;
+
 /** List of category IDs the marketplace item belongs to */
 export type CatalogItemCategoryIdsList = Array<string>;
+const CatalogItemCategoryIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemCategoryIdsList>;
+
 /** List of operating systems the marketplace item supports */
 export type CatalogItemOperatingSystemsList = Array<string>;
+const CatalogItemOperatingSystemsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemOperatingSystemsList>;
+
 /** Market states of a service offer */
 export type CatalogItemMarketStatesList = Array<string>;
+const CatalogItemMarketStatesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemMarketStatesList>;
+
 /** List of industry IDs the item belongs to */
 export type CatalogItemIndustryIdsList = Array<string>;
+const CatalogItemIndustryIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemIndustryIdsList>;
+
 /** List of industry IDs the item belongs to */
 export type CatalogItemPrimaryIndustryList = Array<string>;
+const CatalogItemPrimaryIndustryList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemPrimaryIndustryList>;
+
 /** List of category IDs the item belongs to */
 export type CatalogItemPrimaryCategoriesList = Array<string>;
+const CatalogItemPrimaryCategoriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemPrimaryCategoriesList>;
+
 /** List of cloud industry IDs the item belongs to */
 export type CatalogItemCloudIndustryCategoriesList = Array<string>;
+const CatalogItemCloudIndustryCategoriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemCloudIndustryCategoriesList>;
+
 /** It maps to the list of products the publisher provides with which their offer works */
 export type CatalogItemSupportedProductsList = Array<string>;
+const CatalogItemSupportedProductsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemSupportedProductsList>;
+
 /** Product categories the offer belongs to */
 export type CatalogItemApplicableProductsList = Array<string>;
+const CatalogItemApplicableProductsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemApplicableProductsList>;
+
 export interface Competency {
   /** Competency name */
   competencyName?: string | null;
   /** Competency level */
   competencyLevel?: string | null;
 }
+const Competency = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<Competency>;
+
 /** Competencies that apply to the offer */
 export type CatalogItemCompetenciesList = Array<Competency>;
+const CatalogItemCompetenciesList = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<CatalogItemCompetenciesList>;
+
 export type ServiceDurationUnit = "Days" | "Hours" | "Weeks" | "Months";
+const ServiceDurationUnit = S.String;
+
 export interface Duration {
   /** Duration value */
   durationValue?: number;
   /** Duration unit */
   durationUnit?: ServiceDurationUnit;
 }
+const Duration = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<Duration>;
+
 /** 0 = Fixed 1 = Estimated */
 export type CurrencyDecorator = 0 | 1;
+const CurrencyDecorator = S.Number;
+
 export interface PlanPrice {
   /** Plan id */
   planId?: string | null;
@@ -1357,16 +1840,28 @@ export interface PlanPrice {
   /** Price of the item */
   price?: number;
 }
+const PlanPrice = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<PlanPrice>;
+
 /** Plan prices */
 export type PricingPlanPricesList = Array<PlanPrice>;
+const PricingPlanPricesList = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<PricingPlanPricesList>;
+
 export interface Pricing {
   /** Currency code */
   currencyCode?: string | null;
   /** Plan prices */
   planPrices?: PricingPlanPricesList | null;
 }
+const Pricing = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<Pricing>;
+
 /** Market states of a service offer */
 export type MarketPricingDetailsItemMarketStatesList = Array<string>;
+const MarketPricingDetailsItemMarketStatesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<MarketPricingDetailsItemMarketStatesList>;
+
 export interface MarketPricingDetailsItem {
   /** Pricing that applies to the item */
   pricing?: Pricing | null;
@@ -1375,8 +1870,18 @@ export interface MarketPricingDetailsItem {
   /** Market states of a service offer */
   marketStates?: MarketPricingDetailsItemMarketStatesList | null;
 }
+const MarketPricingDetailsItem = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<MarketPricingDetailsItem>;
+
 /** The pricing details of each market to the item */
 export type CatalogItemMarketPricingDetailsList = Array<MarketPricingDetailsItem>;
+const CatalogItemMarketPricingDetailsList = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<CatalogItemMarketPricingDetailsList>;
+
 export interface MarketStartPrice {
   /** The market. */
   market: string;
@@ -1391,10 +1896,18 @@ export interface MarketStartPrice {
   /** Currency for price. */
   currency: string;
 }
+const MarketStartPrice = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<MarketStartPrice>;
+
 /** The states that apply to the item */
 export type CatalogItemSolutionAreasList = Array<string>;
+const CatalogItemSolutionAreasList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemSolutionAreasList>;
+
 /** List of screenshot image URIs provided for the item */
 export type CatalogItemScreenshotUrisList = Array<string>;
+const CatalogItemScreenshotUrisList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemScreenshotUrisList>;
+
 export interface LinkProperties {
   /** Id of the link */
   id?: string | null;
@@ -1403,19 +1916,38 @@ export interface LinkProperties {
   /** URI of the link */
   uri?: string | null;
 }
+const LinkProperties = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<LinkProperties>;
+
 /** List of Links provided for the item */
 export type CatalogItemLinksList = Array<LinkProperties>;
+const CatalogItemLinksList = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<CatalogItemLinksList>;
+
 export interface Filter {
   /** Filter type */
   type?: string | null;
   /** Filter value */
   value?: string | null;
 }
+const Filter = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<Filter>;
+
 /** List of filters for the item */
 export type CatalogItemFiltersList = Array<Filter>;
+const CatalogItemFiltersList = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<CatalogItemFiltersList>;
+
 /** Dictionary of icon image URIs by icon type */
 export type CatalogItemIconFileUrisMap = { [key: string]: string | undefined };
+const CatalogItemIconFileUrisMap =
+  CatalogItemIsvContactDetailsMap as any as S.Schema<CatalogItemIconFileUrisMap>;
+
 export type ArtifactType = "Template" | "Fragment" | "Custom" | "Metadata";
+const ArtifactType = S.String;
+
 export interface Artifact {
   /** Artifact name */
   name?: string | null;
@@ -1424,14 +1956,23 @@ export interface Artifact {
   /** Artifact type */
   type?: ArtifactType;
 }
+const Artifact = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<Artifact>;
+
 /** List of artifacts */
 export type CatalogItemArtifactsList = Array<Artifact>;
+const CatalogItemArtifactsList = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<CatalogItemArtifactsList>;
+
 export interface LeadGeneration {
   /** Product Id */
   productId?: string | null;
   /** An indicator if lead generation is enabled */
   leadGenEnabled?: boolean | null;
 }
+const LeadGeneration = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<LeadGeneration>;
+
 export interface PreviewImage {
   /** Caption of preview image */
   caption?: string | null;
@@ -1440,6 +1981,8 @@ export interface PreviewImage {
   /** Image purpose */
   imagePurpose?: string | null;
 }
+const PreviewImage = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<PreviewImage>;
+
 export interface ProductVideo {
   /** Caption of the product video */
   caption?: string | null;
@@ -1450,6 +1993,8 @@ export interface ProductVideo {
   /** Preview image */
   previewImage?: PreviewImage | null;
 }
+const ProductVideo = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<ProductVideo>;
+
 export interface TestDrive {
   /** Test drive description */
   description?: string | null;
@@ -1470,14 +2015,21 @@ export interface TestDrive {
   /** Power Bi dashboard link */
   powerBiDashboardLink?: string | null;
 }
+const TestDrive = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<TestDrive>;
+
 export interface OfferMetadata {
   /** Lead generation info */
   leadGeneration?: LeadGeneration | null;
   /** Test Drive info */
   testDrive?: TestDrive | null;
 }
+const OfferMetadata = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<OfferMetadata>;
+
 /** Dictionary of properties provided for the item */
 export type CatalogItemPropertiesMap = { [key: string]: string | undefined };
+const CatalogItemPropertiesMap =
+  CatalogItemIsvContactDetailsMap as any as S.Schema<CatalogItemPropertiesMap>;
+
 export interface Image {
   /** Image id */
   id?: string | null;
@@ -1486,26 +2038,54 @@ export interface Image {
   /** Image type */
   type?: string | null;
 }
+const Image = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<Image>;
+
 /** List of images */
 export type ImageGroupItemsList = Array<Image>;
+const ImageGroupItemsList = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<ImageGroupItemsList>;
+
 export interface ImageGroup {
   /** context of the image group */
   context?: string | null;
   /** List of images */
   items?: ImageGroupItemsList | null;
 }
+const ImageGroup = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<ImageGroup>;
+
 /** List of Images */
 export type CatalogItemImagesList = Array<ImageGroup>;
+const CatalogItemImagesList = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<CatalogItemImagesList>;
+
 /** List of product videos */
 export type CatalogItemVideosList = Array<ProductVideo>;
+const CatalogItemVideosList = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<CatalogItemVideosList>;
+
 /** Subscription based restricted audience */
 export type RestrictedAudienceSubscriptionsList = Array<string>;
+const RestrictedAudienceSubscriptionsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<RestrictedAudienceSubscriptionsList>;
+
 /** Tenant based restricted audience */
 export type RestrictedAudienceTenantsList = Array<string>;
+const RestrictedAudienceTenantsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<RestrictedAudienceTenantsList>;
+
 /** User based restricted audience */
 export type RestrictedAudienceUsersList = Array<string>;
+const RestrictedAudienceUsersList =
+  ProductDetailsCategoryIdsList as any as S.Schema<RestrictedAudienceUsersList>;
+
 /** User groups restricted audience */
 export type RestrictedAudienceGroupsList = Array<string>;
+const RestrictedAudienceGroupsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<RestrictedAudienceGroupsList>;
+
 export interface RestrictedAudience {
   /** Subscription based restricted audience */
   subscriptions?: RestrictedAudienceSubscriptionsList | null;
@@ -1516,10 +2096,17 @@ export interface RestrictedAudience {
   /** User groups restricted audience */
   groups?: RestrictedAudienceGroupsList | null;
 }
+const RestrictedAudience = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<RestrictedAudience>;
+
 /** List of keywords */
 export type PlanKeywordsList = Array<string>;
+const PlanKeywordsList = ProductDetailsCategoryIdsList as any as S.Schema<PlanKeywordsList>;
+
 /** List of allowed actions */
 export type AvailabilityEntityActionsList = Array<string>;
+const AvailabilityEntityActionsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<AvailabilityEntityActionsList>;
+
 export interface Price {
   /** Currency code i.e. 'USD' */
   currencyCode?: string | null;
@@ -1530,14 +2117,26 @@ export interface Price {
   /** Manufacturer's suggested retail price for the item */
   msrp?: number;
 }
+const Price = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<Price>;
+
 export interface IncludedQuantityProperty {
   /** Term id */
   termId?: string | null;
   /** Quantity of terms */
   quantity?: string | null;
 }
+const IncludedQuantityProperty = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<IncludedQuantityProperty>;
+
 /** Included quantity properties */
 export type MeterIncludedQuantityPropertiesList = Array<IncludedQuantityProperty>;
+const MeterIncludedQuantityPropertiesList = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<MeterIncludedQuantityPropertiesList>;
+
 export interface Meter {
   /** Meter id */
   meterId?: string | null;
@@ -1552,6 +2151,8 @@ export interface Meter {
   /** Included quantity properties */
   includedQuantityProperties?: MeterIncludedQuantityPropertiesList | null;
 }
+const Meter = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<Meter>;
+
 export type PricingAudience =
   | "None"
   | "DirectCommercial"
@@ -1562,18 +2163,32 @@ export type PricingAudience =
   | "DirectChk"
   | "DirectBlue"
   | "DirectRock";
+const PricingAudience = S.String;
+
 export interface TermDescriptionParameter {
   /** Term description parameter */
   parameter?: string | null;
   /** Term description parameter value */
   value?: string | null;
 }
+const TermDescriptionParameter = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<TermDescriptionParameter>;
+
 /** Term description parameters */
 export type TermTermDescriptionParametersList = Array<TermDescriptionParameter>;
+const TermTermDescriptionParametersList = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<TermTermDescriptionParametersList>;
+
 export interface ProrationPolicy {
   /** Minimum prorated units */
   minimumProratedUnits?: string | null;
 }
+const ProrationPolicy = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<ProrationPolicy>;
+
 export interface BillingPlan {
   /** Billing period */
   billingPeriod?: string | null;
@@ -1584,6 +2199,8 @@ export interface BillingPlan {
   /** Billing plan price */
   price?: Price | null;
 }
+const BillingPlan = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<BillingPlan>;
+
 export interface Term {
   /** Term description parameters */
   termDescriptionParameters?: TermTermDescriptionParametersList | null;
@@ -1606,30 +2223,60 @@ export interface Term {
   /** Renew Billing Plan */
   renewToTermBillingPlan?: string | null;
 }
+const Term = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<Term>;
+
 /** List of applicable terms */
 export type AvailabilityEntityTermsList = Array<Term>;
+const AvailabilityEntityTermsList = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<AvailabilityEntityTermsList>;
+
 /** List of exclusion properties */
 export type PIFilterExclusionPropertiesList = Array<string>;
+const PIFilterExclusionPropertiesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PIFilterExclusionPropertiesList>;
+
 /** List of inclusion properties */
 export type PIFilterInclusionPropertiesList = Array<string>;
+const PIFilterInclusionPropertiesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PIFilterInclusionPropertiesList>;
+
 export interface PIFilter {
   /** List of exclusion properties */
   exclusionProperties?: PIFilterExclusionPropertiesList | null;
   /** List of inclusion properties */
   inclusionProperties?: PIFilterInclusionPropertiesList | null;
 }
+const PIFilter = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<PIFilter>;
+
 /** Asset behaviors */
 export type AvailabilityEntityAssetBehaviorsList = Array<string>;
+const AvailabilityEntityAssetBehaviorsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<AvailabilityEntityAssetBehaviorsList>;
+
 export interface Remediation {
   /** Remediation identifier */
   remediationId?: string | null;
   /** Remediation type */
   type?: string | null;
 }
+const Remediation = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<Remediation>;
+
 /** Remediation actions for acquiring availability if RemediationRequired is true */
 export type AvailabilityEntityRemediationsList = Array<Remediation>;
+const AvailabilityEntityRemediationsList = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<AvailabilityEntityRemediationsList>;
+
 /** Plan availabilities */
 export type AvailabilityEntityPlanAvailabilitiesList = Array<AvailabilityEntity>;
+const AvailabilityEntityPlanAvailabilitiesList = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<AvailabilityEntityPlanAvailabilitiesList>;
+
 export interface AvailabilityEntity {
   id?: string | null;
   /** Partition key */
@@ -1676,16 +2323,35 @@ export interface AvailabilityEntity {
   /** Plan availabilities */
   planAvailabilities?: AvailabilityEntityPlanAvailabilitiesList | null;
 }
+const AvailabilityEntity = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<AvailabilityEntity>;
+
 /** List of availabilities for this plan */
 export type PlanAvailabilitiesList = Array<AvailabilityEntity>;
+const PlanAvailabilitiesList = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<PlanAvailabilitiesList>;
+
 /** Category IDs for this plan */
 export type PlanCategoryIdsList = Array<string>;
+const PlanCategoryIdsList = ProductDetailsCategoryIdsList as any as S.Schema<PlanCategoryIdsList>;
+
 /** Conversion paths for this plan */
 export type PlanConversionPathsList = Array<string>;
+const PlanConversionPathsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PlanConversionPathsList>;
+
 export type OpenPropertyPropertiesMap = { [key: string]: unknown | undefined };
+const OpenPropertyPropertiesMap = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<OpenPropertyPropertiesMap>;
+
 export interface OpenProperty {
   properties?: OpenPropertyPropertiesMap | null;
 }
+const OpenProperty = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<OpenProperty>;
+
 export interface OperatingSystem {
   /** Operating system family */
   family?: string | null;
@@ -1694,40 +2360,84 @@ export interface OperatingSystem {
   /** Operating system name */
   name?: string | null;
 }
+const OperatingSystem = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<OperatingSystem>;
+
 /** Files related to the marketplace item */
 export type PlanArtifactsList = Array<Artifact>;
+const PlanArtifactsList = CatalogItemArtifactsList as any as S.Schema<PlanArtifactsList>;
+
 export type CSPState = "OptIn" | "OptOut" | "Terminated" | "SelectiveOptIn";
+const CSPState = S.String;
+
 export type VmSecurityType = "None" | "Trusted" | "Confidential";
+const VmSecurityType = S.String;
+
 export type BillingComponentCustomMeterIdsValueList = Array<number>;
+const BillingComponentCustomMeterIdsValueList = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<BillingComponentCustomMeterIdsValueList>;
+
 /** Custom Meter Ids */
 export type BillingComponentCustomMeterIdsMap = {
   [key: string]: BillingComponentCustomMeterIdsValueList | undefined;
 };
+const BillingComponentCustomMeterIdsMap = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<BillingComponentCustomMeterIdsMap>;
+
 export interface BillingComponent {
   /** Billing Tag */
   billingTag?: string | null;
   /** Custom Meter Ids */
   customMeterIds?: BillingComponentCustomMeterIdsMap | null;
 }
+const BillingComponent = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<BillingComponent>;
+
 /** Billing components */
 export type PlanBillingComponentsList = Array<BillingComponent>;
+const PlanBillingComponentsList = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<PlanBillingComponentsList>;
+
 export interface PurchaseDurationDiscount {
   duration?: string | null;
   discountPercentage?: number;
 }
+const PurchaseDurationDiscount = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<PurchaseDurationDiscount>;
+
 /** List of purchase duration discounts */
 export type PlanPurchaseDurationDiscountsList = Array<PurchaseDurationDiscount>;
+const PlanPurchaseDurationDiscountsList = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<PlanPurchaseDurationDiscountsList>;
+
 export interface TermUpn {
   termId?: string | null;
   upn?: string | null;
 }
+const TermUpn = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<TermUpn>;
+
 /** List of user principal names(UPNs) */
 export type PlanUpnsList = Array<TermUpn>;
+const PlanUpnsList = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<PlanUpnsList>;
+
 /** List of certifications */
 export type PlanCertificationsList = Array<LinkProperties>;
+const PlanCertificationsList = CatalogItemLinksList as any as S.Schema<PlanCertificationsList>;
+
 export type PricingType = "Free" | "FreeTrial" | "Byol" | "Payg" | "Ri";
 /** The list of the pricing types for which this plan is designated */
 export type PlanPricingTypesList = Array<PricingType>;
+const PlanPricingTypesList =
+  CatalogItemDeterminedStorefrontsList as any as S.Schema<PlanPricingTypesList>;
+
 export interface Plan {
   /** Plan id */
   id?: string | null;
@@ -1830,16 +2540,29 @@ export interface Plan {
   /** The list of the pricing types for which this plan is designated */
   pricingTypes?: PlanPricingTypesList | null;
 }
+const Plan = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<Plan>;
+
 /** Plans available for the offer details */
 export type CatalogItemPlansList = Array<Plan>;
+const CatalogItemPlansList = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<CatalogItemPlansList>;
+
 /** A dictionary containing the deployment template file IDs defined in the package manifest and corresponding URIs */
 export type DefinitionTemplatesDeploymentTemplateFileUrisMap = {
   [key: string]: string | undefined;
 };
+const DefinitionTemplatesDeploymentTemplateFileUrisMap =
+  CatalogItemIsvContactDetailsMap as any as S.Schema<DefinitionTemplatesDeploymentTemplateFileUrisMap>;
+
 /** a dictionary containing the deployment fragment file IDs defined in the package manifest and corresponding URIs */
 export type DefinitionTemplatesDeploymentFragmentFileUrisMap = {
   [key: string]: string | undefined;
 };
+const DefinitionTemplatesDeploymentFragmentFileUrisMap =
+  CatalogItemIsvContactDetailsMap as any as S.Schema<DefinitionTemplatesDeploymentFragmentFileUrisMap>;
+
 export interface DefinitionTemplates {
   /** UI definition file URI */
   uiDefinitionFileUri?: string | null;
@@ -1850,25 +2573,54 @@ export interface DefinitionTemplates {
   /** a dictionary containing the deployment fragment file IDs defined in the package manifest and corresponding URIs */
   deploymentFragmentFileUris?: DefinitionTemplatesDeploymentFragmentFileUrisMap | null;
 }
+const DefinitionTemplates = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<DefinitionTemplates>;
+
 /** Dictionary of additional properties provided for the item */
 export type CatalogItemAdditionalPropertiesMap = { [key: string]: string | undefined };
+const CatalogItemAdditionalPropertiesMap =
+  CatalogItemIsvContactDetailsMap as any as S.Schema<CatalogItemAdditionalPropertiesMap>;
+
 /** List of hide keys provided for the item */
 export type CatalogItemHideKeysList = Array<string>;
+const CatalogItemHideKeysList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemHideKeysList>;
+
 /** List of keywords provided for the item */
 export type CatalogItemKeywordsList = Array<string>;
+const CatalogItemKeywordsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemKeywordsList>;
+
 /** 0 = None 1 = Azure 2 = AMP 4 = AppSource 8 = Any */
 export type StoreFrontOptions = 0 | 1 | 2 | 4 | 8;
+const StoreFrontOptions = S.Number;
+
 /** The list of document links provided for the item */
 export type CatalogItemDocumentLinksList = Array<LinkProperties>;
+const CatalogItemDocumentLinksList =
+  CatalogItemLinksList as any as S.Schema<CatalogItemDocumentLinksList>;
+
 /** 1 = DogFood 2 = Canary 3 = Production 4 = FairFax 5 = Unknown */
 export type EnvironmentInfo = 1 | 2 | 3 | 4 | 5;
+const EnvironmentInfo = S.Number;
+
 /** List of linked Add Ins provided for the item */
 export type CatalogItemLinkedAddInsList = Array<string>;
+const CatalogItemLinkedAddInsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemLinkedAddInsList>;
+
 export type CatalogItemLinkedAddInsTypesMap = { [key: string]: string | undefined };
+const CatalogItemLinkedAddInsTypesMap =
+  CatalogItemIsvContactDetailsMap as any as S.Schema<CatalogItemLinkedAddInsTypesMap>;
+
 /** PBI service principals */
 export type CatalogItemPbiServicePrincipalIdsList = Array<string>;
+const CatalogItemPbiServicePrincipalIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemPbiServicePrincipalIdsList>;
+
 /** 0 = Undefined 1 = None 2 = SelfAttested 3 = MicrosoftCertified */
 export type CertificationType = 0 | 1 | 2 | 3;
+const CertificationType = S.Number;
+
 export interface M365CertificationInfo {
   /** M365 Certification Type */
   m365CertificationType?: CertificationType;
@@ -1877,17 +2629,33 @@ export interface M365CertificationInfo {
   /** M365 Certification Id */
   m365CertificationId?: string | null;
 }
+const M365CertificationInfo = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<M365CertificationInfo>;
+
 /** 0 = None 1 = Free 2 = FreeTrial 4 = Paid 8 = Byol */
 export type PricingOptions = 0 | 1 | 2 | 4 | 8;
+const PricingOptions = S.Number;
+
 export interface UIPricing {
   /** A value indicating what pricing options are available on the application */
   pricingOptions?: PricingOptions;
   /** Has prices */
   hasPrices?: boolean | null;
 }
+const UIPricing = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<UIPricing>;
+
 /** storefront pricings parameters for AppSource and AMP */
 export type CatalogItemStoreFrontPricingsMap = { [key: string]: UIPricing | undefined };
+const CatalogItemStoreFrontPricingsMap = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<CatalogItemStoreFrontPricingsMap>;
+
 export type EnrichedDataTagsList = Array<string>;
+const EnrichedDataTagsList = ProductDetailsCategoryIdsList as any as S.Schema<EnrichedDataTagsList>;
+
 export interface PopularityEnrichedData {
   appSourceCs?: number;
   appSourceApps?: number;
@@ -1895,9 +2663,24 @@ export interface PopularityEnrichedData {
   ampApps?: number;
   azurePortalApps?: number;
 }
+const PopularityEnrichedData = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<PopularityEnrichedData>;
+
 export type ReviewSource = "None" | "AppSource" | "Amp" | "Ibiza" | "G2" | "Internal" | "All";
+const ReviewSource = S.String;
+
 export type RatingSummaryStarsDistributionMap = { [key: string]: number | undefined };
+const RatingSummaryStarsDistributionMap = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<RatingSummaryStarsDistributionMap>;
+
 export type RatingSummaryBucketsList = Array<string>;
+const RatingSummaryBucketsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<RatingSummaryBucketsList>;
+
 export interface RatingSummary {
   totalRatings?: number;
   source?: ReviewSource;
@@ -1907,12 +2690,16 @@ export interface RatingSummary {
   starsDistribution?: RatingSummaryStarsDistributionMap | null;
   buckets?: RatingSummaryBucketsList | null;
 }
+const RatingSummary = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<RatingSummary>;
+
 export interface RatingEnrichedData {
   appSource?: RatingSummary | null;
   amp?: RatingSummary | null;
   azurePortal?: RatingSummary | null;
   g2?: RatingSummary | null;
 }
+const RatingEnrichedData = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<RatingEnrichedData>;
+
 export interface EnrichedData {
   tags?: EnrichedDataTagsList | null;
   popularity?: PopularityEnrichedData | null;
@@ -1920,16 +2707,34 @@ export interface EnrichedData {
   isAzureBenefitEligible?: boolean;
   isSolutionMap?: boolean;
 }
+const EnrichedData = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<EnrichedData>;
+
 /** 1 = Capability1 2 = Capability2 3 = Capability3 4 = Capability4 5 = Capability5 6 = Capability6 7 = Capability7 8 = Capability8 9 = Capability9 10 = Capability10 11 = Capability11 */
 export type OfficeCapabilityType = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+const OfficeCapabilityType = S.Number;
+
 /** Office capabilities */
 export type CatalogItemCapabilitiesList = Array<OfficeCapabilityType>;
+const CatalogItemCapabilitiesList = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<CatalogItemCapabilitiesList>;
+
 /** the flag is used in embedded views */
 export type CatalogItemAwardsList = Array<string>;
+const CatalogItemAwardsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemAwardsList>;
+
 /** The list of the pricing types for which this offer is designated */
 export type CatalogItemPricingTypesList = Array<PricingType>;
+const CatalogItemPricingTypesList =
+  PlanPricingTypesList as any as S.Schema<CatalogItemPricingTypesList>;
+
 /** A list of auto run launch events for office products */
 export type CatalogItemAutoRunLaunchEventsList = Array<string>;
+const CatalogItemAutoRunLaunchEventsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<CatalogItemAutoRunLaunchEventsList>;
+
 export interface CatalogItem {
   /** Language of the offer */
   language: string;
@@ -2183,8 +2988,15 @@ export interface CatalogItem {
   /** Gets or sets the search relevance score when it is linked to a search score */
   searchScore?: number | null;
 }
+const CatalogItem = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<CatalogItem>;
+
 /** Gets the collection of entities for this feed. */
 export type PageResultOfCatalogItemItemsList = Array<CatalogItem>;
+const PageResultOfCatalogItemItemsList = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<PageResultOfCatalogItemItemsList>;
+
 /** Represents a feed of entities that includes additional information that OData formats support. */
 export interface PageResultOfCatalogItem {
   /** Gets the link for the next page of items in the feed. */
@@ -2194,10 +3006,20 @@ export interface PageResultOfCatalogItem {
   /** Gets the collection of entities for this feed. */
   items?: PageResultOfCatalogItemItemsList | null;
 }
+const PageResultOfCatalogItem = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<PageResultOfCatalogItem>;
+
 export interface ListGetApiKeysRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListGetApiKeysRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ListGetApiKeysRequest>;
+
 /** ApiKey object containing both the key and its alias. */
 export interface ApiKey {
   /** The API key alias. */
@@ -2205,14 +3027,25 @@ export interface ApiKey {
   /** The API key to be used when calling relevant Discovery endpoints. */
   key?: string;
 }
+const ApiKey = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<ApiKey>;
+
 export type ApiKeysValueList = Array<ApiKey>;
+const ApiKeysValueList = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<ApiKeysValueList>;
+
 /** List of ApiKey objects. */
 export interface ApiKeys {
   value?: ApiKeysValueList;
   /** Next page of results. */
   nextLink?: string;
 }
+const ApiKeys = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<ApiKeys>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -2224,10 +3057,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -2241,14 +3080,26 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListProductListByBillingAccountRequest {
   /** The ID of the target billing account. */
   billingAccountId: string;
@@ -2269,32 +3120,76 @@ export interface ListProductListByBillingAccountRequest {
   /** Optional search by display name, publisher display name, or keywords. Example $search=Microsoft */
   _search?: string;
 }
+const ListProductListByBillingAccountRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<ListProductListByBillingAccountRequest>;
+
 /** Array of product categories */
 export type ProductSummaryCategoryIdsList = Array<string>;
+const ProductSummaryCategoryIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductSummaryCategoryIdsList>;
+
 /** List of industry IDs the item belongs to */
 export type ProductSummaryIndustryIdsList = Array<string>;
+const ProductSummaryIndustryIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductSummaryIndustryIdsList>;
+
 /** Displays certification and qualification badges earned by the product for marketplace visibility. - `PreferredSolution` - Microsoft-recognized solution meeting specific quality and partnership criteria - `PowerBICertified` - Certified compatibility and integration with Microsoft Power BI platform - `AdditionalPurchaseRequirement` - Product requires additional purchases or subscriptions for full functionality */
 export type ProductSummaryBadgesList = Array<string>;
+const ProductSummaryBadgesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductSummaryBadgesList>;
+
 /** Operating system info for this product */
 export type ProductSummaryOperatingSystemsList = Array<string>;
+const ProductSummaryOperatingSystemsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductSummaryOperatingSystemsList>;
+
 /** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing - `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details - `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products - `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products - `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer */
 export type ProductSummaryPricingTypesList = Array<string>;
+const ProductSummaryPricingTypesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductSummaryPricingTypesList>;
+
 /** Categorizes products by customer rating thresholds for marketplace filtering and discovery. - `AboveOne` - Products with customer ratings exceeding 1.0 stars based on marketplace reviews - `AboveTwo` - Products with customer ratings exceeding 2.0 stars based on marketplace reviews - `AboveThree` - Products with customer ratings exceeding 3.0 stars based on marketplace reviews - `AboveFour` - Products with customer ratings exceeding 4.0 stars based on marketplace reviews */
 export type ProductSummaryRatingBucketsList = Array<string>;
+const ProductSummaryRatingBucketsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductSummaryRatingBucketsList>;
+
 /** Maps to the list of compatible products */
 export type ProductSummarySupportedProductsList = Array<string>;
+const ProductSummarySupportedProductsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductSummarySupportedProductsList>;
+
 /** Product categories the offer belongs to */
 export type ProductSummaryApplicableProductsList = Array<string>;
+const ProductSummaryApplicableProductsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductSummaryApplicableProductsList>;
+
 /** List of locations which are available on the SKUs */
 export type ProductSummaryLocationsList = Array<string>;
+const ProductSummaryLocationsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ProductSummaryLocationsList>;
+
 /** Set of products attributes */
 export type ProductSummaryAttributesList = Array<Attribute>;
+const ProductSummaryAttributesList =
+  ProductDetailsAttributesList as any as S.Schema<ProductSummaryAttributesList>;
+
 /** Plan CategoryIds */
 export type PlanSummaryCategoryIdsList = Array<string>;
+const PlanSummaryCategoryIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PlanSummaryCategoryIdsList>;
+
 /** Indicates the billing models and cost structures available for the plan. - `Free` - No charge for plan usage, typically for community editions or basic service tiers - `FreeTrial` - Time-limited free access period before transitioning to paid billing model - `Byol` - Bring Your Own License model where customers provide existing software licenses - `Payg` - Pay As You Go consumption-based billing calculated on actual resource usage - `Ri` - Reserved Instance billing with upfront commitment for discounted long-term pricing - `ContactPublisher` - Pricing is not listed and the customer must contact the publisher to obtain pricing details - `Freemium` - Free base tier with paid upgrades, applies to Microsoft managed products - `RequestPrivateOffer` - Customer must request a private offer to obtain pricing, applies to Marketplace products - `PrivateOffer` - Indicates the plan is a promo plan tied to a private offer */
 export type PlanSummaryPricingTypesList = Array<string>;
+const PlanSummaryPricingTypesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PlanSummaryPricingTypesList>;
+
 /** Defines the security enhancement level for virtual machine deployments. Applies exclusively to Virtual Machine product types. - `None` - Standard virtual machine security without additional protection features - `Trusted` - Trusted Launch security with secure boot and virtual Trusted Platform Module capabilities - `Confidential` - Confidential computing with memory encryption and attestation for sensitive workloads */
 export type PlanSummaryVmSecuritytypesList = Array<string>;
+const PlanSummaryVmSecuritytypesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<PlanSummaryVmSecuritytypesList>;
+
 /** Returns a subset of Plan attributes */
 export interface PlanSummary {
   /** Plan identifier */
@@ -2338,8 +3233,15 @@ export interface PlanSummary {
   /** Indication whether the SKU supports reservations */
   hasRi?: boolean;
 }
+const PlanSummary = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<PlanSummary>;
+
 /** Full set of plan/SKU attributes */
 export type ProductSummaryPlansList = Array<PlanSummary>;
+const ProductSummaryPlansList = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<ProductSummaryPlansList>;
+
 /** Returns a subset of Product attributes */
 export interface ProductSummary {
   /** Product display name */
@@ -2417,8 +3319,15 @@ export interface ProductSummary {
   /** Full set of plan/SKU attributes */
   plans?: ProductSummaryPlansList;
 }
+const ProductSummary = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<ProductSummary>;
+
 /** The items on this page */
 export type ProductSummaryListResultValueList = Array<ProductSummary>;
+const ProductSummaryListResultValueList = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<ProductSummaryListResultValueList>;
+
 /** The custom response of a list operation. */
 export interface ProductSummaryListResult {
   /** The items on this page */
@@ -2426,6 +3335,11 @@ export interface ProductSummaryListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ProductSummaryListResult = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<ProductSummaryListResult>;
+
 export interface ListProductListByBillingProfileRequest {
   /** The ID of the target billing account. */
   billingAccountId: string;
@@ -2448,6 +3362,11 @@ export interface ListProductListByBillingProfileRequest {
   /** Optional search by display name, publisher display name, or keywords. Example $search=Microsoft */
   _search?: string;
 }
+const ListProductListByBillingProfileRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<ListProductListByBillingProfileRequest>;
+
 export interface ListProductListBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2466,6 +3385,11 @@ export interface ListProductListBySubscriptionRequest {
   /** Optional search by display name, publisher display name, or keywords. Example $search=Microsoft */
   _search?: string;
 }
+const ListProductListBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<ListProductListBySubscriptionRequest>;
+
 export interface ListProductListByTenantRequest {
   /** Product market value (the response will include only products that can be sold in the specified market) Possible values can be found at https://docs.microsoft.com/en-us/azure/marketplace/marketplace-geo-availability-currencies. Example: 'US' */
   market?: string;
@@ -2484,7 +3408,15 @@ export interface ListProductListByTenantRequest {
   /** Optional search by display name, publisher display name, or keywords. Example $search=Microsoft */
   _search?: string;
 }
+const ListProductListByTenantRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<ListProductListByTenantRequest>;
+
 export type ListSkusByBillingAccountRequestLocationsList = Array<string>;
+const ListSkusByBillingAccountRequestLocationsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ListSkusByBillingAccountRequestLocationsList>;
+
 export interface ListSkusByBillingAccountRequest {
   /** The ID of the target billing account. */
   billingAccountId: string;
@@ -2505,16 +3437,36 @@ export interface ListSkusByBillingAccountRequest {
   /** Ordering expression for the results using OData notation. Avoid using orderBy unless essential as this may impact the latency of your request. Example: $orderBy=skuName desc. This API only supports ordering by a single field. Fields that can be ordered by are: - `lastModifiedDateTime` - `skuName` - `skuId` - `productId` - `serviceFamily` - `service` */
   _orderBy?: string;
 }
+const ListSkusByBillingAccountRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<ListSkusByBillingAccountRequest>;
+
 /** The product attributes. */
 export type SkuSummaryProductAttributesList = Array<Attribute_2>;
+const SkuSummaryProductAttributesList =
+  ProductDetailsAttributesList as any as S.Schema<SkuSummaryProductAttributesList>;
+
 /** The SKU attributes. */
 export type SkuSummarySkuAttributesList = Array<Attribute_2>;
+const SkuSummarySkuAttributesList =
+  ProductDetailsAttributesList as any as S.Schema<SkuSummarySkuAttributesList>;
+
 /** Offering properties such as: product code (UPN), term id, meter type, offering id. */
 export type SkuSummaryOfferingPropertiesList = Array<OfferingProperties_2>;
+const SkuSummaryOfferingPropertiesList =
+  GetSkusByBillingAccountResponseOfferingPropertiesList as any as S.Schema<SkuSummaryOfferingPropertiesList>;
+
 /** Category IDs for this SKU. */
 export type SkuSummaryCategoryIdsList = Array<string>;
+const SkuSummaryCategoryIdsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SkuSummaryCategoryIdsList>;
+
 /** Pricing audiences for the SKU. */
 export type SkuSummaryPricingAudiencesList = Array<string>;
+const SkuSummaryPricingAudiencesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SkuSummaryPricingAudiencesList>;
+
 /** Summary description of the SKU. */
 export interface SkuSummary {
   /** The unique id of the product. */
@@ -2594,8 +3546,15 @@ export interface SkuSummary {
   /** Pricing audiences for the SKU. */
   pricingAudiences?: SkuSummaryPricingAudiencesList;
 }
+const SkuSummary = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<SkuSummary>;
+
 /** The SkuSummary items on this page */
 export type SkuSummaryListResultValueList = Array<SkuSummary>;
+const SkuSummaryListResultValueList = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<SkuSummaryListResultValueList>;
+
 /** The response of a SkuSummary list operation. */
 export interface SkuSummaryListResult {
   /** The SkuSummary items on this page */
@@ -2603,7 +3562,15 @@ export interface SkuSummaryListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SkuSummaryListResult = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<SkuSummaryListResult>;
+
 export type ListSkusByBillingProfileRequestLocationsList = Array<string>;
+const ListSkusByBillingProfileRequestLocationsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<ListSkusByBillingProfileRequestLocationsList>;
+
 export interface ListSkusByBillingProfileRequest {
   /** The ID of the target billing account. */
   billingAccountId: string;
@@ -2626,36 +3593,98 @@ export interface ListSkusByBillingProfileRequest {
   /** Ordering expression for the results using OData notation. Avoid using orderBy unless essential as this may impact the latency of your request. Example: $orderBy=skuName desc. This API only supports ordering by a single field. Fields that can be ordered by are: - `lastModifiedDateTime` - `skuName` - `skuId` - `productId` - `serviceFamily` - `service` */
   _orderBy?: string;
 }
+const ListSkusByBillingProfileRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<ListSkusByBillingProfileRequest>;
+
 export interface PostCreateApiKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** Alias for new API Key. This alias must be unique and contain only alphanumeric characters separated by dashes. */
   apiKeyAlias: string;
 }
+const PostCreateApiKeyRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<PostCreateApiKeyRequest>;
+
 export interface PostRevokeApiKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The alias of your API key. */
   apiKeyAlias: string;
 }
+const PostRevokeApiKeyRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<PostRevokeApiKeyRequest>;
+
 export interface PostRevokeApiKeyResponse {}
+const PostRevokeApiKeyResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<PostRevokeApiKeyResponse>;
+
 export type SearchPostArmRequestLanguagesList = Array<string>;
+const SearchPostArmRequestLanguagesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchPostArmRequestLanguagesList>;
+
 export type SearchPostArmRequestStoresList = Array<Store | (string & {})>;
+const SearchPostArmRequestStoresList =
+  CatalogItemDeterminedStorefrontsList as any as S.Schema<SearchPostArmRequestStoresList>;
+
 export type SearchPostArmRequestSelectList = Array<string>;
+const SearchPostArmRequestSelectList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchPostArmRequestSelectList>;
+
 export type SearchPostArmRequestSortByList = Array<string>;
+const SearchPostArmRequestSortByList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchPostArmRequestSortByList>;
+
 export type SearchPostArmRequestOfferTypesList = Array<string>;
+const SearchPostArmRequestOfferTypesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchPostArmRequestOfferTypesList>;
+
 export type SearchPostArmRequestPricingTypesList = Array<PricingType | (string & {})>;
+const SearchPostArmRequestPricingTypesList =
+  PlanPricingTypesList as any as S.Schema<SearchPostArmRequestPricingTypesList>;
+
 export type PrivateStoreAllow = "AllowedByAdmin" | "AllowedByDefault" | "NonAllowed";
 export type SearchPostArmRequestPrivateStoreAllowancesList = Array<
   PrivateStoreAllow | (string & {})
 >;
+const SearchPostArmRequestPrivateStoreAllowancesList =
+  CatalogItemDeterminedStorefrontsList as any as S.Schema<SearchPostArmRequestPrivateStoreAllowancesList>;
+
 export type SearchPostArmRequestAppSourceIndustriesList = Array<string>;
+const SearchPostArmRequestAppSourceIndustriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchPostArmRequestAppSourceIndustriesList>;
+
 export type SearchPostArmRequestOperatingSystemsList = Array<string>;
+const SearchPostArmRequestOperatingSystemsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchPostArmRequestOperatingSystemsList>;
+
 export type SearchPostArmRequestAppSourceCategoriesList = Array<string>;
+const SearchPostArmRequestAppSourceCategoriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchPostArmRequestAppSourceCategoriesList>;
+
 export type SearchPostArmRequestAzureIndustriesList = Array<string>;
+const SearchPostArmRequestAzureIndustriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchPostArmRequestAzureIndustriesList>;
+
 export type SearchPostArmRequestAzureCategoriesList = Array<string>;
+const SearchPostArmRequestAzureCategoriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchPostArmRequestAzureCategoriesList>;
+
 export type SearchPostArmRequestAzurePortalCategoriesList = Array<string>;
+const SearchPostArmRequestAzurePortalCategoriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchPostArmRequestAzurePortalCategoriesList>;
+
 export type SearchPostArmRequestFacetsList = Array<string>;
+const SearchPostArmRequestFacetsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchPostArmRequestFacetsList>;
+
 export interface SearchPostArmRequest {
   searchQuery?: string;
   publisherName?: string;
@@ -2684,33 +3713,83 @@ export interface SearchPostArmRequest {
   azurePortalCategories?: SearchPostArmRequestAzurePortalCategoriesList;
   facets?: SearchPostArmRequestFacetsList;
 }
+const SearchPostArmRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<SearchPostArmRequest>;
+
 export interface FacetValueDto {
   value?: string;
   count?: number;
 }
+const FacetValueDto = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<FacetValueDto>;
+
 export type FacetsItemDtoFacetValuesList = Array<FacetValueDto>;
+const FacetsItemDtoFacetValuesList = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<FacetsItemDtoFacetValuesList>;
+
 export interface FacetsItemDto {
   facetName?: string;
   facetValues?: FacetsItemDtoFacetValuesList;
 }
+const FacetsItemDto = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<FacetsItemDto>;
+
 export type SearchResponseDtoFacetsList = Array<FacetsItemDto>;
+const SearchResponseDtoFacetsList = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<SearchResponseDtoFacetsList>;
+
 export type SearchItemDtoApplicableProductsList = Array<string>;
+const SearchItemDtoApplicableProductsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoApplicableProductsList>;
+
 export type SearchItemDtoAppSourceCategoriesList = Array<string>;
+const SearchItemDtoAppSourceCategoriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoAppSourceCategoriesList>;
+
 export type SearchItemDtoAppSourceIndustriesList = Array<string>;
+const SearchItemDtoAppSourceIndustriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoAppSourceIndustriesList>;
+
 export type SearchItemDtoAzureCategoriesList = Array<string>;
+const SearchItemDtoAzureCategoriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoAzureCategoriesList>;
+
 export type SearchItemDtoAzurePortalCategoriesList = Array<string>;
+const SearchItemDtoAzurePortalCategoriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoAzurePortalCategoriesList>;
+
 export type SearchItemDtoAzureIndustriesList = Array<string>;
+const SearchItemDtoAzureIndustriesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoAzureIndustriesList>;
+
 export type SearchItemDtoCspStatesList = Array<string>;
+const SearchItemDtoCspStatesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoCspStatesList>;
+
 export type SearchItemDtoDeterminedStorefrontsList = Array<string>;
+const SearchItemDtoDeterminedStorefrontsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoDeterminedStorefrontsList>;
+
 export type SearchItemDtoOperatingSystemsList = Array<string>;
+const SearchItemDtoOperatingSystemsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoOperatingSystemsList>;
+
 export interface PlanMetadataDto {
   generation?: string;
 }
+const PlanMetadataDto = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<PlanMetadataDto>;
+
 export interface OperatingSystemDto {
   family?: string;
   type?: string;
   name?: string;
 }
+const OperatingSystemDto = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<OperatingSystemDto>;
+
 export interface PlanDto {
   cspState?: string;
   legacyPlanId?: string;
@@ -2719,11 +3798,30 @@ export interface PlanDto {
   metadata?: PlanMetadataDto;
   operatingSystem?: OperatingSystemDto;
 }
+const PlanDto = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<PlanDto>;
+
 export type SearchItemDtoPlansList = Array<PlanDto>;
+const SearchItemDtoPlansList = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<SearchItemDtoPlansList>;
+
 export type SearchItemDtoPricingTypesList = Array<string>;
+const SearchItemDtoPricingTypesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoPricingTypesList>;
+
 export type SearchItemDtoVmGenerationsList = Array<string>;
+const SearchItemDtoVmGenerationsList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoVmGenerationsList>;
+
 export type SearchItemDtoVmImageTypesList = Array<string>;
+const SearchItemDtoVmImageTypesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoVmImageTypesList>;
+
 export type SearchItemDtoVmSecurityTypesList = Array<string>;
+const SearchItemDtoVmSecurityTypesList =
+  ProductDetailsCategoryIdsList as any as S.Schema<SearchItemDtoVmSecurityTypesList>;
+
 export interface SearchItemDto {
   ampAppsPopularity?: number;
   ampCsPopularity?: number;
@@ -2764,12 +3862,21 @@ export interface SearchItemDto {
   wideIconUri?: string;
   heroIconUri?: string;
 }
+const SearchItemDto = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<SearchItemDto>;
+
 export type SearchResponseDtoResultsList = Array<SearchItemDto>;
+const SearchResponseDtoResultsList = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<SearchResponseDtoResultsList>;
+
 export interface SearchResponseDto {
   facets?: SearchResponseDtoFacetsList;
   results?: SearchResponseDtoResultsList;
   totalCount?: number;
 }
+const SearchResponseDto = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<SearchResponseDto>;
+
 export type GetProductGetByBillingAccountError = AzureOpError;
 /** Gets a single product by billing account. */
 export const GetProductGetByBillingAccount: API.OperationMethod<
@@ -2778,8 +3885,8 @@ export const GetProductGetByBillingAccount: API.OperationMethod<
   GetProductGetByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetProductGetByBillingAccountRequest>,
-  output: __S(67) as any as S.Schema<ProductDetails>,
+  input: GetProductGetByBillingAccountRequest,
+  output: ProductDetails,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2793,8 +3900,8 @@ export const GetProductGetByBillingProfile: API.OperationMethod<
   GetProductGetByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<GetProductGetByBillingProfileRequest>,
-  output: __S(67) as any as S.Schema<ProductDetails>,
+  input: GetProductGetByBillingProfileRequest,
+  output: ProductDetails,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2808,8 +3915,8 @@ export const GetProductGetBySubscription: API.OperationMethod<
   GetProductGetBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<GetProductGetBySubscriptionRequest>,
-  output: __S(67) as any as S.Schema<ProductDetails>,
+  input: GetProductGetBySubscriptionRequest,
+  output: ProductDetails,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2823,8 +3930,8 @@ export const GetProductGetByTenant: API.OperationMethod<
   GetProductGetByTenantError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<GetProductGetByTenantRequest>,
-  output: __S(67) as any as S.Schema<ProductDetails>,
+  input: GetProductGetByTenantRequest,
+  output: ProductDetails,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2838,8 +3945,8 @@ export const GetSkusByBillingAccount: API.OperationMethod<
   GetSkusByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<GetSkusByBillingAccountRequest>,
-  output: __S(78) as any as S.Schema<GetSkusByBillingAccountResponse>,
+  input: GetSkusByBillingAccountRequest,
+  output: GetSkusByBillingAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2853,8 +3960,8 @@ export const GetSkusByBillingProfile: API.OperationMethod<
   GetSkusByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<GetSkusByBillingProfileRequest>,
-  output: __S(78) as any as S.Schema<GetSkusByBillingProfileResponse>,
+  input: GetSkusByBillingProfileRequest,
+  output: GetSkusByBillingProfileResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2868,8 +3975,8 @@ export const ListEdgeZonesProducts: API.OperationMethod<
   ListEdgeZonesProductsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<ListEdgeZonesProductsRequest>,
-  output: __S(152) as any as S.Schema<PageResultOfCatalogItem>,
+  input: ListEdgeZonesProductsRequest,
+  output: PageResultOfCatalogItem,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2883,8 +3990,8 @@ export const ListGetApiKeys: API.OperationMethod<
   ListGetApiKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<ListGetApiKeysRequest>,
-  output: __S(156) as any as S.Schema<ApiKeys>,
+  input: ListGetApiKeysRequest,
+  output: ApiKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2898,8 +4005,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157) as any as S.Schema<ListOperationsRequest>,
-  output: __S(161) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2913,8 +4020,8 @@ export const ListProductListByBillingAccount: API.OperationMethod<
   ListProductListByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162) as any as S.Schema<ListProductListByBillingAccountRequest>,
-  output: __S(167) as any as S.Schema<ProductSummaryListResult>,
+  input: ListProductListByBillingAccountRequest,
+  output: ProductSummaryListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2928,8 +4035,8 @@ export const ListProductListByBillingProfile: API.OperationMethod<
   ListProductListByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<ListProductListByBillingProfileRequest>,
-  output: __S(167) as any as S.Schema<ProductSummaryListResult>,
+  input: ListProductListByBillingProfileRequest,
+  output: ProductSummaryListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2943,8 +4050,8 @@ export const ListProductListBySubscription: API.OperationMethod<
   ListProductListBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<ListProductListBySubscriptionRequest>,
-  output: __S(167) as any as S.Schema<ProductSummaryListResult>,
+  input: ListProductListBySubscriptionRequest,
+  output: ProductSummaryListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2958,8 +4065,8 @@ export const ListProductListByTenant: API.OperationMethod<
   ListProductListByTenantError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170) as any as S.Schema<ListProductListByTenantRequest>,
-  output: __S(167) as any as S.Schema<ProductSummaryListResult>,
+  input: ListProductListByTenantRequest,
+  output: ProductSummaryListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2973,8 +4080,8 @@ export const ListSkusByBillingAccount: API.OperationMethod<
   ListSkusByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171) as any as S.Schema<ListSkusByBillingAccountRequest>,
-  output: __S(174) as any as S.Schema<SkuSummaryListResult>,
+  input: ListSkusByBillingAccountRequest,
+  output: SkuSummaryListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2988,8 +4095,8 @@ export const ListSkusByBillingProfile: API.OperationMethod<
   ListSkusByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<ListSkusByBillingProfileRequest>,
-  output: __S(174) as any as S.Schema<SkuSummaryListResult>,
+  input: ListSkusByBillingProfileRequest,
+  output: SkuSummaryListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3003,8 +4110,8 @@ export const PostCreateApiKey: API.OperationMethod<
   PostCreateApiKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<PostCreateApiKeyRequest>,
-  output: __S(154) as any as S.Schema<ApiKey>,
+  input: PostCreateApiKeyRequest,
+  output: ApiKey,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3018,8 +4125,8 @@ export const PostRevokeApiKey: API.OperationMethod<
   PostRevokeApiKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<PostRevokeApiKeyRequest>,
-  output: __S(178) as any as S.Schema<PostRevokeApiKeyResponse>,
+  input: PostRevokeApiKeyRequest,
+  output: PostRevokeApiKeyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3033,8 +4140,8 @@ export const SearchPostArm: API.OperationMethod<
   SearchPostArmError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<SearchPostArmRequest>,
-  output: __S(190) as any as S.Schema<SearchResponseDto>,
+  input: SearchPostArmRequest,
+  output: SearchResponseDto,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3075,7 +4182,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Attribute" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(Attribute);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3090,11 +4197,11 @@ function __c0(j: number): any {
           caption: S.optional(S.String),
           uri: S.optional(S.String),
           videoPurpose: S.optional(S.String),
-          previewImage: S.optional(__S(4)),
+          previewImage: S.optional(PreviewImage_2),
         }),
       ).annotate({ identifier: "ProductVideo_2" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(ProductVideo_2);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -3108,16 +4215,16 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(Image_2);
     case 1:
       return S.suspend(() =>
         S.Struct({
           context: S.optional(S.String),
-          items: S.optional(__S(8)),
+          items: S.optional(ImageGroupItemsList_2),
         }),
       ).annotate({ identifier: "ImageGroup_2" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(ImageGroup_2);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3127,7 +4234,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "LinkProperties_2" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(LinkProperties_2);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3157,7 +4264,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(Artifact_2);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3184,16 +4291,16 @@ function __c2(j: number): any {
         identifier: "IncludedQuantityProperty_2",
       });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(IncludedQuantityProperty_2);
     case 5:
       return S.suspend(() =>
         S.Struct({
           meterId: S.optional(S.String),
           partNumber: S.optional(S.String),
           consumptionResourceId: S.optional(S.String),
-          price: S.optional(__S(18)),
+          price: S.optional(Price_2),
           type: S.optional(S.String),
-          includedQuantityProperties: S.optional(__S(20)),
+          includedQuantityProperties: S.optional(MeterIncludedQuantityPropertiesList_2),
         }),
       ).annotate({ identifier: "Meter_2" });
     case 6:
@@ -3206,7 +4313,7 @@ function __c2(j: number): any {
         identifier: "TermDescriptionParameter_2",
       });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(TermDescriptionParameter_2);
   }
 }
 function __c3(j: number): any {
@@ -3223,7 +4330,7 @@ function __c3(j: number): any {
           billingPeriod: S.optional(S.String),
           title: S.optional(S.String),
           description: S.optional(S.String),
-          price: S.optional(__S(18)),
+          price: S.optional(Price_2),
         }),
       ).annotate({ identifier: "BillingPlan_2" });
     case 2:
@@ -3239,25 +4346,25 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          termDescriptionParameters: S.optional(__S(23)),
+          termDescriptionParameters: S.optional(TermTermDescriptionParametersList_2),
           termId: S.optional(S.String),
           termUnit: S.optional(S.String),
-          prorationPolicy: S.optional(__S(24)),
+          prorationPolicy: S.optional(ProrationPolicy_2),
           termDescription: S.optional(S.String),
-          price: S.optional(__S(18)),
+          price: S.optional(Price_2),
           renewTermId: S.optional(S.String),
           renewTermUnits: S.optional(S.String),
-          billingPlan: S.optional(__S(25)),
+          billingPlan: S.optional(BillingPlan_2),
           renewToTermBillingPlan: S.optional(S.String),
           isAutorenewable: S.optional(S.Boolean),
-          lifecyclePolicy: S.optional(__S(26)),
+          lifecyclePolicy: S.optional(LifecyclePolicy),
           productCode: S.optional(S.String),
           state: S.optional(S.String),
-          actions: S.optional(__S(27)),
+          actions: S.optional(TermActionsList),
         }),
       ).annotate({ identifier: "Term_2" });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(Term_2);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3267,7 +4374,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "PrerequisiteProduct" });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(PrerequisiteProduct);
   }
 }
 function __c4(j: number): any {
@@ -3290,23 +4397,23 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          products: S.optional(__S(31)),
-          seatConstraint: S.optional(__S(32)),
-          lookbackWindow: S.optional(__S(33)),
+          products: S.optional(PrerequisiteConstraintProductsList),
+          seatConstraint: S.optional(MinMaxSeatsConstraint),
+          lookbackWindow: S.optional(LookbackWindow),
         }),
       ).annotate({ identifier: "PrerequisiteConstraint" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          mustHaveAll: S.optional(__S(34)),
-          mustHaveAny: S.optional(__S(34)),
-          mustHaveNone: S.optional(__S(34)),
+          mustHaveAll: S.optional(PrerequisiteConstraint),
+          mustHaveAny: S.optional(PrerequisiteConstraint),
+          mustHaveNone: S.optional(PrerequisiteConstraint),
         }),
       ).annotate({ identifier: "PrerequisiteConstraints" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          requireAnyOf: S.optional(__S(1)),
+          requireAnyOf: S.optional(SubscriptionStatusConstraintsRequireAnyOfList),
         }),
       ).annotate({
         identifier: "SubscriptionStatusConstraints",
@@ -3323,20 +4430,20 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          actions: S.optional(__S(1)),
-          meter: S.optional(__S(21)),
+          actions: S.optional(AvailabilityActionsList),
+          meter: S.optional(Meter_2),
           pricingAudience: S.String,
-          terms: S.optional(__S(29)),
+          terms: S.optional(AvailabilityTermsList),
           hasFreeTrials: S.Boolean,
           consumptionUnitType: S.optional(S.String),
           displayRank: S.Number,
-          prerequisiteConstraints: S.optional(__S(35)),
-          subscriptionStatusConstraints: S.optional(__S(36)),
-          pricingBenefit: S.optional(__S(37)),
+          prerequisiteConstraints: S.optional(PrerequisiteConstraints),
+          subscriptionStatusConstraints: S.optional(SubscriptionStatusConstraints),
+          pricingBenefit: S.optional(PricingBenefit),
         }),
       ).annotate({ identifier: "Availability" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(Availability);
   }
 }
 function __c5(j: number): any {
@@ -3348,7 +4455,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "BillingComponent_2" });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(BillingComponent_2);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3359,7 +4466,7 @@ function __c5(j: number): any {
         identifier: "PurchaseDurationDiscount_2",
       });
     case 3:
-      return S.Array(__S(42));
+      return S.Array(PurchaseDurationDiscount_2);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3385,7 +4492,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "OfferingProperties" });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(OfferingProperties);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -3405,13 +4512,13 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "ProductFulfillmentConfig" });
     case 1:
-      return S.Array(__S(48));
+      return S.Array(ProductFulfillmentConfig);
     case 2:
       return S.suspend(() =>
         S.Struct({
           fulfillmentType: S.optional(S.String),
-          attributes: S.optional(__S(47)),
-          additionalProducts: S.optional(__S(49)),
+          attributes: S.optional(FulfillmentAttributes),
+          additionalProducts: S.optional(FulfillmentDataAdditionalProductsList),
         }),
       ).annotate({ identifier: "FulfillmentData" });
     case 3:
@@ -3426,9 +4533,9 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "Benefit" });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(Benefit);
     case 5:
-      return S.Array(__S(32));
+      return S.Array(MinMaxSeatsConstraint);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3438,7 +4545,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "AssetOwnershipLimit" });
     case 7:
-      return S.Array(__S(54));
+      return S.Array(AssetOwnershipLimit);
   }
 }
 function __c7(j: number): any {
@@ -3447,11 +4554,11 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           productId: S.optional(S.String),
-          skuIds: S.optional(__S(1)),
+          skuIds: S.optional(PrerequisiteSetSkuIdsList),
         }),
       ).annotate({ identifier: "PrerequisiteSet" });
     case 1:
-      return S.Array(__S(56));
+      return S.Array(PrerequisiteSet);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3463,21 +4570,21 @@ function __c7(j: number): any {
         identifier: "MinMaxPercentageSeatsConstraint",
       });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(MinMaxPercentageSeatsConstraint);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          mustHaveAll: S.optional(__S(57)),
-          mustHaveAny: S.optional(__S(57)),
-          seatConstraints: S.optional(__S(59)),
+          mustHaveAll: S.optional(PrerequisitesMustHaveAllList),
+          mustHaveAny: S.optional(PrerequisitesMustHaveAnyList),
+          seatConstraints: S.optional(PrerequisitesSeatConstraintsList),
         }),
       ).annotate({ identifier: "Prerequisites" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          seatConstraints: S.optional(__S(53)),
-          assetOwnershipLimits: S.optional(__S(55)),
-          prerequisiteSkus: S.optional(__S(60)),
+          seatConstraints: S.optional(ConstraintsDataSeatConstraintsList),
+          assetOwnershipLimits: S.optional(ConstraintsDataAssetOwnershipLimitsList),
+          prerequisiteSkus: S.optional(Prerequisites),
         }),
       ).annotate({ identifier: "ConstraintsData" });
     case 6:
@@ -3493,7 +4600,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          value: S.optional(__S(62)),
+          value: S.optional(MeterTypeDescriptionValue),
         }),
       ).annotate({ identifier: "MeterTypeDescription" });
   }
@@ -3501,7 +4608,7 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(MeterTypeDescription);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3510,14 +4617,14 @@ function __c8(j: number): any {
           displayName: S.optional(S.String),
           vmArchitectureType: S.optional(S.String),
           cspState: S.optional(S.String),
-          metadata: S.optional(__S(17)),
+          metadata: S.optional(PlanMetadata),
           altStackReference: S.optional(S.String),
           stackType: S.optional(S.String),
           altArchitectureReference: S.optional(S.String),
-          categoryIds: S.optional(__S(1)),
+          categoryIds: S.optional(PlanDetailsCategoryIdsList),
           hasProtectedArtifacts: S.optional(S.Boolean),
-          pricingTypes: S.optional(__S(1)),
-          vmSecuritytypes: S.optional(__S(1)),
+          pricingTypes: S.optional(PlanDetailsPricingTypesList),
+          vmSecuritytypes: S.optional(PlanDetailsVmSecuritytypesList),
           summary: S.optional(S.String),
           description: S.optional(S.String),
           skuId: S.optional(S.String),
@@ -3526,22 +4633,22 @@ function __c8(j: number): any {
           isPrivate: S.optional(S.Boolean),
           hasRi: S.optional(S.Boolean),
           id: S.optional(S.String),
-          availabilities: S.optional(__S(39)),
+          availabilities: S.optional(PlanDetailsAvailabilitiesList),
           uiDefinitionUri: S.optional(S.String),
-          artifacts: S.optional(__S(16)),
+          artifacts: S.optional(PlanDetailsArtifactsList),
           version: S.optional(S.String),
           isHidden: S.Boolean,
           isStopSell: S.Boolean,
-          stopSellInfo: S.optional(__S(13)),
+          stopSellInfo: S.optional(StopSellInfo_2),
           minQuantity: S.optional(S.Number),
           maxQuantity: S.optional(S.Number),
           isQuantifiable: S.Boolean,
-          billingComponents: S.optional(__S(41)),
-          purchaseDurationDiscounts: S.optional(__S(43)),
+          billingComponents: S.optional(PlanDetailsBillingComponentsList),
+          purchaseDurationDiscounts: S.optional(PlanDetailsPurchaseDurationDiscountsList),
           isHiddenPrivateOffer: S.optional(S.Boolean),
-          certifications: S.optional(__S(12)),
+          certifications: S.optional(PlanDetailsCertificationsList),
           customerInstruction: S.optional(S.String),
-          planLabels: S.optional(__S(1)),
+          planLabels: S.optional(PlanDetailsPlanLabelsList),
           skuType: S.optional(S.String),
           skuTitle: S.optional(S.String),
           location: S.optional(S.String),
@@ -3553,43 +4660,43 @@ function __c8(j: number): any {
           zone: S.optional(S.String),
           feature: S.optional(S.String),
           serviceType: S.optional(S.String),
-          skuAttributes: S.optional(__S(3)),
-          skuProperties: S.optional(__S(44)),
-          offeringProperties: S.optional(__S(46)),
+          skuAttributes: S.optional(PlanDetailsSkuAttributesList),
+          skuProperties: S.optional(SkuProperties),
+          offeringProperties: S.optional(PlanDetailsOfferingPropertiesList),
           hasConsumptionComponents: S.optional(S.Boolean),
           isEndUserEligible: S.optional(S.Boolean),
           isAdminEligible: S.optional(S.Boolean),
           entraIdVersion: S.optional(S.String),
           technicalRequirements: S.optional(S.String),
           faqUri: S.optional(S.String),
-          fulfillmentData: S.optional(__S(50)),
-          benefits: S.optional(__S(52)),
-          constraintsData: S.optional(__S(61)),
-          meterTypeDescriptions: S.optional(__S(64)),
+          fulfillmentData: S.optional(FulfillmentData),
+          benefits: S.optional(PlanDetailsBenefitsList),
+          constraintsData: S.optional(ConstraintsData),
+          meterTypeDescriptions: S.optional(PlanDetailsMeterTypeDescriptionsList),
           usageUnit: S.optional(S.String),
           skuName: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlanDetails" });
     case 2:
-      return S.Array(__S(65));
+      return S.Array(PlanDetails);
     case 3:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           popularity: S.optional(S.Number),
-          categoryIds: S.optional(__S(1)),
-          industryIds: S.optional(__S(1)),
+          categoryIds: S.optional(ProductDetailsCategoryIdsList),
+          industryIds: S.optional(ProductDetailsIndustryIdsList),
           publisherId: S.optional(S.String),
           azureBenefit: S.optional(S.String),
-          badges: S.optional(__S(1)),
+          badges: S.optional(ProductDetailsBadgesList),
           publisherType: S.optional(S.String),
           publishingStage: S.optional(S.String),
           uniqueProductId: S.String,
           productType: S.String,
           productSubType: S.optional(S.String),
           productFamily: S.optional(S.String),
-          operatingSystems: S.optional(__S(1)),
-          pricingTypes: S.optional(__S(1)),
+          operatingSystems: S.optional(ProductDetailsOperatingSystemsList),
+          pricingTypes: S.optional(ProductDetailsPricingTypesList),
           publisherDisplayName: S.optional(S.String),
           longSummary: S.optional(S.String),
           summary: S.optional(S.String),
@@ -3597,24 +4704,24 @@ function __c8(j: number): any {
           description: S.optional(S.String),
           cspLegalTermsUri: S.optional(S.String),
           privacyPolicyUri: S.optional(S.String),
-          ratingBuckets: S.optional(__S(1)),
+          ratingBuckets: S.optional(ProductDetailsRatingBucketsList),
           ratingAverage: S.optional(S.Number),
           ratingCount: S.optional(S.Number),
-          supportedProducts: S.optional(__S(1)),
-          applicableProducts: S.optional(__S(1)),
+          supportedProducts: S.optional(ProductDetailsSupportedProductsList),
+          applicableProducts: S.optional(ProductDetailsApplicableProductsList),
           lastModifiedDateTime: S.optional(S.String),
-          locations: S.optional(__S(1)),
+          locations: S.optional(ProductDetailsLocationsList),
           serviceFamily: S.optional(S.String),
           service: S.optional(S.String),
           productId: S.optional(S.String),
           hasRiPlans: S.optional(S.Boolean),
           hasMarketplaceFootprint: S.optional(S.Boolean),
-          attributes: S.optional(__S(3)),
+          attributes: S.optional(ProductDetailsAttributesList),
           offeringType: S.optional(S.String),
-          videos: S.optional(__S(6)),
-          images: S.optional(__S(10)),
-          linkedAddIns: S.optional(__S(1)),
-          links: S.optional(__S(12)),
+          videos: S.optional(ProductDetailsVideosList),
+          images: S.optional(ProductDetailsImagesList),
+          linkedAddIns: S.optional(ProductDetailsLinkedAddInsList),
+          links: S.optional(ProductDetailsLinksList),
           language: S.optional(S.String),
           hasStandardContractAmendments: S.optional(S.Boolean),
           offerId: S.optional(S.String),
@@ -3626,7 +4733,7 @@ function __c8(j: number): any {
           legalTermsType: S.optional(S.String),
           supportUri: S.optional(S.String),
           uiDefinitionUri: S.optional(S.String),
-          screenshotUris: S.optional(__S(1)),
+          screenshotUris: S.optional(ProductDetailsScreenshotUrisList),
           mediumIconUri: S.optional(S.String),
           largeIconUri: S.optional(S.String),
           wideIconUri: S.optional(S.String),
@@ -3635,10 +4742,10 @@ function __c8(j: number): any {
           productOwnershipSellingMotion: S.optional(S.String),
           disableSendEmailOnPurchase: S.optional(S.Boolean),
           isCoreVm: S.optional(S.Boolean),
-          stopSellInfo: S.optional(__S(13)),
-          marketingMaterial: S.optional(__S(14)),
-          artifacts: S.optional(__S(16)),
-          plans: S.optional(__S(66)),
+          stopSellInfo: S.optional(StopSellInfo_2),
+          marketingMaterial: S.optional(MarketingMaterial_2),
+          artifacts: S.optional(ProductDetailsArtifactsList),
+          plans: S.optional(ProductDetailsPlansList),
           hasAddOns: S.optional(S.Boolean),
           productCode: S.optional(S.String),
         }),
@@ -3747,47 +4854,51 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "OfferingProperties_2" });
     case 1:
-      return S.Array(__S(72));
+      return S.Array(OfferingProperties_2);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          applicablePromotion: S.optional(__S(1)),
-          addOnParent: S.optional(__S(1)),
-          applicableFuturePriceConcession: S.optional(__S(1)),
-          benefitSku: S.optional(__S(1)),
-          includedInBundle: S.optional(__S(1)),
-          associatedSku: S.optional(__S(1)),
+          applicablePromotion: S.optional(ProductAlternateIdsApplicablePromotionList),
+          addOnParent: S.optional(ProductAlternateIdsAddOnParentList),
+          applicableFuturePriceConcession: S.optional(
+            ProductAlternateIdsApplicableFuturePriceConcessionList,
+          ),
+          benefitSku: S.optional(ProductAlternateIdsBenefitSkuList),
+          includedInBundle: S.optional(ProductAlternateIdsIncludedInBundleList),
+          associatedSku: S.optional(ProductAlternateIdsAssociatedSkuList),
         }),
       ).annotate({ identifier: "ProductAlternateIds" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          aadSkuId: S.optional(__S(1)),
-          legacyOfferGuid: S.optional(__S(1)),
-          applicablePromotion: S.optional(__S(1)),
-          addOnParent: S.optional(__S(1)),
-          applicableFuturePriceConcession: S.optional(__S(1)),
-          benefitSku: S.optional(__S(1)),
-          includedInBundle: S.optional(__S(1)),
-          associatedSku: S.optional(__S(1)),
-          products: S.optional(__S(74)),
+          aadSkuId: S.optional(SkuAlternateIdsAadSkuIdList),
+          legacyOfferGuid: S.optional(SkuAlternateIdsLegacyOfferGuidList),
+          applicablePromotion: S.optional(SkuAlternateIdsApplicablePromotionList),
+          addOnParent: S.optional(SkuAlternateIdsAddOnParentList),
+          applicableFuturePriceConcession: S.optional(
+            SkuAlternateIdsApplicableFuturePriceConcessionList,
+          ),
+          benefitSku: S.optional(SkuAlternateIdsBenefitSkuList),
+          includedInBundle: S.optional(SkuAlternateIdsIncludedInBundleList),
+          associatedSku: S.optional(SkuAlternateIdsAssociatedSkuList),
+          products: S.optional(ProductAlternateIds),
         }),
       ).annotate({ identifier: "SkuAlternateIds" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          actions: S.optional(__S(1)),
-          meter: S.optional(__S(21)),
+          actions: S.optional(AvailabilityActionsList),
+          meter: S.optional(Meter_3),
           pricingAudience: S.String,
-          terms: S.optional(__S(29)),
+          terms: S.optional(AvailabilityTermsList_2),
           hasFreeTrials: S.Boolean,
           consumptionUnitType: S.optional(S.String),
           displayRank: S.Number,
         }),
       ).annotate({ identifier: "Availability_2" });
     case 5:
-      return S.Array(__S(76));
+      return S.Array(Availability_2);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3801,7 +4912,7 @@ function __c9(j: number): any {
           productType: S.optional(S.String),
           productSubType: S.optional(S.String),
           summary: S.optional(S.String),
-          productAttributes: S.optional(__S(3)),
+          productAttributes: S.optional(GetSkusByBillingAccountResponseProductAttributesList),
           skuName: S.String,
           skuId: S.String,
           skuType: S.String,
@@ -3822,14 +4933,14 @@ function __c9(j: number): any {
           maxQuantity: S.optional(S.Number),
           cspState: S.optional(S.String),
           hasRi: S.optional(S.Boolean),
-          skuAttributes: S.optional(__S(3)),
-          skuProperties: S.optional(__S(44)),
-          offeringProperties: S.optional(__S(73)),
-          alternateIds: S.optional(__S(75)),
+          skuAttributes: S.optional(GetSkusByBillingAccountResponseSkuAttributesList),
+          skuProperties: S.optional(SkuProperties_2),
+          offeringProperties: S.optional(GetSkusByBillingAccountResponseOfferingPropertiesList),
+          alternateIds: S.optional(SkuAlternateIds),
           offeringType: S.optional(S.String),
-          categoryIds: S.optional(__S(1)),
-          pricingAudiences: S.optional(__S(1)),
-          availabilities: S.optional(__S(77)),
+          categoryIds: S.optional(GetSkusByBillingAccountResponseCategoryIdsList),
+          pricingAudiences: S.optional(GetSkusByBillingAccountResponsePricingAudiencesList),
+          availabilities: S.optional(GetSkusByBillingAccountResponseAvailabilitiesList),
         }),
       ).annotate({
         identifier: "GetSkusByBillingAccountResponse",
@@ -3880,12 +4991,12 @@ function __c10(j: number): any {
         identifier: "ListEdgeZonesProductsRequest",
       });
     case 1:
-      return S.Array(S.String);
+      return S.Array(Store);
     case 2:
       return S.suspend(() =>
         S.Struct({
           startDate: S.optional(S.NullOr(S.String)),
-          reason: S.optional(S.NullOr(S.String)),
+          reason: S.optional(S.NullOr(StopSellReason)),
           alternativeOfferId: S.optional(S.NullOr(S.String)),
           alternativePlanId: S.optional(S.NullOr(S.String)),
         }),
@@ -3907,12 +5018,12 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "Competency" });
     case 6:
-      return S.Array(__S(85));
+      return S.Array(Competency);
     case 7:
       return S.suspend(() =>
         S.Struct({
           durationValue: S.optional(S.Number),
-          durationUnit: S.optional(S.String),
+          durationUnit: S.optional(ServiceDurationUnit),
         }),
       ).annotate({ identifier: "Duration" });
   }
@@ -3923,29 +5034,29 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           planId: S.optional(S.NullOr(S.String)),
-          currencyDecorator: S.optional(S.Number),
+          currencyDecorator: S.optional(CurrencyDecorator),
           price: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PlanPrice" });
     case 1:
-      return S.Array(__S(88));
+      return S.Array(PlanPrice);
     case 2:
       return S.suspend(() =>
         S.Struct({
           currencyCode: S.optional(S.NullOr(S.String)),
-          planPrices: S.optional(S.NullOr(__S(89))),
+          planPrices: S.optional(S.NullOr(PricingPlanPricesList)),
         }),
       ).annotate({ identifier: "Pricing" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          pricing: S.optional(S.NullOr(__S(90))),
+          pricing: S.optional(S.NullOr(Pricing)),
           marketCode: S.optional(S.NullOr(S.String)),
-          marketStates: S.optional(S.NullOr(__S(1))),
+          marketStates: S.optional(S.NullOr(MarketPricingDetailsItemMarketStatesList)),
         }),
       ).annotate({ identifier: "MarketPricingDetailsItem" });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(MarketPricingDetailsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3966,7 +5077,7 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "LinkProperties" });
     case 7:
-      return S.Array(__S(94));
+      return S.Array(LinkProperties);
   }
 }
 function __c12(j: number): any {
@@ -3979,17 +5090,17 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "Filter" });
     case 1:
-      return S.Array(__S(96));
+      return S.Array(Filter);
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
           uri: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
+          type: S.optional(ArtifactType),
         }),
       ).annotate({ identifier: "Artifact" });
     case 3:
-      return S.Array(__S(98));
+      return S.Array(Artifact);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4011,7 +5122,7 @@ function __c12(j: number): any {
           caption: S.optional(S.NullOr(S.String)),
           uri: S.optional(S.NullOr(S.String)),
           videoPurpose: S.optional(S.NullOr(S.String)),
-          previewImage: S.optional(S.NullOr(__S(101))),
+          previewImage: S.optional(S.NullOr(PreviewImage)),
         }),
       ).annotate({ identifier: "ProductVideo" });
     case 7:
@@ -4024,7 +5135,7 @@ function __c12(j: number): any {
           orchestrationType: S.optional(S.NullOr(S.String)),
           labId: S.optional(S.NullOr(S.String)),
           demoId: S.optional(S.NullOr(S.String)),
-          video: S.optional(S.NullOr(__S(102))),
+          video: S.optional(S.NullOr(ProductVideo)),
           powerBiDashboardLink: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TestDrive" });
@@ -4035,8 +5146,8 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          leadGeneration: S.optional(S.NullOr(__S(100))),
-          testDrive: S.optional(S.NullOr(__S(103))),
+          leadGeneration: S.optional(S.NullOr(LeadGeneration)),
+          testDrive: S.optional(S.NullOr(TestDrive)),
         }),
       ).annotate({ identifier: "OfferMetadata" });
     case 1:
@@ -4048,25 +5159,25 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "Image" });
     case 2:
-      return S.Array(__S(105));
+      return S.Array(Image);
     case 3:
       return S.suspend(() =>
         S.Struct({
           context: S.optional(S.NullOr(S.String)),
-          items: S.optional(S.NullOr(__S(106))),
+          items: S.optional(S.NullOr(ImageGroupItemsList)),
         }),
       ).annotate({ identifier: "ImageGroup" });
     case 4:
-      return S.Array(__S(107));
+      return S.Array(ImageGroup);
     case 5:
-      return S.Array(__S(102));
+      return S.Array(ProductVideo);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          subscriptions: S.optional(S.NullOr(__S(1))),
-          tenants: S.optional(S.NullOr(__S(1))),
-          users: S.optional(S.NullOr(__S(1))),
-          groups: S.optional(S.NullOr(__S(1))),
+          subscriptions: S.optional(S.NullOr(RestrictedAudienceSubscriptionsList)),
+          tenants: S.optional(S.NullOr(RestrictedAudienceTenantsList)),
+          users: S.optional(S.NullOr(RestrictedAudienceUsersList)),
+          groups: S.optional(S.NullOr(RestrictedAudienceGroupsList)),
         }),
       ).annotate({ identifier: "RestrictedAudience" });
     case 7:
@@ -4090,16 +5201,16 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "IncludedQuantityProperty" });
     case 1:
-      return S.Array(__S(112));
+      return S.Array(IncludedQuantityProperty);
     case 2:
       return S.suspend(() =>
         S.Struct({
           meterId: S.optional(S.NullOr(S.String)),
           partNumber: S.optional(S.NullOr(S.String)),
           consumptionResourceId: S.optional(S.NullOr(S.String)),
-          price: S.optional(S.NullOr(__S(111))),
+          price: S.optional(S.NullOr(Price)),
           type: S.optional(S.NullOr(S.String)),
-          includedQuantityProperties: S.optional(S.NullOr(__S(113))),
+          includedQuantityProperties: S.optional(S.NullOr(MeterIncludedQuantityPropertiesList)),
         }),
       ).annotate({ identifier: "Meter" });
     case 3:
@@ -4110,7 +5221,7 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "TermDescriptionParameter" });
     case 4:
-      return S.Array(__S(115));
+      return S.Array(TermDescriptionParameter);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4123,21 +5234,21 @@ function __c14(j: number): any {
           billingPeriod: S.optional(S.NullOr(S.String)),
           title: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          price: S.optional(S.NullOr(__S(111))),
+          price: S.optional(S.NullOr(Price)),
         }),
       ).annotate({ identifier: "BillingPlan" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          termDescriptionParameters: S.optional(S.NullOr(__S(116))),
+          termDescriptionParameters: S.optional(S.NullOr(TermTermDescriptionParametersList)),
           termId: S.optional(S.NullOr(S.String)),
           termUnits: S.optional(S.NullOr(S.String)),
-          prorationPolicy: S.optional(S.NullOr(__S(117))),
+          prorationPolicy: S.optional(S.NullOr(ProrationPolicy)),
           termDescription: S.optional(S.NullOr(S.String)),
-          price: S.optional(S.NullOr(__S(111))),
+          price: S.optional(S.NullOr(Price)),
           renewTermId: S.optional(S.NullOr(S.String)),
           renewTermUnits: S.optional(S.NullOr(S.String)),
-          billingPlan: S.optional(S.NullOr(__S(118))),
+          billingPlan: S.optional(S.NullOr(BillingPlan)),
           renewToTermBillingPlan: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "Term" });
@@ -4146,12 +5257,12 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(119));
+      return S.Array(Term);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          exclusionProperties: S.optional(S.NullOr(__S(1))),
-          inclusionProperties: S.optional(S.NullOr(__S(1))),
+          exclusionProperties: S.optional(S.NullOr(PIFilterExclusionPropertiesList)),
+          inclusionProperties: S.optional(S.NullOr(PIFilterInclusionPropertiesList)),
         }),
       ).annotate({ identifier: "PIFilter" });
     case 2:
@@ -4162,39 +5273,39 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "Remediation" });
     case 3:
-      return S.Array(__S(122));
+      return S.Array(Remediation);
     case 4:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(125)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => AvailabilityEntity));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           partitionKey: S.optional(S.NullOr(S.String)),
           ts: S.optional(S.Number),
-          actions: S.optional(S.NullOr(__S(1))),
+          actions: S.optional(S.NullOr(AvailabilityEntityActionsList)),
           market: S.optional(S.NullOr(S.String)),
           isPIRequired: S.optional(S.Boolean),
           appId: S.optional(S.NullOr(S.String)),
           planID: S.optional(S.NullOr(S.String)),
           meterId: S.optional(S.NullOr(S.String)),
-          meter: S.optional(S.NullOr(__S(114))),
-          pricingAudience: S.optional(S.String),
-          terms: S.optional(S.NullOr(__S(120))),
-          piFilter: S.optional(S.NullOr(__S(121))),
+          meter: S.optional(S.NullOr(Meter)),
+          pricingAudience: S.optional(PricingAudience),
+          terms: S.optional(S.NullOr(AvailabilityEntityTermsList)),
+          piFilter: S.optional(S.NullOr(PIFilter)),
           isStopSell: S.optional(S.Boolean),
           hasFreeTrials: S.optional(S.Boolean),
-          assetBehaviors: S.optional(S.NullOr(__S(1))),
+          assetBehaviors: S.optional(S.NullOr(AvailabilityEntityAssetBehaviorsList)),
           consumptionUnitType: S.optional(S.NullOr(S.String)),
           displayRank: S.optional(S.Number),
           remediationRequired: S.optional(S.Boolean),
-          remediations: S.optional(S.NullOr(__S(123))),
+          remediations: S.optional(S.NullOr(AvailabilityEntityRemediationsList)),
           startDate: S.optional(S.NullOr(S.Number)),
           endDate: S.optional(S.NullOr(S.Number)),
-          planAvailabilities: S.optional(S.NullOr(__S(124))),
+          planAvailabilities: S.optional(S.NullOr(AvailabilityEntityPlanAvailabilitiesList)),
         }),
       ).annotate({ identifier: "AvailabilityEntity" });
     case 6:
-      return S.Array(__S(125));
+      return S.Array(AvailabilityEntity);
     case 7:
       return S.Record(S.String, S.Unknown);
   }
@@ -4204,7 +5315,7 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(S.NullOr(__S(127))),
+          properties: S.optional(S.NullOr(OpenPropertyPropertiesMap)),
         }),
       ).annotate({ identifier: "OpenProperty" });
     case 1:
@@ -4218,16 +5329,16 @@ function __c16(j: number): any {
     case 2:
       return S.Array(S.Number);
     case 3:
-      return S.Record(S.String, __S(130));
+      return S.Record(S.String, BillingComponentCustomMeterIdsValueList);
     case 4:
       return S.suspend(() =>
         S.Struct({
           billingTag: S.optional(S.NullOr(S.String)),
-          customMeterIds: S.optional(S.NullOr(__S(131))),
+          customMeterIds: S.optional(S.NullOr(BillingComponentCustomMeterIdsMap)),
         }),
       ).annotate({ identifier: "BillingComponent" });
     case 5:
-      return S.Array(__S(132));
+      return S.Array(BillingComponent);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -4236,7 +5347,7 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "PurchaseDurationDiscount" });
     case 7:
-      return S.Array(__S(134));
+      return S.Array(PurchaseDurationDiscount);
   }
 }
 function __c17(j: number): any {
@@ -4249,7 +5360,7 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "TermUpn" });
     case 1:
-      return S.Array(__S(136));
+      return S.Array(TermUpn);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4257,21 +5368,21 @@ function __c17(j: number): any {
           displayName: S.optional(S.NullOr(S.String)),
           summary: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          restrictedAudience: S.optional(S.NullOr(__S(110))),
+          restrictedAudience: S.optional(S.NullOr(RestrictedAudience)),
           skuId: S.optional(S.NullOr(S.String)),
           planId: S.optional(S.NullOr(S.String)),
           legacyPlanId: S.optional(S.NullOr(S.String)),
-          keywords: S.optional(S.NullOr(__S(1))),
-          type: S.optional(S.String),
-          leadGeneration: S.optional(S.NullOr(__S(100))),
-          testDrive: S.optional(S.NullOr(__S(103))),
-          availabilities: S.optional(S.NullOr(__S(126))),
-          categoryIds: S.optional(S.NullOr(__S(1))),
-          conversionPaths: S.optional(S.NullOr(__S(1))),
-          metadata: S.optional(S.NullOr(__S(128))),
-          operatingSystem: S.optional(S.NullOr(__S(129))),
+          keywords: S.optional(S.NullOr(PlanKeywordsList)),
+          type: S.optional(OfferType),
+          leadGeneration: S.optional(S.NullOr(LeadGeneration)),
+          testDrive: S.optional(S.NullOr(TestDrive)),
+          availabilities: S.optional(S.NullOr(PlanAvailabilitiesList)),
+          categoryIds: S.optional(S.NullOr(PlanCategoryIdsList)),
+          conversionPaths: S.optional(S.NullOr(PlanConversionPathsList)),
+          metadata: S.optional(S.NullOr(OpenProperty)),
+          operatingSystem: S.optional(S.NullOr(OperatingSystem)),
           uiDefinitionUri: S.optional(S.NullOr(S.String)),
-          artifacts: S.optional(S.NullOr(__S(99))),
+          artifacts: S.optional(S.NullOr(PlanArtifactsList)),
           version: S.optional(S.NullOr(S.String)),
           itemName: S.optional(S.NullOr(S.String)),
           isPrivate: S.optional(S.Boolean),
@@ -4281,12 +5392,12 @@ function __c17(j: number): any {
           isFree: S.optional(S.Boolean),
           isPayg: S.optional(S.Boolean),
           isStopSell: S.optional(S.Boolean),
-          stopSellInfo: S.optional(S.NullOr(__S(82))),
+          stopSellInfo: S.optional(S.NullOr(StopSellInfo)),
           altStackReference: S.optional(S.NullOr(S.String)),
           stackType: S.optional(S.NullOr(S.String)),
           altArchitectureReference: S.optional(S.NullOr(S.String)),
           architectureType: S.optional(S.NullOr(S.String)),
-          cspState: S.optional(S.NullOr(S.String)),
+          cspState: S.optional(S.NullOr(CSPState)),
           resourceProviderNamespace: S.optional(S.NullOr(S.String)),
           resourceType: S.optional(S.NullOr(S.String)),
           minQuantity: S.optional(S.NullOr(S.Number)),
@@ -4295,32 +5406,36 @@ function __c17(j: number): any {
           callToAction: S.optional(S.NullOr(S.String)),
           redirectUrl: S.optional(S.NullOr(S.String)),
           serviceIdentifier: S.optional(S.NullOr(S.String)),
-          vmSecurityType: S.optional(S.NullOr(S.String)),
+          vmSecurityType: S.optional(S.NullOr(VmSecurityType)),
           displayRank: S.optional(S.NullOr(S.String)),
-          billingComponents: S.optional(S.NullOr(__S(133))),
-          purchaseDurationDiscounts: S.optional(S.NullOr(__S(135))),
-          upns: S.optional(S.NullOr(__S(137))),
+          billingComponents: S.optional(S.NullOr(PlanBillingComponentsList)),
+          purchaseDurationDiscounts: S.optional(S.NullOr(PlanPurchaseDurationDiscountsList)),
+          upns: S.optional(S.NullOr(PlanUpnsList)),
           hasRI: S.optional(S.Boolean),
           isHiddenPrivateOffer: S.optional(S.NullOr(S.Boolean)),
-          certifications: S.optional(S.NullOr(__S(95))),
-          pricingTypes: S.optional(S.NullOr(__S(81))),
+          certifications: S.optional(S.NullOr(PlanCertificationsList)),
+          pricingTypes: S.optional(S.NullOr(PlanPricingTypesList)),
         }),
       ).annotate({ identifier: "Plan" });
     case 3:
-      return S.Array(__S(138));
+      return S.Array(Plan);
     case 4:
       return S.suspend(() =>
         S.Struct({
           uiDefinitionFileUri: S.optional(S.NullOr(S.String)),
           defaultDeploymentTemplateId: S.optional(S.NullOr(S.String)),
-          deploymentTemplateFileUris: S.optional(S.NullOr(__S(84))),
-          deploymentFragmentFileUris: S.optional(S.NullOr(__S(84))),
+          deploymentTemplateFileUris: S.optional(
+            S.NullOr(DefinitionTemplatesDeploymentTemplateFileUrisMap),
+          ),
+          deploymentFragmentFileUris: S.optional(
+            S.NullOr(DefinitionTemplatesDeploymentFragmentFileUrisMap),
+          ),
         }),
       ).annotate({ identifier: "DefinitionTemplates" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          m365CertificationType: S.optional(S.Number),
+          m365CertificationType: S.optional(CertificationType),
           m365CertificationDetailsUrl: S.optional(S.NullOr(S.String)),
           m365CertificationId: S.optional(S.NullOr(S.String)),
         }),
@@ -4328,12 +5443,12 @@ function __c17(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          pricingOptions: S.optional(S.Number),
+          pricingOptions: S.optional(PricingOptions),
           hasPrices: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "UIPricing" });
     case 7:
-      return S.Record(S.String, __S(142));
+      return S.Record(S.String, UIPricing);
   }
 }
 function __c18(j: number): any {
@@ -4354,35 +5469,35 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           totalRatings: S.optional(S.Number),
-          source: S.optional(S.String),
+          source: S.optional(ReviewSource),
           averageRating: S.optional(S.Number),
           createdAt: S.optional(S.String),
           externalOfferReference: S.optional(S.NullOr(S.String)),
-          starsDistribution: S.optional(S.NullOr(__S(145))),
-          buckets: S.optional(S.NullOr(__S(1))),
+          starsDistribution: S.optional(S.NullOr(RatingSummaryStarsDistributionMap)),
+          buckets: S.optional(S.NullOr(RatingSummaryBucketsList)),
         }),
       ).annotate({ identifier: "RatingSummary" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          appSource: S.optional(S.NullOr(__S(146))),
-          amp: S.optional(S.NullOr(__S(146))),
-          azurePortal: S.optional(S.NullOr(__S(146))),
-          g2: S.optional(S.NullOr(__S(146))),
+          appSource: S.optional(S.NullOr(RatingSummary)),
+          amp: S.optional(S.NullOr(RatingSummary)),
+          azurePortal: S.optional(S.NullOr(RatingSummary)),
+          g2: S.optional(S.NullOr(RatingSummary)),
         }),
       ).annotate({ identifier: "RatingEnrichedData" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(S.NullOr(__S(1))),
-          popularity: S.optional(S.NullOr(__S(144))),
-          rating: S.optional(S.NullOr(__S(147))),
+          tags: S.optional(S.NullOr(EnrichedDataTagsList)),
+          popularity: S.optional(S.NullOr(PopularityEnrichedData)),
+          rating: S.optional(S.NullOr(RatingEnrichedData)),
           isAzureBenefitEligible: S.optional(S.Boolean),
           isSolutionMap: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EnrichedData" });
     case 5:
-      return S.Array(S.Number);
+      return S.Array(OfficeCapabilityType);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -4396,69 +5511,69 @@ function __c18(j: number): any {
           publisherDisplayName: S.optional(S.NullOr(S.String)),
           offerId: S.String,
           legacyId: S.String,
-          determinedStorefronts: S.optional(S.NullOr(__S(81))),
+          determinedStorefronts: S.optional(S.NullOr(CatalogItemDeterminedStorefrontsList)),
           standardContractAmendmentsRevisionId: S.optional(S.String),
           universalAmendmentUrl: S.optional(S.NullOr(S.String)),
           summary: S.optional(S.NullOr(S.String)),
           longSummary: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          offerType: S.optional(S.String),
+          offerType: S.optional(OfferType),
           isPrivate: S.optional(S.Boolean),
           isPreview: S.optional(S.Boolean),
           isStopSell: S.optional(S.Boolean),
-          stopSellInfo: S.optional(S.NullOr(__S(82))),
+          stopSellInfo: S.optional(S.NullOr(StopSellInfo)),
           fulfillBeforeChargeEligible: S.optional(S.Boolean),
-          marketingMaterial: S.optional(S.NullOr(__S(83))),
-          markets: S.optional(S.NullOr(__S(1))),
-          isvContactDetails: S.optional(S.NullOr(__S(84))),
+          marketingMaterial: S.optional(S.NullOr(MarketingMaterial)),
+          markets: S.optional(S.NullOr(CatalogItemMarketsList)),
+          isvContactDetails: S.optional(S.NullOr(CatalogItemIsvContactDetailsMap)),
           bigId: S.String,
           ocpSolutionId: S.optional(S.NullOr(S.String)),
           legalTermsUri: S.optional(S.NullOr(S.String)),
           cspLegalTermsUri: S.optional(S.NullOr(S.String)),
-          legalTermsType: S.optional(S.String),
+          legalTermsType: S.optional(LegalTermsType),
           privacyPolicyUri: S.optional(S.NullOr(S.String)),
           helpLink: S.optional(S.NullOr(S.String)),
           supportUri: S.optional(S.NullOr(S.String)),
           version: S.optional(S.NullOr(S.String)),
           uiDefinitionUri: S.optional(S.NullOr(S.String)),
-          categoryIds: S.optional(S.NullOr(__S(1))),
-          operatingSystems: S.optional(S.NullOr(__S(1))),
+          categoryIds: S.optional(S.NullOr(CatalogItemCategoryIdsList)),
+          operatingSystems: S.optional(S.NullOr(CatalogItemOperatingSystemsList)),
           marketCode: S.optional(S.NullOr(S.String)),
-          marketStates: S.optional(S.NullOr(__S(1))),
-          industryIds: S.optional(S.NullOr(__S(1))),
-          primaryIndustry: S.optional(S.NullOr(__S(1))),
-          primaryCategories: S.optional(S.NullOr(__S(1))),
-          cloudIndustryCategories: S.optional(S.NullOr(__S(1))),
+          marketStates: S.optional(S.NullOr(CatalogItemMarketStatesList)),
+          industryIds: S.optional(S.NullOr(CatalogItemIndustryIdsList)),
+          primaryIndustry: S.optional(S.NullOr(CatalogItemPrimaryIndustryList)),
+          primaryCategories: S.optional(S.NullOr(CatalogItemPrimaryCategoriesList)),
+          cloudIndustryCategories: S.optional(S.NullOr(CatalogItemCloudIndustryCategoriesList)),
           primaryProduct: S.optional(S.NullOr(S.String)),
-          supportedProducts: S.optional(S.NullOr(__S(1))),
-          applicableProducts: S.optional(S.NullOr(__S(1))),
+          supportedProducts: S.optional(S.NullOr(CatalogItemSupportedProductsList)),
+          applicableProducts: S.optional(S.NullOr(CatalogItemApplicableProductsList)),
           serviceType: S.optional(S.NullOr(S.String)),
-          competencies: S.optional(S.NullOr(__S(86))),
+          competencies: S.optional(S.NullOr(CatalogItemCompetenciesList)),
           hasPrices: S.optional(S.NullOr(S.Boolean)),
-          duration: S.optional(S.NullOr(__S(87))),
-          marketPricingDetails: S.optional(S.NullOr(__S(92))),
-          startingPrice: S.optional(S.NullOr(__S(93))),
-          pricing: S.optional(S.NullOr(__S(90))),
-          solutionAreas: S.optional(S.NullOr(__S(1))),
-          screenshotUris: S.optional(S.NullOr(__S(1))),
-          links: S.optional(S.NullOr(__S(95))),
-          filters: S.optional(S.NullOr(__S(97))),
-          iconFileUris: S.optional(S.NullOr(__S(84))),
-          artifacts: S.optional(S.NullOr(__S(99))),
-          metadata: S.optional(S.NullOr(__S(104))),
-          properties: S.optional(S.NullOr(__S(84))),
-          images: S.optional(S.NullOr(__S(108))),
-          videos: S.optional(S.NullOr(__S(109))),
-          plans: S.optional(S.NullOr(__S(139))),
+          duration: S.optional(S.NullOr(Duration)),
+          marketPricingDetails: S.optional(S.NullOr(CatalogItemMarketPricingDetailsList)),
+          startingPrice: S.optional(S.NullOr(MarketStartPrice)),
+          pricing: S.optional(S.NullOr(Pricing)),
+          solutionAreas: S.optional(S.NullOr(CatalogItemSolutionAreasList)),
+          screenshotUris: S.optional(S.NullOr(CatalogItemScreenshotUrisList)),
+          links: S.optional(S.NullOr(CatalogItemLinksList)),
+          filters: S.optional(S.NullOr(CatalogItemFiltersList)),
+          iconFileUris: S.optional(S.NullOr(CatalogItemIconFileUrisMap)),
+          artifacts: S.optional(S.NullOr(CatalogItemArtifactsList)),
+          metadata: S.optional(S.NullOr(OfferMetadata)),
+          properties: S.optional(S.NullOr(CatalogItemPropertiesMap)),
+          images: S.optional(S.NullOr(CatalogItemImagesList)),
+          videos: S.optional(S.NullOr(CatalogItemVideosList)),
+          plans: S.optional(S.NullOr(CatalogItemPlansList)),
           resourceGroupName: S.optional(S.NullOr(S.String)),
-          definitionTemplates: S.optional(S.NullOr(__S(140))),
-          additionalProperties: S.optional(S.NullOr(__S(84))),
-          restrictedAudience: S.optional(S.NullOr(__S(110))),
+          definitionTemplates: S.optional(S.NullOr(DefinitionTemplates)),
+          additionalProperties: S.optional(S.NullOr(CatalogItemAdditionalPropertiesMap)),
+          restrictedAudience: S.optional(S.NullOr(RestrictedAudience)),
           isDeleted: S.optional(S.Boolean),
           isThirdParty: S.optional(S.Boolean),
           groupId: S.optional(S.NullOr(S.String)),
-          hideKeys: S.optional(S.NullOr(__S(1))),
-          keywords: S.optional(S.NullOr(__S(1))),
+          hideKeys: S.optional(S.NullOr(CatalogItemHideKeysList)),
+          keywords: S.optional(S.NullOr(CatalogItemKeywordsList)),
           popularity: S.optional(S.Number),
           pricingDetailsUri: S.optional(S.NullOr(S.String)),
           hasFreeTrials: S.optional(S.Boolean),
@@ -4471,14 +5586,14 @@ function __c18(j: number): any {
           isReseller: S.optional(S.Boolean),
           ttl: S.optional(S.NullOr(S.Number)),
           isExcludedFromSearch: S.optional(S.Boolean),
-          applicableStoreFronts: S.optional(S.NullOr(S.Number)),
+          applicableStoreFronts: S.optional(S.NullOr(StoreFrontOptions)),
           offerVersion: S.optional(S.NullOr(S.String)),
           isMicrosoftProduct: S.optional(S.NullOr(S.Boolean)),
           productOwnershipSellingMotion: S.optional(S.NullOr(S.String)),
-          documentLinks: S.optional(S.NullOr(__S(95))),
-          offerEnvironment: S.optional(S.Number),
-          linkedAddIns: S.optional(S.NullOr(__S(1))),
-          linkedAddInsTypes: S.optional(S.NullOr(__S(84))),
+          documentLinks: S.optional(S.NullOr(CatalogItemDocumentLinksList)),
+          offerEnvironment: S.optional(EnvironmentInfo),
+          linkedAddIns: S.optional(S.NullOr(CatalogItemLinkedAddInsList)),
+          linkedAddInsTypes: S.optional(S.NullOr(CatalogItemLinkedAddInsTypesMap)),
           excludeFromBootstrap: S.optional(S.Boolean),
           hydrationNotificationReceivedAt: S.optional(S.NullOr(S.String)),
           bigCatLastModifiedDate: S.optional(S.NullOr(S.String)),
@@ -4488,24 +5603,24 @@ function __c18(j: number): any {
           multiTenantAadAppId: S.optional(S.NullOr(S.String)),
           licenseManagementType: S.optional(S.NullOr(S.String)),
           licenseModel: S.optional(S.NullOr(S.String)),
-          pbiServicePrincipalIds: S.optional(S.NullOr(__S(1))),
+          pbiServicePrincipalIds: S.optional(S.NullOr(CatalogItemPbiServicePrincipalIdsList)),
           isCoreVm: S.optional(S.NullOr(S.Boolean)),
-          m365CertificationInfo: S.optional(S.NullOr(__S(141))),
+          m365CertificationInfo: S.optional(S.NullOr(M365CertificationInfo)),
           downloadLink: S.optional(S.NullOr(S.String)),
           downloadSampleLink: S.optional(S.NullOr(S.String)),
           omexAssetId: S.optional(S.NullOr(S.String)),
           mixProductId: S.optional(S.NullOr(S.String)),
           appFreeType: S.optional(S.NullOr(S.String)),
-          storeFrontPricings: S.optional(S.NullOr(__S(143))),
+          storeFrontPricings: S.optional(S.NullOr(CatalogItemStoreFrontPricingsMap)),
           hasRIPlans: S.optional(S.Boolean),
-          enrichedData: S.optional(S.NullOr(__S(148))),
-          capabilities: S.optional(S.NullOr(__S(149))),
+          enrichedData: S.optional(S.NullOr(EnrichedData)),
+          capabilities: S.optional(S.NullOr(CatalogItemCapabilitiesList)),
           releaseDate: S.optional(S.NullOr(S.String)),
           hideFromAdminPortal: S.optional(S.Boolean),
-          awards: S.optional(S.NullOr(__S(1))),
+          awards: S.optional(S.NullOr(CatalogItemAwardsList)),
           powerBIVisualId: S.optional(S.NullOr(S.String)),
-          pricingTypes: S.optional(S.NullOr(__S(81))),
-          autoRunLaunchEvents: S.optional(S.NullOr(__S(1))),
+          pricingTypes: S.optional(S.NullOr(CatalogItemPricingTypesList)),
+          autoRunLaunchEvents: S.optional(S.NullOr(CatalogItemAutoRunLaunchEventsList)),
           service: S.optional(S.NullOr(S.String)),
           serviceId: S.optional(S.NullOr(S.String)),
           productType: S.optional(S.NullOr(S.String)),
@@ -4517,7 +5632,7 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "CatalogItem" });
     case 7:
-      return S.Array(__S(150));
+      return S.Array(CatalogItem);
   }
 }
 function __c19(j: number): any {
@@ -4527,7 +5642,7 @@ function __c19(j: number): any {
         S.Struct({
           nextPageLink: S.optional(S.NullOr(S.String)),
           count: S.optional(S.NullOr(S.Number)),
-          items: S.optional(S.NullOr(__S(151))),
+          items: S.optional(S.NullOr(PageResultOfCatalogItemItemsList)),
         }),
       ).annotate({ identifier: "PageResultOfCatalogItem" });
     case 1:
@@ -4551,11 +5666,11 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "ApiKey" });
     case 3:
-      return S.Array(__S(154));
+      return S.Array(ApiKey);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(155)),
+          value: S.optional(ApiKeysValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiKeys" });
@@ -4584,9 +5699,9 @@ function __c19(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(158)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
   }
@@ -4594,11 +5709,11 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(159));
+      return S.Array(Operation);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(160)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -4633,14 +5748,14 @@ function __c20(j: number): any {
           displayName: S.optional(S.String),
           vmArchitectureType: S.optional(S.String),
           cspState: S.optional(S.String),
-          metadata: S.optional(__S(17)),
+          metadata: S.optional(PlanMetadata),
           altStackReference: S.optional(S.String),
           stackType: S.optional(S.String),
           altArchitectureReference: S.optional(S.String),
-          categoryIds: S.optional(__S(1)),
+          categoryIds: S.optional(PlanSummaryCategoryIdsList),
           hasProtectedArtifacts: S.optional(S.Boolean),
-          pricingTypes: S.optional(__S(1)),
-          vmSecuritytypes: S.optional(__S(1)),
+          pricingTypes: S.optional(PlanSummaryPricingTypesList),
+          vmSecuritytypes: S.optional(PlanSummaryVmSecuritytypesList),
           summary: S.optional(S.String),
           description: S.optional(S.String),
           skuId: S.optional(S.String),
@@ -4651,25 +5766,25 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "PlanSummary" });
     case 4:
-      return S.Array(__S(163));
+      return S.Array(PlanSummary);
     case 5:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           popularity: S.optional(S.Number),
-          categoryIds: S.optional(__S(1)),
-          industryIds: S.optional(__S(1)),
+          categoryIds: S.optional(ProductSummaryCategoryIdsList),
+          industryIds: S.optional(ProductSummaryIndustryIdsList),
           publisherId: S.optional(S.String),
           azureBenefit: S.optional(S.String),
-          badges: S.optional(__S(1)),
+          badges: S.optional(ProductSummaryBadgesList),
           publisherType: S.optional(S.String),
           publishingStage: S.optional(S.String),
           uniqueProductId: S.String,
           productType: S.String,
           productSubType: S.optional(S.String),
           productFamily: S.optional(S.String),
-          operatingSystems: S.optional(__S(1)),
-          pricingTypes: S.optional(__S(1)),
+          operatingSystems: S.optional(ProductSummaryOperatingSystemsList),
+          pricingTypes: S.optional(ProductSummaryPricingTypesList),
           publisherDisplayName: S.optional(S.String),
           longSummary: S.optional(S.String),
           summary: S.optional(S.String),
@@ -4677,29 +5792,29 @@ function __c20(j: number): any {
           description: S.optional(S.String),
           cspLegalTermsUri: S.optional(S.String),
           privacyPolicyUri: S.optional(S.String),
-          ratingBuckets: S.optional(__S(1)),
+          ratingBuckets: S.optional(ProductSummaryRatingBucketsList),
           ratingAverage: S.optional(S.Number),
           ratingCount: S.optional(S.Number),
-          supportedProducts: S.optional(__S(1)),
-          applicableProducts: S.optional(__S(1)),
+          supportedProducts: S.optional(ProductSummarySupportedProductsList),
+          applicableProducts: S.optional(ProductSummaryApplicableProductsList),
           lastModifiedDateTime: S.optional(S.String),
-          locations: S.optional(__S(1)),
+          locations: S.optional(ProductSummaryLocationsList),
           serviceFamily: S.optional(S.String),
           service: S.optional(S.String),
           productId: S.optional(S.String),
           hasRiPlans: S.optional(S.Boolean),
           hasMarketplaceFootprint: S.optional(S.Boolean),
-          attributes: S.optional(__S(3)),
+          attributes: S.optional(ProductSummaryAttributesList),
           offeringType: S.optional(S.String),
-          plans: S.optional(__S(164)),
+          plans: S.optional(ProductSummaryPlansList),
         }),
       ).annotate({ identifier: "ProductSummary" });
     case 6:
-      return S.Array(__S(165));
+      return S.Array(ProductSummary);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(166),
+          value: ProductSummaryListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductSummaryListResult" });
@@ -4782,7 +5897,7 @@ function __c21(j: number): any {
           serviceFamily: S.String.pipe(T.Query()),
           service: S.String.pipe(T.Query()),
           language: S.optional(S.String.pipe(T.Query())),
-          locations: S.optional(__S(1).pipe(T.Query())),
+          locations: S.optional(ListSkusByBillingAccountRequestLocationsList.pipe(T.Query())),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _select: S.optional(S.String.pipe(T.Query("$select"))),
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
@@ -4811,7 +5926,7 @@ function __c21(j: number): any {
           productType: S.optional(S.String),
           productSubType: S.optional(S.String),
           summary: S.optional(S.String),
-          productAttributes: S.optional(__S(3)),
+          productAttributes: S.optional(SkuSummaryProductAttributesList),
           skuName: S.String,
           skuId: S.String,
           skuType: S.String,
@@ -4832,21 +5947,21 @@ function __c21(j: number): any {
           maxQuantity: S.optional(S.Number),
           cspState: S.optional(S.String),
           hasRi: S.optional(S.Boolean),
-          skuAttributes: S.optional(__S(3)),
-          skuProperties: S.optional(__S(44)),
-          offeringProperties: S.optional(__S(73)),
-          alternateIds: S.optional(__S(75)),
+          skuAttributes: S.optional(SkuSummarySkuAttributesList),
+          skuProperties: S.optional(SkuProperties_2),
+          offeringProperties: S.optional(SkuSummaryOfferingPropertiesList),
+          alternateIds: S.optional(SkuAlternateIds),
           offeringType: S.optional(S.String),
-          categoryIds: S.optional(__S(1)),
-          pricingAudiences: S.optional(__S(1)),
+          categoryIds: S.optional(SkuSummaryCategoryIdsList),
+          pricingAudiences: S.optional(SkuSummaryPricingAudiencesList),
         }),
       ).annotate({ identifier: "SkuSummary" });
     case 5:
-      return S.Array(__S(172));
+      return S.Array(SkuSummary);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(173),
+          value: SkuSummaryListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuSummaryListResult" });
@@ -4858,7 +5973,7 @@ function __c21(j: number): any {
           serviceFamily: S.String.pipe(T.Query()),
           service: S.String.pipe(T.Query()),
           language: S.optional(S.String.pipe(T.Query())),
-          locations: S.optional(__S(1).pipe(T.Query())),
+          locations: S.optional(ListSkusByBillingProfileRequestLocationsList.pipe(T.Query())),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _select: S.optional(S.String.pipe(T.Query("$select"))),
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
@@ -4925,20 +6040,20 @@ function __c22(j: number): any {
           isAdditionalPurchaseRequired: S.optional(S.Boolean),
           isPowerBICertified: S.optional(S.Boolean),
           isIndustryCloud: S.optional(S.Boolean),
-          languages: __S(1),
-          stores: __S(81),
-          select: S.optional(__S(1)),
-          sortBy: S.optional(__S(1)),
-          offerTypes: S.optional(__S(1)),
-          pricingTypes: S.optional(__S(81)),
-          privateStoreAllowances: S.optional(__S(81)),
-          appSourceIndustries: S.optional(__S(1)),
-          operatingSystems: S.optional(__S(1)),
-          appSourceCategories: S.optional(__S(1)),
-          azureIndustries: S.optional(__S(1)),
-          azureCategories: S.optional(__S(1)),
-          azurePortalCategories: S.optional(__S(1)),
-          facets: S.optional(__S(1)),
+          languages: SearchPostArmRequestLanguagesList,
+          stores: SearchPostArmRequestStoresList,
+          select: S.optional(SearchPostArmRequestSelectList),
+          sortBy: S.optional(SearchPostArmRequestSortByList),
+          offerTypes: S.optional(SearchPostArmRequestOfferTypesList),
+          pricingTypes: S.optional(SearchPostArmRequestPricingTypesList),
+          privateStoreAllowances: S.optional(SearchPostArmRequestPrivateStoreAllowancesList),
+          appSourceIndustries: S.optional(SearchPostArmRequestAppSourceIndustriesList),
+          operatingSystems: S.optional(SearchPostArmRequestOperatingSystemsList),
+          appSourceCategories: S.optional(SearchPostArmRequestAppSourceCategoriesList),
+          azureIndustries: S.optional(SearchPostArmRequestAzureIndustriesList),
+          azureCategories: S.optional(SearchPostArmRequestAzureCategoriesList),
+          azurePortalCategories: S.optional(SearchPostArmRequestAzurePortalCategoriesList),
+          facets: S.optional(SearchPostArmRequestFacetsList),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4956,16 +6071,16 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "FacetValueDto" });
     case 5:
-      return S.Array(__S(180));
+      return S.Array(FacetValueDto);
     case 6:
       return S.suspend(() =>
         S.Struct({
           facetName: S.optional(S.String),
-          facetValues: S.optional(__S(181)),
+          facetValues: S.optional(FacetsItemDtoFacetValuesList),
         }),
       ).annotate({ identifier: "FacetsItemDto" });
     case 7:
-      return S.Array(__S(182));
+      return S.Array(FacetsItemDto);
   }
 }
 function __c23(j: number): any {
@@ -4991,28 +6106,28 @@ function __c23(j: number): any {
           legacyPlanId: S.optional(S.String),
           displayName: S.optional(S.String),
           architectureType: S.optional(S.String),
-          metadata: S.optional(__S(184)),
-          operatingSystem: S.optional(__S(185)),
+          metadata: S.optional(PlanMetadataDto),
+          operatingSystem: S.optional(OperatingSystemDto),
         }),
       ).annotate({ identifier: "PlanDto" });
     case 3:
-      return S.Array(__S(186));
+      return S.Array(PlanDto);
     case 4:
       return S.suspend(() =>
         S.Struct({
           ampAppsPopularity: S.optional(S.Number),
           ampCsPopularity: S.optional(S.Number),
-          applicableProducts: S.optional(__S(1)),
+          applicableProducts: S.optional(SearchItemDtoApplicableProductsList),
           appSourceAppsPopularity: S.optional(S.Number),
-          appSourceCategories: S.optional(__S(1)),
+          appSourceCategories: S.optional(SearchItemDtoAppSourceCategoriesList),
           appSourceCsPopularity: S.optional(S.Number),
-          appSourceIndustries: S.optional(__S(1)),
-          azureCategories: S.optional(__S(1)),
-          azurePortalCategories: S.optional(__S(1)),
-          azureIndustries: S.optional(__S(1)),
+          appSourceIndustries: S.optional(SearchItemDtoAppSourceIndustriesList),
+          azureCategories: S.optional(SearchItemDtoAzureCategoriesList),
+          azurePortalCategories: S.optional(SearchItemDtoAzurePortalCategoriesList),
+          azureIndustries: S.optional(SearchItemDtoAzureIndustriesList),
           bigId: S.optional(S.String),
-          cspStates: S.optional(__S(1)),
-          determinedStorefronts: S.optional(__S(1)),
+          cspStates: S.optional(SearchItemDtoCspStatesList),
+          determinedStorefronts: S.optional(SearchItemDtoDeterminedStorefrontsList),
           displayName: S.optional(S.String),
           isAzureBenefitEligible: S.optional(S.Boolean),
           isCoreVm: S.optional(S.Boolean),
@@ -5025,14 +6140,14 @@ function __c23(j: number): any {
           language: S.optional(S.String),
           legacyId: S.optional(S.String),
           offerType: S.optional(S.String),
-          operatingSystems: S.optional(__S(1)),
-          plans: S.optional(__S(187)),
-          pricingTypes: S.optional(__S(1)),
+          operatingSystems: S.optional(SearchItemDtoOperatingSystemsList),
+          plans: S.optional(SearchItemDtoPlansList),
+          pricingTypes: S.optional(SearchItemDtoPricingTypesList),
           publisherDisplayName: S.optional(S.String),
           summary: S.optional(S.String),
-          vmGenerations: S.optional(__S(1)),
-          vmImageTypes: S.optional(__S(1)),
-          vmSecurityTypes: S.optional(__S(1)),
+          vmGenerations: S.optional(SearchItemDtoVmGenerationsList),
+          vmImageTypes: S.optional(SearchItemDtoVmImageTypesList),
+          vmSecurityTypes: S.optional(SearchItemDtoVmSecurityTypesList),
           smallIconUri: S.optional(S.String),
           mediumIconUri: S.optional(S.String),
           largeIconUri: S.optional(S.String),
@@ -5041,71 +6156,14 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "SearchItemDto" });
     case 5:
-      return S.Array(__S(188));
+      return S.Array(SearchItemDto);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          facets: S.optional(__S(183)),
-          results: S.optional(__S(189)),
+          facets: S.optional(SearchResponseDtoFacetsList),
+          results: S.optional(SearchResponseDtoResultsList),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SearchResponseDto" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
   }
 }

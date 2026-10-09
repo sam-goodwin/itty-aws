@@ -6,15 +6,17 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** The private endpoint resource. */
 export interface PrivateEndpointInput {}
+const PrivateEndpointInput = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<PrivateEndpointInput>;
+
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
+const PrivateEndpointServiceConnectionStatus = S.String;
+
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
@@ -24,6 +26,11 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<PrivateLinkServiceConnectionState>;
+
 /** Properties of the private endpoint connection. */
 export interface BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties {
   /** The private endpoint resource. */
@@ -31,6 +38,11 @@ export interface BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestPropert
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
+const BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties>;
+
 export interface BookshelfPrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -43,10 +55,19 @@ export interface BookshelfPrivateEndpointConnectionsCreateOrUpdateRequest {
   /** Properties of the private endpoint connection. */
   properties?: BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties;
 }
+const BookshelfPrivateEndpointConnectionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<BookshelfPrivateEndpointConnectionsCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -62,20 +83,32 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<SystemData>;
+
 /** The group ids for the private endpoint resource. */
 export type BookshelfPrivateEndpointConnectionsCreateOrUpdateResponsePropertiesGroupIdsList =
   Array<string>;
+const BookshelfPrivateEndpointConnectionsCreateOrUpdateResponsePropertiesGroupIdsList =
+  /*@__PURE__*/ __L.at(
+    __c0,
+    5,
+  ) as any as S.Schema<BookshelfPrivateEndpointConnectionsCreateOrUpdateResponsePropertiesGroupIdsList>;
+
 /** The private endpoint resource. */
 export interface PrivateEndpoint {
   /** The ARM identifier for private endpoint. */
   id?: string;
 }
+const PrivateEndpoint = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<PrivateEndpoint>;
+
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
   | "Failed";
+const PrivateEndpointConnectionProvisioningState = S.String;
+
 /** Properties of the private endpoint connection. */
 export interface BookshelfPrivateEndpointConnectionsCreateOrUpdateResponseProperties {
   /** The group ids for the private endpoint resource. */
@@ -87,6 +120,11 @@ export interface BookshelfPrivateEndpointConnectionsCreateOrUpdateResponseProper
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
+const BookshelfPrivateEndpointConnectionsCreateOrUpdateResponseProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<BookshelfPrivateEndpointConnectionsCreateOrUpdateResponseProperties>;
+
 export interface BookshelfPrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -99,16 +137,33 @@ export interface BookshelfPrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Properties of the private endpoint connection. */
   properties?: BookshelfPrivateEndpointConnectionsCreateOrUpdateResponseProperties;
 }
+const BookshelfPrivateEndpointConnectionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<BookshelfPrivateEndpointConnectionsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type BookshelvesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const BookshelvesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<BookshelvesCreateOrUpdateRequestTagsMap>;
+
 /** User assigned identity properties */
 export type BookshelfPropertiesInputWorkloadIdentitiesValue = PrivateEndpointInput;
 /** User assigned identity IDs to be used by knowledgebase workloads. The key value must be the resource ID of the identity resource. */
 export type BookshelfPropertiesInputWorkloadIdentitiesMap = {
   [key: string]: PrivateEndpointInput | undefined;
 };
+const BookshelfPropertiesInputWorkloadIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<BookshelfPropertiesInputWorkloadIdentitiesMap>;
+
 /** State of customer managed key usage. */
 export type CustomerManagedKeys = "Enabled" | "Disabled";
+const CustomerManagedKeys = S.String;
+
 /** Key Vault Properties with clientId selection */
 export interface BookshelfKeyVaultProperties {
   /** The Key Vault URI */
@@ -120,8 +175,15 @@ export interface BookshelfKeyVaultProperties {
   /** The client ID of the identity to use for accessing the Key Vault. Must be a workload identity assigned to the Bookshelf resource. */
   identityClientId: string;
 }
+const BookshelfKeyVaultProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<BookshelfKeyVaultProperties>;
+
 /** State of public network access. */
 export type PublicNetworkAccess = "Enabled" | "Disabled";
+const PublicNetworkAccess = S.String;
+
 /** Bookshelf properties */
 export interface BookshelfPropertiesInput {
   /** User assigned identity IDs to be used by knowledgebase workloads. The key value must be the resource ID of the identity resource. */
@@ -139,6 +201,11 @@ export interface BookshelfPropertiesInput {
   /** Search Subnet ID for search resources. */
   searchSubnetId?: string;
 }
+const BookshelfPropertiesInput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<BookshelfPropertiesInput>;
+
 export interface BookshelvesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -153,8 +220,16 @@ export interface BookshelvesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: BookshelfPropertiesInput;
 }
+const BookshelvesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<BookshelvesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type BookshelvesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const BookshelvesCreateOrUpdateResponseTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<BookshelvesCreateOrUpdateResponseTagsMap>;
+
 /** The resource provisioning state. */
 export type ProvisioningState =
   | "Succeeded"
@@ -164,6 +239,8 @@ export type ProvisioningState =
   | "Provisioning"
   | "Updating"
   | "Deleting";
+const ProvisioningState = S.String;
+
 /** User assigned identity properties */
 export interface BookshelfPropertiesWorkloadIdentitiesValue {
   /** The principal ID of the assigned identity. */
@@ -171,12 +248,27 @@ export interface BookshelfPropertiesWorkloadIdentitiesValue {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
+const BookshelfPropertiesWorkloadIdentitiesValue = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<BookshelfPropertiesWorkloadIdentitiesValue>;
+
 /** User assigned identity IDs to be used by knowledgebase workloads. The key value must be the resource ID of the identity resource. */
 export type BookshelfPropertiesWorkloadIdentitiesMap = {
   [key: string]: BookshelfPropertiesWorkloadIdentitiesValue | undefined;
 };
+const BookshelfPropertiesWorkloadIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<BookshelfPropertiesWorkloadIdentitiesMap>;
+
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
+const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
+
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionProperties {
   /** The group ids for the private endpoint resource. */
@@ -188,6 +280,11 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<PrivateEndpointConnectionProperties>;
+
 /** The private endpoint connection resource. */
 export interface BookshelfPropertiesPrivateEndpointConnectionsItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -201,22 +298,47 @@ export interface BookshelfPropertiesPrivateEndpointConnectionsItem {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const BookshelfPropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<BookshelfPropertiesPrivateEndpointConnectionsItem>;
+
 /** List of private endpoint connections. */
 export type BookshelfPropertiesPrivateEndpointConnectionsList =
   Array<BookshelfPropertiesPrivateEndpointConnectionsItem>;
+const BookshelfPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<BookshelfPropertiesPrivateEndpointConnectionsList>;
+
 /** Managed-On-Behalf-Of broker resource. This resource is created by the Resource Provider to manage some resources on behalf of the user. */
 export interface WithMoboBrokerResourcesMoboBrokerResourcesItem {
   /** Resource identifier of a Managed-On-Behalf-Of broker resource */
   id?: string;
 }
+const WithMoboBrokerResourcesMoboBrokerResourcesItem = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<WithMoboBrokerResourcesMoboBrokerResourcesItem>;
+
 /** Managed-On-Behalf-Of broker resources */
 export type WithMoboBrokerResourcesMoboBrokerResourcesList =
   Array<WithMoboBrokerResourcesMoboBrokerResourcesItem>;
+const WithMoboBrokerResourcesMoboBrokerResourcesList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<WithMoboBrokerResourcesMoboBrokerResourcesList>;
+
 /** For tracking mobo resources */
 export interface WithMoboBrokerResources {
   /** Managed-On-Behalf-Of broker resources */
   moboBrokerResources?: WithMoboBrokerResourcesMoboBrokerResourcesList;
 }
+const WithMoboBrokerResources = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<WithMoboBrokerResources>;
+
 /** Bookshelf properties */
 export interface BookshelfProperties {
   /** The status of the last operation. */
@@ -244,6 +366,8 @@ export interface BookshelfProperties {
   /** The bookshelf data plane API URI */
   bookshelfUri?: string;
 }
+const BookshelfProperties = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<BookshelfProperties>;
+
 export interface BookshelvesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -260,10 +384,18 @@ export interface BookshelvesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: BookshelfProperties;
 }
+const BookshelvesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<BookshelvesCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type ChatModelDeploymentsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const ChatModelDeploymentsCreateOrUpdateRequestTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<ChatModelDeploymentsCreateOrUpdateRequestTagsMap>;
+
 /** Defines a deployment binding a specific model family to a user-defined deployment name for chat inference. */
 export interface ChatModelDeploymentPropertiesInput {
   /** Model format as published by the provider. Verify supported formats per region using the Model Catalog API. */
@@ -277,6 +409,11 @@ export interface ChatModelDeploymentPropertiesInput {
   /** Provisioned SKU capacity units for this chat model deployment. */
   capacity?: number;
 }
+const ChatModelDeploymentPropertiesInput = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ChatModelDeploymentPropertiesInput>;
+
 export interface ChatModelDeploymentsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -293,10 +430,18 @@ export interface ChatModelDeploymentsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ChatModelDeploymentPropertiesInput;
 }
+const ChatModelDeploymentsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ChatModelDeploymentsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type ChatModelDeploymentsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
+const ChatModelDeploymentsCreateOrUpdateResponseTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<ChatModelDeploymentsCreateOrUpdateResponseTagsMap>;
+
 /** Defines a deployment binding a specific model family to a user-defined deployment name for chat inference. */
 export interface ChatModelDeploymentProperties {
   /** The status of the last operation. */
@@ -312,6 +457,11 @@ export interface ChatModelDeploymentProperties {
   /** Provisioned SKU capacity units for this chat model deployment. */
   capacity?: number;
 }
+const ChatModelDeploymentProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ChatModelDeploymentProperties>;
+
 export interface ChatModelDeploymentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -328,6 +478,11 @@ export interface ChatModelDeploymentsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ChatModelDeploymentProperties;
 }
+const ChatModelDeploymentsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ChatModelDeploymentsCreateOrUpdateResponse>;
+
 export interface DeleteBookshelfPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -338,7 +493,17 @@ export interface DeleteBookshelfPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
+const DeleteBookshelfPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DeleteBookshelfPrivateEndpointConnectionRequest>;
+
 export interface DeleteBookshelfPrivateEndpointConnectionResponse {}
+const DeleteBookshelfPrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DeleteBookshelfPrivateEndpointConnectionResponse>;
+
 export interface DeleteBookshelveRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -347,7 +512,14 @@ export interface DeleteBookshelveRequest {
   /** The name of the Bookshelf */
   bookshelfName: string;
 }
+const DeleteBookshelveRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DeleteBookshelveRequest>;
+
 export interface DeleteBookshelveResponse {}
+const DeleteBookshelveResponse = PrivateEndpointInput as any as S.Schema<DeleteBookshelveResponse>;
+
 export interface DeleteChatModelDeploymentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -358,7 +530,15 @@ export interface DeleteChatModelDeploymentRequest {
   /** The name of the ChatModelDeployment */
   chatModelDeploymentName: string;
 }
+const DeleteChatModelDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<DeleteChatModelDeploymentRequest>;
+
 export interface DeleteChatModelDeploymentResponse {}
+const DeleteChatModelDeploymentResponse =
+  DeleteBookshelfPrivateEndpointConnectionResponse as any as S.Schema<DeleteChatModelDeploymentResponse>;
+
 export interface DeleteNodePoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -369,7 +549,14 @@ export interface DeleteNodePoolRequest {
   /** The name of the NodePool */
   nodePoolName: string;
 }
+const DeleteNodePoolRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<DeleteNodePoolRequest>;
+
 export interface DeleteNodePoolResponse {}
+const DeleteNodePoolResponse = PrivateEndpointInput as any as S.Schema<DeleteNodePoolResponse>;
+
 export interface DeleteProjectRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -380,7 +567,11 @@ export interface DeleteProjectRequest {
   /** The name of the Project */
   projectName: string;
 }
+const DeleteProjectRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<DeleteProjectRequest>;
+
 export interface DeleteProjectResponse {}
+const DeleteProjectResponse = PrivateEndpointInput as any as S.Schema<DeleteProjectResponse>;
+
 export interface DeleteStorageAssetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -391,7 +582,15 @@ export interface DeleteStorageAssetRequest {
   /** The name of the StorageAsset */
   storageAssetName: string;
 }
+const DeleteStorageAssetRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<DeleteStorageAssetRequest>;
+
 export interface DeleteStorageAssetResponse {}
+const DeleteStorageAssetResponse =
+  PrivateEndpointInput as any as S.Schema<DeleteStorageAssetResponse>;
+
 export interface DeleteStorageContainerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -400,7 +599,15 @@ export interface DeleteStorageContainerRequest {
   /** The name of the StorageContainer */
   storageContainerName: string;
 }
+const DeleteStorageContainerRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DeleteStorageContainerRequest>;
+
 export interface DeleteStorageContainerResponse {}
+const DeleteStorageContainerResponse =
+  PrivateEndpointInput as any as S.Schema<DeleteStorageContainerResponse>;
+
 export interface DeleteSupercomputerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -409,7 +616,15 @@ export interface DeleteSupercomputerRequest {
   /** The name of the Supercomputer */
   supercomputerName: string;
 }
+const DeleteSupercomputerRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DeleteSupercomputerRequest>;
+
 export interface DeleteSupercomputerResponse {}
+const DeleteSupercomputerResponse =
+  PrivateEndpointInput as any as S.Schema<DeleteSupercomputerResponse>;
+
 export interface DeleteToolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -418,7 +633,11 @@ export interface DeleteToolRequest {
   /** The name of the Tool */
   toolName: string;
 }
+const DeleteToolRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<DeleteToolRequest>;
+
 export interface DeleteToolResponse {}
+const DeleteToolResponse = PrivateEndpointInput as any as S.Schema<DeleteToolResponse>;
+
 export interface DeleteWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -427,7 +646,14 @@ export interface DeleteWorkspaceRequest {
   /** The name of the Workspace */
   workspaceName: string;
 }
+const DeleteWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<DeleteWorkspaceRequest>;
+
 export interface DeleteWorkspaceResponse {}
+const DeleteWorkspaceResponse = PrivateEndpointInput as any as S.Schema<DeleteWorkspaceResponse>;
+
 export interface DeleteWorkspacePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -438,7 +664,15 @@ export interface DeleteWorkspacePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
+const DeleteWorkspacePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<DeleteWorkspacePrivateEndpointConnectionRequest>;
+
 export interface DeleteWorkspacePrivateEndpointConnectionResponse {}
+const DeleteWorkspacePrivateEndpointConnectionResponse =
+  DeleteBookshelfPrivateEndpointConnectionResponse as any as S.Schema<DeleteWorkspacePrivateEndpointConnectionResponse>;
+
 export interface GetBookshelfPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -449,8 +683,16 @@ export interface GetBookshelfPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
+const GetBookshelfPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetBookshelfPrivateEndpointConnectionRequest>;
+
 /** The group ids for the private endpoint resource. */
 export type GetBookshelfPrivateEndpointConnectionResponsePropertiesGroupIdsList = Array<string>;
+const GetBookshelfPrivateEndpointConnectionResponsePropertiesGroupIdsList =
+  BookshelfPrivateEndpointConnectionsCreateOrUpdateResponsePropertiesGroupIdsList as any as S.Schema<GetBookshelfPrivateEndpointConnectionResponsePropertiesGroupIdsList>;
+
 /** Properties of the private endpoint connection. */
 export interface GetBookshelfPrivateEndpointConnectionResponseProperties {
   /** The group ids for the private endpoint resource. */
@@ -462,6 +704,11 @@ export interface GetBookshelfPrivateEndpointConnectionResponseProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
+const GetBookshelfPrivateEndpointConnectionResponseProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GetBookshelfPrivateEndpointConnectionResponseProperties>;
+
 export interface GetBookshelfPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -474,6 +721,11 @@ export interface GetBookshelfPrivateEndpointConnectionResponse {
   /** Properties of the private endpoint connection. */
   properties?: GetBookshelfPrivateEndpointConnectionResponseProperties;
 }
+const GetBookshelfPrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetBookshelfPrivateEndpointConnectionResponse>;
+
 export interface GetBookshelfPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -484,10 +736,21 @@ export interface GetBookshelfPrivateLinkResourceRequest {
   /** The name of the private link associated with the Azure resource. */
   privateLinkResourceName: string;
 }
+const GetBookshelfPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GetBookshelfPrivateLinkResourceRequest>;
+
 /** The private link resource required member names. */
 export type GetBookshelfPrivateLinkResourceResponsePropertiesRequiredMembersList = Array<string>;
+const GetBookshelfPrivateLinkResourceResponsePropertiesRequiredMembersList =
+  BookshelfPrivateEndpointConnectionsCreateOrUpdateResponsePropertiesGroupIdsList as any as S.Schema<GetBookshelfPrivateLinkResourceResponsePropertiesRequiredMembersList>;
+
 /** The private link resource private link DNS zone name. */
 export type GetBookshelfPrivateLinkResourceResponsePropertiesRequiredZoneNamesList = Array<string>;
+const GetBookshelfPrivateLinkResourceResponsePropertiesRequiredZoneNamesList =
+  BookshelfPrivateEndpointConnectionsCreateOrUpdateResponsePropertiesGroupIdsList as any as S.Schema<GetBookshelfPrivateLinkResourceResponsePropertiesRequiredZoneNamesList>;
+
 /** Properties of a private link resource. */
 export interface GetBookshelfPrivateLinkResourceResponseProperties {
   /** The private link resource group id. */
@@ -497,6 +760,11 @@ export interface GetBookshelfPrivateLinkResourceResponseProperties {
   /** The private link resource private link DNS zone name. */
   requiredZoneNames?: GetBookshelfPrivateLinkResourceResponsePropertiesRequiredZoneNamesList;
 }
+const GetBookshelfPrivateLinkResourceResponseProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GetBookshelfPrivateLinkResourceResponseProperties>;
+
 export interface GetBookshelfPrivateLinkResourceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -509,6 +777,11 @@ export interface GetBookshelfPrivateLinkResourceResponse {
   /** Properties of a private link resource. */
   properties?: GetBookshelfPrivateLinkResourceResponseProperties;
 }
+const GetBookshelfPrivateLinkResourceResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<GetBookshelfPrivateLinkResourceResponse>;
+
 export interface GetBookshelveRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -517,8 +790,13 @@ export interface GetBookshelveRequest {
   /** The name of the Bookshelf */
   bookshelfName: string;
 }
+const GetBookshelveRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<GetBookshelveRequest>;
+
 /** Resource tags. */
 export type GetBookshelveResponseTagsMap = { [key: string]: string | undefined };
+const GetBookshelveResponseTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<GetBookshelveResponseTagsMap>;
+
 export interface GetBookshelveResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -535,6 +813,11 @@ export interface GetBookshelveResponse {
   /** The resource-specific properties for this resource. */
   properties?: BookshelfProperties;
 }
+const GetBookshelveResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetBookshelveResponse>;
+
 export interface GetChatModelDeploymentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -545,6 +828,11 @@ export interface GetChatModelDeploymentRequest {
   /** The name of the ChatModelDeployment */
   chatModelDeploymentName: string;
 }
+const GetChatModelDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetChatModelDeploymentRequest>;
+
 /** Resource tags. */
 export type GetChatModelDeploymentResponseTagsMap = { [key: string]: string | undefined };
 export interface GetChatModelDeploymentResponse {
@@ -563,6 +851,9 @@ export interface GetChatModelDeploymentResponse {
   /** The resource-specific properties for this resource. */
   properties?: ChatModelDeploymentProperties;
 }
+const GetChatModelDeploymentResponse =
+  ChatModelDeploymentsCreateOrUpdateResponse as any as S.Schema<GetChatModelDeploymentResponse>;
+
 export interface GetNodePoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -573,8 +864,13 @@ export interface GetNodePoolRequest {
   /** The name of the NodePool */
   nodePoolName: string;
 }
+const GetNodePoolRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<GetNodePoolRequest>;
+
 /** Resource tags. */
 export type GetNodePoolResponseTagsMap = { [key: string]: string | undefined };
+const GetNodePoolResponseTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<GetNodePoolResponseTagsMap>;
+
 /** Supported Azure VM Sizes. */
 export type VmSize =
   | "Standard_NC24ads_A100_v4"
@@ -591,8 +887,12 @@ export type VmSize =
   | "Standard_NV36adms_A10_v5"
   | "Standard_NV72ads_A10_v5"
   | "Standard_ND40rs_v2";
+const VmSize = S.String;
+
 /** The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'. */
 export type NodePoolPropertiesScaleSetPriority = "Regular" | "Spot";
+const NodePoolPropertiesScaleSetPriority = S.String;
+
 /** NodePool properties */
 export interface NodePoolProperties {
   /** The status of the last operation. */
@@ -614,6 +914,8 @@ export interface NodePoolProperties {
   /** The percent of disk usage after which image garbage collection is guaranteed to run. The default is 60% */
   imageCacheUpperThreshold?: number;
 }
+const NodePoolProperties = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<NodePoolProperties>;
+
 export interface GetNodePoolResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -630,6 +932,8 @@ export interface GetNodePoolResponse {
   /** The resource-specific properties for this resource. */
   properties?: NodePoolProperties;
 }
+const GetNodePoolResponse = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<GetNodePoolResponse>;
+
 export interface GetProjectRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -640,15 +944,25 @@ export interface GetProjectRequest {
   /** The name of the Project */
   projectName: string;
 }
+const GetProjectRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<GetProjectRequest>;
+
 /** Resource tags. */
 export type GetProjectResponseTagsMap = { [key: string]: string | undefined };
+const GetProjectResponseTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<GetProjectResponseTagsMap>;
+
 /** Allowed StorageContainers (Control plane resource references). */
 export type ProjectPropertiesStorageContainerIdsList = Array<string>;
+const ProjectPropertiesStorageContainerIdsList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<ProjectPropertiesStorageContainerIdsList>;
+
 /** Settings schema for the project */
 export interface ProjectSettings {
   /** Default preferences to guide AI behaviors in this project. */
   behaviorPreferences?: string;
 }
+const ProjectSettings = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ProjectSettings>;
+
 /** Project properties */
 export interface ProjectProperties {
   /** The status of the last operation. */
@@ -660,6 +974,8 @@ export interface ProjectProperties {
   /** Settings for the project. */
   settings?: ProjectSettings;
 }
+const ProjectProperties = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ProjectProperties>;
+
 export interface GetProjectResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -676,6 +992,8 @@ export interface GetProjectResponse {
   /** The resource-specific properties for this resource. */
   properties?: ProjectProperties;
 }
+const GetProjectResponse = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<GetProjectResponse>;
+
 export interface GetStorageAssetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -686,8 +1004,16 @@ export interface GetStorageAssetRequest {
   /** The name of the StorageAsset */
   storageAssetName: string;
 }
+const GetStorageAssetRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GetStorageAssetRequest>;
+
 /** Resource tags. */
 export type GetStorageAssetResponseTagsMap = { [key: string]: string | undefined };
+const GetStorageAssetResponseTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<GetStorageAssetResponseTagsMap>;
+
 /** Storage Asset properties */
 export interface StorageAssetProperties {
   /** The description */
@@ -697,6 +1023,11 @@ export interface StorageAssetProperties {
   /** The path to the data within its parent container. This should be relative to the root of the parent container. */
   path?: string;
 }
+const StorageAssetProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<StorageAssetProperties>;
+
 export interface GetStorageAssetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -713,6 +1044,11 @@ export interface GetStorageAssetResponse {
   /** The resource-specific properties for this resource. */
   properties?: StorageAssetProperties;
 }
+const GetStorageAssetResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetStorageAssetResponse>;
+
 export interface GetStorageContainerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -721,10 +1057,20 @@ export interface GetStorageContainerRequest {
   /** The name of the StorageContainer */
   storageContainerName: string;
 }
+const GetStorageContainerRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GetStorageContainerRequest>;
+
 /** Resource tags. */
 export type GetStorageContainerResponseTagsMap = { [key: string]: string | undefined };
+const GetStorageContainerResponseTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<GetStorageContainerResponseTagsMap>;
+
 /** The kind of the backing storage store. */
 export type StorageStoreType = "AzureStorageBlob" | "AzureNetAppFiles";
+const StorageStoreType = S.String;
+
 /** An abstract representation of storage store kind. */
 export interface StorageStore {
   /** The storage store kind. */
@@ -736,6 +1082,8 @@ export interface StorageStore {
   /** Protocol used to mount the store: `NFS` or `BlobfuseCaching` (blob only). */
   mountProtocol?: string;
 }
+const StorageStore = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<StorageStore>;
+
 /** Storage Container properties */
 export interface StorageContainerProperties {
   /** The status of the last operation. */
@@ -743,6 +1091,11 @@ export interface StorageContainerProperties {
   /** Storage store properties */
   storageStore: StorageStore;
 }
+const StorageContainerProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<StorageContainerProperties>;
+
 export interface GetStorageContainerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -759,6 +1112,11 @@ export interface GetStorageContainerResponse {
   /** The resource-specific properties for this resource. */
   properties?: StorageContainerProperties;
 }
+const GetStorageContainerResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetStorageContainerResponse>;
+
 export interface GetSupercomputerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -767,12 +1125,24 @@ export interface GetSupercomputerRequest {
   /** The name of the Supercomputer */
   supercomputerName: string;
 }
+const GetSupercomputerRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GetSupercomputerRequest>;
+
 /** Resource tags. */
 export type GetSupercomputerResponseTagsMap = { [key: string]: string | undefined };
+const GetSupercomputerResponseTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<GetSupercomputerResponseTagsMap>;
+
 /** Network egress type provisioned for the supercomputer workloads. Defaults to LoadBalancer if not specified. If None is specified, the customer is responsible for providing outbound connectivity for Supercomputer functionality. */
 export type SupercomputerPropertiesOutboundType = "LoadBalancer" | "None";
+const SupercomputerPropertiesOutboundType = S.String;
+
 /** Supported System SKU Sizes. */
 export type SystemSku = "Standard_D4s_v6" | "Standard_D4s_v5" | "Standard_D4s_v4";
+const SystemSku = S.String;
+
 /** For user assigned identity resource property. */
 export interface Identity {
   /** The resource ID of the user assigned identity. */
@@ -782,6 +1152,8 @@ export interface Identity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
+const Identity = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<Identity>;
+
 /** User assigned identity properties */
 export type SupercomputerIdentitiesWorkloadIdentitiesValue =
   BookshelfPropertiesWorkloadIdentitiesValue;
@@ -789,6 +1161,9 @@ export type SupercomputerIdentitiesWorkloadIdentitiesValue =
 export type SupercomputerIdentitiesWorkloadIdentitiesMap = {
   [key: string]: BookshelfPropertiesWorkloadIdentitiesValue | undefined;
 };
+const SupercomputerIdentitiesWorkloadIdentitiesMap =
+  BookshelfPropertiesWorkloadIdentitiesMap as any as S.Schema<SupercomputerIdentitiesWorkloadIdentitiesMap>;
+
 /** Dictionary of identity properties for the Supercomputer. */
 export interface SupercomputerIdentities {
   /** Cluster identity ID. */
@@ -798,6 +1173,11 @@ export interface SupercomputerIdentities {
   /** User assigned identity IDs to be used by workloads as federated credentials running on supercomputer. The key value must be the resource ID of the identity resource. */
   workloadIdentities?: SupercomputerIdentitiesWorkloadIdentitiesMap;
 }
+const SupercomputerIdentities = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<SupercomputerIdentities>;
+
 /** Supercomputer properties */
 export interface SupercomputerProperties {
   /** The status of the last operation. */
@@ -823,8 +1203,15 @@ export interface SupercomputerProperties {
   /** Managed-On-Behalf-Of configuration properties. This configuration exists for the resources where a resource provider manages those resources on behalf of the resource owner. */
   managedOnBehalfOfConfiguration?: WithMoboBrokerResources;
 }
+const SupercomputerProperties = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<SupercomputerProperties>;
+
 /** Type of managed service identity (either system assigned, or none). */
 export type SystemAssignedServiceIdentityType = "None" | "SystemAssigned";
+const SystemAssignedServiceIdentityType = S.String;
+
 /** Managed service identity (either system assigned, or none) */
 export interface GetSupercomputerResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -833,6 +1220,11 @@ export interface GetSupercomputerResponseIdentity {
   tenantId?: string;
   type: SystemAssignedServiceIdentityType;
 }
+const GetSupercomputerResponseIdentity = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<GetSupercomputerResponseIdentity>;
+
 export interface GetSupercomputerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -851,6 +1243,11 @@ export interface GetSupercomputerResponse {
   /** Managed service identity (either system assigned, or none) */
   identity?: GetSupercomputerResponseIdentity;
 }
+const GetSupercomputerResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetSupercomputerResponse>;
+
 export interface GetToolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -859,12 +1256,25 @@ export interface GetToolRequest {
   /** The name of the Tool */
   toolName: string;
 }
+const GetToolRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<GetToolRequest>;
+
 /** Resource tags. */
 export type GetToolResponseTagsMap = { [key: string]: string | undefined };
+const GetToolResponseTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<GetToolResponseTagsMap>;
+
 /** Environment variables to make available */
 export type ToolPropertiesEnvironmentVariablesMap = { [key: string]: string | undefined };
+const ToolPropertiesEnvironmentVariablesMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<ToolPropertiesEnvironmentVariablesMap>;
+
 /** The JSON content for defining a resource */
 export type ToolPropertiesDefinitionContentMap = { [key: string]: unknown | undefined };
+const ToolPropertiesDefinitionContentMap = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ToolPropertiesDefinitionContentMap>;
+
 /** Discovery Tool list item properties */
 export interface ToolProperties {
   /** The status of the last operation. */
@@ -876,6 +1286,8 @@ export interface ToolProperties {
   /** The JSON content for defining a resource */
   definitionContent: ToolPropertiesDefinitionContentMap;
 }
+const ToolProperties = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ToolProperties>;
+
 export interface GetToolResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -892,6 +1304,8 @@ export interface GetToolResponse {
   /** The resource-specific properties for this resource. */
   properties?: ToolProperties;
 }
+const GetToolResponse = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<GetToolResponse>;
+
 export interface GetWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -900,10 +1314,18 @@ export interface GetWorkspaceRequest {
   /** The name of the Workspace */
   workspaceName: string;
 }
+const GetWorkspaceRequest = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<GetWorkspaceRequest>;
+
 /** Resource tags. */
 export type GetWorkspaceResponseTagsMap = { [key: string]: string | undefined };
+const GetWorkspaceResponseTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<GetWorkspaceResponseTagsMap>;
+
 /** List of linked SuperComputers. */
 export type WorkspacePropertiesSupercomputerIdsList = Array<string>;
+const WorkspacePropertiesSupercomputerIdsList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<WorkspacePropertiesSupercomputerIdsList>;
+
 /** For Key Vault Key references */
 export interface KeyVaultProperties {
   /** The Key Vault URI */
@@ -913,12 +1335,17 @@ export interface KeyVaultProperties {
   /** The Key Version in Key Vault */
   keyVersion?: string;
 }
+const KeyVaultProperties = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<KeyVaultProperties>;
+
 /** The private endpoint connection resource. */
 export type WorkspacePropertiesPrivateEndpointConnectionsItem =
   BookshelfPropertiesPrivateEndpointConnectionsItem;
 /** List of private endpoint connections. */
 export type WorkspacePropertiesPrivateEndpointConnectionsList =
   Array<BookshelfPropertiesPrivateEndpointConnectionsItem>;
+const WorkspacePropertiesPrivateEndpointConnectionsList =
+  BookshelfPropertiesPrivateEndpointConnectionsList as any as S.Schema<WorkspacePropertiesPrivateEndpointConnectionsList>;
+
 /** Workspace properties */
 export interface WorkspaceProperties {
   /** The status of the last operation. */
@@ -952,6 +1379,8 @@ export interface WorkspaceProperties {
   /** Managed-On-Behalf-Of configuration properties. This configuration exists for the resources where a resource provider manages those resources on behalf of the resource owner. */
   managedOnBehalfOfConfiguration?: WithMoboBrokerResources;
 }
+const WorkspaceProperties = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<WorkspaceProperties>;
+
 export interface GetWorkspaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -968,6 +1397,8 @@ export interface GetWorkspaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkspaceProperties;
 }
+const GetWorkspaceResponse = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<GetWorkspaceResponse>;
+
 export interface GetWorkspacePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -978,6 +1409,11 @@ export interface GetWorkspacePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
+const GetWorkspacePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<GetWorkspacePrivateEndpointConnectionRequest>;
+
 /** The group ids for the private endpoint resource. */
 export type GetWorkspacePrivateEndpointConnectionResponsePropertiesGroupIdsList = Array<string>;
 /** Properties of the private endpoint connection. */
@@ -1003,6 +1439,9 @@ export interface GetWorkspacePrivateEndpointConnectionResponse {
   /** Properties of the private endpoint connection. */
   properties?: GetWorkspacePrivateEndpointConnectionResponseProperties;
 }
+const GetWorkspacePrivateEndpointConnectionResponse =
+  GetBookshelfPrivateEndpointConnectionResponse as any as S.Schema<GetWorkspacePrivateEndpointConnectionResponse>;
+
 export interface GetWorkspacePrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1013,6 +1452,11 @@ export interface GetWorkspacePrivateLinkResourceRequest {
   /** The name of the private link associated with the Azure resource. */
   privateLinkResourceName: string;
 }
+const GetWorkspacePrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<GetWorkspacePrivateLinkResourceRequest>;
+
 /** The private link resource required member names. */
 export type GetWorkspacePrivateLinkResourceResponsePropertiesRequiredMembersList = Array<string>;
 /** The private link resource private link DNS zone name. */
@@ -1038,6 +1482,9 @@ export interface GetWorkspacePrivateLinkResourceResponse {
   /** Properties of a private link resource. */
   properties?: GetWorkspacePrivateLinkResourceResponseProperties;
 }
+const GetWorkspacePrivateLinkResourceResponse =
+  GetBookshelfPrivateLinkResourceResponse as any as S.Schema<GetWorkspacePrivateLinkResourceResponse>;
+
 export interface ListBookshelfPrivateEndpointConnectionByBookshelfRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1046,6 +1493,11 @@ export interface ListBookshelfPrivateEndpointConnectionByBookshelfRequest {
   /** The name of the Bookshelf */
   bookshelfName: string;
 }
+const ListBookshelfPrivateEndpointConnectionByBookshelfRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListBookshelfPrivateEndpointConnectionByBookshelfRequest>;
+
 /** The group ids for the private endpoint resource. */
 export type BookshelfPrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 /** Properties of the private endpoint connection. */
@@ -1075,6 +1527,9 @@ export interface BookshelfPrivateEndpointConnection {
 /** The BookshelfPrivateEndpointConnection items on this page */
 export type BookshelfPrivateEndpointConnectionListResultValueList =
   Array<BookshelfPrivateEndpointConnection>;
+const BookshelfPrivateEndpointConnectionListResultValueList =
+  BookshelfPropertiesPrivateEndpointConnectionsList as any as S.Schema<BookshelfPrivateEndpointConnectionListResultValueList>;
+
 /** The response of a BookshelfPrivateEndpointConnection list operation. */
 export interface BookshelfPrivateEndpointConnectionListResult {
   /** The BookshelfPrivateEndpointConnection items on this page */
@@ -1082,6 +1537,11 @@ export interface BookshelfPrivateEndpointConnectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const BookshelfPrivateEndpointConnectionListResult = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<BookshelfPrivateEndpointConnectionListResult>;
+
 export interface ListBookshelfPrivateLinkResourceByBookshelfRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1090,10 +1550,21 @@ export interface ListBookshelfPrivateLinkResourceByBookshelfRequest {
   /** The name of the Bookshelf */
   bookshelfName: string;
 }
+const ListBookshelfPrivateLinkResourceByBookshelfRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListBookshelfPrivateLinkResourceByBookshelfRequest>;
+
 /** The private link resource required member names. */
 export type BookshelfPrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
+const BookshelfPrivateLinkResourcePropertiesRequiredMembersList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<BookshelfPrivateLinkResourcePropertiesRequiredMembersList>;
+
 /** The private link resource private link DNS zone name. */
 export type BookshelfPrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
+const BookshelfPrivateLinkResourcePropertiesRequiredZoneNamesList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<BookshelfPrivateLinkResourcePropertiesRequiredZoneNamesList>;
+
 /** Properties of a private link resource. */
 export interface BookshelfPrivateLinkResourceProperties {
   /** The private link resource group id. */
@@ -1103,6 +1574,11 @@ export interface BookshelfPrivateLinkResourceProperties {
   /** The private link resource private link DNS zone name. */
   requiredZoneNames?: BookshelfPrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
+const BookshelfPrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<BookshelfPrivateLinkResourceProperties>;
+
 /** A private link resource for Bookshelf. */
 export interface BookshelfPrivateLinkResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1116,8 +1592,18 @@ export interface BookshelfPrivateLinkResource {
   /** Properties of a private link resource. */
   properties?: BookshelfPrivateLinkResourceProperties;
 }
+const BookshelfPrivateLinkResource = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<BookshelfPrivateLinkResource>;
+
 /** The BookshelfPrivateLinkResource items on this page */
 export type BookshelfPrivateLinkResourceListResultValueList = Array<BookshelfPrivateLinkResource>;
+const BookshelfPrivateLinkResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<BookshelfPrivateLinkResourceListResultValueList>;
+
 /** The response of a BookshelfPrivateLinkResource list operation. */
 export interface BookshelfPrivateLinkResourceListResult {
   /** The BookshelfPrivateLinkResource items on this page */
@@ -1125,12 +1611,22 @@ export interface BookshelfPrivateLinkResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const BookshelfPrivateLinkResourceListResult = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<BookshelfPrivateLinkResourceListResult>;
+
 export interface ListBookshelveByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListBookshelveByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ListBookshelveByResourceGroupRequest>;
+
 /** Resource tags. */
 export type BookshelfTagsMap = { [key: string]: string | undefined };
 /** Bookshelf tracked resource */
@@ -1150,8 +1646,15 @@ export interface Bookshelf {
   /** The resource-specific properties for this resource. */
   properties?: BookshelfProperties;
 }
+const Bookshelf = GetBookshelveResponse as any as S.Schema<Bookshelf>;
+
 /** The Bookshelf items on this page */
 export type BookshelfListResultValueList = Array<Bookshelf>;
+const BookshelfListResultValueList = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<BookshelfListResultValueList>;
+
 /** The response of a Bookshelf list operation. */
 export interface BookshelfListResult {
   /** The Bookshelf items on this page */
@@ -1159,10 +1662,17 @@ export interface BookshelfListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const BookshelfListResult = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<BookshelfListResult>;
+
 export interface ListBookshelveBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListBookshelveBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ListBookshelveBySubscriptionRequest>;
+
 export interface ListChatModelDeploymentByWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1171,8 +1681,16 @@ export interface ListChatModelDeploymentByWorkspaceRequest {
   /** The name of the Workspace */
   workspaceName: string;
 }
+const ListChatModelDeploymentByWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ListChatModelDeploymentByWorkspaceRequest>;
+
 /** Resource tags. */
 export type ChatModelDeploymentTagsMap = { [key: string]: string | undefined };
+const ChatModelDeploymentTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<ChatModelDeploymentTagsMap>;
+
 /** Represents a deployment that ties a specific model family to a user defined deployment name used when invoking the chat model. */
 export interface ChatModelDeployment {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1190,8 +1708,15 @@ export interface ChatModelDeployment {
   /** The resource-specific properties for this resource. */
   properties?: ChatModelDeploymentProperties;
 }
+const ChatModelDeployment = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<ChatModelDeployment>;
+
 /** The ChatModelDeployment items on this page */
 export type ChatModelDeploymentListResultValueList = Array<ChatModelDeployment>;
+const ChatModelDeploymentListResultValueList = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ChatModelDeploymentListResultValueList>;
+
 /** The response of a ChatModelDeployment list operation. */
 export interface ChatModelDeploymentListResult {
   /** The ChatModelDeployment items on this page */
@@ -1199,6 +1724,11 @@ export interface ChatModelDeploymentListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ChatModelDeploymentListResult = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ChatModelDeploymentListResult>;
+
 export interface ListNodePoolBySupercomputerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1207,6 +1737,11 @@ export interface ListNodePoolBySupercomputerRequest {
   /** The name of the Supercomputer */
   supercomputerName: string;
 }
+const ListNodePoolBySupercomputerRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ListNodePoolBySupercomputerRequest>;
+
 /** Resource tags. */
 export type NodePoolTagsMap = { [key: string]: string | undefined };
 /** NodePool tracked resource */
@@ -1226,8 +1761,15 @@ export interface NodePool {
   /** The resource-specific properties for this resource. */
   properties?: NodePoolProperties;
 }
+const NodePool = GetNodePoolResponse as any as S.Schema<NodePool>;
+
 /** The NodePool items on this page */
 export type NodePoolListResultValueList = Array<NodePool>;
+const NodePoolListResultValueList = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<NodePoolListResultValueList>;
+
 /** The response of a NodePool list operation. */
 export interface NodePoolListResult {
   /** The NodePool items on this page */
@@ -1235,7 +1777,14 @@ export interface NodePoolListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const NodePoolListResult = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<NodePoolListResult>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -1247,10 +1796,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -1264,14 +1819,26 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListProjectByWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1280,6 +1847,11 @@ export interface ListProjectByWorkspaceRequest {
   /** The name of the Workspace */
   workspaceName: string;
 }
+const ListProjectByWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ListProjectByWorkspaceRequest>;
+
 /** Resource tags. */
 export type ProjectTagsMap = { [key: string]: string | undefined };
 /** Project tracked resource */
@@ -1299,8 +1871,15 @@ export interface Project {
   /** The resource-specific properties for this resource. */
   properties?: ProjectProperties;
 }
+const Project = GetProjectResponse as any as S.Schema<Project>;
+
 /** The Project items on this page */
 export type ProjectListResultValueList = Array<Project>;
+const ProjectListResultValueList = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ProjectListResultValueList>;
+
 /** The response of a Project list operation. */
 export interface ProjectListResult {
   /** The Project items on this page */
@@ -1308,6 +1887,8 @@ export interface ProjectListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ProjectListResult = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<ProjectListResult>;
+
 export interface ListStorageAssetByStorageContainerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1316,6 +1897,11 @@ export interface ListStorageAssetByStorageContainerRequest {
   /** The name of the StorageContainer */
   storageContainerName: string;
 }
+const ListStorageAssetByStorageContainerRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ListStorageAssetByStorageContainerRequest>;
+
 /** Resource tags. */
 export type StorageAssetTagsMap = { [key: string]: string | undefined };
 /** Storage Asset tracked resource */
@@ -1335,8 +1921,15 @@ export interface StorageAsset {
   /** The resource-specific properties for this resource. */
   properties?: StorageAssetProperties;
 }
+const StorageAsset = GetStorageAssetResponse as any as S.Schema<StorageAsset>;
+
 /** The StorageAsset items on this page */
 export type StorageAssetListResultValueList = Array<StorageAsset>;
+const StorageAssetListResultValueList = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<StorageAssetListResultValueList>;
+
 /** The response of a StorageAsset list operation. */
 export interface StorageAssetListResult {
   /** The StorageAsset items on this page */
@@ -1344,14 +1937,27 @@ export interface StorageAssetListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const StorageAssetListResult = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<StorageAssetListResult>;
+
 export interface ListStorageContainerByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListStorageContainerByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ListStorageContainerByResourceGroupRequest>;
+
 /** Resource tags. */
 export type StorageContainerTagsMap = { [key: string]: string | undefined };
+const StorageContainerTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<StorageContainerTagsMap>;
+
 /** Storage Container tracked resource */
 export interface StorageContainer {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1369,8 +1975,15 @@ export interface StorageContainer {
   /** The resource-specific properties for this resource. */
   properties?: StorageContainerProperties;
 }
+const StorageContainer = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<StorageContainer>;
+
 /** The StorageContainer items on this page */
 export type StorageContainerListResultValueList = Array<StorageContainer>;
+const StorageContainerListResultValueList = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<StorageContainerListResultValueList>;
+
 /** The response of a StorageContainer list operation. */
 export interface StorageContainerListResult {
   /** The StorageContainer items on this page */
@@ -1378,16 +1991,31 @@ export interface StorageContainerListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const StorageContainerListResult = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<StorageContainerListResult>;
+
 export interface ListStorageContainerBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListStorageContainerBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ListStorageContainerBySubscriptionRequest>;
+
 export interface ListSupercomputerByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListSupercomputerByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ListSupercomputerByResourceGroupRequest>;
+
 /** Resource tags. */
 export type SupercomputerTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (either system assigned, or none) */
@@ -1411,8 +2039,15 @@ export interface Supercomputer {
   /** Managed service identity (either system assigned, or none) */
   identity?: GetSupercomputerResponseIdentity;
 }
+const Supercomputer = GetSupercomputerResponse as any as S.Schema<Supercomputer>;
+
 /** The Supercomputer items on this page */
 export type SupercomputerListResultValueList = Array<Supercomputer>;
+const SupercomputerListResultValueList = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<SupercomputerListResultValueList>;
+
 /** The response of a Supercomputer list operation. */
 export interface SupercomputerListResult {
   /** The Supercomputer items on this page */
@@ -1420,16 +2055,31 @@ export interface SupercomputerListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SupercomputerListResult = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<SupercomputerListResult>;
+
 export interface ListSupercomputerBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListSupercomputerBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ListSupercomputerBySubscriptionRequest>;
+
 export interface ListToolByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListToolByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<ListToolByResourceGroupRequest>;
+
 /** Resource tags. */
 export type ToolTagsMap = { [key: string]: string | undefined };
 /** Tool tracked resource */
@@ -1449,8 +2099,15 @@ export interface Tool {
   /** The resource-specific properties for this resource. */
   properties?: ToolProperties;
 }
+const Tool = GetToolResponse as any as S.Schema<Tool>;
+
 /** The Tool items on this page */
 export type ToolListResultValueList = Array<Tool>;
+const ToolListResultValueList = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ToolListResultValueList>;
+
 /** The response of a Tool list operation. */
 export interface ToolListResult {
   /** The Tool items on this page */
@@ -1458,16 +2115,28 @@ export interface ToolListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ToolListResult = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<ToolListResult>;
+
 export interface ListToolBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListToolBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ListToolBySubscriptionRequest>;
+
 export interface ListWorkspaceByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListWorkspaceByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ListWorkspaceByResourceGroupRequest>;
+
 /** Resource tags. */
 export type WorkspaceTagsMap = { [key: string]: string | undefined };
 /** Workspace tracked resource */
@@ -1487,8 +2156,15 @@ export interface Workspace {
   /** The resource-specific properties for this resource. */
   properties?: WorkspaceProperties;
 }
+const Workspace = GetWorkspaceResponse as any as S.Schema<Workspace>;
+
 /** The Workspace items on this page */
 export type WorkspaceListResultValueList = Array<Workspace>;
+const WorkspaceListResultValueList = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<WorkspaceListResultValueList>;
+
 /** The response of a Workspace list operation. */
 export interface WorkspaceListResult {
   /** The Workspace items on this page */
@@ -1496,10 +2172,17 @@ export interface WorkspaceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const WorkspaceListResult = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<WorkspaceListResult>;
+
 export interface ListWorkspaceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListWorkspaceBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ListWorkspaceBySubscriptionRequest>;
+
 export interface ListWorkspacePrivateEndpointConnectionByWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1508,6 +2191,11 @@ export interface ListWorkspacePrivateEndpointConnectionByWorkspaceRequest {
   /** The name of the Workspace */
   workspaceName: string;
 }
+const ListWorkspacePrivateEndpointConnectionByWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<ListWorkspacePrivateEndpointConnectionByWorkspaceRequest>;
+
 /** The group ids for the private endpoint resource. */
 export type WorkspacePrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
 /** Properties of the private endpoint connection. */
@@ -1544,6 +2232,9 @@ export interface WorkspacePrivateEndpointConnectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const WorkspacePrivateEndpointConnectionListResult =
+  BookshelfPrivateEndpointConnectionListResult as any as S.Schema<WorkspacePrivateEndpointConnectionListResult>;
+
 export interface ListWorkspacePrivateLinkResourceByWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1552,6 +2243,11 @@ export interface ListWorkspacePrivateLinkResourceByWorkspaceRequest {
   /** The name of the Workspace */
   workspaceName: string;
 }
+const ListWorkspacePrivateLinkResourceByWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ListWorkspacePrivateLinkResourceByWorkspaceRequest>;
+
 /** The private link resource required member names. */
 export type WorkspacePrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 /** The private link resource private link DNS zone name. */
@@ -1587,10 +2283,18 @@ export interface WorkspacePrivateLinkResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const WorkspacePrivateLinkResourceListResult =
+  BookshelfPrivateLinkResourceListResult as any as S.Schema<WorkspacePrivateLinkResourceListResult>;
+
 /** Resource tags. */
 export type NodePoolsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const NodePoolsCreateOrUpdateRequestTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<NodePoolsCreateOrUpdateRequestTagsMap>;
+
 /** The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'. */
 export type NodePoolPropertiesInputScaleSetPriority = "Regular" | "Spot";
+const NodePoolPropertiesInputScaleSetPriority = S.String;
+
 /** NodePool properties */
 export interface NodePoolPropertiesInput {
   /** The node pool subnet. */
@@ -1610,6 +2314,11 @@ export interface NodePoolPropertiesInput {
   /** The percent of disk usage after which image garbage collection is guaranteed to run. The default is 60% */
   imageCacheUpperThreshold?: number;
 }
+const NodePoolPropertiesInput = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<NodePoolPropertiesInput>;
+
 export interface NodePoolsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1626,8 +2335,16 @@ export interface NodePoolsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: NodePoolPropertiesInput;
 }
+const NodePoolsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<NodePoolsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type NodePoolsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const NodePoolsCreateOrUpdateResponseTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<NodePoolsCreateOrUpdateResponseTagsMap>;
+
 export interface NodePoolsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1644,10 +2361,21 @@ export interface NodePoolsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: NodePoolProperties;
 }
+const NodePoolsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<NodePoolsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type ProjectsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const ProjectsCreateOrUpdateRequestTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<ProjectsCreateOrUpdateRequestTagsMap>;
+
 /** Allowed StorageContainers (Control plane resource references). */
 export type ProjectPropertiesInputStorageContainerIdsList = Array<string>;
+const ProjectPropertiesInputStorageContainerIdsList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<ProjectPropertiesInputStorageContainerIdsList>;
+
 /** Project properties */
 export interface ProjectPropertiesInput {
   /** Allowed StorageContainers (Control plane resource references). */
@@ -1655,6 +2383,11 @@ export interface ProjectPropertiesInput {
   /** Settings for the project. */
   settings?: ProjectSettings;
 }
+const ProjectPropertiesInput = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ProjectPropertiesInput>;
+
 export interface ProjectsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1671,8 +2404,16 @@ export interface ProjectsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ProjectPropertiesInput;
 }
+const ProjectsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ProjectsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type ProjectsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const ProjectsCreateOrUpdateResponseTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<ProjectsCreateOrUpdateResponseTagsMap>;
+
 export interface ProjectsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1689,8 +2430,16 @@ export interface ProjectsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ProjectProperties;
 }
+const ProjectsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ProjectsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type StorageAssetsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const StorageAssetsCreateOrUpdateRequestTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<StorageAssetsCreateOrUpdateRequestTagsMap>;
+
 /** Storage Asset properties */
 export interface StorageAssetPropertiesInput {
   /** The description */
@@ -1698,6 +2447,11 @@ export interface StorageAssetPropertiesInput {
   /** The path to the data within its parent container. This should be relative to the root of the parent container. */
   path?: string;
 }
+const StorageAssetPropertiesInput = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<StorageAssetPropertiesInput>;
+
 export interface StorageAssetsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1714,8 +2468,16 @@ export interface StorageAssetsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: StorageAssetPropertiesInput;
 }
+const StorageAssetsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<StorageAssetsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type StorageAssetsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const StorageAssetsCreateOrUpdateResponseTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<StorageAssetsCreateOrUpdateResponseTagsMap>;
+
 export interface StorageAssetsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1732,13 +2494,26 @@ export interface StorageAssetsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: StorageAssetProperties;
 }
+const StorageAssetsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<StorageAssetsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type StorageContainersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const StorageContainersCreateOrUpdateRequestTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<StorageContainersCreateOrUpdateRequestTagsMap>;
+
 /** Storage Container properties */
 export interface StorageContainerPropertiesInput {
   /** Storage store properties */
   storageStore: StorageStore;
 }
+const StorageContainerPropertiesInput = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<StorageContainerPropertiesInput>;
+
 export interface StorageContainersCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1753,6 +2528,11 @@ export interface StorageContainersCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: StorageContainerPropertiesInput;
 }
+const StorageContainersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<StorageContainersCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type StorageContainersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface StorageContainersCreateOrUpdateResponse {
@@ -1771,16 +2551,27 @@ export interface StorageContainersCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: StorageContainerProperties;
 }
+const StorageContainersCreateOrUpdateResponse =
+  GetStorageContainerResponse as any as S.Schema<StorageContainersCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type SupercomputersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const SupercomputersCreateOrUpdateRequestTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<SupercomputersCreateOrUpdateRequestTagsMap>;
+
 /** Network egress type provisioned for the supercomputer workloads. Defaults to LoadBalancer if not specified. If None is specified, the customer is responsible for providing outbound connectivity for Supercomputer functionality. */
 export type SupercomputerPropertiesInputOutboundType = "LoadBalancer" | "None";
+const SupercomputerPropertiesInputOutboundType = S.String;
+
 /** User assigned identity properties */
 export type SupercomputerIdentitiesInputWorkloadIdentitiesValue = PrivateEndpointInput;
 /** User assigned identity IDs to be used by workloads as federated credentials running on supercomputer. The key value must be the resource ID of the identity resource. */
 export type SupercomputerIdentitiesInputWorkloadIdentitiesMap = {
   [key: string]: PrivateEndpointInput | undefined;
 };
+const SupercomputerIdentitiesInputWorkloadIdentitiesMap =
+  BookshelfPropertiesInputWorkloadIdentitiesMap as any as S.Schema<SupercomputerIdentitiesInputWorkloadIdentitiesMap>;
+
 /** Dictionary of identity properties for the Supercomputer. */
 export interface SupercomputerIdentitiesInput {
   /** Cluster identity ID. */
@@ -1790,6 +2581,11 @@ export interface SupercomputerIdentitiesInput {
   /** User assigned identity IDs to be used by workloads as federated credentials running on supercomputer. The key value must be the resource ID of the identity resource. */
   workloadIdentities?: SupercomputerIdentitiesInputWorkloadIdentitiesMap;
 }
+const SupercomputerIdentitiesInput = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<SupercomputerIdentitiesInput>;
+
 /** Supercomputer properties */
 export interface SupercomputerPropertiesInput {
   /** System Subnet ID associated with managed NodePool for system resources. It should have connectivity to the child NodePool subnets. */
@@ -1809,10 +2605,20 @@ export interface SupercomputerPropertiesInput {
   /** The Log Analytics Cluster to use for debug logs. This is required when Customer Managed Keys are enabled. */
   logAnalyticsClusterId?: string;
 }
+const SupercomputerPropertiesInput = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<SupercomputerPropertiesInput>;
+
 /** Managed service identity (either system assigned, or none) */
 export interface SupercomputersCreateOrUpdateRequestIdentity {
   type: SystemAssignedServiceIdentityType | (string & {});
 }
+const SupercomputersCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<SupercomputersCreateOrUpdateRequestIdentity>;
+
 export interface SupercomputersCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1829,8 +2635,16 @@ export interface SupercomputersCreateOrUpdateRequest {
   /** Managed service identity (either system assigned, or none) */
   identity?: SupercomputersCreateOrUpdateRequestIdentity;
 }
+const SupercomputersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<SupercomputersCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type SupercomputersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const SupercomputersCreateOrUpdateResponseTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<SupercomputersCreateOrUpdateResponseTagsMap>;
+
 /** Managed service identity (either system assigned, or none) */
 export type SupercomputersCreateOrUpdateResponseIdentity = GetSupercomputerResponseIdentity;
 export interface SupercomputersCreateOrUpdateResponse {
@@ -1851,12 +2665,26 @@ export interface SupercomputersCreateOrUpdateResponse {
   /** Managed service identity (either system assigned, or none) */
   identity?: GetSupercomputerResponseIdentity;
 }
+const SupercomputersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<SupercomputersCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type ToolsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const ToolsCreateOrUpdateRequestTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<ToolsCreateOrUpdateRequestTagsMap>;
+
 /** Environment variables to make available */
 export type ToolPropertiesInputEnvironmentVariablesMap = { [key: string]: string | undefined };
+const ToolPropertiesInputEnvironmentVariablesMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<ToolPropertiesInputEnvironmentVariablesMap>;
+
 /** The JSON content for defining a resource */
 export type ToolPropertiesInputDefinitionContentMap = { [key: string]: unknown | undefined };
+const ToolPropertiesInputDefinitionContentMap =
+  ToolPropertiesDefinitionContentMap as any as S.Schema<ToolPropertiesInputDefinitionContentMap>;
+
 /** Discovery Tool list item properties */
 export interface ToolPropertiesInput {
   /** The version of a resource definition */
@@ -1866,6 +2694,8 @@ export interface ToolPropertiesInput {
   /** The JSON content for defining a resource */
   definitionContent: ToolPropertiesInputDefinitionContentMap;
 }
+const ToolPropertiesInput = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<ToolPropertiesInput>;
+
 export interface ToolsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1880,8 +2710,16 @@ export interface ToolsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ToolPropertiesInput;
 }
+const ToolsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<ToolsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type ToolsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const ToolsCreateOrUpdateResponseTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<ToolsCreateOrUpdateResponseTagsMap>;
+
 export interface ToolsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1898,8 +2736,16 @@ export interface ToolsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ToolProperties;
 }
+const ToolsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<ToolsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type UpdateBookshelveRequestTagsMap = { [key: string]: string | undefined };
+const UpdateBookshelveRequestTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateBookshelveRequestTagsMap>;
+
 /** Key Vault Properties with clientId selection */
 export interface BookshelfKeyVaultPropertiesUpdate {
   /** The Key Name in Key Vault */
@@ -1907,6 +2753,11 @@ export interface BookshelfKeyVaultPropertiesUpdate {
   /** The Key Version in Key Vault */
   keyVersion?: string;
 }
+const BookshelfKeyVaultPropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<BookshelfKeyVaultPropertiesUpdate>;
+
 /** Bookshelf properties */
 export interface BookshelfPropertiesUpdate {
   /** The key to use for encrypting data at rest when customer managed keys are enabled. Required if Customer Managed Keys is enabled. */
@@ -1914,6 +2765,11 @@ export interface BookshelfPropertiesUpdate {
   /** Whether or not public network access is allowed for this resource. For security reasons, it is recommended to disable it whenever possible. */
   publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
+const BookshelfPropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<BookshelfPropertiesUpdate>;
+
 export interface UpdateBookshelveRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1926,6 +2782,11 @@ export interface UpdateBookshelveRequest {
   /** The resource-specific properties for this resource. */
   properties?: BookshelfPropertiesUpdate;
 }
+const UpdateBookshelveRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<UpdateBookshelveRequest>;
+
 /** Resource tags. */
 export type UpdateBookshelveResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateBookshelveResponse {
@@ -1944,13 +2805,23 @@ export interface UpdateBookshelveResponse {
   /** The resource-specific properties for this resource. */
   properties?: BookshelfProperties;
 }
+const UpdateBookshelveResponse = GetBookshelveResponse as any as S.Schema<UpdateBookshelveResponse>;
+
 /** Resource tags. */
 export type UpdateChatModelDeploymentRequestTagsMap = { [key: string]: string | undefined };
+const UpdateChatModelDeploymentRequestTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateChatModelDeploymentRequestTagsMap>;
+
 /** Defines a deployment binding a specific model family to a user-defined deployment name for chat inference. */
 export interface ChatModelDeploymentPropertiesUpdate {
   /** Provisioned SKU capacity units for this chat model deployment. */
   capacity?: number;
 }
+const ChatModelDeploymentPropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<ChatModelDeploymentPropertiesUpdate>;
+
 export interface UpdateChatModelDeploymentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1965,6 +2836,11 @@ export interface UpdateChatModelDeploymentRequest {
   /** The resource-specific properties for this resource. */
   properties?: ChatModelDeploymentPropertiesUpdate;
 }
+const UpdateChatModelDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<UpdateChatModelDeploymentRequest>;
+
 /** Resource tags. */
 export type UpdateChatModelDeploymentResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateChatModelDeploymentResponse {
@@ -1983,8 +2859,14 @@ export interface UpdateChatModelDeploymentResponse {
   /** The resource-specific properties for this resource. */
   properties?: ChatModelDeploymentProperties;
 }
+const UpdateChatModelDeploymentResponse =
+  ChatModelDeploymentsCreateOrUpdateResponse as any as S.Schema<UpdateChatModelDeploymentResponse>;
+
 /** Resource tags. */
 export type UpdateNodePoolRequestTagsMap = { [key: string]: string | undefined };
+const UpdateNodePoolRequestTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateNodePoolRequestTagsMap>;
+
 /** NodePool properties */
 export interface NodePoolPropertiesUpdate {
   /** The maximum number of nodes. */
@@ -1992,6 +2874,11 @@ export interface NodePoolPropertiesUpdate {
   /** The minimum number of nodes. */
   minNodeCount?: number;
 }
+const NodePoolPropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<NodePoolPropertiesUpdate>;
+
 export interface UpdateNodePoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2006,6 +2893,11 @@ export interface UpdateNodePoolRequest {
   /** The resource-specific properties for this resource. */
   properties?: NodePoolPropertiesUpdate;
 }
+const UpdateNodePoolRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<UpdateNodePoolRequest>;
+
 /** Resource tags. */
 export type UpdateNodePoolResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateNodePoolResponse {
@@ -2024,8 +2916,13 @@ export interface UpdateNodePoolResponse {
   /** The resource-specific properties for this resource. */
   properties?: NodePoolProperties;
 }
+const UpdateNodePoolResponse = GetNodePoolResponse as any as S.Schema<UpdateNodePoolResponse>;
+
 /** Resource tags. */
 export type UpdateProjectRequestTagsMap = { [key: string]: string | undefined };
+const UpdateProjectRequestTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateProjectRequestTagsMap>;
+
 export interface UpdateProjectRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2040,6 +2937,11 @@ export interface UpdateProjectRequest {
   /** The resource-specific properties for this resource. */
   properties?: ProjectPropertiesInput;
 }
+const UpdateProjectRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<UpdateProjectRequest>;
+
 /** Resource tags. */
 export type UpdateProjectResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateProjectResponse {
@@ -2058,13 +2960,23 @@ export interface UpdateProjectResponse {
   /** The resource-specific properties for this resource. */
   properties?: ProjectProperties;
 }
+const UpdateProjectResponse = GetProjectResponse as any as S.Schema<UpdateProjectResponse>;
+
 /** Resource tags. */
 export type UpdateStorageAssetRequestTagsMap = { [key: string]: string | undefined };
+const UpdateStorageAssetRequestTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateStorageAssetRequestTagsMap>;
+
 /** Storage Asset properties */
 export interface StorageAssetPropertiesUpdate {
   /** The description */
   description?: string;
 }
+const StorageAssetPropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<StorageAssetPropertiesUpdate>;
+
 export interface UpdateStorageAssetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2079,6 +2991,11 @@ export interface UpdateStorageAssetRequest {
   /** The resource-specific properties for this resource. */
   properties?: StorageAssetPropertiesUpdate;
 }
+const UpdateStorageAssetRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<UpdateStorageAssetRequest>;
+
 /** Resource tags. */
 export type UpdateStorageAssetResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateStorageAssetResponse {
@@ -2097,8 +3014,14 @@ export interface UpdateStorageAssetResponse {
   /** The resource-specific properties for this resource. */
   properties?: StorageAssetProperties;
 }
+const UpdateStorageAssetResponse =
+  StorageAssetsCreateOrUpdateResponse as any as S.Schema<UpdateStorageAssetResponse>;
+
 /** Resource tags. */
 export type UpdateStorageContainerRequestTagsMap = { [key: string]: string | undefined };
+const UpdateStorageContainerRequestTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateStorageContainerRequestTagsMap>;
+
 export interface UpdateStorageContainerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2111,6 +3034,11 @@ export interface UpdateStorageContainerRequest {
   /** The resource-specific properties for this resource. */
   properties?: unknown;
 }
+const UpdateStorageContainerRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<UpdateStorageContainerRequest>;
+
 /** Resource tags. */
 export type UpdateStorageContainerResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateStorageContainerResponse {
@@ -2129,33 +3057,59 @@ export interface UpdateStorageContainerResponse {
   /** The resource-specific properties for this resource. */
   properties?: StorageContainerProperties;
 }
+const UpdateStorageContainerResponse =
+  GetStorageContainerResponse as any as S.Schema<UpdateStorageContainerResponse>;
+
 /** Resource tags. */
 export type UpdateSupercomputerRequestTagsMap = { [key: string]: string | undefined };
+const UpdateSupercomputerRequestTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSupercomputerRequestTagsMap>;
+
 /** User assigned identity properties */
 export type SupercomputerIdentitiesUpdateInputWorkloadIdentitiesValue = PrivateEndpointInput;
 /** User assigned identity IDs to be used by workloads as federated credentials running on supercomputer. The key value must be the resource ID of the identity resource. */
 export type SupercomputerIdentitiesUpdateInputWorkloadIdentitiesMap = {
   [key: string]: PrivateEndpointInput | undefined;
 };
+const SupercomputerIdentitiesUpdateInputWorkloadIdentitiesMap =
+  BookshelfPropertiesInputWorkloadIdentitiesMap as any as S.Schema<SupercomputerIdentitiesUpdateInputWorkloadIdentitiesMap>;
+
 /** Dictionary of identity properties for the Supercomputer. */
 export interface SupercomputerIdentitiesUpdateInput {
   /** User assigned identity IDs to be used by workloads as federated credentials running on supercomputer. The key value must be the resource ID of the identity resource. */
   workloadIdentities?: SupercomputerIdentitiesUpdateInputWorkloadIdentitiesMap;
 }
+const SupercomputerIdentitiesUpdateInput = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<SupercomputerIdentitiesUpdateInput>;
+
 /** Supercomputer properties */
 export interface SupercomputerPropertiesUpdateInput {
   /** Dictionary of identity properties. */
   identities?: SupercomputerIdentitiesUpdateInput;
 }
+const SupercomputerPropertiesUpdateInput = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<SupercomputerPropertiesUpdateInput>;
+
 /** Type of managed service identity (either system assigned, or none). */
 export type AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdateType =
   | "None"
   | "SystemAssigned";
+const AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdateType = S.String;
+
 /** Managed service identity (either system assigned, or none) */
 export interface AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdate {
   /** Type of managed service identity (either system assigned, or none). */
   type?: AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdateType | (string & {});
 }
+const AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdate = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdate>;
+
 export interface UpdateSupercomputerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2170,6 +3124,11 @@ export interface UpdateSupercomputerRequest {
   /** The managed service identities assigned to this resource. */
   identity?: AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdate;
 }
+const UpdateSupercomputerRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<UpdateSupercomputerRequest>;
+
 /** Resource tags. */
 export type UpdateSupercomputerResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (either system assigned, or none) */
@@ -2192,12 +3151,24 @@ export interface UpdateSupercomputerResponse {
   /** Managed service identity (either system assigned, or none) */
   identity?: GetSupercomputerResponseIdentity;
 }
+const UpdateSupercomputerResponse =
+  SupercomputersCreateOrUpdateResponse as any as S.Schema<UpdateSupercomputerResponse>;
+
 /** Resource tags. */
 export type UpdateToolRequestTagsMap = { [key: string]: string | undefined };
+const UpdateToolRequestTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateToolRequestTagsMap>;
+
 /** Environment variables to make available */
 export type ToolPropertiesUpdateEnvironmentVariablesMap = { [key: string]: string | undefined };
+const ToolPropertiesUpdateEnvironmentVariablesMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<ToolPropertiesUpdateEnvironmentVariablesMap>;
+
 /** The JSON content for defining a resource */
 export type ToolPropertiesUpdateDefinitionContentMap = { [key: string]: unknown | undefined };
+const ToolPropertiesUpdateDefinitionContentMap =
+  ToolPropertiesDefinitionContentMap as any as S.Schema<ToolPropertiesUpdateDefinitionContentMap>;
+
 /** Discovery Tool list item properties */
 export interface ToolPropertiesUpdate {
   /** The version of a resource definition */
@@ -2207,6 +3178,11 @@ export interface ToolPropertiesUpdate {
   /** The JSON content for defining a resource */
   definitionContent?: ToolPropertiesUpdateDefinitionContentMap;
 }
+const ToolPropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<ToolPropertiesUpdate>;
+
 export interface UpdateToolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2219,6 +3195,8 @@ export interface UpdateToolRequest {
   /** The resource-specific properties for this resource. */
   properties?: ToolPropertiesUpdate;
 }
+const UpdateToolRequest = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<UpdateToolRequest>;
+
 /** Resource tags. */
 export type UpdateToolResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateToolResponse {
@@ -2237,10 +3215,18 @@ export interface UpdateToolResponse {
   /** The resource-specific properties for this resource. */
   properties?: ToolProperties;
 }
+const UpdateToolResponse = GetToolResponse as any as S.Schema<UpdateToolResponse>;
+
 /** Resource tags. */
 export type UpdateWorkspaceRequestTagsMap = { [key: string]: string | undefined };
+const UpdateWorkspaceRequestTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateWorkspaceRequestTagsMap>;
+
 /** List of linked SuperComputers. */
 export type WorkspacePropertiesUpdateSupercomputerIdsList = Array<string>;
+const WorkspacePropertiesUpdateSupercomputerIdsList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<WorkspacePropertiesUpdateSupercomputerIdsList>;
+
 /** For Key Vault Key references */
 export type KeyVaultPropertiesUpdate = BookshelfKeyVaultPropertiesUpdate;
 /** Workspace properties */
@@ -2252,6 +3238,11 @@ export interface WorkspacePropertiesUpdate {
   /** Whether or not public network access is allowed for this resource. For security reasons, it is recommended to disable it whenever possible. */
   publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
+const WorkspacePropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<WorkspacePropertiesUpdate>;
+
 export interface UpdateWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2264,6 +3255,11 @@ export interface UpdateWorkspaceRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkspacePropertiesUpdate;
 }
+const UpdateWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<UpdateWorkspaceRequest>;
+
 /** Resource tags. */
 export type UpdateWorkspaceResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateWorkspaceResponse {
@@ -2282,6 +3278,8 @@ export interface UpdateWorkspaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkspaceProperties;
 }
+const UpdateWorkspaceResponse = GetWorkspaceResponse as any as S.Schema<UpdateWorkspaceResponse>;
+
 /** Properties of the private endpoint connection. */
 export type WorkspacePrivateEndpointConnectionsCreateOrUpdateRequestProperties =
   BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties;
@@ -2297,6 +3295,11 @@ export interface WorkspacePrivateEndpointConnectionsCreateOrUpdateRequest {
   /** Properties of the private endpoint connection. */
   properties?: BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties;
 }
+const WorkspacePrivateEndpointConnectionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<WorkspacePrivateEndpointConnectionsCreateOrUpdateRequest>;
+
 /** The group ids for the private endpoint resource. */
 export type WorkspacePrivateEndpointConnectionsCreateOrUpdateResponsePropertiesGroupIdsList =
   Array<string>;
@@ -2323,10 +3326,19 @@ export interface WorkspacePrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Properties of the private endpoint connection. */
   properties?: WorkspacePrivateEndpointConnectionsCreateOrUpdateResponseProperties;
 }
+const WorkspacePrivateEndpointConnectionsCreateOrUpdateResponse =
+  BookshelfPrivateEndpointConnectionsCreateOrUpdateResponse as any as S.Schema<WorkspacePrivateEndpointConnectionsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type WorkspacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const WorkspacesCreateOrUpdateRequestTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<WorkspacesCreateOrUpdateRequestTagsMap>;
+
 /** List of linked SuperComputers. */
 export type WorkspacePropertiesInputSupercomputerIdsList = Array<string>;
+const WorkspacePropertiesInputSupercomputerIdsList =
+  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<WorkspacePropertiesInputSupercomputerIdsList>;
+
 /** Workspace properties */
 export interface WorkspacePropertiesInput {
   /** List of linked SuperComputers. */
@@ -2348,6 +3360,11 @@ export interface WorkspacePropertiesInput {
   /** Function Subnet ID for workspace resources. */
   workspaceSubnetId?: string;
 }
+const WorkspacePropertiesInput = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<WorkspacePropertiesInput>;
+
 export interface WorkspacesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2362,8 +3379,16 @@ export interface WorkspacesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkspacePropertiesInput;
 }
+const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<WorkspacesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type WorkspacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const WorkspacesCreateOrUpdateResponseTagsMap =
+  BookshelvesCreateOrUpdateRequestTagsMap as any as S.Schema<WorkspacesCreateOrUpdateResponseTagsMap>;
+
 export interface WorkspacesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2380,6 +3405,11 @@ export interface WorkspacesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkspaceProperties;
 }
+const WorkspacesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<WorkspacesCreateOrUpdateResponse>;
+
 export type BookshelfPrivateEndpointConnectionsCreateOrUpdateError = AzureOpError;
 /** Approves or updates the specified private endpoint connection. */
 export const BookshelfPrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
@@ -2388,8 +3418,8 @@ export const BookshelfPrivateEndpointConnectionsCreateOrUpdate: API.OperationMet
   BookshelfPrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<BookshelfPrivateEndpointConnectionsCreateOrUpdateRequest>,
-  output: __S(8) as any as S.Schema<BookshelfPrivateEndpointConnectionsCreateOrUpdateResponse>,
+  input: BookshelfPrivateEndpointConnectionsCreateOrUpdateRequest,
+  output: BookshelfPrivateEndpointConnectionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2403,8 +3433,8 @@ export const BookshelvesCreateOrUpdate: API.OperationMethod<
   BookshelvesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<BookshelvesCreateOrUpdateRequest>,
-  output: __S(24) as any as S.Schema<BookshelvesCreateOrUpdateResponse>,
+  input: BookshelvesCreateOrUpdateRequest,
+  output: BookshelvesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2418,8 +3448,8 @@ export const ChatModelDeploymentsCreateOrUpdate: API.OperationMethod<
   ChatModelDeploymentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<ChatModelDeploymentsCreateOrUpdateRequest>,
-  output: __S(28) as any as S.Schema<ChatModelDeploymentsCreateOrUpdateResponse>,
+  input: ChatModelDeploymentsCreateOrUpdateRequest,
+  output: ChatModelDeploymentsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2433,8 +3463,8 @@ export const DeleteBookshelfPrivateEndpointConnection: API.OperationMethod<
   DeleteBookshelfPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<DeleteBookshelfPrivateEndpointConnectionRequest>,
-  output: __S(30) as any as S.Schema<DeleteBookshelfPrivateEndpointConnectionResponse>,
+  input: DeleteBookshelfPrivateEndpointConnectionRequest,
+  output: DeleteBookshelfPrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2448,8 +3478,8 @@ export const DeleteBookshelve: API.OperationMethod<
   DeleteBookshelveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<DeleteBookshelveRequest>,
-  output: __S(0) as any as S.Schema<DeleteBookshelveResponse>,
+  input: DeleteBookshelveRequest,
+  output: DeleteBookshelveResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2463,8 +3493,8 @@ export const DeleteChatModelDeployment: API.OperationMethod<
   DeleteChatModelDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<DeleteChatModelDeploymentRequest>,
-  output: __S(30) as any as S.Schema<DeleteChatModelDeploymentResponse>,
+  input: DeleteChatModelDeploymentRequest,
+  output: DeleteChatModelDeploymentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2478,8 +3508,8 @@ export const DeleteNodePool: API.OperationMethod<
   DeleteNodePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<DeleteNodePoolRequest>,
-  output: __S(0) as any as S.Schema<DeleteNodePoolResponse>,
+  input: DeleteNodePoolRequest,
+  output: DeleteNodePoolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2493,8 +3523,8 @@ export const DeleteProject: API.OperationMethod<
   DeleteProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<DeleteProjectRequest>,
-  output: __S(0) as any as S.Schema<DeleteProjectResponse>,
+  input: DeleteProjectRequest,
+  output: DeleteProjectResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2508,8 +3538,8 @@ export const DeleteStorageAsset: API.OperationMethod<
   DeleteStorageAssetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<DeleteStorageAssetRequest>,
-  output: __S(0) as any as S.Schema<DeleteStorageAssetResponse>,
+  input: DeleteStorageAssetRequest,
+  output: DeleteStorageAssetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2523,8 +3553,8 @@ export const DeleteStorageContainer: API.OperationMethod<
   DeleteStorageContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<DeleteStorageContainerRequest>,
-  output: __S(0) as any as S.Schema<DeleteStorageContainerResponse>,
+  input: DeleteStorageContainerRequest,
+  output: DeleteStorageContainerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2538,8 +3568,8 @@ export const DeleteSupercomputer: API.OperationMethod<
   DeleteSupercomputerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<DeleteSupercomputerRequest>,
-  output: __S(0) as any as S.Schema<DeleteSupercomputerResponse>,
+  input: DeleteSupercomputerRequest,
+  output: DeleteSupercomputerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2553,8 +3583,8 @@ export const DeleteTool: API.OperationMethod<
   DeleteToolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<DeleteToolRequest>,
-  output: __S(0) as any as S.Schema<DeleteToolResponse>,
+  input: DeleteToolRequest,
+  output: DeleteToolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2568,8 +3598,8 @@ export const DeleteWorkspace: API.OperationMethod<
   DeleteWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<DeleteWorkspaceRequest>,
-  output: __S(0) as any as S.Schema<DeleteWorkspaceResponse>,
+  input: DeleteWorkspaceRequest,
+  output: DeleteWorkspaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2583,8 +3613,8 @@ export const DeleteWorkspacePrivateEndpointConnection: API.OperationMethod<
   DeleteWorkspacePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<DeleteWorkspacePrivateEndpointConnectionRequest>,
-  output: __S(30) as any as S.Schema<DeleteWorkspacePrivateEndpointConnectionResponse>,
+  input: DeleteWorkspacePrivateEndpointConnectionRequest,
+  output: DeleteWorkspacePrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2598,8 +3628,8 @@ export const GetBookshelfPrivateEndpointConnection: API.OperationMethod<
   GetBookshelfPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<GetBookshelfPrivateEndpointConnectionRequest>,
-  output: __S(43) as any as S.Schema<GetBookshelfPrivateEndpointConnectionResponse>,
+  input: GetBookshelfPrivateEndpointConnectionRequest,
+  output: GetBookshelfPrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2613,8 +3643,8 @@ export const GetBookshelfPrivateLinkResource: API.OperationMethod<
   GetBookshelfPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<GetBookshelfPrivateLinkResourceRequest>,
-  output: __S(46) as any as S.Schema<GetBookshelfPrivateLinkResourceResponse>,
+  input: GetBookshelfPrivateLinkResourceRequest,
+  output: GetBookshelfPrivateLinkResourceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2628,8 +3658,8 @@ export const GetBookshelve: API.OperationMethod<
   GetBookshelveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<GetBookshelveRequest>,
-  output: __S(48) as any as S.Schema<GetBookshelveResponse>,
+  input: GetBookshelveRequest,
+  output: GetBookshelveResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2643,8 +3673,8 @@ export const GetChatModelDeployment: API.OperationMethod<
   GetChatModelDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetChatModelDeploymentRequest>,
-  output: __S(28) as any as S.Schema<GetChatModelDeploymentResponse>,
+  input: GetChatModelDeploymentRequest,
+  output: GetChatModelDeploymentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2658,8 +3688,8 @@ export const GetNodePool: API.OperationMethod<
   GetNodePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<GetNodePoolRequest>,
-  output: __S(52) as any as S.Schema<GetNodePoolResponse>,
+  input: GetNodePoolRequest,
+  output: GetNodePoolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2673,8 +3703,8 @@ export const GetProject: API.OperationMethod<
   GetProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<GetProjectRequest>,
-  output: __S(56) as any as S.Schema<GetProjectResponse>,
+  input: GetProjectRequest,
+  output: GetProjectResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2688,8 +3718,8 @@ export const GetStorageAsset: API.OperationMethod<
   GetStorageAssetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<GetStorageAssetRequest>,
-  output: __S(59) as any as S.Schema<GetStorageAssetResponse>,
+  input: GetStorageAssetRequest,
+  output: GetStorageAssetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2703,8 +3733,8 @@ export const GetStorageContainer: API.OperationMethod<
   GetStorageContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<GetStorageContainerRequest>,
-  output: __S(63) as any as S.Schema<GetStorageContainerResponse>,
+  input: GetStorageContainerRequest,
+  output: GetStorageContainerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2718,8 +3748,8 @@ export const GetSupercomputer: API.OperationMethod<
   GetSupercomputerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<GetSupercomputerRequest>,
-  output: __S(69) as any as S.Schema<GetSupercomputerResponse>,
+  input: GetSupercomputerRequest,
+  output: GetSupercomputerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2733,8 +3763,8 @@ export const GetTool: API.OperationMethod<
   GetToolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<GetToolRequest>,
-  output: __S(73) as any as S.Schema<GetToolResponse>,
+  input: GetToolRequest,
+  output: GetToolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2748,8 +3778,8 @@ export const GetWorkspace: API.OperationMethod<
   GetWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<GetWorkspaceRequest>,
-  output: __S(77) as any as S.Schema<GetWorkspaceResponse>,
+  input: GetWorkspaceRequest,
+  output: GetWorkspaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2763,8 +3793,8 @@ export const GetWorkspacePrivateEndpointConnection: API.OperationMethod<
   GetWorkspacePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<GetWorkspacePrivateEndpointConnectionRequest>,
-  output: __S(43) as any as S.Schema<GetWorkspacePrivateEndpointConnectionResponse>,
+  input: GetWorkspacePrivateEndpointConnectionRequest,
+  output: GetWorkspacePrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2778,8 +3808,8 @@ export const GetWorkspacePrivateLinkResource: API.OperationMethod<
   GetWorkspacePrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<GetWorkspacePrivateLinkResourceRequest>,
-  output: __S(46) as any as S.Schema<GetWorkspacePrivateLinkResourceResponse>,
+  input: GetWorkspacePrivateLinkResourceRequest,
+  output: GetWorkspacePrivateLinkResourceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2793,8 +3823,8 @@ export const ListBookshelfPrivateEndpointConnectionByBookshelf: API.OperationMet
   ListBookshelfPrivateEndpointConnectionByBookshelfError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<ListBookshelfPrivateEndpointConnectionByBookshelfRequest>,
-  output: __S(81) as any as S.Schema<BookshelfPrivateEndpointConnectionListResult>,
+  input: ListBookshelfPrivateEndpointConnectionByBookshelfRequest,
+  output: BookshelfPrivateEndpointConnectionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2808,8 +3838,8 @@ export const ListBookshelfPrivateLinkResourceByBookshelf: API.OperationMethod<
   ListBookshelfPrivateLinkResourceByBookshelfError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<ListBookshelfPrivateLinkResourceByBookshelfRequest>,
-  output: __S(86) as any as S.Schema<BookshelfPrivateLinkResourceListResult>,
+  input: ListBookshelfPrivateLinkResourceByBookshelfRequest,
+  output: BookshelfPrivateLinkResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2823,8 +3853,8 @@ export const ListBookshelveByResourceGroup: API.OperationMethod<
   ListBookshelveByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<ListBookshelveByResourceGroupRequest>,
-  output: __S(89) as any as S.Schema<BookshelfListResult>,
+  input: ListBookshelveByResourceGroupRequest,
+  output: BookshelfListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2838,8 +3868,8 @@ export const ListBookshelveBySubscription: API.OperationMethod<
   ListBookshelveBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<ListBookshelveBySubscriptionRequest>,
-  output: __S(89) as any as S.Schema<BookshelfListResult>,
+  input: ListBookshelveBySubscriptionRequest,
+  output: BookshelfListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2853,8 +3883,8 @@ export const ListChatModelDeploymentByWorkspace: API.OperationMethod<
   ListChatModelDeploymentByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<ListChatModelDeploymentByWorkspaceRequest>,
-  output: __S(94) as any as S.Schema<ChatModelDeploymentListResult>,
+  input: ListChatModelDeploymentByWorkspaceRequest,
+  output: ChatModelDeploymentListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2868,8 +3898,8 @@ export const ListNodePoolBySupercomputer: API.OperationMethod<
   ListNodePoolBySupercomputerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<ListNodePoolBySupercomputerRequest>,
-  output: __S(97) as any as S.Schema<NodePoolListResult>,
+  input: ListNodePoolBySupercomputerRequest,
+  output: NodePoolListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2883,8 +3913,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<ListOperationsRequest>,
-  output: __S(102) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2898,8 +3928,8 @@ export const ListProjectByWorkspace: API.OperationMethod<
   ListProjectByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<ListProjectByWorkspaceRequest>,
-  output: __S(105) as any as S.Schema<ProjectListResult>,
+  input: ListProjectByWorkspaceRequest,
+  output: ProjectListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2913,8 +3943,8 @@ export const ListStorageAssetByStorageContainer: API.OperationMethod<
   ListStorageAssetByStorageContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<ListStorageAssetByStorageContainerRequest>,
-  output: __S(108) as any as S.Schema<StorageAssetListResult>,
+  input: ListStorageAssetByStorageContainerRequest,
+  output: StorageAssetListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2928,8 +3958,8 @@ export const ListStorageContainerByResourceGroup: API.OperationMethod<
   ListStorageContainerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<ListStorageContainerByResourceGroupRequest>,
-  output: __S(112) as any as S.Schema<StorageContainerListResult>,
+  input: ListStorageContainerByResourceGroupRequest,
+  output: StorageContainerListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2943,8 +3973,8 @@ export const ListStorageContainerBySubscription: API.OperationMethod<
   ListStorageContainerBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<ListStorageContainerBySubscriptionRequest>,
-  output: __S(112) as any as S.Schema<StorageContainerListResult>,
+  input: ListStorageContainerBySubscriptionRequest,
+  output: StorageContainerListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2958,8 +3988,8 @@ export const ListSupercomputerByResourceGroup: API.OperationMethod<
   ListSupercomputerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<ListSupercomputerByResourceGroupRequest>,
-  output: __S(116) as any as S.Schema<SupercomputerListResult>,
+  input: ListSupercomputerByResourceGroupRequest,
+  output: SupercomputerListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2973,8 +4003,8 @@ export const ListSupercomputerBySubscription: API.OperationMethod<
   ListSupercomputerBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<ListSupercomputerBySubscriptionRequest>,
-  output: __S(116) as any as S.Schema<SupercomputerListResult>,
+  input: ListSupercomputerBySubscriptionRequest,
+  output: SupercomputerListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2988,8 +4018,8 @@ export const ListToolByResourceGroup: API.OperationMethod<
   ListToolByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<ListToolByResourceGroupRequest>,
-  output: __S(120) as any as S.Schema<ToolListResult>,
+  input: ListToolByResourceGroupRequest,
+  output: ToolListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3003,8 +4033,8 @@ export const ListToolBySubscription: API.OperationMethod<
   ListToolBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<ListToolBySubscriptionRequest>,
-  output: __S(120) as any as S.Schema<ToolListResult>,
+  input: ListToolBySubscriptionRequest,
+  output: ToolListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3018,8 +4048,8 @@ export const ListWorkspaceByResourceGroup: API.OperationMethod<
   ListWorkspaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
-  output: __S(124) as any as S.Schema<WorkspaceListResult>,
+  input: ListWorkspaceByResourceGroupRequest,
+  output: WorkspaceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3033,8 +4063,8 @@ export const ListWorkspaceBySubscription: API.OperationMethod<
   ListWorkspaceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<ListWorkspaceBySubscriptionRequest>,
-  output: __S(124) as any as S.Schema<WorkspaceListResult>,
+  input: ListWorkspaceBySubscriptionRequest,
+  output: WorkspaceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3048,8 +4078,8 @@ export const ListWorkspacePrivateEndpointConnectionByWorkspace: API.OperationMet
   ListWorkspacePrivateEndpointConnectionByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<ListWorkspacePrivateEndpointConnectionByWorkspaceRequest>,
-  output: __S(81) as any as S.Schema<WorkspacePrivateEndpointConnectionListResult>,
+  input: ListWorkspacePrivateEndpointConnectionByWorkspaceRequest,
+  output: WorkspacePrivateEndpointConnectionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3063,8 +4093,8 @@ export const ListWorkspacePrivateLinkResourceByWorkspace: API.OperationMethod<
   ListWorkspacePrivateLinkResourceByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<ListWorkspacePrivateLinkResourceByWorkspaceRequest>,
-  output: __S(86) as any as S.Schema<WorkspacePrivateLinkResourceListResult>,
+  input: ListWorkspacePrivateLinkResourceByWorkspaceRequest,
+  output: WorkspacePrivateLinkResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3078,8 +4108,8 @@ export const NodePoolsCreateOrUpdate: API.OperationMethod<
   NodePoolsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<NodePoolsCreateOrUpdateRequest>,
-  output: __S(130) as any as S.Schema<NodePoolsCreateOrUpdateResponse>,
+  input: NodePoolsCreateOrUpdateRequest,
+  output: NodePoolsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3093,8 +4123,8 @@ export const ProjectsCreateOrUpdate: API.OperationMethod<
   ProjectsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<ProjectsCreateOrUpdateRequest>,
-  output: __S(133) as any as S.Schema<ProjectsCreateOrUpdateResponse>,
+  input: ProjectsCreateOrUpdateRequest,
+  output: ProjectsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3108,8 +4138,8 @@ export const StorageAssetsCreateOrUpdate: API.OperationMethod<
   StorageAssetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<StorageAssetsCreateOrUpdateRequest>,
-  output: __S(136) as any as S.Schema<StorageAssetsCreateOrUpdateResponse>,
+  input: StorageAssetsCreateOrUpdateRequest,
+  output: StorageAssetsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3123,8 +4153,8 @@ export const StorageContainersCreateOrUpdate: API.OperationMethod<
   StorageContainersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<StorageContainersCreateOrUpdateRequest>,
-  output: __S(63) as any as S.Schema<StorageContainersCreateOrUpdateResponse>,
+  input: StorageContainersCreateOrUpdateRequest,
+  output: StorageContainersCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3138,8 +4168,8 @@ export const SupercomputersCreateOrUpdate: API.OperationMethod<
   SupercomputersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<SupercomputersCreateOrUpdateRequest>,
-  output: __S(143) as any as S.Schema<SupercomputersCreateOrUpdateResponse>,
+  input: SupercomputersCreateOrUpdateRequest,
+  output: SupercomputersCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3153,8 +4183,8 @@ export const ToolsCreateOrUpdate: API.OperationMethod<
   ToolsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<ToolsCreateOrUpdateRequest>,
-  output: __S(146) as any as S.Schema<ToolsCreateOrUpdateResponse>,
+  input: ToolsCreateOrUpdateRequest,
+  output: ToolsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3168,8 +4198,8 @@ export const UpdateBookshelve: API.OperationMethod<
   UpdateBookshelveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<UpdateBookshelveRequest>,
-  output: __S(48) as any as S.Schema<UpdateBookshelveResponse>,
+  input: UpdateBookshelveRequest,
+  output: UpdateBookshelveResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3183,8 +4213,8 @@ export const UpdateChatModelDeployment: API.OperationMethod<
   UpdateChatModelDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<UpdateChatModelDeploymentRequest>,
-  output: __S(28) as any as S.Schema<UpdateChatModelDeploymentResponse>,
+  input: UpdateChatModelDeploymentRequest,
+  output: UpdateChatModelDeploymentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3198,8 +4228,8 @@ export const UpdateNodePool: API.OperationMethod<
   UpdateNodePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<UpdateNodePoolRequest>,
-  output: __S(52) as any as S.Schema<UpdateNodePoolResponse>,
+  input: UpdateNodePoolRequest,
+  output: UpdateNodePoolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3213,8 +4243,8 @@ export const UpdateProject: API.OperationMethod<
   UpdateProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<UpdateProjectRequest>,
-  output: __S(56) as any as S.Schema<UpdateProjectResponse>,
+  input: UpdateProjectRequest,
+  output: UpdateProjectResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3228,8 +4258,8 @@ export const UpdateStorageAsset: API.OperationMethod<
   UpdateStorageAssetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156) as any as S.Schema<UpdateStorageAssetRequest>,
-  output: __S(136) as any as S.Schema<UpdateStorageAssetResponse>,
+  input: UpdateStorageAssetRequest,
+  output: UpdateStorageAssetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3243,8 +4273,8 @@ export const UpdateStorageContainer: API.OperationMethod<
   UpdateStorageContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157) as any as S.Schema<UpdateStorageContainerRequest>,
-  output: __S(63) as any as S.Schema<UpdateStorageContainerResponse>,
+  input: UpdateStorageContainerRequest,
+  output: UpdateStorageContainerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3258,8 +4288,8 @@ export const UpdateSupercomputer: API.OperationMethod<
   UpdateSupercomputerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161) as any as S.Schema<UpdateSupercomputerRequest>,
-  output: __S(143) as any as S.Schema<UpdateSupercomputerResponse>,
+  input: UpdateSupercomputerRequest,
+  output: UpdateSupercomputerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3273,8 +4303,8 @@ export const UpdateTool: API.OperationMethod<
   UpdateToolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<UpdateToolRequest>,
-  output: __S(73) as any as S.Schema<UpdateToolResponse>,
+  input: UpdateToolRequest,
+  output: UpdateToolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3288,8 +4318,8 @@ export const UpdateWorkspace: API.OperationMethod<
   UpdateWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165) as any as S.Schema<UpdateWorkspaceRequest>,
-  output: __S(77) as any as S.Schema<UpdateWorkspaceResponse>,
+  input: UpdateWorkspaceRequest,
+  output: UpdateWorkspaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3303,8 +4333,8 @@ export const WorkspacePrivateEndpointConnectionsCreateOrUpdate: API.OperationMet
   WorkspacePrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<WorkspacePrivateEndpointConnectionsCreateOrUpdateRequest>,
-  output: __S(8) as any as S.Schema<WorkspacePrivateEndpointConnectionsCreateOrUpdateResponse>,
+  input: WorkspacePrivateEndpointConnectionsCreateOrUpdateRequest,
+  output: WorkspacePrivateEndpointConnectionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3318,8 +4348,8 @@ export const WorkspacesCreateOrUpdate: API.OperationMethod<
   WorkspacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<WorkspacesCreateOrUpdateRequest>,
-  output: __S(169) as any as S.Schema<WorkspacesCreateOrUpdateResponse>,
+  input: WorkspacesCreateOrUpdateRequest,
+  output: WorkspacesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3335,7 +4365,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(PrivateEndpointServiceConnectionStatus),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -3345,8 +4375,8 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(0)),
-          privateLinkServiceConnectionState: __S(1),
+          privateEndpoint: S.optional(PrivateEndpointInput),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
         }),
       ).annotate({
         identifier: "BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties",
@@ -3358,7 +4388,9 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           bookshelfName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2)),
+          properties: S.optional(
+            BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties,
+          ),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3374,10 +4406,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -3392,10 +4424,12 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(5)),
-          privateEndpoint: S.optional(__S(6)),
-          privateLinkServiceConnectionState: __S(1),
-          provisioningState: S.optional(S.String),
+          groupIds: S.optional(
+            BookshelfPrivateEndpointConnectionsCreateOrUpdateResponsePropertiesGroupIdsList,
+          ),
+          privateEndpoint: S.optional(PrivateEndpoint),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+          provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
         }),
       ).annotate({
         identifier: "BookshelfPrivateEndpointConnectionsCreateOrUpdateResponseProperties",
@@ -3410,8 +4444,10 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          properties: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(
+            BookshelfPrivateEndpointConnectionsCreateOrUpdateResponseProperties,
+          ),
         }),
       ).annotate({
         identifier: "BookshelfPrivateEndpointConnectionsCreateOrUpdateResponse",
@@ -3419,7 +4455,7 @@ function __c1(j: number): any {
     case 1:
       return S.Record(S.String, S.String);
     case 2:
-      return S.Record(S.String, __S(0));
+      return S.Record(S.String, PrivateEndpointInput);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3434,11 +4470,11 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          workloadIdentities: S.optional(__S(10)),
-          customerManagedKeys: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(11)),
+          workloadIdentities: S.optional(BookshelfPropertiesInputWorkloadIdentitiesMap),
+          customerManagedKeys: S.optional(CustomerManagedKeys),
+          keyVaultProperties: S.optional(BookshelfKeyVaultProperties),
           logAnalyticsClusterId: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
+          publicNetworkAccess: S.optional(PublicNetworkAccess),
           privateEndpointSubnetId: S.optional(S.String),
           searchSubnetId: S.optional(S.String),
         }),
@@ -3449,9 +4485,9 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           bookshelfName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9)),
+          tags: S.optional(BookshelvesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(12)),
+          properties: S.optional(BookshelfPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3473,7 +4509,7 @@ function __c1(j: number): any {
         identifier: "BookshelfPropertiesWorkloadIdentitiesValue",
       });
     case 7:
-      return S.Record(S.String, __S(14));
+      return S.Record(S.String, BookshelfPropertiesWorkloadIdentitiesValue);
   }
 }
 function __c2(j: number): any {
@@ -3483,10 +4519,10 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(16)),
-          privateEndpoint: S.optional(__S(6)),
-          privateLinkServiceConnectionState: __S(1),
-          provisioningState: S.optional(S.String),
+          groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
+          privateEndpoint: S.optional(PrivateEndpoint),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+          provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -3497,14 +4533,14 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          properties: S.optional(__S(17)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateEndpointConnectionProperties),
         }),
       ).annotate({
         identifier: "BookshelfPropertiesPrivateEndpointConnectionsItem",
       });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(BookshelfPropertiesPrivateEndpointConnectionsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3514,27 +4550,27 @@ function __c2(j: number): any {
         identifier: "WithMoboBrokerResourcesMoboBrokerResourcesItem",
       });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(WithMoboBrokerResourcesMoboBrokerResourcesItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          moboBrokerResources: S.optional(__S(21)),
+          moboBrokerResources: S.optional(WithMoboBrokerResourcesMoboBrokerResourcesList),
         }),
       ).annotate({ identifier: "WithMoboBrokerResources" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          workloadIdentities: S.optional(__S(15)),
-          customerManagedKeys: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(11)),
+          provisioningState: S.optional(ProvisioningState),
+          workloadIdentities: S.optional(BookshelfPropertiesWorkloadIdentitiesMap),
+          customerManagedKeys: S.optional(CustomerManagedKeys),
+          keyVaultProperties: S.optional(BookshelfKeyVaultProperties),
           logAnalyticsClusterId: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(19)),
-          publicNetworkAccess: S.optional(S.String),
+          privateEndpointConnections: S.optional(BookshelfPropertiesPrivateEndpointConnectionsList),
+          publicNetworkAccess: S.optional(PublicNetworkAccess),
           privateEndpointSubnetId: S.optional(S.String),
           searchSubnetId: S.optional(S.String),
           managedResourceGroup: S.optional(S.String),
-          managedOnBehalfOfConfiguration: S.optional(__S(22)),
+          managedOnBehalfOfConfiguration: S.optional(WithMoboBrokerResources),
           bookshelfUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "BookshelfProperties" });
@@ -3548,10 +4584,10 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(9)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(BookshelvesCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(23)),
+          properties: S.optional(BookshelfProperties),
         }),
       ).annotate({
         identifier: "BookshelvesCreateOrUpdateResponse",
@@ -3575,9 +4611,9 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           chatModelDeploymentName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9)),
+          tags: S.optional(ChatModelDeploymentsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(25)),
+          properties: S.optional(ChatModelDeploymentPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3592,7 +4628,7 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           modelFormat: S.String,
           modelName: S.String,
           modelVersion: S.optional(S.String),
@@ -3608,10 +4644,10 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(9)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(ChatModelDeploymentsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(27)),
+          properties: S.optional(ChatModelDeploymentProperties),
         }),
       ).annotate({
         identifier: "ChatModelDeploymentsCreateOrUpdateResponse",
@@ -3832,10 +4868,10 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(5)),
-          privateEndpoint: S.optional(__S(6)),
-          privateLinkServiceConnectionState: __S(1),
-          provisioningState: S.optional(S.String),
+          groupIds: S.optional(GetBookshelfPrivateEndpointConnectionResponsePropertiesGroupIdsList),
+          privateEndpoint: S.optional(PrivateEndpoint),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+          provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
         }),
       ).annotate({
         identifier: "GetBookshelfPrivateEndpointConnectionResponseProperties",
@@ -3846,8 +4882,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          properties: S.optional(__S(42)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(GetBookshelfPrivateEndpointConnectionResponseProperties),
         }),
       ).annotate({
         identifier: "GetBookshelfPrivateEndpointConnectionResponse",
@@ -3874,8 +4910,12 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(5)),
-          requiredZoneNames: S.optional(__S(5)),
+          requiredMembers: S.optional(
+            GetBookshelfPrivateLinkResourceResponsePropertiesRequiredMembersList,
+          ),
+          requiredZoneNames: S.optional(
+            GetBookshelfPrivateLinkResourceResponsePropertiesRequiredZoneNamesList,
+          ),
         }),
       ).annotate({
         identifier: "GetBookshelfPrivateLinkResourceResponseProperties",
@@ -3886,8 +4926,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          properties: S.optional(__S(45)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(GetBookshelfPrivateLinkResourceResponseProperties),
         }),
       ).annotate({
         identifier: "GetBookshelfPrivateLinkResourceResponse",
@@ -3917,10 +4957,10 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(9)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetBookshelveResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(23)),
+          properties: S.optional(BookshelfProperties),
         }),
       ).annotate({ identifier: "GetBookshelveResponse" });
     case 1:
@@ -3960,12 +5000,12 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           subnetId: S.String,
-          vmSize: S.String,
+          vmSize: VmSize,
           maxNodeCount: S.Number,
           minNodeCount: S.optional(S.Number),
-          scaleSetPriority: S.optional(S.String),
+          scaleSetPriority: S.optional(NodePoolPropertiesScaleSetPriority),
           osDiskSizeGb: S.optional(S.Number),
           imageCacheLowerThreshold: S.optional(S.Number),
           imageCacheUpperThreshold: S.optional(S.Number),
@@ -3977,10 +5017,10 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(9)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetNodePoolResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(51)),
+          properties: S.optional(NodePoolProperties),
         }),
       ).annotate({ identifier: "GetNodePoolResponse" });
     case 5:
@@ -4008,10 +5048,10 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           foundryProjectEndpoint: S.optional(S.String),
-          storageContainerIds: S.optional(__S(16)),
-          settings: S.optional(__S(54)),
+          storageContainerIds: S.optional(ProjectPropertiesStorageContainerIdsList),
+          settings: S.optional(ProjectSettings),
         }),
       ).annotate({ identifier: "ProjectProperties" });
   }
@@ -4024,10 +5064,10 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(9)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetProjectResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(55)),
+          properties: S.optional(ProjectProperties),
         }),
       ).annotate({ identifier: "GetProjectResponse" });
     case 1:
@@ -4050,7 +5090,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.String,
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           path: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageAssetProperties" });
@@ -4060,10 +5100,10 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(9)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetStorageAssetResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(58)),
+          properties: S.optional(StorageAssetProperties),
         }),
       ).annotate({ identifier: "GetStorageAssetResponse" });
     case 4:
@@ -4086,7 +5126,7 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
+          kind: StorageStoreType,
           storageAccountId: S.optional(S.String),
           netAppVolumeId: S.optional(S.String),
           mountProtocol: S.optional(S.String),
@@ -4095,8 +5135,8 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          storageStore: __S(61),
+          provisioningState: S.optional(ProvisioningState),
+          storageStore: StorageStore,
         }),
       ).annotate({
         identifier: "StorageContainerProperties",
@@ -4107,10 +5147,10 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(9)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetStorageContainerResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(62)),
+          properties: S.optional(StorageContainerProperties),
         }),
       ).annotate({
         identifier: "GetStorageContainerResponse",
@@ -4145,25 +5185,25 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          clusterIdentity: __S(65),
-          kubeletIdentity: __S(65),
-          workloadIdentities: S.optional(__S(15)),
+          clusterIdentity: Identity,
+          kubeletIdentity: Identity,
+          workloadIdentities: S.optional(SupercomputerIdentitiesWorkloadIdentitiesMap),
         }),
       ).annotate({ identifier: "SupercomputerIdentities" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           subnetId: S.String,
           managementSubnetId: S.optional(S.String),
-          outboundType: S.optional(S.String),
-          systemSku: S.optional(S.String),
-          identities: __S(66),
-          customerManagedKeys: S.optional(S.String),
+          outboundType: S.optional(SupercomputerPropertiesOutboundType),
+          systemSku: S.optional(SystemSku),
+          identities: SupercomputerIdentities,
+          customerManagedKeys: S.optional(CustomerManagedKeys),
           diskEncryptionSetId: S.optional(S.String),
           logAnalyticsClusterId: S.optional(S.String),
           managedResourceGroup: S.optional(S.String),
-          managedOnBehalfOfConfiguration: S.optional(__S(22)),
+          managedOnBehalfOfConfiguration: S.optional(WithMoboBrokerResources),
         }),
       ).annotate({ identifier: "SupercomputerProperties" });
     case 4:
@@ -4171,7 +5211,7 @@ function __c8(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
+          type: SystemAssignedServiceIdentityType,
         }),
       ).annotate({
         identifier: "GetSupercomputerResponseIdentity",
@@ -4182,11 +5222,11 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(9)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetSupercomputerResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(67)),
-          identity: S.optional(__S(68)),
+          properties: S.optional(SupercomputerProperties),
+          identity: S.optional(GetSupercomputerResponseIdentity),
         }),
       ).annotate({ identifier: "GetSupercomputerResponse" });
     case 6:
@@ -4213,10 +5253,10 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           version: S.String,
-          environmentVariables: S.optional(__S(9)),
-          definitionContent: __S(71),
+          environmentVariables: S.optional(ToolPropertiesEnvironmentVariablesMap),
+          definitionContent: ToolPropertiesDefinitionContentMap,
         }),
       ).annotate({ identifier: "ToolProperties" });
     case 1:
@@ -4225,10 +5265,10 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(9)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetToolResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(72)),
+          properties: S.optional(ToolProperties),
         }),
       ).annotate({ identifier: "GetToolResponse" });
     case 2:
@@ -4257,21 +5297,21 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          supercomputerIds: S.optional(__S(16)),
+          provisioningState: S.optional(ProvisioningState),
+          supercomputerIds: S.optional(WorkspacePropertiesSupercomputerIdsList),
           workspaceApiUri: S.optional(S.String),
           workspaceUiUri: S.optional(S.String),
-          workspaceIdentity: __S(65),
-          customerManagedKeys: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(75)),
+          workspaceIdentity: Identity,
+          customerManagedKeys: S.optional(CustomerManagedKeys),
+          keyVaultProperties: S.optional(KeyVaultProperties),
           logAnalyticsClusterId: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(19)),
-          publicNetworkAccess: S.optional(S.String),
+          privateEndpointConnections: S.optional(WorkspacePropertiesPrivateEndpointConnectionsList),
+          publicNetworkAccess: S.optional(PublicNetworkAccess),
           agentSubnetId: S.optional(S.String),
           privateEndpointSubnetId: S.optional(S.String),
           workspaceSubnetId: S.optional(S.String),
           managedResourceGroup: S.optional(S.String),
-          managedOnBehalfOfConfiguration: S.optional(__S(22)),
+          managedOnBehalfOfConfiguration: S.optional(WithMoboBrokerResources),
         }),
       ).annotate({ identifier: "WorkspaceProperties" });
     case 5:
@@ -4280,10 +5320,10 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(9)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetWorkspaceResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(76)),
+          properties: S.optional(WorkspaceProperties),
         }),
       ).annotate({ identifier: "GetWorkspaceResponse" });
     case 6:
@@ -4346,7 +5386,7 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(19),
+          value: BookshelfPrivateEndpointConnectionListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4373,8 +5413,10 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(16)),
-          requiredZoneNames: S.optional(__S(16)),
+          requiredMembers: S.optional(BookshelfPrivateLinkResourcePropertiesRequiredMembersList),
+          requiredZoneNames: S.optional(
+            BookshelfPrivateLinkResourcePropertiesRequiredZoneNamesList,
+          ),
         }),
       ).annotate({
         identifier: "BookshelfPrivateLinkResourceProperties",
@@ -4385,18 +5427,18 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          properties: S.optional(__S(83)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BookshelfPrivateLinkResourceProperties),
         }),
       ).annotate({
         identifier: "BookshelfPrivateLinkResource",
       });
     case 5:
-      return S.Array(__S(84));
+      return S.Array(BookshelfPrivateLinkResource);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(85),
+          value: BookshelfPrivateLinkResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4423,11 +5465,11 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(48));
+      return S.Array(Bookshelf);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(88),
+          value: BookshelfListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BookshelfListResult" });
@@ -4469,18 +5511,18 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(9)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(ChatModelDeploymentTagsMap),
           location: S.String,
-          properties: S.optional(__S(27)),
+          properties: S.optional(ChatModelDeploymentProperties),
         }),
       ).annotate({ identifier: "ChatModelDeployment" });
     case 5:
-      return S.Array(__S(92));
+      return S.Array(ChatModelDeployment);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(93),
+          value: ChatModelDeploymentListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4508,11 +5550,11 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(52));
+      return S.Array(NodePool);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(96),
+          value: NodePoolListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NodePoolListResult" });
@@ -4541,17 +5583,17 @@ function __c12(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(99)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 5:
-      return S.Array(__S(100));
+      return S.Array(Operation);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(101)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -4577,11 +5619,11 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(56));
+      return S.Array(Project);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(104),
+          value: ProjectListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectListResult" });
@@ -4603,11 +5645,11 @@ function __c13(j: number): any {
         identifier: "ListStorageAssetByStorageContainerRequest",
       });
     case 3:
-      return S.Array(__S(59));
+      return S.Array(StorageAsset);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(107),
+          value: StorageAssetListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageAssetListResult" });
@@ -4633,14 +5675,14 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(9)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(StorageContainerTagsMap),
           location: S.String,
-          properties: S.optional(__S(62)),
+          properties: S.optional(StorageContainerProperties),
         }),
       ).annotate({ identifier: "StorageContainer" });
     case 7:
-      return S.Array(__S(110));
+      return S.Array(StorageContainer);
   }
 }
 function __c14(j: number): any {
@@ -4648,7 +5690,7 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(111),
+          value: StorageContainerListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4686,11 +5728,11 @@ function __c14(j: number): any {
         identifier: "ListSupercomputerByResourceGroupRequest",
       });
     case 3:
-      return S.Array(__S(69));
+      return S.Array(Supercomputer);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(115),
+          value: SupercomputerListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SupercomputerListResult" });
@@ -4726,7 +5768,7 @@ function __c14(j: number): any {
         identifier: "ListToolByResourceGroupRequest",
       });
     case 7:
-      return S.Array(__S(73));
+      return S.Array(Tool);
   }
 }
 function __c15(j: number): any {
@@ -4734,7 +5776,7 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(119),
+          value: ToolListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ToolListResult" });
@@ -4770,11 +5812,11 @@ function __c15(j: number): any {
         identifier: "ListWorkspaceByResourceGroupRequest",
       });
     case 3:
-      return S.Array(__S(77));
+      return S.Array(Workspace);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(123),
+          value: WorkspaceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceListResult" });
@@ -4835,10 +5877,10 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subnetId: S.String,
-          vmSize: S.String,
+          vmSize: VmSize,
           maxNodeCount: S.Number,
           minNodeCount: S.optional(S.Number),
-          scaleSetPriority: S.optional(S.String),
+          scaleSetPriority: S.optional(NodePoolPropertiesInputScaleSetPriority),
           osDiskSizeGb: S.optional(S.Number),
           imageCacheLowerThreshold: S.optional(S.Number),
           imageCacheUpperThreshold: S.optional(S.Number),
@@ -4851,9 +5893,9 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           supercomputerName: S.String.pipe(T.Label()),
           nodePoolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9)),
+          tags: S.optional(NodePoolsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(128)),
+          properties: S.optional(NodePoolPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4871,10 +5913,10 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(9)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(NodePoolsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(51)),
+          properties: S.optional(NodePoolProperties),
         }),
       ).annotate({
         identifier: "NodePoolsCreateOrUpdateResponse",
@@ -4882,8 +5924,8 @@ function __c16(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          storageContainerIds: S.optional(__S(16)),
-          settings: S.optional(__S(54)),
+          storageContainerIds: S.optional(ProjectPropertiesInputStorageContainerIdsList),
+          settings: S.optional(ProjectSettings),
         }),
       ).annotate({ identifier: "ProjectPropertiesInput" });
     case 4:
@@ -4893,9 +5935,9 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9)),
+          tags: S.optional(ProjectsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(131)),
+          properties: S.optional(ProjectPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4913,10 +5955,10 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(9)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(ProjectsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(55)),
+          properties: S.optional(ProjectProperties),
         }),
       ).annotate({
         identifier: "ProjectsCreateOrUpdateResponse",
@@ -4937,9 +5979,9 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           storageContainerName: S.String.pipe(T.Label()),
           storageAssetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9)),
+          tags: S.optional(StorageAssetsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(134)),
+          properties: S.optional(StorageAssetPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4961,10 +6003,10 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(9)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(StorageAssetsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(58)),
+          properties: S.optional(StorageAssetProperties),
         }),
       ).annotate({
         identifier: "StorageAssetsCreateOrUpdateResponse",
@@ -4972,7 +6014,7 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          storageStore: __S(61),
+          storageStore: StorageStore,
         }),
       ).annotate({
         identifier: "StorageContainerPropertiesInput",
@@ -4983,9 +6025,9 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageContainerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9)),
+          tags: S.optional(StorageContainersCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(137)),
+          properties: S.optional(StorageContainerPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5000,9 +6042,9 @@ function __c17(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          clusterIdentity: __S(65),
-          kubeletIdentity: __S(65),
-          workloadIdentities: S.optional(__S(10)),
+          clusterIdentity: Identity,
+          kubeletIdentity: Identity,
+          workloadIdentities: S.optional(SupercomputerIdentitiesInputWorkloadIdentitiesMap),
         }),
       ).annotate({
         identifier: "SupercomputerIdentitiesInput",
@@ -5012,10 +6054,10 @@ function __c17(j: number): any {
         S.Struct({
           subnetId: S.String,
           managementSubnetId: S.optional(S.String),
-          outboundType: S.optional(S.String),
-          systemSku: S.optional(S.String),
-          identities: __S(139),
-          customerManagedKeys: S.optional(S.String),
+          outboundType: S.optional(SupercomputerPropertiesInputOutboundType),
+          systemSku: S.optional(SystemSku),
+          identities: SupercomputerIdentitiesInput,
+          customerManagedKeys: S.optional(CustomerManagedKeys),
           diskEncryptionSetId: S.optional(S.String),
           logAnalyticsClusterId: S.optional(S.String),
         }),
@@ -5025,7 +6067,7 @@ function __c17(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: SystemAssignedServiceIdentityType,
         }),
       ).annotate({
         identifier: "SupercomputersCreateOrUpdateRequestIdentity",
@@ -5036,10 +6078,10 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           supercomputerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9)),
+          tags: S.optional(SupercomputersCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(140)),
-          identity: S.optional(__S(141)),
+          properties: S.optional(SupercomputerPropertiesInput),
+          identity: S.optional(SupercomputersCreateOrUpdateRequestIdentity),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5057,11 +6099,11 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(9)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(SupercomputersCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(67)),
-          identity: S.optional(__S(68)),
+          properties: S.optional(SupercomputerProperties),
+          identity: S.optional(GetSupercomputerResponseIdentity),
         }),
       ).annotate({
         identifier: "SupercomputersCreateOrUpdateResponse",
@@ -5074,8 +6116,8 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           version: S.String,
-          environmentVariables: S.optional(__S(9)),
-          definitionContent: __S(71),
+          environmentVariables: S.optional(ToolPropertiesInputEnvironmentVariablesMap),
+          definitionContent: ToolPropertiesInputDefinitionContentMap,
         }),
       ).annotate({ identifier: "ToolPropertiesInput" });
     case 1:
@@ -5084,9 +6126,9 @@ function __c18(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           toolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9)),
+          tags: S.optional(ToolsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(144)),
+          properties: S.optional(ToolPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5104,10 +6146,10 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(9)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(ToolsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(72)),
+          properties: S.optional(ToolProperties),
         }),
       ).annotate({
         identifier: "ToolsCreateOrUpdateResponse",
@@ -5124,8 +6166,8 @@ function __c18(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          keyVaultProperties: S.optional(__S(147)),
-          publicNetworkAccess: S.optional(S.String),
+          keyVaultProperties: S.optional(BookshelfKeyVaultPropertiesUpdate),
+          publicNetworkAccess: S.optional(PublicNetworkAccess),
         }),
       ).annotate({
         identifier: "BookshelfPropertiesUpdate",
@@ -5136,8 +6178,8 @@ function __c18(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           bookshelfName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9)),
-          properties: S.optional(__S(148)),
+          tags: S.optional(UpdateBookshelveRequestTagsMap),
+          properties: S.optional(BookshelfPropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5162,8 +6204,8 @@ function __c18(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           chatModelDeploymentName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9)),
-          properties: S.optional(__S(150)),
+          tags: S.optional(UpdateChatModelDeploymentRequestTagsMap),
+          properties: S.optional(ChatModelDeploymentPropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5193,8 +6235,8 @@ function __c19(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           supercomputerName: S.String.pipe(T.Label()),
           nodePoolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9)),
-          properties: S.optional(__S(152)),
+          tags: S.optional(UpdateNodePoolRequestTagsMap),
+          properties: S.optional(NodePoolPropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5211,8 +6253,8 @@ function __c19(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9)),
-          properties: S.optional(__S(131)),
+          tags: S.optional(UpdateProjectRequestTagsMap),
+          properties: S.optional(ProjectPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5237,8 +6279,8 @@ function __c19(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           storageContainerName: S.String.pipe(T.Label()),
           storageAssetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9)),
-          properties: S.optional(__S(155)),
+          tags: S.optional(UpdateStorageAssetRequestTagsMap),
+          properties: S.optional(StorageAssetPropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5256,7 +6298,7 @@ function __c19(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageContainerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9)),
+          tags: S.optional(UpdateStorageContainerRequestTagsMap),
           properties: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -5272,7 +6314,7 @@ function __c19(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          workloadIdentities: S.optional(__S(10)),
+          workloadIdentities: S.optional(SupercomputerIdentitiesUpdateInputWorkloadIdentitiesMap),
         }),
       ).annotate({
         identifier: "SupercomputerIdentitiesUpdateInput",
@@ -5280,7 +6322,7 @@ function __c19(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          identities: S.optional(__S(158)),
+          identities: S.optional(SupercomputerIdentitiesUpdateInput),
         }),
       ).annotate({
         identifier: "SupercomputerPropertiesUpdateInput",
@@ -5292,7 +6334,7 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdateType),
         }),
       ).annotate({
         identifier: "AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdate",
@@ -5303,9 +6345,9 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           supercomputerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9)),
-          properties: S.optional(__S(159)),
-          identity: S.optional(__S(160)),
+          tags: S.optional(UpdateSupercomputerRequestTagsMap),
+          properties: S.optional(SupercomputerPropertiesUpdateInput),
+          identity: S.optional(AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5321,8 +6363,8 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
-          environmentVariables: S.optional(__S(9)),
-          definitionContent: S.optional(__S(71)),
+          environmentVariables: S.optional(ToolPropertiesUpdateEnvironmentVariablesMap),
+          definitionContent: S.optional(ToolPropertiesUpdateDefinitionContentMap),
         }),
       ).annotate({ identifier: "ToolPropertiesUpdate" });
     case 3:
@@ -5331,8 +6373,8 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           toolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9)),
-          properties: S.optional(__S(162)),
+          tags: S.optional(UpdateToolRequestTagsMap),
+          properties: S.optional(ToolPropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5345,9 +6387,9 @@ function __c20(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          supercomputerIds: S.optional(__S(16)),
-          keyVaultProperties: S.optional(__S(147)),
-          publicNetworkAccess: S.optional(S.String),
+          supercomputerIds: S.optional(WorkspacePropertiesUpdateSupercomputerIdsList),
+          keyVaultProperties: S.optional(BookshelfKeyVaultPropertiesUpdate),
+          publicNetworkAccess: S.optional(PublicNetworkAccess),
         }),
       ).annotate({
         identifier: "WorkspacePropertiesUpdate",
@@ -5358,8 +6400,8 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9)),
-          properties: S.optional(__S(164)),
+          tags: S.optional(UpdateWorkspaceRequestTagsMap),
+          properties: S.optional(WorkspacePropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5376,7 +6418,9 @@ function __c20(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2)),
+          properties: S.optional(
+            BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties,
+          ),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5391,12 +6435,12 @@ function __c20(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          supercomputerIds: S.optional(__S(16)),
-          workspaceIdentity: __S(65),
-          customerManagedKeys: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(75)),
+          supercomputerIds: S.optional(WorkspacePropertiesInputSupercomputerIdsList),
+          workspaceIdentity: Identity,
+          customerManagedKeys: S.optional(CustomerManagedKeys),
+          keyVaultProperties: S.optional(KeyVaultProperties),
           logAnalyticsClusterId: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
+          publicNetworkAccess: S.optional(PublicNetworkAccess),
           agentSubnetId: S.optional(S.String),
           privateEndpointSubnetId: S.optional(S.String),
           workspaceSubnetId: S.optional(S.String),
@@ -5412,9 +6456,9 @@ function __c21(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9)),
+          tags: S.optional(WorkspacesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(167)),
+          properties: S.optional(WorkspacePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5432,66 +6476,13 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4)),
-          tags: S.optional(__S(9)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(WorkspacesCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(76)),
+          properties: S.optional(WorkspaceProperties),
         }),
       ).annotate({
         identifier: "WorkspacesCreateOrUpdateResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
   }
 }

@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -49,6 +47,11 @@ export class NotFound
 
 /** Column keys to include. Empty means all columns for the resource. */
 export type CreateExportRequestColumnsList = Array<string>;
+const CreateExportRequestColumnsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateExportRequestColumnsList>;
+
 /** The resource to export, e.g. `payouts`, `receipts`, or `members`. */
 export type CreateExportRequestResource =
   | "ad_campaigns"
@@ -87,6 +90,8 @@ export type CreateExportRequestResource =
   | "invoices"
   | "cancelation_reasons"
   | "child_companies";
+const CreateExportRequestResource = S.String;
+
 export interface CreateExportRequest {
   /** The account to export from, prefixed `biz_`. Defaults to the credential's account. */
   account_id?: string;
@@ -101,6 +106,8 @@ export interface CreateExportRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const CreateExportRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateExportRequest>;
+
 /** The resource that was exported, e.g. `receipts`, `members`, or `payouts`. */
 export type ExportResource =
   | "ad_campaigns"
@@ -141,8 +148,12 @@ export type ExportResource =
   | "child_companies"
   | "ledger_lines"
   | "withdrawal_lines";
+const ExportResource = S.String;
+
 /** `pending` or `processing` while the file is generated, `completed` when the download is ready, `failed` if it errored, `expired` once the file has been deleted. */
 export type ExportStatus = "pending" | "processing" | "completed" | "failed" | "expired";
+const ExportStatus = S.String;
+
 export interface Export {
   /** When the export was requested, as an ISO 8601 timestamp. */
   created_at: string;
@@ -161,10 +172,14 @@ export interface Export {
   /** When the export last changed, as an ISO 8601 timestamp. */
   updated_at: string;
 }
+const Export = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Export>;
+
 export interface GetExportRequest {
   /** The export ID, prefixed `exprt_`. */
   id: string;
 }
+const GetExportRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GetExportRequest>;
+
 export type ListExportsRequestResource =
   | "ad_campaigns"
   | "ad_groups"
@@ -204,14 +219,22 @@ export type ListExportsRequestResource =
   | "child_companies"
   | "ledger_lines"
   | "withdrawal_lines";
+const ListExportsRequestResource = S.String;
+
 export type ListExportsRequestStatus =
   | "pending"
   | "processing"
   | "completed"
   | "failed"
   | "expired";
+const ListExportsRequestStatus = S.String;
+
 export type ListExportsRequestOrder = "created_at";
+const ListExportsRequestOrder = S.String;
+
 export type ListExportsRequestDirection = "asc" | "desc";
+const ListExportsRequestDirection = S.String;
+
 export interface ListExportsRequest {
   /** The account to list exports for, prefixed `biz_`. Defaults to the credential's account. */
   account_id?: string;
@@ -228,17 +251,31 @@ export interface ListExportsRequest {
   /** The sort direction. */
   direction?: ListExportsRequestDirection | (string & {});
 }
+const ListExportsRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ListExportsRequest>;
+
 export type ListExportsResponseDataList = Array<Export>;
+const ListExportsResponseDataList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListExportsResponseDataList>;
+
 export interface ListExportsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
+const ListExportsResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListExportsResponsePageInfo>;
+
 export interface ListExportsResponse {
   data: ListExportsResponseDataList;
   page_info: ListExportsResponsePageInfo;
 }
+const ListExportsResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ListExportsResponse>;
+
 export type CreateExportError = BadRequest | Forbidden | Conflict | WhopOpError;
 /** Create Export Starts an asynchronous export of a resource for an account. Returns the export in `pending`; poll `GET /exports/{id}` until `download_url` is set. */
 export const createExport: API.OperationMethod<
@@ -247,8 +284,8 @@ export const createExport: API.OperationMethod<
   CreateExportError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateExportRequest>,
-  output: __S(2) as any as S.Schema<Export>,
+  input: CreateExportRequest,
+  output: Export,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -262,8 +299,8 @@ export const getExport: API.OperationMethod<
   GetExportError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<GetExportRequest>,
-  output: __S(2) as any as S.Schema<Export>,
+  input: GetExportRequest,
+  output: Export,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -277,8 +314,8 @@ export const listExports: API.OperationMethod<
   ListExportsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<ListExportsRequest>,
-  output: __S(7) as any as S.Schema<ListExportsResponse>,
+  input: ListExportsRequest,
+  output: ListExportsResponse,
   errors: [BadRequest, Forbidden],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -293,9 +330,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String),
-          columns: S.optional(__S(0)),
+          columns: S.optional(CreateExportRequestColumnsList),
           filters: S.optional(S.Unknown),
-          resource: S.String,
+          resource: CreateExportRequestResource,
           timezone: S.optional(S.String),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/exports", code: 200 })),
@@ -308,8 +345,8 @@ function __c0(j: number): any {
           expires_at: S.String,
           id: S.String,
           progress_percent: S.NullOr(S.Number),
-          resource: S.String,
-          status: S.String,
+          resource: ExportResource,
+          status: ExportStatus,
           updated_at: S.String,
         }),
       ).annotate({ identifier: "Export" });
@@ -323,16 +360,16 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
-          resource: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          resource: S.optional(ListExportsRequestResource.pipe(T.Query())),
+          status: S.optional(ListExportsRequestStatus.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListExportsRequestOrder.pipe(T.Query())),
+          direction: S.optional(ListExportsRequestDirection.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/exports", code: 200 })),
       ).annotate({ identifier: "ListExportsRequest" });
     case 5:
-      return S.Array(__S(2));
+      return S.Array(Export);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -347,20 +384,9 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(5),
-          page_info: __S(6),
+          data: ListExportsResponseDataList,
+          page_info: ListExportsResponsePageInfo,
         }),
       ).annotate({ identifier: "ListExportsResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

@@ -6,32 +6,66 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
 export interface CheckHealthControllerRequest {}
+const CheckHealthControllerRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CheckHealthControllerRequest>;
+
 export interface HealthControllerCheck200ResponseInfoValue {
   status: string;
 }
+const HealthControllerCheck200ResponseInfoValue = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<HealthControllerCheck200ResponseInfoValue>;
+
 export type HealthControllerCheck200ResponseInfoMap = {
   [key: string]: HealthControllerCheck200ResponseInfoValue | undefined;
 };
+const HealthControllerCheck200ResponseInfoMap = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<HealthControllerCheck200ResponseInfoMap>;
+
 export type HealthControllerCheck200ResponseErrorMap = {
   [key: string]: HealthControllerCheck200ResponseInfoValue | undefined;
 };
+const HealthControllerCheck200ResponseErrorMap =
+  HealthControllerCheck200ResponseInfoMap as any as S.Schema<HealthControllerCheck200ResponseErrorMap>;
+
 export type HealthControllerCheck200ResponseDetailsMap = {
   [key: string]: HealthControllerCheck200ResponseInfoValue | undefined;
 };
+const HealthControllerCheck200ResponseDetailsMap =
+  HealthControllerCheck200ResponseInfoMap as any as S.Schema<HealthControllerCheck200ResponseDetailsMap>;
+
 export interface HealthControllerCheck200Response {
   status?: string;
   info?: HealthControllerCheck200ResponseInfoMap | null;
   error?: HealthControllerCheck200ResponseErrorMap | null;
   details?: HealthControllerCheck200ResponseDetailsMap;
 }
+const HealthControllerCheck200Response = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<HealthControllerCheck200Response>;
+
 export interface HealthControllerLiveRequest {}
+const HealthControllerLiveRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<HealthControllerLiveRequest>;
+
 export interface HealthControllerLiveResponse {}
+const HealthControllerLiveResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<HealthControllerLiveResponse>;
+
 export type CheckHealthControllerError = DaytonaOpError;
 export const checkHealthController: API.OperationMethod<
   CheckHealthControllerRequest,
@@ -39,8 +73,8 @@ export const checkHealthController: API.OperationMethod<
   CheckHealthControllerError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CheckHealthControllerRequest>,
-  output: __S(3) as any as S.Schema<HealthControllerCheck200Response>,
+  input: CheckHealthControllerRequest,
+  output: HealthControllerCheck200Response,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -53,8 +87,8 @@ export const healthControllerLive: API.OperationMethod<
   HealthControllerLiveError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<HealthControllerLiveRequest>,
-  output: __S(5) as any as S.Schema<HealthControllerLiveResponse>,
+  input: HealthControllerLiveRequest,
+  output: HealthControllerLiveResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -78,14 +112,14 @@ function __c0(j: number): any {
         identifier: "HealthControllerCheck200ResponseInfoValue",
       });
     case 2:
-      return S.Record(S.String, __S(1));
+      return S.Record(S.String, HealthControllerCheck200ResponseInfoValue);
     case 3:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          info: S.optional(S.NullOr(__S(2))),
-          error: S.optional(S.NullOr(__S(2))),
-          details: S.optional(__S(2)),
+          info: S.optional(S.NullOr(HealthControllerCheck200ResponseInfoMap)),
+          error: S.optional(S.NullOr(HealthControllerCheck200ResponseErrorMap)),
+          details: S.optional(HealthControllerCheck200ResponseDetailsMap),
         }),
       ).annotate({
         identifier: "HealthControllerCheck200Response",
@@ -100,16 +134,5 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "HealthControllerLiveResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

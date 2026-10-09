@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -46,6 +44,11 @@ export interface CreateDeploymentCheckRunRequest {
   slug?: string;
   checkId: string;
 }
+const CreateDeploymentCheckRunRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateDeploymentCheckRunRequest>;
+
 export type CreateDeploymentCheckRunResponseBodyCase0Blocks =
   | "build-start"
   | "deployment-alias"
@@ -74,6 +77,11 @@ export type CreateDeploymentCheckRunResponseBodyCase0Requires =
   | "none";
 export type CreateDeploymentCheckRunResponseBodyCase0Status = "completed" | "queued" | "running";
 export type CreateDeploymentCheckRunResponseBodyCase0TargetsList = Array<string>;
+const CreateDeploymentCheckRunResponseBodyCase0TargetsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase0TargetsList>;
+
 export type CreateDeploymentCheckRunResponseBodyCase0SourceCase0Kind = "integration";
 export interface CreateDeploymentCheckRunResponseBodyCase0SourceCase0 {
   externalResourceId?: string;
@@ -240,15 +248,30 @@ export interface CreateDeploymentCheckRunResponseBodyCase1 {
 export type CreateDeploymentCheckRunResponseBody =
   | CreateDeploymentCheckRunResponseBodyCase0
   | CreateDeploymentCheckRunResponseBodyCase1;
+const CreateDeploymentCheckRunResponseBody =
+  S.Unknown as any as S.Schema<CreateDeploymentCheckRunResponseBody>;
+
 export type CreateDeploymentCheckRunResponse = CreateDeploymentCheckRunResponseBody;
+const CreateDeploymentCheckRunResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateDeploymentCheckRunResponse>;
+
 export type CreateProjectCheckRequestRequires = "build-ready" | "deployment-url" | "none";
+const CreateProjectCheckRequestRequires = S.String;
+
 export type CreateProjectCheckRequestTargetsList = Array<string>;
+const CreateProjectCheckRequestTargetsList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<CreateProjectCheckRequestTargetsList>;
+
 export type CreateProjectCheckRequestBlocks =
   | "build-start"
   | "deployment-start"
   | "deployment-alias"
   | "deployment-promotion"
   | "none";
+const CreateProjectCheckRequestBlocks = S.String;
+
 export interface CreateProjectCheckRequestSourceCase0 {
   kind?: string;
   externalResourceId?: string;
@@ -267,6 +290,9 @@ export type CreateProjectCheckRequestSource =
   | CreateProjectCheckRequestSourceCase0
   | CreateProjectCheckRequestSourceCase1
   | CreateProjectCheckRequestSourceCase2;
+const CreateProjectCheckRequestSource =
+  S.Unknown as any as S.Schema<CreateProjectCheckRequestSource>;
+
 export interface CreateProjectCheckRequest {
   projectIdOrName: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -281,13 +307,22 @@ export interface CreateProjectCheckRequest {
   source?: CreateProjectCheckRequestSource;
   timeout?: number;
 }
+const CreateProjectCheckRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateProjectCheckRequest>;
+
 export type CreateProjectCheckResponseBlocks =
   | "build-start"
   | "deployment-alias"
   | "deployment-promotion"
   | "deployment-start"
   | "none";
+const CreateProjectCheckResponseBlocks = S.String;
+
 export type CreateProjectCheckResponseRequires = "build-ready" | "deployment-url" | "none";
+const CreateProjectCheckResponseRequires = S.String;
+
 export type CreateProjectCheckResponseSourceCase0Kind = "integration";
 export interface CreateProjectCheckResponseSourceCase0 {
   externalResourceId?: string;
@@ -312,6 +347,9 @@ export type CreateProjectCheckResponseSource =
   | CreateProjectCheckResponseSourceCase0
   | CreateProjectCheckResponseSourceCase1
   | CreateProjectCheckResponseSourceCase2;
+const CreateProjectCheckResponseSource =
+  S.Unknown as any as S.Schema<CreateProjectCheckResponseSource>;
+
 export type CreateProjectCheckResponseSourceKind =
   | "git-provider"
   | "integration"
@@ -320,7 +358,12 @@ export type CreateProjectCheckResponseSourceKind =
   | "integration"
   | "webhook"
   | "git-provider";
+const CreateProjectCheckResponseSourceKind = S.String;
+
 export type CreateProjectCheckResponseTargetsList = Array<string>;
+const CreateProjectCheckResponseTargetsList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<CreateProjectCheckResponseTargetsList>;
+
 export interface CreateProjectCheckResponse {
   blocks: CreateProjectCheckResponseBlocks;
   createdAt: number;
@@ -338,6 +381,11 @@ export interface CreateProjectCheckResponse {
   timeout: number;
   updatedAt: number;
 }
+const CreateProjectCheckResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateProjectCheckResponse>;
+
 export interface DeleteProjectCheckRequest {
   projectIdOrName: string;
   checkId: string;
@@ -346,9 +394,19 @@ export interface DeleteProjectCheckRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const DeleteProjectCheckRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteProjectCheckRequest>;
+
 export interface DeleteProjectCheckResponse {
   success: boolean;
 }
+const DeleteProjectCheckResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DeleteProjectCheckResponse>;
+
 export interface GetDeploymentCheckRunRequest {
   deploymentId: string;
   /** The ID of the resource that will be updated. */
@@ -358,6 +416,11 @@ export interface GetDeploymentCheckRunRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetDeploymentCheckRunRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetDeploymentCheckRunRequest>;
+
 export type GetDeploymentCheckRunResponseBodyCase0Blocks =
   | "build-start"
   | "deployment-alias"
@@ -548,7 +611,15 @@ export interface GetDeploymentCheckRunResponseBodyCase1 {
 export type GetDeploymentCheckRunResponseBody =
   | GetDeploymentCheckRunResponseBodyCase0
   | GetDeploymentCheckRunResponseBodyCase1;
+const GetDeploymentCheckRunResponseBody =
+  S.Unknown as any as S.Schema<GetDeploymentCheckRunResponseBody>;
+
 export type GetDeploymentCheckRunResponse = GetDeploymentCheckRunResponseBody;
+const GetDeploymentCheckRunResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetDeploymentCheckRunResponse>;
+
 export interface GetProjectCheckRequest {
   projectIdOrName: string;
   /** The ID of the resource that will be updated. */
@@ -558,13 +629,22 @@ export interface GetProjectCheckRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetProjectCheckRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetProjectCheckRequest>;
+
 export type GetProjectCheckResponseBlocks =
   | "build-start"
   | "deployment-alias"
   | "deployment-promotion"
   | "deployment-start"
   | "none";
+const GetProjectCheckResponseBlocks = S.String;
+
 export type GetProjectCheckResponseRequires = "build-ready" | "deployment-url" | "none";
+const GetProjectCheckResponseRequires = S.String;
+
 export type GetProjectCheckResponseSourceCase0Kind = "integration";
 export interface GetProjectCheckResponseSourceCase0 {
   externalResourceId?: string;
@@ -589,6 +669,8 @@ export type GetProjectCheckResponseSource =
   | GetProjectCheckResponseSourceCase0
   | GetProjectCheckResponseSourceCase1
   | GetProjectCheckResponseSourceCase2;
+const GetProjectCheckResponseSource = S.Unknown as any as S.Schema<GetProjectCheckResponseSource>;
+
 export type GetProjectCheckResponseSourceKind =
   | "git-provider"
   | "integration"
@@ -597,7 +679,12 @@ export type GetProjectCheckResponseSourceKind =
   | "integration"
   | "webhook"
   | "git-provider";
+const GetProjectCheckResponseSourceKind = S.String;
+
 export type GetProjectCheckResponseTargetsList = Array<string>;
+const GetProjectCheckResponseTargetsList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<GetProjectCheckResponseTargetsList>;
+
 export interface GetProjectCheckResponse {
   blocks: GetProjectCheckResponseBlocks;
   createdAt: number;
@@ -615,6 +702,11 @@ export interface GetProjectCheckResponse {
   timeout: number;
   updatedAt: number;
 }
+const GetProjectCheckResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetProjectCheckResponse>;
+
 export interface ListCheckRunsRequest {
   projectIdOrName: string;
   /** The ID of the resource that will be updated. */
@@ -624,6 +716,8 @@ export interface ListCheckRunsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const ListCheckRunsRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ListCheckRunsRequest>;
+
 export type ListCheckRunsResponseRunsItemCase0Blocks =
   | "build-start"
   | "deployment-alias"
@@ -803,10 +897,22 @@ export interface ListCheckRunsResponseRunsItemCase1 {
 export type ListCheckRunsResponseRunsItem =
   | ListCheckRunsResponseRunsItemCase0
   | ListCheckRunsResponseRunsItemCase1;
+const ListCheckRunsResponseRunsItem = S.Unknown as any as S.Schema<ListCheckRunsResponseRunsItem>;
+
 export type ListCheckRunsResponseRunsList = Array<ListCheckRunsResponseRunsItem>;
+const ListCheckRunsResponseRunsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ListCheckRunsResponseRunsList>;
+
 export interface ListCheckRunsResponse {
   runs: ListCheckRunsResponseRunsList;
 }
+const ListCheckRunsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ListCheckRunsResponse>;
+
 export interface ListDeploymentCheckRunsRequest {
   deploymentId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -814,6 +920,11 @@ export interface ListDeploymentCheckRunsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const ListDeploymentCheckRunsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ListDeploymentCheckRunsRequest>;
+
 export type ListDeploymentCheckRunsResponseRunsItemCase0Blocks =
   | "build-start"
   | "deployment-alias"
@@ -1005,17 +1116,32 @@ export interface ListDeploymentCheckRunsResponseRunsItemCase1 {
 export type ListDeploymentCheckRunsResponseRunsItem =
   | ListDeploymentCheckRunsResponseRunsItemCase0
   | ListDeploymentCheckRunsResponseRunsItemCase1;
+const ListDeploymentCheckRunsResponseRunsItem =
+  S.Unknown as any as S.Schema<ListDeploymentCheckRunsResponseRunsItem>;
+
 export type ListDeploymentCheckRunsResponseRunsList =
   Array<ListDeploymentCheckRunsResponseRunsItem>;
+const ListDeploymentCheckRunsResponseRunsList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListDeploymentCheckRunsResponseRunsList>;
+
 export interface ListDeploymentCheckRunsResponse {
   runs: ListDeploymentCheckRunsResponseRunsList;
 }
+const ListDeploymentCheckRunsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListDeploymentCheckRunsResponse>;
+
 export type ListProjectChecksRequestBlocks =
   | "build-start"
   | "deployment-start"
   | "deployment-alias"
   | "deployment-promotion"
   | "none";
+const ListProjectChecksRequestBlocks = S.String;
+
 export interface ListProjectChecksRequest {
   projectIdOrName: string;
   blocks?: ListProjectChecksRequestBlocks | (string & {});
@@ -1024,14 +1150,26 @@ export interface ListProjectChecksRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const ListProjectChecksRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListProjectChecksRequest>;
+
 export type ListProjectChecksResponseAvailableNativeChecksList = Array<string>;
+const ListProjectChecksResponseAvailableNativeChecksList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<ListProjectChecksResponseAvailableNativeChecksList>;
+
 export type ListProjectChecksResponseChecksItemBlocks =
   | "build-start"
   | "deployment-alias"
   | "deployment-promotion"
   | "deployment-start"
   | "none";
+const ListProjectChecksResponseChecksItemBlocks = S.String;
+
 export type ListProjectChecksResponseChecksItemRequires = "build-ready" | "deployment-url" | "none";
+const ListProjectChecksResponseChecksItemRequires = S.String;
+
 export type ListProjectChecksResponseChecksItemSourceCase0Kind = "integration";
 export interface ListProjectChecksResponseChecksItemSourceCase0 {
   externalResourceId?: string;
@@ -1059,6 +1197,9 @@ export type ListProjectChecksResponseChecksItemSource =
   | ListProjectChecksResponseChecksItemSourceCase0
   | ListProjectChecksResponseChecksItemSourceCase1
   | ListProjectChecksResponseChecksItemSourceCase2;
+const ListProjectChecksResponseChecksItemSource =
+  S.Unknown as any as S.Schema<ListProjectChecksResponseChecksItemSource>;
+
 export type ListProjectChecksResponseChecksItemSourceKind =
   | "git-provider"
   | "integration"
@@ -1067,7 +1208,12 @@ export type ListProjectChecksResponseChecksItemSourceKind =
   | "integration"
   | "webhook"
   | "git-provider";
+const ListProjectChecksResponseChecksItemSourceKind = S.String;
+
 export type ListProjectChecksResponseChecksItemTargetsList = Array<string>;
+const ListProjectChecksResponseChecksItemTargetsList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<ListProjectChecksResponseChecksItemTargetsList>;
+
 export interface ListProjectChecksResponseChecksItem {
   blocks: ListProjectChecksResponseChecksItemBlocks;
   createdAt: number;
@@ -1085,12 +1231,29 @@ export interface ListProjectChecksResponseChecksItem {
   timeout: number;
   updatedAt: number;
 }
+const ListProjectChecksResponseChecksItem = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListProjectChecksResponseChecksItem>;
+
 export type ListProjectChecksResponseChecksList = Array<ListProjectChecksResponseChecksItem>;
+const ListProjectChecksResponseChecksList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListProjectChecksResponseChecksList>;
+
 export interface ListProjectChecksResponse {
   availableNativeChecks: ListProjectChecksResponseAvailableNativeChecksList;
   checks: ListProjectChecksResponseChecksList;
 }
+const ListProjectChecksResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListProjectChecksResponse>;
+
 export type UpdateDeploymentCheckRunRequestStatus = "queued" | "running" | "completed";
+const UpdateDeploymentCheckRunRequestStatus = S.String;
+
 export type UpdateDeploymentCheckRunRequestConclusion =
   | "canceled"
   | "skipped"
@@ -1098,6 +1261,8 @@ export type UpdateDeploymentCheckRunRequestConclusion =
   | "failed"
   | "neutral"
   | "succeeded";
+const UpdateDeploymentCheckRunRequestConclusion = S.String;
+
 export interface UpdateDeploymentCheckRunRequest {
   deploymentId: string;
   checkRunId: string;
@@ -1113,6 +1278,11 @@ export interface UpdateDeploymentCheckRunRequest {
   conclusion?: UpdateDeploymentCheckRunRequestConclusion | (string & {});
   conclusionText?: string;
 }
+const UpdateDeploymentCheckRunRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<UpdateDeploymentCheckRunRequest>;
+
 export type UpdateDeploymentCheckRunResponseBodyCase0Blocks =
   | "build-start"
   | "deployment-alias"
@@ -1303,15 +1473,30 @@ export interface UpdateDeploymentCheckRunResponseBodyCase1 {
 export type UpdateDeploymentCheckRunResponseBody =
   | UpdateDeploymentCheckRunResponseBodyCase0
   | UpdateDeploymentCheckRunResponseBodyCase1;
+const UpdateDeploymentCheckRunResponseBody =
+  S.Unknown as any as S.Schema<UpdateDeploymentCheckRunResponseBody>;
+
 export type UpdateDeploymentCheckRunResponse = UpdateDeploymentCheckRunResponseBody;
+const UpdateDeploymentCheckRunResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<UpdateDeploymentCheckRunResponse>;
+
 export type UpdateProjectCheckRequestRequires = "build-ready" | "deployment-url" | "none";
+const UpdateProjectCheckRequestRequires = S.String;
+
 export type UpdateProjectCheckRequestTargetsList = Array<string>;
+const UpdateProjectCheckRequestTargetsList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<UpdateProjectCheckRequestTargetsList>;
+
 export type UpdateProjectCheckRequestBlocks =
   | "build-start"
   | "deployment-start"
   | "deployment-alias"
   | "deployment-promotion"
   | "none";
+const UpdateProjectCheckRequestBlocks = S.String;
+
 export interface UpdateProjectCheckRequest {
   projectIdOrName: string;
   checkId: string;
@@ -1326,13 +1511,22 @@ export interface UpdateProjectCheckRequest {
   blocks?: UpdateProjectCheckRequestBlocks | (string & {});
   timeout?: number;
 }
+const UpdateProjectCheckRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<UpdateProjectCheckRequest>;
+
 export type UpdateProjectCheckResponseBlocks =
   | "build-start"
   | "deployment-alias"
   | "deployment-promotion"
   | "deployment-start"
   | "none";
+const UpdateProjectCheckResponseBlocks = S.String;
+
 export type UpdateProjectCheckResponseRequires = "build-ready" | "deployment-url" | "none";
+const UpdateProjectCheckResponseRequires = S.String;
+
 export type UpdateProjectCheckResponseSourceCase0Kind = "integration";
 export interface UpdateProjectCheckResponseSourceCase0 {
   externalResourceId?: string;
@@ -1357,6 +1551,9 @@ export type UpdateProjectCheckResponseSource =
   | UpdateProjectCheckResponseSourceCase0
   | UpdateProjectCheckResponseSourceCase1
   | UpdateProjectCheckResponseSourceCase2;
+const UpdateProjectCheckResponseSource =
+  S.Unknown as any as S.Schema<UpdateProjectCheckResponseSource>;
+
 export type UpdateProjectCheckResponseSourceKind =
   | "git-provider"
   | "integration"
@@ -1365,7 +1562,12 @@ export type UpdateProjectCheckResponseSourceKind =
   | "integration"
   | "webhook"
   | "git-provider";
+const UpdateProjectCheckResponseSourceKind = S.String;
+
 export type UpdateProjectCheckResponseTargetsList = Array<string>;
+const UpdateProjectCheckResponseTargetsList =
+  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<UpdateProjectCheckResponseTargetsList>;
+
 export interface UpdateProjectCheckResponse {
   blocks: UpdateProjectCheckResponseBlocks;
   createdAt: number;
@@ -1383,6 +1585,11 @@ export interface UpdateProjectCheckResponse {
   timeout: number;
   updatedAt: number;
 }
+const UpdateProjectCheckResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<UpdateProjectCheckResponse>;
+
 export type CreateDeploymentCheckRunError = BadRequest | Forbidden | NotFound | VercelOpError;
 /** Create a check run Creates a new check run for a deployment. */
 export const createDeploymentCheckRun: API.OperationMethod<
@@ -1391,8 +1598,8 @@ export const createDeploymentCheckRun: API.OperationMethod<
   CreateDeploymentCheckRunError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateDeploymentCheckRunRequest>,
-  output: __S(2) as any as S.Schema<CreateDeploymentCheckRunResponse>,
+  input: CreateDeploymentCheckRunRequest,
+  output: CreateDeploymentCheckRunResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1406,8 +1613,8 @@ export const createProjectCheck: API.OperationMethod<
   CreateProjectCheckError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateProjectCheckRequest>,
-  output: __S(4) as any as S.Schema<CreateProjectCheckResponse>,
+  input: CreateProjectCheckRequest,
+  output: CreateProjectCheckResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1421,8 +1628,8 @@ export const deleteProjectCheck: API.OperationMethod<
   DeleteProjectCheckError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<DeleteProjectCheckRequest>,
-  output: __S(6) as any as S.Schema<DeleteProjectCheckResponse>,
+  input: DeleteProjectCheckRequest,
+  output: DeleteProjectCheckResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1436,8 +1643,8 @@ export const getDeploymentCheckRun: API.OperationMethod<
   GetDeploymentCheckRunError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<GetDeploymentCheckRunRequest>,
-  output: __S(8) as any as S.Schema<GetDeploymentCheckRunResponse>,
+  input: GetDeploymentCheckRunRequest,
+  output: GetDeploymentCheckRunResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1451,8 +1658,8 @@ export const getProjectCheck: API.OperationMethod<
   GetProjectCheckError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<GetProjectCheckRequest>,
-  output: __S(10) as any as S.Schema<GetProjectCheckResponse>,
+  input: GetProjectCheckRequest,
+  output: GetProjectCheckResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1466,8 +1673,8 @@ export const listCheckRuns: API.OperationMethod<
   ListCheckRunsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<ListCheckRunsRequest>,
-  output: __S(13) as any as S.Schema<ListCheckRunsResponse>,
+  input: ListCheckRunsRequest,
+  output: ListCheckRunsResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1481,8 +1688,8 @@ export const listDeploymentCheckRuns: API.OperationMethod<
   ListDeploymentCheckRunsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<ListDeploymentCheckRunsRequest>,
-  output: __S(16) as any as S.Schema<ListDeploymentCheckRunsResponse>,
+  input: ListDeploymentCheckRunsRequest,
+  output: ListDeploymentCheckRunsResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1496,8 +1703,8 @@ export const listProjectChecks: API.OperationMethod<
   ListProjectChecksError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<ListProjectChecksRequest>,
-  output: __S(20) as any as S.Schema<ListProjectChecksResponse>,
+  input: ListProjectChecksRequest,
+  output: ListProjectChecksResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1511,8 +1718,8 @@ export const updateDeploymentCheckRun: API.OperationMethod<
   UpdateDeploymentCheckRunError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<UpdateDeploymentCheckRunRequest>,
-  output: __S(22) as any as S.Schema<UpdateDeploymentCheckRunResponse>,
+  input: UpdateDeploymentCheckRunRequest,
+  output: UpdateDeploymentCheckRunResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1526,8 +1733,8 @@ export const updateProjectCheck: API.OperationMethod<
   UpdateProjectCheckError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<UpdateProjectCheckRequest>,
-  output: __S(24) as any as S.Schema<UpdateProjectCheckResponse>,
+  input: UpdateProjectCheckRequest,
+  output: UpdateProjectCheckResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1552,7 +1759,9 @@ function __c0(j: number): any {
     case 1:
       return S.Array(S.String);
     case 2:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        CreateDeploymentCheckRunResponseBody.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "CreateDeploymentCheckRunResponse",
       });
     case 3:
@@ -1563,10 +1772,10 @@ function __c0(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
           name: S.String,
           isRerequestable: S.optional(S.Boolean),
-          requires: S.String,
-          targets: S.optional(__S(1)),
-          blocks: S.optional(S.String),
-          source: S.optional(S.Unknown),
+          requires: CreateProjectCheckRequestRequires,
+          targets: S.optional(CreateProjectCheckRequestTargetsList),
+          blocks: S.optional(CreateProjectCheckRequestBlocks),
+          source: S.optional(CreateProjectCheckRequestSource),
           timeout: S.optional(S.Number),
         }).pipe(
           T.Http({ method: "POST", uri: "/v2/projects/{projectIdOrName}/checks", code: 200 }),
@@ -1577,7 +1786,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          blocks: S.String,
+          blocks: CreateProjectCheckResponseBlocks,
           createdAt: S.Number,
           deletedAt: S.optional(S.Number),
           id: S.String,
@@ -1585,11 +1794,11 @@ function __c0(j: number): any {
           name: S.String,
           ownerId: S.String,
           projectId: S.String,
-          requires: S.String,
-          source: S.Unknown,
+          requires: CreateProjectCheckResponseRequires,
+          source: CreateProjectCheckResponseSource,
           sourceIntegrationConfigurationId: S.optional(S.String),
-          sourceKind: S.String,
-          targets: __S(1),
+          sourceKind: CreateProjectCheckResponseSourceKind,
+          targets: CreateProjectCheckResponseTargetsList,
           timeout: S.Number,
           updatedAt: S.Number,
         }),
@@ -1643,7 +1852,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetDeploymentCheckRunResponseBody.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetDeploymentCheckRunResponse",
       });
     case 1:
@@ -1664,7 +1873,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          blocks: S.String,
+          blocks: GetProjectCheckResponseBlocks,
           createdAt: S.Number,
           deletedAt: S.optional(S.Number),
           id: S.String,
@@ -1672,11 +1881,11 @@ function __c1(j: number): any {
           name: S.String,
           ownerId: S.String,
           projectId: S.String,
-          requires: S.String,
-          source: S.Unknown,
+          requires: GetProjectCheckResponseRequires,
+          source: GetProjectCheckResponseSource,
           sourceIntegrationConfigurationId: S.optional(S.String),
-          sourceKind: S.String,
-          targets: __S(1),
+          sourceKind: GetProjectCheckResponseSourceKind,
+          targets: GetProjectCheckResponseTargetsList,
           timeout: S.Number,
           updatedAt: S.Number,
         }),
@@ -1697,11 +1906,11 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListCheckRunsRequest" });
     case 4:
-      return S.Array(S.Unknown);
+      return S.Array(ListCheckRunsResponseRunsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          runs: __S(12),
+          runs: ListCheckRunsResponseRunsList,
         }),
       ).annotate({ identifier: "ListCheckRunsResponse" });
     case 6:
@@ -1717,7 +1926,7 @@ function __c1(j: number): any {
         identifier: "ListDeploymentCheckRunsRequest",
       });
     case 7:
-      return S.Array(S.Unknown);
+      return S.Array(ListDeploymentCheckRunsResponseRunsItem);
   }
 }
 function __c2(j: number): any {
@@ -1725,7 +1934,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          runs: __S(15),
+          runs: ListDeploymentCheckRunsResponseRunsList,
         }),
       ).annotate({
         identifier: "ListDeploymentCheckRunsResponse",
@@ -1734,7 +1943,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectIdOrName: S.String.pipe(T.Label()),
-          blocks: S.optional(S.String.pipe(T.Query())),
+          blocks: S.optional(ListProjectChecksRequestBlocks.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v2/projects/{projectIdOrName}/checks", code: 200 })),
@@ -1742,7 +1951,7 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          blocks: S.String,
+          blocks: ListProjectChecksResponseChecksItemBlocks,
           createdAt: S.Number,
           deletedAt: S.optional(S.Number),
           id: S.String,
@@ -1750,11 +1959,11 @@ function __c2(j: number): any {
           name: S.String,
           ownerId: S.String,
           projectId: S.String,
-          requires: S.String,
-          source: S.Unknown,
+          requires: ListProjectChecksResponseChecksItemRequires,
+          source: ListProjectChecksResponseChecksItemSource,
           sourceIntegrationConfigurationId: S.optional(S.String),
-          sourceKind: S.String,
-          targets: __S(1),
+          sourceKind: ListProjectChecksResponseChecksItemSourceKind,
+          targets: ListProjectChecksResponseChecksItemTargetsList,
           timeout: S.Number,
           updatedAt: S.Number,
         }),
@@ -1762,12 +1971,12 @@ function __c2(j: number): any {
         identifier: "ListProjectChecksResponseChecksItem",
       });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(ListProjectChecksResponseChecksItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          availableNativeChecks: __S(1),
-          checks: __S(19),
+          availableNativeChecks: ListProjectChecksResponseAvailableNativeChecksList,
+          checks: ListProjectChecksResponseChecksList,
         }),
       ).annotate({
         identifier: "ListProjectChecksResponse",
@@ -1781,10 +1990,10 @@ function __c2(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
           externalId: S.optional(S.String),
           externalUrl: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(UpdateDeploymentCheckRunRequestStatus),
           output: S.optional(S.Unknown),
           completedAt: S.optional(S.Number),
-          conclusion: S.optional(S.String),
+          conclusion: S.optional(UpdateDeploymentCheckRunRequestConclusion),
           conclusionText: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1797,7 +2006,9 @@ function __c2(j: number): any {
         identifier: "UpdateDeploymentCheckRunRequest",
       });
     case 6:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        UpdateDeploymentCheckRunResponseBody.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "UpdateDeploymentCheckRunResponse",
       });
     case 7:
@@ -1809,9 +2020,9 @@ function __c2(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String),
           isRerequestable: S.optional(S.Boolean),
-          requires: S.optional(S.String),
-          targets: S.optional(__S(1)),
-          blocks: S.optional(S.String),
+          requires: S.optional(UpdateProjectCheckRequestRequires),
+          targets: S.optional(UpdateProjectCheckRequestTargetsList),
+          blocks: S.optional(UpdateProjectCheckRequestBlocks),
           timeout: S.optional(S.Number),
         }).pipe(
           T.Http({
@@ -1830,7 +2041,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          blocks: S.String,
+          blocks: UpdateProjectCheckResponseBlocks,
           createdAt: S.Number,
           deletedAt: S.optional(S.Number),
           id: S.String,
@@ -1838,33 +2049,16 @@ function __c3(j: number): any {
           name: S.String,
           ownerId: S.String,
           projectId: S.String,
-          requires: S.String,
-          source: S.Unknown,
+          requires: UpdateProjectCheckResponseRequires,
+          source: UpdateProjectCheckResponseSource,
           sourceIntegrationConfigurationId: S.optional(S.String),
-          sourceKind: S.String,
-          targets: __S(1),
+          sourceKind: UpdateProjectCheckResponseSourceKind,
+          targets: UpdateProjectCheckResponseTargetsList,
           timeout: S.Number,
           updatedAt: S.Number,
         }),
       ).annotate({
         identifier: "UpdateProjectCheckResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

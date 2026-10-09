@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -52,6 +50,11 @@ export interface GetNotificationRequest {
   /** A notification `id` from List Notifications, or the id delivered with a push/websocket event. */
   id: string;
 }
+const GetNotificationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetNotificationRequest>;
+
 export interface NotificationAccount {
   /** Account ID, prefixed `biz_`. */
   id: string;
@@ -62,12 +65,19 @@ export interface NotificationAccount {
   /** Account display name. */
   title: string;
 }
+const NotificationAccount = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<NotificationAccount>;
+
 export interface NotificationExperienceApp {
   /** Icon image URL. Always present -- the default app icon when none is uploaded. */
   icon_url: string;
   /** App ID, prefixed `app_`. */
   id: string;
 }
+const NotificationExperienceApp = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<NotificationExperienceApp>;
+
 export interface NotificationExperience {
   /** App the experience belongs to. */
   app: NotificationExperienceApp | null;
@@ -76,6 +86,11 @@ export interface NotificationExperience {
   /** Display name of the experience. */
   name: string | null;
 }
+const NotificationExperience = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<NotificationExperience>;
+
 export interface NotificationSender {
   /** User ID, prefixed `user_`. */
   id: string;
@@ -84,8 +99,12 @@ export interface NotificationSender {
   /** Public username. */
   username: string;
 }
+const NotificationSender = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<NotificationSender>;
+
 /** Scope of the topic: whether it applies to an account, a user, or an account's team. */
 export type NotificationTopicSummaryTopicType = "account" | "user" | "account_team";
+const NotificationTopicSummaryTopicType = S.String;
+
 export interface NotificationTopicSummary {
   /** Whether notifications for this topic are enabled by default when the user has not set a preference. */
   default_preference_value: boolean;
@@ -96,6 +115,11 @@ export interface NotificationTopicSummary {
   /** Scope of the topic: whether it applies to an account, a user, or an account's team. */
   topic_type: NotificationTopicSummaryTopicType;
 }
+const NotificationTopicSummary = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<NotificationTopicSummary>;
+
 export interface Notification {
   /** Account the notification belongs to. `null` when the notification is not associated with an account. */
   account: NotificationAccount | null;
@@ -124,13 +148,25 @@ export interface Notification {
   /** Topic category the notification belongs to, used for grouping and preference management. `null` when uncategorized. */
   topic: NotificationTopicSummary | null;
 }
+const Notification = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Notification>;
+
 export type ListNotificationBadgesRequestExperienceIdsList = Array<string>;
+const ListNotificationBadgesRequestExperienceIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListNotificationBadgesRequestExperienceIdsList>;
+
 export interface ListNotificationBadgesRequest {
   /** Only return badges for these experiences (`exp_` tags). */
   experience_ids?: ListNotificationBadgesRequestExperienceIdsList;
   /** The client's last fetched-at ISO 8601 timestamp, used to partially refresh badges after a websocket message. */
   last_fetched_at?: string;
 }
+const ListNotificationBadgesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListNotificationBadgesRequest>;
+
 export interface NotificationBadge {
   /** Account the experience belongs to, prefixed `biz_`. */
   account_id: string | null;
@@ -143,10 +179,22 @@ export interface NotificationBadge {
   /** When the caller last viewed the experience, as an ISO 8601 timestamp. `null` when never viewed. */
   last_viewed_at: string | null;
 }
+const NotificationBadge = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<NotificationBadge>;
+
 export type ListNotificationBadgesResponseDataList = Array<NotificationBadge>;
+const ListNotificationBadgesResponseDataList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListNotificationBadgesResponseDataList>;
+
 export interface ListNotificationBadgesResponse {
   data: ListNotificationBadgesResponseDataList;
 }
+const ListNotificationBadgesResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListNotificationBadgesResponse>;
+
 export interface ListNotificationsRequest {
   /** Only return notifications created since the user last viewed their source. */
   unread?: boolean;
@@ -161,18 +209,40 @@ export interface ListNotificationsRequest {
   /** Return results after this cursor. Use `page_info.end_cursor` from the previous response to fetch the next page. */
   after?: string;
 }
+const ListNotificationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ListNotificationsRequest>;
+
 export type ListNotificationsResponseDataList = Array<Notification>;
+const ListNotificationsResponseDataList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ListNotificationsResponseDataList>;
+
 export interface ListNotificationsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
+const ListNotificationsResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ListNotificationsResponsePageInfo>;
+
 export interface ListNotificationsResponse {
   data: ListNotificationsResponseDataList;
   page_info: ListNotificationsResponsePageInfo;
 }
+const ListNotificationsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListNotificationsResponse>;
+
 export type ListNotificationTopicsRequestTopicType = "user" | "account_team";
+const ListNotificationTopicsRequestTopicType = S.String;
+
 export interface ListNotificationTopicsRequest {
   /** Only return topics of this scope: `user` (member notifications) or `account_team` (team notifications). */
   topic_type?: ListNotificationTopicsRequestTopicType | (string & {});
@@ -181,8 +251,15 @@ export interface ListNotificationTopicsRequest {
   /** Return results after this cursor. Use `page_info.end_cursor` from the previous response to fetch the next page. */
   after?: string;
 }
+const ListNotificationTopicsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListNotificationTopicsRequest>;
+
 /** Scope of the topic: whether it applies to an account, a user, or an account's team. */
 export type NotificationTopicTopicType = "account" | "user" | "account_team";
+const NotificationTopicTopicType = S.String;
+
 export interface NotificationTopic {
   /** Whether notifications for this topic are enabled by default when the user has not set a preference. */
   default_preference_value: boolean;
@@ -199,12 +276,24 @@ export interface NotificationTopic {
   /** Scope of the topic: whether it applies to an account, a user, or an account's team. */
   topic_type: NotificationTopicTopicType;
 }
+const NotificationTopic = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<NotificationTopic>;
+
 export type ListNotificationTopicsResponseDataList = Array<NotificationTopic>;
+const ListNotificationTopicsResponseDataList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListNotificationTopicsResponseDataList>;
+
 export type ListNotificationTopicsResponsePageInfo = ListNotificationsResponsePageInfo;
 export interface ListNotificationTopicsResponse {
   data: ListNotificationTopicsResponseDataList;
   page_info: ListNotificationsResponsePageInfo;
 }
+const ListNotificationTopicsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListNotificationTopicsResponse>;
+
 export interface ReadMarkNotificationRequest {
   /** Pass `true` to mark every notification read. Exactly one of `experience_id` or `all` is required. */
   all?: boolean;
@@ -213,12 +302,23 @@ export interface ReadMarkNotificationRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const ReadMarkNotificationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ReadMarkNotificationRequest>;
+
 export type ReadMarkNotificationResponseDataList = Array<NotificationBadge>;
 export interface ReadMarkNotificationResponse {
   data: ReadMarkNotificationResponseDataList;
 }
+const ReadMarkNotificationResponse =
+  ListNotificationBadgesResponse as any as S.Schema<ReadMarkNotificationResponse>;
+
 /** Optional `user_` tags narrowing the audience. When provided, only these users are notified (as a mention), provided they are in the targeted experience or account. */
 export type SendNotificationRequestUserIdsList = Array<string>;
+const SendNotificationRequestUserIdsList =
+  ListNotificationBadgesRequestExperienceIdsList as any as S.Schema<SendNotificationRequestUserIdsList>;
+
 export interface SendNotificationRequest {
   /** Account whose team members receive the notification (`biz_` tag). Exactly one of `experience_id` or `account_id` is required. */
   account_id?: string;
@@ -239,9 +339,19 @@ export interface SendNotificationRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const SendNotificationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<SendNotificationRequest>;
+
 export interface SendNotificationResponse {
   success: boolean;
 }
+const SendNotificationResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<SendNotificationResponse>;
+
 export type GetNotificationError = NotFound | WhopOpError;
 /** Retrieve Notification Retrieves a single notification by id -- either an `id` returned by List Notifications, or the ephemeral id delivered with a push/websocket event. Requires a user credential. */
 export const getNotification: API.OperationMethod<
@@ -250,8 +360,8 @@ export const getNotification: API.OperationMethod<
   GetNotificationError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetNotificationRequest>,
-  output: __S(6) as any as S.Schema<Notification>,
+  input: GetNotificationRequest,
+  output: Notification,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -265,8 +375,8 @@ export const listNotificationBadges: API.OperationMethod<
   ListNotificationBadgesError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<ListNotificationBadgesRequest>,
-  output: __S(11) as any as S.Schema<ListNotificationBadgesResponse>,
+  input: ListNotificationBadgesRequest,
+  output: ListNotificationBadgesResponse,
   errors: [Forbidden],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -282,8 +392,8 @@ export const listNotifications: API.PaginatedOperationMethod<
   Notification
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(12) as any as S.Schema<ListNotificationsRequest>,
-    output: __S(15) as any as S.Schema<ListNotificationsResponse>,
+    input: ListNotificationsRequest,
+    output: ListNotificationsResponse,
     errors: [BadRequest, Forbidden],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -309,8 +419,8 @@ export const listNotificationTopics: API.PaginatedOperationMethod<
   NotificationTopic
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(16) as any as S.Schema<ListNotificationTopicsRequest>,
-    output: __S(19) as any as S.Schema<ListNotificationTopicsResponse>,
+    input: ListNotificationTopicsRequest,
+    output: ListNotificationTopicsResponse,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -334,8 +444,8 @@ export const readMarkNotification: API.OperationMethod<
   ReadMarkNotificationError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<ReadMarkNotificationRequest>,
-  output: __S(11) as any as S.Schema<ReadMarkNotificationResponse>,
+  input: ReadMarkNotificationRequest,
+  output: ReadMarkNotificationResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -349,8 +459,8 @@ export const sendNotification: API.OperationMethod<
   SendNotificationError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<SendNotificationRequest>,
-  output: __S(22) as any as S.Schema<SendNotificationResponse>,
+  input: SendNotificationRequest,
+  output: SendNotificationResponse,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -386,7 +496,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          app: S.NullOr(__S(2)),
+          app: S.NullOr(NotificationExperienceApp),
           id: S.String,
           name: S.NullOr(S.String),
         }),
@@ -405,25 +515,25 @@ function __c0(j: number): any {
           default_preference_value: S.Boolean,
           id: S.String,
           is_mention: S.Boolean,
-          topic_type: S.String,
+          topic_type: NotificationTopicSummaryTopicType,
         }),
       ).annotate({ identifier: "NotificationTopicSummary" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          account: S.NullOr(__S(1)),
+          account: S.NullOr(NotificationAccount),
           attachment_url: S.String,
           content: S.String,
           created_at: S.String,
-          experience: S.NullOr(__S(3)),
+          experience: S.NullOr(NotificationExperience),
           id: S.String,
           iframe_link: S.NullOr(S.String),
           link: S.NullOr(S.String),
           mentions_me: S.Boolean,
           rest_path: S.NullOr(S.String),
-          sender: S.NullOr(__S(4)),
+          sender: S.NullOr(NotificationSender),
           subject: S.String,
-          topic: S.NullOr(__S(5)),
+          topic: S.NullOr(NotificationTopicSummary),
         }),
       ).annotate({ identifier: "Notification" });
     case 7:
@@ -435,7 +545,9 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          experience_ids: S.optional(__S(7).pipe(T.Query())),
+          experience_ids: S.optional(
+            ListNotificationBadgesRequestExperienceIdsList.pipe(T.Query()),
+          ),
           last_fetched_at: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/notifications/badges", code: 200 })),
       ).annotate({
@@ -452,11 +564,11 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "NotificationBadge" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(NotificationBadge);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(10),
+          data: ListNotificationBadgesResponseDataList,
         }),
       ).annotate({
         identifier: "ListNotificationBadgesResponse",
@@ -473,7 +585,7 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/notifications", code: 200 })),
       ).annotate({ identifier: "ListNotificationsRequest" });
     case 5:
-      return S.Array(__S(6));
+      return S.Array(Notification);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -488,8 +600,8 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(13),
-          page_info: __S(14),
+          data: ListNotificationsResponseDataList,
+          page_info: ListNotificationsResponsePageInfo,
         }),
       ).annotate({
         identifier: "ListNotificationsResponse",
@@ -501,7 +613,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          topic_type: S.optional(S.String.pipe(T.Query())),
+          topic_type: S.optional(ListNotificationTopicsRequestTopicType.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/notifications/topics", code: 200 })),
@@ -517,16 +629,16 @@ function __c2(j: number): any {
           identifier: S.String,
           is_mention: S.Boolean,
           name: S.String,
-          topic_type: S.String,
+          topic_type: NotificationTopicTopicType,
         }),
       ).annotate({ identifier: "NotificationTopic" });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(NotificationTopic);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(18),
-          page_info: __S(14),
+          data: ListNotificationTopicsResponseDataList,
+          page_info: ListNotificationsResponsePageInfo,
         }),
       ).annotate({
         identifier: "ListNotificationTopicsResponse",
@@ -551,7 +663,7 @@ function __c2(j: number): any {
           rest_path: S.optional(S.NullOr(S.String)),
           subtitle: S.optional(S.NullOr(S.String)),
           title: S.String,
-          user_ids: S.optional(__S(7)),
+          user_ids: S.optional(SendNotificationRequestUserIdsList),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/notifications", code: 200 })),
       ).annotate({ identifier: "SendNotificationRequest" });
@@ -561,20 +673,5 @@ function __c2(j: number): any {
           success: S.Boolean,
         }),
       ).annotate({ identifier: "SendNotificationResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

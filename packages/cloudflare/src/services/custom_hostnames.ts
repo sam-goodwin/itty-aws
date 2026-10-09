@@ -12,8 +12,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -98,25 +96,59 @@ export class SaasQuotaNotAllocated
   ) {}
 
 export type CreateRequestCustomMetadataMap = { [key: string]: unknown | undefined };
+const CreateRequestCustomMetadataMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateRequestCustomMetadataMap>;
+
 export type CreateRequestSslBundleMethod = "ubiquitous" | "optimal" | "force";
+const CreateRequestSslBundleMethod = S.String;
+
 export type CreateRequestSslCertificateAuthority =
   | "digicert"
   | "google"
   | "lets_encrypt"
   | "ssl_com";
+const CreateRequestSslCertificateAuthority = S.String;
+
 export interface CreateRequestSslCustomCertBundleItem {
   /** If a custom uploaded certificate is used. */
   customCertificate: string;
   /** The key for a custom uploaded certificate. */
   customKey: string;
 }
+const CreateRequestSslCustomCertBundleItem = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateRequestSslCustomCertBundleItem>;
+
 export type CreateRequestSslCustomCertBundleList = Array<CreateRequestSslCustomCertBundleItem>;
+const CreateRequestSslCustomCertBundleList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateRequestSslCustomCertBundleList>;
+
 export type CreateRequestSslMethod = "http" | "txt" | "email";
+const CreateRequestSslMethod = S.String;
+
 export type CreateRequestSslSettingsCiphersList = Array<string>;
+const CreateRequestSslSettingsCiphersList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateRequestSslSettingsCiphersList>;
+
 export type CreateRequestSslSettingsEarlyHints = "on" | "off";
+const CreateRequestSslSettingsEarlyHints = S.String;
+
 export type CreateRequestSslSettingsHttp2 = "on" | "off";
+const CreateRequestSslSettingsHttp2 = S.String;
+
 export type CreateRequestSslSettingsMinTlsVersion = "1.0" | "1.1" | "1.2" | "1.3";
+const CreateRequestSslSettingsMinTlsVersion = S.String;
+
 export type CreateRequestSslSettingsTls13 = "on" | "off";
+const CreateRequestSslSettingsTls13 = S.String;
+
 export interface CreateRequestSslSettings {
   /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
   ciphers?: CreateRequestSslSettingsCiphersList;
@@ -129,7 +161,14 @@ export interface CreateRequestSslSettings {
   /** Whether or not TLS 1.3 is enabled. */
   tls_1_3?: CreateRequestSslSettingsTls13 | (string & {});
 }
+const CreateRequestSslSettings = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateRequestSslSettings>;
+
 export type CreateRequestSslType = "dv";
+const CreateRequestSslType = S.String;
+
 export interface CreateRequestSsl {
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
   bundleMethod?: CreateRequestSslBundleMethod | (string & {});
@@ -154,6 +193,8 @@ export interface CreateRequestSsl {
   /** Indicates whether the certificate covers a wildcard. */
   wildcard?: boolean;
 }
+const CreateRequestSsl = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateRequestSsl>;
+
 export interface CreateCustomHostnameRequest {
   /** Identifier. */
   zoneId: string;
@@ -168,8 +209,18 @@ export interface CreateCustomHostnameRequest {
   /** SSL properties used when creating the custom hostname. */
   ssl?: CreateRequestSsl;
 }
+const CreateCustomHostnameRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateCustomHostnameRequest>;
+
 export type CreateResponseCustomMetadataMap = { [key: string]: unknown | undefined };
+const CreateResponseCustomMetadataMap =
+  CreateRequestCustomMetadataMap as any as S.Schema<CreateResponseCustomMetadataMap>;
+
 export type CreateResponseOwnershipVerificationType = "txt";
+const CreateResponseOwnershipVerificationType = S.String;
+
 export interface CreateResponseOwnershipVerification {
   /** DNS Name for record. */
   name?: string | null;
@@ -178,19 +229,36 @@ export interface CreateResponseOwnershipVerification {
   /** Content for the record. */
   value?: string | null;
 }
+const CreateResponseOwnershipVerification = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateResponseOwnershipVerification>;
+
 export interface CreateResponseOwnershipVerificationHttp {
   /** Token to be served. */
   httpBody?: string | null;
   /** The HTTP URL that will be checked during custom hostname verification and where the customer should host the token. */
   httpUrl?: string | null;
 }
+const CreateResponseOwnershipVerificationHttp = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateResponseOwnershipVerificationHttp>;
+
 export type CreateResponseSslBundleMethod = "ubiquitous" | "optimal" | "force";
+const CreateResponseSslBundleMethod = S.String;
+
 export type CreateResponseSslCertificateAuthority =
   | "digicert"
   | "google"
   | "lets_encrypt"
   | "ssl_com";
+const CreateResponseSslCertificateAuthority = S.String;
+
 export type CreateResponseSslDcvDelegationRecordsItemEmailsList = Array<string>;
+const CreateResponseSslDcvDelegationRecordsItemEmailsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<CreateResponseSslDcvDelegationRecordsItemEmailsList>;
+
 export interface CreateResponseSslDcvDelegationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
   cname?: string | null;
@@ -209,15 +277,41 @@ export interface CreateResponseSslDcvDelegationRecordsItem {
   /** The TXT record that the certificate authority (CA) will check during domain validation. */
   txtValue?: string | null;
 }
+const CreateResponseSslDcvDelegationRecordsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateResponseSslDcvDelegationRecordsItem>;
+
 export type CreateResponseSslDcvDelegationRecordsList =
   Array<CreateResponseSslDcvDelegationRecordsItem>;
+const CreateResponseSslDcvDelegationRecordsList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateResponseSslDcvDelegationRecordsList>;
+
 export type CreateResponseSslHostsList = Array<string>;
+const CreateResponseSslHostsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<CreateResponseSslHostsList>;
+
 export type CreateResponseSslMethod = "http" | "txt" | "email";
+const CreateResponseSslMethod = S.String;
+
 export type CreateResponseSslSettingsCiphersList = Array<string>;
+const CreateResponseSslSettingsCiphersList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<CreateResponseSslSettingsCiphersList>;
+
 export type CreateResponseSslSettingsEarlyHints = "on" | "off";
+const CreateResponseSslSettingsEarlyHints = S.String;
+
 export type CreateResponseSslSettingsHttp2 = "on" | "off";
+const CreateResponseSslSettingsHttp2 = S.String;
+
 export type CreateResponseSslSettingsMinTlsVersion = "1.0" | "1.1" | "1.2" | "1.3";
+const CreateResponseSslSettingsMinTlsVersion = S.String;
+
 export type CreateResponseSslSettingsTls13 = "on" | "off";
+const CreateResponseSslSettingsTls13 = S.String;
+
 export interface CreateResponseSslSettings {
   /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
   ciphers?: CreateResponseSslSettingsCiphersList | null;
@@ -230,6 +324,11 @@ export interface CreateResponseSslSettings {
   /** Whether or not TLS 1.3 is enabled. */
   tls_1_3?: CreateResponseSslSettingsTls13 | null;
 }
+const CreateResponseSslSettings = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateResponseSslSettings>;
+
 export type CreateResponseSslStatus =
   | "initializing"
   | "pending_validation"
@@ -252,12 +351,26 @@ export type CreateResponseSslStatus =
   | "inactive"
   | "backup_issued"
   | "holding_deployment";
+const CreateResponseSslStatus = S.String;
+
 export type CreateResponseSslType = "dv";
+const CreateResponseSslType = S.String;
+
 export interface CreateResponseSslValidationErrorsItem {
   /** A domain validation error. */
   message?: string | null;
 }
+const CreateResponseSslValidationErrorsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateResponseSslValidationErrorsItem>;
+
 export type CreateResponseSslValidationErrorsList = Array<CreateResponseSslValidationErrorsItem>;
+const CreateResponseSslValidationErrorsList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateResponseSslValidationErrorsList>;
+
 export type CreateResponseSslValidationRecordsItemEmailsList = Array<string>;
 export interface CreateResponseSslValidationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -278,6 +391,9 @@ export interface CreateResponseSslValidationRecordsItem {
   txtValue?: string | null;
 }
 export type CreateResponseSslValidationRecordsList = Array<CreateResponseSslValidationRecordsItem>;
+const CreateResponseSslValidationRecordsList =
+  CreateResponseSslDcvDelegationRecordsList as any as S.Schema<CreateResponseSslValidationRecordsList>;
+
 export interface CreateResponseSsl {
   /** Custom hostname SSL identifier tag. */
   id?: string | null;
@@ -318,6 +434,8 @@ export interface CreateResponseSsl {
   /** Indicates whether the certificate covers a wildcard. */
   wildcard?: boolean | null;
 }
+const CreateResponseSsl = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CreateResponseSsl>;
+
 export type CreateResponseStatus =
   | "active"
   | "pending"
@@ -335,7 +453,12 @@ export type CreateResponseStatus =
   | "test_failed"
   | "provisioned"
   | "blocked";
+const CreateResponseStatus = S.String;
+
 export type CreateResponseVerificationErrorsList = Array<string>;
+const CreateResponseVerificationErrorsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<CreateResponseVerificationErrorsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateCustomHostnameResponse {
   /** Custom hostname identifier tag. */
@@ -360,6 +483,11 @@ export interface CreateCustomHostnameResponse {
   /** These are errors that were encountered while trying to activate a hostname. */
   verificationErrors?: CreateResponseVerificationErrorsList | null;
 }
+const CreateCustomHostnameResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateCustomHostnameResponse>;
+
 export interface DeleteCertificatePackCertificateRequest {
   /** Identifier. */
   zoneId: string;
@@ -370,27 +498,53 @@ export interface DeleteCertificatePackCertificateRequest {
   /** Custom hostname identifier tag. */
   certificateId: string;
 }
+const DeleteCertificatePackCertificateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DeleteCertificatePackCertificateRequest>;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface DeleteCertificatePackCertificateResponse {
   /** Custom hostname identifier tag. */
   id?: string | null;
 }
+const DeleteCertificatePackCertificateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DeleteCertificatePackCertificateResponse>;
+
 export interface DeleteCustomHostnameRequest {
   /** Identifier. */
   zoneId: string;
   /** Custom hostname identifier tag. */
   customHostnameId: string;
 }
+const DeleteCustomHostnameRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DeleteCustomHostnameRequest>;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface DeleteCustomHostnameResponse {
   /** Custom hostname identifier tag. */
   id?: string | null;
 }
+const DeleteCustomHostnameResponse =
+  DeleteCertificatePackCertificateResponse as any as S.Schema<DeleteCustomHostnameResponse>;
+
 export interface DeleteFallbackOriginRequest {
   /** Identifier. */
   zoneId: string;
 }
+const DeleteFallbackOriginRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DeleteFallbackOriginRequest>;
+
 export type FallbackOriginDeleteResponseErrorsList = Array<string>;
+const FallbackOriginDeleteResponseErrorsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<FallbackOriginDeleteResponseErrorsList>;
+
 export type FallbackOriginDeleteResponseStatus =
   | "initializing"
   | "pending_deployment"
@@ -398,6 +552,8 @@ export type FallbackOriginDeleteResponseStatus =
   | "active"
   | "deployment_timed_out"
   | "deletion_timed_out";
+const FallbackOriginDeleteResponseStatus = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteFallbackOriginResponse {
   /** This is the time the fallback origin was created. */
@@ -411,13 +567,26 @@ export interface DeleteFallbackOriginResponse {
   /** This is the time the fallback origin was updated. */
   updatedAt?: string | null;
 }
+const DeleteFallbackOriginResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DeleteFallbackOriginResponse>;
+
 export interface GetCustomHostnameRequest {
   /** Identifier. */
   zoneId: string;
   /** Custom hostname identifier tag. */
   customHostnameId: string;
 }
+const GetCustomHostnameRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetCustomHostnameRequest>;
+
 export type GetResponseCustomMetadataMap = { [key: string]: unknown | undefined };
+const GetResponseCustomMetadataMap =
+  CreateRequestCustomMetadataMap as any as S.Schema<GetResponseCustomMetadataMap>;
+
 export type GetResponseOwnershipVerificationType = "txt";
 export interface GetResponseOwnershipVerification {
   /** DNS Name for record. */
@@ -427,9 +596,16 @@ export interface GetResponseOwnershipVerification {
   /** Content for the record. */
   value?: string | null;
 }
+const GetResponseOwnershipVerification =
+  CreateResponseOwnershipVerification as any as S.Schema<GetResponseOwnershipVerification>;
+
 export type GetResponseOwnershipVerificationHttp = CreateResponseOwnershipVerificationHttp;
 export type GetResponseSslBundleMethod = "ubiquitous" | "optimal" | "force";
+const GetResponseSslBundleMethod = S.String;
+
 export type GetResponseSslCertificateAuthority = "digicert" | "google" | "lets_encrypt" | "ssl_com";
+const GetResponseSslCertificateAuthority = S.String;
+
 export type GetResponseSslDcvDelegationRecordsItemEmailsList = Array<string>;
 export interface GetResponseSslDcvDelegationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -450,13 +626,32 @@ export interface GetResponseSslDcvDelegationRecordsItem {
   txtValue?: string | null;
 }
 export type GetResponseSslDcvDelegationRecordsList = Array<GetResponseSslDcvDelegationRecordsItem>;
+const GetResponseSslDcvDelegationRecordsList =
+  CreateResponseSslDcvDelegationRecordsList as any as S.Schema<GetResponseSslDcvDelegationRecordsList>;
+
 export type GetResponseSslHostsList = Array<string>;
+const GetResponseSslHostsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<GetResponseSslHostsList>;
+
 export type GetResponseSslMethod = "http" | "txt" | "email";
+const GetResponseSslMethod = S.String;
+
 export type GetResponseSslSettingsCiphersList = Array<string>;
+const GetResponseSslSettingsCiphersList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<GetResponseSslSettingsCiphersList>;
+
 export type GetResponseSslSettingsEarlyHints = "on" | "off";
+const GetResponseSslSettingsEarlyHints = S.String;
+
 export type GetResponseSslSettingsHttp2 = "on" | "off";
+const GetResponseSslSettingsHttp2 = S.String;
+
 export type GetResponseSslSettingsMinTlsVersion = "1.0" | "1.1" | "1.2" | "1.3";
+const GetResponseSslSettingsMinTlsVersion = S.String;
+
 export type GetResponseSslSettingsTls13 = "on" | "off";
+const GetResponseSslSettingsTls13 = S.String;
+
 export interface GetResponseSslSettings {
   /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
   ciphers?: GetResponseSslSettingsCiphersList | null;
@@ -469,6 +664,11 @@ export interface GetResponseSslSettings {
   /** Whether or not TLS 1.3 is enabled. */
   tls_1_3?: GetResponseSslSettingsTls13 | null;
 }
+const GetResponseSslSettings = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetResponseSslSettings>;
+
 export type GetResponseSslStatus =
   | "initializing"
   | "pending_validation"
@@ -491,9 +691,16 @@ export type GetResponseSslStatus =
   | "inactive"
   | "backup_issued"
   | "holding_deployment";
+const GetResponseSslStatus = S.String;
+
 export type GetResponseSslType = "dv";
+const GetResponseSslType = S.String;
+
 export type GetResponseSslValidationErrorsItem = CreateResponseSslValidationErrorsItem;
 export type GetResponseSslValidationErrorsList = Array<CreateResponseSslValidationErrorsItem>;
+const GetResponseSslValidationErrorsList =
+  CreateResponseSslValidationErrorsList as any as S.Schema<GetResponseSslValidationErrorsList>;
+
 export type GetResponseSslValidationRecordsItemEmailsList = Array<string>;
 export interface GetResponseSslValidationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -514,6 +721,9 @@ export interface GetResponseSslValidationRecordsItem {
   txtValue?: string | null;
 }
 export type GetResponseSslValidationRecordsList = Array<GetResponseSslValidationRecordsItem>;
+const GetResponseSslValidationRecordsList =
+  CreateResponseSslDcvDelegationRecordsList as any as S.Schema<GetResponseSslValidationRecordsList>;
+
 export interface GetResponseSsl {
   /** Custom hostname SSL identifier tag. */
   id?: string | null;
@@ -554,6 +764,8 @@ export interface GetResponseSsl {
   /** Indicates whether the certificate covers a wildcard. */
   wildcard?: boolean | null;
 }
+const GetResponseSsl = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GetResponseSsl>;
+
 export type GetResponseStatus =
   | "active"
   | "pending"
@@ -571,7 +783,12 @@ export type GetResponseStatus =
   | "test_failed"
   | "provisioned"
   | "blocked";
+const GetResponseStatus = S.String;
+
 export type GetResponseVerificationErrorsList = Array<string>;
+const GetResponseVerificationErrorsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<GetResponseVerificationErrorsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCustomHostnameResponse {
   /** Custom hostname identifier tag. */
@@ -596,11 +813,24 @@ export interface GetCustomHostnameResponse {
   /** These are errors that were encountered while trying to activate a hostname. */
   verificationErrors?: GetResponseVerificationErrorsList | null;
 }
+const GetCustomHostnameResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetCustomHostnameResponse>;
+
 export interface GetFallbackOriginRequest {
   /** Identifier. */
   zoneId: string;
 }
+const GetFallbackOriginRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetFallbackOriginRequest>;
+
 export type FallbackOriginGetResponseErrorsList = Array<string>;
+const FallbackOriginGetResponseErrorsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<FallbackOriginGetResponseErrorsList>;
+
 export type FallbackOriginGetResponseStatus =
   | "initializing"
   | "pending_deployment"
@@ -608,6 +838,8 @@ export type FallbackOriginGetResponseStatus =
   | "active"
   | "deployment_timed_out"
   | "deletion_timed_out";
+const FallbackOriginGetResponseStatus = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetFallbackOriginResponse {
   /** This is the time the fallback origin was created. */
@@ -621,10 +853,17 @@ export interface GetFallbackOriginResponse {
   /** This is the time the fallback origin was updated. */
   updatedAt?: string | null;
 }
+const GetFallbackOriginResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetFallbackOriginResponse>;
+
 export interface GetQuotaRequest {
   /** Identifier. */
   zoneId: string;
 }
+const GetQuotaRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GetQuotaRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetQuotaResponse {
   /** The allocated custom hostname quota. */
@@ -636,8 +875,14 @@ export interface GetQuotaResponse {
   /** The number of custom hostnames currently in use. */
   used: number;
 }
+const GetQuotaResponse = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GetQuotaResponse>;
+
 export type ListRequestCertificateAuthority = "google" | "lets_encrypt" | "ssl_com";
+const ListRequestCertificateAuthority = S.String;
+
 export type ListRequestDirection = "asc" | "desc";
+const ListRequestDirection = S.String;
+
 export interface ListRequestHostname {
   /** Filters hostnames by a substring match on the hostname value. This parameter cannot be used with the 'id', 'hostname', 'hostname.exact', or 'hostname.startsWith' parameters. */
   contain?: string;
@@ -646,6 +891,8 @@ export interface ListRequestHostname {
   /** Filters hostnames by a prefix match on the hostname value. This parameter cannot be used with the 'id', 'hostname', 'hostname.exact', or 'hostname.contain' parameters. */
   startsWith?: string;
 }
+const ListRequestHostname = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ListRequestHostname>;
+
 export type ListRequestHostnameStatus =
   | "active"
   | "pending"
@@ -663,7 +910,11 @@ export type ListRequestHostnameStatus =
   | "test_failed"
   | "provisioned"
   | "blocked";
+const ListRequestHostnameStatus = S.String;
+
 export type ListRequestOrder = "ssl" | "ssl_status";
+const ListRequestOrder = S.String;
+
 export type ListRequestSslStatus =
   | "initializing"
   | "pending_validation"
@@ -686,6 +937,8 @@ export type ListRequestSslStatus =
   | "inactive"
   | "backup_issued"
   | "holding_deployment";
+const ListRequestSslStatus = S.String;
+
 export interface ListCustomHostnamesRequest {
   /** Identifier. */
   zoneId: string;
@@ -713,7 +966,15 @@ export interface ListCustomHostnamesRequest {
   /** Filter by whether the custom hostname is a wildcard hostname. */
   wildcard?: boolean;
 }
+const ListCustomHostnamesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ListCustomHostnamesRequest>;
+
 export type ListResultItemCustomMetadataMap = { [key: string]: unknown | undefined };
+const ListResultItemCustomMetadataMap =
+  CreateRequestCustomMetadataMap as any as S.Schema<ListResultItemCustomMetadataMap>;
+
 export type ListResultItemOwnershipVerificationType = "txt";
 export interface ListResultItemOwnershipVerification {
   /** DNS Name for record. */
@@ -723,13 +984,20 @@ export interface ListResultItemOwnershipVerification {
   /** Content for the record. */
   value?: string | null;
 }
+const ListResultItemOwnershipVerification =
+  CreateResponseOwnershipVerification as any as S.Schema<ListResultItemOwnershipVerification>;
+
 export type ListResultItemOwnershipVerificationHttp = CreateResponseOwnershipVerificationHttp;
 export type ListResultItemSslBundleMethod = "ubiquitous" | "optimal" | "force";
+const ListResultItemSslBundleMethod = S.String;
+
 export type ListResultItemSslCertificateAuthority =
   | "digicert"
   | "google"
   | "lets_encrypt"
   | "ssl_com";
+const ListResultItemSslCertificateAuthority = S.String;
+
 export type ListResultItemSslDcvDelegationRecordsItemEmailsList = Array<string>;
 export interface ListResultItemSslDcvDelegationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -751,13 +1019,32 @@ export interface ListResultItemSslDcvDelegationRecordsItem {
 }
 export type ListResultItemSslDcvDelegationRecordsList =
   Array<ListResultItemSslDcvDelegationRecordsItem>;
+const ListResultItemSslDcvDelegationRecordsList =
+  CreateResponseSslDcvDelegationRecordsList as any as S.Schema<ListResultItemSslDcvDelegationRecordsList>;
+
 export type ListResultItemSslHostsList = Array<string>;
+const ListResultItemSslHostsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<ListResultItemSslHostsList>;
+
 export type ListResultItemSslMethod = "http" | "txt" | "email";
+const ListResultItemSslMethod = S.String;
+
 export type ListResultItemSslSettingsCiphersList = Array<string>;
+const ListResultItemSslSettingsCiphersList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<ListResultItemSslSettingsCiphersList>;
+
 export type ListResultItemSslSettingsEarlyHints = "on" | "off";
+const ListResultItemSslSettingsEarlyHints = S.String;
+
 export type ListResultItemSslSettingsHttp2 = "on" | "off";
+const ListResultItemSslSettingsHttp2 = S.String;
+
 export type ListResultItemSslSettingsMinTlsVersion = "1.0" | "1.1" | "1.2" | "1.3";
+const ListResultItemSslSettingsMinTlsVersion = S.String;
+
 export type ListResultItemSslSettingsTls13 = "on" | "off";
+const ListResultItemSslSettingsTls13 = S.String;
+
 export interface ListResultItemSslSettings {
   /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
   ciphers?: ListResultItemSslSettingsCiphersList | null;
@@ -770,6 +1057,11 @@ export interface ListResultItemSslSettings {
   /** Whether or not TLS 1.3 is enabled. */
   tls_1_3?: ListResultItemSslSettingsTls13 | null;
 }
+const ListResultItemSslSettings = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ListResultItemSslSettings>;
+
 export type ListResultItemSslStatus =
   | "initializing"
   | "pending_validation"
@@ -792,9 +1084,16 @@ export type ListResultItemSslStatus =
   | "inactive"
   | "backup_issued"
   | "holding_deployment";
+const ListResultItemSslStatus = S.String;
+
 export type ListResultItemSslType = "dv";
+const ListResultItemSslType = S.String;
+
 export type ListResultItemSslValidationErrorsItem = CreateResponseSslValidationErrorsItem;
 export type ListResultItemSslValidationErrorsList = Array<CreateResponseSslValidationErrorsItem>;
+const ListResultItemSslValidationErrorsList =
+  CreateResponseSslValidationErrorsList as any as S.Schema<ListResultItemSslValidationErrorsList>;
+
 export type ListResultItemSslValidationRecordsItemEmailsList = Array<string>;
 export interface ListResultItemSslValidationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -815,6 +1114,9 @@ export interface ListResultItemSslValidationRecordsItem {
   txtValue?: string | null;
 }
 export type ListResultItemSslValidationRecordsList = Array<ListResultItemSslValidationRecordsItem>;
+const ListResultItemSslValidationRecordsList =
+  CreateResponseSslDcvDelegationRecordsList as any as S.Schema<ListResultItemSslValidationRecordsList>;
+
 export interface ListResultItemSsl {
   /** Custom hostname SSL identifier tag. */
   id?: string | null;
@@ -855,6 +1157,8 @@ export interface ListResultItemSsl {
   /** Indicates whether the certificate covers a wildcard. */
   wildcard?: boolean | null;
 }
+const ListResultItemSsl = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ListResultItemSsl>;
+
 export type ListResultItemStatus =
   | "active"
   | "pending"
@@ -872,7 +1176,12 @@ export type ListResultItemStatus =
   | "test_failed"
   | "provisioned"
   | "blocked";
+const ListResultItemStatus = S.String;
+
 export type ListResultItemVerificationErrorsList = Array<string>;
+const ListResultItemVerificationErrorsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<ListResultItemVerificationErrorsList>;
+
 export interface ListResultItem {
   /** Custom hostname identifier tag. */
   id: string;
@@ -896,24 +1205,56 @@ export interface ListResultItem {
   /** These are errors that were encountered while trying to activate a hostname. */
   verificationErrors?: ListResultItemVerificationErrorsList | null;
 }
+const ListResultItem = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ListResultItem>;
+
 export type ListResultList = Array<ListResultItem>;
+const ListResultList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ListResultList>;
+
 export interface ListCustomHostnamesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListCustomHostnamesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListCustomHostnamesResponse>;
+
 export type EditRequestCustomMetadataMap = { [key: string]: unknown | undefined };
+const EditRequestCustomMetadataMap =
+  CreateRequestCustomMetadataMap as any as S.Schema<EditRequestCustomMetadataMap>;
+
 export type EditRequestSslBundleMethod = "ubiquitous" | "optimal" | "force";
+const EditRequestSslBundleMethod = S.String;
+
 export type EditRequestSslCertificateAuthority = "digicert" | "google" | "lets_encrypt" | "ssl_com";
+const EditRequestSslCertificateAuthority = S.String;
+
 export type EditRequestSslCustomCertBundleItem = CreateRequestSslCustomCertBundleItem;
 export type EditRequestSslCustomCertBundleList = Array<CreateRequestSslCustomCertBundleItem>;
+const EditRequestSslCustomCertBundleList =
+  CreateRequestSslCustomCertBundleList as any as S.Schema<EditRequestSslCustomCertBundleList>;
+
 export type EditRequestSslMethod = "http" | "txt" | "email";
+const EditRequestSslMethod = S.String;
+
 export type EditRequestSslSettingsCiphersList = Array<string>;
+const EditRequestSslSettingsCiphersList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<EditRequestSslSettingsCiphersList>;
+
 export type EditRequestSslSettingsEarlyHints = "on" | "off";
+const EditRequestSslSettingsEarlyHints = S.String;
+
 export type EditRequestSslSettingsHttp2 = "on" | "off";
+const EditRequestSslSettingsHttp2 = S.String;
+
 export type EditRequestSslSettingsMinTlsVersion = "1.0" | "1.1" | "1.2" | "1.3";
+const EditRequestSslSettingsMinTlsVersion = S.String;
+
 export type EditRequestSslSettingsTls13 = "on" | "off";
+const EditRequestSslSettingsTls13 = S.String;
+
 export interface EditRequestSslSettings {
   /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
   ciphers?: EditRequestSslSettingsCiphersList;
@@ -926,7 +1267,14 @@ export interface EditRequestSslSettings {
   /** Whether or not TLS 1.3 is enabled. */
   tls_1_3?: EditRequestSslSettingsTls13 | (string & {});
 }
+const EditRequestSslSettings = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<EditRequestSslSettings>;
+
 export type EditRequestSslType = "dv";
+const EditRequestSslType = S.String;
+
 export interface EditRequestSsl {
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
   bundleMethod?: EditRequestSslBundleMethod | (string & {});
@@ -951,6 +1299,8 @@ export interface EditRequestSsl {
   /** Indicates whether the certificate covers a wildcard. */
   wildcard?: boolean;
 }
+const EditRequestSsl = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<EditRequestSsl>;
+
 export interface PatchCustomHostnameRequest {
   /** Identifier. */
   zoneId: string;
@@ -965,7 +1315,15 @@ export interface PatchCustomHostnameRequest {
   /** SSL properties used when creating the custom hostname. */
   ssl?: EditRequestSsl;
 }
+const PatchCustomHostnameRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<PatchCustomHostnameRequest>;
+
 export type EditResponseCustomMetadataMap = { [key: string]: unknown | undefined };
+const EditResponseCustomMetadataMap =
+  CreateRequestCustomMetadataMap as any as S.Schema<EditResponseCustomMetadataMap>;
+
 export type EditResponseOwnershipVerificationType = "txt";
 export interface EditResponseOwnershipVerification {
   /** DNS Name for record. */
@@ -975,13 +1333,20 @@ export interface EditResponseOwnershipVerification {
   /** Content for the record. */
   value?: string | null;
 }
+const EditResponseOwnershipVerification =
+  CreateResponseOwnershipVerification as any as S.Schema<EditResponseOwnershipVerification>;
+
 export type EditResponseOwnershipVerificationHttp = CreateResponseOwnershipVerificationHttp;
 export type EditResponseSslBundleMethod = "ubiquitous" | "optimal" | "force";
+const EditResponseSslBundleMethod = S.String;
+
 export type EditResponseSslCertificateAuthority =
   | "digicert"
   | "google"
   | "lets_encrypt"
   | "ssl_com";
+const EditResponseSslCertificateAuthority = S.String;
+
 export type EditResponseSslDcvDelegationRecordsItemEmailsList = Array<string>;
 export interface EditResponseSslDcvDelegationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -1003,13 +1368,32 @@ export interface EditResponseSslDcvDelegationRecordsItem {
 }
 export type EditResponseSslDcvDelegationRecordsList =
   Array<EditResponseSslDcvDelegationRecordsItem>;
+const EditResponseSslDcvDelegationRecordsList =
+  CreateResponseSslDcvDelegationRecordsList as any as S.Schema<EditResponseSslDcvDelegationRecordsList>;
+
 export type EditResponseSslHostsList = Array<string>;
+const EditResponseSslHostsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<EditResponseSslHostsList>;
+
 export type EditResponseSslMethod = "http" | "txt" | "email";
+const EditResponseSslMethod = S.String;
+
 export type EditResponseSslSettingsCiphersList = Array<string>;
+const EditResponseSslSettingsCiphersList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<EditResponseSslSettingsCiphersList>;
+
 export type EditResponseSslSettingsEarlyHints = "on" | "off";
+const EditResponseSslSettingsEarlyHints = S.String;
+
 export type EditResponseSslSettingsHttp2 = "on" | "off";
+const EditResponseSslSettingsHttp2 = S.String;
+
 export type EditResponseSslSettingsMinTlsVersion = "1.0" | "1.1" | "1.2" | "1.3";
+const EditResponseSslSettingsMinTlsVersion = S.String;
+
 export type EditResponseSslSettingsTls13 = "on" | "off";
+const EditResponseSslSettingsTls13 = S.String;
+
 export interface EditResponseSslSettings {
   /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
   ciphers?: EditResponseSslSettingsCiphersList | null;
@@ -1022,6 +1406,11 @@ export interface EditResponseSslSettings {
   /** Whether or not TLS 1.3 is enabled. */
   tls_1_3?: EditResponseSslSettingsTls13 | null;
 }
+const EditResponseSslSettings = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<EditResponseSslSettings>;
+
 export type EditResponseSslStatus =
   | "initializing"
   | "pending_validation"
@@ -1044,9 +1433,16 @@ export type EditResponseSslStatus =
   | "inactive"
   | "backup_issued"
   | "holding_deployment";
+const EditResponseSslStatus = S.String;
+
 export type EditResponseSslType = "dv";
+const EditResponseSslType = S.String;
+
 export type EditResponseSslValidationErrorsItem = CreateResponseSslValidationErrorsItem;
 export type EditResponseSslValidationErrorsList = Array<CreateResponseSslValidationErrorsItem>;
+const EditResponseSslValidationErrorsList =
+  CreateResponseSslValidationErrorsList as any as S.Schema<EditResponseSslValidationErrorsList>;
+
 export type EditResponseSslValidationRecordsItemEmailsList = Array<string>;
 export interface EditResponseSslValidationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
@@ -1067,6 +1463,9 @@ export interface EditResponseSslValidationRecordsItem {
   txtValue?: string | null;
 }
 export type EditResponseSslValidationRecordsList = Array<EditResponseSslValidationRecordsItem>;
+const EditResponseSslValidationRecordsList =
+  CreateResponseSslDcvDelegationRecordsList as any as S.Schema<EditResponseSslValidationRecordsList>;
+
 export interface EditResponseSsl {
   /** Custom hostname SSL identifier tag. */
   id?: string | null;
@@ -1107,6 +1506,8 @@ export interface EditResponseSsl {
   /** Indicates whether the certificate covers a wildcard. */
   wildcard?: boolean | null;
 }
+const EditResponseSsl = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<EditResponseSsl>;
+
 export type EditResponseStatus =
   | "active"
   | "pending"
@@ -1124,7 +1525,12 @@ export type EditResponseStatus =
   | "test_failed"
   | "provisioned"
   | "blocked";
+const EditResponseStatus = S.String;
+
 export type EditResponseVerificationErrorsList = Array<string>;
+const EditResponseVerificationErrorsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<EditResponseVerificationErrorsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchCustomHostnameResponse {
   /** Custom hostname identifier tag. */
@@ -1149,6 +1555,11 @@ export interface PatchCustomHostnameResponse {
   /** These are errors that were encountered while trying to activate a hostname. */
   verificationErrors?: EditResponseVerificationErrorsList | null;
 }
+const PatchCustomHostnameResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<PatchCustomHostnameResponse>;
+
 export interface PutCertificatePackCertificateRequest {
   /** Identifier. */
   zoneId: string;
@@ -1163,10 +1574,20 @@ export interface PutCertificatePackCertificateRequest {
   /** The key for a custom uploaded certificate. */
   customKey: string;
 }
+const PutCertificatePackCertificateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<PutCertificatePackCertificateRequest>;
+
 export type CertificatePackCertificatesUpdateResponseCustomMetadataMap = {
   [key: string]: unknown | undefined;
 };
+const CertificatePackCertificatesUpdateResponseCustomMetadataMap =
+  CreateRequestCustomMetadataMap as any as S.Schema<CertificatePackCertificatesUpdateResponseCustomMetadataMap>;
+
 export type CertificatePackCertificatesUpdateResponseOwnershipVerificationType = "txt";
+const CertificatePackCertificatesUpdateResponseOwnershipVerificationType = S.String;
+
 export interface CertificatePackCertificatesUpdateResponseOwnershipVerification {
   /** DNS Name for record. */
   name?: string | null;
@@ -1175,19 +1596,34 @@ export interface CertificatePackCertificatesUpdateResponseOwnershipVerification 
   /** Content for the record. */
   value?: string | null;
 }
+const CertificatePackCertificatesUpdateResponseOwnershipVerification = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CertificatePackCertificatesUpdateResponseOwnershipVerification>;
+
 export type CertificatePackCertificatesUpdateResponseOwnershipVerificationHttp =
   CreateResponseOwnershipVerificationHttp;
 export type CertificatePackCertificatesUpdateResponseSslBundleMethod =
   | "ubiquitous"
   | "optimal"
   | "force";
+const CertificatePackCertificatesUpdateResponseSslBundleMethod = S.String;
+
 export type CertificatePackCertificatesUpdateResponseSslCertificateAuthority =
   | "digicert"
   | "google"
   | "lets_encrypt"
   | "ssl_com";
+const CertificatePackCertificatesUpdateResponseSslCertificateAuthority = S.String;
+
 export type CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItemEmailsList =
   Array<string>;
+const CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItemEmailsList =
+  /*@__PURE__*/ __L.at(
+    __c5,
+    4,
+  ) as any as S.Schema<CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItemEmailsList>;
+
 export interface CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItem {
   /** The CNAME record hostname for DCV delegation. */
   cname?: string | null;
@@ -1206,19 +1642,45 @@ export interface CertificatePackCertificatesUpdateResponseSslDcvDelegationRecord
   /** The TXT record that the certificate authority (CA) will check during domain validation. */
   txtValue?: string | null;
 }
+const CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItem = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItem>;
+
 export type CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsList =
   Array<CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItem>;
+const CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsList = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsList>;
+
 export type CertificatePackCertificatesUpdateResponseSslHostsList = Array<string>;
+const CertificatePackCertificatesUpdateResponseSslHostsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<CertificatePackCertificatesUpdateResponseSslHostsList>;
+
 export type CertificatePackCertificatesUpdateResponseSslMethod = "http" | "txt" | "email";
+const CertificatePackCertificatesUpdateResponseSslMethod = S.String;
+
 export type CertificatePackCertificatesUpdateResponseSslSettingsCiphersList = Array<string>;
+const CertificatePackCertificatesUpdateResponseSslSettingsCiphersList =
+  CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItemEmailsList as any as S.Schema<CertificatePackCertificatesUpdateResponseSslSettingsCiphersList>;
+
 export type CertificatePackCertificatesUpdateResponseSslSettingsEarlyHints = "on" | "off";
+const CertificatePackCertificatesUpdateResponseSslSettingsEarlyHints = S.String;
+
 export type CertificatePackCertificatesUpdateResponseSslSettingsHttp2 = "on" | "off";
+const CertificatePackCertificatesUpdateResponseSslSettingsHttp2 = S.String;
+
 export type CertificatePackCertificatesUpdateResponseSslSettingsMinTlsVersion =
   | "1.0"
   | "1.1"
   | "1.2"
   | "1.3";
+const CertificatePackCertificatesUpdateResponseSslSettingsMinTlsVersion = S.String;
+
 export type CertificatePackCertificatesUpdateResponseSslSettingsTls13 = "on" | "off";
+const CertificatePackCertificatesUpdateResponseSslSettingsTls13 = S.String;
+
 export interface CertificatePackCertificatesUpdateResponseSslSettings {
   /** An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format. */
   ciphers?: CertificatePackCertificatesUpdateResponseSslSettingsCiphersList | null;
@@ -1231,6 +1693,11 @@ export interface CertificatePackCertificatesUpdateResponseSslSettings {
   /** Whether or not TLS 1.3 is enabled. */
   tls_1_3?: CertificatePackCertificatesUpdateResponseSslSettingsTls13 | null;
 }
+const CertificatePackCertificatesUpdateResponseSslSettings = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CertificatePackCertificatesUpdateResponseSslSettings>;
+
 export type CertificatePackCertificatesUpdateResponseSslStatus =
   | "initializing"
   | "pending_validation"
@@ -1253,11 +1720,20 @@ export type CertificatePackCertificatesUpdateResponseSslStatus =
   | "inactive"
   | "backup_issued"
   | "holding_deployment";
+const CertificatePackCertificatesUpdateResponseSslStatus = S.String;
+
 export type CertificatePackCertificatesUpdateResponseSslType = "dv";
+const CertificatePackCertificatesUpdateResponseSslType = S.String;
+
 export type CertificatePackCertificatesUpdateResponseSslValidationErrorsItem =
   CreateResponseSslValidationErrorsItem;
 export type CertificatePackCertificatesUpdateResponseSslValidationErrorsList =
   Array<CreateResponseSslValidationErrorsItem>;
+const CertificatePackCertificatesUpdateResponseSslValidationErrorsList = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CertificatePackCertificatesUpdateResponseSslValidationErrorsList>;
+
 export type CertificatePackCertificatesUpdateResponseSslValidationRecordsItemEmailsList =
   Array<string>;
 export interface CertificatePackCertificatesUpdateResponseSslValidationRecordsItem {
@@ -1280,6 +1756,9 @@ export interface CertificatePackCertificatesUpdateResponseSslValidationRecordsIt
 }
 export type CertificatePackCertificatesUpdateResponseSslValidationRecordsList =
   Array<CertificatePackCertificatesUpdateResponseSslValidationRecordsItem>;
+const CertificatePackCertificatesUpdateResponseSslValidationRecordsList =
+  CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsList as any as S.Schema<CertificatePackCertificatesUpdateResponseSslValidationRecordsList>;
+
 export interface CertificatePackCertificatesUpdateResponseSsl {
   /** Custom hostname SSL identifier tag. */
   id?: string | null;
@@ -1320,6 +1799,11 @@ export interface CertificatePackCertificatesUpdateResponseSsl {
   /** Indicates whether the certificate covers a wildcard. */
   wildcard?: boolean | null;
 }
+const CertificatePackCertificatesUpdateResponseSsl = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<CertificatePackCertificatesUpdateResponseSsl>;
+
 export type CertificatePackCertificatesUpdateResponseStatus =
   | "active"
   | "pending"
@@ -1337,7 +1821,12 @@ export type CertificatePackCertificatesUpdateResponseStatus =
   | "test_failed"
   | "provisioned"
   | "blocked";
+const CertificatePackCertificatesUpdateResponseStatus = S.String;
+
 export type CertificatePackCertificatesUpdateResponseVerificationErrorsList = Array<string>;
+const CertificatePackCertificatesUpdateResponseVerificationErrorsList =
+  CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItemEmailsList as any as S.Schema<CertificatePackCertificatesUpdateResponseVerificationErrorsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutCertificatePackCertificateResponse {
   /** Custom hostname identifier tag. */
@@ -1362,13 +1851,26 @@ export interface PutCertificatePackCertificateResponse {
   /** These are errors that were encountered while trying to activate a hostname. */
   verificationErrors?: CertificatePackCertificatesUpdateResponseVerificationErrorsList | null;
 }
+const PutCertificatePackCertificateResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<PutCertificatePackCertificateResponse>;
+
 export interface PutFallbackOriginRequest {
   /** Identifier. */
   zoneId: string;
   /** Your origin hostname that requests to your custom hostnames will be sent to. */
   origin: string;
 }
+const PutFallbackOriginRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<PutFallbackOriginRequest>;
+
 export type FallbackOriginUpdateResponseErrorsList = Array<string>;
+const FallbackOriginUpdateResponseErrorsList =
+  CreateRequestSslSettingsCiphersList as any as S.Schema<FallbackOriginUpdateResponseErrorsList>;
+
 export type FallbackOriginUpdateResponseStatus =
   | "initializing"
   | "pending_deployment"
@@ -1376,6 +1878,8 @@ export type FallbackOriginUpdateResponseStatus =
   | "active"
   | "deployment_timed_out"
   | "deletion_timed_out";
+const FallbackOriginUpdateResponseStatus = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutFallbackOriginResponse {
   /** This is the time the fallback origin was created. */
@@ -1389,6 +1893,11 @@ export interface PutFallbackOriginResponse {
   /** This is the time the fallback origin was updated. */
   updatedAt?: string | null;
 }
+const PutFallbackOriginResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<PutFallbackOriginResponse>;
+
 export type CreateCustomHostnameError = SaasQuotaNotAllocated | CloudflareOpError;
 /** Add a new custom hostname and request that an SSL certificate be issued for it. One of three validation methods--http, txt, email--should be used, with 'http' recommended if the CNAME is already in place (or will be soon). Specifying 'email' will send an email to the WHOIS contacts on file for the base domain plus hostmaster, postmaster, webmaster, admin, administrator. If http is used and the domain is not already pointing to the Managed CNAME host, the PATCH method must be used once it is (to complete validation). Enable bundling of certificates using the custom_cert_bundle field. The bundling process requires the following condition One certificate in the bundle must use an RSA, and the other must use an ECDSA. */
 export const createCustomHostname: API.OperationMethod<
@@ -1397,8 +1906,8 @@ export const createCustomHostname: API.OperationMethod<
   CreateCustomHostnameError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateCustomHostnameRequest>,
-  output: __S(15) as any as S.Schema<CreateCustomHostnameResponse>,
+  input: CreateCustomHostnameRequest,
+  output: CreateCustomHostnameResponse,
   errors: [SaasQuotaNotAllocated, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1412,8 +1921,8 @@ export const deleteCertificatePackCertificate: API.OperationMethod<
   DeleteCertificatePackCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<DeleteCertificatePackCertificateRequest>,
-  output: __S(17) as any as S.Schema<DeleteCertificatePackCertificateResponse>,
+  input: DeleteCertificatePackCertificateRequest,
+  output: DeleteCertificatePackCertificateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1430,8 +1939,8 @@ export const deleteCustomHostname: API.OperationMethod<
   DeleteCustomHostnameError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<DeleteCustomHostnameRequest>,
-  output: __S(17) as any as S.Schema<DeleteCustomHostnameResponse>,
+  input: DeleteCustomHostnameRequest,
+  output: DeleteCustomHostnameResponse,
   errors: [CustomHostnameNotFound, SaasQuotaNotAllocated, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1448,8 +1957,8 @@ export const deleteFallbackOrigin: API.OperationMethod<
   DeleteFallbackOriginError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<DeleteFallbackOriginRequest>,
-  output: __S(20) as any as S.Schema<DeleteFallbackOriginResponse>,
+  input: DeleteFallbackOriginRequest,
+  output: DeleteFallbackOriginResponse,
   errors: [FallbackOriginNotFound, SaasAccessNotGranted, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1467,8 +1976,8 @@ export const getCustomHostname: API.OperationMethod<
   GetCustomHostnameError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetCustomHostnameRequest>,
-  output: __S(24) as any as S.Schema<GetCustomHostnameResponse>,
+  input: GetCustomHostnameRequest,
+  output: GetCustomHostnameResponse,
   errors: [
     CustomHostnameNotFound,
     SaasQuotaNotAllocated,
@@ -1492,8 +2001,8 @@ export const getFallbackOrigin: API.OperationMethod<
   GetFallbackOriginError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<GetFallbackOriginRequest>,
-  output: __S(26) as any as S.Schema<GetFallbackOriginResponse>,
+  input: GetFallbackOriginRequest,
+  output: GetFallbackOriginResponse,
   errors: [
     FallbackOriginNotFound,
     SaasAccessNotGranted,
@@ -1513,8 +2022,8 @@ export const getQuota: API.OperationMethod<
   GetQuotaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<GetQuotaRequest>,
-  output: __S(28) as any as S.Schema<GetQuotaResponse>,
+  input: GetQuotaRequest,
+  output: GetQuotaResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1530,8 +2039,8 @@ export const listCustomHostnames: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(30) as any as S.Schema<ListCustomHostnamesRequest>,
-    output: __S(35) as any as S.Schema<ListCustomHostnamesResponse>,
+    input: ListCustomHostnamesRequest,
+    output: ListCustomHostnamesResponse,
     errors: [SaasQuotaNotAllocated, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1557,8 +2066,8 @@ export const patchCustomHostname: API.OperationMethod<
   PatchCustomHostnameError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<PatchCustomHostnameRequest>,
-  output: __S(41) as any as S.Schema<PatchCustomHostnameResponse>,
+  input: PatchCustomHostnameRequest,
+  output: PatchCustomHostnameResponse,
   errors: [CustomHostnameNotFound, SaasQuotaNotAllocated, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1572,8 +2081,8 @@ export const putCertificatePackCertificate: API.OperationMethod<
   PutCertificatePackCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<PutCertificatePackCertificateRequest>,
-  output: __S(50) as any as S.Schema<PutCertificatePackCertificateResponse>,
+  input: PutCertificatePackCertificateRequest,
+  output: PutCertificatePackCertificateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1587,8 +2096,8 @@ export const putFallbackOrigin: API.OperationMethod<
   PutFallbackOriginError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<PutFallbackOriginRequest>,
-  output: __S(52) as any as S.Schema<PutFallbackOriginResponse>,
+  input: PutFallbackOriginRequest,
+  output: PutFallbackOriginResponse,
   errors: [SaasAccessNotGranted, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1609,32 +2118,38 @@ function __c0(j: number): any {
         identifier: "CreateRequestSslCustomCertBundleItem",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(CreateRequestSslCustomCertBundleItem);
     case 3:
       return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ciphers: S.optional(__S(3)),
-          earlyHints: S.optional(S.String.pipe(T.Body("early_hints"))),
-          http2: S.optional(S.String),
-          minTlsVersion: S.optional(S.String.pipe(T.Body("min_tls_version"))),
-          tls_1_3: S.optional(S.String),
+          ciphers: S.optional(CreateRequestSslSettingsCiphersList),
+          earlyHints: S.optional(CreateRequestSslSettingsEarlyHints.pipe(T.Body("early_hints"))),
+          http2: S.optional(CreateRequestSslSettingsHttp2),
+          minTlsVersion: S.optional(
+            CreateRequestSslSettingsMinTlsVersion.pipe(T.Body("min_tls_version")),
+          ),
+          tls_1_3: S.optional(CreateRequestSslSettingsTls13),
         }),
       ).annotate({ identifier: "CreateRequestSslSettings" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          bundleMethod: S.optional(S.String.pipe(T.Body("bundle_method"))),
-          certificateAuthority: S.optional(S.String.pipe(T.Body("certificate_authority"))),
+          bundleMethod: S.optional(CreateRequestSslBundleMethod.pipe(T.Body("bundle_method"))),
+          certificateAuthority: S.optional(
+            CreateRequestSslCertificateAuthority.pipe(T.Body("certificate_authority")),
+          ),
           cloudflareBranding: S.optional(S.Boolean.pipe(T.Body("cloudflare_branding"))),
-          customCertBundle: S.optional(__S(2).pipe(T.Body("custom_cert_bundle"))),
+          customCertBundle: S.optional(
+            CreateRequestSslCustomCertBundleList.pipe(T.Body("custom_cert_bundle")),
+          ),
           customCertificate: S.optional(S.String.pipe(T.Body("custom_certificate"))),
           customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
           customKey: S.optional(S.String.pipe(T.Body("custom_key"))),
-          method: S.optional(S.String),
-          settings: S.optional(__S(4)),
-          type: S.optional(S.String),
+          method: S.optional(CreateRequestSslMethod),
+          settings: S.optional(CreateRequestSslSettings),
+          type: S.optional(CreateRequestSslType),
           wildcard: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CreateRequestSsl" });
@@ -1643,10 +2158,12 @@ function __c0(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           hostname: S.String,
-          customMetadata: S.optional(__S(0).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(
+            CreateRequestCustomMetadataMap.pipe(T.Body("custom_metadata")),
+          ),
           customOriginServer: S.optional(S.String.pipe(T.Body("custom_origin_server"))),
           customOriginSni: S.optional(S.String.pipe(T.Body("custom_origin_sni"))),
-          ssl: S.optional(__S(5)),
+          ssl: S.optional(CreateRequestSsl),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/custom_hostnames", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1657,7 +2174,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(CreateResponseOwnershipVerificationType)),
           value: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -1681,7 +2198,7 @@ function __c1(j: number): any {
         S.Struct({
           cname: S.optional(S.NullOr(S.String)),
           cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-          emails: S.optional(S.NullOr(__S(3))),
+          emails: S.optional(S.NullOr(CreateResponseSslDcvDelegationRecordsItemEmailsList)),
           httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
           httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
           status: S.optional(S.NullOr(S.String)),
@@ -1692,15 +2209,19 @@ function __c1(j: number): any {
         identifier: "CreateResponseSslDcvDelegationRecordsItem",
       });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(CreateResponseSslDcvDelegationRecordsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ciphers: S.optional(S.NullOr(__S(3))),
-          earlyHints: S.optional(S.NullOr(S.String).pipe(T.Body("early_hints"))),
-          http2: S.optional(S.NullOr(S.String)),
-          minTlsVersion: S.optional(S.NullOr(S.String).pipe(T.Body("min_tls_version"))),
-          tls_1_3: S.optional(S.NullOr(S.String)),
+          ciphers: S.optional(S.NullOr(CreateResponseSslSettingsCiphersList)),
+          earlyHints: S.optional(
+            S.NullOr(CreateResponseSslSettingsEarlyHints).pipe(T.Body("early_hints")),
+          ),
+          http2: S.optional(S.NullOr(CreateResponseSslSettingsHttp2)),
+          minTlsVersion: S.optional(
+            S.NullOr(CreateResponseSslSettingsMinTlsVersion).pipe(T.Body("min_tls_version")),
+          ),
+          tls_1_3: S.optional(S.NullOr(CreateResponseSslSettingsTls13)),
         }),
       ).annotate({
         identifier: "CreateResponseSslSettings",
@@ -1714,33 +2235,41 @@ function __c1(j: number): any {
         identifier: "CreateResponseSslValidationErrorsItem",
       });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(CreateResponseSslValidationErrorsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          bundleMethod: S.optional(S.NullOr(S.String).pipe(T.Body("bundle_method"))),
+          bundleMethod: S.optional(
+            S.NullOr(CreateResponseSslBundleMethod).pipe(T.Body("bundle_method")),
+          ),
           certificateAuthority: S.optional(
-            S.NullOr(S.String).pipe(T.Body("certificate_authority")),
+            S.NullOr(CreateResponseSslCertificateAuthority).pipe(T.Body("certificate_authority")),
           ),
           customCertificate: S.optional(S.NullOr(S.String).pipe(T.Body("custom_certificate"))),
           customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
           customKey: S.optional(S.NullOr(S.String).pipe(T.Body("custom_key"))),
           dcvDelegationRecords: S.optional(
-            S.NullOr(__S(10)).pipe(T.Body("dcv_delegation_records")),
+            S.NullOr(CreateResponseSslDcvDelegationRecordsList).pipe(
+              T.Body("dcv_delegation_records"),
+            ),
           ),
           expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-          hosts: S.optional(S.NullOr(__S(3))),
+          hosts: S.optional(S.NullOr(CreateResponseSslHostsList)),
           issuer: S.optional(S.NullOr(S.String)),
-          method: S.optional(S.NullOr(S.String)),
+          method: S.optional(S.NullOr(CreateResponseSslMethod)),
           serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
-          settings: S.optional(S.NullOr(__S(11))),
+          settings: S.optional(S.NullOr(CreateResponseSslSettings)),
           signature: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(CreateResponseSslStatus)),
+          type: S.optional(S.NullOr(CreateResponseSslType)),
           uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
-          validationErrors: S.optional(S.NullOr(__S(13)).pipe(T.Body("validation_errors"))),
-          validationRecords: S.optional(S.NullOr(__S(10)).pipe(T.Body("validation_records"))),
+          validationErrors: S.optional(
+            S.NullOr(CreateResponseSslValidationErrorsList).pipe(T.Body("validation_errors")),
+          ),
+          validationRecords: S.optional(
+            S.NullOr(CreateResponseSslValidationRecordsList).pipe(T.Body("validation_records")),
+          ),
           wildcard: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "CreateResponseSsl" });
@@ -1750,18 +2279,24 @@ function __c1(j: number): any {
           id: S.String,
           hostname: S.String,
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          customMetadata: S.optional(S.NullOr(__S(0)).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(
+            S.NullOr(CreateResponseCustomMetadataMap).pipe(T.Body("custom_metadata")),
+          ),
           customOriginServer: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_server"))),
           customOriginSni: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_sni"))),
           ownershipVerification: S.optional(
-            S.NullOr(__S(7)).pipe(T.Body("ownership_verification")),
+            S.NullOr(CreateResponseOwnershipVerification).pipe(T.Body("ownership_verification")),
           ),
           ownershipVerificationHttp: S.optional(
-            S.NullOr(__S(8)).pipe(T.Body("ownership_verification_http")),
+            S.NullOr(CreateResponseOwnershipVerificationHttp).pipe(
+              T.Body("ownership_verification_http"),
+            ),
           ),
-          ssl: S.optional(S.NullOr(__S(14))),
-          status: S.optional(S.NullOr(S.String)),
-          verificationErrors: S.optional(S.NullOr(__S(3)).pipe(T.Body("verification_errors"))),
+          ssl: S.optional(S.NullOr(CreateResponseSsl)),
+          status: S.optional(S.NullOr(CreateResponseStatus)),
+          verificationErrors: S.optional(
+            S.NullOr(CreateResponseVerificationErrorsList).pipe(T.Body("verification_errors")),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateCustomHostnameResponse",
@@ -1834,9 +2369,9 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          errors: S.optional(S.NullOr(__S(3))),
+          errors: S.optional(S.NullOr(FallbackOriginDeleteResponseErrorsList)),
           origin: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(FallbackOriginDeleteResponseStatus)),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -1860,39 +2395,49 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ciphers: S.optional(S.NullOr(__S(3))),
-          earlyHints: S.optional(S.NullOr(S.String).pipe(T.Body("early_hints"))),
-          http2: S.optional(S.NullOr(S.String)),
-          minTlsVersion: S.optional(S.NullOr(S.String).pipe(T.Body("min_tls_version"))),
-          tls_1_3: S.optional(S.NullOr(S.String)),
+          ciphers: S.optional(S.NullOr(GetResponseSslSettingsCiphersList)),
+          earlyHints: S.optional(
+            S.NullOr(GetResponseSslSettingsEarlyHints).pipe(T.Body("early_hints")),
+          ),
+          http2: S.optional(S.NullOr(GetResponseSslSettingsHttp2)),
+          minTlsVersion: S.optional(
+            S.NullOr(GetResponseSslSettingsMinTlsVersion).pipe(T.Body("min_tls_version")),
+          ),
+          tls_1_3: S.optional(S.NullOr(GetResponseSslSettingsTls13)),
         }),
       ).annotate({ identifier: "GetResponseSslSettings" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          bundleMethod: S.optional(S.NullOr(S.String).pipe(T.Body("bundle_method"))),
+          bundleMethod: S.optional(
+            S.NullOr(GetResponseSslBundleMethod).pipe(T.Body("bundle_method")),
+          ),
           certificateAuthority: S.optional(
-            S.NullOr(S.String).pipe(T.Body("certificate_authority")),
+            S.NullOr(GetResponseSslCertificateAuthority).pipe(T.Body("certificate_authority")),
           ),
           customCertificate: S.optional(S.NullOr(S.String).pipe(T.Body("custom_certificate"))),
           customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
           customKey: S.optional(S.NullOr(S.String).pipe(T.Body("custom_key"))),
           dcvDelegationRecords: S.optional(
-            S.NullOr(__S(10)).pipe(T.Body("dcv_delegation_records")),
+            S.NullOr(GetResponseSslDcvDelegationRecordsList).pipe(T.Body("dcv_delegation_records")),
           ),
           expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-          hosts: S.optional(S.NullOr(__S(3))),
+          hosts: S.optional(S.NullOr(GetResponseSslHostsList)),
           issuer: S.optional(S.NullOr(S.String)),
-          method: S.optional(S.NullOr(S.String)),
+          method: S.optional(S.NullOr(GetResponseSslMethod)),
           serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
-          settings: S.optional(S.NullOr(__S(22))),
+          settings: S.optional(S.NullOr(GetResponseSslSettings)),
           signature: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(GetResponseSslStatus)),
+          type: S.optional(S.NullOr(GetResponseSslType)),
           uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
-          validationErrors: S.optional(S.NullOr(__S(13)).pipe(T.Body("validation_errors"))),
-          validationRecords: S.optional(S.NullOr(__S(10)).pipe(T.Body("validation_records"))),
+          validationErrors: S.optional(
+            S.NullOr(GetResponseSslValidationErrorsList).pipe(T.Body("validation_errors")),
+          ),
+          validationRecords: S.optional(
+            S.NullOr(GetResponseSslValidationRecordsList).pipe(T.Body("validation_records")),
+          ),
           wildcard: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "GetResponseSsl" });
@@ -1906,18 +2451,24 @@ function __c3(j: number): any {
           id: S.String,
           hostname: S.String,
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          customMetadata: S.optional(S.NullOr(__S(0)).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(
+            S.NullOr(GetResponseCustomMetadataMap).pipe(T.Body("custom_metadata")),
+          ),
           customOriginServer: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_server"))),
           customOriginSni: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_sni"))),
           ownershipVerification: S.optional(
-            S.NullOr(__S(7)).pipe(T.Body("ownership_verification")),
+            S.NullOr(GetResponseOwnershipVerification).pipe(T.Body("ownership_verification")),
           ),
           ownershipVerificationHttp: S.optional(
-            S.NullOr(__S(8)).pipe(T.Body("ownership_verification_http")),
+            S.NullOr(CreateResponseOwnershipVerificationHttp).pipe(
+              T.Body("ownership_verification_http"),
+            ),
           ),
-          ssl: S.optional(S.NullOr(__S(23))),
-          status: S.optional(S.NullOr(S.String)),
-          verificationErrors: S.optional(S.NullOr(__S(3)).pipe(T.Body("verification_errors"))),
+          ssl: S.optional(S.NullOr(GetResponseSsl)),
+          status: S.optional(S.NullOr(GetResponseStatus)),
+          verificationErrors: S.optional(
+            S.NullOr(GetResponseVerificationErrorsList).pipe(T.Body("verification_errors")),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetCustomHostnameResponse",
@@ -1940,9 +2491,9 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          errors: S.optional(S.NullOr(__S(3))),
+          errors: S.optional(S.NullOr(FallbackOriginGetResponseErrorsList)),
           origin: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(FallbackOriginGetResponseStatus)),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -1980,16 +2531,18 @@ function __c3(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           id: S.optional(S.String.pipe(T.Query())),
-          certificateAuthority: S.optional(S.String.pipe(T.Query("certificate_authority"))),
+          certificateAuthority: S.optional(
+            ListRequestCertificateAuthority.pipe(T.Query("certificate_authority")),
+          ),
           customOriginServer: S.optional(S.String.pipe(T.Query("custom_origin_server"))),
-          direction: S.optional(S.String.pipe(T.Query())),
-          hostname: S.optional(__S(29).pipe(T.DeepQuery("hostname"))),
-          hostnameStatus: S.optional(S.String.pipe(T.Query("hostname_status"))),
-          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(ListRequestDirection.pipe(T.Query())),
+          hostname: S.optional(ListRequestHostname.pipe(T.DeepQuery("hostname"))),
+          hostnameStatus: S.optional(ListRequestHostnameStatus.pipe(T.Query("hostname_status"))),
+          order: S.optional(ListRequestOrder.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           ssl: S.optional(S.String.pipe(T.Query())),
-          sslStatus: S.optional(S.String.pipe(T.Query("ssl_status"))),
+          sslStatus: S.optional(ListRequestSslStatus.pipe(T.Query("ssl_status"))),
           wildcard: S.optional(S.Boolean.pipe(T.Query())),
         })
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/custom_hostnames", code: 200 }))
@@ -2000,11 +2553,15 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ciphers: S.optional(S.NullOr(__S(3))),
-          earlyHints: S.optional(S.NullOr(S.String).pipe(T.Body("early_hints"))),
-          http2: S.optional(S.NullOr(S.String)),
-          minTlsVersion: S.optional(S.NullOr(S.String).pipe(T.Body("min_tls_version"))),
-          tls_1_3: S.optional(S.NullOr(S.String)),
+          ciphers: S.optional(S.NullOr(ListResultItemSslSettingsCiphersList)),
+          earlyHints: S.optional(
+            S.NullOr(ListResultItemSslSettingsEarlyHints).pipe(T.Body("early_hints")),
+          ),
+          http2: S.optional(S.NullOr(ListResultItemSslSettingsHttp2)),
+          minTlsVersion: S.optional(
+            S.NullOr(ListResultItemSslSettingsMinTlsVersion).pipe(T.Body("min_tls_version")),
+          ),
+          tls_1_3: S.optional(S.NullOr(ListResultItemSslSettingsTls13)),
         }),
       ).annotate({
         identifier: "ListResultItemSslSettings",
@@ -2017,28 +2574,36 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          bundleMethod: S.optional(S.NullOr(S.String).pipe(T.Body("bundle_method"))),
+          bundleMethod: S.optional(
+            S.NullOr(ListResultItemSslBundleMethod).pipe(T.Body("bundle_method")),
+          ),
           certificateAuthority: S.optional(
-            S.NullOr(S.String).pipe(T.Body("certificate_authority")),
+            S.NullOr(ListResultItemSslCertificateAuthority).pipe(T.Body("certificate_authority")),
           ),
           customCertificate: S.optional(S.NullOr(S.String).pipe(T.Body("custom_certificate"))),
           customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
           customKey: S.optional(S.NullOr(S.String).pipe(T.Body("custom_key"))),
           dcvDelegationRecords: S.optional(
-            S.NullOr(__S(10)).pipe(T.Body("dcv_delegation_records")),
+            S.NullOr(ListResultItemSslDcvDelegationRecordsList).pipe(
+              T.Body("dcv_delegation_records"),
+            ),
           ),
           expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-          hosts: S.optional(S.NullOr(__S(3))),
+          hosts: S.optional(S.NullOr(ListResultItemSslHostsList)),
           issuer: S.optional(S.NullOr(S.String)),
-          method: S.optional(S.NullOr(S.String)),
+          method: S.optional(S.NullOr(ListResultItemSslMethod)),
           serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
-          settings: S.optional(S.NullOr(__S(31))),
+          settings: S.optional(S.NullOr(ListResultItemSslSettings)),
           signature: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(ListResultItemSslStatus)),
+          type: S.optional(S.NullOr(ListResultItemSslType)),
           uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
-          validationErrors: S.optional(S.NullOr(__S(13)).pipe(T.Body("validation_errors"))),
-          validationRecords: S.optional(S.NullOr(__S(10)).pipe(T.Body("validation_records"))),
+          validationErrors: S.optional(
+            S.NullOr(ListResultItemSslValidationErrorsList).pipe(T.Body("validation_errors")),
+          ),
+          validationRecords: S.optional(
+            S.NullOr(ListResultItemSslValidationRecordsList).pipe(T.Body("validation_records")),
+          ),
           wildcard: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "ListResultItemSsl" });
@@ -2048,26 +2613,32 @@ function __c4(j: number): any {
           id: S.String,
           hostname: S.String,
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          customMetadata: S.optional(S.NullOr(__S(0)).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(
+            S.NullOr(ListResultItemCustomMetadataMap).pipe(T.Body("custom_metadata")),
+          ),
           customOriginServer: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_server"))),
           customOriginSni: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_sni"))),
           ownershipVerification: S.optional(
-            S.NullOr(__S(7)).pipe(T.Body("ownership_verification")),
+            S.NullOr(ListResultItemOwnershipVerification).pipe(T.Body("ownership_verification")),
           ),
           ownershipVerificationHttp: S.optional(
-            S.NullOr(__S(8)).pipe(T.Body("ownership_verification_http")),
+            S.NullOr(CreateResponseOwnershipVerificationHttp).pipe(
+              T.Body("ownership_verification_http"),
+            ),
           ),
-          ssl: S.optional(S.NullOr(__S(32))),
-          status: S.optional(S.NullOr(S.String)),
-          verificationErrors: S.optional(S.NullOr(__S(3)).pipe(T.Body("verification_errors"))),
+          ssl: S.optional(S.NullOr(ListResultItemSsl)),
+          status: S.optional(S.NullOr(ListResultItemStatus)),
+          verificationErrors: S.optional(
+            S.NullOr(ListResultItemVerificationErrorsList).pipe(T.Body("verification_errors")),
+          ),
         }),
       ).annotate({ identifier: "ListResultItem" });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(ListResultItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(34).pipe(T.EnvelopePayload()),
+          result: ListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -2076,26 +2647,32 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ciphers: S.optional(__S(3)),
-          earlyHints: S.optional(S.String.pipe(T.Body("early_hints"))),
-          http2: S.optional(S.String),
-          minTlsVersion: S.optional(S.String.pipe(T.Body("min_tls_version"))),
-          tls_1_3: S.optional(S.String),
+          ciphers: S.optional(EditRequestSslSettingsCiphersList),
+          earlyHints: S.optional(EditRequestSslSettingsEarlyHints.pipe(T.Body("early_hints"))),
+          http2: S.optional(EditRequestSslSettingsHttp2),
+          minTlsVersion: S.optional(
+            EditRequestSslSettingsMinTlsVersion.pipe(T.Body("min_tls_version")),
+          ),
+          tls_1_3: S.optional(EditRequestSslSettingsTls13),
         }),
       ).annotate({ identifier: "EditRequestSslSettings" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          bundleMethod: S.optional(S.String.pipe(T.Body("bundle_method"))),
-          certificateAuthority: S.optional(S.String.pipe(T.Body("certificate_authority"))),
+          bundleMethod: S.optional(EditRequestSslBundleMethod.pipe(T.Body("bundle_method"))),
+          certificateAuthority: S.optional(
+            EditRequestSslCertificateAuthority.pipe(T.Body("certificate_authority")),
+          ),
           cloudflareBranding: S.optional(S.Boolean.pipe(T.Body("cloudflare_branding"))),
-          customCertBundle: S.optional(__S(2).pipe(T.Body("custom_cert_bundle"))),
+          customCertBundle: S.optional(
+            EditRequestSslCustomCertBundleList.pipe(T.Body("custom_cert_bundle")),
+          ),
           customCertificate: S.optional(S.String.pipe(T.Body("custom_certificate"))),
           customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
           customKey: S.optional(S.String.pipe(T.Body("custom_key"))),
-          method: S.optional(S.String),
-          settings: S.optional(__S(36)),
-          type: S.optional(S.String),
+          method: S.optional(EditRequestSslMethod),
+          settings: S.optional(EditRequestSslSettings),
+          type: S.optional(EditRequestSslType),
           wildcard: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EditRequestSsl" });
@@ -2104,10 +2681,10 @@ function __c4(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           customHostnameId: S.String.pipe(T.Label("custom_hostname_id")),
-          customMetadata: S.optional(__S(0).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(EditRequestCustomMetadataMap.pipe(T.Body("custom_metadata"))),
           customOriginServer: S.optional(S.String.pipe(T.Body("custom_origin_server"))),
           customOriginSni: S.optional(S.String.pipe(T.Body("custom_origin_sni"))),
-          ssl: S.optional(__S(37)),
+          ssl: S.optional(EditRequestSsl),
         })
           .pipe(
             T.Http({
@@ -2123,11 +2700,15 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ciphers: S.optional(S.NullOr(__S(3))),
-          earlyHints: S.optional(S.NullOr(S.String).pipe(T.Body("early_hints"))),
-          http2: S.optional(S.NullOr(S.String)),
-          minTlsVersion: S.optional(S.NullOr(S.String).pipe(T.Body("min_tls_version"))),
-          tls_1_3: S.optional(S.NullOr(S.String)),
+          ciphers: S.optional(S.NullOr(EditResponseSslSettingsCiphersList)),
+          earlyHints: S.optional(
+            S.NullOr(EditResponseSslSettingsEarlyHints).pipe(T.Body("early_hints")),
+          ),
+          http2: S.optional(S.NullOr(EditResponseSslSettingsHttp2)),
+          minTlsVersion: S.optional(
+            S.NullOr(EditResponseSslSettingsMinTlsVersion).pipe(T.Body("min_tls_version")),
+          ),
+          tls_1_3: S.optional(S.NullOr(EditResponseSslSettingsTls13)),
         }),
       ).annotate({ identifier: "EditResponseSslSettings" });
   }
@@ -2138,28 +2719,36 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          bundleMethod: S.optional(S.NullOr(S.String).pipe(T.Body("bundle_method"))),
+          bundleMethod: S.optional(
+            S.NullOr(EditResponseSslBundleMethod).pipe(T.Body("bundle_method")),
+          ),
           certificateAuthority: S.optional(
-            S.NullOr(S.String).pipe(T.Body("certificate_authority")),
+            S.NullOr(EditResponseSslCertificateAuthority).pipe(T.Body("certificate_authority")),
           ),
           customCertificate: S.optional(S.NullOr(S.String).pipe(T.Body("custom_certificate"))),
           customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
           customKey: S.optional(S.NullOr(S.String).pipe(T.Body("custom_key"))),
           dcvDelegationRecords: S.optional(
-            S.NullOr(__S(10)).pipe(T.Body("dcv_delegation_records")),
+            S.NullOr(EditResponseSslDcvDelegationRecordsList).pipe(
+              T.Body("dcv_delegation_records"),
+            ),
           ),
           expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-          hosts: S.optional(S.NullOr(__S(3))),
+          hosts: S.optional(S.NullOr(EditResponseSslHostsList)),
           issuer: S.optional(S.NullOr(S.String)),
-          method: S.optional(S.NullOr(S.String)),
+          method: S.optional(S.NullOr(EditResponseSslMethod)),
           serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
-          settings: S.optional(S.NullOr(__S(39))),
+          settings: S.optional(S.NullOr(EditResponseSslSettings)),
           signature: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(EditResponseSslStatus)),
+          type: S.optional(S.NullOr(EditResponseSslType)),
           uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
-          validationErrors: S.optional(S.NullOr(__S(13)).pipe(T.Body("validation_errors"))),
-          validationRecords: S.optional(S.NullOr(__S(10)).pipe(T.Body("validation_records"))),
+          validationErrors: S.optional(
+            S.NullOr(EditResponseSslValidationErrorsList).pipe(T.Body("validation_errors")),
+          ),
+          validationRecords: S.optional(
+            S.NullOr(EditResponseSslValidationRecordsList).pipe(T.Body("validation_records")),
+          ),
           wildcard: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "EditResponseSsl" });
@@ -2169,18 +2758,24 @@ function __c5(j: number): any {
           id: S.String,
           hostname: S.String,
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          customMetadata: S.optional(S.NullOr(__S(0)).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(
+            S.NullOr(EditResponseCustomMetadataMap).pipe(T.Body("custom_metadata")),
+          ),
           customOriginServer: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_server"))),
           customOriginSni: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_sni"))),
           ownershipVerification: S.optional(
-            S.NullOr(__S(7)).pipe(T.Body("ownership_verification")),
+            S.NullOr(EditResponseOwnershipVerification).pipe(T.Body("ownership_verification")),
           ),
           ownershipVerificationHttp: S.optional(
-            S.NullOr(__S(8)).pipe(T.Body("ownership_verification_http")),
+            S.NullOr(CreateResponseOwnershipVerificationHttp).pipe(
+              T.Body("ownership_verification_http"),
+            ),
           ),
-          ssl: S.optional(S.NullOr(__S(40))),
-          status: S.optional(S.NullOr(S.String)),
-          verificationErrors: S.optional(S.NullOr(__S(3)).pipe(T.Body("verification_errors"))),
+          ssl: S.optional(S.NullOr(EditResponseSsl)),
+          status: S.optional(S.NullOr(EditResponseStatus)),
+          verificationErrors: S.optional(
+            S.NullOr(EditResponseVerificationErrorsList).pipe(T.Body("verification_errors")),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PatchCustomHostnameResponse",
@@ -2210,7 +2805,9 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
+          type: S.optional(
+            S.NullOr(CertificatePackCertificatesUpdateResponseOwnershipVerificationType),
+          ),
           value: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -2223,7 +2820,11 @@ function __c5(j: number): any {
         S.Struct({
           cname: S.optional(S.NullOr(S.String)),
           cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-          emails: S.optional(S.NullOr(__S(44))),
+          emails: S.optional(
+            S.NullOr(
+              CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItemEmailsList,
+            ),
+          ),
           httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
           httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
           status: S.optional(S.NullOr(S.String)),
@@ -2234,15 +2835,25 @@ function __c5(j: number): any {
         identifier: "CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItem",
       });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ciphers: S.optional(S.NullOr(__S(44))),
-          earlyHints: S.optional(S.NullOr(S.String).pipe(T.Body("early_hints"))),
-          http2: S.optional(S.NullOr(S.String)),
-          minTlsVersion: S.optional(S.NullOr(S.String).pipe(T.Body("min_tls_version"))),
-          tls_1_3: S.optional(S.NullOr(S.String)),
+          ciphers: S.optional(
+            S.NullOr(CertificatePackCertificatesUpdateResponseSslSettingsCiphersList),
+          ),
+          earlyHints: S.optional(
+            S.NullOr(CertificatePackCertificatesUpdateResponseSslSettingsEarlyHints).pipe(
+              T.Body("early_hints"),
+            ),
+          ),
+          http2: S.optional(S.NullOr(CertificatePackCertificatesUpdateResponseSslSettingsHttp2)),
+          minTlsVersion: S.optional(
+            S.NullOr(CertificatePackCertificatesUpdateResponseSslSettingsMinTlsVersion).pipe(
+              T.Body("min_tls_version"),
+            ),
+          ),
+          tls_1_3: S.optional(S.NullOr(CertificatePackCertificatesUpdateResponseSslSettingsTls13)),
         }),
       ).annotate({
         identifier: "CertificatePackCertificatesUpdateResponseSslSettings",
@@ -2252,33 +2863,49 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(12));
+      return S.Array(CreateResponseSslValidationErrorsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          bundleMethod: S.optional(S.NullOr(S.String).pipe(T.Body("bundle_method"))),
+          bundleMethod: S.optional(
+            S.NullOr(CertificatePackCertificatesUpdateResponseSslBundleMethod).pipe(
+              T.Body("bundle_method"),
+            ),
+          ),
           certificateAuthority: S.optional(
-            S.NullOr(S.String).pipe(T.Body("certificate_authority")),
+            S.NullOr(CertificatePackCertificatesUpdateResponseSslCertificateAuthority).pipe(
+              T.Body("certificate_authority"),
+            ),
           ),
           customCertificate: S.optional(S.NullOr(S.String).pipe(T.Body("custom_certificate"))),
           customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
           customKey: S.optional(S.NullOr(S.String).pipe(T.Body("custom_key"))),
           dcvDelegationRecords: S.optional(
-            S.NullOr(__S(46)).pipe(T.Body("dcv_delegation_records")),
+            S.NullOr(CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsList).pipe(
+              T.Body("dcv_delegation_records"),
+            ),
           ),
           expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-          hosts: S.optional(S.NullOr(__S(3))),
+          hosts: S.optional(S.NullOr(CertificatePackCertificatesUpdateResponseSslHostsList)),
           issuer: S.optional(S.NullOr(S.String)),
-          method: S.optional(S.NullOr(S.String)),
+          method: S.optional(S.NullOr(CertificatePackCertificatesUpdateResponseSslMethod)),
           serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
-          settings: S.optional(S.NullOr(__S(47))),
+          settings: S.optional(S.NullOr(CertificatePackCertificatesUpdateResponseSslSettings)),
           signature: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(CertificatePackCertificatesUpdateResponseSslStatus)),
+          type: S.optional(S.NullOr(CertificatePackCertificatesUpdateResponseSslType)),
           uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
-          validationErrors: S.optional(S.NullOr(__S(48)).pipe(T.Body("validation_errors"))),
-          validationRecords: S.optional(S.NullOr(__S(46)).pipe(T.Body("validation_records"))),
+          validationErrors: S.optional(
+            S.NullOr(CertificatePackCertificatesUpdateResponseSslValidationErrorsList).pipe(
+              T.Body("validation_errors"),
+            ),
+          ),
+          validationRecords: S.optional(
+            S.NullOr(CertificatePackCertificatesUpdateResponseSslValidationRecordsList).pipe(
+              T.Body("validation_records"),
+            ),
+          ),
           wildcard: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
@@ -2290,18 +2917,30 @@ function __c6(j: number): any {
           id: S.String,
           hostname: S.String,
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          customMetadata: S.optional(S.NullOr(__S(0)).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(
+            S.NullOr(CertificatePackCertificatesUpdateResponseCustomMetadataMap).pipe(
+              T.Body("custom_metadata"),
+            ),
+          ),
           customOriginServer: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_server"))),
           customOriginSni: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_sni"))),
           ownershipVerification: S.optional(
-            S.NullOr(__S(43)).pipe(T.Body("ownership_verification")),
+            S.NullOr(CertificatePackCertificatesUpdateResponseOwnershipVerification).pipe(
+              T.Body("ownership_verification"),
+            ),
           ),
           ownershipVerificationHttp: S.optional(
-            S.NullOr(__S(8)).pipe(T.Body("ownership_verification_http")),
+            S.NullOr(CreateResponseOwnershipVerificationHttp).pipe(
+              T.Body("ownership_verification_http"),
+            ),
           ),
-          ssl: S.optional(S.NullOr(__S(49))),
-          status: S.optional(S.NullOr(S.String)),
-          verificationErrors: S.optional(S.NullOr(__S(44)).pipe(T.Body("verification_errors"))),
+          ssl: S.optional(S.NullOr(CertificatePackCertificatesUpdateResponseSsl)),
+          status: S.optional(S.NullOr(CertificatePackCertificatesUpdateResponseStatus)),
+          verificationErrors: S.optional(
+            S.NullOr(CertificatePackCertificatesUpdateResponseVerificationErrorsList).pipe(
+              T.Body("verification_errors"),
+            ),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PutCertificatePackCertificateResponse",
@@ -2325,36 +2964,13 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          errors: S.optional(S.NullOr(__S(3))),
+          errors: S.optional(S.NullOr(FallbackOriginUpdateResponseErrorsList)),
           origin: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(FallbackOriginUpdateResponseStatus)),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PutFallbackOriginResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -68,6 +66,8 @@ export type NotificationSubscriptionRegisteredEventEnum =
   | "NOTIFICATION_EVENT_TYPE_UNSPECIFIED"
   | "PRODUCT_STATUS_CHANGE"
   | "ACCOUNT_SERVICE_CHANGE";
+const NotificationSubscriptionRegisteredEventEnum = S.String;
+
 /** Represents a notification subscription owned by a Merchant account. See [Decode notifications](/merchant/api/guides/accounts/notifications#decode_notifications) for information on how to decode the notification payload and how to interpret its contents. */
 export interface NotificationSubscription {
   /** The `name` of the account you want to receive notifications for. Format: `accounts/{account}` */
@@ -81,22 +81,44 @@ export interface NotificationSubscription {
   /** The event that the merchant wants to be notified about. */
   registeredEvent?: NotificationSubscriptionRegisteredEventEnum | (string & {});
 }
+const NotificationSubscription = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<NotificationSubscription>;
+
 export interface CreateAccountsNotificationsubscriptionsRequest {
   /** Required. The merchant account that owns the new notification subscription. Format: `accounts/{account}` */
   parent: string;
   /** Request body */
   body?: NotificationSubscription;
 }
+const CreateAccountsNotificationsubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateAccountsNotificationsubscriptionsRequest>;
+
 export interface DeleteAccountsNotificationsubscriptionsRequest {
   /** Required. The name of the notification subscription to be deleted. */
   name: string;
 }
+const DeleteAccountsNotificationsubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteAccountsNotificationsubscriptionsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Empty>;
+
 export interface GetAccountsNotificationsubscriptionsRequest {
   /** Required. The `name` of the notification subscription. */
   name: string;
 }
+const GetAccountsNotificationsubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetAccountsNotificationsubscriptionsRequest>;
+
 export interface ListAccountsNotificationsubscriptionsRequest {
   /** Optional. Token (if provided) to retrieve the subsequent page. All other parameters must match the original call that provided the page token. */
   pageToken?: string;
@@ -105,7 +127,17 @@ export interface ListAccountsNotificationsubscriptionsRequest {
   /** Required. The merchant account who owns the notification subscriptions. Format: `accounts/{account}` */
   parent: string;
 }
+const ListAccountsNotificationsubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListAccountsNotificationsubscriptionsRequest>;
+
 export type NotificationSubscriptionList = Array<NotificationSubscription>;
+const NotificationSubscriptionList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<NotificationSubscriptionList>;
+
 /** Response message for the ListNotificationSubscription method. */
 export interface ListNotificationSubscriptionsResponse {
   /** The list of notification subscriptions requested by the merchant. */
@@ -113,6 +145,11 @@ export interface ListNotificationSubscriptionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListNotificationSubscriptionsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListNotificationSubscriptionsResponse>;
+
 export interface PatchAccountsNotificationsubscriptionsRequest {
   /** List of fields being updated. */
   updateMask?: string;
@@ -121,6 +158,11 @@ export interface PatchAccountsNotificationsubscriptionsRequest {
   /** Request body */
   body?: NotificationSubscription;
 }
+const PatchAccountsNotificationsubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<PatchAccountsNotificationsubscriptionsRequest>;
+
 export type CreateAccountsNotificationsubscriptionsError =
   | NotFound
   | Forbidden
@@ -134,8 +176,8 @@ export const createAccountsNotificationsubscriptions: API.OperationMethod<
   CreateAccountsNotificationsubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateAccountsNotificationsubscriptionsRequest>,
-  output: __S(0) as any as S.Schema<NotificationSubscription>,
+  input: CreateAccountsNotificationsubscriptionsRequest,
+  output: NotificationSubscription,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -154,8 +196,8 @@ export const deleteAccountsNotificationsubscriptions: API.OperationMethod<
   DeleteAccountsNotificationsubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteAccountsNotificationsubscriptionsRequest>,
-  output: __S(3) as any as S.Schema<Empty>,
+  input: DeleteAccountsNotificationsubscriptionsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -169,8 +211,8 @@ export const getAccountsNotificationsubscriptions: API.OperationMethod<
   GetAccountsNotificationsubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetAccountsNotificationsubscriptionsRequest>,
-  output: __S(0) as any as S.Schema<NotificationSubscription>,
+  input: GetAccountsNotificationsubscriptionsRequest,
+  output: NotificationSubscription,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -185,8 +227,8 @@ export const listAccountsNotificationsubscriptions: API.PaginatedOperationMethod
   GcpOpContext,
   ListNotificationSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(5) as any as S.Schema<ListAccountsNotificationsubscriptionsRequest>,
-  output: __S(7) as any as S.Schema<ListNotificationSubscriptionsResponse>,
+  input: ListAccountsNotificationsubscriptionsRequest,
+  output: ListNotificationSubscriptionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -206,8 +248,8 @@ export const patchAccountsNotificationsubscriptions: API.OperationMethod<
   PatchAccountsNotificationsubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<PatchAccountsNotificationsubscriptionsRequest>,
-  output: __S(0) as any as S.Schema<NotificationSubscription>,
+  input: PatchAccountsNotificationsubscriptionsRequest,
+  output: NotificationSubscription,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -223,14 +265,14 @@ function __c0(j: number): any {
           allManagedAccounts: S.optional(S.Boolean),
           callBackUri: S.optional(S.String),
           name: S.optional(S.String),
-          registeredEvent: S.optional(S.String),
+          registeredEvent: S.optional(NotificationSubscriptionRegisteredEventEnum),
         }),
       ).annotate({ identifier: "NotificationSubscription" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(NotificationSubscription.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -290,11 +332,11 @@ function __c0(j: number): any {
         identifier: "ListAccountsNotificationsubscriptionsRequest",
       });
     case 6:
-      return S.Array(__S(0));
+      return S.Array(NotificationSubscription);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          notificationSubscriptions: S.optional(__S(6)),
+          notificationSubscriptions: S.optional(NotificationSubscriptionList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -309,7 +351,7 @@ function __c1(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(NotificationSubscription.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -320,18 +362,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "PatchAccountsNotificationsubscriptionsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

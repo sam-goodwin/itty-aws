@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -46,6 +44,11 @@ export interface CreateRepositorySnapshotRequestJob {
   /** The url for the job. */
   html_url?: string;
 }
+const CreateRepositorySnapshotRequestJob = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateRepositorySnapshotRequestJob>;
+
 /** A description of the detector used. */
 export interface CreateRepositorySnapshotRequestDetector {
   /** The name of the detector used. */
@@ -55,19 +58,39 @@ export interface CreateRepositorySnapshotRequestDetector {
   /** The url of the detector used. */
   url: string;
 }
+const CreateRepositorySnapshotRequestDetector = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateRepositorySnapshotRequestDetector>;
+
 export type MetadataValue = string | number | boolean;
+const MetadataValue = S.Unknown as any as S.Schema<MetadataValue>;
+
 /** User-defined metadata to store domain-specific information limited to 8 keys with scalar values. */
 export type Metadata = { [key: string]: MetadataValue | null | undefined };
+const Metadata = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Metadata>;
+
 export interface ManifestFile {
   /** The path of the manifest file relative to the root of the Git repository. */
   source_location?: string;
 }
+const ManifestFile = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ManifestFile>;
+
 /** A notation of whether a dependency is requested directly by this manifest or is a dependency of another dependency. */
 export type DependencyRelationship = "direct" | "indirect";
+const DependencyRelationship = S.String;
+
 /** A notation of whether the dependency is required for the primary build artifact (runtime) or is only used for development. Future versions of this specification may allow for more granular scopes. */
 export type DependencyScope = "runtime" | "development";
+const DependencyScope = S.String;
+
 /** Array of package-url (PURLs) of direct child dependencies. */
 export type DependencyDependenciesList = Array<string>;
+const DependencyDependenciesList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DependencyDependenciesList>;
+
 export interface Dependency {
   /** Package-url (PURL) of dependency. See https://github.com/package-url/purl-spec for more details. */
   package_url?: string;
@@ -79,8 +102,12 @@ export interface Dependency {
   /** Array of package-url (PURLs) of direct child dependencies. */
   dependencies?: DependencyDependenciesList;
 }
+const Dependency = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Dependency>;
+
 /** A collection of resolved package dependencies. */
 export type ManifestResolvedMap = { [key: string]: Dependency | undefined };
+const ManifestResolvedMap = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ManifestResolvedMap>;
+
 export interface Manifest {
   /** The name of the manifest. */
   name: string;
@@ -89,8 +116,15 @@ export interface Manifest {
   /** A collection of resolved package dependencies. */
   resolved?: ManifestResolvedMap;
 }
+const Manifest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Manifest>;
+
 /** A collection of package manifests, which are a collection of related dependencies declared in a file or representing a logical group of dependencies. */
 export type CreateRepositorySnapshotRequestManifestsMap = { [key: string]: Manifest | undefined };
+const CreateRepositorySnapshotRequestManifestsMap = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateRepositorySnapshotRequestManifestsMap>;
+
 export interface CreateRepositorySnapshotRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -111,6 +145,11 @@ export interface CreateRepositorySnapshotRequest {
   /** The time at which the snapshot was scanned. */
   scanned: string;
 }
+const CreateRepositorySnapshotRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateRepositorySnapshotRequest>;
+
 export interface CreateRepositorySnapshotResponse {
   /** ID of the created snapshot. */
   id: number;
@@ -121,6 +160,11 @@ export interface CreateRepositorySnapshotResponse {
   /** A message providing further details about the result, such as why the dependencies were not updated. */
   message: string;
 }
+const CreateRepositorySnapshotResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateRepositorySnapshotResponse>;
+
 export interface DiffRangeRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -131,17 +175,33 @@ export interface DiffRangeRequest {
   /** The full path, relative to the repository root, of the dependency manifest file. */
   name?: string;
 }
+const DiffRangeRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DiffRangeRequest>;
+
 export type DependencyGraphDiffItemChangeType = "added" | "removed";
+const DependencyGraphDiffItemChangeType = S.String;
+
 export interface DependencyGraphDiffItemVulnerabilitiesItem {
   severity: string;
   advisory_ghsa_id: string;
   advisory_summary: string;
   advisory_url: string;
 }
+const DependencyGraphDiffItemVulnerabilitiesItem = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DependencyGraphDiffItemVulnerabilitiesItem>;
+
 export type DependencyGraphDiffItemVulnerabilitiesList =
   Array<DependencyGraphDiffItemVulnerabilitiesItem>;
+const DependencyGraphDiffItemVulnerabilitiesList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DependencyGraphDiffItemVulnerabilitiesList>;
+
 /** Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment. */
 export type DependencyGraphDiffItemScope = "unknown" | "runtime" | "development";
+const DependencyGraphDiffItemScope = S.String;
+
 export interface DependencyGraphDiffItem {
   change_type: DependencyGraphDiffItemChangeType;
   manifest: string;
@@ -155,9 +215,18 @@ export interface DependencyGraphDiffItem {
   /** Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment. */
   scope: DependencyGraphDiffItemScope;
 }
+const DependencyGraphDiffItem = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DependencyGraphDiffItem>;
+
 /** A diff of the dependencies between two commits. */
 export type DependencyGraphDiff = Array<DependencyGraphDiffItem>;
+const DependencyGraphDiff = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DependencyGraphDiff>;
+
 export type DiffRangeResponse = DependencyGraphDiff;
+const DiffRangeResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DiffRangeResponse>;
+
 export interface FetchSbomReportRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -166,17 +235,37 @@ export interface FetchSbomReportRequest {
   /** The unique identifier of the SBOM export. */
   sbom_uuid: string;
 }
+const FetchSbomReportRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<FetchSbomReportRequest>;
+
 export interface FetchSbomReportResponse {}
+const FetchSbomReportResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<FetchSbomReportResponse>;
+
 export interface GenerateSbomReportRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const GenerateSbomReportRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GenerateSbomReportRequest>;
+
 export interface GenerateSbomReportResponse {
   /** URL to poll for the SBOM export result. */
   sbom_url?: string;
 }
+const GenerateSbomReportResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GenerateSbomReportResponse>;
+
 export type CreateRepositorySnapshotError = GithubOpError;
 /** Create a snapshot of dependencies for a repository Create a new snapshot of a repository's dependencies. The authenticated user must have access to the repository. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. */
 export const createRepositorySnapshot: API.OperationMethod<
@@ -185,8 +274,8 @@ export const createRepositorySnapshot: API.OperationMethod<
   CreateRepositorySnapshotError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CreateRepositorySnapshotRequest>,
-  output: __S(10) as any as S.Schema<CreateRepositorySnapshotResponse>,
+  input: CreateRepositorySnapshotRequest,
+  output: CreateRepositorySnapshotResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -200,8 +289,8 @@ export const diffRange: API.OperationMethod<
   DiffRangeError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<DiffRangeRequest>,
-  output: __S(16) as any as S.Schema<DiffRangeResponse>,
+  input: DiffRangeRequest,
+  output: DiffRangeResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -215,8 +304,8 @@ export const fetchSbomReport: API.OperationMethod<
   FetchSbomReportError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<FetchSbomReportRequest>,
-  output: __S(18) as any as S.Schema<FetchSbomReportResponse>,
+  input: FetchSbomReportRequest,
+  output: FetchSbomReportResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -230,8 +319,8 @@ export const generateSbomReport: API.OperationMethod<
   GenerateSbomReportError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GenerateSbomReportRequest>,
-  output: __S(20) as any as S.Schema<GenerateSbomReportResponse>,
+  input: GenerateSbomReportRequest,
+  output: GenerateSbomReportResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -261,7 +350,7 @@ function __c0(j: number): any {
         identifier: "CreateRepositorySnapshotRequestDetector",
       });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(MetadataValue));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -274,21 +363,21 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           package_url: S.optional(S.String),
-          metadata: S.optional(__S(2)),
-          relationship: S.optional(S.String),
-          scope: S.optional(S.String),
-          dependencies: S.optional(__S(4)),
+          metadata: S.optional(Metadata),
+          relationship: S.optional(DependencyRelationship),
+          scope: S.optional(DependencyScope),
+          dependencies: S.optional(DependencyDependenciesList),
         }),
       ).annotate({ identifier: "Dependency" });
     case 6:
-      return S.Record(S.String, __S(5));
+      return S.Record(S.String, Dependency);
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          file: S.optional(__S(3)),
-          metadata: S.optional(__S(2)),
-          resolved: S.optional(__S(6)),
+          file: S.optional(ManifestFile),
+          metadata: S.optional(Metadata),
+          resolved: S.optional(ManifestResolvedMap),
         }),
       ).annotate({ identifier: "Manifest" });
   }
@@ -296,19 +385,19 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(7));
+      return S.Record(S.String, Manifest);
     case 1:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           version: S.Number,
-          job: __S(0),
+          job: CreateRepositorySnapshotRequestJob,
           sha: S.String,
           ref: S.String,
-          detector: __S(1),
-          metadata: S.optional(__S(2)),
-          manifests: S.optional(__S(8)),
+          detector: CreateRepositorySnapshotRequestDetector,
+          metadata: S.optional(Metadata),
+          manifests: S.optional(CreateRepositorySnapshotRequestManifestsMap),
           scanned: S.String,
         }).pipe(
           T.Http({
@@ -358,11 +447,11 @@ function __c1(j: number): any {
         identifier: "DependencyGraphDiffItemVulnerabilitiesItem",
       });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(DependencyGraphDiffItemVulnerabilitiesItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          change_type: S.String,
+          change_type: DependencyGraphDiffItemChangeType,
           manifest: S.String,
           ecosystem: S.String,
           name: S.String,
@@ -370,18 +459,18 @@ function __c1(j: number): any {
           package_url: S.NullOr(S.String),
           license: S.NullOr(S.String),
           source_repository_url: S.NullOr(S.String),
-          vulnerabilities: __S(13),
-          scope: S.String,
+          vulnerabilities: DependencyGraphDiffItemVulnerabilitiesList,
+          scope: DependencyGraphDiffItemScope,
         }),
       ).annotate({ identifier: "DependencyGraphDiffItem" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(DependencyGraphDiffItem);
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(15).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => DependencyGraphDiff.pipe(T.RawResponseRoot())).annotate({
         identifier: "DiffRangeResponse",
       });
     case 1:
@@ -425,20 +514,5 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GenerateSbomReportResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

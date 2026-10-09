@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -17,22 +15,50 @@ export interface DeleteRegistrationAssignmentRequest {
   /** The GUID of the registration assignment. */
   registrationAssignmentId: string;
 }
+const DeleteRegistrationAssignmentRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeleteRegistrationAssignmentRequest>;
+
 export interface DeleteRegistrationAssignmentResponse {}
+const DeleteRegistrationAssignmentResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<DeleteRegistrationAssignmentResponse>;
+
 export interface DeleteRegistrationDefinitionRequest {
   /** The scope of the resource. */
   scope: string;
   /** The GUID of the registration definition. */
   registrationDefinitionId: string;
 }
+const DeleteRegistrationDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteRegistrationDefinitionRequest>;
+
 export interface DeleteRegistrationDefinitionResponse {}
+const DeleteRegistrationDefinitionResponse =
+  DeleteRegistrationAssignmentResponse as any as S.Schema<DeleteRegistrationDefinitionResponse>;
+
 export interface GetMarketplaceRegistrationDefinitionRequest {
   /** The scope of the resource. */
   scope: string;
   /** The Azure Marketplace identifier. Expected formats: {publisher}.{product[-preview]}.{planName}.{version} or {publisher}.{product[-preview]}.{planName} or {publisher}.{product[-preview]} or {publisher}). */
   marketplaceIdentifier: string;
 }
+const GetMarketplaceRegistrationDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GetMarketplaceRegistrationDefinitionRequest>;
+
 /** The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other principals. */
 export type AuthorizationDelegatedRoleDefinitionIdsList = Array<string>;
+const AuthorizationDelegatedRoleDefinitionIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AuthorizationDelegatedRoleDefinitionIdsList>;
+
 /** The Azure Active Directory principal identifier and Azure built-in role that describes the access the principal will receive on the delegated resource in the managed tenant. */
 export interface Authorization {
   /** The identifier of the Azure Active Directory principal. */
@@ -44,10 +70,19 @@ export interface Authorization {
   /** The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other principals. */
   delegatedRoleDefinitionIds?: AuthorizationDelegatedRoleDefinitionIdsList;
 }
+const Authorization = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Authorization>;
+
 /** The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant. */
 export type MarketplaceRegistrationDefinitionPropertiesAuthorizationsList = Array<Authorization>;
+const MarketplaceRegistrationDefinitionPropertiesAuthorizationsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<MarketplaceRegistrationDefinitionPropertiesAuthorizationsList>;
+
 /** The multi-factor authorization provider to be used for just-in-time access requests. */
 export type JustInTimeAccessPolicyMultiFactorAuthProvider = "Azure" | "None";
+const JustInTimeAccessPolicyMultiFactorAuthProvider = S.String;
+
 /** Defines the Azure Active Directory principal that can approve any just-in-time access requests by the principal defined in the EligibleAuthorization. */
 export interface EligibleApprover {
   /** The identifier of the Azure Active Directory principal. */
@@ -55,8 +90,15 @@ export interface EligibleApprover {
   /** The display name of the Azure Active Directory principal. */
   principalIdDisplayName?: string;
 }
+const EligibleApprover = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<EligibleApprover>;
+
 /** The list of managedByTenant approvers for the eligible authorization. */
 export type JustInTimeAccessPolicyManagedByTenantApproversList = Array<EligibleApprover>;
+const JustInTimeAccessPolicyManagedByTenantApproversList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<JustInTimeAccessPolicyManagedByTenantApproversList>;
+
 /** Just-in-time access policy setting. */
 export interface JustInTimeAccessPolicy {
   /** The multi-factor authorization provider to be used for just-in-time access requests. */
@@ -66,6 +108,11 @@ export interface JustInTimeAccessPolicy {
   /** The list of managedByTenant approvers for the eligible authorization. */
   managedByTenantApprovers?: JustInTimeAccessPolicyManagedByTenantApproversList;
 }
+const JustInTimeAccessPolicy = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<JustInTimeAccessPolicy>;
+
 /** The Azure Active Directory principal identifier, Azure built-in role, and just-in-time access policy that describes the just-in-time access the principal will receive on the delegated resource in the managed tenant. */
 export interface EligibleAuthorization {
   /** The identifier of the Azure Active Directory principal. */
@@ -77,9 +124,19 @@ export interface EligibleAuthorization {
   /** The just-in-time access policy setting. */
   justInTimeAccessPolicy?: JustInTimeAccessPolicy;
 }
+const EligibleAuthorization = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<EligibleAuthorization>;
+
 /** The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant. */
 export type MarketplaceRegistrationDefinitionPropertiesEligibleAuthorizationsList =
   Array<EligibleAuthorization>;
+const MarketplaceRegistrationDefinitionPropertiesEligibleAuthorizationsList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<MarketplaceRegistrationDefinitionPropertiesEligibleAuthorizationsList>;
+
 /** The properties of the marketplace registration definition. */
 export interface MarketplaceRegistrationDefinitionProperties {
   /** The identifier of the managedBy tenant. */
@@ -95,6 +152,11 @@ export interface MarketplaceRegistrationDefinitionProperties {
   /** The marketplace plan display name. */
   planDisplayName?: string;
 }
+const MarketplaceRegistrationDefinitionProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<MarketplaceRegistrationDefinitionProperties>;
+
 /** The details for the Managed Services offer's plan in Azure Marketplace. */
 export interface Plan {
   /** Azure Marketplace plan name. */
@@ -106,6 +168,8 @@ export interface Plan {
   /** Azure Marketplace plan's version. */
   version: string;
 }
+const Plan = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Plan>;
+
 export interface MarketplaceRegistrationDefinition {
   /** The properties of the marketplace registration definition. */
   properties?: MarketplaceRegistrationDefinitionProperties;
@@ -118,10 +182,20 @@ export interface MarketplaceRegistrationDefinition {
   /** The name of the marketplace registration definition. */
   name?: string;
 }
+const MarketplaceRegistrationDefinition = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<MarketplaceRegistrationDefinition>;
+
 export interface GetMarketplaceRegistrationDefinitionsWithoutScopeRequest {
   /** The Azure Marketplace identifier. Expected formats: {publisher}.{product[-preview]}.{planName}.{version} or {publisher}.{product[-preview]}.{planName} or {publisher}.{product[-preview]} or {publisher}). */
   marketplaceIdentifier: string;
 }
+const GetMarketplaceRegistrationDefinitionsWithoutScopeRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetMarketplaceRegistrationDefinitionsWithoutScopeRequest>;
+
 export interface GetRegistrationAssignmentRequest {
   /** The scope of the resource. */
   scope: string;
@@ -130,6 +204,11 @@ export interface GetRegistrationAssignmentRequest {
   /** The flag indicating whether to return the registration definition details along with the registration assignment details. */
   _expandRegistrationDefinition?: boolean;
 }
+const GetRegistrationAssignmentRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetRegistrationAssignmentRequest>;
+
 /** The current provisioning state of the registration assignment. */
 export type RegistrationAssignmentPropertiesProvisioningState =
   | "NotSpecified"
@@ -144,12 +223,23 @@ export type RegistrationAssignmentPropertiesProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Updating";
+const RegistrationAssignmentPropertiesProvisioningState = S.String;
+
 /** The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant. */
 export type RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesAuthorizationsList =
   Array<Authorization>;
+const RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesAuthorizationsList =
+  /*@__PURE__*/ __L.at(
+    __c2,
+    1,
+  ) as any as S.Schema<RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesAuthorizationsList>;
+
 /** The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant. */
 export type RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesEligibleAuthorizationsList =
   Array<EligibleAuthorization>;
+const RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesEligibleAuthorizationsList =
+  MarketplaceRegistrationDefinitionPropertiesEligibleAuthorizationsList as any as S.Schema<RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesEligibleAuthorizationsList>;
+
 /** The current provisioning state of the registration definition. */
 export type RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesProvisioningState =
   | "NotSpecified"
@@ -164,6 +254,8 @@ export type RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesProv
   | "Failed"
   | "Succeeded"
   | "Updating";
+const RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesProvisioningState = S.String;
+
 /** The properties of the registration definition associated with the registration assignment. */
 export interface RegistrationAssignmentPropertiesRegistrationDefinitionProperties {
   /** The description of the registration definition. */
@@ -185,18 +277,27 @@ export interface RegistrationAssignmentPropertiesRegistrationDefinitionPropertie
   /** The name of the managedBy tenant. */
   managedByTenantName?: string;
 }
+const RegistrationAssignmentPropertiesRegistrationDefinitionProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<RegistrationAssignmentPropertiesRegistrationDefinitionProperties>;
+
 /** The type of identity that created the resource. */
 export type RegistrationAssignmentPropertiesRegistrationDefinitionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const RegistrationAssignmentPropertiesRegistrationDefinitionSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type RegistrationAssignmentPropertiesRegistrationDefinitionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const RegistrationAssignmentPropertiesRegistrationDefinitionSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface RegistrationAssignmentPropertiesRegistrationDefinitionSystemData {
   /** The identity that created the resource. */
@@ -212,6 +313,11 @@ export interface RegistrationAssignmentPropertiesRegistrationDefinitionSystemDat
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const RegistrationAssignmentPropertiesRegistrationDefinitionSystemData = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<RegistrationAssignmentPropertiesRegistrationDefinitionSystemData>;
+
 /** The registration definition associated with the registration assignment. */
 export interface RegistrationAssignmentPropertiesRegistrationDefinition {
   /** The properties of the registration definition associated with the registration assignment. */
@@ -227,6 +333,11 @@ export interface RegistrationAssignmentPropertiesRegistrationDefinition {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: RegistrationAssignmentPropertiesRegistrationDefinitionSystemData;
 }
+const RegistrationAssignmentPropertiesRegistrationDefinition = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<RegistrationAssignmentPropertiesRegistrationDefinition>;
+
 /** The properties of the registration assignment. */
 export interface RegistrationAssignmentProperties {
   /** The fully qualified path of the registration definition. */
@@ -236,18 +347,27 @@ export interface RegistrationAssignmentProperties {
   /** The registration definition associated with the registration assignment. */
   registrationDefinition?: RegistrationAssignmentPropertiesRegistrationDefinition;
 }
+const RegistrationAssignmentProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<RegistrationAssignmentProperties>;
+
 /** The type of identity that created the resource. */
 export type RegistrationAssignmentSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const RegistrationAssignmentSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type RegistrationAssignmentSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const RegistrationAssignmentSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface RegistrationAssignmentSystemData {
   /** The identity that created the resource. */
@@ -263,6 +383,11 @@ export interface RegistrationAssignmentSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const RegistrationAssignmentSystemData = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<RegistrationAssignmentSystemData>;
+
 /** The registration assignment. */
 export interface RegistrationAssignment {
   /** The properties of a registration assignment. */
@@ -276,17 +401,35 @@ export interface RegistrationAssignment {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: RegistrationAssignmentSystemData;
 }
+const RegistrationAssignment = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<RegistrationAssignment>;
+
 export interface GetRegistrationDefinitionRequest {
   /** The scope of the resource. */
   scope: string;
   /** The GUID of the registration definition. */
   registrationDefinitionId: string;
 }
+const GetRegistrationDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetRegistrationDefinitionRequest>;
+
 /** The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant. */
 export type RegistrationDefinitionPropertiesAuthorizationsList = Array<Authorization>;
+const RegistrationDefinitionPropertiesAuthorizationsList =
+  MarketplaceRegistrationDefinitionPropertiesAuthorizationsList as any as S.Schema<RegistrationDefinitionPropertiesAuthorizationsList>;
+
 /** The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant. */
 export type RegistrationDefinitionPropertiesEligibleAuthorizationsList =
   Array<EligibleAuthorization>;
+const RegistrationDefinitionPropertiesEligibleAuthorizationsList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<RegistrationDefinitionPropertiesEligibleAuthorizationsList>;
+
 /** The current provisioning state of the registration definition. */
 export type RegistrationDefinitionPropertiesProvisioningState =
   | "NotSpecified"
@@ -301,6 +444,8 @@ export type RegistrationDefinitionPropertiesProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Updating";
+const RegistrationDefinitionPropertiesProvisioningState = S.String;
+
 /** The properties of a registration definition. */
 export interface RegistrationDefinitionProperties {
   /** The description of the registration definition. */
@@ -322,6 +467,11 @@ export interface RegistrationDefinitionProperties {
   /** The name of the managedBy tenant. */
   managedByTenantName?: string;
 }
+const RegistrationDefinitionProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<RegistrationDefinitionProperties>;
+
 /** The type of identity that created the resource. */
 export type RegistrationDefinitionSystemDataCreatedByType =
   | "User"
@@ -349,6 +499,9 @@ export interface RegistrationDefinitionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const RegistrationDefinitionSystemData =
+  RegistrationAssignmentSystemData as any as S.Schema<RegistrationDefinitionSystemData>;
+
 /** The registration definition. */
 export interface RegistrationDefinition {
   /** The properties of a registration definition. */
@@ -364,15 +517,30 @@ export interface RegistrationDefinition {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: RegistrationDefinitionSystemData;
 }
+const RegistrationDefinition = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<RegistrationDefinition>;
+
 export interface ListMarketplaceRegistrationDefinitionsRequest {
   /** The scope of the resource. */
   scope: string;
   /** The filter query parameter to filter managed services resources by. */
   _filter?: string;
 }
+const ListMarketplaceRegistrationDefinitionsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ListMarketplaceRegistrationDefinitionsRequest>;
+
 /** The list of marketplace registration definitions. */
 export type MarketplaceRegistrationDefinitionListValueList =
   Array<MarketplaceRegistrationDefinition>;
+const MarketplaceRegistrationDefinitionListValueList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<MarketplaceRegistrationDefinitionListValueList>;
+
 /** The list of marketplace registration definitions. */
 export interface MarketplaceRegistrationDefinitionList {
   /** The list of marketplace registration definitions. */
@@ -380,11 +548,26 @@ export interface MarketplaceRegistrationDefinitionList {
   /** The link to the next page of marketplace registration definitions. */
   nextLink?: string;
 }
+const MarketplaceRegistrationDefinitionList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<MarketplaceRegistrationDefinitionList>;
+
 export interface ListMarketplaceRegistrationDefinitionsWithoutScopeRequest {
   /** The filter query parameter to filter managed services resources by. */
   _filter?: string;
 }
+const ListMarketplaceRegistrationDefinitionsWithoutScopeRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ListMarketplaceRegistrationDefinitionsWithoutScopeRequest>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** The service provider. */
@@ -396,6 +579,8 @@ export interface OperationDisplay {
   /** The description of the operation. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<OperationDisplay>;
+
 /** The object that describes a single Microsoft.ManagedServices operation. */
 export interface Operation {
   /** The operation name with the format: {provider}/{resource}/{operation} */
@@ -403,17 +588,31 @@ export interface Operation {
   /** The object that represents the operation. */
   display?: OperationDisplay;
 }
+const Operation = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Operation>;
+
 /** The list of Microsoft.ManagedServices operations. */
 export type OperationListValueList = Array<Operation>;
+const OperationListValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<OperationListValueList>;
+
 /** The list of the operations. */
 export interface OperationList {
   /** The list of Microsoft.ManagedServices operations. */
   value?: OperationListValueList;
 }
+const OperationList = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<OperationList>;
+
 export interface ListOperationsWithScopeRequest {
   /** The scope of the resource. */
   scope: string;
 }
+const ListOperationsWithScopeRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListOperationsWithScopeRequest>;
+
 export interface ListRegistrationAssignmentsRequest {
   /** The scope of the resource. */
   scope: string;
@@ -422,8 +621,18 @@ export interface ListRegistrationAssignmentsRequest {
   /** The filter query parameter to filter managed services resources by. */
   _filter?: string;
 }
+const ListRegistrationAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListRegistrationAssignmentsRequest>;
+
 /** The list of registration assignments. */
 export type RegistrationAssignmentListValueList = Array<RegistrationAssignment>;
+const RegistrationAssignmentListValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<RegistrationAssignmentListValueList>;
+
 /** The list of registration assignments. */
 export interface RegistrationAssignmentList {
   /** The list of registration assignments. */
@@ -431,14 +640,29 @@ export interface RegistrationAssignmentList {
   /** The link to the next page of registration assignments. */
   nextLink?: string;
 }
+const RegistrationAssignmentList = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<RegistrationAssignmentList>;
+
 export interface ListRegistrationDefinitionsRequest {
   /** The scope of the resource. */
   scope: string;
   /** The filter query parameter to filter managed services resources by. */
   _filter?: string;
 }
+const ListRegistrationDefinitionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ListRegistrationDefinitionsRequest>;
+
 /** The list of registration definitions. */
 export type RegistrationDefinitionListValueList = Array<RegistrationDefinition>;
+const RegistrationDefinitionListValueList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<RegistrationDefinitionListValueList>;
+
 /** The list of registration definitions. */
 export interface RegistrationDefinitionList {
   /** The list of registration definitions. */
@@ -446,11 +670,21 @@ export interface RegistrationDefinitionList {
   /** The link to the next page of registration definitions. */
   nextLink?: string;
 }
+const RegistrationDefinitionList = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<RegistrationDefinitionList>;
+
 /** The properties of the registration assignment. */
 export interface RegistrationAssignmentPropertiesInput {
   /** The fully qualified path of the registration definition. */
   registrationDefinitionId: string;
 }
+const RegistrationAssignmentPropertiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<RegistrationAssignmentPropertiesInput>;
+
 export interface RegistrationAssignmentsCreateOrUpdateRequest {
   /** The scope of the resource. */
   scope: string;
@@ -459,11 +693,22 @@ export interface RegistrationAssignmentsCreateOrUpdateRequest {
   /** The properties of a registration assignment. */
   properties?: RegistrationAssignmentPropertiesInput;
 }
+const RegistrationAssignmentsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<RegistrationAssignmentsCreateOrUpdateRequest>;
+
 /** The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant. */
 export type RegistrationDefinitionPropertiesInputAuthorizationsList = Array<Authorization>;
+const RegistrationDefinitionPropertiesInputAuthorizationsList =
+  MarketplaceRegistrationDefinitionPropertiesAuthorizationsList as any as S.Schema<RegistrationDefinitionPropertiesInputAuthorizationsList>;
+
 /** The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant. */
 export type RegistrationDefinitionPropertiesInputEligibleAuthorizationsList =
   Array<EligibleAuthorization>;
+const RegistrationDefinitionPropertiesInputEligibleAuthorizationsList =
+  MarketplaceRegistrationDefinitionPropertiesEligibleAuthorizationsList as any as S.Schema<RegistrationDefinitionPropertiesInputEligibleAuthorizationsList>;
+
 /** The properties of a registration definition. */
 export interface RegistrationDefinitionPropertiesInput {
   /** The description of the registration definition. */
@@ -477,6 +722,11 @@ export interface RegistrationDefinitionPropertiesInput {
   /** The identifier of the managedBy tenant. */
   managedByTenantId: string;
 }
+const RegistrationDefinitionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<RegistrationDefinitionPropertiesInput>;
+
 export interface RegistrationDefinitionsCreateOrUpdateRequest {
   /** The scope of the resource. */
   scope: string;
@@ -487,6 +737,11 @@ export interface RegistrationDefinitionsCreateOrUpdateRequest {
   /** The details for the Managed Services offer's plan in Azure Marketplace. */
   plan?: Plan;
 }
+const RegistrationDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<RegistrationDefinitionsCreateOrUpdateRequest>;
+
 export type DeleteRegistrationAssignmentError = AzureOpError;
 /** Deletes the specified registration assignment. */
 export const DeleteRegistrationAssignment: API.OperationMethod<
@@ -495,8 +750,8 @@ export const DeleteRegistrationAssignment: API.OperationMethod<
   DeleteRegistrationAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeleteRegistrationAssignmentRequest>,
-  output: __S(1) as any as S.Schema<DeleteRegistrationAssignmentResponse>,
+  input: DeleteRegistrationAssignmentRequest,
+  output: DeleteRegistrationAssignmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -510,8 +765,8 @@ export const DeleteRegistrationDefinition: API.OperationMethod<
   DeleteRegistrationDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteRegistrationDefinitionRequest>,
-  output: __S(1) as any as S.Schema<DeleteRegistrationDefinitionResponse>,
+  input: DeleteRegistrationDefinitionRequest,
+  output: DeleteRegistrationDefinitionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -525,8 +780,8 @@ export const GetMarketplaceRegistrationDefinition: API.OperationMethod<
   GetMarketplaceRegistrationDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<GetMarketplaceRegistrationDefinitionRequest>,
-  output: __S(14) as any as S.Schema<MarketplaceRegistrationDefinition>,
+  input: GetMarketplaceRegistrationDefinitionRequest,
+  output: MarketplaceRegistrationDefinition,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -540,8 +795,8 @@ export const GetMarketplaceRegistrationDefinitionsWithoutScope: API.OperationMet
   GetMarketplaceRegistrationDefinitionsWithoutScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<GetMarketplaceRegistrationDefinitionsWithoutScopeRequest>,
-  output: __S(14) as any as S.Schema<MarketplaceRegistrationDefinition>,
+  input: GetMarketplaceRegistrationDefinitionsWithoutScopeRequest,
+  output: MarketplaceRegistrationDefinition,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -555,8 +810,8 @@ export const GetRegistrationAssignment: API.OperationMethod<
   GetRegistrationAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetRegistrationAssignmentRequest>,
-  output: __S(23) as any as S.Schema<RegistrationAssignment>,
+  input: GetRegistrationAssignmentRequest,
+  output: RegistrationAssignment,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -570,8 +825,8 @@ export const GetRegistrationDefinition: API.OperationMethod<
   GetRegistrationDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetRegistrationDefinitionRequest>,
-  output: __S(27) as any as S.Schema<RegistrationDefinition>,
+  input: GetRegistrationDefinitionRequest,
+  output: RegistrationDefinition,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -585,8 +840,8 @@ export const ListMarketplaceRegistrationDefinitions: API.OperationMethod<
   ListMarketplaceRegistrationDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<ListMarketplaceRegistrationDefinitionsRequest>,
-  output: __S(30) as any as S.Schema<MarketplaceRegistrationDefinitionList>,
+  input: ListMarketplaceRegistrationDefinitionsRequest,
+  output: MarketplaceRegistrationDefinitionList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -600,8 +855,8 @@ export const ListMarketplaceRegistrationDefinitionsWithoutScope: API.OperationMe
   ListMarketplaceRegistrationDefinitionsWithoutScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<ListMarketplaceRegistrationDefinitionsWithoutScopeRequest>,
-  output: __S(30) as any as S.Schema<MarketplaceRegistrationDefinitionList>,
+  input: ListMarketplaceRegistrationDefinitionsWithoutScopeRequest,
+  output: MarketplaceRegistrationDefinitionList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -615,8 +870,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<ListOperationsRequest>,
-  output: __S(36) as any as S.Schema<OperationList>,
+  input: ListOperationsRequest,
+  output: OperationList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -630,8 +885,8 @@ export const ListOperationsWithScope: API.OperationMethod<
   ListOperationsWithScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<ListOperationsWithScopeRequest>,
-  output: __S(36) as any as S.Schema<OperationList>,
+  input: ListOperationsWithScopeRequest,
+  output: OperationList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -645,8 +900,8 @@ export const ListRegistrationAssignments: API.OperationMethod<
   ListRegistrationAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<ListRegistrationAssignmentsRequest>,
-  output: __S(40) as any as S.Schema<RegistrationAssignmentList>,
+  input: ListRegistrationAssignmentsRequest,
+  output: RegistrationAssignmentList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -660,8 +915,8 @@ export const ListRegistrationDefinitions: API.OperationMethod<
   ListRegistrationDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<ListRegistrationDefinitionsRequest>,
-  output: __S(43) as any as S.Schema<RegistrationDefinitionList>,
+  input: ListRegistrationDefinitionsRequest,
+  output: RegistrationDefinitionList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -675,8 +930,8 @@ export const RegistrationAssignmentsCreateOrUpdate: API.OperationMethod<
   RegistrationAssignmentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<RegistrationAssignmentsCreateOrUpdateRequest>,
-  output: __S(23) as any as S.Schema<RegistrationAssignment>,
+  input: RegistrationAssignmentsCreateOrUpdateRequest,
+  output: RegistrationAssignment,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -690,8 +945,8 @@ export const RegistrationDefinitionsCreateOrUpdate: API.OperationMethod<
   RegistrationDefinitionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<RegistrationDefinitionsCreateOrUpdateRequest>,
-  output: __S(27) as any as S.Schema<RegistrationDefinition>,
+  input: RegistrationDefinitionsCreateOrUpdateRequest,
+  output: RegistrationDefinition,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -760,11 +1015,11 @@ function __c0(j: number): any {
           principalId: S.String,
           principalIdDisplayName: S.optional(S.String),
           roleDefinitionId: S.String,
-          delegatedRoleDefinitionIds: S.optional(__S(4)),
+          delegatedRoleDefinitionIds: S.optional(AuthorizationDelegatedRoleDefinitionIdsList),
         }),
       ).annotate({ identifier: "Authorization" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(Authorization);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -777,13 +1032,13 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(EligibleApprover);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          multiFactorAuthProvider: S.String,
+          multiFactorAuthProvider: JustInTimeAccessPolicyMultiFactorAuthProvider,
           maximumActivationDuration: S.optional(S.String),
-          managedByTenantApprovers: S.optional(__S(8)),
+          managedByTenantApprovers: S.optional(JustInTimeAccessPolicyManagedByTenantApproversList),
         }),
       ).annotate({ identifier: "JustInTimeAccessPolicy" });
     case 2:
@@ -792,17 +1047,19 @@ function __c1(j: number): any {
           principalId: S.String,
           principalIdDisplayName: S.optional(S.String),
           roleDefinitionId: S.String,
-          justInTimeAccessPolicy: S.optional(__S(9)),
+          justInTimeAccessPolicy: S.optional(JustInTimeAccessPolicy),
         }),
       ).annotate({ identifier: "EligibleAuthorization" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(EligibleAuthorization);
     case 4:
       return S.suspend(() =>
         S.Struct({
           managedByTenantId: S.String,
-          authorizations: __S(6),
-          eligibleAuthorizations: S.optional(__S(11)),
+          authorizations: MarketplaceRegistrationDefinitionPropertiesAuthorizationsList,
+          eligibleAuthorizations: S.optional(
+            MarketplaceRegistrationDefinitionPropertiesEligibleAuthorizationsList,
+          ),
           offerDisplayName: S.optional(S.String),
           publisherDisplayName: S.optional(S.String),
           planDisplayName: S.optional(S.String),
@@ -822,8 +1079,8 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(12)),
-          plan: S.optional(__S(13)),
+          properties: S.optional(MarketplaceRegistrationDefinitionProperties),
+          plan: S.optional(Plan),
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
@@ -870,15 +1127,21 @@ function __c2(j: number): any {
         identifier: "GetRegistrationAssignmentRequest",
       });
     case 1:
-      return S.Array(__S(5));
+      return S.Array(Authorization);
     case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          authorizations: S.optional(__S(17)),
-          eligibleAuthorizations: S.optional(__S(11)),
+          authorizations: S.optional(
+            RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesAuthorizationsList,
+          ),
+          eligibleAuthorizations: S.optional(
+            RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesEligibleAuthorizationsList,
+          ),
           registrationDefinitionName: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(
+            RegistrationAssignmentPropertiesRegistrationDefinitionPropertiesProvisioningState,
+          ),
           manageeTenantId: S.optional(S.String),
           manageeTenantName: S.optional(S.String),
           managedByTenantId: S.optional(S.String),
@@ -891,10 +1154,14 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(
+            RegistrationAssignmentPropertiesRegistrationDefinitionSystemDataCreatedByType,
+          ),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(
+            RegistrationAssignmentPropertiesRegistrationDefinitionSystemDataLastModifiedByType,
+          ),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -903,12 +1170,12 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(18)),
-          plan: S.optional(__S(13)),
+          properties: S.optional(RegistrationAssignmentPropertiesRegistrationDefinitionProperties),
+          plan: S.optional(Plan),
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(__S(19)),
+          systemData: S.optional(RegistrationAssignmentPropertiesRegistrationDefinitionSystemData),
         }),
       ).annotate({
         identifier: "RegistrationAssignmentPropertiesRegistrationDefinition",
@@ -917,8 +1184,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           registrationDefinitionId: S.String,
-          provisioningState: S.optional(S.String),
-          registrationDefinition: S.optional(__S(20)),
+          provisioningState: S.optional(RegistrationAssignmentPropertiesProvisioningState),
+          registrationDefinition: S.optional(
+            RegistrationAssignmentPropertiesRegistrationDefinition,
+          ),
         }),
       ).annotate({
         identifier: "RegistrationAssignmentProperties",
@@ -927,10 +1196,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(RegistrationAssignmentSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(RegistrationAssignmentSystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -939,11 +1208,11 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(21)),
+          properties: S.optional(RegistrationAssignmentProperties),
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(__S(22)),
+          systemData: S.optional(RegistrationAssignmentSystemData),
         }),
       ).annotate({ identifier: "RegistrationAssignment" });
   }
@@ -967,16 +1236,18 @@ function __c3(j: number): any {
         identifier: "GetRegistrationDefinitionRequest",
       });
     case 1:
-      return S.Array(__S(10));
+      return S.Array(EligibleAuthorization);
     case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          authorizations: __S(6),
-          eligibleAuthorizations: S.optional(__S(25)),
+          authorizations: RegistrationDefinitionPropertiesAuthorizationsList,
+          eligibleAuthorizations: S.optional(
+            RegistrationDefinitionPropertiesEligibleAuthorizationsList,
+          ),
           registrationDefinitionName: S.optional(S.String),
           managedByTenantId: S.String,
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(RegistrationDefinitionPropertiesProvisioningState),
           manageeTenantId: S.optional(S.String),
           manageeTenantName: S.optional(S.String),
           managedByTenantName: S.optional(S.String),
@@ -987,12 +1258,12 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(26)),
-          plan: S.optional(__S(13)),
+          properties: S.optional(RegistrationDefinitionProperties),
+          plan: S.optional(Plan),
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(__S(22)),
+          systemData: S.optional(RegistrationDefinitionSystemData),
         }),
       ).annotate({ identifier: "RegistrationDefinition" });
     case 4:
@@ -1012,11 +1283,11 @@ function __c3(j: number): any {
         identifier: "ListMarketplaceRegistrationDefinitionsRequest",
       });
     case 5:
-      return S.Array(__S(14));
+      return S.Array(MarketplaceRegistrationDefinition);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(29)),
+          value: S.optional(MarketplaceRegistrationDefinitionListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1065,15 +1336,15 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(33)),
+          display: S.optional(OperationDisplay),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(Operation);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(35)),
+          value: S.optional(OperationListValueList),
         }),
       ).annotate({ identifier: "OperationList" });
     case 5:
@@ -1111,7 +1382,7 @@ function __c4(j: number): any {
         identifier: "ListRegistrationAssignmentsRequest",
       });
     case 7:
-      return S.Array(__S(23));
+      return S.Array(RegistrationAssignment);
   }
 }
 function __c5(j: number): any {
@@ -1119,7 +1390,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(39)),
+          value: S.optional(RegistrationAssignmentListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1142,11 +1413,11 @@ function __c5(j: number): any {
         identifier: "ListRegistrationDefinitionsRequest",
       });
     case 2:
-      return S.Array(__S(27));
+      return S.Array(RegistrationDefinition);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(42)),
+          value: S.optional(RegistrationDefinitionListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1165,7 +1436,7 @@ function __c5(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           registrationAssignmentId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(44)),
+          properties: S.optional(RegistrationAssignmentPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1181,8 +1452,10 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          authorizations: __S(6),
-          eligibleAuthorizations: S.optional(__S(11)),
+          authorizations: RegistrationDefinitionPropertiesInputAuthorizationsList,
+          eligibleAuthorizations: S.optional(
+            RegistrationDefinitionPropertiesInputEligibleAuthorizationsList,
+          ),
           registrationDefinitionName: S.optional(S.String),
           managedByTenantId: S.String,
         }),
@@ -1194,8 +1467,8 @@ function __c5(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           registrationDefinitionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(46)),
-          plan: S.optional(__S(13)),
+          properties: S.optional(RegistrationDefinitionPropertiesInput),
+          plan: S.optional(Plan),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1207,26 +1480,5 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "RegistrationDefinitionsCreateOrUpdateRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

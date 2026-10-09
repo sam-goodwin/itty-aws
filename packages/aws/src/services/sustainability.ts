@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Sustainability",
   serviceShapeName: "AwsSustainabilityApiService",
@@ -125,14 +123,21 @@ export interface TimePeriod {
   Start: Date;
   End: Date;
 }
+const TimePeriod = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<TimePeriod>;
 export type Dimension = "USAGE_ACCOUNT_ID" | "REGION" | "SERVICE" | (string & {});
+const Dimension = S.String;
+
 export type DimensionList = Dimension[];
+const DimensionList = /*@__PURE__*/ __L.at(__c0, 1);
 export type DimensionValue = string;
 export type DimensionValueList = string[];
+const DimensionValueList = /*@__PURE__*/ __L.at(__c0, 2);
 export type DimensionListMap = { [key in Dimension]?: string[] };
+const DimensionListMap = /*@__PURE__*/ __L.at(__c0, 3);
 export interface FilterExpression {
   Dimensions?: { [key: string]: string[] | undefined };
 }
+const FilterExpression = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<FilterExpression>;
 export type EmissionsType =
   | "TOTAL_LBM_CARBON_EMISSIONS"
   | "TOTAL_MBM_CARBON_EMISSIONS"
@@ -142,7 +147,10 @@ export type EmissionsType =
   | "TOTAL_SCOPE_3_LBM_CARBON_EMISSIONS"
   | "TOTAL_SCOPE_3_MBM_CARBON_EMISSIONS"
   | (string & {});
+const EmissionsType = S.String;
+
 export type EmissionsTypeList = EmissionsType[];
+const EmissionsTypeList = DimensionList as any as S.Schema<EmissionsTypeList>;
 export type TimeGranularity =
   | "YEARLY_CALENDAR"
   | "YEARLY_FISCAL"
@@ -150,10 +158,16 @@ export type TimeGranularity =
   | "QUARTERLY_FISCAL"
   | "MONTHLY"
   | (string & {});
+const TimeGranularity = S.String;
+
 export type Month = number;
 export interface GranularityConfiguration {
   FiscalYearStartMonth?: number;
 }
+const GranularityConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GranularityConfiguration>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface GetEstimatedCarbonEmissionsRequest {
@@ -166,42 +180,71 @@ export interface GetEstimatedCarbonEmissionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const GetEstimatedCarbonEmissionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetEstimatedCarbonEmissionsRequest>;
 export type DimensionsMap = { [key in Dimension]?: string };
+const DimensionsMap = /*@__PURE__*/ __L.at(__c0, 7);
 export type ModelVersion = string;
 export type EmissionsUnit = "MTCO2e" | (string & {});
+const EmissionsUnit = S.String;
+
 export interface Emissions {
   Value: number;
   Unit: EmissionsUnit;
 }
+const Emissions = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Emissions>;
 export type EmissionsMap = { [key in EmissionsType]?: Emissions };
+const EmissionsMap = /*@__PURE__*/ __L.at(__c1, 1);
 export interface EstimatedCarbonEmissions {
   TimePeriod: TimePeriod;
   DimensionsValues: { [key: string]: string | undefined };
   ModelVersion: string;
   EmissionsValues: { [key: string]: Emissions | undefined };
 }
+const EstimatedCarbonEmissions = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<EstimatedCarbonEmissions>;
 export type EstimatedCarbonEmissionsList = EstimatedCarbonEmissions[];
+const EstimatedCarbonEmissionsList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface GetEstimatedCarbonEmissionsResponse {
   Results: EstimatedCarbonEmissions[];
   NextToken?: string;
 }
+const GetEstimatedCarbonEmissionsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetEstimatedCarbonEmissionsResponse>;
 export interface GetEstimatedCarbonEmissionsDimensionValuesRequest {
   TimePeriod: TimePeriod;
   Dimensions: Dimension[];
   MaxResults?: number;
   NextToken?: string;
 }
+const GetEstimatedCarbonEmissionsDimensionValuesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetEstimatedCarbonEmissionsDimensionValuesRequest>;
 export interface DimensionEntry {
   Dimension: Dimension;
   Value: string;
 }
+const DimensionEntry = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<DimensionEntry>;
 export type DimensionEntryList = DimensionEntry[];
+const DimensionEntryList = /*@__PURE__*/ __L.at(__c1, 7);
 export interface GetEstimatedCarbonEmissionsDimensionValuesResponse {
   Results?: DimensionEntry[];
   NextToken?: string;
 }
+const GetEstimatedCarbonEmissionsDimensionValuesResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetEstimatedCarbonEmissionsDimensionValuesResponse>;
 export type WaterAllocationType = "TOTAL_WATER_WITHDRAWALS" | (string & {});
 export type WaterAllocationTypeList = WaterAllocationType[];
+const WaterAllocationTypeList = DimensionList as any as S.Schema<WaterAllocationTypeList>;
 export interface GetEstimatedWaterAllocationRequest {
   TimePeriod: TimePeriod;
   GroupBy?: Dimension[];
@@ -211,33 +254,55 @@ export interface GetEstimatedWaterAllocationRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const GetEstimatedWaterAllocationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetEstimatedWaterAllocationRequest>;
 export type WaterAllocationUnit = "m3" | (string & {});
 export interface WaterAllocation {
   Value: number;
   Unit: WaterAllocationUnit;
 }
 export type WaterAllocationMap = { [key in WaterAllocationType]?: WaterAllocation };
+const WaterAllocationMap = EmissionsMap as any as S.Schema<WaterAllocationMap>;
 export interface EstimatedWaterAllocation {
   TimePeriod: TimePeriod;
   DimensionsValues: { [key: string]: string | undefined };
   ModelVersion: string;
   AllocationValues: { [key: string]: WaterAllocation | undefined };
 }
+const EstimatedWaterAllocation = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<EstimatedWaterAllocation>;
 export type EstimatedWaterAllocationList = EstimatedWaterAllocation[];
+const EstimatedWaterAllocationList = /*@__PURE__*/ __L.at(__c2, 3);
 export interface GetEstimatedWaterAllocationResponse {
   Results: EstimatedWaterAllocation[];
   NextToken?: string;
 }
+const GetEstimatedWaterAllocationResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetEstimatedWaterAllocationResponse>;
 export interface GetEstimatedWaterAllocationDimensionValuesRequest {
   TimePeriod: TimePeriod;
   Dimensions: Dimension[];
   MaxResults?: number;
   NextToken?: string;
 }
+const GetEstimatedWaterAllocationDimensionValuesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetEstimatedWaterAllocationDimensionValuesRequest>;
 export interface GetEstimatedWaterAllocationDimensionValuesResponse {
   Results: DimensionEntry[];
   NextToken?: string;
 }
+const GetEstimatedWaterAllocationDimensionValuesResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetEstimatedWaterAllocationDimensionValuesResponse>;
 export type GetEstimatedCarbonEmissionsError =
   | AccessDeniedException
   | InternalServerException
@@ -254,8 +319,8 @@ export const getEstimatedCarbonEmissions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EstimatedCarbonEmissions
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(6) as any as S.Schema<GetEstimatedCarbonEmissionsRequest>,
-  output: __S(12) as any as S.Schema<GetEstimatedCarbonEmissionsResponse>,
+  input: GetEstimatedCarbonEmissionsRequest,
+  output: GetEstimatedCarbonEmissionsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -289,8 +354,8 @@ export const getEstimatedCarbonEmissionsDimensionValues: API.PaginatedOperationM
   Credentials | HttpClient.HttpClient,
   DimensionEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(13) as any as S.Schema<GetEstimatedCarbonEmissionsDimensionValuesRequest>,
-  output: __S(16) as any as S.Schema<GetEstimatedCarbonEmissionsDimensionValuesResponse>,
+  input: GetEstimatedCarbonEmissionsDimensionValuesRequest,
+  output: GetEstimatedCarbonEmissionsDimensionValuesResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -324,8 +389,8 @@ export const getEstimatedWaterAllocation: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EstimatedWaterAllocation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(17) as any as S.Schema<GetEstimatedWaterAllocationRequest>,
-  output: __S(20) as any as S.Schema<GetEstimatedWaterAllocationResponse>,
+  input: GetEstimatedWaterAllocationRequest,
+  output: GetEstimatedWaterAllocationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -359,8 +424,8 @@ export const getEstimatedWaterAllocationDimensionValues: API.PaginatedOperationM
   Credentials | HttpClient.HttpClient,
   DimensionEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(21) as any as S.Schema<GetEstimatedWaterAllocationDimensionValuesRequest>,
-  output: __S(22) as any as S.Schema<GetEstimatedWaterAllocationDimensionValuesResponse>,
+  input: GetEstimatedWaterAllocationDimensionValuesRequest,
+  output: GetEstimatedWaterAllocationDimensionValuesResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -389,13 +454,13 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "TimePeriod" });
     case 1:
-      return S.Array(S.String);
+      return S.Array(Dimension);
     case 2:
       return S.Array(S.String);
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(2).pipe(S.optional));
+      return S.Record(Dimension, /*@__PURE__*/ DimensionValueList.pipe(S.optional));
     case 4:
-      return S.suspend(() => S.Struct({ Dimensions: S.optional(__S(3)) })).annotate({
+      return S.suspend(() => S.Struct({ Dimensions: S.optional(DimensionListMap) })).annotate({
         identifier: "FilterExpression",
       });
     case 5:
@@ -405,12 +470,12 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          TimePeriod: __S(0),
-          GroupBy: S.optional(__S(1)),
-          FilterBy: S.optional(__S(4)),
-          EmissionsTypes: S.optional(__S(1)),
-          Granularity: S.optional(S.String),
-          GranularityConfiguration: S.optional(__S(5)),
+          TimePeriod: TimePeriod,
+          GroupBy: S.optional(DimensionList),
+          FilterBy: S.optional(FilterExpression),
+          EmissionsTypes: S.optional(EmissionsTypeList),
+          Granularity: S.optional(TimeGranularity),
+          GranularityConfiguration: S.optional(GranularityConfiguration),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -427,39 +492,39 @@ function __c0(j: number): any {
         identifier: "GetEstimatedCarbonEmissionsRequest",
       });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.Record(Dimension, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Value: S.Number, Unit: S.String })).annotate({
+      return S.suspend(() => S.Struct({ Value: S.Number, Unit: EmissionsUnit })).annotate({
         identifier: "Emissions",
       });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(8).pipe(S.optional));
+      return S.Record(EmissionsType, /*@__PURE__*/ Emissions.pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          TimePeriod: __S(0),
-          DimensionsValues: __S(7),
+          TimePeriod: TimePeriod,
+          DimensionsValues: DimensionsMap,
           ModelVersion: S.String,
-          EmissionsValues: __S(9),
+          EmissionsValues: EmissionsMap,
         }),
       ).annotate({ identifier: "EstimatedCarbonEmissions" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(EstimatedCarbonEmissions);
     case 4:
       return S.suspend(() =>
-        S.Struct({ Results: __S(11), NextToken: S.optional(S.String) }),
+        S.Struct({ Results: EstimatedCarbonEmissionsList, NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "GetEstimatedCarbonEmissionsResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          TimePeriod: __S(0),
-          Dimensions: __S(1),
+          TimePeriod: TimePeriod,
+          Dimensions: DimensionList,
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -476,29 +541,29 @@ function __c1(j: number): any {
         identifier: "GetEstimatedCarbonEmissionsDimensionValuesRequest",
       });
     case 6:
-      return S.suspend(() => S.Struct({ Dimension: S.String, Value: S.String })).annotate({
+      return S.suspend(() => S.Struct({ Dimension: Dimension, Value: S.String })).annotate({
         identifier: "DimensionEntry",
       });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(DimensionEntry);
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Results: S.optional(__S(15)), NextToken: S.optional(S.String) }),
+        S.Struct({ Results: S.optional(DimensionEntryList), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "GetEstimatedCarbonEmissionsDimensionValuesResponse",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          TimePeriod: __S(0),
-          GroupBy: S.optional(__S(1)),
-          FilterBy: S.optional(__S(4)),
-          AllocationTypes: S.optional(__S(1)),
-          Granularity: S.optional(S.String),
+          TimePeriod: TimePeriod,
+          GroupBy: S.optional(DimensionList),
+          FilterBy: S.optional(FilterExpression),
+          AllocationTypes: S.optional(WaterAllocationTypeList),
+          Granularity: S.optional(TimeGranularity),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -517,25 +582,25 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          TimePeriod: __S(0),
-          DimensionsValues: __S(7),
+          TimePeriod: TimePeriod,
+          DimensionsValues: DimensionsMap,
           ModelVersion: S.String,
-          AllocationValues: __S(9),
+          AllocationValues: WaterAllocationMap,
         }),
       ).annotate({ identifier: "EstimatedWaterAllocation" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(EstimatedWaterAllocation);
     case 4:
       return S.suspend(() =>
-        S.Struct({ Results: __S(19), NextToken: S.optional(S.String) }),
+        S.Struct({ Results: EstimatedWaterAllocationList, NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "GetEstimatedWaterAllocationResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          TimePeriod: __S(0),
-          Dimensions: __S(1),
+          TimePeriod: TimePeriod,
+          Dimensions: DimensionList,
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -553,24 +618,9 @@ function __c2(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Results: __S(15), NextToken: S.optional(S.String) }),
+        S.Struct({ Results: DimensionEntryList, NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "GetEstimatedWaterAllocationDimensionValuesResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

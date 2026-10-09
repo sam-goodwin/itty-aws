@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -75,14 +73,28 @@ export interface ApplyConversionWorkspaceRequest {
   /** Optional. Fully qualified (Uri) name of the destination connection profile. */
   connectionProfile?: string;
 }
+const ApplyConversionWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ApplyConversionWorkspaceRequest>;
+
 export interface ApplyProjectsLocationsConversionWorkspacesRequest {
   /** Required. The name of the conversion workspace resource for which to apply the draft tree. Must be in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}. */
   name: string;
   /** Request body */
   body?: ApplyConversionWorkspaceRequest;
 }
+const ApplyProjectsLocationsConversionWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ApplyProjectsLocationsConversionWorkspacesRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -92,6 +104,8 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
+const Status = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Status>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -105,27 +119,51 @@ export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
+const Operation = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Operation>;
+
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
+const CancelOperationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CancelOperationRequest>;
+
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+
 /** Request message for 'CommitConversionWorkspace' request. */
 export interface CommitConversionWorkspaceRequest {
   /** Optional. Optional name of the commit. */
   commitName?: string;
 }
+const CommitConversionWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CommitConversionWorkspaceRequest>;
+
 export interface CommitProjectsLocationsConversionWorkspacesRequest {
   /** Required. Name of the conversion workspace resource to commit. */
   name: string;
   /** Request body */
   body?: CommitConversionWorkspaceRequest;
 }
+const CommitProjectsLocationsConversionWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CommitProjectsLocationsConversionWorkspacesRequest>;
+
 /** Request message for 'ConvertConversionWorkspace' request. */
 export interface ConvertConversionWorkspaceRequest {
   /** Optional. Filter the entities to convert. Leaving this field empty will convert all of the entities. Supports Google AIP-160 style filtering. */
@@ -135,19 +173,33 @@ export interface ConvertConversionWorkspaceRequest {
   /** Optional. Automatically convert the full entity path for each entity specified by the filter. For example, if the filter specifies a table, that table schema (and database if there is one) will also be converted. */
   convertFullPath?: boolean;
 }
+const ConvertConversionWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ConvertConversionWorkspaceRequest>;
+
 export interface ConvertProjectsLocationsConversionWorkspacesRequest {
   /** Name of the conversion workspace resource to convert in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}. */
   name: string;
   /** Request body */
   body?: ConvertConversionWorkspaceRequest;
 }
+const ConvertProjectsLocationsConversionWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ConvertProjectsLocationsConversionWorkspacesRequest>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<StringMap>;
+
 export type SslConfigTypeEnum =
   | "SSL_TYPE_UNSPECIFIED"
   | "SERVER_ONLY"
   | "SERVER_CLIENT"
   | "REQUIRED"
   | "NONE";
+const SslConfigTypeEnum = S.String;
+
 /** SSL configuration information. */
 export interface SslConfig {
   /** Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' field is mandatory. */
@@ -161,6 +213,8 @@ export interface SslConfig {
   /** Optional. The ssl config type according to 'client_key', 'client_certificate' and 'ca_certificate'. */
   type?: SslConfigTypeEnum | (string & {});
 }
+const SslConfig = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<SslConfig>;
+
 /** Configuration for Oracle Automatic Storage Management (ASM) connection. */
 export interface OracleAsmConfig {
   /** Output only. Indicates whether a new password is included in the request. */
@@ -178,11 +232,15 @@ export interface OracleAsmConfig {
   /** Required. ASM service name for the Oracle ASM connection. */
   asmService?: string;
 }
+const OracleAsmConfig = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<OracleAsmConfig>;
+
 /** Private Connectivity. */
 export interface PrivateConnectivity {
   /** Required. The resource name (URI) of the private connection. */
   privateConnection?: string;
 }
+const PrivateConnectivity = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<PrivateConnectivity>;
+
 /** Static IP address connectivity configured on service project. */
 export type StaticServiceIpConnectivity = CancelOperationRequest;
 /** Forward SSH Tunnel connectivity. */
@@ -198,6 +256,11 @@ export interface ForwardSshTunnelConnectivity {
   /** Required. Hostname for the SSH tunnel. */
   hostname?: string;
 }
+const ForwardSshTunnelConnectivity = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ForwardSshTunnelConnectivity>;
+
 /** Specifies connection parameters required specifically for Oracle databases. */
 export interface OracleConnectionProfile {
   /** Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service. */
@@ -223,15 +286,27 @@ export interface OracleConnectionProfile {
   /** SSL configuration for the connection to the source Oracle database. * Only `SERVER_ONLY` configuration is supported for Oracle SSL. * SSL is supported for Oracle versions 12 and above. */
   ssl?: SslConfig;
 }
+const OracleConnectionProfile = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<OracleConnectionProfile>;
+
 export type PostgreSqlConnectionProfileNetworkArchitectureEnum =
   | "NETWORK_ARCHITECTURE_UNSPECIFIED"
   | "NETWORK_ARCHITECTURE_OLD_CSQL_PRODUCER"
   | "NETWORK_ARCHITECTURE_NEW_CSQL_PRODUCER";
+const PostgreSqlConnectionProfileNetworkArchitectureEnum = S.String;
+
 /** [Private Service Connect connectivity](https://cloud.google.com/vpc/docs/private-service-connect#service-attachments) */
 export interface PrivateServiceConnectConnectivity {
   /** Required. A service attachment that exposes a database, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name} */
   serviceAttachment?: string;
 }
+const PrivateServiceConnectConnectivity = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<PrivateServiceConnectConnectivity>;
+
 /** The source database will allow incoming connections from the public IP of the destination database. You can retrieve the public IP of the Cloud SQL instance from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required. */
 export type StaticIpConnectivity = CancelOperationRequest;
 /** Specifies connection parameters required specifically for PostgreSQL databases. */
@@ -267,6 +342,11 @@ export interface PostgreSqlConnectionProfile {
   /** Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service. */
   password?: string;
 }
+const PostgreSqlConnectionProfile = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<PostgreSqlConnectionProfile>;
+
 /** An entry for an Access Control list. */
 export interface SqlAclEntry {
   /** The allowlisted value for the access control list. */
@@ -278,7 +358,11 @@ export interface SqlAclEntry {
   /** A label to identify this entry. */
   label?: string;
 }
+const SqlAclEntry = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<SqlAclEntry>;
+
 export type SqlAclEntryList = Array<SqlAclEntry>;
+const SqlAclEntryList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<SqlAclEntryList>;
+
 /** IP Management configuration. */
 export interface SqlIpConfig {
   /** The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`). */
@@ -292,24 +376,34 @@ export interface SqlIpConfig {
   /** Whether the instance should be assigned an IPv4 address or not. */
   enableIpv4?: boolean;
 }
+const SqlIpConfig = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<SqlIpConfig>;
+
 export type CloudSqlSettingsDataDiskTypeEnum =
   | "SQL_DATA_DISK_TYPE_UNSPECIFIED"
   | "PD_SSD"
   | "PD_HDD"
   | "HYPERDISK_BALANCED";
+const CloudSqlSettingsDataDiskTypeEnum = S.String;
+
 export type CloudSqlSettingsActivationPolicyEnum =
   | "SQL_ACTIVATION_POLICY_UNSPECIFIED"
   | "ALWAYS"
   | "NEVER";
+const CloudSqlSettingsActivationPolicyEnum = S.String;
+
 export type CloudSqlSettingsAvailabilityTypeEnum =
   | "SQL_AVAILABILITY_TYPE_UNSPECIFIED"
   | "ZONAL"
   | "REGIONAL";
+const CloudSqlSettingsAvailabilityTypeEnum = S.String;
+
 /** Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation. */
 export interface DataCacheConfig {
   /** Optional. Whether data cache is enabled for the instance. */
   dataCacheEnabled?: boolean;
 }
+const DataCacheConfig = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DataCacheConfig>;
+
 export type CloudSqlSettingsDatabaseVersionEnum =
   | "SQL_DATABASE_VERSION_UNSPECIFIED"
   | "MYSQL_5_6"
@@ -336,7 +430,11 @@ export type CloudSqlSettingsDatabaseVersionEnum =
   | "POSTGRES_14"
   | "POSTGRES_15"
   | "POSTGRES_16";
+const CloudSqlSettingsDatabaseVersionEnum = S.String;
+
 export type CloudSqlSettingsEditionEnum = "EDITION_UNSPECIFIED" | "ENTERPRISE" | "ENTERPRISE_PLUS";
+const CloudSqlSettingsEditionEnum = S.String;
+
 /** Settings for creating a Cloud SQL database instance. */
 export interface CloudSqlSettings {
   /** [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB. */
@@ -386,6 +484,8 @@ export interface CloudSqlSettings {
   /** Optional. The edition of the given Cloud SQL instance. */
   edition?: CloudSqlSettingsEditionEnum | (string & {});
 }
+const CloudSqlSettings = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<CloudSqlSettings>;
+
 /** Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance. */
 export interface CloudSqlConnectionProfile {
   /** Immutable. Metadata used to create the destination Cloud SQL database. */
@@ -399,7 +499,14 @@ export interface CloudSqlConnectionProfile {
   /** Output only. The Cloud SQL database instance's public IP. */
   publicIp?: string;
 }
+const CloudSqlConnectionProfile = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CloudSqlConnectionProfile>;
+
 export type ConnectionProfileRoleEnum = "ROLE_UNSPECIFIED" | "SOURCE" | "DESTINATION";
+const ConnectionProfileRoleEnum = S.String;
+
 /** The username/password for a database user. Used for specifying initial users at cluster creation time. */
 export interface UserPassword {
   /** Output only. Indicates if the initial_user.password field has been set. */
@@ -409,6 +516,8 @@ export interface UserPassword {
   /** The initial password for the user. */
   password?: string;
 }
+const UserPassword = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<UserPassword>;
+
 export type AlloyDbSettingsDatabaseVersionEnum =
   | "DATABASE_VERSION_UNSPECIFIED"
   | "POSTGRES_14"
@@ -416,11 +525,15 @@ export type AlloyDbSettingsDatabaseVersionEnum =
   | "POSTGRES_16"
   | "POSTGRES_17"
   | "POSTGRES_18";
+const AlloyDbSettingsDatabaseVersionEnum = S.String;
+
 /** EncryptionConfig describes the encryption config of a cluster that is encrypted with a CMEK (customer-managed encryption key). */
 export interface EncryptionConfig {
   /** The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME] */
   kmsKeyName?: string;
 }
+const EncryptionConfig = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<EncryptionConfig>;
+
 /** MachineConfig describes the configuration of a machine. */
 export interface MachineConfig {
   /** The number of CPU's in the VM instance. */
@@ -428,12 +541,21 @@ export interface MachineConfig {
   /** Optional. Machine type of the VM instance. E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd". cpu_count must match the number of vCPUs in the machine type. */
   machineType?: string;
 }
+const MachineConfig = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<MachineConfig>;
+
 /** AuthorizedNetwork contains metadata for an authorized network. */
 export interface AuthorizedNetwork {
   /** Optional. CIDR range for one authorzied network of the instance. */
   cidrRange?: string;
 }
+const AuthorizedNetwork = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<AuthorizedNetwork>;
+
 export type AuthorizedNetworkList = Array<AuthorizedNetwork>;
+const AuthorizedNetworkList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<AuthorizedNetworkList>;
+
 /** Metadata related to instance level network configuration. */
 export interface InstanceNetworkConfig {
   /** Optional. Enabling an outbound public IP address to support a database server sending requests out into the internet. */
@@ -443,7 +565,14 @@ export interface InstanceNetworkConfig {
   /** Optional. Enabling public ip for the instance. */
   enablePublicIp?: boolean;
 }
+const InstanceNetworkConfig = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<InstanceNetworkConfig>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<StringList>;
+
 /** Settings for the cluster's primary instance */
 export interface PrimaryInstanceSettings {
   /** Configuration for the machines that host the underlying database engine. */
@@ -461,6 +590,11 @@ export interface PrimaryInstanceSettings {
   /** Output only. All outbound public IP addresses configured for the instance. */
   outboundPublicIpAddresses?: StringList;
 }
+const PrimaryInstanceSettings = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<PrimaryInstanceSettings>;
+
 /** Settings for creating an AlloyDB cluster. */
 export interface AlloyDbSettings {
   /** Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster. */
@@ -476,6 +610,8 @@ export interface AlloyDbSettings {
   /** Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs. */
   labels?: StringMap;
 }
+const AlloyDbSettings = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<AlloyDbSettings>;
+
 /** Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster. */
 export interface AlloyDbConnectionProfile {
   /** Required. The AlloyDB cluster ID that this connection profile is associated with. */
@@ -483,6 +619,11 @@ export interface AlloyDbConnectionProfile {
   /** Immutable. Metadata used to create the destination AlloyDB cluster. */
   settings?: AlloyDbSettings;
 }
+const AlloyDbConnectionProfile = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<AlloyDbConnectionProfile>;
+
 /** Specifies the backup details in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server. */
 export interface SqlServerBackups {
   /** Optional. Cloud Storage path inside the bucket that stores backups. */
@@ -490,6 +631,8 @@ export interface SqlServerBackups {
   /** Required. The Cloud Storage bucket that stores backups for all replicated databases. */
   gcsBucket?: string;
 }
+const SqlServerBackups = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<SqlServerBackups>;
+
 /** Specifies connection parameters required specifically for SQL Server databases. */
 export interface SqlServerConnectionProfile {
   /** Optional. The project id of the Cloud SQL instance. If not provided, the project id of the connection profile will be used. */
@@ -523,6 +666,11 @@ export interface SqlServerConnectionProfile {
   /** Private Service Connect connectivity. */
   privateServiceConnectConnectivity?: PrivateServiceConnectConnectivity;
 }
+const SqlServerConnectionProfile = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<SqlServerConnectionProfile>;
+
 export type ConnectionProfileStateEnum =
   | "STATE_UNSPECIFIED"
   | "DRAFT"
@@ -532,6 +680,8 @@ export type ConnectionProfileStateEnum =
   | "DELETING"
   | "DELETED"
   | "FAILED";
+const ConnectionProfileStateEnum = S.String;
+
 export type ConnectionProfileProviderEnum =
   | "DATABASE_PROVIDER_UNSPECIFIED"
   | "CLOUDSQL"
@@ -539,6 +689,8 @@ export type ConnectionProfileProviderEnum =
   | "AURORA"
   | "ALLOYDB"
   | "AZURE_DATABASE";
+const ConnectionProfileProviderEnum = S.String;
+
 /** Specifies connection parameters required specifically for MySQL databases. */
 export interface MySqlConnectionProfile {
   /** Required. The network port of the source MySQL database. */
@@ -562,6 +714,11 @@ export interface MySqlConnectionProfile {
   /** Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service. */
   password?: string;
 }
+const MySqlConnectionProfile = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<MySqlConnectionProfile>;
+
 /** A connection profile definition. */
 export interface ConnectionProfile {
   /** Output only. Reserved for future use. */
@@ -599,6 +756,8 @@ export interface ConnectionProfile {
   /** A MySQL database connection profile. */
   mysql?: MySqlConnectionProfile;
 }
+const ConnectionProfile = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<ConnectionProfile>;
+
 export interface CreateProjectsLocationsConnectionProfilesRequest {
   /** Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
   requestId?: string;
@@ -613,12 +772,19 @@ export interface CreateProjectsLocationsConnectionProfilesRequest {
   /** Request body */
   body?: ConnectionProfile;
 }
+const CreateProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<CreateProjectsLocationsConnectionProfilesRequest>;
+
 export type DatabaseEngineInfoEngineEnum =
   | "DATABASE_ENGINE_UNSPECIFIED"
   | "MYSQL"
   | "POSTGRESQL"
   | "SQLSERVER"
   | "ORACLE";
+const DatabaseEngineInfoEngineEnum = S.String;
+
 /** The type and version of a source or destination database. */
 export interface DatabaseEngineInfo {
   /** Required. Engine version, for example "12.c.1". */
@@ -626,6 +792,8 @@ export interface DatabaseEngineInfo {
   /** Required. Engine type. */
   engine?: DatabaseEngineInfoEngineEnum | (string & {});
 }
+const DatabaseEngineInfo = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<DatabaseEngineInfo>;
+
 export type ConversionWorkspaceSourceProviderEnum =
   | "DATABASE_PROVIDER_UNSPECIFIED"
   | "CLOUDSQL"
@@ -633,6 +801,8 @@ export type ConversionWorkspaceSourceProviderEnum =
   | "AURORA"
   | "ALLOYDB"
   | "AZURE_DATABASE";
+const ConversionWorkspaceSourceProviderEnum = S.String;
+
 export type ConversionWorkspaceDestinationProviderEnum =
   | "DATABASE_PROVIDER_UNSPECIFIED"
   | "CLOUDSQL"
@@ -640,6 +810,8 @@ export type ConversionWorkspaceDestinationProviderEnum =
   | "AURORA"
   | "ALLOYDB"
   | "AZURE_DATABASE";
+const ConversionWorkspaceDestinationProviderEnum = S.String;
+
 /** The main conversion workspace resource entity. */
 export interface ConversionWorkspace {
   /** Optional. A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true */
@@ -671,6 +843,8 @@ export interface ConversionWorkspace {
   /** Optional. Output only. The timestamp when the workspace was last converted. */
   latestConvertTime?: string;
 }
+const ConversionWorkspace = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ConversionWorkspace>;
+
 export interface CreateProjectsLocationsConversionWorkspacesRequest {
   /** Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
   requestId?: string;
@@ -681,21 +855,32 @@ export interface CreateProjectsLocationsConversionWorkspacesRequest {
   /** Request body */
   body?: ConversionWorkspace;
 }
+const CreateProjectsLocationsConversionWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateProjectsLocationsConversionWorkspacesRequest>;
+
 /** Options to configure rule type SingleEntityRename. The rule is used to rename an entity. The rule filter field can refer to only one entity. The rule scope can be one of: Database, Schema, Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT, Synonym */
 export interface SingleEntityRename {
   /** Required. The new name of the destination entity */
   newName?: string;
 }
+const SingleEntityRename = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<SingleEntityRename>;
+
 /** Options to configure rule type ConvertROWIDToColumn. The rule is used to add column rowid to destination tables based on an Oracle rowid function/property. The rule filter field can refer to one or more entities. The rule scope can be one of: Table. This rule requires additional filter to be specified beyond the basic rule filter field, which is whether or not to work on tables which already have a primary key defined. */
 export interface ConvertRowIdToColumn {
   /** Required. Only work on tables without primary key defined */
   onlyIfNoPrimaryKey?: boolean;
 }
+const ConvertRowIdToColumn = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ConvertRowIdToColumn>;
+
 /** Options to configure rule type EntityMove. The rule is used to move an entity to a new schema. The rule filter field can refer to one or more entities. The rule scope can be one of: Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT */
 export interface EntityMove {
   /** Required. The new schema */
   newSchema?: string;
 }
+const EntityMove = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<EntityMove>;
+
 /** Filter for text-based data types like varchar. */
 export interface SourceTextFilter {
   /** Optional. The filter will match columns with length smaller than or equal to this number. */
@@ -703,11 +888,15 @@ export interface SourceTextFilter {
   /** Optional. The filter will match columns with length greater than or equal to this number. */
   sourceMinLengthFilter?: string;
 }
+const SourceTextFilter = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<SourceTextFilter>;
+
 export type SourceNumericFilterNumericFilterOptionEnum =
   | "NUMERIC_FILTER_OPTION_UNSPECIFIED"
   | "NUMERIC_FILTER_OPTION_ALL"
   | "NUMERIC_FILTER_OPTION_LIMIT"
   | "NUMERIC_FILTER_OPTION_LIMITLESS";
+const SourceNumericFilterNumericFilterOptionEnum = S.String;
+
 /** Filter for fixed point number data types such as NUMERIC/NUMBER */
 export interface SourceNumericFilter {
   /** Required. Enum to set the option defining the datatypes numeric filter has to be applied to */
@@ -721,12 +910,16 @@ export interface SourceNumericFilter {
   /** Optional. The filter will match columns with precision smaller than or equal to this number. */
   sourceMaxPrecisionFilter?: number;
 }
+const SourceNumericFilter = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<SourceNumericFilter>;
+
 export type IntComparisonFilterValueComparisonEnum =
   | "VALUE_COMPARISON_UNSPECIFIED"
   | "VALUE_COMPARISON_IF_VALUE_SMALLER_THAN"
   | "VALUE_COMPARISON_IF_VALUE_SMALLER_EQUAL_THAN"
   | "VALUE_COMPARISON_IF_VALUE_LARGER_THAN"
   | "VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN";
+const IntComparisonFilterValueComparisonEnum = S.String;
+
 /** Filter based on relation between source value and compare value of type integer in ConditionalColumnSetValue */
 export interface IntComparisonFilter {
   /** Required. Integer compare value to be used */
@@ -734,20 +927,28 @@ export interface IntComparisonFilter {
   /** Required. Relation between source value and compare value */
   valueComparison?: IntComparisonFilterValueComparisonEnum | (string & {});
 }
+const IntComparisonFilter = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<IntComparisonFilter>;
+
 /** Set to a specific value (value is converted to fit the target data type) */
 export interface AssignSpecificValue {
   /** Required. Specific value to be assigned */
   value?: string;
 }
+const AssignSpecificValue = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<AssignSpecificValue>;
+
 /** Apply a hash function on the value. */
 export interface ApplyHash {
   /** Optional. Generate UUID from the data's byte array */
   uuidFromBytes?: Empty;
 }
+const ApplyHash = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ApplyHash>;
+
 export type ValueListFilterValuePresentListEnum =
   | "VALUE_PRESENT_IN_LIST_UNSPECIFIED"
   | "VALUE_PRESENT_IN_LIST_IF_VALUE_LIST"
   | "VALUE_PRESENT_IN_LIST_IF_VALUE_NOT_LIST";
+const ValueListFilterValuePresentListEnum = S.String;
+
 /** A list of values to filter by in ConditionalColumnSetValue */
 export interface ValueListFilter {
   /** Required. Whether to ignore case when filtering by values. Defaults to false */
@@ -757,12 +958,16 @@ export interface ValueListFilter {
   /** Required. Indicates whether the filter matches rows with values that are present in the list or those with values not present in it. */
   valuePresentList?: ValueListFilterValuePresentListEnum | (string & {});
 }
+const ValueListFilter = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ValueListFilter>;
+
 export type DoubleComparisonFilterValueComparisonEnum =
   | "VALUE_COMPARISON_UNSPECIFIED"
   | "VALUE_COMPARISON_IF_VALUE_SMALLER_THAN"
   | "VALUE_COMPARISON_IF_VALUE_SMALLER_EQUAL_THAN"
   | "VALUE_COMPARISON_IF_VALUE_LARGER_THAN"
   | "VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN";
+const DoubleComparisonFilterValueComparisonEnum = S.String;
+
 /** Filter based on relation between source value and compare value of type double in ConditionalColumnSetValue */
 export interface DoubleComparisonFilter {
   /** Required. Double compare value to be used */
@@ -770,11 +975,18 @@ export interface DoubleComparisonFilter {
   /** Required. Relation between source value and compare value */
   valueComparison?: DoubleComparisonFilterValueComparisonEnum | (string & {});
 }
+const DoubleComparisonFilter = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DoubleComparisonFilter>;
+
 /** This allows the data to change scale, for example if the source is 2 digits after the decimal point, specify round to scale value = 2. If for example the value needs to be converted to an integer, use round to scale value = 0. */
 export interface RoundToScale {
   /** Required. Scale value to be used */
   scale?: number;
 }
+const RoundToScale = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<RoundToScale>;
+
 /** Description of data transformation during migration as part of the ConditionalColumnSetValue. */
 export interface ValueTransformation {
   /** Optional. Value is null */
@@ -798,6 +1010,8 @@ export interface ValueTransformation {
   /** Optional. Allows the data to change scale */
   roundScale?: RoundToScale;
 }
+const ValueTransformation = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ValueTransformation>;
+
 /** Options to configure rule type ConditionalColumnSetValue. The rule is used to transform the data which is being replicated/migrated. The rule filter field can refer to one or more entities. The rule scope can be one of: Column. */
 export interface ConditionalColumnSetValue {
   /** Optional. Optional filter on source column length. Used for text based data types like varchar. */
@@ -809,6 +1023,11 @@ export interface ConditionalColumnSetValue {
   /** Optional. Custom engine specific features. */
   customFeatures?: DocumentMap;
 }
+const ConditionalColumnSetValue = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ConditionalColumnSetValue>;
+
 /** Options to configure rule type MultiColumnDatatypeChange. The rule is used to change the data type and associated properties of multiple columns at once. The rule filter field can refer to one or more entities. The rule scope can be one of:Column. This rule requires additional filters to be specified beyond the basic rule filter field, which is the source data type, but the rule supports additional filtering capabilities such as the minimum and maximum field length. All additional filters which are specified are required to be met in order for the rule to be applied (logical AND between the fields). */
 export interface MultiColumnDatatypeChange {
   /** Optional. Column length - e.g. varchar (50) - if not specified and relevant uses the source column length. */
@@ -830,6 +1049,11 @@ export interface MultiColumnDatatypeChange {
   /** Required. New data type. */
   newDataType?: string;
 }
+const MultiColumnDatatypeChange = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<MultiColumnDatatypeChange>;
+
 /** Options to configure rule type SinglePackageChange. The rule is used to alter the sql code for a package entities. The rule filter field can refer to one entity. The rule scope can be: Package */
 export interface SinglePackageChange {
   /** Optional. Sql code for package description */
@@ -837,11 +1061,15 @@ export interface SinglePackageChange {
   /** Optional. Sql code for package body */
   packageBody?: string;
 }
+const SinglePackageChange = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<SinglePackageChange>;
+
 /** Options to configure rule type SourceSqlChange. The rule is used to alter the sql code for database entities. The rule filter field can refer to one entity. The rule scope can be: StoredProcedure, Function, Trigger, View */
 export interface SourceSqlChange {
   /** Required. Sql code for source (stored procedure, function, trigger or view) */
   sqlCode?: string;
 }
+const SourceSqlChange = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<SourceSqlChange>;
+
 /** Options to configure rule type SingleColumnChange. The rule is used to change the properties of a column. The rule filter field can refer to one entity. The rule scope can be one of: Column. When using this rule, if a field is not specified than the destination column's configuration will be the same as the one in the source column.. */
 export interface SingleColumnChange {
   /** Optional. Column length - e.g. 50 as in varchar (50) - when relevant. */
@@ -875,12 +1103,16 @@ export interface SingleColumnChange {
   /** Optional. Comment associated with the column. */
   comment?: string;
 }
+const SingleColumnChange = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<SingleColumnChange>;
+
 export type MultiEntityRenameSourceNameTransformationEnum =
   | "ENTITY_NAME_TRANSFORMATION_UNSPECIFIED"
   | "ENTITY_NAME_TRANSFORMATION_NO_TRANSFORMATION"
   | "ENTITY_NAME_TRANSFORMATION_LOWER_CASE"
   | "ENTITY_NAME_TRANSFORMATION_UPPER_CASE"
   | "ENTITY_NAME_TRANSFORMATION_CAPITALIZED_CASE";
+const MultiEntityRenameSourceNameTransformationEnum = S.String;
+
 /** Options to configure rule type MultiEntityRename. The rule is used to rename multiple entities. The rule filter field can refer to one or more entities. The rule scope can be one of: Database, Schema, Table, Column, Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT */
 export interface MultiEntityRename {
   /** Optional. Additional transformation that can be done on the source entity name before it is being used by the new_name_pattern, for example lower case. If no transformation is desired, use NO_TRANSFORMATION */
@@ -888,7 +1120,11 @@ export interface MultiEntityRename {
   /** Optional. The pattern used to generate the new entity's name. This pattern must include the characters '{name}', which will be replaced with the name of the original entity. For example, the pattern 't_{name}' for an entity name jobs would be converted to 't_jobs'. If unspecified, the default value for this field is '{name}' */
   newNamePattern?: string;
 }
+const MultiEntityRename = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<MultiEntityRename>;
+
 export type MappingRuleStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED" | "DELETED";
+const MappingRuleStateEnum = S.String;
+
 /** Options to configure rule type FilterTableColumns. The rule is used to filter the list of columns to include or exclude from a table. The rule filter field can refer to one entity. The rule scope can be: Table Only one of the two lists can be specified for the rule. */
 export interface FilterTableColumns {
   /** Optional. List of columns to be included for a particular table. */
@@ -896,6 +1132,8 @@ export interface FilterTableColumns {
   /** Optional. List of columns to be excluded for a particular table. */
   excludeColumns?: StringList;
 }
+const FilterTableColumns = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<FilterTableColumns>;
+
 /** Deprecated: Options to configure rule type SetTablePrimaryKey. The rule is used to specify the columns and name to configure/alter the primary key of a table. The rule filter field can refer to one entity. The rule scope can be one of: Table. */
 export interface SetTablePrimaryKey {
   /** Required. List of column names for the primary key */
@@ -903,6 +1141,8 @@ export interface SetTablePrimaryKey {
   /** Optional. Name for the primary key */
   primaryKey?: string;
 }
+const SetTablePrimaryKey = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<SetTablePrimaryKey>;
+
 /** A filter defining the entities that a mapping rule should be applied to. When more than one field is specified, the rule is applied only to entities which match all the fields. */
 export interface MappingRuleFilter {
   /** Optional. The rule should be applied to specific entities defined by their fully qualified names. */
@@ -916,6 +1156,8 @@ export interface MappingRuleFilter {
   /** Optional. The rule should be applied to entities whose parent entity (fully qualified name) matches the given value. For example, if the rule applies to a table entity, the expected value should be a schema (schema). If the rule applies to a column or index entity, the expected value can be either a schema (schema) or a table (schema.table) */
   parentEntity?: string;
 }
+const MappingRuleFilter = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<MappingRuleFilter>;
+
 export type MappingRuleRuleScopeEnum =
   | "DATABASE_ENTITY_TYPE_UNSPECIFIED"
   | "DATABASE_ENTITY_TYPE_SCHEMA"
@@ -933,6 +1175,8 @@ export type MappingRuleRuleScopeEnum =
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
   | "DATABASE_ENTITY_TYPE_DATABASE";
+const MappingRuleRuleScopeEnum = S.String;
+
 /** Definition of a transformation that is to be applied to a group of entities in the source schema. Several such transformations can be applied to an entity sequentially to define the corresponding entity in the target schema. */
 export interface MappingRule {
   /** Output only. The revision ID of the mapping rule. A new revision is committed whenever the mapping rule is changed in any way. The format is an 8-character hexadecimal string. */
@@ -974,6 +1218,8 @@ export interface MappingRule {
   /** Required. The rule scope */
   ruleScope?: MappingRuleRuleScopeEnum | (string & {});
 }
+const MappingRule = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<MappingRule>;
+
 export interface CreateProjectsLocationsConversionWorkspacesMappingRulesRequest {
   /** Required. The ID of the rule to create. */
   mappingRuleId?: string;
@@ -984,6 +1230,11 @@ export interface CreateProjectsLocationsConversionWorkspacesMappingRulesRequest 
   /** Request body */
   body?: MappingRule;
 }
+const CreateProjectsLocationsConversionWorkspacesMappingRulesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<CreateProjectsLocationsConversionWorkspacesMappingRulesRequest>;
+
 /** Configuration to use LogMiner CDC method. */
 export type LogMiner = CancelOperationRequest;
 /** Configuration to use Oracle ASM to access the log files. */
@@ -995,6 +1246,8 @@ export interface LogFileDirectories {
   /** Required. Oracle directory for archived logs. */
   archivedLogDirectory?: string;
 }
+const LogFileDirectories = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<LogFileDirectories>;
+
 /** Configuration to use Binary Log Parser CDC technique. */
 export interface BinaryLogParser {
   /** Use Oracle ASM. */
@@ -1002,6 +1255,8 @@ export interface BinaryLogParser {
   /** Use Oracle directories. */
   logFileDirectories?: LogFileDirectories;
 }
+const BinaryLogParser = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<BinaryLogParser>;
+
 /** Configuration for Oracle as a source in a migration. */
 export interface OracleSourceConfig {
   /** Use LogMiner. */
@@ -1017,6 +1272,8 @@ export interface OracleSourceConfig {
   /** Optional. Whether to skip full dump or not. */
   skipFullDump?: boolean;
 }
+const OracleSourceConfig = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<OracleSourceConfig>;
+
 /** Configuration for Postgres as a destination in a migration. */
 export interface PostgresDestinationConfig {
   /** Optional. Timeout for data migration transactions. */
@@ -1024,6 +1281,11 @@ export interface PostgresDestinationConfig {
   /** Optional. Maximum number of connections Database Migration Service will open to the destination for data migration. */
   maxConcurrentConnections?: number;
 }
+const PostgresDestinationConfig = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<PostgresDestinationConfig>;
+
 /** Configuration for heterogeneous **Oracle to Cloud SQL for PostgreSQL** and **Oracle to AlloyDB for PostgreSQL** migrations. */
 export interface OracleToPostgresConfig {
   /** Optional. Configuration for Oracle source. */
@@ -1031,15 +1293,24 @@ export interface OracleToPostgresConfig {
   /** Optional. Configuration for Postgres destination. */
   postgresDestinationConfig?: PostgresDestinationConfig;
 }
+const OracleToPostgresConfig = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<OracleToPostgresConfig>;
+
 export type SourceObjectsConfigObjectsSelectionTypeEnum =
   | "OBJECTS_SELECTION_TYPE_UNSPECIFIED"
   | "ALL_OBJECTS"
   | "SPECIFIED_OBJECTS";
+const SourceObjectsConfigObjectsSelectionTypeEnum = S.String;
+
 export type SourceObjectIdentifierTypeEnum =
   | "MIGRATION_JOB_OBJECT_TYPE_UNSPECIFIED"
   | "DATABASE"
   | "SCHEMA"
   | "TABLE";
+const SourceObjectIdentifierTypeEnum = S.String;
+
 /** An identifier for the Migration Job Object. */
 export interface SourceObjectIdentifier {
   /** Optional. The table name. This will be required only if the object is a level below database or schema. */
@@ -1051,12 +1322,24 @@ export interface SourceObjectIdentifier {
   /** Required. The type of the migration job object. */
   type?: SourceObjectIdentifierTypeEnum | (string & {});
 }
+const SourceObjectIdentifier = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<SourceObjectIdentifier>;
+
 /** Config for a single migration job object. */
 export interface SourceObjectConfig {
   /** Optional. The object identifier. */
   objectIdentifier?: SourceObjectIdentifier;
 }
+const SourceObjectConfig = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<SourceObjectConfig>;
+
 export type SourceObjectConfigList = Array<SourceObjectConfig>;
+const SourceObjectConfigList = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<SourceObjectConfigList>;
+
 /** List of configurations for the source objects to be migrated. */
 export interface SourceObjectsConfig {
   /** Optional. The objects selection type of the migration job. */
@@ -1064,11 +1347,18 @@ export interface SourceObjectsConfig {
   /** Optional. The list of the objects to be migrated. */
   objectConfigs?: SourceObjectConfigList;
 }
+const SourceObjectsConfig = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<SourceObjectsConfig>;
+
 /** Configuration for the objects to be migrated. */
 export interface MigrationJobObjectsConfig {
   /** The list of the migration job objects. */
   sourceObjectsConfig?: SourceObjectsConfig;
 }
+const MigrationJobObjectsConfig = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<MigrationJobObjectsConfig>;
+
 /** Configuration for PostgreSQL to PostgreSQL migrations. */
 export interface PostgresHomogeneousConfig {
   /** Optional. Maximum number of additional subscriptions to use for the migration job. */
@@ -1076,6 +1366,11 @@ export interface PostgresHomogeneousConfig {
   /** Required. Whether the migration is native logical. */
   isNativeLogical?: boolean;
 }
+const PostgresHomogeneousConfig = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<PostgresHomogeneousConfig>;
+
 /** Configuration for SQL Server as a source in a migration. */
 export interface SqlServerSourceConfig {
   /** Optional. The log sequence number (LSN) to start CDC data migration from. */
@@ -1087,6 +1382,11 @@ export interface SqlServerSourceConfig {
   /** Optional. Whether to skip full dump or not. */
   skipFullDump?: boolean;
 }
+const SqlServerSourceConfig = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<SqlServerSourceConfig>;
+
 /** Configuration for heterogeneous **SQL Server to Cloud SQL for PostgreSQL** migrations. */
 export interface SqlServerToPostgresConfig {
   /** Optional. Configuration for SQL Server source. */
@@ -1094,18 +1394,37 @@ export interface SqlServerToPostgresConfig {
   /** Optional. Configuration for Postgres destination. */
   postgresDestinationConfig?: PostgresDestinationConfig;
 }
+const SqlServerToPostgresConfig = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<SqlServerToPostgresConfig>;
+
 /** The details of the VPC where the source database is located in Google Cloud. We will use this information to set up the VPC peering connection between Cloud SQL and this VPC. */
 export interface VpcPeeringConnectivity {
   /** The name of the VPC network to peer with the Cloud SQL private network. */
   vpc?: string;
 }
+const VpcPeeringConnectivity = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<VpcPeeringConnectivity>;
+
 export type MigrationJobTypeEnum = "TYPE_UNSPECIFIED" | "ONE_TIME" | "CONTINUOUS";
+const MigrationJobTypeEnum = S.String;
+
 export type MigrationJobPurposeEnum = "PURPOSE_UNSPECIFIED" | "MIGRATE" | "FAILBACK";
+const MigrationJobPurposeEnum = S.String;
+
 /** Configuration for MySQL to MySQL migrations. */
 export interface MySqlHomogeneousConfig {
   /** Optional. Whether the destination for the migration job is a primary instance. */
   isPrimaryDestination?: boolean;
 }
+const MySqlHomogeneousConfig = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<MySqlHomogeneousConfig>;
+
 export type DatabaseTypeProviderEnum =
   | "DATABASE_PROVIDER_UNSPECIFIED"
   | "CLOUDSQL"
@@ -1113,12 +1432,16 @@ export type DatabaseTypeProviderEnum =
   | "AURORA"
   | "ALLOYDB"
   | "AZURE_DATABASE";
+const DatabaseTypeProviderEnum = S.String;
+
 export type DatabaseTypeEngineEnum =
   | "DATABASE_ENGINE_UNSPECIFIED"
   | "MYSQL"
   | "POSTGRESQL"
   | "SQLSERVER"
   | "ORACLE";
+const DatabaseTypeEngineEnum = S.String;
+
 /** A message defining the database engine and provider. */
 export interface DatabaseType {
   /** The database provider. */
@@ -1126,16 +1449,22 @@ export interface DatabaseType {
   /** The database engine. */
   engine?: DatabaseTypeEngineEnum | (string & {});
 }
+const DatabaseType = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<DatabaseType>;
+
 export type PerformanceConfigLoadParallelLevelEnum =
   | "LOAD_PARALLEL_LEVEL_UNSPECIFIED"
   | "LOAD_MIN"
   | "LOAD_OPTIMAL"
   | "LOAD_MAX";
+const PerformanceConfigLoadParallelLevelEnum = S.String;
+
 export type PerformanceConfigDumpParallelLevelEnum =
   | "DUMP_PARALLEL_LEVEL_UNSPECIFIED"
   | "MIN"
   | "OPTIMAL"
   | "MAX";
+const PerformanceConfigDumpParallelLevelEnum = S.String;
+
 /** Performance configuration definition. */
 export interface PerformanceConfig {
   /** Optional. Initial load parallelism level. */
@@ -1143,6 +1472,8 @@ export interface PerformanceConfig {
   /** Initial dump parallelism level. */
   dumpParallelLevel?: PerformanceConfigDumpParallelLevelEnum | (string & {});
 }
+const PerformanceConfig = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<PerformanceConfig>;
+
 /** The details needed to configure a reverse SSH tunnel between the source and destination databases. These details will be used when calling the generateSshScript method (see https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.migrationJobs/generateSshScript) to produce the script that will help set up the reverse SSH tunnel, and to set up the VPC peering between the Cloud SQL private network and the VPC. */
 export interface ReverseSshConnectivity {
   /** The name of the VPC to peer with the Cloud SQL private network. */
@@ -1154,6 +1485,11 @@ export interface ReverseSshConnectivity {
   /** The name of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel. */
   vm?: string;
 }
+const ReverseSshConnectivity = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ReverseSshConnectivity>;
+
 /** A conversion workspace's version. */
 export interface ConversionWorkspaceInfo {
   /** The commit ID of the conversion workspace. */
@@ -1161,6 +1497,11 @@ export interface ConversionWorkspaceInfo {
   /** The resource name (URI) of the conversion workspace. */
   name?: string;
 }
+const ConversionWorkspaceInfo = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ConversionWorkspaceInfo>;
+
 export type MigrationJobPhaseEnum =
   | "PHASE_UNSPECIFIED"
   | "FULL_DUMP"
@@ -1170,6 +1511,8 @@ export type MigrationJobPhaseEnum =
   | "PREPARING_THE_DUMP"
   | "READY_FOR_PROMOTE"
   | "PHASE_FAILBACK";
+const MigrationJobPhaseEnum = S.String;
+
 /** Configuration for distributed availability group (DAG) for the SQL Server homogeneous migration. */
 export interface SqlServerDagConfig {
   /** Required. The name of the source availability group. Only used by DAG migrations. */
@@ -1177,6 +1520,8 @@ export interface SqlServerDagConfig {
   /** Required. The name of the linked server that points to the source SQL Server instance. Only used by DAG migrations. */
   linkedServer?: string;
 }
+const SqlServerDagConfig = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<SqlServerDagConfig>;
+
 /** Encryption settings for the SQL Server database. */
 export interface SqlServerEncryptionOptions {
   /** Required. Path to the Certificate Private Key (.pvk) in Cloud Storage, in the form `gs://bucketName/fileName`. The instance must have write permissions to the bucket and read access to the file. */
@@ -1186,6 +1531,11 @@ export interface SqlServerEncryptionOptions {
   /** Required. Path to the Certificate (.cer) in Cloud Storage, in the form `gs://bucketName/fileName`. The instance must have write permissions to the bucket and read access to the file. */
   certPath?: string;
 }
+const SqlServerEncryptionOptions = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<SqlServerEncryptionOptions>;
+
 /** Specifies the backup details for a single database in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server. */
 export interface SqlServerDatabaseBackup {
   /** Optional. Encryption settings for the database. Required if provided database backups are encrypted. Encryption settings include path to certificate, path to certificate private key, and key password. */
@@ -1193,7 +1543,17 @@ export interface SqlServerDatabaseBackup {
   /** Required. Name of a SQL Server database for which to define backup configuration. */
   database?: string;
 }
+const SqlServerDatabaseBackup = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<SqlServerDatabaseBackup>;
+
 export type SqlServerDatabaseBackupList = Array<SqlServerDatabaseBackup>;
+const SqlServerDatabaseBackupList = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<SqlServerDatabaseBackupList>;
+
 /** Configuration for homogeneous migration to Cloud SQL for SQL Server. */
 export interface SqlServerHomogeneousMigrationJobConfig {
   /** Optional. Enable differential backups. */
@@ -1207,6 +1567,11 @@ export interface SqlServerHomogeneousMigrationJobConfig {
   /** Optional. Promote databases when ready. */
   promoteWhenReady?: boolean;
 }
+const SqlServerHomogeneousMigrationJobConfig = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<SqlServerHomogeneousMigrationJobConfig>;
+
 /** Dump flag definition. */
 export interface DumpFlag {
   /** The value of the flag. */
@@ -1214,17 +1579,28 @@ export interface DumpFlag {
   /** The name of the flag */
   name?: string;
 }
+const DumpFlag = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<DumpFlag>;
+
 export type DumpFlagList = Array<DumpFlag>;
+const DumpFlagList = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<DumpFlagList>;
+
 /** Dump flags definition. */
 export interface DumpFlags {
   /** The flags for the initial dump. */
   dumpFlags?: DumpFlagList;
 }
+const DumpFlags = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<DumpFlags>;
+
 /** Configuration for Postgres as a source in a migration. */
 export interface PostgresSourceConfig {
   /** Optional. Whether to skip full dump or not. */
   skipFullDump?: boolean;
 }
+const PostgresSourceConfig = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<PostgresSourceConfig>;
+
 /** Configuration for SQL Server as a destination in a migration. */
 export interface SqlServerDestinationConfig {
   /** Optional. Maximum number of connections Database Migration Service will open to the destination for data migration. */
@@ -1232,6 +1608,11 @@ export interface SqlServerDestinationConfig {
   /** Optional. Timeout for data migration transactions. */
   transactionTimeout?: string;
 }
+const SqlServerDestinationConfig = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<SqlServerDestinationConfig>;
+
 /** Configuration for heterogeneous failback migrations from **PostgreSQL to SQL Server**. */
 export interface PostgresToSqlServerConfig {
   /** Optional. Configuration for PostgreSQL source. */
@@ -1239,6 +1620,11 @@ export interface PostgresToSqlServerConfig {
   /** Optional. Configuration for SQL Server destination. */
   sqlserverDestinationConfig?: SqlServerDestinationConfig;
 }
+const PostgresToSqlServerConfig = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<PostgresToSqlServerConfig>;
+
 export type MigrationJobStateEnum =
   | "STATE_UNSPECIFIED"
   | "MAINTENANCE"
@@ -1256,7 +1642,11 @@ export type MigrationJobStateEnum =
   | "STARTING"
   | "RESTARTING"
   | "RESUMING";
+const MigrationJobStateEnum = S.String;
+
 export type MigrationJobDumpTypeEnum = "DUMP_TYPE_UNSPECIFIED" | "LOGICAL" | "PHYSICAL";
+const MigrationJobDumpTypeEnum = S.String;
+
 /** Represents a Database Migration Service migration job object. */
 export interface MigrationJob {
   /** Output only. The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z". */
@@ -1332,6 +1722,8 @@ export interface MigrationJob {
   /** Optional. The type of the data dump. Supported for MySQL to CloudSQL for MySQL migrations only. */
   dumpType?: MigrationJobDumpTypeEnum | (string & {});
 }
+const MigrationJob = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<MigrationJob>;
+
 export interface CreateProjectsLocationsMigrationJobsRequest {
   /** Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
   requestId?: string;
@@ -1342,11 +1734,18 @@ export interface CreateProjectsLocationsMigrationJobsRequest {
   /** Request body */
   body?: MigrationJob;
 }
+const CreateProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<CreateProjectsLocationsMigrationJobsRequest>;
+
 /** The PSC Interface configuration is used to create PSC Interface between DMS's internal VPC and the consumer's PSC. */
 export interface PscInterfaceConfig {
   /** Required. Fully qualified name of the Network Attachment that DMS will connect to. Format: `projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}` */
   networkAttachment?: string;
 }
+const PscInterfaceConfig = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<PscInterfaceConfig>;
+
 /** Reserved Public IP configuration. */
 export interface ReservedPublicIpConfig {
   /** Output only. The reserved public IPs. */
@@ -1354,6 +1753,11 @@ export interface ReservedPublicIpConfig {
   /** Optional. Number of static public IP addresses to reserve. */
   natIpsCount?: number;
 }
+const ReservedPublicIpConfig = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ReservedPublicIpConfig>;
+
 /** The VPC peering configuration is used to create VPC peering with the consumer's VPC. */
 export interface VpcPeeringConfig {
   /** Required. Fully qualified name of the VPC that Database Migration Service will peer to. */
@@ -1361,6 +1765,8 @@ export interface VpcPeeringConfig {
   /** Required. A free subnet for peering. (CIDR of /29) */
   subnet?: string;
 }
+const VpcPeeringConfig = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<VpcPeeringConfig>;
+
 export type PrivateConnectionStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -1369,6 +1775,8 @@ export type PrivateConnectionStateEnum =
   | "DELETING"
   | "FAILED_TO_DELETE"
   | "DELETED";
+const PrivateConnectionStateEnum = S.String;
+
 /** The PrivateConnection resource is used to establish private connectivity with the customer's network. */
 export interface PrivateConnection {
   /** Output only. Reserved for future use. */
@@ -1396,6 +1804,8 @@ export interface PrivateConnection {
   /** Output only. The last update time of the resource. */
   updateTime?: string;
 }
+const PrivateConnection = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<PrivateConnection>;
+
 export interface CreateProjectsLocationsPrivateConnectionsRequest {
   /** Required. The private connection identifier. */
   privateConnectionId?: string;
@@ -1410,6 +1820,11 @@ export interface CreateProjectsLocationsPrivateConnectionsRequest {
   /** Request body */
   body?: PrivateConnection;
 }
+const CreateProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<CreateProjectsLocationsPrivateConnectionsRequest>;
+
 export interface DeleteProjectsLocationsConnectionProfilesRequest {
   /** In case of force delete, the CloudSQL replica database is also deleted (only for CloudSQL connection profile). */
   force?: boolean;
@@ -1418,6 +1833,11 @@ export interface DeleteProjectsLocationsConnectionProfilesRequest {
   /** A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
   requestId?: string;
 }
+const DeleteProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<DeleteProjectsLocationsConnectionProfilesRequest>;
+
 export interface DeleteProjectsLocationsConversionWorkspacesRequest {
   /** Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
   requestId?: string;
@@ -1426,12 +1846,22 @@ export interface DeleteProjectsLocationsConversionWorkspacesRequest {
   /** Required. Name of the conversion workspace resource to delete. */
   name: string;
 }
+const DeleteProjectsLocationsConversionWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<DeleteProjectsLocationsConversionWorkspacesRequest>;
+
 export interface DeleteProjectsLocationsConversionWorkspacesMappingRulesRequest {
   /** Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
   requestId?: string;
   /** Required. Name of the mapping rule resource to delete. */
   name: string;
 }
+const DeleteProjectsLocationsConversionWorkspacesMappingRulesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<DeleteProjectsLocationsConversionWorkspacesMappingRulesRequest>;
+
 export interface DeleteProjectsLocationsMigrationJobsRequest {
   /** Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
   requestId?: string;
@@ -1440,16 +1870,31 @@ export interface DeleteProjectsLocationsMigrationJobsRequest {
   /** Optional. The destination CloudSQL connection profile is always deleted with the migration job. In case of force delete, the destination CloudSQL replica database is also deleted. */
   force?: boolean;
 }
+const DeleteProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<DeleteProjectsLocationsMigrationJobsRequest>;
+
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+
 export interface DeleteProjectsLocationsPrivateConnectionsRequest {
   /** Required. The name of the private connection to delete. */
   name: string;
   /** Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
   requestId?: string;
 }
+const DeleteProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<DeleteProjectsLocationsPrivateConnectionsRequest>;
+
 /** Request message for 'DemoteDestination' request. */
 export type DemoteDestinationRequest = CancelOperationRequest;
 export interface DemoteDestinationProjectsLocationsMigrationJobsRequest {
@@ -1458,29 +1903,54 @@ export interface DemoteDestinationProjectsLocationsMigrationJobsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
+const DemoteDestinationProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<DemoteDestinationProjectsLocationsMigrationJobsRequest>;
+
 export interface DescribeConversionWorkspaceRevisionsProjectsLocationsConversionWorkspacesRequest {
   /** Optional. Optional filter to request a specific commit ID. */
   commitId?: string;
   /** Required. Name of the conversion workspace resource whose revisions are listed. Must be in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}. */
   conversionWorkspace: string;
 }
+const DescribeConversionWorkspaceRevisionsProjectsLocationsConversionWorkspacesRequest =
+  /*@__PURE__*/ __L.at(
+    __c13,
+    7,
+  ) as any as S.Schema<DescribeConversionWorkspaceRevisionsProjectsLocationsConversionWorkspacesRequest>;
+
 export type ConversionWorkspaceList = Array<ConversionWorkspace>;
+const ConversionWorkspaceList = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<ConversionWorkspaceList>;
+
 /** Response message for 'DescribeConversionWorkspaceRevisions' request. */
 export interface DescribeConversionWorkspaceRevisionsResponse {
   /** The list of conversion workspace revisions. */
   revisions?: ConversionWorkspaceList;
 }
+const DescribeConversionWorkspaceRevisionsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<DescribeConversionWorkspaceRevisionsResponse>;
+
 export type DescribeDatabaseEntitiesProjectsLocationsConversionWorkspacesTreeEnum =
   | "DB_TREE_TYPE_UNSPECIFIED"
   | "SOURCE_TREE"
   | "DRAFT_TREE"
   | "DESTINATION_TREE";
+const DescribeDatabaseEntitiesProjectsLocationsConversionWorkspacesTreeEnum = S.String;
+
 export type DescribeDatabaseEntitiesProjectsLocationsConversionWorkspacesViewEnum =
   | "DATABASE_ENTITY_VIEW_UNSPECIFIED"
   | "DATABASE_ENTITY_VIEW_BASIC"
   | "DATABASE_ENTITY_VIEW_FULL"
   | "DATABASE_ENTITY_VIEW_ROOT_SUMMARY"
   | "DATABASE_ENTITY_VIEW_FULL_COMPACT";
+const DescribeDatabaseEntitiesProjectsLocationsConversionWorkspacesViewEnum = S.String;
+
 export interface DescribeDatabaseEntitiesProjectsLocationsConversionWorkspacesRequest {
   /** Optional. Filter the returned entities based on AIP-160 standard. */
   filter?: string;
@@ -1499,6 +1969,11 @@ export interface DescribeDatabaseEntitiesProjectsLocationsConversionWorkspacesRe
   /** Optional. The nextPageToken value received in the previous call to conversionWorkspace.describeDatabaseEntities, used in the subsequent request to retrieve the next page of results. On first call this should be left blank. When paginating, all other parameters provided to conversionWorkspace.describeDatabaseEntities must match the call that provided the page token. */
   pageToken?: string;
 }
+const DescribeDatabaseEntitiesProjectsLocationsConversionWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<DescribeDatabaseEntitiesProjectsLocationsConversionWorkspacesRequest>;
+
 /** UDT's parent is a schema. */
 export interface UDTEntity {
   /** The SQL code which creates the udt. */
@@ -1508,7 +1983,11 @@ export interface UDTEntity {
   /** Custom engine specific features. */
   customFeatures?: DocumentMap;
 }
+const UDTEntity = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<UDTEntity>;
+
 export type BooleanList = Array<boolean>;
+const BooleanList = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<BooleanList>;
+
 /** Index is not used as an independent entity, it is retrieved as part of a Table entity. */
 export interface IndexEntity {
   /** Custom engine specific features. */
@@ -1524,7 +2003,11 @@ export interface IndexEntity {
   /** The name of the index. */
   name?: string;
 }
+const IndexEntity = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<IndexEntity>;
+
 export type IndexEntityList = Array<IndexEntity>;
+const IndexEntityList = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<IndexEntityList>;
+
 /** MaterializedView's parent is a schema. */
 export interface MaterializedViewEntity {
   /** The SQL code which creates the view. */
@@ -1534,6 +2017,11 @@ export interface MaterializedViewEntity {
   /** Custom engine specific features. */
   customFeatures?: DocumentMap;
 }
+const MaterializedViewEntity = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<MaterializedViewEntity>;
+
 /** Stored procedure's parent is a schema. */
 export interface StoredProcedureEntity {
   /** The SQL code which creates the stored procedure. */
@@ -1541,11 +2029,18 @@ export interface StoredProcedureEntity {
   /** Custom engine specific features. */
   customFeatures?: DocumentMap;
 }
+const StoredProcedureEntity = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<StoredProcedureEntity>;
+
 /** Schema typically has no parent entity, but can have a parent entity DatabaseInstance (for database engines which support it). For some database engines, the terms schema and user can be used interchangeably when they refer to a namespace or a collection of other database entities. Can store additional information which is schema specific. */
 export interface SchemaEntity {
   /** Custom engine specific features. */
   customFeatures?: DocumentMap;
 }
+const SchemaEntity = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<SchemaEntity>;
+
 export type EntityMappingDraftTypeEnum =
   | "DATABASE_ENTITY_TYPE_UNSPECIFIED"
   | "DATABASE_ENTITY_TYPE_SCHEMA"
@@ -1563,6 +2058,8 @@ export type EntityMappingDraftTypeEnum =
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
   | "DATABASE_ENTITY_TYPE_DATABASE";
+const EntityMappingDraftTypeEnum = S.String;
+
 export type EntityMappingSourceTypeEnum =
   | "DATABASE_ENTITY_TYPE_UNSPECIFIED"
   | "DATABASE_ENTITY_TYPE_SCHEMA"
@@ -1580,6 +2077,8 @@ export type EntityMappingSourceTypeEnum =
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
   | "DATABASE_ENTITY_TYPE_DATABASE";
+const EntityMappingSourceTypeEnum = S.String;
+
 /** A single record of a rule which was used for a mapping. */
 export interface EntityMappingLogEntry {
   /** Which rule caused this log entry. */
@@ -1589,7 +2088,17 @@ export interface EntityMappingLogEntry {
   /** Comment. */
   mappingComment?: string;
 }
+const EntityMappingLogEntry = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<EntityMappingLogEntry>;
+
 export type EntityMappingLogEntryList = Array<EntityMappingLogEntry>;
+const EntityMappingLogEntryList = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<EntityMappingLogEntryList>;
+
 /** Details of the mappings of a database entity. */
 export interface EntityMapping {
   /** Type of draft entity. */
@@ -1603,7 +2112,11 @@ export interface EntityMapping {
   /** Entity mapping log entries. Multiple rules can be effective and contribute changes to a converted entity, such as a rule can handle the entity name, another rule can handle an entity type. In addition, rules which did not change the entity are also logged along with the reason preventing them to do so. */
   mappingLog?: EntityMappingLogEntryList;
 }
+const EntityMapping = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<EntityMapping>;
+
 export type EntityMappingList = Array<EntityMapping>;
+const EntityMappingList = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<EntityMappingList>;
+
 /** Package's parent is a schema. */
 export interface PackageEntity {
   /** The SQL code which creates the package. */
@@ -1613,12 +2126,16 @@ export interface PackageEntity {
   /** Custom engine specific features. */
   customFeatures?: DocumentMap;
 }
+const PackageEntity = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<PackageEntity>;
+
 export type EntityDdlDdlKindEnum =
   | "DDL_KIND_UNSPECIFIED"
   | "SOURCE"
   | "DETERMINISTIC"
   | "AI"
   | "USER_EDIT";
+const EntityDdlDdlKindEnum = S.String;
+
 export type EntityDdlEntityTypeEnum =
   | "DATABASE_ENTITY_TYPE_UNSPECIFIED"
   | "DATABASE_ENTITY_TYPE_SCHEMA"
@@ -1636,12 +2153,16 @@ export type EntityDdlEntityTypeEnum =
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
   | "DATABASE_ENTITY_TYPE_DATABASE";
+const EntityDdlEntityTypeEnum = S.String;
+
 export type EntityDdlEditedDdlKindEnum =
   | "DDL_KIND_UNSPECIFIED"
   | "SOURCE"
   | "DETERMINISTIC"
   | "AI"
   | "USER_EDIT";
+const EntityDdlEditedDdlKindEnum = S.String;
+
 /** A single DDL statement for a specific entity */
 export interface EntityDdl {
   /** The actual ddl code. */
@@ -1659,7 +2180,11 @@ export interface EntityDdl {
   /** Type of DDL (Create, Alter). */
   ddlType?: string;
 }
+const EntityDdl = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<EntityDdl>;
+
 export type EntityDdlList = Array<EntityDdl>;
+const EntityDdlList = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<EntityDdlList>;
+
 /** Function's parent is a schema. */
 export interface FunctionEntity {
   /** The SQL code which creates the function. */
@@ -1667,6 +2192,8 @@ export interface FunctionEntity {
   /** Custom engine specific features. */
   customFeatures?: DocumentMap;
 }
+const FunctionEntity = StoredProcedureEntity as any as S.Schema<FunctionEntity>;
+
 /** Constraint is not used as an independent entity, it is retrieved as part of another entity such as Table or View. */
 export interface ConstraintEntity {
   /** Custom engine specific features. */
@@ -1684,7 +2211,14 @@ export interface ConstraintEntity {
   /** The name of the table constraint. */
   name?: string;
 }
+const ConstraintEntity = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<ConstraintEntity>;
+
 export type ConstraintEntityList = Array<ConstraintEntity>;
+const ConstraintEntityList = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ConstraintEntityList>;
+
 /** View's parent is a schema. */
 export interface ViewEntity {
   /** The SQL code which creates the view. */
@@ -1694,11 +2228,15 @@ export interface ViewEntity {
   /** Custom engine specific features. */
   customFeatures?: DocumentMap;
 }
+const ViewEntity = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<ViewEntity>;
+
 export type EntityIssueSeverityEnum =
   | "ISSUE_SEVERITY_UNSPECIFIED"
   | "ISSUE_SEVERITY_INFO"
   | "ISSUE_SEVERITY_WARNING"
   | "ISSUE_SEVERITY_ERROR";
+const EntityIssueSeverityEnum = S.String;
+
 export type EntityIssueEntityTypeEnum =
   | "DATABASE_ENTITY_TYPE_UNSPECIFIED"
   | "DATABASE_ENTITY_TYPE_SCHEMA"
@@ -1716,6 +2254,8 @@ export type EntityIssueEntityTypeEnum =
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
   | "DATABASE_ENTITY_TYPE_DATABASE";
+const EntityIssueEntityTypeEnum = S.String;
+
 /** Issue position. */
 export interface Position {
   /** Issue line number */
@@ -1727,12 +2267,16 @@ export interface Position {
   /** Issue column number */
   column?: number;
 }
+const Position = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<Position>;
+
 export type EntityIssueTypeEnum =
   | "ISSUE_TYPE_UNSPECIFIED"
   | "ISSUE_TYPE_DDL"
   | "ISSUE_TYPE_APPLY"
   | "ISSUE_TYPE_CONVERT"
   | "ISSUE_TYPE_PULL_SCHEMA";
+const EntityIssueTypeEnum = S.String;
+
 /** Issue related to the entity. */
 export interface EntityIssue {
   /** Unique Issue ID. */
@@ -1752,7 +2296,11 @@ export interface EntityIssue {
   /** Error/Warning code */
   code?: string;
 }
+const EntityIssue = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<EntityIssue>;
+
 export type EntityIssueList = Array<EntityIssue>;
+const EntityIssueList = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<EntityIssueList>;
+
 /** Sequence's parent is a schema. */
 export interface SequenceEntity {
   /** Custom engine specific features. */
@@ -1770,6 +2318,8 @@ export interface SequenceEntity {
   /** Minimum number for the sequence represented as bytes to accommodate large. numbers */
   minValue?: string;
 }
+const SequenceEntity = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<SequenceEntity>;
+
 export type SynonymEntitySourceTypeEnum =
   | "DATABASE_ENTITY_TYPE_UNSPECIFIED"
   | "DATABASE_ENTITY_TYPE_SCHEMA"
@@ -1787,6 +2337,8 @@ export type SynonymEntitySourceTypeEnum =
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
   | "DATABASE_ENTITY_TYPE_DATABASE";
+const SynonymEntitySourceTypeEnum = S.String;
+
 /** Synonym's parent is a schema. */
 export interface SynonymEntity {
   /** Custom engine specific features. */
@@ -1796,6 +2348,8 @@ export interface SynonymEntity {
   /** The name of the entity for which the synonym is being created (the source). */
   sourceEntity?: string;
 }
+const SynonymEntity = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<SynonymEntity>;
+
 /** DatabaseInstance acts as a parent entity to other database entities. */
 export type DatabaseInstanceEntity = SchemaEntity;
 export type DatabaseEntityEntityTypeEnum =
@@ -1815,6 +2369,8 @@ export type DatabaseEntityEntityTypeEnum =
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
   | "DATABASE_ENTITY_TYPE_DATABASE";
+const DatabaseEntityEntityTypeEnum = S.String;
+
 /** Column is not used as an independent entity, it is retrieved as part of a Table entity. */
 export interface ColumnEntity {
   /** Comment associated with the column. */
@@ -1856,7 +2412,11 @@ export interface ColumnEntity {
   /** Column data type. */
   dataType?: string;
 }
+const ColumnEntity = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<ColumnEntity>;
+
 export type ColumnEntityList = Array<ColumnEntity>;
+const ColumnEntityList = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<ColumnEntityList>;
+
 /** Trigger is not used as an independent entity, it is retrieved as part of a Table entity. */
 export interface TriggerEntity {
   /** The name of the trigger. */
@@ -1870,7 +2430,11 @@ export interface TriggerEntity {
   /** Indicates when the trigger fires, for example BEFORE STATEMENT, AFTER EACH ROW. */
   triggerType?: string;
 }
+const TriggerEntity = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<TriggerEntity>;
+
 export type TriggerEntityList = Array<TriggerEntity>;
+const TriggerEntityList = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<TriggerEntityList>;
+
 /** Table's parent is a schema. */
 export interface TableEntity {
   /** Table indices. */
@@ -1886,7 +2450,11 @@ export interface TableEntity {
   /** Custom engine specific features. */
   customFeatures?: DocumentMap;
 }
+const TableEntity = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<TableEntity>;
+
 export type DatabaseEntityTreeEnum = "TREE_TYPE_UNSPECIFIED" | "SOURCE" | "DRAFT" | "DESTINATION";
+const DatabaseEntityTreeEnum = S.String;
+
 /** The base entity type for all the database related entities. The message contains the entity name, the name of its parent, the entity type, and the specific details per entity type. */
 export interface DatabaseEntity {
   /** UDT. */
@@ -1926,7 +2494,11 @@ export interface DatabaseEntity {
   /** The short name (e.g. table name) of the entity. */
   shortName?: string;
 }
+const DatabaseEntity = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<DatabaseEntity>;
+
 export type DatabaseEntityList = Array<DatabaseEntity>;
+const DatabaseEntityList = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<DatabaseEntityList>;
+
 /** Response message for 'DescribeDatabaseEntities' request. */
 export interface DescribeDatabaseEntitiesResponse {
   /** The list of database entities for the conversion workspace. */
@@ -1934,15 +2506,24 @@ export interface DescribeDatabaseEntitiesResponse {
   /** A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const DescribeDatabaseEntitiesResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<DescribeDatabaseEntitiesResponse>;
+
 export type FetchEntitiesStatusViewProjectsLocationsConversionWorkspacesFetchViewEnum =
   | "FETCH_VIEW_UNSPECIFIED"
   | "FULL"
   | "SUMMARY"
   | "FULL_WITH_DEPENDENCIES";
+const FetchEntitiesStatusViewProjectsLocationsConversionWorkspacesFetchViewEnum = S.String;
+
 export type FetchEntitiesStatusViewProjectsLocationsConversionWorkspacesTreeEnum =
   | "DB_TREE_TYPE_UNSPECIFIED"
   | "SOURCE_TREE"
   | "DRAFT_TREE";
+const FetchEntitiesStatusViewProjectsLocationsConversionWorkspacesTreeEnum = S.String;
+
 export interface FetchEntitiesStatusViewProjectsLocationsConversionWorkspacesRequest {
   /** Optional. The nextPageToken value received in the previous call to conversionWorkspace.FetchEntitiesStatusView, used in the subsequent request to retrieve the next page of results. On first call this should be left blank. When paginating, all other parameters provided to conversionWorkspace.FetchEntitiesStatusView must match the call that provided the page token, except for the page_size parameter. */
   pageToken?: string;
@@ -1959,18 +2540,27 @@ export interface FetchEntitiesStatusViewProjectsLocationsConversionWorkspacesReq
   /** Required. The tree to fetch. */
   tree?: FetchEntitiesStatusViewProjectsLocationsConversionWorkspacesTreeEnum | (string & {});
 }
+const FetchEntitiesStatusViewProjectsLocationsConversionWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<FetchEntitiesStatusViewProjectsLocationsConversionWorkspacesRequest>;
+
 export type EntityStatusViewDraftDdlKindEnum =
   | "DDL_KIND_UNSPECIFIED"
   | "SOURCE"
   | "DETERMINISTIC"
   | "AI"
   | "USER_EDIT";
+const EntityStatusViewDraftDdlKindEnum = S.String;
+
 export type EntityStatusViewEditedDdlKindEnum =
   | "DDL_KIND_UNSPECIFIED"
   | "SOURCE"
   | "DETERMINISTIC"
   | "AI"
   | "USER_EDIT";
+const EntityStatusViewEditedDdlKindEnum = S.String;
+
 export type EntityIdParentTypeEnum =
   | "DATABASE_ENTITY_TYPE_UNSPECIFIED"
   | "DATABASE_ENTITY_TYPE_SCHEMA"
@@ -1988,6 +2578,8 @@ export type EntityIdParentTypeEnum =
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
   | "DATABASE_ENTITY_TYPE_DATABASE";
+const EntityIdParentTypeEnum = S.String;
+
 export type EntityIdTypeEnum =
   | "DATABASE_ENTITY_TYPE_UNSPECIFIED"
   | "DATABASE_ENTITY_TYPE_SCHEMA"
@@ -2005,6 +2597,8 @@ export type EntityIdTypeEnum =
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
   | "DATABASE_ENTITY_TYPE_DATABASE";
+const EntityIdTypeEnum = S.String;
+
 /** An entity identifier. */
 export interface EntityId {
   /** The type of the database entity (schema, table, view, ...). */
@@ -2016,6 +2610,8 @@ export interface EntityId {
   /** The parent entity full name. */
   parentName?: string;
 }
+const EntityId = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<EntityId>;
+
 /** Aggregate issue information. */
 export interface IssueAggregateData {
   /** Number of warning issues. */
@@ -2025,7 +2621,11 @@ export interface IssueAggregateData {
   /** Number of info issues. */
   infoCount?: number;
 }
+const IssueAggregateData = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<IssueAggregateData>;
+
 export type EntityIdList = Array<EntityId>;
+const EntityIdList = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<EntityIdList>;
+
 /** A single entity for the UI view. */
 export interface EntityStatusView {
   /** The DDL Kind selected for apply. If UNSPECIFIED, the entity wasn't converted yet. For SUMMARY view, this rolls up from descendants with the logic of UNSPECIFIED < DETERMINISTIC < AI. USER_EDIT is not propagated. */
@@ -2047,7 +2647,14 @@ export interface EntityStatusView {
   /** Resolved issues information according to the current Draft DdlKind. */
   resolvedIssues?: IssueAggregateData;
 }
+const EntityStatusView = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<EntityStatusView>;
+
 export type EntityStatusViewList = Array<EntityStatusView>;
+const EntityStatusViewList = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<EntityStatusViewList>;
+
 /** Response message for DataMigrationService.FetchEntitiesStatusView. */
 export interface FetchEntitiesStatusViewResponse {
   /** A list of the entities matching the request, sorted by their full name (source name if requested the SOURCE tree, draft name if requested the DRAFT tree). Sub-entities (such as indexes) always appear immediately after their parent element. */
@@ -2055,10 +2662,17 @@ export interface FetchEntitiesStatusViewResponse {
   /** A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const FetchEntitiesStatusViewResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<FetchEntitiesStatusViewResponse>;
+
 export type FetchIssuesProjectsLocationsConversionWorkspacesTreeEnum =
   | "DB_TREE_TYPE_UNSPECIFIED"
   | "SOURCE"
   | "DRAFT";
+const FetchIssuesProjectsLocationsConversionWorkspacesTreeEnum = S.String;
+
 export interface FetchIssuesProjectsLocationsConversionWorkspacesRequest {
   /** Optional. AIP-160 standard filter. Supporting both entity and issue fields. Supported fields: - `name` / `fullname`: The entity full name. - `type`: The entity type (e.g. `TABLE`, `VIEW`, `INDEX`, `TRIGGER`). - `ddlkind`: The kind of DDL (e.g. `DDL_KIND_SOURCE`, `DDL_KIND_AI`, `DDL_KIND_DETERMINISTIC`). - `issue.severity`: The severity of the issue (e.g. `INFO`, `WARNING`, `ERROR`). - `issue.state`: The state of the issue (e.g. `OPEN`, `RESOLVED`). - `issue.origin`: The origin of the issue (e.g. `DETERMINISTIC`, `AI`). - `issue.category_id`: The category ID of the issue. - `issue.group_id`: The group ID of the issue. */
   filter?: string;
@@ -2073,6 +2687,11 @@ export interface FetchIssuesProjectsLocationsConversionWorkspacesRequest {
   /** Required. Conversion workspace with issues to fetch. Must be in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}. */
   conversionWorkspace: string;
 }
+const FetchIssuesProjectsLocationsConversionWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<FetchIssuesProjectsLocationsConversionWorkspacesRequest>;
+
 export type IssueEntityTypeEnum =
   | "DATABASE_ENTITY_TYPE_UNSPECIFIED"
   | "DATABASE_ENTITY_TYPE_SCHEMA"
@@ -2090,6 +2709,8 @@ export type IssueEntityTypeEnum =
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
   | "DATABASE_ENTITY_TYPE_DATABASE";
+const IssueEntityTypeEnum = S.String;
+
 export type IssueGroupIdEnum =
   | "ISSUE_GROUP_ID_UNSPECIFIED"
   | "ISSUE_GROUP_ID_CW_OP0000"
@@ -2191,15 +2812,21 @@ export type IssueGroupIdEnum =
   | "ISSUE_GROUP_ID_CW_AI9901"
   | "ISSUE_GROUP_ID_CW_AI9902"
   | "ISSUE_GROUP_ID_CW_AP0000";
+const IssueGroupIdEnum = S.String;
+
 export type IssueIssueStateEnum =
   | "ISSUE_STATE_UNSPECIFIED"
   | "ISSUE_STATE_OPEN"
   | "ISSUE_STATE_RESOLVED";
+const IssueIssueStateEnum = S.String;
+
 export type IssueSeverityEnum =
   | "ISSUE_SEVERITY_UNSPECIFIED"
   | "ISSUE_SEVERITY_INFO"
   | "ISSUE_SEVERITY_WARNING"
   | "ISSUE_SEVERITY_ERROR";
+const IssueSeverityEnum = S.String;
+
 /** Issue position. */
 export interface FetchIssuesResponseIssuePosition {
   /** Issue line number. */
@@ -2211,16 +2838,25 @@ export interface FetchIssuesResponseIssuePosition {
   /** Issue column number. */
   column?: number;
 }
+const FetchIssuesResponseIssuePosition = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<FetchIssuesResponseIssuePosition>;
+
 export type IssueIssueOriginEnum =
   | "ISSUE_ORIGIN_UNSPECIFIED"
   | "ISSUE_ORIGIN_DETERMINISTIC"
   | "ISSUE_ORIGIN_AI"
   | "ISSUE_ORIGIN_AI_FROM_DETERMINISTIC";
+const IssueIssueOriginEnum = S.String;
+
 export type IssueTypeEnum =
   | "ISSUE_TYPE_UNSPECIFIED"
   | "ISSUE_TYPE_CONVERSION"
   | "ISSUE_TYPE_PULL_SCHEMA"
   | "ISSUE_TYPE_APPLY";
+const IssueTypeEnum = S.String;
+
 export type IssueCategoryIdEnum =
   | "ISSUE_CATEGORY_ID_UNSPECIFIED"
   | "ISSUE_CATEGORY_ID_CW00"
@@ -2235,6 +2871,8 @@ export type IssueCategoryIdEnum =
   | "ISSUE_CATEGORY_ID_CW99"
   | "ISSUE_CATEGORY_ID_QA00"
   | "ISSUE_CATEGORY_ID_AP00";
+const IssueCategoryIdEnum = S.String;
+
 /** Issue related to the entity. */
 export interface Issue {
   /** Issue detailed message. */
@@ -2260,7 +2898,11 @@ export interface Issue {
   /** Unique Issue ID. Use this ID when referencing a specific issue in other API calls, such as DataMigrationService.SetIssuesState. */
   id?: string;
 }
+const Issue = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<Issue>;
+
 export type IssueList = Array<Issue>;
+const IssueList = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<IssueList>;
+
 /** Response for fetching issues of a conversion workspace. */
 export interface FetchIssuesResponse {
   /** A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2268,10 +2910,17 @@ export interface FetchIssuesResponse {
   /** The list of issues for the conversion workspace. */
   issues?: IssueList;
 }
+const FetchIssuesResponse = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<FetchIssuesResponse>;
+
 export interface FetchSourceObjectsProjectsLocationsMigrationJobsRequest {
   /** Required. The resource name for the migration job for which source objects should be returned. */
   name: string;
 }
+const FetchSourceObjectsProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<FetchSourceObjectsProjectsLocationsMigrationJobsRequest>;
+
 export interface FetchStaticIpsProjectsLocationsRequest {
   /** Optional. Maximum number of IPs to return. */
   pageSize?: number;
@@ -2282,6 +2931,11 @@ export interface FetchStaticIpsProjectsLocationsRequest {
   /** Optional. A page token, received from a previous `FetchStaticIps` call. */
   pageToken?: string;
 }
+const FetchStaticIpsProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<FetchStaticIpsProjectsLocationsRequest>;
+
 /** Response message for a 'FetchStaticIps' request. */
 export interface FetchStaticIpsResponse {
   /** List of static IPs. */
@@ -2289,11 +2943,18 @@ export interface FetchStaticIpsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const FetchStaticIpsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<FetchStaticIpsResponse>;
+
 /** VM selection configuration message */
 export interface VmSelectionConfig {
   /** Required. The Google Cloud Platform zone the VM is located. */
   vmZone?: string;
 }
+const VmSelectionConfig = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<VmSelectionConfig>;
+
 /** VM creation configuration message */
 export interface VmCreationConfig {
   /** The Google Cloud Platform zone to create the VM in. */
@@ -2303,6 +2964,8 @@ export interface VmCreationConfig {
   /** Required. VM instance machine type to create. */
   vmMachineType?: string;
 }
+const VmCreationConfig = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<VmCreationConfig>;
+
 /** Request message for 'GenerateSshScript' request. */
 export interface GenerateSshScriptRequest {
   /** The VM selection configuration */
@@ -2314,17 +2977,29 @@ export interface GenerateSshScriptRequest {
   /** The VM creation configuration */
   vmCreationConfig?: VmCreationConfig;
 }
+const GenerateSshScriptRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<GenerateSshScriptRequest>;
+
 export interface GenerateSshScriptProjectsLocationsMigrationJobsRequest {
   /** Name of the migration job resource to generate the SSH script. */
   migrationJob: string;
   /** Request body */
   body?: GenerateSshScriptRequest;
 }
+const GenerateSshScriptProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<GenerateSshScriptProjectsLocationsMigrationJobsRequest>;
+
 /** Response message for 'GenerateSshScript' request. */
 export interface SshScript {
   /** The ssh configuration script. */
   script?: string;
 }
+const SshScript = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<SshScript>;
+
 /** Request message for 'GenerateTcpProxyScript' request. */
 export interface GenerateTcpProxyScriptRequest {
   /** Required. The name of the Compute instance that will host the proxy. */
@@ -2336,23 +3011,40 @@ export interface GenerateTcpProxyScriptRequest {
   /** Required. The type of the Compute instance that will host the proxy. */
   vmMachineType?: string;
 }
+const GenerateTcpProxyScriptRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<GenerateTcpProxyScriptRequest>;
+
 export interface GenerateTcpProxyScriptProjectsLocationsMigrationJobsRequest {
   /** Name of the migration job resource to generate the TCP Proxy script. */
   migrationJob: string;
   /** Request body */
   body?: GenerateTcpProxyScriptRequest;
 }
+const GenerateTcpProxyScriptProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<GenerateTcpProxyScriptProjectsLocationsMigrationJobsRequest>;
+
 /** Response message for 'GenerateTcpProxyScript' request. */
 export interface TcpProxyScript {
   /** The TCP Proxy configuration script. */
   script?: string;
 }
+const TcpProxyScript = SshScript as any as S.Schema<TcpProxyScript>;
+
 export interface GetIamPolicyProjectsLocationsConnectionProfilesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
+const GetIamPolicyProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<GetIamPolicyProjectsLocationsConnectionProfilesRequest>;
+
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
@@ -2364,6 +3056,8 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
+const Expr = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<Expr>;
+
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -2373,12 +3067,18 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
+const Binding = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<Binding>;
+
 export type BindingList = Array<Binding>;
+const BindingList = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<BindingList>;
+
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
+const AuditLogConfigLogTypeEnum = S.String;
+
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -2386,7 +3086,11 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
+const AuditLogConfig = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<AuditLogConfig>;
+
 export type AuditLogConfigList = Array<AuditLogConfig>;
+const AuditLogConfigList = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<AuditLogConfigList>;
+
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -2394,7 +3098,11 @@ export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: AuditLogConfigList;
 }
+const AuditConfig = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<AuditConfig>;
+
 export type AuditConfigList = Array<AuditConfig>;
+const AuditConfigList = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<AuditConfigList>;
+
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -2406,34 +3114,61 @@ export interface Policy {
   /** Specifies cloud audit logging configuration for this policy. */
   auditConfigs?: AuditConfigList;
 }
+const Policy = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<Policy>;
+
 export interface GetIamPolicyProjectsLocationsConversionWorkspacesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
+const GetIamPolicyProjectsLocationsConversionWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<GetIamPolicyProjectsLocationsConversionWorkspacesRequest>;
+
 export interface GetIamPolicyProjectsLocationsMigrationJobsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
+const GetIamPolicyProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<GetIamPolicyProjectsLocationsMigrationJobsRequest>;
+
 export interface GetIamPolicyProjectsLocationsMigrationJobsObjectsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
+const GetIamPolicyProjectsLocationsMigrationJobsObjectsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<GetIamPolicyProjectsLocationsMigrationJobsObjectsRequest>;
+
 export interface GetIamPolicyProjectsLocationsPrivateConnectionsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
+const GetIamPolicyProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<GetIamPolicyProjectsLocationsPrivateConnectionsRequest>;
+
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
+const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<GetProjectsLocationsRequest>;
+
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
@@ -2447,26 +3182,53 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
+const Location = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<Location>;
+
 export interface GetProjectsLocationsConnectionProfilesRequest {
   /** Required. Name of the connection profile resource to get. */
   name: string;
 }
+const GetProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<GetProjectsLocationsConnectionProfilesRequest>;
+
 export interface GetProjectsLocationsConversionWorkspacesRequest {
   /** Required. Name of the conversion workspace resource to get. */
   name: string;
 }
+const GetProjectsLocationsConversionWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<GetProjectsLocationsConversionWorkspacesRequest>;
+
 export interface GetProjectsLocationsConversionWorkspacesMappingRulesRequest {
   /** Required. Name of the mapping rule resource to get. Example: conversionWorkspaces/123/mappingRules/rule123 In order to retrieve a previous revision of the mapping rule, also provide the revision ID. Example: conversionWorkspace/123/mappingRules/rule123@c7cfa2a8c7cfa2a8c7cfa2a8c7cfa2a8 */
   name: string;
 }
+const GetProjectsLocationsConversionWorkspacesMappingRulesRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<GetProjectsLocationsConversionWorkspacesMappingRulesRequest>;
+
 export interface GetProjectsLocationsMigrationJobsRequest {
   /** Required. Name of the migration job resource to get. */
   name: string;
 }
+const GetProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<GetProjectsLocationsMigrationJobsRequest>;
+
 export interface GetProjectsLocationsMigrationJobsObjectsRequest {
   /** Required. The name of the migration job object resource to get. */
   name: string;
 }
+const GetProjectsLocationsMigrationJobsObjectsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<GetProjectsLocationsMigrationJobsObjectsRequest>;
+
 export type MigrationJobObjectStateEnum =
   | "STATE_UNSPECIFIED"
   | "NOT_STARTED"
@@ -2478,11 +3240,18 @@ export type MigrationJobObjectStateEnum =
   | "REMOVING"
   | "NOT_SELECTED"
   | "COMPLETED";
+const MigrationJobObjectStateEnum = S.String;
+
 /** Metadata for heterogeneous migration jobs objects. */
 export interface HeterogeneousMetadata {
   /** The number of unsupported events. */
   unsupportedEventsCount?: string;
 }
+const HeterogeneousMetadata = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<HeterogeneousMetadata>;
+
 export type MigrationJobObjectPhaseEnum =
   | "PHASE_UNSPECIFIED"
   | "FULL_DUMP"
@@ -2493,6 +3262,8 @@ export type MigrationJobObjectPhaseEnum =
   | "DIFF_BACKUP"
   | "CREATING_BACKUP"
   | "RESTORING_BACKUP";
+const MigrationJobObjectPhaseEnum = S.String;
+
 /** A specific Migration Job Object (e.g. a specifc DB Table) */
 export interface MigrationJobObject {
   /** The state of the migration job object. */
@@ -2512,18 +3283,32 @@ export interface MigrationJobObject {
   /** Output only. The last update time of the migration job object. */
   updateTime?: string;
 }
+const MigrationJobObject = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<MigrationJobObject>;
+
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+
 export interface GetProjectsLocationsPrivateConnectionsRequest {
   /** Required. The name of the private connection to get. */
   name: string;
 }
+const GetProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<GetProjectsLocationsPrivateConnectionsRequest>;
+
 export type ImportMappingRulesRequestRulesFormatEnum =
   | "IMPORT_RULES_FILE_FORMAT_UNSPECIFIED"
   | "IMPORT_RULES_FILE_FORMAT_HARBOUR_BRIDGE_SESSION_FILE"
   | "IMPORT_RULES_FILE_FORMAT_ORATOPG_CONFIG_FILE";
+const ImportMappingRulesRequestRulesFormatEnum = S.String;
+
 /** Details of a single rules file. */
 export interface RulesFile {
   /** Required. The text content of the rules that needs to be converted. */
@@ -2531,7 +3316,11 @@ export interface RulesFile {
   /** Required. The filename of the rules that needs to be converted. The filename is used mainly so that future logs of the import rules job contain it, and can therefore be searched by it. */
   rulesSourceFilename?: string;
 }
+const RulesFile = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<RulesFile>;
+
 export type RulesFileList = Array<RulesFile>;
+const RulesFileList = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<RulesFileList>;
+
 /** Request message for 'ImportMappingRules' request. */
 export interface ImportMappingRulesRequest {
   /** Required. The format of the rules content file. */
@@ -2541,12 +3330,22 @@ export interface ImportMappingRulesRequest {
   /** Required. Should the conversion workspace be committed automatically after the import operation. */
   autoCommit?: boolean;
 }
+const ImportMappingRulesRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<ImportMappingRulesRequest>;
+
 export interface ImportProjectsLocationsConversionWorkspacesMappingRulesRequest {
   /** Required. Name of the conversion workspace resource to import the rules to in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}. */
   parent: string;
   /** Request body */
   body?: ImportMappingRulesRequest;
 }
+const ImportProjectsLocationsConversionWorkspacesMappingRulesRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<ImportProjectsLocationsConversionWorkspacesMappingRulesRequest>;
+
 export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
@@ -2559,7 +3358,14 @@ export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
 }
+const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<ListProjectsLocationsRequest>;
+
 export type LocationList = Array<Location>;
+const LocationList = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<LocationList>;
+
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -2567,6 +3373,11 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
+const ListLocationsResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<ListLocationsResponse>;
+
 export interface ListProjectsLocationsConnectionProfilesRequest {
   /** Optional. A page token, received from a previous `ListConnectionProfiles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConnectionProfiles` must match the call that provided the page token. */
   pageToken?: string;
@@ -2579,7 +3390,17 @@ export interface ListProjectsLocationsConnectionProfilesRequest {
   /** Optional. A filter expression that filters connection profiles listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <. For example, list connection profiles created this year by specifying **createTime %gt; 2020-01-01T00:00:00.000000000Z**. You can also filter nested fields. For example, you could specify **mySql.username = %lt;my_username%gt;** to list all connection profiles configured to connect with a specific username. */
   filter?: string;
 }
+const ListProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<ListProjectsLocationsConnectionProfilesRequest>;
+
 export type ConnectionProfileList = Array<ConnectionProfile>;
+const ConnectionProfileList = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<ConnectionProfileList>;
+
 /** Response message for 'ListConnectionProfiles' request. */
 export interface ListConnectionProfilesResponse {
   /** The response list of connection profiles. */
@@ -2589,6 +3410,11 @@ export interface ListConnectionProfilesResponse {
   /** A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListConnectionProfilesResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<ListConnectionProfilesResponse>;
+
 export interface ListProjectsLocationsConversionWorkspacesRequest {
   /** Optional. The nextPageToken value received in the previous call to conversionWorkspaces.list, used in the subsequent request to retrieve the next page of results. On first call this should be left blank. When paginating, all other parameters provided to conversionWorkspaces.list must match the call that provided the page token. */
   pageToken?: string;
@@ -2599,6 +3425,11 @@ export interface ListProjectsLocationsConversionWorkspacesRequest {
   /** Optional. A filter expression that filters conversion workspaces listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <. For example, list conversion workspaces created this year by specifying **createTime %gt; 2020-01-01T00:00:00.000000000Z.** You can also filter nested fields. For example, you could specify **source.version = "12.c.1"** to select all conversion workspaces with source database version equal to 12.c.1. */
   filter?: string;
 }
+const ListProjectsLocationsConversionWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<ListProjectsLocationsConversionWorkspacesRequest>;
+
 /** Response message for 'ListConversionWorkspaces' request. */
 export interface ListConversionWorkspacesResponse {
   /** Locations that could not be reached. */
@@ -2608,6 +3439,11 @@ export interface ListConversionWorkspacesResponse {
   /** The list of conversion workspace objects. */
   conversionWorkspaces?: ConversionWorkspaceList;
 }
+const ListConversionWorkspacesResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<ListConversionWorkspacesResponse>;
+
 export interface ListProjectsLocationsConversionWorkspacesMappingRulesRequest {
   /** Optional. The maximum number of rules to return. The service may return fewer than this value. */
   pageSize?: number;
@@ -2616,7 +3452,14 @@ export interface ListProjectsLocationsConversionWorkspacesMappingRulesRequest {
   /** Required. Name of the conversion workspace resource whose mapping rules are listed in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}. */
   parent: string;
 }
+const ListProjectsLocationsConversionWorkspacesMappingRulesRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<ListProjectsLocationsConversionWorkspacesMappingRulesRequest>;
+
 export type MappingRuleList = Array<MappingRule>;
+const MappingRuleList = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<MappingRuleList>;
+
 /** Response message for 'ListMappingRulesRequest' request. */
 export interface ListMappingRulesResponse {
   /** A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2624,6 +3467,11 @@ export interface ListMappingRulesResponse {
   /** The list of conversion workspace mapping rules. */
   mappingRules?: MappingRuleList;
 }
+const ListMappingRulesResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<ListMappingRulesResponse>;
+
 export interface ListProjectsLocationsMigrationJobsRequest {
   /** Optional. The nextPageToken value received in the previous call to migrationJobs.list, used in the subsequent request to retrieve the next page of results. On first call this should be left blank. When paginating, all other parameters provided to migrationJobs.list must match the call that provided the page token. */
   pageToken?: string;
@@ -2636,7 +3484,14 @@ export interface ListProjectsLocationsMigrationJobsRequest {
   /** Optional. Sort the results based on the migration job name. Valid values are: "name", "name asc", and "name desc". */
   orderBy?: string;
 }
+const ListProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<ListProjectsLocationsMigrationJobsRequest>;
+
 export type MigrationJobList = Array<MigrationJob>;
+const MigrationJobList = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<MigrationJobList>;
+
 /** Response message for 'ListMigrationJobs' request. */
 export interface ListMigrationJobsResponse {
   /** The list of migration jobs objects. */
@@ -2646,6 +3501,11 @@ export interface ListMigrationJobsResponse {
   /** A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListMigrationJobsResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<ListMigrationJobsResponse>;
+
 export interface ListProjectsLocationsMigrationJobsObjectsRequest {
   /** Required. The parent migration job that owns the collection of objects. */
   parent: string;
@@ -2654,7 +3514,17 @@ export interface ListProjectsLocationsMigrationJobsObjectsRequest {
   /** Optional. Maximum number of objects to return. Default is 50. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
+const ListProjectsLocationsMigrationJobsObjectsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<ListProjectsLocationsMigrationJobsObjectsRequest>;
+
 export type MigrationJobObjectList = Array<MigrationJobObject>;
+const MigrationJobObjectList = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<MigrationJobObjectList>;
+
 /** Response containing the objects for a migration job. */
 export interface ListMigrationJobObjectsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. */
@@ -2662,6 +3532,11 @@ export interface ListMigrationJobObjectsResponse {
   /** List of migration job objects. */
   migrationJobObjects?: MigrationJobObjectList;
 }
+const ListMigrationJobObjectsResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<ListMigrationJobObjectsResponse>;
+
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
@@ -2674,7 +3549,14 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+
 export type OperationList = Array<Operation>;
+const OperationList = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<OperationList>;
+
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -2684,6 +3566,11 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListProjectsLocationsPrivateConnectionsRequest {
   /** Optional. Maximum number of private connections to return. If unspecified, at most 50 private connections that are returned. The maximum value is 1000; values above 1000 are coerced to 1000. */
   pageSize?: number;
@@ -2696,7 +3583,17 @@ export interface ListProjectsLocationsPrivateConnectionsRequest {
   /** Optional. Order by fields for the result. */
   orderBy?: string;
 }
+const ListProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRequest>;
+
 export type PrivateConnectionList = Array<PrivateConnection>;
+const PrivateConnectionList = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<PrivateConnectionList>;
+
 /** Response message for 'ListPrivateConnections' request. */
 export interface ListPrivateConnectionsResponse {
   /** A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2706,17 +3603,32 @@ export interface ListPrivateConnectionsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
+const ListPrivateConnectionsResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<ListPrivateConnectionsResponse>;
+
 /** Request for looking up a specific migration job object by its source object identifier. */
 export interface LookupMigrationJobObjectRequest {
   /** Required. The source object identifier which maps to the migration job object. */
   sourceObjectIdentifier?: SourceObjectIdentifier;
 }
+const LookupMigrationJobObjectRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<LookupMigrationJobObjectRequest>;
+
 export interface LookupProjectsLocationsMigrationJobsObjectsRequest {
   /** Required. The parent migration job that owns the collection of objects. */
   parent: string;
   /** Request body */
   body?: LookupMigrationJobObjectRequest;
 }
+const LookupProjectsLocationsMigrationJobsObjectsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<LookupProjectsLocationsMigrationJobsObjectsRequest>;
+
 export interface PatchProjectsLocationsConnectionProfilesRequest {
   /** Optional. Only validate the connection profile, but don't update any resources. The default is false. Only supported for Oracle connection profiles. */
   validateOnly?: boolean;
@@ -2731,6 +3643,11 @@ export interface PatchProjectsLocationsConnectionProfilesRequest {
   /** Request body */
   body?: ConnectionProfile;
 }
+const PatchProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<PatchProjectsLocationsConnectionProfilesRequest>;
+
 export interface PatchProjectsLocationsConversionWorkspacesRequest {
   /** Required. Field mask is used to specify the fields to be overwritten by the update in the conversion workspace resource. */
   updateMask?: string;
@@ -2741,6 +3658,11 @@ export interface PatchProjectsLocationsConversionWorkspacesRequest {
   /** Request body */
   body?: ConversionWorkspace;
 }
+const PatchProjectsLocationsConversionWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<PatchProjectsLocationsConversionWorkspacesRequest>;
+
 export interface PatchProjectsLocationsMigrationJobsRequest {
   /** Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
   requestId?: string;
@@ -2751,17 +3673,32 @@ export interface PatchProjectsLocationsMigrationJobsRequest {
   /** Request body */
   body?: MigrationJob;
 }
+const PatchProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<PatchProjectsLocationsMigrationJobsRequest>;
+
 /** Request message for 'PromoteMigrationJob' request. */
 export interface PromoteMigrationJobRequest {
   /** Optional. The object filter to apply to the migration job. */
   objectsFilter?: MigrationJobObjectsConfig;
 }
+const PromoteMigrationJobRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<PromoteMigrationJobRequest>;
+
 export interface PromoteProjectsLocationsMigrationJobsRequest {
   /** Name of the migration job resource to promote. */
   name: string;
   /** Request body */
   body?: PromoteMigrationJobRequest;
 }
+const PromoteProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<PromoteProjectsLocationsMigrationJobsRequest>;
+
 /** Request message for 'RestartMigrationJob' request. */
 export interface RestartMigrationJobRequest {
   /** Optional. If true, only failed objects will be restarted. */
@@ -2771,23 +3708,43 @@ export interface RestartMigrationJobRequest {
   /** Optional. The object filter to apply to the migration job. */
   objectsFilter?: MigrationJobObjectsConfig;
 }
+const RestartMigrationJobRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<RestartMigrationJobRequest>;
+
 export interface RestartProjectsLocationsMigrationJobsRequest {
   /** Name of the migration job resource to restart. */
   name: string;
   /** Request body */
   body?: RestartMigrationJobRequest;
 }
+const RestartProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<RestartProjectsLocationsMigrationJobsRequest>;
+
 /** Request message for 'ResumeMigrationJob' request. */
 export interface ResumeMigrationJobRequest {
   /** Optional. Resume the migration job without running prior configuration verification. Defaults to `false`. */
   skipValidation?: boolean;
 }
+const ResumeMigrationJobRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<ResumeMigrationJobRequest>;
+
 export interface ResumeProjectsLocationsMigrationJobsRequest {
   /** Name of the migration job resource to resume. */
   name: string;
   /** Request body */
   body?: ResumeMigrationJobRequest;
 }
+const ResumeProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<ResumeProjectsLocationsMigrationJobsRequest>;
+
 /** Request message for 'RollbackConversionWorkspace' request. */
 export type RollbackConversionWorkspaceRequest = CancelOperationRequest;
 export interface RollbackProjectsLocationsConversionWorkspacesRequest {
@@ -2796,6 +3753,11 @@ export interface RollbackProjectsLocationsConversionWorkspacesRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
+const RollbackProjectsLocationsConversionWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<RollbackProjectsLocationsConversionWorkspacesRequest>;
+
 export interface SearchBackgroundJobsProjectsLocationsConversionWorkspacesRequest {
   /** Optional. The maximum number of jobs to return. The service may return fewer than this value. If unspecified, at most 100 jobs are returned. The maximum value is 100; values above 100 are coerced to 100. */
   maxSize?: number;
@@ -2806,16 +3768,25 @@ export interface SearchBackgroundJobsProjectsLocationsConversionWorkspacesReques
   /** Required. Name of the conversion workspace resource whose jobs are listed, in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}. */
   conversionWorkspace: string;
 }
+const SearchBackgroundJobsProjectsLocationsConversionWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<SearchBackgroundJobsProjectsLocationsConversionWorkspacesRequest>;
+
 export type BackgroundJobLogEntryJobTypeEnum =
   | "BACKGROUND_JOB_TYPE_UNSPECIFIED"
   | "BACKGROUND_JOB_TYPE_SOURCE_SEED"
   | "BACKGROUND_JOB_TYPE_CONVERT"
   | "BACKGROUND_JOB_TYPE_APPLY_DESTINATION"
   | "BACKGROUND_JOB_TYPE_IMPORT_RULES_FILE";
+const BackgroundJobLogEntryJobTypeEnum = S.String;
+
 export type ImportRulesJobDetailsFileFormatEnum =
   | "IMPORT_RULES_FILE_FORMAT_UNSPECIFIED"
   | "IMPORT_RULES_FILE_FORMAT_HARBOUR_BRIDGE_SESSION_FILE"
   | "IMPORT_RULES_FILE_FORMAT_ORATOPG_CONFIG_FILE";
+const ImportRulesJobDetailsFileFormatEnum = S.String;
+
 /** Details regarding an Import Rules background job. */
 export interface ImportRulesJobDetails {
   /** Output only. The requested file format. */
@@ -2823,20 +3794,31 @@ export interface ImportRulesJobDetails {
   /** Output only. File names used for the import rules job. */
   files?: StringList;
 }
+const ImportRulesJobDetails = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<ImportRulesJobDetails>;
+
 /** Details regarding a Convert background job. */
 export interface ConvertJobDetails {
   /** Output only. AIP-160 based filter used to specify the entities to convert */
   filter?: string;
 }
+const ConvertJobDetails = /*@__PURE__*/ __L.at(__c29, 0) as any as S.Schema<ConvertJobDetails>;
+
 /** Details regarding a Seed background job. */
 export interface SeedJobDetails {
   /** Output only. The connection profile which was used for the seed job. */
   connectionProfile?: string;
 }
+const SeedJobDetails = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<SeedJobDetails>;
+
 export type BackgroundJobLogEntryCompletionStateEnum =
   | "JOB_COMPLETION_STATE_UNSPECIFIED"
   | "SUCCEEDED"
   | "FAILED";
+const BackgroundJobLogEntryCompletionStateEnum = S.String;
+
 /** Details regarding an Apply background job. */
 export interface ApplyJobDetails {
   /** Output only. The connection profile which was used for the apply job. */
@@ -2844,6 +3826,8 @@ export interface ApplyJobDetails {
   /** Output only. AIP-160 based filter used to specify the entities to apply */
   filter?: string;
 }
+const ApplyJobDetails = /*@__PURE__*/ __L.at(__c29, 2) as any as S.Schema<ApplyJobDetails>;
+
 /** Execution log of a background job. */
 export interface BackgroundJobLogEntry {
   /** The type of job that was executed. */
@@ -2869,12 +3853,27 @@ export interface BackgroundJobLogEntry {
   /** The timestamp when the background job was started. */
   startTime?: string;
 }
+const BackgroundJobLogEntry = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<BackgroundJobLogEntry>;
+
 export type BackgroundJobLogEntryList = Array<BackgroundJobLogEntry>;
+const BackgroundJobLogEntryList = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<BackgroundJobLogEntryList>;
+
 /** Response message for 'SearchBackgroundJobs' request. */
 export interface SearchBackgroundJobsResponse {
   /** The list of conversion workspace mapping rules. */
   jobs?: BackgroundJobLogEntryList;
 }
+const SearchBackgroundJobsResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<SearchBackgroundJobsResponse>;
+
 /** Request message for 'SeedConversionWorkspace' request. */
 export interface SeedConversionWorkspaceRequest {
   /** Optional. Fully qualified (Uri) name of the destination connection profile. */
@@ -2884,18 +3883,30 @@ export interface SeedConversionWorkspaceRequest {
   /** Should the conversion workspace be committed automatically after the seed operation. */
   autoCommit?: boolean;
 }
+const SeedConversionWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<SeedConversionWorkspaceRequest>;
+
 export interface SeedProjectsLocationsConversionWorkspacesRequest {
   /** Name of the conversion workspace resource to seed with new database structure, in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}. */
   name: string;
   /** Request body */
   body?: SeedConversionWorkspaceRequest;
 }
+const SeedProjectsLocationsConversionWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<SeedProjectsLocationsConversionWorkspacesRequest>;
+
 export type SetDraftEntityDdlRequestBasedOnDdlKindEnum =
   | "DDL_KIND_UNSPECIFIED"
   | "SOURCE"
   | "DETERMINISTIC"
   | "AI"
   | "USER_EDIT";
+const SetDraftEntityDdlRequestBasedOnDdlKindEnum = S.String;
+
 export type SetDraftEntityDdlRequestEntityTypeEnum =
   | "DATABASE_ENTITY_TYPE_UNSPECIFIED"
   | "DATABASE_ENTITY_TYPE_SCHEMA"
@@ -2913,12 +3924,16 @@ export type SetDraftEntityDdlRequestEntityTypeEnum =
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
   | "DATABASE_ENTITY_TYPE_DATABASE";
+const SetDraftEntityDdlRequestEntityTypeEnum = S.String;
+
 export type SetDraftEntityDdlRequestDdlKindEnum =
   | "DDL_KIND_UNSPECIFIED"
   | "SOURCE"
   | "DETERMINISTIC"
   | "AI"
   | "USER_EDIT";
+const SetDraftEntityDdlRequestDdlKindEnum = S.String;
+
 /** Request message for DataMigrationService.SetDraftEntityDdl. */
 export interface SetDraftEntityDdlRequest {
   /** Required. The DDL to set. */
@@ -2934,14 +3949,27 @@ export interface SetDraftEntityDdlRequest {
   /** Optional. The updated DDL Kind. Can be either USER_EDIT (default) or AI. */
   ddlKind?: SetDraftEntityDdlRequestDdlKindEnum | (string & {});
 }
+const SetDraftEntityDdlRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<SetDraftEntityDdlRequest>;
+
 export interface SetDraftEntityDdlProjectsLocationsConversionWorkspacesRequest {
   /** Required. Name of the conversion workspace resource in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}. */
   conversionWorkspace: string;
   /** Request body */
   body?: SetDraftEntityDdlRequest;
 }
+const SetDraftEntityDdlProjectsLocationsConversionWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<SetDraftEntityDdlProjectsLocationsConversionWorkspacesRequest>;
+
 /** Response message for DataMigrationService.SetDraftEntityDdl. */
 export interface SetDraftEntityDdlResponse {}
+const SetDraftEntityDdlResponse =
+  CancelOperationRequest as any as S.Schema<SetDraftEntityDdlResponse>;
+
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
@@ -2949,47 +3977,84 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
+const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<SetIamPolicyRequest>;
+
 export interface SetIamPolicyProjectsLocationsConnectionProfilesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<SetIamPolicyProjectsLocationsConnectionProfilesRequest>;
+
 export interface SetIamPolicyProjectsLocationsConversionWorkspacesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsConversionWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<SetIamPolicyProjectsLocationsConversionWorkspacesRequest>;
+
 export interface SetIamPolicyProjectsLocationsMigrationJobsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<SetIamPolicyProjectsLocationsMigrationJobsRequest>;
+
 export interface SetIamPolicyProjectsLocationsMigrationJobsObjectsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsMigrationJobsObjectsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<SetIamPolicyProjectsLocationsMigrationJobsObjectsRequest>;
+
 export interface SetIamPolicyProjectsLocationsPrivateConnectionsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<SetIamPolicyProjectsLocationsPrivateConnectionsRequest>;
+
 /** Request message for 'StartMigrationJob' request. */
 export interface StartMigrationJobRequest {
   /** Optional. Start the migration job without running prior configuration verification. Defaults to `false`. */
   skipValidation?: boolean;
 }
+const StartMigrationJobRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<StartMigrationJobRequest>;
+
 export interface StartProjectsLocationsMigrationJobsRequest {
   /** Name of the migration job resource to start. */
   name: string;
   /** Request body */
   body?: StartMigrationJobRequest;
 }
+const StartProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<StartProjectsLocationsMigrationJobsRequest>;
+
 /** Request message for 'StopMigrationJob' request. */
 export type StopMigrationJobRequest = CancelOperationRequest;
 export interface StopProjectsLocationsMigrationJobsRequest {
@@ -2998,46 +4063,84 @@ export interface StopProjectsLocationsMigrationJobsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
+const StopProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<StopProjectsLocationsMigrationJobsRequest>;
+
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
+const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<TestIamPermissionsRequest>;
+
 export interface TestIamPermissionsProjectsLocationsConnectionProfilesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsConnectionProfilesRequest>;
+
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
+const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
+
 export interface TestIamPermissionsProjectsLocationsConversionWorkspacesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsConversionWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsConversionWorkspacesRequest>;
+
 export interface TestIamPermissionsProjectsLocationsMigrationJobsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsMigrationJobsRequest>;
+
 export interface TestIamPermissionsProjectsLocationsMigrationJobsObjectsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsMigrationJobsObjectsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsMigrationJobsObjectsRequest>;
+
 export interface TestIamPermissionsProjectsLocationsPrivateConnectionsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsPrivateConnectionsRequest>;
+
 /** Request message for 'VerifyMigrationJob' request. */
 export interface VerifyMigrationJobRequest {
   /** Optional. The changed migration job parameters to verify. It will not update the migration job. */
@@ -3045,12 +4148,22 @@ export interface VerifyMigrationJobRequest {
   /** Optional. Field mask is used to specify the changed fields to be verified. It will not update the migration job. */
   updateMask?: string;
 }
+const VerifyMigrationJobRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<VerifyMigrationJobRequest>;
+
 export interface VerifyProjectsLocationsMigrationJobsRequest {
   /** Name of the migration job resource to verify. */
   name: string;
   /** Request body */
   body?: VerifyMigrationJobRequest;
 }
+const VerifyProjectsLocationsMigrationJobsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<VerifyProjectsLocationsMigrationJobsRequest>;
+
 export type ApplyProjectsLocationsConversionWorkspacesError =
   | NotFound
   | Forbidden
@@ -3064,8 +4177,8 @@ export const applyProjectsLocationsConversionWorkspaces: API.OperationMethod<
   ApplyProjectsLocationsConversionWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<ApplyProjectsLocationsConversionWorkspacesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: ApplyProjectsLocationsConversionWorkspacesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3084,8 +4197,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(6) as any as S.Schema<Empty>,
+  input: CancelProjectsLocationsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3104,8 +4217,8 @@ export const commitProjectsLocationsConversionWorkspaces: API.OperationMethod<
   CommitProjectsLocationsConversionWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CommitProjectsLocationsConversionWorkspacesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: CommitProjectsLocationsConversionWorkspacesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3124,8 +4237,8 @@ export const convertProjectsLocationsConversionWorkspaces: API.OperationMethod<
   ConvertProjectsLocationsConversionWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<ConvertProjectsLocationsConversionWorkspacesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: ConvertProjectsLocationsConversionWorkspacesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3144,8 +4257,8 @@ export const createProjectsLocationsConnectionProfiles: API.OperationMethod<
   CreateProjectsLocationsConnectionProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<CreateProjectsLocationsConnectionProfilesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsConnectionProfilesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3164,8 +4277,8 @@ export const createProjectsLocationsConversionWorkspaces: API.OperationMethod<
   CreateProjectsLocationsConversionWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<CreateProjectsLocationsConversionWorkspacesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsConversionWorkspacesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3184,8 +4297,8 @@ export const createProjectsLocationsConversionWorkspacesMappingRules: API.Operat
   CreateProjectsLocationsConversionWorkspacesMappingRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<CreateProjectsLocationsConversionWorkspacesMappingRulesRequest>,
-  output: __S(65) as any as S.Schema<MappingRule>,
+  input: CreateProjectsLocationsConversionWorkspacesMappingRulesRequest,
+  output: MappingRule,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3204,8 +4317,8 @@ export const createProjectsLocationsMigrationJobs: API.OperationMethod<
   CreateProjectsLocationsMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<CreateProjectsLocationsMigrationJobsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsMigrationJobsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3224,8 +4337,8 @@ export const createProjectsLocationsPrivateConnections: API.OperationMethod<
   CreateProjectsLocationsPrivateConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<CreateProjectsLocationsPrivateConnectionsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsPrivateConnectionsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3244,8 +4357,8 @@ export const deleteProjectsLocationsConnectionProfiles: API.OperationMethod<
   DeleteProjectsLocationsConnectionProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<DeleteProjectsLocationsConnectionProfilesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsConnectionProfilesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3264,8 +4377,8 @@ export const deleteProjectsLocationsConversionWorkspaces: API.OperationMethod<
   DeleteProjectsLocationsConversionWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<DeleteProjectsLocationsConversionWorkspacesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsConversionWorkspacesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3284,10 +4397,8 @@ export const deleteProjectsLocationsConversionWorkspacesMappingRules: API.Operat
   DeleteProjectsLocationsConversionWorkspacesMappingRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    106,
-  ) as any as S.Schema<DeleteProjectsLocationsConversionWorkspacesMappingRulesRequest>,
-  output: __S(6) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsConversionWorkspacesMappingRulesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3306,8 +4417,8 @@ export const deleteProjectsLocationsMigrationJobs: API.OperationMethod<
   DeleteProjectsLocationsMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<DeleteProjectsLocationsMigrationJobsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsMigrationJobsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3326,8 +4437,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(6) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3346,8 +4457,8 @@ export const deleteProjectsLocationsPrivateConnections: API.OperationMethod<
   DeleteProjectsLocationsPrivateConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<DeleteProjectsLocationsPrivateConnectionsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsPrivateConnectionsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3366,8 +4477,8 @@ export const demoteDestinationProjectsLocationsMigrationJobs: API.OperationMetho
   DemoteDestinationProjectsLocationsMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<DemoteDestinationProjectsLocationsMigrationJobsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: DemoteDestinationProjectsLocationsMigrationJobsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3384,10 +4495,8 @@ export const describeConversionWorkspaceRevisionsProjectsLocationsConversionWork
   DescribeConversionWorkspaceRevisionsProjectsLocationsConversionWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    111,
-  ) as any as S.Schema<DescribeConversionWorkspaceRevisionsProjectsLocationsConversionWorkspacesRequest>,
-  output: __S(113) as any as S.Schema<DescribeConversionWorkspaceRevisionsResponse>,
+  input: DescribeConversionWorkspaceRevisionsProjectsLocationsConversionWorkspacesRequest,
+  output: DescribeConversionWorkspaceRevisionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3405,10 +4514,8 @@ export const describeDatabaseEntitiesProjectsLocationsConversionWorkspaces: API.
   GcpOpContext,
   DescribeDatabaseEntitiesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(
-    114,
-  ) as any as S.Schema<DescribeDatabaseEntitiesProjectsLocationsConversionWorkspacesRequest>,
-  output: __S(144) as any as S.Schema<DescribeDatabaseEntitiesResponse>,
+  input: DescribeDatabaseEntitiesProjectsLocationsConversionWorkspacesRequest,
+  output: DescribeDatabaseEntitiesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3427,10 +4534,8 @@ export const fetchEntitiesStatusViewProjectsLocationsConversionWorkspaces: API.P
   GcpOpContext,
   FetchEntitiesStatusViewResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(
-    145,
-  ) as any as S.Schema<FetchEntitiesStatusViewProjectsLocationsConversionWorkspacesRequest>,
-  output: __S(151) as any as S.Schema<FetchEntitiesStatusViewResponse>,
+  input: FetchEntitiesStatusViewProjectsLocationsConversionWorkspacesRequest,
+  output: FetchEntitiesStatusViewResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3449,8 +4554,8 @@ export const fetchIssuesProjectsLocationsConversionWorkspaces: API.PaginatedOper
   GcpOpContext,
   FetchIssuesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(152) as any as S.Schema<FetchIssuesProjectsLocationsConversionWorkspacesRequest>,
-  output: __S(156) as any as S.Schema<FetchIssuesResponse>,
+  input: FetchIssuesProjectsLocationsConversionWorkspacesRequest,
+  output: FetchIssuesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3468,8 +4573,8 @@ export const fetchSourceObjectsProjectsLocationsMigrationJobs: API.OperationMeth
   FetchSourceObjectsProjectsLocationsMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157) as any as S.Schema<FetchSourceObjectsProjectsLocationsMigrationJobsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: FetchSourceObjectsProjectsLocationsMigrationJobsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3484,8 +4589,8 @@ export const fetchStaticIpsProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   FetchStaticIpsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(158) as any as S.Schema<FetchStaticIpsProjectsLocationsRequest>,
-  output: __S(159) as any as S.Schema<FetchStaticIpsResponse>,
+  input: FetchStaticIpsProjectsLocationsRequest,
+  output: FetchStaticIpsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3505,8 +4610,8 @@ export const generateSshScriptProjectsLocationsMigrationJobs: API.OperationMetho
   GenerateSshScriptProjectsLocationsMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<GenerateSshScriptProjectsLocationsMigrationJobsRequest>,
-  output: __S(164) as any as S.Schema<SshScript>,
+  input: GenerateSshScriptProjectsLocationsMigrationJobsRequest,
+  output: SshScript,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3525,8 +4630,8 @@ export const generateTcpProxyScriptProjectsLocationsMigrationJobs: API.Operation
   GenerateTcpProxyScriptProjectsLocationsMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<GenerateTcpProxyScriptProjectsLocationsMigrationJobsRequest>,
-  output: __S(164) as any as S.Schema<TcpProxyScript>,
+  input: GenerateTcpProxyScriptProjectsLocationsMigrationJobsRequest,
+  output: TcpProxyScript,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3543,8 +4648,8 @@ export const getIamPolicyProjectsLocationsConnectionProfiles: API.OperationMetho
   GetIamPolicyProjectsLocationsConnectionProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<GetIamPolicyProjectsLocationsConnectionProfilesRequest>,
-  output: __S(175) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsConnectionProfilesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3561,8 +4666,8 @@ export const getIamPolicyProjectsLocationsConversionWorkspaces: API.OperationMet
   GetIamPolicyProjectsLocationsConversionWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<GetIamPolicyProjectsLocationsConversionWorkspacesRequest>,
-  output: __S(175) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsConversionWorkspacesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3576,8 +4681,8 @@ export const getIamPolicyProjectsLocationsMigrationJobs: API.OperationMethod<
   GetIamPolicyProjectsLocationsMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<GetIamPolicyProjectsLocationsMigrationJobsRequest>,
-  output: __S(175) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsMigrationJobsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3594,8 +4699,8 @@ export const getIamPolicyProjectsLocationsMigrationJobsObjects: API.OperationMet
   GetIamPolicyProjectsLocationsMigrationJobsObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178) as any as S.Schema<GetIamPolicyProjectsLocationsMigrationJobsObjectsRequest>,
-  output: __S(175) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsMigrationJobsObjectsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3612,8 +4717,8 @@ export const getIamPolicyProjectsLocationsPrivateConnections: API.OperationMetho
   GetIamPolicyProjectsLocationsPrivateConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<GetIamPolicyProjectsLocationsPrivateConnectionsRequest>,
-  output: __S(175) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsPrivateConnectionsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3627,8 +4732,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(181) as any as S.Schema<Location>,
+  input: GetProjectsLocationsRequest,
+  output: Location,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3642,8 +4747,8 @@ export const getProjectsLocationsConnectionProfiles: API.OperationMethod<
   GetProjectsLocationsConnectionProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<GetProjectsLocationsConnectionProfilesRequest>,
-  output: __S(39) as any as S.Schema<ConnectionProfile>,
+  input: GetProjectsLocationsConnectionProfilesRequest,
+  output: ConnectionProfile,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3657,8 +4762,8 @@ export const getProjectsLocationsConversionWorkspaces: API.OperationMethod<
   GetProjectsLocationsConversionWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183) as any as S.Schema<GetProjectsLocationsConversionWorkspacesRequest>,
-  output: __S(42) as any as S.Schema<ConversionWorkspace>,
+  input: GetProjectsLocationsConversionWorkspacesRequest,
+  output: ConversionWorkspace,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3675,8 +4780,8 @@ export const getProjectsLocationsConversionWorkspacesMappingRules: API.Operation
   GetProjectsLocationsConversionWorkspacesMappingRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184) as any as S.Schema<GetProjectsLocationsConversionWorkspacesMappingRulesRequest>,
-  output: __S(65) as any as S.Schema<MappingRule>,
+  input: GetProjectsLocationsConversionWorkspacesMappingRulesRequest,
+  output: MappingRule,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3690,8 +4795,8 @@ export const getProjectsLocationsMigrationJobs: API.OperationMethod<
   GetProjectsLocationsMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<GetProjectsLocationsMigrationJobsRequest>,
-  output: __S(97) as any as S.Schema<MigrationJob>,
+  input: GetProjectsLocationsMigrationJobsRequest,
+  output: MigrationJob,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3705,8 +4810,8 @@ export const getProjectsLocationsMigrationJobsObjects: API.OperationMethod<
   GetProjectsLocationsMigrationJobsObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<GetProjectsLocationsMigrationJobsObjectsRequest>,
-  output: __S(188) as any as S.Schema<MigrationJobObject>,
+  input: GetProjectsLocationsMigrationJobsObjectsRequest,
+  output: MigrationJobObject,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3720,8 +4825,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: GetProjectsLocationsOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3735,8 +4840,8 @@ export const getProjectsLocationsPrivateConnections: API.OperationMethod<
   GetProjectsLocationsPrivateConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190) as any as S.Schema<GetProjectsLocationsPrivateConnectionsRequest>,
-  output: __S(102) as any as S.Schema<PrivateConnection>,
+  input: GetProjectsLocationsPrivateConnectionsRequest,
+  output: PrivateConnection,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3755,10 +4860,8 @@ export const importProjectsLocationsConversionWorkspacesMappingRules: API.Operat
   ImportProjectsLocationsConversionWorkspacesMappingRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    194,
-  ) as any as S.Schema<ImportProjectsLocationsConversionWorkspacesMappingRulesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: ImportProjectsLocationsConversionWorkspacesMappingRulesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3773,8 +4876,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(195) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(197) as any as S.Schema<ListLocationsResponse>,
+  input: ListProjectsLocationsRequest,
+  output: ListLocationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3790,8 +4893,8 @@ export const listProjectsLocationsConnectionProfiles: API.PaginatedOperationMeth
   GcpOpContext,
   ListConnectionProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(198) as any as S.Schema<ListProjectsLocationsConnectionProfilesRequest>,
-  output: __S(200) as any as S.Schema<ListConnectionProfilesResponse>,
+  input: ListProjectsLocationsConnectionProfilesRequest,
+  output: ListConnectionProfilesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3807,8 +4910,8 @@ export const listProjectsLocationsConversionWorkspaces: API.PaginatedOperationMe
   GcpOpContext,
   ListConversionWorkspacesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(201) as any as S.Schema<ListProjectsLocationsConversionWorkspacesRequest>,
-  output: __S(202) as any as S.Schema<ListConversionWorkspacesResponse>,
+  input: ListProjectsLocationsConversionWorkspacesRequest,
+  output: ListConversionWorkspacesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3827,8 +4930,8 @@ export const listProjectsLocationsConversionWorkspacesMappingRules: API.Paginate
   GcpOpContext,
   ListMappingRulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(203) as any as S.Schema<ListProjectsLocationsConversionWorkspacesMappingRulesRequest>,
-  output: __S(205) as any as S.Schema<ListMappingRulesResponse>,
+  input: ListProjectsLocationsConversionWorkspacesMappingRulesRequest,
+  output: ListMappingRulesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3844,8 +4947,8 @@ export const listProjectsLocationsMigrationJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListMigrationJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(206) as any as S.Schema<ListProjectsLocationsMigrationJobsRequest>,
-  output: __S(208) as any as S.Schema<ListMigrationJobsResponse>,
+  input: ListProjectsLocationsMigrationJobsRequest,
+  output: ListMigrationJobsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3861,8 +4964,8 @@ export const listProjectsLocationsMigrationJobsObjects: API.PaginatedOperationMe
   GcpOpContext,
   ListMigrationJobObjectsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(209) as any as S.Schema<ListProjectsLocationsMigrationJobsObjectsRequest>,
-  output: __S(211) as any as S.Schema<ListMigrationJobObjectsResponse>,
+  input: ListProjectsLocationsMigrationJobsObjectsRequest,
+  output: ListMigrationJobObjectsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3878,8 +4981,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(212) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(214) as any as S.Schema<ListOperationsResponse>,
+  input: ListProjectsLocationsOperationsRequest,
+  output: ListOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3895,8 +4998,8 @@ export const listProjectsLocationsPrivateConnections: API.PaginatedOperationMeth
   GcpOpContext,
   ListPrivateConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(215) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRequest>,
-  output: __S(217) as any as S.Schema<ListPrivateConnectionsResponse>,
+  input: ListProjectsLocationsPrivateConnectionsRequest,
+  output: ListPrivateConnectionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3916,8 +5019,8 @@ export const lookupProjectsLocationsMigrationJobsObjects: API.OperationMethod<
   LookupProjectsLocationsMigrationJobsObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219) as any as S.Schema<LookupProjectsLocationsMigrationJobsObjectsRequest>,
-  output: __S(188) as any as S.Schema<MigrationJobObject>,
+  input: LookupProjectsLocationsMigrationJobsObjectsRequest,
+  output: MigrationJobObject,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3936,8 +5039,8 @@ export const patchProjectsLocationsConnectionProfiles: API.OperationMethod<
   PatchProjectsLocationsConnectionProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220) as any as S.Schema<PatchProjectsLocationsConnectionProfilesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: PatchProjectsLocationsConnectionProfilesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3956,8 +5059,8 @@ export const patchProjectsLocationsConversionWorkspaces: API.OperationMethod<
   PatchProjectsLocationsConversionWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221) as any as S.Schema<PatchProjectsLocationsConversionWorkspacesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: PatchProjectsLocationsConversionWorkspacesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3976,8 +5079,8 @@ export const patchProjectsLocationsMigrationJobs: API.OperationMethod<
   PatchProjectsLocationsMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222) as any as S.Schema<PatchProjectsLocationsMigrationJobsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: PatchProjectsLocationsMigrationJobsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3996,8 +5099,8 @@ export const promoteProjectsLocationsMigrationJobs: API.OperationMethod<
   PromoteProjectsLocationsMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224) as any as S.Schema<PromoteProjectsLocationsMigrationJobsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: PromoteProjectsLocationsMigrationJobsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4016,8 +5119,8 @@ export const restartProjectsLocationsMigrationJobs: API.OperationMethod<
   RestartProjectsLocationsMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226) as any as S.Schema<RestartProjectsLocationsMigrationJobsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: RestartProjectsLocationsMigrationJobsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4036,8 +5139,8 @@ export const resumeProjectsLocationsMigrationJobs: API.OperationMethod<
   ResumeProjectsLocationsMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228) as any as S.Schema<ResumeProjectsLocationsMigrationJobsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: ResumeProjectsLocationsMigrationJobsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4056,8 +5159,8 @@ export const rollbackProjectsLocationsConversionWorkspaces: API.OperationMethod<
   RollbackProjectsLocationsConversionWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229) as any as S.Schema<RollbackProjectsLocationsConversionWorkspacesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: RollbackProjectsLocationsConversionWorkspacesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4074,10 +5177,8 @@ export const searchBackgroundJobsProjectsLocationsConversionWorkspaces: API.Oper
   SearchBackgroundJobsProjectsLocationsConversionWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    230,
-  ) as any as S.Schema<SearchBackgroundJobsProjectsLocationsConversionWorkspacesRequest>,
-  output: __S(237) as any as S.Schema<SearchBackgroundJobsResponse>,
+  input: SearchBackgroundJobsProjectsLocationsConversionWorkspacesRequest,
+  output: SearchBackgroundJobsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4096,8 +5197,8 @@ export const seedProjectsLocationsConversionWorkspaces: API.OperationMethod<
   SeedProjectsLocationsConversionWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239) as any as S.Schema<SeedProjectsLocationsConversionWorkspacesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: SeedProjectsLocationsConversionWorkspacesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4116,8 +5217,8 @@ export const setDraftEntityDdlProjectsLocationsConversionWorkspaces: API.Operati
   SetDraftEntityDdlProjectsLocationsConversionWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241) as any as S.Schema<SetDraftEntityDdlProjectsLocationsConversionWorkspacesRequest>,
-  output: __S(6) as any as S.Schema<SetDraftEntityDdlResponse>,
+  input: SetDraftEntityDdlProjectsLocationsConversionWorkspacesRequest,
+  output: SetDraftEntityDdlResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4136,8 +5237,8 @@ export const setIamPolicyProjectsLocationsConnectionProfiles: API.OperationMetho
   SetIamPolicyProjectsLocationsConnectionProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243) as any as S.Schema<SetIamPolicyProjectsLocationsConnectionProfilesRequest>,
-  output: __S(175) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsConnectionProfilesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4156,8 +5257,8 @@ export const setIamPolicyProjectsLocationsConversionWorkspaces: API.OperationMet
   SetIamPolicyProjectsLocationsConversionWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244) as any as S.Schema<SetIamPolicyProjectsLocationsConversionWorkspacesRequest>,
-  output: __S(175) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsConversionWorkspacesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4176,8 +5277,8 @@ export const setIamPolicyProjectsLocationsMigrationJobs: API.OperationMethod<
   SetIamPolicyProjectsLocationsMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245) as any as S.Schema<SetIamPolicyProjectsLocationsMigrationJobsRequest>,
-  output: __S(175) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsMigrationJobsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4196,8 +5297,8 @@ export const setIamPolicyProjectsLocationsMigrationJobsObjects: API.OperationMet
   SetIamPolicyProjectsLocationsMigrationJobsObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246) as any as S.Schema<SetIamPolicyProjectsLocationsMigrationJobsObjectsRequest>,
-  output: __S(175) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsMigrationJobsObjectsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4216,8 +5317,8 @@ export const setIamPolicyProjectsLocationsPrivateConnections: API.OperationMetho
   SetIamPolicyProjectsLocationsPrivateConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247) as any as S.Schema<SetIamPolicyProjectsLocationsPrivateConnectionsRequest>,
-  output: __S(175) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsPrivateConnectionsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4236,8 +5337,8 @@ export const startProjectsLocationsMigrationJobs: API.OperationMethod<
   StartProjectsLocationsMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249) as any as S.Schema<StartProjectsLocationsMigrationJobsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: StartProjectsLocationsMigrationJobsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4256,8 +5357,8 @@ export const stopProjectsLocationsMigrationJobs: API.OperationMethod<
   StopProjectsLocationsMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250) as any as S.Schema<StopProjectsLocationsMigrationJobsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: StopProjectsLocationsMigrationJobsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4276,8 +5377,8 @@ export const testIamPermissionsProjectsLocationsConnectionProfiles: API.Operatio
   TestIamPermissionsProjectsLocationsConnectionProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252) as any as S.Schema<TestIamPermissionsProjectsLocationsConnectionProfilesRequest>,
-  output: __S(251) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsConnectionProfilesRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4296,10 +5397,8 @@ export const testIamPermissionsProjectsLocationsConversionWorkspaces: API.Operat
   TestIamPermissionsProjectsLocationsConversionWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    253,
-  ) as any as S.Schema<TestIamPermissionsProjectsLocationsConversionWorkspacesRequest>,
-  output: __S(251) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsConversionWorkspacesRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4318,8 +5417,8 @@ export const testIamPermissionsProjectsLocationsMigrationJobs: API.OperationMeth
   TestIamPermissionsProjectsLocationsMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254) as any as S.Schema<TestIamPermissionsProjectsLocationsMigrationJobsRequest>,
-  output: __S(251) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsMigrationJobsRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4338,10 +5437,8 @@ export const testIamPermissionsProjectsLocationsMigrationJobsObjects: API.Operat
   TestIamPermissionsProjectsLocationsMigrationJobsObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    255,
-  ) as any as S.Schema<TestIamPermissionsProjectsLocationsMigrationJobsObjectsRequest>,
-  output: __S(251) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsMigrationJobsObjectsRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4360,8 +5457,8 @@ export const testIamPermissionsProjectsLocationsPrivateConnections: API.Operatio
   TestIamPermissionsProjectsLocationsPrivateConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256) as any as S.Schema<TestIamPermissionsProjectsLocationsPrivateConnectionsRequest>,
-  output: __S(251) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsPrivateConnectionsRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4380,8 +5477,8 @@ export const verifyProjectsLocationsMigrationJobs: API.OperationMethod<
   VerifyProjectsLocationsMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258) as any as S.Schema<VerifyProjectsLocationsMigrationJobsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: VerifyProjectsLocationsMigrationJobsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4405,7 +5502,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(ApplyConversionWorkspaceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4419,12 +5516,12 @@ function __c0(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(__S(2));
+      return S.Array(DocumentMap);
     case 4:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(__S(3)),
+          details: S.optional(DocumentMapList),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
@@ -4432,9 +5529,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          metadata: S.optional(__S(2)),
-          response: S.optional(__S(2)),
-          error: S.optional(__S(4)),
+          metadata: S.optional(DocumentMap),
+          response: S.optional(DocumentMap),
+          error: S.optional(Status),
           done: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
@@ -4446,7 +5543,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4473,7 +5570,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8).pipe(T.HttpBody())),
+          body: S.optional(CommitConversionWorkspaceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4498,7 +5595,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(10).pipe(T.HttpBody())),
+          body: S.optional(ConvertConversionWorkspaceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4515,10 +5612,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           clientKey: S.optional(S.String),
-          sslFlags: S.optional(__S(12)),
+          sslFlags: S.optional(StringMap),
           clientCertificate: S.optional(S.String),
           caCertificate: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(SslConfigTypeEnum),
         }),
       ).annotate({ identifier: "SslConfig" });
     case 6:
@@ -4529,7 +5626,7 @@ function __c1(j: number): any {
           hostname: S.optional(S.String),
           port: S.optional(S.Number),
           password: S.optional(S.String),
-          ssl: S.optional(__S(13)),
+          ssl: S.optional(SslConfig),
           asmService: S.optional(S.String),
         }),
       ).annotate({ identifier: "OracleAsmConfig" });
@@ -4560,15 +5657,15 @@ function __c2(j: number): any {
         S.Struct({
           password: S.optional(S.String),
           passwordSet: S.optional(S.Boolean),
-          oracleAsmConfig: S.optional(__S(14)),
-          privateConnectivity: S.optional(__S(15)),
+          oracleAsmConfig: S.optional(OracleAsmConfig),
+          privateConnectivity: S.optional(PrivateConnectivity),
           username: S.optional(S.String),
           databaseService: S.optional(S.String),
-          staticServiceIpConnectivity: S.optional(__S(6)),
+          staticServiceIpConnectivity: S.optional(CancelOperationRequest),
           port: S.optional(S.Number),
           host: S.optional(S.String),
-          forwardSshConnectivity: S.optional(__S(16)),
-          ssl: S.optional(__S(13)),
+          forwardSshConnectivity: S.optional(ForwardSshTunnelConnectivity),
+          ssl: S.optional(SslConfig),
         }),
       ).annotate({ identifier: "OracleConnectionProfile" });
     case 2:
@@ -4586,15 +5683,15 @@ function __c2(j: number): any {
           host: S.optional(S.String),
           port: S.optional(S.Number),
           username: S.optional(S.String),
-          forwardSshConnectivity: S.optional(__S(16)),
+          forwardSshConnectivity: S.optional(ForwardSshTunnelConnectivity),
           alloydbClusterId: S.optional(S.String),
-          networkArchitecture: S.optional(S.String),
+          networkArchitecture: S.optional(PostgreSqlConnectionProfileNetworkArchitectureEnum),
           database: S.optional(S.String),
-          ssl: S.optional(__S(13)),
-          privateServiceConnectConnectivity: S.optional(__S(18)),
+          ssl: S.optional(SslConfig),
+          privateServiceConnectConnectivity: S.optional(PrivateServiceConnectConnectivity),
           cloudSqlId: S.optional(S.String),
-          staticIpConnectivity: S.optional(__S(6)),
-          privateConnectivity: S.optional(__S(15)),
+          staticIpConnectivity: S.optional(CancelOperationRequest),
+          privateConnectivity: S.optional(PrivateConnectivity),
           passwordSet: S.optional(S.Boolean),
           password: S.optional(S.String),
         }),
@@ -4611,11 +5708,11 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "SqlAclEntry" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(SqlAclEntry);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          authorizedNetworks: S.optional(__S(21)),
+          authorizedNetworks: S.optional(SqlAclEntryList),
           requireSsl: S.optional(S.Boolean),
           privateNetwork: S.optional(S.String),
           allocatedIpRange: S.optional(S.String),
@@ -4640,30 +5737,30 @@ function __c3(j: number): any {
           zone: S.optional(S.String),
           rootPasswordSet: S.optional(S.Boolean),
           sourceId: S.optional(S.String),
-          databaseFlags: S.optional(__S(12)),
-          ipConfig: S.optional(__S(22)),
+          databaseFlags: S.optional(StringMap),
+          ipConfig: S.optional(SqlIpConfig),
           dataDiskProvisionedThroughput: S.optional(S.String),
-          dataDiskType: S.optional(S.String),
-          activationPolicy: S.optional(S.String),
-          availabilityType: S.optional(S.String),
+          dataDiskType: S.optional(CloudSqlSettingsDataDiskTypeEnum),
+          activationPolicy: S.optional(CloudSqlSettingsActivationPolicyEnum),
+          availabilityType: S.optional(CloudSqlSettingsAvailabilityTypeEnum),
           databaseVersionName: S.optional(S.String),
           tier: S.optional(S.String),
           dataDiskSizeGb: S.optional(S.String),
-          dataCacheConfig: S.optional(__S(23)),
+          dataCacheConfig: S.optional(DataCacheConfig),
           rootPassword: S.optional(S.String),
           collation: S.optional(S.String),
-          userLabels: S.optional(__S(12)),
+          userLabels: S.optional(StringMap),
           dataDiskProvisionedIops: S.optional(S.String),
           storageAutoResizeLimit: S.optional(S.String),
-          databaseVersion: S.optional(S.String),
+          databaseVersion: S.optional(CloudSqlSettingsDatabaseVersionEnum),
           secondaryZone: S.optional(S.String),
-          edition: S.optional(S.String),
+          edition: S.optional(CloudSqlSettingsEditionEnum),
         }),
       ).annotate({ identifier: "CloudSqlSettings" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          settings: S.optional(__S(24)),
+          settings: S.optional(CloudSqlSettings),
           cloudSqlId: S.optional(S.String),
           additionalPublicIp: S.optional(S.String),
           privateIp: S.optional(S.String),
@@ -4700,12 +5797,12 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "AuthorizedNetwork" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(AuthorizedNetwork);
     case 7:
       return S.suspend(() =>
         S.Struct({
           enableOutboundPublicIp: S.optional(S.Boolean),
-          authorizedExternalNetworks: S.optional(__S(30)),
+          authorizedExternalNetworks: S.optional(AuthorizedNetworkList),
           enablePublicIp: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "InstanceNetworkConfig" });
@@ -4718,31 +5815,31 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          machineConfig: S.optional(__S(28)),
+          machineConfig: S.optional(MachineConfig),
           id: S.optional(S.String),
-          labels: S.optional(__S(12)),
-          databaseFlags: S.optional(__S(12)),
+          labels: S.optional(StringMap),
+          databaseFlags: S.optional(StringMap),
           privateIp: S.optional(S.String),
-          instanceNetworkConfig: S.optional(__S(31)),
-          outboundPublicIpAddresses: S.optional(__S(32)),
+          instanceNetworkConfig: S.optional(InstanceNetworkConfig),
+          outboundPublicIpAddresses: S.optional(StringList),
         }),
       ).annotate({ identifier: "PrimaryInstanceSettings" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           vpcNetwork: S.optional(S.String),
-          initialUser: S.optional(__S(26)),
-          databaseVersion: S.optional(S.String),
-          encryptionConfig: S.optional(__S(27)),
-          primaryInstanceSettings: S.optional(__S(33)),
-          labels: S.optional(__S(12)),
+          initialUser: S.optional(UserPassword),
+          databaseVersion: S.optional(AlloyDbSettingsDatabaseVersionEnum),
+          encryptionConfig: S.optional(EncryptionConfig),
+          primaryInstanceSettings: S.optional(PrimaryInstanceSettings),
+          labels: S.optional(StringMap),
         }),
       ).annotate({ identifier: "AlloyDbSettings" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           clusterId: S.optional(S.String),
-          settings: S.optional(__S(34)),
+          settings: S.optional(AlloyDbSettings),
         }),
       ).annotate({ identifier: "AlloyDbConnectionProfile" });
     case 4:
@@ -4761,15 +5858,15 @@ function __c4(j: number): any {
           port: S.optional(S.Number),
           cloudSqlId: S.optional(S.String),
           database: S.optional(S.String),
-          staticIpConnectivity: S.optional(__S(6)),
+          staticIpConnectivity: S.optional(CancelOperationRequest),
           username: S.optional(S.String),
-          forwardSshConnectivity: S.optional(__S(16)),
+          forwardSshConnectivity: S.optional(ForwardSshTunnelConnectivity),
           dbmPort: S.optional(S.Number),
-          privateConnectivity: S.optional(__S(15)),
+          privateConnectivity: S.optional(PrivateConnectivity),
           passwordSet: S.optional(S.Boolean),
-          backups: S.optional(__S(36)),
-          ssl: S.optional(__S(13)),
-          privateServiceConnectConnectivity: S.optional(__S(18)),
+          backups: S.optional(SqlServerBackups),
+          ssl: S.optional(SslConfig),
+          privateServiceConnectConnectivity: S.optional(PrivateServiceConnectConnectivity),
         }),
       ).annotate({
         identifier: "SqlServerConnectionProfile",
@@ -4779,13 +5876,13 @@ function __c4(j: number): any {
         S.Struct({
           port: S.optional(S.Number),
           host: S.optional(S.String),
-          staticServiceIpConnectivity: S.optional(__S(6)),
+          staticServiceIpConnectivity: S.optional(CancelOperationRequest),
           username: S.optional(S.String),
           cloudSqlId: S.optional(S.String),
-          privateServiceConnectConnectivity: S.optional(__S(18)),
-          ssl: S.optional(__S(13)),
+          privateServiceConnectConnectivity: S.optional(PrivateServiceConnectConnectivity),
+          ssl: S.optional(SslConfig),
           passwordSet: S.optional(S.Boolean),
-          privateConnectivity: S.optional(__S(15)),
+          privateConnectivity: S.optional(PrivateConnectivity),
           password: S.optional(S.String),
         }),
       ).annotate({ identifier: "MySqlConnectionProfile" });
@@ -4793,22 +5890,22 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           satisfiesPzi: S.optional(S.Boolean),
-          oracle: S.optional(__S(17)),
-          postgresql: S.optional(__S(19)),
+          oracle: S.optional(OracleConnectionProfile),
+          postgresql: S.optional(PostgreSqlConnectionProfile),
           createTime: S.optional(S.String),
-          error: S.optional(__S(4)),
+          error: S.optional(Status),
           satisfiesPzs: S.optional(S.Boolean),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
-          cloudsql: S.optional(__S(25)),
-          role: S.optional(S.String),
-          labels: S.optional(__S(12)),
-          alloydb: S.optional(__S(35)),
-          sqlserver: S.optional(__S(37)),
-          state: S.optional(S.String),
+          cloudsql: S.optional(CloudSqlConnectionProfile),
+          role: S.optional(ConnectionProfileRoleEnum),
+          labels: S.optional(StringMap),
+          alloydb: S.optional(AlloyDbConnectionProfile),
+          sqlserver: S.optional(SqlServerConnectionProfile),
+          state: S.optional(ConnectionProfileStateEnum),
           updateTime: S.optional(S.String),
-          provider: S.optional(S.String),
-          mysql: S.optional(__S(38)),
+          provider: S.optional(ConnectionProfileProviderEnum),
+          mysql: S.optional(MySqlConnectionProfile),
         }),
       ).annotate({ identifier: "ConnectionProfile" });
   }
@@ -4823,7 +5920,7 @@ function __c5(j: number): any {
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           connectionProfileId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(39).pipe(T.HttpBody())),
+          body: S.optional(ConnectionProfile.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4838,25 +5935,25 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
-          engine: S.optional(S.String),
+          engine: S.optional(DatabaseEngineInfoEngineEnum),
         }),
       ).annotate({ identifier: "DatabaseEngineInfo" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          globalSettings: S.optional(__S(12)),
-          destination: S.optional(__S(41)),
+          globalSettings: S.optional(StringMap),
+          destination: S.optional(DatabaseEngineInfo),
           displayName: S.optional(S.String),
           createTime: S.optional(S.String),
           hasUncommittedChanges: S.optional(S.Boolean),
-          source: S.optional(__S(41)),
+          source: S.optional(DatabaseEngineInfo),
           name: S.optional(S.String),
           latestApplyTime: S.optional(S.String),
           updateTime: S.optional(S.String),
           latestCommitTime: S.optional(S.String),
           latestCommitId: S.optional(S.String),
-          sourceProvider: S.optional(S.String),
-          destinationProvider: S.optional(S.String),
+          sourceProvider: S.optional(ConversionWorkspaceSourceProviderEnum),
+          destinationProvider: S.optional(ConversionWorkspaceDestinationProviderEnum),
           latestConvertTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConversionWorkspace" });
@@ -4866,7 +5963,7 @@ function __c5(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           conversionWorkspaceId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(42).pipe(T.HttpBody())),
+          body: S.optional(ConversionWorkspace.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4909,7 +6006,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          numericFilterOption: S.optional(S.String),
+          numericFilterOption: S.optional(SourceNumericFilterNumericFilterOptionEnum),
           sourceMinPrecisionFilter: S.optional(S.Number),
           sourceMinScaleFilter: S.optional(S.Number),
           sourceMaxScaleFilter: S.optional(S.Number),
@@ -4920,7 +6017,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
-          valueComparison: S.optional(S.String),
+          valueComparison: S.optional(IntComparisonFilterValueComparisonEnum),
         }),
       ).annotate({ identifier: "IntComparisonFilter" });
     case 2:
@@ -4932,22 +6029,22 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          uuidFromBytes: S.optional(__S(6)),
+          uuidFromBytes: S.optional(Empty),
         }),
       ).annotate({ identifier: "ApplyHash" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           ignoreCase: S.optional(S.Boolean),
-          values: S.optional(__S(32)),
-          valuePresentList: S.optional(S.String),
+          values: S.optional(StringList),
+          valuePresentList: S.optional(ValueListFilterValuePresentListEnum),
         }),
       ).annotate({ identifier: "ValueListFilter" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.Number),
-          valueComparison: S.optional(S.String),
+          valueComparison: S.optional(DoubleComparisonFilterValueComparisonEnum),
         }),
       ).annotate({ identifier: "DoubleComparisonFilter" });
     case 6:
@@ -4959,16 +6056,16 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          isNull: S.optional(__S(6)),
-          intComparison: S.optional(__S(49)),
-          assignSpecificValue: S.optional(__S(50)),
-          assignMinValue: S.optional(__S(6)),
-          applyHash: S.optional(__S(51)),
-          valueList: S.optional(__S(52)),
-          assignMaxValue: S.optional(__S(6)),
-          assignNull: S.optional(__S(6)),
-          doubleComparison: S.optional(__S(53)),
-          roundScale: S.optional(__S(54)),
+          isNull: S.optional(Empty),
+          intComparison: S.optional(IntComparisonFilter),
+          assignSpecificValue: S.optional(AssignSpecificValue),
+          assignMinValue: S.optional(Empty),
+          applyHash: S.optional(ApplyHash),
+          valueList: S.optional(ValueListFilter),
+          assignMaxValue: S.optional(Empty),
+          assignNull: S.optional(Empty),
+          doubleComparison: S.optional(DoubleComparisonFilter),
+          roundScale: S.optional(RoundToScale),
         }),
       ).annotate({ identifier: "ValueTransformation" });
   }
@@ -4978,10 +6075,10 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sourceTextFilter: S.optional(__S(47)),
-          sourceNumericFilter: S.optional(__S(48)),
-          valueTransformation: S.optional(__S(55)),
-          customFeatures: S.optional(__S(2)),
+          sourceTextFilter: S.optional(SourceTextFilter),
+          sourceNumericFilter: S.optional(SourceNumericFilter),
+          valueTransformation: S.optional(ValueTransformation),
+          customFeatures: S.optional(DocumentMap),
         }),
       ).annotate({
         identifier: "ConditionalColumnSetValue",
@@ -4992,10 +6089,10 @@ function __c7(j: number): any {
           overrideLength: S.optional(S.String),
           overrideScale: S.optional(S.Number),
           overridePrecision: S.optional(S.Number),
-          customFeatures: S.optional(__S(2)),
-          sourceTextFilter: S.optional(__S(47)),
+          customFeatures: S.optional(DocumentMap),
+          sourceTextFilter: S.optional(SourceTextFilter),
           overrideFractionalSecondsPrecision: S.optional(S.Number),
-          sourceNumericFilter: S.optional(__S(48)),
+          sourceNumericFilter: S.optional(SourceNumericFilter),
           sourceDataTypeFilter: S.optional(S.String),
           newDataType: S.optional(S.String),
         }),
@@ -5019,12 +6116,12 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           length: S.optional(S.String),
-          customFeatures: S.optional(__S(2)),
+          customFeatures: S.optional(DocumentMap),
           scale: S.optional(S.Number),
           dataType: S.optional(S.String),
           precision: S.optional(S.Number),
           array: S.optional(S.Boolean),
-          setValues: S.optional(__S(32)),
+          setValues: S.optional(StringList),
           autoGenerated: S.optional(S.Boolean),
           charset: S.optional(S.String),
           fractionalSecondsPrecision: S.optional(S.Number),
@@ -5038,21 +6135,21 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          sourceNameTransformation: S.optional(S.String),
+          sourceNameTransformation: S.optional(MultiEntityRenameSourceNameTransformationEnum),
           newNamePattern: S.optional(S.String),
         }),
       ).annotate({ identifier: "MultiEntityRename" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          includeColumns: S.optional(__S(32)),
-          excludeColumns: S.optional(__S(32)),
+          includeColumns: S.optional(StringList),
+          excludeColumns: S.optional(StringList),
         }),
       ).annotate({ identifier: "FilterTableColumns" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          primaryKeyColumns: S.optional(__S(32)),
+          primaryKeyColumns: S.optional(StringList),
           primaryKey: S.optional(S.String),
         }),
       ).annotate({ identifier: "SetTablePrimaryKey" });
@@ -5063,7 +6160,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          entities: S.optional(__S(32)),
+          entities: S.optional(StringList),
           entityNameContains: S.optional(S.String),
           entityNamePrefix: S.optional(S.String),
           entityNameSuffix: S.optional(S.String),
@@ -5075,23 +6172,23 @@ function __c8(j: number): any {
         S.Struct({
           revisionId: S.optional(S.String),
           ruleOrder: S.optional(S.String),
-          singleEntityRename: S.optional(__S(44)),
-          convertRowidColumn: S.optional(__S(45)),
-          entityMove: S.optional(__S(46)),
+          singleEntityRename: S.optional(SingleEntityRename),
+          convertRowidColumn: S.optional(ConvertRowIdToColumn),
+          entityMove: S.optional(EntityMove),
           revisionCreateTime: S.optional(S.String),
           name: S.optional(S.String),
-          conditionalColumnSetValue: S.optional(__S(56)),
-          multiColumnDataTypeChange: S.optional(__S(57)),
-          singlePackageChange: S.optional(__S(58)),
-          sourceSqlChange: S.optional(__S(59)),
-          singleColumnChange: S.optional(__S(60)),
-          multiEntityRename: S.optional(__S(61)),
-          state: S.optional(S.String),
-          filterTableColumns: S.optional(__S(62)),
-          setTablePrimaryKey: S.optional(__S(63)),
+          conditionalColumnSetValue: S.optional(ConditionalColumnSetValue),
+          multiColumnDataTypeChange: S.optional(MultiColumnDatatypeChange),
+          singlePackageChange: S.optional(SinglePackageChange),
+          sourceSqlChange: S.optional(SourceSqlChange),
+          singleColumnChange: S.optional(SingleColumnChange),
+          multiEntityRename: S.optional(MultiEntityRename),
+          state: S.optional(MappingRuleStateEnum),
+          filterTableColumns: S.optional(FilterTableColumns),
+          setTablePrimaryKey: S.optional(SetTablePrimaryKey),
           displayName: S.optional(S.String),
-          filter: S.optional(__S(64)),
-          ruleScope: S.optional(S.String),
+          filter: S.optional(MappingRuleFilter),
+          ruleScope: S.optional(MappingRuleRuleScopeEnum),
         }),
       ).annotate({ identifier: "MappingRule" });
     case 2:
@@ -5100,7 +6197,7 @@ function __c8(j: number): any {
           mappingRuleId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(65).pipe(T.HttpBody())),
+          body: S.optional(MappingRule.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5121,17 +6218,17 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          oracleAsmLogFileAccess: S.optional(__S(6)),
-          logFileDirectories: S.optional(__S(67)),
+          oracleAsmLogFileAccess: S.optional(CancelOperationRequest),
+          logFileDirectories: S.optional(LogFileDirectories),
         }),
       ).annotate({ identifier: "BinaryLogParser" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          logMiner: S.optional(__S(6)),
+          logMiner: S.optional(CancelOperationRequest),
           maxConcurrentFullDumpConnections: S.optional(S.Number),
           cdcStartPosition: S.optional(S.String),
-          binaryLogParser: S.optional(__S(68)),
+          binaryLogParser: S.optional(BinaryLogParser),
           maxConcurrentCdcConnections: S.optional(S.Number),
           skipFullDump: S.optional(S.Boolean),
         }),
@@ -5148,8 +6245,8 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          oracleSourceConfig: S.optional(__S(69)),
-          postgresDestinationConfig: S.optional(__S(70)),
+          oracleSourceConfig: S.optional(OracleSourceConfig),
+          postgresDestinationConfig: S.optional(PostgresDestinationConfig),
         }),
       ).annotate({ identifier: "OracleToPostgresConfig" });
   }
@@ -5162,28 +6259,28 @@ function __c9(j: number): any {
           table: S.optional(S.String),
           schema: S.optional(S.String),
           database: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(SourceObjectIdentifierTypeEnum),
         }),
       ).annotate({ identifier: "SourceObjectIdentifier" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          objectIdentifier: S.optional(__S(72)),
+          objectIdentifier: S.optional(SourceObjectIdentifier),
         }),
       ).annotate({ identifier: "SourceObjectConfig" });
     case 2:
-      return S.Array(__S(73));
+      return S.Array(SourceObjectConfig);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          objectsSelectionType: S.optional(S.String),
-          objectConfigs: S.optional(__S(74)),
+          objectsSelectionType: S.optional(SourceObjectsConfigObjectsSelectionTypeEnum),
+          objectConfigs: S.optional(SourceObjectConfigList),
         }),
       ).annotate({ identifier: "SourceObjectsConfig" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          sourceObjectsConfig: S.optional(__S(75)),
+          sourceObjectsConfig: S.optional(SourceObjectsConfig),
         }),
       ).annotate({
         identifier: "MigrationJobObjectsConfig",
@@ -5209,8 +6306,8 @@ function __c9(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          sqlserverSourceConfig: S.optional(__S(78)),
-          postgresDestinationConfig: S.optional(__S(70)),
+          sqlserverSourceConfig: S.optional(SqlServerSourceConfig),
+          postgresDestinationConfig: S.optional(PostgresDestinationConfig),
         }),
       ).annotate({
         identifier: "SqlServerToPostgresConfig",
@@ -5234,15 +6331,15 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provider: S.optional(S.String),
-          engine: S.optional(S.String),
+          provider: S.optional(DatabaseTypeProviderEnum),
+          engine: S.optional(DatabaseTypeEngineEnum),
         }),
       ).annotate({ identifier: "DatabaseType" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          loadParallelLevel: S.optional(S.String),
-          dumpParallelLevel: S.optional(S.String),
+          loadParallelLevel: S.optional(PerformanceConfigLoadParallelLevelEnum),
+          dumpParallelLevel: S.optional(PerformanceConfigDumpParallelLevelEnum),
         }),
       ).annotate({ identifier: "PerformanceConfig" });
     case 4:
@@ -5285,18 +6382,18 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          encryptionOptions: S.optional(__S(87)),
+          encryptionOptions: S.optional(SqlServerEncryptionOptions),
           database: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlServerDatabaseBackup" });
     case 1:
-      return S.Array(__S(88));
+      return S.Array(SqlServerDatabaseBackup);
     case 2:
       return S.suspend(() =>
         S.Struct({
           useDiffBackup: S.optional(S.Boolean),
-          dagConfig: S.optional(__S(86)),
-          databaseBackups: S.optional(__S(89)),
+          dagConfig: S.optional(SqlServerDagConfig),
+          databaseBackups: S.optional(SqlServerDatabaseBackupList),
           backupFilePattern: S.optional(S.String),
           promoteWhenReady: S.optional(S.Boolean),
         }),
@@ -5311,11 +6408,11 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "DumpFlag" });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(DumpFlag);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          dumpFlags: S.optional(__S(92)),
+          dumpFlags: S.optional(DumpFlagList),
         }),
       ).annotate({ identifier: "DumpFlags" });
     case 6:
@@ -5340,8 +6437,8 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          postgresSourceConfig: S.optional(__S(94)),
-          sqlserverDestinationConfig: S.optional(__S(95)),
+          postgresSourceConfig: S.optional(PostgresSourceConfig),
+          sqlserverDestinationConfig: S.optional(SqlServerDestinationConfig),
         }),
       ).annotate({
         identifier: "PostgresToSqlServerConfig",
@@ -5350,41 +6447,43 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
-          error: S.optional(__S(4)),
-          oracleToPostgresConfig: S.optional(__S(71)),
+          error: S.optional(Status),
+          oracleToPostgresConfig: S.optional(OracleToPostgresConfig),
           satisfiesPzs: S.optional(S.Boolean),
-          labels: S.optional(__S(12)),
+          labels: S.optional(StringMap),
           source: S.optional(S.String),
-          objectsConfig: S.optional(__S(76)),
-          postgresHomogeneousConfig: S.optional(__S(77)),
-          staticIpConnectivity: S.optional(__S(6)),
+          objectsConfig: S.optional(MigrationJobObjectsConfig),
+          postgresHomogeneousConfig: S.optional(PostgresHomogeneousConfig),
+          staticIpConnectivity: S.optional(CancelOperationRequest),
           destination: S.optional(S.String),
           filter: S.optional(S.String),
-          sqlserverToPostgresConfig: S.optional(__S(79)),
+          sqlserverToPostgresConfig: S.optional(SqlServerToPostgresConfig),
           dumpPath: S.optional(S.String),
-          vpcPeeringConnectivity: S.optional(__S(80)),
-          type: S.optional(S.String),
+          vpcPeeringConnectivity: S.optional(VpcPeeringConnectivity),
+          type: S.optional(MigrationJobTypeEnum),
           cmekKeyName: S.optional(S.String),
-          purpose: S.optional(S.String),
-          mysqlHomogeneousConfig: S.optional(__S(81)),
-          destinationDatabase: S.optional(__S(82)),
+          purpose: S.optional(MigrationJobPurposeEnum),
+          mysqlHomogeneousConfig: S.optional(MySqlHomogeneousConfig),
+          destinationDatabase: S.optional(DatabaseType),
           duration: S.optional(S.String),
-          performanceConfig: S.optional(__S(83)),
+          performanceConfig: S.optional(PerformanceConfig),
           endTime: S.optional(S.String),
           satisfiesPzi: S.optional(S.Boolean),
-          reverseSshConnectivity: S.optional(__S(84)),
-          conversionWorkspace: S.optional(__S(85)),
+          reverseSshConnectivity: S.optional(ReverseSshConnectivity),
+          conversionWorkspace: S.optional(ConversionWorkspaceInfo),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
-          sourceDatabase: S.optional(__S(82)),
+          sourceDatabase: S.optional(DatabaseType),
           updateTime: S.optional(S.String),
-          phase: S.optional(S.String),
-          sqlserverHomogeneousMigrationJobConfig: S.optional(__S(90)),
+          phase: S.optional(MigrationJobPhaseEnum),
+          sqlserverHomogeneousMigrationJobConfig: S.optional(
+            SqlServerHomogeneousMigrationJobConfig,
+          ),
           originalMigrationName: S.optional(S.String),
-          dumpFlags: S.optional(__S(93)),
-          postgresToSqlserverConfig: S.optional(__S(96)),
-          state: S.optional(S.String),
-          dumpType: S.optional(S.String),
+          dumpFlags: S.optional(DumpFlags),
+          postgresToSqlserverConfig: S.optional(PostgresToSqlServerConfig),
+          state: S.optional(MigrationJobStateEnum),
+          dumpType: S.optional(MigrationJobDumpTypeEnum),
         }),
       ).annotate({ identifier: "MigrationJob" });
     case 2:
@@ -5393,7 +6492,7 @@ function __c12(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           migrationJobId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(97).pipe(T.HttpBody())),
+          body: S.optional(MigrationJob.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5413,7 +6512,7 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          egressPublicIps: S.optional(__S(32)),
+          egressPublicIps: S.optional(StringList),
           natIpsCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ReservedPublicIpConfig" });
@@ -5428,15 +6527,15 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           satisfiesPzs: S.optional(S.Boolean),
-          pscInterfaceConfig: S.optional(__S(99)),
-          reservedPublicIpConfig: S.optional(__S(100)),
-          vpcPeeringConfig: S.optional(__S(101)),
+          pscInterfaceConfig: S.optional(PscInterfaceConfig),
+          reservedPublicIpConfig: S.optional(ReservedPublicIpConfig),
+          vpcPeeringConfig: S.optional(VpcPeeringConfig),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
-          labels: S.optional(__S(12)),
-          error: S.optional(__S(4)),
+          labels: S.optional(StringMap),
+          error: S.optional(Status),
           displayName: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(PrivateConnectionStateEnum),
           satisfiesPzi: S.optional(S.Boolean),
           updateTime: S.optional(S.String),
         }),
@@ -5449,7 +6548,7 @@ function __c12(j: number): any {
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           skipValidation: S.optional(S.Boolean.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(102).pipe(T.HttpBody())),
+          body: S.optional(PrivateConnection.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5560,7 +6659,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5592,11 +6691,11 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(42));
+      return S.Array(ConversionWorkspace);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          revisions: S.optional(__S(112)),
+          revisions: S.optional(ConversionWorkspaceList),
         }),
       ).annotate({
         identifier: "DescribeConversionWorkspaceRevisionsResponse",
@@ -5606,8 +6705,12 @@ function __c14(j: number): any {
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
           commitId: S.optional(S.String.pipe(T.Query())),
-          tree: S.optional(S.String.pipe(T.Query())),
-          view: S.optional(S.String.pipe(T.Query())),
+          tree: S.optional(
+            DescribeDatabaseEntitiesProjectsLocationsConversionWorkspacesTreeEnum.pipe(T.Query()),
+          ),
+          view: S.optional(
+            DescribeDatabaseEntitiesProjectsLocationsConversionWorkspacesViewEnum.pipe(T.Query()),
+          ),
           conversionWorkspace: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           uncommitted: S.optional(S.Boolean.pipe(T.Query())),
@@ -5627,7 +6730,7 @@ function __c14(j: number): any {
         S.Struct({
           udtSqlCode: S.optional(S.String),
           udtBody: S.optional(S.String),
-          customFeatures: S.optional(__S(2)),
+          customFeatures: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "UDTEntity" });
     case 4:
@@ -5635,22 +6738,22 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          customFeatures: S.optional(__S(2)),
-          tableColumns: S.optional(__S(32)),
+          customFeatures: S.optional(DocumentMap),
+          tableColumns: S.optional(StringList),
           type: S.optional(S.String),
-          tableColumnsDescending: S.optional(__S(116)),
+          tableColumnsDescending: S.optional(BooleanList),
           unique: S.optional(S.Boolean),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "IndexEntity" });
     case 6:
-      return S.Array(__S(117));
+      return S.Array(IndexEntity);
     case 7:
       return S.suspend(() =>
         S.Struct({
           sqlCode: S.optional(S.String),
-          indices: S.optional(__S(118)),
-          customFeatures: S.optional(__S(2)),
+          indices: S.optional(IndexEntityList),
+          customFeatures: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "MaterializedViewEntity" });
   }
@@ -5661,13 +6764,13 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sqlCode: S.optional(S.String),
-          customFeatures: S.optional(__S(2)),
+          customFeatures: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "StoredProcedureEntity" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          customFeatures: S.optional(__S(2)),
+          customFeatures: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "SchemaEntity" });
     case 2:
@@ -5679,36 +6782,36 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "EntityMappingLogEntry" });
     case 3:
-      return S.Array(__S(122));
+      return S.Array(EntityMappingLogEntry);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          draftType: S.optional(S.String),
+          draftType: S.optional(EntityMappingDraftTypeEnum),
           sourceEntity: S.optional(S.String),
           draftEntity: S.optional(S.String),
-          sourceType: S.optional(S.String),
-          mappingLog: S.optional(__S(123)),
+          sourceType: S.optional(EntityMappingSourceTypeEnum),
+          mappingLog: S.optional(EntityMappingLogEntryList),
         }),
       ).annotate({ identifier: "EntityMapping" });
     case 5:
-      return S.Array(__S(124));
+      return S.Array(EntityMapping);
     case 6:
       return S.suspend(() =>
         S.Struct({
           packageSqlCode: S.optional(S.String),
           packageBody: S.optional(S.String),
-          customFeatures: S.optional(__S(2)),
+          customFeatures: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "PackageEntity" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           ddl: S.optional(S.String),
-          issueId: S.optional(__S(32)),
-          ddlKind: S.optional(S.String),
+          issueId: S.optional(StringList),
+          ddlKind: S.optional(EntityDdlDdlKindEnum),
           entity: S.optional(S.String),
-          entityType: S.optional(S.String),
-          editedDdlKind: S.optional(S.String),
+          entityType: S.optional(EntityDdlEntityTypeEnum),
+          editedDdlKind: S.optional(EntityDdlEditedDdlKindEnum),
           ddlType: S.optional(S.String),
         }),
       ).annotate({ identifier: "EntityDdl" });
@@ -5717,27 +6820,27 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(127));
+      return S.Array(EntityDdl);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          customFeatures: S.optional(__S(2)),
+          customFeatures: S.optional(DocumentMap),
           tableName: S.optional(S.String),
           type: S.optional(S.String),
           referenceTable: S.optional(S.String),
-          tableColumns: S.optional(__S(32)),
-          referenceColumns: S.optional(__S(32)),
+          tableColumns: S.optional(StringList),
+          referenceColumns: S.optional(StringList),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConstraintEntity" });
     case 2:
-      return S.Array(__S(129));
+      return S.Array(ConstraintEntity);
     case 3:
       return S.suspend(() =>
         S.Struct({
           sqlCode: S.optional(S.String),
-          constraints: S.optional(__S(130)),
-          customFeatures: S.optional(__S(2)),
+          constraints: S.optional(ConstraintEntityList),
+          customFeatures: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "ViewEntity" });
     case 4:
@@ -5754,20 +6857,20 @@ function __c16(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           message: S.optional(S.String),
-          severity: S.optional(S.String),
+          severity: S.optional(EntityIssueSeverityEnum),
           ddl: S.optional(S.String),
-          entityType: S.optional(S.String),
-          position: S.optional(__S(132)),
-          type: S.optional(S.String),
+          entityType: S.optional(EntityIssueEntityTypeEnum),
+          position: S.optional(Position),
+          type: S.optional(EntityIssueTypeEnum),
           code: S.optional(S.String),
         }),
       ).annotate({ identifier: "EntityIssue" });
     case 6:
-      return S.Array(__S(133));
+      return S.Array(EntityIssue);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          customFeatures: S.optional(__S(2)),
+          customFeatures: S.optional(DocumentMap),
           maxValue: S.optional(S.String),
           cache: S.optional(S.String),
           startValue: S.optional(S.String),
@@ -5783,8 +6886,8 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          customFeatures: S.optional(__S(2)),
-          sourceType: S.optional(S.String),
+          customFeatures: S.optional(DocumentMap),
+          sourceType: S.optional(SynonymEntitySourceTypeEnum),
           sourceEntity: S.optional(S.String),
         }),
       ).annotate({ identifier: "SynonymEntity" });
@@ -5795,7 +6898,7 @@ function __c17(j: number): any {
           fractionalSecondsPrecision: S.optional(S.Number),
           precision: S.optional(S.Number),
           nullable: S.optional(S.Boolean),
-          setValues: S.optional(__S(32)),
+          setValues: S.optional(StringList),
           computed: S.optional(S.Boolean),
           array: S.optional(S.Boolean),
           arrayLength: S.optional(S.Number),
@@ -5807,61 +6910,61 @@ function __c17(j: number): any {
           length: S.optional(S.String),
           name: S.optional(S.String),
           udt: S.optional(S.Boolean),
-          customFeatures: S.optional(__S(2)),
+          customFeatures: S.optional(DocumentMap),
           autoGenerated: S.optional(S.Boolean),
           dataType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ColumnEntity" });
     case 2:
-      return S.Array(__S(137));
+      return S.Array(ColumnEntity);
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          triggeringEvents: S.optional(__S(32)),
-          customFeatures: S.optional(__S(2)),
+          triggeringEvents: S.optional(StringList),
+          customFeatures: S.optional(DocumentMap),
           sqlCode: S.optional(S.String),
           triggerType: S.optional(S.String),
         }),
       ).annotate({ identifier: "TriggerEntity" });
     case 4:
-      return S.Array(__S(139));
+      return S.Array(TriggerEntity);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          indices: S.optional(__S(118)),
+          indices: S.optional(IndexEntityList),
           comment: S.optional(S.String),
-          constraints: S.optional(__S(130)),
-          columns: S.optional(__S(138)),
-          triggers: S.optional(__S(140)),
-          customFeatures: S.optional(__S(2)),
+          constraints: S.optional(ConstraintEntityList),
+          columns: S.optional(ColumnEntityList),
+          triggers: S.optional(TriggerEntityList),
+          customFeatures: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "TableEntity" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          udt: S.optional(__S(115)),
-          materializedView: S.optional(__S(119)),
-          storedProcedure: S.optional(__S(120)),
-          schema: S.optional(__S(121)),
-          mappings: S.optional(__S(125)),
-          databasePackage: S.optional(__S(126)),
-          entityDdl: S.optional(__S(128)),
+          udt: S.optional(UDTEntity),
+          materializedView: S.optional(MaterializedViewEntity),
+          storedProcedure: S.optional(StoredProcedureEntity),
+          schema: S.optional(SchemaEntity),
+          mappings: S.optional(EntityMappingList),
+          databasePackage: S.optional(PackageEntity),
+          entityDdl: S.optional(EntityDdlList),
           parentEntity: S.optional(S.String),
-          databaseFunction: S.optional(__S(120)),
-          view: S.optional(__S(131)),
-          issues: S.optional(__S(134)),
-          sequence: S.optional(__S(135)),
-          synonym: S.optional(__S(136)),
-          database: S.optional(__S(121)),
-          entityType: S.optional(S.String),
-          table: S.optional(__S(141)),
-          tree: S.optional(S.String),
+          databaseFunction: S.optional(FunctionEntity),
+          view: S.optional(ViewEntity),
+          issues: S.optional(EntityIssueList),
+          sequence: S.optional(SequenceEntity),
+          synonym: S.optional(SynonymEntity),
+          database: S.optional(SchemaEntity),
+          entityType: S.optional(DatabaseEntityEntityTypeEnum),
+          table: S.optional(TableEntity),
+          tree: S.optional(DatabaseEntityTreeEnum),
           shortName: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatabaseEntity" });
     case 7:
-      return S.Array(__S(142));
+      return S.Array(DatabaseEntity);
   }
 }
 function __c18(j: number): any {
@@ -5869,7 +6972,7 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          databaseEntities: S.optional(__S(143)),
+          databaseEntities: S.optional(DatabaseEntityList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5879,11 +6982,17 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
-          fetchView: S.optional(S.String.pipe(T.Query())),
+          fetchView: S.optional(
+            FetchEntitiesStatusViewProjectsLocationsConversionWorkspacesFetchViewEnum.pipe(
+              T.Query(),
+            ),
+          ),
           conversionWorkspace: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          tree: S.optional(S.String.pipe(T.Query())),
+          tree: S.optional(
+            FetchEntitiesStatusViewProjectsLocationsConversionWorkspacesTreeEnum.pipe(T.Query()),
+          ),
         }).pipe(
           T.Http({
             method: "GET",
@@ -5897,9 +7006,9 @@ function __c18(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          parentType: S.optional(S.String),
+          parentType: S.optional(EntityIdParentTypeEnum),
           shortName: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(EntityIdTypeEnum),
           parentName: S.optional(S.String),
         }),
       ).annotate({ identifier: "EntityId" });
@@ -5912,27 +7021,27 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "IssueAggregateData" });
     case 4:
-      return S.Array(__S(146));
+      return S.Array(EntityId);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          draftDdlKind: S.optional(S.String),
-          editedDdlKind: S.optional(S.String),
-          sourceEntity: S.optional(__S(146)),
-          draftEntity: S.optional(__S(146)),
+          draftDdlKind: S.optional(EntityStatusViewDraftDdlKindEnum),
+          editedDdlKind: S.optional(EntityStatusViewEditedDdlKindEnum),
+          sourceEntity: S.optional(EntityId),
+          draftEntity: S.optional(EntityId),
           testedEntity: S.optional(S.Boolean),
-          issues: S.optional(__S(147)),
-          dependencies: S.optional(__S(148)),
+          issues: S.optional(IssueAggregateData),
+          dependencies: S.optional(EntityIdList),
           wasApplied: S.optional(S.Boolean),
-          resolvedIssues: S.optional(__S(147)),
+          resolvedIssues: S.optional(IssueAggregateData),
         }),
       ).annotate({ identifier: "EntityStatusView" });
     case 6:
-      return S.Array(__S(149));
+      return S.Array(EntityStatusView);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          entities: S.optional(__S(150)),
+          entities: S.optional(EntityStatusViewList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5946,7 +7055,9 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
-          tree: S.optional(S.String.pipe(T.Query())),
+          tree: S.optional(
+            FetchIssuesProjectsLocationsConversionWorkspacesTreeEnum.pipe(T.Query()),
+          ),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           allIssues: S.optional(S.Boolean.pipe(T.Query())),
@@ -5976,25 +7087,25 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          entityType: S.optional(S.String),
-          groupId: S.optional(S.String),
-          issueState: S.optional(S.String),
+          entityType: S.optional(IssueEntityTypeEnum),
+          groupId: S.optional(IssueGroupIdEnum),
+          issueState: S.optional(IssueIssueStateEnum),
           entityFullName: S.optional(S.String),
-          severity: S.optional(S.String),
-          position: S.optional(__S(153)),
-          issueOrigin: S.optional(S.String),
-          type: S.optional(S.String),
-          categoryId: S.optional(S.String),
+          severity: S.optional(IssueSeverityEnum),
+          position: S.optional(FetchIssuesResponseIssuePosition),
+          issueOrigin: S.optional(IssueIssueOriginEnum),
+          type: S.optional(IssueTypeEnum),
+          categoryId: S.optional(IssueCategoryIdEnum),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "Issue" });
     case 3:
-      return S.Array(__S(154));
+      return S.Array(Issue);
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          issues: S.optional(__S(155)),
+          issues: S.optional(IssueList),
         }),
       ).annotate({ identifier: "FetchIssuesResponse" });
     case 5:
@@ -6031,7 +7142,7 @@ function __c19(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          staticIps: S.optional(__S(32)),
+          staticIps: S.optional(StringList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "FetchStaticIpsResponse" });
@@ -6056,17 +7167,17 @@ function __c20(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          vmSelectionConfig: S.optional(__S(160)),
+          vmSelectionConfig: S.optional(VmSelectionConfig),
           vmPort: S.optional(S.Number),
           vm: S.optional(S.String),
-          vmCreationConfig: S.optional(__S(161)),
+          vmCreationConfig: S.optional(VmCreationConfig),
         }),
       ).annotate({ identifier: "GenerateSshScriptRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           migrationJob: S.String.pipe(T.Label()),
-          body: S.optional(__S(162).pipe(T.HttpBody())),
+          body: S.optional(GenerateSshScriptRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6098,7 +7209,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           migrationJob: S.String.pipe(T.Label()),
-          body: S.optional(__S(165).pipe(T.HttpBody())),
+          body: S.optional(GenerateTcpProxyScriptRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6141,37 +7252,37 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          condition: S.optional(__S(168)),
-          members: S.optional(__S(32)),
+          condition: S.optional(Expr),
+          members: S.optional(StringList),
         }),
       ).annotate({ identifier: "Binding" });
     case 2:
-      return S.Array(__S(169));
+      return S.Array(Binding);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(32)),
+          logType: S.optional(AuditLogConfigLogTypeEnum),
+          exemptedMembers: S.optional(StringList),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
     case 4:
-      return S.Array(__S(171));
+      return S.Array(AuditLogConfig);
     case 5:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(__S(172)),
+          auditLogConfigs: S.optional(AuditLogConfigList),
         }),
       ).annotate({ identifier: "AuditConfig" });
     case 6:
-      return S.Array(__S(173));
+      return S.Array(AuditConfig);
     case 7:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.Number),
-          bindings: S.optional(__S(170)),
+          bindings: S.optional(BindingList),
           etag: S.optional(S.String),
-          auditConfigs: S.optional(__S(174)),
+          auditConfigs: S.optional(AuditConfigList),
         }),
       ).annotate({ identifier: "Policy" });
   }
@@ -6255,9 +7366,9 @@ function __c22(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(12)),
+          labels: S.optional(StringMap),
           displayName: S.optional(S.String),
-          metadata: S.optional(__S(2)),
+          metadata: S.optional(DocumentMap),
           name: S.optional(S.String),
           locationId: S.optional(S.String),
         }),
@@ -6345,13 +7456,13 @@ function __c23(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(MigrationJobObjectStateEnum),
           name: S.optional(S.String),
-          heterogeneousMetadata: S.optional(__S(187)),
-          sourceObject: S.optional(__S(72)),
+          heterogeneousMetadata: S.optional(HeterogeneousMetadata),
+          sourceObject: S.optional(SourceObjectIdentifier),
           createTime: S.optional(S.String),
-          phase: S.optional(S.String),
-          error: S.optional(__S(4)),
+          phase: S.optional(MigrationJobObjectPhaseEnum),
+          error: S.optional(Status),
           updateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "MigrationJobObject" });
@@ -6395,12 +7506,12 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(191));
+      return S.Array(RulesFile);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          rulesFormat: S.optional(S.String),
-          rulesFiles: S.optional(__S(192)),
+          rulesFormat: S.optional(ImportMappingRulesRequestRulesFormatEnum),
+          rulesFiles: S.optional(RulesFileList),
           autoCommit: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -6410,7 +7521,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(193).pipe(T.HttpBody())),
+          body: S.optional(ImportMappingRulesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6425,7 +7536,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          extraLocationTypes: S.optional(__S(32).pipe(T.Query())),
+          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6440,12 +7551,12 @@ function __c24(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 4:
-      return S.Array(__S(181));
+      return S.Array(Location);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(196)),
+          locations: S.optional(LocationList),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
     case 6:
@@ -6467,7 +7578,7 @@ function __c24(j: number): any {
         identifier: "ListProjectsLocationsConnectionProfilesRequest",
       });
     case 7:
-      return S.Array(__S(39));
+      return S.Array(ConnectionProfile);
   }
 }
 function __c25(j: number): any {
@@ -6475,8 +7586,8 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          connectionProfiles: S.optional(__S(199)),
-          unreachable: S.optional(__S(32)),
+          connectionProfiles: S.optional(ConnectionProfileList),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6502,9 +7613,9 @@ function __c25(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(32)),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
-          conversionWorkspaces: S.optional(__S(112)),
+          conversionWorkspaces: S.optional(ConversionWorkspaceList),
         }),
       ).annotate({
         identifier: "ListConversionWorkspacesResponse",
@@ -6526,12 +7637,12 @@ function __c25(j: number): any {
         identifier: "ListProjectsLocationsConversionWorkspacesMappingRulesRequest",
       });
     case 4:
-      return S.Array(__S(65));
+      return S.Array(MappingRule);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          mappingRules: S.optional(__S(204)),
+          mappingRules: S.optional(MappingRuleList),
         }),
       ).annotate({ identifier: "ListMappingRulesResponse" });
     case 6:
@@ -6553,7 +7664,7 @@ function __c25(j: number): any {
         identifier: "ListProjectsLocationsMigrationJobsRequest",
       });
     case 7:
-      return S.Array(__S(97));
+      return S.Array(MigrationJob);
   }
 }
 function __c26(j: number): any {
@@ -6561,8 +7672,8 @@ function __c26(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          migrationJobs: S.optional(__S(207)),
-          unreachable: S.optional(__S(32)),
+          migrationJobs: S.optional(MigrationJobList),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6585,12 +7696,12 @@ function __c26(j: number): any {
         identifier: "ListProjectsLocationsMigrationJobsObjectsRequest",
       });
     case 2:
-      return S.Array(__S(188));
+      return S.Array(MigrationJobObject);
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          migrationJobObjects: S.optional(__S(210)),
+          migrationJobObjects: S.optional(MigrationJobObjectList),
         }),
       ).annotate({
         identifier: "ListMigrationJobObjectsResponse",
@@ -6614,12 +7725,12 @@ function __c26(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 5:
-      return S.Array(__S(5));
+      return S.Array(Operation);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(32)),
-          operations: S.optional(__S(213)),
+          unreachable: S.optional(StringList),
+          operations: S.optional(OperationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -6646,13 +7757,13 @@ function __c26(j: number): any {
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(102));
+      return S.Array(PrivateConnection);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          privateConnections: S.optional(__S(216)),
-          unreachable: S.optional(__S(32)),
+          privateConnections: S.optional(PrivateConnectionList),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({
         identifier: "ListPrivateConnectionsResponse",
@@ -6660,7 +7771,7 @@ function __c27(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sourceObjectIdentifier: S.optional(__S(72)),
+          sourceObjectIdentifier: S.optional(SourceObjectIdentifier),
         }),
       ).annotate({
         identifier: "LookupMigrationJobObjectRequest",
@@ -6669,7 +7780,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(218).pipe(T.HttpBody())),
+          body: S.optional(LookupMigrationJobObjectRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6688,7 +7799,7 @@ function __c27(j: number): any {
           skipValidation: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(39).pipe(T.HttpBody())),
+          body: S.optional(ConnectionProfile.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6705,7 +7816,7 @@ function __c27(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(42).pipe(T.HttpBody())),
+          body: S.optional(ConversionWorkspace.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6722,7 +7833,7 @@ function __c27(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(97).pipe(T.HttpBody())),
+          body: S.optional(MigrationJob.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6736,7 +7847,7 @@ function __c27(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          objectsFilter: S.optional(__S(76)),
+          objectsFilter: S.optional(MigrationJobObjectsConfig),
         }),
       ).annotate({
         identifier: "PromoteMigrationJobRequest",
@@ -6749,7 +7860,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(223).pipe(T.HttpBody())),
+          body: S.optional(PromoteMigrationJobRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6765,7 +7876,7 @@ function __c28(j: number): any {
         S.Struct({
           restartFailedObjects: S.optional(S.Boolean),
           skipValidation: S.optional(S.Boolean),
-          objectsFilter: S.optional(__S(76)),
+          objectsFilter: S.optional(MigrationJobObjectsConfig),
         }),
       ).annotate({
         identifier: "RestartMigrationJobRequest",
@@ -6774,7 +7885,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(225).pipe(T.HttpBody())),
+          body: S.optional(RestartMigrationJobRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6797,7 +7908,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(227).pipe(T.HttpBody())),
+          body: S.optional(ResumeMigrationJobRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6812,7 +7923,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6843,8 +7954,8 @@ function __c28(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          fileFormat: S.optional(S.String),
-          files: S.optional(__S(32)),
+          fileFormat: S.optional(ImportRulesJobDetailsFileFormatEnum),
+          files: S.optional(StringList),
         }),
       ).annotate({ identifier: "ImportRulesJobDetails" });
   }
@@ -6873,25 +7984,25 @@ function __c29(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          jobType: S.optional(S.String),
-          importRulesJobDetails: S.optional(__S(231)),
+          jobType: S.optional(BackgroundJobLogEntryJobTypeEnum),
+          importRulesJobDetails: S.optional(ImportRulesJobDetails),
           finishTime: S.optional(S.String),
           completionComment: S.optional(S.String),
-          convertJobDetails: S.optional(__S(232)),
+          convertJobDetails: S.optional(ConvertJobDetails),
           id: S.optional(S.String),
-          seedJobDetails: S.optional(__S(233)),
+          seedJobDetails: S.optional(SeedJobDetails),
           requestAutocommit: S.optional(S.Boolean),
-          completionState: S.optional(S.String),
-          applyJobDetails: S.optional(__S(234)),
+          completionState: S.optional(BackgroundJobLogEntryCompletionStateEnum),
+          applyJobDetails: S.optional(ApplyJobDetails),
           startTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackgroundJobLogEntry" });
     case 4:
-      return S.Array(__S(235));
+      return S.Array(BackgroundJobLogEntry);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          jobs: S.optional(__S(236)),
+          jobs: S.optional(BackgroundJobLogEntryList),
         }),
       ).annotate({
         identifier: "SearchBackgroundJobsResponse",
@@ -6910,7 +8021,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(238).pipe(T.HttpBody())),
+          body: S.optional(SeedConversionWorkspaceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6930,17 +8041,17 @@ function __c30(j: number): any {
         S.Struct({
           ddl: S.optional(S.String),
           explanation: S.optional(S.String),
-          basedOnDdlKind: S.optional(S.String),
+          basedOnDdlKind: S.optional(SetDraftEntityDdlRequestBasedOnDdlKindEnum),
           entityName: S.optional(S.String),
-          entityType: S.optional(S.String),
-          ddlKind: S.optional(S.String),
+          entityType: S.optional(SetDraftEntityDdlRequestEntityTypeEnum),
+          ddlKind: S.optional(SetDraftEntityDdlRequestDdlKindEnum),
         }),
       ).annotate({ identifier: "SetDraftEntityDdlRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           conversionWorkspace: S.String.pipe(T.Label()),
-          body: S.optional(__S(240).pipe(T.HttpBody())),
+          body: S.optional(SetDraftEntityDdlRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6955,14 +8066,14 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
-          policy: S.optional(__S(175)),
+          policy: S.optional(Policy),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(242).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6977,7 +8088,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(242).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6992,7 +8103,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(242).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7007,7 +8118,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(242).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7022,7 +8133,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(242).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7047,7 +8158,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(248).pipe(T.HttpBody())),
+          body: S.optional(StartMigrationJobRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7062,7 +8173,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7076,7 +8187,7 @@ function __c31(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(32)),
+          permissions: S.optional(StringList),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -7085,7 +8196,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(251).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7100,7 +8211,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(251).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7115,7 +8226,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(251).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7130,7 +8241,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(251).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7149,7 +8260,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(251).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7163,7 +8274,7 @@ function __c32(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          migrationJob: S.optional(__S(97)),
+          migrationJob: S.optional(MigrationJob),
           updateMask: S.optional(S.String),
         }),
       ).annotate({
@@ -7173,7 +8284,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(257).pipe(T.HttpBody())),
+          body: S.optional(VerifyMigrationJobRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7184,80 +8295,5 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "VerifyProjectsLocationsMigrationJobsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
   }
 }

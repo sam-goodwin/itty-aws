@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { ForgejoProtocol, type ForgejoOpError, type ForgejoOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { ForgejoOpError, ForgejoOpContext };
 
@@ -21,54 +19,135 @@ export class Forbidden
   ) {}
 
 export interface ActivitypubInstanceActorRequest {}
+const ActivitypubInstanceActorRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ActivitypubInstanceActorRequest>;
+
 /** ActivityPub type */
 export interface ActivityPub {
   _context?: string;
 }
+const ActivityPub = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ActivityPub>;
+
 export interface ActivitypubInstanceActorInboxRequest {}
+const ActivitypubInstanceActorInboxRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ActivitypubInstanceActorInboxRequest>;
+
 export interface ActivitypubInstanceActorInboxResponse {}
+const ActivitypubInstanceActorInboxResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ActivitypubInstanceActorInboxResponse>;
+
 export interface ActivitypubInstanceActorOutboxRequest {}
+const ActivitypubInstanceActorOutboxRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ActivitypubInstanceActorOutboxRequest>;
+
 export type ActivitypubInstanceActorOutboxResponse = unknown;
+const ActivitypubInstanceActorOutboxResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ActivitypubInstanceActorOutboxResponse>;
+
 export interface ActivitypubPersonRequest {
   /** user ID of the user */
   user_id: number;
 }
+const ActivitypubPersonRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ActivitypubPersonRequest>;
+
 export interface ActivitypubPersonActivityRequest {
   /** user ID of the user */
   user_id: number;
   /** activity ID of the sought activity */
   activity_id: number;
 }
+const ActivitypubPersonActivityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ActivitypubPersonActivityRequest>;
+
 export interface ActivitypubPersonActivityNoteRequest {
   /** user ID of the user */
   user_id: number;
   /** activity ID of the sought activity */
   activity_id: number;
 }
+const ActivitypubPersonActivityNoteRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ActivitypubPersonActivityNoteRequest>;
+
 export interface ActivitypubPersonFeedRequest {
   /** user ID of the user */
   user_id: number;
 }
+const ActivitypubPersonFeedRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ActivitypubPersonFeedRequest>;
+
 export type ActivitypubPersonFeedResponse = unknown;
+const ActivitypubPersonFeedResponse =
+  ActivitypubInstanceActorOutboxResponse as any as S.Schema<ActivitypubPersonFeedResponse>;
+
 export interface ActivitypubPersonInboxRequest {
   /** user ID of the user */
   user_id: number;
 }
+const ActivitypubPersonInboxRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ActivitypubPersonInboxRequest>;
+
 export interface ActivitypubPersonInboxResponse {}
+const ActivitypubPersonInboxResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ActivitypubPersonInboxResponse>;
+
 export interface ActivitypubRepositoryRequest {
   /** repository ID of the repo */
   repository_id: number;
 }
+const ActivitypubRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ActivitypubRepositoryRequest>;
+
 export interface ActivitypubRepositoryInboxRequest {
   /** repository ID of the repo */
   repository_id: number;
 }
+const ActivitypubRepositoryInboxRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ActivitypubRepositoryInboxRequest>;
+
 export interface ActivitypubRepositoryInboxResponse {}
+const ActivitypubRepositoryInboxResponse =
+  ActivitypubInstanceActorInboxResponse as any as S.Schema<ActivitypubRepositoryInboxResponse>;
+
 export interface ActivitypubRepositoryOutboxRequest {
   /** repository ID of the repo */
   repository_id: number;
 }
+const ActivitypubRepositoryOutboxRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ActivitypubRepositoryOutboxRequest>;
+
 export type ActivitypubRepositoryOutboxResponse = unknown;
+const ActivitypubRepositoryOutboxResponse =
+  ActivitypubInstanceActorOutboxResponse as any as S.Schema<ActivitypubRepositoryOutboxResponse>;
+
 export type ActivitypubInstanceActorError = ForgejoOpError;
 /** Returns the instance's Actor */
 export const activitypubInstanceActor: API.OperationMethod<
@@ -77,8 +156,8 @@ export const activitypubInstanceActor: API.OperationMethod<
   ActivitypubInstanceActorError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ActivitypubInstanceActorRequest>,
-  output: __S(1) as any as S.Schema<ActivityPub>,
+  input: ActivitypubInstanceActorRequest,
+  output: ActivityPub,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -92,8 +171,8 @@ export const activitypubInstanceActorInbox: API.OperationMethod<
   ActivitypubInstanceActorInboxError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<ActivitypubInstanceActorInboxRequest>,
-  output: __S(3) as any as S.Schema<ActivitypubInstanceActorInboxResponse>,
+  input: ActivitypubInstanceActorInboxRequest,
+  output: ActivitypubInstanceActorInboxResponse,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -107,8 +186,8 @@ export const activitypubInstanceActorOutbox: API.OperationMethod<
   ActivitypubInstanceActorOutboxError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<ActivitypubInstanceActorOutboxRequest>,
-  output: __S(5) as any as S.Schema<ActivitypubInstanceActorOutboxResponse>,
+  input: ActivitypubInstanceActorOutboxRequest,
+  output: ActivitypubInstanceActorOutboxResponse,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -122,8 +201,8 @@ export const activitypubPerson: API.OperationMethod<
   ActivitypubPersonError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<ActivitypubPersonRequest>,
-  output: __S(1) as any as S.Schema<ActivityPub>,
+  input: ActivitypubPersonRequest,
+  output: ActivityPub,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -137,8 +216,8 @@ export const activitypubPersonActivity: API.OperationMethod<
   ActivitypubPersonActivityError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<ActivitypubPersonActivityRequest>,
-  output: __S(1) as any as S.Schema<ActivityPub>,
+  input: ActivitypubPersonActivityRequest,
+  output: ActivityPub,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -152,8 +231,8 @@ export const activitypubPersonActivityNote: API.OperationMethod<
   ActivitypubPersonActivityNoteError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<ActivitypubPersonActivityNoteRequest>,
-  output: __S(1) as any as S.Schema<ActivityPub>,
+  input: ActivitypubPersonActivityNoteRequest,
+  output: ActivityPub,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -167,8 +246,8 @@ export const activitypubPersonFeed: API.OperationMethod<
   ActivitypubPersonFeedError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<ActivitypubPersonFeedRequest>,
-  output: __S(5) as any as S.Schema<ActivitypubPersonFeedResponse>,
+  input: ActivitypubPersonFeedRequest,
+  output: ActivitypubPersonFeedResponse,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -182,8 +261,8 @@ export const activitypubPersonInbox: API.OperationMethod<
   ActivitypubPersonInboxError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<ActivitypubPersonInboxRequest>,
-  output: __S(11) as any as S.Schema<ActivitypubPersonInboxResponse>,
+  input: ActivitypubPersonInboxRequest,
+  output: ActivitypubPersonInboxResponse,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -197,8 +276,8 @@ export const activitypubRepository: API.OperationMethod<
   ActivitypubRepositoryError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<ActivitypubRepositoryRequest>,
-  output: __S(1) as any as S.Schema<ActivityPub>,
+  input: ActivitypubRepositoryRequest,
+  output: ActivityPub,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -212,8 +291,8 @@ export const activitypubRepositoryInbox: API.OperationMethod<
   ActivitypubRepositoryInboxError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<ActivitypubRepositoryInboxRequest>,
-  output: __S(3) as any as S.Schema<ActivitypubRepositoryInboxResponse>,
+  input: ActivitypubRepositoryInboxRequest,
+  output: ActivitypubRepositoryInboxResponse,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -227,8 +306,8 @@ export const activitypubRepositoryOutbox: API.OperationMethod<
   ActivitypubRepositoryOutboxError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<ActivitypubRepositoryOutboxRequest>,
-  output: __S(5) as any as S.Schema<ActivitypubRepositoryOutboxResponse>,
+  input: ActivitypubRepositoryOutboxRequest,
+  output: ActivitypubRepositoryOutboxResponse,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -367,18 +446,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ActivitypubRepositoryOutboxRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }
